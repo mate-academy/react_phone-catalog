@@ -1,0 +1,175 @@
+@import '../../styles/main';
+
+.header {
+  @include on-mobile {
+    background-color: $whiteColor;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  &__nav-block {
+    @include on-mobile {
+      display: flex;
+      flex-direction: row;
+      gap: 16px;
+    }
+
+    @include on-desktop {
+      gap: 24px;
+    }
+  }
+
+  &__icon-container {
+    position: relative;
+    display: flex;
+  }
+
+  &__icon-favourites {
+    @include on-mobile {
+      display: none;
+    }
+
+    @include on-tablet {
+      display: block;
+      position: relative;
+      background-image: url("../../images/icons/favourites.png");
+      border-left: 1px solid $elementsColor;
+    }
+  }
+
+  &__icon--cart {
+    @include on-mobile {
+      display: none;
+    }
+
+    @include on-tablet {
+      display: block;
+      position: relative;
+      background-image: url("../../images/icons/basket.png");
+      border-inline: 1px solid $elementsColor;
+    }
+  }
+
+  &__icon-cart-count,
+  &__icon-favourites-count {
+    @include on-mobile {
+      position: absolute;
+      background-color: $accentSecondaryColor;
+      text-align: center;
+      line-height: 15px;
+      border: $whiteColor 1px solid;
+      border-radius: 50%;
+      font-family: Mont-SemiBold, serif;
+      width: 15px;
+      height: 15px;
+      font-size: 9px;
+      color: $whiteColor;
+      left: 24px;
+      bottom: 23px;
+    }
+
+    @include on-tablet {
+      left: 24px;
+      bottom: 23px;
+    }
+
+    @include on-desktop {
+      left: 32px;
+      bottom: 32px;
+    }
+  }
+
+  &__icon {
+    @include on-tablet {
+      position: relative;
+      width: 48px;
+      height: 48px;
+    }
+
+    @include on-desktop {
+      width: 64px;
+      height: 64px;
+    }
+
+  }
+
+  &__icon.active {
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      height: 3px;
+      background-color: $primaryColor;
+    }
+  }
+
+  &__underline {
+    border-bottom: 1px solid $elementsColor;
+    width: 100%;
+  }
+
+  &__button {
+    @include on-mobile {
+      width: 48px;
+      border: none;
+      background-color: $whiteColor;
+      cursor: pointer;
+      border-left: 1px solid $iconsColor;
+    }
+
+    @include on-tablet {
+      display: none;
+    }
+
+    &--close {
+      background-image: url('../../images/icons/close.png');
+    }
+
+    &--open {
+      background-image: url('../../images/icons/menu.png');
+    }
+
+  }
+}
+
+.logo {
+  @include on-mobile {
+    position: relative;
+    display: block;
+    width: 64px;
+    height: 20px;
+    margin: 14px 16px;
+    background-size: 64px 20px;
+    background-image: url("../../images/icons/logo_phone_catalog.png");
+  }
+
+
+  @include on-desktop {
+    width: 80px;
+    height: 26px;
+    margin: 18px 24px;
+    background-size: 80px 26px;
+  }
+
+  &-arm {
+    @include on-mobile {
+      position: absolute;
+      width: 8px;
+      height: 12px;
+      background-image: url("../../images/icons/hand.png");
+      background-repeat: no-repeat;
+      background-size: 8px 12px;
+      left: 32px;
+      top: -2px;
+    }
+
+    @include on-desktop {
+      width: 10px;
+      height: 15px;
+      background-size: 10px 15px;
+      left: 40px;
+    }
+  }
+}

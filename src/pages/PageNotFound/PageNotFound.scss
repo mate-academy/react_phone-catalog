@@ -1,0 +1,28 @@
+@import '../../styles/main';
+
+.page-not-fond {
+  @include content-padding-inline;
+  
+  margin-inline: auto;
+  width: 100%;
+  max-width: 1200px;
+  margin-top: 50px;
+
+  &__link {
+    margin-top: 20px;
+    display: block;
+    margin-inline: auto;
+    background-image: url('../../images/img/page-not-found.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+
+    height: 60vw;
+    width: 65vw;
+
+    @include on-desktop {
+      width: 1000px;
+      height: 900px;
+    }
+  }
+}

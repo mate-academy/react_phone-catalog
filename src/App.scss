@@ -1,1 +1,29 @@
-// not empty
+@import "./styles/main";
+
+@font-face {
+  font-family: Mont;
+  src: url('../public/fonts/Mont-Regular.otf');
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: Mont-Semibold;
+  src: url('../public/fonts/Mont-SemiBold.otf');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: Mont-Bold;
+  src: url('../public/fonts/Mont-Bold.otf');
+  font-weight: 800;
+  font-style: normal;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: #fafbfc;
+}

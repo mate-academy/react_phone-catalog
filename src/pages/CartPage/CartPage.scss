@@ -1,0 +1,123 @@
+@import '../../styles/main';
+
+.cart {
+  @include page-grid;
+  
+  position: relative;
+  margin-top: 24px;
+
+  &__title {
+    margin-bottom: 32px;
+  }
+
+  &__container {
+    width: 100%;
+    max-width: 1200px;
+
+    @include page-grid;
+
+    grid-column: 1 / -1;
+    gap: 32px;
+  }
+
+  &__products {
+    display: flex;
+    grid-column: 1 / -1;
+    flex-direction: column;
+    gap: 16px;
+
+    @include on-desktop {
+      grid-column: 1 / 17;
+    }
+  }
+
+  &__block-buy {
+    grid-column: 1 / -1;
+    display: flex;
+    flex-direction: column;
+    padding: 24px;
+    border: 1px solid $elementsColor;
+    border-radius: 16px;
+    align-items: center;
+    margin-bottom: 56px;
+
+    @include on-desktop {
+      grid-column: 17 / -1;
+      height: 206px;
+    }
+  }
+
+  &__total-price {
+    font-family: Mont-Bold, serif;
+    font-size: 32px;
+    line-height: 41px;
+  }
+
+  &__total-quantity {
+    color: $secondaryColor;
+    margin-bottom: 16px;
+
+    @include on-desktop {
+      margin-bottom: 25px;
+    }
+  }
+
+  &__line {
+    background-color: $elementsColor;
+    width: 100%;
+    height: 1px;
+    margin-bottom: 16px;
+
+    @include on-desktop {
+      margin-bottom: 25px;
+    }
+  }
+
+  &__button {
+    border: none;
+    background-color: $accentColor;
+    color: $whiteColor;
+    width: 100%;
+    height: 48px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: Mont-Semibold, serif;
+    font-size: 14px;
+
+    @include hover (box-shadow, $effectDuration);
+
+    &:hover {
+      cursor: pointer;
+      box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.26);
+    }
+  }
+
+  &__no-product {
+    @include on-mobile {
+      width: 65vw;
+      height: 60vw;
+      grid-column: 1 / -1;
+      background-image: url('../../images/img/cart-is-empty.png');
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: contain;
+      margin-inline: auto;
+    }
+
+    @include on-tablet {
+      width: 65vw;
+      height: 60vw;
+    }
+
+    @include on-desktop {
+      width: 1000px;
+      height: 900px;
+    }
+  }
+
+  &__modal {
+    display: flex;
+    grid-column: 1 / -1;
+    justify-content: center;
+  }
+}

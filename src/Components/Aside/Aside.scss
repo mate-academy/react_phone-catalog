@@ -1,0 +1,92 @@
+@import '../../styles/main';
+
+.aside {
+  position: absolute;
+  display: flex;
+  inset: 49px 0 0;
+
+  background-color: $whiteColor;
+  z-index: 1;
+  justify-content: center;
+
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  &__nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    margin-top: 24px;
+  }
+
+  &__item {
+    line-height: 26px;
+  }
+
+  &__item-active {
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      height: 3px;
+      background-color: $primaryColor;
+    }
+  }
+
+  &__icon-block {
+    display: flex;
+    height: 64px;
+    width: 100vw;
+    border-top: 1px solid $iconsColor;
+  }
+
+  &__icon {
+    border-left: 1px solid $iconsColor;
+    position: relative;
+    width: 50%;
+  }
+
+  &__icon--favourites {
+    background-image: url('../../images/icons/favourites.png');
+  }
+
+  &__icon--cart {
+    background-image: url('../../images/icons/basket.png');
+  }
+
+  &__icon-cart-count,
+  &__icon-favourites-count {
+    @include on-mobile {
+      position: absolute;
+      background-color: $accentSecondaryColor;
+      text-align: center;
+      line-height: 15px;
+      border: $whiteColor 1px solid;
+      border-radius: 50%;
+      font-family: Mont-SemiBold, serif;
+      width: 15px;
+      height: 15px;
+      font-size: 9px;
+      color: $whiteColor;
+      left: calc(50% + 2px);
+      bottom: calc(50%);
+    }
+
+    @include on-tablet {
+      left: 24px;
+      bottom: 23px;
+    }
+
+    @include on-desktop {
+      left: 32px;
+      bottom: 32px;
+    }
+  }
+
+}
