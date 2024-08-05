@@ -1,0 +1,46 @@
+@import './../../../utils/resources';
+
+.welcome {
+  margin: 0 auto;
+
+  &-wrapper {
+    max-width: 1136px;
+
+    @include pageGrid;
+
+    scroll-margin-top: 56px;
+
+    @include onTablet {
+      margin-inline: 24px;
+    }
+
+    @include onDesktop {
+      margin: 0;
+    }
+
+    height: 100%;
+
+    & > div {
+      grid-column: 1 / -1;
+      grid-row: 2;
+    }
+  }
+
+  &__title {
+    grid-column: 1 / -1;
+
+    margin: 24px 16px;
+
+    color: #F1F2F9;
+
+    @include onTablet {
+      margin: 32px 0;
+      grid-column: 1 / 10;
+    }
+
+    @include onDesktop {
+      margin: 56px 0;
+      grid-column: span 17;
+    }
+  }
+}

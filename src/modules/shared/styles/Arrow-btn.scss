@@ -1,0 +1,53 @@
+@import './../../utils/resources';
+
+.arrow-btn {
+  height: 32px;
+  width: 32px;
+  background-color: $gray-surface2;
+  background-image: url('../../../../public/img/icons/arrow.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+
+  &--active {
+    background-image: url('../../../../public/img/icons/arrow-dark.svg');
+    background-color: transparent;
+    border: 1px solid $gray-surface2;
+
+    &:hover {
+      background-color: transparent;
+      cursor: auto;
+    }
+
+  }
+
+  &--dark {
+    background-image: url('../../../../public/img/icons/arrow-dark.svg');
+
+    &-active {
+      background-image: url('../../../../public/img/icons/arrow.svg');
+      background-color: transparent;
+      border: 1px solid $gray-surface2;
+
+      &:hover {
+        background-color: transparent;
+        cursor: auto;
+      }
+    }
+  }
+
+  &--left {
+    transform: scaleX(-1);
+  }
+
+  &--up {
+    transform: rotate(-90deg);
+  }
+
+  &--disabled {
+    background-color: $gray-surface1;
+
+    &:hover {
+      background-color: $gray-surface1;
+    }
+  }
+}

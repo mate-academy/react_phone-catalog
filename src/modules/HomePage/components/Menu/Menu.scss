@@ -1,0 +1,116 @@
+@import './../../../utils/resources';
+
+.menu {
+  height: calc(100vh - 49px);
+  width: 100%;
+  position: fixed;
+  top: 0;
+
+  display: flex;
+  opacity: 0;
+
+  flex-direction: column;
+  justify-content: space-between;
+
+  transform: translateY(calc(-100% - 49px));
+  transition: $transition-duration ease-in-out;
+  z-index: 1000;
+  background-color: #0F1121;
+
+  &__item a {
+    color: $gray-secondary;
+  }
+
+  &__item--active {
+    position: relative;
+    color: $white !important;
+
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: -8px;
+      height: 2px;
+      width: 100%;
+      background-color: $white;
+    }
+  }
+
+  &-light {
+    background-color: inherit;
+  }
+
+  &-ul-light {
+    & li a {
+      color: $white-theme-nav;
+    }
+    & li .menu__item--active {
+      color: $white-theme-text !important;
+    }
+  }
+
+  &--active {
+    opacity: 1;
+    transform: translateY(calc(0% + 49px));
+  }
+
+  & ul {
+    padding: 0;
+    margin-top: 32px;
+
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 32px;
+
+    font-size: 12px;
+    font-weight: 800;
+    line-height: 11px;
+    letter-spacing: 0.04em;
+    list-style: none;
+    text-transform: uppercase;
+
+    color: #75767F;
+  }
+
+  &__bottom {
+    height: 64px;
+    display: flex;
+  }
+
+  &__btn {
+    width: 50%;
+    border: 1px solid #323542;
+    border-right: 0.5px;
+    background-color: transparent;
+    overflow: hidden;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    &-link {
+      position: relative;
+      height: 100%;
+      width: 100%;
+      display: flex;
+
+      &--is-active {
+        border-bottom: 3px solid $white;
+      }
+    }
+
+    &--like {
+      background-image: url('../../../../../public/img/icons/like.svg');
+
+      &-dark {
+        background-image: url('../../../../../public/img/icons/like-dark.svg');
+      }
+    }
+
+    &--bag {
+      background-image: url('../../../../../public/img/icons/bag.svg');
+
+      &-dark {
+        background-image: url('../../../../../public/img/icons/bag-dark.svg');
+      }
+    }
+  }
+}

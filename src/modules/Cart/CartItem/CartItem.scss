@@ -1,0 +1,177 @@
+@import './../../utils/resources';
+
+.cart-item {
+  position: relative;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  background-color: $gray-surface1;
+
+  @include onTablet {
+    padding: 24px;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 24px;
+  }
+
+  @include onDesktop {
+    width: 752px;
+  }
+
+  &__btn {
+    height: 32px;
+    width: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    cursor: inherit;
+    color: $gray-icons;
+
+    &--active {
+      cursor: pointer;
+      border: none;
+      font-weight: 400;
+      color: $white;
+      background-color: $gray-surface2;
+
+      &:hover {
+        background-color: $gray-icons !important;
+      }
+    }
+
+    &:hover {
+      background-color: $gray-surface2;
+    }
+  }
+
+  &__cancel {
+    display: flex;
+
+    & img {
+      transform: rotate(45deg);
+      transition-duration: $transition-duration;
+
+      &:hover {
+        scale: 2;
+      }
+    }
+
+    &:hover {
+      background-color: transparent;
+    }
+  }
+
+  &__img {
+    max-height: 80px;
+    max-width: 80px;
+
+    &-wrapper {
+      height: 80px;
+      width: 80px;
+      display: flex;
+      justify-content: center;
+
+    }
+  }
+
+  &__name {
+    width: 50%;
+  }
+
+  &__top {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+
+    @include onTablet {
+      gap: 24px;
+    }
+  }
+
+  &__bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    @include onTablet {
+      gap: 24px;
+    }
+  }
+
+  &__btns {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+
+    & p {
+      font-size: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 30px;
+      width: 30px;
+    }
+  }
+
+  &__price {
+    display: flex;
+    justify-content: center;
+    width: 120px;
+  }
+
+  &__loader {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: $gray-surface2;
+    opacity: 0.9;
+  }
+
+  &-light {
+    border: 1px solid $white-theme-nav;
+
+    & .cart-item__cancel {
+      border: none;
+    }
+
+    & .cart-item__cancel:hover {
+      border: none;
+    }
+
+    & .cart-item__name {
+      color: $white-theme-text;
+
+      &:hover {
+        color: $white-theme-nav;
+      }
+    }
+
+    & .cart-item__btn {
+      color: $gray-secondary;
+      border: 1px solid $white-theme-nav;
+
+      &:hover {
+        color: $white-theme-text;
+      }
+    }
+
+    & .cart-item__btn--active {
+      border: 1px solid $white-theme-text;
+      color: $white-theme-text;
+    }
+
+    & p {
+      color: $white-theme-text;
+    }
+
+    background-color: transparent;
+  }
+}

@@ -1,0 +1,258 @@
+@import './../../../utils/resources';
+
+@mixin border{
+  &::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    height: 100%;
+    width: 1px;
+
+    background-color: $gray-surface2;
+  }
+}
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  justify-content: space-between;
+  border-bottom: 1px solid $gray-elements;
+  background-color: $black;
+
+  &__wrapper {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+
+    @include onDesktop {
+      gap: 24px;
+    }
+  }
+
+  &__logo {
+    padding: 0 16px;
+
+    &-icon {
+      height: 28px;
+      width: 80px;
+    }
+
+    @include onDesktop {
+      padding: 0 24px;
+    }
+  }
+
+  &__nav {
+    display: none;
+
+    @include onTablet {
+      display: flex;
+    }
+
+    justify-self: start;
+
+    & ul {
+      height: 48px;
+
+      display: flex;
+      align-items: center;
+      gap: 32px;
+
+      @include onDesktop {
+        height: 64px;
+        gap: 64px;
+      }
+    }
+  }
+
+  &__cart {
+    display: flex;
+
+    &-link {
+      display: flex;
+      height: 100%;
+      width: 100%;
+    }
+
+    &-theme {
+      position: relative;
+      height: 48px;
+      width: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      border: none;
+      background-color: inherit;
+
+      & img {
+        height: 16px;
+
+        @include onDesktop {
+          height: 32px;
+        }
+      }
+
+      @include onDesktop {
+        height: 64px;
+        width: 64px;
+      }
+
+      @include border;
+    }
+
+    &-icon {
+      position: relative;
+      display: none;
+
+      height: 48px;
+      width: 48px;
+      background-size: 16px;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-color: transparent;
+
+      border: none;
+
+      @include onDesktop {
+        height: 64px;
+        width: 64px;
+
+        background-size: 24px;
+      }
+
+      @include border;
+
+
+      &--menu {
+        display: flex;
+        background-image: url('./../../../../../public/img/header/Union.svg');
+
+        @include onTablet {
+          display: none;
+        }
+
+        &-dark {
+          display: flex;
+          background-image: url('./../../../../../public/img/header/Union-dark.svg') !important;
+
+          @include onTablet {
+            display: none;
+          }
+        }
+      }
+
+      &--close {
+        display: flex;
+        background-size: cover 90%;
+        background-image: url('./../../../../../public/img/header/close.svg');
+
+        &-dark {
+          background-size: 26px;
+          background-image: url('./../../../../../public/img/header/close-dark.svg') !important;
+        }
+
+        @include onTablet {
+          display: none;
+        }
+      }
+
+      &--like {
+        background-image: url('./../../../../../public/img/icons/like.svg');
+
+        @include onTablet {
+          display: flex;
+        }
+
+        &-dark {
+          @include onTablet {
+            display: flex;
+          }
+
+          background-image: url('./../../../../../public/img/icons/like-dark.svg');
+        }
+      }
+
+      &--bag {
+        position: relative;
+        background-image: url('./../../../../../public/img/icons/bag.svg');
+
+        @include onTablet {
+          display: flex;
+        }
+
+        &-dark {
+          position: relative;
+          background-image: url('./../../../../../public/img/icons/bag-dark.svg');
+
+          @include onTablet {
+            display: flex;
+          }
+        }
+      }
+    }
+  }
+
+  &__link {
+    position: relative;
+    height: 100%;
+
+    display: flex;
+    align-items: center;
+    text-transform: uppercase;
+    color: $gray-secondary;
+    transition-duration: $transition-duration;
+
+    font-weight: 800;
+    font-size: 12px;
+    line-height: 11px;
+    letter-spacing: 0.04em;
+
+    &:hover {
+      color: $gray-icons;
+    }
+
+    &--active {
+      color: $white;
+
+      &::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: 0;
+
+        height: 3px;
+        width: 100%;
+
+        background-color: $white;
+        animation: active-appear 0.3s ease alternate;
+      }
+    }
+  }
+
+  &-light {
+    background-color: #fff;
+
+    & button:hover, .header__cart-theme:hover {
+      border: 1px solid transparent !important;
+      background-color: $white;
+      scale: 1;
+    }
+  }
+}
+
+@keyframes active-appear {
+  0% {
+      transform: scaleX(0);
+  }
+  100% {
+      transform: scaleX(1);
+  }
+}
+

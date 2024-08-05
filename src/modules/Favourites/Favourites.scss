@@ -1,0 +1,45 @@
+@import './../utils/resources';
+
+.favourites {
+  position: relative;
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  margin-inline: 24px;
+
+  @include onTablet {
+    margin-inline: 32px;
+    gap: 40px;
+  }
+
+  @include onDesktop {
+    margin: 0 auto;
+    max-width: 1136px;
+  }
+
+  &__breadcrumbs {
+    display: flex;
+    margin-top: 24px;
+  }
+
+  &__info {
+    margin-bottom: 8px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    & p {
+      color: $gray-secondary;
+    }
+
+    @include onTablet {
+      margin-bottom: 0;
+    }
+  }
+}
+
+

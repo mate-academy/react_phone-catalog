@@ -1,0 +1,205 @@
+@import './../utils/resources';
+
+.product {
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  margin-inline: 24px;
+
+  @include onTablet {
+    margin-inline: 32px;
+  }
+
+  @include onDesktop {
+    margin: 0 auto;
+    width: 1136px;
+  }
+
+  &--margin {
+    margin-top: 24px;
+  }
+
+  &__nav {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  &__text, & small{
+    color: $gray-secondary;
+  }
+
+  &__info {
+    margin-bottom: 8px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__sort {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    @include onTablet {
+      flex-direction: row;
+    }
+
+    &-year, &-items, &-search {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    &--left-wrapper {
+      display: flex;
+      gap: 16px;
+    }
+
+    &-input {
+      height: 40px;
+      width: 100%;
+      padding-inline: 30px;
+      outline: none;
+      border: none;
+      color: $white;
+      background-color: $gray-surface2;
+
+      &--wrapper {
+        position: relative;
+        display: flex;
+        align-items: center;
+        height: 100%;
+
+        &-light {
+          & input {
+            height: 42px;
+            border: 1px solid $white-theme-nav;
+            color: $white-theme-text;
+            background-color: transparent;
+          }
+
+          &::before {
+            background-image: url('./../../../public/img/icons/Search-dark.svg') !important;
+          }
+        }
+
+        &::before {
+          content: "";
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          left: 5px;
+          margin: auto 0;
+          height: 16px;
+          width: 16px;
+          background-image: url('./../../../public/img/icons/search.svg');
+          background-size: cover;
+        }
+      }
+
+      &--cancel {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        right: 5px;
+        margin: auto 0;
+
+        height: 24px;
+        width: 24px;
+        background-image: url('./../../../public/img/icons/plus.svg');
+        background-size: cover;
+        transform: rotate(45deg);
+
+        background-color: transparent;
+
+        &:hover {
+          background-color: transparent;
+          scale: 1.1;
+        }
+      }
+    }
+
+    &-year {
+      @include onTablet {
+        width: 187px
+      }
+
+      @include onDesktop {
+        width: 176px;
+      }
+    }
+
+    &-items {
+      @include onTablet {
+        width: 136px;
+      }
+
+      @include onDesktop {
+        width: 128px;
+      }
+    }
+  }
+
+  &__cards {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+    &-wrapper {
+      @include pageGrid;
+
+      row-gap: 40px;
+
+      & > div {
+        grid-column: span 4;
+
+        @include onTablet {
+          grid-column: span 6;
+          height: 506px;
+        }
+      }
+    }
+  }
+
+  &__not-found {
+    margin-top: 16px;
+  }
+
+  &__error {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    align-items: center;
+    justify-content: center;
+
+    @include onTablet {
+      top: 100%;
+      gap: 32px;
+    }
+
+    &-btn {
+      height: 15%;
+      width: 15%;
+      background-color: $green;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      &:hover {
+        background-color: #1c8146;
+      }
+    }
+  }
+}
+

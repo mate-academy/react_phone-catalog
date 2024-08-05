@@ -1,0 +1,15 @@
+@import './../../../utils/resources';
+
+.main {
+  display: flex;
+  flex-direction: column;
+  gap: 56px;
+
+  @include onTablet {
+    gap: 64px;
+  }
+
+  @include onDesktop {
+    gap: 80px;
+  }
+}

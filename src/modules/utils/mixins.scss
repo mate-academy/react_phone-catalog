@@ -1,0 +1,46 @@
+@mixin onTablet { /* stylelint-disable-line scss/at-mixin-pattern */
+  @media (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin onDesktop { /* stylelint-disable-line scss/at-mixin-pattern */
+  @media (min-width: $desktop-min-width) {
+    @content;
+  }
+}
+
+@mixin pageGrid { /* stylelint-disable-line scss/at-mixin-pattern */
+  display: grid;
+
+  --columns: 4;
+
+  column-gap: 16px;
+  grid-template-columns: repeat(var(--columns), 1fr);
+
+  @include onTablet {
+    --columns: 12;
+  }
+
+  @include onDesktop {
+    --columns: 24;
+  }
+}
+
+@mixin underLine { /* stylelint-disable-line scss/at-mixin-pattern */
+  position: relative;
+
+  @content;
+
+  &::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -16px;
+
+    height: 1px;
+    width: 100%;
+    background-color: $gray-elements;
+  }
+}
+

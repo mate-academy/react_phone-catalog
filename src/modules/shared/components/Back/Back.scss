@@ -1,0 +1,46 @@
+@import './../../../utils/resources';
+
+.back {
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition-duration: $transition-duration;
+
+  &-dark {
+    & a {
+      color: $white-theme-text;
+      font-weight: 600;
+
+      &:hover {
+        color: $black;
+      }
+    }
+  }
+
+  &-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: rotate(180deg);
+    height: 32px;
+    width: 32px;
+
+    & img {
+      scale: 2;
+    }
+
+    & img:hover {
+      scale: 2.5;
+    }
+  }
+
+  &-link {
+    font-size: 16px;
+    cursor: pointer;
+
+    &:hover {
+      scale: 1.1;
+    }
+  }
+}

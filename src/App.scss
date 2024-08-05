@@ -1,1 +1,318 @@
-// not empty
+@import './modules/utils/resources';
+@import './modules/shared/styles/fonts';
+
+*  {
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+h1, h2, h3, h4, p, a, button, ul, li, s {
+  margin: 0;
+  border: 0;
+  padding: 0;
+  color: $white;
+  list-style: none;
+  text-decoration: none;
+}
+
+
+html, body {
+  margin: 0;
+
+  cursor: url('./../public/img/icons/cursor.svg'), default;
+
+  scroll-behavior: smooth;
+  font-family: Mont, sans-serif;
+  font-size: 14px;
+  line-height: 21px;
+  color:  $white;
+  background-color: $black;
+}
+
+body::-webkit-scrollbar {
+  width: 12px;
+}
+
+body::-webkit-scrollbar-track {
+  background: $gray-surface1;
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: $gray-surface2;
+}
+
+
+h1 {
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  line-height: 41px;
+  font-size: 32px;
+
+  @include onTablet {
+    font-size: 48px;
+    line-height: 56px;
+  }
+}
+
+h2 {
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 31px;
+
+  @include onTablet {
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+  }
+}
+
+h3 {
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 31px;
+
+  @include onTablet {
+    font-size: 22px;
+  }
+}
+
+h4 {
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 20px;
+
+  @include onTablet {
+    font-size: 20px;
+    line-height: 26px;
+  }
+}
+
+b {
+  cursor: pointer;
+  transition-duration: $transition-duration;
+
+  text-transform: uppercase;
+  font-size: 12px;
+  line-height: 11px;
+  letter-spacing: 0.04em;
+
+
+  &:hover {
+    color: $gray-icons;
+  }
+}
+
+button {
+  font-family: Mont, sans-serif;
+  font-weight: 600;
+
+  cursor: pointer;
+  background-color: $gray-surface2;
+  transition: $transition-duration;
+  border: 1px solid #323542;
+
+  &:hover {
+    background-color: $gray-icons;
+  }
+
+  &:active {
+    filter: contrast(125%);
+  }
+}
+
+p {
+  font-size: 14px;
+  line-height: 21px;
+}
+
+small {
+  color: $gray-secondary;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 15px;
+}
+
+a {
+  display: flex;
+  transition: $transition-duration ease-in-out;
+  cursor: pointer;
+
+  &:hover {
+    color: $gray-secondary;
+  }
+
+  & > img {
+    transition-duration: $transition-duration;
+    &:hover {
+      scale: 1.1;
+    }
+  }
+}
+
+select {
+  padding-inline: 12px;
+
+  height: 40px;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 21px;
+
+  border: none;
+
+  color: $white;
+  background-color: $gray-surface2;
+}
+
+main {
+  padding-bottom: 321px;
+
+  @include onTablet {
+    padding-bottom: 160px;
+  }
+
+  @include onDesktop {
+    padding-bottom: 176px;
+  }
+}
+
+.App {
+  min-width: 320px;
+  position: relative;
+  background-color: $black;
+  transition: all $transition-duration ease-in-out;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.discount {
+  position: relative;
+  font-size: 22px;
+  font-weight: 600;
+  line-height: 28.12px;
+  color: $gray-secondary;
+  text-decoration-line: line-through;
+
+  &--dark {
+    color: $white-theme-nav !important;
+  }
+}
+
+.btn-add {
+  flex: 1;
+  height: 40px;
+
+  font-weight: 500;
+  line-height: 21px;
+  text-align: center;
+  background-color: $accent;
+
+  &--large {
+    height: 48px;
+  }
+
+  &--dark {
+    color: $white-theme-text;
+    border: 1px solid $white-theme-text !important;
+
+    &:hover {
+      color: $white;
+      background-color: $white-theme-text !important;
+    }
+  }
+
+  &--disabled {
+    background-color: $gray-surface2;
+    cursor: inherit;
+    border: none;
+
+    &:hover {
+      background-color: $gray-surface2 !important;
+    }
+  }
+
+  & a {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &:hover {
+    background-color: #A378FF;
+  }
+}
+
+.btn-like {
+  height: 40px;
+  width: 40px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background-color: $gray-surface2;
+
+  &--dark {
+    color: $white-theme-text;
+    border: 1px solid $white-theme-text !important;
+
+    &:hover {
+      color: $white;
+    }
+  }
+
+  &--large {
+    height: 48px;
+    width: 48px;
+  }
+}
+
+.white-theme {
+  transition: all $transition-duration ease-in-out;
+
+  color: $white-theme-text;
+  background-color: #fff;
+
+  h1, h2, h3, h4 {
+    color: $white-theme-text;
+  }
+
+  button {
+    background-color: transparent;
+    border: 1px solid #E2E6E9;
+
+    &:hover {
+      border: 1px solid $white-theme-text;
+    }
+
+    &:active {
+      background-color: $white-theme-text;
+    }
+  }
+
+  & a::after {
+    background-color: $white-theme-text;
+  }
+
+  & div a:hover {
+    color: $white-theme-text;
+  }
+
+  & ul {
+    color: $white-theme-nav;
+    &:hover {
+      color: $white-theme-text;
+    }
+  }
+
+  [aria-current="page"] {
+    color: $white-theme-text;
+  }
+}
+
+
+iframe {
+  display: none;
+}

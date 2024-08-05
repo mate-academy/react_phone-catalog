@@ -1,0 +1,236 @@
+@import './../../../utils/resources';
+
+.card {
+  position: relative;
+
+  flex: 0 0 auto;
+  padding: 32px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 8px;
+
+  transition: $transition-duration ease-in-out;
+  border: 1px solid transparent;
+
+  color:  $white;
+  background: $gray-surface1;
+
+  @include onTablet {
+    height: 272px;
+  }
+
+  &:hover {
+    border: 1px solid $white-theme-text;
+  }
+
+  &__title {
+    margin-top: 16px;
+    word-break: break-all;
+    font-weight: 400;
+    line-height: 21px;
+    font-size: 14px;
+    width: 80%;
+  }
+
+  &__price {
+    font-size: 22px;
+    font-weight: 800;
+    text-align: left;
+
+    &-wrapper {
+      position: relative;
+      margin-bottom: 8px;
+
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      text-align: center;
+
+      &::after {
+        content: "";
+        position: absolute;
+        bottom: -8px;
+        left: 0;
+
+        width: 100%;
+        border: 1px solid $gray-elements;
+      }
+    }
+  }
+
+  &__specs {
+    margin-block: 8px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    &-item {
+      display: flex;
+      justify-content: space-between;
+
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 15.34px;
+    }
+
+    &-prop {
+      color: $gray-secondary;
+    }
+  }
+
+  &__image {
+    position: relative;
+    width: fit-content;
+    max-height: 140px;
+    max-width: 105px;
+
+    @include onDesktop {
+      max-height: 175px;
+      max-width: 150px;
+    }
+
+    &-wrapper {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      user-select: none;
+
+      & a {
+        display: flex;
+      }
+    }
+  }
+
+  &__btns {
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+  }
+
+  &__add {
+    height: 40px;
+    width: 75%;
+
+    font-weight: 700;
+    line-height: 21px;
+    text-align: center;
+    background-color: $accent;
+
+    & a {
+      height: 100%;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    &:hover {
+      background-color: #A378FF;
+    }
+  }
+
+  &__like {
+    height: 40px;
+    width: 40px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: $gray-surface2;
+  }
+
+  &-light {
+    background-color: transparent;
+    color: $white-theme-text;
+    border: 1px solid #E2E6E9;
+
+    & a, p {
+      color: $white-theme-text;
+    }
+
+    & .card__specs-prop {
+      color: #89939A;
+    }
+
+    & .btn-like {
+      border-color: #B4BDC3;
+      background-color: transparent;
+
+      &:hover {
+        background-color: transparent;
+        border: 1px solid $white-theme-text;
+        box-shadow: none;
+      }
+    }
+
+    & button {
+      background-color: $white-theme-text;
+
+      &:hover {
+        box-shadow: 0 3px 13px 0 #17203166;
+        background-color: $white-theme-text;
+      }
+
+      &:active {
+        box-shadow: none;
+        background-color: $white !important;
+        border: 1px solid #B4BDC3;
+        color: $green;
+      }
+    }
+
+    .btn-add--disabled {
+      box-shadow: none;
+      background-color: transparent;
+      border: 1px solid #B4BDC3;
+      color: $green;
+      pointer-events: none;
+    }
+  }
+
+  .is-loading {
+    background-color: #292b35;
+    opacity: 0.4;
+
+
+    & a, p, h3, h4, button, .card__image-wrapper {
+      background-color: rgb(79, 78, 78);
+      color: transparent;
+      border-radius: 5px;
+
+      background-image:
+      linear-gradient(
+        90deg,
+        rgba(#fff, 0),
+        rgba(#fff, 0.5),
+        rgba(#fff, 0)
+      );
+      background-size: 40px 100%;
+      background-repeat: no-repeat;
+      background-position: left -40px top 0;
+      animation: shine 1s ease infinite;
+    }
+
+    & button > img {
+      display: none;
+    }
+
+    & .card__image-wrapper {
+      height: 100px;
+      & img {
+        display: none;
+      }
+    }
+  }
+}
+
+@keyframes shine {
+	to {
+		background-position: right -40px top 0;
+	}
+}
+
