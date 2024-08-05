@@ -77,9 +77,9 @@ export const App: React.FC = () => {
 
     if (cartString) {
       dispatch(cleanCart());
-      const cartArray: Product[] = JSON.parse(cartString);
+      const cartArr: Product[] = JSON.parse(cartString);
 
-      for (const obj of cartArray) {
+      for (const obj of cartArr) {
         dispatch(addToCart(obj));
       }
     }
