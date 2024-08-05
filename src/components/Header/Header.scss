@@ -1,0 +1,179 @@
+@import '../../main.scss';
+
+.header {
+  position: relative;
+  z-index: 50;
+
+  &__top {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid $color-elements;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  &__nav {
+    display: none;
+    gap: 32px;
+
+    @include onTablet {
+      display: flex;
+    }
+
+    @include onDesktop {
+      gap: 64px;
+    }
+  }
+
+  &__container {
+    display: flex;
+    gap: 16px;
+
+    @include onTablet {
+      gap: 24px;
+    }
+  }
+
+  &__logo {
+    display: block;
+    padding: 13px 16px;
+
+    @include onDesktop {
+      padding: 18px 24px;
+    }
+
+    @include hover(scale, 1.1);
+
+    &--img {
+      display: block;
+      width: 64px;
+      height: 22px;
+
+      @include onDesktop {
+        width: 80px;
+        height: 28px;
+      }
+    }
+  }
+
+  &__action {
+    display: flex;
+  }
+
+  &__icon {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 16px;
+    border-left: 1px solid $color-elements;
+    text-decoration: none;
+    cursor: pointer;
+    color: $color-white;
+    transition: 0.3s;
+
+    @include onDesktop {
+      padding: 24px;
+    }
+
+    &:hover &--img {
+      transform: scale(1.1);
+    }
+
+    &:hover &-number {
+      transform: scale(1.1) translateY(-50%);
+    }
+
+    &--img {
+      display: block;
+      width: 16px;
+      height: 16px;
+      transition: 0.3s;
+    }
+
+    &--mobile {
+      @include onTablet {
+        display: none;
+      }
+    }
+
+    &--tablet {
+      display: none;
+
+      @include onTablet {
+        display: flex;
+      }
+    }
+
+    &--active::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      height: 3px;
+      background-color: $color-white;
+    }
+  }
+
+  &__icon-container {
+    position: relative;
+  }
+
+  &__icon-number {
+    position: absolute;
+    top: 0;
+    left: 75%;
+    transform: translateY(-50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 15px;
+    height: 15px;
+    background-color: $color-red;
+    border-radius: 50%;
+    border: 1px solid $color-main-bg;
+    font-weight: 700;
+    font-size: 9px;
+    transition: 0.3s;
+  }
+}
+
+.nav {
+  &__link {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    color: $color-secondary;
+    font-size: 12px;
+    font-weight: 800;
+    line-height: 11px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    width: max-content;
+    transition: 0.3s;
+
+    @include hover(color, $color-white);
+    @include hover(scale, 1.1);
+
+    &--active {
+      color: $color-white;
+      @include hover(scale, 1);
+    }
+
+    &--active::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      height: 3px;
+      background-color: $color-white;
+    }
+  }
+}

@@ -1,0 +1,21 @@
+@import './styles/normalize';
+@import './styles/fonts';
+@import './styles/mixins';
+@import './styles/typography';
+@import './styles/vars';
+
+.page {
+  font-family: Mont, sans-serif;
+  font-weight: 500;
+  background-color: $color-main-bg;
+  color: $color-white;
+  scroll-behavior: smooth;
+}
+
+.main {
+  padding-top: 48px;
+
+  @include onTablet {
+    padding-top: 64px;
+  }
+}
