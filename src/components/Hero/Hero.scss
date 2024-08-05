@@ -1,0 +1,150 @@
+@import '../../styles/common';
+
+.hero {
+  @include page-grid;
+
+  padding-top: 72px;
+
+  @include on-tablet {
+    padding: 80px $padding-tablet 0;
+    margin-bottom: 64px;
+  }
+
+  @include on-desktop-small {
+    margin-bottom: 80px;
+    padding: 120px $padding-desktop-small 0;
+  }
+
+  @include on-desktop {
+    padding-left: $padding-desktop;
+    padding-right: $padding-desktop;
+  }
+
+  &__title {
+    color: $main-white-color;
+    font-weight: 800;
+    font-size: 32px;
+    line-height: 1.28;
+    letter-spacing: 0.01em;
+    padding: 0 $padding-mobile;
+    margin-bottom: $margin-bottom-mobile;
+
+    grid-column: 1 / -1;
+
+    @include on-tablet {
+      font-size: 48px;
+      line-height: 1.16;
+      margin-bottom: $margin-bottom-tablet;
+      padding: 0;
+
+      grid-column: 1 / 10;
+    }
+
+    @include on-desktop-small {
+      grid-column: 1 / 18;
+      margin-bottom: $margin-bottom-desktop-small;
+    }
+  }
+
+  &__swiper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    grid-column: 1 / -1;
+
+    &--img {
+      width: 100%;
+      height: 100%;
+
+      @include on-tablet {
+        width: 70%;
+        margin: 0 auto;
+      }
+
+      @include on-desktop-small {
+        width: 80%;
+      }
+    }
+  }
+
+  // rewrite swiper default styles
+
+  .swiper {
+    &-wrapper {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 320px;
+      padding-bottom: 32px;
+      grid-column: 1 / -1;
+
+      @include on-desktop-small {
+        height: 480px;
+        padding-bottom: 40px;
+      }
+
+      @include on-desktop {
+        height: 550px;
+        padding-bottom: 50px;
+      }
+    }
+
+    &-pagination {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 4px;
+      width: 80px;
+      height: 24px;
+      padding-top: 8px;
+
+      &-bullet {
+        width: 14px;
+        height: 4px;
+        background-color: $main-white-color;
+        border-radius: 0;
+      }
+    }
+
+    &-button-prev,
+    &-button-next {
+      display: none;
+
+      @include on-tablet {
+        display: flex;
+        justify-content: center;
+        align-self: center;
+        top: 0;
+        margin-bottom: 0;
+        margin-top: 0;
+        width: 40px;
+        height: 320px;
+        background-color: $button-grey-color;
+        color: $main-white-color;
+
+        &::after {
+          font-size: 10px;
+        }
+      }
+
+      @include on-desktop-small {
+        width: 45px;
+        height: 480px;
+      }
+
+      @include on-desktop {
+        height: 550px
+      }
+
+      @include hover(background-color, $icon-grey-color);
+    }
+
+    &-button-prev {
+      left: 0;
+    }
+
+    &-button-next {
+      right: 0;
+    }
+  }
+}

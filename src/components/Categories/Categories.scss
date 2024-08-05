@@ -1,0 +1,77 @@
+@import '../../styles/common';
+
+.categories {
+  margin-bottom: 56px;
+
+  @include page-grid;
+
+  @include on-tablet {
+    margin-bottom: 64px;
+  }
+
+  @include on-desktop-small {
+    margin-bottom: 80px;
+  }
+
+  &__title {
+    color: $main-white-color;
+    font-size: 22px;
+    font-weight: 800;
+    line-height: 1.4;
+    letter-spacing: 0.02em;
+    margin-bottom: $margin-bottom-mobile;
+
+    grid-column: 1 / 4;
+
+    @include on-tablet {
+      font-size: 32px;
+      font-weight: 800;
+      line-height: 1.28;
+
+      grid-column: 1 / span 7;
+    }
+  }
+
+  &__box {
+    @include page-grid;
+
+    grid-column: 1 / -1;
+
+    &--card {
+      margin-bottom: 32px;
+
+      grid-column: span 4;
+
+      @include on-tablet {
+        margin-bottom: 0;
+      }
+
+      @include on-desktop-small {
+      grid-column: span 8;
+    }
+    }
+  }
+}
+
+.card {
+  &__img {
+    margin-bottom: $margin-bottom-mobile;
+    border-radius: 10px;
+
+    @include hover(box-shadow, 0 0 8px $main-white-color, transform, scale(1.04));
+  }
+
+  &__title {
+    color: $main-white-color;
+    font-size: 20px;
+    line-height: 1.27;
+    margin-bottom: 4px;
+    letter-spacing: 0.02em;
+  }
+
+  &__descr {
+    color: $light-grey-color;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+}

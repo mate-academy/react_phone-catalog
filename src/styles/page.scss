@@ -1,0 +1,111 @@
+@import './common';
+
+.selected-cat {
+  &__active {
+    display: flex;
+    align-items: center;
+    padding-top: 72px;
+    gap: 8px;
+    margin-bottom: $margin-bottom-mobile;
+
+    @include on-tablet {
+      margin-bottom: 40px;
+    }
+
+    @include on-desktop-small {
+      padding-top: 88px;
+    }
+
+    &--link {
+      cursor: pointer;
+    }
+
+    &--arrow {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 16px;
+      height: 16px;
+    }
+
+    &--name {
+      color: $light-grey-color;
+      font-size: 12px;
+      font-weight: 500;
+      line-height: 1.28;
+      cursor: pointer;
+
+      @include hover(color, $button-purple-color);
+    }
+  }
+
+  &__title {
+    color: $main-white-color;
+    font-size: 32px;
+    font-weight: 800;
+    line-height: 1.29;
+    letter-spacing: -0.01em;
+    margin-bottom: 8px;
+
+    @include on-tablet {
+      font-size: 48px;
+      line-height: 1.17;
+    }
+  }
+
+  &__text {
+    color: $light-grey-color;
+    font-size: 14px;
+    line-height: 1.5;
+    margin-bottom: 32px;
+
+    @include on-tablet {
+      margin-bottom: 40px;
+    }
+  }
+
+  &__no-product,
+  &__error {
+    color: $main-white-color;
+    font-size: 24px;
+    line-height: 1.7;
+    letter-spacing: -0.01em;
+    margin-bottom: 24px;
+  }
+
+  &__error {
+    margin-top: 20px;
+    margin-bottom: 16px;
+  }
+
+  &__reload {
+    width: 120px;
+    height: 40px;
+    border: none;
+    background-color: $button-purple-color;
+    color: $main-white-color;
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 1.5;
+    text-align: center;
+    cursor: pointer;
+
+    @include hover(background-color, $purple-hover-color);
+  }
+}
+
+.favorites__box {
+  @include page-grid;
+
+  margin-bottom: 56px;
+  gap: 40px;
+
+  @include on-tablet {
+    margin-bottom: 64px;
+    gap: 40px 17px;
+  }
+
+  @include on-desktop-small {
+    margin-bottom: 80px;
+  }
+}
