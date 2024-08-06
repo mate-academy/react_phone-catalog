@@ -1,0 +1,61 @@
+@import '/src/styles/mixins';
+@import '/src/styles/variables';
+
+.modal-window {
+  position: fixed;
+  inset: 50%;
+  z-index: 90;
+  width: 50vw;
+  height: fit-content;
+  background-color: rgb(255, 255, 255);
+  box-shadow: 5px 5px 20px #000;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  padding: 0 20px;
+  padding-block: 20px;
+
+  @include on-tablet {
+    padding-block: 100px;
+  }
+
+  &__title {
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 140%;
+
+    @include on-tablet {
+      font-size: 22px;
+      line-height: 31px;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+  }
+
+  &__button {
+    color: rgb(255, 255, 255);
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 21px;
+    padding: 8px 10px;
+
+    @include on-tablet {
+      padding: 15px 20px;
+      font-size: 18px;
+    }
+
+    &--confirm {
+      background: rgb(66, 25, 208);
+    }
+
+    &--cancel {
+      background-color: #323542;
+    }
+  }
+}

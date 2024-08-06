@@ -1,0 +1,160 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.header {
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  height: 48px;
+  align-items: center;
+  gap: 32px;
+  box-shadow: 0 1px 0 0 rgb(226, 230, 233);
+  justify-content: space-between;
+  background-color: #fff;
+  z-index: 50;
+
+  @include on-desktop {
+    height: 65px;
+    gap: 48px;
+  }
+
+  &__logo img {
+    width: 64px;
+    height: 22px;
+    padding-left: 16px;
+
+    @include on-desktop {
+      width: 80px;
+      height: 28px;
+    }
+  }
+
+  &__toplist {
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+    display: none;
+
+    @include on-tablet {
+      display: flex;
+    }
+  }
+
+  &__list {
+    align-items: center;
+    display: flex;
+    width: 100%;
+    height: 100%;
+
+    &--pages {
+      gap: 32px;
+
+      @include on-desktop {
+        gap: 38px;
+      }
+    }
+  }
+
+  &__item {
+    height: 100%;
+  }
+
+  &__link {
+    color: rgb(137, 147, 154);
+    transition: all 0.3s;
+    position: relative;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 11px;
+    text-transform: uppercase;
+
+    &--adds {
+      width: 48px;
+      box-shadow: -1px 0 0 0 rgb(226, 230, 233);
+
+      &:hover {
+        background-color: rgb(226, 230, 233);
+      }
+
+      @include on-desktop {
+        width: 65px;
+      }
+    }
+
+    &--active {
+      color: $main-black;
+
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        height: 3px;
+        background-color: $main-black;
+      }
+    }
+  }
+
+  &__burger-icon {
+    display: flex;
+    width: 48px;
+    height: 48px;
+    justify-content: center;
+    align-items: center;
+    box-shadow: -1px 0 0 0 rgb(226, 230, 233);
+    transition: $background-transition;
+    cursor: pointer;
+
+    &:hover {
+      background-color: rgb(226, 230, 233);
+    }
+
+    @include on-tablet {
+      display: none;
+    }
+  }
+
+  &__span {
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    top: 8px;
+    right: 10px;
+    border-radius: 50%;
+    color: rgb(255, 255, 255);
+    background: rgb(66, 25, 208);
+    font-size: 9px;
+    font-weight: 700;
+    line-height: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    @include on-desktop {
+      top: 16px;
+      right: 18px;
+    }
+  }
+
+  /* Нові стилі для меню */
+  &__menu {
+    position: fixed;
+    top: 0;
+    left: -100%; /* Початкове положення за межами видимості */
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    transition: transform 0.3s ease-in-out; /* Транзишн для плавного з'явлення */
+    z-index: 1000;
+  }
+
+  &__menu--open {
+    transform: translateX(100%); /* Зміщення меню у видиму область */
+  }
+}

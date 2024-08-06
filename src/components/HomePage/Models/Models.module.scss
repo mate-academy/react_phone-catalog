@@ -1,0 +1,65 @@
+@import '/src/styles/variables';
+@import '/src/styles/mixins';
+
+.models {
+  margin-top: 90px;
+  padding-left: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+
+  @include on-tablet {
+    padding-left: 24px;
+  }
+
+  &__main {
+    display: flex;
+    padding-right: 16px;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__title {
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 1.4em;
+    max-width: 136px;
+    color: $main-black;
+
+    @include on-tablet {
+      font-size: 32px;
+      line-height: 41px;
+      max-width: fit-content;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 16px;
+  }
+
+  &__button {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 1px solid rgb(180, 189, 196);
+    position: relative;
+
+    &::after {
+      font-family: swiper-icons, sans-serif;
+      font-size: 10px;
+      transform: translate(-50%, -50%);
+      position: absolute;
+      font-weight: 700;
+      color: $main-black;
+    }
+
+    &--prev::after {
+      content: 'prev';
+    }
+
+    &--next::after {
+      content: 'next';
+    }
+  }
+}
