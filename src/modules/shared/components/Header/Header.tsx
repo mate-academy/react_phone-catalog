@@ -1,10 +1,11 @@
 import styles from './Header.module.scss';
 import classNames from 'classnames';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
+
+const getLinkClass = ({ isActive }: { isActive: boolean }) =>
+  classNames(styles.navBtn, { [styles.isActiveMenu]: isActive });
 
 export const Header = () => {
-  const { pathname } = useLocation();
-
   return (
     <>
       <header className={styles.header}>
@@ -14,38 +15,18 @@ export const Header = () => {
           </Link>
 
           <nav className={styles.nav}>
-            <Link
-              to="/"
-              className={classNames(styles.navBtn, {
-                [styles.isActiveMenu]: pathname === '/',
-              })}
-            >
+            <NavLink to="/" className={getLinkClass}>
               home
-            </Link>
-            <Link
-              to="/phones"
-              className={classNames(styles.navBtn, {
-                [styles.isActiveMenu]: pathname === '/phones',
-              })}
-            >
+            </NavLink>
+            <NavLink to="/phones" className={getLinkClass}>
               phones
-            </Link>
-            <Link
-              to="/tablets"
-              className={classNames(styles.navBtn, {
-                [styles.isActiveMenu]: pathname === '/tablets',
-              })}
-            >
+            </NavLink>
+            <NavLink to="/tablets" className={getLinkClass}>
               tablets
-            </Link>
-            <Link
-              to="/accessories"
-              className={classNames(styles.navBtn, {
-                [styles.isActiveMenu]: pathname === '/accessories',
-              })}
-            >
+            </NavLink>
+            <NavLink to="/accessories" className={getLinkClass}>
               accessories
-            </Link>
+            </NavLink>
           </nav>
         </div>
 
