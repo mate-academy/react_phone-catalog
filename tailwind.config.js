@@ -2,6 +2,10 @@
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
+    screens: {
+      mobile: "640px",
+      desctop: "1200px",
+    },
     fontSize: {
       h1: [
         "48px",
@@ -81,12 +85,18 @@ export default {
       red: "#eb5757",
     },
     extend: {
+      width: {
+        page: "min(100%, calc(1200px + (2rem * 2)))",
+      },
+      height: {
+        banner: "400px",
+      },
       borderWidth: {
         1: "1px",
         3: "3px",
       },
       gridTemplateColumns: {
-        header: "auto 1fr auto",
+        header: "auto minmax(0, 1200px) auto",
       },
       fontFamily: {
         mont: "Mont",

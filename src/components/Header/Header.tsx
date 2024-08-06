@@ -1,26 +1,23 @@
-import { Link } from "react-router-dom";
 import logo from "../../assets/PageLogo.svg";
 import { navButtons, navOptions } from "./Header.data";
 import HeaderButton from "./HeaderButton";
+import HeaderLink from "./HeaderLink";
 
 const Header = () => {
   return (
-    <header id="header" className="border-b-1 border-elem grid grid-cols-header h-16">
-      <picture className="h-16">
-        <img src={logo} alt="" className="w-20 mx-6 my-4" />
+    <header
+      id="header"
+      className="mb-14 grid h-12 grid-cols-header gap-6 border-b-1 border-elem desctop:h-16"
+    >
+      <picture className="flex h-12 px-6 desctop:h-16">
+        <img src={logo} alt="" className="w-16 desctop:w-20" />
       </picture>
-      <div className="flex flex-row h-16">
+      <div className="flex h-12 flex-row gap-16 desctop:h-16">
         {navOptions.map((option) => (
-          <Link
-            key={option.page}
-            to={option.to}
-            className="text-sec  ml-4 text-center grid place-items-center font-montSemi text-uppercase uppercase border-b-3 border-b-primary"
-          >
-            {option.page}
-          </Link>
+          <HeaderLink key={option.page} option={option} />
         ))}
       </div>
-      <div>
+      <div className="flex flex-row justify-end">
         {navButtons.map((button) => (
           <HeaderButton key={button.name} icon={button.icon} to={button.to} />
         ))}
