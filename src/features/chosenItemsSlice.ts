@@ -5,9 +5,11 @@ import { Product } from '../types/Product';
 type ChosenItemsType = {
   favorite: Product[];
   cart: Product[];
+  currentGadget: Product | null;
 };
 
 const initialState: ChosenItemsType = {
+  currentGadget: null,
   favorite: [],
   cart: [],
 };
@@ -16,6 +18,9 @@ const chosenItemsSlice = createSlice({
   name: 'chosenItems',
   initialState,
   reducers: {
+    setCurrentGadget: (state, action: PayloadAction<Product>) => {
+      state.currentGadget = action.payload;
+    },
     addTofavorite: (state, action: PayloadAction<Product>) => {
       state.favorite.push(action.payload);
     },
@@ -51,4 +56,5 @@ export const {
   cleanFavorite,
   cleanCart,
   deleteFromCart,
+  setCurrentGadget,
 } = chosenItemsSlice.actions;

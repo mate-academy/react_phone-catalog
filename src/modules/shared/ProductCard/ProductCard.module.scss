@@ -14,6 +14,11 @@
     gap: 24px;
   }
 
+  &__imgLink {
+    display: flex;
+    justify-content: center;
+  }
+
   &__image {
     max-height: 100px;
     object-fit: contain;

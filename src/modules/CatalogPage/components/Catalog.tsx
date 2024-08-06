@@ -12,7 +12,7 @@ import { setReloadTrigger } from '../../../features/booleanSlice';
 
 export const Catalog: React.FC = () => {
   const [perPage, setPerPage] = useState('all');
-  const [sortBy, setSortBy] = useState('Newest');
+  const [sortBy, setSortBy] = useState('age');
   const [page, setPage] = useState(1);
   const [displayedProducts, setDisplayedProducts] = useState<Product[]>([]);
   const [pagesWithProducts, setPagesWithProducts] = useState<number[]>([]);

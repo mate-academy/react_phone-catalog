@@ -17,6 +17,7 @@ export const ItemCard: React.FC = () => {
           <img src="./icons/arrow-right-light-ico.svg" alt="arrow-right" />
 
           <h1 className={styles.catalog__title}>{title}</h1>
+          <p>asdasdasasdas</p>
         </div>
       </div>
     </div>

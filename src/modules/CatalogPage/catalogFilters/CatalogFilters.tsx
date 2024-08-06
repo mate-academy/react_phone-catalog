@@ -63,24 +63,24 @@ export const CatalogFilters: React.FC<CatalogFiltersProps> = ({
 
   const handleSortBySelect = (option: SingleValue<OptionsSortByType>) => {
     if (option) {
-      const value = option.value;
+      const valueSortBy = option.value;
 
-      setSort(value);
+      setSort(valueSortBy);
       if (perPage.toUpperCase() === perPage.toLowerCase()) {
-        navigate(updateURLParams(value, perPage, page));
+        navigate(updateURLParams(valueSortBy, perPage, page));
       } else {
-        navigate(updateURLParams(value, 'all', page));
+        navigate(updateURLParams(valueSortBy, 'all', page));
       }
     }
   };
 
   const handleQuantitySelect = (option: SingleValue<OptionsQuantityType>) => {
     if (option) {
-      const value = option.value;
+      const valuePerPage = option.value;
 
-      if (value.toUpperCase() === value.toLowerCase()) {
-        setPer(value);
-        navigate(updateURLParams(sortBy, value, page));
+      if (valuePerPage.toUpperCase() === valuePerPage.toLowerCase()) {
+        setPer(valuePerPage);
+        navigate(updateURLParams(sortBy, valuePerPage, page));
       } else {
         setPer('all');
         setPagePage(1);

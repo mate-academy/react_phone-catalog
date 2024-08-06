@@ -6,9 +6,11 @@ import {
   addToCart,
   addTofavorite,
   deleteFromfavorite,
+  setCurrentGadget,
 } from '../../../features/chosenItemsSlice';
 import { useEffect, useState } from 'react';
 import { addToItemsQuantity } from '../../../features/pagesDetailsSlice';
+import { Link } from 'react-router-dom';
 
 type Props = {
   gadget: Product;
@@ -86,16 +88,32 @@ export const ProductCard: React.FC<Props> = ({ gadget }) => {
     }
   };
 
+  const handleCardClick = () => {
+    dispatch(setCurrentGadget(gadget));
+  };
+
   return (
     <div className={styles.card}>
       <div className={styles.card__topBlock}>
-        <img
-          className={styles.card__image}
-          src={gadget.image}
-          alt="product picture"
-        />
+        <Link
+          className={styles.card__imgLink}
+          to={`/${gadget.category}/${gadget.itemId}`}
+        >
+          <img
+            onClick={handleCardClick}
+            className={styles.card__image}
+            src={gadget.image}
+            alt="product picture"
+          />
+        </Link>
 
-        <p className={styles.card__name}>{gadget.name}</p>
+        <Link
+          onClick={handleCardClick}
+          to={`/${gadget.category}/${gadget.itemId}`}
+          className={styles.card__name}
+        >
+          {gadget.name}
+        </Link>
       </div>
 
       <div className={styles.card__bottomBlock}>
