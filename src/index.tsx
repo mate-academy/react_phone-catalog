@@ -13,6 +13,7 @@ import { Provider } from 'react-redux';
 import { Catalog } from './modules/CatalogPage/components/Catalog';
 import { Favorites } from './modules/FavoritesPage/components';
 import { Cart } from './modules/CartPage/components';
+import { ItemCard } from './modules/ItemCardPage/components/ItemCard';
 
 createRoot(document.getElementById('root') as HTMLElement).render(
   <Provider store={store}>
@@ -20,10 +21,21 @@ createRoot(document.getElementById('root') as HTMLElement).render(
       <Routes>
         <Route path="/" element={<App />}>
           <Route index element={<HomePage />} />
-          <Route path="phones" element={<Catalog />} />
-          <Route path="tablets" element={<Catalog />} />
-          <Route path="accessories" element={<Catalog />} />
+
+          <Route path="phones" element={<Catalog />}>
+            <Route path=":productId" element={<ItemCard />} />
+          </Route>
+
+          <Route path="tablets" element={<Catalog />}>
+            <Route path=":productId" element={<ItemCard />} />
+          </Route>
+
+          <Route path="accessories" element={<Catalog />}>
+            <Route path=":productId" element={<ItemCard />} />
+          </Route>
+
           <Route path="favorites" element={<Favorites />} />
+
           <Route path="cart" element={<Cart />} />
         </Route>
         <Route path="*" element={<NotFoundPage />} />

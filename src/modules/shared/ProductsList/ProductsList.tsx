@@ -4,7 +4,7 @@ import { ProductCard } from '../ProductCard/ProductCard';
 import styles from './ProductsList.module.scss';
 
 type ProductList = {
-  gadgets: Product[] | undefined;
+  gadgets: Product[];
 };
 
 export const ProductsList: React.FC<ProductList> = ({ gadgets }) => {

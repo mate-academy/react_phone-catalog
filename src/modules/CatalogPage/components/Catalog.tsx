@@ -8,6 +8,7 @@ import { PagesSwitcher } from './../pagesSwitcher/PagesSwitcher';
 import { CatalogFilters } from '../catalogFilters/CatalogFilters';
 import { setModels, setTitle } from './../../../features/pagesDetailsSlice';
 import { Loader } from '../../Loader';
+import { setReloadTrigger } from '../../../features/booleanSlice';
 
 export const Catalog: React.FC = () => {
   const [perPage, setPerPage] = useState('all');
@@ -25,6 +26,7 @@ export const Catalog: React.FC = () => {
   const loadingError = useAppSelector(state => state.products.error);
   const title = useAppSelector(state => state.pagesDetails.title);
   const models = useAppSelector(state => state.pagesDetails.models);
+  const fetchProductsErrorText = useAppSelector(state => state.products.error);
 
   const queryParams = new URLSearchParams(location.search);
   const sortByParam = queryParams.get('sortBy');
@@ -141,6 +143,35 @@ export const Catalog: React.FC = () => {
     }
   }, [location.pathname, productsFromServer, perPage, sortBy, startShowFrom]);
 
+  const handleReloadButton = () => {
+    dispatch(setReloadTrigger());
+  };
+
+  let catalogContent;
+
+  if (
+    displayedProducts.length < 1 &&
+    !fetchProductsErrorText &&
+    !loadingStatus
+  ) {
+    catalogContent = (
+      <p className={styles.catalog__empty}>
+        There are no {location.pathname.slice(1)} yet{' '}
+      </p>
+    );
+  } else if (fetchProductsErrorText) {
+    catalogContent = (
+      <button
+        onClick={handleReloadButton}
+        className={`${styles.catalog__reload} ${styles.blackButtonBase}`}
+      >
+        Reload
+      </button>
+    );
+  } else {
+    catalogContent = <ProductsList gadgets={displayedProducts} />;
+  }
+
   return (
     <div className={styles.gridContainer}>
       <div className={styles.catalog}>
@@ -168,6 +199,7 @@ export const Catalog: React.FC = () => {
           sortBy={sortBy}
           setSort={setSortBy}
           setPer={setPerPage}
+          setPagePage={setPage}
         />
 
         {loadingStatus && <Loader />}
@@ -175,7 +207,7 @@ export const Catalog: React.FC = () => {
           <p className={'has-text-danger'}>{loadingError}</p>
         )}
 
-        <ProductsList gadgets={displayedProducts} />
+        {catalogContent}
 
         <PagesSwitcher
           sortBy={sortBy}

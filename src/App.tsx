@@ -25,6 +25,7 @@ import {
   cleanItemsQuantity,
   setItemsQuantity,
 } from './features/pagesDetailsSlice';
+import { amount } from './modules/CartPage/services/findAmount';
 
 export const App: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -36,6 +37,11 @@ export const App: React.FC = () => {
   const isMenuShown = useAppSelector(state => state.boolean.isMenuShown);
   const favoritesArray = useAppSelector(state => state.chosenItems.favorite);
   const cartArray = useAppSelector(state => state.chosenItems.cart);
+  const cart = useAppSelector(state => state.chosenItems.cart);
+  const itemsQuantity = useAppSelector(
+    state => state.pagesDetails.itemsQuantity,
+  );
+  const reloadTrigger = useAppSelector(state => state.boolean.reloadTrigger);
 
   useEffect(() => {
     if (isMenuShown) {
@@ -91,7 +97,7 @@ export const App: React.FC = () => {
 
       dispatch(setItemsQuantity(itemsQuantityObject));
     }
-  }, []);
+  }, [reloadTrigger]);
 
   const handleMenuOrCloseButton = () => {
     dispatch(setIsMenuShown(!isMenuShown ? true : false));
@@ -190,7 +196,9 @@ export const App: React.FC = () => {
           >
             {cartArray.length > 0 && (
               <div className={styles.redSpot}>
-                <p className={styles.redSpot__number}>{cartArray.length}</p>
+                <p className={styles.redSpot__number}>
+                  {amount(itemsQuantity, cart, 'items')}
+                </p>
               </div>
             )}
             <Link className={styles.icons__link} to="/cart">

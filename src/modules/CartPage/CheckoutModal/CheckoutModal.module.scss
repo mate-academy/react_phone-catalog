@@ -1,0 +1,74 @@
+@import './../../shared/main';
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: $dim-background;
+  z-index: 99;
+  pointer-events: auto;
+}
+
+.module {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  pointer-events: all;
+  position: fixed;
+  top: 35%;
+  right: 5%;
+  bottom: 35%;
+  left: 5%;
+  width: 90vw;
+  height: 30vh;
+  background-color: $white-color;
+  z-index: 100;
+
+  @include on-tablet {
+    top: 30%;
+    right: 15%;
+    bottom: 30%;
+    left: 15%;
+    width: 70vw;
+    height: 40vh;
+  }
+
+  @include on-desktop {
+    top: 25%;
+    right: 25%;
+    bottom: 25%;
+    left: 25%;
+    width: 50vw;
+    height: 50vh;
+  }
+
+  &__text {
+    color: $primary-grey-color;
+    font-family: inherit;
+    font-size: 18px;
+    font-weight: 500;
+    text-align: center;
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 20px;
+  }
+
+  &__button {
+    width: 100px;
+    height: 3em;
+
+    @include on-tablet {
+      width: 130px;
+    }
+
+    @include on-desktop {
+      width: 160px;
+    }
+  }
+}

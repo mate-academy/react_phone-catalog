@@ -5,15 +5,15 @@ export const updateURLParams = (
 ) => {
   const queryParams = new URLSearchParams(location.search);
 
-  if (newPage) {
+  if (newPage && newPage !== 1) {
     queryParams.set('page', newPage.toString());
   }
 
   if (newSortBy) {
-    queryParams.set('sortBy', newSortBy);
+    queryParams.set('sort', newSortBy);
   }
 
-  if (newPerPage) {
+  if (newPerPage && newPerPage !== 'all') {
     queryParams.set('perPage', newPerPage);
   }
 

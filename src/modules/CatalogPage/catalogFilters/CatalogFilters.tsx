@@ -3,7 +3,6 @@ import styles from './CatalogFilters.module.scss';
 import { useNavigate } from 'react-router-dom';
 import { updateURLParams } from './../services/updateUrl';
 import Select, { components, SingleValue } from 'react-select';
-import { useAppSelector } from '../../../app/hooks';
 
 interface OptionsSortByType {
   value: string;
@@ -16,9 +15,9 @@ interface OptionsQuantityType {
 }
 
 const optionsSortBy: OptionsSortByType[] = [
-  { value: 'Newest', label: 'Newest' },
-  { value: 'Alphabetically', label: 'Alphabetically' },
-  { value: 'Cheapest', label: 'Cheapest' },
+  { value: 'age', label: 'Newest' },
+  { value: 'title', label: 'Alphabetically' },
+  { value: 'price', label: 'Cheapest' },
 ];
 const optionsQuantity: OptionsQuantityType[] = [
   { value: 'all', label: 'all' },
@@ -33,8 +32,8 @@ const DropdownIndicator = (props: any) => {
       <img
         src={
           props.selectProps.menuIsOpen
-            ? 'icons/arrow-up-light-ico.svg'
-            : 'icons/arrow-down-light-ico.svg'
+            ? './icons/arrow-up-light-ico.svg'
+            : './icons/arrow-down-light-ico.svg'
         }
         alt="dropdown-indicator"
         style={{ width: '16px', height: '16px' }}
@@ -49,6 +48,7 @@ interface CatalogFiltersProps {
   sortBy: string;
   setSort: React.Dispatch<React.SetStateAction<string>>;
   setPer: React.Dispatch<React.SetStateAction<string>>;
+  setPagePage: React.Dispatch<React.SetStateAction<number>>;
 }
 
 export const CatalogFilters: React.FC<CatalogFiltersProps> = ({
@@ -57,17 +57,20 @@ export const CatalogFilters: React.FC<CatalogFiltersProps> = ({
   sortBy,
   setSort,
   setPer,
+  setPagePage,
 }) => {
   const navigate = useNavigate();
-
-  const models = useAppSelector(state => state.pagesDetails.models);
 
   const handleSortBySelect = (option: SingleValue<OptionsSortByType>) => {
     if (option) {
       const value = option.value;
 
       setSort(value);
-      navigate(updateURLParams(value, perPage, page));
+      if (perPage.toUpperCase() === perPage.toLowerCase()) {
+        navigate(updateURLParams(value, perPage, page));
+      } else {
+        navigate(updateURLParams(value, 'all', page));
+      }
     }
   };
 
@@ -79,8 +82,9 @@ export const CatalogFilters: React.FC<CatalogFiltersProps> = ({
         setPer(value);
         navigate(updateURLParams(sortBy, value, page));
       } else {
-        setPer(models.toString());
-        navigate(updateURLParams(sortBy, models.toString(), page));
+        setPer('all');
+        setPagePage(1);
+        navigate(updateURLParams(sortBy, 'all', 1));
       }
     }
   };
