@@ -1,0 +1,82 @@
+@import '../../utils/stylesUtils/variables.scss';
+@import '../../utils/stylesUtils/mixin.scss';
+
+.footer {
+  box-shadow: 0px -1px 0px 0px $regular-gray-color;
+
+  &__container {
+    display: grid;
+    padding: 32px 16px;
+    gap: 32px;
+
+    @include on-tablet {
+      grid-template-columns: repeat(3, 1fr);
+      height: 96px;
+      padding: 0 32px;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    @include on-desktop {
+      @include content-padding-inline;
+    }
+  }
+}
+
+.contacts {
+  display: grid;
+  gap: 16px;
+
+  @include on-tablet {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__link {
+    font-family: 'Bold';
+    font-size: 12px;
+    line-height: 11px;
+    letter-spacing: 0.04em;
+    text-decoration: none;
+    text-transform: uppercase;
+    color: $secondary-text-color;
+
+    transition-duration: $short-duration;
+
+    &:hover {
+      color: $main-text-color;
+    }
+  }
+}
+
+.on-top {
+  display: flex;
+  justify-content: center;
+
+  @include on-tablet {
+    justify-content: flex-end;
+  }
+
+  &__text {
+    font-family: "SemiBold";
+    font-size: 12px;
+    line-height: 15.34px;
+    color: $secondary-text-color;
+
+    display: flex;
+    align-items: center;
+
+    &:hover {
+      cursor: pointer;
+      color: $main-text-color;
+    }
+  }
+
+  &__icon {
+    background-image: url(../../../public/img/icons-image/button-up-arrow.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 32px;
+    width: 32px;
+  }
+}

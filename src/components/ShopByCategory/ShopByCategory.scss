@@ -1,0 +1,77 @@
+@import '../../utils/stylesUtils/variables.scss';
+@import '../../utils/stylesUtils/mixin.scss';
+
+.shop-by-category {
+  &__title {
+    font-family: 'Bold';
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+  }
+
+  &__container {
+    @include page-grid;
+
+    row-gap: 32px;
+    margin-bottom: 80px;
+  }
+}
+
+.category-card {
+  grid-column: span 4;
+
+  @include on-tablet {
+    grid-column: span 4;
+  }
+
+  @include on-desktop {
+    grid-column: span 8;
+  }
+
+  &__link {
+    text-decoration: none;
+  }
+
+  // TEMPORARY !!!!
+
+  &__image-container {
+    width: calc(100vw - 32px);
+    height: calc(100vw - 32px);
+    overflow: hidden;
+
+    @include on-tablet {
+      width: 100%;
+      height: 29vw;
+    }
+
+    @include on-desktop {
+      height: 368px;
+    }
+  }
+  &__image {
+    width: 100%;
+
+    transition-duration: $short-duration;
+
+    &:hover {
+      scale: 1.05;
+    }
+  }
+
+  &__title {
+    font-family: 'Regular';
+    font-size: 20px;
+    line-height: 25.56px;
+    color: $main-text-color;
+
+    margin-top: 24px;
+    margin-bottom: 4px;
+  }
+
+  &__amount-models {
+    font-family: 'Regular';
+    font-size: 14px;
+    line-height: 21px;
+    color: $secondary-text-color;
+  }
+}

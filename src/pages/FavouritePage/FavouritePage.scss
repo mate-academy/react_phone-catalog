@@ -1,0 +1,45 @@
+@import '../../utils/stylesUtils/variables.scss';
+@import '../../utils/stylesUtils/mixin.scss';
+
+.favourite-page {
+  min-height: calc(100vh - 48px);
+
+  &--is-empty {
+    background-image: url(../../../public/img/cart-is-empty.png);
+    height: 70vh;
+    width: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+}
+
+.favourite-title {
+  margin: 0;
+  margin-bottom: 8px;
+
+  font-family: 'Bold';
+  font-size: 32px;
+  line-height: 41px;
+  letter-spacing: -0.01em;
+  color: $main-text-color;
+}
+
+.favourite-amount {
+  font-family: 'Regular';
+  font-size: 14px;
+  line-height: 21px;
+  color: $secondary-text-color;
+  margin-bottom: 32px;
+}
+
+.favourite-cards {
+  @include card-grid;
+
+  padding-top: 24px;
+  padding-bottom: 24px;
+
+  @include on-tablet {
+    padding-bottom: 40px;
+  }
+}
