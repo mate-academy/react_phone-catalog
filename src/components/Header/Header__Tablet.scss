@@ -1,0 +1,17 @@
+@media (min-width:320px) and (max-width:720px) {
+  .header {
+    padding: 16px;
+  }
+  .catalog-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(200px, 1fr));
+    gap: 16px 0;
+  }
+
+  .nav__list, .header__actions {
+    display: none;
+  }
+  .burger-ico {
+    display: block;
+  }
+}
