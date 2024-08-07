@@ -15,6 +15,16 @@ body {
   background: $black;
   color: $white;
   font-family: Mont, sans-serif;
+
+  > :first-child {
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+
+    main {
+      flex-grow: 1;
+    }
+  }
 }
 
 .divider {

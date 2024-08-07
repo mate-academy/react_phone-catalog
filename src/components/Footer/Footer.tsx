@@ -19,17 +19,29 @@ export const Footer = () => {
       </Link>
       <ul className="footer__list">
         <li className="footer__item">
-          <Link to="/github" className="footer__item__link">
+          <Link
+            to="https://github.com/GoVolodya"
+            target="_blank"
+            className="footer__item__link"
+          >
             Github
           </Link>
         </li>
         <li className="footer__item">
-          <Link to="/contacts" className="footer__item__link">
+          <Link
+            to="https://github.com/GoVolodya"
+            target="_blank"
+            className="footer__item__link"
+          >
             Contacts
           </Link>
         </li>
         <li className="footer__item">
-          <Link to="/rights" className="footer__item__link">
+          <Link
+            to="https://github.com/GoVolodya"
+            target="_blank"
+            className="footer__item__link"
+          >
             Rights
           </Link>
         </li>

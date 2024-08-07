@@ -160,6 +160,10 @@
     }
 
     &__link {
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
       text-decoration: none;
       color: $white;
       font-size: 12px;
@@ -206,7 +210,6 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      top: 0;
       right: 0;
       transform: translate(50%, -50%);
       font-weight: 700;
