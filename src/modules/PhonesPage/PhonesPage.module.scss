@@ -245,6 +245,25 @@ svg {
   .phonesPage {
     grid-template-columns: repeat($grid-columns-tablet, 32px);
   }
+
+  .dropDowns {
+    grid-column: 1 / -1;
+    display: grid;
+    column-gap: 16px;
+    grid-template-columns: repeat($grid-columns-tablet, 32px);
+    height: 59px;
+    padding-top: 40px;
+  }
+
+  .dropDownContainerSortBy {
+    grid-column: 1 / 5;
+    height: 59px;
+  }
+
+  .dropDownContainerOnPage {
+    grid-column: 5 / 8;
+    height: 59px;
+  }
 }
 
 @include on-mobile {
