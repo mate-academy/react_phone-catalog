@@ -8,7 +8,7 @@
   display: grid;
   gap: 40px;
   grid-column-gap: 16px;
-  grid-template-columns: repeat($grid-columns, 32px);
+  grid-template-columns: repeat($grid-columns, 1fr);
   padding-top: 24px;
 }
 
@@ -18,13 +18,13 @@
 
 @include on-tablet {
   .productsList {
-    grid-template-columns: repeat($grid-columns-tablet, 32px);
+    grid-template-columns: repeat($grid-columns-tablet, 1fr);
   }
 }
 
 @include on-mobile {
   .productsList {
-    grid-template-columns: repeat($grid-columns-mobile, 60px);
+    grid-template-columns: repeat($grid-columns-mobile, 4fr);
   }
 
   .productCard {
