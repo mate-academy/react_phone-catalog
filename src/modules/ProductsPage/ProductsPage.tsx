@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { useLocation, useSearchParams } from 'react-router-dom';
 import Select, { StylesConfig } from 'react-select';
-import styles from './PhonesPage.module.scss';
+import styles from './ProductsPage.module.scss';
 import { ProductsList } from '../shared/components/ProductsList';
 import { Link } from 'react-router-dom';
 import { getProducts } from '../shared/api';
@@ -36,8 +36,10 @@ const customStyles: StylesConfig = {
   }),
 };
 
-export const PhonesPage = () => {
-  const [phones, setPhones] = useState<Product[]>([]);
+export const ProductsPage = () => {
+  const { pathname } = useLocation();
+  const [goods, setGoods] = useState<Product[]>([]);
+  const [products, setProducts] = useState<Product[]>([]);
   const [preparedProducts, setPreparedProducts] = useState<Product[]>([]);
   const [errorMessage, setErrorMessage] = useState('');
   const [isLoading, setIsLoading] = useState(false);
@@ -89,11 +91,7 @@ export const PhonesPage = () => {
 
     getProducts()
       .then(responce => {
-        setPhones(
-          responce.filter(
-            (product: { category: string }) => product.category === 'phones',
-          ),
-        );
+        setGoods(responce);
       })
       .catch(() => setErrorMessage(`Something went wrong`))
       .finally(() => {
@@ -102,18 +100,42 @@ export const PhonesPage = () => {
   }, []);
 
   useEffect(() => {
-    let sortedPhones = [...phones];
+    if (pathname === '/phones') {
+      setProducts(
+        goods.filter(
+          (product: { category: string }) => product.category === 'phones',
+        ),
+      );
+    } else if (pathname === '/tablets') {
+      setProducts(
+        goods.filter(
+          (product: { category: string }) => product.category === 'tablets',
+        ),
+      );
+    } else if (pathname === '/accessories') {
+      setProducts(
+        goods.filter(
+          (product: { category: string }) => product.category === 'accessories',
+        ),
+      );
+    }
+  }, [goods, pathname]);
+
+  useEffect(() => {
+    let sortedProducts = [...products];
 
     if (sort === 'age') {
-      sortedPhones = sortedPhones.sort((a, b) => b.year - a.year);
+      sortedProducts = sortedProducts.sort((a, b) => b.year - a.year);
     } else if (sort === 'title') {
-      sortedPhones = sortedPhones.sort((a, b) => a.name.localeCompare(b.name));
+      sortedProducts = sortedProducts.sort((a, b) =>
+        a.name.localeCompare(b.name),
+      );
     } else if (sort === 'price') {
-      sortedPhones = sortedPhones.sort((a, b) => a.price - b.price);
+      sortedProducts = sortedProducts.sort((a, b) => a.price - b.price);
     }
 
-    setPreparedProducts(sortedPhones);
-  }, [phones, sort]);
+    setPreparedProducts(sortedProducts);
+  }, [products, sort]);
 
   const lastProductsIndex = +currentPage * +perPage;
   const firstProductsIdex = lastProductsIndex - +perPage;
@@ -157,8 +179,8 @@ export const PhonesPage = () => {
       </button>
     </div>
   ) : (
-    <div className={styles.phonesPageContainer}>
-      <div className={styles.phonesPage}>
+    <div className={styles.productsPageContainer}>
+      <div className={styles.productsPage}>
         <div className={styles.path}>
           <Link to="/" className={styles.homeLink}>
             <div className={styles.pathHome}></div>
@@ -168,8 +190,17 @@ export const PhonesPage = () => {
           <p className={styles.pathName}>Phones</p>
         </div>
 
-        <h1 className={styles.title}>Mobile phones</h1>
-        <p className={styles.counter}>{phones.length} models</p>
+        {pathname === '/phones' && (
+          <h1 className={styles.title}>Mobile phones</h1>
+        )}
+
+        {pathname === '/tablets' && <h1 className={styles.title}>Tablets</h1>}
+
+        {pathname === '/accessories' && (
+          <h1 className={styles.title}>Accessories</h1>
+        )}
+
+        <p className={styles.counter}>{products.length} models</p>
 
         <div className={styles.dropDowns}>
           <div className={styles.dropDownContainerSortBy}>
@@ -203,8 +234,22 @@ export const PhonesPage = () => {
               alt="loader animation"
             />
           </div>
-        ) : phones.length === 0 ? (
-          <h1 className={styles.noProductsMessage}>There are no phones yet</h1>
+        ) : products.length === 0 ? (
+          pathname === '/phones' ? (
+            <h1 className={styles.noProductsMessage}>
+              There are no phones yet
+            </h1>
+          ) : pathname === '/tablets' ? (
+            <h1 className={styles.noProductsMessage}>
+              There are no tablets yet
+            </h1>
+          ) : (
+            pathname === '/accessories' && (
+              <h1 className={styles.noProductsMessage}>
+                There are no accessories yet
+              </h1>
+            )
+          )
         ) : (
           <>
             <ProductsList products={currentProduct} />

@@ -16,12 +16,12 @@
   }
 }
 
-.accessoriesPageContainer {
+.productsPageContainer {
   align-self: center;
   min-height: 100vh;
 }
 
-.accessoriesPage {
+.productsPage {
   align-self: center;
   display: grid;
   column-gap: 16px;
@@ -242,7 +242,7 @@ svg {
 }
 
 @include on-tablet {
-  .accessoriesPage {
+  .productsPage {
     grid-template-columns: repeat($grid-columns-tablet, 32px);
   }
 
@@ -260,7 +260,7 @@ svg {
 }
 
 @include on-mobile {
-  .accessoriesPage {
+  .productsPage {
     grid-template-columns: repeat($grid-columns-mobile, 60px);
   }
 
@@ -278,7 +278,7 @@ svg {
   }
 
   .dropDownContainerSortBy {
-    grid-column: 1 / 4;
+    grid-column: 1 / 3;
   }
 
   .dropDownContainerOnPage {
