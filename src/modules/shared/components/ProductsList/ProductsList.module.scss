@@ -24,7 +24,7 @@
 
 @include on-mobile {
   .productsList {
-    grid-template-columns: repeat($grid-columns-mobile, 4fr);
+    grid-template-columns: repeat($grid-columns-mobile, 1fr);
   }
 
   .productCard {
