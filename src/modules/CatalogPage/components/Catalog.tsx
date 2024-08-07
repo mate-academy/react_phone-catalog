@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import styles from './Catalog.module.scss';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, Outlet, useLocation, useParams } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../../app/hooks';
 import { ProductsList } from '../../shared/ProductsList/ProductsList';
 import { Product } from './../../../types/Product';
@@ -32,6 +32,8 @@ export const Catalog: React.FC = () => {
   const sortByParam = queryParams.get('sortBy');
   const perPageParam = queryParams.get('perPage');
   const pageParams = queryParams.get('page');
+
+  const { productId } = useParams();
 
   useEffect(() => {
     if (sortByParam) {
@@ -173,50 +175,58 @@ export const Catalog: React.FC = () => {
   }
 
   return (
-    <div className={styles.gridContainer}>
-      <div className={styles.catalog}>
-        <div className={styles.catalog__path}>
-          <Link to="/">
-            <img src="./icons/home-ico.svg" alt="home" />
-          </Link>
+    <>
+      {!productId ? (
+        <div className={styles.gridContainer}>
+          <div className={styles.catalog}>
+            <div className={styles.catalog__path}>
+              <Link to="/">
+                <img src="./icons/home-ico.svg" alt="home" />
+              </Link>
 
-          <img src="./icons/arrow-right-light-ico.svg" alt="arrow-right" />
+              <img src="./icons/arrow-right-light-ico.svg" alt="arrow-right" />
 
-          <p className={styles.catalog__pathCategory}>
-            {location.pathname.slice(1)}
-          </p>
+              <p className={styles.catalog__pathCategory}>
+                {location.pathname.slice(1)}
+              </p>
+            </div>
+
+            <h1 className={styles.catalog__title}>{title}</h1>
+
+            <p
+              className={styles.catalog__quantity}
+            >{`${models} ${models === 1 ? 'model' : 'models'}`}</p>
+
+            <CatalogFilters
+              page={page}
+              perPage={perPage}
+              sortBy={sortBy}
+              setSort={setSortBy}
+              setPer={setPerPage}
+              setPagePage={setPage}
+            />
+
+            {loadingStatus && <Loader />}
+            {loadingError !== '' && (
+              <p className={'has-text-danger'}>{loadingError}</p>
+            )}
+
+            {catalogContent}
+
+            <PagesSwitcher
+              sortBy={sortBy}
+              perPage={perPage}
+              pagesWithProducts={pagesWithProducts}
+              showFrom={startShowFrom}
+              setShownFrom={setStartShowFrom}
+            />
+          </div>
         </div>
-
-        <h1 className={styles.catalog__title}>{title}</h1>
-
-        <p
-          className={styles.catalog__quantity}
-        >{`${models} ${models === 1 ? 'model' : 'models'}`}</p>
-
-        <CatalogFilters
-          page={page}
-          perPage={perPage}
-          sortBy={sortBy}
-          setSort={setSortBy}
-          setPer={setPerPage}
-          setPagePage={setPage}
-        />
-
-        {loadingStatus && <Loader />}
-        {loadingError !== '' && (
-          <p className={'has-text-danger'}>{loadingError}</p>
-        )}
-
-        {catalogContent}
-
-        <PagesSwitcher
-          sortBy={sortBy}
-          perPage={perPage}
-          pagesWithProducts={pagesWithProducts}
-          showFrom={startShowFrom}
-          setShownFrom={setStartShowFrom}
-        />
-      </div>
-    </div>
+      ) : (
+        <div className={styles.gridContainer}>
+          <Outlet />
+        </div>
+      )}
+    </>
   );
 };

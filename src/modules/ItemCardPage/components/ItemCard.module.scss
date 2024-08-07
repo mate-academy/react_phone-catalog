@@ -1,0 +1,384 @@
+@import './../../shared/main';
+
+.itemCard {
+  margin-top: 24px;
+  grid-column: 1 / -1;
+
+  &__description {
+    margin-bottom: 56px;
+
+    @include page-grid;
+    @include on-tablet {
+      margin-bottom: 64px;
+    }
+
+    @include on-desktop {
+      margin-bottom: 80px;
+    }
+  }
+
+  &__slider {
+    margin-bottom: 56px;
+
+    @include on-tablet {
+      margin-bottom: 64px;
+    }
+
+    @include on-desktop {
+      margin-bottom: 80px;
+    }
+  }
+}
+
+.idVisible {
+  text-align: left;
+}
+
+.idDotted {
+  text-align: right;
+}
+
+.path {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 24px;
+
+  @include on-tablet {
+    margin-bottom: 40px;
+  }
+
+  &__category {
+    color: $primary-grey-color;
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 15px;
+    text-align: left;
+  }
+
+  &__id {
+    color: $secondary-grey-color;
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 15px;
+
+    width: 100%;
+    text-align: left;
+  }
+}
+
+.main {
+  margin-bottom: 56px;
+
+  @include page-grid;
+  @include on-tablet {
+    margin-bottom: 64px;
+  }
+
+  @include on-desktop {
+    margin-bottom: 80px;
+  }
+
+  &__title {
+    grid-column: 1 / -1;
+    grid-row: 1 / 1;
+    color: $primary-grey-color;
+    font-family: inherit;
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 140%;
+    text-align: left;
+
+    @include on-tablet {
+      font-size: 32px;
+      line-height: 41px;
+    }
+  }
+
+  &__bigPhoto {
+    grid-column: 1 / -1;
+
+    @include on-tablet {
+      grid-column: 2 / 8;
+      grid-row: 2 / 2;
+    }
+
+    @include on-desktop {
+      grid-column: 3 / 13;
+    }
+  }
+
+  &__littlePhots {
+    display: flex;
+    grid-column: 1 / -1;
+
+    @include on-tablet {
+      flex-direction: column;
+      grid-column: 1 / 2;
+      grid-row: 2 / 2;
+    }
+
+    @include on-desktop {
+      grid-column: 1 / 3;
+    }
+  }
+
+  &__interaction {
+    grid-column: 1 / -1;
+
+    @include on-tablet {
+      grid-column: 8 / -1;
+      grid-row: 2 / 2;
+    }
+
+    @include on-desktop {
+      grid-column: 14 / 21;
+    }
+  }
+}
+
+.interaction {
+  &__littleTitles {
+    margin-bottom: 8px;
+    color: $secondary-grey-color;
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 15px;
+    text-align: left;
+  }
+
+  &__colors {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 23.5px;
+  }
+
+  &__colorBorder {
+    width: 32px;
+    height: 32px;
+    border: 1px solid $elements-grey-color;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+  }
+
+  &__color {
+    width: 30px;
+    height: 30px;
+    border: 2px solid $white-color;
+    border-radius: 50%;
+  }
+
+  &__firstHorizontal {
+    border: 1px solid $elements-grey-color;
+    margin-bottom: 24.5px;
+  }
+
+  &__capacityBlock {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 23.5px;
+  }
+
+  &__capacity {
+    color: $primary-grey-color;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+    text-align: center;
+    border: 1px solid $icons-grey-color;
+    height: 32px;
+    padding-inline: 8px;
+    background-color: $white-color;
+  }
+
+  &__secondHorizontal {
+    border: 1px solid $elements-grey-color;
+    margin-bottom: 32.5px;
+  }
+
+  &__priceBlock {
+    display: flex;
+    margin-bottom: 16px;
+    gap: 8px;
+    text-align: left;
+    font-family: inherit;
+  }
+
+  &__newPrice {
+    color: $primary-grey-color;
+    font-weight: 700;
+    line-height: 41px;
+    font-size: 32px;
+  }
+
+  &__oldPrice {
+    color: $secondary-grey-color;
+    font-weight: 500;
+    line-height: 41px;
+    font-size: 22px;
+    text-decoration-line: line-through;
+  }
+
+  &__buttonsContainer {
+    margin-bottom: 32px;
+  }
+
+  &__techBlock {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__tech {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+  }
+
+  &__techParameter {
+    color: $secondary-grey-color;
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 15px;
+  }
+
+  &__techValue {
+    color: $primary-grey-color;
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 15px;
+  }
+}
+
+.descriptionTitle {
+  color: $primary-grey-color;
+  font-family: inherit;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 26px;
+  text-align: left;
+  margin-bottom: 16.5px;
+
+  @include on-tablet {
+    font-size: 22px;
+    line-height: 140%;
+  }
+}
+
+.drscriptionText {
+  color: $secondary-grey-color;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 21px;
+  text-align: left;
+}
+
+.horizontal {
+  border: 1px solid $elements-grey-color;
+}
+
+.about {
+  grid-column: 1 / -1;
+  margin-bottom: 100px;
+
+  @include on-tablet {
+    margin-bottom: 85px;
+  }
+
+  @include on-desktop {
+    grid-column: 1 / 13;
+    grid-row: 1;
+    margin-bottom: 0;
+  }
+
+  &__horizontal {
+    margin-bottom: 32.5px;
+  }
+
+  &__blocks {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  &__block {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    @include on-desktop {
+      gap: 18px;
+    }
+  }
+
+  &__chapter {
+    color: $primary-grey-color;
+    font-family: inherit;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 20px;
+    text-align: left;
+
+    @include on-tablet {
+      font-size: 20px;
+      line-height: 26px;
+    }
+  }
+}
+
+.techSpecs {
+  grid-column: 1 / -1;
+
+  @include on-desktop {
+    grid-row: 1;
+    grid-column: 14 / -1;
+  }
+
+  &__horizontal {
+    margin-bottom: 30.5px;
+
+    @include on-tablet {
+      margin-bottom: 25.5px;
+    }
+  }
+
+  &__params {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__param {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+  }
+
+  &__paramValue {
+    color: $primary-grey-color;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+    text-align: right;
+  }
+}
+
+.notFound {
+  grid-column: 1 / -1;
+  color: $secondary-grey-color;
+  font-family: inherit;
+  font-size: 22px;
+  font-weight: 500;
+  letter-spacing: 0%;
+  text-align: left;
+}

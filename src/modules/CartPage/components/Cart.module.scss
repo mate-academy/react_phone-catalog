@@ -20,24 +20,6 @@
     }
   }
 
-  &__buttonBack {
-    cursor: pointer;
-    display: flex;
-    gap: 4px;
-    width: max-content;
-    margin-bottom: 24px;
-
-    &:hover {
-      .buttonBackText {
-        color: $primary-grey-color;
-      }
-    }
-
-    @include on-tablet {
-      margin-bottom: 16px;
-    }
-  }
-
   &__title {
     color: $primary-grey-color;
     font-family: inherit;
@@ -126,19 +108,4 @@
       box-shadow: 0px 3px 13px 0px rgba(23, 32, 49, 0.4);
     }
   }
-}
-
-.buttonDisabled {
-  cursor: not-allowed;
-  pointer-events: none;
-}
-
-.buttonBackText {
-  color: $secondary-grey-color;
-  font-family: inherit;
-  font-size: 12px;
-  font-weight: 700;
-  line-height: 16px;
-  letter-spacing: 0%;
-  text-align: left;
 }

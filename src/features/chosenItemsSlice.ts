@@ -1,24 +1,31 @@
 /* eslint-disable no-param-reassign */
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 import { Product } from '../types/Product';
+import { Phone } from '../types/Phone';
+import { Tablet } from '../types/Tablet';
+import { Accessory } from '../types/Accessory';
+
+type CurrentGadgetType = Phone | Tablet | Accessory | null;
 
 type ChosenItemsType = {
   favorite: Product[];
   cart: Product[];
-  currentGadget: Product | null;
+  currentGadget: CurrentGadgetType;
+  currentProduct: Product | null;
 };
 
 const initialState: ChosenItemsType = {
   currentGadget: null,
   favorite: [],
   cart: [],
+  currentProduct: null,
 };
 
 const chosenItemsSlice = createSlice({
   name: 'chosenItems',
   initialState,
   reducers: {
-    setCurrentGadget: (state, action: PayloadAction<Product>) => {
+    setCurrentGadget: (state, action: PayloadAction<CurrentGadgetType>) => {
       state.currentGadget = action.payload;
     },
     addTofavorite: (state, action: PayloadAction<Product>) => {
@@ -45,6 +52,9 @@ const chosenItemsSlice = createSlice({
     cleanCart: state => {
       state.cart = [];
     },
+    setCurrentProduct: (state, action: PayloadAction<Product>) => {
+      state.currentProduct = action.payload;
+    },
   },
 });
 
@@ -57,4 +67,5 @@ export const {
   cleanCart,
   deleteFromCart,
   setCurrentGadget,
+  setCurrentProduct,
 } = chosenItemsSlice.actions;

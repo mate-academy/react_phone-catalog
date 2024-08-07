@@ -1,0 +1,36 @@
+@import './../main';
+
+.buttonsSection {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.buttonAddTofavorite {
+  width: 40px;
+  height: 40px;
+  border: 1px solid $icons-grey-color;
+  background-color: #fff;
+  cursor: pointer;
+
+  &:hover {
+    border: 1px solid $primary-grey-color;
+  }
+}
+
+.buttonAddToCatr {
+  height: 40px;
+  width: 100%;
+}
+
+.added {
+  color: $green-color;
+  background-color: $white-color;
+  cursor: not-allowed;
+  pointer-events: none;
+  border: 1px solid $elements-grey-color;
+
+  &:hover {
+    box-shadow: none;
+  }
+}

@@ -48,7 +48,6 @@
     display: flex;
     gap: 8px;
     margin-bottom: 8px;
-    letter-spacing: 0%;
     text-align: left;
     font-size: 22px;
     font-family: inherit;
@@ -63,7 +62,7 @@
   &__oldPrice {
     color: $secondary-grey-color;
     font-weight: 500;
-    line-height: 28px;
+    line-height: 140%;
     text-decoration-line: line-through;
   }
 

@@ -1,32 +1,25 @@
 /* eslint-disable max-len */
 import styles from './ProductCard.module.scss';
 import { Product } from '../../../types/Product';
-import { useAppDispatch, useAppSelector } from '../../../app/hooks';
-import {
-  addToCart,
-  addTofavorite,
-  deleteFromfavorite,
-  setCurrentGadget,
-} from '../../../features/chosenItemsSlice';
+import { useAppSelector } from '../../../app/hooks';
 import { useEffect, useState } from 'react';
-import { addToItemsQuantity } from '../../../features/pagesDetailsSlice';
 import { Link } from 'react-router-dom';
+import { CardButtonsBlock } from '../CardButtonsBlock/CardButtonsBlock';
+import { useDispatch } from 'react-redux';
+import { setCurrentProduct } from '../../../features/chosenItemsSlice';
 
 type Props = {
   gadget: Product;
 };
 
 export const ProductCard: React.FC<Props> = ({ gadget }) => {
-  const dispatch = useAppDispatch();
+  const dispatch = useDispatch();
 
   const [heartIco, setHeartIco] = useState('./icons/heart-ico.svg');
   const [isInCatr, setIsinCart] = useState(false);
 
   const favoritesArray = useAppSelector(state => state.chosenItems.favorite);
   const cartArray = useAppSelector(state => state.chosenItems.cart);
-  const itemsQuantity = useAppSelector(
-    state => state.pagesDetails.itemsQuantity,
-  );
 
   useEffect(() => {
     if (!favoritesArray.some(obj => obj.id === gadget.id)) {
@@ -42,65 +35,21 @@ export const ProductCard: React.FC<Props> = ({ gadget }) => {
     }
   }, [favoritesArray, gadget]);
 
-  const handleheartIco = () => {
-    if (!favoritesArray.some(obj => obj.id === gadget.id)) {
-      localStorage.setItem(
-        'favorite',
-        JSON.stringify(favoritesArray.concat(gadget)),
-      );
+  const handleClickOnCard = () => {
+    dispatch(setCurrentProduct(gadget));
 
-      dispatch(addTofavorite(gadget));
-    } else {
-      const favString = localStorage.getItem('favorite');
-
-      if (favString) {
-        const favArray = JSON.parse(favString);
-
-        const newFavorite = [];
-
-        for (const obj of favArray) {
-          if (obj.id !== gadget.id) {
-            newFavorite.push(obj);
-          }
-        }
-
-        localStorage.setItem('favorite', JSON.stringify(newFavorite));
-      }
-
-      dispatch(deleteFromfavorite(gadget));
-    }
-  };
-
-  const handleAddToCart = () => {
-    if (!cartArray.some(obj => obj.id === gadget.id)) {
-      const newObj = { ...itemsQuantity };
-
-      newObj[gadget.id] = 1;
-
-      dispatch(addToItemsQuantity(gadget.id));
-      dispatch(addToCart(gadget));
-      localStorage.setItem('cart', JSON.stringify(cartArray.concat(gadget)));
-      localStorage.setItem('itemsQuantity', JSON.stringify(newObj));
-
-      setIsinCart(true);
-    } else {
-      setIsinCart(false);
-    }
-  };
-
-  const handleCardClick = () => {
-    dispatch(setCurrentGadget(gadget));
+    localStorage.setItem('currentProduct', JSON.stringify(gadget));
   };
 
   return (
     <div className={styles.card}>
       <div className={styles.card__topBlock}>
         <Link
+          onClick={handleClickOnCard}
           className={styles.card__imgLink}
           to={`/${gadget.category}/${gadget.itemId}`}
         >
           <img
-            onClick={handleCardClick}
             className={styles.card__image}
             src={gadget.image}
             alt="product picture"
@@ -108,7 +57,7 @@ export const ProductCard: React.FC<Props> = ({ gadget }) => {
         </Link>
 
         <Link
-          onClick={handleCardClick}
+          onClick={handleClickOnCard}
           to={`/${gadget.category}/${gadget.itemId}`}
           className={styles.card__name}
         >
@@ -139,26 +88,12 @@ export const ProductCard: React.FC<Props> = ({ gadget }) => {
           <p className={styles.card__infoValue}>{gadget.ram}</p>
         </div>
 
-        <div className={styles.card__buttonsSection}>
-          <button
-            disabled={isInCatr}
-            onClick={handleAddToCart}
-            className={`${styles.blackButtonBase} ${styles.card__buttonAddToCatr} ${isInCatr && styles.added}`}
-          >
-            {isInCatr ? 'In your cart' : 'Add to cart'}
-          </button>
-
-          <button
-            onClick={handleheartIco}
-            className={styles.card__buttonAddTofavorite}
-          >
-            <img
-              className={styles.card__buttonAddfavoriteIcon}
-              src={heartIco}
-              alt="add to favorites"
-            />
-          </button>
-        </div>
+        <CardButtonsBlock
+          gadg={gadget}
+          favIco={heartIco}
+          isInBasket={isInCatr}
+          setIsInBasket={setIsinCart}
+        />
       </div>
     </div>
   );

@@ -2,6 +2,7 @@
 
 .app {
   display: grid;
+  position: relative;
 }
 
 .header {
@@ -162,6 +163,12 @@
 
 .footer {
   border-top: 1px solid $elements-grey-color;
+  height: 257px;
+  bottom: 0;
+
+  @include on-tablet {
+    height: 96px;
+  }
 
   &__container {
     margin-inline: auto;

@@ -18,6 +18,8 @@ import {
   addTofavorite,
   cleanCart,
   cleanFavorite,
+  setCurrentGadget,
+  setCurrentProduct,
 } from './features/chosenItemsSlice';
 import { Product } from './types/Product';
 import { ItemsQuantity } from './types/PageDetails';
@@ -71,6 +73,8 @@ export const App: React.FC = () => {
     const favString = localStorage.getItem('favorite');
     const cartString = localStorage.getItem('cart');
     const itemsQuantityString = localStorage.getItem('itemsQuantity');
+    const currentGadget = localStorage.getItem('currentGadget');
+    const currentProduct = localStorage.getItem('currentProduct');
 
     if (favString) {
       dispatch(cleanFavorite());
@@ -96,6 +100,14 @@ export const App: React.FC = () => {
         JSON.parse(itemsQuantityString);
 
       dispatch(setItemsQuantity(itemsQuantityObject));
+    }
+
+    if (currentGadget) {
+      dispatch(setCurrentGadget(JSON.parse(currentGadget)));
+    }
+
+    if (currentProduct) {
+      dispatch(setCurrentProduct(JSON.parse(currentProduct)));
     }
   }, [reloadTrigger]);
 
