@@ -1,3 +1,4 @@
+// eslint-disable-next-line import/no-extraneous-dependencies
 import Slider from 'react-slick';
 
 export const MainSlider = () => {

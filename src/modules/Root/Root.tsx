@@ -5,6 +5,7 @@ import { CartPage } from '../CartPage';
 import { CategoryPage } from '../CategoryPage';
 import { ProductPage } from '../ProductPage';
 import { FavouritesPage } from '../FavouritesPage';
+// eslint-disable-next-line import/no-extraneous-dependencies
 import { Provider } from 'react-redux';
 import { store } from '../../app/store';
 import { NotFoundPage } from '../NotFoundPage';

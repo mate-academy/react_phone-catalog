@@ -1,3 +1,4 @@
+// eslint-disable-next-line import/no-extraneous-dependencies
 import { combineSlices, configureStore } from '@reduxjs/toolkit';
 import { productsSlice } from '../features/products';
 import { cartSlice } from '../features/cart';

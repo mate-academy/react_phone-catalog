@@ -1,5 +1,8 @@
+// eslint-disable-next-line import/no-extraneous-dependencies
 import 'slick-carousel/slick/slick.css';
+// eslint-disable-next-line import/no-extraneous-dependencies
 import 'slick-carousel/slick/slick-theme.css';
+// eslint-disable-next-line import/no-extraneous-dependencies
 import Slider from 'react-slick';
 import { ProductCard } from '../ProductCard';
 import React from 'react';

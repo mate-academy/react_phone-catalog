@@ -1,3 +1,4 @@
+// eslint-disable-next-line import/no-extraneous-dependencies
 import Slider from 'react-slick';
 import React from 'react';
 import { Product } from '../../types/Product';
