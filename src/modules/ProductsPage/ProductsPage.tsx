@@ -54,6 +54,8 @@ export const ProductsPage = () => {
     window.location.reload();
   };
 
+  const path = pathname.slice(1);
+
   const onChangeSortBy = useCallback(
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     (newValue: any) => {
@@ -187,26 +189,12 @@ export const ProductsPage = () => {
           </Link>
 
           <div className={styles.pathSeparator}></div>
-          {pathname === '/phones' && <p className={styles.pathName}>Phones</p>}
-
-          {pathname === '/tablets' && (
-            <p className={styles.pathName}>Tablets</p>
-          )}
-
-          {pathname === '/accessories' && (
-            <p className={styles.pathName}>Accessories</p>
-          )}
+          <p className={styles.pathName}>{path}</p>
         </div>
 
-        {pathname === '/phones' && (
-          <h1 className={styles.title}>Mobile phones</h1>
-        )}
-
-        {pathname === '/tablets' && <h1 className={styles.title}>Tablets</h1>}
-
-        {pathname === '/accessories' && (
-          <h1 className={styles.title}>Accessories</h1>
-        )}
+        <h1 className={styles.title}>
+          {path.charAt(0).toUpperCase() + path.slice(1)}
+        </h1>
 
         <p className={styles.counter}>{products.length} models</p>
 
@@ -243,21 +231,7 @@ export const ProductsPage = () => {
             />
           </div>
         ) : products.length === 0 ? (
-          pathname === '/phones' ? (
-            <h1 className={styles.noProductsMessage}>
-              There are no phones yet
-            </h1>
-          ) : pathname === '/tablets' ? (
-            <h1 className={styles.noProductsMessage}>
-              There are no tablets yet
-            </h1>
-          ) : (
-            pathname === '/accessories' && (
-              <h1 className={styles.noProductsMessage}>
-                There are no accessories yet
-              </h1>
-            )
-          )
+          <h1 className={styles.noProductsMessage}>There are no {path} yet</h1>
         ) : (
           <>
             <ProductsList products={currentProduct} />
