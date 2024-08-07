@@ -187,7 +187,15 @@ export const ProductsPage = () => {
           </Link>
 
           <div className={styles.pathSeparator}></div>
-          <p className={styles.pathName}>Phones</p>
+          {pathname === '/phones' && <p className={styles.pathName}>Phones</p>}
+
+          {pathname === '/tablets' && (
+            <p className={styles.pathName}>Tablets</p>
+          )}
+
+          {pathname === '/accessories' && (
+            <p className={styles.pathName}>Accessories</p>
+          )}
         </div>
 
         {pathname === '/phones' && (
