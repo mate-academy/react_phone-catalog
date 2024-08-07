@@ -274,7 +274,7 @@ svg {
   }
 
   .dropDowns {
-    grid-template-columns: repeat($grid-columns-mobile, 60px);
+    grid-template-columns: repeat($grid-columns-mobile, 1fr);
   }
 
   .dropDownContainerSortBy {
