@@ -1,0 +1,15 @@
+
+.catalog-page {
+  display: flex;
+  flex-flow: column;
+  justify-content: space-between;
+  gap: 24px;
+
+  @include on-tablet {
+    gap: 40px;
+  }
+
+  &:first-child {
+    margin-top: 24px;
+  }
+}

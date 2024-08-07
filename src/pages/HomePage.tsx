@@ -1,15 +1,16 @@
 import { Category } from '../components/Category';
-import { HotPrice } from '../components/HotPrice';
-import { NewModels } from '../components/NewModels';
+import { ProductSlider } from '../components/ProductSlider';
 import { Welcome } from '../components/Welcome';
+
+const cardData = [1, 2, 3, 4, 5, 6, 7];
 
 export const HomePage = () => {
   return (
     <>
       <Welcome />
-      <NewModels />
+      <ProductSlider title="New Models" cardData={cardData} />
       <Category />
-      <HotPrice />
+      <ProductSlider title="Hot Price" cardData={cardData} />
     </>
   );
 };

@@ -36,14 +36,12 @@
   font-family: Mont, sans-serif;
   font-size: 20px;
   line-height: 26px;
-  letter-spacing: 0;
   font-weight: 600; // Semi-bold
 
   @include on-tablet {
     /* Desktop / Tablet headings/H3 */
     font-size: 22px;
     line-height: 31px;
-    letter-spacing: 0;
     font-weight: 700; // Bold
   }
 }
@@ -53,14 +51,12 @@
   font-family: Mont, sans-serif;
   font-size: 16px;
   line-height: 20px;
-  letter-spacing: 0;
   font-weight: 600; // Semi-bold
 
   @include on-tablet {
     /* Desktop / Tablet headings/H4 */
     font-size: 20px;
     line-height: 26px;
-    letter-spacing: 0;
     font-weight: 600; // Semi-bold
   }
 }
@@ -70,7 +66,6 @@
   font-family: Mont, sans-serif;
   font-size: 14px;
   line-height: 21px;
-  letter-spacing: 0;
   font-weight: 600; // Semi-bold
 }
 
@@ -79,7 +74,6 @@
   font-family: Mont, sans-serif;
   font-size: 14px;
   line-height: 21px;
-  letter-spacing: 0;
   font-weight: 400; // Regular
 }
 
@@ -96,8 +90,7 @@
 %small-text {
   /* Small text */
   font-family: Mont, sans-serif;
-  font-size: 14px;
-  line-height: 21px;
-  letter-spacing: 0;
+  font-size: 12px;
+  line-height: 16px;
   font-weight: 600; // Semi-bold
 }

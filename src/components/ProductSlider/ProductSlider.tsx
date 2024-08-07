@@ -52,7 +52,7 @@ export const ProductSlider: React.FC<ProductSliderProps> = ({
   };
 
   return (
-    <>
+    <section id={title.toLowerCase()}>
       <div className={classNames(styles.productSlider__topBar)}>
         <h3 className={classNames(styles.productSlider__title)}>{title}</h3>
         <div className={classNames(styles.productSlider__sliderButtons)}>
@@ -94,6 +94,6 @@ export const ProductSlider: React.FC<ProductSliderProps> = ({
           ))}
         </div>
       </div>
-    </>
+    </section>
   );
 };

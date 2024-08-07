@@ -5,8 +5,8 @@ import { Footer } from './components/Footer';
 import { SideMenu } from './components/SideMenu';
 import { HomePage } from './pages/HomePage';
 import { useState } from 'react';
-import { ProductPage } from './pages/ProductPage';
-import { ProductDetailsPage } from './pages/ProductDetailsPage';
+import { CatalogPage } from './pages/CatalogPage';
+import { ItemPage } from './pages/ItemPage';
 
 export const App = () => {
   const [page, setPage] = useState('details');
@@ -20,8 +20,8 @@ export const App = () => {
 
       <div className="container">
         {page === 'home' && <HomePage />}
-        {page === 'phones' && <ProductPage />}
-        {page === 'details' && <ProductDetailsPage />}
+        {page === 'phones' && <CatalogPage />}
+        {page === 'details' && <ItemPage />}
       </div>
 
       <Footer />

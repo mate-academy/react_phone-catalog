@@ -3,9 +3,9 @@ import Pagination from '../components/Pagination/Pagination';
 import { ProductContent } from '../components/ProductContent';
 import { ProductFilter } from '../components/ProductFilter';
 
-export const ProductPage = () => {
+export const CatalogPage = () => {
   return (
-    <div className="product-page">
+    <div className="catalog-page">
       <Breadcrumbs />
 
       <ProductFilter />

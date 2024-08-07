@@ -32,6 +32,12 @@ h5 {
   @extend %body-text;
 }
 
+.body-text--gray {
+  @extend %body-text;
+
+  color: $secondary-gray;
+}
+
 .uppercase-text {
   @extend %uppercase-text;
 }
