@@ -1,0 +1,33 @@
+.back {
+  border: none;
+  background: transparent;
+  margin-top: 24px;
+  height: 16px;
+  display: flex;
+  gap: 4px;
+  cursor: pointer;
+  transition: color $hover-transition ease;
+
+  &:hover {
+    color: $accent;
+  }
+
+  &__text {
+    color: $white;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__arrow {
+    height: 16px;
+    width: 16px;
+  }
+
+  @media (min-width: $tablet) {
+    margin-top: 40px;
+  }
+}
