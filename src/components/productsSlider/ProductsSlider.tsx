@@ -49,21 +49,24 @@ export const ProductsSlider: React.FC<Props> = ({
       </div>
       <div className="products-slider__swiper-wrapper">
         {isLoading && (
-          <div className="products-slider__swiper">
-            <ItemCardSkeleton />
-            <ItemCardSkeleton />
-            <ItemCardSkeleton />
-            <ItemCardSkeleton />
-            <ItemCardSkeleton />
-            <ItemCardSkeleton />
-            <ItemCardSkeleton />
-            <ItemCardSkeleton />
+          <div className="skeleton-slide">
+            <span>
+              <ItemCardSkeleton />
+            </span>
+            <span>
+              <ItemCardSkeleton />
+            </span>
+            <span>
+              <ItemCardSkeleton />
+            </span>
+            <span>
+              <ItemCardSkeleton />
+            </span>
           </div>
         )}
 
         <Swiper
           modules={[Navigation, Scrollbar]}
-          spaceBetween={37}
           slidesPerView="auto"
           className="products-slider__swiper"
           loop

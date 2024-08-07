@@ -2,9 +2,30 @@
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 import { Link } from 'react-router-dom';
 import './Footer.scss';
+import { useEffect, useState } from 'react';
+import cn from 'classnames';
 import { scrollToTop } from '../../services/utils/scrollToTop';
 
 export const Footer = () => {
+  const [isScroll, setIsScroll] = useState(false);
+
+  const hasScroll = () => document.body.scrollHeight > window.innerHeight;
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (hasScroll()) {
+        setIsScroll(true);
+      } else {
+        setIsScroll(false);
+      }
+    };
+
+    handleScroll();
+    window.addEventListener('scroll', handleScroll);
+
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [setIsScroll]);
+
   return (
     <div className="footer">
       <div className="footer__content">
@@ -12,8 +33,9 @@ export const Footer = () => {
 
         <div className="footer__div">
           <Link
-            to="https://github.com/mate-academy/react_phone-catalog"
+            to="https://vk-workshop.github.io/react_phone-catalog/"
             className="footer__nav-link"
+            target="_blank"
           >
             <div>GITHUB</div>
           </Link>
@@ -27,7 +49,11 @@ export const Footer = () => {
           </Link>
         </div>
 
-        <div className="footer__back-top-div">
+        <div
+          className={cn('footer__back-top-div', {
+            'footer__back-top-div--hidden': !isScroll,
+          })}
+        >
           <p className="footer__back-top-text" onClick={scrollToTop}>
             Back to top
           </p>

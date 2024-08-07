@@ -5,6 +5,7 @@ import { CartItem } from '../../components/cartItem/CartItem';
 import { ModalDialog } from '../../components/modalDialog';
 import './CartPage.scss';
 import { scrollToTop } from '../../services/utils/scrollToTop';
+import { getTotalCount } from '../../services/utils/getTotalCount';
 
 export const CartPage: React.FC = () => {
   const { cart, modal, setModal } = useContext(ProductsContext);
@@ -12,7 +13,6 @@ export const CartPage: React.FC = () => {
 
   const backPath = state?.location?.pathname || `/`;
 
-  const totalCount = cart.reduce((sum, item) => sum + item.quantity, 0);
   const totalSum = cart.reduce(
     (sum, item) => sum + item.quantity * item.product.price,
     0,
@@ -54,8 +54,8 @@ export const CartPage: React.FC = () => {
               </div>
               <div className="cart__summary">
                 <div className="cart__price-wrapper">
-                  <div className="cart__summary-price">{`$${totalSum.toFixed(2)}`}</div>
-                  <div className="cart__summary-count">{`Total for ${totalCount} item${totalCount > 1 ? 's' : ''}`}</div>
+                  <div className="cart__summary-price">{`$${totalSum}`}</div>
+                  <div className="cart__summary-count">{`Total for ${getTotalCount(cart)} item${getTotalCount(cart) > 1 ? 's' : ''}`}</div>
                 </div>
                 <div className="cart__divider" />
                 <button

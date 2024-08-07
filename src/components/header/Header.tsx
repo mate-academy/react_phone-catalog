@@ -1,7 +1,8 @@
 import './Header.scss';
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { ProductsContext } from '../../context/ProductsContext';
+import { getTotalCount } from '../../services/utils/getTotalCount';
 
 export const Header: React.FC = () => {
   const context = useContext(ProductsContext);
@@ -16,6 +17,18 @@ export const Header: React.FC = () => {
     setIsMenuOpen(false);
   };
 
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'auto';
+    }
+
+    return () => {
+      document.body.style.overflow = 'auto';
+    };
+  }, [isMenuOpen]);
+
   return (
     <nav className="nav">
       <div className="nav__group nav__group--all-links">
@@ -24,19 +37,19 @@ export const Header: React.FC = () => {
         </NavLink>
         <div className="nav__group--links">
           <NavLink to="/" className="nav__link">
-            <div>HOME</div>
+            HOME
           </NavLink>
 
           <NavLink to="/phones" className="nav__link">
-            <div>PHONES</div>
+            PHONES
           </NavLink>
 
           <NavLink to="/tablets" className="nav__link">
-            <div>TABLETS</div>
+            TABLETS
           </NavLink>
 
           <NavLink to="/accessories" className="nav__link">
-            <div>ACCESSORIES</div>
+            ACCESSORIES
           </NavLink>
         </div>
       </div>
@@ -55,7 +68,7 @@ export const Header: React.FC = () => {
           <div className="nav__icon nav__icon--shopping-bag" />
           {!!cart.length && (
             <div className="nav__count-bag">
-              <p className="nav__count__text">{cart.length}</p>
+              <p className="nav__count__text">{getTotalCount(cart)}</p>
             </div>
           )}
         </NavLink>

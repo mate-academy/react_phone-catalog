@@ -1,24 +1,13 @@
 @import '../styles/mixins';
 @import '../styles/variables';
 
-.items {
-  display: flex;
+.elem {
+  display: grid;
+  grid-template-columns: repeat((12, 1fr));
+
+&__left {
+  grid-column: 1 / 2;
 }
-
-.item {
-  margin-inline: 10px;
-  width: 250px;
-  background: $white;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
-
-  height: 506px;
-  border: 1px solid $elements;
-  padding: 24px;
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-
   &__image-container {
     width: 100%;
     height: 250px;
@@ -29,8 +18,9 @@
   }
 
   &__title {
-    height: 20px;
+    height: 30px;
     margin-bottom: 8px;
+    grid-column: 1 / 10;
   }
 
   &__title-bottom {

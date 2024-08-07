@@ -30,14 +30,16 @@
     }
 
     &--links {
-      display: flex;
-      flex-direction: row;
+      height: 100%;
+      display: none;
 
       @include on-tablet {
+        display: flex;
         gap: 48px;
       }
 
       @include on-desktop {
+        display: flex;
         gap: 64px;
       }
     }
@@ -65,7 +67,8 @@
     @include link;
 
     position: relative;
-    display: none;
+    height: 100%;
+    align-content: center;
 
     @include on-tablet {
       display: block;
@@ -81,7 +84,7 @@
     }
 
     &::after {
-      bottom: -26px;
+      bottom: 0;
       content: "";
       display: block;
       height: 3px;
@@ -90,27 +93,11 @@
       background: $primary;
       transition: width 0.3s ease, left 0.3s ease;
       width: 0;
-
-      @include on-tablet {
-        bottom: -19px;
-      }
-
-      @include on-desktop {
-        bottom: -27px;
-      }
     }
 
     &.active::after {
       width: 100%;
       left: 0;
-
-      @include on-tablet {
-        bottom: -19px;
-      }
-
-      @include on-desktop {
-        bottom: -27px;
-      }
     }
   }
 

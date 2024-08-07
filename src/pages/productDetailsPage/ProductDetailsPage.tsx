@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 /* eslint-disable @typescript-eslint/indent */
 import React, { useContext, useEffect, useMemo, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
@@ -12,6 +13,7 @@ import { BreadCrumbs } from '../../components/breadcrumbs';
 import { COLORS } from '../../components/styles/_constants';
 import { getNewId } from '../../services/utils/getNewId';
 import { scrollToTop } from '../../services/utils/scrollToTop';
+import { DetailsSkeleton } from '../../components/skeleton/DetailsSkeleton';
 
 export type CartProducts = {
   id: number;
@@ -21,7 +23,7 @@ export type CartProducts = {
 
 export const ProductDetailsPage: React.FC = () => {
   const [detailProduct, setDetailProduct] = useState<FullProduct>();
-  const [bigImage, setBigImage] = useState<string>('');
+  const [bigImage, setBigImage] = useState('');
   const [error, setError] = useState('');
   const { state } = useLocation();
   const location = useLocation();
@@ -29,7 +31,7 @@ export const ProductDetailsPage: React.FC = () => {
   const context = useContext(ProductsContext);
   const { allProducts, cart, addCart, deleteFromCart } = context;
   const { addFavorites, deleteFromFavorites, favorites } = context;
-  const { setIsLoading } = context;
+  const { setIsLoading, isLoading } = context;
 
   const arrayPath = location.pathname.split('/');
   const backPath = state?.location?.pathname || `/${arrayPath[1]}`;
@@ -140,284 +142,305 @@ export const ProductDetailsPage: React.FC = () => {
               </Link>
             </div>
           </div>
-          <div className="page__category details">
-            <h2 className="details__title">{detailProduct?.name}</h2>
-            <div className="details__main-image">
-              <img className="details__image" src={bigImage} alt="product" />
-            </div>
-            <div className="details__images">
-              {detailProduct?.images.map(image => (
-                <button
-                  type="button"
-                  className={classNames('details__image-wrapper', {
-                    'details__image-wrapper--active': image === bigImage,
-                  })}
-                  key={image}
-                  onClick={() => setBigImage(image)}
-                >
-                  <img className="details__image" src={image} alt="product" />
-                </button>
-              ))}
-            </div>
-
-            <div
-              className="
-                    details__description
-                    details__description--right
-                    "
-            >
-              <div className="details__description-mini-block">
-                <div className="details__description-top">
-                  <p className="details__description-title">Available colors</p>
-                  {searchProduct ? (
-                    <p className="details__id">{`ID: ${searchProduct?.id}`}</p>
-                  ) : (
-                    <p className="details__id">Loading ...</p>
-                  )}
+          {isLoading ? (
+            <DetailsSkeleton />
+          ) : (
+            <>
+              <div className="page__category details">
+                <h2 className="details__title">{detailProduct?.name}</h2>
+                <div className="details__main-image">
+                  <img
+                    className="details__image"
+                    src={bigImage}
+                    alt="product"
+                  />
                 </div>
-                <div className="details__description-wrapper">
-                  {detailProduct?.colorsAvailable.map(color => {
-                    const colorStyle = COLORS[color];
-
-                    if (!colorStyle) {
-                      return null;
-                    }
-
-                    return (
-                      <Link
-                        state={{
-                          location,
-                        }}
-                        to={`/${category.toLowerCase()}/${detailProduct?.namespaceId}-${detailProduct?.capacity}-${color.replace(' ', '-')}`}
-                        className={classNames('details__color-border', {
-                          'details__color-border--active':
-                            color === detailProduct.color,
-                        })}
-                        key={color}
-                      >
-                        <div
-                          className="details__color"
-                          style={{ backgroundColor: colorStyle }}
-                        />
-                      </Link>
-                    );
-                  })}
-                </div>
-              </div>
-              <div
-                className="
-                      details__description-mini-block
-                      details__description-mini-block--last
-                    "
-              >
-                <div className="details__description-top">
-                  <p className="details__description-title">Select capacity</p>
-                </div>
-                <div className="details__description-wrapper">
-                  {detailProduct?.capacityAvailable.map(capacity => (
-                    <Link
-                      state={{
-                        location,
-                      }}
-                      to={`/${category.toLowerCase()}/${detailProduct.namespaceId}-${capacity}-${detailProduct.color.replace(' ', '-')}`}
-                      key={capacity}
-                      className={classNames('details__capacity', {
-                        'details__capacity--active':
-                          capacity === detailProduct.capacity,
+                <div className="details__images">
+                  {detailProduct?.images.map(image => (
+                    <button
+                      type="button"
+                      className={classNames('details__image-wrapper', {
+                        'details__image-wrapper--active': image === bigImage,
                       })}
+                      key={image}
+                      onClick={() => setBigImage(image)}
                     >
-                      {capacity}
-                    </Link>
+                      <img
+                        className="details__image"
+                        src={image}
+                        alt="product"
+                      />
+                    </button>
                   ))}
                 </div>
-              </div>
-              <div className="details__description-block">
-                <div className="details__price-wrapper">
-                  <p className="details__price">
-                    {`$${detailProduct?.priceDiscount}`}
-                  </p>
-                  <p className="details__price details__price--full">
-                    {`$${detailProduct?.priceRegular}`}
-                  </p>
-                </div>
-                <div className="details__actions">
-                  {/* eslint-disable-next-line max-len, prettier/prettier */}
-                  {cart.some(
-                    product => product.product.itemId === detailProduct?.id,
-                  ) ? (
-                    <button
-                      type="button"
-                      onClick={handlerAddToCart}
-                      className="details__button details__button--added"
-                    >
-                      <span />
-                      <span />
-                      <span />
-                      <span />
-                      Added to cart
-                    </button>
-                  ) : (
-                    <button
-                      type="button"
-                      className="details__button details__button--add"
-                      onClick={handlerAddToCart}
-                    >
-                      <span />
-                      <span />
-                      <span />
-                      <span />
-                      Add to cart
-                    </button>
-                  )}
-                  {/* eslint-disable-next-line max-len, prettier/prettier */}
-                  {favorites.some(item => item.itemId === detailProduct?.id) ? (
-                    <button
-                      type="button"
-                      onClick={handlerAddToFavorites}
-                      className="
-                            details__button details__button--favorite-red
+
+                <div
+                  className="
+                        details__description
+                        details__description--right
+                        "
+                >
+                  <div className="details__description-mini-block">
+                    <div className="details__description-top">
+                      <p className="details__description-title">
+                        Available colors
+                      </p>
+                      {searchProduct ? (
+                        <p className="details__id">{`ID: ${searchProduct?.id}`}</p>
+                      ) : (
+                        <p className="details__id">Loading ...</p>
+                      )}
+                    </div>
+                    <div className="details__description-wrapper">
+                      {detailProduct?.colorsAvailable.map(color => {
+                        const colorStyle = COLORS[color];
+
+                        if (!colorStyle) {
+                          return null;
+                        }
+
+                        return (
+                          <Link
+                            state={{
+                              location,
+                            }}
+                            to={`/${category.toLowerCase()}/${detailProduct?.namespaceId}-${detailProduct?.capacity}-${color.replace(' ', '-')}`}
+                            className={classNames('details__color-border', {
+                              'details__color-border--active':
+                                color === detailProduct.color,
+                            })}
+                            key={color}
+                          >
+                            <div
+                              className="details__color"
+                              style={{ backgroundColor: colorStyle }}
+                            />
+                          </Link>
+                        );
+                      })}
+                    </div>
+                  </div>
+                  <div
+                    className="
+                          details__description-mini-block
+                          details__description-mini-block--last
+                        "
+                  >
+                    <div className="details__description-top">
+                      <p className="details__description-title">
+                        Select capacity
+                      </p>
+                    </div>
+                    <div className="details__description-wrapper">
+                      {detailProduct?.capacityAvailable.map(capacity => (
+                        <Link
+                          state={{
+                            location,
+                          }}
+                          to={`/${category.toLowerCase()}/${detailProduct.namespaceId}-${capacity}-${detailProduct.color.replace(' ', '-')}`}
+                          key={capacity}
+                          className={classNames('details__capacity', {
+                            'details__capacity--active':
+                              capacity === detailProduct.capacity,
+                          })}
+                        >
+                          {capacity}
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                  <div className="details__description-block">
+                    <div className="details__price-wrapper">
+                      <p className="details__price">
+                        {`$${detailProduct?.priceDiscount}`}
+                      </p>
+                      <p className="details__price details__price--full">
+                        {`$${detailProduct?.priceRegular}`}
+                      </p>
+                    </div>
+                    <div className="details__actions">
+                      {/* eslint-disable-next-line max-len, prettier/prettier */}
+                      {cart.some(
+                        product => product.product.itemId === detailProduct?.id,
+                      ) ? (
+                        <button
+                          type="button"
+                          onClick={handlerAddToCart}
+                          className="details__button details__button--added"
+                        >
+                          <span />
+                          <span />
+                          <span />
+                          <span />
+                          Added to cart
+                        </button>
+                      ) : (
+                        <button
+                          type="button"
+                          className="details__button details__button--add"
+                          onClick={handlerAddToCart}
+                        >
+                          <span />
+                          <span />
+                          <span />
+                          <span />
+                          Add to cart
+                        </button>
+                      )}
+                      {/* eslint-disable-next-line max-len, prettier/prettier */}
+                      {favorites.some(
+                        item => item.itemId === detailProduct?.id,
+                      ) ? (
+                        <button
+                          type="button"
+                          onClick={handlerAddToFavorites}
+                          className="
+                                details__button details__button--favorite-red
+                              "
+                        >
+                          <span />
+                          <span />
+                          <span />
+                          <span />
+                          {}
+                        </button>
+                      ) : (
+                        <button
+                          type="button"
+                          onClick={handlerAddToFavorites}
+                          className="
+                            details__button details__button--favorite-white
                           "
-                    >
-                      <span />
-                      <span />
-                      <span />
-                      <span />
-                      {}
-                    </button>
-                  ) : (
-                    <button
-                      type="button"
-                      onClick={handlerAddToFavorites}
-                      className="
-                        details__button details__button--favorite-white
-                      "
-                    >
-                      <span />
-                      <span />
-                      <span />
-                      <span />
-                      <span />
-                      {}
-                    </button>
-                  )}
-                </div>
-              </div>
-              <div className="details__description-bottom">
-                <div className="details__description-group">
-                  <div className="details__description-name">Screen</div>
-                  <div className="details__description-value">
-                    {detailProduct?.screen}
+                        >
+                          <span />
+                          <span />
+                          <span />
+                          <span />
+                          <span />
+                          {}
+                        </button>
+                      )}
+                    </div>
+                  </div>
+                  <div className="details__description-bottom">
+                    <div className="details__description-group">
+                      <div className="details__description-name">Screen</div>
+                      <div className="details__description-value">
+                        {detailProduct?.screen}
+                      </div>
+                    </div>
+                    <div className="details__description-group">
+                      <div className="details__description-name">
+                        Resolution
+                      </div>
+                      <div className="details__description-value">
+                        {detailProduct?.resolution}
+                      </div>
+                    </div>
+                    <div className="details__description-group">
+                      <div className="details__description-name">Processor</div>
+                      <div className="details__description-value">
+                        {detailProduct?.processor}
+                      </div>
+                    </div>
+                    <div className="details__description-group">
+                      <div className="details__description-name">RAM</div>
+                      <div className="details__description-value">
+                        {detailProduct?.ram}
+                      </div>
+                    </div>
                   </div>
                 </div>
-                <div className="details__description-group">
-                  <div className="details__description-name">Resolution</div>
-                  <div className="details__description-value">
-                    {detailProduct?.resolution}
-                  </div>
-                </div>
-                <div className="details__description-group">
-                  <div className="details__description-name">Processor</div>
-                  <div className="details__description-value">
-                    {detailProduct?.processor}
-                  </div>
-                </div>
-                <div className="details__description-group">
-                  <div className="details__description-name">RAM</div>
-                  <div className="details__description-value">
-                    {detailProduct?.ram}
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="details__description details__description--bottom">
-              <h3 className="details__small-title">About</h3>
-              <article className="details__article">
-                <h4 className="details__article-title">
-                  {detailProduct?.description[0].title}
-                </h4>
-                <p className="details__article-text">
-                  {detailProduct?.description[0].text}
-                </p>
-              </article>
+                <div className="details__description details__description--bottom">
+                  <h3 className="details__small-title">About</h3>
+                  <article className="details__article">
+                    <h4 className="details__article-title">
+                      {detailProduct?.description[0].title}
+                    </h4>
+                    <p className="details__article-text">
+                      {detailProduct?.description[0].text}
+                    </p>
+                  </article>
 
-              <article className="details__article">
-                <h4 className="details__article-title">
-                  {detailProduct?.description[1].title}
-                </h4>
-                <p className="details__article-text">
-                  {detailProduct?.description[1].text}
-                </p>
-              </article>
+                  <article className="details__article">
+                    <h4 className="details__article-title">
+                      {detailProduct?.description[1].title}
+                    </h4>
+                    <p className="details__article-text">
+                      {detailProduct?.description[1].text}
+                    </p>
+                  </article>
 
-              <article className="details__article">
-                <h4 className="details__article-title">
-                  {detailProduct?.description[2].title}
-                </h4>
-                <p className="details__article-text">
-                  {detailProduct?.description[2].text}
-                </p>
-              </article>
-            </div>
+                  <article className="details__article">
+                    <h4 className="details__article-title">
+                      {detailProduct?.description[2].title}
+                    </h4>
+                    <p className="details__article-text">
+                      {detailProduct?.description[2].text}
+                    </p>
+                  </article>
+                </div>
 
-            <div className="details__description details__description--last">
-              <h3 className="details__small-title">Tech specs</h3>
-              <div className="details__description-bottom">
-                <div className="details__tech-group">
-                  <div className="details__tech-name">Screen</div>
-                  <div className="details__tech-value">
-                    {detailProduct?.screen}
-                  </div>
-                </div>
-                <div className="details__tech-group">
-                  <div className="details__tech-name">Resolution</div>
-                  <div className="details__tech-value">
-                    {detailProduct?.resolution}
-                  </div>
-                </div>
-                <div className="details__tech-group">
-                  <div className="details__tech-name">Processor</div>
-                  <div className="details__tech-value">
-                    {detailProduct?.processor}
-                  </div>
-                </div>
-                <div className="details__tech-group">
-                  <div className="details__tech-name">RAM</div>
-                  <div className="details__tech-value">
-                    {detailProduct?.ram}
-                  </div>
-                </div>
-                <div className="details__tech-group">
-                  <div className="details__tech-name">Built in memory</div>
-                  <div className="details__tech-value">
-                    {detailProduct?.capacity}
-                  </div>
-                </div>
-                <div className="details__tech-group">
-                  <div className="details__tech-name">Camera</div>
-                  <div className="details__tech-value">
-                    {detailProduct?.camera}
-                  </div>
-                </div>
-                <div className="details__tech-group">
-                  <div className="details__tech-name">Zoom</div>
-                  <div className="details__tech-value">
-                    {detailProduct?.zoom}
-                  </div>
-                </div>
-                <div className="details__tech-group">
-                  <div className="details__tech-name">Cell</div>
-                  <div className="details__tech-value">
-                    {detailProduct?.cell.join(', ')}
+                <div className="details__description details__description--last">
+                  <h3 className="details__small-title">Tech specs</h3>
+                  <div className="details__description-bottom">
+                    <div className="details__tech-group">
+                      <div className="details__tech-name">Screen</div>
+                      <div className="details__tech-value">
+                        {detailProduct?.screen}
+                      </div>
+                    </div>
+                    <div className="details__tech-group">
+                      <div className="details__tech-name">Resolution</div>
+                      <div className="details__tech-value">
+                        {detailProduct?.resolution}
+                      </div>
+                    </div>
+                    <div className="details__tech-group">
+                      <div className="details__tech-name">Processor</div>
+                      <div className="details__tech-value">
+                        {detailProduct?.processor}
+                      </div>
+                    </div>
+                    <div className="details__tech-group">
+                      <div className="details__tech-name">RAM</div>
+                      <div className="details__tech-value">
+                        {detailProduct?.ram}
+                      </div>
+                    </div>
+                    <div className="details__tech-group">
+                      <div className="details__tech-name">Built in memory</div>
+                      <div className="details__tech-value">
+                        {detailProduct?.capacity}
+                      </div>
+                    </div>
+                    <div className="details__tech-group">
+                      <div className="details__tech-name">Camera</div>
+                      <div className="details__tech-value">
+                        {detailProduct?.camera}
+                      </div>
+                    </div>
+                    <div className="details__tech-group">
+                      <div className="details__tech-name">Zoom</div>
+                      <div className="details__tech-value">
+                        {detailProduct?.zoom}
+                      </div>
+                    </div>
+                    <div className="details__tech-group">
+                      <div className="details__tech-name">Cell</div>
+                      <div className="details__tech-value">
+                        {detailProduct?.cell.join(', ')}
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          </div>
-
-          <ProductsSlider
-            title="You may also like"
-            products={getRandomProducts}
-          />
+              <ProductsSlider
+                title="You may also like"
+                products={getRandomProducts}
+              />
+            </>
+          )}
         </div>
       )}
     </>
