@@ -8,6 +8,7 @@ import { Device } from '../../type/Device';
 import classNames from 'classnames';
 import { BackButton } from '../../Functions/BackButton';
 import { topScroll } from '../../Functions/ScrolTop/topScrol';
+import { filterCategory } from '../../Functions/FilterCategory/filterCategory';
 
 const getTech = (data: Device, size?: string) => {
   const { screen, resolution, processor, ram, capacity, camera, zoom, cell } =
@@ -150,6 +151,8 @@ export const InfoCard: React.FC = () => {
     }
   };
 
+  const filterProducts = filterCategory(products, `${category}`);
+
   return (
     <div>
       <div className={styles.title}>
@@ -185,14 +188,14 @@ export const InfoCard: React.FC = () => {
                     <img
                       onClick={() => changeCurrent(index)}
                       className={styles.smallBlock}
-                      src={`/${img}`}
+                      src={`${img}`}
                       alt={`Phone ${index}`}
                     />
                   </div>
                 ))}
               </div>
               <div className={styles.imageLarge}>
-                <img src={`/${images[currentIndex]}`} alt="" />
+                <img src={`${images[currentIndex]}`} alt="" />
               </div>
             </div>
           )}
@@ -332,7 +335,7 @@ export const InfoCard: React.FC = () => {
         </div>
 
         <div className={styles.Suggestions}>
-          <CardsCarusel props={products} name={'You may also like'} />
+          <CardsCarusel props={filterProducts} name={'You may also like'} />
         </div>
       </div>
     </div>
