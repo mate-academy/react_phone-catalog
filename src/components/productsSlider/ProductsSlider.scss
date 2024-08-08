@@ -59,7 +59,7 @@
     @include on-desktop-small {
       grid-template-columns: repeat(3, 1fr);
 
-       span:nth-child(-n+3) {
+       span:nth-child(-n+2) {
         display: block;
       }
     }

@@ -70,6 +70,11 @@
     background-color: inherit;
     border: none;
     cursor: pointer;
+    transition: background-image ease-out 0.5s;
+
+    &:hover {
+      background-image: url(../../../public/img/icons/close.svg);
+    }
   }
 
   &__photo {
