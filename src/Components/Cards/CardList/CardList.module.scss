@@ -1,0 +1,31 @@
+.container {
+  display: grid;
+  width: 100%;
+  gap: 40px 16px; /* Відстань між колонками та рядами */
+  grid-template-columns: repeat(4, 1fr); /* Адаптивна кількість колонок */
+  // justify-content: space-between;
+}
+
+@media (max-width: 1200px) and (min-width: 640px) {
+  .container {
+    grid-template-columns: repeat(auto-fit, 229px); /* Зберігаємо ті ж значення для адаптивності */
+  }
+}
+
+// @media (max-width: 768px) and (min-width: 640px) {
+//   .card__list-container {
+//     grid-template-columns: repeat(auto-fit, minmax(229px, 1fr)); /* Щоб зайняти всю ширину контейнера на вузьких екранах */
+//   }
+// }
+
+@media (max-width: 639px) and (min-width: 320px) {
+  .container {
+    grid-template-columns: 1fr;
+  }
+
+  .center {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+  }
+}

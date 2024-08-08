@@ -1,0 +1,43 @@
+.container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.titel {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 40px;
+  margin-top: 32px;
+
+  h1 {
+    text-align: center;
+  }
+}
+
+.button {
+  display: flex;
+  height: 40px;
+  margin-block: 20px;
+  margin-inline: auto;
+  width: 200px;
+}
+
+.backHome {
+  display: flex;
+  background-color: #f86800;
+  border: 1px solid #f86800;
+  border-radius: 8px;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  font-family: Mont, sans-serif;
+  font-weight: 600;
+  padding: 0;
+  justify-content: center;
+  align-items: center;
+  transition: box-shadow 0.3s;
+  width: 100%;
+  text-decoration: none;
+}

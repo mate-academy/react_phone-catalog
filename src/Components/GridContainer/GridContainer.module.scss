@@ -1,0 +1,27 @@
+.container {
+  display: grid;
+  grid-template-columns: repeat(24, 32px); /* Три колонки з однаковою шириною */
+  // grid-template-rows: repeat(3, 1fr);
+  gap: 16px; /* Відступ між елементами */
+  margin: 0 auto;
+  justify-content: center;
+}
+
+
+@media (max-width: 1200px) and (min-width: 640px) {
+  .container {
+    grid-template-columns: repeat(12, 1fr); /* 12 колонок */
+    padding-left: 24px; /* Відступ зліва */
+    padding-right: 24px; /* Відступ справа */
+    margin: 0;
+  }
+}
+
+@media (max-width: 639px) and (min-width: 320px) {
+  .container {
+    grid-template-columns: repeat(4, 1fr); /* 12 колонок */
+    padding-left: 16px; /* Відступ зліва */
+    padding-right: 16px; /* Відступ справа */
+    margin: 0;
+  }
+}

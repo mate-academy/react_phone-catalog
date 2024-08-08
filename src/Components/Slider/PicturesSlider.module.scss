@@ -1,0 +1,117 @@
+.pictures {
+  display: grid;
+  grid-template-columns: 32px 1fr 1fr 32px;
+  grid-template-rows: 1fr 1fr;
+  gap: 16px;
+  justify-items: center;
+  width: 100%;
+  height: 430px;
+  margin: 0 auto;
+}
+
+@media (max-width: 1199px) and (min-width: 640px) {
+  .pictures {
+    height: 240px;
+  }
+}
+
+.container {
+  background: #000;
+  overflow: hidden;
+  height: 100%;
+  width: 100%;
+  grid-column: 2 / 4;
+  grid-row: 1 / 3;
+  display: flex;
+  justify-content: space-between;
+  border-radius: 15px;
+}
+
+.orderBanner {
+  width: 100%;
+  display: flex;
+}
+
+.slider {
+  object-fit: contain;
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.slide {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: none;
+
+  &.active {
+    display: block;
+  }
+}
+
+.arrow {
+  color: var(--white);
+}
+
+.previous {
+  width: 100%;
+  grid-column: 0 / 1;
+  grid-row: 1 / 3;
+}
+
+.next {
+  width: 100%;
+  grid-column: 4 / 5;
+  grid-row: 1 / 3;
+}
+
+.controls{
+  background-color: var(--surface-2);
+  cursor: pointer;
+  border: 0;
+
+  &:hover {
+    background: var(--icons);
+  }
+}
+
+.indicators {
+  grid-column: 2 / 4;
+  grid-row: 3 / 4;
+  text-align: center;
+}
+
+.indicator {
+  display: inline-block;
+  width: 10px;
+  height: 5px;
+  background-color: #ccc;
+  margin: 0 5px;
+  cursor: pointer;
+
+  &.indicatorActive {
+    background-color: #333;
+  }
+}
+
+@media (max-width: 639px) and (min-width: 340px) {
+  .controls {
+    display: none;
+  }
+
+  .orderBanner {
+    display: none;
+  }
+
+  .container {
+    grid-column: 1 / -1;
+
+  }
+
+  .pictures {
+    overflow: hidden;
+    width: 100%;
+    height: calc(width 100%);
+  }
+}

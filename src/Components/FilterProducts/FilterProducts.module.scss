@@ -1,0 +1,47 @@
+.container {
+  height: 100%;
+  margin-top: 8px;
+  display: flex;
+  flex-direction: column;
+}
+
+.menu {
+  margin-top: 40px;
+  display: flex;
+  gap: 16px;
+}
+
+.filterParams {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+span {
+  color: var(--white);
+}
+
+.select {
+  max-width: 136px;
+  width: 300px;
+  height: 40px;
+  background-color: var(--surface-2);
+  color: var(--white);
+  border: none;
+  cursor: pointer;
+
+}
+
+.outlet {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-top: 24px;
+}
+
+@media (max-width: 639px) and (min-width: 320px) {
+  .filter-menu {
+    justify-content: center;
+  }
+}
