@@ -1,0 +1,5 @@
+@import '../../styles/main';
+
+.phonePage {
+  @include section-grid;
+}

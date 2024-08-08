@@ -1,0 +1,91 @@
+@import '../../styles/main';
+
+.burgerMenu {
+  display: none;
+  position: fixed;
+  top: 72px;
+  left: 0;
+  right: 0;
+  height: calc(100vh - 72px);
+  z-index: 1;
+  transition: transform 0.3s ease-in-out;
+  transform: translateX(-100%);
+  background: $colorWhite;
+
+  &__show {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transform: translateX(0);
+  }
+}
+
+.navBurger {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 16px;
+
+  &__item {
+    @extend %uppercase-text;
+
+    color: $colorSecondary;
+    padding: 8px 0;
+
+    position: relative;
+
+    &:hover {
+      color: $colorPrimary;
+    }
+  }
+}
+
+.burgerActions {
+  display: flex;
+  width: 100%;
+  position: sticky;
+  bottom: 0;
+  margin-top: auto;
+
+  &__link {
+    display: flex;
+    flex: 1;
+    height: 64px;
+    align-items: center;
+    justify-content: center;
+    color: $colorSecondary;
+    box-shadow: 0 -1px 0 0 $colorElements, 1px 0 0 0 $colorElements;
+    position: relative;
+
+    &:hover {
+      color: $colorPrimary;
+    }
+
+    &-img {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      width: 28px;
+      height: 28px;
+    }
+  }
+}
+
+.activeBurger {
+  color: $colorPrimary;
+
+  &::after {
+    position: absolute;
+    content: "";
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background-color: $colorPrimary;
+  }
+}
+
+body.no-scroll {
+  overflow: hidden;
+}

@@ -1,0 +1,86 @@
+@import '../../styles/main';
+
+.items {
+  display: flex;
+  flex-direction: column;
+  grid-column: 1 / -1;
+  gap: 24px;
+
+  &__navigation {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+
+    &-title {
+      @extend %body-text;
+
+      color: $colorSecondary;
+      text-transform: capitalize;
+      padding-top: 2px;
+    }
+  }
+
+  &__descriprion {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    &-title {
+      @extend %h1-mobile;
+
+      @include on-tablet {
+        @include h1-tablet;
+      }
+    }
+
+    &-amount {
+      @extend %small-text;
+
+      color: $colorSecondary;
+    }
+  }
+
+  &__sort {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+  }
+
+  &__products {
+    @include section-grid;
+
+    padding-inline: 0;
+
+    @include on-tablet {
+      padding-inline: 0;
+    }
+
+    &-item {
+      grid-column: span 4;
+
+      @include on-tablet {
+        grid-column: span 6;
+      }
+
+      @include middle {
+        grid-column: span 4;
+      }
+
+      @include on-desktop {
+        grid-column: span 6;
+      }
+    }
+  }
+
+  &__message {
+    margin-top: 10%;
+    text-align: center;
+
+    @extend %h1-mobile;
+
+    @include on-tablet {
+      @include h1-tablet;
+    }
+  }
+}

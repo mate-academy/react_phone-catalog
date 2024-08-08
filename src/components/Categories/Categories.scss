@@ -1,0 +1,66 @@
+@import '../../styles/main';
+
+.categories {
+  @include section-grid;
+
+  padding-top: 56px;
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    grid-column: 1 / -1;
+
+    @include on-tablet {
+      flex-direction: row;
+    }
+  }
+
+  &__title {
+    @extend %h2-mobile;
+
+    grid-column: 1 / -1;
+
+    @include on-tablet {
+      @include h2-tablet;
+    }
+  }
+
+  &__card {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+    &-img {
+      width: 100%;
+      height: 288px;
+      object-fit: cover;
+
+      @include on-tablet {
+        height: 187px;
+      }
+
+      @include on-desktop {
+        height: 368px;
+      }
+
+      transition: transform 0.5s ease;
+
+      &:hover {
+        transform: scale(1.05);
+      }
+    }
+
+    &-title {
+      margin-top: 24px;
+
+      @extend %h4-tablet;
+    }
+
+    &-num {
+      @extend %body-text;
+
+      color: $colorSecondary;
+    }
+  }
+}
