@@ -1,5 +1,5 @@
 import '../../styles/main.scss';
-import { Icon } from '../Icon';
+import { Icon } from '../ui/Icon';
 import styles from './SideMenu.module.scss';
 import classNames from 'classnames';
 

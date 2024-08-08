@@ -1,4 +1,4 @@
-@import '../utils/vars';
+@import '../../../styles/main';
 
 .round-color-btn {
   display: flex;
@@ -26,14 +26,14 @@
     transition: background-color $transition-duration;
     cursor: pointer;
 
-    &:hover {
-      border-color: $icons-placeholders-gray;
-    }
-
     &:focus {
       outline: none;
       border-color: #06c;
       box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.2);
+    }
+
+    &:not(&--selected):hover {
+      border-color: $icons-placeholders-gray;
     }
 
     &:not(&--selected):active {

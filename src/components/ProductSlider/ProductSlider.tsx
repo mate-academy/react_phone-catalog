@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import classNames from 'classnames';
 import styles from './ProductSlider.module.scss';
 import { Card } from '../Card';
-import { Icon } from '../Icon';
+import { Icon } from '../ui/Icon';
 
 type ProductSliderProps = {
   cardData: number[];

@@ -1,6 +1,6 @@
 import classNames from 'classnames';
-import { Icon } from '../Icon/Icon';
 import styles from './Pagination.module.scss';
+import { Icon } from '../ui/Icon';
 
 // type PaginationProps = {
 //   currentPage: number;

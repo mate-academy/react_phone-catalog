@@ -7,6 +7,8 @@ import { HomePage } from './pages/HomePage';
 import { useState } from 'react';
 import { CatalogPage } from './pages/CatalogPage';
 import { ItemPage } from './pages/ItemPage';
+import { FavoritePage } from './pages/FavoritePage';
+import { CartPage } from './pages/CartPage';
 
 export const App = () => {
   const [page, setPage] = useState('details');
@@ -22,6 +24,8 @@ export const App = () => {
         {page === 'home' && <HomePage />}
         {page === 'phones' && <CatalogPage />}
         {page === 'details' && <ItemPage />}
+        {page === 'favorites' && <FavoritePage />}
+        {page === 'cart' && <CartPage />}
       </div>
 
       <Footer />

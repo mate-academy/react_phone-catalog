@@ -2,7 +2,7 @@ import classNames from 'classnames';
 import styles from './Card.module.scss';
 import { useState } from 'react';
 import { CardDetail } from '../CardDetail/CardDetail';
-import { Icon } from '../Icon';
+import { Icon } from '../ui/Icon';
 
 export const Card = () => {
   const [isFavorite, setIsFavorite] = useState(false);

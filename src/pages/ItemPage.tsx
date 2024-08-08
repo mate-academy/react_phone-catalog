@@ -1,11 +1,13 @@
 import Breadcrumbs from '../components/Breadcrumbs/Breadcrumbs';
 import { CardDetail } from '../components/CardDetail';
-import { Icon } from '../components/Icon';
+import { Icon } from '../components/ui/Icon';
 import '../styles/main.scss';
 import cardStyles from '../components/Card/Card.module.scss';
 import classNames from 'classnames';
 import { useState } from 'react';
 import { ProductSlider } from '../components/ProductSlider';
+import { GoBackLink } from '../components/ui/GoBackLink';
+import { RoundColorButton } from '../components/ui/RoundColorButton';
 
 const colorsAvailable = ['black', 'green', 'yellow', 'white', 'purple', 'red'];
 const capacityAvailable = ['64GB', '128GB', '256GB'];
@@ -13,6 +15,9 @@ const cardData = [1, 2, 3, 4, 5, 6, 7];
 
 export const ItemPage = () => {
   const [isFavorite, setIsFavorite] = useState(false);
+  const [selectedColor, setSelectedColor] = useState<string | null>(
+    colorsAvailable[0],
+  );
 
   const toggleFavorite = () => {
     setIsFavorite(!isFavorite);
@@ -24,12 +29,7 @@ export const ItemPage = () => {
         <Breadcrumbs />
       </div>
 
-      <div className="item-page__goBack-wrapper">
-        <a href="#" className="item-page__goBack-link">
-          <Icon iconName="left" />
-          <span className="small-text">Back</span>
-        </a>
-      </div>
+      <GoBackLink />
 
       <div className="item-page__content">
         <h3 className="item-page__title">
@@ -119,18 +119,12 @@ export const ItemPage = () => {
             <div className="item-page__container">
               <ul className="item-page__buttons-list">
                 {colorsAvailable.map(color => (
-                  <li key={color} className="round-color-btn">
-                    <div
-                      className={classNames('round-color-btn__outer', {
-                        ['round-color-btn__outer--selected']: false,
-                      })}
-                    >
-                      <div
-                        className={'round-color-btn__inner'}
-                        style={{ backgroundColor: `${color}` }}
-                      ></div>
-                    </div>
-                  </li>
+                  <RoundColorButton
+                    key={color}
+                    color={color}
+                    isSelected={selectedColor === color}
+                    onClick={() => setSelectedColor(color)}
+                  />
                 ))}
               </ul>
 

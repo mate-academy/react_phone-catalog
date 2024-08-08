@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 import styles from './Footer.module.scss';
-import { Icon } from '../Icon';
+import { Icon } from '../ui/Icon';
 
 export const Footer = () => {
   return (

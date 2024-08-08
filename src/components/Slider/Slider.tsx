@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 import styles from './Slider.module.scss';
 import React, { useEffect, useState } from 'react';
-import { Icon } from '../Icon';
+import { Icon } from '../ui/Icon';
 
 type SliderProps = {
   images: string[];

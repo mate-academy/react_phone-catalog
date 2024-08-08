@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 import styles from './ProductFilter.module.scss';
-import { CustomSelect } from '../CustomSelect';
+import { CustomSelect } from '../ui/CustomSelect';
 
 const listSortBy = ['Newest', 'Hot Price', 'Price'];
 const listOfPages = ['1', '2', '3', '4'];

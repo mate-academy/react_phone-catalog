@@ -1,7 +1,7 @@
 import '../../styles/main.scss';
 import styles from './Header.module.scss';
 import classNames from 'classnames';
-import { Icon } from '../Icon';
+import { Icon } from '../ui/Icon';
 
 type HeaderProps = {
   activePage: string;
@@ -89,7 +89,7 @@ export const Header: React.FC<HeaderProps> = ({ activePage, goToPage }) => {
             )}
             onClick={() => goToPage('favorites')}
           >
-            <Icon iconName="favorites" />
+            <Icon iconName="favorites" badgeInfo={12} />
           </a>
           <a
             href="#cart"

@@ -1,0 +1,36 @@
+@import '../../../styles/main';
+
+.btn {
+  @include button-common;
+
+  height: 40px;
+  width: auto;
+
+  &:active {
+    transform: scale(0.98);
+  }
+}
+
+// Primary button styles
+.primary-btn {
+  width: 100%;
+  background-color: $primary-gray;
+  color: $white;
+
+  &:hover {
+    box-shadow: 0 3px 13px 0 $primary-gray;
+  }
+}
+
+// Favorite button styles
+.favorite-btn {
+  flex-shrink: 0;
+  width: 40px;
+  margin-left: 8px;
+  border: 1px solid $icons-placeholders-gray;
+  cursor: pointer;
+
+  &:hover {
+    border-color: $primary-gray;
+  }
+}

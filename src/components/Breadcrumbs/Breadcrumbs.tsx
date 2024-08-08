@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import { Icon } from '../Icon';
+import { Icon } from '../ui/Icon';
 import styles from './Breadcrumbs.module.scss';
 import '../../styles/main.scss';
 
