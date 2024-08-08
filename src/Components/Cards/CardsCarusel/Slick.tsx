@@ -4,7 +4,6 @@ import 'slick-carousel/slick/slick.scss';
 import 'slick-carousel/slick/slick-theme.scss';
 import { Products } from '../../../type/Products';
 import { Card } from '../Card/Card';
-import './Slick.module.scss';
 import styles from './CardsCarusel.module.scss';
 
 interface Props {

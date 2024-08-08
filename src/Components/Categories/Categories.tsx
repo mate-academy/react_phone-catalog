@@ -9,11 +9,6 @@ type Props = {
 };
 
 export const Categories: React.FC<Props> = ({ products }) => {
-  const imagePathPhone = process.env.PUBLIC_URL + 'img/category-phones.webp';
-
-  const imagePathAccessories =
-    process.env.PUBLIC_URL + 'img/category-accessories.png';
-
   const phoneItems = (serchParam: string) => {
     const items = products.filter(item => item.category === serchParam);
 
@@ -28,7 +23,7 @@ export const Categories: React.FC<Props> = ({ products }) => {
           <div className={styles.grid1}>
             <Link to="/phones">
               <div className={styles.phone}>
-                <img src={imagePathPhone} alt="#" />
+                <img src="img/category-phones.webp" alt="#" />
               </div>
             </Link>
             <div className={styles.description}>
@@ -50,7 +45,7 @@ export const Categories: React.FC<Props> = ({ products }) => {
           <div className={styles.grid3}>
             <Link to="/smart">
               <div className={styles.accessories}>
-                <img src={imagePathAccessories} alt="#" />
+                <img src="img/category-accessories.png" alt="#" />
               </div>
             </Link>
             <div className={styles.description}>

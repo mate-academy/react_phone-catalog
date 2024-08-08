@@ -70,7 +70,7 @@ export const Card: React.FC<Props> = ({ product, discount }) => {
         to={`/info/${product.category}/${product.itemId}`}
         className={styles.image}
       >
-        <img className={styles.normaliz} src={`/${product.image}`} alt="#" />
+        <img className={styles.normaliz} src={`${product.image}`} alt="#" />
       </NavLink>
       <div className="full">
         <h2 className={styles.name}>{product.name}</h2>

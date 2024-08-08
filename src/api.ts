@@ -2,7 +2,7 @@ import { Device } from './type/Device';
 import { Products } from './type/Products';
 
 // const API_URL = 'https://mate-academy.github.io/react_phone-catalog/_new';
-const API_URL = 'https://eater228.github.io/react_phone-catalog/api/';
+const API_URL = 'https://Eater228.github.io/react_phone-catalog/api/';
 
 function wait(delay: number) {
   return new Promise(resolve => setTimeout(resolve, delay));
