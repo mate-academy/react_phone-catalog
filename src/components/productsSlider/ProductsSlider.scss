@@ -1,0 +1,88 @@
+@import '../buttons/ButtonStyles';
+@import '../styles/mixins';
+
+.products-slider {
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 25px;
+    align-items: center;
+  }
+
+  &__title {
+    @include h2;
+  }
+
+  &__button-container {
+    display: flex;
+    gap: 16px;
+  }
+
+  &__button {
+    height: 32px;
+  }
+
+  .swiper-slide {
+    padding-right: 17px;
+
+    @include on-tablet {
+      width: calc((100% / 2) - 17px);
+    }
+
+    @include on-desktop-small {
+      width: calc((100% / 3) - 17px);
+    }
+
+    @include on-desktop {
+      width: calc((100% / 4) - 17px);
+    }
+  }
+
+  .skeleton-slide {
+    display: grid;
+    gap: 17px;
+    padding-right: 17px;
+    grid-template-columns: repeat(1, 1fr);
+
+    span:nth-child(-n+3) {
+      display: none;
+    }
+
+    @include on-tablet {
+      grid-template-columns: repeat(2, 1fr);
+
+      span:nth-child(2) {
+        display: block;
+      }
+    }
+
+    @include on-desktop-small {
+      grid-template-columns: repeat(3, 1fr);
+
+       span:nth-child(-n+2) {
+        display: block;
+      }
+    }
+
+    @include on-desktop {
+      grid-template-columns: repeat(4, 1fr);
+
+      span:nth-child(-n+4) {
+        display: block;
+      }
+    }
+  }
+
+  &__swiper{
+    display: flex;
+    justify-content: space-between;
+    overflow-x: scroll;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+    transition: transform 0.7s;
+
+    &__slide-wrapper {
+      scroll-snap-align: start;
+    }
+  }
+}

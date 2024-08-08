@@ -1,0 +1,71 @@
+@import "../styles/mixins";
+
+.pagination {
+  display: flex;
+  gap: 8px;
+  width: fit-content;
+  margin: 20px auto;
+
+  &__link {
+    @include buttons;
+
+    font-weight: 500;
+    width: 100%;
+    height: 100%;
+    line-height: 32px;
+    text-align: center;
+  }
+
+
+  &__item {
+    display: flex;
+    width: 32px;
+    height: 32px;
+    border: 1px solid $elements;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: border-color ease-out 0.5s;
+
+
+    &--back {
+      background-repeat: no-repeat;
+      border: 1px solid $icons;
+      background-position: center;
+      background-image: url(../../../public/img/icons/arrow-left-fat.svg);
+
+      &.disabled {
+        background-image: url(../../../public/img/icons/arrow-left.svg );
+      }
+    }
+
+    &--next {
+      background-repeat: no-repeat;
+      border: 1px solid $icons;
+      background-position: center;
+      background-image: url(../../../public/img/icons/arrow-right-fat.svg);
+
+      &.disabled {
+        background-image: url(../../../public/img/icons/arrow-right.svg );
+      }
+    }
+
+    &.active {
+      background-color: $primary;
+      pointer-events: none;
+
+      &.active > a {
+        color: $white;
+      }
+    }
+
+    &.disabled {
+      pointer-events: none;
+      border: 1px solid $elements;
+    }
+
+    &:hover {
+      border-color: $primary;
+    }
+  }
+}

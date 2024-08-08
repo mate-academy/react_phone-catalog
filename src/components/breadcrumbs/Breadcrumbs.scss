@@ -1,0 +1,88 @@
+@import '../styles/mixins';
+@import '../styles/variables';
+
+.breadcrumbs {
+  @include page-adaptive;
+
+  box-sizing: border-box;
+  column-gap: 8px;
+  padding: 0 0 16px ;
+  flex-direction: row;
+  margin: 0;
+
+  @include on-tablet {
+    padding: 0 0 20px;
+  }
+
+  @include on-desktop {
+    padding: 0 0 20px;
+  }
+
+  &--back {
+    column-gap: 4px;
+    padding-bottom: 24px;
+
+    @include on-desktop {
+      padding-bottom: 26px;
+    }
+  }
+
+  &__image {
+    width: 16px;
+    height: 16px;
+  }
+
+  &--details {
+    padding-top: 0;
+  }
+
+  &__home {
+    display: flex;
+    align-self: center;
+  }
+
+  &__divider {
+    align-self: center;
+    width: 16px;
+    height: 16px;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    background-image: url(../../../public/img/icons/arrow-right.svg);
+
+    &--back {
+      background-image: url(../../../public/img/icons/arrow-left-fat.svg);
+    }
+  }
+
+  &__crumb {
+    @include small-text;
+
+    display: flex;
+    font-weight: 600;
+
+    &:hover {
+      color: $primary;
+    }
+
+    &:last-of-type {
+      font-weight: 600;
+
+      &:hover {
+        color: $primary;
+      }
+    }
+  }
+
+  &__link {
+    padding-top: 1.5px;
+    color: inherit;
+    cursor: pointer;
+
+    &-product {
+    @include small-text;
+    
+      cursor: text;
+    }
+  }
+}

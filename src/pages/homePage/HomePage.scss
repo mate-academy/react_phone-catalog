@@ -1,0 +1,19 @@
+@import '../../components/styles/mixins';
+
+.home-page {
+  @include page-adaptive;
+
+  gap: 56px;
+
+  @include on-tablet {
+    gap: 64px;
+  }
+
+  @include on-desktop {
+    gap: 64px;
+  }
+
+  &__title {
+    @include h1;
+  }
+}

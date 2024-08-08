@@ -1,0 +1,65 @@
+@import '../styles/mixins';
+@import '../styles/variables';
+
+.modal {
+  position: fixed;
+  inset: 0;
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
+
+  &-window {
+    width: 300px;
+    padding: 20px;
+    background-color: $white;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 24px;
+    align-items: center;
+    box-sizing: border-box;
+  }
+
+  &-title {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 16px;
+    text-align: center;
+  }
+
+  &__block-buttons {
+    display: flex;
+    gap: 12px;
+    flex-direction: column;
+    width: 100%;
+
+    @include on-tablet {
+      flex-direction: row;
+    }
+  }
+
+  &-button {
+    @include buttons;
+
+    height: 48px;
+    font-weight: 700;
+    color: $primary;
+    background: $white;
+    cursor: pointer;
+    border: 1px solid $elements;
+    transition: background ease-out 0.5s;
+
+    @include on-tablet {
+      width: 300px;
+    }
+
+    &:hover {
+      background: $primary;
+      border: none;
+      color: $white;
+    }
+  }
+}

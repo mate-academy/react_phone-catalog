@@ -1,0 +1,121 @@
+@import '../buttons/ButtonStyles';
+@import '../../components/styles/mixins';
+
+
+.footer {
+  box-shadow: 0 -1px 0 0 $elements;
+  padding: 32px 0;
+  margin-top: auto;
+
+  @include on-tablet {
+    padding: 0;
+  }
+
+  @include on-desktop {
+    padding: 0;
+  }
+
+  &__content {
+    @include footer-padding-inline;
+
+    display: flex;
+    height: 257px;
+    flex-direction: column;
+    justify-content: space-between;
+    max-width: 1200px;
+
+    @include on-tablet {
+      height: 96px;
+      flex-direction: row;
+      align-items: center;
+    }
+
+    @include on-desktop {
+      height: 96px;
+      flex-direction: row;
+      align-items: center;
+    }
+  }
+
+  &__logo{
+    @include logo;
+
+    height: 32px;
+    width: 89px;
+    margin: 0;
+  }
+
+  &__nav-link {
+    @include link;
+
+    letter-spacing: 1px;
+
+    @include on-tablet {
+      font-weight: 600;
+    }
+
+    @include on-desktop {
+      font-weight: 600;
+    }
+
+    &:active,
+    &:hover {
+      color: $primary;
+    }
+
+    &:hover::after {
+      width: 100%;
+      left: 0;
+    }
+  }
+
+  &__div {
+    display: flex;
+    gap: 20px;
+    flex-direction: column;
+
+    @include on-tablet {
+      flex-direction: row;
+      margin: 0;
+    }
+
+    @include on-desktop {
+      flex-direction: row;
+      margin: 0;
+    }
+  }
+
+  &__button {
+    height: 32px;
+  }
+
+  &__back-top-div {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0 auto;
+
+    &--hidden {
+      visibility: hidden;
+    }
+
+    @include on-tablet {
+     margin: 0;
+    }
+
+    @include on-desktop {
+     margin: 0;
+    }
+  }
+
+  &__back-top-text {
+    @include small-text;
+
+    transition: color ease-out 0.5s;
+    cursor: pointer;
+
+    &:hover {
+      color: $primary;
+    }
+  }
+}

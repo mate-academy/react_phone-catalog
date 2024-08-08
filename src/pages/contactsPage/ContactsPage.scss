@@ -1,0 +1,108 @@
+@import '../../components/styles/mixins';
+@import '../../components/styles/variables';
+
+.contact {
+  @include page-adaptive;
+
+  &__content {
+    display: grid;
+    gap: 64px;
+    grid-template-columns: repeat(6, 1fr);
+
+    @include on-desktop-small {
+      grid-template-columns: repeat(12, 1fr);
+    }
+
+    @include on-desktop {
+      grid-template-columns: repeat(12, 1fr);
+    }
+  }
+
+  &__title {
+    @include h1;
+
+    background-color: $green;
+    color: white;
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    grid-column: span 6;
+
+    @include on-desktop-small {
+      grid-column: span 12;
+    }
+
+    @include on-desktop {
+      grid-column: span 12;
+    }
+  }
+
+  &__info {
+    grid-column: span 6;
+
+    @include on-desktop-small {
+      grid-column: 2 / 5;
+    }
+
+    @include on-desktop {
+      grid-column: 1 / 6;
+    }
+  }
+
+  &__info  p{
+    padding-top: 10px;
+  }
+
+  &__info  h2,
+  &__form  h2 {
+    padding-bottom: 15px;
+  }
+
+  &__form {
+    grid-column: span 6;
+
+    @include on-desktop-small {
+      grid-column: 6 / 11;
+    }
+
+    @include on-desktop {
+      grid-column: 7 / -1;
+    }
+  }
+
+  &__form-group {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-bottom: 15px;
+  }
+
+  &__form label {
+    display: block;
+    margin-bottom: 10px;
+  }
+
+  &__form input, &__form textarea {
+    flex: 1;
+    padding: 12px;
+    margin-bottom: 10px;
+    border: 1px solid $elements;
+  }
+
+  &__form button {
+    @include buttons;
+
+    color: $white;
+    border: none;
+    cursor: pointer;
+    height: 48px;
+    width: 100%;
+    padding: 0;
+    background: $primary;
+  }
+
+  &__form button:hover {
+    background-color: $green;
+  }
+}

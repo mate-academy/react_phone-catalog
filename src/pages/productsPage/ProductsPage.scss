@@ -1,0 +1,58 @@
+@import '../../components/styles/mixins';
+@import '../../components/styles/variables';
+
+.products-page {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  padding: 24px 16px 64px;
+
+  @include on-tablet {
+    padding: 32px 24px 64px;
+  }
+
+  @include on-desktop {
+    max-width: 1200px;
+    padding: 32px 32px 80px;
+  }
+
+  &__title {
+    @include h1;
+    
+    margin: 0 0 8px;
+  }
+
+  &__models-title {
+    @include body-text;
+
+    font-weight: 600;
+    color: $secondary;
+    margin: 0 0 32px;
+  }
+
+  &__phone-cards {
+    display: grid;
+    gap: 32px 16px;
+    margin-top: 20px;
+    grid-template-columns: repeat(1, 1fr);
+
+    @include on-tablet {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include on-desktop-small {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    @include on-desktop {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  &__error {
+    @include h2;
+
+    margin: 50px auto;
+    color: $red;
+  }
+}
