@@ -6,17 +6,10 @@ export const ProductList: React.FC = () => {
 
   useEffect(() => {
     const fetchProductData = async () => {
-      try {
+
         const response = await fetch('../../api/phones.json');
-        if (!response.ok) {
-          throw new Error(`Error fetching data: ${response.statusText}`);
-        }
         const data = await response.json();
-        console.log('Fetched data:', data); // Log the fetched data
         setProducts(data);
-      } catch (error) {
-        console.error('Fetch error:', error);
-      }
     };
 
     fetchProductData();
