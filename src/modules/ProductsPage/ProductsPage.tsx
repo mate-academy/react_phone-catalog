@@ -47,8 +47,8 @@ export const ProductsPage = () => {
     `?sort=${sortByOptions[0].value}&page=1&perPage=${onPageOptions[3].value}`,
   );
 
-  const sort = searchParams.get('sort') || '';
-  const perPage = searchParams.get('perPage') || '';
+  const sort = searchParams.get('sort') || 'age';
+  const perPage = searchParams.get('perPage') || 'all';
   const currentPage = searchParams.get('page') || '';
   const reloadPage = () => {
     window.location.reload();
