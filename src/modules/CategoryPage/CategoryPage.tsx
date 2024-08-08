@@ -2,7 +2,12 @@ import { ProductCard } from '../../components/ProductCard';
 import { Breadcrumbs } from '../../components/Breadcrumbs';
 import { HeadingLevel } from '../../types/HeadingLevel';
 import { Title } from '../../components/Title';
-import { Link, useLocation, useSearchParams } from 'react-router-dom';
+import {
+  Link,
+  useLocation,
+  useNavigate,
+  useSearchParams,
+} from 'react-router-dom';
 import { useAppSelector } from '../../app/hooks';
 import { Product } from '../../types/Product';
 import { useState } from 'react';
@@ -16,6 +21,7 @@ export const CategoryPage = () => {
   const [isOpenPerPage, setIsOpenPerPage] = useState(false);
   const productsFromServer = useAppSelector(state => state.products);
   const location = useLocation();
+  const navigate = useNavigate();
   const path = location.pathname.replace('/', '');
   const products = productsFromServer.filter(
     (product: Product) => product.category === path,
@@ -46,6 +52,10 @@ export const CategoryPage = () => {
 
   const handlePerPage = (amount: number) => {
     setPerPage(amount);
+    navigate({
+      pathname: location.pathname,
+      search: '',
+    });
     setIsOpenPerPage(false);
   };
 

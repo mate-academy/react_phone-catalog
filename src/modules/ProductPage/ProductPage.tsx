@@ -9,6 +9,7 @@ import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import classNames from 'classnames';
 import { cartSlice } from '../../features/cart';
 import { favouriteSlice } from '../../features/favourite';
+import { BackButton } from '../../components/BackButton';
 
 export const ProductPage = () => {
   const dispatch = useAppDispatch();
@@ -30,6 +31,7 @@ export const ProductPage = () => {
     const productToLink: Product = products.filter(
       (item: Product) =>
         item.color === color &&
+        item.capacity === product.capacity &&
         item.category === product.category &&
         item.data.namespaceId === product.data.namespaceId,
     )[0];
@@ -42,6 +44,7 @@ export const ProductPage = () => {
       (item: Product) =>
         item.capacity === capacity &&
         item.category === product.category &&
+        item.color === product.color &&
         item.data.namespaceId === product.data.namespaceId,
     )[0];
 
@@ -50,7 +53,7 @@ export const ProductPage = () => {
 
   const handleAddToCart = () => {
     if (isInCart) {
-      dispatch(cartSlice.actions.removeFromCart(product));
+      dispatch(cartSlice.actions.deleteFromCart(product));
 
       return;
     }
@@ -71,10 +74,7 @@ export const ProductPage = () => {
   return (
     <main>
       <Breadcrumbs />
-      <div className="back">
-        <img src="./img/icons/arrow-left.svg" alt="Arrow left" />
-        <span>Back</span>
-      </div>
+      <BackButton />
       {product && (
         <>
           <Title level={HeadingLevel.h2}>{product.data.name}</Title>

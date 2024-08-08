@@ -18,7 +18,7 @@ export const ProductsSlider: React.FC<Props> = ({
   showFullPrice = false,
 }) => {
   const settings = {
-    infinite: false,
+    infinite: true,
     speed: 500,
     slidesToScroll: 1,
     variableWidth: true,

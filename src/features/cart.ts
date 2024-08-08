@@ -16,5 +16,8 @@ export const cartSlice = createSlice({
 
       return cart;
     },
+    deleteFromCart: (cart, action) => {
+      return cart.filter(product => product.id !== action.payload.id);
+    },
   },
 });

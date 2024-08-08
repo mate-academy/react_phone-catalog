@@ -46,7 +46,7 @@ export const CartPage = () => {
   };
 
   const handleRemove = (product: Product) => {
-    dispatch(cartSlice.actions.removeFromCart(product));
+    dispatch(cartSlice.actions.deleteFromCart(product));
   };
 
   return (

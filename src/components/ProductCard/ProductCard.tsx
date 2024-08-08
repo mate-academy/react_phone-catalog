@@ -23,7 +23,7 @@ export const ProductCard: React.FC<Props> = ({
 
   const handleAddToCart = () => {
     if (isInCart) {
-      dispatch(cartSlice.actions.removeFromCart(product));
+      dispatch(cartSlice.actions.deleteFromCart(product));
 
       return;
     }

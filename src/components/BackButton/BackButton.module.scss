@@ -7,13 +7,11 @@
   gap: 4px;
   cursor: pointer;
   transition: color $hover-transition ease;
-
-  &:hover {
-    color: $accent;
-  }
+  color: $white;
+  font-family: inherit;
 
   &__text {
-    color: $white;
+    color: inherit;
     font-weight: 700;
     font-size: 12px;
     line-height: 15px;
@@ -25,6 +23,10 @@
   &__arrow {
     height: 16px;
     width: 16px;
+  }
+
+  &:hover {
+    color: $accent;
   }
 
   @media (min-width: $tablet) {
