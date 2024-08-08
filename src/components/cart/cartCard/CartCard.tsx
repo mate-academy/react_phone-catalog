@@ -14,7 +14,7 @@ export const CartCard: React.FC<Props> = ({
   setTotalQuantity,
   setTotalPrice,
 }) => {
-  const { setCart, cart} = useContext(ContextApp);
+  const { setCart, cart } = useContext(ContextApp);
   const [isEdited, setIsEdited] = useState(false);
   const [quantity, setQuantity] = useState(product.quantity);
   const [inputValue, setInputValue] = useState(quantity);
@@ -56,13 +56,13 @@ export const CartCard: React.FC<Props> = ({
       return newCart;
     });
 
-     if (itemToRemove) {
-        setTotalPrice(
-          prevState =>
-            prevState - itemToRemove.quantity * itemToRemove.priceDiscount,
-        );
-        setTotalQuantity(prevState => prevState - itemToRemove.quantity);
-      }
+    if (itemToRemove) {
+      setTotalPrice(
+        prevState =>
+          prevState - itemToRemove.quantity * itemToRemove.priceDiscount,
+      );
+      setTotalQuantity(prevState => prevState - itemToRemove.quantity);
+    }
   };
 
   const handleIncrease = () => {

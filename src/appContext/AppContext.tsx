@@ -60,7 +60,6 @@ type AppContextProps = {
   handleClearParams: () => void;
   loadingErr: boolean;
   setLoadingErr: React.Dispatch<React.SetStateAction<boolean>>;
-
 };
 
 type Props = {
@@ -198,7 +197,7 @@ export const AppContext: React.FC<Props> = ({ children }) => {
     }
 
     if (itemExists) {
-      return handleClose(itemExists.id)
+      return handleClose(itemExists.id);
     }
   };
 
@@ -312,7 +311,6 @@ export const AppContext: React.FC<Props> = ({ children }) => {
 
     setSearchParams(new URLSearchParams(searchParams));
   }, [itemsPerPage, activePage, selectedOption, location.pathname]);
-
 
   return (
     <ContextApp.Provider

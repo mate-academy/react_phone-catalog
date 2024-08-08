@@ -61,7 +61,6 @@ export const SectionDashSlider: React.FC = () => {
       <h1 className={Styles.title}>Welcome to Nice Gadgets store!</h1>
 
       <section className={Styles['slider']}>
-
         {isTablet && (
           <div onClick={handleNext} className={Styles.slider__right}></div>
         )}

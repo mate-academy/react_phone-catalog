@@ -95,7 +95,7 @@ export const Header: React.FC = () => {
       {isTablet && (
         <div className={Styles.header__links}>
           <div className={Styles.header__links__theme}>
-          <ThemeSwitcher />
+            <ThemeSwitcher />
           </div>
           <div className={Styles.header__links__fav}>
             <Link
