@@ -1,0 +1,153 @@
+@import '../../variables';
+@import '../../mixins';
+@import '../../fonts';
+@import '../../animations';
+
+
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background-color: white;
+  display: flex;
+  box-sizing: border-box;
+  justify-content: space-between;
+  height: $header-height;
+  box-shadow: 0 1px 0 $elements-color;
+}
+
+.menu {
+  display: flex;
+  gap: 24px;
+  box-sizing: border-box;
+}
+
+.logoLink {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  width: 128px;
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 425px;
+}
+
+.navBtn {
+  position: relative;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-family: Mont, Helvetica, sans-serif;
+  font-weight: 800;
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  line-height: 11px;
+  color: $secondary-color;
+  transition: $transition-duration;
+
+  &:hover {
+    color: $primary-color;
+  }
+}
+
+.isActiveMenu {
+  color: $primary-color;
+
+  &::after {
+    display: block;
+    position: absolute;
+    top: $header-height / 2 + 2.5px;
+    width: 100%;
+    content: '';
+    height: 3px;
+    background-color: $primary-color;
+    transition: $transition-duration;
+    animation: underline $transition-duration linear;
+  }
+}
+
+.icons {
+  display: flex;
+}
+
+.iconBox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  width: $header-height;
+  box-shadow: -1px 0 0 $elements-color;
+}
+
+.favorites {
+  width: 16px;
+  height: 16px;
+  background-image: url('../../../../../public/img/icons/favourites-heart-like.svg');
+}
+
+.cart {
+  width: 16px;
+  height: 16px;
+  background-image: url('../../../../../public/img/icons/shopping-bag-cart.svg');
+}
+
+.iconLink {
+  transition: $transition-duration;
+}
+
+.mobileMenu {
+  display: none;
+}
+
+.iconMobileMenu {
+  width: 16px;
+  height: 16px;
+  background-image: url('../../../../../public/img/icons/menu.svg');
+}
+
+@include on-mobile {
+  .header {
+    height: $header-height-mobile;
+  }
+
+  .nav {
+    display: none;
+  }
+
+  .icons {
+    display: none;
+  }
+
+  .iconBox {
+    width: $header-height-mobile;
+  }
+
+  .mobileMenu {
+    display: flex;
+  }
+}
+
+@include on-tablet {
+  .header {
+    height: $header-height-mobile;
+  }
+
+  .nav {
+    width: 329px;
+  }
+
+  .isActiveMenu::after {
+    top: $header-height-mobile / 2 + 2.5px;
+  }
+
+  .iconBox {
+    width: $header-height-mobile;
+  }
+}
+
+
