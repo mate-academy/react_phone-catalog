@@ -1,0 +1,127 @@
+@import '../../styles/main';
+
+.footer {
+  display: flex;
+  width: 100%;
+  border-top: 1px solid var(--color-elements);
+  box-shadow: 0 -1px 0 0 var(--color-elements);
+
+  background-color: var(--color-background);
+
+  @include on-tablet {
+    height: 96px;
+  }
+}
+
+.wrapper {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  padding: 32px 16px;
+  gap: 32px;
+
+  @include on-tablet {
+    @include section-grid;
+
+    align-items: center;
+    justify-content: center;
+  }
+
+
+}
+
+.logoLink {
+  display: flex;
+  width: 100%;
+  align-items: center;
+
+  @include on-tablet {
+    grid-column: span 4;
+  }
+
+  @include on-desktop {
+    grid-column: span 8;
+  }
+}
+
+.logo {
+  width: 89px;
+  height: 32px;
+}
+
+.nav {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+
+
+  @include on-tablet {
+    grid-column: span 4;
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  @include on-desktop {
+    grid-column: span 8;
+  }
+}
+
+.item {
+  @extend %uppercase-text;
+
+  color: var(--color-secondary);
+
+  cursor: pointer;
+
+  &:hover {
+    color: var(--color-primary);
+  }
+}
+
+.backToTop {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  @include on-tablet {
+    justify-content: flex-end;
+    grid-column: span 4;
+  }
+
+  @include on-desktop {
+    grid-column: span 8;
+  }
+
+}
+
+.backToTopText {
+  @extend %small-text;
+
+  color: var(--color-secondary);
+  text-decoration: none;
+  margin-right: 16px;
+}
+
+.backToTopButton {
+  display: flex;
+  width: 32px;
+  height: 32px;
+  background-color: var(--color-icons);
+  border: 1px solid var(--color-surface);
+  border-radius: 5%;
+  cursor: pointer;
+  justify-content: center;
+  align-items: center;
+
+  &:hover {
+    border: 1px solid var(--color-primary);
+    background-color: var(--color-hover);
+  }
+}
+
+.backToTopIcon {
+  transform : rotate(90deg)
+}
+
