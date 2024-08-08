@@ -1,28 +1,49 @@
-import React from 'react';
-import styles from './ProductList.module.scss';
-import { Breadcrumbs } from '../Breadcrumbs';
+/* import React, { useEffect, useState } from 'react';
+import { ProductCard } from '../ProductCard'; */
+/* import { Product } from '../../types/Product'; */
 
-export const ProductList: React.FC = () => {
-  return (
-    <div className={styles.ProductsPage}>
-      <div className={styles.topContainer}>
-        <Breadcrumbs />
-        <h1 className={styles.title}>
-          Title
-        </h1>
-        <p className={styles.count}>
-          XX
-        </p>
-      </div>
+/* type ProductCardProps = {
+  product: Product; // Oczekiwany typ
+}; */
 
-      <p className={styles.noResult}>
-        There are no category matching your query.
-      </p>
+/* export const ProductList: React.FC<ProductCardProps> = ({product}) => {
+  const [products, setProducts] = useState<any[]>([]); */
 
-      <div className={styles.sortBy}>
-        PLACEHOLDER: DROPDOWN
-      </div>
 
-    </div>
-  )
-}
+  /* useEffect(() => {
+    const fetchProductData = async () => {
+
+        const response = await fetch('../../api/phones.json');
+        const data = await response.json();
+        setProducts(data);
+    };
+
+    fetchProductData();
+  }, []);
+
+  console.log('products after fetch:', products); // Log products after fetch
+  if (products !== undefined) {
+
+
+    return (
+
+
+    <ul>
+      {products.map((product) => (
+        <li key={product.id}>
+          <ProductCard product={product} />
+        </li>
+      ))}
+    </ul>
+    )
+      } else {
+        return (
+          <div>Loading</div>
+        )
+        }
+      }
+
+
+
+
+ */
