@@ -1,0 +1,149 @@
+@use "../../utils/mixins" as *;
+@use "../../utils/themes" as *;
+
+.cart {
+  font-family: Montserrat, sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  width: 100vw;
+  transition: all 0.6s ease-in-out;
+  margin-bottom: 56px;
+
+  @include for-tablet {
+    padding: 24px;
+  }
+
+  &__title {
+    width: 288px;
+    height: 41px;
+    font-size: 32px;
+    font-weight: 800;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+    text-align: left;
+    margin-bottom: 15px;
+    color: var(--title);
+
+    @include for-tablet {
+      width: 100%;
+    }
+  }
+
+  &__items_container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+
+    @include for-tablet {
+      width: 100%;
+    }
+
+    &__paragraph {
+      color: var(--primary-color);
+      width: fit-content;
+      font-size: 32px;
+      font-weight: 800;
+      line-height: 41px;
+      letter-spacing: -0.01em;
+      text-align: left;
+      min-height: 48vh;
+    }
+
+    @include for-desktop {
+      min-height: 60vh;
+    }
+  }
+
+  &__sum_container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    border: 1px solid var(--border-color);
+    height: 190px;
+    width: 288px;
+
+    @include for-tablet {
+      width: 100%;
+      padding: 24px;
+    }
+
+    &__total_price {
+      font-size: 32px;
+      font-weight: 800;
+      line-height: 41px;
+      letter-spacing: -0.01em;
+      text-align: center;
+    }
+
+    &__paragraph {
+      color: var(--secondary-color);
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 21px;
+      text-align: center;
+    }
+
+    &__separator {
+      border: 1px solid var(--border-color);
+      height: 1px;
+      width: 256px;
+
+      @include for-tablet {
+        width: 100%;
+      }
+    }
+
+    &__checkout {
+      height: 50px;
+      width: 240px;
+      color: #FFF;
+      background-color: var(--primary-color);
+      font-weight: 700;
+      font-size: 14px;
+      line-height: 50px;
+      text-align: center;
+
+      @include for-tablet {
+        width: 100%;
+      }
+    }
+  }
+
+  &__dialog {
+    padding: 8px;
+    border-radius: 20px;
+
+    &__button {
+      font-weight: 600;
+      color: #FFF;
+      margin-right: 8px;
+      border-radius: 8px;
+      margin-bottom: 8px;
+      background-color: var(--primary-color);
+      padding: 5px;
+    }
+
+    &__button_close {
+      height: 20px;
+      width: 50px;
+      color: #FFF;
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 20px;
+      text-align: center;
+      border-radius: 8px;
+      margin-bottom: 8px;
+      background-color: var(--primary-color);
+    }
+
+    &__title {
+      margin-bottom: 8px;
+      font-weight: 600;
+      color: var(--primary-color);
+    }
+  }
+}

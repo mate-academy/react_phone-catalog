@@ -1,0 +1,143 @@
+@use '../../../utils/mixins' as *;
+@use "../../../utils/themes" as *;
+;
+
+.title {
+  color: var(--primary-color);
+  font-family: Montserrat, sans-serif;
+  font-weight: 800;
+  font-size: 32px;
+  width: 100%;
+  text-align: center;
+
+  @include for-tablet {
+    font-size: 48px;
+    line-height: 56px;
+    text-align: left;
+    margin-left: 24px;
+    margin-bottom: 40px;
+  }
+}
+
+.slider {
+  overflow: hidden;
+  position: relative;
+  height: 250px;
+  width: 300px;
+  margin: 0 auto 56px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-content: center;
+
+  @include for-tablet {
+    width: 100%;
+    height: 300px;
+    max-width: 1136px;
+    margin-bottom: 56px;
+    justify-content: space-between;
+  }
+
+  &__left {
+    background-image: url(../../../../public/img/svg/arrow_left.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 30%;
+    width: 32px;
+    height: 99%;
+    border: 1px solid var(--icons);
+    position: absolute;
+    top: 0;
+    left: 5px;
+    border-radius: 10px;
+
+    // @include for-tablet {
+    //   height: 300px;
+    // }
+
+    &:hover {
+      box-shadow:
+        3px 3px 3px var(--secondary-color),
+        6px 6px 3px var(--border-color);
+    }
+
+    &:active {
+      background-image: url(../../../../public/img/svg/arrow_left_active.svg);
+    }
+  }
+
+  &__right {
+    background-image: url(../../../../public/img/svg/arrow_right.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 30%;
+    width: 32px;
+    height: 99%;
+    border: 1px solid var(--icons);
+    position: absolute;
+    top: 0;
+    right: 5px;
+    border-radius: 10px;
+
+    // @include for-tablet {
+    //   height: 300px;
+    // }
+
+    &:hover {
+      box-shadow:
+        -3px 3px 3px var(--secondary-color),
+        -6px 6px 3px var(--border-color);
+    }
+
+    &:active {
+      background-image: url(../../../../public/img/svg/arrow_right_active.svg);
+    }
+  }
+
+  &__container {
+    display: flex;
+    overflow: hidden;
+    width: 320px;
+    height: 252px;
+    margin-bottom: 5px;
+    border-radius: 20px;
+
+    @include for-tablet {
+      height: 100%;
+      margin-bottom: 10px;
+      width: 85%;
+    }
+
+    @include for-desktop {
+      top: 160px;
+    }
+  }
+
+  &__pic {
+    object-position: center;
+
+    @include for-tablet {
+      min-width: 100%;
+    }
+  }
+
+  &__picker {
+    display: flex;
+    justify-content: center;
+    width: 288px;
+    height: 4px;
+    cursor: pointer;
+    align-self: center;
+
+    &__dash {
+      width: 14px;
+      height: 4px;
+      margin-right: 15px;
+      background-color: var(--border-color);
+
+      &__selected {
+        background-color: var(--primary-color);
+      }
+    }
+  }
+}

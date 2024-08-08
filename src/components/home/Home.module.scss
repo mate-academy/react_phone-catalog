@@ -1,0 +1,20 @@
+@use '../../utils/mixins' as *;
+
+.home {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  justify-content: center;
+  transition: all 0.6s ease-in-out;
+  height: fit-content;
+  max-width: 1200px;
+  margin: 0 auto;
+
+  // @include for-tablet {
+  //   margin-bottom: 42px;
+  // }
+
+  &__crumbs {
+    display: flex;
+  }
+}

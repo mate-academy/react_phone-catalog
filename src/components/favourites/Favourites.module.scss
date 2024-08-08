@@ -1,0 +1,60 @@
+@use '../../utils/mixins' as *;
+@use '../../utils/themes' as *;
+
+.fav {
+  font-family: Montserrat, sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: auto;
+  min-height: 50vh;
+
+  @include for-tablet {
+    align-items: flex-start;
+    padding: 24px;
+    min-height: 74vh;
+  }
+
+  @include for-desktop {
+    min-height: 80vh;
+  }
+
+  &__padding {
+    padding: 25vh;
+  }
+
+  &__title {
+    font-size: 32px;
+    line-height: 32px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    width: 288px;
+    margin-bottom: 8px;
+    color: var(--title);
+
+    @include for-tablet {
+      font-size: 48px;
+    }
+  }
+
+  &__paragraph {
+    height: 21px;
+    width: 288px;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+    margin-bottom: 32px;
+  }
+
+  &__container {
+    width: 288px;
+    display: flex;
+    flex-direction: column;
+
+    @include for-tablet {
+      width: 100%;
+      justify-content: center;
+      flex-flow: row wrap;
+    }
+  }
+}

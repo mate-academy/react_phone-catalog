@@ -1,0 +1,84 @@
+@use "../../../utils/mixins" as *;
+@use "../../../utils/themes" as *;
+;
+
+.title {
+  font-family: Montserrat, sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  color: var(--primary-color);
+
+  @include for-tablet {
+    font-size: 32px;
+    width: 100%;
+    margin-bottom: 24px;
+  }
+}
+
+.shop_by_category {
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  justify-content: space-between;
+  width: 100%;
+  margin-left: 24px;
+  height: 1000px;
+  margin-bottom: 56px;
+  padding: 0 24px;
+
+  @include for-tablet {
+    width: 100%;
+    flex-flow: row wrap;
+    height: fit-content;
+    margin-bottom: 80px;
+  }
+
+  @include for-desktop {
+    justify-content: center;
+  }
+
+  &__section {
+    align-self: center;
+    margin-left: 50px;
+
+    &__picture {
+      height: 230px;
+      margin-bottom: 24px;
+      border-radius: 20px;
+      border: 1px solid var(--border-color);
+      padding: 10px;
+
+      @include for-tablet {
+        width: 187px;
+        height: 187px;
+      }
+
+      @include for-desktop {
+        width: 250px;
+        height: 250px;
+      }
+
+      &:hover {
+        box-shadow:
+          3px 3px 3px var(--secondary-color),
+          6px 6px 3px var(--border-color);
+      }
+    }
+
+    &__title {
+      font-family: Montserrat, sans-serif;
+      font-weight: 700;
+      line-height: 25px;
+      font-size: 20px;
+      color: var(--primary-color);
+    }
+
+    &__paragraph {
+      font-family: Montserrat, sans-serif;
+      font-weight: 600;
+      font-size: 14px;
+      line-height: 21px;
+      color: var(--secondary-color);
+    }
+  }
+}

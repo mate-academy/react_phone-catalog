@@ -1,0 +1,29 @@
+@mixin for-tablet() {
+  @media (min-width: 640px) {
+    @content;
+  }
+}
+
+@mixin for-desktop() {
+  @media (min-width: 1200px) {
+    @content;
+  }
+}
+
+@mixin grid {
+  @include for-tablet {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: auto;
+    column-gap: 16px;
+    padding: 0 24px;
+  }
+
+  @include for-desktop {
+    display: grid;
+    margin: 0 auto;
+    grid-template-columns: repeat(24, 32px);
+    column-gap: 16px;
+    padding: 0 24px;
+  }
+}

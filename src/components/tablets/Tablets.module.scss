@@ -1,0 +1,120 @@
+@use "../../utils/mixins" as *;
+@use "../../utils/themes" as *;
+
+.tablets {
+  font-family: Montserrat, sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  @include for-tablet {
+    align-items: flex-start;
+    padding-left: 45px;
+    margin-bottom: 42px;
+  }
+
+  &__no_item {
+    line-height: 48px;
+    font-size: 48px;
+    font-weight: 800;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 8px;
+  }
+
+  &__head {
+    &__title {
+      line-height: 32px;
+      font-size: 32px;
+      font-weight: 800;
+      margin-bottom: 8px;
+      width: 288px;
+
+      @include for-tablet {
+        width: 600px;
+      }
+    }
+
+    &__paragraph {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--secondary-color);
+      margin-bottom: 32px;
+    }
+  }
+
+  &__filters {
+    display: flex;
+    justify-content: space-between;
+    height: 60px;
+    width: 288px;
+    margin: 0 auto 24px;
+
+    @include for-tablet {
+      width: 600px;
+      justify-content: flex-start;
+      margin: 0 0 24px;
+    }
+
+
+    &__sort {
+      width: 136px;
+
+      @include for-tablet {
+        margin-right: 15px;
+      }
+
+      &__paragraph {
+        font-size: 12px;
+        font-weight: 700;
+        color: var(--secondary-color);
+      }
+
+      &__select {
+        width: 100%;
+        height: 40px;
+        border: 1px solid var(--icons);
+        border-radius: 10px;
+      }
+    }
+
+    &__items {
+      width: 136px;
+
+      &__paragraph {
+        font-size: 12px;
+        font-weight: 700;
+        color: var(--secondary-color);
+      }
+
+      &__select {
+        width: 100%;
+        height: 40px;
+        border: 1px solid var(--icons);
+        border-radius: 10px;
+      }
+    }
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    width: 288px;
+    max-width: 1136px;
+    align-items: center;
+    margin: 0 auto;
+
+    @include for-tablet {
+      flex-flow: row wrap;
+      align-self: center;
+      width: 100%;
+      margin: 0 0 64px;
+    }
+  }
+
+  &__choose_page {
+    display: flex;
+    align-self: center;
+    justify-content: center;
+  }
+}

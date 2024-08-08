@@ -1,0 +1,52 @@
+@use "../../utils/mixins" as *;
+@use "../../utils/themes" as *;
+
+.crumbs {
+  display: flex;
+  gap: 8px;
+  font-family: Montserrat, sans-serif;
+  margin-bottom: 24px;
+  width: 288px;
+  height: 16px;
+  grid-area: crumbs;
+
+  @include for-tablet {
+    grid-column: 1 / 4;
+    grid-row: 1 / 2;
+    margin-bottom: 40px;
+  }
+
+  &__item {
+    height: 12px;
+    width: 12px;
+
+    &:hover {
+      scale: 120%;
+    }
+  }
+
+  &__paragraph {
+    color: var(--primary-color);
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 16px;
+    text-align: left;
+    width: fit-content;
+    overflow: hidden;
+
+    &:hover {
+      scale: 120%;
+    }
+  }
+
+  &__details {
+    color: var(--primary-color);
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 16px;
+    text-align: left;
+    width: fit-content;
+    overflow: hidden;
+  }
+
+}

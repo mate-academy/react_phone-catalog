@@ -1,0 +1,97 @@
+@use "../../utils/mixins" as *;
+@use "../../utils/themes" as *;
+
+.brand_new_models {
+  overflow: hidden;
+
+  &__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 62px;
+    padding: 0 24px;
+    margin: 0 auto 24px;
+  }
+
+  &__title {
+    color: var(--primary-color);
+    font-size: 22px;
+    font-weight: 800;
+    width: 136px;
+    font-family: Montserrat, sans-serif;
+
+    @include for-tablet {
+      width: 100%;
+      font-size: 32px;
+    }
+
+    @include for-desktop {
+      width: 1150px;
+    }
+  }
+
+  &__button {
+    height: 32px;
+    width: 80px;
+    display: flex;
+    justify-content: space-between;
+
+    &__left {
+      border: 1px solid var(--border-color);
+      height: 32px;
+      width: 32px;
+      background-image: url(../../../public/img/svg/arrow_left.svg);
+      background-repeat: no-repeat;
+      background-position: center;
+
+      &:hover {
+        box-shadow:
+          3px 3px 3px var(--secondary-color),
+          6px 6px 3px var(--border-color);
+      }
+
+      &:active {
+        background-image: url(../../../public/img/svg/arrow_left_active.svg);
+      }
+    }
+
+    &__right {
+      border: 1px solid var(--border-color);
+      height: 32px;
+      width: 32px;
+      background-image: url(../../../public/img/svg/arrow_right.svg);
+      background-repeat: no-repeat;
+      background-position: center;
+
+      &:hover {
+        box-shadow:
+          -3px 3px 3px var(--secondary-color),
+          -6px 6px 3px var(--border-color);
+      }
+
+      &:active {
+        background-image: url(../../../public/img/svg/arrow_right_active.svg);
+      }
+    }
+  }
+
+  &__slider {
+    display: flex;
+    align-content: center;
+    width: 530px;
+    overflow: hidden;
+    margin: 0 auto;
+    margin-bottom: 56px;
+
+    @include for-tablet {
+      width: 795px;
+      margin-bottom: 80px;
+    }
+
+    @include for-desktop {
+      width: 1060px;
+      margin-bottom: 80px;
+    }
+  }
+}

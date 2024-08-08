@@ -1,0 +1,98 @@
+@use "../../../utils/mixins" as *;
+@use "../../../utils/themes" as *;
+
+.cartCard {
+  width: 288px;
+  height: 160px;
+  border: 1px solid var(--border-color);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  margin-bottom: 15px;
+
+  @include for-tablet {
+    width: 100%;
+    align-items: center;
+    flex-direction: row;
+  }
+
+  &__product {
+    display: flex;
+    height: 80px;
+    justify-content: space-evenly;
+    align-items: center;
+
+    @include for-tablet {
+      width: 60%;
+    }
+
+    &__closeButton {
+      width: 15px;
+
+      &.spin:hover {
+        transform: rotate(90deg);
+      }
+    }
+
+    &__img {
+      width: 65px;
+    }
+
+    &__paragraph {
+      width: 130px;
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 21px;
+      text-align: left;
+    }
+  }
+
+  &__container {
+    display: flex;
+    justify-content: space-around;
+
+    @include for-tablet {
+      width: 40%;
+    }
+
+    &__quantity {
+      display: flex;
+
+      &__item {
+        height: 32px;
+        width: 32px;
+        text-align: center;
+        line-height: 32px;
+        font-weight: 600;
+        font-size: 14px;
+        cursor: pointer;
+
+        .scale:hover {
+          scale: 130%;
+        }
+      }
+
+      &__item.border {
+        border: 1px solid var(--icons);
+      }
+
+      &__input {
+        height: 32px;
+        width: 32px;
+        text-align: center;
+        line-height: 32px;
+        font-weight: 600;
+        font-size: 14px;
+        cursor: pointer;
+      }
+    }
+
+    &__price {
+      width: 150px;
+      text-align: end;
+      font-size: 22px;
+      font-weight: 800;
+      line-height: 32px;
+    }
+  }
+}

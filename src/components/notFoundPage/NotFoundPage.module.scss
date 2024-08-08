@@ -1,0 +1,17 @@
+.not {
+
+  &__paragraph {
+    font-family: Montserrat, sans-serif;
+    font-size: 14px;
+    display: flex;
+    flex-direction: column;
+    font-weight: 800;
+    align-items: center;
+  }
+
+  &__img {
+    height: 70vh;
+  }
+}
+
+;

@@ -1,0 +1,62 @@
+@use "../../utils/themes" as *;
+
+.theme_switch {
+  display: inline-block;
+  height: 18px;
+  position: relative;
+  width: 36px;
+
+  &__paragraph {
+    font-family: Montserrat, sans-serif;
+    font-weight: 600;
+    margin-right: 20px;
+  }
+
+  input {
+    display: none;
+  }
+
+  &__wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+}
+
+.slider {
+  background-color: #ccc;
+  cursor: pointer;
+  position: absolute;
+  inset: 0;
+  transition: 0.4s;
+
+  &::before {
+    background-color: #fff;
+    bottom: 4px;
+    content: "";
+    height: 14px;
+    top: 2px;
+    left: 2px;
+    position: absolute;
+    transition: 0.4s;
+    width: 14px;
+  }
+
+  &.round {
+    border-radius: 34px;
+
+    &::before {
+      border-radius: 50%;
+    }
+  }
+}
+
+input:checked {
+  &+.slider {
+    background-color: var(--border-color);
+
+    &::before {
+      transform: translateX(18px);
+    }
+  }
+}

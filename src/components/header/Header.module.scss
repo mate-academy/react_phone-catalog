@@ -1,0 +1,304 @@
+@use "../../utils/themes" as *;
+@use "../../utils/mixins" as *;
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  border-bottom: 1px solid var(--border-color);
+  font-family: Montserrat, sans-serif;
+  transition: all 0.6s ease-in-out;
+  margin-bottom: 1px;
+
+  @include for-tablet {
+    height: 64px;
+  }
+
+  &__container--1,
+  &__container--2 {
+    display: flex;
+    height: 48px;
+    width: fit-content;
+
+    @include for-tablet {
+      height: 68px;
+    }
+  }
+
+  &__container--1 {
+
+    &__link {
+      width: 96px;
+      height: 100%;
+      margin-right: 20px;
+    }
+  }
+
+  &__links {
+    display: flex;
+    justify-content: end;
+    height: 48px;
+
+    @include for-tablet {
+      height: 64px;
+    }
+
+    &__theme {
+      width: 48px;
+      height: 48px;
+      border: 1px solid var(--border-color);
+      border-right: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      @include for-tablet {
+        width: 64px;
+        height: 64px;
+      }
+    }
+
+    &__fav {
+      width: 48px;
+      height: 48px;
+      border: 1px solid var(--border-color);
+      border-right: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      &__link {
+        position: relative;
+
+        &:hover {
+          scale: 115%;
+        }
+      }
+
+      @include for-tablet {
+        width: 64px;
+        height: 64px;
+      }
+
+      &__number {
+        font-family: Montserrat, sans-serif;
+        color: #FFF;
+        font-weight: 600;
+        background-color: red;
+        width: 11px;
+        height: 11px;
+        font-size: 10px;
+        line-height: 11px;
+        border-radius: 50%;
+        text-align: center;
+        position: absolute;
+        top: -5px;
+        right: -5px;
+      }
+    }
+
+    &__cart {
+      width: 48px;
+      height: 48px;
+      border: 1px solid var(--border-color);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+
+
+      @include for-tablet {
+        width: 64px;
+        height: 64px;
+      }
+
+      &__link {
+        position: relative;
+
+        &:hover {
+          scale: 115%;
+        }
+      }
+
+      &__number {
+        color: #FFF;
+        background-color: red;
+        width: 11px;
+        height: 11px;
+        font-size: 10px;
+        line-height: 11px;
+        border-radius: 50%;
+        text-align: center;
+        position: absolute;
+        top: -5px;
+        right: -5px;
+      }
+    }
+  }
+
+  &__burger_menu {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    max-height: calc(100vh - 49px);
+    top: 50px;
+    width: 100vw;
+    bottom: 0;
+    overflow: auto;
+    right: 0;
+    z-index: 10;
+    background-color: var(--background-color);
+    transform: translateX(100%);
+    border-bottom: 1px solid var(--border-color);
+
+    &__list {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      height: 156px;
+      width: 288px;
+      margin-top: 32px;
+
+      &__element {
+        position: relative;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        font-size: 12px;
+        font-weight: 800;
+        color: var(--header-element);
+
+        &:hover {
+          scale: 120%;
+          border-bottom: 2px solid black;
+        }
+      }
+    }
+
+    &__footer {
+      display: flex;
+      height: 64px;
+      width: 100%;
+
+      &__fav {
+        width: 40%;
+        height: 64px;
+        border: 1px solid var(--border-color);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        &__link {
+          position: relative;
+        }
+
+        &__number {
+          font-family: Montserrat, sans-serif;
+          color: #FFF;
+          font-weight: 600;
+          background-color: red;
+          width: 11px;
+          height: 11px;
+          font-size: 10px;
+          line-height: 11px;
+          border-radius: 50%;
+          text-align: center;
+          position: absolute;
+          top: -5px;
+          right: -5px;
+        }
+      }
+
+      &__theme {
+        position: relative;
+        width: 20%;
+        height: 64px;
+        border-top: 1px solid var(--border-color);
+        border-bottom: 1px solid var(--border-color);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      &__cart {
+        position: relative;
+        width: 40%;
+        height: 64px;
+        border: 1px solid var(--border-color);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        &__number {
+          color: #FFF;
+          background-color: red;
+          width: 11px;
+          height: 11px;
+          font-size: 10px;
+          line-height: 11px;
+          border-radius: 50%;
+          text-align: center;
+          position: absolute;
+          top: 20px;
+          left: 165px;
+        }
+      }
+    }
+  }
+
+  &__nav {
+    height: 48px;
+
+    @include for-tablet {
+      width: 420px;
+    }
+
+    &__list {
+      display: flex;
+      justify-content: space-between;
+      list-style: none;
+      padding: 0;
+
+      &__element {
+        width: fit-content;
+        text-transform: uppercase;
+        color: var(--header-element);
+        font-weight: 800;
+        font-size: 12px;
+        line-height: 48px;
+        letter-spacing: 2px;
+        padding: 0 5px;
+
+        &:hover {
+          scale: 115%;
+        }
+
+        &.with-after::after {
+          content: '';
+          width: 100%;
+          height: 2px;
+          border: 1px solid var(--primary-color);
+          display: block;
+        }
+
+        @include for-tablet {
+          line-height: 64px;
+        }
+      }
+    }
+  }
+
+  &__burger {
+    display: flex;
+    width: 48px;
+    align-items: center;
+    border: 1px solid var(--border-color);
+
+    &__img {
+      margin: auto;
+    }
+  }
+}
