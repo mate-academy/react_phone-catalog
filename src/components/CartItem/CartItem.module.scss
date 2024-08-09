@@ -1,5 +1,65 @@
 @import '../../styles/main';
 
-// .cart-item {
+.cart-item {
+  @include page-grid;
 
-// }
+  grid-template-columns: repeat(auto-fit, minmax(256px, auto));
+  align-items: center;
+  border: 1px solid $elements-gray;
+  padding: 16px;
+  gap: 16px;
+
+  @include on-tablet {
+    gap: 24px;
+  }
+
+  &__block {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+
+    gap: 16px;
+
+    @include on-tablet {
+      gap: 24px;
+    }
+
+    &:last-child {
+      @include on-tablet {
+        justify-content: flex-end;
+      }
+    }
+  }
+
+  &__img-link {
+    width: 88px;
+    height: 88px;
+    padding: 11px;
+    display: flex;
+  }
+
+  &__img {
+    // width: 100%;
+    width: 66px;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  &__title {
+    min-width: 128px;
+
+    @include on-tablet {
+      min-width: 176px;
+    }
+  }
+
+  &__control-buttons {
+    width: 96px;
+    height: 32px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+}

@@ -3,6 +3,7 @@ import styles from './Card.module.scss';
 import { useState } from 'react';
 import { CardDetail } from '../CardDetail/CardDetail';
 import { Icon } from '../ui/Icon';
+import { CardButton } from '../ui/CardButton';
 
 export const Card = () => {
   const [isFavorite, setIsFavorite] = useState(false);
@@ -30,7 +31,7 @@ export const Card = () => {
       <CardDetail label="RAM" value="6 GB" />
 
       <div className={styles.card__buttons}>
-        <button
+        {/* <button
           className={classNames(
             'button-text',
             styles.card__btn,
@@ -38,7 +39,14 @@ export const Card = () => {
           )}
         >
           Add to cart
-        </button>
+        </button> */}
+        <CardButton
+          variant="primary"
+          /* eslint-disable-next-line no-console */
+          onClick={() => console.log('Checkout')}
+        >
+          Add to cart
+        </CardButton>
         <button
           className={classNames(
             styles.card__btn,

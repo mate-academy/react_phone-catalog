@@ -34,3 +34,31 @@
     border-color: $primary-gray;
   }
 }
+
+// Control button styles
+.control-btn {
+  width: 32px;
+  height: 32px;
+  background-color: $white;
+  color: $primary-gray;
+  border: 1px solid $icons-placeholders-gray;
+
+  &:hover {
+    border-color: $primary-gray;
+  }
+
+  &:not(.btn--disabled):active {
+    transform: scale(0.9);
+  }
+
+  &--disabled {
+    color: $icons-placeholders-gray;
+    border-color: $icons-placeholders-gray;
+    cursor: not-allowed;
+
+    &:hover {
+      border-color: $icons-placeholders-gray;
+    }
+  }
+}
+
