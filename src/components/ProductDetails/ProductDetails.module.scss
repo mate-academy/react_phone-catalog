@@ -1,0 +1,202 @@
+@import '../../styles/index';
+
+.product {
+  margin-top: 16px;
+
+  &__backBtn {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    margin: 40px 0 16px;
+    color: $secondary-text-color;
+
+    p {
+      padding-top: 2px;
+    }
+  }
+
+  &__details {
+    @include flex;
+
+    margin-top: 40px;
+  }
+
+  &__images {
+    display: flex;
+    gap: 16px;
+  }
+
+  &__imagesWrapper {
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: column;
+  }
+
+  &__imageSelected {
+    display: flex;
+    justify-content: center;
+    width: 464px;
+
+    img {
+      height: 464px;
+    }
+  }
+
+  &__image {
+    height: 80px;
+    width: 80px;
+    padding: 8px;
+    object-fit: contain;
+    border: 1px solid $elements-color;
+    border-radius: 8px;
+    cursor: pointer;
+
+    &__active {
+      border: 1px solid $main-text-color;
+    }
+  }
+
+  &__info {
+    @include flex;
+
+    gap: 15px;
+  }
+
+  &__infoWrapper {
+    width: 320px;
+  }
+
+  &__idNum {
+    width: 176px;
+    text-align: right;
+    color: $grey-color;
+  }
+
+  &__btns {
+    @include flex;
+
+    gap: 8px;
+    margin-top: 16px;
+
+    > :first-child {
+      width: 100%;
+    }
+  }
+
+  &__characteristics {
+    margin-top: 32px;
+    > :not(:last-child) {
+      margin-bottom: 8px;
+    }
+  }
+
+  &__characteristic {
+    @include flex;
+
+    font-size: 12px;
+    font-weight: 600;
+
+    &__name {
+      color: $secondary-text-color;
+    }
+  }
+
+  &__divider {
+    @include divider;
+  }
+
+  &__text {
+    color: $secondary-text-color;
+  }
+
+  &__optionsAvailable {
+    display: flex;
+    gap: 8px;
+    margin-top: 8px;
+    margin-bottom: 24px;
+  }
+
+  &__colorBtn {
+    width: 32px;
+    height: 32px;
+    background-color: $white-color;
+    border: 1px solid $elements-color;
+    border-radius: 36px;
+  }
+
+  &__color {
+    display: block;
+    width: 30px;
+    height: 30px;
+    border: 2px solid white;
+    border-radius: 36px;
+  }
+
+  &__colorActive {
+    border-color: $main-text-color;
+  }
+
+  &__capacityWrapper {
+    margin-top: 24px;
+  }
+
+  &__capacity {
+    border: 1px solid $elements-color;
+    border-radius: 4px;
+    padding: 7px 8px;
+  }
+
+  &__capacityActive {
+    background-color: $main-text-color;
+    color: $white-color;
+  }
+
+  &__prices {
+    margin-top: 32px;
+  }
+
+  &__description {
+    @include flex;
+
+    gap: 65px;
+    margin-top: 80px;
+  }
+
+  &__about,
+  &__tech {
+    width: 50%;
+  }
+
+  &__aboutWrapper {
+    margin-top: 32px;
+  }
+
+  &__aboutDesc {
+    margin-top: 16px;
+    font-weight: 500;
+    color: $secondary-text-color;
+  }
+
+  &__techSpecs {
+    margin-top: 25px;
+  }
+
+  &__spec {
+    @include flex;
+
+    margin-bottom: 8px;
+  }
+
+  &__specName {
+    font-weight: 500;
+    color: $secondary-text-color;
+  }
+
+  &__specValue {
+    font-weight: 500;
+  }
+
+  &__recommendations {
+    margin-top: 80px;
+  }
+}

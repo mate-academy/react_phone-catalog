@@ -6,33 +6,24 @@
 }
 
 .swiper-button-next-brandNew,
-.swiper-button-next-hotPrices {
+.swiper-button-next-hotPrices,
+.swiper-button-next-recommendations {
   svg {
     rotate: 180deg;
   }
 }
 
 .swiper-button-prev-brandNew,
-.swiper-button-next-brandNew,
+.swiper-button-next-brandNew {
+  @include swiper-buttons;
+}
+
 .swiper-button-prev-hotPrices,
 .swiper-button-next-hotPrices {
-  @include slider-button;
-  @include button;
+  @include swiper-buttons;
+}
 
-  margin: 0;
-
-  &:not(:disabled) {
-    @include hover((border-color, $main-text-color));
-  }
-
-  &::after {
-    content: '';
-  }
-
-  &:disabled {
-    cursor: auto;
-    svg {
-      fill: $grey-color;
-    }
-  }
+.swiper-button-next-recommendations,
+.swiper-button-prev-recommendations {
+  @include swiper-buttons;
 }

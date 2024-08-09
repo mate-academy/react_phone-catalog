@@ -24,14 +24,20 @@ export async function getProducts(): Promise<Product[]> {
 }
 
 export async function getPhones(): Promise<CategoryProduct[]> {
+  await wait(400);
+
   return fetch(BASE_URL + '/phones.json').then(handleResponse);
 }
 
 export async function getTablets(): Promise<CategoryProduct[]> {
+  await wait(400);
+
   return fetch(BASE_URL + '/tablets.json').then(handleResponse);
 }
 
 export async function getAccessories(): Promise<CategoryProduct[]> {
+  await wait(400);
+
   return fetch(BASE_URL + '/accessories.json').then(handleResponse);
 }
 

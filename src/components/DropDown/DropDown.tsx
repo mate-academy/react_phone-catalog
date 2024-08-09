@@ -4,7 +4,7 @@ import styles from './DropDown.module.scss';
 import { itemsPerPage, sortOptions } from '../../constants/sortTypes';
 import { ArrowIcon } from '../Icons/ArrowIcon';
 import { useSearchParams } from 'react-router-dom';
-import { getSearchWith } from '../../utils/functions';
+import { getSearchWith } from '../../utils/searchParams';
 import { Params } from '../../types/Params';
 
 export const DropDown: React.FC = () => {

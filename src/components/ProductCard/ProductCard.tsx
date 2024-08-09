@@ -6,14 +6,27 @@ import { Product } from '../../types/Product';
 import { useFavouriteProducts } from '../../store/FavouriteProductsContext';
 
 import { FavouritesButton } from '../FavouritesButton/FavouritesButton';
+import { Link } from 'react-router-dom';
+import { PriceBlock } from '../PriceBlock';
 
 type Props = {
   product: Product;
-  type?: string;
 };
 
-export const ProductCard: React.FC<Props> = ({ product, type }) => {
-  const { id, name, fullPrice, price, screen, capacity, ram, image } = product;
+export const ProductCard: React.FC<Props> = ({ product }) => {
+  const {
+    id,
+    category,
+    itemId,
+    name,
+    fullPrice,
+    price,
+    screen,
+    capacity,
+    ram,
+    image,
+  } = product;
+
   const techValueClassName = classNames(
     'text-small',
     styles.productCard__techValue,
@@ -21,22 +34,19 @@ export const ProductCard: React.FC<Props> = ({ product, type }) => {
 
   const { handleFavourites } = useFavouriteProducts();
 
+  const link = `/${category}/${itemId}`;
+
   return (
     <div className={styles.productCard}>
-      <a className={styles.productCard__imgWrapper}>
+      <Link to={link} className={styles.productCard__imgWrapper}>
         <img className={styles.productCard__img} src={image} alt="product" />
-      </a>
+      </Link>
       <div>
-        <p className="text-body">{name}</p>
+        <Link to={link}>
+          <p className="text-body">{name}</p>
+        </Link>
 
-        {type === 'brandNew' ? (
-          <h3>${fullPrice}</h3>
-        ) : (
-          <div className={styles.productCard__priceWrapper}>
-            <h3>${price}</h3>
-            <h3 className={styles.productCard__fullPrice}>${fullPrice}</h3>
-          </div>
-        )}
+        <PriceBlock price={fullPrice} priceDiscount={price} />
 
         <div className={styles.productCard__divider}></div>
 

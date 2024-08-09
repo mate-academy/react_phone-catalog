@@ -11,7 +11,9 @@ import { FavouritesPage } from './modules/FavouritesPage/FavouritesPage';
 import { CartPage } from './modules/CartPage';
 import { FavouriteProductsProvider } from './store/FavouriteProductsContext';
 import { CatalogPage } from './modules/CatalogPage/CatalogPage';
-import { CATEGORY_TYPE } from './constants/categoryTypes';
+import { ProductDetailsPage } from './modules/ProductDetailsPage';
+
+const categories = ['phones', 'tablets', 'accessories'];
 
 export const Root = () => {
   return (
@@ -23,18 +25,17 @@ export const Root = () => {
             <Route path="home" element={<Navigate to="/" replace />} />
             <Route path="favourites" element={<FavouritesPage />} />
             <Route path="cart" element={<CartPage />} />
-            <Route
-              path="phones"
-              element={<CatalogPage productType={CATEGORY_TYPE.PHONES} />}
-            />
-            <Route
-              path="tablets"
-              element={<CatalogPage productType={CATEGORY_TYPE.TABLETS} />}
-            />
-            <Route
-              path="accessories"
-              element={<CatalogPage productType={CATEGORY_TYPE.ACCESSORIES} />}
-            />
+
+            {categories.map(category => (
+              <Route path={category} key={category}>
+                <Route index element={<CatalogPage productType={category} />} />
+                <Route
+                  path=":productId"
+                  element={<ProductDetailsPage productType={category} />}
+                />
+              </Route>
+            ))}
+
             <Route path="*" element={<NotFoundPage />} />
           </Route>
         </Routes>

@@ -4,7 +4,7 @@ import { Link, useSearchParams } from 'react-router-dom';
 
 import styles from './Pagination.module.scss';
 import { ArrowIcon } from '../Icons/ArrowIcon';
-import { getSearchWith } from '../../utils/functions';
+import { getSearchWith } from '../../utils/searchParams';
 import { useEffect, useMemo, useState } from 'react';
 
 type Props = {

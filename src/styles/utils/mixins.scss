@@ -64,3 +64,32 @@
   max-width: 1136px;
   margin: 0 auto;
 }
+
+@mixin divider {
+  background-color: $elements-color;
+  width: 100%;
+  height: 1px;
+  margin: 8px 0;
+}
+
+@mixin swiper-buttons {
+  @include slider-button;
+  @include button;
+
+  margin: 0;
+
+  &:not(:disabled) {
+    @include hover((border-color, $main-text-color));
+  }
+
+  &::after {
+    content: '';
+  }
+
+  &:disabled {
+    cursor: auto;
+    svg {
+      fill: $grey-color;
+    }
+  }
+}

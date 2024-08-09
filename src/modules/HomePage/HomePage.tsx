@@ -27,9 +27,12 @@ export const HomePage = () => {
 
   const newModels = products
     .filter(product => product.name.includes(NEW_MODEL))
-    .sort((a, b) => b.fullPrice - a.fullPrice);
+    .sort((a, b) => b.price - a.price)
+    .slice(0, 12);
 
-  const hotPricesModels = products.sort((a, b) => b.price - a.price);
+  const hotPricesModels = products
+    .sort((a, b) => b.fullPrice - b.price - (a.fullPrice - a.price))
+    .slice(0, 12);
 
   return (
     <div className={styles.homePage}>
