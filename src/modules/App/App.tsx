@@ -1,7 +1,7 @@
 import './App.scss';
 import { Header } from '../../components/Header';
 import { Footer } from '../../components/Footer';
-import { Outlet } from 'react-router-dom';
+import { Outlet, useLocation } from 'react-router-dom';
 import { useEffect } from 'react';
 import {
   getAccessories,
@@ -15,6 +15,15 @@ import { Product } from '../../types/Product';
 
 export const App = () => {
   const dispatch = useAppDispatch();
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: 'smooth',
+    });
+  }, [pathname]);
 
   useEffect(() => {
     const fetchAndMergeData = async () => {

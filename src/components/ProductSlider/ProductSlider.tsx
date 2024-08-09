@@ -1,10 +1,10 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 import Slider from 'react-slick';
 import React from 'react';
-import { Product } from '../../types/Product';
+import { ProductData } from '../../types/ProductData';
 
 interface Props {
-  product: Product;
+  product: ProductData;
 }
 
 export const ProductSlider: React.FC<Props> = ({ product }) => {
@@ -12,7 +12,7 @@ export const ProductSlider: React.FC<Props> = ({ product }) => {
     customPaging: function (i: number) {
       return (
         <img
-          src={product.data.images[i]}
+          src={product.images[i]}
           alt={product.name}
           className="slider-dot"
         />
@@ -30,7 +30,7 @@ export const ProductSlider: React.FC<Props> = ({ product }) => {
   return (
     <div className="product-slider">
       <Slider {...settings}>
-        {product.data.images.map((img, index) => (
+        {product.images.map((img, index) => (
           <div key={index} className="product-slider__image-container">
             <img
               src={img}
