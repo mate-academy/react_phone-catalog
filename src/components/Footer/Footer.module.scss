@@ -1,0 +1,101 @@
+@import '../../scss/variables';
+
+footer {
+  border-top: 1px solid #333;
+  display: flex;
+  justify-content: center;
+}
+
+.root {
+  width: $container-width;
+  position: relative;
+  bottom: 0;
+  padding: 32px 16px;
+  text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  > h5 {
+    text-align: justify;
+    text-transform: uppercase;
+    cursor: pointer;
+  }
+
+  @media (max-width: 500px) {
+    flex-direction: column;
+    align-items: start;
+  }
+}
+
+.backToTop {
+  cursor: pointer;
+
+  @media (max-width: 500px) {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+  }
+
+  > a {
+    color: $gray;
+    font-size: 12px;
+    font-weight: 700;
+    transition: 0.3s;
+    display: flex;
+    align-items: center;
+    &:hover {
+      color: $text-color;
+    }
+  }
+  button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    width: 32px;
+    height: 32px;
+    background-color: $button-color;
+    border: none;
+    margin-left: 16px;
+  }
+  .arrowUp {
+    size: 20px;
+    color: $text-color;
+  }
+}
+
+.links {
+  :nth-child(2) {
+    margin: 0 clamp(1.25rem, -4.464rem + 14.29vw, 6.25rem);
+  }
+
+  @media (max-width: 500px) {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    margin: 32px 0;
+
+    :nth-child(2) {
+      margin: 16px 0;
+    }
+  }
+
+  > a {
+    color: $text-color;
+    text-decoration: none;
+    margin: 0 10px;
+    font-size: 12px;
+    font-weight: 800;
+    text-transform: uppercase;
+    transition: 0.3s;
+
+    &:hover {
+      color: #75767f;
+    }
+
+    @media (max-width: 500px) {
+      margin: 0;
+    }
+  }
+}

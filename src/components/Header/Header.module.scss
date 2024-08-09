@@ -1,0 +1,226 @@
+@import '../../scss/variables';
+
+.root {
+  text-align: center;
+  border-top: 1px solid #333;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #333;
+  height: 75px;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  background-color: $background;
+  z-index: 6;
+}
+
+.topBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  @media (max-width: 600px) {
+    width: 100%;
+    height: 100%;
+  }
+
+  h5 {
+    text-align: justify;
+    text-transform: uppercase;
+    margin: clamp(0.75rem, 0.188rem + 1.5vw, 1.125rem)
+      clamp(2rem, 0.313rem + 4.5vw, 3.125rem)
+      clamp(0.75rem, 0.188rem + 1.5vw, 1.125rem) 24px;
+    cursor: pointer;
+  }
+}
+
+.menuToggle {
+  display: none;
+
+  @media (max-width: 600px) {
+    display: flex;
+    height: 100%;
+  }
+  i {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: clamp(3rem, 2.813rem + 3vw, 4.688rem);
+    border-left: 1px solid #333;
+    transition: 0.3s;
+    &:hover {
+      background-color: #4a4d58;
+    }
+  }
+}
+
+.categories {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  justify-content: space-between;
+  ul {
+    display: flex;
+    height: 100%;
+    > li {
+      height: 100%;
+      position: relative;
+      margin-right: clamp(2rem, -0.286rem + 5.71vw, 4rem);
+    }
+  }
+  .a {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    color: $gray;
+    text-transform: uppercase;
+    font-size: 12px;
+    transition: 0.3s;
+    &:hover,
+    &__active {
+      display: flex;
+      align-items: center;
+      height: 100%;
+      text-transform: uppercase;
+      font-size: 12px;
+      transition: 0.3s;
+      color: $text-color;
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 2px;
+        background-color: $text-color;
+      }
+    }
+  }
+  .icons {
+    display: flex;
+    height: 100%;
+    i {
+      position: relative;
+    }
+    a {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+      width: clamp(3rem, 2.813rem + 3vw, 4.688rem);
+      border-left: 1px solid #333;
+      transition: 0.3s;
+      &:hover {
+        background-color: #4a4d58;
+      }
+    }
+  }
+
+  @media (max-width: 600px) {
+    flex-direction: column;
+    align-items: center;
+    position: fixed;
+    width: 100%;
+    height: calc(100% - 75px);
+    background-color: $background;
+    z-index: 3;
+    transform: translateY(-100%);
+    transition: transform 0.5s ease;
+
+    ul {
+      position: relative;
+      margin-top: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      height: 288px;
+
+      li {
+        margin-bottom: 15px;
+        margin-right: 0;
+        > a {
+          color: $gray;
+          text-transform: uppercase;
+          font-size: 1.5rem;
+          transition: 0.3s;
+          margin-bottom: 15px;
+        }
+      }
+    }
+
+    .icons {
+      display: flex;
+      width: 100%;
+      position: absolute;
+      bottom: 0;
+      border-top: 1px solid #333;
+      height: 64px;
+
+      i {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        max-height: 64px;
+        bottom: 0;
+        border-left: 1px solid #333;
+
+        @media (max-width: 600px) {
+          a {
+            border-left: none;
+          }
+        }
+      }
+      a {
+        position: relative;
+        display: flex;
+        transition: 0.3s;
+        &:hover {
+          background-color: #4a4d58;
+        }
+      }
+    }
+
+    &.open {
+      display: flex;
+      top: 75px;
+      transform: translateY(0);
+    }
+  }
+}
+
+.favorite {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  padding: 5px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background-color: $red;
+  z-index: 3;
+  font-size: 9px;
+  font-weight: 700;
+  text-align: center;
+  @media (max-width: 600px) {
+    right: 15px;
+    top: 15px;
+  }
+}
+
+.activeIcon {
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background-color: $text-color;
+  }
+}

@@ -1,0 +1,155 @@
+@import '../../../scss/variables';
+
+.swiperContainer {
+  margin: 0 16px;
+  height: clamp(13.813rem, 6.395rem + 32.97vw, 27rem);
+
+  @media (max-width: 500px) {
+    width: 100vw;
+    margin: 0;
+    height: 270px;
+  }
+
+  img {
+    width: 100%;
+    height: clamp(13.813rem, 6.395rem + 32.97vw, 27rem);
+
+    @media (max-width: 500px) {
+      object-fit: contain;
+      margin: 0;
+      height: 100%;
+    }
+  }
+}
+
+.slideContent {
+  @media (max-width: 600px) {
+    overflow: hidden;
+  }
+}
+
+.root {
+  flex: 1 1 auto;
+
+  > h1 {
+    margin-bottom: clamp(2rem, -0.912rem + 7.06vw, 3.5rem);
+    font-size: clamp(2rem, 1.507rem + 2.39vw, 3rem);
+  }
+}
+
+.carousel {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  border-radius: 10px;
+  margin-bottom: 8px;
+  position: relative;
+
+  @media (max-width: 650px) {
+    width: 100vw;
+    left: 0;
+  }
+
+  .leftArrow,
+  .rightArrow {
+    display: flex;
+    color: $text-color;
+    align-items: center;
+    justify-content: center;
+    background: $button-color;
+    border-radius: 5px;
+    min-width: 35px;
+    cursor: pointer;
+    z-index: 3;
+    transition: 0.3s;
+
+    &:hover {
+      background-color: #4a4d58;
+    }
+
+    @media (max-width: 650px) {
+      display: none;
+    }
+  }
+
+  .swiperContainer {
+    width: 100%;
+    @media (max-width: 500px) {
+      height: 350px;
+    }
+
+    .swiper-wrapper {
+      .swiper-slide {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        width: 100%;
+        margin: 0 16px;
+
+        @media (max-width: 650px) {
+          margin: 0;
+        }
+
+        .slideContent {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          height: 100%;
+          width: 100%;
+          margin: 0 16px;
+
+          @media (max-width: 650px) {
+            margin: 0;
+          }
+
+          > img {
+            max-width: 100%;
+            max-height: 100%;
+            border-radius: 10px;
+            object-fit: cover;
+          }
+        }
+      }
+    }
+  }
+}
+
+.dotsContainer {
+  display: flex;
+  justify-content: center;
+  padding: 10px 0;
+  width: 100%;
+  margin-bottom: clamp(2.25rem, 0.769rem + 6.77vw, 5rem);
+
+  .dot {
+    height: 4px;
+    width: 14px;
+    background-color: $button-color;
+    margin: 0 5px;
+    cursor: pointer;
+    transition: background-color 0.6s ease;
+
+    &.active {
+      background-color: #f1f2f9;
+    }
+  }
+}
+
+.mainBanner {
+  margin-bottom: 2rem;
+
+  @media (max-width: 650px) {
+    position: absolute;
+    left: 0;
+    width: 100vw;
+    margin: 0 0 2rem;
+    height: 320px;
+  }
+}
+
+.sectionContainer {
+  @media (max-width: 650px) {
+    margin-top: 28rem;
+  }
+}

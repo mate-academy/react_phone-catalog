@@ -1,0 +1,32 @@
+@import '../../../scss/variables';
+
+.root {
+  margin-bottom: 80px;
+}
+
+.top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+  .arrowContainer {
+    display: flex;
+    .arrow {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 32px;
+      height: 32px;
+      cursor: pointer;
+      border: 1px solid $button-color;
+      color: $button-color;
+      border-radius: 5px;
+      margin-left: 16px;
+      transition: 0.3s;
+      &:hover {
+        background: $button-color;
+        color: $text-color;
+      }
+    }
+  }
+}
