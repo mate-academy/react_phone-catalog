@@ -1,7 +1,10 @@
-import { useCallback, useContext } from 'react';
+import { useCallback } from 'react';
 import { NavLink } from 'react-router-dom';
+import { useAppDispatch, useAppSelector } from '../../redux/hooks';
+import { setIsMenuActive } from '../../redux/slices/isMenuActiveSlice';
+import { selectCartItems } from '../../redux/slices/cartItemsSlice';
+import { selectFavoritesItems } from '../../redux/slices/favoritesItemsSlice';
 import classNames from 'classnames';
-import { AppContext } from '../../Root';
 import { AddActiveClass } from '../../types/AddActiveClass';
 import { StorageItem } from '../../types/StorageItem';
 import { countItems } from '../../utils/countItems';
@@ -23,11 +26,13 @@ const addCounterClass = (items: StorageItem[]): string =>
   });
 
 export const BarIcons = () => {
-  const { favoritesItems, cartItems, setIsMenuActive } = useContext(AppContext);
+  const favoritesItems = useAppSelector(selectFavoritesItems);
+  const cartItems = useAppSelector(selectCartItems);
+  const dispatch = useAppDispatch();
 
   const closeMenu = useCallback(
-    () => setIsMenuActive(false),
-    [setIsMenuActive],
+    () => dispatch(setIsMenuActive(false)),
+    [dispatch],
   );
 
   return (

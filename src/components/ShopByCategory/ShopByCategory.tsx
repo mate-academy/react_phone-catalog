@@ -1,27 +1,20 @@
-import { useEffect, useState } from 'react';
+import { useMemo } from 'react';
 import { Link } from 'react-router-dom';
+import { useAppSelector } from '../../redux/hooks';
+import { selectPhones } from '../../redux/slices/phonesSlice';
+import { selectTablets } from '../../redux/slices/tabletsSlice';
+import { selectAccessories } from '../../redux/slices/accessoriesSlice';
 import classNames from 'classnames';
-import { getAccessories, getPhones, getTablets } from '../../api/fetchClient';
 import styles from './ShopByCategory.module.scss';
 
 export const ShopByCategory = () => {
-  const [phonesCount, setPhonesCount] = useState<number>(0);
-  const [tabletsCount, setTabletsCount] = useState<number>(0);
-  const [accessoriesCount, setAccessoriesCount] = useState<number>(0);
+  const { phones } = useAppSelector(selectPhones);
+  const { tablets } = useAppSelector(selectTablets);
+  const { accessories } = useAppSelector(selectAccessories);
 
-  useEffect(() => {
-    getPhones()
-      .then(phones => setPhonesCount(phones.length))
-      .catch(() => {});
-
-    getTablets()
-      .then(tablets => setTabletsCount(tablets.length))
-      .catch(() => {});
-
-    getAccessories()
-      .then(accessories => setAccessoriesCount(accessories.length))
-      .catch(() => {});
-  }, []);
+  const phonesCount = useMemo(() => phones.length, [phones]);
+  const tabletsCount = useMemo(() => tablets.length, [tablets]);
+  const accessoriesCount = useMemo(() => accessories.length, [accessories]);
 
   return (
     <div className={styles.shopByCategory}>

@@ -1,10 +1,10 @@
-import { useContext } from 'react';
-import { AppContext } from '../../Root';
+import { selectFavoritesItems } from '../../redux/slices/favoritesItemsSlice';
+import { useAppSelector } from '../../redux/hooks';
 import { ProductCard } from '../ProductCard';
 import styles from './ProductsList.module.scss';
 
 export const ProductsList = () => {
-  const { favoritesItems } = useContext(AppContext);
+  const favoritesItems = useAppSelector(selectFavoritesItems);
 
   if (!favoritesItems.length) {
     return (

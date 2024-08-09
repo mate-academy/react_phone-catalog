@@ -9,7 +9,12 @@ export const Footer = () => (
       </div>
 
       <div className={styles.links}>
-        <a className={styles.link} href="#">
+        <a
+          className={styles.link}
+          href="https://github.com/yuriiyepikhov"
+          target="_blank"
+          rel="noreferrer"
+        >
           github
         </a>
         <a className={styles.link} href="#">

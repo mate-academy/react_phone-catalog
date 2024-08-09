@@ -1,10 +1,15 @@
-import { useCallback, useContext, useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import classNames from 'classnames';
-import { AppContext } from '../../Root';
 import { SliderProduct } from '../../types/SliderProduct';
 import { ProductCard } from '../ProductCard';
 import { SkeletonCard } from '../SkeletonCard';
 import styles from './ProductsSlider.module.scss';
+import { useAppDispatch, useAppSelector } from '../../redux/hooks';
+import {
+  clearErrorMsg,
+  selectProducts,
+} from '../../redux/slices/productsSlice';
+import { setUpdatedAt } from '../../redux/slices/updatedAtSlice';
 
 interface Props {
   title: string;
@@ -25,17 +30,17 @@ export const ProductsSlider: React.FC<Props> = ({
   products,
   showFullPriceOnly = false,
 }) => {
+  const { productsLoading, productsErrorMsg } = useAppSelector(selectProducts);
+  const dispatch = useAppDispatch();
+
   const [isPrevBtnDisabled, setIsPrevBtnDisabled] = useState<boolean>(true);
   const [isNextBtnDisabled, setIsNextBtnDisabled] = useState<boolean>(false);
-
-  const { productsLoading, productsError, setProductsError, setUpdatedAt } =
-    useContext(AppContext);
 
   const productsRef = useRef<HTMLDivElement | null>(null);
   const resizeTimeoutId = useRef<number>(0);
 
   const isBtnDisabled =
-    productsLoading || !!productsError || products.length <= 1;
+    productsLoading || !!productsErrorMsg || products.length <= 1;
 
   const checkScrollExistence = useCallback(
     (slider: HTMLDivElement): boolean => {
@@ -72,9 +77,9 @@ export const ProductsSlider: React.FC<Props> = ({
   });
 
   const reload = useCallback(() => {
-    setUpdatedAt(new Date());
-    setProductsError('');
-  }, [setUpdatedAt, setProductsError]);
+    dispatch(setUpdatedAt(+new Date()));
+    dispatch(clearErrorMsg());
+  }, [dispatch]);
 
   const handleBtnPrevClick = useCallback(() => {
     if (!productsRef.current) {
@@ -201,10 +206,10 @@ export const ProductsSlider: React.FC<Props> = ({
         </div>
       )}
 
-      {!productsLoading && productsError && (
+      {!productsLoading && productsErrorMsg && (
         <div className={styles.notificationBlock}>
           <div className={styles.notificationContent}>
-            <p className={styles.notificationMessage}>{productsError}</p>
+            <p className={styles.notificationMessage}>{productsErrorMsg}</p>
             <button className={styles.reloadBtn} onClick={reload}>
               Reload
             </button>
@@ -212,7 +217,7 @@ export const ProductsSlider: React.FC<Props> = ({
         </div>
       )}
 
-      {!productsLoading && !productsError && !products.length && (
+      {!productsLoading && !productsErrorMsg && !products.length && (
         <div className={styles.notificationBlock}>
           <div className={styles.notificationContent}>
             <p className={styles.notificationMessage}>
@@ -222,7 +227,7 @@ export const ProductsSlider: React.FC<Props> = ({
         </div>
       )}
 
-      {!productsLoading && !productsError && !!products.length && (
+      {!productsLoading && !productsErrorMsg && !!products.length && (
         <div ref={productsRef} className={styles.products}>
           {products.map(product => (
             <ProductCard

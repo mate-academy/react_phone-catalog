@@ -1,8 +1,12 @@
-import { useCallback, useContext } from 'react';
+import { useCallback } from 'react';
 import { NavLink } from 'react-router-dom';
+import { useAppDispatch, useAppSelector } from '../../redux/hooks';
+import {
+  selectIsMenuActive,
+  setIsMenuActive,
+} from '../../redux/slices/isMenuActiveSlice';
 import classNames from 'classnames';
 import { AddActiveClass } from '../../types/AddActiveClass';
-import { AppContext } from '../../Root';
 import { BarIcons } from '../BarIcons';
 import styles from './Menu.module.scss';
 
@@ -12,11 +16,12 @@ const addNavLinkClass: AddActiveClass = ({ isActive }) =>
   });
 
 export const Menu = () => {
-  const { isMenuActive, setIsMenuActive } = useContext(AppContext);
+  const isMenuActive = useAppSelector(selectIsMenuActive);
+  const dispatch = useAppDispatch();
 
   const closeMenu = useCallback(
-    () => setIsMenuActive(false),
-    [setIsMenuActive],
+    () => dispatch(setIsMenuActive(false)),
+    [dispatch],
   );
 
   return (

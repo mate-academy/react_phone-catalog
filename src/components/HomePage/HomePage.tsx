@@ -1,14 +1,17 @@
-import { useContext, useMemo } from 'react';
-import { AppContext } from '../../Root';
-import { getBrandNewProducts } from '../../utils/getBrandNewProducts';
-import { getHotPricesProducts } from '../../utils/getHotPricesProducts';
+import { useMemo } from 'react';
+import { useAppSelector } from '../../redux/hooks';
+import { selectProducts } from '../../redux/slices/productsSlice';
+import {
+  getBrandNewProducts,
+  getHotPricesProducts,
+} from '../../utils/getSliderProducts';
 import { PicturesSlider } from '../PicturesSlider';
 import { ProductsSlider } from '../ProductsSlider';
 import { ShopByCategory } from '../ShopByCategory';
 import styles from './HomePage.module.scss';
 
 export const HomePage = () => {
-  const { products } = useContext(AppContext);
+  const { products } = useAppSelector(selectProducts);
 
   const brandNewProducts = useMemo(
     () => getBrandNewProducts(products),

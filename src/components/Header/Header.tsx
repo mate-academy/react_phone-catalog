@@ -1,7 +1,7 @@
-import { useContext } from 'react';
 import { NavLink } from 'react-router-dom';
+import { useAppDispatch } from '../../redux/hooks';
+import { setIsMenuActive } from '../../redux/slices/isMenuActiveSlice';
 import classNames from 'classnames';
-import { AppContext } from '../../Root';
 import { AddActiveClass } from '../../types/AddActiveClass';
 import { scrollToTop } from '../../utils/scrollToTop';
 import { BarIcons } from '../BarIcons';
@@ -13,7 +13,7 @@ const addNavLinkClass: AddActiveClass = ({ isActive }) =>
   });
 
 export const Header = () => {
-  const { setIsMenuActive } = useContext(AppContext);
+  const dispatch = useAppDispatch();
 
   return (
     <div className={styles.header}>
@@ -64,7 +64,7 @@ export const Header = () => {
         <button
           type="button"
           className={styles.btnMenu}
-          onClick={() => setIsMenuActive(true)}
+          onClick={() => dispatch(setIsMenuActive(true))}
         />
       </div>
     </div>

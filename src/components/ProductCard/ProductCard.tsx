@@ -1,6 +1,14 @@
-import { useCallback, useContext, useMemo } from 'react';
+import { useCallback, useMemo } from 'react';
+import { useAppDispatch, useAppSelector } from '../../redux/hooks';
+import {
+  selectCartItems,
+  setCartItems,
+} from '../../redux/slices/cartItemsSlice';
+import {
+  selectFavoritesItems,
+  setFavoritesItems,
+} from '../../redux/slices/favoritesItemsSlice';
 import classNames from 'classnames';
-import { AppContext } from '../../Root';
 import { StorageProduct } from '../../types/StorageProduct';
 import { StorageItem } from '../../types/StorageItem';
 import styles from './ProductCard.module.scss';
@@ -19,10 +27,11 @@ export const ProductCard: React.FC<Props> = ({
   const { itemId, name, fullPrice, price, screen, capacity, ram, image } =
     product;
 
-  const noDiscount = fullPrice === price;
+  const favoritesItems = useAppSelector(selectFavoritesItems);
+  const cartItems = useAppSelector(selectCartItems);
+  const dispatch = useAppDispatch();
 
-  const { favoritesItems, setFavoritesItems, cartItems, setCartItems } =
-    useContext(AppContext);
+  const noDiscount = fullPrice === price;
 
   const isProductInCart = useMemo(
     () =>
@@ -54,16 +63,16 @@ export const ProductCard: React.FC<Props> = ({
       },
     };
 
-    setCartItems([...cartItems, newItem]);
+    dispatch(setCartItems([...cartItems, newItem]));
   }, [
-    product,
-    showFullPriceOnly,
-    isProductInCart,
+    dispatch,
     cartItems,
     fullPrice,
-    price,
+    isProductInCart,
     noDiscount,
-    setCartItems,
+    price,
+    product,
+    showFullPriceOnly,
   ]);
 
   const handleAddToFavorites = useCallback(() => {
@@ -74,23 +83,17 @@ export const ProductCard: React.FC<Props> = ({
         product,
       };
 
-      setFavoritesItems([...favoritesItems, newItem]);
+      dispatch(setFavoritesItems([...favoritesItems, newItem]));
 
       return;
     }
 
-    setFavoritesItems(
-      favoritesItems.filter(
-        ({ product: favoritesProduct }) => favoritesProduct.itemId !== itemId,
-      ),
+    const newItems = favoritesItems.filter(
+      ({ product: favoritesProduct }) => favoritesProduct.itemId !== itemId,
     );
-  }, [
-    product,
-    itemId,
-    isProductInFavorites,
-    favoritesItems,
-    setFavoritesItems,
-  ]);
+
+    dispatch(setFavoritesItems(newItems));
+  }, [dispatch, favoritesItems, isProductInFavorites, itemId, product]);
 
   return (
     <div

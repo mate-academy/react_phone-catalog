@@ -1,14 +1,20 @@
-import { useContext, useMemo, useState } from 'react';
+import { useMemo, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useAppDispatch, useAppSelector } from '../../redux/hooks';
+import {
+  clearCartItems,
+  selectCartItems,
+} from '../../redux/slices/cartItemsSlice';
 import classNames from 'classnames';
-import { AppContext } from '../../Root';
 import { countItems } from '../../utils/countItems';
 import { CartItem } from '../CartItem';
 import styles from './ShoppingCart.module.scss';
 
 export const ShoppingCart = () => {
+  const cartItems = useAppSelector(selectCartItems);
+  const dispatch = useAppDispatch();
+
   const [isModalActive, setIsModalActive] = useState<boolean>(false);
-  const { cartItems, setCartItems } = useContext(AppContext);
   const navigate = useNavigate();
 
   const totalItems = useMemo(() => countItems(cartItems), [cartItems]);
@@ -99,7 +105,7 @@ export const ShoppingCart = () => {
             <div className={styles.modalButtons}>
               <button
                 className={styles.modalBtn}
-                onClick={() => setCartItems([])}
+                onClick={() => dispatch(clearCartItems())}
               >
                 Confirm
               </button>

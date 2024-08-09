@@ -1,7 +1,11 @@
-import React, { useCallback, useContext } from 'react';
+import React, { useCallback } from 'react';
 import classNames from 'classnames';
+import { useAppDispatch, useAppSelector } from '../../redux/hooks';
+import {
+  selectCartItems,
+  setCartItems,
+} from '../../redux/slices/cartItemsSlice';
 import { StorageItem } from '../../types/StorageItem';
-import { AppContext } from '../../Root';
 import styles from './CartItem.module.scss';
 
 interface Props {
@@ -19,25 +23,28 @@ export const CartItem: React.FC<Props> = ({ cartItem }) => {
     fullPrice,
   } = cartProduct;
 
-  const { cartItems, setCartItems } = useContext(AppContext);
+  const cartItems = useAppSelector(selectCartItems);
+  const dispatch = useAppDispatch();
 
   const handleRemoveCartItem = useCallback(() => {
-    setCartItems(cartItems.filter(({ id }) => id !== cartItemId));
-  }, [cartItemId, cartItems, setCartItems]);
+    const newItems = cartItems.filter(({ id }) => id !== cartItemId);
 
-  const handleBtnClick = useCallback(
+    dispatch(setCartItems(newItems));
+  }, [cartItemId, cartItems, dispatch]);
+
+  const handleBtnQtyClick = useCallback(
     (newItem: StorageItem): void => {
-      const newCartItems = [...cartItems];
+      const newItems = [...cartItems];
 
-      const index = newCartItems.findIndex(({ id }) => id === cartItemId);
+      const index = newItems.findIndex(({ id }) => id === cartItemId);
 
       if (index !== -1) {
-        newCartItems.splice(index, 1, newItem);
+        newItems.splice(index, 1, newItem);
       }
 
-      setCartItems(newCartItems);
+      dispatch(setCartItems(newItems));
     },
-    [cartItemId, cartItems, setCartItems],
+    [cartItemId, cartItems, dispatch],
   );
 
   return (
@@ -61,7 +68,7 @@ export const CartItem: React.FC<Props> = ({ cartItem }) => {
             disabled={quantity <= 1}
             className={classNames(styles.btn, styles.btnMinus)}
             onClick={() =>
-              handleBtnClick({ ...cartItem, quantity: quantity - 1 })
+              handleBtnQtyClick({ ...cartItem, quantity: quantity - 1 })
             }
           />
           <p className={styles.quantity}>{quantity}</p>
@@ -70,7 +77,7 @@ export const CartItem: React.FC<Props> = ({ cartItem }) => {
             disabled={quantity >= 10}
             className={classNames(styles.btn, styles.btnPlus)}
             onClick={() =>
-              handleBtnClick({ ...cartItem, quantity: quantity + 1 })
+              handleBtnQtyClick({ ...cartItem, quantity: quantity + 1 })
             }
           />
         </div>

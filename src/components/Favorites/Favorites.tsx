@@ -1,12 +1,13 @@
-import { useContext, useMemo } from 'react';
+import { useMemo } from 'react';
 import { Link } from 'react-router-dom';
-import { AppContext } from '../../Root';
+import { selectFavoritesItems } from '../../redux/slices/favoritesItemsSlice';
+import { useAppSelector } from '../../redux/hooks';
 import { countItems } from '../../utils/countItems';
 import { ProductsList } from '../ProductsList';
 import styles from './Favorites.module.scss';
 
 export const Favorites = () => {
-  const { favoritesItems } = useContext(AppContext);
+  const favoritesItems = useAppSelector(selectFavoritesItems);
 
   const favoritesQty = useMemo(
     () => countItems(favoritesItems),
