@@ -9,6 +9,7 @@
 .buttonAddTofavorite {
   width: 40px;
   height: 40px;
+  flex-shrink: 0;
   border: 1px solid $icons-grey-color;
   background-color: #fff;
   cursor: pointer;

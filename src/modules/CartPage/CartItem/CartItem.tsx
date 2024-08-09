@@ -9,6 +9,8 @@ import {
   minusItemsQuantity,
 } from '../../../features/pagesDetailsSlice';
 import { useAppSelector } from '../../../app/hooks';
+import { Link } from 'react-router-dom';
+import { handleClickOnGadget } from './../../shared/clickOnGadget';
 
 interface CatrItemType {
   gadget: Product;
@@ -104,12 +106,24 @@ export const CartItem: React.FC<CatrItemType> = ({ gadget }) => {
           src="./icons/close-light-ico.svg"
           alt="delet-ico"
         />
-        <img
-          className={styles.item__image}
-          src={gadget.image}
-          alt="product-photo"
-        />
-        <p className={styles.item__name}>{gadget.name}</p>
+        ¨
+        <Link
+          to={`/${gadget.category}/${gadget.itemId}`}
+          onClick={() => handleClickOnGadget(gadget, dispatch)}
+        >
+          <img
+            className={styles.item__image}
+            src={gadget.image}
+            alt="product-photo"
+          />
+        </Link>
+        <Link
+          to={`/${gadget.category}/${gadget.itemId}`}
+          className={styles.item__name}
+          onClick={() => handleClickOnGadget(gadget, dispatch)}
+        >
+          {gadget.name}
+        </Link>
       </div>
 
       <div className={styles.item__right}>

@@ -6,7 +6,7 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { CardButtonsBlock } from '../CardButtonsBlock/CardButtonsBlock';
 import { useDispatch } from 'react-redux';
-import { setCurrentProduct } from '../../../features/chosenItemsSlice';
+import { handleClickOnGadget } from './../clickOnGadget';
 
 type Props = {
   gadget: Product;
@@ -35,17 +35,11 @@ export const ProductCard: React.FC<Props> = ({ gadget }) => {
     }
   }, [favoritesArray, gadget]);
 
-  const handleClickOnCard = () => {
-    dispatch(setCurrentProduct(gadget));
-
-    localStorage.setItem('currentProduct', JSON.stringify(gadget));
-  };
-
   return (
     <div className={styles.card}>
       <div className={styles.card__topBlock}>
         <Link
-          onClick={handleClickOnCard}
+          onClick={() => handleClickOnGadget(gadget, dispatch)}
           className={styles.card__imgLink}
           to={`/${gadget.category}/${gadget.itemId}`}
         >
@@ -57,7 +51,7 @@ export const ProductCard: React.FC<Props> = ({ gadget }) => {
         </Link>
 
         <Link
-          onClick={handleClickOnCard}
+          onClick={() => handleClickOnGadget(gadget, dispatch)}
           to={`/${gadget.category}/${gadget.itemId}`}
           className={styles.card__name}
         >

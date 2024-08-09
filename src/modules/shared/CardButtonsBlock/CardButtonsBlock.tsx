@@ -91,11 +91,7 @@ export const CardButtonsBlock: React.FC<Props> = ({
       </button>
 
       <button onClick={handleheartIco} className={styles.buttonAddTofavorite}>
-        <img
-          className={styles.buttonAddfavoriteIcon}
-          src={favIco}
-          alt="add to favorites"
-        />
+        <img src={favIco} alt="add to favorites" />
       </button>
     </div>
   );

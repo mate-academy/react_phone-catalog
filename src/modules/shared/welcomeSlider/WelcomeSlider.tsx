@@ -43,6 +43,7 @@ export const WelcomeSlider = () => {
               alt="slide1"
             />
           </SwiperSlide>
+
           <SwiperSlide className={styles.swiper__slide}>
             <img
               className={styles.swiper__img}
@@ -50,6 +51,7 @@ export const WelcomeSlider = () => {
               alt="slide2"
             />
           </SwiperSlide>
+
           <SwiperSlide className={styles.swiper__slide}>
             <img
               className={styles.swiper__img}

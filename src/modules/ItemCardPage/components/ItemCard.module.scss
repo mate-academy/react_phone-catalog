@@ -30,14 +30,6 @@
   }
 }
 
-.idVisible {
-  text-align: left;
-}
-
-.idDotted {
-  text-align: right;
-}
-
 .path {
   display: flex;
   gap: 10px;
@@ -69,6 +61,17 @@
   }
 }
 
+.idVisible {
+  text-align: left;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.idDotted {
+  text-align: right;
+}
+
 .main {
   margin-bottom: 56px;
 
@@ -89,39 +92,13 @@
     font-size: 22px;
     font-weight: 700;
     line-height: 140%;
-    text-align: left;
+    text-align: center;
+    margin-bottom: 40px;
 
     @include on-tablet {
       font-size: 32px;
       line-height: 41px;
-    }
-  }
-
-  &__bigPhoto {
-    grid-column: 1 / -1;
-
-    @include on-tablet {
-      grid-column: 2 / 8;
-      grid-row: 2 / 2;
-    }
-
-    @include on-desktop {
-      grid-column: 3 / 13;
-    }
-  }
-
-  &__littlePhots {
-    display: flex;
-    grid-column: 1 / -1;
-
-    @include on-tablet {
-      flex-direction: column;
-      grid-column: 1 / 2;
-      grid-row: 2 / 2;
-    }
-
-    @include on-desktop {
-      grid-column: 1 / 3;
+      text-align: left;
     }
   }
 
@@ -164,6 +141,11 @@
     justify-content: center;
     align-items: center;
     border-radius: 50%;
+    cursor: pointer;
+
+    &:hover {
+      border: 1px solid $icons-grey-color;
+    }
   }
 
   &__color {
@@ -195,6 +177,11 @@
     height: 32px;
     padding-inline: 8px;
     background-color: $white-color;
+    cursor: pointer;
+
+    &:hover {
+      border: 1px solid $primary-grey-color;
+    }
   }
 
   &__secondHorizontal {
@@ -255,6 +242,20 @@
     font-size: 12px;
     font-weight: 700;
     line-height: 15px;
+  }
+}
+
+.selectedColorStyle {
+  border: 1px solid $primary-grey-color;
+}
+
+.selectedCapacityStyle {
+  color: $white-color;
+  border: none;
+  background-color: $primary-grey-color;
+
+  &:hover {
+    border: none;
   }
 }
 

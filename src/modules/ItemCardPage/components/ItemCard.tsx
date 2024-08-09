@@ -9,7 +9,9 @@ import { ButtonBack } from '../../shared/ButtonBack/ButtonBack';
 import { setIsWrongParams } from '../../../features/booleanSlice';
 import { CardButtonsBlock } from '../../shared/CardButtonsBlock/CardButtonsBlock';
 import { ProductsSlider } from '../../shared/ProductsSlider/ProductsSlider';
-// import { Product } from '../../../types/Product';
+import { colorHexMap } from './../../colorHexMap';
+import { Loader } from '../../Loader';
+import { CurrentProductSlider } from '../../shared/CurrentProductSlider/CurrentProductSlider';
 
 export const ItemCard: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -30,23 +32,42 @@ export const ItemCard: React.FC = () => {
   const currentProduct = useAppSelector(
     state => state.chosenItems.currentProduct,
   );
+  const loadingStatusPhones = useAppSelector(state => state.phones.loading);
+  const loadingStatusTablets = useAppSelector(state => state.tablets.loading);
+  const loadingStatusAccessories = useAppSelector(
+    state => state.accessories.loading,
+  );
+  const errorStatusPhones = useAppSelector(state => state.phones.error);
+  const errorStatusTablets = useAppSelector(state => state.tablets.error);
+  const errorStatusAccessories = useAppSelector(
+    state => state.accessories.error,
+  );
 
   const isWrongParams = useAppSelector(state => state.boolean.isWrongParams);
   const favoritesArray = useAppSelector(state => state.chosenItems.favorite);
   const cartArray = useAppSelector(state => state.chosenItems.cart);
 
-  const [bigPhoto, setBigPhoto] = useState(currrentGadget?.images[0]);
   const [heartIco, setHeartIco] = useState('./icons/heart-ico.svg');
   const [isInCatr, setIsinCart] = useState(false);
+  const [selectedColor, setSelectedColor] = useState<string | undefined>('');
+  const [selectedCapacity, setSelectedCapacity] = useState<string | undefined>(
+    '',
+  );
+
+  const category = useAppSelector(
+    state => state.chosenItems.currentGadget?.category,
+  );
 
   useEffect(() => {
+    setSelectedColor(currrentGadget?.color);
+    setSelectedCapacity(currrentGadget?.capacity);
+
     if (path.includes('phones')) {
       if (listOfPhones.some(phone => phone.id === params)) {
         const neededPhone = listOfPhones.find(phone => phone.id === params);
 
         if (neededPhone !== undefined) {
           dispatch(setCurrentGadget(neededPhone));
-          setBigPhoto(neededPhone.images[0]);
           dispatch(setIsWrongParams(false));
           localStorage.setItem('currentGadget', JSON.stringify(neededPhone));
         }
@@ -59,7 +80,6 @@ export const ItemCard: React.FC = () => {
 
         if (neededTablet !== undefined) {
           dispatch(setCurrentGadget(neededTablet));
-          setBigPhoto(neededTablet.images[0]);
           dispatch(setIsWrongParams(false));
           localStorage.setItem('currentGadget', JSON.stringify(neededTablet));
         }
@@ -74,7 +94,6 @@ export const ItemCard: React.FC = () => {
 
         if (neededAccessory !== undefined) {
           dispatch(setCurrentGadget(neededAccessory));
-          setBigPhoto(neededAccessory.images[0]);
           dispatch(setIsWrongParams(false));
           localStorage.setItem(
             'currentGadget',
@@ -85,7 +104,16 @@ export const ItemCard: React.FC = () => {
         dispatch(setIsWrongParams(true));
       }
     }
-  }, [paramsObj, listOfPhones, listOfAccessories, listOfTablets, path]);
+  }, [
+    paramsObj,
+    listOfPhones,
+    listOfAccessories,
+    listOfTablets,
+    path,
+    currrentGadget,
+    params,
+    dispatch,
+  ]);
 
   useEffect(() => {
     if (currentProduct !== null) {
@@ -103,11 +131,36 @@ export const ItemCard: React.FC = () => {
     }
   }, [favoritesArray, currentProduct, cartArray]);
 
+  let fetchingError = '';
+
+  const getLoader = () => {
+    switch (category) {
+      case 'phones':
+        fetchingError = errorStatusPhones;
+
+        return loadingStatusPhones && <Loader />;
+      case 'tablets':
+        fetchingError = errorStatusTablets;
+
+        return loadingStatusTablets && <Loader />;
+      case 'accessories':
+        fetchingError = errorStatusAccessories;
+
+        return loadingStatusAccessories && <Loader />;
+      default:
+        return;
+    }
+  };
+
   return (
     <>
-      {!isWrongParams ? (
+      {getLoader()}
+      {!isWrongParams && (
         <div className={styles.itemCard}>
-          <div className={`${styles.itemCard__path} ${styles.path}`}>
+          <div
+            id="gadgetPathBlock"
+            className={`${styles.itemCard__path} ${styles.path}`}
+          >
             <Link className={styles.path__home} to="/">
               <img src="./icons/home-ico.svg" alt="home" />
             </Link>
@@ -134,8 +187,6 @@ export const ItemCard: React.FC = () => {
             <p className={`${styles.path__id} ${styles.idVisible}`}>
               {currrentGadget?.id}
             </p>
-
-            <p className={`${styles.path__id} ${styles.idDotted}`}>...</p>
           </div>
 
           <ButtonBack />
@@ -143,21 +194,7 @@ export const ItemCard: React.FC = () => {
           <section className={`${styles.itemCard__main} ${styles.main}`}>
             <h2 className={styles.main__title}>{currrentGadget?.name}</h2>
 
-            <div className={styles.main__bigPhoto}>
-              <img src={bigPhoto} alt="gadget-big-photo" />
-            </div>
-
-            <div className={styles.main__littlePhots}>
-              {currrentGadget?.images.map(image => (
-                <div key={image} className={styles.main__littlePhoto}>
-                  <img
-                    onClick={() => setBigPhoto(image)}
-                    src={image}
-                    alt="gadget-little-photo"
-                  />
-                </div>
-              ))}
-            </div>
+            <CurrentProductSlider gadget={currrentGadget} />
 
             <div
               className={`${styles.main__interaction} ${styles.interaction}`}
@@ -166,15 +203,23 @@ export const ItemCard: React.FC = () => {
                 Available colors
               </p>
               <div className={styles.interaction__colors}>
-                {currrentGadget?.colorsAvailable.map(color => (
-                  <div key={color} className={styles.interaction__colorBorder}>
+                {currrentGadget?.colorsAvailable.map(color => {
+                  const hexColor = colorHexMap[color] || '#FFFFFF';
+
+                  return (
                     <div
-                      title={color}
-                      style={{ backgroundColor: color }}
-                      className={styles.interaction__color}
-                    ></div>
-                  </div>
-                ))}
+                      onClick={() => setSelectedColor(color)}
+                      key={color}
+                      className={`${styles.interaction__colorBorder} ${selectedColor === color && styles.selectedColorStyle}`}
+                    >
+                      <div
+                        title={color}
+                        style={{ backgroundColor: hexColor }}
+                        className={styles.interaction__color}
+                      ></div>
+                    </div>
+                  );
+                })}
               </div>
 
               <div className={styles.interaction__firstHorizontal}></div>
@@ -186,7 +231,8 @@ export const ItemCard: React.FC = () => {
               <div className={styles.interaction__capacityBlock}>
                 {currrentGadget?.capacityAvailable.map(capacity => (
                   <button
-                    className={styles.interaction__capacity}
+                    onClick={() => setSelectedCapacity(capacity)}
+                    className={`${styles.interaction__capacity} ${selectedCapacity === capacity && styles.selectedCapacityStyle}`}
                     key={capacity}
                   >
                     {capacity}
@@ -386,7 +432,9 @@ export const ItemCard: React.FC = () => {
             <ProductsSlider title={TITLE_FOR_SLIDER} gadgets={listOfProdusts} />
           </section>
         </div>
-      ) : (
+      )}
+
+      {fetchingError && (
         <h3 className={styles.notFound}>Product was not found</h3>
       )}
     </>
