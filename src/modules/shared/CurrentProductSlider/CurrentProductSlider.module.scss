@@ -14,6 +14,8 @@
 
 .slider {
   grid-column: 1 / -1;
+  aspect-ratio: 1 / 1;
+
   width: 100%;
   margin-bottom: 16px;
 
@@ -28,7 +30,7 @@
 }
 
 .slide {
-  aspect-ratio: 1 / 1;
+  cursor: pointer;
   display: flex;
   justify-content: center;
 
@@ -38,11 +40,14 @@
 }
 
 .pagination {
+  // max-height: 500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
   width: 100%;
   grid-column: 1 / -1;
 
   @include on-tablet {
-    height: 500px;
     grid-column: 1 / 2;
     grid-row: 1 / 2;
   }
@@ -50,25 +55,21 @@
   @include on-desktop {
     grid-column: 1 / 3;
   }
-
-  &__item {
-    object-fit: contain;
-  }
 }
 
 .preview {
-  border: 1px solid $icons-grey-color;
   display: flex;
+  align-items: center;
   justify-content: center;
+  padding: 6px;
+  width: 100%;
+  cursor: pointer;
+  border: 1px solid $icons-grey-color;
   aspect-ratio: 1 / 1;
 
   &__image {
-    object-fit: contain;
     aspect-ratio: 1 / 1;
-  }
-
-  @include on-tablet {
-    flex-direction: column;
-    justify-content: left;
+    display: block;
+    object-fit: contain;
   }
 }

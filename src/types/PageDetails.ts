@@ -4,4 +4,5 @@ export type PagesDetails = {
   title: string;
   models: number;
   itemsQuantity: ItemsQuantity;
+  verticalPaginationHeight: number;
 };

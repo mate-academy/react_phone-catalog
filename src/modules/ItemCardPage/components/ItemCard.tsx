@@ -12,6 +12,7 @@ import { ProductsSlider } from '../../shared/ProductsSlider/ProductsSlider';
 import { colorHexMap } from './../../colorHexMap';
 import { Loader } from '../../Loader';
 import { CurrentProductSlider } from '../../shared/CurrentProductSlider/CurrentProductSlider';
+import { Product } from '../../../types/Product';
 
 export const ItemCard: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -19,10 +20,12 @@ export const ItemCard: React.FC = () => {
   const path = location.pathname;
   const paramsObj = useParams<{ productId: string }>();
   const params = paramsObj.productId;
+  let gadgetWithCamera = null;
+  let gadgetWithZoom = null;
 
   const TITLE_FOR_SLIDER = 'You may also like';
 
-  const listOfProdusts = useAppSelector(state => state.products.objects);
+  const listOfProducts = useAppSelector(state => state.products.objects);
   const listOfPhones = useAppSelector(state => state.phones.objects);
   const listOfTablets = useAppSelector(state => state.tablets.objects);
   const listOfAccessories = useAppSelector(state => state.accessories.objects);
@@ -53,6 +56,7 @@ export const ItemCard: React.FC = () => {
   const [selectedCapacity, setSelectedCapacity] = useState<string | undefined>(
     '',
   );
+  const [suggestedProducts, setSuggestedProducts] = useState<Product[]>([]);
 
   const category = useAppSelector(
     state => state.chosenItems.currentGadget?.category,
@@ -152,6 +156,45 @@ export const ItemCard: React.FC = () => {
     }
   };
 
+  const getSuggestedProducts = () => {
+    const suggestedArray: Product[] = [];
+
+    setSuggestedProducts([]);
+
+    while (suggestedArray.length < 12) {
+      const randomIndex = Math.floor(Math.random() * listOfProducts.length);
+      const randomGadget = listOfProducts[randomIndex];
+
+      if (!suggestedArray.includes(randomGadget)) {
+        suggestedArray.push(randomGadget);
+      }
+    }
+
+    setSuggestedProducts(suggestedArray);
+  };
+
+  useEffect(() => {
+    getSuggestedProducts();
+  }, [currrentGadget]);
+
+  if (currrentGadget) {
+    const hasCamera = currrentGadget.hasOwnProperty('camera');
+
+    if (hasCamera) {
+      const gadgetString = JSON.stringify(currrentGadget);
+
+      gadgetWithCamera = JSON.parse(gadgetString);
+    }
+
+    const hasZoom = currrentGadget.hasOwnProperty('zoom');
+
+    if (hasZoom) {
+      const gadgetString = JSON.stringify(currrentGadget);
+
+      gadgetWithZoom = JSON.parse(gadgetString);
+    }
+  }
+
   return (
     <>
       {getLoader()}
@@ -184,7 +227,7 @@ export const ItemCard: React.FC = () => {
               alt="arrow-right"
             />
 
-            <p className={`${styles.path__id} ${styles.idVisible}`}>
+            <p id="pathId" className={`${styles.path__id} ${styles.idVisible}`}>
               {currrentGadget?.id}
             </p>
           </div>
@@ -400,22 +443,25 @@ export const ItemCard: React.FC = () => {
                     {currrentGadget?.capacity}
                   </p>
                 </div>
+                {gadgetWithCamera !== null && (
+                  <div className={styles.techSpecs__param}>
+                    <p className={styles.drscriptionText}>Camera</p>
 
-                <div className={styles.techSpecs__param}>
-                  <p className={styles.drscriptionText}>Camera</p>
+                    <p className={styles.techSpecs__paramValue}>
+                      {gadgetWithCamera.camera}
+                    </p>
+                  </div>
+                )}
 
-                  <p className={styles.techSpecs__paramValue}>
-                    гаджет може не мати камери
-                  </p>
-                </div>
+                {gadgetWithZoom !== null && (
+                  <div className={styles.techSpecs__param}>
+                    <p className={styles.drscriptionText}>Zoom</p>
 
-                <div className={styles.techSpecs__param}>
-                  <p className={styles.drscriptionText}>Zoom</p>
-
-                  <p className={styles.techSpecs__paramValue}>
-                    гаджет може не мати камери
-                  </p>
-                </div>
+                    <p className={styles.techSpecs__paramValue}>
+                      {gadgetWithZoom.zoom}
+                    </p>
+                  </div>
+                )}
 
                 <div className={styles.techSpecs__param}>
                   <p className={styles.drscriptionText}>Cell</p>
@@ -429,7 +475,10 @@ export const ItemCard: React.FC = () => {
           </section>
 
           <section className={styles.itemCard__slider}>
-            <ProductsSlider title={TITLE_FOR_SLIDER} gadgets={listOfProdusts} />
+            <ProductsSlider
+              title={TITLE_FOR_SLIDER}
+              gadgets={suggestedProducts}
+            />
           </section>
         </div>
       )}

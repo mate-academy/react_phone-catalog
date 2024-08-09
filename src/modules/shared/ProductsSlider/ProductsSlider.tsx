@@ -46,11 +46,11 @@ export const ProductsSlider: React.FC<Props> = ({ title, gadgets }) => {
       }
     };
 
-    swiper.on('slideChange', updateNavButtons);
+    swiper.on('transitionStart', updateNavButtons);
     updateNavButtons();
 
     return () => {
-      swiper.off('slideChange', updateNavButtons);
+      swiper.off('transitionStart', updateNavButtons);
     };
   }, [gadgets.length]);
 
