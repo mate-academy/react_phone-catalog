@@ -10,6 +10,18 @@
     max-height: 506px;
   }
 
+  .product-card {
+    width: 212px !important;
+
+    @media (min-width: $tablet) {
+      width: 237px !important;
+    }
+
+    @media (min-width: $pc) {
+      width: 272px !important;
+    }
+  }
+
   .slick-list {
     height: 439px;
 

@@ -1,24 +1,31 @@
 .product-card {
   background: $surface;
   height: 439px;
-  width: 212px;
+  min-width: 212px;
   padding: 32px;
   gap: 8px;
   display: flex;
   flex-direction: column;
+  flex-grow: 1;
 
   @media (min-width: $tablet) {
     height: 512px;
-    width: 237px;
+    min-width: 237px;
+    flex-basis: calc(50% - 8px);
+    flex-grow: unset;
   }
 
   @media (min-width: $pc) {
     height: 506px;
     width: 272px;
+    min-width: unset;
+    flex-basis: unset;
   }
 
   &__image-container {
-    display: block;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
     &__image {
       width: 148px;
