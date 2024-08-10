@@ -5,7 +5,7 @@
   margin-bottom: 56px;
   margin-top: 24px;
 
-  @include content-padding-inline;
+  // @include content-padding-inline;
   @include on-tablet {
     margin-bottom: 64px;
     margin-top: 40px;
@@ -21,7 +21,7 @@
   }
 
   &__title {
-    color: $primary-grey-color;
+    color: var(--primary-grey-color);
     font-family: inherit;
     font-size: 32px;
     font-weight: 700;
@@ -37,7 +37,7 @@
   }
 
   &__empty {
-    color: $secondary-grey-color;
+    color: var(--secondary-grey-color);
     font-family: inherit;
     font-size: 22px;
     font-weight: 500;
@@ -47,7 +47,7 @@
 }
 
 .checkout {
-  border: 1px solid $elements-grey-color;
+  border: 1px solid var(--elements-grey-color);
   padding: 24px;
   display: flex;
   flex-direction: column;
@@ -56,7 +56,7 @@
   height: min-content;
 
   &__sum {
-    color: $primary-grey-color;
+    color: var(--primary-grey-color);
     font-family: inherit;
     font-size: 32px;
     font-weight: 700;
@@ -66,7 +66,7 @@
   }
 
   &__totalItems {
-    color: $secondary-grey-color;
+    color: var(--secondary-grey-color);
     font-family: inherit;
     font-size: 14px;
     font-weight: 500;
@@ -83,7 +83,7 @@
   &__horizontal {
     height: 1px;
     width: 100%;
-    background-color: $elements-grey-color;
+    background-color: var(--elements-grey-color);
     margin-bottom: 16px;
 
     @include on-desktop {
@@ -96,8 +96,8 @@
     width: 100%;
     cursor: pointer;
     border: none;
-    background-color: $primary-grey-color;
-    color: $white-color;
+    background-color: var(--primary-grey-color);
+    color: var(--white-color);
     font-family: inherit;
     font-size: 14px;
     font-weight: 700;

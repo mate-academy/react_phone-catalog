@@ -16,6 +16,7 @@
 }
 
 .welcome {
+  @include page-grid;
   margin-bottom: 56px;
 
   @include on-tablet {
@@ -25,8 +26,6 @@
   }
 
   @include on-desktop {
-    @include page-grid;
-
     margin-bottom: 80px;
     margin-inline: auto;
   }
@@ -50,7 +49,7 @@
   }
 
   &__tittle {
-    color: $primary-grey-color;
+    color: var(--primary-grey-color);
     font-family: 'Montserrat', sant-serif;
     font-size: 32px;
     font-style: normal;
@@ -78,14 +77,13 @@
 
 .newModels {
   margin-bottom: 57px;
+  @include page-grid;
 
   @include on-tablet {
     margin-bottom: 64px;
   }
 
   @include on-desktop {
-    @include page-grid;
-
     margin-inline: auto;
     margin-bottom: 80px;
     overflow: hidden;
@@ -110,7 +108,7 @@
 
   &__title {
     margin-bottom: 24px;
-    color: $primary-grey-color;
+    color: var(--primary-grey-color);
     font-family: inherit;
     font-size: 22px;
     font-weight: 700;
@@ -159,17 +157,21 @@
   &__title {
     margin-bottom: 6px;
     text-decoration: none;
-    color: $primary-grey-color;
+    color: var(--primary-grey-color);
     font-family: inherit;
     font-size: 20px;
     font-weight: 700;
     line-height: 26px;
     letter-spacing: 0%;
     text-align: left;
+
+    &:hover {
+      color: var(--primary-grey-color);
+    }
   }
 
   &__quantity {
-    color: $secondary-grey-color;
+    color: var(--secondary-grey-color);
     font-family: inherit;
     font-size: 14px;
     font-weight: 500;
@@ -180,9 +182,8 @@
 }
 
 .hot {
+  @include page-grid;
   @include on-desktop {
-    @include page-grid;
-
     margin-inline: auto;
     overflow: hidden;
   }

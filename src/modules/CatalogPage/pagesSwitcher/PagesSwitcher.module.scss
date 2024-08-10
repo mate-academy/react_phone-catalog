@@ -8,7 +8,7 @@
   &__arrowButton {
     width: 32px;
     height: 32px;
-    background-color: $white-color;
+    background-color: var(--white-color);
   }
 
   &__numbersWindow {
@@ -36,34 +36,34 @@
     cursor: pointer;
 
     &:hover {
-      border: 1px solid $primary-grey-color;
+      border: 1px solid var(--primary-grey-color);
     }
   }
 }
 
 .numberOff {
-  background-color: $white-color;
-  border: 1px solid $elements-grey-color;
-  color: $black-color;
+  background-color: var(--white-color);
+  border: 1px solid var(--elements-grey-color);
+  color: var(--primary-grey-color);
 }
 
 .numberOn {
-  background-color: $primary-grey-color;
-  border: 1px solid $primary-grey-color;
-  color: $white-color;
+  background-color: var(--primary-grey-color);
+  border: 1px solid var(--primary-grey-color);
+  color: var(--white-color);
 }
 
 .activeArrow {
-  border: 1px solid $icons-grey-color;
+  border: 1px solid var(--icons-grey-color);
   cursor: pointer;
 
   &:hover {
-    border: 1px solid $primary-grey-color;
+    border: 1px solid var(--primary-grey-color);
   }
 }
 
 .disabledArrow {
-  border: 1px solid $elements-grey-color;
+  border: 1px solid var(--elements-grey-color);
   pointer-events: none;
   cursor: not-allowed;
 }

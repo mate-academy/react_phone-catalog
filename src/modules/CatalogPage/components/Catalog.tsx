@@ -30,7 +30,7 @@ export const Catalog: React.FC = () => {
   const fetchProductsErrorText = useAppSelector(state => state.products.error);
 
   const queryParams = new URLSearchParams(location.search);
-  const sortByParam = queryParams.get('sortBy');
+  const sortByParam = queryParams.get('sort');
   const perPageParam = queryParams.get('perPage');
   const pageParams = queryParams.get('page');
 
@@ -55,7 +55,7 @@ export const Catalog: React.FC = () => {
         setStartShowFrom(0);
       }
     }
-  }, [location.search, perPage]);
+  }, [location.search, perPage, sortByParam, pageParams, perPageParam]);
 
   useEffect(() => {
     setPage(1);
@@ -88,7 +88,7 @@ export const Catalog: React.FC = () => {
     dispatch(setModels(filteredProduct.length));
 
     switch (sortBy) {
-      case 'Alphabetically':
+      case 'title':
         if (perPage !== 'all') {
           return filteredProduct
             .slice()
@@ -102,7 +102,7 @@ export const Catalog: React.FC = () => {
           });
         }
 
-      case 'Cheapest':
+      case 'price':
         if (perPage !== 'all') {
           return filteredProduct
             .slice()

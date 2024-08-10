@@ -10,12 +10,12 @@
   width: 40px;
   height: 40px;
   flex-shrink: 0;
-  border: 1px solid $icons-grey-color;
-  background-color: #fff;
+  border: 1px solid var(--icons-grey-color);
+  background-color: var(--white-color);
   cursor: pointer;
 
   &:hover {
-    border: 1px solid $primary-grey-color;
+    border: 1px solid var(--primary-grey-color);
   }
 }
 
@@ -25,11 +25,11 @@
 }
 
 .added {
-  color: $green-color;
-  background-color: $white-color;
+  color: var(--green-color);
+  background-color: var(--white-color);
   cursor: not-allowed;
   pointer-events: none;
-  border: 1px solid $elements-grey-color;
+  border: 1px solid var(--elements-grey-color);
 
   &:hover {
     box-shadow: none;

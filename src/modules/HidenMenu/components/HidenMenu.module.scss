@@ -2,7 +2,7 @@
 
 .hidenMenu {
   z-index: 10;
-  background-color: $white-color;
+  background-color: var(--white-color);
   position: absolute;
   height: calc(100vh - 48px);
   width: 100%;
@@ -39,7 +39,7 @@
       content: '';
       position: absolute;
       display: block;
-      background-color: $primary-grey-color;
+      background-color: var(--primary-grey-color);
       height: 2px;
       width: 100%;
       transform: translateY(8px);
@@ -50,7 +50,7 @@
 
     &:hover {
       .nav__link {
-        color: $primary-grey-color;
+        color: var(--primary-grey-color);
       }
 
       &::after {
@@ -67,7 +67,7 @@
     font-weight: 800;
     letter-spacing: 0.48px;
     text-transform: uppercase;
-    color: $secondary-grey-color;
+    color: var(--secondary-grey-color);
   }
 }
 
@@ -78,7 +78,7 @@
   justify-content: space-between;
   position: fixed;
   bottom: 0;
-  border-top: solid $elements-grey-color 2px;
+  border-top: solid var(--elements-grey-color) 2px;
 
   &__button {
     position: relative;
@@ -90,7 +90,7 @@
       content: '';
       position: absolute;
       display: block;
-      background-color: $primary-grey-color;
+      background-color: var(--primary-grey-color);
       height: 2px;
       width: 100%;
       bottom: 0;
@@ -116,7 +116,7 @@
 }
 
 .favorites {
-  border-right: solid $elements-grey-color 2px;
+  border-right: solid var(--elements-grey-color) 2px;
 }
 
 .hidenMenu:has(:target) {

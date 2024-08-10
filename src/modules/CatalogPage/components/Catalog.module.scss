@@ -7,7 +7,6 @@
   margin-bottom: 64px;
   margin-top: 24px;
 
-  @include content-padding-inline;
   @include on-desktop {
     margin-bottom: 80px;
   }
@@ -24,7 +23,7 @@
   }
 
   &__pathCategory {
-    color: $secondary-grey-color;
+    color: var(--secondary-grey-color);
     font-family: inherit;
     font-size: 12px;
     font-weight: 700;
@@ -34,7 +33,7 @@
   }
 
   &__title {
-    color: $primary-grey-color;
+    color: var(--primary-grey-color);
     font-family: inherit;
     font-size: 32px;
     font-weight: 700;
@@ -45,7 +44,7 @@
   }
 
   &__quantity {
-    color: $secondary-grey-color;
+    color: var(--secondary-grey-color);
     font-family: inherit;
     font-size: 14px;
     font-weight: 500;
@@ -56,7 +55,7 @@
   }
 
   &__empty {
-    color: $secondary-grey-color;
+    color: var(--secondary-grey-color);
     font-family: inherit;
     font-size: 22px;
     font-weight: 500;

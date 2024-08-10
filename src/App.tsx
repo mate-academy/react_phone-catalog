@@ -33,7 +33,7 @@ export const App: React.FC = () => {
   const dispatch = useAppDispatch();
   const location = useLocation();
   const BURGER_MENU_ICO = './icons/burger-menu-ico.svg';
-  const CLOSE_ICO = './icons/close-ico.svg';
+  const CLOSE_LIGHT_ICO = './icons/close-light-ico.svg';
 
   const [isDark, setIsDark] = useState(false);
 
@@ -46,6 +46,10 @@ export const App: React.FC = () => {
     state => state.pagesDetails.itemsQuantity,
   );
   const reloadTrigger = useAppSelector(state => state.boolean.reloadTrigger);
+
+  const body = document.body;
+
+  body.classList.add(styles.body);
 
   useEffect(() => {
     if (isMenuShown) {
@@ -121,7 +125,7 @@ export const App: React.FC = () => {
     });
 
     const newIco =
-      hidenMenuIco === BURGER_MENU_ICO ? CLOSE_ICO : BURGER_MENU_ICO;
+      hidenMenuIco === BURGER_MENU_ICO ? CLOSE_LIGHT_ICO : BURGER_MENU_ICO;
 
     dispatch(setHidenMenuIco(newIco));
   };
@@ -139,14 +143,22 @@ export const App: React.FC = () => {
   };
 
   const handleDarkModeSwither = () => {
-    const page = document.documentElement;
+    const root = document.documentElement;
 
-    if (isDark) {
-      setIsDark(!isDark);
-      page.classList.remove(styles.bodyBGC);
+    if (!isDark) {
+      setIsDark(true);
+      root.style.setProperty('--primary-grey-color', '#e2e6e9');
+      root.style.setProperty('--white-color', '#313237');
+      root.style.setProperty('--elements-grey-color', '#b4bdc4');
+      root.style.setProperty('--icons-grey-color', '#89939a');
+      root.style.setProperty('--elements-grey-color', '#89939a');
     } else {
-      setIsDark(!isDark);
-      page.classList.add(styles.bodyBGC);
+      setIsDark(false);
+      root.style.setProperty('--primary-grey-color', '#313237');
+      root.style.setProperty('--white-color', '#ffffff');
+      root.style.setProperty('--elements-grey-color', '#e2e6e9');
+      root.style.setProperty('--icons-grey-color', '#b4bdc4');
+      root.style.setProperty('--elements-grey-color', '#e2e6e9');
     }
   };
 
@@ -158,10 +170,13 @@ export const App: React.FC = () => {
         <div className={styles.header__left}>
           <Link
             onClick={handleLogoClick}
-            className={styles.header__logo}
+            className={styles.header__logoLink}
             to="/"
           >
-            <img src="./icons/header-logo.png" alt="logo" />
+            <p className={styles.logoText}>
+              NICE 👌
+              <br /> GADGETS
+            </p>
           </Link>
 
           <nav className={styles.navBar}>
@@ -200,10 +215,10 @@ export const App: React.FC = () => {
         <div className={styles.header__right}>
           <div
             onClick={handleDarkModeSwither}
-            className={`${styles.darkModeButton} ${isDark && styles.lightModeButton}`}
+            className={styles.darkModeButton}
           >
             <div
-              className={`${styles.darkModeButton__runner} ${isDark && styles.lightModeButton__runner}`}
+              className={`${styles.darkModeButton__runner} ${isDark && styles.isDark}`}
             ></div>
           </div>
 
@@ -251,7 +266,6 @@ export const App: React.FC = () => {
             >
               <div
                 onClick={handleMenuOrCloseButton}
-                id="hidenMenuIco"
                 className={styles.icons__link}
               >
                 <img
@@ -273,11 +287,10 @@ export const App: React.FC = () => {
         <div className={styles.footer__container}>
           <div className={styles.footer__gridWraper}>
             <Link className={styles.footer__logoLink} to="/">
-              <img
-                className={styles.Footer__logoImg}
-                src="./icons/header-logo.png"
-                alt="logo"
-              />
+              <p className={styles.logoText}>
+                NICE 👌
+                <br /> GADGETS
+              </p>
             </Link>
 
             <div className={styles.footer__contactsBlock}>

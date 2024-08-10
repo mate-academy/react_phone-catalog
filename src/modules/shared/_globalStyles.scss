@@ -19,15 +19,15 @@
   position: absolute;
   bottom: 50%;
   left: 50%;
-  border: 1px solid $white-color;
+  border: 1px solid var(--white-color);
   border-radius: 50%;
   width: 14px;
   height: 14px;
-  background-color: $red-color;
+  background-color: var(--red-color);
   pointer-events: none;
 
   &__number {
-    color: $white-color;
+    color: var(--white-color);
     font-family: inherit;
     font-size: 9px;
     font-weight: 700;
@@ -49,8 +49,8 @@
 .blackButtonBase {
   cursor: pointer;
   border: none;
-  background-color: $primary-grey-color;
-  color: $white-color;
+  background-color: var(--primary-grey-color);
+  color: var(--white-color);
   font-family: inherit;
   font-size: 14px;
   font-weight: 700;

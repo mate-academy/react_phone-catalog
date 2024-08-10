@@ -1,23 +1,26 @@
 @import './../main.scss';
 
 .swiperWrapper {
-  display: flex;
+  @include page-grid;
   margin-bottom: 18px;
 }
 
 .swiper {
+  grid-column: 1 / -1;
   box-sizing: border-box;
   height: 100vw;
   width: 100vw;
 
   @include on-tablet {
+    grid-column: 2 / 12;
+    grid-row: 1;
     height: 189px;
-    width: 490px;
+    width: 100%;
   }
 
   @include on-desktop {
+    grid-column: 2 / 24;
     height: 400px;
-    width: 1040px;
   }
 
   &__slide {
@@ -26,7 +29,6 @@
   }
 
   &__img {
-    // border: 1px solid black;
     display: block;
     object-fit: cover;
     width: 100%;
@@ -46,39 +48,53 @@
   span.swiper-pagination-bullet {
     width: 14px !important;
     height: 4px !important;
-    background-color: $elements-grey-color !important;
+    background-color: var(--elements-grey-color) !important;
     border-radius: 0 !important;
     opacity: 1 !important;
   }
 
   span.swiper-pagination-bullet-active {
-    background-color: $primary-grey-color !important;
+    background-color: var(--primary-grey-color) !important;
   }
 }
 
 .moveSlide {
   display: none;
+  width: 32px;
 
   @include on-tablet {
+    grid-row: 1;
     cursor: pointer;
-    width: 32px;
     height: 189px;
     display: block;
-    border: 1px solid $icons-grey-color;
+    border: 1px solid var(--icons-grey-color);
 
     &:hover {
-      border: 1px solid $primary-grey-color;
+      border: 1px solid var(--primary-grey-color);
     }
   }
 
   @include on-desktop {
     height: 400px;
   }
+}
 
-  &__slideArrow {
-    position: relative;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+.moveSlide {
+  background-color: var(--white-color);
+}
+
+.moveSlideLeft {
+  grid-column: 1 / 2;
+}
+
+.moveSlideRight {
+  margin-left: auto;
+
+  @include on-tablet {
+    grid-column: -2 / -1;
+  }
+
+  @include on-desktop {
+    grid-column: 24 / 25;
   }
 }

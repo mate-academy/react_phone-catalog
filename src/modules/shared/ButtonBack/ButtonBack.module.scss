@@ -9,7 +9,7 @@
 
   &:hover {
     .buttonBackText {
-      color: $primary-grey-color;
+      color: var(--primary-grey-color);
     }
   }
 
@@ -19,7 +19,7 @@
 }
 
 .buttonBackText {
-  color: $secondary-grey-color;
+  color: var(--secondary-grey-color);
   font-family: inherit;
   font-size: 12px;
   font-weight: 700;

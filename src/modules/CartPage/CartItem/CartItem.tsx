@@ -106,7 +106,7 @@ export const CartItem: React.FC<CatrItemType> = ({ gadget }) => {
           src="./icons/close-light-ico.svg"
           alt="delet-ico"
         />
-        ¨
+
         <Link
           to={`/${gadget.category}/${gadget.itemId}`}
           onClick={() => handleClickOnGadget(gadget, dispatch)}

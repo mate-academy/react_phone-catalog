@@ -5,7 +5,7 @@
   flex-wrap: wrap;
   align-items: center;
   padding: 16px;
-  border: 1px solid $elements-grey-color;
+  border: 1px solid var(--elements-grey-color);
   gap: 16px;
 
   @include on-tablet {
@@ -58,7 +58,7 @@
   &__name {
     cursor: pointer;
     width: 100%;
-    color: $primary-grey-color;
+    color: var(--primary-grey-color);
     font-family: inherit;
     font-size: 14px;
     font-weight: 500;
@@ -68,7 +68,7 @@
   }
 
   &__price {
-    color: $primary-grey-color;
+    color: var(--primary-grey-color);
     font-family: inherit;
     font-size: 22px;
     font-weight: 700;
@@ -82,20 +82,20 @@
   display: flex;
   &__button {
     cursor: pointer;
-    background-color: $white-color;
+    background-color: var(--white-color);
     width: 32px;
     height: 32px;
-    border: 1px solid $icons-grey-color;
+    border: 1px solid var(--icons-grey-color);
 
     &:hover {
-      border: 1px solid $primary-grey-color;
+      border: 1px solid var(--primary-grey-color);
     }
   }
 
   &__number {
     width: 32px;
     text-align: center;
-    color: $black-color;
+    color: var(--black-color);
     font-family: inherit;
     font-size: 14px;
     font-weight: 500;

@@ -1,20 +1,22 @@
 @import './modules/shared/_main.scss';
 
+.body {
+  background-color: var(--white-color);
+}
+
 .app {
   display: grid;
-  position: relative;
 
   &__content {
     display: grid;
-    position: relative;
-    min-height: calc(100vh - 48px - 257px);
+    min-height: calc(100vh - 48px - 257px - 1px);
 
     @include on-tablet {
-      min-height: calc(100vh - 48px - 96px);
+      min-height: calc(100vh - 48px - 96px - 1px);
     }
 
     @include on-desktop {
-      min-height: calc(100vh - 65px - 96px);
+      min-height: calc(100vh - 64px - 96px - 1px);
     }
   }
 }
@@ -23,12 +25,12 @@
   z-index: 10;
   position: sticky;
   top: 0;
-  // background-color: $white-color;
+  background-color: var(--white-color);
   display: flex;
   justify-content: space-between;
   height: 48px;
   text-align: center;
-  border-bottom: solid $elements-grey-color 2px;
+  border-bottom: solid var(--elements-grey-color) 2px;
 
   @include on-desktop {
     height: 64px;
@@ -45,15 +47,23 @@
     align-items: center;
   }
 
-  &__logo {
-    margin-inline: 16px;
+  &__logoLink {
+    margin-right: 16px;
     padding-inline: 16px;
 
     @include on-desktop {
-      margin-inline: 24px;
+      margin-right: 24px;
       padding-inline: 24px;
     }
   }
+}
+
+.logoText {
+  font-family: inherit;
+  color: var(--primary-grey-color);
+  font-weight: 800;
+  text-align: left;
+  line-height: 100%;
 }
 
 .navBar {
@@ -82,7 +92,7 @@
   display: flex;
   align-items: center;
   cursor: pointer;
-  color: $secondary-grey-color;
+  color: var(--secondary-grey-color);
   text-decoration: none;
   font-family: inherit;
   font-size: 12px;
@@ -91,16 +101,20 @@
   letter-spacing: 0.48px;
   text-transform: capitalize;
   line-height: 100%;
+
+  &:hover {
+    color: var(--primary-grey-color);
+  }
 }
 
 .active {
-  color: $primary-grey-color;
+  color: var(--primary-grey-color);
 
   &::after {
     content: '';
     position: absolute;
     display: block;
-    background-color: $primary-grey-color;
+    background-color: var(--primary-grey-color);
     height: 3px;
     width: 100%;
     transform: translateY(22.5px);
@@ -112,13 +126,13 @@
 }
 
 .activeIco {
-  color: $primary-grey-color;
+  color: var(--primary-grey-color);
 
   &::after {
     content: '';
     position: absolute;
     display: block;
-    background-color: $primary-grey-color;
+    background-color: var(--primary-grey-color);
     height: 3px;
     width: 100%;
     transform: translateY(45px);
@@ -129,34 +143,20 @@
 }
 
 .darkModeButton {
-  position: relative;
-  width: 40px;
-  height: 20px;
-  background-color: $primary-grey-color;
-  border: 1px solid green;
+  width: 32px;
+  height: 16px;
+  display: flex;
+  padding: 3px;
+  background-color: var(--primary-grey-color);
 
   &__runner {
-    position: absolute;
-    top: 2px;
-    left: 2px;
-    height: 16px;
-    width: 18px;
-    background-color: $white-color;
+    width: 50%;
+    background-color: var(--white-color);
   }
 }
 
-.lightModeButton {
-  background-color: $white-color;
-
-  &__runner {
-    background-color: $primary-grey-color;
-    transform: translateX(100%);
-  }
-}
-
-.bodyBGC {
-  background-color: #2c2e47;
-  color: white;
+.isDark {
+  transform: translateX(100%);
 }
 
 .icons {
@@ -166,7 +166,7 @@
     position: relative;
     height: 48px;
     width: 48px;
-    border-left: solid $elements-grey-color 2px;
+    border-left: solid var(--elements-grey-color) 2px;
 
     @include on-desktop {
       height: 64px;
@@ -213,7 +213,7 @@
 }
 
 .footer {
-  border-top: 1px solid $elements-grey-color;
+  border-top: 1px solid var(--elements-grey-color);
   height: 257px;
   bottom: 0;
 
@@ -278,7 +278,7 @@
 
   &__contactsLink {
     text-decoration: none;
-    color: $secondary-grey-color;
+    color: var(--secondary-grey-color);
     font-family: inherit;
     font-size: 12px;
     font-weight: 700;
@@ -286,6 +286,10 @@
     letter-spacing: 4%;
     text-align: left;
     text-transform: uppercase;
+
+    &:hover {
+      color: var(--secondary-grey-color);
+    }
   }
 
   &__goUpBlock {
@@ -309,7 +313,7 @@
 
   &__goUpTextLink {
     text-decoration: none;
-    color: $secondary-grey-color;
+    color: var(--secondary-grey-color);
     font-family: inherit;
     font-size: 12px;
     font-weight: 700;
@@ -321,10 +325,10 @@
   &__goUpButton {
     width: 32px;
     height: 32px;
-    border: 1px solid $icons-grey-color;
+    border: 1px solid var(--icons-grey-color);
 
     &:hover {
-      border: 1px solid $primary-grey-color;
+      border: 1px solid var(--primary-grey-color);
     }
   }
 

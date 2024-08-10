@@ -63,7 +63,7 @@
   padding: 6px;
   width: 100%;
   cursor: pointer;
-  border: 1px solid $icons-grey-color;
+  border: 1px solid var(--icons-grey-color);
   aspect-ratio: 1 / 1;
 
   &__image {
@@ -74,5 +74,5 @@
 }
 
 .activeSlide {
-  border-color: $primary-grey-color;
+  border-color: var(--primary-grey-color);
 }

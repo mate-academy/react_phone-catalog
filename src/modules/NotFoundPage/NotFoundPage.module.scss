@@ -9,7 +9,7 @@
 
   &__text {
     padding-bottom: 30px;
-    color: $primary-grey-color;
+    color: var(--primary-grey-color);
     font-family: inherit;
     font-size: 22px;
     font-weight: 700;
@@ -28,7 +28,7 @@
 
 .goHome {
   padding-top: 30px;
-  color: $primary-grey-color;
+  color: var(--primary-grey-color);
   font-family: inherit;
   font-size: 18px;
   font-weight: 500;

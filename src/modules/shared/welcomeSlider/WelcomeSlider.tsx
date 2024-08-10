@@ -11,13 +11,17 @@ export const WelcomeSlider = () => {
   return (
     <>
       <div className={styles.swiperWrapper}>
-        <div id="welcome-slider-arrow-left" className={styles.moveSlide}>
+        <button
+          id="welcome-slider-arrow-left"
+          className={`${styles.moveSlide} ${styles.moveSlideLeft}`}
+        >
           <img
             className={styles.moveSlide__slideArrow}
             src="./icons/arrow-left-ico.svg"
             alt="arrowLeft"
           />
-        </div>
+        </button>
+
         <Swiper
           modules={[FreeMode, Pagination, Navigation, Autoplay]}
           autoplay={{ delay: 5000 }}
@@ -68,13 +72,17 @@ export const WelcomeSlider = () => {
             />
           </SwiperSlide>
         </Swiper>
-        <div id="welcome-slider-arrow-right" className={styles.moveSlide}>
+
+        <button
+          id="welcome-slider-arrow-right"
+          className={`${styles.moveSlide} ${styles.moveSlideRight}`}
+        >
           <img
             className={styles.moveSlide__slideArrow}
             src="./icons/aroow-right-ico.svg"
             alt="arrowLeft"
           />
-        </div>
+        </button>
       </div>
 
       <div id="banner-container-of-bullets" className={styles.pagination}></div>
