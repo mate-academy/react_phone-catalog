@@ -1,5 +1,5 @@
 /* eslint-disable max-len */
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Outlet, useLocation } from 'react-router-dom';
 import './App.module.scss';
 import './modules/shared/_main.scss';
@@ -34,6 +34,8 @@ export const App: React.FC = () => {
   const location = useLocation();
   const BURGER_MENU_ICO = './icons/burger-menu-ico.svg';
   const CLOSE_ICO = './icons/close-ico.svg';
+
+  const [isDark, setIsDark] = useState(false);
 
   const hidenMenuIco = useAppSelector(state => state.iconsChanger.hidenMenuIco);
   const isMenuShown = useAppSelector(state => state.boolean.isMenuShown);
@@ -136,6 +138,18 @@ export const App: React.FC = () => {
     dispatch(setHidenMenuIco(BURGER_MENU_ICO));
   };
 
+  const handleDarkModeSwither = () => {
+    const page = document.documentElement;
+
+    if (isDark) {
+      setIsDark(!isDark);
+      page.classList.remove(styles.bodyBGC);
+    } else {
+      setIsDark(!isDark);
+      page.classList.add(styles.bodyBGC);
+    }
+  };
+
   return (
     <div className={styles.app}>
       <HidenMenu />
@@ -183,64 +197,77 @@ export const App: React.FC = () => {
           </nav>
         </div>
 
-        <div className={styles.icons}>
+        <div className={styles.header__right}>
           <div
-            className={`${styles.icons__containerfavorite} ${styles.icons__container} ${location.pathname.includes('favorite') && styles.activeIco}`}
-          >
-            {favoritesArray.length > 0 && (
-              <div className={styles.redSpot}>
-                <p className={styles.redSpot__number}>
-                  {favoritesArray.length}
-                </p>
-              </div>
-            )}
-            <Link className={styles.icons__link} to="/favorites">
-              <img
-                className={styles.icons__icon}
-                src="./icons/heart-ico.svg"
-                alt="favorite"
-              />
-            </Link>
-          </div>
-
-          <div
-            className={`${styles.icons__containerBasket} ${styles.icons__container} ${location.pathname.includes('cart') && styles.activeIco}`}
-          >
-            {cartArray.length > 0 && (
-              <div className={styles.redSpot}>
-                <p className={styles.redSpot__number}>
-                  {amount(itemsQuantity, cart, 'items')}
-                </p>
-              </div>
-            )}
-            <Link className={styles.icons__link} to="/cart">
-              <img
-                className={styles.icons__icon}
-                src="./icons/basket-ico.svg"
-                alt="basket"
-              />
-            </Link>
-          </div>
-
-          <div
-            className={`${styles.icons__containerMenu} ${styles.icons__container}`}
+            onClick={handleDarkModeSwither}
+            className={`${styles.darkModeButton} ${isDark && styles.lightModeButton}`}
           >
             <div
-              onClick={handleMenuOrCloseButton}
-              id="hidenMenuIco"
-              className={styles.icons__link}
+              className={`${styles.darkModeButton__runner} ${isDark && styles.lightModeButton__runner}`}
+            ></div>
+          </div>
+
+          <div className={styles.icons}>
+            <div
+              className={`${styles.icons__containerfavorite} ${styles.icons__container} ${location.pathname.includes('favorite') && styles.activeIco}`}
             >
-              <img
-                className={styles.icons__icon}
-                src={hidenMenuIco}
-                alt="menu"
-              />
+              {favoritesArray.length > 0 && (
+                <div className={styles.redSpot}>
+                  <p className={styles.redSpot__number}>
+                    {favoritesArray.length}
+                  </p>
+                </div>
+              )}
+              <Link className={styles.icons__link} to="/favorites">
+                <img
+                  className={styles.icons__icon}
+                  src="./icons/heart-ico.svg"
+                  alt="favorite"
+                />
+              </Link>
+            </div>
+
+            <div
+              className={`${styles.icons__containerBasket} ${styles.icons__container} ${location.pathname.includes('cart') && styles.activeIco}`}
+            >
+              {cartArray.length > 0 && (
+                <div className={styles.redSpot}>
+                  <p className={styles.redSpot__number}>
+                    {amount(itemsQuantity, cart, 'items')}
+                  </p>
+                </div>
+              )}
+              <Link className={styles.icons__link} to="/cart">
+                <img
+                  className={styles.icons__icon}
+                  src="./icons/basket-ico.svg"
+                  alt="basket"
+                />
+              </Link>
+            </div>
+
+            <div
+              className={`${styles.icons__containerMenu} ${styles.icons__container}`}
+            >
+              <div
+                onClick={handleMenuOrCloseButton}
+                id="hidenMenuIco"
+                className={styles.icons__link}
+              >
+                <img
+                  className={styles.icons__icon}
+                  src={hidenMenuIco}
+                  alt="menu"
+                />
+              </div>
             </div>
           </div>
         </div>
       </header>
 
-      <Outlet />
+      <div className={styles.app__content}>
+        <Outlet />
+      </div>
 
       <footer className={styles.footer}>
         <div className={styles.footer__container}>

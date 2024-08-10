@@ -306,31 +306,7 @@
   &__blocks {
     display: flex;
     flex-direction: column;
-    gap: 32px;
-  }
-
-  &__block {
-    display: flex;
-    flex-direction: column;
     gap: 16px;
-
-    @include on-desktop {
-      gap: 18px;
-    }
-  }
-
-  &__chapter {
-    color: $primary-grey-color;
-    font-family: inherit;
-    font-size: 16px;
-    font-weight: 700;
-    line-height: 20px;
-    text-align: left;
-
-    @include on-tablet {
-      font-size: 20px;
-      line-height: 26px;
-    }
   }
 }
 
@@ -373,6 +349,7 @@
 }
 
 .notFound {
+  margin-top: 24px;
   grid-column: 1 / -1;
   color: $secondary-grey-color;
   font-family: inherit;

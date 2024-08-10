@@ -11,15 +11,16 @@ import { Loader } from '../../Loader';
 import { setReloadTrigger } from '../../../features/booleanSlice';
 
 export const Catalog: React.FC = () => {
+  const dispatch = useAppDispatch();
+  let catalogContent;
+  const location = useLocation();
+
   const [perPage, setPerPage] = useState('all');
   const [sortBy, setSortBy] = useState('age');
   const [page, setPage] = useState(1);
   const [displayedProducts, setDisplayedProducts] = useState<Product[]>([]);
   const [pagesWithProducts, setPagesWithProducts] = useState<number[]>([]);
   const [startShowFrom, setStartShowFrom] = useState(0);
-
-  const location = useLocation();
-  const dispatch = useAppDispatch();
 
   const productsFromServer = useAppSelector(state => state.products.objects);
   const loadingStatus = useAppSelector(state => state.products.loading);
@@ -148,8 +149,6 @@ export const Catalog: React.FC = () => {
   const handleReloadButton = () => {
     dispatch(setReloadTrigger());
   };
-
-  let catalogContent;
 
   if (
     displayedProducts.length < 1 &&

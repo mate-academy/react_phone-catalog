@@ -40,11 +40,6 @@ export const ItemCard: React.FC = () => {
   const loadingStatusAccessories = useAppSelector(
     state => state.accessories.loading,
   );
-  const errorStatusPhones = useAppSelector(state => state.phones.error);
-  const errorStatusTablets = useAppSelector(state => state.tablets.error);
-  const errorStatusAccessories = useAppSelector(
-    state => state.accessories.error,
-  );
 
   const isWrongParams = useAppSelector(state => state.boolean.isWrongParams);
   const favoritesArray = useAppSelector(state => state.chosenItems.favorite);
@@ -135,21 +130,13 @@ export const ItemCard: React.FC = () => {
     }
   }, [favoritesArray, currentProduct, cartArray]);
 
-  let fetchingError = '';
-
   const getLoader = () => {
     switch (category) {
       case 'phones':
-        fetchingError = errorStatusPhones;
-
         return loadingStatusPhones && <Loader />;
       case 'tablets':
-        fetchingError = errorStatusTablets;
-
         return loadingStatusTablets && <Loader />;
       case 'accessories':
-        fetchingError = errorStatusAccessories;
-
         return loadingStatusAccessories && <Loader />;
       default:
         return;
@@ -198,7 +185,7 @@ export const ItemCard: React.FC = () => {
   return (
     <>
       {getLoader()}
-      {!isWrongParams && (
+      {!isWrongParams ? (
         <div className={styles.itemCard}>
           <div
             id="gadgetPathBlock"
@@ -354,41 +341,23 @@ export const ItemCard: React.FC = () => {
               ></div>
 
               <div className={styles.about__blocks}>
-                <div className={styles.about__block}>
-                  <h4 className={styles.about__chapter}>
-                    {currrentGadget?.description[0].title}
-                  </h4>
+                <p
+                  className={`${styles.about__text} ${styles.drscriptionText}`}
+                >
+                  {currrentGadget?.description[0].text}
+                </p>
 
-                  <p
-                    className={`${styles.about__text} ${styles.drscriptionText}`}
-                  >
-                    {currrentGadget?.description[0].text}
-                  </p>
-                </div>
+                <p
+                  className={`${styles.about__text} ${styles.drscriptionText}`}
+                >
+                  {currrentGadget?.description[1].text}
+                </p>
 
-                <div className={styles.about__block}>
-                  <h4 className={styles.about__chapter}>
-                    {currrentGadget?.description[1].title}
-                  </h4>
-
-                  <p
-                    className={`${styles.about__text} ${styles.drscriptionText}`}
-                  >
-                    {currrentGadget?.description[1].text}
-                  </p>
-                </div>
-
-                <div className={styles.about__block}>
-                  <h4 className={styles.about__chapter}>
-                    {currrentGadget?.description[2].title}
-                  </h4>
-
-                  <p
-                    className={`${styles.about__text} ${styles.drscriptionText}`}
-                  >
-                    {currrentGadget?.description[2].text}
-                  </p>
-                </div>
+                <p
+                  className={`${styles.about__text} ${styles.drscriptionText}`}
+                >
+                  {currrentGadget?.description[2].text}
+                </p>
               </div>
             </div>
 
@@ -481,9 +450,7 @@ export const ItemCard: React.FC = () => {
             />
           </section>
         </div>
-      )}
-
-      {fetchingError && (
+      ) : (
         <h3 className={styles.notFound}>Product was not found</h3>
       )}
     </>

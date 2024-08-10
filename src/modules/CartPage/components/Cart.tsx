@@ -16,13 +16,15 @@ export const Cart: React.FC = () => {
     state => state.pagesDetails.itemsQuantity,
   );
 
+  const isModal = useAppSelector(state => state.boolean.isCheckoutModal);
+
   const handleCheckout = () => {
     dispatch(setIsCheckoutModal(true));
   };
 
   return (
     <>
-      <CheckoutModal />
+      {isModal ? <CheckoutModal /> : null}
 
       <div className={styles.gridContainer}>
         <div className={styles.cart}>

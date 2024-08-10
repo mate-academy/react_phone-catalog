@@ -23,6 +23,7 @@ export const CurrentProductSlider: React.FC<SliderType> = gadget => {
     'horizontal',
   );
   const [gap, setGap] = useState(0);
+  const [activeSlide, setActiveSlide] = useState(0);
 
   const verticalPaginationHeight = useAppSelector(
     state => state.pagesDetails.verticalPaginationHeight,
@@ -113,6 +114,7 @@ export const CurrentProductSlider: React.FC<SliderType> = gadget => {
         className={styles.slider}
         slidesPerView={1}
         thumbs={{ swiper: thumbsSwiper }}
+        onSlideChange={swiper => setActiveSlide(swiper.activeIndex)}
       >
         {images.map(image => (
           <SwiperSlide className={styles.slide} key={image}>
@@ -137,10 +139,10 @@ export const CurrentProductSlider: React.FC<SliderType> = gadget => {
             : { height: 'auto' }
         }
       >
-        {images.map(image => (
+        {images.map((image, index) => (
           <SwiperSlide
             id="paginationPreview"
-            className={styles.preview}
+            className={`${styles.preview} ${index === activeSlide && styles.activeSlide}`}
             key={image}
           >
             <img

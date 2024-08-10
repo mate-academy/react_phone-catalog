@@ -40,7 +40,6 @@
 }
 
 .pagination {
-  // max-height: 500px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -72,4 +71,8 @@
     display: block;
     object-fit: contain;
   }
+}
+
+.activeSlide {
+  border-color: $primary-grey-color;
 }

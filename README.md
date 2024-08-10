@@ -74,7 +74,7 @@ There should be 3 separate pages `/phones`, `/tablets`, and `/accessories`.
    - Hide pagination elements if they do not make sense;
    - You can use the logic explained in [the React Pagination task](https://github.com/mate-academy/react_pagination#react-pagination). -->
 
-## Product details page
+<!-- ## Product details page
 
 Create `ProductDetailsPage` available at `/product/:productId`.
 
@@ -92,7 +92,7 @@ Create `ProductDetailsPage` available at `/product/:productId`.
    - A Home page link;
    - A category page link (`Phones`, `Tablets`, `Accessories`);
    - The name of the product (just a text).
-8. Show `Product was not found` if there is no product with a given id on the server.
+8. Show `Product was not found` if there is no product with a given id on the server. -->
 
 <!-- ## Shopping Cart page
 
@@ -107,10 +107,11 @@ Use React Context or Redux to store Items.
 5. Add the ability to change the item quantity in the `Cart` with `-` and `+` buttons (it should be > 0).
 6. Total amount and quantity should be calculated automatically.
 7. Show the quantity at the `Cart` icon in the header.
-8. Save the `Cart` to `localStorage` on each change and read it on page load.
+8. Save the `Cart` to `localStorage` on each change and read it on page load. -->
+
 9. `Checkout` button should show a modal dialog with the text `Checkout is not implemented yet. Do you want to clear the Cart?`:
    - Clear the Cart if the user confirms the order;
-   - Keep the Cart items and close the confirmation on cancel; -->
+   - Keep the Cart items and close the confirmation on cancel;
 
 - Use the `confirm` function if you don't have a better solution.
 
@@ -124,11 +125,11 @@ Create `Favorites` page with a `ProductsList` showing favorite products at `/fav
 4. Show the number of favorites at the `Favorites` icon in the header.
 5. Save favorites to `localStorage` on each change and load them on page load. -->
 
-## Other tasks
+<!-- ## Other tasks
 
 1. Add `NotFoundPage` containing text `Page not found` for all the other URLs with the link to `HomePage`.
 
-2. Implement the `Product was not found` state for the `ProductDetailsPage`.
+2. Implement the `Product was not found` state for the `ProductDetailsPage`. -->
 
 ## (\*) Advanced tasks
 
