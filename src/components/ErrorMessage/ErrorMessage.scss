@@ -1,0 +1,12 @@
+@import '../../styles';
+
+.error-message {
+  width: fit-content;
+  padding: 20px 40px;
+  color: $colorRed;
+  background-color: scale-color($color: $colorRed,
+    $lightness: 70%, $alpha: -80%);
+
+  border: 1px solid $colorRed;
+  border-radius: 8px;
+}

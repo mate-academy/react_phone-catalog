@@ -1,0 +1,28 @@
+@import '../../styles';
+
+.loader {
+  width: 50px;
+  height: 50px;
+  margin: 100px auto;
+  border: 2px solid $colorElements;
+  border-top-color: $colorAccent;
+  border-radius: 50%;
+
+  animation: animate 1.3s infinite linear;
+
+  @include onTablet {
+    width: 80px;
+    height: 80px;
+    border-width: 12px;
+  }
+}
+
+@keyframes animate {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}

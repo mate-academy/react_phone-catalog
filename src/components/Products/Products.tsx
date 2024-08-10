@@ -6,18 +6,18 @@ import './Products.scss';
 type Props = {
   products: Product[];
   type?: 'slider' | '';
-  cardTransform: number;
-  onTouchStart: (e: React.TouchEvent) => void;
-  onTouchEnd: (e: React.TouchEvent) => void;
+  cardTransform?: number;
+  onTouchStart?: (e: React.TouchEvent) => void;
+  onTouchEnd?: (e: React.TouchEvent) => void;
   catalog?: boolean;
 };
 
 export const Products: React.FC<Props> = ({
   products,
   type,
-  cardTransform,
-  onTouchStart,
-  onTouchEnd,
+  cardTransform = 0,
+  onTouchStart = () => {},
+  onTouchEnd = () => {},
   catalog,
 }) => {
   return (
