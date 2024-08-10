@@ -1,0 +1,33 @@
+@import "../../styles";
+
+.not-found-page {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: column;
+  gap: 30px;
+  padding: 24px 0;
+
+  @include onTablet {
+    gap: 40px;
+    padding: 32px 0;
+  }
+
+  @include onDesktop {
+    gap: 60px;
+    padding: 56px 0;
+  }
+
+  &__title {
+    @extend %h1;
+
+  }
+
+  &__image {
+    width: 60%;
+
+    @include onTablet {
+      width: 50%;
+    }
+  }
+}

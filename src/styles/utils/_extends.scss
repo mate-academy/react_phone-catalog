@@ -1,0 +1,93 @@
+@import "./mixins";
+
+%h1 {
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 41px;
+  letter-spacing: -0.01em;
+
+  @include onTablet {
+    font-weight: 700;
+    font-size: 48px;
+    line-height: 56px;
+  }
+}
+
+%h2 {
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 31px;
+  letter-spacing: 0;
+
+  @include onTablet {
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+  }
+}
+
+%h3 {
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 26px;
+  letter-spacing: 0;
+
+  @include onTablet {
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 31px;
+  }
+}
+
+%h4 {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: 0;
+
+  @include onTablet {
+    font-size: 20px;
+    line-height: 26px;
+  }
+}
+%uppercase {
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 11px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+%buttons {
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 21px;
+}
+
+%body-text {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 22px;
+}
+
+%small-text {
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 15px;
+}
+
+%active-link-line {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: block;
+  height: 2px;
+  width: 100%;
+  background-color: $colorPrimary;
+
+  @include onTablet {
+    height: 3px;
+  }
+}
