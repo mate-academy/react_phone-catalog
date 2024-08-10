@@ -1,10 +1,14 @@
 type Props = {
   arrow: JSX.Element;
+  onClick: () => void;
 };
 
-const HomeBannerButton = ({ arrow }: Props) => {
+const HomeBannerButton = ({ arrow, onClick }: Props) => {
   return (
-    <button className="h-banner grid w-8 place-items-center rounded-full border-1 border-icon">
+    <button
+      onClick={onClick}
+      className="grid h-banner w-8 place-items-center rounded-full border-1 border-icon"
+    >
       {arrow}
     </button>
   );

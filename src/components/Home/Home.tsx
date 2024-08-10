@@ -1,11 +1,12 @@
 import HomeBanner from "./HomeBanner/HomeBanner";
+import HomeNewProducts from "./HomeNewProducts/HomeNewProducts";
 
 const Home = () => {
   return (
-    <div>
-      <h1 className="mb-14 text-h1">Welcome to Nice Gadgets store!</h1>
+    <section className="mb-20 flex flex-col gap-20">
       <HomeBanner />
-    </div>
+      <HomeNewProducts />
+    </section>
   );
 };
 

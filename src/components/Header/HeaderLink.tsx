@@ -17,8 +17,8 @@ const HeaderLink = ({ option }: Props) => {
       key={page}
       to={to}
       className={({ isActive }) =>
-        `relative grid place-items-center text-center font-montSemi text-uppercase uppercase duration-300 ${
-          isActive ? "text-primary" : "text-sec"
+        `relative grid h-full place-items-center text-center font-montSemi text-uppercase uppercase duration-300 ${
+          isActive ? "text-primary" : "text-sec hover:bg-elem"
         }`
       }
     >

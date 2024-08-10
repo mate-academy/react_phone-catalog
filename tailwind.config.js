@@ -3,8 +3,8 @@ export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     screens: {
-      mobile: "640px",
-      desctop: "1200px",
+      small: "640px",
+      desktop: "1200px",
     },
     fontSize: {
       h1: [
@@ -96,7 +96,8 @@ export default {
         3: "3px",
       },
       gridTemplateColumns: {
-        header: "auto minmax(0, 1200px) auto",
+        header: "1fr minmax(0, 1200px) 1fr",
+        footer: "auto 40% auto",
       },
       fontFamily: {
         mont: "Mont",

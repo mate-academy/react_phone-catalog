@@ -4,9 +4,9 @@ import Header from "./components/Header/Header";
 import Home from "./components/Home/Home";
 import Phones from "./components/Phones/Phones";
 import Tablets from "./components/Tablets/Tablets";
-import Assesories from "./components/Assesories/Assesories";
 import Cart from "./components/Cart/Cart";
-import Favorites from "./components/Favorites/Favotives";
+import Accessories from "./components/Accessories/Accessories";
+import Favorites from "./components/Favorites/Favorites";
 import NoPage from "./components/NoPage/NoPage";
 
 const App = () => {
@@ -14,12 +14,12 @@ const App = () => {
     <>
       <Header />
 
-      <main className="mx-auto w-page px-8">
+      <main className="desktop:px-8 mx-auto w-page px-6">
         <Routes>
           <Route index path="/" element={<Home />} />
           <Route path="/phones" element={<Phones />} />
           <Route path="/tablets" element={<Tablets />} />
-          <Route path="/accessories" element={<Assesories />} />
+          <Route path="/accessories" element={<Accessories />} />
           <Route path="/favorites" element={<Favorites />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="*" element={<NoPage />} />

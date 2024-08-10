@@ -5,7 +5,7 @@ export const navOptions = [
   { page: "Home", to: "/" },
   { page: "Phones", to: "/phones" },
   { page: "Tablets", to: "/tablets" },
-  { page: "Assesories", to: "/accessories" },
+  { page: "Accessories", to: "/accessories" },
 ];
 
 export const navButtons = [
