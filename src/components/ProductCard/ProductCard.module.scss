@@ -1,0 +1,149 @@
+.product-card {
+  background: $surface;
+  height: 439px;
+  min-width: 212px;
+  padding: 32px;
+  gap: 8px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+
+  @media (min-width: $tablet) {
+    height: 512px;
+    min-width: 237px;
+    flex-basis: calc(50% - 8px);
+    flex-grow: unset;
+  }
+
+  @media (min-width: $pc) {
+    height: 506px;
+    width: 272px;
+    flex-basis: unset;
+  }
+
+  &__image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &__image {
+      width: 148px;
+      height: 129px;
+      object-fit: contain;
+      transition: transform $hover-transition ease;
+
+      &:hover {
+        transform: scale(1.1);
+      }
+
+      @media (min-width: $tablet) {
+        width: 173px;
+        height: 202px;
+      }
+
+      @media (min-width: $pc) {
+        width: 208px;
+        height: 196px;
+      }
+    }
+  }
+
+  &__title {
+    height: 58px;
+    color: $white;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+    display: flex;
+    align-items: end;
+  }
+
+  &__price {
+    height: 31px;
+    display: flex;
+    gap: 8px;
+    font-weight: 800;
+    font-size: 22px;
+    line-height: 31px;
+
+    &__full-price {
+      color: $gray;
+      text-decoration: line-through;
+      font-weight: 600;
+      font-size: 22px;
+      line-height: 28px;
+    }
+  }
+
+  &__description {
+    list-style: none;
+    display: flex;
+    gap: 8px;
+    flex-direction: column;
+    height: 77px;
+
+    &__item {
+      display: flex;
+      justify-content: space-between;
+      height: 15px;
+      font-weight: 700;
+      font-size: 12px;
+      line-height: 15px;
+
+      &__name {
+        color: $gray;
+      }
+
+      &__value {
+        color: $white;
+      }
+    }
+  }
+  
+  &__actions {
+    display: flex;
+    gap: 8px;
+    height: 40px;
+
+    &__add {
+      border-style: none;
+      background: $accent;
+      flex-grow: 1;
+      font-weight: 700;
+      font-size: 14px;
+      line-height: 21px;
+      color: $white;
+      cursor: pointer;
+      transition: background-color $hover-transition ease;
+
+      &--selected {
+        background: $surface-second;
+      }
+
+      &:hover {
+        background: $accent-hover;
+      }
+    }
+
+    &__favourite {
+      height: 40px;
+      width: 40px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: $surface-second;
+      border: 1px solid $surface-second;
+      cursor: pointer;
+      transition: background-color $hover-transition ease;
+
+      &--selected {
+        background: transparent;
+      }
+
+      &:hover {
+        background: $icons;
+      }
+    }
+  }
+}
