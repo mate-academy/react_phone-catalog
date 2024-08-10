@@ -62,9 +62,19 @@
     width: 100%;
     justify-content: center;
     align-items: center;
+    transition: opacity .3s ease;
 
     @media (min-width: $tablet) {
       width: auto;
+    }
+
+    &--hidden {
+      display: none;
+
+      @media (min-width: $tablet) {
+        display: block;
+        opacity: 0;
+      }
     }
   }
 

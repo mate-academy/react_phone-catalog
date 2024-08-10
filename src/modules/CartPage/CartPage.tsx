@@ -5,6 +5,7 @@ import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { cartSlice } from '../../features/cart';
 import { Product } from '../../types/Product';
 import { CartProduct } from '../../types/CartProduct';
+import classNames from 'classnames';
 
 export const CartPage = () => {
   const dispatch = useAppDispatch();
@@ -98,7 +99,11 @@ export const CartPage = () => {
             />
           )}
         </div>
-        <div className="cart__checkout">
+        <div
+          className={classNames('cart__checkout', {
+            'cart__checkout--hidden': !itemsCount,
+          })}
+        >
           <h4 className="cart__checkout__price">${totalPrice}</h4>
           <p className="cart__checkout__info">Total for {itemsCount} items</p>
           <div className="divider"></div>

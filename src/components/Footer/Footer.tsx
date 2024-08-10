@@ -1,6 +1,26 @@
 import { Link } from 'react-router-dom';
+import classNames from 'classnames';
+import { useEffect, useState } from 'react';
 
 export const Footer = () => {
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 0) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
   const handleScrollTop = () => {
     window.scrollTo({
       top: 0,
@@ -46,7 +66,11 @@ export const Footer = () => {
           </Link>
         </li>
       </ul>
-      <div className="footer__actions">
+      <div
+        className={classNames('footer__actions', {
+          'footer__actions--hidden': !isScrolled,
+        })}
+      >
         <button className="footer__button" onClick={handleScrollTop}>
           <span className="footer__button__text">Back to top</span>
           <img

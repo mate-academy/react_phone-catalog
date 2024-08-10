@@ -95,6 +95,10 @@
     padding: 24px;
     margin-bottom: auto;
 
+    &--hidden {
+      display: none;
+    }
+
     &__price {
       font-weight: 800;
       font-size: 32px;
