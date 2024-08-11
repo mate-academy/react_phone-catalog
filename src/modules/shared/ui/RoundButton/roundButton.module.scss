@@ -1,0 +1,35 @@
+@import 'src/styles/mixins';
+
+.button {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 48px;
+  width: 32px;
+  height: 32px;
+
+  background: var(--bg);
+  border: 1px solid var(--icons);
+  color: var(--primary);
+  outline: none;
+
+  transition:
+    color var(--transition-specs),
+    border var(--transition-specs);
+
+  @include hover {
+    border-color: var(--primary);
+    cursor: pointer;
+  }
+
+  &:disabled {
+    border-color: var(--elements);
+    color: var(--icons);
+  }
+
+  &__inner {
+    line-height: 0;
+    position: absolute;
+  }
+}

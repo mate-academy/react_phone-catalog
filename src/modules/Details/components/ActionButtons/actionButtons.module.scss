@@ -1,0 +1,19 @@
+.actionButtons {
+  display: flex;
+  align-items: stretch;
+  gap: 8px;
+
+  &__addToCart {
+    height: 48px;
+    flex-grow: 1;
+  }
+
+  &__addToFav {
+    height: 48px;
+    width: 48px;
+  }
+
+  &_skeleton {
+    height: 48px;
+  }
+}

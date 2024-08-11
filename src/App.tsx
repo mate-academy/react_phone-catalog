@@ -1,7 +1,14 @@
-import './App.scss';
+import React, { FC } from 'react';
+import { Provider } from 'react-redux';
 
-export const App = () => (
-  <div className="App">
-    <h1>Product Catalog</h1>
-  </div>
-);
+import { store } from './app/store';
+import { AppRoutes } from './routes';
+import './styles/index.scss';
+
+export const App: FC = () => {
+  return (
+    <Provider store={store}>
+      <AppRoutes />
+    </Provider>
+  );
+};

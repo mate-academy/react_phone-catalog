@@ -1,0 +1,38 @@
+@import 'src/styles/mixins';
+
+.page {
+  --vertical-gap-sm: 24px;
+  --vertical-gap-lg: 56px;
+
+  padding-block: var(--vertical-gap-sm) var(--vertical-gap-lg);
+
+  @include on-tablet {
+    --vertical-gap-sm: 32px;
+    --vertical-gap-lg: 64px;
+  }
+
+  @include on-desktop {
+    --vertical-gap-sm: 56px;
+    --vertical-gap-lg: 80px;
+  }
+
+  &__title {
+    margin-top: var(--vertical-gap-sm);
+  }
+
+  &__heroCarousel {
+    margin-top: var(--vertical-gap-sm);
+  }
+
+  &__newProductsCarousel {
+    margin-top: var(--vertical-gap-lg);
+  }
+
+  &__categories {
+    margin-top: var(--vertical-gap-lg);
+  }
+
+  &__hotPricesCarousel {
+    margin-top: var(--vertical-gap-lg);
+  }
+}

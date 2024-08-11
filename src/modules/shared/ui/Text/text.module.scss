@@ -1,0 +1,77 @@
+@import 'src/styles/mixins';
+
+.text {
+  font-family: Mont, Helvetica, sans-serif;
+  font-weight: 700;
+  letter-spacing: 0;
+  display: inline-block;
+
+  &_body {
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+  }
+
+  &_button {
+    font-size: 14px;
+    line-height: 21px;
+  }
+
+  &_small {
+    font-size: 12px;
+    line-height: 15px;
+  }
+
+  &_uppercase {
+    font-weight: 800;
+    font-size: 12px;
+    line-height: 11px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  &_heading-1 {
+    font-weight: 800;
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+
+    @include on-tablet {
+      font-size: 48px;
+      line-height: 56px;
+    }
+  }
+
+  &_heading-2 {
+    font-weight: 800;
+    font-size: 22px;
+    line-height: 31px;
+
+    @include on-tablet {
+      font-size: 32px;
+      line-height: 41px;
+      letter-spacing: -0.01em;
+    }
+  }
+
+  &_heading-3 {
+    font-size: 20px;
+    line-height: 26px;
+
+    @include on-tablet {
+      font-weight: 800;
+      font-size: 22px;
+      line-height: 31px;
+    }
+  }
+
+  &_heading-4 {
+    font-size: 16px;
+    line-height: 20px;
+
+    @include on-tablet {
+      font-size: 20px;
+      line-height: 26px;
+    }
+  }
+}

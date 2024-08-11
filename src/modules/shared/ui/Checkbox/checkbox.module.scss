@@ -1,0 +1,59 @@
+@import 'src/styles/mixins';
+
+.checkbox {
+  display: inline-block;
+  position: relative;
+  border-radius: 50%;
+  background: var(--bg);
+  width: 40px;
+  height: 40px;
+
+  &__input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  &__tag {
+    position: relative;
+    border-radius: inherit;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: var(--bg);
+    border: 1px solid var(--icons);
+    color: var(--primary);
+    outline: none;
+
+    transition:
+      color var(--transition-specs),
+      border var(--transition-specs);
+
+    @include hover {
+      border-color: var(--primary);
+      cursor: pointer;
+    }
+  }
+
+  &__input:checked ~ &__tag {
+    border-color: var(--elements);
+    color: var(--accent-secondary);
+
+    @include hover {
+      border-color: var(--primary);
+      cursor: pointer;
+    }
+  }
+
+  &__inner {
+    line-height: 0;
+    position: absolute;
+  }
+}

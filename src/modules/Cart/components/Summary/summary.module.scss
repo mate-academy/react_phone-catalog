@@ -1,0 +1,40 @@
+@import 'src/styles/mixins';
+
+.summary {
+  &_empty {
+    display: block;
+    padding-bottom: 146px;
+
+    &::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url('../../../../../public/img/cart-is-empty.png');
+      background-position: center;
+      background-size: contain;
+      background-repeat: no-repeat;
+      z-index: -1;
+      opacity: 0.1;
+    }
+  }
+
+  &__products {
+    grid-column: 1 / -1;
+
+    @include on-desktop {
+      grid-column: 1 / 17;
+    }
+  }
+
+  &__checkout {
+    margin-top: 32px;
+    grid-column: 1 / -1;
+
+    @include on-desktop {
+      position: sticky;
+      top: 80px;
+      margin-top: 0;
+      grid-column: 17 / -1;
+    }
+  }
+}
