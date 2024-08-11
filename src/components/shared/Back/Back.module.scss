@@ -1,0 +1,41 @@
+@import '../../../utils/fonts';
+@import '../../../utils/mixins';
+
+.back {
+  padding-bottom: 20px;
+  max-width: fit-content;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  &__wrapper {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+    gap: 2px;
+
+    @include on-tablet {
+      margin-top: 30px;
+    }
+  }
+
+  &__arrow {
+    display: block;
+    width: 16px;
+    height: 16px;
+
+    background-image: url('../../../images/BackArrow.svg');
+    background-repeat: no-repeat;
+    background-size: 6px;
+    background-position: center;
+  }
+
+  &__content {
+    font-family: Montserrat, sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 16px;
+    color: #89939a;
+  }
+}

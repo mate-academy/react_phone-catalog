@@ -1,0 +1,101 @@
+@import '../../../utils/fonts';
+@import '../../../utils/mixins';
+
+.cartProduct {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 20px;
+  align-items: center;
+  padding: 20px;
+
+  border: 1px solid #e2e6e9;
+
+  @include on-tablet {
+    grid-template-columns: repeat(8, 1fr);
+  }
+
+  @include on-desktop {
+    grid-template-columns: repeat(12, 1fr);
+  }
+
+  &__remove {
+    display: block;
+    grid-column: span 1;
+
+    width: 16px;
+    height: 16px;
+
+    background-image: url('../../../images/CloseSilver.svg');
+    background-repeat: no-repeat;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  &__image {
+    display: block;
+    width: 80px;
+    height: 80px;
+
+    grid-column: span 1;
+  }
+
+  &__image-wrapper {
+    position: relative;
+
+    @include set-size(1, 1);
+  }
+
+  &__image-src {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
+  &__name {
+    display: block;
+    grid-column: span 3;
+
+    font-family: Montserrat, sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 21px;
+    color: #313237;
+
+    @include on-desktop {
+      grid-column: span 6;
+    }
+  }
+
+  &__count {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    grid-column: 1 / -1;
+
+    @include on-tablet {
+      grid-column: 6 / -1;
+    }
+
+    @include on-desktop {
+      grid-column: 9 / -1;
+      grid-row: 1;
+    }
+  }
+
+  &__price {
+    display: block;
+
+    font-family: Montserrat, sans-serif;
+    font-size: 22px;
+    font-weight: 800;
+    line-height: 31px;
+    color: #313237;
+  }
+}
