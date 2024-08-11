@@ -27,19 +27,21 @@ export const Root = () => {
           <Route index element={<HomePage />} />
           <Route path="home" element={<Navigate to="/" />} />
           <Route path=":category">
-            <Route index element={
-              <ValidateCategory>
-                <Catalog />
-              </ValidateCategory>
-            }
-          />
-            <Route path=':productID' element={<ProductPage />} />
+            <Route
+              index
+              element={
+                <ValidateCategory>
+                  <Catalog />
+                </ValidateCategory>
+              }
+            />
+            <Route path=":productID" element={<ProductPage />} />
           </Route>
 
-          <Route path='favorites' element={<FavoritesPage />} />
-          <Route path='cart' element={<CartPage />} />
+          <Route path="favorites" element={<FavoritesPage />} />
+          <Route path="cart" element={<CartPage />} />
 
-          <Route path='*' element={<NotFoundPage />} />
+          <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Routes>
     </HashRouter>
