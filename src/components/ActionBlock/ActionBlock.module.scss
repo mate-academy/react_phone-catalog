@@ -1,0 +1,34 @@
+@use '../../shared/global/GlobalStyles/utils/vars' as *;
+
+.actionBlock {
+  display: flex;
+  justify-content: space-between;
+  height: 40px;
+  gap: 8px;
+}
+
+.arrowBtnFav {
+  background-color: transparent;
+  border: 1px solid $btns-border-color;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 48px;
+  height: 100%;
+  padding: 11px;
+  box-sizing: border-box;
+  cursor: pointer;
+
+  transition: all 0.3s;
+}
+
+.arrowBtnFav:hover {
+  border: 1px solid $main-text-color;
+}
+
+.arrowBtnFav:active {
+  transform: scale(1.05);
+  border: 1px solid $secondary-accent-color;
+}

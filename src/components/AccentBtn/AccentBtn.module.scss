@@ -1,0 +1,32 @@
+@use '../../shared/global/GlobalStyles/utils/vars' as *;
+@use '../../shared/global/GlobalStyles/utils/mixins' as *;
+
+.btnCart {
+  border: 1px solid $accent-color;
+  border-radius: $elements-border-radius;
+  box-sizing: border-box;
+
+  background-color: $accent-color;
+  color: $white;
+  text-align: center;
+
+  font-size: 14px;
+  line-height: 21px;
+  font-family: $font-family-semibold;
+  width: 100%;
+  padding: 0;
+
+  cursor: pointer;
+
+  @include hover (box-shadow, 0 3px 13px 0 rgba(23, 32, 49, 0.4));
+}
+
+.added {
+  border-radius: $elements-border-radius;
+  box-sizing: border-box;
+  border: 1px solid $elements-border-color;
+
+  background-color: $white;
+  color: $accent-color;
+  box-shadow: none;
+}

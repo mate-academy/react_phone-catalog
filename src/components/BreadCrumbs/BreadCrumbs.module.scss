@@ -1,0 +1,41 @@
+@use '../../shared/global/GlobalStyles/utils/vars' as *;
+@use '../../shared/global/GlobalStyles/utils/mixins' as *;
+
+.breadCrumbs {
+  @include content-padding-inline;
+
+  display: flex;
+  gap: 8px;
+  padding-block: 24px;
+  align-items: center;
+
+  @include on-tablet {
+    padding-bottom: 40px;
+  }
+}
+
+.iconBreadCrumb {
+  height: 16px;
+}
+
+.linkBreadCrumb {
+  color: $secondary-text-color;
+  line-height: 15.34px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  display: flex;
+  align-items: center;
+
+  span {
+    display: inline-block;
+    vertical-align: middle;
+  }
+}
+
+.linkBreadCrumbDis {
+  color: $main-text-color;
+  font-family: $font-family-semibold;
+  line-height: 15.34px;
+}

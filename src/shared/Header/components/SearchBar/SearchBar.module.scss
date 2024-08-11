@@ -1,0 +1,39 @@
+@use '../../../../shared/global/GlobalStyles/utils/vars' as *;
+@use '../../../../shared/global/GlobalStyles/utils/mixins' as *;
+
+.searchBar {
+  display: none;
+
+  @include on-tablet {
+    min-width: 50px;
+    display: flex;
+    position: relative;
+    height: 48px;
+  }
+
+  @include on-desktop {
+    height: 64px;
+  }
+}
+
+.search {
+  box-sizing: border-box;
+  padding: 0;
+  padding-left: 10px;
+  border: none;
+  border-left: 1px solid $elements-border-color;
+  font-family: $font-family-regular;
+
+  &:focus {
+    outline: none;
+    border: 1px solid $accent-color;
+  }
+}
+
+.btnClose {
+  width: 16px;
+  align-self: center;
+  cursor: pointer;
+  position: absolute;
+  right: 5px;
+}
