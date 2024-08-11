@@ -1,0 +1,240 @@
+@import '../../auxiliary/mixins';
+
+.gridblock {
+  @include page-grid;
+
+  margin: 32px 0 0;
+  row-gap: 16px;
+
+  @include on-tablet {
+    margin: 32px 0 0;
+    row-gap: 16px;
+  }
+
+  @media (min-width: 1200px) {
+    margin: 32px 0 0;
+    row-gap: 16px;
+  }
+}
+
+.backpack {
+  background-color: #161827;
+  padding: 16px;
+  box-sizing: border-box;
+  height: 160px;
+  grid-column: 1 / -1;
+
+  @include on-tablet {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  @media (min-width: 1200px) {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    grid-column: 1 / 17;
+  }
+
+  &__big {
+    display: none;
+
+    @media (min-width: 640px) {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
+
+  &__upper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 80px;
+    gap: 16px;
+
+    @media (min-width: 640px) {
+      display: none;
+    }
+
+    &--back {
+      cursor: pointer;
+      width: 16px;
+      height: 16px;
+      background-image: url(../../images/Close.svg);
+    }
+
+    &--phone {
+      width: 80px;
+      height: 80px;
+      object-fit: contain;
+    }
+
+    &--name {
+      font-family: regularMont, sans-serif;
+      font-weight: 600;
+      font-size: 14px;
+      line-height: 21px;
+      color: #F1F2F9;
+      max-width: 180px;
+    }
+  }
+
+  &__lower {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 32px;
+    width: 100%;
+    margin-top: 16px;
+
+    @media (min-width: 640px) {
+      display: none;
+      margin-top: 0;
+      margin-left: 24px;
+    }
+
+    &--quantity {
+      display: flex;
+      width: 96px;
+      height: 32px;
+
+      &--button {
+        width: 32px;
+        height: 32px;
+        background-color: #161827;
+        border: 1px solid #3B3E4A;
+        box-sizing: border-box;
+        cursor: pointer;
+        transition: background-color 0.3s;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      &--button:hover {
+        background-color: #8d94b4;
+      }
+
+      &--count {
+        font-family: regularMont, sans-serif;
+        font-weight: 600;
+        font-size: 14px;
+        line-height: 21px;
+        color: #F1F2F9;
+        width: 32px;
+        height: 32px;
+        background-color: #161827;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      &--minus {
+        background-image: url(../../images/Minus.svg);
+        width: 16px;
+        height: 16px;
+      }
+
+      &--plus {
+        background-image: url(../../images/Plus.svg);
+        width: 16px;
+        height: 16px;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    }
+
+    &--price {
+      font-family: Mont, sans-serif;
+      font-weight: 800;
+      font-size: 22px;
+      line-height: 30.8px;
+      color: #F1F2F9;
+      margin: 0;
+      min-width: 65px;
+    }
+  }
+}
+
+.checkout {
+  margin-top: 32px;
+  height: 190px;
+  width: 100%;
+  border: 1px solid #3B3E4A;
+  padding: 24px;
+  box-sizing: border-box;
+  grid-column: 1 / -1;
+
+  @media (min-width: 1200px) {
+    grid-column: 17 / 25;
+    margin-top: 0;
+  }
+
+  &__price {
+    font-family: Mont, sans-serif;
+    font-weight: 800;
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+    color: #F1F2F9;
+    text-align: center;
+    margin: 0;
+  }
+
+  &__items {
+    font-family: regularMont, sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+    color: #75767F;
+    text-align: center;
+    margin: 0;
+  }
+
+  &__hr {
+    width: 100%;
+    height: 1px;
+    border-top: 1px solid #3B3E4A;
+    margin-top: 16px;
+    box-sizing: border-box;
+  }
+
+  &__button {
+    height: 48px;
+    width: 100%;
+    background-color: #905BFF;
+    border: none;
+    margin-top: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+
+    font-family: regularMont, sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 21px;
+    color: #F1F2F9;
+    padding: 0;
+  }
+
+  &__button:hover {
+    background-color: #A378FF;
+  }
+}
+
+.columngrid {
+  display: grid;
+  row-gap: 16px;
+  grid-column: 1 / -1;
+
+  @media (min-width: 1200px) {
+    grid-column: 1 / 17;
+  }
+}

@@ -1,0 +1,43 @@
+@mixin on-tv {
+  @media (min-width: 1202px) {
+    @content;
+  }
+}
+
+@mixin on-pc {
+  @media (min-width: 1200px) and (max-width: 1201px) {
+    @content;
+  }
+}
+
+@mixin on-tablet {
+  @media (min-width: 640px) and (max-width: 1199px) {
+    @content;
+  }
+}
+
+@mixin page-grid {
+  display: grid;
+  column-gap: 16px;
+  grid-template-columns: repeat(4, 1fr);
+  margin: 0 16px;
+  @content;
+
+  @include on-tablet {
+    grid-template-columns: repeat(12, 1fr);
+    margin: 0 24px;
+    @content;
+  }
+
+  @include on-pc {
+    grid-template-columns: repeat(24, 1fr);
+    margin: 0 32px;
+    @content;
+  }
+
+  @include on-tv {
+    grid-template-columns: repeat(24, 1fr);
+    margin: 0 152px;
+    @content;
+  }
+}

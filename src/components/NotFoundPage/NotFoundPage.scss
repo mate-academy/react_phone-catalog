@@ -1,0 +1,22 @@
+@import '../../auxiliary/mixins';
+
+.found {
+  font-family: Mont, sans-serif;
+  font-weight: 600;
+  font-size: 25px;
+  line-height: 21px;
+  color: #aba8a8;
+  margin: 20px 16px;
+
+  @include on-tablet {
+    margin: 20px 24px;
+  }
+
+  @include on-tv {
+    margin: 20px 32px;
+  }
+
+  @include on-tv {
+    margin: 20px 32px;
+  }
+}
