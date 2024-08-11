@@ -1,0 +1,15 @@
+@import '../../main';
+
+.container {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .backButton {
+    color: $color-secondary;
+    background: inherit;
+    border: 0;
+    margin: 0;
+    padding: 0;
+    cursor: pointer;
+  }

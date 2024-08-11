@@ -1,0 +1,88 @@
+@import '../../main';
+
+.border {
+  border-top: 1px solid $color-elements;
+}
+
+.container {
+  padding: 32px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  max-width: 1200px;
+  margin: 0 auto;
+
+  @include on-tablet {
+    padding: 32px 24px;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  @include on-desktop {
+    padding: 32px;
+  }
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  @include on-tablet {
+    flex-direction: row;
+    gap: 13px;
+  }
+
+  @include on-desktop {
+    gap: 106px;
+  }
+}
+
+.item {
+  font-family: Mont, sans-serif;
+  font-size: 12px;
+  font-weight: 800;
+  line-height: 11px;
+  letter-spacing: 0.04em;
+  text-align: left;
+  text-transform: uppercase;
+  color: $color-secondary;
+}
+
+.pageLink {
+  transition: all 0.5s;
+
+  &:hover {
+    @include hover(transform, scale(1.1));
+  }
+}
+
+.backTop {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  align-items: center;
+}
+
+.backTopText {
+  font-family: Mont, sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 15.34px;
+  text-align: right;
+  color: $color-secondary;
+}
+
+.button {
+  background-color: $color-white;
+  border: 1px solid $color-elements;
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+  transition: all 0.5s;
+
+  &:hover {
+    @include hover(transform, scale(1.1));
+  }
+}
