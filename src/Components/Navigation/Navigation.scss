@@ -1,0 +1,31 @@
+@import '../../utils/mixins';
+
+.navigation {
+  display: flex;
+  justify-content: space-between;
+  width: 320px;
+  height: 48px;
+  border: 1px solid grey;
+  background-color: white;
+
+  @include navigation-on-tablet {
+    width: 680px;
+  }
+
+  @include navigation-on-desktop {
+    height: 64px;
+    width: 1440px;
+  }
+
+  &__logo-block {
+    display: flex;
+    align-items: center;
+    width: 96px;
+    justify-content: center;
+  }
+  &__menu-block {
+    display: flex;
+    justify-content: right;
+    width: 208px;
+  }
+}

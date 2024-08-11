@@ -1,0 +1,46 @@
+.banners {
+
+&__photos {
+  display: flex;
+  width: 1034px;
+
+margin-top: 50px;
+transition: 0.5s ease-in-out transform;
+
+}
+&__photo {
+  height: 320px;
+  width: 320px;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  object-fit: contain;
+  border-radius: 20px;
+
+  &--PHONES {
+    background-image: url('../../../public/img/banner-phones.png');
+    margin-right: 30px;
+  }
+  &--TABLETS {
+    background-image: url('../../../public//img/banner-tablets.png');
+    margin-right: 30px;
+  }
+  &--ACCESSORIES {
+    background-image: url('../../../public/img/banner-accessories.png');
+  }
+}
+
+&__buttons {
+  display: flex;
+  gap: 4px;
+  margin: 40px 0 0 140px;
+}
+
+&__button {
+  height: 4px;
+  width: 14px;
+  background-color: #E2E6E9;
+  &--is-active {
+    background-color: #0F0F11;
+  }
+}
+}

@@ -1,0 +1,50 @@
+@import '../../utils/mixins';
+
+.icon {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-left: 1px solid #E2E6E9;
+
+  &__menu {
+    display: flex;
+    background-image: url('../../img/Menu.svg');
+    background-position: 50%;
+    background-repeat: no-repeat;
+    height: 16px;
+    width: 16px;
+    cursor: pointer;
+    &-cross {
+      background-image: url('../../img/Close.svg');
+        background-repeat: no-repeat;
+        width: 16px;
+        height: 16px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+    }
+    &-heart {
+      background-image: url('../../img/Favourites\ \(Heart\ Like\).svg');
+      background-repeat: no-repeat;
+      width: 16px;
+      height: 16px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+    }
+    &-bag {
+      background-image: url('../../img/Shopping\ bag\ \(Cart\).svg');
+      background-repeat: no-repeat;
+      width: 16px;
+      height: 16px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+    }
+  }
+}

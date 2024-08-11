@@ -1,0 +1,87 @@
+@font-face {
+  font-family: Mont;
+  src: url('../../../public/fonts/Mont-Bold.otf');
+}
+
+.menu {
+  width: 320px;
+  height: 639px;
+  padding: 0;
+  border: 1px solid black;
+  position: absolute;
+  top: 0;
+  left: -320px;
+  background-color: white;
+  transition: 0.3s ease transform;
+  transform: translateX(-320px);
+  &--show-menu {
+    transform: translateX(320px);
+    transition: 0.3s ease transform;
+  }
+  &__header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border-bottom: 1px solid #E2E6E9;
+  }
+  &__logo-block {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 96px;
+    height: 48px;
+
+  }
+  &__block-with-cross {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 48px;
+    width: 48px;
+    border-left: 1px solid #E2E6E9;
+  }
+  &__navigation {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    align-items: center;
+    padding-top: 72px;
+  }
+  &__link {
+    color: #89939A;
+    padding: 8px 0;
+font-family: Mont, sans-serif;
+font-size: 20px;
+font-weight: 800;
+line-height: 11px;
+letter-spacing: 0.04em;
+text-align: left;
+text-decoration: none;
+  &:hover {
+    color: #313237;
+    border-bottom: 2px solid #313237;
+    padding-bottom: 6.5px;
+  }
+  }
+  &__footer {
+    height: 64px;
+    margin-top: 298px;
+    display: flex;
+    border-top: 1px solid #89939A;
+  }
+  &__footer-block {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 160px;
+    &:hover {
+      border-bottom: 1px solid black;
+    }
+    &--line {
+      border-right: 1px solid #89939A;;
+      &:hover {
+        border-bottom: 1px solid black;
+      }
+    }
+  }
+}

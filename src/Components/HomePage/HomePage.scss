@@ -1,0 +1,15 @@
+@font-face {
+  font-family: Mont;
+  src: url('../../../public/fonts/Mont-Bold.otf');
+}
+
+@import '../../utils/mixins';
+
+.home {
+  &__title {
+    font-family: Mont, sans-serif;
+    margin-top: 20px;
+    grid-column: 1 / 4;
+    margin-left: 16px;
+  }
+}

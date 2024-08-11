@@ -1,0 +1,19 @@
+@mixin navigation-on-tablet {
+  @media
+    (min-width: 640px) {
+      @content;
+  }
+
+}
+
+@mixin navigation-on-desktop {
+  @media (min-width: 1440px) {
+    @content;
+  }
+}
+
+@mixin grid-for-phone {
+  display: grid;
+  grid-template-columns: repeat(60px, 5);
+  gap: 16px;
+}
