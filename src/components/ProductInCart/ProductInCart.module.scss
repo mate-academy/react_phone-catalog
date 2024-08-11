@@ -1,0 +1,55 @@
+@import '../../main';
+
+.product {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  background-color: #fff;
+  border: 1px solid #e2e6e9;
+  border-radius: 16px;
+  padding: 16px;
+
+  @include on-tablet {
+    padding: 24px;
+  }
+
+  .about {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+
+    &__close {
+      height: 16px;
+      width: 16px;
+    }
+
+    &__img {
+      width: 80px;
+      height: 80px;
+      object-fit: contain;
+    }
+  }
+
+  .actions {
+    display: flex;
+    justify-content: space-between;
+
+    &__buttons {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+
+      &__count {
+        font-size: 14px;
+        line-height: 21px;
+      }
+    }
+
+    &__price {
+      font-size: 22px;
+      font-weight: 800;
+      line-height: 30.8px;
+    }
+  }
+}

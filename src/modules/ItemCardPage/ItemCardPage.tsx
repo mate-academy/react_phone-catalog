@@ -83,7 +83,9 @@ export const ItemCardPage = () => {
 
   return (
     <div className={style.itemCard}>
-      <Breadcrumbs name={currentProduct?.name} />
+      <div className={style.breadcrumbs}>
+        <Breadcrumbs name={currentProduct?.name} />
+      </div>
 
       <NavLink to={'..'} relative="path" className={style.backButton}>
         <div className={style.backButton__arrow} />
@@ -105,6 +107,7 @@ export const ItemCardPage = () => {
               autoplay={{ delay: 5000 }}
               thumbs={{ swiper: thumbsSwiper }}
               onSlideChange={swiper => setActiveIndex(swiper.activeIndex)}
+              className={style.mainImg}
             >
               {images?.map((img, index) => (
                 <SwiperSlide key={index}>
@@ -116,7 +119,7 @@ export const ItemCardPage = () => {
             <Swiper
               onSwiper={swiper => setThumbsSwiper(swiper)}
               slidesPerView={images?.length}
-              className="mySwiper"
+              className={style.thumbs}
             >
               <div className={style.slider__thumbsContainer}>
                 {images?.map((image, index) => (

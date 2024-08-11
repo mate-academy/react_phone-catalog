@@ -145,6 +145,10 @@
       background-size: 16px;
       width: 40px;
       height: 40px;
+
+      &--active {
+        background-image: url(../../assets/img/icons/like-active.svg);
+      }
     }
   }
 }

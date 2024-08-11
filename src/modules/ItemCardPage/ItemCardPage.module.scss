@@ -3,11 +3,19 @@
 .itemCard {
   @include page-container;
 
+  @include page-grid;
+
   .error {
     font-size: 32px;
     font-weight: 800;
     line-height: 50px;
     margin-top: 40px;
+
+    grid-column: 1 / -1;
+  }
+
+  .breadcrumbs {
+    grid-column: 1 / -1;
   }
 
   .backButton {
@@ -15,6 +23,8 @@
     gap: 4px;
     align-items: flex-end;
     width: fit-content;
+
+    grid-column: 1 / -1;
 
     @include hover {
       transform: scale(1.01);
@@ -45,9 +55,26 @@
     line-height: 30.8px;
     margin-top: 16px;
     margin-bottom: 32px;
+
+    grid-column: 1 / -1;
+
+    @include on-tablet {
+      font-size: 32px;
+      line-height: 41px;
+      letter-spacing: -0.01em;
+      margin-bottom: 40px;
+    }
   }
 
   .slider {
+    grid-column: 1 / -1;
+
+    @include page-grid;
+
+    .mainImg {
+      grid-column: 1 / -1;
+    }
+
     &__img {
       width: 100vw;
       height: 100vw;
@@ -56,9 +83,17 @@
 
     &__slide {
       display: flex;
-      gap: 0;
+      gap: 18px;
       justify-content: center;
       align-items: center;
+    }
+
+    .thumbs {
+      grid-column: 1 / -1;
+    }
+
+    &__thumbsContainer {
+      display: flex;
     }
 
     &__thumbs {
@@ -81,6 +116,8 @@
     display: flex;
     flex-direction: column;
     gap: 32px;
+
+    grid-column: 1 / -1;
 
     .selections {
       display: flex;
@@ -268,6 +305,8 @@
     flex-direction: column;
     gap: 32px;
 
+    grid-column: 1 / -1;
+
     &__title {
       font-size: 20px;
       font-weight: 700;
@@ -300,6 +339,8 @@
     display: flex;
     flex-direction: column;
     gap: 30px;
+
+    grid-column: 1 / -1;
 
     &__title {
       font-size: 20px;
@@ -335,5 +376,7 @@
 
   .productSlider {
     margin-block: 56px;
+
+    grid-column: 1 / -1;
   }
 }
