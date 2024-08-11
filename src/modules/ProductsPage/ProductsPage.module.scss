@@ -1,0 +1,16 @@
+@import '../../styles/main';
+
+.skeleton {
+  &__header {
+    width: 50%;
+    height: 50px;
+
+    @include skeleton-bg;
+  }
+
+  &__dropdown {
+    height: 40px;
+
+    @include skeleton-bg;
+  }
+}

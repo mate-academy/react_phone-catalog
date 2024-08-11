@@ -1,0 +1,157 @@
+@import '../../../../styles/main';
+
+.colors {
+  margin-top: 40px;
+
+  @include on-tablet {
+    margin-top: 0;
+  }
+
+  &::after {
+    content: '';
+    display: block;
+    position: relative;
+    margin-top: 24px;
+    height: 1px;
+    width: 100%;
+    background-color: $elements;
+  }
+
+  display: flex;
+  flex-direction: column;
+
+  &__top {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  &__id {
+    @include small-text;
+
+    color: $elements;
+    text-align: right;
+
+    @include on-desktop {
+      display: none;
+    }
+  }
+
+  &__bottom {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    margin-top: 8px;
+  }
+
+  &__color {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 32px;
+    height: 32px;
+    border: 2px solid $elements;
+    border-radius: 50%;
+    cursor: pointer;
+    transition-duration: 0.3s;
+
+    &:hover {
+      border-color: $surface_1;
+    }
+
+    &-selected {
+      border: 2px solid $white;
+    }
+
+    &-beige {
+      background-color: $product_beige;
+    }
+
+    &-green {
+      background-color: $product_green;
+    }
+
+    &-black {
+      background-color: $product_black;
+    }
+
+    &-white {
+      background-color: $product_white;
+    }
+
+    &-purple {
+      background-color: $product_purple;
+    }
+
+    &-red {
+      background-color: $product_red;
+    }
+
+    &-yellow {
+      background-color: $product_yellow;
+    }
+
+    &-gold {
+      background-color: $product_gold;
+    }
+
+    &-spaceblack {
+      background-color: $product_spaceblack;
+    }
+
+    &-blue {
+      background-color: $product_blue;
+    }
+
+    &-coral {
+      background-color: $product_coral;
+    }
+
+    &-graphite {
+      background-color: $product_graphite;
+    }
+
+    &-midnight {
+      background-color: $product_midnight;
+    }
+
+    &-midnightgreen {
+      background-color: $product_midnightgreen;
+    }
+
+    &-pink {
+      background-color: $product_pink;
+    }
+
+    &-rosegold {
+      background-color: $product_rosegold;
+    }
+
+    &-sierrablue {
+      background-color: $product_sierrablue;
+    }
+
+    &-silver {
+      background-color: $product_silver;
+    }
+
+    &-spacegray {
+      background-color: $product_spacegray;
+    }
+
+    &-bg {
+      width: calc(100% - 4px);
+      height: calc(100% - 4px);
+      border-radius: 50%;
+      background-size: cover;
+      background-position: center;
+    }
+  }
+
+  &__header {
+    @include small-text;
+
+    color: $elements;
+    text-align: left;
+  }
+}

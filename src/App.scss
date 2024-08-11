@@ -1,1 +1,36 @@
-// not empty
+@import './styles/main';
+
+* {
+  scroll-behavior: smooth;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.page, .page-light {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.page {
+  background-color: $black;
+  color: $white;
+}
+
+.page-light {
+  background-color: $white;
+  color: $black;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.content {
+  flex: 1;
+}

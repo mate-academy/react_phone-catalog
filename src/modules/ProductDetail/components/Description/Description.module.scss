@@ -1,0 +1,64 @@
+@import '../../../../styles/main';
+
+.title {
+  @include header-3;
+
+  &::after {
+    content: '';
+    display: block;
+    position: relative;
+    margin-top: 16px;
+    height: 1px;
+    width: 100%;
+    background-color: $elements;
+  }
+}
+
+.description {
+  margin-top: 40px;
+
+  @include on-tablet {
+    margin-top: 64px;
+  }
+
+  @include on-desktop {
+    margin-top: 80px;
+  }
+
+  &__section {
+    margin-top: 32px;
+  }
+
+  &__title {
+    @include header-4;
+  }
+
+  &__text {
+    @include body-text;
+
+    color: $secondary;
+  }
+}
+
+.tech {
+  &__item {
+    @include body-text;
+
+    margin-top: 8px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  &__list {
+    margin-top: 30px;
+  }
+
+  &__name {
+    color: $secondary;
+  }
+
+  &__info {
+    text-align: right;
+  }
+}

@@ -1,0 +1,84 @@
+@import '../../styles/main';
+
+.footer {
+  border-top: 1px solid $elements;
+  margin-top: 42px;
+  width: 100%;
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  gap: 32px;
+  background-color: $black;
+
+  @include on-tablet {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__back {
+    @include small-text;
+
+    align-self: center;
+    cursor: pointer;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 16px;
+    text-decoration: none;
+
+    &-text {
+      color: $elements;
+      transition-duration: 0.3s;
+
+      &:hover {
+        color: $white;
+      }
+    }
+
+    &-button {
+      display: block;
+      width: 32px;
+      height: 32px;
+
+      @include secondary-button;
+      @include arrow-up;
+    }
+  }
+}
+
+.menu {
+  &__list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    @include on-tablet {
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    @include on-desktop {
+      gap: 100px;
+    }
+  }
+
+  &__link {
+    @include uppercase;
+
+    position: relative;
+    text-decoration: none;
+    color: $white;
+    text-align: center;
+
+
+    &:hover {
+      color: $elements;
+    }
+  }
+}
