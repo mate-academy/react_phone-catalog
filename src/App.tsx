@@ -9,13 +9,16 @@ import { CatalogPage } from './pages/CatalogPage';
 import { ItemPage } from './pages/ItemPage';
 import { FavoritePage } from './pages/FavoritePage';
 import { CartPage } from './pages/CartPage';
+import { NotFoundPage } from './pages/NotFoundPage';
 
 export const App = () => {
-  const [page, setPage] = useState('details');
+  const [page, setPage] = useState('123');
 
   return (
     <div className="App">
-      <h1 className="visually-hidden">Product Catalog</h1>
+      <h1 className="visually-hidden" id="home">
+        Product Catalog
+      </h1>
       <Header activePage={page} goToPage={setPage} />
 
       <SideMenu />
@@ -26,6 +29,7 @@ export const App = () => {
         {page === 'details' && <ItemPage />}
         {page === 'favorites' && <FavoritePage />}
         {page === 'cart' && <CartPage />}
+        {page === '123' && <NotFoundPage />}
       </div>
 
       <Footer />
