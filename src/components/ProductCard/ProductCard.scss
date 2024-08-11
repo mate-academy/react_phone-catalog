@@ -1,0 +1,165 @@
+$grey-primary: #313237;
+$dark-white: #f1f2f9;
+$secondary-gray: #89939a;
+$dark-secondary-gray: #828282;
+$dark-background2: #161827;
+
+.product-card {
+  min-width: 272px;
+  max-width: 272px;
+  padding: 25px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  height: min-content;
+
+  &.is-light {
+    border: 1px solid $secondary-gray;
+  }
+
+  &.is-dark {
+    background-color: $dark-background2;
+  }
+
+  &-pic {
+    margin-inline: auto;
+    width: 133px;
+    height: 175px;
+    cursor: pointer;
+  }
+
+  &-name {
+    font-size: 14px;
+    font-weight: 600;
+    height: 36px;
+
+    &.is-light {
+      color: $grey-primary;
+    }
+
+    &.is-dark {
+      color: $dark-white;
+      background-color: $dark-background2;
+    }
+  }
+
+  &-price {
+    font-weight: 800;
+    font-size: 22px;
+    border-bottom: 1px solid;
+    padding-bottom: 15px;
+    margin: 0;
+
+    &.is-light {
+      color: $grey-primary;
+      border-color: $secondary-gray;
+    }
+
+    &.is-dark {
+      color: $dark-white;
+      border-color: $dark-secondary-gray;
+      background-color: $dark-background2;
+    }
+  }
+
+  &-stats {
+    margin-block: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    &-box {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+
+      &-name {
+        margin: 0;
+
+        &.is-light {
+          color: $secondary-gray;
+        }
+
+        &.is-dark {
+          color: $dark-secondary-gray;
+          background-color: $dark-background2;
+        }
+      }
+
+      &-value {
+        margin: 0;
+        font-weight: 700;
+
+        &.is-light {
+          color: $grey-primary;
+        }
+
+        &.is-dark {
+          color: $dark-white;
+          background-color: $dark-background2;
+        }
+      }
+    }
+  }
+}
+
+.button {
+  display: grid;
+  grid-template-columns: 75% 40px;
+  gap: 15px;
+  margin-top: 10px;
+
+  &-add-cart {
+    height: 40px;
+    font-weight: 600;
+    font-size: 14px;
+    color: white;
+    border: none;
+    cursor: pointer;
+
+    &:hover {
+      opacity: 0.7;
+    }
+
+    &.is-light {
+      background: $grey-primary;
+
+      &.added {
+        color: #27ae60;
+        background-color: white;
+      }
+    }
+
+    &.is-dark {
+      background-color: #905bff;
+
+      &.added {
+        background-color: #323542;
+        color: white;
+      }
+    }
+  }
+
+  &-add-liked {
+    width: 40px;
+    cursor: pointer;
+
+    &:hover {
+      opacity: 0.7;
+    }
+
+    &.is-light {
+      background-color: rgba($color: #000, $alpha: 0);
+      border: 1px solid $secondary-gray;
+    }
+
+    &.is-dark {
+      border: none;
+      background-color: #323542;
+    }
+  }
+}
+
+.link {
+  text-decoration: none;
+}

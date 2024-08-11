@@ -1,1 +1,28 @@
-// not empty
+@import "https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap";
+
+$dark-background: #0f1121;
+$transition-duration: 300ms;
+
+* {
+  font-family: Montserrat, sans-serif;
+  transition: all $transition-duration;
+}
+
+body {
+  margin: 0;
+}
+
+// dark
+
+html {
+  overflow-x: hidden;
+  transition: all $transition-duration;
+  .is-dark {
+    background-color: $dark-background;
+  }
+}
+
+
+main {
+  min-height: 90vh;
+}
