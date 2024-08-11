@@ -1,0 +1,48 @@
+@import '../../styles/utils/mixins';
+
+.favourites {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  @include footer-pading;
+
+  &__list {
+    display: flex;
+    justify-content: flex-start;
+    flex-flow: column wrap;
+
+    @include on-tablet {
+      flex-direction: row;
+    }
+
+    gap: 16px;
+  }
+
+  &__title-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 40px;
+    align-self: flex-start;
+  }
+
+  &__item {
+    width: 100%;
+
+    @include on-tablet {
+      min-width: 272px;
+      width: 48%;
+      max-width: 288px;
+    }
+
+    @include on-desktop {
+      width: 23%;
+      max-width: 272px;
+    }
+  }
+  &__bread-crumb {
+    margin: 24px 0 40px;
+  }
+}

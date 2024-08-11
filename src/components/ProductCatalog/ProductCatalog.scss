@@ -1,0 +1,105 @@
+@import '../../styles/utils/mixins';
+@import '../../styles/utils/vars';
+
+.catalog {
+  display: flex;
+  flex-direction: column;
+
+  &__item {
+    @include on-tablet {
+      width: 288px;
+    }
+
+    @include on-desktop {
+      width: 249px;
+    }
+  }
+
+  &__list {
+    display: flex;
+    gap: 16px;
+    flex-flow: row wrap;
+  }
+
+
+  &__dropdown {
+    height: 40px;
+    border: 1px $gray-icons solid;
+    width: 100%;
+    
+    @include transition-duration;
+
+    &:hover {
+      border: 1px solid $gray-primary;
+    }
+
+    &__options {
+      color: $gray-secondary;
+
+      &:hover {
+        background-color: #FFF;
+        color: $gray-primary;
+      }
+    }
+  }
+
+  &__controls {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 24px;
+    width: 100%;
+
+    &__box {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      color: $gray-secondary;
+
+      width: 100%;
+
+      @include on-tablet {
+        width: 136px;
+      }
+    }
+  }
+
+  &__pagination {
+    margin-top: 40px;
+    align-self: center;
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+
+    &__list {
+      display: flex;
+      flex-direction: row;
+      gap: 8px;
+    }
+
+    &__button {
+      height: 40px;
+      width: 40px;
+      background-repeat: no-repeat;
+      background-position: center;
+      cursor: pointer;
+
+      &:disabled {
+        cursor: auto;
+        opacity: 0.5;
+      }
+
+      &--active {
+        color: $gray-white;
+        background-color: $gray-primary;
+      }
+    }
+  }
+}
+
+.prevButton {
+  background-image: url('../../../public/icons/arrow-left.svg');
+}
+
+.nextButton {
+  background-image: url('../../../public/icons/arrow-right.svg');
+}

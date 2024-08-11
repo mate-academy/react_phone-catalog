@@ -1,0 +1,155 @@
+@import '../../styles/utils/vars';
+@import '../../styles/utils/mixins';
+
+.cartItem {
+  display: flex;
+  align-items: center;
+  min-height: 128px;
+  gap: 16px;
+  flex-direction: column;
+  padding: 16px;
+
+  @include on-tablet {
+    flex-direction: row;
+    padding: 24px;
+  }
+
+  &__main {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex-grow: 1;
+  }
+
+  border: 1px solid $gray-elements;
+
+  &__delete {
+    border: 0;
+    background-color: #FFF;
+    background-image: url('../../../public/icons/X-icon.svg');
+    width: 24px;
+    height: 24px;
+    background-position: center;
+    background-repeat: no-repeat;
+    cursor: pointer;
+  }
+
+  &__img-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80px;
+    height: 80px;
+    margin-right: 24px;
+
+  }
+
+  &__img {
+    height: 66px;
+  }
+
+  &__details {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+    @include on-tablet {
+      width: auto;
+      gap: 24px;
+    }
+  }
+
+  &__controls {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 24px;
+
+    &__buttons {
+      width: 32px;
+      height: 32px;
+      color: $gray-primary;
+      border: 1px solid $gray-icons;
+      background-color: #FFF;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+
+      &--disabled {
+        color: $gray-icons;
+        cursor: default;
+      }
+    }
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 24px;
+
+    &__delete {
+      border: 0;
+      background-color: #FFF;
+      background-image: url('../../../public/icons/X-icon.svg');
+      width: 32px;
+      height: 32px;
+      background-position: center;
+      background-repeat: no-repeat;
+      margin-right: 32px;
+    }
+  }
+
+  &__name {
+    font-size: 16px;
+    font-weight: 500;
+    flex-grow: 1;
+    color: $gray-primary;
+    text-align: right;
+
+    @include on-tablet {
+      text-align: left;
+    }
+  }
+
+  &__count {
+    display: flex;
+    flex-direction: row;
+    gap: 14px;
+    align-items: center;
+
+    &__buttons {
+      width: 32px;
+      height: 32px;
+      color: $gray-primary;
+      border: 1px solid $gray-icons;
+      background-color: #FFF;
+
+      @include transition-duration;
+      
+      &:hover {
+        cursor: pointer;
+      }
+
+      &--disabled {
+        color: $gray-icons;
+
+        &:hover {
+          cursor: default;
+        }
+      }
+    }
+  }
+
+  &__price {
+    font-size: 18px;
+    font-weight: 600;
+    color: $gray-primary;
+    width: 80px;
+    text-align: right;
+  }
+}

@@ -1,0 +1,95 @@
+@import '../../styles/utils/vars';
+@import '../../styles/utils/mixins';
+
+.cartPage {
+  width: 100%;
+
+  @include footer-pading;
+  
+  &__main {
+    display: flex;
+    gap: 16px;
+    flex-direction: column;
+
+    @include on-desktop {
+      flex-direction: row;
+      justify-content: space-between;
+    }
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    gap: 16px;
+  }
+
+  &__total-price-block {
+    display: flex;
+    flex-direction: column;
+
+    min-height: 206px;
+    height: max-content;
+    min-width: 300px;
+    border: 1px solid $gray-elements;
+    align-items: center;
+
+    padding: 24px;
+  }
+
+  &__modal {
+    margin-top: 10px;
+    width: 90%;
+    padding: 16px;
+    background-color: $color-danger;
+    color: $gray-background;
+
+    &__close-button {
+      border: 0;
+      background-color: rgba(255, 255, 255, 0);;
+      background-image: url('../../../public/icons/X-icon.svg');
+      width: 16px;
+      height: 16px;
+      background-position: center;
+      background-repeat: no-repeat;
+      margin-right: 32px;
+      cursor: pointer;
+      margin-bottom: 10px;
+    }
+  }
+
+  &__price {
+    font-size: 32px;
+    font-weight: 600;
+    color: $gray-primary;
+  }
+
+  &__subtitle {
+    color: $gray-secondary;
+  }
+
+  &__button {
+    width: 100%;
+    background-color: $gray-primary;
+    color: #FFF;
+    border: 0;
+    height: 48px;
+
+    @include transition-duration;
+
+    &:hover {
+      cursor: pointer;
+      box-shadow: 0 3px 13px 0 #17203166;
+    }
+  }
+
+  &__line {
+    width: 100%;
+    margin: 24px 0;
+    border: 0.5px $gray-elements solid;
+  }
+
+  &__go-back-button {
+    margin: 40px 0 16px;
+  }
+}

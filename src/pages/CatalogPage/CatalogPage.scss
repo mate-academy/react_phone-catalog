@@ -1,0 +1,22 @@
+@import '../../styles/utils/mixins';
+
+.catalogPage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  @include footer-pading;
+
+  &__title {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    align-self: first baseline;
+    margin-bottom: 40px;
+  }
+
+  &__bread-crumb {
+    align-self: first baseline;
+    margin: 24px 0 40px;
+  }
+}

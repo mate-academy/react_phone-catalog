@@ -1,0 +1,56 @@
+@import '../../styles/utils/mixins';
+
+.categories{
+  &__block {
+    margin-top: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 16px;
+
+    @include on-tablet {
+      flex-direction: row;
+    }
+  }
+
+  &__component {
+    &__text {
+      margin-top: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    @include transition-duration;
+
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+
+  &__img {
+    @include categories-image-size;
+
+    background-repeat: no-repeat;
+    overflow: hidden;
+
+    &--phone {
+      background-color: #6D6474;
+      background-position: 0 -40px;
+      background-image: url('../../../public/img/category-phones.png');
+    }
+
+    &--tablet {
+      background-color: #8D8D92;
+      background-image: url('../../../public/img/category-tablets.png');
+    }
+
+    &--accessory {
+      background-color: #973D5F;
+      background-position: 10px 40px;
+      background-image: url('../../../public/img/category-accessories.png');
+    }
+  }
+
+}

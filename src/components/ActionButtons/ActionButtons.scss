@@ -1,0 +1,57 @@
+@import '../../styles/utils/vars';
+@import '../../styles/utils/mixins';
+
+.action {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+}
+
+.add-to-cart-button {
+  cursor: pointer;
+  width: 100%;
+  height: 40px;
+  background-color: $gray-primary;
+  color: #FFF;
+
+  @include transition-duration;
+
+  &:hover {
+    box-shadow: 0 3px 13px 0 #17203166;
+  }
+
+  &--active {
+    color: $color-selected;
+    background-color: #FFF;
+  }
+}
+
+.favourite-button {
+  cursor: pointer;
+  border: 1px $gray-elements solid;
+  box-sizing: border-box;
+  display: flex;
+
+  padding: 12px;
+
+  width: 40px;
+  height: 40px;
+
+  align-items: center;
+  justify-content: center;
+  background-color: #FFF;
+  margin: 0;
+  
+  @include transition-duration;
+
+  &:hover {
+    box-shadow: 0 3px 13px 0 #17203166;
+    border: 1px $gray-icons solid;
+  }
+
+  &__img {
+    width: 16px;
+    height: 16px;
+  }
+}

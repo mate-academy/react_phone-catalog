@@ -1,0 +1,17 @@
+@import '../../styles/utils/vars';
+@import '../../styles/utils/mixins';
+
+.go-back-button {
+  color: $gray-secondary;
+  text-decoration: none;
+  margin-right: 5px;
+  display: flex;
+  gap: 8px;
+  
+  @include transition-duration;
+
+  &:hover {
+    cursor: pointer;
+    color: $gray-primary;
+  }
+}
