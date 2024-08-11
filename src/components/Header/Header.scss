@@ -1,0 +1,189 @@
+@import '../../styles/main';
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: $colorBlack;
+  width: 100%;
+  height: 48px;
+  gap: 16px;
+
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  box-shadow: 0 1px 0 0 $colorElements;
+
+  @include on-desktop {
+    gap: 24px;
+    height: 64px;
+  }
+
+  &__icon-count {
+    @include on-phone {
+      display: none;
+    }
+
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    font-size: 10px;
+    top: 20%;
+    right: 20%;
+    border: none;
+    border-radius: 50%;
+    background-color: $colorRed;
+    font-weight: 600;
+    line-height: 1.28;
+    text-align: center;
+    color: $colorWhite;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 1px;
+
+    &--favor {
+      background-color: $colorAccent;
+    }
+  
+    @include on-desktop {
+      width: 16px;
+      height: 16px;
+      font-size: 10px;
+    }
+  }
+
+  &__logo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-inline: 16px;
+    height: 100%;
+
+    @include on-desktop {
+      padding-inline: 24px;
+    }
+
+    &-img {
+      width: 64px;
+      height: 22px;
+  
+      @include on-desktop {
+        width: 80px;
+        height: 28px;
+      }
+    }
+  }
+}
+
+.navContainer {
+  @include on-phone {
+    display: none;
+  }
+
+  display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+
+  &__link {
+    display: flex;
+    position: relative;
+    align-items: center;
+    height: 48px;
+    margin-right: 32px;
+    cursor: pointer;
+
+    @extend %uppercase-text;
+
+    &:hover {
+      color: $colorWhite;
+    }
+
+    @include on-desktop {
+      height: 64px;
+      margin-right: 64px;
+    }
+  }
+
+  &__active {
+    color: $colorWhite;
+  
+    &::after {
+      position: absolute;
+      content: "";
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background-color: $colorWhite;
+    }
+  }
+}
+
+.actions {
+  @include on-phone {
+    display: none;
+  }
+
+  display: flex;
+  align-items: center;
+
+  &__link {
+    display: flex;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+
+    @include icons-header-size;
+
+    box-shadow: -1px 0 0 0 $colorElements;
+  }
+
+  &__active {
+    color: $colorWhite;
+  
+    &::after {
+      position: absolute;
+      content: "";
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background-color: $colorWhite;
+    }
+  }
+}
+
+.BurgerMenu {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  @include icons-header-size;
+
+  &__button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    box-shadow: -1px 0 0 0 $colorElements;
+
+    @include icons-header-size;
+  }
+
+  @include on-desktop {
+    display: none;
+  }
+
+  @include on-tablet {
+    display: none;
+  }
+}

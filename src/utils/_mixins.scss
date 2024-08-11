@@ -1,0 +1,95 @@
+@mixin on-tablet {
+  @media (min-width: $breakpoint-tablet) {
+    @content;
+  }
+}
+
+@mixin on-phone {
+  @media (max-width: $breakpoint-tablet) {
+    @content;
+  }
+}
+
+@mixin middle {
+  @media (min-width: $breakpoint-middle) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media (min-width: $breakpoint-desktop) {
+    @content;
+  }
+}
+
+@mixin padding-inline {
+  padding-inline: 16px;
+
+  @include on-tablet {
+    padding-inline: 24px;
+  }
+
+  @include on-desktop {
+    padding-inline: 32px;
+  }
+}
+
+@mixin section-grid {
+  display: grid;
+  grid-gap: 16px;
+  grid-template-columns: repeat(4, 1fr);
+  justify-content: center;
+
+  @include padding-inline;
+
+  @include on-tablet {
+    grid-template-columns: repeat(24, 1fr);
+  }
+
+  @include on-desktop {
+    grid-template-columns: repeat(24, 32px);
+  }
+}
+
+@mixin section-margin-bottom {
+  margin-bottom: 56px;
+
+  @include on-tablet {
+    margin-bottom: 64px;
+  }
+
+  @include on-desktop {
+    margin-bottom: 80px;
+  }
+}
+
+@mixin icons-header-size {
+  height: $iconsHeaderSize-mobile-tablet;
+  width: $iconsHeaderSize-mobile-tablet;
+
+  @include on-desktop {
+    width: $iconsHeaderSize-desktop;
+    height: $iconsHeaderSize-desktop;
+  }
+}
+
+@mixin overflow-scroll-bar {
+  overflow: auto;
+  height: 100vh;
+
+  &::-webkit-scrollbar {
+    width: 12px;
+    height: 12px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background-color: #000;
+    border-radius: 10px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: #555;
+    border-radius: 10px; 
+    border: 3px solid #000;
+  }
+}

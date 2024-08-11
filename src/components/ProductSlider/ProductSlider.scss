@@ -1,0 +1,43 @@
+@import '../../styles/main';
+
+.ProductSlider {
+  @include section-grid;
+  @include section-margin-bottom;
+
+  &__top {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    &-title {
+      @extend %h2-mobile;
+
+      @include on-tablet {
+        @include h2-tablet;
+      }
+    }
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    grid-column: 1 / -1;
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 16px;
+  }
+
+  &__content {
+    grid-column: 1 / -1;
+    overflow: hidden;
+    display: flex;
+    gap: 16px;
+
+    &-wrap {
+      transition: transform 0.5s;
+    }
+  }
+}

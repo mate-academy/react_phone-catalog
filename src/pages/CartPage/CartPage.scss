@@ -1,0 +1,139 @@
+@import '../../styles/main';
+
+.cartPage {
+  @include section-grid;
+
+  &__block {
+    display: flex;
+    flex-direction: column;
+    grid-column: 1 / -1;
+    gap: 24px;
+  }
+
+  &__navigation {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+    padding-top: 24px;
+
+    @include on-tablet {
+      padding-top: 40px;
+    }
+
+    &-link {
+      text-decoration: none;
+    }
+
+    &-title {
+      @extend %body-text;
+
+      color: $colorTextSecondary;
+      padding-top: 2px;
+    }
+  }
+
+  &__top {
+    display: flex;
+    flex-direction: column;
+
+    &-title {
+      @extend %h1-mobile;
+
+      @include on-tablet {
+        @include h1-tablet;
+      }
+    }
+  }
+
+  &__message {
+    margin-top: 15%;
+    text-align: center;
+
+    @extend %h1-mobile;
+
+    @include on-tablet {
+      @include h1-tablet;
+    }
+  }
+
+  &__content {
+    grid-column: 1 / -1;
+
+    @include section-grid;
+
+    padding: 0;
+
+    @include on-tablet {
+      padding: 0;
+    }
+  }
+
+  &__items {
+    display: flex;
+    flex-direction: column;
+    grid-column: 1 / -1;
+    gap: 16px;
+
+    @include on-desktop {
+      grid-column: span 16;
+    }
+  }
+
+  &__tottal {
+    grid-column: 1 / -1;
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+
+    @include on-desktop {
+      grid-column: span 8;
+
+    }
+
+    &-block {
+      display: flex;
+      width: 100%;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+      padding: 24px;
+      border: 1px solid $colorElements;
+    }
+
+    &-price {
+      @extend %h2-tablet;
+    }
+
+    &-items {
+      @extend %body-text;
+
+      color: $colorTextSecondary;
+    }
+
+    &-line {
+      width: 100%;
+      height: 1px;
+      background-color: $colorElements;
+    }
+
+    &-btn {
+      width: 100%;
+      height: 48px;
+      background-color: $colorAccent;
+      cursor: pointer;
+      text-align: center;
+      color: $colorWhite;
+      transition: transform 0.3s ease;
+
+      @extend %body-text;
+
+      &:hover {
+        transform: scale(1.02);
+        background-color: $colorPurpleHover;
+      }
+    }
+  }
+}

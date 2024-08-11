@@ -1,1 +1,41 @@
-// not empty
+@import './styles/main';
+
+html {
+  scroll-behavior: smooth;
+  font-family: Mont, sans-serif;
+  font-weight: 800;
+  font-size: 32px;
+  color: $colorWhite;
+  background-color: $colorBlack;
+}
+
+body {
+  overflow-y: scroll;
+  min-width: 320px;
+  background-color: $colorBlack;
+  color: $colorWhite;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+
+  &__container {
+    flex: 1;
+    padding-top: 24px;
+    padding-bottom: 80px;
+
+    @include on-tablet {
+      padding-top: 32px;
+    }
+
+    @include on-desktop {
+      padding-top: 56px;
+    }
+  }
+}
+
+.containerHidden {
+  opacity: 0;
+}

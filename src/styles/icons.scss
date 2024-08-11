@@ -1,0 +1,122 @@
+.icon {
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+
+  &--favorites {
+    background-image: url(../assets/icons/Favourites.svg);
+
+    &--active {
+      background-image: url(../assets/icons/FavouritesFilled.svg);
+    }
+  }
+
+  &--cart {
+    background-image: url(../assets/icons/Cart.svg);
+  }
+
+  &--menu {
+    background-image: url(../assets/icons/Icons/Menu.svg);
+  }
+
+  &--home {
+    background-image: url(../assets/icons/Home.svg);
+  }
+
+  &--arrow-up {
+    background-image: url(../assets/icons/ArrowUp.svg);
+  }
+
+  &--arrow-down {
+    background-image: url(../assets/icons/ChevronArrowDown.svg);
+  }
+
+  &--arrow-left {
+    background-image: url(../assets/icons/ArrowUp.svg);
+    transform: rotate(0.75turn);
+
+    &--disabled {
+      background-image: url(../assets/icons/ArrowUpDisabled.svg);
+      transform: rotate(0.5turn);
+    }
+  }
+
+  &--arrow-right {
+    background-image: url(../assets/icons/ArrowUp.svg);
+    transform: rotate(0.25turn);
+
+    &--disabled {
+      background-image: url(../assets/icons/ArrowUpDisabled.svg);
+      transform: rotate(0);
+    }
+  }
+
+  &--slider-left {
+    width: 32px;
+    height: 32px;
+    background-image: url(../assets/icons/SliderRight.svg);
+    transform: rotate(0.5turn);
+
+    &:hover {
+      background-image: url(../assets/icons/SliderRightHover.svg);
+    }
+
+    &--disabled {
+      background-image: url(../assets/icons/SliderRightDisabled.svg);
+
+      &:hover {
+        background-image: url(../assets/icons/SliderRightDisabled.svg);
+      }
+    }
+  }
+
+  &--slider-right {
+    width: 32px;
+    height: 32px;
+    background-image: url(../assets/icons/SliderRight.svg);
+
+    &:hover {
+      background-image: url(../assets/icons/SliderRightHover.svg);
+    }
+
+    &--disabled {
+      background-image: url(../assets/icons/SliderRightDisabled.svg);
+
+      &:hover {
+        background-image: url(../assets/icons/SliderRightDisabled.svg);
+      }
+    }
+  }
+
+  &--close {
+    background-image: url(../assets/icons/Close.svg);
+
+    &--disabled {
+      background-image: url(../assets/icons/CloseDisabled.svg);
+    }
+  }
+
+  &--minus {
+    background-image: url(../assets/icons/Minus.svg);
+
+    &--disabled {
+      background-image: url(../assets/icons/MinusDisabled.svg);
+    }
+  }
+
+  &--plus {
+    background-image: url(../assets/icons/Plus.svg);
+
+    &--disabled {
+      background-image: url(../assets/icons/PlusDisabled.svg);
+    }
+  }
+
+  &--search {
+    background-image: url(../assets/icons/Search.svg);
+  }
+}
