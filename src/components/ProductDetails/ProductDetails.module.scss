@@ -1,14 +1,15 @@
 @import '../../styles/index';
 
 .product {
-  margin-top: 16px;
-
   &__backBtn {
     display: flex;
     align-items: center;
     gap: 4px;
     margin: 40px 0 16px;
+    width: fit-content;
     color: $secondary-text-color;
+
+    @include hover((color, $main-text-color));
 
     p {
       padding-top: 2px;

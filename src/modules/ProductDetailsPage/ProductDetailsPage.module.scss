@@ -1,5 +1,12 @@
 .productDetails {
   &__error {
-    margin-top: 40px;
+    margin: 40px 0 30px;
+    text-align: center;
+  }
+
+  &__errorImg {
+    width: 700px;
+    margin: 0 auto;
+    display: block;
   }
 }

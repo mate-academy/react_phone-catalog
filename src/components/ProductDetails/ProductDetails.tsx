@@ -12,6 +12,7 @@ import { useEffect, useState } from 'react';
 import { ProductsSlider } from '../ProductsSlider/ProductsSlider';
 import { getCharacteristics, getTechSpecs } from '../../utils/productSpecs';
 import { ArrowIcon } from '../Icons/ArrowIcon';
+import { Breadcrunbs } from '../Breadcrumbs';
 
 type Props = {
   productDetails: CategoryProduct;
@@ -68,6 +69,7 @@ export const ProductDetails: React.FC<Props> = ({
 
   return (
     <div className={styles.product}>
+      <Breadcrunbs name={name} />
       <Link className={styles.product__backBtn} to="..">
         <ArrowIcon />
         <p className="text-small">Back</p>

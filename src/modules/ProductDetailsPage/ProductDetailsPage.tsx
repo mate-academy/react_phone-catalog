@@ -72,7 +72,14 @@ export const ProductDetailsPage: React.FC<Props> = ({ productType }) => {
     <div>
       {isLoading && <Loader />}
       {error && !isLoading && (
-        <h3 className={styles.productDetails__error}>{error}</h3>
+        <>
+          <h3 className={styles.productDetails__error}>{error}</h3>
+          <img
+            className={styles.productDetails__errorImg}
+            src="img/product-not-found.png"
+            alt="error"
+          />
+        </>
       )}
       {!isLoading && selectedProduct && product && (
         <ProductDetails

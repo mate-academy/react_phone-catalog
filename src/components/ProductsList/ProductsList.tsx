@@ -7,6 +7,7 @@ import { mapSortCallbacksToSortKey, SORT_KEY } from '../../constants/sortTypes';
 import { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { Pagination } from '../Pagination';
+import { Breadcrunbs } from '../Breadcrumbs';
 
 type Props = {
   products: Product[];
@@ -46,6 +47,7 @@ export const ProductsList: React.FC<Props> = ({
 
   return (
     <>
+      <Breadcrunbs />
       <h1 className={styles.productsList__title}>{productType}</h1>
       <p className={classNames(styles.productsList__quantity, 'text-body')}>
         {products.length} models
