@@ -59,6 +59,7 @@
   background-repeat: no-repeat;
   background-position: center;
 
+  @include pointer-cursor;
   @include on-hover(transform, scale(1.2));
   @include on-hover(
     background-image,
@@ -96,6 +97,7 @@
   background-repeat: no-repeat;
   background-position: center;
 
+  @include pointer-cursor;
   @include on-hover(border-color, $primary-color);
 
   &:disabled {

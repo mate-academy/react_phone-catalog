@@ -1,11 +1,11 @@
 import { useMemo, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import classNames from 'classnames';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import {
   clearCartItems,
   selectCartItems,
 } from '../../redux/slices/cartItemsSlice';
-import classNames from 'classnames';
 import { countItems } from '../../utils/countItems';
 import { CartItem } from '../CartItem';
 import styles from './ShoppingCart.module.scss';

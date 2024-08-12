@@ -1,8 +1,16 @@
 import classNames from 'classnames';
 import styles from './SkeletonCard.module.scss';
 
-export const SkeletonCard = () => (
-  <div className={styles.skeletonCard}>
+interface Props {
+  sliderCard?: boolean;
+}
+
+export const SkeletonCard: React.FC<Props> = ({ sliderCard = false }) => (
+  <div
+    className={classNames(styles.skeletonCard, {
+      [styles.sliderCard]: sliderCard,
+    })}
+  >
     <div className={classNames(styles.img, styles.skeleton)} />
 
     <div className={styles.nameWrapper}>

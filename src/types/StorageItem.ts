@@ -1,7 +1,7 @@
-import { StorageProduct } from './StorageProduct';
+import { CommonPropsProduct } from './CommonPropsProduct';
 
 export interface StorageItem {
   id: number;
   quantity: number;
-  product: StorageProduct;
+  product: CommonPropsProduct;
 }

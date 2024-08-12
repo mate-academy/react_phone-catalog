@@ -1,15 +1,13 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import classNames from 'classnames';
+import { useAppSelector } from '../../redux/hooks';
+import { selectProducts } from '../../redux/slices/productsSlice';
 import { SliderProduct } from '../../types/SliderProduct';
+import { getSequence } from '../../utils/getSequence';
 import { ProductCard } from '../ProductCard';
 import { SkeletonCard } from '../SkeletonCard';
 import styles from './ProductsSlider.module.scss';
-import { useAppDispatch, useAppSelector } from '../../redux/hooks';
-import {
-  clearErrorMsg,
-  selectProducts,
-} from '../../redux/slices/productsSlice';
-import { setUpdatedAt } from '../../redux/slices/updatedAtSlice';
+import { ErrorNotification } from '../ErrorNotification';
 
 interface Props {
   title: string;
@@ -31,7 +29,6 @@ export const ProductsSlider: React.FC<Props> = ({
   showFullPriceOnly = false,
 }) => {
   const { productsLoading, productsErrorMsg } = useAppSelector(selectProducts);
-  const dispatch = useAppDispatch();
 
   const [isPrevBtnDisabled, setIsPrevBtnDisabled] = useState<boolean>(true);
   const [isNextBtnDisabled, setIsNextBtnDisabled] = useState<boolean>(false);
@@ -41,6 +38,8 @@ export const ProductsSlider: React.FC<Props> = ({
 
   const isBtnDisabled =
     productsLoading || !!productsErrorMsg || products.length <= 1;
+
+  const sequence = getSequence(1, 8);
 
   const checkScrollExistence = useCallback(
     (slider: HTMLDivElement): boolean => {
@@ -75,11 +74,6 @@ export const ProductsSlider: React.FC<Props> = ({
     window.clearTimeout(resizeTimeoutId.current);
     resizeTimeoutId.current = window.setTimeout(resizeWindow, 200);
   });
-
-  const reload = useCallback(() => {
-    dispatch(setUpdatedAt(+new Date()));
-    dispatch(clearErrorMsg());
-  }, [dispatch]);
 
   const handleBtnPrevClick = useCallback(() => {
     if (!productsRef.current) {
@@ -200,31 +194,18 @@ export const ProductsSlider: React.FC<Props> = ({
 
       {productsLoading && (
         <div className={styles.products}>
-          {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(n => (
-            <SkeletonCard key={n} />
+          {sequence.map(n => (
+            <SkeletonCard key={n} sliderCard={true} />
           ))}
         </div>
       )}
 
       {!productsLoading && productsErrorMsg && (
-        <div className={styles.notificationBlock}>
-          <div className={styles.notificationContent}>
-            <p className={styles.notificationMessage}>{productsErrorMsg}</p>
-            <button className={styles.reloadBtn} onClick={reload}>
-              Reload
-            </button>
-          </div>
-        </div>
+        <ErrorNotification errorMsg={productsErrorMsg} inSlider={true} />
       )}
 
       {!productsLoading && !productsErrorMsg && !products.length && (
-        <div className={styles.notificationBlock}>
-          <div className={styles.notificationContent}>
-            <p className={styles.notificationMessage}>
-              Oops! There are no products yet.
-            </p>
-          </div>
-        </div>
+        <ErrorNotification noProducts={true} inSlider={true} />
       )}
 
       {!productsLoading && !productsErrorMsg && !!products.length && (

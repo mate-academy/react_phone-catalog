@@ -1,23 +1,50 @@
-import { selectFavoritesItems } from '../../redux/slices/favoritesItemsSlice';
-import { useAppSelector } from '../../redux/hooks';
+import { CommonPropsProduct } from '../../types/CommonPropsProduct';
+import { getSequence } from '../../utils/getSequence';
+import { ErrorNotification } from '../ErrorNotification';
 import { ProductCard } from '../ProductCard';
+import { SkeletonCard } from '../SkeletonCard';
 import styles from './ProductsList.module.scss';
 
-export const ProductsList = () => {
-  const favoritesItems = useAppSelector(selectFavoritesItems);
+interface Props {
+  name: string;
+  products: CommonPropsProduct[];
+  perPage?: number;
+  loading?: boolean;
+  errorMsg?: string;
+}
 
-  if (!favoritesItems.length) {
+export const ProductsList: React.FC<Props> = ({
+  name,
+  products,
+  perPage = 16,
+  loading = false,
+  errorMsg = '',
+}) => {
+  const normalizedPerPage = perPage ? perPage : 16;
+  const sequence = getSequence(1, normalizedPerPage);
+
+  if (loading) {
     return (
-      <div className={styles.emptyList}>
-        <p>There are no favorites products yet.</p>
+      <div className={styles.productsList}>
+        {sequence.map(n => (
+          <SkeletonCard key={n} />
+        ))}
       </div>
     );
   }
 
+  if (errorMsg) {
+    return <ErrorNotification errorMsg={errorMsg} name={name} />;
+  }
+
+  if (!products.length) {
+    return <ErrorNotification noProducts={true} name={name} />;
+  }
+
   return (
     <div className={styles.productsList}>
-      {favoritesItems.map(({ id, product }) => (
-        <ProductCard key={id} product={product} />
+      {products.map(product => (
+        <ProductCard key={product.itemId} product={product} />
       ))}
     </div>
   );

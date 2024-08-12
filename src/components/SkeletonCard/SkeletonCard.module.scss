@@ -5,8 +5,8 @@
   flex-shrink: 0;
 
   box-sizing: border-box;
-  width: 212px;
-  height: $slider-height-mob;
+  width: 100%;
+  height: $catalog-height-mob;
   padding: 32px;
   border: 1px solid $main-border-color;
   background-color: $white-color;
@@ -14,6 +14,15 @@
   display: flex;
   flex-direction: column;
   gap: 8px;
+
+  @include on-tablet {
+    height: $catalog-height-tablet;
+  }
+}
+
+.sliderCard {
+  width: 212px;
+  height: $slider-height-mob;
 
   @include on-tablet {
     width: 237px;

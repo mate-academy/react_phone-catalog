@@ -1,0 +1,84 @@
+@import '../../styles/vars';
+@import '../../styles/mixins';
+
+.pagination {
+  margin-top: 24px;
+
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+
+  @include on-tablet {
+    margin-top: 40px;
+  }
+}
+
+.hidden {
+  display: none;
+}
+
+.buttonsWrapper {
+  max-width: 4 * $pagination-btn-size + 3 * $pagination-gap;
+  overflow: hidden;
+}
+
+.buttons {
+  display: flex;
+  gap: $pagination-gap;
+}
+
+.btn {
+  flex-shrink: 0;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: $pagination-btn-size;
+  height: $pagination-btn-size;
+  border: 1px solid $main-border-color;
+
+  outline: none;
+  padding: 0;
+
+  background-color: $white-color;
+  background-repeat: no-repeat;
+  background-position: center;
+
+  text-decoration: none;
+  text-align: center;
+  font: inherit;
+  line-height: 1rem;
+  color: $primary-color;
+
+  @include pointer-cursor;
+  @include on-hover(border-color, $primary-color);
+}
+
+.btnSelected {
+  border-color: transparent;
+  background-color: $primary-color;
+  color: $white-color;
+}
+
+.btnPrev,
+.btnNext {
+  border-color: $secondary-border-color;
+}
+
+.btnPrev {
+  background-image: url(../../../public/img/icons/arrow-left-black.svg);
+}
+
+.btnNext {
+  background-image: url(../../../public/img/icons/arrow-right-black.svg);
+}
+
+.btnPrev:disabled {
+  background-image: url(../../../public/img/icons/arrow-left-gray.svg);
+  border-color: $main-border-color !important;
+}
+
+.btnNext:disabled {
+  background-image: url(../../../public/img/icons/arrow-right-gray.svg);
+  border-color: $main-border-color !important;
+}

@@ -9,12 +9,12 @@ import {
   setFavoritesItems,
 } from '../../redux/slices/favoritesItemsSlice';
 import classNames from 'classnames';
-import { StorageProduct } from '../../types/StorageProduct';
+import { CommonPropsProduct } from '../../types/CommonPropsProduct';
 import { StorageItem } from '../../types/StorageItem';
 import styles from './ProductCard.module.scss';
 
 interface Props {
-  product: StorageProduct;
+  product: CommonPropsProduct;
   sliderCard?: boolean;
   showFullPriceOnly?: boolean;
 }

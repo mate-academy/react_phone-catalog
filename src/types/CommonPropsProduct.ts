@@ -1,4 +1,4 @@
-export interface StorageProduct {
+export interface CommonPropsProduct {
   itemId: string;
   name: string;
   fullPrice: number;

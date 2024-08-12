@@ -8,6 +8,7 @@ import styles from './Favorites.module.scss';
 
 export const Favorites = () => {
   const favoritesItems = useAppSelector(selectFavoritesItems);
+  const favoritesProducts = favoritesItems.map(item => item.product);
 
   const favoritesQty = useMemo(
     () => countItems(favoritesItems),
@@ -30,7 +31,7 @@ export const Favorites = () => {
         {favoritesQty !== 1 ? `${favoritesQty} items` : '1 item'}
       </p>
 
-      <ProductsList />
+      <ProductsList name="favorites products" products={favoritesProducts} />
     </div>
   );
 };

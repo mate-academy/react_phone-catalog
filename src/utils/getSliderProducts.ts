@@ -3,9 +3,12 @@ import { SliderProduct } from '../types/SliderProduct';
 export function getBrandNewProducts(
   products: SliderProduct[],
 ): SliderProduct[] {
-  return [...products].sort(
-    (product1, product2) => product2.fullPrice - product1.fullPrice,
-  );
+  return [...products].sort((product1, product2) => {
+    const year1 = product1.year;
+    const year2 = product2.year;
+
+    return year2 - year1;
+  });
 }
 
 export function getHotPricesProducts(
