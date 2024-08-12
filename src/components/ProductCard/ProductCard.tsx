@@ -1,7 +1,7 @@
 import './ProductCard.module.scss';
 import React, { useState, useEffect } from 'react';
 import { ActionButtons } from '../ActionButtons';
-import { Product } from '../../types/Product';
+import { ProductPhone, ProductTablet } from '../../types/Product';
 import { Link } from 'react-router-dom';
 import styles from './ProductCard.module.scss';
 
@@ -10,7 +10,7 @@ type ProductCardProps = {
 };
 
 export const ProductCard: React.FC<ProductCardProps> = ({ productId }) => {
-  const [product, setProduct] = useState<Product | null>(null);
+  const [product, setProduct] = useState<ProductPhone | ProductTablet| null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -21,7 +21,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ productId }) => {
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }
-        const data: Product[] = await response.json();
+        const data: ProductPhone[] = await response.json();
         const foundProduct = data.find(p => p.id === productId);
         console.log('Found product:', foundProduct); // Sprawdź, czy produkt jest znaleziony
         setProduct(foundProduct || null);
