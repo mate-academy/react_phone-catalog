@@ -107,7 +107,7 @@ export const Card: React.FC<Props> = ({ product, discount }) => {
             })}
             onClick={HanderAddCart}
           >
-            {!inCart() ? 'Add to card' : 'Added'}
+            {!inCart() ? 'Add to cart' : 'Added'}
           </button>
           <button
             className={classNames(
