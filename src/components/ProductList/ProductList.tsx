@@ -2,9 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { ProductCard } from '../ProductCard';
 import { Product } from '../../types/Product';
 
-/* type ProductListProps = {
-  productId: string; // Identyfikator produktu do pobrania danych
-}; */
+
 
 export const ProductList: React.FC = () => {
   const [products, setProducts] = useState<Product[]>([]);
