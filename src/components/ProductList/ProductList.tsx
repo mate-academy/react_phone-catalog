@@ -33,7 +33,7 @@ export const ProductList: React.FC<ProductListProps> = ( {typeOfProduct}) => {
     <ul>
       {products.map((product) => (
         <li key={product.id}>
-          <ProductCard productId={product.id} /> {/* Pass product.id as productId */}
+          <ProductCard productId={product.id} typeOfProduct={typeOfProduct} /> {/* Pass product.id as productId */}
         </li>
       ))}
     </ul>

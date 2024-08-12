@@ -6,10 +6,11 @@ import { Link } from 'react-router-dom';
 import styles from './ProductCard.module.scss';
 
 type ProductCardProps = {
-  productId: string; // Identyfikator produktu do pobrania danych
+  productId: string, // Identyfikator produktu do pobrania danych
+  typeOfProduct: string;
 };
 
-export const ProductCard: React.FC<ProductCardProps> = ({ productId }) => {
+export const ProductCard: React.FC<ProductCardProps> = ({ productId, typeOfProduct }) => {
   const [product, setProduct] = useState<ProductPhone | ProductTablet| null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -17,7 +18,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ productId }) => {
   useEffect(() => {
     const fetchProduct = async () => {
       try {
-        const response = await fetch('/api/phones.json'); // Poprawna ścieżka do pliku w folderze public
+        const response = await fetch(`../../api/${typeOfProduct}.json`); // Poprawna ścieżka do pliku w folderze public
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }
@@ -34,7 +35,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ productId }) => {
     };
 
     fetchProduct();
-  }, [productId]);
+  }, [productId, typeOfProduct]);
 
   if (loading) {
     return <div>Loading...</div>;
