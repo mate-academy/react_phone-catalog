@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styles from './CatalogFilters.module.scss';
 import { useNavigate } from 'react-router-dom';
 import { updateURLParams } from './../services/updateUrl';
 import Select, { components, SingleValue } from 'react-select';
+import { useAppSelector } from '../../../app/hooks';
 
 interface OptionsSortByType {
   value: string;
@@ -61,6 +62,30 @@ export const CatalogFilters: React.FC<CatalogFiltersProps> = ({
 }) => {
   const navigate = useNavigate();
 
+  const isDark = useAppSelector(state => state.boolean.isDark);
+
+  useEffect(() => {
+    const filters = document.getElementById('filtersId');
+
+    if (isDark) {
+      filters?.style.setProperty('--secondary-grey-color', '#75767f');
+      filters?.style.setProperty('--dark-black-color', '#0f1121');
+      filters?.style.setProperty('--dark-surface-2-color', '#323542');
+      filters?.style.setProperty('--icons-grey-color', '#323542');
+      filters?.style.setProperty('--dark-icons-color', '#4a4d58');
+      filters?.style.setProperty('--dark-accent-color', '#905bff');
+      filters?.style.setProperty('--dropdown-option-hover-color', '#323542');
+    } else {
+      filters?.style.setProperty('--secondary-grey-color', '#89939a');
+      filters?.style.setProperty('--dark-black-color', '#ffffff');
+      filters?.style.setProperty('--dark-surface-2-color', '#ffffff');
+      filters?.style.setProperty('--icons-grey-color', '#b4bdc4');
+      filters?.style.setProperty('--dark-icons-color', '#89939a');
+      filters?.style.setProperty('--dark-accent-color', '#313237');
+      filters?.style.setProperty('--dropdown-option-hover-color', '#fafbfc');
+    }
+  }, [isDark]);
+
   const handleSortBySelect = (option: SingleValue<OptionsSortByType>) => {
     if (option) {
       const valueSortBy = option.value;
@@ -90,7 +115,7 @@ export const CatalogFilters: React.FC<CatalogFiltersProps> = ({
   };
 
   return (
-    <div className={styles.filters}>
+    <div id="filtersId" className={styles.filters}>
       <div
         className={`${styles.filters__block} ${styles.filters__blockSortBy}`}
       >
@@ -105,33 +130,40 @@ export const CatalogFilters: React.FC<CatalogFiltersProps> = ({
           styles={{
             control: (baseStyles, state) => ({
               ...baseStyles,
-              border: '1px solid #B4BDC4',
+              border: '1px solid var(--icons-grey-color)',
               borderRadius: 0,
               height: '40px',
               width: '100%',
               fontFamily: 'Montserrat',
               fontSize: '14px',
-              color: '#313237',
+              color: 'var(--primary-grey-color)',
               fontWeight: '700',
               lineHeight: '21px',
               letterSpacing: '0%',
               textAlign: 'left',
               cursor: 'pointer',
-
-              boxShadow: state.isFocused ? '0 0 0 1px #313237' : 'none',
+              backgroundColor: 'var(--dark-surface-2-color)',
+              boxShadow: state.isFocused
+                ? '0 0 0 1px var(--dark-accent-color)'
+                : 'none',
 
               '&:hover': {
-                border: '1px solid #89939A',
+                border: '1px solid var(--dark-icons-color)',
               },
 
               '&:focus': {
-                border: '1px solid #313237',
+                border: '1px solid var(--dark-accent-color)',
               },
+            }),
+
+            singleValue: baseStyles => ({
+              ...baseStyles,
+              color: 'var(--primary-grey-color)',
             }),
 
             option: baseStyles => ({
               ...baseStyles,
-              color: '#89939a',
+              color: 'var(--secondary-grey-color)',
               fontFamily: 'Montserrat',
               fontSize: '14px',
               fontWeight: '500',
@@ -142,15 +174,17 @@ export const CatalogFilters: React.FC<CatalogFiltersProps> = ({
               backgroundColor: 'none',
 
               '&:hover': {
-                color: '#313237',
+                backgroundColor: 'var(--dropdown-option-hover-color)',
+                color: 'var(--primary-grey-color)',
               },
             }),
 
             menu: baseStyles => ({
               ...baseStyles,
               borderRadius: '0',
-              border: '1px solid #E2E6E9',
-              boxShadow: '0px 2px 15px 0px rgba(0, 0, 0, 0.05)',
+              border: '1px solid var(--elements-grey-color)',
+              boxShadow: '0px 2px 15px 0px var(--dwop-down-shadow)',
+              backgroundColor: 'var(--dark-black-color)',
             }),
 
             indicatorSeparator: () => ({
@@ -174,33 +208,39 @@ export const CatalogFilters: React.FC<CatalogFiltersProps> = ({
           styles={{
             control: (baseStyles, state) => ({
               ...baseStyles,
-              border: '1px solid #B4BDC4',
+              border: '1px solid var(--icons-grey-color)',
               borderRadius: 0,
               height: '40px',
               width: '100%',
               fontFamily: 'Montserrat',
               fontSize: '14px',
-              color: '#313237',
               fontWeight: '700',
               lineHeight: '21px',
               letterSpacing: '0%',
               textAlign: 'left',
               cursor: 'pointer',
-
-              boxShadow: state.isFocused ? '0 0 0 1px #313237' : 'none',
+              backgroundColor: 'var(--dark-surface-2-color)',
+              boxShadow: state.isFocused
+                ? '0 0 0 1px var(--dark-accent-color)'
+                : 'none',
 
               '&:hover': {
-                border: '1px solid #89939A',
+                border: '1px solid var(--dark-icons-color)',
               },
 
               '&:focus': {
-                border: '1px solid #313237',
+                border: '1px solid var(--dark-accent-color)',
               },
+            }),
+
+            singleValue: baseStyles => ({
+              ...baseStyles,
+              color: 'var(--primary-grey-color)',
             }),
 
             option: baseStyles => ({
               ...baseStyles,
-              color: '#89939a',
+              color: 'var(--secondary-grey-color)',
               fontFamily: 'Montserrat',
               fontSize: '14px',
               fontWeight: '500',
@@ -211,15 +251,17 @@ export const CatalogFilters: React.FC<CatalogFiltersProps> = ({
               backgroundColor: 'none',
 
               '&:hover': {
-                color: '#313237',
+                backgroundColor: 'var(--dropdown-option-hover-color)',
+                color: 'var(--primary-grey-color)',
               },
             }),
 
             menu: baseStyles => ({
               ...baseStyles,
               borderRadius: '0',
-              border: '1px solid #E2E6E9',
-              boxShadow: '0px 2px 15px 0px rgba(0, 0, 0, 0.05)',
+              border: '1px solid var(--elements-grey-color)',
+              boxShadow: '0px 2px 15px 0px var(--dwop-down-shadow)',
+              backgroundColor: 'var(--dark-black-color)',
             }),
 
             indicatorSeparator: () => ({

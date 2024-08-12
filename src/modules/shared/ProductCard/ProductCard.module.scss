@@ -8,6 +8,10 @@
   border: 1px solid var(--elements-grey-color);
   padding: 32px;
 
+  &:hover {
+    box-shadow: 0px 2px 16px 0px var(--card-slider-shadow);
+  }
+
   &__topBlock {
     display: flex;
     flex-direction: column;

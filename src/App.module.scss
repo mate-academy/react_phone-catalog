@@ -45,6 +45,14 @@
     display: flex;
     gap: 30px;
     align-items: center;
+
+    @include on-tablet {
+      gap: 10px;
+    }
+
+    @include on-desktop {
+      gap: 30px;
+    }
   }
 
   &__logoLink {
@@ -337,5 +345,15 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+  }
+}
+
+.goUpDark {
+  border: none;
+  background-color: var(--dark-surface-2-color);
+
+  &:hover {
+    border: none;
+    background-color: var(--dark-icons-color);
   }
 }

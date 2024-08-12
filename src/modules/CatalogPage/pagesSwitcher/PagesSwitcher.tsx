@@ -26,6 +26,7 @@ export const PagesSwitcher: React.FC<PagesSwitcherProps> = ({
   const location = useLocation();
 
   const models = useAppSelector(state => state.pagesDetails.models);
+  const isDark = useAppSelector(state => state.boolean.isDark);
 
   useEffect(() => {
     root.style.setProperty('--page-starts-from', '0');
@@ -95,6 +96,30 @@ export const PagesSwitcher: React.FC<PagesSwitcherProps> = ({
     root.style.setProperty('--page-starts-from', `${newPosition}px`);
   };
 
+  const arrowLeftHandling = () => {
+    if (disablePagesArrow === 'disableLeft' && !isDark) {
+      return <img src="./icons/arrow-left-light-ico.svg" alt="arrow-left" />;
+    } else if (disablePagesArrow === 'disableLeft' && isDark) {
+      return <img src="./icons/arrow-left-ico.svg" alt="arrow-left" />;
+    } else if (disablePagesArrow !== 'disableLeft' && !isDark) {
+      return <img src="./icons/arrow-left-ico.svg" alt="arrow-left" />;
+    } else {
+      return <img src="./icons/arrow-left-light-ico.svg" alt="arrow-left" />;
+    }
+  };
+
+  const arrowRightHandling = () => {
+    if (disablePagesArrow === 'disableRight' && !isDark) {
+      return <img src="./icons/arrow-right-light-ico.svg" alt="arrow-left" />;
+    } else if (disablePagesArrow === 'disableRight' && isDark) {
+      return <img src="./icons/aroow-right-ico.svg" alt="arrow-left" />;
+    } else if (disablePagesArrow !== 'disableRight' && !isDark) {
+      return <img src="./icons/aroow-right-ico.svg" alt="arrow-left" />;
+    } else {
+      return <img src="./icons/arrow-right-light-ico.svg" alt="arrow-left" />;
+    }
+  };
+
   return (
     <>
       {perPage !== 'all' && Math.ceil(models / +perPage) > 1 && (
@@ -102,13 +127,9 @@ export const PagesSwitcher: React.FC<PagesSwitcherProps> = ({
           {perPage !== 'all' && Math.ceil(models / +perPage) > 4 && (
             <button
               onClick={handlePagesLeft}
-              className={`${styles.pages__arrowButton} ${disablePagesArrow === 'disableLeft' ? styles.disabledArrow : styles.activeArrow}`}
+              className={`${styles.pages__arrowButton} ${disablePagesArrow === 'disableLeft' && styles.disabledArrow}`}
             >
-              {disablePagesArrow === 'disableLeft' ? (
-                <img src="./icons/arrow-left-light-ico.svg" alt="arrow-left" />
-              ) : (
-                <img src="./icons/arrow-left-ico.svg" alt="arrow-left" />
-              )}
+              {arrowLeftHandling()}
             </button>
           )}
 
@@ -129,16 +150,9 @@ export const PagesSwitcher: React.FC<PagesSwitcherProps> = ({
           {perPage !== 'all' && Math.ceil(models / +perPage) > 4 && (
             <button
               onClick={handlePagesRight}
-              className={`${styles.pages__arrowButton} ${disablePagesArrow === 'disableRight' ? styles.disabledArrow : styles.activeArrow}`}
+              className={`${styles.pages__arrowButton} ${disablePagesArrow === 'disableRight' && styles.disabledArrow}`}
             >
-              {disablePagesArrow === 'disableRight' ? (
-                <img
-                  src="./icons/arrow-right-light-ico.svg"
-                  alt="arrow-right"
-                />
-              ) : (
-                <img src="./icons/aroow-right-ico.svg" alt="arrow-right" />
-              )}
+              {arrowRightHandling()}
             </button>
           )}
         </div>

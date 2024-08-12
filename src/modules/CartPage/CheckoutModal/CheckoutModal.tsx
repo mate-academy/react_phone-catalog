@@ -1,11 +1,13 @@
 import React from 'react';
 import styles from './CheckoutModal.module.scss';
-import { useAppDispatch } from '../../../app/hooks';
+import { useAppDispatch, useAppSelector } from '../../../app/hooks';
 import { cleanCart } from '../../../features/chosenItemsSlice';
 import { setIsCheckoutModal } from '../../../features/booleanSlice';
 
 export const CheckoutModal: React.FC = () => {
   const dispatch = useAppDispatch();
+
+  const isDark = useAppSelector(state => state.boolean.isDark);
 
   const handleCancelButton = () => {
     dispatch(setIsCheckoutModal(false));
@@ -28,13 +30,13 @@ export const CheckoutModal: React.FC = () => {
         </p>
         <div className={styles.module__buttons}>
           <button
-            className={`${styles.blackButtonBase} ${styles.module__button}`}
+            className={`${styles.blackButtonBase} ${styles.module__button} ${isDark && styles.buttonDark}`}
             onClick={handleCancelButton}
           >
             Cancel
           </button>
           <button
-            className={`${styles.blackButtonBase} ${styles.module__button}`}
+            className={`${styles.blackButtonBase} ${styles.module__button} ${isDark && styles.buttonDark}`}
             onClick={confirm}
           >
             Confirm and clear

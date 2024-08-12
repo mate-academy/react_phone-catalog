@@ -1,25 +1,22 @@
 @import './../main.scss';
 
 .swiperWrapper {
-  @include page-grid;
+  display: flex;
+  gap: 16px;
   margin-bottom: 18px;
 }
 
 .swiper {
-  grid-column: 1 / -1;
   box-sizing: border-box;
   height: 100vw;
   width: 100vw;
 
   @include on-tablet {
-    grid-column: 2 / 12;
-    grid-row: 1;
     height: 189px;
     width: 100%;
   }
 
   @include on-desktop {
-    grid-column: 2 / 24;
     height: 400px;
   }
 
@@ -61,9 +58,9 @@
 .moveSlide {
   display: none;
   width: 32px;
+  background-color: var(--white-color);
 
   @include on-tablet {
-    grid-row: 1;
     cursor: pointer;
     height: 189px;
     display: block;
@@ -79,22 +76,12 @@
   }
 }
 
-.moveSlide {
-  background-color: var(--white-color);
-}
+.moveSlideDark {
+  border: none;
+  background-color: var(--dark-surface-2-color);
 
-.moveSlideLeft {
-  grid-column: 1 / 2;
-}
-
-.moveSlideRight {
-  margin-left: auto;
-
-  @include on-tablet {
-    grid-column: -2 / -1;
-  }
-
-  @include on-desktop {
-    grid-column: 24 / 25;
+  &:hover {
+    background-color: var(--dark-icons-color);
+    border: none;
   }
 }

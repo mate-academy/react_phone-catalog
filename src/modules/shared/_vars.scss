@@ -3,6 +3,10 @@ $desktop-min-width: 1200px;
 $effect-duration: 0.3s;
 
 :root {
+  // original theme colors
+  --card-slider-shadow: #0000001a;
+  --dwop-down-shadow: #0000000d;
+  --add-to-cadr-button-shadow: #17203166;
   --dim-background: #00000080;
   --primary-grey-color: #313237;
   --secondary-grey-color: #89939a;
@@ -12,4 +16,16 @@ $effect-duration: 0.3s;
   --green-color: #27ae60;
   --red-color: #eb5757;
   --black-color: #000000;
+  --dropdown-option-hover-color: #fafbfc;
+
+  // dark theme colors
+  --dark-black-color: #0f1121;
+  --dark-surface-1-color: #161827;
+  --dark-surface-2-color: #323542;
+  --dark-elements-color: #3b3e4a;
+  --dark-icons-color: #4a4d58;
+  --dark-secondary: #75767f;
+  --dark-white-color: #f1f2f9;
+  --dark-accent-color: #905bff;
+  --dark-accent-hover-color: #a378ff;
 }

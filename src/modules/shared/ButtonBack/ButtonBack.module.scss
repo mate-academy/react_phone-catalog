@@ -32,3 +32,11 @@
   cursor: not-allowed;
   pointer-events: none;
 }
+
+.backDark {
+  color: var(--dark-white-color);
+
+  &:hover {
+    color: var(--dark-accent-color) !important;
+  }
+}

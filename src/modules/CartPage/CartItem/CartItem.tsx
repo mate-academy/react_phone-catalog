@@ -27,6 +27,7 @@ export const CartItem: React.FC<CatrItemType> = ({ gadget }) => {
   const itemsQuantity = useAppSelector(
     state => state.pagesDetails.itemsQuantity,
   );
+  const isDark = useAppSelector(state => state.boolean.isDark);
 
   useEffect(() => {
     if (numberOfSameGadget <= 1) {
@@ -130,14 +131,22 @@ export const CartItem: React.FC<CatrItemType> = ({ gadget }) => {
         <div className={styles.quantity}>
           <button
             onClick={handleMinusItem}
-            className={`${styles.quantity__button} ${isMinusDisabled && styles.disabledButton}`}
+            className={`
+              ${styles.quantity__button}
+              ${isMinusDisabled && styles.disabledButton}
+              ${isDark && styles.buttonDark}
+              ${isDark && isMinusDisabled && styles.disabledDark}
+              `}
           >
             <img src="./icons/minus-ico.svg" alt="minus-ico" />
           </button>
 
           <p className={styles.quantity__number}>{numberOfSameGadget}</p>
 
-          <button onClick={handlePlusItem} className={styles.quantity__button}>
+          <button
+            onClick={handlePlusItem}
+            className={`${styles.quantity__button} ${isDark && styles.buttonDark}`}
+          >
             <img src="./icons/plus-ico.svg" alt="plus-ico" />
           </button>
         </div>

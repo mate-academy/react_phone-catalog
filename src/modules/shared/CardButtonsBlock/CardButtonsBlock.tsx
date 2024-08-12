@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styles from './CardButtonsBlock.module.scss';
 import { useAppDispatch, useAppSelector } from '../../../app/hooks';
 import {
@@ -29,6 +29,29 @@ export const CardButtonsBlock: React.FC<Props> = ({
   const itemsQuantity = useAppSelector(
     state => state.pagesDetails.itemsQuantity,
   );
+  const isDark = useAppSelector(state => state.boolean.isDark);
+
+  useEffect(() => {
+    const cartButtonsBlock = document.getElementsByClassName(
+      styles.buttonsSection,
+    );
+
+    for (let i = 0; i < cartButtonsBlock.length; i++) {
+      const element = cartButtonsBlock[i] as HTMLElement;
+
+      if (isDark) {
+        element.style.setProperty('--primary-grey-color', '#905bff');
+        element.style.setProperty('--white-color', '#323542');
+        element.style.setProperty('--elements-grey-color', '#323542');
+        element.style.setProperty('--icons-grey-color', '#323542');
+      } else {
+        element.style.setProperty('--primary-grey-color', '#313237');
+        element.style.setProperty('--white-color', '#ffffff');
+        element.style.setProperty('--elements-grey-color', '#e2e6e9');
+        element.style.setProperty('--icons-grey-color', '#b4bdc4');
+      }
+    }
+  }, [isDark, favoritesArray]);
 
   const handleheartIco = () => {
     if (gadg !== null) {
@@ -85,12 +108,15 @@ export const CardButtonsBlock: React.FC<Props> = ({
       <button
         disabled={isInBasket}
         onClick={handleAddToCart}
-        className={`${styles.blackButtonBase} ${styles.buttonAddToCatr} ${isInBasket && styles.added}`}
+        className={`${styles.blackButtonBase} ${styles.buttonAddToCatr} ${isInBasket && styles.added} ${isDark && styles.addToCartDark} `}
       >
-        {isInBasket ? 'In your cart' : 'Add to cart'}
+        {isInBasket ? 'Added' : 'Add to cart'}
       </button>
 
-      <button onClick={handleheartIco} className={styles.buttonAddTofavorite}>
+      <button
+        onClick={handleheartIco}
+        className={`${styles.buttonAddTofavorite} ${isDark && styles.addToFavouriteDark} ${favIco === './icons/heart-red-ico.svg' && isDark && styles.favourite}`}
+      >
         <img src={favIco} alt="add to favorites" />
       </button>
     </div>

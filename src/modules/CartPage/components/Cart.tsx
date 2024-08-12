@@ -15,8 +15,8 @@ export const Cart: React.FC = () => {
   const itemsQuantity = useAppSelector(
     state => state.pagesDetails.itemsQuantity,
   );
-
   const isModal = useAppSelector(state => state.boolean.isCheckoutModal);
+  const isDark = useAppSelector(state => state.boolean.isDark);
 
   const handleCheckout = () => {
     dispatch(setIsCheckoutModal(true));
@@ -49,7 +49,7 @@ export const Cart: React.FC = () => {
 
                 <button
                   onClick={handleCheckout}
-                  className={`${styles.checkout__button} ${styles.blackButtonBase} `}
+                  className={`${styles.checkout__button} ${styles.blackButtonBase} ${isDark && styles.buttonDark} `}
                 >
                   Checkout
                 </button>

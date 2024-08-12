@@ -9,6 +9,12 @@
     width: 32px;
     height: 32px;
     background-color: var(--white-color);
+    border: 1px solid var(--icons-grey-color);
+    cursor: pointer;
+
+    &:hover {
+      border: 1px solid var(--primary-grey-color);
+    }
   }
 
   &__numbersWindow {
@@ -53,17 +59,9 @@
   color: var(--white-color);
 }
 
-.activeArrow {
-  border: 1px solid var(--icons-grey-color);
-  cursor: pointer;
-
-  &:hover {
-    border: 1px solid var(--primary-grey-color);
-  }
-}
-
 .disabledArrow {
   border: 1px solid var(--elements-grey-color);
   pointer-events: none;
   cursor: not-allowed;
+  opacity: 0.5;
 }

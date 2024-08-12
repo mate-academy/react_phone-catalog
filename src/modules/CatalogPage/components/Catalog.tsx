@@ -28,6 +28,7 @@ export const Catalog: React.FC = () => {
   const title = useAppSelector(state => state.pagesDetails.title);
   const models = useAppSelector(state => state.pagesDetails.models);
   const fetchProductsErrorText = useAppSelector(state => state.products.error);
+  const isDark = useAppSelector(state => state.boolean.isDark);
 
   const queryParams = new URLSearchParams(location.search);
   const sortByParam = queryParams.get('sort');
@@ -35,6 +36,16 @@ export const Catalog: React.FC = () => {
   const pageParams = queryParams.get('page');
 
   const { productId } = useParams();
+
+  useEffect(() => {
+    const catalog = document.getElementById('catalogId');
+
+    if (isDark) {
+      catalog?.style.setProperty('--secondary-grey-color', '#75767f');
+    } else {
+      catalog?.style.setProperty('--secondary-grey-color', '#89939a');
+    }
+  }, [isDark]);
 
   useEffect(() => {
     if (sortByParam) {
@@ -177,7 +188,7 @@ export const Catalog: React.FC = () => {
     <>
       {!productId ? (
         <div className={styles.gridContainer}>
-          <div className={styles.catalog}>
+          <div id="catalogId" className={styles.catalog}>
             <div className={styles.catalog__path}>
               <Link to="/">
                 <img src="./icons/home-ico.svg" alt="home" />

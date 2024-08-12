@@ -7,6 +7,7 @@ type BooleanType = {
   isCheckoutModal: boolean;
   reloadTrigger: boolean;
   isWrongParams: boolean;
+  isDark: boolean;
 };
 
 const initialState: BooleanType = {
@@ -15,6 +16,7 @@ const initialState: BooleanType = {
   isCheckoutModal: false,
   reloadTrigger: false,
   isWrongParams: false,
+  isDark: false,
 };
 
 const booleanSlice = createSlice({
@@ -36,6 +38,9 @@ const booleanSlice = createSlice({
     setIsWrongParams: (state, action: PayloadAction<boolean>) => {
       state.isWrongParams = action.payload;
     },
+    setIsDark: (state, action: PayloadAction<boolean>) => {
+      state.isDark = action.payload;
+    },
   },
 });
 
@@ -46,4 +51,5 @@ export const {
   setIsCheckoutModal,
   setReloadTrigger,
   setIsWrongParams,
+  setIsDark,
 } = booleanSlice.actions;

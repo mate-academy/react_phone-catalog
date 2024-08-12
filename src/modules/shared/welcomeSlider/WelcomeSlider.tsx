@@ -6,14 +6,17 @@ import 'swiper/css';
 import 'swiper/scss/free-mode';
 import 'swiper/scss/pagination';
 import 'swiper/scss/navigation';
+import { useAppSelector } from '../../../app/hooks';
 
 export const WelcomeSlider = () => {
+  const isDark = useAppSelector(state => state.boolean.isDark);
+
   return (
     <>
       <div className={styles.swiperWrapper}>
         <button
           id="welcome-slider-arrow-left"
-          className={`${styles.moveSlide} ${styles.moveSlideLeft}`}
+          className={`${styles.moveSlide} ${isDark && styles.moveSlideDark}`}
         >
           <img
             className={styles.moveSlide__slideArrow}
@@ -75,7 +78,7 @@ export const WelcomeSlider = () => {
 
         <button
           id="welcome-slider-arrow-right"
-          className={`${styles.moveSlide} ${styles.moveSlideRight}`}
+          className={`${styles.moveSlide} ${isDark && styles.moveSlideDark}`}
         >
           <img
             className={styles.moveSlide__slideArrow}

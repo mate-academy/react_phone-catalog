@@ -67,10 +67,6 @@
     height: 439px;
     transition: all $effect-duration ease;
 
-    &:hover {
-      box-shadow: 0px 2px 16px 0px rgba(0, 0, 0, 0.1);
-    }
-
     @include on-tablet {
       width: 237px;
       height: 512px;
@@ -87,4 +83,19 @@
   opacity: 0.5;
   pointer-events: none;
   cursor: not-allowed;
+}
+
+.sliderButtonDark {
+  background-color: var(--dark-surface-2-color);
+  border: none;
+
+  &:hover {
+    background-color: var(--dark-icons-color);
+    border: none;
+  }
+}
+
+.disabledBlack {
+  border: 1px solid var(--dark-elements-color);
+  background-color: var(--dark-black-color);
 }

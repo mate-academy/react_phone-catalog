@@ -1,5 +1,5 @@
 /* eslint-disable max-len */
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { Outlet, useLocation } from 'react-router-dom';
 import './App.module.scss';
 import './modules/shared/_main.scss';
@@ -11,7 +11,7 @@ import { fetchTablesAsync } from './features/fetchTabletsSlice';
 import { fetchAccessoriesAsync } from './features/fetchAccessoriesSlice';
 import { fetchProductsAsync } from './features/fetchProductsSlice';
 import { setHidenMenuIco } from './features/iconsChangerSlice';
-import { setIsMenuShown } from './features/booleanSlice';
+import { setIsDark, setIsMenuShown } from './features/booleanSlice';
 import { HidenMenu } from './modules/HidenMenu/components';
 import {
   addToCart,
@@ -35,8 +35,6 @@ export const App: React.FC = () => {
   const BURGER_MENU_ICO = './icons/burger-menu-ico.svg';
   const CLOSE_LIGHT_ICO = './icons/close-light-ico.svg';
 
-  const [isDark, setIsDark] = useState(false);
-
   const hidenMenuIco = useAppSelector(state => state.iconsChanger.hidenMenuIco);
   const isMenuShown = useAppSelector(state => state.boolean.isMenuShown);
   const favoritesArray = useAppSelector(state => state.chosenItems.favorite);
@@ -46,10 +44,27 @@ export const App: React.FC = () => {
     state => state.pagesDetails.itemsQuantity,
   );
   const reloadTrigger = useAppSelector(state => state.boolean.reloadTrigger);
+  const isDark = useAppSelector(state => state.boolean.isDark);
 
   const body = document.body;
 
   body.classList.add(styles.body);
+
+  useEffect(() => {
+    const root = document.documentElement;
+
+    if (isDark) {
+      root.style.setProperty('--white-color', '#0f1121');
+      root.style.setProperty('--primary-grey-color', '#f1f2f9');
+      root.style.setProperty('--secondary-grey-color', '#75767f');
+      root.style.setProperty('--elements-grey-color', '#3b3e4a');
+    } else {
+      root.style.setProperty('--white-color', '#ffffff');
+      root.style.setProperty('--primary-grey-color', '#313237');
+      root.style.setProperty('--secondary-grey-color', '#89939a');
+      root.style.setProperty('--elements-grey-color', '#e2e6e9');
+    }
+  }, [isDark]);
 
   useEffect(() => {
     if (isMenuShown) {
@@ -81,6 +96,7 @@ export const App: React.FC = () => {
     const itemsQuantityString = localStorage.getItem('itemsQuantity');
     const currentGadget = localStorage.getItem('currentGadget');
     const currentProduct = localStorage.getItem('currentProduct');
+    const darkMode = localStorage.getItem('isDark');
 
     if (favString) {
       dispatch(cleanFavorite());
@@ -115,6 +131,10 @@ export const App: React.FC = () => {
     if (currentProduct) {
       dispatch(setCurrentProduct(JSON.parse(currentProduct)));
     }
+
+    if (darkMode) {
+      dispatch(setIsDark(JSON.parse(darkMode)));
+    }
   }, [reloadTrigger]);
 
   const handleMenuOrCloseButton = () => {
@@ -143,22 +163,12 @@ export const App: React.FC = () => {
   };
 
   const handleDarkModeSwither = () => {
-    const root = document.documentElement;
-
     if (!isDark) {
-      setIsDark(true);
-      root.style.setProperty('--primary-grey-color', '#e2e6e9');
-      root.style.setProperty('--white-color', '#313237');
-      root.style.setProperty('--elements-grey-color', '#b4bdc4');
-      root.style.setProperty('--icons-grey-color', '#89939a');
-      root.style.setProperty('--elements-grey-color', '#89939a');
+      dispatch(setIsDark(true));
+      localStorage.setItem('isDark', 'true');
     } else {
-      setIsDark(false);
-      root.style.setProperty('--primary-grey-color', '#313237');
-      root.style.setProperty('--white-color', '#ffffff');
-      root.style.setProperty('--elements-grey-color', '#e2e6e9');
-      root.style.setProperty('--icons-grey-color', '#b4bdc4');
-      root.style.setProperty('--elements-grey-color', '#e2e6e9');
+      dispatch(setIsDark(false));
+      localStorage.setItem('isDark', 'false');
     }
   };
 
@@ -316,12 +326,22 @@ export const App: React.FC = () => {
               >
                 <div className={styles.footer__goUpTextLink}>Back to top</div>
 
-                <div className={styles.footer__goUpButton}>
-                  <img
-                    className={styles.footer__goUpIco}
-                    src="./icons/arrow-up-ico.svg"
-                    alt="arrow-up"
-                  />
+                <div
+                  className={`${styles.footer__goUpButton} ${isDark && styles.goUpDark}`}
+                >
+                  {isDark ? (
+                    <img
+                      className={styles.footer__goUpIco}
+                      src="./icons/arrow-up-light-ico.svg"
+                      alt="arrow-up"
+                    />
+                  ) : (
+                    <img
+                      className={styles.footer__goUpIco}
+                      src="./icons/arrow-up-ico.svg"
+                      alt="arrow-up"
+                    />
+                  )}
                 </div>
               </div>
             </div>
