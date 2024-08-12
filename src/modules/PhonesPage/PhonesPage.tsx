@@ -7,14 +7,14 @@ import {Header} from '../../components/Header';
 
 export const PhonesPage: React.FC = () => {
 
-
+const typeOfProduct = 'phones';
 
 
     return (
 
       <div>
         <Header />
-        <ProductList />
+        <ProductList typeOfProduct = {typeOfProduct} />
       </div>
     );
 };
