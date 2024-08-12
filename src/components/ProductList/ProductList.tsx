@@ -1,16 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import { ProductCard } from '../ProductCard';
-import { Product } from '../../types/Product';
+import { ProductPhone, ProductTablet } from '../../types/Product';
 
+type ProductListProps = {
+  typeOfProduct: string;
+}
 
-
-export const ProductList: React.FC = () => {
-  const [products, setProducts] = useState<Product[]>([]);
+export const ProductList: React.FC<ProductListProps> = ( {typeOfProduct}) => {
+  const [products, setProducts] = useState<(ProductPhone | ProductTablet)[]>([]);
 
   useEffect(() => {
     const fetchProductData = async () => {
       try {
-        const response = await fetch('../../api/phones.json');
+        const response = await fetch(`../../api/${typeOfProduct}.json`);
         const data = await response.json();
         setProducts(data);
       } catch (error) {
@@ -19,7 +21,7 @@ export const ProductList: React.FC = () => {
     };
 
     fetchProductData();
-  }, []);
+  }, [typeOfProduct]);
 
   console.log('products after fetch:', products); // Log products after fetch
 
