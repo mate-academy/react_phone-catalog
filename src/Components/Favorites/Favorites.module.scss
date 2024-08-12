@@ -21,12 +21,16 @@ h1 {
 .empty {
   display: flex;
   justify-content: center;
+
+  h1 {
+    text-align: center;
+  }
 }
 
 .link {
   margin-top: 15px;
   display: flex;
-  gap: 10px;
+  gap: 8px;
   align-items: center;
 
   a {

@@ -19,6 +19,7 @@
   --secondary: #75767f;
   --icons: #4a4d58;
   --elements: #3b3e4a;
+  --surface-1: #161827;
   --surface-2: #323542;
   --black: #0f1121;
   --white: #f1f2f9;
@@ -35,7 +36,7 @@ body {
 
 .App {
   overflow: hidden;
-  background: #161827;
+  background: var(--black);
   flex-direction: column;
   justify-content: center;
   min-height: 100vh;

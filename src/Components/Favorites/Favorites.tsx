@@ -19,7 +19,9 @@ export const Favorites = () => {
         <Link to={`/favorites`}>Favorite</Link>
       </div>
       <h1>Favorites</h1>
-      <div className={styles.item}>{`items ${favorite.length}`}</div>
+      {favorite.length !== 0 && (
+        <div className={styles.item}>{`${favorite.length} items`}</div>
+      )}
       <div className="favorites-cards">
         {favorite.length !== 0 ? (
           <CradList products={favorite} />

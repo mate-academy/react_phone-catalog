@@ -11,7 +11,7 @@ export const CradList: React.FC<Props> = ({ products }) => {
     <div className={styles.container}>
       {products.map(product => (
         <div className={styles.center} key={product.id}>
-          <Card product={product} />
+          <Card product={product} discount={true} />
         </div>
       ))}
     </div>

@@ -9,12 +9,11 @@ export const BackButton = () => {
   };
 
   return (
-    <div className={styles.container}>
-      <span>{`<`}</span>
-      <button
-        onClick={handleBackClick}
-        className={styles.backButton}
-      >{`Back`}</button>
+    <div className={styles.container} onClick={handleBackClick}>
+      <span className={styles.arrow}>
+        <img src="img/icons/Arrow_Left.svg" alt="arow_left" />
+      </span>
+      <div className={styles.backButton}>Back</div>
     </div>
   );
 };

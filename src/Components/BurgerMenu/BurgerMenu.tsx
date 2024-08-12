@@ -14,6 +14,11 @@ export const BurgerMenu: React.FC<BurgerMenuProps> = ({ toggleMenu }) => {
       [styles.isActive]: isActive,
     });
 
+  const getLinkClassForEnd = ({ isActive }: { isActive: boolean }) =>
+    classNames(styles.bottomItem, {
+      [styles.isActiveForEnd]: isActive,
+    });
+
   const { favorite, carts } = useContext(Context);
 
   return (
@@ -51,26 +56,26 @@ export const BurgerMenu: React.FC<BurgerMenuProps> = ({ toggleMenu }) => {
         </li>
       </ul>
       <div className={styles.bottom}>
-        <div className={styles.bottomItem}>
-          <NavLink
-            className={getLinkClass}
-            to="/favorites"
-            onClick={toggleMenu}
-          >
+        <NavLink
+          className={getLinkClassForEnd}
+          to="/favorites"
+          onClick={toggleMenu}
+        >
+          <div className={styles.icons}>
             <img src="img/icons/favourites_icon.svg" alt="favorites" />
-          </NavLink>
-          {favorite.length !== 0 && (
-            <span className={styles.counter}>{favorite.length}</span>
-          )}
-        </div>
-        <div className={styles.bottomItem}>
-          <NavLink className={getLinkClass} to="/cart" onClick={toggleMenu}>
+            {favorite.length !== 0 && (
+              <span className={styles.counter}>{favorite.length}</span>
+            )}
+          </div>
+        </NavLink>
+        <NavLink className={getLinkClassForEnd} to="/cart" onClick={toggleMenu}>
+          <div className={styles.icons}>
             <img src="img/icons/cart_icon.svg" alt="cart" />
-          </NavLink>
-          {carts.length !== 0 && (
-            <span className={styles.counter}>{carts.length}</span>
-          )}
-        </div>
+            {carts.length !== 0 && (
+              <span className={styles.counter}>{carts.length}</span>
+            )}
+          </div>
+        </NavLink>
       </div>
     </div>
   );

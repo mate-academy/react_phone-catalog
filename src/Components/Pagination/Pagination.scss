@@ -2,21 +2,24 @@
   display: flex;
   list-style-type: none;
   justify-content: center;
+  margin: 0;
+  padding: 40px 0 0 0;
 
   .pagination-item {
     padding: 0 12px;
     height: 32px;
     text-align: center;
-    margin: auto 4px;
-    color: #ffffffde;
+    margin: auto 8px;
+    color: var(--white);
     display: flex;
     box-sizing: border-box;
     align-items: center;
     letter-spacing: 0.01em;
-    border-radius: 16px;
+    // border-radius: 16px;
     line-height: 1.43;
     font-size: 13px;
     min-width: 32px;
+    background-color: var(--surface-1);
 
     &.dots:hover {
       background-color: transparent;
@@ -28,31 +31,46 @@
     }
 
     &.selected {
-      background-color: #00000014;
+      background-color: var(--accent);
+    }
+
+    &:first-child {
+      padding: 0 8px;
+      margin-right: 16px;
+      background-color: var(--surface-2);
+    }
+
+    &:last-child {
+      padding: 0 8px;
+      margin-left: 16px;
+      background-color: var(--surface-2);
     }
 
     .arrow {
-
-      &::before {
-        position: relative;
-        content: '';
-        display: inline-block;
-        width: 0.4em;
-        height: 0.4em;
-        border-right: 0.12em solid rgba(255, 255, 255, 0.87);
-        border-top: 0.12em solid rgba(255, 255, 255, 0.87);
-      }
+      display: flex;
+      margin: 0;
+      // &::before {
+      //   position: relative;
+      //   content: '';
+      //   display: inline-block;
+      //   width: 0.4em;
+      //   height: 0.4em;
+      //   border-right: 0.12em solid rgba(255, 255, 255, 0.87);
+      //   border-top: 0.12em solid rgba(255, 255, 255, 0.87);
+      // }
 
       &.left {
-        transform: rotate(-135deg) translate(-50%);
+        // transform: rotate(-135deg) translate(-50%);
       }
 
       &.right {
-        transform: rotate(45deg);
+        // transform: rotate(45deg);
       }
     }
 
     &.disabled {
+      border: 1px solid var(--surface-2);
+      background-color: inherit;
       pointer-events: none;
 
       .arrow::before {

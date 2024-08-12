@@ -8,10 +8,10 @@
   display: flex;
   min-width: 165px; /* Ширина контейнера картки */
   max-width: 280px;
-  height: 506px;
+  // height: 506px;
   flex-direction: column;
   padding: 32px; /* Відступи всередині контейнера */
-  background-color: rgba(255, 255, 255, 0.01); /* Прозорий фон */
+  background-color: var(--surface-1); /* Прозорий фон */
   overflow: hidden;
   margin-inline: 8px;
 }
@@ -53,7 +53,6 @@
   font-size: 22px;
   line-height: 30.8px;
   color: var(--white); /* Сірий/білий колір тексту */
-  margin:0 0 8px;
 }
 
 .priceDiscount {

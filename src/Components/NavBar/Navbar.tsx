@@ -11,6 +11,11 @@ export const Navbar = () => {
       [styles.isActive]: isActive,
     });
 
+  const getLinkClassForEnds = ({ isActive }: { isActive: boolean }) =>
+    classNames(styles.itemEnd, {
+      [styles.isActive]: isActive,
+    });
+
   const { favorite, carts, burgerMenuOpen, setBurgerMenuOpen } =
     useContext(Context);
 
@@ -44,22 +49,23 @@ export const Navbar = () => {
           </li>
         </div>
         <div className={styles.end}>
-          <li className={styles.item}>
-            <NavLink className={getLinkClass} to="/favorites">
+          <NavLink className={getLinkClassForEnds} to="/favorites">
+            <li>
               <img src="img/icons/favourites_icon.svg" alt="favorites" />
-            </NavLink>
-            {favorite.length !== 0 && (
-              <span className={styles.counter}>{favorite.length}</span>
-            )}
-          </li>
-          <li className={styles.item}>
-            <NavLink className={getLinkClass} to="/cart">
+              {/*видалити приставку */}
+              {favorite.length !== 0 && (
+                <span className={styles.counter}>{favorite.length}</span>
+              )}
+            </li>
+          </NavLink>
+          <NavLink className={getLinkClassForEnds} to="/cart">
+            <li>
               <img src="img/icons/cart_icon.svg" alt="cart" />
-            </NavLink>
-            {carts.length !== 0 && (
-              <span className={styles.counter}>{carts.length}</span>
-            )}
-          </li>
+              {carts.length !== 0 && (
+                <span className={styles.counter}>{carts.length}</span>
+              )}
+            </li>
+          </NavLink>
         </div>
         <div className={styles.burgerСcontainer}>
           <img

@@ -51,7 +51,9 @@ export const Pagination: React.FC<PaginationProps> = ({
         })}
         onClick={onPrevious}
       >
-        <div className="arrow left" />
+        <div className="arrow left">
+          <img src="img/icons/Arrow_Left.svg" alt="arrow_left" />
+        </div>
       </li>
       {paginationRange.map((pageNumber, index) => {
         if (pageNumber === DOTS) {
@@ -80,7 +82,9 @@ export const Pagination: React.FC<PaginationProps> = ({
         })}
         onClick={onNext}
       >
-        <div className="arrow right" />
+        <div className="arrow right">
+          <img src="img/icons/Arrow_Right.svg" alt="arrow_right" />
+        </div>
       </li>
     </ul>
   );
