@@ -1,12 +1,11 @@
 import { Slider } from '../Slider';
 import styles from './Welcome.module.scss';
 
-const imagesForSlide = [
-  // from public/img... or creat json in api?
-  './img/banner-phones.png',
-  './img/banner-tablets.png',
-  './img/banner-accessories.png',
-];
+import bannerPhones from '../../assets/img/banners/banner-phones.png';
+import bannerTablets from '../../assets/img/banners/banner-tablets.png';
+import bannerAccessories from '../../assets/img/banners/banner-accessories.png';
+
+const imagesForSlide = [bannerPhones, bannerTablets, bannerAccessories];
 
 export const Welcome = () => {
   return (
@@ -14,7 +13,7 @@ export const Welcome = () => {
       <h2 className={styles.welcome__title}>Welcome to Nice Gadgets store!</h2>
 
       <div className={styles.welcome__slider}>
-        <Slider images={imagesForSlide} infLoop={true} />
+        <Slider images={imagesForSlide} infLoop={false} />
       </div>
     </section>
   );

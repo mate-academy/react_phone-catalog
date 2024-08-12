@@ -3,19 +3,22 @@ import classNames from 'classnames';
 import styles from './ProductSlider.module.scss';
 import { Card } from '../Card';
 import { Icon } from '../ui/Icon';
+import { Product } from '../../types/Product';
+import { useFavorites } from '../../contexts/FavoritesContext';
 
 type ProductSliderProps = {
-  cardData: number[];
   title: string;
+  items: Product[];
 };
 
 export const ProductSlider: React.FC<ProductSliderProps> = ({
-  cardData,
   title,
+  items,
 }) => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [cardWidth, setCardWidth] = useState(0);
   const cardsContainerRef = useRef<HTMLDivElement>(null);
+  const { favorites, toggleFavorite } = useFavorites();
 
   useEffect(() => {
     const updateCardWidth = () => {
@@ -39,11 +42,11 @@ export const ProductSlider: React.FC<ProductSliderProps> = ({
     return () => {
       window.removeEventListener('resize', updateCardWidth);
     };
-  }, []);
+  }, [items.length]);
 
   const nextSlide = () => {
     setActiveIndex(prevIndex =>
-      prevIndex === cardData.length - 1 ? prevIndex : prevIndex + 1,
+      prevIndex === items.length - 1 ? prevIndex : prevIndex + 1,
     );
   };
 
@@ -68,10 +71,10 @@ export const ProductSlider: React.FC<ProductSliderProps> = ({
           <button
             className={classNames(styles.productSlider__btn, {
               [styles['productSlider__btn--disabled']]:
-                activeIndex === cardData.length - 1,
+                activeIndex === items.length - 1,
             })}
             onClick={nextSlide}
-            disabled={activeIndex === cardData.length - 1}
+            disabled={activeIndex === items.length - 1}
           >
             <Icon iconName="right" />
           </button>
@@ -87,9 +90,16 @@ export const ProductSlider: React.FC<ProductSliderProps> = ({
           }}
           ref={cardsContainerRef}
         >
-          {cardData.map((_, index) => (
-            <div key={index} className={classNames(styles.productSlider__card)}>
-              <Card />
+          {items.map(item => (
+            <div
+              key={item.id}
+              className={classNames(styles.productSlider__card)}
+            >
+              <Card
+                item={item}
+                isFavorite={favorites.some(f => f.id === item.id)}
+                toggleFavorite={() => toggleFavorite(item)}
+              />
             </div>
           ))}
         </div>

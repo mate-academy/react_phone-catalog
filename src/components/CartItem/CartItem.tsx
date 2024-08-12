@@ -1,8 +1,9 @@
 import { Icon } from '../ui/Icon';
-import img from '../../assets/img/phones/apple-iphone-11/black/00.webp';
 import styles from './CartItem.module.scss';
 import { CardButton } from '../ui/CardButton';
 import classNames from 'classnames';
+
+import img from '../../assets/img/phones/apple-iphone-11/black/00.webp';
 
 export const CartItem = () => {
   return (

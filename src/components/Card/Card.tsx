@@ -1,45 +1,49 @@
 import classNames from 'classnames';
 import styles from './Card.module.scss';
-import { useState } from 'react';
 import { CardDetail } from '../CardDetail/CardDetail';
 import { Icon } from '../ui/Icon';
 import { CardButton } from '../ui/CardButton';
 
-export const Card = () => {
-  const [isFavorite, setIsFavorite] = useState(false);
+import { Product } from '../../types/Product';
 
-  const toggleFavorite = () => {
-    setIsFavorite(!isFavorite);
-  };
+type CardProps = {
+  item: Product;
+  isFavorite: boolean;
+  toggleFavorite: () => void;
+};
+
+export const Card: React.FC<CardProps> = ({
+  item,
+  isFavorite,
+  toggleFavorite,
+}) => {
+  // eslint-disable-next-line
+  const image = require(`../../assets/${item.image}`);
 
   return (
     <div className={styles.card}>
       <a href="#" className={styles.card__link}>
         <img
-          src="./img/phones/apple-iphone-14-pro/gold/00.webp"
-          alt="phone"
+          src={image}
+          alt={`${item.name} image`}
           className={styles.card__img}
         />
       </a>
 
-      <p className="body-text">Apple iPhone 14 Pro 128GB Gold (MQ023)</p>
+      <p className="body-text">{item.name}</p>
 
-      <h3 className={styles.card__price}>$999</h3>
+      <h4 className={styles.card__price}>
+        ${item.price}{' '}
+        {item.price !== item.fullPrice && (
+          <span className={styles.card__priceFull}>${item.fullPrice}</span>
+        )}
+      </h4>
 
-      <CardDetail label="Screen" value="6.1” OLED" />
-      <CardDetail label="Capacity" value="128 GB" />
-      <CardDetail label="RAM" value="6 GB" />
+      <CardDetail label="Screen" value={item.screen} />
+      <CardDetail label="Capacity" value={item.capacity} />
+      <CardDetail label="RAM" value={item.ram} />
 
       <div className={styles.card__buttons}>
-        {/* <button
-          className={classNames(
-            'button-text',
-            styles.card__btn,
-            styles['card__btn--add'],
-          )}
-        >
-          Add to cart
-        </button> */}
         <CardButton
           variant="primary"
           /* eslint-disable-next-line no-console */

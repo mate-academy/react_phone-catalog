@@ -1,14 +1,17 @@
 @import '../../styles/main';
 
 .header {
-  position: sticky;
-  top: 0;
-  z-index: 10;
-  background-color: rgba($white, 0.9);
+  border-bottom: 1px solid $elements-gray;
+  &__content {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background-color: rgba($white, 0.9);
 
-  @include on-tablet {
-    margin-inline: auto;
-    max-width: 1440px;
+    @include on-tablet {
+      margin-inline: auto;
+      max-width: 1440px;
+    }
   }
 
   &__nav {

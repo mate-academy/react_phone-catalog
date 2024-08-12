@@ -44,15 +44,15 @@
     @include hover(scale, 1.01);
 
     &--phones {
-      background-image: url('../../../public/img/category-phones.webp');
+      background-image: url('../../assets/img/category-phones.webp');
     }
 
     &--tablets {
-      background-image: url('../../../public/img/category-tablets.webp');
+      background-image: url('../../assets/img/category-tablets.webp');
     }
 
     &--accessories {
-      background-image: url('../../../public/img/category-accessories.webp');
+      background-image: url('../../assets/img/category-accessories.webp');
     }
 
     @include on-tablet {

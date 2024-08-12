@@ -12,7 +12,7 @@ import { CartPage } from './pages/CartPage';
 import { NotFoundPage } from './pages/NotFoundPage';
 
 export const App = () => {
-  const [page, setPage] = useState('123');
+  const [page, setPage] = useState('details');
 
   return (
     <div className="App">

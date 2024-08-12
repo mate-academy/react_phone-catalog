@@ -4,20 +4,48 @@ import { Icon } from '../components/ui/Icon';
 import '../styles/main.scss';
 import cardStyles from '../components/Card/Card.module.scss';
 import classNames from 'classnames';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { ProductSlider } from '../components/ProductSlider';
 import { GoBackLink } from '../components/ui/GoBackLink';
 import { RoundColorButton } from '../components/ui/RoundColorButton';
+import { Product } from '../types/Product';
+import { getProducts } from '../services/products';
 
 const colorsAvailable = ['black', 'green', 'yellow', 'white', 'purple', 'red'];
 const capacityAvailable = ['64GB', '128GB', '256GB'];
-const cardData = [1, 2, 3, 4, 5, 6, 7];
 
 export const ItemPage = () => {
   const [isFavorite, setIsFavorite] = useState(false);
   const [selectedColor, setSelectedColor] = useState<string | null>(
     colorsAvailable[0],
   );
+  const [products, setProducts] = useState<Product[]>([]);
+  const paramFromNavLink = 'phones';
+
+  useEffect(() => {
+    getProducts().then(data => {
+      setProducts(data);
+    });
+  }, []);
+
+  // favorites must be in local storage or null
+  // hook useLocalStorage??
+  const filteredProducts = products.filter(
+    product => product.category === paramFromNavLink,
+  );
+
+  const suggestProducts = [...filteredProducts].sort((a, b) => {
+    // Calculate the discount for both products
+    const discountA = a.fullPrice - a.price;
+    const discountB = b.fullPrice - b.price;
+
+    // Calculate a composite score considering both year and discount
+    const scoreA = a.year * 1000 + discountA;
+    const scoreB = b.year * 1000 + discountB;
+
+    // Sort by the combined score
+    return scoreB - scoreA;
+  });
 
   const toggleFavorite = () => {
     setIsFavorite(!isFavorite);
@@ -342,7 +370,7 @@ export const ItemPage = () => {
         </div>
       </div>
 
-      <ProductSlider title="You may also like" cardData={cardData} />
+      <ProductSlider title="You may also like" items={suggestProducts} />
     </section>
   );
 };
