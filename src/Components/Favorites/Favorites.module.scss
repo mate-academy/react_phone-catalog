@@ -1,0 +1,40 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  color: var(--white);
+}
+
+h1 {
+  font-family: Mont, sans-serif;
+  font-weight: 800;
+  font-size: 48px;
+  line-height: 56px;
+  margin-top: 40px;
+}
+
+.item {
+  color: var(--secondary);
+  margin-top: 8px;
+  margin-bottom: 40px;
+}
+
+.empty {
+  display: flex;
+  justify-content: center;
+
+  h1 {
+    text-align: center;
+  }
+}
+
+.link {
+  margin-top: 15px;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+
+  a {
+    color: var(--white);
+    text-decoration: none;
+  }
+}

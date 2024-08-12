@@ -1,0 +1,146 @@
+.container {
+  border-radius: 0.25rem;
+  box-shadow:
+    0 0.5em 1em -0.13em rgba(12, 2, 2, 0.1),
+    0 1px 0 1px rgba(44, 39, 49, 0.2);
+  color: var(--secondary);
+  position: relative;
+  display: flex;
+  min-width: 165px; /* Ширина контейнера картки */
+  max-width: 280px;
+  flex-direction: column;
+  padding: 32px; /* Відступи всередині контейнера */
+  background-color: var(--surface-1); /* Прозорий фон */
+  overflow: hidden;
+  margin-inline: 8px;
+}
+
+.image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 196px;
+}
+
+.normaliz {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.name {
+  margin-top: 10px;
+  font-family: Mont, sans-serif;
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 21px;
+  color: var(--white);
+  height: 40px;
+}
+
+.productPrice {
+  margin-top: 8px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+}
+
+.priceFull {
+  font-family: Mont, sans-serif;
+  font-weight: 800;
+  font-size: 22px;
+  line-height: 30.8px;
+  color: var(--white); /* Сірий/білий колір тексту */
+}
+
+.priceDiscount {
+  font-family: Mont, sans-serif; /* Встановлюємо шрифт Montserrat */
+  font-weight: 600; /* Встановлюємо жирність шрифта */
+  font-size: 22px; /* Встановлюємо розмір шрифта */
+  line-height: 28.12px; /* Встановлюємо висоту рядка */
+  color: #75767f; /* Встановлюємо колір тексту */
+  text-decoration: line-through;
+}
+
+.infoContainer {
+  margin-top: 8px;
+  border-top: 1px solid #ccc; /* Риска зверху контейнера */
+  padding-top: 8px; /* Відступи від верхньої границі */
+  font-family: Mont, sans-serif; /* Встановлюємо шрифт Montserrat */
+  font-weight: 700; /* Встановлюємо жирність шрифта */
+  font-size: 12px; /* Встановлюємо розмір шрифта */
+  line-height: 15.34px; /* Встановлюємо висоту рядка */
+}
+
+.infoScreen,
+.infoCapacity,
+.infoRam {
+  display: flex;
+  justify-content: space-between;
+}
+
+.infoName {
+  margin: 8px 0;
+  width: 100px; /* Ширина імені параметра */
+}
+
+.infoOption {
+  margin: 8px 0;
+  color: var(--white);
+  white-space: nowrap;
+}
+
+.buttons {
+  display: flex;
+  margin-top: 8px; /* Відступи зверху */
+  gap: 8px;
+}
+
+.button {
+  // width: 100%; /* Ширина кнопок */
+  // margin-bottom: 8px; /* Відступи між кнопками */
+  cursor: pointer;
+  border: none;
+
+}
+
+.isAdd {
+  color: var(--white);
+  width: calc(100% - 49px);
+  height: 40px;
+  background-color: var(--surface-2);
+  padding: 0;
+}
+
+.isUnadd {
+  color: var(--white);
+  width: calc(100% - 49px);
+  height: 40px;
+  background-color: var(--accent);
+}
+
+.isFavorite {
+  width: 40px;
+  height: 40px;
+  background-color: var(--surface-2);
+  position: relative;
+  padding: 0;
+}
+
+.whiteContor {
+  color: white;
+}
+
+.red {
+  border: 1px solid var(--surface-2);
+  background-color: inherit;
+  color: var(--red);
+}
+
+@media (max-width: 639px) and (min-width: 320px) {
+  .container {
+    width: 100%;
+  }
+}

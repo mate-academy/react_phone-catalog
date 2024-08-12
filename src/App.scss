@@ -1,1 +1,94 @@
-// not empty
+@font-face {
+  font-family: Mont;
+  src: local('mont-bold') url('./fonts/Mont-Regular.otf') format('opentype');
+}
+
+@font-face {
+  font-family: Mont;
+  font-weight: bold;
+  src: local('mont-bold') url('./fonts/Mont-Bold.otf') format('opentype');
+}
+
+@font-face {
+  font-family: Mont;
+  font-weight: 600;
+  src: local('mont-bold') url('./fonts/Mont-SemiBold.otf') format('opentype');
+}
+
+:root {
+  --secondary: #75767f;
+  --icons: #4a4d58;
+  --elements: #3b3e4a;
+  --surface-1: #161827;
+  --surface-2: #323542;
+  --black: #0f1121;
+  --white: #f1f2f9;
+  --accent: #905BFF;
+  --green: #27ae60;
+  --red: #eb5757;
+
+}
+
+body {
+  margin: 0;
+  font-style: normal;
+}
+
+.App {
+  overflow: hidden;
+  background: var(--black);
+  flex-direction: column;
+  justify-content: center;
+  min-height: 100vh;
+  font-family: Mont, sans-serif;
+  margin: 0 auto;
+}
+
+.Outlet {
+  min-height: calc(100vh - (68px + 96px * 2));
+  grid-column: 1 / -1;
+}
+
+.logo {
+  margin-right: 24px;
+
+  &-img{
+    padding: 18px 24px;
+  }
+}
+
+h1,
+h2{
+  color: var(--white);
+  margin: 0;
+}
+
+h3 {
+  color: var(--secondary);
+}
+
+.link-block {
+  margin-top: 15px;
+  display: flex;
+  gap: 10px;
+
+  a {
+    color: var(--white);
+    text-decoration: none;
+  }
+}
+
+@media (min-width: 640px) {
+  h2 {
+      font-size: 32px;
+      line-height: 41px;
+  }
+}
+
+h2 {
+  font-family: Mont, sans-serif;
+  font-size: 22px;
+  line-height: 30.8px;
+  margin: 0;
+  font-weight: bold;
+}

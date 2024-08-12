@@ -1,0 +1,72 @@
+.container {
+  margin-top: 80px;
+  width: 100%;
+  position: relative;
+}
+
+.cards {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(4, minmax(272px, 1fr));
+  position: relative; /* Щоб анімація працювала коректно */
+}
+
+.cardEnter {
+  opacity: 0;
+  transform: translateX(100%);
+}
+
+.cardEnterActive {
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity 500ms, transform 500ms;
+}
+
+.cardExit {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.cardExitActive {
+  opacity: 0;
+  transform: translateX(-100%);
+  transition: opacity 500ms, transform 500ms;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.title {
+  h2 {
+    font-family: Mont, sans-serif;
+    font-size: 32px;
+    line-height: 41px;
+    font-weight: 800;
+  }
+}
+
+.buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 16px;
+  margin-bottom: 28px;
+}
+
+.button {
+  width: 32px;
+  height: 32px;
+  background-color: var(--surface-2); /* Gray/Surface 2 */
+  color: var(--white); /* Колір тексту */
+  cursor: pointer; /* Зміна курсора на вказівник при наведенні */
+  border: 1px solid var(--surface-2);
+
+  &:hover {
+    background: var(--icons);
+  }
+
+  &:disabled {
+    background-color: inherit;
+  }
+}
