@@ -41,6 +41,14 @@ export const Cart = () => {
     setTotalSum(total);
   }, [carts]);
 
+  const allItems = () => {
+    const allItem = carts.reduce((acc, crr) => {
+      return acc + crr.count;
+    }, 0);
+
+    return allItem;
+  };
+
   return (
     <div>
       <div className={styles.title}>
@@ -64,7 +72,7 @@ export const Cart = () => {
               <h1>{`$${totalCount}`}</h1>
             </div>
             <div className="cart-total_items">
-              <p>{`Total for ${carts.length} items`}</p>
+              <p>{`Total for ${allItems()} items`}</p>
             </div>
             <div className={styles.totalButton}>
               <button className={styles.totalCheckout}>Checkout</button>

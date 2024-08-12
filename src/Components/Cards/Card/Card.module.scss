@@ -8,7 +8,6 @@
   display: flex;
   min-width: 165px; /* Ширина контейнера картки */
   max-width: 280px;
-  // height: 506px;
   flex-direction: column;
   padding: 32px; /* Відступи всередині контейнера */
   background-color: var(--surface-1); /* Прозорий фон */
@@ -33,14 +32,15 @@
 .name {
   margin-top: 10px;
   font-family: Mont, sans-serif;
-  font-weight: 600;
-  font-size: 18px;
+  font-weight: 300;
+  font-size: 16px;
   line-height: 21px;
   color: var(--white);
-  height: 58px;
+  height: 40px;
 }
 
 .productPrice {
+  margin-top: 8px;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -99,22 +99,24 @@
 }
 
 .button {
-  width: 100%; /* Ширина кнопок */
-  margin-bottom: 8px; /* Відступи між кнопками */
+  // width: 100%; /* Ширина кнопок */
+  // margin-bottom: 8px; /* Відступи між кнопками */
   cursor: pointer;
   border: none;
+
 }
 
 .isAdd {
   color: var(--white);
-  width: 100%;
+  width: calc(100% - 49px);
   height: 40px;
   background-color: var(--surface-2);
+  padding: 0;
 }
 
 .isUnadd {
   color: var(--white);
-  width: 100%;
+  width: calc(100% - 49px);
   height: 40px;
   background-color: var(--accent);
 }
@@ -122,11 +124,18 @@
 .isFavorite {
   width: 40px;
   height: 40px;
-  background-color: var(--white);
+  background-color: var(--surface-2);
   position: relative;
+  padding: 0;
+}
+
+.whiteContor {
+  color: white;
 }
 
 .red {
+  border: 1px solid var(--surface-2);
+  background-color: inherit;
   color: var(--red);
 }
 

@@ -116,6 +116,7 @@ export const Card: React.FC<Props> = ({ product, discount }) => {
               'fa-heart',
               {
                 'fa-regular': !inFavorite(),
+                [styles.whiteContor]: !inFavorite(),
                 'fa-solid': inFavorite(),
                 [styles.red]: inFavorite(),
               },
