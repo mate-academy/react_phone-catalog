@@ -7,7 +7,7 @@ import { Header } from './components/Header';
 import { Footer } from './components/Footer';
 import { Breadcrumbs } from './components/Breadcrumbs';
 import { Pagination } from './components/Pagination';
-/* import { ProductList } from './components/ProductList'; */
+import { ProductList } from './components/ProductList';
 
 
 export const App: React.FC = () => {
@@ -20,7 +20,7 @@ export const App: React.FC = () => {
       <Breadcrumbs />
       <ProductSlider />
       <ProductCard productId="apple-iphone-7-32gb-rosegold" />
-      {/* <ProductList /> */}
+      <ProductList />
       <Pagination />
       <Footer />
       <Loader />

@@ -1,49 +1,41 @@
-/* import React, { useEffect, useState } from 'react';
-import { ProductCard } from '../ProductCard'; */
-/* import { Product } from '../../types/Product'; */
+import React, { useEffect, useState } from 'react';
+import { ProductCard } from '../ProductCard';
+import { Product } from '../../types/Product';
 
-/* type ProductCardProps = {
-  product: Product; // Oczekiwany typ
+/* type ProductListProps = {
+  productId: string; // Identyfikator produktu do pobrania danych
 }; */
 
-/* export const ProductList: React.FC<ProductCardProps> = ({product}) => {
-  const [products, setProducts] = useState<any[]>([]); */
+export const ProductList: React.FC = () => {
+  const [products, setProducts] = useState<Product[]>([]);
 
-
-  /* useEffect(() => {
+  useEffect(() => {
     const fetchProductData = async () => {
-
+      try {
         const response = await fetch('../../api/phones.json');
         const data = await response.json();
         setProducts(data);
+      } catch (error) {
+        console.error('Error fetching product data:', error);
+      }
     };
 
     fetchProductData();
   }, []);
 
   console.log('products after fetch:', products); // Log products after fetch
-  if (products !== undefined) {
 
+  if (products.length === 0) {
+    return <div>Loading...</div>;
+  }
 
-    return (
-
-
+  return (
     <ul>
       {products.map((product) => (
         <li key={product.id}>
-          <ProductCard product={product} />
+          <ProductCard productId={product.id} /> {/* Pass product.id as productId */}
         </li>
       ))}
     </ul>
-    )
-      } else {
-        return (
-          <div>Loading</div>
-        )
-        }
-      }
-
-
-
-
- */
+  );
+};
