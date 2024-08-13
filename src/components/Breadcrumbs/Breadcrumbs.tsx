@@ -4,7 +4,15 @@ import {Link} from 'react-router-dom';
 import homeIcon from '../../img/icons/HomeIcon.svg';
 import chevronIcon from '../../img/icons/ChevronIcon.svg';
 
-export const Breadcrumbs: React.FC = () => {
+type BreadcrumbsProps = {
+  category: string;
+  product: string | null;
+}
+
+export const Breadcrumbs: React.FC<BreadcrumbsProps> = ({category, product}) => {
+
+  const editedCategory = category[0].toUpperCase() + category.slice(1,category.length)
+
   return (
     <nav className={styles.breadcrumbs}>
       <Link to="/">
@@ -23,13 +31,15 @@ export const Breadcrumbs: React.FC = () => {
       </span>
 
       <Link
-        to="/"
+        to={`/${category}`}
         className={styles.label}
       >
-        Category
+        {editedCategory}
       </Link>
 
-      <span className={styles.chevronSpan}>
+    {product ?  (
+      <div>
+    <span className={styles.chevronSpan}>
         <img
           src= {chevronIcon}
           alt="arrow"
@@ -42,6 +52,12 @@ export const Breadcrumbs: React.FC = () => {
       >
         Product
       </Link>
+      </div>
+    ) : (
+      <div></div>
+    )
+    }
+
     </nav>
   )
 }

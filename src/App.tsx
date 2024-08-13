@@ -4,7 +4,7 @@ import { Loader } from './components/Loader/Loader';
 import { ProductSlider } from './components/ProductSlider';
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
-import { Breadcrumbs } from './components/Breadcrumbs';
+
 
 export const App: React.FC = () => {
 const [loading, setLoading] = useState(true)
@@ -22,7 +22,6 @@ useEffect(() => {
       ) : (
         <div>
           <Header />
-          <Breadcrumbs />
           <ProductSlider />
           <Footer />
         </div>
