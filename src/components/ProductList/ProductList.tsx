@@ -11,6 +11,7 @@ type ProductListProps = {
 export const ProductList: React.FC<ProductListProps> = ( {category}) => {
   const [products, setProducts] = useState<(ProductPhone | ProductTablet | ProductAccessory)[]>([]);
 
+
   useEffect(() => {
     const fetchProductData = async () => {
       try {
@@ -23,9 +24,14 @@ export const ProductList: React.FC<ProductListProps> = ( {category}) => {
     };
 
     fetchProductData();
+
+
   }, [category]);
 
   console.log('products after fetch:', products); // Log products after fetch
+  let numberOfProducts = products.length;
+
+
 
   if (products.length === 0) {
     return <div>Loading...</div>;
@@ -45,7 +51,7 @@ export const ProductList: React.FC<ProductListProps> = ( {category}) => {
         ))}
       </ul>
 
-      <Pagination />
+      <Pagination numberOfProducts = {numberOfProducts} />
     </div>
   );
 };
