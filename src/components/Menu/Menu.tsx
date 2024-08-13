@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 import { NavLink } from 'react-router-dom';
-import './Menu';
+import './Menu.scss';
 
 export const Menu = () => (
   <aside id="menu" className="menu">

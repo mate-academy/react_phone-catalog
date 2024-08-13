@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 import { Link, NavLink } from 'react-router-dom';
 
-import './Header';
+import './Header.scss';
 
 export const Header = () => (
   <header className="header">
