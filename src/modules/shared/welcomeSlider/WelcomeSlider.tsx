@@ -43,13 +43,13 @@ export const WelcomeSlider = () => {
           className={styles.swiper}
           loop
         >
-          <SwiperSlide className={styles.swiper__slide}>
+          {/* <SwiperSlide className={styles.swiper__slide}>
             <img
               className={styles.swiper__img}
               src="/img/banner-1.png"
               alt="slide1"
             />
-          </SwiperSlide>
+          </SwiperSlide> */}
 
           <SwiperSlide className={styles.swiper__slide}>
             <img
@@ -67,13 +67,13 @@ export const WelcomeSlider = () => {
             />
           </SwiperSlide>
 
-          <SwiperSlide className={styles.swiper__slide}>
+          {/* <SwiperSlide className={styles.swiper__slide}>
             <img
               className={styles.swiper__img}
               src="/img/banner-4.png"
               alt="slide3"
             />
-          </SwiperSlide>
+          </SwiperSlide> */}
         </Swiper>
 
         <button
