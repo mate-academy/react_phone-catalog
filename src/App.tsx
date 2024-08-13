@@ -279,7 +279,7 @@ export const App: React.FC = () => {
                   className={styles.icons__icon}
                   src={
                     isDark
-                      ? '/icons/dark-theme-icons/heart-ico.svg'
+                      ? './icons/dark-theme-icons/heart-ico.svg'
                       : './icons/heart-ico.svg'
                   }
                   alt="favorite"

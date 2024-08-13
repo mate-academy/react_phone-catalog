@@ -28,9 +28,9 @@ export const CardButtonsBlock: React.FC<Props> = ({ gadg }) => {
   useEffect(() => {
     if (gadg !== null && isDark) {
       if (!favoritesArray.some(obj => obj.id === gadg.id)) {
-        setHeartIco('/icons/dark-theme-icons/heart-ico.svg');
+        setHeartIco('./icons/dark-theme-icons/heart-ico.svg');
       } else {
-        setHeartIco('/icons/heart-red-ico.svg');
+        setHeartIco('./icons/heart-red-ico.svg');
       }
 
       if (!cartArray.some(obj => obj.id === gadg.id)) {
@@ -44,7 +44,7 @@ export const CardButtonsBlock: React.FC<Props> = ({ gadg }) => {
       if (!favoritesArray.some(obj => obj.id === gadg.id)) {
         setHeartIco('./icons/heart-ico.svg');
       } else {
-        setHeartIco('/icons/heart-red-ico.svg');
+        setHeartIco('./icons/heart-red-ico.svg');
       }
 
       if (!cartArray.some(obj => obj.id === gadg.id)) {
@@ -146,7 +146,7 @@ export const CardButtonsBlock: React.FC<Props> = ({ gadg }) => {
         className={`
           ${styles.buttonAddTofavorite}
           ${isDark && styles.addToFavouriteDark}
-          ${heartIco === '/icons/heart-red-ico.svg' && isDark && styles.favourite}`}
+          ${heartIco === './icons/heart-red-ico.svg' && isDark && styles.favourite}`}
       >
         <img src={heartIco} alt="add to favorites" />
       </button>
