@@ -16,7 +16,7 @@ export const ProductList: React.FC<ProductListProps> = ( {category}) => {
   useEffect(() => {
     const fetchProductData = async () => {
       try {
-        const response = await fetch(`../../../../../api/${category}.json`);
+        const response = await fetch(`https://meljaszuk.github.io/react_phone-catalog/api/${category}.json`);
         const data = await response.json();
         setProducts(data);
       } catch (error) {
