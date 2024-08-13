@@ -4,24 +4,11 @@ import { TabAccessPhone } from '../types/tabAccessPhones';
 
 export type ProductInfo = {
   product: TabAccessPhone | undefined;
-  // loading: boolean;
-  // error: boolean;
 };
 
 const initialState: ProductInfo = {
   product: undefined,
-  // loading: false,
-  // error: false,
 };
-
-// export const fetchProductInfo = createAsyncThunk(
-//   'products/fetchProductInfo',
-//   async (route: string) => {
-//     let product;
-//     product = await getProductDetails(route);
-//     return product;
-//   },
-// );
 
 const productInfoSlice = createSlice({
   name: 'product',
@@ -32,7 +19,6 @@ const productInfoSlice = createSlice({
       action: PayloadAction<TabAccessPhone | undefined>,
     ) => {
       const currentState = state;
-
       currentState.product = action.payload;
     },
   },

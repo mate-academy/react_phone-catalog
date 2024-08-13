@@ -1,4 +1,4 @@
-import { useContext, useEffect } from 'react';
+import { useContext, useEffect, useMemo } from 'react';
 import Arrow_Left from '../../images/homePage/Arrow_Left.svg';
 import Arrow_Right from '../../images/homePage/Arrow_Right.svg';
 import Vec_light_left from '../../images/homePage/Vec_light_left.svg';
@@ -30,13 +30,16 @@ export const YouMayAlsoLike = () => {
     dispatch(fetchAllProducts());
   }, [dispatch]);
 
-  const allProducts: TabAccessPhone[] = phones.concat(tablets, accessories);
-
-  const shuffle = allProducts.sort(() => Math.round(Math.random() * 100) - 50);
-
-  const getSortProducts = sliceToShow(shuffle, currentPage, elOnPage);
-
-  const lastPage = last(shuffle, elOnPage);
+  const {sortedPoducts, lastPage} = useMemo(() => {
+    const allProducts: TabAccessPhone[] = phones.concat(tablets, accessories);
+    const shuffle = allProducts.sort(() => Math.round(Math.random() * 100) - 50);
+    const getSortProducts = sliceToShow(shuffle, currentPage, elOnPage);
+    
+    return {
+      sortedPoducts: getSortProducts,
+      lastPage: last(shuffle, elOnPage)
+    };
+  }, [phones, tablets, accessories, currentPage, elOnPage]);
 
   return (
     <div className="hotPrices">
@@ -75,7 +78,7 @@ export const YouMayAlsoLike = () => {
         </div>
         <div className="hotPrices__cards">
           <div className="hotPrices__ribbon">
-            {getSortProducts.map((item: TabAccessPhone) => (
+            {sortedPoducts.map((item: TabAccessPhone) => (
               <Link
                 key={item.id}
                 to={{ pathname: `/${paths[0]}/${item.id}` }}

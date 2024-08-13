@@ -43,7 +43,7 @@ export const CategoryItems = () => {
             />
           </NavLink>
           <p className="category__name">Mobile phones</p>
-          <div className="category__quantity">{phones.length}</div>
+          <div className="category__quantity">{phones.length} models</div>
         </div>
         <div
           className="category__block
@@ -59,7 +59,7 @@ export const CategoryItems = () => {
             />
           </NavLink>
           <p className="category__name">Tablets</p>
-          <div className="category__quantity">{tablets.length}</div>
+          <div className="category__quantity">{tablets.length} models</div>
         </div>
         <div
           className="category__block
@@ -75,7 +75,7 @@ export const CategoryItems = () => {
             />
           </NavLink>
           <p className="category__name">Accessories</p>
-          <div className="category__quantity">{accessories.length}</div>
+          <div className="category__quantity">{accessories.length} models</div>
         </div>
       </div>
     </div>

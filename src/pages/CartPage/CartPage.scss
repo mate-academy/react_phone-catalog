@@ -16,8 +16,12 @@
   min-width: 350px;
 
   @include on-tablet {
-    max-width: 900px;
+    max-width: 1050px;
   }
+
+  // @include on-desktop {
+  //   max-width: 1050px;
+  // }
 }
 
 &__breadcrumbs {
@@ -181,6 +185,7 @@
       width: 32px;
       height: 32px;
       border: 1px solid $border-capacity;
+      background-color: #fff;
     }
 
     &__quantity {
@@ -190,6 +195,14 @@
 
   &__price {
     @include header-phone;
+    width: 100px;
+  }
+
+  &__empty {
+    font-family: Mont, sans-serif;
+    font-size: 24px;
+    height: 50px;
+    color: $grey-primary;
   }
 
   &__checkout {
@@ -230,7 +243,7 @@
     cursor: pointer;
     
     @include on-desktop {
-      width: 320px;
+      // width: 320px;
     }
   }
 }

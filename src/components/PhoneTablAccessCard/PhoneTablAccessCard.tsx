@@ -5,7 +5,7 @@ import Favorites from '../../images/homePage/Favorites.svg';
 import redHeart from '../../images/homePage/redHeart.svg';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { actions as favActions } from '../../features/favSlice';
-import { actions as cartActions } from '../../features/cartSlice';
+import { actions as cartActions, removeProduct } from '../../features/cartSlice';
 
 type Props = {
   product: TabAccessPhone;
@@ -15,8 +15,8 @@ type Props = {
 export const PhoneTablAccessCard: React.FC<Props> = ({ product, brand }) => {
   const dispatch = useAppDispatch();
 
-  const { favProducts } = useAppSelector(state => state.favourites);
-  const { cartProducts } = useAppSelector(state => state.cartItems);
+  const favProducts = useAppSelector(state => state.favourites.favProducts);
+  const cartProducts = useAppSelector(state => state.cartItems.cartProducts);
 
   const [clicked, setClicked] = useState(false);
   const [pressed, setPressed] = useState(false);
@@ -30,7 +30,7 @@ export const PhoneTablAccessCard: React.FC<Props> = ({ product, brand }) => {
   }, [favProducts, product, setClicked]);
 
   useEffect(() => {
-    const cartProd = cartProducts.find(prod => prod === product);
+    const cartProd = cartProducts.find(prod => prod.product === product);
 
     if (cartProd) {
       setPressed(true);
@@ -66,7 +66,7 @@ export const PhoneTablAccessCard: React.FC<Props> = ({ product, brand }) => {
     }
 
     if (pressed === true) {
-      dispatch(cartActions.removeProduct(prod));
+      dispatch(removeProduct(prod.id));
       setPressed(false);
     }
   };

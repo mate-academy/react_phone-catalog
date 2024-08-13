@@ -17,7 +17,8 @@ import {
 import { useLocalStorage } from '../../LocaleStorage/LocaleStorage';
 import { NotFoundPage } from '../NotFoundPage/NotFoundPage';
 import { actions as favActions } from '../../features/favSlice';
-import { actions as cartActions } from '../../features/cartSlice';
+import { actions as cartActions, removeProduct } from '../../features/cartSlice';
+import { Loader } from '../../components/Loader';
 
 export const ProductDetails = () => {
   const dispatch = useAppDispatch();
@@ -42,6 +43,7 @@ export const ProductDetails = () => {
 
   const [currentImage, setCurrentImage] = useState<string>('');
   const [imageError, setImageError] = useState('');
+  const [loader, setLoader] = useState(false)
 
   const allProducts: TabAccessPhone[] = phones.concat(tablets, accessories);
 
@@ -51,9 +53,11 @@ export const ProductDetails = () => {
   );
 
   useEffect(() => {
+    setLoader(true)
     if (choosenProduct) {
       dispatch(setProductInfo(choosenProduct));
     }
+    setLoader(false);
   }, [dispatch, choosenProduct]);
 
   if (!product) {
@@ -61,7 +65,7 @@ export const ProductDetails = () => {
   }
 
   const favClick = favProducts.find(item => item.id === choosenProduct?.id);
-  const cartClick = cartProducts.find(item => item.id === choosenProduct?.id);
+  const cartClick = cartProducts.find(item => item.product.id === choosenProduct?.id);
 
   const handleFavClick = (
     event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
@@ -69,7 +73,7 @@ export const ProductDetails = () => {
   ) => {
     event.preventDefault();
 
-    if (favClick) {
+    if (!favClick) {
       dispatch(favActions.addProduct(prod));
     } else {
       dispatch(favActions.removeProduct(prod));
@@ -82,10 +86,10 @@ export const ProductDetails = () => {
   ) => {
     event.preventDefault();
 
-    if (cartClick) {
+    if (!cartClick) {
       dispatch(cartActions.addProduct(prod));
     } else {
-      dispatch(cartActions.removeProduct(prod));
+      dispatch(removeProduct(prod.id));
     }
   };
 
@@ -156,11 +160,13 @@ export const ProductDetails = () => {
               </button>
             </div>
           </div>
-          <div className="details__product grid grid--tablet">
+          {loader 
+          ? <Loader/>
+          : <div className="details__product grid grid--tablet">
             <h1
               className="details__product__name
-          grid__item--tablet-1-9
-          grid__item--desktop-1-19"
+              grid__item--tablet-1-9
+              grid__item--desktop-1-19"
             >
               {product?.name}
             </h1>
@@ -304,6 +310,7 @@ export const ProductDetails = () => {
               </div>
             </div>
           </div>
+          }
           <div className="details__section">
             <div
               className="details__section__descript

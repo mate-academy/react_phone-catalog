@@ -1,13 +1,43 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { TabAccessPhone } from '../types/tabAccessPhones';
 
-export type CartInfo = {
-  cartProducts: TabAccessPhone[];
+export interface CardProduct {
+  count: number;
+  product: TabAccessPhone;
+}
+
+export type CardInfo = {
+  cartProducts: CardProduct[],
+  loading: boolean;
+  error?: boolean;
+}
+
+const initialState: CardInfo = {
+  cartProducts: [],
+  loading: false,
 };
 
-const initialState: CartInfo = {
-  cartProducts: [],
-};
+export const removeProduct = createAsyncThunk(
+  'cartRemover',
+  async (id: string) => {
+
+    const payloadParams = {
+      id
+    }
+
+    console.log('sending/remove prod to the server', payloadParams)
+    
+    const myPromise = new Promise<typeof payloadParams>((resolve) => {
+      setTimeout(() => {
+        resolve(payloadParams);
+
+        console.log('received prod')
+      }, 1000);
+    });
+
+    return await myPromise;
+  }
+);
 
 const CartSlice = createSlice({
   name: 'cartProducts',
@@ -16,29 +46,53 @@ const CartSlice = createSlice({
     addProduct: (state, action: PayloadAction<TabAccessPhone>) => {
       const currentState = state;
 
-      currentState.cartProducts.push(action.payload);
+      const findProduct = currentState.cartProducts.find(prod => 
+        prod.product.id === action.payload.id)
+
+        if (findProduct) {
+          findProduct.count += 1
+        } else {
+          currentState.cartProducts.push({
+          count: 1,
+          product: action.payload
+        });
+      }
     },
 
-    removeProduct: (state, action: PayloadAction<TabAccessPhone>) => {
+    removeLastProduct: (state, action: PayloadAction<TabAccessPhone>) => {
       const currentState = state;
 
-      currentState.cartProducts = currentState.cartProducts.filter(
-        prod => prod.id !== action.payload.id,
-      );
+      const findProduct = currentState.cartProducts.find(prod => 
+        prod.product.id === action.payload.id)
+
+      if (findProduct) {
+        findProduct.count -= 1
+      }
     },
-
-    // removeLastProduct: (state, action: PayloadAction<TabAccessPhone>) => {
-    //   const currentState = state;
-
-    //   const findProd = currentState.cartProducts
-    //     .map(p => ({ ...p }))
-    //     .findIndex(item => item.id === action.payload.id);
-
-    //   currentState.cartProducts = currentState.cartProducts.filter(
-    //     (_, index) => index !== findProd,
-    //   );
-    // },
   },
+
+  extraReducers: builder => {
+    builder
+    .addCase(removeProduct.pending, state => {
+      const currentState = state;
+
+      currentState.loading = true;
+    })
+    .addCase(removeProduct.fulfilled, (state, action) => {
+      const currentState = state;
+
+      currentState.loading = false;
+
+      currentState.cartProducts = currentState.cartProducts.filter(
+        product => product.product.id !== action.payload.id,
+      );
+    })
+    .addCase(removeProduct.rejected, state => {
+      const currentState = state;
+      currentState.loading = false;
+      currentState.error = true;
+    })
+  }
 });
 
 export const { actions } = CartSlice;
