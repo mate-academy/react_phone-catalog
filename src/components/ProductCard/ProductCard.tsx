@@ -1,50 +1,14 @@
 import './ProductCard.module.scss';
-import React, { useState, useEffect } from 'react';
 import { ActionButtons } from '../ActionButtons';
 import { ProductPhone, ProductTablet } from '../../types/Product';
 import { Link } from 'react-router-dom';
 import styles from './ProductCard.module.scss';
 
 type ProductCardProps = {
-  productId: string, // Identyfikator produktu do pobrania danych
-  typeOfProduct: string;
+  product: ProductPhone | ProductTablet;
 };
 
-export const ProductCard: React.FC<ProductCardProps> = ({ productId, typeOfProduct }) => {
-  const [product, setProduct] = useState<ProductPhone | ProductTablet| null>(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
-
-  useEffect(() => {
-    const fetchProduct = async () => {
-      try {
-        const response = await fetch(`../../api/${typeOfProduct}.json`); // Poprawna ścieżka do pliku w folderze public
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
-        const data: ProductPhone[] = await response.json();
-        const foundProduct = data.find(p => p.id === productId);
-        console.log('Found product:', foundProduct); // Sprawdź, czy produkt jest znaleziony
-        setProduct(foundProduct || null);
-      } catch (error) {
-        setError('Failed to load product');
-        console.error('Error fetching product:', error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchProduct();
-  }, [productId, typeOfProduct]);
-
-  if (loading) {
-    return <div>Loading...</div>;
-  }
-
-  if (error) {
-    return <div>{error}</div>;
-  }
-
+export const ProductCard: React.FC<ProductCardProps> = ({product}) => {
   if (!product) {
     return <div>No product available</div>;
   }
