@@ -4,20 +4,18 @@ import ChevronIcon from '../../img/icons/ChevronIcon.svg'
 import classNames from 'classnames';
 
 type PaginationProps = {
-  numberOfProducts: number;
+  numberOfPages: number;
+  handleDisplayedPage: (newState: number) => void;
 }
 
-export const Pagination: React.FC<PaginationProps> = ({numberOfProducts}) => {
-
-  let numebrOfProductsPerPage = 20; //LINK WITH DROPDOWN LATER
-  let numberOfPages = Math.ceil(numberOfProducts / numebrOfProductsPerPage)
+export const Pagination: React.FC<PaginationProps> = ({numberOfPages, handleDisplayedPage}) => {
   let arrayOfPageButtons = [];
-
   for (let i = 1; i <= numberOfPages; i++) {
     arrayOfPageButtons.push(i)
   }
 
-  console.log(numberOfProducts, numebrOfProductsPerPage, numberOfPages, arrayOfPageButtons)
+  console.log(arrayOfPageButtons)
+
 
   return (
     <ul className={styles.pagination}>
@@ -32,11 +30,12 @@ export const Pagination: React.FC<PaginationProps> = ({numberOfProducts}) => {
         />
       </button>
 
-      {arrayOfPageButtons.map(elem => (
+      {arrayOfPageButtons.map(pageButton => (
         <button
-        className={styles.button}
+          className={styles.button}
+          onClick={() => handleDisplayedPage(pageButton)}
         >
-          {elem}
+          {pageButton}
         </button>
       ))}
 

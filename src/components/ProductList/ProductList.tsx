@@ -30,8 +30,25 @@ export const ProductList: React.FC<ProductListProps> = ( {category}) => {
 
   console.log('products after fetch:', products); // Log products after fetch
   let numberOfProducts = products.length;
+  let numebrOfProductsPerPage = 20; //LINK WITH DROPDOWN LATER
+  let numberOfPages = Math.ceil(numberOfProducts / numebrOfProductsPerPage)
+
+  const [displayedPage, setDisplayedPage] = useState(1);
+  const handleDisplayedPage = (newState: number) => {
+    setDisplayedPage(newState)
+    console.log('WILL DISPLAY',newState)
+  }
 
 
+
+  let firstDisplayedIndexOnPage = (displayedPage - 1) * numebrOfProductsPerPage;
+  let arrayOfDisplayedIndexes = [];
+
+  for (let i = firstDisplayedIndexOnPage; i < firstDisplayedIndexOnPage + numebrOfProductsPerPage; i++) {
+    arrayOfDisplayedIndexes.push(i)
+  }
+
+  console.log('array of diplay indexes',arrayOfDisplayedIndexes)
 
   if (products.length === 0) {
     return <div>Loading...</div>;
@@ -46,12 +63,12 @@ export const ProductList: React.FC<ProductListProps> = ( {category}) => {
       <ul>
         {products.map((product) => (
           <li key={product.id}>
-            <ProductCard product={product} /> {/* Pass product.id as productId */}
+            <ProductCard product={product} />
           </li>
         ))}
       </ul>
 
-      <Pagination numberOfProducts = {numberOfProducts} />
+      <Pagination numberOfPages = {numberOfPages} handleDisplayedPage={handleDisplayedPage}/>
     </div>
   );
 };
