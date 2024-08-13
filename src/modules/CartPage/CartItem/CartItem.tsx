@@ -101,12 +101,21 @@ export const CartItem: React.FC<CatrItemType> = ({ gadget }) => {
   return (
     <div className={styles.item}>
       <div className={styles.item__left}>
-        <img
-          onClick={handleDeleteButton}
-          className={styles.item__deleteButton}
-          src="./icons/close-light-ico.svg"
-          alt="delet-ico"
-        />
+        {isDark ? (
+          <img
+            onClick={handleDeleteButton}
+            className={styles.item__deleteButton}
+            src="./icons/close-ico.svg"
+            alt="delet-ico"
+          />
+        ) : (
+          <img
+            onClick={handleDeleteButton}
+            className={styles.item__deleteButton}
+            src="./icons/close-light-ico.svg"
+            alt="delet-ico"
+          />
+        )}
 
         <Link
           to={`/${gadget.category}/${gadget.itemId}`}

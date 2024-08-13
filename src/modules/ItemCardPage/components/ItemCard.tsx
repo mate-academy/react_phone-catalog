@@ -42,11 +42,6 @@ export const ItemCard: React.FC = () => {
   );
 
   const isWrongParams = useAppSelector(state => state.boolean.isWrongParams);
-  const favoritesArray = useAppSelector(state => state.chosenItems.favorite);
-  const cartArray = useAppSelector(state => state.chosenItems.cart);
-
-  const [heartIco, setHeartIco] = useState('./icons/heart-ico.svg');
-  const [isInCatr, setIsinCart] = useState(false);
   const [selectedColor, setSelectedColor] = useState<string | undefined>('');
   const [selectedCapacity, setSelectedCapacity] = useState<string | undefined>(
     '',
@@ -113,22 +108,6 @@ export const ItemCard: React.FC = () => {
     params,
     dispatch,
   ]);
-
-  useEffect(() => {
-    if (currentProduct !== null) {
-      if (!favoritesArray.some(obj => obj.id === currentProduct.id)) {
-        setHeartIco('./icons/heart-ico.svg');
-      } else {
-        setHeartIco('./icons/heart-red-ico.svg');
-      }
-
-      if (!cartArray.some(obj => obj.id === currentProduct.id)) {
-        setIsinCart(false);
-      } else {
-        setIsinCart(true);
-      }
-    }
-  }, [favoritesArray, currentProduct, cartArray]);
 
   const getLoader = () => {
     switch (category) {
@@ -282,12 +261,7 @@ export const ItemCard: React.FC = () => {
               </div>
 
               <div className={styles.interaction__buttonsContainer}>
-                <CardButtonsBlock
-                  gadg={currentProduct}
-                  favIco={heartIco}
-                  isInBasket={isInCatr}
-                  setIsInBasket={setIsinCart}
-                />
+                <CardButtonsBlock gadg={currentProduct} />
               </div>
 
               <div className={styles.interaction__techBlock}>

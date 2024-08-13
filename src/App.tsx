@@ -32,8 +32,13 @@ import { amount } from './modules/CartPage/services/findAmount';
 export const App: React.FC = () => {
   const dispatch = useAppDispatch();
   const location = useLocation();
-  const BURGER_MENU_ICO = './icons/burger-menu-ico.svg';
-  const CLOSE_LIGHT_ICO = './icons/close-light-ico.svg';
+
+  const burgerMenuIco = useAppSelector(
+    state => state.iconsChanger.burgerMenuIco,
+  );
+  const closeIco = useAppSelector(state => state.iconsChanger.closeIco);
+  const darkMenuIco = useAppSelector(state => state.iconsChanger.darkMenuIco);
+  const darkCloseIco = useAppSelector(state => state.iconsChanger.darkCloseIco);
 
   const hidenMenuIco = useAppSelector(state => state.iconsChanger.hidenMenuIco);
   const isMenuShown = useAppSelector(state => state.boolean.isMenuShown);
@@ -58,11 +63,23 @@ export const App: React.FC = () => {
       root.style.setProperty('--primary-grey-color', '#f1f2f9');
       root.style.setProperty('--secondary-grey-color', '#75767f');
       root.style.setProperty('--elements-grey-color', '#3b3e4a');
+
+      if (isMenuShown) {
+        dispatch(setHidenMenuIco(darkCloseIco));
+      } else {
+        dispatch(setHidenMenuIco(darkMenuIco));
+      }
     } else {
       root.style.setProperty('--white-color', '#ffffff');
       root.style.setProperty('--primary-grey-color', '#313237');
       root.style.setProperty('--secondary-grey-color', '#89939a');
       root.style.setProperty('--elements-grey-color', '#e2e6e9');
+
+      if (isMenuShown) {
+        dispatch(setHidenMenuIco(closeIco));
+      } else {
+        dispatch(setHidenMenuIco(burgerMenuIco));
+      }
     }
   }, [isDark]);
 
@@ -80,7 +97,11 @@ export const App: React.FC = () => {
 
   const closeMenu = () => {
     dispatch(setIsMenuShown(false));
-    dispatch(setHidenMenuIco(BURGER_MENU_ICO));
+    if (isDark) {
+      dispatch(setHidenMenuIco(darkMenuIco));
+    } else {
+      dispatch(setHidenMenuIco(burgerMenuIco));
+    }
   };
 
   window.addEventListener('resize', closeMenu);
@@ -144,8 +165,13 @@ export const App: React.FC = () => {
       top: 0,
     });
 
-    const newIco =
-      hidenMenuIco === BURGER_MENU_ICO ? CLOSE_LIGHT_ICO : BURGER_MENU_ICO;
+    let newIco;
+
+    if (isDark) {
+      newIco = hidenMenuIco === darkMenuIco ? darkCloseIco : darkMenuIco;
+    } else {
+      newIco = hidenMenuIco === burgerMenuIco ? closeIco : burgerMenuIco;
+    }
 
     dispatch(setHidenMenuIco(newIco));
   };
@@ -159,7 +185,12 @@ export const App: React.FC = () => {
 
   const handleLogoClick = () => {
     dispatch(setIsMenuShown(false));
-    dispatch(setHidenMenuIco(BURGER_MENU_ICO));
+
+    if (isDark) {
+      dispatch(setHidenMenuIco(darkMenuIco));
+    } else {
+      dispatch(setHidenMenuIco(burgerMenuIco));
+    }
   };
 
   const handleDarkModeSwither = () => {
@@ -246,7 +277,11 @@ export const App: React.FC = () => {
               <Link className={styles.icons__link} to="/favorites">
                 <img
                   className={styles.icons__icon}
-                  src="./icons/heart-ico.svg"
+                  src={
+                    isDark
+                      ? '/icons/dark-theme-icons/heart-ico.svg'
+                      : './icons/heart-ico.svg'
+                  }
                   alt="favorite"
                 />
               </Link>
@@ -265,7 +300,11 @@ export const App: React.FC = () => {
               <Link className={styles.icons__link} to="/cart">
                 <img
                   className={styles.icons__icon}
-                  src="./icons/basket-ico.svg"
+                  src={
+                    isDark
+                      ? './icons/dark-theme-icons/cart-ico.svg'
+                      : './icons/basket-ico.svg'
+                  }
                   alt="basket"
                 />
               </Link>
@@ -326,13 +365,13 @@ export const App: React.FC = () => {
               >
                 <div className={styles.footer__goUpTextLink}>Back to top</div>
 
-                <div
+                <button
                   className={`${styles.footer__goUpButton} ${isDark && styles.goUpDark}`}
                 >
                   {isDark ? (
                     <img
                       className={styles.footer__goUpIco}
-                      src="./icons/arrow-up-light-ico.svg"
+                      src="./icons/dark-theme-icons/white-arrow-up-ico.svg"
                       alt="arrow-up"
                     />
                   ) : (
@@ -342,7 +381,7 @@ export const App: React.FC = () => {
                       alt="arrow-up"
                     />
                   )}
-                </div>
+                </button>
               </div>
             </div>
           </div>

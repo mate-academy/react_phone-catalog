@@ -2,7 +2,7 @@
 import styles from './ProductCard.module.scss';
 import { Product } from '../../../types/Product';
 import { useAppSelector } from '../../../app/hooks';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { CardButtonsBlock } from '../CardButtonsBlock/CardButtonsBlock';
 import { useDispatch } from 'react-redux';
@@ -15,28 +15,7 @@ type Props = {
 export const ProductCard: React.FC<Props> = ({ gadget }) => {
   const dispatch = useDispatch();
 
-  const favouriteIco = useAppSelector(state => state.iconsChanger.favouriteIco);
-
-  const [heartIco, setHeartIco] = useState(favouriteIco);
-  const [isInCatr, setIsinCart] = useState(false);
-
-  const favoritesArray = useAppSelector(state => state.chosenItems.favorite);
-  const cartArray = useAppSelector(state => state.chosenItems.cart);
   const isDark = useAppSelector(state => state.boolean.isDark);
-
-  useEffect(() => {
-    if (!favoritesArray.some(obj => obj.id === gadget.id)) {
-      setHeartIco(favouriteIco);
-    } else {
-      setHeartIco('./icons/heart-red-ico.svg');
-    }
-
-    if (!cartArray.some(obj => obj.id === gadget.id)) {
-      setIsinCart(false);
-    } else {
-      setIsinCart(true);
-    }
-  }, [favoritesArray, gadget]);
 
   useEffect(() => {
     const card = document.getElementsByClassName(styles.card);
@@ -101,12 +80,7 @@ export const ProductCard: React.FC<Props> = ({ gadget }) => {
           <p className={styles.card__infoValue}>{gadget.ram}</p>
         </div>
 
-        <CardButtonsBlock
-          gadg={gadget}
-          isInBasket={isInCatr}
-          setIsInBasket={setIsinCart}
-          favIco={heartIco}
-        />
+        <CardButtonsBlock gadg={gadget} />
       </div>
     </div>
   );

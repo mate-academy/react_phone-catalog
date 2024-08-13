@@ -9,9 +9,19 @@ export const HidenMenu: React.FC = () => {
   const isMenuShown = useAppSelector(state => state.boolean.isMenuShown);
   const favoritesArray = useAppSelector(state => state.chosenItems.favorite);
   const cartArray = useAppSelector(state => state.chosenItems.cart);
+  const isDark = useAppSelector(state => state.boolean.isDark);
+  const burgerMenuIco = useAppSelector(
+    state => state.iconsChanger.burgerMenuIco,
+  );
+  const darkMenuIco = useAppSelector(state => state.iconsChanger.darkMenuIco);
 
   const handleCloseHidenMenu = () => {
-    dispatch(setHidenMenuIco('./icons/burger-menu-ico.svg'));
+    if (isDark) {
+      dispatch(setHidenMenuIco(darkMenuIco));
+    } else {
+      dispatch(setHidenMenuIco(burgerMenuIco));
+    }
+
     dispatch(setIsMenuShown(!isMenuShown ? true : false));
   };
 

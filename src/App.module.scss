@@ -334,23 +334,18 @@
     width: 32px;
     height: 32px;
     border: 1px solid var(--icons-grey-color);
+    background-color: var(--white-color);
 
     &:hover {
       border: 1px solid var(--primary-grey-color);
     }
-  }
-
-  &__goUpIco {
-    position: relative;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
   }
 }
 
 .goUpDark {
   border: none;
   background-color: var(--dark-surface-2-color);
+  padding-bottom: 4px;
 
   &:hover {
     border: none;

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './CardButtonsBlock.module.scss';
 import { useAppDispatch, useAppSelector } from '../../../app/hooks';
 import {
@@ -11,18 +11,12 @@ import { Product } from '../../../types/Product';
 
 type Props = {
   gadg: Product | null;
-  favIco: string;
-  isInBasket: boolean;
-  setIsInBasket: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
-export const CardButtonsBlock: React.FC<Props> = ({
-  gadg,
-  favIco,
-  isInBasket,
-  setIsInBasket,
-}) => {
+export const CardButtonsBlock: React.FC<Props> = ({ gadg }) => {
   const dispatch = useAppDispatch();
+  const [heartIco, setHeartIco] = useState('');
+  const [isInCatr, setIsinCart] = useState(false);
 
   const favoritesArray = useAppSelector(state => state.chosenItems.favorite);
   const cartArray = useAppSelector(state => state.chosenItems.cart);
@@ -30,6 +24,36 @@ export const CardButtonsBlock: React.FC<Props> = ({
     state => state.pagesDetails.itemsQuantity,
   );
   const isDark = useAppSelector(state => state.boolean.isDark);
+
+  useEffect(() => {
+    if (gadg !== null && isDark) {
+      if (!favoritesArray.some(obj => obj.id === gadg.id)) {
+        setHeartIco('/icons/dark-theme-icons/heart-ico.svg');
+      } else {
+        setHeartIco('/icons/heart-red-ico.svg');
+      }
+
+      if (!cartArray.some(obj => obj.id === gadg.id)) {
+        setIsinCart(false);
+      } else {
+        setIsinCart(true);
+      }
+    }
+
+    if (gadg !== null && !isDark) {
+      if (!favoritesArray.some(obj => obj.id === gadg.id)) {
+        setHeartIco('./icons/heart-ico.svg');
+      } else {
+        setHeartIco('/icons/heart-red-ico.svg');
+      }
+
+      if (!cartArray.some(obj => obj.id === gadg.id)) {
+        setIsinCart(false);
+      } else {
+        setIsinCart(true);
+      }
+    }
+  }, [favoritesArray, gadg, isDark, cartArray]);
 
   useEffect(() => {
     const cartButtonsBlock = document.getElementsByClassName(
@@ -96,9 +120,9 @@ export const CardButtonsBlock: React.FC<Props> = ({
         localStorage.setItem('cart', JSON.stringify(cartArray.concat(gadg)));
         localStorage.setItem('itemsQuantity', JSON.stringify(newObj));
 
-        setIsInBasket(true);
+        setIsinCart(true);
       } else {
-        setIsInBasket(false);
+        setIsinCart(false);
       }
     }
   };
@@ -106,18 +130,25 @@ export const CardButtonsBlock: React.FC<Props> = ({
   return (
     <div className={styles.buttonsSection}>
       <button
-        disabled={isInBasket}
+        disabled={isInCatr}
         onClick={handleAddToCart}
-        className={`${styles.blackButtonBase} ${styles.buttonAddToCatr} ${isInBasket && styles.added} ${isDark && styles.addToCartDark} `}
+        className={`
+          ${styles.blackButtonBase}
+          ${styles.buttonAddToCatr}
+          ${isInCatr && styles.added}
+          ${isDark && styles.addToCartDark} `}
       >
-        {isInBasket ? 'Added' : 'Add to cart'}
+        {isInCatr ? 'Added' : 'Add to cart'}
       </button>
 
       <button
         onClick={handleheartIco}
-        className={`${styles.buttonAddTofavorite} ${isDark && styles.addToFavouriteDark} ${favIco === './icons/heart-red-ico.svg' && isDark && styles.favourite}`}
+        className={`
+          ${styles.buttonAddTofavorite}
+          ${isDark && styles.addToFavouriteDark}
+          ${heartIco === '/icons/heart-red-ico.svg' && isDark && styles.favourite}`}
       >
-        <img src={favIco} alt="add to favorites" />
+        <img src={heartIco} alt="add to favorites" />
       </button>
     </div>
   );
