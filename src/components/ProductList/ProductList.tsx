@@ -10,7 +10,7 @@ type ProductListProps = {
 }
 
 export const ProductList: React.FC<ProductListProps> = ( {category}) => {
-  const [products, setProducts] = useState<(ProductPhone | ProductTablet | ProductAccessory)[]>([]);
+    const [products, setProducts] = useState<(ProductPhone | ProductTablet | ProductAccessory)[]>([]);
 
 
   useEffect(() => {
@@ -31,7 +31,8 @@ export const ProductList: React.FC<ProductListProps> = ( {category}) => {
 
   console.log('products after fetch:', products); // Log products after fetch
   let numberOfProducts = products.length;
-  let numebrOfProductsPerPage = 20; //LINK WITH DROPDOWN LATER
+
+  const [numebrOfProductsPerPage, setnumebrOfProductsPerPage] = useState(16)
   let numberOfPages = Math.ceil(numberOfProducts / numebrOfProductsPerPage)
 
   let [displayedPage, setDisplayedPage] = useState(1);
@@ -40,7 +41,9 @@ export const ProductList: React.FC<ProductListProps> = ( {category}) => {
     console.log('WILL DISPLAY',newState)
   }
 
-
+  const handleNumberOdProductPerPage = (newState: number) => {
+    setnumebrOfProductsPerPage(newState)
+  }
 
 
 
@@ -67,7 +70,7 @@ export const ProductList: React.FC<ProductListProps> = ( {category}) => {
 
   return (
     <div className={styles.ProductsPage}>
-      <DropDown />
+      <DropDown handleNumberOdProductPerPage={handleNumberOdProductPerPage} numberOfProducts={numberOfProducts}/>
 
       <ul className={styles.container}>
         {arrayOfDisplayedIndexes.map((product) => (
