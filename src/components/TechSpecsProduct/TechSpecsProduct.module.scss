@@ -1,7 +1,7 @@
 @import '../../variable';
 @import '../../mixin';
 
-.TechSpecs {
+.techSpecs {
   width: 500px;
   display: flex;
   flex-direction: column;
@@ -12,30 +12,30 @@
   }
 }
 
-.TechSpecsInner {
+.inner {
   display: flex;
   justify-content: space-between;
   margin-top: 25px;
 }
 
-.TechSpecsDescriptions {
+.descriptions {
   display: flex;
   flex-direction: column;
   width: 100%;
   gap: 8px;
 }
 
-.TechSpecsText {
+.description {
   font-size: 14px;
   font-weight: 400;
   color: $secondary-color;
+
+  &--active {
+    color: $white-color;
+  }
 }
 
-.TechSpecsTextActive {
-  color: $white-color;
-}
-
-.TechSpecsTitle {
+.title {
   font-weight: 800;
   color: $white-color;
   font-size: 22px;

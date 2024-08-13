@@ -8,9 +8,9 @@ import styles from './HeaderNavigation.module.scss';
 export const HeaderNavigation = () => {
   return (
     <nav>
-      <ul className={styles.Links}>
+      <ul className={styles.links}>
         {NAV_ROUTES.map(route => (
-          <li key={route} className={styles.Item}>
+          <li key={route} className={styles.item}>
             <NavLink
               className={getActiveNavLink}
               to={getNavigationRoute(route)}

@@ -16,12 +16,12 @@ export const CategoryCard: React.FC<Props> = ({
   href,
 }) => {
   return (
-    <Link className={styles.Wrapper} to={href}>
-      <div className={styles.CategoryCard}>
-        <img className={styles.Picture} src={image} alt={category} />
+    <Link className={styles.wrapper} to={href}>
+      <div className={styles.card}>
+        <img className={styles.picture} src={image} alt={category} />
 
-        <p className={styles.Title}>{category}</p>
-        <p className={styles.Subtitle}>{total} models</p>
+        <p className={styles.title}>{category}</p>
+        <p className={styles.subtitle}>{total} models</p>
       </div>
     </Link>
   );

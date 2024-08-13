@@ -8,13 +8,13 @@ import { Loader } from '../../components/Loader';
 import { Pagination } from '../../components/Pagination';
 import { ProductList } from '../../components/ProductList';
 
-import { DEFAULT_PAGE, DEFAULT_PER_PAGE } from '../../constants/default-values';
 import { getProducts } from '../../services/products';
 import { Categories } from '../../types/Categories';
 import { Product } from '../../types/Product';
 import { Sorts, SortsType } from '../../types/Sorts';
 import { capatalize } from '../../utils';
 
+import { DEFAULT_PAGE, DEFAULT_PER_PAGE } from '../../constants/pagination';
 import { getSortedProducts } from '../../utils/getSortedProducts';
 import styles from './PhonesPage.module.scss';
 

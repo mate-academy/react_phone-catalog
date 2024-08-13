@@ -31,36 +31,36 @@ export const MainHeader = () => {
 
   return (
     <>
-      <header className={styles.Header}>
-        <div className={styles.Container}>
-          <div className={styles.HeaderContent}>
-            <div className={styles.HeaderInner}>
+      <header className={styles.header}>
+        <div className={styles.container}>
+          <div className={styles.content}>
+            <div className={styles.headerInner}>
               <Link to="/">
-                <img className={styles.HeaderLogo} src={logo} alt="logo" />
+                <img src={logo} alt="logo" />
               </Link>
 
               <HeaderNavigation />
             </div>
 
-            <div className={styles.HeaderList}>
+            <div className={styles.list}>
               <NavigationButton href="/favorites">
                 {!!favorites.length && (
-                  <span className={styles.Counter}>{favorites.length}</span>
+                  <span className={styles.counter}>{favorites.length}</span>
                 )}
                 <img
-                  className={styles.HeaderIcon}
+                  className={styles.icon}
                   src={favoriteIcon}
                   alt="favorites"
                 />
               </NavigationButton>
               <NavigationButton href="/cart">
                 {!!cart.length && (
-                  <span className={styles.Counter}>{totalItems}</span>
+                  <span className={styles.counter}>{totalItems}</span>
                 )}
-                <img className={styles.HeaderIcon} src={cartIcon} alt="cart" />
+                <img className={styles.icon} src={cartIcon} alt="cart" />
               </NavigationButton>
 
-              <button onClick={handleToogleMenu} className={styles.Button}>
+              <button onClick={handleToogleMenu} className={styles.button}>
                 <img src={showMenu ? closeIcon : menuIcon} alt="cart" />
               </button>
             </div>

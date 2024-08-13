@@ -1,5 +1,4 @@
-import { IconLeft } from '../../ui/IconLeft';
-import { IconRight } from '../../ui/IconRight';
+import { Button } from '../../ui/Button/Button';
 
 import styles from './ProductListHeader.module.scss';
 
@@ -15,16 +14,28 @@ export const ProductListHeader: React.FC<Props> = ({
   handleNextSlide,
 }) => {
   return (
-    <div className={styles.ProductsHeader}>
-      <p className={styles.Title}>{title}</p>
+    <div className={styles.productsHeader}>
+      <p className={styles.title}>{title}</p>
 
-      <div className={styles.Buttons}>
-        <button className={styles.Button} onClick={handlePrevSlide}>
-          <IconLeft className={styles.Icon} fill="#4A4D58" />
-        </button>
-        <button className={styles.Button} onClick={handleNextSlide}>
-          <IconRight fill="#F1F2F9" />
-        </button>
+      <div className={styles.buttons}>
+        <Button
+          onClick={handlePrevSlide}
+          arrow={{ type: 'left', fill: '#4A4D58' }}
+          size="small"
+          appearance="dark"
+          className="active"
+        >
+          {''}
+        </Button>
+        <Button
+          className="active"
+          onClick={handleNextSlide}
+          arrow={{ type: 'right', fill: '#F1F2F9' }}
+          size="small"
+          appearance="dark"
+        >
+          {''}
+        </Button>
       </div>
     </div>
   );

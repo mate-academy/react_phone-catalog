@@ -1,7 +1,7 @@
 @import '../../variable';
 @import '../../mixin';
 
-.CartItem {
+.cartItem {
   max-width: 100%;
   width: 752px;
   padding: 24px;
@@ -20,7 +20,7 @@
   }
 }
 
-.Wrapper {
+.wrapper {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -31,7 +31,7 @@
   }
 }
 
-.Descriptions {
+.descriptions {
   display: flex;
   align-items: center;
   column-gap: 24px;
@@ -45,29 +45,29 @@
   }
 }
 
-.ButtonDelete {
+.button {
   background: transparent;
   outline: none;
   border: none;
   cursor: pointer;
 }
 
-.Picture {
+.picture {
   width: 80px;
 }
 
-.ProductName {
+.product {
   font-size: 14px;
   color: $white-color;
 }
 
-.ProductPrice {
+.price {
   font-weight: 800;
   font-size: 22px;
   color: $white-color;
 }
 
-.QuantitiesWrapper {
+.quantitiesWrapper {
   display: flex;
   align-items: center;
   column-gap: 53px;
@@ -77,13 +77,16 @@
   }
 }
 
-.Quantities {
+.quantities {
   display: flex;
   align-items: center;
   column-gap: 14px;
 }
 
-.ButtonQuantity {
+.buttonQuantity {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 32px;
   height: 32px;
   background: transparent;
@@ -91,17 +94,17 @@
   outline: none;
   color: $elements-color;
 
+  &--active {
+    background: $surface-main-color;
+    color: $white-color;
+  }
+
   &:hover {
     cursor: pointer;
   }
 }
 
-.ButtonQuantityActive {
-  background: $surface-main-color;
-  color: $white-color;
-}
-
-.Quantity {
+.quantity {
   color: $white-color;
   font-weight: 600;
 }

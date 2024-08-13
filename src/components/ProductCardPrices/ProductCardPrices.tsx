@@ -1,3 +1,4 @@
+import cn from 'classnames';
 import styles from './ProductCardPrices.module.scss';
 
 type Props = {
@@ -14,18 +15,18 @@ export const ProductCardPrices: React.FC<Props> = ({
   fontSize,
 }) => {
   return (
-    <div className={styles.ProductCardPrices}>
+    <div className={styles.cardPrices}>
       <p
         style={{
           fontSize: fontSize,
         }}
-        className={styles.Price}
+        className={styles.price}
       >
         ${isHotPrice ? price : fullPrice}
       </p>
 
       {isHotPrice && (
-        <p className={`${styles.ProductCardPrice} ${styles.PriceActive}`}>
+        <p className={cn(styles.price, styles['price--active'])}>
           ${fullPrice}
         </p>
       )}

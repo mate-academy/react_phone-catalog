@@ -1,12 +1,12 @@
 @import '../../variable';
 @import '../../mixin';
 
-.CategoryCards {
+.categories {
   margin-top: 24px;
   color: $white-color;
 }
 
-.CategoryContent {
+.content {
   display: flex;
   gap: 15px;
 
@@ -16,7 +16,7 @@
   }
 }
 
-.CategoryCardsTitle {
+.title {
   font-size: 32px;
   font-weight: 700;
   margin-top: 80px;

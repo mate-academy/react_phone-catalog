@@ -4,10 +4,10 @@ import { useSearchParams } from 'react-router-dom';
 
 import arrowDown from '../../assets/images/arrow-down.svg';
 import arrowUp from '../../assets/images/arrow-up.svg';
-import { DEFAULT_PAGE, valuesPagination } from '../../constants/default-values';
 import { DropdownItem } from '../../types/DropdownItem';
 import { Sorts } from '../../types/Sorts';
 
+import { DEFAULT_PAGE, paginationOptions } from '../../constants/pagination';
 import styles from './DropdownMenu.module.scss';
 
 type Props = {
@@ -56,7 +56,7 @@ export const DropdownMenu: React.FC<Props> = ({
       urlParams.set('sort', Sorts.title);
     } else if (currentItem === Sorts.cheapest) {
       urlParams.set('sort', Sorts.price);
-    } else if (valuesPagination.includes(item)) {
+    } else if (paginationOptions.includes(item)) {
       urlParams.set('perPage', item);
       urlParams.set('page', DEFAULT_PAGE.toString());
     }

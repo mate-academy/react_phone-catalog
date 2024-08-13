@@ -1,7 +1,7 @@
 @import '../../variable';
 @import '../../mixin';
 
-.CartTotal {
+.cartTotal {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -16,13 +16,13 @@
   }
 }
 
-.TotalPrice {
+.totalPrice {
   font-size: 32px;
   font-weight: 800;
   color: $white-color;
 }
 
-.Subtitle {
+.subtitle {
   width: 100%;
   text-align: center;
   color: $secondary-color;

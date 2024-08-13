@@ -6,7 +6,7 @@ export const CartItems = () => {
   const { cart } = useProductsCart();
 
   return (
-    <div className={styles.Wrapper}>
+    <div className={styles.wrapper}>
       {cart.map(({ id, product, quantity }) => (
         <CartItem
           id={id}

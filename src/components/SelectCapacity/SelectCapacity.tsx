@@ -16,14 +16,13 @@ export const SelectCapacity: React.FC<Props> = ({
   updatedCapacity,
 }) => {
   return (
-    <div className={styles.SelectCapacityWrapper}>
+    <div className={styles.wrapper}>
       {capacities.map(currentCapacity => (
         <button
           key={currentCapacity}
           onClick={() => onUpdateCapacity(currentCapacity)}
-          className={cn(styles.SelectCapacityButton, {
-            [styles.SelectCapacityButtonActive]:
-              updatedCapacity === currentCapacity,
+          className={cn(styles.button, {
+            [styles['button--active']]: updatedCapacity === currentCapacity,
           })}
         >
           {extractNumberAndSuffix(currentCapacity)}

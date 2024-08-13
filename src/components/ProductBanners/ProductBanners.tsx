@@ -1,8 +1,5 @@
-import { BannerButton } from '../../ui/BannerButton/BannerButton';
-
 import { useRef } from 'react';
-import { arrowRightIcon, arrowleftIcon } from '../../assets';
-import { TIME_SLIDER, slideImages } from '../../constants/constants';
+import { slideImages } from '../../constants/constants';
 
 import { Autoplay, Pagination } from 'swiper/modules';
 import { Swiper, SwiperRef, SwiperSlide } from 'swiper/react';
@@ -11,10 +8,12 @@ import { Swiper, SwiperRef, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/pagination';
 
+import { Button } from '../../ui/Button/Button';
 import styles from './ProductBanners.module.scss';
 
 export const ProductBanners = () => {
   const swiperRef = useRef<SwiperRef>(null);
+  const TIME_SLIDER = 5000;
 
   const handlePrevSlide = () => {
     swiperRef.current?.swiper.slidePrev();
@@ -26,13 +25,16 @@ export const ProductBanners = () => {
 
   return (
     <>
-      <div className={styles.ProductBanners}>
-        <BannerButton
-          isDisabled={false}
+      <div className={styles.productBanners}>
+        <Button
           onClick={handlePrevSlide}
-          type="Prev"
-          icon={arrowleftIcon}
-        />
+          arrow={{ type: 'left', fill: '#F1F2F9' }}
+          size="stretch"
+          appearance="dark"
+        >
+          {''}
+        </Button>
+
         <Swiper
           autoplay={{
             delay: TIME_SLIDER,
@@ -53,7 +55,7 @@ export const ProductBanners = () => {
             <SwiperSlide key={image}>
               <img
                 key={image}
-                className={styles.Picture}
+                className={styles.picture}
                 src={image}
                 alt="product-banner"
               />
@@ -61,12 +63,14 @@ export const ProductBanners = () => {
           ))}
         </Swiper>
 
-        <BannerButton
-          isDisabled={false}
+        <Button
           onClick={handleNextSlide}
-          type="Next"
-          icon={arrowRightIcon}
-        />
+          arrow={{ type: 'right', fill: '#F1F2F9' }}
+          appearance="dark"
+          size="stretch"
+        >
+          {''}
+        </Button>
       </div>
       <div className="button-swiper">
         <div className="swiper-pagination"></div>

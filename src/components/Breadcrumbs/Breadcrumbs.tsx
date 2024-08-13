@@ -17,9 +17,9 @@ export const Breadcrumbs: React.FC<Props> = ({ category, productName }) => {
   const { pathname } = useLocation();
 
   return (
-    <div className={styles.Breadcrumbs}>
-      <Link className={styles.BreadcrumbsLink} to="/">
-        <img className={styles.BreadcrumbsIcon} src={iconHome} alt="icon" />
+    <div className={styles.breadcrumbs}>
+      <Link className={styles.link} to="/">
+        <img className={styles.icon} src={iconHome} alt="icon" />
       </Link>
 
       <IconRight fill="#4A4D58 " />
@@ -27,21 +27,19 @@ export const Breadcrumbs: React.FC<Props> = ({ category, productName }) => {
       {category !== pathname.slice(1) ? (
         <Link
           to={`/${category}`}
-          className={cn(styles.BreadcrumbsPath, styles.BreadcrumbsLink, {
-            [styles.BreadcrumbsPathActive]: category !== pathname.slice(1),
+          className={cn(styles.path, styles.link, {
+            [styles['path--active']]: category !== pathname.slice(1),
           })}
         >
           {category && capatalize(category)}
         </Link>
       ) : (
-        <p className={cn(styles.BreadcrumbsPath)}>{capatalize(category)}</p>
+        <p className={cn(styles.path)}>{capatalize(category)}</p>
       )}
 
       {productName && <IconRight fill="#4A4D58 " />}
 
-      <p className={styles.BreadcrumbsPath}>
-        {productName && capatalize(productName)}
-      </p>
+      <p className={styles.path}>{productName && capatalize(productName)}</p>
     </div>
   );
 };

@@ -1,8 +1,5 @@
 import { Link, useLocation } from 'react-router-dom';
 
-import { FavouriteButton } from '../../ui/FavouriteButton';
-import { PurchaseButton } from '../../ui/PurchaseButton';
-
 import { favoriteIcon } from '../../assets';
 import isFavoriteIcon from '../../assets/images/is-favorite.svg';
 
@@ -10,8 +7,12 @@ import { Product } from '../../types/Product';
 import { extractNumberAndSuffix } from '../../utils';
 import { ProductCardPrices } from '../ProductCardPrices';
 
+import cn from 'classnames';
+
 import { useProductsCart } from '../../store/CartProvider';
 import { useFavorites } from '../../store/FavoritesProvider';
+import { Button } from '../../ui/Button/Button';
+
 import styles from './ProductCard.module.scss';
 
 type Props = {
@@ -36,8 +37,6 @@ export const ProductCard: React.FC<Props> = props => {
   const normalizeCapacity = extractNumberAndSuffix(capacity);
   const normalizeRam = extractNumberAndSuffix(ram);
 
-  const activeProductCardText = `${styles.DescriptionsText} ${styles.DescriptionsTextActive}`;
-
   const handleAddProduct = () => {
     if (!isHaveProduct) {
       addProduct(props.product);
@@ -55,14 +54,14 @@ export const ProductCard: React.FC<Props> = props => {
   };
 
   return (
-    <div className={styles.ProductCard}>
+    <div className={styles.card}>
       <Link
-        className={styles.Link}
+        className={styles.link}
         to={`/product/${itemId}`}
         state={{ prevPath: pathname }}
       >
-        <img className={styles.Picture} src={image} alt="product" />
-        <p className={styles.Title}>{name}</p>
+        <img className={styles.picture} src={image} alt="product" />
+        <p className={styles.title}>{name}</p>
       </Link>
 
       <ProductCardPrices
@@ -72,34 +71,44 @@ export const ProductCard: React.FC<Props> = props => {
         fullPrice={fullPrice}
       />
 
-      <div className={styles.ProductCardInner}>
-        <div className={styles.Descriptions}>
-          <p className={styles.DescriptionsText}>Screen</p>
-          <p className={styles.DescriptionsText}>Capacity</p>
-          <p className={styles.DescriptionsText}>RAM</p>
+      <div className={styles.cardInner}>
+        <div className={styles.descriptions}>
+          <p className={styles.description}>Screen</p>
+          <p className={styles.description}>Capacity</p>
+          <p className={styles.description}>RAM</p>
         </div>
-        <div className={styles.Descriptions}>
-          <p className={activeProductCardText}>{screen}</p>
-          <p className={activeProductCardText}>{normalizeCapacity}</p>
-          <p className={activeProductCardText}>{normalizeRam}</p>
+        <div className={styles.descriptions}>
+          <p className={cn(styles.description, styles['description--active'])}>
+            {screen}
+          </p>
+          <p className={cn(styles.description, styles['description--active'])}>
+            {normalizeCapacity}
+          </p>
+          <p className={cn(styles.description, styles['description--active'])}>
+            {normalizeRam}
+          </p>
         </div>
       </div>
 
-      <div className={styles.Buttons}>
-        <PurchaseButton handleClick={handleAddProduct}>
+      <div className={styles.buttons}>
+        <Button
+          className={isHaveProduct ? 'active' : ''}
+          appearance="primary"
+          onClick={handleAddProduct}
+        >
           {isHaveProduct ? 'Added to cart' : 'Add to cart'}
-        </PurchaseButton>
+        </Button>
 
-        <FavouriteButton
-          className={isFavoriteProduct ? 'Active' : ''}
-          isLarge={false}
-          handleClick={handleToggleFavoriteStatus}
+        <Button
+          className={isFavoriteProduct ? 'active' : ''}
+          appearance="dark"
+          onClick={handleToggleFavoriteStatus}
         >
           <img
             src={isFavoriteProduct ? isFavoriteIcon : favoriteIcon}
             alt="favorite"
           />
-        </FavouriteButton>
+        </Button>
       </div>
     </div>
   );

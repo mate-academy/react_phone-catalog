@@ -6,7 +6,7 @@ body:has(.Active) {
   overflow: hidden;
 }
 
-.AsideMenu {
+.aside {
   display: none;
   position: fixed;
   left: 0;
@@ -19,17 +19,17 @@ body:has(.Active) {
   padding-top: 48px;
 }
 
-.Active {
+.active {
   display: block;
 }
 
-.AsideMenuContent {
+.content {
   display: flex;
   flex-direction: column;
   transform: translateY(24px);
 }
 
-.AsideList {
+.list {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -37,7 +37,7 @@ body:has(.Active) {
   list-style: none;
 }
 
-.AsideLink {
+.link {
   display: block;
   text-decoration: none;
   color: #75767f;
@@ -46,24 +46,24 @@ body:has(.Active) {
   text-transform: uppercase;
   transition: all $transition-duration;
 
+  &::after {
+    @include aside-line(0%);
+  }
+
+  &:hover::after {
+    @include aside-line(100%);
+  }
+
+  &--active::after {
+    @include aside-line(100%);
+  }
+
   &:hover {
     color: $white-color;
   }
 }
 
-.AsideLink::after {
-  @include aside-line(0%);
-}
-
-.AsideLink:hover::after {
-  @include aside-line(100%);
-}
-
-.ActiveLink::after {
-  @include aside-line(100%);
-}
-
-.AsideTabs {
+.tabs {
   display: flex;
   position: absolute;
   bottom: 0;
@@ -71,13 +71,17 @@ body:has(.Active) {
   left: 0;
 }
 
-.AsideTabsItem {
+.tab {
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
   height: 64px;
   border-top: 1px solid $elements-color;
+
+  &--active {
+    border-bottom: 2px solid $white-color;
+  }
 
   &:not(&:last-child) {
     border-right: 1px solid $elements-color;
@@ -89,6 +93,4 @@ body:has(.Active) {
   }
 }
 
-.ActiveTab {
-  border-bottom: 2px solid $white-color;
-}
+

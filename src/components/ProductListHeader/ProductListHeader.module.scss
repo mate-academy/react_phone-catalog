@@ -1,7 +1,7 @@
 @import '../../variable';
 @import '../../mixin';
 
-.ProductsHeader {
+.productsHeader {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -13,7 +13,7 @@
   }
 }
 
-.Title {
+.title {
   color: $white-color;
   font-weight: 800;
   font-size: 32px;
@@ -24,30 +24,9 @@
   }
 }
 
-.Buttons {
+.buttons {
   display: flex;
   gap: 16px;
 }
 
-.Button {
-  display: flex;
-  justify-content: center;
-  outline: none;
-  background: transparent;
-  padding: 8px;
-  width: 32px;
-  height: 32px;
-  border: 1px solid $elements-color;
-  cursor: pointer;
-  transition: all $transition-duration;
 
-  &:hover {
-    background: $icons-color;
-  }
-
-  &:hover .Icon {
-    path {
-      fill: $white-color;
-    }
-  }
-}

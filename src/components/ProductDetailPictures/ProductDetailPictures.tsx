@@ -19,25 +19,25 @@ export const ProductDetailPictures: React.FC<Props> = ({ images = [] }) => {
   };
 
   return (
-    <div className={styles.ProductDetailWrapper}>
-      <div className={styles.ProductDetailPictures}>
+    <div className={styles.wrapper}>
+      <div className={styles.pictures}>
         {images.map(imageUrl => (
           <div
             key={imageUrl}
             onClick={() => handleSelectImage(imageUrl)}
-            className={cn(styles.Item, {
-              [styles.ItemActive]:
+            className={cn(styles.item, {
+              [styles['item--active']]:
                 currentImageUrl === imageUrl ||
                 (imageUrl === images[0] && !currentImageUrl),
             })}
           >
-            <img className={styles.Picture} src={imageUrl} alt="picture" />
+            <img className={styles.picture} src={imageUrl} alt="picture" />
           </div>
         ))}
       </div>
 
       <img
-        className={styles.PicturePrimary}
+        className={styles.picturePrimary}
         src={currentImageUrl || images[0]}
         alt="picture"
       />

@@ -1,21 +1,22 @@
 @import '../../variable';
 
-.ProductCardPrices {
+.cardPrices {
   display: flex;
   align-items: center;
   column-gap: 8px;
 }
 
-.Price {
+.price {
   font-weight: 700;
   margin-top: 8px;
   margin-bottom: 9px;
   color: $white-color;
+
+  &--active {
+    color: $secondary-color;
+    text-decoration: line-through;
+    font-weight: 600;
+    font-size: 22px;
+  }
 }
 
-.PriceActive {
-  color: $secondary-color;
-  text-decoration: line-through;
-  font-weight: 600;
-  font-size: 22px;
-}

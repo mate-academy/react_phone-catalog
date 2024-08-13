@@ -1,7 +1,7 @@
 @import '../../variable';
 @import '../../mixin';
 
-.ProductWrapper {
+.productWrapper {
   display: flex;
   column-gap: 64px;
 
@@ -23,7 +23,7 @@
   }
 }
 
-.ProductWrapperPrimary {
+.productWrapperPrimary {
   margin-top: 80px;
 
   @include small {
@@ -32,7 +32,7 @@
   }
 }
 
-.Title {
+.title {
   font-weight: 800;
   color: $white-color;
   font-size: 32px;

@@ -1,19 +1,19 @@
 @import '../../variable';
 @import '../../mixin';
 
-.Container {
+.container {
   width: 100%;
   margin: 0 auto;
   padding-left: 24px;
 }
 
-.Header {
+.header {
   position: relative;
   z-index: 21;
   border-bottom: 1px solid $surface-main-color;
 }
 
-.HeaderContent {
+.content {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -21,7 +21,7 @@
   font-size: 12px;
 }
 
-.HeaderInner {
+.headerInner {
   display: flex;
   gap: 50px;
   align-items: center;
@@ -31,16 +31,16 @@
   }
 }
 
-.HeaderIcon {
+.icon {
   width: 16px;
   height: 16px;
 }
 
-.HeaderList {
+.list {
   display: flex;
 }
 
-.Button {
+.button {
   display: none;
   width: 64px;
   height: 64px;
@@ -63,7 +63,7 @@
   }
 }
 
-.Counter {
+.counter {
   position: absolute;
   display: flex;
   justify-content: center;

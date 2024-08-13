@@ -1,7 +1,7 @@
 @import '../../variable';
 @import '../../mixin';
 
-.About {
+.about {
   display: flex;
   flex-direction: column;
   width: 560px;
@@ -11,7 +11,7 @@
   }
 }
 
-.AboutTitle {
+.title {
   font-size: 22px;
   font-weight: 800;
   color: $white-color;
@@ -23,26 +23,26 @@
   }
 }
 
-.AboutContent {
+.content {
   display: flex;
   flex-direction: column;
   gap: 32px;
   margin-top: 32px;
 }
 
-.AboutList {
+.list {
   display: flex;
   flex-direction: column;
   list-style-type: none;
   gap: 16px;
 }
 
-.AboutListTitle {
+.text {
   color: $white-color;
   font-size: 20px;
 }
 
-.AboutListSubtitle {
+.subtitle {
   color: $secondary-color;
   font-size: 14px;
 }

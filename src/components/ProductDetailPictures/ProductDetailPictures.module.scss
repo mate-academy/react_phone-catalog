@@ -1,7 +1,7 @@
 @import '../../variable';
 @import '../../mixin';
 
-.ProductDetailWrapper {
+.wrapper {
   display: flex;
   column-gap: 27px;
 
@@ -12,7 +12,7 @@
   }
 }
 
-.ProductDetailPictures {
+.pictures {
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -27,7 +27,7 @@
   }
 }
 
-.Item {
+.item {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -35,6 +35,10 @@
   height: 80px;
   border: 1px solid $elements-color;
   cursor: pointer;
+
+  &--active {
+    border: 1px solid $white-color;
+  }
 
   @include custom(670) {
     width: 35px;
@@ -47,11 +51,8 @@
   }
 }
 
-.ItemActive {
-  border: 1px solid $white-color;
-}
 
-.Picture {
+.picture {
   width: 70px;
   height: 70px;
   object-fit: contain;
@@ -67,7 +68,7 @@
   }
 }
 
-.PicturePrimary {
+.picturePrimary {
   width: 464px;
   height: 464px;
   object-fit: contain;

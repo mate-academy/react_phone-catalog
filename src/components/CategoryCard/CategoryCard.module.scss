@@ -1,12 +1,12 @@
 @import '../../variable';
 @import '../../mixin';
 
-.Wrapper {
+.wrapper {
   text-decoration: none;
   color: $white-color;
 }
 
-.CategoryCard {
+.card {
   display: flex;
   flex-direction: column;
   margin-top: 34px;
@@ -18,16 +18,16 @@
   }
 }
 
-.Picture {
+.picture {
   width: 100%;
 }
 
-.Title {
+.title {
   font-size: 20px;
   margin-top: 24px;
 }
 
-.Subtitle {
+.subtitle {
   font-size: 14px;
   margin-top: 4px;
   color: $secondary-color;

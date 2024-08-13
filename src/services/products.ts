@@ -4,7 +4,7 @@ import { Product } from '../types/Product';
 import { httpRequest } from '../utils/httpRequest';
 
 export const getAllProducts = (): Promise<Product[]> => {
-  return httpRequest<Product[]>(API_PRODUCTS);
+  return httpRequest(API_PRODUCTS);
 };
 
 export const getProducts = async (type: Categories) => {

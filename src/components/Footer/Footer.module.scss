@@ -1,14 +1,14 @@
 @import '../../variable';
 @import '../../mixin';
 
-.Container {
+.container {
   width: 100%;
   margin: 0 auto;
   padding-left: 24px;
   padding-right: 24px;
 }
 
-.Footer {
+.footer {
   position: absolute;
   bottom: 0;
   width: 100%;
@@ -22,7 +22,7 @@
   }
 }
 
-.Content {
+.content {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -34,11 +34,11 @@
   }
 }
 
-.Logo {
+.logo {
   width: 89px;
 }
 
-.Socials {
+.socials {
   display: flex;
   column-gap: 105px;
   list-style-type: none;
@@ -52,7 +52,7 @@
   }
 }
 
-.Link {
+.link {
   color: $white-color;
   font-size: 12px;
   font-weight: 800;
@@ -65,7 +65,7 @@
   }
 }
 
-.Buttons {
+.buttons {
   display: flex;
   column-gap: 16px;
   align-items: center;
@@ -76,12 +76,12 @@
   }
 }
 
-.Text {
+.text {
   color: $secondary-color;
   font-size: 12px;
 }
 
-.Button {
+.button {
   width: 32px;
   height: 32px;
   border: none;

@@ -6,7 +6,7 @@ import { Product } from '../types/Product';
 import { suffle } from './helpers';
 
 export const getActiveNavLink = ({ isActive }: { isActive: boolean }) => {
-  return cn(styles.Link, { [styles.Active]: isActive });
+  return cn(styles.link, { [styles['link--active']]: isActive });
 };
 
 export const getLocalStorage = (key: string) => {

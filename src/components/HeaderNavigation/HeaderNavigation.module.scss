@@ -2,7 +2,7 @@
 @import '../../mixin';
 @import '../../utils';
 
-.Links {
+.links {
   display: flex;
   gap: 64px;
   list-style-type: none;
@@ -24,14 +24,15 @@
   }
 }
 
-.Item {
+.item {
   text-transform: uppercase;
 }
 
-.Link {
+.link {
   transition: color $transition-duration;
   text-decoration: none;
   color: $secondary-color;
+  
 
   &::after {
     @include header-line(0%);
@@ -41,15 +42,15 @@
     @include header-line(100%);
   }
 
+  &--active {
+    color: $white-color;
+
+    &::after {
+      @include header-line(100%);
+    }
+  }
+
   &:hover {
     color: $white-color;
-  }
-}
-
-.Active {
-  color: $white-color;
-
-  &::after {
-    @include header-line(100%);
   }
 }

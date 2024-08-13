@@ -1,11 +1,14 @@
+import * as React from 'react';
+
 import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
-import * as React from 'react';
+
 import { useProductsCart } from '../../store/CartProvider';
-import { PurchaseButton } from '../../ui/PurchaseButton';
+
+import { Button as PurchaseButton } from '../../ui/Button/Button';
 
 export default function AlertDialog() {
   const [open, setOpen] = React.useState(false);
@@ -25,7 +28,7 @@ export default function AlertDialog() {
 
   return (
     <React.Fragment>
-      <PurchaseButton handleClick={handleOpen} size="large">
+      <PurchaseButton appearance="primary" onClick={handleOpen} size="large">
         Checkout
       </PurchaseButton>
 

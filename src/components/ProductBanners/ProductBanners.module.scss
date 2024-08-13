@@ -1,7 +1,7 @@
 @import '../../variable';
 @import '../../mixin';
 
-.ProductBanners {
+.productBanners {
   display: flex;
   margin-bottom: 56px;
   margin-top: 56px;
@@ -17,7 +17,7 @@
   }
 }
 
-.Picture {
+.picture {
   width: 100%;
   object-fit: cover;
   height: 400px;

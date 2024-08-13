@@ -32,7 +32,7 @@ export const ProductList: React.FC<Props> = ({
   };
 
   return (
-    <section className={styles.Products}>
+    <section className={styles.products}>
       {isHaveSlider && (
         <ProductListHeader
           title={title}
@@ -48,7 +48,7 @@ export const ProductList: React.FC<Props> = ({
           isHotPrice={isHotPrice}
         />
       ) : (
-        <div className={styles.Wrapper}>
+        <div className={styles.wrapper}>
           <ProductCards isHotPrice={isHotPrice} products={products} />
         </div>
       )}

@@ -1,20 +1,20 @@
 @import '../../variable';
 @import '../../fonts';
 
-.PaginationWrapper {
+.pagination {
   display: flex;
   justify-content: center;
   column-gap: 16px;
   margin-top: 40px;
 }
 
-.Inner {
+.inner {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
 }
 
-.Button {
+.button {
   width: 32px;
   height: 32px;
   font-family: $general-font;
@@ -25,24 +25,19 @@
   cursor: pointer;
   transition: all $transition-duration;
 
+  &--primary {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: $surface-main-color;
+  }
+
+  &--active {
+    background: $purple-color;
+  }
+
   &:hover {
     background: $purple-color;
   }
 }
 
-.ButtonPrimary {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 32px;
-  height: 32px;
-  padding: 5px;
-  background: $surface-main-color;
-  border: none;
-  outline: none;
-  cursor: pointer;
-}
-
-.Active {
-  background: $purple-color;
-}

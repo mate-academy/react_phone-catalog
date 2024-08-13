@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { FAVORITES_KEY } from '../constants/constants';
+import { FAVORITES_KEY } from '../constants/localstorage-keys';
 import { Product } from '../types/Product';
 import { getLocalStorage } from '../utils';
 /* eslint-disable @typescript-eslint/indent */

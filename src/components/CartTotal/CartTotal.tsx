@@ -12,9 +12,9 @@ export const CartTotal = () => {
   const totalItems = getLengthItems(cart);
 
   return (
-    <div className={styles.CartTotal}>
-      <p className={styles.TotalPrice}>${totalPrice}</p>
-      <p className={styles.Subtitle}>Total for {totalItems} items</p>
+    <div className={styles.cartTotal}>
+      <p className={styles.totalPrice}>${totalPrice}</p>
+      <p className={styles.subtitle}>Total for {totalItems} items</p>
 
       <AlertDialog />
     </div>

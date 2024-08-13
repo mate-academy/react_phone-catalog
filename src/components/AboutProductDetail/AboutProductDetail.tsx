@@ -8,17 +8,17 @@ type Props = {
 
 export const AboutProductDetail: React.FC<Props> = ({ description }) => {
   return (
-    <article className={styles.About}>
-      <p className={styles.AboutTitle}>About</p>
+    <article className={styles.about}>
+      <p className={styles.title}>About</p>
 
-      <div className={styles.AboutContent}>
+      <div className={styles.content}>
         {description?.length &&
           description.map(({ title, text }) => (
-            <ul key={title} className={styles.AboutList}>
-              <li className={styles.AboutListTitle}>{title}</li>
+            <ul key={title} className={styles.list}>
+              <li className={styles.text}>{title}</li>
 
               {text.map(item => (
-                <li key={item} className={styles.AboutListSubtitle}>
+                <li key={item} className={styles.subtitle}>
                   {item}
                 </li>
               ))}

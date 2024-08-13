@@ -9,6 +9,7 @@ import { ProductList } from '../../components/ProductList';
 
 import { ERROR_MESSAGE } from '../../constants/errors';
 import { getAllProducts } from '../../services/products';
+
 import { Product } from '../../types/Product';
 import { SortOrders } from '../../types/SortOrders';
 import { Sorts } from '../../types/Sorts';
@@ -49,7 +50,7 @@ export const HomePage = () => {
 
   return (
     <>
-      <h1 className={styles.Title}>Welcome to Nice Gadgets store!</h1>
+      <h1 className={styles.title}>Welcome to Nice Gadgets store!</h1>
 
       <ProductBanners />
 

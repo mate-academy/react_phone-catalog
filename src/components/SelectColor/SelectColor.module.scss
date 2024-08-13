@@ -1,6 +1,6 @@
 @import '../../variable';
 
-.SelectColorWrapper {
+.wrapper {
   display: flex;
   border-bottom: 1px solid $elements-color;
   padding-bottom: 24px;
@@ -8,7 +8,7 @@
   column-gap: 8px;
 }
 
-.SelectColorItem {
+.button {
   width: 32px;
   height: 32px;
   border: none;
@@ -19,16 +19,16 @@
   background: transparent;
   cursor: pointer;
 
+  &--active {
+    outline: 2px solid $secondary-color;
+  }
+
   &:hover {
     outline: 2px solid $secondary-color;
   }
 }
 
-.SelectColorItemActive {
-  outline: 2px solid $secondary-color;
-}
-
-.SelectColorElement {
+.circle {
   position: absolute;
   top: 50%;
   left: 50%;

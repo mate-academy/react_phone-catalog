@@ -1,7 +1,7 @@
 @import '../../variable';
 @import '../../mixin';
 
-.ProductCard {
+.card {
   padding: 32px;
   background: $surface-secondary-color;
   color: $white-color;
@@ -11,17 +11,17 @@
   }
 }
 
-.Link {
+.link {
   text-decoration: none;
 }
 
-.Picture {
+.picture {
   width: 173px;
   height: 196px;
   object-fit: contain;
 }
 
-.Title {
+.title {
   font-weight: 400;
   font-size: 14px;
   height: 50px;
@@ -30,31 +30,32 @@
   margin-top: 24px;
 }
 
-.Buttons {
+.buttons {
   display: flex;
   gap: 8px;
   margin-top: 16px;
 }
 
-.ProductCardInner {
+.cardInner {
   display: flex;
   justify-content: space-between;
   border-top: 1px solid $elements-color;
   padding-top: 16px;
 }
 
-.Descriptions {
+.descriptions {
   display: flex;
   flex-direction: column;
   gap: 8px;
 }
 
-.DescriptionsText {
+.description {
   font-size: 12px;
   font-weight: 400;
   color: $secondary-color;
+
+  &--active {
+    color: $white-color;
+  }
 }
 
-.DescriptionsTextActive {
-  color: $white-color;
-}

@@ -1,8 +1,5 @@
 import { useNavigate, useParams } from 'react-router-dom';
 
-import { FavouriteButton } from '../../ui/FavouriteButton';
-import { PurchaseButton } from '../../ui/PurchaseButton';
-
 import { favoriteIcon } from '../../assets';
 import { ProductDetail } from '../../types/ProductDetail';
 import { ProductCardPrices } from '../ProductCardPrices';
@@ -16,6 +13,10 @@ import isFavoriteIcon from '../../assets/images/is-favorite.svg';
 
 import { useProductsCart } from '../../store/CartProvider';
 import { useFavorites } from '../../store/FavoritesProvider';
+import { Button } from '../../ui/Button/Button';
+
+import cn from 'classnames';
+
 import styles from './ProductDetailPurchase.module.scss';
 
 type Props = {
@@ -61,7 +62,7 @@ export const ProductDetailPurchase: React.FC<Props> = ({
     if (!isHaveProduct) {
       addProduct(product as Product);
     } else {
-      deleteProduct(product?.id as number);
+      deleteProduct(Number(product?.id));
     }
   };
 
@@ -69,20 +70,20 @@ export const ProductDetailPurchase: React.FC<Props> = ({
     if (!isFavoriteProduct) {
       addToFavorites(product as Product);
     } else {
-      removeProduct(product?.id as number);
+      removeProduct(Number(product?.id));
     }
   };
 
   return (
-    <div className={styles.ProductDescription}>
-      <p className={styles.Title}>Available colors</p>
+    <div className={styles.productDescription}>
+      <p className={styles.title}>Available colors</p>
       <SelectColor
         onUpdateColor={handleUpdateColor}
         updatedColor={productDetail?.color || ''}
         colors={productDetail?.colorsAvailable}
       />
 
-      <p className={styles.Title}>Select capacity</p>
+      <p className={styles.title}>Select capacity</p>
 
       <SelectCapacity
         onUpdateCapacity={handleUpdateCapacity}
@@ -97,40 +98,47 @@ export const ProductDetailPurchase: React.FC<Props> = ({
         fullPrice={productDetail?.priceRegular || 0}
       />
 
-      <div className={styles.Buttons}>
-        <PurchaseButton handleClick={handleAddProduct} size="large">
+      <div className={styles.buttons}>
+        <Button
+          appearance="primary"
+          size="large"
+          className={isHaveProduct ? 'active' : ''}
+          onClick={handleAddProduct}
+        >
           {isHaveProduct ? 'Added to cart' : 'Add to cart'}
-        </PurchaseButton>
-        <FavouriteButton
-          className={isFavoriteProduct ? 'Active' : ''}
-          isLarge={true}
-          handleClick={handleToggleFavoriteStatus}
+        </Button>
+
+        <Button
+          className={isFavoriteProduct ? 'active' : ''}
+          onClick={handleToggleFavoriteStatus}
+          appearance="dark"
+          size="large"
         >
           <img
             src={isFavoriteProduct ? isFavoriteIcon : favoriteIcon}
             alt="favorite"
           />
-        </FavouriteButton>
+        </Button>
       </div>
 
-      <div className={styles.Inner}>
-        <div className={styles.Descriptions}>
-          <p className={styles.Text}>Screen</p>
-          <p className={styles.Text}>Resolution</p>
-          <p className={styles.Text}>Processor</p>
-          <p className={styles.Text}>Ram</p>
+      <div className={styles.inner}>
+        <div className={styles.descriptions}>
+          <p className={styles.description}>Screen</p>
+          <p className={styles.description}>Resolution</p>
+          <p className={styles.description}>Processor</p>
+          <p className={styles.description}>Ram</p>
         </div>
-        <div className={styles.Descriptions}>
-          <p className={`${styles.Text} ${styles.TextActive}`}>
+        <div className={styles.descriptions}>
+          <p className={cn(styles.description, styles['description--active'])}>
             {productDetail?.screen}
           </p>
-          <p className={`${styles.Text} ${styles.TextActive}`}>
+          <p className={cn(styles.description, styles['description--active'])}>
             {productDetail?.resolution}
           </p>
-          <p className={`${styles.Text} ${styles.TextActive}`}>
+          <p className={cn(styles.description, styles['description--active'])}>
             {productDetail?.processor}
           </p>
-          <p className={`${styles.Text} ${styles.TextActive}`}>
+          <p className={cn(styles.description, styles['description--active'])}>
             {normalizeRam}
           </p>
         </div>

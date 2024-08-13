@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { CART_ITEMS_KEY } from '../constants/constants';
+import { CART_ITEMS_KEY } from '../constants/localstorage-keys';
 import { Cart } from '../types/Cart';
 import { Product } from '../types/Product';
 import { getLocalStorage } from '../utils';

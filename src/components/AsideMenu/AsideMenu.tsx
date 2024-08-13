@@ -15,19 +15,19 @@ type Props = {
 export const AsideMenu: React.FC<Props> = ({ onCloseMenu, active }) => {
   return (
     <aside
-      className={cn(styles.AsideMenu, {
-        [styles.Active]: active,
+      className={cn(styles.aside, {
+        [styles.active]: active,
       })}
     >
-      <div className={styles.AsideMenuContent}>
-        <nav className={styles.AsideNavigation}>
-          <ul className={styles.AsideList}>
+      <div className={styles.content}>
+        <nav className={styles.navigation}>
+          <ul className={styles.list}>
             {NAV_ROUTES.map(route => (
               <li key={route} className={styles.AsideItem}>
                 <NavLink
                   className={({ isActive }) =>
-                    cn(styles.AsideLink, {
-                      [styles.ActiveLink]: isActive,
+                    cn(styles.link, {
+                      [styles['link--active']]: isActive,
                     })
                   }
                   onClick={onCloseMenu}
@@ -40,11 +40,11 @@ export const AsideMenu: React.FC<Props> = ({ onCloseMenu, active }) => {
           </ul>
         </nav>
       </div>
-      <div onClick={onCloseMenu} className={styles.AsideTabs}>
+      <div onClick={onCloseMenu} className={styles.tabs}>
         <NavLink
           className={({ isActive }) =>
-            cn(styles.AsideTabsItem, {
-              [styles.ActiveTab]: isActive,
+            cn(styles.tab, {
+              [styles['tab--active']]: isActive,
             })
           }
           to="/favorites"
@@ -53,8 +53,8 @@ export const AsideMenu: React.FC<Props> = ({ onCloseMenu, active }) => {
         </NavLink>
         <NavLink
           className={({ isActive }) =>
-            cn(styles.AsideTabsItem, {
-              [styles.ActiveTab]: isActive,
+            cn(styles.tab, {
+              [styles['tab--active']]: isActive,
             })
           }
           to="/cart"

@@ -20,20 +20,20 @@ export const SelectColor: React.FC<Props> = ({
   };
 
   return (
-    <div className={styles.SelectColorWrapper}>
+    <div className={styles.wrapper}>
       {colors.map(currentColor => (
         <button
           onClick={() => handleSelectColor(currentColor)}
           key={currentColor}
-          className={cn(styles.SelectColorItem, {
-            [styles.SelectColorItemActive]: currentColor === updatedColor,
+          className={cn(styles.button, {
+            [styles['button--active']]: currentColor === updatedColor,
           })}
         >
           <div
             style={{
               backgroundColor: Colors[currentColor],
             }}
-            className={styles.SelectColorElement}
+            className={styles.circle}
           ></div>
         </button>
       ))}

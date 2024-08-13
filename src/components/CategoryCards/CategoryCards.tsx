@@ -1,10 +1,12 @@
 import categoryAccessories from '../../assets/images/category-accessories.png';
 import categoryPhone from '../../assets/images/category-phones.png';
 import categoryTablet from '../../assets/images/category-tablet.png';
+
 import { CategoryCard } from '../CategoryCard/CategoryCard';
 
 import { Categories } from '../../types/Categories';
 import { Product } from '../../types/Product';
+
 import styles from './CategoryCards.module.scss';
 
 type Props = {
@@ -19,10 +21,10 @@ export const CategoryCards: React.FC<Props> = ({ products }) => {
   );
 
   return (
-    <section className={styles.CategoryCards}>
-      <p className={styles.CategoryCardsTitle}>Shop by category</p>
+    <section className={styles.categories}>
+      <p className={styles.title}>Shop by category</p>
 
-      <div className={styles.CategoryContent}>
+      <div className={styles.content}>
         <CategoryCard
           category="Mobile Phones"
           image={categoryPhone}

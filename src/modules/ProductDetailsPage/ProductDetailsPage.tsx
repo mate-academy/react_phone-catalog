@@ -94,9 +94,9 @@ export const ProductDetailsPage = () => {
 
       <ButtonBack />
 
-      <p className={styles.Title}>{productDetail?.name}</p>
+      <p className={styles.title}>{productDetail?.name}</p>
 
-      <section className={styles.ProductWrapper}>
+      <section className={styles.productWrapper}>
         <ProductDetailPictures images={productDetail?.images} />
         <ProductDetailPurchase
           products={products}
@@ -105,7 +105,7 @@ export const ProductDetailsPage = () => {
       </section>
 
       <section
-        className={cn(styles.ProductWrapper, styles.ProductWrapperPrimary)}
+        className={cn(styles.productWrapper, styles.productWrapperPrimary)}
       >
         <AboutProductDetail description={productDetail?.description} />
         <TechSpecsProduct productDetail={productDetail} />
