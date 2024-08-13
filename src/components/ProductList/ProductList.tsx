@@ -45,10 +45,15 @@ export const ProductList: React.FC<ProductListProps> = ( {category}) => {
   let arrayOfDisplayedIndexes = [];
 
   for (let i = firstDisplayedIndexOnPage; i < firstDisplayedIndexOnPage + numebrOfProductsPerPage; i++) {
-    arrayOfDisplayedIndexes.push(i)
+    arrayOfDisplayedIndexes.push(products[i])
+
+    if (arrayOfDisplayedIndexes[arrayOfDisplayedIndexes.length-1] === undefined) {
+      arrayOfDisplayedIndexes.pop();
+      break;
+    }
   }
 
-  console.log('array of diplay indexes',arrayOfDisplayedIndexes)
+  console.log('array of display indexes',arrayOfDisplayedIndexes)
 
   if (products.length === 0) {
     return <div>Loading...</div>;
@@ -61,7 +66,7 @@ export const ProductList: React.FC<ProductListProps> = ( {category}) => {
       <DropDown />
 
       <ul>
-        {products.map((product) => (
+        {arrayOfDisplayedIndexes.map((product) => (
           <li key={product.id}>
             <ProductCard product={product} />
           </li>
