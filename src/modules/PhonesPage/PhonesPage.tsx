@@ -1,6 +1,6 @@
 /* import { useLocation } from 'react-router-dom'; */
 import { ProductList } from '../../components/ProductList';
-import {Header} from '../../components/Header';
+import { Header } from '../../components/Header';
 
 
 
