@@ -18,6 +18,9 @@
         "react"
     ],
     "rules": {
-      "scss/at-import-partial-extension": "off"
+      "scss/at-import-partial-extension": "off",
+      "no-undef": "off",
+      "react/react-in-jsx-scope": "off",
+      "react/prop-types": "off"
     }
 }
