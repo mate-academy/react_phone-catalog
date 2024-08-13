@@ -3,6 +3,7 @@ import styles from './Pagination.module.scss'
 import ChevronIcon from '../../img/icons/ChevronIcon.svg'
 import classNames from 'classnames';
 
+// eslint-disable-next-line no-undef
 type PaginationProps = {
   numberOfPages: number;
   handleDisplayedPage: (newState: number) => void;
@@ -32,6 +33,7 @@ export const Pagination: React.FC<PaginationProps> = ({numberOfPages, handleDisp
 
       {arrayOfPageButtons.map(pageButton => (
         <button
+          key={pageButton}
           className={styles.button}
           onClick={() => handleDisplayedPage(pageButton)}
         >
