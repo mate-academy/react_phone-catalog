@@ -34,11 +34,14 @@ export const ProductList: React.FC<ProductListProps> = ( {category}) => {
   let numebrOfProductsPerPage = 20; //LINK WITH DROPDOWN LATER
   let numberOfPages = Math.ceil(numberOfProducts / numebrOfProductsPerPage)
 
-  const [displayedPage, setDisplayedPage] = useState(1);
+  let [displayedPage, setDisplayedPage] = useState(1);
   const handleDisplayedPage = (newState: number) => {
     setDisplayedPage(newState)
     console.log('WILL DISPLAY',newState)
   }
+
+
+
 
 
 
@@ -74,7 +77,7 @@ export const ProductList: React.FC<ProductListProps> = ( {category}) => {
         ))}
       </ul>
 
-      <Pagination numberOfPages = {numberOfPages} handleDisplayedPage={handleDisplayedPage}/>
+      <Pagination numberOfPages = {numberOfPages} handleDisplayedPage={handleDisplayedPage} displayedPage={displayedPage} />
     </div>
   );
 };
