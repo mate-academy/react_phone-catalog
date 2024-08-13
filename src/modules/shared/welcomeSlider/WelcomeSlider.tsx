@@ -51,21 +51,21 @@ export const WelcomeSlider = () => {
             />
           </SwiperSlide>
 
-          {/* <SwiperSlide className={styles.swiper__slide}>
+          <SwiperSlide className={styles.swiper__slide}>
             <img
               className={styles.swiper__img}
               src="/img/banner-2.jpg"
               alt="slide3"
             />
-          </SwiperSlide> */}
+          </SwiperSlide>
 
-          {/* <SwiperSlide className={styles.swiper__slide}>
+          <SwiperSlide className={styles.swiper__slide}>
             <img
               className={styles.swiper__img}
               src="/img/banner-3.jpg"
               alt="slide3"
             />
-          </SwiperSlide> */}
+          </SwiperSlide>
 
           <SwiperSlide className={styles.swiper__slide}>
             <img
