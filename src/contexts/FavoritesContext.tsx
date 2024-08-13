@@ -1,4 +1,4 @@
-import { ReactNode, createContext, useContext } from 'react';
+import { ReactNode, createContext, useCallback, useMemo } from 'react';
 import { Product } from '../types/Product';
 import { useLocalStorage } from '../hooks/useLocalStorage';
 
@@ -7,7 +7,7 @@ type FavoritesContextType = {
   toggleFavorite: (product: Product) => void;
 };
 
-const FavoritesContext = createContext<FavoritesContextType | undefined>(
+export const FavoritesContext = createContext<FavoritesContextType | undefined>(
   undefined,
 );
 
@@ -16,28 +16,29 @@ export const FavoritesProvider: React.FC<{ children: ReactNode }> = ({
 }) => {
   const [favorites, setFavorites] = useLocalStorage<Product[]>('favorites', []);
 
-  const toggleFavorite = (item: Product) => {
-    const isFavorite = favorites.some(favorite => favorite.id === item.id);
-    const updatedFavorites = isFavorite
-      ? favorites.filter(favorite => favorite.id !== item.id) // Remove from favorites
-      : [...favorites, item]; // Add to favorites
+  const toggleFavorite = useCallback(
+    (item: Product) => {
+      const isFavorite = favorites.some(favorite => favorite.id === item.id);
+      const updatedFavorites = isFavorite
+        ? favorites.filter(favorite => favorite.id !== item.id) // Remove from favorites
+        : [...favorites, item]; // Add to favorites
 
-    setFavorites(updatedFavorites);
-  };
+      setFavorites(updatedFavorites);
+    },
+    [favorites, setFavorites],
+  );
+
+  const value = useMemo(
+    () => ({
+      favorites,
+      toggleFavorite,
+    }),
+    [favorites, toggleFavorite],
+  );
 
   return (
-    <FavoritesContext.Provider value={{ favorites, toggleFavorite }}>
+    <FavoritesContext.Provider value={value}>
       {children}
     </FavoritesContext.Provider>
   );
-};
-
-export const useFavorites = () => {
-  const context = useContext(FavoritesContext);
-
-  if (!context) {
-    throw new Error('useFavorites must be used within a FavoritesProvider');
-  }
-
-  return context;
 };

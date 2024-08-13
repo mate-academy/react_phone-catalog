@@ -4,7 +4,7 @@ import styles from './ProductSlider.module.scss';
 import { Card } from '../Card';
 import { Icon } from '../ui/Icon';
 import { Product } from '../../types/Product';
-import { useFavorites } from '../../contexts/FavoritesContext';
+import { useFavorites } from '../../hooks/useFavorites';
 
 type ProductSliderProps = {
   title: string;

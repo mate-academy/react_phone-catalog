@@ -1,4 +1,4 @@
-import { useFavorites } from '../../contexts/FavoritesContext';
+import { useFavorites } from '../../hooks/useFavorites';
 import { Product } from '../../types/Product';
 import { Card } from '../Card';
 import styles from './ProductContent.module.scss';
@@ -23,18 +23,6 @@ export const ProductContent: React.FC<ProductContentProps> = ({ items }) => {
               />
             </li>
           ))}
-        {/* <li className={styles['product-content__item']}>
-          <Card />
-        </li>
-        <li className={styles['product-content__item']}>
-          <Card />
-        </li>
-        <li className={styles['product-content__item']}>
-          <Card />
-        </li>
-        <li className={styles['product-content__item']}>
-          <Card />
-        </li> */}
       </ul>
     </div>
   );

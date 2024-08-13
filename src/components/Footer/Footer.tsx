@@ -42,7 +42,7 @@ export const Footer = () => {
 
           <div className={styles.footer__buttons}>
             <p className="small-text">Back to top</p>
-            <a href="#home" className={classNames(styles.footer__btn)}>
+            <a href="#header" className={classNames(styles.footer__btn)}>
               <Icon iconName="up" />
             </a>
           </div>
