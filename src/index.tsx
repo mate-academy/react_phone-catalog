@@ -1,9 +1,4 @@
 import { createRoot } from 'react-dom/client';
-import { App } from './App';
-import { FavoritesProvider } from './contexts/FavoritesContext';
+import { Root } from './Root';
 
-createRoot(document.getElementById('root') as HTMLElement).render(
-  <FavoritesProvider>
-    <App />
-  </FavoritesProvider>,
-);
+createRoot(document.getElementById('root') as HTMLElement).render(<Root />);

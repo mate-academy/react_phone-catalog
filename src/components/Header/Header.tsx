@@ -2,121 +2,117 @@ import '../../styles/main.scss';
 import styles from './Header.module.scss';
 import classNames from 'classnames';
 import { Icon } from '../ui/Icon';
+import { Link, NavLink } from 'react-router-dom';
 
-type HeaderProps = {
-  activePage: string;
-  goToPage: (page: string) => void;
-};
+type HeaderProps = {};
 
-export const Header: React.FC<HeaderProps> = ({ activePage, goToPage }) => {
+export const Header: React.FC<HeaderProps> = () => {
   return (
     <div className={styles.header} id="header">
       <div className={styles.header__content}>
         <div className="top-bar">
-          <a href="#" className="top-bar__link">
+          <Link to="#" className="top-bar__link">
             <img src="./img/icons/logo.svg" className="logo" alt="logo" />
-          </a>
+          </Link>
 
           <nav className={classNames('nav', styles.header__nav)}>
             <ul className={classNames('nav__list', styles['header__nav-list'])}>
               <li
                 className={classNames('nav__item', styles['header__nav-item'])}
               >
-                <a
-                  href="#home"
-                  className={classNames(
-                    'uppercase-text nav__link',
-                    styles.header__link,
-                    { [styles['header__link--active']]: activePage === 'home' },
-                  )}
-                  onClick={() => goToPage('home')}
+                <NavLink
+                  to="/"
+                  className={({ isActive }) =>
+                    classNames(
+                      'uppercase-text nav__link',
+                      styles.header__link,
+                      { [styles['header__link--active']]: isActive },
+                    )
+                  }
                 >
                   Home
-                </a>
+                </NavLink>
               </li>
               <li
                 className={classNames('nav__item', styles['header__nav-item'])}
               >
-                <a
-                  href="#phones"
-                  className={classNames(
-                    'uppercase-text nav__link',
-                    styles.header__link,
-                    {
-                      [styles['header__link--active']]: activePage === 'phones',
-                    },
-                  )}
-                  onClick={() => goToPage('phones')}
+                <NavLink
+                  to="/phones"
+                  className={({ isActive }) =>
+                    classNames(
+                      'uppercase-text nav__link',
+                      styles.header__link,
+                      { [styles['header__link--active']]: isActive },
+                    )
+                  }
                 >
                   Phones
-                </a>
+                </NavLink>
               </li>
               <li
                 className={classNames('nav__item', styles['header__nav-item'])}
               >
-                <a
-                  href="#tablets"
-                  className={classNames(
-                    'uppercase-text nav__link',
-                    styles.header__link,
-                    {
-                      [styles['header__link--active']]:
-                        activePage === 'tablets',
-                    },
-                  )}
-                  onClick={() => goToPage('tablets')}
+                <NavLink
+                  to="/tablets"
+                  className={({ isActive }) =>
+                    classNames(
+                      'uppercase-text nav__link',
+                      styles.header__link,
+                      { [styles['header__link--active']]: isActive },
+                    )
+                  }
                 >
                   Tablets
-                </a>
+                </NavLink>
               </li>
               <li
                 className={classNames('nav__item', styles['header__nav-item'])}
               >
-                <a
-                  href="#accessories"
-                  className={classNames(
-                    'uppercase-text nav__link',
-                    styles.header__link,
-                    {
-                      [styles['header__link--active']]:
-                        activePage === 'accessories',
-                    },
-                  )}
-                  onClick={() => goToPage('accessories')}
+                <NavLink
+                  to="/accessories"
+                  className={({ isActive }) =>
+                    classNames(
+                      'uppercase-text nav__link',
+                      styles.header__link,
+                      { [styles['header__link--active']]: isActive },
+                    )
+                  }
                 >
                   Accessories
-                </a>
+                </NavLink>
               </li>
             </ul>
           </nav>
 
           <div className="top-bar__buttons">
-            <a
-              href="#favorites"
-              className={classNames(
-                styles.header__link,
-                {
-                  [styles['header__link--active']]: activePage === 'favorites',
-                },
-                styles['header__link--icon'],
-                'top-bar__icon-control',
-              )}
-              onClick={() => goToPage('favorites')}
+            <NavLink
+              to="/favorites"
+              className={({ isActive }) =>
+                classNames(
+                  'uppercase-text nav__link',
+                  styles.header__link,
+                  { [styles['header__link--active']]: isActive },
+                  styles['header__link--icon'],
+                  'top-bar__icon-control',
+                )
+              }
             >
               <Icon iconName="favorites" badgeInfo={12} />
-            </a>
-            <a
-              href="#cart"
-              className={classNames(
-                styles.header__link,
-                { [styles['header__link--active']]: activePage === 'cart' },
-                styles['header__link--icon'],
-                'top-bar__icon-control',
-              )}
-              onClick={() => goToPage('cart')}
+            </NavLink>
+            <NavLink
+              to="/cart"
+              className={({ isActive }) =>
+                classNames(
+                  'uppercase-text nav__link',
+                  styles.header__link,
+                  { [styles['header__link--active']]: isActive },
+                  styles['header__link--icon'],
+                  'top-bar__icon-control',
+                )
+              }
             >
               <Icon iconName="cart" />
-            </a>
+            </NavLink>
             <a
               href="#menu"
               className={classNames(

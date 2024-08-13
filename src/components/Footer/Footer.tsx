@@ -1,19 +1,20 @@
 import classNames from 'classnames';
 import styles from './Footer.module.scss';
 import { Icon } from '../ui/Icon';
+import { Link } from 'react-router-dom';
 
 export const Footer = () => {
   return (
     <footer className={styles.footer} id="footer">
       <div className="container">
         <div className={styles.footer__content}>
-          <a href="#" className={styles.footer__link}>
+          <Link to="/" className={styles.footer__link}>
             <img
               src="./img/icons/logo.svg"
               className={classNames('logo', styles.footer__icon)}
               alt="logo"
             />
-          </a>
+          </Link>
 
           <nav className={classNames(styles.nav, styles.footer__nav)}>
             <ul
@@ -23,18 +24,33 @@ export const Footer = () => {
               )}
             >
               <li className={styles['footer__nav-item']}>
-                <a href="#" className="nav__link uppercase-text">
+                <a
+                  href="https://github.com/SrTrace"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="nav__link uppercase-text"
+                >
                   Github
                 </a>
               </li>
               <li className={styles['footer__nav-item']}>
-                <a href="#" className="nav__link uppercase-text">
+                <a
+                  href="https://external-site.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="nav__link uppercase-text"
+                >
                   Contacts
                 </a>
               </li>
               <li className={styles['footer__nav-item']}>
-                <a href="#" className="nav__link uppercase-text">
-                  rights
+                <a
+                  href="https://external-site.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="nav__link uppercase-text"
+                >
+                  Rights
                 </a>
               </li>
             </ul>

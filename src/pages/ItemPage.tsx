@@ -69,7 +69,7 @@ export const ItemPage = () => {
             <a href="#" className="item-page__card-link">
               <img
                 className="item-page__card-image"
-                src="./img/phones/apple-iphone-7/black/00.webp"
+                src="../../public/img/phones/apple-iphone-7/black/00.webp"
                 alt="picture"
               />
             </a>
