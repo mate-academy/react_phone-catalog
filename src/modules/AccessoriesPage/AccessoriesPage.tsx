@@ -6,14 +6,14 @@ import { Header } from '../../components/Header';
 
 export const AccessoriesPage: React.FC = () => {
 
-const typeOfProduct = 'accessories';
+const category = 'accessories';
 
 
     return (
 
       <div>
         <Header />
-        <ProductList typeOfProduct = {typeOfProduct} />
+        <ProductList category = {category} />
       </div>
     );
 };

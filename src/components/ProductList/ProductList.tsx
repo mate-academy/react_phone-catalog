@@ -2,18 +2,19 @@ import React, { useEffect, useState } from 'react';
 import { ProductCard } from '../ProductCard';
 import { ProductPhone, ProductTablet, ProductAccessory } from '../../types/Product';
 import { DropDown } from '../DropDown';
+import { Pagination } from '../Pagination';
 
 type ProductListProps = {
-  typeOfProduct: string;
+  category: string;
 }
 
-export const ProductList: React.FC<ProductListProps> = ( {typeOfProduct}) => {
+export const ProductList: React.FC<ProductListProps> = ( {category}) => {
   const [products, setProducts] = useState<(ProductPhone | ProductTablet | ProductAccessory)[]>([]);
 
   useEffect(() => {
     const fetchProductData = async () => {
       try {
-        const response = await fetch(`../../api/${typeOfProduct}.json`);
+        const response = await fetch(`../../api/${category}.json`);
         const data = await response.json();
         setProducts(data);
       } catch (error) {
@@ -22,7 +23,7 @@ export const ProductList: React.FC<ProductListProps> = ( {typeOfProduct}) => {
     };
 
     fetchProductData();
-  }, [typeOfProduct]);
+  }, [category]);
 
   console.log('products after fetch:', products); // Log products after fetch
 
@@ -30,15 +31,21 @@ export const ProductList: React.FC<ProductListProps> = ( {typeOfProduct}) => {
     return <div>Loading...</div>;
   }
 
-  return (
 
-    <ul>
+
+  return (
+    <div>
       <DropDown />
-      {products.map((product) => (
-        <li key={product.id}>
-          <ProductCard product={product} /> {/* Pass product.id as productId */}
-        </li>
-      ))}
-    </ul>
+
+      <ul>
+        {products.map((product) => (
+          <li key={product.id}>
+            <ProductCard product={product} /> {/* Pass product.id as productId */}
+          </li>
+        ))}
+      </ul>
+
+      <Pagination />
+    </div>
   );
 };

@@ -3,12 +3,12 @@ import { ProductList } from '../../components/ProductList';
 import { Header } from '../../components/Header';
 
 export const TabletsPage: React.FC = () => {
-  const typeOfProduct = 'tablets';
+  const category = 'tablets';
    return (
 
       <div>
         <Header />
-        <ProductList typeOfProduct = {typeOfProduct} />
+        <ProductList category =  {category} />
       </div>
     );
 };
