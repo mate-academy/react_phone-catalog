@@ -3,6 +3,7 @@ import { ProductCard } from '../ProductCard';
 import { ProductPhone, ProductTablet, ProductAccessory } from '../../types/Product';
 import { DropDown } from '../DropDown';
 import { Pagination } from '../Pagination';
+import { Loader } from '../Loader'
 import styles from './ProductList.module.scss';
 
 type ProductListProps = {
@@ -28,6 +29,8 @@ export const ProductList: React.FC<ProductListProps> = ( {category}) => {
 
 
   }, [category]);
+
+
 
   console.log('products after fetch:', products); // Log products after fetch
   let numberOfProducts = products.length;
@@ -62,10 +65,14 @@ export const ProductList: React.FC<ProductListProps> = ( {category}) => {
 
   console.log('array of display indexes',arrayOfDisplayedIndexes)
 
-  if (products.length === 0) {
-    return <div>Loading...</div>;
-  }
 
+  if (products.length === 0) {
+    return (
+      <div>
+        <Loader />
+      </div>
+    );
+  }
 
 
   return (
