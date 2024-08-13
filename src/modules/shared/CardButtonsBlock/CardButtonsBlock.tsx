@@ -55,28 +55,6 @@ export const CardButtonsBlock: React.FC<Props> = ({ gadg }) => {
     }
   }, [favoritesArray, gadg, isDark, cartArray]);
 
-  useEffect(() => {
-    const cartButtonsBlock = document.getElementsByClassName(
-      styles.buttonsSection,
-    );
-
-    for (let i = 0; i < cartButtonsBlock.length; i++) {
-      const element = cartButtonsBlock[i] as HTMLElement;
-
-      if (isDark) {
-        element.style.setProperty('--primary-grey-color', '#905bff');
-        element.style.setProperty('--white-color', '#323542');
-        element.style.setProperty('--elements-grey-color', '#323542');
-        element.style.setProperty('--icons-grey-color', '#323542');
-      } else {
-        element.style.setProperty('--primary-grey-color', '#313237');
-        element.style.setProperty('--white-color', '#ffffff');
-        element.style.setProperty('--elements-grey-color', '#e2e6e9');
-        element.style.setProperty('--icons-grey-color', '#b4bdc4');
-      }
-    }
-  }, [isDark, favoritesArray]);
-
   const handleheartIco = () => {
     if (gadg !== null) {
       if (!favoritesArray.some(obj => obj.id === gadg.id)) {
@@ -136,7 +114,10 @@ export const CardButtonsBlock: React.FC<Props> = ({ gadg }) => {
           ${styles.blackButtonBase}
           ${styles.buttonAddToCatr}
           ${isInCatr && styles.added}
-          ${isDark && styles.addToCartDark} `}
+          ${isDark && styles.addToCartDark}
+          ${isDark && isInCatr && styles.addedToCartDark}
+
+        `}
       >
         {isInCatr ? 'Added' : 'Add to cart'}
       </button>
@@ -146,7 +127,8 @@ export const CardButtonsBlock: React.FC<Props> = ({ gadg }) => {
         className={`
           ${styles.buttonAddTofavorite}
           ${isDark && styles.addToFavouriteDark}
-          ${heartIco === './icons/heart-red-ico.svg' && isDark && styles.favourite}`}
+          ${heartIco === './icons/heart-red-ico.svg' && isDark && styles.favourite}
+        `}
       >
         <img src={heartIco} alt="add to favorites" />
       </button>

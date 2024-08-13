@@ -19,6 +19,26 @@
   }
 }
 
+.addToFavouriteDark {
+  border: none;
+  background-color: var(--dark-surface-2-color);
+
+  &:hover {
+    background-color: var(--dark-icons-color);
+    border: none;
+  }
+}
+
+.favourite {
+  background-color: var(--dark-black-color);
+  border: 1px solid var(--dark-elements-color);
+
+  &:hover {
+    background-color: var(--dark-black-color);
+    border: 1px solid var(--dark-elements-color);
+  }
+}
+
 .buttonAddToCatr {
   height: 40px;
   width: 100%;
@@ -38,24 +58,14 @@
 
 .addToCartDark {
   color: var(--dark-white-color);
+  background-color: var(--dark-accent-color);
 
   &:hover {
     background-color: var(--dark-accent-hover-color);
   }
 }
 
-.addToFavouriteDark {
-  &:hover {
-    background-color: var(--dark-icons-color);
-    border: none;
-  }
-}
-
-.favourite {
-  background-color: var(--dark-black-color);
-
-  &:hover {
-    background-color: var(--dark-black-color);
-    border: 1px solid var(--icons-grey-color);
-  }
+.addedToCartDark {
+  background-color: var(--dark-surface-2-color);
+  border: none;
 }
