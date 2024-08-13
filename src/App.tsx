@@ -5,8 +5,6 @@ import { ProductSlider } from './components/ProductSlider';
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
 import { Breadcrumbs } from './components/Breadcrumbs';
-import { Pagination } from './components/Pagination';
-
 
 export const App: React.FC = () => {
 
@@ -17,7 +15,6 @@ export const App: React.FC = () => {
       <Header />
       <Breadcrumbs />
       <ProductSlider />
-      <Pagination />
       <Footer />
       <Loader />
     </div>
