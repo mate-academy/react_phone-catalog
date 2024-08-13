@@ -3,6 +3,7 @@ import { ProductCard } from '../ProductCard';
 import { ProductPhone, ProductTablet, ProductAccessory } from '../../types/Product';
 import { DropDown } from '../DropDown';
 import { Pagination } from '../Pagination';
+import styles from './ProductList.module.scss';
 
 type ProductListProps = {
   category: string;
@@ -62,12 +63,12 @@ export const ProductList: React.FC<ProductListProps> = ( {category}) => {
 
 
   return (
-    <div>
+    <div className={styles.ProductsPage}>
       <DropDown />
 
-      <ul>
+      <ul className={styles.container}>
         {arrayOfDisplayedIndexes.map((product) => (
-          <li key={product.id}>
+          <li key={product.id} className={styles.product}>
             <ProductCard product={product} />
           </li>
         ))}
