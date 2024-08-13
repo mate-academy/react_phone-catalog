@@ -1,11 +1,11 @@
 import './ProductCard.module.scss';
 import { ActionButtons } from '../ActionButtons';
-import { ProductPhone, ProductTablet } from '../../types/Product';
+import { ProductPhone, ProductTablet, ProductAccessory } from '../../types/Product';
 import { Link } from 'react-router-dom';
 import styles from './ProductCard.module.scss';
 
 type ProductCardProps = {
-  product: ProductPhone | ProductTablet;
+  product: ProductPhone | ProductTablet | ProductAccessory;
 };
 
 export const ProductCard: React.FC<ProductCardProps> = ({product}) => {

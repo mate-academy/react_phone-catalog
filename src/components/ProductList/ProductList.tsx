@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { ProductCard } from '../ProductCard';
-import { ProductPhone, ProductTablet } from '../../types/Product';
+import { ProductPhone, ProductTablet, ProductAccessory } from '../../types/Product';
 
 type ProductListProps = {
   typeOfProduct: string;
 }
 
 export const ProductList: React.FC<ProductListProps> = ( {typeOfProduct}) => {
-  const [products, setProducts] = useState<(ProductPhone | ProductTablet)[]>([]);
+  const [products, setProducts] = useState<(ProductPhone | ProductTablet | ProductAccessory)[]>([]);
 
   useEffect(() => {
     const fetchProductData = async () => {

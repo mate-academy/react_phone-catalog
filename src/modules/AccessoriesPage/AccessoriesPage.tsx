@@ -1,16 +1,20 @@
-import React from 'react';
-/* import { useLocation } from 'react-router-dom'; */
-/* import { ProductList } from '../../components/ProductList'; */
-import {Header} from '../../components/Header';
+import { ProductList } from '../../components/ProductList';
+import { Header } from '../../components/Header';
+
+
+
+
 export const AccessoriesPage: React.FC = () => {
+
+const typeOfProduct = 'accessories';
+
 
     return (
 
       <div>
         <Header />
-      Accessories - test
-  {/*     <ProductList /> */}
-
+        <ProductList typeOfProduct = {typeOfProduct} />
       </div>
     );
 };
+
