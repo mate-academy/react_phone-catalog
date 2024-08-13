@@ -1,0 +1,25 @@
+@use './mixins' as *;
+@import './fonts';
+
+$font-family: Mont, Helvetica, sans-serif;
+$color-primary: #313237;
+$color-elements: #e2e6e9;
+$color-secondary: #89939a;
+$color-icons-placeholders: #b4bdc3;
+$color-hover: #fafbfc;
+$color-black: #000;
+$color-white: #fff;
+$color-green: #27ae60;
+$color-red: #eb5757;
+$gap-small: 16px;
+$gap-medium: 24px;
+$gap-large: 32px;
+$gap-xl: 48px;
+$gap-2xl: 56px;
+$side-padding-16: 0 16px;
+$side-padding-24: 0 24px;
+$padding-small: 16px;
+$padding-medium: 24px;
+$padding-large: 32px;
+$padding-xl: 48px;
+$padding-2xl: 56px;

@@ -1,0 +1,84 @@
+@use '../../../../utils/mixins' as *;
+@use '../../../../utils/variables' as *;
+
+.product-slider {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  width: 100%;
+
+  grid-template-rows: auto;
+
+  row-gap: 24px;
+  overflow: hidden;
+}
+
+.slider-top {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+
+  box-sizing: border-box;
+  padding: $side-padding-16;
+
+  @include for-tablet {
+    padding: $side-padding-24;
+  }
+
+  @include for-desktop {
+    padding: 0;
+  }
+
+  &__title {
+    font-family: $font-family;
+    font-size: 22px;
+    font-weight: 800;
+    line-height: 30.8px;
+    text-align: left;
+    color: $color-primary;
+  }
+
+  &__nav {
+    display: flex;
+    gap: 16px;
+    grid-column: -3 / -1;
+  }
+}
+
+.arrow-button {
+  width: 32px;
+  height: 32px;
+  background-color: transparent;
+  border: 1px solid $color-elements;
+
+  &--active {
+    border: 1px solid $color-icons-placeholders;
+
+    &:hover {
+      border-color: $color-primary;
+    }
+  }
+}
+
+.cards {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 16px;
+
+  padding: 0 0 0 $padding-small;
+
+  @include for-tablet {
+    padding: 0 0 0 $padding-medium;
+  }
+
+  @include for-desktop {
+    padding: 0;
+  }
+
+  &__container {
+    flex-grow: 1;
+
+    max-width: 272px;
+  }
+}

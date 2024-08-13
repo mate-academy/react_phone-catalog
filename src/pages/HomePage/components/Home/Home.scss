@@ -1,0 +1,129 @@
+@use '../../../../utils/mixins' as *;
+@use '../../../../utils/variables' as *;
+
+.main {
+  flex-grow: 1;
+
+  @include for-tablet {
+    gap: 64px;
+  }
+
+  @include for-desktop {
+    @include grid;
+
+    row-gap: 80px;
+  }
+
+  &__section {
+    padding-top: 24px;
+
+    @include for-tablet {
+      padding-top: $padding-large;
+    }
+
+    @include for-desktop {
+      grid-column: span 24;
+    }
+  }
+}
+
+.main-section {
+  display: flex;
+  flex-direction: column;
+  gap: $gap-medium;
+
+  @include for-tablet {
+    padding-top: $padding-large;
+
+    gap: $gap-large;
+  }
+
+  @include for-desktop {
+    padding-top: $padding-2xl;
+
+    gap: $gap-2xl !important;
+  }
+
+  &__title {
+    padding: $side-padding-16;
+
+    @include for-tablet {
+      padding: $side-padding-24;
+    }
+  }
+
+  &__slider {
+    width: 100vw;
+    height: 100vw;
+
+    box-sizing: border-box;
+    padding: 0;
+
+    @include for-tablet {
+      width: 100%;
+      height: 221px;
+
+      padding: $side-padding-24;
+    }
+
+    @include for-desktop {
+      padding: 0;
+      height: 432px;
+    }
+  }
+
+  @include for-tablet {
+    gap: 32px;
+  }
+}
+
+.section {
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  &__title {
+    font-family: $font-family;
+    font-size: 22px;
+    font-weight: 800;
+    line-height: 30.8px;
+    text-align: left;
+
+    grid-column: span 4;
+
+    color: $color-primary;
+  }
+}
+
+.title-container {
+  @include grid;
+
+  grid-template-rows: auto;
+
+  &__title {
+    grid-column: 1 / 5;
+
+    @include for-tablet {
+      grid-column: 1 / 10;
+    }
+
+    @include for-desktop {
+      grid-column: span 24;
+    }
+  }
+}
+
+.category-section {
+  display: flex;
+  gap: $gap-medium;
+
+  &__title {
+    grid-column: 1 / 13;
+  }
+
+  &__content {
+    width: 100%;
+  }
+}

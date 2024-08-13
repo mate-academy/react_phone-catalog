@@ -1,0 +1,60 @@
+@use '../../../utils/variables' as *;
+@use '../../../utils/mixins' as *;
+
+.product-descriptions {
+  @include grid;
+
+  @include for-desktop {
+    grid-template-columns: repeat(12, 1fr);
+  }
+
+  row-gap: 32px;
+
+  &__top {
+    grid-column: 1 / 5;
+
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    @include for-tablet {
+      grid-column: 1 / 13;
+    }
+  }
+
+  &__divider {
+    width: 100%;
+    height: 1px;
+    background-color: $color-elements;
+    border: none;
+
+    margin: 0;
+
+    @include for-tablet {
+      grid-column: 1 / 13;
+    }
+  }
+
+  &__description-pair {
+    grid-column: 1 / 5;
+
+    @include for-tablet {
+      grid-column: 1 / 13;
+    }
+  }
+}
+
+.description-pair {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  &__info-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  &__info {
+    color: $color-secondary;
+  }
+}

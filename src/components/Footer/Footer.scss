@@ -1,0 +1,98 @@
+@use '../../utils/variables' as *;
+@use '../../utils/mixins' as *;
+
+.footer {
+  @include grid;
+
+  row-gap: 32px;
+
+  margin-top: 64px;
+  padding: 32px 16px;
+  border-top: 1px solid $color-elements;
+
+  @include for-tablet {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding-left: $padding-medium;
+    padding-right: $padding-medium;
+  }
+
+  &__logo {
+    grid-column: 1 / 5;
+    height: 32.25px;
+
+    display: flex;
+  }
+  &__nav {
+    grid-column: 1 / 5;
+  }
+  &__top-link {
+    grid-column: 1 / 5;
+  }
+}
+
+.footer-nav {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: $gap-small;
+
+  @include for-tablet {
+    flex-direction: row;
+    align-items: center;
+
+    height: 32px;
+  }
+
+  &__item {
+    font-family: $font-family;
+    font-size: 12px;
+    font-weight: 800;
+    line-height: 11px;
+    letter-spacing: 0.04em;
+    text-align: left;
+    text-transform: uppercase;
+    color: $color-secondary;
+    text-decoration: none;
+
+    transition: 0.3s all ease-in-out;
+
+    &:hover {
+      color: $color-primary;
+      transition: 0.25s all ease-in-out;
+    }
+  }
+}
+
+.top-link {
+  grid-column: 2 / 4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: $gap-small;
+
+  &__text {
+    font-family: $font-family;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 15.34px;
+    text-align: right;
+
+    background-color: transparent;
+    border: none;
+
+    color: $color-secondary;
+    text-decoration: none;
+  }
+
+  &__button {
+    transition: all 1s ease-in-out;
+
+    &:hover {
+      transform: translateY(-10px);
+      transition: all 1s ease-in-out;
+    }
+  }
+}

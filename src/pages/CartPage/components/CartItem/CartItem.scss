@@ -1,0 +1,82 @@
+@use '../../../../utils/variables' as *;
+@use '../../../../utils/mixins' as *;
+
+.cart-item {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  width: 100%;
+  box-sizing: border-box;
+  padding: $padding-small;
+
+  border: 1px solid $color-elements;
+
+  @include for-tablet {
+    flex-direction: row;
+    justify-content: space-between;
+    padding: $padding-medium;
+  }
+}
+
+.cart-item-main {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+
+  &__remove-button {
+    background: none;
+    border: none;
+  }
+
+  &__image {
+    max-height: 80px;
+  }
+  &__name-link {
+    text-decoration: none;
+  }
+  &__name {
+    color: $color-primary;
+  }
+}
+
+.cart-item-details {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  @include for-tablet {
+    gap: 53px;
+  }
+
+  &__quantity {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+  }
+
+  &__price {
+    // styleName: Desktop & Tablet/H3;
+    font-family: $font-family;
+    font-size: 22px;
+    font-weight: 800;
+    line-height: 30.8px;
+
+    color: $color-black;
+  }
+
+  &__button {
+    height: 32px;
+    width: 32px;
+
+    border: 1px solid $color-elements;
+
+    &--active {
+      border-color: $color-icons-placeholders;
+
+      &:hover {
+        border-color: $color-primary;
+      }
+    }
+  }
+}

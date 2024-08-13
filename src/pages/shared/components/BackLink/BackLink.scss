@@ -1,0 +1,43 @@
+@use '../../../../utils/variables' as *;
+
+.back-link {
+  grid-column: 1 / 2;
+  justify-self: start;
+
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+  gap: 4px;
+
+  padding: 0;
+  height: 16px;
+
+  background-color: transparent;
+  border: none;
+
+  color: $color-secondary;
+
+  &:hover {
+    color: $color-primary;
+  }
+
+  &__image-wrapper {
+    height: 16px;
+    width: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__text {
+    height: 15px;
+    font-family: $font-family;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 15.34px;
+    text-align: left;
+
+    display: flex;
+    align-items: flex-start;
+  }
+}
