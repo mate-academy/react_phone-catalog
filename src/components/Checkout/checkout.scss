@@ -1,0 +1,69 @@
+@import '../../styles/main';
+
+.priceContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 206px;
+
+  border: 1px solid #E2E6E9;
+  padding: 24px;
+
+  @include tablet {
+    margin-bottom: 64px;
+  }
+
+  @include phone {
+    margin-bottom: 56px;
+  }
+
+  &__totalPrice {
+    @extend %h1-text;
+
+    text-align: center;
+    color: var(--color-primary);
+  }
+
+  &__info {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    text-align: center;
+    color: #89939A;
+    margin-bottom: 48px;
+  }
+
+  &__btn {
+    position: relative;
+    width: 320px;
+    height: 48px;
+    background-color: $color-blue;
+
+    @extend %buttons-text;
+
+    text-align: center;
+    color: #FFF;
+    border-radius: 8px;
+    transition: all 0.5s;
+
+    &::before {
+      position: absolute;
+      top: -24px;
+      left: 0;
+      right: 0;
+      content: "";
+      height: 1px;
+      background-color: #E2E6E9;
+    }
+
+    &:hover {
+      box-shadow: 3px 13px rgba(23, 32, 49, 0.26)
+    }
+
+    &:active {
+      border: 1px solid #E2E6E9;
+      color: #27AE60;
+      background-color: #fff;
+    }
+  }
+}

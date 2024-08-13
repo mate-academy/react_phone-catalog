@@ -1,0 +1,133 @@
+@import '../../styles/main';
+
+.card {
+  box-sizing: border-box;
+  padding: 32px;
+  border: 1px solid #E2E6E9;
+  border-radius: 8px;
+  font-family: Mont, sans-serif;
+  background-color: var(--color-backgroundheaderfooter);
+  display: flex;
+  flex-direction: column;
+  flex-grow: 0;
+  flex-shrink: 0;
+  transition: all 0.5s;
+
+  &:last-of-type {
+    margin-right: 0;
+  }
+
+  &:hover {
+    box-shadow: 0.01px 3px 13px rgba(23, 32, 49, 0.26)
+  }
+
+  &__imageContainer {
+    box-sizing: border-box;
+    padding: 0 8px;
+    max-width: fit-content;
+    align-self: center;
+    height: 196px;
+    margin: 0 auto;
+    margin-bottom: 24px;
+
+    @include phone {
+      height: 130px;
+    }
+  }
+
+  &__image {
+    width: 100%;
+    height: 100%;
+  }
+
+  &__item {
+    height: 42px;
+
+    @extend %body-text;
+
+    color: var(--color-primary);
+    margin-bottom: 7px;
+  }
+
+  &__price {
+    position: relative;
+    margin-bottom: 23px;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+
+    &__text {
+      font-family: Mont-Bold, arial, helvetica, sans-serif;
+      font-weight: 800;
+      font-size: 22px;
+      line-height: 30.8px;
+      color: var(--color-primary);
+    }
+
+    &::after {
+      position: absolute;
+      bottom: -7px;
+      left: 0;
+      right: 0;
+      content: "";
+      height: 1px;
+      background-color: #E2E6E9;
+    }
+
+    &__sale {
+      @extend %old-price-text;
+
+      text-decoration-line: line-through;
+
+      color: $color-secondary;
+
+    }
+  }
+
+  &__description {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 16px;
+
+    &__items {
+      @extend %small-text;
+
+      color: $color-secondary;
+    }
+
+    &__item {
+      margin-bottom: 8px;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+
+    &__values {
+      display: flex;
+      flex-direction: column;
+
+      @extend %small-text-bold;
+
+      color: var(--color-primary);
+    }
+
+    &__value {
+      text-align: right;
+      margin-bottom: 8px;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  &__shopContainer {
+    display: flex;
+    justify-content: space-between;
+
+    @include desktop {
+      gap: 8px;
+    }
+  }
+}

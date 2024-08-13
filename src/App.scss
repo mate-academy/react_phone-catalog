@@ -1,1 +1,43 @@
-// not empty
+@import './styles/main';
+
+.App {
+  background-color: $color-background;
+}
+
+.light-theme {
+  --color-background: #fafbfc;
+  --color-backgroundheaderfooter: #fff;
+  --color-primary:#313237;
+  --color-secondary: #89939a;
+}
+
+.dark-theme {
+  --color-background: #333;
+  --color-backgroundheaderfooter: #333;
+  --color-secondary: #89939a;
+  --color-primary:#fafbfc;
+}
+
+.div {
+  background-color: var(--color-background);
+}
+
+.div .footer .card {
+  background-color: var(--color-backgroundheaderfooter);
+}
+
+.div .header {
+  background-color: var(-color-backgroundheaderfooter);
+}
+
+.div .nav__link .nav__link:hover .footer__nav__item .footer__nav__item:hover {
+  color: var(--color-primary);
+}
+
+.div .sliderSwiper{
+  color: var(--color-primary);
+}
+
+.div .accessoriesPage .phonesPage .tabletsPage .productDetails {
+  color: var(--color-primary);
+}

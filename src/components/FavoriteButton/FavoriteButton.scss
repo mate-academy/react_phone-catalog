@@ -1,0 +1,22 @@
+@import '../../styles/main';
+
+.favoritesButton {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #B4BDC4;
+  border-radius: 48px;
+  transition: all 0.5s;
+  background-color: #fff;
+
+  &:hover {
+    border: 1px solid $color-primary;
+  }
+}
+
+.favoritesImage {
+  width: 15.34px;
+  height: 13.55px;
+}
