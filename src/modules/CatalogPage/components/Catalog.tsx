@@ -191,10 +191,24 @@ export const Catalog: React.FC = () => {
           <div id="catalogId" className={styles.catalog}>
             <div className={styles.catalog__path}>
               <Link to="/">
-                <img src="./icons/home-ico.svg" alt="home" />
+                {isDark ? (
+                  <img src="./icons/dark-theme-icons/home-ico.svg" alt="home" />
+                ) : (
+                  <img src="./icons/home-ico.svg" alt="home" />
+                )}
               </Link>
 
-              <img src="./icons/arrow-right-light-ico.svg" alt="arrow-right" />
+              {isDark ? (
+                <img
+                  src="./icons/dark-theme-icons/arrow-right-ico.svg"
+                  alt="arrow-right"
+                />
+              ) : (
+                <img
+                  src="./icons/arrow-right-light-ico.svg"
+                  alt="arrow-right"
+                />
+              )}
 
               <p className={styles.catalog__pathCategory}>
                 {location.pathname.slice(1)}

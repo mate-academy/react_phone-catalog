@@ -96,27 +96,19 @@ export const PagesSwitcher: React.FC<PagesSwitcherProps> = ({
     root.style.setProperty('--page-starts-from', `${newPosition}px`);
   };
 
-  const arrowLeftHandling = () => {
-    if (disablePagesArrow === 'disableLeft' && !isDark) {
-      return <img src="./icons/arrow-left-light-ico.svg" alt="arrow-left" />;
-    } else if (disablePagesArrow === 'disableLeft' && isDark) {
-      return <img src="./icons/arrow-left-ico.svg" alt="arrow-left" />;
-    } else if (disablePagesArrow !== 'disableLeft' && !isDark) {
-      return <img src="./icons/arrow-left-ico.svg" alt="arrow-left" />;
+  const numbersButtonStyles = (currentPage: number) => {
+    if (!isDark) {
+      if (currentPage - 1 === showFrom / +perPage) {
+        return styles.numberOn;
+      } else {
+        return styles.numberOff;
+      }
     } else {
-      return <img src="./icons/arrow-left-light-ico.svg" alt="arrow-left" />;
-    }
-  };
-
-  const arrowRightHandling = () => {
-    if (disablePagesArrow === 'disableRight' && !isDark) {
-      return <img src="./icons/arrow-right-light-ico.svg" alt="arrow-left" />;
-    } else if (disablePagesArrow === 'disableRight' && isDark) {
-      return <img src="./icons/aroow-right-ico.svg" alt="arrow-left" />;
-    } else if (disablePagesArrow !== 'disableRight' && !isDark) {
-      return <img src="./icons/aroow-right-ico.svg" alt="arrow-left" />;
-    } else {
-      return <img src="./icons/arrow-right-light-ico.svg" alt="arrow-left" />;
+      if (currentPage - 1 === showFrom / +perPage) {
+        return styles.darkNumberOn;
+      } else {
+        return styles.darkNumberOff;
+      }
     }
   };
 
@@ -127,9 +119,21 @@ export const PagesSwitcher: React.FC<PagesSwitcherProps> = ({
           {perPage !== 'all' && Math.ceil(models / +perPage) > 4 && (
             <button
               onClick={handlePagesLeft}
-              className={`${styles.pages__arrowButton} ${disablePagesArrow === 'disableLeft' && styles.disabledArrow}`}
+              className={`
+                ${styles.pages__arrowButton}
+                ${isDark && styles.darkArrowButton}
+                ${disablePagesArrow === 'disableLeft' && styles.disabledArrow}
+                ${disablePagesArrow === 'disableLeft' && isDark && styles.darkDisabledArrow}
+                `}
             >
-              {arrowLeftHandling()}
+              {isDark ? (
+                <img
+                  src="./icons/dark-theme-icons/white-arrow-left-ico.svg"
+                  alt="arrow-left"
+                />
+              ) : (
+                <img src="./icons/arrow-left-ico.svg" alt="arrow-left" />
+              )}
             </button>
           )}
 
@@ -139,7 +143,12 @@ export const PagesSwitcher: React.FC<PagesSwitcherProps> = ({
                 <button
                   onClick={() => handlePageButton(currentPage)}
                   key={currentPage}
-                  className={`${styles.pages__number} ${currentPage - 1 === showFrom / +perPage ? styles.numberOn : styles.numberOff}`}
+                  className={`
+                    ${styles.pages__number}
+                    ${isDark && styles.darkPagesNumber}
+                    ${numbersButtonStyles(currentPage)}
+
+                  `}
                 >
                   {currentPage}
                 </button>
@@ -150,9 +159,22 @@ export const PagesSwitcher: React.FC<PagesSwitcherProps> = ({
           {perPage !== 'all' && Math.ceil(models / +perPage) > 4 && (
             <button
               onClick={handlePagesRight}
-              className={`${styles.pages__arrowButton} ${disablePagesArrow === 'disableRight' && styles.disabledArrow}`}
+              className={`
+                ${styles.pages__arrowButton}
+                ${disablePagesArrow === 'disableRight' && styles.disabledArrow}
+                ${isDark && styles.darkArrowButton}
+                ${disablePagesArrow === 'disableRight' && isDark && styles.darkDisabledArrow}
+
+                `}
             >
-              {arrowRightHandling()}
+              {isDark ? (
+                <img
+                  src="./icons/dark-theme-icons/white-arrow-right-ico.svg"
+                  alt="arrow-right"
+                />
+              ) : (
+                <img src="./icons/aroow-right-ico.svg" alt="arrow-right" />
+              )}
             </button>
           )}
         </div>

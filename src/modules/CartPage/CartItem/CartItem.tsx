@@ -127,6 +127,7 @@ export const CartItem: React.FC<CatrItemType> = ({ gadget }) => {
             alt="product-photo"
           />
         </Link>
+
         <Link
           to={`/${gadget.category}/${gadget.itemId}`}
           className={styles.item__name}
@@ -147,7 +148,14 @@ export const CartItem: React.FC<CatrItemType> = ({ gadget }) => {
               ${isDark && isMinusDisabled && styles.disabledDark}
               `}
           >
-            <img src="./icons/minus-ico.svg" alt="minus-ico" />
+            {isDark ? (
+              <img
+                src="./icons/dark-theme-icons/minus-ico.svg"
+                alt="plus-ico"
+              />
+            ) : (
+              <img src="./icons/minus-ico.svg" alt="minus-ico" />
+            )}
           </button>
 
           <p className={styles.quantity__number}>{numberOfSameGadget}</p>
@@ -156,7 +164,11 @@ export const CartItem: React.FC<CatrItemType> = ({ gadget }) => {
             onClick={handlePlusItem}
             className={`${styles.quantity__button} ${isDark && styles.buttonDark}`}
           >
-            <img src="./icons/plus-ico.svg" alt="plus-ico" />
+            {isDark ? (
+              <img src="./icons/dark-theme-icons/plus-ico.svg" alt="plus-ico" />
+            ) : (
+              <img src="./icons/plus-ico.svg" alt="plus-ico" />
+            )}
           </button>
         </div>
 

@@ -46,7 +46,7 @@ export const WelcomeSlider = () => {
           <SwiperSlide className={styles.swiper__slide}>
             <img
               className={styles.swiper__img}
-              src="/img/banner-1.png"
+              src="./img/banner-1.png"
               alt="slide1"
             />
           </SwiperSlide>
@@ -54,7 +54,7 @@ export const WelcomeSlider = () => {
           <SwiperSlide className={styles.swiper__slide}>
             <img
               className={styles.swiper__img}
-              src="/img/banner-2.jpg"
+              src="./img/banner-2.jpg"
               alt="slide3"
             />
           </SwiperSlide>
@@ -62,7 +62,7 @@ export const WelcomeSlider = () => {
           <SwiperSlide className={styles.swiper__slide}>
             <img
               className={styles.swiper__img}
-              src="/img/banner-3.jpg"
+              src="./img/banner-3.jpg"
               alt="slide3"
             />
           </SwiperSlide>
@@ -70,7 +70,7 @@ export const WelcomeSlider = () => {
           <SwiperSlide className={styles.swiper__slide}>
             <img
               className={styles.swiper__img}
-              src="/img/banner-4.png"
+              src="./img/banner-4.png"
               alt="slide3"
             />
           </SwiperSlide>
@@ -88,7 +88,7 @@ export const WelcomeSlider = () => {
         </button>
       </div>
 
-      <div id="banner-container-of-bullets" className={styles.pagination}></div>
+      <div className={styles.pagination}></div>
     </>
   );
 };

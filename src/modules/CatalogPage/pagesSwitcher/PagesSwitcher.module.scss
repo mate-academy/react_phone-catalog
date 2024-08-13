@@ -53,10 +53,33 @@
   color: var(--primary-grey-color);
 }
 
+.darkNumberOff {
+  border: none;
+  background-color: var(--dark-surface-1-color);
+
+  &:hover {
+    background-color: var(--dark-elements-color);
+    border: none;
+  }
+}
+
 .numberOn {
   background-color: var(--primary-grey-color);
   border: 1px solid var(--primary-grey-color);
   color: var(--white-color);
+}
+
+.darkNumberOn {
+  border: none;
+  background-color: var(--dark-accent-color);
+
+  &:hover {
+    border: none;
+  }
+}
+
+.darkPagesNumber {
+  color: var(--dark-white-color);
 }
 
 .disabledArrow {
@@ -64,4 +87,19 @@
   pointer-events: none;
   cursor: not-allowed;
   opacity: 0.5;
+}
+
+.darkArrowButton {
+  background-color: var(--dark-surface-2-color);
+  border: none;
+
+  &:hover {
+    background-color: var(--dark-icons-color);
+    border: none;
+  }
+}
+
+.darkDisabledArrow {
+  background-color: var(--dark-black-color);
+  border: 1px solid var(--dark-elements-color);
 }
