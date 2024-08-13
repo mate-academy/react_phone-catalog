@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { ProductCard } from '../ProductCard';
 import { ProductPhone, ProductTablet, ProductAccessory } from '../../types/Product';
+import { DropDown } from '../DropDown';
 
 type ProductListProps = {
   typeOfProduct: string;
@@ -30,7 +31,9 @@ export const ProductList: React.FC<ProductListProps> = ( {typeOfProduct}) => {
   }
 
   return (
+
     <ul>
+      <DropDown />
       {products.map((product) => (
         <li key={product.id}>
           <ProductCard product={product} /> {/* Pass product.id as productId */}
