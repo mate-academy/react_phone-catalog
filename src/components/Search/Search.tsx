@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './Search.module.scss'
+import styles from './Search.module.scss';
 
 export const Search: React.FC = () => {
   return (
@@ -11,5 +11,5 @@ export const Search: React.FC = () => {
         className={styles.searchInput}
       />
     </div>
-  )
-}
+  );
+};

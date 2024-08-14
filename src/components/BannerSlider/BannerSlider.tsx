@@ -1,50 +1,36 @@
+import React, { useState } from 'react';
 import styles from './BannerSlider.module.scss';
 import ChevronIcon from '../../img/icons/ChevronIcon.svg';
-import React, {useState} from 'react';
-
-
 
 export const BannerSlider: React.FC = () => {
-
   const sliderImages = [
     './img/banner-1.png',
     './img/banner-2.png',
-    './img/banner-3.png'
-  ]
+    './img/banner-3.png',
+  ];
 
-  let [displayedImageIndex, setDisplayedImageIndex] = useState(0)
+  const [displayedImageIndex, setDisplayedImageIndex] = useState(0);
 
   const incrementDisplayedImageIndex = () => {
-    if(displayedImageIndex === sliderImages.length-1) {
-      displayedImageIndex = 0;
-
-    } else {
-      displayedImageIndex++
-
-    }
-    setDisplayedImageIndex(displayedImageIndex)
-  }
+    setDisplayedImageIndex(prevIndex =>
+      prevIndex === sliderImages.length - 1 ? 0 : prevIndex + 1
+    );
+  };
 
   const decrementDisplayedImageIndex = () => {
-    if(displayedImageIndex === 0) {
-      displayedImageIndex = (sliderImages.length-1)
+    setDisplayedImageIndex(prevIndex =>
+      prevIndex === 0 ? sliderImages.length - 1 : prevIndex - 1
+    );
+  };
 
-    } else {
-      displayedImageIndex--
-
-    }
-    setDisplayedImageIndex(displayedImageIndex)
-  }
-
-    setTimeout(incrementDisplayedImageIndex,3000);
-
+  setTimeout(incrementDisplayedImageIndex, 3000);
 
   return (
     <div className={styles.bannerSlider}>
       <div className={styles.topWrapper}>
         <div className={styles.buttons}>
           <button className={styles.arrowButton} onClick={decrementDisplayedImageIndex}>
-            <img src={ChevronIcon} alt="scroll" className={styles.iconPrev} />
+            <img src={ChevronIcon} alt="scroll left" className={styles.iconPrev} />
           </button>
 
           <div className={styles.container}>
@@ -59,7 +45,7 @@ export const BannerSlider: React.FC = () => {
           </div>
 
           <button className={styles.arrowButton} onClick={incrementDisplayedImageIndex}>
-            <img src={ChevronIcon} alt="scroll" className={styles.iconNext} />
+            <img src={ChevronIcon} alt="scroll right" className={styles.iconNext} />
           </button>
         </div>
       </div>

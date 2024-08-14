@@ -1,53 +1,46 @@
 import React from 'react';
-import styles from './Pagination.module.scss'
-import ChevronIcon from '../../img/icons/ChevronIcon.svg'
+import styles from './Pagination.module.scss';
+import ChevronIcon from '../../img/icons/ChevronIcon.svg';
 import classNames from 'classnames';
-
 
 type PaginationProps = {
   numberOfPages: number;
   handleDisplayedPage: (newState: number) => void;
+  displayedPage: number;
+};
 
-  displayedPage: number
-}
+export const Pagination: React.FC<PaginationProps> = ({
+  numberOfPages,
+  handleDisplayedPage,
+  displayedPage,
+}) => {
+  const arrayOfPageButtons = [];
 
-export const Pagination: React.FC<PaginationProps> = ({numberOfPages, handleDisplayedPage, displayedPage}) => {
-  let arrayOfPageButtons = [];
   for (let i = 1; i <= numberOfPages; i++) {
-    arrayOfPageButtons.push(i)
+    arrayOfPageButtons.push(i);
   }
 
-  console.log(arrayOfPageButtons)
+  console.log(arrayOfPageButtons);
 
   const handleLeftArrowButtons = () => {
-    console.log('before',displayedPage)
-    if((displayedPage - 1) < 1) {
-      displayedPage = 1
-    } else {
-      displayedPage = displayedPage - 1
-    }
-    console.log('after',displayedPage)
-    handleDisplayedPage(displayedPage)
-  }
+    console.log('before', displayedPage);
+    const newPage = displayedPage - 1 < 1 ? 1 : displayedPage - 1;
+    console.log('after', newPage);
+    handleDisplayedPage(newPage);
+  };
 
   const handleRightArrowButtons = () => {
-    console.log('before',displayedPage)
-    if((displayedPage + 1) > numberOfPages) {
-      displayedPage = numberOfPages
-    } else {
-      displayedPage = displayedPage + 1
-    }
-    console.log('after',displayedPage)
-    handleDisplayedPage(displayedPage)
-  }
+    console.log('before', displayedPage);
+    const newPage = displayedPage + 1 > numberOfPages ? numberOfPages : displayedPage + 1;
+    console.log('after', newPage);
+    handleDisplayedPage(newPage);
+  };
 
   return (
     <ul className={styles.pagination}>
-
-
       <button
         className={styles.button}
-        onClick={() => handleLeftArrowButtons()}
+        onClick={handleLeftArrowButtons}
       >
         <img
           src={ChevronIcon}
@@ -67,7 +60,7 @@ export const Pagination: React.FC<PaginationProps> = ({numberOfPages, handleDisp
 
       <button
         className={classNames(styles.button, styles.next)}
-        onClick={() => handleRightArrowButtons()}
+        onClick={handleRightArrowButtons}
       >
         <img
           src={ChevronIcon}
@@ -75,5 +68,5 @@ export const Pagination: React.FC<PaginationProps> = ({numberOfPages, handleDisp
         />
       </button>
     </ul>
-  )
-}
+  );
+};

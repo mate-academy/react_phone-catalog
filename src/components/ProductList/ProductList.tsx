@@ -3,14 +3,14 @@ import { ProductCard } from '../ProductCard';
 import { ProductPhone, ProductTablet, ProductAccessory } from '../../types/Product';
 import { DropDown } from '../DropDown';
 import { Pagination } from '../Pagination';
-import { Loader } from '../Loader'
+import { Loader } from '../Loader';
 import { Breadcrumbs } from '../../components/Breadcrumbs';
 import styles from './ProductList.module.scss';
 
 type ProductListProps = {
   category: string;
   title: string;
-}
+};
 
 export const ProductList: React.FC<ProductListProps> = ({ category, title }) => {
   const [products, setProducts] = useState<(ProductPhone | ProductTablet | ProductAccessory)[]>([]);
@@ -79,7 +79,6 @@ export const ProductList: React.FC<ProductListProps> = ({ category, title }) => 
           {products.length} items
         </div>
         <DropDown handleNumberOdProductPerPage={handleNumberOdProductPerPage} numberOfProducts={numberOfProducts} />
-
         <ul className={styles.container}>
           {arrayOfDisplayedIndexes.map((product) => (
             <li key={product.id} className={styles.product}>
@@ -87,8 +86,11 @@ export const ProductList: React.FC<ProductListProps> = ({ category, title }) => 
             </li>
           ))}
         </ul>
-
-        <Pagination numberOfPages={numberOfPages} handleDisplayedPage={handleDisplayedPage} displayedPage={displayedPage} />
+        <Pagination
+          numberOfPages={numberOfPages}
+          handleDisplayedPage={handleDisplayedPage}
+          displayedPage={displayedPage}
+        />
       </div>
     </div>
   );
