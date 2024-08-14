@@ -1,0 +1,134 @@
+.product-page {
+  &__cards {
+    &__list {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(285px, 1fr));
+      gap: 20px 20px;
+      width: 100%;
+    }
+
+    &__item {
+      display: flex;
+      justify-content: center;
+    }
+  }
+
+  &__empty-list {
+    display: flex;
+
+
+    @include mobile {
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      margin-top: 20px;
+    }
+
+    @include tablet {
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    @include desktop {
+      flex-direction: row;
+    }
+
+
+
+    gap: 40px;
+
+    font-family: $g-font;
+
+    &__img {
+      @include mobile {
+        max-width: 340px;
+      }
+      @include tablet {
+        max-width: 500px;
+      }
+
+      @include desktop {
+        max-width: 700px;
+      }
+
+
+    }
+
+    &__info {
+      &-wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 60px;
+      }
+
+      &-text {
+        color: #89939a;
+
+        @include mobile {
+          font-size: 18px;
+          text-align: center;
+        }
+        @include tablet {
+          font-size: 30px;
+          text-align: center;
+        }
+        @include desktop {
+          font-size: 40px;
+        }
+
+        & span {
+
+          @include mobile {
+            font-size: 35px;
+          }
+
+          @include tablet {
+            font-size: 40px;
+          }
+
+          @include desktop {
+            font-size: 50px;
+          }
+          color: #000;
+        }
+      }
+
+      &-btn {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 15px;
+
+        @include mobile {
+          font-size: 14px;
+        }
+        @include tablet {
+          font-size: 18px;
+        }
+
+        font-weight: 500;
+        padding: 10px 15px;
+        border: 1px solid #e2e6e9;
+        color: #476df4;
+        transition:
+          background-color 0.4s ease-in-out,
+          color 0.4s ease-in-out;
+
+        &:hover {
+          background-color: #476df4;
+          color: #fff;
+        }
+      }
+    }
+  }
+
+  &__counter {
+    font-size: 14px;
+    font-family: $g-font;
+    font-weight: 500;
+    color: #89939a;
+  }
+}

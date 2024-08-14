@@ -1,0 +1,16 @@
+.fav__button {
+  border: 1px solid #e2e6e9;
+  background-color: transparent;
+  padding: 13px;
+
+  max-width: 38px;
+  max-height: 38px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &__img {
+    transition: opacity 0.4s ease;
+  }
+}

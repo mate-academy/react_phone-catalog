@@ -1,0 +1,48 @@
+.pagi {
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+
+  &__img {
+    width: 100%;
+  }
+
+  &__prev-link,
+  &__next-link,
+  &__link {
+    border-radius: 10%;
+    border: 1px solid #e5e5e5;
+    padding: 10px;
+    min-width: 16px;
+    min-height: 16px;
+
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__link {
+    font-size: 14px;
+    font-weight: 500;
+    font-family: $g-font;
+
+    &-active {
+      background-color: #000;
+      color: #fff;
+    }
+  }
+
+  &__prev-link:hover,
+  &__next-link:hover,
+  &__link:hover {
+    border-color: #b7b7b7;
+  }
+
+  &__link:hover {
+    background-color: #000;
+    color: #fff;
+  }
+}

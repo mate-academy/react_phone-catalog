@@ -1,0 +1,44 @@
+.breadcrumbs__wrapper {
+  display: inline-flex;
+  gap: 5px;
+  margin-top: 40px;
+
+  @include mobile {
+    margin-top: 22px;
+  }
+
+  align-items: center;
+  
+  font-family: $g-font;
+  font-size: 14px;
+  font-weight: 500;
+  color: #89939a;
+}
+
+.breadcrumbs{
+  &__link {
+    display: flex;
+
+    @include mobile {
+      font-size: 12px;
+    }
+
+  }
+  &__segment {
+    display: flex;
+    align-items: center;
+
+    &:hover {
+      color: #f86800;
+    }
+
+    &__disabled {
+      opacity: 0.5;
+      pointer-events: none;
+    }
+  }
+}
+
+.links__wrapper {
+  display: flex;
+}

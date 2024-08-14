@@ -1,0 +1,140 @@
+.info__card {
+  font-family: $g-font;
+
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(4, 2fr, 1fr);
+  row-gap: 27px;
+
+  &__available {
+    grid-column: 1 / 5;
+    grid-row: 1/2;
+  }
+
+  &__price {
+    grid-column: 1 / 5;
+    grid-row: 2/3;
+
+    @include mobile {
+      font-size: 30px;
+    }
+
+    font-size: 33px;
+    text-align: end;
+
+    @include desktop {
+      text-align: start;
+    }
+
+    font-weight: 500;
+  }
+
+  &__buttons {
+    grid-column: 1 / 5;
+
+    display: flex;
+    gap: 10px;
+    justify-content: space-between;
+  }
+}
+
+.available {
+  grid-row: 1 / 2;
+
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+
+  margin-bottom: 20px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #e2e6e9;
+
+  &__title {
+    font-size: 16px;
+    font-weight: 500;
+    color: #787878;
+  }
+
+  &__list {
+    display: flex;
+    gap: 11px;
+  }
+
+  &__item {
+    transition: border 0.5s ease;
+
+    cursor: pointer;
+
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+}
+
+.available__colors {
+  &__item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 50%;
+    border: 1px solid #e2e6e9;
+
+    min-width: 34px;
+    min-height: 34px;
+
+    &-link {
+      border-radius: 50%;
+      min-width: 30px;
+      min-height: 30px;
+      display: block;
+    }
+  }
+}
+
+.available__capacity {
+  &__item {
+    font-family: $g-font;
+    font-size: 15px;
+
+    padding: 5px 8px;
+    border: 1px solid #e2e6e9;
+    border-radius: 5px;
+  }
+}
+
+.description {
+  grid-column: 1 / 5;
+
+  @include mobile {
+    font-size: 14px;
+  }
+
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+
+  &__name {
+    &__list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    &__item {
+      color: #787878;
+    }
+  }
+
+  &__value {
+    &__list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      align-items: end;
+    }
+  }
+}
+
+.available__item-active {
+  border: 1px solid blue;
+}
