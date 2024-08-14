@@ -7,8 +7,10 @@ import React from 'react';
 import { Search } from  '../Search';
 
 export const Header: React.FC = () => (
+
   <header className={styles.header}>
-    <Link
+
+      <Link
       to="/"
       className={styles.logoLink}
     >
@@ -91,6 +93,7 @@ export const Header: React.FC = () => (
           </div>
         </div>
       </nav>
+
     </div>
   </header>
   );

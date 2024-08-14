@@ -4,7 +4,7 @@ import { Loader } from './components/Loader/Loader';
 import { ProductSlider } from './components/ProductSlider';
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
-
+import { UnderConstruction } from './components/UnderConstruction';
 
 export const App: React.FC = () => {
 const [loading, setLoading] = useState(true)
@@ -15,12 +15,13 @@ useEffect(() => {
 
   return (
     <div className="App">
-      <h1>This website is under construction...</h1>
+
 
       {loading ? (
         <Loader />
       ) : (
         <div>
+          <UnderConstruction />
           <Header />
           <ProductSlider />
           <Footer />
