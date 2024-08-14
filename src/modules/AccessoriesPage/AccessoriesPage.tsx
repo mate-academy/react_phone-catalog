@@ -1,6 +1,6 @@
 import { ProductList } from '../../components/ProductList';
 import { Header } from '../../components/Header';
-
+import { Footer } from '../../components/Footer'
 
 
 
@@ -13,8 +13,8 @@ const title = 'Accessories'
 
       <div>
         <Header />
-
         <ProductList category = {category} title = {title}/>
+        <Footer />
       </div>
     );
 };
