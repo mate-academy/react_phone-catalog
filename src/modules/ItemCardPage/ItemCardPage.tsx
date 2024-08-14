@@ -13,6 +13,7 @@ import { FavouritesContext } from '../../store/FavouritesProvider';
 import { Product } from '../../types/Product';
 import notFoundProduct from '../../assets/img/product-not-found.png';
 import { Loader } from '../../components/Loader';
+import { CartContext } from '../../store/CartProvider';
 
 export const ItemCardPage = () => {
   const [thumbsSwiper, setThumbsSwiper] = useState<SwiperClass | null>(null);
@@ -23,6 +24,7 @@ export const ItemCardPage = () => {
     useState<Product>();
 
   const { getActiveLike, handleLike } = useContext(FavouritesContext);
+  const { getActiveButton, handleAddButton } = useContext(CartContext);
 
   const { productId } = useParams();
 
@@ -227,7 +229,19 @@ export const ItemCardPage = () => {
               </div>
 
               <div className={style.buttons}>
-                <div className={style.buttons__addToCart}>Add to cart</div>
+                <button
+                  className={cn(style.buttons__addToCart, {
+                    [style['buttons__addToCart--active']]:
+                      productFromGeneralList &&
+                      getActiveButton(productFromGeneralList),
+                  })}
+                  onClick={() =>
+                    productFromGeneralList &&
+                    handleAddButton(productFromGeneralList)
+                  }
+                >
+                  Add to cart
+                </button>
                 <div
                   className={style.buttons__like}
                   onClick={() =>

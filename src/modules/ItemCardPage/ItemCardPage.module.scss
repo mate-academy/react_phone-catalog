@@ -282,6 +282,17 @@
           background-color: #4219d0;
           border-radius: 48px;
           color: #fff;
+          cursor: pointer;
+
+          @include hover {
+            box-shadow: 0 3px 13px 0 #17203166;
+          }
+
+          &--active {
+            border: 1px solid #e2e6e9;
+            color: #4219d0;
+            background-color: #fafbfc;
+          }
         }
 
         &__like {

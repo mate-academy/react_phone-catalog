@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { ProductInCart } from '../../components/ProductInCart';
 import { useContext } from 'react';
 import { CartContext } from '../../store/CartProvider';
-import emptyCard from '../../assets/img/cart-is-empty.png';
+import emptyCart from '../../assets/img/cart-is-empty.png';
 
 export const CartPage = () => {
   const { cart } = useContext(CartContext);
@@ -25,12 +25,12 @@ export const CartPage = () => {
       </div>
 
       {!cart.length && (
-        <div className={style.emptyCard}>
-          <h1 className={style.emptyCard__title}>Your cart is empty</h1>
+        <div className={style.emptyCart}>
+          <h1 className={style.emptyCardt_title}>Your cart is empty</h1>
           <img
-            src={emptyCard}
+            src={emptyCart}
             alt="Empty Cart"
-            className={style.emptyCard__img}
+            className={style.emptyCart__img}
           />
         </div>
       )}
