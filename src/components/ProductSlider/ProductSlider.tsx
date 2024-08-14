@@ -4,7 +4,7 @@ import React, {useState} from 'react';
 
 
 
-export const ProductSlider: React.FC = () => {
+export const BannerSlider: React.FC = () => {
 
   const sliderImages = [
     './img/banner-1.png',
@@ -40,7 +40,7 @@ export const ProductSlider: React.FC = () => {
 
 
   return (
-    <div className={styles.ProductSlider}>
+    <div className={styles.bannerSlider}>
       <div className={styles.topWrapper}>
         <div className={styles.buttons}>
           <button className={styles.arrowButton} onClick={decrementDisplayedImageIndex}>

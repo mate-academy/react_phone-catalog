@@ -1,7 +1,7 @@
 import './App.module.scss';
 import React, {useState, useEffect} from 'react';
 import { Loader } from './components/Loader/Loader';
-import { ProductSlider } from './components/ProductSlider';
+import { BannerSlider } from './components/ProductSlider';
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
 import { UnderConstruction } from './components/UnderConstruction';
@@ -23,7 +23,7 @@ useEffect(() => {
         <div>
           <UnderConstruction />
           <Header />
-          <ProductSlider />
+          <BannerSlider />
           <Footer />
         </div>
       )
