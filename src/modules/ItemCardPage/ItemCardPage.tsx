@@ -4,16 +4,25 @@ import { ProductSlider } from '../../components/ProductSlider';
 import { Swiper, SwiperClass, SwiperSlide } from 'swiper/react';
 import 'swiper/scss';
 import { Autoplay, Thumbs } from 'swiper/modules';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import cn from 'classnames';
-import { NavLink, useLocation, useNavigate, useParams } from 'react-router-dom';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import { getData } from '../../assets/services/httpClient';
 import { ProductItem } from '../../types/ProductItem';
+import { FavouritesContext } from '../../store/FavouritesProvider';
+import { Product } from '../../types/Product';
+import notFoundProduct from '../../assets/img/product-not-found.png';
+import { Loader } from '../../components/Loader';
 
 export const ItemCardPage = () => {
   const [thumbsSwiper, setThumbsSwiper] = useState<SwiperClass | null>(null);
   const [activeIndex, setActiveIndex] = useState<number>(0);
+  const [loader, setLoader] = useState(true);
   const [currentProduct, setCurrentProduct] = useState<ProductItem>();
+  const [productFromGeneralList, setProductFromGeneralList] =
+    useState<Product>();
+
+  const { getActiveLike, handleLike } = useContext(FavouritesContext);
 
   const { productId } = useParams();
 
@@ -48,8 +57,12 @@ export const ItemCardPage = () => {
   };
 
   useEffect(() => {
-    getData<ProductItem[]>(`/api/${category}.json`).then(data =>
-      setCurrentProduct(data.find(item => item.id === productId)),
+    getData<ProductItem[]>(`/api/${category}.json`)
+      .then(data => setCurrentProduct(data.find(item => item.id === productId)))
+      .finally(() => setLoader(false));
+
+    getData<Product[]>(`/api/products.json`).then(data =>
+      setProductFromGeneralList(data.find(item => item.itemId === productId)),
     );
   }, [productId, category]);
 
@@ -87,14 +100,24 @@ export const ItemCardPage = () => {
         <Breadcrumbs name={currentProduct?.name} />
       </div>
 
-      <NavLink to={'..'} relative="path" className={style.backButton}>
+      <a className={style.backButton} onClick={() => navigate(-1)}>
         <div className={style.backButton__arrow} />
         <p className={style.backButton__text}>Back</p>
-      </NavLink>
-      {!currentProduct && (
-        <h1 className={style.error}>Product was not found</h1>
+      </a>
+
+      {loader && <Loader />}
+
+      {!currentProduct && !loader && (
+        <div className={style.notFoundProduct}>
+          <h1 className={style.notFoundProduct__title}>Product wasn`t found</h1>
+          <img
+            src={notFoundProduct}
+            alt="Empty Cart"
+            className={style.notFoundProduct__img}
+          />
+        </div>
       )}
-      {currentProduct && (
+      {currentProduct && !loader && (
         <>
           <h2 className={style.title}>{currentProduct.name}</h2>
 
@@ -205,8 +228,19 @@ export const ItemCardPage = () => {
 
               <div className={style.buttons}>
                 <div className={style.buttons__addToCart}>Add to cart</div>
-                <div className={style.buttons__like}>
-                  <div className={style.buttons__like__icon} />
+                <div
+                  className={style.buttons__like}
+                  onClick={() =>
+                    productFromGeneralList && handleLike(productFromGeneralList)
+                  }
+                >
+                  <div
+                    className={cn(style.buttons__like__icon, {
+                      [style['buttons__like__icon--active']]:
+                        productFromGeneralList &&
+                        getActiveLike(productFromGeneralList),
+                    })}
+                  />
                 </div>
               </div>
             </div>
@@ -321,15 +355,14 @@ export const ItemCardPage = () => {
               </div>
             </div>
           </div>
+          <div className={style.productSlider}>
+            <ProductSlider
+              title={currentProduct ? 'You may also like' : 'Our bestsellers'}
+              discount={true}
+            />
+          </div>
         </>
       )}
-
-      <div className={style.productSlider}>
-        <ProductSlider
-          title={currentProduct ? 'You may also like' : 'Our bestsellers'}
-          discount={true}
-        />
-      </div>
     </div>
   );
 };

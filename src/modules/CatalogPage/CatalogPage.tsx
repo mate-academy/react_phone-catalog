@@ -6,6 +6,7 @@ import { Product } from '../../types/Product';
 import { ProductContext } from '../../store/ProductProvider';
 import { Breadcrumbs } from '../../components/Breadcrumbs';
 import { useSearchParams } from 'react-router-dom';
+import { Loader } from '../../components/Loader';
 
 type Props = {
   category: 'phones' | 'tablets' | 'accessories';
@@ -26,7 +27,7 @@ const getSortedList = (sortingArray: Product[], sortParams: string | null) => {
 
 export const CatalogPage: React.FC<Props> = ({ category }) => {
   const [searchParams] = useSearchParams();
-  const { products } = useContext(ProductContext);
+  const { products, loader } = useContext(ProductContext);
   const sort = searchParams.get('sort' || '');
   const perPage = searchParams.get('perPage' || '');
 
@@ -49,28 +50,34 @@ export const CatalogPage: React.FC<Props> = ({ category }) => {
       <div className={style.breadcrumbs}>
         <Breadcrumbs />
       </div>
-      <h1 className={style.title}>
-        {category === 'phones' ? 'mobile phones' : category}
-      </h1>
-      <p className={style.countModels}>{visibleList.length} models</p>
-      <div className={`${style.sortField} ${style['sortField--1']}`}>
-        <Dropdown dropdownName={'sort'} />
-      </div>
-      <div className={`${style.sortField} ${style['sortField--2']}`}>
-        <Dropdown dropdownName={'perPage'} />
-      </div>
-      {!visibleList.length && (
-        <h1 className={style.noData}>
-          There are no phones/tablets/accessories yet
-        </h1>
+
+      {loader && <Loader />}
+
+      {!visibleList.length && !loader && (
+        <h1 className={style.noData}>There are no {category} yet</h1>
       )}
-      <div className={style.cards}>
-        {visibleList.map(prod => (
-          <div key={prod.id} className={style.card}>
-            <ProductCard prod={prod} />
+
+      {!!visibleList && !loader && (
+        <>
+          <h1 className={style.title}>
+            {category === 'phones' ? 'mobile phones' : category}
+          </h1>
+          <p className={style.countModels}>{visibleList.length} models</p>
+          <div className={`${style.sortField} ${style['sortField--1']}`}>
+            <Dropdown dropdownName={'sort'} />
           </div>
-        ))}
-      </div>
+          <div className={`${style.sortField} ${style['sortField--2']}`}>
+            <Dropdown dropdownName={'perPage'} />
+          </div>
+          <div className={style.cards}>
+            {visibleList.map(prod => (
+              <div key={prod.id} className={style.card}>
+                <ProductCard prod={prod} />
+              </div>
+            ))}
+          </div>
+        </>
+      )}
     </div>
   );
 };

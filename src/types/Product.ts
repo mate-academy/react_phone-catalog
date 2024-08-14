@@ -11,4 +11,5 @@ export interface Product {
   ram: string;
   year: number;
   image: string;
+  inCart?: number;
 }

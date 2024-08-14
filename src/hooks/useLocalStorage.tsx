@@ -12,11 +12,11 @@ export const useLocalStorage = (key: string, initialValue: Product[]) => {
     return initialValue;
   };
 
-  const [value, setValue] = useState(getValue);
+  const [value, setValue] = useState<Product[]>(getValue);
 
   useEffect(() => {
     localStorage.setItem(key, JSON.stringify(value));
   }, [key, value]);
 
-  return [value, setValue];
+  return [value, setValue] as const;
 };

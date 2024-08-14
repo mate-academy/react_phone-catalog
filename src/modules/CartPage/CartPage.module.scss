@@ -3,12 +3,19 @@
 .cartPage {
   @include page-container;
 
+  @include on-desktop {
+    @include page-grid;
+  }
+
   .backButton {
+    grid-column: 1 / -1;
     display: flex;
     gap: 4px;
     align-items: flex-end;
     width: fit-content;
+    justify-content: center;
     margin-block: 24px;
+    cursor: pointer;
 
     @include hover {
       transform: scale(1.01);
@@ -34,6 +41,7 @@
   }
 
   .title {
+    grid-column: 1 / -1;
     font-size: 22px;
     font-weight: 800;
     line-height: 30.8px;
@@ -51,12 +59,14 @@
   }
 
   .main {
+    grid-column: span 16;
     display: flex;
     flex-direction: column;
     gap: 16px;
   }
 
   .checkout {
+    grid-column: span 8;
     padding: 24px;
     margin-top: 32px;
     margin-bottom: 56px;
@@ -66,6 +76,11 @@
     flex-direction: column;
     gap: 16px;
     align-items: center;
+    height: fit-content;
+
+    @include on-desktop {
+      margin: 0;
+    }
 
     &__items {
       display: flex;
@@ -104,6 +119,42 @@
       @include hover {
         box-shadow: 0 3px 13px 0 #17203166;
       }
+    }
+  }
+
+  .emptyCard {
+    width: 100%;
+    text-align: center;
+    background-color: #fff;
+    border: 1px solid #e2e6e9;
+    border-radius: 36px;
+    padding: 16px;
+
+    @include on-tablet {
+      padding: 24px;
+    }
+
+    @include on-desktop {
+      grid-column: 6 / -6;
+      padding: 32px;
+    }
+
+    &__title {
+      font-size: 32px;
+      font-weight: 800;
+      line-height: 41px;
+      letter-spacing: -0.01em;
+
+      @include on-tablet {
+        font-size: 48px;
+        line-height: 56px;
+        letter-spacing: -0.01em;
+      }
+    }
+
+    &__img {
+      width: 100%;
+      height: 100%;
     }
   }
 }

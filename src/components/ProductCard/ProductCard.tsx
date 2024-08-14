@@ -1,37 +1,32 @@
 import style from './ProductCard.module.scss';
 import { Product } from '../../types/Product';
 import { NavLink } from 'react-router-dom';
-import { useLocalStorage } from '../../hooks/useLocalStorage';
 import cn from 'classnames';
+import { useContext } from 'react';
+import { FavouritesContext } from '../../store/FavouritesProvider';
+import { CartContext } from '../../store/CartProvider';
 
-type Props = { prod: Product; discount?: boolean };
+type Props = {
+  prod: Product;
+  discount?: boolean;
+};
 
 export const ProductCard: React.FC<Props> = ({ prod, discount = true }) => {
-  const [favourites, setFavourites] = useLocalStorage('favourites', []);
-
   const specs = [
     { key: 'Screen', value: prod.screen },
     { key: 'Capacity', value: prod.capacity },
     { key: 'Ram', value: prod.ram },
   ];
 
-  const getActiveLike = (product: Product) => {
-    return favourites.some((item: Product) => product.id === item.id);
-  };
-
-  const handleLike = (product: Product) => {
-    if (getActiveLike(product)) {
-      setFavourites(
-        favourites.filter((item: Product) => item.id !== product.id),
-      );
-    } else {
-      setFavourites([...favourites, product]);
-    }
-  };
+  const { getActiveLike, handleLike } = useContext(FavouritesContext);
+  const { getActiveButton, handleAddButton } = useContext(CartContext);
 
   return (
     <article className={style.card}>
-      <NavLink to={prod.itemId} className={style.img__link}>
+      <NavLink
+        to={`/${prod.category}/${prod.itemId}`}
+        className={style.img__link}
+      >
         <img src={prod.image} className={style.img} />
       </NavLink>
       <div className={style.title}>{prod.name}</div>
@@ -53,7 +48,14 @@ export const ProductCard: React.FC<Props> = ({ prod, discount = true }) => {
         ))}
       </div>
       <div className={style.buttons}>
-        <button className={style.buttons__add}>Add to cart</button>
+        <button
+          className={cn(style.buttons__add, {
+            [style['buttons__add--active']]: getActiveButton(prod),
+          })}
+          onClick={() => handleAddButton(prod)}
+        >
+          {getActiveButton(prod) ? 'Added' : 'Add to cart'}
+        </button>
         <div
           className={cn(style.buttons__like, {
             [style['buttons__like--active']]: getActiveLike(prod),

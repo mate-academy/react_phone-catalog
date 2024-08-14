@@ -2,7 +2,6 @@
 
 .itemCard {
   @include page-container;
-
   @include page-grid;
 
   .error {
@@ -10,7 +9,6 @@
     font-weight: 800;
     line-height: 50px;
     margin-top: 40px;
-
     grid-column: 1 / -1;
   }
 
@@ -23,6 +21,7 @@
     gap: 4px;
     align-items: flex-end;
     width: fit-content;
+    cursor: pointer;
 
     grid-column: 1 / -1;
 
@@ -69,16 +68,30 @@
   .slider {
     grid-column: 1 / -1;
 
-    @include page-grid;
+    @include on-tablet {
+      grid-column: span 7;
+    }
+
+    @include on-desktop {
+      grid-column: span 12;
+    }
+
+    // @include page-grid;
 
     .mainImg {
-      grid-column: 1 / -1;
+      // grid-column: 1 / -1;
     }
 
     &__img {
-      width: 100vw;
-      height: 100vw;
+      display: flex;
+      width: 100%;
+      height: 100%;
       object-fit: contain;
+
+      // @include on-tablet {
+      //   width: 100%;
+      //   height: 100%;
+      // }
     }
 
     &__slide {
@@ -89,7 +102,7 @@
     }
 
     .thumbs {
-      grid-column: 1 / -1;
+      // grid-column: 1 / -1;
     }
 
     &__thumbsContainer {
@@ -118,6 +131,14 @@
     gap: 32px;
 
     grid-column: 1 / -1;
+
+    @include on-tablet {
+      grid-column: span 5;
+    }
+
+    @include on-desktop {
+      grid-column: 15 / span 7;
+    }
 
     .selections {
       display: flex;
@@ -267,6 +288,7 @@
           padding: 16px;
           border: 1px solid #b4bdc3;
           border-radius: 40px;
+          cursor: pointer;
 
           &__icon {
             background-image: url(../../assets/img/icons/like.svg);
@@ -274,6 +296,10 @@
             background-position: center;
             height: 16px;
             width: 16px;
+
+            &--active {
+              background-image: url(../../assets/img/icons/like-active.svg);
+            }
           }
         }
       }
@@ -306,6 +332,10 @@
     gap: 32px;
 
     grid-column: 1 / -1;
+
+    @include on-desktop {
+      grid-column: span 12;
+    }
 
     &__title {
       font-size: 20px;
@@ -341,6 +371,10 @@
     gap: 30px;
 
     grid-column: 1 / -1;
+
+    @include on-desktop {
+      grid-column: 14 / span 11;
+    }
 
     &__title {
       font-size: 20px;
@@ -378,5 +412,42 @@
     margin-block: 56px;
 
     grid-column: 1 / -1;
+  }
+
+  .notFoundProduct {
+    text-align: center;
+    background-color: #fff;
+    border: 1px solid #e2e6e9;
+    border-radius: 36px;
+    padding: 16px;
+    margin-top: 32px;
+    grid-column: 1 / -1;
+
+    @include on-tablet {
+      grid-column: 2 / -2;
+      padding: 24px;
+    }
+
+    @include on-desktop {
+      grid-column: 6 / -6;
+      padding: 32px;
+    }
+
+    &__title {
+      font-size: 32px;
+      font-weight: 800;
+      line-height: 41px;
+      letter-spacing: -0.01em;
+
+      @include on-tablet {
+        font-size: 48px;
+        line-height: 56px;
+        letter-spacing: -0.01em;
+      }
+    }
+
+    &__img {
+      width: 100%;
+    }
   }
 }

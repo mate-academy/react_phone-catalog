@@ -22,4 +22,15 @@
     color: #89939a;
     margin-bottom: 32px;
   }
+
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(212px, 272px));
+    justify-content: center;
+    column-gap: 16px;
+
+    .card {
+      margin-bottom: 40px;
+    }
+  }
 }
