@@ -13,14 +13,14 @@ export const BannerSlider: React.FC = () => {
   ]
 
   let [displayedImageIndex, setDisplayedImageIndex] = useState(0)
-  console.log(displayedImageIndex)
+
   const incrementDisplayedImageIndex = () => {
     if(displayedImageIndex === sliderImages.length-1) {
       displayedImageIndex = 0;
-      console.log(displayedImageIndex)
+
     } else {
       displayedImageIndex++
-      console.log(displayedImageIndex)
+
     }
     setDisplayedImageIndex(displayedImageIndex)
   }
@@ -28,10 +28,10 @@ export const BannerSlider: React.FC = () => {
   const decrementDisplayedImageIndex = () => {
     if(displayedImageIndex === 0) {
       displayedImageIndex = (sliderImages.length-1)
-      console.log(displayedImageIndex)
+
     } else {
       displayedImageIndex--
-      console.log(displayedImageIndex)
+
     }
     setDisplayedImageIndex(displayedImageIndex)
   }

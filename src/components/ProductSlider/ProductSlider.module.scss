@@ -1,0 +1,24 @@
+
+.topContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.sliderContainer {
+  border: solid 1px red;
+  width: 90%;
+  overflow: hidden;
+}
+
+
+.slideWraper {
+  display: flex;
+}
+
+.productCard {
+  padding: 10px;
+}
+
+.title {
+  padding: 30px;
+}

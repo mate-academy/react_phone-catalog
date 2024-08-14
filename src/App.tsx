@@ -25,6 +25,7 @@ useEffect(() => {
           <UnderConstruction />
           <Header />
           <BannerSlider />
+          <ProductSlider title="Brand new models" />
           <ProductSlider title="Hot prices" />
           <Footer />
         </div>
