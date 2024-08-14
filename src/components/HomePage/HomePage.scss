@@ -1,9 +1,6 @@
 @import '../../utils/mixins';
 @import '../../utils/variadbles';
 
-
-
-
 body {
   margin: 0;
   padding: 0;
@@ -123,6 +120,7 @@ body {
       font-size: 48px;
       line-height: 56px;
       grid-column: 1/-1;
+      margin-block: 55px;
     }
   }
 
