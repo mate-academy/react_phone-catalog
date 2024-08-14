@@ -7,17 +7,17 @@ import { Footer } from './components/Footer';
 import { UnderConstruction } from './components/UnderConstruction';
 
 export const App: React.FC = () => {
-const [loading, setLoading] = useState(true)
+const [isLoading, setIsLoading] = useState(true)
 
 useEffect(() => {
-  setLoading(false)
+  setIsLoading(false)
 },[]);
 
   return (
     <div className="App">
 
 
-      {loading ? (
+      {isLoading ? (
         <Loader />
       ) : (
         <div>
