@@ -40,7 +40,7 @@ export const ProductList: React.FC<ProductListProps> = ( {category, title}) => {
   const [numebrOfProductsPerPage, setnumebrOfProductsPerPage] = useState(16)
   let numberOfPages = Math.ceil(numberOfProducts / numebrOfProductsPerPage)
 
-  let [displayedPage, setDisplayedPage] = useState(1);
+  const [displayedPage, setDisplayedPage] = useState(1);
   const handleDisplayedPage = (newState: number) => {
     setDisplayedPage(newState)
     console.log('WILL DISPLAY',newState)

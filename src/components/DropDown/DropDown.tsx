@@ -22,11 +22,18 @@ export const DropDown: React.FC<DropDownProps> = ({handleNumberOdProductPerPage,
   }
 
   return (
-    <select onChange ={handleSelectionChange} className={styles.select}>
+    <div>
+      <div className={styles.label}>
+        Items per page
+      </div>
+
+      <select onChange ={handleSelectionChange} className={styles.select}>
       <option value="4">4</option>
       <option value="8">8</option>
       <option value="16" selected>16</option>
       <option value="all">All</option>
-    </select>
+      </select>
+    </div>
+
   )
   }
