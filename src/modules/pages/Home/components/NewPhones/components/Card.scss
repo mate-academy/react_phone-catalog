@@ -144,6 +144,35 @@ margin: 0;
   cursor: pointer;
 }
 
+.Added-btn {
+  background-color: #E2E6E9;
+  height: 40px;
+  width: 160px;
+  color: #27AE60;
+  font-family: 'Mont';
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 21px;
+  text-align: center;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+.Add-btn:hover {
+  filter: drop-shadow(40% #172031);
+  transform: scale(1.01);
+}
+
+.Add-btn:active {
+  background-color: #E2E6E9;
+  color: #27AE60;
+}
+
+.cursor {
+  cursor: pointer;
+}
+
 .fav-btn {
   height: 40px;
   width: 40px;
@@ -157,4 +186,5 @@ margin: 0;
 
 .fav-btn:hover {
   border: 1px solid #313237;
+  transform: scale(1.05);
 }

@@ -7,6 +7,7 @@
   flex-direction: column;
   margin: 0 auto;
   width: 1200px;
+  min-height: 100vh;
 
   @include onTablet {
     width: 640px;

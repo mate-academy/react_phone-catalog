@@ -1,8 +1,6 @@
 .bucket-card {
   display: flex;
   flex-direction: row;
-  gap: 24px;
-  justify-content: center;
   align-items: center;
   border: 1px solid #E2E6E9;
   height: 128px;
@@ -16,6 +14,12 @@
   justify-content: center;
   align-items: center;
   border: none;
+  margin: 0 24px;
+  cursor: pointer;
+}
+
+.close-img-btn:hover {
+  transform: scale(1.15);
 }
 
 .close-img {
@@ -26,7 +30,9 @@
   width: 80px;
   height: 80px;
   object-fit: contain;
+  margin-right: 24px;
 }
+
 .card-p {
   font-family: Mont;
   font-size: 14px;
@@ -34,12 +40,18 @@
   line-height: 21px;
   text-align: left;
   color: #313237;
+  width: 336px;
+  margin-right: 24px;
 }
 .card-btns {
   display: flex;
   flex-direction: row;
+  justify-content: flex-end;
+  margin-right: 24px;
+
 }
-.card-btn {
+
+.card-disabled {
   width: 32px;
   height: 32px;
   display: flex;
@@ -48,6 +60,27 @@
   border: 1px solid #E2E6E9;
   background-color: white;
 }
+
+.card-btn {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #E2E6E9;
+  background-color: white;
+
+  transition: 0.3s;
+}
+
+.card-btn:hover {
+  border: 1px solid #B4BDC3;
+}
+
+.card-btn:active {
+  border: 1px solid #313237;
+}
+
 .card-btn-img {
   background-color: white;
 }
@@ -67,4 +100,6 @@
   text-align: right;
   color:#313237;
   padding-left: 30px;
+  display: flex;
+  justify-content:flex-end
 }

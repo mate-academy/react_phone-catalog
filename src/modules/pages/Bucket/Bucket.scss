@@ -2,6 +2,7 @@
   width: 1200px;
   margin: 0 auto;
   margin-bottom: 80px;
+  min-height: 65vh;
 }
 
 .products-block {
@@ -67,6 +68,7 @@
   height: 48px;
   background-color: #313237;
   color: #FFFFFF;
+  cursor: pointer;
 
   font-family: Mont;
   font-size: 14px;
@@ -74,11 +76,95 @@
   line-height: 21px;
   text-align: center;
   border: none;
+  transition: 0.3s;
+}
 
+.checkout-btn:hover {
+  filter: drop-shadow(40% #172031);
+  transform: scale(1.01);
+}
+
+.checkout-btn:active {
+  background-color: #E2E6E9;
+  color: #27AE60;
 }
 
 .checkout-btn-block {
   border-top: 1px solid #E2E6E9;
   padding-top: 24px;
   margin-bottom: 25px;
+}
+
+.bucket-is-empty {
+  margin-top: 36px;
+  display: flex;
+  height: 128px;
+  width: 752px;
+  border: 1px solid #E2E6E9;
+  justify-content: center;
+  align-items: center;
+
+  font-family: Mont;
+  font-size: 22px;
+  font-weight: 600;
+  line-height: 21px;
+  color: #313237;
+}
+
+.model-h1 {
+  display: flex;
+  justify-content: center;
+  padding: 0 30px;
+  margin-top: 30px;
+
+  font-family: Mont;
+  font-size: 32px;
+  font-weight: 800;
+  line-height: 56px;
+  letter-spacing: -0.01em;
+  text-align: left;
+  color: #313237;
+}
+
+.model-btns {
+  display: flex;
+  flex-direction: row;
+  gap: 24px;
+  justify-content: center;
+  margin-top: 50px;
+  margin-bottom: 20px;
+}
+
+.bucket-link-block {
+  margin-top: 40px;
+  margin-bottom: 16px;
+}
+
+.bucket-link-btn {
+  width: 16px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  border: none;
+  margin: 0;
+  cursor: pointer;
+  flex-direction: row;
+  padding: 0;
+
+}
+
+.bucket-link-p {
+  font-family: Mont;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 15.34px;
+  text-align: left;
+  margin: 0;
+  padding-left: 4px;
+
+  color: #89939A;
+}
+
+.bucket-link-p:hover {
+  color: #313237;
 }

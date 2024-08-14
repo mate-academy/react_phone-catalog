@@ -9,6 +9,7 @@ import { ProductInfo } from './modules/pages/ProductInfo';
 import { Favorites } from './modules/pages/Favorites';
 import { Bucket } from './modules/pages/Bucket';
 import { PageProvider } from './PageContext';
+import { PageNotFound } from './components/PageNotFound';
 
 export const App: React.FC = () => {
   return (
@@ -30,6 +31,7 @@ export const App: React.FC = () => {
         </Route>
         <Route path="/favorites" element={<Favorites />} />
         <Route path="/bucket" element={<Bucket />} />
+        <Route path="*" element={<PageNotFound />} />
       </Routes>
       <Footer />
     </PageProvider>

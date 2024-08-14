@@ -1,26 +1,38 @@
-import React, { ChangeEvent, useContext, useState } from 'react';
+import React, { ChangeEvent, useContext, useEffect, useState } from 'react';
 import './Accessories.scss';
 import { Card } from '../Home/components/NewPhones/components';
 import { Sort } from '../Phones/sortFunction';
 import { getVisiableAccess } from './sortFunction';
 import { AccessoriesContext } from '../../../PageContext';
+import { Loader } from '../Phones/components';
+import { useSearchParams } from 'react-router-dom';
 
 export const Accessories: React.FC = () => {
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const postsPerPage = +(searchParams.get('postsPerPage') || 8);
+  const sort = searchParams.get('sortBy') || '';
+
   const [currentPage, setCurrentPage] = useState(1);
-  const [postsPerPage, setPostsPerPage] = useState(8);
+  const [isLoading, setIsLoading] = useState(false);
   const lastPostIndex = currentPage * postsPerPage;
   const firstPostIndex = lastPostIndex - postsPerPage;
 
   const accessories = useContext(AccessoriesContext);
-  const [sort, setSort] = useState(Sort.newest);
-  const visible = getVisiableAccess(accessories, sort);
+  const visible = getVisiableAccess(accessories, sort as Sort);
 
   function changePostsPerPage(e: ChangeEvent<HTMLSelectElement>) {
-    setPostsPerPage(+e.target.value);
+    const params = new URLSearchParams(searchParams);
+
+    params.set('postsPerPage', e.target.value);
+    setSearchParams(params);
   }
 
   function handleSortOfPhones(e: ChangeEvent<HTMLSelectElement>) {
-    setSort(e.target.value as Sort);
+    const params = new URLSearchParams(searchParams);
+
+    params.set('sortBy', e.target.value);
+    setSearchParams(params);
   }
 
   const currentCards = visible.slice(firstPostIndex, lastPostIndex);
@@ -51,16 +63,35 @@ export const Accessories: React.FC = () => {
     });
   }
 
+  useEffect(() => {
+    setIsLoading(true);
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 500);
+  }, []);
+
   return (
     <div className="phones-container">
-      <div> links</div>
-      <h1 className="phones-container-h1">Tablets</h1>
+      <div className="fav-link">
+        <a className="favIcon">
+          <img src="../uploadedImg/Home.png"></img>
+        </a>
+        <a className="favIcon">
+          <img src="../uploadedImg/LeftArrow.png"></img>
+        </a>
+        <p className="fav-link-p">Accessories</p>
+      </div>
+      <h1 className="phones-container-h1">Accessories</h1>
       <p className="phones-container-p">{`${accessories.length} models`}</p>
       <div className="sort-block">
         <div className="phones-sort-container">
           <p className="SortBy-p">Sort by</p>
           <div className="sortBy-container">
-            <select className="sortBy-box" onChange={handleSortOfPhones}>
+            <select
+              className="sortBy-box"
+              onChange={handleSortOfPhones}
+              value={sort}
+            >
               <option value="Newest">Newest</option>
               <option value="Alphabetically">Alphabetically</option>
               <option value="Cheapest">Cheapest</option>
@@ -73,7 +104,11 @@ export const Accessories: React.FC = () => {
         <div className="phones-sort-container">
           <p className="SortBy-p">Items on page</p>
           <div className="sortBy-container">
-            <select className="sortBy-box" onChange={changePostsPerPage}>
+            <select
+              className="sortBy-box"
+              onChange={changePostsPerPage}
+              value={postsPerPage}
+            >
               <option value="8">8</option>
               <option value="16">16</option>
               <option value="24">24</option>
@@ -85,30 +120,43 @@ export const Accessories: React.FC = () => {
         </div>
       </div>
 
-      <div className="phones-card-container">
-        {currentCards.map(currentCard => (
-          <Card phone={currentCard} key={currentCard.id} />
-        ))}
-      </div>
-      <div className="btn-container">
-        <button className="arrow-btn" onClick={prevPage}>
-          <img src="./uploadedImg/RightArrow.png"></img>
-        </button>
-        {pages.map((page, index) => (
-          <button
-            className={page === currentPage ? 'btn-class-active' : 'btn-class'}
-            key={index}
-            onClick={() => {
-              setCurrentPage(page);
-            }}
-          >
-            {page}
+      {isLoading ? (
+        <Loader />
+      ) : (
+        <div className="phones-card-container">
+          {currentCards.length > 0 ? (
+            currentCards.map(currentCard => (
+              <Card phone={currentCard} key={currentCard.id} />
+            ))
+          ) : (
+            <div className="fav-is-empty">There are no accessories yet</div>
+          )}
+        </div>
+      )}
+
+      {!isLoading && (
+        <div className="btn-container">
+          <button className="arrow-btn-LR" onClick={prevPage}>
+            <img src="./uploadedImg/RightArrow.png"></img>
           </button>
-        ))}
-        <button className="arrow-btn" onClick={nextPage}>
-          <img src="./uploadedImg/LeftArrow.png"></img>
-        </button>
-      </div>
+          {pages.map((page, index) => (
+            <button
+              className={
+                page === currentPage ? 'btn-class-active' : 'btn-class'
+              }
+              key={index}
+              onClick={() => {
+                setCurrentPage(page);
+              }}
+            >
+              {page}
+            </button>
+          ))}
+          <button className="arrow-btn-LR" onClick={nextPage}>
+            <img src="./uploadedImg/LeftArrow.png"></img>
+          </button>
+        </div>
+      )}
     </div>
   );
 };

@@ -1,3 +1,6 @@
+.desc-layout {
+  min-height: 100vh;
+}
 
 .productInfo-container {
   display: flex;
@@ -15,6 +18,7 @@ letter-spacing: -0.01em;
 text-align: left;
 color: #313237;
 text-transform: capitalize;
+margin-top: 16px;
 }
 
 .productInfo-pictures-block {
@@ -35,8 +39,18 @@ text-transform: capitalize;
   flex-direction: column;
   justify-content: center;
   background-color: white;
-  border: 1px solid #C4C4C4;
+  border: 1px solid #E2E6E9;
   padding: 0;
+  cursor: pointer;
+}
+
+.productInfo-smallPicture-active {
+  flex-direction: column;
+  justify-content: center;
+  background-color: white;
+  border: 1px solid #313237;
+  padding: 0;
+  cursor: pointer;
 }
 
 .productInfo-bigPicture {
@@ -97,28 +111,23 @@ text-transform: capitalize;
   width: 29px;
   outline: 1px solid #E2E6E9;
   border: 2px solid #FFFFFF;
+  cursor: pointer;
+}
+
+.product-circle-active {
+  display: block;
+  border-radius: 50%;
+  height: 29px;
+  width: 29px;
+  outline: 1px solid #313237;
+  border: 2px solid #FFFFFF;
+  cursor: pointer;
 }
 
 .btns-block {
   display: flex;
   flex-direction: row;
   gap: 8px;
-}
-
-.red {
-  background-color: red;
-}
-
-.yellow {
-  background-color: yellow;
-}
-
-.green {
-  background-color: green;
-}
-
-.blue {
-  background-color: blue;
 }
 
 .gb-container {
@@ -149,9 +158,10 @@ text-transform: capitalize;
   border: none;
   padding: 4px 8px;
   border: 1px solid #B4BDC3;
+  cursor: pointer;
 }
 
-.gb-btns-hover {
+.gb-btns-active {
   display: block;
   font-family: Mont;
   font-size: 14px;
@@ -162,6 +172,8 @@ text-transform: capitalize;
   background-color: #313237;
   border: none;
   padding: 4px 8px;
+  cursor: pointer;
+
 }
 
 .add-to-card-block {
@@ -362,3 +374,90 @@ text-transform: capitalize;
   gap: 8px;
   margin-top: 25px;
 }
+
+.Added-btn-big {
+  background-color: #E2E6E9;
+  height: 48px;
+  width: 263px;
+  color: #27AE60;
+  font-family: 'Mont';
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 21px;
+  text-align: center;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  margin-right: 8px;
+}
+
+.Add-btn-big {
+  background-color: #313237;
+  height: 48px;
+  width: 263px;
+  color: #FFFFFF;
+  font-family: 'Mont';
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 21px;
+  text-align: center;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  margin-right: 8px;
+}
+
+.Add-btn-big:hover {
+  filter: drop-shadow(40% #172031);
+  transform: scale(1.01);
+}
+
+.Add-btn-big:active {
+  background-color: #E2E6E9;
+  color: #27AE60;
+}
+
+.fav-btn-big {
+  height: 48px;
+  width: 48px;
+  border: 1px solid #B4BDC3;
+  background-color: white;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.fav-btn-big:hover {
+  border: 1px solid #313237;
+  transform: scale(1.05);
+}
+.productInfo-links-block {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.crumb-link {
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 15.34px;
+  text-align: left;
+  margin: 0;
+  color: #89939A;
+  text-transform: capitalize;
+  margin: 0;
+}
+
+.crumb-link:hover {
+  color: #313237;
+}
+
+.crumb-link:active {
+  color: #313237;
+}
+.crumb-link:focus {
+  color: #313237;
+}
+

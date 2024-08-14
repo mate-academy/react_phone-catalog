@@ -3,6 +3,7 @@
 body {
   margin: 0;
   padding: 0;
+  padding-top: 64px;
 }
 
 .container  {
@@ -12,6 +13,10 @@ body {
   justify-content: center;
   align-items: center;
   border-bottom: 1px solid #E2E6E9;
+  position: fixed;
+  top: 0;
+  background-color: #FFFFFF;
+  z-index: 1;
 }
 
 .logo {
@@ -57,7 +62,7 @@ li {
   }
 }
 
-.link:hover {
+.is-active {
   color: #313237;
   border-bottom: 3px solid #313237;
 }
@@ -78,6 +83,30 @@ li {
   justify-content: center;
   align-items: center;
   border-left: 1px solid #E2E6E9;
+  position: relative;
+}
+
+.show-items {
+  position: absolute;
+  height: 14px;
+  width: 14px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  background-color:#EB5757;
+  color:#FFFFFF;
+  font-family: Mont;
+  font-size: 9px;
+  font-weight: 600;
+  line-height: 11.5px;
+  text-align: center;
+
+  left: 50%;
+  bottom: 50%;
+
+
+  outline: 1px solid #FFFFFF;
 }
 
 .onTablet {

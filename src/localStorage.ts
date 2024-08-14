@@ -7,7 +7,7 @@ export function useLocalStorage<T>(
   const [value, setValue] = useState(() => {
     const data = localStorage.getItem(key);
 
-    if (data === null) {
+    if (!data) {
       localStorage.setItem(key, JSON.stringify(startValue));
 
       return startValue;
@@ -22,16 +22,8 @@ export function useLocalStorage<T>(
 
   const save = (newValue: T) => {
     try {
-      const data = localStorage.getItem(key);
-
-      if (data) {
-        const parsedData = JSON.parse(data);
-
-        parsedData.push(newValue);
-
-        localStorage.setItem(key, JSON.stringify(parsedData));
-        setValue(parsedData);
-      }
+      localStorage.setItem(key, JSON.stringify(newValue));
+      setValue(newValue);
     } catch (e) {
       return 'startValue';
     }

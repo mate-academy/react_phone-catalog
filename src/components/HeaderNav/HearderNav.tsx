@@ -1,44 +1,60 @@
+import { useContext } from 'react';
 import './Header.scss';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
+import { ProductsContext } from '../../PageContext';
+import classNames from 'classnames';
+
+const getLinkClass = ({ isActive }: { isActive: boolean }) =>
+  classNames('link', {
+    'is-active': isActive,
+  });
 
 export const HeaderNav = () => {
+  const { bucketItems, favItems } = useContext(ProductsContext);
+
   return (
     <div>
       <div className="container">
-        <a href="/" target="_self" className="logo">
+        <Link to="/" target="_self" className="logo">
           <img src="./uploadedImg/logo.png" alt="Logo"></img>
-        </a>
+        </Link>
         <ul className="links">
           <li>
-            <Link to="/" className="link">
+            <NavLink to="/" className={getLinkClass}>
               home
-            </Link>
+            </NavLink>
           </li>
           <li>
-            <Link to="/phones" className="link">
+            <NavLink to="/phones" className={getLinkClass}>
               phones
-            </Link>
+            </NavLink>
           </li>
           <li>
-            <Link to="/tablets" className="link">
+            <NavLink to="/tablets" className={getLinkClass}>
               tablets
-            </Link>
+            </NavLink>
           </li>
           <li>
-            <Link to="/accessories" className="link">
+            <NavLink to="/accessories" className={getLinkClass}>
               accessories
-            </Link>
+            </NavLink>
           </li>
         </ul>
         <ul className="icons">
           <li className="icon">
             <Link to="/favorites" className="icon-link onTablet">
               <img src="./uploadedImg/like.png"></img>
+              {favItems.length > 0 && (
+                <div className="show-items">{favItems.length}</div>
+              )}
             </Link>
           </li>
           <li className="icon">
             <Link to="/bucket" className="icon-link onTablet">
               <img src="./uploadedImg/shoppingBag.png"></img>
+              {bucketItems.length > 0 && (
+                <div className="show-items">{bucketItems.length}</div>
+              )}
             </Link>
           </li>
           <li className="icon">

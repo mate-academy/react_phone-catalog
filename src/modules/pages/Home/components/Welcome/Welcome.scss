@@ -63,10 +63,15 @@
   border: none;
   border: 1px solid #B4BDC3;
   margin-right: 16px;
+  cursor: pointer;
 
   @include onMobile {
     display: none;
   }
+}
+
+.left-btn:hover {
+  border: 1px solid#313237;
 }
 
 .right-btn {
@@ -74,10 +79,16 @@
   border: none;
   margin-left: 16px;
   border: 1px solid #B4BDC3;
+  cursor: pointer;
+
 
   @include onMobile {
     display: none;
   }
+}
+
+.right-btn:hover {
+  border: 1px solid#313237;
 }
 
 .left-btn:hover, .right-btn:hover {

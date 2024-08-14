@@ -1,22 +1,26 @@
 import { Link } from 'react-router-dom';
-import { Access, Phone } from '../../../../types/types';
 import './Card.scss';
 import { useContext } from 'react';
 import { ProductsContext } from '../../../../../../PageContext';
+import { Access, Phone } from '../../../../types/types';
 
 type Props = {
   phone: Phone | Access;
 };
 
 export const Card: React.FC<Props> = ({ phone }) => {
-  const { setItems, items } = useContext(ProductsContext);
+  const { addToBucket, handleFavItems, favItems, bucketItems } =
+    useContext(ProductsContext);
 
-  function AddPhone() {
-    // if (items.find(item => (item = phone))) {
-    //   return;
-    // }
+  function addPhone() {
+    addToBucket({
+      item: phone,
+      count: 1,
+    });
+  }
 
-    setItems([...items, phone]);
+  function addFav() {
+    handleFavItems(phone);
   }
 
   return (
@@ -31,8 +35,8 @@ export const Card: React.FC<Props> = ({ phone }) => {
         </Link>
         <h1 className="card-name">{phone.name}</h1>
         <h2 className="price-block">
-          <p className="current-price">${phone.priceRegular}</p>
-          <p className="full-price">${phone.priceDiscount}</p>
+          <p className="current-price">${phone.priceDiscount}</p>
+          <p className="full-price">${phone.priceRegular}</p>
         </h2>
         <div className="desc-block">
           <div className="desc-line">
@@ -49,11 +53,20 @@ export const Card: React.FC<Props> = ({ phone }) => {
           </div>
         </div>
         <div className="buttons">
-          <button className="Add-btn" onClick={AddPhone}>
-            Add to card
-          </button>
-          <button className="fav-btn">
-            <img src="./uploadedImg/like-btn.png"></img>
+          {bucketItems.find(item => item.item.id === phone.id) ? (
+            <button className="Added-btn">Added</button>
+          ) : (
+            <button className="Add-btn" onClick={addPhone}>
+              Add to card
+            </button>
+          )}
+
+          <button className="fav-btn" onClick={addFav}>
+            {favItems.includes(phone) ? (
+              <img src="./uploadedImg/Fav.png" className="cursor"></img>
+            ) : (
+              <img src="./uploadedImg/like-btn.png" className="cursor"></img>
+            )}
           </button>
         </div>
       </div>

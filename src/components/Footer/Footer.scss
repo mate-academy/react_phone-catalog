@@ -30,6 +30,7 @@ html {
 
 .footer-container {
   border-top: 1px solid #E2E6E9;
+  margin-top: auto;
 }
 
 .footer-links {
@@ -84,6 +85,15 @@ html {
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
+}
+
+.footer-UpArrow:hover {
+  border: 1px solid #313237;
+}
+
+.footer-UpArrow:active {
+  border: 1px solid #313237;
 }
 
 .footer-back-p {

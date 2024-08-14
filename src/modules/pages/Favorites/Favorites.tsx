@@ -1,21 +1,30 @@
 import { useContext } from 'react';
 import './Favorites.scss';
 import { Card } from '../Home/components/NewPhones/components';
-import { PhoneContext } from '../../../PageContext';
+import { ProductsContext } from '../../../PageContext';
 
 export const Favorites = () => {
-  const phones = useContext(PhoneContext);
-  const currentPhones = phones.slice(0, 6);
+  const { favItems } = useContext(ProductsContext);
 
   return (
     <div className="favorites-layout">
-      <div>links</div>
+      <div className="fav-link">
+        <a className="favIcon">
+          <img src="../uploadedImg/Home.png"></img>
+        </a>
+        <a className="favIcon">
+          <img src="../uploadedImg/LeftArrow.png"></img>
+        </a>
+        <p className="fav-link-p">Favorites</p>
+      </div>
       <h1 className="favorites-h1">Favourites</h1>
-      <p className="favorites-p">5 items</p>
+      <p className="favorites-p">{`${favItems.length} items`}</p>
       <div className="phones-card-container card-container-block">
-        {currentPhones.map(currentPhone => (
-          <Card phone={currentPhone} key={currentPhone.id} />
-        ))}
+        {favItems.length > 0 ? (
+          favItems.map(favItem => <Card phone={favItem} key={favItem.id} />)
+        ) : (
+          <div className="fav-is-empty">Your Favorites is empty</div>
+        )}
       </div>
     </div>
   );

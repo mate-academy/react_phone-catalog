@@ -1,6 +1,7 @@
 .favorites-layout {
   width: 1200px;
   margin: 0 auto;
+  min-height: 77vh;
 }
 
 .favorites-h1 {
@@ -26,4 +27,57 @@
 
 .card-container-block {
   margin: 40px 0 80px;
+}
+
+.favIcon {
+  width: 16px;
+  height: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+}
+
+.fav-link {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  align-items: center;
+  margin-top: 24px;
+  cursor: pointer;
+
+}
+
+.fav-link-p {
+font-size: 12px;
+font-weight: 700;
+line-height: 15.34px;
+text-align: left;
+margin: 0;
+color: #89939A;
+
+}
+
+.fav-link-p:hover {
+  color: #313237;
+}
+
+.fav-is-empty {
+  margin-top: 36px;
+  display: flex;
+  height: 128px;
+  width: 752px;
+  border: 1px solid #E2E6E9;
+  justify-content: center;
+  align-items: center;
+
+  font-family: Mont;
+  font-size: 22px;
+  font-weight: 600;
+  line-height: 21px;
+  color: #313237;
+}
+
+.margin-0 {
+  margin: 0;
 }

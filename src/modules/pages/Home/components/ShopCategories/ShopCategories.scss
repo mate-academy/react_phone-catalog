@@ -30,6 +30,7 @@ margin: 0 0 24px;
   height: 443px;
   width: 368px;
   flex-direction: column;
+  transition: 0.3s;
 
   @include onTablet {
     height: 262px;
@@ -40,6 +41,10 @@ margin: 0 0 24px;
     width: 288px;
     height: 363px;
   }
+}
+
+.shopCateg-card:hover {
+  transform: scale(1.01);
 }
 
 .shopCateg-picture {

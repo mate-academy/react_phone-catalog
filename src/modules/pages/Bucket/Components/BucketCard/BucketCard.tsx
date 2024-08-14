@@ -1,50 +1,44 @@
-import { useState } from 'react';
 import './BucketCard.scss';
-import { Access, Phone } from '../../../types/types';
+import { BucketItem, ProductsContext } from '../../../../../PageContext';
+import { useContext } from 'react';
 
 type Props = {
-  item: Phone | Access;
+  item: BucketItem;
 };
 
 export const BucketCard: React.FC<Props> = ({ item }) => {
-  const [count, setCount] = useState(1);
+  const { addCountOfProduct, minusCountOfProduct, deleteBucketItem } =
+    useContext(ProductsContext);
 
   function handleMinusItem() {
-    setCount(currentCount => {
-      if (currentCount === 0) {
-        return 0;
-      }
-
-      return currentCount - 1;
-    });
+    minusCountOfProduct(item);
   }
 
   function handlePlusItem() {
-    setCount(currentItem => {
-      return currentItem + 1;
-    });
+    addCountOfProduct(item);
+  }
+
+  function handleDeleteItem() {
+    deleteBucketItem(item);
   }
 
   return (
     <div className="bucket-card">
-      <button className="close-img-btn">
+      <button className="close-img-btn" onClick={handleDeleteItem}>
         <img src="../uploadedImg/Close.png" className="close-img"></img>
       </button>
-      <img
-        src="img/phones/apple-iphone-11/black/00.webp"
-        className="card-img"
-      ></img>
-      <p className="card-p">{item.name}</p>
+      <img src={item.item.images[0]} className="card-img"></img>
+      <p className="card-p">{item.item.name}</p>
       <div className="card-btns">
         <button className="card-btn" onClick={handleMinusItem}>
           <img src="../uploadedImg/Minus.png" className="card-btn-img"></img>
         </button>
-        <div className="card-number">{count}</div>
+        <div className="card-number">{item.count}</div>
         <button className="card-btn" onClick={handlePlusItem}>
           <img src="../uploadedImg/Plus.png" className="card-btn-img"></img>
         </button>
       </div>
-      <p className="card-price">{item.priceDiscount}</p>
+      <p className="card-price">{`$${item.item.priceDiscount * item.count}`}</p>
     </div>
   );
 };
