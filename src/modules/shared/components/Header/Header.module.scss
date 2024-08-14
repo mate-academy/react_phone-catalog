@@ -1,11 +1,6 @@
 @use "../../styles/mixins" as *;
 @use "../../styles/vars" as *;
 
-@mixin square($size) {
-  width: $size;
-  height: $size;
-}
-
 $header-gap: 16px;
 $header-desktop-gap: 24px;
 
@@ -22,14 +17,19 @@ $header-desktop-gap: 24px;
   }
 }
 
-.Menus {
+.MenuLinks {
   display: flex;
   justify-content: flex-end;
   flex-grow: 1;
+  list-style: none;
+}
+
+.MenuLinksItem {
+  @include color-transition((box-shadow: -1px 0 0 0 var(--shadow-color)));
 }
 
 .MenuLink {
-  box-shadow: -1px 0 0 0 var(--shadow-color);
+  height: 100%;
 }
 
 .Header {
@@ -41,7 +41,7 @@ $header-desktop-gap: 24px;
 
   height: 48px;
 
-  box-shadow: 0 1px 0 0 var(--shadow-color);
+  @include color-transition((box-shadow: 0 1px 0 0 var(--shadow-color)));
 
   @include for-desktop {
     height: 64px;

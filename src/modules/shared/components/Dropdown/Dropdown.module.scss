@@ -1,0 +1,119 @@
+@use "../../../shared/styles/extends";
+@use "../../../shared/styles/mixins" as *;
+
+$dropdown-gap: 4px;
+
+.Label {
+  position: absolute;
+  bottom: 100%;
+  margin-bottom: $dropdown-gap;
+
+  @extend %small-text;
+  @include color-transition((color: var(--secondary-text-color)));
+}
+
+.Select {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  box-sizing: border-box;
+  height: 40px;
+  width: 100%;
+  padding: 0 12px;
+  border: 1px solid;
+
+  cursor: pointer;
+
+  @extend %buttons;
+  @include color-transition((
+    color: var(--primary-text-color),
+    background-color: var(--dropdown-color),
+    border-color: var(--dropdown-border-color)
+  ));
+
+  &:focus-visible {
+    outline: none;
+    border-color: var(--dropdown-border-open-color);
+  }
+}
+
+.DownArrow {
+  @include color-transition((color: var(--dropdown-arrow-color)));
+}
+
+.UpArrow {
+  display: none;
+
+  @include color-transition((color: var(--dropdown-arrow-color)));
+}
+
+.Options {
+  position: absolute;
+  top: calc(100% + $dropdown-gap);
+  left: 0;
+  right: 0;
+
+  padding: 8px 0;
+  border: 1px solid;
+  box-shadow: 0 2px 15px 0 #0000000D;
+
+  max-height: 0;
+  visibility: hidden;
+
+  list-style: none;
+  cursor: default;
+
+  @include color-transition((border-color: var(--element-color)));
+}
+
+.Option {
+  height: 32px;
+  width: 100%;
+  padding: 0 0 0 12px;
+  border: none;
+
+  cursor: pointer;
+
+  @extend %body-text;
+  @include color-transition((
+    color: var(--secondary-text-color),
+    background-color: var(--background-color),
+  ));
+
+  &:hover {
+    color: var(--primary-text-color);
+    background-color: var(--dropdown-color);
+  }
+}
+
+.Dropdown {
+  position: relative;
+  top: 15px + $dropdown-gap;
+  cursor: pointer;
+
+  &_open > .Select {
+    border-color: var(--dropdown-border-open-color);
+  }
+
+  &:hover:not(&_open) > .Select:not(:focus-visible) {
+    border-color: var(--dropdown-border-hover-color);
+  }
+
+  &_open .DownArrow {
+    display: none;
+  }
+
+  &:hover .DownArrow {
+    color: var(--dropdown-arrow-hover-color);
+  }
+
+  &_open .UpArrow {
+    display: block;
+  }
+
+  &_open > .Options {
+    max-height: none;
+    visibility: visible;
+  }
+}

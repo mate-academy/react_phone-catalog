@@ -1,22 +1,21 @@
 @use "../../styles/mixins" as *;
-@use "../../styles/extends" as *;
+@use "../../styles/extends";
 @use "../../styles/vars" as *;
 
 .Link {
   display: block;
+  text-decoration: none;
 
   @extend %uppercase;
-
-  text-decoration: none;
-  color: var(--secondary-text-color);
-
-  @include scale-on-hover;
+  @include color-and-hover-scale-transition((color: var(--secondary-text-color)));
 }
 
 .NavigationItem {
   padding-top: $active-underline-width;
-  border-bottom: $active-underline-width solid transparent;
+  border-bottom: $active-underline-width solid;
   align-content: center;
+
+  @include color-transition((border-color: transparent));
 
   &_active {
     border-color: var(--active-color);

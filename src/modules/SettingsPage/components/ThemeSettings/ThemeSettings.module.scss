@@ -1,0 +1,17 @@
+@use "../../../shared/styles/extends";
+@use "../../../shared/styles/mixins" as *;
+
+.Title {
+  margin-bottom: 24px;
+
+  @extend %h2;
+  @include color-transition((color: var(--primary-text-color)));
+}
+
+.ThemeSettings {
+  padding-top: 40px;
+
+  @include for-mobile {
+    padding-top: 32px;
+  }
+}

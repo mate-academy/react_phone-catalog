@@ -1,0 +1,43 @@
+@use "../../../shared/styles/extends";
+@use "../../../shared/styles/mixins" as *;
+
+$color-radio-size: 32px;
+
+.Legend {
+  margin-bottom: 8px;
+  
+  @extend %small-text;
+  @include color-transition((color: var(--secondary-text-color)));
+}
+
+.Label {
+  &:not(:focus, :active) {
+    @include visually-hidden;
+  }
+}
+
+.Option {
+  appearance: none;
+  cursor: pointer;
+
+  box-sizing: border-box;
+  background-clip: content-box;
+  width: $color-radio-size;
+  height: $color-radio-size;
+  padding: 2px;
+  border: 1px solid;
+  border-radius: 50%;
+  margin: 0 8px 0 0;
+
+  background-color: var(--shadow-color);
+
+  @include color-transition((border-color: var(--element-color)));
+
+  &:hover {
+    border-color: var(--color-radio-border-hover-color);
+  }
+
+  &:checked {
+    border-color: var(--active-color);
+  }
+}

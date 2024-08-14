@@ -1,9 +1,10 @@
 @use "../../styles/mixins" as *;
+@use "../../styles/vars" as *;
 
 .Image {
   display: block;
   width: 100%;
   height: 100%;
 
-  @include scale-on-hover;
+  @include color-and-hover-scale-transition((color: var(--primary-text-color)));
 }

@@ -1,3 +1,4 @@
 $transition-duration: 0.3s;
-$hover-transform-scale: scale(1.1);
+$hover-scale: scale(1.1);
+$hover-transform: (transform: $hover-scale);
 $active-underline-width: 3px;

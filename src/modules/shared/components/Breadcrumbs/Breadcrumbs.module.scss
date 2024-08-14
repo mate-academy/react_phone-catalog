@@ -1,0 +1,24 @@
+@use "../../../shared/styles/mixins" as *;
+@use "../../../shared/styles/extends";
+
+.HomeImage {
+  display: block;
+
+  @include color-and-hover-scale-transition((color: var(--icon-color)));
+}
+
+.Arrow {
+  @include color-transition((color: var(--path-arrow-color)));
+}
+
+.Current {
+  align-self: flex-end;
+
+  @extend %small-text;
+  @include color-transition((color: var(--secondary-text-color)));
+}
+
+.Breadcrumbs {
+  display: flex;
+  gap: 8px;
+}

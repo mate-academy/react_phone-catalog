@@ -1,0 +1,23 @@
+{
+  "accessLogo": "See Nice Gadgets home page",
+  "home": "HOME",
+  "phones": "PHONES",
+  "tablets": "TABLETS",
+  "accessories": "ACCESSORIES",
+  "accessSettings": "Change settings",
+  "accessFavourites": "See favourites",
+  "accessCart": "See cart",
+  "accessMenu": "Open navigation menu",
+  "accessHome": "Go back to home page",
+  "accessThen": "then",
+  "back": "Back",
+  "expand": "Expand",
+  "collapse": "Collapse",
+  "settingsTitle": "Settings",
+  "themeSettingsTitle": "Color theme",
+  "themeSettingsLabel": "Color themes:",
+  "bright": "Bright",
+  "dark": "Dark",
+  "languageSettingsTitle": "Language",
+  "languageSettingsLabel": "Languages:"
+}

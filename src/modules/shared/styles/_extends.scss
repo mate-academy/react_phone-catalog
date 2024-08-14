@@ -1,4 +1,33 @@
 @use './fonts';
+@use './mixins' as *;
+
+%h1 {
+  font-family: Mont, Arial, Helvetica, sans-serif;
+  font-size: 48px;
+  font-weight: 800;
+  line-height: 56px;
+  letter-spacing: -0.01em;
+  text-align: left;
+
+  @include for-mobile {
+    font-size: 32px;
+    line-height: 41px;
+  }
+}
+
+%h2 {
+  font-family: Mont, Arial, Helvetica, sans-serif;
+  font-size: 32px;
+  font-weight: 800;
+  line-height: 41px;
+  letter-spacing: -0.01em;
+  text-align: left;
+
+  @include for-mobile {
+    font-size: 22px;
+    line-height: 30.8px;
+  }
+}
 
 %uppercase {
   font-family: Mont, Arial, Helvetica, sans-serif;
@@ -6,5 +35,29 @@
   font-weight: 800;
   line-height: 11px;
   letter-spacing: 0.04em;
+  text-align: left;
+}
+
+%buttons {
+  font-family: Mont, Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 21px;
+  text-align: left;
+}
+
+%body-text {
+  font-family: Mont, Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 21px;
+  text-align: left;
+}
+
+%small-text {
+  font-family: Mont, Arial, Helvetica, sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 15.34px;
   text-align: left;
 }

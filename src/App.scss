@@ -1,6 +1,7 @@
 @use "./modules/shared/styles/reset";
 @use "./modules/shared/styles/color-themes";
+@use "./modules/shared/styles/mixins" as *;
 
 html {
-  background-color: var(--background-color);
+  @include color-transition((background-color: var(--background-color)));
 }

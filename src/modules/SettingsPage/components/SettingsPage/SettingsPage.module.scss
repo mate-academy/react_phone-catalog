@@ -1,0 +1,22 @@
+@use "../../../shared/styles/extends";
+@use "../../../shared/styles/mixins" as *;
+
+.Title {
+  @include full-grid-width;
+  @extend %h1;
+  @include color-transition((color: var(--primary-text-color)));
+}
+
+.Section {
+  @include full-grid-width;
+}
+
+.SettingsPage {
+  @include grid;
+
+  padding-top: 16px;
+}
+
+
+
+

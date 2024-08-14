@@ -1,28 +1,61 @@
 import classNames from 'classnames';
 import styles from './MenuLink.module.scss';
-import { Device } from '../../types/types';
+import { Device, MenuLinkSVGOption } from '../../types/types';
+import { NavLink } from 'react-router-dom';
+import { SettingsSVG } from '../SVGs/SettingsSVG';
+import { HeartSVG } from '../SVGs/HeartSVG';
+import { BagSVG } from '../SVGs/BagSVG';
+import { BurgerSVG } from '../SVGs/BurgerSVG';
 
 type Props = {
-  device: Device;
-  src: string;
+  to: string;
   alt: string;
+  device: Device;
+  svgOption: MenuLinkSVGOption;
   className?: string;
 };
 
-export const MenuLink: React.FC<Props> = ({ device, src, alt, className }) => {
+export const MenuLink: React.FC<Props> = ({
+  to,
+  alt,
+  device,
+  svgOption,
+  className,
+}) => {
+  let icon: React.JSX.Element;
+
+  switch (svgOption) {
+    case MenuLinkSVGOption.Settings:
+      icon = <SettingsSVG className={styles.Icon} />;
+      break;
+    case MenuLinkSVGOption.Heart:
+      icon = <HeartSVG className={styles.Icon} />;
+      break;
+    case MenuLinkSVGOption.Bag:
+      icon = <BagSVG className={styles.Icon} />;
+      break;
+    case MenuLinkSVGOption.Burger:
+      icon = <BurgerSVG className={styles.Icon} />;
+      break;
+    default:
+      throw new Error('Menu link SVG option is not valid!!!');
+  }
+
   return (
-    <a
-      className={classNames(
-        styles.MenuLink,
-        device === Device.Mobile
-          ? styles.MenuLink_device_mobile
-          : styles.MenuLink_device_notMobile,
-        styles.MenuLink_active,
-        className,
-      )}
-      href="#"
+    <NavLink
+      className={({ isActive }) =>
+        classNames(
+          styles.MenuLink,
+          styles[`MenuLink_device_${device}`],
+          isActive && styles.MenuLink_active,
+          className,
+        )
+      }
+      to={to}
+      aria-label={alt}
+      aria-current="page"
     >
-      <img className={styles.Icon} src={src} alt={alt}></img>
-    </a>
+      {icon}
+    </NavLink>
   );
 };

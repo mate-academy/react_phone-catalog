@@ -1,0 +1,32 @@
+@use "../../../shared/styles/extends";
+@use "../../../shared/styles/mixins" as *;
+
+.Title {
+  margin-bottom: 24px;
+
+  @extend %h2;
+  @include color-transition((color: var(--primary-text-color)));
+  @include full-grid-width;
+}
+
+.Dropdown {
+  grid-column: 1 / 5;
+
+  @include for-mobile {
+    grid-column: 1 / 3;
+  }
+}
+
+.LanguageSettings {
+  padding-top: 56px;
+
+  @include child-grid;
+
+  @include for-tablet {
+    padding-top: 64px
+  }
+
+  @include for-desktop {
+    padding-top: 80px;
+  }
+}

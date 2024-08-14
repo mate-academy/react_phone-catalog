@@ -1,13 +1,52 @@
+$bright-primary-color: #313237;
+$bright-secondary-color: #89939A;
+$bright-icons-color: #B4BDC3;
+$bright-elements-color: #E2E6E9;
+$bright-white-color: #FFF;
+$dark-secondary-color: #75767F;
+$dark-icons-color: #4A4D58;
+$dark-elements-color: #3B3E4A;
+$dark-surface2-color: #323542;
+$dark-black-color: #0F1121;
+$dark-white-color: #F1F2F9;
+$dark-accent-color: #905BFF;
+
 :root {
-  --background-color: #0F1121;
-  --secondary-text-color: #828282;
-  --active-color: #F1F2F9;
-  --shadow-color: #323542;
+  --background-color: #{$bright-white-color};
+  --primary-text-color: #{$bright-primary-color};
+  --secondary-text-color: #{$bright-secondary-color};
+  --icon-color: #{$bright-primary-color};
+  --element-color: #{$bright-elements-color};
+  --active-color: #{$bright-primary-color};
+  --shadow-color: #{$bright-elements-color};
+  --path-arrow-color: #{$bright-icons-color};
+  --back-link-text-color: #{$bright-secondary-color};
+  --back-link-hover-color: #{$bright-primary-color};
+  --color-radio-border-hover-color: #{$bright-icons-color};
+  --dropdown-color: #{$bright-white-color};
+  --dropdown-border-color: #{$bright-icons-color};
+  --dropdown-border-hover-color: #{$bright-secondary-color};
+  --dropdown-border-open-color: #{$bright-primary-color};
+  --dropdown-arrow-color: #{$bright-icons-color};
+  --dropdown-arrow-hover-color: #{$bright-icons-color};
 }
 
-[theme='bright'] {
-  --background-color: #FFF;
-  --secondary-text-color: #89939A;
-  --active-color: #313237;
-  --shadow-color: #E2E6E9;
+[theme='dark'] {
+  --background-color: #{$dark-black-color};
+  --primary-text-color: #{$dark-white-color};
+  --secondary-text-color: #{$dark-secondary-color};
+  --icon-color: #{$dark-white-color};
+  --element-color: #{$dark-elements-color};
+  --active-color: #{$dark-white-color};
+  --shadow-color: #{$dark-surface2-color};
+  --path-arrow-color: #{$dark-icons-color};
+  --back-link-text-color: #{$dark-white-color};
+  --back-link-hover-color: #{$dark-accent-color};
+  --color-radio-border-hover-color: #{$dark-secondary-color};
+  --dropdown-color: #{$dark-surface2-color};
+  --dropdown-border-color: #{$dark-surface2-color};
+  --dropdown-border-hover-color: #{$dark-icons-color};
+  --dropdown-border-open-color: #{$dark-accent-color};
+  --dropdown-arrow-color: #{$dark-secondary-color};
+  --dropdown-arrow-hover-color: #{$dark-icons-color};
 }

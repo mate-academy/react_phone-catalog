@@ -1,0 +1,24 @@
+@use "../../../shared/styles/extends";
+@use "../../../shared/styles/mixins" as *;
+@use "../../../shared/styles/vars" as *;
+
+.Arrow {
+  @include color-transition((color: var(--icon-color)));
+}
+
+.BackButton {
+  display: flex;
+  gap: 4px;
+  align-items: flex-end;
+
+  @extend %small-text;
+
+  text-decoration: none;
+  cursor: pointer;
+
+  @include color-and-hover-transition((color: var(--back-link-text-color)),(color: var(--back-link-hover-color)));
+
+  &:hover > .Arrow {
+    color: var(--back-link-hover-color);
+  }
+}

@@ -1,4 +1,4 @@
-@use "../shared/styles/mixins" as *;
+@use "../../../shared/styles/mixins" as *;
 
 .HiddenTitle {
   @include visually-hidden;

@@ -1,0 +1,22 @@
+@use "../../../shared/styles/mixins" as *;
+
+.Breadcrumbs {
+  @include full-grid-width;
+
+  padding-top: 24px;
+}
+
+.GoBack {
+  @include full-grid-width;
+
+  justify-self: start;
+  padding-top: 40px;
+
+  @include for-mobile {
+    padding-top: 24px;
+  }
+}
+
+.PathNavigation {
+  @include grid;
+}

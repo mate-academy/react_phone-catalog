@@ -1,4 +1,39 @@
+@use "sass:list";
 @use "./vars" as *;
+
+@function combine-transitions($transition, $new-property) {
+  $transition: list.append($transition, ($new-property $transition-duration), comma);
+
+  @return $transition
+};
+
+@mixin color-and-hover-transition($colors, $hover-values) {
+  $transition: ();
+
+  @each $property, $color in $colors {
+    $transition: combine-transitions($transition, $property);
+    
+    #{$property}: $color;
+  }
+
+  &:hover{
+    @each $property, $value in $hover-values {
+      $transition: combine-transitions($transition, $property);
+
+      #{$property}: $value;
+    }
+  }
+
+  transition: $transition;
+}
+
+@mixin color-and-hover-scale-transition($colors) {
+  @include color-and-hover-transition($colors, $hover-transform)
+}
+
+@mixin color-transition($colors) {
+  @include color-and-hover-transition($colors, ())
+}
 
 @mixin hover($property, $toValue) {
   transition: #{$property} $transition-duration;
@@ -9,7 +44,7 @@
 }
 
 @mixin scale-on-hover {
-  @include hover(transform, $hover-transform-scale)
+  @include hover(transform, $hover-scale)
 }
 
 @mixin visually-hidden {
@@ -37,5 +72,40 @@
 @mixin for-mobile {
   @media (max-width: 639px) {
     @content;
+  }
+}
+
+@mixin grid {
+  display: grid;
+  justify-content: center;
+
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0 16px;
+  margin: 0 16px;
+
+  @include for-tablet {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    margin: 0 24px
+  }
+
+  @include for-desktop {
+    grid-template-columns: repeat(24, 32px);
+  }
+}
+
+@mixin child-grid {
+  display: grid;
+  grid-template-columns: subgrid;
+}
+
+@mixin full-grid-width {
+  grid-column: 1 / 5;
+
+  @include for-tablet {
+    grid-column: 1 / 13;
+  }
+
+  @include for-desktop {
+    grid-column: 1 / 25;
   }
 }

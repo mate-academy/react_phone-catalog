@@ -4,15 +4,19 @@
 .Icon {
   display: block;
   margin: auto;
-  transition: transform $transition-duration;
+  color: var(--icon-color);
+  transition: transform $transition-duration, color $transition-duration;
 }
 
 .MenuLink {
+  display: block;
   box-sizing: border-box;
   aspect-ratio: 1;
   padding-top: $active-underline-width;
-  border-bottom: $active-underline-width solid transparent;
+  border-bottom: $active-underline-width solid;
   align-content: center;
+
+  @include color-transition((border-color: transparent));
 
   &_active {
     border-color: var(--active-color);
@@ -35,6 +39,6 @@
   }
 
   &:hover > .Icon {
-    transform: $hover-transform-scale;
+    transform: $hover-scale;
   }
 }
