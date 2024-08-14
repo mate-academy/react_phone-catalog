@@ -1,50 +1,22 @@
-@import '../../styles/main';
-@import '../../styles/utils/_variables';
-
-.productsSlider {
-  @include section-grid;
-
-  padding-right: 0;
-
-  @include on-tablet {
-    padding-right: 0;
-  }
-}
-
-.topWrapper {
-  grid-column: 1 / -1;
+.ProductSlider {
   display: flex;
-  justify-content: space-between;
-  margin-bottom: 24px;
-  padding-right: 16px;
-  border: solid red 1px;
-
-  @include on-tablet {
-    padding-right: 16px;
-  }
-}
-
-.title {
-  @extend %h2-tablet;
-}
-
-.buttons {
-  display: flex;
-  align-items: center;
   justify-content: center;
-  gap: 16px;
+  padding-top: 50px;
+
+
 }
 
-.button {
+.arrowButton {
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
   width: 32px;
-  height: 32px;
+  height: 100%;
   background-color: var(--color-icons);
   border: 1px solid var(--color-surface);
   border-radius: 5%;
+
 
   &:hover {
       border: 1px solid var(--color-primary);
@@ -52,39 +24,41 @@
   }
 }
 
-.arrowButton {
-  height: 50%;
-  border: solid 1px red;
+
+.topWrapper {
+
+  width: 90%;
+
 }
 
-.isDisabled {
-  cursor: default;
-  opacity: 0.5;
+.buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  height: 100%;
+}
+.sliderWrapper {
+  transition: transform 0.5s ease;
+  will-change: transform;
+  display: flex;
+  width: 100%;
+ // Zapewnia, że wrapper będzie miał szerokość wszystkich obrazów razem wziętych
+}
 
-  &:hover {
-    border: 1px solid var(--color-surface);
-  }
+.slide {
+  min-width: 100%;  // Każdy obraz zajmuje całą szerokość kontenera
+  height: auto;
+}
+
+.container {
+  width: 100%;  // Zapewnia, że kontener ma taką samą szerokość jak jeden obraz
+  overflow: hidden;  // Ukrywa obrazy poza aktualnym widokiem
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
 }
 
 .iconNext {
   transform: rotate(180deg);
-}
-
-.container {
-  grid-column: 1 / -1;
-  display: flex;
-  overflow: hidden;
-  gap: 16px;
-}
-
-.mainContainer {
-  grid-column: 1 / -1;
-  display: flex;
-  overflow: hidden;
-  gap: 16px;
-}
-
-.sliderWrapper {
-  transition: transform 0.5s ease;
-  will-change: transform;
 }
