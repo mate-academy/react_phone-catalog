@@ -5,6 +5,7 @@ import { BannerSlider } from './components/BannerSlider';
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
 import { UnderConstruction } from './components/UnderConstruction';
+import {ProductSlider} from './components/ProductSlider';
 
 export const App: React.FC = () => {
 const [isLoading, setIsLoading] = useState(true)
@@ -24,6 +25,7 @@ useEffect(() => {
           <UnderConstruction />
           <Header />
           <BannerSlider />
+          <ProductSlider title="Hot prices" />
           <Footer />
         </div>
       )
