@@ -1,6 +1,7 @@
 import { ProductList } from '../../components/ProductList';
 import { Header } from '../../components/Header';
 import { Breadcrumbs } from '../../components/Breadcrumbs';
+import { Footer } from '../../components/Footer'
 
 
 
@@ -15,6 +16,7 @@ const category = 'phones';
         <Header />
         <Breadcrumbs category = {category}/>
         <ProductList category = {category} />
+        <Footer />
       </div>
     );
 };
