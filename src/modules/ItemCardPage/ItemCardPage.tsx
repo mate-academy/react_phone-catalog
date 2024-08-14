@@ -59,11 +59,11 @@ export const ItemCardPage = () => {
   };
 
   useEffect(() => {
-    getData<ProductItem[]>(`/api/${category}.json`)
+    getData<ProductItem[]>(`api/${category}.json`)
       .then(data => setCurrentProduct(data.find(item => item.id === productId)))
       .finally(() => setLoader(false));
 
-    getData<Product[]>(`/api/products.json`).then(data =>
+    getData<Product[]>(`api/products.json`).then(data =>
       setProductFromGeneralList(data.find(item => item.itemId === productId)),
     );
   }, [productId, category]);
