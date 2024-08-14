@@ -4,6 +4,7 @@ import { ProductPhone, ProductTablet, ProductAccessory } from '../../types/Produ
 import { DropDown } from '../DropDown';
 import { Pagination } from '../Pagination';
 import { Loader } from '../Loader'
+import { Breadcrumbs } from '../../components/Breadcrumbs';
 import styles from './ProductList.module.scss';
 
 type ProductListProps = {
@@ -81,17 +82,21 @@ export const ProductList: React.FC<ProductListProps> = ( {category}) => {
 } */
   return (
     <div className={styles.ProductsPage}>
-      <DropDown handleNumberOdProductPerPage={handleNumberOdProductPerPage} numberOfProducts={numberOfProducts}/>
+       <div className={styles.topContainer}>
+          <Breadcrumbs category = {category}/>
 
-      <ul className={styles.container}>
-        {arrayOfDisplayedIndexes.map((product) => (
-          <li key={product.id} className={styles.product}>
-            <ProductCard product={product}  />
-          </li>
-        ))}
-      </ul>
+          <DropDown handleNumberOdProductPerPage={handleNumberOdProductPerPage} numberOfProducts={numberOfProducts}/>
 
-      <Pagination numberOfPages = {numberOfPages} handleDisplayedPage={handleDisplayedPage} displayedPage={displayedPage} />
+          <ul className={styles.container}>
+            {arrayOfDisplayedIndexes.map((product) => (
+              <li key={product.id} className={styles.product}>
+                <ProductCard product={product}  />
+              </li>
+            ))}
+          </ul>
+
+          <Pagination numberOfPages = {numberOfPages} handleDisplayedPage={handleDisplayedPage} displayedPage={displayedPage} />
+        </div>
     </div>
   );
 };
