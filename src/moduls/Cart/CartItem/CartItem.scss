@@ -1,0 +1,174 @@
+@import '/src/styles/variable.scss';
+
+.CartItem {
+  display: flex;
+  align-items: center;
+  border: $border-color 1px solid;
+  width: 724px;
+  padding: 24px;
+  justify-content: space-between;
+  margin-bottom: 16px;
+
+  &.dark {
+    border: 0;
+    background-color: $light-gray;
+    color: $white;
+  }
+
+  &__img {
+    width: 60px;
+    height: 66px;
+  }
+
+  &__top {
+    align-items: center;
+    display: flex;
+
+    &__name {
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 21px;
+      text-align: left;
+    }
+
+    & :not(:last-child) {
+      margin-right: 32px;
+    }
+
+    &__icon-close {
+      background: url('/assets/img/Union.png') no-repeat center;
+      width: 32px;
+      height: 16px;
+      border: 0;
+      outline: 0;
+
+      &.dark {
+        &:hover {
+          background: url('/assets/img/Close-DARK.svg') no-repeat center;
+        }
+      }
+
+      &:hover {
+        background: url('/assets/img/Close.svg') no-repeat center;
+      }
+    }
+  }
+
+  &__bottom {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+
+    &__count {
+      text-align: center;
+      width: 32px;
+    }
+
+    &__price {
+      color: $color-dark;
+      font-size: 22px;
+      font-weight: 800;
+      line-height: 30.8px;
+      text-align: right;
+
+      margin-left: 24px;
+
+      &.dark {
+        color: $white;
+      }
+    }
+
+    &__buttons {
+      align-items: center;
+      display: flex;
+
+      &__button {
+        border: $border-color 1px solid;
+        outline: 0;
+        width: 32px;
+        height: 32px;
+        background: none;
+
+        &.dark {
+          &:hover {
+            border-color: $white;
+          }
+        }
+
+        &:hover {
+          border-color: $color-dark;
+        }
+
+        &--decrement {
+          background: url('/assets/img/Minus.svg') no-repeat center;
+          cursor: pointer;
+
+          &.dark {
+            background: url('/assets/img/Minus-DARK.svg') no-repeat center;
+            background-color: $dark-gray;
+            border-color: $dark-gray;
+
+            &.disable {
+              border-color: $dark-gray;
+            }
+          }
+
+          &.disable {
+            background: url('/assets/img/Minus-disable.svg') no-repeat center;
+            border-color: $border-color;
+          }
+        }
+
+        &--increment {
+          background: url('/assets/img/Plus.svg') no-repeat center;
+          cursor: pointer;
+    
+          &.dark {
+            background: url('/assets/img/Plus-DARK.svg') no-repeat center;
+            background-color: $dark-gray;
+            border-color: $dark-gray;
+
+            &.disable {
+              background-color: $light-gray;
+              border-color: $dark-gray;
+            }
+          }
+
+          &.disable {
+            &::after {
+              content: '';
+              background: url('/assets/img/Union.png') no-repeat center;
+              transform: rotate(45deg);
+            }
+
+            border-color: $border-color;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 1200px) {
+  .CartItem {
+    display: flex;
+  }
+}
+
+@media (min-width: 699px) and (max-width: 1199px) {
+  .CartItem {
+    width: 592px;
+  }
+}
+
+@media (min-width: 320px) and (max-width: 698px) {
+  .CartItem {
+    display: block;
+    box-sizing: border-box;
+    width: 288px;
+
+    &__bottom {
+      margin-top: 16px;
+    }
+  }
+}

@@ -1,0 +1,146 @@
+@import '/src/styles/variable.scss';
+.enter-nav__icons__icon-close {
+  display: flex;
+  width: 50px;
+  height: 49px;
+  justify-content: center;
+  align-items: center;
+  border: $border-color 1px solid;
+  position: relative;
+  background-image: url('/assets/img/Close.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: #fff;
+
+  &.dark {
+    border-color: $dark-gray;
+    background-image: url('/assets/img/Close-DARK.svg');
+    background-color: $dark-main;
+
+    &:hover {
+      border-color: $white;
+    }
+  }
+
+  &:hover {
+    border-color: $color-dark;
+  }
+}
+
+.nav-links {
+  position: relative;
+  padding-top: 64px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+.nav-items {
+  font-family: 'Mont', sans-serif;
+  height: 11px;
+  text-align: center;
+  margin-top: 24px;
+  list-style: none;
+
+  & :nth-child(-n + 3) {
+    margin-bottom: 40px;
+  }
+}
+
+.footer-links {
+  display: flex;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 64px;
+
+  &__link {
+    height: 64px;
+    width: 50%;
+    border: $border-color 1px solid;
+    transition: all 0.3s;
+    position: relative;
+
+    &.dark {
+      border-color: $dark-gray;
+
+      &::after {
+        border-color: $white;
+      }
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      display: block;
+      top: 20px;
+      bottom: 0;
+      left: 0;
+      border-bottom: 3px solid $color-dark;
+      width: 100%;
+
+      @include hover(all, 0.3s);
+
+      transform-origin: left;
+      transform: scale(0);
+    }
+
+    &:hover::after {
+      content: '';
+      transform: scale(1);
+    }
+
+    &--heart {
+      background-image: url('/assets/img/Favourites (Heart Like).svg');
+      background-repeat: no-repeat;
+      background-position: center;
+
+      &.dark {
+        background-image: url('/assets/img/Favourites\ \(Heart\ Like\)-DARK.svg');
+      }
+
+      &.is-active {
+        position: relative;
+        background-image: url('/assets/img/Favourites Filled (Heart Like).svg');
+        background-repeat: no-repeat;
+        background-position: center;
+        z-index: -111111;
+      }
+    }
+
+    &--bag {
+      background-image: url('/assets/img/Shopping bag (Cart).svg');
+      background-repeat: no-repeat;
+      background-position: center;
+
+      &.dark {
+        background-image: url('/assets/img/Shopping\ bag\ \(Cart\)-DARK.svg');
+      }
+    }
+  }
+}
+
+.postion-phone {
+  position: absolute;
+  right: calc(-15px + 50%);
+  top: 20px;
+}
+
+@media (min-width: 1200px) {
+  .enter-nav__icons__icon-close {
+    position: absolute;
+    left: -64px;
+    width: 64px;
+    height: 63px;
+  }
+}
+
+@media (min-width: 699px) and (max-width: 1199px) {
+  .enter-nav__icons__icon-close {
+    position: absolute;
+
+    left: -48px;
+  }
+}

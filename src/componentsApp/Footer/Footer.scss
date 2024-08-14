@@ -1,0 +1,244 @@
+@import '/src/styles/variable.scss';
+
+* {
+  padding: 0;
+}
+
+body {
+  overflow-x: hidden;
+  position: relative;
+}
+
+.Navbar__logo {
+  margin: 0;
+}
+
+.Footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  border-top: $border-color 1px solid;
+  width: 100%;
+
+  &.dark {
+    border-color: $dark-gray;
+  }
+
+  &__items {
+    &__info {
+      &__list {
+        display: flex;
+        list-style: none;
+
+        & :nth-child(-n + 2) {
+          margin-right: 20px;
+        }
+
+        &__link {
+          font-family: 'Mont', sans-serif;
+          text-decoration: none;
+          text-transform: uppercase;
+          font-size: 12px;
+          font-weight: 800;
+          line-height: 11px;
+          letter-spacing: 0.04em;
+          text-align: left;
+          color: $color-nav-text;
+          position: relative;
+
+          &.dark {
+            &.is-active {
+              color: $white;
+            }
+
+            &::after {
+              border-color: $white;
+            }
+
+            &:hover {
+              color: $white;
+            }
+          }
+
+          &:hover {
+            font-size: bold;
+            color: $color-dark;
+          }
+
+          &::after {
+            content: '';
+            position: absolute;
+            display: block;
+            top: 20px;
+            left: 0;
+            border-bottom: 3px solid $color-dark;
+            width: 100%;
+
+            @include hover(all, 0.3s);
+
+            transform-origin: center;
+            transform: scale(0);
+          }
+
+          &:hover::after {
+            content: '';
+            transform: scale(1);
+          }
+        }
+      }
+    }
+
+    &__back {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+
+      &__button {
+        margin: 0;
+        width: 32px;
+        height: 32px;
+        background-image: url('/assets/img/Slider-button-Default(right).svg');
+
+        &.dark {
+          background-image: url('/assets/img/Chevron\ \(Arrow\ Right\)-DARK.svg');
+          background-repeat: no-repeat;
+          background-position: center;
+          transform: rotate(-90deg);
+          border: $dark-gray 1px solid;
+
+          &:hover {
+            background-image: url('/assets/img/Chevron\ \(Arrow\ Right\)-DARK.svg');
+
+            border-color: $white;
+          }
+        }
+
+        &:hover {
+          background-image: url('/assets/img/Slider button-Hover (right).svg');
+          transform: rotate(-90deg);
+        }
+
+        &__img {
+          margin: 0;
+        }
+      }
+
+      &__text {
+        font-family: 'Mont', sans-serif;
+        font-size: 12px;
+        font-weight: 600;
+        line-height: 15.34px;
+        text-align: right;
+        color: $color-nav-text;
+        margin-right: 16px;
+      }
+    }
+  }
+}
+
+@media (min-width: 1200px) {
+  .Footer {
+    display: flex;
+    align-items: center;
+    height: 96px;
+
+    &__items {
+      display: flex;
+
+      &__back {
+        position: absolute;
+        right: 16px;
+      }
+
+      &__info {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      &__logo {
+        margin-right: 290px;
+      }
+
+      &__back {
+        margin-left: 260px;
+      }
+    }
+  }
+}
+
+@media (min-width: 699px) and (max-width: 1199px) {
+  .Footer {
+    display: flex;
+    align-items: center;
+    height: 96px;
+
+    &__items {
+      display: flex;
+
+      &__back {
+        position: absolute;
+        right: 16px;
+      }
+
+      &__info {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      &__logo {
+        margin-right: 130px;
+        display: flex;
+        justify-content: center;
+
+        &__link {
+          display: flex;
+          align-items: center;
+        }
+      }
+
+      &__back {
+        margin-left: 74px;
+      }
+    }
+  }
+}
+
+@media (min-width: 320px) and (max-width: 698px) {
+  .Footer {
+    height: 257px;
+
+    &__items {
+      display: block;
+
+      &__logo {
+        margin-top: 32px;
+        margin-bottom: 32px;
+      }
+
+      &__info {
+        margin-left: 16px;
+
+        &__list {
+          display: block;
+          list-style: none;
+
+          & :nth-child(-n + 2) {
+            margin-right: 20px;
+            margin-bottom: 16px;
+          }
+        }
+      }
+
+      &__back {
+        bottom: 32px;
+        left: calc(50% - 56px);
+        display: flex;
+        position: absolute;
+        justify-content: center;
+      }
+    }
+  }
+}

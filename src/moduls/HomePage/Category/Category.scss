@@ -1,0 +1,348 @@
+@import '/src/styles/variable.scss';
+
+.Category {
+  &__title__text {
+    color: $color-dark;
+    font-size: 32px;
+    font-weight: 800;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+    text-align: left;
+    position: relative;
+
+    margin-bottom: 24px;
+  }
+
+  &__imgs {
+    display: flex;
+    justify-content: center;
+
+    &__img {
+      &__link {
+        display: flex;
+        margin-bottom: 24px;
+      }
+
+      &__title {
+        font-size: 20px;
+        font-weight: 700;
+        line-height: 25.56px;
+        text-align: left;
+        color: $color-dark;
+
+        margin-bottom: 4px;
+
+        &.dark{
+          color: $white;
+        }
+      }
+
+      &__count {
+        font-size: 14px;
+        font-weight: 600;
+        line-height: 21px;
+        text-align: left;
+        color: $color-nav-text;
+      }
+    }
+  }
+}
+
+@media (min-width: 1200px) {
+  .Category {
+    &__title {
+      color: $color-dark;
+      font-size: 32px;
+      font-weight: 800;
+      line-height: 41px;
+      letter-spacing: -0.01em;
+      text-align: left;
+    }
+
+    &__imgs {
+      display: flex;
+      position: relative;
+
+      &__img {
+        &:nth-child(-n + 2) {
+          margin-right: 16px;
+        }
+
+        &__link {
+          width: 368px;
+          height: 368px;
+
+          &__banner {
+            width: 100%;
+            height: 100%;
+
+            &--phone {
+              background: url('/assets/img/Phones\ -desktop.png');
+              background-size: 400px;
+            }
+
+            &--tablets {
+              background: url('/assets/img/tablets-tamlets.png');
+              background-size: 400px;
+            }
+
+            &--accessories {
+              background: url('/assets/img/accsosu.png');
+              background-size: 400px;
+            }
+          }
+
+          .hidden {
+            top: 0;
+            position: absolute;
+            width: 368px;
+            height: 368px;
+            overflow-x: hidden;
+
+
+          }
+
+          &__hover {
+            position: relative;
+            width: 200%;
+            height: 100%;
+            transition: all 0.3s;
+
+            &__img {
+              &--phone {
+                background-image: url('/assets/img/updatePhone.jpg');
+                background-repeat: no-repeat;
+                background-size: 600px;
+                background-position-y: -130px;
+                background-position-x: -220px;
+              }
+
+              &--tablets {
+                background-image: url('/assets/img/TabletU\ \(1\).jpg');
+                background-repeat: no-repeat;
+                background-size: 500px;
+                background-position-y: -75px;
+                background-position-x: -80px;
+              }
+
+              &--accessories {
+                background-image: url('/assets/img/updateAcsec.jpg');
+                background-repeat: no-repeat;
+                background-size: 600px;
+                background-position-y: -140px;
+                background-position-x: -90px;
+              }
+            }
+
+            &:hover {
+              width: 100%;
+            }
+
+            &__img {
+              position: absolute;
+              right: 0px;
+              width: 368px;
+              height: 368px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 699px) and (max-width: 1199px) {
+  .Category {
+    &__title {
+      color: $color-dark;
+      font-size: 32px;
+      font-weight: 800;
+      line-height: 41px;
+      letter-spacing: -0.01em;
+      text-align: left;
+    }
+
+    &__imgs {
+      display: flex;
+
+      &__img {
+        &:nth-child(-n + 2) {
+          margin-right: 16px;
+        }
+
+        &__link {
+          display: flex;
+          width: 187px;
+          height: 187px;
+
+          &__banner {
+            width: 100%;
+            height: 100%;
+
+            &--phone {
+              background: url('/assets/img/Phones\ -desktop.png');
+              background-size: 200px;
+            }
+
+            &--tablets {
+              background: url('/assets/img/tablets-tamlets.png');
+              background-size: 200px;
+            }
+
+            &--accessories {
+              background: url('/assets/img/accsosu.png');
+              background-size: 200px;
+            }
+          }
+
+          .hidden {
+            position: absolute;
+            width: 187px;
+            height: 187px;
+            overflow-x: hidden;
+          }
+
+          &__hover {
+            position: relative;
+            width: 200%;
+            height: 100%;
+            transition: all 0.3s;
+
+            &__img {
+              &--phone {
+                background-image: url('/assets/img/updatePhone.jpg');
+                background-repeat: no-repeat;
+                background-size: 300px;
+                background-position-y: -65px;
+                background-position-x: -100px;
+              }
+
+              &--tablets {
+                background-image: url('/assets/img/TabletU\ \(1\).jpg');
+                background-repeat: no-repeat;
+                background-size: 300px;
+                background-position-y: -50px;
+                background-position-x: -60px;
+              }
+
+              &--accessories {
+                background-image: url('/assets/img/updateAcsec.jpg');
+                background-repeat: no-repeat;
+                background-size: 300px;
+                background-position-y: -70px;
+                background-position-x: -45px;
+              }
+            }
+
+            &:hover {
+              width: 100%;
+            }
+
+            &__img {
+              position: absolute;
+              right: 0px;
+              width: 187px;
+              height: 187px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 320px) and (max-width: 698px) {
+  .Category {
+    &__title__text {
+      color: $color-dark;
+
+      font-size: 22px;
+      font-weight: 800;
+      line-height: 30.8px;
+      text-align: left;
+    }
+
+    &__imgs {
+      display: block;
+
+      &__img {
+        margin-bottom: 32px;
+        &__link {
+          width: 288px;
+          height: 288px;
+
+          &__banner {
+            width: 100%;
+            height: 100%;
+
+            &--phone {
+              background: url('/assets/img/Phones\ -desktop.png');
+              background-size: 300px;
+            }
+
+            &--tablets {
+              background: url('/assets/img/tablets-tamlets.png');
+              background-size: 300px;
+            }
+
+            &--accessories {
+              background: url('/assets/img/accsosu.png');
+              background-size: 300px;
+            }
+          }
+
+          .hidden {
+            position: absolute;
+            width: 288px;
+            height: 288px;
+            overflow-x: hidden;
+          }
+
+          &__hover {
+            position: relative;
+            width: 200%;
+            height: 100%;
+            transition: all 0.3s;
+
+            &__img {
+              &--phone {
+                background-image: url('/assets/img/updatePhone.jpg');
+                background-repeat: no-repeat;
+                background-size: 450px;
+                background-position-y: -95px;
+                background-position-x: -160px;
+              }
+
+              &--tablets {
+                background-image: url('/assets/img/TabletU\ \(1\).jpg');
+                background-repeat: no-repeat;
+                background-size: 450px;
+                background-position-y: -70px;
+                background-position-x: -90px;
+              }
+
+              &--accessories {
+                background-image: url('/assets/img/updateAcsec.jpg');
+                background-repeat: no-repeat;
+                background-size: 450px;
+                background-position-y: -100px;
+                background-position-x: -65px;
+              }
+            }
+
+            &:hover {
+              width: 100%;
+            }
+
+            &__img {
+              position: absolute;
+              right: 0px;
+              width: 288px;
+              height: 288px;
+            }
+          }
+        }
+      }
+    }
+  }
+}

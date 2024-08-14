@@ -1,0 +1,472 @@
+@import '/src/styles/variable.scss';
+
+body {
+  position: relative;
+}
+
+.Navbar {
+  background-color: #fff;
+  margin: 0;
+  padding: 0;
+  position: fixed;
+  left: 0;
+  right: 0;
+  width: 100%;
+  z-index: 222;
+  border-bottom: $border-color 1px solid;
+
+  display: flex;
+  align-items: center;
+
+  box-shadow: 0 0 10px #d3d2d1;
+
+  &.dark {
+    border-color: $dark-gray;
+    box-shadow: none;
+  }
+
+  &__logo {
+    transition: all 0.3s;
+
+    &:hover {
+      transform: scale(120%);
+    }
+  }
+}
+
+.enter-nav {
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+
+  &__icons {
+    height: 100%;
+    position: absolute;
+    right: 0;
+    z-index: -111;
+
+    &__icon {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border: $border-color 1px solid;
+      position: relative;
+      z-index: -11;
+
+      &.dark {
+        border-color: $dark-gray;
+
+        &:hover {
+          border-color: $white;
+        }
+
+        &.is-active {
+          &::after {
+            background-color: $white;
+          }
+        }
+      }
+
+      &.is-active {
+        &::after {
+          content: '';
+          width: 100%;
+          height: 3px;
+
+          position: absolute;
+          bottom: 0;
+          background-color: $color-dark;
+        }
+      }
+
+      &--moon {
+        width: 48px;
+        height: 48px;
+        border: $border-color 1px solid;
+        background: none;
+        position: absolute;
+        background-image: url('/assets/img/moon-Photoroom\ \(1\).png');
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 80px;
+        left: -48px;
+        z-index: -1;
+        cursor: pointer;
+
+        &.dark {
+          background-image: url('/assets/img/sun.png');
+          background-size: 80px;
+          border-color: $dark-gray;
+
+          &:hover {
+            z-index: 1;
+            border-color: $white;
+          }
+        }
+
+        &:hover {
+          z-index: 1;
+          border-color: $color-dark;
+        }
+      }
+
+      &--heart {
+        position: relative;
+        z-index: -1111;
+        background-image: url('/assets/img/Favourites\ \(Heart\ Like\).svg');
+        background-repeat: no-repeat;
+        background-position: center;
+        position: absolute;
+        left: 1px;
+
+        &.dark {
+          background-image: url('/assets/img/Favourites\ \(Heart\ Like\)-DARK.svg');
+        }
+      }
+
+      &--bag {
+        background-image: url('/assets/img/Shopping bag (Cart).svg');
+        background-repeat: no-repeat;
+        background-position: center;
+
+        &.dark {
+          background-image: url('/assets/img/Shopping\ bag\ \(Cart\)-DARK.svg');
+        }
+      }
+    }
+
+    &__icon:hover {
+      border-color: $color-dark;
+      z-index: 1; // Hide border when hovered
+    }
+
+    // Apply z-index to the icon-burger when hovered
+    &__icon-burger:hover {
+      z-index: 1;
+      border-color: $color-dark;
+    }
+
+    &__icon--burger {
+      &.dark {
+        background-image: url('/assets/img/Menu-Burger-DARK.svg');
+      }
+    }
+  }
+}
+
+.Logo {
+  height: 100px;
+}
+
+.nav-list {
+  list-style: none;
+  display: flex; /* Use flexbox to align list items horizontally */
+  padding: 0; /* Remove default padding */
+
+  &__link {
+    background: none;
+    position: relative;
+    font-weight: 800;
+    font-size: 12px;
+    height: 11px;
+    width: 39px;
+    margin: 0;
+    padding-bottom: 10px;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: #89939a;
+    transition: 200ms;
+
+    &.dark {
+      &.is-active {
+        border-color: $white;
+      }
+    }
+
+    &.is-active {
+      color: $color-dark;
+      font-weight: bold;
+      position: relative;
+      border-bottom: 3px solid $color-dark;
+    }
+
+    &:hover {
+      font-size: bold;
+      color: $color-dark;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      display: block;
+      bottom: -3px;
+      left: 0;
+      border-bottom: 3px solid $color-dark;
+      width: 100%;
+
+      @include hover(all, 0.3s);
+
+      transform-origin: center;
+      transform: scale(0);
+    }
+
+    &:hover::after {
+      content: '';
+      transform: scale(1);
+    }
+  }
+}
+
+@media (min-width: 1200px) {
+  .Navbar {
+    height: 64px;
+
+    &__logo {
+      padding-left: 24px;
+      width: 80px;
+      height: 27px;
+    }
+  }
+
+  .postion-tablet-desktop {
+    position: absolute;
+    left: 111px;
+    top: 17px;
+  }
+
+  .link-cart {
+    position: absolute;
+    left: 25px;
+  }
+
+  .link-heart {
+    position: absolute;
+    left: 25px;
+  }
+
+  .icon {
+    width: 64px;
+  }
+
+  .nav-list {
+    &__item {
+      &:nth-child(-n + 3) {
+        margin-right: 64px;
+      }
+    }
+
+    &__link {
+      padding-bottom: 21px;
+    }
+  }
+
+  .enter-nav {
+    padding-left: 152px;
+    display: flex;
+    justify-content: space-between;
+
+    &__links {
+      display: flex;
+      line-height: 64px;
+    }
+
+    &__icons {
+      display: flex;
+      position: absolute;
+
+      & :first-child {
+        position: absolute;
+        right: 65px;
+      }
+
+      &__icon {
+        height: 63px;
+        width: 64px;
+
+        &--moon {
+          background: none;
+          position: absolute;
+          background-image: url('/assets/img/moon-Photoroom\ \(1\).png');
+          background-repeat: no-repeat;
+          background-position: center;
+          background-size: 82px;
+        }
+
+        &--heart {
+          position: relative;
+          z-index: -1111;
+          background-image: url('/assets/img/Favourites\ \(Heart\ Like\).svg');
+          background-repeat: no-repeat;
+          background-position: center;
+          position: absolute;
+          left: -65px;
+        }
+
+        &--moon {
+          width: 64px;
+          height: 63px;
+          left: -130px
+        }
+      }
+
+      &__icon-burger {
+        display: none;
+      }
+    }
+  }
+}
+
+@media (min-width: 699px) and (max-width: 1199px) {
+  .Navbar {
+    height: 48px;
+
+    &__logo {
+      padding-left: 16px;
+      width: 64px;
+      height: 22px;
+    }
+  }
+
+  .postion-tablet-desktop {
+    position: absolute;
+    left: 88px;
+    top: 10px;
+  }
+
+  .link-cart {
+    position: absolute;
+    left: 16px;
+  }
+
+  .link-heart {
+    position: absolute;
+    left: 16px;
+  }
+
+  .icon {
+    width: 48px;
+  }
+
+  .nav-list {
+    &__item {
+      &:nth-child(-n + 3) {
+        margin-right: 32px;
+      }
+    }
+    &__link {
+      padding-bottom: 13px;
+    }
+  }
+
+  .enter-nav {
+    padding-left: 115px;
+    display: flex;
+    justify-content: space-between;
+
+    &__links {
+      display: flex;
+      line-height: 48px;
+    }
+
+    &__icons {
+      display: flex;
+
+      & :first-child {
+        position: absolute;
+        right: 49px;
+      }
+
+      &__icon {
+        position: relative;
+        height: 47px;
+        width: 48px;
+
+        &--heart {
+          position: relative;
+          z-index: -1111;
+          background-image: url('/assets/img/Favourites\ \(Heart\ Like\).svg');
+          background-repeat: no-repeat;
+          background-position: center;
+          position: absolute;
+          left: -49px;
+        }
+
+        &--moon {
+          height: 47px;
+          left: -98px
+        }
+      }
+
+      &__icon-burger {
+        display: none;
+      }
+    }
+  }
+}
+
+@media (min-width: 320px) and (max-width: 698px) {
+  .Navbar {
+    height: 48px;
+
+    &__logo {
+      padding-left: 16px;
+      width: 64px;
+      height: 22px;
+    }
+  }
+
+  .enter-nav {
+    padding-left: 115px;
+    display: flex;
+    justify-content: space-between;
+
+    &__links {
+      display: none;
+      line-height: 48px;
+    }
+
+    &__icons {
+      &__icon {
+        display: none;
+
+        &--burger {
+          height: 48px;
+          width: 48px;
+          background-image: url('../../assets/img/Menu.svg');
+          background-repeat: no-repeat;
+          background-position: center;
+        }
+
+        &--moon {
+          height: 47px;
+          top: 0;
+          left: -49px;
+        }
+      }
+
+      .enter-nav__icons__icon--moon {
+        position: absolute;
+        display: flex;
+      }
+
+      &__icon-burger {
+        justify-content: center;
+        align-items: center;
+        border: $border-color 1px solid;
+        display: flex;
+        line-height: 48px;
+        height: 47px;
+        width: 48px;
+
+        &.dark {
+          border-color: $dark-gray;
+
+          &:hover {
+            z-index: 1;
+            border-color: $white;
+          }
+        }
+      }
+    }
+  }
+}
