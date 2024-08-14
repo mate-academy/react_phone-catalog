@@ -9,32 +9,54 @@ import { ProductSlider } from '../components/ProductSlider';
 import { GoBackLink } from '../components/ui/GoBackLink';
 import { RoundColorButton } from '../components/ui/RoundColorButton';
 import { Product } from '../types/Product';
-import { getProducts } from '../services/products';
-
-const colorsAvailable = ['black', 'green', 'yellow', 'white', 'purple', 'red'];
-const capacityAvailable = ['64GB', '128GB', '256GB'];
+import { useParams } from 'react-router-dom';
+import { getItemByCategory } from '../services/productDetails';
+import { ProductDetails } from '../types/ProductDetails';
+import { useFavorites } from '../hooks/useFavorites';
+import { useProducts } from '../hooks/useProducts';
 
 export const ItemPage = () => {
-  const [isFavorite, setIsFavorite] = useState(false);
-  const [selectedColor, setSelectedColor] = useState<string | null>(
-    colorsAvailable[0],
-  );
-  const [products, setProducts] = useState<Product[]>([]);
-  const paramFromNavLink = 'phones';
+  const { products } = useProducts();
+  const { favorites, toggleFavorite } = useFavorites();
 
+  //useEffect for this page only for current state
+  const [selectedItem, setSelectedItem] = useState<ProductDetails>();
+
+  //component state
+  const [selectedColorIndex, setSelectedColorIndex] = useState(0);
+  const [selectedImageIndex, setSelectedImageIndex] = useState(0);
+  const [selectedCapacityIndex, setSelectedCapacityIndex] = useState(0);
+
+  //params for filtering ang fetching selectedItem
+  const { itemId } = useParams();
+  const paramFromLink = itemId?.slice(1);
+
+  //get one product from Producs by itemId
+  const selectedProduct = products.find(
+    product => product.itemId === paramFromLink,
+  );
+  const productId = selectedProduct?.id;
+
+  const isFavorite = favorites.some((f: Product) => f.id === productId);
+
+  //if one product exist get it category and get Item from api
+  //comparing Item id with Product itemId
+  // seting selectedItem in state
   useEffect(() => {
-    getProducts().then(data => {
-      setProducts(data);
+    if (!selectedProduct) {
+      return;
+    }
+
+    const { category } = selectedProduct;
+
+    getItemByCategory(category).then(data => {
+      const item = data.find(d => d.id === selectedProduct.itemId);
+
+      setSelectedItem(item);
     });
-  }, []);
+  }, [selectedProduct]);
 
-  // favorites must be in local storage or null
-  // hook useLocalStorage??
-  const filteredProducts = products.filter(
-    product => product.category === paramFromNavLink,
-  );
-
-  const suggestProducts = [...filteredProducts].sort((a, b) => {
+  const suggestProducts = [...products].sort((a, b) => {
     // Calculate the discount for both products
     const discountA = a.fullPrice - a.price;
     const discountB = b.fullPrice - b.price;
@@ -47,10 +69,6 @@ export const ItemPage = () => {
     return scoreB - scoreA;
   });
 
-  const toggleFavorite = () => {
-    setIsFavorite(!isFavorite);
-  };
-
   return (
     <section id="item-page" className="item-page">
       <div className="item-page__navigation">
@@ -60,81 +78,36 @@ export const ItemPage = () => {
       <GoBackLink />
 
       <div className="item-page__content">
-        <h3 className="item-page__title">
-          Apple iPhone 11 Pro Max 64GB Gold (iMT9G2FS/A)
-        </h3>
+        <h3 className="item-page__title">{selectedItem?.name}</h3>
 
         <div className="item-page__card">
           <div className="item-page__image-wrapper">
             <a href="#" className="item-page__card-link">
               <img
                 className="item-page__card-image"
-                src="../../public/img/phones/apple-iphone-7/black/00.webp"
-                alt="picture"
+                src={selectedItem?.images[selectedImageIndex]}
+                alt={`image ${selectedItem?.name}`}
               />
             </a>
             <ul className="item-page__thumbnail-list">
-              <li
-                className={classNames('item-page__thumbnail-item', {
-                  ['item-page__thumbnail-item--selected']: true,
-                })}
-              >
-                <a href="#" className="item-page__thumbnail-link">
+              {selectedItem?.images.map((image, index) => (
+                <li
+                  key={index}
+                  className={classNames('item-page__thumbnail-item', {
+                    ['item-page__thumbnail-item--selected']:
+                      selectedImageIndex === index,
+                  })}
+                  onClick={() => setSelectedImageIndex(index)}
+                >
+                  {/* <div className="item-page__thumbnail-wrapper"> */}
                   <img
                     className="item-page__thumbnail-image"
-                    src="./img/phones/apple-iphone-7/black/00.webp"
-                    alt=""
+                    src={image}
+                    alt={`thumbnail image ${selectedItem?.name}`}
                   />
-                </a>
-              </li>
-              <li className="item-page__thumbnail-item">
-                <a href="#" className="item-page__thumbnail-link">
-                  <img
-                    className={classNames(
-                      'item-page__card-image',
-                      'item-page__thumbnail-image',
-                    )}
-                    src="./img/phones/apple-iphone-7/black/01.webp"
-                    alt=""
-                  />
-                </a>
-              </li>
-              <li className="item-page__thumbnail-item">
-                <a href="#" className="item-page__thumbnail-link">
-                  <img
-                    className={classNames(
-                      'item-page__card-image',
-                      'item-page__thumbnail-image',
-                    )}
-                    src="./img/phones/apple-iphone-7/black/02.webp"
-                    alt=""
-                  />
-                </a>
-              </li>
-              <li className="item-page__thumbnail-item">
-                <a href="#" className="item-page__thumbnail-link">
-                  <img
-                    className={classNames(
-                      'item-page__card-image',
-                      'item-page__thumbnail-image',
-                    )}
-                    src="./img/phones/apple-iphone-7/black/03.webp"
-                    alt=""
-                  />
-                </a>
-              </li>
-              <li className="item-page__thumbnail-item">
-                <a href="#" className="item-page__thumbnail-link">
-                  <img
-                    className={classNames(
-                      'item-page__card-image',
-                      'item-page__thumbnail-image',
-                    )}
-                    src="./img/phones/apple-iphone-7/black/04.webp"
-                    alt=""
-                  />
-                </a>
-              </li>
+                  {/* </div> */}
+                </li>
+              ))}
             </ul>
           </div>
 
@@ -146,12 +119,12 @@ export const ItemPage = () => {
 
             <div className="item-page__container">
               <ul className="item-page__buttons-list">
-                {colorsAvailable.map(color => (
+                {selectedItem?.colorsAvailable.map((color, index) => (
                   <RoundColorButton
-                    key={color}
+                    key={index}
                     color={color}
-                    isSelected={selectedColor === color}
-                    onClick={() => setSelectedColor(color)}
+                    isSelected={selectedColorIndex === index}
+                    onClick={() => setSelectedColorIndex(index)}
                   />
                 ))}
               </ul>
@@ -161,14 +134,18 @@ export const ItemPage = () => {
               </div>
 
               <ul className="item-page__buttons-list">
-                {capacityAvailable.map(capacity => (
-                  <li key={capacity} className="item-page__buttons-item ">
+                {selectedItem?.capacityAvailable.map((capacity, index) => (
+                  <li key={index} className="item-page__buttons-item ">
                     <button
                       className={classNames(
                         'body-text',
                         'item-page__capacity-btn button-text',
-                        { 'item-page__capacity-btn--selected': false },
+                        {
+                          'item-page__capacity-btn--selected':
+                            selectedCapacityIndex === index,
+                        },
                       )}
+                      onClick={() => setSelectedCapacityIndex(index)}
                     >
                       {capacity}
                     </button>
@@ -198,7 +175,7 @@ export const ItemPage = () => {
                       cardStyles['card__btn--favorite'],
                     )}
                     style={{ height: '48px', width: '48px' }}
-                    onClick={toggleFavorite}
+                    onClick={() => toggleFavorite(selectedProduct as Product)}
                   >
                     {isFavorite ? (
                       <Icon iconName="favorites-filled" />
@@ -239,46 +216,12 @@ export const ItemPage = () => {
           <div className="item-page__about-wrapper">
             <h4 className="item-page__details-title">About</h4>
 
-            <div className="item-page__about-section">
-              <h5>And then there was Pro</h5>
-              <p className="body-text--gray">
-                A transformative triple‑camera system that adds tons of
-                capability without complexity.
-              </p>
-              <p className="body-text--gray">
-                An unprecedented leap in battery life. And a mind‑blowing chip
-                that doubles down on machine learning and pushes the boundaries
-                of what a smartphone can do. Welcome to the first iPhone
-                powerful enough to be called Pro.
-              </p>
-            </div>
-
-            <div className="item-page__about-section">
-              <h5>Camera</h5>
-              <p className="body-text--gray">
-                Meet the first triple‑camera system to combine cutting‑edge
-                technology with the legendary simplicity of iPhone. Capture up
-                to four times more scene. Get beautiful images in drastically
-                lower light. Shoot the highest‑quality video in a smartphone —
-                then edit with the same tools you love for photos. You’ve never
-                shot with anything like it.
-              </p>
-            </div>
-
-            <div className="item-page__about-section">
-              <h5>
-                Shoot it. Flip it. Zoom it. Crop it. Cut it. Light it. Tweak it.
-                Love it.
-              </h5>
-              <p className="body-text--gray">
-                iPhone 11 Pro lets you capture videos that are beautifully true
-                to life, with greater detail and smoother motion. Epic
-                processing power means it can shoot 4K video with extended
-                dynamic range and cinematic video stabilization — all at 60 fps.
-                You get more creative control, too, with four times more scene
-                and powerful new editing tools to play with.
-              </p>
-            </div>
+            {selectedItem?.description.map((d, i) => (
+              <div key={i} className="item-page__about-section">
+                <h5>{d.title}</h5>
+                <p className="body-text--gray">{d.text}</p>
+              </div>
+            ))}
           </div>
 
           <div className="item-page__tech-wrapper">
@@ -287,7 +230,7 @@ export const ItemPage = () => {
             <div className="item-page__tech-info">
               <CardDetail
                 label="Screen"
-                value="6.5” OLED"
+                value={selectedItem?.screen || ''}
                 inlineStyles={{
                   fontSize: '14px',
                   lineHeight: '21px',
@@ -297,7 +240,7 @@ export const ItemPage = () => {
               />
               <CardDetail
                 label="Resolution"
-                value="2688x1242"
+                value={selectedItem?.resolution || ''}
                 inlineStyles={{
                   fontSize: '14px',
                   lineHeight: '21px',
@@ -307,7 +250,7 @@ export const ItemPage = () => {
               />
               <CardDetail
                 label="Processor"
-                value="Apple A12 Bionic"
+                value={selectedItem?.processor || ''}
                 inlineStyles={{
                   fontSize: '14px',
                   lineHeight: '21px',
@@ -317,7 +260,7 @@ export const ItemPage = () => {
               />
               <CardDetail
                 label="RAM"
-                value="3 GB"
+                value={selectedItem?.ram || ''}
                 inlineStyles={{
                   fontSize: '14px',
                   lineHeight: '21px',
@@ -327,7 +270,7 @@ export const ItemPage = () => {
               />
               <CardDetail
                 label="Built in memory"
-                value="64 GB"
+                value={selectedItem?.capacity || ''}
                 inlineStyles={{
                   fontSize: '14px',
                   lineHeight: '21px',
@@ -337,7 +280,7 @@ export const ItemPage = () => {
               />
               <CardDetail
                 label="Camera"
-                value="12 Mp + 12 Mp + 12 Mp (Triple)"
+                value={selectedItem?.camera || ''}
                 inlineStyles={{
                   fontSize: '14px',
                   lineHeight: '21px',
@@ -347,7 +290,7 @@ export const ItemPage = () => {
               />
               <CardDetail
                 label="Zoom"
-                value="Optical, 2x"
+                value={selectedItem?.zoom || ''}
                 inlineStyles={{
                   fontSize: '14px',
                   lineHeight: '21px',
@@ -357,7 +300,7 @@ export const ItemPage = () => {
               />
               <CardDetail
                 label="Cell"
-                value="GSM, LTE, UMTS"
+                value={selectedItem?.cell.join(', ') || ''}
                 inlineStyles={{
                   fontSize: '14px',
                   lineHeight: '21px',

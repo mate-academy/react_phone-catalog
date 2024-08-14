@@ -1,6 +1,8 @@
+import { Category } from './Category';
+
 export type ProductDetails = {
   id: string;
-  category: string;
+  category: Category;
   namespaceId: string;
   name: string;
   capacityAvailable: string[];
@@ -9,7 +11,7 @@ export type ProductDetails = {
   priceDiscount: number;
   colorsAvailable: string[];
   color: string;
-  image: string[];
+  images: string[];
   description: Description[];
   screen: string;
   resolution: string;

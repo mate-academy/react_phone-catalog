@@ -1,3 +1,4 @@
+import { Category } from '../types/Category';
 import { ProductDetails } from '../types/ProductDetails';
 import { getData } from '../utils/httpClient';
 
@@ -11,4 +12,8 @@ export function getTablets() {
 
 export function getAccessories() {
   return getData<ProductDetails[]>('/accessories.json');
+}
+
+export function getItemByCategory(category: Category) {
+  return getData<ProductDetails[]>(`/${category}.json`);
 }

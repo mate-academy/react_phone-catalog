@@ -12,4 +12,8 @@
   &:first-child {
     margin-top: 24px;
   }
+
+  &__description {
+    color: $secondary-gray;
+  }
 }

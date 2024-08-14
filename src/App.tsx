@@ -4,8 +4,12 @@ import './styles/main.scss';
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
 import { SideMenu } from './components/SideMenu';
+import { useProducts } from './hooks/useProducts';
+import { Loader } from './components/Loader';
 
 export const App = () => {
+  const { products } = useProducts();
+
   return (
     <div className="App">
       <h1 className="visually-hidden" id="home">
@@ -16,7 +20,7 @@ export const App = () => {
       <SideMenu />
 
       <div className="container">
-        <Outlet />
+        {products.length ? <Outlet /> : <Loader />}
       </div>
 
       <Footer />

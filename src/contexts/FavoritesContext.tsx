@@ -20,8 +20,8 @@ export const FavoritesProvider: React.FC<{ children: ReactNode }> = ({
     (item: Product) => {
       const isFavorite = favorites.some(favorite => favorite.id === item.id);
       const updatedFavorites = isFavorite
-        ? favorites.filter(favorite => favorite.id !== item.id) // Remove from favorites
-        : [...favorites, item]; // Add to favorites
+        ? favorites.filter(favorite => favorite.id !== item.id)
+        : [...favorites, item];
 
       setFavorites(updatedFavorites);
     },

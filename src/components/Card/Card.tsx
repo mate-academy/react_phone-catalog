@@ -5,6 +5,7 @@ import { Icon } from '../ui/Icon';
 import { CardButton } from '../ui/CardButton';
 
 import { Product } from '../../types/Product';
+import { Link } from 'react-router-dom';
 
 type CardProps = {
   item: Product;
@@ -17,18 +18,18 @@ export const Card: React.FC<CardProps> = ({
   isFavorite,
   toggleFavorite,
 }) => {
-  // eslint-disable-next-line
-  const image = require(`../../assets/${item.image}`);
-
   return (
     <div className={styles.card}>
-      <a href="#" className={styles.card__link}>
+      <Link
+        to={`/${item.category}/:${item.itemId}`}
+        className={styles.card__link}
+      >
         <img
-          src={image}
+          src={item.image}
           alt={`${item.name} image`}
           className={styles.card__img}
         />
-      </a>
+      </Link>
 
       <p className="body-text">{item.name}</p>
 

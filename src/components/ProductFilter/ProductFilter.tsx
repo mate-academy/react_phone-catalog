@@ -8,7 +8,7 @@ const listOfPages = ['1', '2', '3', '4'];
 export const ProductFilter = () => {
   return (
     <form className={styles['product-filter']}>
-      <div className="product-filter__title-block">
+      {/* <div className="product-filter__title-block">
         <h2>Mobile Phones</h2>
         <p
           className={classNames(
@@ -18,7 +18,7 @@ export const ProductFilter = () => {
         >
           95 models
         </p>
-      </div>
+      </div> */}
 
       <div className={styles['product-filter__controls']}>
         <div className={styles['product-filter__control']}>
