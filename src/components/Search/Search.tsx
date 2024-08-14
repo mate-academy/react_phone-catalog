@@ -7,7 +7,7 @@ export const Search: React.FC = () => {
       <input
         id="search"
         type="search"
-        value="1"
+        value="Not implemented yet"
         className={styles.searchInput}
       />
     </div>
