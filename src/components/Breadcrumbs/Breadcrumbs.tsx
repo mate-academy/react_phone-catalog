@@ -26,6 +26,7 @@ export const Breadcrumbs: React.FC<BreadcrumbsProps> = ({category}) => {
         <img
           src= {chevronIcon}
           alt="arrow"
+          className={styles.chevronIcon}
         />
       </span>
 
@@ -37,21 +38,22 @@ export const Breadcrumbs: React.FC<BreadcrumbsProps> = ({category}) => {
       </Link>
 
 
-      <div>
-    <span className={styles.chevronSpan}>
-        <img
-          src= {chevronIcon}
-          alt="arrow"
-        />
-      </span>
+      {/* <div>
+        <span className={styles.chevronSpan}>
+          <img
+            src= {chevronIcon}
+            alt="arrow"
+            className={styles.chevronIcon}
+          />
+        </span>
 
-      <Link
-        to="/"
-        className={styles.label}
-      >
-        Product
-      </Link>
-      </div>
+        <Link
+          to="/"
+          className={styles.label}
+        >
+          Product
+        </Link>
+      </div> */}
 
 
 
