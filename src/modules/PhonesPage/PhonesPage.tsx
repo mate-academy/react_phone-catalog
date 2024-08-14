@@ -7,6 +7,7 @@ import { Footer } from '../../components/Footer'
 export const PhonesPage: React.FC = () => {
 
 const category = 'phones';
+const title = 'Mobile Phones'
 
 
     return (
@@ -14,7 +15,7 @@ const category = 'phones';
       <div>
         <Header />
 
-        <ProductList category = {category} />
+        <ProductList category = {category} title = {title}/>
         <Footer />
       </div>
     );

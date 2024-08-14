@@ -9,9 +9,10 @@ import styles from './ProductList.module.scss';
 
 type ProductListProps = {
   category: string;
+  title: string
 }
 
-export const ProductList: React.FC<ProductListProps> = ( {category}) => {
+export const ProductList: React.FC<ProductListProps> = ( {category, title}) => {
     const [products, setProducts] = useState<(ProductPhone | ProductTablet | ProductAccessory)[]>([]);
 
 
@@ -84,7 +85,7 @@ export const ProductList: React.FC<ProductListProps> = ( {category}) => {
     <div className={styles.ProductsPage}>
        <div className={styles.topContainer}>
           <Breadcrumbs category = {category}/>
-
+          <h1 className={styles.title}>{title}</h1>
           <DropDown handleNumberOdProductPerPage={handleNumberOdProductPerPage} numberOfProducts={numberOfProducts}/>
 
           <ul className={styles.container}>

@@ -5,12 +5,13 @@ import { Header } from '../../components/Header';
 
 export const TabletsPage: React.FC = () => {
   const category = 'tablets';
+  const title = 'Tablets'
    return (
 
       <div>
         <Header />
 
-        <ProductList category =  {category} />
+        <ProductList category =  {category} title={title}/>
       </div>
     );
 };
