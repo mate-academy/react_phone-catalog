@@ -86,6 +86,9 @@ export const ProductList: React.FC<ProductListProps> = ( {category, title}) => {
        <div className={styles.topContainer}>
           <Breadcrumbs category = {category}/>
           <h1 className={styles.title}>{title}</h1>
+          <div className={styles.count}>
+            {products.length} items
+          </div>
           <DropDown handleNumberOdProductPerPage={handleNumberOdProductPerPage} numberOfProducts={numberOfProducts}/>
 
           <ul className={styles.container}>
