@@ -36,6 +36,7 @@ export const ProductSlider: React.FC = () => {
     setDisplayedImageIndex(displayedImageIndex)
   }
 
+    setTimeout(incrementDisplayedImageIndex,3000);
 
 
   return (
