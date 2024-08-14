@@ -1,25 +1,18 @@
 @import '../../utils/mixins';
-@import '../../components/HomePage/HomePage';
+@import '../../utils/variadbles';
 
 .menu {
   position: fixed;
   top: 0;
   right: 0;
-  transform: translateX(100%);
   width: 100%;
   height: 100vh;
   transition: .3s;
   background-color: var(--white-color);
   z-index: 2;
-  pointer-events: none;
 
   display: flex;
   justify-content: center;
-
-  &:target {
-    transform: translateX(0%);
-    pointer-events: all;
-  }
 
   &__list {
     padding: 0;

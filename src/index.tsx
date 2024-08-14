@@ -1,29 +1,49 @@
 import { createRoot } from 'react-dom/client';
 import { App } from './App';
-import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
+import { Route, HashRouter as Router, Routes } from 'react-router-dom';
 import { NotFoundPage } from './components/NotFoundPage/NotFoundPage';
 import { Catalog } from './components/Catalog/Catalog';
 import { HomePage } from './components/HomePage/HomePage';
 
-import phonesFromServer from './api/phones.json';
-import tabletsFromServer from './api/tablets.json';
-import accessoriesFromServer from './api/accessories.json';
-import { Menu } from './components/Menu/Menu';
+import productsFromServer from './api/products.json';
+import { Product } from './types/Propduct';
 
 export const Root = () => (
   <Routes>
     <Route path="/" element={<App />}>
       <Route index element={<HomePage />} />
-      <Route path="phones" element={<Catalog products={phonesFromServer} />}>
-        <Route path="menu" element={<Menu />} />
-      </Route>
+      <Route
+        path="phones"
+        element={
+          <Catalog
+            products={productsFromServer.filter(
+              (product: Product) => product.category === 'phones',
+            )}
+            key={'phones'}
+          />
+        }
+      ></Route>
       <Route
         path="tablets"
-        element={<Catalog products={tabletsFromServer} />}
+        element={
+          <Catalog
+            products={productsFromServer.filter(
+              (product: Product) => product.category === 'tablets',
+            )}
+            key={'tablets'}
+          />
+        }
       />
       <Route
         path="accessories"
-        element={<Catalog products={accessoriesFromServer} />}
+        element={
+          <Catalog
+            products={productsFromServer.filter(
+              (product: Product) => product.category === 'accessories',
+            )}
+            key={'accessories'}
+          />
+        }
       />
       <Route path="*" element={<NotFoundPage />} />
     </Route>

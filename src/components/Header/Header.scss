@@ -1,5 +1,5 @@
 @import '../../utils/mixins';
-@import '../HomePage/HomePage';
+@import '../../utils/variadbles';
 
 .header {
   position: sticky;
@@ -53,6 +53,9 @@
     background-size: 16px 16px;
     background-position: center;
     background-repeat: no-repeat;
+    background-color: var(--white-color);
+
+    border: none;
 
     @include on-desktop {
       width: 64px;
@@ -68,7 +71,6 @@
     }
 
     &--close {
-      display: none;
       background-image: url(../../../public/img/close-icon.svg);
     }
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import productsFromServer from '../../api/products.json';
-import './ProductCard';
+import './ProductCard.scss';
 
 type Props = {
   id: number;

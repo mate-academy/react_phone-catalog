@@ -21,6 +21,7 @@ import { Desktop } from '../../utils/DesktopContext';
 import { Tablet } from '../../utils/TabletContext';
 import { Header } from '../Header/Header';
 import { Menu } from '../Menu/Menu';
+import { MenuOpen } from '../../utils/MenuContext';
 
 export const HomePage = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -33,6 +34,8 @@ export const HomePage = () => {
 
   const onDesktop = useContext(Desktop);
   const onTablet = useContext(Tablet);
+
+  const { isMenuOpen } = useContext(MenuOpen);
 
   const slidesPerVeiw = () => {
     if (onDesktop) {
@@ -56,7 +59,7 @@ export const HomePage = () => {
   return (
     <>
       <Header />
-      <Menu />
+      {isMenuOpen && <Menu />}
       <main className="main">
         <section className="home" id="#">
           <h1 className="home__title">Welcome to Nice Gadgets store!</h1>
@@ -64,10 +67,9 @@ export const HomePage = () => {
             className="navigation-button navigation-button--home-swiper"
             onClick={() => homeSwiperRef.current.slidePrev()}
           >
-            <img src="/img/arrow-prev.svg" alt="slide prev" />
+            <img src="\img\arrow-prev.svg" alt="slide prev" />
           </button>
           <Swiper
-            // install Swiper modules
             modules={[Navigation, Pagination, Autoplay]}
             slidesPerView={1}
             loop
@@ -82,13 +84,13 @@ export const HomePage = () => {
               {onTablet || onDesktop ? (
                 <img
                   className="swiper-image"
-                  src="/img/slider-image-tablet.png"
+                  src="\img\slider-image-tablet.png"
                   alt="slider image"
                 />
               ) : (
                 <img
                   className="swiper-image"
-                  src="/img/slider-image.png"
+                  src="\img\slider-image.png"
                   alt="slider image"
                 />
               )}
@@ -97,13 +99,13 @@ export const HomePage = () => {
               {onTablet || onDesktop ? (
                 <img
                   className="swiper-image"
-                  src="/img/slider-image-tablet2.jpg"
+                  src="\img\slider-image-tablet2.jpg"
                   alt="slider image"
                 />
               ) : (
                 <img
                   className="swiper-image"
-                  src="/img/slider-image2.jpg"
+                  src="\img\slider-image2.jpg"
                   alt="slider image"
                 />
               )}
@@ -112,13 +114,13 @@ export const HomePage = () => {
               {onTablet || onDesktop ? (
                 <img
                   className="swiper-image"
-                  src="/img/slider-image-tablet3.jpg"
+                  src="\img\slider-image-tablet3.jpg"
                   alt="slider image"
                 />
               ) : (
                 <img
                   className="swiper-image"
-                  src="/img/slider-image3.jpg"
+                  src="\img\slider-image3.jpg"
                   alt="slider image"
                 />
               )}
@@ -128,7 +130,7 @@ export const HomePage = () => {
             className="navigation-button navigation-button--home-swiper"
             onClick={() => homeSwiperRef.current.slideNext()}
           >
-            <img src="/img/arrow-next.svg" alt="slide next" />
+            <img src="\img\arrow-next.svg" alt="slide next" />
           </button>
         </section>
         <section className="brands">
