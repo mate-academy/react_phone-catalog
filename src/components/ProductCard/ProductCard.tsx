@@ -2,10 +2,11 @@ import './ProductCard.module.scss';
 import { ActionButtons } from '../ActionButtons';
 import { ProductPhone, ProductTablet, ProductAccessory } from '../../types/Product';
 import { Link } from 'react-router-dom';
-import styles from './ProductCard.module.scss';
+import styles from './ProductCard.module.scss';""
 
 type ProductCardProps = {
   product: ProductPhone | ProductTablet | ProductAccessory;
+  /* handleSelectedProduct: (newState: string) => ""; */
 };
 
 export const ProductCard: React.FC<ProductCardProps> = ({product}) => {
@@ -16,7 +17,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({product}) => {
   const { images, name, priceRegular, priceDiscount, screen, capacity, ram } = product;
 
   return (
-    <div className={styles.ProductCard}>
+    <div className={styles.ProductCard} >
       <Link
         to="/placeholder-link" // Zmień na odpowiedni link
         className={styles.imageContainer}
@@ -29,7 +30,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({product}) => {
       </Link>
 
       <div className={styles.wrapper}>
-        <Link to="/placeholder-link" className={styles.title}>
+        <Link to="/placeholder-link" className={styles.title} >
           {name}
         </Link>
 

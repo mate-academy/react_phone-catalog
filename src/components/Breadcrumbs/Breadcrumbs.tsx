@@ -6,10 +6,9 @@ import chevronIcon from '../../img/icons/ChevronIcon.svg';
 
 type BreadcrumbsProps = {
   category: string;
-  product: string | null;
 }
 
-export const Breadcrumbs: React.FC<BreadcrumbsProps> = ({category, product}) => {
+export const Breadcrumbs: React.FC<BreadcrumbsProps> = ({category}) => {
 
   const editedCategory = category[0].toUpperCase() + category.slice(1,category.length)
 
@@ -37,7 +36,7 @@ export const Breadcrumbs: React.FC<BreadcrumbsProps> = ({category, product}) => 
         {editedCategory}
       </Link>
 
-    {product ?  (
+
       <div>
     <span className={styles.chevronSpan}>
         <img
@@ -53,10 +52,8 @@ export const Breadcrumbs: React.FC<BreadcrumbsProps> = ({category, product}) => 
         Product
       </Link>
       </div>
-    ) : (
-      <div></div>
-    )
-    }
+
+
 
     </nav>
   )

@@ -75,6 +75,10 @@ export const ProductList: React.FC<ProductListProps> = ( {category}) => {
   }
 
 
+/* const [selectedProduct, setSelectedProduct] = useState(""); */
+/* const handleSelectedProduct = (newState: string) => {
+ setSelectedProduct(newState)
+} */
   return (
     <div className={styles.ProductsPage}>
       <DropDown handleNumberOdProductPerPage={handleNumberOdProductPerPage} numberOfProducts={numberOfProducts}/>
@@ -82,7 +86,7 @@ export const ProductList: React.FC<ProductListProps> = ( {category}) => {
       <ul className={styles.container}>
         {arrayOfDisplayedIndexes.map((product) => (
           <li key={product.id} className={styles.product}>
-            <ProductCard product={product} />
+            <ProductCard product={product}  />
           </li>
         ))}
       </ul>
