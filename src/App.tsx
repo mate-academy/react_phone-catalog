@@ -1,7 +1,7 @@
 import './App.module.scss';
 import React, {useState, useEffect} from 'react';
 import { Loader } from './components/Loader/Loader';
-import { BannerSlider } from './components/ProductSlider';
+import { BannerSlider } from './components/BannerSlider';
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
 import { UnderConstruction } from './components/UnderConstruction';

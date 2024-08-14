@@ -1,4 +1,4 @@
-import styles from './ProductSlider.module.scss';
+import styles from './BannerSlider.module.scss';
 import ChevronIcon from '../../img/icons/ChevronIcon.svg';
 import React, {useState} from 'react';
 
