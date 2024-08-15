@@ -1,0 +1,347 @@
+@import '../../styles/main';
+
+.product {
+
+  &-title {
+    @extend %h2;
+    
+    margin-bottom: 40px;
+  }
+
+  &__top {
+    @include page-grid;
+
+    margin-bottom: 80px;
+
+    &-images {
+      display: flex;
+      grid-column: span 2;
+      gap: 16px;
+      flex-direction: column;
+
+      @include on-tablet {
+        grid-column: span 1;
+      }
+  
+      @include on-mobile {
+        flex-direction: row;
+        gap: 8px;
+        grid-row: 2;
+        grid-column: 1/-1;
+        margin-bottom: 40px;
+      }
+
+      &-element {
+        object-fit: contain;
+        width: 100%;
+        aspect-ratio: 1 / 1;
+        border: 1px solid $color-gray-elements;
+        padding: 3px;
+
+        @include on-mobile {
+          height: 50px;
+          width: 50px;
+        }
+      }
+    }
+  
+    &-image-container {
+      grid-column: 3/13;
+      padding: 11px;
+      width: 100%;
+      max-height: 100%;
+  
+      @include on-tablet {
+        padding: 6.8px;
+        grid-column: 2/8;
+      }
+
+      @include on-mobile {
+        grid-column: 1/-1;
+        grid-row: 1;
+      }
+    }
+
+    &-image-photo {
+      cursor: pointer;
+      width: 100%; /* Задаємо ширину фото на 100% від контейнера */
+      aspect-ratio: 1 / 1;
+      object-fit: contain;
+    }
+
+    &-right {
+      grid-column: 14/21;
+      display: flex;
+      flex-direction: column;
+
+      @include on-tablet {
+        grid-column: 8/-1;
+      }
+
+      @include on-mobile {
+        grid-column: span 4;
+      }
+
+      &-item {
+        height: 55px;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        margin-bottom: 24px;
+      }
+
+      &-text {
+        @extend %small-text;
+      }
+
+      &-list {
+        display: flex;
+        flex-direction: row;
+        gap: 8px;
+      }
+
+      &-circle {
+        width: 32px;
+        height: 32px;
+        border-radius: 36px;
+        position: relative;
+
+          &-gold {
+            background: #d4c9b1;
+          }
+    
+          &-black {
+            background: #4C4C4C;
+          }
+    
+          &-white {
+            background: white;
+          }
+    
+          &-yellow {
+            background: #ffe98c;
+          }
+    
+          &-pink {
+            background: #f9f;
+          }
+    
+          &-red {
+            background: #fb1230;
+          }
+    
+          &-green {
+            background: #5BC236;
+          }
+    
+          &-blue {
+            background: #a9bacc;
+          }
+    
+          &-purple {
+            background: #b388ff;
+          }
+    
+          &-spacegray {
+            background: #535355;
+          }
+    
+          &-rosegold {
+            background: #e0bfb8;
+          }
+    
+          &-midnightgreen {
+            background: #004953;
+          }
+    
+          &-silver {
+            background:  #F1F2ED;
+          }
+    
+          &-coral {
+            background: #fe6756;
+          }
+
+          &-graphite {
+            background: #969696;
+          }
+
+          &-sierrablue {
+            background: #BFDAF7;
+          }
+
+          &-spaceblack {
+            background: #4b4845;
+          }
+
+          &-midnight {
+            background: #343b43;
+          }
+
+          &::after {
+            border-radius: 36px;
+            content: '';
+            border: 1px solid $color-gray-elements;
+            inset: -3px;
+            position: absolute;
+          }
+
+          &:hover {
+            &::after {
+              border: 1px solid $color-secodary;
+            }
+          }
+    
+  
+          &.active {
+            &::after {
+              border: 1px solid $color-white;
+            }
+          }      
+      }
+
+      &-capacity {
+        width: 63px;
+        height: 32px;
+        border: 1px solid $color-hover-icons;
+        display: flex;
+        align-items: center;
+
+        &-active {
+          background-color: $color-white;
+        }
+
+        &-value {
+          @extend %body-text;
+
+          color: $color-white;
+          margin: 0 auto;
+
+          &-active {
+            color: $page-color;
+          }
+        }
+      }
+    }
+  }
+
+  &__price {
+    height: 31px;
+    width: 108px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 8px;
+    align-items: center;
+    font-weight: 800;
+    font-size: 22px;
+    padding-bottom: 16px;
+    margin-top: 8px;
+
+    &-price {
+      color: $color-white;
+
+      @extend %h2;
+    }
+    &-full {
+      color: $color-secodary;
+      font-weight: 600;
+      line-height: 28.12px;
+      text-decoration: line-through;
+    }
+  }
+
+  &__line {
+    border: 1px solid $color-gray-elements;
+    width: 100%;
+    margin-bottom: 24px;
+
+    &--2 {
+      margin-bottom: 32px;
+    }
+  }
+
+  &__info {
+    @include page-grid;
+
+    margin-bottom: 80px;
+
+    &-title {
+      box-sizing: content-box;
+      width: 100%;
+      height: 31px;
+
+      @extend %h3;
+
+      padding-bottom: 16px;
+      border-bottom: 1px solid $color-gray-elements;
+    }
+
+    &-about {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+      grid-column: span 12;
+
+      @include on-tablet {
+        margin-bottom: 64px;
+      }
+    }
+
+    &-tech {
+      display: flex;
+      flex-direction: column;
+      grid-column: 14/-1;
+
+      @include on-tablet {
+        grid-column: span 12;
+      }
+  
+      &-list {
+        margin-top: 25px;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        height: auto;
+      }
+  
+      &-item {
+        height: 21px;
+        display: flex;
+        justify-content: space-between;
+  
+        &-name {
+          @extend %body-text;
+
+          color: $color-secodary;
+  
+          &-top {
+            @extend %small-text;
+          }
+        }
+  
+        &-value {
+          @extend %body-text;
+  
+          &-top {
+            @extend %small-text;
+
+            color: $color-white;
+          }
+        }
+      }
+    }
+  }
+
+  &__description {
+    &-title {
+      @extend %h4;
+    }
+
+    &-text {
+      @extend %body-text;
+
+      color: $color-secodary;
+    }
+  }
+}

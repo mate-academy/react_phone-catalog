@@ -1,0 +1,70 @@
+@import '../../styles/main';
+
+.pagination {
+  margin: 0 auto;
+  height: 32px;
+  width: auto;
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+  justify-content: center;
+  margin-top: 40px;
+
+  @include on-mobile {
+    margin-top: 24px;
+  }
+
+  &__left-slide,
+  &__right-slide {
+  @extend %small-button;
+
+  background-color: $color-surface2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  transition-duration: $transition-duration;
+}
+
+  &__slider {
+    height: 100%;
+    overflow: hidden;
+    width: auto;
+    display: flex;
+    gap: 8px;
+
+    &-list {
+      width: auto;
+      display: flex;
+      flex-direction: row;
+      gap: 8px;
+    }
+
+    &-item {
+      width: 32px;
+      height: 32px;
+    }
+
+    &-num {
+      @extend %body-text;
+
+      border: none;
+      color: $color-white;
+      background-color: $color-gray-elements;
+      width: 32px;
+      height: 32px;
+      cursor: pointer;
+
+      &-active {
+        background-color: $color-accent;
+      }
+    }
+
+    &-dots {
+      color: $color-white;
+      font-size: 15px;
+    }
+  }
+
+}
+

@@ -1,0 +1,32 @@
+@import './../../styles/main';
+
+.notification {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 70px;
+  width: 300px;
+  right: 10px;
+  bottom: 30px;
+  border: 3px solid $color-white;
+  border-radius: 5%;
+  background-color: $page-color;
+  z-index: 1;
+  transition: all 0.3s;
+
+  @include on-tablet {
+    width: 260px;
+  }
+
+  &-hidden {
+  transform: translate(110%);
+  }
+
+  &__text {
+    @extend %h4;
+
+    color: $color-white;
+  }
+}

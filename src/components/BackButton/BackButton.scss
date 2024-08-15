@@ -1,0 +1,17 @@
+@import './../../styles/main';
+
+.back {
+  height: 16px;
+  display: flex;
+  flex-direction: row;
+  gap: 4px;
+  align-items: center;
+  cursor: pointer;
+  margin-bottom: 16px;
+
+  &-text {
+    @extend %small-text;
+
+    color: $color-white;
+  }
+}

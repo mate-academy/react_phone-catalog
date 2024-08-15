@@ -1,0 +1,85 @@
+@import '../../styles/main';
+
+.card {
+  width: 272px;
+  height: 506px;
+  background-color: $color-surface1;
+  box-sizing: border-box;
+  padding: 32px;
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__img {
+    display: block;
+    width: 208px;
+    height: 196px;
+    object-fit: contain;
+    align-self: center;
+    padding-bottom: 8px;
+
+    @include hover(scale, 1.1);
+  }
+
+  &__name {
+    color: $color-white;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+    margin-top: 16px;
+    height: 58px;
+  }
+
+  &__price {
+    height: 31px;
+    width: 108px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 8px;
+    align-items: center;
+    font-weight: 800;
+    font-size: 22px;
+
+    &-price {
+      color: $color-white;
+      font-family: Mont-Bold, sans-serif;
+      line-height: 30.8px;
+    }
+    &-full {
+      color: $color-secodary;
+      font-weight: 600;
+      line-height: 28.12px;
+      text-decoration: line-through;
+    }
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 8px 0;
+    border-top: 1px solid $color-gray-elements;
+
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 15.34px;
+
+    &-text {
+      color: $color-secodary;
+    }
+    &-value {
+      color: $color-white;
+    }
+
+    &__property {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+    }
+  }
+}

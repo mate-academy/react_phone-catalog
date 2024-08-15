@@ -1,0 +1,35 @@
+@import '../../styles/main';
+
+.wrapper {
+  width: 128px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+
+  @include on-tablet {
+    height: 48px;
+    width: 96px;
+  }
+}
+
+.logo {
+  height: 28px;
+  width: 80px;
+  margin-left: auto;
+  margin-right: auto;
+
+  @include on-tablet {
+    height: 22px;
+    width: 64px;
+  }
+
+  background-image: url('../../img/icons/logo.svg'); 
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  transition: transform $transition-duration;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+}

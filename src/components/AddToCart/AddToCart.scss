@@ -1,0 +1,68 @@
+@import '../../styles/main';
+
+.add-bttns {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  justify-content: space-between;
+  width: 100%;
+  height: 40px;
+
+  &-details {
+    width: 100%;
+    height: 48px;
+    gap: 8px;
+    margin-bottom: 7px;
+
+    @include on-tablet {
+      width: 237px;
+    }
+
+    @include on-mobile {
+      width: 100%;
+    }
+  }
+
+  &-cart {
+    box-sizing: border-box;
+    width: 160px;
+    background-color: $color-accent;
+    color: $color-white;
+
+    @extend %button;
+    @include hover(background-color, $color-hover-accent);
+
+    &_is-added {
+      background-color: $color-surface2;
+
+      @include hover(background-color, $color-surface2);
+    }
+
+    &-details {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  &-fav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: $color-surface2;
+    width: 40px;
+    border: none;
+
+    &-details {
+      width: 48px;
+      height: 48px;
+    }
+
+    &_add {
+      background-image: url('../../img/icons/heart.svg');
+    }
+
+    &_is-fav {
+      background-image: url('../../img/icons/isFav.svg');
+    }
+  }
+}

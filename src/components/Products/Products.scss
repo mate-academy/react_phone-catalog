@@ -1,0 +1,70 @@
+@import '../../styles/main';
+
+.products {
+  padding-bottom: 80px;
+
+  &-empty {
+    @extend %h2;
+
+    color: $color-secodary;
+  }
+
+  @include on-tablet {
+    padding-top: 50px;
+    padding-bottom: 64px;
+  }
+
+  @include on-mobile {
+    padding-top: 30px;
+  }
+
+  &-fav {
+    padding-top: 0;
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 40px;
+
+    @include on-mobile {
+      margin-bottom: 32px;
+    }
+
+    &-title {
+      @extend %h1;
+    }
+
+    &-amount {
+      @extend %body-text;
+
+      color: $color-secodary;
+    }
+  }
+
+  &__filter {
+    display: flex;
+    column-gap: 16px;
+    margin-bottom: 24px;
+  }
+
+  &__catalog {
+    &-list {
+      @include page-grid;
+
+      width: 100%;
+      height: auto;
+      row-gap: 40px;
+    }
+
+    &-item {
+      grid-column: span 6;
+      margin: 0 auto;
+
+      @include on-mobile {
+        grid-column: span 4;
+      }
+    }
+  }
+}
