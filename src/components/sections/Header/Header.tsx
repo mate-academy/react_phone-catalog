@@ -15,7 +15,7 @@ export const Header: React.FC<Props> = ({
   return (
     <header className="header">
       <div className="header__wrapper">
-        <Logo className="header__logo" href="#" srText="Go to home page" />
+        <Logo className="header__logo" href="/" />
 
         <Nav className="header__nav" />
 

@@ -2,8 +2,6 @@
 
 .logo {
   display: flex;
-  justify-content: center;
-  align-items: center;
 
   @include on-desktop {
     transition: transform 0.5s;

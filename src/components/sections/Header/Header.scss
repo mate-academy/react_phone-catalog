@@ -18,6 +18,8 @@
   }
 
   &__logo {
+    justify-content: center;
+    align-items: center;
     flex-basis: 96px;
 
     @include on-desktop {

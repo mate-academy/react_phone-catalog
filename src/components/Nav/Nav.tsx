@@ -19,22 +19,22 @@ export const Nav: React.FC<Props> = ({ className }) => (
   <nav className={`nav ${className}`}>
     <ul className="nav__list">
       <li className="nav__item">
-        <NavLink to="/" className={getLinkClass}>
+        <NavLink className={getLinkClass} to="/">
           home
         </NavLink>
       </li>
       <li className="nav__item">
-        <NavLink to="/phones" className={getLinkClass}>
+        <NavLink className={getLinkClass} to="/phones">
           Phones
         </NavLink>
       </li>
       <li className="nav__item">
-        <NavLink to="/tablets" className={getLinkClass}>
+        <NavLink className={getLinkClass} to="/tablets">
           tablets
         </NavLink>
       </li>
       <li className="nav__item">
-        <NavLink to="/accessories" className={getLinkClass}>
+        <NavLink className={getLinkClass} to="/accessories">
           accessories
         </NavLink>
       </li>
