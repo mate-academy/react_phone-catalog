@@ -21,7 +21,7 @@ import {
   addToFavorites,
   removeProduct,
 } from '../../store/slices/favoritesSlice';
-import { PriceInfo } from '../ProductCard/PriceInfo';
+import { PriceInfo } from '../ProductCards/ProductCard/PriceInfo';
 import styles from './ProductDetailPurchase.module.scss';
 
 type Props = {

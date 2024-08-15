@@ -1,11 +1,11 @@
 import { NavLink } from 'react-router-dom';
 
-import { getActiveNavLink, getNavigationRoute } from '../../utils';
+import { getActiveNavLink, getNavigationRoute } from '../../../utils';
 
-import { NAV_ROUTES } from '../../constants/constants';
-import styles from './HeaderNavigation.module.scss';
+import { NAV_ROUTES } from '../../../constants/constants';
+import styles from './Navigation.module.scss';
 
-export const HeaderNavigation = () => {
+export const Navigation = () => {
   return (
     <nav>
       <ul className={styles.links}>

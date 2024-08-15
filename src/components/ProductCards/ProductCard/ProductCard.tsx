@@ -1,22 +1,22 @@
 import { Link, useLocation } from 'react-router-dom';
 
-import { Product } from '../../types/Product';
-import { extractNumberAndSuffix } from '../../utils';
+import { Product } from '../../../types/Product';
+import { extractNumberAndSuffix } from '../../../utils';
 
-import { favoriteIcon } from '../../assets';
-import isFavoriteIcon from '../../assets/images/is-favorite.svg';
+import { favoriteIcon } from '../../../assets';
+import isFavoriteIcon from '../../../assets/images/is-favorite.svg';
 
 import cn from 'classnames';
 
-import { Button } from '../../ui/Button/Button';
+import { Button } from '../../../ui/Button/Button';
 
-import { useAppDispatch } from '../../hooks/useAppDispatch';
-import { useAppSelector } from '../../hooks/useAppSelector';
-import { addProduct, deleteProduct } from '../../store/slices/cartSlice';
+import { useAppDispatch } from '../../../hooks/useAppDispatch';
+import { useAppSelector } from '../../../hooks/useAppSelector';
+import { addProduct, deleteProduct } from '../../../store/slices/cartSlice';
 import {
   addToFavorites,
   removeProduct,
-} from '../../store/slices/favoritesSlice';
+} from '../../../store/slices/favoritesSlice';
 import { PriceInfo } from './PriceInfo';
 import styles from './ProductCard.module.scss';
 

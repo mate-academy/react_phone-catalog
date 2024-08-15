@@ -2,7 +2,7 @@ import { Swiper, SwiperRef, SwiperSlide } from 'swiper/react';
 
 import 'swiper/css';
 import { Product } from '../../../types/Product';
-import { ProductCard } from '../../ProductCard';
+import { ProductCard } from '../../ProductCards/ProductCard';
 
 type Props = {
   products: Product[];

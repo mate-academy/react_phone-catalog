@@ -1,6 +1,6 @@
 import cn from 'classnames';
 // eslint-disable-next-line
-import styles from '../components/HeaderNavigation/HeaderNavigation.module.scss';
+import styles from '../components/MainHeader/Navigation/Navigation.module.scss';
 
 import { Product } from '../types/Product';
 import { suffle } from './helpers';
