@@ -61,7 +61,7 @@ export const Thumbnails: React.FC = () => {
         <div className={styles.category} key={category}>
           <Link to="/" className={styles.link}>
             <img
-              src={`./img/category-${category}.png`}
+              src={`./img/category-${category.toLowerCase()}.png`}
               className={styles.image}
             />
 
