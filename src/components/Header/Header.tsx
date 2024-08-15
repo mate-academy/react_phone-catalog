@@ -4,7 +4,6 @@ import styles from './Header.module.scss';
 import LogoIcon from '../../img/icons/LogoIcon.svg';
 import cartIcon from '../../img/icons/CartIcon.svg';
 import favIcon from '../../img/icons/fav.svg';
-import { Search } from '../Search';
 
 export const Header: React.FC = () => (
   <header className={styles.header}>
@@ -31,8 +30,6 @@ export const Header: React.FC = () => (
         </NavLink>
 
         <div className={styles.actionsContainer}>
-          <Search />
-
           <div className={styles.actions}>
             <NavLink to="/theme" className={styles.actionItem}>
               <div className={styles.navItem}>THEME</div>
