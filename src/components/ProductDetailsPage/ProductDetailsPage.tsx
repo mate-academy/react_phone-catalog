@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { useAppSelector } from '../../redux/hooks';
 import { selectProducts } from '../../redux/slices/productsSlice';
@@ -7,6 +7,7 @@ import { selectTablets } from '../../redux/slices/tabletsSlice';
 import { selectAccessories } from '../../redux/slices/accessoriesSlice';
 import { toCommonPropsProduct } from '../../utils/toCommonPropsProducts';
 import { getSuggestedProducts } from '../../utils/getSliderProducts';
+import { scrollToTop } from '../../utils/scrollToTop';
 import { SkeletonProductDetails } from '../SkeletonProductDetails';
 import { BackButton } from '../BackButton';
 import { AddButtons } from '../AddButtons';
@@ -62,6 +63,8 @@ export const ProductDetailsPage = () => {
   const { productId } = useParams();
   const navigate = useNavigate();
 
+  const preventScrollToTop = useRef<boolean>(false);
+
   const isLoading =
     productsLoading || phonesLoading || tabletsLoading || accessoriesLoading;
 
@@ -89,6 +92,8 @@ export const ProductDetailsPage = () => {
         return;
       }
 
+      preventScrollToTop.current = true;
+
       setSelectedColor(newColor);
 
       const selectedColorHyphen = selectedColor.replace(' ', '-').toLowerCase();
@@ -108,6 +113,8 @@ export const ProductDetailsPage = () => {
       if (!productId) {
         return;
       }
+
+      preventScrollToTop.current = true;
 
       setSelectedCapacity(newCapacity);
 
@@ -129,6 +136,14 @@ export const ProductDetailsPage = () => {
     setSelectedImg(selectedProduct.images[0]);
     setSelectedColor(selectedProduct.color);
     setSelectedCapacity(selectedProduct.capacity);
+
+    if (preventScrollToTop.current) {
+      preventScrollToTop.current = false;
+
+      return;
+    }
+
+    scrollToTop();
   }, [selectedProduct]);
 
   if (isLoading) {
@@ -199,23 +214,30 @@ export const ProductDetailsPage = () => {
             />
           </div>
 
-          <div className={styles.availableImages}>
-            {images.map(img => (
-              <div key={img} className={styles.availableImage}>
-                <input
-                  type="radio"
-                  name="img"
-                  value={img}
-                  className={styles.imgRadio}
+          <ul className={styles.imagesList}>
+            {images.map((img, i) => (
+              <li key={img} className={styles.imageItem}>
+                <label
+                  htmlFor={`img-${i}`}
+                  className={styles.imageLabel}
                   style={{
                     backgroundImage: `url(${img})`,
                   }}
-                  onChange={() => setSelectedImg(img)}
+                >
+                  {}
+                </label>
+                <input
+                  id={`img-${i}`}
+                  type="radio"
+                  name="img"
+                  value={img}
                   checked={selectedImg === img}
+                  className={styles.imageRadio}
+                  onChange={() => setSelectedImg(img)}
                 />
-              </div>
+              </li>
             ))}
-          </div>
+          </ul>
 
           <div className={styles.features}>
             <div className={styles.availableColorsWrapper}>
@@ -226,49 +248,59 @@ export const ProductDetailsPage = () => {
                 >{`ID: ${numberId.toString().padStart(6, '0')}`}</p>
               </div>
 
-              <div className={styles.availableColors}>
-                {colorsAvailable.map(availableColor => {
+              <ul className={styles.colorsList}>
+                {colorsAvailable.map((availableColor, i) => {
                   const index = colorsNames.indexOf(availableColor);
                   const hexColor = colorsHexes[index];
 
                   return (
-                    <div key={availableColor} className={styles.availableColor}>
+                    <li key={availableColor} className={styles.colorItem}>
+                      <label
+                        htmlFor={`color-${i}`}
+                        className={styles.colorLabel}
+                        style={{ backgroundColor: hexColor }}
+                      >
+                        {}
+                      </label>
                       <input
+                        id={`color-${i}`}
                         type="radio"
                         name="color"
                         value={availableColor}
-                        className={styles.colorRadio}
-                        style={{ backgroundColor: hexColor }}
-                        onChange={() => handleColorChange(availableColor)}
                         checked={selectedColor === availableColor}
+                        className={styles.colorRadio}
+                        onChange={() => handleColorChange(availableColor)}
                       />
-                    </div>
+                    </li>
                   );
                 })}
-              </div>
+              </ul>
             </div>
 
             <div className={styles.availableCapacitiesWrapper}>
               <p className={styles.featuresLabel}>Select capacity</p>
 
-              <div className={styles.availableCapacities}>
-                {capacityAvailable.map(availableCapacity => (
-                  <div
-                    key={availableCapacity}
-                    className={styles.availableCapacity}
-                  >
-                    <span>{availableCapacity}</span>
+              <ul className={styles.capacitiesList}>
+                {capacityAvailable.map((availableCapacity, i) => (
+                  <li key={availableCapacity}>
+                    <label
+                      htmlFor={`capacity-${i}`}
+                      className={styles.capacityLabel}
+                    >
+                      {availableCapacity}
+                    </label>
                     <input
+                      id={`capacity-${i}`}
                       type="radio"
                       name="capacity"
                       value={availableCapacity}
+                      checked={selectedCapacity === availableCapacity}
                       className={styles.capacityRadio}
                       onChange={() => handleCapacityChange(availableCapacity)}
-                      checked={selectedCapacity === availableCapacity}
                     />
-                  </div>
+                  </li>
                 ))}
-              </div>
+              </ul>
             </div>
 
             <div className={styles.priceWrapper}>
@@ -322,7 +354,7 @@ export const ProductDetailsPage = () => {
 
         <div className={styles.aboutTechSpecsContent}>
           <div className={styles.aboutSection}>
-            <p className={styles.aboutLabel}>About</p>
+            <p className={styles.aboutTitle}>About</p>
 
             <div className={styles.descriptionsWrapper}>
               {description.map(({ title, text }) => (
@@ -342,7 +374,7 @@ export const ProductDetailsPage = () => {
           </div>
 
           <div className={styles.techSpecsSection}>
-            <p className={styles.techSpecsLabel}>Tech specs</p>
+            <p className={styles.techSpecsTitle}>Tech specs</p>
 
             <table className={styles.techSpecsTable}>
               <tbody className={styles.techSpecsTbody}>

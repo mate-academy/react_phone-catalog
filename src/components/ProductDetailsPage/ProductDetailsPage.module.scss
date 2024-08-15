@@ -145,7 +145,28 @@
   object-position: center;
 }
 
-.availableImages {
+.imagesList,
+.colorsList,
+.capacitiesList {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.imageRadio,
+.colorRadio,
+.capacityRadio {
+  display: none;
+  appearance: none;
+  outline: none;
+  width: 0;
+  height: 0;
+  margin: 0;
+  padding: 0;
+  background-color: transparent;
+}
+
+.imagesList {
   grid-column: 1 / -1;
   grid-row: 2 / 3;
 
@@ -172,7 +193,7 @@
   }
 }
 
-.availableImage {
+.imageItem {
   position: relative;
   flex-shrink: 0;
 
@@ -186,21 +207,12 @@
   }
 }
 
-.imgRadio,
-.colorRadio,
-.capacityRadio {
-  appearance: none;
-  outline: none;
-  margin: 0;
-  padding: 0;
-  background-color: transparent;
-}
-
-.imgRadio {
+.imageLabel {
   position: absolute;
   top: 0;
   left: 0;
 
+  display: block;
   box-sizing: border-box;
   width: 100%;
   height: 100%;
@@ -219,7 +231,7 @@
     padding: 5px;
   }
 
-  &:checked {
+  &:has(+ .imageRadio:checked) {
     border-color: $primary-color;
   }
 }
@@ -273,8 +285,8 @@
   text-align: right;
 }
 
-.availableColors,
-.availableCapacities {
+.colorsList,
+.capacitiesList {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -282,7 +294,7 @@
   overflow: hidden;
 }
 
-.availableColor {
+.colorItem {
   width: 30px;
   height: 30px;
   border-radius: 50%;
@@ -303,7 +315,7 @@
   }
 }
 
-.colorRadio {
+.colorLabel {
   box-sizing: border-box;
   display: block;
   width: 30px;
@@ -320,33 +332,22 @@
   border-bottom: 1px solid $main-border-color;
 }
 
-.availableCapacity {
-  position: relative;
-
+.capacityLabel {
+  display: block;
   background-color: $white-color;
   border: 1px solid $secondary-border-color;
   padding: 7px 8px 4px;
   text-align: center;
   text-transform: uppercase;
 
+  @include pointer-cursor;
   @include on-hover(border-color, $primary-color);
 
-  &:has(.capacityRadio:checked) {
+  &:has(+ .capacityRadio:checked) {
     border-color: transparent !important;
     background-color: $primary-color;
     color: $white-color;
   }
-}
-
-.capacityRadio {
-  position: absolute;
-  top: 0;
-  left: 0;
-
-  width: 100%;
-  height: 100%;
-
-  @include pointer-cursor;
 }
 
 .priceWrapper {
@@ -441,8 +442,8 @@
   }
 }
 
-.aboutLabel,
-.techSpecsLabel {
+.aboutTitle,
+.techSpecsTitle {
   margin: 0;
   margin-bottom: 32px;
   padding-bottom: 16px;
@@ -490,7 +491,7 @@
   color: $secondary-color;
 }
 
-.techSpecsLabel {
+.techSpecsTitle {
   margin-bottom: 30px;
 
   @include on-tablet {

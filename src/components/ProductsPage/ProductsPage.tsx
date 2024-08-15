@@ -19,9 +19,9 @@ interface Props {
   errorMsg: string;
 }
 
-function addItemClass(toSelect: string, current: string): string {
+function addItemClass(current: string, toSelect: string): string {
   return classNames(styles.dropdownItem, {
-    [styles.dropdownItemSelected]: toSelect === current,
+    [styles.dropdownItemSelected]: current === toSelect,
   });
 }
 
@@ -166,7 +166,7 @@ export const ProductsPage: React.FC<Props> = ({
 
       <div className={styles.dropdownBlocks}>
         <div className={styles.sortByDropdown}>
-          <p className={styles.dropdownLabel}>Sort by</p>
+          <p className={styles.dropdownTitle}>Sort by</p>
 
           <div className={styles.dropdownContent}>
             <button
@@ -182,27 +182,26 @@ export const ProductsPage: React.FC<Props> = ({
               {sortOption}
             </button>
 
-            <div
+            <ul
               className={classNames(styles.dropdownList, {
                 [styles.dropdownListVisible]: sortByExpanded,
               })}
             >
               {sortOptions.map((option, i) => (
-                <button
+                <li
                   key={option}
-                  type="button"
-                  className={addItemClass(option, sortOption)}
+                  className={addItemClass(sortOption, option)}
                   onClick={() => handleSortOptionClick(i)}
                 >
                   {option}
-                </button>
+                </li>
               ))}
-            </div>
+            </ul>
           </div>
         </div>
 
         <div className={styles.itemsOnPageDropdown}>
-          <p className={styles.dropdownLabel}>Items on page</p>
+          <p className={styles.dropdownTitle}>Items on page</p>
 
           <div className={styles.dropdownContent}>
             <button
@@ -218,22 +217,21 @@ export const ProductsPage: React.FC<Props> = ({
               {perPage}
             </button>
 
-            <div
+            <ul
               className={classNames(styles.dropdownList, {
                 [styles.dropdownListVisible]: perPageExpanded,
               })}
             >
               {perPageOptions.map(option => (
-                <button
+                <li
                   key={option}
-                  type="button"
-                  className={addItemClass(option, perPage)}
+                  className={addItemClass(perPage, option)}
                   onClick={() => handlePerPageOptionClick(option)}
                 >
                   {option}
-                </button>
+                </li>
               ))}
-            </div>
+            </ul>
           </div>
         </div>
       </div>

@@ -13,7 +13,7 @@ function wait(delay: number) {
 
 function getData<T>(items: T): Promise<T> {
   return wait(2000).then(() => {
-    return new Promise(resolve => resolve(items));
+    return items;
   });
 }
 

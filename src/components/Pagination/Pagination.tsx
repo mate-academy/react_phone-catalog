@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import classNames from 'classnames';
 import { getSequence } from '../../utils/getSequence';
 import styles from './Pagination.module.scss';
@@ -46,15 +46,17 @@ export const Pagination: React.FC<Props> = ({
       return;
     }
 
-    const nextShift = currLength - BTN_WIDTH;
-    const appliedNextShift = nextShift > maxShift ? maxShift : nextShift;
+    const nextShift = currLength - 2 * BTN_WIDTH - GAP;
+    const normalizedNextShift = nextShift < 0 ? 0 : nextShift;
+    const appliedNextShift =
+      normalizedNextShift > maxShift ? maxShift : normalizedNextShift;
 
     setShift(appliedNextShift);
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pagesTotal, perPage, currPage]);
 
-  const toPrevPage = () => {
+  const toPrevPage = useCallback(() => {
     if (currPage === 1) {
       return;
     }
@@ -65,17 +67,46 @@ export const Pagination: React.FC<Props> = ({
       return;
     }
 
-    if (currLength - BTN_WIDTH === shift) {
-      const nextShift = shift - 160;
+    preventUseEffect.current = true;
+
+    if (currLength === shift + 2 * BTN_WIDTH + GAP) {
+      const nextShift = shift - BTN_WIDTH - GAP;
       const appliedNextShift = nextShift < 0 ? 0 : nextShift;
 
       setShift(appliedNextShift);
     }
+  }, [currLength, currPage, pagesTotal, shift, updateCurrPage]);
 
-    preventUseEffect.current = true;
-  };
+  const handlePageChange = useCallback(
+    (nextPage: number): void => {
+      updateCurrPage(nextPage);
 
-  const toNextPage = () => {
+      if (pagesTotal <= 4) {
+        return;
+      }
+
+      preventUseEffect.current = true;
+
+      const nextLength = nextPage * BTN_WIDTH + (nextPage - 1) * GAP;
+
+      if (nextLength === shift + BTN_WIDTH) {
+        const nextShift = shift - BTN_WIDTH - GAP;
+        const appliedNextShift = nextShift < 0 ? 0 : nextShift;
+
+        setShift(appliedNextShift);
+      }
+
+      if (nextLength === shift + visibleLength) {
+        const nextShift = shift + BTN_WIDTH + GAP;
+        const appliedNextShift = nextShift > maxShift ? maxShift : nextShift;
+
+        setShift(appliedNextShift);
+      }
+    },
+    [maxShift, pagesTotal, shift, updateCurrPage],
+  );
+
+  const toNextPage = useCallback(() => {
     if (currPage === pagesTotal) {
       return;
     }
@@ -86,15 +117,15 @@ export const Pagination: React.FC<Props> = ({
       return;
     }
 
-    if (currLength === shift + visibleLength) {
-      const nextShift = shift + visibleLength + GAP;
+    preventUseEffect.current = true;
+
+    if (currLength === shift + 3 * BTN_WIDTH + 2 * GAP) {
+      const nextShift = shift + BTN_WIDTH + GAP;
       const appliedNextShift = nextShift > maxShift ? maxShift : nextShift;
 
       setShift(appliedNextShift);
     }
-
-    preventUseEffect.current = true;
-  };
+  }, [currLength, currPage, maxShift, pagesTotal, shift, updateCurrPage]);
 
   return (
     <div
@@ -126,10 +157,7 @@ export const Pagination: React.FC<Props> = ({
                 value={page}
                 checked={currPage === page}
                 className={styles.pageRadio}
-                onChange={() => {
-                  updateCurrPage(page);
-                  preventUseEffect.current = true;
-                }}
+                onChange={() => handlePageChange(page)}
               />
             </li>
           ))}
