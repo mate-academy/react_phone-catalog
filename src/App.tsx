@@ -8,9 +8,10 @@ import { ProductSlider } from './components/ProductSlider';
 import { Thumbnails } from './components/Thumbnails';
 
 export const App: React.FC = () => {
-  const [isLoading, setIsLoading] = useState(true);
 
+  const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
+    alert('This website is under constuction and some features have not been implemented!')
     setIsLoading(false);
   }, []);
 
