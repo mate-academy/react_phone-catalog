@@ -109,27 +109,31 @@ export const Pagination: React.FC<Props> = ({
         disabled={currPage === 1}
       />
 
-      <div className={styles.buttonsWrapper}>
-        <div
-          className={styles.buttons}
+      <div className={styles.pagesContainer}>
+        <ol
+          className={styles.pagesList}
           style={{ transform: `translateX(-${shift}px)` }}
         >
           {pages.map(page => (
-            <button
-              key={page}
-              type="button"
-              className={classNames(styles.btn, {
-                [styles.btnSelected]: currPage === page,
-              })}
-              onClick={() => {
-                updateCurrPage(page);
-                preventUseEffect.current = true;
-              }}
-            >
-              {page}
-            </button>
+            <li key={page} className={styles.pageItem}>
+              <label htmlFor={`page-${page}`} className={styles.pageRadioLabel}>
+                {page}
+              </label>
+              <input
+                id={`page-${page}`}
+                type="radio"
+                name="page"
+                value={page}
+                checked={currPage === page}
+                className={styles.pageRadio}
+                onChange={() => {
+                  updateCurrPage(page);
+                  preventUseEffect.current = true;
+                }}
+              />
+            </li>
           ))}
-        </div>
+        </ol>
       </div>
 
       <button

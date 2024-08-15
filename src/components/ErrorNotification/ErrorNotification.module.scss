@@ -17,14 +17,14 @@
 }
 
 .sliderContent {
-  height: $slider-height-mob;
+  height: $slider-card-height-mob;
 
   @include on-tablet {
-    height: $slider-height-tablet;
+    height: $slider-card-height-tab;
   }
 
   @include on-desktop {
-    height: $slider-height-desktop;
+    height: $slider-card-height-desk;
   }
 }
 

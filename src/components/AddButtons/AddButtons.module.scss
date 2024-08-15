@@ -1,0 +1,75 @@
+@import '../../styles/vars';
+@import '../../styles/mixins';
+
+.buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.btnToCart {
+  flex-grow: 1;
+
+  box-sizing: border-box;
+  box-shadow: none;
+  border: none;
+  padding: 0;
+  background-color: $primary-color;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font: inherit;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 1.1em;
+  color: $white-color;
+  text-align: center;
+
+  @include pointer-cursor;
+  @include on-hover(box-shadow, 0 3px 13px 0 #17203166);
+
+  &::after {
+    content: 'Add to cart';
+  }
+}
+
+.btnToCartSelected {
+  border: 1px solid $main-border-color;
+  background-color: $white-color;
+  color: $green-color;
+  box-shadow: none !important;
+
+  @include on-hover(border-color, $primary-color);
+
+  &::after {
+    content: 'Added to cart';
+  }
+}
+
+.btnToFavorites {
+  box-sizing: border-box;
+  display: block;
+  width: 40px;
+  height: 40px;
+  border: 1px solid $secondary-border-color;
+  padding: 0;
+
+  background-color: $white-color;
+  background-image: url(../../../public/img/icons/icon-heart.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+
+  @include pointer-cursor;
+  @include on-hover(border-color, $primary-color);
+}
+
+.btnToFavoritesDetails {
+  width: 48px;
+  height: 48px;
+}
+
+.btnToFavoritesSelected {
+  border-color: $main-border-color;
+  background-image: url(../../../public/img/icons/icon-heart-selected.svg);
+}

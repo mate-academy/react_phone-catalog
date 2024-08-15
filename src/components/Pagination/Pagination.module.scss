@@ -17,34 +17,45 @@
   display: none;
 }
 
-.buttonsWrapper {
+.btn {
+  flex-shrink: 0;
+  padding: 0;
+  outline: none;
+}
+
+.pagesContainer {
   max-width: 4 * $pagination-btn-size + 3 * $pagination-gap;
   overflow: hidden;
 }
 
-.buttons {
+.pagesList {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
   display: flex;
   gap: $pagination-gap;
 }
 
-.btn {
+.pageItem {
   flex-shrink: 0;
+}
+
+.pageRadioLabel,
+.btn {
   box-sizing: border-box;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   width: $pagination-btn-size;
   height: $pagination-btn-size;
   border: 1px solid $main-border-color;
-
-  outline: none;
-  padding: 0;
 
   background-color: $white-color;
   background-repeat: no-repeat;
   background-position: center;
 
-  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
   text-align: center;
   font: inherit;
   line-height: 1rem;
@@ -54,10 +65,21 @@
   @include on-hover(border-color, $primary-color);
 }
 
-.btnSelected {
+.pageRadioLabel:has(+ .pageRadio:checked) {
   border-color: transparent;
   background-color: $primary-color;
   color: $white-color;
+}
+
+.pageRadio {
+  display: none;
+  width: 0;
+  height: 0;
+  appearance: none;
+  outline: none;
+  margin: 0;
+  padding: 0;
+  background-color: transparent;
 }
 
 .btnPrev,

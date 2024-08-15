@@ -1,5 +1,6 @@
 export interface CommonPropsProduct {
   itemId: string;
+  category: string;
   name: string;
   fullPrice: number;
   price: number;
@@ -7,5 +8,4 @@ export interface CommonPropsProduct {
   capacity: string;
   ram: string;
   image: string;
-  appliedPrice?: number;
 }

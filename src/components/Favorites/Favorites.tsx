@@ -1,7 +1,7 @@
 import { useMemo } from 'react';
 import { Link } from 'react-router-dom';
-import { selectFavoritesItems } from '../../redux/slices/favoritesItemsSlice';
 import { useAppSelector } from '../../redux/hooks';
+import { selectFavoritesItems } from '../../redux/slices/favoritesItemsSlice';
 import { countItems } from '../../utils/countItems';
 import { ProductsList } from '../ProductsList';
 import styles from './Favorites.module.scss';

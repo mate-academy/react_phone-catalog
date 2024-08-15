@@ -1,0 +1,530 @@
+@import '../../styles/vars';
+@import '../../styles/mixins';
+
+.productDetailsPage {
+  @include content-padding-inline;
+
+  padding-top: 24px;
+  padding-bottom: 56px;
+
+  @include on-tablet {
+    padding-bottom: 64px;
+  }
+
+  @include on-desktop {
+    padding-bottom: 80px;
+  }
+}
+
+.breadcrumbs {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 8px;
+  justify-content: flex-start;
+  align-items: center;
+
+  margin-bottom: 24px;
+
+  @include on-tablet {
+    margin-bottom: 40px;
+  }
+}
+
+.homeLink,
+.arrowRight {
+  flex-shrink: 0;
+
+  display: block;
+  width: 16px;
+  height: 16px;
+
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.homeLink {
+  background-image: url(../../../public/img/icons/icon-home.svg);
+
+  @include pointer-cursor;
+  @include on-hover(transform, scale(1.15));
+}
+
+.arrowRight {
+  background-image: url(../../../public/img/icons/arrow-right-gray.svg);
+}
+
+.productsLink {
+  text-transform: capitalize;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 1em;
+  color: $primary-color;
+
+  @include pointer-cursor;
+}
+
+.productName {
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 1em;
+  color: $secondary-color;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.btnBack {
+  margin-bottom: 16px;
+}
+
+.title {
+  margin: 0;
+  margin-bottom: 32px;
+
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 30.8px;
+  color: $primary-color;
+
+  @include on-tablet {
+    margin-bottom: 40px;
+
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+  }
+}
+
+.detailsContent {
+  @include grid-container;
+
+  position: relative;
+
+  margin-bottom: 56px;
+
+  @include on-tablet {
+    margin-bottom: 64px;
+  }
+
+  @include on-desktop {
+    margin-bottom: 80px;
+  }
+}
+
+.mainImgWrapper {
+  grid-column: 1 / -1;
+  grid-row: 1 / 2;
+
+  margin-bottom: 16px;
+
+  position: relative;
+  width: 100%;
+  height: 0;
+  padding-bottom: 100%;
+
+  @include on-tablet {
+    grid-column: 2 / 8;
+
+    margin-bottom: 0;
+  }
+
+  @include on-desktop {
+    grid-column: 3 / 13;
+  }
+}
+
+.mainImg {
+  position: absolute;
+  display: block;
+  width: 100%;
+  height: 100%;
+
+  object-fit: contain;
+  object-position: center;
+}
+
+.availableImages {
+  grid-column: 1 / -1;
+  grid-row: 2 / 3;
+
+  margin-bottom: 40px;
+
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+
+  @include on-tablet {
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+
+    margin-bottom: 0;
+
+    flex-flow: column nowrap;
+    justify-content: flex-start;
+  }
+
+  @include on-desktop {
+    grid-column: 1 / 3;
+    gap: 16px;
+  }
+}
+
+.availableImage {
+  position: relative;
+  flex-shrink: 0;
+
+  width: 51px;
+  height: 49px;
+
+  @include on-tablet {
+    width: 100%;
+    height: 0;
+    padding-bottom: 100%;
+  }
+}
+
+.imgRadio,
+.colorRadio,
+.capacityRadio {
+  appearance: none;
+  outline: none;
+  margin: 0;
+  padding: 0;
+  background-color: transparent;
+}
+
+.imgRadio {
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  border: 1px solid $main-border-color;
+  padding: 3px;
+
+  background-origin: content-box;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+
+  @include pointer-cursor;
+  @include on-hover(border-color, $secondary-border-color);
+
+  @include on-desktop {
+    padding: 5px;
+  }
+
+  &:checked {
+    border-color: $primary-color;
+  }
+}
+
+.features {
+  grid-column: 1 / -1;
+  grid-row: 3 / 4;
+
+  @include on-tablet {
+    grid-column: 8 / -1;
+    grid-row: 1 / 2;
+  }
+
+  @include on-desktop {
+    grid-column: 14 / 21;
+  }
+}
+
+.availableColorsWrapper {
+  padding-bottom: 24px;
+  margin-bottom: 24px;
+  border-bottom: 1px solid $main-border-color;
+}
+
+.colorsTopInfo {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.featuresLabel,
+.id {
+  margin: 0;
+
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 15.34px;
+  color: $secondary-color;
+}
+
+.featuresLabel {
+  margin-bottom: 8px;
+}
+
+.id {
+  position: absolute;
+  right: 0;
+
+  color: $secondary-border-color;
+  text-transform: uppercase;
+  text-align: right;
+}
+
+.availableColors,
+.availableCapacities {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  overflow: hidden;
+}
+
+.availableColor {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 1px solid $main-border-color;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  transition: border-color $transition-duration;
+
+  &:has(.colorRadio:hover) {
+    border-color: $secondary-border-color;
+  }
+
+  &:has(.colorRadio:checked) {
+    border-color: $primary-color;
+  }
+}
+
+.colorRadio {
+  box-sizing: border-box;
+  display: block;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 3px solid $white-color;
+
+  @include pointer-cursor;
+}
+
+.availableCapacitiesWrapper {
+  padding-bottom: 24px;
+  margin-bottom: 32px;
+  border-bottom: 1px solid $main-border-color;
+}
+
+.availableCapacity {
+  position: relative;
+
+  background-color: $white-color;
+  border: 1px solid $secondary-border-color;
+  padding: 7px 8px 4px;
+  text-align: center;
+  text-transform: uppercase;
+
+  @include on-hover(border-color, $primary-color);
+
+  &:has(.capacityRadio:checked) {
+    border-color: transparent !important;
+    background-color: $primary-color;
+    color: $white-color;
+  }
+}
+
+.capacityRadio {
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+
+  @include pointer-cursor;
+}
+
+.priceWrapper {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 8px;
+
+  margin-bottom: 16px;
+}
+
+.priceDiscount {
+  margin: 0;
+
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 41px;
+  letter-spacing: -0.01em;
+}
+
+.priceRegular {
+  margin: 0;
+
+  font-size: 22px;
+  line-height: 28.12px;
+  color: $secondary-color;
+  text-decoration: line-through;
+}
+
+.addButtons {
+  margin-bottom: 32px;
+}
+
+.featuresTable {
+  width: 100%;
+}
+
+.featuresTbody {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.featuresRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.featuresCell1,
+.featuresCell2 {
+  padding: 0;
+
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 15.34px;
+  color: $secondary-color;
+}
+
+.featuresCell2 {
+  color: $primary-color;
+  text-align: right;
+}
+
+.aboutTechSpecsContent {
+  @include grid-container;
+
+  row-gap: 56px;
+
+  @include on-tablet {
+    row-gap: 64px;
+  }
+}
+
+.aboutSection {
+  grid-column: 1 / -1;
+  grid-row: 1 / 2;
+
+  @include on-desktop {
+    grid-column: 1 / 13;
+  }
+}
+
+.techSpecsSection {
+  grid-column: 1 / -1;
+  grid-row: 2 / 3;
+
+  @include on-desktop {
+    grid-column: 14 / -1;
+    grid-row: 1 / 2;
+  }
+}
+
+.aboutLabel,
+.techSpecsLabel {
+  margin: 0;
+  margin-bottom: 32px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid $main-border-color;
+
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 25.56px;
+
+  @include on-tablet {
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 30.8px;
+  }
+}
+
+.descriptionsWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.descriptionTitle {
+  margin: 0;
+  margin-bottom: 16px;
+
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 20.45px;
+
+  @include on-tablet {
+    font-size: 20px;
+    line-height: 25.56px;
+  }
+}
+
+.descriptionTexts {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.descriptionText {
+  margin: 0;
+  color: $secondary-color;
+}
+
+.techSpecsLabel {
+  margin-bottom: 30px;
+
+  @include on-tablet {
+    margin-bottom: 25px;
+  }
+}
+
+.techSpecsTable {
+  width: 100%;
+}
+
+.techSpecsTbody {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.techSpecsRow {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.techSpecsCell1,
+.techSpecsCell2 {
+  padding: 0;
+}
+
+.techSpecsCell1 {
+  color: $secondary-color;
+}
+
+.techSpecsCell2 {
+  text-align: right;
+}

@@ -1,11 +1,11 @@
 import { useCallback } from 'react';
 import { NavLink } from 'react-router-dom';
+import classNames from 'classnames';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import {
   selectIsMenuActive,
   setIsMenuActive,
 } from '../../redux/slices/isMenuActiveSlice';
-import classNames from 'classnames';
 import { AddActiveClass } from '../../types/AddActiveClass';
 import { BarIcons } from '../BarIcons';
 import styles from './Menu.module.scss';

@@ -12,6 +12,7 @@ import { selectUpdatedAt } from './redux/slices/updatedAtSlice';
 import { App } from './App';
 import { HomePage } from './components/HomePage';
 import { ProductsPage } from './components/ProductsPage';
+import { ProductDetailsPage } from './components/ProductDetailsPage';
 import { Favorites } from './components/Favorites';
 import { ShoppingCart } from './components/ShoppingCart';
 import { NotFoundPage } from './components/NotFoundPage';
@@ -41,42 +42,58 @@ export const Root = () => {
       <Routes>
         <Route path="/" element={<App />}>
           <Route index element={<HomePage />} />
-          <Route
-            path="/phones"
-            element={
-              <ProductsPage
-                key="Phones"
-                label="Phones"
-                products={phones}
-                loading={phonesLoading}
-                errorMsg={phonesErrorMsg}
-              />
-            }
-          />
-          <Route
-            path="/tablets"
-            element={
-              <ProductsPage
-                key="Tablets"
-                label="Tablets"
-                products={tablets}
-                loading={tabletsLoading}
-                errorMsg={tabletsErrorMsg}
-              />
-            }
-          />
-          <Route
-            path="/accessories"
-            element={
-              <ProductsPage
-                key="Accessories"
-                label="Accessories"
-                products={accessories}
-                loading={accessoriesLoading}
-                errorMsg={accessoriesErrorMsg}
-              />
-            }
-          />
+
+          <Route path="/phones">
+            <Route
+              index
+              element={
+                <ProductsPage
+                  key="Phones"
+                  label="Phones"
+                  products={phones}
+                  loading={phonesLoading}
+                  errorMsg={phonesErrorMsg}
+                />
+              }
+            />
+
+            <Route path=":productId" element={<ProductDetailsPage />} />
+          </Route>
+
+          <Route path="/tablets">
+            <Route
+              index
+              element={
+                <ProductsPage
+                  key="Tablets"
+                  label="Tablets"
+                  products={tablets}
+                  loading={tabletsLoading}
+                  errorMsg={tabletsErrorMsg}
+                />
+              }
+            />
+
+            <Route path=":productId" element={<ProductDetailsPage />} />
+          </Route>
+
+          <Route path="/accessories">
+            <Route
+              index
+              element={
+                <ProductsPage
+                  key="Accessories"
+                  label="Accessories"
+                  products={accessories}
+                  loading={accessoriesLoading}
+                  errorMsg={accessoriesErrorMsg}
+                />
+              }
+            />
+
+            <Route path=":productId" element={<ProductDetailsPage />} />
+          </Route>
+
           <Route path="/favorites" element={<Favorites />} />
           <Route path="/cart" element={<ShoppingCart />} />
           <Route path="*" element={<NotFoundPage />} />

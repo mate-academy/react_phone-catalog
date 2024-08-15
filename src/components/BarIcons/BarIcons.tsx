@@ -1,10 +1,10 @@
 import { useCallback } from 'react';
 import { NavLink } from 'react-router-dom';
+import classNames from 'classnames';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import { setIsMenuActive } from '../../redux/slices/isMenuActiveSlice';
 import { selectCartItems } from '../../redux/slices/cartItemsSlice';
 import { selectFavoritesItems } from '../../redux/slices/favoritesItemsSlice';
-import classNames from 'classnames';
 import { AddActiveClass } from '../../types/AddActiveClass';
 import { StorageItem } from '../../types/StorageItem';
 import { countItems } from '../../utils/countItems';

@@ -1,7 +1,7 @@
 import { NavLink } from 'react-router-dom';
+import classNames from 'classnames';
 import { useAppDispatch } from '../../redux/hooks';
 import { setIsMenuActive } from '../../redux/slices/isMenuActiveSlice';
-import classNames from 'classnames';
 import { AddActiveClass } from '../../types/AddActiveClass';
 import { scrollToTop } from '../../utils/scrollToTop';
 import { BarIcons } from '../BarIcons';

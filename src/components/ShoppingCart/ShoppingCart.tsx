@@ -1,5 +1,4 @@
 import { useMemo, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import classNames from 'classnames';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import {
@@ -7,7 +6,9 @@ import {
   selectCartItems,
 } from '../../redux/slices/cartItemsSlice';
 import { countItems } from '../../utils/countItems';
+import { BackButton } from '../BackButton';
 import { CartItem } from '../CartItem';
+import { NoProductsFound } from '../NoProductsFound';
 import styles from './ShoppingCart.module.scss';
 
 export const ShoppingCart = () => {
@@ -15,7 +16,6 @@ export const ShoppingCart = () => {
   const dispatch = useAppDispatch();
 
   const [isModalActive, setIsModalActive] = useState<boolean>(false);
-  const navigate = useNavigate();
 
   const totalItems = useMemo(() => countItems(cartItems), [cartItems]);
 
@@ -28,40 +28,23 @@ export const ShoppingCart = () => {
   const totalPrice = useMemo(
     () =>
       cartItems.reduce((sum, { quantity, product }) => {
-        const { appliedPrice, fullPrice } = product;
-        const cartPrice = appliedPrice || fullPrice;
+        const { price } = product;
 
-        return sum + quantity * cartPrice;
+        return sum + quantity * price;
       }, 0),
     [cartItems],
   );
 
   if (!cartItems.length) {
-    return (
-      <div className={styles.emptyCartBlock}>
-        <button
-          type="button"
-          className={styles.btnBack}
-          onClick={() => navigate(-1)}
-        >
-          Back
-        </button>
-
-        <p className={styles.emptyCartTxt}>Your cart is empty</p>
-      </div>
-    );
+    return <NoProductsFound title="Your cart is empty" inShoppingCart={true} />;
   }
 
   return (
     <div className={styles.shoppingCart}>
       <div className={styles.container}>
-        <button
-          type="button"
-          className={styles.btnBack}
-          onClick={() => navigate(-1)}
-        >
-          Back
-        </button>
+        <div className={styles.btnBack}>
+          <BackButton />
+        </div>
 
         <h2 className={styles.title}>Cart</h2>
 
@@ -109,6 +92,7 @@ export const ShoppingCart = () => {
               >
                 Confirm
               </button>
+
               <button
                 className={styles.modalBtn}
                 onClick={() => setIsModalActive(false)}

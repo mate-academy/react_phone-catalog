@@ -1,16 +1,8 @@
-import { useCallback, useMemo } from 'react';
-import { useAppDispatch, useAppSelector } from '../../redux/hooks';
-import {
-  selectCartItems,
-  setCartItems,
-} from '../../redux/slices/cartItemsSlice';
-import {
-  selectFavoritesItems,
-  setFavoritesItems,
-} from '../../redux/slices/favoritesItemsSlice';
+import { useMemo } from 'react';
+import { Link } from 'react-router-dom';
 import classNames from 'classnames';
 import { CommonPropsProduct } from '../../types/CommonPropsProduct';
-import { StorageItem } from '../../types/StorageItem';
+import { AddButtons } from '../AddButtons';
 import styles from './ProductCard.module.scss';
 
 interface Props {
@@ -24,76 +16,23 @@ export const ProductCard: React.FC<Props> = ({
   sliderCard = false,
   showFullPriceOnly = false,
 }) => {
-  const { itemId, name, fullPrice, price, screen, capacity, ram, image } =
-    product;
-
-  const favoritesItems = useAppSelector(selectFavoritesItems);
-  const cartItems = useAppSelector(selectCartItems);
-  const dispatch = useAppDispatch();
-
+  const {
+    itemId,
+    category,
+    name,
+    fullPrice,
+    price,
+    screen,
+    capacity,
+    ram,
+    image,
+  } = product;
   const noDiscount = fullPrice === price;
 
-  const isProductInCart = useMemo(
-    () =>
-      cartItems.some(
-        ({ product: cartProduct }) => cartProduct.itemId === itemId,
-      ),
-    [cartItems, itemId],
+  const productDetailsPath = useMemo(
+    () => `/${category.toLowerCase()}/${itemId.toLowerCase()}`,
+    [category, itemId],
   );
-
-  const isProductInFavorites = useMemo(
-    () =>
-      favoritesItems.some(
-        ({ product: favoritesProduct }) => favoritesProduct.itemId === itemId,
-      ),
-    [favoritesItems, itemId],
-  );
-
-  const handleAddToCartClick = useCallback(() => {
-    if (isProductInCart) {
-      return;
-    }
-
-    const newItem: StorageItem = {
-      id: +new Date(),
-      quantity: 1,
-      product: {
-        ...product,
-        appliedPrice: showFullPriceOnly || noDiscount ? fullPrice : price,
-      },
-    };
-
-    dispatch(setCartItems([...cartItems, newItem]));
-  }, [
-    dispatch,
-    cartItems,
-    fullPrice,
-    isProductInCart,
-    noDiscount,
-    price,
-    product,
-    showFullPriceOnly,
-  ]);
-
-  const handleAddToFavorites = useCallback(() => {
-    if (!isProductInFavorites) {
-      const newItem: StorageItem = {
-        id: +new Date(),
-        quantity: 1,
-        product,
-      };
-
-      dispatch(setFavoritesItems([...favoritesItems, newItem]));
-
-      return;
-    }
-
-    const newItems = favoritesItems.filter(
-      ({ product: favoritesProduct }) => favoritesProduct.itemId !== itemId,
-    );
-
-    dispatch(setFavoritesItems(newItems));
-  }, [dispatch, favoritesItems, isProductInFavorites, itemId, product]);
 
   return (
     <div
@@ -101,11 +40,13 @@ export const ProductCard: React.FC<Props> = ({
         [styles.sliderCard]: sliderCard,
       })}
     >
-      <div className={styles.imgWrapper}>
+      <Link to={productDetailsPath} className={styles.imgLink}>
         <img className={styles.img} src={image} alt={itemId} />
-      </div>
+      </Link>
 
-      <p className={styles.name}>{name}</p>
+      <Link to={productDetailsPath} className={styles.name}>
+        {name}
+      </Link>
 
       <div className={styles.priceWrapper}>
         <p
@@ -119,7 +60,7 @@ export const ProductCard: React.FC<Props> = ({
         >{`$${fullPrice}`}</p>
       </div>
 
-      <div className={styles.hr}></div>
+      <div className={styles.hr} />
 
       <table>
         <tbody className={styles.tbody}>
@@ -138,22 +79,7 @@ export const ProductCard: React.FC<Props> = ({
         </tbody>
       </table>
 
-      <div className={styles.buttons}>
-        <button
-          type="button"
-          className={classNames(styles.btnToCart, {
-            [styles.btnToCartSelected]: isProductInCart,
-          })}
-          onClick={handleAddToCartClick}
-        />
-        <button
-          type="button"
-          className={classNames(styles.btnToFavorites, {
-            [styles.btnToFavoritesSelected]: isProductInFavorites,
-          })}
-          onClick={handleAddToFavorites}
-        />
-      </div>
+      <AddButtons product={product} />
     </div>
   );
 };

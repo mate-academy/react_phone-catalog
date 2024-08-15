@@ -21,3 +21,11 @@ export function getHotPricesProducts(
     return discount2 - discount1;
   });
 }
+
+export function getSuggestedProducts(
+  products: SliderProduct[],
+): SliderProduct[] {
+  return [...products].sort(() => {
+    return Math.random() > 0.5 ? 1 : -1;
+  });
+}

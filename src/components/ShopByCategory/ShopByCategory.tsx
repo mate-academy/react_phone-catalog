@@ -1,10 +1,10 @@
 import { useMemo } from 'react';
 import { Link } from 'react-router-dom';
+import classNames from 'classnames';
 import { useAppSelector } from '../../redux/hooks';
 import { selectPhones } from '../../redux/slices/phonesSlice';
 import { selectTablets } from '../../redux/slices/tabletsSlice';
 import { selectAccessories } from '../../redux/slices/accessoriesSlice';
-import classNames from 'classnames';
 import styles from './ShopByCategory.module.scss';
 
 export const ShopByCategory = () => {

@@ -1,0 +1,9 @@
+@keyframes skeleton-loading {
+  0% {
+    background-color: $main-border-color;
+  }
+
+  100% {
+    background-color: $secondary-border-color;
+  }
+}

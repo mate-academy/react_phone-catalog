@@ -15,13 +15,7 @@ interface Props {
 export const CartItem: React.FC<Props> = ({ cartItem }) => {
   const { id: cartItemId, quantity, product: cartProduct } = cartItem;
 
-  const {
-    itemId: productId,
-    name,
-    image,
-    appliedPrice,
-    fullPrice,
-  } = cartProduct;
+  const { itemId: productId, name, image, price } = cartProduct;
 
   const cartItems = useAppSelector(selectCartItems);
   const dispatch = useAppDispatch();
@@ -82,7 +76,7 @@ export const CartItem: React.FC<Props> = ({ cartItem }) => {
           />
         </div>
 
-        <p className={styles.price}>{`$${appliedPrice || fullPrice}`}</p>
+        <p className={styles.price}>{`$${price}`}</p>
       </div>
     </div>
   );

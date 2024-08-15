@@ -6,7 +6,7 @@
 
   box-sizing: border-box;
   width: 100%;
-  height: $catalog-height-mob;
+  height: $catalog-card-height-mob;
   padding: 32px;
   border: 1px solid $main-border-color;
   background-color: $white-color;
@@ -19,28 +19,31 @@
   @include on-hover(box-shadow, 0 2px 16px 0 #0000001a);
 
   @include on-tablet {
-    height: $catalog-height-tablet;
+    height: $catalog-card-height-tab;
   }
 }
 
 .sliderCard {
   width: 212px;
-  height: $slider-height-mob;
+  height: $slider-card-height-mob;
 
   @include on-tablet {
     width: 237px;
-    height: $slider-height-tablet;
+    height: $slider-card-height-tab;
   }
 
   @include on-desktop {
     width: 272px;
-    height: $slider-height-desktop;
+    height: $slider-card-height-desk;
   }
 }
 
-.imgWrapper {
+.imgLink {
   position: relative;
+  display: block;
   flex-grow: 1;
+
+  @include pointer-cursor;
 }
 
 .img {
@@ -56,7 +59,14 @@
 
 .name {
   margin: 0;
-  padding-top: 16px;
+  margin-top: 16px;
+
+  display: block;
+  text-decoration: none;
+  color: $primary-color;
+
+  @include pointer-cursor;
+  @include on-hover(color, $green-color);
 }
 
 .priceWrapper {
@@ -118,71 +128,4 @@
 .cell2 {
   color: $primary-color;
   text-align: right;
-}
-
-.buttons {
-  display: flex;
-  gap: 8px;
-}
-
-.btnToCart {
-  flex-grow: 1;
-  box-shadow: none;
-  border: none;
-  padding: 0;
-
-  box-sizing: border-box;
-  height: 40px;
-  background-color: $primary-color;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  font-family: Mont, Arial, Helvetica, sans-serif;
-  font-weight: 600;
-  font-size: 14px;
-  line-height: 1.1em;
-  color: $white-color;
-  text-align: center;
-
-  @include pointer-cursor;
-  @include on-hover(box-shadow, 0 3px 13px 0 #17203166);
-
-  &::after {
-    content: 'Add to cart';
-  }
-}
-
-.btnToCartSelected {
-  border: 1px solid $main-border-color;
-  background-color: $white-color;
-  color: $green-color;
-  box-shadow: none !important;
-
-  @include on-hover(border-color, $primary-color);
-
-  &::after {
-    content: 'Added to cart';
-  }
-}
-
-.btnToFavorites {
-  box-sizing: border-box;
-  width: 40px;
-  height: 40px;
-  background-color: $white-color;
-  border: 1px solid $secondary-border-color;
-  padding: 0;
-
-  background-image: url(../../../public/img/icons/icon-heart.svg);
-  background-repeat: no-repeat;
-  background-position: center;
-
-  @include pointer-cursor;
-  @include on-hover(border-color, $primary-color);
-}
-
-.btnToFavoritesSelected {
-  background-image: url(../../../public/img/icons/icon-heart-selected.svg);
 }

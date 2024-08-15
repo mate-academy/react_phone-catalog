@@ -6,8 +6,8 @@ import { SliderProduct } from '../../types/SliderProduct';
 import { getSequence } from '../../utils/getSequence';
 import { ProductCard } from '../ProductCard';
 import { SkeletonCard } from '../SkeletonCard';
-import styles from './ProductsSlider.module.scss';
 import { ErrorNotification } from '../ErrorNotification';
+import styles from './ProductsSlider.module.scss';
 
 interface Props {
   title: string;

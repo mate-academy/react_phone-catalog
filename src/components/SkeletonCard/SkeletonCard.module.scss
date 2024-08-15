@@ -1,12 +1,13 @@
 @import '../../styles/vars';
 @import '../../styles/mixins';
+@import '../../styles/animations';
 
 .skeletonCard {
   flex-shrink: 0;
 
   box-sizing: border-box;
   width: 100%;
-  height: $catalog-height-mob;
+  height: $catalog-card-height-mob;
   padding: 32px;
   border: 1px solid $main-border-color;
   background-color: $white-color;
@@ -16,22 +17,22 @@
   gap: 8px;
 
   @include on-tablet {
-    height: $catalog-height-tablet;
+    height: $catalog-card-height-tab;
   }
 }
 
 .sliderCard {
   width: 212px;
-  height: $slider-height-mob;
+  height: $slider-card-height-mob;
 
   @include on-tablet {
     width: 237px;
-    height: $slider-height-tablet;
+    height: $slider-card-height-tab;
   }
 
   @include on-desktop {
     width: 272px;
-    height: $slider-height-desktop;
+    height: $slider-card-height-desk;
   }
 }
 
@@ -140,14 +141,4 @@
 
 .skeleton {
   animation: skeleton-loading 1s linear infinite alternate;
-}
-
-@keyframes skeleton-loading {
-  0% {
-    background-color: $main-border-color;
-  }
-
-  100% {
-    background-color: $secondary-border-color;
-  }
 }

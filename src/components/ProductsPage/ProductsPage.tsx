@@ -6,11 +6,11 @@ import { selectProducts } from '../../redux/slices/productsSlice';
 import { CatalogProduct } from '../../types/CatalogProduct';
 import { SortBy } from '../../types/SortBy';
 import { ItemsOnPage } from '../../types/ItemsOnPage';
+import { toCommonPropsProducts } from '../../utils/toCommonPropsProducts';
 import { getSortedProducts } from '../../utils/getSortedProducts';
 import { ProductsList } from '../ProductsList';
 import { Pagination } from '../Pagination';
 import styles from './ProductsPage.module.scss';
-import { toCommonPropsProducts } from '../../utils/toCommonPropsProducts';
 
 interface Props {
   label: string;

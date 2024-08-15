@@ -1,0 +1,31 @@
+@import '../../styles/vars';
+@import '../../styles/mixins';
+
+.btnBack {
+  padding: 0;
+  border: none;
+  background-color: transparent;
+
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 4px;
+
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 15.34px;
+  color: $secondary-color;
+
+  @include pointer-cursor;
+  @include on-hover(color, $primary-color);
+
+  &::before {
+    content: '';
+    display: block;
+    width: 16px;
+    height: 16px;
+    background-image: url(../../../public/img/icons/arrow-left-black.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+}
