@@ -25,8 +25,8 @@ export const App: React.FC = () => {
           <UnderConstruction />
           <Header />
           <BannerSlider />
-          <ProductSlider title="Brand new models" />
-          <ProductSlider title="Hot prices" />
+          <ProductSlider title="Brand new models" count={10}/>
+          <ProductSlider title="Hot prices" count={10}/>
           <Footer />
         </div>
       )}
