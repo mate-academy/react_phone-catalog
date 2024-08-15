@@ -20,7 +20,6 @@ export const fetchProductsByCategory = createAsyncThunk(
   },
 );
 
-// fetch all products
 export const fetchAllProducts = createAsyncThunk('products/fetch', () => {
   const response = getAllProducts();
 

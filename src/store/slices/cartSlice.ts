@@ -1,16 +1,14 @@
 /* eslint-disable no-param-reassign */
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { CART_ITEMS_KEY } from '../../constants/localstorage-keys';
 import { Cart } from '../../types/Cart';
 import { Product } from '../../types/Product';
-import { getLocalStorage } from '../../utils';
 
 export interface CartState {
   cart: Cart[];
 }
 
 const initialState: CartState = {
-  cart: getLocalStorage(CART_ITEMS_KEY),
+  cart: [],
 };
 
 export const cartSlice = createSlice({
@@ -31,8 +29,6 @@ export const cartSlice = createSlice({
       if (!isHaveProduct) {
         state.cart.push(newProduct);
       }
-
-      localStorage.setItem(CART_ITEMS_KEY, JSON.stringify(state.cart));
     },
 
     deleteProduct: (state, action: PayloadAction<number>) => {
@@ -43,8 +39,6 @@ export const cartSlice = createSlice({
       if (productIndex !== -1) {
         state.cart.splice(productIndex, 1);
       }
-
-      localStorage.setItem(CART_ITEMS_KEY, JSON.stringify(state.cart));
     },
 
     increaseQuantity: (state, action: PayloadAction<number>) => {
@@ -57,9 +51,8 @@ export const cartSlice = createSlice({
       }
 
       state.cart[productIndex].quantity++;
-
-      localStorage.setItem(CART_ITEMS_KEY, JSON.stringify(state.cart));
     },
+
     decreaseQuantity: (state, action: PayloadAction<number>) => {
       const productIndex = state.cart.findIndex(
         item => item.id === action.payload,
@@ -72,14 +65,10 @@ export const cartSlice = createSlice({
       if (state.cart[productIndex].quantity > 1) {
         state.cart[productIndex].quantity--;
       }
-
-      localStorage.setItem(CART_ITEMS_KEY, JSON.stringify(state.cart));
     },
 
     clearProductCart: state => {
       state.cart = [];
-
-      localStorage.setItem(CART_ITEMS_KEY, JSON.stringify(state.cart));
     },
   },
 });
