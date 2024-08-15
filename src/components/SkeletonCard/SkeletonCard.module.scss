@@ -1,0 +1,144 @@
+@import '../../styles/vars';
+@import '../../styles/mixins';
+@import '../../styles/animations';
+
+.skeletonCard {
+  flex-shrink: 0;
+
+  box-sizing: border-box;
+  width: 100%;
+  height: $catalog-card-height-mob;
+  padding: 32px;
+  border: 1px solid $main-border-color;
+  background-color: $white-color;
+
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  @include on-tablet {
+    height: $catalog-card-height-tab;
+  }
+}
+
+.sliderCard {
+  width: 212px;
+  height: $slider-card-height-mob;
+
+  @include on-tablet {
+    width: 237px;
+    height: $slider-card-height-tab;
+  }
+
+  @include on-desktop {
+    width: 272px;
+    height: $slider-card-height-desk;
+  }
+}
+
+.img {
+  flex-grow: 1;
+  align-self: center;
+
+  width: 65%;
+  border-radius: 15px;
+
+  @include on-tablet {
+    width: 85%;
+    border-radius: 20px;
+  }
+
+  @include on-desktop {
+    width: 70%;
+  }
+}
+
+.nameWrapper {
+  box-sizing: border-box;
+  height: 58px;
+  padding-top: 16px;
+}
+
+.nameFirstLine,
+.nameSecondLine {
+  height: 1rem;
+}
+
+.nameFirstLine {
+  width: 85%;
+  margin-bottom: 5px;
+}
+
+.nameSecondLine {
+  width: 40%;
+}
+
+.price {
+  margin: 0;
+  width: fit-content;
+
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 30.8px;
+  color: transparent;
+  user-select: none;
+}
+
+.hr {
+  height: 1px;
+  background-color: $main-border-color;
+}
+
+.tbody {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-block: 8px;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cell {
+  padding: 0;
+
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 15.34px;
+  color: transparent;
+  user-select: none;
+}
+
+.buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.btnAdd {
+  flex-grow: 1;
+  height: 40px;
+}
+
+.btnLike {
+  width: 40px;
+  height: 40px;
+}
+
+.nameFirstLine,
+.nameSecondLine,
+.cell {
+  border-radius: 5px;
+}
+
+.price,
+.btnAdd,
+.btnLike {
+  border-radius: 8px;
+}
+
+.skeleton {
+  animation: skeleton-loading 1s linear infinite alternate;
+}

@@ -1,0 +1,92 @@
+@import '../../styles/vars';
+@import '../../styles/mixins';
+
+.topBar {
+  @include content-padding-inline;
+
+  box-sizing: border-box;
+  width: 100%;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 32px;
+}
+
+.title {
+  margin: 0;
+
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 30.8px;
+
+  @include on-tablet {
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+  }
+}
+
+.buttons {
+  display: flex;
+  gap: 16px;
+}
+
+.btn {
+  box-sizing: border-box;
+  width: 32px;
+  height: 32px;
+
+  padding: 0;
+  border: 1px solid $secondary-border-color;
+
+  background-color: $white-color;
+  background-repeat: no-repeat;
+  background-position: center;
+
+  @include pointer-cursor;
+  @include on-hover(border-color, $primary-color);
+}
+
+.btnPrev {
+  background-image: url(../../../public/img/icons/arrow-left-black.svg);
+}
+
+.btnNext {
+  background-image: url(../../../public/img/icons/arrow-right-black.svg);
+}
+
+.btn:disabled {
+  border-color: $main-border-color;
+}
+
+.btnPrev:disabled {
+  background-image: url(../../../public/img/icons/arrow-left-gray.svg);
+}
+
+.btnNext:disabled {
+  background-image: url(../../../public/img/icons/arrow-right-gray.svg);
+}
+
+.products {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 16px;
+  overflow: hidden;
+  scroll-behavior: smooth;
+
+  padding-top: 24px;
+  padding-bottom: 56px;
+  margin-left: 16px;
+
+  @include on-tablet {
+    padding-bottom: 64px;
+    margin-left: 24px;
+  }
+
+  @include on-desktop {
+    max-width: 1136px;
+    padding-bottom: 80px;
+    margin-inline: auto;
+  }
+}

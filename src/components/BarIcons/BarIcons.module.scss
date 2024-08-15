@@ -1,0 +1,80 @@
+@import '../../styles/vars';
+@import '../../styles/mixins';
+
+.barIcons {
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+
+.icon {
+  position: relative;
+
+  flex-shrink: 0;
+  flex-grow: 1;
+
+  &:has(.linkActive)::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    display: block;
+    width: 100%;
+    height: 3px;
+    background-color: $primary-color;
+  }
+}
+
+.verticalLine {
+  flex-basis: 1px;
+  height: 100%;
+  background-color: $main-border-color;
+}
+
+.link {
+  display: block;
+  width: 100%;
+  height: 100%;
+
+  background-repeat: no-repeat;
+  background-position: center;
+
+  @include pointer-cursor;
+  @include on-hover(transform, scale(1.25));
+}
+
+.linkHeart {
+  background-image: url(../../../public/img/icons/icon-heart.svg);
+}
+
+.linkCart {
+  background-image: url(../../../public/img/icons/icon-cart.svg);
+}
+
+.counter {
+  position: absolute;
+  left: 50%;
+  bottom: 50%;
+
+  pointer-events: none;
+
+  box-sizing: border-box;
+  width: 14px;
+  height: 14px;
+  background-color: $red-color;
+  border-radius: 50%;
+  border: 1px solid $white-color;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-weight: 600;
+  font-size: 9px;
+  line-height: 14px;
+  text-align: center;
+  color: $white-color;
+}
+
+.counterHidden {
+  display: none;
+}

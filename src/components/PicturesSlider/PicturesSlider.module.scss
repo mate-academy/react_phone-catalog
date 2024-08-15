@@ -1,0 +1,162 @@
+@import '../../styles/vars';
+@import '../../styles/mixins';
+
+.sliderContainer {
+  box-sizing: border-box;
+
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  margin-bottom: 56px;
+
+  @include on-tablet {
+    padding-inline: 24px;
+    margin-bottom: 64px;
+  }
+
+  @include on-desktop {
+    padding-inline: 32px;
+    margin-bottom: 80px;
+  }
+}
+
+.slider {
+  display: grid;
+  grid-template-columns: 1fr;
+
+  @include on-tablet {
+    grid-template-columns: repeat(12, 1fr);
+    column-gap: 16px;
+  }
+
+  @include on-desktop {
+    grid-template-columns: repeat(24, 32px);
+    justify-content: center;
+  }
+}
+
+.btnPrev {
+  grid-column: 1 / 2;
+  background-image: url(../../../public/img/icons/arrow-left-black.svg);
+}
+
+.btnNext {
+  grid-column: -2 / -1;
+  background-image: url(../../../public/img/icons/arrow-right-black.svg);
+}
+
+.btn {
+  display: none;
+
+  @include on-tablet {
+    display: block;
+
+    box-sizing: border-box;
+    padding: 0;
+    border: 1px solid $secondary-border-color;
+    background-color: $white-color;
+
+    background-repeat: no-repeat;
+    background-position: center;
+
+    @include pointer-cursor;
+    @include on-hover(border-color, $primary-color);
+  }
+}
+
+.slides {
+  grid-column: 1 / -1;
+
+  display: flex;
+  flex-wrap: nowrap;
+
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  scrollbar-color: transparent transparent;
+  scrollbar-width: none;
+
+  @include on-tablet {
+    grid-column: 2 / -2;
+    overflow-x: hidden;
+  }
+}
+
+.slide {
+  flex-shrink: 0;
+  width: 100%;
+  height: 0;
+  padding-bottom: 100%;
+
+  scroll-snap-align: start;
+
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-color: black;
+
+  @include on-tablet {
+    padding-bottom: 38.57%;
+  }
+
+  @include on-desktop {
+    padding-bottom: 0;
+    height: 400px;
+  }
+}
+
+.slide1 {
+  background-image: url(../../../public/img/slider/main-img-square.png);
+
+  @include on-tablet {
+    background-image: url(../../../public/img/slider/main-img-wide.png);
+  }
+}
+
+.slide2 {
+  background-image: url(../../../public/img/banner-accessories.png);
+
+  @include on-tablet {
+    background-image: url(../../../public/img/banner-phones.png);
+  }
+}
+
+.slide3 {
+  background-image: url(../../../public/img/banner-tablets.png);
+}
+
+.dashes {
+  align-self: center;
+
+  display: flex;
+  gap: 4px;
+}
+
+.dash {
+  width: 24px;
+  height: 24px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  @include pointer-cursor;
+
+  &::after {
+    content: '';
+    display: block;
+    width: 14px;
+    height: 4px;
+    background-color: $main-border-color;
+    transition: background-color $transition-duration;
+  }
+
+  &:hover::after {
+    background-color: $secondary-border-color;
+  }
+}
+
+.dashActive::after {
+  background-color: $primary-color !important;
+}

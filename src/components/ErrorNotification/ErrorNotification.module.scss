@@ -1,0 +1,103 @@
+@import '../../styles/vars';
+@import '../../styles/mixins';
+
+.sliderNotification {
+  @include content-padding-inline;
+
+  margin-top: 24px;
+  margin-bottom: 56px;
+
+  @include on-tablet {
+    margin-bottom: 64px;
+  }
+
+  @include on-desktop {
+    margin-bottom: 80px;
+  }
+}
+
+.sliderContent {
+  height: $slider-card-height-mob;
+
+  @include on-tablet {
+    height: $slider-card-height-tab;
+  }
+
+  @include on-desktop {
+    height: $slider-card-height-desk;
+  }
+}
+
+.defaultNotification {
+  height: 400px;
+}
+
+.defaultContent {
+  height: 100%;
+}
+
+.defaultContent,
+.sliderContent {
+  background-image: url(../../../public/img/product-not-found.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+}
+
+.message {
+  margin: 0;
+  margin-bottom: 20px;
+
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 30.8px;
+
+  @include on-tablet {
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+  }
+}
+
+.reloadBtn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  border: none;
+  padding: 0;
+  background-color: transparent;
+
+  font-family: Mont, Arial, Helvetica, sans-serif;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 1em;
+  color: $secondary-color;
+
+  @include pointer-cursor;
+  @include on-hover(color, $primary-color);
+
+  @include on-tablet {
+    font-size: 20px;
+  }
+
+  &::after {
+    content: '';
+    box-sizing: border-box;
+    display: block;
+    width: 40px;
+    height: 40px;
+    border: 1px solid $secondary-border-color;
+
+    background-image: url(../../../public/img/icons/icon-reload.svg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    transition: border-color $transition-duration;
+  }
+
+  &:hover::after {
+    border-color: $primary-color;
+  }
+}

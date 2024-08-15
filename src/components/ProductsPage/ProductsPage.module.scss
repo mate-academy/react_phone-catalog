@@ -1,0 +1,224 @@
+@import '../../styles/vars';
+@import '../../styles/mixins';
+
+.productsPage {
+  @include content-padding-inline;
+
+  padding-top: 24px;
+  padding-bottom: 64px;
+
+  @include on-desktop {
+    padding-bottom: 80px;
+  }
+}
+
+.topLinks {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-start;
+  align-items: center;
+
+  margin-bottom: 24px;
+
+  @include on-tablet {
+    margin-bottom: 40px;
+  }
+}
+
+.homeLink,
+.arrowRight {
+  flex-shrink: 0;
+
+  display: block;
+  width: 16px;
+  height: 16px;
+
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.homeLink {
+  background-image: url(../../../public/img/icons/icon-home.svg);
+
+  @include pointer-cursor;
+  @include on-hover(transform, scale(1.15));
+}
+
+.arrowRight {
+  background-image: url(../../../public/img/icons/arrow-right-gray.svg);
+}
+
+.productsLink {
+  text-decoration: none;
+  text-transform: capitalize;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 1em;
+  color: $secondary-color;
+
+  @include pointer-cursor;
+  @include on-hover(color, $primary-color);
+}
+
+.title {
+  margin: 0;
+  margin-bottom: 8px;
+
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 41px;
+  letter-spacing: -0.01em;
+  color: $primary-color;
+
+  @include on-tablet {
+    font-size: 48px;
+    line-height: 56px;
+  }
+}
+
+.itemsTxt {
+  margin: 0;
+  margin-bottom: 32px;
+
+  color: $secondary-color;
+
+  @include on-tablet {
+    margin-bottom: 40px;
+  }
+}
+
+.dropdownBlocks {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+
+  margin-bottom: 24px;
+
+  @include on-tablet {
+    justify-content: flex-start;
+  }
+}
+
+.sortByDropdown {
+  width: calc(50% - 8px);
+
+  @include on-tablet {
+    width: 187px;
+  }
+
+  @include on-desktop {
+    width: 176px;
+  }
+}
+
+.itemsOnPageDropdown {
+  width: calc(50% - 8px);
+
+  @include on-tablet {
+    width: 136px;
+  }
+
+  @include on-desktop {
+    width: 128px;
+  }
+}
+
+.dropdownTitle {
+  margin: 0;
+  margin-bottom: 4px;
+
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 15.34px;
+  color: $secondary-color;
+}
+
+.dropdownContent {
+  position: relative;
+  width: 100%;
+  height: 40px;
+}
+
+.dropdownTrigger {
+  box-sizing: border-box;
+  display: block;
+  width: 100%;
+  height: 100%;
+  outline: none;
+  padding: 10px 12px;
+  border: 1px solid $secondary-border-color;
+
+  background-color: $white-color;
+  background-image: url(../../../public/img/icons/arrow-down-gray.svg);
+  background-repeat: no-repeat;
+  background-position: calc(100% - 12px) center;
+
+  text-transform: capitalize;
+  font: inherit;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+  color: $primary-color;
+  text-align: left;
+
+  @include pointer-cursor;
+  @include on-hover(border-color, $secondary-color);
+}
+
+.dropdownTriggerActive {
+  border-color: $primary-color !important;
+  background-image: url(../../../public/img/icons/arrow-up-gray.svg);
+}
+
+.dropdownList {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  position: absolute;
+  z-index: 1;
+  top: 100%;
+  margin-top: 4px;
+
+  box-sizing: border-box;
+  width: 100%;
+  padding-block: 8px;
+  background-color: $white-color;
+  border: 1px solid $main-border-color;
+  box-shadow: 0 2px 15px 0 #0000000d;
+
+  transition: all $transition-duration;
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(-22px);
+}
+
+.dropdownItem {
+  box-sizing: border-box;
+  width: 100%;
+  height: 32px;
+  padding: 5px 12px;
+
+  display: flex;
+  align-items: center;
+
+  text-transform: capitalize;
+  font: inherit;
+  font-size: 14px;
+  line-height: 21px;
+  color: $secondary-color;
+
+  @include pointer-cursor;
+  @include on-hover(color, $primary-color);
+  @include on-hover(background-color, $hover-bg-color);
+}
+
+.dropdownItemSelected {
+  display: none;
+}
+
+.dropdownListVisible {
+  pointer-events: all;
+  opacity: 1;
+  transform: translateY(0);
+}

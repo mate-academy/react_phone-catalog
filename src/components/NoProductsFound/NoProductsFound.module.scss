@@ -1,0 +1,50 @@
+@import '../../styles/vars';
+@import '../../styles/mixins';
+
+.noProducts {
+  @include content-padding-inline;
+
+  box-sizing: border-box;
+  height: 400px;
+  padding-block: 24px;
+
+  background-image: url(../../../public/img/product-not-found.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+
+  @include on-tablet {
+    height: 550px;
+    padding-block: 32px;
+  }
+}
+
+.emptyCart {
+  background-image: url(../../../public/img/cart-is-empty.png);
+}
+
+.btnBack {
+  margin-bottom: 16px;
+}
+
+.btnBackInCart {
+  margin-bottom: 24px;
+
+  @include on-tablet {
+    margin-bottom: 16px;
+  }
+}
+
+.noProductsText {
+  margin: 0;
+
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 41px;
+  letter-spacing: -0.01em;
+
+  @include on-tablet {
+    font-size: 48px;
+    line-height: 56px;
+  }
+}

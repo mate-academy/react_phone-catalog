@@ -1,0 +1,91 @@
+@import '../../styles/vars';
+@import '../../styles/mixins';
+
+.favorites {
+  @include content-padding-inline;
+
+  padding-top: 24px;
+  padding-bottom: 56px;
+
+  @include on-tablet {
+    padding-bottom: 64px;
+  }
+
+  @include on-desktop {
+    padding-bottom: 80px;
+  }
+}
+
+.topLinks {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-start;
+  align-items: center;
+
+  margin-bottom: 24px;
+
+  @include on-tablet {
+    margin-bottom: 40px;
+  }
+}
+
+.homeLink,
+.arrowRight {
+  flex-shrink: 0;
+
+  display: block;
+  width: 16px;
+  height: 16px;
+
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.homeLink {
+  background-image: url(../../../public/img/icons/icon-home.svg);
+
+  @include pointer-cursor;
+  @include on-hover(transform, scale(1.15));
+}
+
+.arrowRight {
+  background-image: url(../../../public/img/icons/arrow-right-gray.svg);
+}
+
+.favoritesLink {
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 1em;
+  color: $secondary-color;
+
+  @include pointer-cursor;
+  @include on-hover(color, $primary-color);
+}
+
+.title {
+  margin: 0;
+  margin-bottom: 8px;
+
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 41px;
+  letter-spacing: -0.01em;
+  color: $primary-color;
+
+  @include on-tablet {
+    font-size: 48px;
+    line-height: 56px;
+  }
+}
+
+.itemsTxt {
+  margin: 0;
+  margin-bottom: 32px;
+
+  color: $secondary-color;
+
+  @include on-tablet {
+    margin-bottom: 40px;
+  }
+}

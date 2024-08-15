@@ -1,0 +1,131 @@
+@import '../../styles/vars';
+@import '../../styles/mixins';
+
+.productCard {
+  flex-shrink: 0;
+
+  box-sizing: border-box;
+  width: 100%;
+  height: $catalog-card-height-mob;
+  padding: 32px;
+  border: 1px solid $main-border-color;
+  background-color: $white-color;
+  box-shadow: none;
+
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  @include on-hover(box-shadow, 0 2px 16px 0 #0000001a);
+
+  @include on-tablet {
+    height: $catalog-card-height-tab;
+  }
+}
+
+.sliderCard {
+  width: 212px;
+  height: $slider-card-height-mob;
+
+  @include on-tablet {
+    width: 237px;
+    height: $slider-card-height-tab;
+  }
+
+  @include on-desktop {
+    width: 272px;
+    height: $slider-card-height-desk;
+  }
+}
+
+.imgLink {
+  position: relative;
+  display: block;
+  flex-grow: 1;
+
+  @include pointer-cursor;
+}
+
+.img {
+  position: absolute;
+
+  display: block;
+  width: 100%;
+  height: 100%;
+
+  object-fit: contain;
+  object-position: center;
+}
+
+.name {
+  margin: 0;
+  margin-top: 16px;
+
+  display: block;
+  text-decoration: none;
+  color: $primary-color;
+
+  @include pointer-cursor;
+  @include on-hover(color, $green-color);
+}
+
+.priceWrapper {
+  display: flex;
+  gap: 8px;
+
+  font-size: 22px;
+  line-height: 30.8px;
+}
+
+.price {
+  margin: 0;
+  font-weight: 700;
+}
+
+.fullPrice {
+  margin: 0;
+  color: $secondary-color;
+  text-decoration: line-through;
+}
+
+.fullPriceOnly {
+  font-weight: 700;
+  color: $primary-color;
+  text-decoration: none;
+}
+
+.hr {
+  height: 1px;
+  background-color: $main-border-color;
+}
+
+.tbody {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-block: 8px;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cell1,
+.cell2 {
+  padding: 0;
+
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 15.34px;
+}
+
+.cell1 {
+  color: $secondary-color;
+}
+
+.cell2 {
+  color: $primary-color;
+  text-align: right;
+}

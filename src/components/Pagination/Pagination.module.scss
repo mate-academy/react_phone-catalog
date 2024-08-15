@@ -1,0 +1,106 @@
+@import '../../styles/vars';
+@import '../../styles/mixins';
+
+.pagination {
+  margin-top: 24px;
+
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+
+  @include on-tablet {
+    margin-top: 40px;
+  }
+}
+
+.hidden {
+  display: none;
+}
+
+.btn {
+  flex-shrink: 0;
+  padding: 0;
+  outline: none;
+}
+
+.pagesContainer {
+  max-width: 4 * $pagination-btn-size + 3 * $pagination-gap;
+  overflow: hidden;
+}
+
+.pagesList {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  display: flex;
+  gap: $pagination-gap;
+}
+
+.pageItem {
+  flex-shrink: 0;
+}
+
+.pageRadioLabel,
+.btn {
+  box-sizing: border-box;
+  width: $pagination-btn-size;
+  height: $pagination-btn-size;
+  border: 1px solid $main-border-color;
+
+  background-color: $white-color;
+  background-repeat: no-repeat;
+  background-position: center;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  text-align: center;
+  font: inherit;
+  line-height: 1rem;
+  color: $primary-color;
+
+  @include pointer-cursor;
+  @include on-hover(border-color, $primary-color);
+}
+
+.pageRadioLabel:has(+ .pageRadio:checked) {
+  border-color: transparent;
+  background-color: $primary-color;
+  color: $white-color;
+}
+
+.pageRadio {
+  display: none;
+  appearance: none;
+  outline: none;
+  width: 0;
+  height: 0;
+  margin: 0;
+  padding: 0;
+  background-color: transparent;
+}
+
+.btnPrev,
+.btnNext {
+  border-color: $secondary-border-color;
+}
+
+.btnPrev {
+  background-image: url(../../../public/img/icons/arrow-left-black.svg);
+}
+
+.btnNext {
+  background-image: url(../../../public/img/icons/arrow-right-black.svg);
+}
+
+.btnPrev:disabled {
+  background-image: url(../../../public/img/icons/arrow-left-gray.svg);
+  border-color: $main-border-color !important;
+}
+
+.btnNext:disabled {
+  background-image: url(../../../public/img/icons/arrow-right-gray.svg);
+  border-color: $main-border-color !important;
+}
