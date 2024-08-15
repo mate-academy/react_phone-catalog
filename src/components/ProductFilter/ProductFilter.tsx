@@ -1,25 +1,25 @@
 import classNames from 'classnames';
 import styles from './ProductFilter.module.scss';
 import { CustomSelect } from '../ui/CustomSelect';
+import { SortBy } from '../../types/SortBy';
 
-const listSortBy = ['Newest', 'Hot Price', 'Price'];
-const listOfPages = ['1', '2', '3', '4'];
+const listSortBy: SortBy[] = [
+  SortBy.Newest,
+  SortBy.Alphabetically,
+  SortBy.Cheapest,
+];
 
-export const ProductFilter = () => {
+const listOfPages = ['4', '8', '16', 'All'];
+
+type ProductFilterProps = {
+  handleSelectOption: (option: string, type: 'page' | 'sort') => void;
+};
+
+export const ProductFilter: React.FC<ProductFilterProps> = ({
+  handleSelectOption,
+}) => {
   return (
     <form className={styles['product-filter']}>
-      {/* <div className="product-filter__title-block">
-        <h2>Mobile Phones</h2>
-        <p
-          className={classNames(
-            'small-text',
-            styles['product-filter__description'],
-          )}
-        >
-          95 models
-        </p>
-      </div> */}
-
       <div className={styles['product-filter__controls']}>
         <div className={styles['product-filter__control']}>
           <p
@@ -30,7 +30,10 @@ export const ProductFilter = () => {
           >
             Sort by
           </p>
-          <CustomSelect options={listSortBy} />
+          <CustomSelect
+            options={listSortBy}
+            onSelect={option => handleSelectOption(option, 'sort')}
+          />
         </div>
 
         <div className={styles['product-filter__control']}>
@@ -42,7 +45,11 @@ export const ProductFilter = () => {
           >
             Items on page
           </p>
-          <CustomSelect options={listOfPages} label="page" />
+          <CustomSelect
+            options={listOfPages}
+            onSelect={option => handleSelectOption(option, 'page')}
+            label="page"
+          />
         </div>
       </div>
     </form>
