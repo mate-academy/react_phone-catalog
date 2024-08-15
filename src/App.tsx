@@ -28,6 +28,7 @@ import {
   setItemsQuantity,
 } from './features/pagesDetailsSlice';
 import { amount } from './modules/CartPage/services/findAmount';
+import { scrollPageUpSmooth } from './modules/shared/scrollPageUp';
 
 export const App: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -161,9 +162,7 @@ export const App: React.FC = () => {
   const handleMenuOrCloseButton = () => {
     dispatch(setIsMenuShown(!isMenuShown ? true : false));
 
-    window.scrollTo({
-      top: 0,
-    });
+    scrollPageUpSmooth();
 
     let newIco;
 
@@ -176,15 +175,10 @@ export const App: React.FC = () => {
     dispatch(setHidenMenuIco(newIco));
   };
 
-  const handleGoUpButton = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth',
-    });
-  };
-
   const handleLogoClick = () => {
     dispatch(setIsMenuShown(false));
+
+    scrollPageUpSmooth();
 
     if (isDark) {
       dispatch(setHidenMenuIco(darkMenuIco));
@@ -339,11 +333,19 @@ export const App: React.FC = () => {
       <footer className={styles.footer}>
         <div className={styles.footer__container}>
           <div className={styles.footer__gridWraper}>
-            <Link className={styles.footer__logoLink} to="/">
-              <p className={styles.logoText}>
-                NICE 👌
-                <br /> GADGETS
-              </p>
+            <Link
+              onClick={handleLogoClick}
+              className={styles.footer__logoLink}
+              to="/"
+            >
+              {isDark ? (
+                <img
+                  src="./icons/dark-theme-icons/header-logo-dark-mode.svg"
+                  alt="logo"
+                />
+              ) : (
+                <img src="./icons/header-logo-light-mode.png" alt="logo" />
+              )}
             </Link>
 
             <div className={styles.footer__contactsBlock}>
@@ -364,7 +366,7 @@ export const App: React.FC = () => {
 
             <div className={styles.footer__goUpBlock}>
               <div
-                onClick={handleGoUpButton}
+                onClick={() => scrollPageUpSmooth()}
                 className={styles.footer__goUpButtonArea}
               >
                 <div className={styles.footer__goUpTextLink}>Back to top</div>
