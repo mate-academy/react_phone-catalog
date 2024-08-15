@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useMemo } from 'react';
 import { ProductCard } from '../ProductCard';
 import { ProductPhone } from '../../types/Product';
 import styles from './ProductSlider.module.scss';
@@ -6,9 +6,10 @@ import ChevronIcon from '../../img/icons/ChevronIcon.svg';
 
 type ProductSliderProps = {
   title: string;
+  count: number;
 };
 
-export const ProductSlider: React.FC<ProductSliderProps> = ({ title }) => {
+export const ProductSlider: React.FC<ProductSliderProps> = ({ title, count }) => {
   const [products, setProducts] = useState<ProductPhone[]>([]);
 
   useEffect(() => {
@@ -25,19 +26,53 @@ export const ProductSlider: React.FC<ProductSliderProps> = ({ title }) => {
     fetchProductData();
   }, []);
 
-  const displayedItems = products.slice(-10); // SIMPLIFICATION - MUST BE BASED ON SORTING - WILL BE UPDATED
-  console.log('product slider items', displayedItems);
+  const displayedItems = useMemo(() => {
+    return products.slice(-count);
+  }, [products]); // SIMPLIFICATION - MUST BE BASED ON SORTING - WILL BE UPDATED
+
+  const [position, setPosition] = useState<number>(0);
+  const [positionCount, setPositionCount] = useState<number>(0);
+
+  const handlePositionCount = (change: number) => {
+    setPositionCount((prev) => prev + change);
+  };
+
+  const handleNextSlide = () => {
+    handlePositionCount(1);
+    setPosition((prevPosition) => prevPosition - 292);
+  };
+
+  const handlePreviousSlide = () => {
+    handlePositionCount(-1);
+    setPosition((prevPosition) => prevPosition + 292); // Aktualizacja pozycji
+  };
+
+  console.log(positionCount);
 
   return (
     <div className={styles.productSlider}>
       <div className={styles.titleContainer}>
         <h2 className={styles.title}>{title}</h2>
         <div className={styles.buttonContainer}>
-          <button className={styles.arrowButton}>
+          <button
+            className={styles.arrowButton}
+            onClick={() => {
+              if (positionCount !== 0) {
+                handlePreviousSlide();
+              }
+            }}
+          >
             <img src={ChevronIcon} alt="scroll right" />
           </button>
 
-          <button className={styles.arrowButton}>
+          <button
+            className={styles.arrowButton}
+            onClick={() => {
+              if (positionCount !== 6) { // FIXED NUMBER=6 NEED TO BE CORRECTED - depends on number of items and
+                handleNextSlide();
+              }
+            }}
+          >
             <img src={ChevronIcon} alt="scroll right" className={styles.iconNext} />
           </button>
         </div>
@@ -45,8 +80,13 @@ export const ProductSlider: React.FC<ProductSliderProps> = ({ title }) => {
 
       <div className={styles.topContainer}>
         <div className={styles.sliderContainer}>
-          <div>
-            <ul className={styles.slideWraper}>
+          <div className={styles.slideWraper}>
+            <ul
+              className={styles.slideList}
+              style={{
+                transform: `translateX(${position}px)`,
+              }}
+            >
               {displayedItems.map((product) => (
                 <li key={product.id} className={styles.productCard}>
                   <ProductCard product={product} />

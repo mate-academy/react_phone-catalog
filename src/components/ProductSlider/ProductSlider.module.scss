@@ -1,32 +1,31 @@
-.productSlider {
+@import '../../styles/main';
 
-  border: solid 1px red;
-display: flex;
-flex-direction: column;
-align-items: center;
+.productSlider {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .topContainer {
   display: flex;
   justify-content: center;
-
 }
 
 .sliderContainer {
-
-
   display: flex;
   flex-direction: column;
   align-items: center;
-
 }
-
 
 .slideWraper {
   display: flex;
-  border: solid 2px blue;
   width: 1173px;
   overflow: hidden;
+}
+
+.slideList {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
 }
 
 .productCard {
@@ -36,20 +35,22 @@ align-items: center;
 .titleContainer {
   display: flex;
   width: 1173px;
+  justify-content: space-between;
 }
 
 .title {
   width: 90%;
-  border: solid 2px green;
   align-self: center;
-  padding: 30px;
+  padding: 10px;
 
+  @include h2-tablet
 }
-.buttonContainer {
-  padding: 30px;
-  border: solid 2px green;
-  display: flex;
 
+.buttonContainer {
+  padding: 12px 15px;
+  gap: 10px;
+  display: flex;
+  justify-content: end;
 }
 
 .arrowButton {
@@ -62,7 +63,6 @@ align-items: center;
   background-color: var(--color-icons);
   border: 1px solid var(--color-surface);
   border-radius: 5%;
-
 
   &:hover {
       border: 1px solid var(--color-primary);
