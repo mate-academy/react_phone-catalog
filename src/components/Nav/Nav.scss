@@ -1,0 +1,119 @@
+@import '../../App';
+
+.nav {
+  &__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    display: flex;
+    align-items: center;
+    gap: 32px;
+
+    @include on-tablet {
+      gap: 64px;
+    }
+  }
+
+  &__item,
+  &__link {
+    height: 100%;
+    display: flex;
+    align-items: center;
+  }
+
+  &__link {
+    text-decoration: none;
+    color: $c-secondary;
+    box-sizing: border-box;
+
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 91%;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+
+    border-bottom: 3px solid transparent;
+
+    &--active {
+      color: $c-white;
+      border-bottom: 3px solid $c-white;
+    }
+
+    @include on-desktop {
+      transition: color 0.5s;
+
+      &:hover {
+        color: $c-white;
+      }
+    }
+  }
+
+  &__buttons {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+    justify-content: flex-end;
+  }
+
+  &__buttons-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 48px;
+    height: 48px;
+    border-left: 1px solid $c-elements;
+
+    position: relative;
+
+    &--active {
+      &::after {
+        content: '';
+        width: 100%;
+        height: 3px;
+        position: absolute;
+        bottom: 0;
+        background-color: $c-white;
+      }
+    }
+
+    @include on-desktop {
+      width: 64px;
+      height: 64px;
+      transition: background-color 0.5s;
+
+      &:hover {
+        background-color: $c-icons;
+      }
+    }
+  }
+
+  &--menu {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+
+    .nav__list {
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .nav__item {
+      height: 27px;
+    }
+
+    .nav__buttons {
+      flex-grow: 0;
+    }
+
+    .nav__buttons-item,
+    .nav__buttons-btn {
+      width: 100%;
+    }
+  }
+}

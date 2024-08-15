@@ -1,1 +1,60 @@
-// not empty
+@import './styles/vars';
+@import './styles/mixins';
+@import './styles/fonts';
+
+html {
+  min-width: 320px;
+  scroll-behavior: smooth;
+  background: $c-black;
+
+  font-family: Mont, sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 150%;
+  color: $c-white;
+}
+
+body {
+  margin: 0;
+}
+
+/* General */
+
+.container {
+  padding-inline: 16px;
+
+  @include on-tablet {
+    padding-inline: 24px;
+  }
+
+  @include on-desktop {
+    max-width: 1136px;
+    margin: 0 auto;
+    padding-inline: 0;
+  }
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  white-space: nowrap;
+  clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}
+
+/* app */
+
+.app {
+  &__menu {
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+    right: 0;
+  }
+}

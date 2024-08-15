@@ -1,0 +1,52 @@
+@import '../../../App';
+
+.header {
+  position: sticky;
+  z-index: 1001;
+
+  &__wrapper {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    height: 48px;
+    border-bottom: 1px solid $c-elements;
+
+    @include on-desktop {
+      gap: 24px;
+      height: 64px;
+    }
+  }
+
+  &__logo {
+    flex-basis: 96px;
+
+    @include on-desktop {
+      flex-basis: 128px;
+    }
+  }
+
+  &__nav {
+    display: none;
+
+    @include on-tablet {
+      display: flex;
+      width: 100%;
+    }
+  }
+
+  &__menu-btn {
+    background-color: transparent;
+    border: none;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 48px;
+    height: 48px;
+    border-left: 1px solid $c-elements;
+
+    @include on-tablet {
+      display: none;
+    }
+  }
+}

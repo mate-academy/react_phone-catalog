@@ -1,0 +1,26 @@
+@import '../../App';
+
+.logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  @include on-desktop {
+    transition: transform 0.5s;
+
+    &:hover {
+      transform: scale(1.2);
+    }
+  }
+
+  &__img {
+    width: 64px;
+    height: 22px;
+
+    @include on-desktop {
+      width: 80px;
+      height: 28px;
+    }
+  }
+}
+
