@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styles from './BannerSlider.module.scss';
 import ChevronIcon from '../../img/icons/ChevronIcon.svg';
 
@@ -21,9 +21,17 @@ export const BannerSlider: React.FC = () => {
     setDisplayedImageIndex(prevIndex =>
       prevIndex === 0 ? sliderImages.length - 1 : prevIndex - 1
     );
+
   };
 
-  setTimeout(incrementDisplayedImageIndex, 3000);
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      incrementDisplayedImageIndex();
+    }, 3000);
+
+    // Czyszczenie interwału, gdy komponent zostanie odmontowany
+    return () => clearInterval(intervalId);
+  }, []); // Pusta tablica zależności, interwał ustawia się tylko raz
 
   return (
     <div className={styles.bannerSlider}>
