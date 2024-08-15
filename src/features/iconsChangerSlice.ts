@@ -15,8 +15,8 @@ const initialState: IconsChangerType = {
   searchIco: './icons/search-ico.svg',
   burgerMenuIco: './icons/burger-menu-ico.svg',
   closeIco: './icons/close-ico.svg',
-  darkMenuIco: '/icons/dark-theme-icons/menu-ico.svg',
-  darkCloseIco: '/icons/dark-theme-icons/close-ico.svg',
+  darkMenuIco: './icons/dark-theme-icons/menu-ico.svg',
+  darkCloseIco: './icons/dark-theme-icons/close-ico.svg',
 };
 
 const iconsChangerSlice = createSlice({
