@@ -11,7 +11,7 @@ type Product = {
 
 export const Thumbnails: React.FC = () => {
   const [products, setProducts] = useState<Product[]>([])
-  const categories = ['Phones','Tablets','Accessories']
+  const categories = ['phones','tablets','accessories']
 
   useEffect(() => {
 
@@ -33,19 +33,19 @@ export const Thumbnails: React.FC = () => {
 
     const memoizedCounts = useMemo(() => {
       let categoryCounts = {
-        Phones:0,
-        Tablets:0,
-        Accessories:0
+        phones:0,
+        tablets:0,
+        accessories:0
       }
       for(const product of products) {
-        if (product.category === categories[0].toLowerCase()) {
-          categoryCounts['Phones']++
+        if (product.category === categories[0]) {
+          categoryCounts['phones']++
         }
-        if (product.category === categories[1].toLowerCase()) {
-          categoryCounts['Tablets']++
+        if (product.category === categories[1]) {
+          categoryCounts['tablets']++
         }
-        if (product.category === categories[2].toLowerCase()) {
-          categoryCounts['Accessories']++
+        if (product.category === categories[2]) {
+          categoryCounts['accessories']++
         }
       }
       return categoryCounts
@@ -61,12 +61,12 @@ export const Thumbnails: React.FC = () => {
         <div className={styles.category} key={category}>
           <Link to="/" className={styles.link}>
             <img
-              src={`./img/category-${category.toLowerCase()}.png`}
+              src={`./img/category-${category}.png`}
               className={styles.image}
             />
 
             <h2 className={styles.category__title}>
-            {category} {memoizedCounts[category as keyof typeof memoizedCounts]} items
+            {category.charAt(0).toUpperCase() + category.slice(1)} {memoizedCounts[category as keyof typeof memoizedCounts]} items
             </h2>
 
             <span className={styles.category__subtitle}>
