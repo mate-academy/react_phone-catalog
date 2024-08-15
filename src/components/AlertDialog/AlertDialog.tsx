@@ -6,13 +6,13 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 
-import { useProductsCart } from '../../store/CartProvider';
-
+import { useAppDispatch } from '../../hooks/useAppDispatch';
+import { clearProductCart } from '../../store/slices/cartSlice';
 import { Button as PurchaseButton } from '../../ui/Button/Button';
 
 export default function AlertDialog() {
   const [open, setOpen] = React.useState(false);
-  const { clearProductsCart } = useProductsCart();
+  const dispatch = useAppDispatch();
 
   const handleOpen = () => {
     setOpen(true);
@@ -23,7 +23,7 @@ export default function AlertDialog() {
   };
 
   const handleClearProductsCart = () => {
-    clearProductsCart();
+    dispatch(clearProductCart());
   };
 
   return (

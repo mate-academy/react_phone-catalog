@@ -1,13 +1,13 @@
 import { CartItems } from '../../components/CartItems/CartItems';
 import { CartTotal } from '../../components/CartTotal';
-import { useProductsCart } from '../../store/CartProvider';
+import { useAppSelector } from '../../hooks/useAppSelector';
 
 import { ButtonBack } from '../../ui/ButtonBack';
 
 import styles from './CartPage.module.scss';
 
 export const CartPage = () => {
-  const { cart } = useProductsCart();
+  const { cart } = useAppSelector(state => state.cart);
 
   return (
     <>

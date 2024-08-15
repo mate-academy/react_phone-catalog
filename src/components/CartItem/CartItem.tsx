@@ -5,7 +5,12 @@ import closeIcon from '../../assets/images/close.svg';
 import { IconMinus } from '../../ui/IconMinus';
 import { IconPlus } from '../../ui/IconPlus';
 
-import { useProductsCart } from '../../store/CartProvider';
+import { useAppDispatch } from '../../hooks/useAppDispatch';
+import {
+  decreaseQuantity,
+  deleteProduct,
+  increaseQuantity,
+} from '../../store/slices/cartSlice';
 import styles from './CartItem.module.scss';
 
 type Props = {
@@ -23,19 +28,18 @@ export const CartItem: React.FC<Props> = ({
   price,
   quantity,
 }) => {
-  const { deleteProduct, increaseQuantity, decreaseQuantity } =
-    useProductsCart();
+  const dispatch = useAppDispatch();
 
   const handleDeleteProduct = () => {
-    deleteProduct(id);
+    dispatch(deleteProduct(id));
   };
 
   const handleIncreaseQuantity = () => {
-    increaseQuantity(id);
+    dispatch(increaseQuantity(id));
   };
 
   const handleDecreaseQuantity = () => {
-    decreaseQuantity(id);
+    dispatch(decreaseQuantity(id));
   };
 
   return (

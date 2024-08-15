@@ -1,5 +1,5 @@
 import cn from 'classnames';
-import styles from './ProductCardPrices.module.scss';
+import styles from './PriceInfo.module.scss';
 
 type Props = {
   isHotPrice: boolean;
@@ -8,14 +8,14 @@ type Props = {
   fontSize: string;
 };
 
-export const ProductCardPrices: React.FC<Props> = ({
+export const PriceInfo: React.FC<Props> = ({
   isHotPrice,
   price,
   fullPrice,
   fontSize,
 }) => {
   return (
-    <div className={styles.cardPrices}>
+    <div className={styles.priceInfo}>
       <p
         style={{
           fontSize: fontSize,

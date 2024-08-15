@@ -2,7 +2,6 @@ import { useNavigate, useParams } from 'react-router-dom';
 
 import { favoriteIcon } from '../../assets';
 import { ProductDetail } from '../../types/ProductDetail';
-import { ProductCardPrices } from '../ProductCardPrices';
 import { SelectCapacity } from '../SelectCapacity/SelectCapacity';
 import { SelectColor } from '../SelectColor/SelectColor';
 
@@ -11,12 +10,18 @@ import { extractNumberAndSuffix } from '../../utils/index';
 
 import isFavoriteIcon from '../../assets/images/is-favorite.svg';
 
-import { useProductsCart } from '../../store/CartProvider';
-import { useFavorites } from '../../store/FavoritesProvider';
 import { Button } from '../../ui/Button/Button';
 
 import cn from 'classnames';
 
+import { useAppDispatch } from '../../hooks/useAppDispatch';
+import { useAppSelector } from '../../hooks/useAppSelector';
+import { addProduct, deleteProduct } from '../../store/slices/cartSlice';
+import {
+  addToFavorites,
+  removeProduct,
+} from '../../store/slices/favoritesSlice';
+import { PriceInfo } from '../ProductCard/PriceInfo';
 import styles from './ProductDetailPurchase.module.scss';
 
 type Props = {
@@ -31,8 +36,9 @@ export const ProductDetailPurchase: React.FC<Props> = ({
   const { productId } = useParams();
   const navigate = useNavigate();
 
-  const { cart, addProduct, deleteProduct } = useProductsCart();
-  const { favorites, addToFavorites, removeProduct } = useFavorites();
+  const dispatch = useAppDispatch();
+  const { cart } = useAppSelector(state => state.cart);
+  const { favorites } = useAppSelector(state => state.favorites);
 
   const normalizeRam = extractNumberAndSuffix(productDetail?.ram || '');
   const product = products.find(item => item.itemId === productId);
@@ -60,17 +66,17 @@ export const ProductDetailPurchase: React.FC<Props> = ({
 
   const handleAddProduct = () => {
     if (!isHaveProduct) {
-      addProduct(product as Product);
+      dispatch(addProduct(product as Product));
     } else {
-      deleteProduct(Number(product?.id));
+      dispatch(deleteProduct(Number(product?.id)));
     }
   };
 
   const handleToggleFavoriteStatus = () => {
     if (!isFavoriteProduct) {
-      addToFavorites(product as Product);
+      dispatch(addToFavorites(product as Product));
     } else {
-      removeProduct(Number(product?.id));
+      dispatch(removeProduct(Number(product?.id)));
     }
   };
 
@@ -91,7 +97,7 @@ export const ProductDetailPurchase: React.FC<Props> = ({
         capacities={productDetail?.capacityAvailable}
       />
 
-      <ProductCardPrices
+      <PriceInfo
         fontSize="32px"
         isHotPrice={true}
         price={productDetail?.priceDiscount || 0}

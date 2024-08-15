@@ -23,7 +23,7 @@ export const AsideMenu: React.FC<Props> = ({ onCloseMenu, active }) => {
         <nav className={styles.navigation}>
           <ul className={styles.list}>
             {NAV_ROUTES.map(route => (
-              <li key={route} className={styles.AsideItem}>
+              <li key={route} className={styles.item}>
                 <NavLink
                   className={({ isActive }) =>
                     cn(styles.link, {

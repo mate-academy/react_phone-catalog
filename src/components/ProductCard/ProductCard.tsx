@@ -1,18 +1,23 @@
 import { Link, useLocation } from 'react-router-dom';
 
+import { Product } from '../../types/Product';
+import { extractNumberAndSuffix } from '../../utils';
+
 import { favoriteIcon } from '../../assets';
 import isFavoriteIcon from '../../assets/images/is-favorite.svg';
 
-import { Product } from '../../types/Product';
-import { extractNumberAndSuffix } from '../../utils';
-import { ProductCardPrices } from '../ProductCardPrices';
-
 import cn from 'classnames';
 
-import { useProductsCart } from '../../store/CartProvider';
-import { useFavorites } from '../../store/FavoritesProvider';
 import { Button } from '../../ui/Button/Button';
 
+import { useAppDispatch } from '../../hooks/useAppDispatch';
+import { useAppSelector } from '../../hooks/useAppSelector';
+import { addProduct, deleteProduct } from '../../store/slices/cartSlice';
+import {
+  addToFavorites,
+  removeProduct,
+} from '../../store/slices/favoritesSlice';
+import { PriceInfo } from './PriceInfo';
 import styles from './ProductCard.module.scss';
 
 type Props = {
@@ -22,8 +27,10 @@ type Props = {
 
 export const ProductCard: React.FC<Props> = props => {
   const { pathname } = useLocation();
-  const { addProduct, cart, deleteProduct } = useProductsCart();
-  const { favorites, addToFavorites, removeProduct } = useFavorites();
+  const { cart } = useAppSelector(state => state.cart);
+  const { favorites } = useAppSelector(state => state.favorites);
+
+  const dispatch = useAppDispatch();
 
   const isHaveProduct = cart.some(item => item.id === props.product.id);
   const isFavoriteProduct = favorites.some(
@@ -39,17 +46,17 @@ export const ProductCard: React.FC<Props> = props => {
 
   const handleAddProduct = () => {
     if (!isHaveProduct) {
-      addProduct(props.product);
+      dispatch(addProduct(props.product));
     } else {
-      deleteProduct(props.product.id);
+      dispatch(deleteProduct(props.product.id));
     }
   };
 
   const handleToggleFavoriteStatus = () => {
     if (!isFavoriteProduct) {
-      addToFavorites(props.product);
+      dispatch(addToFavorites(props.product));
     } else {
-      removeProduct(props.product.id);
+      dispatch(removeProduct(props.product.id));
     }
   };
 
@@ -64,14 +71,14 @@ export const ProductCard: React.FC<Props> = props => {
         <p className={styles.title}>{name}</p>
       </Link>
 
-      <ProductCardPrices
+      <PriceInfo
         fontSize="22px"
         isHotPrice={isHotPrice}
         price={price}
         fullPrice={fullPrice}
       />
 
-      <div className={styles.cardInner}>
+      <div className={styles.inner}>
         <div className={styles.descriptions}>
           <p className={styles.description}>Screen</p>
           <p className={styles.description}>Capacity</p>

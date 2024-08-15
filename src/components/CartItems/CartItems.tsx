@@ -1,9 +1,9 @@
-import { useProductsCart } from '../../store/CartProvider';
+import { useAppSelector } from '../../hooks/useAppSelector';
 import { CartItem } from '../CartItem/CartItem';
 import styles from './CartItems.module.scss';
 
 export const CartItems = () => {
-  const { cart } = useProductsCart();
+  const { cart } = useAppSelector(state => state.cart);
 
   return (
     <div className={styles.wrapper}>

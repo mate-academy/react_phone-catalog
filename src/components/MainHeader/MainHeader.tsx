@@ -8,17 +8,18 @@ import { NavigationButton } from '../../ui/NavigationButton';
 import { HeaderNavigation } from '../HeaderNavigation';
 
 import { Link } from 'react-router-dom';
-import { useProductsCart } from '../../store/CartProvider';
-import { useFavorites } from '../../store/FavoritesProvider';
+import { useAppSelector } from '../../hooks/useAppSelector';
 import { getLengthItems } from '../../utils/getLengthItems';
 import { AsideMenu } from '../AsideMenu';
+
 import styles from './MainHeader.module.scss';
 
 export const MainHeader = () => {
   const [showMenu, setShowMenu] = useState(false);
 
-  const { favorites } = useFavorites();
-  const { cart } = useProductsCart();
+  const { favorites } = useAppSelector(state => state.favorites);
+  const { cart } = useAppSelector(state => state.cart);
+
   const totalItems = getLengthItems(cart);
 
   const handleToogleMenu = () => {

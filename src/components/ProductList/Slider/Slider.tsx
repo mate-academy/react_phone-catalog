@@ -1,9 +1,8 @@
 import { Swiper, SwiperRef, SwiperSlide } from 'swiper/react';
 
 import 'swiper/css';
-
-import { Product } from '../../types/Product';
-import { ProductCard } from '../ProductCard';
+import { Product } from '../../../types/Product';
+import { ProductCard } from '../../ProductCard';
 
 type Props = {
   products: Product[];
@@ -11,7 +10,7 @@ type Props = {
   isHotPrice: boolean;
 };
 
-export const ProductListSlider: React.FC<Props> = ({
+export const Slider: React.FC<Props> = ({
   products,
   initialRef,
   isHotPrice,

@@ -1,12 +1,12 @@
 import { Route, Routes } from 'react-router-dom';
 
 import { App } from '../App';
-import { CartPage } from '../modules/CartPage';
-import { FavoritesPage } from '../modules/FavoritesPage';
-import { HomePage } from '../modules/HomePage';
-import { NotFoundPage } from '../modules/NotFoundPage';
-import { ProductDetailsPage } from '../modules/ProductDetailsPage';
-import { ProductsPage } from '../modules/ProductsPage/ProductsPage';
+import { CartPage } from '../pages/CartPage';
+import { FavoritesPage } from '../pages/FavoritesPage';
+import { HomePage } from '../pages/HomePage';
+import { NotFoundPage } from '../pages/NotFoundPage';
+import { ProductDetailsPage } from '../pages/ProductDetailsPage';
+import { ProductsPage } from '../pages/ProductsPage/ProductsPage';
 
 export const Root = () => {
   return (

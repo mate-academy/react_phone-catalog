@@ -1,5 +1,4 @@
-import { useEffect, useState } from 'react';
-import { toast } from 'react-toastify';
+import { useEffect } from 'react';
 import 'react-toastify/dist/ReactToastify.css';
 
 import { CategoryCards } from '../../components/CategoryCards';
@@ -7,23 +6,22 @@ import { Loader } from '../../components/Loader';
 import { ProductBanners } from '../../components/ProductBanners';
 import { ProductList } from '../../components/ProductList';
 
-import { ERROR_MESSAGE } from '../../constants/errors';
-import { getAllProducts } from '../../services/products';
-
-import { Product } from '../../types/Product';
 import { SortOrders } from '../../types/SortOrders';
 import { Sorts } from '../../types/Sorts';
 
 import { Categories } from '../../types/Categories';
 import { getSortedProducts } from '../../utils/getSortedProducts';
 
+import { useAppDispatch } from '../../hooks/useAppDispatch';
+import { useAppSelector } from '../../hooks/useAppSelector';
+import { fetchAllProducts } from '../../store/slices/productsSlice';
 import styles from './HomePage.module.scss';
 
 export const HomePage = () => {
-  const [products, setProducts] = useState<Product[]>([]);
-  const [loading, setLoading] = useState(false);
+  const { items, loading } = useAppSelector(state => state.products);
+  const dispatch = useAppDispatch();
 
-  const phones = products.filter(item => item.category === Categories.phones);
+  const phones = items.filter(item => item.category === Categories.phones);
 
   const newPhones = getSortedProducts(phones, Sorts.year, SortOrders.desc);
   const discountPhones = getSortedProducts(
@@ -33,20 +31,8 @@ export const HomePage = () => {
   );
 
   useEffect(() => {
-    setLoading(true);
-
-    getAllProducts()
-      .then(items => {
-        setProducts(items);
-
-        setLoading(false);
-      })
-      .catch(() => {
-        setLoading(false);
-
-        toast.error(ERROR_MESSAGE);
-      });
-  }, []);
+    dispatch(fetchAllProducts());
+  }, [dispatch]);
 
   return (
     <>
@@ -66,7 +52,7 @@ export const HomePage = () => {
         <p>Phones not found</p>
       )}
 
-      <CategoryCards products={products} />
+      <CategoryCards products={items} />
 
       {newPhones.length ? (
         <ProductList

@@ -11,32 +11,33 @@ import { ProductList } from '../../components/ProductList';
 import { TechSpecsProduct } from '../../components/TechSpecsProduct';
 
 import { getAccessories, getPhones, getTablets } from '../../services/devices';
-import { getProducts } from '../../services/products';
 import { Categories } from '../../types/Categories';
-import { Product } from '../../types/Product';
 import { ProductDetail } from '../../types/ProductDetail';
 import { getSuggestedProducts } from '../../utils';
 
+import { useAppDispatch } from '../../hooks/useAppDispatch';
+import { useAppSelector } from '../../hooks/useAppSelector';
+import { fetchProductsByCategory } from '../../store/slices/productsSlice';
 import { ButtonBack } from '../../ui/ButtonBack';
 import styles from './ProductDetailsPage.module.scss';
 
 export const ProductDetailsPage = () => {
   const { productId } = useParams();
 
-  const [products, setProducts] = useState<Product[]>([]);
+  const { items } = useAppSelector(state => state.products);
+  const dispatch = useAppDispatch();
+
   const [productDetail, setProductDetail] = useState<ProductDetail | null>(
     null,
   );
 
   const [loading, setLoading] = useState(false);
 
-  const suggestedProducts = getSuggestedProducts(products);
+  const suggestedProducts = getSuggestedProducts(items);
 
   const fetchAllProducts = useCallback(async () => {
-    const result = await getProducts(productDetail?.category as Categories);
-
-    return result;
-  }, [productDetail?.category]);
+    dispatch(fetchProductsByCategory(productDetail?.category as Categories));
+  }, [dispatch, productDetail?.category]);
 
   const fetchPhones = async () => {
     const result = await getPhones();
@@ -61,15 +62,15 @@ export const ProductDetailsPage = () => {
   }, []);
 
   useEffect(() => {
-    fetchAllProducts().then(setProducts);
-  }, [productDetail, fetchAllProducts]);
+    fetchAllProducts();
+  }, [productDetail, dispatch, fetchAllProducts]);
 
   useEffect(() => {
     setLoading(true);
 
     fetchProducts()
-      .then(items => {
-        const result = items.flat();
+      .then(products => {
+        const result = products.flat();
         const product = result.find(item => item.id.toString() === productId);
 
         if (product) {
@@ -98,10 +99,7 @@ export const ProductDetailsPage = () => {
 
       <section className={styles.productWrapper}>
         <ProductDetailPictures images={productDetail?.images} />
-        <ProductDetailPurchase
-          products={products}
-          productDetail={productDetail}
-        />
+        <ProductDetailPurchase products={items} productDetail={productDetail} />
       </section>
 
       <section

@@ -1,12 +1,12 @@
 import { Product } from '../../types/Product';
 import { ProductCards } from '../ProductCards';
-import { ProductListHeader } from '../ProductListHeader/ProductListHeader';
-import { ProductListSlider } from '../ProductListSlider';
 
 import React, { useRef } from 'react';
 import { SwiperRef } from 'swiper/react';
 
+import { CarouselHeader } from './CarouselHeader';
 import styles from './ProductList.module.scss';
+import { Slider } from './Slider/Slider';
 
 type Props = {
   products: Product[];
@@ -34,7 +34,7 @@ export const ProductList: React.FC<Props> = ({
   return (
     <section className={styles.products}>
       {isHaveSlider && (
-        <ProductListHeader
+        <CarouselHeader
           title={title}
           handlePrevSlide={handlePrevSlide}
           handleNextSlide={handleNextSlide}
@@ -42,7 +42,7 @@ export const ProductList: React.FC<Props> = ({
       )}
 
       {isHaveSlider ? (
-        <ProductListSlider
+        <Slider
           initialRef={swiperRef}
           products={products}
           isHotPrice={isHotPrice}

@@ -2,7 +2,7 @@ import categoryAccessories from '../../assets/images/category-accessories.png';
 import categoryPhone from '../../assets/images/category-phones.png';
 import categoryTablet from '../../assets/images/category-tablet.png';
 
-import { CategoryCard } from '../CategoryCard/CategoryCard';
+import { CategoryCard } from './CategoryCard/CategoryCard';
 
 import { Categories } from '../../types/Categories';
 import { Product } from '../../types/Product';

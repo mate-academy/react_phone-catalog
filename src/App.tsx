@@ -7,24 +7,18 @@ import './App.scss';
 
 import { MainHeader } from './components/MainHeader';
 import { PageLayout } from './layouts/PageLayout';
-import { CartProvider } from './store/CartProvider';
-import { FavoritesProvider } from './store/FavoritesProvider';
 
 export const App = () => {
   return (
     <div className="App">
-      <FavoritesProvider>
-        <CartProvider>
-          <MainHeader />
+      <MainHeader />
 
-          <PageLayout>
-            <Outlet />
-          </PageLayout>
+      <PageLayout>
+        <Outlet />
+      </PageLayout>
 
-          <ToastContainer />
-          <Footer />
-        </CartProvider>
-      </FavoritesProvider>
+      <ToastContainer />
+      <Footer />
     </div>
   );
 };

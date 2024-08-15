@@ -2,13 +2,13 @@ import { useLocation } from 'react-router-dom';
 import { Breadcrumbs } from '../../components/Breadcrumbs';
 
 import { ProductList } from '../../components/ProductList';
-import { useFavorites } from '../../store/FavoritesProvider';
+import { useAppSelector } from '../../hooks/useAppSelector';
 import styles from './FavoritesPage.module.scss';
 
 export const FavoritesPage = () => {
   const { pathname } = useLocation();
   const category = pathname.slice(1);
-  const { favorites } = useFavorites();
+  const { favorites } = useAppSelector(state => state.favorites);
 
   return (
     <>

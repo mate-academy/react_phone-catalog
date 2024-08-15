@@ -1,6 +1,5 @@
-import { Button } from '../../ui/Button/Button';
-
-import styles from './ProductListHeader.module.scss';
+import { Button } from '../../../ui/Button';
+import styles from './CarouselHeader.module.scss';
 
 type Props = {
   title: string | undefined;
@@ -8,7 +7,7 @@ type Props = {
   handleNextSlide: () => void;
 };
 
-export const ProductListHeader: React.FC<Props> = ({
+export const CarouselHeader: React.FC<Props> = ({
   title,
   handlePrevSlide,
   handleNextSlide,
