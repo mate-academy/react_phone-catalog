@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from '../store';
 import { CatalogProduct } from '../../types/CatalogProduct';
-import { getPhones } from '../../api/fetchClient';
+import { getPhones } from '../../fetchClient/fetchClient';
 
 type PhonesState = {
   phones: CatalogProduct[];

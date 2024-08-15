@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from '../store';
 import { SliderProduct } from '../../types/SliderProduct';
-import { getProducts } from '../../api/fetchClient';
+import { getProducts } from '../../fetchClient/fetchClient';
 
 type ProductsState = {
   products: SliderProduct[];
