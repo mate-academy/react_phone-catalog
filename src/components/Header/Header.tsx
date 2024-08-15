@@ -5,8 +5,13 @@ import LogoIcon from '../../img/icons/LogoIcon.svg';
 import cartIcon from '../../img/icons/CartIcon.svg';
 import favIcon from '../../img/icons/fav.svg';
 
-export const Header: React.FC = () => (
-  <header className={styles.header}>
+export const Header: React.FC = () => {
+  const handleNoteReady = () => {
+    alert('Feature has not been implemented');
+  };
+
+  return (
+    <header className={styles.header}>
     <Link to="/" className={styles.logoLink}>
       <img src={LogoIcon} alt="Nice Gadgets Logo" className={styles.logo} />
     </Link>
@@ -31,10 +36,6 @@ export const Header: React.FC = () => (
 
         <div className={styles.actionsContainer}>
           <div className={styles.actions}>
-            <NavLink to="/theme" className={styles.actionItem}>
-              <div className={styles.navItem}>THEME</div>
-            </NavLink>
-
             <NavLink to="/favorites" className={styles.actionItem}>
               <div className={styles.actionIcon}>
                 <img src={favIcon} alt="Add to favorites" className={styles.icon} />
@@ -46,9 +47,15 @@ export const Header: React.FC = () => (
                 <img src={cartIcon} alt="Add to cart" className={styles.icon} />
               </div>
             </NavLink>
+
+            <div className={styles.actionItem} onClick={handleNoteReady}>
+              <div className={styles.navItem}>THEME</div>
+            </div>
           </div>
         </div>
       </nav>
     </div>
   </header>
-);
+  )
+
+};

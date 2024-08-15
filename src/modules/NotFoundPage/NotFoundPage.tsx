@@ -1,7 +1,5 @@
 import React from 'react';
-/* import { useLocation } from 'react-router-dom'; */
-/* import { ProductList } from '../../components/ProductList'; */
-import {Header} from '../../components/Header';
+import { Header } from '../../components/Header';
 
 export const NotFoundPage: React.FC = () => {
 
@@ -9,9 +7,9 @@ export const NotFoundPage: React.FC = () => {
 
       <div>
         <Header />
-      Not found page
-
-
+        <center>
+          In progress
+        </center>
       </div>
     );
 };
