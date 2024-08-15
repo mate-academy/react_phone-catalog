@@ -11,6 +11,7 @@ export const Favorites: React.FC = () => {
 
   const favGadgets = useAppSelector(state => state.chosenItems.favorite);
   const models = useAppSelector(state => state.pagesDetails.models);
+  const isDark = useAppSelector(state => state.boolean.isDark);
 
   useEffect(() => {
     if (location.pathname === '/favorites') {
@@ -23,7 +24,11 @@ export const Favorites: React.FC = () => {
       <div className={styles.favorites}>
         <div className={styles.favorites__path}>
           <Link to="/">
-            <img src="./icons/home-ico.svg" alt="home" />
+            {isDark ? (
+              <img src="./icons/dark-theme-icons/home-ico.svg" alt="home" />
+            ) : (
+              <img src="./icons/home-ico.svg" alt="home" />
+            )}
           </Link>
 
           <img src="./icons/arrow-right-light-ico.svg" alt="arrow-right" />
