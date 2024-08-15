@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { ProductCard } from '../ProductCard';
 import { ProductPhone } from '../../types/Product';
 import styles from './ProductSlider.module.scss';
+import ChevronIcon from '../../img/icons/ChevronIcon.svg';
 
 type ProductSliderProps = {
   title: string;
@@ -28,17 +29,31 @@ export const ProductSlider: React.FC<ProductSliderProps> = ({ title }) => {
   console.log('product slider items', displayedItems);
 
   return (
-    <div className={styles.topContainer}>
-      <div className={styles.sliderContainer}>
+    <div className={styles.productSlider}>
+      <div className={styles.titleContainer}>
         <h2 className={styles.title}>{title}</h2>
-        <div>
-          <ul className={styles.slideWraper}>
-            {displayedItems.map((product) => (
-              <li key={product.id} className={styles.productCard}>
-                <ProductCard product={product} />
-              </li>
-            ))}
-          </ul>
+        <div className={styles.buttonContainer}>
+          <button className={styles.arrowButton}>
+            <img src={ChevronIcon} alt="scroll right" />
+          </button>
+
+          <button className={styles.arrowButton}>
+            <img src={ChevronIcon} alt="scroll right" className={styles.iconNext} />
+          </button>
+        </div>
+      </div>
+
+      <div className={styles.topContainer}>
+        <div className={styles.sliderContainer}>
+          <div>
+            <ul className={styles.slideWraper}>
+              {displayedItems.map((product) => (
+                <li key={product.id} className={styles.productCard}>
+                  <ProductCard product={product} />
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
       </div>
     </div>
