@@ -214,10 +214,14 @@ export const App: React.FC = () => {
             className={styles.header__logoLink}
             to="/"
           >
-            <p className={styles.logoText}>
-              NICE 👌
-              <br /> GADGETS
-            </p>
+            {isDark ? (
+              <img
+                src="./icons/dark-theme-icons/header-logo-dark-mode.svg"
+                alt="logo"
+              />
+            ) : (
+              <img src="./icons/header-logo-light-mode.png" alt="logo" />
+            )}
           </Link>
 
           <nav className={styles.navBar}>

@@ -21,7 +21,7 @@ const optionsSortBy: OptionsSortByType[] = [
   { value: 'price', label: 'Cheapest' },
 ];
 const optionsQuantity: OptionsQuantityType[] = [
-  { value: 'all', label: 'all' },
+  { value: 'all', label: 'All' },
   { value: '4', label: '4' },
   { value: '8', label: '8' },
   { value: '16', label: '16' },

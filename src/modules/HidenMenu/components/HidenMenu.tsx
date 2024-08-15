@@ -87,11 +87,19 @@ export const HidenMenu: React.FC = () => {
             className={styles.footer__link}
             to="/favorites"
           >
-            <img
-              className={styles.footer__icon}
-              src="./icons/heart-ico.svg"
-              alt="favorites"
-            />
+            {isDark ? (
+              <img
+                className={styles.footer__icon}
+                src="./icons/dark-theme-icons/heart-ico.svg"
+                alt="favorites"
+              />
+            ) : (
+              <img
+                className={styles.footer__icon}
+                src="./icons/heart-ico.svg"
+                alt="favorites"
+              />
+            )}
           </Link>
         </div>
 
@@ -107,11 +115,19 @@ export const HidenMenu: React.FC = () => {
             className={styles.footer__link}
             to="/cart"
           >
-            <img
-              className={styles.footer__icon}
-              src="./icons/basket-ico.svg"
-              alt="cart"
-            />
+            {isDark ? (
+              <img
+                className={styles.footer__icon}
+                src="./icons/dark-theme-icons/cart-ico.svg"
+                alt="cart"
+              />
+            ) : (
+              <img
+                className={styles.footer__icon}
+                src="./icons/basket-ico.svg"
+                alt="cart"
+              />
+            )}
           </Link>
         </div>
       </footer>

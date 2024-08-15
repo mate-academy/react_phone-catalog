@@ -1,6 +1,7 @@
 import { useSearchParams } from 'react-router-dom';
-import styles from './SearchBar.scss';
+import styles from './SearchBar.module.scss';
 import React from 'react';
+import { useAppSelector } from '../../../app/hooks';
 
 interface SearchParams {
   [key: string]: string | string[] | null;
@@ -9,6 +10,7 @@ interface SearchParams {
 export const SearchBar: React.FC = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const query = searchParams.get('query') || '';
+  const isDark = useAppSelector(state => state.boolean.isDark);
 
   function getSearchWith(
     currentParams: URLSearchParams,
@@ -40,12 +42,27 @@ export const SearchBar: React.FC = () => {
   };
 
   return (
-    <input
-      value={query}
-      type="search"
-      className={styles.searchBar}
-      placeholder="Search"
-      onChange={handleQueryChange}
-    />
+    <div className={styles.ssearchBar}>
+      {isDark ? (
+        <img
+          className={styles.searchIco}
+          src="./icons/dark-theme-icons/search-ico.svg"
+          alt="search"
+        />
+      ) : (
+        <img
+          className={styles.searchIco}
+          src="./icons/search-ico.svg"
+          alt="search"
+        />
+      )}
+      <input
+        value={query}
+        type="search"
+        className={`${styles.searchField} ${isDark && styles.darkSearchField}`}
+        placeholder="Search"
+        onChange={handleQueryChange}
+      />
+    </div>
   );
 };
