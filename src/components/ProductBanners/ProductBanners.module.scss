@@ -1,0 +1,32 @@
+@import '../../variable';
+@import '../../mixin';
+
+.productBanners {
+  display: flex;
+  margin-bottom: 56px;
+  margin-top: 56px;
+
+  @include small {
+    margin-top: 32px;
+    margin-bottom: 32px;
+  }
+
+  @include custom(320) {
+    margin-top: 24px;
+    margin-bottom: 24px;
+  }
+}
+
+.picture {
+  width: 100%;
+  object-fit: cover;
+  height: 400px;
+
+  @include small {
+    height: 190px;
+  }
+
+  @include custom(320) {
+    height: 320px;
+  }
+}

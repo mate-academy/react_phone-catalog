@@ -1,0 +1,43 @@
+@import '../../variable';
+@import '../../fonts';
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  column-gap: 16px;
+  margin-top: 40px;
+}
+
+.inner {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.button {
+  width: 32px;
+  height: 32px;
+  font-family: $general-font;
+  background: $surface-secondary-color;
+  border: none;
+  outline: none;
+  color: $white-color;
+  cursor: pointer;
+  transition: all $transition-duration;
+
+  &--primary {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: $surface-main-color;
+  }
+
+  &--active {
+    background: $purple-color;
+  }
+
+  &:hover {
+    background: $purple-color;
+  }
+}
+

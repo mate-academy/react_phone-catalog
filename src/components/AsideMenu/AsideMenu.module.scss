@@ -1,0 +1,96 @@
+@import '../../variable';
+@import '../../utils';
+@import '../../mixin';
+
+body:has(.active) {
+  overflow: hidden;
+}
+
+.aside {
+  display: none;
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #0f1121;
+  width: 100%;
+  height: 100vh;
+  z-index: 20;
+  padding-top: 48px;
+}
+
+.active {
+  display: block;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  transform: translateY(24px);
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  list-style: none;
+}
+
+.link {
+  display: block;
+  text-decoration: none;
+  color: #75767f;
+  font-weight: 800;
+  font-size: 12px;
+  text-transform: uppercase;
+  transition: all $transition-duration;
+
+  &::after {
+    @include aside-line(0%);
+  }
+
+  &:hover::after {
+    @include aside-line(100%);
+  }
+
+  &--active::after {
+    @include aside-line(100%);
+  }
+
+  &:hover {
+    color: $white-color;
+  }
+}
+
+.tabs {
+  display: flex;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  left: 0;
+}
+
+.tab {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 64px;
+  border-top: 1px solid $elements-color;
+
+  &--active {
+    border-bottom: 2px solid $white-color;
+  }
+
+  &:not(&:last-child) {
+    border-right: 1px solid $elements-color;
+  }
+
+  img {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+

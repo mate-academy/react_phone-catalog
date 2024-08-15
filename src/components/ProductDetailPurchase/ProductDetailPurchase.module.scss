@@ -1,0 +1,46 @@
+@import '../../variable';
+@import '../../mixin';
+
+.productDescription {
+  display: flex;
+  flex-direction: column;
+  width: 320px;
+
+  @include small {
+    width: 100%;
+  }
+}
+
+.title {
+  font-size: 12px;
+  margin-bottom: 8px;
+  color: $secondary-color;
+}
+
+.buttons {
+  display: flex;
+  column-gap: 8px;
+}
+
+.inner {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 32px;
+}
+
+.descriptions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.description {
+  font-size: 12px;
+  font-weight: 400;
+  color: $secondary-color;
+
+  &--active {
+    color: $white-color;
+  }
+}
+

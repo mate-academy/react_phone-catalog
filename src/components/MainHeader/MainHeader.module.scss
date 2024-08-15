@@ -1,0 +1,78 @@
+@import '../../variable';
+@import '../../mixin';
+
+.container {
+  width: 100%;
+  margin: 0 auto;
+  padding-left: 24px;
+}
+
+.header {
+  position: relative;
+  z-index: 21;
+  border-bottom: 1px solid $surface-main-color;
+}
+
+.content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 700;
+  font-size: 12px;
+}
+
+.headerInner {
+  display: flex;
+  gap: 50px;
+  align-items: center;
+
+  @include small {
+    gap: 32px;
+  }
+}
+
+.icon {
+  width: 16px;
+  height: 16px;
+}
+
+.list {
+  display: flex;
+}
+
+.button {
+  display: none;
+  width: 64px;
+  height: 64px;
+  background: transparent;
+  outline: none;
+  border: none;
+  border-left: 1px solid #323542;
+
+  @include small {
+    width: 48px;
+    height: 48px;
+  }
+
+  @include custom(640) {
+    display: block;
+  }
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.counter {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 14px;
+  height: 14px;
+  background: $red-color;
+  border-radius: 50%;
+  color: $white-color;
+  font-size: 9px;
+  transform: translateX(7px) translateY(-8px);
+}

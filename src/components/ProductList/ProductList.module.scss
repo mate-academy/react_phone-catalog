@@ -1,0 +1,39 @@
+@import '../../variable';
+@import '../../mixin';
+
+.products {
+  display: flex;
+  flex-direction: column;
+}
+
+.wrapper {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 40px 16px;
+  margin-top: 24px;
+
+  @include extra-large {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @include media {
+    grid-template-columns: repeat(3, 229px);
+  }
+
+  @include small {
+    grid-template-columns: repeat(2, 288px);
+  }
+
+  @include custom(630) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include media(mobile, large-mobile) {
+    grid-template-columns: repeat(1, 1fr);
+
+    img {
+      width: 100%;
+      margin: 0 auto;
+    }
+  }
+}

@@ -1,0 +1,56 @@
+@import '../../../variable';
+@import '../../../mixin';
+@import '../../../utils';
+
+.links {
+  display: flex;
+  gap: 64px;
+  list-style-type: none;
+
+  @include custom(700) {
+    gap: 40px;
+  }
+
+  @include small {
+    gap: 32px;
+  }
+
+  @include custom(580) {
+    gap: 20px;
+  }
+
+  @include custom(530) {
+    display: none;
+  }
+}
+
+.item {
+  text-transform: uppercase;
+}
+
+.link {
+  transition: color $transition-duration;
+  text-decoration: none;
+  color: $secondary-color;
+  
+
+  &::after {
+    @include header-line(0%);
+  }
+
+  &:hover::after {
+    @include header-line(100%);
+  }
+
+  &--active {
+    color: $white-color;
+
+    &::after {
+      @include header-line(100%);
+    }
+  }
+
+  &:hover {
+    color: $white-color;
+  }
+}

@@ -1,0 +1,27 @@
+@import '../../variable';
+
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  column-gap: 8px;
+  margin-top: 24px;
+}
+
+.link {
+  text-decoration: none;
+}
+
+.icon {
+  margin-top: 2px;
+}
+
+.path {
+  font-weight: 600;
+  color: $secondary-color;
+  font-size: 12px;
+
+  &--active {
+    color: $white-color;
+  }
+}
+

@@ -1,0 +1,34 @@
+@import '../../../variable';
+@import '../../../mixin';
+
+.wrapper {
+  text-decoration: none;
+  color: $white-color;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  margin-top: 34px;
+  transition: transform $transition-duration;
+
+  &:hover {
+    transform: scale(1.02);
+    cursor: pointer;
+  }
+}
+
+.picture {
+  width: 100%;
+}
+
+.title {
+  font-size: 20px;
+  margin-top: 24px;
+}
+
+.subtitle {
+  font-size: 14px;
+  margin-top: 4px;
+  color: $secondary-color;
+}

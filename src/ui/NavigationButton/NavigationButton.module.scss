@@ -1,0 +1,31 @@
+@import '../../variable';
+@import '../../mixin';
+
+.Link {
+  display: flex;
+  width: 64px;
+  height: 64px;
+  position: relative;
+  background: transparent;
+  border: none;
+  border-left: 1px solid #323542;
+  outline: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: transparent;
+
+  @include large {
+    width: 48px;
+    height: 48px;
+  }
+
+  @include custom(640) {
+    display: none;
+  }
+}
+
+.Active {
+  border-bottom: 3px solid $white-color;
+}

@@ -1,0 +1,55 @@
+@import '../../variable';
+@import '../../mixin';
+
+.productWrapper {
+  display: flex;
+  column-gap: 64px;
+
+  @include custom(900) {
+    column-gap: 40px;
+  }
+
+  @include medium {
+    column-gap: 30px;
+  }
+
+  @include small {
+    column-gap: 17px;
+  }
+
+  @include custom(615) {
+    flex-direction: column;
+    gap: 40px;
+  }
+}
+
+.productWrapperPrimary {
+  margin-top: 80px;
+
+  @include small {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.title {
+  font-weight: 800;
+  color: $white-color;
+  font-size: 32px;
+  margin-top: 16px;
+  margin-bottom: 40px;
+}
+
+.TechSpecs {
+  width: 500px;
+  display: flex;
+  flex-direction: column;
+}
+
+.TechSpecsTitle {
+  font-weight: 800;
+  color: $white-color;
+  font-size: 22px;
+  border-bottom: 1px solid $elements-color;
+  padding-bottom: 16px;
+}

@@ -1,0 +1,20 @@
+@import '../../variable';
+@import '../../mixin';
+
+.Title {
+  margin-top: 40px;
+  color: $white-color;
+  font-size: 48px;
+  font-weight: 800;
+
+  @include custom(320) {
+    font-size: 32px;
+  }
+}
+
+.Subtitle {
+  font-size: 14px;
+  color: $secondary-color;
+  margin-top: 8px;
+  margin-bottom: 16px;
+}

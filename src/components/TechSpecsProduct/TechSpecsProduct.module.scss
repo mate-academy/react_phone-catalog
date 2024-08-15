@@ -1,0 +1,48 @@
+@import '../../variable';
+@import '../../mixin';
+
+.techSpecs {
+  width: 500px;
+  display: flex;
+  flex-direction: column;
+
+  @include small {
+    width: 100%;
+    margin-top: 64px;
+  }
+}
+
+.inner {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 25px;
+}
+
+.descriptions {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 8px;
+}
+
+.description {
+  font-size: 14px;
+  font-weight: 400;
+  color: $secondary-color;
+
+  &--active {
+    color: $white-color;
+  }
+}
+
+.title {
+  font-weight: 800;
+  color: $white-color;
+  font-size: 22px;
+  border-bottom: 1px solid $elements-color;
+  padding-bottom: 16px;
+
+  @include custom(320) {
+    font-weight: 500;
+  }
+}

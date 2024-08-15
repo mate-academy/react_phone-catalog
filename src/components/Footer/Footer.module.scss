@@ -1,0 +1,91 @@
+@import '../../variable';
+@import '../../mixin';
+
+.container {
+  width: 100%;
+  margin: 0 auto;
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding-top: 32px;
+  padding-bottom: 32px;
+  height: $height-footer;
+  border-top: 1px solid $elements-color;
+
+  @include media(mobile, large-mobile) {
+    height: 260px;
+  }
+}
+
+.content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  @include media(mobile, large-mobile) {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
+
+.logo {
+  width: 89px;
+}
+
+.socials {
+  display: flex;
+  column-gap: 105px;
+  list-style-type: none;
+
+  @include small {
+    column-gap: 14px;
+  }
+
+  @include media(mobile, large-mobile) {
+    margin-top: 20px;
+  }
+}
+
+.link {
+  color: $white-color;
+  font-size: 12px;
+  font-weight: 800;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: color $transition-duration;
+
+  &:hover {
+    color: $secondary-color;
+  }
+}
+
+.buttons {
+  display: flex;
+  column-gap: 16px;
+  align-items: center;
+
+  @include media(mobile, large-mobile) {
+    align-self: center;
+    margin-top: 32px;
+  }
+}
+
+.text {
+  color: $secondary-color;
+  font-size: 12px;
+}
+
+.button {
+  width: 32px;
+  height: 32px;
+  border: none;
+  outline: none;
+  background: $surface-main-color;
+  cursor: pointer;
+}

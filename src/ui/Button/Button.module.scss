@@ -1,0 +1,103 @@
+@import '../../variable';
+@import '../../fonts';
+@import '../../mixin';
+
+.button {
+  width: 100%;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  font-family: $general-font;
+  transition: all $transition-duration;
+}
+
+.prev {
+  margin-right: 16px;
+}
+
+.next {
+  margin-left: 16px;
+}
+
+.primary {
+  background-color: $purple-color;
+  color: $white-color;
+
+  &:hover {
+    background: #a378ff;
+  }
+
+  &--active {
+    background-color: $surface-main-color;
+    color: $white-color;
+  }
+}
+
+.dark {
+  width: 40px;
+  padding: 12px;
+  background-color: $surface-main-color;
+  
+  &:hover {
+    background-color: $icons-color;   
+  }
+
+  &--active {
+    border: 1px solid $elements-color;
+    background: transparent;
+  }
+  
+  &--large {
+    width: 48px;
+  }
+}
+
+.small {
+  width: 32px;
+  height: 32px;
+  padding: 8px;
+}
+
+.normal {
+  height: 40px;
+}
+
+.large {
+  height: 48px;
+}
+
+.stretch {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 400px;
+
+  @include small {
+    height: 190px;
+  }
+
+  @include custom(320) {
+    display: none;
+  }
+}
+
+.arrow {
+  display: inline-block;
+  transform-origin: 50% 39%;
+}
+
+.left {
+  transform: rotate(0deg);
+}
+
+.right {
+  transform: rotate(180deg);
+}
+
+.dark:hover svg {
+  fill: $white-color;
+}
+
+
