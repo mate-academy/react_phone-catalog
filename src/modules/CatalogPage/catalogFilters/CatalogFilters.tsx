@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import styles from './CatalogFilters.module.scss';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import { updateURLParams } from './../services/updateUrl';
 import Select, { components, SingleValue } from 'react-select';
 import { useAppSelector } from '../../../app/hooks';
@@ -62,6 +62,9 @@ export const CatalogFilters: React.FC<CatalogFiltersProps> = ({
 }) => {
   const navigate = useNavigate();
 
+  const [searchParams] = useSearchParams();
+  const query = searchParams.get('query') || '';
+
   const isDark = useAppSelector(state => state.boolean.isDark);
 
   useEffect(() => {
@@ -92,9 +95,9 @@ export const CatalogFilters: React.FC<CatalogFiltersProps> = ({
 
       setSort(valueSortBy);
       if (perPage.toUpperCase() === perPage.toLowerCase()) {
-        navigate(updateURLParams(valueSortBy, perPage, page));
+        navigate(updateURLParams(valueSortBy, perPage, page, query));
       } else {
-        navigate(updateURLParams(valueSortBy, 'all', page));
+        navigate(updateURLParams(valueSortBy, 'all', page, query));
       }
     }
   };
@@ -105,11 +108,11 @@ export const CatalogFilters: React.FC<CatalogFiltersProps> = ({
 
       if (valuePerPage.toUpperCase() === valuePerPage.toLowerCase()) {
         setPer(valuePerPage);
-        navigate(updateURLParams(sortBy, valuePerPage, page));
+        navigate(updateURLParams(sortBy, valuePerPage, page, query));
       } else {
         setPer('all');
         setPagePage(1);
-        navigate(updateURLParams(sortBy, 'all', 1));
+        navigate(updateURLParams(sortBy, 'all', 1, query));
       }
     }
   };

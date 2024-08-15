@@ -1,6 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import styles from './Catalog.module.scss';
-import { Link, Outlet, useLocation, useParams } from 'react-router-dom';
+import {
+  Link,
+  Outlet,
+  useLocation,
+  useParams,
+  useSearchParams,
+} from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../../app/hooks';
 import { ProductsList } from '../../shared/ProductsList/ProductsList';
 import { Product } from './../../../types/Product';
@@ -9,6 +15,7 @@ import { CatalogFilters } from '../catalogFilters/CatalogFilters';
 import { setModels, setTitle } from './../../../features/pagesDetailsSlice';
 import { Loader } from '../../Loader';
 import { setReloadTrigger } from '../../../features/booleanSlice';
+import { SearchBar } from '../searchBar/SeatchBar';
 
 export const Catalog: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -36,6 +43,9 @@ export const Catalog: React.FC = () => {
   const pageParams = queryParams.get('page');
 
   const { productId } = useParams();
+
+  const [searchParams] = useSearchParams();
+  const query = searchParams.get('query');
 
   useEffect(() => {
     const catalog = document.getElementById('catalogId');
@@ -92,9 +102,19 @@ export const Catalog: React.FC = () => {
   }, [models, perPage]);
 
   const prepereToShow = (categ: string) => {
-    const filteredProduct = productsFromServer.filter(
-      prod => prod.category === categ,
-    );
+    let filteredProduct;
+
+    if (query) {
+      filteredProduct = productsFromServer.filter(
+        prod =>
+          prod.category === categ &&
+          prod.name.toLowerCase().includes(query.toLowerCase()),
+      );
+    } else {
+      filteredProduct = productsFromServer.filter(
+        prod => prod.category === categ,
+      );
+    }
 
     dispatch(setModels(filteredProduct.length));
 
@@ -155,7 +175,14 @@ export const Catalog: React.FC = () => {
       dispatch(setTitle('Accessories'));
       setDisplayedProducts(prepereToShow('accessories'));
     }
-  }, [location.pathname, productsFromServer, perPage, sortBy, startShowFrom]);
+  }, [
+    location.pathname,
+    productsFromServer,
+    perPage,
+    sortBy,
+    startShowFrom,
+    query,
+  ]);
 
   const handleReloadButton = () => {
     dispatch(setReloadTrigger());
@@ -220,6 +247,8 @@ export const Catalog: React.FC = () => {
             <p
               className={styles.catalog__quantity}
             >{`${models} ${models === 1 ? 'model' : 'models'}`}</p>
+
+            <SearchBar />
 
             <CatalogFilters
               page={page}

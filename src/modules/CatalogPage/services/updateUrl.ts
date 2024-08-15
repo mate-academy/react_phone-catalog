@@ -2,6 +2,7 @@ export const updateURLParams = (
   newSortBy: string,
   newPerPage: string,
   newPage: number,
+  query: string,
 ) => {
   const queryParams = new URLSearchParams(location.search);
 
@@ -15,6 +16,10 @@ export const updateURLParams = (
 
   if (newPerPage && newPerPage !== 'all') {
     queryParams.set('perPage', newPerPage);
+  }
+
+  if (query && query !== '') {
+    queryParams.set('query', query);
   }
 
   return `?${queryParams.toString()}`;

@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import styles from './PagesSwitcher.module.scss';
 import { updateURLParams } from './../services/updateUrl';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate, useSearchParams } from 'react-router-dom';
 import { useAppSelector } from '../../../app/hooks';
 
 interface PagesSwitcherProps {
@@ -25,6 +25,9 @@ export const PagesSwitcher: React.FC<PagesSwitcherProps> = ({
   const navigate = useNavigate();
   const location = useLocation();
 
+  const [searchParams] = useSearchParams();
+  const query = searchParams.get('query') || '';
+
   const models = useAppSelector(state => state.pagesDetails.models);
   const isDark = useAppSelector(state => state.boolean.isDark);
 
@@ -33,7 +36,7 @@ export const PagesSwitcher: React.FC<PagesSwitcherProps> = ({
   }, [location.pathname]);
 
   const handlePageButton = (currentPage: number) => {
-    navigate(updateURLParams(sortBy, perPage, currentPage));
+    navigate(updateURLParams(sortBy, perPage, currentPage, query));
 
     if (perPage !== 'all') {
       setShownFrom(+perPage * (currentPage - 1));
