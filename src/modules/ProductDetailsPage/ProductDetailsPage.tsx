@@ -3,8 +3,10 @@ import styles from './ProductDetailsPage.module.scss'
 import chevronIcon from '../../img/icons/ChevronIcon.svg';
 import { Header } from '../../components/Header';
 import { Footer } from '../../components/Footer';
+import { useAppContext } from '../../context/AppContext';
 
 export const ProductDetailsPage: React.FC = () => {
+  const { clickedProductId } = useAppContext();
   return (
     <div className={styles.productDetailsPage}>
       <Header />
@@ -13,10 +15,13 @@ export const ProductDetailsPage: React.FC = () => {
         <button /* onClick={() => navigate(-1)} */ className={styles.goBackButton}>
           <img src={chevronIcon} alt="home" className={styles.chevronIcon} />
           <div className={styles.goBackText}>
-            <p>Back</p>
+            <div>Back</div>
           </div>
         </button>
-        <h2 className={styles.title}>Product name</h2>
+        <h2 className={styles.title}>Cliked Product ID: {clickedProductId}</h2>
+        <div className={styles.goBackText}>
+          Component under construction
+        </div>
         {/* <ImageGallery
           images={productDetails.images}
           productName={productDetails.name}
