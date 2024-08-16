@@ -6,8 +6,11 @@ import { Header } from './components/Header';
 import { Footer } from './components/Footer';
 import { ProductSlider } from './components/ProductSlider';
 import { Thumbnails } from './components/Thumbnails';
+import { PreviousPage } from './components/PreviousPage';
+import { useLocation } from 'react-router-dom';
 
 export const App: React.FC = () => {
+  const category = useLocation().pathname.slice(1)
 
   const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
@@ -21,6 +24,7 @@ export const App: React.FC = () => {
         <Loader />
       ) : (
         <div>
+          <PreviousPage category= {category}/>
           <Header />
           <BannerSlider />
           <ProductSlider title="Brand new models" count={10}/>
