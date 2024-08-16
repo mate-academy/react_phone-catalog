@@ -1,4 +1,4 @@
-@import "../../mixins/mixins.scss";
+@import "../../mixins/mixins";
 
 body {
   margin: 0;
@@ -15,7 +15,7 @@ body {
   border-bottom: 1px solid #E2E6E9;
   position: fixed;
   top: 0;
-  background-color: #FFFFFF;
+  background-color: #FFF;
   z-index: 1;
 }
 
@@ -49,7 +49,7 @@ li {
   height: 61px;
   color: #89939A;
 
-  font-family: 'Mont-Regular';
+  font-family: Mont-Bold, sans-serif;
   text-transform: uppercase;
   font-size: 12px;
   font-weight: 800;
@@ -57,7 +57,7 @@ li {
   letter-spacing: 0.04em;
   text-align: left;
 
-  @include onMobile {
+  @include on-mobile {
     display: none;
   }
 }
@@ -74,6 +74,10 @@ li {
   margin-left: auto;
   padding: 0;
   list-style: none;
+
+  @include on-mobile {
+    // margin-right: 32px;
+  }
 }
 
 .icon-link {
@@ -82,8 +86,10 @@ li {
   display: flex;
   justify-content: center;
   align-items: center;
+  border: none;
   border-left: 1px solid #E2E6E9;
   position: relative;
+  background-color: white;
 }
 
 .show-items {
@@ -95,8 +101,8 @@ li {
   align-items: center;
   border-radius: 50%;
   background-color:#EB5757;
-  color:#FFFFFF;
-  font-family: Mont;
+  color:#FFF;
+  font-family: Mont-Bold, sans-serif;
   font-size: 9px;
   font-weight: 600;
   line-height: 11.5px;
@@ -106,21 +112,22 @@ li {
   bottom: 50%;
 
 
-  outline: 1px solid #FFFFFF;
+  outline: 1px solid #FFF;
 }
 
 .onTablet {
   display: flex;
 
-  @include onMobile {
+  @include on-mobile {
     display: none;
   }
 }
 
-.onMobile {
+.on-mobile {
   display: none;
 
-  @include onMobile {
-    display: flex
+  @include on-mobile {
+    display: flex;
   }
 }
+

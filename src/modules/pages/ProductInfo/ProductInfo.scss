@@ -1,5 +1,16 @@
+@import '../../../mixins/mixins';
+
 .desc-layout {
   min-height: 100vh;
+  margin: 0 auto;
+
+  @include on-tablet {
+    width: 640px;
+  }
+
+  @include on-mobile {
+    width: 320px;
+  }
 }
 
 .productInfo-container {
@@ -10,15 +21,27 @@
 }
 
 .productInfo-h1 {
-font-family: Mont;
-font-size: 32px;
-font-weight: 800;
-line-height: 41px;
-letter-spacing: -0.01em;
-text-align: left;
-color: #313237;
-text-transform: capitalize;
-margin-top: 16px;
+  font-family: Mont-SemiBold, sans-serif;
+  font-size: 32px;
+  font-weight: 800;
+  line-height: 41px;
+  letter-spacing: -0.01em;
+  text-align: left;
+  color: #313237;
+  text-transform: capitalize;
+  margin-top: 16px;
+
+  @include on-tablet {
+    margin: 16px 24px 40px;
+  }
+
+  @include on-mobile {
+    width: 320px;
+    display: flex;
+    font-size: 22px;
+    line-height: 30.8px;
+    margin: 16px 16px 32px;
+  }
 }
 
 .productInfo-pictures-block {
@@ -26,6 +49,17 @@ margin-top: 16px;
   flex-direction: row;
   gap: 16px;
   margin-right: 64px;
+
+  @include on-tablet {
+    margin-right: 16px;
+  }
+
+  @include on-mobile {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 288px;
+  }
 }
 
 .productInfo-smallPictures-block {
@@ -33,6 +67,20 @@ margin-top: 16px;
   flex-direction: column;
   width: 80px;
   gap: 16px;
+
+  @include on-tablet {
+    width: 35px;
+  }
+
+  @include on-mobile {
+    width: 288px;
+    flex-direction: row;
+    height: 50px;
+    position: relative;
+    top: 288px;
+    gap: 8px;
+    margin-left: 16px;
+  }
 }
 
 .productInfo-smallPicture {
@@ -66,6 +114,16 @@ margin-top: 16px;
   height: 80px;
   object-fit: contain;
   display: flex;
+
+  @include on-tablet {
+    width: 35px;
+    height: 35px;
+  }
+
+  @include on-mobile {
+    width: 50px;
+    height: 50px;
+  }
 }
 
 .product-bigPicture {
@@ -73,17 +131,48 @@ margin-top: 16px;
   height: 472px;
   object-fit: contain;
   display: flex;
+
+  @include on-tablet {
+    width: 287px;
+    height: 287px;
+  }
+
+  @include on-mobile {
+    width: 287px;
+    height: 287px;
+    position: relative;
+    bottom: 74px;
+    margin-left: 16px;
+  }
 }
 
 .productInfo-product {
   display: flex;
   flex-direction: row;
+
+  @include on-tablet {
+    margin: 0 24px;
+  }
+
+  @include on-mobile {
+    flex-direction: column;
+  }
 }
 
 .product-info-rightBlock {
   display: flex;
   width: 320px;
   flex-direction: column;
+
+  @include on-tablet {
+    width: 237px;
+    margin-top: 40px;
+  }
+
+  @include on-mobile {
+    width: 288px;
+    margin: 40px 16px;
+  }
 }
 
 .product-colors-block {
@@ -95,7 +184,7 @@ margin-top: 16px;
 }
 
 .product-colors-p {
-  font-family: Mont;
+  font-family: Mont-SemiBold, sans-serif;
   font-size: 12px;
   font-weight: 600;
   line-height: 15.34px;
@@ -110,7 +199,7 @@ margin-top: 16px;
   height: 29px;
   width: 29px;
   outline: 1px solid #E2E6E9;
-  border: 2px solid #FFFFFF;
+  border: 2px solid #FFF;
   cursor: pointer;
 }
 
@@ -120,7 +209,7 @@ margin-top: 16px;
   height: 29px;
   width: 29px;
   outline: 1px solid #313237;
-  border: 2px solid #FFFFFF;
+  border: 2px solid #FFF;
   cursor: pointer;
 }
 
@@ -148,14 +237,13 @@ margin-top: 16px;
 
 .gb-btns {
   display: block;
-  font-family: Mont;
+  font-family: Mont-SemiBold, sans-serif;
   font-size: 14px;
   font-weight: 500;
   line-height: 21px;
   text-align: center;
   color: #313237;
   background-color: white;
-  border: none;
   padding: 4px 8px;
   border: 1px solid #B4BDC3;
   cursor: pointer;
@@ -163,7 +251,7 @@ margin-top: 16px;
 
 .gb-btns-active {
   display: block;
-  font-family: Mont;
+  font-family: Mont-SemiBold, sans-serif;
   font-size: 14px;
   font-weight: 500;
   line-height: 21px;
@@ -199,8 +287,8 @@ margin-top: 16px;
   background-color: #313237;
   height: 48px;
   width: 100%;
-  color: #FFFFFF;
-  font-family: 'Mont';
+  color: #FFF;
+  font-family: Mont-SemiBold, sans-serif;
   font-size: 14px;
   font-weight: 700;
   line-height: 21px;
@@ -220,7 +308,7 @@ margin-top: 16px;
 }
 
 .currentPrice {
-  font-family: Mont;
+  font-family: Mont-SemiBold, sans-serif;
   font-size: 32px;
   font-weight: 800;
   line-height: 41px;
@@ -234,7 +322,7 @@ margin-top: 16px;
 }
 
 .fullPrice {
-  font-family: 'Mont';
+  font-family: Mont-SemiBold, sans-serif;
   font-size: 22px;
   font-weight: 500;
   line-height: 28.12px;
@@ -256,7 +344,7 @@ margin-top: 16px;
 }
 
 .leftText {
-  font-family: 'Mont';
+  font-family: Mont-SemiBold, sans-serif;
   font-size: 12px;
   font-weight: 600;
   line-height: 15.34px;
@@ -266,7 +354,7 @@ margin-top: 16px;
   }
 
 .rightText {
-  font-family: 'Mont';
+  font-family: Mont-SemiBold, sans-serif;
   font-size: 12px;
   font-weight: 600;
   line-height: 15.34px;
@@ -276,7 +364,7 @@ margin-top: 16px;
 }
 
 .leftText-desc {
-  font-family: Mont;
+  font-family: Mont-SemiBold, sans-serif;
   font-size: 14px;
   font-weight: 500;
   line-height: 21px;
@@ -286,7 +374,7 @@ margin-top: 16px;
   }
 
 .rightText-desc {
-  font-family: Mont;
+  font-family: Mont-SemiBold, sans-serif;
   font-size: 14px;
   font-weight: 500;
   line-height: 21px;
@@ -302,11 +390,39 @@ margin-top: 16px;
   margin-left: 16px;
   justify-content: end;
   padding: 0;
+
+  @include on-tablet {
+    display: none;
+  }
+
+  @include on-mobile {
+    display: none;
+  }
+}
+
+.product-id-In {
+  display: none;
+  width: 178px;
+  margin-left: 16px;
+  justify-content: end;
+  padding: 0;
+
+  @include on-tablet {
+    display: flex;
+    margin-left: 0;
+    justify-content: right;
+  }
+
+  @include on-mobile {
+    display: flex;
+    margin-left: 0;
+    justify-content: right;
+  }
 }
 
 .product-id-p {
   margin: 0;
-  font-family: Mont;
+  font-family: Mont-SemiBold, sans-serif;
   font-size: 12px;
   font-weight: 700;
   line-height: 15.34px;
@@ -314,15 +430,33 @@ margin-top: 16px;
   color: #B4BDC3;
 }
 
+.blockOfP {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
 .productInfo-info {
   margin-top: 80px;
   display: flex;
   flex-direction: row;
   gap: 64px;
+
+  @include on-tablet {
+    flex-direction: column;
+    width: 640px;
+    justify-content: center;
+  }
+
+  @include on-mobile {
+    flex-direction: column;
+    width: 320px;
+    justify-content: center;
+  }
 }
 
 .productInfo-left-block-h1 {
-  font-family: Mont;
+  font-family: Mont-SemiBold, sans-serif;
   font-size: 22px;
   font-weight: 800;
   line-height: 30.8px;
@@ -341,7 +475,7 @@ margin-top: 16px;
 }
 
 .productInfo-desc-h2 {
-  font-family: Mont;
+  font-family: Mont-SemiBold, sans-serif;
   font-size: 20px;
   font-weight: 700;
   line-height: 25.56px;
@@ -351,7 +485,7 @@ margin-top: 16px;
 }
 
 .productInfo-desc-p {
-  font-family: Mont;
+  font-family: Mont-SemiBold, sans-serif;
   font-size: 14px;
   font-weight: 500;
   line-height: 21px;
@@ -362,10 +496,35 @@ margin-top: 16px;
 
 .productInfo-left-block {
   width: 560px;
+
+  @include on-tablet {
+    width: 592px;
+    margin: 0 24px;
+  }
+
+  @include on-mobile {
+    width: 592px;
+    margin: 0 24px;
+  }
+
+  @include on-mobile {
+    width: 288px;
+    margin: 0 16px;
+  }
 }
 
 .productInfo-right-block {
   width: 512px;
+
+  @include on-tablet {
+    width: 592px;
+    margin: 0 24px;
+  }
+
+  @include on-mobile {
+    width: 288px;
+    margin: 0 16px;
+  }
 }
 
 .product-tech-divs {
@@ -380,7 +539,7 @@ margin-top: 16px;
   height: 48px;
   width: 263px;
   color: #27AE60;
-  font-family: 'Mont';
+  font-family: Mont-SemiBold, sans-serif;
   font-size: 14px;
   font-weight: 700;
   line-height: 21px;
@@ -395,8 +554,8 @@ margin-top: 16px;
   background-color: #313237;
   height: 48px;
   width: 263px;
-  color: #FFFFFF;
-  font-family: 'Mont';
+  color: #FFF;
+  font-family: Mont-SemiBold, sans-serif;
   font-size: 14px;
   font-weight: 700;
   line-height: 21px;
@@ -405,6 +564,10 @@ margin-top: 16px;
   padding: 0;
   cursor: pointer;
   margin-right: 8px;
+
+  @include on-tablet {
+    width: 180px;
+  }
 }
 
 .Add-btn-big:hover {
@@ -432,10 +595,19 @@ margin-top: 16px;
   border: 1px solid #313237;
   transform: scale(1.05);
 }
+
 .productInfo-links-block {
   display: flex;
   flex-direction: column;
   gap: 40px;
+
+  @include on-tablet {
+    margin: 0 24px;
+  }
+
+  @include on-mobile {
+    overflow: hidden;
+  }
 }
 
 .crumb-link {
@@ -444,7 +616,6 @@ margin-top: 16px;
   font-weight: 700;
   line-height: 15.34px;
   text-align: left;
-  margin: 0;
   color: #89939A;
   text-transform: capitalize;
   margin: 0;
@@ -457,7 +628,28 @@ margin-top: 16px;
 .crumb-link:active {
   color: #313237;
 }
+
 .crumb-link:focus {
   color: #313237;
 }
+
+.margin-0-24 {
+  @include on-tablet {
+    margin: 64px 24px;
+    width: 592px;
+  }
+
+  @include on-mobile {
+    margin: 64px 0;
+    width: 320px;
+  }
+}
+
+.margin-0-16 {
+  @include on-mobile {
+    margin: 0 16px;
+  }
+}
+
+
 

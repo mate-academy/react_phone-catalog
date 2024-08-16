@@ -1,4 +1,5 @@
-@import '../../../mixins/mixins.scss';
+@import '../../../mixins/mixins';
+@import '../../../../public/fonts/fonts';
 
 .phones-container {
   display: flex;
@@ -7,10 +8,19 @@
   margin: 0 auto;
   flex-direction: column;
   min-height: 100vh;
+  padding: 0 32px;
+
+  @include on-tablet {
+    width: 640px;
+  }
+
+  @include on-mobile {
+    width: 320px;
+  }
 }
 
 .phones-container-h1 {
-  font-family: Mont;
+  font-family: Mont-SemiBold, sans-serif;
   font-size: 48px;
   font-weight: 800;
   line-height: 56px;
@@ -21,22 +31,40 @@
   margin: 0;
   margin-bottom: 8px;
   margin-top: 40px;
+
+  @include on-mobile {
+    margin-left: 16px;
+  }
 }
 
 .phones-container-p {
-  font-family: Mont;
+  font-family: Mont, sans-serif;
   font-size: 14px;
   font-weight: 600;
   line-height: 21px;
   text-align: left;
   color: #89939A;
-  margin: 0 0 40px 0;
+  margin: 0 0 40px;
+
+  @include on-mobile {
+    margin-left: 16px;
+  }
 }
 
 .phones-card-container {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 40px 38px;
+  gap: 40px 16px;
+
+
+  @include on-tablet {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include on-mobile {
+    grid-template-columns: repeat(1, 1fr);
+    margin: 0 auto;
+  }
 }
 
 .btn-container {
@@ -44,7 +72,11 @@
   align-items: center;
   justify-content: center;
   gap: 8px;
-  margin: 40px 0 80px 0;
+  margin: 40px 0 80px;
+
+  @include on-mobile {
+    overflow: scroll;
+  }
 }
 
 .btn-class {
@@ -53,7 +85,7 @@
   background-color: white;
   border: 1px solid #E2E6E9;
 
-  font-family: Mont;
+  font-family: Mont, sans-serif;
   font-size: 14px;
   font-weight: 600;
   line-height: 21px;
@@ -66,14 +98,14 @@
   height: 32px;
   width: 32px;
   border: 1px solid #E2E6E9;
-  font-family: Mont;
+  font-family: Mont, sans-serif;
   font-size: 14px;
   font-weight: 600;
   line-height: 21px;
   text-align: center;
 
   background-color: #313237;
-  color:#FFFFFF;
+  color:#FFF;
   cursor: pointer;
 }
 
@@ -81,6 +113,10 @@
   display: flex;
   flex-direction: row;
   gap: 16px;
+
+  @include on-mobile {
+    justify-content: center;
+  }
 }
 
 .phones-sort-container {
@@ -88,6 +124,10 @@
   margin-bottom: 24px;
   flex-direction: column;
   width: 176px;
+
+  @include on-mobile {
+    width: 136px;
+  }
 }
 
 .sortBy-container {
@@ -97,6 +137,10 @@
   height: 40px;
   position: relative;
   align-items: center;
+
+  @include on-mobile {
+    width: 136px;
+  }
 }
 
 .sortBy-box {
@@ -105,7 +149,7 @@
   padding: 10px 0 10px 12px;
   width: 100%;
 
-  font-family: Mont;
+  font-family: Mont, sans-serif;
   font-size: 14px;
   font-weight: 700;
   line-height: 21px;
@@ -115,13 +159,13 @@
 }
 
 .SortBy-p {
-  font-family: Mont;
+  font-family: Mont, sans-serif;
   font-size: 12px;
   font-weight: 700;
   line-height: 15.34px;
   text-align: left;
   color: #89939A;
-  margin: 0 0 4px 0;
+  margin: 0 0 4px;
 }
 
 .select-btn {

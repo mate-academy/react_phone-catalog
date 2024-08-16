@@ -1,10 +1,10 @@
 import { useContext } from 'react';
 import './Header.scss';
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, useLocation } from 'react-router-dom';
 import { ProductsContext } from '../../PageContext';
 import classNames from 'classnames';
 
-const getLinkClass = ({ isActive }: { isActive: boolean }) =>
+export const getLinkClass = ({ isActive }: { isActive: boolean }) =>
   classNames('link', {
     'is-active': isActive,
   });
@@ -57,18 +57,21 @@ export const HeaderNav = () => {
               )}
             </Link>
           </li>
-          <li className="icon">
-            <a href="/" className="icon-link onMobile">
-              <img src="./uploadedImg/burger.png"></img>
-            </a>
-          </li>
+          {useLocation().pathname === '/menu' ? (
+            <li className="icon">
+              <Link to="/" className="icon-link onMobile">
+                <img src="./uploadedImg/Close.png"></img>
+              </Link>
+            </li>
+          ) : (
+            <li className="icon">
+              <Link to="/menu" className="icon-link onMobile">
+                <img src="./uploadedImg/burger.png"></img>
+              </Link>
+            </li>
+          )}
         </ul>
       </div>
-      {/* <aside id="menu" className="header-menu-box">
-        <div className="header-menu-header">header</div>
-        <div className="header-menu-main">Main</div>
-        <div className="header-menu-footer">Footer</div>
-      </aside> */}
     </div>
   );
 };

@@ -1,14 +1,34 @@
+@import '../../../mixins/mixins';
+
 .bucket-layout {
   width: 1200px;
   margin: 0 auto;
   margin-bottom: 80px;
-  min-height: 65vh;
+  min-height: 100vh;
+
+  @include on-tablet {
+    width: 640px;
+  }
+
+  @include on-mobile {
+    width: 320px;
+  }
 }
 
 .products-block {
   display: flex;
   flex-direction: row;
   gap: 16px;
+
+  @include on-tablet {
+    flex-direction: column;
+    margin-left: 24px;
+  }
+
+  @include on-mobile {
+    flex-direction: column;
+    margin-left: 16px;
+  }
 }
 
 .cards-layout {
@@ -18,7 +38,7 @@
 }
 
 .bucket-h1 {
-  font-family: Mont;
+  font-family: Mont-SemiBold, sans-serif;
   font-size: 48px;
   font-weight: 800;
   line-height: 56px;
@@ -27,6 +47,14 @@
   color: #313237;
   margin: 0;
   margin-bottom: 32px;
+
+  @include on-tablet {
+    margin-left: 24px;
+  }
+
+  @include on-mobile {
+    margin-left: 16px;
+  }
 }
 
 .bucket-checkout {
@@ -37,27 +65,39 @@
   border: 1px solid#E2E6E9;
   justify-content: center;
   align-items: center;
+
+  @include on-tablet {
+    width: 592px;
+    height: 190px;
+    margin-top: 32px;
+  }
+
+  @include on-mobile {
+    width: 288px;
+    margin-top: 32px;
+
+  }
 }
 
 .checkout-h1 {
-  font-family: Mont;
+  font-family: Mont-SemiBold, sans-serif;
   font-size: 32px;
   font-weight: 800;
   line-height: 41px;
   letter-spacing: -0.01em;
   text-align: left;
   color: #313237;
-  margin: 24px 0 0 0;
+  margin: 24px 0 0;
 }
 
 .checkout-p {
-  font-family: Mont;
+  font-family: Mont-SemiBold, sans-serif;
   font-size: 14px;
   font-weight: 500;
   line-height: 21px;
   text-align: center;
   color: #89939A;
-  margin: 0 0 25px 0;
+  margin: 0 0 25px;
 }
 
 .checkout-btn {
@@ -67,16 +107,24 @@
   width: 320px;
   height: 48px;
   background-color: #313237;
-  color: #FFFFFF;
+  color: #FFF;
   cursor: pointer;
 
-  font-family: Mont;
+  font-family: Mont-SemiBold, sans-serif;
   font-size: 14px;
   font-weight: 700;
   line-height: 21px;
   text-align: center;
   border: none;
   transition: 0.3s;
+
+  @include on-tablet {
+    width: 544px;
+  }
+
+  @include on-mobile {
+    width: 240px;
+  }
 }
 
 .checkout-btn:hover {
@@ -104,7 +152,7 @@
   justify-content: center;
   align-items: center;
 
-  font-family: Mont;
+  font-family: Mont-SemiBold, sans-serif;
   font-size: 22px;
   font-weight: 600;
   line-height: 21px;
@@ -117,7 +165,7 @@
   padding: 0 30px;
   margin-top: 30px;
 
-  font-family: Mont;
+  font-family: Mont-SemiBold, sans-serif;
   font-size: 32px;
   font-weight: 800;
   line-height: 56px;
@@ -138,6 +186,14 @@
 .bucket-link-block {
   margin-top: 40px;
   margin-bottom: 16px;
+
+  @include on-tablet {
+    margin-left: 24px;
+  }
+
+  @include on-mobile {
+    margin-left: 16px;
+  }
 }
 
 .bucket-link-btn {
@@ -151,10 +207,13 @@
   flex-direction: row;
   padding: 0;
 
+  @include on-mobile {
+    margin-left: 16px;
+  }
 }
 
 .bucket-link-p {
-  font-family: Mont;
+  font-family: Mont-SemiBold, sans-serif;
   font-size: 12px;
   font-weight: 700;
   line-height: 15.34px;
@@ -163,6 +222,8 @@
   padding-left: 4px;
 
   color: #89939A;
+
+
 }
 
 .bucket-link-p:hover {

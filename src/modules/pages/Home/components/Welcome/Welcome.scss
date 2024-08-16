@@ -1,4 +1,4 @@
-@import "../../../../../mixins/mixins.scss";
+@import "../../../../../mixins/mixins";
 
 
 .welcome-container {
@@ -6,17 +6,17 @@
   flex-direction: column;
   width: 100%;
 
-  @include onTablet {
+  @include on-tablet {
     width: 640px;
   }
 
-  @include onMobile {
-
+  @include on-mobile {
+    width: 320px;
   }
 }
 
 .welcome-text {
-  font-family: 'Mont';
+  font-family: Mont-SemiBold, sans-serif;
   font-size: 48px;
   font-weight: 800;
   line-height: 56px;
@@ -24,10 +24,10 @@
   text-align: left;
   margin-top: 56px 0;
 
-  @include onMobile {
+  @include on-mobile {
     font-size: 32px;
     line-height: 41px;
-    padding: 0 24px;
+    text-align: center;
   }
 }
 
@@ -37,7 +37,7 @@
   grid-template-columns: 48px 1fr 48px;
   grid-template-rows: 1fr;
 
-  @include onMobile {
+  @include on-mobile {
     grid-template-columns: 1fr;
   }
 }
@@ -48,11 +48,11 @@
   width: 100%;
   display: block;
 
-  @include onTablet {
+  @include on-tablet {
     height: 189px;
   }
 
-  @include onMobile {
+  @include on-mobile {
     height: 320px;
   }
 
@@ -65,9 +65,10 @@
   margin-right: 16px;
   cursor: pointer;
 
-  @include onMobile {
+  @include on-mobile {
     display: none;
   }
+
 }
 
 .left-btn:hover {
@@ -76,15 +77,15 @@
 
 .right-btn {
   width: 32px;
-  border: none;
   margin-left: 16px;
   border: 1px solid #B4BDC3;
   cursor: pointer;
 
-
-  @include onMobile {
+  @include on-mobile {
     display: none;
   }
+
+
 }
 
 .right-btn:hover {

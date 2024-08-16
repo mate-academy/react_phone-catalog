@@ -1,3 +1,5 @@
+@import '../../../../../mixins/mixins';
+
 .bucket-card {
   display: flex;
   flex-direction: row;
@@ -5,6 +7,45 @@
   border: 1px solid #E2E6E9;
   height: 128px;
   width: 752px;
+  justify-content: space-between;
+
+  @include on-tablet {
+    width: 592px;
+    flex-direction: row;
+  }
+
+  @include on-mobile {
+    flex-direction: column;
+    width: 288px;
+    height: 160px;
+  }
+}
+
+.up-content {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+
+  @include on-mobile {
+    justify-content: space-between;
+    gap: 16px;
+    margin: 16px;
+    height: 80px;
+  }
+}
+
+.down-content {
+  display: flex;
+  flex-direction: row;
+  margin-right: 24px;
+
+  @include on-mobile {
+    justify-content: space-between;
+    height: 32px;
+    width: 256px;
+    margin: 0 16px 16px;
+  }
 }
 
 .close-img-btn {
@@ -34,20 +75,25 @@
 }
 
 .card-p {
-  font-family: Mont;
+  font-family: Mont-SemiBold, sans-serif;
   font-size: 14px;
   font-weight: 600;
   line-height: 21px;
   text-align: left;
   color: #313237;
-  width: 336px;
-  margin-right: 24px;
+
 }
+
 .card-btns {
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
   margin-right: 24px;
+  align-items: center;
+
+  @include on-mobile {
+    margin: 0;
+  }
 
 }
 
@@ -84,6 +130,7 @@
 .card-btn-img {
   background-color: white;
 }
+
 .card-number {
   width: 32px;
   height: 32px;
@@ -93,7 +140,7 @@
 }
 
 .card-price {
-  font-family: Mont;
+  font-family: Mont-SemiBold, sans-serif;
   font-size: 22px;
   font-weight: 800;
   line-height: 30.8px;
@@ -101,5 +148,19 @@
   color:#313237;
   padding-left: 30px;
   display: flex;
-  justify-content:flex-end
+  justify-content:flex-end;
+  width: 80px;
+
+  @include on-tablet {
+    padding-left: 0;
+    margin-right: 24px;
+  }
+
+  @include on-mobile {
+    padding: 0;
+    margin: 0;
+  }
+
 }
+
+

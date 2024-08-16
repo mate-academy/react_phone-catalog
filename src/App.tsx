@@ -10,6 +10,7 @@ import { Favorites } from './modules/pages/Favorites';
 import { Bucket } from './modules/pages/Bucket';
 import { PageProvider } from './PageContext';
 import { PageNotFound } from './components/PageNotFound';
+import { AsideMenu } from './components/AsideMenu';
 
 export const App: React.FC = () => {
   return (
@@ -31,6 +32,7 @@ export const App: React.FC = () => {
         </Route>
         <Route path="/favorites" element={<Favorites />} />
         <Route path="/bucket" element={<Bucket />} />
+        <Route path="/menu" element={<AsideMenu />} />
         <Route path="*" element={<PageNotFound />} />
       </Routes>
       <Footer />

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/indent */
 import { useContext, useEffect, useRef, useState } from 'react';
 import './ProductInfo.scss';
 import Carousel from 'react-multi-carousel';
@@ -212,7 +213,12 @@ export const ProductInfo = () => {
             </div>
             <div className="product-info-rightBlock">
               <div className="product-colors-block">
-                <p className="product-colors-p">Available colors</p>
+                <div className="blockOfP">
+                  <p className="product-colors-p">Available colors</p>
+                  <div className="product-id-In">
+                    <p className="product-id-p">{`ID: ${getId()}`}</p>
+                  </div>
+                </div>
                 <div className="btns-block">
                   {currentPhone?.colorsAvailable.map(color => (
                     <button
@@ -261,7 +267,7 @@ export const ProductInfo = () => {
                     // eslint-disable-next-line @typescript-eslint/indent
                     <button className="Add-btn-big" onClick={addPhone}>
                       Add to card
-                      </button>
+                    </button>
                     // eslint-disable-next-line @typescript-eslint/indent
                   )}
                   <button className="fav-btn-big" onClick={addFav}>
@@ -349,7 +355,7 @@ export const ProductInfo = () => {
               </div>
             </div>
           </div>
-          <div className="newPhone-container">
+          <div className="newPhone-container margin-0-24">
             <div className="newPhone-header">
               <h1 className="newPhones-h1">You may also like</h1>
               <div className="slide-btns">

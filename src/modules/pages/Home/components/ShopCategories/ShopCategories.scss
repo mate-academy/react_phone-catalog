@@ -1,28 +1,35 @@
-@import "../../../../../mixins/mixins.scss";
+@import "../../../../../mixins/mixins";
 
 .shopCateg-page {
   width: 100%;
   display: flex;
   flex-direction: column;
 
-  @include onTablet {
+  @include on-tablet {
     width: 640px;
+    margin-bottom: 64px;
   }
 
-  @include onMobile {
-    width: 288px;
+  @include on-mobile {
+    margin-bottom: 0;
   }
 }
 
 .shopCateg-title {
-font-family: Mont;
-font-size: 32px;
-font-weight: 800;
-line-height: 41px;
-letter-spacing: -0.01em;
-text-align: left;
-color:#313237;
-margin: 0 0 24px;
+  font-family: Mont-SemiBold, sans-serif;
+  font-size: 32px;
+  font-weight: 800;
+  line-height: 41px;
+  letter-spacing: -0.01em;
+  text-align: left;
+  color:#313237;
+  margin: 0 0 24px;
+
+  @include on-mobile {
+    text-align: center;
+    font-size: 22px;
+    line-height: 30.8px;
+  }
 }
 
 .shopCateg-card {
@@ -32,14 +39,15 @@ margin: 0 0 24px;
   flex-direction: column;
   transition: 0.3s;
 
-  @include onTablet {
-    height: 262px;
+  @include on-tablet {
     width: 187px;
+    height: 262px;
   }
 
-  @include onMobile {
+  @include on-mobile {
     width: 288px;
     height: 363px;
+    margin: 0 auto;
   }
 }
 
@@ -56,31 +64,30 @@ margin: 0 0 24px;
   width: 368px;
   display: block;
 
-  @include onTablet {
-    height: 187px;
+  @include on-tablet {
     width: 187px;
-    // object-fit: fill;
+    height: 187px;
   }
 
-  @include onMobile {
-    height: 288px;
+  @include on-mobile {
     width: 288px;
+    height: 288px;
   }
 
 }
 
 .shopCateg-name {
-font-family: Mont;
+font-family: Mont-SemiBold, sans-serif;
 font-size: 20px;
 font-weight: 600;
 line-height: 25.56px;
 text-align: left;
 color: #313237;
-margin: 24px 0 4px 0;
+margin: 24px 0 4px;
 }
 
 .shopCateg-models {
-font-family: Mont;
+font-family: Mont-SemiBold, sans-serif;
 font-size: 14px;
 font-weight: 500;
 line-height: 21px;
@@ -94,7 +101,9 @@ margin: 0;
   flex-direction: row;
   justify-content: space-between;
 
-  @include onMobile {
+  @include on-mobile {
     flex-direction: column;
+    justify-content: center;
+    gap: 32px;
   }
 }

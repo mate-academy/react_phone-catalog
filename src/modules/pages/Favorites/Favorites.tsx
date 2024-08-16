@@ -19,7 +19,7 @@ export const Favorites = () => {
       </div>
       <h1 className="favorites-h1">Favourites</h1>
       <p className="favorites-p">{`${favItems.length} items`}</p>
-      <div className="phones-card-container card-container-block">
+      <div className="card-container-block">
         {favItems.length > 0 ? (
           favItems.map(favItem => <Card phone={favItem} key={favItem.id} />)
         ) : (

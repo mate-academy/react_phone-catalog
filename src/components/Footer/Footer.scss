@@ -1,4 +1,4 @@
-@import "../../mixins/mixins.scss";
+@import "../../mixins/mixins";
 
 html {
   scroll-behavior: smooth;
@@ -6,19 +6,14 @@ html {
 
 .footer-block {
   height: 96px;
-  width: 1200px;
+  width: 100%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
   margin: 0 auto;
 
-  @include onTablet {
-    width: 640px;
-    padding: 0 32px;
-  }
-
-  @include onMobile {
+  @include on-mobile {
     flex-direction: column;
     align-items: flex-start;
     width: 320px;
@@ -40,11 +35,11 @@ html {
   gap: 150px;
   padding: 0;
 
-  @include onTablet {
+  @include on-tablet {
     gap: 13.5px;
   }
 
-  @include onMobile {
+  @include on-mobile {
     flex-direction: column;
     gap: 16px;
   }
@@ -53,7 +48,7 @@ html {
 .footer-link {
   text-decoration: none;
   color: #89939A;
-  font-family: Mont;
+  font-family: Mont-SemiBold, sans-serif;
   font-size: 12px;
   font-weight: 800;
   line-height: 11px;
@@ -63,13 +58,15 @@ html {
 
 
 }
+
 .footer-back-btn-bl {
   display: flex;
   flex-direction: row;
   gap: 16px;
   align-items: center;
+  padding-right: 24px;
 
-  @include onMobile {
+  @include on-mobile {
     align-items: center;
     justify-content: center;
     margin: 0 auto;
@@ -97,10 +94,23 @@ html {
 }
 
 .footer-back-p {
-font-family: Mont;
+font-family: Mont-SemiBold, sans-serif;
 font-size: 12px;
 font-weight: 700;
 line-height: 15.34px;
 text-align: right;
 color: #89939A;
+}
+
+.footer-logo {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 24px;
+
+  @include on-mobile {
+    height: 32px;
+    padding: 0;
+  }
 }

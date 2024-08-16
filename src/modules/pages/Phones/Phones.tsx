@@ -8,9 +8,8 @@ import { useSearchParams } from 'react-router-dom';
 
 export const Phones: React.FC = () => {
   const [searchParams, setSearchParams] = useSearchParams();
-  const postsPerPage = +(searchParams.get('postsPerPage') || 8);
+  const postsPerPage = +(searchParams.get('postsPerPage') || 24);
   const sort = searchParams.get('sortBy') || '';
-  // const [currentPage, setCurrentPage] = useState(1);
   const currentPage = +(searchParams.get('currentPage') || 1);
 
   const [isLoading, setIsLoading] = useState(false);
@@ -45,15 +44,7 @@ export const Phones: React.FC = () => {
     const params = new URLSearchParams(searchParams);
 
     params.set('currentPage', current);
-    // setSearchParams(prev => ({ ...prev, currentPage: current }));
-    // setSearchParams(prev => {
-    //   return { ...prev, currentPage: current };
-    // });
-    setSearchParams(prev => {
-      prev.set('currentPage', current);
-
-      return prev;
-    });
+    setSearchParams(params);
   }
 
   const currentCards = visible.slice(firstPostIndex, lastPostIndex);
@@ -64,37 +55,29 @@ export const Phones: React.FC = () => {
     pages.push(i);
   }
 
-  // function next() {
-  //   const params = new URLSearchParams(index => {
-  //     if (index === pages.length) {
-  //       params.set('sortBy', '1');
-  //       setSearchParams(params);
-  //     }
+  function handlePrevPage() {
+    const params = new URLSearchParams(searchParams);
 
-  //     return index + 1;
-  //     setSearchParams(params);
-  //   });
-  // }
+    if (currentPage === 1) {
+      params.set('currentPage', pages.length.toString());
+    } else {
+      params.set('currentPage', (+currentPage - 1).toString());
+    }
 
-  // function nextPage() {
-  //   setCurrentPage(index => {
-  //     if (index === pages.length) {
-  //       return 1;
-  //     }
+    setSearchParams(params);
+  }
 
-  //     return index + 1;
-  //   });
-  // }
+  function handleNextPage() {
+    const params = new URLSearchParams(searchParams);
 
-  // function prevPage() {
-  //   setCurrentPage(index => {
-  //     if (index === 1) {
-  //       return pages.length;
-  //     }
+    if (+currentPage === pages.length) {
+      params.set('currentPage', '1');
+    } else {
+      params.set('currentPage', (+currentPage + 1).toString());
+    }
 
-  //     return index - 1;
-  //   });
-  // }
+    setSearchParams(params);
+  }
 
   return (
     <div className="phones-container">
@@ -162,7 +145,7 @@ export const Phones: React.FC = () => {
 
       {!isLoading && (
         <div className="btn-container">
-          <button className="arrow-btn-LR">
+          <button className="arrow-btn-LR" onClick={handlePrevPage}>
             <img src="./uploadedImg/RightArrow.png"></img>
           </button>
           {pages.map((page, index) => (
@@ -172,13 +155,13 @@ export const Phones: React.FC = () => {
               }
               key={index}
               onClick={() => {
-                handleCurrentPage(currentPage.toString());
+                handleCurrentPage(page.toString());
               }}
             >
               {page}
             </button>
           ))}
-          <button className="arrow-btn-LR">
+          <button className="arrow-btn-LR" onClick={handleNextPage}>
             <img src="./uploadedImg/LeftArrow.png"></img>
           </button>
         </div>

@@ -1,4 +1,4 @@
-@import "../../../mixins/mixins.scss";
+@import "../../../mixins/mixins";
 
 .layout {
   display: flex;
@@ -8,12 +8,13 @@
   margin: 0 auto;
   width: 1200px;
   min-height: 100vh;
+  position: relative;
 
-  @include onTablet {
+  @include on-tablet {
     width: 640px;
   }
 
-  @include onMobile {
+  @include on-mobile {
     width: 320px;
   }
 }
