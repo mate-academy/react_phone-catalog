@@ -6,11 +6,14 @@ type PreviousPageProps = {
 }
 
 export const PreviousPage: React.FC<PreviousPageProps> = ({category}) => {
-  const { setPreviousPage } = useAppContext()
-  useEffect(() => {
+  const { previousCurrentPage, setPreviousCurrentPage } = useAppContext()
 
-    setPreviousPage(category);
-    console.log(category)
+  useEffect(() => {
+    const pages = [...previousCurrentPage];
+    pages.shift()
+    pages.push(category)
+    console.log(pages)
+    setPreviousCurrentPage(pages)
   }, [category]);
 
 

@@ -5,7 +5,7 @@ import { PreviousPage } from '../../components/PreviousPage';
 
 export const CartPage: React.FC = () => {
   const category = useLocation().pathname.slice(1)
-
+  console.log('PAGE CLICKED',category)
     return (
 
       <div>

@@ -11,7 +11,7 @@ import { useLocation } from 'react-router-dom';
 
 export const App: React.FC = () => {
   const category = useLocation().pathname.slice(1)
-
+  console.log('PAGE CLICKED',category)
   const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
     alert('This website is under constuction and some features have not been implemented!')

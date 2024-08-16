@@ -6,13 +6,12 @@ import { Footer } from '../../components/Footer';
 import { useAppContext } from '../../context/AppContext';
 import { useLocation } from 'react-router-dom';
 import { PreviousPage } from '../../components/PreviousPage';
+import { Link } from 'react-router-dom';
 
 export const ProductDetailsPage: React.FC = () => {
   const category = useLocation().pathname.slice(1)
-  const { clickedProductId } = useAppContext();
-  const { previousPage, setPreviousPage } = useAppContext()
-  setPreviousPage(useLocation().pathname)
-  console.log('location',previousPage)
+  const { clickedProductId, previousCurrentPage } = useAppContext();
+  console.log('PAGE CLICKED',category)
 
   return (
     <div className={styles.productDetailsPage}>
@@ -23,7 +22,9 @@ export const ProductDetailsPage: React.FC = () => {
         <button /* onClick={() => navigate(-1)} */ className={styles.goBackButton}>
           <img src={chevronIcon} alt="home" className={styles.chevronIcon} />
           <div className={styles.goBackText}>
-            <div>Back</div>
+            <Link to={`/${previousCurrentPage[0]}`}>
+              <div>Back</div>
+            </Link>
           </div>
         </button>
         <h2 className={styles.title}>Cliked Product ID: {clickedProductId}</h2>

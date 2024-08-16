@@ -1,15 +1,15 @@
 import React from 'react';
 import { Header } from '../../components/Header';
 import { useLocation } from 'react-router-dom';
-import { useAppContext } from '../../context/AppContext';
+import { PreviousPage } from '../../components/PreviousPage';
 
 export const NotFoundPage: React.FC = () => {
-  const { previousPage, setPreviousPage } = useAppContext()
-  setPreviousPage(useLocation().pathname)
-  console.log('location',previousPage)
+  const category = useLocation().pathname.slice(1)
+  console.log('PAGE CLICKED',category)
     return (
 
       <div>
+        <PreviousPage category={category}/>
         <Header />
         <center>
           In progress

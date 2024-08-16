@@ -6,9 +6,8 @@ type AppContextType = {
   setNumberOfProductsPerPage: (pages: number) => void;
   clickedProductId: string | undefined;
   setClickedProductId: (pages: string | undefined) => void;
-  previousPage: string | undefined;
-  setPreviousPage: (page: string | undefined) => void;
-
+  previousCurrentPage: string[];
+  setPreviousCurrentPage: (page: string[]) => void;
 };
 
 export const AppContext = createContext<AppContextType | undefined>(undefined);
@@ -16,7 +15,7 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
 
   const [numberOfProductsPerPage, setNumberOfProductsPerPage] = useState<number>(8);
   const [clickedProductId, setClickedProductId] = useState<string | undefined>(undefined);
-  const [previousPage, setPreviousPage] = useState<string | undefined>(undefined);
+  const [previousCurrentPage, setPreviousCurrentPage] = useState<string[]>(['nothing','nothing']);
 
   // Definiujemy funkcję
   const handleNotReady = () => {
@@ -24,7 +23,7 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
   };
 
   return (
-    <AppContext.Provider value={{ handleNotReady, numberOfProductsPerPage, setNumberOfProductsPerPage, clickedProductId, setClickedProductId, previousPage, setPreviousPage }}>
+    <AppContext.Provider value={{ handleNotReady, numberOfProductsPerPage, setNumberOfProductsPerPage, clickedProductId, setClickedProductId, previousCurrentPage, setPreviousCurrentPage }}>
       {children}
     </AppContext.Provider>
   );
