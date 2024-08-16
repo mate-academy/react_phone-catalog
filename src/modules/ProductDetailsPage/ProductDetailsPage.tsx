@@ -1,37 +1,39 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
+import styles from './ProductDetailsPage.module.scss'
+import chevronIcon from '../../img/icons/ChevronIcon.svg';
+import { Header } from '../../components/Header';
+import { Footer } from '../../components/Footer';
 
-export const ProductList: React.FC = () => {
-  const [products, setProducts] = useState<any[]>([]);
+export const ProductDetailsPage: React.FC = () => {
+  return (
+    <div className={styles.productDetailsPage}>
+      <Header />
+      <div className={styles.container}>
+        {/* <Breadcrumbs product={productDetails} /> */}
+        <button /* onClick={() => navigate(-1)} */ className={styles.goBackButton}>
+          <img src={chevronIcon} alt="home" className={styles.chevronIcon} />
+          <div className={styles.goBackText}>
+            <p>Back</p>
+          </div>
+        </button>
+        <h2 className={styles.title}>Product name</h2>
+        {/* <ImageGallery
+          images={productDetails.images}
+          productName={productDetails.name}
+        /> */}
+        {/* <MainControls
+          productDetails={productDetails}
+          setProductDetails={setProductDetails}
+          product={product}
+        /> */}
+        {/* <Description description={productDetails.description} />
+        <TechSpecs productDetails={productDetails} /> */}
+      </div>
 
+      {/* <ProductsSlider title="You may also like" products={suggestedProducts} /> */}
+      <Footer />
+    </div>
+  );
+};
 
-  useEffect(() => {
-    const fetchProductData = async () => {
-
-        const response = await fetch('../../api/phones.json');
-        const data = await response.json();
-        setProducts(data);
-    };
-
-    fetchProductData();
-  }, []);
-
-  console.log('products after fetch:', products); // Log products after fetch
-  if (products !== undefined) {
-
-
-    return (
-
-
-    <ul>
-      {products.map((product) => (
-        <li key={product.id}>{product.name}</li>
-      ))}
-    </ul>
-    )
-      } else {
-        return (
-          <div>Loading</div>
-        )
-        }
-      }
 

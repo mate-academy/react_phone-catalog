@@ -19,7 +19,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   return (
     <div className={styles.ProductCard}>
       <Link
-        to="/placeholder-link" // Zmień na odpowiedni link
+        to="/product" // Zmień na odpowiedni link
         className={styles.imageContainer}
       >
         <img
@@ -30,7 +30,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
       </Link>
 
       <div className={styles.wrapper}>
-        <Link to="/placeholder-link" className={styles.title}>
+        <Link to="/product" className={styles.title}>
           {name}
         </Link>
 

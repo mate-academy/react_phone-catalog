@@ -8,6 +8,7 @@ import { HomePage } from './modules/HomePage';
 import { FavoritesPage } from './modules/FavoritesPage';
 import { CartPage } from './modules/CartPage';
 import { NotFoundPage} from './modules/NotFoundPage';
+import { ProductDetailsPage } from './modules/ProductDetailsPage';
 
 
 export const Root = () => {
@@ -23,6 +24,7 @@ export const Root = () => {
           <Route path="/accessories" component={AccessoriesPage} />
           <Route path="/cart" component={CartPage} />
           <Route path="/favorites" component={FavoritesPage} />
+          <Route path="/product" component={ProductDetailsPage} />
           <Route path="*" component={NotFoundPage} />
         </Switch>
       </div>
