@@ -12,7 +12,7 @@ export const Swiper = (callback: Callback, edge: number) => {
   };
 
   const handleTouchMove = (e: React.TouchEvent, currentIndex: number) => {
-    if(!startX) {
+    if (!startX) {
       return;
     }
 

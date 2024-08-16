@@ -72,7 +72,7 @@ export const CartItem: React.FC<Props> = ({ product }) => {
           </Button>
         </div>
 
-        <h3 className="cart-item__price">{`${price}`}</h3>
+        <h3 className="cart-item__price">{`$${price}`}</h3>
       </div>
     </div>
   );

@@ -39,7 +39,7 @@ export const CartPage = () => {
         <h1 className="cart-page__title">Cart</h1>
 
         {cart.length ? (
-          <div className="cart-page_block">
+          <div className="cart-page__block">
             <ul className="cart-page__items">
               {preparedCart.map(product => (
                 <CartItem product={product} key={product.id} />
@@ -47,7 +47,7 @@ export const CartPage = () => {
             </ul>
 
             <div className="cart-page__checkout">
-              <h2 className="cart-page__price">{`${totalPrice}`}</h2>
+              <h2 className="cart-page__price">{`$${totalPrice}`}</h2>
 
               <p className="cart-page__total-amount">
                 {cart.length === 1 ? '1 item' : `${cart.length} items`}

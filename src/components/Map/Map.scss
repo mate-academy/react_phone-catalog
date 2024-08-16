@@ -11,7 +11,7 @@
     margin-bottom: 40px;
   }
 
-  &__part {
+  &__port {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -21,7 +21,7 @@
 
   &__link {
     @extend %small-text;
-    
+
     color: $colorPrimary;
   }
 
