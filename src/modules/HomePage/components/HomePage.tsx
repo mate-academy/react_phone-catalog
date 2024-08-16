@@ -5,6 +5,7 @@ import { WelcomeSlider } from './../../shared/welcomeSlider/WelcomeSlider';
 import { ProductsSlider } from '../../shared/ProductsSlider//ProductsSlider';
 import { useAppSelector } from '../../../app/hooks';
 import { Link } from 'react-router-dom';
+import { scrollPageUp } from './../../shared/scrollPageUp';
 
 export const HomePage: React.FC = () => {
   const NEW_MODELS_TITLE = 'Brand new models';
@@ -54,7 +55,7 @@ export const HomePage: React.FC = () => {
 
         <div className={styles.categories__wraper}>
           <div className={styles.category}>
-            <Link to="/phones">
+            <Link onClick={() => scrollPageUp()} to="/phones">
               <img
                 className={styles.category__image}
                 src="./img/phones-category.png"
@@ -62,7 +63,11 @@ export const HomePage: React.FC = () => {
               />
             </Link>
 
-            <Link className={styles.category__title} to="/phones">
+            <Link
+              onClick={() => scrollPageUp()}
+              className={styles.category__title}
+              to="/phones"
+            >
               Mobile phones
             </Link>
             <p className={styles.category__quantity}>
@@ -71,7 +76,7 @@ export const HomePage: React.FC = () => {
           </div>
 
           <div className={styles.category}>
-            <Link to="/tablets">
+            <Link onClick={() => scrollPageUp()} to="/tablets">
               <img
                 className={styles.category__image}
                 src="./img/tablets-category.png"
@@ -79,7 +84,11 @@ export const HomePage: React.FC = () => {
               />
             </Link>
 
-            <Link className={styles.category__title} to="/tablets">
+            <Link
+              onClick={() => scrollPageUp()}
+              className={styles.category__title}
+              to="/tablets"
+            >
               Tablets
             </Link>
             <p
@@ -88,7 +97,7 @@ export const HomePage: React.FC = () => {
           </div>
 
           <div className={styles.category}>
-            <Link to="/accessories">
+            <Link onClick={() => scrollPageUp()} to="/accessories">
               <img
                 className={styles.category__image}
                 src="./img/accessories-category.png"
@@ -96,7 +105,11 @@ export const HomePage: React.FC = () => {
               />
             </Link>
 
-            <Link className={styles.category__title} to="accessories">
+            <Link
+              onClick={() => scrollPageUp()}
+              className={styles.category__title}
+              to="accessories"
+            >
               Accesories
             </Link>
             <p

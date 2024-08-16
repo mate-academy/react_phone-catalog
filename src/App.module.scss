@@ -1,4 +1,4 @@
-@import './modules/shared/_main.scss';
+@import './modules/shared/main';
 
 .body {
   background-color: var(--white-color);
@@ -136,6 +136,7 @@
     height: 3px;
     width: 100%;
     transform: translateY(45px);
+
     @include on-desktop {
       transform: translateY(61px);
     }
@@ -252,11 +253,12 @@
     width: 100%;
 
     @include on-tablet {
-      padding: 32px 32px;
+      padding: 32px;
     }
 
     @include on-desktop {
       width: max-content;
+
       @include page-grid;
     }
   }
