@@ -1,9 +1,9 @@
-import { useContext } from "react"
-import { Map } from "../../components/Map"
-import { FavouritesContext } from "../../contexts/favouritesContext"
-import { Products } from "../../components/Products";
-import { ErrorMessage } from "../../components/ErrorMessage";
-import { Errors } from "../../types/Errors";
+import { useContext } from 'react'
+import { Map } from '../../components/Map'
+import { FavouritesContext } from '../../contexts/favouritesContext'
+import { Products } from '../../components/Products';
+import { ErrorMessage } from '../../components/ErrorMessage';
+import { Errors } from '../../types/Errors';
 import './FavoritesPage.scss';
 
 export const FavoritesPage = () => {

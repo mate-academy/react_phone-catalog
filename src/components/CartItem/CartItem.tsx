@@ -1,25 +1,21 @@
 import { useContext } from 'react';
-import { Product } from "../../types/Product"
-import { CartContext } from "../../contexts/CartContext";
-import { Button } from "../Button";
-import { Link } from "react-router-dom";
-import { LOCAL_URL } from "../../api/apiProducts";
-import classNames from "classnames";
+import { Product } from '../../types/Product';
+import { CartContext } from '../../contexts/CartContext';
+import { Button } from '../Button';
+import { Link } from 'react-router-dom';
+import { LOCAL_URL } from '../../api/apiProducts';
+import classNames from 'classnames';
 import './CartItem.scss';
 
 type Props = {
   product: Product;
-}
+};
 
 export const CartItem: React.FC<Props> = ({ product }) => {
   const { image, name, price, id, itemId, category } = product;
 
-  const {
-    cart,
-    addToCart,
-    deleteProduct,
-    deleteProductCopy,
-  } = useContext(CartContext);
+  const { cart, addToCart, deleteProduct, deleteProductCopy } =
+    useContext(CartContext);
 
   const amount = cart.filter(item => item.id === id).length;
 
@@ -33,7 +29,7 @@ export const CartItem: React.FC<Props> = ({ product }) => {
 
   const handleAddCopy = () => {
     addToCart(product);
-  }
+  };
 
   return (
     <div className="cart-item">
@@ -42,10 +38,7 @@ export const CartItem: React.FC<Props> = ({ product }) => {
           <i className="icon icon--close--disabled"></i>
         </Button>
 
-        <Link
-          to={`/${category}/${itemId}`}
-          className="cart-item__link"
-        >
+        <Link to={`/${category}/${itemId}`} className="cart-item__link">
           <div className="cart-item__image-container">
             <img
               src={`${LOCAL_URL}${image}`}
@@ -66,7 +59,7 @@ export const CartItem: React.FC<Props> = ({ product }) => {
             disabled={amount <= 1}
           >
             <i
-              className={classNames("icon icon--minus", {
+              className={classNames('icon icon--minus', {
                 'icon--minus--disabled': amount <= 1,
               })}
             ></i>
@@ -82,5 +75,5 @@ export const CartItem: React.FC<Props> = ({ product }) => {
         <h3 className="cart-item__price">{`${price}`}</h3>
       </div>
     </div>
-  )
-}
+  );
+};
