@@ -6,6 +6,8 @@ import { Pagination } from '../Pagination';
 import { Loader } from '../Loader';
 import { Breadcrumbs } from '../../components/Breadcrumbs';
 import styles from './ProductList.module.scss';
+import { useAppContext } from '../../context/AppContext';
+
 
 type ProductListProps = {
   category: string;
@@ -31,11 +33,11 @@ export const ProductList: React.FC<ProductListProps> = ({ category, title }) => 
 
   const numberOfProducts = products.length;
 
-  const [numebrOfProductsPerPage, setnumebrOfProductsPerPage] = useState(16);
+  const {numberOfProductsPerPage} = useAppContext()
 
   const numberOfPages = useMemo(() => {
-    return Math.ceil(numberOfProducts / numebrOfProductsPerPage);
-  }, [numberOfProducts, numebrOfProductsPerPage]);
+    return Math.ceil(numberOfProducts / numberOfProductsPerPage);
+  }, [numberOfProducts, numberOfProductsPerPage]);
 
   const [displayedPage, setDisplayedPage] = useState(1);
 
@@ -44,15 +46,11 @@ export const ProductList: React.FC<ProductListProps> = ({ category, title }) => 
     console.log('WILL DISPLAY', newState);
   }, []);
 
-  const handleNumberOdProductPerPage = useCallback((newState: number) => {
-    setnumebrOfProductsPerPage(newState);
-  }, []);
-
-  const firstDisplayedIndexOnPage = (displayedPage - 1) * numebrOfProductsPerPage;
+  const firstDisplayedIndexOnPage = (displayedPage - 1) * numberOfProductsPerPage;
 
   const arrayOfDisplayedIndexes = useMemo(() => {
     const indexes = [];
-    for (let i = firstDisplayedIndexOnPage; i < firstDisplayedIndexOnPage + numebrOfProductsPerPage; i++) {
+    for (let i = firstDisplayedIndexOnPage; i < firstDisplayedIndexOnPage + numberOfProductsPerPage; i++) {
       if (products[i] !== undefined) {
         indexes.push(products[i]);
       } else {
@@ -60,7 +58,7 @@ export const ProductList: React.FC<ProductListProps> = ({ category, title }) => 
       }
     }
     return indexes;
-  }, [products, firstDisplayedIndexOnPage, numebrOfProductsPerPage]);
+  }, [products, firstDisplayedIndexOnPage, numberOfProductsPerPage]);
 
   if (products.length === 0) {
     return (
@@ -78,7 +76,7 @@ export const ProductList: React.FC<ProductListProps> = ({ category, title }) => 
         <div className={styles.count}>
           {products.length} items
         </div>
-        <DropDown handleNumberOdProductPerPage={handleNumberOdProductPerPage} numberOfProducts={numberOfProducts} />
+        <DropDown numberOfProducts={numberOfProducts} />
         <ul className={styles.container}>
           {arrayOfDisplayedIndexes.map((product) => (
             <li key={product.id} className={styles.product}>

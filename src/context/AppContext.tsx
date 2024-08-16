@@ -1,18 +1,23 @@
-import React, { createContext, ReactNode, useContext } from 'react';
+import React, { createContext, ReactNode, useContext, useState } from 'react';
 
 type AppContextType = {
   handleNotReady: () => void;
+  numberOfProductsPerPage: number;
+  setNumberOfProductsPerPage: (pages: number) => void;
 };
 
 export const AppContext = createContext<AppContextType | undefined>(undefined);
 export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
+
+  const [numberOfProductsPerPage, setNumberOfProductsPerPage] = useState<number>(8);
+
   // Definiujemy funkcję
   const handleNotReady = () => {
     alert('Feature has not been implemented!');
   };
 
   return (
-    <AppContext.Provider value={{ handleNotReady }}>
+    <AppContext.Provider value={{ handleNotReady, numberOfProductsPerPage, setNumberOfProductsPerPage }}>
       {children}
     </AppContext.Provider>
   );
