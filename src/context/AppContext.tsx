@@ -1,4 +1,4 @@
-import React, { createContext, ReactNode, useContext, useState } from 'react';
+import React, { createContext, useContext, useState } from 'react';
 
 type AppContextType = {
   handleNotReady: () => void;
@@ -11,7 +11,7 @@ type AppContextType = {
 };
 
 export const AppContext = createContext<AppContextType | undefined>(undefined);
-export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
+export const AppProvider: React.FC<{ children: React.ReactElement }> = ({ children }) => {
 
   const [numberOfProductsPerPage, setNumberOfProductsPerPage] = useState<number>(8);
   const [clickedProductId, setClickedProductId] = useState<string | undefined>(undefined);
