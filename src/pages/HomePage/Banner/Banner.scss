@@ -1,0 +1,127 @@
+@import '../../../utils/main';
+
+.banner {
+  max-width: 1199px;
+
+  &__title {
+    margin: 40px 20px;
+    font-family: Mont, sans-serif;
+    font-size: 32px;
+    line-height: 41px;
+
+    @include on-tablet {
+      grid-row: 1;
+      margin: 40px 0;
+      font-size: 48px;
+      line-height: 56px;
+    }
+  }
+
+  &__box {
+    overflow: hidden;
+
+    @include on-tablet {
+      grid-row: 2;
+    }
+  }
+
+  &__slider {
+    width: 100%;
+    height: 320px;
+    position: relative;
+
+    @include on-tablet {
+      height: 189px;
+    }
+
+    @include on-desktop {
+      height: 400px;
+    }
+  }
+
+  &__cover {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    overflow: hidden;
+  }
+
+  &__slider-image {
+    display: block;
+    width: 100%;
+    height: 320px;
+    object-fit: cover;
+    flex-shrink: 0;
+    flex-grow: 0;
+    transition: translate 300ms ease-in-out;
+
+    @include on-tablet {
+      height: 189px;
+    }
+
+    @include on-desktop {
+      height: 400px;
+    }
+  }
+
+  &__button {
+    padding: 0;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    @include on-tablet {
+      grid-row: 2;
+      height: 189px;
+      width: 25px;
+      background-color: #fff;
+      border: 1px solid #B4BDC3;
+      cursor: pointer;
+    }
+
+    @include on-desktop {
+      height: 400px;
+      width: 35px;
+    }
+  }
+
+  &__left {
+    @include on-tablet {
+      background-image: url('../../../images/homePage/Arrow_Left.svg');
+      margin-right: 15px;
+    }
+
+    @include on-desktop {
+      margin-right: 25px;
+    }
+  }
+
+  &__right {
+    @include on-tablet {
+      background-image: url('../../../images/homePage/Arrow_Right.svg');
+      margin-left: 15px;
+    }
+
+    @include on-desktop {
+      margin-left: 25px;
+    }
+  }
+
+  &__rectangle {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
+    &__img {
+      background-image: url(../../../images/homePage/Rectangle_right.svg);
+      margin: 10px 5px;
+      background-position: center;
+      background-repeat: no-repeat;
+      width: 14px;
+      height: 4px;
+
+      &--active {
+        background-image: url(../../../images/homePage/Rectangle_left.svg);
+      }
+    }
+  }
+}
