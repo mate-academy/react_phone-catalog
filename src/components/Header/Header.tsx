@@ -4,11 +4,10 @@ import styles from './Header.module.scss';
 import LogoIcon from '../../img/icons/LogoIcon.svg';
 import cartIcon from '../../img/icons/CartIcon.svg';
 import favIcon from '../../img/icons/fav.svg';
+import { useAppContext } from '../../context/AppContext';
 
 export const Header: React.FC = () => {
-  const handleNoteReady = () => {
-    alert('Feature has not been implemented');
-  };
+  const {handleNotReady} = useAppContext();
 
   return (
     <header className={styles.header}>
@@ -48,7 +47,7 @@ export const Header: React.FC = () => {
               </div>
             </NavLink>
 
-            <div className={styles.actionItem} onClick={handleNoteReady}>
+            <div className={styles.actionItem} onClick={handleNotReady}>
               <div className={styles.navItem}>THEME</div>
             </div>
           </div>
