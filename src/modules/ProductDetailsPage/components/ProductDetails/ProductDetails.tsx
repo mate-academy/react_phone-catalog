@@ -1,18 +1,22 @@
 import classNames from 'classnames';
-import { useFavouriteProducts } from '../../store/FavouriteProductsContext';
-import { CategoryProduct } from '../../types/CategoryProduct';
-import { Product } from '../../types/Product';
-import { Button } from '../Button/Button';
-import { FavouritesButton } from '../FavouritesButton';
-import { PriceBlock } from '../PriceBlock';
+
+import { CategoryProduct } from '../../../../types/CategoryProduct';
+import { Product } from '../../../../types/Product';
+import { Button } from '../../../../components/Button';
+import { FavouritesButton } from '../../../../components/FavouritesButton';
+import { PriceBlock } from '../../../../components/PriceBlock';
 import styles from './ProductDetails.module.scss';
-import { PRODUCT_COLORS } from '../../constants/productColors';
-import { Link, NavLink } from 'react-router-dom';
+import { PRODUCT_COLORS } from '../../../../constants/productColors';
+import { NavLink } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import { ProductsSlider } from '../ProductsSlider/ProductsSlider';
-import { getCharacteristics, getTechSpecs } from '../../utils/productSpecs';
-import { ArrowIcon } from '../Icons/ArrowIcon';
-import { Breadcrunbs } from '../Breadcrumbs';
+import { ProductsSlider } from '../../../../components/ProductsSlider';
+import {
+  getCharacteristics,
+  getTechSpecs,
+} from '../../../../utils/productSpecs';
+import { Breadcrumbs } from '../../../../components/Breadcrumbs';
+import { BackBtn } from '../../../../components/BackBtn';
+import { useShoppingCart } from '../../../../store/CartContext';
 
 type Props = {
   productDetails: CategoryProduct;
@@ -25,7 +29,6 @@ export const ProductDetails: React.FC<Props> = ({
   product,
   suggestedProducts,
 }) => {
-  const { handleFavourites } = useFavouriteProducts();
   const {
     id,
     name,
@@ -41,6 +44,8 @@ export const ProductDetails: React.FC<Props> = ({
   } = productDetails;
 
   const [selectedImg, setSelectedImg] = useState('');
+
+  const { addToCart } = useShoppingCart();
 
   useEffect(() => {
     setSelectedImg(images[0]);
@@ -69,11 +74,9 @@ export const ProductDetails: React.FC<Props> = ({
 
   return (
     <div className={styles.product}>
-      <Breadcrunbs name={name} />
-      <Link className={styles.product__backBtn} to="..">
-        <ArrowIcon />
-        <p className="text-small">Back</p>
-      </Link>
+      <Breadcrumbs name={name} />
+      <BackBtn />
+
       <h2>{name}</h2>
       <section className={styles.product__details}>
         <div className={styles.product__images}>
@@ -149,12 +152,10 @@ export const ProductDetails: React.FC<Props> = ({
             </div>
 
             <div className={styles.product__btns}>
-              <Button text="Add to cart" />
-              {product && (
-                <div onClick={() => handleFavourites(product)}>
-                  <FavouritesButton productId={product.id} />
-                </div>
-              )}
+              <div onClick={() => addToCart(product)}>
+                <Button product={product} text="Add to cart" />
+              </div>
+              <FavouritesButton product={product} />
             </div>
 
             <div className={styles.product__characteristics}>

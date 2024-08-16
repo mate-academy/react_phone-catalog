@@ -8,7 +8,7 @@ type Props = {
   name?: string;
 };
 
-export const Breadcrunbs: React.FC<Props> = ({ name }) => {
+export const Breadcrumbs: React.FC<Props> = ({ name }) => {
   const { pathname } = useLocation();
 
   const category = pathname.split('/')[1];

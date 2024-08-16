@@ -48,7 +48,6 @@
   &__iconCounter {
     position: absolute;
     top: 18px;
-    left: 32px;
 
     display: flex;
     align-items: center;
@@ -61,5 +60,13 @@
     color: $white-color;
     border-radius: 50%;
     font-size: 9px;
+  }
+
+  &__counterFavourites {
+    left: 32px;
+  }
+
+  &__counterCart {
+    right: 18px;
   }
 }

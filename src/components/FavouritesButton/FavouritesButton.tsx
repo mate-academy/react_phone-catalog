@@ -4,22 +4,28 @@ import { FavouritesIcon } from '../Icons/FavouritesIcon';
 import { FavouritesSelectedIcon } from '../Icons/FavouritesSelectedIcon';
 
 import styles from './FavouritesButton.module.scss';
+import { Product } from '../../types/Product';
 
 type Props = {
-  productId: number;
+  product: Product;
 };
 
-export const FavouritesButton: React.FC<Props> = ({ productId }) => {
-  const { favouriteProducts } = useFavouriteProducts();
+export const FavouritesButton: React.FC<Props> = ({ product }) => {
+  const { favouriteProducts, handleFavourites } = useFavouriteProducts();
+
+  const { id } = product;
 
   const isLiked = useMemo(() => {
     return favouriteProducts.find(
-      favouriteProduct => favouriteProduct.id === productId,
+      favouriteProduct => favouriteProduct.id === id,
     );
-  }, [favouriteProducts, productId]);
+  }, [favouriteProducts, id]);
 
   return (
-    <div className={styles.favouriteButton}>
+    <div
+      onClick={() => handleFavourites(product)}
+      className={styles.favouriteButton}
+    >
       {isLiked ? <FavouritesSelectedIcon /> : <FavouritesIcon />}
     </div>
   );

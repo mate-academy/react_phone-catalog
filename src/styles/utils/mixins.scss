@@ -12,6 +12,7 @@
   padding: 9.5px 0;
   background-color: $accent-color;
   color: $white-color;
+  border: 1px solid $accent-color;
 
   @include hover((box-shadow, 0 3px 13px 0 #17203166));
 }
@@ -34,14 +35,6 @@
   border: 1px solid $grey-color;
   background-color: transparent;
 }
-
-// @mixin hover($property, $toValue) {
-//   transition: #{$property} $transition-duration;
-
-//   &:hover {
-//     #{$property}: $toValue;
-//   }
-// }
 
 @mixin hover($properties...) {
   @each $property, $toValue in $properties {

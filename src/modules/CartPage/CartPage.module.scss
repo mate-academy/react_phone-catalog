@@ -1,3 +1,40 @@
+@import '../../styles/index';
+
 .cart {
-  font-style: normal;
+  &__wrapper {
+    @include flex;
+
+    gap: 16px;
+    margin: 32px 0 80px;
+  }
+
+  &__checkout {
+    width: 368px;
+    height: fit-content;
+    border-radius: 16px;
+    border: 1px solid $elements-color;
+    padding: 24px;
+    text-align: center;
+  }
+
+  &__quantity {
+    color: $secondary-text-color;
+    font-weight: 500;
+  }
+
+  &__divider {
+    @include divider;
+
+    margin: 24px 0;
+  }
+
+  &__empty {
+    margin: 40px 0 30px;
+  }
+
+  &__emptyImg {
+    width: 400px;
+    margin: 0 auto 30px;
+    display: block;
+  }
 }

@@ -1,13 +1,13 @@
 import classNames from 'classnames';
-import { Button } from '../Button/Button';
+import { Button } from '../Button';
 import styles from './ProductCard.module.scss';
 
 import { Product } from '../../types/Product';
-import { useFavouriteProducts } from '../../store/FavouriteProductsContext';
 
 import { FavouritesButton } from '../FavouritesButton/FavouritesButton';
 import { Link } from 'react-router-dom';
 import { PriceBlock } from '../PriceBlock';
+import { useShoppingCart } from '../../store/CartContext';
 
 type Props = {
   product: Product;
@@ -15,7 +15,6 @@ type Props = {
 
 export const ProductCard: React.FC<Props> = ({ product }) => {
   const {
-    id,
     category,
     itemId,
     name,
@@ -27,12 +26,12 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
     image,
   } = product;
 
+  const { addToCart } = useShoppingCart();
+
   const techValueClassName = classNames(
     'text-small',
     styles.productCard__techValue,
   );
-
-  const { handleFavourites } = useFavouriteProducts();
 
   const link = `/${category}/${itemId}`;
 
@@ -43,7 +42,9 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
       </Link>
       <div>
         <Link to={link}>
-          <p className="text-body">{name}</p>
+          <p className={classNames(styles.productCard__text, 'text-body')}>
+            {name}
+          </p>
         </Link>
 
         <PriceBlock price={fullPrice} priceDiscount={price} />
@@ -65,10 +66,11 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
           </div>
         </div>
         <div className={styles.productCard__btns}>
-          <Button text="Add to cart" />
-          <div onClick={() => handleFavourites(product)}>
-            <FavouritesButton productId={id} />
+          <div onClick={() => addToCart(product)}>
+            <Button product={product} text="Add to cart" />
           </div>
+
+          <FavouritesButton product={product} />
         </div>
       </div>
     </div>

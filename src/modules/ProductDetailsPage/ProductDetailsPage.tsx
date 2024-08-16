@@ -11,7 +11,7 @@ import { useParams } from 'react-router-dom';
 import { Loader } from '../../components/Loader';
 import styles from './ProductDetailsPage.module.scss';
 import { Product } from '../../types/Product';
-import { ProductDetails } from '../../components/ProductDetails';
+import { ProductDetails } from './components/ProductDetails';
 
 type Props = {
   productType: string;

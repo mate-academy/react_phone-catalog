@@ -2,7 +2,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Autoplay } from 'swiper/modules';
 
 import styles from './PicturesSlider.module.scss';
-import { ArrowIcon } from '../Icons/ArrowIcon';
+import { ArrowIcon } from '../../../../components/Icons/ArrowIcon';
 
 export const PicturesSlider = () => {
   return (

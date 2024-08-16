@@ -1,4 +1,4 @@
-import React, { useCallback, useContext, useMemo, useState } from 'react';
+import React, { useContext, useMemo, useState } from 'react';
 import { Product } from '../types/Product';
 
 interface FavouriteContext {
@@ -31,24 +31,21 @@ export const FavouriteProductsProvider: React.FC<Props> = ({ children }) => {
     localStorage.setItem('favouriteProducts', JSON.stringify(data));
   };
 
-  const handleFavourites = useCallback(
-    (newProduct: Product) => {
-      const likedProduct = favourites.find(
-        (favourite: Product) => favourite.id === newProduct.id,
+  const handleFavourites = (newProduct: Product) => {
+    const likedProduct = favouriteProducts.find(
+      (favourite: Product) => favourite.id === newProduct.id,
+    );
+
+    if (likedProduct) {
+      const updatedFavourites = favouriteProducts.filter(
+        (favourite: Product) => favourite.id !== newProduct.id,
       );
 
-      if (likedProduct) {
-        const updatedFavourites = favourites.filter(
-          (favourite: Product) => favourite.id !== newProduct.id,
-        );
-
-        updateFavouriteProducts(updatedFavourites);
-      } else {
-        updateFavouriteProducts([...favourites, newProduct]);
-      }
-    },
-    [favourites],
-  );
+      updateFavouriteProducts(updatedFavourites);
+    } else {
+      updateFavouriteProducts([...favouriteProducts, newProduct]);
+    }
+  };
 
   const value = {
     favouriteProducts,

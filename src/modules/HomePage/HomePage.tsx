@@ -2,9 +2,9 @@ import { useEffect, useState } from 'react';
 import { getProducts } from '../../utils/api';
 import { Product } from '../../types/Product';
 import styles from './HomePage.module.scss';
-import { PicturesSlider } from '../../components/PicturesSlider/PicturesSlider';
-import { ProductsSlider } from '../../components/ProductsSlider/ProductsSlider';
-import { Categories } from '../../components/Categories/Categories';
+import { PicturesSlider } from './components/PicturesSlider';
+import { ProductsSlider } from '../../components/ProductsSlider';
+import { Categories } from './components/Categories';
 
 const NEW_MODEL = 'iPhone 14';
 

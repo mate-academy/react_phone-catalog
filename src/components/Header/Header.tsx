@@ -4,6 +4,7 @@ import { FavouritesIcon } from '../Icons/FavouritesIcon';
 import { CartIcon } from '../Icons/CartIcon';
 import classNames from 'classnames';
 import { useFavouriteProducts } from '../../store/FavouriteProductsContext';
+import { useShoppingCart } from '../../store/CartContext';
 
 export const Header = () => {
   const getLinkClass = ({ isActive }: { isActive: boolean }) =>
@@ -17,6 +18,7 @@ export const Header = () => {
     });
 
   const { favouriteProducts } = useFavouriteProducts();
+  const { shoppingCartProducts } = useShoppingCart();
 
   return (
     <header className={styles.header}>
@@ -41,13 +43,28 @@ export const Header = () => {
         <NavLink to="favourites" className={getLinkClassIcon}>
           <FavouritesIcon />
           {favouriteProducts.length > 0 && (
-            <div className={styles.header__iconCounter}>
+            <div
+              className={classNames(
+                styles.header__iconCounter,
+                styles.header__counterFavourites,
+              )}
+            >
               {favouriteProducts.length}
             </div>
           )}
         </NavLink>
         <NavLink to="cart" className={getLinkClassIcon}>
           <CartIcon />
+          {shoppingCartProducts.length > 0 && (
+            <div
+              className={classNames(
+                styles.header__iconCounter,
+                styles.header__counterCart,
+              )}
+            >
+              {shoppingCartProducts.length}
+            </div>
+          )}
         </NavLink>
       </div>
     </header>

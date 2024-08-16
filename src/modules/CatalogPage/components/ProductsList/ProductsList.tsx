@@ -1,13 +1,16 @@
 import classNames from 'classnames';
-import { Product } from '../../types/Product';
-import { ProductCard } from '../ProductCard';
+import { Product } from '../../../../types/Product';
+import { ProductCard } from '../../../../components/ProductCard';
 import styles from './ProductsList.module.scss';
-import { DropDown } from '../DropDown/DropDown';
-import { mapSortCallbacksToSortKey, SORT_KEY } from '../../constants/sortTypes';
+import {
+  mapSortCallbacksToSortKey,
+  SORT_KEY,
+} from '../../../../constants/sortTypes';
 import { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
+import { Breadcrumbs } from '../../../../components/Breadcrumbs';
+import { DropDown } from '../DropDown';
 import { Pagination } from '../Pagination';
-import { Breadcrunbs } from '../Breadcrumbs';
 
 type Props = {
   products: Product[];
@@ -47,7 +50,7 @@ export const ProductsList: React.FC<Props> = ({
 
   return (
     <>
-      <Breadcrunbs />
+      <Breadcrumbs />
       <h1 className={styles.productsList__title}>{productType}</h1>
       <p className={classNames(styles.productsList__quantity, 'text-body')}>
         {products.length} models

@@ -1,4 +1,4 @@
-@import '../../styles/index';
+@import '../../../../styles/index';
 
 .swiper {
   &__wrapper {
@@ -14,15 +14,15 @@
     border-radius: 8px;
 
     &--1 {
-      background-image: url('../../images/banner-new-phone.png');
+      background-image: url('../../../../images/banner-new-phone.png');
     }
     &--2 {
-      background-image: url('../../images/banner-tablets.png');
+      background-image: url('../../../../images/banner-tablets.png');
       background-position: center;
       background-color: $grey-color;
     }
     &--3 {
-      background-image: url('../../images/banner-accessories.png');
+      background-image: url('../../../../images/banner-accessories.png');
       background-position: top;
       background-color: $red-color;
     }

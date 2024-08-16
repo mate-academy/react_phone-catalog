@@ -1,11 +1,10 @@
 import classNames from 'classnames';
 import { getNumbers } from './utils';
 import { Link, useSearchParams } from 'react-router-dom';
-
 import styles from './Pagination.module.scss';
-import { ArrowIcon } from '../Icons/ArrowIcon';
-import { getSearchWith } from '../../utils/searchParams';
+import { getSearchWith } from '../../../../utils/searchParams';
 import { useEffect, useMemo, useState } from 'react';
+import { ArrowIcon } from '../../../../components/Icons/ArrowIcon';
 
 type Props = {
   total: number;

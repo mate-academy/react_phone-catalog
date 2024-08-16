@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import styles from './Categories.module.scss';
 import classNames from 'classnames';
-import { getProductsQuantityByCategory } from '../../utils/api';
+import { getProductsQuantityByCategory } from '../../../../utils/api';
 import { useEffect, useState } from 'react';
 
 const phonesImg = 'img/categories/phones-category.png';

@@ -4,6 +4,14 @@
   @include button-main;
 
   min-width: 158px;
+
+  &__disabled {
+    background-color: $white-color;
+    color: $accent-color;
+    border: 1px solid $elements-color;
+    pointer-events: none;
+    cursor: auto;
+  }
 }
 
 .button-selected {
