@@ -1,1 +1,19 @@
-// not empty
+* {
+  box-sizing: border-box;
+}
+
+@import './utils/styles/mixins';
+@import './utils/styles/variables';
+@import './utils/styles/extra';
+@import './utils/styles/html';
+@import './components/Menu/Menu';
+@import './components/Navbar/Navbar';
+@import './components/Footer/Footer';
+@import './pages/HomePage/HomePage';
+@import './components/ProductsScroller/ProductsScroller';
+@import './components/ProductsGrid/ProductsGrid';
+@import './components/ProductCard/ProductCard';
+@import './pages/ProductDetailsPage/ProductDetails';
+@import './components/Dropdown/Dropdown';
+@import './pages/CartPage/CartPage';
+@import './pages/PageNotFound/PageNotFound';
