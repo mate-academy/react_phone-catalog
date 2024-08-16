@@ -1,14 +1,15 @@
+import React from 'react';
 import { createRoot } from 'react-dom/client';
 import { Root } from './Root';
-import React from 'react';
-import { AppProvider } from './context/AppContext'
+import { AppProvider } from './context/AppContext';
+import { BrowserRouter as Router } from 'react-router-dom';
 
 createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
     <AppProvider>
-      <Root />
+      <Router>
+        <Root />
+      </Router>
     </AppProvider>
   </React.StrictMode>
-
 );
-<React.Fragment />;
