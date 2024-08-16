@@ -31,6 +31,7 @@ export const Products: React.FC<Props> = ({
     >
       {products.map(product => (
         <li
+          key={product.id}
           className={cn('products__card grid__item', {
             'products__card--slider': type === 'slider',
           })}

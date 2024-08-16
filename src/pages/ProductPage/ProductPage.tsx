@@ -86,8 +86,7 @@ export const ProductPage = () => {
             </section>
           </>
         )}
-
       </div>
     </div>
   )
-}
+};

@@ -9,7 +9,7 @@ type Props = {
   selectItems: SortMethod[] | ItemsOnPage[];
   searchParam: 'sort' | 'itemsOnPage';
   children: React.ReactNode;
-}
+};
 
 export const Selector: React.FC<Props> = ({
   selectItems,
@@ -31,7 +31,7 @@ export const Selector: React.FC<Props> = ({
       const key = Object.keys(SortMethod)[index];
 
       return key;
-    }
+    };
 
     return item;
   };
@@ -49,13 +49,13 @@ export const Selector: React.FC<Props> = ({
 
     return () => {
       document.removeEventListener('click', handleOutsideClick);
-    }
+    };
   }, []);
 
   return (
     <div
       ref={block}
-      className={classNames("selector", {
+      className={classNames('selector', {
         "selector__sort": searchParam === 'sort',
       })}
     >
@@ -65,8 +65,8 @@ export const Selector: React.FC<Props> = ({
         <button
           type='button'
           onClick={() => setIsMenuOpen(!isMenuOpen)}
-          className={classNames("selector__button", {
-            "selector__button--open": isMenuOpen,
+          className={classNames('selector__button', {
+            'selector__button--open': isMenuOpen,
           })}
         >
           <span>
@@ -89,7 +89,8 @@ export const Selector: React.FC<Props> = ({
               <li key={item}>
                 <SearchLink
                   params={{
-                    [searchParam]: getSearchValue(item), page: '1'
+                    [searchParam]: getSearchValue(item),
+                    page: '1',
                   }}
                   onClick={handleSelect}
                   type="button"
@@ -105,5 +106,5 @@ export const Selector: React.FC<Props> = ({
         )}
       </div>
     </div>
-  )
-}
+  );
+};

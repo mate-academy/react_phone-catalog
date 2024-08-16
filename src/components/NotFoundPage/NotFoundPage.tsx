@@ -10,7 +10,7 @@ export const NotFoundPage = () => (
 
       <img
         src={`${LOCAL_URL}/img/product-not-found.png`}
-        alt="Page Not Found"
+        alt='Page Not Found'
         className="not-found__image"
       />
     </div>

@@ -1,6 +1,6 @@
-import { useContext } from 'react'
-import { Map } from '../../components/Map'
-import { FavouritesContext } from '../../contexts/favouritesContext'
+import { useContext } from 'react';
+import { Map } from '../../components/Map';
+import { FavouritesContext } from '../../contexts/favouritesContext';
 import { Products } from '../../components/Products';
 import { ErrorMessage } from '../../components/ErrorMessage';
 import { Errors } from '../../types/Errors';
@@ -16,10 +16,7 @@ export const FavoritesPage = () => {
 
         <h1 className="favorites__title">Favorites</h1>
         <p className="favorites__count">
-          {favourites.length === 1
-            ? '1 item'
-            : `${favourites.length} items`
-          }
+          {favourites.length === 1 ? '1 item' : `${favourites.length} items`}
         </p>
 
         {favourites.length ? (
@@ -29,5 +26,5 @@ export const FavoritesPage = () => {
         )}
       </div>
     </div>
-  )
-}
+  );
+};

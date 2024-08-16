@@ -7,8 +7,8 @@ import classNames from 'classnames';
 import { scrollToTop } from '../../helpers/scrollToTop';
 
 type Props = {
-  total: number,
-}
+  total: number;
+};
 
 export const Pagination: React.FC<Props> = ({ total }) => {
   const [searchParams] = useSearchParams();
@@ -21,7 +21,6 @@ export const Pagination: React.FC<Props> = ({ total }) => {
 
   const isFirstPage = currentPage === 1;
   const isLastPage = currentPage === pages[pages.length - 1];
-
 
   const getNumbers = (from: number, to: number) => {
     const numbers = [];

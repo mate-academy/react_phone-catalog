@@ -3,7 +3,7 @@ import './Map.scss';
 
 type Props = {
   name?: string;
-}
+};
 
 export const Map: React.FC<Props> = ({ name }) => {
   const { pathname } = useLocation();
@@ -12,9 +12,7 @@ export const Map: React.FC<Props> = ({ name }) => {
 
   return (
     <div className="map">
-      <Link
-        to="/"
-      >
+      <Link to="/">
         <span className="icon icon--home"></span>
       </Link>
 
@@ -22,10 +20,7 @@ export const Map: React.FC<Props> = ({ name }) => {
 
       {name ? (
         <div className="map__port">
-          <Link
-            to={`/${path}`}
-            className='map__link'
-          >
+          <Link to={`/${path}`} className='map__link'>
             {normalizedMapText}
           </Link>
 
@@ -37,5 +32,5 @@ export const Map: React.FC<Props> = ({ name }) => {
         <p className="map__text">{normalizedMapText}</p>
       )}
     </div>
-  )
-}
+  );
+};

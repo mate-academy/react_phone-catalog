@@ -1,12 +1,12 @@
-import { useContext, useState } from "react"
-import { CartContext } from "../../contexts/CartContext";
-import { Product } from "../../types/Product";
-import { BackLink } from "../../components/BackLink";
-import { Button } from "../../components/Button";
-import { ErrorMessage } from "../../components/ErrorMessage";
-import { Errors } from "../../types/Errors";
+import { useContext, useState } from 'react'
+import { CartContext } from '../../contexts/CartContext';
+import { Product } from '../../types/Product';
+import { BackLink } from '../../components/BackLink';
+import { Button } from '../../components/Button';
+import { ErrorMessage } from '../../components/ErrorMessage';
+import { Errors } from '../../types/Errors';
 import './CartPage.scss';
-import { CartItem } from "../../components/CartItem";
+import { CartItem } from '../../components/CartItem';
 
 export const CartPage = () => {
   const { cart } = useContext(CartContext);

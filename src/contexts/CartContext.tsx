@@ -1,13 +1,13 @@
-import React from "react";
-import { Product } from "../types/Product";
-import { useLocalStorage } from "../helpers/useLocalStorage";
+import React from 'react';
+import { Product } from '../types/Product';
+import { useLocalStorage } from '../helpers/useLocalStorage';
 
 type State = {
   cart: Product[],
-  setCart: (products: Product[]) => void,
-  addToCart: (product: Product) => void,
-  deleteProduct: (productId: number) => void,
-  deleteProductCopy: (productId: number) => void,
+  setCart: (products: Product[]) => void;
+  addToCart: (product: Product) => void;
+  deleteProduct: (productId: number) => void;
+  deleteProductCopy: (productId: number) => void;
 }
 
 const initialState: State = {
@@ -56,6 +56,5 @@ export const CartProvider: React.FC<Props> = ({ children }) => {
     deleteProductCopy,
   }
 
-  return <CartContext.Provider value={value}>{children}
-    </CartContext.Provider>
+  return <CartContext.Provider value={value}>{children}</CartContext.Provider>
 }

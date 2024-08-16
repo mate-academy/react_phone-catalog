@@ -1,12 +1,12 @@
-import classNames from "classnames"
-import { Link } from "react-router-dom"
-import { ProductDetails } from "../../types/productDetail"
-import { Product } from "../../types/Product";
-import { useContext } from "react";
-import { FavouritesContext } from "../../contexts/favouritesContext";
-import { CartContext } from "../../contexts/CartContext";
-import { Button } from "../Button";
-import { ProductPhotos } from "../ProductPhotos";
+import classNames from 'classnames';
+import { Link } from 'react-router-dom';
+import { ProductDetails } from '../../types/productDetail';
+import { Product } from '../../types/Product';
+import { useContext } from 'react';
+import { FavouritesContext } from '../../contexts/favouritesContext';
+import { CartContext } from '../../contexts/CartContext';
+import { Button } from '../Button';
+import { ProductPhotos } from '../ProductPhotos';
 import './ProductInfo.scss';
 
 type Props = {

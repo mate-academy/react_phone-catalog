@@ -1,8 +1,8 @@
-import { useEffect, useState } from "react"
-import { useParams } from "react-router-dom";
-import { Swiper } from "../../helpers/Swiper";
-import { LOCAL_URL } from "../../api/apiProducts";
-import classNames from "classnames";
+import { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import { Swiper } from '../../helpers/Swiper';
+import { LOCAL_URL } from '../../api/apiProducts';
+import classNames from 'classnames';
 import './ProductPhotos.scss';
 
 type Props = {
@@ -21,7 +21,7 @@ export const ProductPhotos: React.FC<Props> = ({ images }) => {
 
     setTransform(100 * i);
     setMainPhoto(images[i]);
-  }
+  };
 
   const { handleTouchStart, handleTouchMove } = Swiper(
     handleSlideChange,
@@ -60,7 +60,7 @@ export const ProductPhotos: React.FC<Props> = ({ images }) => {
           <button
             key={image}
             type="button"
-            className={classNames("product-photos__button", {
+            className={classNames('product-photos__button', {
               'product-photos__button--active': image === mainPhoto,
             })}
             onClick={() => handleSlideChange(i)}
@@ -74,5 +74,5 @@ export const ProductPhotos: React.FC<Props> = ({ images }) => {
         ))}
       </div>
     </div>
-  )
-}
+  );
+};
