@@ -29,6 +29,7 @@ export const Catalog: React.FC = () => {
   const [pagesWithProducts, setPagesWithProducts] = useState<number[]>([]);
   const [startShowFrom, setStartShowFrom] = useState(0);
   const [noProductsMessage, setNoProductsMessage] = useState('');
+  const [filterLoader, setFilterLoader] = useState(false);
 
   const productsFromServer = useAppSelector(state => state.products.objects);
   const loadingStatus = useAppSelector(state => state.products.loading);
@@ -268,7 +269,7 @@ export const Catalog: React.FC = () => {
               className={styles.catalog__quantity}
             >{`${models} ${models === 1 ? 'model' : 'models'}`}</p>
 
-            <SearchBar />
+            <SearchBar setLoader={setFilterLoader} />
 
             <CatalogFilters
               page={page}
@@ -280,11 +281,12 @@ export const Catalog: React.FC = () => {
             />
 
             {loadingStatus && <Loader />}
+
             {loadingError !== '' && (
               <p className={'has-text-danger'}>{loadingError}</p>
             )}
 
-            {catalogContent}
+            {filterLoader ? <Loader /> : catalogContent}
 
             <PagesSwitcher
               sortBy={sortBy}

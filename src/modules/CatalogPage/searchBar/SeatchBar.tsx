@@ -8,7 +8,11 @@ interface SearchParams {
   [key: string]: string | string[] | null;
 }
 
-export const SearchBar: React.FC = () => {
+interface SearchBarType {
+  setLoader: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+export const SearchBar: React.FC<SearchBarType> = ({ setLoader }) => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [localQuery, setLocalQuery] = useState(searchParams.get('query') || '');
   const isDark = useAppSelector(state => state.boolean.isDark);
@@ -35,11 +39,14 @@ export const SearchBar: React.FC = () => {
       query: value,
     });
 
+    setLoader(false);
     setSearchParams(updatedParams);
   }, 1000);
 
   const handleQueryChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const value = event.target.value;
+
+    setLoader(true);
 
     setLocalQuery(value);
 
