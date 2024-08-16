@@ -28,7 +28,7 @@ export const ProductSlider: React.FC<ProductSliderProps> = ({ title, count }) =>
 
   const displayedItems = useMemo(() => {
     return products.slice(-count);
-  }, [products]); // SIMPLIFICATION - MUST BE BASED ON SORTING - WILL BE UPDATED
+  }, [products]); // SIMPLIFICATION - MUST BE BASED ON SORTING - WILL BE UPDATED LATER
 
   const [position, setPosition] = useState<number>(0);
   const [positionCount, setPositionCount] = useState<number>(0);
@@ -44,7 +44,7 @@ export const ProductSlider: React.FC<ProductSliderProps> = ({ title, count }) =>
 
   const handlePreviousSlide = () => {
     handlePositionCount(-1);
-    setPosition((prevPosition) => prevPosition + 292); // Aktualizacja pozycji
+    setPosition((prevPosition) => prevPosition + 292); // FIXED NUMBER WILL BE REPLACED LATER -> window.innerWidth
   };
 
   console.log(positionCount);
@@ -68,7 +68,7 @@ export const ProductSlider: React.FC<ProductSliderProps> = ({ title, count }) =>
           <button
             className={styles.arrowButton}
             onClick={() => {
-              if (positionCount !== 6) { // FIXED NUMBER=6 NEED TO BE CORRECTED - depends on number of items and
+              if (positionCount !== 6) { // FIXED NUMBER=6 NEED TO BE CORRECTED LATER - depends on number of items
                 handleNextSlide();
               }
             }}
