@@ -17,7 +17,7 @@ export const Footer = () => {
       </div>
       <div className="footer__links">
         <NavLink
-          to="https://Hanna-Balabukha.github.io/react_phone-catalog/"
+          to="https://github.com/mate-academy/react_phone-catalog/pull/387"
           className="footer__link"
         >
           GITHUB

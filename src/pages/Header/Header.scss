@@ -185,6 +185,25 @@
     }
   }
 
+  &__input {
+    // position: absolute;
+    right: 0;
+    bottom: 0;
+    z-index: 0;
+
+    &__item {
+      width: 100%;
+
+      @include on-tablet {
+        width: 90px;
+      }
+
+      @include on-desktop {
+        width: 170px;
+      }
+    }
+  }
+
   &__heart {
     display: flex;
     justify-content: center;

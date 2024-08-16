@@ -15,7 +15,6 @@ import {
   setProductInfo,
 } from '../../features/productInfoSlice';
 import { useLocalStorage } from '../../LocaleStorage/LocaleStorage';
-import { NotFoundPage } from '../NotFoundPage/NotFoundPage';
 import { actions as favActions } from '../../features/favSlice';
 import { actions as cartActions, removeProduct } from '../../features/cartSlice';
 import { Loader } from '../../components/Loader';
@@ -61,7 +60,7 @@ export const ProductDetails = () => {
   }, [dispatch, choosenProduct]);
 
   if (!product) {
-    return <NotFoundPage />;
+    return <div>Product was not found</div>;
   }
 
   const favClick = favProducts.find(item => item.id === choosenProduct?.id);
@@ -161,27 +160,27 @@ export const ProductDetails = () => {
             </div>
           </div>
           {loader 
-          ? <Loader/>
-          : <div className="details__product grid grid--tablet">
-            <h1
-              className="details__product__name
-              grid__item--tablet-1-9
-              grid__item--desktop-1-19"
-            >
-              {product?.name}
-            </h1>
-            <div
-              className="details__product__mainImg
-            grid__item--tablet-2-5
-            grid__item--desktop-3-12"
-            >
-              <img
-                src={currentImage ? currentImage : product.images[0]}
-                alt={product?.category}
-                className="details__product__img"
-                onClick={handleNextImg}
-              />
-            </div>
+            ? <Loader/>
+            : <div className="details__product grid grid--tablet">
+              <h1
+                className="details__product__name
+                grid__item--tablet-1-9
+                grid__item--desktop-1-19"
+              >
+                {product?.name}
+              </h1>
+              <div
+                className="details__product__mainImg
+              grid__item--tablet-2-5
+              grid__item--desktop-3-12"
+              >
+                <img
+                  src={currentImage ? currentImage : product.images[0]}
+                  alt={product?.category}
+                  className="details__product__img"
+                  onClick={handleNextImg}
+                />
+              </div>
             <div
               className="details__product__selectImg
                 grid__item--tablet-1-1

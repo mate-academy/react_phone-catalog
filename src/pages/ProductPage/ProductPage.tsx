@@ -8,6 +8,7 @@ import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { Category } from '../../types/category';
 import { ProductList } from '../ProductList/ProductList';
 import { fetchProducts } from '../../features/productssSlice';
+import { actions } from '../../features/seacrchSlice';
 
 interface Props {
   title: string;
@@ -16,6 +17,8 @@ interface Props {
 
 export const ProductPage: React.FC<Props> = ({ title, category }) => {
   const dispatch = useAppDispatch();
+
+  const query = useAppSelector(state => state.search.query);
 
   const products = useAppSelector(state => state.products);
 
@@ -67,6 +70,27 @@ export const ProductPage: React.FC<Props> = ({ title, category }) => {
     return item.charAt(0).toUpperCase() + item.slice(1);
   };
 
+  const filteredProducts = useMemo(() => {
+    if (!query) {
+      return visibleItems;
+    }
+
+    return visibleItems.filter(item => 
+      item.id.toLowerCase().includes(query.toLowerCase()));
+  }, [visibleItems, query],
+  );
+  
+  useEffect(() => {
+   const act = actions.setVisible(true);
+    dispatch(act)
+
+    return () => {
+      dispatch(actions.setVisible(false));
+    }
+  }, [])
+
+  console.log(filteredProducts)
+
   return (
     <div className="productsPage">
       <div className="productsPage__constrain">
@@ -113,7 +137,7 @@ export const ProductPage: React.FC<Props> = ({ title, category }) => {
         </div>
 
         <div className="productsPage__container">
-          <ProductList products={visibleItems} />
+          <ProductList products={filteredProducts} category={category}/>
         </div>
       </div>
     </div>

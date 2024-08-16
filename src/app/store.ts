@@ -15,14 +15,15 @@ import {
   PURGE,
 } from 'redux-persist';
 import cartSlice from '../features/cartSlice';
+import seacrchSlice from '../features/seacrchSlice';
 
 const persistConfig = {
-  key: 'root',
+  key: 'favorite',
   storage,
 };
 
 const persistConf = {
-  key: 'root',
+  key: 'cart',
   storage,
 };
 
@@ -35,6 +36,7 @@ export const store = configureStore({
     selectedProduct: productInfoSlice,
     favourites: persistedReducer,
     cartItems: persistedReduc,
+    search: seacrchSlice,
     // themeSwitcher: themeSlice,
   },
   middleware: getDefaultMiddleware =>

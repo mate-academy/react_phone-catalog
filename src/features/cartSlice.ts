@@ -24,14 +24,10 @@ export const removeProduct = createAsyncThunk(
     const payloadParams = {
       id
     }
-
-    console.log('sending/remove prod to the server', payloadParams)
     
     const myPromise = new Promise<typeof payloadParams>((resolve) => {
       setTimeout(() => {
         resolve(payloadParams);
-
-        console.log('received prod')
       }, 1000);
     });
 

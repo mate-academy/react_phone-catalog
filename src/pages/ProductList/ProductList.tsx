@@ -8,13 +8,15 @@ import { PhoneTablAccessCard } from '../../components/PhoneTablAccessCard/PhoneT
 import { useAppSelector } from '../../app/hooks';
 import { Loader } from '../../components/Loader';
 import { useLocalStorage } from '../../LocaleStorage/LocaleStorage';
+import { Category } from '../../types/category';
 
 interface Props {
   products: TabAccessPhone[];
+  category?: Category;
   sorted?: SortByItem | undefined;
 }
 
-export const ProductList: React.FC<Props> = ({ products }) => {
+export const ProductList: React.FC<Props> = ({ products, category }) => {
   const { loading } = useAppSelector(state => state.products);
 
   const [searchParams] = useSearchParams();
@@ -65,17 +67,21 @@ export const ProductList: React.FC<Props> = ({ products }) => {
         {loading ? (
           <Loader />
         ) : (
-          filtered?.map((product: TabAccessPhone) => {
-            return (
-              <NavLink
-                key={product.id}
-                to={`/${product.category}/${product.id}`}
-                className="productsPage__link"
-              >
-                <PhoneTablAccessCard product={product} key={product.id} />
-              </NavLink>
-            );
-          })
+          (filtered
+            ? filtered?.map((product: TabAccessPhone) => {
+                return (
+                  <NavLink
+                    key={product.id}
+                    to={`/${product.category}/${product.id}`}
+                    className="productsPage__link"
+                  >
+                    <PhoneTablAccessCard product={product} key={product.id} />
+                  </NavLink>
+                );
+              })
+            : <div>There are no {category} yet</div>
+          )
+          
         )}
       </ul>
       {showPagination ? <Pagination products={choosenItems} /> : null}

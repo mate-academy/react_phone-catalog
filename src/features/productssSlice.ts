@@ -9,7 +9,6 @@ export type AllProducts = {
   accessories: TabAccessPhone[];
   loading: boolean;
   error: boolean;
-  query: string;
 };
 
 const initialState: AllProducts = {
@@ -18,7 +17,6 @@ const initialState: AllProducts = {
   accessories: [],
   loading: false,
   error: false,
-  query: '',
 };
 
 const phonesUrl = 'phones.json';
@@ -62,13 +60,7 @@ export const fetchProducts = createAsyncThunk(
 const productsSlice = createSlice({
   name: 'products',
   initialState,
-  reducers: {
-    setQuery: (state, action) => {
-      const currentState = state;
-
-      currentState.query = action.payload;
-    },
-  },
+  reducers: {},
   extraReducers: builder => {
     builder
       .addCase(fetchAllProducts.pending, state => {
@@ -110,5 +102,4 @@ const productsSlice = createSlice({
   },
 });
 
-export const { setQuery } = productsSlice.actions;
 export default productsSlice.reducer;

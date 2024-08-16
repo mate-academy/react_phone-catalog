@@ -52,6 +52,6 @@ export const client = {
   get: <T>(url: string) => request<T>(url),
 };
 
-export const getProductDetails = (phoneId: string) => {
-  return client.get<TabAccessPhone>(`${BASE_URL}${phoneId}.json`);
+export const getProductDetails = (id: string) => {
+  return client.get<TabAccessPhone>(`${BASE_URL}${id}.json`);
 };

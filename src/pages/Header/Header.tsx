@@ -1,19 +1,36 @@
 import { NavLink } from 'react-router-dom';
-import React, { useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import './Header.scss';
 import Logo from '../../images/homePage/Logo.svg';
 import Favorites from '../../images/homePage/Favorites.svg';
 import favImage from '../../images/favImage.svg';
 import Cart from '../../images/homePage/Cart.svg';
 import classNames from 'classnames';
-import { useAppSelector } from '../../app/hooks';
+import { useAppDispatch, useAppSelector } from '../../app/hooks';
+import { actions } from '../../features/seacrchSlice';
+import debounce from 'lodash.debounce';
 
 export const Header: React.FC = () => {
   const { favProducts } = useAppSelector(state => state.favourites);
   const { cartProducts } = useAppSelector(state => state.cartItems);
+  const dispatch = useAppDispatch();
+
+  const query = useAppSelector(state => state.search.query);
+  const [appliedQuery, setAppliedQuery] = useState('');
+  const visibleSearch = useAppSelector(state => state.search.visibleSearch);
+
+  const applyQuery = useCallback(
+    debounce(setAppliedQuery, 1000),
+    [],
+  );
+
+  const handleQuery = (value: string) => {
+    dispatch(actions.setQuery(value));
+    applyQuery(value.toLowerCase());
+  };
 
   const [opened, setOpened] = useState(false);
-
+  
   const handlePage = () => {
     setOpened(false);
   };
@@ -76,12 +93,26 @@ export const Header: React.FC = () => {
           </NavLink>
         </ul>
       </div>
-
+        {visibleSearch
+          ? (
+            <div className='header__input'>
+              <input
+                className='header__input__item'
+                type="search"
+                placeholder='Search...'
+                value={query}
+                onChange={event => handleQuery(event.target.value)}
+              >
+              </input>
+            </div>
+          )
+          : null
+        }
       <div
         className={classNames('header__preferies', {
           'header__preferies--active': opened === true,
         })}
-      >
+      > 
         <div className="header__preferies__link">
           <NavLink
             to="/favourites"
