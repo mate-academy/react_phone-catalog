@@ -109,11 +109,11 @@ Use React Context or Redux to store Items.
 7. Show the quantity at the `Cart` icon in the header.
 8. Save the `Cart` to `localStorage` on each change and read it on page load. -->
 
-9. `Checkout` button should show a modal dialog with the text `Checkout is not implemented yet. Do you want to clear the Cart?`:
+<!-- 9. `Checkout` button should show a modal dialog with the text `Checkout is not implemented yet. Do you want to clear the Cart?`:
    - Clear the Cart if the user confirms the order;
    - Keep the Cart items and close the confirmation on cancel;
 
-- Use the `confirm` function if you don't have a better solution.
+- Use the `confirm` function if you don't have a better solution. -->
 
 <!-- ## Favorites page
 

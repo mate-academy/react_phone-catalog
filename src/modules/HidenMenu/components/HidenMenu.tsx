@@ -3,6 +3,7 @@ import styles from './HidenMenu.module.scss';
 import { useAppDispatch, useAppSelector } from './../../../app/hooks';
 import { setHidenMenuIco } from '../../../features/iconsChangerSlice';
 import { setIsMenuShown } from '../../../features/booleanSlice';
+import React from 'react';
 
 export const HidenMenu: React.FC = () => {
   const dispatch = useAppDispatch();

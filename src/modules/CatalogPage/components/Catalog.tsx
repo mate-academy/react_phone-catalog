@@ -28,6 +28,7 @@ export const Catalog: React.FC = () => {
   const [displayedProducts, setDisplayedProducts] = useState<Product[]>([]);
   const [pagesWithProducts, setPagesWithProducts] = useState<number[]>([]);
   const [startShowFrom, setStartShowFrom] = useState(0);
+  const [noProductsMessage, setNoProductsMessage] = useState('');
 
   const productsFromServer = useAppSelector(state => state.products.objects);
   const loadingStatus = useAppSelector(state => state.products.loading);
@@ -105,15 +106,36 @@ export const Catalog: React.FC = () => {
     let filteredProduct;
 
     if (query) {
-      filteredProduct = productsFromServer.filter(
-        prod =>
+      filteredProduct = productsFromServer.filter(prod => {
+        const splitedProductName = prod.name.toLowerCase().split(' ');
+        const splitedQuery = query.toLowerCase().split(' ');
+        const searchKeyWords: string[] = [];
+
+        for (const word of splitedQuery) {
+          if (word !== '') {
+            searchKeyWords.push(word);
+          }
+        }
+
+        if (
           prod.category === categ &&
-          prod.name.toLowerCase().includes(query.toLowerCase()),
+          searchKeyWords.every(word => splitedProductName.includes(word))
+        ) {
+          return prod;
+        } else {
+          return false;
+        }
+      });
+
+      setNoProductsMessage(
+        `There are no ${location.pathname.slice(1)} matching the query`,
       );
     } else {
       filteredProduct = productsFromServer.filter(
         prod => prod.category === categ,
       );
+
+      setNoProductsMessage(`There are no ${location.pathname.slice(1)} yet`);
     }
 
     dispatch(setModels(filteredProduct.length));
@@ -194,15 +216,13 @@ export const Catalog: React.FC = () => {
     !loadingStatus
   ) {
     catalogContent = (
-      <p className={styles.catalog__empty}>
-        There are no {location.pathname.slice(1)} yet{' '}
-      </p>
+      <p className={styles.catalog__empty}>{noProductsMessage}</p>
     );
   } else if (fetchProductsErrorText) {
     catalogContent = (
       <button
         onClick={handleReloadButton}
-        className={`${styles.catalog__reload} ${styles.blackButtonBase}`}
+        className={`${styles.catalog__reload} ${styles.blackButtonBase} ${isDark && styles.darkReload}`}
       >
         Reload
       </button>

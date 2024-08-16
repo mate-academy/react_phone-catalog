@@ -2,6 +2,7 @@
   "extends": "@mate-academy/students-ts-config",
   "include": ["src", ".eslintrc.js"],
   "compilerOptions": {
+    "jsx": "react",
     "sourceMap": false,
     "types": ["node", "cypress"]
   }

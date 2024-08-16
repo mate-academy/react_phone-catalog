@@ -77,3 +77,12 @@
     }
   }
 }
+
+.darkReload {
+  color: var(--dark-white-color);
+  background-color: var(--dark-accent-color);
+
+  &:hover {
+    background-color: var(--dark-accent-hover-color);
+  }
+}

@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
 import { CardButtonsBlock } from '../CardButtonsBlock/CardButtonsBlock';
 import { useDispatch } from 'react-redux';
 import { handleClickOnGadget } from './../clickOnGadget';
+import React from 'react';
 
 type Props = {
   gadget: Product;

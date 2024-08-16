@@ -1,4 +1,5 @@
 import styles from './Loader.module.scss';
+import React from 'react';
 
 export const Loader = () => (
   <div className={styles.Loader}>

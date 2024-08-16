@@ -256,9 +256,27 @@ export const App: React.FC = () => {
             onClick={handleDarkModeSwither}
             className={styles.darkModeButton}
           >
+            <p
+              className={`
+                ${styles.darkModeButton__text}
+                ${styles.darkModeButton__darkText}
+                ${isDark && styles.off}
+              `}
+            >
+              dark
+            </p>
             <div
               className={`${styles.darkModeButton__runner} ${isDark && styles.isDark}`}
             ></div>
+            <p
+              className={`
+                ${styles.darkModeButton__text}
+                ${styles.darkModeButton__lightText}
+                ${!isDark && styles.off}
+              `}
+            >
+              light
+            </p>
           </div>
 
           <div className={styles.icons}>

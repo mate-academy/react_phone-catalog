@@ -7,6 +7,7 @@ import 'swiper/scss/free-mode';
 import 'swiper/scss/pagination';
 import 'swiper/scss/navigation';
 import { useAppSelector } from '../../../app/hooks';
+import React from 'react';
 
 export const WelcomeSlider = () => {
   const isDark = useAppSelector(state => state.boolean.isDark);

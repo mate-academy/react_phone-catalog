@@ -1,7 +1,8 @@
 import { useSearchParams } from 'react-router-dom';
 import styles from './SearchBar.module.scss';
-import React from 'react';
+import React, { useState } from 'react';
 import { useAppSelector } from '../../../app/hooks';
+import debounce from 'debounce';
 
 interface SearchParams {
   [key: string]: string | string[] | null;
@@ -9,7 +10,7 @@ interface SearchParams {
 
 export const SearchBar: React.FC = () => {
   const [searchParams, setSearchParams] = useSearchParams();
-  const query = searchParams.get('query') || '';
+  const [localQuery, setLocalQuery] = useState(searchParams.get('query') || '');
   const isDark = useAppSelector(state => state.boolean.isDark);
 
   function getSearchWith(
@@ -29,16 +30,20 @@ export const SearchBar: React.FC = () => {
     return newParams;
   }
 
-  const handleQueryChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const updateParams = debounce((value: string) => {
     const updatedParams = getSearchWith(searchParams, {
-      query: event.target.value,
+      query: value,
     });
 
-    const params = new URLSearchParams();
-
-    params.set('query', event.target.value);
-
     setSearchParams(updatedParams);
+  }, 1000);
+
+  const handleQueryChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const value = event.target.value;
+
+    setLocalQuery(value);
+
+    updateParams(value);
   };
 
   return (
@@ -57,7 +62,7 @@ export const SearchBar: React.FC = () => {
         />
       )}
       <input
-        value={query}
+        value={localQuery}
         type="search"
         className={`${styles.searchField} ${isDark && styles.darkSearchField}`}
         placeholder="Search"

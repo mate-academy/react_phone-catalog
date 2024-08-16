@@ -2,7 +2,7 @@ import 'bulma/css/bulma.min.css';
 import './modules/shared/_main.scss';
 
 export * from './App';
-
+import React from 'react';
 import { createRoot } from 'react-dom/client';
 import { App } from './App';
 import { Route, HashRouter as Router, Routes } from 'react-router-dom';
