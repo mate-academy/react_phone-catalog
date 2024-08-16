@@ -3,6 +3,7 @@ import { ActionButtons } from '../ActionButtons';
 import { ProductPhone, ProductTablet, ProductAccessory } from '../../types/Product';
 import { Link } from 'react-router-dom';
 import styles from './ProductCard.module.scss';
+import { useAppContext } from '../../context/AppContext';
 
 type ProductCardProps = {
   product: ProductPhone | ProductTablet | ProductAccessory;
@@ -14,13 +15,20 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
     return <div>No product available</div>;
   }
 
-  const { images, name, priceRegular, priceDiscount, screen, capacity, ram } = product;
+  const { id, images, name, priceRegular, priceDiscount, screen, capacity, ram } = product;
+  const { setClickedProductId } = useAppContext();
+
+  const handleClickedProduct = () => {
+    console.log('CLICKED PRODUCTS',id)
+    setClickedProductId(id)
+  }
 
   return (
     <div className={styles.ProductCard}>
       <Link
-        to="/product" // Zmień na odpowiedni link
+        to="/product"
         className={styles.imageContainer}
+        onClick = {handleClickedProduct}
       >
         <img
           className={styles.image}
