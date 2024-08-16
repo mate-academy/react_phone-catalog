@@ -68,4 +68,8 @@
 .addedToCartDark {
   background-color: var(--dark-surface-2-color);
   border: none;
+
+  &:hover {
+    background-color: var(--dark-surface-2-color);
+  }
 }
