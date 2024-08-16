@@ -6,16 +6,18 @@ import { Footer } from './components/Footer';
 import { SideMenu } from './components/SideMenu';
 import { useProducts } from './hooks/useProducts';
 import { Loader } from './components/Loader';
+import { useRef } from 'react';
 
 export const App = () => {
   const { products } = useProducts();
+  const headerRef = useRef<HTMLDivElement>(null);
 
   return (
     <div className="App">
       <h1 className="visually-hidden" id="home">
         Product Catalog
       </h1>
-      <Header />
+      <Header ref={headerRef} />
 
       <SideMenu />
 
@@ -23,7 +25,7 @@ export const App = () => {
         {products.length ? <Outlet /> : <Loader />}
       </div>
 
-      <Footer />
+      <Footer headerRef={headerRef} />
     </div>
   );
 };

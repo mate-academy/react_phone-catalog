@@ -2,6 +2,8 @@ import classNames from 'classnames';
 import { Icon } from '../ui/Icon';
 import styles from './Breadcrumbs.module.scss';
 import '../../styles/main.scss';
+import { Link, useLocation } from 'react-router-dom';
+import { capitalizeFirstLetter } from '../../utils/capitalizeFirstLetter';
 
 // type BreadcrumbItem = {
 //   name: string;
@@ -14,6 +16,14 @@ import '../../styles/main.scss';
 // }
 
 const Breadcrumbs = () => {
+  const { pathname } = useLocation();
+
+  const extractSegment = (path: string) => {
+    const parts = path.split('/').filter(Boolean);
+
+    return parts[0] || '';
+  };
+
   return (
     <div id="breadcrumbs" className="breadcrumbs">
       <nav aria-label="breadcrumb" className={styles.breadcrumbs__nav}>
@@ -21,17 +31,17 @@ const Breadcrumbs = () => {
           className={classNames('nav__list', styles['breadcrumbs__nav-list'])}
         >
           <li className={styles['breadcrumbs__nav-item']}>
-            <a href="#" className={styles['breadcrumb__nav-link']}>
+            <Link to="/" className={styles['breadcrumb__nav-link']}>
               <Icon iconName="home" />
-            </a>
+            </Link>
           </li>
           <li className={styles['breadcrumbs__nav-item']}>
             <span className={styles['breadcrumbs__nav-link-separator']}>
               <Icon iconName="right" />
             </span>
-            <a href="#" className={styles['breadcrumbs__nav-link']}>
-              Phones
-            </a>
+            <span className={styles['breadcrumbs__nav-link']}>
+              {capitalizeFirstLetter(extractSegment(pathname))}
+            </span>
           </li>
         </ul>
       </nav>

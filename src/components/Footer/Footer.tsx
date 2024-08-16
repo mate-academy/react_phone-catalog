@@ -2,8 +2,19 @@ import classNames from 'classnames';
 import styles from './Footer.module.scss';
 import { Icon } from '../ui/Icon';
 import { Link } from 'react-router-dom';
+import { RefObject } from 'react';
 
-export const Footer = () => {
+type FooterProps = {
+  headerRef?: RefObject<HTMLDivElement>;
+};
+
+export const Footer: React.FC<FooterProps> = ({ headerRef }) => {
+  const scrollToTop = () => {
+    if (headerRef && headerRef.current) {
+      headerRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <footer className={styles.footer} id="footer">
       <div className="container">
@@ -58,9 +69,12 @@ export const Footer = () => {
 
           <div className={styles.footer__buttons}>
             <p className="small-text">Back to top</p>
-            <a href="#header" className={classNames(styles.footer__btn)}>
+            <button
+              onClick={scrollToTop}
+              className={classNames(styles.footer__btn)}
+            >
               <Icon iconName="up" />
-            </a>
+            </button>
           </div>
         </div>
       </div>
