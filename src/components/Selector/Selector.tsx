@@ -26,12 +26,12 @@ export const Selector: React.FC<Props> = ({
   };
 
   const getSearchValue = (item: SortMethod | ItemsOnPage) => {
-    if(searchParam === 'sort') {
+    if (searchParam === 'sort') {
       const index = Object.values(SortMethod).indexOf(item as SortMethod);
       const key = Object.keys(SortMethod)[index];
 
       return key;
-    };
+    }
 
     return item;
   };
@@ -56,14 +56,14 @@ export const Selector: React.FC<Props> = ({
     <div
       ref={block}
       className={classNames('selector', {
-        "selector__sort": searchParam === 'sort',
+        selector__sort: searchParam === 'sort',
       })}
     >
       <p className="selector__description">{children}</p>
 
       <div className="selector__container">
         <button
-          type='button'
+          type="button"
           onClick={() => setIsMenuOpen(!isMenuOpen)}
           className={classNames('selector__button', {
             'selector__button--open': isMenuOpen,
@@ -72,8 +72,7 @@ export const Selector: React.FC<Props> = ({
           <span>
             {searchParam === 'sort'
               ? SortMethod[selectedItems as SortKeys] || SortMethod.age
-              : selectedItems
-            }
+              : selectedItems}
           </span>
 
           {isMenuOpen ? (

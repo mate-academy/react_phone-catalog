@@ -20,7 +20,7 @@ export const Map: React.FC<Props> = ({ name }) => {
 
       {name ? (
         <div className="map__port">
-          <Link to={`/${path}`} className='map__link'>
+          <Link to={`/${path}`} className="map__link">
             {normalizedMapText}
           </Link>
 

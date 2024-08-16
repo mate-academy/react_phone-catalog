@@ -12,7 +12,7 @@ import './ProductInfo.scss';
 type Props = {
   productInfo: ProductDetails;
   product: Product | undefined;
-}
+};
 
 export const ProductInfo: React.FC<Props> = ({ productInfo, product }) => {
   const {

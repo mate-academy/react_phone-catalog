@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
 type Callback = (index: number) => void;
 
@@ -9,7 +9,7 @@ export const Swiper = (callback: Callback, edge: number) => {
     const touch = e.touches[0];
 
     setStartX(touch.clientX);
-  }
+  };
 
   const handleTouchMove = (e: React.TouchEvent, currentIndex: number) => {
     if(!startX) {
@@ -25,7 +25,7 @@ export const Swiper = (callback: Callback, edge: number) => {
     }
 
     setStartX(null);
-  }
+  };
 
   return {
     handleTouchStart,

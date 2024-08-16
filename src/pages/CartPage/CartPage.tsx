@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react'
+import { useContext, useState } from 'react';
 import { CartContext } from '../../contexts/CartContext';
 import { Product } from '../../types/Product';
 import { BackLink } from '../../components/BackLink';
@@ -10,8 +10,7 @@ import { CartItem } from '../../components/CartItem';
 
 export const CartPage = () => {
   const { cart } = useContext(CartContext);
-  const totalPrice = cart.reduce(
-    (sum, item) => sum + item.price, 0);
+  const totalPrice = cart.reduce((sum, item) => sum + item.price, 0);
   const [showInfo, setShowInfo] = useState(false);
 
   const preparedCart = cart
@@ -48,20 +47,13 @@ export const CartPage = () => {
             </ul>
 
             <div className="cart-page__checkout">
-              <h2 className="cart-page__price">
-                {`${totalPrice}`}
-              </h2>
+              <h2 className="cart-page__price">{`${totalPrice}`}</h2>
 
               <p className="cart-page__total-amount">
-                {cart.length === 1
-                  ? '1 item'
-                  : `${cart.length} items`
-                }
+                {cart.length === 1 ? '1 item' : `${cart.length} items`}
               </p>
 
-              {!showInfo &&
-                <Button onClick={handleShowInfo}>Checkout</Button>
-              }
+              {!showInfo && <Button onClick={handleShowInfo}>Checkout</Button>}
 
               {showInfo && (
                 <p className="cart-page__info">
@@ -70,10 +62,10 @@ export const CartPage = () => {
               )}
             </div>
           </div>
-        ): (
+        ) : (
           <ErrorMessage message={Errors.EmptyCart} />
         )}
       </div>
     </div>
-  )
-}
+  );
+};

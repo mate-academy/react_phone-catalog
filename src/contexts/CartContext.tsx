@@ -3,12 +3,12 @@ import { Product } from '../types/Product';
 import { useLocalStorage } from '../helpers/useLocalStorage';
 
 type State = {
-  cart: Product[],
+  cart: Product[];
   setCart: (products: Product[]) => void;
   addToCart: (product: Product) => void;
   deleteProduct: (productId: number) => void;
   deleteProductCopy: (productId: number) => void;
-}
+};
 
 const initialState: State = {
   cart: [],
@@ -16,13 +16,13 @@ const initialState: State = {
   addToCart: () => {},
   deleteProduct: () => {},
   deleteProductCopy: () => {},
-}
+};
 
 export const CartContext = React.createContext(initialState);
 
 type Props = {
   children: React.ReactNode;
-}
+};
 
 export const CartProvider: React.FC<Props> = ({ children }) => {
   const [cart, setCart] = useLocalStorage<Product[]>('cart', []);
@@ -31,13 +31,13 @@ export const CartProvider: React.FC<Props> = ({ children }) => {
     const newCart = [...cart, product];
 
     setCart(newCart);
-  }
+  };
 
   const deleteProduct = (id: number) => {
     const newCart = [...cart.filter(item => item.id !== id)];
 
     setCart(newCart);
-  }
+  };
 
   const deleteProductCopy = (id: number) => {
     const index = cart.findIndex(item => item.id === id);
@@ -54,7 +54,7 @@ export const CartProvider: React.FC<Props> = ({ children }) => {
     addToCart,
     deleteProduct,
     deleteProductCopy,
-  }
+  };
 
-  return <CartContext.Provider value={value}>{children}</CartContext.Provider>
-}
+  return <CartContext.Provider value={value}>{children}</CartContext.Provider>;
+};

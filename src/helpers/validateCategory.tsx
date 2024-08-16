@@ -1,6 +1,6 @@
-import { useParams } from "react-router-dom";
-import { Category } from "../types/Category";
-import { NotFoundPage } from "../components/NotFoundPage";
+import { useParams } from 'react-router-dom';
+import { Category } from '../types/Category';
+import { NotFoundPage } from '../components/NotFoundPage';
 
 export const ValidateCategory = ({
   children,
@@ -15,4 +15,4 @@ export const ValidateCategory = ({
   }
 
   return <>{children}</>;
-}
+};

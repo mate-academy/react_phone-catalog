@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState } from 'react';
 
 export function useLocalStorage<T>(
   key: string,
@@ -7,14 +7,14 @@ export function useLocalStorage<T>(
   const [value, setValue] = useState(() => {
     const data = localStorage.getItem(key);
 
-    if(data === null) {
+    if (data === null) {
       return startValue;
     }
 
     try {
       return JSON.parse(data);
     } catch {
-      localStorage.removeItem(key)
+      localStorage.removeItem(key);
 
       return startValue;
     }

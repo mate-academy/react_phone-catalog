@@ -6,8 +6,8 @@ import classNames from 'classnames';
 import './ProductPhotos.scss';
 
 type Props = {
-  images: string[],
-}
+  images: string[];
+};
 
 export const ProductPhotos: React.FC<Props> = ({ images }) => {
   const [transform, setTransform] = useState(0);
@@ -65,11 +65,7 @@ export const ProductPhotos: React.FC<Props> = ({ images }) => {
             })}
             onClick={() => handleSlideChange(i)}
           >
-            <img
-              src={image}
-              alt={`0${i}`}
-              className="product-photos__photo"
-            />
+            <img src={image} alt={`0${i}`} className="product-photos__photo" />
           </button>
         ))}
       </div>
