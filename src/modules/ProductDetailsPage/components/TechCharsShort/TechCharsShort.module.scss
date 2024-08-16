@@ -1,0 +1,21 @@
+@use '../../../../shared/global/GlobalStyles/utils/vars' as *;
+
+.productChars {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+}
+
+.productTechWrap {
+  display: flex;
+  justify-content: space-between;
+}
+
+.productTechChar {
+  color: $secondary-text-color;
+}
+
+.productTechCValue {
+  font-family: $font-family-semibold;
+}
