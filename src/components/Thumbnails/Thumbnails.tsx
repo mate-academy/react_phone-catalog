@@ -59,7 +59,7 @@ export const Thumbnails: React.FC = () => {
       <div className={styles.categoryContainer}>
       {categories.map((category) => (
         <div className={styles.category} key={category}>
-          <Link to="/" className={styles.link}>
+          <Link to={`/${category}`} className={styles.link}>
             <img
               src={`./img/category-${category}.png`}
               className={styles.image}
