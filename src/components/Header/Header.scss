@@ -3,6 +3,8 @@
 
 .header {
   position: sticky;
+  box-sizing: border-box;
+  width: 100%;
   top: 0;
   padding-left: 16px;
   height: 48px;

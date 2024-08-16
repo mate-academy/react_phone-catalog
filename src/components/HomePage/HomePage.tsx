@@ -67,7 +67,7 @@ export const HomePage = () => {
             className="navigation-button navigation-button--home-swiper"
             onClick={() => homeSwiperRef.current.slidePrev()}
           >
-            <img src="\img\arrow-prev.svg" alt="slide prev" />
+            <img src=".\img\arrow-prev.svg" alt="slide prev" />
           </button>
           <Swiper
             modules={[Navigation, Pagination, Autoplay]}
@@ -84,13 +84,13 @@ export const HomePage = () => {
               {onTablet || onDesktop ? (
                 <img
                   className="swiper-image"
-                  src="\img\slider-image-tablet.png"
+                  src=".\img\slider-image-tablet.png"
                   alt="slider image"
                 />
               ) : (
                 <img
                   className="swiper-image"
-                  src="\img\slider-image.png"
+                  src=".\img\slider-image.png"
                   alt="slider image"
                 />
               )}
@@ -99,13 +99,13 @@ export const HomePage = () => {
               {onTablet || onDesktop ? (
                 <img
                   className="swiper-image"
-                  src="\img\slider-image-tablet2.jpg"
+                  src=".\img\slider-image-tablet2.jpg"
                   alt="slider image"
                 />
               ) : (
                 <img
                   className="swiper-image"
-                  src="\img\slider-image2.jpg"
+                  src=".\img\slider-image2.jpg"
                   alt="slider image"
                 />
               )}
@@ -114,13 +114,13 @@ export const HomePage = () => {
               {onTablet || onDesktop ? (
                 <img
                   className="swiper-image"
-                  src="\img\slider-image-tablet3.jpg"
+                  src=".\img\slider-image-tablet3.jpg"
                   alt="slider image"
                 />
               ) : (
                 <img
                   className="swiper-image"
-                  src="\img\slider-image3.jpg"
+                  src=".\img\slider-image3.jpg"
                   alt="slider image"
                 />
               )}
@@ -130,7 +130,7 @@ export const HomePage = () => {
             className="navigation-button navigation-button--home-swiper"
             onClick={() => homeSwiperRef.current.slideNext()}
           >
-            <img src="\img\arrow-next.svg" alt="slide next" />
+            <img src=".\img\arrow-next.svg" alt="slide next" />
           </button>
         </section>
         <section className="brands">
@@ -140,16 +140,16 @@ export const HomePage = () => {
               className="navigation-button"
               onClick={() => brandsSwiperRef.current.slidePrev()}
             >
-              <img src="/img/arrow-prev.svg" alt="slide prev" />
+              <img src="./img/arrow-prev.svg" alt="slide prev" />
             </button>
             <button
               className="navigation-button"
               onClick={() => brandsSwiperRef.current.slideNext()}
             >
               {currentSlide !== 60 ? (
-                <img src="/img/arrow-next.svg" alt="slide next" />
+                <img src="./img/arrow-next.svg" alt="slide next" />
               ) : (
-                <img src="/img/arrow-next-disabled.svg" alt="slide next" />
+                <img src="./img/arrow-next-disabled.svg" alt="slide next" />
               )}
             </button>
           </div>
@@ -192,7 +192,7 @@ export const HomePage = () => {
               <div className="categories__image-box  categories__image-box--phones">
                 <img
                   className="categories__image"
-                  src="img\category-phones.webp"
+                  src="./img/category-phones.webp"
                   alt="phones"
                 />
               </div>
@@ -208,7 +208,7 @@ export const HomePage = () => {
               <div className="categories__image-box  categories__image-box--tablets">
                 <img
                   className="categories__image"
-                  src="img\category-tablets.webp"
+                  src="./img/category-tablets.webp"
                   alt="tablets"
                 />
               </div>
@@ -224,7 +224,7 @@ export const HomePage = () => {
               <div className="categories__image-box categories__image-box--accessories">
                 <img
                   className="categories__image"
-                  src="\img\category-accessories.webp"
+                  src=".\img\category-accessories.webp"
                   alt="accesories"
                 />
               </div>
@@ -244,9 +244,9 @@ export const HomePage = () => {
               disabled={currentSlide === 0}
             >
               {currentSlide !== 0 ? (
-                <img src="/img/arrow-prev.svg" alt="slide prev" />
+                <img src="./img/arrow-prev.svg" alt="slide prev" />
               ) : (
-                <img src="/img/arrow-prev-disabled.svg" alt="slide prev" />
+                <img src="./img/arrow-prev-disabled.svg" alt="slide prev" />
               )}
             </button>
             <button
@@ -254,9 +254,9 @@ export const HomePage = () => {
               onClick={() => hotPricesSwiperRef.current.slideNext()}
             >
               {currentSlide !== 60 ? (
-                <img src="/img/arrow-next.svg" alt="slide next" />
+                <img src="./img/arrow-next.svg" alt="slide next" />
               ) : (
-                <img src="/img/arrow-next-disabled.svg" alt="slide next" />
+                <img src="./img/arrow-next-disabled.svg" alt="slide next" />
               )}
             </button>
           </div>
@@ -308,7 +308,7 @@ export const HomePage = () => {
         <a href="#" className="footer__back-on-top">
           Back to top
           <button className="navigation-button footer__button">
-            <img src="/img/arrow-top.svg" alt="slide top" />
+            <img src="./img/arrow-top.svg" alt="slide top" />
           </button>
         </a>
       </footer>

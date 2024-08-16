@@ -17,8 +17,8 @@ export const ProductCard: React.FC<Props> = ({ id }) => {
   let checkedName = name;
   let dots = false;
 
-  if (name.length > 31) {
-    checkedName = name.slice(0, 31);
+  if (name.length > 25) {
+    checkedName = name.slice(0, 25);
     dots = true;
   }
 
@@ -49,7 +49,7 @@ export const ProductCard: React.FC<Props> = ({ id }) => {
       <div className="product-card__buttons-box">
         <button className="product-card__buy-button">Add to cart</button>
         <button className="product-card__favorite-button">
-          <img src="/img/heart-icon.svg" alt="favorite" />
+          <img src="./img/heart-icon.svg" alt="favorite" />
         </button>
       </div>
     </article>
