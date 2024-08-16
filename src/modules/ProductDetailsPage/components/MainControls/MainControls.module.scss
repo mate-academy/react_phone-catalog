@@ -1,0 +1,121 @@
+@import '../../../../styles/main';
+
+.mainControls {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  @include on-tablet {
+    grid-column: 8 / -1;
+  }
+
+  @include on-desktop {
+    grid-column: 14 / -5;
+
+  }
+}
+
+.divider {
+  width: 100%;
+  height: 1px;
+  background-color: var(--color-elements);
+}
+
+.selector {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  @extend %small-text;
+
+  color: var(--color-secondary);
+}
+
+.buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.colorButtonContainer {
+  width: 32px;
+  height: 32px;
+  border: 2px solid var(--color-surface);
+  border-radius: 50%;
+  padding: 2px;
+}
+
+.colorButton {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 0;
+  padding: 4px;
+  cursor: pointer;
+
+}
+
+.activeColorsAvailable {
+  border: 2px solid var(--color-primary);
+}
+
+.capacityButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 3px;
+  padding-inline: 4px;
+  height: 32px;
+  border: 1px solid var(--color-surface);
+  background-color: transparent;
+  color: var(--color-primary);
+  cursor: pointer;
+
+  @extend %body-text;
+
+}
+
+.active {
+  border: 1px solid var(--color-primary);
+  background-color: var(--color-primary);
+  color: var(--color-background);
+}
+
+.price {
+  display: flex;
+  gap: 8px;
+
+  @extend %h3-tablet;
+}
+
+.existPrice {
+  color: var(--color-primary);
+}
+
+.hotPrice {
+  display: flex;
+  color: var(--color-secondary);
+}
+
+.specsList {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.specs {
+  display: flex;
+  justify-content: space-between;
+}
+
+.specsKey {
+  @extend %body-text;
+
+  color: var(--color-secondary);
+}
+
+.specsValue {
+  @extend %body-text;
+
+  color: var(--color-primary);
+}
