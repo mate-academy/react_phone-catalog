@@ -19,11 +19,19 @@ export const WelcomeSlider = () => {
           id="welcome-slider-arrow-left"
           className={`${styles.moveSlide} ${isDark && styles.moveSlideDark}`}
         >
-          <img
-            className={styles.moveSlide__slideArrow}
-            src="./icons/arrow-left-ico.svg"
-            alt="arrowLeft"
-          />
+          {isDark ? (
+            <img
+              className={styles.moveSlide__slideArrow}
+              src="./icons/dark-theme-icons/white-arrow-left-ico.svg"
+              alt="arrowLeft"
+            />
+          ) : (
+            <img
+              className={styles.moveSlide__slideArrow}
+              src="./icons/arrow-left-ico.svg"
+              alt="arrowLeft"
+            />
+          )}
         </button>
 
         <Swiper
@@ -81,11 +89,19 @@ export const WelcomeSlider = () => {
           id="welcome-slider-arrow-right"
           className={`${styles.moveSlide} ${isDark && styles.moveSlideDark}`}
         >
-          <img
-            className={styles.moveSlide__slideArrow}
-            src="./icons/aroow-right-ico.svg"
-            alt="arrowLeft"
-          />
+          {isDark ? (
+            <img
+              className={styles.moveSlide__slideArrow}
+              src="./icons/dark-theme-icons/white-arrow-right-ico.svg"
+              alt="arrowLeft"
+            />
+          ) : (
+            <img
+              className={styles.moveSlide__slideArrow}
+              src="./icons/aroow-right-ico.svg"
+              alt="arrowLeft"
+            />
+          )}
         </button>
       </div>
 
