@@ -1,5 +1,5 @@
 import { NavLink } from 'react-router-dom';
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import './Header.scss';
 import Logo from '../../images/homePage/Logo.svg';
 import Favorites from '../../images/homePage/Favorites.svg';
@@ -15,19 +15,23 @@ export const Header: React.FC = () => {
   const { cartProducts } = useAppSelector(state => state.cartItems);
   const dispatch = useAppDispatch();
 
-  const query = useAppSelector(state => state.search.query);
   const [appliedQuery, setAppliedQuery] = useState('');
   const visibleSearch = useAppSelector(state => state.search.visibleSearch);
 
-  const applyQuery = useCallback(
-    debounce(setAppliedQuery, 1000),
+  const applyQueryInStore = useCallback(
+    debounce((value) => {
+      dispatch(actions.setQuery(value));
+    }, 1000),
     [],
   );
 
   const handleQuery = (value: string) => {
-    dispatch(actions.setQuery(value));
-    applyQuery(value.toLowerCase());
+    setAppliedQuery(value.toLowerCase());
   };
+
+  useEffect(() => {
+    applyQueryInStore(appliedQuery);
+  }, [appliedQuery])
 
   const [opened, setOpened] = useState(false);
   
@@ -100,7 +104,7 @@ export const Header: React.FC = () => {
                 className='header__input__item'
                 type="search"
                 placeholder='Search...'
-                value={query}
+                value={appliedQuery}
                 onChange={event => handleQuery(event.target.value)}
               >
               </input>
