@@ -65,5 +65,6 @@ export interface ProductAccessory {
   resolution: string;
   processor: string;
   ram: string;
+  camera: string;
   cell: string[];
 }
