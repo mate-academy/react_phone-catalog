@@ -2,10 +2,6 @@ import React from 'react';
 import styles from './TechSpecs.module.scss';
 import { useAppContext } from '../../../../context/AppContext';
 
-/* type TechSpecsProps = {
-  productDetails: ProductDetails;
-}; */
-
 export const TechSpecs: React.FC = () => {
   const { clickedProduct } = useAppContext();
   if (clickedProduct !== undefined) {
