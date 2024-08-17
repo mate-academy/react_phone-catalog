@@ -36,7 +36,7 @@ if (clickedProduct !== undefined) {
         {colorsAvailable.map((color: string)=>
           <div
             className={styles.colorButtonContainer}
-
+            key={color}
           >
 
             <button
