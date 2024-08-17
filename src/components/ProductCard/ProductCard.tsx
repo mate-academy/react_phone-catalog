@@ -20,7 +20,10 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
 
   const handleClickedProduct = () => {
     console.log('CLICKED PRODUCTS',id)
-    setClickedProduct(product)
+    if(product !== undefined) {
+      localStorage.setItem('clickedProduct', JSON.stringify(product));
+      setClickedProduct(product)
+    }
   }
 
   return (
