@@ -37,7 +37,7 @@ if (clickedProduct !== undefined) {
           <button
             className={styles.capacityButton}
           >
-            capacity
+            {`${clickedProduct.capacity}`}
           </button>
         </div>
       </div>
@@ -45,8 +45,8 @@ if (clickedProduct !== undefined) {
       <div className={styles.divider}></div>
 
       <div className={styles.price}>
-        <div className={styles.existPrice}>{`${clickedProduct.priceRegular}`}</div>
-        <div className={styles.hotPrice}>$clickedProduct.priceDiscount</div>
+        <div className={styles.existPrice}>${`${clickedProduct.priceRegular}`}</div>
+        <div className={styles.hotPrice}>${`${clickedProduct.priceDiscount}`}</div>
       </div>
 
       <ActionButtons />
@@ -54,17 +54,17 @@ if (clickedProduct !== undefined) {
       <ul className={styles.specsList}>
         <li className={styles.specs}>
           <strong className={styles.specsKey}>Screen</strong>
-          <span className={styles.specsValue}>clickedProduct.screen</span>
+          <span className={styles.specsValue}>{`${clickedProduct.screen}`}</span>
         </li>
 
         <li className={styles.specs}>
           <strong className={styles.specsKey}>Resolution</strong>
-          <span className={styles.specsValue}>clickedProduct.resolution</span>
+          <span className={styles.specsValue}>{`${clickedProduct.resolution}`}</span>
         </li>
 
         <li className={styles.specs}>
           <strong className={styles.specsKey}>Processor</strong>
-          <span className={styles.specsValue}>clickedProduct.processor</span>
+          <span className={styles.specsValue}>{`${clickedProduct.processor}`}</span>
         </li>
       </ul>
     </div>
