@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styles from './ProductDetailsPage.module.scss'
 import chevronIcon from '../../img/icons/ChevronIcon.svg';
 import { Header } from '../../components/Header';
@@ -11,15 +11,26 @@ import { ImageGallery } from './components/ImageGallery';
 import { TechSpecs } from './components/TechSpecs';
 import { Description } from './components/Description';
 import { MainControls } from './components/MainControls';
+import { Loader } from '../../components/Loader';
 
 
 export const ProductDetailsPage: React.FC = () => {
   const category = useLocation().pathname.slice(1)
   const { clickedProductId, previousCurrentPage } = useAppContext();
   console.log('PAGE CLICKED',category)
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+
+    setIsLoading(false);
+  }, []);
 
   return (
-    <div className={styles.productDetailsPage}>
+    <div>
+       {isLoading ? (
+        <Loader />
+      ) : (
+<div className={styles.productDetailsPage}>
       <PreviousPage category= {category}/>
       <Header />
       <div className={styles.container}>
@@ -47,6 +58,10 @@ export const ProductDetailsPage: React.FC = () => {
       {/* <ProductsSlider title="You may also like" products={suggestedProducts} /> */}
       <Footer />
     </div>
+
+      )}
+    </div>
+
   );
 };
 
