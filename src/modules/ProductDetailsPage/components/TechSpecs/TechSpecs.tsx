@@ -1,14 +1,15 @@
 import React from 'react';
 import styles from './TechSpecs.module.scss';
-import { ProductAccessory, ProductPhone, ProductTablet } from '../../../../types/Product';
+import { useAppContext } from '../../../../context/AppContext';
+/* import { ProductAccessory, ProductPhone, ProductTablet } from '../../../../types/Product'; */
 
-type TechSpecsProps = {
-  clickedProduct: ProductAccessory | ProductPhone | ProductTablet;
-};
+/* type TechSpecsProps = {
+  clickedProduct: ProductAccessory | ProductPhone | ProductTablet | undefined;
+}; */
 
-export const TechSpecs: React.FC<TechSpecsProps> = ({ clickedProduct }) => {
+export const TechSpecs: React.FC = () => {
 
-
+  const {clickedProduct} = useAppContext();
   if (clickedProduct !== undefined) {
   return (
     <div className={styles.section }>

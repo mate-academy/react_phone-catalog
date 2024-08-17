@@ -55,7 +55,7 @@ export const ProductDetailsPage: React.FC = () => {
             <ImageGallery />
             <MainControls clickedProduct={clickedProduct}/>
             <Description />
-            <TechSpecs clickedProduct={clickedProduct}/>
+            <TechSpecs />
           </div>
         )}
       </main>
