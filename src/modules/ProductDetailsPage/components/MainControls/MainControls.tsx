@@ -1,34 +1,30 @@
 import React from 'react';
 import styles from './MainControls.module.scss';
 import { ActionButtons } from '../../../../components/ActionButtons';
-/* import { useAppContext } from '../../../../context/AppContext'; */
-
-
-
+import { useAppContext } from '../../../../context/AppContext';
 
 export const MainControls: React.FC = () => {
-/*   const {clickedProductId} = useAppContext(); */
+  const { clickedProduct } = useAppContext();
+
+  // Placeholder function for attribute changes
+  /*   const handleAttributeChange = (color: string, capacity: string) => {
+    console.log(`Selected color: ${color}, capacity: ${capacity}`);
+  }; */
+if (clickedProduct !== undefined) {
   return (
     <div className={styles.mainControls}>
+
       <div className={styles.selector}>
         <p className={styles.label}>Available colors</p>
 
         <div className={styles.buttons}>
-          {/* {productDetails.colorsAvailable.map(color => ( */}
-            <div
-              className={styles.colorButtonContainer}
-              /* key={color} */
-            >
-              <button
-                /* value={color} */
-                /* style={{ backgroundColor: color }} */
-                className={styles.colorButton}
-                /* onClick={() =>
-                  handleAttributeChange(color, productDetails.capacity)
-                } */
-              />
-            </div>
-
+          <div
+            className={styles.colorButtonContainer}
+          >
+            <button
+              className={styles.colorButton}
+            />
+          </div>
         </div>
       </div>
 
@@ -38,29 +34,19 @@ export const MainControls: React.FC = () => {
         <p className={styles.label}>Select Capacity</p>
 
         <div className={styles.buttons}>
-
-            <button
+          <button
             className={styles.capacityButton}
-              /* key={capacity} */
-              /* value={capacity} */
-            /*   className={classNames(styles.capacityButton, {
-                [styles.active]: productDetails.capacity === capacity,
-              })}
-              onClick={() =>
-                handleAttributeChange(productDetails.color, capacity)
-              } */
-            >
-              xxx
-            </button>
-          {/* ))} */}
+          >
+            capacity
+          </button>
         </div>
       </div>
 
       <div className={styles.divider}></div>
 
       <div className={styles.price}>
-        <div className={styles.existPrice}>$XXX</div>
-        <div className={styles.hotPrice}>$XXX</div>
+        <div className={styles.existPrice}>{`${clickedProduct.priceRegular}`}</div>
+        <div className={styles.hotPrice}>$clickedProduct.priceDiscount</div>
       </div>
 
       <ActionButtons />
@@ -68,20 +54,20 @@ export const MainControls: React.FC = () => {
       <ul className={styles.specsList}>
         <li className={styles.specs}>
           <strong className={styles.specsKey}>Screen</strong>
-          <span className={styles.specsValue}>XXX</span>
+          <span className={styles.specsValue}>clickedProduct.screen</span>
         </li>
 
         <li className={styles.specs}>
           <strong className={styles.specsKey}>Resolution</strong>
-          <span className={styles.specsValue}>XXX</span>
+          <span className={styles.specsValue}>clickedProduct.resolution</span>
         </li>
 
         <li className={styles.specs}>
           <strong className={styles.specsKey}>Processor</strong>
-          <span className={styles.specsValue}>XXX</span>
+          <span className={styles.specsValue}>clickedProduct.processor</span>
         </li>
       </ul>
-
     </div>
   );
-};
+} else return <div/>
+}

@@ -11,6 +11,7 @@ import { TechSpecs } from './components/TechSpecs';
 import { Description } from './components/Description';
 import { MainControls } from './components/MainControls';
 import { Loader } from '../../components/Loader';
+import { Breadcrumbs } from '../../components/Breadcrumbs';
 
 export const ProductDetailsPage: React.FC = () => {
   const category = useLocation().pathname.slice(1);
@@ -35,6 +36,10 @@ export const ProductDetailsPage: React.FC = () => {
           <div>No products to display</div>
         ) : (
           <div className={styles.container}>
+            {clickedProduct !== undefined && (
+              <Breadcrumbs category={clickedProduct.category} />
+            )}
+
             <PreviousPage category={category} />
             <button className={styles.goBackButton}>
               <img src={chevronIcon} alt="home" className={styles.chevronIcon} />
@@ -45,8 +50,8 @@ export const ProductDetailsPage: React.FC = () => {
               </div>
             </button>
 
-            <h2 className={styles.title}>Clicked Product ID: {clickedProduct.id}</h2>
-            <div className={styles.goBackText}>Component under construction</div>
+            <h2 className={styles.title}>{clickedProduct.name}</h2>
+            <div className={styles.goBackText}>Component under construction</div> {/* / REMOVE LATER */}
             <ImageGallery />
             <MainControls />
             <Description />

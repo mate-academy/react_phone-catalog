@@ -1,10 +1,15 @@
 @import '../../../../styles/main';
 
+.topContainer {
+  display: flex;
+
+}
 .mainControls {
-  grid-column: 1 / -1;
+
   display: flex;
   flex-direction: column;
   gap: 24px;
+  grid-column: 1 / -1;
 
   @include on-tablet {
     grid-column: 8 / -1;
@@ -17,21 +22,23 @@
   border: 2px solid red
 }
 
+.selector {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  border: 1px solid blue;
+  @extend %small-text;
+
+  color: var(--color-secondary);
+}
+
 .divider {
   width: 100%;
   height: 1px;
   background-color: var(--color-elements);
 }
 
-.selector {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
 
-  @extend %small-text;
-
-  color: var(--color-secondary);
-}
 
 .buttons {
   display: flex;

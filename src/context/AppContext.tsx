@@ -6,7 +6,7 @@ type AppContextType = {
   numberOfProductsPerPage: number;
   setNumberOfProductsPerPage: (pages: number) => void;
   clickedProduct: ProductPhone | ProductTablet | ProductAccessory | undefined;
-  setClickedProduct: (product: ProductPhone | ProductTablet | ProductAccessory) => void;
+  setClickedProduct: (product: ProductPhone | ProductTablet | ProductAccessory | undefined) => void;
   previousCurrentPage: string[];
   setPreviousCurrentPage: (page: string[]) => void;
 };
