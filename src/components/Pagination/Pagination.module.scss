@@ -2,15 +2,17 @@
 
 .pagination {
   display: flex;
-  align-items: center;
   justify-content: center;
-  gap: 16px;
+  align-items: center;
 
-  &__pages {
+  &__container {
     display: flex;
-    justify-content: center;
     align-items: center;
-    gap: 8px;
+    gap: 4px;
+
+    @include on-tablet {
+      gap: 8px;
+    }
   }
 
   &__btn {
@@ -21,6 +23,7 @@
     background-color: $white;
     color: $primary-gray;
     border: 1px solid $icons-placeholders-gray;
+    cursor: pointer;
 
     &:hover {
       border-color: $primary-gray;
@@ -44,5 +47,10 @@
       background-color: $primary-gray;
       color: $white;
     }
+  }
+
+  &__ellipsis {
+    padding: 0 8px;
+    font-size: 1rem;
   }
 }

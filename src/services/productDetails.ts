@@ -1,4 +1,4 @@
-import { Category } from '../types/Category';
+import { ProductCategories } from '../types/ProductCategories';
 import { ProductDetails } from '../types/ProductDetails';
 import { getData } from '../utils/httpClient';
 
@@ -14,6 +14,6 @@ export function getAccessories() {
   return getData<ProductDetails[]>('/accessories.json');
 }
 
-export function getItemByCategory(category: Category) {
+export function getItemByCategory(category: ProductCategories) {
   return getData<ProductDetails[]>(`/${category}.json`);
 }

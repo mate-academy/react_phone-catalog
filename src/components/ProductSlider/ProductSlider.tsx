@@ -5,6 +5,7 @@ import { Card } from '../Card';
 import { Icon } from '../ui/Icon';
 import { Product } from '../../types/Product';
 import { useFavorites } from '../../hooks/useFavorites';
+import { useCart } from '../../hooks/useCart';
 
 type ProductSliderProps = {
   title: string;
@@ -19,6 +20,7 @@ export const ProductSlider: React.FC<ProductSliderProps> = ({
   const [cardWidth, setCardWidth] = useState(0);
   const cardsContainerRef = useRef<HTMLDivElement>(null);
   const { favorites, toggleFavorite } = useFavorites();
+  const { updateCart } = useCart();
 
   useEffect(() => {
     const updateCardWidth = () => {
@@ -99,6 +101,7 @@ export const ProductSlider: React.FC<ProductSliderProps> = ({
                 item={item}
                 isFavorite={favorites.some(f => f.id === item.id)}
                 toggleFavorite={() => toggleFavorite(item)}
+                updateCart={() => updateCart(item)}
               />
             </div>
           ))}

@@ -19,7 +19,7 @@ export const Footer: React.FC<FooterProps> = ({ headerRef }) => {
     <footer className={styles.footer} id="footer">
       <div className="container">
         <div className={styles.footer__content}>
-          <Link to="/" className={styles.footer__link}>
+          <Link to="/" className={styles.footer__link} onClick={scrollToTop}>
             <img
               src="./img/icons/logo.svg"
               className={classNames('logo', styles.footer__icon)}

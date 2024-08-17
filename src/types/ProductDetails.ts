@@ -1,8 +1,8 @@
-import { Category } from './Category';
+import { ProductCategories } from './ProductCategories';
 
 export type ProductDetails = {
   id: string;
-  category: Category;
+  category: ProductCategories;
   namespaceId: string;
   name: string;
   capacityAvailable: string[];

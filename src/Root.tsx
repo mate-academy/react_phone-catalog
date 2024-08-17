@@ -10,32 +10,35 @@ import { NotFoundPage } from './pages/NotFoundPage';
 import { App } from './App';
 import { FavoritesProvider } from './contexts/FavoritesContext';
 import { ProductsProvider } from './contexts/ProductsContext';
+import { CartProvider } from './contexts/cartContext';
 
 export const Root = () => (
   <Router>
     <ProductsProvider>
-      <FavoritesProvider>
-        <Routes>
-          <Route path="/" element={<App />}>
-            <Route index element={<HomePage />} />
-            <Route path="phones">
-              <Route index element={<CatalogPage />} />
-              <Route path=":itemId" element={<ItemPage />} />
+      <CartProvider>
+        <FavoritesProvider>
+          <Routes>
+            <Route path="/" element={<App />}>
+              <Route index element={<HomePage />} />
+              <Route path="phones">
+                <Route index element={<CatalogPage />} />
+                <Route path=":itemId" element={<ItemPage />} />
+              </Route>
+              <Route path="tablets">
+                <Route index element={<CatalogPage />} />
+                <Route path=":itemId" element={<ItemPage />} />
+              </Route>
+              <Route path="accessories">
+                <Route index element={<CatalogPage />} />
+                <Route path=":itemId" element={<ItemPage />} />
+              </Route>
+              <Route path="favorites" element={<FavoritePage />} />
+              <Route path="cart" element={<CartPage />} />
+              <Route path="*" element={<NotFoundPage />} />
             </Route>
-            <Route path="tablets">
-              <Route index element={<CatalogPage />} />
-              <Route path=":itemId" element={<ItemPage />} />
-            </Route>
-            <Route path="accessories">
-              <Route index element={<CatalogPage />} />
-              <Route path=":itemId" element={<ItemPage />} />
-            </Route>
-            <Route path="favorites" element={<FavoritePage />} />
-            <Route path="cart" element={<CartPage />} />
-            <Route path="*" element={<NotFoundPage />} />
-          </Route>
-        </Routes>
-      </FavoritesProvider>
+          </Routes>
+        </FavoritesProvider>
+      </CartProvider>
     </ProductsProvider>
   </Router>
 );

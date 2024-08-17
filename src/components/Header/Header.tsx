@@ -146,7 +146,6 @@ const Header = forwardRef<HTMLDivElement, HeaderProps>(
   },
 );
 
-// Set displayName
 Header.displayName = 'Header';
 
 export { Header };

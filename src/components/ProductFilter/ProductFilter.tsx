@@ -13,10 +13,14 @@ const listOfPages = ['4', '8', '16', 'All'];
 
 type ProductFilterProps = {
   handleSelectOption: (option: string, type: 'page' | 'sort') => void;
+  initialSortValue: SortBy | '';
+  initialItemsPerPageValue: number | 'All';
 };
 
 export const ProductFilter: React.FC<ProductFilterProps> = ({
   handleSelectOption,
+  initialSortValue,
+  initialItemsPerPageValue,
 }) => {
   return (
     <form className={styles['product-filter']}>
@@ -33,6 +37,7 @@ export const ProductFilter: React.FC<ProductFilterProps> = ({
           <CustomSelect
             options={listSortBy}
             onSelect={option => handleSelectOption(option, 'sort')}
+            initialValue={initialSortValue}
           />
         </div>
 
@@ -48,6 +53,7 @@ export const ProductFilter: React.FC<ProductFilterProps> = ({
           <CustomSelect
             options={listOfPages}
             onSelect={option => handleSelectOption(option, 'page')}
+            initialValue={initialItemsPerPageValue.toString()}
             label="page"
           />
         </div>

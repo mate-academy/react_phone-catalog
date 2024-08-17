@@ -7,19 +7,23 @@ type CustomSelectProps = {
   options: string[];
   label?: string;
   onSelect: (option: string) => void;
+  initialValue?: string;
 };
 
 const CustomSelectComponent: React.FC<CustomSelectProps> = ({
   label,
   options,
   onSelect,
+  initialValue,
 }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedOption, setSelectedOption] = useState<string | null>(null);
+  const [selectedOption, setSelectedOption] = useState<string | null>(
+    initialValue || null,
+  );
 
   const dropdownRef = useRef<HTMLDivElement>(null);
 
-  const placeHolder = label === 'page' ? '4' : 'Sort by...';
+  const placeHolder = label === 'page' ? 'All' : 'Sort by...';
 
   const toggleDropdown = () => setIsOpen(!isOpen);
 

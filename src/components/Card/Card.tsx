@@ -11,12 +11,14 @@ type CardProps = {
   item: Product;
   isFavorite: boolean;
   toggleFavorite: () => void;
+  updateCart: (item: Product) => void;
 };
 
 export const Card: React.FC<CardProps> = ({
   item,
   isFavorite,
   toggleFavorite,
+  updateCart,
 }) => {
   return (
     <div className={styles.card}>
@@ -48,7 +50,7 @@ export const Card: React.FC<CardProps> = ({
         <CardButton
           variant="primary"
           /* eslint-disable-next-line no-console */
-          onClick={() => console.log('Checkout')}
+          onClick={() => updateCart(item)}
         >
           Add to cart
         </CardButton>

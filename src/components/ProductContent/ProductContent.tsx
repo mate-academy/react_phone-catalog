@@ -1,3 +1,4 @@
+import { useCart } from '../../hooks/useCart';
 import { useFavorites } from '../../hooks/useFavorites';
 import { Product } from '../../types/Product';
 import { Card } from '../Card';
@@ -9,6 +10,7 @@ type ProductContentProps = {
 
 export const ProductContent: React.FC<ProductContentProps> = ({ items }) => {
   const { favorites, toggleFavorite } = useFavorites();
+  const { updateCart } = useCart();
 
   return (
     <div className={styles['product-content']}>
@@ -20,6 +22,7 @@ export const ProductContent: React.FC<ProductContentProps> = ({ items }) => {
                 item={item}
                 isFavorite={favorites.some(f => f.id === item.id)}
                 toggleFavorite={() => toggleFavorite(item)}
+                updateCart={() => updateCart(item)}
               />
             </li>
           ))}
