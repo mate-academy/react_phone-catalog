@@ -1,0 +1,239 @@
+@import '../../App';
+
+.banner {
+  overflow: hidden;
+  box-sizing: border-box;
+  aspect-ratio: 1 / 1;
+  width: 100%;
+  height: 320px;
+  background-color: #000;
+  text-align: center;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 45px;
+
+  @include on-tablet {
+    height: 189px;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 40px;
+  }
+
+  @include on-desktop {
+    height: 400px;
+    gap: 83px;
+  }
+
+  &__info-wrapper {
+    @include on-tablet {
+      flex-basis: 100%;
+      padding: 6px 0 6px 6px;
+    }
+
+    @include on-desktop {
+      padding: 12px 0 12px 12px;
+    }
+  }
+
+  &__info {
+    @include on-tablet {
+      box-sizing: border-box;
+      min-height: 177px;
+      text-align: left;
+      background-color: #222;
+      padding: 24px 50px 22px 24px;
+      border-radius: 25px;
+    }
+
+    @include on-desktop {
+      min-height: 376px;
+      padding: 50px 100px 50px 50px;
+    }
+  }
+
+  &__info-title {
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 100%;
+    letter-spacing: -0.01em;
+
+    background: linear-gradient(to right, #7a50f6, #9760fb, #c961fd);
+    color: transparent;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    display: block;
+    max-width: 180px;
+
+    @include on-tablet {
+      font-size: 20px;
+      margin-bottom: 11px;
+      max-width: 100%;
+    }
+
+    @include on-desktop {
+      font-size: 44px;
+      margin-bottom: 18px;
+    }
+  }
+
+  &__info-content {
+    display: none;
+
+    @include on-tablet {
+      display: block;
+    }
+  }
+
+  &__info-text {
+    margin: 0 0 47px;
+    color: #aeaeae;
+    font-size: 7px;
+    line-height: 100%;
+
+    @include on-desktop {
+      font-size: 15px;
+      margin-bottom: 100px;
+    }
+  }
+
+  &__info-btn {
+    color: inherit;
+    text-decoration: none;
+    text-transform: uppercase;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    box-sizing: border-box;
+    width: 94px;
+    height: 27px;
+
+    border: 1px solid #444;
+    border-radius: 30px;
+    padding: 10px 23px;
+
+    font-weight: 600;
+    font-size: 7px;
+    line-height: 100%;
+    letter-spacing: 0.04em;
+
+    @include on-desktop {
+      font-size: 15px;
+      width: 198px;
+      height: 58px;
+      transition:
+        border-color 0.5s,
+        background-color 0.5s;
+
+      &:hover {
+        border-color: transparent;
+        background-color: #444;
+      }
+    }
+  }
+
+  &__product {
+    @include on-tablet {
+      padding: 21px 40px 0 0;
+      flex-basis: 85%;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    @include on-desktop {
+      padding: 45px 83px 0 0;
+
+      &:hover {
+        .banner__product-title::after {
+          transform: scale(1);
+        }
+
+        .banner__product-img {
+          transform: scale(1.05);
+        }
+      }
+    }
+  }
+
+  &__product-title {
+    color: inherit;
+    text-decoration: none;
+
+    display: inline-block;
+    font-weight: 700;
+    font-size: 26px;
+    line-height: 100%;
+    margin-bottom: 8px;
+
+    @include on-tablet {
+      font-size: 16px;
+      margin-bottom: 5px;
+    }
+
+    @include on-desktop {
+      font-size: 34px;
+      margin-bottom: 10px;
+      border-bottom: 3px solid transparent;
+      position: relative;
+
+      &::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: -4px;
+        width: 100%;
+        height: 1px;
+        background-color: $c-white;
+
+        transform: scale(0);
+        transform-origin: left;
+        transition: transform 0.5s;
+      }
+    }
+  }
+
+  &__product-subtitle {
+    display: block;
+    color: #9b9b9b;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 100%;
+    margin-bottom: 20px;
+
+    @include on-tablet {
+      font-size: 7px;
+    }
+
+    @include on-desktop {
+      font-size: 15px;
+      margin-bottom: 40px;
+    }
+  }
+
+  &__product-img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    max-height: 135px;
+    object-fit: cover;
+    object-position: top;
+
+    @include on-tablet {
+      max-height: 122px;
+    }
+
+    @include on-desktop {
+      max-height: 256px;
+      transition: transform 0.5s;
+    }
+  }
+}

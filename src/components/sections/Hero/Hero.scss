@@ -1,0 +1,32 @@
+@import '../../../App';
+
+.hero {
+  padding: 24px 0 28px;
+
+  @include on-tablet {
+    padding: 32px 0;
+  }
+
+  @include on-desktop {
+    padding: 56px 0 40px;
+  }
+
+  &__title {
+    margin: 0 0 24px;
+    font-size: 32px;
+    line-height: 128%;
+    letter-spacing: -0.01em;
+    max-width: 320px;
+
+    @include on-tablet {
+      margin: 0 0 32px;
+      font-size: 48px;
+      line-height: 116%;
+      max-width: 405px;
+    }
+
+    @include on-desktop {
+      margin: 0 0 56px;
+    }
+  }
+}

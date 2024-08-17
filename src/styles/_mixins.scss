@@ -16,6 +16,20 @@
   }
 }
 
+@mixin container-mobile {
+  padding-inline: 16px;
+}
+
+@mixin container-tablet {
+  padding-inline: 24px;
+}
+
+@mixin container-desktop {
+  max-width: 1136px;
+  margin: 0 auto;
+  padding-inline: 0;
+}
+
 @mixin page-grid {
   --columns: 4;
 

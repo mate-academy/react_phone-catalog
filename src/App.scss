@@ -21,16 +21,14 @@ body {
 /* General */
 
 .container {
-  padding-inline: 16px;
+  @include container-mobile;
 
   @include on-tablet {
-    padding-inline: 24px;
+    @include container-tablet;
   }
 
   @include on-desktop {
-    max-width: 1136px;
-    margin: 0 auto;
-    padding-inline: 0;
+    @include container-desktop;
   }
 }
 

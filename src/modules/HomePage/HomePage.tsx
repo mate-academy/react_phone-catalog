@@ -1,1 +1,9 @@
-export const HomePage = () => <h1>Product Catalog</h1>;
+import { Category } from '../../components/sections/Category';
+import { Hero } from '../../components/sections/Hero';
+
+export const HomePage = () => (
+  <>
+    <Hero />
+    <Category />
+  </>
+);
