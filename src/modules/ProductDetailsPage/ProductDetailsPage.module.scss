@@ -10,7 +10,6 @@
 .container {
   @include section-grid;
   border: 5px solid red;
-  background-color: lightblue;
 }
 
 .breadcrumbs {
