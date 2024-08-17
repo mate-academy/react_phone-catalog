@@ -4,7 +4,17 @@ import { ActionButtons } from '../../../../components/ActionButtons';
 import { useAppContext } from '../../../../context/AppContext';
 
 export const MainControls: React.FC = () => {
-  const { clickedProduct } = useAppContext();
+  const { clickedProduct, handleNotReady } = useAppContext();
+  let colorsAvailable: string[] = [''];
+  let capacityAvailable: string[] = [''];
+
+/*   useEffect(()=> { */
+    if (clickedProduct !== undefined) {
+      colorsAvailable = clickedProduct.colorsAvailable;
+      capacityAvailable = clickedProduct.capacityAvailable;
+    }
+
+/*   },[clickedProduct]) */
 
   // Placeholder function for attribute changes
   /*   const handleAttributeChange = (color: string, capacity: string) => {
@@ -18,13 +28,25 @@ if (clickedProduct !== undefined) {
         <p className={styles.label}>Available colors</p>
 
         <div className={styles.buttons}>
+        {colorsAvailable.map((color: string)=>
           <div
             className={styles.colorButtonContainer}
+
           >
+
             <button
-              className={styles.colorButton}
-            />
-          </div>
+            className={styles.colorButton}
+            key={color}
+            onClick={handleNotReady}
+            style = {typeof color === 'string' ? {backgroundColor: color} : undefined}
+            >
+
+
+            </button>
+            </div>
+            )};
+
+
         </div>
       </div>
 
@@ -34,11 +56,19 @@ if (clickedProduct !== undefined) {
         <p className={styles.label}>Select Capacity</p>
 
         <div className={styles.buttons}>
+
+        {capacityAvailable.map((capacity: string)=>
           <button
             className={styles.capacityButton}
+            onClick={handleNotReady}
+            key={capacity}
           >
-            {`${clickedProduct.capacity}`}
+            {capacity}
           </button>
+        )}
+
+
+
         </div>
       </div>
 
