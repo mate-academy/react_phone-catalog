@@ -7,6 +7,11 @@ import { useAppContext } from '../../context/AppContext';
 import { useLocation } from 'react-router-dom';
 import { PreviousPage } from '../../components/PreviousPage';
 import { Link } from 'react-router-dom';
+import { ImageGallery } from './components/ImageGallery';
+import { TechSpecs } from './components/TechSpecs';
+import { Description } from './components/Description';
+import { MainControls } from './components/MainControls';
+
 
 export const ProductDetailsPage: React.FC = () => {
   const category = useLocation().pathname.slice(1)
@@ -27,21 +32,16 @@ export const ProductDetailsPage: React.FC = () => {
             </Link>
           </div>
         </button>
+
+
         <h2 className={styles.title}>Cliked Product ID: {clickedProductId}</h2>
         <div className={styles.goBackText}>
           Component under construction
         </div>
-        {/* <ImageGallery
-          images={productDetails.images}
-          productName={productDetails.name}
-        /> */}
-        {/* <MainControls
-          productDetails={productDetails}
-          setProductDetails={setProductDetails}
-          product={product}
-        /> */}
-        {/* <Description description={productDetails.description} />
-        <TechSpecs productDetails={productDetails} /> */}
+        <ImageGallery />
+        <MainControls />
+        <Description  />
+        <TechSpecs />
       </div>
 
       {/* <ProductsSlider title="You may also like" products={suggestedProducts} /> */}
