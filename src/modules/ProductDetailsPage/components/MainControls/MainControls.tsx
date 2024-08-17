@@ -38,7 +38,7 @@ if (clickedProduct !== undefined) {
             className={styles.colorButton}
             key={color}
             onClick={handleNotReady}
-            style = {typeof color === 'string' ? {backgroundColor: color} : undefined}
+            style = {{backgroundColor: color}}
             >
 
 
