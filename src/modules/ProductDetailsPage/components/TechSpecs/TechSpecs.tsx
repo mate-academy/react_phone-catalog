@@ -1,9 +1,14 @@
 import React from 'react';
 import styles from './TechSpecs.module.scss';
-import { useAppContext } from '../../../../context/AppContext';
+import { ProductAccessory, ProductPhone, ProductTablet } from '../../../../types/Product';
 
-export const TechSpecs: React.FC = () => {
-  const { clickedProduct } = useAppContext();
+type TechSpecsProps = {
+  clickedProduct: ProductAccessory | ProductPhone | ProductTablet;
+};
+
+export const TechSpecs: React.FC<TechSpecsProps> = ({ clickedProduct }) => {
+
+
   if (clickedProduct !== undefined) {
   return (
     <div className={styles.section }>

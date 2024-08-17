@@ -2,9 +2,14 @@ import React from 'react';
 import styles from './MainControls.module.scss';
 import { ActionButtons } from '../../../../components/ActionButtons';
 import { useAppContext } from '../../../../context/AppContext';
+import { ProductAccessory, ProductPhone, ProductTablet } from '../../../../types/Product';
 
-export const MainControls: React.FC = () => {
-  const { clickedProduct, handleNotReady } = useAppContext();
+type MainControlsProps = {
+  clickedProduct: ProductAccessory | ProductPhone | ProductTablet;
+}
+
+export const MainControls: React.FC<MainControlsProps> = ({clickedProduct}) => {
+  const { handleNotReady } = useAppContext();
   let colorsAvailable: string[] = [''];
   let capacityAvailable: string[] = [''];
 

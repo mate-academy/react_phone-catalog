@@ -53,9 +53,9 @@ export const ProductDetailsPage: React.FC = () => {
             <h2 className={styles.title}>{clickedProduct.name}</h2>
             <div className={styles.goBackText}>Component under construction</div> {/* / REMOVE LATER */}
             <ImageGallery />
-            <MainControls />
+            <MainControls clickedProduct={clickedProduct}/>
             <Description />
-            <TechSpecs />
+            <TechSpecs clickedProduct={clickedProduct}/>
           </div>
         )}
       </main>
