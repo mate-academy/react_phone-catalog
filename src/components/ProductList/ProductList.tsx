@@ -14,7 +14,10 @@ type ProductListProps = {
   title: string;
 };
 
+
+
 export const ProductList: React.FC<ProductListProps> = ({ category, title }) => {
+  const {numberOfProductsPerPage} = useAppContext()
   const [products, setProducts] = useState<(ProductPhone | ProductTablet | ProductAccessory)[]>([]);
 
   useEffect(() => {
@@ -23,17 +26,19 @@ export const ProductList: React.FC<ProductListProps> = ({ category, title }) => 
         const response = await fetch(`https://meljaszuk.github.io/react_phone-catalog/api/${category}.json`);
         const data = await response.json();
         setProducts(data);
+        console.log('FETCHED PRODUCTS', data)
       } catch (error) {
         console.error('Error fetching product data:', error);
       }
     };
+
 
     fetchProductData();
   }, [category]);
 
   const numberOfProducts = products.length;
 
-  const {numberOfProductsPerPage} = useAppContext()
+
 
   const numberOfPages = useMemo(() => {
     return Math.ceil(numberOfProducts / numberOfProductsPerPage);
