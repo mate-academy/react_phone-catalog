@@ -19,14 +19,14 @@
     grid-column: 14 / -5;
 
   }
-  border: 2px solid red
+
 }
 
 .selector {
   display: flex;
   flex-direction: column;
   gap: 8px;
-  border: 1px solid blue;
+
   @extend %small-text;
 
   color: var(--color-secondary);
@@ -51,6 +51,9 @@
   border: 2px solid var(--color-surface);
   border-radius: 50%;
   padding: 2px;
+  display: flex;
+  gap: 15px;
+
 }
 
 .colorButton {
@@ -60,6 +63,7 @@
   border: 0;
   padding: 4px;
   cursor: pointer;
+
 
 }
 
