@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './Description.module.scss';
 import classNames from 'classnames';
-
+/* import { useAppContext } from '../../../../context/AppContext'; */
 
 
 export const Description: React.FC = () => {

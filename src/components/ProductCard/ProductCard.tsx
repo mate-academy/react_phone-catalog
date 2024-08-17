@@ -16,11 +16,11 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   }
 
   const { id, images, name, priceRegular, priceDiscount, screen, capacity, ram } = product;
-  const { setClickedProductId } = useAppContext();
+  const { setClickedProduct } = useAppContext();
 
   const handleClickedProduct = () => {
     console.log('CLICKED PRODUCTS',id)
-    setClickedProductId(id)
+    setClickedProduct(product)
   }
 
   return (

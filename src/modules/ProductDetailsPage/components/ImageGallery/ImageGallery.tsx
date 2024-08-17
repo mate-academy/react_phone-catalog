@@ -1,4 +1,4 @@
-
+/* import { useAppContext } from '../../../../context/AppContext'; */
 import styles from './ImageGallery.module.scss';
 
 

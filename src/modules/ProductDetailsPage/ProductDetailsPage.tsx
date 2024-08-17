@@ -12,34 +12,16 @@ import { TechSpecs } from './components/TechSpecs';
 import { Description } from './components/Description';
 import { MainControls } from './components/MainControls';
 import { Loader } from '../../components/Loader';
-import { ProductPhone, ProductTablet, ProductAccessory } from '../../types/Product';
-
-
 
 export const ProductDetailsPage: React.FC = () => {
   const category = useLocation().pathname.slice(1)
-  const { clickedProductId, previousCurrentPage } = useAppContext();
+  const { clickedProduct, previousCurrentPage } = useAppContext();
   console.log('PAGE CLICKED',category)
   const [isLoading, setIsLoading] = useState(true);
-  const[fetchedProducts,setFetchedProducts] = useState<(ProductPhone | ProductTablet | ProductAccessory)[]>([]);
 
-  useEffect(() => {
-    const fetchProductData = async () => {
-      try {
-        const response = await fetch(`https://meljaszuk.github.io/react_phone-catalog/api/products.json`);
-        const data = await response.json();
-        setFetchedProducts(data);
-        console.log('FETCHED PRODUCTS', data)
-      } catch (error) {
-        console.error('Error fetching product data:', error);
-      }
-    };
-
-
-    fetchProductData();
+  useEffect(()=> {
     setIsLoading(false);
-    console.log(fetchedProducts)
-  }, [category]);
+  },[])
 
   return (
     <div>
@@ -60,7 +42,7 @@ export const ProductDetailsPage: React.FC = () => {
           </div>
         </button>
 
-        <h2 className={styles.title}>Cliked Product ID: {clickedProductId}</h2>
+        <h2 className={styles.title}>Cliked Product ID: {clickedProduct !== undefined ? clickedProduct.id : ""}</h2>
         <div className={styles.goBackText}>
           Component under construction
         </div>

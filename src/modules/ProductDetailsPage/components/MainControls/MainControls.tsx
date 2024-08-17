@@ -1,13 +1,13 @@
 import React from 'react';
 import styles from './MainControls.module.scss';
 import { ActionButtons } from '../../../../components/ActionButtons';
-
+/* import { useAppContext } from '../../../../context/AppContext'; */
 
 
 
 
 export const MainControls: React.FC = () => {
-
+/*   const {clickedProductId} = useAppContext(); */
   return (
     <div className={styles.mainControls}>
       <div className={styles.selector}>
@@ -40,6 +40,7 @@ export const MainControls: React.FC = () => {
         <div className={styles.buttons}>
 
             <button
+            className={styles.capacityButton}
               /* key={capacity} */
               /* value={capacity} */
             /*   className={classNames(styles.capacityButton, {
@@ -62,7 +63,7 @@ export const MainControls: React.FC = () => {
         <div className={styles.hotPrice}>$XXX</div>
       </div>
 
-
+      <ActionButtons />
 
       <ul className={styles.specsList}>
         <li className={styles.specs}>
@@ -80,7 +81,7 @@ export const MainControls: React.FC = () => {
           <span className={styles.specsValue}>XXX</span>
         </li>
       </ul>
-      <ActionButtons />
+
     </div>
   );
 };
