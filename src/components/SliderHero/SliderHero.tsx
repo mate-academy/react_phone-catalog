@@ -58,7 +58,7 @@ export const SliderHero: React.FC<Props> = ({
       }
 
       return setCurrentIndex(0);
-    }, 3000);
+    }, 5000);
 
     return () => {
       clearInterval(intervalId);

@@ -1,1 +1,115 @@
 @import '../../../App';
+
+.category {
+  &__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    @include page-grid;
+
+    justify-items: center;
+    gap: 32px;
+
+    @include on-tablet {
+      gap: 16px;
+    }
+  }
+
+  &__item {
+    grid-column: span 4;
+    width: 100%;
+
+    @include on-desktop {
+      grid-column: span 8;
+    }
+  }
+
+  &__link {
+    color: inherit;
+    text-decoration: none;
+    display: block;
+
+    @include on-desktop {
+      &:hover {
+        .category__link-img img {
+          transform: scale(1.1);
+        }
+
+        .category__link-text span {
+          color: $c-accent;
+          font-weight: 700;
+        }
+      }
+    }
+  }
+
+  &__link-img {
+    width: 100%;
+    height: 288px;
+    position: relative;
+    overflow: hidden;
+    background-color: #6d6474;
+    margin-bottom: 24px;
+
+    &--light {
+      background-color: #8D8D92;
+    }
+
+    &--red {
+      background-color: #973D5F;
+    }
+
+
+    @include on-tablet {
+      height: 187px;
+    }
+
+    @include on-desktop {
+      height: 368px;
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+
+      position: absolute;
+      top: 55px;
+      left: 63px;
+
+      // transform: translate(55px, 63px);
+      object-fit: cover;
+      object-position: top left;
+
+      @include on-tablet {
+        top: 36px;
+        left: 41px;
+
+        // transform: translate(36px, 41px);
+      }
+
+      @include on-desktop {
+        top: 71px;
+        left: 82px;
+        
+        // transform: translate(71px, 82px);
+        transition: transform 0.5s;
+      }
+    }
+  }
+
+  &__link-title {
+    margin: 0 0 4px;
+    font-weight: 600;
+    font-size: 20px;
+  }
+
+  &__link-text {
+    margin: 0;
+    color: $c-secondary;
+
+    span {
+      transition: color 0.5s, font-weight 0.5s;
+    }
+  }
+}
