@@ -41,6 +41,33 @@
     display: flex;
   }
 
+  &__btn {
+    @include button-common;
+
+    border-left: 1px solid $elements-gray;
+    width: 48px;
+    height: 48px;
+    position: relative;
+
+    &::after {
+      content: '';
+      position: absolute;
+      display: block;
+      bottom: -2px;
+      height: 2px;
+      width: 100%;
+      background-color: $primary-gray;
+
+      transition: transform $transition-duration;
+      transform: scale(0);
+      transform-origin: left;
+    }
+
+    &:hover::after {
+      transform: scale(1);
+    }
+  }
+
   &__icon-control {
     display: flex;
     justify-content: center;

@@ -6,20 +6,26 @@ import { Footer } from './components/Footer';
 import { SideMenu } from './components/SideMenu';
 import { useProducts } from './hooks/useProducts';
 import { Loader } from './components/Loader';
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 
 export const App = () => {
   const { products } = useProducts();
   const headerRef = useRef<HTMLDivElement>(null);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const toggleOpenMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
 
   return (
     <div className="App">
       <h1 className="visually-hidden" id="home">
         Product Catalog
       </h1>
-      <Header ref={headerRef} />
 
-      <SideMenu />
+      <Header ref={headerRef} onMenu={toggleOpenMenu} />
+
+      <SideMenu isMenuOpen={isMenuOpen} onMenu={toggleOpenMenu} />
 
       <div className="container">
         {products.length ? <Outlet /> : <Loader />}

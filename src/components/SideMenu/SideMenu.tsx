@@ -4,22 +4,29 @@ import { Icon } from '../ui/Icon';
 import styles from './SideMenu.module.scss';
 import classNames from 'classnames';
 
-export const SideMenu = () => {
+type SideMenuProps = {
+  isMenuOpen: boolean;
+  onMenu: () => void;
+};
+
+export const SideMenu: React.FC<SideMenuProps> = ({ isMenuOpen, onMenu }) => {
   return (
-    <aside className={classNames('App__menu', styles.menu)} id="menu">
-      <div className={styles.menu__content}>
+    <aside
+      className={classNames('App__menu', styles.menu, {
+        ['App__menu--active']: isMenuOpen,
+      })}
+      id="menu"
+    >
+      <div className={styles.menu__content} onClick={onMenu}>
         <div className="top-bar">
           <Link to="/" className="top-bar__link">
             <img src="./img/icons/logo.svg" className="logo" alt="logo" />
           </Link>
 
           <div className="top-bar__buttons">
-            <a
-              href="/"
-              className="top-bar__icon-control top-bar__icon-control--close"
-            >
+            <button className="top-bar__icon-control--close top-bar__btn">
               <Icon iconName="close" />
-            </a>
+            </button>
           </div>
         </div>
 

@@ -5,10 +5,12 @@ import classNames from 'classnames';
 import { Icon } from '../ui/Icon';
 import { Link, NavLink } from 'react-router-dom';
 
-type HeaderProps = {};
+type HeaderProps = {
+  onMenu: () => void;
+};
 
 const Header = forwardRef<HTMLDivElement, HeaderProps>(
-  ({}, ref: Ref<HTMLDivElement>) => {
+  ({ onMenu }, ref: Ref<HTMLDivElement>) => {
     return (
       <div className={styles.header} id="header" ref={ref}>
         <div className={styles.header__content}>
@@ -129,15 +131,15 @@ const Header = forwardRef<HTMLDivElement, HeaderProps>(
               >
                 <Icon iconName="cart" />
               </NavLink>
-              <a
-                href="#menu"
+              <button
                 className={classNames(
                   styles['header__link--icon'],
-                  'top-bar__icon-control',
+                  'top-bar__btn',
                 )}
+                onClick={onMenu}
               >
                 <Icon iconName="menu" />
-              </a>
+              </button>
             </div>
           </div>
         </div>
