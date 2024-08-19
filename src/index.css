@@ -1,0 +1,62 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "Mont";
+  src: url("/fonts/Mont-Regular.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Mont SemiBold";
+  src: url("/fonts/Mont-SemiBold.otf") format("opentype");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Mont Bold";
+  src: url("/fonts/Mont-Bold.otf") format("opentype");
+  font-weight: 800;
+  font-style: normal;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+#root {
+  min-height: 100dvh;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+}
+
+h1 {
+  @apply small:text-h1 text-h1mobile;
+}
+
+h2 {
+  @apply small:text-h2 text-h2mobile;
+}
+
+h3 {
+  @apply small:text-h3 text-h3mobile;
+}
+
+h4 {
+  @apply small:text-h4 text-h4mobile;
+}
+
+:is(.text-bodyText) {
+  font-family: "Mont";
+}
+
+:is(.text-uppercase, h4, .text-smallText) {
+  font-family: "Mont SemiBold";
+}
+
+:not(.text-bodyText, .text-uppercase, h4, .text-smallText) {
+  font-family: "Mont Bold";
+}
