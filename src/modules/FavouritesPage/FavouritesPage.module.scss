@@ -24,7 +24,6 @@
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(212px, 272px));
     justify-content: center;
-    column-gap: 16px;
-    row-gap: 40px;
+    gap: 40px 16px;
   }
 }

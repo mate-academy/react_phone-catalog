@@ -364,6 +364,7 @@
 
       &__description {
         @include font-set($body-text);
+
         color: $secondary;
       }
     }
@@ -399,6 +400,7 @@
 
         &__key {
           @include font-set($body-text);
+
           font-weight: 500;
 
           color: $secondary;
