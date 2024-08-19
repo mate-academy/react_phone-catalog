@@ -1,0 +1,25 @@
+@import '../../styles/utils';
+
+.shop-by-category {
+  &__container {
+    @include content-padding-inline;
+
+    max-width: 1136px;
+    margin: 0 auto;
+
+    @include on-desktop {
+      padding: 0;
+    }
+  }
+
+  &__title {
+    margin-bottom: 24px;
+  }
+
+  &__box {
+    @include page-grid;
+
+    place-items: stretch;
+    row-gap: 32px;
+  }
+}

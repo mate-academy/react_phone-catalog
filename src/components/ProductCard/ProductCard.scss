@@ -1,0 +1,103 @@
+@import '../../styles/utils';
+
+.product-card {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  height: 100%;
+  padding: 0 32px 32px;
+  background-color: $white-color;
+  border-radius: 8px;
+  border: 1px solid $elements-color;
+  min-width: 212px;
+  min-height: 488px;
+
+  &:hover {
+    box-shadow: 0 2px 16px 0 rgba(0, 0, 0, 0.1);
+  }
+
+  @include hover(box-shadow, 0 2px 16px 0 rgba(0, 0, 0, 0.1));
+
+  &--dark-theme {
+    background-color: #000;
+    border: 1px solid #000;
+    color: $bg-color;
+
+    @include hover(box-shadow, 0 2px 16px 0 rgba(226, 217, 217, 0.4));
+  }
+
+  @include on-tablet {
+    padding: 16px 32px 32px;
+    min-width: 237px;
+  }
+
+  @include on-desktop {
+    min-width: 272px;
+  }
+
+  &__image {
+    position: relative;
+    flex: 1 1 auto;
+    padding-bottom: 126%;
+    height: 129px;
+
+    @include on-tablet {
+      height: 196px;
+    }
+
+    & img {
+      position: absolute;
+      padding-inline: 25px;
+      height: 100%;
+      width: 100%;
+      top: 0;
+      left: 0;
+      object-fit: contain;
+    }
+  }
+
+  &__name {
+    font-weight: 600;
+    min-height: 42px;
+  }
+
+  &__price {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 22px;
+    font-weight: 800;
+    line-height: 140%;
+    flex: 1 1 auto;
+  }
+
+  &__full-price {
+    position: relative;
+    font-weight: 500;
+    color: $second-text-color;
+    line-height: 120%;
+
+    &::before {
+      position: absolute;
+      display: inline-block;
+      content: '';
+      height: 1.5px;
+      width: 100%;
+      left: 0;
+      top: 48%;
+      background-color: $second-text-color;
+    }
+  }
+
+  &__divider {
+    height: 1px;
+    width: 100%;
+    background-color: $elements-color;
+  }
+}
+
+.icon-favorites {
+  &--dark-theme {
+    color: $bg-color;
+  }
+}

@@ -1,0 +1,173 @@
+@import '../../styles/utils';
+
+.welcome {
+  min-width: 320px;
+  padding-top: 24px;
+
+  @include on-tablet {
+    padding-top: 32px;
+  }
+
+  @include on-desktop {
+    padding-top: 56px;
+  }
+
+  &__container {
+    position: relative;
+    max-width: 1136px;
+
+    @include on-tablet {
+      padding-inline: 75px 75px;
+      margin: 0 auto;
+    }
+  }
+
+  &__title {
+    display: block;
+    max-width: 1136px;
+    box-sizing: border-box;
+    margin: 0 auto;
+    margin-bottom: 24px;
+
+    @include content-padding-inline;
+
+    @include on-tablet {
+      margin-bottom: 32px;
+    }
+
+    @include on-desktop {
+      margin-bottom: 56px;
+      padding: 0;
+    }
+  }
+}
+
+.pictures-slider {
+  max-width: 1040px;
+  margin: 0 auto;
+  overflow: hidden;
+  height: 100%;
+
+  @include on-tablet {
+    border-radius: 8px;
+  }
+
+  &__list {
+    display: flex;
+    transition: all 0.3s ease 0s;
+    height: 100%;
+  }
+
+  &__nav {
+    display: flex;
+    gap: 18px;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+.slide {
+  width: 100%;
+  max-width: 1040px;
+
+  &__image {
+    display: block;
+    height: 320px;
+    width: 100vw;
+
+    @include on-tablet {
+      display: none;
+    }
+
+    &--1 {
+      background: url('../../../public/images/pictures-slider/slide-1.png')
+        center center / cover no-repeat;
+
+      @include on-tablet {
+        background: none;
+      }
+    }
+
+    &--2 {
+      background: url('../../../public/images/pictures-slider/slide-2.webp')
+        center center / cover no-repeat;
+
+      @include on-tablet {
+        background: none;
+      }
+    }
+
+    &--3 {
+      background: url('../../../public/images/pictures-slider/slide-3.jpg')
+        center center / cover no-repeat;
+
+      @include on-tablet {
+        background: none;
+      }
+    }
+  }
+
+  &__image-tablet {
+    display: none;
+
+    @include on-tablet {
+      display: block;
+      position: relative;
+      padding-bottom: 38%;
+      width: 90vw;
+      height: 100%;
+      max-width: 1040px;
+    }
+
+    & img {
+      @include on-tablet {
+        display: block;
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+  }
+}
+
+.dash-button {
+  display: inline-block;
+  height: 4px;
+  width: 14px;
+  background-color: $second-text-color;
+  margin-top: 8px;
+  cursor: pointer;
+
+  &--active {
+    background-color: $main-text-color;
+  }
+}
+
+.pictures-slider__button {
+  display: none;
+
+  @include on-tablet {
+    position: absolute;
+    display: block;
+    height: 100%;
+    top: 0;
+  }
+
+  &--prev {
+    left: 19px;
+
+    @include on-desktop {
+      left: 0;
+    }
+  }
+
+  &--next {
+    right: 19px;
+
+    @include on-desktop {
+      right: 0;
+    }
+  }
+}

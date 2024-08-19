@@ -1,0 +1,55 @@
+@import '../../styles/utils';
+
+.brand-new-models {
+  padding-top: 56px;
+  margin-bottom: 80px;
+
+  &__top {
+    @include content-padding-inline;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1136px;
+    margin: 0 auto;
+    margin-bottom: 24px;
+
+    @include on-desktop {
+      padding: 0;
+    }
+  }
+
+  &__title {
+    max-width: 136px;
+
+    @include on-tablet {
+      max-width: none;
+    }
+  }
+
+  &__nav {
+    display: flex;
+    gap: 16px;
+  }
+
+  &__container {
+    overflow: hidden;
+    padding-left: 16px;
+
+    @include on-tablet {
+      padding-left: 24px;
+    }
+
+    @include on-desktop {
+      padding-left: 0;
+      max-width: 1136px;
+      margin: 0 auto;
+    }
+  }
+
+  &__slider {
+    display: flex;
+    gap: 16px;
+    transition: transform 0.3s;
+  }
+}

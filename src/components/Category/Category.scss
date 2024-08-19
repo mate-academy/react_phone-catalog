@@ -1,0 +1,39 @@
+@import '../../styles/utils';
+
+.category {
+  grid-column: span 4;
+
+  @include on-desktop {
+    grid-column: span 8;
+  }
+
+  &__image {
+    display: block;
+    position: relative;
+    padding-bottom: 100%;
+    margin-bottom: 24px;
+    overflow: hidden;
+    border-radius: 12px;
+
+    & img {
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      left: 0;
+      top: 0;
+
+      @include hover(transform, scale(1.1));
+    }
+
+  }
+
+  &__title {
+    margin-bottom: 4px;
+
+  }
+
+  &__info {
+    font-weight: 500;
+    color: $second-text-color;
+  }
+}
