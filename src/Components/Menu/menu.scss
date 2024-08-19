@@ -8,12 +8,13 @@
   height: 639px;
   padding: 0;
   border: 1px solid black;
-  position: absolute;
+  position: fixed;
   top: 0;
   left: -320px;
   background-color: white;
   transition: 0.3s ease transform;
   transform: translateX(-320px);
+  z-index: 1;
   &--show-menu {
     transform: translateX(320px);
     transition: 0.3s ease transform;

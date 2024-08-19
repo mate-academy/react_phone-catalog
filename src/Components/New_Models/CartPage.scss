@@ -1,0 +1,78 @@
+ @font-face {
+  font-family: Mont;
+  src: url('../../../public/fonts/Mont-Bold.otf');
+ }
+
+.CartPage {
+  font-family: Mont, sans-serif;
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 30.8px;
+  text-align: left;
+  margin-top: 50px;
+
+  div {
+    width: 212px;
+    gap: 16px;
+  }
+
+  &__navigation {
+    display: flex;
+    margin: 30px 16px 0;
+    width: 288px;
+  }
+}
+
+.slick {
+  &-arrow {
+     content: '';
+  }
+  &-prev {
+    position: relative;
+    left: 220px;
+    bottom: 59px;
+    width: 40px;
+    height: 40px;
+    border-radius: 0%;
+    border: 0;
+    padding: 0;
+    background-color: #FAFBFC;
+    color: transparent;
+    background-image: url('../../img/Slide-Button_default(right).svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: pointer;
+  }
+
+  &-next {
+    position: relative;
+    bottom: 420px;
+    left: 260px;
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+    border: 0;
+    padding: 0;
+    background-color: #FAFBFC;
+    color: transparent;
+    background-image: url('../../img/Slide-Button_default(right).svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: pointer;
+  }
+  &-track {
+    width: 16000px;
+    margin-left: 5952px;
+  }
+  &-width {
+    width: 228px;
+  }
+}
+
+.slick-prev.slick-disabled {
+    background-image: url('../../img/Slider\ button\ -\ Disabled\ \(left\).svg');
+}
+
+.slick-next.slick-disabled {
+  background-image: url('../../img/Slider\ button\ -\ Disabled\ \(left\).svg');
+}

@@ -1,0 +1,70 @@
+.MainSlider {
+&__photos {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  height: 450px;
+  width: 320px;
+  overflow: hidden;
+
+  ul {
+    margin-top: 30px;
+  }
+}
+
+&__photo {
+  width: 320px;
+  height: 320px;
+}
+}
+
+.slick {
+  &-list {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  width: 320px;
+  height: 320px;
+  }
+  &-dots {
+    display: flex !important;
+    flex-direction: row;
+    justify-content: center;
+    list-style: none;
+    padding: 0;
+    margin-top: 20px;
+    gap: 6px;
+
+    li {
+      width: 14px;
+      height: 4px;
+    }
+
+    button {
+      content: '';
+      height: 4px;
+      width: 14px;
+      border: none;
+      color: white;
+    }
+
+
+  }
+  &-track {
+    display: flex;
+    flex-direction: row;
+  }
+  &-prev {
+    display: none;
+  }
+
+  &-active {
+    width: 14px;
+    height: 4px;
+
+    button {
+      background-color: black;
+    }
+
+  }
+}
