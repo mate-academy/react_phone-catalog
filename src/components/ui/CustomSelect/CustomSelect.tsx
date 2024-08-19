@@ -7,19 +7,16 @@ type CustomSelectProps = {
   options: string[];
   label?: string;
   onSelect: (option: string) => void;
-  initialValue?: string;
+  value: string;
 };
 
 const CustomSelectComponent: React.FC<CustomSelectProps> = ({
   label,
   options,
   onSelect,
-  initialValue,
+  value,
 }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedOption, setSelectedOption] = useState<string | null>(
-    initialValue || null,
-  );
 
   const dropdownRef = useRef<HTMLDivElement>(null);
 
@@ -28,7 +25,6 @@ const CustomSelectComponent: React.FC<CustomSelectProps> = ({
   const toggleDropdown = () => setIsOpen(!isOpen);
 
   const handleOptionClick = (option: string) => {
-    setSelectedOption(option);
     onSelect(option);
     setIsOpen(false);
   };
@@ -63,7 +59,7 @@ const CustomSelectComponent: React.FC<CustomSelectProps> = ({
         )}
         onClick={toggleDropdown}
       >
-        {selectedOption ? selectedOption : placeHolder}
+        {value ? value : placeHolder}
         {isOpen ? (
           <span className={styles['customSelect__arrow-icon']}>
             <Icon iconName="up" />

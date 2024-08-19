@@ -5,7 +5,7 @@ import { Icon } from '../ui/Icon';
 import { CardButton } from '../ui/CardButton';
 
 import { Product } from '../../types/Product';
-import { Link } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 
 type CardProps = {
   item: Product;
@@ -20,10 +20,13 @@ export const Card: React.FC<CardProps> = ({
   toggleFavorite,
   updateCart,
 }) => {
+  const [searchParams] = useSearchParams();
+
   return (
     <div className={styles.card}>
       <Link
         to={`/${item.category}/:${item.itemId}`}
+        state={{ search: searchParams.toString() }}
         className={styles.card__link}
       >
         <img

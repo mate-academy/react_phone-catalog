@@ -27,16 +27,17 @@ export const HomePage = () => {
 
   useEffect(() => {
     const counts = products.reduce((acc, item) => {
-      if (item.category in acc) {
-        // eslint-disable-next-line
-        acc[item.category] += 1;
+      const updatedAcc = { ...acc };
+
+      if (item.category in updatedAcc) {
+        updatedAcc[item.category] += 1;
       }
 
-      return acc;
-    }, productCounts);
+      return updatedAcc;
+    }, initializeProductCounts());
 
-    setProductCounts(counts);
-  }, [products, setProductCounts, productCounts]);
+    setProductCounts(prevCounts => ({ ...prevCounts, ...counts }));
+  }, [products]);
 
   const hotPriceModels = useMemo(() => {
     return [...products].sort((a, b) => {

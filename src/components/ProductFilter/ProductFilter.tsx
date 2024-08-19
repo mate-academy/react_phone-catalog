@@ -2,6 +2,7 @@ import classNames from 'classnames';
 import styles from './ProductFilter.module.scss';
 import { CustomSelect } from '../ui/CustomSelect';
 import { SortBy } from '../../types/SortBy';
+import { useSearchParams } from 'react-router-dom';
 
 const listSortBy: SortBy[] = [
   SortBy.Newest,
@@ -11,17 +12,34 @@ const listSortBy: SortBy[] = [
 
 const listOfPages = ['4', '8', '16', 'All'];
 
-type ProductFilterProps = {
-  handleSelectOption: (option: string, type: 'page' | 'sort') => void;
-  initialSortValue: SortBy | '';
-  initialItemsPerPageValue: number | 'All';
-};
+type ProductFilterProps = {};
 
-export const ProductFilter: React.FC<ProductFilterProps> = ({
-  handleSelectOption,
-  initialSortValue,
-  initialItemsPerPageValue,
-}) => {
+export const ProductFilter: React.FC<ProductFilterProps> = () => {
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const perPage = searchParams.get('perPage') || '';
+  const sort = searchParams.get('sort') || '';
+
+  // Handle option selection and update URL
+  const handleSelectOption = (option: string, type: string) => {
+    const params = new URLSearchParams(searchParams);
+
+    if (type === 'page') {
+      if (option === 'All') {
+        params.delete('perPage');
+        params.delete('page');
+      } else {
+        params.set('perPage', option);
+      }
+    }
+
+    if (type === 'sort') {
+      params.set('sort', option);
+    }
+
+    setSearchParams(params);
+  };
+
   return (
     <form className={styles['product-filter']}>
       <div className={styles['product-filter__controls']}>
@@ -36,8 +54,8 @@ export const ProductFilter: React.FC<ProductFilterProps> = ({
           </p>
           <CustomSelect
             options={listSortBy}
+            value={sort}
             onSelect={option => handleSelectOption(option, 'sort')}
-            initialValue={initialSortValue}
           />
         </div>
 
@@ -52,8 +70,8 @@ export const ProductFilter: React.FC<ProductFilterProps> = ({
           </p>
           <CustomSelect
             options={listOfPages}
+            value={perPage}
             onSelect={option => handleSelectOption(option, 'page')}
-            initialValue={initialItemsPerPageValue.toString()}
             label="page"
           />
         </div>
