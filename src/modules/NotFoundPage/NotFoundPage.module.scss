@@ -1,32 +1,45 @@
 @import '../../main';
 
 .pageNotFound {
-  text-align: center;
-  background-color: #fff;
-  border: 1px solid #e2e6e9;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: $white;
+  border: 1px solid $elements;
   border-radius: 36px;
   padding: 16px;
-  margin: 32px;
+  margin: 32px auto 0;
+  width: 90%;
 
   @include on-tablet {
     padding: 24px;
+    width: 70%;
   }
 
   @include on-desktop {
     padding: 32px;
+    width: 50%;
   }
 
   &__title {
-    font-size: 32px;
-    font-weight: 800;
-    line-height: 41px;
-    letter-spacing: -0.01em;
+    @include font-set($mobile-h1);
 
     @include on-tablet {
-      font-size: 48px;
-      line-height: 56px;
-      letter-spacing: -0.01em;
+      @include font-set($tablet-h1);
     }
+  }
+
+  &__button {
+    @include font-set($buttons);
+
+    margin: 8px;
+    padding: 9.5px;
+    background-color: $accent;
+    color: $white;
+    border: 1px solid $icons;
+    border-radius: 36px;
+    cursor: pointer;
   }
 
   &__img {

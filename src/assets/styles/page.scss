@@ -6,7 +6,7 @@
   font-weight: 600;
   font-size: 12px;
   line-height: 15.34px;
-  color: #0f0f11;
+  color: $primary;
   scroll-behavior: smooth;
 }
 
@@ -15,7 +15,7 @@ body.no-scroll {
 }
 
 html {
-  background-color: #fafbfc;
+  background-color: $hover-and-bg;
 }
 
 ul,

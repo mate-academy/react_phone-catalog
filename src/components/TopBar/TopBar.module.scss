@@ -9,8 +9,8 @@
 
   z-index: 100;
   width: 100%;
-  background-color: #fff;
-  box-shadow: 0 1px 0 0 #e2e6e9;
+  background-color: $white;
+  box-shadow: 0 1px 0 0 $elements;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -87,12 +87,10 @@
       }
 
       &__link {
+        @include font-set($uppercase);
+
         display: flex;
-        text-transform: uppercase;
-        font-weight: 800;
-        line-height: 11px;
-        letter-spacing: 0.04em;
-        color: #89939a;
+        color: $secondary;
         align-items: center;
         height: 100%;
         position: relative;
@@ -100,7 +98,7 @@
         &:not(.nav__link--active)::after {
           content: '';
           height: 3px;
-          background-color: #0f0f11;
+          background-color: $primary;
           position: absolute;
           bottom: 0;
           width: 0;
@@ -117,8 +115,8 @@
         }
 
         &--active {
-          color: #0f0f11;
-          border-bottom: 3px solid #0f0f11;
+          color: $primary;
+          border-bottom: 3px solid $primary;
         }
       }
     }
@@ -131,14 +129,17 @@
 
   &__iconContainer {
     position: relative;
-    box-shadow: -1px 0 0 0 #e2e6e9;
+    box-shadow: -1px 0 0 0 $elements;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
     cursor: pointer;
 
     &:not(.topbar__iconContainer--active)::after {
       content: '';
       height: 2.5px;
-      background-color: #0f0f11;
+      background-color: $primary;
       width: 0;
       position: absolute;
       bottom: 0;
@@ -154,12 +155,13 @@
     }
 
     &--active {
-      bottom: 1px; // how to make more correctly?
-      border-bottom: 3px solid #0f0f11;
+      bottom: 1px;
+      border-bottom: 3px solid $primary;
     }
   }
 
   &__icon {
+    position: relative;
     display: flex;
     height: $icons-size;
     width: $icons-size;
@@ -174,11 +176,32 @@
     }
   }
 
+  &__count {
+    position: absolute;
+    right: 9px;
+    top: 10px;
+    width: 14px;
+    height: 14px;
+    background-color: $accent;
+    border: solid 1px $white;
+    border-radius: 50%;
+    color: white;
+    text-align: center;
+    font-size: 9px;
+    line-height: 13px;
+
+    @include on-desktop {
+      right: 17px;
+      top: 18px;
+    }
+  }
+
   &__iconLike,
   &__iconCart {
     display: none;
 
     @include on-tablet {
+      position: relative;
       display: block;
     }
   }

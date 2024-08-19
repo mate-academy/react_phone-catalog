@@ -3,19 +3,18 @@ import style from './Aside.module.scss';
 import { NavLink } from 'react-router-dom';
 import { useContext, useEffect } from 'react';
 import { MenuContext } from '../../store/MenuProvider';
+import like from '../../assets/img/icons/like.svg';
+import cartImg from '../../assets/img/icons/cart.svg';
+import { FavouritesContext } from '../../store/FavouritesProvider';
+import { CartContext } from '../../store/CartProvider';
 
 const getActiveLink = ({ isActive }: { isActive: boolean }) =>
   cn(style.nav__link, {
     [style['nav__link--active']]: isActive,
   });
 
-const getActiveIconLike = ({ isActive }: { isActive: boolean }) =>
-  cn(style.menu__bottom__icon, style.menu__bottom__icon__like, {
-    [style['menu__bottom__icon--active']]: isActive,
-  });
-
-const getActiveIconCart = ({ isActive }: { isActive: boolean }) =>
-  cn(style.menu__bottom__icon, style.menu__bottom__icon__cart, {
+const getActiveIcon = ({ isActive }: { isActive: boolean }, iconName: string) =>
+  cn(style.menu__bottom__icon, style[`menu__bottom__icon__${iconName}`], {
     [style['menu__bottom__icon--active']]: isActive,
   });
 
@@ -28,6 +27,8 @@ const navItems = [
 
 export const Aside: React.FC = () => {
   const { isMenuActive, setIsMenuActive } = useContext(MenuContext);
+  const { favourites } = useContext(FavouritesContext);
+  const { cart } = useContext(CartContext);
 
   useEffect(() => {
     const handleResize = () => {
@@ -67,14 +68,28 @@ export const Aside: React.FC = () => {
       <div className={style.menu__bottom}>
         <NavLink
           to={'favourites'}
-          className={getActiveIconLike}
+          className={({ isActive }) => getActiveIcon({ isActive }, 'like')}
           onClick={() => setIsMenuActive(false)}
-        />
+        >
+          <img src={like} className={style.menu__bottom__icon__img} />
+          {!!favourites.length && (
+            <span className={style.menu__bottom__icon__count}>
+              {favourites.length}
+            </span>
+          )}
+        </NavLink>
         <NavLink
           to={'cart'}
-          className={getActiveIconCart}
+          className={({ isActive }) => getActiveIcon({ isActive }, 'cart')}
           onClick={() => setIsMenuActive(false)}
-        />
+        >
+          <img src={cartImg} className={style.menu__bottom__icon__img} />
+          {!!cart.length && (
+            <span className={style.menu__bottom__icon__count}>
+              {cart.length}
+            </span>
+          )}
+        </NavLink>
       </div>
     </aside>
   );

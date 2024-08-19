@@ -18,7 +18,7 @@
   }
 
   &__direction {
-    color: #89939a;
+    color: $secondary;
     text-transform: capitalize;
 
     &--active {
@@ -31,7 +31,7 @@
   }
 
   &__product {
-    color: #89939a;
+    color: $secondary;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;

@@ -14,15 +14,10 @@
     @include page-container;
 
     .title {
-      font-weight: 800;
-      font-size: 22px;
-      line-height: 30.8px;
+      @include font-set($mobile-h2);
 
       @include on-tablet {
-        font-size: 32px;
-        font-weight: 800;
-        line-height: 41px;
-        letter-spacing: -0.01em;
+        @include font-set($tablet-h2);
       }
     }
 
@@ -35,7 +30,7 @@
         height: 32px;
         width: 32px;
         padding: 8px;
-        border: 1px solid #e2e6e9;
+        border: 1px solid $elements;
         border-radius: 48px;
         cursor: pointer;
         background-image: url(../../assets/img/icons/arrow-right.svg);
@@ -48,7 +43,7 @@
           transform: scaleX(-1);
           background-repeat: no-repeat;
           background-position: center;
-          border: 1px solid #b4bdc3;
+          border: 1px solid $icons;
         }
       }
 
@@ -56,7 +51,7 @@
         height: 32px;
         width: 32px;
         padding: 8px;
-        border: 1px solid #e2e6e9;
+        border: 1px solid $elements;
         border-radius: 48px;
         cursor: pointer;
         background-image: url(../../assets/img/icons/arrow-right.svg);
@@ -67,7 +62,7 @@
           background-image: url(../../assets/img/icons/arrow-right-active.svg);
           background-repeat: no-repeat;
           background-position: center;
-          border: 1px solid #b4bdc3;
+          border: 1px solid $icons;
         }
       }
     }

@@ -1,19 +1,22 @@
 import style from './ItemCardPage.module.scss';
 import { Breadcrumbs } from '../../components/Breadcrumbs';
-import { ProductSlider } from '../../components/ProductSlider';
 import { Swiper, SwiperClass, SwiperSlide } from 'swiper/react';
 import 'swiper/scss';
 import { Autoplay, Thumbs } from 'swiper/modules';
 import { useContext, useEffect, useState } from 'react';
 import cn from 'classnames';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
-import { getData } from '../../assets/services/httpClient';
+import { getData } from '../../services/httpClient';
 import { ProductItem } from '../../types/ProductItem';
 import { FavouritesContext } from '../../store/FavouritesProvider';
 import { Product } from '../../types/Product';
 import notFoundProduct from '../../assets/img/product-not-found.png';
 import { Loader } from '../../components/Loader';
 import { CartContext } from '../../store/CartProvider';
+import { colorMap } from '../../utils/colorMap';
+import { ProductSlider } from '../../components/ProductSlider/ProductSlider';
+
+type ThumbsDirectionType = 'vertical' | 'horizontal';
 
 export const ItemCardPage = () => {
   const [thumbsSwiper, setThumbsSwiper] = useState<SwiperClass | null>(null);
@@ -22,6 +25,16 @@ export const ItemCardPage = () => {
   const [currentProduct, setCurrentProduct] = useState<ProductItem>();
   const [productFromGeneralList, setProductFromGeneralList] =
     useState<Product>();
+
+  const [thumbsDirection, setThumbsDirection] = useState<ThumbsDirectionType>(
+    () => {
+      if (window.innerWidth > 639) {
+        return 'vertical';
+      } else {
+        return 'horizontal';
+      }
+    },
+  );
 
   const { getActiveLike, handleLike } = useContext(FavouritesContext);
   const { getActiveButton, handleAddButton } = useContext(CartContext);
@@ -68,33 +81,21 @@ export const ItemCardPage = () => {
     );
   }, [productId, category]);
 
-  const images = currentProduct ? [...currentProduct?.images] : null;
+  useEffect(() => {
+    const getWidth = () => {
+      if (window.innerWidth > 639) {
+        setThumbsDirection('vertical');
+      } else {
+        setThumbsDirection('horizontal');
+      }
+    };
 
-  const colorMap: { [key: string]: string } = {
-    silver: '#C0C0C0',
-    spacegray: '#4A4A4A',
-    gold: '#D4AF37',
-    midnightgreen: '#004953',
-    red: '#FF3B30',
-    white: '#FFFFFF',
-    black: '#000000',
-    green: '#34C759',
-    yellow: '#FFCC00',
-    purple: '#AF52DE',
-    blue: '#007AFF',
-    pink: '#FF2D55',
-    coral: '#FF6F61',
-    midnight: '#1C1C1E',
-    sierrablue: '#A3C8FF',
-    graphite: '#383838',
-    rosegold: '#B76E79',
-    spaceblack: '#121212',
-    'space gray': '#4A4A4A',
-    'midnight green': '#004953',
-    'sierra blue': '#A3C8FF',
-    'rose gold': '#B76E79',
-    'sky blue': '#87CEEB',
-  };
+    window.addEventListener('resize', getWidth);
+
+    return () => window.removeEventListener('resize', getWidth);
+  }, []);
+
+  const images = currentProduct ? [...currentProduct?.images] : null;
 
   return (
     <div className={style.itemCard}>
@@ -102,7 +103,7 @@ export const ItemCardPage = () => {
         <Breadcrumbs name={currentProduct?.name} />
       </div>
 
-      <a className={style.backButton} onClick={() => navigate(-1)}>
+      <a className={style.backButton} onClick={() => navigate(`/${category}`)}>
         <div className={style.backButton__arrow} />
         <p className={style.backButton__text}>Back</p>
       </a>
@@ -144,7 +145,10 @@ export const ItemCardPage = () => {
             <Swiper
               onSwiper={swiper => setThumbsSwiper(swiper)}
               slidesPerView={images?.length}
+              spaceBetween={thumbsDirection === 'horizontal' ? 20 : 0}
               className={style.thumbs}
+              direction={thumbsDirection}
+              updateOnWindowResize={false}
             >
               <div className={style.slider__thumbsContainer}>
                 {images?.map((image, index) => (
@@ -373,6 +377,7 @@ export const ItemCardPage = () => {
             <ProductSlider
               title={currentProduct ? 'You may also like' : 'Our bestsellers'}
               discount={true}
+              random={true}
             />
           </div>
         </>

@@ -2,25 +2,22 @@ import logo from '../../assets/img/logos/mainlogo.svg';
 import style from './TopBar.module.scss';
 import { AiOutlineMenu, AiOutlineClose } from 'react-icons/ai';
 import like from '../../assets/img/icons/like.svg';
-import cart from '../../assets/img/icons/cart.svg';
-import { NavLink } from 'react-router-dom';
+import cartImg from '../../assets/img/icons/cart.svg';
+import { NavLink, useSearchParams } from 'react-router-dom';
 import cn from 'classnames';
 import { Aside } from '../Aside';
 import { useContext } from 'react';
 import { MenuContext } from '../../store/MenuProvider';
+import { FavouritesContext } from '../../store/FavouritesProvider';
+import { CartContext } from '../../store/CartProvider';
 
 const getActiveNavLink = ({ isActive }: { isActive: boolean }) =>
   cn(style.nav__link, {
     [style['nav__link--active']]: isActive,
   });
 
-const getActiveIconLike = ({ isActive }: { isActive: boolean }) =>
-  cn(`${style.topbar__iconContainer} ${style.topbar__iconLike}`, {
-    [style['topbar__iconContainer--active']]: isActive,
-  });
-
-const getActiveIconCart = ({ isActive }: { isActive: boolean }) =>
-  cn(`${style.topbar__iconContainer} ${style.topbar__iconCart}`, {
+const getActiveIcon = ({ isActive }: { isActive: boolean }, iconName: string) =>
+  cn(style.topbar__iconContainer, style[`topbar__${iconName}`], {
     [style['topbar__iconContainer--active']]: isActive,
   });
 
@@ -33,6 +30,9 @@ const navItems = [
 
 export const TopBar = () => {
   const { isMenuActive, setIsMenuActive } = useContext(MenuContext);
+  const [searchParams] = useSearchParams();
+  const { favourites } = useContext(FavouritesContext);
+  const { cart } = useContext(CartContext);
 
   return (
     <>
@@ -45,7 +45,10 @@ export const TopBar = () => {
             <ul className={style.nav__list}>
               {navItems.map(({ path, name }) => (
                 <li key={name} className={style.nav__item}>
-                  <NavLink to={path} className={getActiveNavLink}>
+                  <NavLink
+                    to={path + '?' + searchParams}
+                    className={getActiveNavLink}
+                  >
                     {name}
                   </NavLink>
                 </li>
@@ -55,12 +58,28 @@ export const TopBar = () => {
         </div>
 
         <div className={style.topbar__right}>
-          <NavLink to={'favourites'} className={getActiveIconLike}>
+          <NavLink
+            to={'favourites'}
+            className={({ isActive }) =>
+              getActiveIcon({ isActive }, 'iconLike')
+            }
+          >
             <img src={like} className={style.topbar__icon} />
+            {!!favourites.length && (
+              <span className={style.topbar__count}>{favourites.length}</span>
+            )}
           </NavLink>
 
-          <NavLink to={'cart'} className={getActiveIconCart}>
-            <img src={cart} className={style.topbar__icon} />
+          <NavLink
+            to={'cart'}
+            className={({ isActive }) =>
+              getActiveIcon({ isActive }, 'iconCart')
+            }
+          >
+            <img src={cartImg} className={style.topbar__icon} />
+            {!!cart.length && (
+              <span className={style.topbar__count}>{cart.length}</span>
+            )}
           </NavLink>
 
           <div

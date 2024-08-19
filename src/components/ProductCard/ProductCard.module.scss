@@ -2,20 +2,20 @@
 
 .card {
   padding: 32px;
-  border: 1px solid #e2e6e9;
+  border: 1px solid $elements;
   border-radius: 8px;
-  background-color: #fff;
+  background-color: $white;
   display: flex;
   flex-direction: column;
   gap: 8px;
-  min-width: 242px;
+  min-width: 232px;
 
   @include on-tablet {
-    min-width: 277px;
+    min-width: 245px;
   }
 
   @include on-desktop {
-    min-width: 302px;
+    min-width: 277px;
   }
 
   @include hover {
@@ -49,9 +49,9 @@
   }
 
   .title {
+    @include font-set($body-text);
+
     padding-top: 16px;
-    font-size: 14px;
-    line-height: 21px;
     height: 60px;
     cursor: pointer;
 
@@ -66,22 +66,20 @@
     gap: 8px;
 
     &__actual {
-      font-size: 22px;
-      font-weight: 800;
-      line-height: 30.8px;
+      @include font-set($tablet-h3);
     }
 
     &__old {
       font-size: 22px;
       font-weight: 600;
       line-height: 28.12px;
-      color: #89939a;
+      color: $secondary;
       text-decoration: line-through;
     }
   }
 
   .divider {
-    border: 1px solid #e2e6e9;
+    border: 1px solid $elements;
   }
 
   .specs {
@@ -97,7 +95,7 @@
 
     &__key {
       font-weight: 700;
-      color: #89939a;
+      color: $secondary;
     }
 
     &__value {
@@ -111,8 +109,8 @@
     gap: 8px;
 
     &__add {
-      color: #fff;
-      background-color: #4219d0;
+      color: $white;
+      background-color: $accent;
       border-radius: 48px;
       padding: 9.5px 0;
       width: 75%;
@@ -123,14 +121,14 @@
       }
 
       &--active {
-        border: 1px solid #e2e6e9;
-        color: #4219d0;
-        background-color: #fafbfc;
+        border: 1px solid $elements;
+        color: $accent;
+        background-color: $hover-and-bg;
       }
     }
 
     &__like {
-      border: 1px solid #b4bdc3;
+      border: 1px solid $icons;
       border-radius: 48px;
       cursor: pointer;
       background-image: url(../../assets/img/icons/like.svg);
@@ -139,6 +137,10 @@
       background-size: 16px;
       width: 40px;
       height: 40px;
+
+      @include hover {
+        border: 1px solid $primary;
+      }
 
       &--active {
         background-image: url(../../assets/img/icons/like-active.svg);

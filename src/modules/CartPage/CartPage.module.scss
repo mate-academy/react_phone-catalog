@@ -25,33 +25,31 @@
       background-image: url(../../assets/img/icons/arrow-right-active.svg);
       background-repeat: no-repeat;
       background-position: center;
-      width: 16px;
-      height: 16px;
+      width: $icons-size;
+      height: $icons-size;
       transform: scaleX(-1);
     }
 
     &__text {
       font-weight: 700;
-      color: #89939a;
+      color: $secondary;
 
       @include hover {
-        color: #0f0f11;
+        color: $primary;
       }
     }
   }
 
   .title {
+    @include font-set($mobile-h2);
+
     grid-column: 1 / -1;
-    font-size: 22px;
-    font-weight: 800;
-    line-height: 30.8px;
     margin-top: 16px;
     margin-bottom: 32px;
 
     @include on-tablet {
-      font-size: 32px;
-      line-height: 41px;
-      letter-spacing: -0.01em;
+      @include font-set($tablet-h2);
+
       margin-bottom: 40px;
     }
   }
@@ -67,8 +65,7 @@
     grid-column: span 8;
     padding: 24px;
     margin-top: 32px;
-    margin-bottom: 56px;
-    border: 1px solid #e2e6e9;
+    border: 1px solid $elements;
     border-radius: 16px;
     display: flex;
     flex-direction: column;
@@ -86,32 +83,28 @@
       align-items: center;
 
       &__price {
-        font-size: 32px;
-        font-weight: 800;
-        line-height: 41px;
-        letter-spacing: -0.01em;
+        @include font-set($tablet-h2);
       }
 
       &__total {
-        font-size: 14px;
-        line-height: 21px;
-        color: #89939a;
+        @include font-set($body-text);
+
+        color: $secondary;
       }
     }
 
     &__divider {
-      border: 1px solid #e2e6e9;
+      border: 1px solid $elements;
       width: 100%;
     }
 
     &__button {
+      @include font-set($buttons);
+
       padding-block: 13.5px;
       width: 100%;
-      background-color: #4219d0;
-      font-size: 14px;
-      font-weight: 700;
-      line-height: 21px;
-      color: #fff;
+      background-color: $accent;
+      color: $white;
       border-radius: 48px;
       cursor: pointer;
 
@@ -124,8 +117,8 @@
   .emptyCart {
     width: 100%;
     text-align: center;
-    background-color: #fff;
-    border: 1px solid #e2e6e9;
+    background-color: $white;
+    border: 1px solid $elements;
     border-radius: 36px;
     padding: 16px;
 
@@ -139,15 +132,10 @@
     }
 
     &__title {
-      font-size: 32px;
-      font-weight: 800;
-      line-height: 41px;
-      letter-spacing: -0.01em;
+      @include font-set($mobile-h1);
 
       @include on-tablet {
-        font-size: 48px;
-        line-height: 56px;
-        letter-spacing: -0.01em;
+        @include font-set($tablet-h1);
       }
     }
 

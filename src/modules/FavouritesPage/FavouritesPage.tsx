@@ -16,7 +16,9 @@ export const FavouritesPage = () => {
 
       {!favourites.length && (
         <>
-          <h1 className={style.title}>You haven`t favourite products =(</h1>
+          <h1 className={style.title}>
+            You haven&apos;t favourite products =(
+          </h1>
         </>
       )}
 

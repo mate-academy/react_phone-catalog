@@ -15,30 +15,18 @@
 
   .title {
     @include page-container;
+    @include font-set($mobile-h1);
 
     margin-block: 24px;
-    font-size: 32px;
-    font-weight: 800;
-    line-height: 41px;
-    letter-spacing: -0.01em;
 
     @include on-tablet {
+      @include font-set($tablet-h1);
+
       margin-block: 32px;
-      font-size: 48px;
-      font-weight: 800;
-      line-height: 56px;
     }
 
     @include on-desktop {
       margin-block: 56px;
-    }
-  }
-
-  .hotPrices {
-    margin-bottom: 64px;
-
-    @include on-desktop {
-      margin-bottom: 80px;
     }
   }
 }

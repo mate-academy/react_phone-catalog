@@ -4,15 +4,12 @@
   @include page-container;
 
   .title {
-    font-size: 22px;
-    font-weight: 800;
-    line-height: 30.8px;
+    @include font-set($mobile-h2);
+
     margin-bottom: 24px;
 
     @include on-tablet {
-      font-size: 32px;
-      line-height: 41px;
-      letter-spacing: -0.01em;
+      @include font-set($tablet-h2);
     }
   }
 
@@ -41,16 +38,15 @@
     }
 
     &__name {
-      font-size: 20px;
-      font-weight: 700;
-      line-height: 25.56px;
+      @include font-set($tablet-h4);
+
       margin-bottom: 4px;
     }
 
     &__countModels {
-      font-size: 14px;
-      line-height: 21px;
-      color: #89939a;
+      @include font-set($body-text);
+
+      color: $secondary;
     }
   }
 }

@@ -1,13 +1,13 @@
 @import '../../main';
 
 .img {
-  width: 100vw;
-  height: 100vw;
+  width: 100%;
+  aspect-ratio: 1 / 1;
   object-position: center;
   object-fit: cover;
 
   @include on-tablet {
-    height: 221px;
+    max-height: 324px;
     object-fit: contain;
     padding-inline: 75px;
     display: flex;
@@ -26,10 +26,10 @@
 
 .swiperButtonNext,
 .swiperButtonPrev {
-  background-color: #fafbfc;
-  border: 1px solid #b4bdc3;
+  background-color: $hover-and-bg;
+  border: 1px solid $icons;
   width: 32px;
-  height: 200px;
+  height: 90%;
   border-radius: 48px;
   display: flex;
   align-items: center;
@@ -46,7 +46,7 @@
   }
 
   @include on-desktop {
-    height: 432px;
+    height: 100%;
   }
 }
 
@@ -55,13 +55,13 @@
   background-image: url(../../assets/img/icons/arrow-right.svg);
   background-repeat: no-repeat;
   background-position: center;
-  color: #0f0f11;
+  color: $primary;
 }
 
 .swiperButtonPrev {
   background-image: url(../../assets/img/icons/arrow-left.svg);
   background-repeat: no-repeat;
   background-position: center;
-  color: #0f0f11;
+  color: $primary;
   left: 24px;
 }

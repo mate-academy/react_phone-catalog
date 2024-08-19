@@ -6,40 +6,38 @@
   .label {
     margin-bottom: 4px;
     font-weight: 700;
-    color: #89939a;
+    color: $secondary;
   }
 
   .main {
     display: flex;
     justify-content: space-between;
     padding: 12px;
-    border: 1px solid #b4bdc3;
+    border: 1px solid $icons;
     border-radius: 8px;
     cursor: pointer;
 
     @include hover {
-      border: 1px solid #89939a;
+      border: 1px solid $secondary;
     }
 
     &--active {
-      border: 1px solid #0f0f11;
+      border: 1px solid $primary;
 
       @include hover {
-        border: 1px solid #0f0f11;
+        border: 1px solid $primary;
       }
     }
 
     &__text {
-      font-size: 14px;
-      font-weight: 700;
-      line-height: 21px;
+      @include font-set($buttons);
     }
 
     &__icon {
       background-image: url(../../assets/img/icons/arrow-down.svg);
       background-repeat: no-repeat;
-      width: 16px;
-      height: 16px;
+      width: $icons-size;
+      height: $icons-size;
       background-position: center;
       transition: transform 0.3s ease;
 
@@ -50,27 +48,27 @@
   }
 
   .options {
-    border: 1px solid #e2e6e9;
+    border: 1px solid $elements;
     border-radius: 8px;
     position: absolute;
     width: 100%;
     top: 70px;
-    background-color: #fff;
+    background-color: $white;
 
     .option {
+      @include font-set($body-text);
+
       padding: 6px 12px;
       cursor: pointer;
-      font-size: 14px;
-      line-height: 21px;
-      color: #89939a;
+      color: $secondary;
       text-transform: capitalize;
 
       @include hover {
-        color: #0f0f11;
+        color: $primary;
       }
 
       &--active {
-        color: #0f0f11;
+        color: $primary;
       }
     }
   }

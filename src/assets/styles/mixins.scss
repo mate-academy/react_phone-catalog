@@ -43,3 +43,9 @@
     padding-inline: $container-padding-desktop;
   }
 }
+
+@mixin font-set($font-map) {
+  @each $property, $value in $font-map {
+    #{$property}: $value;
+  }
+}

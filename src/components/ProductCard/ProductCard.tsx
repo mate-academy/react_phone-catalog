@@ -26,10 +26,13 @@ export const ProductCard: React.FC<Props> = ({ prod, discount = true }) => {
       <NavLink
         to={`/${prod.category}/${prod.itemId}`}
         className={style.img__link}
+        onClick={() => window.scrollTo(0, 0)}
       >
         <img src={prod.image} className={style.img} />
       </NavLink>
-      <div className={style.title}>{prod.name}</div>
+      <NavLink to={`/${prod.category}/${prod.itemId}`} className={style.title}>
+        {prod.name}
+      </NavLink>
       <div className={style.price}>
         <div className={style.price__actual}>
           ${discount ? prod.price : prod.fullPrice}

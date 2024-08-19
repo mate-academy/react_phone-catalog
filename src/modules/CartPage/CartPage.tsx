@@ -6,7 +6,7 @@ import { CartContext } from '../../store/CartProvider';
 import emptyCart from '../../assets/img/cart-is-empty.png';
 
 export const CartPage = () => {
-  const { cart } = useContext(CartContext);
+  const { cart, setCart } = useContext(CartContext);
   const navigate = useNavigate();
 
   const getSum = () => {
@@ -15,6 +15,16 @@ export const CartPage = () => {
 
   const getLengthOfCart = () => {
     return cart.reduce((acc, val) => acc + (val.inCart || 1), 0);
+  };
+
+  const handleCheckout = () => {
+    const userResponse = confirm(
+      'Checkout is not implemented yet, do you want to clear a cart?',
+    );
+
+    if (userResponse) {
+      setCart([]);
+    }
   };
 
   return (
@@ -26,7 +36,7 @@ export const CartPage = () => {
 
       {!cart.length && (
         <div className={style.emptyCart}>
-          <h1 className={style.emptyCardt_title}>Your cart is empty</h1>
+          <h1 className={style.emptyCart__title}>Your cart is empty</h1>
           <img
             src={emptyCart}
             alt="Empty Cart"
@@ -39,13 +49,13 @@ export const CartPage = () => {
         <>
           <h1 className={style.title}>Cart</h1>
 
-          <div className={style.main}>
+          <ul className={style.main}>
             {cart.map(prod => (
-              <div className={style.card} key={prod.id}>
+              <li className={style.card} key={prod.id}>
                 <ProductInCart prod={prod} />
-              </div>
+              </li>
             ))}
-          </div>
+          </ul>
 
           <div className={style.checkout}>
             <div className={style.checkout__items}>
@@ -55,10 +65,7 @@ export const CartPage = () => {
               </p>
             </div>
             <div className={style.checkout__divider} />
-            <button
-              className={style.checkout__button}
-              onClick={() => alert('Checkout is not implemented yet =(')}
-            >
+            <button className={style.checkout__button} onClick={handleCheckout}>
               Checkout
             </button>
           </div>

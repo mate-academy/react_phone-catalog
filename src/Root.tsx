@@ -12,9 +12,9 @@ import { CartPage } from './modules/CartPage';
 import { MenuProvider } from './store/MenuProvider';
 import { CatalogPage } from './modules/CatalogPage/CatalogPage';
 import { ProductProvider } from './store/ProductProvider';
-import { ItemCardPage } from './modules/ItemCardPage';
 import { FavouritesProvider } from './store/FavouritesProvider';
 import { CartProvider } from './store/CartProvider';
+import { ItemCardPage } from './modules/ItemCardPage/ItemCardPage';
 
 export const Root = () => (
   <ProductProvider>

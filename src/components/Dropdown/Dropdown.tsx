@@ -1,5 +1,5 @@
 import style from './Dropdown.module.scss';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import cn from 'classnames';
 import { useSearchParams } from 'react-router-dom';
 import { SortType } from '../../types/SortType';
@@ -20,8 +20,6 @@ export const Dropdown: React.FC<Props> = ({ dropdownName }) => {
   const itemsOnPage = searchParams.get('perPage') || 'All';
 
   const [isOpen, setIsOpen] = useState(false);
-
-  useEffect(() => {}, []);
 
   const handleSortChange = (dropName: string, option: string | number) => {
     const params = new URLSearchParams(searchParams);

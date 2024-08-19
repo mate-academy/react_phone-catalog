@@ -10,28 +10,23 @@
   }
 
   .title {
+    @include font-set($mobile-h1);
+
     grid-column: 1 / -1;
-    font-size: 32px;
-    font-weight: 800;
-    line-height: 41px;
-    letter-spacing: -0.01em;
     text-transform: capitalize;
 
     @include on-tablet {
-      font-size: 48px;
-      font-weight: 800;
-      line-height: 56px;
-      letter-spacing: -0.01em;
+      @include font-set($tablet-h1);
     }
   }
 
   .countModels {
+    @include font-set($body-text);
+
     grid-column: 1 / -1;
     margin-top: 8px;
     margin-bottom: 32px;
-    font-size: 14px;
-    line-height: 21px;
-    color: #89939a;
+    color: $secondary;
 
     @include on-tablet {
       margin-bottom: 40px;
@@ -54,6 +49,50 @@
     }
   }
 
+  .query {
+    grid-column: 1 / -1;
+    display: flex;
+    flex-direction: column;
+    margin-top: 12px;
+
+    @include on-tablet {
+      grid-column: -1 / -5;
+      margin-top: 0;
+    }
+
+    @include on-desktop {
+      grid-column: -1 / -8;
+    }
+
+    &__label {
+      margin-bottom: 4px;
+      font-weight: 700;
+      color: $secondary;
+    }
+
+    &__input {
+      @include font-set($buttons);
+
+      padding: 12px;
+      background-color: inherit;
+      outline: none;
+      border: 1px solid $icons;
+      border-radius: 8px;
+
+      @include hover {
+        border: 1px solid $secondary;
+      }
+
+      &:focus {
+        border: 1px solid $primary;
+
+        @include hover {
+          border: 1px solid $primary;
+        }
+      }
+    }
+  }
+
   .cards {
     margin-top: 24px;
     grid-column: 1 / -1;
@@ -62,10 +101,12 @@
     grid-template-columns: repeat(auto-fill, minmax(212px, 272px));
     justify-content: center;
     column-gap: 16px;
+    row-gap: 40px;
+  }
 
-    .card {
-      margin-bottom: 40px;
-    }
+  .pagination {
+    margin-top: 40px;
+    grid-column: 1 / -1;
   }
 
   .noData {
@@ -75,5 +116,32 @@
     font-size: 24px;
     line-height: 40px;
     grid-column: 1 / -1;
+  }
+
+  .error {
+    grid-column: 1 / -1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    background-color: rgb(251, 167, 167);
+    border-radius: 10px;
+    padding: 24px;
+
+    &__text {
+      display: block;
+      @include font-set($tablet-h3);
+    }
+
+    &__button {
+      padding: 9.5px;
+      background-color: $accent;
+      color: $white;
+      border: 1px solid $icons;
+      border-radius: 36px;
+      cursor: pointer;
+
+      @include font-set($buttons);
+    }
   }
 }

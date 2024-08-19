@@ -1,47 +1,33 @@
 import style from './ProductSlider.module.scss';
 import { ProductCard } from '../ProductCard';
-import { useContext, useEffect, useRef, useState } from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 import cn from 'classnames';
-import { Product } from '../../types/Product';
 import { ProductContext } from '../../store/ProductProvider';
+import { getVisibleProducts } from '../../utils/getVisibleProducts';
+import { Product } from '../../types/Product';
 
 type ScrollValues = 228 | 261 | 304;
 
 type Props = {
   title: string;
   discount: boolean;
+  random: boolean;
 };
 
-const getVisibleProducts = (products: Product[], discount: boolean) => {
-  if (!products.length) {
-    return;
-  }
-
-  if (!discount) {
-    let lastYearProduction = products[0].year;
-
-    for (const item of products) {
-      if (item.year > lastYearProduction) {
-        lastYearProduction = item.year;
-      }
-    }
-
-    return [...products]
-      .filter(item => item.year === lastYearProduction)
-      .sort((a, b) => b.fullPrice - a.fullPrice);
-  }
-
-  return products
-    .sort((a, b) => b.fullPrice - b.price - (a.fullPrice - a.price))
-    .filter(item => item.fullPrice - item.price >= 100);
-};
-
-export const ProductSlider: React.FC<Props> = ({ title, discount }) => {
+export const ProductSlider: React.FC<Props> = ({ title, discount, random }) => {
   const scrollRef = useRef<HTMLDivElement>(null);
   const [scrollValue, setScrollValue] = useState<ScrollValues>(228);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(true);
   const { products } = useContext(ProductContext);
+
+  const [visibleList, setVisibleList] = useState<Product[]>([]);
+
+  useEffect(() => {
+    const newList = getVisibleProducts(products, discount, random);
+
+    setVisibleList(newList);
+  }, [discount, products, random]);
 
   useEffect(() => {
     const getScrollValue = () => {
@@ -90,8 +76,6 @@ export const ProductSlider: React.FC<Props> = ({ title, discount }) => {
       scrollRef.current.scrollBy({ left: -scrollValue });
     }
   };
-
-  const visibleList = getVisibleProducts(products, discount);
 
   return (
     <section className={style.productSlider}>

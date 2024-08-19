@@ -42,6 +42,7 @@ export const Slider = () => {
       }
       loop={true}
       centeredSlides={true}
+      spaceBetween={20}
     >
       <SwiperSlide>
         <img

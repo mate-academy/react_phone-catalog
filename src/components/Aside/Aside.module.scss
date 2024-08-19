@@ -32,7 +32,7 @@
     &__link {
       position: relative;
       padding-block: 8px;
-      color: #89939a;
+      color: $secondary;
       text-transform: uppercase;
       font-weight: 800;
       line-height: 11px;
@@ -73,26 +73,42 @@
     height: calc(16px + 48px);
 
     &__icon {
+      position: relative;
+      display: flex;
       align-self: center;
+      align-items: center;
+      justify-content: center;
       height: 100%;
       width: 100%;
-      box-shadow: -1px 0 0 0 #e2e6e9;
+      box-shadow: -1px 0 0 0 $elements;
       cursor: pointer;
 
       &--active {
         border-bottom: 2px solid #313237;
       }
 
-      &__like {
-        background-image: url('../../assets/img/icons/like.svg');
-        background-repeat: no-repeat;
-        background-position: center;
+      &__img {
+        position: relative;
+        display: flex;
+        height: $icons-size;
+        width: $icons-size;
+        margin: $icons-margin-mobile;
       }
 
-      &__cart {
-        background-image: url('../../assets/img/icons/cart.svg');
-        background-repeat: no-repeat;
-        background-position: center;
+      &__count {
+        position: absolute;
+        right: 46%;
+        top: 16px;
+        transform: translateX(54%);
+        width: 14px;
+        height: 14px;
+        background-color: #4219d0;
+        border: solid 1px #fff;
+        border-radius: 50%;
+        color: #fff;
+        text-align: center;
+        font-size: 9px;
+        line-height: 13px;
       }
     }
   }

@@ -33,12 +33,12 @@ export const Footer = () => (
         ))}
       </ul>
     </nav>
-    <div
+    <button
       className={style.backToTop}
       onClick={() => window.scrollTo({ top: 0 })}
     >
       <p className={style.backToTop__text}>Back to top</p>
       <div className={style.backToTop__button} />
-    </div>
+    </button>
   </footer>
 );
