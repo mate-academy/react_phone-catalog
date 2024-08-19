@@ -1,0 +1,152 @@
+@import '../../App';
+
+.product {
+  background-color: $c-surface-1;
+  padding: 32px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  @include on-desktop {
+    &:hover {
+      .product__img-link {
+        transform: scale(1.1);
+      }
+    }
+  }
+
+  &__img-link {
+    display: flex;
+    width: 148px;
+    height: 129px;
+    align-self: center;
+
+    @include on-tablet {
+      width: 174px;
+      height: 202px;
+    }
+
+    @include on-desktop {
+      width: 208px;
+      height: 196px;
+      transition: transform 0.5s;
+    }
+  }
+
+  &__img {
+    width: 100%;
+    object-fit: contain;
+  }
+
+  &__title {
+    margin: 0;
+    font-weight: 400;
+    font-size: 14px;
+
+    line-height: 1.5em;
+    height: 3em;
+    overflow: hidden;
+    padding-top: 16px;
+
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* Обмежити текст до двох рядків */
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
+  }
+
+  &__prices {
+    display: flex;
+
+    width: 100%;
+    padding-bottom: 8px;
+    border-bottom: 1px solid $c-elements;
+  }
+
+  &__price {
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 140%;
+  }
+
+  &__info-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  &__info-item {
+    color: $c-secondary;
+    display: flex;
+    justify-content: space-between;
+    gap: 5px;
+  }
+
+  &__info-value {
+    font-weight: 600;
+    color: $c-white;
+  }
+
+  &__buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+  }
+
+  &__button-cart {
+    cursor: pointer;
+    background-color: $c-accent;
+    border: none;
+    color: inherit;
+
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 150%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+    height: 40px;
+    padding: 10px;
+
+    @include on-tablet {
+      width: 125px;
+      padding: 10px 22px;
+    }
+
+    @include on-desktop {
+      width: 160px;
+      padding: 10px 40px;
+      transition:
+        background-color 0.5s,
+        color 0.5s;
+
+      &:hover {
+        background-color: $c-white;
+        color: $c-accent;
+      }
+    }
+  }
+
+  &__button-fav {
+    cursor: pointer;
+    border: none;
+    background-color: $c-surface-2;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+
+    @include on-desktop {
+      transition: background-color 0.5s;
+
+      &:hover {
+        background-color: $c-icons;
+      }
+    }
+  }
+}

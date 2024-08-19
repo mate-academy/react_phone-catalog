@@ -53,13 +53,12 @@
     margin-bottom: 24px;
 
     &--light {
-      background-color: #8D8D92;
+      background-color: #8d8d92;
     }
 
     &--red {
-      background-color: #973D5F;
+      background-color: #973d5f;
     }
-
 
     @include on-tablet {
       height: 187px;
@@ -91,7 +90,7 @@
       @include on-desktop {
         top: 71px;
         left: 82px;
-        
+
         // transform: translate(71px, 82px);
         transition: transform 0.5s;
       }
@@ -109,7 +108,9 @@
     color: $c-secondary;
 
     span {
-      transition: color 0.5s, font-weight 0.5s;
+      transition:
+        color 0.5s,
+        font-weight 0.5s;
     }
   }
 }

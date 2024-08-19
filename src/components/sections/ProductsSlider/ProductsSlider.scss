@@ -1,0 +1,74 @@
+@import '../../../App';
+
+.products-slider {
+
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 72px;
+    margin-bottom: 24px;
+  }
+
+  &__title {
+    margin: 0;
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 16px;
+  }
+
+  &__button {
+    cursor: pointer;
+    border: 1px solid transparent;
+    background-color: $c-surface-2;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 32px;
+    height: 32px;
+
+
+    &:disabled {
+      cursor: not-allowed;
+      border: 1px solid $c-elements;
+      opacity: 0.6;
+      pointer-events: none;
+    }
+
+    @include on-desktop {
+      transition: background-color 0.5s;
+
+      &:hover {
+        background-color: $c-icons;
+      }
+    }
+  }
+
+  &__wrapper {
+    overflow: hidden;
+  }
+
+  &__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    display: flex;
+    gap: 16px;
+  }
+
+  &__item {
+    flex-basis: 212px;
+
+    @include on-tablet {
+      flex-basis: 237px;
+    }
+
+    @include on-desktop {
+      flex-basis: 272px;
+    }
+  }
+}
