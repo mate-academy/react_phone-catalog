@@ -8,6 +8,7 @@
 
   @include on-tablet {
     max-height: 324px;
+    aspect-ratio: unset;
     object-fit: contain;
     padding-inline: 75px;
     display: flex;
@@ -16,7 +17,7 @@
   }
 
   @include on-desktop {
-    height: 432px;
+    max-height: 432px;
   }
 }
 
@@ -29,7 +30,7 @@
   background-color: $hover-and-bg;
   border: 1px solid $icons;
   width: 32px;
-  height: 90%;
+  height: 80%;
   border-radius: 48px;
   display: flex;
   align-items: center;
@@ -46,7 +47,7 @@
   }
 
   @include on-desktop {
-    height: 100%;
+    top: 200px;
   }
 }
 

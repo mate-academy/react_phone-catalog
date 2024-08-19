@@ -49,26 +49,30 @@ export const ItemCardPage = () => {
   const handleChangeColor = (color: string) => {
     const splitedPath = location.split('-');
 
-    const length = currentProduct ? currentProduct.color.split(' ').length : 0;
+    const length = currentProduct
+      ? currentProduct.color.split(' ').join('-').split('-').length
+      : 0;
 
     const pathWithoutColor = splitedPath.slice(0, -length);
 
     const newPath =
       pathWithoutColor.join('-') + '-' + color.split(' ').join('-');
 
-    navigate(newPath);
+    navigate(newPath, { replace: true });
   };
 
   const handleChangeCapacity = (capacity: string) => {
     const splitedPath = location.split('-');
 
-    const length = currentProduct ? currentProduct.color.split(' ').length : 0;
+    const length = currentProduct
+      ? currentProduct.color.split(' ').join('-').split('-').length
+      : 0;
 
     splitedPath[splitedPath.length - length - 1] = capacity.toLowerCase();
 
     const newPath = splitedPath.join('-');
 
-    navigate(newPath);
+    navigate(newPath, { replace: true });
   };
 
   useEffect(() => {
@@ -175,11 +179,16 @@ export const ItemCardPage = () => {
                   </p>
                   <p className={style.colors__text__id}>ID: 802390</p>
                 </div>
-                <div className={style.colors__selection}>
+                <ul className={style.colors__selection}>
                   {currentProduct.colorsAvailable.map(color => (
-                    <div
+                    <li
                       className={
-                        color === currentProduct.color
+                        color.split(' ').join('-').split('-').join(' ') ===
+                        currentProduct.color
+                          .split(' ')
+                          .join('-')
+                          .split('-')
+                          .join(' ')
                           ? style['colors__selection__container--active']
                           : style.colors__selection__container
                       }
@@ -190,9 +199,9 @@ export const ItemCardPage = () => {
                         className={style.colors__selection__color}
                         style={{ backgroundColor: colorMap[color] }}
                       />
-                    </div>
+                    </li>
                   ))}
-                </div>
+                </ul>
               </div>
 
               <div className={style.divider} />
