@@ -33,6 +33,22 @@ body {
   grid-template-rows: auto 1fr auto;
 }
 
+h1 {
+  @apply small:text-h1 text-h1mobile;
+}
+
+h2 {
+  @apply small:text-h2 text-h2mobile;
+}
+
+h3 {
+  @apply small:text-h3 text-h3mobile;
+}
+
+h4 {
+  @apply small:text-h4 text-h4mobile;
+}
+
 :is(.text-bodyText) {
   font-family: "Mont";
 }

@@ -12,7 +12,13 @@ export default {
         {
           lineHeight: "56px",
           letterSpacing: "-0.01em",
-          fontFamily: "Mont Bold",
+        },
+      ],
+      h1mobile: [
+        "32px",
+        {
+          lineHeight: "41px",
+          letterSpacing: "-0.01em",
         },
       ],
       h2: [
@@ -20,7 +26,13 @@ export default {
         {
           lineHeight: "41px",
           letterSpacing: "-0.01em",
-          fontFamily: "Mont Bold",
+        },
+      ],
+      h2mobile: [
+        "22px",
+        {
+          lineHeight: "31px",
+          letterSpacing: "0",
         },
       ],
       h3: [
@@ -28,7 +40,13 @@ export default {
         {
           lineHeight: "31px",
           letterSpacing: "0",
-          fontFamily: "Mont Bold",
+        },
+      ],
+      h3mobile: [
+        "20px",
+        {
+          lineHeight: "26px",
+          letterSpacing: "0",
         },
       ],
       h4: [
@@ -36,7 +54,13 @@ export default {
         {
           lineHeight: "26px",
           letterSpacing: "0",
-          fontFamily: "Mont SemiBold",
+        },
+      ],
+      h4mobile: [
+        "16px",
+        {
+          lineHeight: "20px",
+          letterSpacing: "0",
         },
       ],
       uppercase: [
@@ -44,7 +68,6 @@ export default {
         {
           lineHeight: "11px",
           letterSpacing: "0.04em",
-          fontFamily: "Mont Bold",
         },
       ],
       buttons: [
@@ -52,7 +75,6 @@ export default {
         {
           lineHeight: "21px",
           letterSpacing: "0",
-          fontFamily: "Mont SemiBold",
         },
       ],
       bodyText: [
@@ -60,7 +82,6 @@ export default {
         {
           lineHeight: "21px",
           letterSpacing: "0",
-          fontFamily: "Mont",
         },
       ],
       smallText: [
@@ -68,7 +89,6 @@ export default {
         {
           lineHeight: "15px",
           letterSpacing: "0",
-          fontFamily: "Mont SemiBold",
         },
       ],
     },
@@ -87,6 +107,8 @@ export default {
     extend: {
       width: {
         page: "min(100%, calc(1200px + (2rem * 2)))",
+        68: "272px",
+        53: "212px",
       },
       height: {
         banner: "400px",

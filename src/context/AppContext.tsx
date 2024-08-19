@@ -1,19 +1,34 @@
 /* eslint-disable react-refresh/only-export-components */
-import { createContext, ReactNode, useContext, useRef, useState } from "react";
+import {
+  createContext,
+  ReactNode,
+  useContext,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 import { Image } from "../types/image";
+// import accessoriesList from "../../../assets/api/accessories.json";
+import { Item } from "../types/item";
+import { Category } from "../types/category";
 
 type Props = {
   children: ReactNode;
 };
 
 type AppContextProps = {
+  accessoriesList: Item[];
   bannerImages: Image[];
+  categories: Category[];
   chosenBanner: number;
   colors: { [key: string]: string };
   isBurgerOpen: boolean;
   handleChangeBannerImage: (callback: number) => void;
+  handleChangeBurger: (arg: boolean) => void;
   handleClickSwitchBurger: () => void;
   homeBannerEl: React.RefObject<HTMLElement>;
+  phonesList: Item[];
+  tabletsList: Item[];
 };
 
 const AppContext = createContext({} as AppContextProps);
@@ -44,26 +59,6 @@ const bannerImages: Image[] = [
     src: "/react_phone-catalog/public/img/bannerHome/Banner-1",
     color: "#c4c4c4",
   },
-  {
-    id: 3,
-    src: "/react_phone-catalog/public/img/bannerHome/Banner-1",
-    color: "#a6b8d0",
-  },
-  {
-    id: 4,
-    src: "/react_phone-catalog/public/img/bannerHome/Banner-1",
-    color: "#e4c0c0",
-  },
-  {
-    id: 5,
-    src: "/react_phone-catalog/public/img/bannerHome/Banner-1",
-    color: "#00ff00",
-  },
-  {
-    id: 6,
-    src: "/react_phone-catalog/public/img/bannerHome/Banner-1",
-    color: "#00ffc1",
-  },
 ];
 
 const colors = {
@@ -83,9 +78,94 @@ export const AppContextContainer = ({ children }: Props) => {
   const [chosenBanner, setChosenBanner] = useState<number>(0);
   const homeBannerEl = useRef<HTMLElement>(null);
   const [isBurgerOpen, setIsBurgerOpen] = useState<boolean>(false);
+  const [phonesList, setPhonesList] = useState<Item[]>([]);
+  const [tabletsList, setTabletsList] = useState<Item[]>([]);
+  const [accessoriesList, setAccessoriesList] = useState<Item[]>([]);
+
+  const categories: Category[] = [
+    {
+      id: "mobile-phones",
+      array: phonesList,
+      name: "Mobile phones",
+      img: "/react_phone-catalog/public/img/category-phones.png",
+      backgroundColor: "#6d6474",
+      to: "/phones",
+    },
+    {
+      id: "tablets",
+      array: tabletsList,
+      name: "Tablets",
+      img: "/react_phone-catalog/public/img/category-tablets.png",
+      backgroundColor: "#dd8d92",
+      to:"/tablets",
+    },
+    {
+      id: "accessories",
+      array: accessoriesList,
+      name: "Accessories",
+      img: "/react_phone-catalog/public/img/category-accessories.png",
+      backgroundColor: "#973d5f",
+      to: "/accessories",
+    },
+  ];
+
+  useEffect(() => {
+    const fetchPhones = async () => {
+      try {
+        const response = await fetch(
+          "/react_phone-catalog/src/assets/api/phones.json",
+        );
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        const data = await response.json();
+        setPhonesList(data);
+      } catch (err) {
+        console.error("Something went wrong", err);
+      }
+    };
+
+    const fetchTablets = async () => {
+      try {
+        const response = await fetch(
+          "/react_phone-catalog/src/assets/api/tablets.json",
+        );
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        const data = await response.json();
+        setTabletsList(data);
+      } catch (err) {
+        console.error("Something went wrong", err);
+      }
+    };
+
+    const fetchAccessories = async () => {
+      try {
+        const response = await fetch(
+          "/react_phone-catalog/src/assets/api/accessories.json",
+        );
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        const data = await response.json();
+        setAccessoriesList(data);
+      } catch (err) {
+        console.error("Something went wrong", err);
+      }
+    };
+
+    fetchPhones();
+    fetchTablets();
+    fetchAccessories();
+  }, []);
 
   const handleChangeBannerImage = (callback: number) => {
     setChosenBanner(callback);
+  };
+
+  const handleChangeBurger = (arg: boolean) => {
+    setIsBurgerOpen(arg);
   };
 
   const handleClickSwitchBurger = () => {
@@ -95,13 +175,18 @@ export const AppContextContainer = ({ children }: Props) => {
   return (
     <AppContext.Provider
       value={{
-        colors,
+        accessoriesList,
         bannerImages,
+        categories,
+        colors,
         chosenBanner,
         isBurgerOpen,
         handleChangeBannerImage,
+        handleChangeBurger,
         handleClickSwitchBurger,
         homeBannerEl,
+        phonesList,
+        tabletsList,
       }}
     >
       {children}

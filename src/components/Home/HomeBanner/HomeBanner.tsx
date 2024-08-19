@@ -33,7 +33,7 @@ const HomeBanner = () => {
 
   return (
     <section>
-      <h1 className="mb-14 text-h1">Welcome to Nice Gadgets store!</h1>
+      <h1 className="mb-14">Welcome to Nice Gadgets store!</h1>
       <div className="flex flex-row gap-4">
         <HomeBannerButton
           onClick={handleClickPrevImage}

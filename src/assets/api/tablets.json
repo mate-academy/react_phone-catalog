@@ -3,17 +3,17 @@
     "id": "apple-ipad-pro-11-2021-128gb-spacegray",
     "category": "tablets",
     "namespaceId": "apple-ipad-pro-11-2021",
-    "name": "Apple iPad Pro 11 (2021) 128GB Space Gray",
-    "capacityAvailable": ["128GB", "256GB", "512GB", "1TB", "2TB"],
-    "capacity": "128GB",
+    "name": "Apple iPad Pro 11 (2021) 128 GB Space Gray",
+    "capacityAvailable": ["128 GB", "256 GB", "512 GB", "1TB", "2TB"],
+    "capacity": "128 GB",
     "priceRegular": 799,
     "priceDiscount": 749,
     "colorsAvailable": ["spacegray", "silver"],
     "color": "spacegray",
     "images": [
-      "img/tablets/apple-ipad-pro-11-2021/spacegray/00.webp",
-      "img/tablets/apple-ipad-pro-11-2021/spacegray/01.webp",
-      "img/tablets/apple-ipad-pro-11-2021/spacegray/02.webp"
+      "/react_phone-catalog/public/img/tablets/apple-ipad-pro-11-2021/spacegray/00.webp",
+      "/react_phone-catalog/public/img/tablets/apple-ipad-pro-11-2021/spacegray/01.webp",
+      "/react_phone-catalog/public/img/tablets/apple-ipad-pro-11-2021/spacegray/02.webp"
     ],
     "description": [
       {
@@ -41,7 +41,7 @@
     "screen": "11' Liquid Retina",
     "resolution": "2388x1668",
     "processor": "Apple M1",
-    "ram": "8GB",
+    "ram": "8 GB",
     "camera": "12MP + 12MP",
     "zoom": "Digital zoom up to 5x",
     "cell": ["Not applicable"]
@@ -50,17 +50,17 @@
     "id": "apple-ipad-pro-11-2021-256gb-spacegray",
     "category": "tablets",
     "namespaceId": "apple-ipad-pro-11-2021",
-    "name": "Apple iPad Pro 11 (2021) 256GB Space Gray",
-    "capacityAvailable": ["128GB", "256GB", "512GB", "1TB", "2TB"],
-    "capacity": "256GB",
+    "name": "Apple iPad Pro 11 (2021) 256 GB Space Gray",
+    "capacityAvailable": ["128 GB", "256 GB", "512 GB", "1TB", "2TB"],
+    "capacity": "256 GB",
     "priceRegular": 829,
     "priceDiscount": 799,
     "colorsAvailable": ["spacegray", "silver"],
     "color": "spacegray",
     "images": [
-      "img/tablets/apple-ipad-pro-11-2021/spacegray/00.webp",
-      "img/tablets/apple-ipad-pro-11-2021/spacegray/01.webp",
-      "img/tablets/apple-ipad-pro-11-2021/spacegray/02.webp"
+      "/react_phone-catalog/public/img/tablets/apple-ipad-pro-11-2021/spacegray/00.webp",
+      "/react_phone-catalog/public/img/tablets/apple-ipad-pro-11-2021/spacegray/01.webp",
+      "/react_phone-catalog/public/img/tablets/apple-ipad-pro-11-2021/spacegray/02.webp"
     ],
     "description": [
       {
@@ -88,7 +88,7 @@
     "screen": "11' Liquid Retina",
     "resolution": "2388x1668",
     "processor": "Apple M1",
-    "ram": "8GB",
+    "ram": "8 GB",
     "camera": "12MP + 12MP",
     "zoom": "Digital zoom up to 5x",
     "cell": ["Not applicable"]
@@ -97,17 +97,17 @@
     "id": "apple-ipad-pro-11-2021-512gb-spacegray",
     "category": "tablets",
     "namespaceId": "apple-ipad-pro-11-2021",
-    "name": "Apple iPad Pro 11 (2021) 512GB Space Gray",
-    "capacityAvailable": ["128GB", "256GB", "512GB", "1TB", "2TB"],
-    "capacity": "512GB",
+    "name": "Apple iPad Pro 11 (2021) 512 GB Space Gray",
+    "capacityAvailable": ["128 GB", "256 GB", "512 GB", "1TB", "2TB"],
+    "capacity": "512 GB",
     "priceRegular": 869,
     "priceDiscount": 819,
     "colorsAvailable": ["spacegray", "silver"],
     "color": "spacegray",
     "images": [
-      "img/tablets/apple-ipad-pro-11-2021/spacegray/00.webp",
-      "img/tablets/apple-ipad-pro-11-2021/spacegray/01.webp",
-      "img/tablets/apple-ipad-pro-11-2021/spacegray/02.webp"
+      "/react_phone-catalog/public/img/tablets/apple-ipad-pro-11-2021/spacegray/00.webp",
+      "/react_phone-catalog/public/img/tablets/apple-ipad-pro-11-2021/spacegray/01.webp",
+      "/react_phone-catalog/public/img/tablets/apple-ipad-pro-11-2021/spacegray/02.webp"
     ],
     "description": [
       {
@@ -135,7 +135,7 @@
     "screen": "11' Liquid Retina",
     "resolution": "2388x1668",
     "processor": "Apple M1",
-    "ram": "8GB",
+    "ram": "8 GB",
     "camera": "12MP + 12MP",
     "zoom": "Digital zoom up to 5x",
     "cell": ["Not applicable"]
@@ -145,16 +145,16 @@
     "category": "tablets",
     "namespaceId": "apple-ipad-pro-11-2021",
     "name": "Apple iPad Pro 11 (2021) 1TB Space Gray",
-    "capacityAvailable": ["128GB", "256GB", "512GB", "1TB", "2TB"],
+    "capacityAvailable": ["128 GB", "256 GB", "512 GB", "1TB", "2TB"],
     "capacity": "1TB",
     "priceRegular": 899,
     "priceDiscount": 879,
     "colorsAvailable": ["spacegray", "silver"],
     "color": "spacegray",
     "images": [
-      "img/tablets/apple-ipad-pro-11-2021/spacegray/00.webp",
-      "img/tablets/apple-ipad-pro-11-2021/spacegray/01.webp",
-      "img/tablets/apple-ipad-pro-11-2021/spacegray/02.webp"
+      "/react_phone-catalog/public/img/tablets/apple-ipad-pro-11-2021/spacegray/00.webp",
+      "/react_phone-catalog/public/img/tablets/apple-ipad-pro-11-2021/spacegray/01.webp",
+      "/react_phone-catalog/public/img/tablets/apple-ipad-pro-11-2021/spacegray/02.webp"
     ],
     "description": [
       {
@@ -182,7 +182,7 @@
     "screen": "11' Liquid Retina",
     "resolution": "2388x1668",
     "processor": "Apple M1",
-    "ram": "16GB",
+    "ram": "16 GB",
     "camera": "12MP + 12MP",
     "zoom": "Digital zoom up to 5x",
     "cell": ["Not applicable"]
@@ -192,16 +192,16 @@
     "category": "tablets",
     "namespaceId": "apple-ipad-pro-11-2021",
     "name": "Apple iPad Pro 11 (2021) 2TB Space Gray",
-    "capacityAvailable": ["128GB", "256GB", "512GB", "1TB", "2TB"],
+    "capacityAvailable": ["128 GB", "256 GB", "512 GB", "1TB", "2TB"],
     "capacity": "2TB",
     "priceRegular": 999,
     "priceDiscount": 939,
     "colorsAvailable": ["spacegray", "silver"],
     "color": "spacegray",
     "images": [
-      "img/tablets/apple-ipad-pro-11-2021/spacegray/00.webp",
-      "img/tablets/apple-ipad-pro-11-2021/spacegray/01.webp",
-      "img/tablets/apple-ipad-pro-11-2021/spacegray/02.webp"
+      "/react_phone-catalog/public/img/tablets/apple-ipad-pro-11-2021/spacegray/00.webp",
+      "/react_phone-catalog/public/img/tablets/apple-ipad-pro-11-2021/spacegray/01.webp",
+      "/react_phone-catalog/public/img/tablets/apple-ipad-pro-11-2021/spacegray/02.webp"
     ],
     "description": [
       {
@@ -229,7 +229,7 @@
     "screen": "11' Liquid Retina",
     "resolution": "2388x1668",
     "processor": "Apple M1",
-    "ram": "16GB",
+    "ram": "16 GB",
     "camera": "12MP + 12MP",
     "zoom": "Digital zoom up to 5x",
     "cell": ["Not applicable"]
@@ -238,17 +238,17 @@
     "id": "apple-ipad-pro-11-2021-128gb-silver",
     "category": "tablets",
     "namespaceId": "apple-ipad-pro-11-2021",
-    "name": "Apple iPad Pro 11 (2021) 128GB Silver",
-    "capacityAvailable": ["128GB", "256GB", "512GB", "1TB", "2TB"],
-    "capacity": "128GB",
+    "name": "Apple iPad Pro 11 (2021) 128 GB Silver",
+    "capacityAvailable": ["128 GB", "256 GB", "512 GB", "1TB", "2TB"],
+    "capacity": "128 GB",
     "priceRegular": 799,
     "priceDiscount": 749,
     "colorsAvailable": ["spacegray", "silver"],
     "color": "silver",
     "images": [
-      "img/tablets/apple-ipad-pro-11-2021/silver/00.webp",
-      "img/tablets/apple-ipad-pro-11-2021/silver/01.webp",
-      "img/tablets/apple-ipad-pro-11-2021/silver/02.webp"
+      "/react_phone-catalog/public/img/tablets/apple-ipad-pro-11-2021/silver/00.webp",
+      "/react_phone-catalog/public/img/tablets/apple-ipad-pro-11-2021/silver/01.webp",
+      "/react_phone-catalog/public/img/tablets/apple-ipad-pro-11-2021/silver/02.webp"
     ],
     "description": [
       {
@@ -276,7 +276,7 @@
     "screen": "11' Liquid Retina",
     "resolution": "2388x1668",
     "processor": "Apple M1",
-    "ram": "8GB",
+    "ram": "8 GB",
     "camera": "12MP + 12MP",
     "zoom": "Digital zoom up to 5x",
     "cell": ["Not applicable"]
@@ -285,17 +285,17 @@
     "id": "apple-ipad-pro-11-2021-256gb-silver",
     "category": "tablets",
     "namespaceId": "apple-ipad-pro-11-2021",
-    "name": "Apple iPad Pro 11 (2021) 256GB Silver",
-    "capacityAvailable": ["128GB", "256GB", "512GB", "1TB", "2TB"],
-    "capacity": "256GB",
+    "name": "Apple iPad Pro 11 (2021) 256 GB Silver",
+    "capacityAvailable": ["128 GB", "256 GB", "512 GB", "1TB", "2TB"],
+    "capacity": "256 GB",
     "priceRegular": 829,
     "priceDiscount": 799,
     "colorsAvailable": ["spacegray", "silver"],
     "color": "silver",
     "images": [
-      "img/tablets/apple-ipad-pro-11-2021/silver/00.webp",
-      "img/tablets/apple-ipad-pro-11-2021/silver/01.webp",
-      "img/tablets/apple-ipad-pro-11-2021/silver/02.webp"
+      "/react_phone-catalog/public/img/tablets/apple-ipad-pro-11-2021/silver/00.webp",
+      "/react_phone-catalog/public/img/tablets/apple-ipad-pro-11-2021/silver/01.webp",
+      "/react_phone-catalog/public/img/tablets/apple-ipad-pro-11-2021/silver/02.webp"
     ],
     "description": [
       {
@@ -323,7 +323,7 @@
     "screen": "11' Liquid Retina",
     "resolution": "2388x1668",
     "processor": "Apple M1",
-    "ram": "8GB",
+    "ram": "8 GB",
     "camera": "12MP + 12MP",
     "zoom": "Digital zoom up to 5x",
     "cell": ["Not applicable"]
@@ -332,17 +332,17 @@
     "id": "apple-ipad-pro-11-2021-512gb-silver",
     "category": "tablets",
     "namespaceId": "apple-ipad-pro-11-2021",
-    "name": "Apple iPad Pro 11 (2021) 512GB Silver",
-    "capacityAvailable": ["128GB", "256GB", "512GB", "1TB", "2TB"],
-    "capacity": "512GB",
+    "name": "Apple iPad Pro 11 (2021) 512 GB Silver",
+    "capacityAvailable": ["128 GB", "256 GB", "512 GB", "1TB", "2TB"],
+    "capacity": "512 GB",
     "priceRegular": 869,
     "priceDiscount": 819,
     "colorsAvailable": ["spacegray", "silver"],
     "color": "silver",
     "images": [
-      "img/tablets/apple-ipad-pro-11-2021/silver/00.webp",
-      "img/tablets/apple-ipad-pro-11-2021/silver/01.webp",
-      "img/tablets/apple-ipad-pro-11-2021/silver/02.webp"
+      "/react_phone-catalog/public/img/tablets/apple-ipad-pro-11-2021/silver/00.webp",
+      "/react_phone-catalog/public/img/tablets/apple-ipad-pro-11-2021/silver/01.webp",
+      "/react_phone-catalog/public/img/tablets/apple-ipad-pro-11-2021/silver/02.webp"
     ],
     "description": [
       {
@@ -370,7 +370,7 @@
     "screen": "11' Liquid Retina",
     "resolution": "2388x1668",
     "processor": "Apple M1",
-    "ram": "8GB",
+    "ram": "8 GB",
     "camera": "12MP + 12MP",
     "zoom": "Digital zoom up to 5x",
     "cell": ["Not applicable"]
@@ -380,16 +380,16 @@
     "category": "tablets",
     "namespaceId": "apple-ipad-pro-11-2021",
     "name": "Apple iPad Pro 11 (2021) 1TB Silver",
-    "capacityAvailable": ["128GB", "256GB", "512GB", "1TB", "2TB"],
+    "capacityAvailable": ["128 GB", "256 GB", "512 GB", "1TB", "2TB"],
     "capacity": "1TB",
     "priceRegular": 899,
     "priceDiscount": 879,
     "colorsAvailable": ["spacegray", "silver"],
     "color": "silver",
     "images": [
-      "img/tablets/apple-ipad-pro-11-2021/silver/00.webp",
-      "img/tablets/apple-ipad-pro-11-2021/silver/01.webp",
-      "img/tablets/apple-ipad-pro-11-2021/silver/02.webp"
+      "/react_phone-catalog/public/img/tablets/apple-ipad-pro-11-2021/silver/00.webp",
+      "/react_phone-catalog/public/img/tablets/apple-ipad-pro-11-2021/silver/01.webp",
+      "/react_phone-catalog/public/img/tablets/apple-ipad-pro-11-2021/silver/02.webp"
     ],
     "description": [
       {
@@ -417,7 +417,7 @@
     "screen": "11' Liquid Retina",
     "resolution": "2388x1668",
     "processor": "Apple M1",
-    "ram": "16GB",
+    "ram": "16 GB",
     "camera": "12MP + 12MP",
     "zoom": "Digital zoom up to 5x",
     "cell": ["Not applicable"]
@@ -427,16 +427,16 @@
     "category": "tablets",
     "namespaceId": "apple-ipad-pro-11-2021",
     "name": "Apple iPad Pro 11 (2021) 2TB Silver",
-    "capacityAvailable": ["128GB", "256GB", "512GB", "1TB", "2TB"],
+    "capacityAvailable": ["128 GB", "256 GB", "512 GB", "1TB", "2TB"],
     "capacity": "2TB",
     "priceRegular": 999,
     "priceDiscount": 939,
     "colorsAvailable": ["spacegray", "silver"],
     "color": "silver",
     "images": [
-      "img/tablets/apple-ipad-pro-11-2021/silver/00.webp",
-      "img/tablets/apple-ipad-pro-11-2021/silver/01.webp",
-      "img/tablets/apple-ipad-pro-11-2021/silver/02.webp"
+      "/react_phone-catalog/public/img/tablets/apple-ipad-pro-11-2021/silver/00.webp",
+      "/react_phone-catalog/public/img/tablets/apple-ipad-pro-11-2021/silver/01.webp",
+      "/react_phone-catalog/public/img/tablets/apple-ipad-pro-11-2021/silver/02.webp"
     ],
     "description": [
       {
@@ -464,7 +464,7 @@
     "screen": "11' Liquid Retina",
     "resolution": "2388x1668",
     "processor": "Apple M1",
-    "ram": "16GB",
+    "ram": "16 GB",
     "camera": "12MP + 12MP",
     "zoom": "Digital zoom up to 5x",
     "cell": ["Not applicable"]
@@ -473,18 +473,18 @@
     "id": "apple-ipad-air-4th-gen-256gb-rose-gold",
     "category": "tablets",
     "namespaceId": "apple-ipad-air-4th-gen",
-    "name": "Apple iPad Air (4th Gen) 256GB Rose Gold",
-    "capacityAvailable": ["64GB", "256GB"],
-    "capacity": "256GB",
+    "name": "Apple iPad Air (4th Gen) 256 GB Rose Gold",
+    "capacityAvailable": ["64 GB", "256 GB"],
+    "capacity": "256 GB",
     "priceRegular": 749,
     "priceDiscount": 699,
     "colorsAvailable": ["rose gold", "silver", "green", "sky blue"],
     "color": "rose gold",
     "images": [
-      "img/tablets/apple-ipad-air-4th-gen/rose-gold/00.webp",
-      "img/tablets/apple-ipad-air-4th-gen/rose-gold/01.webp",
-      "img/tablets/apple-ipad-air-4th-gen/rose-gold/02.webp",
-      "img/tablets/apple-ipad-air-4th-gen/rose-gold/03.webp"
+      "/react_phone-catalog/public/img/tablets/apple-ipad-air-4th-gen/rose-gold/00.webp",
+      "/react_phone-catalog/public/img/tablets/apple-ipad-air-4th-gen/rose-gold/01.webp",
+      "/react_phone-catalog/public/img/tablets/apple-ipad-air-4th-gen/rose-gold/02.webp",
+      "/react_phone-catalog/public/img/tablets/apple-ipad-air-4th-gen/rose-gold/03.webp"
     ],
     "description": [
       {
@@ -512,7 +512,7 @@
     "screen": "10.9' Liquid Retina",
     "resolution": "2360x1640",
     "processor": "Apple A14 Bionic",
-    "ram": "4GB",
+    "ram": "4 GB",
     "camera": "12MP",
     "zoom": "Digital zoom up to 5x",
     "cell": ["Not applicable"]
@@ -521,18 +521,18 @@
     "id": "apple-ipad-air-4th-gen-64gb-rose-gold",
     "category": "tablets",
     "namespaceId": "apple-ipad-air-4th-gen",
-    "name": "Apple iPad Air (4th Gen) 64GB Rose Gold",
-    "capacityAvailable": ["64GB", "256GB"],
-    "capacity": "64GB",
+    "name": "Apple iPad Air (4th Gen) 64 GB Rose Gold",
+    "capacityAvailable": ["64 GB", "256 GB"],
+    "capacity": "64 GB",
     "priceRegular": 599,
     "priceDiscount": 549,
     "colorsAvailable": ["rose gold", "silver", "green", "sky blue"],
     "color": "rose gold",
     "images": [
-      "img/tablets/apple-ipad-air-4th-gen/rose-gold/00.webp",
-      "img/tablets/apple-ipad-air-4th-gen/rose-gold/01.webp",
-      "img/tablets/apple-ipad-air-4th-gen/rose-gold/02.webp",
-      "img/tablets/apple-ipad-air-4th-gen/rose-gold/03.webp"
+      "/react_phone-catalog/public/img/tablets/apple-ipad-air-4th-gen/rose-gold/00.webp",
+      "/react_phone-catalog/public/img/tablets/apple-ipad-air-4th-gen/rose-gold/01.webp",
+      "/react_phone-catalog/public/img/tablets/apple-ipad-air-4th-gen/rose-gold/02.webp",
+      "/react_phone-catalog/public/img/tablets/apple-ipad-air-4th-gen/rose-gold/03.webp"
     ],
     "description": [
       {
@@ -560,7 +560,7 @@
     "screen": "10.9' Liquid Retina",
     "resolution": "2360x1640",
     "processor": "Apple A14 Bionic",
-    "ram": "4GB",
+    "ram": "4 GB",
     "camera": "12MP",
     "zoom": "Digital zoom up to 5x",
     "cell": ["Not applicable"]
@@ -569,18 +569,18 @@
     "id": "apple-ipad-air-4th-gen-64gb-silver",
     "category": "tablets",
     "namespaceId": "apple-ipad-air-4th-gen",
-    "name": "Apple iPad Air (4th Gen) 64GB Silver",
-    "capacityAvailable": ["64GB", "256GB"],
-    "capacity": "64GB",
+    "name": "Apple iPad Air (4th Gen) 64 GB Silver",
+    "capacityAvailable": ["64 GB", "256 GB"],
+    "capacity": "64 GB",
     "priceRegular": 599,
     "priceDiscount": 549,
     "colorsAvailable": ["rose gold", "silver", "green", "sky blue"],
     "color": "silver",
     "images": [
-      "img/tablets/apple-ipad-air-4th-gen/silver/00.webp",
-      "img/tablets/apple-ipad-air-4th-gen/silver/01.webp",
-      "img/tablets/apple-ipad-air-4th-gen/silver/02.webp",
-      "img/tablets/apple-ipad-air-4th-gen/silver/03.webp"
+      "/react_phone-catalog/public/img/tablets/apple-ipad-air-4th-gen/silver/00.webp",
+      "/react_phone-catalog/public/img/tablets/apple-ipad-air-4th-gen/silver/01.webp",
+      "/react_phone-catalog/public/img/tablets/apple-ipad-air-4th-gen/silver/02.webp",
+      "/react_phone-catalog/public/img/tablets/apple-ipad-air-4th-gen/silver/03.webp"
     ],
     "description": [
       {
@@ -608,7 +608,7 @@
     "screen": "10.9' Liquid Retina",
     "resolution": "2360x1640",
     "processor": "Apple A14 Bionic",
-    "ram": "4GB",
+    "ram": "4 GB",
     "camera": "12MP",
     "zoom": "Digital zoom up to 5x",
     "cell": ["Not applicable"]
@@ -617,18 +617,18 @@
     "id": "apple-ipad-air-4th-gen-256gb-silver",
     "category": "tablets",
     "namespaceId": "apple-ipad-air-4th-gen",
-    "name": "Apple iPad Air (4th Gen) 256GB Silver",
-    "capacityAvailable": ["64GB", "256GB"],
-    "capacity": "256GB",
+    "name": "Apple iPad Air (4th Gen) 256 GB Silver",
+    "capacityAvailable": ["64 GB", "256 GB"],
+    "capacity": "256 GB",
     "priceRegular": 749,
     "priceDiscount": 699,
     "colorsAvailable": ["rose gold", "silver", "green", "sky blue"],
     "color": "silver",
     "images": [
-      "img/tablets/apple-ipad-air-4th-gen/silver/00.webp",
-      "img/tablets/apple-ipad-air-4th-gen/silver/01.webp",
-      "img/tablets/apple-ipad-air-4th-gen/silver/02.webp",
-      "img/tablets/apple-ipad-air-4th-gen/silver/03.webp"
+      "/react_phone-catalog/public/img/tablets/apple-ipad-air-4th-gen/silver/00.webp",
+      "/react_phone-catalog/public/img/tablets/apple-ipad-air-4th-gen/silver/01.webp",
+      "/react_phone-catalog/public/img/tablets/apple-ipad-air-4th-gen/silver/02.webp",
+      "/react_phone-catalog/public/img/tablets/apple-ipad-air-4th-gen/silver/03.webp"
     ],
     "description": [
       {
@@ -656,7 +656,7 @@
     "screen": "10.9' Liquid Retina",
     "resolution": "2360x1640",
     "processor": "Apple A14 Bionic",
-    "ram": "4GB",
+    "ram": "4 GB",
     "camera": "12MP",
     "zoom": "Digital zoom up to 5x",
     "cell": ["Not applicable"]
@@ -665,18 +665,18 @@
     "id": "apple-ipad-air-4th-gen-256gb-green",
     "category": "tablets",
     "namespaceId": "apple-ipad-air-4th-gen",
-    "name": "Apple iPad Air (4th Gen) 256GB Green",
-    "capacityAvailable": ["64GB", "256GB"],
-    "capacity": "256GB",
+    "name": "Apple iPad Air (4th Gen) 256 GB Green",
+    "capacityAvailable": ["64 GB", "256 GB"],
+    "capacity": "256 GB",
     "priceRegular": 749,
     "priceDiscount": 699,
     "colorsAvailable": ["rose gold", "silver", "green", "sky blue"],
     "color": "green",
     "images": [
-      "img/tablets/apple-ipad-air-4th-gen/green/00.webp",
-      "img/tablets/apple-ipad-air-4th-gen/green/01.webp",
-      "img/tablets/apple-ipad-air-4th-gen/green/02.webp",
-      "img/tablets/apple-ipad-air-4th-gen/green/03.webp"
+      "/react_phone-catalog/public/img/tablets/apple-ipad-air-4th-gen/green/00.webp",
+      "/react_phone-catalog/public/img/tablets/apple-ipad-air-4th-gen/green/01.webp",
+      "/react_phone-catalog/public/img/tablets/apple-ipad-air-4th-gen/green/02.webp",
+      "/react_phone-catalog/public/img/tablets/apple-ipad-air-4th-gen/green/03.webp"
     ],
     "description": [
       {
@@ -704,7 +704,7 @@
     "screen": "10.9' Liquid Retina",
     "resolution": "2360x1640",
     "processor": "Apple A14 Bionic",
-    "ram": "4GB",
+    "ram": "4 GB",
     "camera": "12MP",
     "zoom": "Digital zoom up to 5x",
     "cell": ["Not applicable"]
@@ -713,18 +713,18 @@
     "id": "apple-ipad-air-4th-gen-64gb-green",
     "category": "tablets",
     "namespaceId": "apple-ipad-air-4th-gen",
-    "name": "Apple iPad Air (4th Gen) 64GB Green",
-    "capacityAvailable": ["64GB", "256GB"],
-    "capacity": "64GB",
+    "name": "Apple iPad Air (4th Gen) 64 GB Green",
+    "capacityAvailable": ["64 GB", "256 GB"],
+    "capacity": "64 GB",
     "priceRegular": 599,
     "priceDiscount": 549,
     "colorsAvailable": ["rose gold", "silver", "green", "sky blue"],
     "color": "green",
     "images": [
-      "img/tablets/apple-ipad-air-4th-gen/green/00.webp",
-      "img/tablets/apple-ipad-air-4th-gen/green/01.webp",
-      "img/tablets/apple-ipad-air-4th-gen/green/02.webp",
-      "img/tablets/apple-ipad-air-4th-gen/green/03.webp"
+      "/react_phone-catalog/public/img/tablets/apple-ipad-air-4th-gen/green/00.webp",
+      "/react_phone-catalog/public/img/tablets/apple-ipad-air-4th-gen/green/01.webp",
+      "/react_phone-catalog/public/img/tablets/apple-ipad-air-4th-gen/green/02.webp",
+      "/react_phone-catalog/public/img/tablets/apple-ipad-air-4th-gen/green/03.webp"
     ],
     "description": [
       {
@@ -752,7 +752,7 @@
     "screen": "10.9' Liquid Retina",
     "resolution": "2360x1640",
     "processor": "Apple A14 Bionic",
-    "ram": "4GB",
+    "ram": "4 GB",
     "camera": "12MP",
     "zoom": "Digital zoom up to 5x",
     "cell": ["Not applicable"]
@@ -761,18 +761,18 @@
     "id": "apple-ipad-air-4th-gen-64gb-sky-blue",
     "category": "tablets",
     "namespaceId": "apple-ipad-air-4th-gen",
-    "name": "Apple iPad Air (4th Gen) 64GB Sky Blue",
-    "capacityAvailable": ["64GB", "256GB"],
-    "capacity": "64GB",
+    "name": "Apple iPad Air (4th Gen) 64 GB Sky Blue",
+    "capacityAvailable": ["64 GB", "256 GB"],
+    "capacity": "64 GB",
     "priceRegular": 599,
     "priceDiscount": 549,
     "colorsAvailable": ["rose gold", "silver", "green", "sky blue"],
     "color": "sky blue",
     "images": [
-      "img/tablets/apple-ipad-air-4th-gen/sky-blue/00.webp",
-      "img/tablets/apple-ipad-air-4th-gen/sky-blue/01.webp",
-      "img/tablets/apple-ipad-air-4th-gen/sky-blue/02.webp",
-      "img/tablets/apple-ipad-air-4th-gen/sky-blue/03.webp"
+      "/react_phone-catalog/public/img/tablets/apple-ipad-air-4th-gen/sky-blue/00.webp",
+      "/react_phone-catalog/public/img/tablets/apple-ipad-air-4th-gen/sky-blue/01.webp",
+      "/react_phone-catalog/public/img/tablets/apple-ipad-air-4th-gen/sky-blue/02.webp",
+      "/react_phone-catalog/public/img/tablets/apple-ipad-air-4th-gen/sky-blue/03.webp"
     ],
     "description": [
       {
@@ -800,7 +800,7 @@
     "screen": "10.9' Liquid Retina",
     "resolution": "2360x1640",
     "processor": "Apple A14 Bionic",
-    "ram": "4GB",
+    "ram": "4 GB",
     "camera": "12MP",
     "zoom": "Digital zoom up to 5x",
     "cell": ["Not applicable"]
@@ -809,18 +809,18 @@
     "id": "apple-ipad-air-4th-gen-256gb-sky-blue",
     "category": "tablets",
     "namespaceId": "apple-ipad-air-4th-gen",
-    "name": "Apple iPad Air (4th Gen) 256GB Sky Blue",
-    "capacityAvailable": ["64GB", "256GB"],
-    "capacity": "256GB",
+    "name": "Apple iPad Air (4th Gen) 256 GB Sky Blue",
+    "capacityAvailable": ["64 GB", "256 GB"],
+    "capacity": "256 GB",
     "priceRegular": 749,
     "priceDiscount": 699,
     "colorsAvailable": ["rose gold", "silver", "green", "sky blue"],
     "color": "sky blue",
     "images": [
-      "img/tablets/apple-ipad-air-4th-gen/sky-blue/00.webp",
-      "img/tablets/apple-ipad-air-4th-gen/sky-blue/01.webp",
-      "img/tablets/apple-ipad-air-4th-gen/sky-blue/02.webp",
-      "img/tablets/apple-ipad-air-4th-gen/sky-blue/03.webp"
+      "/react_phone-catalog/public/img/tablets/apple-ipad-air-4th-gen/sky-blue/00.webp",
+      "/react_phone-catalog/public/img/tablets/apple-ipad-air-4th-gen/sky-blue/01.webp",
+      "/react_phone-catalog/public/img/tablets/apple-ipad-air-4th-gen/sky-blue/02.webp",
+      "/react_phone-catalog/public/img/tablets/apple-ipad-air-4th-gen/sky-blue/03.webp"
     ],
     "description": [
       {
@@ -848,7 +848,7 @@
     "screen": "10.9' Liquid Retina",
     "resolution": "2360x1640",
     "processor": "Apple A14 Bionic",
-    "ram": "4GB",
+    "ram": "4 GB",
     "camera": "12MP",
     "zoom": "Digital zoom up to 5x",
     "cell": ["Not applicable"]
@@ -857,17 +857,17 @@
     "id": "apple-ipad-mini-6th-gen-64gb-spacegray",
     "category": "tablets",
     "namespaceId": "apple-ipad-mini-6th-gen",
-    "name": "Apple iPad Mini (6th Gen) 64GB Space Gray",
-    "capacityAvailable": ["64GB", "256GB"],
-    "capacity": "64GB",
+    "name": "Apple iPad Mini (6th Gen) 64 GB Space Gray",
+    "capacityAvailable": ["64 GB", "256 GB"],
+    "capacity": "64 GB",
     "priceRegular": 499,
     "priceDiscount": 469,
     "colorsAvailable": ["spacegray", "starlight", "pink"],
     "color": "spacegray",
     "images": [
-      "img/tablets/apple-ipad-mini-6th-gen/spacegray/00.webp",
-      "img/tablets/apple-ipad-mini-6th-gen/spacegray/01.webp",
-      "img/tablets/apple-ipad-mini-6th-gen/spacegray/02.webp"
+      "/react_phone-catalog/public/img/tablets/apple-ipad-mini-6th-gen/spacegray/00.webp",
+      "/react_phone-catalog/public/img/tablets/apple-ipad-mini-6th-gen/spacegray/01.webp",
+      "/react_phone-catalog/public/img/tablets/apple-ipad-mini-6th-gen/spacegray/02.webp"
     ],
     "description": [
       {
@@ -895,7 +895,7 @@
     "screen": "8.3' Liquid Retina",
     "resolution": "2266x1488",
     "processor": "Apple A15 Bionic",
-    "ram": "4GB",
+    "ram": "4 GB",
     "camera": "12MP",
     "zoom": "Digital zoom up to 5x",
     "cell": ["Not applicable"]
@@ -904,17 +904,17 @@
     "id": "apple-ipad-mini-6th-gen-256gb-spacegray",
     "category": "tablets",
     "namespaceId": "apple-ipad-mini-6th-gen",
-    "name": "Apple iPad Mini (6th Gen) 256GB Space Gray",
-    "capacityAvailable": ["64GB", "256GB"],
-    "capacity": "256GB",
+    "name": "Apple iPad Mini (6th Gen) 256 GB Space Gray",
+    "capacityAvailable": ["64 GB", "256 GB"],
+    "capacity": "256 GB",
     "priceRegular": 649,
     "priceDiscount": 599,
     "colorsAvailable": ["spacegray", "starlight", "pink"],
     "color": "spacegray",
     "images": [
-      "img/tablets/apple-ipad-mini-6th-gen/spacegray/00.webp",
-      "img/tablets/apple-ipad-mini-6th-gen/spacegray/01.webp",
-      "img/tablets/apple-ipad-mini-6th-gen/spacegray/02.webp"
+      "/react_phone-catalog/public/img/tablets/apple-ipad-mini-6th-gen/spacegray/00.webp",
+      "/react_phone-catalog/public/img/tablets/apple-ipad-mini-6th-gen/spacegray/01.webp",
+      "/react_phone-catalog/public/img/tablets/apple-ipad-mini-6th-gen/spacegray/02.webp"
     ],
     "description": [
       {
@@ -942,7 +942,7 @@
     "screen": "8.3' Liquid Retina",
     "resolution": "2266x1488",
     "processor": "Apple A15 Bionic",
-    "ram": "4GB",
+    "ram": "4 GB",
     "camera": "12MP",
     "zoom": "Digital zoom up to 5x",
     "cell": ["Not applicable"]
@@ -951,17 +951,17 @@
     "id": "apple-ipad-mini-6th-gen-256gb-starlight",
     "category": "tablets",
     "namespaceId": "apple-ipad-mini-6th-gen",
-    "name": "Apple iPad Mini (6th Gen) 256GB Starlight",
-    "capacityAvailable": ["64GB", "256GB"],
-    "capacity": "256GB",
+    "name": "Apple iPad Mini (6th Gen) 256 GB Starlight",
+    "capacityAvailable": ["64 GB", "256 GB"],
+    "capacity": "256 GB",
     "priceRegular": 649,
     "priceDiscount": 599,
     "colorsAvailable": ["spacegray", "starlight", "pink"],
     "color": "starlight",
     "images": [
-      "img/tablets/apple-ipad-mini-6th-gen/starlight/00.webp",
-      "img/tablets/apple-ipad-mini-6th-gen/starlight/01.webp",
-      "img/tablets/apple-ipad-mini-6th-gen/starlight/02.webp"
+      "/react_phone-catalog/public/img/tablets/apple-ipad-mini-6th-gen/starlight/00.webp",
+      "/react_phone-catalog/public/img/tablets/apple-ipad-mini-6th-gen/starlight/01.webp",
+      "/react_phone-catalog/public/img/tablets/apple-ipad-mini-6th-gen/starlight/02.webp"
     ],
     "description": [
       {
@@ -989,7 +989,7 @@
     "screen": "8.3' Liquid Retina",
     "resolution": "2266x1488",
     "processor": "Apple A15 Bionic",
-    "ram": "4GB",
+    "ram": "4 GB",
     "camera": "12MP",
     "zoom": "Digital zoom up to 5x",
     "cell": ["Not applicable"]
@@ -998,17 +998,17 @@
     "id": "apple-ipad-mini-6th-gen-64gb-starlight",
     "category": "tablets",
     "namespaceId": "apple-ipad-mini-6th-gen",
-    "name": "Apple iPad Mini (6th Gen) 64GB Starlight",
-    "capacityAvailable": ["64GB", "256GB"],
-    "capacity": "64GB",
+    "name": "Apple iPad Mini (6th Gen) 64 GB Starlight",
+    "capacityAvailable": ["64 GB", "256 GB"],
+    "capacity": "64 GB",
     "priceRegular": 499,
     "priceDiscount": 469,
     "colorsAvailable": ["spacegray", "starlight", "pink"],
     "color": "starlight",
     "images": [
-      "img/tablets/apple-ipad-mini-6th-gen/starlight/00.webp",
-      "img/tablets/apple-ipad-mini-6th-gen/starlight/01.webp",
-      "img/tablets/apple-ipad-mini-6th-gen/starlight/02.webp"
+      "/react_phone-catalog/public/img/tablets/apple-ipad-mini-6th-gen/starlight/00.webp",
+      "/react_phone-catalog/public/img/tablets/apple-ipad-mini-6th-gen/starlight/01.webp",
+      "/react_phone-catalog/public/img/tablets/apple-ipad-mini-6th-gen/starlight/02.webp"
     ],
     "description": [
       {
@@ -1036,7 +1036,7 @@
     "screen": "8.3' Liquid Retina",
     "resolution": "2266x1488",
     "processor": "Apple A15 Bionic",
-    "ram": "4GB",
+    "ram": "4 GB",
     "camera": "12MP",
     "zoom": "Digital zoom up to 5x",
     "cell": ["Not applicable"]
@@ -1045,17 +1045,17 @@
     "id": "apple-ipad-mini-6th-gen-64gb-pink",
     "category": "tablets",
     "namespaceId": "apple-ipad-mini-6th-gen",
-    "name": "Apple iPad Mini (6th Gen) 64GB Pink",
-    "capacityAvailable": ["64GB", "256GB"],
-    "capacity": "64GB",
+    "name": "Apple iPad Mini (6th Gen) 64 GB Pink",
+    "capacityAvailable": ["64 GB", "256 GB"],
+    "capacity": "64 GB",
     "priceRegular": 499,
     "priceDiscount": 469,
     "colorsAvailable": ["spacegray", "starlight", "pink"],
     "color": "pink",
     "images": [
-      "img/tablets/apple-ipad-mini-6th-gen/pink/00.webp",
-      "img/tablets/apple-ipad-mini-6th-gen/pink/01.webp",
-      "img/tablets/apple-ipad-mini-6th-gen/pink/02.webp"
+      "/react_phone-catalog/public/img/tablets/apple-ipad-mini-6th-gen/pink/00.webp",
+      "/react_phone-catalog/public/img/tablets/apple-ipad-mini-6th-gen/pink/01.webp",
+      "/react_phone-catalog/public/img/tablets/apple-ipad-mini-6th-gen/pink/02.webp"
     ],
     "description": [
       {
@@ -1083,7 +1083,7 @@
     "screen": "8.3' Liquid Retina",
     "resolution": "2266x1488",
     "processor": "Apple A15 Bionic",
-    "ram": "4GB",
+    "ram": "4 GB",
     "camera": "12MP",
     "zoom": "Digital zoom up to 5x",
     "cell": ["Not applicable"]
@@ -1092,17 +1092,17 @@
     "id": "apple-ipad-mini-6th-gen-256gb-pink",
     "category": "tablets",
     "namespaceId": "apple-ipad-mini-6th-gen",
-    "name": "Apple iPad Mini (6th Gen) 256GB Pink",
-    "capacityAvailable": ["64GB", "256GB"],
-    "capacity": "256GB",
+    "name": "Apple iPad Mini (6th Gen) 256 GB Pink",
+    "capacityAvailable": ["64 GB", "256 GB"],
+    "capacity": "256 GB",
     "priceRegular": 649,
     "priceDiscount": 619,
     "colorsAvailable": ["spacegray", "starlight", "pink"],
     "color": "pink",
     "images": [
-      "img/tablets/apple-ipad-mini-6th-gen/pink/00.webp",
-      "img/tablets/apple-ipad-mini-6th-gen/pink/01.webp",
-      "img/tablets/apple-ipad-mini-6th-gen/pink/02.webp"
+      "/react_phone-catalog/public/img/tablets/apple-ipad-mini-6th-gen/pink/00.webp",
+      "/react_phone-catalog/public/img/tablets/apple-ipad-mini-6th-gen/pink/01.webp",
+      "/react_phone-catalog/public/img/tablets/apple-ipad-mini-6th-gen/pink/02.webp"
     ],
     "description": [
       {
@@ -1130,7 +1130,7 @@
     "screen": "8.3' Liquid Retina",
     "resolution": "2266x1488",
     "processor": "Apple A15 Bionic",
-    "ram": "4GB",
+    "ram": "4 GB",
     "camera": "12MP",
     "zoom": "Digital zoom up to 5x",
     "cell": ["Not applicable"]
@@ -1139,18 +1139,18 @@
     "id": "apple-ipad-10-2-2020-128gb-gold",
     "category": "tablets",
     "namespaceId": "apple-ipad-10-2-2020",
-    "name": "Apple iPad 10.2 (2020) 128GB Gold",
-    "capacityAvailable": ["32GB", "128GB"],
-    "capacity": "128GB",
+    "name": "Apple iPad 10.2 (2020) 128 GB Gold",
+    "capacityAvailable": ["32 GB", "128 GB"],
+    "capacity": "128 GB",
     "priceRegular": 429,
     "priceDiscount": 399,
     "colorsAvailable": ["gold", "silver", "spacegray"],
     "color": "gold",
     "images": [
-      "img/tablets/apple-ipad-10-2-2020/gold/00.webp",
-      "img/tablets/apple-ipad-10-2-2020/gold/01.webp",
-      "img/tablets/apple-ipad-10-2-2020/gold/02.webp",
-      "img/tablets/apple-ipad-10-2-2020/gold/03.webp"
+      "/react_phone-catalog/public/img/tablets/apple-ipad-10-2-2020/gold/00.webp",
+      "/react_phone-catalog/public/img/tablets/apple-ipad-10-2-2020/gold/01.webp",
+      "/react_phone-catalog/public/img/tablets/apple-ipad-10-2-2020/gold/02.webp",
+      "/react_phone-catalog/public/img/tablets/apple-ipad-10-2-2020/gold/03.webp"
     ],
     "description": [
       {
@@ -1178,7 +1178,7 @@
     "screen": "10.2' Retina",
     "resolution": "2160x1620",
     "processor": "Apple A12 Bionic",
-    "ram": "3GB",
+    "ram": "3 GB",
     "camera": "8MP",
     "zoom": "Digital zoom up to 5x",
     "cell": ["Not applicable"]
@@ -1187,18 +1187,18 @@
     "id": "apple-ipad-10-2-2020-32gb-gold",
     "category": "tablets",
     "namespaceId": "apple-ipad-10-2-2020",
-    "name": "Apple iPad 10.2 (2020) 32GB Gold",
-    "capacityAvailable": ["32GB", "128GB"],
-    "capacity": "32GB",
+    "name": "Apple iPad 10.2 (2020) 32 GB Gold",
+    "capacityAvailable": ["32 GB", "128 GB"],
+    "capacity": "32 GB",
     "priceRegular": 329,
     "priceDiscount": 299,
     "colorsAvailable": ["gold", "silver", "spacegray"],
     "color": "gold",
     "images": [
-      "img/tablets/apple-ipad-10-2-2020/gold/00.webp",
-      "img/tablets/apple-ipad-10-2-2020/gold/01.webp",
-      "img/tablets/apple-ipad-10-2-2020/gold/02.webp",
-      "img/tablets/apple-ipad-10-2-2020/gold/03.webp"
+      "/react_phone-catalog/public/img/tablets/apple-ipad-10-2-2020/gold/00.webp",
+      "/react_phone-catalog/public/img/tablets/apple-ipad-10-2-2020/gold/01.webp",
+      "/react_phone-catalog/public/img/tablets/apple-ipad-10-2-2020/gold/02.webp",
+      "/react_phone-catalog/public/img/tablets/apple-ipad-10-2-2020/gold/03.webp"
     ],
     "description": [
       {
@@ -1226,7 +1226,7 @@
     "screen": "10.2' Retina",
     "resolution": "2160x1620",
     "processor": "Apple A12 Bionic",
-    "ram": "3GB",
+    "ram": "3 GB",
     "camera": "8MP",
     "zoom": "Digital zoom up to 5x",
     "cell": ["Not applicable"]
@@ -1235,18 +1235,18 @@
     "id": "apple-ipad-10-2-2020-32gb-silver",
     "category": "tablets",
     "namespaceId": "apple-ipad-10-2-2020",
-    "name": "Apple iPad 10.2 (2020) 32GB Silver",
-    "capacityAvailable": ["32GB", "128GB"],
-    "capacity": "32GB",
+    "name": "Apple iPad 10.2 (2020) 32 GB Silver",
+    "capacityAvailable": ["32 GB", "128 GB"],
+    "capacity": "32 GB",
     "priceRegular": 329,
     "priceDiscount": 299,
     "colorsAvailable": ["gold", "silver", "spacegray"],
     "color": "silver",
     "images": [
-      "img/tablets/apple-ipad-10-2-2020/silver/00.webp",
-      "img/tablets/apple-ipad-10-2-2020/silver/01.webp",
-      "img/tablets/apple-ipad-10-2-2020/silver/02.webp",
-      "img/tablets/apple-ipad-10-2-2020/silver/03.webp"
+      "/react_phone-catalog/public/img/tablets/apple-ipad-10-2-2020/silver/00.webp",
+      "/react_phone-catalog/public/img/tablets/apple-ipad-10-2-2020/silver/01.webp",
+      "/react_phone-catalog/public/img/tablets/apple-ipad-10-2-2020/silver/02.webp",
+      "/react_phone-catalog/public/img/tablets/apple-ipad-10-2-2020/silver/03.webp"
     ],
     "description": [
       {
@@ -1274,7 +1274,7 @@
     "screen": "10.2' Retina",
     "resolution": "2160x1620",
     "processor": "Apple A12 Bionic",
-    "ram": "3GB",
+    "ram": "3 GB",
     "camera": "8MP",
     "zoom": "Digital zoom up to 5x",
     "cell": ["Not applicable"]
@@ -1283,18 +1283,18 @@
     "id": "apple-ipad-10-2-2020-128gb-silver",
     "category": "tablets",
     "namespaceId": "apple-ipad-10-2-2020",
-    "name": "Apple iPad 10.2 (2020) 128GB Silver",
-    "capacityAvailable": ["32GB", "128GB"],
-    "capacity": "128GB",
+    "name": "Apple iPad 10.2 (2020) 128 GB Silver",
+    "capacityAvailable": ["32 GB", "128 GB"],
+    "capacity": "128 GB",
     "priceRegular": 429,
     "priceDiscount": 399,
     "colorsAvailable": ["gold", "silver", "spacegray"],
     "color": "silver",
     "images": [
-      "img/tablets/apple-ipad-10-2-2020/silver/00.webp",
-      "img/tablets/apple-ipad-10-2-2020/silver/01.webp",
-      "img/tablets/apple-ipad-10-2-2020/silver/02.webp",
-      "img/tablets/apple-ipad-10-2-2020/silver/03.webp"
+      "/react_phone-catalog/public/img/tablets/apple-ipad-10-2-2020/silver/00.webp",
+      "/react_phone-catalog/public/img/tablets/apple-ipad-10-2-2020/silver/01.webp",
+      "/react_phone-catalog/public/img/tablets/apple-ipad-10-2-2020/silver/02.webp",
+      "/react_phone-catalog/public/img/tablets/apple-ipad-10-2-2020/silver/03.webp"
     ],
     "description": [
       {
@@ -1322,7 +1322,7 @@
     "screen": "10.2' Retina",
     "resolution": "2160x1620",
     "processor": "Apple A12 Bionic",
-    "ram": "3GB",
+    "ram": "3 GB",
     "camera": "8MP",
     "zoom": "Digital zoom up to 5x",
     "cell": ["Not applicable"]
@@ -1331,18 +1331,18 @@
     "id": "apple-ipad-10-2-2020-128gb-spacegray",
     "category": "tablets",
     "namespaceId": "apple-ipad-10-2-2020",
-    "name": "Apple iPad 10.2 (2020) 128GB Space Gray",
-    "capacityAvailable": ["32GB", "128GB"],
-    "capacity": "128GB",
+    "name": "Apple iPad 10.2 (2020) 128 GB Space Gray",
+    "capacityAvailable": ["32 GB", "128 GB"],
+    "capacity": "128 GB",
     "priceRegular": 429,
     "priceDiscount": 399,
     "colorsAvailable": ["gold", "silver", "spacegray"],
     "color": "spacegray",
     "images": [
-      "img/tablets/apple-ipad-10-2-2020/spacegray/00.webp",
-      "img/tablets/apple-ipad-10-2-2020/spacegray/01.webp",
-      "img/tablets/apple-ipad-10-2-2020/spacegray/02.webp",
-      "img/tablets/apple-ipad-10-2-2020/spacegray/03.webp"
+      "/react_phone-catalog/public/img/tablets/apple-ipad-10-2-2020/spacegray/00.webp",
+      "/react_phone-catalog/public/img/tablets/apple-ipad-10-2-2020/spacegray/01.webp",
+      "/react_phone-catalog/public/img/tablets/apple-ipad-10-2-2020/spacegray/02.webp",
+      "/react_phone-catalog/public/img/tablets/apple-ipad-10-2-2020/spacegray/03.webp"
     ],
     "description": [
       {
@@ -1370,7 +1370,7 @@
     "screen": "10.2' Retina",
     "resolution": "2160x1620",
     "processor": "Apple A12 Bionic",
-    "ram": "3GB",
+    "ram": "3 GB",
     "camera": "8MP",
     "zoom": "Digital zoom up to 5x",
     "cell": ["Not applicable"]
@@ -1379,18 +1379,18 @@
     "id": "apple-ipad-10-2-2020-32gb-spacegray",
     "category": "tablets",
     "namespaceId": "apple-ipad-10-2-2020",
-    "name": "Apple iPad 10.2 (2020) 32GB Space Gray",
-    "capacityAvailable": ["32GB", "128GB"],
-    "capacity": "32GB",
+    "name": "Apple iPad 10.2 (2020) 32 GB Space Gray",
+    "capacityAvailable": ["32 GB", "128 GB"],
+    "capacity": "32 GB",
     "priceRegular": 329,
     "priceDiscount": 299,
     "colorsAvailable": ["gold", "silver", "spacegray"],
     "color": "spacegray",
     "images": [
-      "img/tablets/apple-ipad-10-2-2020/spacegray/00.webp",
-      "img/tablets/apple-ipad-10-2-2020/spacegray/01.webp",
-      "img/tablets/apple-ipad-10-2-2020/spacegray/02.webp",
-      "img/tablets/apple-ipad-10-2-2020/spacegray/03.webp"
+      "/react_phone-catalog/public/img/tablets/apple-ipad-10-2-2020/spacegray/00.webp",
+      "/react_phone-catalog/public/img/tablets/apple-ipad-10-2-2020/spacegray/01.webp",
+      "/react_phone-catalog/public/img/tablets/apple-ipad-10-2-2020/spacegray/02.webp",
+      "/react_phone-catalog/public/img/tablets/apple-ipad-10-2-2020/spacegray/03.webp"
     ],
     "description": [
       {
@@ -1418,7 +1418,7 @@
     "screen": "10.2' Retina",
     "resolution": "2160x1620",
     "processor": "Apple A12 Bionic",
-    "ram": "3GB",
+    "ram": "3 GB",
     "camera": "8MP",
     "zoom": "Digital zoom up to 5x",
     "cell": ["Not applicable"]
@@ -1427,16 +1427,16 @@
     "id": "apple-ipad-mini-5th-gen-256gb-silver",
     "category": "tablets",
     "namespaceId": "apple-ipad-mini-5th-gen",
-    "name": "Apple iPad Mini (5th Gen) 256GB Silver",
-    "capacityAvailable": ["64GB", "256GB"],
-    "capacity": "256GB",
+    "name": "Apple iPad Mini (5th Gen) 256 GB Silver",
+    "capacityAvailable": ["64 GB", "256 GB"],
+    "capacity": "256 GB",
     "priceRegular": 549,
     "priceDiscount": 499,
     "colorsAvailable": ["silver", "spacegray", "gold"],
     "color": "silver",
     "images": [
-      "img/tablets/apple-ipad-mini-5th-gen/silver/00.webp",
-      "img/tablets/apple-ipad-mini-5th-gen/silver/01.webp"
+      "/react_phone-catalog/public/img/tablets/apple-ipad-mini-5th-gen/silver/00.webp",
+      "/react_phone-catalog/public/img/tablets/apple-ipad-mini-5th-gen/silver/01.webp"
     ],
     "description": [
       {
@@ -1464,7 +1464,7 @@
     "screen": "7.9' Retina",
     "resolution": "2048x1536",
     "processor": "Apple A12 Bionic",
-    "ram": "3GB",
+    "ram": "3 GB",
     "camera": "8MP",
     "zoom": "Digital zoom up to 5x",
     "cell": ["Not applicable"]
@@ -1473,16 +1473,16 @@
     "id": "apple-ipad-mini-5th-gen-64gb-silver",
     "category": "tablets",
     "namespaceId": "apple-ipad-mini-5th-gen",
-    "name": "Apple iPad Mini (5th Gen) 64GB Silver",
-    "capacityAvailable": ["64GB", "256GB"],
-    "capacity": "64GB",
+    "name": "Apple iPad Mini (5th Gen) 64 GB Silver",
+    "capacityAvailable": ["64 GB", "256 GB"],
+    "capacity": "64 GB",
     "priceRegular": 549,
     "priceDiscount": 499,
     "colorsAvailable": ["silver", "spacegray", "gold"],
     "color": "silver",
     "images": [
-      "img/tablets/apple-ipad-mini-5th-gen/silver/00.webp",
-      "img/tablets/apple-ipad-mini-5th-gen/silver/01.webp"
+      "/react_phone-catalog/public/img/tablets/apple-ipad-mini-5th-gen/silver/00.webp",
+      "/react_phone-catalog/public/img/tablets/apple-ipad-mini-5th-gen/silver/01.webp"
     ],
     "description": [
       {
@@ -1510,7 +1510,7 @@
     "screen": "7.9' Retina",
     "resolution": "2048x1536",
     "processor": "Apple A12 Bionic",
-    "ram": "3GB",
+    "ram": "3 GB",
     "camera": "8MP",
     "zoom": "Digital zoom up to 5x",
     "cell": ["Not applicable"]
@@ -1519,16 +1519,16 @@
     "id": "apple-ipad-mini-5th-gen-64gb-spacegray",
     "category": "tablets",
     "namespaceId": "apple-ipad-mini-5th-gen",
-    "name": "Apple iPad Mini (5th Gen) 64GB Space Gray",
-    "capacityAvailable": ["64GB", "256GB"],
-    "capacity": "64GB",
+    "name": "Apple iPad Mini (5th Gen) 64 GB Space Gray",
+    "capacityAvailable": ["64 GB", "256 GB"],
+    "capacity": "64 GB",
     "priceRegular": 549,
     "priceDiscount": 499,
     "colorsAvailable": ["silver", "spacegray", "gold"],
     "color": "spacegray",
     "images": [
-      "img/tablets/apple-ipad-mini-5th-gen/spacegray/00.webp",
-      "img/tablets/apple-ipad-mini-5th-gen/spacegray/01.webp"
+      "/react_phone-catalog/public/img/tablets/apple-ipad-mini-5th-gen/spacegray/00.webp",
+      "/react_phone-catalog/public/img/tablets/apple-ipad-mini-5th-gen/spacegray/01.webp"
     ],
     "description": [
       {
@@ -1556,7 +1556,7 @@
     "screen": "7.9' Retina",
     "resolution": "2048x1536",
     "processor": "Apple A12 Bionic",
-    "ram": "3GB",
+    "ram": "3 GB",
     "camera": "8MP",
     "zoom": "Digital zoom up to 5x",
     "cell": ["Not applicable"]
@@ -1565,16 +1565,16 @@
     "id": "apple-ipad-mini-5th-gen-256gb-spacegray",
     "category": "tablets",
     "namespaceId": "apple-ipad-mini-5th-gen",
-    "name": "Apple iPad Mini (5th Gen) 256GB Space Gray",
-    "capacityAvailable": ["64GB", "256GB"],
-    "capacity": "256GB",
+    "name": "Apple iPad Mini (5th Gen) 256 GB Space Gray",
+    "capacityAvailable": ["64 GB", "256 GB"],
+    "capacity": "256 GB",
     "priceRegular": 549,
     "priceDiscount": 499,
     "colorsAvailable": ["silver", "spacegray", "gold"],
     "color": "spacegray",
     "images": [
-      "img/tablets/apple-ipad-mini-5th-gen/spacegray/00.webp",
-      "img/tablets/apple-ipad-mini-5th-gen/spacegray/01.webp"
+      "/react_phone-catalog/public/img/tablets/apple-ipad-mini-5th-gen/spacegray/00.webp",
+      "/react_phone-catalog/public/img/tablets/apple-ipad-mini-5th-gen/spacegray/01.webp"
     ],
     "description": [
       {
@@ -1602,7 +1602,7 @@
     "screen": "7.9' Retina",
     "resolution": "2048x1536",
     "processor": "Apple A12 Bionic",
-    "ram": "3GB",
+    "ram": "3 GB",
     "camera": "8MP",
     "zoom": "Digital zoom up to 5x",
     "cell": ["Not applicable"]
@@ -1611,16 +1611,16 @@
     "id": "apple-ipad-mini-5th-gen-256gb-gold",
     "category": "tablets",
     "namespaceId": "apple-ipad-mini-5th-gen",
-    "name": "Apple iPad Mini (5th Gen) 256GB Gold",
-    "capacityAvailable": ["64GB", "256GB"],
-    "capacity": "256GB",
+    "name": "Apple iPad Mini (5th Gen) 256 GB Gold",
+    "capacityAvailable": ["64 GB", "256 GB"],
+    "capacity": "256 GB",
     "priceRegular": 549,
     "priceDiscount": 499,
     "colorsAvailable": ["silver", "spacegray", "gold"],
     "color": "gold",
     "images": [
-      "img/tablets/apple-ipad-mini-5th-gen/gold/00.webp",
-      "img/tablets/apple-ipad-mini-5th-gen/gold/01.webp"
+      "/react_phone-catalog/public/img/tablets/apple-ipad-mini-5th-gen/gold/00.webp",
+      "/react_phone-catalog/public/img/tablets/apple-ipad-mini-5th-gen/gold/01.webp"
     ],
     "description": [
       {
@@ -1648,7 +1648,7 @@
     "screen": "7.9' Retina",
     "resolution": "2048x1536",
     "processor": "Apple A12 Bionic",
-    "ram": "3GB",
+    "ram": "3 GB",
     "camera": "8MP",
     "zoom": "Digital zoom up to 5x",
     "cell": ["Not applicable"]
@@ -1657,16 +1657,16 @@
     "id": "apple-ipad-mini-5th-gen-64gb-gold",
     "category": "tablets",
     "namespaceId": "apple-ipad-mini-5th-gen",
-    "name": "Apple iPad Mini (5th Gen) 64GB Gold",
-    "capacityAvailable": ["64GB", "256GB"],
-    "capacity": "64GB",
+    "name": "Apple iPad Mini (5th Gen) 64 GB Gold",
+    "capacityAvailable": ["64 GB", "256 GB"],
+    "capacity": "64 GB",
     "priceRegular": 549,
     "priceDiscount": 499,
     "colorsAvailable": ["silver", "spacegray", "gold"],
     "color": "gold",
     "images": [
-      "img/tablets/apple-ipad-mini-5th-gen/gold/00.webp",
-      "img/tablets/apple-ipad-mini-5th-gen/gold/01.webp"
+      "/react_phone-catalog/public/img/tablets/apple-ipad-mini-5th-gen/gold/00.webp",
+      "/react_phone-catalog/public/img/tablets/apple-ipad-mini-5th-gen/gold/01.webp"
     ],
     "description": [
       {
@@ -1694,7 +1694,7 @@
     "screen": "7.9' Retina",
     "resolution": "2048x1536",
     "processor": "Apple A12 Bionic",
-    "ram": "3GB",
+    "ram": "3 GB",
     "camera": "8MP",
     "zoom": "Digital zoom up to 5x",
     "cell": ["Not applicable"]
