@@ -1,0 +1,52 @@
+@import '../../main';
+
+.categoryShop {
+  @include page-container;
+
+  .title {
+    @include font-set($mobile-h2);
+
+    margin-bottom: 24px;
+
+    @include on-tablet {
+      @include font-set($tablet-h2);
+    }
+  }
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+
+    @include on-tablet {
+      flex-direction: row;
+      gap: 16px;
+    }
+  }
+
+  .article {
+    @include hover {
+      transform: scale(1.05);
+    }
+
+    flex-grow: 1;
+
+    &__img {
+      width: 100%;
+      margin-bottom: 24px;
+      display: flex;
+    }
+
+    &__name {
+      @include font-set($tablet-h4);
+
+      margin-bottom: 4px;
+    }
+
+    &__countModels {
+      @include font-set($body-text);
+
+      color: $secondary;
+    }
+  }
+}

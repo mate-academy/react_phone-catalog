@@ -1,0 +1,98 @@
+@import '../../main';
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  padding: 32px 16px;
+  background-color: $white;
+  box-shadow: 0 -1px 0 0 $elements;
+  margin-top: 56px;
+
+  @include on-tablet {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 32px;
+    gap: 0;
+    margin-top: 64px;
+  }
+
+  @include on-desktop {
+    margin-top: 80px;
+  }
+
+  .logo {
+    width: 89px;
+    height: 32px;
+
+    @include hover {
+      transform: scale(1.05);
+    }
+
+    &__link {
+      display: flex;
+    }
+  }
+
+  .nav {
+    &__list {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+
+      @include on-tablet {
+        flex-direction: row;
+        justify-content: space-between;
+        gap: 32px;
+      }
+
+      @include on-desktop {
+        gap: 108px;
+      }
+    }
+
+    &__item {
+      width: fit-content;
+
+      @include hover {
+        transform: scale(1.05);
+        transform-origin: center;
+      }
+    }
+
+    &__link {
+      @include font-set($uppercase);
+
+      color: $secondary;
+    }
+  }
+
+  .backToTop {
+    all: unset;
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+
+    @include hover {
+      transform: scale(1.03);
+    }
+
+    &__text {
+      color: $secondary;
+    }
+
+    &__button {
+      background-image: url(../../assets/img/icons/arrow-up.svg);
+      background-repeat: no-repeat;
+      background-position: center;
+      height: 32px;
+      width: 32px;
+      padding: 8px;
+      border: 1px solid $icons;
+      border-radius: 48px;
+    }
+  }
+}
