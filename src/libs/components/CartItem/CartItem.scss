@@ -1,0 +1,107 @@
+@import '/src/assets/css/styles';
+
+.cart-item {
+  @include flexbox-center-vertical;
+
+  gap: 24px;
+  padding: 24px;
+  border: 1px solid $elements;
+
+  @include on-mobile {
+    flex-direction: column;
+    gap: 16px;
+    padding: 16px;
+  }
+
+  &__details {
+    @include flexbox-center-vertical;
+
+    gap: 24px;
+    width: 100%;
+
+    @include on-mobile {
+      gap: 16px;
+    }
+  }
+
+  &__delete-button {
+    @include flexbox-center;
+
+    font-family: inherit;
+    width: 16px;
+    height: 16px;
+    font-size: 16px;
+    color: $icons;
+  }
+
+  &__product-image {
+    width: 80px;
+    height: 80px;
+    padding: 7px;
+    object-fit: contain;
+  }
+
+  &__product-name {
+    color: $primary;
+    word-break: break-all;
+    min-width: 336px;
+    text-decoration: none;
+
+    @include on-mobile {
+      min-width: 128px;
+    }
+
+    @include on-tablet {
+      min-width: 176px;
+    }
+  }
+
+  &__quantity-price {
+    @include flexbox-center-vertical;
+
+    gap: 24px;
+    width: 100%;
+  }
+
+  &__count-container {
+    @include flexbox-center-vertical;
+
+    max-width: 96px;
+    gap: 13px;
+
+    @include on-mobile {
+      gap: 10px;
+    }
+  }
+
+  &__count-button {
+    @include flexbox-center;
+
+    font-family: inherit;
+    color: $primary;
+    width: 32px;
+    height: 32px;
+    padding: 8px;
+    border: 1px solid $icons;
+
+    &:disabled {
+      cursor: not-allowed;
+      color: $icons;
+      border-color: $elements
+    }
+  }
+
+  &__item-count {
+    @include flexbox-center;
+
+    color: black;
+  }
+
+  &__product-price {
+    @include h2-text;
+
+    min-width: 80px;
+    color: $primary;
+    text-align: end;
+  }
+}

@@ -1,0 +1,20 @@
+@import '/src/assets/css/styles';
+
+.shop-by-category {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 100%;
+
+  &__cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+
+    @include on-mobile {
+      grid-template-rows: repeat(3, 1fr);
+      grid-template-columns: none;
+      width: 100%
+    }
+  }
+}

@@ -1,0 +1,43 @@
+@import '/src/assets/css/styles';
+
+.app {
+  &__header {
+    position: sticky;
+    top: 0;
+    margin: 0 auto;
+  }
+
+  &__footer {
+    margin: 0 auto;
+  }
+}
+
+.main {
+  border-bottom: 1px solid $elements;
+  min-height: calc(100vh - #{$header-height} - #{$footer-height});
+  position: relative;
+  display: flex;
+
+  &__container {
+    @include flexbox-center-vertical;
+
+    flex-direction: column;
+    width: 1200px;
+    max-width: 1200px;
+    margin-inline: auto;
+    padding-inline: $main-side-padding;
+    padding-block: $main-block-padding;
+
+    @include on-mobile {
+      width: 100%;
+      padding-inline: 16px;
+      padding-bottom: 56px;
+    }
+
+    @include on-tablet {
+      min-width: 640px;
+      padding-inline: 24px;
+      padding-bottom: 64px;
+    }
+  }
+}

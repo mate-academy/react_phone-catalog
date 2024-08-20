@@ -1,0 +1,47 @@
+@import '/src/assets/css/styles';
+
+.card-buttons {
+  display: flex;
+  gap: 8px;
+
+  &__add {
+    @include flexbox-center;
+    @include transition;
+
+    padding: 10px 0;
+    flex-grow: 1;
+    background-color: $primary;
+
+    font-family: inherit;
+    font-size: $body-font-size;
+    font-weight: 600;
+    line-height: 21px;
+    color: $white;
+
+    &:hover {
+      box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.26);
+    }
+
+    &:active, &--selected {
+      @include button-active;
+    }
+  }
+
+  &__like {
+    @include flexbox-center;
+    @include transition;
+    @include button-border-on-hover;
+
+    padding: 12px;
+    border: 1px solid $icons;
+
+    &:active {
+      border-color: $icons;
+    }
+  }
+
+  &__like-icon {
+    width: 16px;
+    height: 16px;
+  }
+}

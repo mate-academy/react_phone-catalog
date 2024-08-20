@@ -1,0 +1,53 @@
+@import '/src/assets/css/styles';
+
+.breadcrumbs {
+  @include flexbox-center-vertical;
+
+  gap: 8px;
+
+  @include on-mobile {
+    gap: 4px;
+  }
+
+  &__home {
+    @include transition;
+    @include background-image-centering;
+
+    width: 16px;
+    height: 16px;
+    background-image: url(../../../assets/icons/home.svg);
+    background-size: contain;
+
+
+    &:hover {
+      transform: scale(1.01);
+    }
+  }
+
+  &__link {
+    @include flexbox-center-vertical;
+    @include small-text;
+
+    color: $primary;
+    text-decoration: none;
+
+    &::before {
+      @include background-image-centering;
+
+      display: inline-block;
+      content: '';
+      width: 16px;
+      height: 16px;
+      background-image: url(../../../assets/icons/arrow-right.svg);
+      margin-right: 8px;
+
+      @include on-mobile {
+        padding-right: 4px;
+      }
+    }
+
+    &--current {
+      color: $secondary;
+    }
+  }
+}

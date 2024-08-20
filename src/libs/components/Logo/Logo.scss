@@ -1,0 +1,29 @@
+@import '/src/assets/css/styles';
+
+.logo {
+  @include flexbox-center-vertical;
+  @include transition;
+
+  width: 80px;
+  height: 28px;
+  text-decoration: none;
+
+  @include on-mobile {
+    width: 64px;
+    height: 22px;
+  }
+
+  @include on-tablet {
+    width: 64px;
+    height: 22px;
+  }
+
+  &:hover  {
+    transform: scale(110%);
+  }
+
+  &__image {
+    height: 100%;
+    width: 100%;
+  }
+}

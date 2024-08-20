@@ -1,0 +1,31 @@
+@import '/src/assets/css/styles';
+
+.section-header {
+  @include flexbox-center-vertical;
+
+  width: 100%;
+
+  &__title-container {
+    min-width: max-content;
+
+    @include on-mobile {
+      min-width: auto;
+    }
+  }
+
+  &__title {
+    @include h1-text;
+
+    text-align: left;
+    color: $primary;
+
+    @include on-mobile {
+      @include h2-text
+    }
+  }
+
+  &__subtitle {
+    padding-top: 8px;
+    color: $secondary;
+  }
+}

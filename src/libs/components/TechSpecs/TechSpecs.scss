@@ -1,0 +1,33 @@
+@import '/src/assets/css/styles';
+
+.product-details {
+  border-spacing: 0;
+
+  &--border {
+    padding-block: 16px;
+    border-top: 1px solid $elements;
+  }
+
+  &__body {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__row {
+    @include small-text;
+
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+  }
+
+  &__name {
+    color: $secondary;
+  }
+
+  &__description {
+    text-align: end;
+    color: $primary;
+  }
+}

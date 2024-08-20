@@ -1,0 +1,18 @@
+@import '/src/assets/css/styles';
+
+.favourites {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  width: 100%;
+
+  @include on-mobile {
+    gap: 14px;
+  }
+
+  &__cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(272px, 1fr));
+    gap: 16px;
+  }
+}

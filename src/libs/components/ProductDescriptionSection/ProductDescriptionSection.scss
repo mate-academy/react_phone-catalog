@@ -1,0 +1,38 @@
+@import '/src/assets/css/styles';
+
+.product-detailed-info {
+  &__title {
+    @include h2-text;
+
+    color: $primary;
+    padding-bottom: 16px;
+    border-bottom: 1px solid $elements;
+    margin-bottom: 32px;
+  }
+
+  &__article {
+    &:not(:last-child) {
+      margin-bottom: 32px;
+    }
+  }
+
+  &__article-title {
+    margin-bottom: 16px;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 25.56px;
+    color: $primary;
+
+    @include on-mobile {
+      font-size: 16px;
+      line-height: 20.45px;
+    }
+  }
+
+  &__article-text {
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 21px;
+    color: $secondary;
+  }
+}

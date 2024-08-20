@@ -1,0 +1,99 @@
+@import '/src/assets/css/styles';
+
+.footer {
+  @include flexbox-center-vertical;
+
+  justify-content: space-between;
+  padding: $main-side-padding;
+  height: $footer-height;
+  box-sizing: border-box;
+  max-width: $max-page-width;
+
+  @include on-mobile {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 32px;
+    width: 100%;
+    height: auto;
+    padding: 32px 16px;
+  }
+
+  &__logo {
+    height: 32px;
+    width: auto;
+  }
+
+  &__list {
+    @include flexbox-center;
+
+    gap: 107px;
+    justify-content: space-between;
+    list-style: none;
+    padding: 0;
+
+    @include on-tablet {
+      gap: 14px;
+    }
+
+    @include on-mobile {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      width: 100%;
+      gap: 16px;
+    }
+  }
+
+  &__item {
+    @include flexbox-center;
+  }
+
+  &__link {
+    @include uppercase-text;
+    @include transition;
+    @include text-color-on-hover;
+    @include flexbox-center;
+
+    text-decoration: none;
+    color: $secondary;
+  }
+}
+
+.back-to-top {
+  @include flexbox-center-vertical;
+  @include transition;
+
+  gap: 16px;
+
+  @include on-mobile {
+    width: 100%;
+    justify-content: center;
+  }
+
+  &__text {
+    font-size: $small-font-size;
+    font-weight: 600;
+    text-align: right;
+    color: $secondary;
+  }
+
+  &__button {
+    @include flexbox-center;
+
+    height: 32px;
+    width: 32px;
+    border: 1px solid $icons;
+  }
+
+  &__icon path{
+    fill: $primary;
+  }
+
+  &:hover &__text {
+    color: $primary;
+  }
+
+  &:hover &__button {
+    border-color: $primary;
+  }
+}
