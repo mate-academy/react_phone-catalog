@@ -1,0 +1,36 @@
+@import '../../../styles/main';
+
+.errorMessage {
+  padding-top: 80px;
+
+  @include on-tablet {
+    padding-top: 160px;
+  }
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &__wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__title {
+    padding-bottom: 24px;
+    font-family: Mont-Regular, sans-serif;
+    text-align: center;
+  }
+
+  &__button {
+    font-family: inherit;
+    padding: 0 24px;
+    height: 40px;
+    color: var(--main-bg-color);
+    background-color: var(--main-text-color);
+    border: 0;
+
+    @include hover(box-shadow, 0 2px 16px 0 rgba(49, 57, 60, 0.32))
+  }
+}

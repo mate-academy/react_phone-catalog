@@ -1,0 +1,40 @@
+@import '../../../Styles/main';
+
+.navbar {
+    &-item {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      cursor: pointer;
+      color: var(--secondary-text-color);
+      transition: color 300ms;
+      height: 100%;
+
+      @include hover(color, var(--main-text-color));
+
+      &.active {
+        color: var(--main-text-color);
+
+        &::before {
+          position: absolute;
+          bottom: -8px;
+          content: "";
+          height: 3px;
+          width: 100%;
+          background-color: var(--main-text-color);
+
+          @include on-tablet {
+            // bottom: -18px;
+            bottom: 0;
+          }
+
+          @include on-desktop {
+            // bottom: -26px;
+            bottom: 0;
+          }
+        }
+      }
+    }
+}

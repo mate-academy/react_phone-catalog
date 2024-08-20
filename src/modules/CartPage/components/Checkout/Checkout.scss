@@ -1,0 +1,55 @@
+@import '../../../../styles/main';
+
+.checkout {
+  padding-top: 32px;
+
+  @include on-desktop {
+    padding-top: 0;
+  }
+
+  &__wrap {
+    box-sizing: border-box;
+    padding: 24px;
+    display: flex;
+    gap: 16px;
+    flex-direction: column;
+    border: 1px solid var(--elements-color);
+  }
+
+  &__total {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__items {
+    color: var(--secondary-text-color);
+  }
+
+  &__detail {
+    height: 1px;
+    width: 100%;
+    background-color: var(--elements-color);
+  }
+
+  &__button {
+    height: 48px;
+    font-family: inherit;
+    color: var(--main-bg-color);
+    background-color: var(--main-text-color);
+    border: none;
+    transition: box-shadow 300ms;
+    cursor: pointer;
+
+    &:hover:not(.dark) {
+      box-shadow: 0 2px 16px 0 rgba(49, 57, 60, 0.32);
+    }
+
+    &.dark {
+      color: var(--main-text-color);
+      background-color: var(--accent-color);
+
+      @include hover(background-color, var(--hover-accent));
+    }
+  }
+}

@@ -1,0 +1,96 @@
+@import '../../../styles/main';
+
+.products-slider {
+  padding-left: 16px;
+
+  @include page-grid;
+
+  @include on-tablet {
+    padding-left: 24px;
+  }
+
+  @include on-desktop {
+    padding-left: 0;
+
+    @include container;
+  }
+
+  &__top {
+    grid-column: 1/-1;
+    padding-bottom: 24px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    padding-right: 16px;
+
+    @include on-tablet {
+      padding-right: 24px;
+    }
+
+    @include on-desktop {
+      padding-right: 0;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 16px;
+  }
+
+  &__products {
+    grid-column: 1/-1;
+    overflow: hidden;
+
+    @include on-desktop {
+      @include container;
+    }
+  }
+
+  &__list {
+    display: flex;
+    padding: 0;
+    gap: 16px;
+    scroll-behavior: smooth;
+  }
+
+  &__item {
+    list-style: none;
+  }
+}
+
+.arrowBtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--color-surface);
+  border: 1px solid var(--icons-color);
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+
+  &.dark {
+    border: none;
+
+    &:not(:disabled):hover {
+      border: none;
+      background-color: var(--button-hover);
+    }
+  }
+
+  &:hover {
+    border-color: var(--main-text-color);
+    background-color: var(--button-hover);
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    border: 1px solid var(--elements-color);
+    background-color: var(--main-bg-color);
+  }
+
+  &__icon {
+    cursor: inherit;
+  }
+}

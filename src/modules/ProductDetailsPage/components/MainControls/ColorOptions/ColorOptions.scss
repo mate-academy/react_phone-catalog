@@ -1,0 +1,40 @@
+@import '../../../../../styles/main';
+
+.colorOptions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  &__title {
+    color: var(--secondary-text-color);
+  }
+
+  &__variable {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+  }
+
+  &__colorWrap {
+    padding: 2px;
+    width: 32px;
+    height: 32px;
+    border: 1px solid var(--elements-color);
+    border-radius: 50%;
+    overflow: hidden;
+
+    &.active {
+      border-color: var(--main-text-color);
+    }
+
+    &:hover {
+      border-color: var(--icons-color);
+    }
+  }
+
+  &__color {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+  }
+}

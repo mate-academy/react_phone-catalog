@@ -1,0 +1,68 @@
+@import '../../../styles/main';
+
+.catalog {
+  padding-top: 24px;
+  padding-bottom: 64px;
+
+  @include page-height;
+
+  @include on-tablet {
+    padding-top: 40px;
+    padding-bottom: 80px;
+  }
+
+  &__title {
+    padding-top: 24px;
+
+    @include on-tablet {
+      padding-top: 40px;
+    }
+  }
+
+  &__models {
+    padding-top: 8px;
+    color: var(--secondary-text-color);
+  }
+
+  &__filter {
+    padding-top: 32px;
+    display: flex;
+    gap: 16px;
+
+    @include on-tablet {
+      padding-top: 40px;
+    }
+
+    @include on-desktop {
+      @include page-grid;
+    }
+
+    &-item {
+      width: 187px;
+
+      @include on-desktop {
+        width: 100%;
+        grid-column: span 4;
+      }
+
+      &--left {
+        width: 136px;
+
+        @include on-desktop {
+          width: 100%;
+          grid-column: span 3;
+        }
+      }
+    }
+  }
+
+  &__product-list {
+    padding-top: 24px;
+  }
+
+  &__pagination {
+    padding-top: 40px;
+    display: flex;
+    justify-content: center;
+  }
+}

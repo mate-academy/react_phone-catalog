@@ -1,0 +1,34 @@
+@import '../../../../styles/main';
+
+.techSpecs {
+  &__title {
+    padding-bottom: 16px;
+  }
+
+  &__detail {
+    display: block;
+    height: 1px;
+    width: 100%;
+    background-color: var(--elements-color);
+  }
+
+  &__content {
+    padding-top: 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__block {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__prop {
+    color: var(--secondary-text-color);
+  }
+
+  &__text {
+    text-transform: uppercase;
+  }
+}
