@@ -1,0 +1,18 @@
+@import '../../styles/mixins';
+
+.page {
+  margin-top: 72px;
+
+  &__container {
+    max-width: 1160px;
+    margin: 0 auto;
+  }
+
+  @include on-tablet {
+    margin-top: 80px;
+  }
+
+  @include on-desktop {
+    margin-top: 120px;
+  }
+}
