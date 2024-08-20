@@ -1,0 +1,49 @@
+.category {
+
+  &__title {
+    margin-bottom: 24px;
+  }
+
+  &__list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    row-gap: 32px;
+    column-gap: 16px;
+
+    @include on-tablet {
+      grid-template-columns: repeat(12, 1fr);
+    }
+  }
+
+  &__item {
+    grid-column: span 4;
+  }
+
+  &__image {
+    width: 100%;
+    border-radius: 8px;
+    margin-bottom: 24px;
+
+    @include hover(scale, 1.05);
+  }
+
+  &__name {
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 25.56px;
+    color: $font-color;
+    margin-bottom: 4px;
+  }
+
+  &__count-items {
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 21px;
+    color: $font-color-grey;
+
+  }
+}

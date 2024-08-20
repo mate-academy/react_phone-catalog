@@ -1,0 +1,55 @@
+.header {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 56px;
+
+  @include on-tablet {
+    margin-bottom: 64px;
+  }
+
+  @include on-desktop {
+    margin-bottom: 80px;
+  }
+
+  &__container {
+    width: 100%;
+    max-width: 1200px;
+    padding-bottom: 32px;
+  }
+
+  @include on-tablet {
+    &__content {
+      margin-inline: 24px;
+    }
+  }
+
+  @include on-desktop {
+    &__content {
+      margin-inline: 32px;
+    }
+  }
+
+  &__title {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 24px 16px;
+    font-weight: 800;
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+    text-align: left;
+
+    @include on-tablet {
+      font-size: 48px;
+      line-height: 56px;
+      padding: 0;
+      margin: 32px 0;
+    }
+
+    @include on-desktop {
+      margin: 56px 0;
+    }
+  }
+}
