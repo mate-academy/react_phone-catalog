@@ -5,24 +5,23 @@ import '../../styles/main.scss';
 import { Link, useLocation } from 'react-router-dom';
 import { capitalizeFirstLetter } from '../../utils/capitalizeFirstLetter';
 
-// type BreadcrumbItem = {
-//   name: string;
-//   path: string;
-// }
-
-// type  BreadcrumbsProps = {
-//   items: BreadcrumbItem[];
-//   separator?: string;
-// }
-
 const Breadcrumbs = () => {
   const { pathname } = useLocation();
 
-  const extractSegment = (path: string) => {
-    const parts = path.split('/').filter(Boolean);
+  const segments = pathname.split('/').filter(Boolean);
+  const isCatalogPage = segments.length === 1;
+  const category = capitalizeFirstLetter(segments[0]);
+  const getProductName = () => {
+    if (segments.length > 1) {
+      const lastSegment = segments[segments.length - 1].replace(/[:\-]/g, ' ');
 
-    return parts[0] || '';
+      return capitalizeFirstLetter(lastSegment);
+    }
+
+    return '';
   };
+
+  const productName = getProductName();
 
   return (
     <div id="breadcrumbs" className="breadcrumbs">
@@ -35,14 +34,35 @@ const Breadcrumbs = () => {
               <Icon iconName="home" />
             </Link>
           </li>
+
           <li className={styles['breadcrumbs__nav-item']}>
             <span className={styles['breadcrumbs__nav-link-separator']}>
               <Icon iconName="right" />
             </span>
-            <span className={styles['breadcrumbs__nav-link']}>
-              {capitalizeFirstLetter(extractSegment(pathname))}
-            </span>
+            {isCatalogPage ? (
+              <span className={styles['breadcrumbs__nav-text']}>
+                {category}
+              </span>
+            ) : (
+              <Link
+                to={`/${segments[0]}`}
+                className={styles['breadcrumbs__nav-link']}
+              >
+                {category}
+              </Link>
+            )}
           </li>
+
+          {productName && (
+            <li className={styles['breadcrumbs__nav-item']}>
+              <span className={styles['breadcrumbs__nav-link-separator']}>
+                <Icon iconName="right" />
+              </span>
+              <span className={styles['breadcrumbs__nav-text']}>
+                {productName}
+              </span>
+            </li>
+          )}
         </ul>
       </nav>
     </div>

@@ -36,7 +36,12 @@ export const Card: React.FC<CardProps> = ({
         />
       </Link>
 
-      <p className="body-text">{item.name}</p>
+      <Link
+        to={`/${item.category}/:${item.itemId}`}
+        state={{ search: searchParams.toString() }}
+      >
+        <p className="body-text">{item.name}</p>
+      </Link>
 
       <h4 className={styles.card__price}>
         ${item.price}{' '}

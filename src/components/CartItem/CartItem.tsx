@@ -30,12 +30,12 @@ export const CartItem: React.FC<CartItemProps> = ({
   const [countItem, setCountItem] = useState(1);
 
   useEffect(() => {
-    // Adjust total calculations on component mount if countItem is not 1
     if (countItem > 1) {
       onItemPrice(price, countItem - 1, 'increase'); // Subtract previous count
       onItemCount(countItem - 1, 'increase'); // Subtract previous count
     }
-  }, []); // Run only once on mount
+    // eslint-disable-next-line
+  }, []);
 
   const handleCountItem = (type: 'increase' | 'decrease') => {
     setCountItem(prevCount => {

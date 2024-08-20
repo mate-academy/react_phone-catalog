@@ -1,4 +1,3 @@
-
 .catalog-page {
   display: flex;
   flex-flow: column;
@@ -6,12 +5,12 @@
   gap: 24px;
 
   @include on-tablet {
-    gap: 40px;
+    // gap: 40px;
   }
 
-  &:first-child {
-    margin-top: 24px;
-  }
+  // &:first-child {
+  //   margin-top: 24px;
+  // }
 
   &__description {
     color: $secondary-gray;

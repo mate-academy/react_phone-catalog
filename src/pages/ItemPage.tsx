@@ -14,34 +14,39 @@ import { getItemByCategory } from '../services/productDetails';
 import { ProductDetails } from '../types/ProductDetails';
 import { useFavorites } from '../hooks/useFavorites';
 import { useProducts } from '../hooks/useProducts';
+import { NotFoundProductPage } from './NotFoundProductPage';
+import { Loader } from '../components/Loader';
+import { wait } from '../utils/wait';
+import { getSuggestedProducts } from '../services/radomProducts';
+import { colors } from '../constants/COLORS';
 
 export const ItemPage = () => {
   const { products } = useProducts();
   const { favorites, toggleFavorite } = useFavorites();
 
-  //useEffect for this page only for current state
-  const [selectedItem, setSelectedItem] = useState<ProductDetails>();
-
-  //component state
-  const [selectedColorIndex, setSelectedColorIndex] = useState(0);
-  const [selectedImageIndex, setSelectedImageIndex] = useState(0);
-  const [selectedCapacityIndex, setSelectedCapacityIndex] = useState(0);
-
   //params for filtering ang fetching selectedItem
   const { itemId } = useParams();
   const paramFromLink = itemId?.slice(1);
 
-  //get one product from Producs by itemId
-  const selectedProduct = products.find(
-    product => product.itemId === paramFromLink,
-  );
-  const productId = selectedProduct?.id;
+  const [isLoading, setIsLoading] = useState(true);
+
+  //useEffect for this page only for current state
+  const [selectedProduct] = useState<Product | null>(() => {
+    return products.find(product => product.itemId === paramFromLink) || null;
+  });
+  const [selectedItem, setSelectedItem] = useState<ProductDetails | null>(null);
+  const [suggestedProducts, setSuggestedProducts] = useState<Product[]>([]);
+
+  //component state
+  const [selectedColorIndex, setSelectedColorIndex] = useState(0);
+  const [selectedImageIndex, setSelectedImageIndex] = useState(0);
+  const [selectedCapacityIndex, setSelectedCapacityIndex] = useState(1 || 0);
+
+  const productId = selectedProduct ? selectedProduct.id : 0;
 
   const isFavorite = favorites.some((f: Product) => f.id === productId);
 
-  //if one product exist get it category and get Item from api
-  //comparing Item id with Product itemId
-  // seting selectedItem in state
+  // Fetch product details
   useEffect(() => {
     if (!selectedProduct) {
       return;
@@ -49,25 +54,51 @@ export const ItemPage = () => {
 
     const { category } = selectedProduct;
 
-    getItemByCategory(category).then(data => {
-      const item = data.find(d => d.id === selectedProduct.itemId);
+    const fetchProductDetails = () => {
+      wait(200)
+        .then(() =>
+          getItemByCategory(category).then(data => {
+            const item = data.find(d => d.id === selectedProduct.itemId);
 
-      setSelectedItem(item);
-    });
+            setSelectedItem(item || null);
+          }),
+        )
+        .catch(error => {
+          setSelectedItem(null);
+          throw new Error('Error fetching productDetails:', error);
+        })
+        .finally(() => setIsLoading(false));
+    };
+
+    fetchProductDetails();
   }, [selectedProduct]);
 
-  const suggestProducts = [...products].sort((a, b) => {
-    // Calculate the discount for both products
-    const discountA = a.fullPrice - a.price;
-    const discountB = b.fullPrice - b.price;
+  // Fetch suggested products
+  useEffect(() => {
+    getSuggestedProducts()
+      .then(data => setSuggestedProducts(data))
+      .catch(error => {
+        // eslint-disable-next-line
+        console.error('Error fetching suggested products:', error);
 
-    // Calculate a composite score considering both year and discount
-    const scoreA = a.year * 1000 + discountA;
-    const scoreB = b.year * 1000 + discountB;
+        return null;
+      });
+  }, []);
 
-    // Sort by the combined score
-    return scoreB - scoreA;
-  });
+  if (isLoading) {
+    return <Loader />;
+  }
+
+  if (!isLoading && !selectedItem) {
+    return <NotFoundProductPage />;
+  }
+
+  const spaceLessColors =
+    selectedItem?.colorsAvailable.map(color => {
+      const spaceRemovedColor = color.split(' ').join('');
+
+      return spaceRemovedColor;
+    }) || [];
 
   return (
     <section id="item-page" className="item-page">
@@ -85,12 +116,12 @@ export const ItemPage = () => {
             <a href="#" className="item-page__card-link">
               <img
                 className="item-page__card-image"
-                src={selectedItem?.images[selectedImageIndex]}
+                src={`img/${selectedItem?.category}/${selectedItem?.namespaceId}/${spaceLessColors[selectedColorIndex]}/0${selectedImageIndex}.webp`}
                 alt={`image ${selectedItem?.name}`}
               />
             </a>
             <ul className="item-page__thumbnail-list">
-              {selectedItem?.images.map((image, index) => (
+              {selectedItem?.images.map((_, index) => (
                 <li
                   key={index}
                   className={classNames('item-page__thumbnail-item', {
@@ -99,13 +130,11 @@ export const ItemPage = () => {
                   })}
                   onClick={() => setSelectedImageIndex(index)}
                 >
-                  {/* <div className="item-page__thumbnail-wrapper"> */}
                   <img
                     className="item-page__thumbnail-image"
-                    src={image}
+                    src={`img/${selectedItem?.category}/${selectedItem?.namespaceId}/${spaceLessColors[selectedColorIndex]}/0${index}.webp`}
                     alt={`thumbnail image ${selectedItem?.name}`}
                   />
-                  {/* </div> */}
                 </li>
               ))}
             </ul>
@@ -119,14 +148,18 @@ export const ItemPage = () => {
 
             <div className="item-page__container">
               <ul className="item-page__buttons-list">
-                {selectedItem?.colorsAvailable.map((color, index) => (
-                  <RoundColorButton
-                    key={index}
-                    color={color}
-                    isSelected={selectedColorIndex === index}
-                    onClick={() => setSelectedColorIndex(index)}
-                  />
-                ))}
+                {selectedItem?.colorsAvailable.map((color, index) => {
+                  const colorHex = colors[color];
+
+                  return (
+                    <RoundColorButton
+                      key={index}
+                      color={colorHex}
+                      isSelected={selectedColorIndex === index}
+                      onClick={() => setSelectedColorIndex(index)}
+                    />
+                  );
+                })}
               </ul>
 
               <div className="small-text item-page__controls-subtitle">
@@ -270,7 +303,9 @@ export const ItemPage = () => {
               />
               <CardDetail
                 label="Built in memory"
-                value={selectedItem?.capacity || ''}
+                value={
+                  selectedItem?.capacityAvailable[selectedCapacityIndex] || ''
+                }
                 inlineStyles={{
                   fontSize: '14px',
                   lineHeight: '21px',
@@ -313,7 +348,7 @@ export const ItemPage = () => {
         </div>
       </div>
 
-      <ProductSlider title="You may also like" items={suggestProducts} />
+      <ProductSlider title="You may also like" items={suggestedProducts} />
     </section>
   );
 };

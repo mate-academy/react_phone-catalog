@@ -8,18 +8,27 @@
 
   &__nav-item {
     display: flex;
+    align-items: center;
+    justify-content: center;
     gap: 8px;
   }
 
-  &__nav-link {
+  &__nav-link,
+  &__nav-text {
     color: $secondary-gray;
     font-size: 14px;
     line-height: 15px;
-    letter-spacing: 0;
     font-weight: 600;
+  }
+
+  &__nav-link {
+    @include hover(color, $primary-gray);
   }
 
   &__nav-link-separator {
     stroke: $icons-placeholders-gray;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 }
