@@ -1,0 +1,80 @@
+@use '../../../../shared/global/GlobalStyles/utils/vars' as *;
+@use '../../../../shared/global/GlobalStyles/utils/mixins' as *;
+
+.cartItem {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 16px;
+  background-color: $white;
+  border: 1px solid $elements-border-color;
+  border-radius: $elements-border-radius;
+
+  @include on-tablet {
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 24px;
+    padding: 24px;
+  }
+}
+
+.cartItemInfo {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+
+  @include on-tablet {
+    gap: 24px;
+    align-items: center;
+  }
+}
+
+.cartItemImgWrap {
+  height: 80px;
+}
+
+.cartItemImg {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+}
+
+.cartBtn {
+  cursor: pointer;
+  height: 16px;
+  width: 16px;
+}
+
+.cartItemName {
+  font-size: 14px;
+  color: inherit;
+  flex: 1;
+}
+
+.cartItemCount {
+  display: flex;
+  gap: 13px;
+  align-items: center;
+}
+
+.cartItemCountWrap {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  @include on-tablet {
+    gap: 24px;
+    align-items: center;
+  }
+}
+
+.cartItemQuantity {
+  font-size: 14px;
+  line-height: 21px;
+}
+
+.cartItemPrice {
+  font-size: 22px;
+  font-family: $font-family-bold;
+  line-height: 30.8px;
+}

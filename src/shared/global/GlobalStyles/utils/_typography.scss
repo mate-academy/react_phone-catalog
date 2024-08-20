@@ -1,0 +1,26 @@
+@use './extends' as *;
+@use './vars' as *;
+
+h1 {
+  @extend %h1;
+}
+
+h2 {
+  @extend %h2;
+}
+
+h3 {
+  @extend %h3;
+}
+
+h4 {
+  @extend %h4;
+}
+
+h5 {
+  @extend %h5;
+}
+
+nav {
+  color: $secondary-text-color;
+}
