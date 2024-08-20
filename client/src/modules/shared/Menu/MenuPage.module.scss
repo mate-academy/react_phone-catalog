@@ -1,0 +1,54 @@
+.menu {
+  @include cancel-padding;
+
+  height: 100vh;
+  background-color: transparent;
+
+  &__links {
+    margin-top: calc(50px + 48px); // instead of 24px for better look
+    padding: 0;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    gap: 14vw; // instead of 16px
+  }
+
+  &__link {
+    width: fit-content;
+
+    @include textTypeFull(3vw, 11px, "Mont", $secondary-color);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+
+    transition: all .3s ease-in-out .1s;
+  }
+
+  &__icons {
+    position: absolute;
+    bottom: 0;
+
+    display: flex;
+    gap: 0;
+
+    border-top: 1px solid $element-color;
+  }
+
+  &__icon {
+    @include flexCenter;
+
+    width: 50vw;
+    height: 64px;
+
+    box-shadow: -1px 0 0 0 $element-color;
+
+    border: 1px solid transparent;
+    box-shadow: -1px 0 0 0 $element-color;
+    transition: all .3s ease-in-out .1s;
+
+    &:hover {
+      border-top-color: $primary-color;
+    }
+  }
+}
