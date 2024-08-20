@@ -1,0 +1,154 @@
+@import './vars';
+
+.homeHistory{
+  grid-column:1/10;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  gap: 8px ;
+  margin-top: 24px;
+  margin-bottom: 40px;
+
+  &_text{
+    font-size: 12px;
+    font-family: $fontNormal;
+    color: $greySecondary;
+  }
+}
+
+
+.productCard {
+  height: 506px;
+  width: 272px;
+  margin-bottom: 40px;
+  text-decoration: none;
+  color: $greyPrimary;
+  min-width: 23.8%;
+
+  &_container{
+    transition: 0.5s;
+    border-radius: 8px;
+
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+
+    gap: 8px;
+    padding: 32px;
+    border: 1px solid $borderGrey;
+
+    &:hover{
+      box-shadow: 0 10px 10px $darkBorderGrey;
+    }
+  }
+
+
+
+  &_imgs {
+    width: 208px;
+    height: 196px;
+    margin-bottom: 8px;
+
+    &_img{
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+  }
+
+  &_title{
+    margin: 0;
+    padding-top: 16px;
+    font-size: 14px;
+    font-family: $fontNormal;
+    height: 58px;
+  }
+
+  &_prices{
+    display: flex;
+    justify-content: space-between;
+    gap:8px ;
+    border-bottom: 1px solid $borderGrey;
+    padding-bottom: 8px;
+    margin-bottom: 8px;
+  }
+
+  &_fullPrice{
+    margin: 0;
+    font-size: 22px;
+   font-family: $fontBold;
+
+  }
+
+  &_price{
+    margin: 0;
+    font-size: 22px;
+    font-family: $fontBold;
+    color: $greySecondary;
+    text-decoration: line-through;
+
+
+  }
+
+  &_info{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    &_title{
+      margin: 0;
+      font-size: 12px;
+      color: $greySecondary;
+      font-family: $fontNormal;
+    }
+
+    &_text{
+      margin: 0;
+      color: $greyPrimary;
+      font-family: $fontNormal;
+    }
+
+    &_screen{
+      display: flex;
+      justify-content:space-between;
+    }
+    &_capacity{
+      display: flex;
+      justify-content:space-between;
+    }
+    &_ram{
+      display: flex;
+      justify-content:space-between;
+    }
+
+
+  }
+
+  &_buttons {
+    display: flex;
+    gap: 8px;
+
+    &_add {
+      height: 40px;
+      width: 100%;
+      border-radius: 8px;
+      background-color:#216CFF;
+      border: none;
+      color: white;
+      cursor: pointer;
+    }
+
+    &_heart{
+      width: 40px;
+      height: 40px;
+      border-radius: 50px;
+      background-color: white;
+      border: 1px solid $borderGrey;
+      cursor: pointer;
+      background-image: url('../imgs/Favourites.svg');
+      background-position: center;
+    }
+
+  }
+
+}

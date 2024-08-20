@@ -1,0 +1,268 @@
+@import '../../utils/mixins';
+@import '../../utils/vars';
+@import '../../utils/generalComponents';
+
+
+.container{
+  margin-inline:152px;
+  box-sizing: border-box;
+  min-height: 100vh;
+}
+
+.grid {
+  @include page-grid;
+}
+
+.phones{
+  background-color: $greyBackground;
+  &_title{
+    grid-column: 1/-1;
+    margin-bottom: 40px;
+    &_text{
+      margin: 0;
+      font-size: 48px;
+      font-family: $fontBold;
+      margin-bottom: 8px;
+    }
+    &_items{
+      margin: 0;
+      font-size: 14px;
+      color: $greySecondary;
+      font-family: $fontNormal;
+    }
+  }
+
+  &_catalog{
+    grid-column: 1/-1;
+    margin-top: 24px;
+
+    &_container{
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      height: 100%;
+      width: 100%;
+    }
+
+  }
+}
+
+
+.filter{
+  grid-column: 1/-1;
+
+  &_container{
+    display: flex;
+    gap:16px;
+  }
+  &_sortBy{
+    &_title{
+      font-size: 12px;
+      font-family: $fontSemi;
+      color: $greySecondary;
+    }
+  }
+
+  &_onPage{
+    &_title{
+      font-size: 12px;
+      font-family: $fontSemi;
+      color: $greySecondary;
+    }
+  }
+}
+
+.dropdown{
+  position: relative;
+  &_button{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 40px;
+    width: 176px;
+    border-radius: 8px;
+    background-color: white;
+    border: 1px solid $borderGrey;
+    font-family: $fontSemi;
+    text-align:left;
+    font-size: 14px;
+    color: $greyPrimary;
+    &_arrow{
+      transform: rotate(270deg);
+    }
+    &--onPage{
+      width: 128px;
+    }
+  }
+  &_menu{
+    position: absolute;
+    width: 100%;
+    border: 1px solid $borderGrey;
+    margin-top: 4px;
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 8px 0 ;
+    transition: ease-in-out;
+
+    &_show{
+      transition: ease-in-out;
+      border: 1px solid $borderGrey;
+      margin-top: 4px;
+      border-radius: 8px;
+      padding: 8px 0 ;
+    }
+
+    &_item{
+      cursor: pointer;
+      padding: 6px 0 6px 12px ;
+      list-style: none;
+      font-size: 14px;
+      font-family: $fontNormal;
+      color: $greySecondary;
+      border-radius: 8px;
+
+      &:hover{
+        background-color: $greyBackground;
+        color: $greyPrimary;
+      }
+
+    }
+  }
+}
+
+// .productCard {
+//   height: 506px;
+//   width: 272px;
+//   margin-bottom: 40px;
+//   text-decoration: none;
+//   color: $greyPrimary;
+
+//   &_container{
+//     transition: 0.5s;
+//     border-radius: 8px;
+
+//     min-width: 18.5%;
+//     background-color: #fff;
+//     display: flex;
+//     flex-direction: column;
+
+//     gap: 8px;
+//     padding: 32px;
+//     border: 1px solid $borderGrey;
+
+//     &:hover{
+//       transform: translateY(-10px);
+//       box-shadow: 0 12px 24px $darkBorderGrey;
+//     }
+//   }
+
+
+
+//   &_imgs {
+//     width: 208px;
+//     height: 196px;
+//     margin-bottom: 8px;
+
+//     &_img{
+//       width: 100%;
+//       height: 100%;
+//       object-fit: contain;
+//     }
+//   }
+
+//   &_title{
+//     margin: 0;
+//     padding-top: 16px;
+//     font-size: 14px;
+//     font-family: $fontNormal;
+//     height: 58px;
+//   }
+
+//   &_prices{
+//     display: flex;
+//     justify-content: space-between;
+//     gap:8px ;
+//     border-bottom: 1px solid $borderGrey;
+//     padding-bottom: 8px;
+//     margin-bottom: 8px;
+//   }
+
+//   &_fullPrice{
+//     margin: 0;
+//     font-size: 22px;
+//    font-family: $fontBold;
+
+//   }
+
+//   &_price{
+//     margin: 0;
+//     font-size: 22px;
+//     font-family: $fontBold;
+//     color: $greySecondary;
+//     text-decoration: line-through;
+
+
+//   }
+
+//   &_info{
+//     display: flex;
+//     flex-direction: column;
+//     gap: 8px;
+
+//     &_title{
+//       margin: 0;
+//       font-size: 12px;
+//       color: $greySecondary;
+//       font-family: $fontNormal;
+//     }
+
+//     &_text{
+//       margin: 0;
+//       color: $greyPrimary;
+//       font-family: $fontNormal;
+//     }
+
+//     &_screen{
+//       display: flex;
+//       justify-content:space-between;
+//     }
+//     &_capacity{
+//       display: flex;
+//       justify-content:space-between;
+//     }
+//     &_ram{
+//       display: flex;
+//       justify-content:space-between;
+//     }
+
+
+//   }
+
+//   &_buttons {
+//     display: flex;
+//     gap: 8px;
+
+//     &_add {
+//       height: 40px;
+//       width: 100%;
+//       border-radius: 8px;
+//       background-color:#216CFF;
+//       border: none;
+//       color: white;
+//       cursor: pointer;
+//     }
+
+//     &_heart{
+//       width: 40px;
+//       height: 40px;
+//       border-radius: 50px;
+//       background-color: white;
+//       border: 1px solid $borderGrey;
+//       cursor: pointer;
+//       background-image: url('../../imgs/Favourites.svg');
+//       background-position: center;
+//     }
+
+//   }
+
+// }

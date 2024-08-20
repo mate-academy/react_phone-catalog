@@ -1,1 +1,172 @@
-// not empty
+@import './utils/mixins';
+@import './utils/vars';
+
+@font-face {
+  font-family: Mont-Regular;
+  src: url('../public/fonts/Mont-Regular.otf');
+}
+
+@font-face {
+  font-family: Mont-Bold;
+  src: url('../public/fonts/Mont-Bold.otf');
+}
+
+@font-face {
+  font-family: Mont-SemiBold;
+  src: url('../public/fonts/Mont-SemiBold.otf');
+}
+
+body {
+  margin: 0;
+  box-sizing: border-box;
+  height: 100%;
+}
+
+.navbar{
+
+  &_container{
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #E2E6E9 ;
+
+  }
+
+  &_logo{
+    grid-column: 1/6;
+
+  }
+
+  &_links{
+    display: flex;
+    justify-content: center;
+    align-self: center;
+    gap: 64px;
+    transition: 0.3s;
+
+    &_text{
+      position: relative;
+      transition: 0.3s;
+
+      display: flex;
+      justify-content: center;
+      align-self: center;
+      text-decoration: none;
+      color: #89939A;
+      font-size: 12px;
+
+      font-family: $fontSemi;
+
+
+    &::after {
+      position: absolute;
+      content: "";
+      width: 100%;
+      height: 2px;
+      background-color: #313237;
+      bottom: -25px;
+      left: 0;
+      transition: 0.3s;
+      transform: scale(0);
+      transform-origin: center;
+      color: #313237;
+    }
+
+    &:hover {
+      color: #313237;
+      transition: 0.3s;
+    }
+
+    &:hover::after {
+      transform: scale(1);
+    }
+    }
+
+  }
+
+  &_buttons{
+    line-height: 0;
+
+    &_link{
+      display:inline-block;
+
+    }
+  }
+}
+
+.footer{
+  padding-inline: 152px;
+
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px solid $borderGrey;
+
+  &_logo{
+    overflow: hidden;
+    display: flex;
+    justify-content:flex-start;
+    &_img{
+      object-position: -25px;
+    }
+  }
+
+  &_nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap:100px;
+    &_links{
+      position: relative;
+      transition: $transitionSpeed;
+
+      text-decoration: none;
+      color: $greySecondary;
+      font-size: 12px;
+      font-family: $fontBold;
+
+      &::after {
+        position: absolute;
+        content: "";
+        width: 100%;
+        height: 2px;
+        background-color: #313237;
+        top: -25px;
+        left: 0;
+        transition: $transitionSpeed;
+        transform: scale(0);
+        transform-origin: center;
+        color: #313237;
+      }
+
+      &:hover {
+        color: #313237;
+        transition: 0.3s;
+      }
+
+      &:hover::after {
+        transform: scale(1);
+      }
+
+    }
+  }
+
+  &_misc{
+    display: flex;
+    align-items: center;
+    gap:16px;
+
+    &_title{
+      font-size: 12px;
+      color: $greySecondary;
+      font-family: $fontSemi;
+    }
+    &_button{
+      cursor: pointer;
+      transform: rotate(-90deg);
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      border: 1px solid $borderGrey;
+      background-color: #fff;
+    }
+  }
+}
