@@ -1,0 +1,27 @@
+.ul {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  &__item {
+    display: flex;
+    justify-content: space-between;
+    text-align: right;
+
+    color: $secondary-color;
+
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+
+    &-span {
+      color: $elipse-color;
+
+      font-family: inherit;
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 21px;
+    }
+  }
+}

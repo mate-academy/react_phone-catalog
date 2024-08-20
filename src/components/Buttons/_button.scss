@@ -1,0 +1,73 @@
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 32px;
+  height: 32px;
+  background-color: #FFF;
+  border-radius: 48px;
+  border: 1px solid $icons-color;
+
+  &:hover {
+    border-color: $elipse-color;
+  }
+
+  &__disabled {
+    transform: rotate(180deg);
+  }
+
+  &__svg {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px;
+  }
+
+  &__cart {
+    font-family: inherit;
+    font-size: 14px;
+    line-height: 21px;
+    text-align: center;
+    background-color: $buttons-card;
+    border-radius: 48px;
+    color: #FFF;
+    width: 100%;
+
+    &:hover {
+      box-shadow: 0 3px 13px 0 #17203166;
+    }
+
+    &-active {
+      background-color: transparent;
+      border: 1px solid #E2E6E9;
+      color: $buttons-card;
+      box-shadow: 0;
+    }
+
+    &--small {
+      height: 40px;
+      padding: 9.5px auto;
+    }
+
+    &--large {
+      height: 48px;
+      padding: 13.5px auto;
+    }
+  }
+
+  &__favourites {
+    background-color: inherit;
+    width: 40px;
+    height: 40px;
+    border: none;
+
+    &-svg:hover rect {
+      stroke: #0F0F11;
+    }
+  }
+}
+
+.arrow__left {
+  transform: rotate(178deg);
+}

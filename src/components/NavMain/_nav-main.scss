@@ -1,0 +1,40 @@
+.nav__main {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  grid-column: 1 / -1;
+
+  &-link {
+    display: flex;
+    align-items: center;
+  }
+
+  &-slug {
+    display: inline;
+    height: 13px;
+
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 15.34px;
+    text-align: center;
+    transition: .2s color ease-in;
+    cursor: pointer;
+
+    color: $secondary-color;
+
+    &::first-letter {
+      text-transform: uppercase;
+    }
+
+    &-first {
+      color: $elipse-color;
+    }
+
+    &-second {
+      &:hover {
+        color: $icons-color;
+      }
+    }
+  }
+}
