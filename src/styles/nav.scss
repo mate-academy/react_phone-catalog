@@ -1,0 +1,58 @@
+.nav {
+  display: none;
+  align-items: center;
+
+  @include on-tablet {
+    display: inline-flex;
+    gap: 32px;
+  }
+
+  @include on-desktop {
+    gap: 64px;
+    margin-inline: 24px;
+  }
+
+  &__item {
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    color: $secondary;
+    text-decoration: none;
+    height: 100%;
+    position: relative;
+    @include defaultAnimation;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -3px;
+      background-color: $secondary;
+      left: 50%;
+      transform: translateX(-50%);
+      height: 3px;
+      width: 0;
+      @include defaultAnimation;
+    }
+
+    &:hover {
+      color: $white;
+
+      &::after {
+      width: 100%;
+    }}
+
+
+    &--selected {
+      color: $white;
+      border-bottom: 3px solid $white;
+      transition: none;
+
+      &::after {
+        content: '';
+        width: 0;
+        height: 0;
+        transition: none;
+      }
+    }
+  }
+}

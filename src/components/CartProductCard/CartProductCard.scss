@@ -1,0 +1,115 @@
+.cart-product-card {
+  box-sizing: border-box;
+  min-width: 288px;
+  background-color: $surface-1;
+  padding: 16px;
+  height: 164px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+
+  @include on-tablet {
+    flex-wrap: nowrap;
+  }
+
+  &__first-block, &__second-block {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &, &__first-block, &__second-block {
+    gap: 16px;
+
+    @include on-tablet {
+      gap: 24px;
+    }
+  }
+
+  @include on-tablet {
+    height: 128px;
+  }
+
+  @include on-desktop {
+    padding: 24px;
+  }
+
+  &__delete {
+    background-image: url('../../img/Icons/Close.png');
+    background-size: contain;
+    background-position: center;
+    box-sizing: border-box;
+    background-repeat: no-repeat;
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+  }
+
+  &__image {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    object-position: center;
+  }
+
+  &__title {
+    color: $white;
+  }
+
+  &__count-block {
+    display: flex;
+
+    & > * {
+      box-sizing: border-box;
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+
+  &__count {
+    color: $white;
+  }
+
+  &__decrease, &__increase {
+    border: none;
+    background-color: $surface-2;
+    background-size: 0;
+    font-size: 20px;
+    color: $white;
+    @include defaultAnimation;
+    cursor: pointer;
+
+    &:hover {
+      background-color: $icons;
+    }
+
+    &:disabled {
+      background-color: transparent;
+      border: 1px solid $elements;
+      cursor: default;
+    }
+  }
+
+  &__second-block {
+    flex-grow: 1;
+
+    @include on-tablet {
+      flex-grow: 0;
+    }
+  }
+
+  &__price {
+    color: $white;
+    display: flex;
+    justify-content: space-between;
+
+    @include on-tablet {
+      width: 80px;
+      text-align: end;
+    }
+  }
+}

@@ -1,0 +1,88 @@
+.cart {
+  @include create-grid;
+  margin-bottom: 56px;
+
+  @include on-tablet {
+    margin-bottom: 64px;
+  }
+
+  @include on-desktop {
+    margin-bottom: 80px;
+  }
+
+  &__button-back {
+    @include full-grid;
+    margin-top: 24px;
+
+    @include on-tablet {
+      margin-top: 40px;
+    }
+  }
+
+  &__title {
+    @include full-grid;
+    color: $white;
+    margin-top: 16px;
+  }
+
+  &__products {
+    @include full-grid;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    @include on-desktop {
+      grid-column: 1 / 17;
+    }
+  }
+
+  &__total-price {
+    @include full-grid;
+    height: 190px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    box-sizing: border-box;
+
+    @include on-desktop {
+      grid-column: 17 / 25;
+      height: 206px;
+    }
+
+    padding: 24px;
+    border: 1px solid $elements;
+  }
+
+  &__price-block {
+
+    padding-bottom: 16px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border-bottom: 1px solid $elements;
+
+    @include on-desktop {
+      padding-bottom: 24px;
+    }
+  }
+
+  &__price {
+    color: $white;
+  }
+
+  &__amount {
+    color: $secondary;
+  }
+
+  &__check-out {
+    width: 100%;
+    margin-top: 24px;
+    height: 48px;
+  }
+
+  &__products, &__total-price {
+    margin-top: 32px;
+  }
+}

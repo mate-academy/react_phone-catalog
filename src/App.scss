@@ -1,1 +1,55 @@
-// not empty
+@import './styles/fonts/fonts.scss';
+
+@import './styles/utils/mixins.scss';
+@import './styles/utils/variables.scss';
+@import './styles/button-text-styles';
+@import './styles/h-styles';
+@import './styles/other-text-styles';
+@import './styles/slide-button.scss';
+@import './styles/nav.scss';
+@import './styles/button-styles.scss';
+@import './styles/favourite-button.scss';
+@import './styles/counter.scss';
+@import './components/Header/Header.scss';
+@import './components/Footer/Footer.scss';
+@import './components/Menu/Menu.scss';
+@import './components/ProductCard/ProductCard.scss';
+@import './components/HomePage/HomePage.scss';
+@import './components/Slider/Slider.scss';
+@import './components/ProductSlider/ProductSlider.scss';
+@import './components/Path/Path.scss';
+@import './components/Phones/Phones.scss';
+@import './components/ProductLinks/ProductLinks.scss';
+@import './components/Dropdown/Dropdown.scss';
+@import './components/Pagination/Pagination.scss';
+@import './components/ProductDetails/ProductDetails.scss';
+@import './components/Favourites/Favourites.scss';
+@import './components/Cart/Cart.scss';
+@import './components/BackButton/BackButton.scss';
+@import './components/CartProductCard/CartProductCard.scss';
+@import './components/Modal/Modal.scss';
+@import './components/PageNotFound/PageNotFound.scss';
+
+* {
+  font-family: Mont;
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
+}
+
+body, html, #root {
+  height: 100%;
+  margin: 0;
+  background-color: $black;
+}
+
+.App {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.flex {
+  flex: 1;
+}
