@@ -1,1 +1,8 @@
-// not empty
+@import '/src/styles/fonts/fonts';
+@import './styles/typography';
+@import './styles/utils';
+
+* {
+  font-family: $f-main;
+  box-sizing: border-box;
+}

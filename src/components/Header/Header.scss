@@ -1,0 +1,19 @@
+.header {
+  display: flex;
+
+  &__logo {
+    width: 64px;
+    height: 22px;
+  }
+}
+
+.nav-bar {
+  display: flex;
+  gap: 10px;
+  &__link {
+    color: black;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-size: 12px;
+  }
+}

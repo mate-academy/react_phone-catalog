@@ -1,0 +1,100 @@
+@import './utils';
+
+h1 {
+  font-weight: bold;
+  font-size: 32px;
+  line-height: 41px;
+  letter-spacing: -0.01em;
+}
+
+h2 {
+  font-weight: bold;
+  font-size: 22px;
+  line-height: 31px;
+  letter-spacing: 0;
+}
+
+h3 {
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 26px;
+  letter-spacing: 0;
+}
+
+h4 {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: 0;
+}
+
+h5 {
+  font-size: 12px;
+  line-height: 15px;
+  letter-spacing: 0;
+}
+
+h6 {
+  font-size: 12px;
+  line-height: 11px;
+  letter-spacing: 0.04em;
+}
+
+button {
+  font-size: 14px;
+  line-height: 21px;
+}
+
+p {
+  font-size: 14px;
+  line-height: 21px;
+  font-weight: normal;
+}
+
+
+@include on-tablet {
+  h1 {
+    font-size: 48px;
+    line-height: 56px;
+    letter-spacing: -0.01em;
+  }
+
+  h2 {
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+  }
+
+  h3 {
+    font-size: 22px;
+    line-height: 31px;
+    letter-spacing: 0;
+  }
+
+  h4 {
+    font-size: 20px;
+    line-height: 26px;
+    letter-spacing: 0;
+  }
+
+  h5 {
+    font-size: 12px;
+    line-height: 15px;
+    letter-spacing: 0;
+  }
+
+  h6 {
+    font-size: 12px;
+    line-height: 11px;
+    letter-spacing: 0.04em;
+  }
+
+  button {
+    font-size: 14px;
+    line-height: 21px;
+  }
+
+  p {
+    font-weight: normal;
+  }
+}
