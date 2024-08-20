@@ -1,0 +1,108 @@
+@import '/src/styles/utils/variables';
+
+.card{
+  box-sizing: border-box;
+  display: flex;
+  padding: 24px;
+  height: 507px;
+  min-width: 230px;
+  flex-direction: column;
+  border: 1px solid $c-elements;
+
+  :nth-child(7n) {
+    margin-bottom: 8px;
+  }
+
+  &__image{
+    height: 208px;
+    width: 208px;
+    object-fit: contain;
+    padding: 8px 8px 24px;
+  }
+
+  &__name{
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+    text-align: left;
+    padding-bottom: 6px;
+  }
+
+  &__price{
+    display: flex;
+    gap: 8px;
+  }
+
+  &__fullPrice{
+    font-size: 22px;
+    font-weight: 500;
+    line-height: 28px;
+    color: $c-secondary;
+    text-decoration: line-through;
+  }
+
+  &__separator{
+    width: 100%;
+    border: 1px solid $c-elements;
+    margin-bottom: 16px;
+  }
+
+  &__characteristic{
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 15px;
+
+    &--title{
+      color: $c-secondary;
+      margin-bottom: 8px;
+    }
+  }
+
+  &__choice{
+    display: flex;
+    gap: 8px;
+
+    &--add{
+      flex-grow: 1;
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 21px;
+      text-align: center;
+      color: #fff;
+      background-color: $c-primary;
+    }
+
+    &--like{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border: 1px solid $c-icons;
+      width: 40px;
+      height: 40px;
+      transition: all 0.3s;
+      background-color: transparent;
+
+      &:hover{
+        border-color: $c-primary;
+      }
+
+      &-active{
+        border-color: $c-elements;
+      }
+    }
+
+    &--icon{
+      width: 16px;
+      height: 16px;
+      object-fit: cover;
+      background-repeat: no-repeat;
+      background-image: url("../../../../public/img/svg/Heart.svg");
+
+      &-active{
+        background-image: url("../../../../public/img/svg/RedHeart.svg");
+      }
+    }
+  }
+}

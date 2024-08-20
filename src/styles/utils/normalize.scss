@@ -1,0 +1,42 @@
+*{
+  font-family: Mont, sans-serif;
+}
+
+body{
+  margin: 0;
+  padding: 0;
+}
+
+h1{
+  color: $c-primary;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 41px;
+  margin: 0 0 24px;
+}
+
+h2{
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 41px;
+  letter-spacing: -0.01em;
+  text-align: left;
+
+  margin: 0;
+  padding-bottom: 6px;
+}
+
+h3{
+  margin: 0;
+  padding: 0;
+  color: $c-primary;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 21px;
+  text-align: left;
+}
+
+p{
+  margin: 0;
+  padding: 0;
+}
