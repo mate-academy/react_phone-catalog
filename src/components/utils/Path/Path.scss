@@ -1,0 +1,46 @@
+@import '../../../styles/utils/vars';
+@import '../../../styles/utils/mixins';
+
+.path {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 24px 0;
+  width: 100%;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+
+  @include on-tablet {
+    padding-bottom: 40px;
+  }
+
+  &__arrow {
+    transform: rotate(180deg);
+    &--back {
+      transform: rotate(0);
+      transition: background-image 0.3s;
+    }
+  }
+
+  &__current-link {
+    text-transform: capitalize;
+  }
+
+  &__back {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    background-color: transparent;
+    margin-bottom: 16px;
+    cursor: pointer;
+    &:hover {
+      .path__arrow--back {
+        background-image: url(../../../styles/utils/icons/arrowPagination.svg);
+      }
+    }
+
+    &--text {
+      transition: color 0.3s;
+    }
+  }
+}

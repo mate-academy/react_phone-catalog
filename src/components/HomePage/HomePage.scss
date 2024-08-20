@@ -1,0 +1,43 @@
+@import '../../styles/utils/mixins';
+@import '../../styles/utils/vars';
+
+.homePage {
+  &__title {
+    padding-block: 24px;
+    display: flex;
+  }
+
+  &__newModels-block {
+    box-sizing: border-box;
+    margin-right: -16px;
+    overflow: hidden;
+
+    @include on-tablet {
+      margin-right: -24px;
+    }
+
+    &--title {
+      margin-bottom: 24px;
+    }
+  }
+
+  &__hot-prices {
+    box-sizing: border-box;
+    margin-right: -16px;
+    overflow: hidden;
+
+    @include on-tablet {
+      margin-right: -24px;
+    }
+  }
+}
+
+.header__slider {
+  margin-left: -16px;
+  margin-right: -16px;
+
+  @include on-tablet {
+    margin: 0;
+    width: 100%;
+  }
+}

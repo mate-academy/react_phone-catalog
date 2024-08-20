@@ -7,5 +7,6 @@
   "printWidth": 80,
   "semi": true,
   "bracketSpacing": true,
-  "bracketSameLine": false
+  "bracketSameLine": false,
+  "endOfLine": "crlf"
 }

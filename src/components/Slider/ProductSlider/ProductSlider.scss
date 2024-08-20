@@ -1,0 +1,55 @@
+@import 'slick-carousel/slick/slick.css';
+@import 'slick-carousel/slick/slick-theme.css';
+@import '../../../styles/utils/mixins';
+
+.slider-container {
+  position: relative;
+  width: 100%;
+}
+
+.slider-buttons {
+  position: absolute;
+  top: 0;
+  right: 16px;
+  z-index: 1;
+  display: flex;
+  gap: 16px;
+
+  @include on-tablet {
+    right: 24px;
+  }
+
+  @include on-tablet {
+    right: 32px;
+  }
+}
+
+.productSlider {
+  height: auto;
+  width: 440px;
+  margin: 0 auto;
+  box-sizing: border-box;
+
+  @include on-tablet {
+    width: 744px;
+  }
+
+  @include on-desktop {
+    width: 1136px;
+    margin: 0;
+    overflow: visible;
+  }
+
+  &-block--title {
+    margin-bottom: 24px;
+  }
+
+  .slick-track {
+    display: flex;
+    gap: 16px;
+  }
+
+  .slick-slide > div {
+    overflow: hidden;
+  }
+}
