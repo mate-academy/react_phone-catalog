@@ -1,1 +1,22 @@
-// not empty
+*{
+  box-sizing: border-box;
+  font-family: Mont, sans-serif;
+}
+
+html, body {
+  height: 100%;
+}
+
+/* stylelint-disable selector-max-id, declaration-no-important */
+#root {
+  height: 100%;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.App {
+  height: 100%;
+}
+

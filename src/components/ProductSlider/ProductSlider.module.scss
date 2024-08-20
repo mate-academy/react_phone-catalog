@@ -1,0 +1,220 @@
+.sliderWraper {
+  max-width: 1400px;
+}
+
+.sectionGoods {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin: 80px 0;
+}
+
+.tittleAndButtons {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  align-items: center;
+  max-width: 1200px;
+}
+
+.goodsTitle {
+  color: #0F0F11;
+  font-size: 32px;
+  font-weight: 800;
+  line-height: 41px;
+  letter-spacing: -0.32px;
+
+  &Dark {
+    color: #F1F2F9;
+    font-size: 32px;
+    font-weight: 800;
+    line-height: 41px;
+    letter-spacing: -0.32px;
+  }
+}
+
+.swiper {
+  width: 100%;
+}
+
+.productsCard {
+  padding: 15px 0;
+  width: 100%;
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: hidden;
+  margin: 0;
+}
+
+.buttonsContainer {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+}
+
+.buttonLeft {
+  width: 32px;
+  height: 32px;
+  border-radius: 48px;
+  transform: rotate(-90deg);
+  border: 1px solid #B4BDC3;
+  background: #FAFBFC;
+
+  &:hover {
+    border-radius: 48px;
+    border: 1px solid #0F0F11;
+  }
+}
+
+.buttonLeftDark {
+  width: 32px;
+  height: 32px;
+  border-radius: 48px;
+  transform: rotate(-90deg);
+  border: 1px solid #0F0F11;
+  background: #323542;
+
+  &:hover {
+    background: #4A4D58;
+    border-radius: 48px;
+  }
+}
+
+.buttonArrowLeft {
+  width: 16px;
+  height: 16px;
+}
+
+.buttonRight {
+  margin-left: 16px;
+  width: 32px;
+  height: 32px;
+  padding-top: 2px;
+  border-radius: 48px;
+  border: 1px solid #B4BDC3;
+  transform: rotate(90deg);
+  background: #FAFBFC;
+
+  &:hover {
+    border-radius: 48px;
+    border: 1px solid #0F0F11;
+  }
+}
+
+.buttonRightDark {
+  margin-left: 16px;
+  width: 32px;
+  height: 32px;
+  padding-top: 2px;
+  border-radius: 48px;
+  border: 1px solid #0F0F11;
+  transform: rotate(90deg);
+  background: #323542;
+
+  &:hover {
+    background: #4A4D58;
+    border-radius: 48px;
+  }
+}
+
+.buttonArrowRight {
+  width: 16px;
+  height: 16px;
+}
+
+.loaderContainer{
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 1150px;
+}
+
+
+@media (min-width: 640px) and (max-width: 1199px) {
+
+  .swiper {
+    width: 100%;
+  }
+
+  .sectionGoods {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin: 80px 0;
+  }
+
+  .productsCard {
+    width: 100%;
+    padding: 15px 0;
+    display: flex;
+    flex-wrap: nowrap;
+    margin: 0;
+    overflow-x: hidden;
+    flex-shrink: 0;
+  }
+
+  .swiperSlide {
+    overflow-x: hidden;
+    flex-shrink: 0;
+  }
+}
+
+@media (min-width: 640px) and (max-width: 750px) {
+  .sliderWraper {
+    max-width: 600px;
+   }
+
+   .sectionGoods {
+    padding-left: 22px;
+     width: 100%;
+     display: flex;
+     flex-direction: column;
+     gap: 16px;
+     margin: 80px 0;
+   }
+
+   .productsCard {
+     width: 100%;
+     padding: 15px 0;
+     display: flex;
+     flex-wrap: nowrap;
+     margin: 0;
+     overflow-x: hidden;
+     flex-shrink: 0;
+   }
+
+   .swiperSlide {
+     overflow-x: hidden;
+     flex-shrink: 0;
+   }
+}
+
+@media (min-width:320px) and (max-width: 639px) {
+  .sliderWraper {
+    margin-inline: auto;
+    width: 270px;
+  }
+
+  .productsCard {
+    padding: 15px 0;
+    display: flex;
+    flex-wrap: nowrap;
+    margin: 0;
+    overflow-x: hidden;
+    flex-shrink: 0;
+  }
+
+  .swiperSlide {
+    overflow-x: hidden;
+    flex-shrink: 0;
+  }
+
+
+  .swiperSlide, .swiper-wrapper {
+    overflow-x: hidden;
+    flex-shrink: 0;
+  }
+}

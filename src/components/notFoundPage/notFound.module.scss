@@ -1,0 +1,46 @@
+.notFoundSection {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+  text-align: center;
+  max-width: 1200px;
+  margin-inline: auto;
+}
+
+.notFoundTitle {
+  display: flex;
+  color: #0F0F11;
+  font-size: 52px;
+  font-weight: 800;
+  line-height: 41px;
+  letter-spacing: -0.32px;
+  margin-top: 35px;
+}
+
+.linkBack {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  gap: 8px;
+  margin-top: 40px;
+}
+
+.arrowBack {
+  transform: rotate(180deg);
+}
+
+.back {
+  display: flex;
+  color: #89939A;
+  font-size: 12px;
+  font-weight: 700;
+  margin-bottom: 1px;
+
+  &:hover {
+    color: #0F0F11;
+  }
+}
+
