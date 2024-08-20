@@ -1,20 +1,20 @@
 import { useAppContext } from "../../../../context/AppContext";
-import ProductCard from "../../../ProductCard/ProductCard";
+import ProductCardProduct from "../../../ProductCard/ProductCardProduct";
 
 const HomeNewProductsSlider = () => {
-  const { phonesList, tabletsList, accessoriesList } = useAppContext();
-  const itemsList = [...phonesList, ...tabletsList, ...accessoriesList];
+  const { productsList } = useAppContext();
+  const newProducts = productsList.filter((el) => el.year >= 2019);
 
   return (
     <section className="w-full overflow-hidden">
       <section
         style={{
-          width: `${itemsList.length * (276 + 16) - 16}px`,
+          width: `${newProducts.length * (276 + 16) - 16}px`,
         }}
         className="grid grid-flow-col gap-8"
       >
-        {itemsList.map((phone) => (
-          <ProductCard key={phone.id} item={phone} />
+        {newProducts.map((phone) => (
+          <ProductCardProduct key={phone.id} product={phone} />
         ))}
       </section>
     </section>

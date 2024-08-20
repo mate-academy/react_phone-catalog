@@ -1,49 +1,39 @@
 import Heart from "../../assets/icons/Heart";
 import { useAppContext } from "../../context/AppContext";
 import { Item } from "../../types/item";
-import { Product } from "../../types/product";
 import { itemSpecifics } from "./ProductsCard.data";
 
 type Props = {
-  item?: Item;
-  product?: Product;
+  item: Item;
 };
 
-const ProductCard = ({ item, product }: Props) => {
+const ProductCardItem = ({ item }: Props) => {
   const { colors } = useAppContext();
   const { primary } = colors;
   const { images, name, ram, screen, capacity, priceRegular, priceDiscount } =
-    item!;
-  const {
-    name: namePr,
-    image: imagePr,
-    price: pricePr,
-    ram: ramPr,
-    screen: screenPr,
-    capacity: capacityPr,
-  } = product!;
+    item;
 
   const specificItem = (x: string) => {
     switch (x) {
       case "Screen":
-        return item ? screen : screenPr;
+        return screen;
       case "Capacity":
-        return item ? capacity : capacityPr;
+        return capacity;
       default:
-        return item ? ram : ramPr;
+        return ram;
     }
   };
 
   return (
-    <div className="small:w-69 flex w-53 flex-col items-center justify-center gap-2 rounded-lg border-1 border-elem p-8 duration-300 hover:shadow-xl">
+    <div className="flex w-53 flex-col items-center justify-center gap-2 rounded-lg border-1 border-elem p-8 duration-300 hover:shadow-xl small:w-69">
       <picture className="w-fit">
         <img
-          src={item ? images[0] : imagePr}
+          src={images[0]}
           alt=""
           className="size-52 object-contain duration-300 hover:scale-105"
         />
       </picture>
-      <span className="w-full pt-4 text-bodyText">{item ? name : namePr}</span>
+      <span className="w-full pt-4 text-bodyText">{name}</span>
 
       <div className="flex w-full justify-start gap-2">
         {item && priceDiscount ? (
@@ -56,7 +46,6 @@ const ProductCard = ({ item, product }: Props) => {
         ) : (
           <h3 className="text-">${priceRegular}</h3>
         )}
-        {product && <h3 className="text-">${pricePr}</h3>}
       </div>
       <hr className="w-full border-elem" />
       <div className="w-full">
@@ -81,4 +70,4 @@ const ProductCard = ({ item, product }: Props) => {
   );
 };
 
-export default ProductCard;
+export default ProductCardItem;
