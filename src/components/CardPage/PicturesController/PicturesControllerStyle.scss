@@ -1,0 +1,87 @@
+@import 'src/components/ui/utils/style/variables';
+
+.my-Swiper-Second {
+  width: 100%;
+  box-sizing: border-box;
+
+  &__img {
+    width: 100%;
+    object-fit: contain;
+    aspect-ratio: 1 / 1;
+  }
+
+  &__background {
+    margin: 7px;
+    background-color: white;
+  }
+
+  
+}
+
+.my-Swiper-Controller {
+  display: flex;
+  box-sizing: content-box;
+
+  & > .swiper-wrapper {
+    gap: 8px;
+
+  }
+
+  &__wrapper {
+    margin: 0 !important;
+    flex: 20%;
+    display: flex;
+    box-sizing: border-box;
+    place-content: center;
+    background-color: white;
+    border: 1px solid $Elements;
+    border-radius: 4px;
+    aspect-ratio: 1;
+  }
+  
+  & .swiper-slide-thumb-active {
+    transition: border 0.5s ease ;
+    border: 1px solid #0F0F11;
+  }
+
+  &__img {
+    object-fit: contain;
+    width: 100%;
+  }
+}
+
+@media(min-width:640px) {
+  .My-swiper__wrapper{
+    display: flex;
+    flex-direction: row-reverse;
+    gap: 22px;
+  }
+
+  .my-Swiper-Controller {  
+    width: 35px;
+    aspect-ratio: 1 / 1;
+    
+    & > .swiper-wrapper {
+      flex-direction: column;
+      
+    }
+
+    &__wrapper {
+      flex: none;
+      height: 35px;
+      width: 100% !important;
+    }
+  }
+}
+  
+@media (min-width:700px) {
+  .my-Swiper-Controller {  
+    width: 80px;
+
+    &__wrapper {
+      height: 80px;
+      width: 80px;
+      padding: 4px;
+    }
+  }
+}

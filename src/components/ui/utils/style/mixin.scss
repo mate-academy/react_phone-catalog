@@ -1,0 +1,52 @@
+@mixin hover-scale($scale-factor, $duration: 0.5s) {
+  transition: transform $duration ease;
+
+  &:hover {
+    transform: scale($scale-factor);
+  }
+}
+
+@mixin center-element {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin body-text {
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 0;
+  font-family: Mont-Regular,sans-serif;
+}
+
+@mixin button-text {
+  font-family: Mont-Semibold ,sans-serif;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 0;
+}
+
+@mixin small-text {
+  font-family: Mont-Semibold,sans-serif;
+  font-size: 12px;
+  line-height: 15px;
+  letter-spacing: 0;
+}
+
+@mixin hover-on-menu-item {
+  &::after {
+    position: absolute;
+    background-color: rgb(31, 29, 29);
+    content: "";
+    left: 50%;
+    bottom: 3px;
+    width: 0;
+    height: 2px;
+    transform: translateX(-50%);
+    transition: width .3s ease-in-out;
+  }
+
+  &:hover::after {
+    width: 100%;
+  }
+}

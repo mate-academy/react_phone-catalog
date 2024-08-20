@@ -1,0 +1,83 @@
+@import 'src/components/ui/utils/style/mixin';
+@import 'src/components/ui/utils/style/variables';
+
+.cart-item {
+  display: flex;
+  flex-direction: column;
+  border-radius: 16px;
+  padding: 16px;
+  gap: 16px;
+  background-color: white;
+  border: 1px solid $Elements;
+
+  &__main {
+    display: flex;
+    gap: 35px;
+  }
+
+  &__img {
+    max-height: 66px;
+  }
+
+  &__title {
+    @include body-text
+  }
+
+  &__footer {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  &__plus--path, &__minus--path {
+    fill: black;
+  }
+
+  &__controller {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+
+    &--button {
+      width: 32px;
+      height: 32px;
+      border: 1px solid $Icons;
+      border-radius: 50%; 
+    
+      @include center-element
+    }
+
+    &__button-disabled {
+      border: 1px solid $Elements;
+      & > path{
+        fill: $Elements;
+      }
+    }
+  }
+
+  &__button-disabled {
+    border: 1px solid $Elements;
+    & > svg {
+      & > path {
+        fill: $Icons;
+      }
+    }
+    
+  }
+}
+
+@media(min-width:640px) {
+  .cart-item {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+    &__footer {
+      gap: 54px;
+    }
+
+    &__title {
+      display: flex;
+      align-items: center;
+    }
+  }
+}

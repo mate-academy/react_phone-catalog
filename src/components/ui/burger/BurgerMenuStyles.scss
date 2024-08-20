@@ -1,0 +1,148 @@
+@import 'src/components/ui/utils/style/mixin';
+@import 'src/components/ui/utils/style/variables';
+
+.burger {
+
+  &__logo{
+    height: 100%;
+    width: 48px;
+    
+    @include center-element
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    z-index: 100;
+    background-color: white;
+  }
+
+  &__wrapper {
+    height: 100%;
+    box-shadow: -1px 0 0 0 #E2E6E9;
+  }
+
+  &__nav-wrapper {
+    flex: 1;
+    justify-content: center;
+  }
+  
+  &__nav-List {
+    font-size: 12px;
+    line-height: 11px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 24px;
+
+
+    & > li:not(:last-child) {
+      margin-bottom: 32px;
+    }
+
+    &--Item  {
+      height: 27px;
+      display: flex;
+      justify-content: center;
+
+      & > a {
+        height: 100%;
+        color: $Secondary;
+        display: flex; 
+        align-items: center;
+      }
+    }
+  }
+
+  &__header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    box-shadow: 0 1px 0 0 #E2E6E9;
+    height: 48px;
+
+    &--logo {
+      display: flex;
+      align-items: center;
+      padding-left: 16px;
+    }
+    &--logo-img {
+      height: 22px;
+      width: 64px;
+    }
+
+    &--close{
+      height: 100%;
+      width: 48px;
+    }
+  }
+
+  &__footer {
+    border: 1px solid #E2E6E9;
+    height: 64px;
+    display: grid;
+    grid-template: 1fr /1fr 1fr;
+  }
+
+  &__favourite, &__cart {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }
+  &__cart {
+    box-shadow: -1px 0 0 0 #E2E6E9;
+  }
+
+}
+
+.burger__container.active--burger + main{
+  overflow: hidden;
+}
+
+.close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  box-shadow: -1px 0 0 0 #E2E6E9;
+
+  &__top,&__bottom {
+    position: absolute;
+    top: 4px;    
+    bottom: 4px;
+    width: 10px;
+    height: 1px;
+    background-color:black;
+  }
+
+  &__top {
+    transform: rotate(45deg);
+    transition: transform 10s ease;
+  }
+
+  &__bottom {
+    transform: rotate(-45deg);
+    transition: transform 10s ease;
+  }
+
+  &__wrapper {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 10px;
+    width: 10px;
+  }
+}
+
+@media(min-width:640px) {
+  .burger {
+    display: none;
+  }
+}

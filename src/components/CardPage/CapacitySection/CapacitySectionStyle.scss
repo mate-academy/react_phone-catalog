@@ -1,0 +1,31 @@
+@import 'src/components/ui/utils/style/variables';
+@import 'src/components/ui/utils/style/mixin';
+
+.details__capacity--title {
+  font-weight: 600px;
+  color: $Secondary;
+  margin-bottom: 8px;
+
+  @include small-text;
+}
+
+.details__capacity--items{
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+}
+
+.details__capacity--item{
+  padding: 0 8px;
+  display: flex;
+  align-content: center;
+  border-radius: 4px;
+  border: 1px solid $Icons;
+
+  @include body-text;
+}
+
+.selected-capacity{
+  color: white;
+  background-color: black;
+}

@@ -1,0 +1,75 @@
+@import 'src/components/ui/utils/style/variables';
+@import 'src/components/ui/utils/style/mixin';
+
+.dropdown {
+  width: 100%;
+  
+  &__title {
+    color: $Secondary;
+    margin-bottom: 4px;
+
+    @include small-text;
+  }
+
+  &__menu {
+    
+    &--wrapper {
+      position: relative;
+    }
+
+    &--main {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 12px;
+      height: 40px;
+      border-radius: 8px;
+      border: 1px solid $Icons;
+      width: 100%;
+      background-color: transparent;
+    }
+
+    &--title {
+      @include button-text;
+    }
+
+    &--arrow {
+      height: 6px;
+    }
+
+    &--item {
+      @include body-text;
+
+      color: $Secondary;
+      border-radius: 8px;
+      
+      &:hover {
+        background-color: $HoverBg;
+        color: black;
+      }
+    }
+  }
+
+  &__select {
+    margin-top: 4px;
+    position: absolute;
+    background-color: white;
+    width: 100%;
+    display: none;
+    border: 1px solid $Elements;
+    border-radius: 8px;
+    padding: 8px 12px;
+    box-sizing: border-box;
+    z-index: 100;
+  }
+}
+
+.dropdown__menu--active {
+  display: block;
+}
+
+.arrow--rotate {
+  transform: rotateZ(-180deg);
+  transition: transform ease 0.5s;
+}
+

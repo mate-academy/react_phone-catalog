@@ -1,0 +1,31 @@
+@import 'src/components/ui/utils/style/mixin';
+@import 'src/components/ui/utils/style/variables';
+
+.adress {
+  display: flex;
+  align-items: center;
+
+  &__arrow {
+    height: 9.33px;
+    width: 5.33px;
+    padding: 0 13.33px;
+  }
+
+  &__elem {
+    text-align: center;
+    height: 100%;
+    color: $Secondary;
+
+    @include small-text;
+
+    &:nth-of-type(1) {
+      color: black;
+    }
+  }
+  
+  &__container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+}
