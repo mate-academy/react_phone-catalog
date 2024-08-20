@@ -1,0 +1,146 @@
+.paramsBlock {
+  &__title,
+  &__id {
+    color: $nav-link-color;
+  }
+
+  @include on-desktop {
+    &__id {
+      display: none;
+    }
+  }
+
+  &__colorsBlock {
+    margin-top: 40px;
+    padding-bottom: 24px;
+    box-sizing: border-box;
+    border-bottom: 1px solid $shadow-color;
+
+    @include on-tablet {
+      margin-top: 0;
+    }
+
+    &--titleBlock {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 8px;
+    }
+
+    &--colors {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+    }
+
+    &--colors-container,
+    &--colors-color {
+      border-radius: 50%;
+      box-sizing: border-box;
+    }
+
+    &--colors-container {
+      height: 38px;
+      width: 38px;
+      border: 1px solid $shadow-color;
+
+      &:hover {
+        border-color: $select-border-color;
+      }
+    }
+
+    &--colors-container-active {
+      border-color: $text-color;
+
+      &:hover {
+        border-color: $text-color;
+      }
+    }
+
+    &--colors-color {
+      height: 36px;
+      width: 36px;
+      border: 2px solid $bg-button-color
+    }
+  }
+
+  &__capacityBlock {
+    margin-top: 24px;
+    padding-bottom: 24px;
+    box-sizing: border-box;
+    border-bottom: 1px solid $shadow-color;
+
+    &--capacity {
+      display: flex;
+      gap: 8px;
+      margin-top: 8px;
+    }
+
+    &--capacity-value {
+      display: grid;
+      place-items: center;
+      text-decoration: none;
+      color: $text-color;
+      width: 56px;
+      height: 32px;
+      border: 1px solid $select-border-color;
+      border-radius: 4px;
+
+      &:hover {
+        border-color: $text-color;
+      }
+    }
+
+    &--capacity-value-active {
+      background-color: $text-color;
+      color: $bg-button-color;
+
+      &:hover {
+        border-color: $select-border-color;
+      }
+    }
+  }
+
+  &__priceBlock {
+    margin-top: 32px;
+
+    &--prices {
+      display: flex;
+      gap: 8px;
+    }
+
+    &--prices-discount {
+      font-size: 32px;
+    }
+
+    &--prices-regular {
+      display: flex;
+      align-items: center;
+      font-family: Mont-Regular, sans-serif;
+      font-size: 22px;
+      line-height: 28.12px;
+      color: $nav-link-color;
+      text-decoration: line-through;
+    }
+
+    &--cart-favourite-Block {
+      margin-top: 16px;
+      gap: 8px;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    &--cart-favourite-Block-favourite {
+      min-width: 48px;
+      min-height: 48px;
+    }
+  }
+
+  &__detailsBlock {
+    margin-top: 32px;
+
+    &--text {
+      font-size: 12px;
+      line-height: 15.34px;
+    }
+  }
+}
