@@ -6,15 +6,11 @@ import { CartContext } from '../../store/CartProvider';
 import emptyCart from '../../assets/img/cart-is-empty.png';
 
 export const CartPage = () => {
-  const { cart, setCart } = useContext(CartContext);
+  const { cart, setCart, getLengthOfCart } = useContext(CartContext);
   const navigate = useNavigate();
 
   const getSum = () => {
     return cart.reduce((acc, val) => acc + val.price * (val.inCart || 1), 0);
-  };
-
-  const getLengthOfCart = () => {
-    return cart.reduce((acc, val) => acc + (val.inCart || 1), 0);
   };
 
   const handleCheckout = () => {

@@ -28,7 +28,7 @@ const navItems = [
 export const Aside: React.FC = () => {
   const { isMenuActive, setIsMenuActive } = useContext(MenuContext);
   const { favourites } = useContext(FavouritesContext);
-  const { cart } = useContext(CartContext);
+  const { cart, getLengthOfCart } = useContext(CartContext);
 
   useEffect(() => {
     const handleResize = () => {
@@ -86,7 +86,7 @@ export const Aside: React.FC = () => {
           <img src={cartImg} className={style.menu__bottom__icon__img} />
           {!!cart.length && (
             <span className={style.menu__bottom__icon__count}>
-              {cart.length}
+              {getLengthOfCart()}
             </span>
           )}
         </NavLink>

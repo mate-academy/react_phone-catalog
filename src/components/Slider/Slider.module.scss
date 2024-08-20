@@ -8,12 +8,12 @@
 
   @include on-tablet {
     max-height: 324px;
-    aspect-ratio: unset;
     object-fit: contain;
     padding-inline: 75px;
     display: flex;
     justify-content: center;
     align-items: center;
+    align-self: center;
   }
 
   @include on-desktop {
@@ -47,7 +47,8 @@
   }
 
   @include on-desktop {
-    top: 200px;
+    top: 210px;
+    height: 85%;
   }
 }
 

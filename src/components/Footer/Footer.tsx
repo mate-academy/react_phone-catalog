@@ -8,26 +8,16 @@ const navigation = [
     name: 'Github',
   },
   {
-    href: '/',
+    href: 'https://github.com/Nazarin565',
     name: 'Contacts',
   },
   {
-    href: '/',
+    href: 'https://github.com/Nazarin565',
     name: 'Rights',
   },
 ];
 
 export const Footer = () => {
-  const handleClick = (
-    event: React.MouseEvent<HTMLAnchorElement>,
-    href: string,
-  ) => {
-    if (href === '/') {
-      event.preventDefault();
-      alert('Not implemented yet');
-    }
-  };
-
   return (
     <footer className={style.footer}>
       <a href="#" className={style.logo__link}>
@@ -37,12 +27,7 @@ export const Footer = () => {
         <ul className={style.nav__list}>
           {navigation.map(({ href, name }) => (
             <li key={name} className={style.nav__item}>
-              <NavLink
-                to={href}
-                target="_blank"
-                className={style.nav__link}
-                onClick={event => handleClick(event, href)}
-              >
+              <NavLink to={href} target="_blank" className={style.nav__link}>
                 {name}
               </NavLink>
             </li>

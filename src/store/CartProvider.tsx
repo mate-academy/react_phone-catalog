@@ -7,6 +7,7 @@ type CartType = {
   setCart: React.Dispatch<React.SetStateAction<Product[]>>;
   getActiveButton: (product: Product) => boolean;
   handleAddButton: (product: Product) => void;
+  getLengthOfCart: () => number;
 };
 
 export const CartContext = createContext<CartType>({
@@ -14,6 +15,7 @@ export const CartContext = createContext<CartType>({
   setCart: () => {},
   getActiveButton: () => false,
   handleAddButton: () => {},
+  getLengthOfCart: () => 1,
 });
 
 type Props = {
@@ -37,9 +39,19 @@ export const CartProvider: React.FC<Props> = ({ children }) => {
     }
   };
 
+  const getLengthOfCart = () => {
+    return cart.reduce((acc, val) => acc + (val.inCart || 1), 0);
+  };
+
   return (
     <CartContext.Provider
-      value={{ cart, setCart, getActiveButton, handleAddButton }}
+      value={{
+        cart,
+        setCart,
+        getActiveButton,
+        handleAddButton,
+        getLengthOfCart,
+      }}
     >
       {children}
     </CartContext.Provider>

@@ -32,7 +32,7 @@ export const TopBar = () => {
   const { isMenuActive, setIsMenuActive } = useContext(MenuContext);
   const [searchParams] = useSearchParams();
   const { favourites } = useContext(FavouritesContext);
-  const { cart } = useContext(CartContext);
+  const { cart, getLengthOfCart } = useContext(CartContext);
 
   return (
     <>
@@ -78,7 +78,7 @@ export const TopBar = () => {
           >
             <img src={cartImg} className={style.topbar__icon} />
             {!!cart.length && (
-              <span className={style.topbar__count}>{cart.length}</span>
+              <span className={style.topbar__count}>{getLengthOfCart()}</span>
             )}
           </NavLink>
 
