@@ -1,0 +1,147 @@
+@import '../../../utils/mixins';
+
+.settingsContainer {
+  box-sizing: border-box;
+  grid-column: 1/-1;
+  width: 100%;
+}
+
+.sortingFields {
+  box-sizing: border-box;
+  grid-column: 1/-1;
+  display: flex;
+  gap: 16px;
+  height: 60px;
+}
+
+.sortingField {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+
+  &__info {
+    font-family: $semiBoldFont, sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 15.34px;
+    text-align: left;
+    color: $graySecondaryColor;
+
+    &Dark {
+      color: $darkThemeSecondaryGray;
+    }
+  }
+
+  &__selectIcon {
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 16px;
+    height: 16px;
+    background-size: cover;
+  }
+
+  &__select {
+    box-sizing: border-box;
+    display: flex;
+    outline: none;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 12px;
+    border: 1px solid $grayIconsButtons;
+    background-color: $bgColor;
+    font-family: $semiBoldFont, sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 21px;
+    text-align: left;
+    color: $grayPrimaryColor;
+
+    transition: $transitionTime;
+
+    &:hover {
+      border: 1px solid $graySecondaryColor;
+      cursor: pointer;
+    }
+
+    &Dark {
+      border: 1px solid $darkThemeBG;
+      color: $darkThemeWhite;
+      background-color: $favoriteBG;
+
+      &:hover {
+        border: 1px solid #4a4d58
+      }
+    }
+  }
+
+  &__options {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    color: $graySecondaryColor;
+    transition: $transitionTime;
+    border: 1px solid $grayIconsButtons;
+    background-color: $bgColor;
+    font-family: $semiBoldFont, sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 21px;
+    text-align: left;
+    z-index: 1;
+
+    &Dark {
+      color: $darkThemeSecondaryGray;
+      border: 1px solid $darkThemeSecondaryGray;
+
+      &:hover {
+        border: 1px solid #4a4d58
+      }
+    }
+  }
+
+  &__option {
+    transition: $transitionTime;
+    padding: 3px 12px;
+    color: $graySecondaryColor;
+
+    &:hover {
+      color: $grayPrimaryColor;
+      background-color: $grayBGColor;
+      cursor: pointer;
+    }
+
+    &Dark {
+      background-color: $darkThemeBG;
+
+      &:hover {
+        background-color: $favoriteBG;
+        color: $darkThemeWhite;
+      }
+    }
+  }
+
+
+
+  &__sortBy {
+    height: 40px;
+    width: 136px;
+
+    @include on-tablet {
+      width: 187px;
+    }
+
+    @include on-desktop {
+      width: 176px;
+    }
+  }
+
+  &__perPage {
+    height: 40px;
+    width: 136px;
+  }
+}
+
+.hide {
+  display: none;
+}

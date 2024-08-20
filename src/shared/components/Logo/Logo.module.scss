@@ -1,0 +1,19 @@
+@import '../../../utils/mixins';
+
+.logo {
+  padding-right: 16px;
+
+  @include on-desktop {
+    padding-right: 24px;
+  }
+
+  &__image {
+    width: 64px;
+    height: 21px;
+
+    @include on-desktop {
+      width: 80px;
+      height: 27px;
+    }
+  }
+}

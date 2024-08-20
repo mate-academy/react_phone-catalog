@@ -1,0 +1,8 @@
+@import '../../../utils/mixins';
+
+.mainContainer {
+  height: fit-content;
+
+  @include grid;
+  @include padding-inline;
+}

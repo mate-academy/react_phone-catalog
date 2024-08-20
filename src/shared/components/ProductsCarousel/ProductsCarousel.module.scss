@@ -1,0 +1,104 @@
+@import '../../../utils/mixins';
+
+.container {
+  grid-column: 1/-1;
+  box-sizing: border-box;
+  flex-direction: column;
+  gap: 25px;
+
+  @include grid;
+
+  @include on-desktop {
+    display: flex;
+  }
+
+  &Top {
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: fit-content;
+    grid-column: 1/-1;
+    gap: 72px;
+  }
+}
+
+.blockTitle {
+  font-family: $boldFont, sans-serif;
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 30.8px;
+  text-align: left;
+  margin: 0;
+
+  @include on-tablet {
+    font-size: 32px;
+    line-height: 41px;
+  }
+
+  &Dark {
+    color: $darkThemeWhite;
+  }
+}
+
+.blockButtons {
+  display: flex;
+  gap: 16px;
+}
+
+.blockButton {
+  display: block;
+  width: 32px;
+  height: 32px;
+  border: solid 1px $grayIconsButtons;
+  transition: border $transitionTime;
+  cursor: pointer;
+  background-repeat: no-repeat;
+  background-position: center;
+
+  &:hover {
+    border: solid 1px $grayPrimaryColor;
+  }
+
+  &Dark {
+    background-color: $arrowButtonBG;
+    border: none;
+    transition: $transitionTime;
+
+    &:hover {
+      border: none;
+      background-color: $arrowButtonHover;
+    }
+  }
+}
+
+.containerBottom {
+  overflow: hidden;
+  grid-column: 1/-1;
+}
+
+.productsCarousel {
+  padding: 5px;
+  display: flex;
+  gap: 16px;
+  transition: transform $transitionTime ease-in-out;
+}
+
+.disabled {
+  cursor: auto;
+
+  &:hover {
+    border: solid 1px $grayIconsButtons;
+  }
+
+  &Dark {
+    background-color: $darkThemeBG;
+    border: solid 1px $darkThemeSecondaryGray;
+
+    &:hover {
+      background-color: $darkThemeBG;
+      border: solid 1px $darkThemeSecondaryGray;
+    }
+  }
+}

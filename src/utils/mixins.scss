@@ -1,0 +1,75 @@
+@import './variables';
+
+@mixin on-tablet {
+  @media (min-width: $tabletWidth) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media (min-width: $desktopWidth) {
+    @content;
+  }
+}
+
+@mixin on-desktop-wide {
+  @media (min-width: $desktopWideWidth) {
+    @content;
+  }
+}
+
+@mixin regular-text {
+  font-family: $regularFont;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 21px;
+  text-align: left;
+  color: $grayPrimaryColor;
+}
+
+@mixin h1-title {
+  font-family: $boldFont;
+  color: $grayPrimaryColor;
+  font-size: 32px;
+  font-weight: 800;
+  line-height: 41px;
+  letter-spacing: -1%;
+  text-align: left;
+
+  @include on-tablet {
+    font-size: 48px;
+    line-height: 56px;
+  }
+}
+
+@mixin padding-inline {
+  padding-inline: 16px;
+
+  @include on-tablet {
+    padding-inline: 24px;
+  }
+
+  @include on-desktop {
+    padding-inline: 0;
+  }
+}
+
+@mixin grid {
+  display: grid;
+  grid-template-columns: repeat(4, auto);
+  column-gap: 16px;
+
+  @include on-tablet {
+    grid-template-columns: repeat(12, auto);
+  }
+
+  @include on-desktop {
+    grid-template-columns: repeat(24, 32px);
+  }
+
+  @include on-desktop-wide {
+    grid-template-columns: repeat(24, 36px);
+  }
+}
+
+

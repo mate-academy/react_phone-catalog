@@ -1,0 +1,106 @@
+@import '../../../../utils/mixins';
+
+.container {
+  box-sizing: border-box;
+  display: grid;
+  gap: 16px;
+  grid-column: 1/-1;
+  margin-top: 40px;
+
+  @include on-tablet {
+    grid-column: 1/span 7;
+    grid-auto-flow: dense;
+  }
+
+  @include on-desktop {
+    grid-column: 1/span 12;
+  }
+}
+
+.current {
+  box-sizing: border-box;
+  grid-column: 1/-1;
+  display: flex;
+  justify-content: center;
+  justify-self: center;
+  width: fit-content;
+  max-width: 288px;
+
+  @include on-tablet {
+    grid-column: 2/span 6;
+  }
+
+  @include on-desktop {
+    grid-column: 3/span 10;
+    max-width: 464px;
+    max-height: 464px;
+  }
+
+  &__image {
+    display: inline-block;
+    height: 288px;
+
+    @include on-desktop {
+      height: 464px;
+    }
+  }
+}
+
+.images {
+  box-sizing: border-box;
+  grid-column: 1/-1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  width: fit-content;
+  justify-self: center;
+
+  @include on-tablet {
+    flex-direction: column;
+    grid-column: 1/span 1;
+    justify-content: left;
+    max-height: 400px;
+  }
+
+  @include on-desktop {
+    grid-column: 1/span 2;
+    gap: 16px;
+  }
+
+  &__container {
+    display: flex;
+    width: 50px;
+    height: 50px;
+    align-items: center;
+    justify-content: center;
+    transition: $transitionTime;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+
+    @include on-tablet {
+      width: 60px;
+      height: 60px;
+    }
+
+    &Dark {
+      border: $darkThemeGrayBorder;
+    }
+  }
+
+  &__preview {
+    box-sizing: border-box;
+    width: min-content;
+    max-width: 50px;
+    height: 50px;
+    cursor: pointer;
+
+    @include on-tablet {
+      width: min-content;
+      max-width: 60px;
+      height: 60px;
+    }
+  }
+}

@@ -1,0 +1,26 @@
+@import '../../../utils/mixins';
+
+.addFavoriteButton {
+  box-sizing: border-box;
+  width: 40px;
+  height: 40px;
+  background-repeat: no-repeat;
+  background-position: center;
+  border: $border;
+  cursor: pointer;
+  transition: $transitionTime;
+
+  &:hover {
+    border: solid 1px $grayPrimaryColor;
+  }
+
+  &Dark {
+    border: none;
+    background-color: $favoriteBG;
+
+    &:hover {
+      border: none;
+      background-color: $favoriteHover;
+    }
+  }
+}

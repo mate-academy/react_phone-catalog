@@ -1,0 +1,343 @@
+@import '../../../../utils/mixins';
+
+.shortInfo {
+  display: flex;
+  flex-direction: column;
+  grid-column: 1/-1;
+
+  &__details {
+    margin-top: 32px;
+  }
+
+  @include on-tablet {
+    grid-column: span 5;
+  }
+
+  @include on-desktop {
+    grid-column: 14/span 7;
+  }
+}
+
+.availableColors {
+  display: flex;
+  margin-top: 40px;
+  margin-bottom: 24px;
+  flex-direction: column;
+  gap: 8px;
+
+  @include on-tablet {
+    margin-top: 50px;
+  }
+
+  &__container {
+    display: flex;
+    gap: 8px;
+  }
+}
+
+.availableColorOuter {
+  box-sizing: border-box;
+  display: flex;
+  width: 32px;
+  height: 32px;
+  border: $border;
+  border-radius: 50%;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+
+  &:hover {
+    border: $grayPrimaryColor solid 1px;
+  }
+
+  &Dark {
+    border: $darkThemeGrayBorder;
+
+    &:hover {
+      border: $border;
+    }
+  }
+}
+
+.availableColorInner {
+  box-sizing: border-box;
+  width: 28px;
+  height: 28px;
+  border: $border;
+  border-radius: 50%;
+
+  &Dark {
+    border: none;
+  }
+}
+
+.activeColor {
+  border: $grayPrimaryColor solid 1px;
+
+  &Dark {
+    box-sizing: initial;
+    border: $darkThemeWhite 2px solid;
+
+    &:hover {
+      border: $darkThemeWhite 2px solid;
+    }
+  }
+}
+
+.capacity__text,
+.availableColors__text {
+  font-family: $semiBoldFont, sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 15.34px;
+  text-align: left;
+  color: $graySecondaryColor;
+
+  &Dark {
+    color: $darkThemeSecondaryGray;
+  }
+}
+
+.capacity {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 24px;
+  margin-bottom: 24px;
+
+  &__options {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__option {
+    box-sizing: border-box;
+    font-family: $regularFont, sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+    text-align: center;
+    color: $grayPrimaryColor;
+    transition: $transitionTime;
+    padding: 8px 8px 4px;
+    border: $border;
+    cursor: pointer;
+    text-decoration: none;
+
+    &:hover {
+      background-color: $grayPrimaryColor;
+      color: $whiteColor;
+    }
+
+    &Dark {
+      color: $darkThemeWhite;
+      background-color: $darkThemeBG;
+      border: $darkThemeGrayBorder;
+
+      &:hover {
+        color: $darkThemeBG;
+        background-color: $darkThemeWhite;
+        border: 1px solid $darkThemeWhite;
+      }
+    }
+  }
+
+  &__activeOption {
+    background-color: $grayPrimaryColor;
+    color: $whiteColor;
+    cursor: auto;
+
+    &Dark {
+      color: $darkThemeBG;
+      background-color: $darkThemeWhite;
+      border: 1px solid $darkThemeWhite;
+      cursor: auto;
+    }
+  }
+}
+
+.infoBlock {
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  gap: 8px;
+  margin-top: 32px;
+
+  &Line {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+  }
+}
+
+.price {
+  display: flex;
+  width: fit-content;
+  gap: 8px;
+
+  &__new {
+    font-family: $boldFont, sans-serif;
+    font-size: 32px;
+    font-weight: 800;
+    line-height: 41px;
+    text-align: left;
+    color: $grayPrimaryColor;
+
+    &Dark {
+      color: $darkThemeWhite;
+    }
+  }
+
+  &__old {
+    font-family: $regularFont, sans-serif;
+    font-size: 22px;
+    font-weight: 500;
+    line-height: 28.12px;
+    text-align: left;
+    color: $graySecondaryColor;
+    text-decoration: line-through;
+    align-content: center;
+
+    &Dark {
+      color: $darkThemeSecondaryGray;
+    }
+  }
+}
+
+.buttons {
+  box-sizing: border-box;
+  width: 100%;
+  display: flex;
+  gap: 8px;
+  margin-top: 16px;
+
+  @include on-desktop {
+    gap: 16px;
+  }
+}
+
+.addButton {
+  display: flex;
+  box-sizing: border-box;
+  background-color: $grayPrimaryColor;
+  color: $whiteColor;
+  font-family: $semiBoldFont, sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 21px;
+  justify-content: center;
+  align-items: center;
+  width: 231px;
+  height: 48px;
+  transition: $transitionTime;
+  cursor: pointer;
+
+  &:hover {
+    box-shadow: 0 3px 13px 0 #17203166;
+  }
+
+  @include on-tablet {
+    width: 180px;
+  }
+
+  @include on-desktop {
+    width: 264px;
+  }
+
+  &Dark {
+    border: none;
+    background-color: $toCartButtonBG;
+
+    &:hover {
+      border: none;
+      background-color: $toCartButtonHover;
+      box-shadow: 0 3px 13px 0 $toCartButtonHover;
+    }
+  }
+}
+
+.addFavoriteButton {
+  box-sizing: border-box;
+  width: 48px;
+  height: 48px;
+  background-repeat: no-repeat;
+  background-position: center;
+  border: $border;
+  cursor: pointer;
+  transition: $transitionTime;
+
+  &:hover {
+    border: solid 1px $grayPrimaryColor;
+  }
+
+  &Dark {
+    border: none;
+    background-color: $favoriteBG;
+
+    &:hover {
+      border: none;
+      background-color: $favoriteHover;
+    }
+  }
+}
+
+.infoLineTitle {
+  font-family: $regularFont, sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 15.34px;
+  text-align: left;
+  color: $graySecondaryColor;
+
+  &Dark {
+    color: $darkThemeSecondaryGray;
+  }
+}
+
+.infoLineText {
+  font-family: $regularFont, sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 15.34px;
+  text-align: right;
+  color: $grayPrimaryColor;
+
+  &Dark {
+    color: $darkThemeWhite;
+  }
+}
+
+.line {
+  width: 100%;
+  border-bottom: $border;
+
+  &Dark {
+    border-bottom: $darkThemeGrayBorder;
+  }
+}
+
+.isInCart {
+  border: $border;
+  color: $selectedColor;
+  background-color: $whiteColor;
+  cursor: auto;
+
+  &:hover {
+    box-shadow: none;
+  }
+
+  &Dark {
+    background-color: $toCartButtonSelected;
+    color: $darkThemeWhite;
+    border: none;
+
+    &:hover {
+      background-color: $toCartButtonSelected;
+      box-shadow: none;
+      border: none;
+    }
+  }
+}

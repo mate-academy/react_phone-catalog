@@ -1,0 +1,168 @@
+@import '../../../../utils/mixins';
+
+.card {
+  box-sizing: border-box;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  font-family: $regularFont, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 21px;
+  color: $grayPrimaryColor;
+  padding: 16px;
+  align-items: center;
+  justify-content: center;
+  border: $border;
+
+  @include on-tablet {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  &Dark {
+    color: $darkThemeWhite;
+    border: $darkThemeGrayBorder;
+  }
+}
+
+.cardProduct {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  @include on-tablet {
+    width: auto;
+    gap: 16px;
+  }
+
+  &__leftPart {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  &__image {
+    display: flex;
+    width: 66px;
+    height: 66px;
+    justify-content: center;
+    align-items: center;
+    transition: $transitionTime;
+
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+
+  &__img {
+    width: min-content;
+    height: 66px;
+  }
+
+  &__title {
+    text-align: right;
+    text-decoration: none;
+    color: $grayPrimaryColor;
+
+    @include on-tablet {
+      text-align: left;
+      width: max-content;
+    }
+
+    &Dark {
+      color: $darkThemeWhite;
+    }
+  }
+
+  &__delete {
+    width: 16px;
+    height: 16px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    cursor: pointer;
+  }
+}
+
+.calculations {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  @include on-tablet {
+    width: auto;
+    gap: 24px;
+  }
+
+  &__quantity {
+    display: flex;
+    gap: 0;
+  }
+
+  &__sum {
+    font-family: $boldFont, sans-serif;
+    font-size: 22px;
+    font-weight: 800;
+    line-height: 30.8px;
+    text-align: right;
+    width: 73px;
+  }
+}
+
+.quantity {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.quantity,
+.button {
+  width: 32px;
+  height: 32px;
+}
+
+.button {
+  display: block;
+  border: solid 1px $grayIconsButtons;
+  transition: border $transitionTime;
+  cursor: pointer;
+  background-repeat: no-repeat;
+  background-position: center;
+
+  &:hover {
+    border: solid 1px $grayPrimaryColor;
+  }
+
+  &Dark {
+    background-color: $arrowButtonBG;
+    border: none;
+    transition: $transitionTime;
+
+    &:hover {
+      border: none;
+      background-color: $arrowButtonHover;
+    }
+  }
+}
+
+.disabled {
+  cursor: auto;
+
+  &:hover {
+    border: solid 1px $grayIconsButtons;
+  }
+
+  &Dark {
+    background-color: $darkThemeBG;
+    border: solid 1px $darkThemeSecondaryGray;
+
+    &:hover {
+      background-color: $darkThemeBG;
+      border: solid 1px $darkThemeSecondaryGray;
+    }
+  }
+}

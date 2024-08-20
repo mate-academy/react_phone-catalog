@@ -1,0 +1,40 @@
+@import '../../../utils/mixins';
+
+.pathBar {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+
+  &__icons {
+    width: 16px;
+    height: 16px;
+  }
+
+  &__current {
+    font-family: $semiBoldFont, sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 15.34px;
+    color: $graySecondaryColor;
+    display: inline-flex;
+    min-height: 100%;
+    align-items: center;
+
+    &Dark {
+      color: $darkThemeSecondaryGray;
+    }
+  }
+
+  &__link {
+    text-decoration: none;
+    color: $grayPrimaryColor;
+
+    &Dark {
+      color: $darkThemeWhite;
+
+      &:hover {
+        color: $toCartButtonBG;
+      }
+    }
+  }
+}

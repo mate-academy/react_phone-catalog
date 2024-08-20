@@ -1,0 +1,291 @@
+@import '../../utils/mixins';
+
+.header {
+  box-sizing: border-box;
+  height: 48px;
+  display: flex;
+  width: 100%;
+  align-items: center;
+  gap: 16px;
+  border-bottom: $border;
+  padding-left: 16px;
+  top: 0;
+  z-index: 2;
+  position: sticky;
+  background-color: #fff;
+  transition: $transitionTime;
+
+  &__dark {
+    background-color: $darkThemeBG;
+    color: $darkThemeSecondaryGray;
+    border-bottom: $darkThemeGrayBorder;
+  }
+
+  @include on-tablet {
+    padding-left: 24px;
+  }
+
+  @include on-desktop {
+    height: 64px;
+    padding-left: 32px;
+  }
+
+  @include on-desktop-wide {
+    padding-left: 24px;
+  }
+
+  &__icons {
+    display: flex;
+    width: 100%;
+    justify-content: right;
+  }
+
+  &__icon {
+    width: 48px;
+    height: 48px;
+    background-repeat: no-repeat;
+    background-position: center;
+    border-left: $border;
+
+    @include on-desktop {
+      width: 64px;
+      height: 64px;
+    }
+
+    &Dark {
+      border-left: $darkThemeGrayBorder;
+    }
+  }
+
+  &__nav {
+    display: none;
+
+    @include on-tablet {
+      display: flex;
+      justify-content: left;
+    }
+
+    @include on-desktop {
+      margin-left: 24px;
+    }
+  }
+}
+
+.menuIcon {
+  @include on-tablet {
+    display: none;
+  }
+}
+
+.notMenuIcon {
+  display: none;
+  position: relative;
+
+  @include on-tablet {
+    display: block;
+
+    &:hover {
+      color: $grayPrimaryColor;
+    }
+
+    &::after {
+      box-sizing: border-box;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      border-bottom: 3px solid $grayPrimaryColor;
+      width: 0;
+      content: '';
+    }
+
+    &:hover::after {
+      transition: $transitionTime;
+      width: 100%;
+    }
+  }
+
+  &Dark {
+    &:hover {
+      color: $darkThemeWhite;
+    }
+
+    &::after {
+      border-bottom: 3px solid $darkThemeWhite;
+    }
+  }
+}
+
+.navList {
+  display: flex;
+  list-style: none;
+  gap: 32px;
+  padding: 0;
+
+  @include on-desktop {
+    gap: 64px;
+  }
+
+  &__link {
+    font-family: $boldFont;
+    font-size: 12px;
+    line-height: 11px;
+    color: $graySecondaryColor;
+    text-decoration: none;
+    transition: $transitionTime;
+    position: relative;
+
+    &:hover {
+      color: $grayPrimaryColor;
+    }
+
+    &::after {
+      box-sizing: border-box;
+      position: absolute;
+      bottom: -15px;
+      left: 0;
+      border-bottom: 3px solid $grayPrimaryColor;
+      width: 0;
+      content: '';
+
+      @include on-desktop {
+        bottom: -22px;
+      }
+    }
+
+    &:hover::after {
+      transition: $transitionTime;
+      width: 100%;
+    }
+
+    &Dark {
+      color: $darkThemeSecondaryGray;
+
+      &:hover {
+        color: $darkThemeWhite;
+      }
+
+      &::after {
+        border-bottom: 3px solid $darkThemeWhite;
+      }
+    }
+  }
+}
+
+.activeNavLink,
+.activeNavLinkButton {
+  color: $grayPrimaryColor;
+  position: relative;
+
+  &::after {
+    transition: $transitionTime;
+    box-sizing: border-box;
+    position: absolute;
+    bottom: -15px;
+    left: 0;
+    border-bottom: 3px solid $grayPrimaryColor;
+    width: 100%;
+    content: '';
+
+    @include on-desktop {
+      bottom: -22px;
+    }
+  }
+
+  &Dark {
+    color: $darkThemeWhite;
+
+    &::after{
+      border-bottom: 3px solid $darkThemeWhite;
+    }
+  }
+}
+
+.activeNavLinkButton {
+  &::after {
+    bottom: 0;
+  }
+}
+
+.counter {
+  position: absolute;
+  display: flex;
+  width: 14px;
+  height: 14px;
+  justify-content: center;
+  align-items: center;
+  font-family: $semiBoldFont, sans-serif;
+  font-size: 9px;
+  font-weight: 600;
+  line-height: 11.5px;
+  text-align: center;
+  color: $whiteColor;
+  border-radius: 50%;
+  background-color: $counterColor;
+  left: 50%;
+  top: 20%;
+
+  @include on-desktop {
+    left: 50%;
+    top: 27%;
+  }
+}
+
+.themeSwitcher {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-left: $border;
+  background-color: inherit;
+  transition: $transitionTime;
+
+  &Dark {
+    border-left: $darkThemeGrayBorder;
+  }
+
+  @include on-desktop {
+    width: 64px;
+    height: 64px;
+  }
+
+  &__button {
+    position: relative;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 70%;
+    height: 40%;
+    border: solid 1px $darkThemeBG;
+    border-radius: 3dvh;
+    background-color: skyblue;
+    transition: $transitionTime;
+    cursor: pointer;
+  }
+
+  &__indicator {
+    box-sizing: border-box;
+    width: 37.5%;
+    height: 75%;
+    border-radius: 50%;
+    background-color: yellow;
+    border: 1px solid orange;
+    position: absolute;
+    left: 5%;
+    transition: $transitionTime;
+  }
+}
+
+.darkSwitcherButton {
+  position: relative;
+  background-color: #001861;
+  border: solid 1px $darkThemeWhite;
+}
+
+.darkIndicator {
+  position: absolute;
+  background-color: $darkThemeWhite;
+  border: 1px solid $graySecondaryColor;
+  left: 55%;
+}
