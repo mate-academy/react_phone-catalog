@@ -1,0 +1,128 @@
+@import '../../../shared/utils-scss/mixins';
+@import '../../../shared/utils-scss/variables';
+@import '../../../shared/utils-scss/font';
+
+.category {
+  margin-bottom: 80px;
+
+  &__container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+    @include on-tablet {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-gap: 32px;
+      gap: 32px;
+      margin: 0 auto;
+      column-gap: 16px;
+    }
+  }
+
+  &__content__tablets {
+    @include on-tablet {
+      grid-column: 2 / 3;
+      width: 100%;
+    }
+  }
+
+  &__title {
+    @extend %mont-700;
+
+    font-weight: 800;
+    font-size: 22px;
+    line-height: 30px;
+    color: $border-button-color-hover;
+    margin-bottom: 24px;
+
+    @include on-tablet {
+      font-size: 32px;
+      line-height: 40.9px;
+    }
+  }
+
+  &__mobile {
+    background-color: #FCDBC1;
+  }
+
+  &__background {
+    display: block;
+    width: 288px;
+    height: 288px;
+    margin-bottom: 24px;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.3s;
+
+    @include on-tablet {
+      width: 100%;
+      height: auto;
+      aspect-ratio: 1 / 1;
+    }
+
+    @include on-desktop {
+      width: 368px;
+      height: 368px;
+    }
+
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+
+  &__tablets {
+    background-color: Gray;
+  }
+
+  &__accessories {
+    background-color: #973D5F;
+  }
+
+  &__img {
+    background-repeat: no-repeat;
+    height: 457px;
+    background-size: cover;
+    position: absolute;
+    top: 40px;
+    left: 49px;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+ 
+    @include on-tablet {
+      width: 100%;
+      height: auto;
+      aspect-ratio: 1 / 1;
+    }
+  }
+
+  &__mobile__img {
+    background-image: url(../../../../../public/img/category-phones.webp);
+  }
+
+  &__tablets__img {
+    background-image: url(../../../../../public/img/category-tablets.webp);
+  }
+
+  &__accessories__img {
+    background-image: url(../../../../../public/img/category-accessories.png);
+  }
+
+  &__name {
+    @extend %mont-600;
+
+    font-size: 20px;
+    color: $border-button-color-hover;
+    margin-bottom: 4px;
+    line-height: 25px;
+  }
+
+  &__count {
+    @extend %mont-500;
+
+    font-size: 14px;
+    color: $color-text-gray;
+  }
+}

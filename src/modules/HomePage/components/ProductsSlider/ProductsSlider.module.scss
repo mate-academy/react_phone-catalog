@@ -1,0 +1,38 @@
+@import '../../../shared/utils-scss/variables';
+
+.product {
+  &__button {
+    width: 32px;
+    height: 32px;
+    background-color: initial;
+    border: 1px solid $border-button-color;
+    cursor: pointer;
+    transition: all 0.3s;
+
+    &:hover {
+      border: 1px solid $border-button-color-hover;
+    }
+  }
+
+  &__slider {
+    display: flex;
+    gap: 16px;
+  }
+
+  &__arrow {
+    display: block;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 16px;
+    height: 16px;
+    margin: 0 auto;
+  }
+}
+
+.arrow__left {
+  background-image: url(../../../shared/headerImg/slider/Vector-left.svg);
+}
+
+.arrow__right {
+  background-image: url(../../../shared/headerImg/slider/Vector-right.svg);
+}

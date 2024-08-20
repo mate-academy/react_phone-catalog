@@ -1,0 +1,54 @@
+@import '../../../shared/utils-scss/mixins';
+@import '../../../shared/utils-scss/variables';
+@import '../../../shared/utils-scss/font';
+
+
+.product {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  column-gap: 32px;
+  grid-gap: 16px;
+  margin: 0 auto 24px;
+
+  @include on-tablet {
+    margin: 0 auto 40px;
+    grid-template-columns: repeat(12, 1fr);
+  }
+
+  @include on-desktop {
+    grid-template-columns: repeat(24, 1fr);
+  }
+
+  &__page {
+    width: 100%;
+    grid-column: span 4;
+
+    @include on-tablet {
+      grid-column: span 6;
+    }
+
+    @media (min-width: 768px) {
+      grid-column: span 4;
+    }
+
+    @include on-desktop {
+      grid-column: span 6;
+    }
+  }
+
+  &__title {
+    @extend %mont-800;
+
+    font-size: 24px;
+    color: $border-button-color-hover;
+
+    @include on-tablet {
+      font-size: 32px;
+    }
+
+    @include on-desktop {
+      font-size: 48px;
+      line-height: 56px;
+    }
+  }
+}

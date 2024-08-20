@@ -1,0 +1,95 @@
+@import '../../shared/utils-scss/font';
+@import '../../shared/utils-scss/mixins';
+@import '../../shared/utils-scss/variables';
+
+.cart {
+  padding: 25px 16px 0;
+  margin: 0 auto 64px;
+
+  @include on-tablet {
+    padding: 24px 24px 0;
+  }
+
+  @include on-desktop {
+    padding: 24px 0 0;
+    width: 1136px;
+    margin: 0 auto 24px
+  }
+
+  &__arrow {
+    display: block;
+    background-image: url(../../shared/headerImg/slider/Vector-left.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 16px;
+    height: 16px;
+  }
+
+  &__back {
+    @extend %mont-700;
+
+    font-size: 13px;
+    line-height: 15px;
+    text-decoration: none;
+    color: $header-text-color;
+    cursor: pointer;
+    
+
+    &:hover {
+      color: $border-button-color-hover;
+    }
+  }
+
+  &__title {
+    @extend %mont-800;
+
+    font-size: 48px;
+    line-height: 56px;
+    text-decoration: none;
+    color: $border-button-color-hover;
+    margin-bottom: 32px;
+  }
+
+  &__location {
+    display: flex;
+    gap: 4px;
+    align-items: center;
+    margin-bottom: 24px;
+
+    @include on-tablet {
+      margin-bottom: 24px;
+    }
+  }
+}
+
+.page {
+  height: calc(100vh - 300px - 264px);
+  display: flex;
+  justify-content: center;
+
+  width: 100%;
+  text-align: center;
+
+  @include on-tablet {
+    height: calc(100vh - 267px - 95px);
+  }
+
+  @include on-desktop {
+    height: calc(100vh - 240px - 95px);
+  }
+ 
+  &__img {
+    width: 80%;
+    object-fit: contain;
+
+    @include on-tablet {
+      width: auto;
+      height: 80%;
+    }
+  
+    @include on-desktop {
+      width: auto;
+      height: 100%;
+    }
+  }
+}

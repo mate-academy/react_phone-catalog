@@ -1,0 +1,145 @@
+@import '../shared/utils-scss/mixins';
+@import '../shared/utils-scss/variables';
+@import '../shared/utils-scss/font';
+
+.footer {
+  border: 1px solid $color-gray;
+  display: flex;
+  padding: 32px 16px;
+
+  @include on-tablet {
+    height: 95px;
+    padding: 0;
+  }
+
+  &__container {
+    margin: auto;
+    width: 1136px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    gap: 32px;
+
+    @include on-tablet {
+      align-items:center;
+      flex-direction: row;
+      gap: 0;
+      padding: 32px;
+    }
+
+    @include on-desktop {
+      padding: 0;
+    }
+  }
+
+  &__img {
+    @extend %mont-700;
+
+    line-height: 15px;
+    font-size: 12px;
+    color: $color-text-gray;
+    border: none;
+    background-color: initial;
+    position: relative;
+    cursor: pointer;
+
+    &::after {
+      position: absolute;
+      content: "";
+      top: -50%;
+      right: -48px;
+      background-image: url(../shared/headerImg/slider/Vector-left.svg);
+      background-repeat: no-repeat;
+      width: 32px;
+      height: 32px;
+      background-color: initial;
+      border: 1px solid $border-button-color;
+      background-position: center;
+      cursor: pointer;
+      transform: rotate(90deg);
+
+      &:hover {
+        border: 9px solid $border-button-color-hover;
+      }
+
+      @include on-tablet {
+        margin-right: 48px;
+      }
+    }
+
+    &:hover {
+      color: $border-button-color-hover;
+      &::after {
+        border: 1px solid $border-button-color-hover;
+      }
+    }
+
+    @include on-tablet {
+      padding-right: 48px;
+    }
+  }
+
+  &__return {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    justify-content: center
+  }
+
+  &__hint {
+    @extend %mont-700;
+
+    line-height: 15px;
+    font-size: 12px;
+    color: $color-text-gray;
+  }
+}
+
+.nav {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  @include on-tablet {
+    gap: 0;
+    width: 192px;
+    justify-content: space-between;
+    flex-direction: row;
+  }
+
+  @include on-desktop {
+    width: 378px;
+  }
+
+  &__link {
+    @extend %mont-700;
+
+    text-decoration: none;
+    color: $header-text-color;
+    font-size: 12px;
+    display: block;
+    position: relative;
+    font-weight: 800;
+    transition: all 0.3s;
+
+    &:hover {
+      color: $border-button-color-hover;
+    }
+
+    @include on-tablet {
+      gap: 64px;
+    }
+  }
+
+  &__item {
+    text-decoration: none;
+    list-style: none;
+  }
+
+  &__img {
+    transition: all 0.3s;
+    &:hover {
+      transform: scale(1.04);
+    }
+  }
+}

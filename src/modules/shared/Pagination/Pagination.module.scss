@@ -1,0 +1,72 @@
+@import '../utils-scss/variables';
+@import '../utils-scss/font';
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+
+  &__container {
+    display: flex;
+    overflow: hidden;
+  }
+}
+
+.arrow {
+  min-width: 32px;
+  height: 32px;
+  border: 1px solid $border-button-color;
+  background-repeat: no-repeat;
+  background-position: center;
+  cursor: pointer;
+  background-color: inherit;
+
+  &:hover {
+    border-color: $border-button-color-hover;
+  }
+
+  &__left {
+    background-image: url(..//headerImg/slider/Vector-left.svg);
+  }
+
+  &__right {
+    background-image: url(..//headerImg/slider/Vector-right.svg);
+  }
+}
+
+.nav {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  width: 152px;
+  transition: all 0.3s;
+
+  &__item {
+    @extend %mont-600;
+
+    list-style: none;
+    min-width: 32px;
+    height: 32px;
+    border: 1px solid $color-gray;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: #000;
+    font-size: 14px;
+    line-height: 21px;
+
+    &:hover {
+      border-color: $border-button-color-hover;
+    }
+  }
+}
+
+.is__active {
+  background-color: $border-button-color-hover;
+  color: $color-white;
+}
+
+.button__disablet {
+  border-color: $color-gray;
+}
