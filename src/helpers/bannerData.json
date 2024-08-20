@@ -1,0 +1,18 @@
+[
+    {
+      "id": 1,
+      "src": "/_new/img/banner-accessories.png",
+      "alt": "accessories"
+    },
+    {
+      "id": 2,
+      "src": "/_new/img/banner-phones.png",
+      "alt": "phones"
+    },
+    {
+      "id": 3,
+      "src": "/_new/img/banner-tablets.png",
+      "alt": "tablets"
+    }
+  ]
+
