@@ -1,0 +1,57 @@
+@import "../../styles/main";
+
+.container {
+  @include padding-inline;
+  @include container;
+}
+
+.goBackButton {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  text-decoration: none;
+}
+
+.goBackText {
+  @include small-text;
+
+  color: var(--color-white);
+}
+
+.title {
+  @include h2-mobile;
+
+  padding-top: 16px;
+  padding-bottom: 32px;
+
+  @include on-tablet {
+    @include h2-tablet;
+    
+    padding-bottom: 40px;
+  }
+}
+
+.wrap {
+  @include section-grid;
+}
+
+.block {
+  display: grid;
+  grid-gap: 16px;
+
+  @include on-desktop {
+    grid-template-columns: repeat(24, 32px);
+  }
+}
+
+.slider {
+  padding-block: 56px;
+
+  @include on-tablet {
+    padding-block: 64px;
+  }
+
+  @include on-desktop {
+    padding-block: 80px;
+  }
+}

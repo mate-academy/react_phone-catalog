@@ -1,0 +1,189 @@
+@import '../../styles/main';
+
+.header {
+  border-bottom: 1px solid var(--color-elements);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  @include on-tablet {
+    display: flex;
+  }
+}
+
+.content {
+  display: flex;
+  align-items: center;
+
+  @include on-tablet {
+    gap: 16px;
+  }
+
+  @include on-desktop {
+    gap: 24px;
+  }
+}
+
+.logoLink {
+  @include padding-inline;
+}
+
+.logo {
+  display: block;
+  width: 64px;
+  height: 22px;
+
+  @include on-desktop {
+    width: 80px;
+    height: 28px;
+  }
+}
+
+.nav {
+  display: none;
+
+  @include on-tablet {
+    display: block;
+  }
+}
+
+.list {
+  list-style: none;
+  display: flex;
+  gap: 32px;
+
+  @include on-desktop {
+    gap: 64px;
+  }
+}
+
+.pageLink {
+  padding-block: 18.5px;
+
+  @include on-desktop {
+    padding-block: 26.5px;
+  }
+}
+
+.link {
+  @include uppercase;
+
+  color: var(--color-secondary);
+  text-decoration: none;
+
+  &:hover {
+    color: var(--color-white);
+  }
+
+  @include on-tablet {
+    padding-block: 18.5px;
+  }
+
+  @include on-desktop {
+    padding-block: 26.5px;
+  }
+}
+
+.activeLink {
+  color: var(--color-white);
+  position: relative;
+
+  &::after {
+    position: absolute;
+    z-index: 2;
+    content: '';
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background-color: var(--color-white);
+  }
+}
+
+.icons {
+  display: none;
+
+  @include on-tablet {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+.navLink {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  border-left: 1px solid var(--color-elements);
+  position: relative;
+
+  @include on-desktop {
+    padding: 24px;
+  }
+}
+
+.activeIcon {
+  color: var(--color-white);
+  position: relative;
+
+  &::after {
+    position: absolute;
+    z-index: 2;
+    content: '';
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background-color: var(--color-white);
+  }
+}
+
+.count {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 1px solid var(--color-background);
+  background-color: var(--color-red);
+
+  @include on-desktop {
+    top: 20px;
+    right: 14px;
+  }
+}
+
+.countText {
+  color: var(--color-white);
+  font-size: 9px;
+  font-weight: 600;
+  line-height: 11.5px;
+  text-align: center;
+}
+
+.menuBlock {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  border-left: 1px solid var(--color-elements);
+
+  @include on-tablet {
+    display: none;
+  }
+}
+
+.menuButton {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.burger {
+  background-color: transparent;
+}

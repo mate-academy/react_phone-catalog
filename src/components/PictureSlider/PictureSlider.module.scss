@@ -1,0 +1,119 @@
+@import "../../styles/main";
+
+.slider {
+  padding-top: 24px;
+  padding-bottom: 56px;
+
+  @include on-tablet {
+    padding-inline: 24px;
+
+    @include section-grid;
+
+    padding-top: 32px;
+    padding-bottom: 64px;
+  }
+
+  @include on-desktop {
+    justify-content: center;
+    padding-top: 56px;
+    padding-bottom: 80px;
+  }
+}
+
+.container {
+  grid-column: 1/-1;
+  display: flex;
+  overflow: hidden;
+  width: 100%;
+  height: 320px;
+
+  @include on-tablet {
+    grid-column: 2 / -2;
+    height: 360px;
+  }
+
+  @include on-desktop {
+    height: 432px;
+  }
+}
+
+.link {
+  display: flex;
+  align-items: center;
+  min-width: 100%;
+  cursor: pointer;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+
+  flex-shrink: 0;
+
+  transition: transform $transition-duration ease;
+}
+
+.button {
+  display: none;
+  width: 32px;
+  height: 100%;
+  background-color: var(--color-surface);
+  border: none;
+  cursor: pointer;
+
+  @include on-tablet {
+    display: block;
+    grid-column: span 1;
+  }
+
+  &:hover {
+    background-color: var(--color-icons);
+  }
+}
+
+.buttonIcon {
+  fill: var(--color-white);
+}
+
+.next {
+  @include on-tablet {
+    justify-self: end;
+  }
+}
+
+.dashes {
+  grid-column: 1/-1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  height: 24px;
+
+  @include on-tablet {
+    grid-column: 6/8;
+  }
+
+  @include on-desktop {
+    grid-column: 12/14;
+  }
+}
+
+.dashContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+}
+
+.dash {
+  height: 4px;
+  width: 14px;
+  background-color: var(--color-elements);
+
+  &.active {
+    background-color: var(--color-white);
+  }
+}

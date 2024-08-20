@@ -1,0 +1,73 @@
+@import "../../styles/main";
+
+.pagination {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  padding-top: 24px;
+  gap: 8px;
+
+  @include on-tablet {
+    flex-wrap: nowrap;
+    padding-top: 40px;
+  }
+
+  .button,
+  .numPage,
+  .activePage {
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 32px;
+    height: 32px;
+    background-color: var(--color-surface);
+    color: var(--color-white);
+  }
+
+  .button:hover {
+    background-color: var(--color-elements);
+  }
+
+  .numPage {
+    background-color: var(--color-primary);
+
+
+    &:hover {
+      background-color: var(--color-elements);
+    }
+  }
+
+  .activePage {
+    background-color: var(--color-accent);
+
+    &:hover {
+      background-color: var(--color-accent-hover);
+    }
+  }
+
+  .numbers {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    padding-inline: 16px;
+  }
+}
+
+@media (max-width: 600px) {
+  .pagination {
+    gap: 4px;
+
+    .button,
+    .numPage,
+    .activePage {
+      width: 28px;
+      height: 28px;
+    }
+  }
+}
+
+.ellipsis {
+  padding: 5px 10px;
+}

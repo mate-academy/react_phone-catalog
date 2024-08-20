@@ -1,0 +1,60 @@
+@import "../../styles/main";
+
+.section {
+  padding-top: 56px;
+  grid-column: 1 / -1;
+
+  @include on-desktop {
+    padding-top: 64px;
+    grid-column: 1 / 13;
+  }
+}
+
+.descriptionSection {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.sectionTitle {
+  @include h3-mobile;
+
+  color: var(--color-white);
+
+  @include on-tablet {
+    font-family: Mont, sans-serif;
+    font-size: 22px;
+    line-height: 31.8px;
+    letter-spacing: 0;
+    font-weight: 800;
+  }
+}
+
+.divider {
+  width: 100%;
+  height: 1px;
+  background-color: var(--color-elements);
+}
+
+.descriptionTitle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--color-white);
+
+  @include h4-mobile;
+
+  @include on-tablet {
+    font-family: Mont, sans-serif;
+    font-size: 20px;
+    line-height: 26px;
+    font-weight: 600;
+    letter-spacing: 0;
+  }
+}
+
+.descriptionText {
+  @include body-text;
+
+  color: var(--color-secondary);
+}

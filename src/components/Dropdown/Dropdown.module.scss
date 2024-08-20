@@ -1,0 +1,35 @@
+@import '../../styles/main';
+
+.label {
+  @include small-text;
+
+  color: var(--color-secondary);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.select {
+  width: 136px;
+  height: 40px;
+  padding: 10px 12px;
+  box-sizing: border-box;
+
+  @include buttons;
+
+  color: var(--color-white);
+  background-color: var(--color-secondary);
+  border: none;
+
+  &:hover {
+    background-color: var(--color-elements);
+  }
+
+  &:focus {
+    border: 1px solid var(--color-accent);
+  }
+
+  @include on-tablet {
+    width: 187px;
+  }
+}

@@ -1,0 +1,33 @@
+@import './styles/main';
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  color: var(--color-white);
+  background-color: var(--color-background);
+  min-width: 320px;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+img:hover {
+  transition: $transition-duration ease;
+  transform: scale(1.05);
+}
+
+button {
+  cursor: pointer;
+}
+
+.container {
+  flex: 1;
+  padding-block: 16px;
+}

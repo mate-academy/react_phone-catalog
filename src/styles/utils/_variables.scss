@@ -1,0 +1,24 @@
+$breakpoint-tablet: 640px;
+$breakpoint-middle: 768px;
+$breakpoint-desktop: 1200px;
+$with-icons-desktop: 64px;
+$with-icons-tablet: 48px;
+$height-on-desktop: 64px;
+$height-on-tablet: 48px;
+$transition-duration: 0.5s;
+
+:root {
+  --color-background: #0f1121;
+  --color-primary: #161827;
+  --color-surface: #323542;
+  --color-elements: #3b3e4a;
+  --color-icons: #4a4d58;
+  --color-secondary: #75767f;
+  --color-white: #f1f2f9;
+  --color-accent: #905bff;
+  --color-accent-hover: #a378ff;
+  --color-accent-dark: #7e42ff;
+  --color-green: #27ae60;
+  --color-red: #eb5757;
+  --color-midnight: #040622;
+}
