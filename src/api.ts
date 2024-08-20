@@ -1,8 +1,7 @@
 import { ProductType } from './types/ProductType';
 
 // eslint-disable-next-line operator-linebreak
-const BASE_URL =
-  'https://ivankovbohdan.github.io/react_phone-catalog/api/';
+const BASE_URL = 'https://ivankovbohdan.github.io/react_phone-catalog/api/';
 
 // This function creates a promise
 // that is resolved after a given delay

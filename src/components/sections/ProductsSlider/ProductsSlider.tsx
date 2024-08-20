@@ -16,18 +16,32 @@ export const ProductsSlider: React.FC<Props> = ({
   products,
 }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  // const [startX, setStartX] = useState<number | null>(null);
-  // const [isDragging, setIsDragging] = useState(false);
   const [itemWidth, setItemWidth] = useState(0);
-
   const listRef = useRef<HTMLUListElement | null>(null);
+  const [wrapperWidth, setWrapperWidth] = useState(0);
+  const wrapperRef = useRef<HTMLDivElement | null>(null);
+  const [frameSize] = useState(1);
+
+  // const frameSize = 1;
+  const step = 1;
+  const gap = 16;
+  const animationDuration = 1000;
 
   const calculateItemWidth = () => {
+    if (wrapperRef.current) {
+      setWrapperWidth(wrapperRef.current.clientWidth);
+    }
+
     if (listRef.current) {
       const firstItem = listRef.current.querySelector('li');
 
-      if (firstItem) {
-        setItemWidth(firstItem.clientWidth + 16);
+      if (firstItem && wrapperRef.current) {
+        setItemWidth(firstItem.clientWidth);
+
+        // const totalItemWidth = itemWidth + gap;
+        // const itemsInWrapper = Math.floor(wrapperWidth / totalItemWidth);
+
+        // setFrameSize(Math.min(Math.max(itemsInWrapper, 1), 4));
       }
     }
   };
@@ -41,61 +55,64 @@ export const ProductsSlider: React.FC<Props> = ({
     };
   }, [products.length]);
 
-  const step = 1;
-  // const gap = 16;
-  const animationDuration = 1000;
-
   const prev = useCallback(() => {
-    if (currentIndex > 1) {
-      setCurrentIndex(prevIndex => prevIndex - step);
-    }
+    setCurrentIndex(currentIndex === 1 ? 0 : currentIndex - step);
   }, [currentIndex]);
 
   const next = useCallback(() => {
+    // console.log(frameSize);
     setCurrentIndex(
-      currentIndex + step >= products.length - 1
-        ? products.length - 1
+      currentIndex + step >= products.length
+        ? products.length - frameSize
         : currentIndex + step,
     );
-  }, [currentIndex, products.length]);
+  }, [currentIndex, frameSize, products.length]);
 
   const translateX =
-    currentIndex === products.length - 1
-      ? (products.length - 1) * itemWidth - (window.innerWidth - itemWidth - 32)
-      : currentIndex * itemWidth;
+    currentIndex === products.length - frameSize
+      ? products.length * (itemWidth + gap) -
+        itemWidth -
+        gap -
+        (wrapperWidth - itemWidth)
+      : currentIndex * (itemWidth + gap);
 
-  // const handleTouchStart = (e: React.TouchEvent) => {
-  //   setStartX(e.touches[0].clientX);
-  //   setIsDragging(true);
-  // };
+  // TOUCH
 
-  // const handleTouchMove = (e: React.TouchEvent) => {
-  //   if (!isDragging || startX === null) {
-  //     return;
-  //   }
+  const [startX, setStartX] = useState<number | null>(null);
+  const [isDragging, setIsDragging] = useState(false);
 
-  //   const deltaX = e.touches[0].clientX - startX;
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setStartX(e.touches[0].clientX);
+    setIsDragging(true);
+  };
 
-  //   if (deltaX > 50 && currentIndex !== 1) {
-  //     prev();
-  //     setIsDragging(false);
-  //   } else if (deltaX < -50 && currentIndex < products.length - step) {
-  //     next();
-  //     setIsDragging(false);
-  //   }
-  // };
+  const handleTouchMove = (e: React.TouchEvent) => {
+    if (!isDragging || startX === null) {
+      return;
+    }
 
-  // const handleTouchEnd = () => {
-  //   setIsDragging(false);
-  //   setStartX(null);
-  // };
+    const deltaX = e.touches[0].clientX - startX;
+
+    if (deltaX > 50 && currentIndex !== 1) {
+      prev();
+      setIsDragging(false);
+    } else if (deltaX < -50 && currentIndex < products.length - step) {
+      next();
+      setIsDragging(false);
+    }
+  };
+
+  const handleTouchEnd = () => {
+    setIsDragging(false);
+    setStartX(null);
+  };
 
   return (
     <section
       className={`products-slider section ${className}`.trim()}
-      // onTouchStart={handleTouchStart}
-      // onTouchMove={handleTouchMove}
-      // onTouchEnd={handleTouchEnd}
+      onTouchStart={handleTouchStart}
+      onTouchMove={handleTouchMove}
+      onTouchEnd={handleTouchEnd}
     >
       <div className="container">
         <div className="products-slider__top">
@@ -121,14 +138,14 @@ export const ProductsSlider: React.FC<Props> = ({
           </div>
         </div>
 
-        <div className="products-slider__wrapper">
+        <div className="products-slider__wrapper" ref={wrapperRef}>
           <ul
-            ref={listRef}
             className="products-slider__list"
             style={{
               transform: `translateX(-${translateX}px)`,
               transition: `transform ${animationDuration}ms`,
             }}
+            ref={listRef}
           >
             {products.map(product => (
               <li className="products-slider__item" key={product.id}>
