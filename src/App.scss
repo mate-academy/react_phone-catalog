@@ -1,1 +1,16 @@
-// not empty
+@import "./styles/utils/fonts";
+
+* {
+  margin: 0;
+  background-color: #fff;
+  font-family: Mont, sans-serif;
+  font-style: normal;
+  line-height: normal;
+  transition: all 0.3s;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}

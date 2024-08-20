@@ -1,0 +1,25 @@
+@import '../styles/utils/mixins';
+
+.logo {
+  &__image {
+    height: 22px;
+    transition: all .3s;
+
+    &:hover {
+      transform: scale(1.2);
+    }
+
+    @include on-desktop {
+      height: 28px;
+    }
+  }
+
+  &__image-footer {
+    height: 32px;
+    transition: all .3s;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+}

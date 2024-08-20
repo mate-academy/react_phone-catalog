@@ -1,0 +1,40 @@
+@import '../../styles/index';
+
+.slider {
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 24px;
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 16px;
+  }
+
+  &__button {
+    height: 32px;
+    width: 32px;
+
+    &--disabled-left {
+      border: 1px solid $elements-gray;
+      background-image: url(../../images/icons/DisabledLeft.svg);
+    }
+
+    &--disabled-right {
+      border: 1px solid $elements-gray;
+      background-image: url(../../images/icons/DisabledRight.svg);
+    }
+  }
+
+  &__cards-container {
+    overflow: hidden;
+    width: 1136px;
+  }
+
+  &__cards {
+    display: flex;
+    gap: 16px;
+    transition: transform 1s;
+  }
+}
