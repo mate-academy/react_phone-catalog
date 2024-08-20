@@ -1,0 +1,33 @@
+@import '../../App';
+
+.favorites {
+  &__title {
+    @include header-font-l;
+
+    margin-top: 24px;
+
+    @include on-tablet {
+      margin-top: 40px;
+    }
+  }
+
+  &__quantity {
+    @include body-font;
+
+    margin-top: 8px;
+    color: $secondary-color;
+  }
+
+  &__container {
+    margin-top: 24px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(272px, 1fr));
+    grid-gap: 40px 16px;
+    justify-items: center;
+  }
+
+  &__empty {
+    object-fit: contain;
+    width: 50%;
+  }
+}

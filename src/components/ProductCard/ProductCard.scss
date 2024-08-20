@@ -1,0 +1,95 @@
+@import '../../App';
+
+.product {
+  &-card {
+    display: flex;
+    justify-content: space-between;
+    width: 288px;
+    height: 506px;
+    padding: 32px;
+    flex-direction: column;
+    border-radius: 8px;
+    border: 1px solid $stroke-color;
+    background: $white-color;
+    cursor: pointer;
+
+    @include on-tablet {
+      width: 272px;
+    }
+
+    &__divider {
+      height: 1px;
+      background-color: $stroke-color;
+      width: 100%;
+      margin-top: 8px;
+    }
+  }
+
+  &-image {
+    width: 208px;
+    height: 196px;
+    object-fit: contain;
+    transition: transform 0.3s ease-in-out;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+
+  &-title {
+    margin-top: 24px;
+
+    @include body-font;
+  }
+
+  &-price {
+    display: flex;
+    gap: 8px;
+    margin-top: 8px;
+
+    &--regular,
+    &--discount {
+      color: $primary-color;
+      font-family: Mont, sans-serif;
+      font-size: 22px;
+      font-weight: 800;
+      line-height: 140%;
+    }
+
+    &--discount {
+      color: $secondary-color;
+      font-weight: 500;
+      text-decoration-line: line-through;
+    }
+  }
+
+  &-description {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 8px;
+    width: 100%;
+
+    &__field {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    &__name,
+    &__value {
+      @include small-font;
+    }
+
+    &__name {
+      color: $secondary-color;
+      flex: 1;
+    }
+  }
+
+  &-actions {
+    display: flex;
+    width: 100%;
+    margin-top: 16px;
+    gap: 8px;
+  }
+}

@@ -1,0 +1,98 @@
+@import './variables';
+
+@mixin on-tablet {
+  @media (min-width: 640px) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media (min-width: 1200px) {
+    @content;
+  }
+}
+
+@mixin header-font-l {
+  color: $primary-color;
+  font-family: Mont, sans-serif;
+  font-size: 32px;
+  font-weight: 800;
+  line-height: 41px;
+  letter-spacing: -0.32px;
+
+  @include on-desktop {
+    font-size: 48px;
+    line-height: 56px;
+    letter-spacing: -0.48px;
+  }
+}
+
+@mixin header-font-m {
+  color: $primary-color;
+  font-family: Mont, sans-serif;
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 140%;
+
+  @include on-desktop {
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -0.32px;
+  }
+}
+
+@mixin header-font-s {
+  color: $primary-color;
+  font-family: Mont, sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+
+  @include on-desktop {
+    font-size: 22px;
+    font-weight: 800;
+    line-height: 140%;
+  }
+}
+
+@mixin header-font-xs {
+  color: $primary-color;
+  font-family: Mont, sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+
+  @include on-desktop {
+    font-size: 20px;
+  }
+}
+
+@mixin uppercase-font {
+  color: $primary-color;
+  font-family: Mont, sans-serif;
+  font-size: 12px;
+  font-weight: 800;
+  line-height: 11px;
+  letter-spacing: 0.48px;
+  text-transform: uppercase;
+}
+
+@mixin buttons-font {
+  color: $primary-color;
+  font-family: Mont, sans-serif;
+  font-size: 14px;
+  line-height: 21px;
+}
+
+@mixin body-font {
+  color: $primary-color;
+  font-family: Mont, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 21px;
+}
+
+@mixin small-font {
+  color: $primary-color;
+  font-family: Mont, sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+}

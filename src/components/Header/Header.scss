@@ -1,0 +1,145 @@
+@import '../../App';
+
+.top-bar {
+  position: sticky;
+  z-index: 1;
+  top: 0;
+  height: 48px;
+  background: $white-color;
+  box-shadow: 0 1px 0 0 $stroke-color;
+  align-content: center;
+
+  @include on-desktop {
+    height: 64px;
+  }
+
+  &__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__logo {
+    display: flex;
+    margin-inline: 16px;
+
+    @include on-desktop {
+      margin-inline: 24px;
+      width: 80px;
+      height: 28px;
+    }
+  }
+
+  &__links {
+    display: none;
+
+    @include on-tablet {
+      display: flex;
+      margin-left: 16px;
+      gap: 32px;
+    }
+
+    @include on-desktop {
+      gap: 64px;
+      margin-left: 24px;
+    }
+  }
+
+  &__link {
+    @include uppercase-font;
+
+    color: $secondary-color;
+    text-decoration: none;
+    transition: color 0.3s ease;
+
+    @include on-tablet {
+      padding-block: 17px;
+    }
+
+    @include on-desktop {
+      padding-block: 25px;
+    }
+
+    &:hover {
+      color: $primary-color;
+    }
+  }
+
+  &__icons {
+    display: none;
+    margin-left: auto;
+
+    @include on-tablet {
+      display: flex;
+    }
+  }
+
+  &__icon-label {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 14px;
+    min-height: 14px;
+    background-color: $accent-color;
+    color: $white-color;
+    border-radius: 50%;
+    font-family: Mont, sans-serif;
+    font-size: 9px;
+    font-weight: 600;
+    border: 1px solid $white-color;
+    position: absolute;
+    right: 30%;
+    top: 30%;
+  }
+}
+
+.icon {
+  display: block;
+  height: 48px;
+  width: 48px;
+  text-decoration: none;
+  position: relative;
+  background-repeat: no-repeat;
+  background-position: center;
+  box-shadow: -1px 0 0 0 $stroke-color;
+
+  &--active {
+    &::before {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 3px;
+      background-color: $primary-color;
+      bottom: 0;
+    }
+  }
+
+  @include on-desktop {
+    height: 64px;
+    width: 64px;
+  }
+
+  &--favourites {
+    background-image: url('../../../public/img/icons/fav.svg');
+  }
+
+  &--cart {
+    background-image: url('../../../public/img/icons/cart.svg');
+  }
+
+  &--menu {
+    background-image: url('../../../public/img/icons/menu.svg');
+
+    @include on-tablet {
+      display: none;
+    }
+  }
+
+  &--close {
+    background-image: url('../../../public/img/icons/close.svg');
+  }
+}
+
+.is-active {
+  border-bottom: 3px solid $primary-color;
+}

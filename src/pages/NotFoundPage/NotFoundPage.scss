@@ -1,0 +1,13 @@
+@import '../../App';
+
+.not-found {
+  margin-top: 16px;
+  display: flex;
+  justify-content: space-between;
+
+  &__img {
+    object-fit: contain;
+    width: 50%;
+    height: 50%;
+  }
+}

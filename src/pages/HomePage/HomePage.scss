@@ -1,0 +1,21 @@
+@import '../../App';
+
+.page {
+  margin-top: 24px;
+
+  @include on-tablet {
+    margin-top: 32px;
+  }
+
+  @include on-desktop {
+    margin-top: 56px;
+  }
+
+  &__title {
+    @include header-font-l;
+  }
+
+  &__subtitle {
+    @include header-font-m;
+  }
+}

@@ -1,0 +1,38 @@
+@import '../../App';
+
+.pagination {
+  margin-top: 24px;
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+
+  &__btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 32px;
+    height: 32px;
+    flex-shrink: 0;
+    border-radius: 48px;
+    border: 1px solid $icons-placeholder-color;
+
+    @include body-font;
+
+    line-height: normal;
+
+    &:hover {
+      border: 1px solid $primary-color;
+    }
+
+    &--active {
+      border-radius: 48px;
+      background: $primary-color;
+      color: $white-color;
+    }
+
+    &--disabled {
+      border: 1px solid $stroke-color;
+      pointer-events: none;
+    }
+  }
+}
