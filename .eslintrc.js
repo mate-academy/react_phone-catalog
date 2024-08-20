@@ -4,4 +4,5 @@ module.exports = {
     'plugin:cypress/recommended',
   ],
   rules: {},
+  ignorePatterns: ['src/index.d.ts'],
 };

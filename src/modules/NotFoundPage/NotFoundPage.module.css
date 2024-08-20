@@ -1,0 +1,78 @@
+.not_found_container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  text-align: center;
+  background-color: var(--background-color);
+  color: var(--font-color-primary);
+  background-image: url(../../../public/img/pageNotFound/404-error-template-flat-style.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  padding: 20px;
+  height: 100vh;
+}
+
+.not__found__title {
+  font-size: 49px;
+  margin-bottom: 40px;
+}
+
+.not__found__link {
+  font-size: 20px;
+  text-decoration: none;
+  margin-bottom: 60px;
+  padding: 8px 16px;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
+}
+
+@media (max-width: 1200px) {
+  .not_found_container {
+    background-size: 70%;
+  }
+
+  .not__found__title {
+    font-size: 50px;
+  }
+
+  .not__found__link {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 640px) {
+  .not_found_container {
+    background-size: 100%;
+  }
+
+  .not__found__title {
+    font-size: 40px;
+  }
+
+  .not__found__link {
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .not__found__title {
+    font-size: 35px;
+  }
+
+  .not__found__link {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 320px) {
+  .not__found__title {
+    font-size: 30px;
+  }
+
+  .not__found__link {
+    font-size: 10px;
+  }
+}

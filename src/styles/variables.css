@@ -1,0 +1,42 @@
+:root {
+  --primary-font: 'Mont', sans-serif;
+  --font-color-primary: #313237;
+  --font-color-secondary: #89939a;
+  --color-primary: #313237;
+  --color-red: #eb5757;
+  --color-green: #27ae60;
+  --elements-color: #e2e6e9;
+  --background-color: #fff;
+  --accent-color: #313237;
+  --button-bg: #fff;
+  --button-border: #b4bdc3;
+  --button-border-hover: #313237;
+  --button-border-selected: #e2e6e9;
+  --button-bg-hover: #fff;
+  --button-color-border-selected: #e2e6e9;
+  --button-primary-bg-hover: #424348;
+  --card-bg-color: #fff;
+  --card-border: #e2e6e9;
+  --card-border-hover: #89939a;
+  --dropdown-bg-hover: #fafbfc;
+}
+
+[data-theme='dark'] {
+  --color-primary: #f1f2f9;
+  --font-color-primary: #f1f2f9;
+  --font-color-secondary: #75767f;
+  --elements-color: #323542;
+  --background-color: #0f1121;
+  --accent-color: #905bff;
+  --button-bg: #323542;
+  --button-border: #323542;
+  --button-border-hover: #4a4d58;
+  --button-border-selected: #3b3e4a;
+  --button-bg-hover: #4a4d58;
+  --button-color-border-selected: #323542;
+  --button-primary-bg-hover: #a378ff;
+  --card-bg-color: #161827;
+  --card-border: #3b3e4a;
+  --card-border-hover: #75767f;
+  --dropdown-bg-hover: #323542;
+}

@@ -1,0 +1,127 @@
+.footer {
+  border-top: 1px solid var(--elements-color);
+}
+
+.footer_content {
+  height: 96px;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  align-items: center;
+}
+
+.footer__logo_container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 379px;
+}
+
+.footer__logo {
+  width: 89px;
+  height: 32px;
+  transition-duration: 0.3s;
+}
+
+.footer__logo:hover {
+  transform: scale(1.1);
+}
+
+.footer__link__container {
+  width: 379px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--font-color-secondary);
+}
+
+.footer__link {
+  text-transform: uppercase;
+  font-family: Mont, sans-serif;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  transition: color 0.3s ease-in-out;
+}
+
+.footer__link:hover {
+  color: var(--accent-color);
+}
+
+.back__to__top_link {
+  font-family: Mont, sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  color: var(--font-color-secondary);
+  scroll-behavior: smooth;
+  transition: color 0.3s ease-in-out;
+}
+
+.back__to__top:hover {
+  color: var(--font-color-primary);
+}
+
+.back__to__top::first-letter {
+  text-transform: uppercase;
+}
+
+.back_to_top_content {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+  width: 379px;
+}
+
+.back_to_top_content:hover .back__to__top_link {
+  color: var(--font-color-primary);
+}
+
+.back_to_top_content:hover .back__to__top_link::after {
+  border: 1px solid var(--font-color-secondary);
+}
+
+@media (max-width: 640px) {
+  .footer__logo_container {
+    width: 192px;
+  }
+  .footer__link__container {
+    width: 192px;
+  }
+  .back_to_top_content {
+    width: 192px;
+  }
+}
+
+@media (min-width: 320px) and (max-width: 639px) {
+  .footer__logo_container {
+    width: 100%;
+  }
+
+  .footer__link:not(:last-child) {
+    margin-bottom: 16px;
+  }
+
+  .footer__link__container {
+    width: 100%;
+
+    flex-direction: column;
+    align-items: first baseline;
+  }
+
+  .back_to_top_content {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .footer_content {
+    height: 257px;
+    margin: 32px 0;
+    flex-direction: column;
+    align-items: center;
+  }
+}

@@ -1,0 +1,29 @@
+.content {
+  padding: 24px 0 80px;
+}
+
+.container {
+  display: flex;
+  gap: 8px;
+  height: 20px;
+  align-items: stretch;
+  margin-bottom: 40px;
+}
+
+.link,
+.activeLink {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  font-weight: 600;
+  font-size: 12px;
+}
+
+.icon {
+  width: 16px;
+  height: 16px;
+}
+
+.activeLink {
+  color: var(--font-color-secondary);
+}
