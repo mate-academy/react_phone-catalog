@@ -1,0 +1,133 @@
+@import '../../shared/global/utils/mixins';
+@import '../../shared/global/globalStyles/globalStyles.scss';
+@import '../../shared/global/utils/vars';
+
+.header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  background-color: $white;
+
+  position: sticky;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 3;
+  height: 48px;
+
+  @include on-desktop {
+    height: 64px;
+  }
+
+  border-bottom: 1px solid $elements-border-color;
+
+  &__logo {
+    padding: 13px 16px;
+    align-items: center;
+    justify-content: center;
+
+    @include on-desktop {
+      padding: 18px 24px;
+    }
+  }
+
+  &__logoimage {
+    display: block;
+    height: 21px;
+    width: 64px;
+
+    @include on-desktop {
+      height: 28px;
+      width: 80px;
+    }
+  }
+
+  &__left {
+    display: flex;
+    flex-direction: row;
+
+    gap: 16px;
+
+    @include on-desktop {
+      gap: 24px;
+    }
+  }
+
+  &__right {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 100%;
+
+    &_main {
+      display: none;
+
+      @include on-tablet {
+        display: flex;
+        flex-direction: row;
+        height: 100%;
+      }
+    }
+  }
+
+  &__buttons {
+    display: none;
+
+    @include on-tablet {
+      display: flex;
+      flex-direction: row;
+      height: 100%;
+    }
+  }
+
+  &__button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    position: relative;
+    text-decoration: none;
+
+    padding-inline: 24px;
+    border-left: 1px solid $elements-border-color;
+
+    &:hover {
+      color: $main-text-color;
+    }
+
+    &_img {
+      position: relative;
+    }
+
+    &_active {
+      color: $main-text-color;
+      @include navbar-item-after;
+    }
+  }
+
+  &__burger {
+    @include on-tablet {
+      display: none;
+    }
+  }
+
+  &__infolabel {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 14px;
+    height: 14px;
+    box-sizing: border-box;
+    border: 1px solid white;
+    border-radius: 50%;
+    background-color: #eb5757;
+    color: white;
+    font-size: 9px;
+    text-decoration: none;
+
+    position: absolute;
+    top: 18px;
+    right: 18px;
+  }
+}
