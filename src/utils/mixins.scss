@@ -1,0 +1,25 @@
+
+
+@mixin ontablet {
+  @media (min-width: $tablet-min-with) {
+    @content;
+  }
+}
+
+@mixin ondesktop {
+  @media (min-width: $desctop-min-with) {
+    @content;
+  }
+}
+
+@mixin content-paddin-inline() {
+  padding-inline: 16px;
+
+  @include ontablet {
+    padding-inline: 24px;
+  }
+
+  @include ondesktop {
+    padding-inline: 32px;
+  }
+}

@@ -1,0 +1,139 @@
+@import '../../utils/mixins';
+@import '../../utils/variables';
+
+.page {
+  margin-top: 24px;
+
+  &__container,
+  &__filter-by,
+  &__content {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__container {
+    gap: 32px;
+    max-width: 1160px;
+    margin: 0 auto;
+
+    @include content-paddin-inline;
+  }
+
+  &__filter {
+    display: flex;
+    justify-content: start;
+    gap: 16px;
+  }
+
+  &__title {
+    color: $main-text-color;
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 41px;
+
+    @include ontablet {
+      font-size: 48px;
+      line-height: 56px;
+    }
+  }
+
+  &__subtitle {
+    color: $tech-specs-color;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+  }
+
+  &__content {
+    gap: 24px;
+  }
+
+  &__filter-by {
+    gap: 4px;
+  }
+
+  &__selection {
+    width: 136px;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 21px;
+    padding: 10px 12px;
+    cursor: pointer;
+
+    @include ondesktop {
+      width: 148px;
+    }
+  }
+
+  &__item {
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 21px;
+
+    &:hover {
+      color: $main-text-color!important;
+      background-color:#323542!important;
+    }
+  }
+
+  &__filter-name {
+    color: $tech-specs-color;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 15px;
+  }
+
+  &__items {
+    display: grid;
+    gap: 40px 16px;
+    grid-template-columns: repeat(auto-fill, minmax(221px, 1fr));
+  }
+
+  &__button {
+    width: 136px;
+    justify-content: space-between!important;
+    align-items: center;
+    color: $main-text-color!important;
+    background-color: #323542;
+    border: none;
+  }
+
+  &__arrow {
+    width: 16px;
+    height: 16px;
+
+    &--up {
+      background-image: url('./img/arrow-up.svg');
+    }
+
+    &--down {
+      background-image: url('./img/arrow-down.svg');
+    }
+  }
+
+  &__main {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__breadcrumbs {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    margin-bottom: 16px;
+  }
+
+  &__breadcrumbs-link {
+    display: block;
+    width: 16px;
+    height: 16px;
+  }
+
+  &__current {
+    color: #89939A;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 15px;
+  }
+}

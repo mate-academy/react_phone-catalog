@@ -1,0 +1,79 @@
+@import '../../../utils/mixins';
+@import '../../../utils/variables';
+
+.category {
+  display: flex;
+  flex-direction: column;
+  margin-top: 56px;
+  gap: 24px;
+
+  @include ontablet {
+    margin-top: 64px;
+  }
+
+  @include ondesktop {
+    margin-top: 80px;
+  }
+
+  @include content-paddin-inline;
+
+  &__title {
+    color: $main-text-color;
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 31px;
+
+    @include ontablet {
+      font-size: 32px;
+      line-height: 41px;
+    }
+  }
+
+  &__list {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 32px;
+
+    @include ontablet {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+  }
+
+  &__item {
+    padding-bottom: 20px;
+    cursor: pointer;
+  }
+
+  &__link,
+  &__text {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__link {
+    gap: 24px;
+    color: $main-text-color;
+
+    &:hover {
+      color: $main-text-color;
+    }
+  }
+
+  &__text {
+    gap: 8px;
+  }
+
+  &__name {
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 26px;
+  }
+
+  &__count {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+    color:#89939A;
+  }
+}

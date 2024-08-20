@@ -1,0 +1,55 @@
+@import '../../utils/mixins';
+@import '../../utils/variables';
+
+.modal-window {
+  display: flex;
+  position: fixed;
+  flex-direction: column;
+  inset: 50%;
+  z-index: 90;
+  width: 50vw;
+  height: fit-content;
+  gap: 25px;
+  text-align: center;
+  transform: translate(-50%, -50%);
+  background-color: rgba(22, 24, 39, .4);
+  padding: 0 20px;
+  padding-block: 20px;
+  backdrop-filter: blur(10px);
+
+  @include ontablet {
+    padding-block: 100px;
+  }
+
+  &__title {
+    color: $main-text-color;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 20px;
+
+    @include ontablet {
+      font-size: 22px;
+      line-height: 31px;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+  }
+
+  &__button {
+    color: $main-text-color;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+    padding: 6px 10px;
+    background-color:
+    #905BFF;
+
+    &:hover {
+      background-color:  #A378FF;
+    }
+  }
+}

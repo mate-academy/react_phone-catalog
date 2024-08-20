@@ -1,0 +1,25 @@
+@import '../../../utils/variables';
+@import '../../../utils/mixins';
+
+.main {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  &__title {
+    color: $main-text-color;
+    font-size: 32px;
+    font-weight: 800;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+    padding: 0 16px;
+
+
+    @include ontablet {
+     font-size: 48px;
+     line-height: 56px;
+     padding: 0 24px;
+     letter-spacing: -0.01em;
+    }
+  }
+}

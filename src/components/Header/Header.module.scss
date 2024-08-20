@@ -1,0 +1,153 @@
+@import '../../utils/variables';
+@import '../../utils/mixins';
+
+.header {
+  box-shadow: 0 1px 0 0 #323542;
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+
+  display: flex;
+  gap: 32px;
+  justify-content: space-between;
+  align-items: center;
+  height: 48px;
+  padding-left: 16px;
+  background-color: $main-bg-color;
+
+
+  @include ondesktop {
+    padding-left: 24px;
+    height: 64px;
+    gap: 48px;
+  }
+
+  &__logo img {
+    width: 64px;
+    height: 22px;
+
+    @include ondesktop {
+      width: 80px;
+      height: 28px;
+
+    }
+  }
+
+  &__toplist {
+    display: none;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+
+    @include ontablet {
+      display: flex;
+    }
+  }
+
+  &__list {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+
+    &--pages {
+      gap: 32px;
+
+      @include ondesktop {
+        gap: 64px;
+      }
+    }
+  }
+
+  &__item {
+    height: 100%;
+  }
+
+  &__link {
+    display: flex;
+    position: relative;
+    color: $navigation-link-color;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    font-weight: 800;
+    font-size: 12px;
+    line-height: 11px;
+    letter-spacing: 4%;
+    text-transform: uppercase;
+
+    &:hover {
+      color: $main-text-color;
+    }
+
+    &--add {
+      width: 48px;
+      box-shadow: -1px 0 0 0 #323542;
+
+      &:hover {
+        background-color: #4a4d58;
+      }
+
+      @include ondesktop {
+        width: 64px;
+      }
+    }
+
+    &--active {
+      color: $main-text-color;
+
+      &::after {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 3px;
+        background-color: $main-text-color;
+        bottom: 0;
+      }
+    }
+  }
+
+  &__burger-icon {
+    display: flex;
+    width: 48px;
+    height: 48px;
+    justify-content: center;
+    align-items: center;
+    line-height: 0;
+    box-shadow: -1px 0 0 0 #323542;
+    cursor: pointer;
+
+    &:hover {
+      background-color: #4a4d58;
+    }
+
+    @include ontablet {
+      display: none;
+    }
+  }
+
+  &__span {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    border: 1px solid #0F1121;
+    background-color: #EB5757;
+    font-size: 9px;
+    font-weight: 700;
+    line-height: 11px;
+    color: $main-text-color;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    @include ondesktop {
+      top: 18px;
+      right: 18px;
+    }
+  }
+}
