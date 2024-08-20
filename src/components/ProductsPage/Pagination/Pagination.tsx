@@ -21,7 +21,7 @@ export const Paginations: React.FC<Props> = ({
 
   useEffect(() => {
     if (perPage === PerPage.All) {
-      setOnPage(1);
+      setOnPage(0);
     } else {
       setOnPage(+perPage);
     }
@@ -30,9 +30,9 @@ export const Paginations: React.FC<Props> = ({
   return (
     <div className="paginations">
       <Pagination
-        currentPage={currentIndex}
+        currentPage={currentIndex + 1}
         itemsPerPage={onPage}
-        onPageChange={index => setCurrentIndex(index)}
+        onPageChange={index => setCurrentIndex(index - 1)}
         totalItems={products.length}
         pageNeighbours={2}
         prevLabel={'<'}
