@@ -1,0 +1,50 @@
+@import '../../styles/main';
+
+.product-list{
+  @include page-grid;
+  
+  min-width: 100%;
+
+  &__title {
+    @include on-mobile {
+      grid-column: 1 / -1;
+      margin-bottom: 8px;
+    }
+  }
+
+  &__quantity {
+    grid-column: 1 / -1;
+    margin-bottom: 40px;
+    color: $secondaryColor;
+  }
+
+  &__select {
+    grid-column: 1 / -1;
+  }
+
+  &__pagination {
+    grid-column: 1 / -1;
+  }
+
+  &__no-result {
+    @include on-mobile {
+      width: 65vw;
+      height: 50vw;
+      grid-column: 1 / -1;
+      background-image: url('../../images/img/product-not-found.png');
+      background-repeat: no-repeat;
+      background-size: contain;
+      margin-inline: auto;
+    }
+
+    @include on-tablet {
+      width: 65vw;
+      height: 50vw;
+    }
+
+    @include on-desktop {
+      width: 900px;
+      height: 700px;
+    }
+  }
+}

@@ -1,0 +1,72 @@
+@import '../../styles/main';
+
+.pagination {
+  display: flex;
+  gap: 8px;
+  list-style: none;
+  justify-content: center;
+  margin-bottom: 80px;
+
+  &__button {
+    font-family: Mont, serif;
+    font-size: 14px;
+    box-sizing: border-box;
+    display: block;
+    height: 32px;
+    width: 32px;
+    border: solid 1px $iconsColor;
+    cursor: pointer;
+    background-color: $whiteColor;
+    border-radius: 50%;
+
+    &:first-child {
+      margin-right: 8px;
+    }
+
+    &:last-child {
+      margin-left: 8px;
+    }
+
+    &:hover {
+      border: 1px solid $primaryColor;
+    }
+  }
+
+  &__button-left {
+    background-image: url("../../images/icons/arrow-left.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 16px;
+  }
+
+  &__button-item {
+    text-align: center;
+    line-height: 32px;
+    color: $primaryColor;
+  }
+
+  &__button-right {
+    background-image: url("../../images/icons/arrow-right.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 16px;
+  }
+
+  &__skip {
+    margin-top: 10px;
+  }
+}
+
+.activePage {
+  background-color: $primaryColor;
+  color: $whiteColor;
+}
+
+.isFirstPage,
+.isLastPage {
+  cursor: no-drop;
+
+  &:hover {
+    border: 1px $iconsColor solid;
+  }
+}
