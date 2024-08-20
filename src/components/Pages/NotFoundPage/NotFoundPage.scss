@@ -1,0 +1,22 @@
+@import './../../../styles/utils/mixins';
+@import './../../../styles/utils/vars';
+@import './../../../styles/headingStyles';
+
+.notFoundPage {
+  margin-top: calc(50px + $small-nav-height);
+
+  @include on-desktop {
+    margin-top: calc(50px + $big-nav-height);
+  }
+
+  &__image-block {
+    display: grid;
+    place-items: center;
+    margin-block: 50px;
+  }
+
+  &__image {
+    width: 40%;
+  }
+}
+

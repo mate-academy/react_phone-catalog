@@ -1,0 +1,48 @@
+  @import './../../styles/utils/vars';
+  @import './../../styles/utils/mixins';
+
+  .link {
+    position: relative;
+    display: flex;
+    align-items: center;
+
+    text-decoration: none;
+    font-family: MontBold, sans-serif;
+    font-weight: 800;
+    font-size: 12px;
+    color: $nav-link-color;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    transition-duration: $duration-time;
+    padding-block: 7px;
+
+
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      height: 3px;
+      width: 100%;
+      background-color: $nav-activelink-underline;
+
+      transition: transform $duration-time;
+      transform: scale(0);
+      transform-origin: left;
+    }
+
+    &:hover::after {
+      transform: scale(1);
+    }
+
+    &:hover {
+      color: $nav-activelink-underline;
+    }
+
+    &.activeLink::after {
+      transform: scale(1);
+    }
+  }
+
+.activeLink {
+  color: $nav-activelink-underline;
+}

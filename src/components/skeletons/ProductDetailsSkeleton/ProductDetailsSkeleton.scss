@@ -1,0 +1,182 @@
+@import './../../../styles/utils/mixins';
+@import './../../../styles/utils/vars';
+
+.skelet {
+  background: rgba(130, 130, 130, 0.2);
+  background: -webkit-gradient(linear, left top, right top, color-stop(8%, rgba(130, 130, 130, 0.2)), color-stop(18%, rgba(130, 130, 130, 0.3)), color-stop(33%, rgba(130, 130, 130, 0.2)));
+  background: linear-gradient(to right, rgba(130, 130, 130, 0.2) 8%, rgba(130, 130, 130, 0.3) 18%, rgba(130, 130, 130, 0.2) 33%);
+  background-size: 800px 100px;
+  animation: wave-squares 2s infinite ease-out;
+  pointer-events: none;
+  border: none;
+}
+
+.productDetailsSkeleton {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+
+  &__navigation {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    margin-bottom: 16px;
+
+    @include on-tablet {
+      gap: 40px;
+    }
+
+    &--path {
+      width: 288px;
+      height: 16px;
+
+      @include on-tablet {
+        width: 320px;
+      }
+    }
+
+    &--back {
+      width: 50px;
+      height: 16px;
+    }
+  }
+
+  &__title {
+    width: 288px;
+    height: 22px;
+
+    @include on-tablet {
+      width: 600px;
+      height: 32px;
+    }
+  }
+
+  &__id {
+    display: flex;
+    justify-content: flex-end;
+
+    &--num-small {
+      width: 30px;
+      height: 15.34px;
+
+      @include on-desktop {
+        display: none;
+      }
+    }
+
+    &--num-big {
+      @include on-desktop {
+        width: 30px;
+        height: 15.34px;
+      }
+    }
+  }
+
+  &__photoBlock {
+    &--small-photo {
+      width: 50px;
+      height: 50px;
+
+      @include on-tablet {
+        width: 35px;
+        height: 35px;
+      }
+
+      @include on-desktop {
+        width: 80px;
+        height: 80px;
+      }
+    }
+
+    &--big-photo {
+      height: 288px;
+
+      @include on-tablet {
+        height: auto;
+      }
+    }
+  }
+
+  &__charactBlock {
+    &--text {
+      width: 100px;
+      height: 15.34px;
+    }
+
+    &--color {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+    }
+
+    &--capacity {
+      width: 60px;
+      height: 32px;
+      border-radius: 4px;
+    }
+  }
+
+  &__priceBlock {
+    &--mainPrice {
+      width: 74px;
+      height: 32px;
+    }
+
+    &--fullPrice {
+      width: 48px;
+      height: 32px;
+    }
+  }
+
+  &__techSpecs {
+    &--param {
+      width: 45%;
+      height: 21px;
+    }
+  }
+
+  &__about {
+    &--title {
+      width: 100px;
+      height: 38.8px;
+    }
+
+    &--subtitle {
+      width: 200px;
+      height: 16px;
+
+      @include on-tablet {
+        height: 20px;
+      }
+    }
+
+    &--text {
+      width: 100%;
+      height: 126px;
+
+      @include on-tablet {
+        height: 63px;
+      }
+    }
+  }
+}
+
+@keyframes wave-lines {
+  0% {
+    background-position: -468px 0;
+  }
+
+  100% {
+    background-position: 468px 0;
+  }
+}
+
+@keyframes wave-squares {
+  0% {
+    background-position: -468px 0;
+  }
+
+  100% {
+    background-position: 468px 0;
+  }
+}

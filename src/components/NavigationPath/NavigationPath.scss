@@ -1,0 +1,68 @@
+@import './../../styles/utils/mixins';
+@import './../../styles/utils/vars';
+
+.navigationPath {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin-bottom: 16px;
+
+  @include on-tablet {
+    gap: 40px;
+  }
+
+  &__container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  &__arrow {
+    rotate: 270deg;
+  }
+
+  &__home {
+    display: flex;
+  }
+
+  &__pathes {
+    font-family: MontRegular, sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    color: $nav-link-color;
+    text-decoration: none;
+    pointer-events: none;
+    height: 15px;
+
+    &--active {
+      pointer-events: inherit;
+      color: $text-color;
+    }
+
+    &--overflow {
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+  }
+
+  &__back {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    text-decoration: none;
+    width: max-content;
+    opacity: 0.7;
+    transition-duration: $duration-time;
+
+    &:hover {
+      cursor: pointer;
+      opacity: 1;
+    }
+
+    &--text {
+      height: 15px;
+      color: $nav-link-color;
+    }
+  }
+}
