@@ -1,0 +1,130 @@
+@import '../../../styles/main';
+
+.cartItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  padding: 16px;
+  border: 1px solid var(--color-elements);
+  width: 100%;
+
+  @include on-tablet {
+    gap: 24px;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+
+.mainContainer {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  gap: 16px;
+
+}
+
+.deleteButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+
+  &:hover img {
+    transform: scale(1.1);
+  }
+}
+
+.deleteButtonIcon {
+  width: 16px;
+  height: 16px;
+}
+
+.productImage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  height: 80px;
+}
+
+.image {
+  width: 66px;
+  height: 66px;
+  object-fit: contain;
+}
+
+.quantityControl {
+  display: flex;
+  height: 32px;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+
+  @include on-tablet {
+    flex: 1;
+    gap: 24px;
+  }
+}
+
+.quantity {
+  display: flex;
+  align-items: center;
+  width: 96px;
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  border: 1px solid var(--color-surface);
+  background-color: var(--color-icons);
+  height: 32px;
+  cursor: pointer;
+
+  transition: transform $transition-duration ease;
+
+  &:hover {
+    transform: scale(1.1);
+    border: 1px solid var(--color-primary);
+    background-color: var(--color-hover);
+  }
+}
+
+.disabled {
+  cursor: default;
+  background-color: var(--color-background);
+  opacity: 0.5;
+
+  &:hover {
+    transform: none;
+    border: 1px solid var(--color-surface);
+    background-color: transparent;
+  }
+}
+
+.controlButtonIcon {
+  width: 16px;
+  height: 16px;
+  border: none;
+  background: transparent;
+}
+
+.quantityValueContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 32px;
+  width: 32px;
+}
+
+.quantityValue {
+  @extend %body-text;
+}
+
+.price{
+  @extend %h3-tablet;
+}
