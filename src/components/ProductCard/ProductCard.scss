@@ -1,7 +1,12 @@
 @import '../../utils/mixins';
-@import '../../utils/variadbles';
+@import '../../utils/variables';
 
-// #region productcard
+
+.product-link {
+  text-decoration: none;
+  color: var(--dark-gray-color);
+}
+
 .product-card {
   padding: 32px;
   width: 212px;
@@ -158,5 +163,3 @@
     }
   }
 }
-
-// #endregion

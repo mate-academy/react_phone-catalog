@@ -2,9 +2,6 @@ import { useContext, useEffect, useRef, useState } from 'react';
 import { Product } from '../../types/Propduct';
 
 import productsFromServer from '../../api/products.json';
-import phonesFromServer from '../../api/phones.json';
-import tabletsFromServer from '../../api/tablets.json';
-import accessoriesFromServer from '../../api/accessories.json';
 
 import { Navigation, Pagination, Autoplay } from 'swiper/modules';
 
@@ -22,6 +19,7 @@ import { Tablet } from '../../utils/TabletContext';
 import { Header } from '../Header/Header';
 import { Menu } from '../Menu/Menu';
 import { MenuOpen } from '../../utils/MenuContext';
+import { Footer } from '../Footer/Footer';
 
 export const HomePage = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -45,6 +43,28 @@ export const HomePage = () => {
     } else {
       return 1.4;
     }
+  };
+
+  const filterProducts = (products: Product[]) => {
+    const filteredProducts: Product[] = [];
+
+    products.forEach(item => {
+      if (
+        ((item.category === 'tablets' || item.category === 'phones') &&
+          item.itemId.includes('256gb')) ||
+        (item.category === 'accessories' && item.itemId.includes('40mm'))
+      ) {
+        filteredProducts.push(item);
+      }
+    });
+
+    return filteredProducts;
+  };
+
+  const sortByCategory = (category: string) => {
+    return productsFromServer.filter(
+      (product: Product) => product.category === category,
+    );
   };
 
   useEffect(() => {
@@ -165,23 +185,11 @@ export const HomePage = () => {
               setCurrentSlide(swiper.realIndex);
             }}
           >
-            {brandsProducts.map(product => {
-              if (
-                ((product.category === 'tablets' ||
-                  product.category === 'phones') &&
-                  product.itemId.includes('256gb')) ||
-                (product.category === 'accessories' &&
-                  product.itemId.includes('40mm'))
-              ) {
-                return (
-                  <SwiperSlide key={product.id}>
-                    <ProductCard id={product.id} />
-                  </SwiperSlide>
-                );
-              } else {
-                return null;
-              }
-            })}
+            {filterProducts(brandsProducts).map(product => (
+              <SwiperSlide key={product.id}>
+                <ProductCard id={product.id} />
+              </SwiperSlide>
+            ))}
           </Swiper>
         </section>
         <section className="categories">
@@ -199,7 +207,7 @@ export const HomePage = () => {
               <h4 className="categories__subtitle">Mobile phones</h4>
             </a>
             <p className="categories__quantity">
-              {phonesFromServer.length} models
+              {filterProducts(sortByCategory('phones')).length} models
             </p>
           </article>
           <article className="categories__category">
@@ -215,7 +223,7 @@ export const HomePage = () => {
               <h4 className="categories__subtitle">Tablets</h4>
             </a>
             <p className="categories__quantity">
-              {tabletsFromServer.length} models
+              {filterProducts(sortByCategory('tablets')).length} models
             </p>
           </article>
           <article className="categories__category">
@@ -231,7 +239,7 @@ export const HomePage = () => {
               <h4 className="categories__subtitle">Accessories</h4>
             </a>
             <p className="categories__quantity">
-              {accessoriesFromServer.length} models
+              {filterProducts(sortByCategory('accessories')).length} models
             </p>
           </article>
         </section>
@@ -271,47 +279,15 @@ export const HomePage = () => {
               setCurrentSlide(swiper.realIndex);
             }}
           >
-            {hotPricesProducts.map(product => {
-              if (
-                ((product.category === 'tablets' ||
-                  product.category === 'phones') &&
-                  product.itemId.includes('256gb')) ||
-                (product.category === 'accessories' &&
-                  product.itemId.includes('40mm'))
-              ) {
-                return (
-                  <SwiperSlide key={product.id}>
-                    <ProductCard id={product.id} />
-                  </SwiperSlide>
-                );
-              } else {
-                return null;
-              }
-            })}
+            {filterProducts(hotPricesProducts).map(product => (
+              <SwiperSlide key={product.id}>
+                <ProductCard id={product.id} />
+              </SwiperSlide>
+            ))}
           </Swiper>
         </section>
       </main>
-      <div className="section-line" />
-      <footer className="footer">
-        <a href="#" className="footer__logo" />
-        <div className="footer__links-box">
-          <a href="" className="footer__links">
-            Github
-          </a>
-          <a href="" className="footer__links">
-            Contacts
-          </a>
-          <a href="" className="footer__links">
-            Rights
-          </a>
-        </div>
-        <a href="#" className="footer__back-on-top">
-          Back to top
-          <button className="navigation-button footer__button">
-            <img src="./img/arrow-top.svg" alt="slide top" />
-          </button>
-        </a>
-      </footer>
+      <Footer />
     </>
   );
 };

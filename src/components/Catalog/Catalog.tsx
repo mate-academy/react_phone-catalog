@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/label-has-for */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useContext, useEffect, useState } from 'react';
-import { Link, useSearchParams } from 'react-router-dom';
+import { Link, Outlet, useSearchParams } from 'react-router-dom';
 import { Header } from '../Header/Header';
 import { Menu } from '../Menu/Menu';
 import classNames from 'classnames';
@@ -11,6 +11,7 @@ import customSelect from 'custom-select';
 import { ProductCard } from '../ProductCard/ProductCard';
 
 import './Catalog.scss';
+import { Footer } from '../Footer/Footer';
 
 type Props = {
   products: Product[];
@@ -168,145 +169,152 @@ export const Catalog: React.FC<Props> = ({ products }) => {
   };
 
   return (
-    <div className="Catalog">
-      <Header />
-      {isMenuOpen && <Menu />}
-      <main className="catalog-main">
-        <div className="navigation">
-          <Link to="/" className="navigation__home" />
-          <img src=".\img\arrow-next-disabled.svg" alt="next page" />
-          <p className="navigation__current-page">{products[0].category}</p>
-        </div>
-        <h1 className="catalog-main__title">{title()}</h1>
-        <p className="catalog-main__models-quantity">
-          {modelsQuantity()} models
-        </p>
-        <div className="catalog-main__select-box">
-          <select
-            name="sortBy"
-            id="sortBy"
-            className="form-select form-select--sort-by"
-            onChange={event => {
-              setSortBy(event.target.value);
-              getElentsPerPageInUrl(undefined, event.target.value);
-            }}
-          >
-            <option
-              value={SortBy.newest}
-              className="catalog-main__select-item"
-              selected={sortBy === SortBy.newest}
-            >
-              {SortBy.newest}
-            </option>
-            <option
-              value={SortBy.alphabetically}
-              className="catalog-main__select-item"
-              selected={sortBy === SortBy.alphabetically}
-            >
-              {SortBy.alphabetically}
-            </option>
-            <option
-              value={SortBy.cheapest}
-              className="catalog-main__select-item"
-              selected={sortBy === SortBy.cheapest}
-            >
-              {SortBy.cheapest}
-            </option>
-          </select>
-          <select
-            id="perPageSelector"
-            name="perPageSelector"
-            className="form-select form-select--per-page-items"
-            onChange={handleChange}
-          >
-            <option
-              value="4"
-              selected={+elemsPerPage === 4}
-              className="catalog-main__select-item"
-            >
-              {ElementsPerPage.four}
-            </option>
-            <option
-              value="8"
-              selected={+elemsPerPage === 8}
-              className="catalog-main__select-item"
-            >
-              {ElementsPerPage.eight}
-            </option>
-            <option
-              value="16"
-              selected={+elemsPerPage === 16}
-              className="catalog-main__select-item"
-            >
-              {ElementsPerPage.sixteen}
-            </option>
-            <option
-              value={products.length}
-              selected={+elemsPerPage === products.length}
-              className="catalog-main__select-item"
-            >
-              all
-            </option>
-          </select>
-        </div>
-        <div className="catalog-main__content-box">
-          {itemsAndPage.map(item => (
-            <ProductCard id={item.id} key={item.id} />
-          ))}
-        </div>
-        <ul className="pagination">
-          <li className="pagination__item">
-            <Link
-              data-cy="prevLink"
-              className={classNames(
-                'pagination__link pagination__link--arrow-prev',
-                {
-                  'disabled-link': page === 1,
-                },
-              )}
-              to={`?page=${+page - 1}&perPage=${elemsPerPage}`}
-              onClick={() => {
-                setPage(+page - 1);
-                window.scrollTo({ top: 0, behavior: 'smooth' });
+    <>
+      <div className="Catalog">
+        <Header />
+        {isMenuOpen && <Menu />}
+        <main className="catalog-main">
+          <div className="navigation">
+            <Link to="/" className="navigation__home" />
+            <img src=".\img\arrow-next-disabled.svg" alt="next page" />
+            <p className="navigation__current-page">{products[0].category}</p>
+          </div>
+          <h1 className="catalog-main__title">{title()}</h1>
+          <p className="catalog-main__models-quantity">
+            {modelsQuantity()} models
+          </p>
+          <div className="catalog-main__select-box">
+            <select
+              name="sortBy"
+              id="sortBy"
+              className="form-select form-select--sort-by"
+              onChange={event => {
+                setSortBy(event.target.value);
+                getElentsPerPageInUrl(undefined, event.target.value);
               }}
-            />
-          </li>
-
-          {paginationCount.map(count => (
-            <li
-              key={count.toString()}
-              className="pagination__item"
-              onClick={() => setPage(count)}
             >
-              <Link
-                className={classNames('pagination__link', {
-                  'disabled-active-link': page === count,
-                })}
-                to={`?page=${count}&perPage=${elemsPerPage}`}
-                onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+              <option
+                value={SortBy.newest}
+                className="catalog-main__select-item"
+                selected={sortBy === SortBy.newest}
               >
-                {count}
-              </Link>
+                {SortBy.newest}
+              </option>
+              <option
+                value={SortBy.alphabetically}
+                className="catalog-main__select-item"
+                selected={sortBy === SortBy.alphabetically}
+              >
+                {SortBy.alphabetically}
+              </option>
+              <option
+                value={SortBy.cheapest}
+                className="catalog-main__select-item"
+                selected={sortBy === SortBy.cheapest}
+              >
+                {SortBy.cheapest}
+              </option>
+            </select>
+            <select
+              id="perPageSelector"
+              name="perPageSelector"
+              className="form-select form-select--per-page-items"
+              onChange={handleChange}
+            >
+              <option
+                value="4"
+                selected={+elemsPerPage === 4}
+                className="catalog-main__select-item"
+              >
+                {ElementsPerPage.four}
+              </option>
+              <option
+                value="8"
+                selected={+elemsPerPage === 8}
+                className="catalog-main__select-item"
+              >
+                {ElementsPerPage.eight}
+              </option>
+              <option
+                value="16"
+                selected={+elemsPerPage === 16}
+                className="catalog-main__select-item"
+              >
+                {ElementsPerPage.sixteen}
+              </option>
+              <option
+                value={products.length}
+                selected={+elemsPerPage === products.length}
+                className="catalog-main__select-item"
+              >
+                all
+              </option>
+            </select>
+          </div>
+          <div className="catalog-main__content-box">
+            {itemsAndPage.map(item => (
+              <ProductCard id={item.id} key={item.id} />
+            ))}
+          </div>
+          <ul className="pagination">
+            <li className="pagination__item">
+              <Link
+                data-cy="prevLink"
+                className={classNames(
+                  'pagination__link pagination__link--arrow-prev',
+                  {
+                    'disabled-link': page === 1,
+                  },
+                )}
+                to={`?page=${+page - 1}&perPage=${elemsPerPage}`}
+                onClick={() => {
+                  setPage(+page - 1);
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                }}
+              />
             </li>
-          ))}
-          <li className="pagination__item">
-            <Link
-              data-cy="nextLink"
-              className={classNames(
-                'pagination__link pagination__link--arrow-next',
-                {
-                  'disabled-link': page === paginationCount.length,
-                },
-              )}
-              to={`?page=${+page + 1}&perPage=${elemsPerPage}`}
-              onClick={() => {
-                setPage(+page + 1);
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-              }}
-            />
-          </li>
-        </ul>
-      </main>
-    </div>
+
+            {paginationCount.map(count => (
+              <li
+                key={count.toString()}
+                className="pagination__item"
+                onClick={() => setPage(count)}
+              >
+                <Link
+                  className={classNames('pagination__link', {
+                    'disabled-active-link': page === count,
+                  })}
+                  to={`?page=${count}&perPage=${elemsPerPage}`}
+                  onClick={() =>
+                    window.scrollTo({ top: 0, behavior: 'smooth' })
+                  }
+                >
+                  {count}
+                </Link>
+              </li>
+            ))}
+            <li className="pagination__item">
+              <Link
+                data-cy="nextLink"
+                className={classNames(
+                  'pagination__link pagination__link--arrow-next',
+                  {
+                    'disabled-link': page === paginationCount.length,
+                  },
+                )}
+                to={`?page=${+page + 1}&perPage=${elemsPerPage}`}
+                onClick={() => {
+                  setPage(+page + 1);
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                }}
+              />
+            </li>
+          </ul>
+        </main>
+        <Footer />
+      </div>
+
+      <Outlet />
+    </>
   );
 };
