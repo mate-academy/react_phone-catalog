@@ -1,4 +1,10 @@
-import { useCallback, useLayoutEffect, useRef, useState } from 'react';
+import {
+  useCallback,
+  useEffect,
+  useLayoutEffect,
+  useRef,
+  useState,
+} from 'react';
 import { ProductType } from '../../../types/ProductType';
 import { Icon } from '../../Icon';
 import { Product } from '../../Product';
@@ -20,7 +26,7 @@ export const ProductsSlider: React.FC<Props> = ({
   const listRef = useRef<HTMLUListElement | null>(null);
   const [wrapperWidth, setWrapperWidth] = useState(0);
   const wrapperRef = useRef<HTMLDivElement | null>(null);
-  const [frameSize] = useState(1);
+  const [frameSize, setFrameSize] = useState(1);
 
   // const frameSize = 1;
   const step = 1;
@@ -37,11 +43,6 @@ export const ProductsSlider: React.FC<Props> = ({
 
       if (firstItem && wrapperRef.current) {
         setItemWidth(firstItem.clientWidth);
-
-        // const totalItemWidth = itemWidth + gap;
-        // const itemsInWrapper = Math.floor(wrapperWidth / totalItemWidth);
-
-        // setFrameSize(Math.min(Math.max(itemsInWrapper, 1), 4));
       }
     }
   };
@@ -53,7 +54,11 @@ export const ProductsSlider: React.FC<Props> = ({
     return () => {
       window.removeEventListener('resize', calculateItemWidth);
     };
-  }, [products.length]);
+  }, [itemWidth, products.length, wrapperWidth]);
+
+  useEffect(() => {
+    setFrameSize(Math.floor(wrapperWidth / (itemWidth + gap)));
+  }, [itemWidth, wrapperWidth]);
 
   const prev = useCallback(() => {
     setCurrentIndex(currentIndex === 1 ? 0 : currentIndex - step);

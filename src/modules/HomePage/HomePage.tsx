@@ -12,7 +12,7 @@ export const HomePage = () => {
     getProducts()
       .then(readyProducts =>
         readyProducts
-          .filter(product => product.year >= 2022)
+          .filter(product => product.year >= 2022 && product.price < 1100)
           .sort((product1, product2) => product2.year - product1.year),
       )
       .then(setNewestProducts);
