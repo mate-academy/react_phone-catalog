@@ -1,0 +1,16 @@
+@use '../../styles/mixins' as *;
+
+.Icon {
+  @include color-transition((color: var(--icon-button-icon-color)));
+}
+
+.IconButton {
+  border: 1px solid;
+  cursor: pointer;
+
+  @include square(32px);
+  @include color-and-hover-transition(
+    (background-color: var(--icon-button-color), border-color: var(--icon-button-border-color)),
+    (background-color: var(--icon-button-hover-color), border-color: var(--icon-button-border-hover-color))
+  );
+}

@@ -2,6 +2,7 @@
 @use "../../../shared/styles/mixins" as *;
 
 $dropdown-gap: 4px;
+$select-shift: 15px + $dropdown-gap;
 
 .Label {
   position: absolute;
@@ -64,7 +65,10 @@ $dropdown-gap: 4px;
   list-style: none;
   cursor: default;
 
-  @include color-transition((border-color: var(--element-color)));
+  @include color-transition((
+    border-color: var(--element-color),
+    background-color: var(--background-color)
+    ));
 }
 
 .Option {
@@ -76,20 +80,19 @@ $dropdown-gap: 4px;
   cursor: pointer;
 
   @extend %body-text;
-  @include color-transition((
+  @include color-and-hover-transition((
     color: var(--secondary-text-color),
     background-color: var(--background-color),
+  ), (
+    color: var(--primary-text-color),
+    background-color: var(--dropdown-color)
   ));
-
-  &:hover {
-    color: var(--primary-text-color);
-    background-color: var(--dropdown-color);
-  }
 }
 
 .Dropdown {
   position: relative;
-  top: 15px + $dropdown-gap;
+  top: $select-shift;
+  margin-bottom: $select-shift;
   cursor: pointer;
 
   &_open > .Select {

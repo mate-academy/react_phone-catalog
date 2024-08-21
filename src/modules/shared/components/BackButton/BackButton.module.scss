@@ -1,6 +1,5 @@
 @use "../../../shared/styles/extends";
 @use "../../../shared/styles/mixins" as *;
-@use "../../../shared/styles/vars" as *;
 
 .Arrow {
   @include color-transition((color: var(--icon-color)));

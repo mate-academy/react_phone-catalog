@@ -11,12 +11,16 @@
 .MenuLink {
   display: block;
   box-sizing: border-box;
-  aspect-ratio: 1;
   padding-top: $active-underline-width;
   border-bottom: $active-underline-width solid;
   align-content: center;
 
+  @include square(48px);
   @include color-transition((border-color: transparent));
+  
+  @include for-desktop {
+    @include square(64px);
+  }
 
   &_active {
     border-color: var(--active-color);

@@ -1,6 +1,11 @@
 @use "sass:list";
 @use "./vars" as *;
 
+@mixin square($size) {
+  width: $size;
+  height: $size;
+}
+
 @function combine-transitions($transition, $new-property) {
   $transition: list.append($transition, ($new-property $transition-duration), comma);
 
@@ -12,7 +17,7 @@
 
   @each $property, $color in $colors {
     $transition: combine-transitions($transition, $property);
-    
+
     #{$property}: $color;
   }
 

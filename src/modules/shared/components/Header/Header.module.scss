@@ -1,13 +1,39 @@
-@use "../../styles/mixins" as *;
-@use "../../styles/vars" as *;
+@use "../../styles/mixins" as *;;
 
 $header-gap: 16px;
 $header-desktop-gap: 24px;
 
+.MenuLinksItem {
+  @include color-transition((box-shadow: -1px 0 0 0 var(--not-mobile-header-shadow-color)));
+
+  @include for-mobile {
+    box-shadow: -1px 0 0 0 var(--element-color)
+  }
+}
+
+.MenuLinks {
+  display: flex;
+  justify-content: flex-end;
+  list-style: none;
+}
+
+.MenuLinksWrapper {
+  flex-grow: 1;
+}
+
+.PageLinks {
+  height: 100%;
+}
+
 .LogoLink {
+  height: 100%;
+}
+
+.LogoLinkWrapper {
   width: 64px;
   height: 22px;
   padding: 0 $header-gap;
+
   align-self: center;
 
   @include for-desktop {
@@ -17,34 +43,27 @@ $header-desktop-gap: 24px;
   }
 }
 
-.MenuLinks {
+.Menu {
   display: flex;
-  justify-content: flex-end;
-  flex-grow: 1;
+  gap: $header-gap;
   list-style: none;
-}
 
-.MenuLinksItem {
-  @include color-transition((box-shadow: -1px 0 0 0 var(--shadow-color)));
-}
-
-.MenuLink {
-  height: 100%;
+  @include for-desktop {
+    gap: $header-desktop-gap;
+  }
 }
 
 .Header {
-  display: flex;
-  gap: $header-gap;
-
   position: sticky;
   top: 0;
+  z-index: 1;
 
-  height: 48px;
+  @include color-transition((
+    background-color: var(--background-color),
+    box-shadow: 0 1px 0 0 var(--not-mobile-header-shadow-color)
+  ));
 
-  @include color-transition((box-shadow: 0 1px 0 0 var(--shadow-color)));
-
-  @include for-desktop {
-    height: 64px;
-    gap: $header-desktop-gap;
+  @include for-mobile {
+    box-shadow: 0 1px 0 0 var(--element-color)
   }
 }

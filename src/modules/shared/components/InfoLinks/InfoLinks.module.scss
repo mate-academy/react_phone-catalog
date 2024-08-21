@@ -1,0 +1,13 @@
+@use '../../styles/mixins' as *;
+
+.InfoLinks {
+  display: flex;
+  justify-content: space-between;
+  gap: 9px;
+  list-style: none;
+
+  @include for-mobile {
+    flex-direction: column;
+    gap: 16px;
+  }
+}

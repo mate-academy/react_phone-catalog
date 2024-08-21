@@ -10,6 +10,10 @@ export enum MenuLinkSVGOption {
   Burger = 'Burger',
 }
 
+export enum IconButtonSVGOption {
+  UpArrow = 'UpArrow',
+}
+
 export enum Theme {
   Bright = 'bright',
   Dark = 'dark',

@@ -10,7 +10,7 @@
   @include color-and-hover-scale-transition((color: var(--secondary-text-color)));
 }
 
-.NavigationItem {
+.PageLink {
   padding-top: $active-underline-width;
   border-bottom: $active-underline-width solid;
   align-content: center;

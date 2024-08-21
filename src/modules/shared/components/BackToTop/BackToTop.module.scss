@@ -1,0 +1,12 @@
+@use '../../styles/extends';
+@use '../../styles/mixins' as *;
+
+.BackToTop {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  cursor: pointer;
+
+  @extend %small-text;
+  @include color-transition((color: var(--secondary-text-color)));
+}

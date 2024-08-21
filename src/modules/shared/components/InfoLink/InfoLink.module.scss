@@ -1,0 +1,10 @@
+@use '../../styles/extends';
+@use '../../styles/mixins' as *;
+
+.Link {
+  display: block;
+  text-decoration: none;
+
+  @extend %uppercase;
+  @include color-and-hover-scale-transition((color: var(--footer-text-color)));
+}

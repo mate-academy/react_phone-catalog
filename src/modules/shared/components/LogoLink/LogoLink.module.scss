@@ -1,5 +1,4 @@
 @use "../../styles/mixins" as *;
-@use "../../styles/vars" as *;
 
 .Image {
   display: block;
@@ -7,4 +6,8 @@
   height: 100%;
 
   @include color-and-hover-scale-transition((color: var(--primary-text-color)));
+}
+
+.LogoLink {
+  display: block;
 }

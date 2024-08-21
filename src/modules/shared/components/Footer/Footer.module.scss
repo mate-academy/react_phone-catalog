@@ -1,0 +1,54 @@
+@use '../../styles/mixins' as *;
+
+.Navigation {
+  @include grid;
+
+  @include for-tablet {
+    margin: 0 32px;
+  }
+}
+
+.Menu {
+  @include full-grid-width;
+
+  display: flex;
+  align-items: center;
+  list-style: none;
+
+  @include for-mobile {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 32px;
+  }
+}
+
+.MenuItem {
+  flex: 1;
+
+  &:last-child {
+    align-self: center;
+  }
+}
+
+.LogoLink {
+  width: 89px;
+  height: 32px;
+}
+
+.BackToTop {
+  float: right;
+}
+
+.Footer {
+  padding: 32px 0;
+
+  @include color-transition((box-shadow: 0 -1px 0 0 var(--element-color)));
+}
+
+
+
+
+
+
+
+

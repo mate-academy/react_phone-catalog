@@ -12,16 +12,9 @@ type Props = {
   alt: string;
   device: Device;
   svgOption: MenuLinkSVGOption;
-  className?: string;
 };
 
-export const MenuLink: React.FC<Props> = ({
-  to,
-  alt,
-  device,
-  svgOption,
-  className,
-}) => {
+export const MenuLink: React.FC<Props> = ({ to, alt, device, svgOption }) => {
   let icon: React.JSX.Element;
 
   switch (svgOption) {
@@ -48,7 +41,6 @@ export const MenuLink: React.FC<Props> = ({
           styles.MenuLink,
           styles[`MenuLink_device_${device}`],
           isActive && styles.MenuLink_active,
-          className,
         )
       }
       to={to}
