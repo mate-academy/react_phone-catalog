@@ -45,7 +45,8 @@
 }
 
 .container {
-  display: none;
+  display: flex;
+  justify-content: space-between;
 
   @include on-tablet {
     display: flex;

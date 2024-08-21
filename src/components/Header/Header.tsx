@@ -33,7 +33,9 @@ export const Header: React.FC = () => {
           Accessories
         </NavLink>
 
-        <div className={styles.actionsContainer}>
+
+      </nav>
+      <div className={styles.actionsContainer}>
           <div className={styles.actions}>
             <NavLink to="/favorites" className={styles.actionItem}>
               <div className={styles.actionIcon}>
@@ -52,7 +54,6 @@ export const Header: React.FC = () => {
             </div>
           </div>
         </div>
-      </nav>
     </div>
   </header>
   )
