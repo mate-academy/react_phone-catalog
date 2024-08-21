@@ -17,15 +17,19 @@ export const Paginations: React.FC<Props> = ({
   currentIndex,
   setCurrentIndex,
 }) => {
-  const [onPage, setOnPage] = useState(0);
+  const [onPage, setOnPage] = useState(1);
 
   useEffect(() => {
+    if (onPage !== 0) {
+      setCurrentIndex(0);
+    }
+
     if (perPage === PerPage.All) {
-      setOnPage(0);
+      setOnPage(1);
     } else {
       setOnPage(+perPage);
     }
-  }, [perPage, onPage]);
+  }, [perPage, onPage, setCurrentIndex]);
 
   return (
     <div className="paginations">
