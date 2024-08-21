@@ -1,0 +1,93 @@
+@import '../../../../../utils/mixins';
+@import '../../../../../utils/variables';
+
+.banner {
+  display: none;
+  background-color: rgb(0, 0, 0);
+  border-radius: 8px 0 0 8px;
+  right: -1px;
+  position: relative;
+  width: 50%;
+
+  @include ontablet {
+    display: block;
+  }
+
+  &__wrapper,
+  &__content {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__content {
+    gap: 10px;
+
+    @include ondesktop {
+      gap: 20px;
+    }
+  }
+
+  &__wrapper {
+    margin: 5px;
+    padding: 20px;
+    background-color: #222;
+    border-radius: 15px;
+    justify-content: space-between;
+    gap: 40px;
+
+    @include ondesktop {
+      margin: 12px;
+      padding: 50px;
+      border-radius: 25px;
+      gap: 75px;
+    }
+  }
+
+  &__title {
+    background: linear-gradient(45deg, #7b4ef5 33%, #d762fe 66%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+    font-weight: 900;
+    font-size: 18px;
+    line-height: 100%;
+
+    @include ondesktop {
+      font-size: 48px;
+    }
+  }
+
+  &__text {
+    color: rgb(174, 174, 174);
+    font-size: 9px;
+
+    @include ondesktop {
+      font-size: 12px;
+    }
+  }
+
+  &__button {
+    color: $main-text-color;
+    text-transform: uppercase;
+    font-size: 10px;
+    font-weight: 700;
+    border: 1px solid rgb(68, 68, 68);
+    border-radius: 30px;
+    width: fit-content;
+    padding: 10px 20px;
+    letter-spacing: 0.1em;
+    transition: all 0.3s;
+
+    @include ondesktop {
+      font-size: 16px;
+      padding: 20px  40px;
+    }
+
+    &:hover {
+      background-color: #323542;
+      color: $main-text-color;
+      transform: translate(0, -1px);
+    }
+  }
+}

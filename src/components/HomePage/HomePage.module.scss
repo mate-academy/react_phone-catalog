@@ -1,0 +1,19 @@
+@import '../../utils/mixins';
+@import '../../utils/variables';
+
+.page {
+  margin-top: 24px;
+
+  &__container {
+    max-width: 1160px;
+    margin: 0 auto;
+  }
+
+  @include ontablet {
+    margin-top: 32px;
+  }
+
+  @include ondesktop {
+    margin-top: 56px;
+  }
+}

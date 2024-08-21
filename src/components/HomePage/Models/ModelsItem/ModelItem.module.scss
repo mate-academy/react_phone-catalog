@@ -1,0 +1,173 @@
+@import '../../../../utils/mixins';
+@import '../../../../utils/variables';
+
+.item {
+  background-color: #161827;
+  cursor: pointer;
+
+  &__wrapper,
+  &__content,
+  &__info {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__wrapper {
+    padding: 32px;
+    display: flex;
+    justify-content: space-between;
+    gap: 24px;
+
+    @include ondesktop {
+      height: 506px;
+    }
+  }
+
+  &__photo {
+    display: flex;
+    justify-content: center;
+  }
+
+  &__image {
+    height: 129px;
+    transition: transform 0.3s;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+
+    @include ontablet {
+      height: 202px;
+    }
+
+    @include ondesktop {
+      height: 208px;
+    }
+  }
+
+  &__title {
+    color: $main-text-color;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 21px;
+    transition: color 0.3s;
+
+    &:hover {
+      color: #905BFF;
+    }
+  }
+
+  &__content {
+    justify-content: space-between;
+    gap: 8px;
+    min-height: 212px;
+  }
+
+  &__price {
+    display: flex;
+    gap: 8px;
+
+    &--discount {
+      color: $tech-specs-color;
+      text-decoration-line: line-through;
+      font-weight: 500;
+      font-size: 22px;
+      line-height: 1.4em;
+    }
+  }
+
+  &__price-num {
+    color: $main-text-color;
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 1.4em;
+  }
+
+  &__info {
+    padding: 16px 0 8px;
+    border-top: 1px solid #3B3E4A;
+    gap: 8px;
+  }
+
+  &__block {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__name {
+    color: $tech-specs-color;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 15px;
+  }
+
+  &__value {
+    color: $main-text-color;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 15px;
+  }
+
+  &__buttons {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+  }
+
+  &__add-to-cart {
+    width: 100px;
+    padding: 10px;
+    color: $main-text-color;
+    background-color: #905BFF;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 21px;
+    letter-spacing: 0.01em;
+    box-sizing: border-box;
+    transition: all 0.3s;
+    white-space: nowrap;
+
+    &:hover {
+      background-color: #A378FF;
+    }
+
+    @include ontablet {
+      width: 125px;
+      padding: 10px 22px;
+    }
+
+    @include ondesktop {
+      width: 160px;
+      padding: 10px 40px;
+    }
+  }
+
+  &__add-to-favorite {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    background-color: #323542;
+
+    &:hover {
+      background-color: #4A4D58;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      width: 16px;
+      height: 16px;
+      background-image: url('./img/Favourites-empty.svg');
+      background-size: contain;
+      background-repeat: no-repeat;
+      transform: translate(-50%, -50%);
+    }
+
+    &--selected {
+      &::after {
+        background-image: url('./img/Favourites-red.svg');
+      }
+    }
+  }
+}

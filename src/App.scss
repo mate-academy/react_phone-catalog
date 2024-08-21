@@ -1,1 +1,154 @@
-// not empty
+@import './utils/variables';
+@import './utils/mixins';
+
+iframe {
+  display: none;
+}
+
+* {
+  font-family: Mont, sans-serif;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  background-color: $main-bg-color!important;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+  display: none!important;
+  padding: 87px 8px;
+  background-color:#323542;
+  top: 35px!important;
+
+  @include ontablet {
+    display: block!important;
+  }
+
+  @include ondesktop {
+    padding: 198px 8px;
+    top: 25px!important;
+  }
+}
+
+.swiper-button-prev {
+  left: -50px!important;
+}
+
+.swiper-button-next {
+  right: -50px!important;
+}
+
+
+.swiper-button-prev::after,
+.swiper-button-next::after {
+  color: $main-text-color;
+  transform: translate(-50%, -50%);
+  font-size: 12px !important;
+  top: 50% !important;
+  left: 50% !important;
+  position: absolute;
+
+  @include ondesktop {
+    font-size: 14px!important;
+  }
+}
+
+
+.swiper-pagination {
+  bottom: -25px!important;
+}
+
+.swiper-pagination-bullet {
+  width: 14px!important;
+  height: 4px!important;
+  border-radius: 0!important;
+  background-color:#3B3E4A!important;
+}
+
+.swiper-pagination-bullet-active {
+  background-color: $main-text-color!important;
+}
+
+.swiper-button-disabled {
+  border: 1px solid #3B3E4A!important;
+  background-color: transparent!important;
+
+  &::after {
+    color: #4A4D58!important;
+  }
+}
+
+
+.no-scroll {
+  overflow: hidden;
+}
+
+
+.dropdown-content,
+.dropdown-menu {
+  max-width: 136px;
+  min-width: 136px!important;
+}
+
+.dropdown-menu {
+  background: #323542!important;
+}
+
+.dropdown-content {
+  background:#0F1121!important;
+  border: 1px solid #3B3E4A!important;
+  box-shadow: 0 2px 15px 0 #0000000D!important;
+
+}
+
+.page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+// paginations styling
+.paginations {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.custom-item {
+  min-width: 32px;
+  min-height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 0.25rem;
+  margin-right: 0.25rem;
+  cursor: pointer;
+  background-color: #161827;
+  color: $main-text-color;
+
+  &--active {
+    background-color: #905bff;
+    color: $main-text-color;
+    min-width: 32px;
+    min-height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 0.25rem;
+    margin-right: 0.25rem;
+  }
+
+  &--disable {
+    opacity: 0.5;
+  }
+}
+
+.custom-root ul {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
