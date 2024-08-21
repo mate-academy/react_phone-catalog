@@ -3,54 +3,30 @@ import styles from './CartItem.module.scss';
 import { CardButton } from '../ui/CardButton';
 import classNames from 'classnames';
 
-// import img from '../../assets/img/phones/apple-iphone-11/black/00.webp';
 import { Product } from '../../types/Product';
-import { useEffect, useState } from 'react';
-// import { useCart } from '../../hooks/useCart';
+import { CartActionType } from '../../types/CartActionType';
 
 type CartItemProps = {
   item: Product;
-  updateCart: (item: Product) => void;
-  onItemPrice: (
-    price: number,
-    count: number,
-    type: 'increase' | 'decrease',
-  ) => void;
-  onItemCount: (count: number, type: 'increase' | 'decrease') => void;
+  updateCart: (item: Product, action: CartActionType) => void;
 };
 
-export const CartItem: React.FC<CartItemProps> = ({
-  item,
-  updateCart,
-  onItemPrice,
-  onItemCount,
-}) => {
-  // const { cart, updateCart } = useCart();
-  const { image, name, price } = item;
-  const [countItem, setCountItem] = useState(1);
+export const CartItem: React.FC<CartItemProps> = ({ item, updateCart }) => {
+  const { image, name, price, count = 1, totalPrice = price } = item;
 
-  useEffect(() => {
-    if (countItem > 1) {
-      onItemPrice(price, countItem - 1, 'increase'); // Subtract previous count
-      onItemCount(countItem - 1, 'increase'); // Subtract previous count
+  const handleCalcItem = (type: 'increase' | 'decrease') => {
+    const newCount = type === 'increase' ? count + 1 : count - 1;
+
+    if (newCount >= 1 && newCount < 11) {
+      updateCart(
+        {
+          ...item,
+          count: newCount,
+          totalPrice: newCount * price,
+        },
+        CartActionType.UPDATE,
+      );
     }
-    // eslint-disable-next-line
-  }, []);
-
-  const handleCountItem = (type: 'increase' | 'decrease') => {
-    setCountItem(prevCount => {
-      const newCount = type === 'increase' ? prevCount + 1 : prevCount - 1;
-
-      if (newCount >= 1) {
-        // Update the cart with new count
-        onItemPrice(price, 1, type);
-        onItemCount(1, type);
-
-        return newCount;
-      }
-
-      return prevCount;
-    });
   };
 
   return (
@@ -58,8 +34,8 @@ export const CartItem: React.FC<CartItemProps> = ({
       <div className={styles['cart-item__block']}>
         <CardButton
           variant="control"
-          style={{ border: 'none' }}
-          onClick={() => updateCart(item)}
+          modificator="borderNone"
+          onClick={() => updateCart(item, CartActionType.DELETE)}
         >
           <Icon iconName="close" />
         </CardButton>
@@ -79,20 +55,21 @@ export const CartItem: React.FC<CartItemProps> = ({
         <div className={styles['cart-item__control-buttons']}>
           <CardButton
             variant="control"
-            onClick={() => handleCountItem('decrease')}
+            modificator={count === 1 ? 'disabled' : undefined}
+            onClick={() => handleCalcItem('decrease')}
           >
             <Icon iconName="minus" />
           </CardButton>
-          <p className="body-text">{countItem}</p>
+          <p className="body-text">{count}</p>
           <CardButton
             variant="control"
-            onClick={() => handleCountItem('increase')}
+            onClick={() => handleCalcItem('increase')}
           >
             <Icon iconName="plus" />
           </CardButton>
         </div>
 
-        <h4 className={styles['cart-item__price']}>${countItem * price}</h4>
+        <h4 className={styles['cart-item__price']}>${totalPrice}</h4>
       </div>
     </div>
   );

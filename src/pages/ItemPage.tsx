@@ -19,9 +19,14 @@ import { Loader } from '../components/Loader';
 import { wait } from '../utils/wait';
 import { getSuggestedProducts } from '../services/radomProducts';
 import { colors } from '../constants/COLORS';
+import { useCart } from '../hooks/useCart';
+import { CartActionType } from '../types/CartActionType';
+import { CardButton } from '../components/ui/CardButton';
+import { isItemInArray } from '../utils/isItemInArray';
 
 export const ItemPage = () => {
   const { products } = useProducts();
+  const { cart, updateCart } = useCart();
   const { favorites, toggleFavorite } = useFavorites();
 
   //params for filtering ang fetching selectedItem
@@ -45,6 +50,13 @@ export const ItemPage = () => {
   const productId = selectedProduct ? selectedProduct.id : 0;
 
   const isFavorite = favorites.some((f: Product) => f.id === productId);
+  const isInCart = isItemInArray(cart, productId);
+
+  const handleAddToCart = () => {
+    if (selectedProduct) {
+      updateCart(selectedProduct, CartActionType.ADD);
+    }
+  };
 
   // Fetch product details
   useEffect(() => {
@@ -90,7 +102,7 @@ export const ItemPage = () => {
   }
 
   if (!isLoading && !selectedItem) {
-    return <NotFoundProductPage />;
+    return <NotFoundProductPage title="Product was not found" />;
   }
 
   const spaceLessColors =
@@ -188,20 +200,20 @@ export const ItemPage = () => {
 
               <div className="item-page__price-frame">
                 <h3 className="item-page__price">
-                  $799 <span className="item-page__old-price">$1199</span>
+                  ${selectedItem?.priceDiscount}{' '}
+                  <span className="item-page__old-price">
+                    ${selectedItem?.priceRegular}
+                  </span>
                 </h3>
 
                 <div className={cardStyles.card__buttons}>
-                  <button
-                    className={classNames(
-                      'button-text',
-                      cardStyles.card__btn,
-                      cardStyles['card__btn--add'],
-                    )}
+                  <CardButton
+                    variant={isInCart ? 'selected' : 'primary'}
                     style={{ height: '48px' }}
+                    onClick={() => handleAddToCart()}
                   >
-                    Add to cart
-                  </button>
+                    {isInCart ? 'Added to cart' : 'Add to cart'}
+                  </CardButton>
                   <button
                     className={classNames(
                       cardStyles.card__btn,

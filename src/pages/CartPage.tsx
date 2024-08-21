@@ -3,6 +3,7 @@ import { CartItem } from '../components/CartItem';
 import { CardButton } from '../components/ui/CardButton';
 import { GoBackLink } from '../components/ui/GoBackLink';
 import { useCart } from '../hooks/useCart';
+import { NotFoundProductPage } from './NotFoundProductPage';
 
 export const CartPage = () => {
   const { cart, updateCart } = useCart();
@@ -27,23 +28,9 @@ export const CartPage = () => {
     setTotalItemCount(totalInitialItems);
   }, [cart]);
 
-  const updateTotalPrice = (
-    itemPrice: number,
-    count: number,
-    type: 'increase' | 'decrease',
-  ) => {
-    setTotalPrice(
-      prevPrice =>
-        prevPrice +
-        (type === 'increase' ? itemPrice * count : -itemPrice * count),
-    );
-  };
-
-  const updateTotalItems = (count: number, type: 'increase' | 'decrease') => {
-    setTotalItemCount(
-      prevCount => prevCount + (type === 'increase' ? count : -count),
-    );
-  };
+  if (!cart.length) {
+    return <NotFoundProductPage title="Your cart is empty" />;
+  }
 
   return (
     <div className="cart-page" id="cart-page">
@@ -62,8 +49,6 @@ export const CartPage = () => {
               key={itemCart.id}
               item={itemCart}
               updateCart={updateCart}
-              onItemPrice={updateTotalPrice}
-              onItemCount={updateTotalItems}
             />
           ))}
         </div>
@@ -77,7 +62,7 @@ export const CartPage = () => {
           </div>
 
           <CardButton
-            style={{ height: '48px' }}
+            style={{ height: '48px', width: '100%' }}
             variant="primary"
             /* eslint-disable-next-line no-console */
             onClick={() => console.log('Checkout')}

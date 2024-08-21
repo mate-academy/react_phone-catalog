@@ -3,7 +3,8 @@ import classNames from 'classnames';
 import styles from './CardButton.module.scss';
 
 type CardButtonProps = {
-  variant?: 'primary' | 'favorite' | 'control';
+  variant?: 'primary' | 'favorite' | 'control' | 'selected';
+  modificator?: 'disabled' | 'borderNone';
   onClick?: () => void;
   children: React.ReactNode;
   style?: React.CSSProperties;
@@ -11,6 +12,7 @@ type CardButtonProps = {
 
 export const CardButton: React.FC<CardButtonProps> = ({
   variant = 'primary',
+  modificator,
   onClick,
   children,
   style,
@@ -18,9 +20,12 @@ export const CardButton: React.FC<CardButtonProps> = ({
   return (
     <button
       className={classNames(styles.btn, {
-        [styles['primary-btn']]: variant === 'primary',
-        [styles['favorite-btn']]: variant === 'favorite',
-        [styles['control-btn']]: variant === 'control',
+        [styles['btn--primary']]: variant === 'primary',
+        [styles['btn--favorite']]: variant === 'favorite',
+        [styles['btn--control']]: variant === 'control',
+        [styles['btn--selected']]: variant === 'selected',
+        [styles['btn--borderNone']]: modificator === 'borderNone',
+        [styles['btn--disabled']]: modificator === 'disabled',
       })}
       style={style}
       onClick={onClick}

@@ -37,6 +37,13 @@
     height: 88px;
     padding: 11px;
     display: flex;
+
+    transform: scale(1);
+    transition: transform $transition-duration;
+
+    &:hover {
+      transform: scale(1.1);
+    }
   }
 
   &__img {

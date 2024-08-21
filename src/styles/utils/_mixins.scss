@@ -72,7 +72,7 @@
   cursor: pointer;
   transition:
     transform $transition-duration,
-    border-color $transition-duration;
+    border $transition-duration;
 }
 
 @function rem($pixel) {

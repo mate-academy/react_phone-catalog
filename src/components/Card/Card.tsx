@@ -9,6 +9,7 @@ import { Link, useSearchParams } from 'react-router-dom';
 
 type CardProps = {
   item: Product;
+  isInCart?: boolean;
   isFavorite: boolean;
   toggleFavorite: () => void;
   updateCart: (item: Product) => void;
@@ -16,6 +17,7 @@ type CardProps = {
 
 export const Card: React.FC<CardProps> = ({
   item,
+  isInCart,
   isFavorite,
   toggleFavorite,
   updateCart,
@@ -56,11 +58,11 @@ export const Card: React.FC<CardProps> = ({
 
       <div className={styles.card__buttons}>
         <CardButton
-          variant="primary"
+          variant={isInCart ? 'selected' : 'primary'}
           /* eslint-disable-next-line no-console */
           onClick={() => updateCart(item)}
         >
-          Add to cart
+          {isInCart ? 'Added to cart' : 'Add to cart'}
         </CardButton>
         <button
           className={classNames(

@@ -14,4 +14,5 @@ export type Product = {
   year: number;
   image: string;
   count?: number;
+  totalPrice?: number;
 };
