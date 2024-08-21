@@ -113,21 +113,18 @@ text-align: right;
 
 &__buttons {
   display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
+  width: 180px;
   height: 40px;
-  gap: 8px;
   margin-top: 15px;
+  justify-content: center;
 
 }
 &__adding-button {
   width:125px;
   height: 40px;
-gap: 0;
 border-radius: 8px;
 border: 0;
-opacity: 0;
+
 background-color: #216CFF !important;
 color: white;
 font-family: Mont-normal, sans-serif;
@@ -140,11 +137,10 @@ text-align: center;
   width: 40px;
 height: 40px;
 border-radius: 48px;
-opacity: 0;
 background-image: url('../../img/Favourites\ \(Heart\ Like\).svg');
 background-repeat: no-repeat;
 background-position: center;
-background-color: white !important;
+background-color: #e2e6e9 !important;
 border: 1px solid #B4BDC3;
 }
 }

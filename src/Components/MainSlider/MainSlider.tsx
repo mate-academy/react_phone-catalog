@@ -7,24 +7,7 @@ const bannerPhotos = [
   { id: 3, image: '/img/banner-accessories.png' },
 ];
 
-// const bannerButtons = [{ id: 1 }, { id: 2 }, { id: 3 }];
-
 export const MainSlider = () => {
-  // const [buttons, setButtons] = useState<Button[]>(bannerButtons);
-  // const [photoId, setPhotoId] = useState(1);
-
-  // const handleActiveButton = (selectedButton: number) => {
-  //   const toggleButton = buttons.map(button => {
-  //     if (button.id === selectedButton) {
-  //       setPhotoId(selectedButton);
-  //     }
-
-  //     return button;
-  //   })
-
-  //   setButtons(toggleButton);
-  // };
-
   const settings = {
     arrows: false,
     dots: true,

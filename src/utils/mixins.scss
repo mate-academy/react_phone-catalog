@@ -14,6 +14,6 @@
 
 @mixin grid-for-phone {
   display: grid;
-  grid-template-columns: repeat(60px, 5);
+  grid-template-columns: 60px 60px 60px 60px;
   gap: 16px;
 }

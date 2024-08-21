@@ -1,9 +1,10 @@
 .MainSlider {
+  grid-column: 1 / 5;
 &__photos {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  height: 450px;
+  height: 400px;
   width: 320px;
   overflow: hidden;
 
@@ -23,8 +24,7 @@
     display: flex;
     flex-direction: row;
     justify-content: center;
-  width: 320px;
-  height: 320px;
+    width: 336px;
   }
   &-dots {
     display: flex !important;
@@ -41,11 +41,10 @@
     }
 
     button {
-      content: '';
       height: 4px;
       width: 14px;
       border: none;
-      color: white;
+      color: transparent;
     }
 
 
@@ -53,9 +52,6 @@
   &-track {
     display: flex;
     flex-direction: row;
-  }
-  &-prev {
-    display: none;
   }
 
   &-active {

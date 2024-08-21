@@ -1,0 +1,42 @@
+@font-face {
+  font-family: Mont-thin;
+  src: url('../../../public/fonts/Mont-SemiBold.otf');
+}
+
+@font-face {
+  font-family: Mont;
+  src: url('../../../public/fonts/Mont-Regular.otf');
+}
+
+.categories {
+  grid-column: 1 / 5;
+  font-family: Mont, sans-serif;
+  &__title {
+    grid-column: 1 / 5;
+    margin-left: 16px;
+font-size: 30px;
+line-height: 30.8px;
+text-align: left;
+&--phones {
+  font-family: Mont-thin, sans-serif;
+}
+&--tablets {
+  font-family: Mont-thin, sans-serif;
+}
+&--accessories {
+  font-family: Mont-thin, sans-serif;
+}
+  }
+  &__option {
+    margin-top: 30px;
+  }
+  &__phones {
+    width: 288px;
+  }
+  &__tablets {
+    width: 288px;
+  }
+  &__accessories {
+    width: 288px;
+  }
+}
