@@ -134,3 +134,24 @@
     background-color: var(--color-button-hover);
   }
 }
+
+.image {
+  width:30%;
+  align-self: center;
+}
+
+.label {
+  display: flex;
+  text-align: center;
+  padding-top: 2px;
+  height: 15px;
+  text-decoration: none;
+
+  @extend %small-text;
+
+  color: var(--color-secondary);
+}
+
+.chevronIcon {
+  padding-top: 5px;
+}
