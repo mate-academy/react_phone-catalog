@@ -3,6 +3,7 @@ import styles from './SearchBar.module.scss';
 import React, { useState } from 'react';
 import { useAppSelector } from '../../../app/hooks';
 import debounce from 'debounce';
+import { useTranslation } from 'react-i18next';
 
 interface SearchParams {
   [key: string]: string | string[] | null;
@@ -16,6 +17,8 @@ export const SearchBar: React.FC<SearchBarType> = ({ setLoader }) => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [localQuery, setLocalQuery] = useState(searchParams.get('query') || '');
   const isDark = useAppSelector(state => state.boolean.isDark);
+
+  const { t } = useTranslation();
 
   function getSearchWith(
     currentParams: URLSearchParams,
@@ -53,6 +56,8 @@ export const SearchBar: React.FC<SearchBarType> = ({ setLoader }) => {
     updateParams(value);
   };
 
+  const asd = `${t('search')}`;
+
   return (
     <div className={styles.ssearchBar}>
       {isDark ? (
@@ -72,7 +77,7 @@ export const SearchBar: React.FC<SearchBarType> = ({ setLoader }) => {
         value={localQuery}
         type="search"
         className={`${styles.searchField} ${isDark && styles.darkSearchField}`}
-        placeholder="Search"
+        placeholder={asd}
         onChange={handleQueryChange}
       />
     </div>

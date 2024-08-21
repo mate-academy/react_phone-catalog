@@ -65,6 +65,10 @@
     line-height: 21px;
     letter-spacing: 0%;
     text-align: left;
+
+    &:hover {
+      color: var(--primary-grey-color);
+    }
   }
 
   &__price {

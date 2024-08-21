@@ -46,6 +46,10 @@
     letter-spacing: 0%;
     text-align: left;
     cursor: pointer;
+
+    &:hover {
+      color: var(--primary-grey-color);
+    }
   }
 
   &__priceBlock {

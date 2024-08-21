@@ -14,32 +14,36 @@ import { Catalog } from './modules/CatalogPage/components/Catalog';
 import { Favorites } from './modules/FavoritesPage/components';
 import { Cart } from './modules/CartPage/components';
 import { ItemCard } from './modules/ItemCardPage/components/ItemCard';
+import { I18nextProvider } from 'react-i18next';
+import i18n from './i18n';
 
 createRoot(document.getElementById('root') as HTMLElement).render(
-  <Provider store={store}>
-    <Router>
-      <Routes>
-        <Route path="/" element={<App />}>
-          <Route index element={<HomePage />} />
+  <I18nextProvider i18n={i18n}>
+    <Provider store={store}>
+      <Router>
+        <Routes>
+          <Route path="/" element={<App />}>
+            <Route index element={<HomePage />} />
 
-          <Route path="phones" element={<Catalog />}>
-            <Route path=":productId" element={<ItemCard />} />
+            <Route path="phones" element={<Catalog />}>
+              <Route path=":productId" element={<ItemCard />} />
+            </Route>
+
+            <Route path="tablets" element={<Catalog />}>
+              <Route path=":productId" element={<ItemCard />} />
+            </Route>
+
+            <Route path="accessories" element={<Catalog />}>
+              <Route path=":productId" element={<ItemCard />} />
+            </Route>
+
+            <Route path="favorites" element={<Favorites />} />
+
+            <Route path="cart" element={<Cart />} />
           </Route>
-
-          <Route path="tablets" element={<Catalog />}>
-            <Route path=":productId" element={<ItemCard />} />
-          </Route>
-
-          <Route path="accessories" element={<Catalog />}>
-            <Route path=":productId" element={<ItemCard />} />
-          </Route>
-
-          <Route path="favorites" element={<Favorites />} />
-
-          <Route path="cart" element={<Cart />} />
-        </Route>
-        <Route path="*" element={<NotFoundPage />} />
-      </Routes>
-    </Router>
-  </Provider>,
+          <Route path="*" element={<NotFoundPage />} />
+        </Routes>
+      </Router>
+    </Provider>
+  </I18nextProvider>,
 );

@@ -8,6 +8,7 @@ import {
 } from '../../../features/chosenItemsSlice';
 import { addToItemsQuantity } from '../../../features/pagesDetailsSlice';
 import { Product } from '../../../types/Product';
+import { useTranslation } from 'react-i18next';
 
 type Props = {
   gadg: Product | null;
@@ -15,6 +16,8 @@ type Props = {
 
 export const CardButtonsBlock: React.FC<Props> = ({ gadg }) => {
   const dispatch = useAppDispatch();
+  const { t } = useTranslation();
+
   const [heartIco, setHeartIco] = useState('');
   const [isInCatr, setIsinCart] = useState(false);
 
@@ -119,7 +122,7 @@ export const CardButtonsBlock: React.FC<Props> = ({ gadg }) => {
 
         `}
       >
-        {isInCatr ? 'Added' : 'Add to cart'}
+        {isInCatr ? t('added_to_cart') : t('add_to_cart')}
       </button>
 
       <button

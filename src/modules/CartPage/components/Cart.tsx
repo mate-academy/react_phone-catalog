@@ -6,9 +6,11 @@ import { setIsCheckoutModal } from '../../../features/booleanSlice';
 import { CheckoutModal } from '../CheckoutModal/CheckoutModal';
 import { amount } from './../services/findAmount';
 import { ButtonBack } from '../../shared/ButtonBack/ButtonBack';
+import { useTranslation } from 'react-i18next';
 
 export const Cart: React.FC = () => {
   const dispatch = useAppDispatch();
+  const { t } = useTranslation();
 
   const itemsInCart = useAppSelector(state => state.chosenItems.cart);
   const cart = useAppSelector(state => state.chosenItems.cart);
@@ -30,7 +32,7 @@ export const Cart: React.FC = () => {
         <div className={styles.cart}>
           <ButtonBack />
 
-          <h1 className={styles.cart__title}>Cart</h1>
+          <h1 className={styles.cart__title}> {t('cart')} </h1>
 
           {itemsInCart.length > 0 ? (
             <div className={styles.cart__content}>
@@ -42,7 +44,8 @@ export const Cart: React.FC = () => {
                 </div>
 
                 <div className={styles.checkout__totalItems}>
-                  Total for {amount(itemsQuantity, cart, 'items')} items
+                  {t('total_for')} {amount(itemsQuantity, cart, 'items')}{' '}
+                  {t('items')}
                 </div>
 
                 <div className={styles.checkout__horizontal}></div>
@@ -51,12 +54,12 @@ export const Cart: React.FC = () => {
                   onClick={handleCheckout}
                   className={`${styles.checkout__button} ${styles.blackButtonBase} ${isDark && styles.buttonDark} `}
                 >
-                  Checkout
+                  {t('checkout')}
                 </button>
               </div>
             </div>
           ) : (
-            <h3 className={styles.cart__empty}>Your cart is empty.</h3>
+            <h3 className={styles.cart__empty}> {t('empty_cart')} </h3>
           )}
         </div>
       </div>

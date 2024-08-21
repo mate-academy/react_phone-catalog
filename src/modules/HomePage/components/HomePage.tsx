@@ -6,17 +6,17 @@ import { ProductsSlider } from '../../shared/ProductsSlider//ProductsSlider';
 import { useAppSelector } from '../../../app/hooks';
 import { Link } from 'react-router-dom';
 import { scrollPageUp } from './../../shared/scrollPageUp';
+import { useTranslation } from 'react-i18next';
 
 export const HomePage: React.FC = () => {
-  const NEW_MODELS_TITLE = 'Brand new models';
-  const HOT_TITLE = 'Hot prices';
-
   const productsFromServer = useAppSelector(state => state.products.objects);
   const phonesFromServer = useAppSelector(state => state.phones.objects);
   const tabletsFromServer = useAppSelector(state => state.tablets.objects);
   const accessoriesFromServer = useAppSelector(
     state => state.accessories.objects,
   );
+
+  const { t } = useTranslation();
 
   const brandNewModels = Array.from(productsFromServer)
     .sort((prod1, prod2) => {
@@ -34,9 +34,7 @@ export const HomePage: React.FC = () => {
     <div id="homePage" className={styles.homePage}>
       <section className={styles.welcome}>
         <div className={styles.welcome__tittleWrapper}>
-          <h1 className={styles.welcome__tittle}>
-            Welcome to Nice <br className={styles.space} /> Gadgets store!
-          </h1>
+          <h1 className={styles.welcome__tittle}>{t('welcome_to_store')}</h1>
         </div>
 
         <div className={styles.welcome__swiper}>
@@ -46,12 +44,15 @@ export const HomePage: React.FC = () => {
 
       <section className={styles.newModels}>
         <div className={styles.newModels__swiper}>
-          <ProductsSlider title={NEW_MODELS_TITLE} gadgets={brandNewModels} />
+          <ProductsSlider
+            title={t('new_models_title')}
+            gadgets={brandNewModels}
+          />
         </div>
       </section>
 
       <section className={styles.categories}>
-        <h2 className={styles.categories__title}>Shop by category</h2>
+        <h2 className={styles.categories__title}> {t('shop_by_category')} </h2>
 
         <div className={styles.categories__wraper}>
           <div className={styles.category}>
@@ -68,10 +69,10 @@ export const HomePage: React.FC = () => {
               className={styles.category__title}
               to="/phones"
             >
-              Mobile phones
+              {t('mobile phones')}
             </Link>
             <p className={styles.category__quantity}>
-              {`${phonesFromServer.length} models`}
+              {`${phonesFromServer.length} ${phonesFromServer.length === 1 ? t('model') : t('models')}`}
             </p>
           </div>
 
@@ -89,11 +90,11 @@ export const HomePage: React.FC = () => {
               className={styles.category__title}
               to="/tablets"
             >
-              Tablets
+              {t('tablets')}
             </Link>
-            <p
-              className={styles.category__quantity}
-            >{`${tabletsFromServer.length} models`}</p>
+            <p className={styles.category__quantity}>
+              {`${tabletsFromServer.length} ${phonesFromServer.length === 1 ? t('model') : t('models')}`}
+            </p>
           </div>
 
           <div className={styles.category}>
@@ -110,18 +111,18 @@ export const HomePage: React.FC = () => {
               className={styles.category__title}
               to="accessories"
             >
-              Accesories
+              {t('accessories')}
             </Link>
-            <p
-              className={styles.category__quantity}
-            >{`${accessoriesFromServer.length} models`}</p>
+            <p className={styles.category__quantity}>
+              {`${accessoriesFromServer.length} ${phonesFromServer.length === 1 ? t('model') : t('models')}`}
+            </p>
           </div>
         </div>
       </section>
 
       <section className={styles.hot}>
         <div className={styles.hot__swiper}>
-          <ProductsSlider title={HOT_TITLE} gadgets={hotPriceModels} />
+          <ProductsSlider title={t('hot_price')} gadgets={hotPriceModels} />
         </div>
       </section>
     </div>

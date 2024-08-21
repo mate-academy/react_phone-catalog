@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import styles from './ButtonBack.module.scss';
 import { useAppSelector } from '../../../app/hooks';
+import { useTranslation } from 'react-i18next';
 
 export const ButtonBack: React.FC = () => {
+  const { t } = useTranslation();
+
   const [isBackDisabled, setIsBackDisabled] = useState(false);
 
   const isDark = useAppSelector(state => state.boolean.isDark);
@@ -28,7 +31,7 @@ export const ButtonBack: React.FC = () => {
     >
       <img src="./icons/arrow-left-ico.svg" alt="arrow-back" />
       <p className={`${styles.buttonBackText} ${isDark && styles.backDark}`}>
-        Back
+        {t('back')}
       </p>
     </div>
   );

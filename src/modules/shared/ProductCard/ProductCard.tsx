@@ -8,6 +8,7 @@ import { CardButtonsBlock } from '../CardButtonsBlock/CardButtonsBlock';
 import { useDispatch } from 'react-redux';
 import { handleClickOnGadget } from './../clickOnGadget';
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 
 type Props = {
   gadget: Product;
@@ -15,6 +16,7 @@ type Props = {
 
 export const ProductCard: React.FC<Props> = ({ gadget }) => {
   const dispatch = useDispatch();
+  const { t } = useTranslation();
 
   const isDark = useAppSelector(state => state.boolean.isDark);
 
@@ -67,17 +69,17 @@ export const ProductCard: React.FC<Props> = ({ gadget }) => {
         <div className={styles.card__divider} />
 
         <div className={styles.card__infoBlock}>
-          <p className={styles.card__infoTitle}>Screen</p>
+          <p className={styles.card__infoTitle}> {t('screen')} </p>
           <p className={styles.card__infoValue}>{gadget.screen}</p>
         </div>
 
         <div className={styles.card__infoBlock}>
-          <p className={styles.card__infoTitle}>Capacity</p>
+          <p className={styles.card__infoTitle}> {t('capacity')} </p>
           <p className={styles.card__infoValue}>{gadget.capacity}</p>
         </div>
 
         <div className={styles.card__infoBlock}>
-          <p className={styles.card__infoTitle}>RAM</p>
+          <p className={styles.card__infoTitle}> {t('ram')} </p>
           <p className={styles.card__infoValue}>{gadget.ram}</p>
         </div>
 

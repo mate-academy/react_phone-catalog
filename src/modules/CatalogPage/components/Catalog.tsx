@@ -16,11 +16,13 @@ import { setModels, setTitle } from './../../../features/pagesDetailsSlice';
 import { Loader } from '../../Loader';
 import { setReloadTrigger } from '../../../features/booleanSlice';
 import { SearchBar } from '../searchBar/SeatchBar';
+import { useTranslation } from 'react-i18next';
 
 export const Catalog: React.FC = () => {
   const dispatch = useAppDispatch();
   let catalogContent;
   const location = useLocation();
+  const { t } = useTranslation();
 
   const [perPage, setPerPage] = useState('all');
   const [sortBy, setSortBy] = useState('age');
@@ -259,18 +261,17 @@ export const Catalog: React.FC = () => {
               )}
 
               <p className={styles.catalog__pathCategory}>
-                {location.pathname.slice(1)}
+                {t(`${location.pathname.slice(1)}`)}
               </p>
             </div>
 
-            <h1 className={styles.catalog__title}>{title}</h1>
-
-            <p
-              className={styles.catalog__quantity}
-            >{`${models} ${models === 1 ? 'model' : 'models'}`}</p>
-
+            <h1 className={styles.catalog__title}>
+              {t(`${title.toLowerCase()}`)}
+            </h1>
+            <p className={styles.catalog__quantity}>
+              {`${models} ${models === 1 ? `${t('model')}` : `${t('models')}`}`}
+            </p>
             <SearchBar setLoader={setFilterLoader} />
-
             <CatalogFilters
               page={page}
               perPage={perPage}
@@ -279,15 +280,11 @@ export const Catalog: React.FC = () => {
               setPer={setPerPage}
               setPagePage={setPage}
             />
-
             {loadingStatus && <Loader />}
-
             {loadingError !== '' && (
               <p className={'has-text-danger'}>{loadingError}</p>
             )}
-
             {filterLoader ? <Loader /> : catalogContent}
-
             <PagesSwitcher
               sortBy={sortBy}
               perPage={perPage}

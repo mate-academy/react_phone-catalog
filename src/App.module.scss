@@ -89,6 +89,7 @@
 .navItem {
   position: relative;
   height: 100%;
+  line-height: 100%;
   display: flex;
   align-items: center;
   cursor: pointer;
@@ -99,8 +100,7 @@
   font-style: normal;
   font-weight: 800;
   letter-spacing: 0.48px;
-  text-transform: capitalize;
-  line-height: 100%;
+  text-transform: uppercase;
 
   &:hover {
     color: var(--primary-grey-color);
@@ -143,10 +143,16 @@
   }
 }
 
+.languageButton {
+  width: 24px;
+  display: flex;
+  align-items: center;
+}
+
 .darkModeButton {
   position: relative;
-  width: 42px;
-  height: 21px;
+  width: 36px;
+  height: 18px;
   display: flex;
   padding: 3px;
   background-color: var(--primary-grey-color);
@@ -159,7 +165,7 @@
 
   &__text {
     font-family: inherit;
-    font-size: 8px;
+    font-size: 6px;
     font-style: normal;
     font-weight: 500;
     text-transform: uppercase;

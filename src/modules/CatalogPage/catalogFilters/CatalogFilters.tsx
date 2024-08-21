@@ -4,6 +4,7 @@ import { useNavigate, useSearchParams } from 'react-router-dom';
 import { updateURLParams } from './../services/updateUrl';
 import Select, { components, SingleValue } from 'react-select';
 import { useAppSelector } from '../../../app/hooks';
+import { useTranslation } from 'react-i18next';
 
 interface OptionsSortByType {
   value: string;
@@ -14,18 +15,6 @@ interface OptionsQuantityType {
   value: string;
   label: string;
 }
-
-const optionsSortBy: OptionsSortByType[] = [
-  { value: 'age', label: 'Newest' },
-  { value: 'title', label: 'Alphabetically' },
-  { value: 'price', label: 'Cheapest' },
-];
-const optionsQuantity: OptionsQuantityType[] = [
-  { value: 'all', label: 'All' },
-  { value: '4', label: '4' },
-  { value: '8', label: '8' },
-  { value: '16', label: '16' },
-];
 
 const DropdownIndicator = (props: any) => {
   return (
@@ -60,12 +49,26 @@ export const CatalogFilters: React.FC<CatalogFiltersProps> = ({
   setPer,
   setPagePage,
 }) => {
+  const { t } = useTranslation();
+
   const navigate = useNavigate();
 
   const [searchParams] = useSearchParams();
   const query = searchParams.get('query') || '';
 
   const isDark = useAppSelector(state => state.boolean.isDark);
+
+  const optionsSortBy: OptionsSortByType[] = [
+    { value: 'age', label: `${t('newest')}` },
+    { value: 'title', label: `${t('alphabetically')}` },
+    { value: 'price', label: `${t('cheapest')}` },
+  ];
+  const optionsQuantity: OptionsQuantityType[] = [
+    { value: 'all', label: `${t('all')}` },
+    { value: '4', label: '4' },
+    { value: '8', label: '8' },
+    { value: '16', label: '16' },
+  ];
 
   useEffect(() => {
     const filters = document.getElementById('filtersId');
@@ -122,7 +125,7 @@ export const CatalogFilters: React.FC<CatalogFiltersProps> = ({
       <div
         className={`${styles.filters__block} ${styles.filters__blockSortBy}`}
       >
-        <p className={styles.filters__text}>Sort by</p>
+        <p className={styles.filters__text}>{t('sort_by')}</p>
 
         <Select
           onChange={handleSortBySelect}
@@ -200,7 +203,7 @@ export const CatalogFilters: React.FC<CatalogFiltersProps> = ({
       <div
         className={`${styles.filters__block} ${styles.filters__blockQuantity}`}
       >
-        <p className={styles.filters__text}>Items on page</p>
+        <p className={styles.filters__text}> {t('items_on_page')} </p>
 
         <Select
           onChange={handleQuantitySelect}

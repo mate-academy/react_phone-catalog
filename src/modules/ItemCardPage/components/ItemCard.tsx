@@ -13,8 +13,10 @@ import { colorHexMap } from './../../colorHexMap';
 import { Loader } from '../../Loader';
 import { CurrentProductSlider } from '../../shared/CurrentProductSlider/CurrentProductSlider';
 import { Product } from '../../../types/Product';
+import { useTranslation } from 'react-i18next';
 
 export const ItemCard: React.FC = () => {
+  const { t } = useTranslation();
   const dispatch = useAppDispatch();
   const location = useLocation();
   const path = location.pathname;
@@ -22,8 +24,6 @@ export const ItemCard: React.FC = () => {
   const params = paramsObj.productId;
   let gadgetWithCamera = null;
   let gadgetWithZoom = null;
-
-  const TITLE_FOR_SLIDER = 'You may also like';
 
   const listOfProducts = useAppSelector(state => state.products.objects);
   const listOfPhones = useAppSelector(state => state.phones.objects);
@@ -184,7 +184,7 @@ export const ItemCard: React.FC = () => {
               to={`/${currrentGadget?.category}`}
               className={styles.path__category}
             >
-              {currrentGadget?.category}
+              {t(`${currrentGadget?.category}`)}
             </Link>
 
             <img
@@ -209,7 +209,7 @@ export const ItemCard: React.FC = () => {
               className={`${styles.main__interaction} ${styles.interaction}`}
             >
               <p className={styles.interaction__littleTitles}>
-                Available colors
+                {t('available_colors')}
               </p>
               <div className={styles.interaction__colors}>
                 {currrentGadget?.colorsAvailable.map(color => {
@@ -234,7 +234,7 @@ export const ItemCard: React.FC = () => {
               <div className={styles.interaction__firstHorizontal}></div>
 
               <p className={styles.interaction__littleTitles}>
-                Select capacity
+                {t('select_capacity')}
               </p>
 
               <div className={styles.interaction__capacityBlock}>
@@ -266,7 +266,9 @@ export const ItemCard: React.FC = () => {
 
               <div className={styles.interaction__techBlock}>
                 <div className={styles.interaction__tech}>
-                  <p className={styles.interaction__techParameter}>Screen</p>
+                  <p className={styles.interaction__techParameter}>
+                    {t('screen')}
+                  </p>
 
                   <p className={styles.interaction__techValue}>
                     {currrentGadget?.screen}
@@ -275,7 +277,7 @@ export const ItemCard: React.FC = () => {
 
                 <div className={styles.interaction__tech}>
                   <p className={styles.interaction__techParameter}>
-                    Resolution
+                    {t('resolution')}
                   </p>
 
                   <p className={styles.interaction__techValue}>
@@ -284,7 +286,9 @@ export const ItemCard: React.FC = () => {
                 </div>
 
                 <div className={styles.interaction__tech}>
-                  <p className={styles.interaction__techParameter}>Processor</p>
+                  <p className={styles.interaction__techParameter}>
+                    {t('processor')}
+                  </p>
 
                   <p className={styles.interaction__techValue}>
                     {currrentGadget?.processor}
@@ -292,7 +296,9 @@ export const ItemCard: React.FC = () => {
                 </div>
 
                 <div className={styles.interaction__tech}>
-                  <p className={styles.interaction__techParameter}>RAM</p>
+                  <p className={styles.interaction__techParameter}>
+                    {t('ram')}
+                  </p>
 
                   <p className={styles.interaction__techValue}>
                     {currrentGadget?.ram}
@@ -307,7 +313,7 @@ export const ItemCard: React.FC = () => {
               <h3
                 className={`${styles.about__title} ${styles.descriptionTitle}`}
               >
-                About
+                {t('about')}
               </h3>
 
               <div
@@ -339,7 +345,7 @@ export const ItemCard: React.FC = () => {
               <h3
                 className={`${styles.techSpecs__title} ${styles.descriptionTitle}`}
               >
-                Tech specs
+                {t('tech_specs')}
               </h3>
 
               <div
@@ -348,7 +354,7 @@ export const ItemCard: React.FC = () => {
 
               <div className={styles.techSpecs__params}>
                 <div className={styles.techSpecs__param}>
-                  <p className={styles.drscriptionText}>Screen</p>
+                  <p className={styles.drscriptionText}> {t('screen')} </p>
 
                   <p className={styles.techSpecs__paramValue}>
                     {currrentGadget?.screen}
@@ -356,7 +362,7 @@ export const ItemCard: React.FC = () => {
                 </div>
 
                 <div className={styles.techSpecs__param}>
-                  <p className={styles.drscriptionText}>Resolution</p>
+                  <p className={styles.drscriptionText}> {t('resolution')} </p>
 
                   <p className={styles.techSpecs__paramValue}>
                     {currrentGadget?.resolution}
@@ -364,7 +370,7 @@ export const ItemCard: React.FC = () => {
                 </div>
 
                 <div className={styles.techSpecs__param}>
-                  <p className={styles.drscriptionText}>Processor</p>
+                  <p className={styles.drscriptionText}> {t('processor')} </p>
 
                   <p className={styles.techSpecs__paramValue}>
                     {currrentGadget?.processor}
@@ -372,7 +378,7 @@ export const ItemCard: React.FC = () => {
                 </div>
 
                 <div className={styles.techSpecs__param}>
-                  <p className={styles.drscriptionText}>RAM</p>
+                  <p className={styles.drscriptionText}> {t('ram')} </p>
 
                   <p className={styles.techSpecs__paramValue}>
                     {currrentGadget?.ram}
@@ -380,7 +386,10 @@ export const ItemCard: React.FC = () => {
                 </div>
 
                 <div className={styles.techSpecs__param}>
-                  <p className={styles.drscriptionText}>Built in memory</p>
+                  <p className={styles.drscriptionText}>
+                    {' '}
+                    {t('built_in_memory')}{' '}
+                  </p>
 
                   <p className={styles.techSpecs__paramValue}>
                     {currrentGadget?.capacity}
@@ -388,7 +397,7 @@ export const ItemCard: React.FC = () => {
                 </div>
                 {gadgetWithCamera !== null && (
                   <div className={styles.techSpecs__param}>
-                    <p className={styles.drscriptionText}>Camera</p>
+                    <p className={styles.drscriptionText}> {t('camera')} </p>
 
                     <p className={styles.techSpecs__paramValue}>
                       {gadgetWithCamera.camera}
@@ -398,7 +407,7 @@ export const ItemCard: React.FC = () => {
 
                 {gadgetWithZoom !== null && (
                   <div className={styles.techSpecs__param}>
-                    <p className={styles.drscriptionText}>Zoom</p>
+                    <p className={styles.drscriptionText}> {t('zoom')} </p>
 
                     <p className={styles.techSpecs__paramValue}>
                       {gadgetWithZoom.zoom}
@@ -407,7 +416,7 @@ export const ItemCard: React.FC = () => {
                 )}
 
                 <div className={styles.techSpecs__param}>
-                  <p className={styles.drscriptionText}>Cell</p>
+                  <p className={styles.drscriptionText}> {t('cell')} </p>
 
                   <p className={styles.techSpecs__paramValue}>
                     {currrentGadget?.cell.join(', ')}
@@ -419,7 +428,7 @@ export const ItemCard: React.FC = () => {
 
           <section className={styles.itemCard__slider}>
             <ProductsSlider
-              title={TITLE_FOR_SLIDER}
+              title={t('may_also_like')}
               gadgets={suggestedProducts}
             />
           </section>

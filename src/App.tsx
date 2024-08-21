@@ -11,7 +11,11 @@ import { fetchTablesAsync } from './features/fetchTabletsSlice';
 import { fetchAccessoriesAsync } from './features/fetchAccessoriesSlice';
 import { fetchProductsAsync } from './features/fetchProductsSlice';
 import { setHidenMenuIco } from './features/iconsChangerSlice';
-import { setIsDark, setIsMenuShown } from './features/booleanSlice';
+import {
+  setIsDark,
+  setIsMenuShown,
+  setLanguage,
+} from './features/booleanSlice';
 import { HidenMenu } from './modules/HidenMenu/components';
 import {
   addToCart,
@@ -29,6 +33,7 @@ import {
 } from './features/pagesDetailsSlice';
 import { amount } from './modules/CartPage/services/findAmount';
 import { scrollPageUpSmooth } from './modules/shared/scrollPageUp';
+import { useTranslation } from 'react-i18next';
 
 export const App: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -40,7 +45,6 @@ export const App: React.FC = () => {
   const closeIco = useAppSelector(state => state.iconsChanger.closeIco);
   const darkMenuIco = useAppSelector(state => state.iconsChanger.darkMenuIco);
   const darkCloseIco = useAppSelector(state => state.iconsChanger.darkCloseIco);
-
   const hidenMenuIco = useAppSelector(state => state.iconsChanger.hidenMenuIco);
   const isMenuShown = useAppSelector(state => state.boolean.isMenuShown);
   const favoritesArray = useAppSelector(state => state.chosenItems.favorite);
@@ -51,6 +55,9 @@ export const App: React.FC = () => {
   );
   const reloadTrigger = useAppSelector(state => state.boolean.reloadTrigger);
   const isDark = useAppSelector(state => state.boolean.isDark);
+  const language = useAppSelector(state => state.boolean.language);
+
+  const { t, i18n } = useTranslation();
 
   const body = document.body;
 
@@ -119,6 +126,7 @@ export const App: React.FC = () => {
     const currentGadget = localStorage.getItem('currentGadget');
     const currentProduct = localStorage.getItem('currentProduct');
     const darkMode = localStorage.getItem('isDark');
+    const languageString = localStorage.getItem('language');
 
     if (favString) {
       dispatch(cleanFavorite());
@@ -156,6 +164,10 @@ export const App: React.FC = () => {
 
     if (darkMode) {
       dispatch(setIsDark(JSON.parse(darkMode)));
+    }
+
+    if (languageString) {
+      dispatch(setLanguage(languageString));
     }
   }, [reloadTrigger]);
 
@@ -197,6 +209,18 @@ export const App: React.FC = () => {
     }
   };
 
+  const handleLanguageChange = () => {
+    if (language === 'en') {
+      dispatch(setLanguage('ua'));
+      i18n.changeLanguage('en');
+      localStorage.setItem('language', 'ua');
+    } else {
+      dispatch(setLanguage('en'));
+      i18n.changeLanguage('ua');
+      localStorage.setItem('language', 'en');
+    }
+  };
+
   return (
     <div className={styles.app}>
       <HidenMenu />
@@ -224,34 +248,42 @@ export const App: React.FC = () => {
                 className={`${styles.navItem} ${location.pathname === '/' && styles.active}`}
                 to="/"
               >
-                HOME
+                {t('home')}
               </Link>
 
               <Link
                 className={`${styles.navItem} ${location.pathname.includes('phones') && styles.active}`}
                 to="/phones"
               >
-                PHONES
+                {t('phones')}
               </Link>
 
               <Link
                 className={`${styles.navItem} ${location.pathname.includes('tablets') && styles.active}`}
                 to="/tablets"
               >
-                TABLETS
+                {t('tablets')}
               </Link>
 
               <Link
                 className={`${styles.navItem} ${location.pathname.includes('accessories') && styles.active}`}
                 to="/accessories"
               >
-                ACCESORIES
+                {t('accessories')}
               </Link>
             </ul>
           </nav>
         </div>
 
         <div className={styles.header__right}>
+          <div onClick={handleLanguageChange} className={styles.languageButton}>
+            {language === 'ua' ? (
+              <img src="./icons/ua-flag-ico.svg" alt="ua-flag" />
+            ) : (
+              <img src="./icons/en-flag-ico.svg" alt="en-flag" />
+            )}
+          </div>
+
           <div
             onClick={handleDarkModeSwither}
             className={styles.darkModeButton}
@@ -263,7 +295,7 @@ export const App: React.FC = () => {
                 ${isDark && styles.off}
               `}
             >
-              dark
+              {t('dark')}
             </p>
             <div
               className={`${styles.darkModeButton__runner} ${isDark && styles.isDark}`}
@@ -275,7 +307,7 @@ export const App: React.FC = () => {
                 ${!isDark && styles.off}
               `}
             >
-              light
+              {t('light')}
             </p>
           </div>
 
@@ -375,10 +407,10 @@ export const App: React.FC = () => {
                 github
               </Link>
               <Link className={styles.footer__contactsLink} to="/">
-                contacts
+                {t('contacts')}
               </Link>
               <Link className={styles.footer__contactsLink} to="/">
-                rights
+                {t('rights')}
               </Link>
             </div>
 
@@ -387,7 +419,10 @@ export const App: React.FC = () => {
                 onClick={() => scrollPageUpSmooth()}
                 className={styles.footer__goUpButtonArea}
               >
-                <div className={styles.footer__goUpTextLink}>Back to top</div>
+                <div className={styles.footer__goUpTextLink}>
+                  {' '}
+                  {t('go_up')}{' '}
+                </div>
 
                 <button
                   className={`${styles.footer__goUpButton} ${isDark && styles.goUpDark}`}

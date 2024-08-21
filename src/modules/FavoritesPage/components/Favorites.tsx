@@ -4,10 +4,12 @@ import { ProductsList } from '../../shared/ProductsList/ProductsList';
 import styles from './Favorite.module.scss';
 import { Link, useLocation } from 'react-router-dom';
 import { setModels } from '../../../features/pagesDetailsSlice';
+import { useTranslation } from 'react-i18next';
 
 export const Favorites: React.FC = () => {
   const dispatch = useAppDispatch();
   const location = useLocation();
+  const { t } = useTranslation();
 
   const favGadgets = useAppSelector(state => state.chosenItems.favorite);
   const models = useAppSelector(state => state.pagesDetails.models);
@@ -34,20 +36,18 @@ export const Favorites: React.FC = () => {
           <img src="./icons/arrow-right-light-ico.svg" alt="arrow-right" />
 
           <p className={styles.favorites__pathCategory}>
-            {location.pathname.slice(1)}
+            {t(`${location.pathname.slice(1)}`)}
           </p>
         </div>
 
-        <h1 className={styles.favorites__title}>Favorites</h1>
+        <h1 className={styles.favorites__title}> {t('favorites')} </h1>
 
         <p className={styles.favorites__quantity}>
-          {`${models} ${models === 1 ? 'model' : 'models'}`}
+          {`${models} ${models === 1 ? `${t('model')}` : `${t('models')}`}`}
         </p>
 
         {favGadgets.length === 0 && (
-          <h3 className={styles.favorites__empty}>
-            You do not have any favorite product yet.
-          </h3>
+          <h3 className={styles.favorites__empty}>{t('empty_favorites')}</h3>
         )}
 
         <ProductsList gadgets={favGadgets} />

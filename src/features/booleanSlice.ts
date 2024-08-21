@@ -8,6 +8,7 @@ type BooleanType = {
   reloadTrigger: boolean;
   isWrongParams: boolean;
   isDark: boolean;
+  language: string;
 };
 
 const initialState: BooleanType = {
@@ -17,6 +18,7 @@ const initialState: BooleanType = {
   reloadTrigger: false,
   isWrongParams: false,
   isDark: false,
+  language: 'ua',
 };
 
 const booleanSlice = createSlice({
@@ -41,6 +43,9 @@ const booleanSlice = createSlice({
     setIsDark: (state, action: PayloadAction<boolean>) => {
       state.isDark = action.payload;
     },
+    setLanguage: (state, action: PayloadAction<string>) => {
+      state.language = action.payload;
+    },
   },
 });
 
@@ -52,4 +57,5 @@ export const {
   setReloadTrigger,
   setIsWrongParams,
   setIsDark,
+  setLanguage,
 } = booleanSlice.actions;
