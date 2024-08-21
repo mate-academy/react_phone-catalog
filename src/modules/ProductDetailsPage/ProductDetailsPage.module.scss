@@ -7,6 +7,10 @@
 
 }
 
+.chevronIcon {
+  padding-top: 5px;
+}
+
 .container {
   @include section-grid;
 }
@@ -49,3 +53,14 @@
   }
 }
 
+.label {
+  display: flex;
+  text-align: center;
+  padding-top: 2px;
+  height: 15px;
+  text-decoration: none;
+
+  @extend %small-text;
+
+  color: var(--color-secondary);
+}

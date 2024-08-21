@@ -45,7 +45,7 @@ export const ProductDetailsPage: React.FC = () => {
               <img src={chevronIcon} alt="home" className={styles.chevronIcon} />
               <div className={styles.goBackText}>
                 <Link to={`/${previousCurrentPage[0]}`}>
-                  <div>Back</div>
+                  <div className={styles.label}>Back</div>
                 </Link>
               </div>
             </button>
