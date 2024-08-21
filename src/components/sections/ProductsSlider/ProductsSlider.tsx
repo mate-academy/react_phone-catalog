@@ -33,28 +33,34 @@ export const ProductsSlider: React.FC<Props> = ({
   const gap = 16;
   const animationDuration = 1000;
 
-  const calculateItemWidth = () => {
-    if (wrapperRef.current) {
-      setWrapperWidth(wrapperRef.current.clientWidth);
-    }
-
-    if (listRef.current) {
-      const firstItem = listRef.current.querySelector('li');
-
-      if (firstItem && wrapperRef.current) {
-        setItemWidth(firstItem.clientWidth);
-      }
-    }
-  };
-
   useLayoutEffect(() => {
-    calculateItemWidth();
-    window.addEventListener('resize', calculateItemWidth);
+    const resizeUpdating = () => {
+      if (wrapperRef.current) {
+        setWrapperWidth(wrapperRef.current.clientWidth);
+      }
+
+      if (listRef.current) {
+        const firstItem = listRef.current.querySelector('li');
+
+        if (firstItem && wrapperRef.current) {
+          setItemWidth(firstItem.clientWidth);
+        }
+      }
+
+      // currentIndex + frameSize > products.length - frameSize
+
+      if (false) {
+        setCurrentIndex(currentIndex - step);
+      }
+    };
+
+    resizeUpdating();
+    window.addEventListener('resize', resizeUpdating);
 
     return () => {
-      window.removeEventListener('resize', calculateItemWidth);
+      window.removeEventListener('resize', resizeUpdating);
     };
-  }, [itemWidth, products.length, wrapperWidth]);
+  }, [currentIndex, frameSize, itemWidth, products.length, wrapperWidth]);
 
   useEffect(() => {
     setFrameSize(Math.floor(wrapperWidth / (itemWidth + gap)));
@@ -65,13 +71,9 @@ export const ProductsSlider: React.FC<Props> = ({
   }, [currentIndex]);
 
   const next = useCallback(() => {
-    // console.log(frameSize);
-    setCurrentIndex(
-      currentIndex + step >= products.length
-        ? products.length - frameSize
-        : currentIndex + step,
-    );
-  }, [currentIndex, frameSize, products.length]);
+    // console.log(currentIndex);
+    setCurrentIndex(currentIndex + step);
+  }, [currentIndex]);
 
   const translateX =
     currentIndex === products.length - frameSize
@@ -135,7 +137,7 @@ export const ProductsSlider: React.FC<Props> = ({
             <button
               className="products-slider__button"
               type="button"
-              disabled={currentIndex + step >= products.length}
+              disabled={currentIndex >= products.length - frameSize}
               onClick={next}
             >
               <Icon iconName="icon-arrow-right" />
