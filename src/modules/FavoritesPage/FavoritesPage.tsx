@@ -7,18 +7,27 @@ import styles from './FavoritesPage.module.scss';
 import chevronIcon from '../../img/icons/ChevronIcon.svg';
 import { useAppContext } from '../../context/AppContext';
 import { Link } from 'react-router-dom';
+import { ProductCard } from '../../components/ProductCard';
+
+
 
 export const FavoritesPage: React.FC = () => {
   const category = useLocation().pathname.slice(1)
   console.log('PAGE CLICKED',category)
-  const {handleNotReady, previousCurrentPage} = useAppContext();
+  const {previousCurrentPage, favoriteProducts} = useAppContext();
+
+
+
   return (
-    <div>
+    <div >
 <Header />
     <PreviousPage category={category}/>
 
-    <div className={styles.cartPage}>
+    <div className={styles.favoritesPage}>
     <Breadcrumbs category={category}/>
+
+
+
       <div className={styles.topContainer}>
         <div className={styles.topLeft}>
           <button className={styles.goBackButton}>
@@ -35,32 +44,24 @@ export const FavoritesPage: React.FC = () => {
           </button>
         </div>
         <h1 className={styles.title}>Favorites</h1>
+        <p className={styles.count}>
+          {`${favoriteProducts.length} item${favoriteProducts.length > 1 ? 's' : ''}`}
+        </p>
       </div>
 
         <div className={styles.emptyContainer}>
+        <div className={styles.container}>
+        {favoriteProducts.map((favproduct,index) => (
+          <div className={styles.product}>
+            <ProductCard product={favproduct} key={index}/>
+          </div>
+
+        ))}
         </div>
 
-        <div className={styles.container}>
-          <div className={styles.cartItems}>
 
 
 
-          </div>
-          <div className={styles.bottomContainer}>
-            <div className={styles.checkout}>
-              <h2 className={styles.totalPrice}>$XXX</h2>
-              <p
-                className={styles.totalItems}
-              >"Total for xxx item xxx"</p>
-              <div className={styles.divider}></div>
-              <button
-                className={styles.checkoutButton}
-                onClick={handleNotReady}
-              >
-                Checkout
-              </button>
-            </div>
-          </div>
         </div>
 
     </div>

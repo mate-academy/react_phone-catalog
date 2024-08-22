@@ -1,16 +1,16 @@
 import './ProductCard.module.scss';
 import { ActionButtons } from '../ActionButtons';
-import { ProductPhone, ProductTablet, ProductAccessory } from '../../types/Product';
+import { Product } from '../../types/Product';
 import { Link } from 'react-router-dom';
 import styles from './ProductCard.module.scss';
 import { useAppContext } from '../../context/AppContext';
 
 type ProductCardProps = {
-  product: ProductPhone | ProductTablet | ProductAccessory;
+  product: Product;
   // handleSelectedProduct: (newState: string) => "";
 };
 
-export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
+export const ProductCard: React.FC<ProductCardProps> = ({ product}) => {
   if (!product) {
     return <div>No product available</div>;
   }
@@ -69,7 +69,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
           </div>
         </div>
 
-        <ActionButtons />
+        <ActionButtons product={product}/>
       </div>
     </div>
   );

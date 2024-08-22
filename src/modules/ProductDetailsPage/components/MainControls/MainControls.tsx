@@ -84,7 +84,7 @@ if (clickedProduct !== undefined) {
         <div className={styles.hotPrice}>${`${clickedProduct.priceDiscount}`}</div>
       </div>
 
-      <ActionButtons />
+      <ActionButtons product={clickedProduct}/>
 
       <ul className={styles.specsList}>
         <li className={styles.specs}>

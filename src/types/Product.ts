@@ -68,3 +68,5 @@ export interface ProductAccessory {
   camera: string;
   cell: string[];
 }
+
+export type Product =  ProductPhone | ProductTablet | ProductAccessory;

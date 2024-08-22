@@ -29,12 +29,8 @@
 }
 
 .container {
-  grid-column: 1 / -1;
-  margin-top: 40px;
-
-  @include section-grid;
-
-  padding: 0;
+display: flex;
+gap: 15px;
 }
 
 .product {
@@ -52,3 +48,30 @@
     grid-column: span 6;
   }
 }
+.label {
+  display: flex;
+  text-align: center;
+  padding-top: 3px;
+  height: 15px;
+  text-decoration: none;
+
+  @extend %small-text;
+
+  color: var(--color-secondary);
+}
+.goBackButton {
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  gap: 8px;
+  height: 16px;
+  width: 66px;
+  border: 0;
+  cursor: pointer;
+  background-color: transparent;
+}
+
+.chevronIcon {
+  padding-top: 5px;
+}
+
