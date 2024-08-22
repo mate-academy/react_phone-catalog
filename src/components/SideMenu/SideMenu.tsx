@@ -3,6 +3,8 @@ import '../../styles/main.scss';
 import { Icon } from '../ui/Icon';
 import styles from './SideMenu.module.scss';
 import classNames from 'classnames';
+import { useFavorites } from '../../hooks/useFavorites';
+import { useCart } from '../../hooks/useCart';
 
 type SideMenuProps = {
   isMenuOpen: boolean;
@@ -10,6 +12,13 @@ type SideMenuProps = {
 };
 
 export const SideMenu: React.FC<SideMenuProps> = ({ isMenuOpen, onMenu }) => {
+  const { favorites } = useFavorites();
+  const { cart } = useCart();
+
+  const itemsInCart = cart.reduce((acc, item) => {
+    return (item.count || 1) + acc;
+  }, 0);
+
   return (
     <aside
       className={classNames('App__menu', styles.menu, {
@@ -81,10 +90,10 @@ export const SideMenu: React.FC<SideMenuProps> = ({ isMenuOpen, onMenu }) => {
 
         <div className={styles.menu__footer}>
           <Link to="/favorites" className={styles.menu__link}>
-            <Icon iconName="favorites" />
+            <Icon iconName="favorites" badgeInfo={favorites.length || ''} />
           </Link>
           <Link to="/cart" className={styles.menu__link}>
-            <Icon iconName="cart" />
+            <Icon iconName="cart" badgeInfo={itemsInCart || ''} />
           </Link>
         </div>
       </div>

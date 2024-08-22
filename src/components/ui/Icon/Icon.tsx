@@ -17,11 +17,11 @@ const Badge: React.FC<{ badgeInfo: number | string }> = ({ badgeInfo }) => (
 
 export const Icon: React.FC<IconProps> = ({ iconName, badgeInfo = '' }) => {
   return (
-    <>
-      <svg className={styles.icon} aria-hidden="true">
+    <div className={styles.icon}>
+      <svg className={styles.icon__svg} aria-hidden="true">
         <use xlinkHref={`${sprite}#icon-${iconName}`} />
       </svg>
       {badgeInfo && <Badge badgeInfo={badgeInfo} />}
-    </>
+    </div>
   );
 };

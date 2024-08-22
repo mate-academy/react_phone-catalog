@@ -4,6 +4,8 @@ import styles from './Header.module.scss';
 import classNames from 'classnames';
 import { Icon } from '../ui/Icon';
 import { Link, NavLink, useSearchParams } from 'react-router-dom';
+import { useFavorites } from '../../hooks/useFavorites';
+import { useCart } from '../../hooks/useCart';
 
 type HeaderProps = {
   onMenu: () => void;
@@ -12,6 +14,12 @@ type HeaderProps = {
 const Header = forwardRef<HTMLDivElement, HeaderProps>(
   ({ onMenu }, ref: Ref<HTMLDivElement>) => {
     const [searchParams] = useSearchParams();
+    const { favorites } = useFavorites();
+    const { cart } = useCart();
+
+    const itemsInCart = cart.reduce((acc, item) => {
+      return (item.count || 1) + acc;
+    }, 0);
 
     return (
       <div className={styles.header} id="header" ref={ref}>
@@ -55,8 +63,6 @@ const Header = forwardRef<HTMLDivElement, HeaderProps>(
                       pathname: '/phones',
                       search: searchParams.toString(),
                     }}
-                    // to="/phones"
-                    // state={{search: searchParams.toString()}}
                     className={({ isActive }) =>
                       classNames(
                         'uppercase-text nav__link',
@@ -79,8 +85,6 @@ const Header = forwardRef<HTMLDivElement, HeaderProps>(
                       pathname: '/tablets',
                       search: searchParams.toString(),
                     }}
-                    // to="/tablets"
-                    // state={{search: searchParams.toString()}}
                     className={({ isActive }) =>
                       classNames(
                         'uppercase-text nav__link',
@@ -103,8 +107,6 @@ const Header = forwardRef<HTMLDivElement, HeaderProps>(
                       pathname: '/accessories',
                       search: searchParams.toString(),
                     }}
-                    // to="/accessories"
-                    // state={{search: searchParams.toString()}}
                     className={({ isActive }) =>
                       classNames(
                         'uppercase-text nav__link',
@@ -132,7 +134,7 @@ const Header = forwardRef<HTMLDivElement, HeaderProps>(
                   )
                 }
               >
-                <Icon iconName="favorites" badgeInfo={12} />
+                <Icon iconName="favorites" badgeInfo={favorites.length || ''} />
               </NavLink>
               <NavLink
                 to="/cart"
@@ -146,7 +148,7 @@ const Header = forwardRef<HTMLDivElement, HeaderProps>(
                   )
                 }
               >
-                <Icon iconName="cart" />
+                <Icon iconName="cart" badgeInfo={itemsInCart || ''} />
               </NavLink>
               <button
                 className={classNames(

@@ -1,17 +1,20 @@
 @import '../../../styles/main';
 
 .icon {
-  width: 16px;
-  height: 16px;
-
+  display: flex;
   position: relative;
+
+  &__svg {
+    width: 16px;
+    height: 16px;
+  }
 
   &__badge {
     position: absolute;
     width: 14px;
     height: 14px;
-    top: 10px;
-    right: 8px;
+    top: -5px;
+    right: -8px;
 
     @include on-desktop {
       top: 16px;

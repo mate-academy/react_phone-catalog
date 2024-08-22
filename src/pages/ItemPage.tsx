@@ -23,26 +23,24 @@ import { useCart } from '../hooks/useCart';
 import { CartActionType } from '../types/CartActionType';
 import { CardButton } from '../components/ui/CardButton';
 import { isItemInArray } from '../utils/isItemInArray';
+import { capitalizeFirstLetter } from '../utils/capitalizeFirstLetter';
 
 export const ItemPage = () => {
   const { products } = useProducts();
   const { cart, updateCart } = useCart();
   const { favorites, toggleFavorite } = useFavorites();
 
-  //params for filtering ang fetching selectedItem
   const { itemId } = useParams();
   const paramFromLink = itemId?.slice(1);
 
   const [isLoading, setIsLoading] = useState(true);
 
-  //useEffect for this page only for current state
   const [selectedProduct] = useState<Product | null>(() => {
     return products.find(product => product.itemId === paramFromLink) || null;
   });
   const [selectedItem, setSelectedItem] = useState<ProductDetails | null>(null);
   const [suggestedProducts, setSuggestedProducts] = useState<Product[]>([]);
 
-  //component state
   const [selectedColorIndex, setSelectedColorIndex] = useState(0);
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
   const [selectedCapacityIndex, setSelectedCapacityIndex] = useState(1 || 0);
@@ -112,6 +110,14 @@ export const ItemPage = () => {
       return spaceRemovedColor;
     }) || [];
 
+  const nameWithCurrentColor = [
+    ...(selectedItem?.namespaceId.split('-') || []),
+    selectedItem?.capacityAvailable[selectedCapacityIndex],
+    selectedItem?.colorsAvailable[selectedColorIndex],
+  ]
+    .map(element => capitalizeFirstLetter(element ?? ''))
+    .join(' ');
+
   return (
     <section id="item-page" className="item-page">
       <div className="item-page__navigation">
@@ -121,17 +127,25 @@ export const ItemPage = () => {
       <GoBackLink />
 
       <div className="item-page__content">
-        <h3 className="item-page__title">{selectedItem?.name}</h3>
+        <h3 className="item-page__title">{nameWithCurrentColor}</h3>
 
         <div className="item-page__card">
           <div className="item-page__image-wrapper">
-            <a href="#" className="item-page__card-link">
-              <img
-                className="item-page__card-image"
-                src={`img/${selectedItem?.category}/${selectedItem?.namespaceId}/${spaceLessColors[selectedColorIndex]}/0${selectedImageIndex}.webp`}
-                alt={`image ${selectedItem?.name}`}
-              />
-            </a>
+            <div className="item-page__card-slider">
+              <a href="#" className="item-page__card-link">
+                {selectedItem?.images.map((_, index) => (
+                  <img
+                    key={index}
+                    className="item-page__card-image"
+                    src={`img/${selectedItem?.category}/${selectedItem?.namespaceId}/${spaceLessColors[selectedColorIndex]}/0${index}.webp`}
+                    alt={`image ${nameWithCurrentColor}`}
+                    aria-hidden={selectedImageIndex !== index}
+                    loading="lazy"
+                    style={{ translate: `${-100 * selectedImageIndex}%` }}
+                  />
+                ))}
+              </a>
+            </div>
             <ul className="item-page__thumbnail-list">
               {selectedItem?.images.map((_, index) => (
                 <li

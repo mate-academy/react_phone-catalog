@@ -2304,7 +2304,7 @@
     "fullPrice": 749,
     "price": 699,
     "color": "rose gold",
-    "image": "img/tablets/apple-ipad-air-4th-gen/rose-gold/00.webp",
+    "image": "img/tablets/apple-ipad-air-4th-gen/rosegold/00.webp",
     "screen": "10.9' Liquid Retina",
     "ram": "4GB",
     "year": 2020
@@ -2318,7 +2318,7 @@
     "fullPrice": 599,
     "price": 549,
     "color": "rose gold",
-    "image": "img/tablets/apple-ipad-air-4th-gen/rose-gold/00.webp",
+    "image": "img/tablets/apple-ipad-air-4th-gen/rosegold/00.webp",
     "screen": "10.9' Liquid Retina",
     "ram": "4GB",
     "year": 2020
@@ -2387,8 +2387,8 @@
     "capacity": "256GB",
     "fullPrice": 749,
     "price": 699,
-    "color": "sky-blue",
-    "image": "img/tablets/apple-ipad-air-4th-gen/sky-blue/00.webp",
+    "color": "sky blue",
+    "image": "img/tablets/apple-ipad-air-4th-gen/skyblue/00.webp",
     "screen": "10.9' Liquid Retina",
     "ram": "4GB",
     "year": 2020
@@ -2401,8 +2401,8 @@
     "capacity": "64GB",
     "fullPrice": 599,
     "price": 549,
-    "color": "sky-blue",
-    "image": "img/tablets/apple-ipad-air-4th-gen/sky-blue/00.webp",
+    "color": "sky blue",
+    "image": "img/tablets/apple-ipad-air-4th-gen/skyblue/00.webp",
     "screen": "10.9' Liquid Retina",
     "ram": "4GB",
     "year": 2020
