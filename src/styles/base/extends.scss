@@ -1,0 +1,90 @@
+%font-mont {
+  font-family: Mont, Arial, Helvetica, sans-serif;
+  font-style: normal;
+}
+
+%font-mont-regular {
+  @extend %font-mont;
+  font-weight: 400;
+}
+%font-mont-bold {
+  @extend %font-mont;
+  font-weight: 700;
+}
+%font-mont-semibold {
+  @extend %font-mont;
+  font-weight: 600;
+}
+
+%h1 {
+  @extend %font-mont-bold;
+  font-size: 48px;
+  line-height: 56px;
+  letter-spacing: -0.01em;
+
+  @include on-mobile {
+    font-size: 32px;
+    line-height: 41px;
+  }
+}
+
+%h2 {
+  @extend %font-mont-bold;
+  font-size: 32px;
+  line-height: 41px;
+  letter-spacing: -0.01em;
+
+  @include on-mobile {
+    font-size: 22px;
+    line-height: 31px;
+  }
+}
+
+%h3 {
+  @extend %font-mont-bold;
+  font-size: 22px;
+  line-height: 31px;
+  letter-spacing: 0em;
+
+  @include on-mobile {
+    font-family: Mont, Arial, Helvetica, sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 26px;
+  }
+}
+
+%h4 {
+  @extend %font-mont-semibold;
+  font-size: 20px;
+  line-height: 26px;
+  letter-spacing: 0em;
+
+  @include on-mobile {
+    font-size: 16px;
+    line-height: 20px;
+  }
+}
+
+%uppercase {
+  @extend %font-mont-bold;
+  text-transform: uppercase;
+  font-size: 12px;
+  line-height: 11px;
+  letter-spacing: 0.04em;
+}
+
+%buttons {
+  @extend %font-mont-semibold;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 0;
+}
+
+%body-text {
+  @extend %font-mont-regular;
+  font-size: 12px;
+  line-height: 15px;
+  letter-spacing: 0;
+}

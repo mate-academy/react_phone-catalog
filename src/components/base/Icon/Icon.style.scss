@@ -1,0 +1,43 @@
+.icon {
+  box-shadow: -1px 0px 0px 0px #e2e6e9;
+  cursor: pointer;
+  &--bar {
+    height: 48px;
+    width: 48px;
+    @include on-desktop {
+      height: 64px;
+      width: 64px;
+    }
+  }
+
+  &--menu-page {
+    width: 50%;
+    height: 64px;
+    box-shadow: -1px -1px 0px 0px #e2e6e9;
+    position: relative;
+    &:hover::after {
+      content: '';
+      position: absolute;
+      height: 2px;
+      width: 100%;
+      bottom: 0;
+      background: $c-primary;
+    }
+  }
+
+  &--menu {
+    background: url('../../../../public/img/icons/menu.svg') no-repeat center;
+  }
+
+  &--favorite {
+    background: url('../../../../public/img/icons/heart.svg') no-repeat center;
+  }
+
+  &--cart {
+    background: url('../../../../public/img/icons/cart.svg') no-repeat center;
+  }
+
+  &--close {
+    background: url('../../../../public/img/icons/close.svg') no-repeat center;
+  }
+}

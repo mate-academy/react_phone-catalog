@@ -1,0 +1,33 @@
+.menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  opacity: 0;
+  pointer-events: none;
+  &:target {
+    opacity: 1;
+    pointer-events: all;
+  }
+  &__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: calc(100vh - 48px);
+    width: 100vw;
+    &-nav {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      padding-top: 24px;
+      padding-inline: 16px;
+    }
+    &-icons {
+      display: flex;
+      flex-direction: row;
+      width: 100%;
+    }
+  }
+}

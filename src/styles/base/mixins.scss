@@ -1,0 +1,26 @@
+@import './vars.scss';
+
+@mixin on-mobile {
+  @media screen and (max-width: $max-width-mobile) {
+    @content;
+  }
+}
+
+@mixin on-tablet {
+  @media screen and (min-width: $min-width-tablet) and (max-width: $max-width-tablet) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media screen and (min-width: $min-width-desktop) {
+    @content;
+  }
+}
+
+@mixin on-big-desktop {
+  @media screen and (min-width: $min-width-big-desktop) {
+    @content;
+  }
+}
+
