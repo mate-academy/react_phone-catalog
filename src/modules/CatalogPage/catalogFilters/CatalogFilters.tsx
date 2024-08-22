@@ -127,12 +127,12 @@ export const CatalogFilters: React.FC<CatalogFiltersProps> = ({
   return (
     <div id="filtersId" className={styles.filters}>
       <div
-        onTouchStart={preventMobileKeyboard}
         className={`${styles.filters__block} ${styles.filters__blockSortBy}`}
       >
         <p className={styles.filters__text}>{t('sort_by')}</p>
 
         <Select
+          onFocus={preventMobileKeyboard}
           onChange={handleSortBySelect}
           options={optionsSortBy}
           defaultValue={optionsSortBy[0]}
@@ -206,12 +206,12 @@ export const CatalogFilters: React.FC<CatalogFiltersProps> = ({
       </div>
 
       <div
-        onTouchStart={preventMobileKeyboard}
         className={`${styles.filters__block} ${styles.filters__blockQuantity}`}
       >
         <p className={styles.filters__text}> {t('items_on_page')} </p>
 
         <Select
+          onFocus={preventMobileKeyboard}
           onChange={handleQuantitySelect}
           options={optionsQuantity}
           defaultValue={optionsQuantity[0]}
