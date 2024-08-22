@@ -40,17 +40,16 @@ export const ItemCard: React.FC = () => {
   const loadingStatusAccessories = useAppSelector(
     state => state.accessories.loading,
   );
-
   const isWrongParams = useAppSelector(state => state.boolean.isWrongParams);
+  const category = useAppSelector(
+    state => state.chosenItems.currentGadget?.category,
+  );
+
   const [selectedColor, setSelectedColor] = useState<string | undefined>('');
   const [selectedCapacity, setSelectedCapacity] = useState<string | undefined>(
     '',
   );
   const [suggestedProducts, setSuggestedProducts] = useState<Product[]>([]);
-
-  const category = useAppSelector(
-    state => state.chosenItems.currentGadget?.category,
-  );
 
   useEffect(() => {
     setSelectedColor(currrentGadget?.color);
@@ -427,14 +426,16 @@ export const ItemCard: React.FC = () => {
           </section>
 
           <section className={styles.itemCard__slider}>
-            <ProductsSlider
-              title={t('may_also_like')}
-              gadgets={suggestedProducts}
-            />
+            {suggestedProducts.length > 0 && (
+              <ProductsSlider
+                title={t('may_also_like')}
+                gadgets={suggestedProducts}
+              />
+            )}
           </section>
         </div>
       ) : (
-        <h3 className={styles.notFound}>Product was not found</h3>
+        <h3 className={styles.notFound}>{t('product_not_found')}</h3>
       )}
     </>
   );

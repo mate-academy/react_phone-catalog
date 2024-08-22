@@ -45,9 +45,7 @@ export const Catalog: React.FC = () => {
   const sortByParam = queryParams.get('sort');
   const perPageParam = queryParams.get('perPage');
   const pageParams = queryParams.get('page');
-
   const { productId } = useParams();
-
   const [searchParams] = useSearchParams();
   const query = searchParams.get('query');
 
@@ -110,19 +108,9 @@ export const Catalog: React.FC = () => {
 
     if (query) {
       filteredProduct = productsFromServer.filter(prod => {
-        const splitedProductName = prod.name.toLowerCase().split(' ');
-        const splitedQuery = query.toLowerCase().split(' ');
-        const searchKeyWords: string[] = [];
-
-        for (const word of splitedQuery) {
-          if (word !== '') {
-            searchKeyWords.push(word);
-          }
-        }
-
         if (
           prod.category === categ &&
-          searchKeyWords.every(word => splitedProductName.includes(word))
+          prod.name.toLowerCase().includes(query.toLowerCase().trim())
         ) {
           return prod;
         } else {
@@ -131,14 +119,16 @@ export const Catalog: React.FC = () => {
       });
 
       setNoProductsMessage(
-        `There are no ${location.pathname.slice(1)} matching the query`,
+        `${t('there_are_no')} ${t(location.pathname.slice(1))} ${t('matching_the_query')}`,
       );
     } else {
       filteredProduct = productsFromServer.filter(
         prod => prod.category === categ,
       );
 
-      setNoProductsMessage(`There are no ${location.pathname.slice(1)} yet`);
+      setNoProductsMessage(
+        `${t('there_are_no')} ${t(location.pathname.slice(1))} ${t('yet')}`,
+      );
     }
 
     dispatch(setModels(filteredProduct.length));
@@ -227,7 +217,7 @@ export const Catalog: React.FC = () => {
         onClick={handleReloadButton}
         className={`${styles.catalog__reload} ${styles.blackButtonBase} ${isDark && styles.darkReload}`}
       >
-        Reload
+        {t('reload')}
       </button>
     );
   } else {

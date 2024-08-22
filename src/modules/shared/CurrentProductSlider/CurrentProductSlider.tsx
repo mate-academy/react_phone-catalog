@@ -18,6 +18,7 @@ export const CurrentProductSlider: React.FC<SliderType> = gadget => {
   const dispatch = useAppDispatch();
 
   let images: string[] | undefined = [];
+
   const [thumbsSwiper, setThumbsSwiper] = useState<any>(null);
   const [direction, setDirection] = useState<'horizontal' | 'vertical'>(
     'horizontal',

@@ -19,11 +19,11 @@ export const PagesSwitcher: React.FC<PagesSwitcherProps> = ({
   showFrom,
   setShownFrom,
 }) => {
-  const [disablePagesArrow, setDisablePagesArrow] = useState('disableLeft');
-
   const root = document.documentElement;
   const navigate = useNavigate();
   const location = useLocation();
+
+  const [disablePagesArrow, setDisablePagesArrow] = useState('disableLeft');
 
   const [searchParams] = useSearchParams();
   const query = searchParams.get('query') || '';

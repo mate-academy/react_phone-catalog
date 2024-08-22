@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import styles from './Home.module.scss';
 import './Home.module.scss';
 import { WelcomeSlider } from './../../shared/welcomeSlider/WelcomeSlider';
@@ -9,6 +9,8 @@ import { scrollPageUp } from './../../shared/scrollPageUp';
 import { useTranslation } from 'react-i18next';
 
 export const HomePage: React.FC = () => {
+  const { t } = useTranslation();
+
   const productsFromServer = useAppSelector(state => state.products.objects);
   const phonesFromServer = useAppSelector(state => state.phones.objects);
   const tabletsFromServer = useAppSelector(state => state.tablets.objects);
@@ -16,19 +18,20 @@ export const HomePage: React.FC = () => {
     state => state.accessories.objects,
   );
 
-  const { t } = useTranslation();
+  const brandNewModels = useMemo(() => {
+    return Array.from(productsFromServer)
+      .sort((prod1, prod2) => prod2.year - prod1.year)
+      .slice(0, 12);
+  }, [productsFromServer]);
 
-  const brandNewModels = Array.from(productsFromServer)
-    .sort((prod1, prod2) => {
-      return prod2.year - prod1.year;
-    })
-    .slice(0, 12);
-
-  const hotPriceModels = productsFromServer
-    .filter(prod => prod.fullPrice !== prod.price)
-    .sort((prod1, prod2) => {
-      return prod2.price - prod1.price;
-    });
+  const hotPriceModels = useMemo(() => {
+    return productsFromServer
+      .filter(prod => prod.fullPrice !== prod.price)
+      .sort((prod1, prod2) => {
+        return prod2.price - prod1.price;
+      })
+      .slice(0, 12);
+  }, [productsFromServer]);
 
   return (
     <div id="homePage" className={styles.homePage}>
@@ -44,10 +47,12 @@ export const HomePage: React.FC = () => {
 
       <section className={styles.newModels}>
         <div className={styles.newModels__swiper}>
-          <ProductsSlider
-            title={t('new_models_title')}
-            gadgets={brandNewModels}
-          />
+          {productsFromServer.length > 0 && (
+            <ProductsSlider
+              title={t('new_models_title')}
+              gadgets={brandNewModels}
+            />
+          )}
         </div>
       </section>
 
@@ -122,7 +127,9 @@ export const HomePage: React.FC = () => {
 
       <section className={styles.hot}>
         <div className={styles.hot__swiper}>
-          <ProductsSlider title={t('hot_price')} gadgets={hotPriceModels} />
+          {hotPriceModels.length > 0 && (
+            <ProductsSlider title={t('hot_price')} gadgets={hotPriceModels} />
+          )}
         </div>
       </section>
     </div>

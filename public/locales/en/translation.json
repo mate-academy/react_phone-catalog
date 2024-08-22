@@ -4,8 +4,8 @@
   "phones": "Phones",
   "tablets": "Tablets",
   "accessories": "Accessories",
-  "dark": "dark",
-  "light": "light",
+  "dark_scheme": "dark",
+  "light_scheme": "light",
   "contacts": "contacts",
   "rights": "rights",
   "go_up": "Back to top",
@@ -19,7 +19,7 @@
   "alphabetically": "Alphabetically",
   "cheapest": "Cheapest",
   "all": "All",
-  "search": "Пошук",
+  "search": "Search",
   "models": "models",
   "model": "model",
   "favorites": "Favorites",
@@ -48,5 +48,13 @@
   "camera": "Camera",
   "zoom": "Zoom",
   "cell": "Cell",
-  "may_also_like": "You may also like"
+  "may_also_like": "You may also like",
+  "reload": "Перезавантажити",
+  "page_not_found": "Hmm... page not found",
+  "click_go_home": "Click here for go back Home",
+  "product_not_found": "Product was not found",
+
+  "there_are_no": "There are no",
+  "matching_the_query": "matching the query",
+  "yet": "yet"
 }

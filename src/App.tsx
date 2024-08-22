@@ -38,6 +38,7 @@ import { useTranslation } from 'react-i18next';
 export const App: React.FC = () => {
   const dispatch = useAppDispatch();
   const location = useLocation();
+  const { t, i18n } = useTranslation();
 
   const burgerMenuIco = useAppSelector(
     state => state.iconsChanger.burgerMenuIco,
@@ -56,8 +57,6 @@ export const App: React.FC = () => {
   const reloadTrigger = useAppSelector(state => state.boolean.reloadTrigger);
   const isDark = useAppSelector(state => state.boolean.isDark);
   const language = useAppSelector(state => state.boolean.language);
-
-  const { t, i18n } = useTranslation();
 
   const body = document.body;
 
@@ -168,6 +167,12 @@ export const App: React.FC = () => {
 
     if (languageString) {
       dispatch(setLanguage(languageString));
+
+      if (languageString === 'en') {
+        i18n.changeLanguage('en');
+      } else {
+        i18n.changeLanguage('ua');
+      }
     }
   }, [reloadTrigger]);
 
@@ -210,15 +215,11 @@ export const App: React.FC = () => {
   };
 
   const handleLanguageChange = () => {
-    if (language === 'en') {
-      dispatch(setLanguage('ua'));
-      i18n.changeLanguage('en');
-      localStorage.setItem('language', 'ua');
-    } else {
-      dispatch(setLanguage('en'));
-      i18n.changeLanguage('ua');
-      localStorage.setItem('language', 'en');
-    }
+    const newLang = language === 'en' ? 'ua' : 'en';
+
+    dispatch(setLanguage(newLang));
+    i18n.changeLanguage(newLang);
+    localStorage.setItem('language', newLang);
   };
 
   return (
@@ -278,9 +279,9 @@ export const App: React.FC = () => {
         <div className={styles.header__right}>
           <div onClick={handleLanguageChange} className={styles.languageButton}>
             {language === 'ua' ? (
-              <img src="./icons/ua-flag-ico.svg" alt="ua-flag" />
-            ) : (
               <img src="./icons/en-flag-ico.svg" alt="en-flag" />
+            ) : (
+              <img src="./icons/ua-flag-ico.svg" alt="ua-flag" />
             )}
           </div>
 
@@ -293,9 +294,10 @@ export const App: React.FC = () => {
                 ${styles.darkModeButton__text}
                 ${styles.darkModeButton__darkText}
                 ${isDark && styles.off}
+                ${language === 'ua' && styles.ua}
               `}
             >
-              {t('dark')}
+              {t('dark_scheme')}
             </p>
             <div
               className={`${styles.darkModeButton__runner} ${isDark && styles.isDark}`}
@@ -305,9 +307,10 @@ export const App: React.FC = () => {
                 ${styles.darkModeButton__text}
                 ${styles.darkModeButton__lightText}
                 ${!isDark && styles.off}
+                ${language === 'ua' && styles.ua}
               `}
             >
-              {t('light')}
+              {t('light_scheme')}
             </p>
           </div>
 

@@ -32,4 +32,8 @@
   font-family: inherit;
   font-size: 18px;
   font-weight: 500;
+
+  &:hover {
+    color: var(--primary-grey-color);
+  }
 }

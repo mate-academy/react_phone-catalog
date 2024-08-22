@@ -14,11 +14,11 @@ interface SearchBarType {
 }
 
 export const SearchBar: React.FC<SearchBarType> = ({ setLoader }) => {
+  const { t } = useTranslation();
+
   const [searchParams, setSearchParams] = useSearchParams();
   const [localQuery, setLocalQuery] = useState(searchParams.get('query') || '');
   const isDark = useAppSelector(state => state.boolean.isDark);
-
-  const { t } = useTranslation();
 
   function getSearchWith(
     currentParams: URLSearchParams,

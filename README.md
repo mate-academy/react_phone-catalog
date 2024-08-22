@@ -22,7 +22,7 @@ Follow the [Instruction](https://github.com/mate-academy/react_phone-catalog/blo
 
 Use the data from `/public/api` and images from `/public/img` folders. You can reorganize them the way you like.
 
-<!-- ## App
+## App
 
 1. Put components into the `src/components` folder.
    - Each component should be a folder with `index.ts`, `ComponentName.tsx`, `ComponentName.module.scss` files.
@@ -38,9 +38,9 @@ Use the data from `/public/api` and images from `/public/img` folders. You can r
 5. Add `NotFoundPage` containing text `Page not found` for all the unknown URLs.
 6. All changes the hover effects should be smooth.
 7. Scale all image links by 10% on hover.
-8. Implement all form elements and icons according to the UI Kit. -->
+8. Implement all form elements and icons according to the UI Kit.
 
-<!-- ## Home page
+## Home page
 
 Implement Home page at available at `/`.
 
@@ -54,9 +54,9 @@ Implement Home page at available at `/`.
    - The products with a discount starting from the biggest absolute value;
    - `<` and `>` buttons should scroll products.
 4. `Shop by category` block with links to `/phones`, `/tablets`, and `/accessories`.
-5. Add `Brand new` block using `ProductsSlider` with products without a discount starting from the most expensive. -->
+5. Add `Brand new` block using `ProductsSlider` with products without a discount starting from the most expensive.
 
-<!-- ## Product pages
+## Product pages
 
 There should be 3 separate pages `/phones`, `/tablets`, and `/accessories`.
 
@@ -72,9 +72,9 @@ There should be 3 separate pages `/phones`, `/tablets`, and `/accessories`.
    - It should limit the products you show to the user;
    - Save pagination params in the URL `?page=2&perPage=8` (`page=1` and `perPage=all` are the default values and should not be added to the URL;
    - Hide pagination elements if they do not make sense;
-   - You can use the logic explained in [the React Pagination task](https://github.com/mate-academy/react_pagination#react-pagination). -->
+   - You can use the logic explained in [the React Pagination task](https://github.com/mate-academy/react_pagination#react-pagination).
 
-<!-- ## Product details page
+## Product details page
 
 Create `ProductDetailsPage` available at `/product/:productId`.
 
@@ -92,9 +92,9 @@ Create `ProductDetailsPage` available at `/product/:productId`.
    - A Home page link;
    - A category page link (`Phones`, `Tablets`, `Accessories`);
    - The name of the product (just a text).
-8. Show `Product was not found` if there is no product with a given id on the server. -->
+8. Show `Product was not found` if there is no product with a given id on the server.
 
-<!-- ## Shopping Cart page
+## Shopping Cart page
 
 Create a Cart page with a list of `CartItem`s at `/cart`.
 Each item should have an `id`, `quantity`, and a `product`.
@@ -107,15 +107,15 @@ Use React Context or Redux to store Items.
 5. Add the ability to change the item quantity in the `Cart` with `-` and `+` buttons (it should be > 0).
 6. Total amount and quantity should be calculated automatically.
 7. Show the quantity at the `Cart` icon in the header.
-8. Save the `Cart` to `localStorage` on each change and read it on page load. -->
+8. Save the `Cart` to `localStorage` on each change and read it on page load.
 
-<!-- 9. `Checkout` button should show a modal dialog with the text `Checkout is not implemented yet. Do you want to clear the Cart?`:
+9. `Checkout` button should show a modal dialog with the text `Checkout is not implemented yet. Do you want to clear the Cart?`:
    - Clear the Cart if the user confirms the order;
    - Keep the Cart items and close the confirmation on cancel;
 
-- Use the `confirm` function if you don't have a better solution. -->
+- Use the `confirm` function if you don't have a better solution.
 
-<!-- ## Favorites page
+## Favorites page
 
 Create `Favorites` page with a `ProductsList` showing favorite products at `/favorites`.
 
@@ -123,13 +123,13 @@ Create `Favorites` page with a `ProductsList` showing favorite products at `/fav
 2. The heart should be highlighted if the product is already added to the favorites.
 3. Use React Context or Redux to store the favorites.
 4. Show the number of favorites at the `Favorites` icon in the header.
-5. Save favorites to `localStorage` on each change and load them on page load. -->
+5. Save favorites to `localStorage` on each change and load them on page load.
 
-<!-- ## Other tasks
+## Other tasks
 
 1. Add `NotFoundPage` containing text `Page not found` for all the other URLs with the link to `HomePage`.
 
-2. Implement the `Product was not found` state for the `ProductDetailsPage`. -->
+2. Implement the `Product was not found` state for the `ProductDetailsPage`.
 
 ## (\*) Advanced tasks
 
@@ -139,8 +139,8 @@ Create `Favorites` page with a `ProductsList` showing favorite products at `/fav
 
 ### Search
 
-<!-- Show `input:search` in the header when a page contains a `ProductList` to search in.
+Show `input:search` in the header when a page contains a `ProductList` to search in.
 
 1. Save the `Search` value in the URL as a `?query=value` to apply on page load.
 2. Show `There are no phones/tablets/accessories/products matching the query` instead of `ProductList` when needed.
-3. Add `debounce` to the search field. -->
+3. Add `debounce` to the search field.

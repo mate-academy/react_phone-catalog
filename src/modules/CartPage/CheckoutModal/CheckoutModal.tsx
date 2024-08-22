@@ -15,7 +15,7 @@ export const CheckoutModal: React.FC = () => {
     dispatch(setIsCheckoutModal(false));
   };
 
-  const confirm = () => {
+  const handleConfirm = () => {
     dispatch(cleanCart());
     dispatch(setIsCheckoutModal(false));
     localStorage.removeItem('cart');
@@ -37,7 +37,7 @@ export const CheckoutModal: React.FC = () => {
           </button>
           <button
             className={`${styles.blackButtonBase} ${styles.module__button} ${isDark && styles.buttonDark}`}
-            onClick={confirm}
+            onClick={handleConfirm}
           >
             {t('confirm_checkout')}
           </button>

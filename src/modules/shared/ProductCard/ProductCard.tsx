@@ -1,3 +1,4 @@
+/* eslint-disable react/display-name */
 /* eslint-disable max-len */
 import styles from './ProductCard.module.scss';
 import { Product } from '../../../types/Product';
@@ -14,7 +15,7 @@ type Props = {
   gadget: Product;
 };
 
-export const ProductCard: React.FC<Props> = ({ gadget }) => {
+export const ProductCard: React.FC<Props> = React.memo(({ gadget }) => {
   const dispatch = useDispatch();
   const { t } = useTranslation();
 
@@ -87,4 +88,4 @@ export const ProductCard: React.FC<Props> = ({ gadget }) => {
       </div>
     </div>
   );
-};
+});
