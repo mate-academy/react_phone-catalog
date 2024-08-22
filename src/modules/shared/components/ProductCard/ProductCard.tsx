@@ -2,6 +2,7 @@ import { useState } from 'react';
 import styles from './ProductCard.module.scss';
 import classNames from 'classnames';
 import { Product } from '../../types';
+import { Link } from 'react-router-dom';
 
 type Props = {
   product: Product;
@@ -22,18 +23,25 @@ export const ProductCard: React.FC<Props> = ({ product, discount }) => {
 
   return (
     <div className={styles.productCard}>
-      <img
-        src={`./${product.image}`}
-        alt="product photo"
-        className={styles.productPhoto}
-      />
+      <Link to={`/${product.category}/${product.itemId}`}>
+        <img
+          src={`./${product.image}`}
+          alt="product photo"
+          className={styles.productPhoto}
+        />
+      </Link>
 
-      <p className={styles.productDescription}>{product.name}</p>
+      <Link
+        to={`/${product.category}/${product.itemId}`}
+        className={styles.descriptionLink}
+      >
+        <p className={styles.productDescription}>{product.name}</p>
+      </Link>
 
       <div className={styles.productPriceContainer}>
-        <h3 className={styles.productPrice}>{product.price}</h3>
+        <h3 className={styles.productPrice}>${product.price}</h3>
         {discount && (
-          <p className={styles.productDiscount}>{product.fullPrice}</p>
+          <p className={styles.productDiscount}>${product.fullPrice}</p>
         )}
       </div>
 
@@ -61,7 +69,7 @@ export const ProductCard: React.FC<Props> = ({ product, discount }) => {
           })}
           onClick={handleAddToCart}
         >
-          Add to cart
+          {isAdded ? `Added to cart` : `Add to cart`}
         </button>
         <button
           className={classNames(styles.favoriteBtn, {

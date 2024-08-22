@@ -1,7 +1,7 @@
-@import '../../variables';
-@import '../../mixins';
-@import '../../fonts';
-@import '../../animations';
+@import '../../../shared/variables';
+@import '../../../shared/mixins';
+@import '../../../shared/fonts';
+@import '../../../shared/animations';
 
 .productsList {
   grid-column: 1 / -1;

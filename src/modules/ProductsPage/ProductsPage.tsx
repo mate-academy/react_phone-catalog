@@ -2,11 +2,11 @@ import { useCallback, useEffect, useState } from 'react';
 import { useLocation, useSearchParams } from 'react-router-dom';
 import Select, { StylesConfig } from 'react-select';
 import styles from './ProductsPage.module.scss';
-import { ProductsList } from '../shared/components/ProductsList';
+import { ProductsList } from '../ProductsPage/components/ProductsList';
 import { Link } from 'react-router-dom';
 import { getProducts } from '../shared/api';
 import { Product } from '../shared/types';
-import { Pagination } from '../shared/components/Pagination';
+import { Pagination } from './components/Pagination';
 
 const sortByOptions = [
   { value: 'age', label: 'Newest' },

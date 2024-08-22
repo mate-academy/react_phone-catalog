@@ -1,7 +1,7 @@
-@import '../../variables';
-@import '../../mixins';
-@import '../../fonts';
-@import '../../animations';
+@import '../../../shared/variables.scss';
+@import '../../../shared/mixins.scss';
+@import '../../../shared/fonts';
+@import '../../../shared/animations';
 
 .pagination {
   grid-column: 1 / -1;

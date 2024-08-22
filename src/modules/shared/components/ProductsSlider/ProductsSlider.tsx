@@ -1,6 +1,6 @@
 import styles from './ProductsSlider.module.scss';
-import { ProductCard } from '../../../shared/components/ProductCard';
-import { Product } from '../../../shared/types';
+import { ProductCard } from '../ProductCard';
+import { Product } from '../../types';
 import { useEffect, useState } from 'react';
 import classNames from 'classnames';
 import { useSwipeable } from 'react-swipeable';

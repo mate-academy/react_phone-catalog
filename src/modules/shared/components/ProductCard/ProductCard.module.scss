@@ -28,6 +28,10 @@ $padding-top: 8px;
   }
 }
 
+.descriptionLink {
+  text-decoration: none;
+}
+
 .productDescription {
   padding-top: 24px;
   min-height: 42px;
@@ -132,17 +136,17 @@ $padding-top: 8px;
 }
 
 .favoriteBtn {
-  background: url(../../../../../public/img/icons/Buttons/add-to-fovourites-default.svg);
+  background: url(../../../../../public/img/icons/Buttons/favourites-heart-like.svg);
   background-position: center;
   background-repeat: no-repeat;
-  border: none;
+  border: 1px solid $icons-color;
   cursor: pointer;
   width: 40px;
   height: 40px;
   transition: $transition-duration;
 
   &:hover {
-    background: url(../../../../../public/img/icons/Buttons/add-to-fovourites-hover.svg);
+    border: 1px solid $primary-color;
   }
 }
 
@@ -157,11 +161,10 @@ $padding-top: 8px;
 }
 
 .favoriteActive {
-  background: url(../../../../../public/img/icons/Buttons/add-to-fovourites-added.svg);
-
-  &:hover {
-    background: url(../../../../../public/img/icons/Buttons/add-to-fovourites-added.svg);
-  }
+  background: url(../../../../../public/img/icons/Buttons/favourites-filled-heart-like.svg);
+  border: 1px solid $elements-color;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 @include on-tablet {
