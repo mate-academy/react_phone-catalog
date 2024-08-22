@@ -13,6 +13,8 @@ type AppContextType = {
   setPreviousCurrentPage: (page: string[]) => void;
   favoriteProducts: Product[];
   setFavoriteProducts: (products: Product[]) => void;
+  productsInCart: Product[];
+  setProductsInCart: (products: Product[]) => void;
 };
 
 export const AppContext = createContext<AppContextType | undefined>(undefined);
@@ -21,6 +23,7 @@ export const AppProvider: React.FC<{ children: React.ReactElement }> = ({ childr
   const [numberOfProductsPerPage, setNumberOfProductsPerPage] = useState<number>(8);
   const [clickedProduct, setClickedProduct] = useState<ProductPhone | ProductTablet | ProductAccessory | undefined>(undefined);
   const [favoriteProducts, setFavoriteProducts] = useState<Product[] | []>([]);
+  const [productsInCart, setProductsInCart] = useState<Product[] | []>([]);
   const [previousCurrentPage, setPreviousCurrentPage] = useState<string[]>(['nothing','nothing']);
 
   // Definiujemy funkcję
@@ -29,7 +32,7 @@ export const AppProvider: React.FC<{ children: React.ReactElement }> = ({ childr
   };
 
   return (
-    <AppContext.Provider value={{ handleNotReady, numberOfProductsPerPage, setNumberOfProductsPerPage, clickedProduct, setClickedProduct, previousCurrentPage, setPreviousCurrentPage, setFavoriteProducts, favoriteProducts}}>
+    <AppContext.Provider value={{ handleNotReady, numberOfProductsPerPage, setNumberOfProductsPerPage, clickedProduct, setClickedProduct, previousCurrentPage, setPreviousCurrentPage, setFavoriteProducts, favoriteProducts, productsInCart, setProductsInCart}}>
       {children}
     </AppContext.Provider>
   );

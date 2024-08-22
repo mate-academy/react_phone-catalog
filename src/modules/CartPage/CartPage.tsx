@@ -12,7 +12,7 @@ import { Link } from 'react-router-dom';
 export const CartPage: React.FC = () => {
   const category = useLocation().pathname.slice(1)
   console.log('PAGE CLICKED',category)
-  const {handleNotReady, previousCurrentPage} = useAppContext();
+  const {handleNotReady, previousCurrentPage, productsInCart} = useAppContext();
   return (
     <div>
 <Header />
@@ -39,29 +39,32 @@ export const CartPage: React.FC = () => {
       </div>
 
         <div className={styles.emptyContainer}>
-          <img src="img/cart-is-empty.png" className={styles.image}/>
+          <img src="img/cart-is-empty.png" className={`${styles.image} ${productsInCart.length > 0 ?styles.hidden : ""}`}/>
         </div>
 
         <div className={styles.container}>
           <div className={styles.cartItems}>
 
-              <CartItem />
+              {productsInCart.map((product,index) => (
+                <CartItem product={product} key={index}/>
+              ))}
+
 
           </div>
-          <div className={styles.bottomContainer}>
+          <div className={`${styles.bottomContainer} ${productsInCart.length === 0 ? styles.hidden : ""}`}>
             <div className={styles.checkout}>
               <h2 className={styles.totalPrice}>$XXX</h2>
               <p
                 className={styles.totalItems}
               >"Total for xxx item xxx"</p>
               <div className={styles.divider}></div>
-              <button
-                className={styles.checkoutButton}
-                onClick={handleNotReady}
-              >
-                Checkout
-              </button>
-            </div>
+                <button
+                  className={styles.checkoutButton}
+                  onClick={handleNotReady}
+                >
+                  Checkout
+                </button>
+              </div>
           </div>
         </div>
 

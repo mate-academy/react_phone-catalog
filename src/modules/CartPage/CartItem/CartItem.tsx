@@ -5,13 +5,27 @@ import minusIcon from '../../../img/icons/MinusIcon.svg';
 import crossIcon from '../../../img/icons/CrossIcon.svg';
 import { useAppContext } from '../../../context/AppContext';
 import { Link } from 'react-router-dom';
+import { Product} from '../../../types/Product';
 
-export const CartItem: React.FC = () => {
-  const {handleNotReady} = useAppContext();
+type CartItemProps = {
+  product: Product;
+}
+
+export const CartItem: React.FC<CartItemProps> = ({product}) => {
+  const {handleNotReady,productsInCart,setProductsInCart} = useAppContext();
+
+  const removeFromCart = () => {
+    let newProductsInCart = [...productsInCart];
+    const foundIndex = newProductsInCart.indexOf(product);
+    newProductsInCart.splice(foundIndex,1)
+    console.log('removed from cart')
+    setProductsInCart(newProductsInCart)
+  }
+  const {name, priceDiscount, images} =  product;
   return (
     <div className={styles.cartItem}>
       <div className={styles.mainContainer}>
-        <button onClick={handleNotReady} className={styles.deleteButton}>
+        <button onClick={removeFromCart} className={styles.deleteButton}>
           <img
             src={crossIcon}
             alt="Delete"
@@ -20,12 +34,12 @@ export const CartItem: React.FC = () => {
         </button>
         <Link to={`/products`} className={styles.productImage}>
           <img
-            src={'img/product-not-found.png'}
+            src={images[0]}
             /* alt={name} */
             className={styles.image}
           />
         </Link>
-        <h4>Name XXX</h4>
+        <h4>{name}</h4>
       </div>
       <div className={styles.quantityControl}>
         <div className={styles.quantity}>
@@ -54,7 +68,7 @@ export const CartItem: React.FC = () => {
             />
           </button>
         </div>
-        <h3 className={styles.price}>$XXXX</h3>
+        <h3 className={styles.price}>${priceDiscount}</h3>
       </div>
     </div>
   );

@@ -11,7 +11,7 @@ type ButtonProps = {
 
 export const ActionButtons: React.FC<ButtonProps> = ({product}) => {
   const isProductInCart = true; // DELETE LATER
-  const { handleNotReady, favoriteProducts, setFavoriteProducts} = useAppContext();
+  const { favoriteProducts, setFavoriteProducts, productsInCart, setProductsInCart} = useAppContext();
 
 
 
@@ -30,11 +30,28 @@ export const ActionButtons: React.FC<ButtonProps> = ({product}) => {
     }
 
     setFavoriteProducts(newFavoriteProducts)
-
   }
+
+  const handleProductsInCart = () => {
+    let newProductsInCart = [...productsInCart];
+    const foundIndex = newProductsInCart.indexOf(product);
+
+    if (foundIndex === -1) {
+      newProductsInCart.push(product)
+      console.log('added to cart')
+    }
+
+    if(foundIndex > -1) {
+      newProductsInCart.splice(foundIndex,1)
+      console.log('removed from cart')
+    }
+
+    setProductsInCart(newProductsInCart)
+  }
+
   return (
     <div className={styles.buttons}>
-      <button className={styles.buttonCard} onClick={handleNotReady}>
+      <button className={styles.buttonCard} onClick={handleProductsInCart}>
         <p className={styles.buttonText}>
           {isProductInCart ? 'Remove' : 'Add to cart'}
         </p>
