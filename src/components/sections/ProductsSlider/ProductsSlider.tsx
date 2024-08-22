@@ -27,8 +27,8 @@ export const ProductsSlider: React.FC<Props> = ({
   const [wrapperWidth, setWrapperWidth] = useState(0);
   const wrapperRef = useRef<HTMLDivElement | null>(null);
   const [frameSize, setFrameSize] = useState(1);
+  const [prevFrameSize, setPrevFrameSize] = useState(frameSize);
 
-  // const frameSize = 1;
   const step = 1;
   const gap = 16;
   const animationDuration = 1000;
@@ -42,15 +42,23 @@ export const ProductsSlider: React.FC<Props> = ({
       if (listRef.current) {
         const firstItem = listRef.current.querySelector('li');
 
-        if (firstItem && wrapperRef.current) {
+        if (firstItem) {
           setItemWidth(firstItem.clientWidth);
         }
       }
 
-      // currentIndex + frameSize > products.length - frameSize
+      if (currentIndex > Math.max(products.length - frameSize, 0)) {
+        // console.log('here we go');
+        setCurrentIndex(Math.max(products.length - frameSize, 0));
+      }
 
-      if (false) {
-        setCurrentIndex(currentIndex - step);
+      // else if (currentIndex > Math.min(products.length - frameSize, 0)) {
+      //   console.log('here we go');
+      //   setCurrentIndex(Math.max(products.length - frameSize, 0));
+      // }
+
+      if (frameSize !== prevFrameSize) {
+        setPrevFrameSize(frameSize);
       }
     };
 
@@ -60,18 +68,28 @@ export const ProductsSlider: React.FC<Props> = ({
     return () => {
       window.removeEventListener('resize', resizeUpdating);
     };
-  }, [currentIndex, frameSize, itemWidth, products.length, wrapperWidth]);
+  }, [
+    currentIndex,
+    frameSize,
+    itemWidth,
+    prevFrameSize,
+    products.length,
+    wrapperWidth,
+  ]);
 
   useEffect(() => {
-    setFrameSize(Math.floor(wrapperWidth / (itemWidth + gap)));
+    setFrameSize(Math.ceil(wrapperWidth / (itemWidth + gap)));
   }, [itemWidth, wrapperWidth]);
 
   const prev = useCallback(() => {
+    // console.log(`STEP-BACK: ${currentIndex}`);
+    // console.log(`STEP-BACK: ${wrapperWidth}`);
     setCurrentIndex(currentIndex === 1 ? 0 : currentIndex - step);
   }, [currentIndex]);
 
   const next = useCallback(() => {
     // console.log(currentIndex);
+    // console.log(wrapperWidth);
     setCurrentIndex(currentIndex + step);
   }, [currentIndex]);
 
@@ -83,6 +101,7 @@ export const ProductsSlider: React.FC<Props> = ({
         (wrapperWidth - itemWidth)
       : currentIndex * (itemWidth + gap);
 
+  // console.log(translateX);
   // TOUCH
 
   const [startX, setStartX] = useState<number | null>(null);
