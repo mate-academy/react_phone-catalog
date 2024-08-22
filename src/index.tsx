@@ -13,6 +13,10 @@ export const Root = () => (
   <Routes>
     <Route path="/" element={<App />}>
       <Route index element={<HomePage />} />
+      <Route
+        path="products/:itemId"
+        element={<ProductDetails category="phones" />}
+      />
       <Route path="phones">
         <Route
           index

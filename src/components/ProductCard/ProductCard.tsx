@@ -63,8 +63,9 @@ export const ProductCard: React.FC<Props> = ({ id }) => {
 
   return (
     <Link
-      to={`products/${findProductById().namespaceId}?color=${findProductById().color}`}
+      to={`products/${findProductById().namespaceId}?color=${findProductById().color}&capacity=${findProductById().capacity}`}
       className="product-link"
+      onClick={() => window.scrollTo({ top: 0 })}
     >
       <article className="product-card">
         <img src={image} alt="product photo" className="product-card__image" />

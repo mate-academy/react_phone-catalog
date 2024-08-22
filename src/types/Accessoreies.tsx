@@ -1,4 +1,4 @@
-export type Accessories = {
+export type ProductDetailType = {
   id: string;
   category: string;
   namespaceId: string;

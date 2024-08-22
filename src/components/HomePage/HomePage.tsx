@@ -20,6 +20,7 @@ import { Header } from '../Header/Header';
 import { Menu } from '../Menu/Menu';
 import { MenuOpen } from '../../utils/MenuContext';
 import { Footer } from '../Footer/Footer';
+import { Link } from 'react-router-dom';
 
 export const HomePage = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -75,6 +76,8 @@ export const HomePage = () => {
     );
     setBrandsProduct(productsFromServer.sort((a, b) => b.price - a.price));
   }, []);
+
+  const scrollToTop = () => window.scrollTo({ top: 0 });
 
   return (
     <>
@@ -195,7 +198,11 @@ export const HomePage = () => {
         <section className="categories">
           <h3 className="section-title categories__title">Shop by category</h3>
           <article className="categories__category">
-            <a href="#phones" className="categories__link">
+            <Link
+              to="phones"
+              className="categories__link"
+              onClick={scrollToTop}
+            >
               {/* eslint-disable-next-line max-len*/}
               <div className="categories__image-box  categories__image-box--phones">
                 <img
@@ -205,13 +212,17 @@ export const HomePage = () => {
                 />
               </div>
               <h4 className="categories__subtitle">Mobile phones</h4>
-            </a>
+            </Link>
             <p className="categories__quantity">
               {filterProducts(sortByCategory('phones')).length} models
             </p>
           </article>
           <article className="categories__category">
-            <a href="#tablets" className="categories__link">
+            <Link
+              to="tablets"
+              className="categories__link"
+              onClick={scrollToTop}
+            >
               {/* eslint-disable-next-line max-len*/}
               <div className="categories__image-box  categories__image-box--tablets">
                 <img
@@ -221,13 +232,17 @@ export const HomePage = () => {
                 />
               </div>
               <h4 className="categories__subtitle">Tablets</h4>
-            </a>
+            </Link>
             <p className="categories__quantity">
               {filterProducts(sortByCategory('tablets')).length} models
             </p>
           </article>
           <article className="categories__category">
-            <a href="#accessories" className="categories__link">
+            <Link
+              to="accessories"
+              className="categories__link"
+              onClick={scrollToTop}
+            >
               {/* eslint-disable-next-line max-len*/}
               <div className="categories__image-box categories__image-box--accessories">
                 <img
@@ -237,7 +252,7 @@ export const HomePage = () => {
                 />
               </div>
               <h4 className="categories__subtitle">Accessories</h4>
-            </a>
+            </Link>
             <p className="categories__quantity">
               {filterProducts(sortByCategory('accessories')).length} models
             </p>
