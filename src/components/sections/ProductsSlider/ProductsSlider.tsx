@@ -122,21 +122,12 @@ export const ProductsSlider: React.FC<Props> = ({
     setStartX(null);
   };
 
-  const handleWheel = (e: React.WheelEvent) => {
-    if (e.deltaX > 0 && currentIndex < products.length - step) {
-      next();
-    } else if (e.deltaX < 0 && currentIndex > 0) {
-      prev();
-    }
-  };
-
   return (
     <section
       className={`products-slider section ${className}`.trim()}
       onTouchStart={handleTouchStart}
       onTouchMove={handleTouchMove}
       onTouchEnd={handleTouchEnd}
-      onWheel={handleWheel}
     >
       <div className="container">
         <div className="products-slider__top">
