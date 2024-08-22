@@ -1,0 +1,101 @@
+@import '../../../shared/variables.scss';
+@import '../../../shared/mixins.scss';
+@import '../../../shared/fonts';
+@import '../../../shared/animations';
+
+.pagination {
+  grid-column: 1 / -1;
+  box-sizing: border-box;
+  margin-top: 40px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  height: 72px;
+}
+
+.paginationList {
+  display: flex;
+  flex-flow: wrap;
+  flex-direction: row;
+  gap: 8px;
+  list-style: none;
+}
+
+.listItem {
+  display: flex;
+  box-sizing: border-box;
+  justify-content: center;
+  align-items: center;
+  height: 32px;
+  width: 32px;
+  border: 1px solid $elements-color;
+  cursor: pointer;
+  font-family: Mont, Helvetica, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 21px;
+  text-align: center;
+  color: $primary-color;
+
+  &:hover {
+    border: 1px solid $primary-color;
+  }
+}
+
+.isActiveItem {
+  background-color: $primary-color;
+  color: white;
+}
+
+.listButton {
+  box-sizing: border-box;
+  background: none;
+  padding: 0;
+  border: 1px solid $elements-color;
+  cursor: pointer;
+  height: 32px;
+  width: 32px;
+  flex-shrink: 0;
+
+  &:hover {
+    border: 1px solid $primary-color;
+  }
+}
+
+.listButtonLeft {
+  background-image: url(../../../../../public/img/icons/chevron-arrow-left.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  margin-right: 16px;
+}
+
+.listButtonRight {
+  background-image: url(../../../../../public/img/icons/chevron-arrow-right.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  margin-left: 16px;
+}
+
+.disabledRightBtn {
+  background-image: url(../../../../../public/img/icons/chevron-arrow-right-default.svg);
+  
+  &:hover {
+    border: 1px solid $elements-color;
+  }
+}
+
+.disabledLeftBtn {
+  background-image: url(../../../../../public/img/icons/chevron-arrow-right-default.svg);
+  rotate: 180deg;
+  
+  &:hover {
+    border: 1px solid $elements-color;
+  }
+}
+
+@include on-mobile {
+  .pagination {
+    height: 300px;
+    align-items: start;
+  }
+}
