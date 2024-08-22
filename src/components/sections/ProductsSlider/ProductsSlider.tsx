@@ -48,14 +48,8 @@ export const ProductsSlider: React.FC<Props> = ({
       }
 
       if (currentIndex > Math.max(products.length - frameSize, 0)) {
-        // console.log('here we go');
         setCurrentIndex(Math.max(products.length - frameSize, 0));
       }
-
-      // else if (currentIndex > Math.min(products.length - frameSize, 0)) {
-      //   console.log('here we go');
-      //   setCurrentIndex(Math.max(products.length - frameSize, 0));
-      // }
 
       if (frameSize !== prevFrameSize) {
         setPrevFrameSize(frameSize);
@@ -82,14 +76,10 @@ export const ProductsSlider: React.FC<Props> = ({
   }, [itemWidth, wrapperWidth]);
 
   const prev = useCallback(() => {
-    // console.log(`STEP-BACK: ${currentIndex}`);
-    // console.log(`STEP-BACK: ${wrapperWidth}`);
     setCurrentIndex(currentIndex === 1 ? 0 : currentIndex - step);
   }, [currentIndex]);
 
   const next = useCallback(() => {
-    // console.log(currentIndex);
-    // console.log(wrapperWidth);
     setCurrentIndex(currentIndex + step);
   }, [currentIndex]);
 
@@ -101,7 +91,6 @@ export const ProductsSlider: React.FC<Props> = ({
         (wrapperWidth - itemWidth)
       : currentIndex * (itemWidth + gap);
 
-  // console.log(translateX);
   // TOUCH
 
   const [startX, setStartX] = useState<number | null>(null);
@@ -119,7 +108,7 @@ export const ProductsSlider: React.FC<Props> = ({
 
     const deltaX = e.touches[0].clientX - startX;
 
-    if (deltaX > 50 && currentIndex !== 1) {
+    if (deltaX > 50 && currentIndex >= 1) {
       prev();
       setIsDragging(false);
     } else if (deltaX < -50 && currentIndex < products.length - step) {
@@ -133,12 +122,21 @@ export const ProductsSlider: React.FC<Props> = ({
     setStartX(null);
   };
 
+  const handleWheel = (e: React.WheelEvent) => {
+    if (e.deltaX > 0 && currentIndex < products.length - step) {
+      next();
+    } else if (e.deltaX < 0 && currentIndex > 0) {
+      prev();
+    }
+  };
+
   return (
     <section
       className={`products-slider section ${className}`.trim()}
       onTouchStart={handleTouchStart}
       onTouchMove={handleTouchMove}
       onTouchEnd={handleTouchEnd}
+      onWheel={handleWheel}
     >
       <div className="container">
         <div className="products-slider__top">
