@@ -9,7 +9,7 @@ export const Navigation = () => {
 
   return (
     <>
-      <nav className="navigation">
+      <nav className="navigation" id="#navigation">
         <div className="navigation__logo-block">
           <div className="logo__navigation"></div>
         </div>

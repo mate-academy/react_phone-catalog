@@ -45,6 +45,16 @@
     background-repeat: no-repeat;
     background-position: center;
     cursor: pointer;
+    transform: scale(1);
+    transition: 0.3s ease transform;
+
+    &:hover {
+      transform: scale(1.2);
+      transition: transform 0.3s ease;
+    }
+  }
+  &-track {
+    width: 100%;
   }
 
   &-next {
@@ -62,6 +72,13 @@
     background-repeat: no-repeat;
     background-position: center;
     cursor: pointer;
+    transform: scale(1);
+    transition: 0.3s ease transform;
+
+    &:hover {
+      transform: scale(1.2);
+      transition: transform 0.3s ease;
+    }
   }
   &-width {
     width: 228px;
@@ -69,14 +86,8 @@
   &-slider {
     margin-left: 16px;
   }
-}
-
-.slick-prev.slick-disabled {
+  &-disabled {
     background-image: url('../../img/arrow-left-disabled2.svg');
     border: 1px solid #3132;
-}
-
-.slick-next.slick-disabled {
-  background-image: url('../../img/arrow-right-disabled2.svg');
-  border: 1px solid #3132;
+  }
 }

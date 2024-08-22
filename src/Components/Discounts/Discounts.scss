@@ -1,3 +1,22 @@
+
+
 .discounts {
-  display: flex;
+  width: 320px;
+  overflow: hidden;
+  &__title {
+    margin-top: 60px;
+    width: 180px;
+    font-family: Mont, sans-serif;
+    margin-left: 16px;
+    text-align: left;
+  }
+  &__content {
+    display: flex;
+    gap: 16px;
+  }
+
+  div {
+    width: 212px;
+    gap: 16px;
+  }
 }

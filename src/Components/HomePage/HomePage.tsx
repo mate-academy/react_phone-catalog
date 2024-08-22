@@ -4,6 +4,7 @@ import { Navigation } from '../Navigation/Navigation';
 import { CartPage } from '../CartPage/CartPage';
 import './HomePage.scss';
 import { Discounts } from '../Discounts/Discounts';
+import { Footer } from '../Footer/Footer';
 
 export const HomePage = () => {
   return (
@@ -15,6 +16,7 @@ export const HomePage = () => {
         <CartPage />
         <Categories />
         <Discounts />
+        <Footer />
       </div>
     </>
   );

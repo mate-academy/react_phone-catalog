@@ -1,4 +1,5 @@
 import { HotPricesProduct } from '../types/HotPricesProducts';
+import './DiscountProduct.scss';
 
 type Props = {
   discountProduct: HotPricesProduct;
@@ -9,13 +10,24 @@ export const DiscountProduct = ({ discountProduct }: Props) => {
     <div className="discountproduct">
       <img
         className="discountproduct__image"
-        src={'_old/v1/img/motorola-xoom-with-wi-fi.0.jpg'}
+        src={discountProduct.imageUrl}
         alt={discountProduct.name}
       />
 
       <h2 className="discountproduct__name">{discountProduct.name}</h2>
-      <div className="discountproduct__price">{`$${discountProduct.price}`}</div>
-      <div className="discountproduct__line"></div>
+      <div className="discountproduct__prices">
+        <div className="discountproduct__price">
+          {`$${discountProduct.price - discountProduct.discount}`}
+        </div>
+        {discountProduct.discount === 0 ? (
+          ''
+        ) : (
+          <div className="discountproduct__before-discount">
+            <del>{`$${discountProduct.price}`}</del>
+          </div>
+        )}
+      </div>
+      <div className="discountproduct__line" />
       <div className="discountproduct__description">
         <div className="discountproduct__screen">
           <div className="discountproduct__screen--title">Screen</div>
