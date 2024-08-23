@@ -47,6 +47,7 @@ const Header = () => {
                 key={button.name}
                 icon={button.icon}
                 to={button.to}
+                quantityInfo={0}
               />
             </button>
           ))

@@ -22,6 +22,7 @@ type AppContextProps = {
   categories: Category[];
   chosenBanner: number;
   colors: { [key: string]: string };
+  favorite: number;
   isBurgerOpen: boolean;
   handleChangeBannerImage: (callback: number) => void;
   handleChangeBurger: (arg: boolean) => void;
@@ -83,6 +84,7 @@ export const AppContextContainer = ({ children }: Props) => {
   const [tabletsList, setTabletsList] = useState<Item[]>([]);
   const [accessoriesList, setAccessoriesList] = useState<Item[]>([]);
   const [productsList, setProductsList] = useState<Product[]>([]);
+  const [favorite] = useState<number>(0);
 
   const categories: Category[] = [
     {
@@ -167,7 +169,6 @@ export const AppContextContainer = ({ children }: Props) => {
         }
         const data = await response.json();
         setProductsList(data);
-        console.log(productsList);
       } catch (err) {
         console.error("Something went wrong", err);
       }
@@ -199,6 +200,7 @@ export const AppContextContainer = ({ children }: Props) => {
         categories,
         colors,
         chosenBanner,
+        favorite,
         isBurgerOpen,
         handleChangeBannerImage,
         handleChangeBurger,

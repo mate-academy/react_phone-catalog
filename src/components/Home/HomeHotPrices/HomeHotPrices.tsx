@@ -12,11 +12,18 @@ const HomeHotPrices = () => {
   return (
     <section>
       <h2 className="mb-6">Hot prices</h2>
-      <div className="flex flex-col gap-4">
-        {itemsList.map((item) => (
-          <ProductCardItem key={item.id} item={item} />
-        ))}
-      </div>
+      <section className="max-w-full overflow-hidden">
+        <section
+          style={{
+            width: `${itemsList.length * (276 + 16) - 16}px`,
+          }}
+          className="grid grid-flow-col gap-8 outline outline-8 outline-green"
+        >
+          {itemsList.map((item) => (
+            <ProductCardItem key={item.id} item={item} />
+          ))}
+        </section>
+      </section>
     </section>
   );
 };

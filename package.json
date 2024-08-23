@@ -1,7 +1,7 @@
 {
   "name": "react_phone-catalog",
   "private": true,
-  "version": "0.0.0",
+  "version": "0.1.0",
   "homepage": "https://karanelus.github.io/react_phone-catalog",
   "type": "module",
   "scripts": {

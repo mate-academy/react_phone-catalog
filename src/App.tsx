@@ -14,7 +14,7 @@ const App = () => {
     <>
       <Header />
 
-      <main className="desktop:px-8 mx-auto w-page px-6">
+      <main className="mx-auto w-page px-6 desktop:px-8">
         <Routes>
           <Route index path="/" element={<Home />} />
           <Route path="/phones" element={<Phones />} />

@@ -25,7 +25,7 @@ const ProductCardProduct = ({ product }: ops) => {
   };
 
   return (
-    <div className="flex w-53 flex-col items-center justify-center gap-2 rounded-lg border-1 border-elem p-8 duration-300 hover:shadow-xl small:w-69">
+    <div className="flex w-53 flex-col items-center justify-center gap-2 rounded-lg border-1 border-elem p-8 outline outline-8 outline-green duration-300 hover:shadow-xl small:w-69">
       <picture className="w-fit">
         <img
           src={image}

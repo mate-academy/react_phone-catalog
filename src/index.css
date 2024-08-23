@@ -23,15 +23,16 @@
   font-style: normal;
 }
 
-body {
-  /* overflow-x: hidden; */
+body,
+html {
+  overflow-x: hidden;
 }
 
 #root {
   min-height: 100dvh;
   display: grid;
   grid-template-rows: auto 1fr auto;
-}
+}                     
 
 h1 {
   @apply text-h1mobile small:text-h1;

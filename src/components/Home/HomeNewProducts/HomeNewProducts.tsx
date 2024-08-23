@@ -4,8 +4,10 @@ const HomeNewProducts = () => {
   // const { phonesList } = useAppContext();
 
   return (
-    <section>
-      <h2 className="mb-6">Brand new models</h2>
+    <section className="max-w-full">
+      <section className="mb-6 flex justify-between">
+        <h2>Brand new models</h2>
+      </section>
       <HomeNewProductsSlider />
     </section>
   );
