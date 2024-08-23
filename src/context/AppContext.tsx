@@ -48,17 +48,17 @@ export const useAppContext = () => {
 const bannerImages: Image[] = [
   {
     id: 0,
-    src: "/react_phone-catalog/public/img/bannerHome/Banner-1",
+    src: "/img/bannerHome/Banner-1",
     color: "#000fff",
   },
   {
     id: 1,
-    src: "/react_phone-catalog/public/img/bannerHome/Banner-1",
+    src: "/img/bannerHome/Banner-1",
     color: "#a7f300",
   },
   {
     id: 2,
-    src: "/react_phone-catalog/public/img/bannerHome/Banner-1",
+    src: "/img/bannerHome/Banner-1",
     color: "#c4c4c4",
   },
 ];
@@ -91,7 +91,7 @@ export const AppContextContainer = ({ children }: Props) => {
       id: "mobile-phones",
       array: phonesList,
       name: "Mobile phones",
-      img: "/react_phone-catalog/public/img/category-phones.png",
+      img: "/img/category-phones.png",
       backgroundColor: "#6d6474",
       to: "/phones",
     },
@@ -99,7 +99,7 @@ export const AppContextContainer = ({ children }: Props) => {
       id: "tablets",
       array: tabletsList,
       name: "Tablets",
-      img: "/react_phone-catalog/public/img/category-tablets.png",
+      img: "/img/category-tablets.png",
       backgroundColor: "#dd8d92",
       to: "/tablets",
     },
@@ -107,7 +107,7 @@ export const AppContextContainer = ({ children }: Props) => {
       id: "accessories",
       array: accessoriesList,
       name: "Accessories",
-      img: "/react_phone-catalog/public/img/category-accessories.png",
+      img: "/img/category-accessories.png",
       backgroundColor: "#973d5f",
       to: "/accessories",
     },
@@ -116,9 +116,7 @@ export const AppContextContainer = ({ children }: Props) => {
   useEffect(() => {
     const fetchPhones = async () => {
       try {
-        const response = await fetch(
-          "/react_phone-catalog/src/assets/api/phones.json",
-        );
+        const response = await fetch("/api/phones.json");
         if (!response.ok) {
           throw new Error("Network response was not ok");
         }
@@ -131,9 +129,7 @@ export const AppContextContainer = ({ children }: Props) => {
 
     const fetchTablets = async () => {
       try {
-        const response = await fetch(
-          "/react_phone-catalog/src/assets/api/tablets.json",
-        );
+        const response = await fetch("/api/tablets.json");
         if (!response.ok) {
           throw new Error("Network response was not ok");
         }
@@ -146,9 +142,7 @@ export const AppContextContainer = ({ children }: Props) => {
 
     const fetchAccessories = async () => {
       try {
-        const response = await fetch(
-          "/react_phone-catalog/src/assets/api/accessories.json",
-        );
+        const response = await fetch("/api/accessories.json");
         if (!response.ok) {
           throw new Error("Network response was not ok");
         }
@@ -161,9 +155,7 @@ export const AppContextContainer = ({ children }: Props) => {
 
     const fetchProducts = async () => {
       try {
-        const response = await fetch(
-          "/react_phone-catalog/src/assets/api/products.json",
-        );
+        const response = await fetch("/api/products.json");
         if (!response.ok) {
           throw new Error("Network response was not ok");
         }
