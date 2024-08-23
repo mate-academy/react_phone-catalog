@@ -10,10 +10,10 @@ export const Favorites = () => {
     <div className="favorites-layout">
       <div className="fav-link">
         <a className="favIcon">
-          <img src="../uploadedImg/Home.png"></img>
+          <img src="/uploadedImg/Home.png"></img>
         </a>
         <a className="favIcon">
-          <img src="../uploadedImg/LeftArrow.png"></img>
+          <img src="/uploadedImg/LeftArrow.png"></img>
         </a>
         <p className="fav-link-p">Favorites</p>
       </div>

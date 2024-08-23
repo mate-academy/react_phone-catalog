@@ -161,20 +161,20 @@ export const ProductInfo = () => {
             <div className="productInfo-links-block">
               <div className="fav-link">
                 <Link to="/" className="favIcon">
-                  <img src="../uploadedImg/Home.png"></img>
+                  <img src="/uploadedImg/Home.png"></img>
                 </Link>
                 <div className="favIcon">
-                  <img src="../uploadedImg/LeftArrow.png"></img>
+                  <img src="/uploadedImg/LeftArrow.png"></img>
                 </div>
                 <div className="margin-0">{crumbs[0]}</div>
                 <div className="favIcon">
-                  <img src="../uploadedImg/LeftArrow.png"></img>
+                  <img src="/uploadedImg/LeftArrow.png"></img>
                 </div>
                 <div className="margin-0">{crumbs[1]}</div>
               </div>
               <button className="bucket-link-btn" onClick={() => navigate(-1)}>
                 <img
-                  src="../uploadedImg/LeftBlackArrow.png"
+                  src="/uploadedImg/LeftBlackArrow.png"
                   className="close-img"
                 ></img>
                 <p className="bucket-link-p">Back</p>
