@@ -1,6 +1,5 @@
 import { useState } from 'react';
-import { SliderHero } from '../../SliderHero';
-import './Hero.scss';
+import { PicturesSlider } from '../PicturesSlider';
 
 export const Hero = () => {
   const banners = [
@@ -38,7 +37,7 @@ export const Hero = () => {
         <h1 className="hero__title">Welcome to Nice Gadgets store!</h1>
       </div>
 
-      <SliderHero
+      <PicturesSlider
         banners={banners}
         step={settings.step}
         animationDuration={settings.animationDuration}

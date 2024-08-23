@@ -1,5 +1,4 @@
 import { Nav } from '../Nav';
-import './Menu.scss';
 
 type Props = {
   className?: string;

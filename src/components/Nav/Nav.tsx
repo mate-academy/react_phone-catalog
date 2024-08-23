@@ -1,5 +1,4 @@
 import { NavLink } from 'react-router-dom';
-import './Nav.scss';
 import classNames from 'classnames';
 import { Icon } from '../Icon';
 

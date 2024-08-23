@@ -1,6 +1,26 @@
+// General Styles
 @import './styles/vars';
 @import './styles/mixins';
 @import './styles/fonts';
+
+// General Components
+@import './components/Btn/Btn.module';
+@import './components/Icon/Icon.module';
+@import './components/Logo/Logo.module';
+@import './components/Menu/Menu.module';
+@import './components/Nav/Nav.module';
+@import './components/Product/Product.module';
+@import './components/Header/Header.module';
+@import './components/Footer/Footer.module';
+
+// Module HomePage
+@import './modules/HomePage/components/Hero/Hero.module';
+@import './modules/HomePage/components/PicturesSlider/PicturesSlider.module';
+@import './modules/HomePage/components/Category/Category.module';
+@import './modules/HomePage/components/ProductsSlider/ProductsSlider.module';
+@import './modules/HomePage/components/Banner/Banner.module';
+
+
 
 html {
   min-width: 320px;

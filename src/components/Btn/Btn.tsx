@@ -1,5 +1,4 @@
 import { Icon } from '../Icon';
-import './Btn.scss';
 
 type Props = {
   className?: string;

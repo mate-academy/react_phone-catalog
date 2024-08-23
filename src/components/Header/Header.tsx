@@ -1,7 +1,6 @@
-import { Icon } from '../../Icon';
-import { Logo } from '../../Logo';
-import { Nav } from '../../Nav/Nav';
-import './Header.scss';
+import { Icon } from '../Icon';
+import { Logo } from '../Logo';
+import { Nav } from '../Nav/Nav';
 
 type Props = {
   isMenuActive: boolean;

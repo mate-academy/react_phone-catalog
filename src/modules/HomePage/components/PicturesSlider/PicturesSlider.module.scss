@@ -1,6 +1,4 @@
-@import '../../App';
-
-.slider-hero {
+.pictures-slider {
   @include page-grid;
 
   row-gap: 8px;
@@ -92,7 +90,7 @@
       background-color: $c-elements;
     }
 
-    &--active{
+    &--active {
       &::after {
         background-color: $c-white;
       }

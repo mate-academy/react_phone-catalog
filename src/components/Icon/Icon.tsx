@@ -1,5 +1,3 @@
-import './Icon.scss';
-
 type Props = {
   iconName: string;
 };

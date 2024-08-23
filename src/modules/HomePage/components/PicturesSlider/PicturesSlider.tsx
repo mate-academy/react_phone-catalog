@@ -1,7 +1,6 @@
+import { Icon } from '../../../../components/Icon';
+import { SliderBanner } from '../../../../types/SliderBanner';
 import { Banner } from '../Banner';
-import { SliderBanner } from '../../types/SliderBanner';
-import { Icon } from '../Icon';
-import './SliderHero.scss';
 import { useCallback, useEffect, useState } from 'react';
 
 type Props = {
@@ -12,7 +11,7 @@ type Props = {
   infinite: boolean;
 };
 
-export const SliderHero: React.FC<Props> = ({
+export const PicturesSlider: React.FC<Props> = ({
   className = '',
   banners,
   step,
@@ -97,29 +96,29 @@ export const SliderHero: React.FC<Props> = ({
 
   return (
     <div
-      className={`slider-hero ${className}`.trim()}
+      className={`pictures-slider ${className}`.trim()}
       onTouchStart={handleTouchStart}
       onTouchMove={handleTouchMove}
       onTouchEnd={handleTouchEnd}
     >
       <button
-        className="slider-hero__button"
+        className="pictures-slider__button"
         type="button"
         disabled={!infinite && currentIndex < 1}
         onClick={prev}
       >
         <Icon iconName="icon-arrow-left" />
       </button>
-      <div className="slider-hero__wrapper">
+      <div className="pictures-slider__wrapper">
         <ul
-          className="slider-hero__list"
+          className="pictures-slider__list"
           style={{
             transform: `translateX(-${currentIndex * 100}%)`,
             transition: `transform ${animationDuration}ms`,
           }}
         >
           {banners.map(banner => (
-            <li className="slider-hero__item" key={banner.title}>
+            <li className="pictures-slider__item" key={banner.title}>
               <Banner
                 title={banner.title}
                 subTitle={banner.subTitle}
@@ -131,7 +130,7 @@ export const SliderHero: React.FC<Props> = ({
         </ul>
       </div>
       <button
-        className="slider-hero__button"
+        className="pictures-slider__button"
         type="button"
         disabled={!infinite && currentIndex + step >= banners.length}
         onClick={next}
@@ -139,11 +138,11 @@ export const SliderHero: React.FC<Props> = ({
         <Icon iconName="icon-arrow-right" />
       </button>
 
-      <ul className="slider-hero__dots">
+      <ul className="pictures-slider__dots">
         {banners.map((banner, index) => (
-          <li className="slider-hero__dots-item" key={banner.title}>
+          <li className="pictures-slider__dots-item" key={banner.title}>
             <button
-              className={`slider-hero__dots-dot ${index === currentIndex ? 'slider-hero__dots-dot--active' : ''}`}
+              className={`pictures-slider__dots-dot ${index === currentIndex ? 'pictures-slider__dots-dot--active' : ''}`}
               type="button"
               onClick={() => handleDotClick(index)}
             ></button>

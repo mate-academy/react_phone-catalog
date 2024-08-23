@@ -1,5 +1,3 @@
-import './Logo.scss';
-
 type Props = {
   className?: string;
   href: string;

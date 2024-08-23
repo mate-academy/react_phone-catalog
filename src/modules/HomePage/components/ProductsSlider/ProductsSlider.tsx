@@ -5,21 +5,22 @@ import {
   useRef,
   useState,
 } from 'react';
-import { ProductType } from '../../../types/ProductType';
-import { Icon } from '../../Icon';
-import { Product } from '../../Product';
-import './ProductsSlider.scss';
+import { ProductType } from '../../../../types/ProductType';
+import { Icon } from '../../../../components/Icon';
+import { Product } from '../../../../components/Product';
 
 type Props = {
   className?: string;
   title: string;
   products: ProductType[];
+  showDiscount?: boolean;
 };
 
 export const ProductsSlider: React.FC<Props> = ({
   className = '',
   title,
   products,
+  showDiscount = true,
 }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [itemWidth, setItemWidth] = useState(0);
@@ -164,7 +165,7 @@ export const ProductsSlider: React.FC<Props> = ({
           >
             {products.map(product => (
               <li className="products-slider__item" key={product.id}>
-                <Product product={product} />
+                <Product product={product} showDiscount={showDiscount} />
               </li>
             ))}
           </ul>

@@ -1,5 +1,3 @@
-import './Banner.scss';
-
 type Props = {
   className?: string;
   title: string;

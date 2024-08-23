@@ -1,6 +1,5 @@
-import { Btn } from '../../Btn';
-import { Logo } from '../../Logo';
-import './Footer.scss';
+import { Btn } from '../Btn';
+import { Logo } from '../Logo';
 
 export const Footer = () => (
   <footer className="footer">
