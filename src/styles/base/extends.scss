@@ -1,22 +1,23 @@
 %font-mont-regular {
-  font-family: "Mont", Arial, Helvetica, sans-serif;
+  font-family: Mont, Arial, Helvetica, sans-serif;
   font-weight: 400;
   font-style: normal;
 }
 
 %font-mont-bold {
-  font-family: "Mont-Bold", Arial, Helvetica, sans-serif;
+  font-family: Mont-Bold, Arial, Helvetica, sans-serif;
   font-weight: 700;
   font-style: normal;
 }
 %font-mont-semibold {
-  font-family: "Mont-SemiBold", Arial, Helvetica, sans-serif;
+  font-family: Mont-SemiBold, Arial, Helvetica, sans-serif;
   font-weight: 600;
   font-style: normal;
 }
 
 %h1 {
   @extend %font-mont-bold;
+
   font-size: 48px;
   line-height: 56px;
   letter-spacing: -0.01em;
@@ -29,6 +30,7 @@
 
 %h2 {
   @extend %font-mont-bold;
+
   font-size: 32px;
   line-height: 41px;
   letter-spacing: -0.01em;
@@ -41,12 +43,13 @@
 
 %h3 {
   @extend %font-mont-bold;
+
   font-size: 22px;
   line-height: 31px;
-  letter-spacing: 0em;
+  letter-spacing: 0;
 
   @include on-mobile {
-    font-family: "Mont-bold", Arial, Helvetica, sans-serif;
+    font-family: Mont-bold, Arial, Helvetica, sans-serif;
     font-style: normal;
     font-weight: 600;
     font-size: 20px;
@@ -56,9 +59,10 @@
 
 %h4 {
   @extend %font-mont-semibold;
+
   font-size: 20px;
   line-height: 26px;
-  letter-spacing: 0em;
+  letter-spacing: 0;
 
   @include on-mobile {
     font-size: 16px;
@@ -68,6 +72,7 @@
 
 %uppercase {
   @extend %font-mont-bold;
+
   text-transform: uppercase;
   font-size: 12px;
   line-height: 11px;
@@ -76,6 +81,7 @@
 
 %buttons {
   @extend %font-mont-semibold;
+
   font-size: 14px;
   line-height: 21px;
   letter-spacing: 0;
@@ -83,6 +89,7 @@
 
 %body-text {
   @extend %font-mont-regular;
+
   font-size: 12px;
   line-height: 15px;
   letter-spacing: 0;

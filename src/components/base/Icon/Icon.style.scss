@@ -1,9 +1,10 @@
 .icon {
-  box-shadow: -1px 0px 0px 0px #e2e6e9;
+  box-shadow: -1px 0 0 0 $c-elements;
   cursor: pointer;
   &--bar {
     height: 48px;
     width: 48px;
+    
     @include on-desktop {
       height: 64px;
       width: 64px;
@@ -13,7 +14,7 @@
   &--menu-page {
     width: 50%;
     height: 64px;
-    box-shadow: -1px -1px 0px 0px #e2e6e9;
+    box-shadow: -1px -1px 0 0 $c-elements;
     position: relative;
     &:hover::after {
       content: '';

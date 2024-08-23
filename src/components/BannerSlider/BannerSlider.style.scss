@@ -3,11 +3,13 @@
   flex-direction: column;
   margin-top: 24px;
   gap: 8px;
+
   @include on-tablet {
     display: flex;
     flex-direction: column;
     margin-top: 32px;
   }
+
   @include on-desktop {
     display: flex;
     flex-direction: column;
@@ -15,12 +17,14 @@
   }
   &__container {
     display: block;
+
     @include on-tablet {
       display: grid;
       grid-template-columns: repeat(12, 1fr);
       column-gap: 16px;
       padding-inline: 24px;
     }
+
     @include on-desktop {
       display: grid;
       grid-template-columns: repeat(12, 1fr);
@@ -30,35 +34,48 @@
   }
   &__frame {
     grid-column: 2/12;
-    overflow: hidden;
-  }
-  &__list {
     display: flex;
-    flex-direction: row;
-    width: 300%;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    transition: 500ms;
+    height: 0;
+    padding-top: 100%;
+    overflow: hidden;
+    position: relative;
+
+    @include on-tablet {
+      padding-top: 38.4%;
+    }
+
+    @include on-desktop {
+      padding-top: 38.4%;
+    }
   }
   &__item {
     display: flex;
     width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
     background: black;
-    aspect-ratio: 1/1;
     justify-content: center;
-    position: relative;
-    @include on-tablet {
-      aspect-ratio: 26/10;
+    position: absolute;
+    transition: all 0.3s linear;
+    &--activetSlide {
+      opacity: 1;
+      transform: translateX(0);
     }
-    @include on-desktop {
-      aspect-ratio: 26/10;
+    &--lastSlide {
+      opacity: 0;
+      transform: translateX(-100%);
+    }
+    &--nextSlide {
+      opacity: 0;
+      transform: translateX(100%);
     }
   }
   &__overlay {
     position: absolute;
     display: flex;
     flex-direction: column;
+
     @include on-tablet {
       position: relative;
       background-color: $c-secondary;
@@ -66,6 +83,7 @@
       margin: 10px;
       left: 0;
     }
+
     @include on-desktop {
       position: relative;
       background-color: $c-secondary;
@@ -75,31 +93,34 @@
     }
     &-title {
       color: $c-white;
-      margin: 40px 25px 14px 25px;
+      margin: 40px 25px 14px;
       line-height: 1em;
       text-align: center;
+
       @include on-tablet {
         color: $c-primary;
         text-align: left;
         font-size: 2em;
         line-height: 1em;
       }
+
       @include on-desktop {
         font-size: 3em;
         color: $c-primary;
         text-align: left;
-
       }
     }
     &-subtitle {
-      font-family: Mont-semibold;
+      font-family: Mont-semibold, sans-serif;
       color: $c-elements;
       margin: 0 0 25px 25px;
       display: none;
+
       @include on-tablet {
         display: block;
         font-size: 1.3em;
       }
+
       @include on-desktop {
         display: block;
       }
@@ -109,11 +130,13 @@
     object-fit: contain;
     object-position: bottom;
     width: 100%;
+
     @include on-tablet {
       object-fit: cover;
       object-position: center;
       width: 60%;
     }
+
     @include on-desktop {
       object-fit: cover;
       object-position: center;
@@ -129,9 +152,11 @@
     border: 1px solid $c-icons;
     background: url('../../../public/img/icons/chevron-right.svg') no-repeat
       center;
-    @include on-tablet{
+
+    @include on-tablet {
       display: block;
     }
+
     @include on-desktop {
       display: block;
     }
@@ -144,14 +169,17 @@
     border: 1px solid $c-icons;
     background: url('../../../public/img/icons/chevron-left.svg') no-repeat
       center;
-      @include on-tablet {
-        display: block;
-      }
-      @include on-desktop {
-        display: block;
-      }
+
+    @include on-tablet {
+      display: block;
+    }
+
+    @include on-desktop {
+      display: block;
+    }
   }
 }
+
 .dots {
   &__container {
     display: flex;

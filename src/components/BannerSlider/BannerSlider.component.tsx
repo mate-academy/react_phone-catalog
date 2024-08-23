@@ -1,5 +1,4 @@
-import { useState } from 'react';
-import { getRandomNumber } from '../../utils/getRandomNumber';
+import { useEffect, useState } from 'react';
 import cn from 'classnames';
 
 const bannerImgs = [
@@ -31,76 +30,79 @@ const getTotalImgs = () => {
 };
 
 export const BannerSlider = () => {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const firstIndex = 0;
-  const lastIndex = bannerImgs.length - 1;
+  const [index, setIndex] = useState(0);
 
-  const handleNextBtn = () => {
-    if (currentIndex === lastIndex) {
-      setCurrentIndex(firstIndex);
-    } else {
-      setCurrentIndex(currentIndex + 1);
-    }
-  };
+  useEffect(() => {
+    const lastIndex = bannerImgs.length - 1;
 
-  const handlePrevBtn = () => {
-    if (currentIndex === firstIndex) {
-      setCurrentIndex(lastIndex);
-    } else {
-      setCurrentIndex(currentIndex - 1);
+    if (index < 0) {
+      setIndex(lastIndex);
     }
-  };
+
+    if (index > lastIndex) {
+      setIndex(0);
+    }
+  }, [index]);
+
+  const handlePrevBtn = () => setIndex(index - 1);
+  const handleNextBtn = () => setIndex(index + 1);
 
   return (
-    <div className="slider">
+    <section className="slider">
       <div className="slider__container">
         <button className="slider__prevBtn" onClick={handlePrevBtn} />
 
         <div className="slider__frame">
-          <ul
-            className="slider__list"
-            id="slider__list"
-            style={{
-              transform: `translate(-${currentIndex * (100 / bannerImgs.length)}%)`,
-            }}
-          >
-            {bannerImgs.map(image => {
-              return (
-                <li key={getRandomNumber()} className="slider__item">
-                  <div className="slider__overlay">
-                    <h1 className="slider__overlay-title">{image.title}</h1>
-                    <h3 className="slider__overlay-subtitle">
-                      {image.subtitle}
-                    </h3>
-                  </div>
-                  <img
-                    src={image.url}
-                    className="slider__image"
-                    alt={image.url.split('-')[1].split('.')[0].toUpperCase()}
-                  />
-                </li>
-              );
-            })}
-          </ul>
+          {bannerImgs.map((img, imgIdx) => {
+            let position = 'nextSlide';
+
+            if (imgIdx === index) {
+              position = 'activeSlide';
+            }
+
+            if (
+              imgIdx === index - 1 ||
+              (index === 0 && imgIdx === bannerImgs.length - 1)
+            ) {
+              position = 'lastSlide';
+            }
+
+            return (
+              <article
+                key={imgIdx + 1}
+                className={`slider__item slider__item--${position}`}
+              >
+                <div className="slider__overlay">
+                  <h1 className="slider__overlay-title">{img.title}</h1>
+                  <h3 className="slider__overlay-subtitle">{img.subtitle}</h3>
+                </div>
+                <img
+                  src={img.url}
+                  className="slider__image"
+                  alt={img.url.split('-')[1].split('.')[0].toUpperCase()}
+                />
+              </article>
+            );
+          })}
         </div>
 
         <button className="slider__nextBtn" onClick={handleNextBtn} />
       </div>
       <div className="dots__container">
         <ul className="dots__list">
-          {getTotalImgs().map(index => {
+          {getTotalImgs().map(idx => {
             return (
               <a
                 className="dots__link"
-                key={getRandomNumber()}
+                key={idx + 1}
                 onClick={(e: React.MouseEvent<HTMLAnchorElement>) => {
                   e.preventDefault();
-                  setCurrentIndex(index);
+                  setIndex(idx);
                 }}
               >
                 <li
                   className={cn('dots__item', {
-                    'dots__item--active': index === currentIndex,
+                    'dots__item--active': idx === index,
                   })}
                 ></li>
               </a>
@@ -108,6 +110,6 @@ export const BannerSlider = () => {
           })}
         </ul>
       </div>
-    </div>
+    </section>
   );
 };

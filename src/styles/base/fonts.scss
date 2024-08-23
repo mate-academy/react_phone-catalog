@@ -1,7 +1,7 @@
 @font-face {
   src: local('Mont-Bold');
   src: url('../../../public/fonts/Mont-Bold.otf');
-  font-family: 'Mont-Bold';
+  font-family: Mont-Bold;
   font-weight: 700;
   font-style: normal;
 }
@@ -9,14 +9,15 @@
 @font-face {
   src: local('Mont-SemiBold');
   src: url('../../../public/fonts/Mont-SemiBold.otf');
-  font-family: 'Mont-SemiBold';
+  font-family: Mont-SemiBold;
   font-weight: 600;
   font-style: normal;
 }
+
 @font-face {
   src: local('Mont-Regular');
   src: url('../../../public/fonts/Mont-Regular.otf');
-  font-family: 'Mont';
+  font-family: Mont;
   font-weight: 400;
   font-style: normal;
 }

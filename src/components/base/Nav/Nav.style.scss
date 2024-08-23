@@ -16,6 +16,7 @@
       @include on-tablet {
         gap: 32px;
       }
+
       @include on-desktop {
         gap: 64px;
       }
@@ -23,6 +24,7 @@
   }
   &__link {
     @extend %uppercase;
+    
     text-align: left;
     text-decoration: none;
     color: $c-secondary;

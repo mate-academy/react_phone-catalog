@@ -1,4 +1,4 @@
-@import './vars.scss';
+@import './vars';
 
 @mixin on-mobile {
   @media screen and (max-width: $max-width-mobile) {
