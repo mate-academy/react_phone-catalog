@@ -1,7 +1,7 @@
-import './NotFoundPage';
+import './NotFoundPage.scss';
 
 export const NotFoundPage = () => (
   <body className="body">
-    <img src="img/page-not-found.png" />
+    <img className="not-found-image" src="img/page-not-found.png" />
   </body>
 );

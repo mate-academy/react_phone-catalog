@@ -1,3 +1,5 @@
+@import '../../utils/mixins';
+
 .body {
   height: 100vh;
   display: flex;
@@ -5,6 +7,14 @@
   justify-content: center;
 }
 
-img {
-  width: 30%;
+.not-found-image {
+  width: 60%;
+
+  @include on-tablet {
+    width: 50%;
+  }
+
+  @include on-desktop {
+    width: 40%;
+  }
 }
