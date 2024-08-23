@@ -26,7 +26,7 @@ export const Bucket = () => {
       <div className="bucket-link-block">
         <button className="bucket-link-btn" onClick={() => navigate(-1)}>
           <img
-            src="/uploadedImg/LeftBlackArrow.png"
+            src="./uploadedImg/LeftBlackArrow.png"
             className="close-img"
           ></img>
           <p className="bucket-link-p">Back</p>
