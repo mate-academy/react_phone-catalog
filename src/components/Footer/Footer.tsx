@@ -3,8 +3,8 @@ import './Footer.scss';
 
 enum NavBars {
   Github = 'https://github.com/kasianeno',
-  Contacts = './',
-  Rights = './',
+  Contacts = 'https://github.com/kasianeno',
+  Rights = 'https://github.com/kasianeno',
 }
 
 const scrollToTop = () => window.scrollTo(0, 0);
@@ -18,7 +18,7 @@ export const Footer = () => {
         <ul className="footer__links">
           {Object.entries(NavBars).map(([key, value]) => (
             <li className="footer__item" key={key}>
-              <a href={value} className="footer__link">
+              <a href={value} className="footer__link" target='blank'>
                 {key}
               </a>
             </li>

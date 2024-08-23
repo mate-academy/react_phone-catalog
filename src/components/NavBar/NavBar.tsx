@@ -1,5 +1,5 @@
 import cn from 'classnames';
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { Logo } from '../Logo';
 import { LOCAL_URL } from '../../api/apiProducts';
 import { NavBars } from '../../types/NavBars';
@@ -24,6 +24,14 @@ export const NavBar: React.FC<Props> = ({
 
   const favAmount = favourites.length;
   const cartAmount = cart.length;
+
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.body.classList.add('no-scroll');
+    } else {
+      document.body.classList.remove('no-scroll');
+    }
+  })
 
   return (
     <nav
