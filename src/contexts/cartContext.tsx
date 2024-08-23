@@ -6,7 +6,7 @@ import { isItemInArray } from '../utils/isItemInArray';
 
 type CartContextType = {
   cart: Product[];
-  updateCart: (product: Product, action: CartActionType) => void;
+  updateCart: (product: Product | null, action: CartActionType) => void;
 };
 
 export const CartContext = createContext<CartContextType | undefined>(
@@ -19,29 +19,39 @@ export const CartProvider: React.FC<{ children: ReactNode }> = ({
   const [cart, setCart] = useLocalStorage<Product[]>('cart', []);
 
   const updateCart = useCallback(
-    (item: Product, action: CartActionType) => {
+    (item: Product | null, action: CartActionType) => {
+      if (item === null && action === CartActionType.DELETE_ALL) {
+        setCart([]);
+
+        return;
+      }
+
       let updatedCart: Product[] = [];
-      const hasItemCart = isItemInArray(cart, item.id);
 
-      switch (action) {
-        case CartActionType.ADD:
-          if (!hasItemCart) {
-            updatedCart = [...cart, item];
-          } else {
-            updatedCart = cart;
-          }
+      if (item) {
+        switch (action) {
+          case CartActionType.ADD:
+            if (!isItemInArray(cart, item.id)) {
+              updatedCart = [...cart, item];
+            } else {
+              updatedCart = cart;
+            }
 
-          break;
-        case CartActionType.DELETE:
-          updatedCart = cart.filter(itemCart => itemCart.id !== item.id);
-          break;
-        case CartActionType.UPDATE:
-          updatedCart = cart.map(itemCart =>
-            itemCart.id === item.id ? { ...itemCart, ...item } : itemCart,
-          );
-          break;
-        default:
-          updatedCart = [...cart];
+            break;
+          case CartActionType.DELETE:
+            updatedCart = cart.filter(itemCart => itemCart.id !== item.id);
+            break;
+          case CartActionType.DELETE_ALL:
+            updatedCart = [];
+            break;
+          case CartActionType.UPDATE:
+            updatedCart = cart.map(itemCart =>
+              itemCart.id === item.id ? { ...itemCart, ...item } : itemCart,
+            );
+            break;
+          default:
+            updatedCart = [...cart];
+        }
       }
 
       setCart(updatedCart);

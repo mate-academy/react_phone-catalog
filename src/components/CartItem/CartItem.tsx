@@ -5,6 +5,7 @@ import classNames from 'classnames';
 
 import { Product } from '../../types/Product';
 import { CartActionType } from '../../types/CartActionType';
+import { Link, useSearchParams } from 'react-router-dom';
 
 type CartItemProps = {
   item: Product;
@@ -13,6 +14,7 @@ type CartItemProps = {
 
 export const CartItem: React.FC<CartItemProps> = ({ item, updateCart }) => {
   const { image, name, price, count = 1, totalPrice = price } = item;
+  const [searchParams] = useSearchParams();
 
   const handleCalcItem = (type: 'increase' | 'decrease') => {
     const newCount = type === 'increase' ? count + 1 : count - 1;
@@ -40,15 +42,23 @@ export const CartItem: React.FC<CartItemProps> = ({ item, updateCart }) => {
           <Icon iconName="close" />
         </CardButton>
 
-        <a href="#" className={styles['cart-item__img-link']}>
+        <Link
+          to={`/${item.category}/:${item.itemId}`}
+          state={{ search: searchParams.toString() }}
+          className={styles['cart-item__img-link']}
+        >
           <img src={image} className={styles['cart-item__img']} alt={name} />
-        </a>
+        </Link>
 
-        <a href="#" className={styles['cart-item__title-link']}>
+        <Link
+          to={`/${item.category}/:${item.itemId}`}
+          state={{ search: searchParams.toString() }}
+          className={styles['cart-item__title-link']}
+        >
           <p className={classNames('body-text', styles['cart-item__title'])}>
             {name}
           </p>
-        </a>
+        </Link>
       </div>
 
       <div className={styles['cart-item__block']}>

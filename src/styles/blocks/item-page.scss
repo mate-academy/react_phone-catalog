@@ -52,7 +52,7 @@
 
       flex-flow: row;
       align-items: flex-start;
-      justify-content: flex-start;
+      justify-content: space-evenly;
     }
 
     @include on-desktop {
@@ -63,9 +63,19 @@
   &__card-slider {
     display: flex;
     overflow: hidden;
+    width: 288px;
+    height: 288px;
 
     @include on-tablet {
       order: 2;
+
+      width: 320px;
+      height: 320px;
+    }
+
+    @include on-desktop {
+      width: 464px;
+      height: 464px;
     }
   }
 
@@ -181,6 +191,7 @@
 
   &__buttons-list {
     display: flex;
+    flex-flow: wrap;
     gap: 8px;
 
     border-bottom: 1px solid $elements-gray;
@@ -201,6 +212,7 @@
     @include button-common;
 
     height: 32px;
+    width: 70px;
     padding-inline: 8px;
     border: 1px solid $icons-placeholders-gray;
     color: $primary-gray;
@@ -255,10 +267,9 @@
     gap: 56px;
 
     @include on-tablet {
-      margin-bottom: 64px;
-      gap: 64px;
-
       @include page-grid;
+
+      margin-bottom: 64px;
 
       grid-template-columns: repeat(auto-fit, minmax(440px, auto));
     }

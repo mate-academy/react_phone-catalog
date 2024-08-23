@@ -5,23 +5,16 @@ import '../../styles/main.scss';
 import { Link, useLocation } from 'react-router-dom';
 import { capitalizeFirstLetter } from '../../utils/capitalizeFirstLetter';
 
-const Breadcrumbs = () => {
+type BreadcrumbsProps = {
+  productName?: string;
+};
+
+const Breadcrumbs: React.FC<BreadcrumbsProps> = ({ productName }) => {
   const { pathname } = useLocation();
 
   const segments = pathname.split('/').filter(Boolean);
   const isCatalogPage = segments.length === 1;
   const category = capitalizeFirstLetter(segments[0]);
-  const getProductName = () => {
-    if (segments.length > 1) {
-      const lastSegment = segments[segments.length - 1].replace(/[:\-]/g, ' ');
-
-      return capitalizeFirstLetter(lastSegment);
-    }
-
-    return '';
-  };
-
-  const productName = getProductName();
 
   return (
     <div id="breadcrumbs" className="breadcrumbs">

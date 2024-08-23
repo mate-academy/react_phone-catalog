@@ -872,7 +872,7 @@
     "capacity": "256GB",
     "priceRegular": 1640,
     "priceDiscount": 1570,
-    "colorsAvailable": ["spacegray", "midnightgreen", "gold", "silver"],
+    "colorsAvailable": ["space gray", "midnight green", "gold", "silver"],
     "color": "gold",
     "images": [
       "img/phones/apple-iphone-11-pro/gold/00.webp",
@@ -918,7 +918,7 @@
     "capacity": "256GB",
     "priceRegular": 1640,
     "priceDiscount": 1570,
-    "colorsAvailable": ["spacegray", "midnightgreen", "gold", "silver"],
+    "colorsAvailable": ["space gray", "midnightgreen", "gold", "silver"],
     "color": "midnightgreen",
     "images": [
       "img/phones/apple-iphone-11-pro/midnightgreen/00.webp",
@@ -965,7 +965,7 @@
     "capacity": "256GB",
     "priceRegular": 1640,
     "priceDiscount": 1570,
-    "colorsAvailable": ["spacegray", "midnightgreen", "gold", "silver"],
+    "colorsAvailable": ["space gray", "midnightgreen", "gold", "silver"],
     "color": "silver",
     "images": [
       "img/phones/apple-iphone-11-pro/silver/00.webp",
@@ -1003,7 +1003,7 @@
   },
 
   {
-    "id": "apple-iphone-11-pro-256gb-spacegray",
+    "id": "apple-iphone-11-pro-256gb-space gray",
     "category": "phones",
     "namespaceId": "apple-iphone-11-pro",
     "name": "Apple iPhone 11 Pro 256GB Spacegray",
@@ -1011,8 +1011,8 @@
     "capacity": "256GB",
     "priceRegular": 1640,
     "priceDiscount": 1570,
-    "colorsAvailable": ["spacegray", "midnightgreen", "gold", "silver"],
-    "color": "spacegray",
+    "colorsAvailable": ["space gray", "midnightgreen", "gold", "silver"],
+    "color": "space gray",
     "images": [
       "img/phones/apple-iphone-11-pro/spacegray/00.webp",
       "img/phones/apple-iphone-11-pro/spacegray/01.webp",
@@ -1057,7 +1057,7 @@
     "capacity": "512GB",
     "priceRegular": 1880,
     "priceDiscount": 1780,
-    "colorsAvailable": ["spacegray", "midnightgreen", "gold", "silver"],
+    "colorsAvailable": ["space gray", "midnightgreen", "gold", "silver"],
     "color": "gold",
     "images": [
       "img/phones/apple-iphone-11-pro/gold/00.webp",
@@ -1103,7 +1103,7 @@
     "capacity": "512GB",
     "priceRegular": 1880,
     "priceDiscount": 1780,
-    "colorsAvailable": ["spacegray", "midnightgreen", "gold", "silver"],
+    "colorsAvailable": ["space gray", "midnightgreen", "gold", "silver"],
     "color": "midnightgreen",
     "images": [
       "img/phones/apple-iphone-11-pro/midnightgreen/00.webp",
@@ -1150,7 +1150,7 @@
     "capacity": "512GB",
     "priceRegular": 1880,
     "priceDiscount": 1780,
-    "colorsAvailable": ["spacegray", "midnightgreen", "gold", "silver"],
+    "colorsAvailable": ["space gray", "midnightgreen", "gold", "silver"],
     "color": "silver",
     "images": [
       "img/phones/apple-iphone-11-pro/silver/00.webp",
@@ -1188,7 +1188,7 @@
   },
 
   {
-    "id": "apple-iphone-11-pro-512gb-spacegray",
+    "id": "apple-iphone-11-pro-512gb-space-gray",
     "category": "phones",
     "namespaceId": "apple-iphone-11-pro",
     "name": "Apple iPhone 11 Pro 512GB Spacegray",
@@ -1196,8 +1196,8 @@
     "capacity": "512GB",
     "priceRegular": 1880,
     "priceDiscount": 1780,
-    "colorsAvailable": ["spacegray", "midnightgreen", "gold", "silver"],
-    "color": "spacegray",
+    "colorsAvailable": ["space gray", "midnightgreen", "gold", "silver"],
+    "color": "space gray",
     "images": [
       "img/phones/apple-iphone-11-pro/spacegray/00.webp",
       "img/phones/apple-iphone-11-pro/spacegray/01.webp",
@@ -1242,7 +1242,7 @@
     "capacity": "64GB",
     "priceRegular": 1312,
     "priceDiscount": 1270,
-    "colorsAvailable": ["spacegray", "midnightgreen", "gold", "silver"],
+    "colorsAvailable": ["space gray", "midnightgreen", "gold", "silver"],
     "color": "gold",
     "images": [
       "img/phones/apple-iphone-11-pro/gold/00.webp",
@@ -1288,7 +1288,7 @@
     "capacity": "64GB",
     "priceRegular": 1312,
     "priceDiscount": 1270,
-    "colorsAvailable": ["spacegray", "midnightgreen", "gold", "silver"],
+    "colorsAvailable": ["space gray", "midnightgreen", "gold", "silver"],
     "color": "midnightgreen",
     "images": [
       "img/phones/apple-iphone-11-pro/midnightgreen/00.webp",
@@ -1335,7 +1335,7 @@
     "capacity": "64GB",
     "priceRegular": 1312,
     "priceDiscount": 1270,
-    "colorsAvailable": ["spacegray", "midnightgreen", "gold", "silver"],
+    "colorsAvailable": ["space gray", "midnightgreen", "gold", "silver"],
     "color": "silver",
     "images": [
       "img/phones/apple-iphone-11-pro/silver/00.webp",
@@ -1373,7 +1373,7 @@
   },
 
   {
-    "id": "apple-iphone-11-pro-64gb-spacegray",
+    "id": "apple-iphone-11-pro-64gb-space-gray",
     "category": "phones",
     "namespaceId": "apple-iphone-11-pro",
     "name": "Apple iPhone 11 Pro 64GB Spacegray",
@@ -1381,8 +1381,8 @@
     "capacity": "64GB",
     "priceRegular": 1312,
     "priceDiscount": 1270,
-    "colorsAvailable": ["spacegray", "midnightgreen", "gold", "silver"],
-    "color": "spacegray",
+    "colorsAvailable": ["space gray", "midnightgreen", "gold", "silver"],
+    "color": "space gray",
     "images": [
       "img/phones/apple-iphone-11-pro/spacegray/00.webp",
       "img/phones/apple-iphone-11-pro/spacegray/01.webp",
@@ -1427,7 +1427,7 @@
     "capacity": "256GB",
     "priceRegular": 1776,
     "priceDiscount": 1680,
-    "colorsAvailable": ["spacegray", "midnightgreen", "gold", "silver"],
+    "colorsAvailable": ["space gray", "midnightgreen", "gold", "silver"],
     "color": "gold",
     "images": [
       "img/phones/apple-iphone-11-pro-max/gold/00.webp",
@@ -1473,7 +1473,7 @@
     "capacity": "256GB",
     "priceRegular": 1776,
     "priceDiscount": 1680,
-    "colorsAvailable": ["spacegray", "midnightgreen", "gold", "silver"],
+    "colorsAvailable": ["space gray", "midnightgreen", "gold", "silver"],
     "color": "midnightgreen",
     "images": [
       "img/phones/apple-iphone-11-pro-max/midnightgreen/00.webp",
@@ -1519,7 +1519,7 @@
     "capacity": "256GB",
     "priceRegular": 1776,
     "priceDiscount": 1680,
-    "colorsAvailable": ["spacegray", "midnightgreen", "gold", "silver"],
+    "colorsAvailable": ["space gray", "midnightgreen", "gold", "silver"],
     "color": "silver",
     "images": [
       "img/phones/apple-iphone-11-pro-max/silver/00.webp",
@@ -1557,7 +1557,7 @@
   },
 
   {
-    "id": "apple-iphone-11-pro-max-256gb-spacegray",
+    "id": "apple-iphone-11-pro-max-256gb-space-gray",
     "category": "phones",
     "namespaceId": "apple-iphone-11-pro-max",
     "name": "Apple iPhone 11 Pro Max 256GB Spacegray",
@@ -1565,8 +1565,8 @@
     "capacity": "256GB",
     "priceRegular": 1776,
     "priceDiscount": 1680,
-    "colorsAvailable": ["spacegray", "midnightgreen", "gold", "silver"],
-    "color": "spacegray",
+    "colorsAvailable": ["space gray", "midnightgreen", "gold", "silver"],
+    "color": "space gray",
     "images": [
       "img/phones/apple-iphone-11-pro-max/spacegray/00.webp",
       "img/phones/apple-iphone-11-pro-max/spacegray/01.webp",
@@ -1611,7 +1611,7 @@
     "capacity": "512GB",
     "priceRegular": 2020,
     "priceDiscount": 1930,
-    "colorsAvailable": ["spacegray", "midnightgreen", "gold", "silver"],
+    "colorsAvailable": ["space gray", "midnightgreen", "gold", "silver"],
     "color": "gold",
     "images": [
       "img/phones/apple-iphone-11-pro-max/gold/00.webp",
@@ -1657,7 +1657,7 @@
     "capacity": "512GB",
     "priceRegular": 2020,
     "priceDiscount": 1930,
-    "colorsAvailable": ["spacegray", "midnightgreen", "gold", "silver"],
+    "colorsAvailable": ["space gray", "midnightgreen", "gold", "silver"],
     "color": "midnightgreen",
     "images": [
       "img/phones/apple-iphone-11-pro-max/midnightgreen/00.webp",
@@ -1703,7 +1703,7 @@
     "capacity": "512GB",
     "priceRegular": 2020,
     "priceDiscount": 1930,
-    "colorsAvailable": ["spacegray", "midnightgreen", "gold", "silver"],
+    "colorsAvailable": ["space gray", "midnightgreen", "gold", "silver"],
     "color": "silver",
     "images": [
       "img/phones/apple-iphone-11-pro-max/silver/00.webp",
@@ -1741,7 +1741,7 @@
   },
 
   {
-    "id": "apple-iphone-11-pro-max-512gb-spacegray",
+    "id": "apple-iphone-11-pro-max-512gb-space-gray",
     "category": "phones",
     "namespaceId": "apple-iphone-11-pro-max",
     "name": "Apple iPhone 11 Pro Max 512GB Spacegray",
@@ -1749,8 +1749,8 @@
     "capacity": "512GB",
     "priceRegular": 2020,
     "priceDiscount": 1930,
-    "colorsAvailable": ["spacegray", "midnightgreen", "gold", "silver"],
-    "color": "spacegray",
+    "colorsAvailable": ["space gray", "midnightgreen", "gold", "silver"],
+    "color": "space gray",
     "images": [
       "img/phones/apple-iphone-11-pro-max/spacegray/00.webp",
       "img/phones/apple-iphone-11-pro-max/spacegray/01.webp",
@@ -1795,7 +1795,7 @@
     "capacity": "64GB",
     "priceRegular": 1480,
     "priceDiscount": 1400,
-    "colorsAvailable": ["spacegray", "midnightgreen", "gold", "silver"],
+    "colorsAvailable": ["space gray", "midnightgreen", "gold", "silver"],
     "color": "gold",
     "images": [
       "img/phones/apple-iphone-11-pro-max/gold/00.webp",
@@ -1841,7 +1841,7 @@
     "capacity": "64GB",
     "priceRegular": 1480,
     "priceDiscount": 1400,
-    "colorsAvailable": ["spacegray", "midnightgreen", "gold", "silver"],
+    "colorsAvailable": ["space gray", "midnightgreen", "gold", "silver"],
     "color": "midnightgreen",
     "images": [
       "img/phones/apple-iphone-11-pro-max/midnightgreen/00.webp",
@@ -1887,7 +1887,7 @@
     "capacity": "64GB",
     "priceRegular": 1480,
     "priceDiscount": 1400,
-    "colorsAvailable": ["spacegray", "midnightgreen", "gold", "silver"],
+    "colorsAvailable": ["space gray", "midnightgreen", "gold", "silver"],
     "color": "silver",
     "images": [
       "img/phones/apple-iphone-11-pro-max/silver/00.webp",
@@ -1925,7 +1925,7 @@
   },
 
   {
-    "id": "apple-iphone-11-pro-max-64gb-spacegray",
+    "id": "apple-iphone-11-pro-max-64gb-space-gray",
     "category": "phones",
     "namespaceId": "apple-iphone-11-pro-max",
     "name": "Apple iPhone 11 Pro Max 64GB Spacegray",
@@ -1933,8 +1933,8 @@
     "capacity": "64GB",
     "priceRegular": 1480,
     "priceDiscount": 1400,
-    "colorsAvailable": ["spacegray", "midnightgreen", "gold", "silver"],
-    "color": "spacegray",
+    "colorsAvailable": ["space gray", "midnightgreen", "gold", "silver"],
+    "color": "space gray",
     "images": [
       "img/phones/apple-iphone-11-pro-max/spacegray/00.webp",
       "img/phones/apple-iphone-11-pro-max/spacegray/01.webp",
@@ -2363,7 +2363,7 @@
     "capacity": "64GB",
     "priceRegular": 600,
     "priceDiscount": 550,
-    "colorsAvailable": ["spacegray", "gold", "silver"],
+    "colorsAvailable": ["space gray", "gold", "silver"],
     "color": "gold",
     "images": [
       "img/phones/apple-iphone-8/gold/00.webp",
@@ -2410,7 +2410,7 @@
     "capacity": "64GB",
     "priceRegular": 600,
     "priceDiscount": 550,
-    "colorsAvailable": ["spacegray", "gold", "silver"],
+    "colorsAvailable": ["space gray", "gold", "silver"],
     "color": "silver",
     "images": [
       "img/phones/apple-iphone-8/silver/00.webp",
@@ -2449,7 +2449,7 @@
   },
 
   {
-    "id": "apple-iphone-8-64gb-spacegray",
+    "id": "apple-iphone-8-64gb-space-gray",
     "category": "phones",
     "namespaceId": "apple-iphone-8",
     "name": "Apple iPhone 8 64GB Space Gray",
@@ -2457,8 +2457,8 @@
     "capacity": "64GB",
     "priceRegular": 600,
     "priceDiscount": 550,
-    "colorsAvailable": ["spacegray", "gold", "silver"],
-    "color": "spacegray",
+    "colorsAvailable": ["space gray", "gold", "silver"],
+    "color": "space gray",
     "images": [
       "img/phones/apple-iphone-8/spacegray/00.webp",
       "img/phones/apple-iphone-8/spacegray/01.webp",
@@ -2886,7 +2886,7 @@
     "capacity": "256GB",
     "priceRegular": 960,
     "priceDiscount": 900,
-    "colorsAvailable": ["spacegray", "gold"],
+    "colorsAvailable": ["space gray", "gold"],
     "color": "gold",
     "images": [
       "img/phones/apple-iphone-xs/gold/00.webp",
@@ -2926,7 +2926,7 @@
   },
 
   {
-    "id": "apple-iphone-xs-256gb-spacegray",
+    "id": "apple-iphone-xs-256gb-space-gray",
     "category": "phones",
     "namespaceId": "apple-iphone-xs",
     "name": "Apple iPhone XS 256GB Spacegray",
@@ -2934,8 +2934,8 @@
     "capacity": "256GB",
     "priceRegular": 960,
     "priceDiscount": 900,
-    "colorsAvailable": ["spacegray", "gold"],
-    "color": "spacegray",
+    "colorsAvailable": ["space gray", "gold"],
+    "color": "space gray",
     "images": [
       "img/phones/apple-iphone-xs/spacegray/00.webp",
       "img/phones/apple-iphone-xs/spacegray/01.webp",
@@ -2982,7 +2982,7 @@
     "capacity": "64GB",
     "priceRegular": 760,
     "priceDiscount": 720,
-    "colorsAvailable": ["spacegray", "gold"],
+    "colorsAvailable": ["space gray", "gold"],
     "color": "gold",
     "images": [
       "img/phones/apple-iphone-xs/gold/00.webp",
@@ -3022,7 +3022,7 @@
   },
 
   {
-    "id": "apple-iphone-xs-64gb-spacegray",
+    "id": "apple-iphone-xs-64gb-space-gray",
     "category": "phones",
     "namespaceId": "apple-iphone-xs",
     "name": "Apple iPhone XS 64GB Spacegray",
@@ -3030,8 +3030,8 @@
     "capacity": "64GB",
     "priceRegular": 760,
     "priceDiscount": 720,
-    "colorsAvailable": ["spacegray", "gold"],
-    "color": "spacegray",
+    "colorsAvailable": ["space gray", "gold"],
+    "color": "space gray",
     "images": [
       "img/phones/apple-iphone-xs/spacegray/00.webp",
       "img/phones/apple-iphone-xs/spacegray/01.webp",
@@ -3078,7 +3078,7 @@
     "capacity": "256GB",
     "priceRegular": 1080,
     "priceDiscount": 1000,
-    "colorsAvailable": ["spacegray", "gold", "silver"],
+    "colorsAvailable": ["space gray", "gold", "silver"],
     "color": "gold",
     "images": [
       "img/phones/apple-iphone-xs-max/gold/00.webp",
@@ -3126,7 +3126,7 @@
     "capacity": "256GB",
     "priceRegular": 1080,
     "priceDiscount": 1000,
-    "colorsAvailable": ["spacegray", "gold", "silver"],
+    "colorsAvailable": ["space gray", "gold", "silver"],
     "color": "silver",
     "images": [
       "img/phones/apple-iphone-xs-max/silver/00.webp",
@@ -3166,7 +3166,7 @@
   },
 
   {
-    "id": "apple-iphone-xs-max-256gb-spacegray",
+    "id": "apple-iphone-xs-max-256gb-space-gray",
     "category": "phones",
     "namespaceId": "apple-iphone-xs-max",
     "name": "Apple iPhone XS Max 256GB Spacegray",
@@ -3174,8 +3174,8 @@
     "capacity": "256GB",
     "priceRegular": 1080,
     "priceDiscount": 1000,
-    "colorsAvailable": ["spacegray", "gold", "silver"],
-    "color": "spacegray",
+    "colorsAvailable": ["space gray", "gold", "silver"],
+    "color": "space gray",
     "images": [
       "img/phones/apple-iphone-xs-max/spacegray/00.webp",
       "img/phones/apple-iphone-xs-max/spacegray/01.webp",
@@ -3222,7 +3222,7 @@
     "capacity": "64GB",
     "priceRegular": 960,
     "priceDiscount": 900,
-    "colorsAvailable": ["spacegray", "gold", "silver"],
+    "colorsAvailable": ["space gray", "gold", "silver"],
     "color": "gold",
     "images": [
       "img/phones/apple-iphone-xs-max/gold/00.webp",
@@ -3270,7 +3270,7 @@
     "capacity": "64GB",
     "priceRegular": 960,
     "priceDiscount": 900,
-    "colorsAvailable": ["spacegray", "gold", "silver"],
+    "colorsAvailable": ["space gray", "gold", "silver"],
     "color": "silver",
     "images": [
       "img/phones/apple-iphone-xs-max/silver/00.webp",
@@ -3310,7 +3310,7 @@
   },
 
   {
-    "id": "apple-iphone-xs-max-64gb-spacegray",
+    "id": "apple-iphone-xs-max-64gb-space-gray",
     "category": "phones",
     "namespaceId": "apple-iphone-xs-max",
     "name": "Apple iPhone XS Max 64GB Spacegray",
@@ -3318,8 +3318,8 @@
     "capacity": "64GB",
     "priceRegular": 960,
     "priceDiscount": 900,
-    "colorsAvailable": ["spacegray", "gold", "silver"],
-    "color": "spacegray",
+    "colorsAvailable": ["space gray", "gold", "silver"],
+    "color": "space gray",
     "images": [
       "img/phones/apple-iphone-xs-max/spacegray/00.webp",
       "img/phones/apple-iphone-xs-max/spacegray/01.webp",

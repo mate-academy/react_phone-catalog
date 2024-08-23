@@ -1,6 +1,7 @@
 import { ReactNode, createContext, useCallback, useMemo } from 'react';
 import { Product } from '../types/Product';
 import { useLocalStorage } from '../hooks/useLocalStorage';
+import { isItemInArray } from '../utils/isItemInArray';
 
 type FavoritesContextType = {
   favorites: Product[];
@@ -18,7 +19,7 @@ export const FavoritesProvider: React.FC<{ children: ReactNode }> = ({
 
   const toggleFavorite = useCallback(
     (item: Product) => {
-      const isFavorite = favorites.some(favorite => favorite.id === item.id);
+      const isFavorite = isItemInArray(favorites, item.id);
       const updatedFavorites = isFavorite
         ? favorites.filter(favorite => favorite.id !== item.id)
         : [...favorites, item];

@@ -9,7 +9,7 @@ import { ProductSlider } from '../components/ProductSlider';
 import { GoBackLink } from '../components/ui/GoBackLink';
 import { RoundColorButton } from '../components/ui/RoundColorButton';
 import { Product } from '../types/Product';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { getItemByCategory } from '../services/productDetails';
 import { ProductDetails } from '../types/ProductDetails';
 import { useFavorites } from '../hooks/useFavorites';
@@ -23,40 +23,47 @@ import { useCart } from '../hooks/useCart';
 import { CartActionType } from '../types/CartActionType';
 import { CardButton } from '../components/ui/CardButton';
 import { isItemInArray } from '../utils/isItemInArray';
-import { capitalizeFirstLetter } from '../utils/capitalizeFirstLetter';
 
 export const ItemPage = () => {
   const { products } = useProducts();
   const { cart, updateCart } = useCart();
   const { favorites, toggleFavorite } = useFavorites();
 
+  const navigate = useNavigate();
+
   const { itemId } = useParams();
   const paramFromLink = itemId?.slice(1);
-
   const [isLoading, setIsLoading] = useState(true);
 
-  const [selectedProduct] = useState<Product | null>(() => {
-    return products.find(product => product.itemId === paramFromLink) || null;
-  });
-  const [selectedItem, setSelectedItem] = useState<ProductDetails | null>(null);
-  const [suggestedProducts, setSuggestedProducts] = useState<Product[]>([]);
+  const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
 
-  const [selectedColorIndex, setSelectedColorIndex] = useState(0);
-  const [selectedImageIndex, setSelectedImageIndex] = useState(0);
-  const [selectedCapacityIndex, setSelectedCapacityIndex] = useState(1 || 0);
+  useEffect(() => {
+    const initSelectedProduct = products.find(
+      product => product.itemId === paramFromLink,
+    );
+
+    setSelectedProduct(initSelectedProduct || null);
+  }, [products, paramFromLink]);
 
   const productId = selectedProduct ? selectedProduct.id : 0;
-
-  const isFavorite = favorites.some((f: Product) => f.id === productId);
+  const isFavorite = isItemInArray(favorites, productId);
   const isInCart = isItemInArray(cart, productId);
 
-  const handleAddToCart = () => {
-    if (selectedProduct) {
-      updateCart(selectedProduct, CartActionType.ADD);
-    }
-  };
+  const [suggestedProducts, setSuggestedProducts] = useState<Product[]>([]);
 
-  // Fetch product details
+  useEffect(() => {
+    getSuggestedProducts()
+      .then(data => setSuggestedProducts(data))
+      .catch(error => {
+        // eslint-disable-next-line
+        console.error('Error fetching suggested products:', error);
+      });
+  }, []);
+
+  const [selectedItem, setSelectedItem] = useState<ProductDetails | null>(null);
+  const [selectedColorIndex, setSelectedColorIndex] = useState(0);
+  const [selectedCapacityIndex, setSelectedCapacityIndex] = useState(0);
+
   useEffect(() => {
     if (!selectedProduct) {
       return;
@@ -71,10 +78,23 @@ export const ItemPage = () => {
             const item = data.find(d => d.id === selectedProduct.itemId);
 
             setSelectedItem(item || null);
+
+            if (item) {
+              const colorIndex = item.colorsAvailable.findIndex(
+                color => color === item.color,
+              );
+              const capacityIndex = item.capacityAvailable.findIndex(
+                capacity => capacity === item.capacity,
+              );
+
+              setSelectedColorIndex(colorIndex !== -1 ? colorIndex : 0);
+              setSelectedCapacityIndex(
+                capacityIndex !== -1 ? capacityIndex : 0,
+              );
+            }
           }),
         )
         .catch(error => {
-          setSelectedItem(null);
           throw new Error('Error fetching productDetails:', error);
         })
         .finally(() => setIsLoading(false));
@@ -83,17 +103,38 @@ export const ItemPage = () => {
     fetchProductDetails();
   }, [selectedProduct]);
 
-  // Fetch suggested products
-  useEffect(() => {
-    getSuggestedProducts()
-      .then(data => setSuggestedProducts(data))
-      .catch(error => {
-        // eslint-disable-next-line
-        console.error('Error fetching suggested products:', error);
+  const [selectedImageIndex, setSelectedImageIndex] = useState(0);
 
-        return null;
-      });
-  }, []);
+  const spaceLessColors =
+    selectedItem?.colorsAvailable.map(color => color.replace(/\s/g, '')) || [];
+
+  const handleAddToCart = () => {
+    if (selectedProduct) {
+      updateCart(selectedProduct, CartActionType.ADD);
+    }
+  };
+
+  const navigateToNewSelectedItem = () => {
+    if (!selectedItem) {
+      return;
+    }
+
+    const newParam = [
+      selectedItem?.namespaceId,
+      selectedItem?.capacityAvailable[selectedCapacityIndex],
+      selectedItem?.colorsAvailable[selectedColorIndex],
+    ]
+      .filter(Boolean)
+      .map(item => item.toLowerCase().replace(/\s/g, '-'))
+      .join('-');
+
+    navigate(`/${selectedItem?.category}/:${newParam}`);
+  };
+
+  useEffect(() => {
+    navigateToNewSelectedItem();
+    // eslint-disable-next-line
+  }, [selectedCapacityIndex, selectedColorIndex]);
 
   if (isLoading) {
     return <Loader />;
@@ -103,31 +144,16 @@ export const ItemPage = () => {
     return <NotFoundProductPage title="Product was not found" />;
   }
 
-  const spaceLessColors =
-    selectedItem?.colorsAvailable.map(color => {
-      const spaceRemovedColor = color.split(' ').join('');
-
-      return spaceRemovedColor;
-    }) || [];
-
-  const nameWithCurrentColor = [
-    ...(selectedItem?.namespaceId.split('-') || []),
-    selectedItem?.capacityAvailable[selectedCapacityIndex],
-    selectedItem?.colorsAvailable[selectedColorIndex],
-  ]
-    .map(element => capitalizeFirstLetter(element ?? ''))
-    .join(' ');
-
   return (
     <section id="item-page" className="item-page">
       <div className="item-page__navigation">
-        <Breadcrumbs />
+        <Breadcrumbs productName={selectedItem?.name} />
       </div>
 
       <GoBackLink />
 
       <div className="item-page__content">
-        <h3 className="item-page__title">{nameWithCurrentColor}</h3>
+        <h3 className="item-page__title">{selectedItem?.name}</h3>
 
         <div className="item-page__card">
           <div className="item-page__image-wrapper">
@@ -138,7 +164,7 @@ export const ItemPage = () => {
                     key={index}
                     className="item-page__card-image"
                     src={`img/${selectedItem?.category}/${selectedItem?.namespaceId}/${spaceLessColors[selectedColorIndex]}/0${index}.webp`}
-                    alt={`image ${nameWithCurrentColor}`}
+                    alt={`image ${selectedItem?.name}`}
                     aria-hidden={selectedImageIndex !== index}
                     loading="lazy"
                     style={{ translate: `${-100 * selectedImageIndex}%` }}
@@ -169,7 +195,7 @@ export const ItemPage = () => {
           <div className="item-page__card-controls">
             <div className="small-text item-page__controls-subtitle">
               <p>Available colors</p>
-              <p>ID: 802390</p>
+              <p>ID: 802{productId}</p>
             </div>
 
             <div className="item-page__container">

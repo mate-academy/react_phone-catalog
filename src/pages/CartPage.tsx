@@ -4,6 +4,8 @@ import { CardButton } from '../components/ui/CardButton';
 import { GoBackLink } from '../components/ui/GoBackLink';
 import { useCart } from '../hooks/useCart';
 import { NotFoundProductPage } from './NotFoundProductPage';
+import { CartModal } from '../components/CartModal';
+import { CartActionType } from '../types/CartActionType';
 
 export const CartPage = () => {
   const { cart, updateCart } = useCart();
@@ -13,6 +15,11 @@ export const CartPage = () => {
   const [totalItemCount, setTotalItemCount] = useState(() =>
     cart.reduce((acc, item) => acc + (item.count || 1), 0),
   );
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const toggleModal = () => {
+    setIsModalOpen(prevIsModalOpen => !prevIsModalOpen);
+  };
 
   useEffect(() => {
     const totalInitialPrice = cart.reduce(
@@ -65,12 +72,19 @@ export const CartPage = () => {
             style={{ height: '48px', width: '100%' }}
             variant="primary"
             /* eslint-disable-next-line no-console */
-            onClick={() => console.log('Checkout')}
+            onClick={() => toggleModal()}
           >
             Checkout
           </CardButton>
         </div>
       </div>
+
+      {isModalOpen && (
+        <CartModal
+          onClose={() => toggleModal()}
+          onClear={() => updateCart(null, CartActionType.DELETE_ALL)}
+        />
+      )}
     </div>
   );
 };
