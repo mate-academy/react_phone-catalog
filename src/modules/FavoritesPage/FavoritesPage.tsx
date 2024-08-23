@@ -52,8 +52,8 @@ export const FavoritesPage: React.FC = () => {
         <div className={styles.emptyContainer}>
         <div className={styles.container}>
         {favoriteProducts.map((favproduct,index) => (
-          <div className={styles.product}>
-            <ProductCard product={favproduct} key={index}/>
+          <div className={styles.product} key={index}>
+            <ProductCard product={favproduct} />
           </div>
 
         ))}
