@@ -4,9 +4,13 @@ import { useAppDispatch, useAppSelector } from '../../../app/hooks';
 import {
   addToCart,
   addTofavorite,
+  deleteFromCart,
   deleteFromfavorite,
 } from '../../../features/chosenItemsSlice';
-import { addToItemsQuantity } from '../../../features/pagesDetailsSlice';
+import {
+  addToItemsQuantity,
+  deleteFromItemsQuantity,
+} from '../../../features/pagesDetailsSlice';
 import { Product } from '../../../types/Product';
 import { useTranslation } from 'react-i18next';
 
@@ -103,6 +107,31 @@ export const CardButtonsBlock: React.FC<Props> = ({ gadg }) => {
 
         setIsinCart(true);
       } else {
+        dispatch(deleteFromCart(gadg));
+        dispatch(deleteFromItemsQuantity(gadg.id));
+
+        const cartString = localStorage.getItem('cart');
+
+        if (cartString) {
+          const cartArr = JSON.parse(cartString);
+
+          const newCart = [];
+
+          for (const obj of cartArr) {
+            if (obj.id !== gadg.id) {
+              newCart.push(obj);
+            }
+          }
+
+          localStorage.setItem('cart', JSON.stringify(newCart));
+        }
+
+        const newObj = { ...itemsQuantity };
+
+        delete newObj[gadg.id];
+
+        localStorage.setItem('itemsQuantity', JSON.stringify(newObj));
+
         setIsinCart(false);
       }
     }
@@ -111,12 +140,10 @@ export const CardButtonsBlock: React.FC<Props> = ({ gadg }) => {
   return (
     <div className={styles.buttonsSection}>
       <button
-        disabled={isInCatr}
         onClick={handleAddToCart}
         className={`
           ${styles.blackButtonBase}
-          ${styles.buttonAddToCatr}
-          ${isInCatr && styles.added}
+          ${isInCatr ? styles.added : ''}
           ${isDark && styles.addToCartDark}
           ${isDark && isInCatr && styles.addedToCartDark}
 

@@ -39,16 +39,9 @@
   }
 }
 
-.buttonAddToCatr {
-  height: 40px;
-  width: 100%;
-}
-
 .added {
   color: var(--green-color);
   background-color: var(--white-color);
-  cursor: not-allowed;
-  pointer-events: none;
   border: 1px solid var(--elements-grey-color);
 
   &:hover {

@@ -99,6 +99,11 @@ export const PagesSwitcher: React.FC<PagesSwitcherProps> = ({
     root.style.setProperty('--page-starts-from', `${newPosition}px`);
   };
 
+  useEffect(() => {
+    root.style.setProperty('--page-starts-from', '0');
+    setDisablePagesArrow('disableLeft');
+  }, [perPage, root.style]);
+
   const numbersButtonStyles = (currentPage: number) => {
     if (!isDark) {
       if (currentPage - 1 === showFrom / +perPage) {

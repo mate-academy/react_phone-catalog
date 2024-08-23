@@ -1,11 +1,7 @@
 /* eslint-disable no-param-reassign */
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 import { Product } from '../types/Product';
-import { Phone } from '../types/Phone';
-import { Tablet } from '../types/Tablet';
-import { Accessory } from '../types/Accessory';
-
-type CurrentGadgetType = Phone | Tablet | Accessory | null;
+import { CurrentGadgetType } from '../types/CurrentGadgetType';
 
 type ChosenItemsType = {
   favorite: Product[];

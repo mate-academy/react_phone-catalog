@@ -1,6 +1,6 @@
 /* eslint-disable max-len */
 import React, { useEffect, useState } from 'react';
-import { useLocation, useParams } from 'react-router-dom';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import styles from './ItemCard.module.scss';
 import { Link } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../../app/hooks';
@@ -14,6 +14,10 @@ import { Loader } from '../../Loader';
 import { CurrentProductSlider } from '../../shared/CurrentProductSlider/CurrentProductSlider';
 import { Product } from '../../../types/Product';
 import { useTranslation } from 'react-i18next';
+import { Phone } from '../../../types/Phone';
+import { Tablet } from '../../../types/Tablet';
+import { Accessory } from '../../../types/Accessory';
+import { handleClickOnGadget } from '../../shared/clickOnGadget';
 
 export const ItemCard: React.FC = () => {
   const { t } = useTranslation();
@@ -24,6 +28,7 @@ export const ItemCard: React.FC = () => {
   const params = paramsObj.productId;
   let gadgetWithCamera = null;
   let gadgetWithZoom = null;
+  const navigate = useNavigate();
 
   const listOfProducts = useAppSelector(state => state.products.objects);
   const listOfPhones = useAppSelector(state => state.phones.objects);
@@ -160,6 +165,76 @@ export const ItemCard: React.FC = () => {
     }
   }
 
+  const getNewGadget = (color: string, capacity: string, spacedId: string) => {
+    switch (category) {
+      case 'phones':
+        return listOfPhones.filter(
+          phone =>
+            phone.color === color &&
+            phone.capacity === capacity &&
+            spacedId === phone.namespaceId,
+        );
+      case 'tablets':
+        return listOfTablets.filter(
+          tablet =>
+            tablet.color === color &&
+            tablet.capacity === capacity &&
+            spacedId === tablet.namespaceId,
+        );
+      case 'accessories':
+        return listOfAccessories.filter(
+          accessory =>
+            accessory.color === color &&
+            accessory.capacity === capacity &&
+            spacedId === accessory.namespaceId,
+        );
+      default:
+        return;
+    }
+  };
+
+  const handleInteraction = (
+    color: string | undefined,
+    capacity: string | undefined,
+  ) => {
+    let newGadgetArray: Phone[] | Tablet[] | Accessory[] | undefined = [];
+    let newProduct: Product | undefined;
+
+    if (currrentGadget && color && capacity) {
+      newGadgetArray = getNewGadget(
+        color,
+        capacity,
+        currrentGadget.namespaceId,
+      );
+    }
+
+    if (newGadgetArray !== undefined) {
+      newProduct = listOfProducts.find(prod => {
+        if (newGadgetArray !== undefined) {
+          return prod.itemId === newGadgetArray[0].id;
+        }
+
+        return;
+      });
+    }
+
+    if (newProduct !== undefined && newGadgetArray !== undefined) {
+      handleClickOnGadget(newProduct, dispatch);
+    }
+
+    navigate(`/${newProduct?.category}/${newProduct?.itemId}`);
+  };
+
+  const handleColorChanging = (color: string) => {
+    setSelectedColor(color);
+    handleInteraction(color, currentProduct?.capacity);
+  };
+
+  const handleCapacityChanging = (capacity: string) => {
+    setSelectedCapacity(capacity);
+    handleInteraction(currentProduct?.color, capacity);
+  };
+
   return (
     <>
       {getLoader()}
@@ -210,13 +285,14 @@ export const ItemCard: React.FC = () => {
               <p className={styles.interaction__littleTitles}>
                 {t('available_colors')}
               </p>
+
               <div className={styles.interaction__colors}>
                 {currrentGadget?.colorsAvailable.map(color => {
                   const hexColor = colorHexMap[color] || '#FFFFFF';
 
                   return (
                     <div
-                      onClick={() => setSelectedColor(color)}
+                      onClick={() => handleColorChanging(color)}
                       key={color}
                       className={`${styles.interaction__colorBorder} ${selectedColor === color && styles.selectedColorStyle}`}
                     >
@@ -239,9 +315,9 @@ export const ItemCard: React.FC = () => {
               <div className={styles.interaction__capacityBlock}>
                 {currrentGadget?.capacityAvailable.map(capacity => (
                   <button
-                    onClick={() => setSelectedCapacity(capacity)}
-                    className={`${styles.interaction__capacity} ${selectedCapacity === capacity && styles.selectedCapacityStyle}`}
+                    onClick={() => handleCapacityChanging(capacity)}
                     key={capacity}
+                    className={`${styles.interaction__capacity} ${selectedCapacity === capacity && styles.selectedCapacityStyle}`}
                   >
                     {capacity}
                   </button>

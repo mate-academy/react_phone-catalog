@@ -239,7 +239,7 @@ export const App: React.FC = () => {
                 alt="logo"
               />
             ) : (
-              <img src="./icons/header-logo-light-mode.png" alt="logo" />
+              <img src="./icons/header-logo-light-mode.svg" alt="logo" />
             )}
           </Link>
 
@@ -397,7 +397,7 @@ export const App: React.FC = () => {
                   alt="logo"
                 />
               ) : (
-                <img src="./icons/header-logo-light-mode.png" alt="logo" />
+                <img src="./icons/header-logo-light-mode.svg" alt="logo" />
               )}
             </Link>
 
