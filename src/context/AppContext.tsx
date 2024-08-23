@@ -15,6 +15,8 @@ type AppContextType = {
   setProductsInCart: (products: Product[]) => void;
   theme: 'light' | 'dark';
   setTheme: (products: 'light' | 'dark') => void;
+  productsInCartCount: number[];
+  setProductsInCartCount: (products: number[]) => void;
 };
 
 export const AppContext = createContext<AppContextType | undefined>(undefined);
@@ -22,16 +24,17 @@ export const AppProvider: React.FC<{ children: React.ReactElement }> = ({ childr
   const [numberOfProductsPerPage, setNumberOfProductsPerPage] = useState<number>(8);
   const [clickedProduct, setClickedProduct] = useState<ProductPhone | ProductTablet | ProductAccessory | undefined>(undefined);
   const [favoriteProducts, setFavoriteProducts] = useState<Product[] | []>([]);
-  const [productsInCart, setProductsInCart] = useState<Product[] | []>([]);
   const [previousCurrentPage, setPreviousCurrentPage] = useState<string[]>(['nothing','nothing']);
   const [theme, setTheme] = useState<'light' | 'dark'>('light');
+  const [productsInCartCount, setProductsInCartCount] = useState<number[]>([])
+  const [productsInCart, setProductsInCart] = useState<Product[] | []>([]);
 
   const handleNotReady = () => {
     alert('Feature has not been implemented!');
   };
 
   return (
-    <AppContext.Provider value={{ handleNotReady, numberOfProductsPerPage, setNumberOfProductsPerPage, clickedProduct, setClickedProduct, previousCurrentPage, setPreviousCurrentPage, setFavoriteProducts, favoriteProducts, productsInCart, setProductsInCart, theme, setTheme}}>
+    <AppContext.Provider value={{ handleNotReady, numberOfProductsPerPage, setNumberOfProductsPerPage, clickedProduct, setClickedProduct, previousCurrentPage, setPreviousCurrentPage, setFavoriteProducts, favoriteProducts, productsInCart, setProductsInCart, theme, setTheme, productsInCartCount, setProductsInCartCount}}>
       {children}
     </AppContext.Provider>
   );

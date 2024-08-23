@@ -10,7 +10,7 @@ type ButtonProps = {
 };
 
 export const ActionButtons: React.FC<ButtonProps> = ({product}) => {
-  const { favoriteProducts, setFavoriteProducts, productsInCart, setProductsInCart} = useAppContext();
+  const { favoriteProducts, setFavoriteProducts, productsInCart, setProductsInCart, productsInCartCount, setProductsInCartCount} = useAppContext();
 
   //BELOW FUNCTIONS DONT WORK PROPERLY -> multple adding the same product
   const handleFavorites = () => {
@@ -32,19 +32,23 @@ export const ActionButtons: React.FC<ButtonProps> = ({product}) => {
 
   const handleProductsInCart = () => {
     let newProductsInCart = [...productsInCart];
+    let newProductsInCartCount = [...productsInCartCount];
     const foundIndex = newProductsInCart.indexOf(product);
 
     if (foundIndex === -1) {
       newProductsInCart.push(product)
+      newProductsInCartCount.push(1);
       console.log('added to cart')
     }
 
-    if(foundIndex > -1) {
+    if (foundIndex > -1) {
       newProductsInCart.splice(foundIndex,1)
-      console.log('removed from cart')
+      newProductsInCartCount.splice(foundIndex,1)
+      console.log('removed from cart');
     }
 
-    setProductsInCart(newProductsInCart)
+    setProductsInCart(newProductsInCart);
+    setProductsInCartCount(newProductsInCartCount);
   }
 
   return (

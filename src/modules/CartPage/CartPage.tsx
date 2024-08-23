@@ -9,6 +9,8 @@ import { useAppContext } from '../../context/AppContext';
 import { CartItem } from './CartItem/CartItem';
 import { Link } from 'react-router-dom';
 
+
+
 export const CartPage: React.FC = () => {
   const category = useLocation().pathname.slice(1);
   console.log('PAGE CLICKED', category);
@@ -64,7 +66,7 @@ export const CartPage: React.FC = () => {
             <div className={styles.checkout}>
               <h2 className={styles.totalPrice}>$XXX</h2>
               <p className={styles.totalItems}>
-                Total for xxx item xxx
+                {`Total for ${productsInCart.length} items xxx`}`
               </p>
 
               <div className={styles.divider}></div>
