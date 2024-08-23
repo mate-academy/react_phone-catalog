@@ -3,6 +3,7 @@ import { Navigation, Pagination, Autoplay } from 'swiper/modules';
 
 import styles from './PicturesSlider.module.scss';
 import { ArrowIcon } from '../../../../components/Icons/ArrowIcon';
+import { Link } from 'react-router-dom';
 
 export const PicturesSlider = () => {
   return (
@@ -27,9 +28,25 @@ export const PicturesSlider = () => {
         }}
       >
         <SwiperSlide>
-          <div
-            className={`${styles.swiper__image} ${styles[`swiper__image--1`]}`}
-          ></div>
+          <div className={styles.swiper__banner}>
+            <div className={styles.swiper__orderBlock}>
+              <div>
+                <h2 className={styles.swiper__orderTitle}>
+                  Now available in our store!
+                </h2>
+                <p>Be the first!</p>
+              </div>
+              <Link
+                to="/phones/apple-iphone-14-pro-256gb-spaceblack"
+                className={styles.swiper__orderBtn}
+              >
+                Order now
+              </Link>
+            </div>
+            <div
+              className={`${styles.swiper__image} ${styles[`swiper__image--1`]}`}
+            ></div>
+          </div>
         </SwiperSlide>
         <SwiperSlide>
           <div

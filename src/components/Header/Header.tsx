@@ -1,10 +1,11 @@
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import styles from './Header.module.scss';
 import { FavouritesIcon } from '../Icons/FavouritesIcon';
 import { CartIcon } from '../Icons/CartIcon';
 import classNames from 'classnames';
 import { useFavouriteProducts } from '../../store/FavouriteProductsContext';
 import { useShoppingCart } from '../../store/CartContext';
+import { Search } from '../Search';
 
 export const Header = () => {
   const getLinkClass = ({ isActive }: { isActive: boolean }) =>
@@ -19,6 +20,13 @@ export const Header = () => {
 
   const { favouriteProducts } = useFavouriteProducts();
   const { shoppingCartProducts } = useShoppingCart();
+
+  const { pathname } = useLocation();
+
+  const showSearch =
+    pathname === '/phones' ||
+    pathname === '/tablets' ||
+    pathname === '/accessories';
 
   return (
     <header className={styles.header}>
@@ -39,7 +47,9 @@ export const Header = () => {
           Accessories
         </NavLink>
       </nav>
+
       <div className={styles.header__icons}>
+        {showSearch && <Search />}
         <NavLink to="favourites" className={getLinkClassIcon}>
           <FavouritesIcon />
           {favouriteProducts.length > 0 && (

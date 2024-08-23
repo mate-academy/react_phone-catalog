@@ -5,7 +5,7 @@ import styles from './ProductCard.module.scss';
 import { Product } from '../../types/Product';
 
 import { FavouritesButton } from '../FavouritesButton/FavouritesButton';
-import { Link } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 import { PriceBlock } from '../PriceBlock';
 import { useShoppingCart } from '../../store/CartContext';
 
@@ -27,6 +27,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
   } = product;
 
   const { addToCart } = useShoppingCart();
+  const [searchParams] = useSearchParams();
 
   const techValueClassName = classNames(
     'text-small',
@@ -37,11 +38,15 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
 
   return (
     <div className={styles.productCard}>
-      <Link to={link} className={styles.productCard__imgWrapper}>
+      <Link
+        to={link}
+        state={{ search: searchParams.toString() }}
+        className={styles.productCard__imgWrapper}
+      >
         <img className={styles.productCard__img} src={image} alt="product" />
       </Link>
       <div>
-        <Link to={link}>
+        <Link to={link} state={{ search: searchParams.toString() }}>
           <p className={classNames(styles.productCard__text, 'text-body')}>
             {name}
           </p>

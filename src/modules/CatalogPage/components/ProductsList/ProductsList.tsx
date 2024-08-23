@@ -30,6 +30,7 @@ export const ProductsList: React.FC<Props> = ({
   const sort = searchParams.get('sort') || SORT_KEY.AGE;
   const page = searchParams.get('page') || 1;
   const perPage = searchParams.get('perPage') || 'All';
+  const query = searchParams.get('query');
 
   const total = products.length;
   const perPageNum = +perPage;
@@ -41,12 +42,20 @@ export const ProductsList: React.FC<Props> = ({
       : start + perPageNum;
 
   useEffect(() => {
-    const sortedProducts = [...unsortedProducts].sort(
+    let sortedProducts = [...unsortedProducts].sort(
       mapSortCallbacksToSortKey[sort],
     );
 
+    if (query) {
+      const normalizedQuery = query.toLowerCase();
+
+      sortedProducts = sortedProducts.filter(product =>
+        product.name.toLowerCase().includes(normalizedQuery),
+      );
+    }
+
     setProducts(sortedProducts);
-  }, [sort, unsortedProducts]);
+  }, [sort, unsortedProducts, query]);
 
   return (
     <>
@@ -55,15 +64,30 @@ export const ProductsList: React.FC<Props> = ({
       <p className={classNames(styles.productsList__quantity, 'text-body')}>
         {products.length} models
       </p>
-      <div className={styles.productsList__dropdowns}>
-        <DropDown />
-      </div>
 
-      <div className={styles.productsList__products}>
-        {products
-          ?.slice(start, end)
-          .map(product => <ProductCard key={product.id} product={product} />)}
-      </div>
+      {products.length ? (
+        <>
+          <div className={styles.productsList__dropdowns}>
+            <DropDown />
+          </div>
+          <div className={styles.productsList__products}>
+            {products
+              ?.slice(start, end)
+              .map(product => (
+                <ProductCard key={product.id} product={product} />
+              ))}
+          </div>
+        </>
+      ) : (
+        <div className={styles.productsList__withoutProducts}>
+          <h3>There are no {productType} matching the query</h3>
+          <img
+            className={styles.productDetails__errorImg}
+            src="img/product-not-found.png"
+            alt="error"
+          />
+        </div>
+      )}
 
       {perPage !== 'All' && (
         <Pagination total={total} perPage={perPage} currentPage={+page} />

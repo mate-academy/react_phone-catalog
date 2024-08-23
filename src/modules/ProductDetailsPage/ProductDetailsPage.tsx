@@ -71,6 +71,7 @@ export const ProductDetailsPage: React.FC<Props> = ({ productType }) => {
   return (
     <div>
       {isLoading && <Loader />}
+
       {error && !isLoading && (
         <>
           <h3 className={styles.productDetails__error}>{error}</h3>
@@ -81,6 +82,7 @@ export const ProductDetailsPage: React.FC<Props> = ({ productType }) => {
           />
         </>
       )}
+
       {!isLoading && selectedProduct && product && (
         <ProductDetails
           productDetails={selectedProduct}

@@ -1,14 +1,15 @@
 @import '../../styles/index';
 
 .header {
+  @include flex;
+
+  align-items: center;
   position: sticky;
   top: 0;
   z-index: 20;
   max-height: 64px;
   background-color: $white-color;
   border-bottom: 1px solid $elements-color;
-
-  @include flex;
 
   &__img {
     padding-left: 24px;
@@ -36,10 +37,12 @@
   &__icons {
     @include flex;
 
+    align-items: center;
     position: relative;
   }
 
   &__icon {
+    position: relative;
     cursor: pointer;
     padding: 24px;
     border-left: 1px solid $elements-color;

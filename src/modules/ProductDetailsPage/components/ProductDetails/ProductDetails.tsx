@@ -14,9 +14,9 @@ import {
   getCharacteristics,
   getTechSpecs,
 } from '../../../../utils/productSpecs';
+import { useShoppingCart } from '../../../../store/CartContext';
 import { Breadcrumbs } from '../../../../components/Breadcrumbs';
 import { BackBtn } from '../../../../components/BackBtn';
-import { useShoppingCart } from '../../../../store/CartContext';
 
 type Props = {
   productDetails: CategoryProduct;
@@ -76,7 +76,6 @@ export const ProductDetails: React.FC<Props> = ({
     <div className={styles.product}>
       <Breadcrumbs name={name} />
       <BackBtn />
-
       <h2>{name}</h2>
       <section className={styles.product__details}>
         <div className={styles.product__images}>
@@ -111,6 +110,7 @@ export const ProductDetails: React.FC<Props> = ({
                   <NavLink
                     key={productColor}
                     to={`../${id.replace(currentColor, productColor.replace(/\s/, '-'))}`}
+                    replace
                     className={getColorLinkClass}
                   >
                     <div
@@ -138,6 +138,7 @@ export const ProductDetails: React.FC<Props> = ({
                   <NavLink
                     key={productCapacity}
                     to={`../${id.replace(currentCapacity, productCapacity.toLowerCase())}`}
+                    replace
                     className={getCapacityLinkClass}
                   >
                     {productCapacity}

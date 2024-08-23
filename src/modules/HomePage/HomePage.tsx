@@ -1,29 +1,15 @@
-import { useEffect, useState } from 'react';
-import { getProducts } from '../../utils/api';
-import { Product } from '../../types/Product';
 import styles from './HomePage.module.scss';
 import { PicturesSlider } from './components/PicturesSlider';
 import { ProductsSlider } from '../../components/ProductsSlider';
 import { Categories } from './components/Categories';
+import { Error } from '../../components/Error';
+import { Loader } from '../../components/Loader';
+import { useFetchProducts } from '../../utils/useFetchProducts';
 
 const NEW_MODEL = 'iPhone 14';
 
 export const HomePage = () => {
-  const [products, setProducts] = useState<Product[]>([]);
-
-  useEffect(() => {
-    const fetchProducts = async () => {
-      try {
-        const productsFromApi = await getProducts();
-
-        setProducts(productsFromApi);
-      } catch (error) {
-        // console.log('error', error);
-      }
-    };
-
-    fetchProducts();
-  }, []);
+  const { products, error, isLoading, fetchProducts } = useFetchProducts();
 
   const newModels = products
     .filter(product => product.name.includes(NEW_MODEL))
@@ -36,19 +22,25 @@ export const HomePage = () => {
 
   return (
     <div className={styles.homePage}>
-      <h1>Welcome to Nice Gadgets store!</h1>
-      <PicturesSlider />
-      <ProductsSlider
-        products={newModels}
-        type={'brandNew'}
-        title={'Brand new models'}
-      />
-      <Categories />
-      <ProductsSlider
-        products={hotPricesModels}
-        type={'hotPrices'}
-        title={'Hot prices'}
-      />
+      {isLoading && <Loader />}
+      {error && !isLoading && <Error fetchProducts={fetchProducts} />}
+      {!error && !isLoading && (
+        <>
+          <h1>Welcome to Nice Gadgets store!</h1>
+          <PicturesSlider />
+          <ProductsSlider
+            products={newModels}
+            type={'brandNew'}
+            title={'Brand new models'}
+          />
+          <Categories />
+          <ProductsSlider
+            products={hotPricesModels}
+            type={'hotPrices'}
+            title={'Hot prices'}
+          />
+        </>
+      )}
     </div>
   );
 };

@@ -17,6 +17,17 @@
     margin: 24px 0 40px;
   }
 
+  &__withoutProducts {
+    margin: 40px 0 30px;
+    text-align: center;
+
+    img {
+      width: 700px;
+      margin: 25px auto 0;
+      display: block;
+    }
+  }
+
   &__dropdowns {
     display: flex;
     gap: 16px;
