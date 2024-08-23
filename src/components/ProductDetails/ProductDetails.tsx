@@ -21,6 +21,7 @@ import { MenuOpen } from '../../utils/MenuContext';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import { ProductCard } from '../ProductCard/ProductCard';
+import { Loader } from '../Loader/Loader';
 
 type Props = {
   category?: 'phones' | 'tablets' | 'accessories';
@@ -31,11 +32,16 @@ export const ProductDetails: React.FC<Props> = ({ category }) => {
     productsFromServer.slice().sort(() => Math.random() - 0.5),
   );
 
+  const [isLoading, setIsLoading] = useState(true);
+
   useEffect(() => {
+    setTimeout(() => setIsLoading(false), 600);
+
     setRandomProduct(
       productsFromServer.slice().sort(() => Math.random() - 0.4),
     );
   }, []);
+
   const [searchParams, setSearchParams] = useSearchParams();
   const { itemId } = useParams();
 
@@ -204,12 +210,9 @@ export const ProductDetails: React.FC<Props> = ({ category }) => {
     <>
       <Header />
       {isMenuOpen && <Menu />}
-      {!checkedItemId() ? (
-        <div className="not-found__box">
-          <img src="./img/product-not-found.png" className="not-found__image" />
-          <h2 className="not-found__title">Product not found</h2>
-        </div>
-      ) : (
+      {isLoading ? (
+        <Loader />
+      ) : checkedItemId() ? (
         <main className="product-details-main">
           <div className="navigation">
             <Link to="/" className="navigation__home" />
@@ -482,6 +485,11 @@ export const ProductDetails: React.FC<Props> = ({ category }) => {
             </div>
           </div>
         </main>
+      ) : (
+        <div className="not-found__box">
+          <img src="./img/product-not-found.png" className="not-found__image" />
+          <h2 className="not-found__title">Product not found</h2>
+        </div>
       )}
       <Footer />
     </>

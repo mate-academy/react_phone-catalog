@@ -84,7 +84,7 @@ export const HomePage = () => {
       {isMenuOpen && <Menu />}
       <main className="main">
         <section className="home" id="#">
-          <h1 className="home__title">Welcome to Nice Gadgets store!</h1>
+          <h2 className="home__title">Welcome to Nice Gadgets store!</h2>
           <button
             className="navigation-button navigation-button--home-swiper"
             onClick={() => homeSwiperRef.current.slidePrev()}

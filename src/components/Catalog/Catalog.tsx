@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/label-has-for */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useContext, useEffect, useState } from 'react';
-import { Link, Outlet, useSearchParams } from 'react-router-dom';
+import { Link, Outlet, useLocation, useSearchParams } from 'react-router-dom';
 import { Header } from '../Header/Header';
 import { Menu } from '../Menu/Menu';
 import classNames from 'classnames';
@@ -12,6 +12,7 @@ import { ProductCard } from '../ProductCard/ProductCard';
 
 import './Catalog.scss';
 import { Footer } from '../Footer/Footer';
+import { Loader } from '../Loader/Loader';
 
 type Props = {
   products: Product[];
@@ -38,6 +39,11 @@ export const Catalog: React.FC<Props> = ({ products }) => {
   const [elemsPerPage, setElemsPerPage] = useState(
     searchParams.get('perPage') || ElementsPerPage.eight,
   );
+
+  const { pathname } = useLocation();
+
+  const [isLoading, setIsLoading] = useState(true);
+
   const lastPage: number = +products.length;
   const paginationCount: number[] = [];
   let itemsAndPage: Product[] = [];
@@ -89,6 +95,8 @@ export const Catalog: React.FC<Props> = ({ products }) => {
   useEffect(() => {
     setPage(1);
 
+    setTimeout(() => setIsLoading(false), 600);
+
     const selectElementSortBy = document.getElementById(
       'sortBy',
     ) as HTMLSelectElement;
@@ -108,13 +116,17 @@ export const Catalog: React.FC<Props> = ({ products }) => {
       target.dispatchEvent(changeEvent);
     };
 
+    // if (selectElementSortBy && selectElementPerPage) {
     selectElementSortBy.addEventListener('change', handleChange);
     selectElementPerPage.addEventListener('change', handleChange);
+    // }
 
     // Cleanup the event listener on unmount
     return () => {
+      // if (selectElementSortBy && selectElementPerPage) {
       selectElementSortBy.removeEventListener('change', handleChange);
       selectElementPerPage.removeEventListener('change', handleChange);
+      // }
     };
   }, []);
 
@@ -251,65 +263,77 @@ export const Catalog: React.FC<Props> = ({ products }) => {
               </option>
             </select>
           </div>
-          <div className="catalog-main__content-box">
-            {itemsAndPage.map(item => (
-              <ProductCard id={item.id} key={item.id} />
-            ))}
-          </div>
-          <ul className="pagination">
-            <li className="pagination__item">
-              <Link
-                data-cy="prevLink"
-                className={classNames(
-                  'pagination__link pagination__link--arrow-prev',
-                  {
-                    'disabled-link': page === 1,
-                  },
-                )}
-                to={`?page=${+page - 1}&perPage=${elemsPerPage}`}
-                onClick={() => {
-                  setPage(+page - 1);
-                  window.scrollTo({ top: 0, behavior: 'smooth' });
-                }}
-              />
-            </li>
+          {isLoading ? (
+            <div className="loader-box">
+              <Loader />
+            </div>
+          ) : products.length > 0 ? (
+            <>
+              <div className="catalog-main__content-box">
+                {itemsAndPage.map(item => (
+                  <ProductCard id={item.id} key={item.id} />
+                ))}
+              </div>
+              <ul className="pagination">
+                <li className="pagination__item">
+                  <Link
+                    data-cy="prevLink"
+                    className={classNames(
+                      'pagination__link pagination__link--arrow-prev',
+                      {
+                        'disabled-link': page === 1,
+                      },
+                    )}
+                    to={`?page=${+page - 1}&perPage=${elemsPerPage}`}
+                    onClick={() => {
+                      setPage(+page - 1);
+                      window.scrollTo({ top: 0, behavior: 'smooth' });
+                    }}
+                  />
+                </li>
 
-            {paginationCount.map(count => (
-              <li
-                key={count.toString()}
-                className="pagination__item"
-                onClick={() => setPage(count)}
-              >
-                <Link
-                  className={classNames('pagination__link', {
-                    'disabled-active-link': page === count,
-                  })}
-                  to={`?page=${count}&perPage=${elemsPerPage}`}
-                  onClick={() =>
-                    window.scrollTo({ top: 0, behavior: 'smooth' })
-                  }
-                >
-                  {count}
-                </Link>
-              </li>
-            ))}
-            <li className="pagination__item">
-              <Link
-                data-cy="nextLink"
-                className={classNames(
-                  'pagination__link pagination__link--arrow-next',
-                  {
-                    'disabled-link': page === paginationCount.length,
-                  },
-                )}
-                to={`?page=${+page + 1}&perPage=${elemsPerPage}`}
-                onClick={() => {
-                  setPage(+page + 1);
-                  window.scrollTo({ top: 0, behavior: 'smooth' });
-                }}
-              />
-            </li>
-          </ul>
+                {paginationCount.map(count => (
+                  <li
+                    key={count.toString()}
+                    className="pagination__item"
+                    onClick={() => setPage(count)}
+                  >
+                    <Link
+                      className={classNames('pagination__link', {
+                        'disabled-active-link': page === count,
+                      })}
+                      to={`?page=${count}&perPage=${elemsPerPage}`}
+                      onClick={() =>
+                        window.scrollTo({ top: 0, behavior: 'smooth' })
+                      }
+                    >
+                      {count}
+                    </Link>
+                  </li>
+                ))}
+                <li className="pagination__item">
+                  <Link
+                    data-cy="nextLink"
+                    className={classNames(
+                      'pagination__link pagination__link--arrow-next',
+                      {
+                        'disabled-link': page === paginationCount.length,
+                      },
+                    )}
+                    to={`?page=${+page + 1}&perPage=${elemsPerPage}`}
+                    onClick={() => {
+                      setPage(+page + 1);
+                      window.scrollTo({ top: 0, behavior: 'smooth' });
+                    }}
+                  />
+                </li>
+              </ul>
+            </>
+          ) : (
+            <div className="no-found-box">
+              <h1 className="no-product-title">Have no {pathname.slice(1)}</h1>
+            </div>
+          )}
         </main>
         <Footer />
       </div>

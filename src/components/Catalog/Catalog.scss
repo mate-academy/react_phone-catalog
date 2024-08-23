@@ -1,7 +1,33 @@
 @import '../../utils/mixins';
 
+.no-found-box {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 50vh;
+}
+
+.no-found-title {
+  font-family: var(--strong-font-family);
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 41px;
+  letter-spacing: -1%;
+}
+
+.loader-box {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 50vh;
+}
+
 .catalog-main {
   @include padding-inline;
+
+  position: relative;
 
   &__title {
     margin: 0;
@@ -268,6 +294,7 @@
       }
     }
   }
+
   .disabled-link {
     pointer-events: none;
     border: 1px solid var(--elements-color);

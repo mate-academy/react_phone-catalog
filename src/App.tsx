@@ -29,6 +29,7 @@ export const App = () => {
 
   return (
     <div className={classNames('App', { 'hidden-overflow': isMenuOpen })}>
+      <h1 className="not-visible-title">Product Catalog</h1>
       <Desktop.Provider value={onDesktop}>
         <Tablet.Provider value={onTablet}>
           <MenuOpen.Provider value={{ isMenuOpen, setIsMenuOpen }}>
