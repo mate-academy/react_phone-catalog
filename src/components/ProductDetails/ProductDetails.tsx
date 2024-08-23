@@ -11,19 +11,31 @@ import tabletsFromServer from '../../api/tablets.json';
 import accessoriesFromServer from '../../api/accessories.json';
 
 import './ProductDetails.scss';
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useRef, useState } from 'react';
 import { Desktop } from '../../utils/DesktopContext';
 import { Tablet } from '../../utils/TabletContext';
 import classNames from 'classnames';
 import { Colors } from '../../utils/Colors';
 import { Menu } from '../Menu/Menu';
 import { MenuOpen } from '../../utils/MenuContext';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
+import { ProductCard } from '../ProductCard/ProductCard';
 
 type Props = {
-  category: 'phones' | 'tablets' | 'accessories';
+  category?: 'phones' | 'tablets' | 'accessories';
 };
 
 export const ProductDetails: React.FC<Props> = ({ category }) => {
+  const [randomProduct, setRandomProduct] = useState(
+    productsFromServer.slice().sort(() => Math.random() - 0.5),
+  );
+
+  useEffect(() => {
+    setRandomProduct(
+      productsFromServer.slice().sort(() => Math.random() - 0.4),
+    );
+  }, []);
   const [searchParams, setSearchParams] = useSearchParams();
   const { itemId } = useParams();
 
@@ -34,10 +46,35 @@ export const ProductDetails: React.FC<Props> = ({ category }) => {
   const onDesktop = useContext(Desktop);
   const onTablet = useContext(Tablet);
 
+  const mayLikeRef = useRef<any>(null);
+
+  const slidesPerVeiw = () => {
+    if (onDesktop) {
+      return 4;
+    } else if (onTablet) {
+      return 2.4;
+    } else {
+      return 1.4;
+    }
+  };
+
+  const [currentSlide, setCurrentSlide] = useState(0);
+
   const checkedItemId = itemId ? itemId : ' ';
 
+  // console.log(
+  //   category,
+  //   productsFromServer.find(product => product.itemId.includes(checkedItemId))
+  //     ?.category,
+  // );
+
   const findProductById = () => {
-    switch (category) {
+    switch (
+      // category ||
+      // productsFromServer.find(product => product.itemId.includes(checkedItemId))
+      //   ?.category
+      category
+    ) {
       case 'phones':
         return (
           phonesFromServer.find(phone => phone.namespaceId === checkedItemId) ||
@@ -126,12 +163,6 @@ export const ProductDetails: React.FC<Props> = ({ category }) => {
   const [choosenCapacity, setChoosenCapacity] = useState(
     searchParams.get('capacity') || capacity,
   );
-
-  // let checkedProduct = findProductBy(choosenCapacity);
-
-  // if (category == 'accessories') {
-  //   checkedProduct = { ...findProductBy(choosenCapacity), camera: '' };
-  // }
 
   const {
     colorsAvailable,
@@ -340,60 +371,111 @@ export const ProductDetails: React.FC<Props> = ({ category }) => {
                   <p className="option-box__value">{ram}</p>
                 </div>
               </div>
-              <article className="about-info">
-                <h3 className="article-title">About</h3>
-                <div className="section-line section-line--about" />
-                {description.map((article, index) => (
-                  <>
-                    <h4 key={index} className="about-info__subtitle">
-                      {article.title}
-                    </h4>
-                    <p className="about-info__text">{article.text}</p>
-                  </>
+            </div>
+            <article className="about-info">
+              <h3 className="article-title">About</h3>
+              <div className="section-line section-line--about" />
+              {description.map((article, index) => (
+                <>
+                  <h4 key={index} className="about-info__subtitle">
+                    {article.title}
+                  </h4>
+                  <p className="about-info__text">{article.text}</p>
+                </>
+              ))}
+            </article>
+            <article className="tech-specs">
+              <h3 className="article-title">Tech specs</h3>
+              <div className="section-line section-line--tech-specs" />
+              <div className="tech-specs__option">
+                <h5 className="tech-specs__subtitle">Screen</h5>
+                <p className="tech-specs__value">{screen}</p>
+              </div>
+              <div className="tech-specs__option">
+                <h5 className="tech-specs__subtitle">Resolution</h5>
+                <p className="tech-specs__value">{resolution}</p>
+              </div>
+              <div className="tech-specs__option">
+                <h5 className="tech-specs__subtitle">Processor</h5>
+                <p className="tech-specs__value">{processor}</p>
+              </div>
+              <div className="tech-specs__option">
+                <h5 className="tech-specs__subtitle">RAM</h5>
+                <p className="tech-specs__value">{ram}</p>
+              </div>
+              <div className="tech-specs__option">
+                <h5 className="tech-specs__subtitle">
+                  {isAccessory ? 'Display size' : 'Built in memory'}
+                </h5>
+                <p className="tech-specs__value">{choosenCapacity}</p>
+              </div>
+              {camera && (
+                <div className="tech-specs__option">
+                  <h5 className="tech-specs__subtitle">Camera</h5>
+                  <p className="tech-specs__value">{camera}</p>
+                </div>
+              )}
+              {zoom && (
+                <div className="tech-specs__option">
+                  <h5 className="tech-specs__subtitle">Zoom</h5>
+                  <p className="tech-specs__value">{zoom}</p>
+                </div>
+              )}
+              <div className="tech-specs__option">
+                <h5 className="tech-specs__subtitle">Cell</h5>
+                <p className="tech-specs__value">{cell.join(', ')}</p>
+              </div>
+            </article>
+            <div className="may-like">
+              <div className="wrapper">
+                <h3 className="may-like__title">You may also like</h3>
+                <div className="may-like__button-box">
+                  <button
+                    className="navigation-button"
+                    onClick={() => mayLikeRef.current.slidePrev()}
+                    disabled={currentSlide === 0}
+                  >
+                    {currentSlide !== 0 ? (
+                      <img src="./img/arrow-prev.svg" alt="slide prev" />
+                    ) : (
+                      <img
+                        src="./img/arrow-prev-disabled.svg"
+                        alt="slide prev"
+                      />
+                    )}
+                  </button>
+                  <button
+                    className="navigation-button"
+                    onClick={() => mayLikeRef.current.slideNext()}
+                  >
+                    {currentSlide !== 60 ? (
+                      <img src="./img/arrow-next.svg" alt="slide next" />
+                    ) : (
+                      <img
+                        src="./img/arrow-next-disabled.svg"
+                        alt="slide next"
+                      />
+                    )}
+                  </button>
+                </div>
+              </div>
+              <Swiper
+                slidesPerView={slidesPerVeiw()}
+                spaceBetween={16}
+                className="may-like__swiper"
+                onSwiper={swiper => {
+                  mayLikeRef.current = swiper;
+                }}
+                onSlideChange={swiper => {
+                  setCurrentSlide(swiper.realIndex);
+                }}
+              >
+                {randomProduct.map(product => (
+                  <SwiperSlide key={product.id}>
+                    <ProductCard id={product.id} />
+                  </SwiperSlide>
                 ))}
-              </article>
-              <article className="tech-specs">
-                <h3 className="article-title">Tech specs</h3>
-                <div className="section-line section-line--tech-specs" />
-                <div className="tech-specs__option">
-                  <h5 className="tech-specs__subtitle">Screen</h5>
-                  <p className="tech-specs__value">{screen}</p>
-                </div>
-                <div className="tech-specs__option">
-                  <h5 className="tech-specs__subtitle">Resolution</h5>
-                  <p className="tech-specs__value">{resolution}</p>
-                </div>
-                <div className="tech-specs__option">
-                  <h5 className="tech-specs__subtitle">Processor</h5>
-                  <p className="tech-specs__value">{processor}</p>
-                </div>
-                <div className="tech-specs__option">
-                  <h5 className="tech-specs__subtitle">RAM</h5>
-                  <p className="tech-specs__value">{ram}</p>
-                </div>
-                <div className="tech-specs__option">
-                  <h5 className="tech-specs__subtitle">
-                    {isAccessory ? 'Display size' : 'Built in memory'}
-                  </h5>
-                  <p className="tech-specs__value">{choosenCapacity}</p>
-                </div>
-                {camera && (
-                  <div className="tech-specs__option">
-                    <h5 className="tech-specs__subtitle">Camera</h5>
-                    <p className="tech-specs__value">{camera}</p>
-                  </div>
-                )}
-                {zoom && (
-                  <div className="tech-specs__option">
-                    <h5 className="tech-specs__subtitle">Zoom</h5>
-                    <p className="tech-specs__value">{zoom}</p>
-                  </div>
-                )}
-                <div className="tech-specs__option">
-                  <h5 className="tech-specs__subtitle">Cell</h5>
-                  <p className="tech-specs__value">{cell.join(', ')}</p>
-                </div>
-              </article>
+              </Swiper>
             </div>
           </div>
         </main>

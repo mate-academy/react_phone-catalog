@@ -14,7 +14,7 @@ export const Root = () => (
     <Route path="/" element={<App />}>
       <Route index element={<HomePage />} />
       <Route
-        path="products/:itemId"
+        path="product/:itemId"
         element={<ProductDetails category="phones" />}
       />
       <Route path="phones">
@@ -30,7 +30,7 @@ export const Root = () => (
           }
         />
         <Route
-          path="products/:itemId"
+          path="product/:itemId"
           element={<ProductDetails category="phones" />}
         />
       </Route>
@@ -47,7 +47,7 @@ export const Root = () => (
           }
         />
         <Route
-          path="products/:itemId"
+          path="product/:itemId"
           element={<ProductDetails category="tablets" />}
         />
       </Route>
@@ -64,7 +64,7 @@ export const Root = () => (
           }
         />
         <Route
-          path="products/:itemId"
+          path="product/:itemId"
           element={<ProductDetails category="accessories" />}
         />
       </Route>

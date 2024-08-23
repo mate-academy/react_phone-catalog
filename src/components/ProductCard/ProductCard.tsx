@@ -63,7 +63,7 @@ export const ProductCard: React.FC<Props> = ({ id }) => {
 
   return (
     <Link
-      to={`products/${findProductById().namespaceId}?color=${findProductById().color}&capacity=${findProductById().capacity}`}
+      to={`/${category}/product/${findProductById().namespaceId}?color=${findProductById().color}&capacity=${findProductById().capacity}`}
       className="product-link"
       onClick={() => window.scrollTo({ top: 0 })}
     >
