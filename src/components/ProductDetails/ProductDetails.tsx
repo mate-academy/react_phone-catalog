@@ -60,38 +60,41 @@ export const ProductDetails: React.FC<Props> = ({ category }) => {
 
   const [currentSlide, setCurrentSlide] = useState(0);
 
-  const checkedItemId = itemId ? itemId : ' ';
+  const checkedItemId = () => {
+    if (
+      itemId &&
+      productsFromServer.find(product => product.itemId.includes(itemId))
+    ) {
+      return itemId;
+    }
 
-  // console.log(
-  //   category,
-  //   productsFromServer.find(product => product.itemId.includes(checkedItemId))
-  //     ?.category,
-  // );
+    return '';
+  };
+
+  const sortProductByCategory = productsFromServer.find(product =>
+    product.itemId.includes(checkedItemId()),
+  )?.category;
 
   const findProductById = () => {
-    switch (
-      // category ||
-      // productsFromServer.find(product => product.itemId.includes(checkedItemId))
-      //   ?.category
-      category
-    ) {
+    switch (category || sortProductByCategory) {
       case 'phones':
         return (
-          phonesFromServer.find(phone => phone.namespaceId === checkedItemId) ||
-          phonesFromServer[0]
+          phonesFromServer.find(
+            phone => phone.namespaceId === checkedItemId(),
+          ) || phonesFromServer[0]
         );
 
       case 'tablets':
         return (
           tabletsFromServer.find(
-            tablet => tablet.namespaceId === checkedItemId,
+            tablet => tablet.namespaceId === checkedItemId(),
           ) || tabletsFromServer[0]
         );
 
       case 'accessories':
         return (
           accessoriesFromServer.find(
-            access => access.namespaceId === checkedItemId,
+            access => access.namespaceId === checkedItemId(),
           ) || accessoriesFromServer[0]
         );
 
@@ -201,7 +204,7 @@ export const ProductDetails: React.FC<Props> = ({ category }) => {
     <>
       <Header />
       {isMenuOpen && <Menu />}
-      {!findProductById() ? (
+      {!checkedItemId() ? (
         <div className="not-found__box">
           <img src="./img/product-not-found.png" className="not-found__image" />
           <h2 className="not-found__title">Product not found</h2>
