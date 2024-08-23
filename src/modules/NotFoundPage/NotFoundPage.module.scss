@@ -1,5 +1,18 @@
 @import '../../styles/main';
 
+@keyframes Animation {
+  0% {
+    transform: rotate(20deg) scale(90%)
+  }
+  50% {
+    transform: rotate(-10deg) scale(100%)
+  }
+
+  100% {
+    transform: rotate(20deg) scale(90%)
+  }
+}
+
 .notFoundPage {
   display: flex;
   flex-direction: column;
@@ -11,6 +24,7 @@
 .image {
   align-self: center;
   width: 30%;
+  animation: Animation 5s infinite ease-in-out;
 }
 
 .goBackText {

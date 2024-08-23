@@ -1,5 +1,17 @@
 @import '../../styles/main';
 
+@keyframes cartAnimation {
+  0% {
+    transform: scale(90%)
+  }
+  50% {
+    transform: scale(100%)
+  }
+  100% {
+    transform: scale(90%)
+  }
+}
+
 .cartPage {
   @include section-grid;
 }
@@ -138,6 +150,7 @@
 .image {
   width:30%;
   align-self: center;
+  animation: cartAnimation 2s infinite ease-in-out;
 }
 
 .label {
