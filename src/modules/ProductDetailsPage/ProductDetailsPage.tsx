@@ -29,6 +29,7 @@ export const ProductDetailsPage: React.FC = () => {
   return (
     <div className={styles.productDetailsPageWrapper}>
       <Header />
+
       <main className={styles.mainContent}>
         {isLoading ? (
           <Loader />
@@ -41,6 +42,7 @@ export const ProductDetailsPage: React.FC = () => {
             )}
 
             <PreviousPage category={category} />
+
             <button className={styles.goBackButton}>
               <img src={chevronIcon} alt="home" className={styles.chevronIcon} />
               <div className={styles.goBackText}>
@@ -51,7 +53,9 @@ export const ProductDetailsPage: React.FC = () => {
             </button>
 
             <h2 className={styles.title}>{clickedProduct.name}</h2>
+
             <div className={styles.goBackText}>Component under construction</div> {/* / REMOVE LATER */}
+
             <ImageGallery />
             <MainControls clickedProduct={clickedProduct}/>
             <Description />
@@ -59,6 +63,7 @@ export const ProductDetailsPage: React.FC = () => {
           </div>
         )}
       </main>
+
       <Footer />
     </div>
   );

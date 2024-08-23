@@ -3,7 +3,6 @@
 .section {
   grid-column: 1 / -1;
 
-
   @include on-desktop {
     grid-column: 14 / -1;
   }
@@ -13,7 +12,6 @@
   display: flex;
   flex-direction: column;
   gap: 16px;
-
 }
 
 .sectionTitle {
@@ -41,13 +39,11 @@
   display: flex;
   flex-direction: column;
   gap: 8px;
-
 }
 
 .specs {
   display: flex;
   justify-content: space-between;
-
 }
 
 .specsKey {

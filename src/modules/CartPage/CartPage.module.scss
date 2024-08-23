@@ -146,10 +146,9 @@
   padding-top: 2px;
   height: 15px;
   text-decoration: none;
+  color: var(--color-secondary);
 
   @extend %small-text;
-
-  color: var(--color-secondary);
 }
 
 .chevronIcon {

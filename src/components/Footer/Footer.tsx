@@ -8,6 +8,7 @@ export const Footer: React.FC = () => (
     <Link to="/" className={styles.logoLink}>
       <img src={LogoIcon} alt="Logo" />
     </Link>
+
     <nav className={styles.nav}>
       <NavLink
         to="https://github.com/meljaszuk"
@@ -16,6 +17,7 @@ export const Footer: React.FC = () => (
       >
         GitHub
       </NavLink>
+
       <NavLink
         to="https://github.com/meljaszuk"
         target="_blank"
@@ -23,6 +25,7 @@ export const Footer: React.FC = () => (
       >
         Contact
       </NavLink>
+
       <NavLink
         to="https://github.com/meljaszuk"
         target="_blank"

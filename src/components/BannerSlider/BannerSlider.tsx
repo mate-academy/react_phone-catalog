@@ -8,9 +8,7 @@ export const BannerSlider: React.FC = () => {
     './img/banner-2.png',
     './img/banner-3.png',
   ];
-
   const [displayedImageIndex, setDisplayedImageIndex] = useState(0);
-
   const incrementDisplayedImageIndex = () => {
     setDisplayedImageIndex(prevIndex =>
       prevIndex === sliderImages.length - 1 ? 0 : prevIndex + 1
@@ -21,14 +19,12 @@ export const BannerSlider: React.FC = () => {
     setDisplayedImageIndex(prevIndex =>
       prevIndex === 0 ? sliderImages.length - 1 : prevIndex - 1
     );
-
   };
 
   useEffect(() => {
     const intervalId = setInterval(() => {
       incrementDisplayedImageIndex();
     }, 3000);
-
     // Czyszczenie interwału, gdy komponent zostanie odmontowany
     return () => clearInterval(intervalId);
   }, []); // Pusta tablica zależności, interwał ustawia się tylko raz

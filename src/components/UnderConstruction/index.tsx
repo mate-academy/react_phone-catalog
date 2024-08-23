@@ -1,1 +1,1 @@
-export * from './UnderConstruction'
+export * from './UnderConstruction';

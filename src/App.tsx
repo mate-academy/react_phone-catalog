@@ -14,7 +14,7 @@ export const App: React.FC = () => {
   console.log('PAGE CLICKED',category)
   const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
-    alert('This website is under constuction and some features have not been implemented!')
+/*     alert('This website is under construction. SOME FEATURES AND STYLES HAVE NOT BEEN IMPLEMENTED!') */
     setIsLoading(false);
   }, []);
 
@@ -32,7 +32,7 @@ export const App: React.FC = () => {
           <ProductSlider title="Hot prices" count={10}/>
           <Footer />
         </div>
-      )}
+      )};
     </div>
   );
 };

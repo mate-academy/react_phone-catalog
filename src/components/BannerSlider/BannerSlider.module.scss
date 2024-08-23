@@ -2,8 +2,6 @@
   display: flex;
   justify-content: center;
   padding-top: 50px;
-
-
 }
 
 .arrowButton {
@@ -17,18 +15,14 @@
   border: 1px solid var(--color-surface);
   border-radius: 5%;
 
-
   &:hover {
       border: 1px solid var(--color-primary);
       background-color: var(--color-hover);
   }
 }
 
-
 .topWrapper {
-
   width: 90%;
-
 }
 
 .buttons {
@@ -38,22 +32,22 @@
   gap: 16px;
   height: 100%;
 }
+
 .sliderWrapper {
   transition: transform 0.5s ease;
   will-change: transform;
   display: flex;
   width: 100%;
- // Zapewnia, że wrapper będzie miał szerokość wszystkich obrazów razem wziętych
 }
 
 .slide {
-  min-width: 100%;  // Każdy obraz zajmuje całą szerokość kontenera
+  min-width: 100%;
   height: auto;
 }
 
 .container {
-  width: 100%;  // Zapewnia, że kontener ma taką samą szerokość jak jeden obraz
-  overflow: hidden;  // Ukrywa obrazy poza aktualnym widokiem
+  width: 100%;
+  overflow: hidden;
   display: flex;
   justify-content: flex-start;
   align-items: center;

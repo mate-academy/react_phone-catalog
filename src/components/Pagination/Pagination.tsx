@@ -14,8 +14,8 @@ export const Pagination: React.FC<PaginationProps> = ({
   handleDisplayedPage,
   displayedPage,
 }) => {
-  const arrayOfPageButtons = [];
 
+  const arrayOfPageButtons = [];
   for (let i = 1; i <= numberOfPages; i++) {
     arrayOfPageButtons.push(i);
   }

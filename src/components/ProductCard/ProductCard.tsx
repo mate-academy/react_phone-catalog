@@ -17,7 +17,6 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product}) => {
 
   const { id, images, name, priceRegular, priceDiscount, screen, capacity, ram } = product;
   const { setClickedProduct } = useAppContext();
-
   const handleClickedProduct = () => {
     console.log('CLICKED PRODUCTS',id)
     if(product !== undefined) {
@@ -50,7 +49,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product}) => {
           <div className={styles.hotPrice}>${priceDiscount}</div>
         </div>
 
-        <div className={styles.divider}></div>
+        <div className={styles.divider} />
 
         <div className={styles.description}>
           <div className={styles.existDescription}>

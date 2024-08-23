@@ -2,10 +2,9 @@
 
 .topContainer {
   display: flex;
-
 }
-.mainControls {
 
+.mainControls {
   display: flex;
   flex-direction: column;
   gap: 24px;
@@ -17,9 +16,7 @@
 
   @include on-desktop {
     grid-column: 14 / -5;
-
   }
-
 }
 
 .selector {
@@ -38,8 +35,6 @@
   background-color: var(--color-elements);
 }
 
-
-
 .buttons {
   display: flex;
   gap: 8px;
@@ -53,7 +48,6 @@
   padding: 2px;
   display: flex;
   gap: 15px;
-
 }
 
 .colorButton {
@@ -63,8 +57,6 @@
   border: 0;
   padding: 4px;
   cursor: pointer;
-
-
 }
 
 .activeColorsAvailable {
@@ -84,7 +76,6 @@
   cursor: pointer;
 
   @extend %body-text;
-
 }
 
 .active {

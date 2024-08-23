@@ -13,7 +13,6 @@ type CartItemProps = {
 
 export const CartItem: React.FC<CartItemProps> = ({product}) => {
   const {handleNotReady,productsInCart,setProductsInCart} = useAppContext();
-
   const removeFromCart = () => {
     let newProductsInCart = [...productsInCart];
     const foundIndex = newProductsInCart.indexOf(product);

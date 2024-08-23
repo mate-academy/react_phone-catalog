@@ -21,7 +21,6 @@
   width: 100%;
   align-items: center;
   gap: 16px;
-
 }
 
 .deleteButton {
@@ -84,7 +83,6 @@
   background-color: var(--color-icons);
   height: 32px;
   cursor: pointer;
-
   transition: transform $transition-duration ease;
 
   &:hover {

@@ -1,1 +1,1 @@
-export * from './PreviousPage'
+export * from './PreviousPage';

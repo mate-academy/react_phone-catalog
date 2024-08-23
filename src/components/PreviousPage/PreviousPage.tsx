@@ -16,9 +16,7 @@ export const PreviousPage: React.FC<PreviousPageProps> = ({category}) => {
     setPreviousCurrentPage(pages)
   }, [category]);
 
-
   return (
     <></>
-  )
-  ;
+  );
 }

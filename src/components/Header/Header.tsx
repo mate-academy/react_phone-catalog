@@ -7,55 +7,68 @@ import favIcon from '../../img/icons/fav.svg';
 import { useAppContext } from '../../context/AppContext';
 
 export const Header: React.FC = () => {
-  const {handleNotReady} = useAppContext();
+  const { handleNotReady } = useAppContext();
 
   return (
     <header className={styles.header}>
-    <Link to="/" className={styles.logoLink}>
-      <img src={LogoIcon} alt="Nice Gadgets Logo" className={styles.logo} />
-    </Link>
+      <Link to="/" className={styles.logoLink}>
+        <img
+          src={LogoIcon}
+          alt="Nice Gadgets Logo"
+          className={styles.logo}
+        />
+      </Link>
 
-    <div className={styles.container}>
-      <nav className={styles.nav}>
-        <NavLink to="/" className={styles.navItem}>
-          Home
-        </NavLink>
+      <div className={styles.container}>
+        <nav className={styles.nav}>
+          <NavLink to="/" className={styles.navItem}>
+            Home
+          </NavLink>
 
-        <NavLink to="/phones" className={styles.navItem}>
-          Phones
-        </NavLink>
+          <NavLink to="/phones" className={styles.navItem}>
+            Phones
+          </NavLink>
 
-        <NavLink to="/tablets" className={styles.navItem}>
-          Tablets
-        </NavLink>
+          <NavLink to="/tablets" className={styles.navItem}>
+            Tablets
+          </NavLink>
 
-        <NavLink to="/accessories" className={styles.navItem}>
-          Accessories
-        </NavLink>
+          <NavLink to="/accessories" className={styles.navItem}>
+            Accessories
+          </NavLink>
+        </nav>
 
-
-      </nav>
-      <div className={styles.actionsContainer}>
+        <div className={styles.actionsContainer}>
           <div className={styles.actions}>
             <NavLink to="/favorites" className={styles.actionItem}>
               <div className={styles.actionIcon}>
-                <img src={favIcon} alt="Add to favorites" className={styles.icon} />
+                <img
+                  src={favIcon}
+                  alt="Add to favorites"
+                  className={styles.icon}
+                />
               </div>
             </NavLink>
 
             <NavLink to="/cart" className={styles.actionItem}>
               <div className={styles.actionIcon}>
-                <img src={cartIcon} alt="Add to cart" className={styles.icon} />
+                <img
+                  src={cartIcon}
+                  alt="Add to cart"
+                  className={styles.icon}
+                />
               </div>
             </NavLink>
 
-            <div className={styles.actionItem} onClick={handleNotReady}>
+            <div
+              className={styles.actionItem}
+              onClick={handleNotReady}
+            >
               <div className={styles.navItem}>THEME</div>
             </div>
           </div>
         </div>
-    </div>
-  </header>
-  )
-
+      </div>
+    </header>
+  );
 };

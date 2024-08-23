@@ -28,11 +28,9 @@
     align-items: center;
     gap: 8px;
 
-
     @include on-desktop {
       gap: 16px;
     }
-
   }
 }
 

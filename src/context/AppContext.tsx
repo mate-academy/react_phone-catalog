@@ -1,8 +1,6 @@
 import React, { createContext, useContext, useState } from 'react';
 import { Product, ProductAccessory, ProductPhone, ProductTablet } from '../types/Product';
 
-
-
 type AppContextType = {
   handleNotReady: () => void;
   numberOfProductsPerPage: number;
@@ -19,14 +17,12 @@ type AppContextType = {
 
 export const AppContext = createContext<AppContextType | undefined>(undefined);
 export const AppProvider: React.FC<{ children: React.ReactElement }> = ({ children }) => {
-
   const [numberOfProductsPerPage, setNumberOfProductsPerPage] = useState<number>(8);
   const [clickedProduct, setClickedProduct] = useState<ProductPhone | ProductTablet | ProductAccessory | undefined>(undefined);
   const [favoriteProducts, setFavoriteProducts] = useState<Product[] | []>([]);
   const [productsInCart, setProductsInCart] = useState<Product[] | []>([]);
   const [previousCurrentPage, setPreviousCurrentPage] = useState<string[]>(['nothing','nothing']);
 
-  // Definiujemy funkcję
   const handleNotReady = () => {
     alert('Feature has not been implemented!');
   };

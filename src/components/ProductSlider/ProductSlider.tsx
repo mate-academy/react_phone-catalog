@@ -32,7 +32,6 @@ export const ProductSlider: React.FC<ProductSliderProps> = ({ title, count }) =>
 
   const [position, setPosition] = useState<number>(0);
   const [positionCount, setPositionCount] = useState<number>(0);
-
   const handlePositionCount = (change: number) => {
     setPositionCount((prev) => prev + change);
   };
@@ -53,6 +52,7 @@ export const ProductSlider: React.FC<ProductSliderProps> = ({ title, count }) =>
     <div className={styles.productSlider}>
       <div className={styles.titleContainer}>
         <h2 className={styles.title}>{title}</h2>
+
         <div className={styles.buttonContainer}>
           <button
             className={styles.arrowButton}

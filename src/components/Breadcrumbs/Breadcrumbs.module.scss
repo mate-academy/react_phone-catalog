@@ -19,16 +19,13 @@
 
 .label {
   display: flex;
-  text-align: center;
-  padding-top: 2px;
+  align-items: center; // Wyrównanie tekstu w pionie
   height: 15px;
   text-decoration: none;
+  color: var(--color-secondary);
 
   @extend %small-text;
-
-  color: var(--color-secondary);
 }
-
 
 .active {
   color: var(--color-primary);
