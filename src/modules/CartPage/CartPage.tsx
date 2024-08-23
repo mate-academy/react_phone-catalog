@@ -56,7 +56,7 @@ export const CartPage: React.FC = () => {
               <h2 className={styles.totalPrice}>$XXX</h2>
               <p
                 className={styles.totalItems}
-              >"Total for xxx item xxx"</p>
+              >Total for xxx item xxx</p>
               <div className={styles.divider}></div>
                 <button
                   className={styles.checkoutButton}
