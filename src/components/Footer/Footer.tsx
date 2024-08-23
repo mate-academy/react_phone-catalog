@@ -18,7 +18,7 @@ export const Footer = () => {
         <ul className="footer__links">
           {Object.entries(NavBars).map(([key, value]) => (
             <li className="footer__item" key={key}>
-              <a href={value} className="footer__link" target='blank'>
+              <a href={value} className="footer__link" target="blank">
                 {key}
               </a>
             </li>

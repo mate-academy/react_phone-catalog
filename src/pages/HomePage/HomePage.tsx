@@ -52,22 +52,22 @@ export const HomePage = () => {
         </section>
         {!isLoading && !errorMessage && (
           <section className="homepage__newModels">
-              <ProductList
-                title="Brand new models"
-                products={getNewModelsProd.slice(0, 30)}
-              />
+            <ProductList
+              title="Brand new models"
+              products={getNewModelsProd.slice(0, 30)}
+            />
           </section>
         )}
         <section className="Categories">
-            <Categories amount={productsAmount} />
+          <Categories amount={productsAmount} />
         </section>
 
         {!isLoading && !errorMessage && (
           <section className="homepage__newModels">
-              <ProductList
-                title="Hot prices"
-                products={getHotPricesProd.slice(0, 30)}
-              />
+            <ProductList
+              title="Hot prices"
+              products={getHotPricesProd.slice(0, 30)}
+            />
           </section>
         )}
       </div>

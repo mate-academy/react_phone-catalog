@@ -31,7 +31,7 @@ export const NavBar: React.FC<Props> = ({
     } else {
       document.body.classList.remove('no-scroll');
     }
-  })
+  });
 
   return (
     <nav

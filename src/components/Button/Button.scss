@@ -15,6 +15,15 @@
     background-color: $colorAccent;
     border-radius: 48px;
 
+    transition: transform 0.3s;
+
+    &:hover {
+      transform: scale(1.05);
+      background-color: $colorWhite;
+      border: .5px solid $colorAccent;
+      color: $colorAccent;
+    }
+
     &--selected {
       color: $colorAccent;
       background-color: $colorWhite;
