@@ -13,6 +13,8 @@ type AppContextType = {
   setFavoriteProducts: (products: Product[]) => void;
   productsInCart: Product[];
   setProductsInCart: (products: Product[]) => void;
+  theme: 'light' | 'dark';
+  setTheme: (products: 'light' | 'dark') => void;
 };
 
 export const AppContext = createContext<AppContextType | undefined>(undefined);
@@ -22,13 +24,14 @@ export const AppProvider: React.FC<{ children: React.ReactElement }> = ({ childr
   const [favoriteProducts, setFavoriteProducts] = useState<Product[] | []>([]);
   const [productsInCart, setProductsInCart] = useState<Product[] | []>([]);
   const [previousCurrentPage, setPreviousCurrentPage] = useState<string[]>(['nothing','nothing']);
+  const [theme, setTheme] = useState<'light' | 'dark'>('light');
 
   const handleNotReady = () => {
     alert('Feature has not been implemented!');
   };
 
   return (
-    <AppContext.Provider value={{ handleNotReady, numberOfProductsPerPage, setNumberOfProductsPerPage, clickedProduct, setClickedProduct, previousCurrentPage, setPreviousCurrentPage, setFavoriteProducts, favoriteProducts, productsInCart, setProductsInCart}}>
+    <AppContext.Provider value={{ handleNotReady, numberOfProductsPerPage, setNumberOfProductsPerPage, clickedProduct, setClickedProduct, previousCurrentPage, setPreviousCurrentPage, setFavoriteProducts, favoriteProducts, productsInCart, setProductsInCart, theme, setTheme}}>
       {children}
     </AppContext.Provider>
   );

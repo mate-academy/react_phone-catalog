@@ -4,10 +4,9 @@ import styles from './Header.module.scss';
 import LogoIcon from '../../img/icons/LogoIcon.svg';
 import cartIcon from '../../img/icons/CartIcon.svg';
 import favIcon from '../../img/icons/fav.svg';
-import { useAppContext } from '../../context/AppContext';
+import { Theme } from '../Theme'
 
 export const Header: React.FC = () => {
-  const { handleNotReady } = useAppContext();
 
   return (
     <header className={styles.header}>
@@ -60,11 +59,8 @@ export const Header: React.FC = () => {
               </div>
             </NavLink>
 
-            <div
-              className={styles.actionItem}
-              onClick={handleNotReady}
-            >
-              <div className={styles.navItem}>THEME</div>
+            <div className={styles.actionItem}>
+              <Theme />
             </div>
           </div>
         </div>
