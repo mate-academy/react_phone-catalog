@@ -74,10 +74,10 @@ export const Accessories: React.FC = () => {
     <div className="phones-container">
       <div className="fav-link">
         <a className="favIcon">
-          <img src="../uploadedImg/Home.png"></img>
+          <img src="./uploadedImg/Home.png"></img>
         </a>
         <a className="favIcon">
-          <img src="../uploadedImg/LeftArrow.png"></img>
+          <img src="./uploadedImg/LeftArrow.png"></img>
         </a>
         <p className="fav-link-p">Accessories</p>
       </div>

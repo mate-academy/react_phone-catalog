@@ -72,7 +72,7 @@
 }
 
 .left-btn:hover {
-  border: 1px solid#313237;
+  border: 1px solid #313237;
 }
 
 .right-btn {
@@ -89,12 +89,12 @@
 }
 
 .right-btn:hover {
-  border: 1px solid#313237;
-}
-
-.left-btn:hover, .right-btn:hover {
   border: 1px solid #313237;
 }
+
+// .left-btn:hover, .right-btn:hover {
+//   border: 1px solid #313237;
+// }
 
 .small-images {
   display: flex;
