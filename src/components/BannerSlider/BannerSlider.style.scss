@@ -1,0 +1,176 @@
+.slider {
+  display: flex;
+  flex-direction: column;
+  margin-top: 24px;
+  gap: 8px;
+  @include on-tablet {
+    display: flex;
+    flex-direction: column;
+    margin-top: 32px;
+  }
+  @include on-desktop {
+    display: flex;
+    flex-direction: column;
+    margin-top: 56px;
+  }
+  &__container {
+    display: block;
+    @include on-tablet {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      column-gap: 16px;
+      padding-inline: 24px;
+    }
+    @include on-desktop {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      column-gap: 16px;
+      padding-inline: 24px;
+    }
+  }
+  &__frame {
+    grid-column: 2/12;
+    overflow: hidden;
+  }
+  &__list {
+    display: flex;
+    flex-direction: row;
+    width: 300%;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    transition: 500ms;
+  }
+  &__item {
+    display: flex;
+    width: 100%;
+    background: black;
+    aspect-ratio: 1/1;
+    justify-content: center;
+    position: relative;
+    @include on-tablet {
+      aspect-ratio: 26/10;
+    }
+    @include on-desktop {
+      aspect-ratio: 26/10;
+    }
+  }
+  &__overlay {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    @include on-tablet {
+      position: relative;
+      background-color: $c-secondary;
+      border-radius: 10px;
+      margin: 10px;
+      left: 0;
+    }
+    @include on-desktop {
+      position: relative;
+      background-color: $c-secondary;
+      border-radius: 10px;
+      margin: 10px;
+      left: 0;
+    }
+    &-title {
+      color: $c-white;
+      margin: 40px 25px 14px 25px;
+      line-height: 1em;
+      text-align: center;
+      @include on-tablet {
+        color: $c-primary;
+        text-align: left;
+        font-size: 2em;
+        line-height: 1em;
+      }
+      @include on-desktop {
+        font-size: 3em;
+        color: $c-primary;
+        text-align: left;
+
+      }
+    }
+    &-subtitle {
+      font-family: Mont-semibold;
+      color: $c-elements;
+      margin: 0 0 25px 25px;
+      display: none;
+      @include on-tablet {
+        display: block;
+        font-size: 1.3em;
+      }
+      @include on-desktop {
+        display: block;
+      }
+    }
+  }
+  &__image {
+    object-fit: contain;
+    object-position: bottom;
+    width: 100%;
+    @include on-tablet {
+      object-fit: cover;
+      object-position: center;
+      width: 60%;
+    }
+    @include on-desktop {
+      object-fit: cover;
+      object-position: center;
+      width: 60%;
+    }
+  }
+  &__nextBtn {
+    display: none;
+    grid-column: 12;
+    justify-self: flex-end;
+    width: 32px;
+    height: 100%;
+    border: 1px solid $c-icons;
+    background: url('../../../public/img/icons/chevron-right.svg') no-repeat
+      center;
+    @include on-tablet{
+      display: block;
+    }
+    @include on-desktop {
+      display: block;
+    }
+  }
+  &__prevBtn {
+    display: none;
+    grid-column: 1;
+    width: 32px;
+    height: 100%;
+    border: 1px solid $c-icons;
+    background: url('../../../public/img/icons/chevron-left.svg') no-repeat
+      center;
+      @include on-tablet {
+        display: block;
+      }
+      @include on-desktop {
+        display: block;
+      }
+  }
+}
+.dots {
+  &__container {
+    display: flex;
+    justify-content: center;
+  }
+  &__list {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  &__item {
+    cursor: pointer;
+    width: 24px;
+    height: 24px;
+    background: url('../../../public/img/icons/dot-inactive.svg');
+    &--active {
+      background: url('../../../public/img/icons/dot-active.svg');
+    }
+  }
+}

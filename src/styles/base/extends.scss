@@ -1,19 +1,18 @@
-%font-mont {
-  font-family: Mont, Arial, Helvetica, sans-serif;
+%font-mont-regular {
+  font-family: "Mont", Arial, Helvetica, sans-serif;
+  font-weight: 400;
   font-style: normal;
 }
 
-%font-mont-regular {
-  @extend %font-mont;
-  font-weight: 400;
-}
 %font-mont-bold {
-  @extend %font-mont;
+  font-family: "Mont-Bold", Arial, Helvetica, sans-serif;
   font-weight: 700;
+  font-style: normal;
 }
 %font-mont-semibold {
-  @extend %font-mont;
+  font-family: "Mont-SemiBold", Arial, Helvetica, sans-serif;
   font-weight: 600;
+  font-style: normal;
 }
 
 %h1 {
@@ -47,7 +46,7 @@
   letter-spacing: 0em;
 
   @include on-mobile {
-    font-family: Mont, Arial, Helvetica, sans-serif;
+    font-family: "Mont-bold", Arial, Helvetica, sans-serif;
     font-style: normal;
     font-weight: 600;
     font-size: 20px;

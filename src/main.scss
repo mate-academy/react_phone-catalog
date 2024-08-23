@@ -1,13 +1,3 @@
-@import './styles/base/reset';
-@import './styles/base/fonts';
-@import './styles/base/colors';
-@import './styles/base/vars';
-@import './styles/base/classes';
-@import './styles/base/mixins';
-@import './styles/base/extends';
-@import './styles/base/typography';
-@import './App';
-@import './components/Header/Header.style';
-@import './components/base/Nav/Nav.style.scss';
-@import './components/base/Icon/Icon.style.scss';
-@import './pages/Menu/Menu.style.scss';
+@import './styles/_base';
+@import './styles/_pages';
+@import './styles/_components';

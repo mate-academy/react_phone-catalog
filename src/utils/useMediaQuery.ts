@@ -12,7 +12,7 @@ export default function useMediaQuery(query: string) {
     mediaQuery.addEventListener('change', handler);
 
     return () => mediaQuery.removeEventListener('change', handler);
-  }, []);
+  }, [query]);
 
   return matches;
 }
