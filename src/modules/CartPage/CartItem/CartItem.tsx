@@ -34,11 +34,11 @@ export const CartItem: React.FC<CartItemProps> = ({product}) => {
         <Link to={`/products`} className={styles.productImage}>
           <img
             src={images[0]}
-            /* alt={name} */
+            alt={name}
             className={styles.image}
           />
         </Link>
-        <h4>{name}</h4>
+        <h4 className={styles.label}>{name}</h4>
       </div>
       <div className={styles.quantityControl}>
         <div className={styles.quantity}>

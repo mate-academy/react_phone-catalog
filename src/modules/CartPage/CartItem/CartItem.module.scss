@@ -126,3 +126,14 @@
 .price{
   @extend %h3-tablet;
 }
+
+.label {
+  display: flex;
+  text-align: center;
+  padding-top: 2px;
+  height: 15px;
+  text-decoration: none;
+  color: var(--color-secondary);
+
+  @extend %small-text;
+}
