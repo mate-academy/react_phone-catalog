@@ -10,10 +10,9 @@ type ButtonProps = {
 };
 
 export const ActionButtons: React.FC<ButtonProps> = ({product}) => {
-   const { favoriteProducts, setFavoriteProducts, productsInCart, setProductsInCart} = useAppContext();
+  const { favoriteProducts, setFavoriteProducts, productsInCart, setProductsInCart} = useAppContext();
 
-
-//BELOW FUNCTIONS DONT WORK PROPERLY -> multple adding the same product
+  //BELOW FUNCTIONS DONT WORK PROPERLY -> multple adding the same product
   const handleFavorites = () => {
     let newFavoriteProducts = [...favoriteProducts];
     const foundIndex = newFavoriteProducts.indexOf(product);
@@ -55,12 +54,12 @@ export const ActionButtons: React.FC<ButtonProps> = ({product}) => {
           Add to cart
         </p>
       </button>
+
       <button className={styles.buttonFavorite} onClick={handleFavorites}>
         <img
           className={styles.buttonFavoriteIcon}
           src={favoritesIcon}
           alt="favorite"
-
         />
       </button>
     </div>

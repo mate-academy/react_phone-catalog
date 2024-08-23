@@ -29,8 +29,6 @@
   }
 }
 
-
-
 .buttonFavorite {
   display: flex;
   justify-content: center;
@@ -39,11 +37,9 @@
   height: 40px;
   flex-shrink: 0;
   flex-grow: 0;
-
   background-color: var(--color-icons);
   border: 1px solid var(--color-surface);
   box-sizing: border-box;
-
   cursor: pointer;
 
   &:hover {
@@ -52,16 +48,11 @@
   }
 }
 
-
 .buttonText {
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
-
   @extend %body-text;
-
   color: var(--color-white);
-
 }
-
