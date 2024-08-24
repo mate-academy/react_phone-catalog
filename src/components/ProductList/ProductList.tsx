@@ -15,7 +15,7 @@ type ProductListProps = {
 };
 
 export const ProductList: React.FC<ProductListProps> = ({ category, title }) => {
-  const {numberOfProductsPerPage} = useAppContext()
+  const {numberOfProductsPerPage, sortMethod} = useAppContext()
   const [products, setProducts] = useState<(ProductPhone | ProductTablet | ProductAccessory)[]>([]);
 
   useEffect(() => {
@@ -33,17 +33,40 @@ export const ProductList: React.FC<ProductListProps> = ({ category, title }) => 
     fetchProductData();
   }, [category]);
 
+  useEffect(() => {
+    if (sortMethod === 'alpha') {
+      let copiedProducts = [...products];
+      const callback = (a: {name: string},b: {name: string}) => a.name.localeCompare(b.name);
+      copiedProducts.sort(callback)
+      /* setProducts(copiedProducts) */
+      console.log('sorted')
+    }
+
+    if (sortMethod === 'price') {
+      let copiedProducts = [...products]
+      const callback = (a: {priceDiscount: number}, b: {priceDiscount: number}) => a > b ? 1 : a < b ? -1 : 0;
+      copiedProducts.sort(callback)
+      /* setProducts(copiedProducts) */
+      console.log('sorted')
+    }
+
+  }, [products,sortMethod])
+
   const numberOfProducts = products.length;
+
   const numberOfPages = useMemo(() => {
     return Math.ceil(numberOfProducts / numberOfProductsPerPage);
   }, [numberOfProducts, numberOfProductsPerPage]);
+
   const [displayedPage, setDisplayedPage] = useState(1);
+
   const handleDisplayedPage = useCallback((newState: number) => {
     setDisplayedPage(newState);
     console.log('WILL DISPLAY', newState);
   }, []);
 
   const firstDisplayedIndexOnPage = (displayedPage - 1) * numberOfProductsPerPage;
+
   const arrayOfDisplayedIndexes = useMemo(() => {
     const indexes = [];
 
