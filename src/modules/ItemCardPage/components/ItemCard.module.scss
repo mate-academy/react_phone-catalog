@@ -8,6 +8,7 @@
     margin-bottom: 56px;
 
     @include page-grid;
+
     @include on-tablet {
       margin-bottom: 64px;
     }
@@ -78,6 +79,7 @@
   margin-bottom: 56px;
 
   @include page-grid;
+
   @include on-tablet {
     margin-bottom: 64px;
   }

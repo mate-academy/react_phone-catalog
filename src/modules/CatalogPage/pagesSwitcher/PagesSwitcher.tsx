@@ -33,7 +33,7 @@ export const PagesSwitcher: React.FC<PagesSwitcherProps> = ({
 
   useEffect(() => {
     root.style.setProperty('--page-starts-from', '0');
-  }, [location.pathname]);
+  }, [location.pathname, root]);
 
   const handlePageButton = (currentPage: number) => {
     navigate(updateURLParams(sortBy, perPage, currentPage, query));

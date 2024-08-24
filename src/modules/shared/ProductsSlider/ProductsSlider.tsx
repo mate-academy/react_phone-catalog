@@ -16,6 +16,7 @@ type Props = {
 };
 
 export const ProductsSlider: React.FC<Props> = ({ title, gadgets }) => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const swiperRef = useRef<any>(null);
   const prevButtonRef = useRef<HTMLDivElement | null>(null);
   const nextButtonRef = useRef<HTMLDivElement | null>(null);

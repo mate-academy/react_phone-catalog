@@ -77,7 +77,7 @@ export const App: React.FC = () => {
         dispatch(setHidenMenuIco(darkMenuIco));
       }
     } else {
-      root.style.setProperty('--white-color', '#ffffff');
+      root.style.setProperty('--white-color', '#fff');
       root.style.setProperty('--primary-grey-color', '#313237');
       root.style.setProperty('--secondary-grey-color', '#89939a');
       root.style.setProperty('--elements-grey-color', '#e2e6e9');
@@ -88,7 +88,15 @@ export const App: React.FC = () => {
         dispatch(setHidenMenuIco(burgerMenuIco));
       }
     }
-  }, [isDark]);
+  }, [
+    isDark,
+    burgerMenuIco,
+    closeIco,
+    darkCloseIco,
+    darkMenuIco,
+    isMenuShown,
+    dispatch,
+  ]);
 
   useEffect(() => {
     if (isMenuShown) {
@@ -174,6 +182,7 @@ export const App: React.FC = () => {
         i18n.changeLanguage('ua');
       }
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [reloadTrigger]);
 
   const handleMenuOrCloseButton = () => {

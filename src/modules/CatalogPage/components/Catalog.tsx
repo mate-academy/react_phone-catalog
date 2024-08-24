@@ -103,82 +103,82 @@ export const Catalog: React.FC = () => {
     }
   }, [models, perPage]);
 
-  const prepereToShow = (categ: string) => {
-    let filteredProduct;
-
-    if (query) {
-      filteredProduct = productsFromServer.filter(prod => {
-        if (
-          prod.category === categ &&
-          prod.name.toLowerCase().includes(query.toLowerCase().trim())
-        ) {
-          return prod;
-        } else {
-          return false;
-        }
-      });
-
-      setNoProductsMessage(
-        `${t('there_are_no')} ${t(location.pathname.slice(1))} ${t('matching_the_query')}`,
-      );
-    } else {
-      filteredProduct = productsFromServer.filter(
-        prod => prod.category === categ,
-      );
-
-      setNoProductsMessage(
-        `${t('there_are_no')} ${t(location.pathname.slice(1))} ${t('yet')}`,
-      );
-    }
-
-    dispatch(setModels(filteredProduct.length));
-
-    switch (sortBy) {
-      case 'title':
-        if (perPage !== 'all') {
-          return filteredProduct
-            .slice()
-            .sort((el1, el2) => {
-              return el1.name.localeCompare(el2.name);
-            })
-            .slice(startShowFrom, startShowFrom + +perPage);
-        } else {
-          return filteredProduct.slice().sort((el1, el2) => {
-            return el1.name.localeCompare(el2.name);
-          });
-        }
-
-      case 'price':
-        if (perPage !== 'all') {
-          return filteredProduct
-            .slice()
-            .sort((el1, el2) => {
-              return el1.price - el2.price;
-            })
-            .slice(startShowFrom, startShowFrom + +perPage);
-        } else {
-          return filteredProduct.slice().sort((el1, el2) => {
-            return el1.price - el2.price;
-          });
-        }
-
-      default:
-        if (perPage !== 'all') {
-          return filteredProduct
-            .slice()
-            .sort((el1, el2) => {
-              return el2.year - el1.year;
-            })
-            .slice(startShowFrom, startShowFrom + +perPage);
-        } else {
-          return filteredProduct.slice().sort((el1, el2) => {
-            return el2.year - el1.year;
-          });
-        }
-    }
-  };
-
   useEffect(() => {
+    const prepereToShow = (categ: string) => {
+      let filteredProduct;
+
+      if (query) {
+        filteredProduct = productsFromServer.filter(prod => {
+          if (
+            prod.category === categ &&
+            prod.name.toLowerCase().includes(query.toLowerCase().trim())
+          ) {
+            return prod;
+          } else {
+            return false;
+          }
+        });
+
+        setNoProductsMessage(
+          `${t('there_are_no')} ${t(location.pathname.slice(1))} ${t('matching_the_query')}`,
+        );
+      } else {
+        filteredProduct = productsFromServer.filter(
+          prod => prod.category === categ,
+        );
+
+        setNoProductsMessage(
+          `${t('there_are_no')} ${t(location.pathname.slice(1))} ${t('yet')}`,
+        );
+      }
+
+      dispatch(setModels(filteredProduct.length));
+
+      switch (sortBy) {
+        case 'title':
+          if (perPage !== 'all') {
+            return filteredProduct
+              .slice()
+              .sort((el1, el2) => {
+                return el1.name.localeCompare(el2.name);
+              })
+              .slice(startShowFrom, startShowFrom + +perPage);
+          } else {
+            return filteredProduct.slice().sort((el1, el2) => {
+              return el1.name.localeCompare(el2.name);
+            });
+          }
+
+        case 'price':
+          if (perPage !== 'all') {
+            return filteredProduct
+              .slice()
+              .sort((el1, el2) => {
+                return el1.price - el2.price;
+              })
+              .slice(startShowFrom, startShowFrom + +perPage);
+          } else {
+            return filteredProduct.slice().sort((el1, el2) => {
+              return el1.price - el2.price;
+            });
+          }
+
+        default:
+          if (perPage !== 'all') {
+            return filteredProduct
+              .slice()
+              .sort((el1, el2) => {
+                return el2.year - el1.year;
+              })
+              .slice(startShowFrom, startShowFrom + +perPage);
+          } else {
+            return filteredProduct.slice().sort((el1, el2) => {
+              return el2.year - el1.year;
+            });
+          }
+      }
+    };
+
     if (location.pathname === '/phones') {
       dispatch(setTitle('Mobile phones'));
       setDisplayedProducts(prepereToShow('phones'));
@@ -197,6 +197,8 @@ export const Catalog: React.FC = () => {
     sortBy,
     startShowFrom,
     query,
+    dispatch,
+    t,
   ]);
 
   const handleReloadButton = () => {

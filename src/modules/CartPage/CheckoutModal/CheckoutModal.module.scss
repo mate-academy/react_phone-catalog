@@ -19,29 +19,20 @@
   gap: 20px;
   pointer-events: all;
   position: fixed;
-  top: 35%;
-  right: 5%;
-  bottom: 35%;
-  left: 5%;
+  inset: 35% 5%;
   width: 90vw;
   height: 30vh;
   background-color: var(--white-color);
   z-index: 100;
 
   @include on-tablet {
-    top: 30%;
-    right: 15%;
-    bottom: 30%;
-    left: 15%;
+    inset: 30% 15%;
     width: 70vw;
     height: 40vh;
   }
 
   @include on-desktop {
-    top: 25%;
-    right: 25%;
-    bottom: 25%;
-    left: 25%;
+    inset: 25%;
     width: 50vw;
     height: 50vh;
   }

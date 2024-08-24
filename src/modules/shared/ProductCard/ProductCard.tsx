@@ -29,10 +29,10 @@ export const ProductCard: React.FC<Props> = React.memo(({ gadget }) => {
 
       if (isDark) {
         element.style.setProperty('--elements-grey-color', '#323542');
-        element.style.setProperty('--card-slider-shadow', '#000000');
+        element.style.setProperty('--card-slider-shadow', '#000');
       } else {
         element.style.setProperty('--elements-grey-color', '#e2e6e9');
-        element.style.setProperty('--card-slider-shadow', '#0000001a');
+        element.style.setProperty('--card-slider-shadow', '#0001a');
       }
     }
   }, [isDark]);

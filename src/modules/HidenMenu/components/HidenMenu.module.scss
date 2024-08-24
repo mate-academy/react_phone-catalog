@@ -1,4 +1,4 @@
-@import './../../shared/main.scss';
+@import './../../shared/main';
 
 .hidenMenu {
   z-index: 10;
@@ -13,6 +13,7 @@
   opacity: 1;
   transform: translateX(0);
 }
+
 .hideHidenMenu {
   opacity: 0;
   transform: translateX(-100vw);
@@ -29,6 +30,17 @@
     list-style: none;
     gap: 32px;
     width: 100%;
+  }
+
+  &__link {
+    text-decoration: none;
+    font-family: inherit;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 800;
+    letter-spacing: 0.48px;
+    text-transform: uppercase;
+    color: var(--secondary-grey-color);
   }
 
   &__item {
@@ -57,17 +69,6 @@
         transform: scale(1);
       }
     }
-  }
-
-  &__link {
-    text-decoration: none;
-    font-family: 'Montserrat', sant-serif;
-    font-size: 12px;
-    font-style: normal;
-    font-weight: 800;
-    letter-spacing: 0.48px;
-    text-transform: uppercase;
-    color: var(--secondary-grey-color);
   }
 }
 

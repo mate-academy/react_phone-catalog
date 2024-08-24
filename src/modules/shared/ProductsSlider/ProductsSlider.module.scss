@@ -1,11 +1,12 @@
-@import './../../shared/_main.scss';
+@import './../../shared/main';
 
 .ProductsSlider {
   &__tittleContainer {
-    @include content-padding-inline;
     display: flex;
     justify-content: space-between;
     margin-bottom: 24px;
+
+    @include content-padding-inline;
 
     @include on-desktop {
       padding-inline: 0;

@@ -1,5 +1,5 @@
 export const colorHexMap: Record<string, string> = {
-  black: '#000000',
+  black: '#000',
   gold: '#FFD700',
   yellow: '#FFFF00',
   green: '#008000',
@@ -7,7 +7,7 @@ export const colorHexMap: Record<string, string> = {
   silver: '#C0C0C0',
   spacegray: '#4A4A4A',
   red: '#FF0000',
-  white: '#FFFFFF',
+  white: '#fff',
   purple: '#800080',
   coral: '#FF7F50',
   rosegold: '#B76E79',

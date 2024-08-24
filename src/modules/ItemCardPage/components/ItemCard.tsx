@@ -126,7 +126,7 @@ export const ItemCard: React.FC = () => {
     }
   };
 
-  const getSuggestedProducts = () => {
+  useEffect(() => {
     const suggestedArray: Product[] = [];
 
     setSuggestedProducts([]);
@@ -141,11 +141,7 @@ export const ItemCard: React.FC = () => {
     }
 
     setSuggestedProducts(suggestedArray);
-  };
-
-  useEffect(() => {
-    getSuggestedProducts();
-  }, [currrentGadget]);
+  }, [currrentGadget, listOfProducts]);
 
   if (currrentGadget) {
     const hasCamera = currrentGadget.hasOwnProperty('camera');
@@ -193,17 +189,16 @@ export const ItemCard: React.FC = () => {
     }
   };
 
-  const handleInteraction = (
-    color: string | undefined,
-    capacity: string | undefined,
-  ) => {
+  const handleColorChanging = (color: string) => {
+    setSelectedColor(color);
+
     let newGadgetArray: Phone[] | Tablet[] | Accessory[] | undefined = [];
     let newProduct: Product | undefined;
 
-    if (currrentGadget && color && capacity) {
+    if (currrentGadget) {
       newGadgetArray = getNewGadget(
         color,
-        capacity,
+        currrentGadget.capacity,
         currrentGadget.namespaceId,
       );
     }
@@ -225,14 +220,35 @@ export const ItemCard: React.FC = () => {
     navigate(`/${newProduct?.category}/${newProduct?.itemId}`);
   };
 
-  const handleColorChanging = (color: string) => {
-    setSelectedColor(color);
-    handleInteraction(color, currentProduct?.capacity);
-  };
-
   const handleCapacityChanging = (capacity: string) => {
     setSelectedCapacity(capacity);
-    handleInteraction(currentProduct?.color, capacity);
+
+    let newGadgetArray: Phone[] | Tablet[] | Accessory[] | undefined = [];
+    let newProduct: Product | undefined;
+
+    if (currrentGadget) {
+      newGadgetArray = getNewGadget(
+        currrentGadget.color,
+        capacity,
+        currrentGadget.namespaceId,
+      );
+    }
+
+    if (newGadgetArray !== undefined) {
+      newProduct = listOfProducts.find(prod => {
+        if (newGadgetArray !== undefined) {
+          return prod.itemId === newGadgetArray[0].id;
+        }
+
+        return;
+      });
+    }
+
+    if (newProduct !== undefined && newGadgetArray !== undefined) {
+      handleClickOnGadget(newProduct, dispatch);
+    }
+
+    navigate(`/${newProduct?.category}/${newProduct?.itemId}`);
   };
 
   return (
@@ -288,7 +304,7 @@ export const ItemCard: React.FC = () => {
 
               <div className={styles.interaction__colors}>
                 {currrentGadget?.colorsAvailable.map(color => {
-                  const hexColor = colorHexMap[color] || '#FFFFFF';
+                  const hexColor = colorHexMap[color] || '#fff';
 
                   return (
                     <div

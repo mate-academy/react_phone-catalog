@@ -16,6 +16,7 @@ interface OptionsQuantityType {
   label: string;
 }
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const DropdownIndicator = (props: any) => {
   return (
     <components.DropdownIndicator {...props}>
@@ -83,8 +84,8 @@ export const CatalogFilters: React.FC<CatalogFiltersProps> = ({
       filters?.style.setProperty('--dropdown-option-hover-color', '#323542');
     } else {
       filters?.style.setProperty('--secondary-grey-color', '#89939a');
-      filters?.style.setProperty('--dark-black-color', '#ffffff');
-      filters?.style.setProperty('--dark-surface-2-color', '#ffffff');
+      filters?.style.setProperty('--dark-black-color', '#fff');
+      filters?.style.setProperty('--dark-surface-2-color', '#fff');
       filters?.style.setProperty('--icons-grey-color', '#b4bdc4');
       filters?.style.setProperty('--dark-icons-color', '#89939a');
       filters?.style.setProperty('--dark-accent-color', '#313237');

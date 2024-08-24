@@ -38,7 +38,7 @@ export const WelcomeSlider = () => {
           modules={[FreeMode, Pagination, Navigation, Autoplay]}
           autoplay={{ delay: 5000 }}
           pagination={{
-            el: '#banner-container-of-bullets',
+            el: '#container-of-bullets',
             type: 'bullets',
             bulletClass: 'swiper-pagination-bullet',
             clickable: true,
@@ -105,7 +105,7 @@ export const WelcomeSlider = () => {
         </button>
       </div>
 
-      <div className={styles.pagination}></div>
+      <div id="container-of-bullets" className={styles.pagination}></div>
     </>
   );
 };

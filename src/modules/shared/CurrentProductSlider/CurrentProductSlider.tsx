@@ -1,5 +1,5 @@
 /* eslint-disable max-len */
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Accessory } from '../../../types/Accessory';
 import { Phone } from '../../../types/Phone';
@@ -17,8 +17,11 @@ type SliderType = {
 export const CurrentProductSlider: React.FC<SliderType> = gadget => {
   const dispatch = useAppDispatch();
 
-  let images: string[] | undefined = [];
+  let images: string[] | undefined = ([] = useMemo(() => {
+    return [''];
+  }, []));
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [thumbsSwiper, setThumbsSwiper] = useState<any>(null);
   const [direction, setDirection] = useState<'horizontal' | 'vertical'>(
     'horizontal',
@@ -102,7 +105,7 @@ export const CurrentProductSlider: React.FC<SliderType> = gadget => {
       window.removeEventListener('resize', updatePaginationHeightTablet);
       window.removeEventListener('resize', updatePaginationHeightDesktop);
     };
-  }, [gadget]);
+  }, [gadget, dispatch, images]);
 
   if (gadget !== null && gadget.gadget?.images !== undefined) {
     images = gadget.gadget?.images;

@@ -1,4 +1,4 @@
-@import './../../shared/main.scss';
+@import './../../shared/main';
 
 .homePage {
   display: grid;
@@ -16,13 +16,14 @@
 }
 
 .welcome {
-  @include page-grid;
   margin-bottom: 56px;
 
-  @include on-tablet {
-    @include content-padding-inline;
+  @include page-grid;
 
+  @include on-tablet {
     margin-bottom: 64px;
+
+    @include content-padding-inline;
   }
 
   @include on-desktop {
@@ -31,12 +32,13 @@
   }
 
   &__tittleWrapper {
-    @include content-padding-inline;
     grid-column: 1 / -1;
     display: flex;
     justify-content: center;
     left: 0;
     margin-bottom: 24px;
+
+    @include content-padding-inline;
 
     @include on-tablet {
       display: block;
@@ -51,7 +53,7 @@
 
   &__tittle {
     color: var(--primary-grey-color);
-    font-family: 'Montserrat', sant-serif;
+    font-family: inherit;
     font-size: 32px;
     font-style: normal;
     font-weight: 700;
@@ -72,6 +74,7 @@
 
 .newModels {
   margin-bottom: 57px;
+
   @include page-grid;
 
   @include on-tablet {
@@ -92,7 +95,9 @@
 .categories {
   margin-bottom: 57px;
   margin-inline: auto;
+
   @include content-padding-inline;
+
   @include on-tablet {
     margin-bottom: 64px;
   }
@@ -178,6 +183,7 @@
 
 .hot {
   @include page-grid;
+
   @include on-desktop {
     margin-inline: auto;
     overflow: hidden;
