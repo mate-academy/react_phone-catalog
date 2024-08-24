@@ -65,10 +65,10 @@ export const CatalogFilters: React.FC<CatalogFiltersProps> = ({
     { value: 'price', label: `${t('cheapest')}` },
   ];
   const optionsQuantity: OptionsQuantityType[] = [
-    { value: 'all', label: `${t('all')}` },
     { value: '4', label: '4' },
     { value: '8', label: '8' },
     { value: '16', label: '16' },
+    { value: 'all', label: `${t('all')}` },
   ];
 
   useEffect(() => {

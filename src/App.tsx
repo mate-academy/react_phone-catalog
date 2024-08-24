@@ -63,6 +63,37 @@ export const App: React.FC = () => {
   body.classList.add(styles.body);
 
   useEffect(() => {
+    const checkScroll = () => {
+      const viewportHeigh = document.documentElement.clientHeight;
+      const scrollHeight = document.documentElement.scrollHeight;
+
+      if (scrollHeight <= viewportHeigh) {
+        document.documentElement.classList.add('noScroll');
+      } else {
+        document.documentElement.classList.remove('noScroll');
+      }
+    };
+
+    checkScroll();
+
+    window.addEventListener('resize', checkScroll);
+
+    const observer = new MutationObserver(checkScroll);
+
+    observer.observe(document.body, {
+      childList: true,
+      subtree: true,
+      attributes: true,
+    });
+
+    return () => {
+      observer.disconnect();
+      window.removeEventListener('resize', checkScroll);
+      document.documentElement.classList.remove('noScroll');
+    };
+  }, []);
+
+  useEffect(() => {
     const root = document.documentElement;
 
     if (isDark) {
@@ -100,13 +131,13 @@ export const App: React.FC = () => {
 
   useEffect(() => {
     if (isMenuShown) {
-      document.body.classList.add('noScroll');
+      document.documentElement.classList.add('hidenMenuHeightNoScroll');
     } else {
-      document.body.classList.remove('noScroll');
+      document.documentElement.classList.remove('hidenMenuHeightNoScroll');
     }
 
     return () => {
-      document.body.classList.remove('noScroll');
+      document.documentElement.classList.remove('hidenMenuHeightNoScroll');
     };
   }, [isMenuShown]);
 
@@ -298,29 +329,15 @@ export const App: React.FC = () => {
             onClick={handleDarkModeSwither}
             className={styles.darkModeButton}
           >
-            <p
-              className={`
-                ${styles.darkModeButton__text}
-                ${styles.darkModeButton__darkText}
-                ${isDark && styles.off}
-                ${language === 'ua' && styles.ua}
-              `}
-            >
-              {t('dark_scheme')}
-            </p>
             <div
               className={`${styles.darkModeButton__runner} ${isDark && styles.isDark}`}
-            ></div>
-            <p
-              className={`
-                ${styles.darkModeButton__text}
-                ${styles.darkModeButton__lightText}
-                ${!isDark && styles.off}
-                ${language === 'ua' && styles.ua}
-              `}
             >
-              {t('light_scheme')}
-            </p>
+              {isDark ? (
+                <img src="./icons/sun-ico.svg" alt="light-mode" />
+              ) : (
+                <img src="./icons/moon-ico.svg" alt="dark-mode" />
+              )}
+            </div>
           </div>
 
           <div className={styles.icons}>
@@ -426,15 +443,12 @@ export const App: React.FC = () => {
               </Link>
             </div>
 
-            <div className={styles.footer__goUpBlock}>
+            <div id="goUpButtonElement" className={styles.footer__goUpBlock}>
               <div
                 onClick={() => scrollPageUpSmooth()}
                 className={styles.footer__goUpButtonArea}
               >
-                <div className={styles.footer__goUpTextLink}>
-                  {' '}
-                  {t('go_up')}{' '}
-                </div>
+                <div className={styles.footer__goUpTextLink}>{t('go_up')}</div>
 
                 <button
                   className={`${styles.footer__goUpButton} ${isDark && styles.goUpDark}`}

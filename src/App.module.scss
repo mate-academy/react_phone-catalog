@@ -150,49 +150,26 @@
 }
 
 .darkModeButton {
+  border-radius: 12px;
   position: relative;
-  width: 36px;
-  height: 18px;
+  width: 40px;
+  height: 24px;
   display: flex;
   padding: 3px;
   background-color: var(--primary-grey-color);
 
   &__runner {
-    width: 100%;
-    height: 50%;
+    display: flex;
+    object-fit: contain;
+    border-radius: 100%;
+    width: 50%;
+    height: 100%;
     background-color: var(--white-color);
   }
-
-  &__text {
-    font-family: inherit;
-    font-size: 6px;
-    font-style: normal;
-    font-weight: 500;
-    text-transform: uppercase;
-    left: 9px;
-    position: absolute;
-  }
-
-  &__darkText {
-    color: var(--dark-white-color);
-    top: 10px;
-  }
-
-  &__lightText {
-    top: 0;
-  }
-}
-
-.ua {
-  left: 7px;
 }
 
 .isDark {
-  transform: translateY(100%);
-}
-
-.off {
-  display: none;
+  transform: translateX(100%) rotate(180deg);
 }
 
 .icons {

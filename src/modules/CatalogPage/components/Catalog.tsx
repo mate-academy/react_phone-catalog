@@ -24,7 +24,7 @@ export const Catalog: React.FC = () => {
   const location = useLocation();
   const { t } = useTranslation();
 
-  const [perPage, setPerPage] = useState('all');
+  const [perPage, setPerPage] = useState('4');
   const [sortBy, setSortBy] = useState('age');
   const [page, setPage] = useState(1);
   const [displayedProducts, setDisplayedProducts] = useState<Product[]>([]);
