@@ -12,8 +12,9 @@
   }
 
   &__img-block {
-    width: 100%;
-    padding-bottom: 100%;
+    width: 50%;
+    padding-bottom: 30%;
+    margin-inline: auto;
     background-image: url('../../assets/img/product-not-found.png');
     background-size: contain;
     background-position: center;

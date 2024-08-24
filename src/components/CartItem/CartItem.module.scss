@@ -13,6 +13,10 @@
     gap: 24px;
   }
 
+  &:hover {
+    box-shadow: 0 2px 15px 0 rgba(0, 0, 0, 0.1);
+  }
+
   &__block {
     display: flex;
     align-items: center;

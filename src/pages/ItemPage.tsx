@@ -38,11 +38,14 @@ export const ItemPage = () => {
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
 
   useEffect(() => {
+    setIsLoading(true);
+
     const initSelectedProduct = products.find(
       product => product.itemId === paramFromLink,
     );
 
     setSelectedProduct(initSelectedProduct || null);
+    setIsLoading(false);
   }, [products, paramFromLink]);
 
   const productId = selectedProduct ? selectedProduct.id : 0;
@@ -72,6 +75,8 @@ export const ItemPage = () => {
     const { category } = selectedProduct;
 
     const fetchProductDetails = () => {
+      setIsLoading(true);
+
       wait(200)
         .then(() =>
           getItemByCategory(category).then(data => {
@@ -158,7 +163,7 @@ export const ItemPage = () => {
         <div className="item-page__card">
           <div className="item-page__image-wrapper">
             <div className="item-page__card-slider">
-              <a href="#" className="item-page__card-link">
+              <div className="item-page__card-link">
                 {selectedItem?.images.map((_, index) => (
                   <img
                     key={index}
@@ -168,9 +173,15 @@ export const ItemPage = () => {
                     aria-hidden={selectedImageIndex !== index}
                     loading="lazy"
                     style={{ translate: `${-100 * selectedImageIndex}%` }}
+                    onClick={() =>
+                      setSelectedImageIndex(
+                        prevIndex =>
+                          (prevIndex + 1) % selectedItem.images.length,
+                      )
+                    }
                   />
                 ))}
-              </a>
+              </div>
             </div>
             <ul className="item-page__thumbnail-list">
               {selectedItem?.images.map((_, index) => (

@@ -1,14 +1,14 @@
 import classNames from 'classnames';
 import Breadcrumbs from '../components/Breadcrumbs/Breadcrumbs';
 import { ProductContent } from '../components/ProductContent';
-import { ProductNotFound } from '../components/ProductNotFound';
 import { useFavorites } from '../hooks/useFavorites';
+import { NotFoundProductPage } from './NotFoundProductPage';
 
 export const FavoritePage = () => {
   const { favorites } = useFavorites();
 
   if (!favorites.length) {
-    return <ProductNotFound />;
+    return <NotFoundProductPage title="No favorites yet" />;
   }
 
   return (

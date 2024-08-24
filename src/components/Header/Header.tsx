@@ -25,7 +25,7 @@ const Header = forwardRef<HTMLDivElement, HeaderProps>(
       <div className={styles.header} id="header" ref={ref}>
         <div className={styles.header__content}>
           <div className="top-bar">
-            <Link to="#" className="top-bar__link">
+            <Link to="/" className="top-bar__link">
               <img src="./img/icons/logo.svg" className="logo" alt="logo" />
             </Link>
 

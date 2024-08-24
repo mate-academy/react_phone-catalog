@@ -46,7 +46,7 @@ export const Footer: React.FC<FooterProps> = ({ headerRef }) => {
               </li>
               <li className={styles['footer__nav-item']}>
                 <a
-                  href="https://external-site.com"
+                  href="https://github.com/SrTrace"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="nav__link uppercase-text"
@@ -56,7 +56,7 @@ export const Footer: React.FC<FooterProps> = ({ headerRef }) => {
               </li>
               <li className={styles['footer__nav-item']}>
                 <a
-                  href="https://external-site.com"
+                  href="https://github.com/SrTrace"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="nav__link uppercase-text"

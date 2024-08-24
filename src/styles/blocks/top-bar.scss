@@ -86,6 +86,10 @@
       height: 64px;
     }
 
+    @include on-lg-display {
+      border-right: 1px solid $elements-gray;
+    }
+
     &--close {
       @include on-tablet {
         display: flex;

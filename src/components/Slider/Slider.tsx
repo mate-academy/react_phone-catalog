@@ -2,6 +2,8 @@ import classNames from 'classnames';
 import styles from './Slider.module.scss';
 import React, { useCallback, useEffect, useState } from 'react';
 import { Icon } from '../ui/Icon';
+import { ProductCategories } from '../../types/ProductCategories';
+import { Link } from 'react-router-dom';
 
 type SliderProps = {
   images: string[];
@@ -42,6 +44,19 @@ export const Slider: React.FC<SliderProps> = ({ images, infLoop = false }) => {
     };
   }, [infLoop, nextSlide, prevSlide]);
 
+  const getPathByIndex = (index: number): string => {
+    switch (index) {
+      case 0:
+        return `/${ProductCategories.phones}`;
+      case 1:
+        return `/${ProductCategories.tablets}`;
+      case 2:
+        return `/${ProductCategories.accessories}`;
+      default:
+        return '/';
+    }
+  };
+
   return (
     <div className={classNames(styles.slider)}>
       <button
@@ -52,18 +67,22 @@ export const Slider: React.FC<SliderProps> = ({ images, infLoop = false }) => {
       </button>
 
       <div className={classNames(styles.slider__imageWrapper)}>
-        {images.map((image, index) => (
-          <a href="#" key={index} className={styles.slider__link}>
-            <img
-              src={image}
-              className={classNames(styles.slider__image)}
-              alt={`picture ${index}`}
-              aria-hidden={activeIndex !== index}
-              loading="lazy"
-              style={{ translate: `${-100 * activeIndex}%` }}
-            />
-          </a>
-        ))}
+        {images.map((image, index) => {
+          const path = getPathByIndex(index);
+
+          return (
+            <Link to={path} key={index} className={styles.slider__link}>
+              <img
+                src={image}
+                className={classNames(styles.slider__image)}
+                alt={`picture ${index}`}
+                aria-hidden={activeIndex !== index}
+                loading="lazy"
+                style={{ translate: `${-100 * activeIndex}%` }}
+              />
+            </Link>
+          );
+        })}
       </div>
 
       <button

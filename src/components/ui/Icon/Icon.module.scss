@@ -16,11 +16,6 @@
     top: -5px;
     right: -8px;
 
-    @include on-desktop {
-      top: 16px;
-      right: 16px;
-    }
-
     &-outer {
       background-color: $white;
       border-radius: 50%;
