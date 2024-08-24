@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { Header } from '../../components/Header';
 import { Breadcrumbs } from '../../components/Breadcrumbs';
 import { useLocation } from 'react-router-dom';
@@ -9,13 +9,24 @@ import { useAppContext } from '../../context/AppContext';
 import { CartItem } from './CartItem/CartItem';
 import { Link } from 'react-router-dom';
 
-
-
 export const CartPage: React.FC = () => {
   const category = useLocation().pathname.slice(1);
   console.log('PAGE CLICKED', category);
 
-  const { handleNotReady, previousCurrentPage, productsInCart } = useAppContext();
+  const { handleNotReady, previousCurrentPage, productsInCart, productsInCartCount } = useAppContext();
+
+  const [totalCount, totalAmount]: number[] = useMemo(() => {
+    let i: number;
+    let totalCount = 0;
+    let totalAmount = 0;
+
+    for (i = 0; i < productsInCart.length; i++){
+      totalCount = totalCount + productsInCartCount[i];
+      totalAmount = totalAmount + productsInCartCount[i] * productsInCart[i].priceDiscount;
+    }
+
+    return [totalCount, totalAmount]
+  }, [productsInCart, productsInCartCount])
 
   return (
     <div>
@@ -64,9 +75,9 @@ export const CartPage: React.FC = () => {
             }`}
           >
             <div className={styles.checkout}>
-              <h2 className={styles.totalPrice}>$XXX</h2>
+              <h2 className={styles.totalPrice}>${totalAmount}</h2>
               <p className={styles.totalItems}>
-                {`Total for ${productsInCart.length} items xxx`}`
+                {`Total for ${totalCount} ${totalCount === 1 ? "item" : "items"}`}
               </p>
 
               <div className={styles.divider}></div>
