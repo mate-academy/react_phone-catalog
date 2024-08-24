@@ -1,0 +1,102 @@
+import React from 'react';
+import styles from './MainControls.module.scss';
+import { ActionButtons } from '../../../../components/ActionButtons';
+import { useAppContext } from '../../../../context/AppContext';
+import { ProductAccessory, ProductPhone, ProductTablet } from '../../../../types/Product';
+
+type MainControlsProps = {
+  clickedProduct: ProductAccessory | ProductPhone | ProductTablet;
+};
+
+export const MainControls: React.FC<MainControlsProps> = ({ clickedProduct }) => {
+  const { handleNotReady } = useAppContext();
+
+  let colorsAvailable: string[] = [''];
+  let capacityAvailable: string[] = [''];
+
+  if (clickedProduct !== undefined) {
+    colorsAvailable = clickedProduct.colorsAvailable;
+    capacityAvailable = clickedProduct.capacityAvailable;
+  }
+
+  if (clickedProduct !== undefined) {
+    return (
+      <div className={styles.mainControls}>
+        <div className={styles.selector}>
+          <p className={styles.label}>Available colors</p>
+
+          <div className={styles.buttons}>
+            {colorsAvailable.map((color: string) => (
+              <div
+                className={styles.colorButtonContainer}
+                key={color}
+              >
+                <button
+                  className={styles.colorButton}
+                  onClick={handleNotReady}
+                  style={{ backgroundColor: color }}
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className={styles.divider}></div>
+
+        <div className={styles.selector}>
+          <p className={styles.label}>Select Capacity</p>
+
+          <div className={styles.buttons}>
+            {capacityAvailable.map((capacity: string) => (
+              <button
+                className={styles.capacityButton}
+                onClick={handleNotReady}
+                key={capacity}
+              >
+                {capacity}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        <div className={styles.divider}></div>
+
+        <div className={styles.price}>
+          <div className={styles.existPrice}>
+            ${`${clickedProduct.priceRegular}`}
+          </div>
+          <div className={styles.hotPrice}>
+            ${`${clickedProduct.priceDiscount}`}
+          </div>
+        </div>
+
+        <ActionButtons product={clickedProduct} />
+
+        <ul className={styles.specsList}>
+          <li className={styles.specs}>
+            <strong className={styles.specsKey}>Screen</strong>
+            <span className={styles.specsValue}>
+              {`${clickedProduct.screen}`}
+            </span>
+          </li>
+
+          <li className={styles.specs}>
+            <strong className={styles.specsKey}>Resolution</strong>
+            <span className={styles.specsValue}>
+              {`${clickedProduct.resolution}`}
+            </span>
+          </li>
+
+          <li className={styles.specs}>
+            <strong className={styles.specsKey}>Processor</strong>
+            <span className={styles.specsValue}>
+              {`${clickedProduct.processor}`}
+            </span>
+          </li>
+        </ul>
+      </div>
+    );
+  } else {
+    return <div />;
+  }
+};
