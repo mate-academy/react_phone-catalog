@@ -1,6 +1,8 @@
 import React, { createContext, useContext, useState } from 'react';
 import { Product, ProductAccessory, ProductPhone, ProductTablet } from '../types/Product';
 
+
+type SortMethodTypes = "newest" | "alpha" | "price";
 type AppContextType = {
   handleNotReady: () => void;
   numberOfProductsPerPage: number;
@@ -17,6 +19,8 @@ type AppContextType = {
   setTheme: (products: 'light' | 'dark') => void;
   productsInCartCount: number[];
   setProductsInCartCount: (products: number[]) => void;
+  sortMethod: SortMethodTypes;
+  setSortMethod: (method: SortMethodTypes) => void;
 };
 
 export const AppContext = createContext<AppContextType | undefined>(undefined);
@@ -28,13 +32,14 @@ export const AppProvider: React.FC<{ children: React.ReactElement }> = ({ childr
   const [theme, setTheme] = useState<'light' | 'dark'>('light');
   const [productsInCartCount, setProductsInCartCount] = useState<number[]>([])
   const [productsInCart, setProductsInCart] = useState<Product[] | []>([]);
+  const [sortMethod, setSortMethod] = useState<"newest" | "alpha" | "price">('newest')
 
   const handleNotReady = () => {
     alert('Feature has not been implemented!');
   };
 
   return (
-    <AppContext.Provider value={{ handleNotReady, numberOfProductsPerPage, setNumberOfProductsPerPage, clickedProduct, setClickedProduct, previousCurrentPage, setPreviousCurrentPage, setFavoriteProducts, favoriteProducts, productsInCart, setProductsInCart, theme, setTheme, productsInCartCount, setProductsInCartCount}}>
+    <AppContext.Provider value={{ handleNotReady, numberOfProductsPerPage, setNumberOfProductsPerPage, clickedProduct, setClickedProduct, previousCurrentPage, setPreviousCurrentPage, setFavoriteProducts, favoriteProducts, productsInCart, setProductsInCart, theme, setTheme, productsInCartCount, setProductsInCartCount, sortMethod, setSortMethod}}>
       {children}
     </AppContext.Provider>
   );

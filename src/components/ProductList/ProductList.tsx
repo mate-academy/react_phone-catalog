@@ -7,6 +7,7 @@ import { Loader } from '../Loader';
 import { Breadcrumbs } from '../../components/Breadcrumbs';
 import styles from './ProductList.module.scss';
 import { useAppContext } from '../../context/AppContext';
+import { Sort } from "../../components/Sort"
 
 type ProductListProps = {
   category: string;
@@ -41,9 +42,11 @@ export const ProductList: React.FC<ProductListProps> = ({ category, title }) => 
     setDisplayedPage(newState);
     console.log('WILL DISPLAY', newState);
   }, []);
+
   const firstDisplayedIndexOnPage = (displayedPage - 1) * numberOfProductsPerPage;
   const arrayOfDisplayedIndexes = useMemo(() => {
     const indexes = [];
+
     for (let i = firstDisplayedIndexOnPage; i < firstDisplayedIndexOnPage + numberOfProductsPerPage; i++) {
       if (products[i] !== undefined) {
         indexes.push(products[i]);
@@ -72,6 +75,7 @@ export const ProductList: React.FC<ProductListProps> = ({ category, title }) => 
           {products.length} items
         </div>
 
+        <Sort />
         <DropDown numberOfProducts={numberOfProducts} />
 
         <ul className={styles.container}>
