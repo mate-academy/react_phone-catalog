@@ -12,14 +12,16 @@ import { Description } from './components/Description';
 import { MainControls } from './components/MainControls';
 import { Loader } from '../../components/Loader';
 import { Breadcrumbs } from '../../components/Breadcrumbs';
-import { Product } from '../../types/Product';
+/* import { Product } from '../../types/Product'; */
+
 
 export const ProductDetailsPage: React.FC = () => {
   const category = useLocation().pathname.slice(1);
-  const { clickedProduct, previousCurrentPage, setClickedProduct, productDetails, setProductDetails} = useAppContext();
+  const { clickedProduct, previousCurrentPage, setClickedProduct, productDetails, setProductDetails, fetchedCategory, setFetchedCategory} = useAppContext();
   const [isLoading, setIsLoading] = useState<true | false>(true);
-  const [fetchedCategory, setFetchedCategory] = useState<Product[]>()
 
+  const query = new URLSearchParams(useLocation().search);
+  const productName = query.get('name');
 
 
 
@@ -35,6 +37,10 @@ export const ProductDetailsPage: React.FC = () => {
     if (clickedProduct !== undefined) {
       const fetchProductData = async () => {
         try {
+          if (productName !== null) {
+            const decodedProductName = decodeURIComponent(productName)
+            console.log('ecodedProductName',decodedProductName)
+          }
           const response = await fetch(`https://meljaszuk.github.io/react_phone-catalog/api/${clickedProduct.category}.json`);
           const data = await response.json();
           setFetchedCategory(data);
@@ -47,15 +53,46 @@ export const ProductDetailsPage: React.FC = () => {
     }
   }, [clickedProduct]);
 
+
+
   useEffect(() => {
     if (fetchedCategory !== undefined && clickedProduct !== undefined) {
       const callback = (a: {id: string}) => a.id === clickedProduct.itemId;
       const details = fetchedCategory.find(callback);
       setProductDetails(details);
       console.log('fetched details for product', details);
+
+
+
+
     }
   }, [fetchedCategory, clickedProduct]);
 
+  const [dynamicColor, setDynamicColor] = useState<string>('')
+  const [dynamicCapacity, setDynamicCapacity] = useState<string>('')
+  const [baseURL, setBaseURL] = useState<string>('');
+
+
+  console.log('BASE URL',baseURL)
+
+  useEffect (() => {
+    if (productDetails !== undefined) {
+      let baseURLx=''
+      if (productDetails !== undefined) {
+        const currentName = productDetails.id.toLowerCase();
+        const currentCapacity = productDetails.capacity.toLowerCase()
+        const cutIndex = currentName.indexOf(currentCapacity)
+       baseURLx = currentName.slice(0, cutIndex).toLowerCase();
+
+      }
+
+      setDynamicCapacity(productDetails.capacity)
+      setDynamicColor(productDetails.color)
+      setBaseURL(baseURLx);
+    }
+
+  },[productDetails])
+  console.log('new item diepslayed',baseURL+dynamicCapacity.toLowerCase()+'-'+dynamicColor)
 
   return (
     <div className={styles.productDetailsPageWrapper}>
@@ -88,7 +125,7 @@ export const ProductDetailsPage: React.FC = () => {
             <div className={styles.goBackText}>Component under construction</div> {/* / REMOVE LATER */}
 
             <ImageGallery />
-            <MainControls />
+            <MainControls dynamicColor={dynamicColor} setDynamicColor={setDynamicColor} dynamicCapacity={dynamicCapacity} setDynamicCapacity={setDynamicCapacity} />
             <Description />
             <TechSpecs />
           </div>
