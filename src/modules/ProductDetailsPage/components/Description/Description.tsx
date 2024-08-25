@@ -1,14 +1,14 @@
 import React from 'react';
 import styles from './Description.module.scss';
 import classNames from 'classnames';
-import { Product } from '../../../../types/Product';
+import { useAppContext } from '../../../../context/AppContext';
 
-type MainControlsProps = {
-  productDetails: Product | undefined;
-};
 
-export const Description: React.FC<MainControlsProps> = ({productDetails}) => {
 
+
+export const Description: React.FC = () => {
+
+  const {productDetails} = useAppContext();
   return (
     <section className={classNames(styles.descriptionSection, styles.section)}>
       <h3 className={styles.sectionTitle}>About</h3>

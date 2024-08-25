@@ -1,15 +1,13 @@
 import React from 'react';
 import styles from './MainControls.module.scss';
-/* import { ActionButtons } from '../../../../components/ActionButtons'; */
+import { ActionButtons } from '../../../../components/ActionButtons';
 import { useAppContext } from '../../../../context/AppContext';
-import { Product } from '../../../../types/Product';
+/* import { Product } from '../../../../types/Product'; */
 
-type MainControlsProps = {
-  productDetails: Product | undefined;
-};
 
-export const MainControls: React.FC<MainControlsProps> = ({productDetails}) => {
-  const { handleNotReady/* , clickedProduct  */} = useAppContext();
+
+export const MainControls: React.FC = () => {
+  const { handleNotReady, clickedProduct, productDetails/* , setProductDetails  */} = useAppContext();
 
   let colorsAvailable: string[] = [''];
   let capacityAvailable: string[] = [''];
@@ -70,7 +68,7 @@ export const MainControls: React.FC<MainControlsProps> = ({productDetails}) => {
           </div>
         </div>
 
-        {/* <ActionButtons product={clickedProduct} /> */}
+        <ActionButtons product={clickedProduct} />
 
         <ul className={styles.specsList}>
           <li className={styles.specs}>

@@ -1,13 +1,11 @@
 import React from 'react';
 import styles from './TechSpecs.module.scss';
-import { Product } from '../../../../types/Product';
+import { useAppContext } from '../../../../context/AppContext';
 
-type TechSpecsProps = {
-  productDetails: Product | undefined;
-};
 
-export const TechSpecs: React.FC<TechSpecsProps> = ({productDetails}) => {
+export const TechSpecs: React.FC = () => {
 
+  const {productDetails} = useAppContext();
   if (productDetails !== undefined) {
     return (
       <div className={styles.section}>
