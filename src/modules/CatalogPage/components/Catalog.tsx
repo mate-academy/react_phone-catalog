@@ -223,7 +223,18 @@ export const Catalog: React.FC = () => {
       </button>
     );
   } else {
-    catalogContent = <ProductsList gadgets={displayedProducts} />;
+    catalogContent = (
+      <>
+        <ProductsList gadgets={displayedProducts} />
+        <PagesSwitcher
+          sortBy={sortBy}
+          perPage={perPage}
+          pagesWithProducts={pagesWithProducts}
+          showFrom={startShowFrom}
+          setShownFrom={setStartShowFrom}
+        />
+      </>
+    );
   }
 
   return (
@@ -277,13 +288,6 @@ export const Catalog: React.FC = () => {
               <p className={'has-text-danger'}>{loadingError}</p>
             )}
             {filterLoader ? <Loader /> : catalogContent}
-            <PagesSwitcher
-              sortBy={sortBy}
-              perPage={perPage}
-              pagesWithProducts={pagesWithProducts}
-              showFrom={startShowFrom}
-              setShownFrom={setStartShowFrom}
-            />
           </div>
         </div>
       ) : (
