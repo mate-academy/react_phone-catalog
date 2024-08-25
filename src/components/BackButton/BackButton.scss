@@ -1,0 +1,39 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.back {
+  margin-top: 25px;
+  display: flex;
+  flex-direction: row;
+  gap: 15px;
+  text-decoration: none;
+  align-items: center;
+
+  &__title {
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 15.34px;
+    color: $basic-grey-color;
+    text-decoration: none;
+    transition: all 0.8s ease;
+    &:hover {
+      color: black;
+    }
+  }
+  &__arrow {
+    &--left {
+      transform: scaleX(-1);
+    }
+  }
+
+  &__add {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    text-decoration: none;
+    margin-top: 24px;
+    @include on-tablet {
+      margin-top: 30px;
+    }
+  }
+}

@@ -1,0 +1,88 @@
+@import '../../styles/mixins';
+@import '../../styles/variables';
+
+.tablets {
+  @include topPagesStyles;
+
+  &__wrapper {
+    transition: all 0.3s ease-in-out;
+
+    &.transitioning {
+      opacity: 0;
+    }
+  }
+
+  &__subtitle {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+    text-align: left;
+    color: $basic-grey-color;
+    margin-top: 10px;
+  }
+
+  &__sort {
+    display: flex;
+    flex-direction: row;
+    margin-top: 32px;
+    gap: 16px;
+    @include on-tablet {
+      margin-top: 40px;
+    }
+
+    &--model {
+      display: flex;
+      gap: 4px;
+      flex-direction: column;
+    }
+
+    &--options {
+      width: 137px;
+      height: 40px;
+      border-radius: 8px;
+      border: 1px solid $basic-grey-color;
+      padding: 12px;
+      outline: none;
+      @include on-tablet {
+        width: 187px;
+      }
+      @include on-desktop {
+        width: 128px;
+      }
+    }
+
+    &--option {
+      font-size: 14px;
+      font-weight: 700;
+      line-height: 21px;
+      text-align: left;
+    }
+
+    &--page {
+      display: flex;
+      gap: 4px;
+      flex-direction: column;
+      &-options {
+        width: 128px;
+        height: 40px;
+        padding: 12px;
+        border-radius: 8px;
+        outline: none;
+      }
+    }
+    select {
+      padding: 8px;
+      border: 1px solid $borderMain;
+      border-radius: 4px;
+      font-size: 14px;
+      cursor: pointer;
+      appearance: none;
+      background-color: $border;
+      background-image: url('../../../public/img/icons/arrowDown.svg');
+      background-repeat: no-repeat;
+      background-position: right 8px center;
+      background-size: 12px;
+    }
+  }
+}
+

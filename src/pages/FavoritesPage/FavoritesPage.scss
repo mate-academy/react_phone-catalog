@@ -1,0 +1,5 @@
+@import '../../styles/mixins';
+
+.favorites {
+  @include topPagesStyles;
+}

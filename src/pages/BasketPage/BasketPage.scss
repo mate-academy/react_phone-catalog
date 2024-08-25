@@ -1,0 +1,151 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.basket {
+  &__title {
+    font-size: 32px;
+    font-weight: 800;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+    text-align: left;
+    margin-top: 24px;
+  }
+
+  &__wrapper {
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  &__itemGoods {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+    padding: 27px;
+    gap: 16px;
+    background-color: $colorMenu;
+    border: 1px solid black;
+    border-radius: 16px;
+    width: 288px;
+    height: 170px;
+
+    @include on-tablet {
+      flex-direction: row;
+      justify-content: space-between;
+      width: 100%;
+      height: 128px;
+      gap: 35px;
+    }
+    @include on-desktop {
+      width: 752px;
+    }
+  }
+
+  &__imgGoods {
+    width: 66px;
+    height: 66px;
+    object-fit: contain;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+
+    @include on-tablet {
+      width: 66px;
+      height: 66px;
+    }
+
+    @include on-desktop {
+      width: 66px;
+      height: 66px;
+    }
+
+    &:hover {
+      transform: scale(1.2);
+    }
+  }
+
+  &__nameGoods {
+    text-align: left;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 21px;
+    white-space: normal;
+    word-wrap: break-word;
+    word-break: break-word;
+  }
+
+  &__countGoods {
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 21px;
+    text-align: center;
+  }
+
+  &__remove {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    width: 100%;
+    margin-right: -26px;
+    align-items: center;
+    justify-content: flex-start;
+    cursor: pointer;
+    @include on-tablet {
+      width: auto;
+      margin: 0;
+      gap: 30px;
+    }
+  }
+
+  &__removeMenu {
+    opacity: 0.7;
+  }
+
+  &__add {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 43px;
+  }
+
+  &__quantityGoods {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
+
+    &--plus,
+    &--minus {
+      width: 32px;
+      height: 32px;
+      border: 1px solid black;
+      border-radius: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 15px;
+      cursor: pointer;
+    }
+
+    &--disabled {
+      opacity: 0.3;
+      cursor: not-allowed;
+    }
+  }
+
+  &__priceGoods {
+    font-size: 22px;
+    font-weight: 800;
+    line-height: 30.8px;
+    text-align: left;
+  }
+
+  &__total {
+    margin-top: 20px;
+    font-size: 22px;
+    font-weight: 800;
+    line-height: 30.8px;
+    text-align: left;
+  }
+}

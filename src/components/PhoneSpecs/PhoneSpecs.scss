@@ -1,0 +1,31 @@
+@import '../../styles/mixins';
+@import '../../styles/variables';
+
+.phone-specs {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  &__param {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  &__text {
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 15.34px;
+    color: $basic-grey-color;
+  }
+
+  &__size {
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 15.34px;
+    color: $basic-black-color;
+    &--cell {
+      max-width: 180px;
+    }
+  }
+}

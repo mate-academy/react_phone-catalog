@@ -1,0 +1,80 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.cartItem {
+  margin-top: 66px;
+  @include on-tablet {
+    margin-top: 64px;
+  }
+  @include on-desktop {
+    margin-top: 80px;
+  }
+  &__content {
+    overflow: hidden;
+  }
+
+  &__cards {
+    display: flex;
+    gap: 8px;
+    justify-content: flex-start;
+    transition: transform 0.5s ease-in-out;
+    @include on-desktop {
+      gap: 37px;
+    }
+
+    &__card {
+      flex: 0 0 calc(100% / 4);
+    }
+  }
+
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__title {
+    font-size: 22px;
+    font-weight: 800;
+    line-height: 30.8px;
+    text-align: left;
+
+    @include on-tablet {
+      font-size: 32px;
+    }
+  }
+
+  &__slider {
+    display: flex;
+    gap: 16px;
+
+    &--left,
+    &--right {
+      width: 32px;
+      height: 32px;
+      border: none;
+      outline: none;
+      background: none;
+      box-shadow: none;
+      cursor: pointer;
+
+      &:disabled {
+        cursor: default;
+        filter: grayscale(100%);
+        opacity: 0.3;
+      }
+    }
+
+    &--left {
+      transform: rotate(180deg);
+    }
+  }
+
+  @include on-tablet {
+    margin-top: 64px;
+  }
+
+  @include on-desktop {
+    margin-top: 80px;
+  }
+}
