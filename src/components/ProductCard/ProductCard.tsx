@@ -29,7 +29,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product}) => {
   return (
     <div className={styles.ProductCard}>
       <Link
-        to="/product"
+        to={`/product/${encodeURIComponent(product.itemId)}`}
         className={styles.imageContainer}
         onClick = {handleClickedProduct}
       >
@@ -41,7 +41,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product}) => {
       </Link>
 
       <div className={styles.wrapper}>
-        <Link to="/product" className={styles.title}>
+        <Link to={`/product/${encodeURIComponent(product.itemId)}`} className={styles.title}>
           {name}
         </Link>
 
