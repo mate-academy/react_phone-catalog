@@ -78,7 +78,9 @@ export const App: React.FC = () => {
       }
     };
 
-    checkScroll();
+    setTimeout(() => {
+      checkScroll();
+    }, 500);
 
     window.addEventListener('resize', checkScroll);
 
