@@ -1,0 +1,21 @@
+.empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  &__img {
+    max-width: 220px;
+    height: 220px;
+    display: block;
+    margin: 0 auto;
+  }
+
+  &__title {
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 31px;
+    padding-bottom: 10px;
+    text-align: center;
+  }
+}

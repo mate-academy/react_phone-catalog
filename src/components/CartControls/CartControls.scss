@@ -1,0 +1,60 @@
+@import '../../styles/variables';
+
+.cart {
+  &__added {
+    display: flex;
+    gap: 10px;
+    justify-content: space-between;
+    margin-top: 16px;
+
+    &--add {
+      height: 40px;
+      width: 80%;
+      background-color: $colorButton;
+      border-radius: 48px;
+      color: $basicWhite;
+      border: 1px solid $colorButton;
+      font-size: 14px;
+      font-weight: 700;
+      line-height: 21px;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.5s ease-in-out;
+    }
+
+    &--isAdded {
+      color: $colorButton;
+      background-color: $border;
+    }
+
+    &--heart {
+      height: 40px;
+      width: 40px;
+      border: 1px solid #b4bdc3;
+      border-radius: 100%;
+      background-color: $border;
+      position: relative;
+      cursor: pointer;
+
+      &::after {
+        content: '';
+        position: absolute;
+        background-image: url(../../../public/img/icons/favoritesHeartLikeTransparent.svg);
+        background-size: 50%;
+        background-repeat: no-repeat;
+        background-position: center;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+      }
+    }
+
+    &--heart.liked {
+      background-image: url(../../../public/img/icons/favoritesHeartLikeActiveRed.svg);
+      background-size: 50%;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+  }
+}

@@ -1,0 +1,107 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.mainSlider {
+  margin: 0 auto;
+  text-align: center;
+
+  &__wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    @include on-tablet {
+      margin-top: 32px;
+    }
+    @include on-desktop {
+      gap: 16px;
+    }
+  }
+
+  &__img {
+    opacity: 1;
+    transition: opacity 0.5s ease-in-out;
+    background-size: cover;
+    cursor: pointer;
+    height: 100%;
+    width: 100%;
+    margin-top: 24px;
+
+    @include on-tablet {
+      margin: 0 20px;
+      width: 490px;
+      height: 189px;
+    }
+    @include on-desktop {
+      margin: 0 20px;
+      width: 1040px;
+      height: 400px;
+    }
+    &.fade-out {
+      opacity: 0;
+    }
+
+    &.fade-in {
+      opacity: 1;
+    }
+  }
+}
+
+.slider {
+  display: none;
+  @include on-tablet {
+    width: 32px;
+    display: block;
+    height: 190px;
+    cursor: pointer;
+    transition:
+      transform 0.3s ease-in-out,
+      box-shadow 0.3s ease-in-out;
+
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+      border-radius: 12px;
+      @include on-desktop {
+        border-radius: 15px;
+      }
+    }
+
+    &:active {
+      transform: translateY(-2px);
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    }
+  }
+  @include on-desktop {
+    height: 100%;
+  }
+}
+
+.switch {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 18px;
+  gap: 20px;
+  top: 18px;
+  margin-left: 50%;
+  transform: translateX(-50%);
+
+  &__line {
+    width: 14px;
+    height: 8px;
+    background-color: grey;
+    border-color: grey;
+    cursor: pointer;
+    transition: background-color 0.3s;
+
+    &:hover {
+      box-shadow: 0 2px 4px rgba(14, 10, 10, 0.3);
+      transform: scale(1.2);
+    }
+
+    &.active {
+      background-color: #0f0f11;
+    }
+  }
+}

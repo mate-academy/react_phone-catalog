@@ -1,0 +1,62 @@
+@import '../../styles/variables';
+
+.pagination {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  margin-top: 40px;
+
+  &__page,
+  &__left,
+  &__right {
+    width: 32px;
+    height: 32px;
+
+    border: none;
+    outline: none;
+    background: none;
+    box-shadow: none;
+    cursor: pointer;
+
+    border-radius: 100%;
+    &:disabled {
+      cursor: default;
+      filter: grayscale(100%);
+      opacity: 0.3;
+    }
+  }
+
+  &__pages {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+
+    justify-content: center;
+  }
+
+  &__page {
+    border: 1px solid #cbcfd2;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 21px;
+    text-align: center;
+    &--active {
+      background-color: #0f0f11;
+      color: $basicWhite;
+    }
+  }
+
+  &__button {
+    all: unset;
+    display: inline;
+    cursor: pointer;
+    font: inherit;
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+  }
+  &__left {
+    transform: scaleX(-1);
+  }
+}

@@ -1,0 +1,53 @@
+@mixin on-tablet {
+  @media (min-width: 640px) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media (min-width: 1200px) {
+    @content;
+  }
+}
+
+@mixin count {
+  &--icon {
+    position: relative;
+    display: inline-block;
+  }
+  &--count {
+    position: absolute;
+    top: -5px;
+    right: -7px;
+    background-color: #4219d0;
+    color: white;
+    border-radius: 50%;
+    width: 14px;
+    height: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 9px;
+    font-weight: 700;
+  }
+}
+
+@mixin topPagesStyles {
+  &__title {
+    font-size: 32px;
+    font-weight: 800;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+    text-align: left;
+    margin-top: 24px;
+  }
+
+  &__wrapper {
+    margin-top: 50px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+}
