@@ -38,21 +38,38 @@
     pointer-events: none;
   }
 
-  &__favourite, &__item-count {
+  &__favourite {
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 11px;
     border: 1px solid $colorElements;
     border-radius: 50%;
+
+    transition: transform .3s;
+
+    &:hover {
+      transform: scale(1.1);
+    }
   }
 
   &__item-count {
-    padding: 7px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 11px;
+    border: 1px solid $colorElements;
+    border-radius: 50%;
     border-color: $colorIcons;
+
+    transition: transform .3s;
 
     &:disabled {
       border-color: $colorElements;
+    }
+
+    &:hover {
+      transform: scale(1.1);
     }
   }
 }

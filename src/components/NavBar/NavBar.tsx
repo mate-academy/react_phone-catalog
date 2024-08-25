@@ -26,12 +26,12 @@ export const NavBar: React.FC<Props> = ({
   const cartAmount = cart.length;
 
   useEffect(() => {
-    if (isMenuOpen) {
+    if (isMenuOpen && window.innerWidth < 639) {
       document.body.classList.add('no-scroll');
     } else {
       document.body.classList.remove('no-scroll');
     }
-  });
+  }, [isMenuOpen]);
 
   return (
     <nav

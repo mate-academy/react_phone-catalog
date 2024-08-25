@@ -88,6 +88,10 @@
     border-radius: 48px;
     transition: border-color $duration;
 
+    &:hover {
+      border: 1px solid $colorSecondary;
+    }
+
     @include onTablet {
       display: flex;
       align-items: center;
