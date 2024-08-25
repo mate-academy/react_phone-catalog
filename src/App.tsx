@@ -1,5 +1,5 @@
 /* eslint-disable max-len */
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Outlet, useLocation } from 'react-router-dom';
 import './App.module.scss';
 import './modules/shared/_main.scss';
@@ -62,14 +62,18 @@ export const App: React.FC = () => {
 
   body.classList.add(styles.body);
 
+  const [isGoUpButtonShown, setIsGoUpButtonShown] = useState(true);
+
   useEffect(() => {
     const checkScroll = () => {
       const viewportHeigh = document.documentElement.clientHeight;
       const scrollHeight = document.documentElement.scrollHeight;
 
       if (scrollHeight <= viewportHeigh) {
+        setIsGoUpButtonShown(false);
         document.documentElement.classList.add('noScroll');
       } else {
+        setIsGoUpButtonShown(true);
         document.documentElement.classList.remove('noScroll');
       }
     };
@@ -78,16 +82,16 @@ export const App: React.FC = () => {
 
     window.addEventListener('resize', checkScroll);
 
-    const observer = new MutationObserver(checkScroll);
+    const clickDelay = () => {
+      setTimeout(() => {
+        checkScroll();
+      }, 100);
+    };
 
-    observer.observe(document.body, {
-      childList: true,
-      subtree: true,
-      attributes: true,
-    });
+    document.documentElement.addEventListener('click', clickDelay);
 
     return () => {
-      observer.disconnect();
+      document.documentElement.removeEventListener('click', clickDelay);
       window.removeEventListener('resize', checkScroll);
       document.documentElement.classList.remove('noScroll');
     };
@@ -319,9 +323,17 @@ export const App: React.FC = () => {
         <div className={styles.header__right}>
           <div onClick={handleLanguageChange} className={styles.languageButton}>
             {language === 'ua' ? (
-              <img src="./icons/en-flag-ico.svg" alt="en-flag" />
+              <img
+                className={`${styles.languageButton__img} ${language === 'ua' && styles.languageChanging}`}
+                src="./icons/en-flag-ico.svg"
+                alt="en-flag"
+              />
             ) : (
-              <img src="./icons/ua-flag-ico.svg" alt="ua-flag" />
+              <img
+                className={`${styles.languageButton__img} ${language === 'ua' && styles.languageChanging}`}
+                src="./icons/ua-flag-ico.svg"
+                alt="ua-flag"
+              />
             )}
           </div>
 
@@ -443,11 +455,12 @@ export const App: React.FC = () => {
               </Link>
             </div>
 
-            <div id="goUpButtonElement" className={styles.footer__goUpBlock}>
-              <div
-                onClick={() => scrollPageUpSmooth()}
-                className={styles.footer__goUpButtonArea}
-              >
+            <div
+              onClick={() => scrollPageUpSmooth()}
+              id="goUpButtonElement"
+              className={`${styles.footer__goUpBlock} ${!isGoUpButtonShown && styles.hideGoUpButton}`}
+            >
+              <div className={styles.footer__goUpButtonArea}>
                 <div className={styles.footer__goUpTextLink}>{t('go_up')}</div>
 
                 <button

@@ -144,23 +144,34 @@
 }
 
 .languageButton {
-  width: 24px;
+  border-radius: 100%;
+  overflow: hidden;
   display: flex;
   align-items: center;
+  width: 30px;
+  height: 30px;
+
+  &__img {
+    transform: scale(1.4);
+  }
+}
+
+.languageChanging {
+  transform: scale(1.4) rotate(360deg);
 }
 
 .darkModeButton {
   border-radius: 12px;
   position: relative;
-  width: 40px;
+  width: 42px;
   height: 24px;
   display: flex;
   padding: 3px;
   background-color: var(--primary-grey-color);
 
   &__runner {
+    transition: all 0.5s ease;
     display: flex;
-    object-fit: contain;
     border-radius: 100%;
     width: 50%;
     height: 100%;
@@ -170,6 +181,7 @@
 
 .isDark {
   transform: translateX(100%) rotate(180deg);
+  transition: all 0.5s ease;
 }
 
 .icons {
@@ -307,6 +319,7 @@
   }
 
   &__goUpBlock {
+    cursor: pointer;
     display: flex;
     justify-content: center;
     height: min-content;
@@ -318,7 +331,6 @@
     justify-content: center;
     align-items: center;
     width: max-content;
-    cursor: pointer;
 
     @include on-tablet {
       width: max-content;
@@ -337,6 +349,7 @@
   }
 
   &__goUpButton {
+    cursor: pointer;
     width: 32px;
     height: 32px;
     border: 1px solid var(--icons-grey-color);
@@ -346,6 +359,12 @@
       border: 1px solid var(--primary-grey-color);
     }
   }
+}
+
+.hideGoUpButton {
+  opacity: 0;
+  pointer-events: none;
+  cursor: not-allowed;
 }
 
 .goUpDark {
