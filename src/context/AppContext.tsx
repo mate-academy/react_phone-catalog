@@ -23,6 +23,8 @@ type AppContextType = {
   setSortMethod: (method: SortMethodTypes) => void;
   productDetails: Product | undefined;
   setProductDetails: (product: Product | undefined) => void;
+  fetchedCategory: Product[] | undefined;
+  setFetchedCategory: (product: Product[] | undefined) => void;
 };
 
 export const AppContext = createContext<AppContextType | undefined>(undefined);
@@ -36,13 +38,14 @@ export const AppProvider: React.FC<{ children: React.ReactElement }> = ({ childr
   const [productsInCart, setProductsInCart] = useState<LimitedProduct[] | []>([]);
   const [sortMethod, setSortMethod] = useState<"newest" | "alpha" | "price">('newest')
   const [productDetails, setProductDetails] = useState<Product | undefined>(undefined);
+  const [fetchedCategory, setFetchedCategory] = useState<Product[] | undefined>(undefined)
 
   const handleNotReady = () => {
     alert('Feature has not been implemented!');
   };
 
   return (
-    <AppContext.Provider value={{ handleNotReady, numberOfProductsPerPage, setNumberOfProductsPerPage, clickedProduct, setClickedProduct, previousCurrentPage, setPreviousCurrentPage, setFavoriteProducts, favoriteProducts, productsInCart, setProductsInCart, theme, setTheme, productsInCartCount, setProductsInCartCount, sortMethod, setSortMethod, productDetails, setProductDetails}}>
+    <AppContext.Provider value={{ handleNotReady, numberOfProductsPerPage, setNumberOfProductsPerPage, clickedProduct, setClickedProduct, previousCurrentPage, setPreviousCurrentPage, setFavoriteProducts, favoriteProducts, productsInCart, setProductsInCart, theme, setTheme, productsInCartCount, setProductsInCartCount, sortMethod, setSortMethod, productDetails, setProductDetails, fetchedCategory, setFetchedCategory}}>
       {children}
     </AppContext.Provider>
   );
