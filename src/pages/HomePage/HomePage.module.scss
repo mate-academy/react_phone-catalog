@@ -1,0 +1,184 @@
+@import "../../styles/fonts";
+@import "../../styles/vars";
+@import "../../styles/mixins";
+
+.homepage {
+  box-sizing: border-box;
+
+  @include on-tablet {
+    padding-inline: $padding-tablet;
+  }
+
+  @include on-desktop {
+    max-width: 1136px;
+    margin: 0 auto;
+    padding-inline: 0;
+  }
+
+  &__title {
+    font-family: Mont-, sans-serif;
+    font-size: 32px;
+    line-height: 41px;
+    margin-block: 24px;
+    padding-inline: $padding-mobile;
+
+    @include on-tablet {
+      padding-inline: 0;
+      margin-block: 32px;
+      font-size: 48px;
+      line-height: 56px;
+      width: 60%;
+    }
+
+    @include on-desktop {
+      margin-block: 56px;
+      width: 100%;
+    }
+  }
+
+  &__newProducts {
+    overflow: hidden;
+    width: 100%;
+    padding-left: $padding-mobile;
+    box-sizing: border-box;
+    position: relative;
+
+    @include on-tablet {
+      padding-left: $padding-tablet;
+    }
+
+    @include on-desktop {
+      max-width: 1136px;
+      margin: 0 auto;
+      padding: 0;
+    }
+
+    &Title {
+      font-family: Mont-Bold, sans-serif;
+      font-size: 22px;
+      line-height: 30px;
+      width: 40%;
+      color: $main;
+      margin: 0;
+      padding-bottom: 20px;
+
+      @media (min-width: 520px) {
+        width: 33%;
+      }
+
+      @include on-tablet {
+        font-size: 30px;
+        line-height: 41px;
+        width: 50%;
+        margin-top: 15px;
+      }
+    }
+  }
+
+  &__categories {
+    padding-top: 56px;
+    padding-bottom: 38px;
+    padding-inline: $padding-mobile;
+    box-sizing: border-box;
+
+    @include on-tablet {
+      padding-inline: $padding-tablet;
+    }
+
+    @include on-desktop {
+      max-width: 1136px;
+      margin: 0 auto;
+      padding: 0;
+      padding-top: 80px;
+    }
+
+    &Title {
+      font-family: Mont-Bold, sans-serif;
+      font-size: 22px;
+      line-height: 30px;
+      color: $main;
+      margin: 0;
+      margin-bottom: 24px;
+    }
+
+    &Grid {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      gap: 32px;
+
+      @include on-tablet {
+        flex-direction: row;
+        gap: 16px;
+      }
+
+      @include on-desktop {
+        margin-bottom: 80px;
+      }
+    }
+  }
+
+  &__hotPrices {
+    width: 100%;
+    box-sizing: border-box;
+    position: relative;
+    overflow: hidden;
+    padding-left: 16px;
+
+    @include on-desktop {
+      max-width: 1136px;
+      margin: 0 auto;
+      padding-left: 0;
+    }
+
+    &Title {
+      font-family: Mont-Bold, sans-serif;
+      font-size: 22px;
+      line-height: 30px;
+      width: 40%;
+      color: $main;
+      margin: 0;
+      margin-top: 10px;
+      padding-bottom: 20px;
+
+      @media (min-width: 520px) {
+        width: 33%;
+      }
+
+      @include on-tablet {
+        font-size: 30px;
+        line-height: 41px;
+        width: 50%;
+      }
+    }
+  }
+}
+
+.category {
+  &__content {
+    text-decoration: none;
+  }
+
+  &__image {
+    width: 368px;
+    height: 368px;
+    margin-bottom: 24px;
+  }
+
+  &__title {
+    font-size: 20px;
+    line-height: 26px;
+    font-family: Mont-SemiBold, sans-serif;
+    color: $main;
+    margin: 0;
+    margin-bottom: 4px;
+  }
+
+  &__amount {
+    font-size: 14px;
+    line-height: 21px;
+    color: $secondary;
+    font-family: Mont-Regular, sans-serif;
+    margin: 0;
+  }
+}

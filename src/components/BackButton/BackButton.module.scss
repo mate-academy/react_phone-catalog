@@ -1,0 +1,32 @@
+@import "../../styles/vars";
+@import "../../styles/fonts";
+@import "../../styles/mixins";
+
+.buttonBack {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  margin-top: 24px;
+  font-family: Mont-Regular, sans-serif;
+  font-size: 12px;
+  color: $secondary;
+  text-decoration: none;
+  line-height: 16px;
+  align-items: center;
+  margin-bottom: 24px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+
+  @include hover("color", $main);
+}
+
+.arrowBack {
+  display: block;
+  width: 16px;
+  height: 16px;
+  background-image: url(../../../public/img/icons/icon-left.svg);
+  background-position: center;
+  margin-top: -1px;
+  margin-right: 8px;
+}

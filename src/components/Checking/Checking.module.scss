@@ -1,0 +1,66 @@
+@import "../../styles/fonts";
+@import "../../styles/vars";
+@import "../../styles/mixins";
+
+.container {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 1000;
+}
+
+.fill {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: $padding-mobile;
+  background-color: #fff;
+  width: 70%;
+
+  @include on-tablet {
+    width: 55%;
+    padding-inline: $padding-tablet;
+    padding-block: 50px;
+  }
+
+  @include on-desktop {
+    width: 45%;
+  }
+}
+
+.title {
+  margin: 0;
+  font-size: 16px;
+  line-height: 21px;
+  color: $main;
+  margin-bottom: 20px;
+
+  @include on-tablet {
+    margin-bottom: 40px;
+  }
+}
+
+.actions {
+  display: flex;
+  flex-direction: row;
+  column-gap: 16px;
+}
+
+.confirmButton,
+.cancelButton {
+  background-color: $main;
+  border: none;
+  height: 40px;
+  flex-grow: 1;
+  color: #fff;
+  font-size: 16px;
+  font-family: Mont-Regular, sans-serif;
+  cursor: pointer;
+
+  @include hover('box-shadow', 0 3px 13px 0 rgba(23, 32, 49, 0.4))
+}
+
+.confirmButton {
+  background-color: $secondary;
+}
