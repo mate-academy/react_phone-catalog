@@ -1,12 +1,12 @@
 import './ProductCard.module.scss';
 import { ActionButtons } from '../ActionButtons';
-import { Product } from '../../types/Product';
+import { LimitedProduct } from '../../types/Product';
 import { Link } from 'react-router-dom';
 import styles from './ProductCard.module.scss';
 import { useAppContext } from '../../context/AppContext';
 
 type ProductCardProps = {
-  product: Product;
+  product: LimitedProduct;
   // handleSelectedProduct: (newState: string) => "";
 };
 
@@ -15,13 +15,14 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product}) => {
     return <div>No product available</div>;
   }
 
-  const { id, images, name, priceRegular, priceDiscount, screen, capacity, ram } = product;
+  const { image, name, price, fullPrice, screen, capacity, ram } = product;
   const { setClickedProduct } = useAppContext();
   const handleClickedProduct = () => {
-    console.log('CLICKED PRODUCTS',id)
+
     if(product !== undefined) {
       localStorage.setItem('clickedProduct', JSON.stringify(product));
       setClickedProduct(product)
+      console.log('CLICKED PRODUCTS is set to', product)
     }
   }
 
@@ -34,7 +35,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product}) => {
       >
         <img
           className={styles.image}
-          src={images[0]}
+          src={image}
           alt={name}
         />
       </Link>
@@ -45,8 +46,8 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product}) => {
         </Link>
 
         <div className={styles.price}>
-          <div className={styles.existPrice}>${priceRegular}</div>
-          <div className={styles.hotPrice}>${priceDiscount}</div>
+          <div className={styles.existPrice}>${fullPrice}</div>
+          <div className={styles.hotPrice}>${price}</div>
         </div>
 
         <div className={styles.divider} />

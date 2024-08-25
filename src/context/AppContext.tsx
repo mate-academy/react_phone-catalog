@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState } from 'react';
-import { Product, ProductAccessory, ProductPhone, ProductTablet } from '../types/Product';
+import { LimitedProduct } from '../types/Product';
 
 
 type SortMethodTypes = "newest" | "alpha" | "price";
@@ -7,14 +7,14 @@ type AppContextType = {
   handleNotReady: () => void;
   numberOfProductsPerPage: number;
   setNumberOfProductsPerPage: (pages: number) => void;
-  clickedProduct: ProductPhone | ProductTablet | ProductAccessory | undefined;
-  setClickedProduct: (product: ProductPhone | ProductTablet | ProductAccessory | undefined) => void;
+  clickedProduct: LimitedProduct | undefined;
+  setClickedProduct: (product: LimitedProduct | undefined) => void;
   previousCurrentPage: string[];
   setPreviousCurrentPage: (page: string[]) => void;
-  favoriteProducts: Product[];
-  setFavoriteProducts: (products: Product[]) => void;
-  productsInCart: Product[];
-  setProductsInCart: (products: Product[]) => void;
+  favoriteProducts: LimitedProduct[];
+  setFavoriteProducts: (products: LimitedProduct[]) => void;
+  productsInCart: LimitedProduct[];
+  setProductsInCart: (products: LimitedProduct[]) => void;
   theme: 'light' | 'dark';
   setTheme: (products: 'light' | 'dark') => void;
   productsInCartCount: number[];
@@ -26,13 +26,14 @@ type AppContextType = {
 export const AppContext = createContext<AppContextType | undefined>(undefined);
 export const AppProvider: React.FC<{ children: React.ReactElement }> = ({ children }) => {
   const [numberOfProductsPerPage, setNumberOfProductsPerPage] = useState<number>(8);
-  const [clickedProduct, setClickedProduct] = useState<ProductPhone | ProductTablet | ProductAccessory | undefined>(undefined);
-  const [favoriteProducts, setFavoriteProducts] = useState<Product[] | []>([]);
+  const [clickedProduct, setClickedProduct] = useState<LimitedProduct | undefined>(undefined);
+  const [favoriteProducts, setFavoriteProducts] = useState<LimitedProduct[]>([]);
   const [previousCurrentPage, setPreviousCurrentPage] = useState<string[]>(['nothing','nothing']);
   const [theme, setTheme] = useState<'light' | 'dark'>('light');
-  const [productsInCartCount, setProductsInCartCount] = useState<number[]>([])
-  const [productsInCart, setProductsInCart] = useState<Product[] | []>([]);
+  const [productsInCartCount, setProductsInCartCount] = useState<number[] | []>([])
+  const [productsInCart, setProductsInCart] = useState<LimitedProduct[] | []>([]);
   const [sortMethod, setSortMethod] = useState<"newest" | "alpha" | "price">('newest')
+
 
   const handleNotReady = () => {
     alert('Feature has not been implemented!');

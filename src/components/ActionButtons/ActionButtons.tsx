@@ -2,49 +2,50 @@ import React from 'react';
 import styles from './ActionButtons.module.scss';
 import favoritesIcon from '../../img/icons/fav.svg';
 import { useAppContext } from '../../context/AppContext';
-import { Product} from '../../types/Product';
+import { LimitedProduct} from '../../types/Product';
 
 type ButtonProps = {
-  product: Product;
+  product: LimitedProduct;
   // handleSelectedProduct: (newState: string) => "";
 };
 
 export const ActionButtons: React.FC<ButtonProps> = ({product}) => {
+  // @ts-ignore
   const { favoriteProducts, setFavoriteProducts, productsInCart, setProductsInCart, productsInCartCount, setProductsInCartCount} = useAppContext();
 
-  //BELOW FUNCTIONS DONT WORK PROPERLY -> multple adding the same product
   const handleFavorites = () => {
-    let newFavoriteProducts = [...favoriteProducts];
-    const foundIndex = newFavoriteProducts.indexOf(product);
+    // @ts-ignore
+    setFavoriteProducts((favoriteProducts: LimitedProduct[]) => {
+      const newFavoriteProducts = [...favoriteProducts];
+      const foundIndex = newFavoriteProducts.findIndex(p => p.id === product.id);
 
-    if (foundIndex === -1) {
-      newFavoriteProducts.push(product)
-      console.log('added to favs')
-    }
+      if (foundIndex === -1) {
+        newFavoriteProducts.push(product);
+      } else {
+        newFavoriteProducts.splice(foundIndex, 1);
+      }
 
-    if(foundIndex > -1) {
-      newFavoriteProducts.splice(foundIndex,1)
-      console.log('removed from favs')
-    }
-
-    setFavoriteProducts(newFavoriteProducts)
-  }
+      console.log('updated favorites', newFavoriteProducts);
+      return newFavoriteProducts;
+    });
+  };
 
   const handleProductsInCart = () => {
     let newProductsInCart = [...productsInCart];
     let newProductsInCartCount = [...productsInCartCount];
-    const foundIndex = newProductsInCart.indexOf(product);
+    const foundIndex = newProductsInCart.findIndex(p => p.id === product.id);
+    console.log('found inde', foundIndex);
 
     if (foundIndex === -1) {
       newProductsInCart.push(product)
       newProductsInCartCount.push(1);
-      console.log('added to cart')
+      console.log('added to cart',newProductsInCart,newProductsInCartCount)
     }
 
     if (foundIndex > -1) {
       newProductsInCart.splice(foundIndex,1)
       newProductsInCartCount.splice(foundIndex,1)
-      console.log('removed from cart');
+      console.log('removed from cart',newProductsInCart,newProductsInCartCount);
     }
 
     setProductsInCart(newProductsInCart);

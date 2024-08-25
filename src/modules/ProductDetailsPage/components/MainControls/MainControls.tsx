@@ -1,25 +1,25 @@
 import React from 'react';
 import styles from './MainControls.module.scss';
-import { ActionButtons } from '../../../../components/ActionButtons';
+/* import { ActionButtons } from '../../../../components/ActionButtons'; */
 import { useAppContext } from '../../../../context/AppContext';
-import { ProductAccessory, ProductPhone, ProductTablet } from '../../../../types/Product';
+import { Product } from '../../../../types/Product';
 
 type MainControlsProps = {
-  clickedProduct: ProductAccessory | ProductPhone | ProductTablet;
+  productDetails: Product | undefined;
 };
 
-export const MainControls: React.FC<MainControlsProps> = ({ clickedProduct }) => {
-  const { handleNotReady } = useAppContext();
+export const MainControls: React.FC<MainControlsProps> = ({productDetails}) => {
+  const { handleNotReady/* , clickedProduct  */} = useAppContext();
 
   let colorsAvailable: string[] = [''];
   let capacityAvailable: string[] = [''];
 
-  if (clickedProduct !== undefined) {
-    colorsAvailable = clickedProduct.colorsAvailable;
-    capacityAvailable = clickedProduct.capacityAvailable;
+  if (productDetails !== undefined) {
+    colorsAvailable = productDetails.colorsAvailable;
+    capacityAvailable = productDetails.capacityAvailable;
   }
 
-  if (clickedProduct !== undefined) {
+  if (productDetails !== undefined) {
     return (
       <div className={styles.mainControls}>
         <div className={styles.selector}>
@@ -63,34 +63,34 @@ export const MainControls: React.FC<MainControlsProps> = ({ clickedProduct }) =>
 
         <div className={styles.price}>
           <div className={styles.existPrice}>
-            ${`${clickedProduct.priceRegular}`}
+            ${`${productDetails.priceRegular}`}
           </div>
           <div className={styles.hotPrice}>
-            ${`${clickedProduct.priceDiscount}`}
+            ${`${productDetails.priceDiscount}`}
           </div>
         </div>
 
-        <ActionButtons product={clickedProduct} />
+        {/* <ActionButtons product={clickedProduct} /> */}
 
         <ul className={styles.specsList}>
           <li className={styles.specs}>
             <strong className={styles.specsKey}>Screen</strong>
             <span className={styles.specsValue}>
-              {`${clickedProduct.screen}`}
+              {`${productDetails.screen}`}
             </span>
           </li>
 
           <li className={styles.specs}>
             <strong className={styles.specsKey}>Resolution</strong>
             <span className={styles.specsValue}>
-              {`${clickedProduct.resolution}`}
+              {`${productDetails.resolution}`}
             </span>
           </li>
 
           <li className={styles.specs}>
             <strong className={styles.specsKey}>Processor</strong>
             <span className={styles.specsValue}>
-              {`${clickedProduct.processor}`}
+              {`${productDetails.processor}`}
             </span>
           </li>
         </ul>

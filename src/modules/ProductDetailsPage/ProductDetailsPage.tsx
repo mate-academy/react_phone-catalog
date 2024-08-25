@@ -12,11 +12,13 @@ import { Description } from './components/Description';
 import { MainControls } from './components/MainControls';
 import { Loader } from '../../components/Loader';
 import { Breadcrumbs } from '../../components/Breadcrumbs';
+import { Product } from '../../types/Product';
 
 export const ProductDetailsPage: React.FC = () => {
   const category = useLocation().pathname.slice(1);
-  const { clickedProduct, previousCurrentPage, setClickedProduct } = useAppContext();
-  const [isLoading, setIsLoading] = useState(true);
+  const { clickedProduct, previousCurrentPage, setClickedProduct} = useAppContext();
+  const [isLoading, setIsLoading] = useState<true | false>(true);
+  const [fetchedCategory, setFetchedCategory] = useState<Product[]>()
 
   useEffect(() => {
     const savedProduct = localStorage.getItem('clickedProduct');
@@ -25,6 +27,37 @@ export const ProductDetailsPage: React.FC = () => {
     }
     setIsLoading(false);
   }, [setClickedProduct]);
+
+  useEffect(() => {
+    if (clickedProduct !== undefined) {
+      const fetchProductData = async () => {
+        try {
+          const response = await fetch(`https://meljaszuk.github.io/react_phone-catalog/api/${clickedProduct.category}.json`);
+          const data = await response.json();
+          setFetchedCategory(data);
+          console.log(clickedProduct.category) /* string */
+          console.log(fetchedCategory) /* array of objects PROBLEM IS HERE unfined*/
+        } catch (error) {
+          console.error('Error fetching product data:', error);
+        }
+      };
+      fetchProductData();
+    }
+
+  }, [clickedProduct]);
+
+
+ let productDetails;
+
+  useEffect(() => {
+    console.log(clickedProduct)
+
+    if (clickedProduct !== undefined && fetchedCategory !== undefined) {
+      const callback = (a: {id: string}) => a.id === clickedProduct.itemId;
+      productDetails = clickedProduct ? fetchedCategory.find(callback) : undefined;
+      console.log('fetched details for product',productDetails)
+    }
+  },[clickedProduct])
 
   return (
     <div className={styles.productDetailsPageWrapper}>
@@ -57,9 +90,9 @@ export const ProductDetailsPage: React.FC = () => {
             <div className={styles.goBackText}>Component under construction</div> {/* / REMOVE LATER */}
 
             <ImageGallery />
-            <MainControls clickedProduct={clickedProduct}/>
-            <Description />
-            <TechSpecs />
+            <MainControls productDetails={productDetails !== undefined ? productDetails : undefined} />
+            <Description productDetails={productDetails !== undefined ? productDetails : undefined}/>
+            <TechSpecs productDetails={productDetails !== undefined ? productDetails : undefined}/>
           </div>
         )}
       </main>

@@ -22,7 +22,7 @@ export const CartPage: React.FC = () => {
 
     for (i = 0; i < productsInCart.length; i++){
       totalCount = totalCount + productsInCartCount[i];
-      totalAmount = totalAmount + productsInCartCount[i] * productsInCart[i].priceDiscount;
+      totalAmount = totalAmount + productsInCartCount[i] * productsInCart[i].price;
     }
 
     return [totalCount, totalAmount]

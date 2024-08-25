@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useMemo, useCallback } from 'react';
 import { ProductCard } from '../ProductCard';
-import { ProductPhone, ProductTablet, ProductAccessory } from '../../types/Product';
+import { LimitedProduct } from '../../types/Product';
 import { DropDown } from '../DropDown';
 import { Pagination } from '../Pagination';
 import { Loader } from '../Loader';
@@ -16,44 +16,53 @@ type ProductListProps = {
 
 export const ProductList: React.FC<ProductListProps> = ({ category, title }) => {
   const {numberOfProductsPerPage, sortMethod} = useAppContext()
-  const [products, setProducts] = useState<(ProductPhone | ProductTablet | ProductAccessory)[]>([]);
+  const [products, setProducts] = useState<(LimitedProduct)[]>([]);
 
   useEffect(() => {
     const fetchProductData = async () => {
       try {
-        const response = await fetch(`https://meljaszuk.github.io/react_phone-catalog/api/${category}.json`);
+        const response = await fetch(`https://meljaszuk.github.io/react_phone-catalog/api/products.json`);
         const data = await response.json();
         setProducts(data);
+        const copiedData = [...data];
         console.log('FETCHED PRODUCTS', data)
+
+        if (sortMethod === 'alpha') {
+          copiedData.sort((a: { name: string }, b: { name: string }) =>
+            a.name.localeCompare(b.name)
+          );
+        }
+
+        if (sortMethod === 'price') {
+          copiedData.sort((a: { price: number }, b: { price: number }) =>
+            a.price - b.price
+          );
+        }
+
+        if (sortMethod === 'newest') {
+          copiedData.sort((a: { year: number }, b: { year: number }) =>
+            b.year - a.year // Sorting from newest to oldest
+          );
+        }
+
+        setProducts(copiedData);
+        console.log('soreted',sortMethod)
+
       } catch (error) {
         console.error('Error fetching product data:', error);
       }
     };
 
     fetchProductData();
-  }, [category]);
 
-  useEffect(() => {
-    if (sortMethod === 'alpha') {
-      let copiedProducts = [...products];
-      const callback = (a: {name: string},b: {name: string}) => a.name.localeCompare(b.name);
-      copiedProducts.sort(callback)
-      /* setProducts(copiedProducts) */
-      console.log('sorted')
-    }
 
-    if (sortMethod === 'price') {
-      let copiedProducts = [...products]
-      const callback = (a: {priceDiscount: number}, b: {priceDiscount: number}) => a > b ? 1 : a < b ? -1 : 0;
-      copiedProducts.sort(callback)
-      /* setProducts(copiedProducts) */
-      console.log('sorted')
-    }
+  }, [sortMethod]);
 
-  }, [products,sortMethod])
+
+
+
 
   const numberOfProducts = products.length;
-
   const numberOfPages = useMemo(() => {
     return Math.ceil(numberOfProducts / numberOfProductsPerPage);
   }, [numberOfProducts, numberOfProductsPerPage]);

@@ -5,16 +5,16 @@ import minusIcon from '../../../img/icons/MinusIcon.svg';
 import crossIcon from '../../../img/icons/CrossIcon.svg';
 import { useAppContext } from '../../../context/AppContext';
 /* import { Link } from 'react-router-dom'; */
-import { Product} from '../../../types/Product';
+import { LimitedProduct } from '../../../types/Product';
 
 type CartItemProps = {
-  product: Product;
+  product: LimitedProduct;
 }
 
 export const CartItem: React.FC<CartItemProps> = ({product}) => {
   const {productsInCart,setProductsInCart,productsInCartCount, setProductsInCartCount, handleNotReady} = useAppContext();
 
-  const foundIndex = productsInCart.indexOf(product);
+  const foundIndex = productsInCart.findIndex(p => p.id === product.id);
 
   const removeFromCart = () => {
     let newProductsInCart = [...productsInCart];
@@ -24,12 +24,14 @@ export const CartItem: React.FC<CartItemProps> = ({product}) => {
     console.log('removed from cart');
     setProductsInCart(newProductsInCart);
     setProductsInCartCount(newProductsInCartCount);
+    console.log('item removed',productsInCart,productsInCartCount)
   }
 
   const handleCountIncrease = () => {
     let newProductsInCartCount = [...productsInCartCount];
     newProductsInCartCount[foundIndex]++;
     setProductsInCartCount(newProductsInCartCount);
+    console.log('item +',productsInCart,productsInCartCount)
   };
 
   const handleCountDecrease = () => {
@@ -38,10 +40,11 @@ export const CartItem: React.FC<CartItemProps> = ({product}) => {
     if (newProductsInCartCount[foundIndex] > 0) {
       newProductsInCartCount[foundIndex]--;
       setProductsInCartCount(newProductsInCartCount);
+      console.log('item -',productsInCart,productsInCartCount)
     }
   };
 
-  const {name, priceDiscount, images} =  product;
+  const {name, price, image} =  product;
 
   return (
     <div className={styles.cartItem}>
@@ -55,7 +58,7 @@ export const CartItem: React.FC<CartItemProps> = ({product}) => {
         </button>
         {/* <Link to={`/products`} className={styles.productImage}>  */}
           <img
-            src={images[0]}
+            src={image}
             alt={name}
             className={styles.image}
             onClick={handleNotReady}
@@ -92,7 +95,7 @@ export const CartItem: React.FC<CartItemProps> = ({product}) => {
             />
           </button>
         </div>
-        <h3 className={styles.price}>${priceDiscount}</h3>
+        <h3 className={styles.price}>${price}</h3>
       </div>
     </div>
   );

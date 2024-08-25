@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useMemo } from 'react';
 import { ProductCard } from '../ProductCard';
-import { ProductPhone } from '../../types/Product';
+import { LimitedProduct } from '../../types/Product';
 import styles from './ProductSlider.module.scss';
 import ChevronIcon from '../../img/icons/ChevronIcon.svg';
 
@@ -10,12 +10,12 @@ type ProductSliderProps = {
 };
 
 export const ProductSlider: React.FC<ProductSliderProps> = ({ title, count }) => {
-  const [products, setProducts] = useState<ProductPhone[]>([]);
+  const [products, setProducts] = useState<LimitedProduct[]>([]);
 
   useEffect(() => {
     const fetchProductData = async () => {
       try {
-        const response = await fetch('https://meljaszuk.github.io/react_phone-catalog/api/phones.json');
+        const response = await fetch('https://meljaszuk.github.io/react_phone-catalog/api/products.json');
         const data = await response.json();
         setProducts(data);
       } catch (error) {
