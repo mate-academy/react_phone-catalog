@@ -1,0 +1,104 @@
+@import "../../styles";
+
+.footer {
+  margin-top: auto;
+  background-color: $colorWhite;
+  padding: 32px 0;
+  border-top: 1px solid $colorElements;
+
+  @include onTablet {
+    padding: 0;
+  }
+
+  &__content {
+    @include onTablet {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
+
+  &__logo {
+    margin-bottom: 32px;
+
+    @include onTablet {
+      margin-bottom: 0;
+    }
+  }
+
+  &__links {
+    margin-bottom: 32px;
+
+    @include onTablet {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 0;
+    }
+
+    @include onDesktop {
+      gap: 100px;
+    }
+  }
+
+  &__item {
+    margin-bottom: 8px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    @include onTablet {
+      margin-bottom: 0;
+    }
+  }
+
+  &__link {
+    padding: 8px 0;
+    
+    @extend %uppercase;
+
+    color: $colorSecondary;
+
+    @include onTablet {
+      padding: 42px 0;
+    }
+
+    transition: all $duration linear;
+
+    &:hover {
+      color: $colorPrimary;
+    }
+  }
+
+  &__action {
+    display: flex;
+    align-items: center;
+    gap: $gapGrid;
+    width: fit-content;
+    margin: 0 auto;
+
+    @extend %small-text;
+
+    color: $colorSecondary;
+
+    @include onTablet {
+      margin: 0;
+    }
+  }
+
+  &__icon-button {
+    flex-shrink: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 30px;
+
+    border: 1px solid $colorIcons;
+    border-radius: 50%;
+
+    &:hover {
+      border-color: $colorPrimary;
+    }
+  }
+}

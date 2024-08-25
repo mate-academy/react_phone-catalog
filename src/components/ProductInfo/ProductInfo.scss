@@ -1,0 +1,327 @@
+@import '../../styles';
+
+.product-info {
+  &__title {
+    @extend %h2;
+
+    margin-bottom: 32px;
+
+    @include onTablet {
+      margin-bottom: 40px;
+    }
+  }
+
+  &__container {
+    margin-bottom: 56px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    @include onTablet {
+      display: grid;
+      grid-template-columns: repeat(2, auto);
+      gap: 16px;
+      margin-bottom: 64px;
+
+      &:last-child {
+        display: block;
+        margin-bottom: 0;
+      }
+    }
+
+    @include onDesktop {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 75px;
+      margin-bottom: 80px;
+
+      &:last-child {
+        display: grid;
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  &__options {
+    @include onDesktop {
+      width: 65%;
+    }
+  }
+
+  &__option {
+    padding-bottom: 24px;
+    margin-bottom: 24px;
+    border-bottom: 1px solid $colorElements;
+
+    &:last-child {
+      margin-bottom: 32px;
+    }
+  }
+
+  &__option-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    @extend %small-text;
+
+    margin-bottom: 8px;
+  }
+
+  &__option-title {
+    color: $colorSecondary;
+  }
+
+  &__option-index {
+    color: $colorIcons;
+  }
+
+  &__colors {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__color-link {
+    flex-shrink: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 32px;
+    height: 32px;
+    padding: 1px;
+    border: 1px solid $colorElements;
+    border-radius: 50%;
+
+    &--active {
+      border-color: $colorPrimary;
+    }
+  }
+
+  &__color {
+    width: 100%;
+    height: 100%;
+    opacity: 0.6;
+    border-radius: 50%;
+
+    transition: all $duration linear;
+
+    &:hover {
+      opacity: 1;
+    }
+
+    &--black {
+      background-color: #201d24;
+    }
+
+    &--green {
+      background-color: #e1f8dc;
+    }
+
+    &--pink {
+      background-color: #fddcd7;
+    }
+
+    &--yellow {
+      background-color: #fdea8c;
+    }
+
+    &--white {
+      background-color: #f9f6ef;
+    }
+
+    &--purple {
+      background-color: #e5ddea;
+    }
+
+    &--red {
+      background-color: #fb1230;
+    }
+
+    &--gold {
+      background-color: #ffeacf;
+    }
+
+    &--midnight {
+      background-color: #343b43;
+    }
+
+    &--blue {
+      background-color: #276787;
+    }
+
+    &--spaceblack {
+      background-color: #4b4845;
+    }
+
+    &--sierrablue {
+      background-color: #96badc;
+    }
+
+    &--graphite {
+      background-color: #696a6e;
+    }
+
+    &--spacegray {
+      background-color: #535150;
+    }
+
+    &--midnightgreen {
+      background-color: #4e5850;
+    }
+
+    &--rosegold {
+      background-color: #e6c7c2;
+    }
+
+    &--coral {
+      background-color: #ee7762;
+    }
+
+    &--skyblue {
+      background-color: #6ba1c4;
+    }
+
+    &--starlight {
+      background-color: #f0f0dc;
+    }
+
+    &--silver {
+      background-color: #c0c0c0;
+    }
+  }
+
+  &__capacity {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__capacity-link {
+    padding: 7px;
+    border: 1px solid $colorIcons;
+    border-radius: 4px;
+
+    transition: all $duration linear;
+
+    &:hover {
+      border-color: $colorPrimary;
+    }
+
+    &--active {
+      color: $colorWhite;
+      background-color: $colorPrimary;
+      border-color: $colorPrimary;
+    }
+  }
+
+  &__price {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 32px;
+    margin-bottom: 16px;
+
+    @extend %h2;
+  }
+
+  &__full-price {
+    @extend %h3;
+
+    color: $colorSecondary;
+    text-decoration: line-through;
+  }
+  &__buttons {
+    display: flex;
+    gap: 8px;
+
+    margin-bottom: 32px;
+  }
+
+  &__specs {
+    display: flex;
+    flex-direction: column;
+    row-gap: 8px;
+  }
+
+  &__spec {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    @extend %small-text;
+
+    font-weight: 700;
+  }
+
+  &__spec-title {
+    color: $colorSecondary;
+  }
+
+  &__spec-value {
+    text-align: right;
+  }
+
+  &__section {
+    &:not(:last-child) {
+      margin-bottom: 56px;
+    }
+
+    @include onTablet {
+      &:not(:last-child) {
+        margin-bottom: 64px;
+      }
+    }
+
+    @include onDesktop {
+      margin-bottom: 0;
+    }
+  }
+
+  &__section-title {
+    @extend %h3;
+
+    padding-bottom: 16px;
+    border-bottom: 1px solid $colorElements;
+    margin-bottom: 32px;
+  }
+
+  &__about {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  &__about-title {
+    @extend %h4;
+
+    margin-bottom: 16px;
+  }
+
+  &__about-text {
+    @extend %body-text;
+
+    color: $colorSecondary;
+
+    &:not(:last-child) {
+      margin-bottom: 16px;
+    }
+  }
+
+  &__fullspecs {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__fullspec {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    @extend %body-text;
+  }
+
+  &__fullspec-title {
+    color: $colorSecondary;
+  }
+}

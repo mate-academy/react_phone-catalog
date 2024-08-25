@@ -1,0 +1,34 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat($columnsMobile, 1fr);
+  grid-column-gap: $gapGrid;
+
+  @include onTablet {
+    grid-template-columns: repeat($columnsTablet, 1fr);
+  }
+
+  @include onDesktop {
+    grid-template-columns: repeat($columnsDesktop, 1fr);
+  }
+
+  &--tablet {
+    display: block;
+
+    @include onTablet {
+      display: grid;
+    }
+  }
+
+  &--desktop {
+    display: block;
+
+    @include onDesktop {
+      display: grid;
+    }
+  }
+
+  &__item {
+    @include generateMixinClasses('tablet', 1, $columnsTablet);
+    @include generateMixinClasses('desktop', 1, $columnsDesktop);
+  }
+}

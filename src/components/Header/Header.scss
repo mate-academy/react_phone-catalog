@@ -1,0 +1,67 @@
+@import "../../styles";
+
+.header {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid $colorElements;
+  overflow: hidden;
+  background-color: $colorWhite;
+
+  &__logo {
+    margin-left: $gapGrid;
+
+    @include onTablet {
+      margin-right: 24px;
+    }
+
+    @include onDesktop {
+      margin: 0 64px;
+    }
+  }
+
+  &__nav {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    overflow-y: auto;
+    transform: translateX(100%);
+    transition: all $duration linear;
+    z-index: 1;
+
+    &--open {
+      transform: translate(0);
+    }
+
+    @include onTablet {
+      position: initial;
+      overflow-y: initial;
+      transform: translate(0);
+    }
+  }
+
+  &__actions {
+    display: flex;
+  }
+
+  &__actions-button {
+    padding: 16px;
+    border-left: 1px solid $colorElements;
+
+    @include onTablet {
+      padding: 20px;
+    }
+
+    @include onDesktop {
+      padding: 25px;
+    }
+
+    &--menu {
+      @include onTablet {
+        display: none;
+      }
+    }
+  }
+}

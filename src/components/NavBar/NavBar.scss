@@ -1,0 +1,168 @@
+@import "../../styles";
+
+.navbar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100vw;
+  height: 100svh;
+  background-color: $colorWhite;
+
+  @include onTablet {
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    height: fit-content;
+  }
+
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 32px;
+    border-bottom: 1px solid $colorElements;
+
+    @include onTablet {
+      display: none;
+    }
+  }
+
+  &__logo {
+    margin-left: $gapGrid;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: $gapGrid;
+    height: 100%;
+
+    @include onTablet {
+      flex-direction: row;
+      justify-content: space-between;
+      height: fit-content;
+    }
+
+    @include onDesktop {
+      gap: 64px;
+    }
+  }
+
+  &__item {
+    text-align: center;
+
+    @include onTablet {
+      display: block;
+    }
+  }
+
+  &__link {
+    padding: 16px 0;
+    line-height: 18px;
+    color: $colorSecondary;
+    
+    @extend %uppercase;
+
+    text-align: center;
+    transition: all $duration linear;
+
+    @include onTablet {
+      padding: 19px 0;
+    }
+
+    @include onDesktop {
+      padding: 23px 0;
+    }
+
+    &:hover {
+      color: $colorPrimary;
+    }
+
+    &--active {
+      position: relative;
+      color: $colorPrimary;
+
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        display: block;
+        width: 100%;
+        height: 3px;
+        background-color: $colorPrimary;
+      }
+    }
+  }
+
+  &__actions {
+    display: flex;
+    width: 100%;
+    border-top: 1px solid $colorElements;
+
+    @include onTablet {
+      width: fit-content;
+      border: none;
+    }
+  }
+
+  &__actions-link {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding: $gapGrid;
+    border-left: 1px solid $colorElements;
+
+    &--close {
+      width: fit-content;
+    }
+
+    @include onTablet {
+      width: fit-content;
+      padding: 20px;
+    }
+
+    @include onDesktop {
+      padding: 24px;
+    }
+
+    &--active {
+      @include onTablet {
+        &::after {
+          content: '';
+          position: absolute;
+          left: 0;
+          bottom: 0;
+          display: block;
+          width: 100%;
+          height: 3px;
+          background-color: $colorPrimary;
+        }
+      }
+    }
+  }
+
+  &__items-counter {
+    position: absolute;
+    top: 27%;
+    left: 50%;
+    display: block;
+    width: $gapGrid;
+    height: $gapGrid;
+    color: $colorWhite;
+    text-align: center;
+    border: 1.5px solid $colorWhite;
+    border-radius: 50%;
+    background-color: $colorRed;
+  }
+
+  &__items-count {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    font-size: 9px;
+    line-height: 9px;
+    transform: translate(-50%, -50%);
+  }
+}
