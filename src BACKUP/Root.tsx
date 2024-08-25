@@ -27,7 +27,7 @@ export const Root = () => {
           <Route path="/accessories" component={AccessoriesPage} />
           <Route path="/cart" component={CartPage} />
           <Route path="/favorites" component={FavoritesPage} />
-          <Route path="/product" component={ProductDetailsPage} />
+          <Route path="/product:productId" component={ProductDetailsPage} />
           <Route path="*" component={NotFoundPage} />
         </Switch>
       </div>
