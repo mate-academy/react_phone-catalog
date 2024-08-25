@@ -135,13 +135,13 @@ export const App: React.FC = () => {
 
   useEffect(() => {
     if (isMenuShown) {
-      document.documentElement.classList.add('hidenMenuHeightNoScroll');
+      document.body.classList.add('hidenMenuHeightNoScroll');
     } else {
-      document.documentElement.classList.remove('hidenMenuHeightNoScroll');
+      document.body.classList.remove('hidenMenuHeightNoScroll');
     }
 
     return () => {
-      document.documentElement.classList.remove('hidenMenuHeightNoScroll');
+      document.body.classList.remove('hidenMenuHeightNoScroll');
     };
   }, [isMenuShown]);
 
