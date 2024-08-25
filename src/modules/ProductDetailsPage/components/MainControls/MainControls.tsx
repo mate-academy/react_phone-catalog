@@ -2,38 +2,49 @@ import React from 'react';
 import styles from './MainControls.module.scss';
 import { ActionButtons } from '../../../../components/ActionButtons';
 import { useAppContext } from '../../../../context/AppContext';
-/* import { Product } from '../../../../types/Product'; */
+/* import { Link } from 'react-router-dom'; */
 
+type MainControlsProps = {
+  dynamicColor: string;
+  setDynamicColor: (details: string) => void;
+  dynamicCapacity: string;
+  setDynamicCapacity: (details: string) => void;
+}
 
+export const MainControls: React.FC<MainControlsProps> = ({setDynamicColor, setDynamicCapacity}) => {
+  const { clickedProduct, productDetails} = useAppContext();
 
-export const MainControls: React.FC = () => {
-  const { handleNotReady, clickedProduct, productDetails/* , setProductDetails  */} = useAppContext();
+const handleColorChange = (color: string) => {
+  setDynamicColor(color.toLowerCase())
+}
 
-  let colorsAvailable: string[] = [''];
-  let capacityAvailable: string[] = [''];
+const handleColorCapacity = (capacity: string) => {
+  setDynamicCapacity(capacity.toLowerCase())
+}
 
-  if (productDetails !== undefined) {
-    colorsAvailable = productDetails.colorsAvailable;
-    capacityAvailable = productDetails.capacityAvailable;
-  }
+/* useEffect(() => {
+  console.log(dynamicColor,dynamicCapacity)
+},[dynamicColor,dynamicCapacity]) */
 
-  if (productDetails !== undefined) {
+  if (productDetails) {
     return (
       <div className={styles.mainControls}>
         <div className={styles.selector}>
           <p className={styles.label}>Available colors</p>
 
           <div className={styles.buttons}>
-            {colorsAvailable.map((color: string) => (
+            {productDetails.colorsAvailable.map((color: string) => (
               <div
                 className={styles.colorButtonContainer}
                 key={color}
               >
-                <button
-                  className={styles.colorButton}
-                  onClick={handleNotReady}
-                  style={{ backgroundColor: color }}
-                />
+                {/* <Link to={`/product/${newProductId}`}> */}
+                  <button
+                    className={styles.colorButton}
+                    style={{ backgroundColor: color }}
+                    onClick={() => handleColorChange(color)}
+                  />
+                {/* </Link> */}
               </div>
             ))}
           </div>
@@ -45,11 +56,11 @@ export const MainControls: React.FC = () => {
           <p className={styles.label}>Select Capacity</p>
 
           <div className={styles.buttons}>
-            {capacityAvailable.map((capacity: string) => (
+            {productDetails.capacityAvailable.map((capacity: string) => (
               <button
                 className={styles.capacityButton}
-                onClick={handleNotReady}
                 key={capacity}
+                onClick={() => handleColorCapacity(capacity)}
               >
                 {capacity}
               </button>
