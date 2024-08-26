@@ -14,7 +14,6 @@
 
     &:hover {
       border: 1px solid var(--primary-grey-color);
-      background-color: var(--white-color);
     }
   }
 
@@ -88,6 +87,10 @@
   pointer-events: none;
   cursor: not-allowed;
   opacity: 0.5;
+
+  &:hover {
+    border: 1px solid var(--elements-grey-color);
+  }
 }
 
 .darkArrowButton {
@@ -103,4 +106,9 @@
 .darkDisabledArrow {
   background-color: var(--dark-black-color);
   border: 1px solid var(--dark-elements-color);
+
+  &:hover {
+    background-color: var(--dark-black-color);
+    border: 1px solid var(--dark-elements-color);
+  }
 }
