@@ -63,3 +63,38 @@
 
   color: var(--color-secondary);
 }
+
+.noProduct {
+  margin-top: 40px;
+
+  @extend %h1-mobile;
+
+  @include on-tablet {
+    @include h1-tablet;
+  }
+}
+
+.imageNotFound {
+  width:30%;
+  align-self: center;
+  animation: Animation 5s infinite ease-in-out;
+}
+
+.noProductContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+@keyframes Animation {
+  0% {
+    transform: rotate(20deg) scale(90%)
+  }
+  50% {
+    transform: rotate(-10deg) scale(100%)
+  }
+
+  100% {
+    transform: rotate(20deg) scale(90%)
+  }
+}
