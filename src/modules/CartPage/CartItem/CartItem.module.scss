@@ -134,5 +134,7 @@
 
   &:hover {
     opacity: 0.3;
+    background-color: var(--dark-black-color);
+    border: 1px solid var(--dark-white-color);
   }
 }
