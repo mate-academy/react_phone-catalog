@@ -14,6 +14,7 @@ import { PagesSwitcher } from './../pagesSwitcher/PagesSwitcher';
 import { CatalogFilters } from '../catalogFilters/CatalogFilters';
 import {
   setModels,
+  setPage,
   setStartShowFrom,
   setTitle,
 } from './../../../features/pagesDetailsSlice';
@@ -30,7 +31,6 @@ export const Catalog: React.FC = () => {
 
   const [perPage, setPerPage] = useState('4');
   const [sortBy, setSortBy] = useState('age');
-  const [page, setPage] = useState(1);
   const [displayedProducts, setDisplayedProducts] = useState<Product[]>([]);
   const [pagesWithProducts, setPagesWithProducts] = useState<number[]>([]);
   const [noProductsMessage, setNoProductsMessage] = useState('');
@@ -55,6 +55,8 @@ export const Catalog: React.FC = () => {
   const [searchParams] = useSearchParams();
   const query = searchParams.get('query');
 
+  const page = useAppSelector(state => state.pagesDetails.page);
+
   useEffect(() => {
     const catalog = document.getElementById('catalogId');
 
@@ -75,13 +77,16 @@ export const Catalog: React.FC = () => {
     }
 
     if (pageParams) {
-      if (perPageParam !== 'all') {
-        setPage(+pageParams);
+      if (perPageParam) {
+        dispatch(setPage(+pageParams));
         dispatch(setStartShowFrom(+perPage * (+pageParams - 1)));
       } else {
-        setPage(1);
-        setStartShowFrom(0);
+        dispatch(setPage(1));
+        dispatch(setStartShowFrom(0));
       }
+    } else {
+      dispatch(setPage(1));
+      dispatch(setStartShowFrom(0));
     }
   }, [
     location.search,
@@ -90,12 +95,8 @@ export const Catalog: React.FC = () => {
     pageParams,
     perPageParam,
     dispatch,
+    page,
   ]);
-
-  useEffect(() => {
-    setPage(1);
-    setStartShowFrom(0);
-  }, [location.pathname, perPageParam]);
 
   useEffect(() => {
     if (models !== null) {
@@ -117,10 +118,10 @@ export const Catalog: React.FC = () => {
 
   useEffect(() => {
     const prepereToShow = (categ: string) => {
-      let filteredProduct;
+      let filteredProducts: Product[];
 
       if (query) {
-        filteredProduct = productsFromServer.filter(prod => {
+        filteredProducts = productsFromServer.filter(prod => {
           if (
             prod.category === categ &&
             prod.name.toLowerCase().includes(query.toLowerCase().trim())
@@ -135,7 +136,7 @@ export const Catalog: React.FC = () => {
           `${t('there_are_no')} ${t(location.pathname.slice(1))} ${t('matching_the_query')}`,
         );
       } else {
-        filteredProduct = productsFromServer.filter(
+        filteredProducts = productsFromServer.filter(
           prod => prod.category === categ,
         );
 
@@ -144,47 +145,47 @@ export const Catalog: React.FC = () => {
         );
       }
 
-      dispatch(setModels(filteredProduct.length));
+      dispatch(setModels(filteredProducts.length));
 
       switch (sortBy) {
         case 'title':
           if (perPage !== 'all') {
-            return filteredProduct
+            return filteredProducts
               .slice()
               .sort((el1, el2) => {
                 return el1.name.localeCompare(el2.name);
               })
               .slice(startShowFrom, startShowFrom + +perPage);
           } else {
-            return filteredProduct.slice().sort((el1, el2) => {
+            return filteredProducts.slice().sort((el1, el2) => {
               return el1.name.localeCompare(el2.name);
             });
           }
 
         case 'price':
           if (perPage !== 'all') {
-            return filteredProduct
+            return filteredProducts
               .slice()
               .sort((el1, el2) => {
                 return el1.price - el2.price;
               })
               .slice(startShowFrom, startShowFrom + +perPage);
           } else {
-            return filteredProduct.slice().sort((el1, el2) => {
+            return filteredProducts.slice().sort((el1, el2) => {
               return el1.price - el2.price;
             });
           }
 
         default:
           if (perPage !== 'all') {
-            return filteredProduct
+            return filteredProducts
               .slice()
               .sort((el1, el2) => {
                 return el2.year - el1.year;
               })
               .slice(startShowFrom, startShowFrom + +perPage);
           } else {
-            return filteredProduct.slice().sort((el1, el2) => {
+            return filteredProducts.slice().sort((el1, el2) => {
               return el2.year - el1.year;
             });
           }
@@ -253,7 +254,7 @@ export const Catalog: React.FC = () => {
         <div className={styles.gridContainer}>
           <div id="catalogId" className={styles.catalog}>
             <div className={styles.catalog__path}>
-              <Link className={styles.catalog__pathHomeLink} to="/">
+              <Link to="/">
                 {isDark ? (
                   <img src="./icons/dark-theme-icons/home-ico.svg" alt="home" />
                 ) : (
@@ -286,12 +287,10 @@ export const Catalog: React.FC = () => {
             </p>
             <SearchBar setLoader={setFilterLoader} />
             <CatalogFilters
-              page={page}
               perPage={perPage}
               sortBy={sortBy}
               setSort={setSortBy}
               setPer={setPerPage}
-              setPagePage={setPage}
             />
             {loadingStatus && <Loader />}
             {loadingError !== '' && (

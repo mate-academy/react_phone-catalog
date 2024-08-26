@@ -1,9 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import styles from './PagesSwitcher.module.scss';
 import { updateURLParams } from './../services/updateUrl';
-import { useLocation, useNavigate, useSearchParams } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../../app/hooks';
-import { setStartShowFrom } from '../../../features/pagesDetailsSlice';
+import {
+  setDisablePagesArrow,
+  setPage,
+  setStartShowFrom,
+} from '../../../features/pagesDetailsSlice';
 
 interface PagesSwitcherProps {
   sortBy: string;
@@ -18,25 +22,25 @@ export const PagesSwitcher: React.FC<PagesSwitcherProps> = ({
 }) => {
   const root = document.documentElement;
   const navigate = useNavigate();
-  const location = useLocation();
   const dispatch = useAppDispatch();
-
-  const [disablePagesArrow, setDisablePagesArrow] = useState('disableLeft');
 
   const [searchParams] = useSearchParams();
   const query = searchParams.get('query') || '';
+  const page = searchParams.get('page') || '';
 
   const models = useAppSelector(state => state.pagesDetails.models);
   const isDark = useAppSelector(state => state.boolean.isDark);
   const startShowFrom = useAppSelector(
     state => state.pagesDetails.startShowFrom,
   );
-
-  useEffect(() => {
-    root.style.setProperty('--page-starts-from', '0');
-  }, [location.pathname, root]);
+  const disablePagesArrow = useAppSelector(
+    state => state.pagesDetails.disablePagesArrow,
+  );
+  const pageState = useAppSelector(state => state.pagesDetails.page);
 
   const handlePageButton = (currentPage: number) => {
+    dispatch(setPage(currentPage));
+    dispatch(setDisablePagesArrow(''));
     navigate(updateURLParams(sortBy, perPage, currentPage, query));
 
     if (perPage !== 'all') {
@@ -47,63 +51,78 @@ export const PagesSwitcher: React.FC<PagesSwitcherProps> = ({
   };
 
   const handlePagesLeft = (): string | void => {
+    dispatch(setDisablePagesArrow(''));
+
+    if (pageState > 1) {
+      navigate(updateURLParams(sortBy, perPage, pageState - 1, query));
+    } else {
+      dispatch(setDisablePagesArrow('disableLeft'));
+    }
+
     const currentPosition = parseInt(
       getComputedStyle(root).getPropertyValue('--page-starts-from'),
     );
-
-    const DISABLE_BUTTON_POSITION = 0;
-
-    if (currentPosition === DISABLE_BUTTON_POSITION) {
-      return;
-    }
-
-    setDisablePagesArrow('');
 
     const newPosition = currentPosition - 40;
 
-    if (newPosition === DISABLE_BUTTON_POSITION) {
-      setDisablePagesArrow('disableLeft');
-    }
+    const DISABLE_BUTTON_POSITION = 0;
 
-    root.style.setProperty('--page-starts-from', `${newPosition}px`);
+    if (pageState >= 1) {
+      dispatch(setDisablePagesArrow(''));
+
+      if (currentPosition > DISABLE_BUTTON_POSITION) {
+        root.style.setProperty('--page-starts-from', `${newPosition}px`);
+      } else if (newPosition <= DISABLE_BUTTON_POSITION && pageState === 1) {
+        dispatch(setDisablePagesArrow('disableLeft'));
+      }
+    }
   };
 
+  useEffect(() => {
+    if (page && +page > 4 && +page !== pagesWithProducts.length) {
+      root.style.setProperty('--page-starts-from', `${+page * 40 - 160}px`);
+      dispatch(setDisablePagesArrow(''));
+    } else if (page && +page <= 4) {
+      dispatch(setDisablePagesArrow('disableLeft'));
+    } else if (page && +page === pagesWithProducts.length) {
+      dispatch(setDisablePagesArrow('disableRight'));
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   const handlePagesRight = (): string | void => {
+    dispatch(setDisablePagesArrow(''));
+
+    if (pageState < pagesWithProducts.length) {
+      navigate(updateURLParams(sortBy, perPage, pageState + 1, query));
+    } else {
+      dispatch(setDisablePagesArrow('disableRight'));
+    }
+
     const currentPosition = parseInt(
       getComputedStyle(root).getPropertyValue('--page-starts-from'),
     );
 
-    let DISABLE_BUTTON_POSITION;
-
-    if (perPage !== 'all') {
-      DISABLE_BUTTON_POSITION =
-        Math.ceil(models / +perPage) * 32 +
-        (Math.ceil(models / +perPage) - 1) * 8 -
-        (4 * 32 + 3 * 8);
-    } else {
-      DISABLE_BUTTON_POSITION =
-        Math.ceil(models) * 32 + (Math.ceil(models) - 1) * 8 - (4 * 32 + 3 * 8);
-    }
-
-    if (currentPosition >= DISABLE_BUTTON_POSITION) {
-      return;
-    }
-
-    setDisablePagesArrow('');
-
     const newPosition = currentPosition + 40;
 
-    if (newPosition >= DISABLE_BUTTON_POSITION) {
-      setDisablePagesArrow('disableRight');
+    const DISABLE_BUTTON_POSITION =
+      Math.ceil(pagesWithProducts.length) * 32 +
+      (Math.ceil(pagesWithProducts.length) - 1) * 8 -
+      (4 * 32 + 3 * 8);
+
+    if (pageState > 3 && pageState < pagesWithProducts.length) {
+      dispatch(setDisablePagesArrow(''));
+
+      if (currentPosition < DISABLE_BUTTON_POSITION) {
+        root.style.setProperty('--page-starts-from', `${newPosition}px`);
+      } else if (
+        newPosition >= DISABLE_BUTTON_POSITION &&
+        pageState === pagesWithProducts.length
+      ) {
+        dispatch(setDisablePagesArrow('disableRight'));
+      }
     }
-
-    root.style.setProperty('--page-starts-from', `${newPosition}px`);
   };
-
-  useEffect(() => {
-    root.style.setProperty('--page-starts-from', '0');
-    setDisablePagesArrow('disableLeft');
-  }, [perPage, root.style]);
 
   const numbersButtonStyles = (currentPage: number) => {
     if (!isDark) {

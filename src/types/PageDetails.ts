@@ -5,5 +5,7 @@ export type PagesDetails = {
   models: number;
   itemsQuantity: ItemsQuantity;
   verticalPaginationHeight: number;
+  page: number;
   startShowFrom: number;
+  disablePagesArrow: string;
 };

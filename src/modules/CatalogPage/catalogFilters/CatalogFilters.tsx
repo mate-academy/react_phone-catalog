@@ -3,8 +3,9 @@ import styles from './CatalogFilters.module.scss';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { updateURLParams } from './../services/updateUrl';
 import Select, { components, SingleValue } from 'react-select';
-import { useAppSelector } from '../../../app/hooks';
+import { useAppDispatch, useAppSelector } from '../../../app/hooks';
 import { useTranslation } from 'react-i18next';
+import { setDisablePagesArrow } from '../../../features/pagesDetailsSlice';
 
 interface OptionsSortByType {
   value: string;
@@ -34,30 +35,28 @@ const DropdownIndicator = (props: any) => {
 };
 
 interface CatalogFiltersProps {
-  page: number;
   perPage: string;
   sortBy: string;
   setSort: React.Dispatch<React.SetStateAction<string>>;
   setPer: React.Dispatch<React.SetStateAction<string>>;
-  setPagePage: React.Dispatch<React.SetStateAction<number>>;
 }
 
 export const CatalogFilters: React.FC<CatalogFiltersProps> = ({
-  page,
   perPage,
   sortBy,
   setSort,
   setPer,
-  setPagePage,
 }) => {
   const { t } = useTranslation();
-
+  const root = document.documentElement;
   const navigate = useNavigate();
+  const dispatch = useAppDispatch();
 
   const [searchParams] = useSearchParams();
   const query = searchParams.get('query') || '';
 
   const isDark = useAppSelector(state => state.boolean.isDark);
+  const page = useAppSelector(state => state.pagesDetails.page);
 
   const optionsSortBy: OptionsSortByType[] = [
     { value: 'age', label: `${t('newest')}` },
@@ -98,6 +97,7 @@ export const CatalogFilters: React.FC<CatalogFiltersProps> = ({
       const valueSortBy = option.value;
 
       setSort(valueSortBy);
+
       if (perPage.toUpperCase() === perPage.toLowerCase()) {
         navigate(updateURLParams(valueSortBy, perPage, page, query));
       } else {
@@ -107,15 +107,17 @@ export const CatalogFilters: React.FC<CatalogFiltersProps> = ({
   };
 
   const handleQuantitySelect = (option: SingleValue<OptionsQuantityType>) => {
+    root.style.setProperty('--page-starts-from', '0');
+    dispatch(setDisablePagesArrow('disableLeft'));
+
     if (option) {
       const valuePerPage = option.value;
 
       if (valuePerPage.toUpperCase() === valuePerPage.toLowerCase()) {
         setPer(valuePerPage);
-        navigate(updateURLParams(sortBy, valuePerPage, page, query));
+        navigate(updateURLParams(sortBy, valuePerPage, 1, query));
       } else {
         setPer('all');
-        setPagePage(1);
         navigate(updateURLParams(sortBy, 'all', 1, query));
       }
     }
