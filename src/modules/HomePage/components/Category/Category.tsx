@@ -2,7 +2,7 @@ export const Category = () => {
   return (
     <section className="category section">
       <div className="container">
-        <h2 className="category__title title">Shop by category</h2>
+        <h2 className="category__title section-title">Shop by category</h2>
 
         <ul className="category__list">
           <li className="category__item">

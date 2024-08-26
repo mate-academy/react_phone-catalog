@@ -5,7 +5,7 @@ type Props = {
 };
 
 export const Menu: React.FC<Props> = ({ className }) => (
-  <aside className={`menu ${className}`}>
+  <aside className={`menu ${className}`.trim()}>
     <Nav className="nav--menu" />
   </aside>
 );

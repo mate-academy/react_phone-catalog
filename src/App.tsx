@@ -1,12 +1,19 @@
-import { Outlet } from 'react-router-dom';
+import { Outlet, useLocation } from 'react-router-dom';
 import './App.scss';
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
 import { Menu } from './components/Menu';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 export const App = () => {
   const [isMenuActive, setIsMenuActive] = useState(false);
+  const location = useLocation();
+
+  if (isMenuActive) {
+    document.body.classList.add('no-scroll');
+  } else {
+    document.body.removeAttribute('class');
+  }
 
   const toggleMenu = () => {
     setIsMenuActive(prev => !prev);
@@ -23,6 +30,11 @@ export const App = () => {
       window.removeEventListener('resize', handleResize);
     };
   };
+
+  useEffect(() => {
+    setIsMenuActive(false);
+    window.scrollTo(0, 0);
+  }, [location]);
 
   return (
     <div className="app">

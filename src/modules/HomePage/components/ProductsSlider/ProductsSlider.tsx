@@ -8,12 +8,15 @@ import {
 import { ProductType } from '../../../../types/ProductType';
 import { Icon } from '../../../../components/Icon';
 import { Product } from '../../../../components/Product';
+import { Loader } from '../../../../components/Loader';
 
 type Props = {
   className?: string;
   title: string;
   products: ProductType[];
   showDiscount?: boolean;
+  isLoading: boolean;
+  errorMessage: string;
 };
 
 export const ProductsSlider: React.FC<Props> = ({
@@ -21,6 +24,8 @@ export const ProductsSlider: React.FC<Props> = ({
   title,
   products,
   showDiscount = true,
+  isLoading,
+  errorMessage,
 }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [itemWidth, setItemWidth] = useState(0);
@@ -132,7 +137,7 @@ export const ProductsSlider: React.FC<Props> = ({
     >
       <div className="container">
         <div className="products-slider__top">
-          <h2 className="products-slider__title title">{title}</h2>
+          <h2 className="products-slider__title section-title">{title}</h2>
 
           <div className="products-slider__buttons">
             <button
@@ -154,22 +159,40 @@ export const ProductsSlider: React.FC<Props> = ({
           </div>
         </div>
 
-        <div className="products-slider__wrapper" ref={wrapperRef}>
-          <ul
-            className="products-slider__list"
-            style={{
-              transform: `translateX(-${translateX}px)`,
-              transition: `transform ${animationDuration}ms`,
-            }}
-            ref={listRef}
-          >
-            {products.map(product => (
-              <li className="products-slider__item" key={product.id}>
-                <Product product={product} showDiscount={showDiscount} />
-              </li>
-            ))}
-          </ul>
-        </div>
+        {isLoading && <Loader />}
+
+        {!isLoading && (
+          <>
+            {errorMessage && (
+              <span className="notification">{errorMessage}</span>
+            )}
+
+            {!products.length && !errorMessage && (
+              <span className="notification">
+                {`No ${title.toLowerCase()} yet`}
+              </span>
+            )}
+
+            {!!products.length && (
+              <div className="products-slider__wrapper" ref={wrapperRef}>
+                <ul
+                  className="products-slider__list"
+                  style={{
+                    transform: `translateX(-${translateX}px)`,
+                    transition: `transform ${animationDuration}ms`,
+                  }}
+                  ref={listRef}
+                >
+                  {products.map(product => (
+                    <li className="products-slider__item" key={product.id}>
+                      <Product product={product} showDiscount={showDiscount} />
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+          </>
+        )}
       </div>
     </section>
   );

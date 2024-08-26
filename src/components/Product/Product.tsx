@@ -1,5 +1,7 @@
+import { Link } from 'react-router-dom';
 import { ProductType } from '../../types/ProductType';
-import { Icon } from '../Icon';
+import { AddToCart } from '../AddToCart';
+import { AddToFav } from '../AddToFav';
 
 type Props = {
   className?: string;
@@ -16,10 +18,18 @@ export const Product: React.FC<Props> = ({
 
   return (
     <article className={`product ${className}`.trim()}>
-      <a className="product__img-link" href="#">
+      <Link
+        className="product__img-link"
+        to={`/${product.category}/${product.id}`}
+      >
         <img className="product__img" src={product.image} alt={product.name} />
-      </a>
-      <h3 className="product__title">{product.name}</h3>
+      </Link>
+      <Link
+        className="product__title"
+        to={`/${product.category}/${product.id}`}
+      >
+        {product.name}
+      </Link>
       <div className="product__prices">
         <span className="product__price">{`$${product.price}`}</span>
         {hasDiscount && (
@@ -43,12 +53,8 @@ export const Product: React.FC<Props> = ({
       </ul>
 
       <div className="product__buttons">
-        <button className="product__button-cart" type="button">
-          Add to cart
-        </button>
-        <button className="product__button-fav" type="button">
-          <Icon iconName="icon-heart" />
-        </button>
+        <AddToCart product={product} />
+        <AddToFav product={product} />
       </div>
     </article>
   );

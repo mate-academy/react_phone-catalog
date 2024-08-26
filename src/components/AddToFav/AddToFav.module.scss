@@ -1,0 +1,28 @@
+.add-to-fav {
+  cursor: pointer;
+  border: 1px solid transparent;
+  background-color: $c-surface-2;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+
+  &--added {
+    background-color: transparent;
+    border-color: $c-elements;
+
+    .icon {
+      fill: $c-red;
+    }
+  }
+
+  @include on-desktop {
+    transition: background-color 0.5s;
+
+    &:hover {
+      background-color: $c-icons;
+    }
+  }
+}

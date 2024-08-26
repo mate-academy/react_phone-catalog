@@ -1,0 +1,15 @@
+.favorites {
+
+  &__title {
+    margin: 0 0 8px;
+  }
+
+  &__text {
+    margin: 0 0 32px;
+    color: $c-secondary;
+
+    @include on-tablet {
+    margin: 0 0 40px;
+    }
+  }
+}

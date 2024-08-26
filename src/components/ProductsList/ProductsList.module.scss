@@ -1,0 +1,17 @@
+.products-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
+  @include page-grid;
+
+  row-gap: 40px;
+
+  &__item {
+    grid-column: 1 / -1;
+
+    @include on-tablet {
+      grid-column: span 6;
+    }
+  }
+}

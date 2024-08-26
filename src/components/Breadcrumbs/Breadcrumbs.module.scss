@@ -1,0 +1,48 @@
+.breadcrumbs {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 24px;
+
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  @include on-tablet {
+    margin: 0 0 40px;
+  }
+
+  &__btn {
+    display: flex;
+
+    @include on-desktop {
+      .icon {
+        transition: fill 0.5s;
+
+        &:hover {
+          fill: $c-accent;
+        }
+      }
+    }
+  }
+
+  &__link {
+    text-decoration: none;
+    color: $c-white;
+
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 100%;
+
+    &--active {
+      color: $c-secondary;
+    }
+
+    @include on-desktop {
+      transition: color 0.5s;
+
+      &:hover {
+        color: $c-accent;
+      }
+    }
+  }
+}

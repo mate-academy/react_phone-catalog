@@ -90,6 +90,27 @@
     }
   }
 
+  &__buttons-quantity {
+    box-sizing: border-box;
+    position: absolute;
+    transform: translate(7px, -7px);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 14px;
+    height: 14px;
+    padding: 2px 2px 0;
+
+    font-weight: 600;
+    font-size: 9px;
+    color: $c-white;
+
+    border-radius: 100%;
+    border: 1px solid $c-black;
+    background-color: $c-red;
+  }
+
   &--menu {
     display: flex;
     flex-direction: column;

@@ -12,6 +12,11 @@
 @import './components/Product/Product.module';
 @import './components/Header/Header.module';
 @import './components/Footer/Footer.module';
+@import './components/ProductsList/ProductsList.module';
+@import './components/AddToCart/AddToCart.module';
+@import './components/AddToFav/AddToFav.module';
+@import './components/Breadcrumbs/Breadcrumbs.module';
+@import './components/Loader/Loader.module';
 
 // Module HomePage
 @import './modules/HomePage/components/Hero/Hero.module';
@@ -20,7 +25,12 @@
 @import './modules/HomePage/components/ProductsSlider/ProductsSlider.module';
 @import './modules/HomePage/components/Banner/Banner.module';
 
+// Module ShoppingCartPage
+@import './modules/ShoppingCartPage/ShoppingCartPage.module';
+@import './modules/ShoppingCartPage/components/CartItem/CartItem.module';
 
+// Module FavoritesPage
+@import './modules/FavoritesPage/FavoritesPage.module';
 
 html {
   min-width: 320px;
@@ -36,6 +46,10 @@ html {
 
 body {
   margin: 0;
+
+  &.no-scroll {
+    overflow: hidden;
+  }
 }
 
 /* General */
@@ -52,6 +66,18 @@ body {
   }
 }
 
+.page {
+  padding: 24px 0 56px;
+
+  @include on-tablet {
+    padding: 24px 0 64px;
+  }
+
+  @include on-desktop {
+    padding: 24px 0 80px;
+  }
+}
+
 .section {
   padding: 28px 0;
 
@@ -64,7 +90,13 @@ body {
   }
 }
 
-.title {
+.page-title {
+  font-size: 32px;
+  line-height: 128%;
+  letter-spacing: -0.01em;
+}
+
+.section-title {
   margin: 0 0 24px;
   font-size: 22px;
   line-height: 140%;
@@ -72,6 +104,31 @@ body {
   @include on-tablet {
     font-size: 32px;
     line-height: 128%;
+  }
+}
+
+.button {
+  cursor: pointer;
+  background-color: $c-accent;
+  border: none;
+  color: inherit;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+    pointer-events: none;
+  }
+
+  @include on-desktop {
+    transition: background-color 0.5s;
+
+    &:hover {
+      background-color: #a378ff;
+    }
   }
 }
 
@@ -86,6 +143,18 @@ body {
   clip-path: inset(100%);
   clip: rect(0 0 0 0);
   overflow: hidden;
+}
+
+.notification {
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 140%;
+  color: $c-red;
+
+  @include on-tablet {
+    font-size: 32px;
+    line-height: 128%;
+  }
 }
 
 /* app */

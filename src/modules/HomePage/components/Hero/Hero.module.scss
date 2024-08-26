@@ -11,9 +11,6 @@
 
   &__title {
     margin: 0 0 24px;
-    font-size: 32px;
-    line-height: 128%;
-    letter-spacing: -0.01em;
     max-width: 320px;
 
     @include on-tablet {

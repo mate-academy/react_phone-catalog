@@ -34,7 +34,9 @@ export const Hero = () => {
   return (
     <section className="hero">
       <div className="container">
-        <h1 className="hero__title">Welcome to Nice Gadgets store!</h1>
+        <h1 className="hero__title page-title">
+          Welcome to Nice Gadgets store!
+        </h1>
       </div>
 
       <PicturesSlider

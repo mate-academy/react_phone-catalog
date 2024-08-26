@@ -7,7 +7,7 @@ type Props = {
 };
 
 export const Btn: React.FC<Props> = ({ className = '', iconName, onClick }) => (
-  <button className={`${className} btn`.trim()} onClick={onClick}>
+  <button className={`btn ${className}`.trim()} onClick={onClick}>
     <Icon iconName={iconName} />
   </button>
 );
