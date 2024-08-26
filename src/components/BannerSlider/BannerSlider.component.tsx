@@ -30,7 +30,13 @@ const getTotalImgs = () => {
 };
 
 export const BannerSlider = () => {
-  const [index, setIndex] = useState(0);
+  const [index, setIndex] = useState<number>(0);
+
+  useEffect(() => {
+    const autoSlider = setInterval(() => setIndex(index + 1), 5000);
+
+    return () => clearInterval(autoSlider);
+  }, [index]);
 
   useEffect(() => {
     const lastIndex = bannerImgs.length - 1;
@@ -73,8 +79,9 @@ export const BannerSlider = () => {
                 className={`slider__item slider__item--${position}`}
               >
                 <div className="slider__overlay">
-                  <h1 className="slider__overlay-title">{img.title}</h1>
+                  <h2 className="slider__overlay-title">{img.title}</h2>
                   <h3 className="slider__overlay-subtitle">{img.subtitle}</h3>
+                  <button className="slider__overlay-button">Order now</button>
                 </div>
                 <img
                   src={img.url}

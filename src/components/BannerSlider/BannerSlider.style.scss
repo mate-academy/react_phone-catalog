@@ -1,4 +1,5 @@
 .slider {
+  grid-column: 1/-1;
   display: flex;
   flex-direction: column;
   margin-top: 24px;
@@ -16,24 +17,44 @@
     margin-top: 56px;
   }
   &__container {
-    display: block;
+    @include grid-page;
+  }
+  &__prevBtn {
+    display: none;
+    width: 32px;
+    height: 100%;
+    border: 1px solid $c-icons;
+    background: url('../../../public/img/icons/chevron-left.svg') no-repeat
+      center;
 
     @include on-tablet {
-      display: grid;
-      grid-template-columns: repeat(12, 1fr);
-      column-gap: 16px;
-      padding-inline: 24px;
+      display: block;
     }
 
     @include on-desktop {
-      display: grid;
-      grid-template-columns: repeat(12, 1fr);
-      column-gap: 16px;
-      padding-inline: 24px;
+      display: block;
+    }
+  }
+  &__nextBtn {
+    display: none;
+    justify-self: end;
+    width: 32px;
+    height: 100%;
+    border: 1px solid $c-icons;
+    background: url('../../../public/img/icons/chevron-right.svg') no-repeat
+    center;
+
+    @include on-tablet {
+      display: block;
+    }
+
+    @include on-desktop {
+      display: block;
     }
   }
   &__frame {
-    grid-column: 2/12;
+    grid-column: 1/-1;
+    margin-inline: -16px;
     display: flex;
     height: 0;
     padding-top: 100%;
@@ -41,10 +62,14 @@
     position: relative;
 
     @include on-tablet {
+      grid-column: 2/12;
+      margin-inline: 0;
       padding-top: 38.4%;
     }
 
     @include on-desktop {
+      grid-column: 2/24;
+      margin-inline: 0;
       padding-top: 38.4%;
     }
   }
@@ -73,47 +98,52 @@
   }
   &__overlay {
     position: absolute;
+    top: 10%;
+    left: 10%;
+    right: 10%;
+    margin: 10px;
     display: flex;
+    text-align: center;
     flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
 
     @include on-tablet {
       position: relative;
-      background-color: $c-secondary;
+      background-color: $c-primary;
       border-radius: 10px;
-      margin: 10px;
+      align-items: flex-start;
+      top: 0;
       left: 0;
     }
 
     @include on-desktop {
       position: relative;
-      background-color: $c-secondary;
+      align-items: flex-start;
+      background-color: $c-primary;
       border-radius: 10px;
-      margin: 10px;
+      top: 0;
       left: 0;
     }
     &-title {
+      margin-left: 15px;
       color: $c-white;
-      margin: 40px 25px 14px;
       line-height: 1em;
       text-align: center;
 
       @include on-tablet {
-        color: $c-primary;
         text-align: left;
-        font-size: 2em;
         line-height: 1em;
       }
 
       @include on-desktop {
-        font-size: 3em;
-        color: $c-primary;
         text-align: left;
       }
     }
     &-subtitle {
+      margin-left: 15px;
       font-family: Mont-semibold, sans-serif;
       color: $c-elements;
-      margin: 0 0 25px 25px;
       display: none;
 
       @include on-tablet {
@@ -123,6 +153,27 @@
 
       @include on-desktop {
         display: block;
+      }
+    }
+    &-button {
+      display: none;
+      margin-left: 15px;
+      text-transform: uppercase;
+      font-family: Mont-regular, sans-serif;
+      font-size: small;
+      border-radius: 20px;
+      width: 125px;
+      background-color: $c-primary;
+      border: 1px solid $c-elements;
+      color: $c-elements;
+      padding: 10px;
+
+      @include on-tablet {
+        display: inline;
+      }
+      
+      @include on-desktop {
+        display: inline;
       }
     }
   }
@@ -143,41 +194,7 @@
       width: 60%;
     }
   }
-  &__nextBtn {
-    display: none;
-    grid-column: 12;
-    justify-self: flex-end;
-    width: 32px;
-    height: 100%;
-    border: 1px solid $c-icons;
-    background: url('../../../public/img/icons/chevron-right.svg') no-repeat
-      center;
 
-    @include on-tablet {
-      display: block;
-    }
-
-    @include on-desktop {
-      display: block;
-    }
-  }
-  &__prevBtn {
-    display: none;
-    grid-column: 1;
-    width: 32px;
-    height: 100%;
-    border: 1px solid $c-icons;
-    background: url('../../../public/img/icons/chevron-left.svg') no-repeat
-      center;
-
-    @include on-tablet {
-      display: block;
-    }
-
-    @include on-desktop {
-      display: block;
-    }
-  }
 }
 
 .dots {

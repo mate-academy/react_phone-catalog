@@ -1,1 +1,10 @@
-// empty
+.home-page {
+  @include grid-page;
+  @include inline-padding;
+  &__title {
+    grid-row: 1;
+    grid-column: 1/-1;
+    padding-block: 24px;
+  }
+
+}
