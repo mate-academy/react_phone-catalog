@@ -1,7 +1,7 @@
 const BASE_URL =
   // eslint-disable-next-line
-  'https://srtrace.github.io/react_phone-catalog/api/products.json';
-;
+  'https://srtrace.github.io/react_phone-catalog/api';
+
 // const TEMP_BASE_URL = 'http://localhost:3000/api';
 // const BASE_URL = '../api';
 
