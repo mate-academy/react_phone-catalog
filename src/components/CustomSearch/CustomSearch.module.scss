@@ -39,5 +39,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
+
+    @include on-desktop {
+      width: 64px;
+      height: 64px;
+    }
   }
 }

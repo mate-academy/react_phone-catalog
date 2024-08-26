@@ -1,4 +1,4 @@
-import { Ref, forwardRef, useState } from 'react';
+import { Ref, forwardRef, useEffect, useState } from 'react';
 import '../../styles/main.scss';
 import styles from './Header.module.scss';
 import classNames from 'classnames';
@@ -31,11 +31,17 @@ const Header = forwardRef<HTMLDivElement, HeaderProps>(
       location.pathname.slice(1) === ProductCategories.tablets ||
       location.pathname.slice(1) === ProductCategories.accessories;
 
+    useEffect(() => {
+      if (!isCatalogPage) {
+        setIsSearchShow(false);
+      }
+    }, [isCatalogPage]);
+
     return (
       <div className={styles.header} id="header" ref={ref}>
         <div className={styles.header__content}>
           <div className="top-bar">
-            <Link to="/" className="top-bar__link">
+            <Link to="/home" className="top-bar__link">
               <img src="./img/icons/logo.svg" className="logo" alt="logo" />
             </Link>
 
