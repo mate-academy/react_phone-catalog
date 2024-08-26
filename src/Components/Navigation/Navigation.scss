@@ -1,31 +1,131 @@
 @import '../../utils/mixins';
 
+@font-face {
+  font-family: Mont-navigation-on-tablet;
+  src: url('../../../public/fonts/Mont-Regular.otf');
+}
+
+@font-face {
+  font-family: Mont-bold-navigation-on-tablet;
+  src: url('../../../public/fonts/Mont-Bold.otf');
+}
+
 .navigation {
+  @include page-grid;
+
   display: flex;
   justify-content: space-between;
-  width: 320px;
   height: 48px;
-  border: 1px solid grey;
+
+  @include on-tablet {
+    grid-column: 12 span;
+  }
+
+  @include on-desktop {
+    grid-column: span 24;
+  }
+
+  border-bottom: 1px solid #E2E6E9;
   background-color: white;
-
-  @include navigation-on-tablet {
-    width: 680px;
-  }
-
-  @include navigation-on-desktop {
-    height: 64px;
-    width: 1440px;
-  }
 
   &__logo-block {
     display: flex;
     align-items: center;
     width: 96px;
     justify-content: center;
+    grid-column: 1 / 2;
+  }
+  &__content {
+    display: none;
+
+    @include on-tablet {
+      display: flex;
+    margin-right: auto;
+    gap: 20px;
+    }
+  }
+  &__block {
+  &-link {
+    height: 48px;
+    display: flex;
+    align-items: center;
+    &:hover {
+      padding-top: 4px;
+      color: black;
+      border-bottom: 4px solid black;
+      font-family: Mont-bold-navigation-on-tablet, sans-serif;
+    }
+  }
+  &-bag {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-left: 1px solid #E2E6E9;
+
+  }
+  &-heart {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-left: 1px solid #E2E6E9;
+
+  }
+}
+  &__link {
+    display: none;
+
+    @include on-tablet {
+      display: inline;
+      height: 48px;
+      padding: 18px 3px 0;
+font-family: Mont-navigation-on-tablet, sans-serif;
+font-size: 12px;
+font-weight: 800;
+line-height: 11px;
+letter-spacing: 0.04em;
+text-align: center;
+color: #89939A;
+      text-decoration: none;
+    }
+    &:hover {
+      color: black;
+    }
   }
   &__menu-block {
     display: flex;
-    justify-content: right;
-    width: 208px;
+    justify-content: end;
+    grid-column: 2 / 6;
+
+    @include on-tablet {
+      grid-column: 3 / 13;
+      justify-content: center;
+      align-items: center;
+      gap: 16px;
+      margin-right: 24px;
+    }
+  }
+  &__icons-block {
+    display: none;
+
+    @include on-tablet {
+      display: flex;
+    justify-content: start;
+    }
+  }
+  &__icons {
+    width: 48px;
+    height: 48px;
+    display: flex;
+      justify-content: center;
+      align-items: center;
+      border-left: 1px solid #E2E6E9;
+
+      @include on-tablet {
+        border: 0;
+      }
   }
 }

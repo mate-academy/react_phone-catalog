@@ -1,5 +1,7 @@
 import Slider from 'react-slick';
 import './MainSlider.scss';
+// import { PrevArrow } from '../Arrows/PrevArrow';
+// import { NextArrow } from '../Arrows/NextArrow';
 
 const bannerPhotos = [
   { id: 1, image: '/img/banner-phones.png' },
@@ -9,7 +11,7 @@ const bannerPhotos = [
 
 export const MainSlider = () => {
   const settings = {
-    arrows: false,
+    arrows: true,
     dots: true,
     infinite: true,
     slideToShow: 1,
@@ -17,6 +19,7 @@ export const MainSlider = () => {
     speed: 500,
     autoplay: true,
     autoplaySpeed: 5000,
+    className: 'slick__main-slider--width',
   };
 
   return (

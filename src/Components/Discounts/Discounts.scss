@@ -1,8 +1,13 @@
-
+@import '../../utils/mixins';
 
 .discounts {
-  width: 320px;
+  width: 456px;
   overflow: hidden;
+
+  @include on-tablet {
+    width: 744px;
+  }
+  
   &__title {
     margin-top: 60px;
     width: 180px;

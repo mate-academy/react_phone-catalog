@@ -6,12 +6,18 @@
 @import '../../utils/mixins';
 
 .home {
-  @include grid-for-phone;
+  @include page-grid;
+  
+  width: 320px;
 
-  max-width: 320px;
   &__title {
     font-family: Mont, sans-serif;
     margin: 20px 16px 0;
     grid-column: 1 / 5;
+
+    @include on-tablet {
+      grid-column: 1 / 13;
+      font-size: 58px;
+    }
   }
 }

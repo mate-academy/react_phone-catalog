@@ -18,7 +18,6 @@ export const CartPage = () => {
     slideToScroll: 1,
     infinite: false,
     variableWidth: true,
-    className: 'slider-width',
   };
 
   return (

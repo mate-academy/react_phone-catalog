@@ -113,10 +113,10 @@ text-align: right;
 
 &__buttons {
   display: flex;
-  width: 180px;
+  justify-content: center;
+  width: 170px;
   height: 40px;
   margin-top: 15px;
-  justify-content: center;
 
 }
 &__adding-button {
@@ -140,7 +140,7 @@ border-radius: 48px;
 background-image: url('../../img/Favourites\ \(Heart\ Like\).svg');
 background-repeat: no-repeat;
 background-position: center;
-background-color: #e2e6e9 !important;
+background-color: white !important;
 border: 1px solid #B4BDC3;
 }
 }

@@ -1,13 +1,6 @@
 @import '../../utils/mixins';
 
 .icon {
-  width: 48px;
-  height: 48px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-left: 1px solid #E2E6E9;
-
   &__menu {
     display: flex;
     background-image: url('../../img/Menu.svg');
@@ -16,6 +9,10 @@
     height: 16px;
     width: 16px;
     cursor: pointer;
+    
+    @include on-tablet {
+      display: none;
+    }
     &-cross {
       background-image: url('../../img/Close.svg');
         background-repeat: no-repeat;
@@ -45,6 +42,40 @@
       justify-content: center;
       align-items: center;
       cursor: pointer;
+    }
+  }
+  &__navigation {
+    &-heart {
+      background-image: url('../../img/Favourites\ \(Heart\ Like\).svg');
+      background-repeat: no-repeat;
+      width: 16px;
+      height: 16px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      transform: scale(1);
+      transition: 0.3 s ease transform;
+      &:hover {
+        transition: 0.3 s ease transform;
+        transform: scale(1.1);
+      }
+    }
+    &-bag {
+      background-image: url('../../img/Shopping\ bag\ \(Cart\).svg');
+      background-repeat: no-repeat;
+      width: 16px;
+      height: 16px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      transform: scale(1);
+      transition: 0.3 s ease transform;
+      &:hover {
+        transition: 0.3 s ease transform;
+        transform: scale(1.1);
+      }
     }
   }
 }

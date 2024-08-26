@@ -6,26 +6,22 @@
   background-repeat: no-repeat;
   width: 64px;
   height: 22px;
-
-  @include navigation-on-desktop {
-    width: 80px;
-    height: 28px;
-}
   }
   &__menu {
     background-image: url('../../img/Logo_menu.png');
   background-repeat: no-repeat;
   width: 64px;
   height: 22px;
-
-  @include navigation-on-desktop {
-    width: 80px;
-    height: 28px;
-}
   }
   &__footer {
     background-image: url('../../img/Logo.png');
     background-repeat: no-repeat;
+    background-size: 100%;
+
+    @include on-tablet {
+      margin-top: 30px;
+    }
+    
     width: 89px;
     height: 32px;
     margin: 20px 0 0 40px;

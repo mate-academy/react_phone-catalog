@@ -1,5 +1,6 @@
+@import '../../utils/mixins';
+
 .MainSlider {
-  grid-column: 1 / 5;
 &__photos {
   display: flex;
   flex-direction: row;
@@ -7,24 +8,66 @@
   height: 400px;
   width: 320px;
   overflow: hidden;
+  object-fit: cover;
+  grid-column: 1 / 5;
+
+  @include on-tablet {
+    grid-column: 1 / 13;
+    width: 490px;
+    height: 320px;
+    margin: 50px 0 0 70px;
+    :first-child .slick-prev {
+      @include on-tablet {
+        position: absolute;
+      left: 40px;
+      top: 297px;
+      border-radius: 10px;
+      height: 187px;
+      z-index: 1;
+      }
+    }
+    :first-child .slick-next {
+      @include on-tablet {
+        position: absolute;
+      height: 187px;
+      left: 560px;
+      top: 297px;
+      border-radius: 10px;
+      }
+    }
+    }
+  }
+
+
 
   ul {
-    margin-top: 30px;
+    margin-top: 60px;
   }
-}
+
 
 &__photo {
   width: 320px;
   height: 320px;
+  object-fit: cover;
+
+  @include on-tablet {
+    height: 189px;
+    width: 490px;
+  }
 }
 }
 
 .slick {
+
   &-list {
     display: flex;
     flex-direction: row;
-    justify-content: start;
     width: 336px;
+    gap: 16px;
+
+    @include on-tablet {
+      width: 490px;
+    }
   }
   &-dots {
     display: flex !important;
@@ -32,7 +75,7 @@
     justify-content: center;
     list-style: none;
     padding: 0;
-    margin-top: 20px;
+    margin-top: 60px;
     gap: 6px;
 
     li {
@@ -52,6 +95,7 @@
   &-track {
     display: flex;
     flex-direction: row;
+    justify-content: start;
   }
 
   &-active {

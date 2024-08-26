@@ -1,19 +1,48 @@
-@mixin navigation-on-tablet {
-  @media
-    (min-width: 640px) {
-      @content;
-  }
 
-}
-
-@mixin navigation-on-desktop {
-  @media (min-width: 1440px) {
+@mixin on-tablet {
+  @media (min-width: 640px) {
     @content;
   }
+};
+
+@mixin on-desktop {
+  @media (min-width: 1200px) {
+    @content;
+  }
+};
+
+// @mixin grid-tablet {
+//    @media (min-width: 640px) {
+//     display: grid;
+//     grid-template-columns: 32px 32px 32px 32px 32px 32px 32px 32px 32px 32px 32px 32px;
+//     gap: 16px;
+//    }}
+
+//    @mixin grid-desktop {
+//     @media (min-width: 1200px) {
+//       display: grid;
+//   grid-template-columns: 32px 32px 32px 32px 32px 32px 32px 32px 32px 32px 32px 32px 32px 32px 32px 32px 32px 32px 32px 32px 32px 32px 32px 32px;
+//   gap: 16px;
+//   margin: 0 32px;
+//     }}
+
+@mixin page-grid {
+  @media (min-width: 320px) {
+    display: grid;
+    grid-template-columns: 60px 60px 60px 60px;
+    gap: 16px;
+  }
+
+  @include on-tablet {
+    grid-template-columns: repeat(12, 32px);
+    gap: 16px;
+  }
+
+  @include on-desktop {
+grid-template-columns: repeat(24, 32px);
+gap: 16px;
+  }
 }
 
-@mixin grid-for-phone {
-  display: grid;
-  grid-template-columns: 60px 60px 60px 60px;
-  gap: 16px;
-}
+
+

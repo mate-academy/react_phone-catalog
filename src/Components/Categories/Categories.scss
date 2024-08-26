@@ -8,8 +8,24 @@
   src: url('../../../public/fonts/Mont-Regular.otf');
 }
 
+@import '../../utils/mixins';
+
 .categories {
   grid-column: 1 / 5;
+
+  @include on-tablet {
+    grid-column: 1 / 13;
+  }
+
+  &__content {
+    @include on-tablet {
+      width: 640px;
+      display: flex;
+      justify-content: center;
+    }
+
+  }
+
   font-family: Mont, sans-serif;
   &__title {
     grid-column: 1 / 5;
@@ -27,16 +43,22 @@ text-align: left;
   font-family: Mont-thin, sans-serif;
 }
   }
+
   &__option {
     margin-top: 30px;
+
+    @include on-tablet {
+      width: 187px;
+    }
   }
-  &__phones {
+  &__image {
+    object-fit: cover;
     width: 288px;
-  }
-  &__tablets {
-    width: 288px;
-  }
-  &__accessories {
-    width: 288px;
+
+    @include on-tablet {
+      width: 187px;
+      height: 187px;
+    }
   }
 }
+
