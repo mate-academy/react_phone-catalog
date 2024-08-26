@@ -23,5 +23,6 @@
   "bright": "Jasny",
   "dark": "Ciemny",
   "languageSettingsTitle": "Język",
-  "languageSettingsLabel": "Języki:"
+  "languageSettingsLabel": "Języki:",
+  "pageNotFound": "Nie odnaleziono strony!"
 }

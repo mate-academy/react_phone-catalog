@@ -5,6 +5,7 @@ import { App } from './App';
 import { ThemeProvider } from './modules/shared/components/Contexts/ThemeContext';
 // eslint-disable-next-line max-len
 import { LanguageProvider } from './modules/shared/components/Contexts/LanguageContext';
+import './index.scss';
 
 createRoot(document.getElementById('root') as HTMLElement).render(
   <HashRouter>

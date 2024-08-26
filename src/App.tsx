@@ -1,4 +1,3 @@
-import './index.scss';
 import styles from './App.module.scss';
 import { HomePage } from './modules/HomePage/components/HomePage';
 import { Header } from './modules/shared/components/Header';
@@ -10,6 +9,8 @@ import {
 } from './modules/shared/consts/paths';
 import { SettingsPage } from './modules/SettingsPage/components/SettingsPage';
 import { Footer } from './modules/shared/components/Footer';
+// eslint-disable-next-line max-len
+import { PageNotFoundPage } from './modules/PageNotFoundPage/components/PageNotFoundPage';
 
 export const App: React.FC = () => {
   return (
@@ -25,7 +26,7 @@ export const App: React.FC = () => {
         />
 
         <Route path={settingsPath} element={<SettingsPage />} />
-        <Route path="*" element={<div>page not found!</div>} />
+        <Route path="*" element={<PageNotFoundPage />} />
       </Routes>
 
       <Footer className={styles.Footer} />

@@ -1,0 +1,32 @@
+@use "../../../shared/styles/extends";
+@use "../../../shared/styles/mixins" as *;
+
+.Image {
+  max-height: 100%;
+  max-width: 100%;
+  object-fit: contain;
+  overflow: auto;
+}
+
+.Title {
+  @extend %h2;
+  @include color-transition((color: var(--primary-text-color)))
+}
+
+.PageNotFoundPage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  margin: 0 16px 56px;
+  max-height: 60vh;
+
+  @include for-tablet {
+    margin: 0 24px 64px;
+  }
+
+  @include for-desktop {
+    max-height: 50vh;
+    margin: 0 0 80px;
+  }
+}
