@@ -8,12 +8,14 @@ import { HomePage } from './components/HomePage/HomePage';
 import productsFromServer from './api/products.json';
 import { Product } from './types/Propduct';
 import { ProductDetails } from './components/ProductDetails/ProductDetails';
+import { FavoritePage } from './components/FavoritePage/FavoritePage';
 
 export const Root = () => (
   <Routes>
     <Route path="/" element={<App />}>
       <Route index element={<HomePage />} />
       <Route path="product/:itemId" element={<ProductDetails />} />
+      <Route path="favorites" element={<FavoritePage />} />
       <Route path="phones">
         <Route
           index
@@ -29,7 +31,10 @@ export const Root = () => (
         <Route
           path="product/:itemId"
           element={<ProductDetails category="phones" />}
-        />
+        >
+          <Route path="favorites" element={<FavoritePage />} />
+        </Route>
+        <Route path="favorites" element={<FavoritePage />} />
       </Route>
       <Route path="tablets">
         <Route
@@ -46,7 +51,10 @@ export const Root = () => (
         <Route
           path="product/:itemId"
           element={<ProductDetails category="tablets" />}
-        />
+        >
+          <Route path="favorites" element={<FavoritePage />} />
+        </Route>
+        <Route path="favorites" element={<FavoritePage />} />
       </Route>
       <Route path="accessories">
         <Route
@@ -63,7 +71,10 @@ export const Root = () => (
         <Route
           path="product/:itemId"
           element={<ProductDetails category="accessories" />}
-        />
+        >
+          <Route path="favorites" element={<FavoritePage />} />
+        </Route>
+        <Route path="favorites" element={<FavoritePage />} />
       </Route>
       <Route path="*" element={<NotFoundPage />} />
     </Route>
