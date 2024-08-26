@@ -1688,7 +1688,7 @@
     "price": 169,
     "screen": "1.3' OLED",
     "capacity": "38mm",
-    "color": "space gray",
+    "color": "space-gray",
     "ram": "768MB",
     "year": 2017,
     "image": "img/accessories/apple-watch-series-3/space-gray/00.webp"
@@ -1702,7 +1702,7 @@
     "price": 219,
     "screen": "1.3' OLED",
     "capacity": "42mm",
-    "color": "space gray",
+    "color": "space-gray",
     "ram": "768MB",
     "year": 2017,
     "image": "img/accessories/apple-watch-series-3/space-gray/00.webp"
@@ -1772,7 +1772,7 @@
     "price": 329,
     "screen": "1.57' OLED",
     "capacity": "40mm",
-    "color": "space gray",
+    "color": "space-gray",
     "ram": "1GB",
     "year": 2020,
     "image": "img/accessories/apple-watch-series-6/space-gray/00.webp"
@@ -1786,7 +1786,7 @@
     "price": 359,
     "screen": "1.57' OLED",
     "capacity": "44mm",
-    "color": "space gray",
+    "color": "space-gray",
     "ram": "1GB",
     "year": 2020,
     "image": "img/accessories/apple-watch-series-6/space-gray/00.webp"
@@ -2136,7 +2136,7 @@
     "price": 259,
     "screen": "1.57' OLED",
     "capacity": "40mm",
-    "color": "space gray",
+    "color": "space-gray",
     "ram": "1GB",
     "year": 2020,
     "image": "img/accessories/apple-watch-se/space-gray/00.webp"
@@ -2150,7 +2150,7 @@
     "price": 289,
     "screen": "1.78' OLED",
     "capacity": "44mm",
-    "color": "space gray",
+    "color": "space-gray",
     "ram": "1GB",
     "year": 2020,
     "image": "img/accessories/apple-watch-se/space-gray/00.webp"

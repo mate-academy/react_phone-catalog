@@ -51,7 +51,7 @@
     "priceRegular": 250,
     "priceDiscount": 219,
     "colorsAvailable": ["space gray", "silver", "gold"],
-    "color": "space gray",
+    "color": "space-gray",
     "images": [
       "img/accessories/apple-watch-series-3/space-gray/00.webp",
       "img/accessories/apple-watch-series-3/space-gray/01.webp",
