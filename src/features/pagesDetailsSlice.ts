@@ -8,6 +8,7 @@ const initialState: PagesDetails = {
   models: 0,
   itemsQuantity: {},
   verticalPaginationHeight: 0,
+  startShowFrom: 0,
 };
 
 const pagesDetailsSlice = createSlice({
@@ -57,6 +58,9 @@ const pagesDetailsSlice = createSlice({
     setVerticalPaginationHeight: (state, action: PayloadAction<number>) => {
       state.verticalPaginationHeight = action.payload;
     },
+    setStartShowFrom: (state, action: PayloadAction<number>) => {
+      state.startShowFrom = action.payload;
+    },
   },
 });
 
@@ -71,4 +75,5 @@ export const {
   addToItemsQuantity,
   deleteFromItemsQuantity,
   setVerticalPaginationHeight,
+  setStartShowFrom,
 } = pagesDetailsSlice.actions;

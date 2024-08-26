@@ -5,4 +5,5 @@ export type PagesDetails = {
   models: number;
   itemsQuantity: ItemsQuantity;
   verticalPaginationHeight: number;
+  startShowFrom: number;
 };

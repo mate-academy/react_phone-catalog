@@ -62,42 +62,75 @@ export const App: React.FC = () => {
 
   body.classList.add(styles.body);
 
-  const [isGoUpButtonShown, setIsGoUpButtonShown] = useState(true);
+  const [isGoUpButtonShown] = useState(true);
 
-  useEffect(() => {
-    const checkScroll = () => {
-      const viewportHeigh = document.documentElement.clientHeight;
-      const scrollHeight = document.documentElement.scrollHeight;
+  // window.onload = () => {
+  //   setTimeout(() => {
+  //     const checkScroll = () => {
+  //       const viewportHeigh = document.documentElement.clientHeight;
+  //       const scrollHeight = document.documentElement.scrollHeight;
 
-      if (scrollHeight <= viewportHeigh) {
-        setIsGoUpButtonShown(false);
-        document.documentElement.classList.add('noScroll');
-      } else {
-        setIsGoUpButtonShown(true);
-        document.documentElement.classList.remove('noScroll');
-      }
-    };
+  //       console.log(`${viewportHeigh} viewport height`);
+  //       console.log(`${scrollHeight} scroll height`);
 
-    setTimeout(() => {
-      checkScroll();
-    }, 500);
+  //       if (scrollHeight <= viewportHeigh) {
+  //         setIsGoUpButtonShown(false);
+  //         document.documentElement.classList.add('noScroll');
+  //       } else {
+  //         setIsGoUpButtonShown(true);
+  //         document.documentElement.classList.remove('noScroll');
+  //       }
+  //     };
 
-    window.addEventListener('resize', checkScroll);
+  //     checkScroll();
 
-    const clickDelay = () => {
-      setTimeout(() => {
-        checkScroll();
-      }, 100);
-    };
+  //     window.addEventListener('resize', checkScroll);
+  //     document.documentElement.addEventListener('click', checkScroll);
 
-    document.documentElement.addEventListener('click', clickDelay);
+  //     setTimeout(() => {
+  //       window.removeEventListener('resize', checkScroll);
+  //       document.documentElement.removeEventListener('click', checkScroll);
+  //     }, 5000);
+  //   }, 0);
+  // };
 
-    return () => {
-      document.documentElement.removeEventListener('click', clickDelay);
-      window.removeEventListener('resize', checkScroll);
-      document.documentElement.classList.remove('noScroll');
-    };
-  }, []);
+  // useEffect(() => {
+  //   const checkScroll = () => {
+  //     const viewportHeigh = document.documentElement.clientHeight;
+  //     const scrollHeight = document.documentElement.scrollHeight;
+
+  //     if (scrollHeight <= viewportHeigh) {
+  //       setIsGoUpButtonShown(false);
+  //       document.documentElement.classList.add('noScroll');
+  //     } else {
+  //       setIsGoUpButtonShown(true);
+  //       document.documentElement.classList.remove('noScroll');
+  //     }
+  //   };
+
+  //   setTimeout(() => {
+  //     checkScroll();
+  //   }, 500);
+
+  //   window.addEventListener('resize', checkScroll);
+
+  //   const clickDelay = () => {
+  //     setTimeout(() => {
+  //       checkScroll();
+  //     }, 100);
+  //   };
+
+  //   document.documentElement.addEventListener('click', clickDelay);
+  //   window.addEventListener('popstate', clickDelay);
+  //   window.addEventListener('hashchange', clickDelay);
+
+  //   return () => {
+  //     window.removeEventListener('popstate', clickDelay);
+  //     window.removeEventListener('hashchange', clickDelay);
+  //     document.documentElement.removeEventListener('click', clickDelay);
+  //     window.removeEventListener('resize', checkScroll);
+  //   };
+  // }, []);
 
   useEffect(() => {
     const root = document.documentElement;

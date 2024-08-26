@@ -25,7 +25,7 @@ export const Favorites: React.FC = () => {
     <div className={styles.gridContainer}>
       <div className={styles.favorites}>
         <div className={styles.favorites__path}>
-          <Link to="/">
+          <Link className={styles.favorites__pathHomeLink} to="/">
             {isDark ? (
               <img src="./icons/dark-theme-icons/home-ico.svg" alt="home" />
             ) : (

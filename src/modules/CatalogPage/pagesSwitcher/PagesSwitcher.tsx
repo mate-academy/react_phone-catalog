@@ -2,26 +2,24 @@ import React, { useEffect, useState } from 'react';
 import styles from './PagesSwitcher.module.scss';
 import { updateURLParams } from './../services/updateUrl';
 import { useLocation, useNavigate, useSearchParams } from 'react-router-dom';
-import { useAppSelector } from '../../../app/hooks';
+import { useAppDispatch, useAppSelector } from '../../../app/hooks';
+import { setStartShowFrom } from '../../../features/pagesDetailsSlice';
 
 interface PagesSwitcherProps {
   sortBy: string;
   perPage: string;
   pagesWithProducts: number[];
-  showFrom: number;
-  setShownFrom: React.Dispatch<React.SetStateAction<number>>;
 }
 
 export const PagesSwitcher: React.FC<PagesSwitcherProps> = ({
   sortBy,
   perPage,
   pagesWithProducts,
-  showFrom,
-  setShownFrom,
 }) => {
   const root = document.documentElement;
   const navigate = useNavigate();
   const location = useLocation();
+  const dispatch = useAppDispatch();
 
   const [disablePagesArrow, setDisablePagesArrow] = useState('disableLeft');
 
@@ -30,6 +28,9 @@ export const PagesSwitcher: React.FC<PagesSwitcherProps> = ({
 
   const models = useAppSelector(state => state.pagesDetails.models);
   const isDark = useAppSelector(state => state.boolean.isDark);
+  const startShowFrom = useAppSelector(
+    state => state.pagesDetails.startShowFrom,
+  );
 
   useEffect(() => {
     root.style.setProperty('--page-starts-from', '0');
@@ -39,9 +40,9 @@ export const PagesSwitcher: React.FC<PagesSwitcherProps> = ({
     navigate(updateURLParams(sortBy, perPage, currentPage, query));
 
     if (perPage !== 'all') {
-      setShownFrom(+perPage * (currentPage - 1));
+      dispatch(setStartShowFrom(+perPage * (currentPage - 1)));
     } else {
-      setShownFrom(0);
+      dispatch(setStartShowFrom(0));
     }
   };
 
@@ -106,13 +107,13 @@ export const PagesSwitcher: React.FC<PagesSwitcherProps> = ({
 
   const numbersButtonStyles = (currentPage: number) => {
     if (!isDark) {
-      if (currentPage - 1 === showFrom / +perPage) {
+      if (currentPage - 1 === startShowFrom / +perPage) {
         return styles.numberOn;
       } else {
         return styles.numberOff;
       }
     } else {
-      if (currentPage - 1 === showFrom / +perPage) {
+      if (currentPage - 1 === startShowFrom / +perPage) {
         return styles.darkNumberOn;
       } else {
         return styles.darkNumberOff;

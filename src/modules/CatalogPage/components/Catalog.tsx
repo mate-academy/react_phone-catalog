@@ -12,7 +12,11 @@ import { ProductsList } from '../../shared/ProductsList/ProductsList';
 import { Product } from './../../../types/Product';
 import { PagesSwitcher } from './../pagesSwitcher/PagesSwitcher';
 import { CatalogFilters } from '../catalogFilters/CatalogFilters';
-import { setModels, setTitle } from './../../../features/pagesDetailsSlice';
+import {
+  setModels,
+  setStartShowFrom,
+  setTitle,
+} from './../../../features/pagesDetailsSlice';
 import { Loader } from '../../Loader';
 import { setReloadTrigger } from '../../../features/booleanSlice';
 import { SearchBar } from '../searchBar/SeatchBar';
@@ -29,7 +33,6 @@ export const Catalog: React.FC = () => {
   const [page, setPage] = useState(1);
   const [displayedProducts, setDisplayedProducts] = useState<Product[]>([]);
   const [pagesWithProducts, setPagesWithProducts] = useState<number[]>([]);
-  const [startShowFrom, setStartShowFrom] = useState(0);
   const [noProductsMessage, setNoProductsMessage] = useState('');
   const [filterLoader, setFilterLoader] = useState(false);
 
@@ -40,6 +43,9 @@ export const Catalog: React.FC = () => {
   const models = useAppSelector(state => state.pagesDetails.models);
   const fetchProductsErrorText = useAppSelector(state => state.products.error);
   const isDark = useAppSelector(state => state.boolean.isDark);
+  const startShowFrom = useAppSelector(
+    state => state.pagesDetails.startShowFrom,
+  );
 
   const queryParams = new URLSearchParams(location.search);
   const sortByParam = queryParams.get('sort');
@@ -71,14 +77,20 @@ export const Catalog: React.FC = () => {
     if (pageParams) {
       if (perPageParam !== 'all') {
         setPage(+pageParams);
-
-        setStartShowFrom(+perPage * (+pageParams - 1));
+        dispatch(setStartShowFrom(+perPage * (+pageParams - 1)));
       } else {
         setPage(1);
         setStartShowFrom(0);
       }
     }
-  }, [location.search, perPage, sortByParam, pageParams, perPageParam]);
+  }, [
+    location.search,
+    perPage,
+    sortByParam,
+    pageParams,
+    perPageParam,
+    dispatch,
+  ]);
 
   useEffect(() => {
     setPage(1);
@@ -230,8 +242,6 @@ export const Catalog: React.FC = () => {
           sortBy={sortBy}
           perPage={perPage}
           pagesWithProducts={pagesWithProducts}
-          showFrom={startShowFrom}
-          setShownFrom={setStartShowFrom}
         />
       </>
     );
@@ -243,7 +253,7 @@ export const Catalog: React.FC = () => {
         <div className={styles.gridContainer}>
           <div id="catalogId" className={styles.catalog}>
             <div className={styles.catalog__path}>
-              <Link to="/">
+              <Link className={styles.catalog__pathHomeLink} to="/">
                 {isDark ? (
                   <img src="./icons/dark-theme-icons/home-ico.svg" alt="home" />
                 ) : (

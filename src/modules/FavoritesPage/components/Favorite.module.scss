@@ -7,13 +7,17 @@
 
   &__path {
     display: flex;
-    gap: 15px;
+    gap: 5px;
     align-items: center;
     margin-bottom: 24px;
 
     @include on-tablet {
       margin-bottom: 40px;
     }
+  }
+
+  &__pathHomeLink {
+    display: flex;
   }
 
   &__pathCategory {
