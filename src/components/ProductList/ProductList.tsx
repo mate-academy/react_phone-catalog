@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useMemo, useCallback } from 'react';
 import { ProductCard } from '../ProductCard';
-import { LimitedProduct } from '../../types/Product';
+/* import { LimitedProduct } from '../../types/Product'; */
 import { DropDown } from '../DropDown';
 import { Pagination } from '../Pagination';
 import { Loader } from '../Loader';
@@ -15,8 +15,8 @@ type ProductListProps = {
 };
 
 export const ProductList: React.FC<ProductListProps> = ({ category, title }) => {
-  const {numberOfProductsPerPage, sortMethod} = useAppContext()
-  const [products, setProducts] = useState<(LimitedProduct)[]>([]);
+  const {numberOfProductsPerPage, sortMethod, products, setProducts} = useAppContext()
+/*   const [products, setProducts] = useState<(LimitedProduct)[]>([]); */
 
   useEffect(() => {
     const fetchProductData = async () => {

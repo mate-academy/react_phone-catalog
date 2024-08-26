@@ -12,12 +12,12 @@ import { Description } from './components/Description';
 import { MainControls } from './components/MainControls';
 import { Loader } from '../../components/Loader';
 import { Breadcrumbs } from '../../components/Breadcrumbs';
-/* import { Product } from '../../types/Product'; */
+/* import { LimitedProduct } from '../../types/Product'; */
 
 
 export const ProductDetailsPage: React.FC = () => {
   const category = useLocation().pathname.slice(1);
-  const { clickedProduct, previousCurrentPage, setClickedProduct, productDetails, setProductDetails, fetchedCategory, setFetchedCategory} = useAppContext();
+  const { clickedProduct, previousCurrentPage, setClickedProduct, productDetails, setProductDetails, fetchedCategory, setFetchedCategory/* , products */} = useAppContext();
   const [isLoading, setIsLoading] = useState<true | false>(true);
 
   const query = new URLSearchParams(useLocation().search);
@@ -62,20 +62,17 @@ export const ProductDetailsPage: React.FC = () => {
       setProductDetails(details);
       console.log('fetched details for product', details);
 
-
-
-
     }
   }, [fetchedCategory, clickedProduct]);
 
   const [dynamicColor, setDynamicColor] = useState<string>('')
   const [dynamicCapacity, setDynamicCapacity] = useState<string>('')
-  const [baseURL, setBaseURL] = useState<string>('');
+ /*  const [baseURL, setBaseURL] = useState<string>(''); */
 
 
-  console.log('BASE URL',baseURL)
+/*   console.log('BASE URL',baseURL) */
 
-  useEffect (() => {
+/*   useEffect (() => {
     if (productDetails !== undefined) {
       let baseURLx=''
       if (productDetails !== undefined) {
@@ -91,8 +88,18 @@ export const ProductDetailsPage: React.FC = () => {
       setBaseURL(baseURLx);
     }
 
-  },[productDetails])
-  console.log('new item diepslayed',baseURL+dynamicCapacity.toLowerCase()+'-'+dynamicColor)
+  },[dynamicCapacity,dynamicColor]) */
+
+/*   console.log('new item diepslayed:::::',baseURL+dynamicCapacity.toLowerCase()+'-'+dynamicColor)
+  console.log(dynamicCapacity==='');
+  console.log(dynamicColor===''); */
+
+/*   useEffect(() => {
+    if(products !== undefined && productDetails !== undefined) {
+      const newClikedProduct = baseURL + (dynamicCapacity === '' ? productDetails.capacity : dynamicCapacity) + '-' + (dynamicColor === '' ? productDetails.color : dynamicColor)
+      console.log('NEW CLIKED PRODUCt::::::::',newClikedProduct)
+    }
+  },[]) */
 
   return (
     <div className={styles.productDetailsPageWrapper}>
@@ -102,7 +109,11 @@ export const ProductDetailsPage: React.FC = () => {
         {isLoading ? (
           <Loader />
         ) : clickedProduct === undefined ? (
-          <div>No products to display</div>
+
+          <div className={styles.noProductContainer}>
+            <div className={styles.noProduct}>No products to display</div>
+            <img src="img/product-not-found.png" className={styles.imageNotFound}/>
+          </div>
         ) : (
           <div className={styles.container}>
             {productDetails !== undefined && (
