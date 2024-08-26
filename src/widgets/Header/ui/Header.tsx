@@ -1,43 +1,63 @@
 import { NavLink } from 'react-router-dom';
 import { RoutePaths } from '../../../shared/config/routeConfig';
-import { useTheme } from '../../../app/providers/ThemeProvider';
-import cls from './header.module.scss';
-import classNames from 'classnames';
 import { HeaderItemType } from '../model/types/header';
-import { useMemo } from 'react';
+import { useMemo, useState } from 'react';
 import { MainLogo } from '../../MainLogo';
+import icons from '../../../shared/styles/icons.module.scss';
+import { ThemeSwitcher } from '../../ThemeSwitcher';
+import classNames from 'classnames';
+import cls from './header.module.scss';
 
 const headerItemsList: HeaderItemType[] = [
   {
     path: RoutePaths.home,
-    text: 'home',
+    cildren: 'home',
   },
   {
     path: `${RoutePaths.products}phones`,
-    text: 'Phones',
+    cildren: 'Phones',
   },
   {
     path: `${RoutePaths.products}tablets`,
-    text: 'tablets',
+    cildren: 'tablets',
   },
   {
     path: `${RoutePaths.products}accessories`,
-    text: 'accessories',
+    cildren: 'accessories',
+  },
+  {
+    path: `${RoutePaths.favorites}`,
+    cildren: (
+      <span data-position="first" className={icons['_icon-heart']}></span>
+    ),
+    isIcon: true,
+  },
+  {
+    path: `${RoutePaths.cart}`,
+    cildren: <span className={icons['_icon-heart']}></span>,
+    isIcon: true,
   },
 ];
 
 export const Header = () => {
-  const { toggleTheme } = useTheme();
-
-  const setMenuLinkClasses = ({ isActive }: { isActive: boolean }) =>
-    classNames(cls.menu__link, { [cls.active]: isActive });
+  const [menuOpen, setMenuOpen] = useState<boolean>(false);
 
   const itemsList = useMemo(
     () =>
-      headerItemsList.map(item => (
-        <li key={item.path} className={cls.menu__item}>
-          <NavLink className={setMenuLinkClasses} to={item.path}>
-            {item.text}
+      headerItemsList.map(({ path, cildren, isIcon }) => (
+        <li key={path} className={cls.menu__item}>
+          <NavLink
+            end
+            className={({ isActive }: { isActive: boolean }) =>
+              classNames(cls.menu__link, {
+                [cls.active]: isActive,
+                [cls.isIcon]: isIcon,
+              })
+            }
+            to={path}
+            onClick={() => setMenuOpen(false)}
+          >
+            {cildren}
           </NavLink>
         </li>
       )),
@@ -48,32 +68,36 @@ export const Header = () => {
     <header className={cls.header}>
       <MainLogo />
 
-      <div className={classNames(cls.header__menu, cls.menu)}>
+      <div
+        className={classNames(cls.header__menu, cls.menu, {
+          [cls['menu-open']]: menuOpen,
+        })}
+      >
         <button
           type="button"
-          className={classNames(cls.menu__icon, cls['icon-menu'])}
+          className={classNames(cls.menu__icon, {
+            [cls.isIcon]: true,
+          })}
+          onClick={() => {
+            setMenuOpen(prev => !prev);
+          }}
         >
-          <span></span>
+          <span className={cls['icon-menu']}>
+            <span></span>
+          </span>
         </button>
-        <nav className={cls.menu__body}>
-          <ul className={cls.menu__list}>
-            {itemsList}
-            {/* <li className={cls.menu__item}>
-              <NavLink className="menu__link" to={RoutePaths.product}>
-                fav
-              </NavLink>
-            </li>
-            <li className={cls.menu__item}>
-              <NavLink className="menu__link" to={RoutePaths.product}>
-                cart
-              </NavLink>
-            </li> */}
-          </ul>
-        </nav>
 
-        <button type="button" className="button" onClick={toggleTheme}>
-          Змінити тему
-        </button>
+        <nav className={cls.menu__body}>
+          <ul className={cls.menu__list}>{itemsList}</ul>
+
+          <ThemeSwitcher
+            className={classNames(
+              cls['theme-switcher'],
+              cls.menu__link,
+              cls.isIcon,
+            )}
+          />
+        </nav>
       </div>
     </header>
   );

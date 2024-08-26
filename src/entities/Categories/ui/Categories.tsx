@@ -1,10 +1,15 @@
-import { memo } from 'react';
+import { memo, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { TitleTag } from '../../../shared/ui/TitleTag/TitleTag';
 import classNames from 'classnames';
 import cls from './categories.module.scss';
-import { useAppSelector } from '../../../shared/lib/hooks/reduxHooks';
+import {
+  useAppDispatch,
+  useAppSelector,
+} from '../../../shared/lib/hooks/reduxHooks';
 import { getCateroryItems } from '../model/selectors/getCateroryItems';
+import { fetchCountProducts } from '../model/services/fetchCountProducts';
+import { capitalizeFirstLetter } from '../../../shared/lib/utils/capitalizeFirstLetter';
 
 interface Props {
   className?: string;
@@ -12,6 +17,12 @@ interface Props {
 
 export const Categories = memo(({ className }: Props) => {
   const categoriesList = useAppSelector(getCateroryItems);
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch(fetchCountProducts());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <div className={classNames(cls.categories, className)}>
@@ -23,7 +34,7 @@ export const Categories = memo(({ className }: Props) => {
 
           <TitleTag
             Tag="h4"
-            title={title}
+            title={capitalizeFirstLetter(title)}
             className={cls.categories__category}
           />
 

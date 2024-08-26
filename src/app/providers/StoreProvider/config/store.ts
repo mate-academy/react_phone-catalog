@@ -3,11 +3,17 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { StateSchema } from './StateSchema';
 import { ProductSliceReducer } from '../../../../entities/Product';
+import { productPageSliceReducer } from './../../../../pages/CatalogPage';
+import { homePageSliceReducer } from '../../../../pages/HomePage';
+import { categoriesSliceReducer } from '../../../../entities/Categories';
 
 export function createReduxStore() {
   return configureStore<StateSchema>({
     reducer: {
       products: ProductSliceReducer,
+      productsPage: productPageSliceReducer,
+      homePage: homePageSliceReducer,
+      categories: categoriesSliceReducer,
     },
   });
 }

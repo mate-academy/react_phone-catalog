@@ -1,0 +1,104 @@
+@import '../../../shared/styles/common/mixins';
+@import '../../../shared/styles/vars/global';
+
+.main-slider {
+  .main-slider__body {
+    margin-bottom: rem(8);
+    min-width: 0;
+
+    @media (min-width:$mobile) {
+      @include page-grid;
+    }
+
+    @media (max-width:$mobile) {
+      margin: 0 rem(-$containerPaddingMobile) rem(8) rem(-$containerPaddingMobile);
+    }
+  }
+
+  .main-slider__slider {
+    @media (min-width:$mobile) {
+      grid-column: 2 / -2;
+    }
+
+    min-width: 0;
+  }
+
+  .main-slider__button {
+    @media (min-width:$mobile) {
+      grid-column: span 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    @media (max-width:$mobile) {
+      display: none;
+    }
+  }
+
+  .main-slider__button_prev {
+    &::before {
+      transform: rotate(-90deg);
+      margin-left: rem(1);
+    }
+  }
+
+  .main-slider__button_next {
+    &::before {
+      transform: rotate(90deg);
+      margin-right: rem(2);
+    }
+  }
+
+  .slide-main__slide-content {
+    display: block;
+    position: relative;
+    padding-bottom: 100%;
+
+    @media (min-width:$mobileSmall) {
+      padding-bottom: 38.47%;
+    }
+  }
+
+  .slide-main-slide__banner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 87.5%;
+  }
+
+  .main-slider__pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    column-gap: rem(4);
+
+    .main-slider__pagination-bullet {
+      cursor: pointer;
+      opacity: 1;
+      position: relative;
+      height: rem(24);
+      width: rem(24);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      &::after {
+        content: '';
+        height: rem(4);
+        width: rem(14);
+        transition: background-color $duration ease 0s;
+        background-color: var(--secondary-elements);
+      }
+    }
+
+    .main-slider__pagination-bullet-active {
+      &::after {
+        background-color: var(--primary-color);
+      }
+    }
+  }
+}

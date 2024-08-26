@@ -1,5 +1,9 @@
 @import './common/mixins';
 
+._icon-lightbulb::before {
+  content: "\e903";
+}
+
 ._icon-arrow::before {
   font-size: rem(10);
   content: "\e900";

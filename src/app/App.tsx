@@ -11,8 +11,8 @@ function App() {
   const { theme } = useTheme();
 
   return (
-    <div className={classNames(cls.app, theme)}>
-      <Suspense fallback="LOADING">
+    <div className={classNames(cls.app, theme)} id="top">
+      <Suspense fallback="">
         <Header />
         <Page>
           <AppRouter />

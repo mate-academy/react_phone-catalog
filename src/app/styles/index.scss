@@ -8,8 +8,11 @@
 @import 'themes/light';
 @import 'swiper';
 
-body {
+html {
+  scroll-behavior: smooth;
+}
 
+body {
   .lock & {
     overflow: hidden;
     touch-action: none;

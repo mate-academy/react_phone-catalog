@@ -15,13 +15,19 @@
   overflow: auto;
   z-index: 10;
 
+  @media (max-width:$mobile) {
+    justify-content: space-between;
+  }
+
   @media (min-width:$tablet) {
     height: rem($headerHight);
     column-gap: rem(24);
   }
 
   .header__menu {
-    flex: 1 1 auto;
+    @media (min-width:$mobile) {
+      flex: 1 1 auto;
+    }
   }
 }
 
@@ -29,7 +35,6 @@
   display: flex;
   align-items: center;
   column-gap: rem(32);
-  height: 100%;
 
   @media (min-width:$tablet) {
     column-gap: rem(64);
@@ -37,19 +42,59 @@
 
   .menu__body {
     height: 100%;
+    display: flex;
+    align-items: center;
+    flex: 1 1 auto;
+
+    @media (max-width:$mobile) {
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: 100%;
+      transition: right $duration ease 0s;
+      background-color: var(--main-bg);
+    }
   }
 
   .menu__list {
     height: 100%;
     display: flex;
     align-items: center;
-    column-gap: rem(32);
+    width: 100%;
+
+    @media (max-width:$mobile) {
+      flex-direction: column;
+    }
   }
 
   .menu__item {
     display: flex;
     align-items: center;
-    height: 100%;
+
+    @media (min-width:$mobile) {
+      height: 100%;
+
+      &:not(:first-child) {
+        margin: 0 0 0 rem(32);
+      }
+
+      &:has(.isIcon) {
+        margin: 0;
+
+        &:has([data-position='first']) {
+          margin-left: auto;
+        }
+      }
+    }
+
+    @media (max-width:$mobile) {
+      width: 100%;
+      justify-content: center;
+
+      &:has(.isIcon) {
+        flex: 0 1 50%;
+      }
+    }
   }
 
   .menu__link {
@@ -98,9 +143,48 @@
     }
   }
 
-  // .menu__icon {}
+  .isIcon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: rem($headerHightTablet);
+    border-left: rem(1) solid var(--secondary-elements);
+
+    @media (min-width:$tablet) {
+      width: rem($headerHight);
+    }
+
+    span::before {
+      display: flex;
+      font-size: rem(14);
+    }
+  }
+
+  .menu__icon {
+    height: rem($headerHightTablet);
+    width: rem($headerHightTablet);
+    z-index: 20;
+
+    @media (min-width:$mobile) {
+      display: none;
+    }
+  }
 }
 
+.theme-switcher {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  flex: 1 0 rem($headerHightTablet);
+
+  &::before {
+    font-size: rem(16);
+  }
+
+  @media (min-width:$tablet) {
+    flex: 1 0 rem($headerHight);
+  }
+}
 
 .icon-menu {
   display: none;
@@ -108,8 +192,8 @@
   @media (max-width: $mobile) {
     display: block;
     position: relative;
-    width: 30px;
-    height: 18px;
+    height: rem(9);
+    width: rem(14);
     cursor: pointer;
     z-index: 5;
 
@@ -152,5 +236,11 @@
         bottom: calc(50% - 1px);
       }
     }
+  }
+}
+
+.menu-open {
+  .menu__body {
+    right: 0;
   }
 }

@@ -1,0 +1,21 @@
+@import '../../../../shared/styles/common/mixins';
+@import '../../../../shared/styles/vars/global';
+
+.productPage__title {
+  margin-bottom: rem(8);
+}
+
+.productPage__label {
+  color: var(--secondary-color);
+  font-size: rem(14);
+  line-height: 150%;
+  font-weight: 600;
+}
+
+.productPage__filter {
+  padding-top: rem(32);
+
+  @media (min-width:$mobile) {
+    padding-top: rem(40);
+  }
+}

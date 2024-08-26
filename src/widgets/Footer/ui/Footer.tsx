@@ -1,11 +1,11 @@
 import { memo } from 'react';
 import { Container } from '../../../shared/ui/Container';
 import { MainLogo } from '../../MainLogo';
-import { Button, ButtonTheme } from '../../../shared/ui/Button';
 import { IFooterItem } from '../model/types/footer';
 import classNames from 'classnames';
 import cls from './footer.module.scss';
 import icons from '../../../shared/styles/icons.module.scss';
+import { Button, ButtonTheme } from '../../../shared/ui/forms';
 
 const footerMenuItems: IFooterItem[] = [
   { text: 'github', link: '/' },
@@ -34,7 +34,7 @@ export const Footer = memo(() => {
             </nav>
           </div>
 
-          <div className={cls['footer__back-btn']}>
+          <a href="#top" className={cls['footer__back-btn']}>
             <span className={cls['footer__back-text']}>Back to top</span>
             <Button
               theme={ButtonTheme.SQUARE}
@@ -43,7 +43,7 @@ export const Footer = memo(() => {
                 icons['_icon-arrow'],
               )}
             />
-          </div>
+          </a>
         </div>
       </Container>
     </footer>

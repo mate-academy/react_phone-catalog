@@ -1,7 +1,7 @@
 @import '../../../../shared/styles/common/mixins';
 @import '../../../../shared/styles/vars/global';
 
-.section {
+.homePage {
   padding-top: rem(56);
 
   @media (min-width:$mobile) {
@@ -11,6 +11,10 @@
   @media (min-width:$tablet) {
     padding-top: rem(80);
   }
+}
+
+.firstSection {
+  padding-top: rem(24);
 }
 
 .padding-bottom {

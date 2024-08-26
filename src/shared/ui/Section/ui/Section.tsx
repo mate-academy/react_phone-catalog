@@ -9,18 +9,21 @@ interface Props {
   children: ReactNode;
   firstSection?: boolean;
   lastSection?: boolean;
+  homePage?: boolean;
 }
 
 export const Section = ({
   children,
   className,
+  homePage = false,
   firstSection = false,
   lastSection = false,
 }: Props) => {
   return (
     <section
       className={classNames(className, {
-        [cls.section]: !firstSection,
+        [cls.homePage]: homePage,
+        [cls.firstSection]: firstSection,
         [cls['padding-bottom']]: lastSection,
       })}
     >

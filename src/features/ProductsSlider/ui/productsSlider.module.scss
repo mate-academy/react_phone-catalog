@@ -1,0 +1,57 @@
+@import '../../../shared/styles/common/mixins';
+@import '../../../shared/styles/vars/global';
+
+.products-slider {
+  overflow: visible;
+
+  @media (min-width:$mobile) {
+    overflow: hidden;
+  }
+
+  .products-slider__wrapper {
+    width: 100%;
+    height: 100%;
+    box-sizing: content-box;
+    display: flex;
+  }
+
+  .products-slider__slide {
+    height: auto;
+    display: flex;
+  }
+
+  .products-slider__top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .products-slider__title {
+    z-index: 1;
+  }
+
+  .products-slider__controls {
+    display: flex;
+    align-items: center;
+    column-gap: rem(10);
+
+    // .products-slider__button {
+    //   &::before {
+    //   }
+    // }
+
+    .products-slider__button_prev {
+      &::before {
+        transform: rotate(-90deg);
+        margin-left: rem(3);
+      }
+    }
+
+    .products-slider__button_next {
+      &::before {
+        transform: rotate(90deg);
+        margin-right: rem(3);
+      }
+    }
+  }
+}

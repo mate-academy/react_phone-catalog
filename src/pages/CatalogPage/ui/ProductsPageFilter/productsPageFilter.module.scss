@@ -1,0 +1,43 @@
+@import '../../../../shared/styles/common/mixins';
+
+.filters {
+  @include page-grid;
+
+  .sort {
+    grid-column: span 2;
+
+    @media (min-width:$mobile) {
+      grid-column: 1 / 5;
+    }
+  }
+
+  .pages {
+    grid-column: span 2;
+
+    @media (min-width:$mobile) {
+      grid-column: 5 / 8;
+    }
+  }
+
+  .search {
+    grid-column: 1 / -1;
+
+    @media (min-width:$tablet) {
+      grid-column: 8 / -1;
+    }
+  }
+}
+
+// .search__label {
+//   .customSelect__label {
+//     margin-bottom: rem(4);
+//     color: var(--secondary-color);
+//     font-weight: 700;
+//     font-size: rem(12);
+//     margin-bottom: rem(4);
+
+//     &::before {
+//       color: var(--select-icons);
+//     }
+//   }
+// }

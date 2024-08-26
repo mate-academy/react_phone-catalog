@@ -1,0 +1,8 @@
+@import '../../../styles/common/mixins';
+
+.item {
+  display: inline-flex;
+  row-gap: rem(4);
+  flex-direction: column;
+  position: relative;
+}

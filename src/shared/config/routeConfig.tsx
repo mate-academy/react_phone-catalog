@@ -18,7 +18,7 @@ export enum AppRoutes {
 export const RoutePaths: Record<AppRoutes, string> = {
   [AppRoutes.HOME]: '/',
   [AppRoutes.PRODUCTS]: '/products/',
-  [AppRoutes.PRODUCT_DETAIL]: '/products/:category/',
+  [AppRoutes.PRODUCT_DETAIL]: '/products/',
   [AppRoutes.FAVORITES]: '/favorites',
   [AppRoutes.CART]: '/cart',
   [AppRoutes.NOT_FOUND]: '*',
@@ -34,7 +34,7 @@ export const routeConfig: Record<AppRoutes, RouteProps> = {
     element: <ProductsPage />,
   },
   [AppRoutes.PRODUCT_DETAIL]: {
-    path: `${RoutePaths.product_detail}:productId`,
+    path: `${RoutePaths.product_detail}:category/:itemId`,
     element: <ProductPage />,
   },
   [AppRoutes.FAVORITES]: {

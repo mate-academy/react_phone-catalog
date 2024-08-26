@@ -1,0 +1,13 @@
+@import '../../../styles/common/mixins';
+@import '../../../styles/vars/global';
+
+.label {
+  color: var(--secondary-color);
+  font-weight: 700;
+  font-size: rem(12);
+  cursor: pointer;
+
+  &::before {
+    color: var(--select-icons);
+  }
+}

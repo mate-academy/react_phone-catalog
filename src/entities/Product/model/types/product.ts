@@ -17,4 +17,5 @@ export interface ProductSchema {
   products: Product[];
   isLoading: boolean;
   error: boolean;
+  _inited: boolean;
 }

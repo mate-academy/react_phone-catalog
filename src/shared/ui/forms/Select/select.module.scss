@@ -1,0 +1,74 @@
+@import '../../../styles/common/mixins';
+@import '../../../styles/vars/global';
+
+.select {
+  font-size: rem(14);
+  line-height: 150%;
+
+  .trigger {
+    border: rem(1) solid var(--select-border);
+    display: inline-flex;
+    align-items: center;
+    cursor: pointer;
+    padding: rem(10) rem(12);
+    width: 100%;
+    text-align: left;
+    justify-content: space-between;
+    flex-direction: row-reverse;
+    color: var(--primary-color);
+    background-color: var(--bg-buttons-default);
+
+    &::before {
+      font-size: rem(12);
+      transition: transform $duration ease 0s;
+      transform: rotate(180deg);
+      color: var(--select-icons);
+    }
+
+    &:focus {
+      border: rem(1) solid var(--accent);
+    }
+  }
+
+  .popup {
+    background-color: var(--main-bg);
+    border: rem(1) solid var(--secondary-elements);
+    box-shadow: 0 rem(2) rem(15) 0 rgba(0, 0, 0, 0.05);
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 100%;
+    transition: all $duration ease 0s;
+    padding: rem(8) 0;
+    opacity: 0;
+    visibility: hidden;
+    z-index: 10;
+  }
+
+  &.isActive {
+    .trigger::before {
+      transform: rotate(0);
+    }
+
+    .popup {
+      visibility: visible;
+      opacity: 1;
+    }
+  }
+
+  .option {
+    cursor: pointer;
+    padding: rem(5) rem(12);
+    width: 100%;
+    text-align: left;
+    transition: color $duration ease 0s, background-color $duration ease 0s;
+    color: var(--secondary-color);
+    font-weight: 600;
+
+    &.isActive,
+    &:hover {
+      color: var(--button-primary-text);
+      background-color: var(--bg-buttons-default);
+    }
+  }
+}
