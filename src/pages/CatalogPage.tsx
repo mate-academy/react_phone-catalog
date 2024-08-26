@@ -8,6 +8,7 @@ import { useProducts } from '../hooks/useProducts';
 import { ProductCategories } from '../types/ProductCategories';
 import { PRODUCTS_TITLE } from '../constants/PRODUCTS_TITLE';
 import { SortBy } from '../types/SortBy';
+import { NotFoundProductPage } from './NotFoundProductPage';
 
 export const CatalogPage = () => {
   const { products } = useProducts();
@@ -16,9 +17,12 @@ export const CatalogPage = () => {
   const slashlessPathname = pathname.slice(1);
 
   const [searchParams] = useSearchParams();
+  const query = searchParams.get('query') || '';
 
   const filteredProducts = products.filter(
-    d => d.category === slashlessPathname,
+    d =>
+      d.category === slashlessPathname &&
+      d.name.toLocaleLowerCase().includes(query),
   );
 
   const sort = searchParams.get('sort') || '';
@@ -64,9 +68,16 @@ export const CatalogPage = () => {
         </p>
       </div>
 
-      <ProductFilter />
-
-      <ProductContent items={currentItems} />
+      {!currentItems.length ? (
+        <NotFoundProductPage
+          title={`There are no ${slashlessPathname} products matching`}
+        />
+      ) : (
+        <>
+          <ProductFilter />
+          <ProductContent items={currentItems} />
+        </>
+      )}
 
       <Pagination totalItems={filteredProducts.length} />
     </div>

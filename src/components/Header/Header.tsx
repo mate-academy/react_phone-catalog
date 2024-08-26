@@ -1,11 +1,13 @@
-import { Ref, forwardRef } from 'react';
+import { Ref, forwardRef, useState } from 'react';
 import '../../styles/main.scss';
 import styles from './Header.module.scss';
 import classNames from 'classnames';
 import { Icon } from '../ui/Icon';
-import { Link, NavLink, useSearchParams } from 'react-router-dom';
+import { Link, NavLink, useLocation, useSearchParams } from 'react-router-dom';
 import { useFavorites } from '../../hooks/useFavorites';
 import { useCart } from '../../hooks/useCart';
+import { CustomSearch } from '../CustomSearch';
+import { ProductCategories } from '../../types/ProductCategories';
 
 type HeaderProps = {
   onMenu: () => void;
@@ -13,13 +15,21 @@ type HeaderProps = {
 
 const Header = forwardRef<HTMLDivElement, HeaderProps>(
   ({ onMenu }, ref: Ref<HTMLDivElement>) => {
+    const location = useLocation();
     const [searchParams] = useSearchParams();
     const { favorites } = useFavorites();
     const { cart } = useCart();
 
+    const [isSearchShow, setIsSearchShow] = useState(false);
+
     const itemsInCart = cart.reduce((acc, item) => {
       return (item.count || 1) + acc;
     }, 0);
+
+    const isCatalogPage =
+      location.pathname.slice(1) === ProductCategories.phones ||
+      location.pathname.slice(1) === ProductCategories.tablets ||
+      location.pathname.slice(1) === ProductCategories.accessories;
 
     return (
       <div className={styles.header} id="header" ref={ref}>
@@ -29,7 +39,11 @@ const Header = forwardRef<HTMLDivElement, HeaderProps>(
               <img src="./img/icons/logo.svg" className="logo" alt="logo" />
             </Link>
 
-            <nav className={classNames('nav', styles.header__nav)}>
+            <nav
+              className={classNames('nav', styles.header__nav, {
+                [styles['header__nav--hide']]: isSearchShow,
+              })}
+            >
               <ul
                 className={classNames('nav__list', styles['header__nav-list'])}
               >
@@ -37,6 +51,7 @@ const Header = forwardRef<HTMLDivElement, HeaderProps>(
                   className={classNames(
                     'nav__item',
                     styles['header__nav-item'],
+                    { [styles['header__nav-item--hide']]: isSearchShow },
                   )}
                 >
                   <NavLink
@@ -60,7 +75,7 @@ const Header = forwardRef<HTMLDivElement, HeaderProps>(
                 >
                   <NavLink
                     to={{
-                      pathname: '/phones',
+                      pathname: `/${ProductCategories.phones}`,
                       search: searchParams.toString(),
                     }}
                     className={({ isActive }) =>
@@ -82,7 +97,7 @@ const Header = forwardRef<HTMLDivElement, HeaderProps>(
                 >
                   <NavLink
                     to={{
-                      pathname: '/tablets',
+                      pathname: `/${ProductCategories.tablets}`,
                       search: searchParams.toString(),
                     }}
                     className={({ isActive }) =>
@@ -104,7 +119,7 @@ const Header = forwardRef<HTMLDivElement, HeaderProps>(
                 >
                   <NavLink
                     to={{
-                      pathname: '/accessories',
+                      pathname: `/${ProductCategories.accessories}`,
                       search: searchParams.toString(),
                     }}
                     className={({ isActive }) =>
@@ -122,8 +137,23 @@ const Header = forwardRef<HTMLDivElement, HeaderProps>(
             </nav>
 
             <div className="top-bar__buttons">
+              {isCatalogPage && (
+                <div
+                  className={classNames(
+                    'uppercase-text nav__link',
+                    styles.header__link,
+                    'top-bar__icon-control',
+                    'top-bar__icon-control--search',
+                  )}
+                >
+                  <CustomSearch
+                    isShow={isSearchShow}
+                    onShow={setIsSearchShow}
+                  />
+                </div>
+              )}
               <NavLink
-                to="/favorites"
+                to={'/favorites'}
                 className={({ isActive }) =>
                   classNames(
                     'uppercase-text nav__link',

@@ -17,8 +17,21 @@
   &__nav {
     display: none;
 
+
+    opacity: 1;
+    transform: translateX(0);
+    transition:
+      transform $transition-duration ease,
+      opacity $transition-duration ease;
+
     @include on-tablet {
       display: block;
+    }
+
+    &--hide {
+      transform: translateX(-100%);
+      opacity: 0;
+      overflow: hidden;
     }
   }
 

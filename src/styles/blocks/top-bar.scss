@@ -95,5 +95,10 @@
         display: flex;
       }
     }
+
+    &--search {
+      width: 100%;
+      flex-basis: content;
+    }
   }
 }
