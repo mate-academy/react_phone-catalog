@@ -2,8 +2,9 @@ import classNames from 'classnames';
 import { Icon } from '../ui/Icon';
 import styles from './CustomSearch.module.scss';
 import { useCallback, useEffect, useRef, useState } from 'react';
-import debounce from 'lodash.debounce';
+
 import { useLocation, useSearchParams } from 'react-router-dom';
+import debounce from 'debounce';
 
 type CustomSearchProps = {
   isShow: boolean;
