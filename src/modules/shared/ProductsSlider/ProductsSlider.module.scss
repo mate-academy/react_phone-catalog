@@ -84,6 +84,10 @@
   opacity: 0.5;
   pointer-events: none;
   cursor: not-allowed;
+
+  &:hover {
+    opacity: 0.5;
+  }
 }
 
 .sliderButtonDark {
@@ -99,4 +103,9 @@
 .disabledBlack {
   border: 1px solid var(--dark-elements-color);
   background-color: var(--dark-black-color);
+
+  &:hover {
+    border: 1px solid var(--dark-elements-color);
+    background-color: var(--dark-black-color);
+  }
 }
