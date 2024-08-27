@@ -16,6 +16,7 @@
     background-color: $primary-gray;
     color: $white;
     flex-grow: 1;
+    transition: all $transition-duration;
 
     &:hover {
       box-shadow: 0 3px 13px 0 $primary-gray;

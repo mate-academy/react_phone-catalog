@@ -33,7 +33,12 @@ export const CartItem: React.FC<CartItemProps> = ({ item, updateCart }) => {
 
   return (
     <div className={styles['cart-item']}>
-      <div className={styles['cart-item__block']}>
+      <div
+        className={classNames(
+          styles['cart-item__block'],
+          styles['cart-item__block--justify-start'],
+        )}
+      >
         <CardButton
           variant="control"
           modificator="borderNone"

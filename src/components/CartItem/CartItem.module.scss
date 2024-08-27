@@ -34,6 +34,10 @@
         justify-content: flex-end;
       }
     }
+
+    &--justify-start {
+      justify-content: flex-start;
+    }
   }
 
   &__img-link {
@@ -51,7 +55,6 @@
   }
 
   &__img {
-    // width: 100%;
     width: 66px;
     height: 100%;
     object-fit: contain;
@@ -72,5 +75,10 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+  }
+
+  &__price {
+    width: 90px;
+    text-align: right;
   }
 }
