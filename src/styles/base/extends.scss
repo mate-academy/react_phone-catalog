@@ -94,3 +94,12 @@
   line-height: 15px;
   letter-spacing: 0;
 }
+
+%small-text {
+  @extend %font-mont-semibold;
+
+  font-size: 12px;
+  line-height: 15px;
+  letter-spacing: 0;
+}
+

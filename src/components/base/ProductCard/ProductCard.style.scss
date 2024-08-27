@@ -1,0 +1,48 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 32px;
+  &__image {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  &__price {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    &-full {
+      font-family: Mont-regular, sans-serif;
+      font-size: 22px;
+      text-decoration: line-through;
+      color: $c-secondary;
+    }
+    &::after {
+      position: absolute;
+      display: inline-block;
+      content: '';
+      width: 100%;
+      height: 1px;
+      background-color: $c-elements;
+    }
+  }
+  &__specs {
+    @extend %small-text;
+
+    display: flex;
+    flex-direction: column;
+    &-line {
+      display: flex;
+      justify-content: space-between;
+    }
+    &-title {
+      color: $c-secondary;
+    }
+    &-content {
+      color: $c-primary;
+    }
+  }
+}

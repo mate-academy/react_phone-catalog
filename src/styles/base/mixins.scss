@@ -38,7 +38,6 @@
   @include on-desktop {
     grid-template-columns: repeat(24, 32px);
   }
-
 }
 
 @mixin inline-padding {
