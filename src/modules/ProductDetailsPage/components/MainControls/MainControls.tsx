@@ -1,75 +1,94 @@
-import React/* ,{useEffect} */ from 'react';
+import React, {useEffect} from 'react';
 import styles from './MainControls.module.scss';
 import { ActionButtons } from '../../../../components/ActionButtons';
 import { useAppContext } from '../../../../context/AppContext';
+/* import { LimitedProduct } from '../../../../types/Product'; */
+import { useLocation, useHistory } from 'react-router-dom';
 import { LimitedProduct } from '../../../../types/Product';
-/* import { Link } from 'react-router-dom'; */
 
 type MainControlsProps = {
   dynamicColor: string;
   setDynamicColor: (details: string) => void;
   dynamicCapacity: string;
   setDynamicCapacity: (details: string) => void;
+
 }
 
 export const MainControls: React.FC<MainControlsProps> = () => {
-  const { clickedProduct, setClickedProduct, productDetails, products, } = useAppContext();
+  const { clickedProduct, setClickedProduct, productDetails, products, previousCurrentPage} = useAppContext();
 
-  const handleChange = (input: string[]) => {
-    let currentId = '';
-    let currentCapacity: string ='';
-    let currentColor: string ='';
+console.log('INITAL CLCIKED', clickedProduct)
+console.log('INITAL details', productDetails)
+useEffect(() => {
+  if (clickedProduct) {
+    localStorage.setItem('clickedProduct', JSON.stringify(clickedProduct));
+  }
+}, [clickedProduct]);
 
-    if (clickedProduct !== undefined) {
-      currentId = clickedProduct.itemId.toLowerCase();
-      currentColor = clickedProduct.color.toLowerCase();
-      currentCapacity = clickedProduct.capacity.toLowerCase();
-    } else if (productDetails !== undefined) {
-      currentId = productDetails.id.toLowerCase();
-      currentColor = productDetails.color.toLowerCase();
-      currentCapacity = productDetails.capacity.toLowerCase();
-    }
+useEffect(() => {
+  const storedProduct = localStorage.getItem('clickedProduct');
+  if (storedProduct) {
+    setClickedProduct(JSON.parse(storedProduct));
+  }
+}, []);
 
-    let currentIdArray = currentId.split('-');
+  const history = useHistory();
+  const location = useLocation()
 
-    if (input[0] === 'color') {
-      const index = currentIdArray.indexOf(currentColor);
-      if (index !== -1) {
-        currentIdArray[index] = input[1].toLowerCase();
+
+
+    const handleCapacity = (capacity: string) => {
+      console.log(clickedProduct)
+      let currentUrl = `${location.pathname}`
+      let currentUrlArray = currentUrl.split("-")
+      let newUrlArray = [...currentUrlArray]
+      let newUrl: string;
+
+      newUrlArray[newUrlArray.length - 2] = capacity.toLowerCase()
+      newUrl = newUrlArray.join("-")
+      console.log(newUrl)
+      history.push(newUrl)
+
+      if (clickedProduct === undefined) {
+        const newClickedProduct = products.find((item: LimitedProduct) => item.itemId === previousCurrentPage[1].slice(9,newUrl.length))
+
+        setClickedProduct(newClickedProduct)
+        console.log(newClickedProduct)
+      } else {
+        const newClickedProduct = products.find((item: LimitedProduct) => item.itemId === newUrl.slice(9,newUrl.length))
+        console.log(newClickedProduct) /// TU POWSTAJE UNDEFINED
+        setClickedProduct(newClickedProduct)
+
       }
+
     }
 
-    if (input[0] === 'capacity') {
-      const index = currentIdArray.indexOf(currentCapacity);
-      if (index !== -1) {
-        currentIdArray[index] = input[1].toLowerCase();
+    const handleColor = (color: string) => {
+      console.log(clickedProduct)
+      let currentUrl = `${location.pathname}`
+      let currentUrlArray = currentUrl.split("-")
+      let newUrlArray = [...currentUrlArray]
+      let newUrl: string;
+
+      newUrlArray[newUrlArray.length - 1] = color.toLowerCase()
+      newUrl = newUrlArray.join("-")
+      console.log(newUrl)
+      history.push(newUrl)
+
+      if (clickedProduct === undefined) {
+        const newClickedProduct = products.find((item: LimitedProduct) => item.itemId === previousCurrentPage[1].slice(9,newUrl.length))
+
+        setClickedProduct(newClickedProduct)
+        console.log(newClickedProduct)
+      } else {
+        const newClickedProduct = products.find((item: LimitedProduct) => item.itemId === newUrl.slice(9,newUrl.length))
+
+        setClickedProduct(newClickedProduct)
+        console.log(newClickedProduct)
       }
+
+
     }
-
-    const newID = currentIdArray.join('-')
-    const newClickedProduct = products.find((item: LimitedProduct) => item.itemId === newID)
-    console.log(newID);
-    setClickedProduct(newClickedProduct)
-  };
-
-
-
-
-/* const currentName = productDetails.id.toLowerCase();
-const currentCapacity = productDetails.capacity.toLowerCase()
-const cutIndex = currentName.indexOf(currentCapacity)
-const cutIndex2 = currentName.lastIndexOf("-")
-const newItemId = currentName.slice(0, cutIndex).toLowerCase() + capacity.toLowerCase() + '-' + currentName.slice(cutIndex2+1,currentName.length);
-const newClikedProduct = products.find(item => item.itemId === newItemId )
-console.log(clickedProduct.itemId, newItemId )
-setClickedProduct(newClikedProduct) */
-
-
-/* apple-iphone-14-128gb-midnigh256gb-midnight */
-
-/* useEffect(() => {
-  console.log(dynamicColor,dynamicCapacity)
-},[dynamicColor,dynamicCapacity]) */
 
   if (productDetails) {
     return (
@@ -83,13 +102,11 @@ setClickedProduct(newClikedProduct) */
                 className={styles.colorButtonContainer}
                 key={color}
               >
-                {/* <Link to={`/product/${newProductId}`}> */}
                   <button
                     className={styles.colorButton}
                     style={{ backgroundColor: color }}
-                    onClick={()=>handleChange(['color',color])}
+                    onClick={()=>handleColor(color)}
                   />
-                {/* </Link> */}
               </div>
             ))}
           </div>
@@ -105,7 +122,7 @@ setClickedProduct(newClikedProduct) */
               <button
                 className={styles.capacityButton}
                 key={capacity}
-                onClick={()=>handleChange(['capacity',capacity])}
+                onClick={()=>handleCapacity(capacity)}
               >
                 {capacity}
               </button>

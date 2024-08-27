@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect} from 'react';
 import styles from './ProductDetailsPage.module.scss';
 import chevronIcon from '../../img/icons/ChevronIcon.svg';
 import { Header } from '../../components/Header';
@@ -12,18 +12,42 @@ import { Description } from './components/Description';
 import { MainControls } from './components/MainControls';
 import { Loader } from '../../components/Loader';
 import { Breadcrumbs } from '../../components/Breadcrumbs';
-/* import { LimitedProduct } from '../../types/Product'; */
+import { LimitedProduct } from '../../types/Product';
 
 
 export const ProductDetailsPage: React.FC = () => {
   const category = useLocation().pathname.slice(1);
-  const { clickedProduct, previousCurrentPage, setClickedProduct, productDetails, setProductDetails, fetchedCategory, setFetchedCategory/* , products */} = useAppContext();
+  console.log('CATEGORY DLA PREVIOUS PAGE', category)
+  const { clickedProduct, previousCurrentPage, setClickedProduct, productDetails, setProductDetails, fetchedCategory, setFetchedCategory, products, setProducts} = useAppContext();
   const [isLoading, setIsLoading] = useState<true | false>(true);
 
   const query = new URLSearchParams(useLocation().search);
   const productName = query.get('name');
 
+useEffect(()=> {
 
+  if (products.length === 0) {
+    const fetchProductData = async () => {
+      try {
+        const response = await fetch(`https://meljaszuk.github.io/react_phone-catalog/api/products.json`);
+        const data = await response.json();
+        setProducts(data);
+        const copiedData = [...data];
+        console.log('FETCHED PRODUCTS', data)
+
+
+        setProducts(copiedData);
+
+
+      } catch (error) {
+        console.error('Error fetching product data:', error);
+      }
+    };
+
+    fetchProductData();
+  }
+
+})
 
   useEffect(() => {
     const savedProduct = localStorage.getItem('clickedProduct');
@@ -56,6 +80,7 @@ export const ProductDetailsPage: React.FC = () => {
 
 
   useEffect(() => {
+    console.log(clickedProduct) // tu jest problem na CLIKED PRODUCTS = undefined
     if (fetchedCategory !== undefined && clickedProduct !== undefined) {
       const callback = (a: {id: string}) => a.id === clickedProduct.itemId;
       const details = fetchedCategory.find(callback);
@@ -100,6 +125,32 @@ export const ProductDetailsPage: React.FC = () => {
       console.log('NEW CLIKED PRODUCt::::::::',newClikedProduct)
     }
   },[]) */
+  const location = useLocation()
+
+  useEffect(() => {
+    let currentUrl = `${location.pathname}`
+
+
+    console.log('XXXXXXXXXXXXXXXX',clickedProduct, currentUrl)
+
+
+
+    if(clickedProduct === undefined) {
+      let currentUrl = `${location.pathname}`
+      console.log(currentUrl)
+
+      const newClickedProductId = currentUrl.slice(9,currentUrl.length)
+
+      const newClickedProduct = products.find((item: LimitedProduct) => item.itemId.toLowerCase() === newClickedProductId)
+
+    /*     setClickedProduct(newClickedProduct) */
+    console.log(newClickedProductId, newClickedProduct, products)
+    }
+
+
+
+
+  },[location])
 
   return (
     <div className={styles.productDetailsPageWrapper}>
