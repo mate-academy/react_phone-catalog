@@ -1,7 +1,7 @@
 import { useContext, useEffect } from 'react';
 import { Header } from './components/Header/Header.component';
 import { HomePage } from './pages/Home/Home.page';
-import { DispatchContext, StatesContext } from './store/GlobalStateProvider';
+import { DispatchContext } from './store/GlobalStateProvider';
 import { getProducts } from './api/products';
 import { AccessorySpecs } from './types/AccessorySpecs';
 import { PhoneSpecs } from './types/PhoneSpecs';
@@ -9,7 +9,6 @@ import { TabletSpecs } from './types/TabletSpecs';
 import { ProductSummary } from './types/ProductSummary';
 
 export const App = () => {
-  const states = useContext(StatesContext);
   const dispatch = useContext(DispatchContext);
 
   useEffect(() => {
@@ -26,7 +25,7 @@ export const App = () => {
         dispatch({ type: 'loadPhones', payload: phonesFromServer });
       },
     );
-  });
+  }, []);
 
   useEffect(() => {
     getProducts<TabletSpecs[]>('http://localhost:3000/api/tablets.json').then(
@@ -34,16 +33,15 @@ export const App = () => {
         dispatch({ type: 'loadTablets', payload: tabletsFromServer });
       },
     );
-  });
+  }, []);
 
   useEffect(() => {
-    getProducts<ProductSummary[]>('http://localhost:3000/api/products.json')
-      .then(productsFromServer => {
-        console.log(productsFromServer);
-        dispatch({ type: 'loadProducts', payload: productsFromServer });
-      })
-      .then(() => console.log(states.products));
-  });
+    getProducts<ProductSummary[]>(
+      'http://localhost:3000/api/products.json',
+    ).then(productsFromServer => {
+      dispatch({ type: 'loadProducts', payload: productsFromServer });
+    });
+  }, []);
 
   return (
     <div className="App" id="top">
