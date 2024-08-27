@@ -1,0 +1,39 @@
+:root {
+  --color-background: #fff;
+  --color-surface: #b4bdc3;
+  --color-primary: #313237;
+  --color-secondary: #89939a;
+  --color-icons: #fff;
+  --color-elements: #e2e6e9;
+  --color-hover: #fafbfc;
+  --color-green: #27ae60;
+  --color-red: #eb5757;
+  --color-button: #313237;
+  --color-button-hover: #313237;
+  --color-white: #fff;
+  --color-black: #000;
+}
+
+$breakpoint-tablet: 640px;
+$breakpoint-desktop: 1200px;
+$with-icons-desktop: 64px;
+$with-icons-tablet: 48px;
+$height-on-desktop: 64px;
+$height-on-tablet: 48px;
+$transition-duration: 0.5s;
+
+[data-theme='dark'] {
+  --color-background: #0f1121;
+  --color-surface: #323542;
+  --color-primary: #f1f2f9;
+  --color-secondary: #75767f;
+  --color-icons: #4a4d58;
+  --color-elements: #313237;
+  --color-hover: #89939a;
+  --color-button: #905bff;
+  --color-button-hover: #a378ff;
+  --color-green: #27ae60;
+  --color-red: #eb5757;
+  --color-white: #fff;
+  --color-black: #000;
+}
