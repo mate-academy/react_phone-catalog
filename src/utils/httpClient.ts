@@ -3,7 +3,6 @@ const BASE_URL =
   'https://srtrace.github.io/react_phone-catalog/api';
 
 // const TEMP_BASE_URL = 'http://localhost:3000/api';
-// const BASE_URL = '../api';
 
 export function getData<T>(url: string): Promise<T> {
   return fetch(BASE_URL + url).then(response => {
