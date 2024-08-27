@@ -93,15 +93,15 @@ export const ProductCard: React.FC<Props> = ({ id }) => {
   };
 
   const handleSetFavoriteArr = () => {
-    if (favoriteArr?.find((product: Product) => product.itemId === itemId)) {
-      return favoriteArr?.splice(
-        favoriteArr?.findIndex(() =>
-          favoriteArr?.find((product: Product) => product.itemId === itemId),
+    if (favoriteArr.find((product: Product) => product.itemId === itemId)) {
+      return favoriteArr.splice(
+        favoriteArr.findIndex(() =>
+          favoriteArr.find((product: Product) => product.itemId === itemId),
         ),
         1,
       );
     } else {
-      favoriteArr?.push(findProduct(id));
+      favoriteArr.push(findProduct(id));
 
       return favoriteArr;
     }
@@ -144,7 +144,7 @@ export const ProductCard: React.FC<Props> = ({ id }) => {
           className="product-card__favorite-button"
           onClick={() => setFavoriteArr(handleSetFavoriteArr())}
         >
-          {/* {favoriteArr?.find(product => product.itemId === itemId) ? (
+          {/* {favoriteArr.find(product => product.itemId === itemId) ? (
             <img src="./img/heart-icon-active.svg" alt="favorite active" />
           ) : (
             <img src="./img/heart-icon.svg" alt="favorite" />
