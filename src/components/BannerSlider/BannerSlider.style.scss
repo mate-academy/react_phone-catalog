@@ -42,7 +42,7 @@
     height: 100%;
     border: 1px solid $c-icons;
     background: url('../../../public/img/icons/chevron-right.svg') no-repeat
-    center;
+      center;
 
     @include on-tablet {
       display: block;
@@ -53,6 +53,7 @@
     }
   }
   &__frame {
+    cursor: grab;
     grid-column: 1/-1;
     margin-inline: -16px;
     display: flex;
@@ -68,6 +69,7 @@
     }
 
     @include on-desktop {
+      cursor: auto;
       grid-column: 2/24;
       margin-inline: 0;
       padding-top: 38.4%;
@@ -171,7 +173,7 @@
       @include on-tablet {
         display: inline;
       }
-      
+
       @include on-desktop {
         display: inline;
       }
@@ -194,7 +196,6 @@
       width: 60%;
     }
   }
-
 }
 
 .dots {

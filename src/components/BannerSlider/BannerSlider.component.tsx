@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { TouchEvent, useEffect, useState } from 'react';
 import cn from 'classnames';
 
 const bannerImgs = [
@@ -31,6 +31,37 @@ const getTotalImgs = () => {
 
 export const BannerSlider = () => {
   const [index, setIndex] = useState<number>(0);
+  const [touchPosition, setTouchPosition] = useState<number | null>(null);
+
+  const prev = () => setIndex(index - 1);
+  const next = () => setIndex(index + 1);
+
+  const handleTouchStart = (e: TouchEvent) => {
+    const touchDown = e.touches[0].clientX;
+
+    setTouchPosition(touchDown);
+  };
+
+  const handleTouchMove = (e: TouchEvent) => {
+    const touchDown = touchPosition;
+
+    if (touchDown === null) {
+      return;
+    }
+
+    const currentTouch = e.touches[0].clientX;
+    const diff = touchDown - currentTouch;
+
+    if (diff > 8) {
+      next();
+    }
+
+    if (diff < -8) {
+      prev();
+    }
+
+    setTouchPosition(null);
+  };
 
   useEffect(() => {
     const autoSlider = setInterval(() => setIndex(index + 1), 5000);
@@ -50,15 +81,16 @@ export const BannerSlider = () => {
     }
   }, [index]);
 
-  const handlePrevBtn = () => setIndex(index - 1);
-  const handleNextBtn = () => setIndex(index + 1);
-
   return (
     <section className="slider">
       <div className="slider__container">
-        <button className="slider__prevBtn" onClick={handlePrevBtn} />
+        <button className="slider__prevBtn" onClick={prev} />
 
-        <div className="slider__frame">
+        <div
+          className="slider__frame"
+          onTouchStart={handleTouchStart}
+          onTouchMove={handleTouchMove}
+        >
           {bannerImgs.map((img, imgIdx) => {
             let position = 'nextSlide';
 
@@ -93,7 +125,7 @@ export const BannerSlider = () => {
           })}
         </div>
 
-        <button className="slider__nextBtn" onClick={handleNextBtn} />
+        <button className="slider__nextBtn" onClick={next} />
       </div>
       <div className="dots__container">
         <ul className="dots__list">
