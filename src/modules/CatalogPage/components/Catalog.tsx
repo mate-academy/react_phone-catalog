@@ -35,7 +35,6 @@ export const Catalog: React.FC = () => {
   const [pagesWithProducts, setPagesWithProducts] = useState<number[]>([]);
   const [noProductsMessage, setNoProductsMessage] = useState('');
   const [filterLoader, setFilterLoader] = useState(false);
-
   const productsFromServer = useAppSelector(state => state.products.objects);
   const loadingStatus = useAppSelector(state => state.products.loading);
   const loadingError = useAppSelector(state => state.products.error);

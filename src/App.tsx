@@ -1,5 +1,5 @@
 /* eslint-disable max-len */
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { Outlet, useLocation } from 'react-router-dom';
 import './App.module.scss';
 import './modules/shared/_main.scss';
@@ -62,75 +62,37 @@ export const App: React.FC = () => {
 
   body.classList.add(styles.body);
 
-  const [isGoUpButtonShown] = useState(true);
+  useEffect(() => {
+    const goUpButton = document.getElementById('goUpButtonElement');
 
-  // window.onload = () => {
-  //   setTimeout(() => {
-  //     const checkScroll = () => {
-  //       const viewportHeigh = document.documentElement.clientHeight;
-  //       const scrollHeight = document.documentElement.scrollHeight;
+    const checkScroll = () => {
+      if (window.innerWidth > document.documentElement.clientWidth) {
+        goUpButton?.classList.remove(`${styles.hideGoUpButton}`);
+      } else {
+        goUpButton?.classList.add(`${styles.hideGoUpButton}`);
+      }
+    };
 
-  //       console.log(`${viewportHeigh} viewport height`);
-  //       console.log(`${scrollHeight} scroll height`);
+    const clickDelay = () => {
+      setTimeout(() => {
+        checkScroll();
+      }, 500);
+    };
 
-  //       if (scrollHeight <= viewportHeigh) {
-  //         setIsGoUpButtonShown(false);
-  //         document.documentElement.classList.add('noScroll');
-  //       } else {
-  //         setIsGoUpButtonShown(true);
-  //         document.documentElement.classList.remove('noScroll');
-  //       }
-  //     };
+    clickDelay();
 
-  //     checkScroll();
+    document.documentElement.addEventListener('click', clickDelay);
+    window.addEventListener('popstate', clickDelay);
+    window.addEventListener('hashchange', clickDelay);
+    window.addEventListener('resize', checkScroll);
 
-  //     window.addEventListener('resize', checkScroll);
-  //     document.documentElement.addEventListener('click', checkScroll);
-
-  //     setTimeout(() => {
-  //       window.removeEventListener('resize', checkScroll);
-  //       document.documentElement.removeEventListener('click', checkScroll);
-  //     }, 5000);
-  //   }, 0);
-  // };
-
-  // useEffect(() => {
-  //   const checkScroll = () => {
-  //     const viewportHeigh = document.documentElement.clientHeight;
-  //     const scrollHeight = document.documentElement.scrollHeight;
-
-  //     if (scrollHeight <= viewportHeigh) {
-  //       setIsGoUpButtonShown(false);
-  //       document.documentElement.classList.add('noScroll');
-  //     } else {
-  //       setIsGoUpButtonShown(true);
-  //       document.documentElement.classList.remove('noScroll');
-  //     }
-  //   };
-
-  //   setTimeout(() => {
-  //     checkScroll();
-  //   }, 500);
-
-  //   window.addEventListener('resize', checkScroll);
-
-  //   const clickDelay = () => {
-  //     setTimeout(() => {
-  //       checkScroll();
-  //     }, 100);
-  //   };
-
-  //   document.documentElement.addEventListener('click', clickDelay);
-  //   window.addEventListener('popstate', clickDelay);
-  //   window.addEventListener('hashchange', clickDelay);
-
-  //   return () => {
-  //     window.removeEventListener('popstate', clickDelay);
-  //     window.removeEventListener('hashchange', clickDelay);
-  //     document.documentElement.removeEventListener('click', clickDelay);
-  //     window.removeEventListener('resize', checkScroll);
-  //   };
-  // }, []);
+    return () => {
+      document.documentElement.removeEventListener('click', clickDelay);
+      window.removeEventListener('popstate', clickDelay);
+      window.removeEventListener('hashchange', clickDelay);
+      window.removeEventListener('resize', checkScroll);
+    };
+  }, []);
 
   useEffect(() => {
     const root = document.documentElement;
@@ -493,7 +455,7 @@ export const App: React.FC = () => {
             <div
               onClick={() => scrollPageUpSmooth()}
               id="goUpButtonElement"
-              className={`${styles.footer__goUpBlock} ${!isGoUpButtonShown && styles.hideGoUpButton}`}
+              className={styles.footer__goUpBlock}
             >
               <div className={styles.footer__goUpButtonArea}>
                 <div className={styles.footer__goUpTextLink}>{t('go_up')}</div>

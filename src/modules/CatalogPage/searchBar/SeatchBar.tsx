@@ -1,9 +1,10 @@
 import { useSearchParams } from 'react-router-dom';
 import styles from './SearchBar.module.scss';
 import React, { useState } from 'react';
-import { useAppSelector } from '../../../app/hooks';
+import { useAppDispatch, useAppSelector } from '../../../app/hooks';
 import debounce from 'debounce';
 import { useTranslation } from 'react-i18next';
+import { setPage } from '../../../features/pagesDetailsSlice';
 
 interface SearchParams {
   [key: string]: string | string[] | null;
@@ -15,6 +16,8 @@ interface SearchBarType {
 
 export const SearchBar: React.FC<SearchBarType> = ({ setLoader }) => {
   const { t } = useTranslation();
+  const root = document.documentElement;
+  const dispatch = useAppDispatch();
 
   const [searchParams, setSearchParams] = useSearchParams();
   const [localQuery, setLocalQuery] = useState(searchParams.get('query') || '');
@@ -40,6 +43,7 @@ export const SearchBar: React.FC<SearchBarType> = ({ setLoader }) => {
   const updateParams = debounce((value: string) => {
     const updatedParams = getSearchWith(searchParams, {
       query: value,
+      page: '1',
     });
 
     setLoader(false);
@@ -49,11 +53,11 @@ export const SearchBar: React.FC<SearchBarType> = ({ setLoader }) => {
   const handleQueryChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const value = event.target.value;
 
+    dispatch(setPage(1));
     setLoader(true);
-
     setLocalQuery(value);
-
     updateParams(value);
+    root.style.setProperty('--page-starts-from', '0');
   };
 
   const asd = `${t('search')}`;

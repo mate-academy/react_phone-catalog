@@ -6,16 +6,13 @@
   font-family: Montserrat, sans-serif;
 }
 
-.noScroll {
-  overflow: hidden;
-}
-
 .hidenMenuHeightNoScroll {
   height: 100vh;
   overflow: hidden;
 }
 
 :root {
+  overflow: auto;
   --page-starts-from: 0;
 }
 

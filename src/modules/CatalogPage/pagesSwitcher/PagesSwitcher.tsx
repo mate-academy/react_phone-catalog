@@ -79,7 +79,9 @@ export const PagesSwitcher: React.FC<PagesSwitcherProps> = ({
   };
 
   useEffect(() => {
-    if (page && +page > 4 && +page !== pagesWithProducts.length) {
+    if (page && +page > 1 && +page <= 4) {
+      dispatch(setDisablePagesArrow(''));
+    } else if (page && +page > 4 && +page !== pagesWithProducts.length) {
       root.style.setProperty('--page-starts-from', `${+page * 40 - 160}px`);
       dispatch(setDisablePagesArrow(''));
     } else if (page && +page <= 4) {
