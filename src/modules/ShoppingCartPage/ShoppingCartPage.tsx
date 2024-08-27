@@ -1,8 +1,7 @@
-import { Link } from 'react-router-dom';
 import { CartItem } from './components/CartItem';
-import { Icon } from '../../components/Icon';
 import { AppContext } from '../../AppContext';
 import { useContext } from 'react';
+import { BackBtn } from '../../components/BackBtn';
 
 export const ShoppingCartPage = () => {
   const { cartItems, setCartItems } = useContext(AppContext);
@@ -24,10 +23,7 @@ export const ShoppingCartPage = () => {
   return (
     <section className="cart">
       <div className="container">
-        <Link className="cart__back-btn" to="/">
-          <Icon iconName="icon-arrow-left" />
-          back
-        </Link>
+        <BackBtn className="cart__back-btn" />
 
         <div className="cart__content">
           <h1 className="cart__title page-title">Cart</h1>

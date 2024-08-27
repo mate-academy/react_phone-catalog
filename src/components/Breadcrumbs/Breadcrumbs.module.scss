@@ -1,7 +1,7 @@
 .breadcrumbs {
   list-style: none;
   padding: 0;
-  margin: 0 0 24px;
+  margin: 0;
 
   display: flex;
   align-items: center;
@@ -25,6 +25,17 @@
     }
   }
 
+  &__item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    &:last-child {
+      flex-wrap: nowrap;
+      overflow: hidden;
+    }
+  }
+
   &__link {
     text-decoration: none;
     color: $c-white;
@@ -33,8 +44,14 @@
     font-size: 12px;
     line-height: 100%;
 
-    &--active {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+
+    &--disabled {
       color: $c-secondary;
+      pointer-events: none;
+      cursor: not-allowed;
     }
 
     @include on-desktop {

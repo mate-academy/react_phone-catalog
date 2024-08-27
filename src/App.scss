@@ -17,6 +17,7 @@
 @import './components/AddToFav/AddToFav.module';
 @import './components/Breadcrumbs/Breadcrumbs.module';
 @import './components/Loader/Loader.module';
+@import './components/BackBtn/BackBtn.module';
 
 // Module HomePage
 @import './modules/HomePage/components/Hero/Hero.module';
@@ -31,6 +32,9 @@
 
 // Module FavoritesPage
 @import './modules/FavoritesPage/FavoritesPage.module';
+
+// Module ProductDetails
+@import './modules/ProductDetailsPage/ProductDetailsPage.module';
 
 html {
   min-width: 320px;

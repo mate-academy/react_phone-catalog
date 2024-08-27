@@ -9,7 +9,7 @@ export const FavoritesPage = () => {
   return (
     <section className="favorites page">
       <div className="container">
-        <Breadcrumbs />
+        <Breadcrumbs className="favorites__breadcrumbs" />
         <h1 className="favorites__title page-title">Favourites</h1>
         {favItems.length > 0 ? (
           <>

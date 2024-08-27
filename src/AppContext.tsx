@@ -1,7 +1,6 @@
 import React, { createContext, useState, ReactNode, useEffect } from 'react';
 import { ProductType } from './types/ProductType';
 import { getProducts } from './api';
-import { useParams } from 'react-router-dom';
 
 type ListType = 'cart' | 'fav';
 
@@ -9,7 +8,7 @@ type ContextProps = {
   products: ProductType[];
   isLoading: boolean;
   errorMessage: string;
-  currentProduct: ProductType | null;
+  setErrorMessage: (newMessage: string) => void;
   cartItems: ProductType[];
   setCartItems: (newItems: ProductType[]) => void;
   favItems: ProductType[];
@@ -22,7 +21,7 @@ export const AppContext = createContext<ContextProps>({
   products: [],
   isLoading: false,
   errorMessage: '',
-  currentProduct: null,
+  setErrorMessage: () => {},
   cartItems: [],
   setCartItems: () => {},
   favItems: [],
@@ -62,21 +61,9 @@ export const AppProvider: React.FC<Props> = ({ children }) => {
   const [products, setProducts] = useState<ProductType[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
-  const [currentProduct, setCurrentProduct] = useState<ProductType | null>(
-    null,
-  );
-  const { productId } = useParams<{ productId: string }>();
-
-  // console.log(productId);
 
   useEffect(() => {
     setIsLoading(true);
-    if (productId === undefined) {
-      setErrorMessage('Product ID is missing!');
-      setIsLoading(false);
-
-      return;
-    }
 
     getProducts()
       .then(setProducts)
@@ -88,9 +75,7 @@ export const AppProvider: React.FC<Props> = ({ children }) => {
         }, 3000);
       })
       .finally(() => setIsLoading(false));
-
-    setCurrentProduct(products.find(p => p.id === +productId) || null);
-  }, [productId, products]);
+  }, []);
 
   const [cartItems, setCartItems] = useLocalStorage<ProductType[]>(
     'cartItems',
@@ -115,20 +100,18 @@ export const AppProvider: React.FC<Props> = ({ children }) => {
     }
   };
 
-  const removeItem = (removeProductId: number, type: 'cart' | 'fav') => {
+  const removeItem = (productId: number, type: 'cart' | 'fav') => {
     const items = type === 'cart' ? cartItems : favItems;
     const setItems = type === 'cart' ? setCartItems : setFavItems;
 
-    setItems([
-      ...items.filter((item: ProductType) => item.id !== removeProductId),
-    ]);
+    setItems([...items.filter((item: ProductType) => item.id !== productId)]);
   };
 
   const value = {
     products,
     isLoading,
     errorMessage,
-    currentProduct,
+    setErrorMessage,
     cartItems,
     setCartItems,
     favItems,
