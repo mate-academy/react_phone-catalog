@@ -67,7 +67,6 @@ export const ItemCard: React.FC = () => {
         if (neededPhone !== undefined) {
           dispatch(setCurrentGadget(neededPhone));
           dispatch(setIsWrongParams(false));
-          localStorage.setItem('currentGadget', JSON.stringify(neededPhone));
         }
       } else {
         dispatch(setIsWrongParams(true));
@@ -79,7 +78,6 @@ export const ItemCard: React.FC = () => {
         if (neededTablet !== undefined) {
           dispatch(setCurrentGadget(neededTablet));
           dispatch(setIsWrongParams(false));
-          localStorage.setItem('currentGadget', JSON.stringify(neededTablet));
         }
       } else {
         dispatch(setIsWrongParams(true));
@@ -93,10 +91,6 @@ export const ItemCard: React.FC = () => {
         if (neededAccessory !== undefined) {
           dispatch(setCurrentGadget(neededAccessory));
           dispatch(setIsWrongParams(false));
-          localStorage.setItem(
-            'currentGadget',
-            JSON.stringify(neededAccessory),
-          );
         }
       } else {
         dispatch(setIsWrongParams(true));
