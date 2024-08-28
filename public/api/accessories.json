@@ -11,9 +11,9 @@
     "colorsAvailable": ["space gray", "silver", "gold"],
     "color": "space gray",
     "images": [
-      "img/accessories/apple-watch-series-3/space-gray/00.webp",
-      "img/accessories/apple-watch-series-3/space-gray/01.webp",
-      "img/accessories/apple-watch-series-3/space-gray/02.webp"
+      "/react_phone-catalog/img/accessories/apple-watch-series-3/space-gray/00.webp",
+      "/react_phone-catalog/img/accessories/apple-watch-series-3/space-gray/01.webp",
+      "/react_phone-catalog/img/accessories/apple-watch-series-3/space-gray/02.webp"
     ],
     "description": [
       {
@@ -53,9 +53,9 @@
     "colorsAvailable": ["space gray", "silver", "gold"],
     "color": "space gray",
     "images": [
-      "img/accessories/apple-watch-series-3/space-gray/00.webp",
-      "img/accessories/apple-watch-series-3/space-gray/01.webp",
-      "img/accessories/apple-watch-series-3/space-gray/02.webp"
+      "/react_phone-catalog/img/accessories/apple-watch-series-3/space-gray/00.webp",
+      "/react_phone-catalog/img/accessories/apple-watch-series-3/space-gray/01.webp",
+      "/react_phone-catalog/img/accessories/apple-watch-series-3/space-gray/02.webp"
     ],
     "description": [
       {
@@ -95,9 +95,9 @@
     "colorsAvailable": ["space gray", "silver", "gold"],
     "color": "gold",
     "images": [
-      "img/accessories/apple-watch-series-3/gold/00.webp",
-      "img/accessories/apple-watch-series-3/gold/01.webp",
-      "img/accessories/apple-watch-series-3/gold/02.webp"
+      "/react_phone-catalog/img/accessories/apple-watch-series-3/gold/00.webp",
+      "/react_phone-catalog/img/accessories/apple-watch-series-3/gold/01.webp",
+      "/react_phone-catalog/img/accessories/apple-watch-series-3/gold/02.webp"
     ],
     "description": [
       {
@@ -137,9 +137,9 @@
     "colorsAvailable": ["space gray", "silver", "gold"],
     "color": "gold",
     "images": [
-      "img/accessories/apple-watch-series-3/gold/00.webp",
-      "img/accessories/apple-watch-series-3/gold/01.webp",
-      "img/accessories/apple-watch-series-3/gold/02.webp"
+      "/react_phone-catalog/img/accessories/apple-watch-series-3/gold/00.webp",
+      "/react_phone-catalog/img/accessories/apple-watch-series-3/gold/01.webp",
+      "/react_phone-catalog/img/accessories/apple-watch-series-3/gold/02.webp"
     ],
     "description": [
       {
@@ -179,9 +179,9 @@
     "colorsAvailable": ["space gray", "silver", "gold"],
     "color": "silver",
     "images": [
-      "img/accessories/apple-watch-series-3/silver/00.webp",
-      "img/accessories/apple-watch-series-3/silver/01.webp",
-      "img/accessories/apple-watch-series-3/silver/02.webp"
+      "/react_phone-catalog/img/accessories/apple-watch-series-3/silver/00.webp",
+      "/react_phone-catalog/img/accessories/apple-watch-series-3/silver/01.webp",
+      "/react_phone-catalog/img/accessories/apple-watch-series-3/silver/02.webp"
     ],
     "description": [
       {
@@ -221,9 +221,9 @@
     "colorsAvailable": ["space gray", "silver", "gold"],
     "color": "silver",
     "images": [
-      "img/accessories/apple-watch-series-3/silver/00.webp",
-      "img/accessories/apple-watch-series-3/silver/01.webp",
-      "img/accessories/apple-watch-series-3/silver/02.webp"
+      "/react_phone-catalog/img/accessories/apple-watch-series-3/silver/00.webp",
+      "/react_phone-catalog/img/accessories/apple-watch-series-3/silver/01.webp",
+      "/react_phone-catalog/img/accessories/apple-watch-series-3/silver/02.webp"
     ],
     "description": [
       {
@@ -263,9 +263,9 @@
     "colorsAvailable": ["space gray", "silver", "gold", "blue", "red"],
     "color": "space gray",
     "images": [
-      "img/accessories/apple-watch-series-6/space-gray/00.webp",
-      "img/accessories/apple-watch-series-6/space-gray/01.webp",
-      "img/accessories/apple-watch-series-6/space-gray/02.webp"
+      "/react_phone-catalog/img/accessories/apple-watch-series-6/space-gray/00.webp",
+      "/react_phone-catalog/img/accessories/apple-watch-series-6/space-gray/01.webp",
+      "/react_phone-catalog/img/accessories/apple-watch-series-6/space-gray/02.webp"
     ],
     "description": [
       {
@@ -290,7 +290,7 @@
     "screen": "1.57' OLED",
     "resolution": "324x394",
     "processor": "Apple S6",
-    "ram": "1GB",
+    "ram": "1 GB",
     "cell": ["Wi-Fi", "Bluetooth", "LTE"]
   },
   {
@@ -305,9 +305,9 @@
     "colorsAvailable": ["space gray", "silver", "gold", "blue", "red"],
     "color": "space gray",
     "images": [
-      "img/accessories/apple-watch-series-6/space-gray/00.webp",
-      "img/accessories/apple-watch-series-6/space-gray/01.webp",
-      "img/accessories/apple-watch-series-6/space-gray/02.webp"
+      "/react_phone-catalog/img/accessories/apple-watch-series-6/space-gray/00.webp",
+      "/react_phone-catalog/img/accessories/apple-watch-series-6/space-gray/01.webp",
+      "/react_phone-catalog/img/accessories/apple-watch-series-6/space-gray/02.webp"
     ],
     "description": [
       {
@@ -332,7 +332,7 @@
     "screen": "1.57' OLED",
     "resolution": "324x394",
     "processor": "Apple S6",
-    "ram": "1GB",
+    "ram": "1 GB",
     "cell": ["Wi-Fi", "Bluetooth", "LTE"]
   },
   {
@@ -347,9 +347,9 @@
     "colorsAvailable": ["space gray", "silver", "gold", "blue", "red"],
     "color": "silver",
     "images": [
-      "img/accessories/apple-watch-series-6/silver/00.webp",
-      "img/accessories/apple-watch-series-6/silver/01.webp",
-      "img/accessories/apple-watch-series-6/silver/02.webp"
+      "/react_phone-catalog/img/accessories/apple-watch-series-6/silver/00.webp",
+      "/react_phone-catalog/img/accessories/apple-watch-series-6/silver/01.webp",
+      "/react_phone-catalog/img/accessories/apple-watch-series-6/silver/02.webp"
     ],
     "description": [
       {
@@ -374,7 +374,7 @@
     "screen": "1.57' OLED",
     "resolution": "324x394",
     "processor": "Apple S6",
-    "ram": "1GB",
+    "ram": "1 GB",
     "cell": ["Wi-Fi", "Bluetooth", "LTE"]
   },
   {
@@ -389,9 +389,9 @@
     "colorsAvailable": ["space gray", "silver", "gold", "blue", "red"],
     "color": "silver",
     "images": [
-      "img/accessories/apple-watch-series-6/silver/00.webp",
-      "img/accessories/apple-watch-series-6/silver/01.webp",
-      "img/accessories/apple-watch-series-6/silver/02.webp"
+      "/react_phone-catalog/img/accessories/apple-watch-series-6/silver/00.webp",
+      "/react_phone-catalog/img/accessories/apple-watch-series-6/silver/01.webp",
+      "/react_phone-catalog/img/accessories/apple-watch-series-6/silver/02.webp"
     ],
     "description": [
       {
@@ -416,7 +416,7 @@
     "screen": "1.57' OLED",
     "resolution": "324x394",
     "processor": "Apple S6",
-    "ram": "1GB",
+    "ram": "1 GB",
     "cell": ["Wi-Fi", "Bluetooth", "LTE"]
   },
   {
@@ -431,9 +431,9 @@
     "colorsAvailable": ["space gray", "silver", "gold", "blue", "red"],
     "color": "gold",
     "images": [
-      "img/accessories/apple-watch-series-6/gold/00.webp",
-      "img/accessories/apple-watch-series-6/gold/01.webp",
-      "img/accessories/apple-watch-series-6/gold/02.webp"
+      "/react_phone-catalog/img/accessories/apple-watch-series-6/gold/00.webp",
+      "/react_phone-catalog/img/accessories/apple-watch-series-6/gold/01.webp",
+      "/react_phone-catalog/img/accessories/apple-watch-series-6/gold/02.webp"
     ],
     "description": [
       {
@@ -458,7 +458,7 @@
     "screen": "1.57' OLED",
     "resolution": "324x394",
     "processor": "Apple S6",
-    "ram": "1GB",
+    "ram": "1 GB",
     "cell": ["Wi-Fi", "Bluetooth", "LTE"]
   },
   {
@@ -473,9 +473,9 @@
     "colorsAvailable": ["space gray", "silver", "gold", "blue", "red"],
     "color": "gold",
     "images": [
-      "img/accessories/apple-watch-series-6/gold/00.webp",
-      "img/accessories/apple-watch-series-6/gold/01.webp",
-      "img/accessories/apple-watch-series-6/gold/02.webp"
+      "/react_phone-catalog/img/accessories/apple-watch-series-6/gold/00.webp",
+      "/react_phone-catalog/img/accessories/apple-watch-series-6/gold/01.webp",
+      "/react_phone-catalog/img/accessories/apple-watch-series-6/gold/02.webp"
     ],
     "description": [
       {
@@ -500,7 +500,7 @@
     "screen": "1.57' OLED",
     "resolution": "324x394",
     "processor": "Apple S6",
-    "ram": "1GB",
+    "ram": "1 GB",
     "cell": ["Wi-Fi", "Bluetooth", "LTE"]
   },
   {
@@ -515,9 +515,9 @@
     "colorsAvailable": ["space gray", "silver", "gold", "blue", "red"],
     "color": "blue",
     "images": [
-      "img/accessories/apple-watch-series-6/blue/00.webp",
-      "img/accessories/apple-watch-series-6/blue/01.webp",
-      "img/accessories/apple-watch-series-6/blue/02.webp"
+      "/react_phone-catalog/img/accessories/apple-watch-series-6/blue/00.webp",
+      "/react_phone-catalog/img/accessories/apple-watch-series-6/blue/01.webp",
+      "/react_phone-catalog/img/accessories/apple-watch-series-6/blue/02.webp"
     ],
     "description": [
       {
@@ -542,7 +542,7 @@
     "screen": "1.57' OLED",
     "resolution": "324x394",
     "processor": "Apple S6",
-    "ram": "1GB",
+    "ram": "1 GB",
     "cell": ["Wi-Fi", "Bluetooth", "LTE"]
   },
   {
@@ -557,9 +557,9 @@
     "colorsAvailable": ["space gray", "silver", "gold", "blue", "red"],
     "color": "blue",
     "images": [
-      "img/accessories/apple-watch-series-6/blue/00.webp",
-      "img/accessories/apple-watch-series-6/blue/01.webp",
-      "img/accessories/apple-watch-series-6/blue/02.webp"
+      "/react_phone-catalog/img/accessories/apple-watch-series-6/blue/00.webp",
+      "/react_phone-catalog/img/accessories/apple-watch-series-6/blue/01.webp",
+      "/react_phone-catalog/img/accessories/apple-watch-series-6/blue/02.webp"
     ],
     "description": [
       {
@@ -584,7 +584,7 @@
     "screen": "1.57' OLED",
     "resolution": "324x394",
     "processor": "Apple S6",
-    "ram": "1GB",
+    "ram": "1 GB",
     "cell": ["Wi-Fi", "Bluetooth", "LTE"]
   },
   {
@@ -599,9 +599,9 @@
     "colorsAvailable": ["space gray", "silver", "gold", "blue", "red"],
     "color": "red",
     "images": [
-      "img/accessories/apple-watch-series-6/red/00.webp",
-      "img/accessories/apple-watch-series-6/red/01.webp",
-      "img/accessories/apple-watch-series-6/red/02.webp"
+      "/react_phone-catalog/img/accessories/apple-watch-series-6/red/00.webp",
+      "/react_phone-catalog/img/accessories/apple-watch-series-6/red/01.webp",
+      "/react_phone-catalog/img/accessories/apple-watch-series-6/red/02.webp"
     ],
     "description": [
       {
@@ -626,7 +626,7 @@
     "screen": "1.57' OLED",
     "resolution": "324x394",
     "processor": "Apple S6",
-    "ram": "1GB",
+    "ram": "1 GB",
     "cell": ["Wi-Fi", "Bluetooth", "LTE"]
   },
   {
@@ -641,9 +641,9 @@
     "colorsAvailable": ["space gray", "silver", "gold", "blue", "red"],
     "color": "red",
     "images": [
-      "img/accessories/apple-watch-series-6/red/00.webp",
-      "img/accessories/apple-watch-series-6/red/01.webp",
-      "img/accessories/apple-watch-series-6/red/02.webp"
+      "/react_phone-catalog/img/accessories/apple-watch-series-6/red/00.webp",
+      "/react_phone-catalog/img/accessories/apple-watch-series-6/red/01.webp",
+      "/react_phone-catalog/img/accessories/apple-watch-series-6/red/02.webp"
     ],
     "description": [
       {
@@ -668,7 +668,7 @@
     "screen": "1.57' OLED",
     "resolution": "324x394",
     "processor": "Apple S6",
-    "ram": "1GB",
+    "ram": "1 GB",
     "cell": ["Wi-Fi", "Bluetooth", "LTE"]
   },
   {
@@ -683,9 +683,9 @@
     "colorsAvailable": ["silver", "gold", "space gray"],
     "color": "silver",
     "images": [
-      "img/accessories/apple-watch-series-5/silver/00.webp",
-      "img/accessories/apple-watch-series-5/silver/01.webp",
-      "img/accessories/apple-watch-series-5/silver/02.webp"
+      "/react_phone-catalog/img/accessories/apple-watch-series-5/silver/00.webp",
+      "/react_phone-catalog/img/accessories/apple-watch-series-5/silver/01.webp",
+      "/react_phone-catalog/img/accessories/apple-watch-series-5/silver/02.webp"
     ],
     "description": [
       {
@@ -710,7 +710,7 @@
     "screen": "1.57' OLED",
     "resolution": "324x394",
     "processor": "Apple S5",
-    "ram": "1GB",
+    "ram": "1 GB",
     "cell": ["Wi-Fi", "Bluetooth", "LTE"]
   },
   {
@@ -725,9 +725,9 @@
     "colorsAvailable": ["space gray", "silver", "gold"],
     "color": "silver",
     "images": [
-      "img/accessories/apple-watch-series-5/silver/00.webp",
-      "img/accessories/apple-watch-series-5/silver/01.webp",
-      "img/accessories/apple-watch-series-5/silver/02.webp"
+      "/react_phone-catalog/img/accessories/apple-watch-series-5/silver/00.webp",
+      "/react_phone-catalog/img/accessories/apple-watch-series-5/silver/01.webp",
+      "/react_phone-catalog/img/accessories/apple-watch-series-5/silver/02.webp"
     ],
     "description": [
       {
@@ -752,7 +752,7 @@
     "screen": "1.78' LTPO OLED",
     "resolution": "368x448",
     "processor": "Apple S5",
-    "ram": "1GB",
+    "ram": "1 GB",
     "cell": ["Wi-Fi", "Bluetooth", "LTE"]
   },
   {
@@ -767,9 +767,9 @@
     "colorsAvailable": ["silver", "gold", "space gray"],
     "color": "gold",
     "images": [
-      "img/accessories/apple-watch-series-5/gold/00.webp",
-      "img/accessories/apple-watch-series-5/gold/01.webp",
-      "img/accessories/apple-watch-series-5/gold/02.webp"
+      "/react_phone-catalog/img/accessories/apple-watch-series-5/gold/00.webp",
+      "/react_phone-catalog/img/accessories/apple-watch-series-5/gold/01.webp",
+      "/react_phone-catalog/img/accessories/apple-watch-series-5/gold/02.webp"
     ],
     "description": [
       {
@@ -794,7 +794,7 @@
     "screen": "1.57' OLED",
     "resolution": "324x394",
     "processor": "Apple S5",
-    "ram": "1GB",
+    "ram": "1 GB",
     "cell": ["Wi-Fi", "Bluetooth", "LTE"]
   },
   {
@@ -809,9 +809,9 @@
     "colorsAvailable": ["space gray", "silver", "gold"],
     "color": "gold",
     "images": [
-      "img/accessories/apple-watch-series-5/gold/00.webp",
-      "img/accessories/apple-watch-series-5/gold/01.webp",
-      "img/accessories/apple-watch-series-5/gold/02.webp"
+      "/react_phone-catalog/img/accessories/apple-watch-series-5/gold/00.webp",
+      "/react_phone-catalog/img/accessories/apple-watch-series-5/gold/01.webp",
+      "/react_phone-catalog/img/accessories/apple-watch-series-5/gold/02.webp"
     ],
     "description": [
       {
@@ -836,7 +836,7 @@
     "screen": "1.78' LTPO OLED",
     "resolution": "368x448",
     "processor": "Apple S5",
-    "ram": "1GB",
+    "ram": "1 GB",
     "cell": ["Wi-Fi", "Bluetooth", "LTE"]
   },
   {
@@ -851,9 +851,9 @@
     "colorsAvailable": ["silver", "gold", "space gray"],
     "color": "space-gray",
     "images": [
-      "img/accessories/apple-watch-series-5/space-gray/00.webp",
-      "img/accessories/apple-watch-series-5/space-gray/01.webp",
-      "img/accessories/apple-watch-series-5/space-gray/02.webp"
+      "/react_phone-catalog/img/accessories/apple-watch-series-5/space-gray/00.webp",
+      "/react_phone-catalog/img/accessories/apple-watch-series-5/space-gray/01.webp",
+      "/react_phone-catalog/img/accessories/apple-watch-series-5/space-gray/02.webp"
     ],
     "description": [
       {
@@ -878,7 +878,7 @@
     "screen": "1.57' OLED",
     "resolution": "324x394",
     "processor": "Apple S5",
-    "ram": "1GB",
+    "ram": "1 GB",
     "cell": ["Wi-Fi", "Bluetooth", "LTE"]
   },
   {
@@ -893,9 +893,9 @@
     "colorsAvailable": ["space gray", "silver", "gold"],
     "color": "space-gray",
     "images": [
-      "img/accessories/apple-watch-series-5/space-gray/00.webp",
-      "img/accessories/apple-watch-series-5/space-gray/01.webp",
-      "img/accessories/apple-watch-series-5/space-gray/02.webp"
+      "/react_phone-catalog/img/accessories/apple-watch-series-5/space-gray/00.webp",
+      "/react_phone-catalog/img/accessories/apple-watch-series-5/space-gray/01.webp",
+      "/react_phone-catalog/img/accessories/apple-watch-series-5/space-gray/02.webp"
     ],
     "description": [
       {
@@ -920,7 +920,7 @@
     "screen": "1.78' LTPO OLED",
     "resolution": "368x448",
     "processor": "Apple S5",
-    "ram": "1GB",
+    "ram": "1 GB",
     "cell": ["Wi-Fi", "Bluetooth", "LTE"]
   },
   {
@@ -935,9 +935,9 @@
     "colorsAvailable": ["silver", "gold", "space gray"],
     "color": "silver",
     "images": [
-      "img/accessories/apple-watch-series-4/silver/00.webp",
-      "img/accessories/apple-watch-series-4/silver/01.webp",
-      "img/accessories/apple-watch-series-4/silver/02.webp"
+      "/react_phone-catalog/img/accessories/apple-watch-series-4/silver/00.webp",
+      "/react_phone-catalog/img/accessories/apple-watch-series-4/silver/01.webp",
+      "/react_phone-catalog/img/accessories/apple-watch-series-4/silver/02.webp"
     ],
     "description": [
       {
@@ -962,7 +962,7 @@
     "screen": "1.57' OLED",
     "resolution": "324x394",
     "processor": "Apple S4",
-    "ram": "0.75GB",
+    "ram": "0.75 GB",
     "cell": ["Wi-Fi", "Bluetooth", "LTE"]
   },
   {
@@ -977,9 +977,9 @@
     "colorsAvailable": ["silver", "gold", "space gray"],
     "color": "silver",
     "images": [
-      "img/accessories/apple-watch-series-4/silver/00.webp",
-      "img/accessories/apple-watch-series-4/silver/01.webp",
-      "img/accessories/apple-watch-series-4/silver/02.webp"
+      "/react_phone-catalog/img/accessories/apple-watch-series-4/silver/00.webp",
+      "/react_phone-catalog/img/accessories/apple-watch-series-4/silver/01.webp",
+      "/react_phone-catalog/img/accessories/apple-watch-series-4/silver/02.webp"
     ],
     "description": [
       {
@@ -1004,7 +1004,7 @@
     "screen": "1.78' OLED",
     "resolution": "368x448",
     "processor": "Apple S4",
-    "ram": "0.75GB",
+    "ram": "0.75 GB",
     "cell": ["Wi-Fi", "Bluetooth", "LTE"]
   },
   {
@@ -1019,9 +1019,9 @@
     "colorsAvailable": ["silver", "gold", "space gray"],
     "color": "gold",
     "images": [
-      "img/accessories/apple-watch-series-4/gold/00.webp",
-      "img/accessories/apple-watch-series-4/gold/01.webp",
-      "img/accessories/apple-watch-series-4/gold/02.webp"
+      "/react_phone-catalog/img/accessories/apple-watch-series-4/gold/00.webp",
+      "/react_phone-catalog/img/accessories/apple-watch-series-4/gold/01.webp",
+      "/react_phone-catalog/img/accessories/apple-watch-series-4/gold/02.webp"
     ],
     "description": [
       {
@@ -1046,7 +1046,7 @@
     "screen": "1.57' OLED",
     "resolution": "324x394",
     "processor": "Apple S4",
-    "ram": "0.75GB",
+    "ram": "0.75 GB",
     "cell": ["Wi-Fi", "Bluetooth", "LTE"]
   },
   {
@@ -1061,9 +1061,9 @@
     "colorsAvailable": ["silver", "gold", "space gray"],
     "color": "gold",
     "images": [
-      "img/accessories/apple-watch-series-4/gold/00.webp",
-      "img/accessories/apple-watch-series-4/gold/01.webp",
-      "img/accessories/apple-watch-series-4/gold/02.webp"
+      "/react_phone-catalog/img/accessories/apple-watch-series-4/gold/00.webp",
+      "/react_phone-catalog/img/accessories/apple-watch-series-4/gold/01.webp",
+      "/react_phone-catalog/img/accessories/apple-watch-series-4/gold/02.webp"
     ],
     "description": [
       {
@@ -1088,7 +1088,7 @@
     "screen": "1.78' OLED",
     "resolution": "368x448",
     "processor": "Apple S4",
-    "ram": "0.75GB",
+    "ram": "0.75 GB",
     "cell": ["Wi-Fi", "Bluetooth", "LTE"]
   },
   {
@@ -1103,9 +1103,9 @@
     "colorsAvailable": ["silver", "gold", "space gray"],
     "color": "space-gray",
     "images": [
-      "img/accessories/apple-watch-series-4/space-gray/00.webp",
-      "img/accessories/apple-watch-series-4/space-gray/01.webp",
-      "img/accessories/apple-watch-series-4/space-gray/02.webp"
+      "/react_phone-catalog/img/accessories/apple-watch-series-4/space-gray/00.webp",
+      "/react_phone-catalog/img/accessories/apple-watch-series-4/space-gray/01.webp",
+      "/react_phone-catalog/img/accessories/apple-watch-series-4/space-gray/02.webp"
     ],
     "description": [
       {
@@ -1130,7 +1130,7 @@
     "screen": "1.57' OLED",
     "resolution": "324x394",
     "processor": "Apple S4",
-    "ram": "0.75GB",
+    "ram": "0.75 GB",
     "cell": ["Wi-Fi", "Bluetooth", "LTE"]
   },
   {
@@ -1145,9 +1145,9 @@
     "colorsAvailable": ["silver", "gold", "space gray"],
     "color": "space-gray",
     "images": [
-      "img/accessories/apple-watch-series-4/space-gray/00.webp",
-      "img/accessories/apple-watch-series-4/space-gray/01.webp",
-      "img/accessories/apple-watch-series-4/space-gray/02.webp"
+      "/react_phone-catalog/img/accessories/apple-watch-series-4/space-gray/00.webp",
+      "/react_phone-catalog/img/accessories/apple-watch-series-4/space-gray/01.webp",
+      "/react_phone-catalog/img/accessories/apple-watch-series-4/space-gray/02.webp"
     ],
     "description": [
       {
@@ -1172,7 +1172,7 @@
     "screen": "1.78' OLED",
     "resolution": "368x448",
     "processor": "Apple S4",
-    "ram": "0.75GB",
+    "ram": "0.75 GB",
     "cell": ["Wi-Fi", "Bluetooth", "LTE"]
   },
   {
@@ -1187,9 +1187,9 @@
     "colorsAvailable": ["silver", "gold", "space gray"],
     "color": "silver",
     "images": [
-      "img/accessories/apple-watch-se/silver/00.webp",
-      "img/accessories/apple-watch-se/silver/01.webp",
-      "img/accessories/apple-watch-se/silver/02.webp"
+      "/react_phone-catalog/img/accessories/apple-watch-se/silver/00.webp",
+      "/react_phone-catalog/img/accessories/apple-watch-se/silver/01.webp",
+      "/react_phone-catalog/img/accessories/apple-watch-se/silver/02.webp"
     ],
     "description": [
       {
@@ -1214,7 +1214,7 @@
     "screen": "1.57' OLED",
     "resolution": "324x394",
     "processor": "Apple S5",
-    "ram": "1GB",
+    "ram": "1 GB",
     "cell": ["Wi-Fi", "Bluetooth", "LTE"]
   },
   {
@@ -1229,9 +1229,9 @@
     "colorsAvailable": ["silver", "gold", "space gray"],
     "color": "silver",
     "images": [
-      "img/accessories/apple-watch-se/silver/00.webp",
-      "img/accessories/apple-watch-se/silver/01.webp",
-      "img/accessories/apple-watch-se/silver/02.webp"
+      "/react_phone-catalog/img/accessories/apple-watch-se/silver/00.webp",
+      "/react_phone-catalog/img/accessories/apple-watch-se/silver/01.webp",
+      "/react_phone-catalog/img/accessories/apple-watch-se/silver/02.webp"
     ],
     "description": [
       {
@@ -1256,7 +1256,7 @@
     "screen": "1.78' OLED",
     "resolution": "368x448",
     "processor": "Apple S5",
-    "ram": "1GB",
+    "ram": "1 GB",
     "cell": ["Wi-Fi", "Bluetooth", "LTE"]
   },
   {
@@ -1271,9 +1271,9 @@
     "colorsAvailable": ["silver", "space gray", "gold"],
     "color": "gold",
     "images": [
-      "img/accessories/apple-watch-se/gold/00.webp",
-      "img/accessories/apple-watch-se/gold/01.webp",
-      "img/accessories/apple-watch-se/gold/02.webp"
+      "/react_phone-catalog/img/accessories/apple-watch-se/gold/00.webp",
+      "/react_phone-catalog/img/accessories/apple-watch-se/gold/01.webp",
+      "/react_phone-catalog/img/accessories/apple-watch-se/gold/02.webp"
     ],
     "description": [
       {
@@ -1298,7 +1298,7 @@
     "screen": "1.57' OLED",
     "resolution": "324x394",
     "processor": "Apple S5",
-    "ram": "1GB",
+    "ram": "1 GB",
     "cell": ["Wi-Fi", "Bluetooth", "LTE"]
   },
   {
@@ -1313,9 +1313,9 @@
     "colorsAvailable": ["space gray", "silver", "gold"],
     "color": "gold",
     "images": [
-      "img/accessories/apple-watch-se/gold/00.webp",
-      "img/accessories/apple-watch-se/gold/01.webp",
-      "img/accessories/apple-watch-se/gold/02.webp"
+      "/react_phone-catalog/img/accessories/apple-watch-se/gold/00.webp",
+      "/react_phone-catalog/img/accessories/apple-watch-se/gold/01.webp",
+      "/react_phone-catalog/img/accessories/apple-watch-se/gold/02.webp"
     ],
     "description": [
       {
@@ -1340,7 +1340,7 @@
     "screen": "1.78' OLED",
     "resolution": "368x448",
     "processor": "Apple S5",
-    "ram": "1GB",
+    "ram": "1 GB",
     "cell": ["Wi-Fi", "Bluetooth", "LTE"]
   },
   {
@@ -1355,9 +1355,9 @@
     "colorsAvailable": ["silver", "space gray", "gold"],
     "color": "space gray",
     "images": [
-      "img/accessories/apple-watch-se/space-gray/00.webp",
-      "img/accessories/apple-watch-se/space-gray/01.webp",
-      "img/accessories/apple-watch-se/space-gray/02.webp"
+      "/react_phone-catalog/img/accessories/apple-watch-se/space-gray/00.webp",
+      "/react_phone-catalog/img/accessories/apple-watch-se/space-gray/01.webp",
+      "/react_phone-catalog/img/accessories/apple-watch-se/space-gray/02.webp"
     ],
     "description": [
       {
@@ -1382,7 +1382,7 @@
     "screen": "1.57' OLED",
     "resolution": "324x394",
     "processor": "Apple S5",
-    "ram": "1GB",
+    "ram": "1 GB",
     "cell": ["Wi-Fi", "Bluetooth", "LTE"]
   },
   {
@@ -1397,9 +1397,9 @@
     "colorsAvailable": ["silver", "space gray", "gold"],
     "color": "space gray",
     "images": [
-      "img/accessories/apple-watch-se/space-gray/00.webp",
-      "img/accessories/apple-watch-se/space-gray/01.webp",
-      "img/accessories/apple-watch-se/space-gray/02.webp"
+      "/react_phone-catalog/img/accessories/apple-watch-se/space-gray/00.webp",
+      "/react_phone-catalog/img/accessories/apple-watch-se/space-gray/01.webp",
+      "/react_phone-catalog/img/accessories/apple-watch-se/space-gray/02.webp"
     ],
     "description": [
       {
@@ -1424,7 +1424,7 @@
     "screen": "1.78' OLED",
     "resolution": "368x448",
     "processor": "Apple S5",
-    "ram": "1GB",
+    "ram": "1 GB",
     "cell": ["Wi-Fi", "Bluetooth", "LTE"]
   }
 ]

@@ -1,10 +1,17 @@
 {
-  "extends": "@mate-academy/students-ts-config",
-  "include": [
-    "src"
+  "files": [],
+  "references": [
+    {
+      "path": "./tsconfig.app.json"
+    },
+    {
+      "path": "./tsconfig.node.json"
+    }
   ],
   "compilerOptions": {
-    "sourceMap": false,
-    "types": ["node", "cypress"]
+    "baseUrl": "src",
+    "paths": {
+      "assets/*": ["assets/*"]
+    }
   }
 }
