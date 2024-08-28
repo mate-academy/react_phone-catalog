@@ -105,6 +105,9 @@ export default {
       red: "#eb5757",
     },
     extend: {
+      boxShadow: {
+        buttonHover: "0 3px 13px 0 #17203166",
+      },
       width: {
         page: "min(100%, calc(1200px + (2rem * 2)))",
         69: "276px",

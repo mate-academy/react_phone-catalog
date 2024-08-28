@@ -1,7 +1,7 @@
-import ArrowLeft from "../../../../assets/icons/ArrowLeft";
-import ArrowRight from "../../../../assets/icons/ArrowRight";
-import { useAppContext } from "../../../../context/AppContext";
-import { Product } from "../../../../types/product";
+import ArrowLeft from "../../../assets/icons/ArrowLeft";
+import ArrowRight from "../../../assets/icons/ArrowRight";
+import { useAppContext } from "../../../context/AppContext";
+import { Product } from "../../../types/product";
 
 type Props = {
   curElem: number;

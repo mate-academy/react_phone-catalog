@@ -1,7 +1,7 @@
 import { useState } from "react";
-import HomeNewProductsButtons from "./HomeNewProductsSlider/HomeNewProductsButtons";
-import HomeNewProductsSlider from "./HomeNewProductsSlider/HomeNewProductsSlider";
+import HomeNewProductsButtons from "./HomeNewProductsButtons";
 import { useAppContext } from "../../../context/AppContext";
+import HomeSlider from "../HomeSlider/HomeSlider";
 
 const HomeNewProducts = () => {
   const { productsList } = useAppContext();
@@ -15,7 +15,7 @@ const HomeNewProducts = () => {
   };
 
   return (
-    <section className="max-w-full">
+    <section>
       <section className="mb-6 flex justify-between">
         <h2>Brand new models</h2>
         <HomeNewProductsButtons
@@ -24,7 +24,7 @@ const HomeNewProducts = () => {
           handleStateChangeCurElem={handleStateChangeCurElem}
         />
       </section>
-      <HomeNewProductsSlider curElem={curElem} newProducts={newProducts} />
+      <HomeSlider curElem={curElem} newProducts={newProducts} />
     </section>
   );
 };

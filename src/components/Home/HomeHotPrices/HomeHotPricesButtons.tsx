@@ -1,11 +1,11 @@
 import ArrowLeft from "../../../assets/icons/ArrowLeft";
 import ArrowRight from "../../../assets/icons/ArrowRight";
 import { useAppContext } from "../../../context/AppContext";
-import { Item } from "../../../types/item";
+import { Product } from "../../../types/product";
 
 type Props = {
   curElem: number;
-  itemsList: Item[];
+  newProducts: Product[];
   handleStateChangeCurElem: (
     number: number | ((prev: number) => number),
   ) => void;
@@ -13,12 +13,12 @@ type Props = {
 
 const HomeHotPricesButtons = ({
   curElem,
-  itemsList,
+  newProducts,
   handleStateChangeCurElem,
 }: Props) => {
   const { colors } = useAppContext();
   const firstElem = 0;
-  const lastElem = itemsList.length - 4;
+  const lastElem = newProducts.length - 4;
   const { icon, primary } = colors;
 
   const handleClickNextEl = () => {

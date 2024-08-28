@@ -26,13 +26,14 @@
 body,
 html {
   overflow-x: hidden;
+  width: 100dvw;
 }
 
 #root {
   min-height: 100dvh;
   display: grid;
   grid-template-rows: auto 1fr auto;
-}                     
+}
 
 h1 {
   @apply text-h1mobile small:text-h1;
