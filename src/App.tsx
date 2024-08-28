@@ -16,12 +16,17 @@ export const App = () => {
       className={classNames('App', {
         'is-bg-dark': !isSunSelected,
       })}
+      id="top"
     >
-      <header className={styles.header} id="header">
+      <header
+        className={classNames(styles.header, {
+          [styles['header-dark']]: !isSunSelected,
+        })}
+      >
         <Header />
       </header>
       <main className="main">
-        <div className="main__continer">
+        <div className="main__continer noPadding">
           <Outlet />
         </div>
       </main>

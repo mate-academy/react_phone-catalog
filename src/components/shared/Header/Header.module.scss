@@ -2,22 +2,31 @@
 @import "../../../styles/mixins.scss";
 
 .header {
-  max-width: 100%;
+  min-width: 100%;
   height: 64px;
   border-bottom: 1px solid $secondary-color;
+  background-color: $white;
+  position: fixed;
 
-  @include onDesktop{
+  z-index: 10;
+
+  @include onDesktop {
     height: 48px;
 
   }
 
+  @include onTablet {
+    position: fixed;
+  }
+
   &-dark {
-    background-color: black;
+    background-color: $BG-dark;
   }
 }
 
 .header__container {
   display: flex;
+
   align-items: center;
   max-height: 100%;
 }
@@ -27,7 +36,6 @@
 
   @include onDesktop{
     padding: 13px 16px;
-
 
   }
 
@@ -49,227 +57,6 @@
 .logo__img:hover {
   transform: scale(1.05);
 }
-
-// .menu {
-//   margin-left: 24px;
-
-//   @include onDesktop {
-//     margin-left: 16px;
-
-//   }
-
-//   @include onTablet{
-//     display: none;
-//   }
-
-
-// }
-
-
-
-// .menu__list {
-//   display: flex;
-//   gap: 64px;
-
-//   @include onDesktop {
-//     gap: 32px;
-//   }
-
-//   @include onTablet{
-//     display: none;
-//     flex-direction: column;
-//     justify-content: start;
-//     align-items: center;
-//     align-self: center;
-//       width: 100%;
-//       height: 100vh;
-//       background-color: white;
-//       position: absolute;
-//       left: 0;
-//       top: 48px;
-//       padding-top: 24px;
-//       overflow: hidden;
-//    }
-
-// }
-
-// .menu__item {
-
-
-// }
-
-// .menu__link {
-// color: $secondary-color;
-// padding: 20px 0px 20px 0px;
-// text-transform: uppercase;
-// font-size: 12px;
-// line-height: 11px;
-// letter-spacing: 4%;
-// font-weight: 800;
-// transition: all 0.2s ease, transform 0.2s ease;
-
-
-// @include onDesktop{
-//   padding: 12px 0px 12px 0px;
-// }
-
-// @include onTablet{
-//  width: 100%;
-//  height: 27px;
-//  font-size: 20px;
-//  padding: 0;
-//  text-transform: uppercase;
-
-// }
-
-
-// }
-
-// .menu__link-active {
-//   color: $primary-color;
-//   border-bottom: 3px solid $primary-color;
-// }
-
-// .menu__link:hover {
-//   color: $primary-color;
-//   border-bottom: 3px solid $primary-color;
-// }
-
-// .swither {
-//   display: flex;
-//   justify-content: end;
-//   margin-right: 64px;
-
-//   @include onDesktop {
-//     margin-right: 32px;
-
-//   }
-
-
-
-//   @include onTablet{
-//     display: flex;
-//     justify-content: center;
-//     position: absolute;
-//     bottom: 64px;
-//     width: 100%;
-//     margin: 0 auto;
-//     border: 1px solid $secondary-color;
-//     border-bottom: 0;
-//     padding: 24px;
-//   }
-
-// }
-
-// .ToolbarIcons {
-//   display: flex;
-//   justify-content: end;
-//   align-items: center;
-//   width: 100%;
-//   height: 64px;
-
-//   img {
-//     width: 16px;
-//     height: 16px;
-
-//   }
-
-//   @include onDesktop{
-//     height: 48px;
-
-//   }
-
-//   @include onTablet{
-//     display: none;
-//     flex-direction: column;
-//     justify-content: flex-end;
-//     position: absolute;
-//     bottom: 0;
-//     width: 100%;
-
-//   }
-
-// }
-
-// .ToolbarIcons__favorites {
-//     border-left: 1px solid $secondary-color;
-//     border-right: 1px solid transparent;
-//     border-top: 1px solid transparent;
-//     border-bottom: 3px solid transparent;
-//     padding: 24px;
-//     padding-bottom: 18px;
-
-//     transition: border 0.3s ease, transform 0.3s ease;
-
-//     @include onDesktop{
-//       padding: 15px;
-//       padding-bottom: 10px;
-
-//     }
-
-//     @include onTablet{
-//       display: flex;
-//       justify-content: center;
-//       position: absolute;
-//       bottom: 0;
-//       left: 0;
-//       width: 50%;
-//       border: 1px solid $secondary-color;
-//       padding: 24px;
-//     }
-
-// }
-
-// .ToolbarIcons__favorites:hover {
-//   border: 1px solid $primary-color;
-//   border-bottom: 3px solid $primary-color;
-
-// }
-
-// .ToolbarIcons__cart {
-//   border-left: 1px solid $secondary-color;
-//   border-right: 1px solid transparent;
-//   border-top: 1px solid transparent;
-//   border-bottom: 3px solid transparent;
-//   padding: 24px;
-//   padding-bottom: 18px;
-//   transition: border 0.3s ease, transform 0.3s ease;
-
-//   @include onDesktop{
-//     padding: 15px;
-//     padding-bottom: 10px;
-
-
-
-//   }
-
-//   @include onTablet{
-//     display: flex;
-//     justify-content: center;
-//     position: absolute;
-//     bottom: 0;
-//     right: 0;
-//     width: 50%;
-//     border: 1px solid $secondary-color;
-//     padding: 24px;
-//   }
-
-// }
-
-// .ToolbarIcons__cart-active {
-//   border: 1px solid $primary-color;
-//   border-bottom: 3px solid $primary-color;
-// }
-
-// .ToolbarIcons__favorites-active {
-//   border: 1px solid $primary-color;
-//   border-bottom: 3px solid $primary-color;
-// }
-
-// .ToolbarIcons__cart:hover {
-//   border: 1px solid $primary-color;
-//   border-bottom: 3px solid $primary-color;
-// }
 
 .burger__menu {
   justify-content: end;
@@ -327,7 +114,6 @@
         border: 1px solid $primary-color;
         border-bottom: 3px solid $primary-color;
       }
-
 
     }
   }

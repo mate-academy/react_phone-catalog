@@ -1,0 +1,61 @@
+@import "../../../styles/variables.scss";
+@import "../../../styles/mixins.scss";
+
+
+.crumbs {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  position: relative;
+  align-self: center;
+  text-align: center;
+  top: 88px;
+
+  @include onTablet {
+    top: 68px;
+  }
+}
+
+.cart {
+  margin-top: 112px;
+  padding-left: 16px;
+
+  &__box {
+    display: flex;
+    gap: 16px;
+
+    @include bigOnDesktop {
+      display: flex;
+      flex-direction: column;
+      max-width: 100%;
+    }
+
+    @include onTablet {
+      padding-right: 16px;
+    }
+  }
+
+
+  &__title {
+    margin-bottom: 32px;
+    font-size: 48px;
+    font-weight: 800;
+    line-height: 56px;
+    letter-spacing: -0.01em;
+    text-align: left;
+    color: $primary-color;
+
+    &_dark {
+    color: $primary-color-dark;
+
+    }
+
+  }
+
+}
+
+.goods {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}

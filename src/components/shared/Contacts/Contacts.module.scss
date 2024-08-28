@@ -1,0 +1,84 @@
+@import "../../../styles/variables.scss";
+@import "../../../styles/mixins.scss";
+
+.contact {
+  max-width: 300px;
+  padding: 0;
+  margin: 0 auto;
+  margin-top: 20vh;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2), 0 6px 40px rgba(0, 0, 0, 0.19);
+  border-radius: 10px;
+  transition: box-shadow 0.3s ease;
+  border-radius: 10px 10px 0 0;
+  height: 450px;
+
+  &:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3), 0 12px 40px rgba(0, 0, 0, 0.25);
+  }
+
+  &_dark {
+    box-shadow: 0 4px 12px rgb(255, 255, 255), 0 6px 40px rgba(255, 255, 255, 0.618);
+    background-color: $bg-dark-ikons;
+
+
+    &:hover {
+    box-shadow: 0 8px 16px rgba(229, 2, 245, 0.942), 0 12px 40px rgba(241, 2, 249, 0.844);
+
+    }
+  }
+
+  &__content {
+    text-align: center;
+    background-color: #fff;
+
+    &_dark {
+    background-color: $bg-dark-ikons;
+    }
+  }
+
+  &__image {
+    background-image: url(../../../../public/img/me-photos/1B6A1501-31.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center top;
+    width: 100%;
+    height: 0;
+    padding-top: 100%;
+    border-radius: 10px 10px 0 0;
+
+    &_dark {
+    background-image: url(../../../../public/img/me-photos/1B6A1501-32.jpg);
+
+    }
+
+  }
+
+  &__name {
+    font-weight: bold;
+
+    &_dark {
+      color: white;
+    }
+  }
+
+  &__icons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 10px;
+    transition: transform 0.3s ease;
+    background-color: white;
+
+    &_dark {
+      background-color: $bg-dark-ikons;
+      }
+  }
+
+}

@@ -1,0 +1,59 @@
+@import "../../../styles/variables.scss";
+@import "../../../styles/mixins.scss";
+
+
+.errors {
+  margin-top: 40px;
+
+  @include onTablet {
+    padding: 0 16px;
+  }
+
+  &__title {
+    font-size: 32px;
+    font-weight: 800;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+    text-align: left;
+    color: $primary-color;
+
+    &_dark {
+      color: $white;
+
+    }
+
+    @include onTablet {
+    font-size: 28px;
+
+    }
+
+  }
+
+  &__description {
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 21px;
+      text-align: left;
+      margin-top: 10px;
+
+    color: $secondary-color;
+
+
+  }
+
+  &__img {
+    background-image: url(../../../../public/img/product-not-found.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 600px;
+    height: 600px;
+    margin: 0 auto;
+    background-size: 100%;
+
+    @include onTablet {
+      width: 300px;
+      height: 300px;
+
+      }
+  }
+}

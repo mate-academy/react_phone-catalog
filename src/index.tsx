@@ -8,15 +8,19 @@ import {
 } from 'react-router-dom';
 import './styles/reset.scss';
 import './styles/fonts.scss';
-import { HomePage } from './Pages/HomePage';
-import { PhonesPage } from './Pages/PhonesPage';
-import { NotFoundPage } from './Pages/NotFoundPage';
-import { TabletsPage } from './Pages/TabletsPage';
-import { AccessoriesPage } from './Pages/AccessoriesPage';
-import { FavouritesPage } from './Pages/FavouritesPage';
-import { CartPage } from './Pages/CartPage';
+
 // eslint-disable-next-line max-len
 import { GlobalProvider } from './components/shared/GlobalContext/GlobalContext';
+import { HomePage } from './components/Pages/HomePage';
+import { PhonesPage } from './components/Pages/PhonesPage';
+import { TabletsPage } from './components/Pages/TabletsPage';
+import { AccessoriesPage } from './components/Pages/AccessoriesPage';
+import { FavouritesPage } from './components/Pages/FavouritesPage';
+import { CartPage } from './components/Pages/CartPage';
+import { NotFoundPage } from './components/Pages/NotFoundPage';
+import { CardDetails } from './components/Pages/CardDetails/CardDetails';
+import { Contacts } from './components/shared/Contacts/Contacts';
+import { RightsPage } from './components/shared/Rights/Rights';
 
 createRoot(document.getElementById('root') as HTMLElement).render(
   <GlobalProvider>
@@ -25,12 +29,20 @@ createRoot(document.getElementById('root') as HTMLElement).render(
         <Route path="/" element={<App />}>
           <Route index element={<HomePage />} />
           <Route path="home" element={<Navigate to="/" replace />} />
-          <Route path="phones" element={<PhonesPage />} />
-          <Route path="tablets" element={<TabletsPage />} />
-          <Route path="accessories" element={<AccessoriesPage />} />
+          <Route path="phones" element={<PhonesPage />}>
+            <Route path=":itemId" element={<CardDetails />} />
+          </Route>
+          <Route path="tablets" element={<TabletsPage />}>
+            <Route path=":itemId" element={<CardDetails />} />
+          </Route>
+          <Route path="accessories" element={<AccessoriesPage />}>
+            <Route path=":itemId" element={<CardDetails />} />
+          </Route>
           <Route path="favourites" element={<FavouritesPage />} />
           <Route path="cart" element={<CartPage />} />
 
+          <Route path="contacts" element={<Contacts />} />
+          <Route path="rights" element={<RightsPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Routes>

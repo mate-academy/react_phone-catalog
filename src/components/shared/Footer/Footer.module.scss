@@ -9,6 +9,7 @@
   display: flex;
   justify-content: space-between;
 
+
   @include onTablet {
     display: flex;
     flex-direction: column;
@@ -48,9 +49,6 @@
       align-items: start;
 
     }
-  }
-
-  &__item {
   }
 
   &__link {

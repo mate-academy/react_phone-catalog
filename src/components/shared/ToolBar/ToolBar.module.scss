@@ -11,8 +11,6 @@
 
   }
 
-
-
   @include onTablet{
     display: flex;
     justify-content: center;
@@ -49,7 +47,7 @@
     display: none;
     flex-direction: column;
     justify-content: flex-end;
-    position: absolute;
+    position: fixed;
     bottom: 0;
     width: 100%;
 
@@ -62,6 +60,7 @@
     border-bottom: 3px solid transparent;
     padding: 24px;
     padding-bottom: 18px;
+    position: relative;
 
     transition: border 0.3s ease, transform 0.3s ease;
 
@@ -80,7 +79,7 @@
       width: 50%;
       border: 1px solid $secondary-color;
       padding: 24px;
-
+      background: $white;
     }
 
     &:hover {
@@ -102,7 +101,7 @@
 
       @include onTablet {
       border: 1px solid $secondary-color-dark;
-
+      background: $BG-dark;
       }
 
       &:hover {
@@ -116,6 +115,65 @@
         border-bottom: 3px solid $primary-color-dark;
       }
     }
+
+    &_length {
+      position: absolute;
+      top: 30%;
+      right: 30%;
+      width: 14px;
+      height: 14px;
+      background-color: #EB5757;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 9px;
+      color: white;
+      border-radius: 100%;
+      border: 1px solid white;
+
+      @include onDesktop {
+        position: absolute;
+        top: 22%;
+        right: 20%;
+
+        }
+
+        @include onTablet {
+          position: absolute;
+          top: 30%;
+          right: 45%;
+
+          }
+
+      &_dark {
+        position: absolute;
+        top: 30%;
+        right: 30%;
+        width: 14px;
+        height: 14px;
+        background-color: #EB5757;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 9px;
+        color: white;
+        border-radius: 100%;
+        border: 1px solid black;
+
+
+      @include onDesktop {
+        top: 22%;
+        right: 20%;
+
+        }
+
+        @include onTablet {
+          top: 30%;
+          right: 45%;
+
+          }
+      }
+    }
   }
 
   &__cart {
@@ -126,12 +184,11 @@
     padding: 24px;
     padding-bottom: 18px;
     transition: border 0.3s ease, transform 0.3s ease;
+    position: relative;
 
     @include onDesktop{
       padding: 15px;
       padding-bottom: 10px;
-
-
 
     }
 
@@ -144,6 +201,8 @@
       width: 50%;
       border: 1px solid $secondary-color;
       padding: 24px;
+      background: $white;
+
     }
 
     &:hover {
@@ -164,7 +223,7 @@
 
       @include onTablet {
         border: 1px solid $secondary-color-dark;
-
+        background: $BG-dark;
         }
 
       &:hover {
@@ -176,6 +235,65 @@
       &-active {
         border: 1px solid $primary-color-dark;
         border-bottom: 3px solid $primary-color-dark;
+      }
+    }
+
+    &_length {
+      position: absolute;
+      top: 30%;
+      right: 30%;
+      width: 14px;
+      height: 14px;
+      background-color: #EB5757;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 9px;
+      color: white;
+      border-radius: 100%;
+      border: 1px solid white;
+
+      @include onDesktop {
+        position: absolute;
+        top: 22%;
+        right: 20%;
+
+        }
+
+        @include onTablet {
+          position: absolute;
+          top: 30%;
+          right: 45%;
+
+          }
+
+      &_dark {
+        position: absolute;
+        top: 30%;
+        right: 30%;
+        width: 14px;
+        height: 14px;
+        background-color: #EB5757;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 9px;
+        color: white;
+        border-radius: 100%;
+        border: 1px solid black;
+
+
+      @include onDesktop {
+        top: 22%;
+        right: 20%;
+
+        }
+
+        @include onTablet {
+          top: 30%;
+          right: 45%;
+
+          }
       }
     }
   }

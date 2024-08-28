@@ -1,0 +1,99 @@
+@import "../../../styles/variables.scss";
+@import "../../../styles/mixins.scss";
+
+.details {
+  margin-top: 90px;
+
+  &__container_first {
+    display: flex;
+    gap: 64px;
+
+    @include onTablet {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+  }
+
+  &__container_second {
+    display: flex;
+    gap: 64px;
+    margin-top: 80px;
+
+    @include onDesktop {
+      display: flex;
+      flex-direction: column;
+      margin-top: 64px;
+    }
+
+    @include onTablet {
+      padding: 0 16px;
+    }
+  }
+
+  &__name {
+    font-size: 32px;
+    font-weight: 800;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+    text-align: left;
+    margin-top: 16px;
+    margin-bottom: 40px;
+    color: $primary-color;
+
+    &_dark {
+      color: $primary-color-dark;
+    }
+
+    @include onTablet {
+      padding-left: 16px;
+    }
+  }
+
+
+}
+
+.button__back {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  padding-top: 40px;
+
+  @include onTablet {
+  padding-top: 24px;
+
+  }
+  &_text {
+    display: flex;
+    align-items: center;
+    font-size: 12px;
+    font-weight: 700;
+    text-align: center;
+    color: $secondary-color;
+    transition: color 0.3s ease, transform 0.3s ease;
+    padding-top: 1px;
+
+    &:hover {
+      color: $primary-color;
+
+    }
+  }
+
+
+  &_img {
+    width: 16px;
+    height: 16px;
+    background-image: url(../../../../public/img/arrows/arrowPrev.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    margin-right: 4px;
+
+    &_dark {
+      background-image: url(../../../../public/img/arrows/arrowPrev-dark.svg);
+
+    }
+  }
+}
+
+

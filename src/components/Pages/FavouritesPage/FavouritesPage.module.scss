@@ -1,0 +1,93 @@
+@import "../../../styles/variables.scss";
+@import "../../../styles/mixins.scss";
+
+
+.crumbs {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  position: relative;
+  align-self: center;
+  text-align: center;
+  top: 88px;
+
+  @include onTablet {
+    top: 68px;
+  }
+}
+
+.favourites {
+  margin-top: 112px;
+  padding-left: 16px;
+
+
+
+  &__title {
+    font-size: 48px;
+    font-weight: 800;
+    line-height: 56px;
+    letter-spacing: -0.01em;
+    text-align: left;
+    color: $primary-color;
+    margin-bottom: 8px;
+
+    &_dark {
+    color: $primary-color-dark;
+
+    }
+
+  }
+
+  &__length {
+    width: 1137px;
+    height: 21px;
+    top: 208px;
+    left: 151px;
+    gap: 0px;
+    opacity: 0px;
+    color: $secondary-color;
+
+  }
+
+  &__cards {
+    width: 1160px;
+    display: flex;
+    row-gap: 16px;
+    flex-wrap: wrap;
+    margin-top: 40px;
+
+
+    @include bigOnDesktop  {
+      width: 870px;
+    }
+
+    @include onDesktop {
+      width: 576px;
+    }
+
+    @include onTablet {
+      width: 320px;
+      justify-content: center;
+      margin: 0 auto;
+      margin-top: 32px;
+    }
+
+
+  }
+}
+
+.not_favorites_products {
+  background-image: url(../../../../public/img/not-favorites.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  margin: 0 auto;
+  width: 400px;
+  height: 400px;
+
+
+  @include onTablet {
+    width: 280px;
+    height: 280px;
+  }
+}

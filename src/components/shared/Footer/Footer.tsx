@@ -9,7 +9,7 @@ export const Footer = () => {
   const { isSunSelected } = useContext(GlobalContext);
 
   const hendlerButtonScroll = () => {
-    const headerElement = document.getElementById('header');
+    const headerElement = document.getElementById('top');
 
     if (headerElement) {
       headerElement.scrollIntoView({ behavior: 'smooth' });
@@ -39,7 +39,7 @@ export const Footer = () => {
             </li>
             <li className={styles.information__item}>
               <Link
-                to="/"
+                to="contacts"
                 className={classNames(styles.information__link, {
                   [styles['information__link-dark']]: !isSunSelected,
                 })}
@@ -49,7 +49,7 @@ export const Footer = () => {
             </li>
             <li className={styles.information__item}>
               <Link
-                to="/"
+                to="/rights"
                 className={classNames(styles.information__link, {
                   [styles['information__link-dark']]: !isSunSelected,
                 })}

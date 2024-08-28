@@ -7,6 +7,7 @@
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+
 }
 
 .main {
@@ -16,6 +17,10 @@
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 32px;
+
+    @include onTablet {
+      padding: 0;
+    }
   }
 }
 
@@ -28,9 +33,12 @@
   padding: 32px;
   height: 96px;
   border-top: 1px solid $secondary-color;
+  margin-top: 80px;
 
   @include onTablet {
     height: 257px;
+  padding: 16px;
+
   }
 
 }

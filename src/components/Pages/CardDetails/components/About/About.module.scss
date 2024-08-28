@@ -1,0 +1,64 @@
+@import "../../../../../styles/variables.scss";
+@import "../../../../../styles/mixins.scss";
+
+.about {
+  max-width: 560px;
+
+  @include bigOnDesktop {
+    max-width: 400px;
+
+  }
+
+  @include onDesktop {
+    min-width: 100%;
+  }
+
+  &__title {
+    font-size: 22px;
+    font-weight: 800;
+    line-height: 30.8px;
+    text-align: left;
+    color: $primary-color;
+    padding-bottom: 16px;
+    border-bottom: 1px solid $BG;
+
+    &_dark {
+      border-bottom: 1px solid $border-dark;
+      color: $primary-color-dark;
+
+
+    }
+  }
+
+  &__info {
+    margin-top: 32px;
+
+    &_title {
+      font-size: 20px;
+      font-weight: 700;
+      line-height: 25.56px;
+      text-align: left;
+      color: $primary-color;
+      margin-bottom: 16px;
+
+      &_dark {
+      color: $primary-color-dark;
+
+      }
+
+    }
+    &_text {
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 21px;
+      text-align: left;
+      color: $secondary-color;
+
+      &_dark {
+      color: $secondary-color-dark;
+
+      }
+
+    }
+}
+}

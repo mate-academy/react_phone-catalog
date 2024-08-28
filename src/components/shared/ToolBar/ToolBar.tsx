@@ -10,7 +10,7 @@ type Props = {
 };
 
 export const ToolBar: React.FC<Props> = ({ isOpenMenu }) => {
-  const { isSunSelected } = useContext(GlobalContext);
+  const { isSunSelected, isLiked, isGoods } = useContext(GlobalContext);
 
   return (
     <div
@@ -34,17 +34,35 @@ export const ToolBar: React.FC<Props> = ({ isOpenMenu }) => {
           to="/favourites"
         >
           {isSunSelected ? (
-            <img
-              className={styles.ToolbarIcons__favorites_img}
-              src="img/headerIсons/heart.svg"
-              alt="heart"
-            />
+            <>
+              <img
+                className={styles.ToolbarIcons__favorites_img}
+                src="img/headerIсons/heart.svg"
+                alt="heart"
+              />
+              {isLiked.length > 0 ? (
+                <span className={styles.ToolbarIcons__favorites_length}>
+                  {isLiked.length}
+                </span>
+              ) : (
+                ''
+              )}
+            </>
           ) : (
-            <img
-              className={styles.ToolbarIcons__favorites_img}
-              src="img/headerIсons/heart-dark.svg"
-              alt="heart"
-            />
+            <>
+              <img
+                className={styles.ToolbarIcons__favorites_img}
+                src="img/headerIсons/heart-dark.svg"
+                alt="heart"
+              />
+              {isLiked.length > 0 ? (
+                <span className={styles.ToolbarIcons__favorites_length_dark}>
+                  {isLiked.length}
+                </span>
+              ) : (
+                ''
+              )}
+            </>
           )}
         </NavLink>
         <NavLink
@@ -59,17 +77,35 @@ export const ToolBar: React.FC<Props> = ({ isOpenMenu }) => {
           to="/cart"
         >
           {isSunSelected ? (
-            <img
-              className={styles.ToolbarIcons__cart_img}
-              src="img/headerIсons/cartIcon.svg"
-              alt="cart"
-            />
+            <>
+              <img
+                className={styles.ToolbarIcons__cart_img}
+                src="img/headerIсons/cartIcon.svg"
+                alt="cart"
+              />
+              {isGoods.length > 0 ? (
+                <span className={styles.ToolbarIcons__cart_length}>
+                  {isGoods.length}
+                </span>
+              ) : (
+                ''
+              )}
+            </>
           ) : (
-            <img
-              className={styles.ToolbarIcons__cart_img}
-              src="img/headerIсons/cart-dark.svg"
-              alt="cart"
-            />
+            <>
+              <img
+                className={styles.ToolbarIcons__cart_img}
+                src="img/headerIсons/cart-dark.svg"
+                alt="cart"
+              />
+              {isGoods.length > 0 ? (
+                <span className={styles.ToolbarIcons__cart_length_dark}>
+                  {isGoods.length}
+                </span>
+              ) : (
+                ''
+              )}
+            </>
           )}
         </NavLink>
       </div>

@@ -4,6 +4,12 @@
   }
 }
 
+@mixin bigOnDesktop {
+  @media (max-width: 1199px) {
+    @content;
+  }
+}
+
 @mixin onDesktop {
   @media (max-width: 900px) {
     @content;
@@ -33,6 +39,10 @@
   grid-template-columns: repeat(24, 32px);
   column-gap: 16px;
 
+
+  @include bigOnDesktop() {
+    grid-template-columns: repeat(12, 1fr);
+  }
   @include onDesktop() {
     grid-template-columns: repeat(12, 1fr);
   }

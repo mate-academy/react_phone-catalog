@@ -1,0 +1,10 @@
+@import "../../../styles/variables.scss";
+@import "../../../styles/mixins.scss";
+
+.controls {
+  &__container {
+    display: flex;
+    gap: 16px;
+  }
+}
+

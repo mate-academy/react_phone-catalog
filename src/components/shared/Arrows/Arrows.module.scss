@@ -1,0 +1,133 @@
+@import '../../../styles/mixins.scss';
+@import '../../../styles/variables.scss';
+
+.custom__arrow {
+  position: relative;
+  top: 0;
+  right: 0;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  cursor: pointer !important;
+  width: 32px !important;
+  height: 32px !important;
+
+  background-size: 16px 16px !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+
+  &::before {
+    content: none !important;
+    display: none !important;
+  }
+}
+
+.custom__next {
+  background-image: url('../../../../public/img/arrows/arrowNext.svg') !important;
+  position: absolute !important;
+  border: 1px solid $secondary-color !important;
+  right: 0 !important;
+  top: -44px !important;
+  transform: translateY(-50%) !important;
+  background-color: $white;
+  transition: all 0.2s ease, transform 0.2s ease;
+
+
+  &:hover {
+  border: 1px solid $primary-color !important;
+
+  }
+
+  &::before {
+    content: none !important;
+    display: none !important;
+  }
+
+  @include onTablet {
+    top: -54px !important;
+    right: 16px !important;
+
+  }
+
+  &_dark {
+    position: absolute !important;
+    background-image: url('../../../../public/img/arrows/arrowNext-dark.svg') !important;
+    background-color: $bg-dark-ikons !important;
+    right: 0 !important;
+    top: -44px !important;
+    transform: translateY(-50%) !important;
+    transition: all 0.2s ease, transform 0.2s ease;
+
+
+    &:hover {
+      background-color: $bg-dark-ikons-hover !important;
+
+
+      }
+
+    &::before {
+      content: none !important;
+      display: none !important;
+    }
+
+    @include onTablet {
+      top: -54px !important;
+      right: 16px !important;
+    }
+  }
+
+}
+.custom__prev {
+  background-image: url('../../../../public/img/arrows/arrowPrev.svg') !important;
+  position: absolute !important;
+  border: 1px solid $secondary-color !important;
+  right: 48px !important;
+  top: -44px !important;
+  transform: translateY(-50%) !important;
+  transition: all 0.2s ease, transform 0.2s ease;
+
+
+
+
+  &:hover {
+    border: 1px solid $primary-color !important;
+
+    }
+
+  &::before {
+    content: none !important;
+    display: none !important;
+  }
+
+  @include onTablet {
+    top: -54px !important;
+    right: 64px !important;
+
+  }
+
+
+  &_dark {
+    background-image: url('../../../../public/img/arrows/arrowPrev-dark.svg') !important;
+    background-color: $bg-dark-ikons;
+
+    position: absolute !important;
+    right: 48px !important;
+    top: -44px !important;
+    transform: translateY(-50%) !important;
+    transition: all 0.2s ease, transform 0.2s ease;
+
+    &:hover {
+      background-color: $bg-dark-ikons-hover !important;
+      }
+
+      @include onTablet {
+        top: -54px !important;
+        right: 64px !important;
+      }
+  }
+}
+
+.disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
