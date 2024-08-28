@@ -188,10 +188,12 @@
   }
 
   &__buy-button {
-    width: 175px;
+    &--catalog {
+      width: 175px;
 
     @include on-desktop {
       width: 160px;
+    }
     }
   }
 }

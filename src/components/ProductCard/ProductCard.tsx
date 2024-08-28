@@ -3,12 +3,13 @@ import React from 'react';
 import { useLocalStorage } from '@uidotdev/usehooks';
 import productsFromServer from '../../api/products.json';
 import './ProductCard.scss';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 import phonesFromServer from '../../api/phones.json';
 import tabletsFromServer from '../../api/tablets.json';
 import accessoriesFromServer from '../../api/accessories.json';
 import { Product } from '../../types/Propduct';
+import classNames from 'classnames';
 
 type Props = {
   id: number;
@@ -35,6 +36,8 @@ export const ProductCard: React.FC<Props> = ({ id }) => {
     'favoriteArr',
     [],
   );
+
+  const { pathname } = useLocation();
 
   let checkedName = name;
   let dots = false;
@@ -111,7 +114,13 @@ export const ProductCard: React.FC<Props> = ({ id }) => {
         </div>
       </div>
       <div className="product-card__buttons-box">
-        <button className="product-card__buy-button">Add to cart</button>
+        <button
+          className={classNames('product-card__buy-button', {
+            'product-card__buy-button--catalog': pathname === `/${category}`,
+          })}
+        >
+          Add to cart
+        </button>
         <button
           className="product-card__favorite-button"
           onClick={handleSetFavoriteArr}
