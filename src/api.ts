@@ -1,4 +1,5 @@
 import { ProductType } from './types/ProductType';
+import { ProductTypeExtended } from './types/ProductTypeExtended';
 
 // eslint-disable-next-line operator-linebreak
 const BASE_URL = 'https://ivankovbohdan.github.io/react_phone-catalog/api/';
@@ -22,3 +23,5 @@ function get<T>(url: string): Promise<T> {
 }
 
 export const getProducts = () => get<ProductType[]>('/products');
+export const getPhones = () => get<ProductTypeExtended[]>('/phones');
+

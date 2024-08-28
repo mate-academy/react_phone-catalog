@@ -1,11 +1,13 @@
 import React, { createContext, useState, ReactNode, useEffect } from 'react';
 import { ProductType } from './types/ProductType';
-import { getProducts } from './api';
+import { getPhones, getProducts } from './api';
+import { ProductTypeExtended } from './types/ProductTypeExtended';
 
 type ListType = 'cart' | 'fav';
 
 type ContextProps = {
   products: ProductType[];
+  phones: ProductTypeExtended[];
   isLoading: boolean;
   errorMessage: string;
   setErrorMessage: (newMessage: string) => void;
@@ -19,6 +21,7 @@ type ContextProps = {
 
 export const AppContext = createContext<ContextProps>({
   products: [],
+  phones: [],
   isLoading: false,
   errorMessage: '',
   setErrorMessage: () => {},
@@ -59,6 +62,7 @@ function useLocalStorage<T>(key: string, startValue: T): [T, (v: T) => void] {
 
 export const AppProvider: React.FC<Props> = ({ children }) => {
   const [products, setProducts] = useState<ProductType[]>([]);
+  const [phones, setPhones] = useState<ProductTypeExtended[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
 
@@ -73,6 +77,18 @@ export const AppProvider: React.FC<Props> = ({ children }) => {
         setTimeout(() => {
           setErrorMessage('');
         }, 3000);
+      })
+      .finally(() => setIsLoading(false));
+  }, []);
+
+  useEffect(() => {
+    setIsLoading(true);
+
+    getPhones()
+      .then(setPhones)
+      .catch(() => {
+        setErrorMessage('Something went wrong!');
+        setTimeout(() => setErrorMessage(''), 3000);
       })
       .finally(() => setIsLoading(false));
   }, []);
@@ -109,6 +125,7 @@ export const AppProvider: React.FC<Props> = ({ children }) => {
 
   const value = {
     products,
+    phones,
     isLoading,
     errorMessage,
     setErrorMessage,

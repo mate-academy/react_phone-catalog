@@ -1,7 +1,8 @@
 import { Link } from 'react-router-dom';
 import { ProductType } from '../../types/ProductType';
-import { AddToCart } from '../AddToCart';
-import { AddToFav } from '../AddToFav';
+import { ProductPrices } from '../ProductPrices';
+import { ProductButtons } from '../ProductButtons';
+import { ProductSpecs } from '../ProductSpecs';
 
 type Props = {
   className?: string;
@@ -30,32 +31,23 @@ export const Product: React.FC<Props> = ({
       >
         {product.name}
       </Link>
-      <div className="product__prices">
-        <span className="product__price">{`$${product.price}`}</span>
-        {hasDiscount && (
-          <span className="product__price product__price--full">{`$${product.fullPrice}`}</span>
-        )}
-      </div>
 
-      <ul className="product__info-list">
-        <li className="product__info-item">
-          Screen
-          <span className="product__info-value">{product.screen}</span>
-        </li>
-        <li className="product__info-item">
-          Capacity
-          <span className="product__info-value">{product.capacity}</span>
-        </li>
-        <li className="product__info-item">
-          RAM
-          <span className="product__info-value">{product.ram}</span>
-        </li>
-      </ul>
+      <ProductPrices
+        className={'product__product-prices'}
+        product={product}
+        hasDiscount={hasDiscount}
+      />
 
-      <div className="product__buttons">
-        <AddToCart product={product} />
-        <AddToFav product={product} />
-      </div>
+      <ProductSpecs
+        product={product}
+        specs={[
+          { key: 'screen', label: 'Screen' },
+          { key: 'capacity', label: 'Capacity' },
+          { key: 'ram', label: 'RAM' },
+        ]}
+      />
+
+      <ProductButtons product={product} />
     </article>
   );
 };

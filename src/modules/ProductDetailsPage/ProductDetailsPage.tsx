@@ -1,58 +1,24 @@
-import { useContext, useEffect, useState } from 'react';
-import { AppContext } from '../../AppContext';
 import { Loader } from '../../components/Loader';
-import { useParams } from 'react-router-dom';
-import { ProductType } from '../../types/ProductType';
 import { Breadcrumbs } from '../../components/Breadcrumbs';
 import { BackBtn } from '../../components/BackBtn';
-// SWIPER
-import { Swiper, SwiperSlide, SwiperClass } from 'swiper/react';
-import { Thumbs } from 'swiper/modules';
-import 'swiper/scss';
+import { AppContext } from '../../AppContext';
+import { useContext, useMemo } from 'react';
+import { useParams } from 'react-router-dom';
+import { ProductPrices } from '../../components/ProductPrices';
+import { ProductSpecs } from '../../components/ProductSpecs';
+import { ProductButtons } from '../../components/ProductButtons';
 
 export const ProductDetailsPage = () => {
-  const { products, errorMessage, setErrorMessage, isLoading } =
-    useContext(AppContext);
-  const { productId } = useParams();
-  const [currentProduct, setCurrentProduct] = useState<ProductType | null>(
-    null,
+  const { phones, isLoading } = useContext(AppContext);
+  const { id } = useParams<{ id: string }>();
+
+  const product = useMemo(
+    () => phones.find(phone => phone.id === id),
+    [phones, id],
   );
-  const [images, setImages] = useState<string[]>([]);
-  const [thumbsSwiper, setThumbsSwiper] = useState<SwiperClass | null>(null);
-  const [selectedIndex, setSelectedIndex] = useState(0);
-
-  useEffect(() => {
-    if (productId === undefined) {
-      setErrorMessage('Product ID is missing!');
-    } else {
-      const foundedProduct = products.find(p => p.id === +productId) || null;
-
-      setCurrentProduct(foundedProduct);
-
-      if (foundedProduct) {
-        const itemId = foundedProduct.itemId.split('-').slice(0, -2).join('-');
-        const colorFolder = foundedProduct.color;
-        const imageFolder = `img/phones/${itemId}/${colorFolder}/`;
-        const imageFiles = [
-          `${imageFolder}00.webp`,
-          `${imageFolder}01.webp`,
-          `${imageFolder}02.webp`,
-          `${imageFolder}03.webp`,
-          `${imageFolder}04.webp`,
-        ];
-
-        setImages(imageFiles);
-      }
-    }
-  }, [productId, products, setErrorMessage]);
-
-  const handleThumbnailClick = (index: number) => {
-    setSelectedIndex(index);
-    thumbsSwiper?.slideTo(index);
-  };
 
   return (
-    <section className="product-details page">
+    <div className="product-details page">
       <div className="container">
         {isLoading && <Loader />}
 
@@ -61,63 +27,69 @@ export const ProductDetailsPage = () => {
             <Breadcrumbs className="product-details__breadcrumbs" />
             <BackBtn className="product-details__back-btn" />
 
-            {errorMessage && (
-              <span className="notification">{errorMessage}</span>
-            )}
+            {!product ? (
+              <span className="notification"></span>
+            ) : (
+              <section className="details">
+                <h2 className="details__title section-title">{product.name}</h2>
 
-            {currentProduct && (
-              <div className="product-details__wrapper">
-                <h2 className="product-details__title">
-                  {currentProduct.name}
-                </h2>
+                <div className="details__images-slider images-slider">
+                  <ul className="images-slider__images">
+                    <li className="images-slider__image"></li>
+                  </ul>
 
-                <Swiper
-                  className="product-details__images"
-                  slidesPerView={1}
-                  modules={[Thumbs]}
-                  thumbs={{ swiper: thumbsSwiper }}
-                  onSlideChange={swiper => setSelectedIndex(swiper.activeIndex)}
-                  initialSlide={selectedIndex}
-                >
-                  {images.map((image, index) => (
-                    <SwiperSlide
-                      className="product-details__images-item"
-                      key={index}
-                    >
-                      <div className="product-details__images-img">
-                        <img src={image} alt={`Product Image ${index + 1}`} />
-                      </div>
-                    </SwiperSlide>
-                  ))}
-                </Swiper>
+                  <ul className="images-slider__thumbs">
+                    <li className="images-slider__thumb"></li>
+                  </ul>
+                </div>
 
-                <Swiper
-                  className="product-details__thumbs"
-                  slidesPerView={images.length}
-                  modules={[Thumbs]}
-                  onSwiper={swiper => setThumbsSwiper(swiper)}
-                  watchSlidesProgress
-                >
-                  {images.map((image, index) => (
-                    <SwiperSlide
-                      className="product-details__thumbs-item"
-                      key={index}
-                    >
-                      <button
-                        key={index}
-                        className={`product-details__thumbs-btn ${index === selectedIndex ? 'product-details__thumbs-btn--active' : ''}`}
-                        onClick={() => handleThumbnailClick(index)}
-                      >
-                        <img src={image} alt={`Thumbnail ${index + 1}`} />
-                      </button>
-                    </SwiperSlide>
-                  ))}
-                </Swiper>
-              </div>
+                <div className="details__info">
+                  <div className="details__colors">
+                    <div className="details__colors-top">
+                      <span className="details__info-title">
+                        Available colors
+                      </span>
+                      <span className="details__info-id">ID: 802390</span>
+                    </div>
+
+                    <ul className="details__colors-list">
+                      <li className="details__colors-item">
+                        <button className="details__colors-btn"></button>
+                      </li>
+                    </ul>
+                  </div>
+
+                  <div className="details__capacity">
+                    <span className="details__info-title">
+                      Available colors
+                    </span>
+
+                    <ul className="details__capacity-list">
+                      <li className="details__capacity-item">
+                        <button className="details__capacity-btn"></button>
+                      </li>
+                    </ul>
+                  </div>
+
+                  <ProductPrices product={product} />
+
+                  <ProductButtons product={product} />
+
+                  <ProductSpecs
+                    product={product}
+                    specs={[
+                      { key: 'screen', label: 'Screen' },
+                      { key: 'resolution', label: 'Resolution' },
+                      { key: 'processor', label: 'Processor' },
+                      { key: 'ram', label: 'RAM' },
+                    ]}
+                  />
+                </div>
+              </section>
             )}
           </>
         )}
       </div>
-    </section>
+    </div>
   );
 };

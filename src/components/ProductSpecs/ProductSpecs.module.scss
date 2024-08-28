@@ -1,0 +1,17 @@
+.product-specs {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
+  &__item {
+    color: $c-secondary;
+    display: flex;
+    justify-content: space-between;
+    gap: 5px;
+  }
+
+  &__value {
+    font-weight: 600;
+    color: $c-white;
+  }
+}

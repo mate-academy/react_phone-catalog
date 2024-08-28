@@ -1,0 +1,16 @@
+.product-prices {
+  display: flex;
+  gap: 8px;
+
+  &__price {
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 140%;
+
+    &--full {
+      font-weight: 400;
+      color: $c-secondary;
+      text-decoration: line-through;
+    }
+  }
+}
