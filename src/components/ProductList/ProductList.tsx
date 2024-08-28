@@ -8,6 +8,7 @@ import { Breadcrumbs } from '../../components/Breadcrumbs';
 import styles from './ProductList.module.scss';
 import { useAppContext } from '../../context/AppContext';
 import { Sort } from "../../components/Sort"
+import { LimitedProduct } from '../../types/Product';
 
 type ProductListProps = {
   category: string;
@@ -24,8 +25,10 @@ export const ProductList: React.FC<ProductListProps> = ({ category, title }) => 
         const response = await fetch(`https://meljaszuk.github.io/react_phone-catalog/api/products.json`);
         const data = await response.json();
         setProducts(data);
-        const copiedData = [...data];
-        console.log('FETCHED PRODUCTS', data)
+        const copiedData = [...data].filter((itemCategory: LimitedProduct) => itemCategory.category === category);
+
+
+
 
         if (sortMethod === 'alpha') {
           copiedData.sort((a: { name: string }, b: { name: string }) =>
@@ -56,7 +59,7 @@ export const ProductList: React.FC<ProductListProps> = ({ category, title }) => 
     fetchProductData();
 
 
-  }, [sortMethod]);
+  }, [sortMethod, category]);
 
 
 
