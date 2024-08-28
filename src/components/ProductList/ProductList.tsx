@@ -17,7 +17,8 @@ type ProductListProps = {
 
 export const ProductList: React.FC<ProductListProps> = ({ category, title }) => {
   const {numberOfProductsPerPage, sortMethod, products, setProducts} = useAppContext()
-/*   const [products, setProducts] = useState<(LimitedProduct)[]>([]); */
+
+const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const fetchProductData = async () => {
@@ -53,29 +54,35 @@ export const ProductList: React.FC<ProductListProps> = ({ category, title }) => 
 
       } catch (error) {
         console.error('Error fetching product data:', error);
+      } finally {
+        setIsLoading(false)
       }
     };
 
     fetchProductData();
 
 
-  }, [sortMethod, category]);
+  }, [sortMethod, category, numberOfProductsPerPage]);
 
 
 
 
 
   const numberOfProducts = products.length;
+
   const numberOfPages = useMemo(() => {
     return Math.ceil(numberOfProducts / numberOfProductsPerPage);
   }, [numberOfProducts, numberOfProductsPerPage]);
 
   const [displayedPage, setDisplayedPage] = useState(1);
 
+
+
+
   const handleDisplayedPage = useCallback((newState: number) => {
     setDisplayedPage(newState);
     console.log('WILL DISPLAY', newState);
-  }, []);
+  }, [numberOfProductsPerPage]);
 
   const firstDisplayedIndexOnPage = (displayedPage - 1) * numberOfProductsPerPage;
 
@@ -92,7 +99,17 @@ export const ProductList: React.FC<ProductListProps> = ({ category, title }) => 
     return indexes;
   }, [products, firstDisplayedIndexOnPage, numberOfProductsPerPage]);
 
-  if (products.length === 0) {
+
+  useEffect(() => {
+    // Sprawdź, czy wyświetlana strona mieści się w nowym zakresie
+    if (displayedPage > numberOfPages) {
+      setDisplayedPage(numberOfPages);
+    }
+  }, [numberOfProductsPerPage, numberOfPages, displayedPage]);
+
+
+
+  if (isLoading) {
     return (
       <div>
         <Loader />
