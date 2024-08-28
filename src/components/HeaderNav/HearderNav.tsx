@@ -12,6 +12,10 @@ export const getLinkClass = ({ isActive }: { isActive: boolean }) =>
 export const HeaderNav = () => {
   const { bucketItems, favItems } = useContext(ProductsContext);
 
+  const totalCount = bucketItems.reduce((acc, item) => {
+    return acc + item.count;
+  }, 0);
+
   return (
     <div>
       <div className="container">
@@ -53,7 +57,7 @@ export const HeaderNav = () => {
             <Link to="/bucket" className="icon-link onTablet">
               <img src="./uploadedImg/shoppingBag.png"></img>
               {bucketItems.length > 0 && (
-                <div className="show-items">{bucketItems.length}</div>
+                <div className="show-items">{totalCount}</div>
               )}
             </Link>
           </li>

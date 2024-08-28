@@ -49,10 +49,11 @@ li {
   height: 61px;
   color: #89939A;
 
-  font-family: Mont, sans-serif;
+  font-family: Mont-Bold, sans-serif;
   text-transform: uppercase;
   font-size: 12px;
-  font-weight: 800;
+
+  // font-weight: 800;
   line-height: 11px;
   letter-spacing: 0.04em;
   text-align: left;
@@ -60,6 +61,10 @@ li {
   @include on-mobile {
     display: none;
   }
+}
+
+.link:hover {
+  color: #27AE60;
 }
 
 .is-active {

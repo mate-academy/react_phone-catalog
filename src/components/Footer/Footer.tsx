@@ -1,6 +1,10 @@
 import './Footer.scss';
 
 export const Footer = () => {
+  function handleScroll() {
+    window.scrollTo(0, 0);
+  }
+
   return (
     <div className="footer-container">
       <div className="footer-block">
@@ -43,9 +47,9 @@ export const Footer = () => {
 
         <div className="footer-back-btn-bl">
           <p className="footer-back-p">Back to top</p>
-          <a href="#" className="footer-UpArrow" target="_self">
+          <button className="footer-UpArrow" onClick={handleScroll}>
             <img src="./uploadedImg/UpArrow.png"></img>
-          </a>
+          </button>
         </div>
       </div>
     </div>

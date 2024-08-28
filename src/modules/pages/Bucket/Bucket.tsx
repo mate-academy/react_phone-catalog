@@ -12,6 +12,10 @@ export const Bucket = () => {
     return acc + count * item.priceDiscount;
   }, 0);
 
+  const totalCount = bucketItems.reduce((acc, item) => {
+    return acc + item.count;
+  }, 0);
+
   const [openModal, setOpenModel] = useState(false);
 
   function clearItems() {
@@ -45,7 +49,7 @@ export const Bucket = () => {
         </div>
         <div className="bucket-checkout">
           <h1 className="checkout-h1">{`$${total}`}</h1>
-          <p className="checkout-p">{`Total for ${bucketItems.length} items`}</p>
+          <p className="checkout-p">{`Total for ${totalCount} items`}</p>
           <div className="checkout-btn-block">
             <button className="checkout-btn" onClick={() => setOpenModel(true)}>
               Checkout

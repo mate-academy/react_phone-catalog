@@ -126,6 +126,10 @@ export const ProductInfo = () => {
     }, 500);
   }, []);
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  });
+
   function getId() {
     const id = productData.find(product => product.itemId === currentPhone?.id);
 
