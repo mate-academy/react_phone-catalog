@@ -1,6 +1,5 @@
 import React from 'react';
 // eslint-disable-next-line import/no-extraneous-dependencies
-import { useLocalStorage } from '@uidotdev/usehooks';
 import productsFromServer from '../../api/products.json';
 import './ProductCard.scss';
 import { Link, useLocation } from 'react-router-dom';
@@ -10,6 +9,8 @@ import tabletsFromServer from '../../api/tablets.json';
 import accessoriesFromServer from '../../api/accessories.json';
 import { Product } from '../../types/Propduct';
 import classNames from 'classnames';
+import { useFavorites } from '../../utils/Favorites';
+// import { useLocalStorage } from '@uidotdev/usehooks';
 
 type Props = {
   id: number;
@@ -32,12 +33,16 @@ export const ProductCard: React.FC<Props> = ({ id }) => {
     category,
   } = findProduct(id);
 
-  const [favoriteArr, setFavoriteArr] = useLocalStorage<Product[]>(
-    'favoriteArr',
-    [],
-  );
+  // const [favoriteArr, setFavoriteArr] = useLocalStorage<Product[]>(
+  //   'favoriteArr',
+  //   [],
+  // );
 
   const { pathname } = useLocation();
+
+  const favorites: Product[] = useFavorites(state => state.favorites);
+  const addFavorite = useFavorites(state => state.addFavorite);
+  const removeFavorite = useFavorites(state => state.removeFavorite);
 
   let checkedName = name;
   let dots = false;
@@ -73,12 +78,10 @@ export const ProductCard: React.FC<Props> = ({ id }) => {
   };
 
   const handleSetFavoriteArr = () => {
-    if (favoriteArr.find((product: Product) => product.itemId === itemId)) {
-      return setFavoriteArr(prev => [
-        ...prev.filter(product => product.itemId !== itemId),
-      ]);
+    if (favorites.find((product: Product) => product.itemId === itemId)) {
+      removeFavorite(itemId);
     } else {
-      return setFavoriteArr(prev => [...prev, findProduct(id)]);
+      return addFavorite(findProduct(id));
     }
   };
 
@@ -125,7 +128,7 @@ export const ProductCard: React.FC<Props> = ({ id }) => {
           className="product-card__favorite-button"
           onClick={handleSetFavoriteArr}
         >
-          {favoriteArr.find(product => product.itemId === itemId) ? (
+          {favorites.find(product => product.itemId === itemId) ? (
             <img src="./img/heart-icon-active.svg" alt="favorite active" />
           ) : (
             <img src="./img/heart-icon.svg" alt="favorite" />

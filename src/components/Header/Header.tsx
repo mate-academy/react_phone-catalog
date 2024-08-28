@@ -3,20 +3,13 @@ import { Link, NavLink } from 'react-router-dom';
 
 import './Header.scss';
 import { MenuOpen } from '../../utils/MenuContext';
-import { useContext, useEffect, useState } from 'react';
-import { Product } from '../../types/Propduct';
+import { useContext } from 'react';
+import { useFavorites } from '../../utils/Favorites';
 
 export const Header = () => {
   const { isMenuOpen, setIsMenuOpen } = useContext(MenuOpen);
 
-  const [favorites, setFavorites] = useState<Product[]>(() => {
-    return JSON.parse(localStorage.getItem('favoriteArr') ?? '');
-  });
-
-  useEffect(
-    () => setFavorites(JSON.parse(localStorage.getItem('favoriteArr') ?? '')),
-    [favorites],
-  );
+  const favorites = useFavorites(state => state.favorites);
 
   return (
     <header className="header">

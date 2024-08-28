@@ -5,12 +5,11 @@ import './FavoritePage.scss';
 import { Menu } from '../Menu/Menu';
 import { Footer } from '../Footer/Footer';
 import { ProductCard } from '../ProductCard/ProductCard';
-import { Product } from '../../types/Propduct';
+import { useFavorites } from '../../utils/Favorites';
 
 export const FavoritePage = () => {
   const { isMenuOpen } = useContext(MenuOpen);
-  const favorites: Product[] =
-    JSON.parse(localStorage.getItem('favoriteArr') ?? '') || [];
+  const favorites = useFavorites(state => state.favorites);
 
   return (
     <>
