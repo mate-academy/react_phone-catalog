@@ -1,0 +1,24 @@
+.not-found-product {
+  &__goback-link {
+    margin: 24px 0;
+
+    @include on-tablet {
+      margin: 40px 0 16px;
+    }
+  }
+
+  &__title-block {
+    margin-bottom: 32px;
+    text-align: center;
+  }
+
+  &__img-block {
+    width: 50%;
+    padding-bottom: 30%;
+    margin-inline: auto;
+    background-image: url('../../assets/img/product-not-found.png');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+}

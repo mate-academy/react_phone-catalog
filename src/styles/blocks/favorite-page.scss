@@ -1,0 +1,26 @@
+.favorite-page {
+
+  &__navigation {
+    margin: 24px 0;
+
+    @include on-tablet {
+      margin-bottom: 40px;
+    }
+  }
+
+  &__title-block {
+    margin: 24px 0 32px;
+
+    display: flex;
+    flex-flow: column;
+    gap: 8px;
+
+    @include on-tablet {
+      margin: 40px 0;
+    }
+  }
+
+  &__items-info {
+    color: $elements-gray;
+  }
+}

@@ -1,0 +1,76 @@
+@import '../../styles/main';
+
+.menu {
+  background-color: $white;
+  height: 100vh;
+
+  &__content {
+    position: relative;
+    height: 100%;
+  }
+
+  &__nav {
+    margin-top: 24px;
+  }
+
+  &__list {
+    flex-flow: column;
+    gap: 8px;
+  }
+
+  &__nav-item {
+    padding-block: 8px;
+  }
+
+  &__nav-link {
+    color: $secondary-gray;
+
+    position: relative;
+
+    &:hover {
+      color: $primary-gray;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      display: block;
+      bottom: -8px;
+      height: 2px;
+      width: 100%;
+      background-color: $primary-gray;
+
+      transition: transform $transition-duration;
+      transform: scale(0);
+      transform-origin: left;
+    }
+
+    &:hover::after {
+      transform: scale(1);
+    }
+  }
+
+  &__footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    display: flex;
+    height: 64px;
+    width: 100%;
+  }
+
+  &__link {
+    align-items: center;
+    border-top: 1px solid$elements-gray;
+    border-right: 1px solid $elements-gray;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    width: 50%;
+    border-bottom: 2px solid transparent;
+
+    @include hover(border-bottom-color, $primary-gray);
+  }
+}

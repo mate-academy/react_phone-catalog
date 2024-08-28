@@ -1,0 +1,96 @@
+@import './mixins';
+
+%h1 {
+  /* Mobile headings/H1 */
+  font-family: Mont, sans-serif;
+  font-size: rem(32);
+  line-height: rem(41);
+  letter-spacing: -0.01em;
+  font-weight: 700; // Bold
+
+  @include on-tablet {
+    /* Desktop / Tablet headings/H1 */
+    font-size: rem(48);
+    line-height: rem(56);
+  }
+}
+
+%h2 {
+  /* Mobile headings/H2 */
+  font-family: Mont, sans-serif;
+  font-size: 22px;
+  line-height: 31px;
+  letter-spacing: 0;
+  font-weight: 700; // Bold
+
+  @include on-tablet {
+    /* Desktop / Tablet headings/H2 */
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+  }
+}
+
+%h3 {
+  /* Mobile headings/H3 */
+  font-family: Mont, sans-serif;
+  font-size: 20px;
+  line-height: 26px;
+  font-weight: 600; // Semi-bold
+
+  @include on-tablet {
+    /* Desktop / Tablet headings/H3 */
+    font-size: 22px;
+    line-height: 31px;
+    font-weight: 700; // Bold
+  }
+}
+
+%h4 {
+  /* Mobile headings/H4 */
+  font-family: Mont, sans-serif;
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: 600; // Semi-bold
+
+  @include on-tablet {
+    /* Desktop / Tablet headings/H4 */
+    font-size: 20px;
+    line-height: 26px;
+    font-weight: 600; // Semi-bold
+  }
+}
+
+%button-text {
+  /* Button text */
+  font-family: Mont, sans-serif;
+  font-size: 14px;
+  line-height: 21px;
+  font-weight: 600; // Semi-bold
+}
+
+%body-text {
+  /* Body text */
+  font-family: Mont, sans-serif;
+  font-size: 14px;
+  line-height: 21px;
+  font-weight: 400; // Regular
+}
+
+%uppercase-text {
+  /* Uppercase text */
+  font-family: Mont, sans-serif;
+  font-size: 12px;
+  line-height: 14px;
+  letter-spacing: 0.04em;
+  font-weight: 700; // Bold
+  text-transform: uppercase;
+}
+
+%small-text {
+  /* Small text */
+  font-family: Mont, sans-serif;
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 600; // Semi-bold
+}

@@ -1,0 +1,73 @@
+@import '../../../styles/main';
+
+.btn {
+  @include button-common;
+
+  height: 40px;
+  width: auto;
+  flex-shrink: 0;
+
+  &:not(.btn--disabled, .btn--selected):active {
+    transform: scale(0.95);
+  }
+
+  // Primary button styles
+  &--primary {
+    background-color: $primary-gray;
+    color: $white;
+    flex-grow: 1;
+    transition: all $transition-duration;
+
+    &:hover {
+      box-shadow: 0 3px 13px 0 $primary-gray;
+    }
+  }
+
+  // Selected button
+  &--selected {
+    background-color: $white;
+    color: $green;
+    border: 1px solid $elements-gray;
+    flex-grow: 1;
+  }
+
+  // Favorite button styles
+  &--favorite {
+    flex-shrink: 0;
+    width: 40px;
+    margin-left: 8px;
+    border: 1px solid $icons-placeholders-gray;
+    cursor: pointer;
+
+    &:hover {
+      border-color: $primary-gray;
+    }
+  }
+
+  // Control button styles
+  &--control {
+    width: 32px;
+    height: 32px;
+    background-color: $white;
+    color: $primary-gray;
+    border: 1px solid $icons-placeholders-gray;
+
+    &:not(.btn--disabled):hover {
+      border-color: $primary-gray;
+    }
+  }
+
+  &--disabled {
+    color: $icons-placeholders-gray;
+    border-color: $icons-placeholders-gray;
+    cursor: not-allowed;
+  }
+
+  &--borderNone {
+    border: transparent;
+
+    &:hover {
+      border: 1px solid $primary-gray;
+    }
+  }
+}

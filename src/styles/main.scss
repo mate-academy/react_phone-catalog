@@ -1,0 +1,75 @@
+@import 'utils';
+@import 'fonts';
+@import 'typography';
+@import './blocks/item-page';
+@import './blocks/catalog-page';
+@import './blocks/favorite-page';
+@import './blocks/top-bar';
+@import './blocks/cart-page';
+@import './blocks/not-found-page';
+@import './blocks/not-found-product-page';
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+body,
+html {
+  margin: 0;
+  height: 100%;
+}
+
+html {
+  font-family: $main-font-family;
+  scroll-behavior: smooth;
+
+  &:has(.App__menu:target) {
+    overflow: hidden; /* not to scroll the page */
+  }
+}
+
+section {
+  margin-bottom: 56px;
+
+  @include on-tablet {
+    margin-bottom: 64px;
+  }
+
+  @include on-desktop {
+    margin-bottom: 80px;
+  }
+}
+
+section:last-child {
+  margin-bottom: 0;
+}
+
+.logo {
+  width: 64px;
+  height: 22px;
+  display: flex;
+}
+
+// #region nav
+.nav {
+  &__list {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+// #endregion
+
+.visually-hidden {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+}

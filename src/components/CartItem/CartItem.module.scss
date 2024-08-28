@@ -1,0 +1,84 @@
+@import '../../styles/main';
+
+.cart-item {
+  @include page-grid;
+
+  grid-template-columns: repeat(auto-fit, minmax(256px, auto));
+  align-items: center;
+  border: 1px solid $elements-gray;
+  padding: 16px;
+  gap: 16px;
+
+  @include on-tablet {
+    gap: 24px;
+  }
+
+  &:hover {
+    box-shadow: 0 2px 15px 0 rgba(0, 0, 0, 0.1);
+  }
+
+  &__block {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+
+    gap: 16px;
+
+    @include on-tablet {
+      gap: 24px;
+    }
+
+    &:last-child {
+      @include on-tablet {
+        justify-content: flex-end;
+      }
+    }
+
+    &--justify-start {
+      justify-content: flex-start;
+    }
+  }
+
+  &__img-link {
+    width: 88px;
+    height: 88px;
+    padding: 11px;
+    display: flex;
+
+    transform: scale(1);
+    transition: transform $transition-duration;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+
+  &__img {
+    width: 66px;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  &__title {
+    min-width: 120px;
+
+    @include on-tablet {
+      min-width: 176px;
+    }
+  }
+
+  &__control-buttons {
+    width: 96px;
+    height: 32px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__price {
+    width: 90px;
+    text-align: right;
+  }
+}
