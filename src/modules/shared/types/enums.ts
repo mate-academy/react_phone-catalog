@@ -1,13 +1,7 @@
-export enum Device {
-  Mobile = 'mobile',
-  NotMobile = 'notMobile',
-}
-
 export enum MenuLinkSVGOption {
   Settings = 'Settings',
   Heart = 'Heart',
   Bag = 'Bag',
-  Burger = 'Burger',
 }
 
 export enum IconButtonSVGOption {

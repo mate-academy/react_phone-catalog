@@ -3,7 +3,7 @@ import { Dropdown } from '../../../shared/components/Dropdown';
 import styles from './LanguageSettings.module.scss';
 // eslint-disable-next-line max-len
 import { useLanguage } from '../../../shared/components/Contexts/LanguageContext';
-import { Language } from '../../../shared/types/types';
+import { Language } from '../../../shared/types/enums';
 
 enum LanguageOption {
   English = 'English',

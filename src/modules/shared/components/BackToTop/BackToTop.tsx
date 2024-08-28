@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import { IconButtonSVGOption } from '../../types/types';
+import { IconButtonSVGOption } from '../../types/enums';
 import { IconButton } from '../IconButton';
 import styles from './BackToTop.module.scss';
 import { useLanguage } from '../Contexts/LanguageContext';

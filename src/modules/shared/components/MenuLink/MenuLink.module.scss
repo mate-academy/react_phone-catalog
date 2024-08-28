@@ -4,6 +4,7 @@
 .Icon {
   display: block;
   margin: auto;
+
   color: var(--icon-color);
   transition: transform $transition-duration, color $transition-duration;
 }
@@ -15,31 +16,19 @@
   border-bottom: $active-underline-width solid;
   align-content: center;
 
-  @include square(48px);
+  @include square($small-navigation-height);
   @include color-transition((border-color: transparent));
-  
+
   @include for-desktop {
     @include square(64px);
   }
 
-  &_active {
-    border-color: var(--active-color);
+  @include for-mobile {
+    display: none;
   }
 
-  &_device {
-    &_mobile {
-      display: none;
-
-      @include for-mobile {
-        display: block;
-      }
-    }
-
-    &_notMobile {
-      @include for-mobile {
-        display: none;
-      }
-    }
+  &_active {
+    border-color: var(--active-color);
   }
 
   &:hover > .Icon {

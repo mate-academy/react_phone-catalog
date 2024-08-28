@@ -2,7 +2,7 @@ import classNames from 'classnames';
 import { ColorRadio } from '../../../shared/components/ColorRadio';
 import styles from './ThemeSettings.module.scss';
 import { useTheme } from '../../../shared/components/Contexts/ThemeContext';
-import { Theme } from '../../../shared/types/types';
+import { Theme } from '../../../shared/types/enums';
 // eslint-disable-next-line max-len
 import { useLanguage } from '../../../shared/components/Contexts/LanguageContext';
 

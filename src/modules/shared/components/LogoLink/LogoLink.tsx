@@ -5,11 +5,14 @@ import { LogoSVG } from '../SVGs/LogoSVG';
 import { useLanguage } from '../Contexts/LanguageContext';
 import classNames from 'classnames';
 
+type HandleClick = () => void;
+
 type Props = {
   className?: string;
+  onClick?: HandleClick;
 };
 
-export const LogoLink: React.FC<Props> = ({ className }) => {
+export const LogoLink: React.FC<Props> = ({ className, onClick }) => {
   const { accessLogo } = useLanguage().localeTexts;
 
   return (
@@ -17,6 +20,7 @@ export const LogoLink: React.FC<Props> = ({ className }) => {
       to={homePath}
       aria-label={accessLogo}
       className={classNames(styles.LogoLink, className)}
+      onClick={onClick}
     >
       <LogoSVG className={styles.Image} />
     </Link>

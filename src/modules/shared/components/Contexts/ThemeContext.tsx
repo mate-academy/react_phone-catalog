@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from 'react';
-import { Theme } from '../../types/types';
+import { Theme } from '../../types/enums';
 import { useLocalStorage } from '../../hooks/useLocalStorage';
 
 type HandleThemeChange = (newTheme: Theme) => void;

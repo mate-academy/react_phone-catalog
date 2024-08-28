@@ -1,4 +1,4 @@
-import { IconButtonSVGOption } from '../../types/types';
+import { IconButtonSVGOption } from '../../types/enums';
 import { UpArrowSVG } from '../SVGs/UpArrowSVG';
 import styles from './IconButton.module.scss';
 

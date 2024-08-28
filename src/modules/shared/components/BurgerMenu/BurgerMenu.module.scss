@@ -1,0 +1,14 @@
+@use "../../../shared/styles/mixins" as *;
+
+.BurgerMenu {
+  display: none;
+  padding-top: 24px;
+  flex-direction: column;
+  justify-content: space-between;
+
+  @include color-transition((background-color: var(--background-color)));
+
+  @include for-mobile {
+    display: flex;
+  }
+}

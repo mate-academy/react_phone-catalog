@@ -1,21 +1,48 @@
+import { useEffect, useState } from 'react';
 import { cartPath, favouritesPath, settingsPath } from '../../consts/paths';
-import { Device, MenuLinkSVGOption } from '../../types/types';
+import { MenuLinkSVGOption } from '../../types/enums';
+import { BurgerMenu } from '../BurgerMenu';
 import { useLanguage } from '../Contexts/LanguageContext';
 import { LogoLink } from '../LogoLink';
 import { MenuLink } from '../MenuLink';
 import { PageLinks } from '../PageLinks';
 import styles from './Header.module.scss';
+import classNames from 'classnames';
+import { ToggleBurgerMenuButton } from '../ToggleBurgerMenuButton';
 
 export const Header: React.FC = () => {
-  const { accessSettings, accessFavourites, accessCart, accessMenu } =
+  const [burgerMenuOpened, setBurgerMenuOpened] = useState(false);
+  const { accessSettings, accessFavourites, accessCart } =
     useLanguage().localeTexts;
+
+  const handleToggleBurgerMenuButtonClick = () => {
+    setBurgerMenuOpened(opened => !opened);
+  };
+
+  const handleLinkClick = () => {
+    setBurgerMenuOpened(false);
+  };
+
+  const handleResize = () => {
+    if (window.innerWidth >= 640) {
+      setBurgerMenuOpened(false);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
 
   return (
     <header className={styles.Header}>
-      <nav>
+      <nav className={styles.Navigation}>
         <menu className={styles.Menu}>
           <li className={styles.LogoLinkWrapper}>
-            <LogoLink className={styles.LogoLink} />
+            <LogoLink className={styles.LogoLink} onClick={handleLinkClick} />
           </li>
 
           <li>
@@ -28,7 +55,6 @@ export const Header: React.FC = () => {
                 <MenuLink
                   to={settingsPath}
                   alt={accessSettings}
-                  device={Device.NotMobile}
                   svgOption={MenuLinkSVGOption.Settings}
                 />
               </li>
@@ -37,7 +63,6 @@ export const Header: React.FC = () => {
                 <MenuLink
                   to={favouritesPath}
                   alt={accessFavourites}
-                  device={Device.NotMobile}
                   svgOption={MenuLinkSVGOption.Heart}
                 />
               </li>
@@ -46,23 +71,28 @@ export const Header: React.FC = () => {
                 <MenuLink
                   to={cartPath}
                   alt={accessCart}
-                  device={Device.NotMobile}
                   svgOption={MenuLinkSVGOption.Bag}
                 />
               </li>
 
               <li className={styles.MenuLinksItem}>
-                <MenuLink
-                  to="/placeholder"
-                  alt={accessMenu}
-                  device={Device.Mobile}
-                  svgOption={MenuLinkSVGOption.Burger}
+                <ToggleBurgerMenuButton
+                  burgerMenuOpened={burgerMenuOpened}
+                  onClick={handleToggleBurgerMenuButtonClick}
                 />
               </li>
             </menu>
           </li>
         </menu>
       </nav>
+
+      <BurgerMenu
+        onLinkClick={handleLinkClick}
+        className={classNames(
+          styles.BurgerMenu,
+          burgerMenuOpened && styles.BurgerMenu_opened,
+        )}
+      />
     </header>
   );
 };

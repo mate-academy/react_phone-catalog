@@ -1,0 +1,33 @@
+@use "../../../shared/styles/vars" as *;
+@use "../../../shared/styles/mixins" as *;
+
+$menu-link-padding: 24px;
+
+.Icon {
+  display: block;
+  margin: auto;
+
+  color: var(--primary-text-color);
+  transition: transform $transition-duration, color $transition-duration;
+}
+
+.Link {
+  display: block;
+  padding:
+    $menu-link-padding
+    0
+    calc($menu-link-padding - $burger-menu-active-underline-width);
+  border-bottom: $burger-menu-active-underline-width solid;
+
+  @include color-transition((border-color: transparent));
+
+  &_active {
+    border-color: var(--active-color);
+  }
+}
+
+.BurgerMenuMenuLink {
+  &:hover .Icon {
+    transform: $hover-scale;
+  }
+}

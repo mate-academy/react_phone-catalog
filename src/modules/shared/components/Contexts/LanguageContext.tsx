@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { Language } from '../../types/types';
+import { Language } from '../../types/enums';
 import { useLocalStorage } from '../../hooks/useLocalStorage';
 
 type LocaleTexts = { [key: string]: string };

@@ -1,0 +1,14 @@
+@use "../../../shared/styles/mixins" as *;
+
+.BurgerMenuMenuLink {
+  flex-grow: 1;
+
+  @include color-transition((box-shadow: -1px 0 0 0 var(--burger-menu-menu-link-shadow-color)));
+}
+
+.BurgerMenuMenuLinks {
+  display: flex;
+  list-style: none;
+
+  @include color-transition((box-shadow: 0 -1px 0 0 var(--element-color)));
+}

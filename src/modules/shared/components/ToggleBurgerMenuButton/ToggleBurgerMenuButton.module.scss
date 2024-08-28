@@ -1,0 +1,38 @@
+@use "../../styles/mixins" as *;
+@use "../../styles/vars" as *;
+
+.Icon {
+  display: block;
+  margin: auto;
+  
+  color: var(--icon-color);
+  transition: transform $transition-duration, color $transition-duration;
+}
+
+.Button {
+  display: block;
+  background-color: transparent;
+  padding: 0;
+  border: none;
+  cursor: pointer;
+
+  @include square($small-navigation-height);
+}
+
+.Label {
+  &:not(:focus, :active) {
+    @include visually-hidden;
+  }
+}
+
+.ToggleBurgerMenuButton {
+  display: none;
+
+  @include for-mobile {
+    display: block;
+  }
+
+  &:hover .Icon {
+    transform: $hover-scale;
+  }
+}

@@ -14,7 +14,15 @@
 .SettingsPage {
   @include grid;
 
-  padding-top: 16px;
+  padding: 16px 0 56px;
+
+  @include for-tablet {
+    padding-bottom: 64px;
+  }
+
+  @include for-desktop {
+    padding-bottom: 80px;
+  }
 }
 
 

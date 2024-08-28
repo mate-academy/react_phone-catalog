@@ -1,0 +1,26 @@
+@use "../../../shared/styles/vars" as *;
+@use "../../../shared/styles/mixins" as *;
+@use "../../../shared/styles/extends";
+
+$page-link-padding: 8px;
+
+.Link {
+  display: block;
+  padding:
+    $page-link-padding
+    0
+    calc($page-link-padding - $burger-menu-active-underline-width);
+  border-bottom: $burger-menu-active-underline-width solid;
+  text-decoration: none;
+
+  @extend %uppercase;
+  @include color-and-hover-scale-transition((
+    color: var(--secondary-text-color),
+    border-color: transparent
+  ));
+
+  &_active {
+    color: var(--active-color);
+    border-color: var(--active-color);
+  }
+}
