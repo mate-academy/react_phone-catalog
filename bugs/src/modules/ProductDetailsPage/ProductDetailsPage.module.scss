@@ -1,0 +1,100 @@
+@import '../../styles/main';
+
+.productDetailsPage {
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+}
+
+.chevronIcon {
+  padding-top: 5px;
+}
+
+.container {
+  @include section-grid;
+}
+
+.breadcrumbs {
+  grid-column: 1 / -1;
+}
+
+.goBackButton {
+  margin-top: 16px;
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  gap: 8px;
+  height: 16px;
+  width: 66px;
+  border: 0;
+  cursor: pointer;
+  background-color: transparent;
+}
+
+.goBackText {
+  display: block;
+  padding-top: 2px;
+
+  @extend %small-text;
+
+  color: var(--color-secondary);
+}
+
+.title {
+  grid-column: 1 / -1;
+  margin-bottom: 40px;
+
+  @extend %h2-mobile;
+
+  @include on-tablet {
+    @include h2-tablet;
+  }
+}
+
+.label {
+  display: flex;
+  text-align: center;
+  padding-top: 2px;
+  height: 15px;
+  text-decoration: none;
+
+  @extend %small-text;
+
+  color: var(--color-secondary);
+}
+
+.noProduct {
+  margin-top: 40px;
+
+  @extend %h1-mobile;
+
+  @include on-tablet {
+    @include h1-tablet;
+  }
+}
+
+.imageNotFound {
+  width:30%;
+  align-self: center;
+  animation: Animation 5s infinite ease-in-out;
+}
+
+.noProductContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+@keyframes Animation {
+  0% {
+    transform: rotate(20deg) scale(90%)
+  }
+  50% {
+    transform: rotate(-10deg) scale(100%)
+  }
+
+  100% {
+    transform: rotate(20deg) scale(90%)
+  }
+}
