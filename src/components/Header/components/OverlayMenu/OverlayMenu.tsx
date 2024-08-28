@@ -9,6 +9,8 @@ export const OverlayMenu: React.FC<OverlayMenuProps> = ({
   toggleIsMenuOpen,
   cartIconSrc,
   favoritesIconSrc,
+  favorites,
+  cart,
 }) => {
   return (
     <div
@@ -65,6 +67,11 @@ export const OverlayMenu: React.FC<OverlayMenuProps> = ({
         >
           <div className={styles.actionIcon}>
             <img src={favoritesIconSrc} alt="Favorites" />
+            {favorites.length > 0 && (
+              <span className={styles.count}>
+                <p className={styles.countText}>{favorites.length}</p>
+              </span>
+            )}
           </div>
         </NavLink>
         <NavLink
@@ -76,6 +83,11 @@ export const OverlayMenu: React.FC<OverlayMenuProps> = ({
         >
           <div className={styles.actionIcon}>
             <img src={cartIconSrc} alt="Cart" className={styles.icon} />
+            {cart.length > 0 && (
+              <span className={styles.count}>
+                <p className={styles.countText}>{cart.length}</p>
+              </span>
+            )}
           </div>
         </NavLink>
       </div>

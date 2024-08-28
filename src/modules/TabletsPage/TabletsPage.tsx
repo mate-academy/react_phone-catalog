@@ -1,9 +1,11 @@
-const TabletsPage = () => {
-  return (
-    <div>
-      <h1>TabletsPage</h1>
-    </div>
-  );
-};
+import React from 'react';
+import { useLocation } from 'react-router-dom';
+import { ProductsList } from '../../components/ProductsList';
 
-export default TabletsPage;
+export const TabletsPage: React.FC = () => {
+  const location = useLocation();
+
+  const category = location.pathname.split('/')[1];
+
+  return <ProductsList category={category} title="Tablets" />;
+};

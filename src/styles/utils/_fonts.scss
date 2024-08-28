@@ -1,32 +1,14 @@
-@import './variables';
-
-@mixin on-tablet {
-  @media (min-width: $breakpoint-tablet) {
-    @content;
-  }
+@font-face {
+  font-family: Mont;
+  src: url('/fonts/Mont-Regular.otf') format('opentype');
 }
 
-@mixin on-desktop {
-  @media (min-width: $breakpoint-desktop) {
-    @content;
-  }
+@font-face {
+  font-family: Mont;
+  src: url('/fonts/Mont-SemiBold.otf') format('opentype');
 }
 
-@mixin section-grid {
-  display: grid;
-  grid-gap: 16px;
-  grid-template-columns: repeat(4, 1fr);
-  padding: 0 16px;
-  width: 100%;
-  justify-content: center;
-
-  @include on-tablet {
-    grid-template-columns: repeat(12, 1fr);
-    padding: 0 24px;
-  }
-
-  @include on-desktop {
-    grid-template-columns: repeat(24, 32px);
-    padding: 0;
-  }
+@font-face {
+  font-family: Mont;
+  src: url('/fonts/Mont-Bold.otf') format('opentype');
 }

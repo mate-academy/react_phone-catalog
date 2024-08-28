@@ -1,7 +1,7 @@
 import React, { createContext, useCallback, useContext } from 'react';
 import { Product } from '../types/Product';
-import { CartItemProps } from '../types/CartItemProps';
 import { useLocalStorage } from '../hooks/useLocalStorage';
+import { CartItemProps } from '../types/CartItemProps';
 
 type Props = {
   children: React.ReactNode;

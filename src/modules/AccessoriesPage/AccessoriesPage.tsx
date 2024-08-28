@@ -1,9 +1,11 @@
-const AccessoriesPage = () => {
-  return (
-    <div>
-      <h1>AccessoriesPage</h1>
-    </div>
-  );
-};
+import React from 'react';
+import { useLocation } from 'react-router-dom';
+import { ProductsList } from '../../components/ProductsList';
 
-export default AccessoriesPage;
+export const AccessoriesPage: React.FC = () => {
+  const location = useLocation();
+
+  const category = location.pathname.split('/')[1];
+
+  return <ProductsList category={category} title="Accessories" />;
+};
