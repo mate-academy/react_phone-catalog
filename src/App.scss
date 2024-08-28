@@ -8,6 +8,10 @@ html {
 body {
   font-family: Mont, sans-serif;
   background-color: $light-grey-color;
+
+  &.menu-open {
+    overflow: hidden;
+  }
 }
 
 .app {

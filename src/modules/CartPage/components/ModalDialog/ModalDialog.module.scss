@@ -52,7 +52,12 @@
   &__btns {
     @include flex;
 
+    gap: 30px;
     margin-top: 30px;
+
+    & > div {
+      flex: 1;
+    }
   }
 
   &__cancelBtn div {

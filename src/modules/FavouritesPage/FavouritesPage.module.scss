@@ -10,7 +10,10 @@
     display: flex;
     gap: 16px;
     flex-wrap: wrap;
-
     margin: 40px 0 80px;
+
+    @media (max-width: 991px) {
+      margin-bottom: 64px;
+    }
   }
 }

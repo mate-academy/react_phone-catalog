@@ -17,5 +17,17 @@
 
   &__img {
     @include hover((transform, scale(1.05)));
+
+    @media (max-width: 1199px) {
+      width: 300px;
+    }
+
+    @media (max-width: 991px) {
+      width: 230px;
+    }
+
+    @media (max-width: 767px) {
+      max-width: 170px;
+    }
   }
 }

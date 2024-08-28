@@ -16,6 +16,14 @@
     @include flex;
 
     gap: 100px;
+
+    @media (max-width: 991px) {
+      gap: 45px;
+    }
+
+    @media (max-width: 767px) {
+      gap: 30px;
+    }
   }
 
   &__linksItem {
@@ -25,6 +33,12 @@
       (color, $main-text-color),
       (border-bottom, 1px solid $main-text-color)
     );
+  }
+
+  &__logo {
+    @media (max-width: 991px) {
+      width: 64px;
+    }
   }
 
   &__back {

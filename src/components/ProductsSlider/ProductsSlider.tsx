@@ -14,7 +14,7 @@ type Props = {
 
 export const ProductsSlider: React.FC<Props> = ({ products, type, title }) => {
   return (
-    <section className={styles.sliderProducts__wrapper}>
+    <section className={styles.sliderProducts}>
       <div className={styles.sliderProducts__title}>
         <h2>{title}</h2>
         <SliderButtons type={type} />
@@ -24,14 +24,31 @@ export const ProductsSlider: React.FC<Props> = ({ products, type, title }) => {
         modules={[Navigation]}
         spaceBetween={16}
         slidesPerView={4}
+        breakpoints={{
+          576: {
+            slidesPerView: 2.3,
+          },
+          768: {
+            slidesPerView: 3,
+          },
+          992: {
+            slidesPerView: 3.3,
+          },
+          1200: {
+            slidesPerView: 4,
+          },
+        }}
         navigation={{
           nextEl: `.swiper-button-next-${type}`,
           prevEl: `.swiper-button-prev-${type}`,
         }}
       >
         {products.map(product => (
-          <SwiperSlide key={product.id}>
-            <ProductCard product={product} />
+          <SwiperSlide
+            key={product.id}
+            className={styles.sliderProducts__slide}
+          >
+            <ProductCard product={product} productSlider />
           </SwiperSlide>
         ))}
       </Swiper>

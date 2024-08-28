@@ -41,7 +41,7 @@ export const CartPage = () => {
               Total for {totalQuantity} {totalQuantity === 1 ? 'item' : 'items'}
             </p>
             <div className={styles.cart__divider}></div>
-            <div onClick={openModal}>
+            <div onClick={openModal} className={styles.cart__checkout__btn}>
               <Button text="Checkout" />
             </div>
           </div>

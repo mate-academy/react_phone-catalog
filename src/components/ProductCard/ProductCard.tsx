@@ -11,9 +11,10 @@ import { useShoppingCart } from '../../store/CartContext';
 
 type Props = {
   product: Product;
+  productSlider?: boolean;
 };
 
-export const ProductCard: React.FC<Props> = ({ product }) => {
+export const ProductCard: React.FC<Props> = ({ product, productSlider }) => {
   const {
     category,
     itemId,
@@ -36,8 +37,12 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
 
   const link = `/${category}/${itemId}`;
 
+  const className = classNames(styles.productCard, {
+    [styles.productCard__slider]: productSlider,
+  });
+
   return (
-    <div className={styles.productCard}>
+    <div className={className}>
       <Link
         to={link}
         state={{ search: searchParams.toString() }}
@@ -71,7 +76,10 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
           </div>
         </div>
         <div className={styles.productCard__btns}>
-          <div onClick={() => addToCart(product)}>
+          <div
+            onClick={() => addToCart(product)}
+            className={styles.productCard__btn}
+          >
             <Button product={product} text="Add to cart" />
           </div>
 

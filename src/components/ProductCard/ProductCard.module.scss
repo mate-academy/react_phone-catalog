@@ -11,12 +11,36 @@
   border-radius: 8px;
   border: 1px solid $elements-color;
 
+  @media (max-width: 1199px) {
+    width: 300px;
+  }
+
+  @media (max-width: 991px) {
+    width: 340px;
+  }
+
+  @media (max-width: 767px) {
+    width: 260px;
+  }
+
+  &__slider {
+    width: 272px;
+
+    @media (max-width: 991px) {
+      width: 230px;
+      padding: 28px;
+    }
+  }
+
   &__img {
     object-fit: contain;
-    width: 208px;
     height: 196px;
 
     @include hover((transform, scale(1.1)));
+  }
+
+  &__imgWrapper {
+    align-self: center;
   }
 
   &__text {
@@ -50,5 +74,9 @@
     @include flex;
 
     gap: 8px;
+  }
+
+  &__btn {
+    flex: 5;
   }
 }

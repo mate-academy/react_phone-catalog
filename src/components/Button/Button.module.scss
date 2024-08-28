@@ -3,8 +3,6 @@
 .button {
   @include button-main;
 
-  min-width: 158px;
-
   &__disabled {
     background-color: $white-color;
     color: $accent-color;

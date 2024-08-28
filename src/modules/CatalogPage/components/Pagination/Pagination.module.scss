@@ -8,6 +8,10 @@
   list-style: none;
   margin-bottom: 80px;
 
+  @media (max-width: 991px) {
+    margin-bottom: 64px;
+  }
+
   &__pageItem {
     border-radius: 48px;
     width: 32px;

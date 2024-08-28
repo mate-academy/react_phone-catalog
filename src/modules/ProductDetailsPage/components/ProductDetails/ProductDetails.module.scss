@@ -4,18 +4,28 @@
   &__details {
     @include flex;
 
+    gap: 15px;
     margin-top: 40px;
   }
 
   &__images {
     display: flex;
     gap: 16px;
+
+    @media (max-width: 767px) {
+      gap: 10px;
+    }
   }
 
   &__imagesWrapper {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
     flex-direction: column;
+    gap: 8px;
+
+    @media (max-width: 991px) {
+      height: fit-content;
+    }
   }
 
   &__imageSelected {
@@ -23,8 +33,24 @@
     justify-content: center;
     width: 464px;
 
+    @media (max-width: 991px) {
+      width: 320px;
+    }
+
+    @media (max-width: 767px) {
+      width: 250px;
+    }
+
     img {
       height: 464px;
+
+      @media (max-width: 991px) {
+        height: 320px;
+      }
+
+      @media (max-width: 767px) {
+        height: 250px;
+      }
     }
   }
 
@@ -37,6 +63,16 @@
     border-radius: 8px;
     cursor: pointer;
 
+    @media (max-width: 991px) {
+      height: 60px;
+      width: 60px;
+    }
+
+    @media (max-width: 767px) {
+      height: 50px;
+      width: 50px;
+    }
+
     &__active {
       border: 1px solid $main-text-color;
     }
@@ -46,16 +82,26 @@
     @include flex;
 
     gap: 15px;
+    position: relative;
   }
 
   &__infoWrapper {
     width: 320px;
+
+    @media (max-width: 767px) {
+      width: 100%;
+    }
   }
 
   &__idNum {
     width: 176px;
     text-align: right;
     color: $grey-color;
+
+    @media (max-width: 991px) {
+      position: absolute;
+      right: 0;
+    }
   }
 
   &__btns {
@@ -100,6 +146,10 @@
     gap: 8px;
     margin-top: 8px;
     margin-bottom: 24px;
+
+    @media (max-width: 767px) {
+      flex-wrap: wrap;
+    }
   }
 
   &__colorBtn {
@@ -146,11 +196,19 @@
 
     gap: 65px;
     margin-top: 80px;
+
+    @media (max-width: 991px) {
+      flex-direction: column;
+    }
   }
 
   &__about,
   &__tech {
     width: 50%;
+
+    @media (max-width: 991px) {
+      width: 100%;
+    }
   }
 
   &__aboutWrapper {

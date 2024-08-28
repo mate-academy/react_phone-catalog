@@ -6,6 +6,11 @@
 
     gap: 16px;
     margin: 32px 0 80px;
+
+    @media (max-width: 991px) {
+      flex-direction: column;
+      margin-bottom: 64px;
+    }
   }
 
   &__checkout {
@@ -15,6 +20,15 @@
     border: 1px solid $elements-color;
     padding: 24px;
     text-align: center;
+
+    @media (max-width: 991px) {
+      width: 100%;
+
+      &__btn {
+        margin: 0 auto;
+        width: 60%;
+      }
+    }
   }
 
   &__quantity {

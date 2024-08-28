@@ -56,6 +56,18 @@
 @mixin container {
   max-width: 1136px;
   margin: 0 auto;
+
+  @media (max-width: 1199px) {
+    max-width: 940px;
+  }
+
+  @media (max-width: 991px) {
+    max-width: 720px;
+  }
+
+  @media (max-width: 767px) {
+    max-width: 540px;
+  }
 }
 
 @mixin divider {

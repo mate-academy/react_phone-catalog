@@ -5,6 +5,20 @@
     position: relative;
     max-width: 1040px;
     margin: 56px auto 112px;
+
+    @media (max-width: 1199px) {
+      max-width: 840px;
+    }
+
+    @media (max-width: 991px) {
+      max-width: 620px;
+      height: 221px;
+      margin: 32px auto 96px;
+    }
+
+    @media (max-width: 767px) {
+      max-width: 450px;
+    }
   }
 
   &__image {
@@ -13,11 +27,18 @@
     background-size: cover;
     border-radius: 8px;
 
+    @media (max-width: 991px) {
+      height: 221px;
+    }
+
     &--1 {
       background-image: url('../../../../images/banner-new-phone.png');
       flex: 1;
+      background-size: contain;
 
-      // min-width: 300px;
+      // @media (max-width: 1199px) {
+      //   height: 340px;
+      // }
     }
 
     &--2 {
@@ -39,6 +60,11 @@
     gap: 20px;
     background-color: #010000;
     border-radius: 8px;
+    height: 400px;
+
+    @media (max-width: 991px) {
+      height: 100%;
+    }
   }
 
   &__orderBlock {
@@ -46,15 +72,24 @@
 
     flex-direction: column;
     flex: 0.8;
+    gap: 20px;
     background-color: #222;
-    height: 370px;
+    height: 90%;
     border-radius: 20px;
     padding: 50px;
     margin-left: 15px;
 
+    @media (max-width: 991px) {
+      padding: 20px;
+    }
+
     p {
       color: #999899;
       margin-top: 15px;
+
+      @media (max-width: 991px) {
+        margin-top: 10px;
+      }
     }
   }
 
@@ -63,6 +98,15 @@
     background: linear-gradient(to right, #7743e8, #c068f6);
     background-clip: text;
     color: transparent;
+
+    @media (max-width: 991px) {
+      font-size: 28px;
+      line-height: 30px;
+    }
+
+    @media (max-width: 767px) {
+      font-size: 22px;
+    }
   }
 
   &__orderBtn {
@@ -78,5 +122,10 @@
     border: 1px solid #f5f4f4;
     padding: 18px 0;
     max-width: 200px;
+
+    @media (max-width: 991px) {
+      font-size: 14px;
+      padding: 12px;
+    }
   }
 }

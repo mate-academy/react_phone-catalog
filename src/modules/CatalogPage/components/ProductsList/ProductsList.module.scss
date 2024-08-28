@@ -12,7 +12,8 @@
 
   &__products {
     display: flex;
-    gap: 16px;
+    justify-content: space-between;
+    gap: 40px 16px;
     flex-wrap: wrap;
     margin: 24px 0 40px;
   }
