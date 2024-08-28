@@ -1,4 +1,4 @@
-import React, { useContext, useMemo } from 'react';
+import React, { useContext} from 'react';
 import { ProductsContext } from '../../context/ProductsContext';
 import { FavoritesContext } from '../../context/FavoritesContext';
 import styles from './FavoriteButton.module.scss';
@@ -12,12 +12,10 @@ export const FavoriteButton: React.FC<Props> = ({ product }) => {
   const { goods } = useContext(ProductsContext);
   const { favoriteItems, updateFavoriteItems } = useContext(FavoritesContext);
 
-  const selectedItem = useMemo(() => {
-    if ('itemId' in product) {
-      return product;
-    }
-    return goods?.find(good => good.itemId === product.id) || null;
-  }, [product, goods]);
+  const selectedItem =
+    "itemId" in product
+      ? product
+      : goods?.find((good) => good.itemId === product.id);
 
   const handleAddToFavorites = () => {
     if (selectedItem) {
@@ -31,13 +29,19 @@ export const FavoriteButton: React.FC<Props> = ({ product }) => {
     }
   };
 
-  const isFavorited = favoriteItems?.some(item => item.itemId === selectedItem?.itemId);
-
   return (
-    <button
-      className={isFavorited ? styles.favorited : styles.favoriteButton}
-      onClick={isFavorited ? handleRemoveFromFavorites : handleAddToFavorites}
-      aria-label={isFavorited ? 'Remove from favorites' : 'Add to favorites'}
-    ></button>
+    <>
+      {favoriteItems?.some((item) => item.itemId === selectedItem?.itemId) ? (
+        <button
+        className={styles.favorited}
+        onClick={handleRemoveFromFavorites}
+      ></button>
+      ) : (
+        <button
+          className={styles.favoriteButton}
+          onClick={handleAddToFavorites}
+        ></button>
+      )}
+    </>
   );
 };

@@ -3,9 +3,11 @@
 @import '../../styles/mixins';
 
 .header {
+  &--mobile {
     @include on-tablet {
       display: none;
     }
+  }
 }
 
 .top {

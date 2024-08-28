@@ -10,9 +10,9 @@ import styles from './HomePage.module.scss';
 export const HomePage: React.FC = () => {
   const { goods, updateGoods } = useContext(ProductsContext);
   const [isLoading, setIsLoading] = useState(false);
-  const categoryPhones = `${process.env.PUBLIC_URL}/img/category-phones.png`;
-  const categoryTablets = `${process.env.PUBLIC_URL}/img/category-tablets.png`;
-  const categoryAccessories = `${process.env.PUBLIC_URL}/img/category-accessories.png`;
+  const categoryPhones = `${process.env.PUBLIC_URL}/img/category-phones.webp`;
+  const categoryTablets = `${process.env.PUBLIC_URL}/img/category-tablets.webp`;
+  const categoryAccessories = `${process.env.PUBLIC_URL}/img/category-accessories.webp`;
 
   useEffect(() => {
     if (!goods || !goods.length) {
@@ -59,45 +59,62 @@ export const HomePage: React.FC = () => {
 
   return (
     <>
-      <div className={styles.homepage}>
+      <div className={styles.homeWrapper}>
         <h1 hidden>Product Catalog</h1>
-        <h2 className={styles.homepage__title}>Welcome to Nice Gadgets store!</h2>
-        <PicturesSlider />
+        <h2 className={styles.homeTitle}>Welcome to Nice Gadgets store!</h2>
+        <PicturesSlider/>
       </div>
-      <section className={styles.homepage__newProducts}>
-        <h2 className={styles.homepage__newProductsTitle}>Brand new models</h2>
+      <div className={styles.newModelsContainer}>
+        <h2 className={styles.newModelsTitle}>Brand new models</h2>
         <ProductSlider goods={brandNewGoods} isLoading={isLoading} />
-      </section>
-      <section className={styles.homepage__categories}>
-        <h2 className={styles.homepage__categoriesTitle}>Shop by category</h2>
-        <div className={styles.homepage__categoriesGrid}>
-          <NavLink className={styles.category} to="/phones">
-            <div className={styles.category__content}>
-              <img className={styles.category__image} src={categoryPhones} alt="phones" />
-              <p className={styles.category__title}>Mobile phones</p>
-              <p className={styles.category__amount}>{phonesAmount} models</p>
+      </div>
+      <div className={styles.categorySection}>
+        <h2 className={styles.categoryTitle}>Shop by category</h2>
+        <div className={styles.categoryGrid}>
+          <NavLink className={styles.categoryLink} to="/phones">
+            <div className={styles.categoryItem}>
+              <img
+                className={styles.categoryImage}
+                src={categoryPhones}
+                alt="phones"
+              />
+              <p className={styles.categoryName}>Mobile phones</p>
+              <p className={styles.categoryCount}>{phonesAmount} models</p>
             </div>
           </NavLink>
-          <NavLink className={styles.category} to="/tablets">
-            <div className={styles.category__content}>
-              <img className={styles.category__image} src={categoryTablets} alt="tablets" />
-              <p className={styles.category__title}>Tablets</p>
-              <p className={styles.category__amount}>{tabletsAmount} models</p>
+          <NavLink className={styles.categoryLink} to="/tablets">
+            <div className={styles.categoryItem}>
+              <img
+                className={styles.categoryImage}
+                src={categoryTablets}
+                alt="tablets"
+              />
+              <p className={styles.categoryName}>Tablets</p>
+              <p className={styles.categoryCount}>
+                {tabletsAmount} models
+              </p>
             </div>
           </NavLink>
-          <NavLink className={styles.category} to="accessories">
-            <div className={styles.category__content}>
-              <img className={styles.category__image} src={categoryAccessories} alt="accessories" />
-              <p className={styles.category__title}>Accessories</p>
-              <p className={styles.category__amount}>{accessoriesAmount} models</p>
+          <NavLink className={styles.categoryLink} to="accessories">
+            <div className={styles.categoryItem}>
+              <img
+                className={styles.categoryImage}
+                src={categoryAccessories}
+                alt="accessories"
+              />
+              <p className={styles.categoryName}>Accessories</p>
+              <p className={styles.categoryCount}>
+                {accessoriesAmount} models
+              </p>
             </div>
           </NavLink>
         </div>
-      </section>
-      <section className={styles.homepage__hotPrices}>
-        <h2 className={styles.homepage__hotPricesTitle}>Hot prices</h2>
+      </div>
+      <div className={styles.hotDealsContainer}>
+        <h2 className={styles.hotDealsTitle}>Hot prices</h2>
         <ProductSlider goods={hotPricesGoods} isLoading={isLoading} />
-      </section>
+      </div>
     </>
   );
 };
+

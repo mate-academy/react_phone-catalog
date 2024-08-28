@@ -2,7 +2,84 @@
 @import "../../styles/vars";
 @import "../../styles/mixins";
 
-.homepage {
+.homeWrapper {
+  box-sizing: border-box;
+
+  @include on-tablet {
+    padding-inline: $padding-tablet;
+  }
+
+  @include on-desktop {
+    max-width: 1136px;
+    padding-inline: 0;
+    margin: 0 auto;
+  }
+}
+
+.homeTitle {
+  font-family: Mont-Bold,sans-serif;
+  font-size: 32px;
+  line-height: 41px;
+  padding-inline: $padding-mobile;
+  margin-block: 24px;
+
+  @include on-tablet {
+    padding-inline: 0;
+    line-height: 56px;
+    margin-block: 32px;
+    font-size: 48px;
+    width: 60%;
+  }
+
+  @include on-desktop {
+    margin-block: 56px;
+    width: 100%;
+  }
+}
+
+.newModelsContainer {
+  padding-left: $padding-mobile;
+  overflow: hidden;
+  width: 100%;
+  box-sizing: border-box;
+  position: relative;
+
+  @include on-tablet {
+    padding-left: $padding-tablet;
+  }
+
+  @include on-desktop {
+    max-width: 1136px;
+    margin: 0 auto;
+    padding: 0;
+  }
+
+  .newModelsTitle {
+    width: 40%;
+    margin: 0;
+    font-family: Mont-Bold, sans-serif;
+    font-size: 22px;
+    line-height: 30px;
+    color: $main;
+
+
+    @media (min-width: 520px) {
+      width: 33%;
+    }
+
+    @include on-tablet {
+      margin-top: 15px;
+      font-size: 30px;
+      line-height: 41px;
+      width: 50%;
+    }
+  }
+}
+
+.categorySection {
+  padding-top: 56px;
+  padding-bottom: 38px;
+  padding-inline: $padding-mobile;
   box-sizing: border-box;
 
   @include on-tablet {
@@ -12,173 +89,98 @@
   @include on-desktop {
     max-width: 1136px;
     margin: 0 auto;
-    padding-inline: 0;
+    padding: 0;
+    padding-top: 80px;
   }
 
-  &__title {
-    font-family: Mont-, sans-serif;
-    font-size: 32px;
-    line-height: 41px;
-    margin-block: 24px;
-    padding-inline: $padding-mobile;
 
-    @include on-tablet {
-      padding-inline: 0;
-      margin-block: 32px;
-      font-size: 48px;
-      line-height: 56px;
-      width: 60%;
-    }
-
-    @include on-desktop {
-      margin-block: 56px;
-      width: 100%;
-    }
+  .categoryTitle {
+    margin: 0;
+    margin-bottom: 24px;
+    font-family: Mont-Bold, sans-serif;
+    font-size: 22px;
+    line-height: 30px;
+    color: $main;
   }
 
-  &__newProducts {
-    overflow: hidden;
+  .categoryGrid {
+    display: flex;
+    flex-direction: column;
     width: 100%;
-    padding-left: $padding-mobile;
-    box-sizing: border-box;
-    position: relative;
+    gap: 32px;
 
     @include on-tablet {
-      padding-left: $padding-tablet;
+      flex-direction: row;
+      column-gap: 16px;
     }
 
     @include on-desktop {
-      max-width: 1136px;
-      margin: 0 auto;
-      padding: 0;
-    }
-
-    &Title {
-      font-family: Mont-Bold, sans-serif;
-      font-size: 22px;
-      line-height: 30px;
-      width: 40%;
-      color: $main;
-      margin: 0;
-      padding-bottom: 20px;
-
-      @media (min-width: 520px) {
-        width: 33%;
-      }
-
-      @include on-tablet {
-        font-size: 30px;
-        line-height: 41px;
-        width: 50%;
-        margin-top: 15px;
-      }
+      margin-bottom: 80px;
     }
   }
 
-  &__categories {
-    padding-top: 56px;
-    padding-bottom: 38px;
-    padding-inline: $padding-mobile;
-    box-sizing: border-box;
+  .categoryLink {
+    text-decoration: none;
+  }
 
-    @include on-tablet {
-      padding-inline: $padding-tablet;
-    }
-
-    @include on-desktop {
-      max-width: 1136px;
-      margin: 0 auto;
-      padding: 0;
-      padding-top: 80px;
-    }
-
-    &Title {
-      font-family: Mont-Bold, sans-serif;
-      font-size: 22px;
-      line-height: 30px;
-      color: $main;
-      margin: 0;
+  .categoryItem {
+    .categoryImage {
+      width: 100%;
+      height: auto;
+      max-width: 368px;
       margin-bottom: 24px;
     }
 
-    &Grid {
-      display: flex;
-      flex-direction: column;
-      width: 100%;
-      gap: 32px;
-
-      @include on-tablet {
-        flex-direction: row;
-        gap: 16px;
-      }
-
-      @include on-desktop {
-        margin-bottom: 80px;
-      }
-    }
-  }
-
-  &__hotPrices {
-    width: 100%;
-    box-sizing: border-box;
-    position: relative;
-    overflow: hidden;
-    padding-left: 16px;
-
-    @include on-desktop {
-      max-width: 1136px;
-      margin: 0 auto;
-      padding-left: 0;
-    }
-
-    &Title {
-      font-family: Mont-Bold, sans-serif;
-      font-size: 22px;
-      line-height: 30px;
-      width: 40%;
-      color: $main;
+    .categoryName {
       margin: 0;
-      margin-top: 10px;
-      padding-bottom: 20px;
+      margin-bottom: 4px;
+      font-size: 20px;
+      line-height: 26px;
+      font-family: Mont-SemiBold, sans-serif;
+      color: $main;
+    }
 
-      @media (min-width: 520px) {
-        width: 33%;
-      }
-
-      @include on-tablet {
-        font-size: 30px;
-        line-height: 41px;
-        width: 50%;
-      }
+    .categoryCount {
+      margin: 0;
+      font-size: 14px;
+      line-height: 21px;
+      color: $secondary;
+      font-family: Mont-Regular, sans-serif;
+      text-decoration: none;
     }
   }
 }
 
-.category {
-  &__content {
-    text-decoration: none;
+.hotDealsContainer {
+  width: 100%;
+  box-sizing: border-box;
+  position: relative;
+  overflow: hidden;
+  padding-left: 16px;
+
+  @include on-desktop {
+    max-width: 1136px;
+    margin: 0 auto;
+    padding-left: 0;
   }
 
-  &__image {
-    width: 368px;
-    height: 368px;
-    margin-bottom: 24px;
-  }
-
-  &__title {
-    font-size: 20px;
-    line-height: 26px;
-    font-family: Mont-SemiBold, sans-serif;
+  .hotDealsTitle {
+    font-family: Mont-Bold, sans-serif;
+    font-size: 22px;
+    line-height: 30px;
+    width: 40%;
     color: $main;
     margin: 0;
-    margin-bottom: 4px;
-  }
+    margin-top: 10px;
 
-  &__amount {
-    font-size: 14px;
-    line-height: 21px;
-    color: $secondary;
-    font-family: Mont-Regular, sans-serif;
-    margin: 0;
+    @media (min-width: 520px) {
+      width: 33%;
+    }
+
+    @include on-tablet {
+      font-size: 30px;
+      line-height: 41px;
+      width: 50%;
+    }
   }
 }

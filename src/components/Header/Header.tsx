@@ -37,7 +37,7 @@ export const Header: React.FC = () => {
   return (
     <>
       <header>
-        <div className={styles.header}>
+      <div className={styles["header--mobile"]}>
           <div className={styles.top}>
             <Link className={styles.logoLink} to="/">
               <img src={logoUrl} alt="" />
@@ -65,7 +65,7 @@ export const Header: React.FC = () => {
               </li>
               <li className={styles['nav__item']} onClick={() => setIsActive(false)}>
                 <NavLink to="/phones" className={({ isActive: active }) => getNavLinkClass(active)}>
-                  Phonees
+                  Phones
                 </NavLink>
               </li>
               <li className={styles['nav__item']} onClick={() => setIsActive(false)}>

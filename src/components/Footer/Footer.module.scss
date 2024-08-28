@@ -19,15 +19,13 @@
     margin-top: 64px;
   }
 
-  @include on-desktop {
+  @include on-desktop{
     margin-top: 80px;
   }
 
   .logo {
-    width: fill 388.67px;
-    height: 92px;
-    gap: 0;
-    opacity: 0;
+    width: 89px;
+    height: 32px;
   }
 
   .navList {
@@ -58,17 +56,16 @@
     text-decoration: none;
     cursor: pointer;
 
-    @include hover(color, $main);
+    @include hover (color, $main);
   }
 
-  .goToBackBlock {
+  .backToTopBlock {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding-right: 120px;
   }
 
-  .goToBack {
+  .backToTop {
     margin: 0;
     font-size: 12px;
     line-height: 16px;
@@ -76,11 +73,10 @@
     font-family: Mont-Regular, sans-serif;
     margin-right: 16px;
     cursor: pointer;
-
-    @include hover(color, $main);
+    @include hover (color, $main);
   }
 
-  .goToBackButton {
+  .backToTopButton {
     width: 32px;
     height: 32px;
     border: 1px solid $elements;
@@ -91,6 +87,6 @@
     background-repeat: no-repeat;
     background-position: center;
 
-    @include hover(border-color, $main);
+    @include hover (border-color, $main);
   }
 }

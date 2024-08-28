@@ -31,6 +31,8 @@ export const App: React.FC = () => {
   useEffect(() => {
     if (favoriteItems.length > 0) {
       localStorage.setItem('favoriteItems', JSON.stringify(favoriteItems));
+    } else {
+      localStorage.removeItem('favoriteItems');
     }
   }, [favoriteItems]);
 
