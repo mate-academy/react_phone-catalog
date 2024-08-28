@@ -17,6 +17,21 @@
     grid-column: 1 / 13;
   }
 
+  @include on-desktop {
+    grid-column: 1 / 25;
+  }
+
+  &__header {
+    font-family: Mont, sans-serif;
+font-size: 32px;
+font-weight: 800;
+line-height: 41px;
+letter-spacing: -0.01em;
+text-align: left;
+margin-left: 32px;
+
+  }
+
   &__content {
     @include on-tablet {
       width: 640px;
@@ -24,24 +39,21 @@
       justify-content: center;
     }
 
+    @include on-desktop {
+      width: 1136px;
+      justify-content: space-between;
+    }
+
   }
 
   font-family: Mont, sans-serif;
   &__title {
     grid-column: 1 / 5;
+    font-family: Mont-thin, sans-serif;
     margin-left: 16px;
 font-size: 30px;
 line-height: 30.8px;
 text-align: left;
-&--phones {
-  font-family: Mont-thin, sans-serif;
-}
-&--tablets {
-  font-family: Mont-thin, sans-serif;
-}
-&--accessories {
-  font-family: Mont-thin, sans-serif;
-}
   }
 
   &__option {
@@ -49,6 +61,10 @@ text-align: left;
 
     @include on-tablet {
       width: 187px;
+    }
+
+    @include on-desktop {
+      width: 368px;
     }
   }
   &__image {
@@ -58,6 +74,11 @@ text-align: left;
     @include on-tablet {
       width: 187px;
       height: 187px;
+    }
+
+    @include on-desktop {
+      width: 368px;
+      height: 368px;
     }
   }
 }

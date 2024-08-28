@@ -3,10 +3,17 @@ import '../icons/icon.scss';
 import '../logo/logo.scss';
 import { Menu } from '../Menu/Menu';
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
+import classNames from 'classnames';
 
 export const Navigation = () => {
   const [showMenu, setShowMenu] = useState(false);
+
+  const getSelectedLink = ({ isActive }: { isActive: boolean }) => {
+    return classNames('navigation__link', {
+      'navigation__link--is-active': isActive,
+    });
+  };
 
   return (
     <>
@@ -17,15 +24,15 @@ export const Navigation = () => {
         <div className="navigation__menu-block">
           <div className="navigation__content">
             <div className="navigation__block-link">
-              <Link to="/home" className="navigation__link">
+              <NavLink to="/home" className={getSelectedLink}>
                 HOME
-              </Link>
+              </NavLink>
             </div>
             <div className="navigation__block-link">
               {' '}
-              <Link to="/phones" className="navigation__link">
+              <NavLink to="/phones" className={getSelectedLink}>
                 PHONES
-              </Link>
+              </NavLink>
             </div>
             <div className="navigation__block-link">
               {' '}

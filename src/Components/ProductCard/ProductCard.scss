@@ -8,10 +8,20 @@
   src: url('../../../public/fonts/Mont-Bold.otf');
 }
 
+@import '../../utils/mixins';
+
 .productcard {
   border: 1px solid black;
   height: 439px;
-  width: 100%;
+  width: 212px;
+  display: flex;
+  flex-direction: column;
+  
+  @include on-tablet {
+    width: 237px;
+    height: 512px;
+  }
+
   background-color: white;
   &__container {
     margin-top: 20px;
@@ -19,7 +29,17 @@
   &__image {
     height: 148px;
     width: 129px;
-    margin: 40px 41px 0;
+    margin: 20px 41px 0;
+
+    @include on-tablet {
+      margin: 30px 41px 0;
+    }
+
+    @include on-desktop {
+      width: 208px;
+      height: 196px;
+      margin: 30px 30px 0;
+    }
   }
   &__name {
     height: 42px;
@@ -29,6 +49,14 @@ font-weight: 600;
 line-height: 21px;
 text-align: center;
 margin: 0 32px;
+
+@include on-tablet {
+  margin: 20px 32px 0;
+}
+
+@include on-desktop {
+  margin: 0 32px;
+}
   }
   &__price {
 font-family: Mont-bold, sans-serif;
@@ -36,20 +64,33 @@ font-size: 22px;
 font-weight: 800;
 line-height: 30.8px;
 text-align: left;
-margin: 10px 40px 0;
+margin: 0 40px;
+
+@include on-tablet {
+  margin-top: 10px;
+}
+
+@include on-desktop {
+  margin: 0 40px;
+}
 
   }
   &__line {
-    width: 148px;
     height: 0;
     border: 1px solid #E2E6E9;
-    margin-top: 10px;
 }
 
 &__screen {
   display: flex;
   justify-content: space-between;
-  margin-top: 10px;
+
+  @include on-tablet {
+    margin-top: 10px;
+  }
+
+  @include on-desktop {
+    margin: 0;
+  }
   &--title {
     margin-left: 40px;
 font-family: Mont, sans-serif;
@@ -116,11 +157,19 @@ text-align: right;
   justify-content: center;
   width: 170px;
   height: 40px;
-  margin-top: 15px;
+
+  @include on-tablet {
+    margin-top: 10px;
+  }
 
 }
 &__adding-button {
   width:125px;
+
+  @include on-desktop {
+    width: 160px;
+  }
+
   height: 40px;
 border-radius: 8px;
 border: 0;

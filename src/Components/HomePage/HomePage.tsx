@@ -16,8 +16,8 @@ export const HomePage = () => {
         <CartPage />
         <Categories />
         <Discounts />
-        <Footer />
       </div>
+      <Footer />
     </>
   );
 };

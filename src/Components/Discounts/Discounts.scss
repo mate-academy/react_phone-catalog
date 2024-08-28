@@ -4,15 +4,34 @@
   width: 456px;
   overflow: hidden;
 
+
+
   @include on-tablet {
+    grid-column: 1 / 13;
     width: 744px;
   }
-  
+
+  @include on-desktop {
+    grid-column: 1 / 25;
+    width: 1160px;
+    height: 700px;
+  }
+
   &__title {
-    margin-top: 60px;
+    margin: 60px 0 0 16px;
+    padding-bottom: 20px;
+
+    @include on-tablet {
+      padding: 0;
+    }
+
+    @include on-desktop {
+      padding: 0;
+    }
+    
     width: 180px;
     font-family: Mont, sans-serif;
-    margin-left: 16px;
+
     text-align: left;
   }
   &__content {
@@ -23,5 +42,13 @@
   div {
     width: 212px;
     gap: 16px;
+
+    @include on-tablet {
+      width: 232px;
+    }
+
+    @include on-desktop {
+      width: 272px;
+    }
   }
 }

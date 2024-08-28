@@ -8,9 +8,15 @@
 .CartPage {
   font-family: Mont, sans-serif;
   width: 456px;
+  height: 700px;
 
   @include on-tablet {
-    width: 700px;
+    width: 744px;
+    grid-column: span 12;
+  }
+
+  @include on-desktop {
+    width: 1156px;
   }
 
   font-size: 22px;
@@ -20,10 +26,6 @@
   margin-top: 50px;
   grid-column: 1 / 5;
   overflow: hidden;
-
-  @include on-tablet {
-    grid-column: span 12;
-  }
 
 
   &__title {
@@ -38,6 +40,14 @@
   div {
     width: 212px;
     gap: 16px;
+
+    @include on-tablet {
+      width: 232px;
+    }
+
+    @include on-desktop {
+      width: 272px;
+    }
   }
 }
 
@@ -54,12 +64,17 @@
   }
   &-prev {
     position: relative;
-    left: 210px;
+    left: 195px;
 
     @include on-tablet {
       left: 500px;
+      top: -41px;
     }
-    
+
+    @include on-desktop {
+      left: 1042px;
+    }
+
     bottom: 59px;
     width: 40px;
     height: 40px;
@@ -81,17 +96,20 @@
       transition: transform 0.3s ease;
     }
   }
-  &-track {
-    width: 100%;
-  }
 
   &-next {
     position: relative;
     bottom: 538px;
-    left: 255px;
+    left: 240px;
 
     @include on-tablet {
       left: 545px;
+      bottom: 593px;
+    }
+
+    @include on-desktop {
+      left: 1089px;
+      bottom: 482px;
     }
 
     width: 40px;

@@ -11,8 +11,6 @@
 }
 
 .navigation {
-  @include page-grid;
-
   display: flex;
   justify-content: space-between;
   height: 48px;
@@ -23,6 +21,7 @@
 
   @include on-desktop {
     grid-column: span 24;
+    height: 64px;
   }
 
   border-bottom: 1px solid #E2E6E9;
@@ -40,13 +39,18 @@
 
     @include on-tablet {
       display: flex;
-    margin-right: auto;
     gap: 20px;
+    margin-left: 50px;
     }
   }
   &__block {
   &-link {
     height: 48px;
+
+    @include on-desktop {
+      height: 64px;
+    }
+
     display: flex;
     align-items: center;
     &:hover {
@@ -59,6 +63,12 @@
   &-bag {
     width: 48px;
     height: 48px;
+
+    @include on-desktop {
+      width: 64px;
+      height: 64px;
+    }
+    
     display: flex;
     justify-content: center;
     align-items: center;
@@ -68,6 +78,13 @@
   &-heart {
     width: 48px;
     height: 48px;
+
+    @include on-desktop {
+      width: 64px;
+      height: 64px;
+      margin-right: 24px;
+    }
+
     display: flex;
     justify-content: center;
     align-items: center;
@@ -94,15 +111,29 @@ color: #89939A;
     &:hover {
       color: black;
     }
+
+    &--is-active {
+      color: black;
+      padding-bottom: 16px;
+      border-bottom: 4px solid black;
+      font-family: Mont-bold-navigation-on-tablet, sans-serif;
+    }
   }
   &__menu-block {
     display: flex;
     justify-content: end;
-    grid-column: 2 / 6;
 
     @include on-tablet {
-      grid-column: 3 / 13;
-      justify-content: center;
+      width: 100%;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      margin-right: 24px;
+    }
+
+    @include on-desktop {
+      grid-column: 3 / 25;
+      justify-content: space-between;
       align-items: center;
       gap: 16px;
       margin-right: 24px;
@@ -112,6 +143,11 @@ color: #89939A;
     display: none;
 
     @include on-tablet {
+      display: flex;
+    justify-content: start;
+    }
+
+    @include on-desktop {
       display: flex;
     justify-content: start;
     }

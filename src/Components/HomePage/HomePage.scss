@@ -7,8 +7,6 @@
 
 .home {
   @include page-grid;
-  
-  width: 320px;
 
   &__title {
     font-family: Mont, sans-serif;
@@ -18,6 +16,10 @@
     @include on-tablet {
       grid-column: 1 / 13;
       font-size: 58px;
+    }
+
+    @include on-desktop {
+      grid-column: 1 / 25;
     }
   }
 }

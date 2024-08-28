@@ -3,7 +3,7 @@ import './Footer.scss';
 
 export const Footer = () => {
   return (
-    <div className="footer">
+    <footer className="footer">
       <div className="logo__footer" />
       <nav className="footer__navigation">
         <a href="" className="footer__link">
@@ -23,6 +23,6 @@ export const Footer = () => {
           <div className="footer__arrow"></div>
         </a>
       </div>
-    </div>
+    </footer>
   );
 };

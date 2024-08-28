@@ -1,7 +1,20 @@
+@import '../../utils/mixins';
+
 .discountproduct {
   border: 1px solid black;
   height: 439px;
   width: 212px;
+  display: flex;
+  flex-direction: column;
+  
+  @include on-tablet {
+    height: 512px;
+  }
+
+  @include on-desktop {
+    height: 506px;
+  }
+
   background-color: white;
   &__container {
     margin-top: 20px;
@@ -9,10 +22,16 @@
   &__image {
     height: 148px;
     width: 129px;
-    margin: 40px 41px 0;
+    margin: 20px 41px 0;
+
+    @include on-desktop {
+      width: 208px;
+      height: 198px;
+      margin-left: 30px;
+    }
   }
   &__name {
-    height: 42px;
+    height: 32px;
 font-family: Mont-normal, sans-serif;
 font-size: 14px;
 font-weight: 600;
@@ -21,6 +40,16 @@ text-align: center;
 margin: 0 32px;
   }
   &__prices {
+    padding-top:  5px;
+
+    @include on-tablet {
+      padding-top: 20px;
+    }
+
+    @include on-desktop {
+      padding: 0;
+    }
+
     display: flex;
     justify-content: center;
     width: 210px;
@@ -31,7 +60,7 @@ font-family: Mont-bold, sans-serif;
 font-size: 22px;
 font-weight: 800;
 text-align: left;
-margin: 20px 0 0 40px;
+margin: 10px 0 0 40px;
 
   }
   &__before-discount {
@@ -40,10 +69,17 @@ margin: 20px 0 0 40px;
 font-size: 22px;
 font-weight: 800;
 text-align: left;
-margin: 20px 70px 0 0;
+margin: 10px 70px 0 0;
   }
   &__line {
-    margin-top: 10px;
+    @include on-tablet {
+      margin-top: 10px;
+    }
+
+    @include on-desktop {
+      margin: 0;
+    }
+
     height: 0;
     border: 1px solid #E2E6E9;
 }
@@ -51,7 +87,14 @@ margin: 20px 70px 0 0;
 &__screen {
   display: flex;
   justify-content: space-between;
-  margin-top: 10px;
+
+  @include on-tablet {
+    margin-top: 20px;
+  }
+
+  @include on-desktop {
+    margin: 0;
+  }
   &--title {
     margin-left: 40px;
 font-family: Mont, sans-serif;
@@ -117,8 +160,15 @@ text-align: right;
   display: flex;
   width: 180px;
   height: 40px;
-  margin-top: 15px;
   justify-content: center;
+
+  @include on-tablet {
+    margin-top: 20px;
+  }
+
+  @include on-desktop {
+    margin-top: 5px;
+  }
 
 }
 &__adding-button {
@@ -142,7 +192,7 @@ border-radius: 48px;
 background-image: url('../../img/Favourites\ \(Heart\ Like\).svg');
 background-repeat: no-repeat;
 background-position: center;
-background-color: #e2e6e9 !important;
+background-color: white !important;
 border: 1px solid #B4BDC3;
 }
 }
