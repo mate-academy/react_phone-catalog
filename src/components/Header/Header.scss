@@ -43,6 +43,8 @@
   }
 
   &__icons {
+    position: relative;
+
     width: 48px;
     height: 48px;
 
@@ -78,6 +80,17 @@
 
     &--favorite {
       background-image: url(../../../public/img/heart-icon.svg);
+
+      &--active {
+        &::after {
+          content: '';
+          position: absolute;
+          bottom: 0;
+          width: 100%;
+          height: 3px;
+          background-color: var(--dark-gray-color);
+        }
+      }
     }
 
     &--basket {
@@ -129,5 +142,28 @@
     &:hover {
       color: var(--dark-gray-color);
     }
+  }
+
+  &__favorite-counter {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateY(-100%);
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    border: 1px solid var(--white-color);
+    background-color: var(--purple-color);
+
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-family: var(--semi-bold-font-family);
+    font-size: 9px;
+    font-weight: 700;
+    line-height: 12px;
+    color: var(--white-color);
   }
 }

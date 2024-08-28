@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
+// eslint-disable-next-line import/no-extraneous-dependencies
+import { useLocalStorage } from '@uidotdev/usehooks';
 import productsFromServer from '../../api/products.json';
 import './ProductCard.scss';
 import { Link } from 'react-router-dom';
@@ -28,31 +30,6 @@ export const ProductCard: React.FC<Props> = ({ id }) => {
     itemId,
     category,
   } = findProduct(id);
-
-  function useLocalStorage<T>(key: string, defaultValue: T) {
-    const [value, setValue] = useState(() => {
-      const savedValue = localStorage.getItem(key);
-
-      if (savedValue === null) {
-        return defaultValue;
-      }
-
-      try {
-        return JSON.parse(savedValue) as T;
-      } catch (error) {
-        localStorage.removeItem(key);
-
-        return defaultValue;
-      }
-    });
-
-    function save(newValue: T) {
-      setValue(newValue);
-      localStorage.setItem(key, JSON.stringify(newValue));
-    }
-
-    return [value, save] as const;
-  }
 
   const [favoriteArr, setFavoriteArr] = useLocalStorage<Product[]>(
     'favoriteArr',
@@ -94,16 +71,11 @@ export const ProductCard: React.FC<Props> = ({ id }) => {
 
   const handleSetFavoriteArr = () => {
     if (favoriteArr.find((product: Product) => product.itemId === itemId)) {
-      return favoriteArr.splice(
-        favoriteArr.findIndex(() =>
-          favoriteArr.find((product: Product) => product.itemId === itemId),
-        ),
-        1,
-      );
+      return setFavoriteArr(prev => [
+        ...prev.filter(product => product.itemId !== itemId),
+      ]);
     } else {
-      favoriteArr.push(findProduct(id));
-
-      return favoriteArr;
+      return setFavoriteArr(prev => [...prev, findProduct(id)]);
     }
   };
 
@@ -142,13 +114,13 @@ export const ProductCard: React.FC<Props> = ({ id }) => {
         <button className="product-card__buy-button">Add to cart</button>
         <button
           className="product-card__favorite-button"
-          onClick={() => setFavoriteArr(handleSetFavoriteArr())}
+          onClick={handleSetFavoriteArr}
         >
-          {/* {favoriteArr.find(product => product.itemId === itemId) ? (
+          {favoriteArr.find(product => product.itemId === itemId) ? (
             <img src="./img/heart-icon-active.svg" alt="favorite active" />
           ) : (
             <img src="./img/heart-icon.svg" alt="favorite" />
-          )} */}
+          )}
         </button>
       </div>
     </article>

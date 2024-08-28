@@ -4,23 +4,27 @@ import { Header } from '../Header/Header';
 import './FavoritePage.scss';
 import { Menu } from '../Menu/Menu';
 import { Footer } from '../Footer/Footer';
-import { Favorite } from '../../utils/FavoriteContext';
 import { ProductCard } from '../ProductCard/ProductCard';
-// import { Product } from '../../types/Propduct';
-// import { ProductCard } from '../ProductCard/ProductCard';
+import { Product } from '../../types/Propduct';
 
 export const FavoritePage = () => {
   const { isMenuOpen } = useContext(MenuOpen);
-
-  const favoriteArr = useContext(Favorite);
+  const favorites: Product[] =
+    JSON.parse(localStorage.getItem('favoriteArr') ?? '') || [];
 
   return (
     <>
       <Header />
       {isMenuOpen && <Menu />}
-      {favoriteArr.map(item => (
-        <ProductCard key={item.id} id={item.id} />
-      ))}
+      {favorites.length ? (
+        <div className="favorite-box">
+          {favorites.map(item => (
+            <ProductCard key={item.id} id={item.id} />
+          ))}
+        </div>
+      ) : (
+        <h1 className="no-favorite">No favorites yet</h1>
+      )}
       <Footer />
     </>
   );

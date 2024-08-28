@@ -66,12 +66,20 @@ export const Menu = () => {
         </ul>
       </nav>
       <div className="menu__footer">
-        <a href="#favorites" className="menu__footer-link">
+        <NavLink
+          to="/favorites"
+          className="menu__footer-link"
+          onClick={() => setIsMenuOpen(false)}
+        >
           <img src="/img/heart-icon.svg" alt="favorites" />
-        </a>
-        <a href="#basket" className="menu__footer-link">
+        </NavLink>
+        <NavLink
+          to="/basket"
+          className="menu__footer-link"
+          onClick={() => setIsMenuOpen(false)}
+        >
           <img src="/img/basket-icon.svg" alt="basket" />
-        </a>
+        </NavLink>
       </div>
     </aside>
   );
