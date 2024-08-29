@@ -21,7 +21,7 @@ export const Welcome = () => {
   const handleTouchMove = (e: React.TouchEvent<HTMLDivElement>) => {
     const touch = touchPosition;
 
-    if (touch === null) {
+    if (touch === 0) {
       return;
     }
 
