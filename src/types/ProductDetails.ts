@@ -1,7 +1,7 @@
 import { ProductCategories } from './ProductCategories';
 
 export type ProductDetails = {
-  id: number;
+  id: string;
   category: ProductCategories;
   namespaceId: string;
   name: string;
@@ -9,7 +9,7 @@ export type ProductDetails = {
   capacity: string;
   priceRegular: number;
   priceDiscount: number;
-  colorAvailable: string[];
+  colorsAvailable: string[];
   color: string;
   images: string[];
   description: Description[];

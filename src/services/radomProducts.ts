@@ -4,12 +4,14 @@ import { getProducts } from './products';
 
 export function getSuggestedProducts(): Promise<Product[]> {
   return getProducts()
-    .then(product => {
-      const shuffledProduct = shuffle(product);
+    .then(products => {
+      // Shuffle the selected subset array
+      const shuffledProducts = shuffle(products);
 
-      const suggestedProduct = shuffledProduct.slice(0, 10);
+      // Select a subset (e.g., 4 products)
+      const suggestedProducts = shuffledProducts.slice(0, 10);
 
-      return suggestedProduct;
+      return suggestedProducts;
     })
     .catch(error => {
       /* eslint-disable no-console */

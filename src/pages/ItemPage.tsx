@@ -80,14 +80,12 @@ export const ItemPage = () => {
       wait(200)
         .then(() =>
           getItemByCategory(category).then(data => {
-            const item = data.find(
-              d => d.id.toString() === selectedProduct.itemId,
-            );
+            const item = data.find(d => d.id === selectedProduct.itemId);
 
             setSelectedItem(item || null);
 
             if (item) {
-              const colorIndex = item.colorAvailable.findIndex(
+              const colorIndex = item.colorsAvailable.findIndex(
                 color => color === item.color,
               );
               const capacityIndex = item.capacityAvailable.findIndex(
@@ -113,7 +111,7 @@ export const ItemPage = () => {
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
 
   const spaceLessColors =
-    selectedItem?.colorAvailable.map(color => color.replace(/\s/g, '')) || [];
+    selectedItem?.colorsAvailable.map(color => color.replace(/\s/g, '')) || [];
 
   const handleAddToCart = () => {
     if (selectedProduct) {
@@ -129,7 +127,7 @@ export const ItemPage = () => {
     const newParam = [
       selectedItem?.namespaceId,
       selectedItem?.capacityAvailable[selectedCapacityIndex],
-      selectedItem?.colorAvailable[selectedColorIndex],
+      selectedItem?.colorsAvailable[selectedColorIndex],
     ]
       .filter(Boolean)
       .map(item => item.toLowerCase().replace(/\s/g, '-'))
@@ -213,7 +211,7 @@ export const ItemPage = () => {
 
             <div className="item-page__container">
               <ul className="item-page__buttons-list">
-                {selectedItem?.colorAvailable.map((color, index) => {
+                {selectedItem?.colorsAvailable.map((color, index) => {
                   const colorHex = colors[color];
 
                   return (

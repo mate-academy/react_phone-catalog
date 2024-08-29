@@ -23,6 +23,12 @@
     transform: translateX(-100%);
     pointer-events: none;
 
+    // &:target {
+    //   opacity: 1;
+    //   transform: translateX(0);
+    //   pointer-events: all;
+    // }
+
     &--active {
       opacity: 1;
       transform: translateX(0);

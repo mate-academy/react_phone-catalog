@@ -27,7 +27,7 @@ export const CustomSearch: React.FC<CustomSearchProps> = ({
   const [searchParams, setSearchParams] = useSearchParams();
 
   useEffect(() => {
-    queryRef.current = searchQuery; // Update ref whenever searchQuery changes
+    queryRef.current = searchQuery;
   }, [searchQuery]);
 
   const toggleSearchShow = () => {
@@ -60,7 +60,7 @@ export const CustomSearch: React.FC<CustomSearchProps> = ({
 
   const handleClickOutside = (event: MouseEvent) => {
     if (queryRef.current.trim() !== '') {
-      return; // Don't close if there is a query
+      return;
     }
 
     if (

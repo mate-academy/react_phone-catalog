@@ -1,7 +1,7 @@
 import { ReactNode, createContext, useCallback, useMemo } from 'react';
-import { CartActionType } from '../types/CartActionType';
-import { useLocalStorage } from '../hooks/useLocalStorage';
 import { Product } from '../types/Product';
+import { useLocalStorage } from '../hooks/useLocalStorage';
+import { CartActionType } from '../types/CartActionType';
 import { isItemInArray } from '../utils/isItemInArray';
 
 type CartContextType = {
