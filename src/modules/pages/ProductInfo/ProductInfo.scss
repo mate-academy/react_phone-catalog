@@ -15,9 +15,17 @@
 
 .productInfo-container {
   display: flex;
-  width: 100%;
+  width: 1200px;
   margin: 0 auto;
   flex-direction: column;
+
+  @include on-tablet {
+    width: 640px;
+  }
+
+  @include on-mobile {
+    width: 320px;
+  }
 }
 
 .productInfo-h1 {

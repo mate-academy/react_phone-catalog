@@ -4,7 +4,7 @@ import { Card } from '../Home/components/NewPhones/components';
 import { Sort, getVisiablePhones } from '../Phones/sortFunction';
 import { TabletsContext } from '../../../PageContext';
 import { Loader } from '../Phones/components';
-import { useSearchParams } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 
 export const Tablets: React.FC = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -70,9 +70,9 @@ export const Tablets: React.FC = () => {
   return (
     <div className="phones-container">
       <div className="fav-link">
-        <a className="favIcon">
+        <Link to="/" className="favIcon">
           <img src="./uploadedImg/Home.png"></img>
-        </a>
+        </Link>
         <a className="favIcon">
           <img src="./uploadedImg/LeftArrow.png"></img>
         </a>

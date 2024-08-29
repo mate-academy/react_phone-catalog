@@ -2,6 +2,7 @@ import { useContext } from 'react';
 import './Favorites.scss';
 import { Card } from '../Home/components/NewPhones/components';
 import { ProductsContext } from '../../../PageContext';
+import { Link } from 'react-router-dom';
 
 export const Favorites = () => {
   const { favItems } = useContext(ProductsContext);
@@ -9,9 +10,9 @@ export const Favorites = () => {
   return (
     <div className="favorites-layout">
       <div className="fav-link">
-        <a className="favIcon">
+        <Link to="/" className="favIcon">
           <img src="./uploadedImg/Home.png"></img>
-        </a>
+        </Link>
         <a className="favIcon">
           <img src="./uploadedImg/LeftArrow.png"></img>
         </a>
