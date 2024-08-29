@@ -37,38 +37,42 @@ export const ProductsList: React.FC<ProductsListProps> = ({
   };
 
   useEffect(() => {
-    const fetchAndSortProducts = async () => {
+    const fetchProducts = async () => {
       setLoading(true);
       try {
         const fetchedProducts = await getProductsByCategory(category);
 
-        const sortedProducts = sortProducts(fetchedProducts, sortType);
-
-        setProducts(sortedProducts);
+        setProducts(fetchedProducts);
       } finally {
         setLoading(false);
       }
     };
 
-    fetchAndSortProducts();
-  }, [category, sortType]);
+    fetchProducts();
+  }, [category]);
 
   const handleSortChange = useCallback(
     (event: React.ChangeEvent<HTMLSelectElement>) => {
-      setSearchParams({ sort: event.target.value, page: '1', perPage });
+      setSearchParams({
+        sort: event.target.value,
+        query: searchQuery,
+        page: '1',
+        perPage,
+      });
     },
-    [setSearchParams, perPage],
+    [setSearchParams, perPage, searchQuery],
   );
 
   const handlePerPageChange = useCallback(
     (event: React.ChangeEvent<HTMLSelectElement>) => {
       setSearchParams({
         perPage: event.target.value,
+        query: searchQuery,
         page: '1',
         sort: sortType,
       });
     },
-    [setSearchParams, sortType],
+    [setSearchParams, sortType, searchQuery],
   );
 
   const handlePageChange = useCallback(
@@ -89,7 +93,8 @@ export const ProductsList: React.FC<ProductsListProps> = ({
       product.price.toString().includes(searchQuery),
   );
 
-  const selectedProducts = filteredProducts.slice(
+  const sortedProducts = sortProducts(filteredProducts, sortType);
+  const selectedProducts = sortedProducts.slice(
     startIndex,
     startIndex + actualPerPage,
   );

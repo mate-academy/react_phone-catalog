@@ -85,7 +85,9 @@ export const OverlayMenu: React.FC<OverlayMenuProps> = ({
             <img src={cartIconSrc} alt="Cart" className={styles.icon} />
             {cart.length > 0 && (
               <span className={styles.count}>
-                <p className={styles.countText}>{cart.length}</p>
+                <p className={styles.countText}>
+                  {cart.reduce((sum, item) => sum + item.quantity, 0)}
+                </p>
               </span>
             )}
           </div>
