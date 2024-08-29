@@ -54,7 +54,6 @@ export const ItemCard: React.FC = () => {
   const [selectedCapacity, setSelectedCapacity] = useState<string | undefined>(
     '',
   );
-  const [suggestedProducts, setSuggestedProducts] = useState<Product[]>([]);
 
   useEffect(() => {
     setSelectedColor(currrentGadget?.color);
@@ -120,12 +119,10 @@ export const ItemCard: React.FC = () => {
     }
   };
 
-  useEffect(() => {
+  const getSuggestedProducts = () => {
     const suggestedArray: Product[] = [];
 
-    setSuggestedProducts([]);
-
-    while (suggestedArray.length < 12) {
+    for (let i = 1; i <= 12; i++) {
       const randomIndex = Math.floor(Math.random() * listOfProducts.length);
       const randomGadget = listOfProducts[randomIndex];
 
@@ -134,8 +131,8 @@ export const ItemCard: React.FC = () => {
       }
     }
 
-    setSuggestedProducts(suggestedArray);
-  }, [currrentGadget, listOfProducts]);
+    return suggestedArray;
+  };
 
   if (currrentGadget) {
     const hasCamera = currrentGadget.hasOwnProperty('camera');
@@ -512,10 +509,10 @@ export const ItemCard: React.FC = () => {
           </section>
 
           <section className={styles.itemCard__slider}>
-            {suggestedProducts.length > 0 && (
+            {listOfProducts.length > 1 && (
               <ProductsSlider
                 title={t('may_also_like')}
-                gadgets={suggestedProducts}
+                gadgets={getSuggestedProducts()}
               />
             )}
           </section>
