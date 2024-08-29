@@ -7,6 +7,10 @@ import { Modal } from '../Modal/Modal';
 export const Tobuy = () => {
   const { totalPrice, totalItems, isSunSelected } = useContext(GlobalContext);
   const [isOpenModal, setIsOpenModal] = useState<boolean>(false);
+  const addedItems =
+    totalItems > 1
+      ? `Total for ${totalItems} items`
+      : `Total for ${totalItems} item`;
 
   const handlerOpenModal = () => {
     setIsOpenModal(!isOpenModal);
@@ -28,7 +32,9 @@ export const Tobuy = () => {
           className={classNames(styles.buy__total_items, {
             [styles.buy__total_items_dark]: !isSunSelected,
           })}
-        >{`Total for ${totalItems} items`}</div>
+        >
+          {addedItems}
+        </div>
         <span
           className={classNames(styles.buy__separator, {
             [styles.buy__separator_dark]: !isSunSelected,

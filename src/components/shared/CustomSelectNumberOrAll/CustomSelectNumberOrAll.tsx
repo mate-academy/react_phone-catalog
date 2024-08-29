@@ -2,6 +2,7 @@ import { Dispatch, SetStateAction, useEffect, useRef, useState } from 'react';
 import classNames from 'classnames';
 import styles from './CustomSelectNumberOrAll.module.scss';
 import { Option } from '../../../type/Option';
+import { useSearchParams } from 'react-router-dom';
 
 type CustomSelectProps<T> = {
   options: Option<T>[];
@@ -9,6 +10,8 @@ type CustomSelectProps<T> = {
   onChange: Dispatch<SetStateAction<T>>;
   label: string;
   darkMode: boolean;
+  currentPage: number;
+  setCurrentPage: (page: number) => void;
 };
 
 export const CustomSelectNumberOrAll = ({
@@ -17,10 +20,32 @@ export const CustomSelectNumberOrAll = ({
   onChange,
   label,
   darkMode,
+  currentPage,
+  setCurrentPage,
 }: CustomSelectProps<number | 'all'>) => {
   const [isOpen, setIsOpen] = useState(false);
   const selectRef = useRef<HTMLDivElement>(null);
   const [isFocused, setIsFocused] = useState(false);
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [isInitialized, setIsInitialized] = useState(false);
+  const [isFirstRender, setIsFirstRender] = useState(true);
+
+  useEffect(() => {
+    if (isFirstRender) {
+      setIsFirstRender(false);
+    }
+
+    const perPageParam = searchParams.get('perPage');
+    const pageParam = searchParams.get('page');
+
+    if (perPageParam) {
+      onChange(perPageParam === 'all' ? 'all' : Number(perPageParam));
+    }
+
+    if (pageParam) {
+      setCurrentPage(Number(pageParam));
+    }
+  }, [searchParams, onChange, setCurrentPage]);
 
   const handleFocus = () => {
     setIsFocused(true);
@@ -58,8 +83,27 @@ export const CustomSelectNumberOrAll = ({
 
   const handleSelect = (optionValue: number | 'all') => {
     onChange(optionValue);
+    searchParams.set('perPage', optionValue.toString());
+    searchParams.set('page', '1');
+    setSearchParams(searchParams);
+    if (!isInitialized) {
+      setIsInitialized(true);
+    }
+
     setIsOpen(false);
   };
+
+  useEffect(() => {
+    if (isInitialized) {
+      setSearchParams(prev => {
+        const newParams = new URLSearchParams(prev.toString());
+
+        newParams.set('page', currentPage.toString());
+
+        return newParams;
+      });
+    }
+  }, [currentPage]);
 
   return (
     <div className={styles.customSelect} ref={selectRef}>

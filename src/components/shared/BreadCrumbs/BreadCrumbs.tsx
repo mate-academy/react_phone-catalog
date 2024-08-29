@@ -47,8 +47,8 @@ export default function CustomizedBreadcrumbs() {
   const location = useLocation();
   const pathnames = location.pathname.split('/').filter(x => x);
   const homeIconSrc = !isSunSelected
-    ? '/img/breadCrambs/dark.svg'
-    : '/img/breadCrambs/homeBack.svg';
+    ? './img/breadCrambs/dark.svg'
+    : './img/breadCrambs/homeBack.svg';
 
   return (
     <div role="presentation" onClick={handleClick}>

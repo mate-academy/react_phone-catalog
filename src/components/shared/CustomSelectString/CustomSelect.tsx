@@ -2,6 +2,7 @@ import { Dispatch, SetStateAction, useEffect, useRef, useState } from 'react';
 import classNames from 'classnames';
 import styles from './CustomSelect.module.scss';
 import { Option } from '../../../type/Option';
+import { useSearchParams } from 'react-router-dom';
 
 type CustomSelectProps<T> = {
   options: Option<T>[];
@@ -21,6 +22,15 @@ export const CustomSelectString = ({
   const [isOpen, setIsOpen] = useState(false);
   const selectRef = useRef<HTMLDivElement>(null);
   const [isFocused, setIsFocused] = useState(false);
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  useEffect(() => {
+    const sortParam = searchParams.get('sort');
+
+    if (sortParam) {
+      onChange(sortParam === 'all' ? 'all' : (String(sortParam) as string));
+    }
+  }, [searchParams, onChange]);
 
   const handleFocus = () => {
     setIsFocused(true);
@@ -58,6 +68,8 @@ export const CustomSelectString = ({
 
   const handleSelect = (optionValue: string) => {
     onChange(optionValue);
+    searchParams.set('sort', optionValue);
+    setSearchParams(searchParams);
     setIsOpen(false);
   };
 

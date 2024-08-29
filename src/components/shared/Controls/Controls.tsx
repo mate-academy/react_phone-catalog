@@ -18,6 +18,8 @@ type Props = {
   setSortedProducts: Dispatch<SetStateAction<Product[]>>;
   setItemsPerPage: Dispatch<SetStateAction<number | 'all'>>;
   itemsPerPage: number | 'all';
+  currentPage: number;
+  setCurrentPage: (page: number) => void;
 };
 
 export const Controls: React.FC<Props> = ({
@@ -25,6 +27,8 @@ export const Controls: React.FC<Props> = ({
   setSortedProducts,
   setItemsPerPage,
   itemsPerPage,
+  currentPage,
+  setCurrentPage,
 }) => {
   const { isSunSelected } = useContext(GlobalContext);
   const [sortKey, setSortKey] = useState('newest');
@@ -81,6 +85,8 @@ export const Controls: React.FC<Props> = ({
           onChange={setItemsPerPage}
           label="Items on page"
           darkMode={!isSunSelected}
+          currentPage={currentPage}
+          setCurrentPage={setCurrentPage}
         />
       </div>
     </div>

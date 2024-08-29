@@ -47,6 +47,8 @@ export const CatalogLayout: React.FC<Props> = ({ products }) => {
           setSortedProducts={setSortedProducts}
           setItemsPerPage={setItemsPerPage}
           itemsPerPage={itemsPerPage}
+          currentPage={currentPage}
+          setCurrentPage={setCurrentPage}
         />
 
         <div className={styles.catalog__products}>
