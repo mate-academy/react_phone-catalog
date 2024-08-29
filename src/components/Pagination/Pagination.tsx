@@ -1,3 +1,4 @@
+import ReactPaginate from 'react-paginate';
 import classNames from 'classnames';
 import styles from './Pagination.module.scss';
 import { Icon } from '../ui/Icon';
