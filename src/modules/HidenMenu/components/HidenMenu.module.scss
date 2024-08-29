@@ -1,0 +1,125 @@
+@import './../../shared/main';
+
+.hidenMenu {
+  z-index: 10;
+  background-color: var(--white-color);
+  position: absolute;
+  height: calc(100vh - 48px);
+  width: 100%;
+  top: 48px;
+}
+
+.showHidenMenu {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.hideHidenMenu {
+  opacity: 0;
+  transform: translateX(-100vw);
+}
+
+.nav {
+  text-align: center;
+  margin-top: 32px;
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    list-style: none;
+    gap: 32px;
+    width: 100%;
+  }
+
+  &__link {
+    text-decoration: none;
+    font-family: inherit;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 800;
+    letter-spacing: 0.48px;
+    text-transform: uppercase;
+    color: var(--secondary-grey-color);
+  }
+
+  &__item {
+    position: relative;
+    width: min-content;
+
+    &::after {
+      content: '';
+      position: absolute;
+      display: block;
+      background-color: var(--primary-grey-color);
+      height: 2px;
+      width: 100%;
+      transform: translateY(8px);
+      transform: scale(0);
+      transform-origin: center;
+      transition-duration: $effect-duration;
+    }
+
+    &:hover {
+      .nav__link {
+        color: var(--primary-grey-color);
+      }
+
+      &::after {
+        transform: scale(1);
+      }
+    }
+  }
+}
+
+.footer {
+  width: 100%;
+  height: 64px;
+  display: flex;
+  justify-content: space-between;
+  position: fixed;
+  bottom: 0;
+  border-top: solid var(--elements-grey-color) 2px;
+
+  &__button {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    width: 50%;
+
+    &::after {
+      content: '';
+      position: absolute;
+      display: block;
+      background-color: var(--primary-grey-color);
+      height: 2px;
+      width: 100%;
+      bottom: 0;
+      transform: scale(0);
+      transform-origin: center;
+      transition-duration: $effect-duration;
+    }
+
+    &:hover::after {
+      transform: scale(1);
+    }
+  }
+
+  &__link {
+    text-align: center;
+    width: 100%;
+    height: 100%;
+  }
+
+  &__icon {
+    margin-top: 24px;
+  }
+}
+
+.favorites {
+  border-right: solid var(--elements-grey-color) 2px;
+}
+
+.hidenMenu:has(:target) {
+  overflow: hidden;
+}

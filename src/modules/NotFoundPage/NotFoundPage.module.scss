@@ -1,0 +1,39 @@
+@import './../shared/main';
+
+.notFoundPage {
+  padding: 30px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &__text {
+    padding-bottom: 30px;
+    color: var(--primary-grey-color);
+    font-family: inherit;
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 140%;
+    letter-spacing: 0%;
+
+    @include on-tablet {
+      font-size: 32px;
+    }
+  }
+
+  &__image {
+    width: 30%;
+  }
+}
+
+.goHome {
+  padding-top: 30px;
+  color: var(--primary-grey-color);
+  font-family: inherit;
+  font-size: 18px;
+  font-weight: 500;
+
+  &:hover {
+    color: var(--primary-grey-color);
+  }
+}

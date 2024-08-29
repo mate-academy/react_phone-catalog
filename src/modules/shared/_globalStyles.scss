@@ -1,0 +1,67 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  transition: all $effect-duration ease;
+  font-family: Montserrat, sans-serif;
+}
+
+.hidenMenuHeightNoScroll {
+  height: 100vh;
+  overflow: hidden;
+}
+
+:root {
+  overflow: auto;
+
+  --page-starts-from: 0;
+}
+
+.redSpot {
+  position: absolute;
+  bottom: 50%;
+  left: 50%;
+  border: 1px solid var(--white-color);
+  border-radius: 50%;
+  width: 14px;
+  height: 14px;
+  background-color: var(--red-color);
+  pointer-events: none;
+
+  &__number {
+    color: var(--white-color);
+    font-family: inherit;
+    font-size: 9px;
+    font-weight: 700;
+    line-height: 12px;
+    letter-spacing: 0%;
+    text-align: center;
+  }
+}
+
+.gridContainer {
+  @include page-grid;
+  @include content-padding-inline;
+
+  @include on-desktop {
+    margin-inline: auto;
+  }
+}
+
+.blackButtonBase {
+  cursor: pointer;
+  border: none;
+  background-color: var(--primary-grey-color);
+  color: var(--white-color);
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 21px;
+  letter-spacing: 0%;
+  height: 40px;
+  width: 100%;
+
+  &:hover {
+    box-shadow: 0 3px 13px 0 var(--add-to-cadr-button-shadow);
+  }
+}

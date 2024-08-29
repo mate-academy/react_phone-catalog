@@ -1,0 +1,48 @@
+@import './../../shared/main';
+
+.ssearchBar {
+  margin-bottom: 16px;
+  position: relative;
+}
+
+.searchIco {
+  position: absolute;
+  left: 12px;
+  top: 12px;
+}
+
+.searchField {
+  height: 40px;
+  width: 100%;
+  padding-left: 40px;
+  outline: none;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 21px;
+  text-align: left;
+  border: 1px solid var(--icons-grey-color);
+  background-color: inherit;
+
+  &:hover {
+    border: 1px solid var(--dark-icons-color);
+  }
+
+  &:focus {
+    box-shadow: 0 0 0 1px var(--primary-grey-color);
+  }
+}
+
+.darkSearchField {
+  background-color: var(--dark-surface-2-color);
+  border: none;
+  color: var(--dark-white-color);
+
+  &:hover {
+    border: 1px solid var(--dark-icons-color);
+  }
+
+  &:focus {
+    box-shadow: 0 0 0 1px var(--dark-accent-color);
+  }
+}

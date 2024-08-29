@@ -1,0 +1,113 @@
+@import './../main';
+
+.card {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border: 1px solid var(--elements-grey-color);
+  padding: 32px;
+
+  &:hover {
+    box-shadow: 0 2px 16px 0 var(--card-slider-shadow);
+  }
+
+  &__topBlock {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  &__imgLink {
+    display: flex;
+    justify-content: center;
+  }
+
+  &__image {
+    max-height: 100px;
+    object-fit: contain;
+    cursor: pointer;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+
+    @include on-tablet {
+      max-height: 200px;
+    }
+  }
+
+  &__name {
+    color: var(--primary-grey-color);
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+    letter-spacing: 0%;
+    text-align: left;
+    cursor: pointer;
+
+    &:hover {
+      color: var(--primary-grey-color);
+    }
+  }
+
+  &__priceBlock {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 8px;
+    text-align: left;
+    font-size: 22px;
+    font-family: inherit;
+  }
+
+  &__newPrice {
+    color: var(--primary-grey-color);
+    font-weight: 700;
+    line-height: 140%;
+  }
+
+  &__oldPrice {
+    color: var(--secondary-grey-color);
+    font-weight: 500;
+    line-height: 140%;
+    text-decoration-line: line-through;
+  }
+
+  &__divider {
+    width: 100%;
+    height: 1px;
+    background-color: var(--elements-grey-color);
+    margin-bottom: 16px;
+  }
+
+  &__infoBlock {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+
+    &:last-child {
+      margin-bottom: 16px;
+    }
+  }
+
+  &__infoTitle {
+    color: var(--secondary-grey-color);
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 15px;
+    letter-spacing: 0%;
+    text-align: left;
+  }
+
+  &__infoValue {
+    color: var(--primary-grey-color);
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 15px;
+    letter-spacing: 0%;
+    text-align: right;
+  }
+}

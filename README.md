@@ -2,11 +2,11 @@
 
 Implement the catalog with a shopping cart and favorites page according to one of the next designs:
 
-- [Original](https://www.figma.com/file/T5ttF21UnT6RRmCQQaZc6L/Phone-catalog-(V2)-Original)
-- [Original Dark](https://www.figma.com/file/BUusqCIMAWALqfBahnyIiH/Phone-catalog-(V2)-Original-Dark)
-- [Rounded Blue](https://www.figma.com/file/FRxncC4lfyhs6og1L6FGEU/Phone-catalog-(V2)-Rounded-Style-2?node-id=0%3A1)
-- [Rounded Purple](https://www.figma.com/file/xMK2Dy0mfBbJJSNctmOuLW/Phone-catalog-(V2)-Rounded-Style-1?node-id=0%3A1)
-- [Rounded Orange](https://www.figma.com/file/7JTa0q8n3dTSAyMNaA0u8o/Phone-catalog-(V2)-Rounded-Style-3?node-id=0%3A1)
+- [Original](<https://www.figma.com/file/T5ttF21UnT6RRmCQQaZc6L/Phone-catalog-(V2)-Original>)
+- [Original Dark](<https://www.figma.com/file/BUusqCIMAWALqfBahnyIiH/Phone-catalog-(V2)-Original-Dark>)
+- [Rounded Blue](<https://www.figma.com/file/FRxncC4lfyhs6og1L6FGEU/Phone-catalog-(V2)-Rounded-Style-2?node-id=0%3A1>)
+- [Rounded Purple](<https://www.figma.com/file/xMK2Dy0mfBbJJSNctmOuLW/Phone-catalog-(V2)-Rounded-Style-1?node-id=0%3A1>)
+- [Rounded Orange](<https://www.figma.com/file/7JTa0q8n3dTSAyMNaA0u8o/Phone-catalog-(V2)-Rounded-Style-3?node-id=0%3A1>)
 
 You may also implement color theme switching!
 
@@ -108,10 +108,12 @@ Use React Context or Redux to store Items.
 6. Total amount and quantity should be calculated automatically.
 7. Show the quantity at the `Cart` icon in the header.
 8. Save the `Cart` to `localStorage` on each change and read it on page load.
+
 9. `Checkout` button should show a modal dialog with the text `Checkout is not implemented yet. Do you want to clear the Cart?`:
    - Clear the Cart if the user confirms the order;
    - Keep the Cart items and close the confirmation on cancel;
-   - Use the `confirm` function if you don't have a better solution.
+
+- Use the `confirm` function if you don't have a better solution.
 
 ## Favorites page
 
@@ -126,9 +128,10 @@ Create `Favorites` page with a `ProductsList` showing favorite products at `/fav
 ## Other tasks
 
 1. Add `NotFoundPage` containing text `Page not found` for all the other URLs with the link to `HomePage`.
+
 2. Implement the `Product was not found` state for the `ProductDetailsPage`.
 
-## (*) Advanced tasks
+## (\*) Advanced tasks
 
 - Implement color theme switching!
 - Use [skeletons](https://freefrontend.com/css-skeleton-loadings/) to make loading more natural.

@@ -1,0 +1,42 @@
+@import './../main';
+
+.buttonBackText {
+  color: var(--secondary-grey-color);
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 16px;
+  letter-spacing: 0%;
+  text-align: left;
+}
+
+.buttonBack {
+  cursor: pointer;
+  display: flex;
+  gap: 4px;
+  width: max-content;
+  margin-bottom: 24px;
+
+  &:hover {
+    .buttonBackText {
+      color: var(--primary-grey-color);
+    }
+  }
+
+  @include on-tablet {
+    margin-bottom: 16px;
+  }
+}
+
+.buttonDisabled {
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.backDark {
+  color: var(--dark-white-color);
+
+  &:hover {
+    color: var(--dark-accent-color) !important;
+  }
+}

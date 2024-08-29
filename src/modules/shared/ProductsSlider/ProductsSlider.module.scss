@@ -1,0 +1,111 @@
+@import './../../shared/main';
+
+.ProductsSlider {
+  &__tittleContainer {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 24px;
+
+    @include content-padding-inline;
+
+    @include on-desktop {
+      padding-inline: 0;
+    }
+  }
+
+  &__tittle {
+    color: var(--primary-grey-color);
+    font-family: inherit;
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 140%;
+    letter-spacing: 0%;
+    text-align: left;
+
+    @include on-tablet {
+      font-size: 32px;
+    }
+  }
+
+  &__slideButtons {
+    display: flex;
+    gap: 16px;
+  }
+
+  &__slideButton {
+    width: 32px;
+    height: 32px;
+    border: 1px solid var(--icons-grey-color);
+    cursor: pointer;
+
+    &:hover {
+      border: 1px solid var(--primary-grey-color);
+    }
+  }
+
+  &__sliderArrow {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  &__swiper {
+    padding-left: 16px;
+    max-width: 100vw;
+
+    @include on-tablet {
+      padding-left: 24px;
+    }
+
+    @include on-desktop {
+      padding-left: 0;
+    }
+  }
+
+  &__slide {
+    width: 212px;
+    height: 439px;
+    transition: all $effect-duration ease;
+
+    @include on-tablet {
+      width: 237px;
+      height: 512px;
+    }
+
+    @include on-desktop {
+      width: 272px;
+      height: 506px;
+    }
+  }
+}
+
+.swiper-button-disabled {
+  opacity: 0.5;
+  pointer-events: none;
+  cursor: not-allowed;
+
+  &:hover {
+    opacity: 0.5;
+  }
+}
+
+.sliderButtonDark {
+  background-color: var(--dark-surface-2-color);
+  border: none;
+
+  &:hover {
+    background-color: var(--dark-icons-color);
+    border: none;
+  }
+}
+
+.disabledBlack {
+  border: 1px solid var(--dark-elements-color);
+  background-color: var(--dark-black-color);
+
+  &:hover {
+    border: 1px solid var(--dark-elements-color);
+    background-color: var(--dark-black-color);
+  }
+}

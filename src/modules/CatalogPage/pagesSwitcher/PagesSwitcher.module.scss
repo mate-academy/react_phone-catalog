@@ -1,0 +1,114 @@
+@import './../../shared/main';
+
+.pages {
+  display: flex;
+  gap: 16px;
+  margin-inline: auto;
+
+  &__arrowButton {
+    width: 32px;
+    height: 32px;
+    background-color: var(--white-color);
+    border: 1px solid var(--icons-grey-color);
+    cursor: pointer;
+
+    &:hover {
+      border: 1px solid var(--primary-grey-color);
+    }
+  }
+
+  &__numbersWindow {
+    display: flex;
+    max-width: 152px;
+    overflow: hidden;
+  }
+
+  &__numbers {
+    position: relative;
+    display: flex;
+    gap: 8px;
+    right: var(--page-starts-from);
+  }
+
+  &__number {
+    width: 32px;
+    height: 32px;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+    letter-spacing: 0%;
+    text-align: center;
+    cursor: pointer;
+
+    &:hover {
+      border: 1px solid var(--primary-grey-color);
+    }
+  }
+}
+
+.numberOff {
+  background-color: var(--white-color);
+  border: 1px solid var(--elements-grey-color);
+  color: var(--primary-grey-color);
+}
+
+.darkNumberOff {
+  border: none;
+  background-color: var(--dark-surface-1-color);
+
+  &:hover {
+    background-color: var(--dark-elements-color);
+    border: none;
+  }
+}
+
+.numberOn {
+  background-color: var(--primary-grey-color);
+  border: 1px solid var(--primary-grey-color);
+  color: var(--white-color);
+}
+
+.darkNumberOn {
+  border: none;
+  background-color: var(--dark-accent-color);
+
+  &:hover {
+    border: none;
+  }
+}
+
+.darkPagesNumber {
+  color: var(--dark-white-color);
+}
+
+.disabledArrow {
+  border: 1px solid var(--elements-grey-color);
+  pointer-events: none;
+  cursor: not-allowed;
+  opacity: 0.5;
+
+  &:hover {
+    border: 1px solid var(--elements-grey-color);
+  }
+}
+
+.darkArrowButton {
+  background-color: var(--dark-surface-2-color);
+  border: none;
+
+  &:hover {
+    background-color: var(--dark-icons-color);
+    border: none;
+  }
+}
+
+.darkDisabledArrow {
+  background-color: var(--dark-black-color);
+  border: 1px solid var(--dark-elements-color);
+
+  &:hover {
+    background-color: var(--dark-black-color);
+    border: 1px solid var(--dark-elements-color);
+  }
+}

@@ -1,0 +1,379 @@
+@import './modules/shared/main';
+
+.body {
+  background-color: var(--white-color);
+}
+
+.app {
+  display: grid;
+
+  &__content {
+    display: grid;
+    min-height: calc(100vh - 48px - 257px - 1px);
+
+    @include on-tablet {
+      min-height: calc(100vh - 48px - 96px - 1px);
+    }
+
+    @include on-desktop {
+      min-height: calc(100vh - 64px - 96px - 1px);
+    }
+  }
+}
+
+.header {
+  z-index: 10;
+  position: sticky;
+  top: 0;
+  background-color: var(--white-color);
+  display: flex;
+  justify-content: space-between;
+  height: 48px;
+  text-align: center;
+  border-bottom: solid var(--elements-grey-color) 2px;
+
+  @include on-desktop {
+    height: 64px;
+  }
+
+  &__left {
+    display: flex;
+    align-items: center;
+  }
+
+  &__right {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+
+    @include on-tablet {
+      gap: 10px;
+    }
+
+    @include on-desktop {
+      gap: 30px;
+    }
+  }
+
+  &__logoLink {
+    margin-right: 16px;
+    padding-inline: 16px;
+
+    @include on-desktop {
+      margin-right: 24px;
+      padding-inline: 24px;
+    }
+  }
+}
+
+.navBar {
+  height: 100%;
+  display: flex;
+}
+
+.navList {
+  list-style: none;
+  display: none;
+
+  @include on-tablet {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+  }
+
+  @include on-desktop {
+    gap: 64px;
+  }
+}
+
+.navItem {
+  position: relative;
+  height: 100%;
+  line-height: 100%;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  color: var(--secondary-grey-color);
+  text-decoration: none;
+  font-family: inherit;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 800;
+  letter-spacing: 0.48px;
+  text-transform: uppercase;
+
+  &:hover {
+    color: var(--primary-grey-color);
+  }
+}
+
+.active {
+  color: var(--primary-grey-color);
+
+  &::after {
+    content: '';
+    position: absolute;
+    display: block;
+    background-color: var(--primary-grey-color);
+    height: 3px;
+    width: 100%;
+    transform: translateY(22.5px);
+
+    @include on-desktop {
+      transform: translateY(30.5px);
+    }
+  }
+}
+
+.activeIco {
+  color: var(--primary-grey-color);
+
+  &::after {
+    content: '';
+    position: absolute;
+    display: block;
+    background-color: var(--primary-grey-color);
+    height: 3px;
+    width: 100%;
+    transform: translateY(45px);
+
+    @include on-desktop {
+      transform: translateY(61px);
+    }
+  }
+}
+
+.languageButton {
+  border-radius: 100%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  width: 30px;
+  height: 30px;
+
+  &__img {
+    transform: scale(1.4);
+  }
+}
+
+.languageChanging {
+  transform: scale(1.4) rotate(360deg);
+}
+
+.darkModeButton {
+  border-radius: 12px;
+  position: relative;
+  width: 42px;
+  height: 24px;
+  display: flex;
+  padding: 3px;
+  background-color: var(--primary-grey-color);
+
+  &__runner {
+    transition: all 0.5s ease;
+    display: flex;
+    border-radius: 100%;
+    width: 50%;
+    height: 100%;
+    background-color: var(--white-color);
+  }
+}
+
+.isDark {
+  transform: translateX(100%) rotate(180deg);
+  transition: all 0.5s ease;
+}
+
+.icons {
+  display: flex;
+
+  &__container {
+    position: relative;
+    height: 48px;
+    width: 48px;
+    border-left: solid var(--elements-grey-color) 2px;
+
+    @include on-desktop {
+      height: 64px;
+      width: 64px;
+    }
+  }
+
+  &__containerfavorite {
+    display: none;
+
+    @include on-tablet {
+      display: flex;
+    }
+  }
+
+  &__containerBasket {
+    display: none;
+
+    @include on-tablet {
+      display: flex;
+    }
+  }
+
+  &__containerMenu {
+    display: flex;
+
+    @include on-tablet {
+      display: none;
+    }
+  }
+
+  &__link {
+    width: 100%;
+    cursor: pointer;
+  }
+
+  &__icon {
+    margin-top: 16px;
+
+    @include on-desktop {
+      margin-top: 24px;
+    }
+  }
+}
+
+.footer {
+  border-top: 1px solid var(--elements-grey-color);
+  height: 257px;
+  bottom: 0;
+
+  @include on-tablet {
+    height: 96px;
+  }
+
+  &__container {
+    margin-inline: auto;
+    padding: 32px 16px;
+    width: 100%;
+
+    @include on-tablet {
+      padding: 32px;
+    }
+
+    @include on-desktop {
+      width: max-content;
+
+      @include page-grid;
+    }
+  }
+
+  &__gridWraper {
+    display: flex;
+    flex-direction: column;
+    grid-column: 1 / -1;
+
+    @include on-tablet {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
+
+  &__logoLink {
+    margin-bottom: 32px;
+    height: 32px;
+
+    @include on-tablet {
+      margin-bottom: 0;
+    }
+  }
+
+  &__contactsBlock {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 32px;
+
+    @include on-tablet {
+      flex-direction: row;
+      gap: 13.5px;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0;
+    }
+
+    @include on-desktop {
+      gap: 106px;
+    }
+  }
+
+  &__contactsLink {
+    text-decoration: none;
+    color: var(--secondary-grey-color);
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 11px;
+    letter-spacing: 4%;
+    text-align: left;
+    text-transform: uppercase;
+
+    &:hover {
+      color: var(--secondary-grey-color);
+    }
+  }
+
+  &__goUpBlock {
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    height: min-content;
+  }
+
+  &__goUpButtonArea {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    align-items: center;
+    width: max-content;
+
+    @include on-tablet {
+      width: max-content;
+    }
+  }
+
+  &__goUpTextLink {
+    text-decoration: none;
+    color: var(--secondary-grey-color);
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 15px;
+    letter-spacing: 0%;
+    text-align: right;
+  }
+
+  &__goUpButton {
+    cursor: pointer;
+    width: 32px;
+    height: 32px;
+    border: 1px solid var(--icons-grey-color);
+    background-color: var(--white-color);
+
+    &:hover {
+      border: 1px solid var(--primary-grey-color);
+    }
+  }
+}
+
+.hideGoUpButton {
+  opacity: 0;
+  pointer-events: none;
+  cursor: not-allowed;
+}
+
+.goUpDark {
+  border: none;
+  background-color: var(--dark-surface-2-color);
+  padding-bottom: 4px;
+
+  &:hover {
+    border: none;
+    background-color: var(--dark-icons-color);
+  }
+}

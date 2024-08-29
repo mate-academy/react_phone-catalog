@@ -1,0 +1,119 @@
+@import './../../shared/main';
+
+.cart {
+  grid-column: 1 / -1;
+  margin-bottom: 56px;
+  margin-top: 24px;
+
+  @include on-tablet {
+    margin-bottom: 64px;
+    margin-top: 40px;
+  }
+
+  @include on-desktop {
+    margin-bottom: 80px;
+  }
+
+  &__content {
+    @include on-desktop {
+      @include page-grid;
+    }
+  }
+
+  &__title {
+    color: var(--primary-grey-color);
+    font-family: inherit;
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 41px;
+    letter-spacing: -1%;
+    text-align: left;
+    margin-bottom: 32px;
+
+    @include on-tablet {
+      font-size: 48px;
+      line-height: 56px;
+    }
+  }
+
+  &__empty {
+    color: var(--secondary-grey-color);
+    font-family: inherit;
+    font-size: 22px;
+    font-weight: 500;
+    letter-spacing: 0%;
+    text-align: left;
+  }
+}
+
+.checkout {
+  border: 1px solid var(--elements-grey-color);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  grid-column: span 8;
+  height: min-content;
+
+  &__sum {
+    color: var(--primary-grey-color);
+    font-family: inherit;
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 41px;
+    letter-spacing: -1%;
+    text-align: center;
+  }
+
+  &__totalItems {
+    color: var(--secondary-grey-color);
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+    letter-spacing: 0%;
+    text-align: center;
+    margin-bottom: 16px;
+
+    @include on-desktop {
+      margin-bottom: 24px;
+    }
+  }
+
+  &__horizontal {
+    height: 1px;
+    width: 100%;
+    background-color: var(--elements-grey-color);
+    margin-bottom: 16px;
+
+    @include on-desktop {
+      margin-bottom: 24px;
+    }
+  }
+
+  &__button {
+    height: 48px;
+    width: 100%;
+    cursor: pointer;
+    border: none;
+    background-color: var(--primary-grey-color);
+    color: var(--white-color);
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 21px;
+    letter-spacing: 0%;
+
+    &:hover {
+      box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.4);
+    }
+  }
+}
+
+.buttonDark {
+  background-color: var(--dark-accent-color);
+
+  &:hover {
+    background-color: var(--dark-accent-hover-color);
+  }
+}

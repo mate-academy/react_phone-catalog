@@ -1,0 +1,87 @@
+@import './../main';
+
+.swiperWrapper {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 18px;
+}
+
+.swiper {
+  box-sizing: border-box;
+  height: 100vw;
+  width: 100vw;
+
+  @include on-tablet {
+    height: 189px;
+    width: 100%;
+  }
+
+  @include on-desktop {
+    height: 400px;
+  }
+
+  &__slide {
+    width: 100%;
+    height: 100%;
+  }
+
+  &__img {
+    display: block;
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+  }
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+:global {
+  span.swiper-pagination-bullet {
+    width: 14px !important;
+    height: 4px !important;
+    background-color: var(--elements-grey-color) !important;
+    border-radius: 0 !important;
+    opacity: 1 !important;
+  }
+
+  span.swiper-pagination-bullet-active {
+    background-color: var(--primary-grey-color) !important;
+  }
+}
+
+.moveSlide {
+  display: none;
+  width: 32px;
+  background-color: var(--white-color);
+
+  @include on-tablet {
+    cursor: pointer;
+    height: 189px;
+    display: block;
+    border: 1px solid var(--icons-grey-color);
+
+    &:hover {
+      border: 1px solid var(--primary-grey-color);
+    }
+  }
+
+  @include on-desktop {
+    height: 400px;
+  }
+}
+
+.moveSlideDark {
+  border: none;
+  background-color: var(--dark-surface-2-color);
+
+  &:hover {
+    background-color: var(--dark-icons-color);
+    border: none;
+  }
+}

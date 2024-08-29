@@ -1,0 +1,48 @@
+@import './../../shared/main';
+
+.filters {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 24px;
+  gap: 16px;
+
+  @include on-tablet {
+    justify-content: left;
+  }
+
+  &__block {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    width: 100%;
+  }
+
+  &__blockSortBy {
+    @include on-tablet {
+      width: 187px;
+    }
+
+    @include on-desktop {
+      width: 176px;
+    }
+  }
+
+  &__blockQuantity {
+    @include on-tablet {
+      width: 136px;
+    }
+
+    @include on-desktop {
+      width: 128px;
+    }
+  }
+
+  &__text {
+    color: var(--secondary-grey-color);
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 15px;
+    text-align: left;
+  }
+}
