@@ -22,28 +22,31 @@ export const HeaderNav = () => {
         <Link to="/" target="_self" className="logo">
           <img src="./uploadedImg/logo.png" alt="Logo"></img>
         </Link>
-        <ul className="links">
-          <li>
-            <NavLink to="/" className={getLinkClass}>
-              home
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/phones" className={getLinkClass}>
-              phones
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/tablets" className={getLinkClass}>
-              tablets
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/accessories" className={getLinkClass}>
-              accessories
-            </NavLink>
-          </li>
-        </ul>
+        {useLocation().pathname !== '/menu' && (
+          <ul className="links">
+            <li>
+              <NavLink to="/" className={getLinkClass}>
+                home
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to="/phones" className={getLinkClass}>
+                phones
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to="/tablets" className={getLinkClass}>
+                tablets
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to="/accessories" className={getLinkClass}>
+                accessories
+              </NavLink>
+            </li>
+          </ul>
+        )}
+
         <ul className="icons">
           <li className="icon">
             <Link to="/favorites" className="icon-link onTablet">

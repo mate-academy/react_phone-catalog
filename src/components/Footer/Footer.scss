@@ -16,7 +16,7 @@ html {
   @include on-mobile {
     flex-direction: column;
     align-items: flex-start;
-    width: 320px;
+    width: 288px;
     height: 257px;
     padding: 32px 16px;
   }
@@ -48,15 +48,21 @@ html {
 .footer-link {
   text-decoration: none;
   color: #89939A;
-  font-family: Mont-SemiBold, sans-serif;
+  font-family: Mont-Bold, sans-serif;
   font-size: 12px;
   font-weight: 800;
   line-height: 11px;
   letter-spacing: 0.04em;
   text-align: left;
   text-transform: uppercase;
+}
 
+.footer-link:hover {
+  color: #27AE60;
+}
 
+.footer-link:active {
+  color: #313237;
 }
 
 .footer-back-btn-bl {
@@ -94,7 +100,7 @@ html {
 }
 
 .footer-back-p {
-font-family: Mont-SemiBold, sans-serif;
+font-family: Mont-Bold, sans-serif;
 font-size: 12px;
 font-weight: 700;
 line-height: 15.34px;

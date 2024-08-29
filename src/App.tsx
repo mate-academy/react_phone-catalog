@@ -15,7 +15,6 @@ import { AsideMenu } from './components/AsideMenu';
 export const App: React.FC = () => {
   return (
     <PageProvider>
-      <h1 className="uselessH1"></h1>
       <HeaderNav />
       <Routes>
         <Route path="/" element={<Home />} />

@@ -1,13 +1,17 @@
 import { Link } from 'react-router-dom';
 import './AsideMenu.scss';
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { ProductsContext } from '../../PageContext';
 
 export const AsideMenu: React.FC = () => {
   const { favItems, bucketItems } = useContext(ProductsContext);
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  });
+
   return (
-    <div className="aside-layout active">
+    <div className="aside-layout">
       <ul className="aside-links">
         <li>
           <Link to="/" className="aside-link">

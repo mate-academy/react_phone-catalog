@@ -1,38 +1,38 @@
-
 .aside-layout {
-  height: 100%;
-  position: absolute;
-  left: -100%;
-  min-height: 100vh;
+  // min-height: 91vh;
   width: 100%;
   margin: 0 auto;
-}
+  animation: fade-in 1s forwards;
 
-.aside-layout.active {
-  left: 0;
-  background-color: white;
+  // animation: fade-out 1s backwards;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: calc(100vh - 374px);
 }
 
 .aside-links {
   list-style: none;
-  flex-direction: column;
   padding: 0;
   margin: 0;
-  position: relative;
+
+  // position: relative;
+  display: flex;
+  flex-direction: column;
 }
 
 .aside-icons {
-  display: flex;
   list-style: none;
   flex-direction: row;
   padding: 0;
   margin: 0 auto;
   justify-content: center;
-  position: fixed;
+
+  // position: fixed;
   bottom: 0;
   border-top: 1px solid #E2E6E9;
   width: 100%;
-
+  display: flex;
   }
 
 .aside-link {
@@ -73,4 +73,28 @@
   border: none;
   position: relative;
   background-color: white;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateX(100vw);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fade-out {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  to {
+    opacity: 0;
+    transform: translateX(100vw);
+  }
 }

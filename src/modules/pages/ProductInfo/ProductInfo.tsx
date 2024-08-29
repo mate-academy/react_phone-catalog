@@ -128,7 +128,7 @@ export const ProductInfo = () => {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-  });
+  }, [currentPhone?.id]);
 
   function getId() {
     const id = productData.find(product => product.itemId === currentPhone?.id);
