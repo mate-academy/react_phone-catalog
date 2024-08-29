@@ -1,15 +1,50 @@
 @import '../../utils/mixins';
+@import '../../utils/variables';
 
-.favorite-box {
-  @include padding-inline;
+.favorites {
+  &__main {
+    @include padding-inline;
+  }
 
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 40px 16px;
-  justify-content: center;
+  &__box {
+    margin-top: 32px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 40px 16px;
+    justify-content: center;
 
-  @include on-desktop {
-    grid-template-columns: repeat(auto-fit, 272px);
+    @include on-tablet {
+      margin-top: 40px;
+    }
+
+    @include on-desktop {
+      grid-template-columns: repeat(auto-fit, 272px);
+    }
+  }
+
+  &__title {
+    margin: 0;
+    margin-top: 24px;
+    font-family: var(--strong-font-family);
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 56px;
+    letter-spacing: -1%;
+
+    @include on-tablet {
+      margin-top: 40px;
+      font-size: 48px;
+    }
+  }
+
+  &__length {
+    margin: 0;
+    margin-top: 8px;
+    font-family: var(--regular-font-family);
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+    color: var(--gray-color);
   }
 }
 

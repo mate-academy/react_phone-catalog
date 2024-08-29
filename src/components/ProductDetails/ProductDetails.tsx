@@ -22,6 +22,8 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import { ProductCard } from '../ProductCard/ProductCard';
 import { Loader } from '../Loader/Loader';
+import { useFavorites } from '../../utils/Favorites';
+import { Product } from '../../types/Propduct';
 
 type Props = {
   category?: 'phones' | 'tablets' | 'accessories';
@@ -80,6 +82,10 @@ export const ProductDetails: React.FC<Props> = ({ category }) => {
   const sortProductByCategory = productsFromServer.find(product =>
     product.itemId.includes(checkedItemId()),
   )?.category;
+
+  const favorites: Product[] = useFavorites(state => state.favorites);
+  const addFavorite = useFavorites(state => state.addFavorite);
+  const removeFavorite = useFavorites(state => state.removeFavorite);
 
   const findProductById = () => {
     switch (category || sortProductByCategory) {
@@ -175,6 +181,7 @@ export const ProductDetails: React.FC<Props> = ({ category }) => {
 
   const {
     colorsAvailable,
+    id,
     images,
     capacityAvailable,
     name,
@@ -206,12 +213,25 @@ export const ProductDetails: React.FC<Props> = ({ category }) => {
     setChoosenCapacity(event.currentTarget.value);
   };
 
+  const handleSetFavoriteArr = () => {
+    if (favorites.find((product: Product) => product.itemId === itemId)) {
+      removeFavorite(checkedItemId());
+    } else {
+      return addFavorite(
+        productsFromServer.find(product => product.itemId === id) ??
+          productsFromServer[0],
+      );
+    }
+  };
+
   return (
     <>
       <Header />
       {isMenuOpen && <Menu />}
       {isLoading ? (
-        <Loader />
+        <div className="loader-box">
+          <Loader />
+        </div>
       ) : checkedItemId() ? (
         <main className="product-details-main">
           <div className="navigation">
@@ -355,8 +375,18 @@ export const ProductDetails: React.FC<Props> = ({ category }) => {
               </div>
               <div className="buttons-box">
                 <button className="buttons-box__buy-button">Add to card</button>
-                <button className="buttons-box__favorite-button">
-                  <img src="./img/heart-icon.svg" alt="favorite" />
+                <button
+                  className="buttons-box__favorite-button"
+                  onClick={handleSetFavoriteArr}
+                >
+                  {favorites.find(product => product.itemId === id) ? (
+                    <img
+                      src="./img/heart-icon-active.svg"
+                      alt="favorite active"
+                    />
+                  ) : (
+                    <img src="./img/heart-icon.svg" alt="favorite" />
+                  )}
                 </button>
               </div>
               <div className="option-box">

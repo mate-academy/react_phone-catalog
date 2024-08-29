@@ -1,6 +1,12 @@
 @import '../../utils/mixins';
 @import '../../utils/variables';
 
+.loader-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .not-found {
   &__box {
     margin-top: 50px;
