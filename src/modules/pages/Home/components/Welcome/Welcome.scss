@@ -64,6 +64,7 @@
   border: 1px solid #B4BDC3;
   margin-right: 16px;
   cursor: pointer;
+  background-color: white;
 
   @include on-mobile {
     display: none;
@@ -80,6 +81,8 @@
   margin-left: 16px;
   border: 1px solid #B4BDC3;
   cursor: pointer;
+  background-color: white;
+
 
   @include on-mobile {
     display: none;
