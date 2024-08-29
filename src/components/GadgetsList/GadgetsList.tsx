@@ -77,9 +77,7 @@ export const GadgetsList: React.FC<Props> = ({ title }) => {
           <div className={style.gadgets__cardsContainer} ref={element}>
             <CardsContainer gadgets={resultFilteredDev} />
           </div>
-          {isPagination && (
-            <Pagination perPage={itemsOnPage} />
-          )}
+          {isPagination && <Pagination perPage={itemsOnPage} />}
         </>
       )}
     </div>
