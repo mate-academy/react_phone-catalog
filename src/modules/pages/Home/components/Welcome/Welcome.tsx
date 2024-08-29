@@ -21,14 +21,14 @@ export const Welcome = () => {
   const handleTouchMove = (e: React.TouchEvent<HTMLDivElement>) => {
     const touch = touchPosition;
 
-    if (touch === 0) {
+    if (touch === null) {
       return;
     }
 
     const currentTouch = e.touches[0].clientX;
     const diff = touch - currentTouch;
 
-    if (diff > 5) {
+    if (diff > 3) {
       setBannerIndex(index => {
         if (index === 0) {
           return banners.length - 1;
@@ -38,7 +38,7 @@ export const Welcome = () => {
       });
     }
 
-    if (diff < 5) {
+    if (diff < 3) {
       setBannerIndex(index => {
         if (index === banners.length - 1) {
           return 0;
