@@ -41,6 +41,8 @@
 .return-button {
   height: 15px;
   text-decoration: none;
+  background-color: var(--white-color);
+  border: none;
 
   display: flex;
   align-items: center;
@@ -390,6 +392,11 @@
 
     &:hover {
       box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.4);
+    }
+
+    &--added {
+      background-color: var(--white-color);
+      color: var(--purple-color);
     }
   }
 

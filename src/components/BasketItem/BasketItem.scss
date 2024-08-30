@@ -9,6 +9,11 @@
   border: 1px solid var(--elements-color);
   display: flex;
   justify-content: space-between;
+  flex-direction: column;
+
+  @include on-tablet {
+    flex-direction: row;
+  }
 
   &__info-box {
     display: flex;
@@ -76,6 +81,13 @@
         border-color: var(--elements-color);
       }
     }
+  }
+
+  &__counter {
+    font-family: var(--regular-font-family);
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
   }
 
   &__product-price {

@@ -126,10 +126,15 @@ export const ProductCard: React.FC<Props> = ({ id }) => {
         <button
           className={classNames('product-card__buy-button', {
             'product-card__buy-button--catalog': pathname === `/${category}`,
+            'product-card__buy-button--added': basketStore.find(
+              product => product.itemId === itemId,
+            ),
           })}
           onClick={handleSetBasketStore}
         >
-          Add to cart
+          {basketStore.find(product => product.itemId === itemId)
+            ? 'Added to cart'
+            : 'Add to cart'}
         </button>
         <button
           className="product-card__favorite-button"

@@ -145,6 +145,20 @@
     &:hover {
       box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.4);
     }
+
+    &--catalog {
+      width: 175px;
+
+    @include on-desktop {
+      width: 160px;
+    }
+    }
+
+    &--added {
+      background-color: var(--white-color);
+      color: var(--purple-color);
+      border: 1px solid var(--elements-color);
+    }
   }
 
   &__favorite-button {

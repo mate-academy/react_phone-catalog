@@ -186,16 +186,6 @@
   &__image {
     width: 100%;
   }
-
-  &__buy-button {
-    &--catalog {
-      width: 175px;
-
-    @include on-desktop {
-      width: 160px;
-    }
-    }
-  }
 }
 
 .navigation {

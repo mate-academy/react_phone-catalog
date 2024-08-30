@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { BasketItem } from '../BasketItem/BasketItem';
 import { Footer } from '../Footer/Footer';
 import { Header } from '../Header/Header';
@@ -7,6 +7,8 @@ import { useBasket } from '../../utils/Stores';
 import { Product } from '../../types/Propduct';
 
 export const BasketPage = () => {
+  const navigate = useNavigate();
+
   const basketStore = useBasket(state => state.basket);
 
   const checkedArray = () => {
@@ -23,24 +25,52 @@ export const BasketPage = () => {
     return newBasketStore;
   };
 
+  let totalPrice = 0;
+
+  basketStore.forEach(product => (totalPrice += product.price));
+
   return (
     <>
       <Header />
       <main className="basket-page">
-        <Link to={`/`} className="return-button">
+        <button
+          onClick={() => navigate(-1)}
+          className="return-button basket-page__return-button"
+        >
           <img src="./img/arrow-prev.svg" alt="return" />
           <span>Back</span>
-        </Link>
+        </button>
         <h1 className="basket-page__title">Cart</h1>
-        <div className="basket-page__product-box">
-          {checkedArray().map(product => (
-            <BasketItem
-              key={product.id}
-              idFromParam={product.itemId}
-              category={product.category}
+        {checkedArray().length !== 0 ? (
+          <>
+            <div className="basket-page__product-box">
+              {checkedArray().map(product => (
+                <BasketItem
+                  key={product.id}
+                  idFromParam={product.itemId}
+                  category={product.category}
+                />
+              ))}
+            </div>
+            <div className="basket-page__final-box">
+              <h5 className="basket-page__total-price">${totalPrice}</h5>
+              <p className="basket-page__total-counter">
+                Total for {basketStore.length}{' '}
+                {basketStore.length === 1 ? 'item' : 'items'}
+              </p>
+              <div className="line" />
+              <button className="basket-page__send-button">Checkout</button>
+            </div>
+          </>
+        ) : (
+          <div className="image-box">
+            <img
+              src="./img/cart-is-empty.png"
+              alt="no products in cart"
+              className="basket-page__no-products-image"
             />
-          ))}
-        </div>
+          </div>
+        )}
       </main>
       <Footer />
     </>

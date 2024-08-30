@@ -1,6 +1,11 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable jsx-a11y/label-has-for */
-import { Link, useParams, useSearchParams } from 'react-router-dom';
+import {
+  Link,
+  useNavigate,
+  useParams,
+  useSearchParams,
+} from 'react-router-dom';
 
 import { Footer } from '../Footer/Footer';
 import { Header } from '../Header/Header';
@@ -22,7 +27,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import { ProductCard } from '../ProductCard/ProductCard';
 import { Loader } from '../Loader/Loader';
-import { useFavorites } from '../../utils/Stores';
+import { useBasket, useFavorites } from '../../utils/Stores';
 import { Product } from '../../types/Propduct';
 
 type Props = {
@@ -83,9 +88,15 @@ export const ProductDetails: React.FC<Props> = ({ category }) => {
     product.itemId.includes(checkedItemId()),
   )?.category;
 
+  const navigate = useNavigate();
+
   const favorites: Product[] = useFavorites(state => state.favorites);
   const addFavorite = useFavorites(state => state.addFavorite);
   const removeFavorite = useFavorites(state => state.removeFavorite);
+
+  const basketStore = useBasket(state => state.basket);
+  const removeFromBasket = useBasket(state => state.removeFromBasket);
+  const addToBasket = useBasket(state => state.addToBasket);
 
   const findProductById = () => {
     switch (category || sortProductByCategory) {
@@ -224,6 +235,17 @@ export const ProductDetails: React.FC<Props> = ({ category }) => {
     }
   };
 
+  const handleSetBasketArr = () => {
+    if (basketStore.find((product: Product) => product.itemId === id)) {
+      removeFromBasket(id);
+    } else {
+      return addToBasket(
+        productsFromServer.find(product => product.itemId === id) ??
+          productsFromServer[0],
+      );
+    }
+  };
+
   return (
     <>
       <Header />
@@ -245,10 +267,10 @@ export const ProductDetails: React.FC<Props> = ({ category }) => {
               {onDesktop || onTablet ? name : checkedName}
             </p>
           </div>
-          <Link to={`/${category}`} className="return-button">
+          <button className="return-button" onClick={() => navigate(-1)}>
             <img src="./img/arrow-prev.svg" alt="return" />
             <span>Back</span>
-          </Link>
+          </button>
           <div className="product-details-main__details-content">
             <h2 className="product-details-main__title">{name}</h2>
             <img
@@ -371,7 +393,18 @@ export const ProductDetails: React.FC<Props> = ({ category }) => {
                 <p className="price-box__full-price">${priceRegular}</p>
               </div>
               <div className="buttons-box">
-                <button className="buttons-box__buy-button">Add to card</button>
+                <button
+                  className={classNames('buttons-box__buy-button', {
+                    'buttons-box__buy-button--added': basketStore.find(
+                      product => product.itemId === id,
+                    ),
+                  })}
+                  onClick={handleSetBasketArr}
+                >
+                  {basketStore.find(product => product.itemId === id)
+                    ? 'Added to cart'
+                    : 'Add to card'}
+                </button>
                 <button
                   className="buttons-box__favorite-button"
                   onClick={handleSetFavoriteArr}

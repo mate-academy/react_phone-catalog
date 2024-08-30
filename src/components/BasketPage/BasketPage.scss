@@ -8,6 +8,19 @@
 .basket-page {
   @include padding-inline;
 
+  width: 100%;
+  margin-bottom: 96px;
+
+  @include on-desktop {
+    @include page-grid;
+  }
+
+  &__return-button {
+    @include on-desktop {
+      grid-column: 1/-1;
+    }
+  }
+
   &__title {
     margin: 0;
     margin-top: 24px;
@@ -21,12 +34,113 @@
       margin-top: 16px;
       font-size: 48px;
     }
+
+    @include on-desktop {
+      grid-column: 1/-1;
+    }
   }
 
   &__product-box {
     margin-top: 32px;
     display: flex;
     flex-direction: column;
-    row-gap: 32px;
+    row-gap: 16px;
+
+    @include on-desktop {
+      grid-column: 1/17;
+    }
+  }
+
+  &__no-products-image {
+    width: 250px;
+    aspect-ratio: 1/1;
+    object-fit: contain;
+
+    @include on-tablet {
+      width: 300px;
+    }
+
+    @include on-desktop {
+      width: 400px;
+    }
+  }
+
+  &__final-box {
+    margin-top: 32px;
+
+    width: 100%;
+    padding: 24px;
+    border-radius: 16px;
+    border: 1px solid var(--elements-color);
+    box-sizing: border-box;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    @include on-desktop {
+      height: fit-content;
+      grid-column: 17/-1;
+    }
+  }
+
+  &__total-price {
+    margin: 0;
+    font-family: var(--strong-font-family);
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 41px;
+    letter-spacing: -1%;
+  }
+
+  &__total-counter {
+    margin: 0;
+    font-family: var(--regular-font-family);
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+    letter-spacing: 0%;
+    color: var(--gray-color);
+  }
+
+  &__send-button {
+    margin-top: 16px;
+    width: 100%;
+    height: 48px;
+    background-color: var(--purple-color);
+    border: none;
+    border-radius: 48px;
+    transition: .3s;
+
+    font-family: var(--semi-bold-font-family);
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 21px;
+    letter-spacing: 0%;
+    color: var(--white-color);
+
+    &:hover {
+      box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.4);
+    }
+  }
+}
+
+.line {
+  width: 100%;
+  height: 1px;
+  background-color: var(--elements-color);
+  margin-top: 16px;
+}
+
+.image-box {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  @include on-desktop {
+    grid-column: 1/-1;
   }
 }
