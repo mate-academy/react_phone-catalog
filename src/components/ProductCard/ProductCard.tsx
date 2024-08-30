@@ -9,8 +9,7 @@ import tabletsFromServer from '../../api/tablets.json';
 import accessoriesFromServer from '../../api/accessories.json';
 import { Product } from '../../types/Propduct';
 import classNames from 'classnames';
-import { useFavorites } from '../../utils/Favorites';
-// import { useLocalStorage } from '@uidotdev/usehooks';
+import { useBasket, useFavorites } from '../../utils/Stores';
 
 type Props = {
   id: number;
@@ -33,16 +32,15 @@ export const ProductCard: React.FC<Props> = ({ id }) => {
     category,
   } = findProduct(id);
 
-  // const [favoriteArr, setFavoriteArr] = useLocalStorage<Product[]>(
-  //   'favoriteArr',
-  //   [],
-  // );
-
   const { pathname } = useLocation();
 
   const favorites: Product[] = useFavorites(state => state.favorites);
   const addFavorite = useFavorites(state => state.addFavorite);
   const removeFavorite = useFavorites(state => state.removeFavorite);
+
+  const basketStore = useBasket(state => state.basket);
+  const addToBasket = useBasket(state => state.addToBasket);
+  const removeFromBasket = useBasket(state => state.removeFromBasket);
 
   let checkedName = name;
   let dots = false;
@@ -85,6 +83,14 @@ export const ProductCard: React.FC<Props> = ({ id }) => {
     }
   };
 
+  const handleSetBasketStore = () => {
+    if (basketStore.find((product: Product) => product.itemId === itemId)) {
+      removeFromBasket(itemId);
+    } else {
+      return addToBasket(findProduct(id));
+    }
+  };
+
   return (
     <article className="product-card">
       <Link
@@ -121,6 +127,7 @@ export const ProductCard: React.FC<Props> = ({ id }) => {
           className={classNames('product-card__buy-button', {
             'product-card__buy-button--catalog': pathname === `/${category}`,
           })}
+          onClick={handleSetBasketStore}
         >
           Add to cart
         </button>

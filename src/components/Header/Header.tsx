@@ -4,12 +4,13 @@ import { Link, NavLink } from 'react-router-dom';
 import './Header.scss';
 import { MenuOpen } from '../../utils/MenuContext';
 import { useContext } from 'react';
-import { useFavorites } from '../../utils/Favorites';
+import { useBasket, useFavorites } from '../../utils/Stores';
 
 export const Header = () => {
   const { isMenuOpen, setIsMenuOpen } = useContext(MenuOpen);
 
   const favorites = useFavorites(state => state.favorites);
+  const basketStore = useBasket(state => state.basket);
 
   return (
     <header className="header">
@@ -90,10 +91,21 @@ export const Header = () => {
           }
         >
           {favorites.length !== 0 && (
-            <div className="header__favorite-counter">{favorites.length}</div>
+            <div className="header__products-counter">{favorites.length}</div>
           )}
         </NavLink>
-        <NavLink to="/basket" className="header__icons header__icons--basket" />
+        <NavLink
+          to="/basket"
+          className={({ isActive }: { isActive: boolean }) =>
+            classNames('header__icons header__icons--basket', {
+              'header__icons--basket--active': isActive,
+            })
+          }
+        >
+          {basketStore.length !== 0 && (
+            <div className="header__products-counter">{basketStore.length}</div>
+          )}
+        </NavLink>
       </div>
     </header>
   );

@@ -9,6 +9,7 @@ import productsFromServer from './api/products.json';
 import { Product } from './types/Propduct';
 import { ProductDetails } from './components/ProductDetails/ProductDetails';
 import { FavoritePage } from './components/FavoritePage/FavoritePage';
+import { BasketPage } from './components/BasketPage/BasketPage';
 
 export const Root = () => (
   <Routes>
@@ -16,6 +17,7 @@ export const Root = () => (
       <Route index element={<HomePage />} />
       <Route path="product/:itemId" element={<ProductDetails />} />
       <Route path="favorites" element={<FavoritePage />} />
+      <Route path="basket" element={<BasketPage />} />
       <Route path="phones">
         <Route
           index
@@ -33,8 +35,10 @@ export const Root = () => (
           element={<ProductDetails category="phones" />}
         >
           <Route path="favorites" element={<FavoritePage />} />
+          <Route path="basket" element={<BasketPage />} />
         </Route>
         <Route path="favorites" element={<FavoritePage />} />
+        <Route path="basket" element={<BasketPage />} />
       </Route>
       <Route path="tablets">
         <Route
@@ -53,8 +57,10 @@ export const Root = () => (
           element={<ProductDetails category="tablets" />}
         >
           <Route path="favorites" element={<FavoritePage />} />
+          <Route path="basket" element={<BasketPage />} />
         </Route>
         <Route path="favorites" element={<FavoritePage />} />
+        <Route path="basket" element={<BasketPage />} />
       </Route>
       <Route path="accessories">
         <Route
@@ -73,8 +79,10 @@ export const Root = () => (
           element={<ProductDetails category="accessories" />}
         >
           <Route path="favorites" element={<FavoritePage />} />
+          <Route path="basket" element={<BasketPage />} />
         </Route>
         <Route path="favorites" element={<FavoritePage />} />
+        <Route path="basket" element={<BasketPage />} />
       </Route>
       <Route path="*" element={<NotFoundPage />} />
     </Route>

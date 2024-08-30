@@ -22,7 +22,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import { ProductCard } from '../ProductCard/ProductCard';
 import { Loader } from '../Loader/Loader';
-import { useFavorites } from '../../utils/Favorites';
+import { useFavorites } from '../../utils/Stores';
 import { Product } from '../../types/Propduct';
 
 type Props = {
@@ -214,8 +214,8 @@ export const ProductDetails: React.FC<Props> = ({ category }) => {
   };
 
   const handleSetFavoriteArr = () => {
-    if (favorites.find((product: Product) => product.itemId === itemId)) {
-      removeFavorite(checkedItemId());
+    if (favorites.find((product: Product) => product.itemId === id)) {
+      removeFavorite(id);
     } else {
       return addFavorite(
         productsFromServer.find(product => product.itemId === id) ??
@@ -245,10 +245,7 @@ export const ProductDetails: React.FC<Props> = ({ category }) => {
               {onDesktop || onTablet ? name : checkedName}
             </p>
           </div>
-          <Link
-            to={`/${category}`}
-            className="product-details-main__return-button"
-          >
+          <Link to={`/${category}`} className="return-button">
             <img src="./img/arrow-prev.svg" alt="return" />
             <span>Back</span>
           </Link>

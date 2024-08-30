@@ -5,7 +5,7 @@ import './FavoritePage.scss';
 import { Menu } from '../Menu/Menu';
 import { Footer } from '../Footer/Footer';
 import { ProductCard } from '../ProductCard/ProductCard';
-import { useFavorites } from '../../utils/Favorites';
+import { useFavorites } from '../../utils/Stores';
 import { Link } from 'react-router-dom';
 
 export const FavoritePage = () => {

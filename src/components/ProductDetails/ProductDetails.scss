@@ -38,34 +38,34 @@
   }
 }
 
+.return-button {
+  height: 15px;
+  text-decoration: none;
+
+  display: flex;
+  align-items: center;
+
+  & img {
+    margin-right: 10px;
+  }
+
+  & span {
+    align-self: end;
+    transition: .3s;
+    font-family: var(--semi-bold-font-family);
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 13px;
+    color: var(--gray-color);
+  }
+
+  &:hover span {
+    color: var(--dark-gray-color);
+  }
+}
+
 .product-details-main {
   @include padding-inline;
-
-  &__return-button {
-    height: 15px;
-    text-decoration: none;
-
-    display: flex;
-    align-items: center;
-
-    & img {
-      margin-right: 10px;
-    }
-
-    & span {
-      align-self: end;
-      transition: .3s;
-      font-family: var(--semi-bold-font-family);
-      font-size: 12px;
-      font-weight: 700;
-      line-height: 13px;
-      color: var(--gray-color);
-    }
-
-    &:hover span {
-      color: var(--dark-gray-color);
-    }
-  }
 
   &__details-content {
     margin-top: 16px;
