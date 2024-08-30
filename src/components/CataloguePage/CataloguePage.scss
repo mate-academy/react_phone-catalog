@@ -3,16 +3,6 @@
 @import '../../utils/generalComponents';
 
 
-.container{
-  margin-inline:152px;
-  box-sizing: border-box;
-  min-height: 100vh;
-}
-
-.grid {
-  @include page-grid;
-}
-
 .phones{
   background-color: $greyBackground;
   &_title{
@@ -23,6 +13,10 @@
       font-size: 48px;
       font-family: $fontBold;
       margin-bottom: 8px;
+
+      &::first-letter{
+        text-transform: uppercase;
+      }
     }
     &_items{
       margin: 0;
@@ -44,6 +38,50 @@
       width: 100%;
     }
 
+  }
+
+  &_buttons{
+    grid-column: 1/-1;
+    margin-top: 40px;
+    margin-bottom: 80px;
+    &_cont{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+    }
+
+    &_button{
+      height: 32px;
+      width: 32px;
+      border-radius: 50px;
+      background-color: $greyBackground;
+      border: 1px solid $borderGrey;
+      cursor: pointer;
+      &--active{
+        background-color: $greyPrimary;
+        height: 32px;
+        width: 32px;
+        border-radius: 50px;
+        border: 1px solid $borderGrey;
+        color: #fff;
+      }
+      &--left{
+        background-image: url('../../imgs/ArrowLeft.svg');
+        background-position: center;
+        background-repeat: no-repeat;
+        margin-right: 8px;
+
+      }
+
+      &--right{
+        background-image: url('../../imgs/ArrowLeft.svg');
+        background-position: center;
+        background-repeat: no-repeat;
+        transform: scaleX(-1);
+        margin-left: 8px;
+      }
+    }
   }
 }
 

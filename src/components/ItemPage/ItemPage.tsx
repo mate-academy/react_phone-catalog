@@ -1,40 +1,79 @@
 import homeIcon from '../../imgs/Home.svg';
 import './ItemPage.scss';
 import arrowRight from '../../imgs/Chevron (Arrow Right).svg';
-import { Link, useNavigate, useParams } from 'react-router-dom';
+import arrowLeft from '../../imgs/ArrowLeft.svg';
+import heartEmpty from '../../imgs/Favourites.svg';
+import heartFull from '../../imgs/Favourites Filled.svg';
+import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
 import phones from '../../api/phones.json';
 import tablets from '../../api/tablets.json';
 import accessories from '../../api/accessories.json';
 import { useEffect, useState } from 'react';
 import { handleButton, utils } from '../../utils/generalFunctions';
 
+type Item = {
+  id: string;
+  camera?: string;
+  capacity: string;
+  capacityAvailable: string[];
+  category: string;
+  cell: string[];
+  color: string;
+  colorsAvailable: string[];
+  description: { title: string; text: string[] }[];
+  images: string[];
+  name: string;
+  namespaceId: string;
+  priceDiscount: number;
+  priceRegular: number;
+  processor: string;
+  ram: string;
+  resolution: string;
+  screen: string;
+  zoom?: string;
+};
+
 export const ItemPage: React.FC = () => {
   const [activeImg, setActiveImg] = useState(0);
   const { itemName } = useParams();
-  const [category, setCategory] = useState(
-    itemName ? itemName.split('-')[1] : '',
-  );
+  const location = useLocation();
+  const category = location.pathname.split('/')[1];
 
-  const getItem = (currentCategory: string | undefined) => {
-    switch (currentCategory) {
-      case 'iphone':
-        setCategory('phones');
-
-        return phones.filter(item => item.id === itemName);
-      case 'ipad':
-        setCategory('tablets');
-
-        return tablets.filter(item => item.id === itemName);
-      case 'watch':
-        setCategory('accessories');
-
-        return accessories.filter(item => item.id === itemName);
-      default:
-        return phones.filter(item => item.id === itemName);
+  const getCurrentProduct = (category: string) => {
+    if (category === 'phones') {
+      return phones;
     }
+
+    if (category === 'tablets') {
+      return tablets;
+    }
+
+    return accessories;
   };
 
-  const [item] = getItem(category);
+  const currentProduct = getCurrentProduct(category);
+
+  const getItem = (currentCategory: string): Item[] => {
+    let obj: Item[] = [];
+
+    switch (currentCategory) {
+      case 'phones':
+        obj = phones.filter(item => item.id === itemName);
+        break;
+      case 'tablets':
+        obj = tablets.filter(item => item.id === itemName);
+        break;
+      case 'accessories':
+        obj = accessories.filter(item => item.id === itemName);
+        break;
+      default:
+        return [];
+    }
+
+    return obj;
+  };
+
+  const [item]: Item[] = getItem(category);
   const colors = item.colorsAvailable;
   const capacities = item.capacityAvailable;
 
@@ -44,15 +83,28 @@ export const ItemPage: React.FC = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const navigate = useNavigate();
 
+  const likedItems = utils.getFromStorage('liked');
+  const isLiked =
+    likedItems.filter((id: string) => id === activeItem.id).length === 1;
+
+  const cardItems = utils.getFromStorage('card');
+  const isCard =
+    cardItems.filter((id: string) => id === activeItem.id).length === 1;
+
+  const [liked, setLiked] = useState(isLiked);
+  const [card, setCard] = useState(isCard);
+
   useEffect(() => {
+    setLiked(isLiked);
+    setCard(isCard);
     setActiveItem(item);
     setActiveColor(item.color);
     setActiveCapacity(item.capacity);
-  }, [item, itemName]);
+  }, [item, itemName, isLiked, isCard]);
 
   const handleColor = (color: string) => {
     setActiveColor(color);
-    const [newActive] = phones.filter(
+    const [newActive] = currentProduct.filter(
       product =>
         product.color === color &&
         product.capacity === activeCapacity &&
@@ -60,11 +112,12 @@ export const ItemPage: React.FC = () => {
     );
 
     navigate(`/${category}/${newActive.id}`);
+    setActiveItem(newActive);
   };
 
   const handleCapacity = (capacity: string) => {
     setActiveCapacity(capacity);
-    const [newActive] = phones.filter(
+    const [newActive] = currentProduct.filter(
       product =>
         product.color === activeColor &&
         product.capacity === capacity &&
@@ -75,14 +128,38 @@ export const ItemPage: React.FC = () => {
     setActiveItem(newActive);
   };
 
-  const phonesSale = utils.findSale('phones');
+  const alsoLike = utils.findSimilar(category, activeItem);
 
   const prevLike = () => {
-    setCurrentIndex(handleButton.previous(currentIndex, phonesSale));
+    setCurrentIndex(handleButton.previous(currentIndex, alsoLike));
   };
 
   const nextLike = () => {
-    setCurrentIndex(handleButton.next(currentIndex, phonesSale));
+    setCurrentIndex(handleButton.next(currentIndex, alsoLike));
+  };
+
+  const handleButtonHeart = () => {
+    if (likedItems.filter((id: string) => id === activeItem.id).length === 1) {
+      setLiked(false);
+
+      return utils.removedFromLiked(activeItem.id);
+    }
+
+    setLiked(true);
+
+    return utils.addToLiked(activeItem.id);
+  };
+
+  const handleButtonCard = () => {
+    if (cardItems.filter((id: string) => id === activeItem.id).length === 1) {
+      setCard(false);
+
+      return utils.removedFromCard(activeItem.id);
+    }
+
+    setCard(true);
+
+    return utils.addToCart(activeItem.id);
   };
 
   return (
@@ -96,14 +173,21 @@ export const ItemPage: React.FC = () => {
               alt="arrowRight"
               className="homeHistory_arrow"
             />
-            <p className="homeHistory_text">Phones</p>
+            <p className="homeHistory_text">{category}</p>
             <img
               src={arrowRight}
               alt="arrowRight"
               className="homeHistory_arrow"
             />
-            <p className="homeHistory_text">{activeItem.name}</p>
+            <p className="homeHistory_text homeHistory_text--extra">
+              {activeItem.name}
+            </p>
           </div>
+          <Link to={`/${category}`} className="buttonBack">
+            <img src={arrowLeft} alt="arrowLeft" className="buttonBack_arrow" />
+            <p className="buttonBack_text">Back</p>
+          </Link>
+
           <p className="item_title">{activeItem.name}</p>
           <div className="item_imgBox">
             <div className="item_imgBox_innerBox">
@@ -148,7 +232,7 @@ export const ItemPage: React.FC = () => {
                     >
                       <button
                         style={{
-                          backgroundColor: `light${color}`,
+                          backgroundColor: `${color}`,
                         }}
                         className="item_colors_container_colors_button"
                         onClick={() => {
@@ -195,8 +279,22 @@ export const ItemPage: React.FC = () => {
               </div>
 
               <div className="item_data_buttons">
-                <button className="item_data_buttons_add">Add to card</button>
-                <button className="item_data_buttons_heart"></button>
+                <button
+                  className="item_data_buttons_add"
+                  onClick={() => handleButtonCard()}
+                  style={{
+                    backgroundColor: `${card ? '#FAFBFC' : '#216CFF'}`,
+                    color: `${card ? '#216CFF' : '#FAFBFC'}`,
+                    border: `${card ? '1px solid #E2E6E9' : 'none'}`,
+                  }}
+                >{`${card ? 'Added to Card' : 'Add to Card'}`}</button>
+                <button
+                  className="item_data_buttons_heart"
+                  onClick={() => handleButtonHeart()}
+                  style={{
+                    backgroundImage: `${liked ? `url('${heartFull}` : `url('${heartEmpty}`}')`,
+                  }}
+                ></button>
               </div>
 
               <div className="item_data_info">
@@ -270,14 +368,18 @@ export const ItemPage: React.FC = () => {
               <p className="item_tech_container_title">Built in memory</p>
               <p className="item_tech_container_text">{item.capacity}</p>
             </div>
-            {/* <div className="item_tech_container">
-              <p className="item_tech_container_title">Camera</p>
-              <p className="item_tech_container_text">{item.camera}</p>
-            </div>
-            <div className="item_tech_container">
-              <p className="item_tech_container_title">Zoom</p>
-              <p className="item_tech_container_text">{item.zoom}</p>
-            </div> */}
+            {item.camera && (
+              <>
+                <div className="item_tech_container">
+                  <p className="item_tech_container_title">Camera</p>
+                  <p className="item_tech_container_text">{item.camera}</p>
+                </div>
+                <div className="item_tech_container">
+                  <p className="item_tech_container_title">Zoom</p>
+                  <p className="item_tech_container_text">{item.zoom}</p>
+                </div>
+              </>
+            )}
             <div className="item_tech_container">
               <p className="item_tech_container_title">Cell</p>
               <p className="item_tech_container_text">{item.cell}</p>
@@ -298,16 +400,16 @@ export const ItemPage: React.FC = () => {
                 <button
                   className="item_alsoLike_container1_buttons_right"
                   onClick={nextLike}
-                  disabled={phonesSale.length - currentIndex === 4}
+                  disabled={alsoLike.length - currentIndex === 4}
                 >
                   &#10095;
                 </button>
               </div>
             </div>
             <div className="item_alsoLike_container2">
-              {phonesSale.map((phone, index) => (
+              {alsoLike.map((item, index) => (
                 <Link
-                  to={`/phones/${phone.itemId}`}
+                  to={`/${category}/${item.itemId}`}
                   className="productCard"
                   key={index}
                   onClick={handleButton.scrollTop}
@@ -319,32 +421,30 @@ export const ItemPage: React.FC = () => {
                   <div className="productCard_container">
                     <div className="productCard_imgs">
                       <img
-                        src={phone.image}
+                        src={item.image}
                         className="productCard_imgs_img"
                         alt="IMG"
                       />
                     </div>
 
-                    <p className="productCard_title">{phone.name}</p>
+                    <p className="productCard_title">{item.name}</p>
                     <div className="productCard_prices">
-                      <p className="productCard_fullPrice">{`$${phone.fullPrice}`}</p>
-                      <p className="productCard_price">{`$${phone.price}`}</p>
+                      <p className="productCard_price">{`$${item.price}`}</p>
+                      <p className="productCard_fullPrice">{`$${item.fullPrice}`}</p>
                     </div>
 
                     <div className="productCard_info">
                       <div className="productCard_info_screen">
                         <p className="productCard_info_title">Screen</p>
-                        <p className="productCard_info_text">{phone.screen}</p>
+                        <p className="productCard_info_text">{item.screen}</p>
                       </div>
                       <div className="productCard_info_capacity">
                         <p className="productCard_info_title">Capacity</p>
-                        <p className="productCard_info_text">
-                          {phone.capacity}
-                        </p>
+                        <p className="productCard_info_text">{item.capacity}</p>
                       </div>
                       <div className="productCard_info_ram">
                         <p className="productCard_info_title">Ram</p>
-                        <p className="productCard_info_text">{phone.ram}</p>
+                        <p className="productCard_info_text">{item.ram}</p>
                       </div>
                     </div>
                     <div className="productCard_buttons">

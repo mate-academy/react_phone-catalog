@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import products from '../api/products.json';
 
 type Product = {
@@ -15,29 +16,107 @@ type Product = {
   color: string;
 };
 
-// type Item = {
-//   camera: string,
-//   capacity: string,
-//   capacityAvailable: string[],
-//   category: string,
-//   cell: string[]
-//   color: string,
-//   colorsAvailable: string[],
-//   description: { title: string, text: string[] }[],
-//   id: string,
-//   images: string[],
-//   name: string,
-//   namespaceId: string,
-//   priceDiscount: number,
-//   priceRegular: number,
-//   processor: string,
-//   ram: string,
-//   resolution: string,
-//   screen: string,
-//   zoom: string,
-// }
+type Item = {
+  id: string;
+  camera?: string;
+  capacity: string;
+  capacityAvailable: string[];
+  category: string;
+  cell: string[];
+  color: string;
+  colorsAvailable: string[];
+  description: { title: string; text: string[] }[];
+  images: string[];
+  name: string;
+  namespaceId: string;
+  priceDiscount: number;
+  priceRegular: number;
+  processor: string;
+  ram: string;
+  resolution: string;
+  screen: string;
+  zoom?: string;
+};
 
-const findProduct = (category: string) => {
+function useLocalStorage<T>(key: string, startValue: T): [T, (v: T) => void] {
+  const [value, setValue] = useState(() => {
+    const data = localStorage.getItem(key);
+
+    if (data === null) {
+      return startValue;
+    }
+
+    try {
+      return JSON.parse(data);
+    } catch (e) {
+      return startValue;
+    }
+  });
+
+  const save = (newValue: T) => {
+    localStorage.setItem(key, JSON.stringify(newValue));
+    setValue(newValue);
+  };
+
+  return [value, save];
+}
+
+const addToCart = (id: string) => {
+  const data = localStorage.getItem('card');
+  const newData = data ? JSON.parse(data) : [];
+
+  newData.push(id);
+  localStorage.setItem('card', JSON.stringify(newData.sort()));
+};
+
+const addToLiked = (id: string) => {
+  const data = localStorage.getItem('liked');
+  const newData = data ? JSON.parse(data) : [];
+
+  newData.push(id);
+  localStorage.setItem('liked', JSON.stringify(newData));
+};
+
+const removedFromLiked = (id: string) => {
+  const data = localStorage.getItem('liked');
+  const newData = data ? JSON.parse(data) : [];
+
+  const removeData = newData.filter((data: string) => data !== id);
+
+  localStorage.setItem('liked', JSON.stringify(removeData));
+};
+
+const removedFromCard = (id: string) => {
+  const data = localStorage.getItem('card');
+  const newData = data ? JSON.parse(data) : [];
+
+  const removeData = newData.filter((data: string) => data !== id);
+
+  localStorage.setItem('card', JSON.stringify(removeData));
+};
+
+const getFromStorage = (key: string) => {
+  const data = localStorage.getItem(key);
+  const newData = data ? JSON.parse(data) : [];
+
+  return newData;
+};
+
+const findById = (ids: string[]) => {
+  const items: Product[] = [];
+
+  ids?.map((id: string) => {
+    const item = products.find(product => product.itemId === id);
+
+    if (item) {
+      items.push(item);
+    }
+  });
+
+  return items;
+};
+
+const findProduct = (category: string | undefined) => {
   return products.filter((product: Product) => product.category === category);
 };
 
@@ -58,6 +137,15 @@ const findSale = (category: string) => {
     }, []);
 
   return saleProducts;
+};
+
+const findSimilar = (category: string, activeItem: Item) => {
+  const currentProduct = findProduct(category);
+  const similarProducts = currentProduct.filter(
+    (product: Product) => product.color === activeItem.color,
+  );
+
+  return similarProducts;
 };
 
 const previous = (prevIndex: number, itemArray: Product[]) => {
@@ -85,4 +173,12 @@ export const handleButton = {
 export const utils = {
   findProduct,
   findSale,
+  findSimilar,
+  useLocalStorage,
+  addToCart,
+  addToLiked,
+  findById,
+  getFromStorage,
+  removedFromLiked,
+  removedFromCard,
 };

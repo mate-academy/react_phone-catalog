@@ -39,12 +39,12 @@ export const App = () => {
               </NavLink>
             </div>
             <div className="navbar_buttons">
-              <a href="" className="navbar_buttons_link">
+              <NavLink to="liked" className="navbar_buttons_link">
                 <img src={fav} alt="heart" />
-              </a>
-              <a href="" className="navbar_buttons_link">
+              </NavLink>
+              <NavLink to="card" className="navbar_buttons_link">
                 <img src={bag} alt="bag" />
-              </a>
+              </NavLink>
             </div>
           </div>
         </nav>

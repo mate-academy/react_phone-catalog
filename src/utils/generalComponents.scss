@@ -1,4 +1,15 @@
 @import './vars';
+@import './mixins';
+
+.container{
+  margin-inline:152px;
+  box-sizing: border-box;
+  min-height: 100vh;
+}
+
+.grid {
+  @include page-grid;
+}
 
 .homeHistory{
   grid-column:1/10;
@@ -10,9 +21,49 @@
   margin-bottom: 40px;
 
   &_text{
+    margin: 0;
     font-size: 12px;
     font-family: $fontNormal;
+    font-weight: 700;
+    color: $greyPrimary;
+
+    &::first-letter{
+      text-transform: uppercase;
+    }
+
+    &--extra{
+      color: $greySecondary;
+      font-weight: 600;
+    }
+  }
+}
+
+.buttonBack{
+  grid-column:1/1;
+  display: flex;
+  gap: 10px;
+  margin-bottom: 16px;
+  text-decoration: none;
+
+  &--card{
+    margin-top: 40px;
+  }
+
+
+  &_text{
+    margin: 0;
+    font-size: 12px;
+    font-family: $fontNormal;
+    font-weight: 700;
     color: $greySecondary;
+    transition: $transitionSpeed;
+  }
+
+  &:hover{
+    .buttonBack_text{
+      color: $greyPrimary;
+      transition: $transitionSpeed;
+    }
   }
 }
 
@@ -21,14 +72,19 @@
   height: 506px;
   width: 272px;
   margin-bottom: 40px;
-  text-decoration: none;
   color: $greyPrimary;
   min-width: 23.8%;
+  text-decoration: none;
 
   &_container{
+
+    &_link{
+      text-decoration: none;
+      color: $greyPrimary;
+    }
+  
     transition: 0.5s;
     border-radius: 8px;
-
     background-color: #fff;
     display: flex;
     flex-direction: column;
@@ -73,14 +129,14 @@
     margin-bottom: 8px;
   }
 
-  &_fullPrice{
+  &_price{
     margin: 0;
     font-size: 22px;
    font-family: $fontBold;
 
   }
 
-  &_price{
+  &_fullPrice{
     margin: 0;
     font-size: 22px;
     font-family: $fontBold;
@@ -136,10 +192,16 @@
       border: none;
       color: white;
       cursor: pointer;
+      transition: $transitionSpeed;
+
+      &:hover{
+        box-shadow: 0 3px 13px 0  $darkBorderGrey;
+        transition: $transitionSpeed;
+      }
     }
 
     &_heart{
-      width: 40px;
+      width: 45px;
       height: 40px;
       border-radius: 50px;
       background-color: white;
@@ -147,6 +209,12 @@
       cursor: pointer;
       background-image: url('../imgs/Favourites.svg');
       background-position: center;
+      background-repeat: no-repeat;
+      transition: $transitionSpeed;
+      &:hover{
+        border: 1px solid $greyPrimary;
+        transition: $transitionSpeed;
+      }
     }
 
   }

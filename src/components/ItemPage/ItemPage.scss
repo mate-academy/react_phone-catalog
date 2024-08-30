@@ -3,6 +3,7 @@
 
 
 .item{
+  background-color: $greyBackground;
   &_title{
     grid-column: 1/-1;
     margin: 0;
@@ -76,6 +77,9 @@
           border-radius: 50px;
           padding: 2px;
           margin-bottom: 24px;
+
+
+
         }
 
         &_button{
@@ -86,6 +90,7 @@
           border: none;
           cursor: pointer;
         }
+
       }
     }
   }
@@ -159,6 +164,13 @@
         border: none;
         color: white;
         cursor: pointer;
+        transition: $transitionSpeed;
+        font-family: $fontSemi;
+        font-size: 14px;
+        &:hover{
+          box-shadow: 0 3px 13px 0  $darkBorderGrey;
+          transition: $transitionSpeed;
+        }
       }
 
       &_heart{
@@ -169,7 +181,14 @@
         border: 1px solid $borderGrey;
         cursor: pointer;
         background-image: url('../../imgs/Favourites.svg');
+        background-repeat: no-repeat;
         background-position: center;
+        transition: $transitionSpeed;
+
+        &:hover{
+          border: 1px solid $greyPrimary;
+          transition: $transitionSpeed;
+        }
       }
     }
 
