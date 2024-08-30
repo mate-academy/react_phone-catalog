@@ -1,13 +1,26 @@
 .icon {
-  box-shadow: -1px 0 0 0 $c-elements;
   cursor: pointer;
   &--bar {
+    box-shadow: -1px 0 0 0 $c-elements;
     height: 48px;
     width: 48px;
-    
+
     @include on-desktop {
       height: 64px;
       width: 64px;
+    }
+  }
+
+  &--button {
+    &-size32 {
+      border: 1px solid $c-icons;
+      height: 32px;
+      width: 32px;
+    }
+    &-size40 {
+      border: 1px solid $c-icons;
+      height: 40px;
+      width: 40px;
     }
   }
 
@@ -40,5 +53,30 @@
 
   &--close {
     background: url('../../../../public/img/icons/close.svg') no-repeat center;
+  }
+
+  &--chevron-left {
+    background: url('../../../../public/img/icons/chevron-left.svg') no-repeat
+      center;
+    &-disabled {
+      border: 1px solid $c-elements;
+      background: url('../../../../public/img/icons/chevron-left-disabled.svg')
+        no-repeat center;
+    }
+  }
+
+  &--chevron-right {
+    background: url('../../../../public/img/icons/chevron-right.svg') no-repeat
+      center;
+    &-disabled {
+      border: 1px solid $c-elements;
+      background: url('../../../../public/img/icons/chevron-right-disabled.svg')
+        no-repeat center;
+    }
+  }
+
+  &--chevron-up {
+    background: url('../../../../public/img/icons/chevron-up.svg') no-repeat
+      center;
   }
 }

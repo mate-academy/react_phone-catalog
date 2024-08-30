@@ -1,16 +1,31 @@
 .card {
-  grid-column: span 3;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  align-items: center;
   padding: 32px;
   border: 1px solid $c-elements;
+  gap: 8px;
+
+  &__image-wrapper {
+    width: 100%;
+    height: 0;
+    padding-top: 100%;
+    position: relative;
+  }
   &__image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+    gap: 24px;
+  }
+  &__product-name {
+    padding-top: 16px;
   }
   &__price {
     display: flex;
@@ -41,6 +56,8 @@
     display: flex;
     flex-direction: column;
     width: 100%;
+    gap: 8px;
+
     &-line {
       display: flex;
       justify-content: space-between;
@@ -51,5 +68,13 @@
     &-content {
       color: $c-primary;
     }
+  }
+
+  &__buttons {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    align-items: center;
+    justify-content: space-between;
   }
 }

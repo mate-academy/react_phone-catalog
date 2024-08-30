@@ -1,0 +1,17 @@
+.button {
+  width: 100%;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid $c-elements;
+  background: $c-primary;
+  font-family: Mont, sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 21px;
+  color: $c-white;
+  &--cart {
+    
+  }
+}

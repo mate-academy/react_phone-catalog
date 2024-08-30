@@ -17,7 +17,7 @@ export const App = () => {
     ).then(accessoriesFromServer => {
       dispatch({ type: 'loadAccessories', payload: accessoriesFromServer });
     });
-  });
+  }, [dispatch]);
 
   useEffect(() => {
     getProducts<PhoneSpecs[]>('http://localhost:3000/api/phones.json').then(
@@ -25,7 +25,7 @@ export const App = () => {
         dispatch({ type: 'loadPhones', payload: phonesFromServer });
       },
     );
-  }, []);
+  }, [dispatch]);
 
   useEffect(() => {
     getProducts<TabletSpecs[]>('http://localhost:3000/api/tablets.json').then(
@@ -33,7 +33,7 @@ export const App = () => {
         dispatch({ type: 'loadTablets', payload: tabletsFromServer });
       },
     );
-  }, []);
+  }, [dispatch]);
 
   useEffect(() => {
     getProducts<ProductSummary[]>(
@@ -41,7 +41,7 @@ export const App = () => {
     ).then(productsFromServer => {
       dispatch({ type: 'loadProducts', payload: productsFromServer });
     });
-  }, []);
+  }, [dispatch]);
 
   return (
     <div className="App" id="top">

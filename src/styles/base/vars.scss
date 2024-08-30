@@ -4,3 +4,19 @@ $min-width-tablet: 640px;
 $max-width-tablet: 1199px;
 $min-width-desktop: 1200px;
 $min-width-big-desktop: 1201px;
+$grid-cols-mobile: 4;
+$grid-cols-tablet: 12;
+$grid-cols-desktop: 24;
+$grid-cols-gap: 16px;
+$grid-auto-col-mobile: calc(
+  (100% - (($grid-cols-mobile - 1) * $grid-cols-gap)) / $grid-cols-mobile
+);
+$grid-auto-col-tablet: calc(
+  (100% - (($grid-cols-tablet - 1) * $grid-cols-gap)) / $grid-cols-tablet
+);
+$span-grid-card-mobile: 3;
+$span-grid-card-tablet: 5;
+$span-grid-card-desktop: 6;
+$productSlider-translate-value: calc(-1 * (($grid-auto-col-mobile) + ($grid-cols-gap)) * $span-grid-card-mobile);
+
+
