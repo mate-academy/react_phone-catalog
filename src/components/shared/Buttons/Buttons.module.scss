@@ -1,0 +1,90 @@
+@import "../../../styles/variables.scss";
+@import "../../../styles/mixins.scss";
+
+  .buttons {
+    width: 100%;
+    margin-top: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+
+  &__add {
+    width: 100%;
+    height: 40px;
+    background-color: $primary-color;
+    color: $white;
+    cursor: pointer;
+    transition: box-shadow 0.3s ease-in-out;
+
+
+    &:hover {
+      box-shadow: inset 0 0 16px rgb(133, 132, 132);
+
+    }
+
+    &_dark {
+      background-color: $button-bg;
+
+      &:hover {
+      box-shadow: inset 0 0 16px rgb(45, 44, 44);
+
+      }
+
+    }
+
+    &_active {
+      background-color: $white;
+      border: 1px solid $secondary-color;
+      color: $green;
+    }
+
+    &_dark_active {
+      background-color: $bg-dark-ikons;
+      color: $white;
+      border: none;
+
+    }
+  }
+
+  &__like {
+    width: 50px;
+    height: 40px;
+    margin-left: 8px;
+    background-image: url(../../../../public/img/headerIсons/heart.svg);
+    background-size: 16px 16px;
+    background-repeat: no-repeat;
+    background-position: center;
+    border: 1px solid $secondary-color;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+
+    &_active {
+    background-image: url(../../../../public/img/headerIсons/activeHert.svg);
+
+    }
+
+
+    &:hover {
+      border: 1px solid $primary-color;
+
+    }
+
+    &_dark {
+      background-image: url(../../../../public/img/headerIсons/heart-dark.svg);
+      background-color: $bg-dark-ikons;
+      border: none;
+
+      &:hover {
+      background-color: $bg-dark-ikons-hover;
+      border: none;
+
+      }
+
+      &_active {
+        background-image: url(../../../../public/img/headerIсons/activeHert.svg);
+
+        }
+    }
+  }
+}

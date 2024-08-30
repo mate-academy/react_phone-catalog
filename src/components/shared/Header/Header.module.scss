@@ -1,0 +1,120 @@
+@import "../../../styles/variables.scss";
+@import "../../../styles/mixins.scss";
+
+.header {
+  min-width: 100%;
+  height: 64px;
+  border-bottom: 1px solid $secondary-color;
+  background-color: $white;
+  position: fixed;
+
+  z-index: 10;
+
+  @include onDesktop {
+    height: 48px;
+
+  }
+
+  @include onTablet {
+    position: fixed;
+  }
+
+  &-dark {
+    background-color: $BG-dark;
+  }
+}
+
+.header__container {
+  display: flex;
+
+  align-items: center;
+  max-height: 100%;
+}
+
+.logo {
+  padding: 18px 24px;
+
+  @include onDesktop{
+    padding: 13px 16px;
+
+  }
+
+}
+
+.logo__img {
+  width: 80px;
+  height: 24px;
+  transition: all 0.3s ease, transform 0.3s ease;
+
+  @include onDesktop{
+    width: 64px;
+    height: 22px;
+
+
+  }
+}
+
+.logo__img:hover {
+  transform: scale(1.05);
+}
+
+.burger__menu {
+  justify-content: end;
+  width: 100%;
+  display: none;
+
+
+  @include onTablet{
+    display: flex;
+
+  }
+
+  &_open {
+    display: none;
+
+    @include onTablet{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 15.5px;
+      max-width: 100%;
+
+      border-left: 1px solid $secondary-color;
+      border-right: 1px solid transparent;
+      border-top: 1px solid transparent;
+      border-bottom: 3px solid transparent;
+
+      transition: all 0.3s ease, transform 0.3s ease;
+
+      &:hover {
+        border: 1px solid $primary-color;
+        border-bottom: 3px solid $primary-color;
+      }
+    }
+  }
+
+  &_close {
+    display: none;
+
+    @include onTablet{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 15.5px;
+      max-width: 100%;
+
+      border-left: 1px solid $secondary-color;
+      border-right: 1px solid transparent;
+      border-top: 1px solid transparent;
+      border-bottom: 3px solid transparent;
+
+      transition: all 0.3s ease, transform 0.3s ease;
+
+      &:hover {
+        border: 1px solid $primary-color;
+        border-bottom: 3px solid $primary-color;
+      }
+
+    }
+  }
+}

@@ -1,0 +1,257 @@
+@import "../../../../../styles/variables.scss";
+@import "../../../../../styles/mixins.scss";
+
+.feature {
+
+  @include onDesktop {
+   max-width: 238px;
+  }
+
+  @include onTablet {
+    padding: 0 16px 0 16px;
+    margin-top: 40px;
+    max-width: 100%;
+  }
+
+  &__box {
+    display: flex;
+    flex-direction: column;
+
+
+
+    &_colors {
+      padding-bottom: 24px;
+      border-bottom: 1px solid $BG;
+      width: 322px;
+
+      @include onDesktop {
+        max-width: 238px;
+       }
+
+       @include onTablet {
+        min-width: 100%;
+      }
+
+      &_dark {
+        border-bottom: 1px solid #3B3E4A;
+      }
+      &_block {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        @include onTablet {
+          width: 100%;
+        }
+      }
+
+      &_title {
+      font-size: 12px;
+      font-weight: 600;
+      line-height: 15.34px;
+      text-align: left;
+      color: $secondary-color;
+      margin-bottom: 8px;
+
+      &_dark {
+        color: $secondary-color-dark;
+      }
+
+      }
+
+      &_id {
+
+        font-size: 12px;
+      font-weight: 700;
+      line-height: 15.34px;
+      text-align: right;
+      color: $secondary-color;
+      }
+
+      &_list {
+        display: flex;
+        gap: 8px;
+
+      }
+
+      &_item {
+        padding: 3px;
+        border: 1px solid $secondary-color;
+        border-radius: 100%;
+        transition: border 0.3s ease, transform 0.3s ease;
+
+        &:hover {
+          border: 1px solid $primary-color;
+        }
+
+        &_active {
+          border: 1px solid $primary-color;
+        }
+
+        &_dark {
+          border: 1px solid $secondary-color-dark;
+          transition: border 0.3s ease, transform 0.3s ease;
+
+          &:hover {
+            border: 1px solid $primary-color-dark;
+
+          }
+
+          &_active {
+            border: 1px solid $primary-color-dark;
+          }
+        }
+      }
+
+      &_link {
+        display: block;
+        width: 32px;
+        height: 32px;
+        border-radius: 100%;
+        cursor: pointer;
+      }
+    }
+
+    &_capacity {
+
+      margin-top: 24px;
+      padding-bottom: 24px;
+      border-bottom: 1px solid $BG;
+
+      &_dark {
+        border-bottom: 1px solid #3B3E4A;
+      }
+
+      &_title {
+        font-size: 12px;
+        font-weight: 600;
+        line-height: 15.34px;
+        text-align: left;
+        color: $secondary-color;
+        margin-bottom: 8px;
+      }
+
+      &_list {
+        display: flex;
+        gap: 8px;
+
+      }
+
+      &_link {
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 21px;
+        text-align: center;
+        color: $primary-color;
+        padding: 8px;
+        border: 1px solid $secondary-color;
+        cursor: pointer;
+
+        transition: all 0.3s ease, transform 0.3s ease;
+
+        &:hover {
+          border: 1px solid $primary-color;
+        }
+
+        &_active {
+          background-color: $primary-color;
+          color: $white;
+        }
+
+        &_dark {
+          color: $primary-color-dark;
+
+          &:hover {
+            border: 1px solid $primary-color-dark;
+          }
+
+          &_active {
+            background-color: $primary-color-dark;
+            color: $primary-color;
+          }
+        }
+      }
+    }
+
+    &_price {
+      margin-top: 32px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 16px;
+
+      &_discount {
+        font-size: 32px;
+        font-weight: 800;
+        line-height: 41px;
+        letter-spacing: -0.01em;
+        text-align: left;
+        color: $primary-color;
+
+        &_dark {
+        color: $primary-color-dark;
+
+        }
+
+      }
+
+      &_regular {
+        font-size: 22px;
+        font-weight: 500;
+        line-height: 28.12px;
+        text-align: left;
+        color: $secondary-color;
+        text-decoration: line-through;
+
+      }
+    }
+
+    &_info {
+      margin-top: 32px;
+
+      &_block {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+
+
+        &_title {
+          font-size: 12px;
+          font-weight: 600;
+          line-height: 15.34px;
+          text-align: left;
+          color: $secondary-color;
+          margin-bottom: 8px;
+
+          &:last-child {
+            margin-bottom: 0;
+          }
+
+          &_dark {
+            color: $secondary-color-dark;
+          }
+
+        }
+
+        &_result {
+          font-size: 12px;
+          font-weight: 600;
+          line-height: 15.34px;
+          text-align: right;
+          color: $primary-color;
+          margin-bottom: 8px;
+
+          &:last-child {
+            margin-bottom: 0;
+          }
+
+          &_dark {
+          color: $primary-color-dark;
+
+          }
+        }
+      }
+    }
+  }
+}

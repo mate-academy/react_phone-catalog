@@ -1,0 +1,170 @@
+@import "../../../styles/variables.scss";
+@import "../../../styles/mixins.scss";
+
+.card {
+  max-height: 506px;
+  width: 272px;
+  margin-right: 16px;
+  border: 1px solid $border-color;
+  padding: 32px;
+  transition: box-shadow 0.3s ease-in-out;
+
+  img {
+    transition: transform 0.3s ease-in-out;
+  }
+
+  &:hover {
+    box-shadow: inset 0 0 16px rgba(0, 0, 0, 0.5);
+  }
+
+  @include onTablet {
+    &:hover {
+      box-shadow: none;
+    }
+  }
+
+  &:hover img {
+    transform: scale(0.95);
+  }
+
+  &_dark {
+    background-color: $bg-dark-card;
+    border: 1px solid $bg-dark-card;
+
+
+    &:hover {
+      box-shadow: inset 0 0 10px #905BFF;
+    }
+
+    @include onTablet {
+      &:hover {
+        box-shadow: none;
+      }
+    }
+
+  }
+
+  &__link {
+    width: 100%;
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    object-fit: contain;
+    object-position: center;
+  }
+
+  &__box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    overflow: hidden;
+
+    height: 20vh;
+    width: 100%;
+    object-fit: contain;
+  }
+
+  &__box_image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+    overflow: hidden;
+  }
+
+  &__name {
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 21px;
+    text-align: left;
+    color: $primary-color;
+    margin-top: 8px;
+    padding-top: 24px;
+    height: 63px;
+
+    &_dark {
+      color: $primary-color-dark;
+    }
+
+  }
+
+  &__cash {
+    width: 100%;
+    display: flex;
+    justify-content: start;
+    gap: 8px;
+    margin-top: 8px;
+    margin-bottom: 16px;
+    border-bottom: 1px solid $secondary-color;
+    padding-bottom: 8px;
+
+    &_price {
+      font-size: 22px;
+      font-weight: 800;
+      line-height: 30.8px;
+      text-align: left;
+      color: $primary-color;
+
+      &_dark {
+        color: $primary-color-dark;
+      }
+
+    }
+
+    &_fullprice {
+      font-size: 22px;
+      font-weight: 800;
+      line-height: 30.8px;
+      text-align: left;
+      color: $secondary-color;
+
+      text-decoration: line-through;
+
+      &_dark {
+        color: $secondary-color-dark;
+      }
+    }
+  }
+
+  &__description {
+    width: 100%;
+    padding-bottom: 8px;
+
+    &_box {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+    &_title {
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 15.34px;
+      text-align: left;
+      color: $secondary-color;
+
+      &_dark {
+        color: $secondary-color-dark;
+      }
+
+    }
+
+    &_info {
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 15.34px;
+      text-align: right;
+      color: $primary-color;
+
+      &_dark {
+        color: $primary-color-dark;
+      }
+    }
+    }
+  }
+
+}

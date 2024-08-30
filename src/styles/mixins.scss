@@ -1,0 +1,55 @@
+@mixin XLonDesktop {
+  @media (min-width: 1200px) {
+    @content;
+  }
+}
+
+@mixin bigOnDesktop {
+  @media (max-width: 1199px) {
+    @content;
+  }
+}
+
+@mixin onDesktop {
+  @media (max-width: 900px) {
+    @content;
+  }
+}
+
+
+@mixin onTablet {
+
+  @media (max-width: 640px) {
+    @content;
+  }
+}
+
+
+@mixin onPhones {
+  @media (min-width: 320px) {
+
+    @content;
+
+  }
+
+}
+
+@mixin grid-align {
+  display: grid;
+  grid-template-columns: repeat(24, 32px);
+  column-gap: 16px;
+
+
+  @include bigOnDesktop() {
+    grid-template-columns: repeat(12, 1fr);
+  }
+  @include onDesktop() {
+    grid-template-columns: repeat(12, 1fr);
+  }
+
+  @include onTablet() {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+

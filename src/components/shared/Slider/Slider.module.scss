@@ -1,0 +1,46 @@
+@import "../../../styles/variables.scss";
+@import "../../../styles/mixins.scss";
+
+.slider {
+  max-height: 600px;
+  overflow: hidden;
+  margin-top: 112px;
+  padding-top: 20px;
+
+  @include onDesktop {
+    padding-left: 16px;
+    padding-right: 0 !important;
+
+  }
+
+  @include onTablet {
+    padding-left: 16px;
+    padding-right: 0 !important;
+
+  }
+
+  &__title {
+    font-size: 32px;
+    font-weight: 800;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+    text-align: left;
+    color: $primary-color;
+    margin-bottom: 24px;
+
+    &_dark {
+      color: $primary-color-dark;
+    }
+
+    @include onTablet {
+      max-width: 136px;
+      font-size: 22px;
+      font-weight: 800;
+      line-height: 30.8px;
+      text-align: left;
+
+    }
+
+  }
+
+}

@@ -1,0 +1,237 @@
+@import '../../../../../styles/mixins.scss';
+@import '../../../../../styles/variables.scss';
+
+.carousel {
+  margin-top: 56px;
+  padding-top: 56px;
+  position: relative;
+
+  @include grid-align;
+
+  @include onTablet {
+    padding-top: 24px;
+    margin-top: 56px;
+  }
+
+  @include onDesktop {
+    padding-top: 24px;
+    margin-top: 56px;
+  }
+
+
+  &__title {
+    grid-column: span 17;
+    font-size: 48px;
+    font-weight: 800;
+    line-height: 56px;
+    letter-spacing: -0.01em;
+    text-align: left;
+    color: $primary-color;
+    margin-bottom: 56px;
+
+    &-dark {
+      color: $primary-color-dark;
+    }
+
+    @include onDesktop {
+      grid-column: span 9;
+    }
+
+    @include onTablet {
+      grid-column: span 4;
+      font-size: 32px;
+    line-height: 41px;
+    padding: 0 16px;
+
+    }
+  }
+
+
+
+  &__banner {
+    position: relative;
+    grid-column: 2 / 24;
+
+    width: 100%;
+    margin: 0 auto;
+    max-height: 400px;
+
+    @include bigOnDesktop {
+    grid-column: 2 / 16;
+    left: -19px;
+    }
+
+    @include onDesktop {
+    left: 0;
+    grid-column: 2 / 12;
+
+
+    }
+
+    @include onTablet {
+      grid-column: span 4;
+    }
+
+    &_link {
+      position: relative;
+      height: 400px;
+      width: 100%;
+      border-right: 2px solid $white;
+      border-left: 2px solid $white;
+      background: linear-gradient(75deg, #282828, #414345, #283048, #4B0082, #DAA520, #2980B9, #9B59B6);
+      background-image: radial-gradient(circle at top left, #2980B9, #9B59B6, #DAA520, #4B0082);
+
+
+      @include onTablet {
+      height: 320px;
+
+      }
+      &-dark {
+        border-right: 2px solid $BG-dark;
+        border-left: 2px solid $BG-dark;
+      }
+
+    }
+
+    &_img {
+      position: absolute;
+    }
+
+    .image_0 {
+        width: 75% !important;
+        bottom: -45% !important;
+        left: 13% !important;
+
+        @include bigOnDesktop {
+        bottom: -35% !important;
+        }
+
+        @include onDesktop {
+          bottom: -30% !important;
+          width: 85% !important;
+          left: 8% !important;
+
+
+        }
+
+        @include onTablet {
+          width: 85% !important;
+          bottom: -24% !important;
+
+        }
+
+
+    }
+
+    .image_1 {
+      width: 50% !important;
+      bottom: -5% !important;
+      left: 25% !important;
+
+      @include onDesktop {
+        bottom: -2% !important;
+      }
+
+      @include onTablet {
+        width: 55% !important;
+        bottom: 0% !important;
+
+      }
+    }
+
+    .image_2 {
+      width: 40%;
+      bottom: -40%;
+      left: 29%;
+
+      @include bigOnDesktop {
+      bottom: -25%;
+
+      }
+
+      @include onDesktop {
+        bottom: -16% !important;
+      }
+
+      @include onTablet {
+        width: 45% !important;
+        bottom: -15% !important;
+
+      }
+    }
+
+    &_title {
+      display: flex;
+      justify-content: center;
+      font-size: 50px;
+      color: $white;
+      box-shadow: #2f2f2f;
+      margin-top: 30px;
+
+      font-weight: 800;
+      line-height: 56px;
+      letter-spacing: -0.01em;
+
+      @include bigOnDesktop {
+        font-size: 36px;
+
+      }
+
+      @include onDesktop {
+        font-size: 32px;
+      }
+
+      @include onTablet {
+        font-size: 20px;
+        margin-top: 15px;
+        line-height: 26px;
+
+        text-align: center;
+      }
+    }
+
+    &_text {
+      display: flex;
+      justify-content: center;
+      text-align: center;
+      max-width: 520px;
+      margin: 0 auto;
+      font-size: 16px;
+      color: $white;
+      margin-top: 8px;
+      box-shadow: #2f2f2f;
+
+
+      font-weight: 800;
+
+      @include onTablet {
+        font-size: 12px;
+      margin-top: 12px;
+      max-width: 320px;
+
+      }
+    }
+  }
+}
+
+.dots {
+  position: absolute;
+  bottom: 0;
+  height: 4px;
+  width: 14px;
+  background-color: $secondary-color;
+
+  &_dark {
+  background-color: $secondary-color-dark;
+
+  }
+
+}
+
+.dots.active {
+  background-color: $primary-color;
+
+  &_dark {
+    background-color: $primary-color-dark;
+  }
+}

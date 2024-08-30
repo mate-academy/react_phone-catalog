@@ -1,0 +1,268 @@
+@import "../../../../../styles/variables.scss";
+@import "../../../../../styles/mixins.scss";
+
+.good {
+  height: 128px;
+  max-width: 752px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid $BG;
+
+
+  &_dark {
+    border: none;
+    background-color: $bg-dark-card;
+  }
+
+  @include bigOnDesktop {
+    max-width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  @include onTablet {
+    height: 160px;
+    width: 100%;
+    display: flex;
+    justify-content: start;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__container {
+    max-width: 752px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+
+  @include bigOnDesktop {
+    max-width: 100%;
+    display: flex;
+    align-items: center;
+  }
+
+  @include onTablet {
+    display: flex;
+    justify-content: space-between;
+    align-self: start;
+    align-items: center;
+    margin-top: 16px;
+
+  }
+
+
+  }
+
+  &__delate {
+    display: block;
+    width: 16px;
+    height: 16px;
+    background-image: url(../../../../../../public/img/icons/close.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 16px 16px;
+    margin-left: 24px;
+    margin-right: 24px;
+    border: 1px solid transparent;
+    transition: all 0.3s ease-in-out;
+
+    cursor: pointer;
+    padding: 16px;
+
+    &:hover {
+      border: 1px solid $BG;
+    }
+
+    &_dark {
+      border: transparent;
+      &:hover {
+        border: transparent;
+        background-color: $bg-dark-ikons-hover;
+      }
+    }
+
+    @include onTablet {
+      margin-left: 16px;
+      margin-right: 16px;
+
+    }
+  }
+
+  &__images {
+    img {
+      width: 50px;
+      transition: transform 0.3s ease;
+
+      &:hover {
+        transform: scale(1.1);
+      }
+    }
+  }
+
+  &__name {
+    width: 300px;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 21px;
+    text-align: left;
+    color: $primary-color;
+    margin-left: 24px;
+    margin-right: 56px;
+    transition: all 0.3s ease;
+
+    @include onDesktop {
+      width: 140px;
+    }
+
+    @include onTablet {
+      width: max-content;
+      margin-left: 16px;
+      margin-right: 16px;
+    }
+
+
+    &:hover {
+      transform: translateY(-2px);
+    }
+
+    &_dark {
+      color: $primary-color-dark;
+    transition: all 0.3s ease;
+
+
+      &:hover {
+        transform: translateY(-2px);
+      }
+    }
+
+  }
+
+  &__counter {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+
+    @include onTablet {
+      display: flex;
+      justify-content: space-between;
+      align-self: start;
+      margin-top: 16px;
+      margin-left: 16px;
+    }
+
+    &_minus {
+      width: 32px;
+      height: 32px;
+      background-image: url(../../../../../../public/img/icons/Minus.svg);
+      background-position: center;
+      background-repeat: no-repeat;
+      border: 1px solid $BG;
+      padding: 10px;
+      cursor: pointer;
+      transition: all 0.3s ease-in-out;
+
+      &:hover {
+        border-color: $primary-color;
+      }
+
+      &:disabled {
+        cursor: default;
+        border-color: $primary-color-dark;
+      }
+
+      &_dark {
+        background-image: url(../../../../../../public/img/dark-icons/Minus-dark.svg);
+        border: none;
+        background-color: $bg-dark-ikons;
+
+        &:disabled {
+          cursor: default;
+          background-image: url(../../../../../../public/img/icons/Minus.svg);
+          border: 1px solid $secondary-color-dark;
+          background-color: transparent;
+
+          &:hover {
+          background-color: transparent;
+
+          }
+        }
+
+        &:hover {
+          background-color: $bg-dark-ikons-hover;
+        }
+      }
+    }
+
+
+    &_plus {
+      border: 1px solid $BG;
+      background-position: center;
+      padding: 10px;
+      width: 32px;
+      height: 32px;
+      background-image: url(../../../../../../public/img/icons/Plus.svg);
+      background-repeat: no-repeat;
+      transition: all 0.3s ease-in-out;
+      cursor: pointer;
+
+      &:hover {
+        border-color: $primary-color;
+      }
+
+      &_dark {
+        background-image: url(../../../../../../public/img/dark-icons/Plus-dark.svg);
+        border: none;
+        background-color: $bg-dark-ikons;
+
+        &:hover {
+          background-color: $bg-dark-ikons-hover;
+        }
+      }
+
+
+
+    }
+
+    &_number {
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 21px;
+      text-align: center;
+      color: $primary-color;
+
+
+      &_dark {
+        color: $primary-color-dark;
+
+      }
+
+    }
+  }
+
+  &__price {
+    display: flex;
+    justify-content: flex-end;
+    font-size: 22px;
+    font-weight: 800;
+    line-height: 30.8px;
+    text-align: right;
+    color: $primary-color;
+    margin-right: 24px;
+    margin-left: 24px;
+
+    &_dark {
+      color: $primary-color-dark;
+
+    }
+
+    @include onTablet {
+      display: flex;
+    }
+
+  }
+}
