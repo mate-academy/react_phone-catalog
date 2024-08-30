@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './Sort.module.scss';
 import { useAppContext } from '../../context/AppContext';
 
-type SortMethodTypes = "newest" | "alpha" | "price";
+export type SortMethodTypes = "newest" | "alpha" | "price";
 
 export const Sort: React.FC = () => {
   const {sortMethod, setSortMethod} = useAppContext();
@@ -10,6 +10,8 @@ export const Sort: React.FC = () => {
   const handleMethodChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const value = event.target.value as SortMethodTypes;
     setSortMethod(value);
+    localStorage.setItem('sortMethod', JSON.stringify(sortMethod));
+    console.log('SORT METHOD SET TO', sortMethod)
   }
 
   return (

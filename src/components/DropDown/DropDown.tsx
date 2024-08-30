@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import styles from './DropDown.module.scss';
 import { useAppContext } from '../../context/AppContext';
 
@@ -10,8 +10,15 @@ export const DropDown: React.FC<DropDownProps> = ({ numberOfProducts }) => {
   const {numberOfProductsPerPage, setNumberOfProductsPerPage} = useAppContext()
   const handleSelectionChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const value = event.target.value;
-    setNumberOfProductsPerPage(value === 'all' ? numberOfProducts : Number(value))
+    setNumberOfProductsPerPage(value === 'all' ? numberOfProducts : Number(value)) //BUG HERE!!!! - Number(value) jest inne dla kazdej kategorii!!!! powinno zalezce od ilosci elementow spelniajacych warunek
+
+
   };
+
+  useEffect(()=> {
+    console.log('PRODUCTS PER PAGE SET TO', numberOfProductsPerPage)
+    localStorage.setItem('numberOfProductsPerPage', JSON.stringify(numberOfProductsPerPage));
+  },[numberOfProductsPerPage])
 
   return (
     <div>
