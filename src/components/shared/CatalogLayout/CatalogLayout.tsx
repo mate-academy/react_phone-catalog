@@ -23,6 +23,10 @@ export const CatalogLayout: React.FC<Props> = ({ products }) => {
     setSortedProducts([...products].sort((a, b) => b.year - a.year));
   }, [products]);
 
+  // useEffect(() => {
+  //   setCurrentPage(1);
+  // }, [itemsPerPage]);
+
   const handlePageChange = (page: number) => {
     setCurrentPage(page);
   };
@@ -38,6 +42,12 @@ export const CatalogLayout: React.FC<Props> = ({ products }) => {
 
   const startPage = currentPaginationGroup * pagesPerGroup + 1;
   const endPage = Math.min(startPage + pagesPerGroup - 1, totalPages);
+
+  useEffect(() => {
+    setCurrentPage(1);
+
+    setCurrentPaginationGroup(0);
+  }, [itemsPerPage, pagesPerGroup]);
 
   return (
     <div className={styles.catalog}>
