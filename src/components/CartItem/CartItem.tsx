@@ -10,23 +10,36 @@ import { Link, useSearchParams } from 'react-router-dom';
 type CartItemProps = {
   item: Product;
   updateCart: (item: Product, action: CartActionType) => void;
+  setItemsOnPage: (page: number) => void;
 };
 
-export const CartItem: React.FC<CartItemProps> = ({ item, updateCart }) => {
+export const CartItem: React.FC<CartItemProps> = ({ item, updateCart, setItemsOnPage }) => {
   const { image, name, price, count = 1, totalPrice = price } = item;
-  const [searchParams] = useSearchParams();
+  const [searchParams, setSearchParams] = useSearchParams();
 
   const handleCalcItem = (type: 'increase' | 'decrease') => {
-    const newCount = type === 'increase' ? count + 1 : count - 1;
+    let newCount = type === 'increase' ? count + 1 : count - 1;
+
+    // Ensure the count doesn't go below 1
+    if (newCount < 1) {
+      newCount = 1;
+    }
+
+    // Ensure the totalPrice doesn't go negative
+    const newTotalPrice = newCount * price >= 0 ? newCount * price : 0;
 
     updateCart(
       {
         ...item,
         count: newCount,
-        totalPrice: newCount * price,
+        totalPrice: newTotalPrice,
       },
       CartActionType.UPDATE,
     );
+
+    // Optional: Reset page to 1 if needed when updating the item
+    setSearchParams({ page: '1' });
+    setItemsOnPage(1);
   };
 
   return (

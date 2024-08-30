@@ -10,7 +10,7 @@ import { HomePage } from './pages/HomePage';
 import { CatalogPage } from './pages/CatalogPage';
 import { ItemPage } from './pages/ItemPage';
 import { FavoritePage } from './pages/FavoritePage';
-import { CartPage } from './pages/CartPage';
+import CartPage from './pages/CartPage';
 import { NotFoundPage } from './pages/NotFoundPage';
 import { App } from './App';
 import { FavoritesProvider } from './contexts/FavoritesContext';

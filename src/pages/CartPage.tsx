@@ -1,13 +1,14 @@
-import { useEffect, useState } from 'react';
-import { CartItem } from '../components/CartItem';
-import { CardButton } from '../components/ui/CardButton';
-import { GoBackLink } from '../components/ui/GoBackLink';
+import React, { useState, useEffect } from 'react';
+import { CartItem } from '../components/CartItem/CartItem';
+// import { Product } from '../types/Product';
+import { CartActionType } from '../types/CartActionType';
 import { useCart } from '../hooks/useCart';
 import { NotFoundProductPage } from './NotFoundProductPage';
+import { GoBackLink } from '../components/ui/GoBackLink';
+import { CardButton } from '../components/ui/CardButton';
 import { CartModal } from '../components/CartModal';
-import { CartActionType } from '../types/CartActionType';
 
-export const CartPage = () => {
+const CartPage: React.FC = () => {
   const { cart, updateCart } = useCart();
   const [totalPrice, setTotalPrice] = useState(() =>
     cart.reduce((acc, item) => acc + item.price * (item.count || 1), 0),
@@ -56,6 +57,7 @@ export const CartPage = () => {
               key={itemCart.id}
               item={itemCart}
               updateCart={updateCart}
+              setItemsOnPage={() => {}} // Dummy function, modify as needed
             />
           ))}
         </div>
@@ -71,7 +73,6 @@ export const CartPage = () => {
           <CardButton
             style={{ height: '48px', width: '100%' }}
             variant="primary"
-            /* eslint-disable-next-line no-console */
             onClick={() => toggleModal()}
           >
             Checkout
@@ -88,3 +89,5 @@ export const CartPage = () => {
     </div>
   );
 };
+
+export default CartPage;
