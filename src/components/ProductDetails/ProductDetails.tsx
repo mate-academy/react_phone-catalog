@@ -59,6 +59,7 @@ export const ProductDetails: React.FC<Props> = ({ category }) => {
   const onDesktop = useContext(Desktop);
   const onTablet = useContext(Tablet);
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const mayLikeRef = useRef<any>(null);
 
   const slidesPerVeiw = () => {
