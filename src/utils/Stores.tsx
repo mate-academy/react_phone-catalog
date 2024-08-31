@@ -16,7 +16,7 @@ interface Basket {
 }
 
 export const useFavorites = create<Favorites>(set => ({
-  favorites: JSON.parse(localStorage.getItem('favoriteArr') ?? '') || [],
+  favorites: JSON.parse(localStorage.getItem('favoriteArr') ?? '[]') || [],
   addFavorite: (favorite: Product) =>
     set(state => {
       localStorage.setItem(
