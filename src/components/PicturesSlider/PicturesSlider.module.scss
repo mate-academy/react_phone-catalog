@@ -1,0 +1,77 @@
+@import '../../styles/vars';
+
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+.wrapper {
+  display: flex;
+  gap: 16px;
+}
+
+.button {
+  width: 32px;
+  border: 1px solid;
+  border-color: $color-icons-placeholders;
+  background: transparent;
+  transition: border-color $hover-delay;
+  cursor: pointer;
+
+  &:hover {
+    border-color: $color-primary;
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+}
+
+.imagesWrapper {
+  display: flex;
+  width: 1040px;
+  height: 400px;
+  overflow: hidden;
+}
+
+.link {
+  align-items: center;
+  cursor: pointer;
+  display: flex;
+  height: 100%;
+  min-width: 100%;
+}
+
+.image {
+  transition: transform 0.5s ease-in-out;
+  width: 100%;
+}
+
+.dotsWrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 8px;
+}
+
+.dot {
+  width: 24px;
+  height: 24px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+
+  & span {
+    display: block;
+    width: 14px;
+    height: 4px;
+    text-align: center;
+    background: $color-elements;
+  }
+}
+
+.activeDot {
+  & span {
+    background: $color-primary;
+  }
+}

@@ -1,0 +1,197 @@
+@import '../../styles/vars';
+
+.container {
+  width: 100%;
+}
+
+.header {
+  margin-bottom: 24px;
+  font-family: $font-bold;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 41px;
+  color: $color-primary;
+}
+
+.menu {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.item {
+  flex: 1;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.image {
+  width: 100%;
+  height: auto;
+  padding: 50%;
+  margin-bottom: 24px;
+  background-repeat: no-repeat;
+}
+
+.phones {
+  background-size: 115%;
+  background-position-y: 5%;
+  background-position-x: -60%;
+  background-color: #fcdbc1;
+  background-image: url(../../../public/img/category-phones.png);
+  transition:
+    background-size $hover-delay,
+    background-position-x $hover-delay,
+    background-position-y $hover-delay;
+
+  &:hover {
+    background-size: 125%;
+    background-position-x: 15%;
+    background-position-y: 12%;
+  }
+}
+
+.tablets {
+  background-size: 135%;
+  background-position-y: -10%;
+  background-position-x: -40%;
+  background-color: #8d8d92;
+  background-image: url(../../../public/img/category-tablets.png);
+  transition:
+    background-size $hover-delay,
+    background-position-y $hover-delay,
+    background-position-x $hover-delay;
+
+  &:hover {
+    background-size: 145%;
+    background-position-y: 0%;
+    background-position-x: 0%;
+  }
+}
+
+.accessories {
+  background-size: 190%;
+  background-position-y: bottom;
+  background-position-x: -5%;
+  background-color: #973d5f;
+  background-image: url(../../../public/img/category-accessories.png);
+  transition:
+    background-size $hover-delay,
+    background-position-y $hover-delay,
+    background-position-x $hover-delay;
+
+  &:hover {
+    background-size: 200%;
+    background-position-y: 113%;
+    background-position-x: 5%;
+  }
+}
+
+.name {
+  color: $color-primary;
+  font-family: $font-semi;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 25px;
+}
+
+.items_count {
+  color: $color-secondary;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 21px;
+}
+
+// .Categories {
+//   &__header {
+//     margin-bottom: 24px;
+//     font-family: $font-bold;
+//     font-weight: 700;
+//     font-size: 32px;
+//     line-height: 41px;
+//     color: $color-primary;
+//   }
+
+//   &__container {
+//     width: 100%;
+//   }
+
+//   &__menu {
+//     display: flex;
+//     justify-content: space-between;
+//     gap: 12px;
+//   }
+
+//   &__item {
+//     flex: 1;
+//   }
+
+//   &__link {
+//     display: block;
+//     padding: 8px 8px;
+//     border: 1px solid transparent;
+//     transition: border $hover-delay;
+
+//     &:hover {
+//       border: 1px solid $color-secondary;
+//     }
+//   }
+
+//   &__wrapper {
+//     display: flex;
+//     flex-direction: column;
+//   }
+
+//   &__image {
+//     // width: 368px;
+//     // height: 368px;
+//     width: 100%;
+//     height: auto;
+//     padding: 50%;
+//     margin-bottom: 24px;
+//     background-repeat: no-repeat;
+
+//     &--phones {
+//       background-size: 115%;
+//       background-position-y: 5%;
+//       background-position-x: -60%;
+//       background-color: #fcdbc1;
+//       // background-image: url(../../../public/img/category-phones.png);
+//     }
+
+//     &--tablets {
+//       background-size: 135%;
+//       background-position-y: -10%;
+//       background-position-x: -40%;
+//       background-color: #8d8d92;
+//       // background-image: url(../../../public/img/category-tablets.png);
+//     }
+
+//     &--accessories {
+//       background-size: 190%;
+//       background-position-y: bottom;
+//       background-position-x: -5%;
+//       background-color: #973d5f;
+//       // background-image: url(../../../public/img/category-accessories.png);
+//     }
+//   }
+
+//   &__name {
+//     // margin-bottom: 24px;
+//     color: $color-primary;
+//     font-family: $font-semi;
+//     font-weight: 600;
+//     font-size: 20px;
+//     line-height: 25px;
+//   }
+
+//   &__items-count {
+//     color: $color-secondary;
+//     font-weight: 500;
+//     font-size: 14px;
+//     line-height: 21px;
+//   }
+// }

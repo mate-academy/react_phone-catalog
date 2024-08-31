@@ -1,0 +1,71 @@
+@import '../../styles/vars';
+
+.container {
+  position: sticky;
+  top: 0;
+  display: flex;
+  justify-content: space-between;
+  background-color: $color-white;
+  box-shadow: 0 1px 0 0 $color-elements;
+  z-index: 1;
+}
+
+.logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 64px 0 24px;
+}
+
+.logo > svg {
+  margin-top: -4px;
+}
+
+.left_side,
+.right_side {
+  display: flex;
+}
+
+.search {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: -1px 0 0 0 $color-elements;
+}
+
+.input {
+  width: 327px;
+  height: 64px;
+  padding-left: 24px;
+  color: $color-icons-placeholders;
+  font-family: $font-regular;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  background-color: $color-white;
+  outline: none;
+  border: none;
+}
+
+.icon {
+  margin: 24px;
+}
+
+.favourite,
+.cart {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 64px;
+  height: 64px;
+  box-sizing: content-box;
+  background-color: $color-white;
+  box-shadow: -1px 0 0 0 $color-elements;
+  border-bottom: 3px solid transparent;
+  transition: border-bottom $hover-delay;
+
+  &:hover {
+    border-bottom: 3px solid $color-primary;
+  }
+}

@@ -1,0 +1,32 @@
+@import '../../styles/vars';
+
+.container {
+  display: flex;
+  gap: 64px;
+  width: 425px;
+}
+
+.link {
+  display: block;
+  padding-block: 26px;
+  color: $color-secondary;
+  font-family: $font-bold;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 11px;
+  letter-spacing: 0.48px;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-bottom: 3px solid transparent;
+  transition: color $hover-delay;
+
+  &:hover {
+    color: $color-primary;
+  }
+}
+
+.active {
+  color: $color-primary;
+  border-bottom: 3px solid $color-primary;
+}

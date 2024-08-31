@@ -1,0 +1,142 @@
+@import '../../styles/vars';
+
+.container {
+  width: 272px;
+  padding: 32px;
+  border: 1px solid $color-elements;
+  background: $color-white;
+}
+
+.inner {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.image {
+  display: block;
+  width: fit-content;
+  height: 208px;
+  margin: 0 auto;
+  transform: none;
+  transition: transform $hover-delay;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+
+.name {
+  height: 58px;
+  padding-top: 16px;
+  color: $color-primary;
+  font-family: $font-regular;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 21px;
+}
+
+.prices {
+  display: flex;
+  gap: 8px;
+}
+
+.actual,
+.previous {
+  height: 31px;
+  font-size: 22px;
+  line-height: 31px;
+}
+
+.actual {
+  height: 31px;
+  color: $color-primary;
+  font-family: $font-bold;
+  font-weight: 800;
+}
+
+.previous {
+  font-family: $font-regular;
+  color: $color-secondary;
+  font-weight: 500;
+  line-height: normal;
+  text-decoration: line-through;
+}
+
+.line {
+  width: 100%;
+  border: none;
+  border-top: 1px solid $color-elements;
+}
+
+.details {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-block: 8px;
+}
+
+.screen,
+.capacity,
+.ram {
+  display: flex;
+  justify-content: space-between;
+
+  & > p {
+    color: $color-secondary;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 15px;
+
+    &:last-child {
+      color: $color-primary;
+      font-weight: 700;
+      font-size: 12px;
+    }
+  }
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.add_to_card {
+  width: 160px;
+  height: 40px;
+  font-family: $font-regular;
+  color: $color-white;
+  text-align: center;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 21px;
+  background: $color-primary;
+  border: none;
+  box-shadow: none;
+  transition: box-shadow $hover-delay;
+  cursor: pointer;
+
+  &:hover {
+    box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.26);
+  }
+}
+
+.favourite {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  background-color: transparent;
+  border: 1px solid $color-icons-placeholders;
+  transition: border $hover-delay;
+  cursor: pointer;
+
+  &:hover {
+    border: 1px solid $color-primary;
+  }
+}

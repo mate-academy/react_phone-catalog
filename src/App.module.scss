@@ -1,0 +1,17 @@
+@import './styles/vars';
+@import './styles/global';
+
+.App {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+  flex: 1 1;
+  width: $content-width;
+  margin: 0 auto;
+}

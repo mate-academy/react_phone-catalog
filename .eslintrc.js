@@ -3,5 +3,9 @@ module.exports = {
     '@mate-academy/eslint-config-react-typescript',
     'plugin:cypress/recommended',
   ],
-  rules: {},
+  rules: {
+    'max-len': 'off',
+    'jsx-a11y/label-has-associated-control': 'off',
+    'jsx-a11y/control-has-associated-label': 'off',
+  },
 };

@@ -1,0 +1,59 @@
+@import '../../styles/vars';
+
+.top {
+  display: flex;
+  justify-content: space-between;
+}
+
+.title {
+  margin-bottom: 24px;
+  font-family: $font-bold;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 41px;
+  color: $color-primary;
+}
+
+.button_wrapper {
+  display: flex;
+  gap: 16px;
+}
+
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 32px;
+  height: 32px;
+  color: $color-primary;
+  background: transparent;
+  border: 1px solid;
+  border-color: #b4bdc3;
+  cursor: pointer;
+  transition:
+    color $hover-delay,
+    border-color $hover-delay;
+
+  &:hover {
+    border-color: $color-primary;
+  }
+
+  &:disabled {
+    color: #b4bdc3;
+    border-color: #e2e6e9;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+}
+
+.cards_wrapper {
+  display: flex;
+  overflow: hidden;
+}
+
+.list {
+  display: flex;
+  gap: 16px;
+  transform: none;
+  transition: transform $hover-delay;
+}

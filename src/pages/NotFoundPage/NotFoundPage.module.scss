@@ -1,0 +1,22 @@
+@import '../../styles/vars';
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.header {
+  padding-block: 24px;
+  color: $color-primary;
+  font-family: $font-bold;
+  font-weight: 700;
+  font-size: 32px;
+  text-align: center;
+  line-height: 41px;
+}
+
+.image {
+  margin-bottom: 50px;
+  width: 35%;
+}
