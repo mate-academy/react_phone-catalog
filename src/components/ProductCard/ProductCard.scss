@@ -149,9 +149,13 @@
     &--catalog {
       width: 175px;
 
-    @include on-desktop {
-      width: 160px;
+      @include on-desktop {
+        width: 160px;
+      }
     }
+
+    &--favorites {
+      width: 175px;
     }
 
     &--added {

@@ -1,7 +1,6 @@
 html {
   position: relative;
   scroll-behavior: smooth;
-  overflow-x: hidden;
 
   &:has(.hidden-overflow) {
     overflow: hidden;

@@ -91,7 +91,7 @@ export const Header = () => {
           }
         >
           {favorites.length !== 0 && (
-            <div className="header__products-counter">{favorites.length}</div>
+            <div className="products-counter">{favorites.length}</div>
           )}
         </NavLink>
         <NavLink
@@ -103,7 +103,7 @@ export const Header = () => {
           }
         >
           {basketStore.length !== 0 && (
-            <div className="header__products-counter">{basketStore.length}</div>
+            <div className="products-counter">{basketStore.length}</div>
           )}
         </NavLink>
       </div>

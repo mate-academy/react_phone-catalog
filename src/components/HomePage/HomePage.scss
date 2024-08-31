@@ -192,7 +192,7 @@ body {
 
   &__swiper {
     grid-column: 1/-1;
-    width: calc(100% + 20px);
+    width: calc(100% + 15px);
   }
 }
 
@@ -291,20 +291,24 @@ body {
 // #endregion
 // #region hot-prices
 .hot-prices {
-  @include page-grid;
-
+  @include on-tablet {
+    @include page-grid;
+  }
+  
   &__title {
     grid-column: 1 / 9;
+    grid-row: 1/2;
     margin: 0;
     margin-bottom: 25px;
   }
 
   &__swiper {
     grid-column: 1/-1;
-    width: calc(100% + 20px);
+    width: calc(100% + 15px);
   }
 
   &__buttons-box {
+    grid-row: 1/2;
     margin-block: 0 24px;
   }
 }

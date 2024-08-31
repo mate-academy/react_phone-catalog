@@ -5,9 +5,14 @@ import { Header } from '../Header/Header';
 import './BasketPage.scss';
 import { useBasket } from '../../utils/Stores';
 import { Product } from '../../types/Propduct';
+import { Menu } from '../Menu/Menu';
+import { useContext } from 'react';
+import { MenuOpen } from '../../utils/MenuContext';
 
 export const BasketPage = () => {
   const navigate = useNavigate();
+
+  const { isMenuOpen } = useContext(MenuOpen);
 
   const basketStore = useBasket(state => state.basket);
 
@@ -32,6 +37,7 @@ export const BasketPage = () => {
   return (
     <>
       <Header />
+      {isMenuOpen && <Menu />}
       <main className="basket-page">
         <button
           onClick={() => navigate(-1)}
