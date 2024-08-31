@@ -79,7 +79,7 @@ export const Menu = () => {
           }
           onClick={() => setIsMenuOpen(false)}
         >
-          <img src="/img/heart-icon.svg" alt="favorites" />
+          <img src="./img/heart-icon.svg" alt="favorites" />
           {favorites.length !== 0 && (
             <div className="products-counter">{favorites.length}</div>
           )}
@@ -93,7 +93,7 @@ export const Menu = () => {
           }
           onClick={() => setIsMenuOpen(false)}
         >
-          <img src="/img/basket-icon.svg" alt="basket" />
+          <img src="./img/basket-icon.svg" alt="basket" />
           {basketStore.length !== 0 && (
             <div className="products-counter">{basketStore.length}</div>
           )}
