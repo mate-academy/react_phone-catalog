@@ -52,7 +52,7 @@ const Footer: React.FC = () => {
             GitHub
           </NavLink>
           <NavLink
-            to="https://github.com/Miishca"
+            to="https://www.linkedin.com/in/mykhailo-ivoniuk/"
             className={styles.item}
             target="_blank"
           >
