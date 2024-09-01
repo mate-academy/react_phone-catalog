@@ -3,9 +3,11 @@ import { useLocation, useSearchParams } from 'react-router-dom';
 import styles from './Search.module.scss';
 import classNames from 'classnames';
 import debounce from 'lodash.debounce';
+import { useTheme } from '../../context/ThemeContext';
 
 export const Search: React.FC = () => {
   const { pathname } = useLocation();
+  const { theme } = useTheme();
 
   const [searchParams, setSearchParams] = useSearchParams();
   const [query, setQuery] = useState(searchParams.get('query') || '');
@@ -13,7 +15,7 @@ export const Search: React.FC = () => {
   useEffect(() => {
     setQuery('');
     setSearchParams({});
-  }, [pathname]);
+  }, [pathname, theme]);
 
   const updateSearchQuery = (value: string) => {
     const trimmedValue = value.trim();
@@ -52,6 +54,7 @@ export const Search: React.FC = () => {
         value={query}
         onChange={handleSearchChange}
         placeholder={`Search in ${pathname.replace('/', '')}...`}
+        autoComplete="off"
         className={styles.searchInput}
       />
     </div>
