@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useLocation, useSearchParams } from 'react-router-dom';
 import styles from './Search.module.scss';
 import classNames from 'classnames';
@@ -9,6 +9,11 @@ export const Search: React.FC = () => {
 
   const [searchParams, setSearchParams] = useSearchParams();
   const [query, setQuery] = useState(searchParams.get('query') || '');
+
+  useEffect(() => {
+    setQuery('');
+    setSearchParams({});
+  }, [pathname]);
 
   const updateSearchQuery = (value: string) => {
     const trimmedValue = value.trim();
