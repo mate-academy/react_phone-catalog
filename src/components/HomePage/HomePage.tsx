@@ -23,7 +23,8 @@ import { Footer } from '../Footer/Footer';
 import { Link } from 'react-router-dom';
 
 export const HomePage = () => {
-  const [currentSlide, setCurrentSlide] = useState(0);
+  const [hotCurrentSlide, setHotCurrentSlide] = useState(0);
+  const [brandsCurrentSlide, setBrandsCurrentSlide] = useState(0);
   const [brandsProducts, setBrandsProduct] = useState<Product[]>([]);
   const [hotPricesProducts, setHotPricesProduct] = useState<Product[]>([]);
 
@@ -163,13 +164,17 @@ export const HomePage = () => {
               className="navigation-button"
               onClick={() => brandsSwiperRef.current.slidePrev()}
             >
-              <img src="./img/arrow-prev.svg" alt="slide prev" />
+              {brandsCurrentSlide !== 0 ? (
+                <img src="./img/arrow-prev.svg" alt="slide prev" />
+              ) : (
+                <img src="./img/arrow-prev-disabled.svg" alt="slide prev" />
+              )}
             </button>
             <button
               className="navigation-button"
               onClick={() => brandsSwiperRef.current.slideNext()}
             >
-              {currentSlide !== 60 ? (
+              {brandsCurrentSlide !== brandsProducts.length ? (
                 <img src="./img/arrow-next.svg" alt="slide next" />
               ) : (
                 <img src="./img/arrow-next-disabled.svg" alt="slide next" />
@@ -185,7 +190,7 @@ export const HomePage = () => {
               brandsSwiperRef.current = swiper;
             }}
             onSlideChange={swiper => {
-              setCurrentSlide(swiper.realIndex);
+              setBrandsCurrentSlide(swiper.realIndex);
             }}
           >
             {filterProducts(brandsProducts).map(product => (
@@ -264,9 +269,9 @@ export const HomePage = () => {
             <button
               className="navigation-button "
               onClick={() => hotPricesSwiperRef.current.slidePrev()}
-              disabled={currentSlide === 0}
+              disabled={hotCurrentSlide === 0}
             >
-              {currentSlide !== 0 ? (
+              {hotCurrentSlide !== 0 ? (
                 <img src="./img/arrow-prev.svg" alt="slide prev" />
               ) : (
                 <img src="./img/arrow-prev-disabled.svg" alt="slide prev" />
@@ -276,7 +281,7 @@ export const HomePage = () => {
               className="navigation-button"
               onClick={() => hotPricesSwiperRef.current.slideNext()}
             >
-              {currentSlide !== 60 ? (
+              {hotCurrentSlide !== 60 ? (
                 <img src="./img/arrow-next.svg" alt="slide next" />
               ) : (
                 <img src="./img/arrow-next-disabled.svg" alt="slide next" />
@@ -291,7 +296,7 @@ export const HomePage = () => {
               hotPricesSwiperRef.current = swiper;
             }}
             onSlideChange={swiper => {
-              setCurrentSlide(swiper.realIndex);
+              setHotCurrentSlide(swiper.realIndex);
             }}
           >
             {filterProducts(hotPricesProducts).map(product => (

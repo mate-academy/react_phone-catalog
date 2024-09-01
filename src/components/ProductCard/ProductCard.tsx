@@ -43,11 +43,19 @@ export const ProductCard: React.FC<Props> = ({ id }) => {
   const removeFromBasket = useBasket(state => state.removeFromBasket);
 
   let checkedName = name;
-  let dots = false;
+  let nameDots = false;
 
   if (name.length > 25) {
     checkedName = name.slice(0, 25);
-    dots = true;
+    nameDots = true;
+  }
+
+  let checkedScreen = screen;
+  let screenDots = false;
+
+  if (screen.length > 12) {
+    checkedScreen = screen.slice(0, 12);
+    screenDots = true;
   }
 
   const findProductById = () => {
@@ -102,7 +110,7 @@ export const ProductCard: React.FC<Props> = ({ id }) => {
 
         <h4 className="product-card__title">
           {checkedName}
-          {dots ? '...' : ''}
+          {nameDots ? '...' : ''}
         </h4>
       </Link>
       <p className="product-card__price">${price}</p>
@@ -111,7 +119,10 @@ export const ProductCard: React.FC<Props> = ({ id }) => {
       <div className="product-card__options-box">
         <div className="product-card__options">
           <h5 className="product-card__options-title">Screen</h5>
-          <p className="product-card__options-value">{screen}</p>
+          <p className="product-card__options-value">
+            {checkedScreen}
+            {screenDots ? '...' : ''}
+          </p>
         </div>
         <div className="product-card__options">
           <h5 className="product-card__options-title">Capacity</h5>
