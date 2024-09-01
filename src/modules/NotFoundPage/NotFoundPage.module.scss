@@ -1,0 +1,11 @@
+@import '../../styles/main';
+
+.notFoundPage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+  @extend %h2-mobile;
+}
+
+

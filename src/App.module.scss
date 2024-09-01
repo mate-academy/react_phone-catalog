@@ -1,0 +1,46 @@
+@import './styles/main';
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  overflow-y: scroll;
+  min-width: 320px;
+  background-color: var(--color-background);
+  color: var(--color-primary);
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.container {
+  flex: 1;
+  padding-top: 24px;
+  padding-bottom: 80px;
+
+  @include on-tablet {
+    padding-top: 32px;
+  }
+
+  @include on-desktop {
+    padding-top: 52px;
+  }
+}
+
+.containerHidden {
+  opacity: 0;
+}
+
+a img {
+  transition: transform $transition-duration ease;
+}
+
+a:hover img {
+  transform: scale(1.1);
+}

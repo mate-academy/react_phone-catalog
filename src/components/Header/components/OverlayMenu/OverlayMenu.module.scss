@@ -1,0 +1,104 @@
+@import '../../../../styles/main';
+
+.menuOverlay {
+  display: none;
+  position: fixed;
+  top: 72px;
+  left: 0;
+  right: 0;
+  height: 100vh;
+  z-index: 1;
+
+  background-color: var(--color-background);
+}
+
+.show {
+  display: flex;
+  justify-content: center;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.item {
+  @extend %uppercase-text;
+
+  color: var(--color-secondary);
+  padding: 8px 0;
+}
+
+.actions {
+  display: flex;
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+}
+
+.action {
+  display: flex;
+  flex: 1;
+  height: 64px;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-secondary);
+  box-shadow: 0 -1px 0 0 var(--color-elements), 1px 0 0 0 var(--color-elements);
+}
+
+.actionIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 28px;
+  height: 28px;
+}
+
+.count {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 0;
+  left: 14px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 1px solid var(--color-background);
+  background-color: var(--color-red);
+
+}
+
+.countText {
+  color: #F1F2F9;
+  font-size: 9px;
+  font-weight: 700;
+  line-height: 11.5px;
+  text-align: center;
+}
+
+.item,
+.action {
+  position: relative;
+
+  &:hover {
+    color: var(--color-primary);
+  }
+}
+
+.isActive {
+  color: var(--color-primary);
+
+  &::after {
+    position: absolute;
+    content: "";
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background-color: var(--color-primary);
+  }
+}
