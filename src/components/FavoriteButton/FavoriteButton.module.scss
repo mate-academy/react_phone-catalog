@@ -1,0 +1,26 @@
+@import "../../styles/vars";
+@import "../../styles/fonts";
+@import "../../styles/mixins";
+
+.favoriteButton,
+.favorited {
+  width: 40px;
+  height: 40px;
+  box-sizing: border-box;
+  border: 1px solid $elements;
+  background-image: url(../../../public/img/icons/icon-heart.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: transparent;
+  cursor: pointer;
+
+  @include hover("border-color", $main);
+}
+
+.favoriteButton {
+  background-image: url(../../../public/img/icons/icon-heart.svg);
+}
+
+.favorited {
+  background-image: url(../../../public/img/icons/icon-favorite-filled.svg);
+}

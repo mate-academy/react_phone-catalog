@@ -1,0 +1,92 @@
+@import "../../styles/vars";
+@import "../../styles/fonts";
+@import '../../styles/mixins';
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  padding-block: 32px;
+  padding-inline: $padding-mobile;
+  border: 1px solid $elements;
+  row-gap: 32px;
+  margin-top: 56px;
+
+  @include on-tablet {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding-inline: $padding-tablet;
+    margin-top: 64px;
+  }
+
+  @include on-desktop{
+    margin-top: 80px;
+  }
+
+  .logo {
+    width: 89px;
+    height: 32px;
+  }
+
+  .navList {
+    display: flex;
+    flex-direction: column;
+    row-gap: 8px;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+
+    @include on-tablet {
+      flex-direction: row;
+      column-gap: 14px;
+    }
+
+    @include on-desktop {
+      column-gap: 105px;
+    }
+  }
+
+  .navLink {
+    font-family: Mont-SemiBold, sans-serif;
+    font-size: 12px;
+    letter-spacing: 1px;
+    line-height: 11px;
+    text-transform: uppercase;
+    color: $secondary;
+    text-decoration: none;
+    cursor: pointer;
+
+    @include hover (color, $main);
+  }
+
+  .backToTopBlock {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .backToTop {
+    margin: 0;
+    font-size: 12px;
+    line-height: 16px;
+    color: $secondary;
+    font-family: Mont-Regular, sans-serif;
+    margin-right: 16px;
+    cursor: pointer;
+    @include hover (color, $main);
+  }
+
+  .backToTopButton {
+    width: 32px;
+    height: 32px;
+    border: 1px solid $elements;
+    box-sizing: border-box;
+    background-color: transparent;
+    cursor: pointer;
+    background-image: url(../../../public/img/icons/icon-backToTop.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+
+    @include hover (border-color, $main);
+  }
+}

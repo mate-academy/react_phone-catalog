@@ -1,0 +1,133 @@
+@import "../../styles/fonts";
+@import "../../styles/vars";
+@import "../../styles/mixins";
+
+.page {
+  box-sizing: border-box;
+  padding-inline: $padding-mobile;
+  padding-top: 24px;
+
+  @include on-tablet {
+    padding-inline: $padding-tablet;
+  }
+
+  @include on-desktop {
+    max-width: 1136px;
+    margin: 0 auto;
+  }
+
+  &__heading {
+    font-family: Mont-Bold, sans-serif;
+    font-size: 32px;
+    line-height: 41px;
+    margin-top: 24px;
+    margin-bottom: 8px;
+    color: $main;
+  }
+
+  &__amount {
+    font-size: 14px;
+    line-height: 21px;
+    color: $secondary;
+    margin: 0;
+    margin-bottom: 32px;
+  }
+}
+
+.filters {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 24px;
+
+  &__sort,
+  &__itemsPerPage {
+    width: 155px;
+    height: 40px;
+
+    @include on-tablet {
+      width: 187px;
+    }
+  }
+}
+
+.dropdown {
+  position: relative;
+  width: 100%;
+
+  &__trigger {
+    height: 40px;
+    width: 100%;
+    border: 1px solid $elements;
+    padding-inline: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+    line-height: 21px;
+    color: $main;
+    font-family: Mont-SemiBold, sans-serif;
+    background-color: transparent;
+    cursor: pointer;
+
+    @include hover("border-color", $secondary);
+  }
+
+  &__trigger:focus {
+    border-color: $main;
+  }
+
+  &__content {
+    background-color: #fff;
+    position: absolute;
+    margin-top: 4px;
+    width: 100%;
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: all 0.2s ease;
+    pointer-events: none;
+  }
+
+  &__content--active {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: all;
+  }
+
+  &__list {
+    list-style-type: none;
+    margin: 0;
+    padding: 4px 12px 8px;
+    border: 1px solid $elements;
+  }
+
+  &__option {
+    font-family: Mont-Regular, sans-serif;
+    font-size: 14px;
+    line-height: 21px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    color: $secondary;
+    cursor: pointer;
+
+    @include hover("color", $main);
+  }
+
+  &__icon {
+    width: 16px;
+    height: 16px;
+    display: block;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    &--up {
+      transform: rotate(180deg);
+      background-image: url('../../../public/img/icons/arrow-up.svg');
+    }
+
+    &--down {
+      transform: rotate(0deg);
+      background-image: url('../../../public/img/icons/arrow-down.svg');
+    }
+  }
+}

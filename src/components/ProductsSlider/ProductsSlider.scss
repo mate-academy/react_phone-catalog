@@ -1,0 +1,116 @@
+@import "../../styles/vars";
+@import "../../styles/mixins";
+
+.slider-container {
+  margin-top: 24px;
+  width: calc(235px * 4);
+
+  @include on-tablet {
+    width: calc((237px + 16px) * 4);
+  }
+
+  @include on-desktop {
+    width: calc((272px + 16px) * 4);
+  }
+}
+
+.slider-item {
+  width: 219px !important;
+  padding-right: 16px;
+
+  @include on-tablet {
+    width: 237px !important;
+  }
+
+  @include on-desktop {
+    width: 272px !important;
+  }
+}
+
+.slick-slider {
+  position: static;
+}
+
+.slick-arrow {
+  display: block;
+  width: 32px;
+  height: 32px;
+  border: 1px solid $placeholders;
+  background-repeat: no-repeat;
+  background-position: center;
+
+  @include on-tablet {
+    top: 20px;
+  }
+
+  @include hover("border-color", $main);
+}
+
+.slick-prev {
+  left: unset;
+  right: 64px;
+  top: 30px;
+  background-image: url(../../../public/img/icons/icon-left.svg);
+
+  @include on-tablet {
+    right: 72px;
+  }
+
+  @include on-desktop {
+    right: 48px;
+  }
+}
+
+.slick-prev:hover,
+.slick-prev:focus {
+  background-image: url(../../../public/img/icons/icon-left.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.slick-next {
+  left: unset;
+  right: 16px;
+  top: 30px;
+  background-image: url(../../../public/img/icons/icon-right.svg);
+
+  @include on-tablet {
+    right: 24px;
+  }
+
+  @include on-desktop {
+    right: 0;
+  }
+}
+
+.slick-next:hover,
+.slick-next:focus {
+  background-image: url(../../../public/img/icons/icon-right.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.slick-disabled {
+  border-color: $elements;
+}
+
+.slick-disabled.slick-prev,
+.slick-disabled.slick-prev:hover {
+  background-image: url(../../../public/img/icons/icon-left.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  border-color: $placeholders;
+}
+
+.slick-disabled.slick-next,
+.slick-disabled.slick-next:hover {
+  background-image: url(../../../public/img/icons/icon-right.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  border-color: $placeholders;
+}
+
+.slick-prev::before,
+.slick-next::before {
+  display: none;
+}
