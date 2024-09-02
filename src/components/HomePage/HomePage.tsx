@@ -2,9 +2,13 @@ import './HomePage.scss';
 import image1 from '../../img/banner-phones.png';
 import image2 from '../../img/banner-accessories.png';
 import image3 from '../../img/banner-tablets.png';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import products from '../../api/products.json';
 import { Link } from 'react-router-dom';
+import { handleButton } from '../../utils/generalFunctions';
+import heartEmpty from '../../imgs/Favourites.svg';
+import heartFull from '../../imgs/Favourites Filled.svg';
+import { LikedIdContext } from '../../utils/context';
 
 type Product = {
   id: number;
@@ -25,8 +29,16 @@ export const HomePage: React.FC = () => {
   const images = [image1, image2, image3];
 
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [currentPhoneIndex, setCurrentPhoneIndex] = useState(0);
+  const [brandNewIndex, setBrandNewIndex] = useState(0);
   const [currentHotIndex, setCurrentHotIndex] = useState(0);
+  const {
+    addLikedId,
+    removeLikedId,
+    addCardId,
+    removeCardId,
+    likedIds,
+    cardIds,
+  } = useContext(LikedIdContext);
 
   const slideStyle = {
     width: '100%',
@@ -51,12 +63,12 @@ export const HomePage: React.FC = () => {
   const phonesNew = products
     .filter(product => product.category === 'phones' && product.year === 2022)
     .reduce<Product[]>((acc, phone) => {
-    if (!acc.find(item => item.color === phone.color)) {
-      acc.push(phone);
-    }
+      if (!acc.find(item => item.color === phone.color)) {
+        acc.push(phone);
+      }
 
-    return acc;
-  }, []);
+      return acc;
+    }, []);
 
   const phonesHot = products
     .filter(
@@ -65,12 +77,12 @@ export const HomePage: React.FC = () => {
         ((product.fullPrice - product.price) / product.fullPrice) * 100 > 10,
     )
     .reduce<Product[]>((acc, phone) => {
-    if (!acc.find(item => item.color === phone.color)) {
-      acc.push(phone);
-    }
+      if (!acc.find(item => item.color === phone.color)) {
+        acc.push(phone);
+      }
 
-    return acc;
-  }, []);
+      return acc;
+    }, []);
 
   const prevImg = () => {
     setCurrentIndex(prevIndex =>
@@ -88,24 +100,44 @@ export const HomePage: React.FC = () => {
     setCurrentIndex(index);
   };
 
-  const nextSlide = () => {
-    setCurrentPhoneIndex(prevIndex => (prevIndex + 1) % phonesNew.length);
+  const brandNewPrev = () => {
+    setBrandNewIndex(handleButton.previous(brandNewIndex, phonesNew));
   };
 
-  const prevSlide = () => {
-    setCurrentPhoneIndex(
-      prevIndex => (prevIndex - 1 + phonesNew.length) % phonesNew.length,
-    );
+  const brandNewNext = () => {
+    setBrandNewIndex(handleButton.next(brandNewIndex, phonesNew));
   };
 
   const prevHot = () => {
-    setCurrentHotIndex(
-      prevIndex => (prevIndex - 1 + phonesNew.length) % phonesNew.length,
-    );
+    setCurrentHotIndex(handleButton.previous(currentHotIndex, phonesHot));
   };
 
   const nextHot = () => {
-    setCurrentHotIndex(prevIndex => (prevIndex + 1) % phonesNew.length);
+    setCurrentHotIndex(handleButton.next(currentHotIndex, phonesHot));
+  };
+
+  const handleButtonCard = (id: string) => {
+    if (cardIds.filter((cardId: string) => cardId === id).length === 1) {
+      return removeCardId(id);
+    }
+
+    return addCardId(id);
+  };
+
+  const handleButtonHeart = (id: string) => {
+    if (likedIds.filter((likedId: string) => likedId === id).length === 1) {
+      return removeLikedId(id);
+    }
+
+    return addLikedId(id);
+  };
+
+  const isLikedButton = (id: string) => {
+    return likedIds.filter((likedId: string) => likedId === id).length === 1;
+  };
+
+  const inCard = (id: string) => {
+    return cardIds.filter((cardId: string) => cardId === id).length === 1;
   };
 
   return (
@@ -144,67 +176,93 @@ export const HomePage: React.FC = () => {
             </div>
           </div>
 
-          <div className="brandNew">
-            <div className="brandNew_container1">
-              <h2 className="brandNew_title">Brand New models</h2>
-              <div className="brandNew_container1_buttons">
+          <div className="itemSlider">
+            <div className="itemSlider_container1">
+              <h2 className="itemSlider_title">Brand New</h2>
+              <div className="itemSlider_container1_buttons">
                 <button
-                  className="brandNew_container1_buttons_left"
-                  onClick={prevSlide}
-                  disabled={currentPhoneIndex === 0}
+                  className="itemSlider_container1_buttons_left"
+                  onClick={brandNewPrev}
+                  disabled={brandNewIndex === 0}
                 >
                   &#10094;
                 </button>
                 <button
-                  className="brandNew_container1_buttons_right"
-                  onClick={nextSlide}
-                  disabled={phonesNew.length - currentPhoneIndex === 4}
+                  className="itemSlider_container1_buttons_right"
+                  onClick={brandNewNext}
+                  disabled={phonesNew.length - brandNewIndex === 4}
                 >
                   &#10095;
                 </button>
               </div>
             </div>
-            <div className="brandNew_container2">
-              {phonesNew.map((phone, index) => (
+            <div className="itemSlider_container2">
+              {phonesNew.map((item, index) => (
                 <div
-                  key={index}
                   className="productCard"
+                  key={index}
                   style={{
-                    transform: `translateX(-${currentPhoneIndex * 105}%)`,
+                    transform: `translateX(-${brandNewIndex * 105}%)`,
                     transition: 'transform 0.5s ease-in-out',
                   }}
                 >
-                  <div className="productCard_imgs">
-                    <img
-                      src={phone.image}
-                      className="productCard_imgs_img"
-                      alt="IMG"
-                    />
-                  </div>
+                  <div className="productCard_container">
+                    <Link
+                      to={`/phones/${item.itemId}`}
+                      className="productCard_container_link"
+                      onClick={handleButton.scrollTop}
+                    >
+                      <div className="productCard_imgs">
+                        <img
+                          src={item.image}
+                          className="productCard_imgs_img"
+                          alt="IMG"
+                        />
+                      </div>
 
-                  <p className="productCard_title">{phone.name}</p>
-                  <div className="productCard_prices">
-                    <p className="productCard_fullPrice">{`$${phone.fullPrice}`}</p>
-                  </div>
-                  <div className="productCard_info">
-                    <div className="productCard_info_screen">
-                      <p className="productCard_info_title">Screen</p>
-                      <p className="productCard_info_text">{phone.screen}</p>
+                      <p className="productCard_title">{item.name}</p>
+                      <div className="productCard_prices">
+                        <p className="productCard_price">{`$${item.price}`}</p>
+                        <p className="productCard_fullPrice">{`$${item.fullPrice}`}</p>
+                      </div>
+
+                      <div className="productCard_info">
+                        <div className="productCard_info_screen">
+                          <p className="productCard_info_title">Screen</p>
+                          <p className="productCard_info_text">{item.screen}</p>
+                        </div>
+                        <div className="productCard_info_capacity">
+                          <p className="productCard_info_title">Capacity</p>
+                          <p className="productCard_info_text">
+                            {item.capacity}
+                          </p>
+                        </div>
+                        <div className="productCard_info_ram">
+                          <p className="productCard_info_title">Ram</p>
+                          <p className="productCard_info_text">{item.ram}</p>
+                        </div>
+                      </div>
+                    </Link>
+                    <div className="productCard_buttons">
+                      <button
+                        className="productCard_buttons_add"
+                        onClick={() => handleButtonCard(item.itemId)}
+                        style={{
+                          backgroundColor: `${inCard(item.itemId) ? '#FAFBFC' : '#216CFF'}`,
+                          color: `${inCard(item.itemId) ? '#216CFF' : '#FAFBFC'}`,
+                          border: `${inCard(item.itemId) ? '1px solid #E2E6E9' : 'none'}`,
+                        }}
+                      >
+                        {`${inCard(item.itemId) ? 'Added to Card' : 'Add to Card'}`}
+                      </button>
+                      <button
+                        className="productCard_buttons_heart"
+                        onClick={() => handleButtonHeart(item.itemId)}
+                        style={{
+                          backgroundImage: `${isLikedButton(item.itemId) ? `url('${heartFull}` : `url('${heartEmpty}`}')`,
+                        }}
+                      ></button>
                     </div>
-                    <div className="productCard_info_capacity">
-                      <p className="productCard_info_title">Capacity</p>
-                      <p className="productCard_info_text">{phone.capacity}</p>
-                    </div>
-                    <div className="productCard_info_ram">
-                      <p className="productCard_info_title">Ram</p>
-                      <p className="productCard_info_text">{phone.ram}</p>
-                    </div>
-                  </div>
-                  <div className="productCard_buttons">
-                    <button className="productCard_buttons_add">
-                      Add to card
-                    </button>
-                    <button className="productCard_buttons_heart"></button>
                   </div>
                 </div>
               ))}
@@ -218,6 +276,7 @@ export const HomePage: React.FC = () => {
                 <Link
                   to="/phones"
                   className="shopBy_box_link shopBy_box_link--phones"
+                  onClick={() => handleButton.scrollTop()}
                 ></Link>
                 <p className="shopBy_box_title">Mobile phones</p>
                 <p className="shopBy_box_items">{`${availabePhones} models`}</p>
@@ -226,14 +285,16 @@ export const HomePage: React.FC = () => {
                 <Link
                   to="/tablets"
                   className="shopBy_box_link shopBy_box_link--tablets"
+                  onClick={() => handleButton.scrollTop()}
                 ></Link>
                 <p className="shopBy_box_title">Tables</p>
                 <p className="shopBy_box_items">{`${availabeTablets} models`}</p>
               </div>
               <div className="shopBy_box">
                 <Link
-                  to="/accesories"
+                  to="/accessories"
                   className="shopBy_box_link shopBy_box_link--accessories"
+                  onClick={() => handleButton.scrollTop()}
                 ></Link>
                 <p className="shopBy_box_title">Accessories</p>
                 <p className="shopBy_box_items">{`${availabeAccessories} models`}</p>
@@ -241,19 +302,19 @@ export const HomePage: React.FC = () => {
             </div>
           </div>
 
-          <div className="hotPrices">
-            <div className="hotPrices_container1">
-              <h2 className="hotPrices_title">Hot prices</h2>
-              <div className="hotPrices_container1_buttons">
+          <div className="itemSlider">
+            <div className="itemSlider_container1">
+              <h2 className="itemSlider_title">Hot Prices</h2>
+              <div className="itemSlider_container1_buttons">
                 <button
-                  className="hotPrices_container1_buttons_left"
+                  className="itemSlider_container1_buttons_left"
                   onClick={prevHot}
                   disabled={currentHotIndex === 0}
                 >
                   &#10094;
                 </button>
                 <button
-                  className="hotPrices_container1_buttons_right"
+                  className="itemSlider_container1_buttons_right"
                   onClick={nextHot}
                   disabled={phonesHot.length - currentHotIndex === 4}
                 >
@@ -261,49 +322,73 @@ export const HomePage: React.FC = () => {
                 </button>
               </div>
             </div>
-            <div className="hotPrices_container2">
-              {phonesHot.map((phone, index) => (
+            <div className="itemSlider_container2">
+              {phonesHot.map((item, index) => (
                 <div
-                  key={index}
                   className="productCard"
+                  key={index}
                   style={{
                     transform: `translateX(-${currentHotIndex * 105}%)`,
                     transition: 'transform 0.5s ease-in-out',
                   }}
                 >
-                  <div className="productCard_imgs">
-                    <img
-                      src={phone.image}
-                      className="productCard_imgs_img"
-                      alt="IMG"
-                    />
-                  </div>
+                  <div className="productCard_container">
+                    <Link
+                      to={`/phones/${item.itemId}`}
+                      className="productCard_container_link"
+                      onClick={handleButton.scrollTop}
+                    >
+                      <div className="productCard_imgs">
+                        <img
+                          src={item.image}
+                          className="productCard_imgs_img"
+                          alt="IMG"
+                        />
+                      </div>
 
-                  <p className="productCard_title">{phone.name}</p>
-                  <div className="productCard_prices">
-                    <p className="productCard_fullPrice">{`$${phone.fullPrice}`}</p>
-                    <p className="productCard_price">{`$${phone.price}`}</p>
-                  </div>
+                      <p className="productCard_title">{item.name}</p>
+                      <div className="productCard_prices">
+                        <p className="productCard_price">{`$${item.price}`}</p>
+                        <p className="productCard_fullPrice">{`$${item.fullPrice}`}</p>
+                      </div>
 
-                  <div className="productCard_info">
-                    <div className="productCard_info_screen">
-                      <p className="productCard_info_title">Screen</p>
-                      <p className="productCard_info_text">{phone.screen}</p>
+                      <div className="productCard_info">
+                        <div className="productCard_info_screen">
+                          <p className="productCard_info_title">Screen</p>
+                          <p className="productCard_info_text">{item.screen}</p>
+                        </div>
+                        <div className="productCard_info_capacity">
+                          <p className="productCard_info_title">Capacity</p>
+                          <p className="productCard_info_text">
+                            {item.capacity}
+                          </p>
+                        </div>
+                        <div className="productCard_info_ram">
+                          <p className="productCard_info_title">Ram</p>
+                          <p className="productCard_info_text">{item.ram}</p>
+                        </div>
+                      </div>
+                    </Link>
+                    <div className="productCard_buttons">
+                      <button
+                        className="productCard_buttons_add"
+                        onClick={() => handleButtonCard(item.itemId)}
+                        style={{
+                          backgroundColor: `${inCard(item.itemId) ? '#FAFBFC' : '#216CFF'}`,
+                          color: `${inCard(item.itemId) ? '#216CFF' : '#FAFBFC'}`,
+                          border: `${inCard(item.itemId) ? '1px solid #E2E6E9' : 'none'}`,
+                        }}
+                      >
+                        {`${inCard(item.itemId) ? 'Added to Card' : 'Add to Card'}`}
+                      </button>
+                      <button
+                        className="productCard_buttons_heart"
+                        onClick={() => handleButtonHeart(item.itemId)}
+                        style={{
+                          backgroundImage: `${isLikedButton(item.itemId) ? `url('${heartFull}` : `url('${heartEmpty}`}')`,
+                        }}
+                      ></button>
                     </div>
-                    <div className="productCard_info_capacity">
-                      <p className="productCard_info_title">Capacity</p>
-                      <p className="productCard_info_text">{phone.capacity}</p>
-                    </div>
-                    <div className="productCard_info_ram">
-                      <p className="productCard_info_title">Ram</p>
-                      <p className="productCard_info_text">{phone.ram}</p>
-                    </div>
-                  </div>
-                  <div className="productCard_buttons">
-                    <button className="productCard_buttons_add">
-                      Add to card
-                    </button>
-                    <button className="productCard_buttons_heart"></button>
                   </div>
                 </div>
               ))}

@@ -3,47 +3,46 @@ import homeIcon from '../../imgs/Home.svg';
 import arrowRight from '../../imgs/Chevron (Arrow Right).svg';
 import { utils } from '../../utils/generalFunctions';
 import { Link } from 'react-router-dom';
-import { useState } from 'react';
+import { useContext } from 'react';
 import heartEmpty from '../../imgs/Favourites.svg';
 import heartFull from '../../imgs/Favourites Filled.svg';
+import { LikedIdContext } from '../../utils/context';
 
 export const LikedPage: React.FC = () => {
-  const likedIds = utils.getFromStorage('liked');
+  // const likedIds = utils.getFromStorage('liked');
+  // const cardItems = utils.getFromStorage('card');
+  // const likedItems = utils.getFromStorage('liked');
+  const {
+    addLikedId,
+    removeLikedId,
+    addCardId,
+    removeCardId,
+    cardIds,
+    likedIds,
+  } = useContext(LikedIdContext);
   const items = utils.findById(likedIds);
-  const cardItems = utils.getFromStorage('card');
-  const likedItems = utils.getFromStorage('liked');
-  const [state, setState] = useState(false);
-
   const handleButtonCard = (id: string) => {
-    if (cardItems.filter((cardId: string) => cardId === id).length === 1) {
-      setState(!state);
-
-      return utils.removedFromCard(id);
+    if (cardIds.filter((cardId: string) => cardId === id).length === 1) {
+      return removeCardId(id);
     }
 
-    setState(!state);
-
-    return utils.addToCart(id);
+    return addCardId(id);
   };
 
   const handleButtonHeart = (id: string) => {
-    if (likedItems.filter((likedId: string) => likedId === id).length === 1) {
-      setState(!state);
-
-      return utils.removedFromLiked(id);
+    if (likedIds.filter((likedId: string) => likedId === id).length === 1) {
+      return removeLikedId(id);
     }
 
-    setState(!state);
-
-    return utils.addToLiked(id);
+    return addLikedId(id);
   };
 
   const isLiked = (id: string) => {
-    return likedItems.filter((likedId: string) => likedId === id).length === 1;
+    return likedIds.filter((likedId: string) => likedId === id).length === 1;
   };
 
   const inCard = (id: string) => {
-    return cardItems.filter((cardId: string) => cardId === id).length === 1;
+    return cardIds.filter((cardId: string) => cardId === id).length === 1;
   };
 
   return (
@@ -64,8 +63,8 @@ export const LikedPage: React.FC = () => {
             <p className="liked_title_text">Favourites</p>
             <p className="liked_title_items">{`${likedIds?.length} models`}</p>
           </div>
-          <div className="phones_catalog">
-            <div className="phones_catalog_container">
+          <div className="items_catalog">
+            <div className="items_catalog_container">
               {items.map((item, index) => (
                 <div className="productCard" key={index}>
                   <div className="productCard_container">

@@ -4,19 +4,15 @@ import { Outlet, NavLink } from 'react-router-dom';
 import logo from './imgs/Logo.svg';
 import fav from '../src/imgs/Favourites.svg';
 import bag from './imgs/Cart.svg';
-
-// interface Active {
-//   isActive: boolean
-// }
-
-// const activeLink = ({ isActive }: Active) => classNames('navbar-item', {
-//   'is-active': isActive,
-// });
+import { useContext } from 'react';
+import { LikedIdContext } from './utils/context';
 
 export const App = () => {
   const scrollTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
+
+  const { likedIds, cardIds } = useContext(LikedIdContext);
 
   return (
     <div className="App">
@@ -25,7 +21,12 @@ export const App = () => {
           <div className="navbar_container">
             <div className="navbar_links">
               <img src={logo} alt="logo" className="navbar_logo" />
-              <NavLink to="/home" className="navbar_links_text">
+              <NavLink
+                to="/home"
+                className={({ isActive }) =>
+                  isActive ? 'navbar_links_text active' : 'navbar_links_text'
+                }
+              >
                 HOME
               </NavLink>
               <NavLink to="/phones" className="navbar_links_text">
@@ -39,11 +40,24 @@ export const App = () => {
               </NavLink>
             </div>
             <div className="navbar_buttons">
-              <NavLink to="liked" className="navbar_buttons_link">
+              <NavLink
+                to="liked"
+                className={({ isActive }) =>
+                  isActive
+                    ? 'navbar_buttons_link active'
+                    : 'navbar_buttons_link'
+                }
+              >
                 <img src={fav} alt="heart" />
+                <span className="navbar_buttons_link_counter">
+                  {likedIds.length}
+                </span>
               </NavLink>
               <NavLink to="card" className="navbar_buttons_link">
                 <img src={bag} alt="bag" />
+                <span className="navbar_buttons_link_counter">
+                  {cardIds.length}
+                </span>
               </NavLink>
             </div>
           </div>

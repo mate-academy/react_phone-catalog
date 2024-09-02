@@ -2,16 +2,18 @@ import { Link, useNavigate } from 'react-router-dom';
 import arrowLeft from '../../imgs/ArrowLeft.svg';
 import './CardPage.scss';
 import { utils } from '../../utils/generalFunctions';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
+import { LikedIdContext } from '../../utils/context';
 
 export const CardPage: React.FC = () => {
   const navigate = useNavigate();
-  const cardIds = utils.getFromStorage('card');
+  const { removeCardId, addCardId, cardIds, setCardIds } =
+    useContext(LikedIdContext);
   const items = utils.findById(cardIds);
   const [product, setProduct] = useState(items);
 
   const handleButtonRemove = (id: string) => {
-    utils.removedFromCard(id);
+    removeCardId(id);
     const getIds = utils.getFromStorage('card');
 
     setProduct(utils.findById(getIds));
@@ -22,31 +24,27 @@ export const CardPage: React.FC = () => {
   };
 
   const handleButtonPlus = (id: string) => {
-    utils.addToCart(id);
-    const getIds = utils.getFromStorage('card');
-    const newItems = utils.findById(getIds);
+    addCardId(id);
+    const newItems = utils.findById(cardIds);
 
     setProduct(newItems);
   };
 
   const handleButtonMinus = (id: string) => {
-    const currentIds = cardIds;
+    const currentIds = [...cardIds];
     const index = currentIds.findIndex((itemId: string) => itemId === id);
 
     if (index !== -1) {
       currentIds.splice(index, 1);
     }
 
-    localStorage.setItem('card', JSON.stringify(currentIds));
-
+    setCardIds(currentIds);
     setProduct(utils.findById(currentIds));
   };
 
   const renderedItems = product.filter(
     (item, index) => product.indexOf(item) === index,
   );
-
-  console.log(renderedItems);
 
   const price = product.reduce((acc, item) => {
     return acc + item.price;

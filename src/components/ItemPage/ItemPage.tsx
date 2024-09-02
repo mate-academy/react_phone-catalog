@@ -8,8 +8,9 @@ import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
 import phones from '../../api/phones.json';
 import tablets from '../../api/tablets.json';
 import accessories from '../../api/accessories.json';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { handleButton, utils } from '../../utils/generalFunctions';
+import { LikedIdContext } from '../../utils/context';
 
 type Item = {
   id: string;
@@ -82,25 +83,40 @@ export const ItemPage: React.FC = () => {
   const [activeCapacity, setActiveCapacity] = useState(item.capacity);
   const [currentIndex, setCurrentIndex] = useState(0);
   const navigate = useNavigate();
+  const {
+    addLikedId,
+    removeLikedId,
+    addCardId,
+    removeCardId,
+    cardIds,
+    likedIds,
+  } = useContext(LikedIdContext);
 
-  const likedItems = utils.getFromStorage('liked');
-  const isLiked =
-    likedItems.filter((id: string) => id === activeItem.id).length === 1;
+  // const likedItems = utils.getFromStorage('liked');
 
-  const cardItems = utils.getFromStorage('card');
-  const isCard =
-    cardItems.filter((id: string) => id === activeItem.id).length === 1;
+  // const cardItems = utils.getFromStorage('card');
 
-  const [liked, setLiked] = useState(isLiked);
-  const [card, setCard] = useState(isCard);
+  const isLiked = (id: string) => {
+    return likedIds.filter((likedId: string) => likedId === id).length === 1;
+  };
+
+  const inCard = (id: string) => {
+    return cardIds.filter((cardId: string) => cardId === id).length === 1;
+  };
+
+  const card = inCard(activeItem.id);
+  const liked = isLiked(activeItem.id);
+
+  // const [liked, setLiked] = useState(isLiked);
+  // const [card, setCard] = useState(inCard);
 
   useEffect(() => {
-    setLiked(isLiked);
-    setCard(isCard);
+    // setLiked(isLiked);
+    // setCard(inCard);
     setActiveItem(item);
     setActiveColor(item.color);
     setActiveCapacity(item.capacity);
-  }, [item, itemName, isLiked, isCard]);
+  }, [item, itemName, isLiked, inCard]);
 
   const handleColor = (color: string) => {
     setActiveColor(color);
@@ -138,28 +154,20 @@ export const ItemPage: React.FC = () => {
     setCurrentIndex(handleButton.next(currentIndex, alsoLike));
   };
 
-  const handleButtonHeart = () => {
-    if (likedItems.filter((id: string) => id === activeItem.id).length === 1) {
-      setLiked(false);
-
-      return utils.removedFromLiked(activeItem.id);
+  const handleButtonCard = (id: string) => {
+    if (cardIds.filter((cardId: string) => cardId === id).length === 1) {
+      return removeCardId(id);
     }
 
-    setLiked(true);
-
-    return utils.addToLiked(activeItem.id);
+    return addCardId(id);
   };
 
-  const handleButtonCard = () => {
-    if (cardItems.filter((id: string) => id === activeItem.id).length === 1) {
-      setCard(false);
-
-      return utils.removedFromCard(activeItem.id);
+  const handleButtonHeart = (id: string) => {
+    if (likedIds.filter((likedId: string) => likedId === id).length === 1) {
+      return removeLikedId(id);
     }
 
-    setCard(true);
-
-    return utils.addToCart(activeItem.id);
+    return addLikedId(id);
   };
 
   return (
@@ -281,7 +289,7 @@ export const ItemPage: React.FC = () => {
               <div className="item_data_buttons">
                 <button
                   className="item_data_buttons_add"
-                  onClick={() => handleButtonCard()}
+                  onClick={() => handleButtonCard(activeItem.id)}
                   style={{
                     backgroundColor: `${card ? '#FAFBFC' : '#216CFF'}`,
                     color: `${card ? '#216CFF' : '#FAFBFC'}`,
@@ -290,7 +298,7 @@ export const ItemPage: React.FC = () => {
                 >{`${card ? 'Added to Card' : 'Add to Card'}`}</button>
                 <button
                   className="item_data_buttons_heart"
-                  onClick={() => handleButtonHeart()}
+                  onClick={() => handleButtonHeart(activeItem.id)}
                   style={{
                     backgroundImage: `${liked ? `url('${heartFull}` : `url('${heartEmpty}`}')`,
                   }}
@@ -386,19 +394,19 @@ export const ItemPage: React.FC = () => {
             </div>
           </div>
 
-          <div className="item_alsoLike">
-            <div className="item_alsoLike_container1">
-              <h2 className="item_alsoLike_title">You may also like</h2>
-              <div className="item_alsoLike_container1_buttons">
+          <div className="itemSlider">
+            <div className="itemSlider_container1">
+              <h2 className="itemSlider_title">You may also like</h2>
+              <div className="itemSlider_container1_buttons">
                 <button
-                  className="item_alsoLike_container1_buttons_left"
+                  className="itemSlider_container1_buttons_left"
                   onClick={prevLike}
                   disabled={currentIndex === 0}
                 >
                   &#10094;
                 </button>
                 <button
-                  className="item_alsoLike_container1_buttons_right"
+                  className="itemSlider_container1_buttons_right"
                   onClick={nextLike}
                   disabled={alsoLike.length - currentIndex === 4}
                 >
@@ -406,55 +414,75 @@ export const ItemPage: React.FC = () => {
                 </button>
               </div>
             </div>
-            <div className="item_alsoLike_container2">
+            <div className="itemSlider_container2">
               {alsoLike.map((item, index) => (
-                <Link
-                  to={`/${category}/${item.itemId}`}
+                <div
                   className="productCard"
                   key={index}
-                  onClick={handleButton.scrollTop}
                   style={{
                     transform: `translateX(-${currentIndex * 105}%)`,
                     transition: 'transform 0.5s ease-in-out',
                   }}
                 >
                   <div className="productCard_container">
-                    <div className="productCard_imgs">
-                      <img
-                        src={item.image}
-                        className="productCard_imgs_img"
-                        alt="IMG"
-                      />
-                    </div>
+                    <Link
+                      to={`/${category}/${item.itemId}`}
+                      className="productCard_container_link"
+                      onClick={handleButton.scrollTop}
+                    >
+                      <div className="productCard_imgs">
+                        <img
+                          src={item.image}
+                          className="productCard_imgs_img"
+                          alt="IMG"
+                        />
+                      </div>
 
-                    <p className="productCard_title">{item.name}</p>
-                    <div className="productCard_prices">
-                      <p className="productCard_price">{`$${item.price}`}</p>
-                      <p className="productCard_fullPrice">{`$${item.fullPrice}`}</p>
-                    </div>
+                      <p className="productCard_title">{item.name}</p>
+                      <div className="productCard_prices">
+                        <p className="productCard_price">{`$${item.price}`}</p>
+                        <p className="productCard_fullPrice">{`$${item.fullPrice}`}</p>
+                      </div>
 
-                    <div className="productCard_info">
-                      <div className="productCard_info_screen">
-                        <p className="productCard_info_title">Screen</p>
-                        <p className="productCard_info_text">{item.screen}</p>
+                      <div className="productCard_info">
+                        <div className="productCard_info_screen">
+                          <p className="productCard_info_title">Screen</p>
+                          <p className="productCard_info_text">{item.screen}</p>
+                        </div>
+                        <div className="productCard_info_capacity">
+                          <p className="productCard_info_title">Capacity</p>
+                          <p className="productCard_info_text">
+                            {item.capacity}
+                          </p>
+                        </div>
+                        <div className="productCard_info_ram">
+                          <p className="productCard_info_title">Ram</p>
+                          <p className="productCard_info_text">{item.ram}</p>
+                        </div>
                       </div>
-                      <div className="productCard_info_capacity">
-                        <p className="productCard_info_title">Capacity</p>
-                        <p className="productCard_info_text">{item.capacity}</p>
-                      </div>
-                      <div className="productCard_info_ram">
-                        <p className="productCard_info_title">Ram</p>
-                        <p className="productCard_info_text">{item.ram}</p>
-                      </div>
-                    </div>
+                    </Link>
                     <div className="productCard_buttons">
-                      <button className="productCard_buttons_add">
-                        Add to card
+                      <button
+                        className="productCard_buttons_add"
+                        onClick={() => handleButtonCard(item.itemId)}
+                        style={{
+                          backgroundColor: `${inCard(item.itemId) ? '#FAFBFC' : '#216CFF'}`,
+                          color: `${inCard(item.itemId) ? '#216CFF' : '#FAFBFC'}`,
+                          border: `${inCard(item.itemId) ? '1px solid #E2E6E9' : 'none'}`,
+                        }}
+                      >
+                        {`${inCard(item.itemId) ? 'Added to Card' : 'Add to Card'}`}
                       </button>
-                      <button className="productCard_buttons_heart"></button>
+                      <button
+                        className="productCard_buttons_heart"
+                        onClick={() => handleButtonHeart(item.itemId)}
+                        style={{
+                          backgroundImage: `${isLiked(item.itemId) ? `url('${heartFull}` : `url('${heartEmpty}`}')`,
+                        }}
+                      ></button>
                     </div>
                   </div>
-                </Link>
+                </div>
               ))}
             </div>
           </div>

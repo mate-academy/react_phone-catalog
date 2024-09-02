@@ -288,57 +288,5 @@
     }
   }
 
-  &_alsoLike{
-    grid-column: 1/-1;
-    margin-bottom: 80px;
-
-    &_title {
-      margin: 0;
-      font-size: 32px;
-      font-family: $fontBold;
-    }
-
-    &_container1 {
-      margin-bottom: 24px;
-      display: flex;
-      justify-content: space-between;
-
-      &_buttons{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: 16px;
-
-        &_left {
-          width: 32px;
-          height: 32px;
-          border-radius: 50px;
-          border: 1px solid $darkBorderGrey;
-          background-color: white;
-          font-size: 15px;
-          cursor: pointer;
-
-          // color: $borderGrey;
-        }
-        &_right {
-          width: 32px;
-          height: 32px;
-          border-radius: 50px;
-          border: 1px solid $darkBorderGrey;
-          background-color: white;
-          font-size: 15px;
-          cursor: pointer;
-        }
-
-      }
-    }
-
-    &_container2{
-      display: flex;
-      overflow: hidden;
-      gap: 16px;
-      height: 100%;
-      width: 100%;
-    }
-  }
 }
+
