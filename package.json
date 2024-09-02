@@ -11,6 +11,8 @@
     "@fortawesome/free-solid-svg-icons": "^6.6.0",
     "@fortawesome/react-fontawesome": "^0.2.2",
     "@types/react-transition-group": "^4.4.5",
+    "ajv": "^8.17.1",
+    "ajv-keywords": "^5.1.0",
     "bulma": "^0.9.4",
     "classnames": "^2.5.1",
     "debounce": "^2.1.0",

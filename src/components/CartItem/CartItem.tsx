@@ -13,7 +13,11 @@ type CartItemProps = {
   setItemsOnPage: (page: number) => void;
 };
 
-export const CartItem: React.FC<CartItemProps> = ({ item, updateCart, setItemsOnPage }) => {
+export const CartItem: React.FC<CartItemProps> = ({
+  item,
+  updateCart,
+  setItemsOnPage,
+}) => {
   const { image, name, price, count = 1, totalPrice = price } = item;
   const [searchParams, setSearchParams] = useSearchParams();
 

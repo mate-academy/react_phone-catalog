@@ -1,10 +1,10 @@
+import React, { useEffect, useState } from 'react';
 import Breadcrumbs from '../components/Breadcrumbs/Breadcrumbs';
 import { CardDetail } from '../components/CardDetail';
 import { Icon } from '../components/ui/Icon';
 import '../styles/main.scss';
 import cardStyles from '../components/Card/Card.module.scss';
 import classNames from 'classnames';
-import { useEffect, useState } from 'react';
 import { ProductSlider } from '../components/ProductSlider';
 import { GoBackLink } from '../components/ui/GoBackLink';
 import { RoundColorButton } from '../components/ui/RoundColorButton';
@@ -30,7 +30,6 @@ export const ItemPage = () => {
   const { favorites, toggleFavorite } = useFavorites();
 
   const navigate = useNavigate();
-
   const { itemId } = useParams();
   const paramFromLink = itemId?.slice(1);
   const [isLoading, setIsLoading] = useState(true);
@@ -58,7 +57,7 @@ export const ItemPage = () => {
     getSuggestedProducts()
       .then(data => setSuggestedProducts(data))
       .catch(error => {
-        // eslint-disable-next-line
+        // eslint-disable-next-line no-console
         console.error('Error fetching suggested products:', error);
       });
   }, []);
@@ -138,6 +137,10 @@ export const ItemPage = () => {
 
   useEffect(() => {
     navigateToNewSelectedItem();
+
+    if (window.innerWidth <= 768) {
+      window.scrollTo(0, 0);
+    }
     // eslint-disable-next-line
   }, [selectedCapacityIndex, selectedColorIndex]);
 
