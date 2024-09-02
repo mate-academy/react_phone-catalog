@@ -26,6 +26,10 @@
       width: 700px;
       margin: 25px auto 0;
       display: block;
+
+      @media (max-width: 991px) {
+        width: 100%;
+      }
     }
   }
 

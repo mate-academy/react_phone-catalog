@@ -4,16 +4,30 @@
   display: flex;
   gap: 16px;
 
+  @media (max-width: 575px) {
+    width: 100%;
+  }
+
   &__itemsPerPage {
     width: 128px;
+
+    @media (max-width: 575px) {
+      width: 50%;
+    }
+  }
+
+  &__sort {
+    width: 176px;
+
+    @media (max-width: 575px) {
+      width: 50%;
+    }
   }
 
   &__btnWrapper {
-    position: relative;
-    width: 176px;
-
     @include button;
 
+    position: relative;
     padding: 10px 12px;
     border-radius: 8px;
     border: 1px solid $grey-color;

@@ -2,16 +2,15 @@
 
 .sliderProducts {
   position: relative;
-  margin-bottom: 80px;
-
-  @media (max-width: 991px) {
-    margin-bottom: 64px;
-  }
 
   &__title {
     @include flex;
 
     margin-bottom: 24px;
+
+    @media (max-width: 575px) {
+      gap: 70px;
+    }
   }
 
   &__slide {

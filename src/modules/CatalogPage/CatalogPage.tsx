@@ -3,17 +3,28 @@ import { Loader } from '../../components/Loader';
 import styles from './CatalogPage.module.scss';
 import { Error } from '../../components/Error';
 import { useFetchProducts } from '../../utils/useFetchProducts';
+import { useEffect } from 'react';
 
 type Props = {
   productType: string;
 };
 
 export const CatalogPage: React.FC<Props> = ({ productType }) => {
-  const { products, error, isLoading, fetchProducts } = useFetchProducts();
+  const { products, error, isLoading, setIsLoading, fetchProducts } =
+    useFetchProducts();
 
   const filteredProductsList = products.filter(
     product => product.category === productType,
   );
+
+  useEffect(() => {
+    setIsLoading(true);
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 400);
+
+    return () => clearTimeout(timer);
+  }, [productType, setIsLoading]);
 
   const showProducts = !isLoading && !error;
 

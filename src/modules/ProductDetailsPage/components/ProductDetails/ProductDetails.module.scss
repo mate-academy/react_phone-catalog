@@ -4,27 +4,46 @@
   &__details {
     @include flex;
 
-    gap: 15px;
+    gap: 64px;
     margin-top: 40px;
+
+    @media (max-width: 767px) {
+      gap: 16px;
+    }
+
+    @media (max-width: 575px) {
+      flex-direction: column;
+      gap: 40px;
+      margin-top: 32px;
+    }
   }
 
   &__images {
     display: flex;
-    gap: 16px;
+    gap: 20px;
+    flex: 1;
 
     @media (max-width: 767px) {
       gap: 10px;
+    }
+
+    @media (max-width: 575px) {
+      flex-direction: column-reverse;
+      align-items: center;
     }
   }
 
   &__imagesWrapper {
     display: flex;
-    justify-content: space-between;
     flex-direction: column;
-    gap: 8px;
+    gap: 9px;
 
     @media (max-width: 991px) {
       height: fit-content;
+    }
+
+    @media (max-width: 575px) {
+      flex-direction: row;
     }
   }
 
@@ -33,12 +52,12 @@
     justify-content: center;
     width: 464px;
 
-    @media (max-width: 991px) {
+    @media (max-width: 1199px) {
       width: 320px;
     }
 
-    @media (max-width: 767px) {
-      width: 250px;
+    @media (max-width: 991px) {
+      width: 237px;
     }
 
     img {
@@ -82,6 +101,7 @@
     @include flex;
 
     gap: 15px;
+    flex: 1;
     position: relative;
   }
 
@@ -94,7 +114,6 @@
   }
 
   &__idNum {
-    width: 176px;
     text-align: right;
     color: $grey-color;
 
@@ -125,12 +144,17 @@
   &__characteristic {
     @include flex;
 
+    gap: 10px;
     font-size: 12px;
     font-weight: 600;
 
     &__name {
       color: $secondary-text-color;
     }
+  }
+
+  &__value {
+    text-align: right;
   }
 
   &__divider {

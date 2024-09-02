@@ -3,6 +3,15 @@
 .footer {
   background-color: $white-color;
   border-top: 1px solid $elements-color;
+  margin-top: 80px;
+
+  @media (max-width: 991px) {
+    margin-top: 64px;
+  }
+
+  @media (max-width: 575px) {
+    margin-top: 56px;
+  }
 
   &__wrapper {
     @include container;
@@ -10,6 +19,14 @@
 
     align-items: center;
     padding: 32px 0;
+
+    @media (max-width: 575px) {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 32px;
+      padding-top: 32px;
+      padding-bottom: 32px;
+    }
   }
 
   &__links {
@@ -23,6 +40,11 @@
 
     @media (max-width: 767px) {
       gap: 30px;
+    }
+
+    @media (max-width: 575px) {
+      flex-direction: column;
+      gap: 16px;
     }
   }
 
@@ -39,6 +61,10 @@
     @media (max-width: 991px) {
       width: 64px;
     }
+
+    @media (max-width: 575px) {
+      width: 89px;
+    }
   }
 
   &__back {
@@ -47,6 +73,10 @@
     align-items: center;
     gap: 16px;
     color: $secondary-text-color;
+
+    @media (max-width: 575px) {
+      align-self: center;
+    }
   }
 
   &__backBtn {

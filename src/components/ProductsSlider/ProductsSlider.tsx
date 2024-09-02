@@ -23,16 +23,19 @@ export const ProductsSlider: React.FC<Props> = ({ products, type, title }) => {
       <Swiper
         modules={[Navigation]}
         spaceBetween={16}
-        slidesPerView={4}
+        slidesPerView={1.3}
         breakpoints={{
-          576: {
+          375: {
+            slidesPerView: 1.5,
+          },
+          425: {
+            slidesPerView: 1.8,
+          },
+          540: {
             slidesPerView: 2.3,
           },
           768: {
             slidesPerView: 3,
-          },
-          992: {
-            slidesPerView: 3.3,
           },
           1200: {
             slidesPerView: 4,

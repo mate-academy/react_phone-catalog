@@ -11,6 +11,11 @@
   padding: 24px;
   margin-bottom: 16px;
 
+  @media (max-width: 575px) {
+    flex-direction: column;
+    padding: 16px;
+  }
+
   &__block {
     flex-grow: 1;
   }
@@ -19,6 +24,11 @@
     display: flex;
     gap: 24px;
     align-items: center;
+
+    @media (max-width: 575px) {
+      justify-content: space-between;
+      width: 100%;
+    }
   }
 
   &__close {

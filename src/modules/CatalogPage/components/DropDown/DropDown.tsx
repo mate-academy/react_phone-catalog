@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import classNames from 'classnames';
 import styles from './DropDown.module.scss';
@@ -8,8 +8,8 @@ import { itemsPerPage, sortOptions } from '../../../../constants/sortTypes';
 import { getSearchWith } from '../../../../utils/searchParams';
 
 export const DropDown: React.FC = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  const [isOpenItems, setIsOpenItems] = useState(false);
+  const [isOpenSort, setIsOpenSort] = useState(false);
+  const [isOpenQuantity, setIsOpenQuantity] = useState(false);
   const [searchParams, setSearchParams] = useSearchParams();
 
   function setSearchWith(params: Params) {
@@ -34,33 +34,31 @@ export const DropDown: React.FC = () => {
     }
   };
 
-  useEffect(() => {
-    const icon = document.querySelector(`.${styles.dropdown__icon}`);
-
-    icon?.classList.toggle(styles.dropdown__icon__open, isOpen);
-  }, [isOpen]);
-
   const currentSortLabel =
     sortOptions.find(option => option.key === searchParams.get('sort'))
       ?.label || 'Newest';
 
   return (
     <div className={styles.dropdown}>
-      <div>
+      <div className={styles.dropdown__sort}>
         <p className={classNames(styles.dropdown__label, 'text-small')}>
           Sort by
         </p>
         <div
           className={styles.dropdown__btnWrapper}
-          onClick={() => setIsOpen(!isOpen)}
+          onClick={() => setIsOpenSort(!isOpenSort)}
         >
           <div className={styles.dropdown__btn}>
             <p className="text-buttons">{currentSortLabel}</p>
-            <div className={styles.dropdown__icon}>
+            <div
+              className={classNames(styles.dropdown__icon, {
+                [styles.dropdown__icon__open]: isOpenSort,
+              })}
+            >
               <ArrowIcon />
             </div>
           </div>
-          {isOpen && (
+          {isOpenSort && (
             <div className={styles.dropdown__menu}>
               {sortOptions.map(({ key, label }) => (
                 <div
@@ -82,17 +80,21 @@ export const DropDown: React.FC = () => {
         </p>
         <div
           className={styles.dropdown__btnWrapper}
-          onClick={() => setIsOpenItems(!isOpenItems)}
+          onClick={() => setIsOpenQuantity(!isOpenQuantity)}
         >
           <div className={styles.dropdown__btn}>
             <p className="text-buttons">
               {searchParams.get('perPage') || 'All'}
             </p>
-            <div className={styles.dropdown__icon}>
+            <div
+              className={classNames(styles.dropdown__icon, {
+                [styles.dropdown__icon__open]: isOpenQuantity,
+              })}
+            >
               <ArrowIcon />
             </div>
           </div>
-          {isOpenItems && (
+          {isOpenQuantity && (
             <div className={styles.dropdown__menu}>
               {itemsPerPage.map(quantity => (
                 <div

@@ -5,11 +5,10 @@
     @include flex;
 
     gap: 16px;
-    margin: 32px 0 80px;
+    margin-top: 32px;
 
     @media (max-width: 991px) {
       flex-direction: column;
-      margin-bottom: 64px;
     }
   }
 
@@ -27,6 +26,10 @@
       &__btn {
         margin: 0 auto;
         width: 60%;
+
+        @media (max-width: 575px) {
+          width: 100%;
+        }
       }
     }
   }
@@ -50,5 +53,9 @@
     width: 400px;
     margin: 0 auto 30px;
     display: block;
+
+    @media (max-width: 425px) {
+      width: 100%;
+    }
   }
 }

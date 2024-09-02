@@ -16,11 +16,7 @@ export const Header = () => {
   };
 
   useEffect(() => {
-    if (isMenuOpen) {
-      document.body.classList.add('menu-open');
-    } else {
-      document.body.classList.remove('menu-open');
-    }
+    document.body.classList.toggle('menu-open', isMenuOpen);
   }, [isMenuOpen]);
 
   const { pathname } = useLocation();
@@ -40,9 +36,11 @@ export const Header = () => {
           <NavigationMenu />
         </nav>
 
-        <div className={styles.header__icons}>
+        <div className={styles.header__rightBlock}>
           {showSearch && <Search />}
-          <NavigationIcons />
+          <div className={styles.header__icons}>
+            <NavigationIcons />
+          </div>
         </div>
 
         <div className={styles.header__hamburger} onClick={toggleMenu}>

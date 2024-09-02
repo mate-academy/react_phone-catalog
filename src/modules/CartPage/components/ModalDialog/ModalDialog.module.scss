@@ -43,6 +43,10 @@
   &__active {
     opacity: 1;
     transform: scale(1);
+
+    @media (max-width: 374px) {
+      max-width: 300px;
+    }
   }
 
   &__question {
@@ -54,6 +58,10 @@
 
     gap: 30px;
     margin-top: 30px;
+
+    @media (max-width: 425px) {
+      gap: 15px;
+    }
 
     & > div {
       flex: 1;

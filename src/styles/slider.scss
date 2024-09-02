@@ -13,6 +13,10 @@
 
   @include hover((border-color, $main-text-color));
 
+  @media (max-width: 575px) {
+    display: none;
+  }
+
   &::after {
     content: '';
   }

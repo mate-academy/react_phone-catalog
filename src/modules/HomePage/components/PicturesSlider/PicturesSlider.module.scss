@@ -12,12 +12,18 @@
 
     @media (max-width: 991px) {
       max-width: 620px;
-      height: 221px;
+
       margin: 32px auto 96px;
     }
 
     @media (max-width: 767px) {
       max-width: 450px;
+    }
+
+    @media (max-width: 575px) {
+      max-width: initial;
+      width: 100vw;
+      margin-left: -16px;
     }
   }
 
@@ -31,23 +37,34 @@
       height: 221px;
     }
 
+    @media (max-width: 575px) {
+      border-radius: initial;
+    }
+
+    @media (max-width: 424px) {
+      height: initial;
+      aspect-ratio: 1;
+    }
+
     &--1 {
-      background-image: url('../../../../images/banner-new-phone.png');
+      background-image: url('../../../../../public/img/banner-new-phone.png');
       flex: 1;
       background-size: contain;
 
-      // @media (max-width: 1199px) {
-      //   height: 340px;
-      // }
+      &--mob {
+        @media (max-width: 424px) {
+          background-image: url('../../../../../public/img/banner-new-phone-mob.png');
+        }
+      }
     }
 
     &--2 {
-      background-image: url('../../../../images/banner-tablets.png');
+      background-image: url('../../../../../public/img/banner-tablets.png');
       background-position: center;
       background-color: $grey-color;
     }
     &--3 {
-      background-image: url('../../../../images/banner-accessories.png');
+      background-image: url('../../../../../public/img/banner-accessories.png');
       background-position: top;
       background-color: $red-color;
     }
@@ -64,6 +81,22 @@
 
     @media (max-width: 991px) {
       height: 100%;
+    }
+
+    @media (max-width: 575px) {
+      border-radius: initial;
+    }
+
+    @media (max-width: 424px) {
+      display: none;
+    }
+
+    &__mobile {
+      display: none;
+
+      @media (max-width: 424px) {
+        display: block;
+      }
     }
   }
 

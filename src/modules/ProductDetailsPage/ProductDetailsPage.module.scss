@@ -8,5 +8,9 @@
     width: 700px;
     margin: 0 auto;
     display: block;
+
+    @media (max-width: 991px) {
+      width: 100%;
+    }
   }
 }

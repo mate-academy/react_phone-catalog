@@ -4,16 +4,7 @@
   position: sticky;
   top: 0;
   z-index: 110;
-  background-color: $white-color;
   border-bottom: 1px solid $elements-color;
-
-  @media (max-width: 1199px) {
-    gap: 40px;
-  }
-
-  @media (max-width: 991px) {
-    gap: 32px;
-  }
 
   &__navbar {
     @include flex;
@@ -23,9 +14,15 @@
     position: relative;
     height: 64px;
     z-index: 110;
+    background-color: $white-color;
 
     @media (max-width: 991px) {
       height: 48px;
+      gap: 35px;
+    }
+
+    @media (max-width: 767px) {
+      gap: 0;
     }
   }
 
@@ -43,6 +40,7 @@
     display: flex;
     align-items: center;
     gap: 64px;
+    margin-right: auto;
 
     @media (max-width: 1199px) {
       gap: 40px;
@@ -57,10 +55,21 @@
     }
   }
 
-  &__icons {
+  &__rightBlock {
     @include flex;
 
     align-items: center;
+
+    @media (max-width: 767px) {
+      margin-left: auto;
+    }
+
+    @media (max-width: 424px) {
+      display: none;
+    }
+  }
+
+  &__icons {
     position: relative;
     margin-left: auto;
 
@@ -93,7 +102,7 @@
   &__hamburgerMenu {
     position: absolute;
     z-index: 90;
-    translate: 0 -130%;
+    translate: 0 -140%;
     transition: translate 0.4s;
     pointer-events: none;
     left: 0;

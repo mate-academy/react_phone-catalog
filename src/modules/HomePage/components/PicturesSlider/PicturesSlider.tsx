@@ -47,6 +47,15 @@ export const PicturesSlider = () => {
               className={`${styles.swiper__image} ${styles[`swiper__image--1`]}`}
             ></div>
           </div>
+
+          <Link
+            to="/phones/apple-iphone-14-pro-256gb-spaceblack"
+            className={styles.swiper__banner__mobile}
+          >
+            <div
+              className={`${styles.swiper__image} ${styles[`swiper__image--1--mob`]}`}
+            ></div>
+          </Link>
         </SwiperSlide>
         <SwiperSlide>
           <div

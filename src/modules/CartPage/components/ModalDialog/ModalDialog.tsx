@@ -15,11 +15,9 @@ export const ModalDialog: React.FC<Props> = ({ isOpen, onClose }) => {
   const { clearCart } = useShoppingCart();
 
   useEffect(() => {
-    if (isOpen) {
-      setIsActive(true);
-    } else {
-      setIsActive(false);
-    }
+    document.body.classList.toggle('menu-open', isOpen);
+
+    return isOpen ? setIsActive(true) : setIsActive(false);
   }, [isOpen]);
 
   const confirm = () => {

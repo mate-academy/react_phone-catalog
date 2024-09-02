@@ -23,12 +23,19 @@
     width: 260px;
   }
 
+  @media (max-width: 575px) {
+    width: 100%;
+  }
+
   &__slider {
-    width: 272px;
+    width: 100%;
 
     @media (max-width: 991px) {
-      width: 230px;
       padding: 28px;
+    }
+
+    @media (max-width: 575px) {
+      padding: 25px;
     }
   }
 
