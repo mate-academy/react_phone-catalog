@@ -1,0 +1,135 @@
+.catalog {
+  &__breadcrumbs {
+    margin: 0 0 24px;
+
+    @include on-desktop {
+      margin: 0 0 40px;
+    }
+  }
+
+  &__title {
+    margin: 0 0 8px;
+  }
+
+  &__sub-text {
+    display: block;
+    margin: 0 0 32px;
+
+    @include on-desktop {
+      margin: 0 0 40px;
+    }
+  }
+
+  &__selects {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+
+  &__label {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    color: $c-secondary;
+  }
+
+  &__select {
+    appearance: none;
+    cursor: pointer;
+    box-sizing: border-box;
+    border: 1px solid transparent;
+    width: 136px;
+    padding: 10px 12px;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 150%;
+    background-color: $c-surface-2;
+    color: $c-white;
+    position: relative;
+
+    &:focus {
+      border-color: $c-accent;
+      outline: none;
+    }
+
+    @include on-desktop {
+      transition: border-color 0.5s;
+
+      .icon {
+        transition: fill 0.5s;
+      }
+
+      &:hover {
+        border-color: $c-icons;
+
+        .icon {
+          fill: $c-icons;
+        }
+      }
+    }
+
+    &--sort {
+      @include on-tablet {
+        width: 176px;
+      }
+    }
+  }
+
+  &__select-name {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__select-options {
+    display: none;
+    list-style: none;
+    margin: 4px 0 0;
+    padding: 8px 0;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: transparent;
+    border: 1px solid $c-elements;
+    z-index: 1000;
+
+    flex-direction: column;
+
+    &--active {
+      display: flex;
+    }
+  }
+
+  &__select-option {
+    font-weight: 400;
+    color: $c-secondary;
+    height: 32px;
+    padding: 0 0 0 12px;
+    display: flex;
+    align-items: center;
+
+    @include on-desktop {
+      transition:
+        background-color 0.5s,
+        color 0.5s;
+
+      &:hover {
+        background-color: $c-surface-2;
+        color: $c-white;
+
+        // .catalog__select .icon {
+        //   fill: $c-accent;
+        // }
+      }
+    }
+  }
+
+  &__products-list {
+    margin-bottom: 24px;
+
+    @include on-tablet {
+      margin-bottom: 40px;
+    }
+  }
+}

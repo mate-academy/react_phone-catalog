@@ -2,94 +2,123 @@ import { Loader } from '../../components/Loader';
 import { Breadcrumbs } from '../../components/Breadcrumbs';
 import { BackBtn } from '../../components/BackBtn';
 import { AppContext } from '../../AppContext';
-import { useContext, useMemo } from 'react';
-import { useParams } from 'react-router-dom';
-import { ProductPrices } from '../../components/ProductPrices';
-import { ProductSpecs } from '../../components/ProductSpecs';
-import { ProductButtons } from '../../components/ProductButtons';
+import { useContext, useEffect, useState } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
+import { Details } from './components/details';
+import { ProductsSlider } from '../../components/ProductsSlider';
+import { ProductType } from '../../types/ProductType';
+import { getProducts } from '../../api';
+import { ErrorMessage } from '../../components/ErrorMessage';
 
 export const ProductDetailsPage = () => {
-  const { phones, isLoading } = useContext(AppContext);
-  const { id } = useParams<{ id: string }>();
+  const { products, phones } = useContext(AppContext);
+  const { productId } = useParams<{ productId: string }>();
+  const navigate = useNavigate();
 
-  const product = useMemo(
-    () => phones.find(phone => phone.id === id),
-    [phones, id],
+  const [selectedProduct, setSelectedProduct] = useState(
+    products.find(p => productId && p.itemId === productId),
   );
+  const [extendedProduct, setExtendedProduct] = useState(
+    phones.find(phone => phone.id === selectedProduct?.itemId),
+  );
+  const [suggestedProducts, setSuggestedProducts] = useState<ProductType[]>([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
+
+  useEffect(() => {
+    setSelectedProduct(products.find(p => productId && p.itemId === productId));
+
+    switch (selectedProduct?.category) {
+      case 'phones':
+        return setExtendedProduct(
+          phones.find(phone => phone.id === selectedProduct.itemId),
+        );
+
+      default:
+        return;
+    }
+  }, [selectedProduct, navigate, phones, products, productId]);
+
+  useEffect(() => {
+    setIsLoading(true);
+
+    getProducts()
+      .then(readyProducts => {
+        const filteredProducts = readyProducts
+          .filter(
+            product =>
+              product.itemId.split('-').slice(0, -2).join('-') !==
+                selectedProduct?.itemId.split('-').slice(0, -2).join('-') &&
+              product.category === selectedProduct?.category &&
+              product.fullPrice - selectedProduct?.fullPrice <= 500 &&
+              selectedProduct?.fullPrice - product.fullPrice <= 500 &&
+              product.year - selectedProduct?.year <= 3 &&
+              selectedProduct?.year - product.year <= 3,
+          )
+          .sort((product1, product2) => product2.year - product1.year);
+
+        const uniqueProducts: ProductType[] = [];
+        const seenBaseIds: string[] = [];
+
+        filteredProducts.forEach(product => {
+          if (
+            !seenBaseIds.includes(
+              product.itemId.split('-').slice(0, -2).join('-'),
+            )
+          ) {
+            seenBaseIds.push(product.itemId.split('-').slice(0, -2).join('-'));
+            uniqueProducts.push(product);
+          }
+        });
+
+        return uniqueProducts;
+      })
+      .then(setSuggestedProducts)
+      .catch(() => {
+        setErrorMessage('Something went wrong!');
+
+        setTimeout(() => {
+          setErrorMessage('');
+        }, 3000);
+      })
+      .finally(() => setIsLoading(false));
+  }, [
+    selectedProduct?.category,
+    selectedProduct?.color,
+    selectedProduct?.fullPrice,
+    selectedProduct?.itemId,
+    selectedProduct?.price,
+    selectedProduct?.year,
+  ]);
 
   return (
     <div className="product-details page">
-      <div className="container">
-        {isLoading && <Loader />}
+      {isLoading && <Loader />}
 
-        {!isLoading && (
-          <>
+      {!isLoading && (
+        <>
+          <div className="container">
             <Breadcrumbs className="product-details__breadcrumbs" />
             <BackBtn className="product-details__back-btn" />
 
-            {!product ? (
-              <span className="notification"></span>
-            ) : (
-              <section className="details">
-                <h2 className="details__title section-title">{product.name}</h2>
+            {errorMessage && <ErrorMessage errorMessage={errorMessage} />}
 
-                <div className="details__images-slider images-slider">
-                  <ul className="images-slider__images">
-                    <li className="images-slider__image"></li>
-                  </ul>
-
-                  <ul className="images-slider__thumbs">
-                    <li className="images-slider__thumb"></li>
-                  </ul>
-                </div>
-
-                <div className="details__info">
-                  <div className="details__colors">
-                    <div className="details__colors-top">
-                      <span className="details__info-title">
-                        Available colors
-                      </span>
-                      <span className="details__info-id">ID: 802390</span>
-                    </div>
-
-                    <ul className="details__colors-list">
-                      <li className="details__colors-item">
-                        <button className="details__colors-btn"></button>
-                      </li>
-                    </ul>
-                  </div>
-
-                  <div className="details__capacity">
-                    <span className="details__info-title">
-                      Available colors
-                    </span>
-
-                    <ul className="details__capacity-list">
-                      <li className="details__capacity-item">
-                        <button className="details__capacity-btn"></button>
-                      </li>
-                    </ul>
-                  </div>
-
-                  <ProductPrices product={product} />
-
-                  <ProductButtons product={product} />
-
-                  <ProductSpecs
-                    product={product}
-                    specs={[
-                      { key: 'screen', label: 'Screen' },
-                      { key: 'resolution', label: 'Resolution' },
-                      { key: 'processor', label: 'Processor' },
-                      { key: 'ram', label: 'RAM' },
-                    ]}
-                  />
-                </div>
-              </section>
+            {!selectedProduct && !errorMessage && (
+              <span className="notification">Product was not found</span>
             )}
-          </>
-        )}
-      </div>
+          </div>
+
+          {selectedProduct && <Details product={extendedProduct} />}
+          {selectedProduct && (
+            <ProductsSlider
+              title="You may also like"
+              products={suggestedProducts}
+              isLoading={isLoading}
+              errorMessage={errorMessage}
+            />
+          )}
+        </>
+      )}
     </div>
   );
 };

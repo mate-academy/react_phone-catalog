@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import { AppContext } from '../../AppContext';
-import { ProductsList } from '../../components/ProductsList';
 import { Breadcrumbs } from '../../components/Breadcrumbs';
+import { ProductsList } from '../../components/ProductsList';
 
 export const FavoritesPage = () => {
   const { favItems } = useContext(AppContext);

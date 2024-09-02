@@ -24,4 +24,5 @@ function get<T>(url: string): Promise<T> {
 
 export const getProducts = () => get<ProductType[]>('/products');
 export const getPhones = () => get<ProductTypeExtended[]>('/phones');
-
+export const getTablets = () => get<ProductTypeExtended[]>('/tablets');
+export const getAccessories = () => get<ProductTypeExtended[]>('/accessories');

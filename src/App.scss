@@ -10,23 +10,24 @@
 @import './components/Menu/Menu.module';
 @import './components/Nav/Nav.module';
 @import './components/Product/Product.module';
-@import './components/ProductPrices/ProductPrices.module';
-@import './components/ProductButtons/ProductButtons.module';
-@import './components/ProductSpecs/ProductSpecs.module';
+@import './components/ProductContent/ProductContent.module';
+@import './components/ImagesSlider/ImagesSlider.module';
 @import './components/Header/Header.module';
 @import './components/Footer/Footer.module';
+@import './components/ProductsSlider/ProductsSlider.module';
 @import './components/ProductsList/ProductsList.module';
 @import './components/AddToCart/AddToCart.module';
 @import './components/AddToFav/AddToFav.module';
 @import './components/Breadcrumbs/Breadcrumbs.module';
 @import './components/Loader/Loader.module';
 @import './components/BackBtn/BackBtn.module';
+@import './components/ErrorMessage/ErrorMessage.module';
+@import './components/Pagination/Pagination.module';
 
 // Module HomePage
 @import './modules/HomePage/components/Hero/Hero.module';
 @import './modules/HomePage/components/PicturesSlider/PicturesSlider.module';
 @import './modules/HomePage/components/Category/Category.module';
-@import './modules/HomePage/components/ProductsSlider/ProductsSlider.module';
 @import './modules/HomePage/components/Banner/Banner.module';
 
 // Module ShoppingCartPage
@@ -38,6 +39,10 @@
 
 // Module ProductDetails
 @import './modules/ProductDetailsPage/ProductDetailsPage.module';
+@import './modules/ProductDetailsPage/components/Details/Details.module';
+
+// Module ProductDetails
+@import './modules/CatalogPage/CatalogPage.module';
 
 html {
   min-width: 320px;
@@ -104,7 +109,6 @@ body {
 }
 
 .section-title {
-  margin: 0 0 24px;
   font-size: 22px;
   line-height: 140%;
 
@@ -122,7 +126,6 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-
 
   &:disabled {
     cursor: not-allowed;
@@ -150,18 +153,6 @@ body {
   clip-path: inset(100%);
   clip: rect(0 0 0 0);
   overflow: hidden;
-}
-
-.notification {
-  font-weight: 700;
-  font-size: 22px;
-  line-height: 140%;
-  color: $c-red;
-
-  @include on-tablet {
-    font-size: 32px;
-    line-height: 128%;
-  }
 }
 
 /* app */

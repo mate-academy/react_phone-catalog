@@ -1,6 +1,6 @@
 import React, { createContext, useState, ReactNode, useEffect } from 'react';
 import { ProductType } from './types/ProductType';
-import { getPhones, getProducts } from './api';
+import { getAccessories, getPhones, getProducts, getTablets } from './api';
 import { ProductTypeExtended } from './types/ProductTypeExtended';
 
 type ListType = 'cart' | 'fav';
@@ -8,6 +8,8 @@ type ListType = 'cart' | 'fav';
 type ContextProps = {
   products: ProductType[];
   phones: ProductTypeExtended[];
+  tablets: ProductTypeExtended[];
+  accessories: ProductTypeExtended[];
   isLoading: boolean;
   errorMessage: string;
   setErrorMessage: (newMessage: string) => void;
@@ -22,6 +24,8 @@ type ContextProps = {
 export const AppContext = createContext<ContextProps>({
   products: [],
   phones: [],
+  tablets: [],
+  accessories: [],
   isLoading: false,
   errorMessage: '',
   setErrorMessage: () => {},
@@ -63,6 +67,8 @@ function useLocalStorage<T>(key: string, startValue: T): [T, (v: T) => void] {
 export const AppProvider: React.FC<Props> = ({ children }) => {
   const [products, setProducts] = useState<ProductType[]>([]);
   const [phones, setPhones] = useState<ProductTypeExtended[]>([]);
+  const [tablets, setTablets] = useState<ProductTypeExtended[]>([]);
+  const [accessories, setAccessories] = useState<ProductTypeExtended[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
 
@@ -73,10 +79,6 @@ export const AppProvider: React.FC<Props> = ({ children }) => {
       .then(setProducts)
       .catch(() => {
         setErrorMessage('Something went wrong!');
-
-        setTimeout(() => {
-          setErrorMessage('');
-        }, 3000);
       })
       .finally(() => setIsLoading(false));
   }, []);
@@ -88,7 +90,28 @@ export const AppProvider: React.FC<Props> = ({ children }) => {
       .then(setPhones)
       .catch(() => {
         setErrorMessage('Something went wrong!');
-        setTimeout(() => setErrorMessage(''), 3000);
+      })
+      .finally(() => setIsLoading(false));
+  }, []);
+
+  useEffect(() => {
+    setIsLoading(true);
+
+    getTablets()
+      .then(setTablets)
+      .catch(() => {
+        setErrorMessage('Something went wrong!');
+      })
+      .finally(() => setIsLoading(false));
+  }, []);
+
+  useEffect(() => {
+    setIsLoading(true);
+
+    getAccessories()
+      .then(setAccessories)
+      .catch(() => {
+        setErrorMessage('Something went wrong!');
       })
       .finally(() => setIsLoading(false));
   }, []);
@@ -126,6 +149,8 @@ export const AppProvider: React.FC<Props> = ({ children }) => {
   const value = {
     products,
     phones,
+    tablets,
+    accessories,
     isLoading,
     errorMessage,
     setErrorMessage,

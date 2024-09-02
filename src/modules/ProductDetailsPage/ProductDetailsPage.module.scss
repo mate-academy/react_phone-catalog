@@ -3,20 +3,11 @@
     margin: 0 0 24px;
 
     @include on-desktop {
-      margin: 0 0 40;
+      margin: 0 0 40px;
     }
   }
 
   &__back-btn {
     margin-bottom: 16px;
-  }
-
-  &__content {
-    @include page-grid;
-  }
-
-  &__title {
-    grid-column: 1 / -1;
-    margin: 0 0 32px;
   }
 }

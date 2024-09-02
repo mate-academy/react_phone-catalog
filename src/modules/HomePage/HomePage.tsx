@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { getProducts } from '../../api';
 import { ProductType } from '../../types/ProductType';
 import { Hero } from './components/Hero';
-import { ProductsSlider } from './components/ProductsSlider';
+import { ProductsSlider } from '../../components/ProductsSlider';
 import { Category } from './components/Category';
 
 export const HomePage = () => {
@@ -25,15 +25,13 @@ export const HomePage = () => {
       .then(setNewestProducts)
       .catch(() => {
         setErrorMessage('Something went wrong!');
-
-        setTimeout(() => {
-          setErrorMessage('');
-        }, 3000);
       })
       .finally(() => setIsLoading(false));
   }, []);
 
   useEffect(() => {
+    setIsLoading(true);
+
     getProducts()
       .then(readyProducts =>
         readyProducts
@@ -42,7 +40,11 @@ export const HomePage = () => {
             (product1, product2) => product2.fullPrice - product1.fullPrice,
           ),
       )
-      .then(setHotProducts);
+      .then(setHotProducts)
+      .catch(() => {
+        setErrorMessage('Something went wrong!');
+      })
+      .finally(() => setIsLoading(false));
   }, []);
 
   return (

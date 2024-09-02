@@ -1,8 +1,5 @@
-import { Link } from 'react-router-dom';
 import { ProductType } from '../../types/ProductType';
-import { ProductPrices } from '../ProductPrices';
-import { ProductButtons } from '../ProductButtons';
-import { ProductSpecs } from '../ProductSpecs';
+import { ProductContent } from '../ProductContent';
 
 type Props = {
   className?: string;
@@ -19,35 +16,7 @@ export const Product: React.FC<Props> = ({
 
   return (
     <article className={`product ${className}`.trim()}>
-      <Link
-        className="product__img-link"
-        to={`/${product.category}/${product.id}`}
-      >
-        <img className="product__img" src={product.image} alt={product.name} />
-      </Link>
-      <Link
-        className="product__title"
-        to={`/${product.category}/${product.id}`}
-      >
-        {product.name}
-      </Link>
-
-      <ProductPrices
-        className={'product__product-prices'}
-        product={product}
-        hasDiscount={hasDiscount}
-      />
-
-      <ProductSpecs
-        product={product}
-        specs={[
-          { key: 'screen', label: 'Screen' },
-          { key: 'capacity', label: 'Capacity' },
-          { key: 'ram', label: 'RAM' },
-        ]}
-      />
-
-      <ProductButtons product={product} />
+      <ProductContent product={product} showDiscount={hasDiscount} />
     </article>
   );
 };

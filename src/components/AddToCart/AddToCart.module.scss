@@ -3,8 +3,6 @@
   font-size: 14px;
   line-height: 150%;
 
-  width: 100px;
-  height: 40px;
   padding: 10px;
 
   &--added {
@@ -13,12 +11,10 @@
   }
 
   @include on-tablet {
-    width: 125px;
     padding: 10px 22px;
   }
 
   @include on-desktop {
-    width: 160px;
     padding: 10px 40px;
   }
 }

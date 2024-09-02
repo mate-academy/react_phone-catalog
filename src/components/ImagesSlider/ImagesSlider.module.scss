@@ -1,0 +1,84 @@
+.images-slider {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  @include on-tablet {
+    flex-direction: row-reverse;
+    justify-content: space-between;
+  }
+
+  &__images,
+  &__thumbs {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    display: flex;
+    justify-content: space-between;
+    overflow: hidden;
+  }
+
+  &__images {
+    flex-grow: 1;
+    justify-content: center;
+  }
+
+  &__image {
+    min-width: 288px;
+    height: 288px;
+
+
+    @include on-desktop {
+      min-width: 464px;
+      height: 464px;
+    }
+  }
+
+  &__thumbs {
+    gap: 8px;
+
+    @include on-tablet {
+      flex-direction: column;
+      justify-content: flex-start;
+    }
+  }
+
+  &__thumb {
+    cursor: pointer;
+    box-sizing: border-box;
+    border: 1px solid $c-elements;
+    padding: 5px;
+    min-width: clamp(50px, 12vw, 100px);
+    max-width: clamp(50px, 12vw, 100px);
+    max-height: clamp(50px, 12vw, 100px);
+
+    &--active {
+      border-color: $c-white;
+    }
+
+    @include on-tablet {
+      min-width: clamp(35px, 5vw, 80px);
+      max-width: clamp(35px, 5vw, 80px);
+      max-height: clamp(35px, 5vw, 80px);
+    }
+
+    @include on-desktop {
+      min-width: 80px;
+      min-height: 80px;
+      max-width: 80px;
+      transition: border-color 0.5s;
+
+      &:hover {
+        border-color: $c-secondary;
+      }
+    }
+  }
+
+  &__image img,
+  &__thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+}

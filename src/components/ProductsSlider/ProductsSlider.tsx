@@ -5,10 +5,11 @@ import {
   useRef,
   useState,
 } from 'react';
-import { ProductType } from '../../../../types/ProductType';
-import { Icon } from '../../../../components/Icon';
-import { Product } from '../../../../components/Product';
-import { Loader } from '../../../../components/Loader';
+import { ProductType } from '../../types/ProductType';
+import { Icon } from '../Icon';
+import { Product } from '../Product';
+import { Loader } from '../Loader';
+import { ErrorMessage } from '../ErrorMessage';
 
 type Props = {
   className?: string;
@@ -163,9 +164,7 @@ export const ProductsSlider: React.FC<Props> = ({
 
         {!isLoading && (
           <>
-            {errorMessage && (
-              <span className="notification">{errorMessage}</span>
-            )}
+            {errorMessage && <ErrorMessage errorMessage={errorMessage} />}
 
             {!products.length && !errorMessage && (
               <span className="notification">
