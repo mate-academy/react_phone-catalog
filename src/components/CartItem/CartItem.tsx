@@ -19,14 +19,16 @@ export const CartItem: React.FC<CartItemProps> = ({ item, updateCart }) => {
   const handleCalcItem = (type: 'increase' | 'decrease') => {
     const newCount = type === 'increase' ? count + 1 : count - 1;
 
-    updateCart(
-      {
-        ...item,
-        count: newCount,
-        totalPrice: newCount * price,
-      },
-      CartActionType.UPDATE,
-    );
+    if (newCount >= 1) {
+      updateCart(
+        {
+          ...item,
+          count: newCount,
+          totalPrice: newCount * price,
+        },
+        CartActionType.UPDATE,
+      );
+    }
   };
 
   return (
