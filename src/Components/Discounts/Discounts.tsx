@@ -1,19 +1,18 @@
 /* eslint-disable @typescript-eslint/indent */
-import { useEffect, useState } from 'react';
-import { HotPricesProduct } from '../types/HotPricesProducts';
+import { useContext, useEffect } from 'react';
 import { getHotPricesProducts } from '../../api/products';
 import { DiscountProduct } from '../DiscountProduct/DiscountProduct';
 import './Discounts.scss';
 import Slider from 'react-slick';
+import { CatalogContext } from '../CatalogProvider';
 
 export const Discounts = () => {
-  const [hotPricesProducts, setHotPricesProducts] = useState<
-    HotPricesProduct[]
-  >([]);
+  const { hotPricesProducts, setHotPricesProducts } =
+    useContext(CatalogContext);
 
   useEffect(() => {
     getHotPricesProducts().then(setHotPricesProducts);
-  }, []);
+  }, [setHotPricesProducts]);
 
   const settings = {
     variableWidth: true,

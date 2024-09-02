@@ -7,8 +7,8 @@
 
 .phonespage {
   @include page-grid;
-  
-  margin: 20px 16px 0;
+
+  margin: 20px 0 0 8px;
   &__breadcrumbs--image {
     background-image: url('../../img/Breadcrumbs.svg');
     background-repeat: no-repeat;
@@ -17,6 +17,9 @@
     grid-column: 1 / 2;
 
   }
+  &__content {
+    grid-column: 1 / 5;
+  }
   &__header {
 font-family: Mont-phonepage, sans-serif;
 font-size: 32px;
@@ -24,5 +27,15 @@ line-height: 41px;
 letter-spacing: -0.01em;
 text-align: left;
 grid-column: 1 / 5;
+  }
+  &__amountofmodels {
+    grid-column: 1 / 5;
+    color: #89939A;
+font-family: Mont-phonespage, sans-serif;
+font-size: 14px;
+font-weight: 600;
+line-height: 21px;
+text-align: left;
+
   }
 }

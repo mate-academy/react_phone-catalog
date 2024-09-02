@@ -11,21 +11,6 @@
   }
 };
 
-// @mixin grid-tablet {
-//    @media (min-width: 640px) {
-//     display: grid;
-//     grid-template-columns: 32px 32px 32px 32px 32px 32px 32px 32px 32px 32px 32px 32px;
-//     gap: 16px;
-//    }}
-
-//    @mixin grid-desktop {
-//     @media (min-width: 1200px) {
-//       display: grid;
-//   grid-template-columns: 32px 32px 32px 32px 32px 32px 32px 32px 32px 32px 32px 32px 32px 32px 32px 32px 32px 32px 32px 32px 32px 32px 32px 32px;
-//   gap: 16px;
-//   margin: 0 32px;
-//     }}
-
 @mixin page-grid {
   @media (min-width: 320px) {
     display: grid;
@@ -43,6 +28,8 @@ grid-template-columns: repeat(24, 32px);
 gap: 16px;
   }
 }
+
+
 
 
 

@@ -1,16 +1,11 @@
-import { useEffect, useState } from 'react';
+import { useContext } from 'react';
 import './CartPage.scss';
-import { getProducts } from '../../api/products';
-import { Product } from '../types/Product';
 import { ProductCard } from '../ProductCard/ProductCard';
 import Slider from 'react-slick';
+import { CatalogContext } from '../CatalogProvider';
 
 export const CartPage = () => {
-  const [products, setProducts] = useState<Product[]>([]);
-
-  useEffect(() => {
-    getProducts().then(setProducts);
-  }, []);
+  const { products } = useContext(CatalogContext);
 
   const getNewestProducts = products.filter(product => product.year === 2022);
 

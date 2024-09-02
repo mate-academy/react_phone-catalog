@@ -1,0 +1,35 @@
+@font-face {
+  font-family: Mont-bold;
+  src: url('../../../public/fonts/Mont-Bold.otf');
+}
+
+@font-face {
+  font-family: Mont;
+  src: url('../../../public/fonts/Mont-Regular.otf');
+}
+
+.productsfilter {
+  &__text {
+    grid-column: 1 / 5;
+    font-family: Mont, sans-serif;
+  }
+  &__selection {
+    grid-column: 1 / 5;
+    font-family: Mont, sans-serif;
+    border: 1px solid #89939A;
+    width: 187px;
+    height: 40px;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+
+  &__option {
+  font-family: Mont, sans-serif;
+  color: #89939A;
+    &--disabled {
+      color: black;
+      font-family: Mont-bold, sans-serif;
+      font-weight: 800;
+    }
+  }
+}

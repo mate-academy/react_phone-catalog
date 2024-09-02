@@ -1,7 +1,8 @@
+import { PhonesType } from './phones';
+
 export type Product = {
   id: string;
   category: string;
-  phoneId: string;
   itemId: string;
   name: string;
   fullPrice: number;
@@ -12,4 +13,5 @@ export type Product = {
   ram: string;
   year: number;
   image: string;
+  ProductData: PhonesType | null;
 };
