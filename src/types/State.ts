@@ -8,4 +8,6 @@ export interface States {
   phones: PhoneSpecs[];
   tablets: TabletSpecs[];
   products: ProductSummary[];
+  cart: ProductSummary[];
+  favorites: ProductSummary[];
 }

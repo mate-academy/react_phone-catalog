@@ -4,7 +4,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 1px solid $c-elements;
+  border: none;
   background: $c-primary;
   font-family: Mont, sans-serif;
   font-weight: 700;
@@ -12,6 +12,10 @@
   line-height: 21px;
   color: $c-white;
   &--cart {
-    
+    &-added {
+      border: 1px solid $c-elements;
+      color: $c-green;
+      background-color: $c-white;
+    }
   }
 }

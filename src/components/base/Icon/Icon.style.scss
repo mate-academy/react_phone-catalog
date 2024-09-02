@@ -45,6 +45,9 @@
 
   &--favorite {
     background: url('../../../../public/img/icons/heart.svg') no-repeat center;
+    &-added {
+      background: url('../../../../public/img/icons/heart-filled.svg') no-repeat center;
+    }
   }
 
   &--cart {

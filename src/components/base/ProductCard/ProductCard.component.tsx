@@ -1,12 +1,34 @@
+import { useContext } from 'react';
 import { ProductSummary } from '../../../types/ProductSummary';
 import { Icon } from '../../base/Icon/Icon.component';
 import { Button } from '../Button/Button.component';
+import {
+  DispatchContext,
+  StatesContext,
+} from '../../../store/GlobalStateProvider';
 
 type Props = {
   product: ProductSummary;
 };
 
 export const ProductCard: React.FC<Props> = ({ product }) => {
+  const { cart, favorites } = useContext(StatesContext);
+  const dispatch = useContext(DispatchContext);
+  const addedToCart = cart.includes(product);
+  const addToCart = () => {
+    dispatch({ type: 'addToCart', payload: product });
+  };
+  const removeFromCart = () => {
+    dispatch({ type: 'removeFromCart', payload: product.id });
+  };
+  const addedToFavorites = favorites.includes(product);
+  const addToFavorites = () => {
+    dispatch({ type: 'addToFavorites', payload: product });
+  };
+  const removeFromFavorites = () => {
+    dispatch({ type: 'removeFromFavorites', payload: product.id });
+  };
+
   return (
     <div className="card">
       <figure className="card__image-wrapper">
@@ -34,8 +56,18 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
         </div>
       </div>
       <div className="card__buttons">
-        <Button title="Add to cart" buttonUse="cart" />
-        <Icon iconType="favorite" iconUse="button-size40" />
+        <Button
+          title={addedToCart ? 'Added' : 'Add to cart'}
+          buttonUse="cart"
+          onClick={addedToCart ? removeFromCart : addToCart}
+          added={addedToCart}
+        />
+        <Icon
+          iconType="favorite"
+          iconUse="button-size40"
+          onClick={addedToFavorites ? removeFromFavorites : addToFavorites}
+          added={addedToFavorites}
+        />
       </div>
     </div>
   );

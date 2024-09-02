@@ -1,8 +1,11 @@
+import cn from 'classnames';
+
 type Props = {
   iconType: string;
   iconUse: string;
-  disabled?: string;
+  disabled?: boolean;
   onClick?: () => void;
+  added?: boolean;
 };
 
 export const Icon: React.FC<Props> = ({
@@ -10,11 +13,15 @@ export const Icon: React.FC<Props> = ({
   iconUse,
   disabled,
   onClick,
+  added,
 }) => {
   return (
     <>
       <div
-        className={`icon icon--${iconType} icon--${iconUse} icon--${iconType}-${disabled}`}
+        className={cn(`icon icon--${iconType}`, `icon--${iconUse}`, {
+          [`icon--${iconType}-disabled`]: disabled,
+          [`icon--${iconType}-added`]: added,
+        })}
         onClick={onClick}
       />
     </>

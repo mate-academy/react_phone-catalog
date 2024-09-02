@@ -10,13 +10,19 @@ const initialStates = {
   phones: [],
   products: [],
   tablets: [],
+  cart: [],
+  favorites: [],
 };
 
 type Action =
   | { type: 'loadAccessories'; payload: AccessorySpecs[] }
   | { type: 'loadPhones'; payload: PhoneSpecs[] }
   | { type: 'loadTablets'; payload: TabletSpecs[] }
-  | { type: 'loadProducts'; payload: ProductSummary[] };
+  | { type: 'loadProducts'; payload: ProductSummary[] }
+  | { type: 'addToCart'; payload: ProductSummary }
+  | { type: 'removeFromCart'; payload: number }
+  | { type: 'addToFavorites'; payload: ProductSummary }
+  | { type: 'removeFromFavorites'; payload: number };
 
 type DispatchContextType = {
   (action: Action): void;
@@ -36,6 +42,27 @@ function reducer(states: States, action: Action) {
       break;
     case 'loadProducts':
       newStates = { ...newStates, products: action.payload };
+      break;
+    case 'addToCart':
+      newStates = { ...newStates, cart: [...states.cart, action.payload] };
+      break;
+    case 'removeFromCart':
+      newStates = {
+        ...newStates,
+        cart: states.cart.filter(p => p.id !== action.payload),
+      };
+      break;
+    case 'addToFavorites':
+      newStates = {
+        ...newStates,
+        favorites: [...states.favorites, action.payload],
+      };
+      break;
+    case 'removeFromFavorites':
+      newStates = {
+        ...newStates,
+        favorites: states.favorites.filter(p => p.id !== action.payload),
+      };
       break;
     default:
       return states;

@@ -55,11 +55,13 @@ export const ProductSlider: React.FC<Props> = ({ title }) => {
             iconType="chevron-left"
             iconUse="button-size32"
             onClick={prev}
+            disabled={index === 0}
           />
           <Icon
             iconType="chevron-right"
             iconUse="button-size32"
             onClick={next}
+            disabled={index <= -(products.length - scrollSteps)}
           />
         </div>
       </div>
