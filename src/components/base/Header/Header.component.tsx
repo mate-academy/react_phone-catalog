@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import useMediaQuery from '../../utils/useMediaQuery';
-import { Icon } from '../base/Icon/Icon.component';
-import { Nav } from '../base/Nav/Nav.component';
+import useMediaQuery from '../../../utils/useMediaQuery';
+import { Icon } from '../../base/Icon/Icon.component';
+import { Nav } from '../../base/Nav/Nav.component';
 import cn from 'classnames';
 
 export const Header = () => {
@@ -9,7 +9,7 @@ export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const handleClick = () => {
     // eslint-disable-next-line no-console
-    console.log(isMenuOpen); // REMOVE AFTER TESTS
+    console.log(isMenuOpen); // TODO REMOVE AFTER TESTS
 
     return isMenuOpen ? setIsMenuOpen(false) : setIsMenuOpen(true);
   };

@@ -9,22 +9,26 @@ import {
 
 type Props = {
   product: ProductSummary;
+  showDiscount: boolean;
 };
 
-export const ProductCard: React.FC<Props> = ({ product }) => {
+export const ProductCard: React.FC<Props> = ({ product, showDiscount }) => {
   const { cart, favorites } = useContext(StatesContext);
   const dispatch = useContext(DispatchContext);
   const addedToCart = cart.includes(product);
   const addToCart = () => {
     dispatch({ type: 'addToCart', payload: product });
   };
+
   const removeFromCart = () => {
     dispatch({ type: 'removeFromCart', payload: product.id });
   };
+
   const addedToFavorites = favorites.includes(product);
   const addToFavorites = () => {
     dispatch({ type: 'addToFavorites', payload: product });
   };
+
   const removeFromFavorites = () => {
     dispatch({ type: 'removeFromFavorites', payload: product.id });
   };
@@ -36,10 +40,20 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
       </figure>
       <div className="card__product-name">{product.name}</div>
       <div className="card__price">
-        <div className="card__price-current">
-          <h3>{product.price}</h3>
-        </div>
-        <div className="card__price-full">{product.fullPrice}</div>
+        {showDiscount ? (
+          <>
+            <div className="card__price-current">
+              <h3>${product.price}</h3>
+            </div>
+            <div className="card__price-full">${product.fullPrice}</div>
+          </>
+        ) : (
+          <>
+            <div className="card__price-current">
+              <h3>${product.fullPrice}</h3>
+            </div>
+          </>
+        )}
       </div>
       <div className="card__specs">
         <div className="card__specs-line">

@@ -1,15 +1,20 @@
-import { useCallback, useContext, useEffect, useRef, useState } from 'react';
-import { StatesContext } from '../../../store/GlobalStateProvider';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { ProductCard } from '../ProductCard/ProductCard.component';
 import { Icon } from '../Icon/Icon.component';
+import { ProductSummary } from '../../../types/ProductSummary';
 
 type Props = {
   title: string;
+  products: ProductSummary[];
+  showDiscount: boolean;
 };
 const cardGap = 8;
 
-export const ProductSlider: React.FC<Props> = ({ title }) => {
-  const { products } = useContext(StatesContext);
+export const ProductSlider: React.FC<Props> = ({
+  title,
+  products,
+  showDiscount,
+}) => {
   const [index, setIndex] = useState(0);
   const [cardWidth, setCardWidth] = useState(0);
   const [onScreenCount, setOnScreenCount] = useState<number>(0);
@@ -43,8 +48,8 @@ export const ProductSlider: React.FC<Props> = ({ title }) => {
   };
 
   useEffect(() => {
-    setTimeout(() => configureSlider(), 300);
-  });
+    configureSlider();
+  }, [configureSlider, products]);
 
   return (
     <section className="productSlider">
@@ -73,17 +78,15 @@ export const ProductSlider: React.FC<Props> = ({ title }) => {
           }}
           ref={sliderRef}
         >
-          {products
-            .sort((a, b) => b.year - a.year)
-            .map((product, idx) => (
-              <div
-                className={`productSlider__card`}
-                key={product ? product.id : idx}
-                ref={cardRef}
-              >
-                <ProductCard product={product} />
-              </div>
-            ))}
+          {products.map((product, idx) => (
+            <div
+              className={`productSlider__card`}
+              key={product ? product.id : idx}
+              ref={cardRef}
+            >
+              <ProductCard product={product} showDiscount={showDiscount} />
+            </div>
+          ))}
         </div>
       </div>
     </section>

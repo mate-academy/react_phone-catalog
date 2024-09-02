@@ -25,9 +25,11 @@
     grid-auto-columns: $grid-auto-col-mobile;
     grid-auto-flow: column;
     column-gap: 16px;
+
     @include on-tablet {
       grid-auto-columns: $grid-auto-col-tablet;
     }
+    
     @include on-desktop {
       grid-auto-columns: 32px;
     }

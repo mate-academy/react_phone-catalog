@@ -1,5 +1,5 @@
 import { useContext, useEffect } from 'react';
-import { Header } from './components/Header/Header.component';
+import { Header } from './components/base/Header/Header.component';
 import { HomePage } from './pages/Home/Home.page';
 import { DispatchContext } from './store/GlobalStateProvider';
 import { getProducts } from './api/products';

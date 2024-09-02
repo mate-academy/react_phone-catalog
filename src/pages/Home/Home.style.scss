@@ -1,9 +1,6 @@
 .home-page {
   @include inline-padding;
   @include grid-page;
-  &__title {
-    grid-row: 1;
-    grid-column: 1/-1;
-    padding-block: 24px;
-  }
+  
+  row-gap: 56px;
 }
