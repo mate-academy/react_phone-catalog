@@ -1,0 +1,111 @@
+@import "../../styles/vars";
+@import "../../styles/fonts";
+@import '../../styles/mixins';
+
+.container {
+  width: 100%;
+  padding: 30px;
+  border: 1px solid $elements;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+
+  @include hover (border-color, $main);
+
+  .productLink {
+    text-decoration: none;
+  }
+
+  p {
+    margin: 0;
+  }
+
+  .imageContainer {
+    height: 300px;
+    overflow: hidden;
+  }
+
+  img {
+    display: block;
+    margin: 0 auto;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+  }
+
+  .imageContainer:hover img {
+    transform: scale(1.04);
+  }
+
+  .title {
+    font-family: Mont-Regular, sans-serif;
+    font-size: 14px;
+    line-height: 21px;
+    margin: 16px 0 8px;
+    color: $main;
+    height: 63px;
+  }
+
+  .prices {
+    display: flex;
+    align-items: center;
+    font-family: Mont-Bold, sans-serif;
+    font-size: 22px;
+    line-height: 30px;
+    margin-bottom: 8px;
+  }
+
+  .price {
+    margin-right: 8px;
+    color: $main;
+  }
+
+  .fullPrice {
+    font-family: Mont-Regular, sans-serif;
+    color: $secondary;
+    text-decoration: line-through;
+    line-height: 28px;
+  }
+
+  .divider {
+    height: 1px;
+    width: 100%;
+    background-color: $elements;
+    margin-bottom: 8px;
+  }
+
+  .description {
+    padding-top: 8px;
+    font-family: Mont-Semibold, sans-serif;
+    font-size: 12px;
+    line-height: 15px;
+    margin-bottom: 8px;
+
+    div {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+
+  .name {
+    margin-bottom: 8px;
+    color: $secondary;
+  }
+
+  .value {
+    color: $main;
+  }
+
+  .actions {
+    display: flex;
+    width: 100%;
+    height: 40px;
+  }
+
+  .cartButtonContainer {
+    flex-grow: 1;
+    margin-right: 8px;
+  }
+}
+

@@ -1,0 +1,148 @@
+@import "../../styles/fonts";
+@import "../../styles/vars";
+@import "../../styles/mixins";
+
+.pageContainer {
+  box-sizing: border-box;
+  padding-inline: $padding-mobile;
+  padding-top: 24px;
+
+  @include on-tablet {
+    padding-inline: $padding-tablet;
+  }
+
+  @include on-desktop {
+    max-width: 1136px;
+    margin: 0 auto;
+  }
+
+  .pageTitle {
+    font-family: Mont-Bold, sans-serif;
+    font-size: 28px;
+    line-height: 36px;
+    margin-top: 24px;
+    margin-bottom: 8px;
+    color: $main;
+
+    @include on-tablet {
+      font-size: 32px;
+      line-height: 41px;
+    }
+  }
+
+  .productCount {
+    font-size: 14px;
+    line-height: 21px;
+    color: $secondary;
+    margin: 0;
+    margin-bottom: 24px;
+
+    @include on-tablet {
+      margin-bottom: 32px;
+    }
+  }
+}
+
+.filtersContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 24px;
+
+  @include on-tablet {
+    flex-direction: row;
+  }
+
+  .filterWrapper {
+    width: 100%;
+    height: 40px;
+
+    @include on-tablet {
+      width: 187px;
+    }
+  }
+}
+
+.dropdown {
+  position: relative;
+  width: 100%;
+
+  .dropdownTrigger {
+    height: 40px;
+    width: 100%;
+    border: 1px solid $elements;
+    padding-inline: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+    line-height: 21px;
+    color: $main;
+    font-family: Mont-SemiBold, sans-serif;
+    background-color: transparent;
+    cursor: pointer;
+
+    @include hover("border-color", $secondary);
+  }
+
+  .dropdownTrigger:focus,
+  .dropdownTrigger:active {
+    border-color: $main;
+  }
+
+  .dropdownMenu {
+    background-color: #fff;
+    position: absolute;
+    margin-top: 4px;
+    width: 100%;
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: all 0.2s ease;
+    pointer-events: none;
+    z-index: 10;
+  }
+
+  .dropdownMenu.menuOpen {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: all;
+  }
+
+  .menuOptions {
+    list-style-type: none;
+    margin: 0;
+    padding: 4px 12px 8px;
+    border: 1px solid $elements;
+  }
+
+  .menuOption {
+    font-family: Mont-Regular, sans-serif;
+    font-size: 14px;
+    line-height: 21px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    color: $secondary;
+    cursor: pointer;
+
+    @include hover("color", $main);
+  }
+
+  .dropdownIcon {
+    width: 16px;
+    height: 16px;
+    display: block;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    &.iconUp {
+      transform: rotate(180deg);
+      background-image: url('../../../public/img/icons/arrow-up.svg');
+    }
+
+    &.iconDown {
+      transform: rotate(0deg);
+      background-image: url('../../../public/img/icons/arrow-down.svg');
+    }
+  }
+}

@@ -1,0 +1,99 @@
+@import "../../styles/fonts";
+@import "../../styles/vars";
+@import "../../styles/mixins";
+
+.container {
+  box-sizing: border-box;
+  padding: 0 $padding-mobile 64px;
+
+  @include on-tablet {
+    padding: 0 $padding-tablet 64px;
+  }
+
+  @include on-desktop {
+    max-width: 1136px;
+    margin: 0 auto;
+  }
+}
+
+.title {
+  font-size: 32px;
+  line-height: 41px;
+  color: $main;
+  font-family: Mont-Bold, sans-serif;
+  margin: 0 0 32px;
+}
+
+.cartContent {
+  @include on-desktop {
+    display: flex;
+    gap: 16px;
+  }
+}
+
+.itemsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 32px;
+
+  @include on-desktop {
+    flex-grow: 1;
+  }
+}
+
+.totalContainer {
+  border: 1px solid $elements;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 56px;
+
+  @include on-desktop {
+    width: 368px;
+  }
+
+  .top {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 16px;
+    border-bottom: 1px solid $elements;
+  }
+}
+
+.totalSum {
+  font-family: Mont-Bold, sans-serif;
+  font-size: 32px;
+  line-height: 41px;
+  color: $main;
+  margin: 0;
+}
+
+.totalItems {
+  font-family: Mont-Regular, sans-serif;
+  font-size: 14px;
+  line-height: 21px;
+  color: $secondary;
+  margin: 0;
+}
+
+.checkoutButton {
+  background-color: $main;
+  border: none;
+  color: #fff;
+  font-family: Mont-Regular, sans-serif;
+  height: 48px;
+  cursor: pointer;
+
+  @include hover("box-shadow", 0 3px 13px rgba(23, 32, 49, 0.4));
+}
+
+.emptyMessage {
+  font-family: Mont-SemiBold, sans-serif;
+  font-size: 20px;
+  line-height: 24px;
+  color: $main;
+  margin: 0;
+}

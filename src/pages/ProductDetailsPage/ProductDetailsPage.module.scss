@@ -1,0 +1,367 @@
+@import "../../styles/fonts";
+@import "../../styles/vars";
+@import "../../styles/mixins";
+
+.container {
+  box-sizing: border-box;
+  padding-inline: $padding-mobile;
+  padding-top: 24px;
+  padding-bottom: 64px;
+
+  @include on-tablet {
+    padding-inline: $padding-tablet;
+  }
+
+  @include on-desktop {
+    max-width: 1136px;
+    margin: 0 auto;
+  }
+}
+
+.title {
+  font-size: 22px;
+  line-height: 31px;
+  font-family: Mont-Bold, sans-serif;
+  color: $main;
+  margin: 0;
+  margin-bottom: 32px;
+
+  @include on-tablet {
+    font-size: 32px;
+    line-height: 41px;
+  }
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  @include on-tablet {
+    flex-direction: row;
+    column-gap: 20px;
+    justify-content: flex-start;
+  }
+}
+
+.images {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 45px;
+
+  @include on-tablet {
+    flex-direction: row;
+  }
+}
+
+.mainImageContainer {
+  width: 288px;
+  height: 288px;
+  margin-bottom: 16px;
+
+  @include on-tablet {
+    align-self: flex-start;
+    order: 2;
+    flex-grow: 1;
+  }
+
+  @include on-desktop {
+    width: 464px;
+    height: 464px;
+  }
+}
+
+.mainImageContainer img {
+  margin: 0 auto;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.imagePreview {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+
+  @include on-tablet {
+    flex-direction: column;
+    align-self: flex-start;
+    order: 1;
+  }
+}
+
+.smallImage {
+  width: 50px;
+  height: 50px;
+  border: 1px solid $elements;
+  box-sizing: border-box;
+}
+
+.smallImage img {
+  margin: 0 auto;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.details {
+  width: 100%;
+
+  @include on-tablet {
+    max-width: 320px;
+  }
+}
+
+.detailsText {
+  font-size: 12px;
+  font-family: Mont-Regular, sans-serif;
+  color: $secondary;
+  line-height: 16px;
+  margin: 0;
+  margin-right: 15px;
+}
+
+.idText {
+  font-size: 12px;
+  font-family: Mont-Regular, sans-serif;
+  color: $placeholders;
+  line-height: 16px;
+  margin: 0;
+}
+
+.colorsBlock {
+  padding-bottom: 24px;
+  box-sizing: border-box;
+  border-bottom: 1px solid $elements;
+}
+
+.colorsTop {
+  margin-bottom: 8px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.colorOptions {
+  display: flex;
+  flex-direction: row;
+  justify-items: flex-start;
+}
+
+.colorCircle {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  box-sizing: border-box;
+  border: 1px solid $elements;
+  margin-right: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.insideCircle {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+}
+
+.colorCircle:first-child .insideCircle {
+  background-color: #4c4c4c;
+}
+
+.colorCircle:nth-child(2) .insideCircle {
+  background-color: #fcdbc1;
+}
+
+.colorCircle:nth-child(3) .insideCircle {
+  background-color: #f0f0f0;
+}
+
+.colorCircle:nth-child(4) .insideCircle {
+  background-color: #5f7170;
+}
+
+.capacityBlock {
+  padding-block: 24px;
+  box-sizing: border-box;
+  border-bottom: 1px solid $elements;
+  margin-bottom: 32px;
+}
+
+.capacityOptions {
+  display: flex;
+  column-gap: 8px;
+  margin-top: 8px;
+}
+
+.capacityText {
+  margin: 0;
+  padding: 7px 8px 4px;
+  font-size: 14px;
+  line-height: 21px;
+  font-family: Mont-Regular, sans-serif;
+  color: $main;
+  border: 1px solid $placeholders;
+  box-sizing: border-box;
+}
+
+.capacityActive {
+  color: #fff;
+  background-color: $main;
+}
+
+.prices {
+  display: flex;
+  flex-direction: row;
+  font-family: Mont-Bold, sans-serif;
+  font-size: 22px;
+  line-height: 30px;
+  margin-bottom: 16px;
+}
+
+.price {
+  margin: 0;
+  margin-right: 8px;
+  color: $main;
+}
+
+.fullPrice {
+  font-family: Mont-Regular, sans-serif;
+  color: $secondary;
+  text-decoration: line-through;
+  line-height: 28px;
+  margin: 0;
+}
+
+.description {
+  padding-top: 8px;
+  font-family: Mont-Semibold, sans-serif;
+  font-size: 12px;
+  line-height: 15px;
+  margin-bottom: 8px;
+}
+
+.description div {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.value {
+  color: $main;
+  margin: 0;
+}
+
+.actions {
+  width: 100%;
+  height: 40px;
+  display: flex;
+  margin-bottom: 32px;
+}
+
+.cartButtonContainer {
+  flex-grow: 1;
+  margin-right: 8px;
+}
+
+.favorite {
+  width: 40px;
+  height: 40px;
+  box-sizing: border-box;
+  border: 1px solid $elements;
+  background-image: url(../../../public/img/icons/icon-heart.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: transparent;
+}
+
+.info {
+  @include on-desktop {
+    display: flex;
+    flex-direction: row;
+    column-gap: 64px;
+  }
+}
+
+.infoTitle {
+  font-size: 20px;
+  line-height: 26px;
+  font-family: Mont-SemiBold, sans-serif;
+  margin-bottom: 32px;
+  margin-top: 56px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid $elements;
+}
+
+.about,
+.techSpecs {
+  @include on-desktop {
+    flex-basis: calc(100% / 2 - 64px);
+  }
+}
+
+.aboutDescription {
+  font-size: 14px;
+  line-height: 21px;
+  color: $secondary;
+  font-family: Mont-Regular, sans-serif;
+}
+
+.techBlocks {
+  font-family: Mont-Semibold, sans-serif;
+  font-size: 12px;
+  line-height: 15px;
+}
+
+.techBlock {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.alsoLike {
+  width: 100%;
+  padding-left: $padding-mobile;
+  box-sizing: border-box;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 64px;
+
+  @include on-desktop {
+    max-width: 1136px;
+    margin: 0 auto;
+  }
+}
+
+.alsoLikeTitle {
+  font-family: Mont-Bold, sans-serif;
+  font-size: 22px;
+  line-height: 30px;
+  width: 65%;
+  color: $main;
+  margin: 0;
+
+  @media (min-width: 520px) {
+    width: 33%;
+  }
+
+  @include on-tablet {
+    font-size: 30px;
+    line-height: 41px;
+    width: 50%;
+  }
+}
+
+.notFound {
+  margin: 0;
+  font-family: Mont-SemiBold, sans-serif;
+  font-size: 20px;
+  line-height: 24px;
+  color: $main;
+}

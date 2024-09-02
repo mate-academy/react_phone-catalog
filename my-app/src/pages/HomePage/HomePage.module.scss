@@ -1,0 +1,169 @@
+@import "../../styles/fonts";
+@import "../../styles/vars";
+@import "../../styles/mixins";
+
+.homeWrapper {
+  box-sizing: border-box;
+
+  @include on-tablet {
+    padding-inline: $padding-tablet;
+  }
+
+  @include on-desktop {
+    max-width: 1136px;
+    padding-inline: 0;
+    margin: 0 auto;
+  }
+}
+
+.homeTitle {
+  font-family: Mont-Bold,sans-serif;
+  font-size: 32px;
+  line-height: 41px;
+  padding-inline: $padding-mobile;
+  margin-block: 24px;
+
+  @include on-tablet {
+    padding-inline: 0;
+    line-height: 56px;
+    margin-block: 32px;
+    font-size: 48px;
+    width: 60%;
+  }
+
+  @include on-desktop {
+    margin-block: 56px;
+    width: 100%;
+  }
+}
+
+.modelsTitle {
+  width: 40%;
+  margin: 30px 0px;
+  font-family: Mont-Bold, sans-serif;
+  font-size: 22px;
+  line-height: 30px;
+  color: $main;
+
+
+  @media (min-width: 520px) {
+    width: 33%;
+  }
+
+  @include on-tablet {
+    margin-top: 15px;
+    font-size: 30px;
+    line-height: 41px;
+    width: 50%;
+  }
+}
+
+.newModelsContainer {
+  padding-left: $padding-mobile;
+  overflow: hidden;
+  width: 100%;
+  box-sizing: border-box;
+  position: relative;
+
+  @include on-tablet {
+    padding-left: $padding-tablet;
+  }
+
+  @include on-desktop {
+    max-width: 1136px;
+    margin: 0 auto;
+    padding: 0;
+  }
+}
+
+.categorySection {
+  padding-left: $padding-mobile;
+  overflow: hidden;
+  width: 100%;
+  box-sizing: border-box;
+  position: relative;
+
+  @include on-tablet {
+    padding-left: $padding-tablet;
+  }
+
+  @include on-desktop {
+    max-width: 1136px;
+    margin: 0 auto;
+    padding: 0;
+  }
+
+  .categoryGrid {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    width: 100%;
+
+    @include on-tablet {
+      flex-direction: row;
+      gap: 16px;
+    }
+
+    .categoryLink {
+      flex: 1;
+      text-decoration: none;
+
+      .categoryItem {
+        margin: 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        border-radius: 10px;
+        padding: 20px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s;
+        height: 550px;
+
+        &:hover {
+          transform: translateY(-5px);
+        }
+
+        .categoryImage {
+          width: 100%;
+          height: 100%;
+          margin-bottom: 24px;
+          object-fit: contain;
+          border-radius: 10px;
+        }
+
+        .categoryName {
+          margin: 0;
+          margin-bottom: 4px;
+          font-size: 20px;
+          line-height: 26px;
+          font-family: Mont-SemiBold, sans-serif;
+          color: $main;
+          text-align: center;
+        }
+
+        .categoryCount {
+          margin: 0;
+          font-size: 14px;
+          line-height: 21px;
+          color: $secondary;
+          font-family: Mont-Regular, sans-serif;
+          text-align: center;
+        }
+      }
+    }
+  }
+}
+
+.hotDealsContainer {
+  width: 100%;
+  box-sizing: border-box;
+  position: relative;
+  overflow: hidden;
+  padding-left: 16px;
+
+  @include on-desktop {
+    max-width: 1136px;
+    margin: 0 auto;
+    padding-left: 0;
+  }
+}

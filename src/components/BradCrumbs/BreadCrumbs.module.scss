@@ -1,0 +1,60 @@
+@import "../../styles/vars";
+@import "../../styles/fonts";
+@import "../../styles/mixins";
+
+.container {
+  display: flex;
+  align-items: center;
+}
+
+.breadcrumbLink,
+.breadcrumb {
+  font-family: Mont-Regular, sans-serif;
+  font-size: 14px;
+  line-height: 20px;
+  color: $secondary;
+  text-decoration: none;
+  cursor: pointer;
+
+  @include hover("color", $main);
+}
+
+.homeIcon {
+  width: 20px;
+  height: 20px;
+  background-image: url(../../../public/img/icons/icon-home.svg);
+  background-size: cover;
+}
+
+.arrowIcon {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  background-image: url(../../../public/img/icons/icon-left.svg);
+  background-position: center;
+  margin: 0 8px;
+}
+
+.buttonBack {
+  display: flex;
+  align-items: center;
+  margin: 24px 0;
+  font-family: Mont-Regular, sans-serif;
+  font-size: 12px;
+  line-height: 16px;
+  color: $secondary;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+
+  @include hover("color", $main);
+}
+
+.arrowBack {
+  width: 16px;
+  height: 16px;
+  background-image: url(../../../public/img/icons/icon-left.svg);
+  margin-right: 8px;
+  margin-top: -1px;
+}
