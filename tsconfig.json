@@ -5,7 +5,6 @@
   ],
   "compilerOptions": {
     "sourceMap": false,
-    "types": ["node", "cypress"],
-    "jsx": "react"
+    "types": ["node", "cypress"]
   }
 }
