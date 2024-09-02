@@ -1,0 +1,7 @@
+.homePage {
+  padding-top: 16px;
+
+  @media (max-width: 991px) {
+    padding-top: 0;
+  }
+}
