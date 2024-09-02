@@ -22,7 +22,6 @@ import { Tablet } from '../../utils/TabletContext';
 import classNames from 'classnames';
 import { Colors } from '../../utils/Colors';
 import { Menu } from '../Menu/Menu';
-import { MenuOpen } from '../../utils/MenuContext';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import { ProductCard } from '../ProductCard/ProductCard';
@@ -53,8 +52,6 @@ export const ProductDetails: React.FC<Props> = ({ category }) => {
   const { itemId } = useParams();
 
   const isAccessory = category === 'accessories';
-
-  const { isMenuOpen } = useContext(MenuOpen);
 
   const onDesktop = useContext(Desktop);
   const onTablet = useContext(Tablet);
@@ -250,7 +247,7 @@ export const ProductDetails: React.FC<Props> = ({ category }) => {
   return (
     <>
       <Header />
-      {isMenuOpen && <Menu />}
+      <Menu />
       {isLoading ? (
         <div className="loader-box">
           <Loader />

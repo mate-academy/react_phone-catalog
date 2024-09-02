@@ -1,3 +1,4 @@
+/* eslint-disable import/no-extraneous-dependencies */
 import { useEffect, useState } from 'react';
 import { Desktop } from './utils/DesktopContext';
 import { Tablet } from './utils/TabletContext';
@@ -5,10 +6,14 @@ import { Outlet } from 'react-router-dom';
 import { MenuOpen } from './utils/MenuContext';
 import './App.scss';
 import classNames from 'classnames';
-// eslint-disable-next-line import/no-extraneous-dependencies
 import { useWindowSize } from 'react-use';
+import Favicon from 'react-favicon';
 
 export const App = () => {
+  const [faviconUrl, setFaviconUrl] = useState('./img/favicon.png');
+
+  useEffect(() => setFaviconUrl('./img/favicon.png'), []);
+
   const { width } = useWindowSize();
 
   const [onTablet, setOnTablet] = useState(width >= 640);
@@ -20,9 +25,11 @@ export const App = () => {
     if (width >= 1200) {
       setOnDesktop(true);
       setOnTablet(false);
+      setIsMenuOpen(false);
     } else if (width >= 640) {
       setOnDesktop(false);
       setOnTablet(true);
+      setIsMenuOpen(false);
     } else {
       setOnDesktop(false);
       setOnTablet(false);
@@ -31,6 +38,7 @@ export const App = () => {
 
   return (
     <div className={classNames('App', { 'hidden-overflow': isMenuOpen })}>
+      <Favicon url={faviconUrl} />
       <h1 className="not-visible-title">Product Catalog</h1>
       <Desktop.Provider value={onDesktop}>
         <Tablet.Provider value={onTablet}>

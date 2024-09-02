@@ -63,11 +63,22 @@
 
   &:hover span {
     color: var(--dark-gray-color);
+    letter-spacing: 2px;
   }
 }
 
 .product-details-main {
   @include padding-inline;
+
+  padding-bottom: 96px + 56px;
+
+  @include on-tablet {
+    padding-bottom: 96px + 64px;
+  }
+
+  @include on-desktop {
+    padding-bottom: 96px + 80px;
+  }
 
   &__details-content {
     margin-top: 16px;
@@ -110,20 +121,6 @@
   }
 }
 
-.navigation {
-  &__category-page {
-    text-transform: capitalize;
-    text-decoration: none;
-    font-family: var(--semi-bold-font-family);
-    font-size: 12px;
-    font-weight: 700;
-    line-height: 14px;
-    letter-spacing: 0%;
-    color: var(--dark-gray-color);
-    align-self: end;
-  }
-}
-
 .image-select {
   width: 100%;
   display: flex;
@@ -160,6 +157,7 @@
     align-items: center;
     justify-content: center;
     transition: .3s;
+    cursor: pointer;
 
     @include on-tablet {
       width: 100%;
@@ -240,6 +238,7 @@
     border: 1px solid var(--elements-color);
     transition: .3s;
     padding: 2px;
+    cursor: pointer;
 
     &:hover {
       border: 1px solid var(--dark-gray-color);
@@ -319,6 +318,7 @@
     height: 32px;
     border-radius: 4px;
     border: 1px solid var(--icons-color);
+    cursor: pointer;
 
     display: flex;
     align-items: center;
@@ -331,6 +331,14 @@
 
     &--active &-text {
       color: var(--white-color);
+    }
+
+    &:hover {
+      background-color: var(--dark-gray-color);
+
+      & .capacity-select__label-text {
+        color: var(--white-color);
+      }
     }
   }
 }
@@ -397,6 +405,7 @@
     &--added {
       background-color: var(--white-color);
       color: var(--purple-color);
+      border: 1px solid var(--elements-color);
     }
   }
 

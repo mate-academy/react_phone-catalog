@@ -28,6 +28,7 @@
     width: 148px;
     height: 129px;
     margin-bottom: 24px;
+    transition: .3s;
 
     @include on-tablet {
       width: 173px;
@@ -37,6 +38,10 @@
     @include on-desktop {
       width: 208px;
       height: 196px;
+    }
+
+    &:hover {
+      transform: scale(1.1);
     }
   }
 

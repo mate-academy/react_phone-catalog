@@ -23,6 +23,7 @@
     display: flex;
     align-items: center;
     column-gap: 32px;
+    height: 100%;
 
     @include on-desktop {
       column-gap: 48px;
@@ -123,6 +124,7 @@
 
     @include on-tablet {
       display: block;
+      height: 100%;
     }
   }
 
@@ -132,10 +134,17 @@
     list-style: none;
     display: flex;
     column-gap: 32px;
+    height: 100%;
 
     @include on-desktop {
       column-gap: 64px;
     }
+  }
+
+  &__item {
+    height: 100%;
+    display: flex;
+    align-items: center;
   }
 
   &__link {
@@ -144,11 +153,16 @@
     font-family: var(--strong-font-family);
     font-size: 12px;
     font-weight: 700;
-    line-height: 11px;
+    line-height: 48px;
     letter-spacing: 4%;
     text-transform: uppercase;
     color: var(--gray-color);
     transition: .3s;
+    height: 100%;
+
+    @include on-desktop {
+      line-height: 65px;
+    }
 
     &:hover {
       color: var(--dark-gray-color);

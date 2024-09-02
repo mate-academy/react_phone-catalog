@@ -18,7 +18,6 @@ import { Desktop } from '../../utils/DesktopContext';
 import { Tablet } from '../../utils/TabletContext';
 import { Header } from '../Header/Header';
 import { Menu } from '../Menu/Menu';
-import { MenuOpen } from '../../utils/MenuContext';
 import { Footer } from '../Footer/Footer';
 import { Link } from 'react-router-dom';
 
@@ -34,8 +33,6 @@ export const HomePage = () => {
 
   const onDesktop = useContext(Desktop);
   const onTablet = useContext(Tablet);
-
-  const { isMenuOpen } = useContext(MenuOpen);
 
   const slidesPerVeiw = () => {
     if (onDesktop) {
@@ -83,7 +80,7 @@ export const HomePage = () => {
   return (
     <>
       <Header />
-      {isMenuOpen && <Menu />}
+      <Menu />
       <main className="main">
         <section className="home" id="#">
           <h2 className="home__title">Welcome to Nice Gadgets store!</h2>
@@ -163,6 +160,7 @@ export const HomePage = () => {
             <button
               className="navigation-button"
               onClick={() => brandsSwiperRef.current.slidePrev()}
+              disabled={brandsCurrentSlide === 0}
             >
               {brandsCurrentSlide !== 0 ? (
                 <img src="./img/arrow-prev.svg" alt="slide prev" />
@@ -173,6 +171,7 @@ export const HomePage = () => {
             <button
               className="navigation-button"
               onClick={() => brandsSwiperRef.current.slideNext()}
+              disabled={brandsCurrentSlide === brandsProducts.length}
             >
               {brandsCurrentSlide !== brandsProducts.length ? (
                 <img src="./img/arrow-next.svg" alt="slide next" />
@@ -280,6 +279,7 @@ export const HomePage = () => {
             <button
               className="navigation-button"
               onClick={() => hotPricesSwiperRef.current.slideNext()}
+              disabled={hotCurrentSlide === hotPricesProducts.length}
             >
               {hotCurrentSlide !== 60 ? (
                 <img src="./img/arrow-next.svg" alt="slide next" />

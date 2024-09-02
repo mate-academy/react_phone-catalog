@@ -15,7 +15,11 @@ export const Header = () => {
   return (
     <header className="header">
       <div className="header__nav-wrapper">
-        <Link to="/" className="header__logo" />
+        <Link
+          to="/"
+          className="header__logo"
+          onClick={() => setIsMenuOpen(false)}
+        />
         <nav className="header__nav">
           <ul className="header__list">
             <li className="header__item">

@@ -1,11 +1,10 @@
 /* eslint-disable jsx-a11y/label-has-for */
 /* eslint-disable jsx-a11y/label-has-associated-control */
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, Outlet, useLocation, useSearchParams } from 'react-router-dom';
 import { Header } from '../Header/Header';
 import { Menu } from '../Menu/Menu';
 import classNames from 'classnames';
-import { MenuOpen } from '../../utils/MenuContext';
 import { Product } from '../../types/Propduct';
 import customSelect from 'custom-select';
 import { ProductCard } from '../ProductCard/ProductCard';
@@ -47,8 +46,6 @@ export const Catalog: React.FC<Props> = ({ products }) => {
   const lastPage: number = +products.length;
   const paginationCount: number[] = [];
   let itemsAndPage: Product[] = [];
-
-  const { isMenuOpen } = useContext(MenuOpen);
 
   const filterProducts = () => {
     const filteredProducts: Product[] = [];
@@ -184,7 +181,7 @@ export const Catalog: React.FC<Props> = ({ products }) => {
     <>
       <div className="Catalog">
         <Header />
-        {isMenuOpen && <Menu />}
+        <Menu />
         <main className="catalog-main">
           <div className="navigation">
             <Link to="/" className="navigation__home" />

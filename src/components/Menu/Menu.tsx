@@ -6,13 +6,16 @@ import { MenuOpen } from '../../utils/MenuContext';
 import { useBasket, useFavorites } from '../../utils/Stores';
 
 export const Menu = () => {
-  const { setIsMenuOpen } = useContext(MenuOpen);
+  const { isMenuOpen, setIsMenuOpen } = useContext(MenuOpen);
 
   const favorites = useFavorites(state => state.favorites);
   const basketStore = useBasket(state => state.basket);
 
   return (
-    <aside id="menu" className="menu">
+    <aside
+      id="menu"
+      className={classNames('menu', { 'menu--open': isMenuOpen })}
+    >
       <nav className="menu__nav">
         <ul className="menu__list">
           <li className="menu__item">
