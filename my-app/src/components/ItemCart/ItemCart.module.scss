@@ -1,0 +1,101 @@
+@import "../../styles/fonts";
+@import "../../styles/vars";
+@import "../../styles/mixins";
+
+.container {
+  border: 1px solid $elements;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 16px;
+  box-sizing: border-box;
+
+  @include on-tablet {
+    flex-direction: row;
+    justify-content: space-between;
+    column-gap: 24px;
+  }
+}
+
+.top {
+  display: flex;
+  align-items: center;
+  column-gap: 16px;
+  height: 80px;
+}
+
+.title {
+  font-family: Mont-Regular, sans-serif;
+  font-size: 14px;
+  line-height: 21px;
+  color: $main;
+}
+
+.bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  @include on-tablet {
+    min-width: 35%;
+  }
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+}
+
+.delete {
+  background: transparent url(../../../public/img/icons/icon-close.svg) center no-repeat;
+  width: 16px;
+  height: 16px;
+  border: none;
+  cursor: pointer;
+
+  @include hover (background-image, url(../../../public/img/icons/icon-close.svg));
+}
+
+.decrease,
+.increase {
+  width: 32px;
+  height: 32px;
+  border: 1px solid $elements;
+  background-color: transparent;
+  background-position: center;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  box-sizing: border-box;
+
+  @include hover (border-color, $main);
+}
+
+.decrease {
+  background-image: url(../../../public/img/icons/icon-minus.svg);
+}
+
+.increase {
+  background-image: url(../../../public/img/icons/icon-plus.svg);
+}
+
+.decrease:disabled {
+  border-color: $elements;
+  cursor: not-allowed;
+}
+
+.cartItemImage {
+  height: 100%;
+  width: auto;
+}
+
+.price {
+  font-family: Mont-Bold, sans-serif;
+  font-size: 22px;
+  color: $main;
+  margin: 0;
+  line-height: 31px;
+}
+
+.amount {
+  margin: 0 16px;
+}

@@ -1,0 +1,12 @@
+@import '../src/styles/vars';
+@import '../src/styles/mixins';
+
+.App {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.content {
+  flex-grow: 1;
+}

@@ -1,0 +1,38 @@
+@import "../../styles/vars";
+@import "../../styles/fonts";
+@import "../../styles/mixins";
+
+.productsList {
+  display: grid;
+  place-items: center center;
+  justify-content: center;
+  grid-template-columns: repeat(auto-fit, minmax(229px, 1fr));
+  gap: 40px 16px;
+  margin-bottom: 24px;
+}
+
+.itemCard {
+  display: flex;
+  width: 100%;
+  max-width: 288px;
+  min-width: 229px;
+}
+
+@media (min-width: 506px) and (max-width: 944px) {
+  .itemCard:nth-child(odd)  {
+    margin-left: auto;
+  }
+
+  .itemCard:nth-child(even) {
+    margin-right: auto;
+  }
+}
+
+@media (min-width: 948px) and (max-width: 1012px) {
+  .productsList {
+    max-width: 899px;
+    margin: 0 auto;
+  }
+}
+
+

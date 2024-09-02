@@ -1,0 +1,80 @@
+@import "../../styles/vars";
+@import "../../styles/fonts";
+@import "../../styles/mixins";
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+.pageLink {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $main;
+  font-family: Mont-Regular, sans-serif;
+  font-size: 14px;
+}
+
+.pageNumber,
+.previous,
+.next {
+  width: 32px;
+  height: 32px;
+  border: 1px solid $elements;
+  box-sizing: border-box;
+  cursor: pointer;
+
+  @include hover("border-color", $main);
+}
+
+.next,
+.previous {
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.previous {
+  margin-right: 16px;
+  background-image: url(../../../public/img/icons/icon-left.svg);
+}
+
+.previous a,
+.next a {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.previous.disabled {
+  border-color: $elements;
+  background-image: url(../../../public/img/icons/icon-hover-left.svg);
+  cursor: auto;
+}
+
+.next {
+  margin-left: 16px;
+  background-image: url(../../../public/img/icons/icon-right.svg);
+}
+
+.next.disabled {
+  border-color: $elements;
+  background-image: url(../../../public/img/icons/icon-hover-right.svg);
+  cursor: auto;
+}
+
+.break {
+  display: none;
+}
+
+.activePage a {
+  background-color: $main;
+  color: #fff;
+}
