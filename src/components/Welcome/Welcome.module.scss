@@ -1,0 +1,33 @@
+@import '../../styles/main';
+
+.welcome {
+  @include on-tablet {
+    @include page-grid;
+
+    grid-template-rows: auto auto;
+  }
+
+  &__title {
+    margin-block: 24px;
+
+    @include on-tablet {
+      grid-column: 1 / 9;
+      grid-row: 1 / 2;
+
+      margin-block: 32px;
+    }
+
+    @include on-desktop {
+      grid-column: 1 / 18;
+
+      margin-block: 56px;
+    }
+  }
+
+  &__slider {
+    @include on-tablet {
+      grid-column: 1 / -1;
+      grid-row: 2 / -1;
+    }
+  }
+}

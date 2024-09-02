@@ -1,1 +1,38 @@
-// not empty
+@import './styles/main';
+
+.App {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+  position: relative;
+  height: 100vh;
+
+  & > footer {
+    position: sticky;
+    top: 100vh;
+  }
+
+  &__menu {
+    position: fixed;
+    z-index: 100;
+    top: 0;
+    right: 0;
+    left: 0;
+
+    opacity: 0;
+    transition: all $transition-duration;
+    transform: translateX(-100%);
+    pointer-events: none;
+
+    // &:target {
+    //   opacity: 1;
+    //   transform: translateX(0);
+    //   pointer-events: all;
+    // }
+
+    &--active {
+      opacity: 1;
+      transform: translateX(0);
+      pointer-events: all;
+    }
+  }
+}

@@ -1,0 +1,34 @@
+@import '../../styles/main';
+
+.breadcrumbs {
+  &__nav-list {
+    justify-content: start;
+    gap: 8px;
+  }
+
+  &__nav-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
+
+  &__nav-link,
+  &__nav-text {
+    color: $secondary-gray;
+    font-size: 14px;
+    line-height: 15px;
+    font-weight: 600;
+  }
+
+  &__nav-link {
+    @include hover(color, $primary-gray);
+  }
+
+  &__nav-link-separator {
+    stroke: $icons-placeholders-gray;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}

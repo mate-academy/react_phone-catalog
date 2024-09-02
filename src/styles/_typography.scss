@@ -1,0 +1,47 @@
+@import './utils/vars';
+
+h2 {
+  @extend %h1;
+
+  color: $primary-gray;
+}
+
+h3 {
+  @extend %h2;
+
+  color: $primary-gray;
+}
+
+h4 {
+  @extend %h3;
+
+  color: $primary-gray;
+}
+
+h5 {
+  @extend %h4;
+
+  color: $primary-gray;
+}
+
+.button-text {
+  @extend %button-text;
+}
+
+.body-text {
+  @extend %body-text;
+}
+
+.body-text--gray {
+  @extend %body-text;
+
+  color: $secondary-gray;
+}
+
+.uppercase-text {
+  @extend %uppercase-text;
+}
+
+.small-text {
+  @extend %small-text;
+}
