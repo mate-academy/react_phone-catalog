@@ -1,0 +1,196 @@
+@import '../../../mixins/mixins';
+@import '../../../../public/fonts/fonts';
+
+.phones-container {
+  display: flex;
+  width: 1200px;
+  height: 100%;
+  margin: 0 auto;
+  flex-direction: column;
+  min-height: 100vh;
+  padding: 0 32px;
+
+  @include on-tablet {
+    width: 640px;
+  }
+
+  @include on-mobile {
+    width: 320px;
+  }
+}
+
+.phones-container-h1 {
+  font-family: Mont-SemiBold, sans-serif;
+  font-size: 48px;
+  font-weight: 800;
+  line-height: 56px;
+  letter-spacing: -0.01em;
+  text-align: left;
+  color: #313237;
+  display: flex;
+  margin: 0;
+  margin-bottom: 8px;
+  margin-top: 40px;
+
+  @include on-mobile {
+    margin-left: 16px;
+  }
+}
+
+.phones-container-p {
+  font-family: Mont, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 21px;
+  text-align: left;
+  color: #89939A;
+  margin: 0 0 40px;
+
+  @include on-mobile {
+    margin-left: 16px;
+  }
+}
+
+.phones-card-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 40px 16px;
+
+
+  @include on-tablet {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include on-mobile {
+    grid-template-columns: repeat(1, 1fr);
+    margin: 0 auto;
+  }
+}
+
+.btn-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin: 40px 0 80px;
+
+  @include on-mobile {
+    overflow: scroll;
+  }
+}
+
+.btn-class {
+  height: 32px;
+  width: 32px;
+  background-color: white;
+  border: 1px solid #E2E6E9;
+
+  font-family: Mont, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 21px;
+  text-align: center;
+  color: #313237;
+  cursor: pointer;
+}
+
+.btn-class-active {
+  height: 32px;
+  width: 32px;
+  border: 1px solid #E2E6E9;
+  font-family: Mont, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 21px;
+  text-align: center;
+
+  background-color: #313237;
+  color:#FFF;
+  cursor: pointer;
+}
+
+.sort-block {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+
+  @include on-mobile {
+    justify-content: center;
+  }
+}
+
+.phones-sort-container {
+  display: flex;
+  margin-bottom: 24px;
+  flex-direction: column;
+  width: 176px;
+
+  @include on-mobile {
+    width: 136px;
+  }
+}
+
+.sortBy-container {
+  display: flex;
+  justify-content: center;
+  width: 176px;
+  height: 40px;
+  position: relative;
+  align-items: center;
+
+  @include on-mobile {
+    width: 136px;
+  }
+}
+
+.sortBy-box {
+  border: 1px solid #B4BDC3;
+  appearance: none;
+  padding: 10px 0 10px 12px;
+  width: 100%;
+
+  font-family: Mont, sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 21px;
+  text-align: left;
+  color: #313237;
+  cursor: pointer;
+}
+
+.SortBy-p {
+  font-family: Mont, sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 15.34px;
+  text-align: left;
+  color: #89939A;
+  margin: 0 0 4px;
+}
+
+.select-btn {
+  position: absolute;
+  right: 0;
+  height: 32px;
+  width: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-right: 12px;
+}
+
+.arrow-btn-LR {
+  height: 32px;
+  width: 32px;
+  background-color: white;
+  padding: 0;
+  border: 1px solid #B4BDC3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.arrow-btn-LR:hover {
+  border: 1px solid #313237;
+}

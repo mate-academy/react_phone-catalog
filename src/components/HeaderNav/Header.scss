@@ -1,0 +1,138 @@
+@import "../../mixins/mixins";
+
+body {
+  margin: 0;
+  padding: 0;
+  padding-top: 64px;
+}
+
+.container  {
+  width: 100%;
+  height: 64px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 1px solid #E2E6E9;
+  position: fixed;
+  top: 0;
+  background-color: #FFF;
+  z-index: 1;
+}
+
+.logo {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 24px;
+}
+
+.links {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  list-style: none;
+  gap: 24px;
+  height: 100%;
+  margin-left: 24px;
+}
+
+li {
+  height: 100%;
+}
+
+.link {
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 61px;
+  color: #89939A;
+
+  font-family: Mont-Bold, sans-serif;
+  text-transform: uppercase;
+  font-size: 12px;
+
+  // font-weight: 800;
+  line-height: 11px;
+  letter-spacing: 0.04em;
+  text-align: left;
+
+  @include on-mobile {
+    display: none;
+  }
+}
+
+.link:hover {
+  color: #27AE60;
+}
+
+.is-active {
+  color: #313237;
+  border-bottom: 3px solid #313237;
+}
+
+.icons {
+  margin: 0;
+  height: 100%;
+  display: flex;
+  margin-left: auto;
+  padding: 0;
+  list-style: none;
+
+  @include on-mobile {
+    // margin-right: 32px;
+  }
+}
+
+.icon-link {
+  width: 64px;
+  height: 64px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  border-left: 1px solid #E2E6E9;
+  position: relative;
+  background-color: white;
+}
+
+.show-items {
+  position: absolute;
+  height: 14px;
+  width: 14px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  background-color:#EB5757;
+  color:#FFF;
+  font-family: Mont, sans-serif;
+  font-size: 9px;
+  font-weight: 600;
+  line-height: 11.5px;
+  text-align: center;
+
+  left: 50%;
+  bottom: 50%;
+
+
+  outline: 1px solid #FFF;
+}
+
+.onTablet {
+  display: flex;
+
+  @include on-mobile {
+    display: none;
+  }
+}
+
+.onMobile {
+  display: none;
+
+  @include on-mobile {
+    display: flex;
+  }
+}
+

@@ -1,0 +1,169 @@
+@import '../../../../../mixins/mixins';
+@import '../../../../../../public/fonts/fonts';
+
+.bucket-card {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border: 1px solid #E2E6E9;
+  height: 128px;
+  width: 752px;
+  justify-content: space-between;
+
+  @include on-tablet {
+    width: 592px;
+    flex-direction: row;
+  }
+
+  @include on-mobile {
+    flex-direction: column;
+    width: 288px;
+    height: 160px;
+  }
+}
+
+.up-content {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+
+  @include on-mobile {
+    justify-content: space-between;
+    gap: 16px;
+    margin: 16px;
+    height: 80px;
+  }
+}
+
+.down-content {
+  display: flex;
+  flex-direction: row;
+  margin-right: 24px;
+
+  @include on-mobile {
+    justify-content: space-between;
+    height: 32px;
+    width: 256px;
+    margin: 0 16px 16px;
+  }
+}
+
+.close-img-btn {
+  width: 16px;
+  height: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  margin: 0 24px;
+  cursor: pointer;
+}
+
+.close-img-btn:hover {
+  transform: scale(1.15);
+}
+
+.close-img {
+  background-color: white;
+}
+
+.card-img {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  margin-right: 24px;
+}
+
+.card-p {
+  font-family: Mont-SemiBold, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 21px;
+  text-align: left;
+  color: #313237;
+
+}
+
+.card-btns {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  margin-right: 24px;
+  align-items: center;
+
+  @include on-mobile {
+    margin: 0;
+  }
+
+}
+
+.card-disabled {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #E2E6E9;
+  background-color: white;
+}
+
+.card-btn {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #E2E6E9;
+  background-color: white;
+
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.card-btn:hover {
+  border: 1px solid #B4BDC3;
+}
+
+.card-btn:active {
+  border: 1px solid #313237;
+}
+
+.card-btn-img {
+  background-color: white;
+}
+
+.card-number {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: Mont, sans-serif;
+}
+
+.card-price {
+  font-family: Mont-SemiBold, sans-serif;
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 30.8px;
+  text-align: right;
+  color:#313237;
+  padding-left: 30px;
+  display: flex;
+  justify-content:flex-end;
+  width: 80px;
+
+  @include on-tablet {
+    padding-left: 0;
+    margin-right: 24px;
+  }
+
+  @include on-mobile {
+    padding: 0;
+    margin: 0;
+  }
+
+}
+
+

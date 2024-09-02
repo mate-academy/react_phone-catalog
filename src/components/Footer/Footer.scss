@@ -1,0 +1,122 @@
+@import "../../mixins/mixins";
+
+html {
+  scroll-behavior: smooth;
+}
+
+.footer-block {
+  height: 96px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 auto;
+
+  @include on-mobile {
+    flex-direction: column;
+    align-items: flex-start;
+    width: 288px;
+    height: 257px;
+    padding: 32px 16px;
+  }
+
+}
+
+.footer-container {
+  border-top: 1px solid #E2E6E9;
+  margin-top: auto;
+}
+
+.footer-links {
+  flex-direction: row;
+  list-style: none;
+  display: flex;
+  gap: 150px;
+  padding: 0;
+
+  @include on-tablet {
+    gap: 13.5px;
+  }
+
+  @include on-mobile {
+    flex-direction: column;
+    gap: 16px;
+  }
+}
+
+.footer-link {
+  text-decoration: none;
+  color: #89939A;
+  font-family: Mont-Bold, sans-serif;
+  font-size: 12px;
+  font-weight: 800;
+  line-height: 11px;
+  letter-spacing: 0.04em;
+  text-align: left;
+  text-transform: uppercase;
+}
+
+.footer-link:hover {
+  color: #27AE60;
+}
+
+.footer-link:active {
+  color: #313237;
+}
+
+.footer-back-btn-bl {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+  align-items: center;
+  padding-right: 24px;
+
+  @include on-mobile {
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+  }
+}
+
+.footer-UpArrow {
+  height: 32px;
+  width: 32px;
+  background-color: white;
+  padding: 0;
+  border: 1px solid #B4BDC3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.footer-UpArrow:hover {
+  border: 1px solid #313237;
+}
+
+.footer-UpArrow:active {
+  border: 1px solid #313237;
+}
+
+.footer-back-p {
+font-family: Mont-Bold, sans-serif;
+font-size: 12px;
+font-weight: 700;
+line-height: 15.34px;
+text-align: right;
+color: #89939A;
+}
+
+.footer-logo {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 24px;
+
+  @include on-mobile {
+    height: 32px;
+    padding: 0;
+  }
+}

@@ -1,0 +1,133 @@
+@import "../../../../../mixins/mixins";
+
+
+.welcome-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+  @include on-tablet {
+    width: 640px;
+  }
+
+  @include on-mobile {
+    width: 320px;
+  }
+}
+
+.welcome-text {
+  font-family: Mont-SemiBold, sans-serif;
+  font-size: 48px;
+  font-weight: 800;
+  line-height: 56px;
+  letter-spacing: -0.01em;
+  text-align: left;
+  margin-top: 56px 0;
+
+  @include on-mobile {
+    font-size: 32px;
+    line-height: 41px;
+    text-align: center;
+  }
+}
+
+.slider-box {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 48px 1fr 48px;
+  grid-template-rows: 1fr;
+
+  @include on-mobile {
+    grid-template-columns: 1fr;
+  }
+}
+
+.banner-image {
+  object-fit: cover;
+  height: 400px;
+  width: 100%;
+  display: block;
+
+  @include on-tablet {
+    height: 189px;
+  }
+
+  @include on-mobile {
+    height: 320px;
+  }
+
+}
+
+.left-btn {
+  width: 32px;
+  border: none;
+  border: 1px solid #B4BDC3;
+  margin-right: 16px;
+  cursor: pointer;
+  background-color: white;
+
+  @include on-mobile {
+    display: none;
+  }
+
+}
+
+.left-btn:hover {
+  border: 1px solid #313237;
+}
+
+.right-btn {
+  width: 32px;
+  margin-left: 16px;
+  border: 1px solid #B4BDC3;
+  cursor: pointer;
+  background-color: white;
+
+
+  @include on-mobile {
+    display: none;
+  }
+
+
+}
+
+.right-btn:hover {
+  border: 1px solid #313237;
+}
+
+// .left-btn:hover, .right-btn:hover {
+//   border: 1px solid #313237;
+// }
+
+.small-images {
+  display: flex;
+  margin: 0 auto;
+  justify-content: center;
+  gap: 12px;
+  width: 80px;
+  height: 24px;
+  align-items: center;
+}
+
+.button {
+  padding: 0;
+  border: none;
+}
+
+.notPressed-btn {
+  background-color: #E2E6E9;
+  height: 4px;
+  width: 14px;
+  border-radius: 0;
+  border: none;
+  margin: 0;
+}
+
+.pressed-btn {
+  background-color: #313237;
+  height: 4px;
+  width: 14px;
+  border-radius: 0;
+  border: none;
+  margin: 0;
+}
