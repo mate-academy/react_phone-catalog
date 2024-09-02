@@ -48,11 +48,11 @@ export const HotPrices: React.FC = () => {
         <h1 className="newPhones-h1">Hot prices</h1>
         <div className="slide-btns">
           <button className="arrow-btn" onClick={handlePrevSlide}>
-            <img src="./uploadedImg/RightArrow.png"></img>
+            <img src="./uploadedImg/left.svg"></img>
           </button>
 
           <button className="arrow-btn" onClick={handleNextSlide}>
-            <img src="./uploadedImg/LeftArrow.png"></img>
+            <img src="./uploadedImg/right.svg"></img>
           </button>
         </div>
       </div>

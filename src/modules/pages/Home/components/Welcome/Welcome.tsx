@@ -95,7 +95,7 @@ export const Welcome = () => {
       <div>
         <div className="slider-box">
           <button onClick={ShowPrevBanner} className="left-btn">
-            <img src="./uploadedImg/RightArrow.png" alt="Left Arrow" />
+            <img src="./uploadedImg/left.svg" alt="Left Arrow" />
           </button>
 
           <img
@@ -105,7 +105,7 @@ export const Welcome = () => {
           />
 
           <button onClick={ShowNextBanner} className="right-btn">
-            <img src="./uploadedImg/LeftArrow.png" alt="Right Arrow" />
+            <img src="./uploadedImg/right.svg" alt="Right Arrow" />
           </button>
         </div>
         <div className="small-images">

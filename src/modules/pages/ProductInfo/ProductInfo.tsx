@@ -75,7 +75,7 @@ export const ProductInfo = () => {
     return getCurrectProduct(productId);
   }
 
-  const currentPhone = getCurrentPhone();
+  let currentPhone = getCurrentPhone();
 
   function suggestedProducts() {
     if (phones.find(phone => phone.id === currentPhone?.id)) {
@@ -94,12 +94,10 @@ export const ProductInfo = () => {
     (a, b) => b.priceRegular - a.priceRegular,
   );
 
+  const [currentColor, setCurrentColor] = useState(currentPhone?.color);
   const [currentPicture, setCurrentPicture] = useState(currentPhone?.images[0]);
-  const [currentColor, setCurrentColor] = useState(
-    currentPhone?.colorsAvailable[0],
-  );
   const [currentCapacity, setCurrentCapacity] = useState(
-    currentPhone?.capacityAvailable[0],
+    currentPhone?.capacity,
   );
 
   function addPhone() {
@@ -136,11 +134,113 @@ export const ProductInfo = () => {
     return id?.id;
   }
 
+  function getUpdatedCapacity() {
+    if (phones.find(phone => phone.id === currentPhone?.id)) {
+      const sameNameSpaceId = phones.filter(
+        phone => phone.namespaceId === currentPhone?.namespaceId,
+      );
+
+      const updatedPhoneCapacity = sameNameSpaceId.find(
+        phone =>
+          phone.capacity === currentCapacity && phone.color === currentColor,
+      );
+
+      return updatedPhoneCapacity;
+    }
+
+    if (tablets.find(tablet => tablet.id === currentPhone?.id)) {
+      const sameNameSpaceId = tablets.filter(
+        tablet => tablet.namespaceId === currentPhone?.namespaceId,
+      );
+
+      const updatedTabletCapacity = sameNameSpaceId.find(
+        tablet =>
+          tablet.capacity === currentCapacity && tablet.color === currentColor,
+      );
+
+      return updatedTabletCapacity;
+    }
+
+    if (accessories.find(accessorie => accessorie.id === currentPhone?.id)) {
+      const sameNameSpaceId = accessories.filter(
+        accessorie => accessorie.namespaceId === currentPhone?.namespaceId,
+      );
+
+      const updatedTabletCapacity = sameNameSpaceId.find(
+        accessorie =>
+          accessorie.capacity === currentCapacity &&
+          accessorie.color === currentColor,
+      );
+
+      return updatedTabletCapacity;
+    }
+
+    return;
+  }
+
+  currentPhone = getUpdatedCapacity();
+
+  function getUpdatedPhoneColor() {
+    if (phones.find(phone => phone.id === currentPhone?.id)) {
+      const sameNameSpaceId = phones.filter(
+        phone => phone.namespaceId === currentPhone?.namespaceId,
+      );
+
+      const sameCapacity = sameNameSpaceId.filter(
+        phone => phone.capacity === currentPhone?.capacity,
+      );
+
+      const updatedPhoneColor = sameCapacity.find(
+        phone => phone.color === currentColor,
+      );
+
+      return updatedPhoneColor;
+    }
+
+    if (tablets.find(tablet => tablet.id === currentPhone?.id)) {
+      const sameNameSpaceId = tablets.filter(
+        tablet => tablet.namespaceId === currentPhone?.namespaceId,
+      );
+
+      const sameCapacity = sameNameSpaceId.filter(
+        tablet => tablet.capacity === currentPhone?.capacity,
+      );
+
+      const updatedTabletColor = sameCapacity.find(
+        tablet => tablet.color === currentColor,
+      );
+
+      return updatedTabletColor;
+    }
+
+    if (accessories.find(accessorie => accessorie.id === currentPhone?.id)) {
+      const sameNameSpaceId = accessories.filter(
+        accessorie => accessorie.namespaceId === currentPhone?.namespaceId,
+      );
+
+      const sameCapacity = sameNameSpaceId.filter(
+        accessorie => accessorie.capacity === currentPhone?.capacity,
+      );
+
+      const updatedAccessorieColor = sameCapacity.find(
+        accessorie => accessorie.color === currentColor,
+      );
+
+      return updatedAccessorieColor;
+    }
+
+    return;
+  }
+
+  currentPhone = getUpdatedPhoneColor();
+
   const navigate = useNavigate();
   const location = useLocation();
+
   let currentLink = '';
 
   const crumbs = location.pathname
+    .replaceAll('-', ' ')
     .split('/')
     .filter(crumb => crumb !== '')
     .map(crumb => {
@@ -165,27 +265,27 @@ export const ProductInfo = () => {
             <div className="productInfo-links-block">
               <div className="fav-link">
                 <Link to="/" className="favIcon">
-                  <img src="./uploadedImg/Home.png"></img>
+                  <img src="./uploadedImg/home.svg"></img>
                 </Link>
                 <div className="favIcon">
-                  <img src="./uploadedImg/LeftArrow.png"></img>
+                  <img src="./uploadedImg/right.svg"></img>
                 </div>
                 <div className="margin-0">{crumbs[0]}</div>
                 <div className="favIcon">
-                  <img src="./uploadedImg/LeftArrow.png"></img>
+                  <img src="./uploadedImg/right.svg"></img>
                 </div>
                 <div className="margin-0">{crumbs[1]}</div>
               </div>
               <button className="bucket-link-btn" onClick={() => navigate(-1)}>
                 <img
-                  src="./uploadedImg/LeftBlackArrow.png"
+                  src="./uploadedImg/right-black.svg"
                   className="close-img"
                 ></img>
                 <p className="bucket-link-p">Back</p>
               </button>
             </div>
 
-            <h1 className="productInfo-h1">{currentPhone?.id}</h1>
+            <h1 className="productInfo-h1">{currentPhone?.name}</h1>
           </div>
           <div className="productInfo-product">
             <div className="productInfo-pictures-block">
@@ -225,7 +325,8 @@ export const ProductInfo = () => {
                 </div>
                 <div className="btns-block">
                   {currentPhone?.colorsAvailable.map(color => (
-                    <button
+                    <Link
+                      to={`/${currentPhone?.category}/${currentPhone?.id}`}
                       className={
                         color === currentColor
                           ? 'product-circle-active'
@@ -234,7 +335,7 @@ export const ProductInfo = () => {
                       style={{ background: color }}
                       key={color}
                       onClick={() => setCurrentColor(color)}
-                    ></button>
+                    ></Link>
                   ))}
                 </div>
               </div>
@@ -242,7 +343,8 @@ export const ProductInfo = () => {
                 <p className="product-colors-p">Select capacity</p>
                 <div className="gb-btns-block">
                   {currentPhone?.capacityAvailable.map(capacity => (
-                    <button
+                    <Link
+                      to={`/${currentPhone?.category}/${currentPhone?.id}`}
                       className={
                         capacity === currentCapacity
                           ? 'gb-btns-active'
@@ -252,7 +354,7 @@ export const ProductInfo = () => {
                       onClick={() => setCurrentCapacity(capacity)}
                     >
                       {capacity}
-                    </button>
+                    </Link>
                   ))}
                 </div>
               </div>
@@ -276,10 +378,10 @@ export const ProductInfo = () => {
                   )}
                   <button className="fav-btn-big" onClick={addFav}>
                     {favItems.find(item => item.id === currentPhone?.id) ? (
-                      <img src="./uploadedImg/Fav.png" className="cursor"></img>
+                      <img src="./uploadedImg/red.svg" className="cursor"></img>
                     ) : (
                       <img
-                        src="./uploadedImg/like-btn.png"
+                        src="./uploadedImg/like.svg"
                         className="cursor"
                       ></img>
                     )}
@@ -364,11 +466,11 @@ export const ProductInfo = () => {
               <h1 className="newPhones-h1">You may also like</h1>
               <div className="slide-btns">
                 <button className="arrow-btn" onClick={handlePrevSlide}>
-                  <img src="./uploadedImg/RightArrow.png"></img>
+                  <img src="./uploadedImg/left.svg"></img>
                 </button>
 
                 <button className="arrow-btn" onClick={handleNextSlide}>
-                  <img src="./uploadedImg/LeftArrow.png"></img>
+                  <img src="./uploadedImg/right.svg"></img>
                 </button>
               </div>
             </div>

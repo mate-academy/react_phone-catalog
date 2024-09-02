@@ -2,7 +2,7 @@ import './Bucket.scss';
 import { BucketCard } from './Components/BucketCard';
 import { useProductsContext } from '../../../PageContext';
 import { Model } from './Components/Model';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 export const Bucket = () => {
@@ -25,18 +25,19 @@ export const Bucket = () => {
 
   const navigate = useNavigate();
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <div className="bucket-layout">
       <div className="bucket-link-block">
         <button className="bucket-link-btn" onClick={() => navigate(-1)}>
-          <img
-            src="./uploadedImg/LeftBlackArrow.png"
-            className="close-img"
-          ></img>
+          <img src="./uploadedImg/right-black.svg" className="close-img"></img>
           <p className="bucket-link-p">Back</p>
         </button>
       </div>
-      <h1 className="bucket-h1">Card</h1>
+      <h1 className="bucket-h1">Cart</h1>
       <div className="products-block">
         <div className="cards-layout">
           {bucketItems.length > 0 ? (

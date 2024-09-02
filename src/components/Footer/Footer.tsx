@@ -10,7 +10,7 @@ export const Footer = () => {
     <div className="footer-container">
       <div className="footer-block">
         <Link to="/" target="_self" className="footer-logo">
-          <img src="./uploadedImg/logo.png" alt="Logo"></img>
+          <img src="./uploadedImg/logo.svg" alt="Logo"></img>
         </Link>
 
         <ul className="footer-links">
@@ -49,7 +49,7 @@ export const Footer = () => {
         <div className="footer-back-btn-bl">
           <p className="footer-back-p">Back to top</p>
           <button className="footer-UpArrow" onClick={handleScroll}>
-            <img src="./uploadedImg/UpArrow.png"></img>
+            <img src="./uploadedImg/up.svg"></img>
           </button>
         </div>
       </div>

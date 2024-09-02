@@ -255,6 +255,7 @@
   padding: 4px 8px;
   border: 1px solid #B4BDC3;
   cursor: pointer;
+  text-decoration: none;
 }
 
 .gb-btns-active {
@@ -269,7 +270,7 @@
   border: none;
   padding: 4px 8px;
   cursor: pointer;
-
+  text-decoration: none;
 }
 
 .add-to-card-block {
@@ -620,6 +621,7 @@
 
 .crumb-link {
   text-decoration: none;
+  font-family: Mont, sans-serif;
   font-size: 12px;
   font-weight: 700;
   line-height: 15.34px;

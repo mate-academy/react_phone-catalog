@@ -20,7 +20,7 @@ export const HeaderNav = () => {
     <div>
       <div className="container">
         <Link to="/" target="_self" className="logo">
-          <img src="./uploadedImg/logo.png" alt="Logo"></img>
+          <img src="./uploadedImg/logo.svg" alt="Logo"></img>
         </Link>
         {useLocation().pathname !== '/menu' && (
           <ul className="links">
@@ -50,7 +50,7 @@ export const HeaderNav = () => {
         <ul className="icons">
           <li className="icon">
             <Link to="/favorites" className="icon-link onTablet">
-              <img src="./uploadedImg/like.png"></img>
+              <img src="./uploadedImg/like.svg"></img>
               {favItems.length > 0 && (
                 <div className="show-items">{favItems.length}</div>
               )}
@@ -58,7 +58,7 @@ export const HeaderNav = () => {
           </li>
           <li className="icon">
             <Link to="/bucket" className="icon-link onTablet">
-              <img src="./uploadedImg/shoppingBag.png"></img>
+              <img src="./uploadedImg/bag.svg"></img>
               {bucketItems.length > 0 && (
                 <div className="show-items">{totalCount}</div>
               )}
@@ -73,7 +73,7 @@ export const HeaderNav = () => {
           ) : (
             <li className="icon">
               <Link to="/menu" className="icon-link onMobile">
-                <img src="./uploadedImg/burger.png"></img>
+                <img src="./uploadedImg/Menu.svg"></img>
               </Link>
             </li>
           )}

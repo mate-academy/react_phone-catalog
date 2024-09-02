@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import './Favorites.scss';
 import { Card } from '../Home/components/NewPhones/components';
 import { ProductsContext } from '../../../PageContext';
@@ -7,14 +7,18 @@ import { Link } from 'react-router-dom';
 export const Favorites = () => {
   const { favItems } = useContext(ProductsContext);
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  });
+
   return (
     <div className="favorites-layout">
       <div className="fav-link">
         <Link to="/" className="favIcon">
-          <img src="./uploadedImg/Home.png"></img>
+          <img src="./uploadedImg/home.svg"></img>
         </Link>
         <a className="favIcon">
-          <img src="./uploadedImg/LeftArrow.png"></img>
+          <img src="./uploadedImg/right.svg"></img>
         </a>
         <p className="fav-link-p">Favorites</p>
       </div>

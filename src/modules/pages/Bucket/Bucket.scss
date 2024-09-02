@@ -4,7 +4,8 @@
   width: 1200px;
   margin: 0 auto;
   margin-bottom: 80px;
-  min-height: 100vh;
+  min-height: 70vh;
+  overflow-x: hidden;
 
   @include on-tablet {
     width: 640px;
@@ -157,6 +158,14 @@
   font-weight: 600;
   line-height: 21px;
   color: #313237;
+
+  @include on-tablet {
+    width: 594px;
+  }
+
+  @include on-mobile {
+    width: 290px;
+  }
 }
 
 .model-h1 {
@@ -213,7 +222,7 @@
 }
 
 .bucket-link-p {
-  font-family: Mont-SemiBold, sans-serif;
+  font-family: Mont, sans-serif;
   font-size: 12px;
   font-weight: 700;
   line-height: 15.34px;

@@ -63,9 +63,9 @@ export const Card: React.FC<Props> = ({ phone }) => {
 
           <button className="fav-btn" onClick={addFav}>
             {favItems.includes(phone) ? (
-              <img src="./uploadedImg/Fav.png" className="cursor"></img>
+              <img src="./uploadedImg/red.svg" className="cursor"></img>
             ) : (
-              <img src="./uploadedImg/like-btn.png" className="cursor"></img>
+              <img src="./uploadedImg/like.svg" className="cursor"></img>
             )}
           </button>
         </div>

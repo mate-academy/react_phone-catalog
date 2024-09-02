@@ -8,7 +8,7 @@ import { Link, useSearchParams } from 'react-router-dom';
 
 export const Phones: React.FC = () => {
   const [searchParams, setSearchParams] = useSearchParams();
-  const postsPerPage = +(searchParams.get('postsPerPage') || 24);
+  const postsPerPage = +(searchParams.get('postsPerPage') || 8);
   const sort = searchParams.get('sortBy') || '';
   const currentPage = +(searchParams.get('currentPage') || 1);
 
@@ -79,14 +79,18 @@ export const Phones: React.FC = () => {
     setSearchParams(params);
   }
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  });
+
   return (
     <div className="phones-container">
       <div className="fav-link">
         <Link to="/" className="favIcon">
-          <img src="./uploadedImg/Home.png"></img>
+          <img src="./uploadedImg/home.svg"></img>
         </Link>
         <a className="favIcon">
-          <img src="./uploadedImg/LeftArrow.png"></img>
+          <img src="./uploadedImg/right.svg"></img>
         </a>
         <p className="fav-link-p">Phones</p>
       </div>
@@ -106,7 +110,7 @@ export const Phones: React.FC = () => {
               <option value="Cheapest">Cheapest</option>
             </select>
             <div className="select-btn">
-              <img src="./uploadedImg/DownArrow.png"></img>
+              <img src="./uploadedImg/down.svg"></img>
             </div>
           </div>
         </div>
@@ -123,7 +127,7 @@ export const Phones: React.FC = () => {
               <option value="24">24</option>
             </select>
             <div className="select-btn">
-              <img src="./uploadedImg/DownArrow.png"></img>
+              <img src="./uploadedImg/down.svg"></img>
             </div>
           </div>
         </div>
@@ -146,7 +150,7 @@ export const Phones: React.FC = () => {
       {!isLoading && (
         <div className="btn-container">
           <button className="arrow-btn-LR" onClick={handlePrevPage}>
-            <img src="./uploadedImg/RightArrow.png"></img>
+            <img src="./uploadedImg/left.svg"></img>
           </button>
           {pages.map((page, index) => (
             <button
@@ -162,7 +166,7 @@ export const Phones: React.FC = () => {
             </button>
           ))}
           <button className="arrow-btn-LR" onClick={handleNextPage}>
-            <img src="./uploadedImg/LeftArrow.png"></img>
+            <img src="./uploadedImg/right.svg"></img>
           </button>
         </div>
       )}

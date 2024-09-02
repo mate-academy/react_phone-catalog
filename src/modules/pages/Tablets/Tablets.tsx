@@ -67,14 +67,18 @@ export const Tablets: React.FC = () => {
     }, 500);
   }, []);
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  });
+
   return (
     <div className="phones-container">
       <div className="fav-link">
         <Link to="/" className="favIcon">
-          <img src="./uploadedImg/Home.png"></img>
+          <img src="./uploadedImg/home.svg"></img>
         </Link>
         <a className="favIcon">
-          <img src="./uploadedImg/LeftArrow.png"></img>
+          <img src="./uploadedImg/right.svg"></img>
         </a>
         <p className="fav-link-p">Tablets</p>
       </div>
@@ -94,7 +98,7 @@ export const Tablets: React.FC = () => {
               <option value="Cheapest">Cheapest</option>
             </select>
             <div className="select-btn">
-              <img src="./uploadedImg/DownArrow.png"></img>
+              <img src="./uploadedImg/down.svg"></img>
             </div>
           </div>
         </div>
@@ -111,7 +115,7 @@ export const Tablets: React.FC = () => {
               <option value="24">24</option>
             </select>
             <div className="select-btn">
-              <img src="./uploadedImg/DownArrow.png"></img>
+              <img src="./uploadedImg/down.svg"></img>
             </div>
           </div>
         </div>
@@ -134,7 +138,7 @@ export const Tablets: React.FC = () => {
       {!isLoading && (
         <div className="btn-container">
           <button className="arrow-btn-LR" onClick={prevPage}>
-            <img src="./uploadedImg/RightArrow.png"></img>
+            <img src="./uploadedImg/left.svg"></img>
           </button>
           {pages.map((page, index) => (
             <button
@@ -150,7 +154,7 @@ export const Tablets: React.FC = () => {
             </button>
           ))}
           <button className="arrow-btn-LR" onClick={nextPage}>
-            <img src="./uploadedImg/LeftArrow.png"></img>
+            <img src="./uploadedImg/right.svg"></img>
           </button>
         </div>
       )}
