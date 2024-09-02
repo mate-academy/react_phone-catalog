@@ -1,0 +1,23 @@
+@import '../../../styles/main';
+
+.goBack {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  height: 16px;
+
+  &__link {
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    height: 100%;
+  }
+
+  &__text {
+    color: $secondary-gray;
+
+    @include hover(color, $primary-gray);
+  }
+}

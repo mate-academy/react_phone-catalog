@@ -1,0 +1,111 @@
+@import '../../styles/main';
+
+.header {
+  border-bottom: 1px solid $elements-gray;
+  &__content {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background-color: rgba($white, 0.9);
+
+    @include on-tablet {
+      margin-inline: auto;
+      max-width: 1440px;
+    }
+  }
+
+  &__nav {
+    display: none;
+
+    // hide nav menu if search is open
+    // opacity: 1;
+    // transform: translateX(0);
+    // transition:
+    //   transform $transition-duration ease,
+    //   opacity $transition-duration ease;
+
+    @include on-tablet {
+      display: block;
+    }
+
+    &--hide {
+      // transform: translateX(-100%);
+      // opacity: 0;
+      overflow: hidden;
+    }
+  }
+
+  &__nav-list {
+    @include on-tablet {
+      display: flex;
+      flex-flow: row;
+      gap: 32px;
+    }
+
+    @include on-desktop {
+      gap: 64px;
+    }
+  }
+
+  &__link {
+    color: $secondary-gray;
+
+    position: relative;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    height: 48px;
+
+    @include on-desktop {
+      height: 64px;
+    }
+
+    &--active {
+      color: $primary-gray;
+    }
+
+    &:hover {
+      color: $primary-gray;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      display: block;
+      bottom: -2px;
+      height: 3px;
+      width: 100%;
+      background-color: $primary-gray;
+
+      transition: transform $transition-duration;
+      transform: scale(0);
+      transform-origin: left;
+    }
+
+    &--active::after {
+      transform: scale(1);
+    }
+
+    &--icon {
+      display: none;
+
+      &:last-child {
+        display: flex;
+      }
+
+      @include on-tablet {
+        display: flex;
+
+        &:last-child {
+          display: none;
+        }
+      }
+
+      &::after {
+        bottom: -2px;
+      }
+    }
+  }
+}

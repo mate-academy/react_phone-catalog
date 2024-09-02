@@ -1,0 +1,66 @@
+@import '../../styles/main';
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &__container {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+
+    @include on-tablet {
+      gap: 8px;
+    }
+  }
+
+  &__btn {
+    @include button-common;
+
+    width: 32px;
+    height: 32px;
+    background-color: $white;
+    color: $primary-gray;
+    border: 1px solid $icons-placeholders-gray;
+    cursor: pointer;
+
+    &:hover {
+      border-color: $primary-gray;
+    }
+
+    &:not(.pagination__btn--disabled):active {
+      transform: scale(0.9);
+    }
+
+    &--disabled {
+      color: $icons-placeholders-gray;
+      border-color: $icons-placeholders-gray;
+      cursor: not-allowed;
+
+      &:hover {
+        border-color: $icons-placeholders-gray;
+      }
+    }
+
+    &--active {
+      background-color: $primary-gray;
+      color: $white;
+    }
+  }
+
+  &__ellipsis {
+    padding: 0 8px;
+    font-size: 1rem;
+    cursor: pointer;
+  }
+
+  &__link,
+  &__control {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}

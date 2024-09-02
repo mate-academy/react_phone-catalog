@@ -1,0 +1,81 @@
+@import '../../styles/main';
+
+.productSlider {
+  &__topBar {
+    margin-bottom: 24px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__title {
+    width: 200px;
+
+    @include on-tablet {
+      width: 500px;
+    }
+  }
+
+  &__sliderButtons {
+    display: flex;
+    gap: 16px;
+  }
+
+  &__btn {
+    @include button-common;
+
+    width: 32px;
+    height: 32px;
+    background-color: $white;
+    color: $primary-gray;
+    border: 1px solid $icons-placeholders-gray;
+
+    &:hover {
+      border-color: $primary-gray;
+    }
+
+    &:not(.newModels__btn--disabled):active {
+      transform: scale(0.9);
+    }
+
+    &--disabled {
+      color: $icons-placeholders-gray;
+      border-color: $icons-placeholders-gray;
+      cursor: not-allowed;
+
+      &:hover {
+        border-color: $icons-placeholders-gray;
+      }
+    }
+  }
+
+  &__cardsWrapper {
+    margin-top: 24px;
+    overflow: hidden;
+  }
+
+  &__cards {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    transition: transform $transition-duration ease-in-out;
+  }
+
+  &__card {
+    flex: 0 0 auto;
+
+    width: 212px;
+    height: 440px;
+
+    @include on-tablet {
+      width: 238px;
+      height: 512px;
+    }
+
+    @include on-desktop {
+      width: 272px;
+      height: 506px;
+    }
+  }
+}

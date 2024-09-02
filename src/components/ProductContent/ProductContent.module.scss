@@ -1,0 +1,27 @@
+@import '../../styles/main';
+
+.product-content {
+  &__list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, auto));
+    gap: 40px 16px;
+
+    justify-content: center;
+
+    @include on-tablet {
+      grid-template-columns: repeat(auto-fit, minmax(230px, auto));
+    }
+
+    @include on-desktop {
+      grid-template-columns: repeat(4, minmax(272px, 1fr));
+    }
+  }
+
+  &__item {
+    height: 440px;
+
+    @include on-tablet {
+      height: 506px;
+    }
+  }
+}
