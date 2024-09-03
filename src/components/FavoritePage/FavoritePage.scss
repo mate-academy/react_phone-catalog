@@ -28,7 +28,7 @@
     }
 
     @include on-desktop {
-      grid-template-columns: repeat(auto-fit, 272px);
+      grid-template-columns: repeat(4, 272px);
     }
   }
 

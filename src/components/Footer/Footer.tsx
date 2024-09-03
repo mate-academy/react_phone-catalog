@@ -1,11 +1,17 @@
+import { Link } from 'react-router-dom';
 import './Footer.scss';
 
 export const Footer = () => (
   <footer className="footer">
     <div className="footer__content-box">
-      <a href="#" className="footer__logo" />
+      <Link to="/" className="footer__logo" />
       <div className="footer__links-box">
-        <a href="" className="footer__links">
+        <a
+          href="https://github.com/pakhomovalex"
+          className="footer__links"
+          target="_blank"
+          rel="noreferrer"
+        >
           Github
         </a>
         <a href="" className="footer__links">
