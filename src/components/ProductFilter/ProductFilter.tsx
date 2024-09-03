@@ -30,6 +30,7 @@ export const ProductFilter: React.FC<ProductFilterProps> = () => {
         params.delete('page');
       } else {
         params.set('perPage', option);
+        params.delete('page'); // set first page if perPage changed
       }
     }
 
