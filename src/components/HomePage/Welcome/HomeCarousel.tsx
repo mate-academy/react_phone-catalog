@@ -4,9 +4,9 @@ import style from './homeface.module.scss';
 import classNames from 'classnames';
 
 const slideImage = [
-  { id: 0, src: '/img/banner.png' },
-  { id: 1, src: '/img/banner-phones.png' },
-  { id: 2, src: '/img/banner-accessories.png' },
+  { id: 0, src: './img/banner.png' },
+  { id: 1, src: './img/banner-phones.png' },
+  { id: 2, src: './img/banner-accessories.png' },
 ];
 
 export const HomeCarousel = () => {

@@ -14,7 +14,7 @@ export const CardComponent = ({ devices }: CardComponentProps) => {
           <div className={styles.card_flex_column}>
             {'image' in device && (
               <img
-                src={device.image}
+                src={`.${device.image}`}
                 alt="img"
                 className={styles.card_images}
               />
@@ -50,7 +50,7 @@ export const CardComponent = ({ devices }: CardComponentProps) => {
             <div className={styles.card_buy_container}>
               <button className={styles.card_buy_button}>Add to card</button>
               <button className={styles.card_follow_button}>
-                <img src="/img/Vector(Heart).svg" alt="heart" />
+                <img src="./img/Vector(Heart).svg" alt="heart" />
               </button>
             </div>
           </div>

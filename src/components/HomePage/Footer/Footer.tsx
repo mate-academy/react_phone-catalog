@@ -8,7 +8,7 @@ export const Footer = () => {
     <div className={flex.footer}>
       <div>
         <a href="">
-          <img src="/img/logo.png" alt="logo" className={styles.header_logo} />
+          <img src="./img/logo.png" alt="logo" className={styles.header_logo} />
         </a>
       </div>
 
