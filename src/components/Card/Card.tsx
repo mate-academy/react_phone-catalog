@@ -3,7 +3,6 @@ import styles from './Card.module.scss';
 import { CardDetail } from '../CardDetail/CardDetail';
 import { Icon } from '../ui/Icon';
 import { CardButton } from '../ui/CardButton';
-
 import { Product } from '../../types/Product';
 import { Link, useSearchParams } from 'react-router-dom';
 
@@ -12,7 +11,7 @@ type CardProps = {
   isInCart?: boolean;
   isFavorite: boolean;
   toggleFavorite: () => void;
-  updateCart: (item: Product) => void;
+  updateCart: (item: Product, action: 'add' | 'remove') => void;
 };
 
 export const Card: React.FC<CardProps> = ({
@@ -23,6 +22,14 @@ export const Card: React.FC<CardProps> = ({
   updateCart,
 }) => {
   const [searchParams] = useSearchParams();
+
+  const handleToggleCart = () => {
+    if (isInCart) {
+      updateCart(item, 'remove'); // Видалення товару з кошика
+    } else {
+      updateCart(item, 'add'); // Додавання товару в кошик
+    }
+  };
 
   return (
     <div className={styles.card}>
@@ -59,8 +66,7 @@ export const Card: React.FC<CardProps> = ({
       <div className={styles.card__buttons}>
         <CardButton
           variant={isInCart ? 'selected' : 'primary'}
-          /* eslint-disable-next-line no-console */
-          onClick={() => updateCart(item)}
+          onClick={handleToggleCart}
         >
           {isInCart ? 'Added to cart' : 'Add to cart'}
         </CardButton>

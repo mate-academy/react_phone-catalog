@@ -3,6 +3,7 @@ import classNames from 'classnames';
 import styles from './Pagination.module.scss';
 import { Icon } from '../ui/Icon';
 import { useSearchParams } from 'react-router-dom';
+import { useEffect } from 'react';
 
 type PaginationProps = {
   totalItems: number;
@@ -11,7 +12,7 @@ type PaginationProps = {
 export const Pagination: React.FC<PaginationProps> = ({ totalItems }) => {
   const [searchParams, setSearchParams] = useSearchParams();
 
-  const page = parseInt(searchParams.get('page') || '1');
+  const page = parseInt(searchParams.get('page') || '1', 10);
 
   const itemsPerPage = parseInt(
     searchParams.get('perPage') || totalItems.toString(),
@@ -27,14 +28,18 @@ export const Pagination: React.FC<PaginationProps> = ({ totalItems }) => {
 
     if (params.get('page') === '1') {
       params.delete('page');
-
-      setSearchParams(params);
-
-      return;
     }
 
     setSearchParams(params);
   };
+
+  // Скидання сторінки на першу при зміні кількості елементів на сторінці
+  useEffect(() => {
+    const params = new URLSearchParams(searchParams);
+
+    params.set('page', '1');
+    setSearchParams(params);
+  }, [itemsPerPage, setSearchParams, searchParams]);
 
   if (+itemsPerPage === totalItems) {
     return null;

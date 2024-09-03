@@ -26,31 +26,30 @@ export const CartProvider: React.FC<{ children: ReactNode }> = ({
         return;
       }
 
-      let updatedCart: Product[] = [];
+      let updatedCart: Product[] = cart;
 
       if (item) {
         switch (action) {
           case CartActionType.ADD:
             if (!isItemInArray(cart, item.id)) {
               updatedCart = [...cart, item];
-            } else {
-              updatedCart = cart;
             }
 
             break;
+
           case CartActionType.DELETE:
+          case CartActionType.REMOVE:
             updatedCart = cart.filter(itemCart => itemCart.id !== item.id);
             break;
-          case CartActionType.DELETE_ALL:
-            updatedCart = [];
-            break;
+
           case CartActionType.UPDATE:
             updatedCart = cart.map(itemCart =>
               itemCart.id === item.id ? { ...itemCart, ...item } : itemCart,
             );
             break;
+
           default:
-            updatedCart = [...cart];
+            break;
         }
       }
 

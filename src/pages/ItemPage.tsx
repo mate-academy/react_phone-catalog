@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import Breadcrumbs from '../components/Breadcrumbs/Breadcrumbs';
 import { CardDetail } from '../components/CardDetail';
 import { Icon } from '../components/ui/Icon';
