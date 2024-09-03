@@ -105,25 +105,27 @@ export const Catalog: React.FC<Props> = ({ products }) => {
     customSelect(selectElementSortBy);
     customSelect(selectElementPerPage);
 
-    // Event listener to trigger the React onChange handler
+    let isHandlingEvent = false;
+
     const handleChange = (event: Event) => {
+      if (isHandlingEvent) {
+        return;
+      }
+
+      isHandlingEvent = true;
       const target = event.target as HTMLSelectElement;
       const changeEvent = new Event('change', { bubbles: true });
 
       target.dispatchEvent(changeEvent);
+      isHandlingEvent = false;
     };
 
-    // if (selectElementSortBy && selectElementPerPage) {
     selectElementSortBy.addEventListener('change', handleChange);
     selectElementPerPage.addEventListener('change', handleChange);
-    // }
 
-    // Cleanup the event listener on unmount
     return () => {
-      // if (selectElementSortBy && selectElementPerPage) {
       selectElementSortBy.removeEventListener('change', handleChange);
       selectElementPerPage.removeEventListener('change', handleChange);
-      // }
     };
   }, []);
 
@@ -201,25 +203,23 @@ export const Catalog: React.FC<Props> = ({ products }) => {
                 setSortBy(event.target.value);
                 getElentsPerPageInUrl(undefined, event.target.value);
               }}
+              value={sortBy}
             >
               <option
                 value={SortBy.newest}
                 className="catalog-main__select-item"
-                selected={sortBy === SortBy.newest}
               >
                 {SortBy.newest}
               </option>
               <option
                 value={SortBy.alphabetically}
                 className="catalog-main__select-item"
-                selected={sortBy === SortBy.alphabetically}
               >
                 {SortBy.alphabetically}
               </option>
               <option
                 value={SortBy.cheapest}
                 className="catalog-main__select-item"
-                selected={sortBy === SortBy.cheapest}
               >
                 {SortBy.cheapest}
               </option>
@@ -229,31 +229,19 @@ export const Catalog: React.FC<Props> = ({ products }) => {
               name="perPageSelector"
               className="form-select form-select--per-page-items"
               onChange={handleChange}
+              value={+elemsPerPage}
             >
-              <option
-                value="4"
-                selected={+elemsPerPage === 4}
-                className="catalog-main__select-item"
-              >
+              <option value="4" className="catalog-main__select-item">
                 {ElementsPerPage.four}
               </option>
-              <option
-                value="8"
-                selected={+elemsPerPage === 8}
-                className="catalog-main__select-item"
-              >
+              <option value="8" className="catalog-main__select-item">
                 {ElementsPerPage.eight}
               </option>
-              <option
-                value="16"
-                selected={+elemsPerPage === 16}
-                className="catalog-main__select-item"
-              >
+              <option value="16" className="catalog-main__select-item">
                 {ElementsPerPage.sixteen}
               </option>
               <option
                 value={products.length}
-                selected={+elemsPerPage === products.length}
                 className="catalog-main__select-item"
               >
                 all
