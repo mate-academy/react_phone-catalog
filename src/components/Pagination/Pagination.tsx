@@ -14,25 +14,15 @@ export const Pagination: React.FC<PaginationProps> = ({
   handleDisplayedPage,
   displayedPage,
 }) => {
+  const arrayOfPageButtons = Array.from({ length: numberOfPages }, (_, i) => i + 1);
 
-  const arrayOfPageButtons = [];
-  for (let i = 1; i <= numberOfPages; i++) {
-    arrayOfPageButtons.push(i);
-  }
-
-  console.log(arrayOfPageButtons);
-
-  const handleLeftArrowButtons = () => {
-    console.log('before', displayedPage);
-    const newPage = displayedPage - 1 < 1 ? 1 : displayedPage - 1;
-    console.log('after', newPage);
+  const handleLeftArrowClick = () => {
+    const newPage = Math.max(displayedPage - 1, 1);
     handleDisplayedPage(newPage);
   };
 
-  const handleRightArrowButtons = () => {
-    console.log('before', displayedPage);
-    const newPage = displayedPage + 1 > numberOfPages ? numberOfPages : displayedPage + 1;
-    console.log('after', newPage);
+  const handleRightArrowClick = () => {
+    const newPage = Math.min(displayedPage + 1, numberOfPages);
     handleDisplayedPage(newPage);
   };
 
@@ -40,7 +30,8 @@ export const Pagination: React.FC<PaginationProps> = ({
     <ul className={styles.pagination}>
       <button
         className={styles.button}
-        onClick={handleLeftArrowButtons}
+        onClick={handleLeftArrowClick}
+        disabled={displayedPage === 1}
       >
         <img
           src={ChevronIcon}
@@ -51,7 +42,9 @@ export const Pagination: React.FC<PaginationProps> = ({
       {arrayOfPageButtons.map(pageButton => (
         <button
           key={pageButton}
-          className={styles.button}
+          className={classNames(styles.button, {
+            [styles.active]: pageButton === displayedPage,
+          })}
           onClick={() => handleDisplayedPage(pageButton)}
         >
           {pageButton}
@@ -59,8 +52,9 @@ export const Pagination: React.FC<PaginationProps> = ({
       ))}
 
       <button
-        className={classNames(styles.button, styles.next)}
-        onClick={handleRightArrowButtons}
+        className={styles.button}
+        onClick={handleRightArrowClick}
+        disabled={displayedPage === numberOfPages}
       >
         <img
           src={ChevronIcon}
