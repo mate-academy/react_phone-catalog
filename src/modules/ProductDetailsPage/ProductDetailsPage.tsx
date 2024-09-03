@@ -12,6 +12,7 @@ import { Description } from './components/Description';
 import { MainControls } from './components/MainControls';
 import { Loader } from '../../components/Loader';
 import { Breadcrumbs } from '../../components/Breadcrumbs';
+// eslint-disable-next-line no-unused-vars
 import { LimitedProduct } from '../../types/Product';
 
 export const ProductDetailsPage: React.FC = () => {

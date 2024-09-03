@@ -3,6 +3,7 @@ import styles from './MainControls.module.scss';
 import { ActionButtons } from '../../../../components/ActionButtons';
 import { useAppContext } from '../../../../context/AppContext';
 import { useLocation, useHistory } from 'react-router-dom';
+// eslint-disable-next-line no-unused-vars
 import { LimitedProduct } from '../../../../types/Product';
 
 type MainControlsProps = {

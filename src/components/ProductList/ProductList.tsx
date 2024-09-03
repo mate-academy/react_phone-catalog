@@ -7,7 +7,7 @@ import { Breadcrumbs } from '../../components/Breadcrumbs';
 import styles from './ProductList.module.scss';
 import { useAppContext } from '../../context/AppContext';
 import { Sort } from '../../components/Sort';
-// @ts-ignore
+// eslint-disable-next-line no-unused-vars
 import { LimitedProduct } from '../../types/Product';
 
 type ProductListProps = {
