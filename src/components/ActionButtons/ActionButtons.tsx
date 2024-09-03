@@ -10,8 +10,8 @@ type ButtonProps = {
 };
 
 export const ActionButtons: React.FC<ButtonProps> = ({product}) => {
-  // @ts-ignore
-  const { favoriteProducts, setFavoriteProducts, productsInCart, setProductsInCart, productsInCartCount, setProductsInCartCount} = useAppContext();
+
+  const {  setFavoriteProducts, productsInCart, setProductsInCart, productsInCartCount, setProductsInCartCount} = useAppContext();
 
   const handleFavorites = () => {
     // @ts-ignore
