@@ -1,0 +1,76 @@
+@import '/src/components/colors.scss';
+
+.grid {
+  display: grid;
+  justify-content: center;
+
+  grid-template-columns: repeat(24, 32px);
+  gap: 16px;
+
+  &_h1 {
+    grid-column: 1 / 20;
+  }
+
+  &_h2 {
+    grid-column: 1 / 15;
+  }
+
+  &_h2_button_left {
+    grid-column: 23 / 24;
+  }
+
+  &_h2_button_right {
+    grid-column: 24 / 25;
+  }
+
+  &_carousel {
+    height: 100%;
+
+    grid-column: 2 / 24;
+  }
+
+  &_left_button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    height: 93%;
+    width: 32px;
+
+    border: 1px solid $CAROUSEL_BUTTOMS_COLOR;
+    text-decoration: none;
+    grid-column: 1;
+
+    &:hover {
+      transition: 0.7s;
+      opacity: 45%;
+      color: $HOVER_BUTTON_COLOR;
+    }
+  }
+
+  &_right_button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    height: 93%;
+    width: 32px;
+
+    border: 1px solid $CAROUSEL_BUTTOMS_COLOR;
+    text-decoration: none;
+    grid-column: 24 / 25;
+    color: $CAROUSEL_BUTTOMS_COLOR;
+
+    &:hover {
+      color: $HOVER_BUTTON_COLOR;
+      transition: 0.7s;
+      opacity: 45%;
+    }
+  }
+
+  &_slider {
+    transform: translateX(0);
+    grid-column: calc((100% - 32px) / 4);
+    overflow: hidden;
+  }
+}

@@ -1,0 +1,80 @@
+@import '/src/components/colors.scss';
+
+.card {
+  border: 1px solid $BORDER_COLOR;
+  padding: 27px 32px;
+  width: 207px;
+  height: 474px;
+
+  &_images {
+    height: 200px;
+    width: 210px;
+  }
+
+  &_flex_column {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+
+    height: 100%;
+    width: 100%;
+  }
+
+  &_price {
+    margin: 0;
+    font-family: 'Mont-Bold';
+    font-size: 22px;
+  }
+
+  &_stats {
+    display: flex;
+    flex-direction: column;
+
+    border-top: 1px solid $BORDER_COLOR;
+    padding-top: 8px;
+
+    &_text {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    &_left {
+      color: $BUTTOM_TEXT_COLOR;
+      font-size: 12px;
+    }
+
+    &_right {
+      color: $HOVER_BUTTON_COLOR;
+      font-size: 12px;
+    }
+  }
+
+  &_buy_container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+  }
+
+  &_buy_button {
+    width: 160px;
+    height: 40px;
+    border: 0;
+    background-color: $HOVER_BUTTON_COLOR;
+
+    color: white;
+    font-size: 14px;
+
+    cursor: pointer;
+  }
+
+  &_follow_button {
+    height: 40px;
+    width: 40px;
+    background-color: inherit;
+    align-items: center;
+
+    border: 1px solid $CAROUSEL_BUTTOMS_COLOR;
+    cursor: pointer;
+  }
+}

@@ -1,0 +1,62 @@
+@import '/src/components/colors.scss';
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  width: 100%;
+  border-bottom: 1px solid;
+  border-color: $BORDER_COLOR;
+
+  &_logo {
+    padding: 18px 25px;
+  }
+
+  &_buttoms {
+    margin: 0px 20px;
+    position: relative;
+
+    font-family: 'Mont-Bold';
+    text-transform: uppercase;
+    color: $BUTTOM_TEXT_COLOR;
+
+    &:hover {
+      color: $HOVER_BUTTON_COLOR;
+    }
+
+    &::before {
+      content: "";
+      position: absolute;
+      display: block;
+
+      width: 100%;
+      height: 4px;
+      bottom: -24px;
+      left: 0;
+
+      background-color: #000;
+
+      transform: scaleX(0);
+      transform-origin: top left;
+      transition: transform 0.3s ease;
+    }
+
+    &:hover::before {
+      transform: scaleX(1);
+    }
+  }
+
+  &_buttoms_additional {
+    padding: 25px;
+    border-left: 2px solid;
+    border-color: $BORDER_COLOR;
+  }
+
+  &_buttoms_container {
+    display: flex;
+    align-items: center;
+  }
+}
+
+
