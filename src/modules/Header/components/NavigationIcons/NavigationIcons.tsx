@@ -18,7 +18,7 @@ export const NavigationIcons: React.FC<Props> = ({ onClose = () => {} }) => {
     });
 
   const { favouriteProducts } = useFavouriteProducts();
-  const { shoppingCartProducts } = useShoppingCart();
+  const { totalQuantity } = useShoppingCart();
 
   return (
     <>
@@ -32,10 +32,8 @@ export const NavigationIcons: React.FC<Props> = ({ onClose = () => {} }) => {
       </NavLink>
       <NavLink to="cart" className={getLinkClassIcon} onClick={onClose}>
         <CartIcon />
-        {shoppingCartProducts.length > 0 && (
-          <div className={styles.nav__iconCounter}>
-            {shoppingCartProducts.length}
-          </div>
+        {totalQuantity > 0 && (
+          <div className={styles.nav__iconCounter}>{totalQuantity}</div>
         )}
       </NavLink>
     </>

@@ -12,10 +12,17 @@
 
   &__products {
     display: flex;
-    justify-content: space-between;
     gap: 40px 16px;
     flex-wrap: wrap;
     margin: 24px 0 40px;
+
+    @media (max-width: 1199px) {
+      column-gap: 19px;
+    }
+
+    @media (max-width: 991px) {
+      justify-content: space-between;
+    }
   }
 
   &__withoutProducts {

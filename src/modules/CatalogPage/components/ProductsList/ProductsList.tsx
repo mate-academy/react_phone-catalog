@@ -89,7 +89,7 @@ export const ProductsList: React.FC<Props> = ({
         </div>
       )}
 
-      {perPage !== 'All' && products.length > 0 && (
+      {perPage !== 'All' && products.length > perPageNum && (
         <Pagination total={total} perPage={perPage} currentPage={+page} />
       )}
     </>

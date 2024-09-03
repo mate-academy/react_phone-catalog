@@ -45,8 +45,6 @@ export const ProductDetails: React.FC<Props> = ({
 
   const [selectedImg, setSelectedImg] = useState('');
 
-  const { addToCart } = useShoppingCart();
-
   useEffect(() => {
     setSelectedImg(images[0]);
   }, [images]);
@@ -54,6 +52,14 @@ export const ProductDetails: React.FC<Props> = ({
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [productDetails]);
+
+  const { addToCart, shoppingCartProducts, deleteFromCart } = useShoppingCart();
+
+  const addedToCart = shoppingCartProducts.find(item => item.id === product.id);
+
+  const handleCartProducts = () => {
+    return addedToCart ? deleteFromCart(product.itemId) : addToCart(product);
+  };
 
   const characteristics = getCharacteristics(productDetails);
 
@@ -153,8 +159,8 @@ export const ProductDetails: React.FC<Props> = ({
             </div>
 
             <div className={styles.product__btns}>
-              <div onClick={() => addToCart(product)}>
-                <Button product={product} text="Add to cart" />
+              <div onClick={handleCartProducts}>
+                <Button text={'Add to cart'} addedToCart={addedToCart} />
               </div>
               <FavouritesButton product={product} />
             </div>

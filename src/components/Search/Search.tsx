@@ -6,10 +6,11 @@ export const Search = () => {
   const [searchParams, setSearchParams] = useSearchParams();
 
   const query = searchParams.get('query') || '';
+  const page = searchParams.get('page') || 1;
 
   function handleQueryChange(event: React.ChangeEvent<HTMLInputElement>) {
     const params = getSearchWith(
-      { query: event.target.value || null },
+      { query: event.target.value || null, page: page === 1 ? null : 1 },
       searchParams,
     );
 

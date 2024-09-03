@@ -8,6 +8,7 @@ interface ShoppingCartContext {
   clearCart: () => void;
   productQuantities: { [key: string]: number };
   handleQuantity: (productID: string, type: string) => void;
+  totalQuantity: number;
 }
 
 export const CartContext = React.createContext<ShoppingCartContext>({
@@ -17,6 +18,7 @@ export const CartContext = React.createContext<ShoppingCartContext>({
   clearCart: () => {},
   productQuantities: {},
   handleQuantity: () => {},
+  totalQuantity: 0,
 });
 
 type Props = {
@@ -92,6 +94,12 @@ export const CartProvider: React.FC<Props> = ({ children }) => {
     setProductQuantities(updatedQuantities);
   };
 
+  let totalQuantity = 0;
+
+  for (const key in productQuantities) {
+    totalQuantity += productQuantities[key];
+  }
+
   const value = {
     shoppingCartProducts,
     addToCart,
@@ -99,6 +107,7 @@ export const CartProvider: React.FC<Props> = ({ children }) => {
     clearCart,
     productQuantities,
     handleQuantity,
+    totalQuantity,
   };
 
   return <CartContext.Provider value={value}>{children}</CartContext.Provider>;

@@ -27,8 +27,14 @@ export const ProductCard: React.FC<Props> = ({ product, productSlider }) => {
     image,
   } = product;
 
-  const { addToCart } = useShoppingCart();
+  const { addToCart, shoppingCartProducts, deleteFromCart } = useShoppingCart();
   const [searchParams] = useSearchParams();
+
+  const addedToCart = shoppingCartProducts.find(item => item.id === product.id);
+
+  const handleCartProducts = () => {
+    return addedToCart ? deleteFromCart(product.itemId) : addToCart(product);
+  };
 
   const techValueClassName = classNames(
     'text-small',
@@ -76,11 +82,8 @@ export const ProductCard: React.FC<Props> = ({ product, productSlider }) => {
           </div>
         </div>
         <div className={styles.productCard__btns}>
-          <div
-            onClick={() => addToCart(product)}
-            className={styles.productCard__btn}
-          >
-            <Button product={product} text="Add to cart" />
+          <div onClick={handleCartProducts} className={styles.productCard__btn}>
+            <Button text={'Add to cart'} addedToCart={addedToCart} />
           </div>
 
           <FavouritesButton product={product} />

@@ -14,13 +14,8 @@ export const CartPage = () => {
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
 
-  const { shoppingCartProducts, productQuantities } = useShoppingCart();
-
-  let totalQuantity = 0;
-
-  for (const key in productQuantities) {
-    totalQuantity += productQuantities[key];
-  }
+  const { shoppingCartProducts, productQuantities, totalQuantity } =
+    useShoppingCart();
 
   const sum = shoppingCartProducts.reduce(
     (acc, cur) => acc + cur.price * productQuantities[cur.itemId],
@@ -31,7 +26,7 @@ export const CartPage = () => {
     <div className={styles.cart}>
       <BackBtn />
       <h1>Cart</h1>
-      {!!shoppingCartProducts.length ? (
+      {totalQuantity ? (
         <div className={styles.cart__wrapper}>
           <CartItem />
 
