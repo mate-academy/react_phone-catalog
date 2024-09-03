@@ -33,7 +33,6 @@ export const Pagination: React.FC<PaginationProps> = ({ totalItems }) => {
     setSearchParams(params);
   };
 
-  // Скидання сторінки на першу при зміні кількості елементів на сторінці
   useEffect(() => {
     const params = new URLSearchParams(searchParams);
 

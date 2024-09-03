@@ -1,3 +1,5 @@
+import { useContext } from 'react';
+import { CartContext } from '../contexts/cartContext';
 import Breadcrumbs from '../components/Breadcrumbs/Breadcrumbs';
 import { Pagination } from '../components/Pagination';
 import { ProductContent } from '../components/ProductContent';
@@ -12,6 +14,14 @@ import { NotFoundProductPage } from './NotFoundProductPage';
 
 export const CatalogPage = () => {
   const { products } = useProducts();
+  const cartContext = useContext(CartContext);
+
+  // Перевірка, чи існує cartContext
+  if (!cartContext) {
+    throw new Error("CartContext is not provided");
+  }
+
+  const { cart, updateCart } = cartContext;
 
   const { pathname } = useLocation();
   const slashlessPathname = pathname.slice(1);
@@ -75,7 +85,11 @@ export const CatalogPage = () => {
       ) : (
         <>
           <ProductFilter />
-          <ProductContent items={currentItems} />
+          <ProductContent
+            items={currentItems}
+            cart={cart}
+            updateCart={updateCart}
+          />
         </>
       )}
 
