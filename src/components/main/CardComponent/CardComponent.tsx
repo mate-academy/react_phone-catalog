@@ -1,6 +1,5 @@
 import { Accessories, Product, ProductChars } from '../../../types';
 import styles from './card.module.scss';
-import column from '../../grid.module.scss';
 import classNames from 'classnames';
 
 interface CardComponentProps {
@@ -11,10 +10,7 @@ export const CardComponent = ({ devices }: CardComponentProps) => {
   return (
     <>
       {devices.map(device => (
-        <div
-          className={classNames(styles.card, column.grid_slider)}
-          key={device.id}
-        >
+        <div className={classNames(styles.card)} key={device.id}>
           <div className={styles.card_flex_column}>
             {'image' in device && (
               <img

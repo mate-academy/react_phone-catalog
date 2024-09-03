@@ -1,0 +1,33 @@
+@import '/src/components/colors.scss';
+
+.shop_card {
+  display: flex;
+  align-items: center;
+  margin-top: 25px;
+  
+  &_img {
+    object-fit: contain;
+    height: 368px;
+    margin-right: 16px;
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+
+  &_second_font {
+    color: $BUTTOM_TEXT_COLOR;
+    font-size: 14px;
+  }
+
+  &_phone {
+    background-color: $PHONE_CARD_COLOR;
+  }
+
+  &_tablet {
+    background-color: $TABLET_CARD_COLOR;
+  }
+
+  &_accessories {
+    background-color: $ACCESSORIES_CARD_COLOR;
+  }
+}

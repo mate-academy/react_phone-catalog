@@ -13,7 +13,7 @@
 
     font-size: 32px;
 
-    margin-top: 80px;
+    margin: 0;
   }
 }
 
@@ -70,7 +70,6 @@
 .product_slide {
 
   &_buttons {
-    margin-top: 80px;
     height: 32px;
     width: 32px;
     border: 1px solid $BORDER_COLOR;
@@ -85,6 +84,10 @@
       border-color: $CAROUSEL_BUTTOMS_COLOR;
       transition: 0.7s;
       color: black;
+    }
+
+    &:first-child {
+      margin-right: 16px;
     }
   }
 

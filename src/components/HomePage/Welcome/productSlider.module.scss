@@ -1,0 +1,26 @@
+.slider {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  margin: 80px 65px 25px;
+
+  &_card {
+    display: flex;
+    margin: 0 65px;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-evenly;
+    align-items: center;
+
+    overflow: hidden;
+  }
+
+  &_shop {
+    margin: 80px 65px 25px;
+  }
+
+  &_prev {
+    margin-bottom: 80px;
+  }
+}

@@ -1,0 +1,28 @@
+@import '../../colors.scss';
+
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  border-top: 1px solid $BORDER_COLOR;
+
+  &_buttoms {
+    margin-right: 105px;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: $BUTTOM_TEXT_COLOR;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+
+  &_top {
+    color: $BUTTOM_TEXT_COLOR;
+
+    &_button {
+      margin-left: 16px;
+    }
+  }
+}

@@ -3,6 +3,7 @@ import column from '../../grid.module.scss';
 import classNames from 'classnames';
 import { HomeCarousel } from './HomeCarousel';
 import { ProductsSlider } from './ProductsSlider';
+import { Footer } from '../Footer/Footer';
 
 export const HomeFace = () => {
   return (
@@ -15,8 +16,11 @@ export const HomeFace = () => {
         </h1>
 
         <HomeCarousel />
-        <ProductsSlider />
       </div>
+
+      <ProductsSlider />
+
+      <Footer />
     </div>
   );
 };

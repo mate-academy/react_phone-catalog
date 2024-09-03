@@ -3,12 +3,14 @@
 .card {
   border: 1px solid $BORDER_COLOR;
   padding: 27px 32px;
-  width: 207px;
-  height: 474px;
+  width: 272px;
+  height: 506px;
+  margin-right: 16px;
 
   &_images {
-    height: 200px;
-    width: 210px;
+    height: 250px;
+    width: 206px;
+    object-fit: contain;
   }
 
   &_flex_column {
