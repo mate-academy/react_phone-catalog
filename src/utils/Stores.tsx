@@ -13,14 +13,18 @@ interface Basket {
   addToBasket: (product: Product) => void;
   removeFromBasket: (itemId: string) => void;
   removeOneProductFromBasket: (itemId: string) => void;
+  clearBusket: () => void;
 }
 
+const FAVORITES_ARR = 'favoritesArr';
+const BASKET = 'basket';
+
 export const useFavorites = create<Favorites>(set => ({
-  favorites: JSON.parse(localStorage.getItem('favoriteArr') ?? '[]') || [],
+  favorites: JSON.parse(localStorage.getItem(FAVORITES_ARR) ?? '[]') || [],
   addFavorite: (favorite: Product) =>
     set(state => {
       localStorage.setItem(
-        'favoriteArr',
+        FAVORITES_ARR,
         JSON.stringify([...state.favorites, favorite]),
       );
 
@@ -31,7 +35,7 @@ export const useFavorites = create<Favorites>(set => ({
   removeFavorite: itemId =>
     set(state => {
       localStorage.setItem(
-        'favoriteArr',
+        FAVORITES_ARR,
         JSON.stringify([
           ...state.favorites.filter(elem => elem.itemId !== itemId),
         ]),
@@ -46,13 +50,10 @@ export const useFavorites = create<Favorites>(set => ({
 }));
 
 export const useBasket = create<Basket>(set => ({
-  basket: JSON.parse(localStorage.getItem('basket') ?? '[]') || [],
+  basket: JSON.parse(localStorage.getItem(BASKET) ?? '[]') || [],
   addToBasket: product =>
     set(state => {
-      localStorage.setItem(
-        'basket',
-        JSON.stringify([...state.basket, product]),
-      );
+      localStorage.setItem(BASKET, JSON.stringify([...state.basket, product]));
 
       return {
         basket: [...state.basket, product],
@@ -61,7 +62,7 @@ export const useBasket = create<Basket>(set => ({
   removeFromBasket: itemId =>
     set(state => {
       localStorage.setItem(
-        'basket',
+        BASKET,
         JSON.stringify([
           ...state.basket.filter(elem => elem.itemId !== itemId),
         ]),
@@ -83,7 +84,7 @@ export const useBasket = create<Basket>(set => ({
           ...state.basket.slice(indexToRemove + 1),
         ];
 
-        localStorage.setItem('basket', JSON.stringify(updatedBasket));
+        localStorage.setItem(BASKET, JSON.stringify(updatedBasket));
 
         return {
           basket: updatedBasket,
@@ -91,5 +92,11 @@ export const useBasket = create<Basket>(set => ({
       }
 
       return { basket: [...state.basket] };
+    }),
+  clearBusket: () =>
+    set(() => {
+      localStorage.setItem(BASKET, '[]');
+
+      return { basket: [] };
     }),
 }));

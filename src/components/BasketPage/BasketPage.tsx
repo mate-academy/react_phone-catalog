@@ -6,11 +6,30 @@ import './BasketPage.scss';
 import { useBasket } from '../../utils/Stores';
 import { Product } from '../../types/Propduct';
 import { Menu } from '../Menu/Menu';
+import { useRef, useState } from 'react';
 
 export const BasketPage = () => {
+  const checkoutRef = useRef<HTMLButtonElement>(
+    document.querySelector('.no-checkout__box'),
+  );
+  const [isFocused, setIsFocused] = useState(false);
+
   const navigate = useNavigate();
 
   const basketStore = useBasket(state => state.basket);
+  const clearBusket = useBasket(state => state.clearBusket);
+
+  const handleFocus = () => {
+    setIsFocused(true);
+
+    if (checkoutRef.current) {
+      checkoutRef.current.focus();
+    }
+  };
+
+  const handleBlur = () => {
+    setIsFocused(false); // Set the state to unfocused when the button loses focus
+  };
 
   const checkedArray = () => {
     const newBasketStore: Product[] = [];
@@ -61,7 +80,40 @@ export const BasketPage = () => {
                 {basketStore.length === 1 ? 'item' : 'items'}
               </p>
               <div className="line" />
-              <button className="basket-page__send-button">Checkout</button>
+              <button
+                className="basket-page__send-button"
+                onClick={handleFocus}
+              >
+                Checkout
+              </button>
+              <button
+                className="no-checkout__box"
+                ref={checkoutRef}
+                onBlur={handleBlur}
+                style={{ opacity: isFocused ? '1' : '0' }}
+              >
+                <p className="no-checkout__text">
+                  Checkout is not implemented yet. Do you want to clear the
+                  Cart?
+                </p>
+                <div className="no-checkout__buttons-box">
+                  <button
+                    className="no-checkout__button no-checkout__button--cancel"
+                    onClick={handleBlur}
+                  >
+                    Cancel
+                  </button>
+                  <button
+                    className="no-checkout__button no-checkout__button--clear"
+                    onClick={() => {
+                      clearBusket();
+                      setIsFocused(false);
+                    }}
+                  >
+                    Clear
+                  </button>
+                </div>
+              </button>
             </div>
           </>
         ) : (
