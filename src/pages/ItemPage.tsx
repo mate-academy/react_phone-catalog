@@ -115,7 +115,7 @@ export const ItemPage = () => {
 
   const handleAddToCart = () => {
     if (selectedProduct) {
-      updateCart(selectedProduct, CartActionType.ADD);
+      updateCart(selectedProduct, CartActionType.TOGGLE);
     }
   };
 

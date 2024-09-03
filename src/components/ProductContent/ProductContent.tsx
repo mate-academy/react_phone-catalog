@@ -25,7 +25,7 @@ export const ProductContent: React.FC<ProductContentProps> = ({ items }) => {
                 isInCart={isItemInArray(cart, item.id)}
                 isFavorite={isItemInArray(favorites, item.id)}
                 toggleFavorite={() => toggleFavorite(item)}
-                updateCart={() => updateCart(item, CartActionType.ADD)}
+                updateCart={() => updateCart(item, CartActionType.TOGGLE)}
               />
             </li>
           ))}

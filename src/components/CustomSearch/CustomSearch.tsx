@@ -37,6 +37,10 @@ export const CustomSearch: React.FC<CustomSearchProps> = ({
   const handleAppliedSearch = (value: string) => {
     const params = new URLSearchParams(searchParams);
 
+    if (params.get('page') !== '1') {
+      params.delete('page');
+    }
+
     if (value === '') {
       params.delete('query');
     } else {

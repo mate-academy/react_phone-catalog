@@ -29,6 +29,10 @@
     color: $green;
     border: 1px solid $elements-gray;
     flex-grow: 1;
+
+    &:hover {
+      box-shadow: 0 3px 13px 0 $elements-gray;
+    }
   }
 
   // Favorite button styles

@@ -2,8 +2,8 @@ import ReactPaginate from 'react-paginate';
 import classNames from 'classnames';
 import styles from './Pagination.module.scss';
 import { Icon } from '../ui/Icon';
-import { useSearchParams } from 'react-router-dom';
-// import { useState } from 'react';
+import { useLocation, useSearchParams } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 
 type PaginationProps = {
   totalItems: number;
@@ -13,7 +13,8 @@ export const Pagination: React.FC<PaginationProps> = ({ totalItems }) => {
   const [searchParams, setSearchParams] = useSearchParams();
 
   const page = parseInt(searchParams.get('page') || '1');
-  // const [currentPage, setCurrentPage] = useState<number>(1);
+  const { pathname } = useLocation();
+  const [category, setCategory] = useState(pathname);
 
   const itemsPerPage = parseInt(
     searchParams.get('perPage') || totalItems.toString(),
@@ -37,6 +38,15 @@ export const Pagination: React.FC<PaginationProps> = ({ totalItems }) => {
 
     setSearchParams(params);
   };
+
+  useEffect(() => {
+    if (pathname !== category) {
+      handlePageChange({ selected: 0 });
+
+      setCategory(pathname);
+    }
+    // eslint-disable-next-line
+  }, [pathname]);
 
   // pagination no need
   if (+itemsPerPage === totalItems) {

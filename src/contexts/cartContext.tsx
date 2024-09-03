@@ -29,9 +29,11 @@ export const CartProvider: React.FC<{ children: ReactNode }> = ({
       let updatedCart: Product[] = [];
 
       if (item) {
+        const isInCart = isItemInArray(cart, item.id);
+
         switch (action) {
           case CartActionType.ADD:
-            if (!isItemInArray(cart, item.id)) {
+            if (!isInCart) {
               updatedCart = [...cart, item];
             } else {
               updatedCart = cart;
@@ -48,6 +50,11 @@ export const CartProvider: React.FC<{ children: ReactNode }> = ({
             updatedCart = cart.map(itemCart =>
               itemCart.id === item.id ? { ...itemCart, ...item } : itemCart,
             );
+            break;
+          case CartActionType.TOGGLE:
+            updatedCart = isInCart
+              ? cart.filter(cartItem => cartItem.id !== item.id)
+              : [...cart, item];
             break;
           default:
             updatedCart = [...cart];

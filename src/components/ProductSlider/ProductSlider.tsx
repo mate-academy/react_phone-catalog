@@ -104,7 +104,7 @@ export const ProductSlider: React.FC<ProductSliderProps> = ({
                 isInCart={isItemInArray(cart, item.id)}
                 isFavorite={isItemInArray(favorites, item.id)}
                 toggleFavorite={() => toggleFavorite(item)}
-                updateCart={() => updateCart(item, CartActionType.ADD)}
+                updateCart={() => updateCart(item, CartActionType.TOGGLE)}
               />
             </div>
           ))}

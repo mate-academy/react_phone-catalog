@@ -3,4 +3,5 @@ export enum CartActionType {
   DELETE = 'delete',
   UPDATE = 'update',
   DELETE_ALL = 'deleteAll',
+  TOGGLE = 'toggle',
 }
