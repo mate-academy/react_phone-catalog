@@ -14,7 +14,7 @@ export const CardComponent = ({ devices }: CardComponentProps) => {
           <div className={styles.card_flex_column}>
             {'image' in device && (
               <img
-                src={`.${device.image}`}
+                src={`./${device.image}`}
                 alt="img"
                 className={styles.card_images}
               />
