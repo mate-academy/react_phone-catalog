@@ -14,7 +14,6 @@ export const App: React.FC = () => {
   console.log('PAGE CLICKED',category)
   const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
-/*     alert('This website is under construction. SOME FEATURES AND STYLES HAVE NOT BEEN IMPLEMENTED!') */
     setIsLoading(false);
   }, []);
 

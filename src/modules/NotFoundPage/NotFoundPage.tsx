@@ -8,14 +8,14 @@ import { Link } from 'react-router-dom';
 import { useAppContext } from '../../context/AppContext';
 
 export const NotFoundPage: React.FC = () => {
-  const category = useLocation().pathname.slice(1)
-  console.log('PAGE CLICKED',category)
-  const {previousCurrentPage} = useAppContext();
+  const category = useLocation().pathname.slice(1);
+  console.log('PAGE CLICKED', category);
+  const { previousCurrentPage } = useAppContext();
 
   return (
     <div>
       <Header />
-      <PreviousPage category={category}/>
+      <PreviousPage category={category} />
 
       <div className={styles.cartPage}>
         <div className={styles.topContainer}>
@@ -26,7 +26,6 @@ export const NotFoundPage: React.FC = () => {
                 alt="home"
                 className={styles.chevronIcon}
               />
-
               <div className={styles.goBackText}>
                 <Link to={`/${previousCurrentPage[0]}`}>
                   <div className={styles.label}>Back</div>
@@ -39,7 +38,11 @@ export const NotFoundPage: React.FC = () => {
         </div>
 
         <div className={styles.emptyContainer}>
-          <img src="img/page-not-found.png" className={styles.image}/>
+          <img
+            src="img/page-not-found.png"
+            className={styles.image}
+            alt="Page not found"
+          />
         </div>
       </div>
     </div>

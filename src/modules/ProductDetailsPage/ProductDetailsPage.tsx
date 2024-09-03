@@ -1,4 +1,4 @@
-import React, { useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import styles from './ProductDetailsPage.module.scss';
 import chevronIcon from '../../img/icons/ChevronIcon.svg';
 import { Header } from '../../components/Header';
@@ -14,40 +14,43 @@ import { Loader } from '../../components/Loader';
 import { Breadcrumbs } from '../../components/Breadcrumbs';
 import { LimitedProduct } from '../../types/Product';
 
-
 export const ProductDetailsPage: React.FC = () => {
   const category = useLocation().pathname.slice(1);
-  console.log('CATEGORY DLA PREVIOUS PAGE', category)
-  const { clickedProduct, previousCurrentPage, setClickedProduct, productDetails, setProductDetails, fetchedCategory, setFetchedCategory, products, setProducts} = useAppContext();
+  console.log('CATEGORY DLA PREVIOUS PAGE', category);
+
+  const {
+    clickedProduct,
+    previousCurrentPage,
+    setClickedProduct,
+    productDetails,
+    setProductDetails,
+    fetchedCategory,
+    setFetchedCategory,
+    products,
+    setProducts
+  } = useAppContext();
+
   const [isLoading, setIsLoading] = useState<true | false>(true);
 
   const query = new URLSearchParams(useLocation().search);
   const productName = query.get('name');
 
-useEffect(()=> {
+  useEffect(() => {
+    if (products.length === 0) {
+      const fetchProductData = async () => {
+        try {
+          const response = await fetch(`https://meljaszuk.github.io/react_phone-catalog/api/products.json`);
+          const data = await response.json();
+          setProducts(data);
+          console.log('FETCHED PRODUCTS', data);
+        } catch (error) {
+          console.error('Error fetching product data:', error);
+        }
+      };
 
-  if (products.length === 0) {
-    const fetchProductData = async () => {
-      try {
-        const response = await fetch(`https://meljaszuk.github.io/react_phone-catalog/api/products.json`);
-        const data = await response.json();
-        setProducts(data);
-        const copiedData = [...data];
-        console.log('FETCHED PRODUCTS', data)
-
-
-        setProducts(copiedData);
-
-
-      } catch (error) {
-        console.error('Error fetching product data:', error);
-      }
-    };
-
-    fetchProductData();
-  }
-
-})
+      fetchProductData();
+    }
+  }, [products, setProducts]);
 
   useEffect(() => {
     const savedProduct = localStorage.getItem('clickedProduct');
@@ -62,8 +65,8 @@ useEffect(()=> {
       const fetchProductData = async () => {
         try {
           if (productName !== null) {
-            const decodedProductName = decodeURIComponent(productName)
-            console.log('ecodedProductName',decodedProductName)
+            const decodedProductName = decodeURIComponent(productName);
+            console.log('decodedProductName', decodedProductName);
           }
           const response = await fetch(`https://meljaszuk.github.io/react_phone-catalog/api/${clickedProduct.category}.json`);
           const data = await response.json();
@@ -75,82 +78,37 @@ useEffect(()=> {
       };
       fetchProductData();
     }
-  }, [clickedProduct]);
-
-
+  }, [clickedProduct, productName, setFetchedCategory]);
 
   useEffect(() => {
-    console.log(clickedProduct) // tu jest problem na CLIKED PRODUCTS = undefined
+    console.log(clickedProduct); // tu jest problem na CLIKED PRODUCTS = undefined
     if (fetchedCategory !== undefined && clickedProduct !== undefined) {
-      const callback = (a: {id: string}) => a.id === clickedProduct.itemId;
+      const callback = (a: { id: string }) => a.id === clickedProduct.itemId;
       const details = fetchedCategory.find(callback);
       setProductDetails(details);
       console.log('fetched details for product', details);
-
     }
-  }, [fetchedCategory, clickedProduct]);
+  }, [fetchedCategory, clickedProduct, setProductDetails]);
 
-  const [dynamicColor, setDynamicColor] = useState<string>('')
-  const [dynamicCapacity, setDynamicCapacity] = useState<string>('')
- /*  const [baseURL, setBaseURL] = useState<string>(''); */
+  const [dynamicColor, setDynamicColor] = useState<string>('');
+  const [dynamicCapacity, setDynamicCapacity] = useState<string>('');
 
-
-/*   console.log('BASE URL',baseURL) */
-
-/*   useEffect (() => {
-    if (productDetails !== undefined) {
-      let baseURLx=''
-      if (productDetails !== undefined) {
-        const currentName = productDetails.id.toLowerCase();
-        const currentCapacity = productDetails.capacity.toLowerCase()
-        const cutIndex = currentName.indexOf(currentCapacity)
-       baseURLx = currentName.slice(0, cutIndex).toLowerCase();
-
-      }
-
-      setDynamicCapacity(productDetails.capacity)
-      setDynamicColor(productDetails.color)
-      setBaseURL(baseURLx);
-    }
-
-  },[dynamicCapacity,dynamicColor]) */
-
-/*   console.log('new item diepslayed:::::',baseURL+dynamicCapacity.toLowerCase()+'-'+dynamicColor)
-  console.log(dynamicCapacity==='');
-  console.log(dynamicColor===''); */
-
-/*   useEffect(() => {
-    if(products !== undefined && productDetails !== undefined) {
-      const newClikedProduct = baseURL + (dynamicCapacity === '' ? productDetails.capacity : dynamicCapacity) + '-' + (dynamicColor === '' ? productDetails.color : dynamicColor)
-      console.log('NEW CLIKED PRODUCt::::::::',newClikedProduct)
-    }
-  },[]) */
-  const location = useLocation()
+  const location = useLocation();
 
   useEffect(() => {
-    let currentUrl = `${location.pathname}`
+    let currentUrl = `${location.pathname}`;
+    console.log('XXXXXXXXXXXXXXXX', clickedProduct, currentUrl);
 
+    if (clickedProduct === undefined) {
+      let currentUrl = `${location.pathname}`;
+      console.log(currentUrl);
 
-    console.log('XXXXXXXXXXXXXXXX',clickedProduct, currentUrl)
+      const newClickedProductId = currentUrl.slice(9, currentUrl.length);
+      const newClickedProduct = products.find((item: LimitedProduct) => item.itemId.toLowerCase() === newClickedProductId);
 
-
-
-    if(clickedProduct === undefined) {
-      let currentUrl = `${location.pathname}`
-      console.log(currentUrl)
-
-      const newClickedProductId = currentUrl.slice(9,currentUrl.length)
-
-      const newClickedProduct = products.find((item: LimitedProduct) => item.itemId.toLowerCase() === newClickedProductId)
-
-    /*     setClickedProduct(newClickedProduct) */
-    console.log(newClickedProductId, newClickedProduct, products)
+      console.log(newClickedProductId, newClickedProduct, products);
     }
-
-
-
-
-  },[location])
+  }, [location, clickedProduct, products]);
 
   return (
     <div className={styles.productDetailsPageWrapper}>
@@ -160,10 +118,9 @@ useEffect(()=> {
         {isLoading ? (
           <Loader />
         ) : clickedProduct === undefined ? (
-
           <div className={styles.noProductContainer}>
             <div className={styles.noProduct}>No products to display</div>
-            <img src="img/product-not-found.png" className={styles.imageNotFound}/>
+            <img src="img/product-not-found.png" className={styles.imageNotFound} />
           </div>
         ) : (
           <div className={styles.container}>
