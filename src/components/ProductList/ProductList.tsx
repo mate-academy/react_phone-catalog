@@ -35,10 +35,8 @@ export const ProductList: React.FC<ProductListProps> = ({ category, title }) => 
         const response = await fetch('https://meljaszuk.github.io/react_phone-catalog/api/products.json');
         const data: LimitedProduct[] = await response.json();
 
-        // Filter products by category
         const filteredData = data.filter((item) => item.category === category);
 
-        // Sort products based on sortMethod
         switch (sortMethod) {
           case 'alpha':
             filteredData.sort((a, b) => a.name.localeCompare(b.name));
@@ -52,7 +50,7 @@ export const ProductList: React.FC<ProductListProps> = ({ category, title }) => 
         }
 
         setProducts(filteredData);
-        setDisplayedPage(1); // Reset to first page after filtering/sorting
+        setDisplayedPage(1);
       } catch (error) {
         console.error('Error fetching product data:', error);
       } finally {
@@ -75,7 +73,6 @@ export const ProductList: React.FC<ProductListProps> = ({ category, title }) => 
     return products.slice(firstDisplayedIndexOnPage, firstDisplayedIndexOnPage + numberOfProductsPerPage);
   }, [products, firstDisplayedIndexOnPage, numberOfProductsPerPage]);
 
-  // Render loading state
   if (isLoading) {
     return (
       <div>

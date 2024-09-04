@@ -3,87 +3,82 @@ import styles from './ActionButtons.module.scss';
 import favoritesIcon from '../../img/icons/fav.svg';
 import favoritesIconRed from '../../img/icons/fav-red.svg';
 import { useAppContext } from '../../context/AppContext';
-import { LimitedProduct} from '../../types/Product';
+import { LimitedProduct } from '../../types/Product';
 import { useLocation } from 'react-router-dom';
 
 type ButtonProps = {
   product: LimitedProduct | undefined;
 };
 
-export const ActionButtons: React.FC<ButtonProps> = ({product}) => {
-
+export const ActionButtons: React.FC<ButtonProps> = ({ product }) => {
   const location = useLocation();
-  const { favoriteProducts, setFavoriteProducts, productsInCart, setProductsInCart, productsInCartCount, setProductsInCartCount } = useAppContext();
+  const {
+    favoriteProducts,
+    setFavoriteProducts,
+    productsInCart,
+    setProductsInCart,
+    productsInCartCount,
+    setProductsInCartCount,
+  } = useAppContext();
   const [isProductInFavs, setIsProductInFavs] = useState<boolean | undefined>(undefined);
   const [isProductInCart, setIsProductInCart] = useState<boolean | undefined>(undefined);
 
-
   useEffect(() => {
-    const favs = favoriteProducts.find((item: LimitedProduct) => item.id === product?.id)
-    favs === undefined ? setIsProductInFavs(false) : setIsProductInFavs(true);
-  },[location, favoriteProducts])
+    const favs = favoriteProducts.find((item: LimitedProduct) => item.id === product?.id);
+    setIsProductInFavs(favs !== undefined);
+  }, [location, favoriteProducts, product?.id]);
 
   useEffect(() => {
     const cart = productsInCart.find((item: LimitedProduct) => item.id === product?.id);
-    cart === undefined ? setIsProductInCart(false) : setIsProductInCart(true);
-  },[location, productsInCart])
-
+    setIsProductInCart(cart !== undefined);
+  }, [location, productsInCart, product?.id]);
 
   const handleFavorites = () => {
     // @ts-ignore
     setFavoriteProducts((favoriteProducts: LimitedProduct[]) => {
-
       const newFavoriteProducts = [...favoriteProducts];
-      let foundIndex = -1;
+      const foundIndex = product ? newFavoriteProducts.findIndex(p => p.id === product.id) : -1;
 
-      if(product !== undefined) {
-        foundIndex = newFavoriteProducts.findIndex(p => p.id === product.id);
-      }
-
-
-      if (foundIndex === -1 && product !== undefined) {
+      if (foundIndex === -1 && product) {
         newFavoriteProducts.push(product);
-        setIsProductInFavs(true)
-      } else {
+        setIsProductInFavs(true);
+      } else if (foundIndex > -1) {
         newFavoriteProducts.splice(foundIndex, 1);
-        setIsProductInFavs(false)
+        setIsProductInFavs(false);
       }
 
-      console.log('updated favorites', newFavoriteProducts);
       return newFavoriteProducts;
     });
   };
 
   const handleProductsInCart = () => {
-    let newProductsInCart = [...productsInCart];
-    let newProductsInCartCount = [...productsInCartCount];
+    const newProductsInCart = [...productsInCart];
+    const newProductsInCartCount = [...productsInCartCount];
 
-    let foundIndex = -1;
-    if(product !== undefined) {
-      foundIndex = newProductsInCart.findIndex(p => p.id === product.id);
-    }
+    const foundIndex = product ? newProductsInCart.findIndex(p => p.id === product.id) : -1;
 
-    if (foundIndex === -1 && product !== undefined) {
-      newProductsInCart.push(product)
+    if (foundIndex === -1 && product) {
+      newProductsInCart.push(product);
       newProductsInCartCount.push(1);
-      setIsProductInCart(true)
-    }
-
-    if (foundIndex > -1) {
-      newProductsInCart.splice(foundIndex,1)
-      newProductsInCartCount.splice(foundIndex,1)
-      setIsProductInCart(false)
+      setIsProductInCart(true);
+    } else if (foundIndex > -1) {
+      newProductsInCart.splice(foundIndex, 1);
+      newProductsInCartCount.splice(foundIndex, 1);
+      setIsProductInCart(false);
     }
 
     setProductsInCart(newProductsInCart);
     setProductsInCartCount(newProductsInCartCount);
-  }
+  };
 
   return (
     <div className={styles.buttons}>
       <button className={styles.buttonCard} onClick={handleProductsInCart}>
-        {isProductInCart && <p className={styles.buttonText}>Remove</p>}
-        {!isProductInCart && <p className={styles.buttonText}>Add to cart</p>}
+        {isProductInCart ? (
+          <p className={styles.buttonText}>Remove</p>
+        ) : (
+          <p className={styles.buttonText}>Add to cart</p>
+        )}
       </button>
 
       <button className={styles.buttonFavorite} onClick={handleFavorites}>

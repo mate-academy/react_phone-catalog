@@ -8,6 +8,7 @@ import chevronIcon from '../../img/icons/ChevronIcon.svg';
 import { useAppContext } from '../../context/AppContext';
 import { CartItem } from './CartItem/CartItem';
 import { Link } from 'react-router-dom';
+import { Footer } from '../../components/Footer';
 
 export const CartPage: React.FC = () => {
   const category = useLocation().pathname.slice(1);
@@ -110,6 +111,7 @@ export const CartPage: React.FC = () => {
           </div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 };

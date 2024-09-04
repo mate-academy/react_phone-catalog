@@ -28,7 +28,7 @@ export const ProductSlider: React.FC<ProductSliderProps> = ({ title, count }) =>
 
   const displayedItems = useMemo(() => {
     return products.slice(-count);
-  }, [products]); // SIMPLIFICATION - MUST BE BASED ON SORTING - WILL BE UPDATED LATER
+  }, [products]);
 
   const [position, setPosition] = useState<number>(0);
   const [positionCount, setPositionCount] = useState<number>(0);

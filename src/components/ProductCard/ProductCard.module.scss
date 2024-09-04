@@ -20,10 +20,10 @@
   @include on-desktop {
     width: 272px;
   }
-}
 
-.ProductCard:hover {
-  border: 1px solid var(--color-primary);
+  &:hover {
+    border: 1px solid var(--color-primary);
+  }
 }
 
 .imageContainer {
@@ -65,18 +65,14 @@
 
 .title {
   text-decoration: none;
-
   @extend %body-text;
-
   color: var(--color-primary);
   padding-top: 16px;
 }
 
-
 .price {
   display: flex;
   gap: 8px;
-
   @extend %h3-tablet;
 }
 
@@ -112,6 +108,5 @@
 
 .descriptionText {
   @extend %small-text;
-
   color: var(--color-primary);
 }

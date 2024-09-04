@@ -12,7 +12,7 @@ import { ProductDetailsPage } from './modules/ProductDetailsPage';
 
 export const Root = () => {
   useEffect(() => {
-    alert('You’re welcome to explore the site, but please note that some features and styles are still under development and may not be fully implemented yet. Thank you for your understanding!')
+    alert('You’re welcome to explore the site, but please note that some styles are still under development and may not be fully implemented yet. Thank you for your understanding!')
   }, []);
 
   return (

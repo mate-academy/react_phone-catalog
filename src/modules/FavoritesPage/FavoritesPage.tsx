@@ -8,6 +8,7 @@ import chevronIcon from '../../img/icons/ChevronIcon.svg';
 import { useAppContext } from '../../context/AppContext';
 import { Link } from 'react-router-dom';
 import { ProductCard } from '../../components/ProductCard';
+import { Footer } from '../../components/Footer';
 
 export const FavoritesPage: React.FC = () => {
   const category = useLocation().pathname.slice(1);
@@ -68,6 +69,7 @@ export const FavoritesPage: React.FC = () => {
           </div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 };

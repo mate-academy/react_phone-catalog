@@ -9,7 +9,6 @@ import { useAppContext } from '../../context/AppContext';
 
 type ProductCardProps = {
   product: LimitedProduct;
-  // handleSelectedProduct: (newState: string) => "";
 };
 
 export const ProductCard: React.FC<ProductCardProps> = ({ product}) => {
@@ -19,37 +18,13 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product}) => {
   }
 
   const { image, name, price, fullPrice, screen, capacity, ram } = product;
-  const { setClickedProduct/* , favoriteProducts, productsInCart, setIsClickedProdyctInFavs, setIsClickedProdyctInCart  */} = useAppContext();
-  /* const [isProductInFavs, setIsProductInFavs] = useState<boolean | undefined>(undefined);
-  const [isProductInCart, setIsProductInCart] = useState<boolean | undefined>(undefined); */
-/*   const [updateOnRender, setUpdateOnRender] = useState<boolean>(false) */
-
-/*   useEffect(() => {
-    setUpdateOnRender(true)
-  }, [])
-
-  useEffect(() => {
-    const favs = favoriteProducts.find((item: LimitedProduct) => item === product )
-    favs === undefined ? setIsProductInFavs(false) : setIsProductInFavs(true);
-  },[favoriteProducts, updateOnRender])
-
-  useEffect(() => {
-    const cart = productsInCart.find((item: LimitedProduct) => item === product )
-    cart === undefined ? setIsProductInCart(false) : setIsProductInCart(true);
-  },[productsInCart, updateOnRender]) */
+  const { setClickedProduct } = useAppContext();
 
   const handleClickedProduct = () => {
 
     if(product !== undefined) {
       localStorage.setItem('clickedProduct', JSON.stringify(product));
       setClickedProduct(product)
-      console.log('CLICKED PRODUCTS is set to', product)
-/*       if(isProductInCart !== undefined) {
-        setIsClickedProdyctInCart(isProductInCart);
-      }
-      if(isProductInFavs !== undefined) {
-        setIsClickedProdyctInFavs(isProductInFavs);
-      } */
     }
   }
 
@@ -96,7 +71,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product}) => {
           </div>
         </div>
 
-        <ActionButtons product={product} /* isProductInFavs={isProductInFavs} isProductInCart={isProductInCart} *//>
+        <ActionButtons product={product} />
       </div>
     </div>
   );

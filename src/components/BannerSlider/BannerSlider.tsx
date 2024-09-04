@@ -8,7 +8,9 @@ export const BannerSlider: React.FC = () => {
     './img/banner-2.png',
     './img/banner-3.png',
   ];
+
   const [displayedImageIndex, setDisplayedImageIndex] = useState(0);
+
   const incrementDisplayedImageIndex = () => {
     setDisplayedImageIndex(prevIndex =>
       prevIndex === sliderImages.length - 1 ? 0 : prevIndex + 1
@@ -22,19 +24,23 @@ export const BannerSlider: React.FC = () => {
   };
 
   useEffect(() => {
-    const intervalId = setInterval(() => {
-      incrementDisplayedImageIndex();
-    }, 3000);
-    // Czyszczenie interwału, gdy komponent zostanie odmontowany
+    const intervalId = setInterval(incrementDisplayedImageIndex, 3000);
     return () => clearInterval(intervalId);
-  }, []); // Pusta tablica zależności, interwał ustawia się tylko raz
+  }, []);
 
   return (
     <div className={styles.bannerSlider}>
       <div className={styles.topWrapper}>
         <div className={styles.buttons}>
-          <button className={styles.arrowButton} onClick={decrementDisplayedImageIndex}>
-            <img src={ChevronIcon} alt="scroll left" className={styles.iconPrev} />
+          <button
+            className={styles.arrowButton}
+            onClick={decrementDisplayedImageIndex}
+          >
+            <img
+              src={ChevronIcon}
+              alt="scroll left"
+              className={styles.iconPrev}
+            />
           </button>
 
           <div className={styles.container}>
@@ -43,13 +49,25 @@ export const BannerSlider: React.FC = () => {
               style={{ transform: `translateX(-${displayedImageIndex * 100}%)` }}
             >
               {sliderImages.map((image, index) => (
-                <img key={index} src={image} className={styles.slide} alt={`Slide ${index + 1}`} />
+                <img
+                  key={index}
+                  src={image}
+                  className={styles.slide}
+                  alt={`Slide ${index + 1}`}
+                />
               ))}
             </div>
           </div>
 
-          <button className={styles.arrowButton} onClick={incrementDisplayedImageIndex}>
-            <img src={ChevronIcon} alt="scroll right" className={styles.iconNext} />
+          <button
+            className={styles.arrowButton}
+            onClick={incrementDisplayedImageIndex}
+          >
+            <img
+              src={ChevronIcon}
+              alt="scroll right"
+              className={styles.iconNext}
+            />
           </button>
         </div>
       </div>

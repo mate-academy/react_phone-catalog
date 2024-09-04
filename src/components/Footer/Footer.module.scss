@@ -21,7 +21,6 @@
 
   @include on-tablet {
     @include section-grid;
-
     align-items: center;
     justify-content: center;
   }
@@ -54,7 +53,6 @@
 
   @include on-tablet {
     grid-column: span 4;
-    width: 100%;
     flex-direction: row;
     justify-content: space-between;
   }
@@ -66,7 +64,6 @@
 
 .item {
   @extend %uppercase-text;
-
   color: var(--color-secondary);
   cursor: pointer;
 
@@ -92,7 +89,6 @@
 
 .backToTopText {
   @extend %small-text;
-
   color: var(--color-secondary);
   text-decoration: none;
   margin-right: 16px;
@@ -116,5 +112,5 @@
 }
 
 .backToTopIcon {
-  transform : rotate(90deg)
+  transform: rotate(90deg);
 }

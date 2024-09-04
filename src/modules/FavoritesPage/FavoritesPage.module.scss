@@ -6,17 +6,11 @@
 
 .topContainer {
   grid-column: 1 / -1;
-  display: flex;
-  width: 100%;
-  flex-direction: column;
-  justify-content: center;
 }
 
 .title {
   margin-top: 40px;
-
   @extend %h1-mobile;
-
   @include on-tablet {
     @include h1-tablet;
   }
@@ -24,30 +18,9 @@
 
 .count {
   @extend %body-text;
-
   color: var(--color-secondary);
 }
 
-.container {
-  display: flex;
-  gap: 15px;
-}
-
-.product {
-  grid-column: span 4;
-
-  @include on-tablet {
-    grid-column: span 6;
-  }
-
-  @include middle-screen {
-    grid-column: span 4;
-  }
-
-  @include on-desktop {
-    grid-column: span 6;
-  }
-}
 
 .label {
   display: flex;
@@ -55,11 +28,10 @@
   padding-top: 3px;
   height: 15px;
   text-decoration: none;
-
   @extend %small-text;
-
   color: var(--color-secondary);
 }
+
 .goBackButton {
   display: flex;
   align-items: center;
@@ -74,5 +46,15 @@
 
 .chevronIcon {
   padding-top: 5px;
+}
+
+.emptyContainer {
+  grid-column: 1 / -1;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4 equal columns */
+  gap: 15px;
 }
 
