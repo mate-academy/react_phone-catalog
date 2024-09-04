@@ -25,7 +25,7 @@ export const AccessoriesProvider: React.FC<{ children: React.ReactNode }> = ({
 
   return (
     <AccessoriesContext.Provider value={accessories}>
-      {loading && <div>Loading...</div>}
+      {loading}
       {error && <div>{error}</div>}
       {children}
     </AccessoriesContext.Provider>

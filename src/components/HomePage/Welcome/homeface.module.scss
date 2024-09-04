@@ -1,5 +1,12 @@
 @import '/src/components/colors.scss';
 
+.home_page {
+  @media screen and (min-width: 1200px) {
+    width: 1270px;
+    margin: 0 auto;
+  }
+}
+
 .home_font {
   font-family: 'Mont-Bold';
   color: $HOVER_BUTTON_COLOR;
@@ -75,6 +82,7 @@
     border: 1px solid $BORDER_COLOR;
     background-color: transparent;
     cursor: pointer;
+    padding: auto;
 
     color: $BORDER_COLOR;
     font-size: 18px;

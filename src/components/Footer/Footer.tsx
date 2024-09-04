@@ -1,6 +1,6 @@
-import styles from '../Header/header.module.scss';
+import styles from '../HomePage/Header/header.module.scss';
 import flex from './footer.module.scss';
-import buttom from '../Welcome/homeface.module.scss';
+import buttom from '../HomePage/Welcome/homeface.module.scss';
 import classNames from 'classnames';
 
 export const Footer = () => {
@@ -33,7 +33,7 @@ export const Footer = () => {
               flex.footer_top_button,
             )}
           >
-            &uarr;
+            <img src="./img/Vector_up.png" alt="vector" />
           </button>
         </div>
       </div>

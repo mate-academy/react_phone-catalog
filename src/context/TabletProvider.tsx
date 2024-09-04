@@ -25,7 +25,7 @@ export const TabletsProvider: React.FC<{ children: React.ReactNode }> = ({
 
   return (
     <TabletsContext.Provider value={tablets}>
-      {loading && <div>Loading...</div>}
+      {loading}
       {error && <div>{error}</div>}
       {children}
     </TabletsContext.Provider>

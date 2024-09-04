@@ -25,7 +25,7 @@ export const PhonesProvider: React.FC<{ children: React.ReactNode }> = ({
 
   return (
     <PhonesContext.Provider value={phones}>
-      {loading && <div>Loading...</div>}
+      {loading}
       {error && <div>{error}</div>}
       {children}
     </PhonesContext.Provider>

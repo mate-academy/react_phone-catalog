@@ -6,7 +6,7 @@ export const Header = () => {
     <div className={styles.header}>
       <div className={styles.header_buttoms_container}>
         <a href="">
-          <img src="/img/logo.png" alt="logo" className={styles.header_logo} />
+          <img src="./img/logo.png" alt="logo" className={styles.header_logo} />
         </a>
 
         <div className={styles.header_buttoms}>home</div>
