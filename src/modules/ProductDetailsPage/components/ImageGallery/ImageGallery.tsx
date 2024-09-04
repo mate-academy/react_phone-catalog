@@ -50,7 +50,7 @@ export const ImageGallery: React.FC = () => {
         <img
           src="https://placehold.co/380x380.png"
           className={styles.selectedThumbnail}
-          alt="Mobile placeholder" // Dodaj atrybut alt dla lepszej dostępności
+          alt="Mobile placeholder"
         />
       </div>
     </div>
