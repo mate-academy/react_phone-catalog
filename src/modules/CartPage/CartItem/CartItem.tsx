@@ -1,50 +1,49 @@
-import React/* , { useEffect } */ from 'react';
+import React from 'react';
 import styles from './CartItem.module.scss';
 import plusIcon from '../../../img/icons/PlusIcon.svg';
 import minusIcon from '../../../img/icons/MinusIcon.svg';
 import crossIcon from '../../../img/icons/CrossIcon.svg';
 import { useAppContext } from '../../../context/AppContext';
-/* import { Link } from 'react-router-dom'; */
 import { LimitedProduct } from '../../../types/Product';
+import { Link } from 'react-router-dom';
 
 type CartItemProps = {
   product: LimitedProduct;
-}
+};
 
-export const CartItem: React.FC<CartItemProps> = ({product}) => {
-  const {productsInCart,setProductsInCart,productsInCartCount, setProductsInCartCount, handleNotReady} = useAppContext();
+export const CartItem: React.FC<CartItemProps> = ({ product }) => {
+  const { productsInCart, setProductsInCart, productsInCartCount, setProductsInCartCount } = useAppContext();
 
   const foundIndex = productsInCart.findIndex(p => p.id === product.id);
 
   const removeFromCart = () => {
     let newProductsInCart = [...productsInCart];
     let newProductsInCartCount = [...productsInCartCount];
-    newProductsInCart.splice(foundIndex,1);
-    newProductsInCartCount.splice(foundIndex,1);
+    newProductsInCart.splice(foundIndex, 1);
+    newProductsInCartCount.splice(foundIndex, 1);
     console.log('removed from cart');
     setProductsInCart(newProductsInCart);
     setProductsInCartCount(newProductsInCartCount);
-    console.log('item removed',productsInCart,productsInCartCount)
-  }
+    console.log('item removed', productsInCart, productsInCartCount);
+  };
 
   const handleCountIncrease = () => {
     let newProductsInCartCount = [...productsInCartCount];
     newProductsInCartCount[foundIndex]++;
     setProductsInCartCount(newProductsInCartCount);
-    console.log('item +',productsInCart,productsInCartCount)
+    console.log('item +', productsInCart, productsInCartCount);
   };
 
   const handleCountDecrease = () => {
     let newProductsInCartCount = [...productsInCartCount];
-
     if (newProductsInCartCount[foundIndex] > 0) {
       newProductsInCartCount[foundIndex]--;
       setProductsInCartCount(newProductsInCartCount);
-      console.log('item -',productsInCart,productsInCartCount)
+      console.log('item -', productsInCart, productsInCartCount);
     }
   };
 
-  const {name, price, image} =  product;
+  const { name, price, image } = product;
 
   return (
     <div className={styles.cartItem}>
@@ -56,21 +55,19 @@ export const CartItem: React.FC<CartItemProps> = ({product}) => {
             className={styles.deleteButtonIcon}
           />
         </button>
-        {/* <Link to={`/products`} className={styles.productImage}>  */}
+        <Link to={`/product/${encodeURIComponent(product.itemId)}`}>
           <img
             src={image}
             alt={name}
             className={styles.image}
-            onClick={handleNotReady}
           />
-        {/* </Link> */}
+        </Link>
         <h4 className={styles.label}>{name}</h4>
       </div>
       <div className={styles.quantityControl}>
         <div className={styles.quantity}>
           <button
             onClick={handleCountDecrease}
-            /* disabled={quantity <= 1} */
             className={styles.button}
           >
             <img
@@ -99,4 +96,4 @@ export const CartItem: React.FC<CartItemProps> = ({product}) => {
       </div>
     </div>
   );
-}
+};
