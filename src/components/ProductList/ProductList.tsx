@@ -20,12 +20,14 @@ export const ProductList: React.FC<ProductListProps> = ({ category, title }) => 
   const [displayedPage, setDisplayedPage] = useState(1);
   const [isLoading, setIsLoading] = useState(true);
 
-  // Memoize number of pages based on products length and numberOfProductsPerPage
   const numberOfPages = useMemo(() => {
     return Math.ceil(products.length / numberOfProductsPerPage);
   }, [products.length, numberOfProductsPerPage]);
 
-  // Fetch and sort products
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [displayedPage]);
+
   useEffect(() => {
     const fetchProductData = async () => {
       setIsLoading(true);
