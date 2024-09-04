@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { useMemo, useEffect } from 'react';
 import { Header } from '../../components/Header';
 import { Breadcrumbs } from '../../components/Breadcrumbs';
 import { useLocation } from 'react-router-dom';
@@ -13,7 +13,25 @@ export const CartPage: React.FC = () => {
   const category = useLocation().pathname.slice(1);
   console.log('PAGE CLICKED', category);
 
-  const { handleNotReady, previousCurrentPage, productsInCart, productsInCartCount } = useAppContext();
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, []);
+
+
+  const { handleNotReady, previousCurrentPage, productsInCart, setProductsInCart, productsInCartCount, setProductsInCartCount } = useAppContext();
+
+  useEffect(() => {
+    const storedCartItems = localStorage.getItem('productsInCart');
+    if (storedCartItems !== null && storedCartItems.length !== 0) {
+      setProductsInCart(JSON.parse(storedCartItems));
+    }
+
+    const storedProductsInCartCount = localStorage.getItem('productsInCartCount');
+    if (storedProductsInCartCount !== null && storedProductsInCartCount.length !== 0) {
+      setProductsInCartCount(JSON.parse(storedProductsInCartCount));
+    }
+
+  }, []);
 
   const [totalCount, totalAmount]: number[] = useMemo(() => {
     let i: number;
