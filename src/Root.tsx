@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React  from 'react';
 import { App } from './App';
 import { HashRouter as Router, Route, Switch } from 'react-router-dom';
 import { AccessoriesPage } from './modules/AccessoriesPage';
@@ -11,10 +11,6 @@ import { NotFoundPage} from './modules/NotFoundPage';
 import { ProductDetailsPage } from './modules/ProductDetailsPage';
 
 export const Root = () => {
-  useEffect(() => {
-    alert('You’re welcome to explore the site, but please note that some styles are still under development and may not be fully implemented yet. Thank you for your understanding!')
-  }, []);
-
   return (
     <Router>
       <div>
