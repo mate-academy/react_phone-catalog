@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Header } from '../../components/Header';
 import { Breadcrumbs } from '../../components/Breadcrumbs';
 import { useLocation } from 'react-router-dom';
@@ -11,8 +11,19 @@ import { ProductCard } from '../../components/ProductCard';
 
 export const FavoritesPage: React.FC = () => {
   const category = useLocation().pathname.slice(1);
-  console.log('PAGE CLICKED', category);
-  const { previousCurrentPage, favoriteProducts } = useAppContext();
+  const { previousCurrentPage, favoriteProducts, setFavoriteProducts } = useAppContext();
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, []);
+
+  useEffect(() => {
+    const storedFavorites = localStorage.getItem('favoriteProducts');
+    if (storedFavorites !== null && storedFavorites.length !== 0) {
+      setFavoriteProducts(JSON.parse(storedFavorites));
+      console.log(favoriteProducts);
+    }
+  }, []);
 
   return (
     <div>
@@ -39,17 +50,21 @@ export const FavoritesPage: React.FC = () => {
           </div>
           <h1 className={styles.title}>Favorites</h1>
           <p className={styles.count}>
-            {`${favoriteProducts.length} item${favoriteProducts.length > 1 ? 's' : ''}`}
+            {`${favoriteProducts.length} item${favoriteProducts.length !== 1 ? 's' : ''}`}
           </p>
         </div>
 
         <div className={styles.emptyContainer}>
           <div className={styles.container}>
-            {favoriteProducts.map((favProduct, index) => (
-              <div className={styles.product} key={index}>
-                <ProductCard product={favProduct} />
-              </div>
-            ))}
+            {favoriteProducts.length > 0 ? (
+              favoriteProducts.map((favProduct, index) => (
+                <div className={styles.product} key={index}>
+                  <ProductCard product={favProduct} />
+                </div>
+              ))
+            ) : (
+              <p>No favorites yet.</p>
+            )}
           </div>
         </div>
       </div>
