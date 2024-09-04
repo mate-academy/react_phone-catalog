@@ -14,7 +14,7 @@
     padding: 32px;
     border-radius: 8px;
     width: 287px;
-    height: 440px;
+    height: 470px;
     transition: all 0.3s ease-in-out;
     cursor: pointer;
 
@@ -24,12 +24,12 @@
 
     @include on-tablet {
       width: 237px;
-      height: 512px;
+      height: 537px;
     }
 
     @include on-desktop {
       width: 272px;
-      height: 506px;
+      height: 537px;
     }
   }
 

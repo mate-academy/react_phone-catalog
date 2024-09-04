@@ -1,10 +1,11 @@
+/* eslint-disable no-console */
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { BackButton } from '../../components/BackButton';
 import { EmptyPage } from '../EmptyPage';
 import { colorCodes } from '../../colorCodes/colorCodes';
 import { Goods } from '../../types';
-import { getData, getProductsByName } from '../../api/api';
+import { getProductsByName, getProductAPI } from '../../api/api';
 import { useProductCategoryContext } from '../../context/ProductCategoryProvider';
 import { PriceDisplay } from '../../components/PriceDisplay';
 import { CartControls } from '../../components/CartControls';
@@ -16,13 +17,17 @@ import { NewItems } from '../../components/NewItems';
 
 export const ProductDetailPage: React.FC = () => {
   const { productId } = useParams<{ productId: string }>();
-  const { productType } = useProductCategoryContext();
+  const { productType, setProductType } = useProductCategoryContext();
   const { addToCart, removeItem, isInCart } = useCart();
   const { addToFavorites, removeFromFavorites, isInFavorites } = useFavorites();
   const [product, setProduct] = useState<Goods | null>(null);
   const [activeImage, setActiveImage] = useState<string | null>(null);
-  const [selectedColor, setSelectedColor] = useState<string | undefined>(undefined);
-  const [selectedCapacity, setSelectedCapacity] = useState<string | undefined>(undefined);
+  const [selectedColor, setSelectedColor] = useState<string | undefined>(
+    undefined,
+  );
+  const [selectedCapacity, setSelectedCapacity] = useState<string | undefined>(
+    undefined,
+  );
   const [isAdded, setIsAdded] = useState(false);
   const [isLiked, setIsLiked] = useState(false);
   const navigate = useNavigate();
@@ -33,12 +38,14 @@ export const ProductDetailPage: React.FC = () => {
 
   useEffect(() => {
     renderCount.current += 1;
-    console.log(`Render count: ${renderCount.current}, productId: ${productId}`);
+    console.log(
+      `Render count: ${renderCount.current}, productId: ${productId}`,
+    );
   }, [productId]);
 
   const assignSerialNumbers = (products: Goods[]): Goods[] => {
-    return products.map((product) => ({
-      ...product,
+    return products.map((item) => ({
+      ...item,
       serialNumber: serialNumberRef.current++,
     }));
   };
@@ -50,20 +57,30 @@ export const ProductDetailPage: React.FC = () => {
     }
 
     try {
-      const fetchedProduct: Goods | null = await getData(productType, productId);
+      const apiMethod = getProductAPI(productType);
 
+      const fetchedProduct: Goods | null = await apiMethod(productId);
+      if (fetchedProduct?.category === 'tablets') {
+        setProductType('tablets');
+      }
+      if (fetchedProduct?.category === 'accessories') {
+        setProductType('accessories');
+      }
       if (!fetchedProduct) {
+        console.error(`Product not found: ${productId}`);
         setProduct(null);
         return;
       }
 
-      let products: Goods[] = await getProductsByName(productType, fetchedProduct.namespaceId);
+      let products: Goods[] = await getProductsByName(
+        productType,
+        fetchedProduct.namespaceId,
+      );
       products = assignSerialNumbers(products);
-
       allProducts.current = products;
-      console.log('All products:', allProducts.current);
 
-      const updatedProduct = products.find((p) => p.id === fetchedProduct.id) || null;
+      const updatedProduct =
+        products.find((item) => item.id === fetchedProduct.id) || null;
 
       setProduct(updatedProduct);
       setActiveImage(updatedProduct?.images[0] || null);
@@ -84,43 +101,59 @@ export const ProductDetailPage: React.FC = () => {
 
   useEffect(() => {
     if (product && selectedColor) {
-      const updatedProductIndex = product.colorsAvailable.findIndex((color) => color === selectedColor);
-      if (updatedProductIndex !== -1 && product.images[updatedProductIndex]) {
-        setActiveImage(product.images[updatedProductIndex]);
+      const colorIndex = product.colorsAvailable.findIndex(
+        (color) => color === selectedColor,
+      );
+      if (colorIndex !== -1 && product.images[colorIndex]) {
+        setActiveImage(product.images[colorIndex]);
       } else {
         setActiveImage(product.images[0] || null);
       }
     }
   }, [selectedColor, product]);
 
-  const handleColorChange = useCallback((color: string) => {
-    if (product) {
-      setSelectedColor(color);
-      const newProductId = product.id.replace(/-[^-]+$/, `-${color}`);
-      navigate(`/${productType}/${newProductId}`);
-    }
-  }, [product, navigate, productType]);
-
-  const handleCapacityChange = useCallback(async (capacity: string) => {
-    if (product && capacity !== selectedCapacity) {
-      try {
-        let products = (await getProductsByName(productType, product.namespaceId)) as Goods[];
-        products = assignSerialNumbers(products);
-        const updatedProduct = products.find((p) => p.color === selectedColor && p.capacity === capacity);
-        if (updatedProduct) {
-          const newProductId = updatedProduct.id;
-          setProduct(updatedProduct);
-          setActiveImage(updatedProduct.images[0]);
-          setSelectedCapacity(capacity);
-          navigate(`/${productType}/${newProductId}`);
-        } else {
-          console.error('Product with selected color and capacity not found.');
-        }
-      } catch (error) {
-        console.error('Error fetching updated product data:', error);
+  const handleColorChange = useCallback(
+    (color: string) => {
+      if (product) {
+        setSelectedColor(color);
+        const newProductId = product.id.replace(/-[^-]+$/, `-${color}`);
+        navigate(`/${productType}/${newProductId}`);
       }
-    }
-  }, [product, navigate, productType, selectedColor, selectedCapacity]);
+    },
+    [product, navigate, productType],
+  );
+
+  const handleCapacityChange = useCallback(
+    async (capacity: string) => {
+      if (product && capacity !== selectedCapacity) {
+        try {
+          let products = (await getProductsByName(
+            productType,
+            product.namespaceId,
+          )) as Goods[];
+          products = assignSerialNumbers(products);
+          const updatedProduct = products.find(
+            (item) => item.color === selectedColor && item.capacity === capacity,
+          );
+          if (updatedProduct) {
+            const newProductId = updatedProduct.id;
+            setProduct(updatedProduct);
+            setActiveImage(updatedProduct.images[0]);
+            setSelectedCapacity(capacity);
+
+            navigate(`/${productType}/${newProductId}`);
+          } else {
+            console.error(
+              'Product with selected color and capacity not found.',
+            );
+          }
+        } catch (error) {
+          console.error('Error fetching updated product data:', error);
+        }
+      }
+    },
+    [product, navigate, productType, selectedColor, selectedCapacity],
+  );
 
   const handleAddToCart = () => {
     if (product) {
@@ -148,7 +181,10 @@ export const ProductDetailPage: React.FC = () => {
     return <EmptyPage />;
   }
 
-  const getRecommendedPhones = (phones: Goods[], modelName: string): Goods[] => {
+  const getRecommendedProducts = (
+    products: Goods[],
+    modelName: string,
+  ): Goods[] => {
     const modelPattern = /\b\d+\b/;
     const match = modelName.match(modelPattern);
     const model = match ? match[0] : '';
@@ -157,21 +193,50 @@ export const ProductDetailPage: React.FC = () => {
       return [];
     }
 
-    return phones.filter(phone => {
-      const phoneModelMatch = phone.name.match(modelPattern);
-      return phoneModelMatch && phoneModelMatch[0] === model;
-    }).slice(0, 10);
+    return products
+      .filter((item) => {
+        const productModelMatch = item.name.match(modelPattern);
+        return productModelMatch && productModelMatch[0] === model;
+      })
+      .slice(0, 10);
   };
 
+  const recommendedProducts = getRecommendedProducts(
+    allProducts.current,
+    product.name,
+  );
 
-  const recommendedPhones = getRecommendedPhones(allProducts.current, product.name);
+  const formatProductName = (
+    name: string,
+    capacity: string | undefined,
+    category: string,
+  ): string => {
+    switch (category) {
+      case 'phones':
+        return `${name.replace(/(\d+GB|\d+TB)/, capacity || '')}`;
+      case 'tablets':
+        return `${name}${capacity ? ` (${capacity})` : ''}`;
+      case 'accessories':
+        return name;
+      default:
+        return name;
+    }
+  };
 
-  const productNameWithCapacity = `${product.name.replace(/(\d+GB|\d+TB)/, selectedCapacity || '')}`;
+  const productNameWithCapacity = formatProductName(
+    product.name,
+    selectedCapacity,
+    productType,
+  );
 
   return (
     <div className="container">
       <BackButton
-        title="Phones"
+        title={
+          productType === 'phones'
+            ? 'Phones'
+            : productType.charAt(0).toUpperCase() + productType.slice(1)
+        }
         isFullDetailsOfProduct={true}
         nameProduct={productNameWithCapacity}
       />
@@ -198,11 +263,11 @@ export const ProductDetailPage: React.FC = () => {
               ))}
             </div>
           </div>
-          <div className="productDetail__specs">
-            <div className="productDetail__specs--color">
-              <div className="productDetail__specs--color--wrapper">
+          <div className="productDetail__info">
+            <div className="productDetail__color">
+              <div className="color--wrapper">
                 <p className="text">Available colors</p>
-                <p className="text mr">Serial Number: {product.serialNumber}</p>
+                <p className="text mr">Id: {product.serialNumber}</p>
               </div>
               <div className="color">
                 {product.colorsAvailable.map((color) => {
@@ -228,7 +293,7 @@ export const ProductDetailPage: React.FC = () => {
                 {product.capacityAvailable.map((capacity) => (
                   <button
                     key={capacity}
-                    className={`capacity__option ${capacity === selectedCapacity ? 'selected' : ''}`}
+                    className={`memory__option ${capacity === selectedCapacity ? 'selected' : ''}`}
                     onClick={() => handleCapacityChange(capacity)}
                   >
                     {capacity}
@@ -278,7 +343,9 @@ export const ProductDetailPage: React.FC = () => {
             <div className="phone-specs productDetail__tech--top">
               <div className="phone-specs__param">
                 <p className="phone-specs__text">Screen</p>
-                <p className="phone-specs__size">{product.screen.slice(0, 9)}</p>
+                <p className="phone-specs__size">
+                  {product.screen.slice(0, 9)}
+                </p>
               </div>
               <div className="phone-specs__param">
                 <p className="phone-specs__text">Resolution</p>
@@ -290,7 +357,9 @@ export const ProductDetailPage: React.FC = () => {
               </div>
               <div className="phone-specs__param">
                 <p className="phone-specs__text">RAM</p>
-                <p className="phone-specs__size">{product.ram.slice(0, 1)} GB</p>
+                <p className="phone-specs__size">
+                  {product.ram.slice(0, 1)} GB
+                </p>
               </div>
               <div className="phone-specs__param">
                 <p className="phone-specs__text">Built in memory</p>
@@ -314,9 +383,11 @@ export const ProductDetailPage: React.FC = () => {
           </div>
         </div>
       </div>
-      <NewItems iphone={recommendedPhones} title={'You may also like'} showDiscount={true}/>
+      <NewItems
+        iphone={recommendedProducts}
+        title={'You may also like'}
+        showDiscount={true}
+      />
     </div>
   );
 };
-
-

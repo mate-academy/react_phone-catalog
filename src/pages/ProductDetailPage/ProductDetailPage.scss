@@ -73,7 +73,7 @@
       transition: all 0.3s ease-in-out;
       margin: 0 auto;
       @include on-tablet {
-width: 300px;
+        width: 300px;
         height: 464px;
       }
       &:hover {
@@ -104,17 +104,7 @@ width: 300px;
     @include on-desktop {
       width: 320px;
     }
-    &--color {
-      display: flex;
-      gap: 10px;
-      margin-bottom: 20px;
-      flex-direction: column;
-      &--wrapper {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-      }
-    }
+
     &__add {
       margin-top: 16px;
     }
@@ -122,6 +112,7 @@ width: 300px;
       margin-top: 0;
     }
   }
+
   &__text {
     color: $basic-grey-color;
     font-size: 12px;
@@ -279,5 +270,38 @@ width: 300px;
   @include on-desktop {
     position: absolute;
     right: 10%;
+  }
+}
+
+.color {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+  flex-direction: row;
+  margin-top: 10px;
+  &--wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+
+.memory__option {
+  border: 1px solid #b4bdc3;
+  border-radius: 4px;
+  cursor: pointer;
+  padding: 4px 8px;
+  transition: all 0.3s ease-in-out;
+  max-width: 63px;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 21px;
+  text-align: center;
+  background-color: #fff;
+
+  &.selected {
+    background-color: #0f0f11;
+    color: #fff;
+    border: 1px solid #0f0f11;
   }
 }

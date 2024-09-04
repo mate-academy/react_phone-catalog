@@ -2,6 +2,7 @@
 @import '../../styles/mixins';
 
 .basket {
+  height: 100vh;
   &__title {
     font-size: 32px;
     font-weight: 800;

@@ -3,12 +3,13 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import { Cart } from '../../components/Cart';
 import accessoriesData from '../../api/accessories.json';
 import './Accessories.scss';
-import { Phone } from '../../types';
+
 import { BackButton } from '../../components/BackButton';
 import { PaginationPage } from '../PaginationPage';
 import { EmptyPage } from '../EmptyPage';
-
-const transformData = (data: any[]): Phone[] => {
+import { Phone, Phones } from '../../types';
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const transformData = (data: any[]): Phones[] => {
   return data.map((item) => ({
     ...item,
     capacity: Array.isArray(item.capacity) ? item.capacity : [item.capacity],
@@ -17,7 +18,9 @@ const transformData = (data: any[]): Phone[] => {
 };
 
 export const AccessoriesPage: React.FC = () => {
-  const [accessories, setAccessories] = useState<Phone[]>(transformData(accessoriesData));
+  const [accessories, setAccessories] = useState<Phone[]>(
+    transformData(accessoriesData),
+  );
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [itemsPerPage, setItemsPerPage] = useState<number | 'all'>('all');
   const [sortType, setSortType] = useState<string>('newest');
@@ -80,9 +83,8 @@ export const AccessoriesPage: React.FC = () => {
 
   const extractVersionNumber = (name: string): number => {
     const match = name.match(/\d+/);
-    return match ? parseInt(match[0], 10) : 0;
+    return match ? parseInt(match[0], 10) : Number.MAX_SAFE_INTEGER;
   };
-
 
   const sortAccessories = (type: string) => {
     const sortedAccessories = [...accessories];
@@ -107,8 +109,12 @@ export const AccessoriesPage: React.FC = () => {
   const indexOfLastAccessory =
     currentPage * (itemsPerPage === 'all' ? accessories.length : itemsPerPage);
   const indexOfFirstAccessory =
-    indexOfLastAccessory - (itemsPerPage === 'all' ? accessories.length : itemsPerPage);
-  const currentAccessories = accessories.slice(indexOfFirstAccessory, indexOfLastAccessory);
+    indexOfLastAccessory -
+    (itemsPerPage === 'all' ? accessories.length : itemsPerPage);
+  const currentAccessories = accessories.slice(
+    indexOfFirstAccessory,
+    indexOfLastAccessory,
+  );
 
   const totalPages =
     itemsPerPage === accessories.length
@@ -146,7 +152,9 @@ export const AccessoriesPage: React.FC = () => {
             className="accessories__sort--page-options"
             aria-label="Items on page"
             value={
-              itemsPerPage === accessories.length ? 'all' : itemsPerPage.toString()
+              itemsPerPage === accessories.length
+                ? 'all'
+                : itemsPerPage.toString()
             }
             onChange={handleItemsPerPageChange}
           >

@@ -12,16 +12,14 @@ export const PriceDisplay: React.FC<Props> = ({
   priceDiscount,
   showDiscount,
 }) => {
-
-
   return (
     <div className="price-display">
-          <span className="price-display__discount">${priceDiscount}</span>
-{showDiscount && (
-  <span className="price-display__regular price-display__sale">
-  ${priceRegular}
-</span>
-)}
+      <span className="price-display__discount">${priceDiscount}</span>
+      {showDiscount && (
+        <span className="price-display__regular price-display__sale">
+          ${priceRegular}
+        </span>
+      )}
     </div>
   );
 };

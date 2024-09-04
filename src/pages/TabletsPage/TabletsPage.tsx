@@ -3,12 +3,12 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import { Cart } from '../../components/Cart';
 import tabletsData from '../../api/tablets.json';
 import './TabletsPage.scss';
-import { Phone } from '../../types';
+import { Goods } from '../../types';
 import { BackButton } from '../../components/BackButton';
 import { PaginationPage } from '../PaginationPage';
 import { EmptyPage } from '../EmptyPage';
-
-const transformData = (data: any[]): Phone[] => {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const transformData = (data: any[]): Goods[] => {
   return data.map((item) => ({
     ...item,
     capacity: Array.isArray(item.capacity) ? item.capacity : [item.capacity],
@@ -17,7 +17,7 @@ const transformData = (data: any[]): Phone[] => {
 };
 
 export const TabletsPage: React.FC = () => {
-  const [tablets, setTablets] = useState<Phone[]>(transformData(tabletsData));
+  const [tablets, setTablets] = useState<Goods[]>(transformData(tabletsData));
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [itemsPerPage, setItemsPerPage] = useState<number | 'all'>('all');
   const [sortType, setSortType] = useState<string>('newest');
@@ -28,7 +28,6 @@ export const TabletsPage: React.FC = () => {
   const initialSortType = params.get('sort') === 'latest' ? 'latest' : 'newest';
   const perPageParam = params.get('perPage') || 'all';
   const pageParam = parseInt(params.get('page') || '1', 10);
-console.log(tabletsData);
 
   useEffect(() => {
     const newItemsPerPage =
@@ -107,7 +106,8 @@ console.log(tabletsData);
   const indexOfLastTablet =
     currentPage * (itemsPerPage === 'all' ? tablets.length : itemsPerPage);
   const indexOfFirstTablet =
-    indexOfLastTablet - (itemsPerPage === 'all' ? tablets.length : itemsPerPage);
+    indexOfLastTablet -
+    (itemsPerPage === 'all' ? tablets.length : itemsPerPage);
   const currentTablets = tablets.slice(indexOfFirstTablet, indexOfLastTablet);
 
   const totalPages =
@@ -188,4 +188,3 @@ console.log(tabletsData);
     </div>
   );
 };
-

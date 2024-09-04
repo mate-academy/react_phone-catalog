@@ -1,10 +1,12 @@
-.empty {
-  height: 100vh;
+@import '../../styles/variables';
+
+.notFound {
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-
+  background-color: $border;
+  height: 100vh;
   &__img {
     max-width: 220px;
     height: 220px;

@@ -47,14 +47,15 @@ export const Cart: React.FC<Props> = ({ phone, showDiscount = true }) => {
   }, [isInFavorites, phone.id]);
 
   const handleImageClick = () => {
-    navigate(`/phones/${phone.id}`);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    navigate(`/${phone.category}/${phone.id}`);
   };
 
   return (
     <div className="cart">
       <div className="cart__context">
         <div className="cart__wrapper">
-        <img
+          <img
             className="cart__image"
             src={`${process.env.PUBLIC_URL}/${phone.images[0]}`}
             alt={phone.name}
@@ -84,4 +85,3 @@ export const Cart: React.FC<Props> = ({ phone, showDiscount = true }) => {
     </div>
   );
 };
-

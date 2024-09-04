@@ -12,7 +12,9 @@ type ContextType = {
 
 export const ProductsContext = React.createContext<ContextType>({
   goods: [],
-  updateGoods: () => {},
+  updateGoods: () => {
+    throw new Error('updateGoods function must be overridden');
+  },
 });
 
 export const ProductsProvider: React.FC<Props> = ({ children }) => {

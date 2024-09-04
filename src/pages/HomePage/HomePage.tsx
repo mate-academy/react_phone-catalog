@@ -2,10 +2,11 @@
 import React from 'react';
 import { MainSlider } from '../../components/MainSlider';
 import { NewItems } from '../../components/NewItems';
+import { ShopPage } from '../../pages/ShopPage';
+
 import './HomePage.scss';
 import '../../styles/container.scss';
 import phones from '../../api/phones.json';
-
 
 export const HomePage: React.FC = () => {
   const capacityOrder: Record<string, number> = {
@@ -26,15 +27,30 @@ export const HomePage: React.FC = () => {
     .map(transformPhoneData)
     .sort(
       (a, b) =>
-        (capacityOrder[b.capacity[0]] || 0) - (capacityOrder[a.capacity[0]] || 0),
+        (capacityOrder[b.capacity[0]] || 0) -
+        (capacityOrder[a.capacity[0]] || 0),
     );
+
+  const hotPriceModels = phones.filter(
+    (phone: any) => phone.priceRegular < 1000,
+  );
 
   return (
     <div className="home">
       <div className="container">
         <h1 className="home__title">Welcome to Nice Gadgets store!</h1>
         <MainSlider />
-        <NewItems iphone={iphone14Models} title={'Brand new models'} showDiscount={false}/>
+        <NewItems
+          iphone={iphone14Models}
+          title={'Brand new models'}
+          showDiscount={false}
+        />
+        <ShopPage />
+        <NewItems
+          iphone={hotPriceModels}
+          title={'Hot prices'}
+          showDiscount={true}
+        />
       </div>
     </div>
   );

@@ -5,11 +5,15 @@ import { ProductsContext } from '../../context/ProductContexts';
 import { Phone } from '../../types';
 interface NewItemsProps {
   iphone: Phone[];
-  title:string;
-  showDiscount:boolean;
+  title: string;
+  showDiscount: boolean;
 }
 
-export const NewItems: React.FC<NewItemsProps> = ({ iphone, title, showDiscount }) => {
+export const NewItems: React.FC<NewItemsProps> = ({
+  iphone,
+  title,
+  showDiscount,
+}) => {
   const { updateGoods } = useContext(ProductsContext);
   const cardsRef = useRef<HTMLDivElement>(null);
   const [cardWidth, setCardWidth] = useState(0);
@@ -96,7 +100,7 @@ export const NewItems: React.FC<NewItemsProps> = ({ iphone, title, showDiscount 
               onClick={prevPage}
             >
               <img
-                src='../img/icons/SliderButtonDefault(right).svg'
+                src="../img/icons/SliderButtonDefault(right).svg"
                 alt="arrowLeft"
               />
             </button>
@@ -106,7 +110,7 @@ export const NewItems: React.FC<NewItemsProps> = ({ iphone, title, showDiscount 
               onClick={nextPage}
             >
               <img
-                src='../img/icons/SliderButtonDefault(right).svg'
+                src="../img/icons/SliderButtonDefault(right).svg"
                 alt="arrowRight"
               />
             </button>

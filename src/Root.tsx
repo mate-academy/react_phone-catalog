@@ -8,6 +8,7 @@ import { App } from './App';
 import { FavoritesPage } from './pages/FavoritesPage';
 import { BasketPage } from './pages/BasketPage';
 import { ProductDetailPage } from './pages/ProductDetailPage/ProductDetailPage';
+import { NotFound } from './components/NotFound';
 
 export const Root: React.FC = () => (
   <Router>
@@ -28,6 +29,7 @@ export const Root: React.FC = () => (
         </Route>
         <Route path="favorites" element={<FavoritesPage />} />
         <Route path="basket" element={<BasketPage />} />
+        <Route path="*" element={<NotFound />} />
       </Route>
     </Routes>
   </Router>
