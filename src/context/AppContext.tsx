@@ -27,6 +27,10 @@ type AppContextType = {
   setFetchedCategory: (product: Product[] | undefined) => void;
   products: LimitedProduct[];
   setProducts: (products: LimitedProduct[]) => void;
+  isClickedProdyctInFavs: boolean;
+  setIsClickedProdyctInFavs: (status: boolean) => void;
+  isClickedProdyctInCart: boolean;
+  setIsClickedProdyctInCart: (status: boolean) => void;
 };
 
 export const AppContext = createContext<AppContextType | undefined>(undefined);
@@ -42,13 +46,15 @@ export const AppProvider: React.FC<{ children: React.ReactElement }> = ({ childr
   const [productDetails, setProductDetails] = useState<Product | undefined>(undefined);
   const [fetchedCategory, setFetchedCategory] = useState<Product[] | undefined>(undefined)
   const [products, setProducts] = useState<(LimitedProduct)[]>([]);
+  const [isClickedProdyctInFavs, setIsClickedProdyctInFavs] = useState<boolean>(false);
+  const [isClickedProdyctInCart, setIsClickedProdyctInCart] = useState<boolean>(false);
 
   const handleNotReady = () => {
     alert('Feature has not been implemented!');
   };
 
   return (
-    <AppContext.Provider value={{ handleNotReady, numberOfProductsPerPage, setNumberOfProductsPerPage, clickedProduct, setClickedProduct, previousCurrentPage, setPreviousCurrentPage, setFavoriteProducts, favoriteProducts, productsInCart, setProductsInCart, theme, setTheme, productsInCartCount, setProductsInCartCount, sortMethod, setSortMethod, productDetails, setProductDetails, fetchedCategory, setFetchedCategory, products, setProducts}}>
+    <AppContext.Provider value={{ handleNotReady, numberOfProductsPerPage, setNumberOfProductsPerPage, clickedProduct, setClickedProduct, previousCurrentPage, setPreviousCurrentPage, setFavoriteProducts, favoriteProducts, productsInCart, setProductsInCart, theme, setTheme, productsInCartCount, setProductsInCartCount, sortMethod, setSortMethod, productDetails, setProductDetails, fetchedCategory, setFetchedCategory, products, setProducts, isClickedProdyctInFavs, setIsClickedProdyctInFavs, isClickedProdyctInCart, setIsClickedProdyctInCart}}>
       {children}
     </AppContext.Provider>
   );
