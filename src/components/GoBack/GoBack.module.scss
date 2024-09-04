@@ -1,0 +1,22 @@
+@import '../../styles/main';
+
+.label {
+  display: flex;
+  text-align: center;
+  padding-top: 2px;
+  height: 15px;
+  text-decoration: none;
+
+  @extend %small-text;
+
+  color: var(--color-secondary);
+}
+
+.goBackText {
+  display: block;
+  padding-top: 2px;
+
+  @extend %small-text;
+
+  color: var(--color-secondary);
+}
