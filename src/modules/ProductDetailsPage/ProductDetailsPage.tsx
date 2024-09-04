@@ -13,6 +13,7 @@ import { MainControls } from './components/MainControls';
 import { Loader } from '../../components/Loader';
 import { Breadcrumbs } from '../../components/Breadcrumbs';
 import { GoBack } from '../../components/GoBack';
+// eslint-disable-next-line no-unused-vars
 import { LimitedProduct } from '../../types/Product';
 
 export const ProductDetailsPage: React.FC = () => {
