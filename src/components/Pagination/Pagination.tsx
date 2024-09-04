@@ -59,6 +59,7 @@ export const Pagination: React.FC<PaginationProps> = ({
         <img
           src={ChevronIcon}
           alt="Next page"
+          className={styles.next}
         />
       </button>
     </ul>
