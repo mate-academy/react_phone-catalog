@@ -16,7 +16,7 @@
     grid-column: 1 / 13;
   }
 
-  border: 2px solid red
+  overflow: hidden;
 }
 
 .thumbnailContainerTablet {
@@ -39,7 +39,6 @@
   justify-content: center;
   width: 100%;
   position: relative;
-
   cursor: pointer;
   height: 288px;
 
