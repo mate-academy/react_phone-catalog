@@ -127,7 +127,7 @@ export const MainControls: React.FC<MainControlsProps> = () => {
           </div>
         </div>
 
-        <ActionButtons product={clickedProduct} />
+        <ActionButtons product={clickedProduct} /* isProductInCart={isClickedProdyctInCart} isProductInFavs={isClickedProdyctInFavs} *//>
 
         <ul className={styles.specsList}>
           <li className={styles.specs}>
