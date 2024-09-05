@@ -1,2 +1,18 @@
 @import '../../styles/main';
 @import '../Header/Header.module.scss';
+
+.toggleContainer {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hidden {
+  display: none;
+}
+
+.icon {
+  font-size: 25px;
+}

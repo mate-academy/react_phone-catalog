@@ -25,8 +25,13 @@ export const Theme: React.FC = () => {
   }, [setTheme]);
 
   return (
-    <div className={styles.navItem} onClick={handleThemeChange}>
-      {theme}
+    <div className={styles.toggleContainer} onClick={handleThemeChange}>
+      <div className={`${styles.icon} ${theme === 'dark' ? styles.hidden : ""}`}>
+        &#x1F319;
+      </div>
+      <div className={`${styles.icon} ${theme === 'light' ? styles.hidden : ""}`}>
+        &#x1F31E;
+      </div>
     </div>
   );
 };
