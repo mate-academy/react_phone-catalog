@@ -68,7 +68,7 @@ export const ProductSlider: React.FC<ProductSliderProps> = ({ title, count }) =>
           <button
             className={styles.arrowButton}
             onClick={() => {
-              if (positionCount !== 6) { // FIXED NUMBER=6 NEED TO BE CORRECTED LATER - depends on number of items
+              if (positionCount !== 6) {
                 handleNextSlide();
               }
             }}
