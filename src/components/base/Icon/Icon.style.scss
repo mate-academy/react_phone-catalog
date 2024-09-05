@@ -1,9 +1,32 @@
 .icon {
   cursor: pointer;
+  &__wrapper {
+    position: relative;
+  }
+  &__content {
+    position: absolute;
+    display: inline-block;
+    text-align: center;
+    height: 13px;
+    width: 13px;
+    top: 21%;
+    right: 22%;
+    color: $c-white;
+    font-family: Mont, sans-serif;
+    font-size: 0.4rem;
+
+    @include on-desktop {
+      top: 28%;
+      right: 29%;
+    }
+  }
+
   &--bar {
-    box-shadow: -1px 0 0 0 $c-elements;
     height: 48px;
     width: 48px;
+    &-border {
+      box-shadow: -1px 0 0 0 $c-elements;
+    }
 
     @include on-desktop {
       height: 64px;
@@ -12,13 +35,21 @@
   }
 
   &--button {
-    &-size32 {
+    &-border {
       border: 1px solid $c-icons;
+      &-disabled {
+        border: 1px solid $c-elements;
+      }
+    }
+    &-16 {
+      height: 16px;
+      width: 16px;
+    }
+    &-32 {
       height: 32px;
       width: 32px;
     }
-    &-size40 {
-      border: 1px solid $c-icons;
+    &-40 {
       height: 40px;
       width: 40px;
     }
@@ -46,12 +77,21 @@
   &--favorite {
     background: url('../../../../public/img/icons/heart.svg') no-repeat center;
     &-added {
-      background: url('../../../../public/img/icons/heart-filled.svg') no-repeat center;
+      background: url('../../../../public/img/icons/heart-filled.svg') no-repeat
+        center;
+    }
+    &-counter {
+      background: url('../../../../public/img/icons/heart-counter.svg')
+        no-repeat center;
     }
   }
 
   &--cart {
     background: url('../../../../public/img/icons/cart.svg') no-repeat center;
+    &-counter {
+      background: url('../../../../public/img/icons/cart-counter.svg') no-repeat
+        center;
+    }
   }
 
   &--close {
@@ -62,7 +102,6 @@
     background: url('../../../../public/img/icons/chevron-left.svg') no-repeat
       center;
     &-disabled {
-      border: 1px solid $c-elements;
       background: url('../../../../public/img/icons/chevron-left-disabled.svg')
         no-repeat center;
     }
@@ -72,7 +111,6 @@
     background: url('../../../../public/img/icons/chevron-right.svg') no-repeat
       center;
     &-disabled {
-      border: 1px solid $c-elements;
       background: url('../../../../public/img/icons/chevron-right-disabled.svg')
         no-repeat center;
     }
@@ -81,5 +119,13 @@
   &--chevron-up {
     background: url('../../../../public/img/icons/chevron-up.svg') no-repeat
       center;
+  }
+
+  &--home {
+    background: url('../../../../public/img/icons/home.svg') no-repeat center;
+    &-disabled {
+      background: url('../../../../public/img/icons/home-disabled.svg')
+        no-repeat center;
+    }
   }
 }

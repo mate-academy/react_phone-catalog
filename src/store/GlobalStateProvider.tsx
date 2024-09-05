@@ -4,6 +4,7 @@ import { States } from '../types/State';
 import { PhoneSpecs } from '../types/PhoneSpecs';
 import { TabletSpecs } from '../types/TabletSpecs';
 import { ProductSummary } from '../types/ProductSummary';
+import { Category } from '../types/Category';
 
 const initialStates = {
   accessories: [],
@@ -12,6 +13,7 @@ const initialStates = {
   tablets: [],
   cart: [],
   favorites: [],
+  categories: [],
 };
 
 type Action =
@@ -19,6 +21,7 @@ type Action =
   | { type: 'loadPhones'; payload: PhoneSpecs[] }
   | { type: 'loadTablets'; payload: TabletSpecs[] }
   | { type: 'loadProducts'; payload: ProductSummary[] }
+  | { type: 'loadCategories'; payload: Category[] }
   | { type: 'addToCart'; payload: ProductSummary }
   | { type: 'removeFromCart'; payload: number }
   | { type: 'addToFavorites'; payload: ProductSummary }
@@ -42,6 +45,9 @@ function reducer(states: States, action: Action) {
       break;
     case 'loadProducts':
       newStates = { ...newStates, products: action.payload };
+      break;
+    case 'loadCategories':
+      newStates = { ...newStates, categories: action.payload };
       break;
     case 'addToCart':
       newStates = { ...newStates, cart: [...states.cart, action.payload] };

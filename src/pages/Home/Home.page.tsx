@@ -3,17 +3,17 @@ import { useContext } from 'react';
 // eslint-disable-next-line max-len
 import { ProductSlider } from '../../components/base/ProductSlider/ProductSlider.component';
 // eslint-disable-next-line max-len
-import { ShopByCategory } from '../../components/ShopByCategories/ShopByCategory.component';
+import { ShopByCategory } from '../../components/ShopByCategory/ShopByCategory.component';
 import { Welcome } from '../../components/Welcome/Welcome.component';
 import { StatesContext } from '../../store/GlobalStateProvider';
+import { calculateDiscount } from '../../utils/calculateDiscount';
+import { Footer } from '../../components/base/Footer/Footer.component';
 
 export const HomePage = () => {
   const { products } = useContext(StatesContext);
   const productsSortByYear = [...products].sort((a, b) => b.year - a.year);
   const productsSortByDiscount = [...products].sort(
-    (a, b) =>
-      ((b.fullPrice - b.price) / 100) * 100 -
-      ((a.fullPrice - a.price) / 100) * 100,
+    (a, b) => calculateDiscount(b) - calculateDiscount(a),
   );
 
   return (
@@ -30,6 +30,7 @@ export const HomePage = () => {
         products={productsSortByDiscount}
         showDiscount={true}
       />
+      <Footer />
     </div>
   );
 };

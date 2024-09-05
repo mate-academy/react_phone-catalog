@@ -3,27 +3,39 @@ import cn from 'classnames';
 type Props = {
   iconType: string;
   iconUse: string;
-  disabled?: boolean;
+  iconSize?: string;
+  length?: number;
   onClick?: () => void;
+  disabled?: boolean;
   added?: boolean;
+  border?: boolean;
 };
 
 export const Icon: React.FC<Props> = ({
   iconType,
   iconUse,
-  disabled,
+  iconSize,
+  length,
   onClick,
+  disabled,
   added,
+  border,
 }) => {
   return (
-    <>
+    <div className="icon__wrapper" onClick={onClick}>
       <div
-        className={cn(`icon icon--${iconType}`, `icon--${iconUse}`, {
+        id={`icon--${iconType}-counter`}
+        className={cn(`icon icon--${iconType}`, {
           [`icon--${iconType}-disabled`]: disabled,
           [`icon--${iconType}-added`]: added,
+          [`icon--${iconType}-counter`]: length && length > 0,
+          [`icon--${iconUse}-border`]: border,
+          [`icon--${iconUse}-border-disabled`]: border && disabled,
+          [`icon--${iconUse}`]: !iconSize,
+          [`icon--${iconUse}-${iconSize}`]: iconSize,
         })}
-        onClick={onClick}
       />
-    </>
+      {length !== 0 && <div className="icon__content">{length}</div>}
+    </div>
   );
 };

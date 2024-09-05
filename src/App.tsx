@@ -1,12 +1,12 @@
 import { useContext, useEffect } from 'react';
 import { Header } from './components/base/Header/Header.component';
-import { HomePage } from './pages/Home/Home.page';
 import { DispatchContext } from './store/GlobalStateProvider';
-import { getProducts } from './api/products';
+import { getCategories, getProducts } from './api/products';
 import { AccessorySpecs } from './types/AccessorySpecs';
 import { PhoneSpecs } from './types/PhoneSpecs';
 import { TabletSpecs } from './types/TabletSpecs';
 import { ProductSummary } from './types/ProductSummary';
+import { Outlet } from 'react-router-dom';
 
 export const App = () => {
   const dispatch = useContext(DispatchContext);
@@ -43,12 +43,18 @@ export const App = () => {
     });
   }, [dispatch]);
 
+  useEffect(() => {
+    getCategories().then(categoriesFromServer => {
+      dispatch({ type: 'loadCategories', payload: categoriesFromServer });
+    });
+  }, [dispatch]);
+
   return (
     <div className="App" id="top">
       {/* <h1>Product Catalog</h1> */}
       <Header />
 
-      <HomePage />
+      <Outlet />
     </div>
   );
 };

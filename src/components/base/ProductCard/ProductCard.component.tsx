@@ -1,10 +1,11 @@
-import { useContext } from 'react';
 import { ProductSummary } from '../../../types/ProductSummary';
 import { Icon } from '../../base/Icon/Icon.component';
 import { Button } from '../Button/Button.component';
+import { calculateDiscount } from '../../../utils/calculateDiscount';
+import { useContext } from 'react';
 import {
-  DispatchContext,
   StatesContext,
+  DispatchContext,
 } from '../../../store/GlobalStateProvider';
 
 type Props = {
@@ -16,6 +17,7 @@ export const ProductCard: React.FC<Props> = ({ product, showDiscount }) => {
   const { cart, favorites } = useContext(StatesContext);
   const dispatch = useContext(DispatchContext);
   const addedToCart = cart.includes(product);
+
   const addToCart = () => {
     dispatch({ type: 'addToCart', payload: product });
   };
@@ -46,6 +48,9 @@ export const ProductCard: React.FC<Props> = ({ product, showDiscount }) => {
               <h3>${product.price}</h3>
             </div>
             <div className="card__price-full">${product.fullPrice}</div>
+            <h3 className="card__price-discount">
+              {calculateDiscount(product).toFixed(1)}% OFF
+            </h3>
           </>
         ) : (
           <>
@@ -78,7 +83,9 @@ export const ProductCard: React.FC<Props> = ({ product, showDiscount }) => {
         />
         <Icon
           iconType="favorite"
-          iconUse="button-size40"
+          iconUse="button"
+          iconSize="40"
+          border={true}
           onClick={addedToFavorites ? removeFromFavorites : addToFavorites}
           added={addedToFavorites}
         />

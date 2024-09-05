@@ -14,6 +14,11 @@
       flex-direction: row;
       gap: 16px;
     }
+
+    @include on-desktop {
+      flex-direction: row;
+      gap: 16px;
+    }
   }
   &__group {
     display: flex;
@@ -26,12 +31,5 @@
     gap: 24px;
   }
 
-  &__figure-caption {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-    &-models {
-      color: $c-secondary;
-    }
-  }
+
 }

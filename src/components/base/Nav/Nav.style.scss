@@ -24,22 +24,29 @@
   }
   &__link {
     @extend %uppercase;
-    
+
     text-align: left;
     text-decoration: none;
     color: $c-secondary;
     position: relative;
+    &::after {
+      content: '';
+      position: absolute;
+      height: 1px;
+      width: 100%;
+      bottom: 0;
+      background: $c-primary;
+      transition: 0.3s;
+      transform: scaleX(0);
+    }
     &:hover {
       color: $c-primary;
-      &::after {
-        content: '';
-        position: absolute;
-        height: 1px;
-        width: 100%;
-        bottom: 0;
-        background: $c-primary;
+      &::after{
+        transform: scaleX(1);
       }
     }
+
+
     &--bar {
       line-height: 48px;
 

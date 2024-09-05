@@ -1,4 +1,5 @@
 import { AccessorySpecs } from './AccessorySpecs';
+import { Category } from './Category';
 import { PhoneSpecs } from './PhoneSpecs';
 import { ProductSummary } from './ProductSummary';
 import { TabletSpecs } from './TabletSpecs';
@@ -10,4 +11,5 @@ export interface States {
   products: ProductSummary[];
   cart: ProductSummary[];
   favorites: ProductSummary[];
+  categories: Category[];
 }
