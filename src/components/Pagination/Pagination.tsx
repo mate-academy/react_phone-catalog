@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styles from './Pagination.module.scss';
 import ChevronIcon from '../../img/icons/ChevronIcon.svg';
 import classNames from 'classnames';
@@ -15,23 +15,28 @@ export const Pagination: React.FC<PaginationProps> = ({
   displayedPage,
 }) => {
   const arrayOfPageButtons = Array.from({ length: numberOfPages }, (_, i) => i + 1);
+  const [offset, setOffset] = useState(0);
+  const [mvmtBalance, setMvmtBalance] = useState(0);
 
-  const handleLeftArrowClick = () => {
-    const newPage = Math.max(displayedPage - 1, 1);
-    handleDisplayedPage(newPage);
-  };
+  const moveLeft = () => {
+      if (mvmtBalance > 0) {
+        setOffset(offset + 42)
+        setMvmtBalance(mvmtBalance-1)
+      }
+  }
 
-  const handleRightArrowClick = () => {
-    const newPage = Math.min(displayedPage + 1, numberOfPages);
-    handleDisplayedPage(newPage);
-  };
+  const moveRight = () => {
+    if (mvmtBalance < numberOfPages - 5)  {
+      setOffset(offset - 42)
+      setMvmtBalance(mvmtBalance+1)
+    }
+  }
 
   return (
     <ul className={styles.pagination}>
       <button
-        className={styles.button}
-        onClick={handleLeftArrowClick}
-        disabled={displayedPage === 1}
+        className={`${styles.button} ${mvmtBalance === 0 ? styles.disabled : ""}`}
+        onClick={moveLeft}
       >
         <img
           src={ChevronIcon}
@@ -39,22 +44,26 @@ export const Pagination: React.FC<PaginationProps> = ({
         />
       </button>
 
-      {arrayOfPageButtons.map(pageButton => (
-        <button
-          key={pageButton}
-          className={classNames(styles.button, {
-            [styles.active]: pageButton === displayedPage,
-          })}
-          onClick={() => handleDisplayedPage(pageButton)}
-        >
-          {pageButton}
-        </button>
-      ))}
+      <div className={styles.topWrapper}>
+        <div className={styles.buttonWrapper} style={{ transform: `translateX(${offset}px)` }}>
+            {arrayOfPageButtons.map(pageButton => (
+            <button
+              key={pageButton}
+              className={classNames(styles.button, {
+                [styles.active]: pageButton === displayedPage,
+              })}
+              onClick={() => handleDisplayedPage(pageButton)}
+            >
+              {pageButton}
+            </button>
+          ))}
+        </div>
+      </div>
+
 
       <button
-        className={styles.button}
-        onClick={handleRightArrowClick}
-        disabled={displayedPage === numberOfPages}
+        className={`${styles.button} ${mvmtBalance === numberOfPages - 5 ? styles.disabled : ""}`}
+        onClick={moveRight}
       >
         <img
           src={ChevronIcon}

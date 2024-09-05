@@ -38,6 +38,7 @@
 }
 
 .disabled {
+  border: 1px solid var(--color-primary);
   pointer-events: none;
   opacity: 0.5;
 
@@ -48,4 +49,15 @@
 
 .next {
   transform: rotate(180deg);
+}
+
+.topWrapper {
+  width: 200px;
+  overflow: hidden;
+}
+
+.buttonWrapper {
+  display: flex;
+  gap: 10px;
+  transition: transform 0.3s ease;
 }
