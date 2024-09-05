@@ -7,8 +7,8 @@ import styles from './CartPage.module.scss';
 import chevronIcon from '../../img/icons/ChevronIcon.svg';
 import { useAppContext } from '../../context/AppContext';
 import { CartItem } from './CartItem/CartItem';
-import { Link } from 'react-router-dom';
 import { Footer } from '../../components/Footer';
+import { GoBack } from '../../components/GoBack';
 
 export const CartPage: React.FC = () => {
   const category = useLocation().pathname.slice(1);
@@ -19,7 +19,7 @@ export const CartPage: React.FC = () => {
   }, []);
 
 
-  const { handleNotReady, previousCurrentPage, productsInCart, setProductsInCart, productsInCartCount, setProductsInCartCount } = useAppContext();
+  const { handleNotReady, productsInCart, setProductsInCart, productsInCartCount, setProductsInCartCount } = useAppContext();
 
   useEffect(() => {
     const storedCartItems = localStorage.getItem('productsInCart');
@@ -64,9 +64,7 @@ export const CartPage: React.FC = () => {
                 className={styles.chevronIcon}
               />
               <div className={styles.goBackText}>
-                <Link to={`/${previousCurrentPage[0]}`}>
-                  <div className={styles.label}>Back</div>
-                </Link>
+                <GoBack />
               </div>
             </button>
           </div>
