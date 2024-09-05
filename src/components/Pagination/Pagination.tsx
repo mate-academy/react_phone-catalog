@@ -60,7 +60,6 @@ export const Pagination: React.FC<PaginationProps> = ({
         </div>
       </div>
 
-
       <button
         className={`${styles.button} ${mvmtBalance === numberOfPages - 5 ? styles.disabled : ""}`}
         onClick={moveRight}
