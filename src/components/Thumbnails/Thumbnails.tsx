@@ -61,11 +61,11 @@ export const Thumbnails: React.FC = () => {
               />
 
               <h2 className={styles.category__title}>
-                {category.charAt(0).toUpperCase() + category.slice(1)} {memoizedCounts[category as keyof typeof memoizedCounts]} items
+                {category.charAt(0).toUpperCase() + category.slice(1)}
               </h2>
 
               <span className={styles.category__subtitle}>
-                <span className={styles.category__subtitle} />
+                {memoizedCounts[category as keyof typeof memoizedCounts]} items
               </span>
             </Link>
           </div>

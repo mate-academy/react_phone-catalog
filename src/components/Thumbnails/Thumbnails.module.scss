@@ -1,7 +1,7 @@
 @import '../../styles/main';
 
 .categories {
-  display: flex;
+  display: grid;
   flex-direction: column;
   align-self: center;
   justify-content: center;
@@ -9,14 +9,14 @@
 
 .categoryContainer {
   display: flex;
-  width: 90%;
   align-self: center;
-  justify-content: center;
-  gap: 18px
+  justify-content: space-between;
+  width: 1155px;
+  gap: 15px;
 }
 
 .title {
-  grid-column: 1 / -1;
+  justify-self: center;
 
   @extend %h2-mobile;
 
@@ -27,7 +27,8 @@
   letter-spacing: 0.01em;
   font-weight: bold;
   color: var(--color-primary);
-  padding: 30px 100px;
+  padding: 30px 0;
+  width: 1155px;
   }
 }
 
@@ -52,7 +53,7 @@
 
 .image {
   object-fit: cover;
-  width: 100%;
+  width: 373px;
   margin-bottom: 10px;
   border: 1px lightgrey solid;
 
