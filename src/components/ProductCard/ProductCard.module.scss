@@ -105,12 +105,12 @@
 
 .descriptionTitle {
   @extend %small-text;
-  font-weight: 400;
+  font-weight: 500;
   color: var(--color-secondary)
 }
 
 .descriptionText {
   @extend %small-text;
   color: var(--color-primary);
-  font-weight: 400;
+  font-weight: 500;
 }
