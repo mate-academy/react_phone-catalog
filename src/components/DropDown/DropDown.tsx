@@ -21,7 +21,7 @@ export const DropDown: React.FC<DropDownProps> = ({ numberOfProducts }) => {
   }, [numberOfProductsPerPage]);
 
   return (
-    <div>
+    <div className={styles.container}>
       <div className={styles.label}>Items per page</div>
       <select
         onChange={handleSelectionChange}

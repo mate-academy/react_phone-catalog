@@ -1,5 +1,9 @@
 @import '../../styles/main';
 
+.container {
+  width: 200px;
+}
+
 .label {
   display: flex;
   gap: 8px;
@@ -7,6 +11,8 @@
   flex-direction: column;
   position: relative;
   color: var(--color-secondary);
+  font-weight: 400;
+  padding-bottom: 5px;
 
   @extend %small-text;
 
@@ -19,7 +25,7 @@
     border-right: 1px solid var(--color-secondary);
     border-top: 1px solid var(--color-secondary);
     transform: rotate(135deg);
-    bottom: 18px;
+    bottom: -20px;
     right: 12px;
   }
 }
@@ -36,6 +42,7 @@
   border: 1px solid var(--color-elements);
   background-color: var(--color-filter-bg);
   color: var(--color-primary);
+
 
   @extend %body-text;
 }
