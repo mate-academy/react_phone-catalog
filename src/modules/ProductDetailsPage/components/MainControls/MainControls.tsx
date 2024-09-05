@@ -16,9 +16,6 @@ type MainControlsProps = {
 export const MainControls: React.FC<MainControlsProps> = () => {
   const { clickedProduct, setClickedProduct, productDetails, products, previousCurrentPage } = useAppContext();
 
-  console.log('INITAL CLCIKED', clickedProduct);
-  console.log('INITAL details', productDetails);
-
   useEffect(() => {
     if (clickedProduct) {
       localStorage.setItem('clickedProduct', JSON.stringify(clickedProduct));
@@ -36,7 +33,6 @@ export const MainControls: React.FC<MainControlsProps> = () => {
   const location = useLocation();
 
   const handleCapacity = (capacity: string) => {
-    console.log(clickedProduct);
     let currentUrl = `${location.pathname}`;
     let currentUrlArray = currentUrl.split("-");
     let newUrlArray = [...currentUrlArray];
@@ -44,22 +40,18 @@ export const MainControls: React.FC<MainControlsProps> = () => {
 
     newUrlArray[newUrlArray.length - 2] = capacity.toLowerCase();
     newUrl = newUrlArray.join("-");
-    console.log(newUrl);
     history.push(newUrl);
 
     if (clickedProduct === undefined) {
       const newClickedProduct = products.find((item: LimitedProduct) => item.itemId === previousCurrentPage[1].slice(9, newUrl.length));
       setClickedProduct(newClickedProduct);
-      console.log(newClickedProduct);
     } else {
       const newClickedProduct = products.find((item: LimitedProduct) => item.itemId === newUrl.slice(9, newUrl.length));
-      console.log(newClickedProduct);
       setClickedProduct(newClickedProduct);
     }
   };
 
   const handleColor = (color: string) => {
-    console.log(clickedProduct);
     let currentUrl = `${location.pathname}`;
     let currentUrlArray = currentUrl.split("-");
     let newUrlArray = [...currentUrlArray];
@@ -67,17 +59,14 @@ export const MainControls: React.FC<MainControlsProps> = () => {
 
     newUrlArray[newUrlArray.length - 1] = color.toLowerCase();
     newUrl = newUrlArray.join("-");
-    console.log(newUrl);
     history.push(newUrl);
 
     if (clickedProduct === undefined) {
       const newClickedProduct = products.find((item: LimitedProduct) => item.itemId === previousCurrentPage[1].slice(9, newUrl.length));
       setClickedProduct(newClickedProduct);
-      console.log(newClickedProduct);
     } else {
       const newClickedProduct = products.find((item: LimitedProduct) => item.itemId === newUrl.slice(9, newUrl.length));
       setClickedProduct(newClickedProduct);
-      console.log(newClickedProduct);
     }
   };
 

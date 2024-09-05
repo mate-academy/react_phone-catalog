@@ -12,9 +12,7 @@ export const PreviousPage: React.FC<PreviousPageProps> = ({category}) => {
     const pages = [...previousCurrentPage];
     pages.shift()
     pages.push(category)
-    console.log(pages)
     setPreviousCurrentPage(pages)
-    console.log(pages)
   }, [category]);
 
   return (

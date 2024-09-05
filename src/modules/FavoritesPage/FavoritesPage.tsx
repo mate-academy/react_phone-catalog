@@ -22,7 +22,6 @@ export const FavoritesPage: React.FC = () => {
     const storedFavorites = localStorage.getItem('favoriteProducts');
     if (storedFavorites !== null && storedFavorites.length !== 0) {
       setFavoriteProducts(JSON.parse(storedFavorites));
-      console.log(favoriteProducts);
     }
   }, []);
 

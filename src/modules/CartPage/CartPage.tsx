@@ -12,7 +12,6 @@ import { GoBack } from '../../components/GoBack';
 
 export const CartPage: React.FC = () => {
   const category = useLocation().pathname.slice(1);
-  console.log('PAGE CLICKED', category);
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });

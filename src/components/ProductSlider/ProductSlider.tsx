@@ -46,8 +46,6 @@ export const ProductSlider: React.FC<ProductSliderProps> = ({ title, count }) =>
     setPosition((prevPosition) => prevPosition + 292);
   };
 
-  console.log(positionCount);
-
   return (
     <div className={styles.productSlider}>
       <div className={styles.titleContainer}>

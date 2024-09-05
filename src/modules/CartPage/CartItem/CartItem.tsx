@@ -21,17 +21,14 @@ export const CartItem: React.FC<CartItemProps> = ({ product }) => {
     let newProductsInCartCount = [...productsInCartCount];
     newProductsInCart.splice(foundIndex, 1);
     newProductsInCartCount.splice(foundIndex, 1);
-    console.log('removed from cart');
     setProductsInCart(newProductsInCart);
     setProductsInCartCount(newProductsInCartCount);
-    console.log('item removed', productsInCart, productsInCartCount);
   };
 
   const handleCountIncrease = () => {
     let newProductsInCartCount = [...productsInCartCount];
     newProductsInCartCount[foundIndex]++;
     setProductsInCartCount(newProductsInCartCount);
-    console.log('item +', productsInCart, productsInCartCount);
   };
 
   const handleCountDecrease = () => {
@@ -39,7 +36,6 @@ export const CartItem: React.FC<CartItemProps> = ({ product }) => {
     if (newProductsInCartCount[foundIndex] > 0) {
       newProductsInCartCount[foundIndex]--;
       setProductsInCartCount(newProductsInCartCount);
-      console.log('item -', productsInCart, productsInCartCount);
     }
   };
 

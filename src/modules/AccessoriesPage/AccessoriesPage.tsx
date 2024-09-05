@@ -7,7 +7,6 @@ import { useLocation } from 'react-router-dom';
 export const AccessoriesPage: React.FC = () => {
   const category = useLocation().pathname.slice(1)
   const title = category.charAt(0).toUpperCase() + category.slice(1)
-  console.log('PAGE CLICKED',category)
 
   return (
     <div>

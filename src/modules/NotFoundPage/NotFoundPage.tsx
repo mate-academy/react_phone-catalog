@@ -9,7 +9,6 @@ import { useAppContext } from '../../context/AppContext';
 
 export const NotFoundPage: React.FC = () => {
   const category = useLocation().pathname.slice(1);
-  console.log('PAGE CLICKED', category);
   const { previousCurrentPage } = useAppContext();
 
   return (
