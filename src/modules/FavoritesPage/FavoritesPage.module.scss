@@ -2,6 +2,7 @@
 
 .favoritesPage {
   @include section-grid;
+  padding-bottom: 80px;
 }
 
 .topContainer {

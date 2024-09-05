@@ -77,7 +77,7 @@ export const ProductDetailsPage: React.FC = () => {
   }, [clickedProduct]);
 
   return (
-    <div className={styles.productDetailsPageWrapper}>
+    <div className={styles.productDetailsPage}>
       <Header />
       <main className={styles.mainContent}>
         {isLoading ? (
