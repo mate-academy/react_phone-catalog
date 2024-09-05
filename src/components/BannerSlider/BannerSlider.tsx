@@ -28,7 +28,7 @@ export const BannerSlider: React.FC = () => {
   };
 
   useEffect(() => {
-    const intervalId = setInterval(incrementDisplayedImageIndex, 3000);
+    const intervalId = setInterval(incrementDisplayedImageIndex, 4000);
     return () => clearInterval(intervalId);
   }, []);
 
