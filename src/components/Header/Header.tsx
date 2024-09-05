@@ -3,15 +3,21 @@ import { NavLink, Link } from "react-router-dom";
 import styles from './Header.module.scss';
 import LogoIcon from '../../img/icons/LogoIcon.svg';
 import cartIcon from '../../img/icons/CartIcon.svg';
-import favIcon from '../../img/icons/fav.svg';
+import LogoIconDT from '../../img/icons/LogoIcon--DarkTheme.svg';
+import cartIconDT from '../../img/icons/CartIcon--DarkTheme.svg';
+import favIcon from '../../img/icons/FavoritesIcon.svg';
+import favIconDT from '../../img/icons/FavoritesIcon--DarkTheme.svg';
 import { Theme } from '../Theme';
+import { useAppContext } from '../../context/AppContext';
 
 export const Header: React.FC = () => {
+  const { theme } = useAppContext();
+
   return (
     <header className={styles.header}>
       <Link to="/" className={styles.logoLink}>
         <img
-          src={LogoIcon}
+          src={`${theme === 'dark' ? LogoIconDT : LogoIcon}`}
           alt="Nice Gadgets Logo"
           className={styles.logo}
         />
@@ -41,7 +47,7 @@ export const Header: React.FC = () => {
             <NavLink to="/favorites" className={styles.actionItem} activeClassName={styles.isActive}>
               <div className={styles.actionIcon}>
                 <img
-                  src={favIcon}
+                  src={`${theme === 'dark' ? favIconDT : favIcon}`}
                   alt="Favorites"
                   className={styles.icon}
                 />
@@ -51,7 +57,7 @@ export const Header: React.FC = () => {
             <NavLink to="/cart" className={styles.actionItem} activeClassName={styles.isActive}>
               <div className={styles.actionIcon}>
                 <img
-                  src={cartIcon}
+                  src={`${theme === 'dark' ? cartIconDT : cartIcon}`}
                   alt="Cart"
                   className={styles.icon}
                 />

@@ -3,11 +3,16 @@ import { Link, NavLink } from 'react-router-dom';
 import styles from './Footer.module.scss';
 import LogoIcon from '../../img/icons/LogoIcon.svg';
 import ChevronIcon from '../../img/icons/ChevronIcon.svg';
+import LogoIconDT from '../../img/icons/LogoIcon--DarkTheme.svg';
+import ChevronIconDT from '../../img/icons/ChevronIcon--DarkTheme.svg';
+import { useAppContext } from '../../context/AppContext';
 
-export const Footer: React.FC = () => (
-  <footer className={styles.wrapper}>
+export const Footer: React.FC = () => {
+  const { theme } = useAppContext();
+
+  return (<footer className={styles.wrapper}>
     <Link to="/" className={styles.logoLink}>
-      <img src={LogoIcon} alt="Logo" />
+      <img src={`${theme === 'dark' ? LogoIconDT : LogoIcon}`} alt="Logo" />
     </Link>
 
     <nav className={styles.nav}>
@@ -44,8 +49,8 @@ export const Footer: React.FC = () => (
         className={styles.backToTopButton}
         onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
       >
-        <img src={ChevronIcon} className={styles.backToTopIcon }/>
+        <img src={`${theme === 'dark' ? ChevronIconDT : ChevronIcon}`} className={styles.backToTopIcon }/>
       </div>
     </div>
   </footer>
-);
+)};

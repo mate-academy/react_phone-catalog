@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import styles from './ActionButtons.module.scss';
-import favoritesIcon from '../../img/icons/fav.svg';
+import favoritesIcon from '../../img/icons/FavoritesIcon.svg';
+import favoritesIconDT from '../../img/icons/FavoritesIcon--DarkTheme.svg';
 import favoritesIconRed from '../../img/icons/fav-red.svg';
 import { useAppContext } from '../../context/AppContext';
 import { LimitedProduct } from '../../types/Product';
@@ -19,6 +20,7 @@ export const ActionButtons: React.FC<ButtonProps> = ({ product }) => {
     setProductsInCart,
     productsInCartCount,
     setProductsInCartCount,
+    theme
   } = useAppContext();
   const [isProductInFavs, setIsProductInFavs] = useState<boolean | undefined>(undefined);
   const [isProductInCart, setIsProductInCart] = useState<boolean | undefined>(undefined);
@@ -84,7 +86,7 @@ export const ActionButtons: React.FC<ButtonProps> = ({ product }) => {
       <button className={styles.buttonFavorite} onClick={handleFavorites}>
         <img
           className={styles.buttonFavoriteIcon}
-          src={isProductInFavs ? favoritesIconRed : favoritesIcon}
+          src={`${isProductInFavs ? favoritesIconRed : theme === 'dark' ? favoritesIconDT : favoritesIcon}`}
           alt="favorite"
         />
       </button>

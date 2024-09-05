@@ -2,7 +2,9 @@ import React, { useEffect, useState, useMemo } from 'react';
 import { ProductCard } from '../ProductCard';
 import { LimitedProduct } from '../../types/Product';
 import styles from './ProductSlider.module.scss';
-import ChevronIcon from '../../img/icons/ChevronIcon.svg';
+import chevronIcon from '../../img/icons/ChevronIcon.svg';
+import chevronIconDT from '../../img/icons/ChevronIcon--DarkTheme.svg';
+import { useAppContext } from '../../context/AppContext';
 
 type ProductSliderProps = {
   title: string;
@@ -11,6 +13,7 @@ type ProductSliderProps = {
 
 export const ProductSlider: React.FC<ProductSliderProps> = ({ title, count }) => {
   const [products, setProducts] = useState<LimitedProduct[]>([]);
+  const { theme } = useAppContext();
 
   useEffect(() => {
     const fetchProductData = async () => {
@@ -60,7 +63,7 @@ export const ProductSlider: React.FC<ProductSliderProps> = ({ title, count }) =>
               }
             }}
           >
-            <img src={ChevronIcon} alt="scroll right" />
+            <img src={`${theme === 'dark' ? chevronIconDT : chevronIcon}`} alt="scroll right" />
           </button>
 
           <button
@@ -71,7 +74,7 @@ export const ProductSlider: React.FC<ProductSliderProps> = ({ title, count }) =>
               }
             }}
           >
-            <img src={ChevronIcon} alt="scroll right" className={styles.iconNext} />
+            <img src={`${theme === 'dark' ? chevronIconDT : chevronIcon}`} alt="scroll right" className={styles.iconNext} />
           </button>
         </div>
       </div>

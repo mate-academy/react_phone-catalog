@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import styles from './Pagination.module.scss';
-import ChevronIcon from '../../img/icons/ChevronIcon.svg';
+import chevronIcon from '../../img/icons/ChevronIcon.svg';
+import chevronIconDT from '../../img/icons/ChevronIcon--DarkTheme.svg';
 import classNames from 'classnames';
+import { useAppContext } from '../../context/AppContext';
 
 type PaginationProps = {
   numberOfPages: number;
@@ -17,6 +19,7 @@ export const Pagination: React.FC<PaginationProps> = ({
   const arrayOfPageButtons = Array.from({ length: numberOfPages }, (_, i) => i + 1);
   const [offset, setOffset] = useState(0);
   const [mvmtBalance, setMvmtBalance] = useState(0);
+  const { theme } = useAppContext();
 
   const moveLeft = () => {
       if (mvmtBalance > 0) {
@@ -39,7 +42,7 @@ export const Pagination: React.FC<PaginationProps> = ({
         onClick={moveLeft}
       >
         <img
-          src={ChevronIcon}
+          src={`${theme === 'dark' ? chevronIconDT : chevronIcon}`}
           alt="Previous page"
         />
       </button>
@@ -65,7 +68,7 @@ export const Pagination: React.FC<PaginationProps> = ({
         onClick={moveRight}
       >
         <img
-          src={ChevronIcon}
+          src={`${theme === 'dark' ? chevronIconDT : chevronIcon}`}
           alt="Next page"
           className={styles.next}
         />

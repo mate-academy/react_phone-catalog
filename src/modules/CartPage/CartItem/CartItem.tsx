@@ -3,6 +3,9 @@ import styles from './CartItem.module.scss';
 import plusIcon from '../../../img/icons/PlusIcon.svg';
 import minusIcon from '../../../img/icons/MinusIcon.svg';
 import crossIcon from '../../../img/icons/CrossIcon.svg';
+import plusIconDT from '../../../img/icons/PlusIcon--DarkTheme.svg';
+import minusIconDT from '../../../img/icons/MinusIcon--DarkTheme.svg';
+import crossIconDT from '../../../img/icons/CrossIcon--DarkTheme.svg';
 import { useAppContext } from '../../../context/AppContext';
 import { LimitedProduct } from '../../../types/Product';
 import { Link } from 'react-router-dom';
@@ -12,7 +15,7 @@ type CartItemProps = {
 };
 
 export const CartItem: React.FC<CartItemProps> = ({ product }) => {
-  const { productsInCart, setProductsInCart, productsInCartCount, setProductsInCartCount } = useAppContext();
+  const { productsInCart, setProductsInCart, productsInCartCount, setProductsInCartCount, theme } = useAppContext();
 
   const foundIndex = productsInCart.findIndex(p => p.id === product.id);
 
@@ -46,7 +49,7 @@ export const CartItem: React.FC<CartItemProps> = ({ product }) => {
       <div className={styles.mainContainer}>
         <button onClick={removeFromCart} className={styles.deleteButton}>
           <img
-            src={crossIcon}
+            src={`${theme === 'dark' ? crossIconDT : crossIcon}`}
             alt="Delete"
             className={styles.deleteButtonIcon}
           />
@@ -67,7 +70,7 @@ export const CartItem: React.FC<CartItemProps> = ({ product }) => {
             className={styles.button}
           >
             <img
-              src={minusIcon}
+              src={`${theme === 'dark' ? minusIconDT : minusIcon}`}
               alt="Decrease"
               className={styles.controlButtonIcon}
             />
@@ -82,7 +85,7 @@ export const CartItem: React.FC<CartItemProps> = ({ product }) => {
             className={styles.button}
           >
             <img
-              src={plusIcon}
+              src={`${theme === 'dark' ? plusIconDT : plusIcon}`}
               alt="Increase"
               className={styles.controlButtonIcon}
             />
