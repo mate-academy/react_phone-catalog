@@ -30,7 +30,7 @@ export const ImageGallery: React.FC = () => {
           <img
             key={index}
             src={item}
-            className={styles.thumbnail}
+            className={`${styles.thumbnail} ${item === zoomedImage ? styles.selectedThumbnail : ""}`}
             alt={`Thumbnail ${index}`}
             onClick={() => handleClick(index)}
           />
