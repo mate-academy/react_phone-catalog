@@ -18,6 +18,7 @@
   flex-direction: column;
   padding: 32px 16px;
   gap: 32px;
+  border-top: solid var(--color-elements) 1px;
 
   @include on-tablet {
     @include section-grid;
@@ -92,6 +93,7 @@
   color: var(--color-secondary);
   text-decoration: none;
   margin-right: 16px;
+  font-weight: 400;
 }
 
 .backToTopButton {
