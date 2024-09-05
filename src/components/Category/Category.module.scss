@@ -1,0 +1,93 @@
+@import "../../styles/main";
+
+.container {
+  padding-top: 56px;
+
+  @include padding-inline;
+
+  @include on-tablet {
+    padding-inline: 0;
+
+    @include container;
+
+    padding-inline: 24px;
+  }
+
+  @include on-desktop {
+    padding-inline: 0;
+  }
+}
+
+.title {
+  @include h2-mobile;
+
+  color: var(--color-white);
+
+  @include on-tablet {
+    @include h2-tablet;
+  }
+}
+
+.categories {
+  padding-top: 24px;
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+
+  @include on-tablet {
+    grid-template-columns: repeat(3, 1fr);
+    justify-content: space-between;
+    gap: 16px;
+  }
+}
+
+.category {
+  display: block;
+  width: 100%;
+  min-height: 288px;
+  padding-block: 24px;
+  position: relative;
+  overflow: hidden;
+  padding-bottom: 100%;
+
+  @include on-tablet {
+    min-width: 187px;
+    padding-bottom: 100%;
+  }
+
+  @include on-desktop {
+    width: 368px;
+    height: 368px;
+  }
+}
+
+.image {
+  position: absolute;
+  object-fit: contain;
+  left: -10px;
+  top: -20px;
+}
+
+.subtitle {
+  @include h4-mobile;
+
+  color: var(--color-white);
+  padding-top: 24px;
+  padding-bottom: 4px;
+
+  @include on-tablet {
+    @include h4-tablet;
+  }
+
+}
+
+.count {
+  @include body-text;
+
+  color: var(--color-secondary);
+
+  margin-bottom: 32px;
+
+  &:last-child {
+    padding-bottom: 0;
+  }
+}

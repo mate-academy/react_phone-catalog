@@ -1,7 +1,16 @@
-import './App.scss';
+import styles from './App.module.scss';
+import { Header } from './components/Header';
+import { Outlet } from 'react-router-dom';
+import { Footer } from './components/Footer';
 
-export const App = () => (
-  <div className="App">
-    <h1>Product Catalog</h1>
-  </div>
-);
+export const App = () => {
+  return (
+    <div className={styles.app}>
+      <Header />
+      <div className={styles.container}>
+        <Outlet />
+      </div>
+      <Footer />
+    </div>
+  );
+};
