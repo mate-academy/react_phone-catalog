@@ -62,7 +62,7 @@ export const AppProvider: React.FC<{ children: React.ReactElement }> = ({ childr
   const [isClickedProdyctInCart, setIsClickedProdyctInCart] = useState<boolean>(false);
 
   useEffect(() => {
-    alert('You’re welcome to explore the site, but please note that some styles are still under development and may not be fully implemented yet. Thank you for your understanding!')
+    alert('You’re welcome to explore the site, but please note that MOBILE and TABLET versions are still under development. Thank you for your understanding!')
   }, []);
 
   useEffect(() => {
