@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import styles from './ProductDetailsPage.module.scss';
 import chevronIcon from '../../img/icons/ChevronIcon.svg';
+import chevronIconDT from '../../img/icons/ChevronIcon--DarkTheme.svg';
 import { Header } from '../../components/Header';
 import { Footer } from '../../components/Footer';
 import { useAppContext } from '../../context/AppContext';
@@ -28,7 +29,8 @@ export const ProductDetailsPage: React.FC = () => {
     fetchedCategory,
     setFetchedCategory,
     products,
-    setProducts
+    setProducts,
+    theme
   } = useAppContext();
 
   const [isLoading, setIsLoading] = useState<boolean>(true);
@@ -92,7 +94,7 @@ export const ProductDetailsPage: React.FC = () => {
             {productDetails && <Breadcrumbs category={productDetails.category} />}
             <PreviousPage category={category} />
             <button className={styles.goBackButton}>
-              <img src={chevronIcon} alt="home" className={styles.chevronIcon} />
+              <img src={`${theme === 'dark' ? chevronIconDT : chevronIcon}`} alt="home" className={styles.chevronIcon} />
               <GoBack />
             </button>
             <h2 className={styles.title}>{clickedProduct.name}</h2>
