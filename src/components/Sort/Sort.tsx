@@ -11,11 +11,10 @@ export const Sort: React.FC = () => {
     const value = event.target.value as SortMethodTypes;
     setSortMethod(value);
     localStorage.setItem('sortMethod', JSON.stringify(sortMethod));
-    console.log('SORT METHOD SET TO', sortMethod)
   }
 
   return (
-    <div>
+    <div className={styles.container}>
       <div className={styles.label}>Sort by</div>
         <select onChange={handleMethodChange} className={styles.select} defaultValue={sortMethod}>
           <option value="newest">Newest</option>
