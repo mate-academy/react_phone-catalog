@@ -43,7 +43,7 @@ export const ProductSlider: React.FC<ProductSliderProps> = ({ title, count }) =>
 
   const handlePreviousSlide = () => {
     handlePositionCount(-1);
-    setPosition((prevPosition) => prevPosition + 292); // FIXED NUMBER WILL BE REPLACED LATER -> window.innerWidth
+    setPosition((prevPosition) => prevPosition + 292);
   };
 
   console.log(positionCount);

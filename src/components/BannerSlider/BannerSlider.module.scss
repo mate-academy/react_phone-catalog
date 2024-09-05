@@ -1,7 +1,7 @@
 .bannerSlider {
   display: flex;
   justify-content: center;
-  padding-top: 50px;
+  padding: 50px 0 30px;
 }
 
 .arrowButton {
@@ -13,7 +13,6 @@
   height: 100%;
   background-color: var(--color-icons);
   border: 1px solid var(--color-surface);
-  border-radius: 5%;
 
   &:hover {
     border: 1px solid var(--color-primary);
@@ -55,4 +54,26 @@
 
 .iconNext {
   transform: rotate(180deg);
+}
+
+.markers{
+  display: flex;
+  height: 4px;
+  gap: 15px;
+  justify-content: center;
+}
+
+.marker {
+  display: block;
+  width: 15px;
+  gap: 15px;
+  background-color: var(--color-surface);
+  cursor: pointer;
+}
+
+.markerDisplayed {
+  display: block;
+  width: 15px;
+  gap: 15px;
+  background-color: var(--color-button-hover);
 }
