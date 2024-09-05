@@ -6,13 +6,13 @@ import { PreviousPage } from '../../components/PreviousPage';
 import styles from './FavoritesPage.module.scss';
 import chevronIcon from '../../img/icons/ChevronIcon.svg';
 import { useAppContext } from '../../context/AppContext';
-import { Link } from 'react-router-dom';
 import { ProductCard } from '../../components/ProductCard';
 import { Footer } from '../../components/Footer';
+import { GoBack } from '../../components/GoBack';
 
 export const FavoritesPage: React.FC = () => {
   const category = useLocation().pathname.slice(1);
-  const { previousCurrentPage, favoriteProducts, setFavoriteProducts } = useAppContext();
+  const { favoriteProducts, setFavoriteProducts } = useAppContext();
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -43,9 +43,7 @@ export const FavoritesPage: React.FC = () => {
                 className={styles.chevronIcon}
               />
               <div className={styles.goBackText}>
-                <Link to={`/${previousCurrentPage[0]}`}>
-                  <div className={styles.label}>Back</div>
-                </Link>
+                <GoBack />
               </div>
             </button>
           </div>
