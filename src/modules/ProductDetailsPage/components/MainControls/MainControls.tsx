@@ -53,7 +53,7 @@ export const MainControls: React.FC<MainControlsProps> = () => {
       console.log(newClickedProduct);
     } else {
       const newClickedProduct = products.find((item: LimitedProduct) => item.itemId === newUrl.slice(9, newUrl.length));
-      console.log(newClickedProduct); // TU POWSTAJE UNDEFINED
+      console.log(newClickedProduct);
       setClickedProduct(newClickedProduct);
     }
   };
@@ -90,7 +90,7 @@ export const MainControls: React.FC<MainControlsProps> = () => {
             {productDetails.colorsAvailable.map((color: string) => (
               <div className={styles.colorButtonContainer} key={color}>
                 <button
-                  className={styles.colorButton}
+                  className={`${styles.colorButton} ${color === clickedProduct?.color ? styles.activeColorsAvailable : ""}`}
                   style={{ backgroundColor: color }}
                   onClick={() => handleColor(color)}
                 />
@@ -106,7 +106,7 @@ export const MainControls: React.FC<MainControlsProps> = () => {
           <div className={styles.buttons}>
             {productDetails.capacityAvailable.map((capacity: string) => (
               <button
-                className={styles.capacityButton}
+                className={`${styles.capacityButton} ${clickedProduct?.capacity === capacity ? styles.active : ""}`}
                 key={capacity}
                 onClick={() => handleCapacity(capacity)}
               >
