@@ -50,10 +50,14 @@ export const AppProvider: React.FC<{ children: React.ReactElement }> = ({ childr
     return storedCartItems ? JSON.parse(storedCartItems) : [];
   });
 
+  const [theme, setTheme] = useState<'light' | 'dark'>(() => {
+    const storedTheme = localStorage.getItem('theme');
+    return storedTheme === 'light' || storedTheme === 'dark' ? storedTheme : 'light';
+  });
+
   const [numberOfProductsPerPage, setNumberOfProductsPerPage] = useState<number>(8);
   const [clickedProduct, setClickedProduct] = useState<LimitedProduct | undefined>(undefined);
   const [previousCurrentPage, setPreviousCurrentPage] = useState<string[]>(['nothing','nothing']);
-  const [theme, setTheme] = useState<'light' | 'dark'>('light');
   const [sortMethod, setSortMethod] = useState<"newest" | "alpha" | "price">('newest');
   const [productDetails, setProductDetails] = useState<Product | undefined>(undefined);
   const [fetchedCategory, setFetchedCategory] = useState<Product[] | undefined>(undefined);
