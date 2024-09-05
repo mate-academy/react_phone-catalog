@@ -5,7 +5,7 @@
   display: flex;
   overflow: hidden;
   gap: 8px;
-  padding-top: 50px;
+  padding-top: 20px;
 }
 
 .chevronSpan {
@@ -23,6 +23,20 @@
   height: 15px;
   text-decoration: none;
   color: var(--color-secondary);
+  font-weight: 400;
+  padding-top: 5px;
+
+  @extend %small-text;
+}
+
+.labelBlack {
+  display: flex;
+  align-items: center;
+  height: 15px;
+  text-decoration: none;
+  color: var(--color-primary);
+  font-weight: 400;
+  padding-top: 5px;
 
   @extend %small-text;
 }
