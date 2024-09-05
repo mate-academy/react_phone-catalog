@@ -62,7 +62,7 @@ export const FavoritesPage: React.FC = () => {
                 </div>
               ))
             ) : (
-              <p>No favorites yet.</p>
+              <p className={styles.label}>No favorites yet.</p>
             )}
           </div>
         </div>
