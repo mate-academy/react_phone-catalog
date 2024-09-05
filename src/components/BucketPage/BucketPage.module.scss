@@ -1,0 +1,171 @@
+@import '../../utils/mixins.scss';
+@import '../../utils/vars.scss';
+
+.bucket {
+  @include content-padding-inline;
+  margin: 20px 0 80px 0;
+
+  &__buttonBack {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 4px;
+
+    p {
+      margin-top: 2.5px;
+      font-size: 12px;
+      color: $color-for-main-text;
+    }
+  }
+
+  &__title {
+    margin-bottom: 32px;
+    font-size: 32px;
+
+    @include on-tablet {
+      font-size: 48px;
+    }
+  }
+
+  &__generalProducts {
+    @include page-grid;
+
+    &_products {
+      grid-column: 1 / -1;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-bottom: 32px;
+
+      @include on-desktop {
+        grid-column: 1 / 17;
+      }
+
+      &_product {
+        border: 1px solid;
+        border-color: $color-for-borders;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        justify-content: space-between;
+        padding: 16px;
+        max-width: 100%;
+        height: fit-content;
+
+        &:hover {
+          border-color: $color-for-buttons;
+        }
+
+        @include on-tablet {
+          padding: 24px;
+          flex-direction: row;
+          gap: 24px;
+        }
+
+        &_firstSection {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          gap: 16px;
+
+          @include on-tablet {
+            gap: 24px;
+          }
+
+          &_close {
+            cursor: pointer;
+          }
+
+          &_image {
+            width: 80px;
+            height: 80px;
+            object-fit: contain;
+          }
+
+          p {
+            width: 70%;
+          }
+        }
+
+        &_secondSection {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          justify-content: space-between;
+
+          @include on-tablet {
+            gap: 24px;
+          }
+
+          &_buttons {
+            display: flex;
+            flex-direction: row;
+            gap: 14px;
+            align-items: center;
+            justify-content: center;
+
+            &_button {
+              width: 32px;
+              height: 32px;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              border: 1px solid;
+
+              &:hover {
+                cursor: pointer;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    &_total {
+      grid-column: 1 / -1;
+      padding: 24px;
+      border: 1px solid;
+      border-color: $color-for-borders;
+      max-width: 100%;
+      height: fit-content;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      justify-content: center;
+      align-items: center;
+
+      @include on-desktop {
+        grid-column: 17 / 25;
+      }
+
+      &_info {
+        display: flex;
+        flex-direction: column;
+        gap: 1px;
+        align-items: center;
+
+        h3 {
+          font-size: 32px;
+        }
+
+        p {
+          color: $color-for-main-text;
+          font-size: 14px;
+        }
+      }
+
+      &_button {
+        width: 100%;
+        height: 48px;
+        color: #fff;
+        background-color: $color-for-buttons;
+        font-size: 14px;
+      }
+    }
+  }
+}
+
+.empty {
+  font-size: 30px;
+}

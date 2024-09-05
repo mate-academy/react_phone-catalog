@@ -1,0 +1,173 @@
+@import '../../utils/mixins.scss';
+@import '../../utils/vars.scss';
+
+.topbar {
+  border-bottom: 1px solid;
+  border-color: $color-for-borders;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  @include on-desktop {
+    padding-inline: 18px;
+  }
+
+  &LogoAndButtons {
+    padding: 18px 0;
+    padding-inline: 16px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 16px;
+
+    @include on-desktop {
+      gap: 24px;
+    }
+
+    &_buttons {
+      ul {
+        padding: 0;
+        margin: 0;
+        display: flex;
+        color: $color-for-main-text;
+        flex-direction: row;
+        gap: 32px;
+        list-style-type: none;
+        font-size: 12px;
+        text-transform: uppercase;
+
+        @include on-desktop {
+          gap: 64px;
+        }
+      }
+
+      a {
+        position: relative; // щоб позиціонувати лінію під текстом
+
+        &:hover {
+          color: black;
+        }
+      }
+
+      &_isActive {
+        color: black; // активний колір тексту
+        &::after {
+          content: '';
+          position: absolute;
+          bottom: -30px; // для прижаття до нижнього краю
+          left: 0;
+          width: 100%;
+          height: 3px; // товщина лінії
+          background-color: black;
+        }
+      }
+
+
+
+      display: none;
+
+      @include on-tablet {
+        display: block;
+      }
+    }
+
+    img {
+      @include hover(transform, scale(1.05));
+    }
+  }
+
+  &Icons {
+    position: relative;
+    flex-direction: row;
+    display: none;
+    align-items: center;
+
+    @include on-tablet {
+      display: flex;
+    }
+
+    & > :first-child {
+      border-left: 1px solid;
+      border-right: 1px solid;
+      border-color: $color-for-borders;
+    }
+
+    &_icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      position: relative;
+
+      &_isActive {
+        color: black; // активний колір тексту
+        &::after {
+          content: '';
+          position: absolute;
+          bottom: 0px; // для прижаття до нижнього краю
+          left: 0;
+          width: 100%;
+          height: 3px; // товщина лінії
+          background-color: black;
+        }
+    }
+
+      &_inside {
+        width: 16px;
+        padding: 0 24px;
+      }
+
+      &__amountFav {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 14px;
+        height: 14px;
+        border: 1px solid;
+        border-color: white;
+        box-sizing: border-box;
+        background-color: #EB5757;
+        color: white;
+        font-size: 9px;
+        border-radius: 50%;
+        position: absolute;
+        top: 18px;
+        right: 20px;
+      }
+
+      &__amountBucket {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 14px;
+        height: 14px;
+        border: 1px solid;
+        border-color: white;
+        box-sizing: border-box;
+        background-color: #EB5757;
+        color: white;
+        font-size: 9px;
+        border-radius: 50%;
+        position: absolute;
+        top: 18px;
+        right: 18px;
+      }
+    }
+
+    &_menu {
+      display: flex;
+
+      img {
+        width: 16px;
+        padding: 0 24px;
+        border-left: 1px solid;
+        border-color: $color-for-borders;
+
+      }
+
+      @include on-tablet {
+        display: none;
+      }
+    }
+  }
+}

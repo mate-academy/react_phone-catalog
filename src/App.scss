@@ -1,1 +1,41 @@
-// not empty
+/* Define the custom fonts using @font-face */
+@font-face {
+  font-family: 'Mont-Bold';
+  src: url('../public/fonts/Mont-Bold.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'Mont-Regular';
+  src: url('../public/fonts/Mont-Regular.otf') format('opentype');
+}
+
+/* Global styles */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.header {
+  background-color: #fff;
+  position: sticky; top: 0;
+  z-index: 1;
+}
+
+/* Main content area */
+.main {
+  min-height: calc(100vh - 170px);
+}
+
+/* Heading styles */
+h1, h2, h3, h4, li {
+  font-family: 'Mont-Bold', sans-serif;
+}
+
+/* Paragraph styles */
+p {
+  font-family: 'Mont-Regular', sans-serif;
+}

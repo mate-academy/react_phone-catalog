@@ -1,0 +1,58 @@
+@import '../../utils/mixins.scss';
+@import '../../utils/vars.scss';
+
+.newModels {
+  &_title {
+    margin-bottom: 24px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    h2 {
+      width: 40%;
+      font-size: 22px;
+
+      @include on-tablet {
+        width: 100%;
+        font-size: 32px;
+      }
+    }
+
+    &__buttons {
+      display: flex;
+      flex-direction: row;
+      gap: 16px;
+
+      button {
+        cursor: pointer;
+        background-color: unset;
+        width: 40px;
+        height: 40px;
+        box-sizing: border-box;
+        border: 1px solid;
+        border-color: #B4BDC3;
+        line-height: 45px;
+        text-align: center;
+
+        &:disabled {
+          border-color: $color-for-borders;
+          cursor: unset;
+        }
+      }
+    }
+  }
+}
+
+.itemsList {
+  @include page-grid;
+
+  div {
+    grid-column: span 4;
+
+    @include on-desktop {
+      grid-column: span 6;
+    }
+  }
+}
+

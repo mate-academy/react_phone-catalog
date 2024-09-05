@@ -1,0 +1,81 @@
+@import '../../utils/mixins.scss';
+@import '../../utils/vars.scss';
+
+.container {
+  border-top: 1px solid;
+  border-color: $color-for-borders;
+  @include content-padding-inline;
+}
+
+.footer_wrapper {
+  padding: 32px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+
+  @include on-tablet {
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  &_logo {
+    width: fit-content;
+
+    @include hover(transform, scale(1.05));
+  }
+
+  &Navbar {
+    ul {
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      list-style-type: none;
+      color: $color-for-main-text;
+      font-size: 12px;
+      text-transform: uppercase;
+
+
+      @include on-tablet {
+        flex-direction: row;
+      }
+
+      @include on-desktop {
+        gap: 100px;
+      }
+
+      li {
+        @include hover(transform, scale(1.05));
+      }
+    }
+
+    a {
+      color: $color-for-main-text;
+    }
+  }
+
+  &ButtonToTop {
+    justify-content: center;
+    font-size: 12px;
+    color: $color-for-main-text;
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+    align-items: center;
+
+    p {
+      white-space: nowrap;
+    }
+
+    img {
+      width: 16px;
+      padding: 8px;
+      border: 1px solid;
+      cursor: pointer;
+
+      @include hover(transform, scale(1.05));
+    }
+  }
+}

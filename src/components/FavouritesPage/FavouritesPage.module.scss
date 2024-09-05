@@ -1,0 +1,52 @@
+@import '../../utils/mixins.scss';
+@import '../../utils/vars.scss';
+
+.favourites {
+  margin: 24px 0 80px 0;
+  @include content-padding-inline;
+
+  &_route {
+    margin-bottom: 24px;
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    justify-content: left;
+    align-items: center;
+
+    @include on-tablet {
+      margin-bottom: 40px;
+    }
+
+    p {
+      color: $color-for-main-text;
+      font-size: 12px;
+    }
+  }
+
+  &_title {
+    font-size: 32px;
+    margin-bottom: 8px;
+
+    @include on-tablet {
+      font-size: 48px;
+    }
+  }
+
+  &_text {
+    margin-bottom: 40px;
+    color: $color-for-main-text;
+    font-size: 14px;
+  }
+
+  &_list {
+    @include page-grid;
+
+    div {
+      grid-column: span 4;
+
+      @include on-tablet {
+        grid-column: span 6;
+      }
+    }
+  }
+}
