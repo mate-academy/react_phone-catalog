@@ -1,3 +1,5 @@
+@import '../../styles/main';
+
 .bannerSlider {
   display: flex;
   justify-content: center;
@@ -21,7 +23,14 @@
 }
 
 .topWrapper {
-  width: 1155px;
+  @include on-tablet {
+    width: 100vw;
+    padding: 0 20px;
+  }
+
+  @include on-desktop {
+    width: 1155px;
+  }
 }
 
 .buttons {

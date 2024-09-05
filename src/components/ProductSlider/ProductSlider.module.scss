@@ -3,8 +3,14 @@
 .productSlider {
   display: flex;
   flex-direction: column;
-  align-items: center;
   padding-top: 40px;
+
+  @include on-tablet {
+    width: 100vw;
+  }
+  @include on-desktop {
+    align-items: center;
+  }
 }
 
 .topContainer {
@@ -20,8 +26,15 @@
 
 .slideWraper {
   display: flex;
-  width: 1173px;
   overflow: hidden;
+
+  @include on-tablet {
+    width: 100vw;
+  }
+
+  @include on-desktop {
+    width: 1173px;
+  }
 }
 
 .slideList {
@@ -36,8 +49,17 @@
 
 .titleContainer {
   display: flex;
-  width: 1173px;
+
   justify-content: space-between;
+
+  @include on-tablet {
+    width: 100vw;
+    padding: 0 20px 0 0;
+  }
+
+  @include on-desktop {
+    width: 1173px;
+  }
 }
 
 .title {
