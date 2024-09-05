@@ -6,6 +6,7 @@
 
 .topContainer {
   grid-column: 1 / -1;
+  padding-bottom: 80px;
 }
 
 .title {
@@ -21,6 +22,7 @@
 .count {
   @extend %body-text;
   color: var(--color-secondary);
+  padding-top: 10px;;
 }
 
 .noResults {
@@ -86,4 +88,10 @@
   @include on-desktop {
     grid-column: span 6;
   }
+}
+
+.controls {
+  padding-top: 40px;
+  display: flex;
+  gap: 20px;
 }

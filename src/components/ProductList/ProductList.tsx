@@ -91,8 +91,10 @@ export const ProductList: React.FC<ProductListProps> = ({ category, title }) => 
           {products.length} items
         </div>
 
-        <Sort />
-        <DropDown numberOfProducts={products.length} />
+        <div className={styles.controls}>
+          <Sort />
+          <DropDown numberOfProducts={products.length} />
+        </div>
 
         <ul className={styles.container}>
           {arrayOfDisplayedIndexes.map((product) => (
