@@ -78,6 +78,7 @@
 
 .existPrice {
   color: var(--color-primary);
+  text-decoration: line-through;
 }
 
 .hotPrice {
@@ -104,9 +105,12 @@
 
 .descriptionTitle {
   @extend %small-text;
+  font-weight: 400;
+  color: var(--color-surface)
 }
 
 .descriptionText {
   @extend %small-text;
   color: var(--color-primary);
+  font-weight: 400;
 }
