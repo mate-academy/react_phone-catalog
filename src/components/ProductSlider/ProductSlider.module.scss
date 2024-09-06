@@ -1,21 +1,32 @@
 @import '../../styles/main';
 
+.topContainer {
+  display: flex;
+  overflow: hidden;
+
+  @include on-tablet {
+    width: 100%;
+  }
+
+  @include on-desktop {
+    justify-content: center;
+  }
+}
+
 .productSlider {
   display: flex;
   flex-direction: column;
   padding-top: 40px;
 
   @include on-tablet {
-    width: 100vw;
+    align-items: center;
+    width: 100%;
   }
+
   @include on-desktop {
     align-items: center;
+    width: 100%;
   }
-}
-
-.topContainer {
-  display: flex;
-  justify-content: center;
 }
 
 .sliderContainer {
@@ -29,7 +40,7 @@
   overflow: hidden;
 
   @include on-tablet {
-    width: 100vw;
+    width: 100%;
   }
 
   @include on-desktop {
@@ -49,32 +60,39 @@
 
 .titleContainer {
   display: flex;
-
   justify-content: space-between;
 
   @include on-tablet {
-    width: 100vw;
-    padding: 0 20px 0 0;
+    width: 100%;
+    padding: 0 15px;
   }
 
   @include on-desktop {
     width: 1173px;
+    padding: 0;
   }
 }
 
 .title {
   width: 90%;
   align-self: center;
-  padding: 40px 0 20px 10px;
 
-  @include h2-tablet
+  @include h2-tablet;
+
+  @include on-desktop {
+    padding: 40px 10px 10px;
+  }
 }
 
 .buttonContainer {
-  padding: 40px 12px 0 12px;
+
   gap: 10px;
   display: flex;
   justify-content: end;
+
+  @include on-desktop {
+    padding: 40px 12px 0 12px;
+  }
 }
 
 .arrowButton {
