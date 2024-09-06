@@ -29,7 +29,6 @@ export const FavoritesPage: React.FC = () => {
     <div>
       <Header />
       <PreviousPage category={category} />
-
       <div className={styles.favoritesPage}>
         <Breadcrumbs category={category} />
 
@@ -65,6 +64,9 @@ export const FavoritesPage: React.FC = () => {
             )}
           </div>
         </div>
+
+
+
       </div>
       <Footer />
     </div>

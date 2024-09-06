@@ -55,7 +55,26 @@
 
 .container {
   display: grid;
-  grid-template-columns: repeat(4, 1fr); /* 4 equal columns */
+
+  @include section-grid;
+
+  grid-column: 1 / -1;
   gap: 15px;
+
 }
 
+.product {
+  grid-column: span 4;
+
+  @include on-tablet {
+    grid-column: span 6;
+  }
+
+  @include middle-screen {
+    grid-column: span 4;
+  }
+
+  @include on-desktop {
+    grid-column: span 6;
+  }
+}
