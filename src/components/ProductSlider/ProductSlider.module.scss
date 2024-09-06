@@ -38,6 +38,7 @@
 .slideWraper {
   display: flex;
   overflow: hidden;
+  padding-left: 5px;
 
   @include on-tablet {
     width: 100%;
@@ -76,8 +77,13 @@
 .title {
   width: 90%;
   align-self: center;
+  padding: 0 15px;
 
   @include h2-tablet;
+
+  @include on-tablet {
+    padding: 0;
+  }
 
   @include on-desktop {
     padding: 40px 10px 10px;
@@ -85,11 +91,14 @@
 }
 
 .buttonContainer {
-
   gap: 10px;
   display: flex;
   justify-content: end;
+  padding-right: 15px;
 
+  @include on-tablet {
+    padding: 0;
+  }
   @include on-desktop {
     padding: 40px 12px 0 12px;
   }
