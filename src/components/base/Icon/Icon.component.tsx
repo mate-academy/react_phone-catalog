@@ -35,7 +35,9 @@ export const Icon: React.FC<Props> = ({
           [`icon--${iconUse}-${iconSize}`]: iconSize,
         })}
       />
-      {length !== 0 && <div className="icon__content">{length}</div>}
+      {(iconUse === 'bar' || iconUse === 'menu') && length !== 0 && (
+        <div className="icon__content">{length}</div>
+      )}
     </div>
   );
 };
