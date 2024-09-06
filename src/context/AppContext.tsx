@@ -30,6 +30,8 @@ type AppContextType = {
   setIsClickedProdyctInFavs: (status: boolean) => void;
   isClickedProdyctInCart: boolean;
   setIsClickedProdyctInCart: (status: boolean) => void;
+  isMobMenuOpen: boolean;
+  setIsMobMenuOpen: (status: boolean) => void;
 };
 
 export const AppContext = createContext<AppContextType | undefined>(undefined);
@@ -64,6 +66,7 @@ export const AppProvider: React.FC<{ children: React.ReactElement }> = ({ childr
   const [products, setProducts] = useState<LimitedProduct[]>([]);
   const [isClickedProdyctInFavs, setIsClickedProdyctInFavs] = useState<boolean>(false);
   const [isClickedProdyctInCart, setIsClickedProdyctInCart] = useState<boolean>(false);
+  const [isMobMenuOpen, setIsMobMenuOpen] = useState<boolean>(false);
 
   useEffect(() => {
     alert('You’re welcome to explore the site, but please note that MOBILE version is still under development. Thank you for your understanding!')
@@ -110,7 +113,9 @@ export const AppProvider: React.FC<{ children: React.ReactElement }> = ({ childr
       isClickedProdyctInFavs,
       setIsClickedProdyctInFavs,
       isClickedProdyctInCart,
-      setIsClickedProdyctInCart
+      setIsClickedProdyctInCart,
+      isMobMenuOpen,
+      setIsMobMenuOpen
     }}>
       {children}
     </AppContext.Provider>
