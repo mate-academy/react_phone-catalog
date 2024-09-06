@@ -14,16 +14,21 @@
 
 .wrapper {
   display: flex;
-  width: 100%;
+
   flex-direction: column;
   padding: 32px 16px;
   gap: 32px;
   border-top: solid var(--color-elements) 1px;
 
   @include on-tablet {
+    width: 100%;
     @include section-grid;
     align-items: center;
     justify-content: center;
+  }
+
+  @include on-desktop {
+    width: 100%;
   }
 }
 
