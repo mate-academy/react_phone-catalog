@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { NavLink, Link } from "react-router-dom";
 import styles from './Header.module.scss';
 import LogoIcon from '../../img/icons/LogoIcon.svg';
@@ -11,7 +11,19 @@ import { Theme } from '../Theme';
 import { useAppContext } from '../../context/AppContext';
 
 export const Header: React.FC = () => {
-  const { theme } = useAppContext();
+  const { theme, productsInCartCount, favoriteProducts } = useAppContext();
+  const [cartCount, setCartCount] = useState<number>(0)
+
+  useEffect(() => {
+    let cartCount: number = 0;
+
+    for (let i = 0; i < productsInCartCount.length; i++) {
+      cartCount = cartCount + productsInCartCount[i]
+    }
+
+    setCartCount(cartCount)
+
+  }, [productsInCartCount]);
 
   return (
     <header className={styles.header}>
@@ -52,6 +64,11 @@ export const Header: React.FC = () => {
                   className={styles.icon}
                 />
               </div>
+              <div className={`${favoriteProducts.length > 0 ? styles.count : styles.hidden}`}>
+                <div className={styles.countText}>
+                  {favoriteProducts.length}
+                </div>
+              </div>
             </NavLink>
 
             <NavLink to="/cart" className={styles.actionItem} activeClassName={styles.isActive}>
@@ -61,6 +78,12 @@ export const Header: React.FC = () => {
                   alt="Cart"
                   className={styles.icon}
                 />
+              </div>
+
+              <div className={`${cartCount > 0 ? styles.count : styles.hidden}`}>
+                <div className={styles.countText}>
+                  {cartCount}
+                </div>
               </div>
             </NavLink>
 
