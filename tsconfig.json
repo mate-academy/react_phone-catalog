@@ -1,10 +1,16 @@
 {
-  "extends": "@mate-academy/students-ts-config",
-  "include": [
-    "src"
-  ],
   "compilerOptions": {
     "sourceMap": false,
-    "types": ["node", "cypress"]
-  }
+    "types": ["node", "cypress"],
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "baseUrl": "./src/",
+    "paths": {
+      "@/components/*": ["*/"]
+      // "@/*": ["./*"]
+    }
+  },
+  "extends": "@mate-academy/students-ts-config",
+  "include": ["src", "src/global.d.ts", "src/**/*.ts", "src/**/*.tsx"]
 }

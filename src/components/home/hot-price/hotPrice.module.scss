@@ -1,0 +1,15 @@
+.hotPrice {
+  margin-bottom: 80px;
+}
+
+@media (max-width: 1199px) {
+  .hotPrice {
+    margin-bottom: var(--size-64);
+  }
+}
+
+@media (max-width: 639px) {
+  .hotPrice {
+    margin-bottom: var(--size-56);
+  }
+}
