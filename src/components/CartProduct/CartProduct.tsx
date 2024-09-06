@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import styles from './CartProduct.module.scss';
 import { Product } from '../../types/Product';
 import { BASE_URL } from '../../utils/const';
@@ -10,34 +10,7 @@ interface Props {
 }
 
 const CartProduct: React.FC<Props> = ({ product, quantity }) => {
-  const [productPrice] = useState(product.price);
-  const [counter, setCounter] = useState(quantity);
-
-  const { removeFromCart, updateCart } = useContext(ProductContext);
-
-  const increase = () => {
-    setCounter(current => {
-      const newCounter = current + 1;
-
-      updateCart(product.id, newCounter);
-
-      return newCounter;
-    });
-  };
-
-  const decrease = () => {
-    setCounter(current => {
-      if (current > 1) {
-        const newCounter = current - 1;
-
-        updateCart(product.id, newCounter);
-
-        return newCounter;
-      }
-
-      return current;
-    });
-  };
+  const { removeFromCart, increase, decrease } = useContext(ProductContext);
 
   return (
     <div className={styles.container}>
@@ -59,15 +32,21 @@ const CartProduct: React.FC<Props> = ({ product, quantity }) => {
 
         <div className={styles.bottom}>
           <div className={styles.counter}>
-            <button className={styles.action} onClick={decrease}>
+            <button
+              className={styles.action}
+              onClick={() => decrease(product.id, quantity)}
+            >
               <img src={`${BASE_URL}/icons/Minus.svg`} alt="Minus" />
             </button>
-            <span className={styles.count}>{counter}</span>
-            <button className={styles.action} onClick={increase}>
+            <span className={styles.count}>{quantity}</span>
+            <button
+              className={styles.action}
+              onClick={() => increase(product.id, quantity)}
+            >
               <img src={`${BASE_URL}/icons/Plus.svg`} alt="Plus" />
             </button>
           </div>
-          <p className={styles.productPrice}>{`$${productPrice}`}</p>
+          <p className={styles.productPrice}>{`$${product.price}`}</p>
         </div>
       </div>
     </div>

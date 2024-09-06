@@ -3,8 +3,7 @@ import styles from './TotalCart.module.scss';
 import { ProductContext } from '../../context/ProductContext';
 
 const TotalCart = () => {
-  const { getTotalSum, cart, setCart } = useContext(ProductContext);
-  const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
+  const { getTotalSum, setCart, totalItemsInCart } = useContext(ProductContext);
 
   const handleCheckout = () => {
     const userConfirmed = confirm(
@@ -20,7 +19,9 @@ const TotalCart = () => {
     <div className={styles.total}>
       <div className={styles.top}>
         <h1 className={styles.totalPrice}>{`$${getTotalSum()}`}</h1>
-        <p className={styles.totalCount}>{`Total for ${totalItems} items`}</p>
+        <p
+          className={styles.totalCount}
+        >{`Total for ${totalItemsInCart} items`}</p>
       </div>
       <div className={styles.bottom}>
         <button className={styles.checkout} onClick={handleCheckout}>

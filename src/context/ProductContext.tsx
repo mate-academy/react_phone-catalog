@@ -34,6 +34,9 @@ interface ContextProps {
     v: CartItemProps[] | ((val: CartItemProps[]) => CartItemProps[]),
   ) => void;
   reloading: () => void;
+  totalItemsInCart: number;
+  increase: (productId: number, quantity: number) => void;
+  decrease: (productId: number, quantity: number) => void;
 }
 
 export const ProductContext = React.createContext<ContextProps>({
@@ -58,6 +61,9 @@ export const ProductContext = React.createContext<ContextProps>({
   removeFromCart: () => {},
   getTotalSum: () => 0,
   updateCart: () => {},
+  totalItemsInCart: 0,
+  increase: () => {},
+  decrease: () => {},
 });
 
 interface Props {
@@ -78,6 +84,7 @@ export const ProductProvider: React.FC<Props> = ({ children }) => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   const [reload, setReload] = useState(new Date());
+  const [totalItemsInCart, setTotalItemsInCart] = useState(cart.length);
 
   const reloading = useCallback(() => {
     setReload(new Date());
@@ -156,11 +163,17 @@ export const ProductProvider: React.FC<Props> = ({ children }) => {
 
   const updateCart = useCallback(
     (id: number, quantity: number) => {
-      setCart(currentCart =>
-        currentCart.map(item =>
-          item.product.id === id ? { ...item, quantity } : item,
-        ),
-      );
+      setCart(currentCart => {
+        const updatedCart = currentCart
+          .map(item =>
+            item.product.id === id
+              ? { ...item, quantity: Math.max(quantity, 1) }
+              : item,
+          )
+          .filter(item => item.quantity > 0);
+
+        return updatedCart;
+      });
     },
     [setCart],
   );
@@ -179,6 +192,30 @@ export const ProductProvider: React.FC<Props> = ({ children }) => {
       (sum, item) => sum + item.product.price * item.quantity,
       0,
     );
+  }, [cart]);
+
+  const increase = useCallback(
+    (productId: number, quantity: number) => {
+      updateCart(productId, quantity + 1);
+      setTotalItemsInCart(prev => prev + 1);
+    },
+    [updateCart, cart, totalItemsInCart],
+  );
+
+  const decrease = useCallback(
+    (productId: number, quantity: number) => {
+      if (quantity > 1) {
+        updateCart(productId, quantity - 1);
+        setTotalItemsInCart(prev => prev - 1);
+      }
+    },
+    [updateCart, cart],
+  );
+
+  useEffect(() => {
+    const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
+
+    setTotalItemsInCart(totalItems);
   }, [cart]);
 
   useEffect(() => {
@@ -228,6 +265,9 @@ export const ProductProvider: React.FC<Props> = ({ children }) => {
       updateCart,
       setCart,
       reloading,
+      totalItemsInCart,
+      increase,
+      decrease,
     }),
     [
       cart,
@@ -241,16 +281,18 @@ export const ProductProvider: React.FC<Props> = ({ children }) => {
       error,
       allProducts,
       suggestedProducts,
-      setError,
       setLoading,
+      setError,
       addToFavorite,
       addToCart,
       removeFromFavorite,
       removeFromCart,
       getTotalSum,
       updateCart,
-      setCart,
       reloading,
+      totalItemsInCart,
+      increase,
+      decrease,
     ],
   );
 

@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { BASE_URL } from '../../utils/const';
 import styles from './Header.module.scss';
@@ -17,8 +17,20 @@ export const classActiveIcon = ({ isActive }: { isActive: boolean }) =>
   });
 
 const Header = () => {
-  const { cart, favorites } = useContext(ProductContext);
+  const { favorites, totalItemsInCart } = useContext(ProductContext);
   const [isOpen, setIsOpen] = useState(false);
+
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isOpen]);
 
   const toggleOpenMenu = () => setIsOpen(current => !current);
 
@@ -71,9 +83,9 @@ const Header = () => {
           </NavLink>
           <NavLink to="/cart" className={classActiveIcon}>
             <img src={`${BASE_URL}/icons/Cart.svg`} alt="Cart" />
-            {cart.length > 0 && (
+            {totalItemsInCart > 0 && (
               <span className={styles.count}>
-                <p className={styles.countText}>{cart.length}</p>
+                <p className={styles.countText}>{totalItemsInCart}</p>
               </span>
             )}
           </NavLink>
