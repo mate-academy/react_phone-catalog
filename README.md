@@ -53,7 +53,7 @@ Implement Home page at available at `/`.
    - The products with a discount starting from the biggest absolute value;
    - `<` and `>` buttons should scroll products.
 4. `Shop by category` block with links to `/phones`, `/tablets`, and `/accessories`.
-5. Add `Brand new` block using `ProductsSlider` with products without a discount starting from the most expensive.
+5. Add Brand new block using ProductsSlider with products that are the newest according to the year field.
 
 ## Product pages
 
