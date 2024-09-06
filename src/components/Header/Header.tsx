@@ -5,14 +5,23 @@ import LogoIcon from '../../img/icons/LogoIcon.svg';
 import cartIcon from '../../img/icons/CartIcon.svg';
 import LogoIconDT from '../../img/icons/LogoIcon--DarkTheme.svg';
 import cartIconDT from '../../img/icons/CartIcon--DarkTheme.svg';
+import crossIcon from '../../img/icons/CrossIcon--DarkTheme.svg';
+import crossIconDT from '../../img/icons/CrossIcon.svg';
 import favIcon from '../../img/icons/FavoritesIcon.svg';
 import favIconDT from '../../img/icons/FavoritesIcon--DarkTheme.svg';
+import menuIcon from '../../img/icons/MenuIcon.svg';
+import menuIconDT from '../../img/icons/MenuIcon--DarkTheme.svg';
 import { Theme } from '../Theme';
+import { MobileMenu } from '../MobileMenu';
 import { useAppContext } from '../../context/AppContext';
 
 export const Header: React.FC = () => {
-  const { theme, productsInCartCount, favoriteProducts } = useAppContext();
+  const { theme, productsInCartCount, favoriteProducts, isMobMenuOpen, setIsMobMenuOpen } = useAppContext();
   const [cartCount, setCartCount] = useState<number>(0)
+
+  const handleMenu = () => {
+    setIsMobMenuOpen(!isMobMenuOpen);
+  }
 
   useEffect(() => {
     let cartCount: number = 0;
@@ -89,6 +98,26 @@ export const Header: React.FC = () => {
 
             <div className={styles.actionItem}>
               <Theme />
+            </div>
+
+            <div className={`${isMobMenuOpen ? styles.menu : styles.hidden}`} onClick={handleMenu}>
+              <img
+                  src={`${theme === 'dark' ? crossIconDT : crossIcon}`}
+                  alt="Menu"
+                  className={styles.icon}
+              />
+            </div>
+
+            <div className={`${!isMobMenuOpen ? styles.menu : styles.hidden}`} onClick={handleMenu}>
+              <img
+                  src={`${theme === 'dark' ? menuIconDT : menuIcon}`}
+                  alt="Menu"
+                  className={styles.icon}
+              />
+            </div>
+
+            <div className={`${isMobMenuOpen ? styles.menuVisible : styles.menuHidden}`}>
+              <MobileMenu />
             </div>
           </div>
         </div>
