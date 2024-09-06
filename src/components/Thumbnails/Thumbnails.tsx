@@ -69,7 +69,7 @@ export const Thumbnails: React.FC = () => {
               </span>
             </Link>
           </div>
-        ))};
+        ))}
       </div>
     </div>
   );

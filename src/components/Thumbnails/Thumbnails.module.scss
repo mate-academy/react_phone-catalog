@@ -1,10 +1,11 @@
 @import '../../styles/main';
 
 .categories {
-  display: grid;
+  display: flex;
   flex-direction: column;
   align-self: center;
   justify-content: center;
+  width: 100%;
 }
 
 .categoryContainer {
@@ -13,13 +14,16 @@
   justify-content: space-between;
 
   @include on-tablet {
-    width: 100vw;
+    box-sizing: border-box;
+    width: 100%;
+    padding: 0 15px;
     gap: 15px;
   }
 
   @include on-desktop {
     width: 1155px;
     gap: 15px;
+    padding: 0;
   }
 
 }
@@ -36,21 +40,21 @@
   letter-spacing: 0.01em;
   font-weight: bold;
   color: var(--color-primary);
-  padding: 30px 20px;
+  padding: 30px 10px;
   width: 100vw;
   }
 
   @include on-desktop {
     width: 1155px;
+    padding-left: 96px;
   }
 }
 
 .category {
-  grid-column: 1 / -1;
-
+/*   grid-column: 1 / -1; */
   @include on-tablet {
-    grid-column: span 4;
-    align-self: start;
+/*     grid-column: span 4; */
+    align-self: center;
   }
 
   @include on-desktop {
@@ -66,12 +70,19 @@
 
 .image {
   object-fit: cover;
-  width: 373px;
   margin-bottom: 10px;
   border: 1px lightgrey solid;
 
   &:hover {
     transform: scale(1.05);
+  }
+
+  @include on-tablet {
+    width: calc((100vw - 90px) / 3);
+  }
+
+  @include on-desktop {
+    width: 373px;
   }
 }
 
