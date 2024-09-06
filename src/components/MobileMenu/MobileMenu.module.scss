@@ -1,27 +1,34 @@
 @import '../../styles/main';
 
+.linkWrapper {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding-top: 30px;
+}
+
 .topWrapper {
   position: absolute;
   top: 0;
-  left:0;
+  left: 0;
   display: flex;
   width: 100vw;
   height: 100vh;
   z-index: 1;
-  /* background-color: var(--color-background); */
-  background-color: yellow;
+  background-color: var(--color-background);
+  border-top: 1px solid var(--color-elements);
 }
 
 .menuOverlay {
-/*   display: none; */
-display: flex;
-/*   position: absolute;
-  top: 72px;
-  left: 0; */
+  display: flex;
+  justify-content: end;
+  flex-direction: column;
   right: 0;
-  height: 100vh;
+  height: calc(100vh - $height-on-tablet - 1px);
   width: 100%;
-/*   background-color: var(--color-background); */
+  background-color: var(--color-background);
 }
 
 .show {
@@ -38,7 +45,6 @@ display: flex;
 
 .item {
   @extend %uppercase-text;
-
   color: var(--color-secondary);
   padding: 8px 0;
 }
@@ -46,8 +52,8 @@ display: flex;
 .actions {
   display: flex;
   width: 100%;
-  position: fixed;
-  bottom: 0;
+  left: 0;
+  bottom: 1px;
 }
 
 .action {
@@ -58,6 +64,7 @@ display: flex;
   justify-content: center;
   color: var(--color-secondary);
   box-shadow: 0 -1px 0 0 var(--color-elements), 1px 0 0 0 var(--color-elements);
+  cursor: pointer;
 }
 
 .actionIcon {
@@ -65,7 +72,6 @@ display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
-  width: 28px;
   height: 28px;
 }
 
@@ -81,7 +87,6 @@ display: flex;
   border-radius: 50%;
   border: 1px solid var(--color-background);
   background-color: var(--color-red);
-
 }
 
 .countText {
@@ -94,6 +99,8 @@ display: flex;
 
 .item,
 .action {
+  display: flex;
+  justify-content: center;
   position: relative;
 
   &:hover {
@@ -113,4 +120,12 @@ display: flex;
     height: 2px;
     background-color: var(--color-primary);
   }
+}
+
+.item {
+  display: inline;
+}
+
+.action {
+  width: calc(100% / 3);
 }
