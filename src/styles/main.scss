@@ -1,0 +1,10 @@
+@import './utils/reset';
+@import './utils/fonts';
+@import './utils/vars';
+@import './utils/typography';
+@import './utils/mixins';
+
+body {
+  background-color: var(--color-background);
+  color: var(--color-primary);
+}

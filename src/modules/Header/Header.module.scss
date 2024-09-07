@@ -1,0 +1,130 @@
+@import '../../styles/main';
+
+.header {
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--color-elements);
+}
+
+.content {
+  display: flex;
+  justify-content: flex-start;
+  gap: 24px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 24px;
+  height: 100%;
+
+  @include hover(transform, scale(1.1));
+
+  @include on-tablet {
+    padding: 13px 16px;
+  }
+}
+
+.img {
+  width: 80px;
+  height: 28px;
+
+  @include on-tablet {
+    width: 64px;
+    height: 22px;
+  }
+}
+
+.nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .list {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 64px;
+
+    @include on-tablet {
+      gap: 32px;
+    }
+
+    .item {
+      height: 100%;
+      display: flex;
+      position: relative;
+      align-items: center;
+      cursor: pointer;
+
+      .link {
+        @extend %uppercase-text;
+        color: var(--color-secondary);
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        transition: color $transition-duration;
+
+        @extend %underline-effect;
+
+        &.isActive {
+          transition: color $transition-duration;
+          color: var(--color-primary);
+
+          &::after {
+            position: absolute;
+            content: '';
+            width: 100%;
+            height: 3px;
+            background-color: var(--color-primary);
+            align-self: flex-end;
+          }
+        }
+      }
+    }
+  }
+}
+
+.navUser {
+  display: flex;
+  justify-content: flex-end;
+  .userList {
+    display: flex;
+    align-items: center;
+
+    .item {
+      position: relative;
+      height: 100%;
+      .link {
+        @include header-buttons;
+
+        .img {
+          width: 16px;
+          height: 16px;
+        }
+
+        @extend %underline-effect;
+
+        &.isActive {
+          color: var(--color-primary);
+
+          &::after {
+            position: absolute;
+            content: '';
+            width: 100%;
+            height: 3px;
+            background-color: var(--color-primary);
+            align-self: flex-end;
+          }
+        }
+      }
+    }
+  }
+}

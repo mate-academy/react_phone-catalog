@@ -1,0 +1,24 @@
+@import './styles/main';
+
+.container {
+  margin: 0 auto;
+  max-width: $breakpoint-desktop;
+  width: 100%;
+  padding: 0 32px;
+  flex: 1 1;
+  background-color: #c6c0c7;
+
+  @include on-tablet {
+    padding: 0 24px;
+  }
+
+  @include on-mobile {
+    padding: 0 16px;
+  }
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
