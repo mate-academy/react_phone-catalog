@@ -5,14 +5,23 @@ import { CardComponent } from '../../main/CardComponent/CardComponent';
 // import { usePhones } from '../../../context/PhonesProvider';
 import { useProducts } from '../../../context/ProductsProvider';
 import { ShopingCard } from './ShopingCard';
+import { useState } from 'react';
 // import { useAccessories } from '../../../context/AccessoriesProvider';
 // import { useTablets } from '../../../context/TabletProvider';
 
 export const ProductsSlider = () => {
-  // const phones = usePhones();
   const products = useProducts();
-  // const accessories = useAccessories();
-  // const tablets = useTablets();
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  const productsByPrice = products.slice().sort((a, b) => b.price - a.price);
+
+  const nextSlide = () => {
+    setCurrentSlide(prev => (prev === products.length - 1 ? 0 : prev + 1));
+  };
+
+  const previosSlide = () => {
+    setCurrentSlide(prev => (prev === 0 ? products.length - 1 : prev - 1));
+  };
 
   return (
     <>
@@ -22,18 +31,31 @@ export const ProductsSlider = () => {
         </div>
 
         <div className={row.slider_buttons}>
-          <button className={classNames(styles.product_slide_buttons)}>
+          <button
+            className={classNames(styles.product_slide_buttons)}
+            onClick={previosSlide}
+          >
             &lt;
           </button>
 
-          <button className={classNames(styles.product_slide_buttons)}>
+          <button
+            className={classNames(styles.product_slide_buttons)}
+            onClick={nextSlide}
+          >
             &gt;
           </button>
         </div>
       </div>
 
-      <div className={row.slider_card}>
-        <CardComponent devices={products} />
+      <div className={row.slider_container}>
+        <div
+          className={row.slider_card}
+          style={{ transform: `translateX(calc(-${currentSlide * 25}%))` }}
+        >
+          {productsByPrice.map(product => (
+            <CardComponent key={product.id} devices={product} />
+          ))}
+        </div>
       </div>
 
       <div className={row.slider_shop}>
@@ -58,7 +80,9 @@ export const ProductsSlider = () => {
       </div>
 
       <div className={classNames(row.slider_card, row.slider_prev)}>
-        <CardComponent devices={products} />
+        {products.map(product => (
+          <CardComponent key={product.id} devices={product} />
+        ))}
       </div>
     </>
   );

@@ -51,12 +51,13 @@
 }
 
 .home_slide {
-  z-index: -1;
+  z-index: 0;
   display: block;
   position: absolute;
   width: 100%;
 
   transform: translate3d(100%, 0, 0);
+  transition: 1.2s;
 
   background-size: contain;
   background-position: center;

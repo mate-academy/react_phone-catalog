@@ -1,0 +1,12 @@
+.phone {
+
+  &_head {
+    display: flex;
+  }
+
+  &_row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}

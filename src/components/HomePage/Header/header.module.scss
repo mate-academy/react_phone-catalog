@@ -20,6 +20,7 @@
     font-family: 'Mont-Bold';
     text-transform: uppercase;
     color: $BUTTOM_TEXT_COLOR;
+    text-decoration: none;
 
     &:hover {
       color: $HOVER_BUTTON_COLOR;
@@ -45,6 +46,15 @@
     &:hover::before {
       transform: scaleX(1);
     }
+
+    &_selected::before {
+      transform: scaleX(1);  // Завжди повне підкреслення для обраного
+    }
+
+    &_selected {
+      color: $HOVER_BUTTON_COLOR;  // Приклад зміни кольору для обраного
+    }
+
   }
 
   &_buttoms_additional {
