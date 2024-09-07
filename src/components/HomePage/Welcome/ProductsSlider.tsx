@@ -2,25 +2,45 @@ import styles from './homeface.module.scss';
 import row from './productSlider.module.scss';
 import classNames from 'classnames';
 import { CardComponent } from '../../main/CardComponent/CardComponent';
-// import { usePhones } from '../../../context/PhonesProvider';
 import { useProducts } from '../../../context/ProductsProvider';
 import { ShopingCard } from './ShopingCard';
 import { useState } from 'react';
-// import { useAccessories } from '../../../context/AccessoriesProvider';
-// import { useTablets } from '../../../context/TabletProvider';
 
 export const ProductsSlider = () => {
   const products = useProducts();
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [currentSlideHotPrices, setCurrentSlideHotPrices] = useState(0);
 
   const productsByPrice = products.slice().sort((a, b) => b.price - a.price);
 
+  const salePrice = products.slice().sort((a, b) => a.price - b.price);
+
+  const nextSlideHotPrices = () => {
+    const totalProduct = salePrice.length;
+    const nextSlides = (currentSlideHotPrices + 1) % totalProduct;
+
+    setCurrentSlideHotPrices(nextSlides);
+  };
+
+  const prevSlideHotPrices = () => {
+    const prevSlides =
+      currentSlideHotPrices === 0 ? 0 : currentSlideHotPrices - 1;
+
+    setCurrentSlideHotPrices(prevSlides);
+  };
+
   const nextSlide = () => {
-    setCurrentSlide(prev => (prev === products.length - 1 ? 0 : prev + 1));
+    const totalProduct = products.length;
+
+    const nextSlides = (currentSlide + 1) % totalProduct;
+
+    setCurrentSlide(nextSlides);
   };
 
   const previosSlide = () => {
-    setCurrentSlide(prev => (prev === 0 ? products.length - 1 : prev - 1));
+    const prevSlides = currentSlide === 0 ? 0 : currentSlide - 1;
+
+    setCurrentSlide(prevSlides);
   };
 
   return (
@@ -50,7 +70,9 @@ export const ProductsSlider = () => {
       <div className={row.slider_container}>
         <div
           className={row.slider_card}
-          style={{ transform: `translateX(calc(-${currentSlide * 25}%))` }}
+          style={{
+            transform: `translateX(calc(-${currentSlide * 25}%))`,
+          }}
         >
           {productsByPrice.map(product => (
             <CardComponent key={product.id} devices={product} />
@@ -69,20 +91,37 @@ export const ProductsSlider = () => {
         </div>
 
         <div className={row.slider_buttons}>
-          <button className={classNames(styles.product_slide_buttons)}>
+          <button
+            className={classNames(styles.product_slide_buttons)}
+            onClick={prevSlideHotPrices}
+          >
             &lt;
           </button>
 
-          <button className={classNames(styles.product_slide_buttons)}>
+          <button
+            className={classNames(styles.product_slide_buttons)}
+            onClick={nextSlideHotPrices}
+          >
             &gt;
           </button>
         </div>
       </div>
 
-      <div className={classNames(row.slider_card, row.slider_prev)}>
-        {products.map(product => (
-          <CardComponent key={product.id} devices={product} />
-        ))}
+      <div className={row.slider_container}>
+        <div
+          className={classNames(row.slider_card, row.slider_prev)}
+          style={{
+            transform: `translateX(calc(-${currentSlideHotPrices * 25}%))`,
+          }}
+        >
+          {salePrice.map(product => (
+            <CardComponent
+              key={product.id}
+              devices={product}
+              salePrice={product.fullPrice}
+            />
+          ))}
+        </div>
       </div>
     </>
   );

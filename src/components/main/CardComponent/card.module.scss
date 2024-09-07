@@ -27,6 +27,20 @@
     margin: 0;
     font-family: 'Mont-Bold';
     font-size: 22px;
+
+    &_sale {
+      color: $BUTTOM_TEXT_COLOR;
+      text-decoration: line-through;
+      margin: 0;
+      box-sizing: content-box;
+      margin-left: 10px;
+      font-size: 22px;
+    }
+
+    &_container {
+      display: flex;
+      align-items: center;
+    }
   }
 
   &_stats {

@@ -4,9 +4,10 @@ import classNames from 'classnames';
 
 interface CardComponentProps {
   devices: Product | ProductChars | Accessories;
+  salePrice?: number;
 }
 
-export const CardComponent = ({ devices }: CardComponentProps) => {
+export const CardComponent = ({ devices, salePrice }: CardComponentProps) => {
   return (
     <>
       <div className={classNames(styles.card)} key={devices.id}>
@@ -19,9 +20,16 @@ export const CardComponent = ({ devices }: CardComponentProps) => {
             />
           )}
           <div>{'name' in devices && <span>{devices.name}</span>}</div>
-          {'price' in devices && (
-            <h2 className={styles.card_price}>{`$${devices.price}`}</h2>
-          )}
+          <div className={styles.card_price_container}>
+            {'price' in devices && (
+              <h2 className={styles.card_price}>{`$${devices.price}`}</h2>
+            )}
+            {salePrice ? (
+              <h2 className={styles.card_price_sale}>{`$${salePrice}`}</h2>
+            ) : (
+              <></>
+            )}
+          </div>
           <div className={styles.card_stats}>
             {'screen' in devices && (
               <div className={styles.card_stats_text}>

@@ -48,11 +48,11 @@
     }
 
     &_selected::before {
-      transform: scaleX(1);  // Завжди повне підкреслення для обраного
+      transform: scaleX(1);
     }
 
     &_selected {
-      color: $HOVER_BUTTON_COLOR;  // Приклад зміни кольору для обраного
+      color: $HOVER_BUTTON_COLOR;
     }
 
   }
