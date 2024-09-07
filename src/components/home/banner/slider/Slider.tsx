@@ -2,26 +2,15 @@ import { FC, useEffect, useState } from 'react';
 
 import styles from './slider.module.scss';
 
-<<<<<<< HEAD
-=======
-import { IMAGES } from 'utils/constants/imagesSLider';
-
-import { ArrowLeftIcon } from 'ui/icon/ArrowLeftIcon';
-import { ArrowRightIcon } from 'ui/icon/ArrowRightIcon';
-
->>>>>>> 3d29229bf5a890910a3e7c1d3c6b79a9929789c2
 import { SlidesList } from './slides-list/SlidesList';
 import { Arrows } from './arrows/Arrows';
 import { Order } from './order/Order';
 import { Dots } from './dots/Dots';
 
-<<<<<<< HEAD
 import { ArrowLeftIcon } from '@ui/icon/ArrowLeftIcon';
 import { ArrowRightIcon } from '@ui/icon/ArrowRightIcon';
 import { IMAGES } from '@utils/constants/imagesSLider';
 
-=======
->>>>>>> 3d29229bf5a890910a3e7c1d3c6b79a9929789c2
 export const Slider: FC = () => {
   const [imgIndex, setImgIndex] = useState(0);
 

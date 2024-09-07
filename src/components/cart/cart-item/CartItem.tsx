@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 
 import styles from './cartItem.module.scss';
 
-<<<<<<< HEAD
 import { ErrorMessage } from '@ui/error/ErrorMessage';
 import { CloseIcon } from '@ui/icon/CloseIcon';
 import { Counter } from '../counter/Counter';
@@ -11,16 +10,6 @@ import { Counter } from '../counter/Counter';
 import { useAppDispatch } from '@hooks/hook';
 import { TProduct } from '@utils/types/product.type';
 import { deleteCart, toggleCart } from '@store/features/cart/cart.slice';
-=======
-import { Counter } from '../counter/Counter';
-import { CloseIcon } from 'ui/icon/CloseIcon';
-import { ErrorMessage } from 'ui/error/ErrorMessage';
-
-import { useAppDispatch } from 'hooks/hook';
-import { deleteCart, toggleCart } from 'store/features/cart/cart.slice';
-
-import { TProduct } from 'utils/types/product.type';
->>>>>>> 3d29229bf5a890910a3e7c1d3c6b79a9929789c2
 
 type TProps = {
   item: TProduct;

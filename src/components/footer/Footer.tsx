@@ -3,17 +3,10 @@ import { Link } from 'react-router-dom';
 
 import styles from './Footer.module.scss';
 
-<<<<<<< HEAD
 import { Logo } from '@ui/logo/Logo';
 import { ArrowUpIcon } from '@ui/icon/ArrowUpIcon';
 
 import { ROUTES } from '@utils/constants/routes';
-=======
-import { ArrowUpIcon } from 'ui/icon/ArrowUpIcon';
-import { Logo } from 'ui/logo/Logo';
-
-import { ROUTES } from 'utils/constants/routes';
->>>>>>> 3d29229bf5a890910a3e7c1d3c6b79a9929789c2
 
 export const Footer: FC = () => {
   const scrollToTop = () => {

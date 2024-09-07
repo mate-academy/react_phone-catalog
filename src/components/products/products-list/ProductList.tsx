@@ -3,20 +3,10 @@ import { Link } from 'react-router-dom';
 import cn from 'classnames';
 
 import styles from './product.module.scss';
-<<<<<<< HEAD
 import { TProduct } from '@utils/types/product.type';
 import { useAppDispatch } from '@hooks/hook';
 import { addCart } from '@store/features/cart/cart.slice';
 import { HeartIcon } from '@ui/icon/HeartIcon';
-=======
-
-import { HeartIcon } from 'ui/icon/HeartIcon';
-
-import { addCart } from 'store/features/cart/cart.slice';
-import { useAppDispatch } from 'hooks/hook';
-
-import { TProduct } from 'utils/types/product.type';
->>>>>>> 3d29229bf5a890910a3e7c1d3c6b79a9929789c2
 
 interface TProps {
   product: TProduct;
