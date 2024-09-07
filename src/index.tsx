@@ -1,4 +1,16 @@
 import { createRoot } from 'react-dom/client';
-import { App } from './App';
+import { Provider } from 'react-redux';
+import { BrowserRouter } from 'react-router-dom';
 
-createRoot(document.getElementById('root') as HTMLElement).render(<App />);
+import './styles/index.scss';
+
+import { App } from '@components/app/App';
+import { store } from '@store/store';
+
+createRoot(document.getElementById('root') as HTMLElement).render(
+  <Provider store={store}>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  </Provider>,
+);

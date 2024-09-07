@@ -1,0 +1,23 @@
+.banner {
+  margin-top: var(--size-56);
+  margin-bottom: 80px;
+}
+
+@media (max-width: 1199px) {
+  .banner {
+    margin-top: var(--size-32);
+    margin-bottom: var(--size-64);
+  }
+}
+
+@media (max-width: 639px) {
+  .banner {
+    margin-top: var(--size-24);
+    margin-bottom: var(--size-56);
+
+    h1 {
+      font-size: var(--size-32);
+      line-height: 1.28;
+    }
+  }
+}

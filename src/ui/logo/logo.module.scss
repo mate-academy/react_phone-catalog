@@ -1,0 +1,7 @@
+.logo {
+  height: var(--size-32);
+
+  &:hover {
+    scale: 1.1;
+  }
+}

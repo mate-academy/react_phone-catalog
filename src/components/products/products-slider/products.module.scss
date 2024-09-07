@@ -1,0 +1,24 @@
+.products {
+  .wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--size-24);
+
+    .arrows {
+      display: flex;
+      column-gap: var(--size-16);
+
+      button {
+        display: flex;
+        padding: 7px;
+      }
+    }
+  }
+
+  .list {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--size-16);
+  }
+}
