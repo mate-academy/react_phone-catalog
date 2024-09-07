@@ -4,6 +4,7 @@ module.exports = {
     es2024: true,
   },
   extends: [
+    'eslint:recommended',
     'plugin:react/recommended',
     'plugin:react-hooks/recommended',
     'airbnb-typescript',
@@ -30,6 +31,7 @@ module.exports = {
     sourceType: 'module',
   },
   plugins: [
+    'react',
     'jsx-a11y',
     'import',
     'react-hooks',
@@ -119,6 +121,13 @@ module.exports = {
     'cypress',
   ],
   settings: {
+    'import/extensions': ['.js', '.jsx', '.ts', '.tsx'],
+    'import/parsers': {
+      '@typescript-eslint/parser': ['.ts', '.tsx'],
+    },
+    'import/resolver': {
+      typescript: {},
+    },
     react: {
       version: 'detect',
     },
