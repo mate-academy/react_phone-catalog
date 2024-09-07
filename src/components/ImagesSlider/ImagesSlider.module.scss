@@ -28,9 +28,9 @@
     min-width: 288px;
     height: 288px;
 
-
     @include on-desktop {
-      min-width: 464px;
+      max-width: 464px;
+      width: 100%;
       height: 464px;
     }
   }
@@ -47,14 +47,14 @@
   &__thumb {
     cursor: pointer;
     box-sizing: border-box;
-    border: 1px solid $c-elements;
+    border: 1px solid var(--c-elements);
     padding: 5px;
     min-width: clamp(50px, 12vw, 100px);
     max-width: clamp(50px, 12vw, 100px);
     max-height: clamp(50px, 12vw, 100px);
 
     &--active {
-      border-color: $c-white;
+      border-color: var(--c-white);
     }
 
     @include on-tablet {
@@ -70,7 +70,7 @@
       transition: border-color 0.5s;
 
       &:hover {
-        border-color: $c-secondary;
+        border-color: var(--c-secondary);
       }
     }
   }

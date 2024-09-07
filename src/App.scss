@@ -23,6 +23,8 @@
 @import './components/BackBtn/BackBtn.module';
 @import './components/ErrorMessage/ErrorMessage.module';
 @import './components/Pagination/Pagination.module';
+@import './components/SearchBar/SearchBar.module';
+@import './components/Notification/Notification.module';
 
 // Module HomePage
 @import './modules/HomePage/components/Hero/Hero.module';
@@ -33,28 +35,43 @@
 // Module ShoppingCartPage
 @import './modules/ShoppingCartPage/ShoppingCartPage.module';
 @import './modules/ShoppingCartPage/components/CartItem/CartItem.module';
+@import './modules/ShoppingCartPage/components/ModalCheckout/ModalCheckout.module';
 
 // Module FavoritesPage
 @import './modules/FavoritesPage/FavoritesPage.module';
 
-// Module ProductDetails
+// Module ProductDetailsPage
 @import './modules/ProductDetailsPage/ProductDetailsPage.module';
 @import './modules/ProductDetailsPage/components/Details/Details.module';
 
-// Module ProductDetails
+// Module ProductCatalogPage
 @import './modules/CatalogPage/CatalogPage.module';
+
+// Module NotFoundPage
+@import './modules/NotFoundPage/NotFoundPage.module';
 
 html {
   min-width: 320px;
   scroll-behavior: smooth;
-  background: $c-black;
+  background-color: var(--c-black);
 
   font-family: Mont, sans-serif;
   font-weight: 400;
   font-size: 14px;
   line-height: 150%;
-  color: $c-white;
+  color: var(--c-white);
 }
+
+// html[data-theme="light"] {
+//   --background-color: #{$c-white};
+//   --color: #{$c-black};
+
+// --primary-color: #{$blue-1};
+// --secondary-color: #{$grey-3};
+
+// --card-background-color: #{$white-1};
+// --card-border-color: #{$grey-2};
+// }
 
 body {
   margin: 0;
@@ -79,6 +96,7 @@ body {
 }
 
 .page {
+  box-sizing: border-box;
   padding: 24px 0 56px;
 
   @include on-tablet {
@@ -120,12 +138,17 @@ body {
 
 .button {
   cursor: pointer;
-  background-color: $c-accent;
+  background-color: var(--c-accent);
   border: none;
   color: inherit;
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 10px;
+
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 150%;
 
   &:disabled {
     cursor: not-allowed;
@@ -138,6 +161,18 @@ body {
 
     &:hover {
       background-color: #a378ff;
+    }
+  }
+
+  &--red {
+    background-color: var(--c-red);
+
+    @include on-desktop {
+      transition: background-color 0.5s;
+
+      &:hover {
+        background-color: #f76969;
+      }
     }
   }
 }

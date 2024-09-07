@@ -41,7 +41,7 @@
     font-weight: 600;
     font-size: 20px;
     padding-bottom: 16px;
-    border-bottom: 1px solid $c-elements;
+    border-bottom: 1px solid var(--c-elements);
   }
 
   &__block-subtitle {
@@ -51,7 +51,7 @@
   }
 
   &__block-text {
-    color: $c-secondary;
+    color: var(--c-secondary);
   }
 
   &__block-specs {
@@ -65,13 +65,13 @@
   }
 
   &__block-specs-item {
-    color: $c-secondary;
+    color: var(--c-secondary);
     display: flex;
     justify-content: space-between;
     gap: 5px;
   }
 
   &__block-specs-value {
-    color: $c-white;
+    color: var(--c-white);
   }
 }

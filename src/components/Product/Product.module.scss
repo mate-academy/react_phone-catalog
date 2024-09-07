@@ -1,5 +1,5 @@
 .product {
-  background-color: $c-surface-1;
+  background-color: var(--c-surface-1);
   padding: 32px;
 
   @include on-desktop {

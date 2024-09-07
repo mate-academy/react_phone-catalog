@@ -1,0 +1,19 @@
+.not-found {
+  height: 100vh;
+  background-image: url(../../../public/img/page-not-found.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 300px;
+
+  @include on-tablet {
+    background-size: 400px;
+  }
+
+  @include on-desktop {
+    background-size: 500px;
+  }
+
+  &__back-btn {
+    margin-bottom: 16px;
+  }
+}

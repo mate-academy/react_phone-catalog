@@ -43,6 +43,18 @@
     flex-direction: column;
     gap: 16px;
 
+    &--empty {
+      height: 220px;
+      background-image: url(../../../public/img/product-not-found.png);
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: contain;
+
+      @include on-desktop {
+        height: 300px;
+      }
+    }
+
     @include on-desktop {
       grid-column: 1 / 17;
     }
@@ -52,7 +64,7 @@
     grid-column: 1 / -1;
     box-sizing: border-box;
     text-align: center;
-    border: 1px solid $c-elements;
+    border: 1px solid var(--c-elements);
     padding: 24px;
 
     display: flex;
@@ -75,8 +87,8 @@
   &__info-text {
     margin: 0 0 16px;
     padding-bottom: 16px;
-    color: $c-secondary;
-    border-bottom: 1px solid $c-elements;
+    color: var(--c-secondary);
+    border-bottom: 1px solid var(--c-elements);
 
     @include on-desktop {
       margin: 0 0 24px;
@@ -85,12 +97,7 @@
   }
 
   &__info-btn {
-    font-weight: 600;
-    font-size: 14px;
-    line-height: 150%;
-
     width: 100%;
     height: 48px;
-    padding: 10px;
   }
 }

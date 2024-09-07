@@ -1,6 +1,7 @@
 .footer {
   padding: 32px 0;
-  border-top: 1px solid $c-elements;
+  border-top: 1px solid var(--c-elements);
+  background-color: var(--c-footer-bg);
 
   &__container {
     display: flex;
@@ -52,7 +53,7 @@
       transition: color 0.5s;
 
       &:hover {
-        color: $c-secondary;
+        color: var(--c-secondary);
       }
     }
   }
@@ -64,7 +65,7 @@
 
     &::before {
       content: 'Back to top';
-      color: $c-secondary;
+      color: var(--c-secondary);
       font-weight: 600;
       font-size: 12px;
       line-height: 100%;

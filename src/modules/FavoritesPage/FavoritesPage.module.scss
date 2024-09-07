@@ -14,7 +14,7 @@
 
   &__text {
     margin: 0 0 32px;
-    color: $c-secondary;
+    color: var(--c-secondary);
 
     @include on-tablet {
     margin: 0 0 40px;

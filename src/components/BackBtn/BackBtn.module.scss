@@ -20,10 +20,10 @@
     }
 
     &:hover {
-      color: $c-accent;
+      color: var(--c-accent);
 
       .icon {
-        fill: $c-accent;
+        fill: var(--c-accent);
       }
     }
   }

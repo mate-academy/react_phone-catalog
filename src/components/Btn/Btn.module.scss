@@ -3,7 +3,7 @@
   border: none;
   width: 32px;
   height: 32px;
-  background-color: $c-surface-2;
+  background-color:var(--c-surface-2);
 
   display: flex;
   justify-content: center;
@@ -13,7 +13,7 @@
     transition: background-color 0.5s;
 
     &:hover {
-      background-color: $c-icons;
+      background-color: var(--c-icons);
     }
   }
 }

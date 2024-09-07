@@ -46,7 +46,7 @@
     @include on-desktop {
       transition: color 0.5s;
       &:hover {
-        color: $c-secondary;
+        color: var(--c-secondary);
       }
     }
   }
@@ -60,12 +60,12 @@
     flex-direction: column;
     gap: 8px;
     padding-bottom: 24px;
-    border-bottom: 1px solid $c-elements;
+    border-bottom: 1px solid var(--c-elements);
     margin-bottom: 24px;
 
     font-weight: 600;
     font-size: 12px;
-    color: $c-secondary;
+    color: var(--c-secondary);
 
     &:last-child {
       margin-bottom: 32px;
@@ -88,7 +88,7 @@
   }
 
   &__color-btn {
-    border: 1px solid $c-elements;
+    border: 1px solid var(--c-elements);
     padding: 0;
     display: block;
     width: 32px;
@@ -100,12 +100,12 @@
       content: '';
       position: absolute;
       inset: 0;
-      border: 2px solid $c-black;
+      border: 2px solid var(--c-black);
       border-radius: 50%;
     }
 
     &--active {
-      border: 1px solid $c-white;
+      border: 1px solid var(--c-white);
     }
 
     $colors: (
@@ -140,24 +140,24 @@
     @include on-desktop {
       transition: border-color 0.5s;
       &:hover {
-        border-color: $c-secondary;
+        border-color: var(--c-secondary);
       }
     }
   }
 
   &__capacity-btn {
     text-decoration: none;
-    border: 1px solid $c-icons;
+    border: 1px solid var(--c-icons);
     background-color: transparent;
     display: block;
     padding: 7px 8px 4px;
     font-size: 14px;
     line-height: 150%;
-    color: $c-white;
+    color: var(--c-white);
 
     &--active {
-      background-color: $c-white;
-      color: $c-black;
+      background-color: var(--c-white);
+      color: var(--c-black);
     }
 
     @include on-desktop {
@@ -165,8 +165,8 @@
         background-color 0.5s,
         color 0.5s;
       &:hover {
-        background-color: $c-white;
-        color: $c-black;
+        background-color: var(--c-white);
+        color: var(--c-black);
       }
     }
   }
@@ -178,7 +178,7 @@
 
     width: 100%;
     padding-bottom: 8px;
-    border-bottom: 1px solid $c-elements;
+    border-bottom: 1px solid var(--c-elements);
   }
 
   &__price {
@@ -188,7 +188,7 @@
 
     &--full {
       font-weight: 400;
-      color: $c-secondary;
+      color: var(--c-secondary);
       text-decoration: line-through;
     }
   }
@@ -204,7 +204,7 @@
   }
 
   &__specs-item {
-    color: $c-secondary;
+    color: var(--c-secondary);
     display: flex;
     justify-content: space-between;
     gap: 5px;
@@ -212,7 +212,7 @@
 
   &__specs-value {
     font-weight: 600;
-    color: $c-white;
+    color: var(--c-white);
   }
 
   &__buttons {

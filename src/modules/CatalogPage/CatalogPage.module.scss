@@ -30,7 +30,8 @@
     display: flex;
     flex-direction: column;
     gap: 4px;
-    color: $c-secondary;
+    color: var(--c-secondary);
+    position: relative;
   }
 
   &__select {
@@ -43,12 +44,15 @@
     font-weight: 600;
     font-size: 14px;
     line-height: 150%;
-    background-color: $c-surface-2;
-    color: $c-white;
-    position: relative;
+    background-color: var(--c-surface-2);
+    color: var(--c-white);
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 
     &:focus {
-      border-color: $c-accent;
+      border-color: var(--c-accent);
       outline: none;
     }
 
@@ -60,10 +64,10 @@
       }
 
       &:hover {
-        border-color: $c-icons;
+        border-color: var(--c-icons);
 
         .icon {
-          fill: $c-icons;
+          fill: var(--c-icons);
         }
       }
     }
@@ -73,12 +77,6 @@
         width: 176px;
       }
     }
-  }
-
-  &__select-name {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
   }
 
   &__select-options {
@@ -91,7 +89,7 @@
     left: 0;
     right: 0;
     background-color: transparent;
-    border: 1px solid $c-elements;
+    border: 1px solid var(--c-elements);
     z-index: 1000;
 
     flex-direction: column;
@@ -102,8 +100,9 @@
   }
 
   &__select-option {
+    cursor: pointer;
     font-weight: 400;
-    color: $c-secondary;
+    color: var(--c-secondary);
     height: 32px;
     padding: 0 0 0 12px;
     display: flex;
@@ -115,12 +114,8 @@
         color 0.5s;
 
       &:hover {
-        background-color: $c-surface-2;
-        color: $c-white;
-
-        // .catalog__select .icon {
-        //   fill: $c-accent;
-        // }
+        background-color: var(--c-surface-2);
+        color: var(--c-white);
       }
     }
   }

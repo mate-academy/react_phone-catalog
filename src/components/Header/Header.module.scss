@@ -2,14 +2,14 @@
   position: sticky;
   top: 0;
   z-index: 1001;
-  background-color: $c-black;
+  background-color: var(--c-header-bg);
 
   &__wrapper {
     display: flex;
     justify-content: space-between;
     gap: 16px;
     height: 48px;
-    border-bottom: 1px solid $c-elements;
+    border-bottom: 1px solid var(--c-elements);
 
     @include on-desktop {
       gap: 24px;
@@ -24,6 +24,15 @@
 
     @include on-desktop {
       flex-basis: 128px;
+    }
+  }
+
+  &__search-bar {
+    display: flex;
+    margin: 0 auto;
+
+    @include on-tablet {
+      display: none;
     }
   }
 
@@ -45,7 +54,7 @@
     align-items: center;
     width: 48px;
     height: 48px;
-    border-left: 1px solid $c-elements;
+    border-left: 1px solid var(--c-elements);
 
     @include on-tablet {
       display: none;

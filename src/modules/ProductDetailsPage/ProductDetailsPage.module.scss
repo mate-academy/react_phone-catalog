@@ -10,4 +10,24 @@
   &__back-btn {
     margin-bottom: 16px;
   }
+
+  &__error-message {
+    margin-bottom: 32px;
+  }
+
+  &__not-found-bg {
+    height: 220px;
+    background-image: url(../../../public/img/product-not-found.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+
+    @include on-tablet {
+      height: 300px;
+    }
+
+    @include on-desktop {
+      height: 500px;
+    }
+  }
 }

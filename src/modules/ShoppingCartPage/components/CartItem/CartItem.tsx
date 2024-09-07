@@ -2,6 +2,7 @@ import { useContext } from 'react';
 import { Icon } from '../../../../components/Icon';
 import { ProductType } from '../../../../types/ProductType';
 import { AppContext } from '../../../../AppContext';
+import { Link } from 'react-router-dom';
 
 type Props = {
   product: ProductType;
@@ -73,15 +74,33 @@ export const CartItem: React.FC<Props> = ({ product }) => {
           <Icon iconName="icon-close" />
         </button>
 
-        <a className="cart-item__img-link" href="#">
+        {/* <a className="cart-item__img-link" href="#">
           <img
             className="cart-item__img"
             src={product.image}
             alt={product.name}
           />
-        </a>
+        </a> */}
 
-        <span className="cart-item__title">{product.name}</span>
+        {/* <span className="cart-item__title">{product.name}</span> */}
+
+        <Link
+          className="cart-item__img-link"
+          to={`/${product.category}/${product.itemId}`}
+        >
+          <img
+            className="cart-item__img"
+            src={product.image}
+            alt={product.name}
+          />
+        </Link>
+
+        <Link
+          className="cart-item__title"
+          to={`/${product.category}/${product.itemId}`}
+        >
+          {product.name}
+        </Link>
       </div>
 
       <div className="cart-item__bottom">

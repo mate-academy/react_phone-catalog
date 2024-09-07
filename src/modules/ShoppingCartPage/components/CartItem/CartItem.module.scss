@@ -1,5 +1,5 @@
 .cart-item {
-  background-color: $c-surface-1;
+  background-color: var(--c-surface-1);
   padding: 16px;
 
   display: flex;
@@ -48,7 +48,7 @@
       transition: background-color 0.5s;
 
       &:hover {
-        background-color: $c-icons;
+        background-color: var(--c-icons);
       }
     }
   }
@@ -69,6 +69,18 @@
     object-fit: contain;
   }
 
+  &__title {
+    text-decoration: none;
+    color: inherit;
+
+    @include on-desktop {
+      transition: color 0.5s;
+      &:hover {
+        color: var(--c-secondary);
+      }
+    }
+  }
+
   &__bottom {
     display: flex;
     justify-content: space-between;
@@ -83,7 +95,7 @@
 
   &__counter-btn {
     cursor: pointer;
-    background-color: $c-surface-2;
+    background-color: var(--c-surface-2);
     border: 1px solid transparent;
 
     display: flex;
@@ -93,11 +105,11 @@
     height: 32px;
 
     &:disabled {
-      border-color: $c-elements;
+      border-color: var(--c-elements);
       background-color: transparent;
 
       .icon {
-        fill: $c-elements;
+        fill: var(--c-elements);
       }
     }
 
@@ -105,7 +117,7 @@
       transition: background-color 0.5s;
 
       &:hover {
-        background-color: $c-icons;
+        background-color: var(--c-icons);
       }
     }
   }
@@ -119,7 +131,7 @@
     padding: 0;
     background-color: transparent;
     border: none;
-    color: $c-white;
+    color: var(--c-white);
 
     font-size: 14px;
     line-height: 150%;

@@ -5,7 +5,7 @@
     font-weight: 700;
     font-size: 22px;
     line-height: 140%;
-    color: $c-red;
+    color:var(--c-red);
 
     @include on-tablet {
       font-size: 32px;
@@ -15,9 +15,9 @@
 
   &__reload-btn {
     cursor: pointer;
-    background-color: $c-accent;
+    background-color: var(--c-accent);
     border: none;
-    color: $c-white;
+    color: var(--c-white);
     padding: 10px 40px;
     border-radius: 25px;
     font-weight: 600;

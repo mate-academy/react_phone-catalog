@@ -9,13 +9,24 @@ import { ErrorMessage } from '../../components/ErrorMessage';
 import { Pagination } from '../../components/Pagination';
 import classNames from 'classnames';
 import { Icon } from '../../components/Icon';
+import { Notification } from '../../components/Notification';
 
 type Props = {
   type: string;
 };
 
-const prepareProducts = (products: ProductType[], sortField: string | null) => {
-  const readyProducts = [...products];
+const prepareProducts = (
+  products: ProductType[],
+  sortField: string | null,
+  query: string,
+) => {
+  let readyProducts = [...products];
+
+  if (query) {
+    readyProducts = readyProducts.filter(product =>
+      product.name.toLowerCase().includes(query.toLowerCase()),
+    );
+  }
 
   if (sortField) {
     switch (sortField) {
@@ -41,6 +52,7 @@ export const CatalogPage: React.FC<Props> = ({ type }) => {
   const [sortField, setSortField] = useState(
     searchParams.get('sort') || 'newest',
   );
+  const [query, setQuery] = useState(searchParams.get('query') || '');
 
   //Dropdown
   const [isSortDropdownOpen, setIsSortDropdownOpen] = useState(false);
@@ -73,9 +85,6 @@ export const CatalogPage: React.FC<Props> = ({ type }) => {
   const [itemsPerPage, setItemsPerPage] = useState(
     Number(searchParams.get('perPage')) || 4,
   );
-  const [itemsPerPageValue, setItemsPerPageValue] = useState(
-    searchParams.get('perPage') || '4',
-  );
   const [currentPage, setCurrentPage] = useState(
     Number(searchParams.get('page')) || 1,
   );
@@ -96,12 +105,12 @@ export const CatalogPage: React.FC<Props> = ({ type }) => {
       sort: newSortField,
       perPage: searchParams.get('perPage') || '4',
       page: String(currentPage),
+      query: query,
     });
   };
 
   const handleItemsPerPageChange = (newItemsPerPage: string) => {
     setIsItemsDropdownOpen(false);
-    setItemsPerPageValue(newItemsPerPage);
 
     if (newItemsPerPage === 'all' && preparedProducts) {
       setItemsPerPage(preparedProducts.length);
@@ -115,6 +124,7 @@ export const CatalogPage: React.FC<Props> = ({ type }) => {
       sort: sortField,
       perPage: newItemsPerPage,
       page: '1',
+      query: query,
     });
   };
 
@@ -127,14 +137,23 @@ export const CatalogPage: React.FC<Props> = ({ type }) => {
       sort: sortField,
       perPage: searchParams.get('perPage') || '4',
       page: String(page),
+      query: query,
     });
   };
 
   useEffect(() => {
     const sortParam = searchParams.get('sort');
+    const perPageParam = searchParams.get('perPage');
+    const queryParam = searchParams.get('query');
 
     if (sortParam) {
       setSortField(sortParam);
+    }
+
+    if (queryParam) {
+      setQuery(queryParam);
+    } else {
+      setQuery('');
     }
 
     let productList: ProductType[] = [];
@@ -161,8 +180,28 @@ export const CatalogPage: React.FC<Props> = ({ type }) => {
         productList = [];
     }
 
-    setPreparedProducts(prepareProducts(productList, sortField));
-  }, [accessories, phones, products, searchParams, sortField, tablets, type]);
+    const readyProducts = prepareProducts(productList, sortField, query);
+
+    setPreparedProducts(readyProducts);
+
+    if (perPageParam === 'all') {
+      setItemsPerPage(readyProducts.length);
+    } else {
+      setItemsPerPage(Number(perPageParam) || 4);
+    }
+  }, [
+    accessories,
+    phones,
+    products,
+    query,
+    searchParams,
+    sortField,
+    tablets,
+    type,
+  ]);
+
+  const sortOptions = ['newest', 'alphabet', 'cheapest'];
+  const itemsPerPageOptions = ['4', '8', '16', 'all'];
 
   return (
     <div className="catalog page">
@@ -175,8 +214,8 @@ export const CatalogPage: React.FC<Props> = ({ type }) => {
 
             {errorMessage && <ErrorMessage errorMessage={errorMessage} />}
 
-            {preparedProducts?.length === 0 && !errorMessage && (
-              <span className="notification">{`There are no ${type} yet`}</span>
+            {preparedProducts?.length === 0 && !errorMessage && !query && (
+              <ErrorMessage errorMessage={`There are no ${type} yet`} />
             )}
 
             {preparedProducts && !errorMessage && (
@@ -189,7 +228,7 @@ export const CatalogPage: React.FC<Props> = ({ type }) => {
                       : 'Accessories'}
                 </h1>
 
-                <span className="catalog__sub-text">{`${phones.length} models`}</span>
+                <span className="catalog__sub-text">{`${preparedProducts.length} models`}</span>
 
                 <div className="catalog__selects">
                   <label className="catalog__label" htmlFor="sort">
@@ -203,46 +242,43 @@ export const CatalogPage: React.FC<Props> = ({ type }) => {
                         e.stopPropagation();
                         toggleDropdown('sort');
                       }}
+                      onKeyDown={e =>
+                        e.key === 'Enter' && toggleDropdown('sort')
+                      }
                     >
-                      <div className="catalog__select-name">
-                        {sortField === 'newest'
-                          ? 'Newest'
-                          : sortField === 'alphabet'
-                            ? 'Alphabetically'
-                            : 'Cheapest'}
+                      {sortField === 'newest'
+                        ? 'Newest'
+                        : sortField === 'alphabet'
+                          ? 'Alphabetically'
+                          : 'Cheapest'}
 
-                        {isSortDropdownOpen ? (
-                          <Icon iconName="icon-arrow-up" />
-                        ) : (
-                          <Icon iconName="icon-arrow-down" />
-                        )}
-                      </div>
-
-                      <ul
-                        className={classNames('catalog__select-options', {
-                          'catalog__select-options--active': isSortDropdownOpen,
-                        })}
-                      >
-                        <li
-                          className="catalog__select-option"
-                          onClick={() => handleSortFieldChange('newest')}
-                        >
-                          Newest
-                        </li>
-                        <li
-                          className="catalog__select-option"
-                          onClick={() => handleSortFieldChange('alphabet')}
-                        >
-                          Alphabetically
-                        </li>
-                        <li
-                          className="catalog__select-option"
-                          onClick={() => handleSortFieldChange('cheapest')}
-                        >
-                          Cheapest
-                        </li>
-                      </ul>
+                      {isSortDropdownOpen ? (
+                        <Icon iconName="icon-arrow-up" />
+                      ) : (
+                        <Icon iconName="icon-arrow-down" />
+                      )}
                     </div>
+                    <ul
+                      className={classNames('catalog__select-options', {
+                        'catalog__select-options--active': isSortDropdownOpen,
+                      })}
+                      role="listbox"
+                    >
+                      {sortOptions.map(option => (
+                        <li
+                          key={option}
+                          className="catalog__select-option"
+                          onClick={() => handleSortFieldChange(option)}
+                          tabIndex={0}
+                          role="option"
+                          onKeyDown={e =>
+                            e.key === 'Enter' && handleSortFieldChange(option)
+                          }
+                        >
+                          {option.charAt(0).toUpperCase() + option.slice(1)}
+                        </li>
+                      ))}
+                    </ul>
                   </label>
 
                   <label className="catalog__label" htmlFor="itemsPerPage">
@@ -256,60 +292,53 @@ export const CatalogPage: React.FC<Props> = ({ type }) => {
                         e.stopPropagation();
                         toggleDropdown('itemsPerPage');
                       }}
+                      onKeyDown={e =>
+                        e.key === 'Enter' && toggleDropdown('itemsPerPage')
+                      }
                     >
-                      <div className="catalog__select-name">
-                        {itemsPerPageValue}
+                      {itemsPerPage !== preparedProducts.length
+                        ? itemsPerPage
+                        : 'all'}
 
-                        {isItemsDropdownOpen ? (
-                          <Icon iconName="icon-arrow-up" />
-                        ) : (
-                          <Icon iconName="icon-arrow-down" />
-                        )}
-                      </div>
-
-                      <ul
-                        className={classNames('catalog__select-options', {
-                          'catalog__select-options--active':
-                            isItemsDropdownOpen,
-                        })}
-                      >
-                        <li
-                          className="catalog__select-option"
-                          onClick={() => handleItemsPerPageChange('4')}
-                        >
-                          4
-                        </li>
-                        <li
-                          className="catalog__select-option"
-                          onClick={() => handleItemsPerPageChange('8')}
-                        >
-                          8
-                        </li>
-                        <li
-                          className="catalog__select-option"
-                          onClick={() => handleItemsPerPageChange('16')}
-                        >
-                          16
-                        </li>
-                        <li
-                          className="catalog__select-option"
-                          onClick={() => handleItemsPerPageChange('all')}
-                        >
-                          all
-                        </li>
-                      </ul>
+                      {isItemsDropdownOpen ? (
+                        <Icon iconName="icon-arrow-up" />
+                      ) : (
+                        <Icon iconName="icon-arrow-down" />
+                      )}
                     </div>
+                    <ul
+                      className={classNames('catalog__select-options', {
+                        'catalog__select-options--active': isItemsDropdownOpen,
+                      })}
+                      role="listbox"
+                    >
+                      {itemsPerPageOptions.map(option => (
+                        <li
+                          key={option}
+                          className="catalog__select-option"
+                          onClick={() => handleItemsPerPageChange(option)}
+                          tabIndex={0}
+                          role="option"
+                          onKeyDown={e =>
+                            e.key === 'Enter' &&
+                            handleItemsPerPageChange(option)
+                          }
+                        >
+                          {option}
+                        </li>
+                      ))}
+                    </ul>
                   </label>
                 </div>
 
-                {preparedProducts && (
+                {preparedProducts.length > 0 ? (
                   <>
                     <ProductsList
                       className="catalog__products-list"
                       products={itemNumbers}
                     />
 
-                    {itemsPerPageValue !== 'all' && (
+                    {itemsPerPage !== preparedProducts.length && (
                       <Pagination
                         total={preparedProducts.length}
                         perPage={itemsPerPage}
@@ -318,6 +347,10 @@ export const CatalogPage: React.FC<Props> = ({ type }) => {
                       />
                     )}
                   </>
+                ) : (
+                  <Notification
+                    notification={`There are no ${type} matching the query`}
+                  />
                 )}
               </>
             )}

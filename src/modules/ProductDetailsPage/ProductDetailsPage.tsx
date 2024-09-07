@@ -9,18 +9,18 @@ import { ProductsSlider } from '../../components/ProductsSlider';
 import { ProductType } from '../../types/ProductType';
 import { getProducts } from '../../api';
 import { ErrorMessage } from '../../components/ErrorMessage';
+import classNames from 'classnames';
+import { ProductTypeExtended } from '../../types/ProductTypeExtended';
 
 export const ProductDetailsPage = () => {
-  const { products, phones } = useContext(AppContext);
+  const { products, phones, tablets, accessories } = useContext(AppContext);
   const { productId } = useParams<{ productId: string }>();
   const navigate = useNavigate();
 
   const [selectedProduct, setSelectedProduct] = useState(
     products.find(p => productId && p.itemId === productId),
   );
-  const [extendedProduct, setExtendedProduct] = useState(
-    phones.find(phone => phone.id === selectedProduct?.itemId),
-  );
+  const [extendedProduct, setExtendedProduct] = useState<ProductTypeExtended>();
   const [suggestedProducts, setSuggestedProducts] = useState<ProductType[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
@@ -34,10 +34,28 @@ export const ProductDetailsPage = () => {
           phones.find(phone => phone.id === selectedProduct.itemId),
         );
 
+      case 'tablets':
+        return setExtendedProduct(
+          tablets.find(phone => phone.id === selectedProduct.itemId),
+        );
+
+      case 'accessories':
+        return setExtendedProduct(
+          accessories.find(phone => phone.id === selectedProduct.itemId),
+        );
+
       default:
         return;
     }
-  }, [selectedProduct, navigate, phones, products, productId]);
+  }, [
+    selectedProduct,
+    navigate,
+    phones,
+    products,
+    productId,
+    tablets,
+    accessories,
+  ]);
 
   useEffect(() => {
     setIsLoading(true);
@@ -76,10 +94,6 @@ export const ProductDetailsPage = () => {
       .then(setSuggestedProducts)
       .catch(() => {
         setErrorMessage('Something went wrong!');
-
-        setTimeout(() => {
-          setErrorMessage('');
-        }, 3000);
       })
       .finally(() => setIsLoading(false));
   }, [
@@ -92,7 +106,11 @@ export const ProductDetailsPage = () => {
   ]);
 
   return (
-    <div className="product-details page">
+    <div
+      className={classNames('product-details page', {
+        'product-details--empty': !selectedProduct && !errorMessage,
+      })}
+    >
       {isLoading && <Loader />}
 
       {!isLoading && (
@@ -103,13 +121,19 @@ export const ProductDetailsPage = () => {
 
             {errorMessage && <ErrorMessage errorMessage={errorMessage} />}
 
-            {!selectedProduct && !errorMessage && (
-              <span className="notification">Product was not found</span>
+            {!extendedProduct && !errorMessage && (
+              <>
+                <ErrorMessage
+                  className={'product-details__error-message'}
+                  errorMessage="Product was not found"
+                />
+                <div className="product-details__not-found-bg"></div>
+              </>
             )}
           </div>
 
-          {selectedProduct && <Details product={extendedProduct} />}
-          {selectedProduct && (
+          {extendedProduct && <Details product={extendedProduct} />}
+          {extendedProduct && (
             <ProductsSlider
               title="You may also like"
               products={suggestedProducts}

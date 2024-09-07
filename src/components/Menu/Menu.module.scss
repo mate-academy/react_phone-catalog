@@ -1,6 +1,6 @@
 .menu {
   height: 100vh;
-  background-color: $c-black;
+  background-color: var(--c-black);
   box-sizing: border-box;
   padding: 72px 0 0;
 
@@ -28,7 +28,7 @@
     display: flex;
     align-items: center;
 
-    border-top: 1px solid $c-elements;
+    border-top: 1px solid var(--c-elements);
   }
 
   &__buttons-item {

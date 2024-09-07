@@ -11,6 +11,8 @@
     "@types/react-transition-group": "^4.4.5",
     "bulma": "^0.9.4",
     "classnames": "^2.5.1",
+    "lodash.debounce": "^4.0.8",
+    "@types/lodash.debounce": "^4.0.9",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.22.3",
@@ -36,10 +38,10 @@
     "mochawesome-report-generator": "^6.2.0",
     "postcss": "^8.4.12",
     "prettier": "^3.2.5",
+    "react-swipeable": "^7.0.1",
     "sass": "^1.72.0",
     "stylelint": "^15.11.0",
-    "typescript": "5.1.6",
-    "react-swipeable": "^7.0.1"
+    "typescript": "5.1.6"
   },
   "scripts": {
     "start": "mate-scripts start -l",

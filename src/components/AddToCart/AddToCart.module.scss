@@ -1,13 +1,7 @@
 .add-to-cart {
-  font-weight: 600;
-  font-size: 14px;
-  line-height: 150%;
-
-  padding: 10px;
-
   &--added {
     font-size: 12px;
-    background-color: $c-surface-2;
+    background-color: var(--c-surface-2);
   }
 
   @include on-tablet {

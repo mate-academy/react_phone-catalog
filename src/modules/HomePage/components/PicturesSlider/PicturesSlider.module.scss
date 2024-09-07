@@ -40,12 +40,12 @@
       display: block;
       border: none;
       cursor: pointer;
-      background-color: $c-surface-2;
+      background-color: var(--c-pict-slider-btn);
 
       &:disabled {
         cursor: not-allowed;
-        opacity: 0.6;
         pointer-events: none;
+        background-color: var(--c-pict-slider-btn-dis);
       }
     }
 
@@ -53,7 +53,7 @@
       transition: background-color 0.5s;
 
       &:hover {
-        background-color: $c-icons;
+        background-color: var(--c-pict-slider-btn-hover);
       }
     }
   }
@@ -87,18 +87,18 @@
       display: block;
       width: 14px;
       height: 4px;
-      background-color: $c-elements;
+      background-color: var(--c-pict-slider-dot);
     }
 
     &--active {
       &::after {
-        background-color: $c-white;
+        background-color:  var(--c-pict-slider-dot-active);
       }
     }
 
     @include on-desktop {
       &:hover {
-        background-color: $c-secondary;
+        background-color:  var(--c-pict-slider-dot-hover);
       }
     }
   }

@@ -1,0 +1,15 @@
+.notification {
+  &__text {
+    margin: 0 0 8px;
+    display: block;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 140%;
+    color: var(--c-green);
+
+    @include on-tablet {
+      font-size: 26px;
+      line-height: 128%;
+    }
+  }
+}

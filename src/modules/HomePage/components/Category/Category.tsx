@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 export const Category = () => {
   return (
     <section className="category section">
@@ -6,49 +8,37 @@ export const Category = () => {
 
         <ul className="category__list">
           <li className="category__item">
-            <a className="category__link" href="#">
+            <Link className="category__link" to="/phones">
               <div className="category__link-img">
-                <img
-                  className="category__link"
-                  src="./img/category-phones.webp"
-                  alt=""
-                />
+                <img src="./img/category-phones.webp" alt="Phones" />
               </div>
               <h3 className="category__link-title">Mobile phones</h3>
               <p className="category__link-text">
                 <span>95</span> models
               </p>
-            </a>
+            </Link>
           </li>
           <li className="category__item">
-            <a className="category__link" href="#">
+            <Link className="category__link" to="/tablets">
               <div className="category__link-img category__link-img--light">
-                <img
-                  className="category__link"
-                  src="./img/category-tablets.png"
-                  alt=""
-                />
+                <img src="./img/category-tablets.png" alt="Tablets" />
               </div>
               <h3 className="category__link-title">Tablets</h3>
               <p className="category__link-text">
                 <span>24</span> models
               </p>
-            </a>
+            </Link>
           </li>
           <li className="category__item">
-            <a className="category__link" href="#">
+            <Link className="category__link" to="/accessories">
               <div className="category__link-img category__link-img--red">
-                <img
-                  className="category__link"
-                  src="./img/category-accessories.png"
-                  alt=""
-                />
+                <img src="./img/category-accessories.png" alt="Accessories" />
               </div>
               <h3 className="category__link-title">Accessories</h3>
               <p className="category__link-text">
                 <span>100</span> models
               </p>
-            </a>
+            </Link>
           </li>
         </ul>
       </div>

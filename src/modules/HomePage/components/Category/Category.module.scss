@@ -39,7 +39,7 @@
         }
 
         .category__link-text span {
-          color: $c-accent;
+          color: var(--c-accent);
           font-weight: 700;
         }
       }
@@ -107,7 +107,7 @@
 
   &__link-text {
     margin: 0;
-    color: $c-secondary;
+    color: var(--c-secondary);
 
     span {
       transition:

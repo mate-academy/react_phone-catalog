@@ -9,6 +9,10 @@
     gap: 32px;
 
     @include on-tablet {
+      gap: 38px;
+    }
+
+    @include on-desktop {
       gap: 64px;
     }
   }
@@ -22,7 +26,7 @@
 
   &__link {
     text-decoration: none;
-    color: $c-secondary;
+    color: var(--c-secondary);
     box-sizing: border-box;
 
     font-weight: 700;
@@ -34,15 +38,15 @@
     border-bottom: 3px solid transparent;
 
     &--active {
-      color: $c-white;
-      border-bottom: 3px solid $c-white;
+      color: var(--c-white);
+      border-bottom: 3px solid var(--c-white);
     }
 
     @include on-desktop {
       transition: color 0.5s;
 
       &:hover {
-        color: $c-white;
+        color: var(--c-white);
       }
     }
   }
@@ -56,6 +60,44 @@
     align-items: center;
     flex-grow: 1;
     justify-content: flex-end;
+
+    border-top: 1px solid var(--c-elements);
+
+    @include on-tablet {
+      border: none;
+    }
+  }
+
+  &__buttons-item {
+    &--search {
+      display: none;
+
+      @include on-tablet {
+        display: block;
+      }
+
+      @include on-desktop {
+        display: none;
+      }
+    }
+  }
+
+  &__search-bar {
+    &--desktop {
+      display: none;
+
+      @include on-desktop {
+        display: flex;
+      }
+    }
+
+    @include on-tablet {
+      margin-right: 32px;
+    }
+
+    @include on-desktop {
+      margin: 0 auto;
+    }
   }
 
   &__buttons-btn {
@@ -64,7 +106,7 @@
     align-items: center;
     width: 48px;
     height: 48px;
-    border-left: 1px solid $c-elements;
+    border-left: 1px solid var(--c-elements);
 
     position: relative;
 
@@ -75,8 +117,31 @@
         height: 3px;
         position: absolute;
         bottom: 0;
-        background-color: $c-white;
+        background-color: var(--c-white);
       }
+    }
+
+    &--theme {
+      cursor: pointer;
+      background-color: transparent;
+      border: none;
+      border-left: 1px solid var(--c-elements);
+
+      &--active {
+        .icon {
+          fill: #f7ff9c;
+        }
+      }
+
+      @include on-desktop {
+        border-left: 1px solid var(--c-elements);
+      }
+    }
+
+    &--search {
+      cursor: pointer;
+      background-color: transparent;
+      border: none;
     }
 
     @include on-desktop {
@@ -85,7 +150,7 @@
       transition: background-color 0.5s;
 
       &:hover {
-        background-color: $c-icons;
+        background-color: var(--c-icons);
       }
     }
   }
@@ -104,11 +169,11 @@
 
     font-weight: 600;
     font-size: 9px;
-    color: $c-white;
+    color: var(--c-white);
 
     border-radius: 100%;
-    border: 1px solid $c-black;
-    background-color: $c-red;
+    border: 1px solid var(--c-black);
+    background-color: var(--c-red);
   }
 
   &--menu {
