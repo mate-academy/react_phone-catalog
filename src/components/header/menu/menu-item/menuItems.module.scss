@@ -1,0 +1,9 @@
+.active {
+  &.active::after {
+    width: 100%;
+  }
+
+  &.active {
+    color: var(--primary);
+  }
+}

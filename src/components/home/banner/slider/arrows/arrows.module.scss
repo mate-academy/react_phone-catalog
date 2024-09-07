@@ -1,0 +1,20 @@
+.arrows {
+  display: flex;
+  align-items: center;
+  border: var(--border-icon);
+  padding-inline: 7px;
+
+  &:hover {
+    border-color: var(--primary);
+    background-color: var(--hover-bg);
+  }
+
+  &.disabled {
+    border-color: var(--elements);
+    cursor: not-allowed;
+
+    svg {
+      color: var(--elements);
+    }
+  }
+}

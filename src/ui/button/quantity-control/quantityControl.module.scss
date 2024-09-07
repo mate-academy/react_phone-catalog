@@ -1,0 +1,29 @@
+.quantityControl {
+  display: flex;
+  padding: 7px;
+  border: var(--border-icon);
+  color: var(--primary);
+
+  &:hover {
+    border-color: currentColor;
+    background-color: var(--hover-bg);
+
+    svg {
+      color: currentColor;
+    }
+  }
+
+  .plus {
+    color: currentColor;
+  }
+
+  &.disabled {
+    border-color: var(--elements);
+    cursor: not-allowed;
+
+    svg {
+      color: var(--elements);
+      cursor: not-allowed;
+    }
+  }
+}
