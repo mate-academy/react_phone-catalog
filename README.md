@@ -81,7 +81,7 @@ Create `ProductDetailsPage` available at `/product/:productId`.
 2. Use `Loader` when fetching the product details.
 3. Show the details on the page:
    - Display the available colors from colorsAvailable and the capacities from capacityAvailable as radio inputs, allowing the selection of one value from the offered options;
-   - `About` section should contain just a description (without any subheaders);
+   - `About` section should contain just a description (without any subheadings);
    - Choose `Tech specs` you want to show.
 4. Add the ability to choose a picture.
 5. Implement `You may also like` block with products chosen randomly:
