@@ -124,8 +124,11 @@ export const Nav: React.FC<Props> = ({ className = '' }) => {
         <li className="nav__buttons-item">
           <NavLink className={getBtnClass} to="/cart">
             <span className="sr-only">Open cart</span>
-            {cartItems.length > 0 && (
-              <span className="nav__buttons-quantity">{cartItems.length}</span>
+            {cartItems.reduce((total, item) => total + item.quantity, 0) >
+              0 && (
+              <span className="nav__buttons-quantity">
+                {cartItems.reduce((total, item) => total + item.quantity, 0)}
+              </span>
             )}
             <Icon iconName="icon-cart" />
           </NavLink>

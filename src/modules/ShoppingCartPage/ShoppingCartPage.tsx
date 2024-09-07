@@ -59,7 +59,7 @@ export const ShoppingCartPage = () => {
             {cartItems.length > 0 ? (
               <>
                 <span className="cart__total-price">{`$${totalPrice}`}</span>
-                <p className="cart__info-text">Total for 3 items</p>
+                <p className="cart__info-text">{`Total for ${cartItems.reduce((total, item) => total + item.quantity, 0)} items`}</p>
               </>
             ) : (
               <span className="cart__info-text">Your cart is empty</span>

@@ -74,16 +74,6 @@ export const CartItem: React.FC<Props> = ({ product }) => {
           <Icon iconName="icon-close" />
         </button>
 
-        {/* <a className="cart-item__img-link" href="#">
-          <img
-            className="cart-item__img"
-            src={product.image}
-            alt={product.name}
-          />
-        </a> */}
-
-        {/* <span className="cart-item__title">{product.name}</span> */}
-
         <Link
           className="cart-item__img-link"
           to={`/${product.category}/${product.itemId}`}
