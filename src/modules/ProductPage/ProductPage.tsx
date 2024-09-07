@@ -1,7 +1,5 @@
 import { FC } from 'react';
 
-interface Props {}
-
-export const ProductPage: FC<Props> = ({}) => {
+export const ProductPage: FC = () => {
   return <div>ProductPage</div>;
 };

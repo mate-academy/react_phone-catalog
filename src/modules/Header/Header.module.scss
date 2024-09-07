@@ -7,6 +7,7 @@
   justify-content: space-between;
   align-items: center;
   border-bottom: 1px solid var(--color-elements);
+  transition: border-bottom $transition-duration;
 }
 
 .content {
@@ -64,6 +65,7 @@
 
       .link {
         @extend %uppercase-text;
+
         color: var(--color-secondary);
         position: relative;
         display: flex;
@@ -102,6 +104,9 @@
     .item {
       position: relative;
       height: 100%;
+      border-left: 1px solid var(--color-elements);
+      transition: border-left $transition-duration;
+
       .link {
         @include header-buttons;
 

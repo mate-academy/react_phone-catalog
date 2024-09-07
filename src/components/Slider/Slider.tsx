@@ -6,9 +6,7 @@ import 'swiper/css/pagination';
 import { Navigation, Pagination, Mousewheel, Keyboard } from 'swiper/modules';
 import './Slider.module';
 
-type Props = {};
-
-export const Slider: FC<Props> = ({}) => {
+export const Slider: FC = () => {
   return (
     <>
       <Swiper

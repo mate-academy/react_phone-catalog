@@ -9,9 +9,9 @@ import {
   FAVORITES,
   CART,
 } from '../../utils/routes';
-import styles from './Header.module.scss';
 import { useIconSrc } from '../../utils/hooks/useIconSrc';
 import classNames from 'classnames';
+import styles from './Header.module.scss';
 
 type Props = {};
 

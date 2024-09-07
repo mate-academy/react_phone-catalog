@@ -1,7 +1,5 @@
 import { FC } from 'react';
 
-interface Props {}
-
-export const FavoritesPage: FC<Props> = ({}) => {
+export const FavoritesPage: FC = () => {
   return <div>FavoritesPage</div>;
 };

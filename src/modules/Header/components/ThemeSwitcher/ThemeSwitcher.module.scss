@@ -3,3 +3,10 @@
 .themeButton {
   @include header-buttons;
 }
+
+.iconHover {
+  @include hover(transform, scale(1.2));
+
+  width: 16px;
+  height: 16px;
+}

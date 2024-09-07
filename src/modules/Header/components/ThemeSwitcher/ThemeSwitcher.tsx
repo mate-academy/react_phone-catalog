@@ -2,11 +2,11 @@ import { FC } from 'react';
 
 import styles from './ThemeSwitcher.module.scss';
 import { useTheme } from '../../../../context/ThemeProvider';
+import { useIconSrc } from '../../../../utils/hooks/useIconSrc';
 
-type Props = {};
-
-export const ThemeSwitcher: FC<Props> = ({}) => {
+export const ThemeSwitcher: FC = () => {
   const { theme, toggleTheme } = useTheme();
+  const { moonUrl, sunUrl } = useIconSrc();
 
   return (
     <button
@@ -15,7 +15,11 @@ export const ThemeSwitcher: FC<Props> = ({}) => {
       aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'}`}
       onClick={toggleTheme}
     >
-      {theme === 'light' ? 'Dark' : 'Light'}
+      {theme === 'light' ? (
+        <img src={moonUrl} className={styles.iconHover} />
+      ) : (
+        <img src={sunUrl} className={styles.iconHover} />
+      )}
     </button>
   );
 };

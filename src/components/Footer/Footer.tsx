@@ -1,7 +1,5 @@
 import { FC } from 'react';
 
-type Props = {};
-
-export const Footer: FC<Props> = ({}) => {
+export const Footer: FC = () => {
   return <div> Footer</div>;
 };
