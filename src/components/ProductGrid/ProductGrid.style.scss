@@ -1,0 +1,33 @@
+.productGrid {
+  grid-column: 1/-1;
+  row-gap: 40px;
+  width: 100%;
+
+  @include grid-page;
+  .card {
+    grid-column: span 4;
+
+    @include on-desktop {
+      grid-column: span 6;
+    }
+  }
+
+  &__options {
+    grid-column: 1/-1;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 16px;
+
+    &-sort {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    &-perPage {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+  }
+}

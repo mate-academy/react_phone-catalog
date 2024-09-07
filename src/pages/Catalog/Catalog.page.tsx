@@ -1,9 +1,12 @@
 import { Navigate, useParams } from 'react-router-dom';
-import { Icon } from '../../components/base/Icon/Icon.component';
 import { StatesContext } from '../../store/GlobalStateProvider';
 import { useContext } from 'react';
 // eslint-disable-next-line max-len
-import { ProductCard } from '../../components/base/ProductCard/ProductCard.component';
+import { ProductGrid } from '../../components/ProductGrid/ProductGrid.component';
+// eslint-disable-next-line max-len
+import { CategoryTitle } from '../../components/CategoryTitle/CategoryTitle.component';
+// eslint-disable-next-line max-len
+import { NavigationPath } from '../../components/NavigationPath/NavigationPath.component';
 
 export const CatalogPage: React.FC = () => {
   const { category: categoryId } = useParams();
@@ -14,31 +17,9 @@ export const CatalogPage: React.FC = () => {
     <Navigate to="/home" />
   ) : (
     <section className="catalog-page">
-      <article className="catalog-page__path">
-        <Icon iconType="home" iconUse="button" iconSize="16" />
-        <Icon
-          iconType="chevron-right"
-          iconUse="button"
-          iconSize="16"
-          disabled={true}
-        />
-        <span className="catalog-page__path-name">
-          {category.id.toUpperCase()}
-        </span>
-      </article>
-      <article className="catalog-page__title">
-        <h1>{category.title}</h1>
-        <span>{category.productsCount} models</span>
-      </article>
-      <article className="catalog-page__products">
-        {category.products.map(product => (
-          <ProductCard
-            key={product.id}
-            product={product}
-            showDiscount={false}
-          />
-        ))}
-      </article>
+      <NavigationPath category={category} />
+      <CategoryTitle category={category} />
+      <ProductGrid category={category} pagination />
     </section>
   );
 };

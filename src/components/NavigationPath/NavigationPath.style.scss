@@ -1,0 +1,11 @@
+.navigationPath {
+  grid-column: 1/-1;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  gap: 8px;
+  padding-block: 24px;
+  &__name {
+    color: $c-secondary;
+  }
+}
