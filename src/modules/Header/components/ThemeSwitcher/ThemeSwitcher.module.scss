@@ -2,6 +2,13 @@
 
 .themeButton {
   @include header-buttons;
+
+  @include on-mobile {
+    margin-left: 0;
+     width: 33%
+  }
+
+  margin-left: auto;
 }
 
 .iconHover {

@@ -1,6 +1,12 @@
 @import './vars';
 @import './typography';
 
+@mixin on-desktop {
+  @media (max-width: $breakpoint-desktop) {
+    @content;
+  }
+}
+
 @mixin on-tablet {
   @media (max-width: $breakpoint-tablet) {
     @content;
@@ -41,7 +47,7 @@
   width: 64px;
   height: 64px;
 
-  @include on-tablet {
+  @include on-desktop {
     width: $size-icons-tablet;
     height: $size-icons-tablet;
   }

@@ -1,7 +1,7 @@
 import { FC } from 'react';
 
 import styles from './ThemeSwitcher.module.scss';
-import { useTheme } from '../../../../context/ThemeProvider';
+import { useTheme } from '../../../../contexts/ThemeProvider';
 import { useIconSrc } from '../../../../utils/hooks/useIconSrc';
 
 export const ThemeSwitcher: FC = () => {

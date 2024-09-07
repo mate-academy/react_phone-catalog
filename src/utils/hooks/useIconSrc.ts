@@ -1,4 +1,4 @@
-import { useTheme } from '../../context/ThemeProvider';
+import { useTheme } from '../../contexts/ThemeProvider';
 import { BASE_URL } from '../constants';
 
 export const useIconSrc = () => {

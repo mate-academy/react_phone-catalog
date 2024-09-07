@@ -1,0 +1,22 @@
+@import '../../../../styles/main';
+
+.themeButton {
+  @include header-buttons;
+}
+
+.showMenuButton {
+  display: none;
+  transition: all $transition-duration;
+
+  @include on-mobile {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-left: 1px solid var(--color-elements);
+    transition: all $transition-duration;
+  }
+}
+
+.hoverImg {
+  @include hover(transform, scale(1.1));
+}

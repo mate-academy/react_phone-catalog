@@ -1,19 +1,57 @@
 @import '../../styles/main';
 
 .header {
-  width: 100%;
-  margin: 0 auto;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
   border-bottom: 1px solid var(--color-elements);
   transition: border-bottom $transition-duration;
+  gap: 24px;
+  position: sticky;
+  top: 0;
+
+  @include on-tablet {
+    gap: 16px;
+  }
+
+  @include on-mobile {
+    position: relative;
+    justify-content: space-between;
+  }
 }
 
 .content {
   display: flex;
-  justify-content: flex-start;
-  gap: 24px;
+  justify-content: space-between;
+  transition: all $transition-duration;
+  flex: 1;
+
+  @include on-mobile {
+    width: 100%;
+    content: '';
+    position: absolute;
+    flex-direction: column;
+    top: 49px;
+    height: calc(100vh - 49px);
+    background-color: var(--color-background);
+    transform: translateX(100%);
+    transition: all $transition-duration;
+  }
+}
+
+.showMenu {
+  transform: translateX(0%);
+  transition: all $transition-duration;
+}
+
+.userButtons {
+  display: flex;
+  justify-content: space-between;
+  margin-left: auto;
+
+  @include on-mobile {
+    margin-left: 0;
+  }
 }
 
 .logo {
@@ -22,11 +60,13 @@
   justify-content: space-between;
   padding: 18px 24px;
   height: 100%;
+  width: 128px;
 
   @include hover(transform, scale(1.1));
 
-  @include on-tablet {
+  @include on-desktop {
     padding: 13px 16px;
+    width: 96px;
   }
 }
 
@@ -34,102 +74,8 @@
   width: 80px;
   height: 28px;
 
-  @include on-tablet {
+  @include on-desktop {
     width: 64px;
     height: 22px;
-  }
-}
-
-.nav {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  .list {
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 64px;
-
-    @include on-tablet {
-      gap: 32px;
-    }
-
-    .item {
-      height: 100%;
-      display: flex;
-      position: relative;
-      align-items: center;
-      cursor: pointer;
-
-      .link {
-        @extend %uppercase-text;
-
-        color: var(--color-secondary);
-        position: relative;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100%;
-        transition: color $transition-duration;
-
-        @extend %underline-effect;
-
-        &.isActive {
-          transition: color $transition-duration;
-          color: var(--color-primary);
-
-          &::after {
-            position: absolute;
-            content: '';
-            width: 100%;
-            height: 3px;
-            background-color: var(--color-primary);
-            align-self: flex-end;
-          }
-        }
-      }
-    }
-  }
-}
-
-.navUser {
-  display: flex;
-  justify-content: flex-end;
-  .userList {
-    display: flex;
-    align-items: center;
-
-    .item {
-      position: relative;
-      height: 100%;
-      border-left: 1px solid var(--color-elements);
-      transition: border-left $transition-duration;
-
-      .link {
-        @include header-buttons;
-
-        .img {
-          width: 16px;
-          height: 16px;
-        }
-
-        @extend %underline-effect;
-
-        &.isActive {
-          color: var(--color-primary);
-
-          &::after {
-            position: absolute;
-            content: '';
-            width: 100%;
-            height: 3px;
-            background-color: var(--color-primary);
-            align-self: flex-end;
-          }
-        }
-      }
-    }
   }
 }
