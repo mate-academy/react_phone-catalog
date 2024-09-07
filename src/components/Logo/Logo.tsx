@@ -1,11 +1,12 @@
+import { Link } from 'react-router-dom';
+
 type Props = {
   className?: string;
-  href: string;
 };
 
-export const Logo: React.FC<Props> = ({ className = '', href }) => (
-  <a className={`logo ${className}`.trim()} href={href}>
+export const Logo: React.FC<Props> = ({ className = '' }) => (
+  <Link className={`logo ${className}`.trim()} to="/">
     <span className="sr-only">Go to home page</span>
     <img className="logo__img" src="img/logo.svg" alt="NICE GADGETS logo" />
-  </a>
+  </Link>
 );

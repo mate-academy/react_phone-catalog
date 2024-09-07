@@ -23,7 +23,7 @@ export const Header: React.FC<Props> = ({
   return (
     <header className="header">
       <div className="header__wrapper">
-        <Logo className="header__logo" href="/" />
+        <Logo className="header__logo" />
 
         {isCatalogPage && <SearchBar className="header__search-bar" />}
 

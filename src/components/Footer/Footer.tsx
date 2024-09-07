@@ -4,7 +4,7 @@ import { Logo } from '../Logo';
 export const Footer = () => (
   <footer className="footer">
     <div className="footer__container container">
-      <Logo className="footer__logo" href="/" />
+      <Logo className="footer__logo" />
 
       <ul className="footer__list">
         <li className="footer__item">
