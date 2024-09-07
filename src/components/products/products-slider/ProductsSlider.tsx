@@ -3,12 +3,20 @@ import { FC, useState } from 'react';
 import styles from './products.module.scss';
 
 import { ProductList } from '../products-list/ProductList';
+<<<<<<< HEAD
 import { Arrows } from '@components/home/banner/slider/arrows/Arrows';
 
 import { ArrowLeftIcon } from '@ui/icon/ArrowLeftIcon';
 import { ArrowRightIcon } from '@ui/icon/ArrowRightIcon';
 
 import { TProduct } from '@utils/types/product.type';
+=======
+import { Arrows } from 'components/home/banner/slider/arrows/Arrows';
+
+import { TProduct } from 'utils/types/product.type';
+import { ArrowLeftIcon } from 'ui/icon/ArrowLeftIcon';
+import { ArrowRightIcon } from 'ui/icon/ArrowRightIcon';
+>>>>>>> 3d29229bf5a890910a3e7c1d3c6b79a9929789c2
 
 type TProps = {
   title: string;

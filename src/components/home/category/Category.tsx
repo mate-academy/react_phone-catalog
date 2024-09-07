@@ -3,8 +3,13 @@ import { Link } from 'react-router-dom';
 
 import styles from './category.module.scss';
 
+<<<<<<< HEAD
 import { useAppSelector } from '@hooks/hook';
 import { CATEGORY } from '@utils/constants/imagesCategory';
+=======
+import { useAppSelector } from 'hooks/hook';
+import { CATEGORY } from 'utils/constants/imagesCategory';
+>>>>>>> 3d29229bf5a890910a3e7c1d3c6b79a9929789c2
 
 export const Category: FC = () => {
   const { phones } = useAppSelector(state => state.phone);

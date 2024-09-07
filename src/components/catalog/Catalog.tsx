@@ -4,6 +4,7 @@ import { FiHome } from 'react-icons/fi';
 
 import styles from './catalog.module.scss';
 
+<<<<<<< HEAD
 import { ProductList } from '@components/products/products-list/ProductList';
 import { Arrows } from '@components/home/banner/slider/arrows/Arrows';
 
@@ -16,6 +17,21 @@ import { ROUTES } from '@utils/constants/routes';
 import { getMostExpensiveProduct } from '@utils/helpers/sortedByPrice';
 import { ITEMS_ON_PAGE, SORT_BY } from '@utils/constants/optionsForSort';
 import { TProduct } from '@utils/types/product.type';
+=======
+import { ProductList } from 'components/products/products-list/ProductList';
+import { Arrows } from 'components/home/banner/slider/arrows/Arrows';
+
+import { Dropdown } from 'ui/dropdown/Dropdown';
+import { Pagination } from 'ui/pagination/Pagination';
+
+import { ArrowRightIcon } from 'ui/icon/ArrowRightIcon';
+import { ArrowLeftIcon } from 'ui/icon/ArrowLeftIcon';
+
+import { ROUTES } from 'utils/constants/routes';
+import { ITEMS_ON_PAGE, SORT_BY } from 'utils/constants/optionsForSort';
+import { getMostExpensiveProduct } from 'utils/helpers/sortedByPrice';
+import { TProduct } from 'utils/types/product.type';
+>>>>>>> 3d29229bf5a890910a3e7c1d3c6b79a9929789c2
 
 type TProps = {
   title: string;

@@ -1,5 +1,3 @@
 import { FC } from 'react';
 
-export const FavoritePage: FC = () => {
-  return <div>Favorite Page</div>;
-};
+export const FavoritePage: FC = () => <div>Favorite Page</div>;
