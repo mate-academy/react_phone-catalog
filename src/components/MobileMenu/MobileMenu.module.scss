@@ -129,3 +129,27 @@
 .action {
   width: calc(100% / 3);
 }
+
+.count {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 1px solid var(--color-background);
+  background-color: var(--color-red);
+  top: 17px;
+  left: 82px;
+}
+
+.countText {
+  color: #F1F2F9;
+  font-size: 9px;
+  font-weight: 400;
+  line-height: 10px;
+  text-align: center;
+
+  @extend %h4-mobile;
+}

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect }from 'react';
 import { NavLink } from 'react-router-dom';
 import styles from './MobileMenu.module.scss';
 import favoritesIconSrc from '../../img/icons/FavoritesIcon.svg';
@@ -9,10 +9,22 @@ import cartIconSrcDT from '../../img/icons/CartIcon--DarkTheme.svg';
 import { Theme } from '../Theme';
 
 export const MobileMenu: React.FC = () => {
-  const { setIsMobMenuOpen, theme } = useAppContext();
+  const { setIsMobMenuOpen, theme, productsInCartCount, favoriteProducts } = useAppContext();
+  const [cartCount, setCartCount] = useState<number>(0)
   const handleMenuStatus = () => {
     setIsMobMenuOpen(false);
   };
+
+  useEffect(() => {
+    let cartCount: number = 0;
+
+    for (let i = 0; i < productsInCartCount.length; i++) {
+      cartCount = cartCount + productsInCartCount[i]
+    }
+
+    setCartCount(cartCount)
+
+  }, [productsInCartCount]);
 
   return (
     <div className={styles.topWrapper}>
@@ -68,6 +80,11 @@ export const MobileMenu: React.FC = () => {
                 alt="Favorites"
               />
             </div>
+            <div className={`${favoriteProducts.length > 0 ? styles.count : styles.hidden}`}>
+              <div className={styles.countText}>
+                {favoriteProducts.length}
+              </div>
+            </div>
           </NavLink>
           <NavLink
             to="/cart"
@@ -81,6 +98,11 @@ export const MobileMenu: React.FC = () => {
                 alt="Cart"
                 className={styles.icon}
               />
+            </div>
+            <div className={`${cartCount > 0 ? styles.count : styles.hidden}`}>
+              <div className={styles.countText}>
+                {cartCount}
+              </div>
             </div>
           </NavLink>
 
