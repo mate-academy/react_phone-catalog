@@ -25,7 +25,7 @@ export const ImageGallery: React.FC = () => {
 
   return (
     <div className={styles.imageGallery}>
-      <div className={styles.thumbnailContainerTablet}>
+      <div className={`${styles.thumbnailContainerTablet} ${styles.thumbnailContainerMobile}`}>
         {images.map((item: string, index: number) => (
           <img
             key={index}
@@ -42,16 +42,9 @@ export const ImageGallery: React.FC = () => {
           <img
             src={zoomedImage}
             alt="Main zoomed"
+            className={styles.mainImage}
           />
         )}
-      </div>
-
-      <div className={styles.thumbnailContainerMobile}>
-        <img
-          src="https://placehold.co/380x380.png"
-          className={styles.selectedThumbnail}
-          alt="Mobile placeholder"
-        />
       </div>
     </div>
   );
