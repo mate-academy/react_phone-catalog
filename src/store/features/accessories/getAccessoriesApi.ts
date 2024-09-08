@@ -4,7 +4,7 @@ import axios from 'axios';
 export const getAccessories = createAsyncThunk(
   'api/getAccessories',
   async () => {
-    const response = await axios.get('/api/accessories.json');
+    const response = await axios.get('/public/api/accessories.json');
 
     return response.data;
   },
