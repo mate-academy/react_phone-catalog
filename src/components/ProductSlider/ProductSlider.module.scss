@@ -132,3 +132,12 @@
 .iconNext {
   transform: rotate(180deg);
 }
+.disabled {
+  opacity: 0.5;
+  cursor: default;
+
+  &:hover {
+    background-color: var(--color-icons);
+    border: 1px solid var(--color-surface);
+  }
+}

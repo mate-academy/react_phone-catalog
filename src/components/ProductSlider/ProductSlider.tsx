@@ -66,10 +66,9 @@ useEffect(() => {
     <div className={styles.productSlider}>
       <div className={styles.titleContainer}>
         <h2 className={styles.title}>{title}</h2>
-
         <div className={styles.buttonContainer}>
           <button
-            className={styles.arrowButton}
+            className={`${styles.arrowButton} ${positionCount === 0 ? styles.disabled : ""}`}
             onClick={() => {
               if (positionCount !== 0) {
                 handlePreviousSlide();
