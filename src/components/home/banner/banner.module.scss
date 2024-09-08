@@ -1,6 +1,11 @@
 .banner {
   margin-top: var(--size-56);
   margin-bottom: 80px;
+
+  h2 {
+    font-size: var(--size-48);
+    line-height: 1.16;
+  }
 }
 
 @media (max-width: 1199px) {
@@ -15,7 +20,7 @@
     margin-top: var(--size-24);
     margin-bottom: var(--size-56);
 
-    h1 {
+    h2 {
       font-size: var(--size-32);
       line-height: 1.28;
     }

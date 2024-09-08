@@ -24,8 +24,6 @@ export const App: FC = () => {
 
   return (
     <div className="App">
-      <h1 className="visually-hidden">Product Catalog</h1>
-
       <Header />
       <hr />
       <div className="container">
