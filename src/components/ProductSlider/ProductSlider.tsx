@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useMemo } from 'react';
+import React, { useEffect, useState, useMemo, useRef } from 'react';
 import { ProductCard } from '../ProductCard';
 import { LimitedProduct } from '../../types/Product';
 import styles from './ProductSlider.module.scss';
@@ -14,6 +14,9 @@ type ProductSliderProps = {
 export const ProductSlider: React.FC<ProductSliderProps> = ({ title, count }) => {
   const [products, setProducts] = useState<LimitedProduct[]>([]);
   const { theme } = useAppContext();
+  const sliderRef = useRef<HTMLUListElement>(null);
+  const [position, setPosition] = useState<number>(0);
+  const [positionCount, setPositionCount] = useState<number>(0);
 
   useEffect(() => {
     const fetchProductData = async () => {
@@ -31,22 +34,33 @@ export const ProductSlider: React.FC<ProductSliderProps> = ({ title, count }) =>
 
   const displayedItems = useMemo(() => {
     return products.slice(-count);
-  }, [products]);
+  }, [products, count]);
 
-  const [position, setPosition] = useState<number>(0);
-  const [positionCount, setPositionCount] = useState<number>(0);
+  const getScrollStep = () => {
+    if (sliderRef.current) {
+      return sliderRef.current.clientWidth * (count / 100);
+    }
+    return 0;
+  };
+
   const handlePositionCount = (change: number) => {
     setPositionCount((prev) => prev + change);
   };
 
   const handleNextSlide = () => {
-    handlePositionCount(1);
-    setPosition((prevPosition) => prevPosition - 292);
+    const step = getScrollStep();
+    if (step > 0) {
+      handlePositionCount(1);
+      setPosition((prevPosition) => prevPosition - step);
+    }
   };
 
   const handlePreviousSlide = () => {
-    handlePositionCount(-1);
-    setPosition((prevPosition) => prevPosition + 292);
+    const step = getScrollStep();
+    if (step > 0) {
+      handlePositionCount(-1);
+      setPosition((prevPosition) => prevPosition + step);
+    }
   };
 
   return (
@@ -63,7 +77,7 @@ export const ProductSlider: React.FC<ProductSliderProps> = ({ title, count }) =>
               }
             }}
           >
-            <img src={`${theme === 'dark' ? chevronIconDT : chevronIcon}`} alt="scroll right" />
+            <img src={`${theme === 'dark' ? chevronIconDT : chevronIcon}`} alt="scroll left" />
           </button>
 
           <button
@@ -84,6 +98,7 @@ export const ProductSlider: React.FC<ProductSliderProps> = ({ title, count }) =>
           <div className={styles.slideWraper}>
             <ul
               className={styles.slideList}
+              ref={sliderRef}
               style={{
                 transform: `translateX(${position}px)`,
               }}
