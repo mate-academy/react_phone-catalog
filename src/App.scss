@@ -61,17 +61,6 @@ html {
   color: var(--c-white);
 }
 
-// html[data-theme="light"] {
-//   --background-color: #{$c-white};
-//   --color: #{$c-black};
-
-// --primary-color: #{$blue-1};
-// --secondary-color: #{$grey-3};
-
-// --card-background-color: #{$white-1};
-// --card-border-color: #{$grey-2};
-// }
-
 body {
   margin: 0;
 
@@ -139,7 +128,7 @@ body {
   cursor: pointer;
   background-color: var(--c-accent);
   border: none;
-  color: inherit;
+  color: #f1f2f9;
   display: flex;
   justify-content: center;
   align-items: center;

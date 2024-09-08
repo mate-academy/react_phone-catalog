@@ -128,6 +128,19 @@ export const CatalogPage: React.FC<Props> = ({ type }) => {
     });
   };
 
+  useEffect(() => {
+    if (query !== searchParams.get('query')) {
+      setCurrentPage(1);
+      setSearchParams(prevParams => {
+        const newParams = new URLSearchParams(prevParams);
+
+        newParams.set('page', '1');
+
+        return newParams;
+      });
+    }
+  }, [query, searchParams, setSearchParams]);
+
   const handlePageChange = (page: number) => {
     setIsSortDropdownOpen(false);
     setIsItemsDropdownOpen(false);
