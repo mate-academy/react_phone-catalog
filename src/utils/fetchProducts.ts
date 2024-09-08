@@ -19,7 +19,7 @@ export const fetchProducts = async (category: string, sortMethod: string): Promi
         filteredData.sort((a, b) => b.year - a.year);
         break;
       case 'hot':
-        filteredData.sort((a, b) => (a.fullPrice - a.price) - (b.fullPrice - b.fullPrice));
+        filteredData.sort((a, b) => (b.fullPrice - b.price) - (a.fullPrice - a.price));
         break;
       default: break;
     }
