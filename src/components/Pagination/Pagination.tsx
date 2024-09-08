@@ -30,7 +30,9 @@ export const Pagination: React.FC<PaginationProps> = ({
   const move = (mvm: 1 | -1) => {
     if (displayedPage + mvm !== 0 && displayedPage + mvm !== numberOfPages + 1) {
       handleDisplayedPage(displayedPage + mvm);
-      setVisiblePages([visiblePages[0] + mvm, visiblePages[1] + mvm])
+      if (numberOfPages > 5) {
+        setVisiblePages([visiblePages[0] + mvm, visiblePages[1] + mvm])
+      }
     }
   };
 
