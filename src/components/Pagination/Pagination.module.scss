@@ -52,7 +52,6 @@
 }
 
 .topWrapper {
-  width: 200px;
   overflow: hidden;
 }
 
@@ -60,4 +59,8 @@
   display: flex;
   gap: 10px;
   transition: transform 0.3s ease;
+}
+
+.hidden {
+  display: none;
 }
