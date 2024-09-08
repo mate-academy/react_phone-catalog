@@ -11,7 +11,7 @@ type ProductSliderProps = {
   title: string;
   count: number;
   sortMethod: 'alpha' | 'price' | 'newest';
-  category: 'tablets' | 'phones' | 'accessories';
+  category: string;
 };
 
 export const ProductSlider: React.FC<ProductSliderProps> = ({ title, count, category, sortMethod }) => {
