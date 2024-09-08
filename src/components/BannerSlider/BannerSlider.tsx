@@ -38,7 +38,7 @@ export const BannerSlider: React.FC = () => {
         <div className={styles.topWrapper}>
           <div className={styles.buttons}>
             <button
-              className={styles.arrowButton}
+              className={`${styles.arrowButton} ${displayedImageIndex === 0 ? styles.buttonDisabled : ""}`}
               onClick={decrementDisplayedImageIndex}
             >
               <img
@@ -65,7 +65,7 @@ export const BannerSlider: React.FC = () => {
             </div>
 
             <button
-              className={styles.arrowButton}
+              className={`${styles.arrowButton} ${displayedImageIndex === sliderImages.length - 1 ? styles.buttonDisabled : ""}`}
               onClick={incrementDisplayedImageIndex}
             >
               <img
