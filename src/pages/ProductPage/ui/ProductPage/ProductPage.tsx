@@ -1,35 +1,41 @@
 import { useParams } from 'react-router-dom';
-import { Section } from '../../../../shared/ui/Section';
-import { TitleTag } from '../../../../shared/ui/TitleTag/TitleTag';
 import { useEffect, useState } from 'react';
-import { fetchProducts } from '../../model/services/fetchProduct';
+import { fetchProductsPage } from '../../model/services/fetchProduct';
 import { CategoriesEnum } from '../../../../entities/Categories';
 import { ProductDetails } from '../../model/types/productDetails';
-import cls from './productPage.module.scss';
-import { ProductSlider } from '../ProductSlider/ProductSlider';
+import { MainProductSection } from '../sections/MainProductSection';
+import { AboutProductSection } from '../sections/AboutProductSection';
+import { SuggestedProductsSection } from '../sections/SuggestedProductsSection';
+import { NotFound } from '../../../../shared/ui/NotFound';
 
 function ProductPage() {
-  const { category, itemId } = useParams();
+  const { category, itemId } = useParams<{
+    category: string;
+    itemId: string;
+  }>();
   const [isLoadind, setIsLoadind] = useState<boolean>(false);
   const [product, setProduct] = useState<ProductDetails | null>(null);
 
   useEffect(() => {
     setIsLoadind(true);
-    fetchProducts(category as CategoriesEnum, itemId as string)
+    fetchProductsPage(category as CategoriesEnum, itemId as string)
       .then(productDetails => setProduct(productDetails))
       .finally(() => setIsLoadind(false));
   }, [category, itemId]);
 
   return (
     <>
-      <Section firstSection>
-        {product && !isLoadind && <TitleTag Tag="h2" title={product?.name} />}
-        <div className={cls.main__body}>
-          {product && (
-            <ProductSlider product={product} className={cls.slider} />
+      {product ? (
+        <>
+          <MainProductSection isLoadind={isLoadind} product={product} />
+          {product && !isLoadind && (
+            <AboutProductSection product={product} isLoadind={isLoadind} />
           )}
-        </div>
-      </Section>
+          {!isLoadind && <SuggestedProductsSection />}
+        </>
+      ) : (
+        <NotFound src="/img/cart-is-empty.png" alt="Cart is empty" />
+      )}
     </>
   );
 }

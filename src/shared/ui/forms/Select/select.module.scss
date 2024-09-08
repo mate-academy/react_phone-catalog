@@ -2,31 +2,15 @@
 @import '../../../styles/vars/global';
 
 .select {
-  font-size: rem(14);
-  line-height: 150%;
+  position: relative;
 
   .trigger {
-    border: rem(1) solid var(--select-border);
-    display: inline-flex;
-    align-items: center;
-    cursor: pointer;
     padding: rem(10) rem(12);
-    width: 100%;
-    text-align: left;
-    justify-content: space-between;
-    flex-direction: row-reverse;
-    color: var(--primary-color);
-    background-color: var(--bg-buttons-default);
 
     &::before {
       font-size: rem(12);
       transition: transform $duration ease 0s;
       transform: rotate(180deg);
-      color: var(--select-icons);
-    }
-
-    &:focus {
-      border: rem(1) solid var(--accent);
     }
   }
 
@@ -67,7 +51,7 @@
 
     &.isActive,
     &:hover {
-      color: var(--button-primary-text);
+      color: var(--select-primary-text);
       background-color: var(--bg-buttons-default);
     }
   }

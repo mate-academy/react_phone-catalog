@@ -20,7 +20,7 @@ export const ProductsCardSceleton = () => {
           />
           <Sceleton
             className={cls.productCard__characteristics}
-            height={111}
+            height={102}
             width={'100%'}
           />
           <Sceleton

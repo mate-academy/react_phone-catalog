@@ -1,0 +1,52 @@
+@import '../../../../shared/styles/common/mixins';
+
+.title {
+  margin-bottom: rem(20);
+}
+
+.buttons {
+  display: flex;
+  gap: rem(20);
+}
+
+.card {
+  border: rem(1) solid var(--secondary-elements);
+  padding: rem(24);
+  height: min-content;
+}
+
+.card__top {
+  position: relative;
+  padding-bottom: rem(24);
+  margin-bottom: rem(24);
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: rem(1);
+    width: 100%;
+    background-color: var(--secondary-elements);
+  }
+}
+
+.amount,
+.count {
+  text-align: center;
+}
+
+.amount {
+  font-weight: 800;
+  font-size: rem(32);
+  line-height: 128%;
+  letter-spacing: -0.01em;
+  color: var(--primary-color);
+}
+
+.count {
+  font-weight: 600;
+  font-size: rem(14);
+  line-height: 150%;
+  color: var(--secondary-color);
+}

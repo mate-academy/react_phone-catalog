@@ -6,7 +6,7 @@
 
   .productsList__body {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(229px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(229px, 1fr));
     row-gap: rem(40);
 
     @media (min-width:$mobileSmall) {

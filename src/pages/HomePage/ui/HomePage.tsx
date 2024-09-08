@@ -2,7 +2,7 @@ import {
   useAppDispatch,
   useAppSelector,
 } from '../../../shared/lib/hooks/reduxHooks';
-import { TitleTag } from '../../../shared/ui/TitleTag/TitleTag';
+import { TitleTag } from '../../../shared/ui/TitleTag';
 import classNames from 'classnames';
 import cls from './homePage.module.scss';
 import { Section } from '../../../shared/ui/Section';
@@ -33,7 +33,7 @@ function HomePage() {
 
   return (
     <>
-      <Section homePage className={classNames(cls.home, cls.main)}>
+      <Section className={classNames(cls.home, cls.main)}>
         <TitleTag
           Tag="h1"
           className={`${cls.main__title}`}
@@ -43,25 +43,22 @@ function HomePage() {
         <MainSlider className={cls.main__slider} />
       </Section>
 
-      <Section>
-        {newProductsLoading && <TitleTag Tag="h2" title="LOADING" />}
-        {newProducts.length !== 0 && (
-          <ProductsSlider title="Brand new models" products={newProducts} />
-        )}
-      </Section>
-
+      <ProductsSlider
+        title="Brand new models"
+        products={newProducts}
+        isLoading={newProductsLoading}
+      />
       <Section className={cls.categories}>
         <SectionTop title={'Shop by category'} />
 
         <Categories />
       </Section>
-
-      <Section lastSection>
-        {hotProductsLoading && <TitleTag Tag="h2" title="LOADING" />}
-        {hotProducts.length !== 0 && (
-          <ProductsSlider title="Brand new models" products={hotProducts} />
-        )}
-      </Section>
+      <ProductsSlider
+        title="Brand new models"
+        products={hotProducts}
+        lastSection
+        isLoading={hotProductsLoading}
+      />
     </>
   );
 }

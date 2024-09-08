@@ -1,9 +1,10 @@
 import { useMemo, useState } from 'react';
-import cls from './select.module.scss';
 import classNames from 'classnames';
-import icons from '../../../styles/icons.module.scss';
 import { capitalizeFirstLetter } from '../../../lib/utils/capitalizeFirstLetter';
 import { FormItem } from '../FormItem/FormItem';
+import icons from '../../../styles/icons.module.scss';
+import common from '../styles/common.module.scss';
+import cls from './select.module.scss';
 
 export interface ICustopmSelectOption<T> {
   value: T;
@@ -53,7 +54,11 @@ export const CustopmSelect = <T extends string>(props: Props<T>) => {
         id={formElementId}
         onFocus={() => setIsActive(true)}
         onBlur={() => setIsActive(false)}
-        className={classNames(cls.trigger, icons['_icon-arrow'])}
+        className={classNames(
+          common.wrapper,
+          cls.trigger,
+          icons['_icon-arrow'],
+        )}
       >
         {capitalizeFirstLetter(value)}
       </button>

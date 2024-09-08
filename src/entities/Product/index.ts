@@ -3,13 +3,18 @@ export {
   ProductSliceReducer,
 } from './model/slice/productsSlice';
 export { fetchProducts } from './model/services/fetchProducts';
-export { getPhones } from './model/selectors/getPhones';
-export { getPhonesCount } from './model/selectors/getPhonesCount';
-export { getTablets } from './model/selectors/getTablets';
-export { getTabletsCount } from './model/selectors/getTabletsCount';
-export { getAccessories } from './model/selectors/getAccessories';
-export { getAccessoriesCount } from './model/selectors/getAccessoriesCount';
-export { getProductsInited } from './model/selectors/getProductsInited';
+export { useToggleCardActions } from './model/hooks/useToggleCardActions';
 export { ProductsList } from './ui/ProductsList/ProductsList';
 export { ProductCard } from './ui/ProductCard/ProductCard';
-export type { Product, ProductSchema } from './model/types/product';
+export { ProductsCardSceleton } from './ui/ProductCard/ProductsCardSceleton';
+export { CartProductCard } from './ui/ProductCard/CartProductCard';
+export type {
+  Product,
+  ProductSchema,
+  ICartItems,
+  ProductInfo,
+} from './model/types/product';
+export {
+  LOCAL_STORAGE_CART_PRODUCTS,
+  LOCAL_STORAGE_FAVORITES,
+} from './model/types/product';

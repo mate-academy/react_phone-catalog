@@ -1,3 +1,30 @@
+@import '../../../shared/styles/common/mixins';
+@import '../../../shared/styles/vars/global';
+
 .paginationProducts {
-  // not empty
+  padding-top: rem(24);
+  display: flex;
+  justify-content: center;
+  column-gap: rem(16);
+
+  @media (min-width:$mobile) {
+    padding-top: rem(40);
+  }
+}
+
+.pages {
+  display: flex;
+  column-gap: rem(8);
+}
+
+.left {
+  &::before {
+    transform: rotate(-90deg);
+  }
+}
+
+.right {
+  &::before {
+    transform: rotate(90deg);
+  }
 }

@@ -1,4 +1,4 @@
-export const enum CategoriesEnum {
+export enum CategoriesEnum {
   PHONES = 'phones',
   TABLETS = 'tablets',
   ACCESSORIES = 'accessories',

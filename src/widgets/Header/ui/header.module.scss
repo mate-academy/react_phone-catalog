@@ -186,6 +186,30 @@
   }
 }
 
+.icon {
+  position: relative;
+
+  &::before {
+    font-size: rem(14);
+  }
+}
+
+.icon__label {
+  position: relative;
+  top: 0;
+  right: 0;
+  transform: translate(-50%, -50%);
+}
+
+.label {
+  height: rem(14);
+  width: rem(14);
+  border-radius: 50%;
+  border: rem(1) solid transparent;
+  background-color: #eb5757;
+  z-index: 1;
+}
+
 .icon-menu {
   display: none;
 

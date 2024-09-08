@@ -3,7 +3,7 @@ import { memo } from 'react';
 import cls from './titleTag.module.scss';
 import classNames from 'classnames';
 
-type TitleTagType = 'h1' | 'h2' | 'h3' | 'h4';
+export type TitleTagType = 'h1' | 'h2' | 'h3' | 'h4';
 
 interface Props {
   className?: string;

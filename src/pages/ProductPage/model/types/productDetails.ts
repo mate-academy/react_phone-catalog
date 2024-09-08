@@ -1,4 +1,9 @@
-export interface ProductDetails {
+export interface IProductDetailsDescription {
+  title: string;
+  text: string[];
+}
+
+export interface ProductDetailsFromServer {
   id: string;
   category: string;
   namespaceId: string;
@@ -10,10 +15,7 @@ export interface ProductDetails {
   colorsAvailable: string[];
   color: string;
   images: string[];
-  description: {
-    title: string;
-    text: string[];
-  }[];
+  description: IProductDetailsDescription[];
   screen: string;
   resolution: string;
   processor: string;
@@ -21,4 +23,9 @@ export interface ProductDetails {
   camera: string;
   zoom: string;
   cell: string[];
+}
+
+export interface ProductDetails extends ProductDetailsFromServer {
+  favorite: boolean;
+  cartItem: boolean;
 }

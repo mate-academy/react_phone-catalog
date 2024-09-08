@@ -1,31 +1,33 @@
-import { useParams, useSearchParams } from 'react-router-dom';
+import { useCallback } from 'react';
+import { Navigate, useParams, useSearchParams } from 'react-router-dom';
 import { ProductsPageFilter } from '../ProductsPageFilter/ProductsPageFilter';
+import { getPreparedProductsList } from '../../model/selectors/getPreparedProductsList';
+import { getProductsIsLoading } from '../../model/selectors/getProductsIsLoading';
+import { prepareProductsList } from '../../model/services/prepareProductsList';
+import { getProductsCount } from '../../model/selectors/getProductsCount';
+import { productPageSliceActions } from '../../model/slice/productPageSlice';
+import { getPagesCount } from '../../model/selectors/getPagesCount';
+import { getCurrentPage } from '../../model/selectors/getCurrentPage';
 import { ProductsList } from '../../../../entities/Product';
-import { TitlePagesEnum } from '../../../../widgets/Header/model/types/header';
 import { Section } from '../../../../shared/ui/Section';
-import { TitleTag } from '../../../../shared/ui/TitleTag/TitleTag';
 import {
   useAppDispatch,
   useAppSelector,
 } from '../../../../shared/lib/hooks/reduxHooks';
-import { getPreparedProductsList } from '../../model/selectors/getPreparedProductsList';
-import { getProductsIsLoading } from '../../model/selectors/getProductsIsLoading';
-import cls from './productPage.module.scss';
-import { PaginationProducts } from '../../../../widgets/PaginationProducts';
-import { getProductsCount } from '../../model/selectors/getProductsCount';
-import { useCallback } from 'react';
-import { productPageSliceActions } from '../../model/slice/productPageSlice';
+import {
+  CategoriesEnum,
+  CategoriesEnumValues,
+} from '../../../../entities/Categories';
+import { PagePartTop } from '../../../../features/PagePartTop';
 import { getSearchWith } from '../../../../shared/lib/utils/getSearchWith';
-import { prepareProductsList } from '../../model/services/prepareProductsList';
-import { CategoriesEnum } from '../../../../entities/Categories';
-import { getPagesCount } from '../../model/selectors/getPagesCount';
-import { getCurrentPage } from '../../model/selectors/getCurrentPage';
-import { Sceleton } from '../../../../shared/ui/Sceleton/Sceleton';
+import { TitlePagesEnum } from '../../../../widgets/Header/model/types/header';
+import cls from './productPage.module.scss';
+import { RoutePaths } from '../../../../shared/config/routeConfig';
 
 const ProductsPage = () => {
-  const { category } = useParams();
+  const { category } = useParams<{ category: string }>();
   const dispatch = useAppDispatch();
-  const pagesCount = useAppSelector(getPagesCount);
+  const totalPages = useAppSelector(getPagesCount);
   const { setCurrentPage } = productPageSliceActions;
   const [searchParams, setSearchParams] = useSearchParams();
   const products = useAppSelector(getPreparedProductsList);
@@ -33,12 +35,21 @@ const ProductsPage = () => {
   const isLoading = useAppSelector(getProductsIsLoading);
   const currentPage = useAppSelector(getCurrentPage);
 
-  let pageTitle = '';
+  let title = '';
 
-  if (category) {
-    pageTitle = TitlePagesEnum[category];
+  const isValidCategory = Object.values(CategoriesEnumValues).includes(
+    category as CategoriesEnum,
+  );
+
+  if (!isValidCategory) {
+    return <Navigate to={RoutePaths.not_found} replace />;
   }
 
+  if (category) {
+    title = TitlePagesEnum[category as CategoriesEnum];
+  }
+
+  // eslint-disable-next-line react-hooks/rules-of-hooks
   const onChangeCurrentPage = useCallback(
     (page: number) => {
       if (currentPage !== page) {
@@ -66,26 +77,21 @@ const ProductsPage = () => {
 
   return (
     <>
-      <Section firstSection className={`${cls.productPageTop}`}>
-        <TitleTag
-          Tag="h1"
-          title={pageTitle}
-          className={cls.productPage__title}
+      <Section firstSection lastSection>
+        <PagePartTop
+          isLoading={isLoading}
+          productsCount={productsCount}
+          title={title}
         />
-
-        {!isLoading ? (
-          <p className={cls.productPage__label}>{`${productsCount} models`}</p>
-        ) : (
-          <Sceleton height={21} width={'100%'} />
-        )}
+        <ProductsPageFilter className={cls.productPage__filter} />
+        <ProductsList
+          products={products}
+          isLoading={isLoading}
+          totalPages={totalPages}
+          onChangeCurrentPage={onChangeCurrentPage}
+          currentPage={currentPage}
+        />
       </Section>
-      <ProductsPageFilter className={cls.productPage__filter} />
-      <ProductsList products={products} isLoading={isLoading} />
-      <PaginationProducts
-        lastSection
-        onChangePage={onChangeCurrentPage}
-        pagesCount={pagesCount}
-      />
     </>
   );
 };

@@ -25,11 +25,11 @@
     color: var(--primary-color);
   }
 
-  .size_s {
+  &.size_s {
     font-size: rem(12);
   }
 
-  .size_m {
+  &.size_m {
     font-size: rem(14);
   }
 }

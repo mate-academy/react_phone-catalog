@@ -6,12 +6,15 @@ import cls from './button.module.scss';
 export enum ButtonSize {
   S = 'size_s',
   M = 'size_m',
+  L = 'size_l',
   FULL = 'full',
 }
 
 export enum ButtonTheme {
   DEFAULT = 'default',
   SQUARE = 'square',
+  SQUARE_FAV = 'square_fav',
+  SQUARE_DEFAULT = 'square_default',
 }
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
@@ -44,8 +47,6 @@ export const Button = memo((props: ButtonProps) => {
       className={classNames(
         className,
         cls.button,
-        cls[theme],
-        cls[size],
         {
           [cls.selected]: selected,
         },

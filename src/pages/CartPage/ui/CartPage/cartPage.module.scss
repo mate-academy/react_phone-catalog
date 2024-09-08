@@ -1,0 +1,28 @@
+@import '../../../../shared/styles/common/mixins';
+@import '../../../../shared/styles/vars/global';
+
+.body {
+  @media (max-width:$tablet) {
+    margin-bottom: rem(32);
+  }
+
+  @media (min-width:$tablet) {
+    @include page-grid;
+  }
+
+  .list {
+    @media (min-width:$tablet) {
+      grid-column: 1 / 17;
+    }
+
+    @media (max-width:$mobile) {
+      margin-bottom: rem(32);
+    }
+  }
+
+  .checkout {
+    @media (min-width:$tablet) {
+      grid-column: 17 / -1;
+    }
+  }
+}

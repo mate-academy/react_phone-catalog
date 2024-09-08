@@ -1,15 +1,19 @@
+/* eslint-disable @typescript-eslint/indent */
 import { memo } from 'react';
-import { Section } from '../../../../shared/ui/Section';
 import { Product } from '../../model/types/product';
 import { ProductCard } from '../ProductCard/ProductCard';
 import cls from './productsList.module.scss';
 import { ProductsCardSceleton } from '../ProductCard/ProductsCardSceleton';
+import { PaginationProducts } from '../../../../widgets/PaginationProducts';
+import { useToggleCardActions } from '../../model/hooks/useToggleCardActions';
 
 interface Props {
   products: Product[];
-  isLoading?: boolean;
+  isLoading: boolean;
   error?: boolean;
-  lastSection?: boolean;
+  totalPages?: number;
+  onChangeCurrentPage?: (page: number) => void;
+  currentPage?: number;
 }
 
 const getSceletons = () =>
@@ -18,16 +22,39 @@ const getSceletons = () =>
   ));
 
 export const ProductsList = memo((props: Props) => {
-  const { products, isLoading, lastSection } = props;
+  const {
+    products,
+    isLoading,
+    totalPages = 1,
+    onChangeCurrentPage = () => {},
+    currentPage = 1,
+  } = props;
+
+  const [toggleFavorite, toggleCart] = useToggleCardActions();
 
   return (
-    <Section lastSection={lastSection} className={cls.productsList}>
+    <div className={cls.productsList}>
       <div className={cls.productsList__body}>
         {isLoading && getSceletons()}
         {!isLoading &&
           products &&
-          products.map(item => <ProductCard key={item.id} cart={item} />)}
+          products.map(item => (
+            <ProductCard
+              key={item.id}
+              product={item}
+              toggleFavorite={toggleFavorite}
+              toggleCart={toggleCart}
+            />
+          ))}
       </div>
-    </Section>
+
+      {totalPages !== 1 && (
+        <PaginationProducts
+          onPageChange={onChangeCurrentPage}
+          totalPages={totalPages}
+          currentPage={currentPage}
+        />
+      )}
+    </div>
   );
 });

@@ -1,0 +1,123 @@
+@import '../../../shared/styles/common/mixins';
+@import '../../../shared/styles/vars/global';
+@import '../../../app/styles/fonts/icons';
+
+.title {
+  margin-bottom: rem(8);
+}
+
+.label {
+  color: var(--secondary-color);
+  font-size: rem(14);
+  line-height: 150%;
+  font-weight: 600;
+}
+
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  column-gap: rem(8);
+  margin-bottom: rem(24);
+
+  @media (min-width:$mobile) {
+    margin-bottom: rem(40);
+  }
+
+  .breadcrumbs__link {
+    display: flex;
+    align-items: center;
+    column-gap: rem(8);
+    color: var(--primary-color);
+
+    @media (any-hover: hover) {
+      transition: color $duration ease 0s;
+
+      &:hover {
+        color: var(--secondary-color);
+      }
+    }
+
+
+    &:first-child {
+      &::before {
+        font-size: rem(16);
+        color: var(--primary-color);
+      }
+
+      @media (any-hover: hover) {
+        &::before {
+          transition: color $duration ease 0s;
+        }
+
+        &:hover {
+          &::before {
+            color: var(--secondary-color);
+          }
+        }
+      }
+    }
+
+    &:not(:last-child) {
+      &::after {
+        @extend %ic;
+
+        content: "\e908";
+        font-size: rem(12);
+        transform: rotate(90deg);
+        color: var(--secondary-color);
+        height: rem(16);
+        width: rem(16);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    }
+  }
+
+
+  .breadcrumbs__link,
+  .currentBreadcrumb {
+    font-size: rem(12);
+    font-weight: 700;
+  }
+
+  .currentBreadcrumb {
+    color: var(--secondary-color);
+  }
+}
+
+.backButton {
+  color: var(--primary-color);
+  font-size: rem(12);
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  column-gap: rem(4);
+  margin-bottom: rem(16);
+
+  &::before {
+    transform: rotate(-90deg);
+    color: var(--primary-color);
+    height: rem(16);
+    width: rem(16);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  @media (any-hover: hover) {
+    transition: color $duration ease 0s;
+
+    &::before {
+      transition: color $duration ease 0s;
+    }
+
+    &:hover {
+      color: var(--back-button-hover);
+
+      &::before {
+        color: var(--back-button-hover);
+      }
+    }
+  }
+}

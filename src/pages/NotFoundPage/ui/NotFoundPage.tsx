@@ -1,5 +1,11 @@
+import { NotFound } from '../../../shared/ui/NotFound';
+
 function NotFoundPage() {
-  return <main>NotFoundPage</main>;
+  return (
+    <>
+      <NotFound src={'img/page-not-found.png'} alt="Page not found" />
+    </>
+  );
 }
 
 export default NotFoundPage;

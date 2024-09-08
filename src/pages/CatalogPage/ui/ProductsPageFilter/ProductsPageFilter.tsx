@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/indent */
 import { ChangeEvent, memo, useCallback, useEffect, useMemo } from 'react';
-import { Section } from '../../../../shared/ui/Section';
 import {
   useAppDispatch,
   useAppSelector,
@@ -27,6 +26,7 @@ import {
   Input,
   Select,
 } from '../../../../shared/ui/forms';
+import classNames from 'classnames';
 
 interface Props {
   className?: string;
@@ -153,35 +153,29 @@ export const ProductsPageFilter = memo((props: Props) => {
   }, [category]);
 
   return (
-    <Section className={className}>
-      <div className={cls.filters}>
-        <Select
-          className={`${cls.sort}`}
-          label={'Sort By'}
-          formElementId="sortBy"
-          options={sortByOptions}
-          value={sort}
-          onChange={onChangeSortField}
-        />
-        <Select
-          className={`${cls.pages}`}
-          label={'Items on page'}
-          formElementId="itemsOnPage"
-          options={sortByCountItems}
-          value={perPage}
-          onChange={onChangePerPageCount}
-        />
-        <Input
-          className={`${cls.search}`}
-          label="Search"
-          search={search}
-          onChange={onChangeSearch}
-        />
-        {/* <div className={cls.search}>
-          <label>{'Search'}</label>
-          <input value={search} onChange={onChangeSearch} />
-        </div> */}
-      </div>
-    </Section>
+    <div className={classNames(cls.filters, className)}>
+      <Select
+        className={`${cls.sort}`}
+        label={'Sort By'}
+        formElementId="sortBy"
+        options={sortByOptions}
+        value={sort}
+        onChange={onChangeSortField}
+      />
+      <Select
+        className={`${cls.pages}`}
+        label={'Items on page'}
+        formElementId="itemsOnPage"
+        options={sortByCountItems}
+        value={perPage}
+        onChange={onChangePerPageCount}
+      />
+      <Input
+        className={`${cls.search}`}
+        label="Search"
+        search={search}
+        onChange={onChangeSearch}
+      />
+    </div>
   );
 });

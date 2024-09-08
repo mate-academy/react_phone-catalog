@@ -2,7 +2,7 @@
 import classNames from 'classnames';
 import { memo, ReactNode } from 'react';
 import cls from './sectionTop.module.scss';
-import { TitleTag } from '../../TitleTag/TitleTag';
+import { TitleTag } from '../../TitleTag';
 
 interface Props {
   className?: string;

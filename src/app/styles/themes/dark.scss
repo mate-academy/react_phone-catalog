@@ -2,16 +2,26 @@
   --primary-color: #F1F2F9;
   --secondary-color: #75767F;
   --main-bg: #0f1121;
+  --main-bg-inverted: #fff;
   --secondary-elements: #3b3e4a;
+  --accent: #905bff;
 
   // buttons
   --button-primary-text: #f1f2f9;
-  --accent: #905bff;
   --border-buttons-default: transparent;
   --border-buttons-hover: transparent;
   --bg-buttons-default: #323542;
   --bg-buttons-hover: #4a4d58;
   --button-text-color-disabled: #4a4d58;
+  --back-button-hover: #905bff;
+  --select-primary-text: #f1f2f9;
+
+  // buttons-default
+  --btn-hover: #a378ff;
+  --btn-hover-box-shadow: none;
+  --btn-border-selected: transparent;
+  --btn-bg-selected: #323542;
+  --btn-color-selected: #f1f2f9;
 
   // card
   --border-card: transparent;
@@ -22,4 +32,9 @@
   // select
   --select-border: transparent;
   --select-icons: #75767f;
+
+  // radio
+  --radio-rounded-border-hover: #b4bdc3;
+  --radio-square-border: #4a4d58;
+  --radio-text-color-active: #0f1121;
 }

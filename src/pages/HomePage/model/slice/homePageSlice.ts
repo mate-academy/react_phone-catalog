@@ -30,9 +30,6 @@ const homePageSlice = createSlice({
         state.newModelProducts = acttion.payload;
       },
     );
-    // builder.addCase(fetchNewModels.rejected, state => {
-    //   state.newModelProductsLoading = false;
-    // });
     builder.addCase(fetchHotProducts.pending, state => {
       state.hotProductsLoading = true;
     });
@@ -43,10 +40,6 @@ const homePageSlice = createSlice({
         state.hotProducts = acttion.payload;
       },
     );
-    // builder.addCase(fetchHotProducts.rejected, state => {
-    //   state.hotProductsError = true;
-    //   state.newModelProductsLoading = false;
-    // });
   },
 });
 

@@ -16,6 +16,11 @@
   .swiper-wrapper {
     flex-direction: column;
   }
+
+  .swiper-slide-visible,
+  .swiper-slide-fully-visible {
+    height: auto !important;
+  }
 }
 
 .swiper-autoheight {
@@ -42,4 +47,8 @@
 
 .swiper-button-lock {
   display: none !important;
+}
+
+.swiper-slide-thumb-active {
+  border: rem(1) solid var(--primary-color) !important;
 }

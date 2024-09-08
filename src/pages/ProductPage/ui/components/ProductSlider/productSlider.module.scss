@@ -1,0 +1,83 @@
+@import '../../../../../shared/styles/common/mixins';
+@import '../../../../../shared/styles/vars/global';
+
+.productSlider {
+  @media (min-width:$mobile) {
+    min-width: 0;
+    display: flex;
+    column-gap: rem(16);
+  }
+
+  @media (max-width:$mobile) {
+    display: flex;
+    flex-direction: column-reverse;
+    row-gap: rem(26);
+  }
+}
+
+.slider {
+  min-width: 0;
+  order: 2;
+}
+
+.products-slider__wrapper {
+  min-width: 0;
+
+  & .swiper-slide {
+    height: auto;
+    display: flex;
+  }
+}
+
+.swiper-slide__content {
+  position: relative;
+  width: 100%;
+  padding-bottom: 100%;
+
+  img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    object-fit: contain;
+  }
+}
+
+.thumb-slider {
+  min-width: 0;
+
+  @media (min-width:$mobile) {
+    height: rem(464);
+    flex: 1 1 percent(80, 560);
+    order: 1;
+  }
+}
+
+.thumb-slider-wrapper {
+
+  & .swiper-slide {
+    height: auto;
+    display: flex;
+  }
+}
+
+.thumb-slider__slide-content {
+  position: relative;
+  padding-bottom: 100%;
+
+  img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    object-fit: contain;
+  }
+}
+
+.thumb-slider__slide {
+  cursor: pointer;
+  border: rem(1) solid var(--secondary-elements);
+  transition: border $duration ease 0s;
+}

@@ -1,6 +1,6 @@
 import { memo, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { TitleTag } from '../../../shared/ui/TitleTag/TitleTag';
+import { TitleTag } from '../../../shared/ui/TitleTag';
 import classNames from 'classnames';
 import cls from './categories.module.scss';
 import {

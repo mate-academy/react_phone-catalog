@@ -35,3 +35,7 @@ body {
     padding: 0 rem($containerPadding);
   }
 }
+
+img {
+  color: var(--primary-color);
+}

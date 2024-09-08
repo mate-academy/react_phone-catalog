@@ -1,0 +1,38 @@
+@import '../../../../../shared/styles/common/mixins';
+@import '../../../../../shared/styles/vars/global';
+
+.wrapper {
+  @media (min-width:$tablet) {
+    @include page-grid;
+  }
+}
+
+.about {
+  @media (max-width:$tablet) {
+    margin-bottom: rem(64);
+  }
+
+  @media (max-width:$mobile) {
+    margin-bottom: rem(56);
+  }
+
+  @media (min-width:$tablet) {
+    grid-column: 1 / 13;
+  }
+}
+
+.techSpecks {
+  @media (min-width:$tablet) {
+    grid-column: 14 / -1;
+  }
+}
+
+.descriptionList {
+  display: flex;
+  flex-direction: column;
+  row-gap: rem(32);
+}
+
+.title {
+  margin-bottom: rem(32);
+}

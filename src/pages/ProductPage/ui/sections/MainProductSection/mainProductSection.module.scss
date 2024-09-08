@@ -1,0 +1,36 @@
+@import '../../../../../shared/styles/common/mixins';
+@import '../../../../../shared/styles/vars/global';
+
+.main__body {
+  padding-top: rem(32);
+
+  @media (min-width:$mobile) {
+    @include page-grid;
+
+    padding-top: rem(40);
+  }
+}
+
+.slider {
+  @media (min-width:$mobile) {
+    grid-column: 1 / 8;
+  }
+
+  @media (min-width:$tablet) {
+    grid-column: 1 / 13;
+  }
+
+  @media (max-width:$mobile) {
+    margin-bottom: rem(40);
+  }
+}
+
+.form {
+  @media (min-width:$mobile) {
+    grid-column: 8 / -1;
+  }
+
+  @media (min-width:$tablet) {
+    grid-column: 14 / 21;
+  }
+}

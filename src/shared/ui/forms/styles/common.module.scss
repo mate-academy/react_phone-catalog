@@ -1,0 +1,23 @@
+@import '../../../styles/common/mixins';
+@import '../../../styles/vars/global';
+
+.wrapper {
+  border: rem(1) solid var(--select-border);
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  width: 100%;
+  text-align: left;
+  justify-content: space-between;
+  flex-direction: row-reverse;
+  color: var(--primary-color);
+  background-color: var(--bg-buttons-default);
+
+  &::before {
+    color: var(--select-icons);
+  }
+
+  &:focus {
+    border: rem(1) solid var(--accent);
+  }
+}

@@ -1,6 +1,16 @@
 @import '../../../shared/styles/common/mixins';
 @import '../../../shared/styles/vars/global';
 
+.sceletons {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(229px, 1fr));
+  row-gap: rem(40);
+
+  @media (min-width:$mobileSmall) {
+    column-gap: rem(16);
+  }
+}
+
 .products-slider {
   overflow: visible;
 

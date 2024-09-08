@@ -1,6 +1,15 @@
 import { ReactNode } from 'react';
+import { CategoriesEnum } from '../../../../entities/Categories';
 
-export const TitlePagesEnum: { [key: string]: string } = {
+type TitleKey =
+  | 'home'
+  | 'phones'
+  | 'tablets'
+  | 'accessories'
+  | 'favorites'
+  | 'cart';
+
+export const TitlePagesEnum: Record<TitleKey | CategoriesEnum, string> = {
   home: 'Welcome to Nice Gadgets store!',
   phones: 'Mobile phones',
   tablets: 'Tablets',

@@ -2,17 +2,27 @@
   --primary-color: #313237;
   --secondary-color: #89939A;
   --main-bg: #fff;
+  --main-bg-inverted: #0f1121;
   --secondary-elements: #e2e6e9;
+  --accent: #313237;
 
   // ui-buttons
   --button-primary-text: #fff;
-  --accent: #313237;
   --border-buttons-default: #b4bdc3;
   --border-buttons-hover: #313237;
   --bg-buttons-default: transparent;
   --bg-buttons-hover: transparent;
   --bg-buttons-disabled: transparent;
   --button-text-color-disabled: #b4bdc3;
+  --back-button-hover: #313237;
+  --select-primary-text: #313237;
+
+  // buttons-default
+  --btn-hover: #313237;
+  --btn-hover-box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.4);
+  --btn-border-selected: #e2e6e9;
+  --btn-bg-selected: transparent;
+  --btn-color-selected: #27ae60;
 
   // card
   --border-card: #e2e6e9;
@@ -23,4 +33,12 @@
   // ui
   --select-border: #b4bdc3;
   --select-icons: #b4bdc3;
+
+  // radio
+  --radio-rounded-border-hover: #b4bdc3;
+  --radio-square-border: #b4bdc3;
+  --radio-text-color-active: #f1f2f9;
+
+  // modal
+  --overlay-color: rgba(0, 0, 0, 60%)
 }

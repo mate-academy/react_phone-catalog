@@ -3,6 +3,8 @@
 .filters {
   @include page-grid;
 
+  row-gap: rem(16);
+
   .sort {
     grid-column: span 2;
 
@@ -27,17 +29,3 @@
     }
   }
 }
-
-// .search__label {
-//   .customSelect__label {
-//     margin-bottom: rem(4);
-//     color: var(--secondary-color);
-//     font-weight: 700;
-//     font-size: rem(12);
-//     margin-bottom: rem(4);
-
-//     &::before {
-//       color: var(--select-icons);
-//     }
-//   }
-// }

@@ -8,39 +8,46 @@ import { ThemeSwitcher } from '../../ThemeSwitcher';
 import classNames from 'classnames';
 import cls from './header.module.scss';
 
-const headerItemsList: HeaderItemType[] = [
-  {
-    path: RoutePaths.home,
-    cildren: 'home',
-  },
-  {
-    path: `${RoutePaths.products}phones`,
-    cildren: 'Phones',
-  },
-  {
-    path: `${RoutePaths.products}tablets`,
-    cildren: 'tablets',
-  },
-  {
-    path: `${RoutePaths.products}accessories`,
-    cildren: 'accessories',
-  },
-  {
-    path: `${RoutePaths.favorites}`,
-    cildren: (
-      <span data-position="first" className={icons['_icon-heart']}></span>
-    ),
-    isIcon: true,
-  },
-  {
-    path: `${RoutePaths.cart}`,
-    cildren: <span className={icons['_icon-heart']}></span>,
-    isIcon: true,
-  },
-];
-
 export const Header = () => {
   const [menuOpen, setMenuOpen] = useState<boolean>(false);
+  const headerItemsList: HeaderItemType[] = useMemo(
+    () => [
+      {
+        path: RoutePaths.home,
+        cildren: 'home',
+      },
+      {
+        path: `${RoutePaths.products}phones`,
+        cildren: 'Phones',
+      },
+      {
+        path: `${RoutePaths.products}tablets`,
+        cildren: 'tablets',
+      },
+      {
+        path: `${RoutePaths.products}accessories`,
+        cildren: 'accessories',
+      },
+      {
+        path: `${RoutePaths.favorites}`,
+        cildren: (
+          <span
+            data-position="first"
+            className={classNames(icons['_icon-heart'], cls.icon)}
+          ></span>
+        ),
+        isIcon: true,
+      },
+      {
+        path: `${RoutePaths.cart}`,
+        cildren: (
+          <span className={classNames(icons['_icon-cart'], cls.icon)}></span>
+        ),
+        isIcon: true,
+      },
+    ],
+    [],
+  );
 
   const itemsList = useMemo(
     () =>
@@ -61,7 +68,7 @@ export const Header = () => {
           </NavLink>
         </li>
       )),
-    [],
+    [headerItemsList],
   );
 
   return (

@@ -1,0 +1,8 @@
+@import '../../styles/common/mixins';
+
+.text {
+  font-weight: 600;
+  font-size: rem(14);
+  line-height: 150%;
+  color: var(--secondary-color);
+}

@@ -45,10 +45,10 @@
     display: flex;
     flex-direction: column;
     row-gap: em(8);
+    padding-top: rem(16);
   }
 
   .productCard__name {
-    padding-top: rem(16);
     font-weight: 600;
     font-size: rem(14);
     line-height: 150%;
@@ -61,20 +61,20 @@
     align-items: center;
     text-align: left;
     column-gap: rem(8);
+  }
 
-    .productCard__current-price {
-      font-weight: 800;
-      font-size: 22px;
-      line-height: 140%;
-      color: var(--primary-color);
-    }
+  .productCard__current-price {
+    font-weight: 800;
+    font-size: 22px;
+    line-height: 140%;
+    color: var(--primary-color);
+  }
 
-    .productCard__absolute-price {
-      font-weight: 600;
-      font-size: 22px;
-      text-decoration: line-through;
-      color: var(--secondary-color);
-    }
+  .productCard__absolute-price {
+    font-weight: 600;
+    font-size: 22px;
+    text-decoration: line-through;
+    color: var(--secondary-color);
   }
 
   .productCard__characteristics {
@@ -95,5 +95,73 @@
   .productCard__buttons {
     display: flex;
     column-gap: rem(8);
+  }
+}
+
+.productCard--cart {
+  grid-template-rows: repeat(2, auto);
+  grid-template-columns: rem(16) rem(80) 1fr;
+  gap: rem(16);
+  padding: rem(16);
+  align-items: center;
+
+  @media (min-width:$mobile) {
+    gap: rem(24);
+    padding: rem(24);
+    grid-template-rows: 1fr;
+    grid-template-columns: rem(16) rem(80) 1fr auto rem(80);
+  }
+
+  .button {
+    height: rem(16);
+    width: rem(16);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &::before {
+      font-size: rem(9);
+      color: var(--button-text-color-disabled);
+    }
+
+    @media (any-hover: hover) {
+      &::before {
+        transition: color $duration ease 0s;
+      }
+
+      &:hover {
+        &::before {
+          color: var(--primary-color);
+        }
+      }
+    }
+  }
+
+  .productCard__image {
+    height: rem(80);
+    width: rem(80);
+  }
+
+  .quantity {
+    display: flex;
+    align-items: center;
+
+    span {
+      text-align: center;
+      min-width: rem(32);
+      color: var(--primary-color);
+    }
+
+    @media (max-width:$mobile) {
+      grid-column: 1 / span 2;
+    }
+  }
+
+  .productCard__current-price {
+    text-align: right;
+
+    @media (max-width:$mobile) {
+      grid-column: 2 / rem(80);
+    }
   }
 }

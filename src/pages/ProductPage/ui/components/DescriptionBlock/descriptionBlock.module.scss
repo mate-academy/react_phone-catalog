@@ -1,0 +1,11 @@
+@import '../../../../../shared/styles/common/mixins';
+
+.title {
+  margin-bottom: rem(16);
+}
+
+.text {
+  &:not(:last-child) {
+    margin-bottom: rem(32);
+  }
+}

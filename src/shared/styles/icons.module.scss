@@ -1,11 +1,6 @@
 @import './common/mixins';
 
-._icon-lightbulb::before {
-  content: "\e903";
-}
-
-._icon-arrow::before {
-  font-size: rem(10);
+._icon-close::before {
   content: "\e900";
 }
 
@@ -13,6 +8,35 @@
   content: "\e901";
 }
 
-._icon-search::before {
+._icon-heart_like::before {
   content: "\e902";
+  color: #eb5757;
+}
+
+._icon-home::before {
+  content: "\e903";
+}
+
+._icon-lightbulb::before {
+  content: "\e904";
+}
+
+._icon-minus::before {
+  content: "\e905";
+}
+
+._icon-plus::before {
+  content: "\e906";
+}
+
+._icon-search::before {
+  content: "\e907";
+}
+
+._icon-arrow::before {
+  content: "\e908";
+}
+
+._icon-cart::before {
+  content: "\e909";
 }

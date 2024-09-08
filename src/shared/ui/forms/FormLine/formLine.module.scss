@@ -1,0 +1,11 @@
+@import '../../../styles/common/mixins';
+
+.formLine {
+  display: flex;
+  align-items: center;
+  gap: rem(8);
+}
+
+.wrap {
+  flex-wrap: wrap;
+}
