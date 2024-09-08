@@ -59,6 +59,16 @@
   }
 
   &__top-btn {
+    cursor: pointer;
+    border: none;
+    width: 32px;
+    height: 32px;
+    background-color: var(--c-surface-2);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
     position: relative;
     align-self: center;
     margin-left: 86px;
@@ -76,6 +86,22 @@
       right: 100%;
       height: 100%;
       min-width: 86px;
+    }
+
+    &--disabled {
+      background-color: var(--c-secondary);
+      pointer-events: none;
+      cursor: not-allowed;
+
+      opacity: 0.5;
+    }
+
+    @include on-desktop {
+      transition: background-color 0.5s;
+
+      &:hover {
+        background-color: var(--c-icons);
+      }
     }
   }
 }

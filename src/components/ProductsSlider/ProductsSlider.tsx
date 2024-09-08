@@ -36,7 +36,7 @@ export const ProductsSlider: React.FC<Props> = ({
   const [frameSize, setFrameSize] = useState(1);
   const [prevFrameSize, setPrevFrameSize] = useState(frameSize);
 
-  const step = 1;
+  const [step, setStep] = useState(1);
   const gap = 16;
   const animationDuration = 1000;
 
@@ -61,6 +61,14 @@ export const ProductsSlider: React.FC<Props> = ({
       if (frameSize !== prevFrameSize) {
         setPrevFrameSize(frameSize);
       }
+
+      if (window.innerWidth >= 1200) {
+        setStep(4);
+      } else if (window.innerWidth >= 768) {
+        setStep(3);
+      } else {
+        setStep(1);
+      }
     };
 
     resizeUpdating();
@@ -84,11 +92,11 @@ export const ProductsSlider: React.FC<Props> = ({
 
   const prev = useCallback(() => {
     setCurrentIndex(currentIndex === 1 ? 0 : currentIndex - step);
-  }, [currentIndex]);
+  }, [currentIndex, step]);
 
   const next = useCallback(() => {
     setCurrentIndex(currentIndex + step);
-  }, [currentIndex]);
+  }, [currentIndex, step]);
 
   const translateX =
     currentIndex === products.length - frameSize

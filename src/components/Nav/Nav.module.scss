@@ -98,6 +98,10 @@
     @include on-desktop {
       margin: 0 auto;
     }
+
+    @include on-desktop-xl {
+      margin: 0 32px 0 0;
+    }
   }
 
   &__buttons-btn {

@@ -16,6 +16,12 @@
   }
 }
 
+@mixin on-desktop-xl {
+  @media (min-width: $desktop-xl-min-width) {
+    @content;
+  }
+}
+
 @mixin container-mobile {
   padding-inline: 16px;
 }
