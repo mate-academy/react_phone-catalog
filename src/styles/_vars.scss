@@ -29,6 +29,7 @@ html[data-theme='dark'] {
   --c-banner-main: #aeaeae;
   --c-banner-secondary: #aeaeae;
   --c-banner-dark: #444;
+  --c-fav-btn-bg: var(--c-elements);
 }
 
 html[data-theme='light'] {
@@ -55,4 +56,5 @@ html[data-theme='light'] {
   --c-banner-main: #626262;
   --c-banner-secondary: #5f5f5f;
   --c-banner-dark: #a2a2a2;
+  --c-fav-btn-bg: #ededed;
 }
