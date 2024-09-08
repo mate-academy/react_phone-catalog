@@ -51,9 +51,11 @@ export const Pagination: React.FC<PaginationProps> = ({
       <div className={styles.topWrapper}>
         <div className={styles.buttonWrapper}>
             {arrayOfPageButtons.map(pageButton => (
-            <div className={`${pageButton >= visiblePages[0] && pageButton <= visiblePages[1] ? "" : styles.hidden}`}>
+            <div
+              className={`${pageButton >= visiblePages[0] && pageButton <= visiblePages[1] ? "" : styles.hidden}`}
+              key={pageButton}
+            >
               <button
-                key={pageButton}
                 className={classNames(styles.button, {
                   [styles.active]: pageButton === displayedPage,
                 })}
