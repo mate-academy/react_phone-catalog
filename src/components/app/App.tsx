@@ -11,6 +11,8 @@ import { getTablets } from '@store/features/tablets/getTabletsApi';
 import { getAccessories } from '@store/features/accessories/getAccessoriesApi';
 import { useAppDispatch } from '@hooks/hook';
 
+import styles from './App.module.scss';
+
 export const App: FC = () => {
   const dispatch = useAppDispatch();
 
@@ -22,7 +24,7 @@ export const App: FC = () => {
   }, [dispatch]);
 
   return (
-    <div className="App">
+    <div className={styles.App}>
       <Header />
       <hr />
       <main>

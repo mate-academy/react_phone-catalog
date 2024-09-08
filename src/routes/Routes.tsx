@@ -3,16 +3,16 @@ import { Route, Routes } from 'react-router-dom';
 
 import { ROUTES } from '@utils/constants/routes';
 
-import { AccessoriesPage } from '@pages/accessoriesPage/AccessoriesPage';
-import { CartPage } from '@pages/cartPage/CartPage';
-import { ContactPage } from '@pages/contactPage/ContactPage';
-import { NotFound } from '@pages/errorsPage/NotFound';
-import { FavoritePage } from '@pages/favoritePage/FavoritePage';
 import { HomePage } from '@pages/homePage/HomePage';
+import { CartPage } from '@pages/cartPage/CartPage';
+import { FavoritePage } from '@pages/favoritePage/FavoritePage';
 import { PhonePage } from '@pages/phonePage/PhonePage';
 import { TabletPage } from '@pages/tabletPage/TabletPage';
+import { AccessoriesPage } from '@pages/accessoriesPage/AccessoriesPage';
 import { ProductCard } from '@components/products/products-card/ProductCard';
+import { ContactPage } from '@pages/contactPage/ContactPage';
 import { ProductNotFound } from '@pages/errorsPage/ProductNotFound';
+import { NotFound } from '@pages/errorsPage/NotFound';
 
 export const AppRoutes: FC = () => (
   <Routes>
