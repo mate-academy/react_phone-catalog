@@ -3,7 +3,7 @@
 .bannerSlider {
   display: flex;
   justify-content: center;
-  padding: 50px 0 30px;
+  padding: 50px 0 15px;
 }
 
 .arrowButton {
@@ -41,11 +41,12 @@
 
   @include on-tablet {
     width: 100vw;
-    padding: 0 20px;
+    padding: 0 25px;
   }
 
   @include on-desktop {
     width: 1155px;
+    padding: 0;
   }
 }
 
