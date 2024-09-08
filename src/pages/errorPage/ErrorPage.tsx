@@ -1,7 +1,9 @@
 import { FC } from 'react';
 
+import ErrorImage from '/img/error/page-not-found.png';
+
 export const ErrorPage: FC = () => (
   <div>
-    <img src="/img/error/page-not-found.png" alt="Page not found" />
+    <img src={ErrorImage} alt="Page not found" />
   </div>
 );
