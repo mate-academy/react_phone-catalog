@@ -1,3 +1,126 @@
-.red {
-  display: block;
+@import '../../styles/main';
+
+.container {
+  margin: 0 auto;
+  max-width: $breakpoint-desktop;
+  width: 100%;
+  padding: 32px 16px;
+
+  @include on-tablet {
+    padding: 0 24px;
+  }
+
+  @include on-mobile {
+    padding: 0 16px;
+  }
+}
+
+.footer {
+  border-top: 1px solid var(--color-elements);
+  box-shadow: 0 -1px 0 0 var(--color-elements);
+  transition:
+    border-top,
+    box-shadow $transition-duration;
+  background-color: var(--color-background);
+}
+
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+
+  @include on-tablet {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  @include on-desktop {
+    padding: 32px;
+  }
+}
+
+.logoLink {
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  width: 89px;
+  height: 32px;
+}
+
+.nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 107px;
+
+  @include on-desktop {
+    gap: 16px;
+  }
+
+  @include on-tablet {
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+  }
+}
+
+.item {
+  @extend %uppercase-text;
+
+  color: var(--color-secondary);
+
+  cursor: pointer;
+
+  &:hover {
+    color: var(--color-primary);
+  }
+}
+
+.backToTop {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+
+  @include on-tablet {
+    align-self: center;
+    grid-column: span 4;
+  }
+
+  &.layout {
+    opacity: 0;
+  }
+}
+
+.backToTopText {
+  @extend %small-text;
+
+  color: var(--color-secondary);
+  text-decoration: none;
+  width: fit-content;
+}
+
+.backToTopButton {
+  display: flex;
+  width: 32px;
+  height: 32px;
+  background-color: var(--color-icons);
+  border: 1px solid var(--color-surface);
+  transition: border $transition-duration;
+  cursor: pointer;
+  justify-content: center;
+  align-items: center;
+
+  &:hover {
+    transition: border $transition-duration;
+    border: 1px solid var(--color-primary);
+    background-color: var(--color-hover);
+  }
+}
+
+.backToTopIcon {
+  transform: rotate(90deg);
 }

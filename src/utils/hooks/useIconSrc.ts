@@ -11,8 +11,8 @@ export const useIconSrc = () => {
   };
 
   const favoriteSelected = `${BASE_URL}img/icons/favorites--fill.svg`;
-  const arrowLeftUrl = getIconUrl('arrowLeft');
-  const arrowRightUrl = getIconUrl('arrowRight');
+  const arrowLeftUrl = getIconUrl('arrow-left');
+  const arrowRightUrl = getIconUrl('arrow-right');
   const cartUrl = getIconUrl('cart');
   const closeUrl = getIconUrl('close');
   const favoritesUrl = getIconUrl('favorites');
