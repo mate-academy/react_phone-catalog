@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useMemo, useRef } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { ProductCard } from '../ProductCard';
 import { LimitedProduct } from '../../types/Product';
 import styles from './ProductSlider.module.scss';
@@ -17,6 +17,7 @@ export const ProductSlider: React.FC<ProductSliderProps> = ({ title, count }) =>
   const sliderRef = useRef<HTMLUListElement>(null);
   const [position, setPosition] = useState<number>(0);
   const [positionCount, setPositionCount] = useState<number>(0);
+  const [displayedItems, setDisplayedItems] = useState<LimitedProduct[] | []>([])
 
   useEffect(() => {
     const fetchProductData = async () => {
@@ -32,9 +33,21 @@ export const ProductSlider: React.FC<ProductSliderProps> = ({ title, count }) =>
     fetchProductData();
   }, []);
 
-  const displayedItems = useMemo(() => {
-    return products.slice(-count);
-  }, [products, count]);
+// SIMULATE PRODUCT SELECTION:
+useEffect(() => {
+  if (products.length !== 0) {
+    let randomProducts = [];
+    let randomIndex: number = 0;
+    for (let i = 0; i < count; i++) {
+      randomIndex = Math.floor(Math.random() * 180);
+      randomProducts.push(products[randomIndex])
+    }
+
+    setDisplayedItems(randomProducts)
+  }
+
+}, [products, count])
+
 
   const getScrollStep = () => {
     if (sliderRef.current) {
