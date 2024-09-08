@@ -10,6 +10,7 @@ import { Counter } from '../counter/Counter';
 import { useAppDispatch } from '@hooks/hook';
 import { TProduct } from '@utils/types/product.type';
 import { deleteCart, toggleCart } from '@store/features/cart/cart.slice';
+import { getProductUrl } from '@utils/helpers/getProductUrl';
 
 type TProps = {
   item: TProduct;
@@ -17,7 +18,7 @@ type TProps = {
 };
 
 export const CartItem: FC<TProps> = ({ item, quantity }) => {
-  const { id, image, name, price } = item;
+  const { id, image, name, price, category, itemId } = item;
 
   const [hasError, setHasError] = useState(false);
 
@@ -42,6 +43,8 @@ export const CartItem: FC<TProps> = ({ item, quantity }) => {
     dispatch(toggleCart({ id, actionType: 'delete' }));
   };
 
+  const URL = getProductUrl(category, itemId);
+
   return (
     <div className={styles.item}>
       {hasError && <ErrorMessage />}
@@ -53,7 +56,7 @@ export const CartItem: FC<TProps> = ({ item, quantity }) => {
         <div className={styles.image}>
           <img src={image} alt={name} width={66} height={66} />
         </div>
-        <Link to={'*'}>{name}</Link>
+        <Link to={URL}>{name}</Link>
       </div>
 
       <div className={styles.wrapper}>

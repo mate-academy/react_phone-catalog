@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import styles from './cart.module.scss';
 
@@ -11,6 +11,7 @@ import { useAppSelector } from '@hooks/hook';
 
 export const Cart: FC = () => {
   const { items } = useAppSelector(state => state.cart);
+  const navigate = useNavigate();
 
   const cartLength = items.length;
 
@@ -22,11 +23,14 @@ export const Cart: FC = () => {
         </section>
       ) : (
         <section className={styles.page}>
-          {/* TODO: Edit correct link */}
-          <Link to={'*'} className={styles.back}>
+          <button
+            onClick={() => navigate(-1)}
+            className={styles.back}
+            type="button"
+          >
             <ArrowLeftIcon />
-            <span>Back</span>
-          </Link>
+            Back
+          </button>
 
           <h2>Cart</h2>
 

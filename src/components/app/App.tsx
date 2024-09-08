@@ -1,7 +1,6 @@
 import { FC, useEffect } from 'react';
 
 import { Header } from '@components/header/Header';
-
 import { Footer } from '@components/footer/Footer';
 
 import { AppRoutes } from '@routes/Routes';
@@ -26,9 +25,11 @@ export const App: FC = () => {
     <div className="App">
       <Header />
       <hr />
-      <div className="container">
-        <AppRoutes />
-      </div>
+      <main>
+        <div className="container">
+          <AppRoutes />
+        </div>
+      </main>
       <Footer />
     </div>
   );

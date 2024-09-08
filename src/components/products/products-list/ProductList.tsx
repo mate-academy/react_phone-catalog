@@ -2,11 +2,15 @@ import { FC, useState } from 'react';
 import { Link } from 'react-router-dom';
 import cn from 'classnames';
 
-import styles from './product.module.scss';
-import { TProduct } from '@utils/types/product.type';
 import { useAppDispatch } from '@hooks/hook';
 import { addCart } from '@store/features/cart/cart.slice';
+
 import { HeartIcon } from '@ui/icon/HeartIcon';
+
+import { TProduct } from '@utils/types/product.type';
+import { getProductUrl } from '@utils/helpers/getProductUrl';
+
+import styles from './product.module.scss';
 
 interface TProps {
   product: TProduct;
@@ -19,6 +23,19 @@ const WHERE_ADD = {
 };
 
 export const ProductList: FC<TProps> = ({ product, discount = false }) => {
+  const {
+    id,
+    name,
+    image,
+    price,
+    fullPrice,
+    screen,
+    capacity,
+    ram,
+    itemId,
+    category,
+  } = product;
+
   const dispatch = useAppDispatch();
 
   const [text, setText] = useState('Added');
@@ -57,28 +74,23 @@ export const ProductList: FC<TProps> = ({ product, discount = false }) => {
     });
   };
 
+  const URL = getProductUrl(category, itemId);
+
   return (
-    <div className={styles.list} key={product.id}>
-      <Link to={`/products/${product.itemId}`} className={styles.product}>
+    <div className={styles.list} key={id}>
+      <Link to={URL} className={styles.product}>
         <div className={styles.image}>
-          <img
-            src={product.image}
-            alt={product.name}
-            width={208}
-            height={196}
-          />
+          <img src={image} alt={name} width={208} height={196} />
         </div>
 
         <div className={styles.title}>
-          <h3>{product.name}</h3>
+          <h3>{name}</h3>
         </div>
       </Link>
 
       <div className={styles.prices}>
-        <span>${product.price}</span>
-        {discount && (
-          <span className={styles.discount}>${product.fullPrice}</span>
-        )}
+        <span>${price}</span>
+        {discount && <span className={styles.discount}>${fullPrice}</span>}
       </div>
 
       <hr />
@@ -86,15 +98,15 @@ export const ProductList: FC<TProps> = ({ product, discount = false }) => {
       <div className={styles.specs}>
         <div className={styles.spec}>
           <p>Screen</p>
-          <p>{product.screen}</p>
+          <p>{screen}</p>
         </div>
         <div className={styles.spec}>
           <p>Capacity</p>
-          <p>{product.capacity}</p>
+          <p>{capacity}</p>
         </div>
         <div className={styles.spec}>
           <p>RAM</p>
-          <p>{product.ram}</p>
+          <p>{ram}</p>
         </div>
       </div>
 
