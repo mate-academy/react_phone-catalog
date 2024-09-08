@@ -7,8 +7,7 @@ import { Breadcrumbs } from '../../components/Breadcrumbs';
 import styles from './ProductList.module.scss';
 import { useAppContext } from '../../context/AppContext';
 import { Sort } from '../../components/Sort';
-// eslint-disable-next-line no-unused-vars
-import { LimitedProduct } from '../../types/Product';
+import { fetchProducts } from '../../utils/fetchProducts';
 
 type ProductListProps = {
   category: string;
@@ -31,31 +30,10 @@ export const ProductList: React.FC<ProductListProps> = ({ category, title }) => 
   useEffect(() => {
     const fetchProductData = async () => {
       setIsLoading(true);
-      try {
-        const response = await fetch('https://meljaszuk.github.io/react_phone-catalog/api/products.json');
-        const data: LimitedProduct[] = await response.json();
-
-        const filteredData = data.filter((item) => item.category === category);
-
-        switch (sortMethod) {
-          case 'alpha':
-            filteredData.sort((a, b) => a.name.localeCompare(b.name));
-            break;
-          case 'price':
-            filteredData.sort((a, b) => a.price - b.price);
-            break;
-          case 'newest':
-            filteredData.sort((a, b) => b.year - a.year);
-            break;
-        }
-
-        setProducts(filteredData);
-        setDisplayedPage(1);
-      } catch (error) {
-        console.error('Error fetching product data:', error);
-      } finally {
-        setIsLoading(false);
-      }
+      const filteredData = await fetchProducts(category, sortMethod);
+      setProducts(filteredData);
+      setDisplayedPage(1);
+      setIsLoading(false);
     };
 
     fetchProductData();
