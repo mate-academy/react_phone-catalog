@@ -138,3 +138,8 @@
 
   @extend %small-text;
 }
+
+.buttonDisabled {
+  cursor: default;
+  opacity: 0.5;
+}

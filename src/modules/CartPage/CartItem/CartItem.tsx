@@ -67,7 +67,7 @@ export const CartItem: React.FC<CartItemProps> = ({ product }) => {
         <div className={styles.quantity}>
           <button
             onClick={handleCountDecrease}
-            className={styles.button}
+            className={`${styles.button} ${productsInCartCount[foundIndex] === 0 ? styles.disabled  : ""}`}
           >
             <img
               src={`${theme === 'dark' ? minusIconDT : minusIcon}`}
