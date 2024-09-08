@@ -14,6 +14,7 @@ import { MainControls } from './components/MainControls';
 import { Loader } from '../../components/Loader';
 import { Breadcrumbs } from '../../components/Breadcrumbs';
 import { GoBack } from '../../components/GoBack';
+import { ProductSlider } from '../../components/ProductSlider';
 // eslint-disable-next-line no-unused-vars
 import { LimitedProduct } from '../../types/Product';
 
@@ -109,6 +110,8 @@ export const ProductDetailsPage: React.FC = () => {
             <TechSpecs />
           </div>
         )}
+
+        <ProductSlider count={12} title="You may also like"/>
       </main>
       <Footer />
     </div>
