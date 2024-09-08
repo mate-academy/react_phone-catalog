@@ -18,6 +18,12 @@
   }
 }
 
+@mixin on-mobile {
+  @media (max-width: $max-mobile) {
+    @content;
+  }
+}
+
 @mixin padding-inline {
   padding-inline:16px;
 
