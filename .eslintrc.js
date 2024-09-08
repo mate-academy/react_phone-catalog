@@ -17,10 +17,6 @@ module.exports = {
     react: {
       version: 'detect',
     },
-    'import/extensions': ['.js', '.jsx', '.ts', '.tsx'],
-    'import/parsers': {
-      '@typescript-eslint/parser': ['.ts', '.tsx'],
-    },
   },
   plugins: ['react', 'react-hooks', '@typescript-eslint', 'prettier'],
   overrides: [
@@ -33,5 +29,6 @@ module.exports = {
       'error',
       { devDependencies: ['**/*.test.js', '**/*.spec.js'] },
     ],
+    'react/react-in-jsx-scope': 'off',
   },
 };
