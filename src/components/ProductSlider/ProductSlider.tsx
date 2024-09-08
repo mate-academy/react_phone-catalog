@@ -5,13 +5,16 @@ import styles from './ProductSlider.module.scss';
 import chevronIcon from '../../img/icons/ChevronIcon.svg';
 import chevronIconDT from '../../img/icons/ChevronIcon--DarkTheme.svg';
 import { useAppContext } from '../../context/AppContext';
+import { fetchProducts } from '../../utils/fetchProducts';
 
 type ProductSliderProps = {
   title: string;
   count: number;
+  sortMethod: 'alpha' | 'price' | 'newest';
+  category: 'tablets' | 'phones' | 'accessories';
 };
 
-export const ProductSlider: React.FC<ProductSliderProps> = ({ title, count }) => {
+export const ProductSlider: React.FC<ProductSliderProps> = ({ title, count, category, sortMethod }) => {
   const [products, setProducts] = useState<LimitedProduct[]>([]);
   const { theme } = useAppContext();
   const sliderRef = useRef<HTMLUListElement>(null);
@@ -21,32 +24,18 @@ export const ProductSlider: React.FC<ProductSliderProps> = ({ title, count }) =>
 
   useEffect(() => {
     const fetchProductData = async () => {
-      try {
-        const response = await fetch('https://meljaszuk.github.io/react_phone-catalog/api/products.json');
-        const data = await response.json();
-        setProducts(data);
-      } catch (error) {
-        console.error('Error fetching product data:', error);
-      }
+      const filteredData = await fetchProducts(category, sortMethod);
+      setProducts(filteredData);
     };
 
     fetchProductData();
   }, []);
 
-// SIMULATE PRODUCT SELECTION:
 useEffect(() => {
-  if (products.length !== 0) {
-    let randomProducts = [];
-    let randomIndex: number = 0;
-    for (let i = 0; i < count; i++) {
-      randomIndex = Math.floor(Math.random() * 180);
-      randomProducts.push(products[randomIndex])
-    }
-
-    setDisplayedItems(randomProducts)
-  }
-
-}, [products, count])
+  let copiedProducts = [...products]
+  copiedProducts.length = count;
+  setDisplayedItems(copiedProducts)
+}, [products])
 
 
   const getScrollStep = () => {
