@@ -1,4 +1,4 @@
-// @ts-ignore
+/* eslint-disable no-unused-vars */
 import { LimitedProduct } from '../types/Product';
 
 export const fetchProducts = async (category: string, sortMethod: string): Promise<LimitedProduct[]> => {
