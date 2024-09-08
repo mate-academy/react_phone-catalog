@@ -1,3 +1,4 @@
+// @ts-ignore
 import { LimitedProduct } from '../types/Product';
 
 export const fetchProducts = async (category: string, sortMethod: string): Promise<LimitedProduct[]> => {
