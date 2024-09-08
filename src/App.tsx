@@ -25,9 +25,9 @@ export const App: React.FC = () => {
           <PreviousPage category= {category}/>
           <Header />
           <BannerSlider />
-          <ProductSlider title="Brand new models" count={10} sortMethod={'newest'} category={'phones'}/>
+          <ProductSlider title="Brand new models" sortMethod={'newest'} category={'phones'}/>
           <Thumbnails />
-          <ProductSlider title="Hot prices" count={10} sortMethod={'price'} category={'phones'}/>
+          <ProductSlider title="Hot prices" sortMethod={'hot'} category={'phones'}/>
           <Footer />
         </div>
       )};

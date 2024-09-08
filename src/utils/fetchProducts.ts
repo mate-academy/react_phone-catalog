@@ -17,6 +17,10 @@ export const fetchProducts = async (category: string, sortMethod: string): Promi
       case 'newest':
         filteredData.sort((a, b) => b.year - a.year);
         break;
+      case 'hot':
+        filteredData.sort((a, b) => (a.fullPrice - a.price) - (b.fullPrice - b.fullPrice));
+        break;
+      default: break;
     }
 
     return filteredData;

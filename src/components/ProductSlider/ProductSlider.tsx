@@ -9,12 +9,11 @@ import { fetchProducts } from '../../utils/fetchProducts';
 
 type ProductSliderProps = {
   title: string;
-  count: number;
-  sortMethod: 'alpha' | 'price' | 'newest';
+  sortMethod: 'alpha' | 'price' | 'newest' | 'hot';
   category: string;
 };
 
-export const ProductSlider: React.FC<ProductSliderProps> = ({ title, count, category, sortMethod }) => {
+export const ProductSlider: React.FC<ProductSliderProps> = ({ title, category, sortMethod }) => {
   const [products, setProducts] = useState<LimitedProduct[]>([]);
   const { theme } = useAppContext();
   const sliderRef = useRef<HTMLUListElement>(null);
@@ -32,15 +31,13 @@ export const ProductSlider: React.FC<ProductSliderProps> = ({ title, count, cate
   }, []);
 
 useEffect(() => {
-  let copiedProducts = [...products]
-  copiedProducts.length = count;
-  setDisplayedItems(copiedProducts)
+  setDisplayedItems(products)
 }, [products])
 
 
   const getScrollStep = () => {
     if (sliderRef.current) {
-      return sliderRef.current.clientWidth * (count / 100);
+      return sliderRef.current.clientWidth * (1 / products.length);
     }
     return 0;
   };
@@ -85,7 +82,7 @@ useEffect(() => {
           <button
             className={styles.arrowButton}
             onClick={() => {
-              if (positionCount !== 6) {
+              if (positionCount !== products.length - 4) {
                 handleNextSlide();
               }
             }}
