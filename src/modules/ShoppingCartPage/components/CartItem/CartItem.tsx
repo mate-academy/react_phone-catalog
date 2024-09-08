@@ -117,7 +117,7 @@ export const CartItem: React.FC<Props> = ({ product }) => {
           </button>
         </div>
 
-        <span className="cart-item__price">{`$${product.price}`}</span>
+        <span className="cart-item__price">{`$${product.price * product.quantity}`}</span>
       </div>
     </article>
   );
