@@ -69,10 +69,6 @@ export const AppProvider: React.FC<{ children: React.ReactElement }> = ({ childr
   const [isMobMenuOpen, setIsMobMenuOpen] = useState<boolean>(false);
 
   useEffect(() => {
-    alert('You’re welcome to explore the site, but please note that MOBILE version is still under development. Thank you for your understanding!')
-  }, []);
-
-  useEffect(() => {
     localStorage.setItem('favoriteProducts', JSON.stringify(favoriteProducts));
   }, [favoriteProducts]);
 
