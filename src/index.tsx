@@ -1,6 +1,6 @@
 import App from './app/App';
 import { createRoot } from 'react-dom/client';
-import { BrowserRouter as Router } from 'react-router-dom';
+import { HashRouter as Router } from 'react-router-dom';
 import { ThemeProvider } from './app/providers/ThemeProvider';
 import { StoreProvider } from './app/providers/StoreProvider';
 import { ErrorBoundary } from './app/providers/ErrorBoundary';
