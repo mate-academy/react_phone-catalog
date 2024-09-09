@@ -16,7 +16,7 @@ import { MobileMenu } from '../MobileMenu';
 import { useAppContext } from '../../context/AppContext';
 
 export const Header: React.FC = () => {
-  const { theme, productsInCartCount, favoriteProducts, isMobMenuOpen, setIsMobMenuOpen } = useAppContext();
+  const { theme, productsInCartCount, favoriteProducts, isMobMenuOpen, setIsMobMenuOpen, sortMethod } = useAppContext();
   const [cartCount, setCartCount] = useState<number>(0)
 
   useEffect (() => {
@@ -58,15 +58,15 @@ export const Header: React.FC = () => {
             Home
           </NavLink>
 
-          <NavLink to="/phones" className={styles.navItem} activeClassName={styles.isActive}>
+          <NavLink to={{pathname: "/phones", search: `?sort=${sortMethod}`}} className={styles.navItem} activeClassName={styles.isActive}>
             Phones
           </NavLink>
 
-          <NavLink to="/tablets" className={styles.navItem} activeClassName={styles.isActive}>
+          <NavLink to={{pathname: "/tablets", search: `?sort=${sortMethod}`}} className={styles.navItem} activeClassName={styles.isActive}>
             Tablets
           </NavLink>
 
-          <NavLink to="/accessories" className={styles.navItem} activeClassName={styles.isActive}>
+          <NavLink to={{pathname: "/accessories", search: `?sort=${sortMethod}`}} className={styles.navItem} activeClassName={styles.isActive}>
             Accessories
           </NavLink>
         </nav>
