@@ -4,6 +4,7 @@ import chevronIcon from '../../img/icons/ChevronIcon.svg';
 import chevronIconDT from '../../img/icons/ChevronIcon--DarkTheme.svg';
 import classNames from 'classnames';
 import { useAppContext } from '../../context/AppContext';
+import { useLocation, useHistory } from 'react-router-dom';
 
 type PaginationProps = {
   numberOfPages: number;
@@ -17,21 +18,37 @@ export const Pagination: React.FC<PaginationProps> = ({
   displayedPage,
 }) => {
   const arrayOfPageButtons = Array.from({ length: numberOfPages }, (_, i) => i + 1);
-  const [visiblePages, setVisiblePages] = useState<number[]>([1,5]);
+  const [visiblePages, setVisiblePages] = useState<number[]>([1, 5]);
   const { theme } = useAppContext();
+  const location = useLocation();
+  const history = useHistory();
+
+  useEffect(() => {
+    const storedPage = localStorage.getItem('currentPage');
+    if (storedPage) {
+      handleDisplayedPage(Number(storedPage));
+    }
+  }, [handleDisplayedPage]);
 
   useEffect(() => {
     if (numberOfPages <= 5) {
-      setVisiblePages([1,numberOfPages]);
+      setVisiblePages([1, numberOfPages]);
     }
   }, [numberOfPages]);
 
-
   const move = (mvm: 1 | -1) => {
     if (displayedPage + mvm !== 0 && displayedPage + mvm !== numberOfPages + 1) {
-      handleDisplayedPage(displayedPage + mvm);
+      const newPage = displayedPage + mvm;
+      handleDisplayedPage(newPage);
+
+      const searchParams = new URLSearchParams(location.search);
+      searchParams.set('page', newPage.toString());
+      history.push({ search: searchParams.toString() });
+
+      localStorage.setItem('currentPage', newPage.toString());
+
       if (numberOfPages > 5) {
-        setVisiblePages([visiblePages[0] + mvm, visiblePages[1] + mvm])
+        setVisiblePages([visiblePages[0] + mvm, visiblePages[1] + mvm]);
       }
     }
   };
@@ -50,7 +67,7 @@ export const Pagination: React.FC<PaginationProps> = ({
 
       <div className={styles.topWrapper}>
         <div className={styles.buttonWrapper}>
-            {arrayOfPageButtons.map(pageButton => (
+          {arrayOfPageButtons.map(pageButton => (
             <div
               className={`${pageButton >= visiblePages[0] && pageButton <= visiblePages[1] ? "" : styles.hidden}`}
               key={pageButton}
@@ -59,7 +76,13 @@ export const Pagination: React.FC<PaginationProps> = ({
                 className={classNames(styles.button, {
                   [styles.active]: pageButton === displayedPage,
                 })}
-                onClick={() => handleDisplayedPage(pageButton)}
+                onClick={() => {
+                  handleDisplayedPage(pageButton);
+                  const searchParams = new URLSearchParams(location.search);
+                  searchParams.set('page', pageButton.toString());
+                  history.push({ search: searchParams.toString() });
+                  localStorage.setItem('currentPage', pageButton.toString());
+                }}
               >
                 {pageButton}
               </button>
