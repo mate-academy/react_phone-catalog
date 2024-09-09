@@ -1,14 +1,14 @@
 /* eslint-disable @typescript-eslint/indent */
 /* eslint-disable react/display-name */
 import { memo, MouseEvent, useState } from 'react';
+import { Link } from 'react-router-dom';
+import classNames from 'classnames';
 import { Product } from '../../model/types/product';
 import { TechSpecs } from '../../../../shared/ui/TechSpecs';
-import cls from './productCard.module.scss';
-import icons from '../../../../shared/styles/icons.module.scss';
-import { Link } from 'react-router-dom';
 import { RoutePaths } from '../../../../shared/config/routeConfig';
 import { Button, ButtonSize, ButtonTheme } from '../../../../shared/ui/forms';
-import classNames from 'classnames';
+import icons from '../../../../shared/styles/icons.module.scss';
+import cls from './productCard.module.scss';
 
 interface Props {
   product: Product;

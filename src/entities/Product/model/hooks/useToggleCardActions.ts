@@ -8,14 +8,10 @@ import {
   LOCAL_STORAGE_CART_PRODUCTS,
   LOCAL_STORAGE_FAVORITES,
 } from '../types/product';
-import { useAppDispatch } from '../../../../shared/lib/hooks/reduxHooks';
-import { ProductSliceActions } from '../slice/productsSlice';
 
 type TypeReturn = (itemId: string) => void;
 
 export const useToggleCardActions = (): TypeReturn[] => {
-  const dispatch = useAppDispatch();
-
   const [favoriteLocalStorage, setFavoriteLocalStorage] = useLocalStorage<
     string[]
   >(LOCAL_STORAGE_FAVORITES, []);
@@ -46,13 +42,11 @@ export const useToggleCardActions = (): TypeReturn[] => {
         setCartLocalStorage(
           currentCartLocalStorage.filter(item => item.itemId !== itemId),
         );
-        dispatch(ProductSliceActions.removeCartItem(itemId));
       } else {
         setCartLocalStorage([...currentCartLocalStorage, { itemId, count: 1 }]);
-        dispatch(ProductSliceActions.addCartItem(itemId));
       }
     },
-    [cartLocalStorage, dispatch, setCartLocalStorage],
+    [cartLocalStorage, setCartLocalStorage],
   );
 
   return [toggleFavorite, toggleCart];

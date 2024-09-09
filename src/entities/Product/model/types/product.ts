@@ -18,11 +18,6 @@ export interface ICartItems {
   count: number;
 }
 
-// export interface Product extends ProductFromServer {
-//   favorite: boolean;
-//   cartItem: ICartItems;
-// }
-
 export type ProductInfo = {
   itemId: string;
   favorite: boolean;
@@ -30,11 +25,6 @@ export type ProductInfo = {
 };
 
 export type Product = ProductFromServer & Omit<ProductInfo, 'itemId'>;
-
-export interface ProductSchema {
-  products: ProductInfo[];
-  _inited: boolean;
-}
 
 export const LOCAL_STORAGE_FAVORITES = 'favorites';
 export const LOCAL_STORAGE_CART_PRODUCTS = 'cart_products';

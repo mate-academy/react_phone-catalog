@@ -31,9 +31,9 @@ export const MainSlider = memo(({ className }: MainSliderProps) => {
       slidesPerView: 1,
       loop: true,
       spaceBetween: 20,
-      // autoplay: {
-      //   delay: 5000,
-      // },
+      autoplay: {
+        delay: 5000,
+      },
     }),
     [],
   );

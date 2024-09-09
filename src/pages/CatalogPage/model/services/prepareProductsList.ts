@@ -14,7 +14,6 @@ import { getSearch } from '../selectors/getSearch';
 import { getCountPerPage } from '../selectors/getProductsPerPage';
 import { getCurrentPage } from '../selectors/getCurrentPage';
 import { productPageSliceActions } from '../slice/productPageSlice';
-import { getItemsInfo } from '../../../../entities/Product/model/selectors/getItemsInfo';
 
 export const prepareProductsList = createAsyncThunk<
   Product[],
@@ -30,8 +29,7 @@ export const prepareProductsList = createAsyncThunk<
   const search = getSearch(state).trim();
 
   try {
-    const productsInfo = getItemsInfo(getState());
-    const products = await fetchProducts(productsInfo);
+    const products = await fetchProducts();
 
     if (typeof products !== 'string') {
       const productsByCategory = products.filter(

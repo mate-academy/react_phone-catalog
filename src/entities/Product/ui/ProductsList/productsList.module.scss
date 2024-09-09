@@ -1,16 +1,12 @@
 @import '../../../../shared/styles/common/mixins';
 @import '../../../../shared/styles/vars/global';
 
-.productsList {
-  padding-top: rem(24);
+.productsList__body {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(229px, 1fr));
+  row-gap: rem(40);
 
-  .productsList__body {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(229px, 1fr));
-    row-gap: rem(40);
-
-    @media (min-width:$mobileSmall) {
-      column-gap: rem(16);
-    }
+  @media (min-width:$mobileSmall) {
+    column-gap: rem(16);
   }
 }

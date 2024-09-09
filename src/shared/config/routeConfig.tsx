@@ -21,7 +21,7 @@ export const RoutePaths: Record<AppRoutes, string> = {
   [AppRoutes.PRODUCT_DETAIL]: '/products/',
   [AppRoutes.FAVORITES]: '/favorites',
   [AppRoutes.CART]: '/cart',
-  [AppRoutes.NOT_FOUND]: '*',
+  [AppRoutes.NOT_FOUND]: '/not-found',
 };
 
 export const routeConfig: Record<AppRoutes, RouteProps> = {

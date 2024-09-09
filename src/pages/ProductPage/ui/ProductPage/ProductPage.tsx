@@ -7,6 +7,8 @@ import { MainProductSection } from '../sections/MainProductSection';
 import { AboutProductSection } from '../sections/AboutProductSection';
 import { SuggestedProductsSection } from '../sections/SuggestedProductsSection';
 import { NotFound } from '../../../../shared/ui/NotFound';
+import { TitleTag } from '../../../../shared/ui/TitleTag';
+import cls from './productPage.module.scss';
 
 function ProductPage() {
   const { category, itemId } = useParams<{
@@ -34,7 +36,14 @@ function ProductPage() {
           {!isLoadind && <SuggestedProductsSection />}
         </>
       ) : (
-        <NotFound src="/img/cart-is-empty.png" alt="Cart is empty" />
+        <>
+          <TitleTag
+            Tag="h2"
+            title="Product was not found"
+            className={cls.notFoundTitle}
+          />
+          <NotFound src="/img/cart-is-empty.png" alt="Cart is empty" />
+        </>
       )}
     </>
   );

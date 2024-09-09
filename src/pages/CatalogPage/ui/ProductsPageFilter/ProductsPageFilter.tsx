@@ -33,7 +33,7 @@ interface Props {
 }
 
 export const ProductsPageFilter = memo((props: Props) => {
-  const { category } = useParams();
+  const { category } = useParams<{ category: string }>();
   const { className } = props;
   const [searchParams, setSearchParams] = useSearchParams();
   const dispatch = useAppDispatch();
@@ -45,9 +45,7 @@ export const ProductsPageFilter = memo((props: Props) => {
   const page = useAppSelector(getCurrentPage);
 
   const fetchingData = useCallback(() => {
-    if (category !== undefined && category !== '') {
-      dispatch(prepareProductsList(category as CategoriesEnum));
-    }
+    dispatch(prepareProductsList(category as CategoriesEnum));
   }, [category, dispatch]);
 
   const debouncedFetchData = useDebounce(fetchingData, 500);

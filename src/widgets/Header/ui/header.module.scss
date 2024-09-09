@@ -53,26 +53,51 @@
       width: 100%;
       transition: right $duration ease 0s;
       background-color: var(--main-bg);
+      padding-top: rem($headerHightTablet + 32);
+      flex-direction: column;
+
+      &::before {
+        content: '';
+        height: rem($headerHightTablet);
+        background: var(--main-bg);
+        position: absolute;
+        width: 100%;
+        top: 0;
+        left: 0;
+        z-index: 20;
+        box-shadow: 0 1px 0 0 var(--secondary-elements);
+      }
     }
   }
 
   .menu__list {
+    --rows: 4;
+
     height: 100%;
-    display: flex;
-    align-items: center;
     width: 100%;
 
+    @media (min-width:$mobile) {
+      display: flex;
+      align-items: center;
+    }
+
     @media (max-width:$mobile) {
-      flex-direction: column;
+      overflow: auto;
+      display: grid;
+      grid-template-rows: repeat(var(--rows), rem(40)) 1fr;
+      grid-template-columns: repeat(2, 1fr);
+      row-gap: rem(16);
     }
   }
 
   .menu__item {
-    display: flex;
-    align-items: center;
+    display: inline-flex;
+    justify-content: center;
 
     @media (min-width:$mobile) {
       height: 100%;
+      display: flex;
+      align-items: center;
 
       &:not(:first-child) {
         margin: 0 0 0 rem(32);
@@ -89,10 +114,11 @@
 
     @media (max-width:$mobile) {
       width: 100%;
-      justify-content: center;
+      grid-column: span 2;
 
       &:has(.isIcon) {
-        flex: 0 1 50%;
+        align-self: flex-end;
+        grid-column: span 1;
       }
     }
   }
@@ -148,10 +174,20 @@
     align-items: center;
     justify-content: center;
     width: rem($headerHightTablet);
-    border-left: rem(1) solid var(--secondary-elements);
+
+    @media (max-width:$mobile) {
+      width: 100%;
+      border-top: rem(1) solid var(--secondary-elements);
+      height: rem(64);
+      border-left: rem(1) solid var(--secondary-elements);
+    }
 
     @media (min-width:$tablet) {
       width: rem($headerHight);
+    }
+
+    @media (min-width:$mobile) {
+      border-left: rem(1) solid var(--secondary-elements);
     }
 
     span::before {
@@ -184,30 +220,44 @@
   @media (min-width:$tablet) {
     flex: 1 0 rem($headerHight);
   }
+
+  @media (max-width:$mobile) {
+    height: rem(64);
+    flex: 1 0 rem(64);
+  }
 }
 
 .icon {
   position: relative;
 
+  &::after {
+    content: attr(data-count);
+    height: rem(14);
+    width: rem(14);
+    border-radius: 50%;
+    border: rem(1) solid #fff;
+    background-color: #eb5757;
+    z-index: 1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translate(50%, -50%);
+    display: none;
+    color: #fff;
+    font-size: rem(9);
+    line-height: 100%;
+  }
+
+
+  &[data-count]:not([data-count="0"])::after {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
   &::before {
     font-size: rem(14);
   }
-}
-
-.icon__label {
-  position: relative;
-  top: 0;
-  right: 0;
-  transform: translate(-50%, -50%);
-}
-
-.label {
-  height: rem(14);
-  width: rem(14);
-  border-radius: 50%;
-  border: rem(1) solid transparent;
-  background-color: #eb5757;
-  z-index: 1;
 }
 
 .icon-menu {
@@ -226,11 +276,11 @@
     &::after {
       content: "";
       position: absolute;
-      transition: all 0.3s ease 0s;
+      transition: all $duration ease 0s;
       left: 0;
       width: 100%;
-      height: 2px;
-      background-color: #000;
+      height: rem(2);
+      background-color: var(--primary-color);
     }
 
     &::before {
@@ -264,6 +314,10 @@
 }
 
 .menu-open {
+  body:has(&) {
+    overflow: hidden;
+  }
+
   .menu__body {
     right: 0;
   }

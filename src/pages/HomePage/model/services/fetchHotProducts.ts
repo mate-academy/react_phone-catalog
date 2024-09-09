@@ -2,18 +2,16 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { fetchProducts, Product } from '../../../../entities/Product';
 import { ThunkConfig } from '../../../../app/providers/StoreProvider';
-import { getItemsInfo } from '../../../../entities/Product/model/selectors/getItemsInfo';
 
 export const fetchHotProducts = createAsyncThunk<
   Product[],
   void,
   ThunkConfig<boolean>
 >('homePage/fetchHotProducts', async (_, ThuncApi) => {
-  const { rejectWithValue, getState } = ThuncApi;
+  const { rejectWithValue } = ThuncApi;
 
   try {
-    const productsInfo = getItemsInfo(getState());
-    const products = await fetchProducts(productsInfo);
+    const products = await fetchProducts();
 
     if (typeof products === 'string') {
       return rejectWithValue(false);

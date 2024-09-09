@@ -2,15 +2,14 @@
 import { memo } from 'react';
 import { Product } from '../../model/types/product';
 import { ProductCard } from '../ProductCard/ProductCard';
-import cls from './productsList.module.scss';
 import { ProductsCardSceleton } from '../ProductCard/ProductsCardSceleton';
 import { PaginationProducts } from '../../../../widgets/PaginationProducts';
 import { useToggleCardActions } from '../../model/hooks/useToggleCardActions';
+import cls from './productsList.module.scss';
 
 interface Props {
   products: Product[];
   isLoading: boolean;
-  error?: boolean;
   totalPages?: number;
   onChangeCurrentPage?: (page: number) => void;
   currentPage?: number;
@@ -33,7 +32,7 @@ export const ProductsList = memo((props: Props) => {
   const [toggleFavorite, toggleCart] = useToggleCardActions();
 
   return (
-    <div className={cls.productsList}>
+    <>
       <div className={cls.productsList__body}>
         {isLoading && getSceletons()}
         {!isLoading &&
@@ -55,6 +54,6 @@ export const ProductsList = memo((props: Props) => {
           currentPage={currentPage}
         />
       )}
-    </div>
+    </>
   );
 });

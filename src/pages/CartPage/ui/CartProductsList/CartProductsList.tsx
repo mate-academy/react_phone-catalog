@@ -11,8 +11,6 @@ import {
 import { LOCAL_STORAGE_CART_PRODUCTS } from '../../../../entities/Product/model/types/product';
 import classNames from 'classnames';
 import { Loader } from '../../../../shared/ui/Loader';
-import { useAppSelector } from '../../../../shared/lib/hooks/reduxHooks';
-import { getItemsInfo } from '../../../../entities/Product/model/selectors/getItemsInfo';
 
 interface Props {
   className?: string;
@@ -40,7 +38,6 @@ export const CartProductsList = memo(
     const [cartLocalStorage, setCartLocalStorage] = useLocalStorage<
       ICartItemsLocalStorage[]
     >(LOCAL_STORAGE_CART_PRODUCTS, []);
-    const productsInfo = useAppSelector(getItemsInfo);
 
     const costCalcucation = (
       items: Product[],
@@ -62,19 +59,22 @@ export const CartProductsList = memo(
         const currentCartLocalStorage = [...cartLocalStorage].filter(
           filterItems,
         );
+        const newItems = products.filter(filterItems);
 
         setCartLocalStorage(currentCartLocalStorage);
         setProducts(prev => prev.filter(filterItems));
-
-        const newItems = products.filter(filterItems);
-
         totalCountHandler(newItems.length);
         totalAmountHandler(costCalcucation(newItems, currentCartLocalStorage));
+
+        if (currentCartLocalStorage.length === 0) {
+          setIsEmptyHandler(true);
+        }
       },
       [
         cartLocalStorage,
         products,
         setCartLocalStorage,
+        setIsEmptyHandler,
         totalAmountHandler,
         totalCountHandler,
       ],
@@ -133,7 +133,7 @@ export const CartProductsList = memo(
 
     useEffect(() => {
       isLoadingHandler(true);
-      getCartProducts(productsInfo)
+      getCartProducts()
         .then(items => {
           if (items.length === 0) {
             setIsEmptyHandler(true);
@@ -145,10 +145,9 @@ export const CartProductsList = memo(
           }
         })
         .finally(() => isLoadingHandler(false));
+      // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [
-      cartLocalStorage,
       isLoadingHandler,
-      productsInfo,
       setIsEmptyHandler,
       totalAmountHandler,
       totalCountHandler,

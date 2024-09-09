@@ -1,11 +1,11 @@
 import { memo, MouseEvent, useState } from 'react';
+import { Link } from 'react-router-dom';
 import classNames from 'classnames';
 import { Button, ButtonTheme } from '../../../../shared/ui/forms';
 import { Product } from '../../model/types/product';
+import { RoutePaths } from '../../../../shared/config/routeConfig';
 import icons from '../../../../shared/styles/icons.module.scss';
 import cls from './productCard.module.scss';
-import { Link } from 'react-router-dom';
-import { RoutePaths } from '../../../../shared/config/routeConfig';
 
 interface Props {
   product: Product;

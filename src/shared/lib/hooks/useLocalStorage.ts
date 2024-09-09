@@ -5,6 +5,14 @@ export interface ICartItemsLocalStorage {
   count: number;
 }
 
+function setLocalStorageItem(key: string, value: any) {
+  const event = new CustomEvent('localStorageChange', {
+    detail: { key, value },
+  });
+
+  window.dispatchEvent(event);
+}
+
 export const useLocalStorage = <T>(
   key: string,
   startValue: T,
@@ -28,6 +36,8 @@ export const useLocalStorage = <T>(
   const save = (newValue: T) => {
     localStorage.setItem(key, JSON.stringify(newValue));
     setValue(newValue);
+
+    setLocalStorageItem(key, newValue);
   };
 
   return [value, save];

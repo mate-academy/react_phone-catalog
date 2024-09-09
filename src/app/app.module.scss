@@ -8,7 +8,10 @@
   overflow: hidden;
   position: relative;
 
-
+  .menuOpen {
+    overflow: hidden;
+    touch-action: none;
+  }
 
   >main {
     flex: 1 1 auto;

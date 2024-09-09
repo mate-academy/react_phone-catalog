@@ -12,15 +12,6 @@ html {
   scroll-behavior: smooth;
 }
 
-body {
-  .lock & {
-    overflow: hidden;
-    touch-action: none;
-  }
-
-  // .loaded & {}
-}
-
 [class*="__container"] {
   max-width: rem($maxWidthContainer);
   box-sizing: content-box;

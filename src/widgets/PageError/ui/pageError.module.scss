@@ -1,0 +1,15 @@
+@import '../../../shared/styles/common/mixins';
+
+.title {
+  margin: 0 auto rem(30);
+  text-align: center;
+
+  @media (min-width:$mobile) {
+    max-width: 70%;
+  }
+}
+
+.button {
+  max-width: rem(280);
+  margin: 0 auto;
+}

@@ -20,6 +20,6 @@ export const TitlePagesEnum: Record<TitleKey | CategoriesEnum, string> = {
 
 export interface HeaderItemType {
   path: string;
-  cildren: string | ReactNode;
+  children: string | ReactNode;
   isIcon?: boolean;
 }

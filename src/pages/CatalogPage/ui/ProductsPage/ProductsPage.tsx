@@ -21,8 +21,11 @@ import {
 import { PagePartTop } from '../../../../features/PagePartTop';
 import { getSearchWith } from '../../../../shared/lib/utils/getSearchWith';
 import { TitlePagesEnum } from '../../../../widgets/Header/model/types/header';
-import cls from './productPage.module.scss';
 import { RoutePaths } from '../../../../shared/config/routeConfig';
+import { getProductsError } from '../../model/selectors/getProductsError';
+import cls from './productPage.module.scss';
+import { PageError } from '../../../../widgets/PageError';
+import { TextBlock } from '../../../../shared/ui/TextBlock';
 
 const ProductsPage = () => {
   const { category } = useParams<{ category: string }>();
@@ -34,22 +37,10 @@ const ProductsPage = () => {
   const productsCount = useAppSelector(getProductsCount);
   const isLoading = useAppSelector(getProductsIsLoading);
   const currentPage = useAppSelector(getCurrentPage);
+  const error = useAppSelector(getProductsError);
 
-  let title = '';
+  const title = TitlePagesEnum[category as CategoriesEnum];
 
-  const isValidCategory = Object.values(CategoriesEnumValues).includes(
-    category as CategoriesEnum,
-  );
-
-  if (!isValidCategory) {
-    return <Navigate to={RoutePaths.not_found} replace />;
-  }
-
-  if (category) {
-    title = TitlePagesEnum[category as CategoriesEnum];
-  }
-
-  // eslint-disable-next-line react-hooks/rules-of-hooks
   const onChangeCurrentPage = useCallback(
     (page: number) => {
       if (currentPage !== page) {
@@ -60,9 +51,7 @@ const ProductsPage = () => {
           }),
         );
 
-        if (category !== undefined && category !== '') {
-          dispatch(prepareProductsList(category as CategoriesEnum));
-        }
+        dispatch(prepareProductsList(category as CategoriesEnum));
       }
     },
     [
@@ -75,6 +64,14 @@ const ProductsPage = () => {
     ],
   );
 
+  const isValidCategory = Object.values(CategoriesEnumValues).includes(
+    category as CategoriesEnum,
+  );
+
+  if (!isValidCategory) {
+    return <Navigate to={RoutePaths.not_found} replace />;
+  }
+
   return (
     <>
       <Section firstSection lastSection>
@@ -83,14 +80,24 @@ const ProductsPage = () => {
           productsCount={productsCount}
           title={title}
         />
-        <ProductsPageFilter className={cls.productPage__filter} />
-        <ProductsList
-          products={products}
-          isLoading={isLoading}
-          totalPages={totalPages}
-          onChangeCurrentPage={onChangeCurrentPage}
-          currentPage={currentPage}
-        />
+        {!error && isValidCategory ? (
+          <>
+            <ProductsPageFilter className={cls.productPage__filter} />
+            {products.length > 1 ? (
+              <ProductsList
+                products={products}
+                isLoading={isLoading}
+                totalPages={totalPages}
+                onChangeCurrentPage={onChangeCurrentPage}
+                currentPage={currentPage}
+              />
+            ) : (
+              <TextBlock text={`There are no ${category} yet`} />
+            )}
+          </>
+        ) : (
+          <PageError />
+        )}
       </Section>
     </>
   );
