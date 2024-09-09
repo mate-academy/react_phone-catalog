@@ -1,19 +1,26 @@
-/* eslint-disable prettier/prettier */
 import { FilterType } from './types/FilterType';
 import { ContextType } from './types/ContextType';
 import { createContext, useEffect, useState } from 'react';
 import { PhonesType } from './types/phones';
-import { HotPricesProduct } from './types/HotPricesProducts';
+import { OldProduct } from './types/OldProducts';
 import { Product } from './types/Product';
-import { getPhones, getProducts } from '../api/products';
+import {
+  getOldOffer,
+  getOldProducts,
+  getPhones,
+  getProducts,
+} from '../api/products';
+import { OldProductType } from './types/OldProductType';
 
 export const CatalogContext = createContext<ContextType>({
   filter: FilterType.AllPhones,
   setFilter: () => {},
   phones: [],
   setPhones: () => {},
-  hotPricesProducts: [],
-  setHotPricesProducts: () => {},
+  oldProducts: [],
+  setOldProducts: () => {},
+  oldProductOffers: [],
+  setOldProductOffers: () => {},
   products: [],
   setProducts: () => {},
 });
@@ -25,10 +32,11 @@ type Props = {
 export const GlobalCatalogProvider = ({ children }: Props) => {
   const [phones, setPhones] = useState<PhonesType[]>([]);
   const [filter, setFilter] = useState<FilterType>(FilterType.AllPhones);
-  const [hotPricesProducts, setHotPricesProducts] = useState<
-  HotPricesProduct[]
-  >([]);
   const [products, setProducts] = useState<Product[]>([]);
+  const [oldProducts, setOldProducts] = useState<OldProduct[]>([]);
+  const [oldProductOffers, setOldProductOffers] = useState<OldProductType[]>(
+    [],
+  );
 
   useEffect(() => {
     getPhones().then(setPhones);
@@ -38,6 +46,14 @@ export const GlobalCatalogProvider = ({ children }: Props) => {
     getProducts().then(setProducts);
   }, []);
 
+  useEffect(() => {
+    getOldProducts().then(setOldProducts);
+  }, []);
+
+  useEffect(() => {
+    getOldOffer().then(setOldProductOffers);
+  }, []);
+
   return (
     <CatalogContext.Provider
       value={{
@@ -45,10 +61,12 @@ export const GlobalCatalogProvider = ({ children }: Props) => {
         setPhones,
         filter,
         setFilter,
-        hotPricesProducts,
-        setHotPricesProducts,
+        oldProducts,
+        setOldProducts,
         products,
         setProducts,
+        oldProductOffers,
+        setOldProductOffers,
       }}
     >
       {children}

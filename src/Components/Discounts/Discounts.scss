@@ -28,9 +28,9 @@
     @include on-desktop {
       padding: 0;
     }
-    
+
     width: 180px;
-    font-family: Mont, sans-serif;
+    font-family: Mont-bold, sans-serif;
 
     text-align: left;
   }
@@ -50,5 +50,8 @@
     @include on-desktop {
       width: 272px;
     }
+  }
+  .slick-next {
+    bottom: 538px;
   }
 }

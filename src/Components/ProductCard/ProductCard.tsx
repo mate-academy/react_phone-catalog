@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { Product } from '../types/Product';
 import './ProductCard.scss';
 
@@ -8,14 +9,21 @@ type Props = {
 export const ProductCard = ({ product }: Props) => {
   return (
     <div className="productcard">
-      <img
-        className="productcard__image"
-        src={product.image}
-        alt={product.name}
-      />
+      <Link
+        to={`/phones/${product.itemId}`}
+        className="productcard__image--link"
+      >
+        <img
+          className="productcard__image"
+          src={product.image}
+          alt={product.name}
+        />
+      </Link>
 
       <h2 className="productcard__name">{product.name}</h2>
-      <div className="productcard__price">{`$${product.price}`}</div>
+      <div className="productcard__prices">
+        <div className="productcard__price">{`$${product.price}`}</div>
+      </div>
       <div className="productcard__line"></div>
       <div className="productcard__description">
         <div className="productcard__screen">

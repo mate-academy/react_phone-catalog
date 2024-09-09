@@ -1,5 +1,5 @@
 @font-face {
-  font-family: Mont;
+  font-family: Mont-bold;
   src: url('../../../public/fonts/Mont-Bold.otf');
 }
 
@@ -9,7 +9,7 @@
   @include page-grid;
 
   &__title {
-    font-family: Mont, sans-serif;
+    font-family: Mont-bold, sans-serif;
     margin: 20px 16px 0;
     grid-column: 1 / 5;
 

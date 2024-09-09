@@ -1,5 +1,6 @@
 import { FilterType } from './FilterType';
-import { HotPricesProduct } from './HotPricesProducts';
+import { OldProduct } from './OldProducts';
+import { OldProductType } from './OldProductType';
 import { PhonesType } from './phones';
 import { Product } from './Product';
 
@@ -8,8 +9,10 @@ export type ContextType = {
   setFilter: (filter: FilterType) => void;
   phones: PhonesType[];
   setPhones: (phones: PhonesType[]) => void;
-  hotPricesProducts: HotPricesProduct[];
-  setHotPricesProducts: (hotPricesProducts: HotPricesProduct[]) => void;
+  oldProducts: OldProduct[];
+  setOldProducts: (hotPricesProducts: OldProduct[]) => void;
   products: Product[];
   setProducts: (products: Product[]) => void;
+  oldProductOffers: OldProductType[];
+  setOldProductOffers: (oldProductOffer: OldProductType[]) => void;
 };

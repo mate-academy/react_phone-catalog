@@ -1,12 +1,12 @@
  @font-face {
-  font-family: Mont;
+  font-family: Mont-bold;
   src: url('../../../public/fonts/Mont-Bold.otf');
  }
 
  @import '../../utils/mixins';
 
 .CartPage {
-  font-family: Mont, sans-serif;
+  font-family: Mont-bold, sans-serif;
   width: 456px;
   height: 700px;
 
@@ -39,7 +39,6 @@
 
   div {
     width: 212px;
-    gap: 16px;
 
     @include on-tablet {
       width: 232px;
@@ -48,6 +47,9 @@
     @include on-desktop {
       width: 272px;
     }
+  }
+  .slick-track {
+    gap: 16px;
   }
 }
 
@@ -99,7 +101,7 @@
 
   &-next {
     position: relative;
-    bottom: 538px;
+    bottom: 553px;
     left: 240px;
 
     @include on-tablet {
@@ -134,5 +136,13 @@
   &-disabled {
     background-image: url('../../img/arrow-left-disabled2.svg');
     border: 1px solid #3132;
+    &:hover {
+      transform: scale(1);
+    }
   }
+}
+
+.slick-disabled:not(.slick-prev) {
+  transform: rotate(0.5turn);
+  transition: 0s ease transform;
 }

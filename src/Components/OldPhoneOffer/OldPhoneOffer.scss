@@ -1,0 +1,189 @@
+@import '../../utils/mixins';
+
+@font-face {
+  font-family: Mont-bold;
+  src: url('../../../public/fonts/Mont-Bold.otf');
+}
+
+.oldphoneoffer {
+  @include page-grid;
+
+  width: 486px;
+  overflow: hidden;
+  &__breadcrumbs {
+    display: flex;
+    align-items: flex-start;
+    margin: 32px 0 0 16px;
+    grid-column: 1 / 5;
+    &--home {
+      background-image: url('../../img/Home.svg');
+      background-repeat: no-repeat;
+      background-position: center;
+      width: 16px;
+      height: 16px;
+    }
+    &--text {
+      font-family: Mont,sans-serif;
+font-size: 12px;
+font-weight: 700;
+line-height: 15.34px;
+text-align: left;
+
+&-active {
+  font-family: Mont-bold, sans-serif;
+  font-size: 12px;
+  text-decoration: none;
+  color: black;
+}
+
+    }
+    &--arrow {
+      background-image: url('../../img/Chevron\ \(Arrow\ Right\).svg');
+      background-repeat: no-repeat;
+
+      height: 16px;
+      width: 16px;
+    }
+    &--back-arrow {
+      background-image: url('../../img/Chevron\ \(Arrow\ Right\).svg');
+      background-repeat: no-repeat;
+      background-position: center;
+      height: 16px;
+      width: 16px;
+      transform: rotate(0.5turn);
+    }
+    &--back-button {
+      grid-column: 1 / 5;
+      width: 61px;
+      font-family: Mont, sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 15.34px;
+      text-align: left;
+      text-decoration: none;
+      color: #89939A;
+      display: flex;
+      margin: 32px 0 0 16px;
+    }
+  }
+  &__line {
+    grid-column: 1 / 5;
+    margin: 40px auto 0;
+      height: 0;
+      width: 228px;
+      border: 1px solid #d3d5d7;
+  }
+  &__title {
+    grid-column: 1 / 5;
+    margin: 32px 0 0 16px;
+font-family: Mont-bold, sans-serif;
+font-size: 22px;
+font-weight: 800;
+line-height: 30.8px;
+text-align: left;
+
+  }
+  &__image {
+    margin-top: 45px;
+    width: 288px;
+    height: 288px;
+    object-fit: contain;
+
+    &::selection {
+      border: 2px solid black;
+    }
+
+  }
+
+  &__slider {
+    div {
+      width: 212px;
+      margin-bottom: 8px;
+    }
+    .slick-track {
+      gap: 16px;
+    }
+    .slick-list {
+      width: 235px;
+    }
+    .discountproduct__buttons {
+      gap: 8px;
+    }
+    .slick-next {
+      bottom:569px;
+    }
+
+
+    &--header {
+font-family: Mont-bold, sans-serif;
+font-size: 22px;
+font-weight: 800;
+line-height: 30.8px;
+text-align: left;
+
+    }
+  }
+  &__phoneslider {
+    grid-column: 1 / 5;
+    margin-bottom: 60px;
+    width: 320px;
+    li {
+      width: 55px;
+      height: 55px;
+    }
+    li.slick-active {
+      border: 1px solid black;
+      width: 55px;
+      height: 55px;
+    }
+  }
+  &__description {
+    grid-column: 1 / 5;
+    &--header {
+      font-family: Mont-bold, sans-serif;
+font-size: 34px;
+font-weight: 700;
+line-height: 25.56px;
+text-align: left;
+margin: 0 0 20px 16px;
+    }
+    &--title {
+font-family: Mont,sans-serif;
+font-size: 20px;
+font-weight: 700;
+line-height: 25.56px;
+text-align: left;
+margin: 0 0 20px 16px;
+    }
+    &--name {
+      font-family: Mont-bold, sans-serif;
+font-size: 15px;
+font-weight: 700;
+text-align: left;
+margin: 0 0 20px 16px;
+    }
+    &--spec {
+      display: flex;
+    }
+    &--data {
+      font-family: Mont, sans-serif;
+font-size: 14px;
+font-weight: 500;
+line-height: 21px;
+text-align: left;
+color: #89939A;
+margin: 0 0 20px 16px;
+    }
+  }
+  &__features {
+    grid-column: 1 / 5;
+font-family: Mont, sans-serif;
+font-size: 14px;
+font-weight: 500;
+line-height: 21px;
+text-align: left;
+color: #89939A;
+margin: 0 0 20px 16px;
+
+  }
+}

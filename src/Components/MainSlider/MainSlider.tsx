@@ -19,7 +19,6 @@ export const MainSlider = () => {
     speed: 500,
     autoplay: true,
     autoplaySpeed: 5000,
-    className: 'slick__main-slider--width',
   };
 
   return (

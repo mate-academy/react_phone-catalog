@@ -20,5 +20,6 @@ export type PhonesType = {
   processor: string;
   ram: string;
   camera: string;
+  zoom: string;
   cell: string[];
 };

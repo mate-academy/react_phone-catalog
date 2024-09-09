@@ -5,12 +5,23 @@ import { useContext, useState } from 'react';
 import { CatalogContext } from '../CatalogProvider';
 import Slider from 'react-slick';
 import classNames from 'classnames';
+import { Footer } from '../Footer/Footer';
+import { ProductCard } from '../ProductCard/ProductCard';
 
 export const PhoneOffer = () => {
-  const { phones } = useContext(CatalogContext);
+  const { phones, products } = useContext(CatalogContext);
   const { itemId } = useParams();
   const selectedPhone = phones.find(phone => phone.id === itemId);
+  const proposedPhones = products.filter(
+    product =>
+      product.category === 'phones' &&
+      product.capacity === selectedPhone?.capacity,
+  );
   const [selectedColor, setSelectedColor] = useState(selectedPhone?.color);
+  const [selectedCapacity, setSelectedCapacity] = useState(
+    selectedPhone?.capacity,
+  );
+  const [activeImage, setActiveImage] = useState(false);
   const id = (Math.random() * 100000).toFixed(0);
 
   const settings = {
@@ -33,8 +44,18 @@ export const PhoneOffer = () => {
       <img
         style={{ width: '51.2px', height: '49px', objectFit: 'contain' }}
         src={selectedPhone?.images[i]}
+        onClick={() => setActiveImage(true)}
+        className={classNames('phoneoffer__image', {
+          'phoneoffer__image--active': activeImage,
+        })}
       ></img>
     ),
+  };
+
+  const secondSettings = {
+    infinite: false,
+    arrows: true,
+    className: 'phoneoffer__proposition',
   };
 
   return (
@@ -88,8 +109,147 @@ export const PhoneOffer = () => {
               );
             })}
           </div>
+          <div className="phoneoffer__line"></div>
+          <div className="phoneoffer__panel--capacity-title">
+            Select capacity
+          </div>
+          {selectedPhone?.capacityAvailable.map(capacity => {
+            const getSelectedCapacity = (currentCapacity: string) => {
+              if (currentCapacity === capacity) {
+                setSelectedCapacity(capacity);
+              }
+            };
+
+            return (
+              <button
+                className={classNames('phoneoffer__panel--capacity-option', {
+                  'phoneoffer__panel--capacity-option-selected':
+                    selectedCapacity === capacity,
+                })}
+                key={capacity}
+                onClick={() => getSelectedCapacity(capacity)}
+              >
+                {capacity}
+              </button>
+            );
+          })}
+          <div className="phoneoffer__line"></div>
+          <div className="phoneoffer__panel--prices">
+            <div className="phoneoffer__panel--price">{`$${selectedPhone?.priceDiscount}`}</div>
+            <del className="phoneoffer__panel--price-discount">{`$${selectedPhone?.priceRegular}`}</del>
+          </div>
+          <div className="phoneoffer__panel--buttons">
+            <button className="phoneoffer__panel--adding-button">
+              Add to cart
+            </button>
+            <button className="phoneoffer__panel--heart-button"></button>
+          </div>
+          <div className="phoneoffer__panel--basicspec">
+            <div className="phoneoffer__panel--basicspec-data">
+              <div className="phoneoffer__panel--basicspec-title">Screen</div>
+              <div className="phoneoffer__panel--basicspec-text">
+                {selectedPhone?.screen}
+              </div>
+            </div>
+            <div className="phoneoffer__panel--basicspec-data">
+              <div className="phoneoffer__panel--basicspec-title">
+                Resolution
+              </div>
+              <div className="phoneoffer__panel--basicspec-text">
+                {selectedPhone?.resolution}
+              </div>
+            </div>
+            <div className="phoneoffer__panel--basicspec-data">
+              <div className="phoneoffer__panel--basicspec-title">
+                Processor
+              </div>
+              <div className="phoneoffer__panel--basicspec-text">
+                {selectedPhone?.processor}
+              </div>
+            </div>
+            <div className="phoneoffer__panel--basicspec-data">
+              <div className="phoneoffer__panel--basicspec-title">RAM</div>
+              <div className="phoneoffer__panel--basicspec-text">
+                {selectedPhone?.ram}
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="phoneoffer__description">
+          <h2 className="phoneoffer__description--header">About</h2>
+          <div className="phoneoffer__line"></div>
+          {selectedPhone?.description.map(data => (
+            <>
+              <div className="phoneoffer__description--title">{data.title}</div>
+              <div className="phoneoffer__description--text">{data.text}</div>
+            </>
+          ))}
+          <div className="phoneoffer__line"></div>
+        </div>
+        <div className="phoneoffer__techspecs">
+          <div className="phoneoffer__techspecs--data">
+            <div className="phoneoffer__techspecs--title">Screen</div>
+            <div className="phoneoffer__techspecs--text">
+              {selectedPhone?.screen}
+            </div>
+          </div>
+          <div className="phoneoffer__techspecs--data">
+            <div className="phoneoffer__techspecs--title">Resolution</div>
+            <div className="phoneoffer__techspecs--text">
+              {selectedPhone?.resolution}
+            </div>
+          </div>
+          <div className="phoneoffer__techspecs--data">
+            <div className="phoneoffer__techspecs--title">Processor</div>
+            <div className="phoneoffer__techspecs--text">
+              {selectedPhone?.processor}
+            </div>
+          </div>
+          <div className="phoneoffer__techspecs--data">
+            <div className="phoneoffer__techspecs--title">RAM</div>
+            <div className="phoneoffer__techspecs--text">
+              {selectedPhone?.ram}
+            </div>
+          </div>
+          <div className="phoneoffer__techspecs--data">
+            <div className="phoneoffer__techspecs--title">Built in memory</div>
+            <div className="phoneoffer__techspecs--text">
+              {selectedPhone?.capacity}
+            </div>
+          </div>
+          <div className="phoneoffer__techspecs--data">
+            <div className="phoneoffer__techspecs--title">Camera</div>
+            <div className="phoneoffer__techspecs--text">
+              {selectedPhone?.camera}
+            </div>
+          </div>
+          <div className="phoneoffer__techspecs--data">
+            <div className="phoneoffer__techspecs--title">Zoom</div>
+            <div className="phoneoffer__techspecs--text">
+              {selectedPhone?.zoom}
+            </div>
+          </div>
+          <div className="phoneoffer__techspecs--data">
+            <div className="phoneoffer__techspecs--title">Cell</div>
+
+            {selectedPhone?.cell.map(cell => (
+              <div className="phoneoffer__techspecs--text" key={cell}>
+                {`${cell}, `}
+              </div>
+            ))}
+          </div>
+        </div>
+        <div className="phoneoffer__slider">
+          <div className="phoneoffer__slider--header">You may also like</div>
+
+          <Slider {...secondSettings}>
+            {proposedPhones.map(proposedPhone => (
+              <ProductCard key={proposedPhone.id} product={proposedPhone} />
+            ))}
+          </Slider>
         </div>
       </div>
+      <Footer />
     </>
   );
 };

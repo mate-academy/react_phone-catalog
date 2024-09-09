@@ -1,18 +1,21 @@
-import { HotPricesProduct } from '../types/HotPricesProducts';
+import { Link } from 'react-router-dom';
+import { OldProduct } from '../types/OldProducts';
 import './DiscountProduct.scss';
 
 type Props = {
-  discountProduct: HotPricesProduct;
+  discountProduct: OldProduct;
 };
 
 export const DiscountProduct = ({ discountProduct }: Props) => {
   return (
     <div className="discountproduct">
-      <img
-        className="discountproduct__image"
-        src={discountProduct.imageUrl}
-        alt={discountProduct.name}
-      />
+      <Link to={`/oldPhones/${discountProduct.id}`}>
+        <img
+          className="discountproduct__image"
+          src={discountProduct.imageUrl}
+          alt={discountProduct.name}
+        />
+      </Link>
 
       <h2 className="discountproduct__name">{discountProduct.name}</h2>
       <div className="discountproduct__prices">

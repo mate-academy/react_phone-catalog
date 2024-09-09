@@ -1,18 +1,17 @@
 /* eslint-disable @typescript-eslint/indent */
 import { useContext, useEffect } from 'react';
-import { getHotPricesProducts } from '../../api/products';
+import { getOldProducts } from '../../api/products';
 import { DiscountProduct } from '../DiscountProduct/DiscountProduct';
 import './Discounts.scss';
 import Slider from 'react-slick';
 import { CatalogContext } from '../CatalogProvider';
 
 export const Discounts = () => {
-  const { hotPricesProducts, setHotPricesProducts } =
-    useContext(CatalogContext);
+  const { oldProducts, setOldProducts } = useContext(CatalogContext);
 
   useEffect(() => {
-    getHotPricesProducts().then(setHotPricesProducts);
-  }, [setHotPricesProducts]);
+    getOldProducts().then(setOldProducts);
+  }, [setOldProducts]);
 
   const settings = {
     variableWidth: true,
@@ -27,7 +26,7 @@ export const Discounts = () => {
       <h2 className="discounts__title">Hot prices</h2>
       <div className="discounts__content">
         <Slider {...settings}>
-          {hotPricesProducts.map(hotProduct => (
+          {oldProducts.map(hotProduct => (
             <DiscountProduct
               discountProduct={hotProduct}
               key={hotProduct.age}

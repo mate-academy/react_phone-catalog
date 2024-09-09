@@ -11,12 +11,14 @@
 @import '../../utils/mixins';
 
 .productcard {
-  border: 1px solid black;
+  border: 1px solid #89939A;
   height: 439px;
-  width: 212px;
+  width: 287px;
   display: flex;
   flex-direction: column;
-  
+  gap: 16px;
+  margin-bottom: 16px;
+
   @include on-tablet {
     width: 237px;
     height: 512px;
@@ -29,7 +31,10 @@
   &__image {
     height: 148px;
     width: 129px;
-    margin: 20px 41px 0;
+
+    &--link {
+      margin: 20px auto 0;
+    }
 
     @include on-tablet {
       margin: 30px 41px 0;
@@ -58,13 +63,16 @@ margin: 0 32px;
   margin: 0 32px;
 }
   }
+  &__prices {
+    display: flex;
+  }
   &__price {
 font-family: Mont-bold, sans-serif;
 font-size: 22px;
 font-weight: 800;
 line-height: 30.8px;
 text-align: left;
-margin: 0 40px;
+margin: 0 5px 0 40px;
 
 @include on-tablet {
   margin-top: 10px;
@@ -74,6 +82,14 @@ margin: 0 40px;
   margin: 0 40px;
 }
 
+  }
+  &__pricediscount {
+    color:#B4BDC3;
+    font-family: Mont-bold, sans-serif;
+font-size: 22px;
+font-weight: 800;
+line-height: 30.8px;
+text-align: left;
   }
   &__line {
     height: 0;
@@ -109,7 +125,6 @@ text-align: right;
   }
 }
 &__capacity {
-  width: 148px;
   display: flex;
   justify-content: space-between;
   margin-top: 8px;
@@ -130,7 +145,6 @@ text-align: right;
   }
 }
 &__ram {
-  width: 148px;
   display: flex;
   margin-top: 8px;
 
@@ -155,8 +169,9 @@ text-align: right;
 &__buttons {
   display: flex;
   justify-content: center;
-  width: 170px;
   height: 40px;
+  gap: 4px;
+
 
   @include on-tablet {
     margin-top: 10px;
@@ -164,7 +179,7 @@ text-align: right;
 
 }
 &__adding-button {
-  width:125px;
+  width: 158px;
 
   @include on-desktop {
     width: 160px;
