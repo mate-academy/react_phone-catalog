@@ -2,11 +2,25 @@
 import { LimitedProduct } from '../types/Product';
 
 export const fetchProducts = async (category: string, sortMethod: string): Promise<LimitedProduct[]> => {
+
+  const getSuggestedProducts = (filteredData: LimitedProduct[], count: number) => {
+    let randomIndex: number = 0;
+    let randomProducts: LimitedProduct[] = [];
+
+      while (randomProducts.length < count) {
+        randomIndex = Math.floor(Math.random() * filteredData.length);
+        if (!randomProducts.includes(filteredData[randomIndex])) {
+          randomProducts.push(filteredData[randomIndex]);
+        }
+      }
+    return randomProducts;
+  }
+
   try {
     const response = await fetch('https://meljaszuk.github.io/react_phone-catalog/api/products.json');
     const data: LimitedProduct[] = await response.json();
 
-    const filteredData = data.filter((item) => item.category === category);
+    let filteredData = data.filter((item) => item.category === category);
 
     switch (sortMethod) {
       case 'alpha':
@@ -20,6 +34,9 @@ export const fetchProducts = async (category: string, sortMethod: string): Promi
         break;
       case 'hot':
         filteredData.sort((a, b) => (b.fullPrice - b.price) - (a.fullPrice - a.price));
+        break;
+      case 'random':
+        filteredData = getSuggestedProducts(filteredData, 20);
         break;
       default: break;
     }

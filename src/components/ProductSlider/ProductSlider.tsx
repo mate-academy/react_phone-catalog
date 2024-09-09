@@ -9,7 +9,7 @@ import { fetchProducts } from '../../utils/fetchProducts';
 
 type ProductSliderProps = {
   title: string;
-  sortMethod: 'alpha' | 'price' | 'newest' | 'hot';
+  sortMethod: 'alpha' | 'price' | 'newest' | 'hot' | 'random';
   category: string;
 };
 
