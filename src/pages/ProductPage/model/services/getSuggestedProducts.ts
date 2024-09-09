@@ -5,7 +5,7 @@ export const getSuggestedProducts = async (
   categoty: CategoriesEnum,
 ): Promise<Product[]> => {
   try {
-    const response = await fetch(`http://localhost:3000/api/products.json`)
+    const response = await fetch(`/public/api/products.json`)
       .then(res => res.json())
       .then((products: Product[]) =>
         products.filter(product => product.category === categoty),

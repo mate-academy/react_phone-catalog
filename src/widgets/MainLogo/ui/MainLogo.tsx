@@ -10,9 +10,9 @@ export const MainLogo = memo(() => {
   return (
     <Link to={RoutePaths.home} className={cls.mainLogo}>
       {theme === Theme.LIGHT ? (
-        <img src="/img/logo.svg" alt="logo" />
+        <img src="img/logo.svg" alt="logo" />
       ) : (
-        <img src="/img/logo-dark.svg" alt="logo" />
+        <img src="img/logo-dark.svg" alt="logo" />
       )}
     </Link>
   );

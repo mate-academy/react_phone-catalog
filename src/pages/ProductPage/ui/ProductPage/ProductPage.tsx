@@ -42,7 +42,7 @@ function ProductPage() {
             title="Product was not found"
             className={cls.notFoundTitle}
           />
-          <NotFound src="/img/cart-is-empty.png" alt="Cart is empty" />
+          <NotFound src="img/cart-is-empty.png" alt="Cart is empty" />
         </>
       )}
     </>

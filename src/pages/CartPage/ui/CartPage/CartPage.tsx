@@ -55,7 +55,7 @@ export default function CartPage() {
         <PagePartTop tag="h2" title="Cart" />
 
         {isEmpty ? (
-          <NotFound src="/img/cart-is-empty.png" alt="Cart is empty" />
+          <NotFound src="img/cart-is-empty.png" alt="Cart is empty" />
         ) : (
           <div className={cls.body}>
             <CartProductsList

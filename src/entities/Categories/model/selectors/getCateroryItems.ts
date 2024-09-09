@@ -8,19 +8,19 @@ export const getCateroryItems = createSelector(
   ({ phones, tablets, accessories }) => {
     const categoriesItemList: CateroryItemsType[] = [
       {
-        imagePath: '/img/categories/phones.png',
+        imagePath: 'img/categories/phones.png',
         link: `${RoutePaths.products}${CategoriesEnum.PHONES}`,
         title: CategoriesEnum.PHONES,
         count: phones,
       },
       {
-        imagePath: '/img/categories/tablets.png',
+        imagePath: 'img/categories/tablets.png',
         link: `${RoutePaths.products}${CategoriesEnum.TABLETS}`,
         title: CategoriesEnum.TABLETS,
         count: tablets,
       },
       {
-        imagePath: '/img/categories/accessories.png',
+        imagePath: 'img/categories/accessories.png',
         link: `${RoutePaths.products}${CategoriesEnum.ACCESSORIES}`,
         title: CategoriesEnum.ACCESSORIES,
         count: accessories,

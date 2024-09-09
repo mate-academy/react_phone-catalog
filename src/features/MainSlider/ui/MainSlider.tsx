@@ -43,22 +43,22 @@ export const MainSlider = memo(({ className }: MainSliderProps) => {
       {
         id: 0,
         link: `${RoutePaths.products}phones`,
-        banner: '/img/banner.png',
+        banner: 'img/banner.png',
       },
       {
         id: 1,
         link: `${RoutePaths.products}phones`,
-        banner: '/img/banner-phones.png',
+        banner: 'img/banner-phones.png',
       },
       {
         id: 3,
         link: `${RoutePaths.products}tablets`,
-        banner: '/img/banner-tablets.png',
+        banner: 'img/banner-tablets.png',
       },
       {
         id: 4,
         link: `${RoutePaths.products}accessories`,
-        banner: '/img/banner-accessories.png',
+        banner: 'img/banner-accessories.png',
       },
     ],
     [],
