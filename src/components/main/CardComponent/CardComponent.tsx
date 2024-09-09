@@ -12,24 +12,40 @@ export const CardComponent = ({ devices, salePrice }: CardComponentProps) => {
     <>
       <div className={classNames(styles.card)} key={devices.id}>
         <div className={styles.card_flex_column}>
-          {'image' in devices && (
+          {'images' in devices && devices.images.length > 0 ? (
             <img
-              src={`./${devices.image}`}
+              src={`./${devices.images[0]}`}
               alt="img"
               className={styles.card_images}
             />
+          ) : (
+            'image' in devices && (
+              <img
+                src={`./${devices.image}`}
+                alt="img"
+                className={styles.card_images}
+              />
+            )
           )}
           <div>{'name' in devices && <span>{devices.name}</span>}</div>
           <div className={styles.card_price_container}>
-            {'price' in devices && (
-              <h2 className={styles.card_price}>{`$${devices.price}`}</h2>
-            )}
+            <h2 className={styles.card_price}>
+              {'price' in devices
+                ? `$${devices.price}`
+                : 'priceRegular' in devices
+                  ? `$${devices.priceRegular}`
+                  : 'Price not available'}
+            </h2>
+
             {salePrice ? (
               <h2 className={styles.card_price_sale}>{`$${salePrice}`}</h2>
-            ) : (
-              <></>
-            )}
+            ) : 'priceRegular' in devices ? (
+              <h2
+                className={styles.card_price_sale}
+              >{`$${devices.priceDiscount}`}</h2>
+            ) : null}
           </div>
+
           <div className={styles.card_stats}>
             {'screen' in devices && (
               <div className={styles.card_stats_text}>

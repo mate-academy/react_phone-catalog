@@ -4,6 +4,13 @@ import buttom from '../HomePage/Welcome/homeface.module.scss';
 import classNames from 'classnames';
 
 export const Footer = () => {
+  const componentDidMount = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  };
+
   return (
     <div className={flex.footer}>
       <div>
@@ -32,6 +39,7 @@ export const Footer = () => {
               buttom.product_slide_buttons,
               flex.footer_top_button,
             )}
+            onClick={() => componentDidMount()}
           >
             <img src="./img/Vector_up.png" alt="vector" />
           </button>

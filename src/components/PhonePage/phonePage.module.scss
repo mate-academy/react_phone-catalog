@@ -1,12 +1,27 @@
+@import '/src/components/colors.scss';
+
 .phone {
+  margin: 0 200px;
+
+  &_h1 {
+    font-family: 'Mont-Bold';
+    color: $HOVER_BUTTON_COLOR;
+    font-size: 48px;
+    margin: 40px 0 0 0;
+  }
 
   &_head {
     display: flex;
+    flex-direction: column;
   }
 
   &_row {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    margin: 0;
+  }
+
+  &_select {
+    display: flex;
   }
 }

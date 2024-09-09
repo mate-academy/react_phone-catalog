@@ -11,9 +11,15 @@ export const ProductsSlider = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [currentSlideHotPrices, setCurrentSlideHotPrices] = useState(0);
 
-  const productsByPrice = products.slice().sort((a, b) => b.price - a.price);
+  const productsByYear = products.slice().sort((a, b) => {
+    if (b.year >= a.year) {
+      return b.price - a.price;
+    }
 
-  const salePrice = products.slice().sort((a, b) => a.price - b.price);
+    return b.year - a.year;
+  });
+
+  const salePrice = products.slice().sort((a, b) => b.price - a.price);
 
   const nextSlideHotPrices = () => {
     const totalProduct = salePrice.length;
@@ -74,7 +80,7 @@ export const ProductsSlider = () => {
             transform: `translateX(calc(-${currentSlide * 25}%))`,
           }}
         >
-          {productsByPrice.map(product => (
+          {productsByYear.map(product => (
             <CardComponent key={product.id} devices={product} />
           ))}
         </div>
