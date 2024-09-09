@@ -22,16 +22,26 @@
   color: var(--color-secondary);
 }
 
-
 .label {
   grid: 1 / -1;
-  grid-column: span 4;
   text-align: center;
   padding-top: 3px;
   height: 15px;
   text-decoration: none;
   @extend %small-text;
   color: var(--color-secondary);
+
+  @include on-mobile {
+    grid-column: span 4;
+  }
+
+  @include on-tablet {
+    grid-column: span 12;
+  }
+
+  @include on-desktop {
+    grid-column: span 24;
+  }
 }
 
 .goBackButton {
