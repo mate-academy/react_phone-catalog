@@ -1,11 +1,9 @@
-/* eslint-disable no-console */
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { BackButton } from '../../components/BackButton';
 import { EmptyPage } from '../EmptyPage';
 import { colorCodes } from '../../colorCodes/colorCodes';
-import { Goods } from '../../types';
-import { getProductsByName, getProductAPI } from '../../api/api';
+import { getProductsByName, getProductAPI, determineCategoryByProductId } from '../../api/api';
 import { useProductCategoryContext } from '../../context/ProductCategoryProvider';
 import { PriceDisplay } from '../../components/PriceDisplay';
 import { CartControls } from '../../components/CartControls';
@@ -14,36 +12,47 @@ import { useFavorites } from '../../context/FavoritesContext';
 import './ProductDetailPage.scss';
 import '../../components/PhoneSpecs/PhoneSpecs.scss';
 import { NewItems } from '../../components/NewItems';
+import { ProductDetailed } from '../../types';
 
 export const ProductDetailPage: React.FC = () => {
   const { productId } = useParams<{ productId: string }>();
   const { productType, setProductType } = useProductCategoryContext();
   const { addToCart, removeItem, isInCart } = useCart();
   const { addToFavorites, removeFromFavorites, isInFavorites } = useFavorites();
-  const [product, setProduct] = useState<Goods | null>(null);
+  const [product, setProduct] = useState<ProductDetailed | null>(null);
   const [activeImage, setActiveImage] = useState<string | null>(null);
-  const [selectedColor, setSelectedColor] = useState<string | undefined>(
-    undefined,
-  );
-  const [selectedCapacity, setSelectedCapacity] = useState<string | undefined>(
-    undefined,
-  );
+  const [selectedColor, setSelectedColor] = useState<string | undefined>(undefined);
+  const [selectedCapacity, setSelectedCapacity] = useState<string | undefined>(undefined);
   const [isAdded, setIsAdded] = useState(false);
   const [isLiked, setIsLiked] = useState(false);
+  const [errors, setErrors] = useState<string | null>(null);
+  const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
   const renderCount = useRef(0);
 
-  const allProducts = useRef<Goods[]>([]);
+  const allProducts = useRef<ProductDetailed[]>([]);
   const serialNumberRef = useRef(1);
 
   useEffect(() => {
     renderCount.current += 1;
-    console.log(
-      `Render count: ${renderCount.current}, productId: ${productId}`,
-    );
   }, [productId]);
 
-  const assignSerialNumbers = (products: Goods[]): Goods[] => {
+  useEffect(() => {
+    const updateCategory = async () => {
+      if (!productId) return;
+
+      try {
+        const category = await determineCategoryByProductId(productId);
+        setProductType(category);
+      } catch (error) {
+        setErrors('Failed to determine product category.');
+      }
+    };
+
+    updateCategory();
+  }, [productId]);
+
+  const assignSerialNumbers = (products: ProductDetailed[]): ProductDetailed[] => {
     return products.map((item) => ({
       ...item,
       serialNumber: serialNumberRef.current++,
@@ -52,14 +61,16 @@ export const ProductDetailPage: React.FC = () => {
 
   const loadProduct = useCallback(async () => {
     if (!productId) {
-      console.error('Product ID is undefined.');
       return;
     }
 
+    setLoading(true);
+    setErrors(null);
+
     try {
       const apiMethod = getProductAPI(productType);
+      const fetchedProduct: ProductDetailed | null = await apiMethod(productId);
 
-      const fetchedProduct: Goods | null = await apiMethod(productId);
       if (fetchedProduct?.category === 'tablets') {
         setProductType('tablets');
       }
@@ -67,21 +78,15 @@ export const ProductDetailPage: React.FC = () => {
         setProductType('accessories');
       }
       if (!fetchedProduct) {
-        console.error(`Product not found: ${productId}`);
         setProduct(null);
         return;
       }
 
-      let products: Goods[] = await getProductsByName(
-        productType,
-        fetchedProduct.namespaceId,
-      );
+      let products: ProductDetailed[] = await getProductsByName(productType, fetchedProduct.namespaceId);
       products = assignSerialNumbers(products);
       allProducts.current = products;
 
-      const updatedProduct =
-        products.find((item) => item.id === fetchedProduct.id) || null;
-
+      const updatedProduct = products.find((item) => item.id === fetchedProduct.id) || null;
       setProduct(updatedProduct);
       setActiveImage(updatedProduct?.images[0] || null);
       setSelectedColor(updatedProduct?.color);
@@ -90,27 +95,16 @@ export const ProductDetailPage: React.FC = () => {
       setIsAdded(isInCart(updatedProduct?.id || ''));
       setIsLiked(isInFavorites(updatedProduct?.id || ''));
     } catch (error) {
-      console.error('Error fetching product data:', error);
+      setErrors('Error fetching product data.');
       setProduct(null);
+    } finally {
+      setLoading(false);
     }
   }, [productId, productType, isInCart, isInFavorites]);
 
   useEffect(() => {
     loadProduct();
   }, [loadProduct]);
-
-  useEffect(() => {
-    if (product && selectedColor) {
-      const colorIndex = product.colorsAvailable.findIndex(
-        (color) => color === selectedColor,
-      );
-      if (colorIndex !== -1 && product.images[colorIndex]) {
-        setActiveImage(product.images[colorIndex]);
-      } else {
-        setActiveImage(product.images[0] || null);
-      }
-    }
-  }, [selectedColor, product]);
 
   const handleColorChange = useCallback(
     (color: string) => {
@@ -127,28 +121,20 @@ export const ProductDetailPage: React.FC = () => {
     async (capacity: string) => {
       if (product && capacity !== selectedCapacity) {
         try {
-          let products = (await getProductsByName(
-            productType,
-            product.namespaceId,
-          )) as Goods[];
+          let products = await getProductsByName(productType, product.namespaceId);
           products = assignSerialNumbers(products);
-          const updatedProduct = products.find(
-            (item) => item.color === selectedColor && item.capacity === capacity,
-          );
+          const updatedProduct = products.find((item) => item.color === selectedColor && item.capacity === capacity);
           if (updatedProduct) {
             const newProductId = updatedProduct.id;
             setProduct(updatedProduct);
             setActiveImage(updatedProduct.images[0]);
             setSelectedCapacity(capacity);
-
             navigate(`/${productType}/${newProductId}`);
           } else {
-            console.error(
-              'Product with selected color and capacity not found.',
-            );
+            setErrors('Product with selected color and capacity not found.');
           }
         } catch (error) {
-          console.error('Error fetching updated product data:', error);
+          setErrors('Error fetching updated product data.');
         }
       }
     },
@@ -177,14 +163,19 @@ export const ProductDetailPage: React.FC = () => {
     }
   };
 
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
   if (!product) {
     return <EmptyPage />;
   }
 
-  const getRecommendedProducts = (
-    products: Goods[],
-    modelName: string,
-  ): Goods[] => {
+  if (errors) {
+    return <div>Error: {errors}</div>;
+  }
+
+  const getRecommendedProducts = (products: ProductDetailed[], modelName: string): ProductDetailed[] => {
     const modelPattern = /\b\d+\b/;
     const match = modelName.match(modelPattern);
     const model = match ? match[0] : '';
@@ -201,16 +192,9 @@ export const ProductDetailPage: React.FC = () => {
       .slice(0, 10);
   };
 
-  const recommendedProducts = getRecommendedProducts(
-    allProducts.current,
-    product.name,
-  );
+  const recommendedProducts = getRecommendedProducts(allProducts.current, product.name);
 
-  const formatProductName = (
-    name: string,
-    capacity: string | undefined,
-    category: string,
-  ): string => {
+  const formatProductName = (name: string, capacity: string | undefined, category: string): string => {
     switch (category) {
       case 'phones':
         return `${name.replace(/(\d+GB|\d+TB)/, capacity || '')}`;
@@ -223,11 +207,7 @@ export const ProductDetailPage: React.FC = () => {
     }
   };
 
-  const productNameWithCapacity = formatProductName(
-    product.name,
-    selectedCapacity,
-    productType,
-  );
+  const productNameWithCapacity = formatProductName(product.name, selectedCapacity, productType);
 
   return (
     <div className="container">
@@ -343,9 +323,7 @@ export const ProductDetailPage: React.FC = () => {
             <div className="phone-specs productDetail__tech--top">
               <div className="phone-specs__param">
                 <p className="phone-specs__text">Screen</p>
-                <p className="phone-specs__size">
-                  {product.screen.slice(0, 9)}
-                </p>
+                <p className="phone-specs__size">{product.screen.slice(0, 9)}</p>
               </div>
               <div className="phone-specs__param">
                 <p className="phone-specs__text">Resolution</p>
@@ -357,9 +335,7 @@ export const ProductDetailPage: React.FC = () => {
               </div>
               <div className="phone-specs__param">
                 <p className="phone-specs__text">RAM</p>
-                <p className="phone-specs__size">
-                  {product.ram.slice(0, 1)} GB
-                </p>
+                <p className="phone-specs__size">{product.ram.slice(0, 1)} GB</p>
               </div>
               <div className="phone-specs__param">
                 <p className="phone-specs__text">Built in memory</p>
@@ -384,7 +360,7 @@ export const ProductDetailPage: React.FC = () => {
         </div>
       </div>
       <NewItems
-        iphone={recommendedProducts}
+        product={recommendedProducts}
         title={'You may also like'}
         showDiscount={true}
       />

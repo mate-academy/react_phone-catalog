@@ -11,13 +11,11 @@
   &__right {
     width: 32px;
     height: 32px;
-
     border: none;
     outline: none;
     background: none;
     box-shadow: none;
     cursor: pointer;
-
     border-radius: 100%;
     &:disabled {
       cursor: default;

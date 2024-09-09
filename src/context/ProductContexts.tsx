@@ -1,13 +1,13 @@
 import React, { useState, useCallback } from 'react';
-import { Phone } from '../types';
+import { Product } from '../types';
 
 type Props = {
   children: React.ReactNode;
 };
 
 type ContextType = {
-  goods: Phone[] | null;
-  updateGoods: (values: Phone[]) => void;
+  goods: Product[] | null;
+  updateGoods: (values: Product[]) => void;
 };
 
 export const ProductsContext = React.createContext<ContextType>({
@@ -18,9 +18,9 @@ export const ProductsContext = React.createContext<ContextType>({
 });
 
 export const ProductsProvider: React.FC<Props> = ({ children }) => {
-  const [goods, setGoods] = useState<Phone[]>([]);
+  const [goods, setGoods] = useState<Product[]>([]);
 
-  const updateGoods = useCallback((data: Phone[]) => {
+  const updateGoods = useCallback((data: Product[]) => {
     if (data && data.length) {
       setGoods(data);
     }

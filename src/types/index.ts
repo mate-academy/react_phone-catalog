@@ -1,23 +1,8 @@
-/* eslint-disable no-console */
-export type Product = {
-  id: number;
-  category: string;
-  itemId: string;
-  name: string;
-  fullPrice: number;
-  price: number;
-  screen: string;
-  capacity: string;
-  color: string;
-  ram: string;
-  year: number;
-  image: string;
-};
-
-export type Phone = {
+export type ProductDetailed = {
+  serialNumber: number;
   id: string;
-  category: string;
   namespaceId: string;
+  category: string;
   name: string;
   capacityAvailable: string[];
   capacity: string;
@@ -37,77 +22,26 @@ export type Phone = {
   camera: string;
   zoom: string;
   cell: string[];
-  serialNumber?: number;
+  fullPrice: number;
+  itemId: string;
+  price: number;
 };
-// export type Goods = {
-//   id: string;
-//   serialNumber?: number;
-//   category: string;
-//   namespaceId: string;
-//   name: string;
-//   capacityAvailable: string[];
-//   capacity: string;
-//   priceRegular: number;
-//   priceDiscount: number;
-//   colorsAvailable: string[];
-//   color: string;
-//   images: string[];
-//   description: {
-//     title: string;
-//     text: string[];
-//   }[];
-//   screen: string;
-//   resolution: string;
-//   processor: string;
-//   ram: string;
-//   camera: string;
-//   zoom: string;
-//   cell: string[];
-// };
 
-
-// interface BaseProduct {
-//   id: string;
-//   // category: string;
-//   namespaceId: string;
-//   name: string;
-//   capacityAvailable: string[];
-//   capacity: string;
-//   priceRegular: number;
-//   priceDiscount: number;
-//   colorsAvailable: string[];
-//   color: string;
-//   images: string[];
-//   description: {
-//     title: string;
-//     text: string[];
-//   }[];
-//   screen: string;
-//   resolution: string;
-//   processor: string;
-//   ram: string;
-//   camera: string;
-//   zoom: string;
-//   cell: string[];
-//   serialNumber?: number;
-// }
-
-
-export interface Phones extends Phone {
-  category: 'phones';
-}
-
-
-export interface Accessories extends Phone {
-  category: 'accessories';
-}
-
-
-export interface Tablets extends Phone {
-  category: 'tablets';
-}
-
-export type Goods = Phones | Accessories | Tablets;
-
-
+export type Product = {
+  namespaceId?: string;
+  priceDiscount: number;
+  priceRegular: number;
+  id: string;
+  category: string;
+  itemId: string;
+  name: string;
+  capacity: string;
+  fullPrice: number;
+  price: number;
+  color: string;
+  images: string[];
+  screen: string;
+  ram: string;
+  year?: number;
+};
 

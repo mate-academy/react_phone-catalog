@@ -5,16 +5,16 @@ import {
   ReactNode,
   useEffect,
 } from 'react';
-import { Phone } from '../types';
+import { Product } from '../types';
 
 interface CartItem {
-  phone: Phone;
+  phone: Product;
   quantity: number;
 }
 
 interface CartContextProps {
   cartItems: CartItem[];
-  addToCart: (phone: Phone) => void;
+  addToCart: (phone: Product) => void;
   isInCart: (id: string) => boolean;
   increaseQuantity: (id: string) => void;
   decreaseQuantity: (id: string) => void;
@@ -22,7 +22,7 @@ interface CartContextProps {
 }
 
 type Action =
-  | { type: 'ADD_TO_CART'; payload: Phone }
+  | { type: 'ADD_TO_CART'; payload: Product }
   | { type: 'INCREASE_QUANTITY'; payload: string }
   | { type: 'DECREASE_QUANTITY'; payload: string }
   | { type: 'REMOVE_ITEM'; payload: string };
@@ -64,7 +64,7 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
     localStorage.setItem('cartItems', JSON.stringify(cartItems));
   }, [cartItems]);
 
-  const addToCart = (phone: Phone) => {
+  const addToCart = (phone: Product) => {
     dispatch({ type: 'ADD_TO_CART', payload: phone });
   };
 

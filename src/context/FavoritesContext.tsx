@@ -1,9 +1,9 @@
 import React, { createContext, useState, ReactNode, useEffect } from 'react';
-import { Phone } from '../types';
+import { Product } from '../types';
 
 type FavoritesContextType = {
-  favorites: Phone[];
-  addToFavorites: (phone: Phone) => void;
+  favorites: Product[];
+  addToFavorites: (phone: Product) => void;
   removeFromFavorites: (id: string) => void;
   isInFavorites: (id: string) => boolean;
 };
@@ -19,7 +19,7 @@ type Props = {
 const LOCAL_STORAGE_KEY = 'favorites';
 
 export const FavoritesProvider: React.FC<Props> = ({ children }) => {
-  const [favorites, setFavorites] = useState<Phone[]>([]);
+  const [favorites, setFavorites] = useState<Product[]>([]);
 
   useEffect(() => {
     const storedFavorites = localStorage.getItem(LOCAL_STORAGE_KEY);
@@ -32,7 +32,7 @@ export const FavoritesProvider: React.FC<Props> = ({ children }) => {
     localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(favorites));
   }, [favorites]);
 
-  const addToFavorites = (phone: Phone) => {
+  const addToFavorites = (phone: Product) => {
     setFavorites((prevFavorites) => [...prevFavorites, phone]);
   };
 

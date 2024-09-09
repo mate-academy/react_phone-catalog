@@ -20,7 +20,15 @@ export const Header: React.FC = () => {
     } else {
       document.body.classList.remove('no-scroll');
     }
+
+    return () => {
+      document.body.classList.remove('no-scroll');
+    };
   }, [isNavOpen]);
+
+  const handleLinkClick = () => {
+    setIsNavOpen(false);
+  };
 
   const getLinkClass = ({ isActive }: { isActive: boolean }) =>
     classNames('header__link', 'header__nav--link', {
@@ -44,23 +52,23 @@ export const Header: React.FC = () => {
   return (
     <header className="header">
       <div className="header__wrapper">
-        <Link to="/" className="header__nav--logo">
+        <Link to="/" className="header__nav--logo" onClick={handleLinkClick}>
           <img
-            src={`${process.env.PUBLIC_URL}/img/icons/Logo.svg`}
+            src={`${process.env.PUBLIC_URL}/img/icons/Logo2.svg`}
             alt="Logo"
           />
         </Link>
         <nav className={classNames('header__nav', { 'nav-open': isNavOpen })}>
-          <NavLink to="/" className={getLinkClass}>
+          <NavLink to="/" className={getLinkClass} onClick={handleLinkClick}>
             Home
           </NavLink>
-          <NavLink to="/phones" className={getLinkClass}>
+          <NavLink to="/phones" className={getLinkClass} onClick={handleLinkClick}>
             Phones
           </NavLink>
-          <NavLink to="/tablets" className={getLinkClass}>
+          <NavLink to="/tablets" className={getLinkClass} onClick={handleLinkClick}>
             Tablets
           </NavLink>
-          <NavLink to="/accessories" className={getLinkClass}>
+          <NavLink to="/accessories" className={getLinkClass} onClick={handleLinkClick}>
             Accessories
           </NavLink>
         </nav>
@@ -73,7 +81,7 @@ export const Header: React.FC = () => {
         </div>
 
         <div className="header__extra">
-          <NavLink to={'/favorites'} className={getAdditionalLinkClass}>
+          <NavLink to="/favorites" className={getAdditionalLinkClass} onClick={handleLinkClick}>
             <div className="header__favorite--icon">
               <img
                 src={`${process.env.PUBLIC_URL}/img/icons/favorites.png`}
@@ -86,7 +94,7 @@ export const Header: React.FC = () => {
               )}
             </div>
           </NavLink>
-          <NavLink to={'/basket'} className={getAdditionalLinkClass}>
+          <NavLink to="/basket" className={getAdditionalLinkClass} onClick={handleLinkClick}>
             <div className="header__basket--icon">
               <img
                 src={`${process.env.PUBLIC_URL}/img/icons/basket.png`}

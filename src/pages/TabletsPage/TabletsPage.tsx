@@ -3,12 +3,12 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import { Cart } from '../../components/Cart';
 import tabletsData from '../../api/tablets.json';
 import './TabletsPage.scss';
-import { Goods } from '../../types';
+import { Product } from '../../types';
 import { BackButton } from '../../components/BackButton';
 import { PaginationPage } from '../PaginationPage';
 import { EmptyPage } from '../EmptyPage';
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-const transformData = (data: any[]): Goods[] => {
+const transformData = (data: any[]): Product[] => {
   return data.map((item) => ({
     ...item,
     capacity: Array.isArray(item.capacity) ? item.capacity : [item.capacity],
@@ -17,7 +17,7 @@ const transformData = (data: any[]): Goods[] => {
 };
 
 export const TabletsPage: React.FC = () => {
-  const [tablets, setTablets] = useState<Goods[]>(transformData(tabletsData));
+  const [tablets, setTablets] = useState<Product[]>(transformData(tabletsData));
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [itemsPerPage, setItemsPerPage] = useState<number | 'all'>('all');
   const [sortType, setSortType] = useState<string>('newest');
@@ -168,8 +168,8 @@ export const TabletsPage: React.FC = () => {
 
       <div className="tablets__wrapper">
         {currentTablets.length > 0 ? (
-          currentTablets.map((tablet) => (
-            <Cart key={tablet.id} phone={tablet} showDiscount={true} />
+          currentTablets.map((product) => (
+            <Cart key={product.id} product={product} showDiscount={true} />
           ))
         ) : (
           <div>

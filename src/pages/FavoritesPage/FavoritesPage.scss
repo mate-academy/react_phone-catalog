@@ -1,6 +1,18 @@
 @import '../../styles/mixins';
+@import '../../styles/variables';
 
 .favorites {
   height: 100vh;
   @include topPagesStyles;
+  &__length {
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 21px;
+    text-align: left;
+    color: $basic-grey-color;
+  }
+  &__wrapper {
+    display: flex;
+    justify-content: flex-start;
+  }
 }

@@ -2,9 +2,11 @@
 @import '../../styles/variables';
 
 .footer {
+  position: sticky;
   background-color: #fff;
   margin-top: 64px;
   &__container {
+    bottom: 0;
     margin-bottom: 32px;
     display: flex;
     margin-top: 33px;

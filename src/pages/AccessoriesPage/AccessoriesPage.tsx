@@ -3,13 +3,13 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import { Cart } from '../../components/Cart';
 import accessoriesData from '../../api/accessories.json';
 import './Accessories.scss';
-
+import { Product } from '../../types';
 import { BackButton } from '../../components/BackButton';
 import { PaginationPage } from '../PaginationPage';
 import { EmptyPage } from '../EmptyPage';
-import { Phone, Phones } from '../../types';
+
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-const transformData = (data: any[]): Phones[] => {
+const transformData = (data: any[]): Product[] => {
   return data.map((item) => ({
     ...item,
     capacity: Array.isArray(item.capacity) ? item.capacity : [item.capacity],
@@ -17,8 +17,12 @@ const transformData = (data: any[]): Phones[] => {
   }));
 };
 
+const cleanId = (id: string) => {
+  return id.replace(/_/g, '');
+};
+
 export const AccessoriesPage: React.FC = () => {
-  const [accessories, setAccessories] = useState<Phone[]>(
+  const [accessories, setAccessories] = useState<Product[]>(
     transformData(accessoriesData),
   );
   const [currentPage, setCurrentPage] = useState<number>(1);
@@ -30,13 +34,13 @@ export const AccessoriesPage: React.FC = () => {
   const params = new URLSearchParams(location.search);
   const initialSortType = params.get('sort') === 'latest' ? 'latest' : 'newest';
   const perPageParam = params.get('perPage') || 'all';
-  const pageParam = parseInt(params.get('page') || '1', 10);
+  const pageParam = params.get('page') || '1';
 
   useEffect(() => {
     const newItemsPerPage =
       perPageParam === 'all' ? accessories.length : parseInt(perPageParam, 10);
     setItemsPerPage(newItemsPerPage);
-    setCurrentPage(pageParam);
+    setCurrentPage(parseInt(cleanId(pageParam), 10));
     setSortType(initialSortType);
   }, [location.search, accessories.length]);
 
@@ -57,7 +61,6 @@ export const AccessoriesPage: React.FC = () => {
       selectedSortType.charAt(0).toUpperCase() + selectedSortType.slice(1),
     );
     updateUrlParams(newParams);
-    sortAccessories(selectedSortType);
   };
 
   const handleItemsPerPageChange = (
@@ -75,15 +78,16 @@ export const AccessoriesPage: React.FC = () => {
   };
 
   const handlePageChange = (page: number) => {
+    const cleanedPage = cleanId(page.toString());
     setCurrentPage(page);
     const newParams = new URLSearchParams(location.search);
-    newParams.set('page', page.toString());
+    newParams.set('page', cleanedPage);
     updateUrlParams(newParams);
   };
 
   const extractVersionNumber = (name: string): number => {
     const match = name.match(/\d+/);
-    return match ? parseInt(match[0], 10) : Number.MAX_SAFE_INTEGER;
+    return match ? parseInt(match[0], 10) : 0;
   };
 
   const sortAccessories = (type: string) => {
@@ -115,7 +119,6 @@ export const AccessoriesPage: React.FC = () => {
     indexOfFirstAccessory,
     indexOfLastAccessory,
   );
-
   const totalPages =
     itemsPerPage === accessories.length
       ? 1
@@ -129,6 +132,7 @@ export const AccessoriesPage: React.FC = () => {
       <BackButton title="Accessories" />
       <h2 className="accessories__title">Accessories</h2>
       <p className="accessories__subtitle">{accessories.length} items</p>
+
       <div className="accessories__sort">
         <div className="accessories__sort--model">
           <p className="accessories__subtitle">Sort By</p>
@@ -176,8 +180,8 @@ export const AccessoriesPage: React.FC = () => {
 
       <div className="accessories__wrapper">
         {currentAccessories.length > 0 ? (
-          currentAccessories.map((accessory) => (
-            <Cart key={accessory.id} phone={accessory} showDiscount={true} />
+          currentAccessories.map((product) => (
+            <Cart key={product.id} product={product} showDiscount={true} />
           ))
         ) : (
           <div>
@@ -186,7 +190,7 @@ export const AccessoriesPage: React.FC = () => {
         )}
       </div>
 
-      {itemsPerPage !== accessories.length && (
+      {totalPages > 1 && (
         <PaginationPage
           currentPage={currentPage}
           totalPages={totalPages}
@@ -196,4 +200,3 @@ export const AccessoriesPage: React.FC = () => {
     </div>
   );
 };
-

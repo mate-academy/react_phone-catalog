@@ -3,12 +3,12 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import { Cart } from '../../components/Cart';
 import phonesData from '../../api/phones.json';
 import './PhonesPage.scss';
-import { Phone } from '../../types';
+import { Product } from '../../types';
 import { BackButton } from '../../components/BackButton';
 import { PaginationPage } from '../PaginationPage';
 import { EmptyPage } from '../EmptyPage';
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-const transformData = (data: any[]): Phone[] => {
+const transformData = (data: any[]): Product[] => {
   return data.map((item) => ({
     ...item,
     capacity: Array.isArray(item.capacity) ? item.capacity : [item.capacity],
@@ -17,13 +17,12 @@ const transformData = (data: any[]): Phone[] => {
 };
 
 export const PhonesPage: React.FC = () => {
-  const [phones, setPhones] = useState<Phone[]>(transformData(phonesData));
+  const [phones, setPhones] = useState<Product[]>(transformData(phonesData));
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [itemsPerPage, setItemsPerPage] = useState<number | 'all'>('all');
   const [sortType, setSortType] = useState<string>('newest');
   const navigate = useNavigate();
   const location = useLocation();
-
   const params = new URLSearchParams(location.search);
   const initialSortType = params.get('sort') === 'latest' ? 'latest' : 'newest';
   const perPageParam = params.get('perPage') || 'all';
@@ -167,13 +166,11 @@ export const PhonesPage: React.FC = () => {
 
       <div className="phones__wrapper">
         {currentPhones.length > 0 ? (
-          currentPhones.map((phone) => (
-            <Cart key={phone.id} phone={phone} showDiscount={true} />
+          currentPhones.map((product) => (
+            <Cart key={product.id} product={product} showDiscount={true} />
           ))
         ) : (
-          <div>
-            <EmptyPage />
-          </div>
+          <EmptyPage />
         )}
       </div>
 

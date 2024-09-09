@@ -3,7 +3,6 @@
 
 .productDetail {
   margin-top: 16px;
-
   &__wrapper {
     margin-top: 32px;
     display: flex;
@@ -68,7 +67,7 @@
       height: 270px;
       border: none;
       height: 350px;
-      background-size: contain;
+      background-size: cover;
       margin: 0 auto;
       transition: all 0.3s ease-in-out;
       margin: 0 auto;
@@ -79,6 +78,13 @@
       &:hover {
         transform: scale(1.1);
       }
+    }
+  }
+
+  &__info {
+    width: 100%;
+    @include on-desktop {
+      width: 320px;
     }
   }
 
@@ -210,16 +216,12 @@
       border: 3px solid #fff;
       transform: scale(1.1);
     }
-
-    &:active {
-      border: 3px solid #fff;
-    }
-    &:hover {
-      transform: scale(1.2);
-    }
   }
 }
-
+.color__option.selected {
+  border: 3px solid #fff;
+  transform: scale(1.2);
+}
 .text {
   color: $basic-grey-color;
   font-size: 12px;

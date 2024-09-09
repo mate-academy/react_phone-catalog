@@ -20,6 +20,7 @@ export const BasketPage: React.FC = () => {
       <BackButton title="Basket" />
 
       <h2 className="basket__title">Basket</h2>
+      <p className="favorites__length">{cartItems.length} items</p>
       <div className="basket__wrapper">
         {cartItems.length === 0 ? (
           <EmptyPage />
@@ -52,7 +53,11 @@ export const BasketPage: React.FC = () => {
                     </p>
                     <p className="basket__countGoods">{item.quantity}</p>
                     <p
-                      className={`basket__quantityGoods--minus ${item.quantity === 1 ? 'basket__quantityGoods--disabled' : ''}`}
+                      className={`basket__quantityGoods--minus ${
+                        item.quantity === 1
+                          ? 'basket__quantityGoods--disabled'
+                          : ''
+                      }`}
                       onClick={() =>
                         item.quantity > 1 && decreaseQuantity(item.phone.id)
                       }

@@ -3,52 +3,52 @@ import { useNavigate } from 'react-router-dom';
 import { useCart } from '../../context/CartContext';
 import { useFavorites } from '../../context/FavoritesContext';
 import './Cart.scss';
-import { Phone } from '../../types';
+import { Product } from '../../types';
 import { PriceDisplay } from '../PriceDisplay';
 import { PhoneSpecs } from '../PhoneSpecs';
 import { CartControls } from '../CartControls';
 
 type Props = {
-  phone: Phone;
+  product: Product;
   showDiscount?: boolean;
 };
 
-export const Cart: React.FC<Props> = ({ phone, showDiscount = true }) => {
+export const Cart: React.FC<Props> = ({ product, showDiscount = true }) => {
   const { addToCart, removeItem, isInCart } = useCart();
   const { addToFavorites, removeFromFavorites, isInFavorites } = useFavorites();
-  const [isAdded, setIsAdded] = useState(isInCart(phone.id));
-  const [isLiked, setIsLiked] = useState(isInFavorites(phone.id));
+  const [isAdded, setIsAdded] = useState(isInCart(product.id));
+  const [isLiked, setIsLiked] = useState(isInFavorites(product.id));
   const navigate = useNavigate();
 
   const handleAddToCart = () => {
     if (isAdded) {
-      removeItem(phone.id);
+      removeItem(product.id);
     } else {
-      addToCart(phone);
+      addToCart(product);
     }
     setIsAdded(!isAdded);
   };
 
   const handleToggleFavorite = () => {
     if (isLiked) {
-      removeFromFavorites(phone.id);
+      removeFromFavorites(product.id);
     } else {
-      addToFavorites(phone);
+      addToFavorites(product);
     }
     setIsLiked(!isLiked);
   };
 
   useEffect(() => {
-    setIsAdded(isInCart(phone.id));
-  }, [isInCart, phone.id]);
+    setIsAdded(isInCart(product.id));
+  }, [isInCart, product.id]);
 
   useEffect(() => {
-    setIsLiked(isInFavorites(phone.id));
-  }, [isInFavorites, phone.id]);
+    setIsLiked(isInFavorites(product.id));
+  }, [isInFavorites, product.id]);
 
   const handleImageClick = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
-    navigate(`/${phone.category}/${phone.id}`);
+    navigate(`/${product.category}/${product.id}`);
   };
 
   return (
@@ -57,22 +57,23 @@ export const Cart: React.FC<Props> = ({ phone, showDiscount = true }) => {
         <div className="cart__wrapper">
           <img
             className="cart__image"
-            src={`${process.env.PUBLIC_URL}/${phone.images[0]}`}
-            alt={phone.name}
+            src={`${process.env.PUBLIC_URL}/${product.images[0]}`}
+            alt={product.name}
             onClick={handleImageClick}
           />
-          <p className="cart__name">{phone.name}</p>
+
+          <p className="cart__name">{product.name}</p>
           <PriceDisplay
-            priceRegular={phone.priceRegular}
-            priceDiscount={phone.priceDiscount}
+            priceRegular={product.priceRegular}
+            priceDiscount={product.priceDiscount}
             showDiscount={showDiscount}
           />
           <hr />
           <PhoneSpecs
-            screen={phone.screen}
-            capacity={phone.capacity}
-            ram={phone.ram}
-            color={phone.color}
+            screen={product.screen}
+            capacity={product.capacity}
+            ram={product.ram}
+            color={product.color}
           />
           <CartControls
             isAdded={isAdded}

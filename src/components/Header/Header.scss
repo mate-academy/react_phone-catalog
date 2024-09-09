@@ -16,6 +16,7 @@
     align-self: start;
     position: relative;
     border-bottom: 1px solid $borderMain;
+    align-items: center;
     @include on-tablet {
       padding-inline: 24px 2px;
     }
@@ -37,9 +38,9 @@
     @include on-tablet {
       display: flex;
       flex-direction: row;
-      gap: 32px;
-      top: 0;
-      left: 0;
+      gap: 20px;
+      top: 10px;
+      left: 85px;
       align-items: center;
       justify-content: flex-start;
       position: static;
@@ -49,6 +50,14 @@
 
     @include on-desktop {
       gap: 35px;
+      margin-left: 20px;
+    }
+
+    &--logo {
+      padding-left: 16px;
+      @include on-tablet {
+        padding-left: 0;
+      }
     }
 
     &--link {
@@ -176,4 +185,7 @@
   @include on-tablet {
     display: none;
   }
+}
+.no-scroll {
+  overflow: hidden;
 }

@@ -2,15 +2,15 @@ import React, { useContext, useEffect, useRef, useState } from 'react';
 import './NewItems.scss';
 import { Cart } from '../Cart/Cart';
 import { ProductsContext } from '../../context/ProductContexts';
-import { Phone } from '../../types';
+import { Product } from '../../types';
 interface NewItemsProps {
-  iphone: Phone[];
+  product: Product[];
   title: string;
   showDiscount: boolean;
 }
 
 export const NewItems: React.FC<NewItemsProps> = ({
-  iphone,
+  product,
   title,
   showDiscount,
 }) => {
@@ -58,7 +58,7 @@ export const NewItems: React.FC<NewItemsProps> = ({
     const handleResize = () => {
       updateCardWidth();
 
-      const maxIndex = Math.max(0, iphone.length - cardsPerPage);
+      const maxIndex = Math.max(0, product.length - cardsPerPage);
       if (startIndex > maxIndex) {
         setStartIndex(maxIndex);
       }
@@ -66,9 +66,9 @@ export const NewItems: React.FC<NewItemsProps> = ({
 
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
-  }, [startIndex, cardsPerPage, iphone.length]);
+  }, [startIndex, cardsPerPage, product.length]);
 
-  const maxIndex = Math.max(0, iphone.length - cardsPerPage);
+  const maxIndex = Math.max(0, product.length - cardsPerPage);
   const canPrev = startIndex > 0;
   const canNext = startIndex < maxIndex;
 
@@ -125,9 +125,9 @@ export const NewItems: React.FC<NewItemsProps> = ({
               transition: 'transform 0.5s ease-in-out',
             }}
           >
-            {iphone.map((phone) => (
-              <div key={phone.id} className="cartItem__card">
-                <Cart phone={phone} showDiscount={showDiscount} />
+            {product.map((item) => (
+              <div key={item.id} className="cartItem__card">
+                <Cart product={item} showDiscount={showDiscount} />
               </div>
             ))}
           </div>

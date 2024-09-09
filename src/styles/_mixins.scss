@@ -46,8 +46,11 @@
     margin-top: 50px;
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
+    justify-content:center;
     flex-wrap: wrap;
-    gap: 20px;
+    gap: 37px;
+    @include on-tablet {
+      justify-content:start;
+    }
   }
 }

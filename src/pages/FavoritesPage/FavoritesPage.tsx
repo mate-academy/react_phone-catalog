@@ -12,10 +12,11 @@ export const FavoritesPage: React.FC = () => {
     <div className="favorites container">
       <BackButton title="Favorites" />
       <h2 className="favorites__title">Favorites</h2>
+      <p className="favorites__length">{favorites.length} items</p>
       <div className="favorites__wrapper">
         {favorites.length > 0 ? (
-          favorites.map((phone) => (
-            <Cart key={phone.id} phone={phone} showDiscount={true} />
+          favorites.map((product) => (
+            <Cart key={product.id} product={product} showDiscount={true} />
           ))
         ) : (
           <EmptyPage />
