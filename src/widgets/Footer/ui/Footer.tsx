@@ -34,7 +34,10 @@ export const Footer = memo(() => {
             </nav>
           </div>
 
-          <a href="#top" className={cls['footer__back-btn']}>
+          <button
+            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+            className={cls['footer__back-btn']}
+          >
             <span className={cls['footer__back-text']}>Back to top</span>
             <Button
               theme={ButtonTheme.SQUARE}
@@ -43,7 +46,7 @@ export const Footer = memo(() => {
                 icons['_icon-arrow'],
               )}
             />
-          </a>
+          </button>
         </div>
       </Container>
     </footer>

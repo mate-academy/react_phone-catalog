@@ -15,9 +15,7 @@ export const fetchProductsPage = async (
   itemId: string,
 ): Promise<ProductDetails | null> => {
   try {
-    const response = await fetch(
-      `https://oleksii-bidiak.github.io/react_phone-catalog/api/${categoty}.json`,
-    )
+    const response = await fetch(`api/products.jsonapi/${categoty}.json`)
       .then(res => res.json())
       .then((products: ProductDetailsFromServer[]) =>
         products.find(product => product.id === itemId),
