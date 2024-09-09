@@ -78,11 +78,14 @@
   width: 90%;
   align-self: center;
   padding: 0 15px;
+  @extend %h2-mobile;
 
-  @include h2-tablet;
+
+
 
   @include on-tablet {
     padding: 0;
+    @include h2-tablet;
   }
 
   @include on-desktop {
