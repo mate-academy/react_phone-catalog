@@ -24,7 +24,8 @@
 
 
 .label {
-  display: flex;
+  grid: 1 / -1;
+  grid-column: span 4;
   text-align: center;
   padding-top: 3px;
   height: 15px;
