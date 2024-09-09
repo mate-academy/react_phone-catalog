@@ -19,6 +19,14 @@ export const Header: React.FC = () => {
   const { theme, productsInCartCount, favoriteProducts, isMobMenuOpen, setIsMobMenuOpen } = useAppContext();
   const [cartCount, setCartCount] = useState<number>(0)
 
+  useEffect (() => {
+    if (isMobMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'auto';
+    }
+  }, [isMobMenuOpen])
+
   const handleMenu = () => {
     setIsMobMenuOpen(!isMobMenuOpen);
   }
