@@ -4,6 +4,10 @@
   display: flex;
   justify-content: center;
   padding: 50px 0 15px;
+
+  @include on-mobile {
+    display: none;
+  }
 }
 
 .arrowButton {
@@ -95,6 +99,10 @@
   gap: 15px;
   background-color: var(--color-surface);
   cursor: pointer;
+
+  @include on-mobile {
+    display: none;
+  }
 }
 
 .markerDisplayed {
@@ -102,4 +110,8 @@
   width: 15px;
   gap: 15px;
   background-color: var(--color-button-hover);
+
+  @include on-mobile {
+    display: none;
+  }
 }
