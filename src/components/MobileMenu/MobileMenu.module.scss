@@ -140,8 +140,8 @@
   border-radius: 50%;
   border: 1px solid var(--color-background);
   background-color: var(--color-red);
-  top: 17px;
-  left: 82px;
+  top: -7px;
+  left: 7px;
 }
 
 .countText {
@@ -156,4 +156,9 @@
 
 .hidden {
   display: none !important;
+}
+
+.iconWrapper {
+  display: inline-block;
+  position: relative;
 }

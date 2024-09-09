@@ -75,16 +75,19 @@ export const MobileMenu: React.FC = () => {
             activeClassName={styles.isActive}
           >
             <div className={styles.actionIcon}>
-              <img
-                src={`${theme === 'dark' ? favoritesIconSrcDT : favoritesIconSrc}`}
-                alt="Favorites"
-              />
-            </div>
-            <div className={`${favoriteProducts.length > 0 ? styles.count : styles.hidden}`}>
-              <div className={styles.countText}>
-                {favoriteProducts.length}
+              <div className={styles.iconWrapper}>
+                <img
+                  src={`${theme === 'dark' ? favoritesIconSrcDT : favoritesIconSrc}`}
+                  alt="Favorites"
+                />
+                <div className={`${favoriteProducts.length > 0 ? styles.count : styles.hidden}`}>
+                  <div className={styles.countText}>
+                    {favoriteProducts.length}
+                  </div>
+                </div>
               </div>
             </div>
+
           </NavLink>
           <NavLink
             to="/cart"
@@ -93,15 +96,17 @@ export const MobileMenu: React.FC = () => {
             activeClassName={styles.isActive}
           >
             <div className={styles.actionIcon}>
-              <img
-                src={`${theme === 'dark' ? cartIconSrcDT : cartIconSrc}`}
-                alt="Cart"
-                className={styles.icon}
-              />
-            </div>
-            <div className={`${cartCount > 0 ? styles.count : styles.hidden}`}>
-              <div className={styles.countText}>
-                {cartCount}
+              <div className={styles.iconWrapper}>
+                <img
+                  src={`${theme === 'dark' ? cartIconSrcDT : cartIconSrc}`}
+                  alt="Cart"
+                  className={styles.icon}
+                />
+                <div className={`${cartCount > 0 ? styles.count : styles.hidden}`}>
+                  <div className={styles.countText}>
+                    {cartCount}
+                  </div>
+                </div>
               </div>
             </div>
           </NavLink>
