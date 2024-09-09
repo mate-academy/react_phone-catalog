@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Icon } from '../Icon';
 import { Logo } from '../Logo';
-import classNames from 'classnames';
 
 export const Footer = () => {
   const [isScrollable, setIsScrollable] = useState(true);
@@ -69,21 +68,19 @@ export const Footer = () => {
             </a>
           </li>
         </ul>
-
-        <button
-          className={classNames('footer__top-btn', {
-            'footer__top-btn--disabled': !isScrollable,
-          })}
-          onClick={() => {
-            window.scrollTo({
-              top: 0,
-              behavior: 'smooth',
-            });
-          }}
-          disabled={!isScrollable}
-        >
-          <Icon iconName="icon-arrow-up" />
-        </button>
+        {isScrollable && (
+          <button
+            className="footer__top-btn"
+            onClick={() => {
+              window.scrollTo({
+                top: 0,
+                behavior: 'smooth',
+              });
+            }}
+          >
+            <Icon iconName="icon-arrow-up" />
+          </button>
+        )}
       </div>
     </footer>
   );
