@@ -16,7 +16,7 @@ import { MobileMenu } from '../MobileMenu';
 import { useAppContext } from '../../context/AppContext';
 
 export const Header: React.FC = () => {
-  const { theme, productsInCartCount, favoriteProducts, isMobMenuOpen, setIsMobMenuOpen, sortMethod } = useAppContext();
+  const { theme, productsInCartCount, favoriteProducts, isMobMenuOpen, setIsMobMenuOpen, sortMethod, numberOfProductsPerPage } = useAppContext();
   const [cartCount, setCartCount] = useState<number>(0)
 
   useEffect (() => {
@@ -58,15 +58,15 @@ export const Header: React.FC = () => {
             Home
           </NavLink>
 
-          <NavLink to={{pathname: "/phones", search: `?sort=${sortMethod}`}} className={styles.navItem} activeClassName={styles.isActive}>
+          <NavLink to={{pathname: "/phones", search: `?sort=${sortMethod}&perPage=${numberOfProductsPerPage}`}} className={styles.navItem} activeClassName={styles.isActive}>
             Phones
           </NavLink>
 
-          <NavLink to={{pathname: "/tablets", search: `?sort=${sortMethod}`}} className={styles.navItem} activeClassName={styles.isActive}>
+          <NavLink to={{pathname: "/tablets", search: `?sort=${sortMethod}&perPage=${numberOfProductsPerPage}`}} className={styles.navItem} activeClassName={styles.isActive}>
             Tablets
           </NavLink>
 
-          <NavLink to={{pathname: "/accessories", search: `?sort=${sortMethod}`}} className={styles.navItem} activeClassName={styles.isActive}>
+          <NavLink to={{pathname: "/accessories", search: `?sort=${sortMethod}&perPage=${numberOfProductsPerPage}`}} className={styles.navItem} activeClassName={styles.isActive}>
             Accessories
           </NavLink>
         </nav>
