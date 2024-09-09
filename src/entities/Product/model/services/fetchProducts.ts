@@ -6,7 +6,7 @@ export const fetchProducts = async () // productsInfo: ProductInfo[],
 : Promise<Product[] | string> => {
   try {
     const response: ProductFromServer[] = await fetch(
-      'http://localhost:3000/api/products.json',
+      'https://oleksii-bidiak.github.io/react_phone-catalog/api/products.json',
     ).then(res => res.json());
 
     if (!Array.isArray(response)) {
