@@ -4,17 +4,21 @@
   display: flex;
   flex-direction: column;
   gap: 80px;
+  justify-content: center;
 }
 
-.visuallyHidden{
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  margin: -1px;
-  border: 0;
-  padding: 0;
-  white-space: nowrap;
-  clip-path: inset(100%);
-  clip: rect(0 0 0 0);
-  overflow: hidden;
+.title {
+  @include on-mobile {
+    @include h1-mobile;
+    padding: 20px;
+  }
+
+  @include on-tablet {
+    @include h1-tablet;
+    padding: 30px 20px 0 20px;
+  }
+
+  @include on-desktop {
+    padding: 30px 25px 0 25px;
+  }
 }

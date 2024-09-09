@@ -7,6 +7,7 @@ import { MobileSwiper } from '../../components/Swiper';
 import { Thumbnails } from '../../components/Thumbnails';
 import { PreviousPage } from '../../components/PreviousPage';
 import { useLocation } from 'react-router-dom';
+import styles from './HomePage.module.scss'
 
 export const HomePage: React.FC = () => {
   const category = useLocation().pathname.slice(1)
@@ -14,6 +15,9 @@ export const HomePage: React.FC = () => {
       <div>
         <PreviousPage category= {category}/>
         <Header />
+        <h1 className={styles.title}>
+          Welcome to Nice Gadgets store!
+        </h1>
         <BannerSlider />
         <MobileSwiper />
         <ProductSlider title="Brand new models" sortMethod={'newest'} category={'phones'}/>
