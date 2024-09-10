@@ -25,6 +25,9 @@ export const ProductList: React.FC<ProductListProps> = ({ category, title }) => 
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'auto' });
+    if (displayedPage > numberOfPages) {
+      setDisplayedPage(1)
+    }
   }, [displayedPage]);
 
   useEffect(() => {
