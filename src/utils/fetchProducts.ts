@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import { LimitedProduct } from '../types/Product';
 
-export const fetchProducts = async (category: string, sortMethod: string): Promise<LimitedProduct[]> => {
+export const fetchProducts = async (category: string, sortMethod: string, count: number): Promise<LimitedProduct[]> => {
 
   const getSuggestedProducts = (filteredData: LimitedProduct[], count: number) => {
     let randomIndex: number = 0;
@@ -37,7 +37,7 @@ export const fetchProducts = async (category: string, sortMethod: string): Promi
         break;
       case 'random':
         filteredData = data;
-        filteredData = getSuggestedProducts(filteredData, 5);
+        filteredData = getSuggestedProducts(filteredData, count);
         break;
       default: break;
     }

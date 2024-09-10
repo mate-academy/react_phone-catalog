@@ -17,9 +17,9 @@ export const HomePage: React.FC = () => {
         </h1>
         <BannerSlider />
         <MobileSwiper />
-        <ProductSlider title="Brand new models" sortMethod={'newest'} category={'phones'}/>
+        <ProductSlider title="Brand new models" sortMethod={'newest'} category={'phones'} count={22}/>
         <Thumbnails />
-        <ProductSlider title="Hot prices" sortMethod={'hot'} category={'phones'}/>
+        <ProductSlider title="Hot prices" sortMethod={'hot'} category={'phones'} count={22}/>
       </div>
     );
 };

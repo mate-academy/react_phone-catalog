@@ -30,7 +30,8 @@ export const ProductList: React.FC<ProductListProps> = ({ category, title }) => 
   useEffect(() => {
     const fetchProductData = async () => {
       setIsLoading(true);
-      const filteredData = await fetchProducts(category, sortMethod);
+      const count = products.length
+      const filteredData = await fetchProducts(category, sortMethod, count);
       setProducts(filteredData);
       setDisplayedPage(1);
       setIsLoading(false);

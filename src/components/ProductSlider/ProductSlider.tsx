@@ -11,9 +11,10 @@ type ProductSliderProps = {
   title: string;
   sortMethod: 'alpha' | 'price' | 'newest' | 'hot' | 'random';
   category: string;
+  count: number;
 };
 
-export const ProductSlider: React.FC<ProductSliderProps> = ({ title, category, sortMethod }) => {
+export const ProductSlider: React.FC<ProductSliderProps> = ({ title, category, sortMethod, count }) => {
   const [products, setProducts] = useState<LimitedProduct[]>([]);
   const { theme } = useAppContext();
   const sliderRef = useRef<HTMLUListElement>(null);
@@ -23,7 +24,8 @@ export const ProductSlider: React.FC<ProductSliderProps> = ({ title, category, s
 
   useEffect(() => {
     const fetchProductData = async () => {
-      const filteredData = await fetchProducts(category, sortMethod);
+      const filteredData = await fetchProducts(category, sortMethod, count);
+      filteredData.length = count;
       setProducts(filteredData);
     };
 
@@ -37,6 +39,7 @@ useEffect(() => {
 
   const getScrollStep = () => {
     if (sliderRef.current) {
+    console.log(sliderRef.current)
       return sliderRef.current.clientWidth * (1 / products.length);
     }
     return 0;
@@ -62,6 +65,9 @@ useEffect(() => {
     }
   };
 
+  useEffect(() => {
+    console.log(positionCount)
+  }, [positionCount])
   return (
     <div className={styles.productSlider}>
       <div className={styles.titleContainer}>
@@ -79,9 +85,9 @@ useEffect(() => {
           </button>
 
           <button
-            className={styles.arrowButton}
+            className={`${styles.arrowButton} ${positionCount === displayedItems.length - 4 ? styles.disabled : ""}`}
             onClick={() => {
-              if (positionCount !== products.length - 4) {
+              if (positionCount !== displayedItems.length - 4) {
                 handleNextSlide();
               }
             }}

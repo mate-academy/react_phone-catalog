@@ -102,7 +102,7 @@ export const ProductDetailsPage: React.FC = () => {
           </div>
         )}
 
-        {clickedProduct && <ProductSlider title="You may also like" category={clickedProduct.category} sortMethod={'random'}/>}
+        {clickedProduct && <ProductSlider title="You may also like" category={clickedProduct.category} sortMethod={'random'} count={5}/>}
       </main>
     </div>
   );
