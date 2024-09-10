@@ -3,7 +3,6 @@ import { Breadcrumbs } from '../../components/Breadcrumbs';
 import { useLocation } from 'react-router-dom';
 import { PreviousPage } from '../../components/PreviousPage';
 import styles from './CartPage.module.scss';
-import chevronIcon from '../../img/icons/ChevronIcon.svg';
 import { useAppContext } from '../../context/AppContext';
 import { CartItem } from './CartItem/CartItem';
 import { GoBack } from '../../components/GoBack';
@@ -53,16 +52,7 @@ export const CartPage: React.FC = () => {
 
         <div className={styles.topContainer}>
           <div className={styles.topLeft}>
-            <button className={styles.goBackButton}>
-              <img
-                src={chevronIcon}
-                alt="home"
-                className={styles.chevronIcon}
-              />
-              <div className={styles.goBackText}>
-                <GoBack />
-              </div>
-            </button>
+              <GoBack />
           </div>
 
           <h1 className={styles.title}>Cart</h1>

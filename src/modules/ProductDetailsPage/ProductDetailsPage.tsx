@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import styles from './ProductDetailsPage.module.scss';
-import chevronIcon from '../../img/icons/ChevronIcon.svg';
-import chevronIconDT from '../../img/icons/ChevronIcon--DarkTheme.svg';
 import { useAppContext } from '../../context/AppContext';
 import { useLocation } from 'react-router-dom';
 import { PreviousPage } from '../../components/PreviousPage';
@@ -28,8 +26,7 @@ export const ProductDetailsPage: React.FC = () => {
     fetchedCategory,
     setFetchedCategory,
     products,
-    setProducts,
-    theme
+    setProducts
   } = useAppContext();
 
   const [isLoading, setIsLoading] = useState<boolean>(true);
@@ -91,10 +88,7 @@ export const ProductDetailsPage: React.FC = () => {
           <div className={styles.container}>
             {productDetails && <Breadcrumbs category={productDetails.category} />}
             <PreviousPage category={category} />
-            <button className={styles.goBackButton}>
-              <img src={`${theme === 'dark' ? chevronIconDT : chevronIcon}`} alt="home" className={styles.chevronIcon} />
-              <GoBack />
-            </button>
+            <GoBack />
             <h2 className={styles.title}>{clickedProduct.name}</h2>
             <ImageGallery />
             <MainControls

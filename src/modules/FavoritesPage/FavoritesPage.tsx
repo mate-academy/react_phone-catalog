@@ -3,7 +3,6 @@ import { Breadcrumbs } from '../../components/Breadcrumbs';
 import { useLocation } from 'react-router-dom';
 import { PreviousPage } from '../../components/PreviousPage';
 import styles from './FavoritesPage.module.scss';
-import chevronIcon from '../../img/icons/ChevronIcon.svg';
 import { useAppContext } from '../../context/AppContext';
 import { ProductCard } from '../../components/ProductCard';
 import { GoBack } from '../../components/GoBack';
@@ -31,16 +30,7 @@ export const FavoritesPage: React.FC = () => {
 
         <div className={styles.topContainer}>
           <div className={styles.topLeft}>
-            <button className={styles.goBackButton}>
-              <img
-                src={chevronIcon}
-                alt="home"
-                className={styles.chevronIcon}
-              />
-              <div className={styles.goBackText}>
-                <GoBack />
-              </div>
-            </button>
+            <GoBack />
           </div>
           <h1 className={styles.title}>Favorites</h1>
           <p className={styles.count}>

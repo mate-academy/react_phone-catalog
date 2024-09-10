@@ -26,27 +26,6 @@
   justify-content: center;
 }
 
-.goBackButton {
-  display: flex;
-  align-items: center;
-  overflow: hidden;
-  gap: 8px;
-  height: 16px;
-  width: 66px;
-  border: 0;
-  cursor: pointer;
-  background-color: transparent;
-}
-
-.goBackText {
-  display: block;
-  padding-top: 2px;
-
-  @extend %small-text;
-
-  color: var(--color-secondary);
-}
-
 .title {
   margin-top: 40px;
 
