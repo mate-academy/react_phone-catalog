@@ -8,7 +8,6 @@ import {
 
 export const modernizationProducts = (
   products: ProductFromServer[],
-  // productsInfo: ProductInfo[],
 ): Product[] => {
   try {
     const favoritesLocalStorage = localStorage.getItem(LOCAL_STORAGE_FAVORITES);

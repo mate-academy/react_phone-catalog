@@ -1,6 +1,6 @@
 /* eslint-disable react/state-in-constructor */
 /* eslint-disable @typescript-eslint/indent */
-import React, { ReactNode } from 'react';
+import React, { ErrorInfo, ReactNode } from 'react';
 import { PageError } from '../../../../widgets/PageError';
 
 interface ErrorBoundaryProps {
@@ -9,6 +9,12 @@ interface ErrorBoundaryProps {
 
 interface ErrorBoundaryState {
   hasError: boolean;
+  error?:
+    | {
+        error: Error;
+        errorInfo: ErrorInfo;
+      }
+    | undefined;
 }
 
 export class ErrorBoundary extends React.Component<
@@ -17,23 +23,30 @@ export class ErrorBoundary extends React.Component<
 > {
   constructor(props: ErrorBoundaryProps) {
     super(props);
-    this.state = { hasError: false };
+    this.state = { hasError: false, error: undefined };
   }
 
   static getDerivedStateFromError() {
     return { hasError: true };
   }
 
-  // componentDidCatch(error: Error, errorInfo: ErrorInfo) {
-  //   console.log(error, errorInfo);
-  // }
+  componentDidCatch(error: Error, errorInfo: ErrorInfo) {
+    // console.log(error, errorInfo);
+    this.setState({
+      hasError: true,
+      error: {
+        error,
+        errorInfo,
+      },
+    });
+  }
 
   render() {
-    const { hasError } = this.state;
+    const { hasError, error } = this.state;
     const { children } = this.props;
 
     if (hasError) {
-      return <PageError />;
+      return <PageError error={error} />;
     }
 
     return children;

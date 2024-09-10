@@ -2,8 +2,7 @@
 import { modernizationProducts } from './modernizationProduct';
 import { Product, ProductFromServer } from '../types/product';
 
-export const fetchProducts = async () // productsInfo: ProductInfo[],
-: Promise<Product[] | string> => {
+export const fetchProducts = async (): Promise<Product[] | string> => {
   try {
     const response: ProductFromServer[] = await fetch('api/products.json').then(
       res => res.json(),
