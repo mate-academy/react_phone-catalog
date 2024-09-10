@@ -25,32 +25,6 @@ export const ProductList: React.FC<ProductListProps> = ({ category, title }) => 
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'auto' });
-    setDisplayedPage(1)
-  }, []);
-
-  useEffect(() => {
-    const element = document.getElementById('list_top');
-
-    if (element && displayedPage !== 1) {
-      let offset = 0;
-      const width = window.innerWidth;
-
-      if (width <= 639) {
-        offset = 55;
-      } else if (width >= 640 && width <= 1199) {
-        offset = 60;
-      } else if (width >= 1200) {
-        offset = 70;
-      }
-
-      const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
-      const offsetPosition = elementPosition - offset;
-
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth'
-      });
-    }
   }, [displayedPage]);
 
   useEffect(() => {
