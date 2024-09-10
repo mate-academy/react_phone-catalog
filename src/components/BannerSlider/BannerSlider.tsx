@@ -30,7 +30,7 @@ export const BannerSlider: React.FC = () => {
   useEffect(() => {
     const intervalId = setInterval(incrementDisplayedImageIndex, 5000);
     return () => clearInterval(intervalId);
-  }, []);
+  }, [displayedImageIndex]);
 
   return (
     <div>
@@ -38,7 +38,7 @@ export const BannerSlider: React.FC = () => {
         <div className={styles.topWrapper}>
           <div className={styles.buttons}>
             <button
-              className={`${styles.arrowButton} ${displayedImageIndex === 0 ? styles.buttonDisabled : ""}`}
+              className={styles.arrowButton}
               onClick={decrementDisplayedImageIndex}
             >
               <img
@@ -65,7 +65,7 @@ export const BannerSlider: React.FC = () => {
             </div>
 
             <button
-              className={`${styles.arrowButton} ${displayedImageIndex === sliderImages.length - 1 ? styles.buttonDisabled : ""}`}
+              className={styles.arrowButton}
               onClick={incrementDisplayedImageIndex}
             >
               <img
