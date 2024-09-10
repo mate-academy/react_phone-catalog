@@ -36,7 +36,8 @@ export const fetchProducts = async (category: string, sortMethod: string): Promi
         filteredData.sort((a, b) => (b.fullPrice - b.price) - (a.fullPrice - a.price));
         break;
       case 'random':
-        filteredData = getSuggestedProducts(filteredData, 20);
+        filteredData = data;
+        filteredData = getSuggestedProducts(filteredData, 5);
         break;
       default: break;
     }
