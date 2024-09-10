@@ -11,9 +11,8 @@ export const CartPage: React.FC = () => {
   const category = useLocation().pathname.slice(1);
 
   useEffect(() => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({ top: 0, behavior: 'auto' });
   }, []);
-
 
   const { handleNotReady, productsInCart, setProductsInCart, productsInCartCount, setProductsInCartCount } = useAppContext();
 

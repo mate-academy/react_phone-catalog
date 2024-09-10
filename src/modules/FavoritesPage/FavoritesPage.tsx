@@ -12,7 +12,7 @@ export const FavoritesPage: React.FC = () => {
   const { favoriteProducts, setFavoriteProducts } = useAppContext();
 
   useEffect(() => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({ top: 0, behavior: 'auto' });
   }, []);
 
   useEffect(() => {

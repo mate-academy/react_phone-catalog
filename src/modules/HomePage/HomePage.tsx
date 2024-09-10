@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { BannerSlider } from '../../components/BannerSlider';
 import { ProductSlider } from '../../components/ProductSlider';
 import { MobileSwiper } from '../../components/Swiper';
@@ -9,6 +9,11 @@ import styles from './HomePage.module.scss'
 
 export const HomePage: React.FC = () => {
   const category = useLocation().pathname.slice(1)
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'auto' });
+  }, []);
+
     return (
       <div>
         <PreviousPage category= {category}/>
