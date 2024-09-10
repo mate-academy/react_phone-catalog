@@ -58,10 +58,10 @@ export const CartItem: React.FC<CartItemProps> = ({ product }) => {
           <img
             src={image}
             alt={name}
-            className={styles.image}
+            className={`${styles.image} ${productsInCartCount[foundIndex] === 0 ? styles.lowerOpacity  : ""}`}
           />
         </Link>
-        <h4 className={styles.label}>{name}</h4>
+        <h4 className={`${styles.label} ${productsInCartCount[foundIndex] === 0 ? styles.lowerOpacity  : ""}`}>{name}</h4>
       </div>
       <div className={styles.quantityControl}>
         <div className={styles.quantity}>
