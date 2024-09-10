@@ -70,10 +70,6 @@ export const ProductDetailsPage: React.FC = () => {
   const [dynamicColor, setDynamicColor] = useState<string>('');
   const [dynamicCapacity, setDynamicCapacity] = useState<string>('');
 
-  useEffect(() => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  }, [clickedProduct]);
-
   return (
     <div className={styles.productDetailsPage}>
       <main className={styles.mainContent}>
