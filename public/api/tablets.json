@@ -470,7 +470,7 @@
     "cell": ["Not applicable"]
   },
   {
-    "id": "apple-ipad-air-4th-gen-256gb-rose-gold",
+    "id": "apple-ipad-air-4th-gen-256gb-rosegold",
     "category": "tablets",
     "namespaceId": "apple-ipad-air-4th-gen",
     "name": "Apple iPad Air (4th Gen) 256GB Rose Gold",
@@ -481,10 +481,10 @@
     "colorsAvailable": ["rose gold", "silver", "green", "sky blue"],
     "color": "rose gold",
     "images": [
-      "img/tablets/apple-ipad-air-4th-gen/rose-gold/00.webp",
-      "img/tablets/apple-ipad-air-4th-gen/rose-gold/01.webp",
-      "img/tablets/apple-ipad-air-4th-gen/rose-gold/02.webp",
-      "img/tablets/apple-ipad-air-4th-gen/rose-gold/03.webp"
+      "img/tablets/apple-ipad-air-4th-gen/rosegold/00.webp",
+      "img/tablets/apple-ipad-air-4th-gen/rosegold/01.webp",
+      "img/tablets/apple-ipad-air-4th-gen/rosegold/02.webp",
+      "img/tablets/apple-ipad-air-4th-gen/rosegold/03.webp"
     ],
     "description": [
       {
@@ -518,7 +518,7 @@
     "cell": ["Not applicable"]
   },
   {
-    "id": "apple-ipad-air-4th-gen-64gb-rose-gold",
+    "id": "apple-ipad-air-4th-gen-64gb-rosegold",
     "category": "tablets",
     "namespaceId": "apple-ipad-air-4th-gen",
     "name": "Apple iPad Air (4th Gen) 64GB Rose Gold",
@@ -529,10 +529,10 @@
     "colorsAvailable": ["rose gold", "silver", "green", "sky blue"],
     "color": "rose gold",
     "images": [
-      "img/tablets/apple-ipad-air-4th-gen/rose-gold/00.webp",
-      "img/tablets/apple-ipad-air-4th-gen/rose-gold/01.webp",
-      "img/tablets/apple-ipad-air-4th-gen/rose-gold/02.webp",
-      "img/tablets/apple-ipad-air-4th-gen/rose-gold/03.webp"
+      "img/tablets/apple-ipad-air-4th-gen/rosegold/00.webp",
+      "img/tablets/apple-ipad-air-4th-gen/rosegold/01.webp",
+      "img/tablets/apple-ipad-air-4th-gen/rosegold/02.webp",
+      "img/tablets/apple-ipad-air-4th-gen/rosegold/03.webp"
     ],
     "description": [
       {
@@ -758,7 +758,7 @@
     "cell": ["Not applicable"]
   },
   {
-    "id": "apple-ipad-air-4th-gen-64gb-sky-blue",
+    "id": "apple-ipad-air-4th-gen-64gb-skyblue",
     "category": "tablets",
     "namespaceId": "apple-ipad-air-4th-gen",
     "name": "Apple iPad Air (4th Gen) 64GB Sky Blue",
@@ -769,10 +769,10 @@
     "colorsAvailable": ["rose gold", "silver", "green", "sky blue"],
     "color": "sky blue",
     "images": [
-      "img/tablets/apple-ipad-air-4th-gen/sky-blue/00.webp",
-      "img/tablets/apple-ipad-air-4th-gen/sky-blue/01.webp",
-      "img/tablets/apple-ipad-air-4th-gen/sky-blue/02.webp",
-      "img/tablets/apple-ipad-air-4th-gen/sky-blue/03.webp"
+      "img/tablets/apple-ipad-air-4th-gen//00.webp",
+      "img/tablets/apple-ipad-air-4th-gen//01.webp",
+      "img/tablets/apple-ipad-air-4th-gen//02.webp",
+      "img/tablets/apple-ipad-air-4th-gen//03.webp"
     ],
     "description": [
       {
@@ -806,7 +806,7 @@
     "cell": ["Not applicable"]
   },
   {
-    "id": "apple-ipad-air-4th-gen-256gb-sky-blue",
+    "id": "apple-ipad-air-4th-gen-256gb-",
     "category": "tablets",
     "namespaceId": "apple-ipad-air-4th-gen",
     "name": "Apple iPad Air (4th Gen) 256GB Sky Blue",
@@ -817,10 +817,10 @@
     "colorsAvailable": ["rose gold", "silver", "green", "sky blue"],
     "color": "sky blue",
     "images": [
-      "img/tablets/apple-ipad-air-4th-gen/sky-blue/00.webp",
-      "img/tablets/apple-ipad-air-4th-gen/sky-blue/01.webp",
-      "img/tablets/apple-ipad-air-4th-gen/sky-blue/02.webp",
-      "img/tablets/apple-ipad-air-4th-gen/sky-blue/03.webp"
+      "img/tablets/apple-ipad-air-4th-gen//00.webp",
+      "img/tablets/apple-ipad-air-4th-gen//01.webp",
+      "img/tablets/apple-ipad-air-4th-gen//02.webp",
+      "img/tablets/apple-ipad-air-4th-gen//03.webp"
     ],
     "description": [
       {
