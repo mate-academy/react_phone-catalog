@@ -24,13 +24,14 @@ export const ProductList: React.FC<ProductListProps> = ({ category, title }) => 
   }, [products.length, numberOfProductsPerPage]);
 
   useEffect(() => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({ top: 0, behavior: 'auto' });
+    setDisplayedPage(1)
   }, []);
 
   useEffect(() => {
     const element = document.getElementById('list_top');
 
-    if (element) {
+    if (element && displayedPage !== 1) {
       let offset = 0;
       const width = window.innerWidth;
 
