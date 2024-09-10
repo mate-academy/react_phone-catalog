@@ -19,7 +19,7 @@
     cursor: pointer;
 
     &:hover {
-      box-shadow: 0px 2px 15px 0px #0000001a;
+      box-shadow: 0 2px 15px 0 #0000001a;
     }
 
     @include on-tablet {
@@ -104,7 +104,7 @@
       &::after {
         content: '';
         position: absolute;
-        background-image: url(../../../public/img/icons/favoritesHeartLikeTransparent.svg);
+        background-image: url('../../../public/img/icons/favoritesHeartLikeTransparent.svg');
         background-size: 50%;
         background-repeat: no-repeat;
         background-position: center;

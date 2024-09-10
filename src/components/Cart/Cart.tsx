@@ -55,9 +55,15 @@ export const Cart: React.FC<Props> = ({ product, showDiscount = true }) => {
     <div className="cart">
       <div className="cart__context">
         <div className="cart__wrapper">
-          <img
+          {/* <img
             className="cart__image"
             src={`${process.env.PUBLIC_URL}/${product.images[0]}`}
+            alt={product.name}
+            onClick={handleImageClick}
+          /> */}
+          <img
+            className="cart__image"
+            src={product.images[0]}
             alt={product.name}
             onClick={handleImageClick}
           />
@@ -86,3 +92,5 @@ export const Cart: React.FC<Props> = ({ product, showDiscount = true }) => {
     </div>
   );
 };
+
+

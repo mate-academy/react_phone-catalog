@@ -1,3 +1,6 @@
+// import React from 'react';
+export {};
+
 import { createRoot } from 'react-dom/client';
 import { Root } from './Root';
 import { ProductsProvider } from './context/ProductContexts';

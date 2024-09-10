@@ -20,7 +20,7 @@ export const Footer: React.FC = () => {
           />
         </Link>
         <div className="footer__info">
-          <Link to="/not-found">
+          <Link to="https://github.com/NVlasenko">
             <p className="footer__text">Github</p>
           </Link>
           <Link to="/not-found">
