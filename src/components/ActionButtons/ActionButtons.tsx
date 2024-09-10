@@ -75,11 +75,11 @@ export const ActionButtons: React.FC<ButtonProps> = ({ product }) => {
 
   return (
     <div className={styles.buttons}>
-      <button className={styles.buttonCard} onClick={handleProductsInCart}>
+      <button className={`${isProductInCart ? styles.buttonCardRemove : styles.buttonCardAdd}`} onClick={handleProductsInCart}>
         {isProductInCart ? (
-          <p className={styles.buttonText}>Remove</p>
+          <p className={styles.buttonTextRemove}>Remove</p>
         ) : (
-          <p className={styles.buttonText}>Add to cart</p>
+          <p className={styles.buttonTextAdd}>Add to cart</p>
         )}
       </button>
 

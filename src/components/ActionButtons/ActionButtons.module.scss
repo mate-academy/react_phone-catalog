@@ -11,7 +11,7 @@
   gap: 8px;
 }
 
-.buttonCard {
+.buttonCardAdd {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -26,6 +26,25 @@
     transform: scale(1.05);
     box-shadow: 0 3px 13px 0 #17203166;
     background-color: var(--color-button-hover);
+  }
+}
+
+.buttonCardRemove {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    height: 40px;
+    width: 100%;
+    border: 0;
+    background-color: transparent;
+    border: solid 1px var(--color-button);
+    transition: transform $transition-duration ease;
+
+    &:hover {
+      transform: scale(1.05);
+      box-shadow: 0 3px 13px 0 #17203166;
+      background-color: transparent;
   }
 }
 
@@ -48,11 +67,21 @@
   }
 }
 
-.buttonText {
+.buttonTextAdd {
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
   @extend %body-text;
   color: var(--color-white);
+}
+
+.buttonTextRemove {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  @extend %body-text;
+  background-color: transparent;
+  color: var(--color-button);
 }
