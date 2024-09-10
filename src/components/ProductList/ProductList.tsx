@@ -25,6 +25,31 @@ export const ProductList: React.FC<ProductListProps> = ({ category, title }) => 
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, []);
+
+  useEffect(() => {
+    const element = document.getElementById('list_top');
+
+    if (element) {
+      let offset = 0;
+      const width = window.innerWidth;
+
+      if (width <= 639) {
+        offset = 55;
+      } else if (width >= 640 && width <= 1199) {
+        offset = 60;
+      } else if (width >= 1200) {
+        offset = 70;
+      }
+
+      const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
+      const offsetPosition = elementPosition - offset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+    }
   }, [displayedPage]);
 
   useEffect(() => {
@@ -74,8 +99,7 @@ export const ProductList: React.FC<ProductListProps> = ({ category, title }) => 
           <Sort />
           <DropDown numberOfProducts={products.length} />
         </div>
-
-        <ul className={styles.container}>
+        <ul className={styles.container} id="list_top">
           {arrayOfDisplayedIndexes.map((product) => (
             <li key={product.id} className={styles.product}>
               <ProductCard product={product} />
