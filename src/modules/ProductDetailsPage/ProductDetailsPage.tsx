@@ -58,7 +58,7 @@ export const ProductDetailsPage: React.FC = () => {
     };
 
     fetchProducts();
-  }, [location.pathname, products, setProducts, setClickedProduct, setFetchedCategory]);
+  }, [location.pathname, products, setProducts, clickedProduct, setFetchedCategory]);
 
   useEffect(() => {
     if (fetchedCategory && clickedProduct) {
