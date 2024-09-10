@@ -14,7 +14,7 @@ type MainControlsProps = {
 };
 
 export const MainControls: React.FC<MainControlsProps> = () => {
-  const { clickedProduct, setClickedProduct, productDetails, products, previousCurrentPage } = useAppContext();
+  const { clickedProduct, setClickedProduct, productDetails, products, previousCurrentPage, colors } = useAppContext();
 
   useEffect(() => {
     if (clickedProduct) {
@@ -80,7 +80,7 @@ export const MainControls: React.FC<MainControlsProps> = () => {
               <div className={styles.colorButtonContainer} key={color}>
                 <button
                   className={`${styles.colorButton} ${color === clickedProduct?.color ? styles.activeColorsAvailable : ""}`}
-                  style={{ backgroundColor: color }}
+                  style={{ backgroundColor: colors[color] }}
                   onClick={() => handleColor(color)}
                 />
               </div>

@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
-import { LimitedProduct, Product } from '../types/Product';
+import { LimitedProduct, Product, Colors } from '../types/Product';
 
 type SortMethodTypes = "newest" | "alpha" | "price";
 type AppContextType = {
@@ -32,7 +32,9 @@ type AppContextType = {
   setIsClickedProdyctInCart: (status: boolean) => void;
   isMobMenuOpen: boolean;
   setIsMobMenuOpen: (status: boolean) => void;
+  colors: Colors;
 };
+
 
 export const AppContext = createContext<AppContextType | undefined>(undefined);
 
@@ -67,6 +69,28 @@ export const AppProvider: React.FC<{ children: React.ReactElement }> = ({ childr
   const [isClickedProdyctInFavs, setIsClickedProdyctInFavs] = useState<boolean>(false);
   const [isClickedProdyctInCart, setIsClickedProdyctInCart] = useState<boolean>(false);
   const [isMobMenuOpen, setIsMobMenuOpen] = useState<boolean>(false);
+  const colors = {
+    black: 'black',
+    gold: 'goldenrod',
+    yellow: '#e7dea8',
+    green: '#92dbcf',
+    midnightgreen: '#314b47',
+    silver: 'silver',
+    spacegray: '#383030',
+    red: '#a73a52',
+    white: 'white',
+    purple: '#d6dbf1',
+    coral: '#ffa0a0',
+    rosegold: '#e0c5db',
+    midnight: '#2a303b',
+    spaceblack: '#3d3d3d',
+    blue: '#184766',
+    pink: 'pink',
+    sierrablue: '#5fbbf0',
+    graphite: '#332929',
+    skyblue: '#3de1ec',
+    starlight: 'whitesmoke'
+  };
 
   useEffect(() => {
     localStorage.setItem('favoriteProducts', JSON.stringify(favoriteProducts));
@@ -111,7 +135,8 @@ export const AppProvider: React.FC<{ children: React.ReactElement }> = ({ childr
       isClickedProdyctInCart,
       setIsClickedProdyctInCart,
       isMobMenuOpen,
-      setIsMobMenuOpen
+      setIsMobMenuOpen,
+      colors
     }}>
       {children}
     </AppContext.Provider>

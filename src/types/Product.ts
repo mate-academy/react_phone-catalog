@@ -85,3 +85,28 @@ export interface LimitedProduct {
   year: number,
   image: string
 }
+
+
+export interface Colors {
+  [key: string]: string;
+  black: string;
+  gold: string;
+  yellow: string;
+  green: string;
+  midnightgreen: string;
+  silver: string;
+  spacegray: string;
+  red: string;
+  white: string;
+  purple: string;
+  coral: string;
+  rosegold: string;
+  midnight: string;
+  spaceblack: string;
+  blue: string;
+  pink: string;
+  sierrablue: string;
+  graphite: string;
+  skyblue: string;
+  starlight: string;
+}
