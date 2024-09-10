@@ -1,0 +1,32 @@
+.sortOptions {
+  grid-column: 1/-1;
+  padding-bottom: 16px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 16px;
+
+  span {
+    color: $c-secondary;
+  }
+  select {
+    height: 40px;
+    padding-inline: 12px;
+    border: 1px solid $c-elements;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+    background: url('../../../public/img/icons/chevron-down-disabled.svg') no-repeat right;
+  }
+
+  &-sort {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  &-perPage {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+}

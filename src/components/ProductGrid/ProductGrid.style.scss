@@ -12,22 +12,7 @@
     }
   }
 
-  &__options {
-    grid-column: 1/-1;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 16px;
 
-    &-sort {
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-    }
-    &-perPage {
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-    }
-  }
 }
+
+

@@ -1,8 +1,10 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Category } from '../../types/Category';
 import { ProductCard } from '../base/ProductCard/ProductCard.component';
 import { ProductSummary } from '../../types/ProductSummary';
 import { getPageNumbers } from '../../utils/getPageNumbers';
+import { Pagination } from '../Pagination/Pagination.component';
+import { SortOptions } from '../SortOptions/SortOptions.component';
 
 type Props = {
   category: Category;
@@ -10,84 +12,90 @@ type Props = {
 };
 
 export const ProductGrid: React.FC<Props> = ({ category, pagination }) => {
-  const [currentPage, setCurrentPage] = useState(1);
   const [productsSortedBy, setProductsSortedBy] = useState<ProductSummary[]>(
     [],
   );
-  const [perPage, setPerPage] = useState<string>('all');
-  const perPageSelect = perPage !== 'all' ? +perPage : productsSortedBy.length;
-  const numberPages: number[] = getPageNumbers(
-    productsSortedBy.length,
-    perPageSelect,
-  );
-  const currentIndex = numberPages.indexOf(currentPage);
-  const fromIndex = currentIndex * perPageSelect;
+  let sortedProducts = [...category.products];
+  const [perPage, setPerPage] = useState<number>(sortedProducts.length);
+  const [currentPage, setCurrentPage] = useState<number>(1);
+  const pageNumbers: number[] = getPageNumbers(sortedProducts.length, perPage);
+  const currentIndex = pageNumbers.indexOf(currentPage);
+  const fromIndex = currentIndex * perPage;
   const toIndex =
-    fromIndex + perPageSelect <= productsSortedBy.length
-      ? fromIndex + perPageSelect
-      : productsSortedBy.length;
-
-  const handlePerPage = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setPerPage(e.target.value);
-  };
+    fromIndex + perPage <= sortedProducts.length
+      ? fromIndex + perPage
+      : sortedProducts.length;
 
   const handleSortBy = (e: React.ChangeEvent<HTMLSelectElement>) => {
     switch (e.target.value) {
       case 'newest':
-        setProductsSortedBy(
-          category.products.toSorted((a, b) => b.year - a.year),
-        );
+        sortedProducts = sortedProducts.sort((a, b) => b.year - a.year);
+        setProductsSortedBy(sortedProducts);
         break;
       case 'alphabetically':
-        setProductsSortedBy(
-          category.products.toSorted((a, b) => b.name.localeCompare(a.name)),
+        sortedProducts = sortedProducts.sort((a, b) =>
+          b.name.localeCompare(a.name),
         );
+        setProductsSortedBy(sortedProducts);
         break;
-      case 'chepeast':
-        setProductsSortedBy(
-          category.products.toSorted((a, b) => b.price - a.price),
-        );
+      case 'cheapest':
+        sortedProducts = sortedProducts.sort((a, b) => b.price - a.price);
+        setProductsSortedBy(sortedProducts);
+        break;
+      default:
+        sortedProducts = sortedProducts.sort((a, b) => b.year - a.year);
+        setProductsSortedBy(sortedProducts);
         break;
     }
+
+    return sortedProducts;
   };
+
+  const handlePerPage = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    switch (e.target.value) {
+      case 'all':
+        setPerPage(sortedProducts.length);
+        setCurrentPage(1);
+        break;
+      default:
+        setPerPage(+e.target.value);
+        setCurrentPage(1);
+    }
+  };
+
+  const onPageClick = (page: number) => {
+    if (page !== 0 && page !== pageNumbers.length + 1) {
+      setCurrentPage(page);
+    }
+  };
+
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  useEffect(() => setProductsSortedBy(sortedProducts), [category]);
 
   return (
     <>
       {pagination && (
-        <article className="productGrid__options">
-          <div className="productGrid__options-sort">
-            <span>Sort by:</span>
-            <select onSelect={handleSortBy} value={productsSortedBy}>
-              <option value={'newest'}>Newest</option>
-              <option value={'alphabetically'}>Alphabetically</option>
-              <option value={'cheapest'}>Cheapest</option>
-            </select>
-          </div>
-          <div className="productGrid__options-perPage">
-            <span>Items on page:</span>
-            <select onSelect={handlePerPage} value={perPage}>
-              <option value="4">4</option>
-              <option value="8">8</option>
-              <option value="16">16</option>
-              <option value="all">all</option>
-            </select>
-          </div>
-        </article>
+        <SortOptions
+          handlePerPage={handlePerPage}
+          handleSortBy={handleSortBy}
+        />
       )}
       <article className="productGrid">
-        {productsSortedBy.map(product => (
+        {productsSortedBy.slice(fromIndex, toIndex).map(product => (
           <ProductCard
             key={product.id}
             product={product}
             showDiscount={false}
           />
         ))}
+        {pagination && (
+          <Pagination
+            pageNumbers={pageNumbers}
+            currentPage={currentPage}
+            onPageClick={onPageClick}
+          />
+        )}
       </article>
-
-      <p className="lead" data-cy="info">
-        Page {currentPage} (items {fromIndex + 1} - {toIndex} of{' '}
-        {productsSortedBy.length})
-      </p>
     </>
   );
 };
