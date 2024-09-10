@@ -1,5 +1,4 @@
 import React, { useMemo, useEffect } from 'react';
-import { Header } from '../../components/Header';
 import { Breadcrumbs } from '../../components/Breadcrumbs';
 import { useLocation } from 'react-router-dom';
 import { PreviousPage } from '../../components/PreviousPage';
@@ -7,7 +6,6 @@ import styles from './CartPage.module.scss';
 import chevronIcon from '../../img/icons/ChevronIcon.svg';
 import { useAppContext } from '../../context/AppContext';
 import { CartItem } from './CartItem/CartItem';
-import { Footer } from '../../components/Footer';
 import { GoBack } from '../../components/GoBack';
 
 export const CartPage: React.FC = () => {
@@ -48,7 +46,6 @@ export const CartPage: React.FC = () => {
 
   return (
     <div>
-      <Header />
       <PreviousPage category={category} />
 
       <div className={styles.cartPage}>
@@ -108,7 +105,6 @@ export const CartPage: React.FC = () => {
           </div>
         </div>
       </div>
-      <Footer />
     </div>
   );
 };

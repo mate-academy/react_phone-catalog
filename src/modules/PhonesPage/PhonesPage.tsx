@@ -1,7 +1,5 @@
 import React from 'react';
 import { ProductList } from '../../components/ProductList';
-import { Header } from '../../components/Header';
-import { Footer } from '../../components/Footer';
 import { useLocation } from 'react-router-dom';
 import { PreviousPage } from '../../components/PreviousPage';
 
@@ -12,9 +10,7 @@ export const PhonesPage: React.FC = () => {
   return (
     <div>
       <PreviousPage category= {category}/>
-      <Header />
       <ProductList category={category} title={title} />
-      <Footer />
     </div>
   );
 };

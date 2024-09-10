@@ -2,8 +2,6 @@ import React, { useState, useEffect } from 'react';
 import styles from './ProductDetailsPage.module.scss';
 import chevronIcon from '../../img/icons/ChevronIcon.svg';
 import chevronIconDT from '../../img/icons/ChevronIcon--DarkTheme.svg';
-import { Header } from '../../components/Header';
-import { Footer } from '../../components/Footer';
 import { useAppContext } from '../../context/AppContext';
 import { useLocation } from 'react-router-dom';
 import { PreviousPage } from '../../components/PreviousPage';
@@ -81,7 +79,6 @@ export const ProductDetailsPage: React.FC = () => {
 
   return (
     <div className={styles.productDetailsPage}>
-      <Header />
       <main className={styles.mainContent}>
         {isLoading ? (
           <Loader />
@@ -113,7 +110,6 @@ export const ProductDetailsPage: React.FC = () => {
 
         {clickedProduct && <ProductSlider title="You may also like" category={clickedProduct.category} sortMethod={'random'}/>}
       </main>
-      <Footer />
     </div>
   );
 };

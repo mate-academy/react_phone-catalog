@@ -1,6 +1,4 @@
 import { ProductList } from '../../components/ProductList';
-import { Header } from '../../components/Header';
-import { Footer } from '../../components/Footer';
 import { PreviousPage } from '../../components/PreviousPage';
 import { useLocation } from 'react-router-dom';
 
@@ -11,9 +9,7 @@ export const AccessoriesPage: React.FC = () => {
   return (
     <div>
       <PreviousPage category= {category}/>
-      <Header />
       <ProductList category={category} title={title} />
-      <Footer />
     </div>
   );
 };

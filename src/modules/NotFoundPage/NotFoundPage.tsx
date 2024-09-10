@@ -1,5 +1,4 @@
 import React from 'react';
-import { Header } from '../../components/Header';
 import { useLocation } from 'react-router-dom';
 import { PreviousPage } from '../../components/PreviousPage';
 import styles from './NotFoundPage.module.scss';
@@ -13,9 +12,7 @@ export const NotFoundPage: React.FC = () => {
 
   return (
     <div>
-      <Header />
       <PreviousPage category={category} />
-
       <div className={styles.cartPage}>
         <div className={styles.topContainer}>
           <div className={styles.topLeft}>

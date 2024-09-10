@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import { Header } from '../../components/Header';
 import { Breadcrumbs } from '../../components/Breadcrumbs';
 import { useLocation } from 'react-router-dom';
 import { PreviousPage } from '../../components/PreviousPage';
@@ -7,7 +6,6 @@ import styles from './FavoritesPage.module.scss';
 import chevronIcon from '../../img/icons/ChevronIcon.svg';
 import { useAppContext } from '../../context/AppContext';
 import { ProductCard } from '../../components/ProductCard';
-import { Footer } from '../../components/Footer';
 import { GoBack } from '../../components/GoBack';
 
 export const FavoritesPage: React.FC = () => {
@@ -27,7 +25,6 @@ export const FavoritesPage: React.FC = () => {
 
   return (
     <div>
-      <Header />
       <PreviousPage category={category} />
       <div className={styles.favoritesPage}>
         <Breadcrumbs category={category} />
@@ -64,11 +61,7 @@ export const FavoritesPage: React.FC = () => {
             )}
           </div>
         </div>
-
-
-
       </div>
-      <Footer />
     </div>
   );
 };
