@@ -56,7 +56,7 @@ export const Pagination: React.FC<PaginationProps> = ({
   return (
     <ul className={styles.pagination}>
       <button
-        className={`${styles.button}`}
+        className={`${styles.button} ${displayedPage === 1 ? styles.disabled : ""}`}
         onClick={() => move(-1)}
       >
         <img
@@ -92,7 +92,7 @@ export const Pagination: React.FC<PaginationProps> = ({
       </div>
 
       <button
-        className={`${styles.button}`}
+        className={`${styles.button} ${numberOfPages === displayedPage ? styles.disabled : ""}`}
         onClick={() => move(1)}
       >
         <img
