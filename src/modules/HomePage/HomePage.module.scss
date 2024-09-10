@@ -19,6 +19,6 @@
   }
 
   @include on-desktop {
-    padding: 30px 25px 0 25px;
+    padding: 30px 25px 0 calc((100vw - 1175px) / 2);
   }
 }

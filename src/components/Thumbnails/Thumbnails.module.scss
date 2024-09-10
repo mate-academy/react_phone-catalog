@@ -34,7 +34,7 @@
 
 .title {
   justify-self: center;
-  padding: 30px 15px;
+  padding: 30px 15px 0;
   width: 100vw;
   @extend %h2-mobile;
 
@@ -49,7 +49,7 @@
 
   @include on-desktop {
     width: 1155px;
-    padding-left: 96px;
+    padding-left: calc((100vw - 1170px) / 2);
   }
 }
 
