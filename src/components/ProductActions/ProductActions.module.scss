@@ -1,0 +1,40 @@
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  box-sizing: border-box;
+
+  &__cart {
+    flex-grow: 1;
+    background-color: map-get($colors, gray-primary);
+    border: 1px solid transparent;
+    padding: 9.5px;
+    color: map-get($colors, white);
+
+    @include hover(box-shadow, 0px 3px 13px 0px #17203166);
+  }
+
+  &__isInCart {
+    background-color: map-get($colors, white);
+    color: map-get($colors, green);
+    border-color: map-get($colors, elements);
+  }
+
+  &__favourite {
+    height: 40px;
+    width: 40px;
+    padding: 12px;
+    border: 1px solid map-get($colors, icons);
+
+    @include hover(border-color, map-get($colors, gray-primary));
+  }
+
+  &__isInFavorites {
+    border-color: map-get($colors, elements);
+  }
+
+  &__favImg {
+    height: 100%;
+    width: 100%;
+  }
+}

@@ -1,0 +1,85 @@
+.item {
+  border: 1px solid map-get($colors, elements);
+  box-sizing: border-box;
+
+  padding: 15px;
+
+  display: flex;
+
+  flex-wrap: wrap;
+  gap: 16px;
+
+  @include on-tablet {
+    padding: 23px;
+    gap: 24px;
+    flex-wrap: nowrap;
+  }
+
+  &__row {
+    display: flex;
+    flex-grow: 1;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+
+    @include on-tablet {
+      gap: 24px;
+    }
+  }
+
+  &__img {
+    display: flex;
+    flex-shrink: 0;
+
+    width: 66px;
+    height: 66px;
+    object-fit: contain;
+
+    padding: 7px;
+
+    @include hover(transform, scale(1.1));
+  }
+
+  &__link {
+    @include apply-typography(p);
+
+    display: flex;
+    align-items: center;
+    gap: 16px;
+
+    min-width: 128px;
+    color: map-get($colors, gray-primary);
+    display: flex;
+    flex-grow: 1;
+
+    @include on-tablet {
+      font-weight: 600;
+      gap: 24px;
+    }
+  }
+
+  &__counter {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 96px;
+  }
+
+  &__amount {
+    @include apply-typography(p);
+
+    font-weight: 600;
+  }
+
+  &__cost {
+    @include apply-typography(h2);
+
+    width: 80px;
+    text-align: right;
+    font-weight: 800;
+
+    @include on-tablet {
+      @include apply-typography(h3);
+    }
+  }
+}

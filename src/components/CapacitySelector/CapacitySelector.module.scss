@@ -1,0 +1,51 @@
+.capacity {
+  &__content {
+    padding-block: 24px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__title {
+    @include apply-typography(small);
+
+    color: map-get($colors, secondary);
+  }
+
+  &__options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  &__option {
+    box-sizing: border-box;
+    padding: 7px 8px 4px;
+
+    height: 32px;
+    width: fit-content;
+
+    border: 1px solid map-get($colors, icons);
+
+    background-color: map-get($colors, white);
+    color: map-get($colors, gray-primary);
+
+    cursor: pointer;
+
+    @include hover(border-color, map-get($colors, gray-primary));
+  }
+
+  &__line {
+    width: 100%;
+    height: 1px;
+    background-color: map-get($colors, elements);
+  }
+}
+
+.isActive {
+  color: map-get($colors, white);
+  background-color: map-get($colors, gray-primary);
+  border-color: map-get($colors, gray-primary);
+  cursor: auto;
+}

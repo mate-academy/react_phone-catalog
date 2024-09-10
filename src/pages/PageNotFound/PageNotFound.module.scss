@@ -1,0 +1,17 @@
+.page {
+  &__notFoundImg {
+    width: 100%;
+    max-height: calc(100vh - 305px);
+
+    @include on-tablet {
+      max-height: calc(100vh - 144px);
+    }
+  
+    @include on-desktop {
+      max-height: calc(100vh - 160px);
+    }
+
+    object-fit: contain;
+    object-position: center;
+  }
+}

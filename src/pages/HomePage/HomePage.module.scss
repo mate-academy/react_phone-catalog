@@ -1,0 +1,39 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+@import '../../styles/typography';
+@import '../../styles/grid';
+
+.homepage {
+  margin-block: 24px 64px;
+
+  @include on-tablet {
+    margin-block: 32px 64px;
+  }
+
+  @include on-desktop {
+    margin-block: 56px 80px;
+  }
+
+  &__top {
+    grid-column: 1 / -1;
+  }
+
+  &__content {
+    @include grid(mobile);
+    @include content-padding-inline;
+
+    row-gap: 56px;
+
+    max-width: 1136px;
+
+    @include on-tablet {
+      @include grid(tablet);
+    }
+
+    @include on-desktop {
+      @include grid(desktop);
+
+      margin-inline: auto;
+    }
+  }
+}

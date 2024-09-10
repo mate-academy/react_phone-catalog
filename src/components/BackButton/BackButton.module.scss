@@ -1,0 +1,58 @@
+.button {
+  grid-column: 1 / -1;
+
+  display: flex;
+
+  gap: 4px;
+  width: 66px;
+  margin-bottom: 16px;
+  cursor: pointer;
+
+  &__label {
+    @include apply-typography(small);
+    @include hover(color, map-get($colors, gray-primary));
+
+    margin-top: 2px;
+    line-height: 13px;
+    color: map-get($colors, secondary);
+
+    &__notFound {
+      color: map-get($colors, gray-primary);
+
+      @include on-tablet {
+        @include apply-typography(p);
+      }
+
+      @include on-desktop {
+        @include apply-typography(h2);
+
+        font-weight: 600 !important;
+      }
+    }
+  }
+
+  &__icon {
+    display: flex;
+    padding: 5px 8px;
+
+    background-image: url('/icons/icon-arrow.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+    transform: rotate(-180deg);
+  }
+
+  &__notFoundPage {
+    position: absolute;
+    top: 9%;
+    left: 8%;
+
+    @include on-tablet {
+      top: 12%;
+      left: 5%;
+    }
+
+    @include on-desktop {
+      top: 13%;
+    }
+  }
+}

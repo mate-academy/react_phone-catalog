@@ -1,0 +1,47 @@
+.about {
+  grid-column: 1 / -1;
+
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+
+  @include on-desktop {
+    grid-column: 1 / 13;
+  }
+
+  &__titleBlock {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__title {
+    @include apply-typography(h3);
+
+    font-weight: 700;
+  }
+
+  &__line {
+    height: 1px;
+    background-color: map-get($colors, elements);
+  }
+
+  &__section {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__sectionTitle {
+    @include apply-typography(h4);
+
+    font-weight: 700;
+  }
+
+  &__text {
+    @include apply-typography(p);
+
+    font-weight: 600;
+    color: map-get($colors, secondary);
+  }
+}

@@ -1,0 +1,47 @@
+.breadcrumbs {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-block: 24px;
+  overflow: hidden;
+
+  @include on-tablet {
+    margin-block: 24px 40px;
+  }
+
+  &__icon {
+    flex-shrink: 0;
+
+    height: 16px;
+    width: 16px;
+  }
+
+  &__arrow {    
+    background: url('/icons/icon-arrow.svg') center no-repeat;
+    opacity: 50%;
+  }
+
+  &__link {
+    display: flex;
+    align-items: center;
+    height: 100%;
+  }
+
+  &__text {
+    @include apply-typography(small);
+
+    margin-top: 3px;
+    line-height: 14px;
+
+    color: map-get($colors, secondary);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+  }
+
+  &__textGray {
+    color: map-get($colors, gray-primary);
+  }
+}

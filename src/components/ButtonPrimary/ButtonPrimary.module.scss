@@ -1,0 +1,17 @@
+.button {
+  background-color: map-get($colors, gray-primary);
+  border: 1px solid map-get($colors, gray-primary);
+  box-sizing: border-box;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &__text {
+    @include apply-typography(p);
+
+    padding-block: 12.5px;
+
+    color: map-get($colors, white);
+  }
+}

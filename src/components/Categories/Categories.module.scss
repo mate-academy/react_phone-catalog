@@ -1,0 +1,29 @@
+.categories {
+  grid-column: 1 / -1;
+
+  @include responsive-grid;
+
+  row-gap: 32px;
+
+  @include on-tablet {
+    row-gap: 24px;
+  }
+
+  &__title {
+    @include apply-typography(h2);
+
+    grid-column: 1 / -1;
+
+    margin-bottom: 24px;
+
+    @include on-tablet {
+      grid-column: span 10;
+
+      margin-bottom: 0;
+    }
+
+    @include on-desktop {
+      grid-area: 1 / 1 / 1 / 12;
+    }
+  }
+}

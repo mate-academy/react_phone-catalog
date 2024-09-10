@@ -1,0 +1,18 @@
+.block {
+  grid-column: 1 / -1; 
+
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+
+  &__name {
+    @include apply-typography(h1);
+  }
+
+  &__amount {
+    @include apply-typography(p);
+
+    color: map-get($colors, secondary);
+    font-weight: 600;
+  }
+}

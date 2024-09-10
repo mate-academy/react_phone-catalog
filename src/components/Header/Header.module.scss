@@ -1,0 +1,102 @@
+.header {
+  @include box-shadow(custom-bottom);
+  width: 100%;
+  position: sticky;
+  top: 0;
+  background-color: map-get($colors, $key: white);
+  z-index: 60;
+
+  &__content {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  
+    height: 48px;
+    
+  
+    @include on-desktop {
+      gap: 24px;
+      height: 64px;
+    }
+  }
+
+  &__logo {
+    display: flex;
+    align-items: center;
+
+    padding-inline: 16px;
+    padding-block: 13px;
+
+    @include on-desktop {
+      padding-inline: 24px;
+      padding-block: 18px;
+    }
+
+    &__block {
+      height: 22px;
+
+      @include on-desktop {
+        height: 28px;
+      }
+    }
+  }
+
+  &__burger {
+    padding: 0;
+    border: none;
+    background: inherit;
+
+    display: flex;
+    justify-content: end;
+    flex-grow: 1;
+
+    padding: 16px;
+
+    @include on-tablet {
+      display: none;
+    }
+  }
+
+  &__links {
+    display: none;
+    align-items: center;
+
+    height: 100%;
+
+
+    @include on-tablet {
+      display: flex;
+      gap: 32px;
+    }
+
+    @include on-desktop {
+      gap: 64px;
+    }
+  }
+
+  &__buttons {
+    display: none;
+
+    flex-grow: 1;
+    justify-content: end;
+
+    @include on-tablet {
+      display: flex;
+    }
+  }
+
+  &__buttonWrapper {
+    @include box-shadow(custom-left);
+
+    --side: 48px;
+
+    display: flex;
+
+    height: var(--side);
+    width: var(--side);
+
+    @include on-desktop {
+      --side: 64px;
+    }
+  }
+}

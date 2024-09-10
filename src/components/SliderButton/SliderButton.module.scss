@@ -1,0 +1,27 @@
+.sliderButton {
+  grid-column: span 1;
+
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid map-get($colors, icons);
+
+  @include on-tablet {
+    display: flex;
+  }
+
+  &__wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    height: 16px;
+    width: 16px;
+
+    &__left {
+      transform: rotate(-180deg);
+    }
+  }
+}

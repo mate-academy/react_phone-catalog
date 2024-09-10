@@ -1,0 +1,95 @@
+:export {
+  white: map-get($colors, white);
+  green: map-get($colors, green);
+  elements: map-get($colors, elements);
+}
+
+.prod {
+  flex: 0 0 var(--slide-width);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  box-sizing: border-box;
+  border: 1px solid map-get($colors, elements);
+  height: 439px;
+  padding: 31px;
+
+  &__listPositioning {
+    grid-column: 1 / -1;
+
+    @include on-tablet {
+      grid-column: span 6;
+    }
+  }
+
+  @include on-tablet {
+    flex: 0 0 calc(41.67% - 9px);
+  }
+
+  @include on-desktop {
+    flex: 0 0 calc(25% - 12px);
+    height: 512px;
+  }
+
+  &__contentWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    height: 196px;
+
+    @include on-tablet {
+      height: 268px;
+    }
+  }
+
+  &__imgWrapper {
+    @include hover(scale, 110%);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    flex-grow: 1;
+  }
+
+  &__img {
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: contain;
+  }
+
+  &__name {
+    padding-top: 16px;
+
+    @include apply-typography(button);
+
+    text-align: left;
+    color: map-get($colors, gray-primary);
+  }
+
+  &__priceWrapper {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  &__line {
+    flex-shrink: 0;
+
+    height: 1px;
+    background-color: map-get($colors, elements);
+  }
+
+  &__specs {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    padding-block: 8px;
+  }
+
+  @include on-tablet {
+    height: 512px;
+  }
+}

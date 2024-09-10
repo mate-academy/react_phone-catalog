@@ -1,0 +1,36 @@
+.list {
+  @include content-padding-inline;
+  
+  @include on-desktop {
+    max-width: 1136px;
+    margin-inline: auto;
+  }
+
+  &__content {
+    @include responsive-grid;
+
+    margin-bottom: 64px;
+  }
+
+  &__dropdowns {
+    grid-area: 2 / 1 / 2 / -1;
+
+    display: flex;
+    gap: 16px;
+
+    @include on-tablet {
+      grid-column: span 7;
+    }
+
+    @include on-desktop {
+      grid-area: 2 / 1 / 2 / -1;
+    }
+  }
+
+  &__products {
+    @include responsive-grid;
+
+    grid-column: 1 / -1;
+    row-gap: 40px;
+  }
+}

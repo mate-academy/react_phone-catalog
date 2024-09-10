@@ -1,0 +1,36 @@
+.spec {
+  display: flex;
+  justify-content: space-between;
+
+  &__label {
+    @include apply-typography(small);
+    
+    color: map-get($colors, secondary);
+  }
+
+  &__text {
+    @include apply-typography(small);
+    
+    color: map-get($colors, secondary);
+  }
+}
+
+.card__context.spec__text {
+  font-weight: 700;
+  color: map-get($colors, gray-primary);
+}
+
+.page__context.spec__text {
+  font-weight: 600;
+  color: map-get($colors, gray-primary);
+}
+
+.spec__context.spec__label,
+.spec__context.spec__text,
+{
+  @include apply-typography(p);
+}
+
+.spec__context.spec__text {
+  color: map-get($colors, gray-primary);
+}

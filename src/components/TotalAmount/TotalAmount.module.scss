@@ -1,0 +1,59 @@
+.total {
+  border: 1px solid map-get($colors, elements);
+
+  padding: 23px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  &__priceBlock {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1;
+  }
+
+  &__price {
+    @include apply-typography(h1);
+
+    @include on-tablet {
+      @include apply-typography(h2);
+    }
+  }
+
+  &__amount {
+    @include apply-typography(p);
+
+    font-weight: 600;
+
+    color: map-get($colors, secondary);
+
+    @include on-tablet {
+      font-weight: 600;
+    }
+  }
+
+  &__line {
+    height: 1px;
+
+    background-color: map-get($colors, elements);
+  }
+
+  &__checkoutWindow {
+    display: flex;
+    flex-direction: column;
+
+    gap: 24px;
+  }
+
+  &__checkoutText {
+    @include apply-typography(p);
+  }
+
+  &__checkoutButtonWrapper {
+    display: flex;
+    gap: 16px;
+  }
+}

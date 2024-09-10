@@ -1,0 +1,19 @@
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  gap: 16px;
+  margin-top: 24px;
+
+  @include on-tablet {
+    margin-top: 40px;
+  }
+
+  grid-column: 1 / -1;
+
+  &__pages {
+    display: flex;
+    gap: 8px;
+  }
+}

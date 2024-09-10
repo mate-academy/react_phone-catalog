@@ -1,0 +1,46 @@
+@mixin on-tablet {
+  @media (min-width: map-get($breakpoints, md)) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media (min-width: map-get($breakpoints, lg)) {
+    @content;
+  }
+}
+
+@mixin content-padding-inline {
+  padding-inline: 16px;
+
+  @include on-tablet {
+    padding-inline: 24px;
+  }
+
+  @include on-desktop {
+    padding-inline: 32px;
+  }
+}
+
+@mixin hover(
+  $property,
+  $value,
+  $duration: map-get($duration, $key: '0.3'),
+  $timingFunction: ease-in-out
+) {
+  transition: #{$property} $duration $timingFunction;
+
+  &:hover {
+    #{$property}: $value;
+  }
+}
+
+@mixin box-shadow($direction) {
+  @if $direction == custom-left {
+    box-shadow: -1px 0px 0px 0px rgba(226, 230, 233, 1);
+  } @else if $direction == custom-bottom {
+    box-shadow: 0px 1px 0px 0px rgba(226, 230, 233, 1);
+  } @else if $direction == custom-top {
+    box-shadow: 0px -1px 0px 0px rgba(226, 230, 233, 1);
+  }
+}
