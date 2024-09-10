@@ -12,4 +12,5 @@ export interface States {
   cart: ProductSummary[];
   favorites: ProductSummary[];
   categories: Category[];
+  isMenuOpen: boolean;
 }

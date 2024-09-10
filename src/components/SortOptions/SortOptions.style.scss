@@ -16,7 +16,8 @@
     -moz-appearance: none;
     -webkit-appearance: none;
     appearance: none;
-    background: url('../../../public/img/icons/chevron-down-disabled.svg') no-repeat right;
+    background: url('../../../public/img/icons/chevron-down-disabled.svg') no-repeat;
+    background-position: center right 12px;
   }
 
   &-sort {

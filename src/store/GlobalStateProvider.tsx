@@ -14,6 +14,7 @@ const initialStates = {
   cart: [],
   favorites: [],
   categories: [],
+  isMenuOpen: false,
 };
 
 type Action =
@@ -25,7 +26,8 @@ type Action =
   | { type: 'addToCart'; payload: ProductSummary }
   | { type: 'removeFromCart'; payload: number }
   | { type: 'addToFavorites'; payload: ProductSummary }
-  | { type: 'removeFromFavorites'; payload: number };
+  | { type: 'removeFromFavorites'; payload: number }
+  | { type: 'isMenuOpen'; payload: boolean };
 
 type DispatchContextType = {
   (action: Action): void;
@@ -69,6 +71,9 @@ function reducer(states: States, action: Action) {
         ...newStates,
         favorites: states.favorites.filter(p => p.id !== action.payload),
       };
+      break;
+    case 'isMenuOpen':
+      newStates = { ...newStates, isMenuOpen: action.payload };
       break;
     default:
       return states;

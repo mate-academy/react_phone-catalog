@@ -1,14 +1,18 @@
 .menu {
   position: fixed;
-  top: 0;
+  display: none;
+  height: 100%;
+  top: 49px;
   left: 0;
   right: 0;
-  opacity: 0;
-  pointer-events: none;
-  &:target {
-    opacity: 1;
-    pointer-events: all;
+  z-index: 999;
+  background-color: $c-white;
+  &-isOpen {
+    display: block;
   }
+
+
+
   &__container {
     display: flex;
     flex-direction: column;
@@ -16,6 +20,8 @@
     align-items: center;
     height: calc(100vh - 48px);
     width: 100vw;
+
+    background-color: $c-white;
     &-nav {
       display: flex;
       justify-content: center;

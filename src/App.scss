@@ -2,4 +2,8 @@
   width: 100%;
   position: relative;
   overflow-x: hidden;
+  max-height: 100vh;
+  &:has(.menu-isOpen) {
+    overflow-y: hidden;
+  }
 }

@@ -1,19 +1,28 @@
-import { useContext, useState } from 'react';
+import { useContext } from 'react';
 import useMediaQuery from '../../../utils/useMediaQuery';
 import { Icon } from '../../base/Icon/Icon.component';
 import { Nav } from '../../base/Nav/Nav.component';
 import cn from 'classnames';
-import { StatesContext } from '../../../store/GlobalStateProvider';
+import {
+  DispatchContext,
+  StatesContext,
+} from '../../../store/GlobalStateProvider';
 
 export const Header = () => {
+  const dispatch = useContext(DispatchContext);
+  const { isMenuOpen } = useContext(StatesContext);
   const { cart, favorites } = useContext(StatesContext);
   const isMobile = useMediaQuery('(max-width: 640px');
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const handleClick = () => {
     // eslint-disable-next-line no-console
     console.log(isMenuOpen); // TODO REMOVE AFTER TESTS
+    if (isMenuOpen) {
+      dispatch({ type: 'isMenuOpen', payload: false });
+    } else {
+      dispatch({ type: 'isMenuOpen', payload: true });
+    }
 
-    return isMenuOpen ? setIsMenuOpen(false) : setIsMenuOpen(true);
+    return isMenuOpen;
   };
 
   return (

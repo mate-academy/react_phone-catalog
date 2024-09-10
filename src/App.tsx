@@ -1,15 +1,18 @@
 import { useContext, useEffect } from 'react';
 import { Header } from './components/base/Header/Header.component';
-import { DispatchContext } from './store/GlobalStateProvider';
+import { DispatchContext, StatesContext } from './store/GlobalStateProvider';
 import { getCategories, getProducts } from './api/products';
 import { AccessorySpecs } from './types/AccessorySpecs';
 import { PhoneSpecs } from './types/PhoneSpecs';
 import { TabletSpecs } from './types/TabletSpecs';
 import { ProductSummary } from './types/ProductSummary';
 import { Outlet } from 'react-router-dom';
+import { MenuPage } from './pages/Menu/Menu.page';
+import cn from 'classnames';
 
 export const App = () => {
   const dispatch = useContext(DispatchContext);
+  const { isMenuOpen } = useContext(StatesContext);
 
   useEffect(() => {
     getProducts<AccessorySpecs[]>(
@@ -53,7 +56,9 @@ export const App = () => {
     <div className="App" id="top">
       {/* <h1>Product Catalog</h1> */}
       <Header />
-
+      <aside className={cn('menu', { 'menu-isOpen': isMenuOpen })} id="menu">
+        <MenuPage />
+      </aside>
       <Outlet />
     </div>
   );

@@ -1,6 +1,9 @@
 import cn from 'classnames';
 import { Link } from 'react-router-dom';
-import { StatesContext } from '../../../store/GlobalStateProvider';
+import {
+  DispatchContext,
+  StatesContext,
+} from '../../../store/GlobalStateProvider';
 import { useContext } from 'react';
 
 type Props = {
@@ -8,12 +11,19 @@ type Props = {
 };
 
 export const Nav: React.FC<Props> = ({ navStyle }) => {
-  const { categories } = useContext(StatesContext);
+  const dispatch = useContext(DispatchContext);
+  const { categories, isMenuOpen } = useContext(StatesContext);
 
   return (
     <nav className="nav">
       <ul className={cn('nav__list', `nav__list--${navStyle}`)}>
-        <Link to="/" className={cn('nav__link', `nav__link--${navStyle}`)}>
+        <Link
+          to="/"
+          className={cn('nav__link', `nav__link--${navStyle}`)}
+          onClick={() =>
+            isMenuOpen && dispatch({ type: 'isMenuOpen', payload: false })
+          }
+        >
           <li className="nav__item">HOME</li>
         </Link>
         {categories.map((category, idx) => {
