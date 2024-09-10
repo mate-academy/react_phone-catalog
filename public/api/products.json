@@ -1682,30 +1682,30 @@
   {
     "id": 121,
     "category": "accessories",
-    "itemId": "apple-watch-series-3-38mm-space-gray",
+    "itemId": "apple-watch-series-3-38mm-spacegray",
     "name": "Apple Watch Series 3 38mm Space Gray",
     "fullPrice": 199,
     "price": 169,
     "screen": "1.3' OLED",
     "capacity": "38mm",
-    "color": "space-gray",
+    "color": "spacegray",
     "ram": "768MB",
     "year": 2017,
-    "image": "img/accessories/apple-watch-series-3/space-gray/00.webp"
+    "image": "img/accessories/apple-watch-series-3/spacegray/00.webp"
   },
   {
     "id": 122,
     "category": "accessories",
-    "itemId": "apple-watch-series-3-42mm-space-gray",
+    "itemId": "apple-watch-series-3-42mm-spacegray",
     "name": "Apple Watch Series 3 42mm Space Gray",
     "fullPrice": 250,
     "price": 219,
     "screen": "1.3' OLED",
     "capacity": "42mm",
-    "color": "space-gray",
+    "color": "spacegray",
     "ram": "768MB",
     "year": 2017,
-    "image": "img/accessories/apple-watch-series-3/space-gray/00.webp"
+    "image": "img/accessories/apple-watch-series-3/spacegray/00.webp"
   },
   {
     "id": 123,
@@ -1766,30 +1766,30 @@
   {
     "id": 127,
     "category": "accessories",
-    "itemId": "apple-watch-series-6-40mm-space-gray",
+    "itemId": "apple-watch-series-6-40mm-spacegray",
     "name": "Apple Watch Series 6 40mm Space Gray",
     "fullPrice": 399,
     "price": 329,
     "screen": "1.57' OLED",
     "capacity": "40mm",
-    "color": "space-gray",
+    "color": "spacegray",
     "ram": "1GB",
     "year": 2020,
-    "image": "img/accessories/apple-watch-series-6/space-gray/00.webp"
+    "image": "img/accessories/apple-watch-series-6/spacegray/00.webp"
   },
   {
     "id": 128,
     "category": "accessories",
-    "itemId": "apple-watch-series-6-44mm-space-gray",
+    "itemId": "apple-watch-series-6-44mm-spacegray",
     "name": "Apple Watch Series 6 44mm Space Gray",
     "fullPrice": 429,
     "price": 359,
     "screen": "1.57' OLED",
     "capacity": "44mm",
-    "color": "space-gray",
+    "color": "spacegray",
     "ram": "1GB",
     "year": 2020,
-    "image": "img/accessories/apple-watch-series-6/space-gray/00.webp"
+    "image": "img/accessories/apple-watch-series-6/spacegray/00.webp"
   },
   {
     "id": 129,
@@ -1962,30 +1962,30 @@
   {
     "id": 141,
     "category": "accessories",
-    "itemId": "apple-watch-series-5-40mm-space-gray",
+    "itemId": "apple-watch-series-5-40mm-spacegray",
     "name": "Apple Watch Series 5 40mm Space Gray",
     "fullPrice": 399,
     "price": 299,
     "screen": "1.57' OLED",
     "capacity": "40mm",
-    "color": "space-gray",
+    "color": "spacegray",
     "ram": "1GB",
     "year": 2019,
-    "image": "img/accessories/apple-watch-series-5/space-gray/00.webp"
+    "image": "img/accessories/apple-watch-series-5/spacegray/00.webp"
   },
   {
     "id": 142,
     "category": "accessories",
-    "itemId": "apple-watch-series-5-44mm-space-gray",
+    "itemId": "apple-watch-series-5-44mm-spacegray",
     "name": "Apple Watch Series 5 44mm Space Gray",
     "fullPrice": 429,
     "price": 399,
     "screen": "1.78' LTPO OLED",
     "capacity": "44mm",
-    "color": "space-gray",
+    "color": "spacegray",
     "ram": "1GB",
     "year": 2019,
-    "image": "img/accessories/apple-watch-series-5/space-gray/00.webp"
+    "image": "img/accessories/apple-watch-series-5/spacegray/00.webp"
   },
   {
     "id": 143,
@@ -2046,30 +2046,30 @@
   {
     "id": 147,
     "category": "accessories",
-    "itemId": "apple-watch-series-4-40mm-space-gray",
+    "itemId": "apple-watch-series-4-40mm-spacegray",
     "name": "Apple Watch Series 4 40mm Space Gray",
     "fullPrice": 399,
     "price": 349,
     "screen": "1.57' OLED",
     "capacity": "40mm",
-    "color": "space-gray",
+    "color": "spacegray",
     "ram": "0.75GB",
     "year": 2019,
-    "image": "img/accessories/apple-watch-series-4/space-gray/00.webp"
+    "image": "img/accessories/apple-watch-series-4/spacegray/00.webp"
   },
   {
     "id": 148,
     "category": "accessories",
-    "itemId": "apple-watch-series-4-44mm-space-gray",
+    "itemId": "apple-watch-series-4-44mm-spacegray",
     "name": "Apple Watch Series 4 44mm Space Gray",
     "fullPrice": 429,
     "price": 379,
     "screen": "1.78' OLED",
     "capacity": "44mm",
-    "color": "space-gray",
+    "color": "spacegray",
     "ram": "0.75GB",
     "year": 2019,
-    "image": "img/accessories/apple-watch-series-4/space-gray/00.webp"
+    "image": "img/accessories/apple-watch-series-4/spacegray/00.webp"
   },
   {
     "id": 149,
@@ -2130,30 +2130,30 @@
   {
     "id": 153,
     "category": "accessories",
-    "itemId": "apple-watch-se-40mm-space-gray",
+    "itemId": "apple-watch-se-40mm-spacegray",
     "name": "Apple Watch SE 40mm Space Gray",
     "fullPrice": 279,
     "price": 259,
     "screen": "1.57' OLED",
     "capacity": "40mm",
-    "color": "space-gray",
+    "color": "spacegray",
     "ram": "1GB",
     "year": 2020,
-    "image": "img/accessories/apple-watch-se/space-gray/00.webp"
+    "image": "img/accessories/apple-watch-se/spacegray/00.webp"
   },
   {
     "id": 154,
     "category": "accessories",
-    "itemId": "apple-watch-se-44mm-space-gray",
+    "itemId": "apple-watch-se-44mm-spacegray",
     "name": "Apple Watch SE 44mm Space Gray",
     "fullPrice": 309,
     "price": 289,
     "screen": "1.78' OLED",
     "capacity": "44mm",
-    "color": "space-gray",
+    "color": "spacegray",
     "ram": "1GB",
     "year": 2020,
-    "image": "img/accessories/apple-watch-se/space-gray/00.webp"
+    "image": "img/accessories/apple-watch-se/spacegray/00.webp"
   },
   {
     "id": 155,
