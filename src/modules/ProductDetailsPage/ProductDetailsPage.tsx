@@ -70,6 +70,10 @@ export const ProductDetailsPage: React.FC = () => {
   const [dynamicColor, setDynamicColor] = useState<string>('');
   const [dynamicCapacity, setDynamicCapacity] = useState<string>('');
 
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'auto' });
+  }, []);
+
   return (
     <div className={styles.productDetailsPage}>
       <main className={styles.mainContent}>
