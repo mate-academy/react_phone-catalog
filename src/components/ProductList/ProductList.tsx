@@ -24,24 +24,33 @@ export const ProductList: React.FC<ProductListProps> = ({ category, title }) => 
   }, [products.length, numberOfProductsPerPage]);
 
   useEffect(() => {
-    window.scrollTo({ top: 0, behavior: 'auto' });
-    if (displayedPage > numberOfPages) {
-      setDisplayedPage(numberOfPages)
-    }
-  }, [displayedPage]);
-
-  useEffect(() => {
     const fetchProductData = async () => {
       setIsLoading(true);
-      const count = products.length
+      const count = products.length;
       const filteredData = await fetchProducts(category, sortMethod, count);
       setProducts(filteredData);
-      setDisplayedPage(1);
+      console.log('fetched')
+      window.scrollTo({ top: 0, behavior: 'auto' });
       setIsLoading(false);
     };
 
     fetchProductData();
   }, [category, sortMethod, setProducts, numberOfProductsPerPage]);
+
+  useEffect(() => {
+    setDisplayedPage(1);
+  }, [products]);
+
+  useEffect(() => {
+    if (numberOfPages < displayedPage) {
+      setDisplayedPage(1);
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+  }, [displayedPage]);
+
+  useEffect(() => {
+       window.scrollTo({ top: 0, behavior: 'auto' });
+  }, [displayedPage]);
 
   const handleDisplayedPage = useCallback((newPage: number) => {
     setDisplayedPage(newPage);
