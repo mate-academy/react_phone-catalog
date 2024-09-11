@@ -27,7 +27,7 @@
     margin: 0 auto;
 
     @media (min-width:$mobileSmall) {
-      width: rem(173);
+      max-width: rem(173);
       height: rem(202);
     }
 

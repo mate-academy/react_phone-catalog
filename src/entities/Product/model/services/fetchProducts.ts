@@ -1,12 +1,13 @@
 /* eslint-disable @typescript-eslint/indent */
 import { modernizationProducts } from './modernizationProduct';
-import { Product, ProductFromServer } from '../types/product';
+import { Product } from '../types/product';
 
 export const fetchProducts = async (): Promise<Product[] | string> => {
   try {
-    const response: ProductFromServer[] = await fetch('api/products.json').then(
-      res => res.json(),
-    );
+    const response = await fetch(
+      // 'api/products.json'
+      'http://localhost:3000/api/products.json',
+    ).then(res => res.json());
 
     if (!Array.isArray(response)) {
       return 'bad response';

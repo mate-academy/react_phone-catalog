@@ -111,7 +111,7 @@ export const ProductsPageFilter = memo((props: Props) => {
   );
 
   const onChangeSearch = (e: ChangeEvent<HTMLInputElement>) => {
-    dispatch(setSearch(e.target.value.trim()));
+    dispatch(setSearch(e.target.value));
     dispatch(setCurrentPage(1));
     setSearchParams(
       getSearchWith(searchParams, {

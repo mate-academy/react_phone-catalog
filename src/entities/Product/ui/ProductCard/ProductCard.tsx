@@ -64,7 +64,7 @@ export const ProductCard = memo(
         className={cls.productCard}
       >
         <div className={cls.productCard__image}>
-          <img src={`/${image}`} alt={name} />
+          <img src={`${image}`} alt={name} />
         </div>
 
         <div className={cls.productCard__content}>

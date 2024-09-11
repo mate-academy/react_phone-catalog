@@ -75,6 +75,9 @@ export const prepareProductsList = createAsyncThunk<
       return rejectWithValue(true);
     }
   } catch (e) {
+    // eslint-disable-next-line no-console
+    console.log('result fetchProductsPage', e);
+
     return rejectWithValue(true);
   }
 });

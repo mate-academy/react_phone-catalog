@@ -42,9 +42,7 @@ export const PagePartTop = memo(
     }, [location]);
 
     const handleBackClick = () => {
-      if (location.state?.fromLocation) {
-        navigate(location.state.fromLocation);
-      }
+      navigate(-1);
     };
 
     const breadcrumbs = useMemo(() => {

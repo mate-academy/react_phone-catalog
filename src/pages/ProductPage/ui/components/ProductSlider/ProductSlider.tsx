@@ -49,7 +49,7 @@ export const ProductSlider = memo(({ product, className }: Props) => {
       id: index,
       content: (
         <div className={cls['swiper-slide__content']}>
-          <img src={`/${img}`} />
+          <img src={`${img}`} />
         </div>
       ),
     }),
@@ -60,7 +60,7 @@ export const ProductSlider = memo(({ product, className }: Props) => {
       id: index,
       content: (
         <div className={cls['thumb-slider__slide-content']}>
-          <img src={`/${img}`} />
+          <img src={`${img}`} />
         </div>
       ),
     }),

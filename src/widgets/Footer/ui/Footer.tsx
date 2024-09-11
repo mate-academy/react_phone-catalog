@@ -8,7 +8,7 @@ import icons from '../../../shared/styles/icons.module.scss';
 import { Button, ButtonTheme } from '../../../shared/ui/forms';
 
 const footerMenuItems: IFooterItem[] = [
-  { text: 'github', link: '/' },
+  { text: 'github', link: 'https://github.com/Oleksii-Bidiak' },
   { text: 'contacts', link: '/' },
   { text: 'rights', link: '/' },
 ];
@@ -25,7 +25,12 @@ export const Footer = memo(() => {
               <ul className={cls.menu__list}>
                 {footerMenuItems.map(({ link, text }) => (
                   <li key={text} className={cls.menu__item}>
-                    <a href={link} className={cls.menu__link}>
+                    <a
+                      href={link}
+                      rel="noreferrer"
+                      target="_blank"
+                      className={cls.menu__link}
+                    >
                       {text}
                     </a>
                   </li>

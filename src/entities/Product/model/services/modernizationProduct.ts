@@ -17,13 +17,13 @@ export const modernizationProducts = (
     const favorites: string[] | null = favoritesLocalStorage
       ? JSON.parse(favoritesLocalStorage)
       : null;
-    const cartItem: ICartItemsLocalStorage[] = cartItemsLocalStorage
+    const cartItem: ICartItemsLocalStorage[] | null = cartItemsLocalStorage
       ? JSON.parse(cartItemsLocalStorage)
       : null;
 
     const newProducts: Product[] = [...products].map(
       (product: ProductFromServer) => {
-        const isCartItem = cartItem.find(
+        const isCartItem = cartItem?.find(
           item => item.itemId === product.itemId,
         );
 
@@ -37,6 +37,10 @@ export const modernizationProducts = (
 
     return newProducts;
   } catch (e) {
+    // eslint-disable-next-line no-console
+    console.log('Error processing products', e);
+    // eslint-disable-next-line no-console
+    console.error(e);
     throw new Error('Error processing products');
   }
 };

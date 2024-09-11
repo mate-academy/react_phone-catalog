@@ -1,4 +1,3 @@
-/* eslint-disable react/state-in-constructor */
 /* eslint-disable @typescript-eslint/indent */
 import React, { ErrorInfo, ReactNode } from 'react';
 import { PageError } from '../../../../widgets/PageError';
@@ -9,35 +8,33 @@ interface ErrorBoundaryProps {
 
 interface ErrorBoundaryState {
   hasError: boolean;
-  error?:
-    | {
-        error: Error;
-        errorInfo: ErrorInfo;
-      }
-    | undefined;
+  error: {
+    error: Error;
+    errorInfo: ErrorInfo;
+  } | null;
 }
 
 export class ErrorBoundary extends React.Component<
   ErrorBoundaryProps,
   ErrorBoundaryState
 > {
-  constructor(props: ErrorBoundaryProps) {
-    super(props);
-    this.state = { hasError: false, error: undefined };
-  }
+  // Початковий стан компонента
+  state: ErrorBoundaryState = {
+    hasError: false,
+    error: null,
+  };
 
-  static getDerivedStateFromError() {
+  // Метод для оновлення стану при виникненні помилки
+  static getDerivedStateFromError(): Partial<ErrorBoundaryState> {
     return { hasError: true };
   }
 
+  // Ловить помилку і оновлює стан
   componentDidCatch(error: Error, errorInfo: ErrorInfo) {
-    // console.log(error, errorInfo);
+    // eslint-disable-next-line no-console
+    // console.error('Error caught by ErrorBoundary:', error, errorInfo);
     this.setState({
-      hasError: true,
-      error: {
-        error,
-        errorInfo,
-      },
+      error: { error, errorInfo },
     });
   }
 
