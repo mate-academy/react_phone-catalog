@@ -19,6 +19,11 @@
   box-shadow: 0 -1px 0 0 var(--color-elements);
   transition: box-shadow $transition-duration;
   background-color: var(--color-background);
+  margin-top: 80px;
+
+  @include on-desktop {
+    margin-top: 64px;
+  }
 }
 
 .wrapper {

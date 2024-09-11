@@ -7,7 +7,7 @@ import 'swiper/css/effect-fade';
 import { Navigation, Pagination, EffectFade, Autoplay } from 'swiper/modules';
 import styles from './PictureSlider.module.scss';
 import { PictureSliderPictureMap } from '../Helpers/PictureSliderMap';
-import { SwiperButton } from '../SwiperButton/SwiperButton';
+import { SwiperButton } from '../../../../components/SwiperButton/SwiperButton';
 import { useIconSrc } from '../../../../utils/hooks/useIconSrc';
 
 export const PictureSlider: FC = () => {
@@ -27,8 +27,8 @@ export const PictureSlider: FC = () => {
         }}
         fadeEffect={{ crossFade: true }}
         navigation={{
-          nextEl: '.button-next',
-          prevEl: '.button-prev',
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
         }}
         pagination={{
           clickable: true,

@@ -1,6 +1,17 @@
 @import '../../styles/main';
 
-// .home {
+.home {
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+
+  @include on-desktop {
+    gap: 64px;
+  }
+  @include on-tablet {
+    gap: 56px;
+  }
+}
 
 .container {
   @extend %container;

@@ -1,0 +1,49 @@
+@import '../../../../styles/main';
+
+.container {
+  @extend %container;
+}
+
+.categoriesTitle {
+  @extend %h2-tablet;
+  margin-bottom: 24px;
+
+  @include on-mobile {
+    font-size: 22px;
+    line-height: 31px;
+    letter-spacing: 0;
+  }
+}
+
+.categoriesWrapper {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+
+  @include on-mobile {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.itemContent {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  @include hover(transform, scale(1.05));
+}
+
+.itemImg {
+  margin-bottom: 24px;
+}
+
+.itemTitle {
+  @extend %h4-tablet;
+  margin-bottom: 4px;
+}
+
+.itemCountModels {
+  @extend %body-text;
+  color: var(--color-secondary);
+}
