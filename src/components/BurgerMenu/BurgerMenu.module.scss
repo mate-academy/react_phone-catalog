@@ -1,0 +1,59 @@
+@import '../../utils/mixins.scss';
+@import '../../utils/vars.scss';
+
+.menu {
+  height: calc(100vh - 69px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  &_buttons {
+    @include content-padding-inline;
+    margin-top: 32px;
+
+    ul {
+      padding: 0;
+      margin: 0;
+      display: flex;
+      color: $color-for-main-text;
+      flex-direction: column;
+      gap: 16px;
+      list-style-type: none;
+      font-size: 12px;
+      text-transform: uppercase;
+      text-align: center;
+      font-size: 12px;
+    }
+
+    a {
+      position: relative; // щоб позиціонувати лінію під текстом
+
+      &:hover {
+        color: black;
+      }
+    }
+  }
+
+  &_icons {
+    width: 100%;
+    border-top: 1px solid;
+    border-color: $color-for-borders;
+
+    display: flex;
+    flex-direction: row;
+
+    &_line {
+      width: 1px;
+      height: 100%;
+      background-color: $color-for-borders;
+    }
+
+    &_icon {
+      padding: 24px 0;
+      width: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+}

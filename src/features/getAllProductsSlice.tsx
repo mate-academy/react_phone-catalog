@@ -17,27 +17,23 @@ const initialState: SetAllProductsInterface = {
 export const getAllProductsAsync = createAsyncThunk(
   'products/getAllProducts',
   async () => {
-    try {
-      // Завантажуємо всі три файли одночасно
-      const [phonesResponse, tabletsResponse, accessoriesResponse] =
-        await Promise.all([
-          fetch('/api/phones.json'),
-          fetch('/api/tablets.json'),
-          fetch('/api/accessories.json'),
-        ]);
-
-      // Парсимо JSON з кожного файлу
-      const [phones, tablets, accessories] = await Promise.all([
-        phonesResponse.json(),
-        tabletsResponse.json(),
-        accessoriesResponse.json(),
+    // Завантажуємо всі три файли одночасно
+    const [phonesResponse, tabletsResponse, accessoriesResponse] =
+      await Promise.all([
+        fetch('api/phones.json'),
+        fetch('api/tablets.json'),
+        fetch('api/accessories.json'),
       ]);
 
-      // Об'єднуємо всі дані в один масив
-      return [...phones, ...tablets, ...accessories];
-    } catch (error) {
-      throw new Error('Failed to fetch data');
-    }
+    // Парсимо JSON з кожного файлу
+    const [phones, tablets, accessories] = await Promise.all([
+      phonesResponse.json(),
+      tabletsResponse.json(),
+      accessoriesResponse.json(),
+    ]);
+
+    // Об'єднуємо всі дані в один масив
+    return [...phones, ...tablets, ...accessories];
   },
 );
 

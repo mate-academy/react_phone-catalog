@@ -13,7 +13,7 @@ import { ItemsList } from '../ItemsList';
 import { addBucket, removeBucket } from '../../features/addBucketInfoSlice';
 
 export const ItemInformation = () => {
-  const { category, productId } = useParams();
+  const { productId } = useParams();
 
   // список, лоадер та можлива помилка для конкретного селектора
   const items = useAppSelector(state => state.allProducts.items);
@@ -98,16 +98,19 @@ export const ItemInformation = () => {
     <div className={styles.itemInformation}>
       <div className={styles.itemInformation_route}>
         <Link to={'/'}>
-          <img src="../../img/icons/home.svg" alt="home" />
+          <img src="img/icons/Home.svg" alt="home" />
         </Link>
-        <img src="../../img/icons/Chevron-right-dis.svg" alt="home" />
-        <h3>{ucFirst(category)}</h3>
-        <img src="../../img/icons/Chevron-right-dis.svg" alt="home" />
+        <img src="img/icons/Chevron-right-dis.svg" alt="home" />
+        <h3>{ucFirst(currentProduct?.category)}</h3>
+        <img src="img/icons/Chevron-right-dis.svg" alt="home" />
         <p>{currentProduct?.name}</p>
       </div>
 
-      <Link to={`/${category}`} className={styles.itemInformation_buttonBack}>
-        <img src="../../img/icons/Chevron-left.svg" alt="back" />
+      <Link
+        to={`/${currentProduct?.category}`}
+        className={styles.itemInformation_buttonBack}
+      >
+        <img src="img/icons/Chevron-left.svg" alt="back" />
         <p>Back</p>
       </Link>
 
@@ -129,7 +132,7 @@ export const ItemInformation = () => {
                 onClick={() => {
                   isClickedOnImage(image);
                 }}
-                src={`/${image}`}
+                src={`${image}`}
                 alt="img"
               />
             </div>
@@ -138,7 +141,7 @@ export const ItemInformation = () => {
         {/**  */}
 
         <div className={styles.itemInformation_generalInfo_mainImage}>
-          <img src={`/${currentImage}`} alt="image" />
+          <img src={`${currentImage}`} alt="image" />
         </div>
 
         {/* on phone */}
@@ -156,7 +159,7 @@ export const ItemInformation = () => {
                 onClick={() => {
                   isClickedOnImage(image);
                 }}
-                src={`/${image}`}
+                src={`${image}`}
                 alt="img"
                 style={{
                   border: currentImage === image ? '1px solid #313237' : '',
@@ -260,9 +263,9 @@ export const ItemInformation = () => {
                 className={styles.itemInformation_generalInfo_buttons_favourite}
               >
                 {isClickedOnFavourite ? (
-                  <img src="../../img/icons/FavouritesFilledHeart.svg" alt="" />
+                  <img src="img/icons/FavouritesFilledHeart.svg" alt="" />
                 ) : (
-                  <img src="../../img/icons/favourites.svg" alt="" />
+                  <img src="img/icons/favourites.svg" alt="" />
                 )}
               </div>
             </div>
@@ -466,7 +469,7 @@ export const ItemInformation = () => {
               </p>
             </div>
 
-            {category !== 'accessories' ? (
+            {currentProduct?.category !== 'accessories' ? (
               <React.Fragment>
                 <div
                   className={

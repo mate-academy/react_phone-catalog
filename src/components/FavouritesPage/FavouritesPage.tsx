@@ -11,9 +11,9 @@ export const FavouritesPage = () => {
       <div className={styles.favourites}>
         <div className={styles.favourites_route}>
           <Link to={'/'}>
-            <img src="../../img/icons/home.svg" alt="home" />
+            <img src="img/icons/Home.svg" alt="home" />
           </Link>
-          <img src="../../img/icons/Chevron-right-dis.svg" alt="home" />
+          <img src="img/icons/Chevron-right-dis.svg" alt="home" />
           <p>Favourites</p>
         </div>
 

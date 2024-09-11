@@ -1,7 +1,8 @@
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, useLocation } from 'react-router-dom';
 import styles from './Header.module.scss';
 import classNames from 'classnames';
 import { useAppSelector } from '../../app/hooks';
+import { useEffect, useState } from 'react';
 
 export const Header = () => {
   const getLinkClass = ({ isActive }: { isActive: boolean }) =>
@@ -16,17 +17,33 @@ export const Header = () => {
 
   const bucketAmount = useAppSelector(state => state.addedBucket.items).length;
 
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const location = useLocation();
+
+  // Whenever the location changes, close the menu (except when on "/menu" route)
+  useEffect(() => {
+    if (location.pathname === '/menu') {
+      setIsMenuOpen(true);
+    } else {
+      setIsMenuOpen(false);
+    }
+  }, [location]);
+
+  const handleMenuToggle = () => {
+    setIsMenuOpen(prevState => !prevState);
+  };
+
   return (
     <div className={styles.topbar}>
       <div className={styles.topbarLogoAndButtons}>
         <Link to="/home">
-          <img src="../../img/header/Logo.svg" alt="logoTop" />
+          <img src="img/header/Logo.svg" alt="logoTop" />
         </Link>
 
         <nav className={styles.topbarLogoAndButtons_buttons}>
           <ul>
             <li>
-              <NavLink to="/home" className={getLinkClass}>
+              <NavLink to="/" className={getLinkClass}>
                 home
               </NavLink>
             </li>
@@ -54,7 +71,7 @@ export const Header = () => {
           <NavLink to="/favourites" className={getAdditionalButtonsClass}>
             <img
               className={styles.topbarIcons_icon_inside}
-              src="../../img/icons/favourites.svg"
+              src="img/icons/favourites.svg"
               alt="favourites"
             />
             <div className={styles.topbarIcons_icon__amountFav}>
@@ -66,7 +83,7 @@ export const Header = () => {
           <NavLink to="/bucket" className={getAdditionalButtonsClass}>
             <img
               className={styles.topbarIcons_icon_inside}
-              src="../../img/icons/bucket_header.svg"
+              src="img/icons/bucket_header.svg"
               alt="bucket_header"
             />
             <div className={styles.topbarIcons_icon__amountBucket}>
@@ -76,8 +93,24 @@ export const Header = () => {
         </div>
       </div>
 
-      <div className={styles.topbarIcons_menu}>
-        <img src="../../img/icons/Menu.svg" alt="menu" />
+      <div className={styles.topbarIcons_menu} onClick={handleMenuToggle}>
+        {isMenuOpen ? (
+          <Link to="/home">
+            <img
+              className={styles.topbarIcons_menu_button}
+              src="img/icons/Close-black.svg"
+              alt="menu-close"
+            />
+          </Link>
+        ) : (
+          <Link to="/menu">
+            <img
+              className={styles.topbarIcons_menu_button}
+              src="img/icons/Menu.svg"
+              alt="menu"
+            />
+          </Link>
+        )}
       </div>
     </div>
   );

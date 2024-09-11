@@ -17,7 +17,7 @@ const initialState: SetProductsInterface = {
 export const getProductsAsync = createAsyncThunk(
   'products/getProductsSlice',
   async () => {
-    const response = await fetch('/api/products.json');
+    const response = await fetch('api/products.json');
     const products = await response.json();
 
     return products;

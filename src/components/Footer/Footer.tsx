@@ -13,7 +13,7 @@ export const Footer = () => {
           <Link to={'../'}>
             <img
               className={styles.footer_wrapper_logo}
-              src="../../img/header/Logo.svg"
+              src="img/header/Logo.svg"
               alt="footer_logo"
               onClick={scrollToTop}
             />
@@ -43,7 +43,7 @@ export const Footer = () => {
             <p>Back to top</p>
             <img
               onClick={scrollToTop}
-              src="../../img/icons/Chevron.svg"
+              src="img/icons/Chevron.svg"
               alt="toTop"
             />
           </div>

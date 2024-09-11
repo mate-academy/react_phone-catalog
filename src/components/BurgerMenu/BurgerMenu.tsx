@@ -1,0 +1,47 @@
+import { Link, NavLink } from 'react-router-dom';
+import styles from './BurgerMenu.module.scss';
+
+export const BurgerMenu = () => {
+  return (
+    <aside className={styles.menu}>
+      <nav className={styles.menu_buttons}>
+        <ul>
+          <li>
+            <NavLink to="/home" className={styles.menu_buttons_buttons}>
+              home
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/phones" className={styles.menu_buttons_buttons}>
+              phones
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/tablets" className={styles.menu_buttons_buttons}>
+              tablets
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/accessories" className={styles.menu_buttons_buttons}>
+              accessories
+            </NavLink>
+          </li>
+        </ul>
+      </nav>
+
+      <div className={styles.menu_icons}>
+        <div className={styles.menu_icons_icon}>
+          <Link to={'../favourites'}>
+            <img src="img/icons/favourites.svg" alt="" />
+          </Link>
+        </div>
+        <div className={styles.menu_icons_line}></div>
+        <div className={styles.menu_icons_icon}>
+          <Link to={'../bucket'}>
+            <img src="img/icons/bucket_header.svg" alt="" />
+          </Link>
+        </div>
+      </div>
+    </aside>
+  );
+};

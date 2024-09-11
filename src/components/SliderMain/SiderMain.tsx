@@ -1,14 +1,12 @@
 import { useEffect, useState } from 'react';
 import styles from './SliderMain.module.scss';
 
-// ../../../public/img/homePage/iphone12-logo.jpg
-
 export const SliderMain = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const images = [
-    '../../img/homePage/iphone12-logo.jpg',
-    '../../img/homePage/iphone11watersplash.jpg',
-    '../../img/homePage/iphone-11-vs-iphone-12-vs-13.jpg',
+    'img/homePage/iphone12-logo.jpg',
+    'img/homePage/iphone11watersplash.jpg',
+    'img/homePage/iphone-11-vs-iphone-12-vs-13.jpg',
   ];
 
   const handlePrev = () => {
@@ -35,7 +33,7 @@ export const SliderMain = () => {
     <>
       <div className={styles.slider}>
         <button className={styles.slider_buttonLeft} onClick={handlePrev}>
-          <img src="../../img/icons/Chevron-left.svg" alt="Previous" />
+          <img src="img/icons/Chevron-left.svg" alt="Previous" />
         </button>
 
         <div
@@ -44,7 +42,7 @@ export const SliderMain = () => {
         ></div>
 
         <button className={styles.slider_buttonRight} onClick={handleNext}>
-          <img src="../../img/icons/Chevron-right.svg" alt="Next" />
+          <img src="img/icons/Chevron-right.svg" alt="Next" />
         </button>
       </div>
 

@@ -17,7 +17,7 @@ const initialState: SetTabletsProps = {
 export const getTabletsAsync = createAsyncThunk(
   'products/getTabletsSlice',
   async () => {
-    const response = await fetch('/api/tablets.json');
+    const response = await fetch('api/tablets.json');
 
     const tabletsProducts = await response.json();
 

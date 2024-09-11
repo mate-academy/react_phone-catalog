@@ -42,7 +42,7 @@ export const BucketPage = () => {
       <div className={styles.bucket}>
         <Link to={'../'}>
           <div className={styles.bucket__buttonBack}>
-            <img src="../../img/icons/Chevron-left.svg" alt="back" />
+            <img src="img/icons/Chevron-left.svg" alt="back" />
             <p>Back</p>
           </div>
         </Link>
@@ -73,7 +73,7 @@ export const BucketPage = () => {
                         // eslint-disable-next-line max-len
                         styles.bucket__generalProducts_products_product_firstSection_close
                       }
-                      src="/../../img/icons/Close.svg"
+                      src="img/icons/Close.svg"
                       alt="img"
                     />
                     <img
@@ -114,12 +114,9 @@ export const BucketPage = () => {
                         }}
                       >
                         {product.quantity === 1 ? (
-                          <img
-                            src="/../../img/icons/Minus-dis.svg"
-                            alt="minus"
-                          />
+                          <img src="img/icons/Minus-dis.svg" alt="minus" />
                         ) : (
-                          <img src="/../../img/icons/Minus.svg" alt="minus" />
+                          <img src="img/icons/Minus.svg" alt="minus" />
                         )}
                       </div>
                       <p>{product.quantity}</p>
@@ -132,7 +129,7 @@ export const BucketPage = () => {
                           handleAddQuantity(product.id);
                         }}
                       >
-                        <img src="/../../img/icons/Plus.svg" alt="plus" />
+                        <img src="img/icons/Plus.svg" alt="plus" />
                       </div>
                     </div>
 

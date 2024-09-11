@@ -1,5 +1,5 @@
 import { useMemo, useState } from 'react';
-import { Link, useParams, useSearchParams } from 'react-router-dom';
+import { Link, useLocation, useSearchParams } from 'react-router-dom';
 import styles from './GeneralProductsPage.module.scss';
 import { GeneralItemsList } from '../GeneralItemsList';
 import { Loader } from '../Loader';
@@ -11,7 +11,7 @@ export const GeneralProductsPage = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [selectedOrder, setSelectedOrder] = useState('Select');
   const [selectedAmount, setSelectedAmount] = useState('All');
-  const { category } = useParams();
+  const category = useLocation().pathname.slice(1);
   const generalProducts = useAppSelector(state => state.products.items);
   const loadedGeneralProducts = useAppSelector(state => state.products.loaded);
   const errorGeneralProducts = useAppSelector(state => state.products.hasError);
@@ -126,9 +126,9 @@ export const GeneralProductsPage = () => {
     <div className={styles.phonesPage}>
       <div className={styles.phonesPage_route}>
         <Link to={'/'}>
-          <img src="../../img/icons/home.svg" alt="home" />
+          <img src="img/icons/Home.svg" alt="home" />
         </Link>
-        <img src="../../img/icons/Chevron-right-dis.svg" alt="home" />
+        <img src="img/icons/Chevron-right-dis.svg" alt="home" />
         <p>{ucFirst(category)}</p>
       </div>
 
@@ -146,7 +146,7 @@ export const GeneralProductsPage = () => {
             <p className={styles.phonesPage_filters_dropdown_dropbtn_text}>
               {selectedOrder}
             </p>
-            <img src="../../img/icons/Chevron_down.svg" alt="" />
+            <img src="img/icons/Chevron_down.svg" alt="" />
           </a>
           <div className={styles.phonesPage_filters_dropdown_dropdownContent}>
             <a onClick={() => handleProcedure('order', '')}>
@@ -172,7 +172,7 @@ export const GeneralProductsPage = () => {
             <p className={styles.phonesPage_filters_dropdown_dropbtn_text}>
               {selectedAmount}
             </p>
-            <img src="../../img/icons/Chevron_down.svg" alt="" />
+            <img src="img/icons/Chevron_down.svg" alt="" />
           </a>
           <div className={styles.phonesPage_filters_dropdown_dropdownContent}>
             <a onClick={() => handleProcedure('perPage', 'All')}>

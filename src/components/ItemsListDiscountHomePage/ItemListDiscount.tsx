@@ -52,8 +52,8 @@ export const DiscountItemList = () => {
             <img
               src={
                 currentIndex === 0
-                  ? '../../img/icons/Chevron-left-dis.svg'
-                  : '../../img/icons/Chevron-left.svg'
+                  ? 'img/icons/Chevron-left-dis.svg'
+                  : 'img/icons/Chevron-left.svg'
               }
               alt="left"
             />
@@ -65,8 +65,8 @@ export const DiscountItemList = () => {
             <img
               src={
                 currentIndex + itemsPerPage >= products.length
-                  ? '../../img/icons/Chevron-right-dis.svg'
-                  : '../../img/icons/Chevron-right.svg'
+                  ? 'img/icons/Chevron-right-dis.svg'
+                  : 'img/icons/Chevron-right.svg'
               }
               alt="right"
             />

@@ -156,12 +156,14 @@
 
     &_menu {
       display: flex;
+      align-items: center;
+      justify-content: center;
+      border-left: 1px solid;
+      border-color: $color-for-borders;
 
-      img {
+      &_button {
         width: 16px;
         padding: 0 24px;
-        border-left: 1px solid;
-        border-color: $color-for-borders;
 
       }
 

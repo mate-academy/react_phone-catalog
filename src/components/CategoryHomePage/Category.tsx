@@ -21,7 +21,7 @@ export const Category = () => {
     <>
       <Link to={'phones'} className={styles.category_blocks_block}>
         <div>
-          <img src="../../img/homePage/category/Phones.svg" alt="" />
+          <img src="img/homePage/category/Phones.svg" alt="" />
           <h3>Mobile phones</h3>
           <p>{`${mobilePhonesAmount} models`}</p>
         </div>
@@ -29,7 +29,7 @@ export const Category = () => {
 
       <Link to={'tablets'} className={styles.category_blocks_block}>
         <div>
-          <img src="../../img/homePage/category/Tablets.svg" alt="" />
+          <img src="img/homePage/category/Tablets.svg" alt="" />
           <h3>Tablets</h3>
           <p>{`${tabletsAmount} models`}</p>
         </div>
@@ -37,7 +37,7 @@ export const Category = () => {
 
       <Link to={'accessories'} className={styles.category_blocks_block}>
         <div>
-          <img src="../../img/homePage/category/Accessories.svg" alt="" />
+          <img src="img/homePage/category/Accessories.svg" alt="" />
           <h3>Accessories</h3>
           <p>{`${accessoriesAmount} models`}</p>
         </div>
