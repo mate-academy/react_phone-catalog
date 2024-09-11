@@ -52,6 +52,9 @@ export const CartProductsList = memo(
         return (acc += item.price * count);
       }, 0);
 
+    const coutCalcucation = (localStorageItems: ICartItemsLocalStorage[]) =>
+      localStorageItems.reduce((count, item) => (count += item.count), 0);
+
     const removeCart = useCallback(
       (itemId: string) => {
         const filterItems = (item: Product | ICartItemsLocalStorage) =>
@@ -63,7 +66,7 @@ export const CartProductsList = memo(
 
         setCartLocalStorage(currentCartLocalStorage);
         setProducts(prev => prev.filter(filterItems));
-        totalCountHandler(newItems.length);
+        totalCountHandler(coutCalcucation(currentCartLocalStorage));
         totalAmountHandler(costCalcucation(newItems, currentCartLocalStorage));
 
         if (currentCartLocalStorage.length === 0) {
@@ -107,6 +110,7 @@ export const CartProductsList = memo(
         ) {
           cartLocalStorage[currentCartLocalStorageIndex].count--;
           setCartLocalStorage([...cartLocalStorage]);
+
           minusAmount?.(amount);
 
           if (amount === 0) {
@@ -141,7 +145,7 @@ export const CartProductsList = memo(
             setProducts(items);
             setIsEmptyHandler(false);
             totalAmountHandler(costCalcucation(items, cartLocalStorage));
-            totalCountHandler(items.length);
+            totalCountHandler(coutCalcucation(cartLocalStorage));
           }
         })
         .finally(() => isLoadingHandler(false));

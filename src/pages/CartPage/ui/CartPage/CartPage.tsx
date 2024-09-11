@@ -30,6 +30,7 @@ export default function CartPage() {
 
   const plusTotalAmount = useCallback((amount: number) => {
     setTotalAmount(prev => prev + amount);
+    setTotalCount(prev => prev + 1);
   }, []);
 
   const minusTotalAmount = useCallback(
@@ -38,6 +39,7 @@ export default function CartPage() {
         setTotalAmount(0);
       } else {
         setTotalAmount(prev => prev - amount);
+        setTotalCount(prev => prev - 1);
       }
     },
     [totalAmount],
