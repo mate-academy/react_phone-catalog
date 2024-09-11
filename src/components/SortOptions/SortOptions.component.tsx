@@ -1,25 +1,29 @@
 type Props = {
   handleSortBy: (e: React.ChangeEvent<HTMLSelectElement>) => void;
   handlePerPage: (e: React.ChangeEvent<HTMLSelectElement>) => void;
+  sort: string;
+  perPage: string;
 };
 
 export const SortOptions: React.FC<Props> = ({
   handleSortBy,
   handlePerPage,
+  sort,
+  perPage,
 }) => {
   return (
     <article className="sortOptions">
       <div className="sortOptions-sort">
         <span>Sort by:</span>
-        <select onChange={handleSortBy} defaultValue={'newest'}>
-          <option value="newest">Newest</option>
-          <option value="alphabetically">Alphabetically</option>
-          <option value="cheapest">Cheapest</option>
+        <select onChange={handleSortBy} value={sort}>
+          <option value="age">Newest</option>
+          <option value="title">Alphabetically</option>
+          <option value="price">Cheapest</option>
         </select>
       </div>
       <div className="sortOptions-perPage">
         <span>Items on page:</span>
-        <select onChange={handlePerPage} defaultValue={'all'}>
+        <select onChange={handlePerPage} value={perPage}>
           <option value="4">4</option>
           <option value="8">8</option>
           <option value="16">16</option>

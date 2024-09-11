@@ -5,6 +5,7 @@ import { ProductSummary } from '../../types/ProductSummary';
 import { getPageNumbers } from '../../utils/getPageNumbers';
 import { Pagination } from '../Pagination/Pagination.component';
 import { SortOptions } from '../SortOptions/SortOptions.component';
+import { useSearchParams } from 'react-router-dom';
 
 type Props = {
   category: Category;
@@ -12,33 +13,47 @@ type Props = {
 };
 
 export const ProductGrid: React.FC<Props> = ({ category, pagination }) => {
+  const [searchParams, setSearchParams] = useSearchParams();
+  const sort = searchParams.get('sort') || '';
+  const perPage = searchParams.get('perPage') || '';
   const [productsSortedBy, setProductsSortedBy] = useState<ProductSummary[]>(
     [],
   );
   let sortedProducts = [...category.products];
-  const [perPage, setPerPage] = useState<number>(sortedProducts.length);
+  const [itemsPerPage, setItemsPerPage] = useState<number>(
+    sortedProducts.length,
+  );
   const [currentPage, setCurrentPage] = useState<number>(1);
-  const pageNumbers: number[] = getPageNumbers(sortedProducts.length, perPage);
+  const pageNumbers: number[] = getPageNumbers(
+    sortedProducts.length,
+    itemsPerPage,
+  );
   const currentIndex = pageNumbers.indexOf(currentPage);
-  const fromIndex = currentIndex * perPage;
+  const fromIndex = currentIndex * itemsPerPage;
   const toIndex =
-    fromIndex + perPage <= sortedProducts.length
-      ? fromIndex + perPage
+    fromIndex + itemsPerPage <= sortedProducts.length
+      ? fromIndex + itemsPerPage
       : sortedProducts.length;
 
   const handleSortBy = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    switch (e.target.value) {
-      case 'newest':
+    const params = new URLSearchParams(searchParams);
+
+    params.set('sort', e.target.value);
+
+    setSearchParams(params);
+
+    switch (sort) {
+      case 'age':
         sortedProducts = sortedProducts.sort((a, b) => b.year - a.year);
         setProductsSortedBy(sortedProducts);
         break;
-      case 'alphabetically':
+      case 'title':
         sortedProducts = sortedProducts.sort((a, b) =>
           b.name.localeCompare(a.name),
         );
         setProductsSortedBy(sortedProducts);
         break;
-      case 'cheapest':
+      case 'price':
         sortedProducts = sortedProducts.sort((a, b) => b.price - a.price);
         setProductsSortedBy(sortedProducts);
         break;
@@ -52,13 +67,19 @@ export const ProductGrid: React.FC<Props> = ({ category, pagination }) => {
   };
 
   const handlePerPage = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    switch (e.target.value) {
+    const params = new URLSearchParams(searchParams);
+
+    params.set('perPage', e.target.value);
+
+    setSearchParams(params);
+
+    switch (perPage) {
       case 'all':
-        setPerPage(sortedProducts.length);
+        setItemsPerPage(sortedProducts.length);
         setCurrentPage(1);
         break;
       default:
-        setPerPage(+e.target.value);
+        setItemsPerPage(+e.target.value);
         setCurrentPage(1);
     }
   };
@@ -70,7 +91,9 @@ export const ProductGrid: React.FC<Props> = ({ category, pagination }) => {
   };
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  useEffect(() => setProductsSortedBy(sortedProducts), [category]);
+  useEffect(() => {
+    setProductsSortedBy(sortedProducts);
+  }, [category, sort, perPage]);
 
   return (
     <>
@@ -78,6 +101,8 @@ export const ProductGrid: React.FC<Props> = ({ category, pagination }) => {
         <SortOptions
           handlePerPage={handlePerPage}
           handleSortBy={handleSortBy}
+          sort={sort}
+          perPage={perPage}
         />
       )}
       <article className="productGrid">
