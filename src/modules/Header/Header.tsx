@@ -14,7 +14,7 @@ export const Header: FC = () => {
   const { isOpen } = useMenu();
 
   return (
-    <header className={styles.header}>
+    <header className={classNames(styles.header)}>
       <Link to={HOME} className={styles.logo}>
         <img src={logoUrl} alt="" className={styles.img} />
       </Link>

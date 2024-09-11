@@ -1,18 +1,17 @@
-import styles from './App.module.scss';
-
 import { Outlet } from 'react-router-dom';
 import { Header } from './modules/Header';
 import { Footer } from './components/Footer';
-import { MenuProvider } from './contexts/MenuProvider';
+import classNames from 'classnames';
+import styles from './App.module.scss';
 
-export const App = () => (
-  <div className={styles.app}>
-    <MenuProvider>
+export const App = () => {
+  return (
+    <div className={classNames(styles.app)}>
       <Header />
-    </MenuProvider>
-    <div className={styles.container}>
-      <Outlet />
+      <div className={styles.container}>
+        <Outlet />
+      </div>
+      <Footer />
     </div>
-    <Footer />
-  </div>
-);
+  );
+};

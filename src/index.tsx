@@ -5,11 +5,14 @@ import { ThemeProvider } from './contexts/ThemeProvider';
 import 'bulma/css/bulma.css';
 import '@fortawesome/fontawesome-free/css/all.css';
 import { AppRouter } from './router/AppRouter';
+import { MenuProvider } from './contexts/MenuProvider';
 
 createRoot(document.getElementById('root') as HTMLDivElement).render(
   <ThemeProvider>
     <Router>
-      <AppRouter />
+      <MenuProvider>
+        <AppRouter />
+      </MenuProvider>
     </Router>
   </ThemeProvider>,
 );
