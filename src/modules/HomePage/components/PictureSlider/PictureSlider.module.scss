@@ -1,0 +1,134 @@
+@import '../../../../styles/main';
+
+.container {
+  @extend %container;
+}
+
+.bannerContainer {
+  padding: 0 32px;
+  margin: 0 auto;
+  max-width: $breakpoint-desktop;
+  padding-bottom: 26px;
+  width: 100%;
+
+  @include on-tablet {
+    padding: 0 24px;
+  }
+
+  @include on-mobile {
+    height: auto;
+    padding: 0;
+    padding-bottom: 26px;
+    aspect-ratio: 1 / 1;
+  }
+
+  :global {
+    .swiper {
+      overflow: visible;
+    }
+    .swiper-slide-prev,
+    .swiper-slide-next {
+      opacity: 0.1;
+    }
+  }
+}
+
+.homeSlider {
+  height: 100%;
+
+  :global {
+    .swiper-wrapper {
+      height: 100%;
+    }
+
+    .swiper-horizontal > .swiper-pagination-bullets,
+    .swiper-pagination-bullets.swiper-pagination-horizontal {
+      bottom: -28px;
+
+      @include on-mobile {
+        bottom: -28px;
+      }
+    }
+    .swiper-button-next:after,
+    .swiper-button-prev:after {
+      content: '';
+    }
+    .swiper-horizontal > .swiper-pagination-bullets .swiper-pagination-bullet,
+    .swiper-pagination-horizontal.swiper-pagination-bullets
+      .swiper-pagination-bullet {
+      margin: 0 7px;
+    }
+
+    .swiper-button-next,
+    .swiper-rtl .swiper-button-prev {
+      right: 0px;
+    }
+
+    .swiper-button-prev,
+    .swiper-rtl .swiper-button-next {
+      left: 0px;
+    }
+  }
+}
+
+.customBullet {
+  background-color: var(--color-secondary);
+  width: 14px;
+  height: 4px;
+  border-radius: 0;
+  margin: 0 7px;
+}
+
+.customBulletActive {
+  background-color: var(--color-primary);
+}
+
+.swiperButton {
+  background-image: none;
+  height: 400px;
+  width: 32px;
+  top: 22px;
+  background-color: var(--color-icons);
+  border: 1px solid var(--color-surface);
+
+  &:hover {
+    border: 1px solid var(--color-primary);
+    background-color: var(--color-hover);
+  }
+
+  @include on-desktop {
+    height: 221px;
+  }
+
+  @include on-mobile {
+    display: none;
+  }
+}
+
+.swiperSlide {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-inline: 48px;
+
+  @include on-mobile {
+    padding-inline: 0;
+  }
+
+  img {
+    display: block;
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+
+    @include on-desktop {
+      height: 221px;
+    }
+
+    @include on-mobile {
+      height: 100%;
+      aspect-ratio: 1 / 1;
+    }
+  }
+}

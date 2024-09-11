@@ -1,20 +1,21 @@
-@import "./vars";
+@import './vars';
+@import './mixins';
 
 @mixin h1-tablet {
   font-family: Mont, sans-serif;
   font-size: 48px;
   line-height: 56px;
   letter-spacing: -0.01em;
-  font-weight: bold;
+  font-weight: 800;
   color: var(--color-primary);
 }
 
-@mixin h2-tablet {
+@mixin h1-mobile-mix {
   font-family: Mont, sans-serif;
   font-size: 32px;
   line-height: 41px;
   letter-spacing: 0.01em;
-  font-weight: bold;
+  font-weight: 800;
   color: var(--color-primary);
 }
 
@@ -23,7 +24,7 @@
   font-size: 48px;
   line-height: 56px;
   letter-spacing: -0.01em;
-  font-weight: bold;
+  font-weight: 800;
   color: var(--color-primary);
 }
 
@@ -87,8 +88,6 @@
   line-height: 15.34px;
   letter-spacing: 0;
 }
-
-
 
 %h1-mobile {
   font-family: Mont, sans-serif;

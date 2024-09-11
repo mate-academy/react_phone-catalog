@@ -8,7 +8,7 @@ export const App = () => {
   return (
     <div className={classNames(styles.app)}>
       <Header />
-      <div className={styles.container}>
+      <div>
         <Outlet />
       </div>
       <Footer />

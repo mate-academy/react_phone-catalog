@@ -1,5 +1,4 @@
 @import './vars';
-@import './typography';
 
 @mixin on-desktop {
   @media (max-width: $breakpoint-desktop) {
@@ -79,5 +78,21 @@
     transform: scaleX(0);
     transform-origin: right;
     transition: transform 0.25s;
+  }
+}
+
+%container {
+  margin: 0 auto;
+  max-width: $breakpoint-desktop;
+  width: 100%;
+  padding: 0 32px;
+  flex: 1 1;
+
+  @include on-tablet {
+    padding: 0 24px;
+  }
+
+  @include on-mobile {
+    padding: 0 16px;
   }
 }

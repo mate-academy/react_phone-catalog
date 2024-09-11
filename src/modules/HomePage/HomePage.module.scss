@@ -1,4 +1,27 @@
-.red {
-  display: block;
-  font-size: 120px;
+@import '../../styles/main';
+
+// .home {
+
+.container {
+  @extend %container;
+}
+
+.title {
+  margin: 56px 0;
+
+  @extend %h1-tablet;
+
+  @include on-desktop {
+    margin: 32px 0;
+  }
+
+  @include on-mobile {
+    margin: 24px 0;
+    font-family: Mont, sans-serif;
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+    font-weight: bold;
+    color: var(--color-primary);
+  }
 }
