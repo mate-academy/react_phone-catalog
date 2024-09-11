@@ -23,7 +23,7 @@
   border-radius: 50%;
 
   cursor: pointer;
-  
+
   @include hover(border-color, map-get($colors, gray-primary));
 }
 
@@ -34,7 +34,6 @@
 
   border: 2px solid map-get($colors, white);
   border-radius: 50%;
-
 }
 
 .isActive {
@@ -43,9 +42,9 @@
 }
 
 .title {
-  @include apply-typography(small);
-
   color: map-get($colors, secondary);
+
+  @include apply-typography(small);
 }
 
 .line {

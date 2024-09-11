@@ -8,9 +8,9 @@
   }
 
   &__title {
-    @include apply-typography(small);
-
     color: map-get($colors, secondary);
+
+    @include apply-typography(small);
   }
 
   &__options {

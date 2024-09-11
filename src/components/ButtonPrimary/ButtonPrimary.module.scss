@@ -8,10 +8,10 @@
   justify-content: center;
 
   &__text {
-    @include apply-typography(p);
-
     padding-block: 12.5px;
 
     color: map-get($colors, white);
+
+    @include apply-typography(p);
   }
 }

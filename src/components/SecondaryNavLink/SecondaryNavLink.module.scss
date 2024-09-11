@@ -1,6 +1,4 @@
 .secondaryNavLink {
-  @include box-shadow(custom-left);
-
   position: relative;
 
   display: flex;
@@ -52,4 +50,6 @@
       right: 3px;
     }
   }
+
+  @include box-shadow(custom-left);
 }

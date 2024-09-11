@@ -1,20 +1,16 @@
 .categories {
   grid-column: 1 / -1;
 
-  @include responsive-grid;
-
   row-gap: 32px;
 
-  @include on-tablet {
-    row-gap: 24px;
-  }
+  @include responsive-grid;
 
   &__title {
-    @include apply-typography(h2);
-
     grid-column: 1 / -1;
 
     margin-bottom: 24px;
+
+    @include apply-typography(h2);
 
     @include on-tablet {
       grid-column: span 10;
@@ -25,5 +21,9 @@
     @include on-desktop {
       grid-area: 1 / 1 / 1 / 12;
     }
+  }
+
+  @include on-tablet {
+    row-gap: 24px;
   }
 }

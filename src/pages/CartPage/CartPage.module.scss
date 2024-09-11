@@ -1,24 +1,5 @@
 .cart {
-  @include grid(mobile);
-  @include content-padding-inline;
-
-  @include on-tablet {
-    @include grid(tablet);
-  }
-
-  @include on-desktop {
-    @include grid(desktop);
-  }
-
   margin-bottom: 56px;
-  
-  @include on-tablet {
-    margin-bottom: 64px;
-  }
-
-  @include on-desktop {
-    margin-bottom: 80px;
-  }
 
   &__buttonWrapper {
     margin-block: 24px;
@@ -27,12 +8,12 @@
   }
 
   &__title {
-    @include apply-typography(h1);
-
     grid-column: 1 / -1;
 
     font-weight: 800;
     margin-bottom: 32px;
+
+    @include apply-typography(h1);
   }
 
   &__items {
@@ -57,12 +38,27 @@
   }
 
   &__emptyText {
-    @include apply-typography(p);
-
     font-weight: 500;
 
     grid-column: 1 / -1;
 
     margin-block: 16px;
+
+    @include apply-typography(p);
+  }
+
+  @include grid(mobile);
+  @include content-padding-inline;
+
+  @include on-tablet {
+    margin-bottom: 64px;
+
+    @include grid(tablet);
+  }
+
+  @include on-desktop {
+    margin-bottom: 80px;
+
+    @include grid(desktop);
   }
 }

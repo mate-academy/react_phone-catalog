@@ -1,18 +1,20 @@
 .block {
-  grid-column: 1 / -1; 
+  & {
+    grid-column: 1 / -1;
 
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
 
-  &__name {
-    @include apply-typography(h1);
-  }
+    &__name {
+      @include apply-typography(h1);
+    }
 
-  &__amount {
-    @include apply-typography(p);
+    &__amount {
+      color: map-get($colors, secondary);
+      font-weight: 600;
 
-    color: map-get($colors, secondary);
-    font-weight: 600;
+      @include apply-typography(p);
+    }
   }
 }

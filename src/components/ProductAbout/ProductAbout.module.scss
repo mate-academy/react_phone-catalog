@@ -5,10 +5,6 @@
   flex-direction: column;
   gap: 32px;
 
-  @include on-desktop {
-    grid-column: 1 / 13;
-  }
-
   &__titleBlock {
     display: flex;
     flex-direction: column;
@@ -16,9 +12,9 @@
   }
 
   &__title {
-    @include apply-typography(h3);
-
     font-weight: 700;
+
+    @include apply-typography(h3);
   }
 
   &__line {
@@ -33,15 +29,19 @@
   }
 
   &__sectionTitle {
-    @include apply-typography(h4);
-
     font-weight: 700;
+
+    @include apply-typography(h4);
   }
 
   &__text {
-    @include apply-typography(p);
-
     font-weight: 600;
     color: map-get($colors, secondary);
+
+    @include apply-typography(p);
+  }
+
+  @include on-desktop {
+    grid-column: 1 / 13;
   }
 }

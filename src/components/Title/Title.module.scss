@@ -1,10 +1,11 @@
 .title {
-  @include apply-typography(h1);
   color: map-get($colors, gray-primary);
 
   grid-column: 1 / -1;
 
   margin-bottom: 24px;
+
+  @include apply-typography(h1);
 
   @include on-tablet {
     margin-bottom: 32px;

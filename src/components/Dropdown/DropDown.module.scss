@@ -20,15 +20,13 @@
   }
 
   &__description {
-    @include apply-typography(small);
-
     font-weight: 700;
     color: map-get($colors, secondary);
+
+    @include apply-typography(small);
   }
 
   &__list {
-    @include apply-typography(button);
-
     cursor: pointer;
 
     display: flex;
@@ -39,7 +37,13 @@
 
     padding: 10px 12px;
 
-    @include hover(border-color, map-get($colors, secondary), map-get($duration, '0.3'), ease);
+    @include apply-typography(button);
+    @include hover(
+      border-color,
+      map-get($colors, secondary),
+      map-get($duration, '0.3'),
+      ease
+    );
   }
 
   &__options {
@@ -62,15 +66,20 @@
   }
 
   &__option {
-    @include apply-typography(button);
-
     cursor: pointer;
     padding: 6px 12px;
 
     font-weight: 500;
     color: map-get($colors, secondary);
 
-    @include hover(color, map-get($colors, gray-primary), map-get($duration, '0.3'), ease);
+    @include apply-typography(button);
+
+    @include hover(
+      color,
+      map-get($colors, gray-primary),
+      map-get($duration, '0.3'),
+      ease
+    );
   }
 
   &__activeOption {

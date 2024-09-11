@@ -24,11 +24,11 @@
   }
 
   &__amount {
-    @include apply-typography(p);
-
     font-weight: 600;
 
     color: map-get($colors, secondary);
+
+    @include apply-typography(p);
 
     @include on-tablet {
       font-weight: 600;

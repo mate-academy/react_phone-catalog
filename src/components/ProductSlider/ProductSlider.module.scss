@@ -5,10 +5,11 @@
   grid-column: 1 / -1;
 
   &__wrapper {
-    @include responsive-grid;
     row-gap: 24px;
 
     margin-bottom: 0;
+
+    @include responsive-grid;
 
     @include on-tablet {
       --slide-width: calc(41.67% - 8px);
@@ -22,12 +23,12 @@
   }
 
   &__title {
-    @include apply-typography(h2);
-
     grid-column: span 2;
     justify-self: start;
 
     margin-bottom: 0;
+
+    @include apply-typography(h2);
 
     @include on-tablet {
       grid-column: span 10;

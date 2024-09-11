@@ -3,15 +3,15 @@
   justify-content: space-between;
 
   &__label {
-    @include apply-typography(small);
-    
     color: map-get($colors, secondary);
+
+    @include apply-typography(small);
   }
 
   &__text {
-    @include apply-typography(small);
-    
     color: map-get($colors, secondary);
+
+    @include apply-typography(small);
   }
 }
 
@@ -26,8 +26,7 @@
 }
 
 .spec__context.spec__label,
-.spec__context.spec__text,
-{
+.spec__context.spec__text {
   @include apply-typography(p);
 }
 

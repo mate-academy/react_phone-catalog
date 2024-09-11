@@ -1,15 +1,15 @@
 .list {
   @include content-padding-inline;
-  
+
   @include on-desktop {
     max-width: 1136px;
     margin-inline: auto;
   }
 
   &__content {
-    @include responsive-grid;
-
     margin-bottom: 64px;
+
+    @include responsive-grid;
   }
 
   &__dropdowns {
@@ -28,9 +28,9 @@
   }
 
   &__products {
-    @include responsive-grid;
-
     grid-column: 1 / -1;
     row-gap: 40px;
+
+    @include responsive-grid;
   }
 }

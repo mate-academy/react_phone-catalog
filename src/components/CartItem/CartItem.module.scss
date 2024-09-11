@@ -41,8 +41,6 @@
   }
 
   &__link {
-    @include apply-typography(p);
-
     display: flex;
     align-items: center;
     gap: 16px;
@@ -51,6 +49,8 @@
     color: map-get($colors, gray-primary);
     display: flex;
     flex-grow: 1;
+
+    @include apply-typography(p);
 
     @include on-tablet {
       font-weight: 600;
@@ -66,17 +66,17 @@
   }
 
   &__amount {
-    @include apply-typography(p);
-
     font-weight: 600;
+
+    @include apply-typography(p);
   }
 
   &__cost {
-    @include apply-typography(h2);
-
     width: 80px;
     text-align: right;
     font-weight: 800;
+
+    @include apply-typography(h2);
 
     @include on-tablet {
       @include apply-typography(h3);

@@ -1,16 +1,14 @@
 .footer {
-  @include box-shadow(custom-top);
-
   &__content {
-    @include content-padding-inline;
-    @include responsive-grid;
-
     align-items: center;
     width: 100%;
     max-width: 1136px;
     row-gap: 32px;
 
     padding-block: 32px;
+
+    @include content-padding-inline;
+    @include responsive-grid;
 
     @include on-desktop {
       margin-inline: auto;
@@ -53,11 +51,12 @@
   }
 
   &__link {
-    @include apply-typography(a);
     position: relative;
 
     width: fit-content;
     color: map-get($colors, $key: secondary);
+
+    @include apply-typography(a);
 
     @include hover(color, map-get($colors, gray-primary));
 
@@ -65,7 +64,7 @@
       position: absolute;
       bottom: -7px;
       left: 0;
-      
+
       content: '';
       background-color: map-get($colors, $key: gray-primary);
 
@@ -102,9 +101,9 @@
     }
 
     &__text {
-      @include apply-typography(small);
-
       color: map-get($colors, secondary);
+
+      @include apply-typography(small);
     }
 
     &__link {
@@ -125,4 +124,6 @@
       transform: rotate(-90deg);
     }
   }
+
+  @include box-shadow(custom-top);
 }

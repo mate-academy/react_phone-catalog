@@ -37,14 +37,14 @@
   }
 
   &__nav {
-    @include content-padding-inline;
-
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 16px;
 
     margin-top: 24px;
+
+    @include content-padding-inline;
   }
 
   &__footer {

@@ -9,12 +9,12 @@
   cursor: pointer;
 
   &__label {
-    @include apply-typography(small);
-    @include hover(color, map-get($colors, gray-primary));
-
     margin-top: 2px;
     line-height: 13px;
     color: map-get($colors, secondary);
+
+    @include apply-typography(small);
+    @include hover(color, map-get($colors, gray-primary));
 
     &__notFound {
       color: map-get($colors, gray-primary);
