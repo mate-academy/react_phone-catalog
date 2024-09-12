@@ -1,0 +1,50 @@
+@mixin on-tablet {
+  @media (min-width: 640px) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media (min-width: 1200px) {
+    @content;
+  }
+}
+
+@mixin page-grid {
+  @media (min-width: 320px) {
+    display: grid;
+    grid-template-columns: repeat(4, 60px);
+    column-gap: 16px;
+  }
+
+  @media (min-width: 640px) {
+    display: grid;
+    grid-template-columns: repeat(12, 35px);
+    column-gap: 16px;
+  }
+  
+  @media (min-width: 1200px) {
+    display: grid;
+    grid-template-columns: repeat(24, 32px);
+    column-gap: 16px;
+  }
+}
+
+@mixin padding-inline {
+  margin-inline: auto;
+
+  @media (min-width: 320px) {
+    padding-inline: 16px;
+    max-width: 288px;
+  }
+
+  @media (min-width: 640px) {
+    padding-inline: 24px;
+    max-width: 592px;
+  }
+
+  @media (min-width: 1200px) {
+    padding-inline: 32px;
+    max-width: 1136px;
+  }
+}

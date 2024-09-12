@@ -1,0 +1,101 @@
+@import '../../utils/mixins';
+@import '../../utils/variables';
+
+.basket-item {
+  width: 100%;
+  padding: 16px;
+  border-radius: 16px;
+  box-sizing: border-box;
+  border: 1px solid var(--elements-color);
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+
+  @include on-tablet {
+    flex-direction: row;
+  }
+
+  &__info-box {
+    display: flex;
+    align-items: center;
+    column-gap: 31px;
+  }
+
+  &__remove-button {
+    width: 16px;
+    height: 16px;
+    background-color: var(--white-color);
+    border: none;
+  }
+
+  &__product-image {
+    width: 66px;
+    height: 66px;
+    object-fit: contain;
+  }
+
+  &__product-name {
+    font-family: var(--regular-font-family);
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+    letter-spacing: 0%;
+  }
+
+  &__price-count-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    column-gap: 102px;
+
+    @include on-tablet {
+      column-gap: 46px;
+    }
+  }
+
+  &__count-box {
+    display: flex;
+    column-gap: 12px;
+    align-items: center;
+  }
+
+  &__buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    border: 1px solid var(--elements-color);
+    background-color: var(--white-color);
+    width: 32px;
+    height: 32px;
+    transition: .3s;
+
+    &:hover {
+      border-color: var(--dark-gray-color);
+    }
+
+    &--disabled {
+      pointer-events: none;
+
+      &:hover {
+        border-color: var(--elements-color);
+      }
+    }
+  }
+
+  &__counter {
+    font-family: var(--regular-font-family);
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+  }
+
+  &__product-price {
+    margin: 0;
+    font-family: var(--strong-font-family);
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 140%;
+    letter-spacing: 0%;
+  }
+}

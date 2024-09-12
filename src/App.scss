@@ -1,1 +1,21 @@
-// not empty
+html {
+  position: relative;
+  scroll-behavior: smooth;
+
+  &:has(.hidden-overflow) {
+    overflow: hidden;
+  }
+
+  min-height: 100vh;
+}
+
+* button  {
+  cursor: pointer;
+}
+
+.not-visible-title {
+  display: none;
+  visibility: hidden;
+}
+
+
