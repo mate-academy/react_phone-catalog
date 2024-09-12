@@ -11,7 +11,7 @@ export const ProductsProvider: React.FC<{ children: React.ReactNode }> = ({
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    fetch('/api/products.json')
+    fetch('./api/products.json')
       .then(response => response.json())
       .then(data => {
         setProducts(data);

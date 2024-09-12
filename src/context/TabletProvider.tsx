@@ -11,7 +11,7 @@ export const TabletsProvider: React.FC<{ children: React.ReactNode }> = ({
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    fetch('/api/tablets.json')
+    fetch('./api/tablets.json')
       .then(response => response.json())
       .then(data => {
         setTablets(data);

@@ -11,7 +11,7 @@ export const PhonesProvider: React.FC<{ children: React.ReactNode }> = ({
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    fetch('/api/phones.json')
+    fetch('./api/phones.json')
       .then(response => response.json())
       .then(data => {
         setPhones(data);
