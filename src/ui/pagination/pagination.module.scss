@@ -1,0 +1,22 @@
+.pagination {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: var(--size-8);
+
+  button {
+    border: var(--border-element);
+    font-weight: var(--fw-600);
+    width: var(--size-32);
+    height: var(--size-32);
+    padding: 0;
+
+    &:hover {
+      border-color: var(--primary);
+    }
+
+    &.active {
+      color: var(--white);
+      background-color: var(--primary);
+    }
+  }
+}

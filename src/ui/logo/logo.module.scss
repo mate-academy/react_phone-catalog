@@ -1,0 +1,12 @@
+.logo {
+  height: 100%;
+  align-content: center;
+
+  img {
+    height: var(--size-32);
+  }
+
+  &:hover {
+    scale: 1.1;
+  }
+}

@@ -1,0 +1,18 @@
+.fill {
+  color: var(--red);
+  opacity: 1;
+  scale: 1;
+  animation: pulse 1s infinite;
+
+  @keyframes pulse {
+    0% {
+      scale: 1;
+    }
+    50% {
+      scale: 1.2;
+    }
+    100% {
+      scale: 1;
+    }
+  }
+}

@@ -1,0 +1,15 @@
+.specs {
+  display: flex;
+  flex-direction: column;
+  text-align: end;
+  row-gap: var(--size-8);
+
+  .spec {
+    display: flex;
+    justify-content: space-between;
+
+    p:first-of-type {
+      color: var(--secondary);
+    }
+  }
+}

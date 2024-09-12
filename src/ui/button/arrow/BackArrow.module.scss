@@ -1,0 +1,20 @@
+.back {
+  display: flex;
+  align-items: center;
+  column-gap: 4px;
+  width: 66px;
+  height: 16px;
+  margin-block: 40px var(--size-16);
+  font-weight: var(--fw-700);
+  color: var(--secondary);
+
+  &:hover {
+    color: var(--primary);
+  }
+}
+
+@media (max-width: 639px) {
+  .back {
+    margin-bottom: var(--size-24);
+  }
+}

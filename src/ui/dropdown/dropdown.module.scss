@@ -1,0 +1,31 @@
+.dropdown {
+  display: flex;
+  flex-direction: column;
+  row-gap: 4px;
+  font-weight: var(--fw-700);
+  color: var(--primary);
+
+  label {
+    font-size: var(--size-12);
+    color: var(--secondary);
+    line-height: 1.25;
+  }
+
+  .select {
+    border-color: var(--icons);
+    width: 176px;
+    height: 40px;
+    font-weight: var(--fw-600);
+    font-size: var(--size-14);
+    line-height: 1.5;
+
+    &:hover {
+      border-color: var(--secondary);
+    }
+
+    option {
+      font-weight: var(--fw-500);
+      color: var(--secondary);
+    }
+  }
+}

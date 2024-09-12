@@ -1,0 +1,36 @@
+.images {
+  display: grid;
+  grid-template-columns: 80px repeat(4, 1fr);
+  grid-template-rows: 80px;
+  gap: var(--size-16);
+
+  .image {
+    height: 80px;
+    width: 80px;
+
+    img {
+      object-fit: contain;
+      height: 100%;
+      width: 100%;
+
+      &:hover {
+        scale: 1.2;
+      }
+    }
+
+    &:first-of-type {
+      grid-area: 1 / 2 / 6 / 6;
+      width: 464px;
+      height: 464px;
+
+      img {
+        height: 100%;
+        width: 100%;
+
+        &:hover {
+          scale: 1;
+        }
+      }
+    }
+  }
+}
