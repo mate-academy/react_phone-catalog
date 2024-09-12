@@ -17,7 +17,6 @@ export const GeneralProductsPage = () => {
   const errorGeneralProducts = useAppSelector(state => state.products.hasError);
   const filterOrder = searchParams.get('order') || '';
   const filterAmount = searchParams.get('perPage') || 'All';
-  const [currentPage, setCurrentPage] = useState(1);
   const pageParam = searchParams.get('page') || '1';
 
   // Фільтровані продукти
@@ -50,15 +49,6 @@ export const GeneralProductsPage = () => {
 
   const visibleProducts = handleSortFunction();
 
-  // Зміна сторінки
-  const handlePageChange = (newPage: number) => {
-    const params = new URLSearchParams(searchParams);
-
-    params.set('page', newPage.toString());
-    setSearchParams(params);
-    setCurrentPage(newPage);
-  };
-
   // Назви для фільтрів сортування
   const orderNames: { [key: string]: string } = {
     asc: 'Price Ascending',
@@ -81,10 +71,12 @@ export const GeneralProductsPage = () => {
 
     params.set(type, value);
 
-    if (type === 'order') {
-      setSelectedOrder(orderNames[value]);
-    } else if (type === 'perPage') {
+    // Коли змінюється кількість елементів на сторінці, змінюємо page на 1
+    if (type === 'perPage') {
+      params.set('page', '1'); // Скидаємо page до 1 при зміні кількості елементів
       setSelectedAmount(amountNames[value]);
+    } else if (type === 'order') {
+      setSelectedOrder(orderNames[value]);
     }
 
     if (value === '') {
@@ -98,6 +90,7 @@ export const GeneralProductsPage = () => {
 
     setSearchParams(params);
   };
+
 
   // Рендеринг компонентів
   if (!loadedGeneralProducts) {
@@ -116,11 +109,55 @@ export const GeneralProductsPage = () => {
     return <p>There are no {category} yet.</p>;
   }
 
+  // Функція для зміни сторінки
+  const handlePageChange = (page: number) => {
+    const params = new URLSearchParams(searchParams);
+    params.set('page', page.toString());
+    setSearchParams(params);
+  };
+
   // Обчислення кількості сторінок
-  const totalPages =
-    filterAmount === 'All'
-      ? 1
-      : Math.ceil(specificProducts.length / parseInt(filterAmount, 10));
+  const totalPages = Math.ceil(
+    specificProducts.length /
+    (filterAmount === 'All' ? specificProducts.length : parseInt(filterAmount, 10)),
+  );
+  const currentPage = parseInt(pageParam, 10);
+
+
+  // Створюємо масив для відображення пагінації
+  const pagesToShow = (): (number | string)[] => {
+    const pages: (number | string)[] = [];
+
+    if (totalPages <= 5) {
+      // Якщо сторінок менше 5, показуємо всі
+      for (let i = 1; i <= totalPages; i++) {
+        pages.push(i);
+      }
+    } else {
+      // Показуємо перші кілька сторінок, поточну, і останню
+      if (currentPage > 3) {
+        pages.push(1, 2, '...');
+      } else {
+        for (let i = 1; i <= 3; i++) {
+          pages.push(i);
+        }
+      }
+
+      if (currentPage > 3 && currentPage < totalPages - 2) {
+        pages.push(currentPage - 1, currentPage, currentPage + 1);
+      }
+
+      if (currentPage < totalPages - 2) {
+        pages.push('...', totalPages);
+      } else {
+        for (let i = totalPages - 2; i <= totalPages; i++) {
+          pages.push(i);
+        }
+      }
+    }
+
+    return pages;
+  };
 
   return (
     <div className={styles.phonesPage}>
@@ -194,35 +231,23 @@ export const GeneralProductsPage = () => {
       <GeneralItemsList filteredProducts={visibleProducts} />
 
       <div className={styles.pagination}>
-        <div>
-          {totalPages > 1 &&
-            [...Array(totalPages).slice(+pageParam, +pageParam + 3)].map(
-              (_, index) => (
-                <button
-                  key={index}
-                  onClick={() => handlePageChange(index + 1)}
-                  className={
-                    currentPage === index + 1 ? styles.activePage : styles.page
-                  }
-                >
-                  {index + 1}
-                </button>
-              ),
-            )}
-        </div>
-        <p className={styles.page_dots} onClick={() => handlePageChange(1)}>
-          ...
-        </p>
-        <div>
-          <button
-            onClick={() => handlePageChange(totalPages)}
-            className={
-              currentPage === totalPages + 1 ? styles.activePage : styles.page
-            }
-          >
-            {totalPages + 1}
-          </button>
-        </div>
+        {pagesToShow().map((page, index) =>
+          typeof page === 'number' ? (
+            <button
+              key={index}
+              className={`${styles.pagination__pageButton} ${
+                currentPage === page ? styles.pagination__pageButton_pressed : ''
+              }`}
+              onClick={() => handlePageChange(page)}
+            >
+              {page}
+            </button>
+          ) : (
+            <span key={index} className={styles.dots}>
+              {page}
+            </span>
+          ),
+        )}
       </div>
     </div>
   );

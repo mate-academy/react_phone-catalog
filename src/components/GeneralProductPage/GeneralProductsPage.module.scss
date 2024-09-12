@@ -110,6 +110,24 @@
   flex-direction: row;
   gap: 8px;
   justify-content: center;
+
+  &__pageButton {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    background-color: unset;
+    border: 1px solid;
+    border-color: $color-for-borders;
+    cursor: pointer;
+
+    &_pressed {
+      background-color: $color-for-buttons;
+      color: white;
+    }
+  }
 }
 
 .activePage {
