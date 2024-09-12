@@ -1,23 +1,24 @@
 import styles from './ProductDetailsPage.module.scss';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { Link, useLocation, useParams } from 'react-router-dom';
 import { getAccessory, getPhone, getProducts, getTablet } from '../shared/api';
 import { Product, ProductDetailed } from '../shared/types';
 import classNames from 'classnames';
 import { useSwipeable } from 'react-swipeable';
 import { ProductsSlider } from '../shared/components/ProductsSlider';
+import { CartContext } from '../shared/contexts';
 
 export const ProductDetailsPage = () => {
   const { pathname } = useLocation();
   const { productId } = useParams();
-  const [products, setProducts] = useState([]);
+  const [products, setProducts] = useState<Product[]>([]);
   const [product, setProduct] = useState<ProductDetailed | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [currentImage, setCurrentImage] = useState(0);
   const [isActiveFavorite, setIsActiveFavorite] = useState(false);
-  const [isAdded, setIsAdded] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
   const [isMobile, setIsMobile] = useState(false);
+  const { cartItems, setCartItems } = useContext(CartContext);
 
   const category = pathname.split('/')[1];
 
@@ -25,8 +26,16 @@ export const ProductDetailsPage = () => {
     setIsActiveFavorite(!isActiveFavorite);
   };
 
+  const isAdded = cartItems.some(item => item.itemId === productId);
+
   const handleAddToCart = () => {
-    setIsAdded(!isAdded);
+    if (!isAdded) {
+      const newProduct = products.find(item => item.itemId === productId);
+
+      if (newProduct) {
+        setCartItems([...cartItems, newProduct]);
+      }
+    }
   };
 
   function goBack() {
@@ -320,6 +329,7 @@ export const ProductDetailsPage = () => {
                 [styles.addedToCart]: isAdded,
               })}
               onClick={handleAddToCart}
+              disabled={isAdded}
             >
               {isAdded ? `Added to cart` : `Add to cart`}
             </button>

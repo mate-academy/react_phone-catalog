@@ -1,11 +1,20 @@
 import styles from './Header.module.scss';
 import classNames from 'classnames';
+import { useContext } from 'react';
 import { Link, NavLink } from 'react-router-dom';
+import { CartContext } from '../../contexts';
 
 const getLinkClass = ({ isActive }: { isActive: boolean }) =>
   classNames(styles.navBtn, { [styles.isActiveMenu]: isActive });
 
+const getLinkClassCart = ({ isActive }: { isActive: boolean }) =>
+  classNames(styles.iconLink, styles.cart, { [styles.isActiveCart]: isActive });
+
 export const Header = () => {
+  const { cartItems } = useContext(CartContext);
+
+  const totalInCart = cartItems.reduce(acc => acc + 1, 0);
+
   return (
     <>
       <header className={styles.header}>
@@ -38,7 +47,10 @@ export const Header = () => {
             ></Link>
           </div>
           <div className={styles.iconBox}>
-            <Link to="#" className={`${styles.iconLink} ${styles.cart}`}></Link>
+            <NavLink to="/cart" className={getLinkClassCart}></NavLink>
+            {totalInCart > 0 && (
+              <div className={styles.cartCounter}>{totalInCart} </div>
+            )}
           </div>
         </div>
 

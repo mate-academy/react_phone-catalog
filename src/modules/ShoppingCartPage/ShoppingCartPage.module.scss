@@ -1,0 +1,383 @@
+@import '../../modules/shared/variables';
+@import '../shared/fonts';
+@import '../shared/mixins';
+
+.cartPageContainer {
+  align-self: center;
+  min-height: 100vh;
+}
+
+.cartPage {
+  align-self: center;
+  display: grid;
+  column-gap: 16px;
+  grid-template-columns: repeat($grid-columns, 32px);
+
+  @include on-tablet {
+    grid-template-columns: repeat($grid-columns-tablet, 32px);
+  }
+
+  @include on-mobile {
+    grid-template-columns: repeat($grid-columns-mobile, 60px);
+  }
+}
+
+.backContainer {
+  grid-column: 1 / -1;
+  display: flex;
+  height: 16px;
+  margin-top: 40px;
+
+  @include on-mobile {
+    margin-top: 24px;
+  }
+}
+
+.backSeparator {
+  width: 16px;
+  height: 16px;
+  background-image: url(../../../public/img/icons/chevron-arrow-right-default.svg);
+  rotate: 180deg;
+  margin-right: 4px;
+}
+
+.backBtn {
+  all: unset;
+  font-family: Mont, Helvetica, sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 15.34px;
+  text-align: left;
+  color: $secondary-color;
+  cursor: pointer;
+}
+
+.cartPageTitle {
+  grid-column: 1 / -1;
+  padding-top: 16px;
+  color: $primary-color;
+  font-family: Mont, Helvetica, sans-serif;
+  font-size: 48px;
+  font-weight: 800;
+  line-height: 56px;
+  letter-spacing: -0.01em;
+  text-align: left;
+
+  @include on-mobile {
+    font-size: 32px;
+  }
+}
+
+.emptyCartMessage {
+  color: $primary-color;
+  font-family: Mont, Helvetica, sans-serif;
+  font-size: 24px;
+  font-weight: 800;
+  line-height: 56px;
+  letter-spacing: -0.01em;
+  text-align: left;
+}
+
+.cartList {
+  grid-column: 1 / 17;
+  display: flex;
+  flex-direction: column;
+  padding-top: 32px;
+
+  @include on-tablet {
+    grid-column: 1 / -1;
+  }
+
+  @include on-mobile {
+    grid-column: 1 / -1;
+  }
+}
+
+.itemContainer {
+  display: flex;
+  justify-items: center;
+  align-items: center;
+  width: 100%;
+  height: 128px;
+
+  border: 1px solid $elements-color;
+
+  &:not(:first-child) {
+    margin-top: 16px;
+  }
+
+  @include on-mobile {
+    flex-direction: column;
+    height: 160px;
+  }
+}
+
+.mobileItemContainerName {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 256px;
+  height: 90px;
+  margin: 16px;
+}
+
+.removeBtn {
+  width: 16px;
+  height: 16px;
+  margin-left: 24px;
+  background-image: url(../../../public/img/icons/Buttons/close.svg);
+  background-repeat: no-repeat;
+  background-size: contain;
+  cursor: pointer;
+
+  &:hover {
+    background-image: url(../../../public/img/icons/Buttons/close-hover.svg);
+  }
+
+  @include on-mobile {
+    margin-left: 0;
+  }
+}
+
+.itemImgContainer {
+  margin-left: 24px;
+  width: 80px;
+  height: 80px;
+}
+
+.itemImg {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.itemName {
+  display: block;
+  margin-left: 24px;
+  width: 336px;
+  color: $primary-color;
+  font-family: Mont, Helvetica, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 21px;
+  text-align: left;
+
+  @include on-tablet {
+    width: 176px;
+  }
+
+  @include on-mobile {
+    width: 128px;
+  }
+}
+
+.mobileItemContainerCounter {
+  display: flex;
+  justify-content: space-between;
+  width: 256px;
+  margin: 0 16px 16px;
+}
+
+.counterContainer {
+  display: flex;
+  justify-items: center;
+  align-items: center;
+  height: 32px;
+  width: 96px;
+  margin-left: 24px;
+
+  @include on-mobile {
+    margin-left: 0;
+  }
+}
+
+.decreaseBtn {
+  box-sizing: border-box;
+  width: 32px;
+  height: 32px;
+  border: 1px solid $icons-color;
+  background-image: url(../../../public/img/icons/Buttons/minus.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  cursor: pointer;
+}
+
+.countNumber {
+  box-sizing: border-box;
+  text-align: center;
+  width: 32px;
+  height: 32px;
+  color: #000;
+  font-family: Mont, Helvetica, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 32px;
+  text-align: center;
+}
+
+.increaseBtn {
+  box-sizing: border-box;
+  width: 32px;
+  height: 32px;
+  border: 1px solid $icons-color;
+  background-image: url(../../../public/img/icons/Buttons/plus.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  cursor: pointer;
+}
+
+.itemSumPrice {
+  margin-left: 24px;
+  width: 80px;
+  color: $primary-color;
+  font-family: Mont, Helvetica, sans-serif;
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 30.8px;
+  text-align: right;
+
+  @include on-tablet {
+    margin-right: 24px;
+  }
+}
+
+.totalContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+  border: 1px solid $elements-color;
+  margin-top: 32px;
+  grid-column: 17 / -1;
+  height: 206px;
+
+  @include on-tablet {
+    grid-column: 1 / -1;
+  }
+
+  @include on-mobile {
+    grid-column: 1 / -1;
+  }
+}
+
+.totalSum {
+  color: $primary-color;
+  padding-top: 23px;
+  font-family: Mont, Arial, Helvetica, sans-serif;
+  font-size: 32px;
+  font-weight: 800;
+  line-height: 41px;
+  letter-spacing: -0.01em;
+  text-align: left;
+}
+
+.totalCounter {
+  color: $secondary-color;
+  font-family: Mont, Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 21px;
+  text-align: center;
+}
+
+.totalSeparator {
+  margin-top: 25px;
+  height: 1px;
+  width: 321px;
+  border-top: 1px solid $elements-color;
+
+  @include on-tablet {
+    width: 544px;
+  }
+
+  @include on-mobile {
+    width: 240px;
+  }
+}
+
+.checkoutBtn {
+  margin-top: 24px;
+  width: 320px;
+  height: 48px;
+  border: none;
+  cursor: pointer;
+  background-color: $primary-color;
+  color: white;
+  font-family: Mont, Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 21px;
+  text-align: center;
+  transition: $transition-duration;
+
+  &:hover {
+    box-shadow: 0 3px 13px 0 #17203166;
+  }
+
+  @include on-tablet {
+    width: 544px;
+  }
+
+  @include on-mobile {
+    width: 240px;
+  }
+}
+
+.modal {
+  display: block;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modalContent {
+  display: flex;
+  justify-content: space-between;
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+}
+
+.modalText {
+  color: $primary-color;
+  font-family: Mont, Arial, Helvetica, sans-serif;
+  font-size: 32px;
+  font-weight: 800;
+  line-height: 41px;
+  letter-spacing: -0.01em;
+  text-align: left;
+}
+
+.modalBtnContainer {
+  display: flex;
+  width: 400px;
+  justify-content: space-between;
+  margin-right: 200px;
+}
+
+.btnModal {
+  color: $primary-color;
+  padding: 5px;
+  height: 50px;
+  font-family: Mont, Arial, Helvetica, sans-serif;
+  font-size: 32px;
+  font-weight: 800;
+  line-height: 41px;
+  letter-spacing: -0.01em;
+  cursor: pointer;
+}
+
+.closeModal:hover,
+.closeModal:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}

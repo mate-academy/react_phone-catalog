@@ -1,8 +1,9 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import styles from './ProductCard.module.scss';
 import classNames from 'classnames';
 import { Product } from '../../types';
 import { Link } from 'react-router-dom';
+import { CartContext } from '../../contexts';
 
 type Props = {
   product: Product;
@@ -11,14 +12,18 @@ type Props = {
 
 export const ProductCard: React.FC<Props> = ({ product, discount }) => {
   const [isActiveFavorite, setIsActiveFavorite] = useState(false);
-  const [isAdded, setIsAdded] = useState(false);
+  const { cartItems, setCartItems } = useContext(CartContext);
+
+  const isAdded = cartItems.some(item => item.id === product.id);
+
+  const handleAddToCart = () => {
+    if (!isAdded) {
+      setCartItems([...cartItems, product]);
+    }
+  };
 
   const handleFavorite = () => {
     setIsActiveFavorite(!isActiveFavorite);
-  };
-
-  const handleAddToCart = () => {
-    setIsAdded(!isAdded);
   };
 
   return (
@@ -68,6 +73,7 @@ export const ProductCard: React.FC<Props> = ({ product, discount }) => {
             [styles.addedToCart]: isAdded,
           })}
           onClick={handleAddToCart}
+          disabled={isAdded}
         >
           {isAdded ? `Added to cart` : `Add to cart`}
         </button>
