@@ -23,10 +23,11 @@ export const App: FC = () => {
     dispatch(getAccessories());
   }, [dispatch]);
 
+  console.log('Render App');
+
   return (
     <div className={styles.App}>
       <Header />
-      <hr />
       <main>
         <div className="container">
           <AppRoutes />

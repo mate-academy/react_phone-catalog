@@ -2,15 +2,10 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 import { getAccessories } from './getAccessoriesApi';
-import { TAccessories } from 'utils/types/accessories.type';
 
-type PhoneState = {
-  accessories: TAccessories[];
-  loading: boolean;
-  error: string | undefined;
-};
+import { AccessoriesState } from '@utils/types/rootState.type';
 
-const initialState: PhoneState = {
+const initialState: AccessoriesState = {
   accessories: [],
   loading: false,
   error: '',
@@ -18,7 +13,7 @@ const initialState: PhoneState = {
 
 const accessoriesSlice = createSlice({
   name: 'accessories',
-  initialState: initialState,
+  initialState,
   reducers: {},
   extraReducers: builder => {
     builder

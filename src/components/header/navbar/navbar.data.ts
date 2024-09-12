@@ -1,5 +1,5 @@
 import { ROUTES } from '@utils/constants/routes';
-import { IMenuLink } from './menu-item/menu-item.interface';
+import { IMenuLink } from '../nav-links/navLinks-items.interface';
 
 export const menu: IMenuLink[] = [
   {

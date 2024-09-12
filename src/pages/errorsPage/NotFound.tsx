@@ -2,11 +2,10 @@ import { FC } from 'react';
 
 import ErrorImage from '/img/error/page-not-found.png';
 
-const style = {
-  display: 'block',
-  marginInline: 'auto',
-};
+import styles from './errorsPage.module.scss';
 
 export const NotFound: FC = () => (
-  <img src={ErrorImage} alt="Page not found" style={style} />
+  <div className={styles.image}>
+    <img src={ErrorImage} alt="Page not found" />
+  </div>
 );

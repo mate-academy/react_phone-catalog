@@ -1,17 +1,16 @@
 import { FC } from 'react';
-import { useNavigate } from 'react-router-dom';
-
-import styles from './cart.module.scss';
 
 import { CartEmpty } from './cart-empty/CartEmpty';
 import { CartItem } from './cart-item/CartItem';
 import { CartSummary } from './cart-summary/CartSummary';
-import { ArrowLeftIcon } from '@ui/icon/ArrowLeftIcon';
+import { BackArrow } from '@ui/button/arrow/BackArrow';
+
 import { useAppSelector } from '@hooks/hook';
+
+import styles from './cart.module.scss';
 
 export const Cart: FC = () => {
   const { items } = useAppSelector(state => state.cart);
-  const navigate = useNavigate();
 
   const cartLength = items.length;
 
@@ -23,14 +22,7 @@ export const Cart: FC = () => {
         </section>
       ) : (
         <section className={styles.page}>
-          <button
-            onClick={() => navigate(-1)}
-            className={styles.back}
-            type="button"
-          >
-            <ArrowLeftIcon />
-            Back
-          </button>
+          <BackArrow />
 
           <h2>Cart</h2>
 

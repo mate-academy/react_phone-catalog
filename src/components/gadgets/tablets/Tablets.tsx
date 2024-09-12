@@ -16,6 +16,8 @@ export const Tablets: FC = () => {
       products={tablets}
       text="Tablets"
       loading={loading}
+      dropdown={true}
+      pagination={true}
     />
   );
 };

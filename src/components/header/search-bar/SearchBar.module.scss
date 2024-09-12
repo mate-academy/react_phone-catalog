@@ -1,0 +1,22 @@
+.search {
+  font-weight: var(--fw-600);
+  height: 100%;
+  max-width: 327px;
+  width: 100%;
+
+  &::placeholder {
+    color: var(--icons);
+  }
+}
+
+.icon {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  cursor: pointer;
+  transition-duration: var(--transition-duration);
+
+  &:hover {
+    scale: 1.1;
+  }
+}

@@ -3,13 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 import { getPhones } from './getPhoneApi';
 
-import { TProductBase } from 'utils/types/productBase.type';
-
-type PhoneState = {
-  phones: TProductBase[];
-  loading: boolean;
-  error: string | undefined;
-};
+import { PhoneState } from '@utils/types/rootState.type';
 
 const initialState: PhoneState = {
   phones: [],
@@ -19,7 +13,7 @@ const initialState: PhoneState = {
 
 const phonesSlice = createSlice({
   name: 'phones',
-  initialState: initialState,
+  initialState,
   reducers: {},
   extraReducers: builder => {
     builder

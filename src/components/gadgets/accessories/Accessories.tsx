@@ -16,6 +16,8 @@ export const Accessories: FC = () => {
       products={accessories}
       text="Accessories"
       loading={loading}
+      dropdown={true}
+      pagination={true}
     />
   );
 };

@@ -1,6 +1,42 @@
-.wrapper {
+.contactForm {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 41px 42px 1fr;
+  grid-row-gap: var(--size-8);
+  padding: var(--size-24);
+
+  h2,
+  p {
+    text-align: center;
+  }
+
   .form {
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
+
+    label {
+      margin-bottom: 4px;
+    }
+
+    input {
+      border-bottom: var(--border-element);
+      margin-bottom: var(--size-8);
+
+      &::placeholder {
+        color: var(--icons);
+        font-weight: var(--fw-600);
+        font-size: var(--size-12);
+      }
+    }
+
+    button {
+      height: var(--size-32);
+      padding-inline: var(--size-32);
+      border-radius: var(--size-8);
+      color: var(--white);
+      background-color: var(--primary);
+      align-self: end;
+    }
   }
 }

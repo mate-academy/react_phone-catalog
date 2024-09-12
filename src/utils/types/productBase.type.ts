@@ -28,7 +28,7 @@ export type TProductBase = {
   resolution: string;
   processor: string;
   ram: string;
-  camera: string;
-  zoom: string;
+  camera?: string;
+  zoom?: string;
   cell: string[];
 };

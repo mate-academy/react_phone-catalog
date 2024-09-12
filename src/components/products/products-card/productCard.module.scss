@@ -1,3 +1,52 @@
-.card {
-  background-color: var(--primary);
+.productCard {
+  margin-block: var(--size-24) 80px;
+
+  .card {
+    display: flex;
+    flex-direction: column;
+
+    .features {
+      display: grid;
+      grid-template-columns: var(--grid-columns-2) 176px;
+      grid-template-rows: 1fr;
+      margin-top: 40px;
+
+      .wrapper {
+        display: flex;
+        flex-direction: column;
+        gap: var(--size-24);
+        margin-inline: var(--size-64) var(--size-16);
+
+        .price {
+          display: flex;
+          flex-direction: column;
+          row-gap: var(--size-16);
+          margin-block: var(--size-8);
+        }
+      }
+
+      .ids {
+        font-weight: var(--fw-700);
+        font-size: var(--size-12);
+        color: var(--icons);
+        text-align: end;
+      }
+    }
+
+    .overview {
+      display: grid;
+      grid-template-columns: 1fr 512px;
+      grid-template-rows: 1fr;
+      column-gap: var(--size-64);
+      margin-bottom: 80px;
+
+      h3 {
+        margin-block: 80px var(--size-16);
+      }
+
+      hr {
+        margin-bottom: var(--size-32);
+      }
+    }
+  }
 }

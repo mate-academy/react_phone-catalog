@@ -4,9 +4,9 @@ import { FaHeart, FaRegHeart } from 'react-icons/fa6';
 import styles from './icon.module.scss';
 
 type TProps = {
-  isFavorite: boolean;
+  isOpen: boolean;
 };
 
-export const HeartIcon: FC<TProps> = ({ isFavorite }) => {
-  return isFavorite ? <FaHeart className={styles.fill} /> : <FaRegHeart />;
+export const HeartIcon: FC<TProps> = ({ isOpen }) => {
+  return isOpen ? <FaHeart className={styles.fill} /> : <FaRegHeart />;
 };

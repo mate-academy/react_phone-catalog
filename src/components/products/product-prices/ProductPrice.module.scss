@@ -1,0 +1,16 @@
+.prices {
+  display: flex;
+  align-items: center;
+  column-gap: var(--size-8);
+  font-size: var(--size-22);
+  line-height: 1.4;
+
+  span:first-of-type {
+    font-weight: var(--fw-700);
+  }
+
+  .discount {
+    color: var(--secondary);
+    text-decoration: line-through;
+  }
+}

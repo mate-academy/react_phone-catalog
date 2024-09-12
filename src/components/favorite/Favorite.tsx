@@ -1,31 +1,12 @@
-import { FC, useEffect, useState } from 'react';
-import { NavLink, useLocation } from 'react-router-dom';
-import cn from 'classnames';
+import { FC } from 'react';
 
-import styles from './favorite.module.scss';
-
-import { HeartIcon } from '@ui/icon/HeartIcon';
-
-import { ROUTES } from '@utils/constants/routes';
+import { Catalog } from '@components/catalog/Catalog';
+import { useAppSelector } from '@hooks/hook';
 
 export const Favorite: FC = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  const { pathname } = useLocation();
+  const { items } = useAppSelector(state => state.favorite);
 
-  useEffect(() => {
-    setIsOpen(pathname === ROUTES.FAVORITE);
-  }, [pathname]);
+  console.log(items.length);
 
-  return (
-    <NavLink
-      to={ROUTES.FAVORITE}
-      className={({ isActive }) =>
-        cn(styles.favorite, isActive && styles.active)
-      }
-      title="Favorite"
-      aria-label="Favorite"
-    >
-      <HeartIcon isFavorite={isOpen} />
-    </NavLink>
-  );
+  return <Catalog title="Favorites" products={items} text="Favorites" />;
 };

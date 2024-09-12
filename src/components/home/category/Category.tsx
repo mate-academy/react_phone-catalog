@@ -7,7 +7,7 @@ import { useAppSelector } from '@hooks/hook';
 import { CATEGORY } from '@utils/constants/imagesCategory';
 
 export const Category: FC = () => {
-  const { phones } = useAppSelector(state => state.phone);
+  const { phones } = useAppSelector(state => state.phones);
   const { tablets } = useAppSelector(state => state.tablets);
   const { accessories } = useAppSelector(state => state.accessories);
 

@@ -3,7 +3,7 @@
   align-items: center;
 
   .quantity {
-    width: 32px;
+    width: var(--size-32);
     text-align: center;
   }
 }

@@ -1,14 +1,8 @@
 /* eslint-disable no-param-reassign */
 import { createSlice } from '@reduxjs/toolkit';
 
-import { TProductBase } from 'utils/types/productBase.type';
 import { getTablets } from './getTabletsApi';
-
-type TabletState = {
-  tablets: TProductBase[];
-  loading: boolean;
-  error: string | undefined;
-};
+import { TabletState } from '@utils/types/rootState.type';
 
 const initialState: TabletState = {
   tablets: [],
@@ -17,8 +11,8 @@ const initialState: TabletState = {
 };
 
 const tabletsSlice = createSlice({
-  name: 'tablet',
-  initialState: initialState,
+  name: 'tablets',
+  initialState,
   reducers: {},
   extraReducers: builder => {
     builder

@@ -5,7 +5,7 @@ import { useAppSelector } from '@hooks/hook';
 import { filterByCategory } from '@utils/helpers/filterByCategory';
 
 export const Phones: FC = () => {
-  const { products, loading } = useAppSelector(state => state.products);
+  const { products } = useAppSelector(state => state.products);
 
   const phones = filterByCategory(products, 'phones');
 
@@ -14,7 +14,8 @@ export const Phones: FC = () => {
       title="Mobile phones"
       text="Phones"
       products={phones}
-      loading={loading}
+      dropdown={true}
+      pagination={true}
     />
   );
 };
