@@ -83,7 +83,7 @@ const ProductsPage = () => {
         {!error && isValidCategory ? (
           <>
             <ProductsPageFilter className={cls.productPage__filter} />
-            {products.length > 1 ? (
+            {products.length > 0 ? (
               <ProductsList
                 products={products}
                 isLoading={isLoading}

@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 import { FC, useEffect, useMemo, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import classNames from 'classnames';
@@ -35,7 +36,7 @@ export const Header: FC = () => {
   const [favoriteLocalStorageCount, setFavoriteLocalStorageCount] =
     useState<number>(favoriteLocalStorage.length);
   const [cartLocalStorageCount, setCartLocalStorageCount] = useState<number>(
-    cartLocalStorage.length,
+    cartLocalStorage.reduce((acc, item) => (acc += item.count), 0),
   );
 
   useEffect(() => {
@@ -45,7 +46,12 @@ export const Header: FC = () => {
       if (key === LOCAL_STORAGE_FAVORITES) {
         setFavoriteLocalStorageCount(value.length);
       } else if (key === LOCAL_STORAGE_CART_PRODUCTS) {
-        setCartLocalStorageCount(value.length);
+        setCartLocalStorageCount(
+          (value as ICartItemsLocalStorage[]).reduce(
+            (acc, item) => (acc += item.count),
+            0,
+          ),
+        );
       }
     };
 
