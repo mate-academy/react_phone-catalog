@@ -11,7 +11,7 @@ export const AccessoriesProvider: React.FC<{ children: React.ReactNode }> = ({
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    fetch('./api/accessories.json')
+    fetch('api/accessories.json')
       .then(response => response.json())
       .then(data => {
         setAccessories(data);
