@@ -46,7 +46,7 @@ export const ProductDetailsPage: React.FC = () => {
         if (fetchedProduct) {
           setClickedProduct(fetchedProduct);
 
-          const response = await fetch(`https://meljaszuk.github.io/react_phone-catalog/api/${fetchedProduct.category}.json`);
+          const response = await fetch(`https://meljaszuk.github.io/react_phone-catalog/api/${clickedProduct?.category}.json`);
           const data = await response.json();
           setFetchedCategory(data);
         }
