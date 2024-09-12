@@ -91,7 +91,6 @@ export const GeneralProductsPage = () => {
     setSearchParams(params);
   };
 
-
   // Рендеринг компонентів
   if (!loadedGeneralProducts) {
     return <Loader />;
@@ -112,17 +111,21 @@ export const GeneralProductsPage = () => {
   // Функція для зміни сторінки
   const handlePageChange = (page: number) => {
     const params = new URLSearchParams(searchParams);
+
     params.set('page', page.toString());
+
     setSearchParams(params);
   };
 
   // Обчислення кількості сторінок
   const totalPages = Math.ceil(
     specificProducts.length /
-    (filterAmount === 'All' ? specificProducts.length : parseInt(filterAmount, 10)),
+      (filterAmount === 'All'
+        ? specificProducts.length
+        : parseInt(filterAmount, 10)),
   );
-  const currentPage = parseInt(pageParam, 10);
 
+  const currentPage = parseInt(pageParam, 10);
 
   // Створюємо масив для відображення пагінації
   const pagesToShow = (): (number | string)[] => {
@@ -236,7 +239,7 @@ export const GeneralProductsPage = () => {
             <button
               key={index}
               className={`${styles.pagination__pageButton} ${
-                currentPage === page ? styles.pagination__pageButton_pressed : ''
+                currentPage === page ? styles.pagination__pageButton_press : ''
               }`}
               onClick={() => handlePageChange(page)}
             >
