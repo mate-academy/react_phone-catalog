@@ -92,12 +92,14 @@
 }
 
 .existPrice {
-  color: var(--color-primary);
+  color: var(--color-secondary);
+  font-weight: 400;
+  text-decoration: line-through;
 }
 
 .hotPrice {
   display: flex;
-  color: var(--color-secondary);
+  color: var(--color-primary);
 }
 
 .specsList {

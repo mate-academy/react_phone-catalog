@@ -48,8 +48,8 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product}) => {
         </Link>
 
         <div className={styles.price}>
-          <div className={styles.existPrice}>${fullPrice}</div>
           <div className={styles.hotPrice}>${price}</div>
+          <div className={styles.existPrice}>${fullPrice}</div>
         </div>
 
         <div className={styles.divider} />

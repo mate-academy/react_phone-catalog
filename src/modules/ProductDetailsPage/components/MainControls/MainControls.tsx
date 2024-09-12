@@ -108,11 +108,11 @@ export const MainControls: React.FC<MainControlsProps> = () => {
         <div className={styles.divider}></div>
 
         <div className={styles.price}>
-          <div className={styles.existPrice}>
-            ${`${productDetails.priceRegular}`}
-          </div>
           <div className={styles.hotPrice}>
             ${`${productDetails.priceDiscount}`}
+          </div>
+          <div className={styles.existPrice}>
+            ${`${productDetails.priceRegular}`}
           </div>
         </div>
 

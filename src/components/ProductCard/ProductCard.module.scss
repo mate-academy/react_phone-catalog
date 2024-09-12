@@ -77,13 +77,14 @@
 }
 
 .existPrice {
-  color: var(--color-primary);
+  color: var(--color-secondary);
   text-decoration: line-through;
+  font-weight: 400;
 }
 
 .hotPrice {
   display: flex;
-  color: var(--color-secondary);
+  color: var(--color-primary);
 }
 
 .divider {
