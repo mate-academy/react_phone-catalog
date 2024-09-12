@@ -1,0 +1,97 @@
+.button {
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  color: var(--text-color);
+
+  &--small {
+    height: 32px;
+    width: 32px;
+  }
+
+  &--medium {
+    height: 40px;
+    width: 40px;
+  }
+
+  &--big {
+    width: 100%;
+  }
+
+  &--secondary {
+    border: 1px solid $grey-icons;
+    background-color: inherit;
+
+    @include hover(box-shadow, 0 2px 16px 0 $grey-elements);
+    @include hover(border-color, $grey-primary);
+
+    &:disabled {
+      cursor: none;
+      border: 1px solid var(--disabled-color);
+
+      @include hover(box-shadow, none);
+    }
+
+    &-darkTheme {
+      border: none;
+      background-color: $grey-button;
+
+      @include hover(box-shadow, none);
+      @include hover(background-color, $grey-button-dark);
+
+      &:disabled {
+        cursor: none;
+        background-color: var(--bg-color);
+      }
+    }
+
+    &--selected {
+      flex-shrink: 0;
+      border-color: #e2e6e9;
+
+      & :first-child {
+        fill: #eb5757;
+        border: none;
+      }
+    }
+  }
+
+  &--main {
+    background-color: $grey-primary;
+    font-family: inherit;
+    padding: 5px;
+    color: $white;
+    font-size: 14px;
+    font-weight: 600;
+    border: none;
+
+    @include hover(box-shadow, 0 2px 16px 0 $green);
+    @include hover(border-color, $grey-primary);
+
+    &-darkTheme {
+      background-color: $violet-main;
+      color: var(--text-color);
+
+      @include hover(background-color, $violet-hover);
+      @include hover(box-shadow, none);
+    }
+
+    &--selected {
+      border: 1px solid $grey-elements;
+      background-color: var(--bg-color);
+      color: $green;
+      white-space: nowrap;
+
+      @include hover(box-shadow, 0 2px 16px 0 $grey-elements);
+
+      &-darkTheme {
+        background-color: $grey-button;
+        border: none;
+
+        @include hover(box-shadow, none);
+      }
+    }
+  }
+}
