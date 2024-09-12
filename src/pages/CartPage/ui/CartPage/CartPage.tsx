@@ -53,7 +53,7 @@ export default function CartPage() {
 
   return (
     <>
-      <Section firstSection lastSection>
+      <Section firstSection lastSection={!isEmpty}>
         <PagePartTop tag="h2" title="Cart" />
 
         {isEmpty ? (
