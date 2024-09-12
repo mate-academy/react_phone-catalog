@@ -28,10 +28,24 @@ export const Footer = memo(() => {
                   </a>
                 </li>
                 <li className={cls.menu__item}>
-                  <span className={cls.menu__link}>{'contacts'}</span>
+                  <a
+                    href={'https://github.com/Oleksii-Bidiak'}
+                    rel="noreferrer"
+                    target="_blank"
+                    className={cls.menu__link}
+                  >
+                    {'contacts'}
+                  </a>
                 </li>
                 <li className={cls.menu__item}>
-                  <span className={cls.menu__link}>{'rights'}</span>
+                  <a
+                    href={'https://github.com/Oleksii-Bidiak'}
+                    rel="noreferrer"
+                    target="_blank"
+                    className={cls.menu__link}
+                  >
+                    {'rights'}
+                  </a>
                 </li>
               </ul>
             </nav>
