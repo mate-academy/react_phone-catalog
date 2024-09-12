@@ -96,7 +96,6 @@ export const PaginationProducts: FC<Props> = ({
             currentPage === 1 ? ButtonTheme.SQUARE_DEFAULT : ButtonTheme.SQUARE
           }
           onClick={() => onClickHandler(1)}
-          // className={classNames({ [cls.active]: currentPage === 1 })}
         >
           {1}
         </Button>
@@ -116,7 +115,6 @@ export const PaginationProducts: FC<Props> = ({
                 : ButtonTheme.SQUARE
             }
             onClick={() => onClickHandler(item)}
-            // className={item === currentPage ? cls.active : ''}
           >
             {item}
           </Button>
@@ -131,9 +129,12 @@ export const PaginationProducts: FC<Props> = ({
 
         {totalPages > 1 && (
           <Button
-            theme={ButtonTheme.SQUARE}
+            theme={
+              currentPage === totalPages
+                ? ButtonTheme.SQUARE_DEFAULT
+                : ButtonTheme.SQUARE
+            }
             onClick={() => onClickHandler(totalPages)}
-            // className={currentPage === totalPages ? cls.active : ''}
           >
             {totalPages}
           </Button>
