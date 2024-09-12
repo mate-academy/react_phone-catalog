@@ -2,6 +2,13 @@ import { Link } from 'react-router-dom';
 import styles from './Footer.module.scss';
 
 export const Footer = () => {
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  };
+
   return (
     <footer className={styles.footer}>
       <Link to="/" className={styles.logoLink}>
@@ -27,7 +34,11 @@ export const Footer = () => {
 
       <div className={styles.backToTopPanel}>
         <div className={styles.backToTopLabel}>Back to top</div>
-        <Link to="#" className={styles.backToTopBtn}></Link>
+        <Link
+          to="#"
+          className={styles.backToTopBtn}
+          onClick={scrollToTop}
+        ></Link>
       </div>
     </footer>
   );

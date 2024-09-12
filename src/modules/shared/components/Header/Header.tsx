@@ -1,6 +1,6 @@
 import styles from './Header.module.scss';
 import classNames from 'classnames';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { CartContext } from '../../contexts';
 
@@ -10,7 +10,21 @@ const getLinkClass = ({ isActive }: { isActive: boolean }) =>
 const getLinkClassCart = ({ isActive }: { isActive: boolean }) =>
   classNames(styles.iconLink, styles.cart, { [styles.isActiveCart]: isActive });
 
+const getLinkClassMobile = ({ isActive }: { isActive: boolean }) =>
+  classNames(styles.navBtnMobile, { [styles.isActiveMenuMobile]: isActive });
+
+const getLinkClassCartMobile = ({ isActive }: { isActive: boolean }) =>
+  classNames(styles.iconBoxMobile, {
+    [styles.isActiveCartMobile]: isActive,
+  });
+
+const getLinkClassFavoritesMobile = ({ isActive }: { isActive: boolean }) =>
+  classNames(styles.iconBoxMobile, {
+    [styles.isActiveFavoritesMobile]: isActive,
+  });
+
 export const Header = () => {
+  const [menuIsOpen, setMenuIsOpen] = useState(false);
   const { cartItems } = useContext(CartContext);
 
   const totalInCart = cartItems.reduce(acc => acc + 1, 0);
@@ -42,10 +56,11 @@ export const Header = () => {
         <div className={styles.icons}>
           <div className={styles.iconBox}>
             <Link
-              to="#"
+              to="/favorites"
               className={`${styles.iconLink} ${styles.favorites}`}
             ></Link>
           </div>
+
           <div className={styles.iconBox}>
             <NavLink to="/cart" className={getLinkClassCart}></NavLink>
             {totalInCart > 0 && (
@@ -54,9 +69,53 @@ export const Header = () => {
           </div>
         </div>
 
-        <div className={`${styles.iconBox} ${styles.mobileMenu}`}>
-          <Link to="#" className={styles.iconMobileMenu}></Link>
+        <div
+          className={`${styles.iconBox} ${styles.mobileMenu}`}
+          onClick={() => setMenuIsOpen(!menuIsOpen)}
+        >
+          <div
+            className={classNames(styles.iconMobileMenu, {
+              [styles.openMenu]: menuIsOpen,
+            })}
+          ></div>
         </div>
+
+        {menuIsOpen && (
+          <div className={styles.mobileMenuOpen}>
+            <div className={styles.mobileNav}>
+              {' '}
+              <NavLink to="/" className={getLinkClassMobile}>
+                HOME
+              </NavLink>
+              <NavLink to="/phones" className={getLinkClassMobile}>
+                PHONES
+              </NavLink>
+              <NavLink to="/tablets" className={getLinkClassMobile}>
+                TABLETS
+              </NavLink>
+              <NavLink to="/accessories" className={getLinkClassMobile}>
+                ACCESSORIES
+              </NavLink>
+            </div>
+
+            <div className={styles.iconsMobile}>
+              <NavLink to="/favorites" className={getLinkClassFavoritesMobile}>
+                <div
+                  className={`${styles.iconLinkMobile} ${styles.favoritesMobile}`}
+                ></div>
+              </NavLink>
+
+              <NavLink to="/cart" className={getLinkClassCartMobile}>
+                <div
+                  className={`${styles.iconLinkMobile} ${styles.cartMobile}`}
+                ></div>
+                {totalInCart > 0 && (
+                  <div className={styles.cartCounterMobile}>{totalInCart} </div>
+                )}
+              </NavLink>
+            </div>
+          </div>
+        )}
       </header>
     </>
   );
