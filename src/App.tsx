@@ -39,7 +39,7 @@ export const App: React.FC = () => {
           <Route path="/">
             <Route index element={<HomePage />} />
 
-            <Route path="phones">
+            <Route path="/phones">
               <Route
                 index
                 element={
@@ -55,7 +55,7 @@ export const App: React.FC = () => {
               />
             </Route>
 
-            <Route path="tablets">
+            <Route path="/tablets">
               <Route
                 index
                 element={
@@ -71,7 +71,7 @@ export const App: React.FC = () => {
               />
             </Route>
 
-            <Route path="accessories">
+            <Route path="/accessories">
               <Route
                 index
                 element={
@@ -87,8 +87,8 @@ export const App: React.FC = () => {
               />
             </Route>
 
-            <Route path="favourites" element={<FavouritesPage />} />
-            <Route path="cart" element={<CartPage />} />
+            <Route path="/favourites" element={<FavouritesPage />} />
+            <Route path="/cart" element={<CartPage />} />
           </Route>
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
