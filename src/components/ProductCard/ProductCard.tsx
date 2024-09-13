@@ -22,7 +22,7 @@ export const ProductCard: React.FC<Props> = ({
       <div className={styles.inner}>
         <Link to={`/${product.category}/${product.itemId}`}>
           <img
-            src={productDetail ? `../${image}` : image}
+            src={productDetail ? `./${image}` : image}
             alt={name}
             className={styles.image}
           />

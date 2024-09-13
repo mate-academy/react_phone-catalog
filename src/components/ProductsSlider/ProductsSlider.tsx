@@ -1,5 +1,4 @@
 import React from 'react';
-// import { Link } from 'react-router-dom';
 import styles from './ProductSlider.module.scss';
 import { ProductCard } from '../ProductCard';
 import { ChevronArrowLeft, ChevronArrowRight } from '../../helpers/icons';
