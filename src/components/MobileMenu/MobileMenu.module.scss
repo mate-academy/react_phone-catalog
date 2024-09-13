@@ -50,7 +50,7 @@
   display: flex;
   width: 100%;
   left: 0;
-  bottom: 0;
+  bottom: env(safe-area-inset-bottom);
   position: absolute;
   background-color: var(--color-background);
 }
