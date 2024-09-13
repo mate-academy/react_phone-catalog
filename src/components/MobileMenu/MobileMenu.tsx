@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import styles from './MobileMenu.module.scss';
 import favoritesIconSrc from '../../img/icons/FavoritesIcon.svg';
