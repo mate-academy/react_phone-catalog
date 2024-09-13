@@ -52,8 +52,9 @@
   display: flex;
   width: 100%;
   left: 0;
-  bottom: 1px;
+  bottom: 0;
   padding-bottom: env(safe-area-inset-bottom);
+  position: fixed;
 }
 
 .action {
