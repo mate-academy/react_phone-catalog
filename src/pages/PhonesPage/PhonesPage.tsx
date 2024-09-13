@@ -1,12 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { Cart } from '../../components/Cart';
+import { Loader } from '../../components/Loader';
 import phonesData from '../../api/phones.json';
 import './PhonesPage.scss';
 import { Product } from '../../types';
 import { BackButton } from '../../components/BackButton';
 import { PaginationPage } from '../PaginationPage';
 import { EmptyPage } from '../EmptyPage';
+import { useLoader } from '../../context/LoaderContext';
+import { useFooter } from '../../context/FooterContext';
+
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const transformData = (data: any[]): Product[] => {
   return data.map((item) => ({
@@ -16,18 +20,25 @@ const transformData = (data: any[]): Product[] => {
   }));
 };
 
+const fetchProducts = async (): Promise<Product[]> => {
+  return new Promise((resolve) => {
+    setTimeout(() => resolve(transformData(phonesData)), 1000);
+  });
+};
+
 export const PhonesPage: React.FC = () => {
-  const [phones, setPhones] = useState<Product[]>(transformData(phonesData));
+  const [phones, setPhones] = useState<Product[]>([]);
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [itemsPerPage, setItemsPerPage] = useState<number | 'all'>('all');
   const [sortType, setSortType] = useState<string>('newest');
+  const { isLoading, setIsLoading } = useLoader();
   const navigate = useNavigate();
   const location = useLocation();
   const params = new URLSearchParams(location.search);
   const initialSortType = params.get('sort') === 'latest' ? 'latest' : 'newest';
   const perPageParam = params.get('perPage') || 'all';
   const pageParam = parseInt(params.get('page') || '1', 10);
-
+  const { setIsShow } = useFooter();
   useEffect(() => {
     const newItemsPerPage =
       perPageParam === 'all' ? phones.length : parseInt(perPageParam, 10);
@@ -39,6 +50,13 @@ export const PhonesPage: React.FC = () => {
   useEffect(() => {
     sortPhones(sortType);
   }, [sortType]);
+
+  useEffect(() => {
+    setIsLoading(true);
+    fetchProducts()
+      .then((data) => setPhones(data))
+      .finally(() => setIsLoading(false));
+  }, []);
 
   const updateUrlParams = (newParams: URLSearchParams) => {
     navigate(`?${newParams.toString()}`);
@@ -53,7 +71,6 @@ export const PhonesPage: React.FC = () => {
       selectedSortType.charAt(0).toUpperCase() + selectedSortType.slice(1),
     );
     updateUrlParams(newParams);
-    sortPhones(selectedSortType);
   };
 
   const handleItemsPerPageChange = (
@@ -116,11 +133,18 @@ export const PhonesPage: React.FC = () => {
             (itemsPerPage === 'all' ? phones.length : itemsPerPage),
         );
 
+  if (phones.length > 0) {
+    setIsShow(true);
+  }
+
   return (
     <div className="phones container">
       <BackButton title="Phones" />
       <h2 className="phones__title">Mobile Phones</h2>
-      <p className="phones__subtitle">{phones.length} items</p>
+      <p className="phones__subtitle">
+        {phones.length > 0 ? `${phones.length} items` : 'No phones available'}
+      </p>
+
       <div className="phones__sort">
         <div className="phones__sort--model">
           <p className="phones__subtitle">Sort By</p>
@@ -165,7 +189,11 @@ export const PhonesPage: React.FC = () => {
       </div>
 
       <div className="phones__wrapper">
-        {currentPhones.length > 0 ? (
+        {isLoading ? (
+          <Loader />
+        ) : phones.length === 0 ? (
+          <div className="phones__no-items">There are no phones</div>
+        ) : currentPhones.length > 0 ? (
           currentPhones.map((product) => (
             <Cart key={product.id} product={product} showDiscount={true} />
           ))

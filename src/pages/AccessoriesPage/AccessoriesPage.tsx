@@ -7,6 +7,9 @@ import { Product } from '../../types';
 import { BackButton } from '../../components/BackButton';
 import { PaginationPage } from '../PaginationPage';
 import { EmptyPage } from '../EmptyPage';
+import { Loader } from '../../components/Loader';
+import { useLoader } from '../../context/LoaderContext';
+import { useFooter } from '../../context/FooterContext';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const transformData = (data: any[]): Product[] => {
@@ -22,12 +25,12 @@ const cleanId = (id: string) => {
 };
 
 export const AccessoriesPage: React.FC = () => {
-  const [accessories, setAccessories] = useState<Product[]>(
-    transformData(accessoriesData),
-  );
+  const [accessories, setAccessories] = useState<Product[]>([]);
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [itemsPerPage, setItemsPerPage] = useState<number | 'all'>('all');
   const [sortType, setSortType] = useState<string>('newest');
+  const { isLoading, setIsLoading } = useLoader();
+  const { setIsShow } = useFooter();
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -37,16 +40,30 @@ export const AccessoriesPage: React.FC = () => {
   const pageParam = params.get('page') || '1';
 
   useEffect(() => {
+    setIsLoading(true);
+
+    const fetchData = () => {
+      setTimeout(() => {
+        const data = transformData(accessoriesData);
+        setAccessories(data);
+        setIsLoading(false);
+      }, 1000);
+    };
+
+    fetchData();
+  }, []);
+
+  useEffect(() => {
     const newItemsPerPage =
       perPageParam === 'all' ? accessories.length : parseInt(perPageParam, 10);
     setItemsPerPage(newItemsPerPage);
     setCurrentPage(parseInt(cleanId(pageParam), 10));
     setSortType(initialSortType);
-  }, [location.search, accessories.length]);
+  }, [perPageParam, pageParam, initialSortType, accessories.length]);
 
   useEffect(() => {
-    sortAccessories(sortType);
-  }, [sortType]);
+    if (!isLoading) sortAccessories(sortType);
+  }, [sortType, isLoading]);
 
   const updateUrlParams = (newParams: URLSearchParams) => {
     navigate(`?${newParams.toString()}`);
@@ -119,6 +136,7 @@ export const AccessoriesPage: React.FC = () => {
     indexOfFirstAccessory,
     indexOfLastAccessory,
   );
+
   const totalPages =
     itemsPerPage === accessories.length
       ? 1
@@ -126,6 +144,10 @@ export const AccessoriesPage: React.FC = () => {
           accessories.length /
             (itemsPerPage === 'all' ? accessories.length : itemsPerPage),
         );
+
+  if (accessories.length > 0) {
+    setIsShow(true);
+  }
 
   return (
     <div className="accessories container">
@@ -141,6 +163,7 @@ export const AccessoriesPage: React.FC = () => {
             aria-label="Sort accessories by"
             value={sortType.toLowerCase()}
             onChange={handleSortChange}
+            disabled={isLoading}
           >
             <option className="accessories__sort--option" value="newest">
               Newest
@@ -161,6 +184,7 @@ export const AccessoriesPage: React.FC = () => {
                 : itemsPerPage.toString()
             }
             onChange={handleItemsPerPageChange}
+            disabled={isLoading}
           >
             <option value="4" className="accessories__sort--option">
               4
@@ -178,17 +202,23 @@ export const AccessoriesPage: React.FC = () => {
         </div>
       </div>
 
-      <div className="accessories__wrapper">
-        {currentAccessories.length > 0 ? (
-          currentAccessories.map((product) => (
-            <Cart key={product.id} product={product} showDiscount={true} />
-          ))
-        ) : (
-          <div>
+      {isLoading ? (
+        <Loader />
+      ) : (
+        <div className="accessories__wrapper">
+          {accessories.length === 0 ? (
+            <div className="accessories__no-items">
+              There are no accessories
+            </div>
+          ) : currentAccessories.length > 0 ? (
+            currentAccessories.map((product) => (
+              <Cart key={product.id} product={product} showDiscount={true} />
+            ))
+          ) : (
             <EmptyPage />
-          </div>
-        )}
-      </div>
+          )}
+        </div>
+      )}
 
       {totalPages > 1 && (
         <PaginationPage

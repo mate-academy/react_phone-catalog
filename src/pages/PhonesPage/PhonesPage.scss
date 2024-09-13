@@ -3,7 +3,6 @@
 
 .phones {
   @include topPagesStyles;
-
   &__wrapper {
     transition: all 0.3s ease-in-out;
 
@@ -26,6 +25,7 @@
     flex-direction: row;
     margin-top: 32px;
     gap: 16px;
+    
     @include on-tablet {
       margin-top: 40px;
     }
@@ -43,9 +43,11 @@
       border: 1px solid $basic-grey-color;
       padding: 12px;
       outline: none;
+
       @include on-tablet {
         width: 187px;
       }
+
       @include on-desktop {
         width: 128px;
       }
@@ -84,4 +86,11 @@
       background-size: 12px;
     }
   }
+}
+
+.phones__no-items {
+  text-align: center;
+  font-size: 1.5rem;
+  color: #666;
+  margin-top: 2rem;
 }

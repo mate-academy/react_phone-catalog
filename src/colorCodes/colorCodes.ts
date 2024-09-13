@@ -17,4 +17,6 @@ export const colorCodes: Record<string, string> = {
   graphite: '#43464b',
   spaceblack: '#1b1b1b',
   coral: '#ff7f50',
+  skyblue: '#0f52ba',
+  starlight: '#e5e4e2',
 };

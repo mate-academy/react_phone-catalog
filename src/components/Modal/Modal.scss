@@ -1,0 +1,76 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+}
+
+.modal__content {
+  background: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  text-align: center;
+  width: 70%;
+  height: 30%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  background-color: $border;
+  
+  @include on-tablet {
+    width: 50%;
+    height: 50%;
+  }
+}
+
+.modal__message {
+  margin-bottom: 30px;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 20px;
+  color: black;
+
+  @include on-tablet {
+    font-size: 22px;
+    line-height: 31px;
+  }
+}
+
+.modal__buttons {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+
+  @include on-tablet {
+    gap: 20px;
+  }
+}
+
+.modal__button {
+  background-color: $colorButton;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  width: 200px;
+
+  @include on-tablet {
+    width: 150px;
+  }
+}
+
+.modal__button:hover {
+  background: #30119f;
+  transform: scale(1.1);
+}

@@ -3,7 +3,6 @@
 
 .tablets {
   @include topPagesStyles;
-
   &__wrapper {
     transition: all 0.3s ease-in-out;
 
@@ -87,4 +86,11 @@
       background-size: 12px;
     }
   }
+}
+
+.tablets__no-items {
+  text-align: center;
+  font-size: 1.5rem;
+  color: #666;
+  margin-top: 2rem;
 }

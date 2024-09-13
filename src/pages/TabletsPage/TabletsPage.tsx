@@ -2,11 +2,15 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { Cart } from '../../components/Cart';
 import tabletsData from '../../api/tablets.json';
+import { Loader } from '../../components/Loader';
 import './TabletsPage.scss';
 import { Product } from '../../types';
 import { BackButton } from '../../components/BackButton';
 import { PaginationPage } from '../PaginationPage';
 import { EmptyPage } from '../EmptyPage';
+import { useLoader } from '../../context/LoaderContext';
+import { useFooter } from '../../context/FooterContext';
+
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const transformData = (data: any[]): Product[] => {
   return data.map((item) => ({
@@ -17,10 +21,11 @@ const transformData = (data: any[]): Product[] => {
 };
 
 export const TabletsPage: React.FC = () => {
-  const [tablets, setTablets] = useState<Product[]>(transformData(tabletsData));
+  const [tablets, setTablets] = useState<Product[]>([]);
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [itemsPerPage, setItemsPerPage] = useState<number | 'all'>('all');
   const [sortType, setSortType] = useState<string>('newest');
+  const { isLoading, setIsLoading } = useLoader();
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -28,6 +33,27 @@ export const TabletsPage: React.FC = () => {
   const initialSortType = params.get('sort') === 'latest' ? 'latest' : 'newest';
   const perPageParam = params.get('perPage') || 'all';
   const pageParam = parseInt(params.get('page') || '1', 10);
+  const { setIsShow } = useFooter();
+  useEffect(() => {
+    setIsLoading(true);
+
+    const fetchData = () => {
+      return new Promise<Product[]>((resolve) => {
+        setTimeout(() => {
+          resolve(transformData(tabletsData));
+        }, 1000);
+      });
+    };
+
+    fetchData()
+      .then((data) => {
+        setTablets(data);
+        setIsLoading(false);
+      })
+      .catch(() => {
+        setIsLoading(false);
+      });
+  }, []);
 
   useEffect(() => {
     const newItemsPerPage =
@@ -40,7 +66,9 @@ export const TabletsPage: React.FC = () => {
   useEffect(() => {
     sortTablets(sortType);
   }, [sortType]);
-
+  if (tablets.length > 0) {
+    setIsShow(true);
+  }
   const updateUrlParams = (newParams: URLSearchParams) => {
     navigate(`?${newParams.toString()}`);
   };
@@ -54,7 +82,6 @@ export const TabletsPage: React.FC = () => {
       selectedSortType.charAt(0).toUpperCase() + selectedSortType.slice(1),
     );
     updateUrlParams(newParams);
-    sortTablets(selectedSortType);
   };
 
   const handleItemsPerPageChange = (
@@ -118,11 +145,20 @@ export const TabletsPage: React.FC = () => {
             (itemsPerPage === 'all' ? tablets.length : itemsPerPage),
         );
 
+  if (tablets.length > 0) {
+    setIsShow(true);
+  }
+
   return (
     <div className="tablets container">
       <BackButton title="Tablets" />
       <h2 className="tablets__title">Tablets</h2>
-      <p className="tablets__subtitle">{tablets.length} items</p>
+      <p className="tablets__subtitle">
+        {tablets.length > 0
+          ? `${tablets.length} items`
+          : 'No tablets available'}
+      </p>
+
       <div className="tablets__sort">
         <div className="tablets__sort--model">
           <p className="tablets__subtitle">Sort By</p>
@@ -166,19 +202,23 @@ export const TabletsPage: React.FC = () => {
         </div>
       </div>
 
-      <div className="tablets__wrapper">
-        {currentTablets.length > 0 ? (
-          currentTablets.map((product) => (
-            <Cart key={product.id} product={product} showDiscount={true} />
-          ))
-        ) : (
-          <div>
+      {isLoading ? (
+        <Loader />
+      ) : (
+        <div className="tablets__wrapper">
+          {tablets.length === 0 ? (
+            <div className="tablets__no-items">There are no tablets</div>
+          ) : currentTablets.length > 0 ? (
+            currentTablets.map((product) => (
+              <Cart key={product.id} product={product} showDiscount={true} />
+            ))
+          ) : (
             <EmptyPage />
-          </div>
-        )}
-      </div>
+          )}
+        </div>
+      )}
 
-      {itemsPerPage !== tablets.length && (
+      {itemsPerPage !== tablets.length && !isLoading && (
         <PaginationPage
           currentPage={currentPage}
           totalPages={totalPages}

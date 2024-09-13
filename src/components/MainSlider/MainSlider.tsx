@@ -39,6 +39,14 @@ export const MainSlider: React.FC = () => {
     return;
   }, [isAnimating]);
 
+  useEffect(() => {
+    const interval = setInterval(() => {
+      handleNext();
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, []);
+
   const switchLineClickHandler = (index: number) => {
     setCurrentIndex(index);
     setIsAnimating(true);

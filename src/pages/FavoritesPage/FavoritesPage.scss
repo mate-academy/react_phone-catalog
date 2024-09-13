@@ -2,7 +2,6 @@
 @import '../../styles/variables';
 
 .favorites {
-  height: 100vh;
   @include topPagesStyles;
   &__length {
     font-size: 14px;
@@ -13,6 +12,10 @@
   }
   &__wrapper {
     display: flex;
-    justify-content: flex-start;
+    justify-content: center;
+    
+    @include on-tablet {
+     justify-content: flex-start;
+    }
   }
 }

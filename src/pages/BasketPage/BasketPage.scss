@@ -2,7 +2,6 @@
 @import '../../styles/mixins';
 
 .basket {
-  height: 100vh;
   &__title {
     font-size: 32px;
     font-weight: 800;
@@ -11,15 +10,25 @@
     text-align: left;
     margin-top: 24px;
   }
-
-  &__wrapper {
+  &__content {
+    display: flex;
+    flex-direction: column;
     margin-top: 50px;
+    min-height: calc(100vh - 406px);
+
+    @include on-desktop {
+      flex-direction: row;
+      gap: 16px;
+    }
+  }
+  &__wrapper {
     display: flex;
     flex-direction: column;
     gap: 20px;
   }
 
   &__itemGoods {
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -29,7 +38,6 @@
     background-color: $colorMenu;
     border: 1px solid black;
     border-radius: 16px;
-    width: 288px;
     height: 170px;
 
     @include on-tablet {
@@ -39,6 +47,7 @@
       height: 128px;
       gap: 35px;
     }
+
     @include on-desktop {
       width: 752px;
     }
@@ -73,7 +82,6 @@
     line-height: 21px;
     white-space: normal;
     word-wrap: break-word;
-    word-break: break-word;
   }
 
   &__countGoods {
@@ -92,6 +100,7 @@
     align-items: center;
     justify-content: flex-start;
     cursor: pointer;
+
     @include on-tablet {
       width: auto;
       margin: 0;
@@ -142,19 +151,76 @@
     text-align: left;
   }
 
-  &__total {
-    margin-top: 20px;
-    font-size: 22px;
-    font-weight: 800;
-    line-height: 30.8px;
-    text-align: left;
-  }
-
   &__length {
     font-size: 14px;
     font-weight: 600;
     line-height: 21px;
     text-align: left;
     color: $basic-grey-color;
+  }
+
+  &__empty {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 50%;
+
+    @include on-tablet {
+      top: 40%;
+    }
+
+    @include on-desktop {
+      top: 30%;
+    }
+  }
+}
+
+.total {
+  display: flex;
+  margin-top: 20px;
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 30.8px;
+  justify-content: center;
+  text-align: center;
+  border: 1px solid black;
+  border-radius: 16px;
+  width: 100%;
+  flex-direction: column;
+  padding: 24px;
+
+  @include on-desktop {
+    height: 206px;
+    margin-top: 0;
+  }
+  &__title {
+    font-size: 32px;
+    font-weight: 800;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+    text-align: center;
+  }
+  &__subtitle {
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 21px;
+    text-align: center;
+    color: $basic-grey-color;
+  }
+  &__hr {
+    width: 100%;
+    color: black;
+  }
+  &__button {
+    width: 100%;
+    border-radius: 48px;
+    background-color: $colorButton;
+    height: 48px;
+    margin-top: 16px;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 21px;
+    text-align: center;
+    color: $basicWhite;
   }
 }

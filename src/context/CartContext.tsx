@@ -19,13 +19,15 @@ interface CartContextProps {
   increaseQuantity: (id: string) => void;
   decreaseQuantity: (id: string) => void;
   removeItem: (id: string) => void;
+  clearCart: () => void;
 }
 
 type Action =
   | { type: 'ADD_TO_CART'; payload: Product }
   | { type: 'INCREASE_QUANTITY'; payload: string }
   | { type: 'DECREASE_QUANTITY'; payload: string }
-  | { type: 'REMOVE_ITEM'; payload: string };
+  | { type: 'REMOVE_ITEM'; payload: string }
+  | { type: 'CLEAR_CART' };
 
 const CartContext = createContext<CartContextProps | undefined>(undefined);
 
@@ -49,6 +51,8 @@ const cartReducer = (state: CartItem[], action: Action): CartItem[] => {
       );
     case 'REMOVE_ITEM':
       return state.filter((item) => item.phone.id !== action.payload);
+    case 'CLEAR_CART':
+      return [];
     default:
       return state;
   }
@@ -84,6 +88,10 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
     dispatch({ type: 'REMOVE_ITEM', payload: id });
   };
 
+  const clearCart = () => {
+    dispatch({ type: 'CLEAR_CART' });
+  };
+
   return (
     <CartContext.Provider
       value={{
@@ -93,6 +101,7 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
         increaseQuantity,
         decreaseQuantity,
         removeItem,
+        clearCart,
       }}
     >
       {children}

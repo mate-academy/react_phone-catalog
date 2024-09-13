@@ -4,9 +4,17 @@ import './FavoritesPage.scss';
 import { Cart } from '../../components/Cart';
 import { BackButton } from '../../components/BackButton';
 import { EmptyPage } from '../EmptyPage';
+import { useFooter } from '../../context/FooterContext';
 
 export const FavoritesPage: React.FC = () => {
   const { favorites } = useFavorites();
+  const { setIsShow } = useFooter();
+
+  if (favorites.length === 0) {
+    setIsShow(false);
+  } else {
+    setIsShow(true);
+  }
 
   return (
     <div className="favorites container">
