@@ -1,1 +1,36 @@
-@import '../../styles/vars';
+@import '../../styles/utils';
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.title {
+  color: $color-primary;
+
+  @include h1-mobile;
+
+  @include on-tablet {
+    @include h1;
+  }
+}
+
+.productCount {
+  color: $color-secondary;
+
+  @include bodytext14;
+}
+
+.productList {
+  display: flex;
+  flex-flow: row wrap;
+  gap: 16px;
+  margin-bottom: 56px;
+}

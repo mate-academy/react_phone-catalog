@@ -1,6 +1,11 @@
-@import '../../styles/vars';
+@import '../../styles/utils';
 
 .header {
   visibility: hidden;
   height: 0;
+}
+
+.line {
+  border: 0;
+  margin: 0;
 }

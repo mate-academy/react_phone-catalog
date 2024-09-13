@@ -1,20 +1,41 @@
-@import '../../styles/vars';
+@import '../../styles/utils';
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  @include on-tablet {
+    gap: 0;
+  }
+}
 
 .top {
   display: flex;
   justify-content: space-between;
+  align-items: center;
+
+  @include on-tablet {
+    align-items: flex-start;
+  }
 }
 
 .title {
-  margin-bottom: 24px;
-  font-family: $font-bold;
-  font-weight: 700;
-  font-size: 32px;
-  line-height: 41px;
+  width: 136px;
+
   color: $color-primary;
+
+  @include h2-mobile;
+
+  @include on-tablet {
+    width: 100%;
+    margin-bottom: 24px;
+
+    @include h2;
+  }
 }
 
-.button_wrapper {
+.buttonWrapper {
   display: flex;
   gap: 16px;
 }
@@ -46,7 +67,7 @@
   }
 }
 
-.cards_wrapper {
+.cardsWrapper {
   display: flex;
   overflow: hidden;
 }

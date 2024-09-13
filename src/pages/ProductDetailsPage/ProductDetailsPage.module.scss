@@ -1,1 +1,375 @@
-@import '../../styles/vars';
+@import '../../styles/utils';
+
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+.backLink {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin: 40px 0 16px;
+  color: $color-secondary;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 15.34px;
+  background: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.titleWrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.title,
+.topTitle {
+  color: $color-primary;
+  border-bottom: 1px solid $color-elements;
+  padding-bottom: 24px;
+
+  @include on-mobile {
+    @include h2-mobile;
+  }
+
+  @include on-tablet {
+    @include h3;
+  }
+
+  @include on-desktop {
+    @include h2;
+  }
+}
+
+.topTitle {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  margin-top: 40px;
+
+  @include on-tablet {
+    flex-direction: row;
+    gap: 16px;
+  }
+
+  @include on-desktop {
+    gap: 64px;
+  }
+}
+
+.imagesContainer {
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 16px;
+
+  @include on-tablet {
+    flex-direction: row;
+  }
+}
+
+.imagesList {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  width: 100%;
+  overflow: auto;
+  scroll-snap-type: x mandatory;
+
+  @include on-tablet {
+    flex-direction: column;
+    width: auto;
+  }
+}
+
+.imagesItem {
+  display: flex;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  padding: 4px;
+  border: 1px solid;
+  border-color: $color-elements;
+  scroll-snap-align: start;
+  transition: border-color $hover-delay;
+
+  &:hover {
+    border-color: $color-primary;
+  }
+
+  @include on-tablet {
+    width: 35px;
+    height: 35px;
+  }
+
+  @include on-desktop {
+    width: 80px;
+    height: 80px;
+  }
+}
+
+.imagesItemActive {
+  border-color: $color-primary;
+}
+
+.imagePrev {
+  height: 100%;
+  object-fit: contain;
+}
+
+.imageMainContainer {
+  display: flex;
+  justify-content: center;
+  width: 274.34px;
+  height: 274.34px;
+
+  @include on-tablet {
+    width: 287px;
+    height: 287px;
+  }
+
+  @include on-desktop {
+    width: 464px;
+    height: 464px;
+    padding-inline: 22px;
+  }
+}
+
+.imageMain {
+  width: 100%;
+  object-fit: contain;
+}
+
+.mainInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  width: 100%;
+
+  @include on-tablet {
+    width: 320px;
+  }
+}
+
+.infoContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.infoTitle {
+  color: $color-secondary;
+
+  @include bodytext12;
+}
+
+.infoList {
+  display: flex;
+  gap: 8px;
+  border-bottom: 1px solid $color-elements;
+  padding-bottom: 24px;
+}
+
+.colorItem {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 2px solid;
+  border-color: $color-elements;
+  transition: border-color $hover-delay;
+
+  &:hover {
+    border-color: $color-primary;
+  }
+}
+
+.colorItemButton {
+  display: block;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 2px solid white;
+  cursor: pointer;
+}
+
+.colorItemActive {
+  border-color: $color-primary;
+  pointer-events: none;
+}
+
+.capacityItem {
+  @include bodytext14;
+
+  text-align: center;
+  padding: 7px 8px 4px;
+  border: 1px solid;
+  border-color: $color-icons-placeholders;
+  transition: border-color $hover-delay;
+  cursor: pointer;
+
+  &:hover {
+    border-color: $color-primary;
+  }
+
+  &--active {
+    color: white;
+    background: $color-primary;
+    border: 1px solid;
+    border-color: $color-primary;
+    pointer-events: none;
+  }
+}
+
+.line {
+  width: 100%;
+  border-top: 1px solid $color-elements;
+}
+
+.pricesWrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.price,
+.fullPrice {
+  padding-block: 7px;
+}
+
+.price {
+  color: $color-primary;
+
+  @include h2;
+}
+
+.fullPrice {
+  color: $color-secondary;
+  font-size: $font-regular;
+  font-weight: 500;
+  line-height: 28.12px;
+  text-decoration: line-through;
+}
+
+.buttonsContainer {
+  display: flex;
+  gap: 8px;
+  width: 100%;
+  margin-top: 16px;
+}
+
+.mainSpecsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.itemSpecsWraper {
+  display: flex;
+  justify-content: space-between;
+}
+
+.itemSpecsTitle,
+.itemSpecsInfo {
+  @include bodytext12;
+}
+
+.itemSpecsTitle {
+  color: $color-secondary;
+}
+
+.itemSpecsInfo {
+  color: $color-primary;
+}
+
+.mainContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 64px;
+  margin-top: 56px;
+
+  @include on-tablet {
+    margin-top: 64px;
+  }
+
+  @include on-desktop {
+    flex-direction: row;
+    margin-top: 80px;
+  }
+}
+
+.about,
+.techSpecs {
+  display: flex;
+  flex: 1 1;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.aboutParagrafWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.aboutTitle {
+  color: $color-primary;
+
+  @include h4-mobile;
+
+  @include on-tablet {
+    @include h4;
+  }
+}
+
+.titleText {
+  color: $color-secondary;
+
+  @include bodytext14;
+}
+
+.techSpecsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.techSpecsWrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
+.techSpecsTitle,
+.techSpescInfo {
+  @include bodytext14;
+}
+
+.techSpecsTitle {
+  color: $color-secondary;
+}
+
+.techSpescInfo {
+  color: $color-primary;
+  text-align: end;
+}
+
+.interestingContainer {
+  margin: 56px 0;
+}
+
+.productNotFound {
+  height: 100%;
+  margin-top: 42px;
+  color: $color-secondary;
+
+  @include bodytext14;
+}

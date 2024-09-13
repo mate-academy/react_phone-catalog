@@ -35,7 +35,7 @@ export const Footer = () => {
           <span className={styles.label}>Back to top</span>
           <button
             type="button"
-            className={styles.back_link}
+            className={styles.backLink}
             onClick={scrollToTop}
           >
             <ChevronIcon />

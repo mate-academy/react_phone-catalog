@@ -1,0 +1,50 @@
+@import '../../styles/utils';
+
+.Pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+
+  &__button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 32px;
+    height: 32px;
+    color: $color-primary;
+
+    @include bodytext14;
+
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-position: center;
+    border: 1px solid;
+    border-color: $color-elements;
+    transition: border-color $hover-delay;
+
+    &:hover {
+      border-color: $color-primary;
+    }
+
+    &--active {
+      color: white;
+      background-color: $color-primary;
+      border-color: $color-primary;
+      pointer-events: none;
+    }
+
+    &--prev,
+    &--next {
+      background-image: url(../../../public/img/icons/Chevron_Arrow_Right.png);
+    }
+
+    &--next {
+      transform: rotate(180deg);
+    }
+
+    &--disabled {
+      pointer-events: none;
+    }
+  }
+}

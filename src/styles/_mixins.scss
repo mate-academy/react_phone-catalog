@@ -1,0 +1,109 @@
+@mixin on-mobile {
+  @media (max-width: $mobile) {
+    @content;
+  }
+}
+
+@mixin on-tablet {
+  @media (min-width: $tablet-container) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media (min-width: $desktop-container) {
+    @content;
+  }
+}
+
+@mixin uppercase {
+  font-family: $font-bold;
+  font-size: 12px;
+  line-height: 11px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+@mixin buttons {
+  font-family: $font-semi;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 0;
+}
+
+@mixin h1 {
+  font-family: $font-bold;
+  font-size: 48px;
+  line-height: 56px;
+  letter-spacing: -0.01em;
+}
+
+@mixin h2 {
+  font-family: $font-bold;
+  font-size: 32px;
+  line-height: 31px;
+  letter-spacing: -0.01em;
+}
+
+@mixin h3 {
+  font-family: $font-bold;
+  font-size: 22px;
+  line-height: 31px;
+  letter-spacing: 0;
+}
+
+@mixin h4 {
+  font-family: $font-semi;
+  font-size: 20px;
+  line-height: 26px;
+  letter-spacing: 0;
+}
+
+@mixin bodytext12 {
+  font-family: $font-regular;
+  font-size: 12px;
+  line-height: 21px;
+  letter-spacing: 0;
+}
+
+@mixin bodytext14 {
+  font-family: $font-regular;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 0;
+}
+
+@mixin smalltext12 {
+  font-family: $font-semi;
+  font-size: 12px;
+  line-height: 15px;
+  letter-spacing: 0;
+}
+
+@mixin h1-mobile {
+  font-family: $font-bold;
+  font-size: 32px;
+  line-height: 41px;
+  letter-spacing: -0.01em;
+}
+
+@mixin h2-mobile {
+  font-family: $font-bold;
+  font-size: 22px;
+  line-height: 31px;
+  letter-spacing: 0;
+}
+
+@mixin h3-mobile {
+  font-family: $font-bold;
+  font-size: 20px;
+  line-height: 26px;
+  letter-spacing: 0;
+}
+
+@mixin h4-mobile {
+  font-family: $font-semi;
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: 0;
+}

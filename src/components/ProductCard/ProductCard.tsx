@@ -1,25 +1,31 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import styles from './ProductCard.module.scss';
 import { Product } from '../../typies';
-import { FavouriteIcon } from '../../helpers/icons';
-import { Link } from 'react-router-dom';
+import { ProductControllers } from '../ProductControllers';
 
-type ProductCardProps = {
+type Props = {
   product: Product;
-  type: string;
+  discount?: boolean;
+  productDetail?: boolean;
 };
 
-const HOT_PRICES = 'Hot prices';
-// const URL = 'prodcuts';
-
-export const ProductCard: React.FC<ProductCardProps> = ({ product, type }) => {
+export const ProductCard: React.FC<Props> = ({
+  product,
+  discount = true,
+  productDetail,
+}) => {
   const { name, image, price, fullPrice, screen, capacity, ram } = product;
 
   return (
     <article className={styles.container}>
       <div className={styles.inner}>
         <Link to={`/${product.category}/${product.itemId}`}>
-          <img src={image} alt={name} className={styles.image} />
+          <img
+            src={productDetail ? `../${image}` : image}
+            alt={name}
+            className={styles.image}
+          />
         </Link>
 
         <Link
@@ -31,9 +37,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, type }) => {
 
         <div className={styles.prices}>
           <p className={styles.actual}>${price}</p>
-          {type === HOT_PRICES && (
-            <p className={styles.previous}>${fullPrice}</p>
-          )}
+          {discount && <p className={styles.previous}>${fullPrice}</p>}
         </div>
 
         <hr className={styles.line} />
@@ -61,15 +65,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, type }) => {
           )}
         </div>
 
-        <div className={styles.buttons}>
-          <button type="button" className={styles.add_to_card}>
-            Add to cart
-          </button>
-
-          <button type="button" className={styles.favourite}>
-            <FavouriteIcon />
-          </button>
-        </div>
+        <ProductControllers product={product} />
       </div>
     </article>
   );

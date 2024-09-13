@@ -1,8 +1,14 @@
-@import '../../styles/vars';
+@import '../../styles/utils';
 
 .container {
   display: flex;
   flex-direction: column;
+  width: 100%;
+
+  @include on-mobile {
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+  }
 }
 
 .wrapper {
@@ -11,6 +17,7 @@
 }
 
 .button {
+  display: none;
   width: 32px;
   border: 1px solid;
   border-color: $color-icons-placeholders;
@@ -26,26 +33,56 @@
     cursor: not-allowed;
     pointer-events: none;
   }
+
+  @include on-tablet {
+    display: block;
+  }
 }
 
 .imagesWrapper {
   display: flex;
-  width: 1040px;
-  height: 400px;
+  width: 100%;
+  height: auto;
   overflow: hidden;
+  scroll-snap-type: x mandatory;
+  position: relative;
+
+  @include on-tablet {
+    overflow: hidden;
+  }
+}
+
+.list {
+  display: flex;
+  width: 100%;
 }
 
 .link {
+  width: 100%;
   align-items: center;
   cursor: pointer;
   display: flex;
   height: 100%;
-  min-width: 100%;
+  scroll-snap-align: start;
+  flex-shrink: 0;
 }
 
 .image {
-  transition: transform 0.5s ease-in-out;
   width: 100%;
+  height: 383px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  transition: transform 0.5s ease-in-out;
+
+  @include on-tablet {
+    // width: 1044px;
+    height: 189px;
+  }
+
+  @include on-desktop {
+    height: 400px;
+  }
 }
 
 .dotsWrapper {
@@ -68,10 +105,10 @@
     text-align: center;
     background: $color-elements;
   }
-}
 
-.activeDot {
-  & span {
-    background: $color-primary;
+  &--active {
+    & span {
+      background: $color-primary;
+    }
   }
 }

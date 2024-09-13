@@ -1,4 +1,4 @@
-@import './styles/vars';
+@import './styles/utils';
 @import './styles/global';
 
 .App {
@@ -10,8 +10,21 @@
 .container {
   display: flex;
   flex-direction: column;
-  gap: 80px;
+  gap: 56px;
   flex: 1 1;
-  width: $content-width;
   margin: 0 auto;
+
+  @include on-mobile {
+    width: $mobile-container;
+  }
+
+  @include on-tablet {
+    gap: 64px;
+    width: $tablet-container;
+  }
+
+  @include on-desktop {
+    gap: 80px;
+    width: $desktop-container;
+  }
 }

@@ -1,1 +1,142 @@
-@import '../../styles/vars';
+@import '../../styles/utils';
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.back {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin: 24px 0 8px;
+  color: $color-secondary;
+
+  @include smalltext12;
+
+  background: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+
+  @include on-tablet {
+    margin: 40px 0 16px;
+  }
+}
+
+.title {
+  color: $color-primary;
+
+  @include h1-mobile;
+
+  @include on-tablet {
+    @include h1;
+  }
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+
+  @include on-desktop {
+    flex-direction: row;
+    gap: 16px;
+  }
+}
+
+.main {
+  @include on-tablet {
+    flex-direction: column;
+  }
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  flex: 1 1;
+
+  @include on-desktop {
+    margin-bottom: 80px;
+  }
+}
+
+.checkoutContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  flex: 1 1;
+  width: 100%;
+  height: 100%;
+  padding: 24px;
+  margin-bottom: 56px;
+  border: 1px solid $color-elements;
+
+  @include on-tablet {
+    margin-bottom: 64px;
+  }
+
+  @include on-desktop {
+    gap: 24px;
+    width: 368px;
+  }
+}
+
+.sumWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.priceSum,
+.totalProducts {
+  width: 100%;
+  text-align: center;
+}
+
+.priceSum {
+  color: $color-primary;
+
+  @include h2;
+}
+
+.totalProducts {
+  color: $color-secondary;
+
+  @include bodytext14;
+}
+
+.line {
+  width: 100%;
+  border-top: 1px solid $color-elements;
+}
+
+.checkoutButton {
+  width: 100%;
+  padding: 14px;
+  color: white;
+
+  @include buttons;
+
+  border: none;
+  outline: none;
+  background: $color-primary;
+  box-shadow: none;
+  cursor: pointer;
+  transition: box-shadow $hover-delay;
+
+  &:hover {
+    box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.26);
+  }
+}
+
+.emptyCartMessage {
+  height: 100%;
+  color: $color-secondary;
+
+  @include h4;
+}

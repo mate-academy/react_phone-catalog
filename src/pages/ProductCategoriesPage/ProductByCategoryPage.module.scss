@@ -1,0 +1,115 @@
+@import '../../styles/utils';
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  @include on-tablet {
+    gap: 64px;
+  }
+
+  @include on-desktop {
+    gap: 40px;
+  }
+}
+
+.titleWrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  color: $color-primary;
+
+  @include on-mobile {
+    @include h1-mobile;
+  }
+
+  @include on-tablet {
+    @include h1;
+  }
+}
+
+.titleType {
+  text-transform: capitalize;
+}
+
+.productsCount {
+  color: $color-secondary;
+
+  @include bodytext14;
+}
+
+.selectWrapper {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.selectContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.label {
+  color: $color-secondary;
+
+  @include smalltext12;
+}
+
+.select {
+  color: $color-primary;
+
+  @include buttons;
+
+  padding: 10px 12px;
+  background-image: url(../../../public/img/icons/Chevron_Arrow_Down.png);
+  background-position: right 12px center;
+  background-repeat: no-repeat;
+  border: 1px solid;
+  border-color: $color-icons-placeholders;
+  outline: none;
+  appearance: none;
+  transition: border-color $hover-delay;
+
+  &:hover {
+    border-color: $color-secondary;
+  }
+
+  &:focus {
+    border-color: $color-primary;
+  }
+}
+
+.option {
+  color: $color-secondary;
+
+  @include bodytext14;
+
+  background-color: transparent;
+  transition:
+    background-color $hover-delay,
+    color $hover-delay;
+
+  &:hover {
+    color: $color-primary;
+    background-color: $color-bg;
+  }
+}
+
+.list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.item {
+  margin-bottom: 40px;
+}
+
+.line {
+  border: 0;
+  margin: 0;
+}

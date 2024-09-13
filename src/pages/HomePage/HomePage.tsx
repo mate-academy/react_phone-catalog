@@ -4,20 +4,15 @@ import { AppContext } from '../../AppContext';
 import { ProductsSlider } from '../../components/ProductsSlider';
 import { Categories } from '../../components/Categories';
 import { PicturesSlider } from '../../components/PicturesSlider';
+import { latestYear } from '../../utils';
 
 export const HomePage: React.FC = () => {
   const { products } = React.useContext(AppContext);
 
   const getBrandNewProducts = React.useMemo(() => {
-    const latestYear = products?.reduce((year, product) => {
-      if (product.year > year) {
-        return product.year;
-      }
+    const year = products ? latestYear(products) : 0;
 
-      return year;
-    }, 0);
-
-    return products?.filter(product => product.year === latestYear) || null;
+    return products?.filter(product => product.year === year) || null;
   }, [products]);
 
   const getHotPriceProducts = React.useMemo(() => {
@@ -46,7 +41,7 @@ export const HomePage: React.FC = () => {
       {/* Slider for Hot Prices block */}
       <ProductsSlider title="Hot prices" products={getHotPriceProducts} />
 
-      <hr style={{ border: 0, margin: 0 }} />
+      <hr className={styles.line} />
     </>
   );
 };

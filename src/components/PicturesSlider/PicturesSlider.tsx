@@ -29,15 +29,19 @@ const CHANGE_IMAGE_DELAY = 5000;
 
 export const PicturesSlider: React.FC = () => {
   const [slide, setSlide] = React.useState(0);
+  const [touchStartX, setTouchStartX] = React.useState(0);
+  const [touchEndX, setTouchEndX] = React.useState(0);
+
+  const ref = React.useRef<NodeJS.Timeout | null>(null);
 
   const startSlide = React.useMemo(() => images.length - FRAME_SIZE, []);
 
-  const imageStyle = React.useMemo(
-    () => ({
+  const imageStyle = (imageUrl: string) => {
+    return {
+      backgroundImage: `url(${imageUrl})`,
       transform: `translateX(-${slide * TRANSLATE_X_PERCENT}%)`,
-    }),
-    [slide],
-  );
+    };
+  };
 
   const handleNextClick = React.useCallback(() => {
     setSlide(currentSlide => {
@@ -59,13 +63,45 @@ export const PicturesSlider: React.FC = () => {
     });
   }, [startSlide]);
 
-  React.useEffect(() => {
-    const intervalId = setInterval(() => {
+  const resetSlider = React.useCallback(() => {
+    if (ref.current) {
+      clearInterval(ref.current);
+    }
+
+    ref.current = setInterval(() => {
       handleNextClick();
     }, CHANGE_IMAGE_DELAY);
-
-    return () => clearInterval(intervalId);
   }, [handleNextClick]);
+
+  React.useEffect(() => {
+    resetSlider();
+
+    return () => {
+      if (ref.current) {
+        clearInterval(ref.current);
+      }
+    };
+  }, [resetSlider]);
+
+  const handleTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
+    setTouchStartX(e.touches[0].clientX);
+  };
+
+  const handleTouchMove = (e: React.TouchEvent<HTMLDivElement>) => {
+    setTouchEndX(e.touches[0].clientX);
+  };
+
+  const handleTouchEnd = () => {
+    if (touchStartX - touchEndX > 50) {
+      handleNextClick();
+    } else if (touchStartX - touchEndX < -50) {
+      handlePreviousClick();
+    }
+
+    setTouchStartX(0);
+    setTouchEndX(0);
+    resetSlider();
+  };
 
   return (
     <section className={styles.container}>
@@ -73,20 +109,26 @@ export const PicturesSlider: React.FC = () => {
         <button
           type="button"
           className={styles.button}
-          onClick={handlePreviousClick}
+          onClick={() => {
+            handlePreviousClick();
+            resetSlider();
+          }}
         >
           <ChevronArrowLeft />
         </button>
 
-        <div className={styles.imagesWrapper}>
+        <div
+          className={styles.imagesWrapper}
+          onTouchStart={handleTouchStart}
+          onTouchMove={handleTouchMove}
+          onTouchEnd={handleTouchEnd}
+        >
           {images.map(item => (
             <Link to={item.url} className={styles.link} key={item.url}>
-              <img
-                src={item.image}
-                alt={item.alt}
+              <div
                 className={styles.image}
-                style={imageStyle}
-              />
+                style={imageStyle(item.image)}
+              ></div>
             </Link>
           ))}
         </div>
@@ -94,7 +136,10 @@ export const PicturesSlider: React.FC = () => {
         <button
           type="button"
           className={styles.button}
-          onClick={handleNextClick}
+          onClick={() => {
+            handleNextClick();
+            resetSlider();
+          }}
         >
           <ChevronArrowRight />
         </button>
@@ -106,10 +151,13 @@ export const PicturesSlider: React.FC = () => {
             type="button"
             className={classNames(
               styles.dot,
-              slide === index ? styles.activeDot : '',
+              slide === index ? styles['dot--active'] : '',
             )}
             key={item.url}
-            onClick={() => setSlide(index)}
+            onClick={() => {
+              setSlide(index);
+              resetSlider();
+            }}
           >
             <span></span>
           </button>

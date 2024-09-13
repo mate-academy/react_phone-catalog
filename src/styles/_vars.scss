@@ -13,13 +13,21 @@
   src: url(./fonts/Mont-SemiBold.otf);
 }
 
-$content-width: 1136px;
+$mobile: 639px;
+$mobile-container: 288px;
+$tablet: 640px;
+$tablet-container: 592px;
+$desktop: 1200px;
+$desktop-container: 1136px;
 $hover-delay: ease-in 0.1s;
-$font-regular: "Mont-Regular", "Helvetica", "Arial", sans-serif;
-$font-bold: "Mont-Bold", "Helvetica", "Arial", sans-serif;
-$font-semi: "Mont-SemiBold", "Helvetica", "Arial", sans-serif;
+$font-regular: 'Mont-Regular', 'Helvetica', 'Arial', sans-serif;
+$font-bold: 'Mont-Bold', 'Helvetica', 'Arial', sans-serif;
+$font-semi: 'Mont-SemiBold', 'Helvetica', 'Arial', sans-serif;
 $color-primary: #313237;
 $color-secondary: #89939a;
 $color-white: #fff;
 $color-elements: #e2e6e9;
 $color-icons-placeholders: #b4bdc3;
+$color-bg: #fafbfc;
+$color-green: #27ae60;
+$color-red: #eb5757;

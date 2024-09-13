@@ -32,16 +32,16 @@ export const Categories: React.FC = () => {
 
   return (
     <section>
-      <h1 className={styles.header}>Shop by category</h1>
+      <h2 className={styles.header}>Shop by category</h2>
 
       <div className={styles.container}>
-        <ul className={styles.menu}>
+        <ul className={styles.list}>
           <li className={styles.item}>
             <Link to="/phones" className={styles.link}>
               <div className={styles.wrapper}>
                 <div className={`${styles.image} ${styles.phones}`} />
-                <h2 className={styles.name}>Mobile phones</h2>
-                <p className={styles.items_count}>{phoneItemsCount} models</p>
+                <h4 className={styles.name}>Mobile phones</h4>
+                <p className={styles.itemsCount}>{phoneItemsCount} models</p>
               </div>
             </Link>
           </li>
@@ -50,8 +50,8 @@ export const Categories: React.FC = () => {
             <Link to="/tablets" className={styles.link}>
               <div className={styles.wrapper}>
                 <div className={`${styles.image} ${styles.tablets}`} />
-                <h2 className={styles.name}>Tablets</h2>
-                <p className={styles.items_count}>{tabletItemsCount} models</p>
+                <h4 className={styles.name}>Tablets</h4>
+                <p className={styles.itemsCount}>{tabletItemsCount} models</p>
               </div>
             </Link>
           </li>
@@ -60,8 +60,8 @@ export const Categories: React.FC = () => {
             <Link to="/accessories">
               <div className={styles.wrapper}>
                 <div className={`${styles.image} ${styles.accessories}`} />
-                <h2 className={styles.name}>Accessories</h2>
-                <p className={styles.items_count}>
+                <h4 className={styles.name}>Accessories</h4>
+                <p className={styles.itemsCount}>
                   {accessoriesItemsCount} models
                 </p>
               </div>

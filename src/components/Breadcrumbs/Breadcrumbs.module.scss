@@ -1,0 +1,34 @@
+@import '../../styles/utils';
+
+.wrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 24px;
+}
+
+.home {
+  width: 16px;
+  height: 16px;
+}
+
+.category,
+.name {
+  font-family: $font-regular;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 15.34px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.category {
+  display: contents;
+  color: $color-primary;
+  text-transform: capitalize;
+}
+
+.name {
+  color: $color-secondary;
+}

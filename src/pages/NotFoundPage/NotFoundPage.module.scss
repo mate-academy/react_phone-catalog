@@ -1,4 +1,4 @@
-@import '../../styles/vars';
+@import '../../styles/utils';
 
 .container {
   display: flex;
@@ -9,14 +9,31 @@
 .header {
   padding-block: 24px;
   color: $color-primary;
-  font-family: $font-bold;
-  font-weight: 700;
-  font-size: 32px;
   text-align: center;
-  line-height: 41px;
+
+  @include h1-mobile;
+
+  @include on-tablet {
+    @include h1;
+  }
 }
 
 .image {
   margin-bottom: 50px;
   width: 35%;
+}
+
+.backHome {
+  padding: 12px 24px;
+  color: $color-secondary;
+
+  @include buttons;
+
+  border: 1px solid;
+  border-color: $color-elements;
+  transition: border-color $hover-delay;
+
+  &:hover {
+    border-color: $color-primary;
+  }
 }

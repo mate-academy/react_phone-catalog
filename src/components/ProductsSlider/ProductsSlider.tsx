@@ -5,6 +5,9 @@ import { ProductCard } from '../ProductCard';
 import { ChevronArrowLeft, ChevronArrowRight } from '../../helpers/icons';
 import { Product } from '../../typies';
 
+const BRAND_NEW = 'Brand new models';
+const MAY_ALSO_LIKE = 'You may also like';
+
 type Props = {
   title: string;
   products: Product[] | null;
@@ -59,8 +62,8 @@ export const ProductsSlider: React.FC<Props> = ({ title, products }) => {
   return (
     <section className={styles.container}>
       <div className={styles.top}>
-        <h1 className={styles.title}>{title}</h1>
-        <div className={styles.button_wrapper}>
+        <h2 className={styles.title}>{title}</h2>
+        <div className={styles.buttonWrapper}>
           <button
             type="button"
             className={styles.button}
@@ -79,12 +82,16 @@ export const ProductsSlider: React.FC<Props> = ({ title, products }) => {
           </button>
         </div>
       </div>
-      <div className={styles.cards_wrapper}>
+      <div className={styles.cardsWrapper}>
         <ul className={styles.list} style={listStyle}>
           {products &&
             products?.map(product => (
               <li key={product.id} className={styles.item}>
-                <ProductCard product={product} type={title} />
+                <ProductCard
+                  product={product}
+                  discount={title !== BRAND_NEW}
+                  productDetail={title === MAY_ALSO_LIKE}
+                />
               </li>
             ))}
         </ul>
