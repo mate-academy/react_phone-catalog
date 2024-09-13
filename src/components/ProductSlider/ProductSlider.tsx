@@ -21,7 +21,16 @@ export const ProductSlider: React.FC<ProductSliderProps> = ({ title, category, s
   const [position, setPosition] = useState<number>(0);
   const [positionCount, setPositionCount] = useState<number>(0);
   const [displayedItems, setDisplayedItems] = useState<LimitedProduct[] | []>([])
+  const [windowWidth, setWindowWidth] = useState<number>(window.innerWidth);
+  const [cardWidth, setCardWidth] = useState<number>(0)
 
+  useEffect(() => {
+    if (sliderRef?.current?.clientWidth) {
+      const cardWidth = sliderRef?.current?.clientWidth / displayedItems.length
+      setCardWidth(cardWidth)
+    }
+
+  }, [windowWidth,displayedItems])
   useEffect(() => {
     const fetchProductData = async () => {
       const filteredData = await fetchProducts(category, sortMethod, count);
@@ -39,7 +48,7 @@ useEffect(() => {
 
   const getScrollStep = () => {
     if (sliderRef.current) {
-    console.log(sliderRef.current)
+      console.log('SLIDER WIDTH',sliderRef.current.clientWidth)
       return sliderRef.current.clientWidth * (1 / products.length);
     }
     return 0;
@@ -51,6 +60,7 @@ useEffect(() => {
 
   const handleNextSlide = () => {
     const step = getScrollStep();
+    console.log(step)
     if (step > 0) {
       handlePositionCount(1);
       setPosition((prevPosition) => prevPosition - step);
@@ -66,15 +76,55 @@ useEffect(() => {
   };
 
   useEffect(() => {
-    console.log(positionCount)
-  }, [positionCount])
+    setPosition(0);
+    setPositionCount(0)
+  }, [windowWidth])
+
+  // Funkcja resetująca pozycję przewijania
+  const resetSliderPosition = () => {
+    if (sliderRef.current) {
+      sliderRef.current.scrollLeft = 0; // Resetujemy pozycję przewijania do początku
+    }
+  };
+
+  useEffect(() => {
+    // Funkcja wywoływana przy zmianie rozmiaru okna
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth); // Aktualizujemy szerokość okna w stanie
+    };
+
+    // Nasłuchiwanie na zdarzenie resize
+    window.addEventListener('resize', handleResize);
+
+    // Czyszczenie nasłuchiwacza przy unmountowaniu komponentu
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
+  // Resetowanie slidera za każdym razem, gdy zmienia się szerokość okna
+  useEffect(() => {
+    resetSliderPosition();
+
+  }, [windowWidth]); // Zależność od szerokości okna
+
+  useEffect(()=> {
+    let step;
+    if(sliderRef?.current?.clientWidth) {
+
+      step = sliderRef.current.clientWidth / displayedItems.length
+    }
+
+    console.log('WW',windowWidth, 'POSITION', position, 'step',step )
+  },[windowWidth, position])
+
   return (
     <div className={styles.productSlider}>
       <div className={styles.titleContainer}>
         <h2 className={styles.title}>{title}</h2>
         <div className={styles.buttonContainer}>
           <button
-            className={`${styles.arrowButton} ${positionCount === 0 ? styles.disabled : ""}`}
+            className={`${styles.arrowButton} ${position === 0 ? styles.disabled : ""}`}
             onClick={() => {
               if (positionCount !== 0) {
                 handlePreviousSlide();
@@ -85,9 +135,9 @@ useEffect(() => {
           </button>
 
           <button
-            className={`${styles.arrowButton} ${positionCount === displayedItems.length - 4 ? styles.disabled : ""}`}
+            className={`${styles.arrowButton} ${sliderRef?.current?.clientWidth === -position + cardWidth ? styles.disabled : ""}`}
             onClick={() => {
-              if (positionCount !== displayedItems.length - 4) {
+              if (positionCount !== displayedItems.length) {
                 handleNextSlide();
               }
             }}
