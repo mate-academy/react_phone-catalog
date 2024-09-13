@@ -23,14 +23,25 @@ export const ProductSlider: React.FC<ProductSliderProps> = ({ title, category, s
   const [displayedItems, setDisplayedItems] = useState<LimitedProduct[] | []>([])
   const [windowWidth, setWindowWidth] = useState<number>(window.innerWidth);
   const [cardWidth, setCardWidth] = useState<number>(0)
+  const [numberOfVisibleCards, setNumberOfVisibleCards] = useState<number>(0)
 
   useEffect(() => {
     if (sliderRef?.current?.clientWidth) {
       const cardWidth = sliderRef?.current?.clientWidth / displayedItems.length
       setCardWidth(cardWidth)
     }
-
   }, [windowWidth,displayedItems])
+
+  useEffect(() =>{
+    if(windowWidth < 1300) {
+      const visibleCards = Math.floor(windowWidth / cardWidth)
+      setNumberOfVisibleCards(visibleCards)
+    } else {
+      const visibleCards = 4;
+      setNumberOfVisibleCards(visibleCards)
+    }
+  }, [cardWidth, windowWidth])
+
   useEffect(() => {
     const fetchProductData = async () => {
       const filteredData = await fetchProducts(category, sortMethod, count);
@@ -41,10 +52,9 @@ export const ProductSlider: React.FC<ProductSliderProps> = ({ title, category, s
     fetchProductData();
   }, []);
 
-useEffect(() => {
-  setDisplayedItems(products)
-}, [products])
-
+  useEffect(() => {
+    setDisplayedItems(products)
+  }, [products])
 
   const getScrollStep = () => {
     if (sliderRef.current) {
@@ -59,11 +69,13 @@ useEffect(() => {
   };
 
   const handleNextSlide = () => {
-    const step = getScrollStep();
-    console.log(step)
-    if (step > 0) {
-      handlePositionCount(1);
-      setPosition((prevPosition) => prevPosition - step);
+    if(positionCount !== displayedItems.length - numberOfVisibleCards) {
+      const step = getScrollStep();
+      console.log(step)
+      if (step > 0) {
+        handlePositionCount(1);
+        setPosition((prevPosition) => prevPosition - step);
+      }
     }
   };
 
@@ -80,43 +92,28 @@ useEffect(() => {
     setPositionCount(0)
   }, [windowWidth])
 
-  // Funkcja resetująca pozycję przewijania
   const resetSliderPosition = () => {
     if (sliderRef.current) {
-      sliderRef.current.scrollLeft = 0; // Resetujemy pozycję przewijania do początku
+      sliderRef.current.scrollLeft = 0;
     }
   };
 
   useEffect(() => {
-    // Funkcja wywoływana przy zmianie rozmiaru okna
     const handleResize = () => {
-      setWindowWidth(window.innerWidth); // Aktualizujemy szerokość okna w stanie
+      setWindowWidth(window.innerWidth);
     };
 
-    // Nasłuchiwanie na zdarzenie resize
     window.addEventListener('resize', handleResize);
 
-    // Czyszczenie nasłuchiwacza przy unmountowaniu komponentu
     return () => {
       window.removeEventListener('resize', handleResize);
     };
   }, []);
 
-  // Resetowanie slidera za każdym razem, gdy zmienia się szerokość okna
   useEffect(() => {
     resetSliderPosition();
 
-  }, [windowWidth]); // Zależność od szerokości okna
-
-  useEffect(()=> {
-    let step;
-    if(sliderRef?.current?.clientWidth) {
-
-      step = sliderRef.current.clientWidth / displayedItems.length
-    }
-
-    console.log('WW',windowWidth, 'POSITION', position, 'step',step )
-  },[windowWidth, position])
+  }, [windowWidth]);
 
   return (
     <div className={styles.productSlider}>
@@ -135,7 +132,7 @@ useEffect(() => {
           </button>
 
           <button
-            className={`${styles.arrowButton} ${sliderRef?.current?.clientWidth === -position + cardWidth ? styles.disabled : ""}`}
+            className={`${styles.arrowButton} ${positionCount === displayedItems.length - numberOfVisibleCards ? styles.disabled : ""}`}
             onClick={() => {
               if (positionCount !== displayedItems.length) {
                 handleNextSlide();
