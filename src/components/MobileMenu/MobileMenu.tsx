@@ -1,4 +1,4 @@
-import React, { useState, useEffect }from 'react';
+import React, { useState, useEffect, useRef }from 'react';
 import { NavLink } from 'react-router-dom';
 import styles from './MobileMenu.module.scss';
 import favoritesIconSrc from '../../img/icons/FavoritesIcon.svg';
@@ -11,8 +11,27 @@ import { Theme } from '../Theme';
 export const MobileMenu: React.FC = () => {
   const { setIsMobMenuOpen, theme, productsInCartCount, favoriteProducts } = useAppContext();
   const [cartCount, setCartCount] = useState<number>(0)
+  const menuRef = useRef<HTMLDivElement>(null);
+  const [menuHeight, setMenuHeight] = useState<number>(window.innerHeight);
+
   const handleMenuStatus = () => {
     setIsMobMenuOpen(false);
+  };
+
+  const updateMenuHeight = () => {
+    setMenuHeight(window.innerHeight);
+  };
+
+  useEffect(() => {
+    window.addEventListener('resize', updateMenuHeight);
+
+    return () => {
+      window.removeEventListener('resize', updateMenuHeight);
+    };
+  }, []);
+
+  const menuStyle = {
+    height: `${menuHeight}px`,
   };
 
   useEffect(() => {
@@ -27,7 +46,7 @@ export const MobileMenu: React.FC = () => {
   }, [productsInCartCount]);
 
   return (
-    <div className={styles.topWrapper}>
+    <div className={styles.topWrapper} ref={menuRef} style={menuStyle} >
       <div className={styles.menuOverlay}>
         <div className={styles.linkWrapper}>
           <nav className={styles.nav} role="navigation">
