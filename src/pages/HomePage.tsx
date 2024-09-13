@@ -8,7 +8,7 @@ export const HomePage = () => {
   const [newModels, setNewModels] = useState<Phone[]>([]);
 
   useEffect(() => {
-    fetch('/api/phones.json')
+    fetch('./api/phones.json')
       .then(response => response.json())
       .then(data => {
         const firstFiveModels = data.slice(10, 15);

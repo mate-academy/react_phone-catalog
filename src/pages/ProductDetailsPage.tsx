@@ -21,11 +21,11 @@ export const ProductDetailsPage = () => {
         let apiUrl = '';
 
         if (location.pathname.includes('/phones')) {
-          apiUrl = '/api/phones.json';
+          apiUrl = './api/phones.json';
         } else if (location.pathname.includes('/tablets')) {
-          apiUrl = '/api/tablets.json';
+          apiUrl = './api/tablets.json';
         } else if (location.pathname.includes('/accessories')) {
-          apiUrl = '/api/accessories.json';
+          apiUrl = './api/accessories.json';
         }
 
         const response = await fetch(apiUrl);

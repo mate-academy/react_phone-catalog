@@ -7,7 +7,7 @@ export const AccessoriesPage = () => {
   const [accessoriesList, setAccessoriesList] = useState<Accessory[]>([]);
 
   useEffect(() => {
-    fetch('/api/accessories.json')
+    fetch('./api/accessories.json')
       .then(response => response.json())
       .then(data => setAccessoriesList(data));
   }, []);

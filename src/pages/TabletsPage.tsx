@@ -7,7 +7,7 @@ export const TabletsPage = () => {
   const [tabletsList, setTabletsList] = useState<Tablet[]>([]);
 
   useEffect(() => {
-    fetch('/api/tablets.json')
+    fetch('./api/tablets.json')
       .then(response => response.json())
       .then(data => setTabletsList(data));
   }, []);
