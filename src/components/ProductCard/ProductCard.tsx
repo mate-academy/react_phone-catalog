@@ -6,29 +6,21 @@ import { Link } from 'react-router-dom';
 import styles from './ProductCard.module.scss';
 import { useAppContext } from '../../context/AppContext';
 
-
 type ProductCardProps = {
   product: LimitedProduct;
 };
 
 export const ProductCard: React.FC<ProductCardProps> = ({ product}) => {
-
-  if (!product) {
-    return <div>No product available</div>;
-  }
-
   const { image, name, price, fullPrice, screen, capacity, ram } = product;
   const { setClickedProduct } = useAppContext();
 
   const handleClickedProduct = () => {
-
     if(product !== undefined) {
       localStorage.setItem('clickedProduct', JSON.stringify(product));
       setClickedProduct(product)
     }
     setClickedProduct(product)
-  }
-
+  };
 
   return (
     <div className={styles.ProductCard}>
@@ -76,7 +68,6 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product}) => {
             <p className={styles.descriptionText}>{ram}</p>
           </div>
         </div>
-
         <ActionButtons product={product} />
       </div>
     </div>
