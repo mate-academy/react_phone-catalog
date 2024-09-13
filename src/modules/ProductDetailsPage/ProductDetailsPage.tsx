@@ -31,48 +31,74 @@ export const ProductDetailsPage: React.FC = () => {
 
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
-  useEffect(() => {
-    const slug = location.pathname.split("/").pop();
 
+
+  useEffect(() => {
     const fetchProducts = async () => {
       try {
-        if (!products.length) {
+
           const response = await fetch(`https://meljaszuk.github.io/react_phone-catalog/api/products.json`);
           const data = await response.json();
           setProducts(data);
-        }
 
-        const fetchedProduct = products.find((item: LimitedProduct) => item.itemId === slug);
-        if (fetchedProduct) {
-          setClickedProduct(fetchedProduct);
 
-          const response = await fetch(`https://meljaszuk.github.io/react_phone-catalog/api/${clickedProduct?.category}.json`);
-          const data = await response.json();
-          setFetchedCategory(data);
-        }
       } catch (error) {
         console.error('Error fetching data:', error);
-      } finally {
-        setIsLoading(false);
       }
     };
 
     fetchProducts();
-  }, [location.pathname, products, setProducts, clickedProduct, setFetchedCategory]);
+  }, [location.pathname]);
+
+
+
+  useEffect(() => {
+
+    const fetchCategory = async () => {
+      try {
+          const slug = location.pathname.split("/").pop();
+          let fetchedProduct = products.find((item: LimitedProduct) => item.itemId === slug);
+
+          if (fetchedProduct) {
+            setClickedProduct(fetchedProduct);
+            const response = await fetch(`https://meljaszuk.github.io/react_phone-catalog/api/${fetchedProduct.category}.json`);
+            const data = await response.json();
+            setFetchedCategory(data);
+        }
+      } catch (error) {
+        console.error('Error fetching data:', error);
+        }
+
+
+    }
+    fetchCategory();
+},[products, location.pathname, clickedProduct])
 
   useEffect(() => {
     if (fetchedCategory && clickedProduct) {
       const productDetails = fetchedCategory.find(item => item.id === clickedProduct.itemId);
       setProductDetails(productDetails);
     }
+
   }, [fetchedCategory, clickedProduct, setProductDetails]);
 
   const [dynamicColor, setDynamicColor] = useState<string>('');
   const [dynamicCapacity, setDynamicCapacity] = useState<string>('');
 
   useEffect(() => {
-    window.scrollTo({ top: 0, behavior: 'auto' });
-  }, []);
+
+    if (fetchedCategory && clickedProduct && products) {
+      setIsLoading(false)
+    }
+
+  }, [productDetails, fetchedCategory,clickedProduct, products]);
+
+  useEffect(() => {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+
+  }, [productDetails])
+
+
 
   return (
     <div className={styles.productDetailsPage}>
