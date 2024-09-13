@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { useParams, useLocation } from 'react-router-dom';
+import { useParams, useLocation, Link } from 'react-router-dom';
 import { Phone } from '../types/phone';
 import { Tablet } from '../types/tablet';
 import { Accessory } from '../types/accessory';
+import { DetailsAbout } from '../components/DetailsAbout';
 
 type Product = Phone | Tablet | Accessory;
 
@@ -62,108 +63,134 @@ export const ProductDetailsPage = () => {
 
   return (
     <div className="details">
+      <div className="page-phones">
+        <Link to="/">
+          <img className="page-phones__house" src="./img/Home.svg" alt="Home" />
+        </Link>
+        <img
+          className="page-phones__arrow"
+          src="./img/Chevron (Arrow Right).svg"
+          alt="Chevron"
+        />
+        <p className="page-phones__catygory-text">
+          {location.pathname.includes('/tablets')
+            ? 'Tablets'
+            : location.pathname.includes('/phones')
+              ? 'Phones'
+              : location.pathname.includes('/accessories')
+                ? 'Accessories'
+                : ''}
+        </p>
+      </div>
+
+      <Link to={location.pathname.includes('/tablets')
+        ? '/tablets'
+        : location.pathname.includes('/phones')
+          ? '/phones'
+          : location.pathname.includes('/accessories')
+            ? '/accessories'
+            : ''}>
+        <div className='details__back'>
+          <img src="./img/Icons_Chevron (Arrow Right).svg" alt="Home" />
+          <p className='details__back--text'>Back</p>
+        </div>
+      </Link>
+
       <h1 className="details__text">{product.name}</h1>
 
-      <img className="details__image" src={product.images[0]} alt="image" />
+      <div className="qwerty">
+        <img className="details__image" src={product.images[0]} alt="image" />
 
-      <div className="details__image--more">
-        {product.images.map(img => (
-          <img
-            key={img}
-            className="details__image--more__img"
-            src={img}
-            alt="image"
-          />
-        ))}
-      </div>
-
-      <div className="details-flex">
-        <p className="details-flex-text">Aviables colors</p>
-        <p className="details-flex-text">ID: 903253</p>
-      </div>
-
-      {product.colorsAvailable.map(color => (
-        <div
-          key={color}
-          className="details__color"
-          style={{ backgroundColor: color, marginBottom: 6 + 'px' }}
-        >
-          {color}
+        <div className="details__image--more">
+          {product.images.map(img => (
+            <img
+              key={img}
+              className="details__image--more__img"
+              src={img}
+              alt="image"
+            />
+          ))}
         </div>
-      ))}
 
-      <div className="card__line"></div>
+        <div className='q'>
+          <div className="details-flex">
+            <p className="details-flex-text">Aviables colors</p>
+            <p className="details-flex-text">ID: 903253</p>
+          </div>
 
-      <p className="card__price-regular">{`${product.priceRegular}$`}</p>
+          <div className="details__colors-container">
+            {product.colorsAvailable.map(color => (
+              <div
+                key={color}
+                className="details__color"
+                style={{ backgroundColor: color, width: '32px', height: '32px', borderRadius: '50%', marginRight: '8px' }}
+              />
+            ))}
+          </div>
 
-      <div className="card__buy">
-        <button className="card__buy-cart">Add to cart</button>
-        <img src="./img/add-to-cart.svg" alt="add-to-cart" />
+          <div className="card__line"></div>
+
+          <p className="details-flex-text">Select capacity</p>
+
+          <div className='flex-capacity'>
+            <div className='capacity'>
+              <div className="capacity-text">
+                64GB
+              </div>
+            </div>
+
+            <div className='capacity-default'>
+              <div className="capacity-default-text">
+                128GB
+              </div>
+            </div>
+
+            <div className='capacity-default'>
+              <div className="capacity-default-text">
+                254GB
+              </div>
+            </div>
+          </div>
+
+          <div className="card__line"></div>
+
+          <p className="card__price-regular">{`${product.priceRegular}$`}</p>
+
+          <div className="card__buy">
+            <button className="card__buy-cart">Add to cart</button>
+            <img src="./img/add-to-cart.svg" alt="add-to-cart" />
+          </div>
+
+          <div className="card__screen">
+            <p className="card__screen-name">Screen</p>
+            <p className="card__screen-info">{product.screen}</p>
+          </div>
+
+          <div className="card__ram">
+            <p className="card__ram-name">Resolution</p>
+            <p className="card__ram-info">{product.resolution}</p>
+          </div>
+
+          <div className="card__ram">
+            <p className="card__ram-name">Processor</p>
+            <p className="card__ram-info">{product.processor}</p>
+          </div>
+
+          <div className="card__ram">
+            <p className="card__ram-name">RAM</p>
+            <p className="card__ram-info">{product.ram}</p>
+          </div>
+        </div>
       </div>
 
-      <div className="card__screen">
-        <p className="card__screen-name">Screen</p>
-        <p className="card__screen-info">{product.screen}</p>
-      </div>
-
-      <div className="card__ram">
-        <p className="card__ram-name">Resolution</p>
-        <p className="card__ram-info">{product.resolution}</p>
-      </div>
-
-      <div className="card__ram">
-        <p className="card__ram-name">Processor</p>
-        <p className="card__ram-info">{product.processor}</p>
-      </div>
-
-      <div className="card__ram">
-        <p className="card__ram-name">RAM</p>
-        <p className="card__ram-info">{product.ram}</p>
-      </div>
-
-      <h3>About</h3>
-      <div className="card__line"></div>
-
-      <h4>And then there was pro</h4>
-      <p>
-        A transformative triple‑camera system that adds tons of capability
-        without complexity.
-      </p>
-      <p>
-        An unprecedented leap in battery life. And a mind‑blowing chip that
-        doubles down on machine learning and pushes the boundaries of what a
-        smartphone can do. Welcome to the first iPhone powerful enough to be
-        called Pro.
-      </p>
-
-      <h4>Camera</h4>
-      <p>
-        Meet the first triple‑camera system to combine cutting‑edge technology
-        with the legendary simplicity of iPhone. Capture up to four times more
-        scene. Get beautiful images in drastically lower light. Shoot the
-        highest‑quality video in a smartphone — then edit with the same tools
-        you love for photos. You’ve never shot with anything like it.
-      </p>
-
-      <h4>
-        Shoot it. Flip it. Zoom it. Crop it. Cut it. Light it. Tweak it. Love
-        it.
-      </h4>
-      <p>
-        iPhone 11 Pro lets you capture videos that are beautifully true to life,
-        with greater detail and smoother motion. Epic processing power means it
-        can shoot 4K video with extended dynamic range and cinematic video
-        stabilization — all at 60 fps. You get more creative control, too, with
-        four times more scene and powerful new editing tools to play with.
-      </p>
+      <DetailsAbout />
 
       <h3>Tech specs</h3>
-
       <div className="card__line"></div>
 
-      <div className="card__screen">
-        <p className="card__screen-name">Screen</p>
-        <p className="card__screen-info">{product.screen}</p>
+      <div className="card__ram">
+        <p className="card__ram-name">Screen</p>
+        <p className="card__ram-info">{product.screen}</p>
       </div>
 
       <div className="card__ram">
@@ -197,15 +224,9 @@ export const ProductDetailsPage = () => {
       </div>
 
       <div className="card__ram">
-        <p className="card__ram-name">Cell</p>
+        <p className='card__ram-name'>Cell</p>
         {product.cell.map((el, index) => (
-          <div key={`${product.id}-cell-${index}`} className="card__ram-info">
-            <span
-              className="card__ram-circle"
-              style={{ backgroundColor: el }}
-            ></span>
-            <p className="card__ram-text">{el}</p>
-          </div>
+          <p key={`${product.id}-cell-${index}`} className="card__ram-info">{el}</p>
         ))}
       </div>
     </div>

@@ -18,7 +18,7 @@ export const List: React.FC<Props> = ({ products, type }) => {
             <Link to={`/${type}/${product.id}`}>
               <img
                 className="card__image"
-                src={product.images[2]}
+                src={product.images[1]}
                 alt="card-image"
               />
             </Link>

@@ -1,15 +1,34 @@
-.card__ram-info {
-  display: flex;
-  align-items: center;
-  margin-bottom: 8px; // Расстояние между элементами списка
+@media screen and (min-width: 640px) {
+  .qwerty {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+  }
+
+  .details__image--more {
+    grid-column: 1 / 2;
+  }
+
+  .details__image {
+    grid-column: 3 / 7;
+  }
+
+  .q {
+    grid-column: 8 / 13;
+  }
+
+  .card__ram-info {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+  }
 }
 
 .card__ram-circle {
-  width: 20px; // Размер кружочка
-  height: 20px; // Размер кружочка
-  border-radius: 50%; // Делает элемент круглым
-  display: inline-block; // Чтобы элемент занимал только необходимое пространство
-  margin-right: 8px; // Расстояние между кружочком и текстом
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 8px;
 }
 
 .page-home {
@@ -164,6 +183,7 @@
 
 }
 
+
 .sort-list {
   display: flex;
   justify-content: space-between;
@@ -175,21 +195,90 @@
   &__items-page {}
 }
 
+.flex-capacity {
+  display: flex;
+  column-gap: 8px;
+  margin-bottom: 23.5px;
+}
+
+.capacity {
+  width: 56px;
+  height: 32px;
+  border-radius: 4px;
+  background: rgb(15, 15, 17);
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &-default {
+    width: 56px;
+    height: 32px;
+    box-sizing: border-box;
+    border: 1px solid rgb(180, 189, 196);
+    border-radius: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &-text {
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 21px;
+    }
+  }
+
+  &-text {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+  }
+}
+
 .details {
 
-  &__text {}
+  &__text {
+    margin: 0;
+    margin-bottom: 32px;
+  }
+
+  &__back {
+    display: flex;
+    align-items: center;
+    column-gap: 4px;
+    margin-bottom: 16px;
+
+    &--text {
+      color: rgb(137, 147, 154);
+      font-size: 12px;
+      margin: 0;
+      line-height: 15px;
+
+    }
+  }
+
+  &__colors-container {
+    display: flex;
+    margin-bottom: 23.5px;
+  }
 
   &__image {
     width: 100%;
-    margin-bottom: 20px;
+    margin-bottom: 16px;
 
     &--more {
       display: flex;
       justify-content: center;
       gap: 35px;
+      margin-bottom: 40px;
+
+      @media screen and (min-width: 640px) {
+        flex-direction: column;
+      }
 
       &__img {
-        height: 49px;
+        height: 51px;
+        width: 49px;
       }
     }
   }
@@ -201,7 +290,8 @@
 
     &-text {
       color: rgb(137, 147, 154);
-
+      margin: 0;
+      margin-bottom: 8px;
     }
   }
 }
