@@ -1,8 +1,8 @@
 import React from 'react';
-import styles from './PicturesSlider.module.scss';
 import { Link } from 'react-router-dom';
-import { ChevronArrowLeft, ChevronArrowRight } from '../../helpers/icons';
 import classNames from 'classnames';
+import styles from './PicturesSlider.module.scss';
+import { ChevronArrowLeft, ChevronArrowRight } from '../../helpers/icons';
 
 const images = [
   {
@@ -24,7 +24,6 @@ const images = [
 
 const STEP = 1;
 const FRAME_SIZE = 1;
-const TRANSLATE_X_PERCENT = 100;
 const CHANGE_IMAGE_DELAY = 5000;
 
 export const PicturesSlider: React.FC = () => {
@@ -39,7 +38,7 @@ export const PicturesSlider: React.FC = () => {
   const imageStyle = (imageUrl: string) => {
     return {
       backgroundImage: `url(${imageUrl})`,
-      transform: `translateX(-${slide * TRANSLATE_X_PERCENT}%)`,
+      transform: `translateX(-${slide * 100}%)`,
     };
   };
 

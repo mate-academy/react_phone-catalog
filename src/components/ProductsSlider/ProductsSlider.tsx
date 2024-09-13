@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './ProductSlider.module.scss';
-import { ProductCard } from '../ProductCard';
+import { ProductCard } from '../../components';
 import { ChevronArrowLeft, ChevronArrowRight } from '../../helpers/icons';
 import { Product } from '../../typies';
 

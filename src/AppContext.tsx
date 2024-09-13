@@ -1,6 +1,6 @@
 import React from 'react';
-import { Product, CartProductType } from './typies';
 import { getProducts } from './api';
+import { Product, CartProductType } from './typies';
 
 type AppContextTypes = {
   getProducts: () => Promise<Product[]>;

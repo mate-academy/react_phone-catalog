@@ -1,8 +1,9 @@
 import React from 'react';
-import styles from './App.module.scss';
 import { Routes, Route } from 'react-router-dom';
-import { Header } from './components/Header';
-import { Footer } from './components/Footer';
+import styles from './App.module.scss';
+import { AppContext } from './AppContext';
+import { Header, Footer } from './components';
+
 import {
   HomePage,
   ProductByCategoryPage,
@@ -11,7 +12,6 @@ import {
   CartPage,
   NotFoundPage,
 } from './pages';
-import { AppContext } from './AppContext';
 
 export const App: React.FC = () => {
   const { products } = React.useContext(AppContext);

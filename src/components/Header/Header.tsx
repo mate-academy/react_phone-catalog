@@ -1,7 +1,9 @@
 import React from 'react';
+import classNames from 'classnames';
 import styles from './Header.module.scss';
 import { NavLink, useSearchParams } from 'react-router-dom';
-import { Nav } from '../Nav/Nav';
+import { AppContext } from '../../AppContext';
+import { Nav, MobileNav } from '../../components';
 import {
   FavouriteIcon,
   Logo,
@@ -10,9 +12,6 @@ import {
   Burger,
   Close,
 } from '../../helpers/icons';
-import { AppContext } from '../../AppContext';
-import { MobileNav } from '../MobileNav';
-import classNames from 'classnames';
 
 export const Header = () => {
   const {
@@ -24,14 +23,16 @@ export const Header = () => {
     search,
     setSearch,
   } = React.useContext(AppContext);
+
   const [favouriteCounter, setFavouriteCounter] = React.useState(
     favouriteProducts.length,
   );
+
   const [cartCounter, setCartCounter] = React.useState(
     cart.reduce((acc, item) => acc + item.quantity, 0),
   );
+
   const [searchParams, setSearchParams] = useSearchParams();
-  // const [isMobileMenu, setIsMobileMenu] = React.useState(false);
 
   React.useEffect(
     () => setFavouriteCounter(favouriteProducts.length),

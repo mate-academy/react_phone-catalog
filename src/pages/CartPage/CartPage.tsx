@@ -1,9 +1,9 @@
 import React from 'react';
-import styles from './CartPage.module.scss';
 import { useNavigate } from 'react-router-dom';
+import styles from './CartPage.module.scss';
 import { AppContext } from '../../AppContext';
+import { CartItem } from '../../components';
 import { ChevronArrowLeft } from '../../helpers/icons';
-import { CartItem } from '../../components/CartItem/CartItem';
 
 export const CartPage = () => {
   const { cart, setCart, CART_LOCAL_STORAGE_ITEM } =

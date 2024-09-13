@@ -1,15 +1,16 @@
 import React from 'react';
 import { useSearchParams } from 'react-router-dom';
 import styles from './ProductByCategoryPage.module.scss';
-
 import { AppContext } from '../../AppContext';
-import { Product } from '../../typies';
+import {
+  Breadcrumbs,
+  Loader,
+  Error,
+  Pagination,
+  ProductsList,
+} from '../../components';
 import { debounce, latestYear } from '../../utils';
-import { Breadcrumbs } from '../../components/Breadcrumbs';
-import { Loader } from '../../components/Loader';
-import { Error } from '../../components/Error';
-import { Pagination } from '../../components/Pagination';
-import { ProductsList } from '../../components/ProductsList/ProductsList';
+import { Product } from '../../typies';
 
 const SORT_DEFAULT = 'age';
 const PER_PAGE_ALL = 'all';
@@ -73,16 +74,6 @@ export const ProductByCategoryPage: React.FC<Props> = ({
       }
     }
   });
-
-  // const debounceSearch = debounce(searchQuery => {
-  //   if (products) {
-  //     if (searchQuery) {
-  //       setFilteredProducts(filteredArr(products, searchQuery));
-  //     } else {
-  //       setFilteredProducts(products);
-  //     }
-  //   }
-  // });
 
   React.useEffect(() => {
     setIsSearch(true);

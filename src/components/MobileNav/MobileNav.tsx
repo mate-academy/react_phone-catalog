@@ -1,9 +1,9 @@
 import React from 'react';
 import styles from './MobileNav.module.scss';
-import { NavLink } from 'react-router-dom';
 import classNames from 'classnames';
-import { CartIcon, FavouriteIcon } from '../../helpers/icons';
+import { NavLink } from 'react-router-dom';
 import { AppContext } from '../../AppContext';
+import { CartIcon, FavouriteIcon } from '../../helpers/icons';
 
 export const MobileNav = () => {
   const { favouriteProducts, cart, setIsMobileMenu } =
@@ -15,12 +15,6 @@ export const MobileNav = () => {
   const [cartCounter, setCartCounter] = React.useState(
     cart.reduce((acc, item) => acc + item.quantity, 0),
   );
-
-  // React.useEffect(() => {
-  //   return () => {
-  //     setIsMobileMenu(false);
-  //   };
-  // }, [setIsMobileMenu]);
 
   React.useEffect(
     () => setFavouriteCounter(favouriteProducts.length),

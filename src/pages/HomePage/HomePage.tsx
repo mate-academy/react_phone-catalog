@@ -1,9 +1,7 @@
 import React from 'react';
 import styles from './HomePage.module.scss';
 import { AppContext } from '../../AppContext';
-import { ProductsSlider } from '../../components/ProductsSlider';
-import { Categories } from '../../components/Categories';
-import { PicturesSlider } from '../../components/PicturesSlider';
+import { ProductsSlider, Categories, PicturesSlider } from '../../components';
 import { latestYear } from '../../utils';
 
 export const HomePage: React.FC = () => {

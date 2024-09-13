@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styles from './ProductCard.module.scss';
+import { ProductControllers } from '../../components';
 import { Product } from '../../typies';
-import { ProductControllers } from '../ProductControllers';
 
 type Props = {
   product: Product;

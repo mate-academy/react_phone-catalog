@@ -1,8 +1,7 @@
 import React from 'react';
 import styles from './FavouritesPage.module.scss';
 import { AppContext } from '../../AppContext';
-import { Breadcrumbs } from '../../components/Breadcrumbs';
-import { ProductCard } from '../../components/ProductCard';
+import { Breadcrumbs, ProductCard } from '../../components';
 
 export const FavouritesPage = () => {
   const { favouriteProducts } = React.useContext(AppContext);

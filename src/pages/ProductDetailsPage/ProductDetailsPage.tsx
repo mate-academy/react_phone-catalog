@@ -4,11 +4,15 @@ import classNames from 'classnames';
 import styles from './ProductDetailsPage.module.scss';
 import { AppContext } from '../../AppContext';
 import { getProductDetails } from '../../api';
-import { Error } from '../../components/Error';
-import { Loader } from '../../components/Loader';
-import { Breadcrumbs } from '../../components/Breadcrumbs';
-import { ProductControllers } from '../../components/ProductControllers';
-import { ProductsSlider } from '../../components/ProductsSlider';
+
+import {
+  Breadcrumbs,
+  Error,
+  Loader,
+  ProductControllers,
+  ProductsSlider,
+} from '../../components';
+
 import { ChevronArrowLeft } from '../../helpers/icons';
 import { getSuggestedProducts } from '../../utils';
 import { Product, ProductDetail } from '../../typies';
