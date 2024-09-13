@@ -13,15 +13,20 @@ export const MobileMenu: React.FC = () => {
   const [cartCount, setCartCount] = useState<number>(0);
   const menuRef = useRef<HTMLDivElement>(null);
   const [menuHeight, setMenuHeight] = useState<number>(window.innerHeight);
+  const [bottomPadding, setBottomPadding] = useState<number>(0);
 
   const handleMenuStatus = () => {
     setIsMobMenuOpen(false);
   };
 
   const updateMenuHeight = () => {
-    // Używamy visualViewport dla dokładniejszej wysokości na mobilnych urządzeniach
     const height = window.visualViewport ? window.visualViewport.height : window.innerHeight;
     setMenuHeight(height);
+    // Obliczamy wysokość systemowego paska Androida
+    if (window.visualViewport) {
+      const systemBarHeight = window.innerHeight - window.visualViewport.height;
+      setBottomPadding(systemBarHeight);
+    }
   };
 
   useEffect(() => {
@@ -79,7 +84,7 @@ export const MobileMenu: React.FC = () => {
           </nav>
         </div>
 
-        <div className={styles.actions}>
+        <div className={styles.actions} style={{ paddingBottom: `${bottomPadding}px` }}>
           <NavLink
             to="/favorites"
             className={styles.action}
