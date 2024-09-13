@@ -7,17 +7,17 @@ import classNames from 'classnames';
 const images = [
   {
     url: '/phones',
-    image: './img/banner-phones.png',
+    image: './img/banner-phones.webp',
     alt: 'Banner: phones image',
   },
   {
     url: '/tablets',
-    image: './img/banner-tablets.png',
+    image: './img/banner-tablets.webp',
     alt: 'Banner: tablets image',
   },
   {
     url: '/accessories',
-    image: './img/banner-accessories.png',
+    image: './img/banner-accessories.webp',
     alt: 'Banner: accessories image',
   },
 ];
