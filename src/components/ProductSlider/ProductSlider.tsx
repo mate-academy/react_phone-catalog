@@ -58,7 +58,6 @@ export const ProductSlider: React.FC<ProductSliderProps> = ({ title, category, s
 
   const getScrollStep = () => {
     if (sliderRef.current) {
-      console.log('SLIDER WIDTH',sliderRef.current.clientWidth)
       return sliderRef.current.clientWidth * (1 / products.length);
     }
     return 0;
@@ -71,7 +70,6 @@ export const ProductSlider: React.FC<ProductSliderProps> = ({ title, category, s
   const handleNextSlide = () => {
     if(positionCount !== displayedItems.length - numberOfVisibleCards) {
       const step = getScrollStep();
-      console.log(step)
       if (step > 0) {
         handlePositionCount(1);
         setPosition((prevPosition) => prevPosition - step);
