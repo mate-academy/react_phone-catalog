@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { Phone } from '../types/phone';
-import { BrandNewModelsHome } from '../components/BrandNewModelsHome';
 import { ShopByCategory } from '../components/ShopByCategory';
 import { HomeCarousel } from '../components/HomeCarousel';
+import { BrandNewModelsHome } from '../components/BrandNewModelsHome';
 
 export const HomePage = () => {
   const [newModels, setNewModels] = useState<Phone[]>([]);
