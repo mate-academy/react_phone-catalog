@@ -1,0 +1,22 @@
+.category {
+
+  &--text {
+    font-size: 22px;
+
+    @media screen and (min-width: 640px) {
+      font-size: 32px;
+    }
+  }
+
+  &__type {
+    @media screen and (min-width: 640px) {
+      display: flex;
+
+      column-gap: 16px;
+    }
+  }
+
+  &-home__img {
+    width: 100%;
+  }
+}

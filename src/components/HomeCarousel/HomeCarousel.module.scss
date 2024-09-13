@@ -1,0 +1,23 @@
+.carousel {
+  &--text {
+    margin: 0;
+    margin-bottom: 24px;
+  }
+
+  &--slider {
+    width: calc(100% + 32px);
+    transform: translateX(-16px);
+
+    &__first {
+      width: 100%;
+    }
+
+    &__second {
+      width: 100%;
+    }
+
+    &__third {
+      width: 100%;
+    }
+  }
+}

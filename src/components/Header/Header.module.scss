@@ -1,0 +1,22 @@
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 48px;
+  margin-top: -13px;
+  margin-bottom: 24px;
+
+  &__logo {
+    width: 64px;
+    height: 22px;
+  }
+
+  &__menu {
+    width: 16px;
+    height: 16px;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}

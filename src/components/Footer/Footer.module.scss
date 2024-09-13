@@ -1,0 +1,45 @@
+.footer {
+  margin-top: 64px;
+  padding-bottom: 32px;
+
+  &__line {
+    border-top: 1px solid rgb(226, 230, 233);
+    width: calc(100% + 32px);
+    transform: translateX(-16px);
+
+    margin: 0px 0px 16px 0px;
+  }
+
+  &__about-us {
+    color: #89939A;
+
+    display: flex;
+    gap: 8px;
+    flex-direction: column;
+
+    margin-bottom: 32px;
+  }
+
+  &__logo {
+    width: 89px;
+    height: 32px;
+
+    margin-bottom: 32px;
+  }
+
+  &__text {
+    margin: 0;
+
+  }
+
+  &__slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    column-gap: 16px;
+
+    &-text {
+      margin: 0;
+    }
+  }
+}

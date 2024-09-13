@@ -1,0 +1,20 @@
+.burger-menu {
+  position: relative;
+  height: calc(100vh - 72px);
+
+  &--text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  &--button {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+}
