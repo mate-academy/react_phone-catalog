@@ -11,35 +11,10 @@ import { Theme } from '../Theme';
 export const MobileMenu: React.FC = () => {
   const { setIsMobMenuOpen, theme, productsInCartCount, favoriteProducts } = useAppContext();
   const [cartCount, setCartCount] = useState<number>(0);
-  const [menuHeight, setMenuHeight] = useState<number>(window.innerHeight);
-  const [bottomPadding, setBottomPadding] = useState<number>(0);
 
   const handleMenuStatus = () => {
     setIsMobMenuOpen(false);
   };
-
-  const updateMenuHeight = () => {
-    const height = window.visualViewport ? window.visualViewport.height : window.innerHeight;
-    setMenuHeight(height);
-
-    if (window.visualViewport) {
-      const systemBarHeight = window.innerHeight - window.visualViewport.height;
-      setBottomPadding(systemBarHeight);
-    } else {
-      setBottomPadding(0);
-    }
-  };
-
-  useEffect(() => {
-    updateMenuHeight();
-    window.addEventListener('resize', updateMenuHeight);
-    window.addEventListener('scroll', updateMenuHeight);
-
-    return () => {
-      window.removeEventListener('resize', updateMenuHeight);
-      window.removeEventListener('scroll', updateMenuHeight);
-    };
-  }, []);
 
   useEffect(() => {
     let totalCartCount = productsInCartCount.reduce((acc, count) => acc + count, 0);
@@ -47,7 +22,7 @@ export const MobileMenu: React.FC = () => {
   }, [productsInCartCount]);
 
   return (
-    <div className={styles.topWrapper} style={{ height: `${menuHeight}px` }}>
+    <div className={styles.topWrapper}>
       <div className={styles.menuOverlay}>
         <div className={styles.linkWrapper}>
           <nav className={styles.nav} role="navigation">
@@ -87,7 +62,7 @@ export const MobileMenu: React.FC = () => {
           </nav>
         </div>
 
-        <div className={styles.actions} style={{ paddingBottom: `${bottomPadding}px` }}>
+        <div className={styles.actions}>
           <NavLink
             to="/favorites"
             className={styles.action}
