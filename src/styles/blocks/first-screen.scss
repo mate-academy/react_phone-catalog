@@ -1,0 +1,11 @@
+.first-screen {
+  margin-bottom: 50px;
+
+  @include on-tablet {
+    padding-top: calc($heder-height-mobile + 24px);
+  }
+
+  @include on-tablet {
+    padding-top: calc($heder-height-desktop + 24px);
+  }
+}

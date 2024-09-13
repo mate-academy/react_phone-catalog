@@ -1,0 +1,13 @@
+.home {
+  &__main-title {
+    margin-bottom: 24px;
+
+    @include on-tablet {
+      margin-bottom: 32px;
+    }
+
+    @include on-desktop {
+      margin-bottom: 56px;
+    }
+  }
+}

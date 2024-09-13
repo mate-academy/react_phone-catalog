@@ -1,0 +1,66 @@
+.footer {
+  padding: 32px 0;
+  border-top: 1px solid $border-color;
+
+  &__main-flex-box {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+
+    @include on-tablet {
+      flex-direction: row;
+      justify-content: space-between;
+    }
+  }
+
+  &__main-item {
+    display: flex;
+    align-items: center;
+
+    &:last-child {
+      width: 100%;
+
+      justify-content: center;
+
+      @include on-tablet {
+        width: auto;
+      }
+    }
+  }
+
+  &__logo-link {
+    display: block;
+    width: 90px;
+    height: 32px;
+  }
+
+  &__logo-image {
+    width: 100%;
+    height: 100%;
+  }
+
+  &__scroll-top-btn {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px;
+    font-weight: 700;
+    color: $secondary-gray;
+    background-color: transparent;
+
+    &::after {
+      content: '';
+      display: block;
+      width: 32px;
+      height: 32px;
+      border: 1px solid $secondary-gray;
+
+      background-image: url('../../img/Buttons/Icons/Arrow-Right.svg');
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: 16px;
+      transform: rotateZ(-90deg);
+    }
+  }
+}

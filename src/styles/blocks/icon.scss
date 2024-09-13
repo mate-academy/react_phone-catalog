@@ -1,0 +1,13 @@
+.icon {
+  display: block;
+
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 16px;
+  &--closer {
+    background-image: url("/img/icons/Close.svg");
+  }
+  &--opener {
+    background-image: url("/img/icons/Menu.svg");
+  }
+}

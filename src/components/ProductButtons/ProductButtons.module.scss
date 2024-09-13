@@ -1,0 +1,32 @@
+.product-buttons {
+  height: 40px;
+  display: flex;
+  gap: 8px;
+
+  &__add-to-cart {
+    height: 100%;
+    color: #fff;
+    background-color: $primary-gray;
+    flex: 1 1 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 21px;
+    text-align: center;
+  }
+
+  &__add-to-favourite {
+    background-color: transparent;
+    height: 100%;
+    flex: 0 0 40px;
+    border: 1px solid $secondary-gray;
+
+    background-image: url('../../img/icons/Favourites-Heart.svg');
+    background-repeat: no-repeat;
+    background-size: 16px;
+    background-position: center;
+  }
+}

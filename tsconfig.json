@@ -3,8 +3,13 @@
   "include": [
     "src"
   ],
+  "target": "es2015",
+  "downlevelIteration": true,
   "compilerOptions": {
     "sourceMap": false,
-    "types": ["node", "cypress"]
+    "types": [
+      "node",
+      "cypress",
+    ]
   }
 }
