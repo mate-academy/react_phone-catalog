@@ -61,8 +61,9 @@ export const MobileMenu: React.FC = () => {
             </NavLink>
           </nav>
         </div>
+      </div>
 
-        <div className={styles.actions}>
+      <div className={styles.actions}>
           <NavLink
             to="/favorites"
             className={styles.action}
@@ -109,7 +110,6 @@ export const MobileMenu: React.FC = () => {
             <Theme />
           </div>
         </div>
-      </div>
     </div>
   );
 };
