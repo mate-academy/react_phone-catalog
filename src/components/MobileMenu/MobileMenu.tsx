@@ -12,15 +12,16 @@ export const MobileMenu: React.FC = () => {
   const { setIsMobMenuOpen, theme, productsInCartCount, favoriteProducts } = useAppContext();
   const [cartCount, setCartCount] = useState<number>(0);
   const menuRef = useRef<HTMLDivElement>(null);
+  const [menuHeight, setMenuHeight] = useState<number>(window.innerHeight);
 
   const handleMenuStatus = () => {
     setIsMobMenuOpen(false);
   };
 
   const updateMenuHeight = () => {
-    if (menuRef.current) {
-      menuRef.current.style.height = `${window.innerHeight}px`;
-    }
+    // Używamy visualViewport dla dokładniejszej wysokości na mobilnych urządzeniach
+    const height = window.visualViewport ? window.visualViewport.height : window.innerHeight;
+    setMenuHeight(height);
   };
 
   useEffect(() => {
@@ -38,7 +39,7 @@ export const MobileMenu: React.FC = () => {
   }, [productsInCartCount]);
 
   return (
-    <div className={styles.topWrapper} ref={menuRef}>
+    <div className={styles.topWrapper} ref={menuRef} style={{ height: `${menuHeight}px` }}>
       <div className={styles.menuOverlay}>
         <div className={styles.linkWrapper}>
           <nav className={styles.nav} role="navigation">
