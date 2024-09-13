@@ -1,7 +1,7 @@
 import { Product, ProductDetail } from '../typies';
 
-// const BASE_URL = './api'; // if HashRoute
-const BASE_URL = '/api'; // if BrowserRoute
+const BASE_URL = './api'; // if HashRoute
+// const BASE_URL = '/api'; // if BrowserRoute
 
 const PRODUCTS = 'products.json';
 // const PRODUCTS = 'products_error.json';
