@@ -153,7 +153,7 @@ export const ProductDetailsPage: React.FC<Props> = ({ category }) => {
                     onClick={() => setImageSrc(imageItemSrc)}
                   >
                     <img
-                      src={`../${imageItemSrc}`}
+                      src={`./${imageItemSrc}`}
                       alt=""
                       className={styles.imagePrev}
                     />
@@ -163,7 +163,7 @@ export const ProductDetailsPage: React.FC<Props> = ({ category }) => {
 
               <div className={styles.imageMainContainer}>
                 <img
-                  src={`../${imageSrc}`}
+                  src={`./${imageSrc}`}
                   alt={`${productDetails.name} image`}
                   className={styles.imageMain}
                 />
@@ -195,8 +195,6 @@ export const ProductDetailsPage: React.FC<Props> = ({ category }) => {
                     );
                   })}
                 </ul>
-
-                {/* <hr className={styles.line} /> */}
               </div>
 
               <div className={styles.infoContainer}>
@@ -217,7 +215,6 @@ export const ProductDetailsPage: React.FC<Props> = ({ category }) => {
                     </li>
                   ))}
                 </ul>
-                {/* <hr className={styles.line} /> */}
               </div>
 
               <div>
@@ -264,10 +261,7 @@ export const ProductDetailsPage: React.FC<Props> = ({ category }) => {
           </div>
           <section className={styles.mainContainer}>
             <article className={styles.about}>
-              <h2 className={styles.title}>
-                About
-                {/* <hr className={styles.line} /> */}
-              </h2>
+              <h2 className={styles.title}>About</h2>
 
               {productDetails.description.map((info, index) => (
                 <div key={index} className={styles.aboutParagrafWrapper}>
@@ -278,10 +272,7 @@ export const ProductDetailsPage: React.FC<Props> = ({ category }) => {
             </article>
 
             <article className={styles.techSpecs}>
-              <h2 className={styles.title}>
-                Tech specs
-                {/* <hr className={styles.line} /> */}
-              </h2>
+              <h2 className={styles.title}>Tech specs</h2>
 
               <div className={styles.techSpecsContainer}>
                 {productDetails.screen && (
