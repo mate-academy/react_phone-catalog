@@ -29,7 +29,6 @@ export const ProductList: React.FC<ProductListProps> = ({ category, title }) => 
       const count = products.length;
       const filteredData = await fetchProducts(category, sortMethod, count);
       setProducts(filteredData);
-      console.log('fetched')
       window.scrollTo({ top: 0, behavior: 'auto' });
       setIsLoading(false);
     };
@@ -44,7 +43,6 @@ export const ProductList: React.FC<ProductListProps> = ({ category, title }) => 
   useEffect(() => {
     if (numberOfPages < displayedPage) {
       setDisplayedPage(1);
-      window.scrollTo({ top: 0, behavior: 'auto' });
     }
   }, [displayedPage]);
 
