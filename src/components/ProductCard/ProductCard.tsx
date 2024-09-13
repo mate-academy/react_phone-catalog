@@ -26,7 +26,9 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product}) => {
       localStorage.setItem('clickedProduct', JSON.stringify(product));
       setClickedProduct(product)
     }
+    setClickedProduct(product)
   }
+
 
   return (
     <div className={styles.ProductCard}>
@@ -43,7 +45,11 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product}) => {
       </Link>
 
       <div className={styles.wrapper}>
-        <Link to={`/product/${encodeURIComponent(product.itemId)}`} className={styles.title}>
+        <Link
+          to={`/product/${encodeURIComponent(product.itemId)}`}
+          className={styles.title}
+          onClick = {handleClickedProduct}
+        >
           {name}
         </Link>
 
