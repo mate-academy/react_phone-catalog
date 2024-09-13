@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef }from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { NavLink } from 'react-router-dom';
 import styles from './MobileMenu.module.scss';
 import favoritesIconSrc from '../../img/icons/FavoritesIcon.svg';
@@ -10,19 +10,21 @@ import { Theme } from '../Theme';
 
 export const MobileMenu: React.FC = () => {
   const { setIsMobMenuOpen, theme, productsInCartCount, favoriteProducts } = useAppContext();
-  const [cartCount, setCartCount] = useState<number>(0)
+  const [cartCount, setCartCount] = useState<number>(0);
   const menuRef = useRef<HTMLDivElement>(null);
-  const [menuHeight, setMenuHeight] = useState<number>(window.innerHeight);
 
   const handleMenuStatus = () => {
     setIsMobMenuOpen(false);
   };
 
   const updateMenuHeight = () => {
-    setMenuHeight(window.innerHeight);
+    if (menuRef.current) {
+      menuRef.current.style.height = `${window.innerHeight}px`;
+    }
   };
 
   useEffect(() => {
+    updateMenuHeight();
     window.addEventListener('resize', updateMenuHeight);
 
     return () => {
@@ -30,23 +32,13 @@ export const MobileMenu: React.FC = () => {
     };
   }, []);
 
-  const menuStyle = {
-    height: `${menuHeight}px`,
-  };
-
   useEffect(() => {
-    let cartCount: number = 0;
-
-    for (let i = 0; i < productsInCartCount.length; i++) {
-      cartCount = cartCount + productsInCartCount[i]
-    }
-
-    setCartCount(cartCount)
-
+    let totalCartCount = productsInCartCount.reduce((acc, count) => acc + count, 0);
+    setCartCount(totalCartCount);
   }, [productsInCartCount]);
 
   return (
-    <div className={styles.topWrapper} ref={menuRef} style={menuStyle} >
+    <div className={styles.topWrapper} ref={menuRef}>
       <div className={styles.menuOverlay}>
         <div className={styles.linkWrapper}>
           <nav className={styles.nav} role="navigation">
@@ -106,7 +98,6 @@ export const MobileMenu: React.FC = () => {
                 </div>
               </div>
             </div>
-
           </NavLink>
           <NavLink
             to="/cart"
