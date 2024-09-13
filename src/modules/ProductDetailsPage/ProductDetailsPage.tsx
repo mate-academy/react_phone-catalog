@@ -31,17 +31,12 @@ export const ProductDetailsPage: React.FC = () => {
 
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
-
-
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-
           const response = await fetch(`https://meljaszuk.github.io/react_phone-catalog/api/products.json`);
           const data = await response.json();
           setProducts(data);
-
-
       } catch (error) {
         console.error('Error fetching data:', error);
       }
@@ -50,10 +45,7 @@ export const ProductDetailsPage: React.FC = () => {
     fetchProducts();
   }, [location.pathname]);
 
-
-
   useEffect(() => {
-
     const fetchCategory = async () => {
       try {
           const slug = location.pathname.split("/").pop();
@@ -68,9 +60,8 @@ export const ProductDetailsPage: React.FC = () => {
       } catch (error) {
         console.error('Error fetching data:', error);
         }
-
-
     }
+
     fetchCategory();
 },[products, location.pathname, clickedProduct])
 
@@ -79,26 +70,20 @@ export const ProductDetailsPage: React.FC = () => {
       const productDetails = fetchedCategory.find(item => item.id === clickedProduct.itemId);
       setProductDetails(productDetails);
     }
-
   }, [fetchedCategory, clickedProduct, setProductDetails]);
 
   const [dynamicColor, setDynamicColor] = useState<string>('');
   const [dynamicCapacity, setDynamicCapacity] = useState<string>('');
 
   useEffect(() => {
-
     if (fetchedCategory && clickedProduct && products) {
       setIsLoading(false)
     }
-
   }, [productDetails, fetchedCategory,clickedProduct, products]);
 
   useEffect(() => {
-      window.scrollTo({ top: 0, behavior: 'auto' });
-
+    window.scrollTo({ top: 0, behavior: 'auto' });
   }, [productDetails])
-
-
 
   return (
     <div className={styles.productDetailsPage}>
@@ -127,7 +112,6 @@ export const ProductDetailsPage: React.FC = () => {
             <TechSpecs />
           </div>
         )}
-
         {clickedProduct && <ProductSlider title="You may also like" category={clickedProduct.category} sortMethod={'random'} count={5}/>}
       </main>
     </div>
