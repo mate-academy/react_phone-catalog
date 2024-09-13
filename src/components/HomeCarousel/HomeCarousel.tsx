@@ -32,7 +32,7 @@ export const HomeCarousel = () => {
           <SwiperSlide>
             <img
               className="carousel--slider__second"
-              src="/img/slider-second-photo.png"
+              src="./img/slider-second-photo.png"
               alt="Menu"
             />
           </SwiperSlide>
@@ -40,7 +40,7 @@ export const HomeCarousel = () => {
           <SwiperSlide>
             <img
               className="carousel--slider__third"
-              src="/img/slider-third-photo.jpg"
+              src="./img/slider-third-photo.jpg"
               alt="Menu"
             />
           </SwiperSlide>

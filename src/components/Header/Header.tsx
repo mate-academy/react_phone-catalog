@@ -11,12 +11,12 @@ export const Header: React.FC<Props> = ({ burgerMenu, setBurgerMenu }) => {
     <header>
       <div className="nav">
         <Link to="/">
-          <img className="nav__logo" src="/img/Logo.png" alt="Logo" />
+          <img className="nav__logo" src="./img/Logo.png" alt="Logo" />
         </Link>
         <img
           onClick={() => setBurgerMenu(!burgerMenu)}
           className="nav__menu"
-          src="/img/Menu.png"
+          src="./img/Menu.png"
           alt="Menu"
         />
       </div>

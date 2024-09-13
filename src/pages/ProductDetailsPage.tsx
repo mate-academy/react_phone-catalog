@@ -98,7 +98,7 @@ export const ProductDetailsPage = () => {
 
       <div className="card__buy">
         <button className="card__buy-cart">Add to cart</button>
-        <img src="/img/add-to-cart.svg" alt="add-to-cart" />
+        <img src="./img/add-to-cart.svg" alt="add-to-cart" />
       </div>
 
       <div className="card__screen">

@@ -22,12 +22,12 @@ export const BrandNewModelsHome: React.FC<Props> = ({ newModels, type }) => {
         <div className="page-home__new-models--arrow">
           <img
             className="page-home__new-models--arrow-disabled"
-            src="/img/Buttons_Slider button - Disabled (right).svg"
+            src="./img/Buttons_Slider button - Disabled (right).svg"
             alt="Disabled"
           />
           <img
             className="page-home__new-models--arrow-default"
-            src="/img/Buttons_Slider button - Default (right).svg"
+            src="./img/Buttons_Slider button - Default (right).svg"
             alt="Default"
           />
         </div>
@@ -82,7 +82,7 @@ export const BrandNewModelsHome: React.FC<Props> = ({ newModels, type }) => {
                     <button className="page-home-card__buy-cart">
                       Add to cart
                     </button>
-                    <img src="/img/add-to-cart.svg" alt="add-to-cart" />
+                    <img src="./img/add-to-cart.svg" alt="add-to-cart" />
                   </div>
                 </div>
               </SwiperSlide>

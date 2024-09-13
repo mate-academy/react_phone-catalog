@@ -28,8 +28,8 @@ export const BurgerMenu: React.FC<Props> = ({ burgerMenu, setBurgerMenu }) => {
       </div>
 
       <div className="burger-menu--button">
-        <img src="/img/Favourites.svg" alt="Favourites" />
-        <img src="/img/Cart.svg" alt="Cart" />
+        <img src="./img/Favourites.svg" alt="Favourites" />
+        <img src="./img/Cart.svg" alt="Cart" />
       </div>
     </div>
   );

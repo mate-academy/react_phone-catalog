@@ -16,11 +16,11 @@ export const ProductHome: React.FC<Props> = ({ product }) => {
     <>
       <div className="page-phones">
         <Link to="/">
-          <img className="page-phones__house" src="/img/Home.svg" alt="Home" />
+          <img className="page-phones__house" src="./img/Home.svg" alt="Home" />
         </Link>
         <img
           className="page-phones__arrow"
-          src="/img/Chevron (Arrow Right).svg"
+          src="./img/Chevron (Arrow Right).svg"
           alt="Chevron"
         />
         <p className="page-phones__catygory-text">
