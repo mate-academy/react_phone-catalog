@@ -53,6 +53,7 @@
   width: 100%;
   left: 0;
   bottom: 1px;
+  padding-bottom: env(safe-area-inset-bottom);
 }
 
 .action {
