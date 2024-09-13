@@ -24,7 +24,7 @@ export const HomeCarousel = () => {
           <SwiperSlide>
             <img
               className="carousel--slider__first"
-              src="/img/slider-first-photo.png"
+              src="./img/slider-first-photo.png"
               alt="Menu"
             />
           </SwiperSlide>
