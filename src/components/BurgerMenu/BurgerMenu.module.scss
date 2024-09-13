@@ -7,6 +7,16 @@
   flex-direction: column;
   justify-content: space-between;
 
+
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+
+  &_open {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
   &_buttons {
     @include content-padding-inline;
     margin-top: 32px;

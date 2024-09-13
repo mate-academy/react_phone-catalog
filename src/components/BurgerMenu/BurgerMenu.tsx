@@ -1,9 +1,13 @@
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, useLocation } from 'react-router-dom';
 import styles from './BurgerMenu.module.scss';
 
 export const BurgerMenu = () => {
+  const isMenuClicked = useLocation().pathname.slice(1);
+
   return (
-    <aside className={styles.menu}>
+    <aside
+      className={`${styles.menu} ${isMenuClicked ? styles.menu_open : ''}`}
+      >
       <nav className={styles.menu_buttons}>
         <ul>
           <li>

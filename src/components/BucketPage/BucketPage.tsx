@@ -119,7 +119,14 @@ export const BucketPage = () => {
                           <img src="img/icons/Minus.svg" alt="minus" />
                         )}
                       </div>
-                      <p>{product.quantity}</p>
+                      <p
+                        className={
+                          // eslint-disable-next-line max-len
+                          styles.bucket__generalProducts_products_product_secondSection_buttons_quantity
+                        }
+                      >
+                        {product.quantity}
+                      </p>
                       <div
                         className={
                           // eslint-disable-next-line max-len

@@ -15,7 +15,11 @@ export const Header = () => {
     state => state.addedFavourites.items,
   ).length;
 
-  const bucketAmount = useAppSelector(state => state.addedBucket.items).length;
+  const bucketProducts = useAppSelector(state => state.addedBucket.items);
+
+  const bucketAmount = bucketProducts.reduce((total, product) => {
+    return total + product.quantity;
+  }, 0);
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
@@ -37,7 +41,11 @@ export const Header = () => {
     <div className={styles.topbar}>
       <div className={styles.topbarLogoAndButtons}>
         <Link to="/home">
-          <img src="img/header/Logo.svg" alt="logoTop" />
+          <img
+            className={styles.topbarLogoAndButtons__logo}
+            src="img/header/Logo.svg"
+            alt="logoTop"
+          />
         </Link>
 
         <nav className={styles.topbarLogoAndButtons_buttons}>
@@ -103,7 +111,7 @@ export const Header = () => {
             />
           </Link>
         ) : (
-          <Link to="/menu">
+          <Link to={'/menu'}>
             <img
               className={styles.topbarIcons_menu_button}
               src="img/icons/Menu.svg"
