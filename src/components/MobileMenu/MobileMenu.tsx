@@ -22,7 +22,7 @@ export const MobileMenu: React.FC = () => {
   const updateMenuHeight = () => {
     const height = window.visualViewport ? window.visualViewport.height : window.innerHeight;
     setMenuHeight(height);
-    // Obliczamy wysokość systemowego paska Androida
+
     if (window.visualViewport) {
       const systemBarHeight = window.innerHeight - window.visualViewport.height;
       setBottomPadding(systemBarHeight);
