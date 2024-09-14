@@ -7,7 +7,7 @@ export const BurgerMenu = () => {
   return (
     <aside
       className={`${styles.menu} ${isMenuClicked ? styles.menu_open : ''}`}
-      >
+    >
       <nav className={styles.menu_buttons}>
         <ul>
           <li>

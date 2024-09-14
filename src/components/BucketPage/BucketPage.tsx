@@ -37,6 +37,12 @@ export const BucketPage = () => {
     return finalSuma;
   };
 
+  const bucketProducts = useAppSelector(state => state.addedBucket.items);
+
+  const bucketAmount = bucketProducts.reduce((total, product) => {
+    return total + product.quantity;
+  }, 0);
+
   return (
     <>
       <div className={styles.bucket}>
@@ -157,7 +163,7 @@ export const BucketPage = () => {
                 <h3 className={styles.bucket__generalProducts_total_info_price}>
                   ${finalSum()}
                 </h3>
-                <p>Total for {products.length} items</p>
+                <p>Total for {bucketAmount} items</p>
               </div>
 
               <button
