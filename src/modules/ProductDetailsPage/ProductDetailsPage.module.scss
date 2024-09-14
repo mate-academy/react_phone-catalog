@@ -17,8 +17,6 @@
   grid-column: 1 / -1;
 }
 
-
-
 .title {
   grid-column: 1 / -1;
   margin-bottom: 40px;
@@ -68,6 +66,7 @@
   0% {
     transform: rotate(20deg) scale(90%)
   }
+
   50% {
     transform: rotate(-10deg) scale(100%)
   }

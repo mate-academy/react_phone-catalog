@@ -12,7 +12,7 @@ import { Breadcrumbs } from '../../components/Breadcrumbs';
 import { GoBack } from '../../components/GoBack';
 import { ProductSlider } from '../../components/ProductSlider';
 // eslint-disable-next-line no-unused-vars
-import { LimitedProduct } from '../../types/Product';
+import { LimitedProduct, Product } from '../../types/Product';
 
 export const ProductDetailsPage: React.FC = () => {
   const location = useLocation();
@@ -74,6 +74,7 @@ export const ProductDetailsPage: React.FC = () => {
 
   const [dynamicColor, setDynamicColor] = useState<string>('');
   const [dynamicCapacity, setDynamicCapacity] = useState<string>('');
+  const [productGroup, setProductGroup] = useState<string>("")
 
   useEffect(() => {
     if (fetchedCategory && clickedProduct && products) {
@@ -82,8 +83,17 @@ export const ProductDetailsPage: React.FC = () => {
   }, [productDetails, fetchedCategory,clickedProduct, products]);
 
   useEffect(() => {
-    window.scrollTo({ top: 0, behavior: 'auto' });
+    const slug = location.pathname.split("/").pop();
+    let fetchedProduct = fetchedCategory?.find((item: Product) => item.id === slug);
+
+    if (fetchedProduct) {
+      setProductGroup(fetchedProduct.namespaceId)
+    }
   }, [productDetails])
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [productGroup])
 
   return (
     <div className={styles.productDetailsPage}>
