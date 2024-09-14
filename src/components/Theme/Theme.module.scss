@@ -1,18 +1,79 @@
 @import '../../styles/main';
 @import '../Header/Header.module.scss';
 
+@keyframes button {
+  from {
+    left: 4px
+  }
+
+  to {
+    right: 4px;
+  }
+}
+
 .toggleContainer {
   width: 40px;
-  height: 40px;
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
 }
 
-.hidden {
-  display: none;
+.circle {
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  background-color: var(--color-primary);
 }
 
-.icon {
-  font-size: 20px;
+.rectangle {
+  height: 20px;
+  width: 20px;
+  position: absolute;
+  left: 10px;
+  z-index: 100;
+  background-color: var(--color-primary);
+}
+
+.button {
+  height: 15px;
+  width: 15px;
+  border-radius: 50%;
+  background-color: var(--color-background);
+  position: absolute;
+  z-index: 200;
+  left: 4px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.modeLight {
+  transform: translateX(0);
+}
+
+.modeDark {
+  transform: translateX(16px);
+}
+
+.bcgWrapperDark {
+  display: flex;
+  opacity: 0.7;
+}
+
+.bcgWrapperLight {
+  display: flex;
+  opacity: 0.5;
+}
+
+.label {
+  @extend %small-text;
+  font-size: 9px;
+  font-weight: 400;
+  letter-spacing: 2px;
+  opacity: 0.8;
+}
+
+.labelContainer {
+  position: absolute;
+  display: flex;
+  top: -15px
 }

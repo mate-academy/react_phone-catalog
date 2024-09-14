@@ -26,12 +26,18 @@ export const Theme: React.FC = () => {
 
   return (
     <div className={styles.toggleContainer} onClick={handleThemeChange}>
-      <div className={`${styles.icon} ${theme === 'dark' ? styles.hidden : ""}`}>
-        &#x1F319;
+      <div className={styles.labelContainer}>
+        {theme === 'dark' && <div className={styles.label}>LIGHT</div>}
+        {theme === 'light' && <div className={styles.label}>DARK</div>}
       </div>
-      <div className={`${styles.icon} ${theme === 'light' ? styles.hidden : ""}`}>
-        &#x1F31E;
+
+      <div className={`${theme === 'light' ? styles.bcgWrapperLight :  styles.bcgWrapperDark}`}>
+        <div className={styles.circle} />
+        <div className={styles.rectangle} />
+        <div className={styles.circle} />
       </div>
+
+      <div className={`${styles.button} ${theme === "light" ? styles.modeLight  : styles.modeDark}`} />
     </div>
   );
 };
