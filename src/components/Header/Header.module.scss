@@ -224,7 +224,7 @@
   transform: translateX(0);
   transition: transform 0.3s ease-in-out;
   display: flex;
-  position: absolute;
+  position: fixed;
   top: $height-on-tablet;
   left: 0;
   width: 100vw;
@@ -241,6 +241,7 @@
   transition: transform 0.3s ease-in-out;
   position: fixed;
   top: $height-on-tablet;
+  height: calc(100vh - $height-on-tablet);
   left: 0;
   width: 100vw;
   height: 100vh;

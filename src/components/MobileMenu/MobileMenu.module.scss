@@ -8,6 +8,7 @@
   justify-content: flex-start;
   padding-top: 30px;
   box-sizing: border-box;
+  overflow-x: auto;
 }
 
 .topWrapper {
@@ -17,6 +18,9 @@
   z-index: 9000;
   background-color: var(--color-background);
   border-top: 1px solid var(--color-elements);
+  flex-direction: column;
+  box-sizing: border-box;
+  padding-bottom: env(safe-area-inset-bottom, 0);
 }
 
 .menuOverlay {
@@ -27,7 +31,6 @@
   height: calc(100vh - $height-on-tablet - 1px);
   width: 100%;
   box-sizing: border-box;
-  padding-bottom: env(safe-area-inset-bottom, 0);
 }
 
 .show {
@@ -52,8 +55,6 @@
   display: flex;
   width: 100%;
   left: 0;
-  bottom: env(safe-area-inset-bottom);
-  position: absolute;
   background-color: var(--color-background);
 }
 
@@ -66,7 +67,6 @@
   color: var(--color-secondary);
   box-shadow: 0 -1px 0 0 var(--color-elements), 1px 0 0 0 var(--color-elements);
   cursor: pointer;
-  padding-bottom: env(safe-area-inset-bottom);
 }
 
 .actionIcon {
