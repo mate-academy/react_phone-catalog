@@ -1,0 +1,30 @@
+@import './styles/utils';
+@import './styles/global';
+
+.App {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 56px;
+  flex: 1 1;
+  margin: 0 auto;
+
+  @include on-mobile {
+    width: $mobile-container;
+  }
+
+  @include on-tablet {
+    gap: 64px;
+    width: $tablet-container;
+  }
+
+  @include on-desktop {
+    gap: 80px;
+    width: $desktop-container;
+  }
+}

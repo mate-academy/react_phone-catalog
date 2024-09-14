@@ -1,0 +1,111 @@
+@import '../../styles/utils';
+
+.container {
+  width: 100%;
+}
+
+.header {
+  margin-bottom: 24px;
+  color: $color-primary;
+
+  @include h2-mobile;
+
+  @include on-tablet {
+    @include h2;
+  }
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 32px;
+
+  @include on-tablet {
+    flex-direction: row;
+    gap: 16px;
+  }
+}
+
+.item {
+  flex: 1;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.image {
+  width: 100%;
+  height: auto;
+  padding: 50%;
+  margin-bottom: 24px;
+  background-repeat: no-repeat;
+}
+
+.phones {
+  background-size: 115%;
+  background-position-y: 5%;
+  background-position-x: -60%;
+  background-color: #fcdbc1;
+  background-image: url(/styles/img/category-phones.webp);
+  transition:
+    background-size $hover-delay,
+    background-position-x $hover-delay,
+    background-position-y $hover-delay;
+
+  &:hover {
+    background-size: 125%;
+    background-position-x: 15%;
+    background-position-y: 12%;
+  }
+}
+
+.tablets {
+  background-size: 135%;
+  background-position-y: -10%;
+  background-position-x: -40%;
+  background-color: #8d8d92;
+  background-image: url(/styles/img/category-tablets.webp);
+  transition:
+    background-size $hover-delay,
+    background-position-y $hover-delay,
+    background-position-x $hover-delay;
+
+  &:hover {
+    background-size: 145%;
+    background-position-y: 0%;
+    background-position-x: 0%;
+  }
+}
+
+.accessories {
+  background-size: 190%;
+  background-position-y: bottom;
+  background-position-x: -5%;
+  background-color: #973d5f;
+  background-image: url(/styles/img/category-accessories.webp);
+  transition:
+    background-size $hover-delay,
+    background-position-y $hover-delay,
+    background-position-x $hover-delay;
+
+  &:hover {
+    background-size: 200%;
+    background-position-y: 113%;
+    background-position-x: 5%;
+  }
+}
+
+.name {
+  color: $color-primary;
+
+  @include h4;
+}
+
+.itemsCount {
+  color: $color-secondary;
+
+  @include bodytext14;
+}
