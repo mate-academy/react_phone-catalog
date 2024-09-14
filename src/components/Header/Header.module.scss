@@ -224,11 +224,12 @@
   transform: translateX(0);
   transition: transform 0.3s ease-in-out;
   display: flex;
-  position: fixed;
+  position: absolute;
   top: $height-on-tablet;
   left: 0;
   width: 100vw;
   height: calc(100vh - $height-on-tablet);
+  z-index: 10000;
 
   @include on-tablet {
     display: none;
