@@ -51,19 +51,21 @@ export const ProductByCategoryPage: React.FC<Props> = ({
   const [searchParams, setSearchParams] = useSearchParams();
   const { isError, setIsSearch, search, setSearch } =
     React.useContext(AppContext);
+  const [sortedProducts, setSortedProducts] = React.useState<Product[]>([]);
+  const [filteredProducts, setFilteredProducts] = React.useState<Product[]>([]);
+  const [isLoading, setIsLoading] = React.useState(true);
 
   const [currentPage, setCurrentPage] = React.useState(
     Number(searchParams.get('page')) || 1,
   );
+
   const [sort, setSort] = React.useState(
     searchParams.get('sort') || SORT_DEFAULT,
   );
+
   const [perPage, setPerPage] = React.useState(
     searchParams.get('perPage') || PER_PAGE_DEFAULT,
   );
-  const [sortedProducts, setSortedProducts] = React.useState<Product[]>([]);
-  const [filteredProducts, setFilteredProducts] = React.useState<Product[]>([]);
-  const [isLoading, setIsLoading] = React.useState(true);
 
   const debounceSearch = debounce(async searchQuery => {
     if (products) {
@@ -115,7 +117,7 @@ export const ProductByCategoryPage: React.FC<Props> = ({
 
       case 'title':
         setSortedProducts(
-          filteredProducts.sort((product1, product2) =>
+          [...filteredProducts].sort((product1, product2) =>
             product1.name.localeCompare(product2.name),
           ) || [],
         );
@@ -123,7 +125,7 @@ export const ProductByCategoryPage: React.FC<Props> = ({
 
       case 'price':
         setSortedProducts(
-          filteredProducts.sort(
+          [...filteredProducts].sort(
             (product1, product2) => product1.fullPrice - product2.fullPrice,
           ) || [],
         );
@@ -132,7 +134,7 @@ export const ProductByCategoryPage: React.FC<Props> = ({
       default:
         setSortedProducts([]);
     }
-  }, [filteredProducts, sort]);
+  }, [sort, filteredProducts]);
 
   const pageItems = React.useMemo(
     () =>
