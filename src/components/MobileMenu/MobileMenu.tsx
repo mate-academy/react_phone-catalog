@@ -11,10 +11,27 @@ import { Theme } from '../Theme';
 export const MobileMenu: React.FC = () => {
   const { setIsMobMenuOpen, theme, productsInCartCount, favoriteProducts } = useAppContext();
   const [cartCount, setCartCount] = useState<number>(0);
+  const [windowWidth, setWindowWidth] = useState<number>(typeof window !== "undefined" ? window.innerWidth : 0)
+
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
 
   const handleMenuStatus = () => {
     setIsMobMenuOpen(false);
   };
+
+  useEffect(() => {
+    setIsMobMenuOpen(false)
+  }, [windowWidth])
 
   useEffect(() => {
     let totalCartCount = productsInCartCount.reduce((acc, count) => acc + count, 0);
