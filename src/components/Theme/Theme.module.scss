@@ -20,15 +20,15 @@
 }
 
 .circle {
-  height: 20px;
-  width: 20px;
+  height: 16px;
+  width: 16px;
   border-radius: 50%;
   background-color: var(--color-primary);
 }
 
 .rectangle {
-  height: 20px;
-  width: 20px;
+  height: 16px;
+  width: 16px;
   position: absolute;
   left: 10px;
   z-index: 100;
@@ -36,13 +36,13 @@
 }
 
 .button {
-  height: 15px;
-  width: 15px;
+  height: 12px;
+  width: 12px;
   border-radius: 50%;
   background-color: var(--color-background);
   position: absolute;
   z-index: 200;
-  left: 4px;
+  left: 8px;
   transition: transform 0.3s ease-in-out;
 }
 
@@ -51,7 +51,7 @@
 }
 
 .modeDark {
-  transform: translateX(16px);
+  transform: translateX(13px);
 }
 
 .bcgWrapperDark {
