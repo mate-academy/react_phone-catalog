@@ -21,6 +21,10 @@ export const SliderMain = () => {
     );
   };
 
+  const handleClickOnLowerSwitch = (index: number) => {
+    setCurrentIndex(index);
+  };
+
   useEffect(() => {
     const interval = setInterval(() => {
       handleNext();
@@ -51,6 +55,9 @@ export const SliderMain = () => {
           <div
             key={index}
             className={`${styles.switch} ${currentIndex === index ? styles.active : ''}`}
+            onClick={() => {
+              handleClickOnLowerSwitch(index);
+            }}
           ></div>
         ))}
       </div>
