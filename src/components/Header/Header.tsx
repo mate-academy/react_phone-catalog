@@ -12,7 +12,6 @@ import favIconDT from '../../img/icons/FavoritesIcon--DarkTheme.svg';
 import menuIcon from '../../img/icons/MenuIcon.svg';
 import menuIconDT from '../../img/icons/MenuIcon--DarkTheme.svg';
 import { Theme } from '../Theme';
-import { MobileMenu } from '../MobileMenu';
 import { useAppContext } from '../../context/AppContext';
 
 export const Header: React.FC = () => {
@@ -124,10 +123,6 @@ export const Header: React.FC = () => {
                   alt="Menu"
                   className={styles.icon}
               />
-            </div>
-
-            <div className={`${isMobMenuOpen ? styles.menuVisible : styles.menuHidden}`}>
-              <MobileMenu />
             </div>
           </div>
         </div>

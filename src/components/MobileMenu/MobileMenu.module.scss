@@ -21,6 +21,7 @@
   flex-direction: column;
   box-sizing: border-box;
   padding-bottom: env(safe-area-inset-bottom, 0);
+  position: absolute;
 }
 
 .menuOverlay {
@@ -28,7 +29,7 @@
   justify-content: flex-start;
   flex-direction: column;
   right: 0;
-  height: calc(100vh - $height-on-tablet - 1px);
+  height: 100%;
   width: 100%;
   box-sizing: border-box;
 }

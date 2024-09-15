@@ -12,9 +12,12 @@ import { CartPage } from './modules/CartPage';
 import { ProductDetailsPage } from './modules/ProductDetailsPage';
 import { NotFoundPage } from './modules/NotFoundPage';
 import styles from './App.module.scss'
+import { MobileMenu } from './components/MobileMenu';
+import { useAppContext } from './context/AppContext';
 
 export const Root = () => {
   const [isLoading, setIsLoading] = useState(true);
+  const { isMobMenuOpen } = useAppContext();
 
   useEffect(() => {
     setIsLoading(false);
@@ -28,6 +31,9 @@ export const Root = () => {
         ) : (
           <>
             <Header />
+            <div className={`${isMobMenuOpen ? styles.menuVisible : styles.menuHidden}`}>
+              <MobileMenu />
+            </div>
               <Switch>
                 <Route exact path="/" component={HomePage} />
                 <Route path="/phones" component={PhonesPage} />
