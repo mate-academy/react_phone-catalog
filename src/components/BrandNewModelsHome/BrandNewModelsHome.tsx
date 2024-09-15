@@ -7,10 +7,14 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 import { Phone } from '../../types/phone';
+import { Tablet } from '../../types/tablet';
+import { Accessory } from '../../types/accessory';
+
+type Product = Phone | Tablet | Accessory;
 
 type Props = {
-  newModels: Phone[];
-  type: 'Hot Prices' | 'Brand new models';
+  newModels: Product[];
+  type: 'Hot Prices' | 'Brand new models' | 'You may also like';
 };
 
 export const BrandNewModelsHome: React.FC<Props> = ({ newModels, type }) => {
@@ -51,7 +55,7 @@ export const BrandNewModelsHome: React.FC<Props> = ({ newModels, type }) => {
                 <div className="page-home-card">
                   <img
                     className="page-home-card__image"
-                    src={phone.images[1]}
+                    src={phone.images[0]}
                     alt=""
                   />
                   <p className="page-home-card__name">{phone.name}</p>

@@ -32,6 +32,16 @@ body {
   padding-bottom: 0;
 
   font-family: 'Mont', sans-serif;
+
+  @media screen and (min-width: 640px) {
+    padding-left: 24px;
+    padding-right: 32px;
+  }
+
+  @media screen and (min-width: 1200px) {
+    padding-left: 32px;
+    padding-right: 32px;
+  }
 }
 
 ul {

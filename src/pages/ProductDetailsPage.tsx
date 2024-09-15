@@ -6,7 +6,8 @@ import { Accessory } from '../types/accessory';
 import { DetailsAbout } from '../components/DetailsAbout';
 import { DetailsBack } from '../components/DetailsHome';
 import { DetailsCard } from '../components/DetailsCard';
-import { DetailsTechSpecs } from '../components/DetailsAbout copy';
+import { DetailsTechSpecs } from '../components/DetailsTechSpecs/DetailsTechSpecs';
+import { BrandNewModelsHome } from '../components/BrandNewModelsHome';
 
 type Product = Phone | Tablet | Accessory;
 
@@ -14,6 +15,7 @@ export const ProductDetailsPage = () => {
   const { productId } = useParams();
   const location = useLocation();
   const [product, setProduct] = useState<Product | null>(null);
+  const [newModels, setNewModels] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -34,6 +36,7 @@ export const ProductDetailsPage = () => {
 
         const response = await fetch(apiUrl);
         const data: Product[] = await response.json();
+        setNewModels(data);
         const selectedProduct = data.find(item => item.id === productId);
 
         if (!selectedProduct) {
@@ -66,13 +69,15 @@ export const ProductDetailsPage = () => {
 
   return (
     <div className="details">
-      <DetailsBack location={location}/>
+      <DetailsBack location={location} />
 
-      <DetailsCard product={product}/>
+      <DetailsCard product={product} />
 
       <DetailsAbout />
 
-      <DetailsTechSpecs product={product}/>
+      <DetailsTechSpecs product={product} />
+
+      <BrandNewModelsHome newModels={newModels} type="You may also like" />
     </div>
   );
 };

@@ -7,6 +7,7 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 import 'swiper/css/autoplay';
+import './pagination.scss';
 
 export const HomeCarousel = () => {
   return (
@@ -14,6 +15,7 @@ export const HomeCarousel = () => {
       <h1 className="carousel-home--text">Welcome to Nice Gadgets store!</h1>
 
       <div className="carousel--slider">
+        <img className='carousel--slider--first-button' src="./img/Buttons_Slider button - Default (right) (1).svg" alt="button" />
         <Swiper
           modules={[Pagination, A11y, Autoplay]}
           spaceBetween={50}
@@ -27,12 +29,17 @@ export const HomeCarousel = () => {
               src="./img/slider-first-photo.png"
               alt="Menu"
             />
+            <img
+              className="carousel--slider-banner"
+              src="./img/Banner.png"
+              alt="Menu"
+            />
           </SwiperSlide>
 
           <SwiperSlide>
             <img
               className="carousel--slider__second"
-              src="./img/slider-second-photo.png"
+              src="./img/slider-second-photo.jpg"
               alt="Menu"
             />
           </SwiperSlide>
@@ -45,6 +52,7 @@ export const HomeCarousel = () => {
             />
           </SwiperSlide>
         </Swiper>
+        <img className='carousel--slider--second-button' src="./img/Buttons_Slider button - Default (right) (2).svg" alt="button" />
       </div>
     </>
   );

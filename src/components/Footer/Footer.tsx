@@ -14,8 +14,9 @@ export const Footer = () => {
       </div>
 
       <div className="footer__slide">
-        <p className="footer__slide-text">Back to top</p>
+        <p onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="footer__slide-text">Back to top</p>
         <img
+          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
           className="footer__slide-button"
           src="./img/Footer-slide.svg"
           alt="Footer-slide"
