@@ -10,6 +10,21 @@
     margin-bottom: 64px;
   }
 
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+
+    @media screen and (min-width: 640px) {
+      grid-template-columns: repeat(2, 1fr);
+      column-gap: 16px;
+      row-gap: 40px;
+    }
+
+    @media screen and (min-width: 1200px) {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
   &__image {
     height: 200px;
 
@@ -17,6 +32,13 @@
     margin: 0 auto;
 
     margin-bottom: 24px;
+
+    @media screen and (min-width: 1200px) {
+      transition: all 0.3s;
+      &:hover {
+        transform: scale(1.05);
+      }
+    }
   }
 
   &__name {

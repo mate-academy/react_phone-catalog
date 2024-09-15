@@ -11,7 +11,7 @@ type Props = {
 
 export const List: React.FC<Props> = ({ products, type }) => {
   return (
-    <ul>
+    <ul className='card__grid'>
       {products.length > 0 &&
         products.map(product => (
           <div key={product.id} className="card">

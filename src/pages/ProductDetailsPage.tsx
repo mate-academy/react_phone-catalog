@@ -77,7 +77,7 @@ export const ProductDetailsPage = () => {
 
       <DetailsTechSpecs product={product} />
 
-      <BrandNewModelsHome newModels={newModels} type="You may also like" />
+      <BrandNewModelsHome type="You may also like" />
     </div>
   );
 };

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Pagination, A11y, Autoplay } from 'swiper/modules';
+import { Pagination, A11y, Autoplay, Navigation } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -17,11 +17,17 @@ export const HomeCarousel = () => {
       <div className="carousel--slider">
         <img className='carousel--slider--first-button' src="./img/Buttons_Slider button - Default (right) (1).svg" alt="button" />
         <Swiper
-          modules={[Pagination, A11y, Autoplay]}
+          modules={[Pagination, A11y, Autoplay, Navigation]}
           spaceBetween={50}
           slidesPerView={1}
           pagination={{ clickable: true }}
           autoplay={{ delay: 5000, disableOnInteraction: false }}
+          centeredSlides={true}
+          loop={true}
+          navigation={{
+            prevEl: '.carousel--slider--first-button',
+            nextEl: '.carousel--slider--second-button',
+          }}
         >
           <SwiperSlide>
             <img
@@ -39,7 +45,7 @@ export const HomeCarousel = () => {
           <SwiperSlide>
             <img
               className="carousel--slider__second"
-              src="./img/slider-second-photo.jpg"
+              src="./img/slider-second-photo.webp"
               alt="Menu"
             />
           </SwiperSlide>
