@@ -57,7 +57,7 @@ export const BrandNewModelsHome: React.FC<Props> = ({ type }) => {
       default:
         sorted = models;
     }
-    setSortedModels(sorted);
+    setSortedModels(sorted.slice(0, 10));
   }, [type, models]);
 
   return (
