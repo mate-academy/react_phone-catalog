@@ -204,16 +204,7 @@
 }
 
 
-.sort-list {
-  display: flex;
-  justify-content: space-between;
 
-  color: #89939A;
-
-  &__by {}
-
-  &__items-page {}
-}
 
 .flex-capacity {
   display: flex;
@@ -319,6 +310,7 @@
 @import url(./normolize.scss);
 @import url(./components/Header/Header.module.scss);
 @import url(./components/HomeCarousel/HomeCarousel.module.scss);
+@import url(./components/Sorted/Sorted.module.scss);
 @import url(./components/ShopByCategory/BrandNewModelsHome.module.scss);
 @import url(./components/Footer/Footer.module.scss);
 @import url(./components/ProductHome/ProductHome.module.scss);

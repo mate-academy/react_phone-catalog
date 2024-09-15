@@ -1,29 +1,93 @@
-.page-phones {
-  display: flex;
-  column-gap: 8px;
+.sort-list {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  column-gap: 16px;
   margin-bottom: 24px;
 
-  &__house {
-    height: 16px;
-    width: 16px;
+  color: #89939A;
+
+  @media screen and (min-width: 640px) {
+    grid-template-columns: repeat(12, 1fr);
   }
 
-  &__arrow {
-    height: 16px;
-    width: 16px;
+  @media screen and (min-width: 1200px) {
+    grid-template-columns: repeat(16, 1fr);
   }
 
-  &__catygory-text {
-    margin: 0;
+  &--select {
+    box-sizing: border-box;
+
+    position: absolute;
+    width: 100%;
+    background-color: #ece6e6;
+    border-radius: 10px;
+    padding: 10px 12px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 3px;
+    color: #000;
+
+    &-text {
+      margin: 0;
+      cursor: pointer;
+
+      &:hover {
+        background-color: #c4bcbc;
+      }
+    }
   }
 
-  &__main-text {
-    margin: 0;
-    margin-bottom: 8px;
+  &__by {
+    position: relative;
+    grid-column: span 2;
+
+    @media screen and (min-width: 640px) {
+      grid-column: span 4;
+    }
+
   }
 
-  &__conter-models {
-    margin: 0;
-    margin-bottom: 16px;
+  &__items-page {
+    position: relative;
+
+    grid-column: span 2;
+
+    @media screen and (min-width: 640px) {
+      grid-column: span 3;
+    }
+
+    &--button {
+      position: relative;
+      cursor: pointer;
+
+      box-sizing: border-box;
+
+      padding-left: 12px;
+      margin-bottom: 8px;
+
+      display: flex;
+      align-items: center;
+
+      height: 40px;
+      width: 100%;
+
+      border: 1px solid rgb(180, 189, 196);
+      color: #000;
+
+      border-radius: 8px;
+
+      &:hover {
+        border: 1px solid rgb(64, 65, 67);
+
+      }
+
+      &::before {
+        content: url('./img/Icons_Chevron (Arrow Down).svg');
+        position: absolute;
+        right: 12px;
+        height: 16px;
+        width: 16px;
+      }
+    }
   }
 }
