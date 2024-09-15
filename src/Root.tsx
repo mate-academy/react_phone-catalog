@@ -34,6 +34,7 @@ export const Root = () => {
             <div className={`${isMobMenuOpen ? styles.menuVisible : styles.menuHidden}`}>
               <MobileMenu />
             </div>
+            <div className={styles.menuPaddingCorrection} />
               <Switch>
                 <Route exact path="/" component={HomePage} />
                 <Route path="/phones" component={PhonesPage} />

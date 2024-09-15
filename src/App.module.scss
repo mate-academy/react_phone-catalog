@@ -76,3 +76,11 @@ a:hover img {
     display: none;
   }
 }
+
+.menuPaddingCorrection {
+  padding-top: 40px;
+
+  @include on-tablet {
+    display: none;
+  }
+}
