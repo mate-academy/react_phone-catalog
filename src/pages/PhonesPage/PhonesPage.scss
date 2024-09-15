@@ -2,7 +2,7 @@
 @import '../../styles/variables';
 
 .phones {
-  @include topPagesStyles;
+  @include top-pages-styles;
   &__wrapper {
     transition: all 0.3s ease-in-out;
 
@@ -25,7 +25,7 @@
     flex-direction: row;
     margin-top: 32px;
     gap: 16px;
-    
+
     @include on-tablet {
       margin-top: 40px;
     }
@@ -76,10 +76,9 @@
       padding: 8px;
       border: 1px solid $borderMain;
       border-radius: 4px;
-      font-size: 14px;
+      font-size: 13px;
       cursor: pointer;
       appearance: none;
-      background-color: $border;
       background-image: url('../../../public/img/icons/arrowDown.svg');
       background-repeat: no-repeat;
       background-position: right 8px center;

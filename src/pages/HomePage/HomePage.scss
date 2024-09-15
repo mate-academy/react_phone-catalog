@@ -7,7 +7,7 @@
   }
 
   &__title {
-    color: $basic-black-color;
+    color: var(--text-color);
     font-size: 32px;
     font-weight: 800;
     line-height: 41px;

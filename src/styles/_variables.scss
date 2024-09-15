@@ -5,3 +5,27 @@ $borderMain: #b6afaf;
 $colorButton: #4219d0;
 $basicWhite: #fff;
 $colorMenu: #f7fbfd;
+
+.default-theme {
+  background-color: #e2e6e9;
+  
+  --text-color: #0f0f11;
+  --text-size: #89939a;
+  --border-header: #b6afaf;
+  --bgcolor-header: #fff;
+  --favorites-height: calc(92vh);
+  --basket-height: calc(92vh);
+  --pagination-page: #0f0f11;
+}
+
+.dark-theme {
+  background-color: #0f0f11;
+
+  --text-color: #fff;
+  --bgcolor-header: #363434;
+  --border-header: #fff;
+  --text-size: #fff;
+  --favorites-height: 92vh;
+  --basket-height: 92vh;
+  --pagination-page: #313237;
+}

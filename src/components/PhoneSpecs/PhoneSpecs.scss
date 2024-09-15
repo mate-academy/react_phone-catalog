@@ -23,7 +23,7 @@
     font-size: 12px;
     font-weight: 700;
     line-height: 15.34px;
-    color: $basic-black-color;
+    color: var(--text-size);
     &--cell {
       max-width: 180px;
     }

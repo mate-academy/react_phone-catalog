@@ -19,9 +19,14 @@ body, html {
   margin: 0;
   font-family: Mont, sans-serif;
   scroll-behavior: smooth;
-  background-color: $border;
+  background-color: var(--background-color) !important;
+  color: var(--text-color) !important;
 }
 
 .content {
   flex-grow: 1;
+}
+
+.white-text {
+  color: var(--white-color);
 }

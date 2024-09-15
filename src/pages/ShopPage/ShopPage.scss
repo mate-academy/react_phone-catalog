@@ -4,9 +4,11 @@
 .shop {
   margin-top: 56px;
   text-align: center;
+  
   @include on-tablet {
     margin-top: 64px;
   }
+
   @include on-desktop {
     margin-top: 80px;
   }
@@ -17,6 +19,7 @@
     justify-content: space-between;
     gap: 32px;
     margin-top: 24px;
+
     @include on-tablet {
       flex-direction: row;
       gap: 16px;
@@ -27,10 +30,12 @@
     border-radius: 8px;
     width: 288px;
     height: 288px;
+
     @include on-tablet {
       width: 187px;
       height: 187px;
     }
+
     @include on-desktop {
       border-radius: 0;
       width: 368px;
@@ -44,6 +49,7 @@
     font-weight: 700;
     line-height: 25.56px;
     text-align: left;
+    color: var(--text-size);
   }
 
   &__subtitle {

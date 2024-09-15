@@ -7,19 +7,22 @@ import { FavoritesProvider } from './context/FavoritesContext';
 import { ProductCategoryProvider } from './context/ProductCategoryProvider';
 import { LoaderProvider } from './context/LoaderContext';
 import { FooterProvider } from './context/FooterContext';
+import { ThemeProvider } from './context/ThemeProvider';
 
 createRoot(document.getElementById('root') as HTMLElement).render(
+   <ThemeProvider>
   <FavoritesProvider>
     <ProductsProvider>
       <CartProvider>
         <ProductCategoryProvider>
         <LoaderProvider>
           <FooterProvider>
-          <Root />
+             <Root />
           </FooterProvider>
         </LoaderProvider>
         </ProductCategoryProvider>
       </CartProvider>
     </ProductsProvider>
-  </FavoritesProvider>,
+  </FavoritesProvider>
+ </ThemeProvider> ,
 );

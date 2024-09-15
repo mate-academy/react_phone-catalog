@@ -16,7 +16,7 @@
   }
 
   &__discount {
-    color: $basic-black-color;
+    color: var(--text-size);
     font-size: 22px;
     font-weight: 800;
     line-height: 30.8px;

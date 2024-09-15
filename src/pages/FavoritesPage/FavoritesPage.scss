@@ -2,7 +2,9 @@
 @import '../../styles/variables';
 
 .favorites {
-  @include topPagesStyles;
+  @include top-pages-styles;
+
+  min-height: var( --favorites-height);
   &__length {
     font-size: 14px;
     font-weight: 600;
@@ -13,7 +15,8 @@
   &__wrapper {
     display: flex;
     justify-content: center;
-    
+    min-height: calc(100vh - 406px);
+
     @include on-tablet {
      justify-content: flex-start;
     }

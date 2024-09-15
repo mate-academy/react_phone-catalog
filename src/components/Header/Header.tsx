@@ -4,6 +4,7 @@ import { Link, NavLink } from 'react-router-dom';
 import { useCart } from '../../context/CartContext';
 import './Header.scss';
 import { useFavorites } from '../../context/FavoritesContext';
+import { ThemeToggleButton } from '../ThemeToggleButton';
 
 export const Header: React.FC = () => {
   const [isNavOpen, setIsNavOpen] = useState(false);
@@ -84,7 +85,7 @@ export const Header: React.FC = () => {
             Accessories
           </NavLink>
         </nav>
-
+        <ThemeToggleButton />
         <div className="menu" onClick={toggleMenu}>
           <img
             src={`${process.env.PUBLIC_URL}/img/icons/${isNavOpen ? 'closeMenu.svg' : 'Menu.png'}`}

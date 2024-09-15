@@ -2,9 +2,10 @@
 @import '../../styles/mixins';
 
 .header {
-  border-bottom: 1px solid $borderMain;
+  border-bottom: 1px solid var(--border-header);
   height: 65px;
-
+  background-color:var(--bgcolor-header);
+  
   @include on-tablet {
     border-bottom: 1px solid $border;
   }
@@ -17,7 +18,7 @@
     position: relative;
     border-bottom: 1px solid $borderMain;
     align-items: center;
-    
+
     @include on-tablet {
       padding-inline: 24px 2px;
     }
@@ -174,7 +175,6 @@
 }
 
 .menu {
-  // display: block;
   border-left: 1px solid $borderMain;
   display: flex;
   align-items: center;

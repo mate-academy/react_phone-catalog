@@ -32,7 +32,7 @@
   }
 }
 
-@mixin topPagesStyles {
+@mixin top-pages-styles {
   &__title {
     font-size: 32px;
     font-weight: 800;
@@ -40,17 +40,18 @@
     letter-spacing: -0.01em;
     text-align: left;
     margin-top: 24px;
+    color: var(--text-color);
   }
 
   &__wrapper {
     margin-top: 50px;
     display: flex;
-    flex-direction: row;
     justify-content:center;
-    flex-wrap: wrap;
+    flex-flow: row wrap;
     gap: 37px;
+
     @include on-tablet {
-      justify-content:start;
+      justify-content:flex-start;
     }
   }
 }
