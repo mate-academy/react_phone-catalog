@@ -6,6 +6,7 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 import { Products } from '../../types/products';
+import { Link } from 'react-router-dom';
 
 type Props = {
   type: 'Hot Prices' | 'Brand new models' | 'You may also like';
@@ -94,11 +95,14 @@ export const BrandNewModelsHome: React.FC<Props> = ({ type }) => {
             {sortedModels.map((product) => (
               <SwiperSlide key={product.id}>
                 <div className="page-home-card">
-                  <img
-                    className="page-home-card__image"
-                    src={product.image} // Ensure correct image path
-                    alt={product.image}
-                  />
+                  <Link to={`/${product.category}/${product.itemId}`}>
+                    <img
+                      className="page-home-card__image"
+                      src={product.image} // Ensure correct image path
+                      alt={product.image}
+                    />
+                  </Link>
+
                   <p className="page-home-card__name">{product.name}</p>
                   <p className="page-home-card__price-regular">{`${product.price}$`}</p>
 
