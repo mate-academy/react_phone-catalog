@@ -6,9 +6,23 @@
   margin-top: -13px;
   margin-bottom: 24px;
 
+  @media screen and (min-width: 600px) {
+  }
+
+
+  @media screen and (min-width: 1200px) {
+
+    height: 64px;
+  }
+
   &__logo {
     width: 64px;
     height: 22px;
+
+    @media screen and (min-width: 1200px) {
+      height: 28px;
+      width: 80px;
+    }
   }
 
   &__menu {
@@ -17,6 +31,42 @@
 
     &:hover {
       cursor: pointer;
+    }
+
+    @media screen and (min-width: 600px) {
+      display: none;
+    }
+  }
+
+  &__button {
+    display: none;
+
+    @media screen and (min-width: 600px) {
+      display: block;
+    }
+
+    &--first {
+      @media screen and (min-width: 600px) {
+        height: 48px;
+        width: 48px;
+      }
+
+      @media screen and (min-width: 600px) {
+        height: 65px;
+        width: 65px;
+      }
+    }
+
+    &--second {
+      @media screen and (min-width: 600px) {
+        height: 48px;
+        width: 48px;
+      }
+
+      @media screen and (min-width: 600px) {
+        height: 65px;
+        width: 65px;
+      }
     }
   }
 }

@@ -15,7 +15,6 @@ export const ProductDetailsPage = () => {
   const { productId } = useParams();
   const location = useLocation();
   const [product, setProduct] = useState<Product | null>(null);
-  const [newModels, setNewModels] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -36,7 +35,6 @@ export const ProductDetailsPage = () => {
 
         const response = await fetch(apiUrl);
         const data: Product[] = await response.json();
-        setNewModels(data);
         const selectedProduct = data.find(item => item.id === productId);
 
         if (!selectedProduct) {

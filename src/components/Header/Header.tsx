@@ -19,6 +19,16 @@ export const Header: React.FC<Props> = ({ burgerMenu, setBurgerMenu }) => {
           src="./img/Menu.png"
           alt="Menu"
         />
+
+        <div className='nav__button'>
+          <Link to='/favourites'>
+            <img className='nav__button--first' src="./img/Favourites_nav.svg" alt="Favourites" />
+          </Link>
+
+          <Link to='/cart'>
+            <img className='nav__button--second' src="./img/Cart_nav.svg" alt="Cart" />
+          </Link>
+        </div>
       </div>
     </header>
   );

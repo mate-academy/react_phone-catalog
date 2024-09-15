@@ -7,6 +7,11 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    column-gap: 16px;
+
+    &-button {
+      color: rgb(137, 147, 154);
+    }
   }
 
   &--button {
@@ -16,5 +21,9 @@
     width: 100%;
     display: flex;
     justify-content: center;
+
+    @media screen and (min-width: 600px) {
+      position: relative;
+    }
   }
 }

@@ -10,19 +10,19 @@ export const BurgerMenu: React.FC<Props> = ({ burgerMenu, setBurgerMenu }) => {
   return (
     <div className="burger-menu">
       <div className="burger-menu--text">
-        <Link onClick={() => setBurgerMenu(!burgerMenu)} to="/">
+        <Link className='burger-menu--text-button' onClick={() => setBurgerMenu(!burgerMenu)} to="/">
           HOME
         </Link>
 
-        <Link onClick={() => setBurgerMenu(!burgerMenu)} to="/phones">
+        <Link className='burger-menu--text-button' onClick={() => setBurgerMenu(!burgerMenu)} to="/phones">
           PHONES
         </Link>
 
-        <Link onClick={() => setBurgerMenu(!burgerMenu)} to="/tablets">
+        <Link className='burger-menu--text-button' onClick={() => setBurgerMenu(!burgerMenu)} to="/tablets">
           TABLETS
         </Link>
 
-        <Link onClick={() => setBurgerMenu(!burgerMenu)} to="/accessories">
+        <Link className='burger-menu--text-button' onClick={() => setBurgerMenu(!burgerMenu)} to="/accessories">
           ACCESSORIES
         </Link>
       </div>
