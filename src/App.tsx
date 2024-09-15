@@ -12,13 +12,14 @@ export const App = () => {
     <div className="App">
       <Header burgerMenu={burgerMenu} setBurgerMenu={setBurgerMenu} />
 
-      {burgerMenu && (
+      {burgerMenu ? (
         <BurgerMenu burgerMenu={burgerMenu} setBurgerMenu={setBurgerMenu} />
+      ) : (
+        <>
+          <Outlet />
+          <Footer />
+        </>
       )}
-
-      {!burgerMenu && <Outlet />}
-
-      <Footer />
     </div>
   );
 };
