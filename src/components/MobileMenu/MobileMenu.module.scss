@@ -20,6 +20,7 @@
   border-top: 1px solid var(--color-elements);
   flex-direction: column;
   box-sizing: border-box;
+  padding-top: 40px;
   padding-bottom: env(safe-area-inset-bottom, 0);
   position: absolute;
 }
