@@ -28,9 +28,10 @@
 
 .rectangle {
   height: 16px;
-  width: 16px;
+  width: 18px;
   position: absolute;
-  left: 10px;
+  left: 11px;
+  top: 0px;
   z-index: 100;
   background-color: var(--color-primary);
 }
@@ -42,7 +43,7 @@
   background-color: var(--color-background);
   position: absolute;
   z-index: 200;
-  left: 8px;
+  left: 7px;
   transition: transform 0.3s ease-in-out;
 }
 
@@ -51,7 +52,7 @@
 }
 
 .modeDark {
-  transform: translateX(13px);
+  transform: translateX(14px);
 }
 
 .bcgWrapperDark {
