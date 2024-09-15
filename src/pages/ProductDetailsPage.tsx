@@ -67,7 +67,7 @@ export const ProductDetailsPage = () => {
 
   return (
     <div className="details">
-      <DetailsBack location={location} />
+      <DetailsBack product={product} />
 
       <DetailsCard product={product} />
 

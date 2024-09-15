@@ -19,7 +19,9 @@
 
     position: absolute;
     width: 100%;
-    background-color: #ece6e6;
+    background-color: #ffffff;
+    border: 1px solid rgb(64, 65, 67);
+
     border-radius: 10px;
     padding: 10px 12px;
     display: flex;
@@ -32,7 +34,7 @@
       cursor: pointer;
 
       &:hover {
-        background-color: #c4bcbc;
+        background-color: #ebe3e3;
       }
     }
   }
@@ -78,7 +80,6 @@
 
       &:hover {
         border: 1px solid rgb(64, 65, 67);
-
       }
 
       &::before {

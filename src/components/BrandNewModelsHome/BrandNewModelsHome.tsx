@@ -6,7 +6,7 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 import { Products } from '../../types/products';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 type Props = {
   type: 'Hot Prices' | 'Brand new models' | 'You may also like';
@@ -15,6 +15,7 @@ type Props = {
 export const BrandNewModelsHome: React.FC<Props> = ({ type }) => {
   const [models, setModels] = useState<Products[]>([]);
   const [sortedModels, setSortedModels] = useState<Products[]>([]);
+  const location = useLocation()
 
   function hotPrices(products: Products[]) {
     return [...products].sort((a, b) => {
@@ -95,7 +96,7 @@ export const BrandNewModelsHome: React.FC<Props> = ({ type }) => {
             {sortedModels.map((product) => (
               <SwiperSlide key={product.id}>
                 <div className="page-home-card">
-                  <Link to={`/${product.category}/${product.itemId}`}>
+                  <Link state={{ from: location.pathname }} to={`/${product.category}/${product.itemId}`}>
                     <img
                       className="page-home-card__image"
                       src={product.image} // Ensure correct image path
