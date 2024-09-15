@@ -109,6 +109,8 @@
     align-items: center;
     gap: 16px;
     width: 100vw;
+    z-index: 1;
+    background-color: white;
 
     @include on-tablet {
       flex-direction: row;

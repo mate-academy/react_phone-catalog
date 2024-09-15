@@ -1,9 +1,7 @@
-import { ButtonStyled } from "./styled"
+import { ButtonStyled } from './styled';
 
 const Button = () => {
-  return (
-    <ButtonStyled></ButtonStyled>
-  )
-}
+  return <ButtonStyled></ButtonStyled>;
+};
 
 export default Button;

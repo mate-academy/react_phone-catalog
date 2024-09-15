@@ -1,7 +1,18 @@
-import { getItems } from "./fetch";
+import {
+  AccessoryType,
+  PhoneType,
+  ProductType,
+  TabletType,
+} from '../types/productsType';
+import { getItems } from './fetch';
 
 export const getFrom = {
-  getPhones: async() => await getItems('api/phones.json'),
-  getTables: async() => await getItems('api/tablets.json'),
-  getAccessories: async() => await getItems('api/accessories.json'),
-}
+  getPhones: async (): Promise<PhoneType[]> =>
+    getItems<PhoneType[]>('api/phones.json'),
+  getTables: async (): Promise<TabletType[]> =>
+    getItems<TabletType[]>('api/tablets.json'),
+  getAccessories: async (): Promise<AccessoryType[]> =>
+    getItems<AccessoryType[]>('api/accessories.json'),
+  getProducts: async (): Promise<ProductType[]> =>
+    getItems<ProductType[]>('api/products.json'),
+};

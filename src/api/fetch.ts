@@ -4,9 +4,9 @@ function wait(delay: number) {
   return new Promise(resolve => {
     setTimeout(resolve, delay);
   });
-};
+}
 
-export const getItems = async (url: string) => {
+export const getItems = async <T>(url: string): Promise<T> => {
   return wait(300)
     .then(() => fetch(BASE_URL + url))
     .then(response => {
@@ -14,6 +14,6 @@ export const getItems = async (url: string) => {
         throw new Error();
       }
 
-      return response.json;
+      return response.json();
     });
 };

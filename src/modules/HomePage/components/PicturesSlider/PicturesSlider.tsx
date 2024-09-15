@@ -18,17 +18,10 @@ import {
 
 export const PicturesSlider = () => {
   const [caruselPosition, setCarouselPosition] = useState(0);
+  const [itemOnUsed, setIitemOnUsed] = useState<string[]>([]);
   const [isTouching, setIsTouching] = useState(false);
   const touchStartX = useRef(0);
   const touchEndX = useRef(0);
-  const carouselPictures = useRef<HTMLDivElement>(null);
-  const [heightCarousel, setHeightCarousel] = useState<number>(0);
-
-  useEffect(() => {
-    if (carouselPictures.current) {
-      setHeightCarousel(carouselPictures.current.offsetHeight);
-    }
-  }, [carouselPictures?.current?.offsetHeight]);
 
   const isWitdhGetItem = () => {
     if (window.innerWidth >= 1200) {
@@ -40,7 +33,11 @@ export const PicturesSlider = () => {
     }
   };
 
-  const itemOnUsed = isWitdhGetItem();
+  useEffect(() => {
+    const itemsToSet = isWitdhGetItem();
+
+    setIitemOnUsed(itemsToSet);
+  }, [window.innerWidth]);
 
   useEffect(() => {
     if (!isTouching) {
@@ -94,7 +91,7 @@ export const PicturesSlider = () => {
   return (
     <PicturesSliderStyled>
       <MainContentStyled>
-        <ButtonSliderStyled height={heightCarousel} onClick={handleLeftSwipe}>
+        <ButtonSliderStyled onClick={handleLeftSwipe}>
           <div>&lt;</div>
         </ButtonSliderStyled>
 
@@ -102,7 +99,6 @@ export const PicturesSlider = () => {
           onTouchStart={handleTouchStart}
           onTouchEnd={handleTouchEnd}
           onTouchMove={handleTouchMove}
-          ref={carouselPictures}
         >
           <ImglStyled
             src={itemOnUsed[0]}
@@ -121,7 +117,7 @@ export const PicturesSlider = () => {
           />
         </CarouselStyled>
 
-        <ButtonSliderStyled height={heightCarousel} onClick={handleRightSwipe}>
+        <ButtonSliderStyled onClick={handleRightSwipe}>
           <div>&gt;</div>
         </ButtonSliderStyled>
       </MainContentStyled>

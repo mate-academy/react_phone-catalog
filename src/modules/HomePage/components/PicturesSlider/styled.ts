@@ -8,10 +8,6 @@ interface ButStyledProps {
   isActive: boolean;
 }
 
-interface ButtonSliderProps {
-  height: number;
-}
-
 const PicturesSliderStyled = styled.div`
   @media (min-width: 640px) {
     padding-inline: 24px;
@@ -32,14 +28,13 @@ const MainContentStyled = styled.div`
   }
 `;
 
-const ButtonSliderStyled = styled.div<ButtonSliderProps>`
+const ButtonSliderStyled = styled.div`
   display: none;
 
   @media (min-width: 640px) {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: ${({ height }) => `${height}px`};
     width: 32px;
     border: 1px solid #b4bdc3;
     flex-shrink: 0;
@@ -55,6 +50,7 @@ const CarouselStyled = styled.div`
 const ImglStyled = styled.img<ImglStyledProps>`
   width: 100%;
   transition: transform 0.3s;
+  z-index: -1;
 
   transform: ${({ positionTr }) => `translateX(-${positionTr * 100}%)`};
 `;
