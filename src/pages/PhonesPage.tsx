@@ -7,7 +7,7 @@ export const PhonesPage = () => {
   const [phonesList, setPhonesList] = useState<Phone[]>([]);
 
   useEffect(() => {
-    fetch('./api/phones.json')
+    fetch('/api/phones.json')
       .then(response => response.json())
       .then(data => setPhonesList(data));
   }, []);
