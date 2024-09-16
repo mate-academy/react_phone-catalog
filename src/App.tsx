@@ -27,7 +27,7 @@ export const App = () => {
         dispatch(setAccessories(accesories));
         dispatch(setProducts(products));
       } catch (error) {
-        console.log('Error, get products:', error);
+        console.error('Error, get products:', error);
       }
     };
 

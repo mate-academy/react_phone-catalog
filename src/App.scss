@@ -1,14 +1,14 @@
 // not empty
 * {
   box-sizing: border-box;
+  transition: all 0.3s;
 }
 
 @font-face {
+  font-family: Mont;
   src: url('../public/fonts/Mont-Bold.otf') format('opentype'),
     url('../public/fonts/Mont-Regular.otf') format('opentype'),
     url('../public/fonts/Mont-SemiBold.otf') format('opentype');
-
-  font-family:  Mont;
 }
 
 body {

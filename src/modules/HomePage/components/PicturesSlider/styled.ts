@@ -49,7 +49,6 @@ const CarouselStyled = styled.div`
 
 const ImglStyled = styled.img<ImglStyledProps>`
   width: 100%;
-  transition: transform 0.3s;
   z-index: -1;
 
   transform: ${({ positionTr }) => `translateX(-${positionTr * 100}%)`};
