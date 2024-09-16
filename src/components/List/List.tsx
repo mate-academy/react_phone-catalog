@@ -10,56 +10,61 @@ type Props = {
   type: 'phones' | 'tablets' | 'accessories';
 };
 
-export const List: React.FC<Props> = ({ products, type }) => {
+export const List: React.FC<Props> = ({ type }) => {
   const location = useLocation();
   const [searchParams] = useSearchParams(location.search);
-  const [product, setProduct] = useState<Products[]>([]);
-
-  let sortedProducts = [...products];
+  const [products, setProducts] = useState<Products[]>([]);
+  const [sortedProducts, setSortedProducts] = useState<Products[]>([]);
 
   useEffect(() => {
-    fetch('api/products.json')
+    fetch('/api/products.json')
       .then(response => response.json())
       .then((data: Products[]) => {
         const filteredProducts = data.filter(el => el.category === type);
-        setProduct(filteredProducts);
-      })
-  }, [])
+        setProducts(filteredProducts);
+        setSortedProducts(filteredProducts);
+      });
+  }, [type]);
 
-  const sortParam = searchParams.get('sort') || 'Default';
-  switch (sortParam) {
-    case 'Alphabetically':
-      sortedProducts = sortedProducts.sort((one, two) => one.name.localeCompare(two.name));
-      break;
+  useEffect(() => {
+    let sortedData = [...products];
 
-    case 'Cheapest':
-      sortedProducts = sortedProducts.sort((one, two) => one.priceDiscount - two.priceDiscount);
-      break;
+    const sortParam = searchParams.get('sort') || 'Default';
+    switch (sortParam) {
+      case 'Alphabetically':
+        sortedData = sortedData.sort((one, two) => one.name.localeCompare(two.name));
+        break;
 
-    default:
+      case 'Cheapest':
+        sortedData = sortedData.sort((one, two) => one.price - two.price);
+        break;
 
-      break;
-  }
+      case 'Default':
+        sortedData = sortedData.sort((one, two) => two.year - one.year);
+        break;
+    }
 
-  const itemsOnPage = searchParams.get('perPage') || 'Default';
-  switch (itemsOnPage) {
-    case '4':
-      sortedProducts = sortedProducts.slice(0, 4);
-      break;
+    const itemsOnPage = searchParams.get('perPage') || 'Default';
+    switch (itemsOnPage) {
+      case '4':
+        sortedData = sortedData.slice(0, 4);
+        break;
 
-    case '8':
-      sortedProducts = sortedProducts.slice(0, 8);
+      case '8':
+        sortedData = sortedData.slice(0, 8);
+        break;
 
-      break;
+      case '16':
+        sortedData = sortedData.slice(0, 16);
+        break;
 
-    case '16':
-      sortedProducts = sortedProducts.slice(0, 16);
-      break;
+      case 'Default':
+        sortedData = [...sortedData];
+        break;
+    }
 
-    default:
-      sortedProducts = [...sortedProducts]
-      break;
-  }
+    setSortedProducts(sortedData);
+  }, [products, searchParams]);
 
   return (
     <ul className='card__grid'>
@@ -69,12 +74,12 @@ export const List: React.FC<Props> = ({ products, type }) => {
             <Link to={`/${type}/${product.id}`}>
               <img
                 className="card__image"
-                src={product.images[0]}
+                src={product.image}
                 alt="card-image"
               />
             </Link>
             <p className="card__name">{product.name}</p>
-            <p className="card__price-regular">{`${product.priceRegular}$`}</p>
+            <p className="card__price-regular">{`${product.price}$`}</p>
 
             <div className="card__line"></div>
 

@@ -15,17 +15,22 @@ export const DetailsCard: React.FC<Props> = ({ product }) => {
   const navigate = useNavigate();
 
   const handleMemoryChange = (newCapacity: string) => {
-    navigate(`/${product.category}/${product.namespaceId}-${newCapacity}-${product.color}`);
+    let updatedURL;
+
+    if (product.category === 'accessories') {
+      updatedURL = `/${product.category}/${product.namespaceId}-${newCapacity}-${product.color.replace(/\s+/g, '-')}`;
+    } else {
+      updatedURL = `/${product.category}/${product.namespaceId}-${newCapacity}-${product.color}`;
+    }
+
+    navigate(updatedURL);
   };
+
   return (
     <>
       <h1 className="details__text">{product.name}</h1>
 
       <div className="qwerty">
-        <div className="details__image">
-          <img src={product.images[0]} alt="image" />
-        </div>
-
         <div className="details__image--more">
           {product.images.map(img => (
             <img
@@ -35,6 +40,10 @@ export const DetailsCard: React.FC<Props> = ({ product }) => {
               alt="image"
             />
           ))}
+        </div>
+
+        <div className="details__image">
+          <img src={product.images[0]} alt="image" />
         </div>
 
         <div className='q'>
@@ -59,7 +68,7 @@ export const DetailsCard: React.FC<Props> = ({ product }) => {
 
           <div className='flex-capacity'>
             {product.capacityAvailable.map((el) => (
-              <div style={{cursor: 'pointer'}} onClick={() => handleMemoryChange(el.toLowerCase())}
+              <div style={{ cursor: 'pointer' }} onClick={() => handleMemoryChange(el.toLowerCase())}
                 className={
                   classNames({
                     'capacity-default': el !== product.capacity,

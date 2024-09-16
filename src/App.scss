@@ -2,6 +2,7 @@
   .qwerty {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
+    column-gap: 16px;
 
     @media screen and (min-width: 1200px) {
       grid-template-columns: repeat(24, 1fr);
@@ -10,11 +11,14 @@
 
   .about__grid {
     display: grid;
+
     grid-template-columns: repeat(12, 1fr);
     column-gap: 64px;
 
     @media screen and (min-width: 1200px) {
       grid-template-columns: repeat(24, 1fr);
+      column-gap: 16px;
+
     }
 
     &-el {
@@ -258,6 +262,10 @@
     justify-content: center;
     align-items: center;
 
+    &:hover {
+      border: 1px solid rgb(62, 62, 63);
+    }
+
     &-text {
       font-size: 14px;
       font-weight: 500;
@@ -294,6 +302,16 @@
     }
   }
 
+  &__color {
+    cursor: pointer;
+
+    border: 2px solid rgb(180, 189, 196);
+
+    &:hover {
+      border: 2px solid rgb(62, 62, 63);
+    }
+  }
+
   &__colors-container {
     display: flex;
     margin-bottom: 23.5px;
@@ -302,6 +320,12 @@
   &__image {
     width: 100%;
     margin-bottom: 16px;
+
+    & img {
+      max-width: 100%;
+      max-height: 100%;
+    }
+
 
     &--more {
       display: flex;
@@ -333,12 +357,14 @@
   }
 }
 
+
 @import url(./normolize.scss);
 @import url(./components/Header/Header.module.scss);
 @import url(./components/HomeCarousel/HomeCarousel.module.scss);
 @import url(./components/Sorted/Sorted.module.scss);
 @import url(./components/ShopByCategory/BrandNewModelsHome.module.scss);
 @import url(./components/Footer/Footer.module.scss);
-@import url(./components/ProductHome/ProductHome.module.scss);
+@import url(./components/ProductHome/ProductHome.module.scss
+);
 @import url(./components/List/List.module.scss);
 @import url(./components/BurgerMenu/BurgerMenu.module.scss);
