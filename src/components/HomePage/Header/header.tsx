@@ -12,7 +12,7 @@ export const Header = () => {
     <div className={styles.header}>
       <div className={styles.header_buttoms_container}>
         <a href="">
-          <img src="./img/logo.png" alt="logo" className={styles.header_logo} />
+          <img src="img/logo.png" alt="logo" className={styles.header_logo} />
         </a>
 
         <NavLink
@@ -27,16 +27,26 @@ export const Header = () => {
         >
           Phones
         </NavLink>
-        <div className={styles.header_buttoms}>tablets</div>
-        <div className={styles.header_buttoms}>accessories</div>
+        <NavLink
+          to={'/tablets'}
+          className={classNames(styles.header_buttoms, isActiveButton)}
+        >
+          tablets
+        </NavLink>
+        <NavLink
+          to={'/accessories'}
+          className={classNames(styles.header_buttoms, isActiveButton)}
+        >
+          accessories
+        </NavLink>
       </div>
 
       <div>
         <a href="" className={styles.header_buttoms_additional}>
-          <img src="/img/Vector_heart.svg" alt="logo" />
+          <img src="img/Vector_heart.svg" alt="logo" />
         </a>
         <a href="" className={styles.header_buttoms_additional}>
-          <img src="/img/Shopping_bag.svg" alt="logo" />
+          <img src="img/Shopping_bag.svg" alt="logo" />
         </a>
       </div>
     </div>

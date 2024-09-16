@@ -3,9 +3,9 @@
 .card {
   border: 1px solid $BORDER_COLOR;
   padding: 27px 32px;
-  width: 272px;
+  width: 220px;
+
   height: 506px;
-  margin-right: 16px;
   margin-bottom: 40px;
 
   &_images {
@@ -74,7 +74,9 @@
   }
 
   &_buy_button {
-    width: 160px;
+
+    width: 100%;
+    margin-right: 10px;
     height: 40px;
     border: 0;
     background-color: $HOVER_BUTTON_COLOR;
@@ -87,9 +89,8 @@
 
   &_follow_button {
     height: 40px;
-    width: 40px;
+    width: 50px;
     background-color: inherit;
-    align-items: center;
 
     border: 1px solid $CAROUSEL_BUTTOMS_COLOR;
     cursor: pointer;

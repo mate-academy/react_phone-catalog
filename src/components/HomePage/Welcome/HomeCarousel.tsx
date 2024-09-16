@@ -7,6 +7,7 @@ const slideImage = [
   { id: 0, src: 'img/banner.png' },
   { id: 1, src: 'img/banner-phones.png' },
   { id: 2, src: 'img/banner-accessories.png' },
+  { id: 3, src: 'img/banner-tablets.png' },
 ];
 
 export const HomeCarousel = () => {
@@ -15,14 +16,14 @@ export const HomeCarousel = () => {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setActive(prev => (prev < slideImage.length ? (prev + 1) % 3 : 0));
+      setActive(prev => (prev + 1) % slideImage.length);
     }, 5000);
 
     return () => clearInterval(interval);
   }, [active]);
 
   const handleClick = (scale: number) => {
-    const totalSlides = 3;
+    const totalSlides = slideImage.length;
     const nextSlide = (active + scale + totalSlides) % totalSlides;
 
     setPreviousSlide(active);
@@ -55,24 +56,15 @@ export const HomeCarousel = () => {
         </div>
 
         <div className={style.slide_container_buttoms}>
-          <button
-            className={classNames(style.slide_buttoms, {
-              [style.slide_buttoms_active]: active === 0,
-            })}
-            onClick={() => setActive(0)}
-          ></button>
-          <button
-            className={classNames(style.slide_buttoms, {
-              [style.slide_buttoms_active]: active === 1,
-            })}
-            onClick={() => setActive(1)}
-          ></button>
-          <button
-            className={classNames(style.slide_buttoms, {
-              [style.slide_buttoms_active]: active === 2,
-            })}
-            onClick={() => setActive(2)}
-          ></button>
+          {slideImage.map(image => (
+            <button
+              key={image.id}
+              className={classNames(style.slide_buttoms, {
+                [style.slide_buttoms_active]: active === image.id,
+              })}
+              onClick={() => setActive(image.id)}
+            ></button>
+          ))}
         </div>
       </div>
 

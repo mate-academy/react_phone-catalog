@@ -19,9 +19,19 @@
     display: flex;
     flex-wrap: wrap;
     margin: 0;
+    gap: 16px;
   }
 
   &_select {
     display: flex;
   }
+}
+
+.ul_containter {
+  display: flex;
+  list-style: none;
+}
+
+.li {
+
 }

@@ -6,6 +6,7 @@ import { TabletsProvider } from './context/TabletProvider';
 import { AccessoriesProvider } from './context/AccessoriesProvider';
 import { PhonesProvider } from './context/PhonesProvider';
 import { PhonePage } from './components/PhonePage/PhonePage';
+import { ProductDetailsPage } from './components/ProductDetailsPage/ProductDetailsPage';
 
 export const App = () => {
   return (
@@ -16,9 +17,22 @@ export const App = () => {
             <PhonesProvider>
               <Routes>
                 <Route path="/" element={<HomePage />} />
-                <Route path="/phones" element={<PhonePage />} />
-                {/* <Route path="/" element={<HomePage />} />
-                <Route path="/" element={<HomePage />} /> */}
+                <Route
+                  path="/phones"
+                  element={<PhonePage filter={'phones'} />}
+                />
+                <Route
+                  path="/tablets"
+                  element={<PhonePage filter={'tablets'} />}
+                />
+                <Route
+                  path="/accessories"
+                  element={<PhonePage filter={'accessories'} />}
+                />
+                <Route
+                  path="/:category/:itemId"
+                  element={<ProductDetailsPage />}
+                />
               </Routes>
             </PhonesProvider>
           </AccessoriesProvider>

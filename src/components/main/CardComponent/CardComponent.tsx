@@ -1,3 +1,4 @@
+import { NavLink } from 'react-router-dom';
 import { Accessories, Product, ProductChars } from '../../../types';
 import styles from './card.module.scss';
 import classNames from 'classnames';
@@ -8,25 +9,30 @@ interface CardComponentProps {
 }
 
 export const CardComponent = ({ devices, salePrice }: CardComponentProps) => {
+  const itemId = 'itemId' in devices ? devices.itemId : devices.id;
+  const category = 'category' in devices ? devices.category : '';
+
   return (
     <>
       <div className={classNames(styles.card)} key={devices.id}>
         <div className={styles.card_flex_column}>
-          {'images' in devices && devices.images.length > 0 ? (
-            <img
-              src={`./${devices.images[0]}`}
-              alt="img"
-              className={styles.card_images}
-            />
-          ) : (
-            'image' in devices && (
+          <NavLink to={`/${category}/${itemId}`}>
+            {'images' in devices && devices.images.length > 0 ? (
               <img
-                src={`./${devices.image}`}
+                src={`${devices.images[0]}`}
                 alt="img"
                 className={styles.card_images}
               />
-            )
-          )}
+            ) : (
+              'image' in devices && (
+                <img
+                  src={`${devices.image}`}
+                  alt="img"
+                  className={styles.card_images}
+                />
+              )
+            )}
+          </NavLink>
           <div>{'name' in devices && <span>{devices.name}</span>}</div>
           <div className={styles.card_price_container}>
             <h2 className={styles.card_price}>

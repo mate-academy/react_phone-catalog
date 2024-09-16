@@ -6,20 +6,26 @@ import { Header } from '../HomePage/Header/header';
 import { CardComponent } from '../main/CardComponent/CardComponent';
 import styles from './phonePage.module.scss';
 import stylePage from '../HomePage/Welcome/homeface.module.scss';
-import { PaginationPage } from './PaginationPage/PaginationPage';
 
-const itemsPerPageOptions = [4, 8, 16, 'all'];
+interface Props {
+  filter: string;
+}
+
+const itemsPerPageOptions = ['all', 4, 8, 16];
 const sortItemsOnPage = ['Newest', 'Alphabetically', 'Cheapest'];
 
-export const PhonePage = () => {
+export const PhonePage: React.FC<Props> = ({ filter }) => {
   const products = useProducts();
 
   const [SearchParams, setSearchParams] = useSearchParams();
   const [sortItems, setSortItems] = useState(products);
-  const [filter] = useState('phones');
 
-  const sortQuery = SearchParams.get('sort') || '';
-  const pageQuery = +(SearchParams.get('page') || 0);
+  const sortQuery = SearchParams.get('sort') || 'Newest';
+  const perPageQuery = +(SearchParams.get('perPage') || 'all');
+  const pageQuery = +(SearchParams.get('Page') || 1);
+  const filteredPhones = products.filter(a => a.category === filter);
+
+  const totalPages = Math.ceil(filteredPhones.length / perPageQuery);
 
   const sort = (type: string) => {
     let sortedPhones;
@@ -66,9 +72,9 @@ export const PhonePage = () => {
   const handlePerPageItems = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const selectedValue = Number(event.target.value);
 
-    const copy = [...sortItems];
+    const filterItems = sortItems.filter(gadget => gadget.id <= selectedValue);
 
-    setSortItems(copy.slice(0, selectedValue));
+    setSortItems(filterItems);
 
     const params = new URLSearchParams(SearchParams);
 
@@ -76,31 +82,45 @@ export const PhonePage = () => {
     setSearchParams(params);
   };
 
-  useEffect(() => {
-    const filteredPhones = products.filter(a => a.category === filter);
+  const handlePageClick = (page: number) => {
+    if (page < 1 || page > totalPages || isNaN(page)) {
+      setSortItems(filteredPhones);
 
-    setSortItems(filteredPhones);
-
-    if (sortQuery === '') {
       return;
-    } else {
-      sort(sortQuery);
     }
-  }, [products, sortQuery, setSearchParams, pageQuery]);
+
+    const params = new URLSearchParams(SearchParams);
+
+    params.set('Page', page.toString());
+    setSearchParams(params);
+  };
+
+  useEffect(() => {
+    const filteredProducts = products.filter(a => a.category === filter);
+
+    const startIndex = (pageQuery - 1) * perPageQuery;
+    const endIndex = startIndex + perPageQuery;
+
+    setSortItems(filteredProducts.slice(startIndex, endIndex));
+  }, [products, filter, pageQuery, perPageQuery]);
+
+  useEffect(() => {
+    sort(sortQuery);
+  }, [sortQuery, filter]);
 
   return (
     <div>
       <Header />
       <div className={stylePage.home_page}>
         <div className={styles.phone}>
-          <span></span>
-          <span></span>
-          <div className={styles.phone_head}></div>
+          <span>123</span>
+          <span>{' > '}</span>
+          <div className={styles.phone_head}>{filter}</div>
         </div>
 
         <div className={styles.phone_head}>
-          <h1 className={styles.phone_h1}>Mobile Phones</h1>
-          <span>92 models</span>
+          <h1 className={styles.phone_h1}>{`${filter} page`}</h1>
+          <span>{`${filteredPhones.length} models`}</span>
 
           <div className={styles.phone_select}>
             <form action="select">
@@ -141,9 +161,31 @@ export const PhonePage = () => {
             ))}
           </div>
 
-          <div>
-            <PaginationPage />
-          </div>
+          {totalPages > 1 && (
+            <div>
+              <ul className={styles.ul_containter}>
+                <li className={styles.li}>
+                  <button onClick={() => handlePageClick(pageQuery - 1)}>
+                    «
+                  </button>
+                </li>
+                {Array.from({ length: totalPages }, (_, i) => (
+                  <li
+                    key={i + 1}
+                    className={styles.li}
+                    onClick={() => handlePageClick(i + 1)}
+                  >
+                    <button>{i + 1}</button>
+                  </li>
+                ))}
+                <li className={styles.li}>
+                  <button onClick={() => handlePageClick(pageQuery + 1)}>
+                    »
+                  </button>
+                </li>
+              </ul>
+            </div>
+          )}
         </div>
       </div>
       <Footer />
