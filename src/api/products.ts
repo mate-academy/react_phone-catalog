@@ -11,8 +11,9 @@ export async function getProducts<T>(url: string): Promise<T> {
   return response.json();
 }
 
-export async function getCategories(): Promise<Category[]> {
-  const products = await getProducts<ProductSummary[]>('/api/products.json');
+export async function getCategories(
+  products: ProductSummary[],
+): Promise<Category[]> {
   const phones = products.filter(p => p.category === 'phones');
   const tablets = products.filter(p => p.category === 'tablets');
   const accessories = products.filter(p => p.category === 'accessories');

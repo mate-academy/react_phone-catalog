@@ -12,7 +12,7 @@ type Props = {
 
 export const Nav: React.FC<Props> = ({ navStyle }) => {
   const dispatch = useContext(DispatchContext);
-  const { categories, isMenuOpen } = useContext(StatesContext);
+  const { isMenuOpen } = useContext(StatesContext);
 
   return (
     <nav className="nav">
@@ -26,7 +26,23 @@ export const Nav: React.FC<Props> = ({ navStyle }) => {
         >
           <li className="nav__item">HOME</li>
         </Link>
-        {categories.map((category, idx) => {
+        <Link to="phones" className={cn('nav__link', `nav__link--${navStyle}`)}>
+          <li className="nav__item">Phones</li>
+        </Link>
+        <Link
+          to="tablets"
+          className={cn('nav__link', `nav__link--${navStyle}`)}
+        >
+          <li className="nav__item">Tablets</li>
+        </Link>
+        <Link
+          to="accessories"
+          className={cn('nav__link', `nav__link--${navStyle}`)}
+        >
+          <li className="nav__item">Accessories</li>
+        </Link>
+
+        {/* {categories.map((category, idx) => {
           return (
             <Link
               to={`${category.id}`}
@@ -36,7 +52,7 @@ export const Nav: React.FC<Props> = ({ navStyle }) => {
               <li className="nav__item">{category.id.toUpperCase()}</li>
             </Link>
           );
-        })}
+        })} */}
       </ul>
     </nav>
   );

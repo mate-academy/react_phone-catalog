@@ -1,56 +1,47 @@
 import { useContext, useEffect } from 'react';
 import { Header } from './components/base/Header/Header.component';
 import { DispatchContext, StatesContext } from './store/GlobalStateProvider';
-import { getCategories, getProducts } from './api/products';
-// import { AccessorySpecs } from './types/AccessorySpecs';
-// import { PhoneSpecs } from './types/PhoneSpecs';
-// import { TabletSpecs } from './types/TabletSpecs';
-import { ProductSummary } from './types/ProductSummary';
+import { AccessorySpecs } from './types/AccessorySpecs';
+import { PhoneSpecs } from './types/PhoneSpecs';
+import { TabletSpecs } from './types/TabletSpecs';
 import { Outlet } from 'react-router-dom';
 import { MenuPage } from './pages/Menu/Menu.page';
 import cn from 'classnames';
+import { getProducts } from './api/products';
 
 export const App = () => {
   const dispatch = useContext(DispatchContext);
   const { isMenuOpen } = useContext(StatesContext);
-
-  // useEffect(() => {
-  //   getProducts<AccessorySpecs[]>(
-  //     'http://localhost:3000/api/accessories.json',
-  //   ).then(accessoriesFromServer => {
-  //     dispatch({ type: 'loadAccessories', payload: accessoriesFromServer });
-  //   });
-  // }, [dispatch]);
-
-  // useEffect(() => {
-  //   getProducts<PhoneSpecs[]>('http://localhost:3000/api/phones.json').then(
-  //     phonesFromServer => {
-  //       dispatch({ type: 'loadPhones', payload: phonesFromServer });
-  //     },
-  //   );
-  // }, [dispatch]);
-
-  // useEffect(() => {
-  //   getProducts<TabletSpecs[]>('http://localhost:3000/api/tablets.json').then(
-  //     tabletsFromServer => {
-  //       dispatch({ type: 'loadTablets', payload: tabletsFromServer });
-  //     },
-  //   );
-  // }, [dispatch]);
+  // #region accessories
 
   useEffect(() => {
-    getProducts<ProductSummary[]>(
-      'http://localhost:3000/api/products.json',
-    ).then(productsFromServer => {
-      dispatch({ type: 'loadProducts', payload: productsFromServer });
+    getProducts<AccessorySpecs[]>(
+      'http://localhost:3000/api/accessories.json',
+    ).then(accessoriesFromServer => {
+      dispatch({ type: 'loadAccessories', payload: accessoriesFromServer });
     });
-  }, [dispatch]);
+  }, []);
+  // #endregion
+  // #region phones
 
   useEffect(() => {
-    getCategories().then(categoriesFromServer => {
-      dispatch({ type: 'loadCategories', payload: categoriesFromServer });
-    });
-  }, [dispatch]);
+    getProducts<PhoneSpecs[]>('http://localhost:3000/api/phones.json').then(
+      phonesFromServer => {
+        dispatch({ type: 'loadPhones', payload: phonesFromServer });
+      },
+    );
+  }, []);
+  // #endregion
+  // #region tablets
+
+  useEffect(() => {
+    getProducts<TabletSpecs[]>('http://localhost:3000/api/tablets.json').then(
+      tabletsFromServer => {
+        dispatch({ type: 'loadTablets', payload: tabletsFromServer });
+      },
+    );
+  }, []);
+  // #endregion
 
   return (
     <div className="App" id="top">

@@ -1,0 +1,82 @@
+.cardLoader {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 32px;
+  border: 1px solid $c-elements;
+  gap: 8px;
+  grid-column: span 4;
+
+  @include on-desktop {
+    grid-column: span 6;
+  }
+  &__image {
+    box-sizing: border-box;
+    display: block;
+    width: 100%;
+    height: 60%;
+
+  }
+  &__specs {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 8px;
+  }
+  &__buttons {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+.block1 {
+  display: block;
+  width: 70%;
+  height: 21px;
+  color: $c-primary;
+  padding-top: 16px;
+}
+.block2 {
+  width: 78px;
+  height: 8px;
+  margin-bottom: 8px;
+}
+.block3 {
+  width: 131px;
+  height: 10px;
+  margin-bottom: 8px;
+}
+.button {
+  &--L {
+    height: 40px;
+    background-color: $c-elements;
+    width: 83%;
+  }
+  &--S {
+    height: 40px;
+    background-color: $c-elements;
+    width: 17%;
+  }
+}
+.line {
+  height: 1px;
+  width: 100%;
+  background-color: $c-elements;
+  display: inline-block;
+}
+.fpo {
+  display: block;
+  height: 100%;
+  width: 100%;
+}
+.pulsate {
+  background: linear-gradient(-45deg, #dddddd, #f0f0f0, #dddddd, #f0f0f0);
+  background-size: 400% 400%;
+  -webkit-animation: Gradient 2.25s ease infinite;
+  -moz-animation: Gradient 2.25s ease infinite;
+  animation: Gradient 2.25s ease infinite;
+}

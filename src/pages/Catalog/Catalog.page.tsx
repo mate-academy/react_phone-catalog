@@ -1,4 +1,4 @@
-import { Navigate, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { StatesContext } from '../../store/GlobalStateProvider';
 import { useContext } from 'react';
 // eslint-disable-next-line max-len
@@ -13,13 +13,11 @@ export const CatalogPage: React.FC = () => {
   const { categories } = useContext(StatesContext);
   const category = categories.find(cat => cat.id === categoryId);
 
-  return !category ? (
-    <Navigate to="/home" />
-  ) : (
+  return (
     <section className="catalog-page">
-      <NavigationPath category={category} />
-      <CategoryTitle category={category} />
-      <ProductGrid category={category} pagination />
+      <NavigationPath category={category!} />
+      <CategoryTitle category={category!} />
+      <ProductGrid category={category!} pagination />
     </section>
   );
 };

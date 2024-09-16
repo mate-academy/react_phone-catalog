@@ -13,4 +13,5 @@ export interface States {
   favorites: ProductSummary[];
   categories: Category[];
   isMenuOpen: boolean;
+  isLoading: boolean;
 }
