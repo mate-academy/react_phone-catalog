@@ -62,6 +62,12 @@
   width: 1px;
 }
 
+@mixin visually-hidden-focusable {
+  &:not(:focus, :active) {
+    @include visually-hidden;
+  }
+}
+
 @mixin for-desktop {
   @media (min-width: 1200px) {
     @content;
@@ -86,7 +92,7 @@
 
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 0 16px;
-  margin: 0 16px;
+  margin: 0 $mobile-grid-margin;
 
   @include for-tablet {
     grid-template-columns: repeat(12, minmax(0, 1fr));

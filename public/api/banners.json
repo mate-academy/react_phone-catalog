@@ -1,0 +1,38 @@
+[
+  {
+    "src": "./img/banners/banner-phones.png",
+    "to": "/phones",
+    "label": "See phones",
+    "alt": "Colorful phones",
+    "locales": {
+      "pl": {
+        "label": "Zobacz telefony",
+        "alt": "Kolorowe telefony"
+      }
+    }
+  },
+  {
+    "src": "./img/banners/banner-tablets.png",
+    "to": "/tablets",
+    "label": "See tablets",
+    "alt": "Tablets with variety of sizes",
+    "locales": {
+      "pl": {
+        "label": "Zobacz tablety",
+        "alt": "Tablety o różnych rozmiarach"
+      }
+    }
+  },
+  {
+    "src": "./img/banners/banner-accessories.png",
+    "to": "/accessories",
+    "label": "See accessories",
+    "alt": "Multiple accessories",
+    "locales": {
+      "pl": {
+        "label": "Zobacz akcesoria",
+        "alt": "Różnorodne akcesoria"
+      }
+    }
+  }
+]

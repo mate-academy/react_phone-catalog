@@ -6,6 +6,8 @@ export enum MenuLinkSVGOption {
 
 export enum IconButtonSVGOption {
   UpArrow = 'UpArrow',
+  RightArrow = 'RightArrow',
+  LeftArrow = 'LeftArrow',
 }
 
 export enum Theme {

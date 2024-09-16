@@ -2,6 +2,8 @@
 @use "../../../shared/styles/mixins" as *;
 
 .Title {
+  padding-top: 16px;
+
   @include full-grid-width;
   @extend %h1;
   @include color-transition((color: var(--primary-text-color)));
@@ -14,7 +16,7 @@
 .SettingsPage {
   @include grid;
 
-  padding: 16px 0 56px;
+  padding-bottom: 56px;
 
   @include for-tablet {
     padding-bottom: 64px;

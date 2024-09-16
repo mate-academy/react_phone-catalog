@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react';
 import { cartPath, favouritesPath, settingsPath } from '../../consts/paths';
 import { MenuLinkSVGOption } from '../../types/enums';
 import { BurgerMenu } from '../BurgerMenu';
@@ -9,33 +8,21 @@ import { PageLinks } from '../PageLinks';
 import styles from './Header.module.scss';
 import classNames from 'classnames';
 import { ToggleBurgerMenuButton } from '../ToggleBurgerMenuButton';
+import { useBurgerMenu } from '../Contexts/BurgerMenuContext';
 
 export const Header: React.FC = () => {
-  const [burgerMenuOpened, setBurgerMenuOpened] = useState(false);
+  const { isBurgerMenuOpened, closeBurgerMenu, toggleBurgerMenu } =
+    useBurgerMenu();
   const { accessSettings, accessFavourites, accessCart } =
     useLanguage().localeTexts;
 
   const handleToggleBurgerMenuButtonClick = () => {
-    setBurgerMenuOpened(opened => !opened);
+    toggleBurgerMenu();
   };
 
   const handleLinkClick = () => {
-    setBurgerMenuOpened(false);
+    closeBurgerMenu();
   };
-
-  const handleResize = () => {
-    if (window.innerWidth >= 640) {
-      setBurgerMenuOpened(false);
-    }
-  };
-
-  useEffect(() => {
-    window.addEventListener('resize', handleResize);
-
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
-  }, []);
 
   return (
     <header className={styles.Header}>
@@ -77,7 +64,7 @@ export const Header: React.FC = () => {
 
               <li className={styles.MenuLinksItem}>
                 <ToggleBurgerMenuButton
-                  burgerMenuOpened={burgerMenuOpened}
+                  burgerMenuOpened={isBurgerMenuOpened}
                   onClick={handleToggleBurgerMenuButtonClick}
                 />
               </li>
@@ -87,10 +74,9 @@ export const Header: React.FC = () => {
       </nav>
 
       <BurgerMenu
-        onLinkClick={handleLinkClick}
         className={classNames(
           styles.BurgerMenu,
-          burgerMenuOpened && styles.BurgerMenu_opened,
+          isBurgerMenuOpened && styles.BurgerMenu_opened,
         )}
       />
     </header>

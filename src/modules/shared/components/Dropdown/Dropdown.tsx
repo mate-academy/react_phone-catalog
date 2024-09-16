@@ -36,7 +36,7 @@ export const Dropdown: React.FC<Props> = ({
     event.preventDefault();
   };
 
-  const handleLabelClick = (event: React.MouseEvent<HTMLParagraphElement>) => {
+  const handleLabelClick = (event: React.MouseEvent<HTMLLabelElement>) => {
     event.preventDefault();
     selectRef.current?.focus();
     selectRef.current?.click();
@@ -64,19 +64,24 @@ export const Dropdown: React.FC<Props> = ({
       onMouseDown={handleMouseDown}
       onBlur={handleBlur}
     >
-      <p className={styles.Label} onClick={handleLabelClick}>
+      <label
+        htmlFor="select"
+        className={styles.Label}
+        onClick={handleLabelClick}
+      >
         {title}
-      </p>
+      </label>
 
       <button
+        id="select"
         type="button"
         className={styles.Select}
         ref={selectRef}
         onClick={handleSelectClick}
       >
         {chosenOption}
-        <DownArrowSVG className={styles.DownArrow} alt={expand} />
-        <UpArrowSVG className={styles.UpArrow} alt={collapse} />
+        <DownArrowSVG className={styles.DownArrow} label={expand} />
+        <UpArrowSVG className={styles.UpArrow} label={collapse} />
       </button>
 
       <menu className={styles.Options}>

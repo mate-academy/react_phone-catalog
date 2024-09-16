@@ -20,7 +20,7 @@ export const Breadcrumbs: React.FC<Props> = ({ path, className }) => {
         <HomeSVG className={styles.HomeImage} />
       </Link>
 
-      <RightArrowSVG className={styles.Arrow} alt={accessThen} />
+      <RightArrowSVG className={styles.Arrow} label={accessThen} />
 
       <p className={styles.Current}>{path}</p>
     </article>

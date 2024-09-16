@@ -4,7 +4,7 @@
 .Icon {
   display: block;
   margin: auto;
-  
+
   color: var(--icon-color);
   transition: transform $transition-duration, color $transition-duration;
 }
@@ -20,9 +20,7 @@
 }
 
 .Label {
-  &:not(:focus, :active) {
-    @include visually-hidden;
-  }
+  @include visually-hidden-focusable;
 }
 
 .ToggleBurgerMenuButton {

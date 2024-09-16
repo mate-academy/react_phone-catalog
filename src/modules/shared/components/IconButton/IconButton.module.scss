@@ -1,11 +1,16 @@
 @use '../../styles/mixins' as *;
 
+.Label {
+  @include visually-hidden-focusable;
+}
+
 .Icon {
   @include color-transition((color: var(--icon-button-icon-color)));
 }
 
 .IconButton {
   border: 1px solid;
+  padding: 0;
   cursor: pointer;
 
   @include square(32px);

@@ -1,0 +1,27 @@
+@use "../../../shared/styles/mixins" as *;
+
+.Image {
+  display: block;
+  height: 400px;
+  margin: auto;
+
+  background-color: #222;
+  border-radius: 20px;
+
+  @include for-tablet {
+    height: 189px;
+  }
+
+  @include for-mobile {
+    height: auto;
+    width: 100%;
+  }
+}
+
+.Link {
+  cursor: unset;
+}
+
+.PictureSlide {
+  user-select: none;
+}

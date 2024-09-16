@@ -1,10 +1,10 @@
 /* eslint-disable max-len */
 type Props = {
   className?: string;
-  alt?: string;
+  label?: string;
 };
 
-export const LeftArrowSVG: React.FC<Props> = ({ className, alt }) => (
+export const LeftArrowSVG: React.FC<Props> = ({ className, label }) => (
   <svg
     width="16"
     height="16"
@@ -13,9 +13,9 @@ export const LeftArrowSVG: React.FC<Props> = ({ className, alt }) => (
     xmlns="http://www.w3.org/2000/svg"
     className={className}
     role="img"
-    aria-labelledby={alt ? 'leftArrowTitle' : undefined}
+    aria-labelledby={label ? 'leftArrowTitle' : undefined}
   >
-    {alt && <title id="leftArrowTitle">{alt}</title>}
+    {label && <title id="leftArrowTitle">{label}</title>}
 
     <path
       fillRule="evenodd"

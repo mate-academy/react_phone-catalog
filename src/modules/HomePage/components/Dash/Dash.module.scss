@@ -1,0 +1,24 @@
+@use "../../../shared/styles/mixins" as *;
+
+.Label {
+  @include visually-hidden-focusable;
+}
+
+.Button {
+  display: block;
+
+  width: 14px;
+  height: 4px;
+  padding: 0;
+  border: none;
+
+  cursor: pointer;
+
+  @include color-and-hover-scale-transition((background-color: var(--element-color)));
+}
+
+.Dash {
+  &_active > .Button {
+    background-color: var(--active-color);
+  }
+}

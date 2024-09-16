@@ -1,15 +1,10 @@
 import { cartPath, favouritesPath, settingsPath } from '../../consts/paths';
 import { MenuLinkSVGOption } from '../../types/enums';
-import { HandleBurgerMenuLinkClick } from '../../types/handlers';
 import { BurgerMenuMenuLink } from '../BurgerMenuMenuLink/BurgerMenuMenuLink';
 import { useLanguage } from '../Contexts/LanguageContext';
 import styles from './BurgerMenuMenuLinks.module.scss';
 
-type Props = {
-  onLinkClick: HandleBurgerMenuLinkClick;
-};
-
-export const BurgerMenuMenuLinks: React.FC<Props> = ({ onLinkClick }) => {
+export const BurgerMenuMenuLinks: React.FC = () => {
   const { accessSettings, accessFavourites, accessCart } =
     useLanguage().localeTexts;
 
@@ -19,7 +14,6 @@ export const BurgerMenuMenuLinks: React.FC<Props> = ({ onLinkClick }) => {
         to={settingsPath}
         alt={accessSettings}
         svgOption={MenuLinkSVGOption.Settings}
-        onClick={onLinkClick}
         className={styles.BurgerMenuMenuLink}
       />
 
@@ -27,7 +21,6 @@ export const BurgerMenuMenuLinks: React.FC<Props> = ({ onLinkClick }) => {
         to={favouritesPath}
         alt={accessFavourites}
         svgOption={MenuLinkSVGOption.Heart}
-        onClick={onLinkClick}
         className={styles.BurgerMenuMenuLink}
       />
 
@@ -35,7 +28,6 @@ export const BurgerMenuMenuLinks: React.FC<Props> = ({ onLinkClick }) => {
         to={cartPath}
         alt={accessCart}
         svgOption={MenuLinkSVGOption.Bag}
-        onClick={onLinkClick}
         className={styles.BurgerMenuMenuLink}
       />
     </menu>

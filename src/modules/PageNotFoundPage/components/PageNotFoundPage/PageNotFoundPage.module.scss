@@ -2,6 +2,7 @@
 @use "../../../shared/styles/mixins" as *;
 
 .Image {
+  padding-top: 16px;
   max-height: 100%;
   max-width: 100%;
   object-fit: contain;
@@ -19,14 +20,13 @@
   align-items: center;
 
   padding: 0 16px 56px;
-  max-height: 60vh;
+  max-height: 50vh;
 
   @include for-tablet {
     padding: 0 24px 64px;
   }
 
   @include for-desktop {
-    max-height: 50vh;
     padding: 0 0 80px;
   }
 }

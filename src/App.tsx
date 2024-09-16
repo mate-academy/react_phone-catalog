@@ -11,11 +11,15 @@ import { SettingsPage } from './modules/SettingsPage/components/SettingsPage';
 import { Footer } from './modules/shared/components/Footer';
 // eslint-disable-next-line max-len
 import { PageNotFoundPage } from './modules/PageNotFoundPage/components/PageNotFoundPage';
+// eslint-disable-next-line max-len
+import { BurgerMenuProvider } from './modules/shared/components/Contexts/BurgerMenuContext';
 
 export const App: React.FC = () => {
   return (
     <div className={styles.App}>
-      <Header />
+      <BurgerMenuProvider>
+        <Header />
+      </BurgerMenuProvider>
 
       <Routes>
         <Route path={homePath} element={<HomePage />} />

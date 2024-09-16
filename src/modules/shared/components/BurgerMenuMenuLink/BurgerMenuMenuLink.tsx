@@ -1,15 +1,14 @@
 import classNames from 'classnames';
 import { NavLink } from 'react-router-dom';
 import { MenuLinkSVGOption } from '../../types/enums';
-import { HandleBurgerMenuLinkClick } from '../../types/handlers';
 import { getMenuLinkSVG } from '../../functions/functions';
 import styles from './BurgerMenuMenuLink.module.scss';
+import { useBurgerMenu } from '../Contexts/BurgerMenuContext';
 
 type Props = {
   to: string;
   alt: string;
   svgOption: MenuLinkSVGOption;
-  onClick: HandleBurgerMenuLinkClick;
   className?: string;
 };
 
@@ -17,9 +16,14 @@ export const BurgerMenuMenuLink: React.FC<Props> = ({
   to,
   alt,
   svgOption,
-  onClick,
   className,
 }) => {
+  const { isBurgerMenuOpened, closeBurgerMenu } = useBurgerMenu();
+
+  const handleClick = () => {
+    closeBurgerMenu();
+  };
+
   return (
     <li className={classNames(styles.BurgerMenuMenuLink, className)}>
       <NavLink
@@ -29,7 +33,8 @@ export const BurgerMenuMenuLink: React.FC<Props> = ({
         to={to}
         aria-label={alt}
         aria-current="page"
-        onClick={onClick}
+        tabIndex={isBurgerMenuOpened ? 0 : -1}
+        onClick={handleClick}
       >
         {getMenuLinkSVG(svgOption, styles.Icon)}
       </NavLink>
