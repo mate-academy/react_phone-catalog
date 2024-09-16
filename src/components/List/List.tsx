@@ -39,10 +39,30 @@ export const List: React.FC<Props> = ({ products, type }) => {
       break;
   }
 
+  const itemsOnPage = searchParams.get('perPage') || 'Default';
+  switch (itemsOnPage) {
+    case '4':
+      sortedProducts = sortedProducts.slice(0, 4);
+      break;
+
+    case '8':
+      sortedProducts = sortedProducts.slice(0, 8);
+
+      break;
+
+    case '16':
+      sortedProducts = sortedProducts.slice(0, 16);
+      break;
+
+    default:
+      sortedProducts = [...sortedProducts]
+      break;
+  }
+
 
   return (
     <ul className='card__grid'>
-      {products.length > 0 &&
+      {sortedProducts.length > 0 &&
         sortedProducts.map(product => (
           <div key={product.id} className="card">
             <Link to={`/${type}/${product.id}`}>

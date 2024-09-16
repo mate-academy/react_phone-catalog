@@ -3,7 +3,6 @@ import { useParams, useLocation } from 'react-router-dom';
 import { Phone } from '../types/phone';
 import { Tablet } from '../types/tablet';
 import { Accessory } from '../types/accessory';
-import { DetailsAbout } from '../components/DetailsAbout';
 import { DetailsBack } from '../components/DetailsHome';
 import { DetailsCard } from '../components/DetailsCard';
 import { DetailsTechSpecs } from '../components/DetailsTechSpecs/DetailsTechSpecs';
@@ -71,7 +70,6 @@ export const ProductDetailsPage = () => {
 
       <DetailsCard product={product} />
 
-      <DetailsAbout />
 
       <DetailsTechSpecs product={product} />
 

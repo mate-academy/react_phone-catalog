@@ -2,6 +2,28 @@
   .qwerty {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
+
+    @media screen and (min-width: 1200px) {
+      grid-template-columns: repeat(24, 1fr);
+    }
+  }
+
+  .about__grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    column-gap: 64px;
+
+    @media screen and (min-width: 1200px) {
+      grid-template-columns: repeat(24, 1fr);
+    }
+
+    &-el {
+      grid-column: span 12;
+
+      @media screen and (min-width: 1200px) {
+        grid-column: span 12;
+      }
+    }
   }
 
   .details__image--more {
@@ -9,11 +31,11 @@
   }
 
   .details__image {
-    grid-column: 3 / 7;
+    grid-column: 3 / 10;
   }
 
   .q {
-    grid-column: 8 / 13;
+    grid-column: 14 / 20;
   }
 
   .card__ram-info {
@@ -29,6 +51,10 @@
   border-radius: 50%;
   display: inline-block;
   margin-right: 8px;
+}
+
+.card__buy-cart {
+  margin-bottom: 16px;
 }
 
 .cart__checkout {

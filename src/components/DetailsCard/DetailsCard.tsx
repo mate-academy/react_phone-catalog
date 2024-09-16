@@ -15,7 +15,9 @@ export const DetailsCard: React.FC<Props> = ({ product }) => {
       <h1 className="details__text">{product.name}</h1>
 
       <div className="qwerty">
-        <img className="details__image" src={product.images[0]} alt="image" />
+        <div className="details__image">
+          <img src={product.images[0]} alt="image" />
+        </div>
 
         <div className="details__image--more">
           {product.images.map(img => (
