@@ -71,7 +71,7 @@ export const List: React.FC<Props> = ({ type }) => {
       {sortedProducts.length > 0 &&
         sortedProducts.map(product => (
           <div key={product.id} className="card">
-            <Link to={`/${type}/${product.id}`}>
+            <Link to={`/${type}/${product.itemId}`}>
               <img
                 className="card__image"
                 src={product.image}

@@ -39,7 +39,7 @@
   }
 
   .q {
-    grid-column: 14 / 20;
+    grid-column: 11 / 20;
   }
 
   .card__ram-info {
@@ -320,6 +320,13 @@
   &__image {
     width: 100%;
     margin-bottom: 16px;
+    display: flex;
+    justify-content: center;
+
+    @media screen and (min-width: 640px) {
+      display: block;
+
+    }
 
     & img {
       max-width: 100%;

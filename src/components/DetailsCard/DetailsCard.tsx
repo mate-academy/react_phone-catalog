@@ -26,6 +26,14 @@ export const DetailsCard: React.FC<Props> = ({ product }) => {
     navigate(updatedURL);
   };
 
+  const handleColorChange = (color: string) => {
+    let updatedURL;
+
+    updatedURL = `/${product.category}/${product.namespaceId}-${product.capacity.toLowerCase()}-${color}`;
+
+    navigate(updatedURL);
+  };
+
   return (
     <>
       <h1 className="details__text">{product.name}</h1>
@@ -49,12 +57,12 @@ export const DetailsCard: React.FC<Props> = ({ product }) => {
         <div className='q'>
           <div className="details-flex">
             <p className="details-flex-text">Aviables colors</p>
-            <p className="details-flex-text">ID: 903253</p>
           </div>
 
           <div className="details__colors-container">
             {product.colorsAvailable.map(color => (
               <div
+                onClick={() => { handleColorChange(color) }}
                 key={color}
                 className="details__color"
                 style={{ backgroundColor: color, width: '32px', height: '32px', borderRadius: '50%', marginRight: '8px' }}
