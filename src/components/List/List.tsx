@@ -1,8 +1,9 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { Link, useLocation, useSearchParams } from 'react-router-dom';
 import { Tablet } from '../../types/tablet';
 import { Accessory } from '../../types/accessory';
 import { Phone } from '../../types/phone';
+import { Products } from '../../types/products';
 
 type Props = {
   products: Phone[] | Tablet[] | Accessory[];
@@ -10,10 +11,39 @@ type Props = {
 };
 
 export const List: React.FC<Props> = ({ products, type }) => {
+  const location = useLocation();
+  const [searchParams] = useSearchParams(location.search);
+  const [product, setProduct] = useState<Products[]>([])
+
+  let sortedProducts = [...products];
+
+  useEffect(() => {
+    fetch('./api/product.json')
+      .then(response => response.json())
+      .then(data => setProduct(data))
+  }, [])
+
+  const sortParam = searchParams.get('sort') || 'Default';
+
+  switch (sortParam) {
+    case 'Alphabetically':
+      sortedProducts = sortedProducts.sort((one, two) => one.name.localeCompare(two.name));
+      break;
+
+    case 'Cheapest':
+      sortedProducts = sortedProducts.sort((one, two) => one.priceDiscount - two.priceDiscount);
+      break;
+
+    default:
+      sortedProducts = sortedProducts.sort((one, two) => one.priceDiscount - two.priceDiscount);
+      break;
+  }
+
+
   return (
     <ul className='card__grid'>
       {products.length > 0 &&
-        products.map(product => (
+        sortedProducts.map(product => (
           <div key={product.id} className="card">
             <Link to={`/${type}/${product.id}`}>
               <img

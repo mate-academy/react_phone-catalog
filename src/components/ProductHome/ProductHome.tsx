@@ -27,7 +27,7 @@ export const ProductHome: React.FC<Props> = ({ product }) => {
           {location.pathname.includes('/tablets')
             ? 'Tablets'
             : location.pathname.includes('/phones')
-              ? 'Phones'
+              ? 'Mobile phones'
               : location.pathname.includes('/accessories')
                 ? 'Accessories'
                 : ''}
