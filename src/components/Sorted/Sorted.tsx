@@ -109,7 +109,7 @@ export const Sorted = () => {
             </p>
             <p
               onClick={() => {
-                updateSearchParam('perPage', 'All');
+                removeSearchParam('perPage')
                 setAllList(false);
               }}
               className="sort-list--select-text"

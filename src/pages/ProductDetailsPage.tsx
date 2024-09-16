@@ -70,7 +70,6 @@ export const ProductDetailsPage = () => {
 
       <DetailsCard product={product} />
 
-
       <DetailsTechSpecs product={product} />
 
       <BrandNewModelsHome type="You may also like" />

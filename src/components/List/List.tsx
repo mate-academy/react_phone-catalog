@@ -13,18 +13,20 @@ type Props = {
 export const List: React.FC<Props> = ({ products, type }) => {
   const location = useLocation();
   const [searchParams] = useSearchParams(location.search);
-  const [product, setProduct] = useState<Products[]>([])
+  const [product, setProduct] = useState<Products[]>([]);
 
   let sortedProducts = [...products];
 
   useEffect(() => {
-    fetch('./api/product.json')
+    fetch('api/products.json')
       .then(response => response.json())
-      .then(data => setProduct(data))
+      .then((data: Products[]) => {
+        const filteredProducts = data.filter(el => el.category === type);
+        setProduct(filteredProducts);
+      })
   }, [])
 
   const sortParam = searchParams.get('sort') || 'Default';
-
   switch (sortParam) {
     case 'Alphabetically':
       sortedProducts = sortedProducts.sort((one, two) => one.name.localeCompare(two.name));
@@ -35,7 +37,7 @@ export const List: React.FC<Props> = ({ products, type }) => {
       break;
 
     default:
-      sortedProducts = sortedProducts.sort((one, two) => one.priceDiscount - two.priceDiscount);
+
       break;
   }
 
@@ -58,7 +60,6 @@ export const List: React.FC<Props> = ({ products, type }) => {
       sortedProducts = [...sortedProducts]
       break;
   }
-
 
   return (
     <ul className='card__grid'>

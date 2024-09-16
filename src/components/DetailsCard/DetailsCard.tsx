@@ -2,6 +2,8 @@ import React from 'react';
 import { Phone } from '../../types/phone';
 import { Tablet } from '../../types/tablet';
 import { Accessory } from '../../types/accessory';
+import classNames from 'classnames';
+import { useNavigate } from 'react-router-dom';
 
 type Product = Phone | Tablet | Accessory;
 
@@ -10,6 +12,11 @@ type Props = {
 }
 
 export const DetailsCard: React.FC<Props> = ({ product }) => {
+  const navigate = useNavigate();
+
+  const handleMemoryChange = (newCapacity: string) => {
+    navigate(`/${product.category}/${product.namespaceId}-${newCapacity}-${product.color}`);
+  };
   return (
     <>
       <h1 className="details__text">{product.name}</h1>
@@ -51,23 +58,19 @@ export const DetailsCard: React.FC<Props> = ({ product }) => {
           <p className="details-flex-text">Select capacity</p>
 
           <div className='flex-capacity'>
-            <div className='capacity'>
-              <div className="capacity-text">
-                64GB
+            {product.capacityAvailable.map((el) => (
+              <div style={{cursor: 'pointer'}} onClick={() => handleMemoryChange(el.toLowerCase())}
+                className={
+                  classNames({
+                    'capacity-default': el !== product.capacity,
+                    'capacity': el === product.capacity,
+                  })}
+              >
+                <div className="capacity-text">
+                  {el}
+                </div>
               </div>
-            </div>
-
-            <div className='capacity-default'>
-              <div className="capacity-default-text">
-                128GB
-              </div>
-            </div>
-
-            <div className='capacity-default'>
-              <div className="capacity-default-text">
-                254GB
-              </div>
-            </div>
+            ))}
           </div>
 
           <div className="card__line"></div>
