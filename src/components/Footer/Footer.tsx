@@ -31,7 +31,9 @@ export const Footer: React.FC = () => {
           </Link>
         </div>
         <div className="footer__top">
-          <p className="footer__back">Back to top</p>
+          <p onClick={scrollToTop} className="footer__back">
+            Back to top
+          </p>
           <span onClick={scrollToTop}></span>
         </div>
       </div>

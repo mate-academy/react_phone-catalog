@@ -17,6 +17,7 @@
       align-items: center;
     }
   }
+
   &__info {
     margin-top: 32px;
     display: flex;
@@ -42,6 +43,10 @@
     text-align: left;
     text-transform: uppercase;
     color: $basic-grey-color;
+    cursor: pointer;
+    &:hover {
+      color: black;
+    }
   }
 
   &__top {
@@ -52,7 +57,7 @@
     gap: 16px;
     justify-content: center;
     align-items: center;
-    
+
     @include on-tablet {
       margin-top: 0;
     }
@@ -61,8 +66,11 @@
     font-size: 12px;
     font-weight: 700;
     line-height: 15.34px;
-
+    cursor: pointer;
     color: $basic-grey-color;
+    &:hover {
+      color: black;
+    }
   }
   a {
     text-decoration: none;

@@ -10,6 +10,8 @@ import { PaginationPage } from '../PaginationPage';
 import { EmptyPage } from '../EmptyPage';
 import { useLoader } from '../../context/LoaderContext';
 import { useFooter } from '../../context/FooterContext';
+import { CustomSelect } from '../../components/CustomSelect';
+import { CustomSelectPage } from '../../components/CustomSelectPage';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const transformData = (data: any[]): Product[] => {
@@ -73,21 +75,13 @@ export const TabletsPage: React.FC = () => {
     navigate(`?${newParams.toString()}`);
   };
 
-  const handleSortChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    const selectedSortType = event.target.value;
-    setSortType(selectedSortType);
+  const handleSortChange = (selectedSortType: string) => {
     const newParams = new URLSearchParams(location.search);
-    newParams.set(
-      'sort',
-      selectedSortType.charAt(0).toUpperCase() + selectedSortType.slice(1),
-    );
+    newParams.set('sort', selectedSortType);
     updateUrlParams(newParams);
   };
 
-  const handleItemsPerPageChange = (
-    event: React.ChangeEvent<HTMLSelectElement>,
-  ) => {
-    const value = event.target.value;
+  const handleItemsPerPageChange = (value: string) => {
     const newItemsPerPage =
       value === 'all' ? tablets.length : parseInt(value, 10);
     setItemsPerPage(newItemsPerPage);
@@ -160,46 +154,13 @@ export const TabletsPage: React.FC = () => {
       </p>
 
       <div className="tablets__sort">
-        <div className="tablets__sort--model">
-          <p className="tablets__subtitle">Sort By</p>
-          <select
-            className="tablets__sort--options"
-            aria-label="Sort tablets by"
-            value={sortType.toLowerCase()}
-            onChange={handleSortChange}
-          >
-            <option className="tablets__sort--option" value="newest">
-              Newest
-            </option>
-            <option className="tablets__sort--option" value="latest">
-              Latest
-            </option>
-          </select>
-        </div>
-        <div className="tablets__sort--page">
-          <p className="tablets__subtitle">Items on page</p>
-          <select
-            className="tablets__sort--page-options"
-            aria-label="Items on page"
-            value={
-              itemsPerPage === tablets.length ? 'all' : itemsPerPage.toString()
-            }
-            onChange={handleItemsPerPageChange}
-          >
-            <option value="4" className="tablets__sort--option">
-              4
-            </option>
-            <option value="8" className="tablets__sort--option">
-              8
-            </option>
-            <option value="16" className="tablets__sort--option">
-              16
-            </option>
-            <option value="all" className="tablets__sort--option">
-              all
-            </option>
-          </select>
-        </div>
+        <CustomSelect onSortChange={handleSortChange} />
+        <CustomSelectPage
+          onItemsPerPageChange={handleItemsPerPageChange}
+          currentItemsPerPage={
+            itemsPerPage === tablets.length ? 'all' : itemsPerPage.toString()
+          }
+          />
       </div>
 
       {isLoading ? (

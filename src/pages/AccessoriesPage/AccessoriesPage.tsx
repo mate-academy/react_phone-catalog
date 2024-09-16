@@ -10,6 +10,8 @@ import { EmptyPage } from '../EmptyPage';
 import { Loader } from '../../components/Loader';
 import { useLoader } from '../../context/LoaderContext';
 import { useFooter } from '../../context/FooterContext';
+import { CustomSelect } from '../../components/CustomSelect';
+import { CustomSelectPage } from '../../components/CustomSelectPage';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const transformData = (data: any[]): Product[] => {
@@ -69,21 +71,13 @@ export const AccessoriesPage: React.FC = () => {
     navigate(`?${newParams.toString()}`);
   };
 
-  const handleSortChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    const selectedSortType = event.target.value;
-    setSortType(selectedSortType);
+  const handleSortChange = (selectedSortType: string) => {
     const newParams = new URLSearchParams(location.search);
-    newParams.set(
-      'sort',
-      selectedSortType.charAt(0).toUpperCase() + selectedSortType.slice(1),
-    );
+    newParams.set('sort', selectedSortType);
     updateUrlParams(newParams);
   };
 
-  const handleItemsPerPageChange = (
-    event: React.ChangeEvent<HTMLSelectElement>,
-  ) => {
-    const value = event.target.value;
+  const handleItemsPerPageChange = (value: string) => {
     const newItemsPerPage =
       value === 'all' ? accessories.length : parseInt(value, 10);
     setItemsPerPage(newItemsPerPage);
@@ -93,7 +87,6 @@ export const AccessoriesPage: React.FC = () => {
     newParams.set('page', '1');
     updateUrlParams(newParams);
   };
-
   const handlePageChange = (page: number) => {
     const cleanedPage = cleanId(page.toString());
     setCurrentPage(page);
@@ -156,50 +149,15 @@ export const AccessoriesPage: React.FC = () => {
       <p className="accessories__subtitle">{accessories.length} items</p>
 
       <div className="accessories__sort">
-        <div className="accessories__sort--model">
-          <p className="accessories__subtitle">Sort By</p>
-          <select
-            className="accessories__sort--options"
-            aria-label="Sort accessories by"
-            value={sortType.toLowerCase()}
-            onChange={handleSortChange}
-            disabled={isLoading}
-          >
-            <option className="accessories__sort--option" value="newest">
-              Newest
-            </option>
-            <option className="accessories__sort--option" value="latest">
-              Latest
-            </option>
-          </select>
-        </div>
-        <div className="accessories__sort--page">
-          <p className="accessories__subtitle">Items on page</p>
-          <select
-            className="accessories__sort--page-options"
-            aria-label="Items on page"
-            value={
-              itemsPerPage === accessories.length
-                ? 'all'
-                : itemsPerPage.toString()
-            }
-            onChange={handleItemsPerPageChange}
-            disabled={isLoading}
-          >
-            <option value="4" className="accessories__sort--option">
-              4
-            </option>
-            <option value="8" className="accessories__sort--option">
-              8
-            </option>
-            <option value="16" className="accessories__sort--option">
-              16
-            </option>
-            <option value="all" className="accessories__sort--option">
-              all
-            </option>
-          </select>
-        </div>
+        <CustomSelect onSortChange={handleSortChange} />
+        <CustomSelectPage
+          onItemsPerPageChange={handleItemsPerPageChange}
+          currentItemsPerPage={
+            itemsPerPage === accessories.length
+              ? 'all'
+              : itemsPerPage.toString()
+          }
+        />
       </div>
 
       {isLoading ? (

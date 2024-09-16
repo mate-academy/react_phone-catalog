@@ -10,6 +10,8 @@ import { PaginationPage } from '../PaginationPage';
 import { EmptyPage } from '../EmptyPage';
 import { useLoader } from '../../context/LoaderContext';
 import { useFooter } from '../../context/FooterContext';
+import { CustomSelect } from '../../components/CustomSelect';
+import { CustomSelectPage } from '../../components/CustomSelectPage';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const transformData = (data: any[]): Product[] => {
@@ -38,6 +40,7 @@ export const PhonesPage: React.FC = () => {
   const initialSortType = params.get('sort') === 'latest' ? 'latest' : 'newest';
   const perPageParam = params.get('perPage') || 'all';
   const pageParam = parseInt(params.get('page') || '1', 10);
+
   const { setIsShow } = useFooter();
   useEffect(() => {
     const newItemsPerPage =
@@ -62,21 +65,13 @@ export const PhonesPage: React.FC = () => {
     navigate(`?${newParams.toString()}`);
   };
 
-  const handleSortChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    const selectedSortType = event.target.value;
-    setSortType(selectedSortType);
+  const handleSortChange = (selectedSortType: string) => {
     const newParams = new URLSearchParams(location.search);
-    newParams.set(
-      'sort',
-      selectedSortType.charAt(0).toUpperCase() + selectedSortType.slice(1),
-    );
+    newParams.set('sort', selectedSortType);
     updateUrlParams(newParams);
   };
 
-  const handleItemsPerPageChange = (
-    event: React.ChangeEvent<HTMLSelectElement>,
-  ) => {
-    const value = event.target.value;
+  const handleItemsPerPageChange = (value: string) => {
     const newItemsPerPage =
       value === 'all' ? phones.length : parseInt(value, 10);
     setItemsPerPage(newItemsPerPage);
@@ -86,7 +81,6 @@ export const PhonesPage: React.FC = () => {
     newParams.set('page', '1');
     updateUrlParams(newParams);
   };
-
   const handlePageChange = (page: number) => {
     setCurrentPage(page);
     const newParams = new URLSearchParams(location.search);
@@ -95,8 +89,8 @@ export const PhonesPage: React.FC = () => {
   };
 
   const extractVersionNumber = (name: string): number => {
-    const match = name.match(/iPhone (\d+)/);
-    return match ? parseInt(match[1], 10) : 0;
+    const match = name.match(/\d+/);
+    return match ? parseInt(match[0], 10) : 0;
   };
 
   const sortPhones = (type: string) => {
@@ -146,46 +140,13 @@ export const PhonesPage: React.FC = () => {
       </p>
 
       <div className="phones__sort">
-        <div className="phones__sort--model">
-          <p className="phones__subtitle">Sort By</p>
-          <select
-            className="phones__sort--options"
-            aria-label="Sort phones by"
-            value={sortType.toLowerCase()}
-            onChange={handleSortChange}
-          >
-            <option className="phones__sort--option" value="newest">
-              Newest
-            </option>
-            <option className="phones__sort--option" value="latest">
-              Latest
-            </option>
-          </select>
-        </div>
-        <div className="phones__sort--page">
-          <p className="phones__subtitle">Items on page</p>
-          <select
-            className="phones__sort--page-options"
-            aria-label="Items on page"
-            value={
-              itemsPerPage === phones.length ? 'all' : itemsPerPage.toString()
-            }
-            onChange={handleItemsPerPageChange}
-          >
-            <option value="4" className="phones__sort--option">
-              4
-            </option>
-            <option value="8" className="phones__sort--option">
-              8
-            </option>
-            <option value="16" className="phones__sort--option">
-              16
-            </option>
-            <option value="all" className="phones__sort--option">
-              all
-            </option>
-          </select>
-        </div>
+        <CustomSelect onSortChange={handleSortChange} />
+        <CustomSelectPage
+          onItemsPerPageChange={handleItemsPerPageChange}
+          currentItemsPerPage={
+            itemsPerPage === phones.length ? 'all' : itemsPerPage.toString()
+          }
+        />
       </div>
 
       <div className="phones__wrapper">

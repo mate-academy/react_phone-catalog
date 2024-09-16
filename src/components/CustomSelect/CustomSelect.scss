@@ -1,0 +1,9 @@
+@import '../../styles/mixins';
+@import '../../styles/variables';
+
+.custom-select {
+  @include drop-down-list;
+}
+
+
+
