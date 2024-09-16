@@ -17,7 +17,7 @@ export const List: React.FC<Props> = ({ type }) => {
   const [sortedProducts, setSortedProducts] = useState<Products[]>([]);
 
   useEffect(() => {
-    fetch('/api/products.json')
+    fetch('./api/products.json')
       .then(response => response.json())
       .then((data: Products[]) => {
         const filteredProducts = data.filter(el => el.category === type);
