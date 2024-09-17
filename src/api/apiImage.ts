@@ -1,5 +1,5 @@
 export const images = [
-  `${process.env.PUBLIC_URL}/img/BannerMobile.png`,
-  `${process.env.PUBLIC_URL}../img/Banner.svg`,
-  `${process.env.PUBLIC_URL}./img/Banner.svg`,
+  require('./img/BannerMobile.png'),
+  require('../img/Banner.svg'),
+  require('./img/Banner.svg'),
 ];
