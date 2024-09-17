@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React from 'react';
-import { MainSlider } from '../../components/MainSlider';
+
 import { NewItems } from '../../components/NewItems';
 import { ShopPage } from '../../pages/ShopPage';
 
@@ -8,6 +8,7 @@ import './HomePage.scss';
 import '../../styles/container.scss';
 import phones from '../../api/phones.json';
 import { Product } from '../../types';
+import { MainSlider } from '../../components/MainSlider/MainSlider';
 
 export const HomePage: React.FC = () => {
   const capacityOrder: Record<string, number> = {

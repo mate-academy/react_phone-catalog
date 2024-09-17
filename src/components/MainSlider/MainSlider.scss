@@ -13,6 +13,7 @@
     @include on-tablet {
       margin-top: 32px;
     }
+
     @include on-desktop {
       gap: 16px;
     }
@@ -32,6 +33,7 @@
       width: 490px;
       height: 189px;
     }
+
     @include on-desktop {
       margin: 0 20px;
       width: 1040px;
@@ -49,6 +51,7 @@
 
 .slider {
   display: none;
+
   @include on-tablet {
     width: 32px;
     display: block;
@@ -62,6 +65,7 @@
       transform: translateY(-5px);
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
       border-radius: 12px;
+
       @include on-desktop {
         border-radius: 15px;
       }
@@ -72,6 +76,7 @@
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
     }
   }
+
   @include on-desktop {
     height: 100%;
   }
@@ -105,3 +110,4 @@
     }
   }
 }
+

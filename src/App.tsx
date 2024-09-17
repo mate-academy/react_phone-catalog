@@ -15,8 +15,8 @@ export const App: React.FC = () => {
       <Header />
       <div className="content">
         <Outlet />
+        {isLoading || isShow && <Footer />}
       </div>
-      {isLoading || isShow && <Footer />}
     </div>
   );
 };
