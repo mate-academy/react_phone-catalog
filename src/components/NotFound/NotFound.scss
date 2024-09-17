@@ -5,13 +5,13 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  background-color: $border;
-  height: 100vh;
+  height: 55vh;
   &__img {
     max-width: 220px;
     height: 220px;
     display: block;
     margin: 0 auto;
+   
   }
 
   &__title {
@@ -20,5 +20,6 @@
     line-height: 31px;
     padding-bottom: 10px;
     text-align: center;
+    color: var(--text-color);
   }
 }

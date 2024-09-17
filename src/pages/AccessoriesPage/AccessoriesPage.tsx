@@ -12,6 +12,7 @@ import { useLoader } from '../../context/LoaderContext';
 import { useFooter } from '../../context/FooterContext';
 import { CustomSelect } from '../../components/CustomSelect';
 import { CustomSelectPage } from '../../components/CustomSelectPage';
+import { NotFound } from '../../components/NotFound';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const transformData = (data: any[]): Product[] => {
@@ -51,7 +52,7 @@ export const AccessoriesPage: React.FC = () => {
         setIsLoading(false);
       }, 1000);
     };
-
+   
     fetchData();
   }, []);
 
@@ -146,7 +147,11 @@ export const AccessoriesPage: React.FC = () => {
     <div className="accessories container">
       <BackButton title="Accessories" />
       <h2 className="accessories__title">Accessories</h2>
-      <p className="accessories__subtitle">{accessories.length} items</p>
+      <p className="accessories__subtitle">
+        {accessories.length > 0
+          ? `${accessories.length} items`
+          : 'No accessories available'}
+      </p>
 
       <div className="accessories__sort">
         <CustomSelect onSortChange={handleSortChange} />
@@ -160,14 +165,15 @@ export const AccessoriesPage: React.FC = () => {
         />
       </div>
 
-      {isLoading ? (
+      {isLoading ?(
         <Loader />
       ) : (
         <div className="accessories__wrapper">
           {accessories.length === 0 ? (
             <div className="accessories__no-items">
-              There are no accessories
-            </div>
+               <p>There are no accessories</p> 
+               <NotFound />
+              </div>
           ) : currentAccessories.length > 0 ? (
             currentAccessories.map((product) => (
               <Cart key={product.id} product={product} showDiscount={true} />
