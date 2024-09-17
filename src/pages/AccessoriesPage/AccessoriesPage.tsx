@@ -43,19 +43,22 @@ export const AccessoriesPage: React.FC = () => {
   const pageParam = params.get('page') || '1';
 
   useEffect(() => {
-    setIsLoading(true);
-
+    setIsLoading(true); 
+    
     const fetchData = () => {
       setTimeout(() => {
-        const data = transformData(accessoriesData);
+        const data = transformData(accessoriesData || []);
         setAccessories(data);
-        setIsLoading(false);
+
+        setIsLoading(false); 
       }, 1000);
+     
     };
-   
+  
     fetchData();
   }, []);
-
+  
+  
   useEffect(() => {
     const newItemsPerPage =
       perPageParam === 'all' ? accessories.length : parseInt(perPageParam, 10);
