@@ -16,34 +16,38 @@ type Props = {
 export const ProductCard: React.FC<Props> = ({ product, showDiscount }) => {
   const { cart, favorites } = useContext(StatesContext);
   const dispatch = useContext(DispatchContext);
-  const addedToCart = cart.includes(product);
-  const [isFavorited, setIsFavorited] = useState(favorites.includes(product));
+  const [isFavorited, setIsFavorited] = useState(false);
+  const [isAddedToCart, setIsAddedToCart] = useState(false);
 
   const addToCart = () => {
-    dispatch({ type: 'addToCart', payload: product });
+    dispatch({ type: 'updateCart', payload: [...cart, product] });
   };
 
   const removeFromCart = () => {
-    dispatch({ type: 'removeFromCart', payload: product.id });
+    dispatch({
+      type: 'updateCart',
+      payload: [...cart.filter(p => p.id !== product.id)],
+    });
   };
 
   const addToFavorites = () => {
-    dispatch({
-      type: 'addToFavorites',
-      payload: [...favorites, product],
-    });
+    dispatch({ type: 'updateFavorites', payload: [...favorites, product] });
   };
 
   const removeFromFavorites = () => {
     dispatch({
-      type: 'removeFromFavorites',
+      type: 'updateFavorites',
       payload: [...favorites.filter(p => p.id !== product.id)],
     });
   };
 
   useEffect(() => {
-    setIsFavorited(favorites.includes(product));
+    setIsFavorited(!!favorites.find(p => p.id === product.id));
   }, [favorites, product]);
+
+  useEffect(() => {
+    setIsAddedToCart(!!cart.find(p => p.id === product.id));
+  }, [cart, product]);
 
   return (
     <div className="card">
@@ -86,10 +90,10 @@ export const ProductCard: React.FC<Props> = ({ product, showDiscount }) => {
       </div>
       <div className="card__buttons">
         <Button
-          title={addedToCart ? 'Added' : 'Add to cart'}
+          title={isAddedToCart ? 'Added' : 'Add to cart'}
           buttonUse="cart"
-          onClick={addedToCart ? removeFromCart : addToCart}
-          added={addedToCart}
+          onClick={isAddedToCart ? removeFromCart : addToCart}
+          added={isAddedToCart}
         />
         <Icon
           iconType="favorite"

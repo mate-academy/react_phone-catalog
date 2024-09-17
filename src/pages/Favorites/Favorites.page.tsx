@@ -11,7 +11,7 @@ export const FavoritesPage = () => {
   const { favorites } = useContext(StatesContext);
 
   return (
-    <section className="catalog-page">
+    <section className="favorites-page">
       <NavigationPath id={'favorites'} />
       <CategoryTitle title={'Favorites'} productsCount={favorites.length} />
       <ProductGrid productsArray={favorites} />

@@ -40,16 +40,19 @@
   color: $c-primary;
   padding-top: 16px;
 }
+
 .block2 {
   width: 78px;
   height: 8px;
   margin-bottom: 8px;
 }
+
 .block3 {
   width: 131px;
   height: 10px;
   margin-bottom: 8px;
 }
+
 .button {
   &--L {
     height: 40px;
@@ -62,19 +65,22 @@
     width: 17%;
   }
 }
+
 .line {
   height: 1px;
   width: 100%;
   background-color: $c-elements;
   display: inline-block;
 }
+
 .fpo {
   display: block;
   height: 100%;
   width: 100%;
 }
+
 .pulsate {
-  background: linear-gradient(-45deg, #dddddd, #f0f0f0, #dddddd, #f0f0f0);
+  background: linear-gradient(-45deg, #ddd, #f0f0f0, #ddd, #f0f0f0);
   background-size: 400% 400%;
   -webkit-animation: Gradient 2.25s ease infinite;
   -moz-animation: Gradient 2.25s ease infinite;

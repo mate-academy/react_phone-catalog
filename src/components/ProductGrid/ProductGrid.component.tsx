@@ -85,6 +85,7 @@ export const ProductGrid: React.FC<Props> = ({ productsArray, pagination }) => {
 
   useEffect(() => {
     handleSortChange();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [productsArray, sort]);
 
   return (

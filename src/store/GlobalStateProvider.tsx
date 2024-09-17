@@ -12,7 +12,7 @@ const initialStates = {
   phones: [],
   products: [],
   tablets: [],
-  cart: [],
+  cart: getLocalStorage('cart', []),
   favorites: getLocalStorage('favs', []),
   categories: [],
   isMenuOpen: false,
@@ -25,10 +25,8 @@ type Action =
   | { type: 'loadTablets'; payload: TabletSpecs[] }
   | { type: 'loadProducts'; payload: ProductSummary[] }
   | { type: 'loadCategories'; payload: Category[] }
-  | { type: 'addToCart'; payload: ProductSummary }
-  | { type: 'removeFromCart'; payload: number }
-  | { type: 'addToFavorites'; payload: ProductSummary[] }
-  | { type: 'removeFromFavorites'; payload: ProductSummary[] }
+  | { type: 'updateCart'; payload: ProductSummary[] }
+  | { type: 'updateFavorites'; payload: ProductSummary[] }
   | { type: 'isMenuOpen'; payload: boolean }
   | { type: 'isReady'; payload: boolean };
 
@@ -54,26 +52,11 @@ function reducer(states: States, action: Action) {
     case 'loadCategories':
       newStates = { ...newStates, categories: action.payload };
       break;
-    case 'addToCart':
-      newStates = { ...newStates, cart: [...states.cart, action.payload] };
+    case 'updateCart':
+      newStates = { ...newStates, cart: action.payload };
       break;
-    case 'removeFromCart':
-      newStates = {
-        ...newStates,
-        cart: states.cart.filter(p => p.id !== action.payload),
-      };
-      break;
-    case 'addToFavorites':
-      newStates = {
-        ...newStates,
-        favorites: action.payload,
-      };
-      break;
-    case 'removeFromFavorites':
-      newStates = {
-        ...newStates,
-        favorites: action.payload,
-      };
+    case 'updateFavorites':
+      newStates = { ...newStates, favorites: action.payload };
       break;
     case 'isMenuOpen':
       newStates = { ...newStates, isMenuOpen: action.payload };
@@ -86,6 +69,7 @@ function reducer(states: States, action: Action) {
   }
 
   localStorage.setItem('favs', JSON.stringify(newStates.favorites));
+  localStorage.setItem('cart', JSON.stringify(newStates.cart));
 
   return newStates;
 }
