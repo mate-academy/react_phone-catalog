@@ -55,7 +55,7 @@ export const Header: React.FC = () => {
       <div className="header__wrapper">
         <Link to="/" className="header__nav--logo" onClick={handleLinkClick}>
           <img
-            src={`${process.env.PUBLIC_URL}/img/icons/Logo2.svg`}
+            src={`${process.env.PUBLIC_URL}/img/icons/logo2.svg`}
             alt="Logo"
           />
         </Link>
