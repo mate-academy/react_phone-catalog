@@ -1,6 +1,4 @@
-// import { Accessories, Product, ProductChars } from '../../types';
-// import { CardComponent } from '../main/CardComponent/CardComponent';
-import { useParams } from 'react-router-dom';
+import { NavLink, useParams } from 'react-router-dom';
 import { usePhones } from '../../context/PhonesProvider';
 import { useTablets } from '../../context/TabletProvider';
 import { useAccessories } from '../../context/AccessoriesProvider';
@@ -26,16 +24,67 @@ export const ProductDetailsPage: React.FC = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [items, setItems] = useState<Device | undefined>(undefined);
   const [relatedProducts, setRelatedProducts] = useState<Device[]>([]);
+  const isSelectCapacity = ({ isActive }: { isActive: boolean }) =>
+    isActive
+      ? styles.product_char_capacity_active
+      : styles.product_char_capacity;
+
+  const isSelectColor = ({ isActive }: { isActive: boolean }) =>
+    isActive ? styles.product_char_color_active : styles.product_char_color;
 
   const { category, itemId } = useParams<{
     category: string;
     itemId: string;
   }>();
+
   const phones = usePhones();
   const tablets = useTablets();
   const accessories = useAccessories();
 
   const totalSlides = items ? phones.length : 0;
+
+  const findByCapacity = (
+    namespaceId: string,
+    color: string,
+    cap: string,
+    categorys: string,
+  ) => {
+    let foundItems;
+
+    switch (categorys) {
+      case 'phones':
+        foundItems = phones.find(
+          item =>
+            item.namespaceId === namespaceId &&
+            item.color === color &&
+            item.capacity === cap,
+        );
+        break;
+      case 'tablet':
+        foundItems = tablets.find(
+          item =>
+            item.namespaceId === namespaceId &&
+            item.color === color &&
+            item.capacity === cap,
+        );
+        break;
+      case 'accessories':
+        foundItems = accessories.find(
+          item =>
+            item.namespaceId === namespaceId &&
+            item.color === color &&
+            item.capacity === cap,
+        );
+        break;
+      default:
+        foundItems = undefined;
+        break;
+    }
+
+    if (items) {
+      setItems(foundItems);
+    }
+  };
 
   useEffect(() => {
     const filterItem = (id: string) => {
@@ -70,7 +119,7 @@ export const ProductDetailsPage: React.FC = () => {
             return array.sort(() => Math.random() - 0.5);
           };
 
-          const randomProducts = shuffleArray(products).slice(0, 4);
+          const randomProducts = shuffleArray(products).slice(0, 10);
 
           setRelatedProducts(randomProducts);
         };
@@ -87,6 +136,18 @@ export const ProductDetailsPage: React.FC = () => {
   if (!items) {
     return <div>Item not found</div>;
   }
+
+  const handleCapacityClick = (capacity?: string, color?: string) => {
+    const effectiveCapacity = capacity ?? items.capacity;
+    const effectiveColor = color ?? items.color;
+
+    findByCapacity(
+      items.namespaceId,
+      effectiveColor,
+      effectiveCapacity,
+      items.category,
+    );
+  };
 
   return (
     <>
@@ -131,10 +192,16 @@ export const ProductDetailsPage: React.FC = () => {
                   Available colors
                 </span>
                 <div className={styles.product_char_capacity_container}>
-                  {items.colorsAvailable.map(color => (
-                    <div key={color} style={{ backgroundColor: color }}>
-                      {color}
-                    </div>
+                  {items.colorsAvailable.map((color, index) => (
+                    <NavLink
+                      to={`/${category}/${items.namespaceId}-${items.capacity.toLocaleLowerCase()}-${color}`}
+                      key={index}
+                      style={{ backgroundColor: color }}
+                      className={isSelectColor}
+                      onClick={() => handleCapacityClick(color)}
+                    >
+                      {}
+                    </NavLink>
                   ))}
                 </div>
               </div>
@@ -144,10 +211,15 @@ export const ProductDetailsPage: React.FC = () => {
                   Select capacity
                 </span>
                 <div className={styles.product_char_capacity_container}>
-                  {items.capacityAvailable.map(cap => (
-                    <div key={cap} className={styles.product_char_capacity}>
+                  {items.capacityAvailable.map((cap, index) => (
+                    <NavLink
+                      to={`/${category}/${items.namespaceId}-${cap.toLocaleLowerCase()}-${items.color}`}
+                      key={index}
+                      className={isSelectCapacity}
+                      onClick={() => handleCapacityClick(cap)}
+                    >
                       {cap}
-                    </div>
+                    </NavLink>
                   ))}
                 </div>
               </div>

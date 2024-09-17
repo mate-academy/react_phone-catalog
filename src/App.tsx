@@ -6,7 +6,7 @@ import { TabletsProvider } from './context/TabletProvider';
 import { AccessoriesProvider } from './context/AccessoriesProvider';
 import { PhonesProvider } from './context/PhonesProvider';
 import { PhonePage } from './components/PhonePage/PhonePage';
-import { ProductDetailsPage } from './components/ProductDetailsPage/ProductDetailsPage';
+import { ProductDetailsPage } from './components/PDP/ProductDetailsPage';
 
 export const App = () => {
   return (
