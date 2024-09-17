@@ -1,11 +1,10 @@
-import { Category } from '../../types/Category';
 import { Icon } from '../base/Icon/Icon.component';
 
 type Props = {
-  category: Category;
+  id: string;
 };
 
-export const NavigationPath: React.FC<Props> = ({ category }) => {
+export const NavigationPath: React.FC<Props> = ({ id }) => {
   return (
     <article className="navigationPath">
       <Icon iconType="home" iconUse="button" iconSize="16" />
@@ -15,7 +14,7 @@ export const NavigationPath: React.FC<Props> = ({ category }) => {
         iconSize="16"
         disabled={true}
       />
-      <span className="navigationPath__name">{category.id.toUpperCase()}</span>
+      <span className="navigationPath__name">{id.toUpperCase()}</span>
     </article>
   );
 };

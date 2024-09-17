@@ -5,6 +5,7 @@ import { PhoneSpecs } from '../types/PhoneSpecs';
 import { TabletSpecs } from '../types/TabletSpecs';
 import { ProductSummary } from '../types/ProductSummary';
 import { Category } from '../types/Category';
+import { getLocalStorage } from '../utils/getLocalStorage';
 
 const initialStates = {
   accessories: [],
@@ -12,10 +13,10 @@ const initialStates = {
   products: [],
   tablets: [],
   cart: [],
-  favorites: [],
+  favorites: getLocalStorage('favs', []),
   categories: [],
   isMenuOpen: false,
-  isLoading: false,
+  isReady: false,
 };
 
 type Action =
@@ -26,10 +27,10 @@ type Action =
   | { type: 'loadCategories'; payload: Category[] }
   | { type: 'addToCart'; payload: ProductSummary }
   | { type: 'removeFromCart'; payload: number }
-  | { type: 'addToFavorites'; payload: ProductSummary }
-  | { type: 'removeFromFavorites'; payload: number }
+  | { type: 'addToFavorites'; payload: ProductSummary[] }
+  | { type: 'removeFromFavorites'; payload: ProductSummary[] }
   | { type: 'isMenuOpen'; payload: boolean }
-  | { type: 'isLoading'; payload: boolean };
+  | { type: 'isReady'; payload: boolean };
 
 type DispatchContextType = {
   (action: Action): void;
@@ -65,24 +66,26 @@ function reducer(states: States, action: Action) {
     case 'addToFavorites':
       newStates = {
         ...newStates,
-        favorites: [...states.favorites, action.payload],
+        favorites: action.payload,
       };
       break;
     case 'removeFromFavorites':
       newStates = {
         ...newStates,
-        favorites: states.favorites.filter(p => p.id !== action.payload),
+        favorites: action.payload,
       };
       break;
     case 'isMenuOpen':
       newStates = { ...newStates, isMenuOpen: action.payload };
       break;
-    case 'isLoading':
-      newStates = { ...newStates, isLoading: action.payload };
+    case 'isReady':
+      newStates = { ...newStates, isReady: action.payload };
       break;
     default:
       return states;
   }
+
+  localStorage.setItem('favs', JSON.stringify(newStates.favorites));
 
   return newStates;
 }

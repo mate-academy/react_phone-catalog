@@ -2,7 +2,7 @@ import { ProductSummary } from '../../../types/ProductSummary';
 import { Icon } from '../../base/Icon/Icon.component';
 import { Button } from '../Button/Button.component';
 import { calculateDiscount } from '../../../utils/calculateDiscount';
-import { useContext } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import {
   StatesContext,
   DispatchContext,
@@ -17,6 +17,7 @@ export const ProductCard: React.FC<Props> = ({ product, showDiscount }) => {
   const { cart, favorites } = useContext(StatesContext);
   const dispatch = useContext(DispatchContext);
   const addedToCart = cart.includes(product);
+  const [isFavorited, setIsFavorited] = useState(favorites.includes(product));
 
   const addToCart = () => {
     dispatch({ type: 'addToCart', payload: product });
@@ -26,14 +27,23 @@ export const ProductCard: React.FC<Props> = ({ product, showDiscount }) => {
     dispatch({ type: 'removeFromCart', payload: product.id });
   };
 
-  const addedToFavorites = favorites.includes(product);
   const addToFavorites = () => {
-    dispatch({ type: 'addToFavorites', payload: product });
+    dispatch({
+      type: 'addToFavorites',
+      payload: [...favorites, product],
+    });
   };
 
   const removeFromFavorites = () => {
-    dispatch({ type: 'removeFromFavorites', payload: product.id });
+    dispatch({
+      type: 'removeFromFavorites',
+      payload: [...favorites.filter(p => p.id !== product.id)],
+    });
   };
+
+  useEffect(() => {
+    setIsFavorited(favorites.includes(product));
+  }, [favorites, product]);
 
   return (
     <div className="card">
@@ -86,8 +96,8 @@ export const ProductCard: React.FC<Props> = ({ product, showDiscount }) => {
           iconUse="button"
           iconSize="40"
           border={true}
-          onClick={addedToFavorites ? removeFromFavorites : addToFavorites}
-          added={addedToFavorites}
+          onClick={isFavorited ? removeFromFavorites : addToFavorites}
+          added={isFavorited}
         />
       </div>
     </div>

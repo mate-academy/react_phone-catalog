@@ -1,8 +1,8 @@
 import { Category } from '../types/Category';
 import { ProductSummary } from '../types/ProductSummary';
 
-export async function getProducts<T>(url: string): Promise<T> {
-  const response = await fetch(url);
+export async function getProducts(): Promise<ProductSummary[]> {
+  const response = await fetch('http://localhost:3000/api/products.json');
 
   if (!response.ok) {
     throw new Error(response.statusText);
@@ -11,9 +11,8 @@ export async function getProducts<T>(url: string): Promise<T> {
   return response.json();
 }
 
-export async function getCategories(
-  products: ProductSummary[],
-): Promise<Category[]> {
+export async function getCategories(): Promise<Category[]> {
+  const products = await getProducts();
   const phones = products.filter(p => p.category === 'phones');
   const tablets = products.filter(p => p.category === 'tablets');
   const accessories = products.filter(p => p.category === 'accessories');

@@ -7,6 +7,7 @@ import {
   DispatchContext,
   StatesContext,
 } from '../../../store/GlobalStateProvider';
+import { Link } from 'react-router-dom';
 
 export const Header = () => {
   const dispatch = useContext(DispatchContext);
@@ -46,12 +47,14 @@ export const Header = () => {
             </a>
           ) : (
             <>
-              <Icon
-                iconUse="bar"
-                iconType="favorite"
-                length={favorites.length}
-                border
-              />
+              <Link to="/favorites">
+                <Icon
+                  iconUse="bar"
+                  iconType="favorite"
+                  length={favorites.length}
+                  border
+                />
+              </Link>
               <Icon iconUse="bar" iconType="cart" length={cart.length} border />
             </>
           )}
