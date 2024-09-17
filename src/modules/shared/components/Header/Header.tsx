@@ -2,13 +2,18 @@ import styles from './Header.module.scss';
 import classNames from 'classnames';
 import { useContext, useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
-import { CartContext } from '../../contexts';
+import { CartContext, FavoritesContext } from '../../contexts';
 
 const getLinkClass = ({ isActive }: { isActive: boolean }) =>
   classNames(styles.navBtn, { [styles.isActiveMenu]: isActive });
 
 const getLinkClassCart = ({ isActive }: { isActive: boolean }) =>
   classNames(styles.iconLink, styles.cart, { [styles.isActiveCart]: isActive });
+
+const getLinkClassFavorites = ({ isActive }: { isActive: boolean }) =>
+  classNames(styles.iconLink, styles.favorites, {
+    [styles.isActiveFavorites]: isActive,
+  });
 
 const getLinkClassMobile = ({ isActive }: { isActive: boolean }) =>
   classNames(styles.navBtnMobile, { [styles.isActiveMenuMobile]: isActive });
@@ -26,8 +31,12 @@ const getLinkClassFavoritesMobile = ({ isActive }: { isActive: boolean }) =>
 export const Header = () => {
   const [menuIsOpen, setMenuIsOpen] = useState(false);
   const { cartItems } = useContext(CartContext);
+  const { favoritesItems } = useContext(FavoritesContext);
 
-  const totalInCart = cartItems.reduce(acc => acc + 1, 0);
+  const totalInCart = cartItems.length;
+  const totalFavorites = favoritesItems.length;
+
+  console.log(totalFavorites);
 
   return (
     <>
@@ -55,10 +64,13 @@ export const Header = () => {
 
         <div className={styles.icons}>
           <div className={styles.iconBox}>
-            <Link
+            <NavLink
               to="/favorites"
-              className={`${styles.iconLink} ${styles.favorites}`}
-            ></Link>
+              className={getLinkClassFavorites}
+            ></NavLink>
+            {totalFavorites > 0 && (
+              <div className={styles.favoritesCounter}>{totalFavorites} </div>
+            )}
           </div>
 
           <div className={styles.iconBox}>
@@ -103,6 +115,11 @@ export const Header = () => {
                 <div
                   className={`${styles.iconLinkMobile} ${styles.favoritesMobile}`}
                 ></div>
+                {totalFavorites > 0 && (
+                  <div className={styles.favoritesCounterMobile}>
+                    {totalFavorites}{' '}
+                  </div>
+                )}
               </NavLink>
 
               <NavLink to="/cart" className={getLinkClassCartMobile}>

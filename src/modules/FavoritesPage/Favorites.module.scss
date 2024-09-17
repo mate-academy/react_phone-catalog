@@ -1,0 +1,96 @@
+@import '../../modules/shared/variables';
+@import '../shared/fonts';
+@import '../shared/mixins';
+
+.FavoritesPageContainer {
+  align-self: center;
+  min-height: 100vh;
+}
+
+.FavoritesPage {
+  align-self: center;
+  display: grid;
+  column-gap: 16px;
+  grid-template-columns: repeat($grid-columns, 32px);
+
+  @include on-tablet {
+    grid-template-columns: repeat($grid-columns-tablet, 32px);
+  }
+
+  @include on-mobile {
+    grid-template-columns: repeat($grid-columns-mobile, 60px);
+  }
+}
+
+.path {
+  grid-column: 1 / -1;
+  display: flex;
+  padding-top: 24px;
+  justify-content: start;
+  height: 16px;
+}
+
+.pathHome {
+  width: 16px;
+  height: 16px;
+  background-image: url(../../../public/img/icons/home.svg);
+}
+
+.homeLink {
+  width: 16px;
+  height: 16px;
+}
+
+.pathSeparator {
+  width: 16px;
+  height: 16px;
+  background-image: url(../../../public/img/icons/chevron-arrow-right-default.svg);
+  margin-left: 8px;
+}
+
+.pathName {
+  display: block;
+  font-family: Mont, sans-serif, Helvetica;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 16px;
+  text-align: left;
+  color: $secondary-color;
+  height: 16px;
+  margin-left: 8px;
+  text-decoration: none;
+  cursor: default;
+}
+
+.title {
+  grid-column: 1 / -1;
+  padding-top: 40px;
+  font-family: Mont, sans-serif, Helvetica;
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 56px;
+  letter-spacing: -0.01em;
+  text-align: left;
+  color: $primary-color;
+
+  @include on-mobile {
+    padding-top: 24px;
+    font-family: Mont, Arial, Helvetica, sans-serif;
+    font-size: 32px;
+    font-weight: 800;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+    text-align: left;
+  }
+}
+
+.counter {
+  grid-column: 1 / -1;
+  padding-top: 8px;
+  font-family: Mont, sans-serif, Helvetica;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 21px;
+  text-align: left;
+  color: $secondary-color;
+}

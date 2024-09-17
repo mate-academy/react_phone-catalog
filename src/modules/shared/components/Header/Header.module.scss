@@ -83,6 +83,7 @@
 }
 
 .favorites {
+  position: relative;
   width: 16px;
   height: 16px;
   background-image: url('../../../../../public/img/icons/favourites-heart-like.svg');
@@ -95,6 +96,7 @@
   background-image: url('../../../../../public/img/icons/shopping-bag-cart.svg');
 }
 
+.isActiveFavorites,
 .isActiveCart {
   color: $primary-color;
 
@@ -112,6 +114,7 @@
   }
 }
 
+.favoritesCounter,
 .cartCounter {
   position: absolute;
   margin-left: 15px;
@@ -220,7 +223,7 @@
   justify-content: center;
   align-items: center;
   width: 50%;
-  box-shadow: -1px 0px 0px 0px $elements-color;
+  box-shadow: -1px 0 0 0 $elements-color;
 }
 
 .iconLinkMobile {
@@ -273,6 +276,7 @@
   }
 }
 
+.favoritesCounterMobile,
 .cartCounterMobile {
   position: absolute;
   margin-left: 15px;
@@ -325,6 +329,12 @@
 
   .isActiveMenu::after {
     top: $header-height-mobile / 2 + 2.5px;
+  }
+
+  .isActiveFavorites::after{
+    top: $header-height / 2 - 2px;
+    width: 49px;
+    left: -17px;
   }
 
   .isActiveCart::after {

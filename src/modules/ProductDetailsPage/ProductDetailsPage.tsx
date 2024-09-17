@@ -119,6 +119,8 @@ export const ProductDetailsPage = () => {
     const handleResize = () => {
       if (window.innerWidth < 640) {
         setIsMobile(true);
+      } else {
+        setIsMobile(false);
       }
     };
 

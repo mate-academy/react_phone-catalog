@@ -1,9 +1,9 @@
-import { useContext, useState } from 'react';
+import { useContext } from 'react';
 import styles from './ProductCard.module.scss';
 import classNames from 'classnames';
 import { Product } from '../../types';
 import { Link } from 'react-router-dom';
-import { CartContext } from '../../contexts';
+import { CartContext, FavoritesContext } from '../../contexts';
 
 type Props = {
   product: Product;
@@ -11,10 +11,12 @@ type Props = {
 };
 
 export const ProductCard: React.FC<Props> = ({ product, discount }) => {
-  const [isActiveFavorite, setIsActiveFavorite] = useState(false);
   const { cartItems, setCartItems } = useContext(CartContext);
+  const { favoritesItems, setFavoritesItems, removeFromFavorites } =
+    useContext(FavoritesContext);
 
   const isAdded = cartItems.some(item => item.id === product.id);
+  const isFavorite = favoritesItems.some(item => item.id === product.id);
 
   const handleAddToCart = () => {
     if (!isAdded) {
@@ -23,7 +25,11 @@ export const ProductCard: React.FC<Props> = ({ product, discount }) => {
   };
 
   const handleFavorite = () => {
-    setIsActiveFavorite(!isActiveFavorite);
+    if (isFavorite) {
+      removeFromFavorites(product.id);
+    } else {
+      setFavoritesItems([...favoritesItems, product]);
+    }
   };
 
   return (
@@ -77,9 +83,10 @@ export const ProductCard: React.FC<Props> = ({ product, discount }) => {
         >
           {isAdded ? `Added to cart` : `Add to cart`}
         </button>
+
         <button
           className={classNames(styles.favoriteBtn, {
-            [styles.favoriteActive]: isActiveFavorite,
+            [styles.favoriteActive]: isFavorite,
           })}
           onClick={handleFavorite}
         ></button>
