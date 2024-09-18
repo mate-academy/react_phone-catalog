@@ -1,18 +1,37 @@
 import styled from 'styled-components';
+import { media } from '../../utils/const';
 
 const LogoImgStyled = styled.img`
   width: 89px;
   height: 32px;
 `;
 
-const FooterStyled = styled.div`
+const ContainerStyled = styled.div`
   width: 100%;
-  padding: 32px 16px 32px 16px;
   box-shadow: 0px -1px 0px 0px #e2e6e9;
+  display: flex;
+  justify-content: center;
+  margin-top: 64px;
 
+  ${media.desktop} {
+    gap: 80px;
+  }
+`;
+
+const FooterStyled = styled.div`
+  padding: 32px 16px 32px 16px;
   display: flex;
   flex-direction: column;
   gap: 32px;
+  width: 100%;
+  max-width: 1200px;
+
+  ${media.tablet} {
+    flex-direction: row;
+    gap: 0;
+    justify-content: space-between;
+    padding: 32px;
+  }
 `;
 
 const InfoBlockStyled = styled.ul`
@@ -31,6 +50,16 @@ const InfoBlockStyled = styled.ul`
     line-height: 11px;
     color: #89939a;
   }
+
+  ${media.tablet} {
+    flex-direction: row;
+    gap: 13.5px;
+    align-items: center;
+  }
+
+  ${media.desktop} {
+    gap: 106.83px;
+  }
 `;
 
 const GoTopStyled = styled.div`
@@ -44,6 +73,16 @@ const GoTopStyled = styled.div`
   font-size: 12px;
   line-height: 15.34px;
   cursor: pointer;
+
+  ${media.tablet} {
+    width: auto;
+  }
 `;
 
-export { LogoImgStyled, FooterStyled, InfoBlockStyled, GoTopStyled };
+export {
+  ContainerStyled,
+  LogoImgStyled,
+  FooterStyled,
+  InfoBlockStyled,
+  GoTopStyled,
+};

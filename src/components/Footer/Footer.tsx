@@ -1,4 +1,5 @@
 import {
+  ContainerStyled,
   FooterStyled,
   GoTopStyled,
   InfoBlockStyled,
@@ -17,21 +18,25 @@ const scrollToTop = () => {
 
 export const Footer = () => {
   return (
-    <FooterStyled>
-      <LogoImgStyled src={logo} alt="logo" />
+    <ContainerStyled>
+      <FooterStyled>
+        <LogoImgStyled src={logo} alt="logo" />
 
-      <InfoBlockStyled>
-        <li>Github</li>
-        <li>Contacts</li>
-        <li>rights</li>
-      </InfoBlockStyled>
+        <InfoBlockStyled>
+          <li>Github</li>
 
-      <GoTopStyled onClick={scrollToTop}>
-        Back to top
-        <Button variant="white" css="height: 32px; width: 32px; padding: 0;">
-          <VECTOR_SVG variant="top" />
-        </Button>
-      </GoTopStyled>
-    </FooterStyled>
+          <li>Contacts</li>
+
+          <li>rights</li>
+        </InfoBlockStyled>
+
+        <GoTopStyled onClick={scrollToTop}>
+          Back to top
+          <Button variant="white" css="height: 32px; width: 32px; padding: 0;">
+            <VECTOR_SVG variant="top" />
+          </Button>
+        </GoTopStyled>
+      </FooterStyled>
+    </ContainerStyled>
   );
 };

@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components';
+import { media } from '../../../utils/const';
 
 type CardProps = {
   variant: 'HomePage' | 'ListPage';
@@ -18,12 +19,12 @@ const CardStyled = styled.div<CardProps>`
           width: 212px;
           height: 439px;
 
-          @media (min-width: 640px) {
+          ${media.tablet} {
             width: 237px;
             height: 512px;
           }
 
-          @media (min-width: 1200px) {
+          ${media.desktop} {
             width: 272px;
             height: 506px;
           }
@@ -35,12 +36,12 @@ const CardStyled = styled.div<CardProps>`
           width: 287px;
           height: 440px;
 
-          @media (min-width: 640px) {
+          ${media.tablet} {
             width: 229px;
             height: 506px;
           }
 
-          @media (min-width: 1200px) {
+          ${media.desktop} {
             width: 272px;
             height: 506px;
           }
@@ -65,12 +66,12 @@ const ImgStyled = styled.img<CardProps>`
           width: 148px;
           height: 129px;
 
-          @media (min-width: 640px) {
+          ${media.tablet} {
             width: 173px;
             height: 202px;
           }
 
-          @media (min-width: 1200px) {
+          ${media.desktop} {
             width: 208px;
             height: 196px;
           }
@@ -82,12 +83,12 @@ const ImgStyled = styled.img<CardProps>`
           width: 223px;
           height: 130px;
 
-          @media (min-width: 640px) {
+          ${media.tablet} {
             width: 165px;
             height: 196px;
           }
 
-          @media (min-width: 1200px) {
+          ${media.desktop} {
             width: 208px;
             height: 196px;
           }

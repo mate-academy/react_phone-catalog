@@ -1,7 +1,8 @@
 import styled from 'styled-components';
+import { media } from '../../utils/const';
 
 const HomePageStyled = styled.div`
-  @media (min-width: 1200px) {
+  ${media.desktop} {
     max-width: 1136px;
     margin-inline: auto;
   }
@@ -15,14 +16,14 @@ const TitleStyled = styled.h2`
   color: #313237;
   width: 288px;
 
-  @media (min-width: 640px) {
+  ${media.tablet} {
     margin: 32px 24px;
     font-size: 48px;
     line-height: 56px;
     width: 490px;
   }
 
-  @media (min-width: 1200px) {
+  ${media.desktop} {
     padding: 56px 32px;
     margin: 0;
     width: 100%;

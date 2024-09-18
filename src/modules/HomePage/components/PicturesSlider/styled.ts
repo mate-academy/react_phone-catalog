@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { media } from '../../../../utils/const';
 
 interface ImglStyledProps {
   positionTr: number;
@@ -9,11 +10,11 @@ interface ButStyledProps {
 }
 
 const PicturesSliderStyled = styled.div`
-  @media (min-width: 640px) {
+  ${media.tablet} {
     padding-inline: 24px;
   }
 
-  @media (min-width: 1200px) {
+  ${media.desktop} {
     padding-inline: 0;
   }
 `;
@@ -21,7 +22,7 @@ const PicturesSliderStyled = styled.div`
 const MainContentStyled = styled.div`
   margin-bottom: 8px;
 
-  @media (min-width: 640px) {
+  ${media.tablet} {
     display: flex;
     gap: 16px;
     height: 100%;
@@ -31,7 +32,7 @@ const MainContentStyled = styled.div`
 const ButtonSliderStyled = styled.div`
   display: none;
 
-  @media (min-width: 640px) {
+  ${media.tablet} {
     display: flex;
     justify-content: center;
     align-items: center;
