@@ -9,9 +9,6 @@ import heartFull from '../../imgs/Favourites Filled.svg';
 import { LikedIdContext } from '../../utils/context';
 
 export const LikedPage: React.FC = () => {
-  // const likedIds = utils.getFromStorage('liked');
-  // const cardItems = utils.getFromStorage('card');
-  // const likedItems = utils.getFromStorage('liked');
   const {
     addLikedId,
     removeLikedId,

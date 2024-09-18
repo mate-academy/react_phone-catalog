@@ -297,16 +297,10 @@ export const CataloguePage: React.FC = () => {
               {visiblePages.map(page => (
                 <button
                   key={page}
-                  className={`items_buttons_button${
-                    page === currentPage ? '--active' : ''
-                  }`}
+                  className={`items_buttons_button${page === currentPage ? '--active' : ''
+                    }`}
                   onClick={() => {
                     handlePageChange(page);
-                    // if (page === currentPage + pagesToShow - 1 && page < totalPages) {
-                    //   setCurrentPage(currentPage + 1);
-                    // } else if (page === currentPage && currentPage > 1) {
-                    //   setCurrentPage(currentPage - 1);
-                    // }
                   }}
                 >
                   {page}

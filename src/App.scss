@@ -286,7 +286,6 @@ body {
   }
 
   @include on-phone{
-    // width: 100px;
     flex-direction: column;
     padding-inline: 16px;
     justify-content: start;
@@ -390,7 +389,6 @@ body {
   display: flex;
   border-top: 1px solid $borderGrey;
 
-  // border: 1px solid red;
 
   &_1{
     border-right: 1px solid $borderGrey;

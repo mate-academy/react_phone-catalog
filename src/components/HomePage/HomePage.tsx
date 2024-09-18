@@ -185,33 +185,6 @@ export const HomePage: React.FC = () => {
             <h1 className="home_title_text">Welcome to Nice Gadgets store!</h1>
           </div>
 
-          {/* <div className="slider">
-            <div className="slider_container">
-              <button
-                className="slider_button slider_button--left"
-                onClick={prevImg}
-              >
-                &#10094;
-              </button>
-              <div style={slideStyle}></div>
-              <button
-                className="slider_button slider_button--right"
-                onClick={nextImg}
-              >
-                &#10095;
-              </button>
-            </div>
-
-            <div className="slider_dots">
-              {images.map((_, index) => (
-                <div
-                  key={index}
-                  onClick={() => goToSlide(index)}
-                  className={`slider_dots_one ${currentIndex === index ? 'active' : ''}`}
-                ></div>
-              ))}
-            </div>
-          </div> */}
           <div className="slider2">
             <div
               className="slider2_container"

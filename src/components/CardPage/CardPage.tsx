@@ -115,7 +115,11 @@ export const CardPage: React.FC = () => {
               <p className="card_total_box_price">{`$${price}`}</p>
               <p className="card_total_box_text">{`Total for ${product.length} items`}</p>
             </div>
-            <button className="card_total_button">Checkout</button>
+            <button className="card_total_button" onClick={
+              () => {
+                alert('Thank you for visiting my Website!')
+              }
+            }>Checkout</button>
           </div>
         </div>
       </div>

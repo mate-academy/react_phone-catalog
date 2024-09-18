@@ -1,4 +1,3 @@
-// import classNames from 'classnames';
 import './App.scss';
 import { Outlet, NavLink } from 'react-router-dom';
 import logo from './imgs/Logo.svg';

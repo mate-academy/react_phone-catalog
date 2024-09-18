@@ -92,10 +92,6 @@ export const ItemPage: React.FC = () => {
     likedIds,
   } = useContext(LikedIdContext);
 
-  // const likedItems = utils.getFromStorage('liked');
-
-  // const cardItems = utils.getFromStorage('card');
-
   const isLiked = (id: string) => {
     return likedIds.filter((likedId: string) => likedId === id).length === 1;
   };
@@ -107,12 +103,9 @@ export const ItemPage: React.FC = () => {
   const card = inCard(activeItem.id);
   const liked = isLiked(activeItem.id);
 
-  // const [liked, setLiked] = useState(isLiked);
-  // const [card, setCard] = useState(inCard);
+
 
   useEffect(() => {
-    // setLiked(isLiked);
-    // setCard(inCard);
     setActiveItem(item);
     setActiveColor(item.color);
     setActiveCapacity(item.capacity);
