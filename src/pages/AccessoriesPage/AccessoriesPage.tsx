@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { Cart } from '../../components/Cart';
-import accessoriesData from '../../api/accessories.json';
+import accessoriesData from '../../public/api/accessories.json';
 import './Accessories.scss';
 import { Product } from '../../types';
 import { BackButton } from '../../components/BackButton';
@@ -43,22 +43,22 @@ export const AccessoriesPage: React.FC = () => {
   const pageParam = params.get('page') || '1';
 
   useEffect(() => {
-    setIsLoading(true); 
-    
+    setIsLoading(true);
+
     const fetchData = () => {
       setTimeout(() => {
         const data = transformData(accessoriesData || []);
         setAccessories(data);
 
-        setIsLoading(false); 
+        setIsLoading(false);
       }, 1000);
-     
+
     };
-  
+
     fetchData();
   }, []);
-  
-  
+
+
   useEffect(() => {
     const newItemsPerPage =
       perPageParam === 'all' ? accessories.length : parseInt(perPageParam, 10);
@@ -174,7 +174,7 @@ export const AccessoriesPage: React.FC = () => {
         <div className="accessories__wrapper">
           {accessories.length === 0 ? (
             <div className="accessories__no-items">
-               <p>There are no accessories</p> 
+               <p>There are no accessories</p>
                <NotFound />
               </div>
           ) : currentAccessories.length > 0 ? (

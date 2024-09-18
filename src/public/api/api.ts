@@ -1,4 +1,5 @@
-import { ProductDetailed } from '../types';
+import { ProductDetailed } from "../../types";
+
 /* eslint-disable @typescript-eslint/no-var-requires */
 const phoneData: ProductDetailed[] = require('../api/phones.json');
 const accessoryData: ProductDetailed[] = require('../api/accessories.json');
