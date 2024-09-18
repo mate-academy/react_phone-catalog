@@ -20,10 +20,7 @@ export const CartPage = () => {
       </Link>
       <CategoryTitle title={'Cart'} />
       <CartGrid cart={cart} />
-      <CartCheckout
-        totalItems={cart.length}
-        totalPrice={cart.reduce((acc, curr) => acc + curr.price, 0)}
-      />
+      <CartCheckout />
     </section>
   );
 };

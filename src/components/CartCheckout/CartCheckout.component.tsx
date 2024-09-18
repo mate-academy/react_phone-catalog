@@ -1,10 +1,19 @@
+import { useContext, useEffect, useState } from 'react';
 import { Button } from '../base/Button/Button.component';
-type Props = {
-  totalItems: number;
-  totalPrice: number;
-};
+import { StatesContext } from '../../store/GlobalStateProvider';
 
-export const CartCheckout: React.FC<Props> = ({ totalItems, totalPrice }) => {
+export const CartCheckout: React.FC = () => {
+  const { cart } = useContext(StatesContext);
+  const [totalItems, setTotalItems] = useState(0);
+  const [totalPrice, setTotalPrice] = useState(0);
+
+  useEffect(() => {
+    setTotalItems(cart.reduce((acc, prod) => acc + prod.quantity!, 0));
+    setTotalPrice(
+      cart.reduce((acc, prod) => acc + prod.quantity! * prod.price, 0),
+    );
+  }, [cart]);
+
   return (
     <div className="cartCheckout">
       <div className="cartCheckout__container">

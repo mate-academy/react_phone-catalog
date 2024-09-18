@@ -27,6 +27,8 @@ type Action =
   | { type: 'loadCategories'; payload: Category[] }
   | { type: 'updateCart'; payload: ProductSummary[] }
   | { type: 'updateFavorites'; payload: ProductSummary[] }
+  | { type: 'increaseQuantity'; payload: number }
+  | { type: 'decreaseQuantity'; payload: number }
   | { type: 'isMenuOpen'; payload: boolean }
   | { type: 'isReady'; payload: boolean };
 
@@ -57,6 +59,22 @@ function reducer(states: States, action: Action) {
       break;
     case 'updateFavorites':
       newStates = { ...newStates, favorites: action.payload };
+      break;
+    case 'increaseQuantity':
+      newStates = {
+        ...newStates,
+        cart: states.cart.map(p =>
+          p.id === action.payload ? { ...p, quantity: p.quantity! + 1 } : p,
+        ),
+      };
+      break;
+    case 'decreaseQuantity':
+      newStates = {
+        ...newStates,
+        cart: states.cart.map(p =>
+          p.id === action.payload ? { ...p, quantity: p.quantity! - 1 } : p,
+        ),
+      };
       break;
     case 'isMenuOpen':
       newStates = { ...newStates, isMenuOpen: action.payload };

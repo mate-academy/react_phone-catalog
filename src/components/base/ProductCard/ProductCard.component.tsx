@@ -20,7 +20,10 @@ export const ProductCard: React.FC<Props> = ({ product, showDiscount }) => {
   const [isAddedToCart, setIsAddedToCart] = useState(false);
 
   const addToCart = () => {
-    dispatch({ type: 'updateCart', payload: [...cart, product] });
+    dispatch({
+      type: 'updateCart',
+      payload: [...cart, { ...product, quantity: 1 }],
+    });
   };
 
   const removeFromCart = () => {
