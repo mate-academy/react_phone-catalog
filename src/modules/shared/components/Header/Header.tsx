@@ -36,8 +36,6 @@ export const Header = () => {
   const totalInCart = cartItems.length;
   const totalFavorites = favoritesItems.length;
 
-  console.log(totalFavorites);
-
   return (
     <>
       <header className={styles.header}>

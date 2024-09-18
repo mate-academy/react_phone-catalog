@@ -196,13 +196,13 @@ export const ShoppingCartPage = () => {
             >{`Checkout is not implemented yet. Do you want to clear the Cart?`}</p>
             <div className={styles.modalBtnContainer}>
               <div className={styles.btnModal} onClick={() => clearCart()}>
-                OK
+                Yes
               </div>
               <div
                 className={styles.btnModal}
                 onClick={() => setIsModal(false)}
               >
-                close
+                No
               </div>
             </div>
           </div>
