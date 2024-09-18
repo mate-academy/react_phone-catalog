@@ -57,7 +57,8 @@ export const Cart: React.FC<Props> = ({ product, showDiscount = true }) => {
         <div className="cart__wrapper">
           <img
             className="cart__image"
-            src={`${process.env.PUBLIC_URL}/${product.images[0]}`}
+            // src={`${process.env.PUBLIC_URL}/${product.images[0]}`}
+            src={product.images[0]}
             alt={product.name}
             onClick={handleImageClick}
           />
