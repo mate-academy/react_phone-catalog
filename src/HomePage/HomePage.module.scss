@@ -1,0 +1,49 @@
+.header {
+  margin: 56px 200px 56px 200px;
+}
+
+.slider {
+  position: relative;
+}
+
+.slider img {
+  width: 100%;
+  transition: transform 0.3s ease;
+}
+
+.slider img:hover {
+  transform: scale(1.1);
+}
+
+.dots {
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  bottom: 10px;
+  width: 100%;
+}
+
+.dots span {
+  width: 10px;
+  height: 10px;
+  margin: 0 5px;
+  background-color: #fff;
+  border-radius: 50%;
+  display: inline-block;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.dots span.active {
+  background-color: #333;
+}
+
+.header__paragraph {
+  font-family: 'Mont', sans-serif;
+  font-size: 48px;
+  font-weight: 800;
+  line-height: 56px;
+  letter-spacing: -0.01em;
+  text-align: left;
+  margin: 56px 200px 56px 200px;
+}

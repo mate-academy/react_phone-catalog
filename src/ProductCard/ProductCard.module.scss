@@ -1,0 +1,131 @@
+.productCard {
+  border: 1px solid #eee;
+  border-radius: 8px;
+  background-color: #fff;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 270px;
+}
+
+.productCard:hover {
+  transform: scale(1.05);
+}
+
+.productImage {
+  width: 207px;
+  height: 196px;
+  margin: 0 32px 8px 32px;
+}
+
+.productDetails {
+  margin-top: 24px;
+  font-family: Mont;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 21px;
+  text-align: left;
+}
+
+.productTitle {
+  font-family: Mont;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 21px;
+  text-align: left;
+  color: #313237;
+  margin: 0 32px 0;
+}
+
+.priceSection {
+  display: flex;
+  justify-content: left;
+  margin: 0 32px 0 32px;
+
+}
+
+.originalPrice {
+  width: 100%;
+  font-family: Mont;
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 30.8px;
+  text-align: left;
+  border-bottom: 1px solid #E2E6E9;
+  padding-bottom: 8px;
+}
+
+.productInfo {
+  margin: 0 32px;
+}
+
+.productFeature {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  margin-bottom: 5px;
+  color: #555;
+  font-family: Mont;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 15.34px;
+  text-align: left;
+}
+
+.featureLabel {
+  font-family: 'Mont', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 15.34px;
+  text-align: left;
+  color: #89939A;
+}
+
+.featureValue {
+  font-family: 'Mont', sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 15.34px;
+  text-align: right;
+  color: #313237;
+}
+
+.favoriteButton {
+  width: 40px;
+  height: 40px;
+  background: none;
+  border-radius: 1px black;
+  color: #ddd;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.favoriteButton.favoriteActive {
+  color: red;
+}
+
+.addToCartButton {
+  width: 160px;
+  height: 40px;
+  margin-top: 8px;
+  padding: 10px 20px;
+  background-color: #313237;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-family: Mont;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 21px;
+  text-align: center;
+  margin: 0 32px 32px;
+}
+
+.addToCartButton:hover {
+  background-color: #fff;
+  color: #008000;
+}

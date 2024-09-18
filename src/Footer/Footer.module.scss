@@ -1,0 +1,30 @@
+.footer {
+  background-color: #f8f8f8;
+  padding: 20px;
+  text-align: center;
+  margin-top: 50px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.footer a {
+  color: #333;
+  text-decoration: none;
+  font-weight: bold;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.backToTop {
+  margin-top: 10px;
+  padding: 10px 20px;
+  background-color: #333;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.backToTop:hover {
+  background-color: #ff6347;
+}
