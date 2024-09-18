@@ -5,6 +5,7 @@ import { Outlet } from 'react-router-dom';
 import { MenuPage } from './pages/Menu/Menu.page';
 import cn from 'classnames';
 import { getCategories, getProducts } from './api/products';
+import { Footer } from './components/base/Footer/Footer.component';
 
 export const App = () => {
   const dispatch = useContext(DispatchContext);
@@ -31,6 +32,7 @@ export const App = () => {
         <MenuPage />
       </aside>
       <Outlet />
+      <Footer />
     </div>
   );
 };

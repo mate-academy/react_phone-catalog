@@ -56,6 +56,7 @@
   }
 
   &--menu-page {
+    width: 100%;
     height: 64px;
     box-shadow: -1px -1px 0 0 $c-elements;
     position: relative;
@@ -124,6 +125,22 @@
     background: url('../../../../public/img/icons/home.svg') no-repeat center;
     &-disabled {
       background: url('../../../../public/img/icons/home-disabled.svg')
+        no-repeat center;
+    }
+  }
+
+  &--minus {
+    background: url('../../../../public/img/icons/minus.svg') no-repeat center;
+    &-disabled {
+      background: url('../../../../public/img/icons/minus-disabled.svg')
+        no-repeat center;
+    }
+  }
+
+  &--plus {
+    background: url('../../../../public/img/icons/plus.svg') no-repeat center;
+    &-disabled {
+      background: url('../../../../public/img/icons/plus-disabled.svg')
         no-repeat center;
     }
   }

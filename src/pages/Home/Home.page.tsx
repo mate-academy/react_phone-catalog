@@ -7,7 +7,6 @@ import { ShopByCategory } from '../../components/ShopByCategory/ShopByCategory.c
 import { Welcome } from '../../components/Welcome/Welcome.component';
 import { StatesContext } from '../../store/GlobalStateProvider';
 import { calculateDiscount } from '../../utils/calculateDiscount';
-import { Footer } from '../../components/base/Footer/Footer.component';
 
 export const HomePage = () => {
   const { products } = useContext(StatesContext);
@@ -30,7 +29,6 @@ export const HomePage = () => {
         products={productsSortByDiscount}
         showDiscount={true}
       />
-      <Footer />
     </div>
   );
 };

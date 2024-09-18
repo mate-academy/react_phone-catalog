@@ -1,0 +1,38 @@
+.cartCard {
+  display: flex;
+  flex-direction: column;
+  height: 160px;
+  padding: 16px;
+  border: 1px solid $c-elements;
+  gap: 16px;
+  &__image {
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+  }
+  &__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    height: 80px;
+  }
+  &__counterAndPrice {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  &__counter {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    &-number {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 32px;
+      height: 32px;
+    }
+  }
+}

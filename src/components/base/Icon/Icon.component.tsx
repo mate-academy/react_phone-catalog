@@ -24,7 +24,7 @@ export const Icon: React.FC<Props> = ({
   return (
     <div className="icon__wrapper" onClick={onClick}>
       <div
-        id={`icon--${iconType}-counter`}
+        // id={`icon--${iconType}-counter`}
         className={cn(`icon icon--${iconType}`, {
           [`icon--${iconType}-disabled`]: disabled,
           [`icon--${iconType}-added`]: added,

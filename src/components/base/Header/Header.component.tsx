@@ -15,8 +15,6 @@ export const Header = () => {
   const { cart, favorites } = useContext(StatesContext);
   const isMobile = useMediaQuery('(max-width: 640px');
   const handleClick = () => {
-    // eslint-disable-next-line no-console
-    console.log(isMenuOpen); // TODO REMOVE AFTER TESTS
     if (isMenuOpen) {
       dispatch({ type: 'isMenuOpen', payload: false });
     } else {
@@ -55,7 +53,14 @@ export const Header = () => {
                   border
                 />
               </Link>
-              <Icon iconUse="bar" iconType="cart" length={cart.length} border />
+              <Link to="/cart">
+                <Icon
+                  iconUse="bar"
+                  iconType="cart"
+                  length={cart.length}
+                  border
+                />
+              </Link>
             </>
           )}
         </div>

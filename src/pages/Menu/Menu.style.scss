@@ -22,6 +22,9 @@
     width: 100vw;
 
     background-color: $c-white;
+    &-link {
+      width: 100%;
+    }
     &-nav {
       display: flex;
       justify-content: center;

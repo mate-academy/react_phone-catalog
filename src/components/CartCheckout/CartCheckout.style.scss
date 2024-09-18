@@ -1,0 +1,37 @@
+.cartCheckout {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 24px;
+  margin-block: 32px;
+  grid-column: 1/-1;
+  gap: 16px;
+  border: 1px solid $c-elements;
+  &__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  &__totalItems {
+    font-size: 14px;
+    font-family: Mont, sans-serif;
+    font-weight: regular;
+    color: $c-secondary;
+  }
+  &__button {
+    width: 100%;
+    position: relative;
+    margin: 16px;
+    &::before {
+      content: '';
+      position: absolute;
+      top: -16px;
+      left: 0;
+      height: 1px;
+      width: 100%;
+      background-color: $c-elements;
+    }
+  }
+}
