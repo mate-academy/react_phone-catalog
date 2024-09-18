@@ -30,6 +30,7 @@ export const Root = () => {
               element={<h1 className="title">Page not found</h1>}
             />
             <Route path="/" element={<Navigate to="/home" />} />
+            <Route path="/menu" element={<Navigate to="/home" />} />
           </Route>
         </Routes>
       </HashRouter>

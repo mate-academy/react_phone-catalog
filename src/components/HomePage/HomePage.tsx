@@ -2,7 +2,7 @@ import './HomePage.scss';
 import image1 from '../../img/banner-phones.png';
 import image2 from '../../img/banner-accessories.png';
 import image3 from '../../img/banner-tablets.png';
-import { useContext, useState } from 'react';
+import { useContext, useRef, useState } from 'react';
 import products from '../../api/products.json';
 import { Link } from 'react-router-dom';
 import { handleButton } from '../../utils/generalFunctions';
@@ -28,9 +28,10 @@ type Product = {
 export const HomePage: React.FC = () => {
   const images = [image1, image2, image3];
 
-  const [currentIndex, setCurrentIndex] = useState(0);
+  // const [currentIndex, setCurrentIndex] = useState(0);
   const [brandNewIndex, setBrandNewIndex] = useState(0);
   const [currentHotIndex, setCurrentHotIndex] = useState(0);
+  const [currentSlide, setCurrentSlide] = useState(0);
   const {
     addLikedId,
     removeLikedId,
@@ -40,15 +41,39 @@ export const HomePage: React.FC = () => {
     cardIds,
   } = useContext(LikedIdContext);
 
-  const slideStyle = {
-    width: '100%',
-    height: '100%',
-    borderRadius: '10px',
-    backgroundPosition: 'center',
-    backgroundSize: 'cover',
-    backgroundRepeat: 'no-repeat',
-    backgroundImage: `url(${images[currentIndex]})`,
+  const sliderRef = useRef<HTMLDivElement>(null);
+  const touchStartX = useRef<number>(0);
+  const touchEndX = useRef<number>(0);
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX;
   };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    touchEndX.current = e.touches[0].clientX;
+
+    e.preventDefault();
+  };
+
+  const handleTouchEnd = () => {
+    const touchDiff = touchStartX.current - touchEndX.current;
+
+    if (touchDiff > 50) {
+      nextSlide();
+    } else if (touchDiff < -50) {
+      prevSlide();
+    }
+  };
+
+  // const slideStyle = {
+  //   width: '100%',
+  //   height: '100%',
+  //   borderRadius: '10px',
+  //   backgroundPosition: 'center',
+  //   backgroundSize: 'cover',
+  //   backgroundRepeat: 'no-repeat',
+  //   backgroundImage: `url(${images[currentIndex]})`,
+  // };
 
   const availabePhones = products.filter(
     product => product.category === 'phones',
@@ -84,21 +109,33 @@ export const HomePage: React.FC = () => {
       return acc;
     }, []);
 
-  const prevImg = () => {
-    setCurrentIndex(prevIndex =>
+  const prevSlide = () => {
+    setCurrentSlide(prevIndex =>
       prevIndex === 0 ? images.length - 1 : prevIndex - 1,
     );
   };
 
-  const nextImg = () => {
-    setCurrentIndex(prevIndex =>
+  const nextSlide = () => {
+    setCurrentSlide(prevIndex =>
       prevIndex === images.length - 1 ? 0 : prevIndex + 1,
     );
   };
 
-  const goToSlide = (index: number) => {
-    setCurrentIndex(index);
-  };
+  // const prevImg = () => {
+  //   setCurrentIndex(prevIndex =>
+  //     prevIndex === 0 ? images.length - 1 : prevIndex - 1,
+  //   );
+  // };
+
+  // const nextImg = () => {
+  //   setCurrentIndex(prevIndex =>
+  //     prevIndex === images.length - 1 ? 0 : prevIndex + 1,
+  //   );
+  // };
+
+  // const goToSlide = (index: number) => {
+  //   setCurrentIndex(index);
+  // };
 
   const brandNewPrev = () => {
     setBrandNewIndex(handleButton.previous(brandNewIndex, phonesNew));
@@ -148,7 +185,7 @@ export const HomePage: React.FC = () => {
             <h1 className="home_title_text">Welcome to Nice Gadgets store!</h1>
           </div>
 
-          <div className="slider">
+          {/* <div className="slider">
             <div className="slider_container">
               <button
                 className="slider_button slider_button--left"
@@ -171,6 +208,56 @@ export const HomePage: React.FC = () => {
                   key={index}
                   onClick={() => goToSlide(index)}
                   className={`slider_dots_one ${currentIndex === index ? 'active' : ''}`}
+                ></div>
+              ))}
+            </div>
+          </div> */}
+          <div className="slider2">
+            <div
+              className="slider2_container"
+              ref={sliderRef}
+              onTouchStart={handleTouchStart}
+              onTouchMove={handleTouchMove}
+              onTouchEnd={handleTouchEnd}
+            >
+              <button
+                className="slider2_button slider_button--left"
+                onClick={prevSlide}
+              >
+                &#10094;
+              </button>
+
+              <div className="slider2_box">
+                {images.map((img, index) => (
+                  <div
+                    className="slider2_box_wrap"
+                    style={{
+                      transform: `translateX(-${currentSlide * 100}%)`,
+                      transition: 'transform 0.5s ease-in-out',
+                    }}
+                  >
+                    <img
+                      src={img}
+                      alt="img"
+                      key={index}
+                      className="slider2_box_wrap_img"
+                    />
+                  </div>
+                ))}
+              </div>
+              <button
+                className="slider2_button slider_button--right"
+                onClick={nextSlide}
+              >
+                &#10095;
+              </button>
+            </div>
+
+            <div className="slider2_dots">
+              {images.map((_, index) => (
+                <div
+                  key={index}
+                  className={`slider2_dots_one ${currentSlide === index ? 'active' : ''}`}
                 ></div>
               ))}
             </div>

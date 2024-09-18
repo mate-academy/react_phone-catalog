@@ -17,6 +17,11 @@
 
   &_items{
     grid-column: 1/15;
+
+    @include on-tablet{
+      grid-column: 1/-1;
+    }
+
     display: flex;
     flex-direction: column;
     gap: 16px;
@@ -26,11 +31,28 @@
       border: 1px solid $borderGrey;
       border-radius: 16px;
       display: flex;
-
-      // justify-content: space-between;
       align-items: center;
       gap: 24px;
       padding: 24px;
+
+      @include on-phone{
+        display: block;
+      }
+
+      &_top{
+        @include on-phone{
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+        }
+      }
+      &_bottom{
+        @include on-phone{
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+        }
+      }
 
       &_buttonRemove{
         height: 16px;
@@ -54,6 +76,10 @@
         font-family: $fontNormal;
         font-size: 14px;
         color: $greyPrimary;
+
+        @include on-phone{
+          width: auto;
+        }
       }
 
       &_box{
@@ -92,6 +118,12 @@
 
   &_total {
     grid-column: 15/-1;
+
+    @include on-tablet{
+      grid-column: 1/-1;
+      margin-bottom: 64px;
+    }
+
     background-color: #fff;
     border: 1px solid $borderGrey;
     height: 159px;

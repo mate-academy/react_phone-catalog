@@ -23,6 +23,9 @@ body {
 }
 
 .navbar{
+  @include on-phone{
+    display:none;
+  }
 
   &_container{
     display: flex;
@@ -31,10 +34,6 @@ body {
 
   }
 
-  &_logo{
-    grid-column: 1/6;
-
-  }
 
   &_links{
     display: flex;
@@ -67,6 +66,14 @@ body {
           height: 3px;
           background-color: $greyPrimary;
           width: 100%;
+        }
+      }
+
+      &--phone{
+        &.active{
+          &::after{
+            bottom: -2px;
+          }
         }
       }
     }
@@ -116,19 +123,193 @@ body {
   }
 }
 
+.navbarPhone{
+  display: none;
+
+  @include on-phone{
+    display: inline;
+  }
+
+  &_container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #E2E6E9 ;
+
+    &_logo{
+      height: 48px;
+    }
+
+    &_menu{
+      width: 48px;
+      height: 48px;
+      border-left: 1px solid $borderGrey;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      &_button{
+        width: 100%;
+        height: 100%;
+        background-image: url('../src/imgs/Menu.svg');
+        background-size: 16px;
+        background-repeat: no-repeat;
+        background-position: center;
+        border: none;
+
+        background-color: #fff;
+        cursor: pointer;
+      }
+    }
+
+
+
+  }
+}
+
+.aside{
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 100vh;
+  box-sizing: border-box;
+  background-color: $greyBackground;
+  transform: translateX(-100%);
+  transition: ease-in-out $transitionSpeed;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+
+  & div:last-of-type{
+    margin-top: auto;
+  }
+
+  &:target {
+    transform: translateX(0);
+    transition: ease-in-out $transitionSpeed;
+  }
+
+
+  &_menu{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fff;
+    border-bottom: 1px solid #E2E6E9 ;
+    margin-bottom: 24px;
+    &_logo{
+      height: 48px;
+    }
+    &_container{
+      width: 48px;
+      height: 48px;
+      border-left: 1px solid $borderGrey;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      &_button{
+        width: 100%;
+        height: 100%;
+        background-image: url('../src/imgs/CloseBlack.svg');
+        background-size: 16px;
+        background-repeat: no-repeat;
+        background-position: center;
+        border: none;
+
+        background-color: #fff;
+        cursor: pointer;
+      }
+    }
+  }
+
+  &_nav{
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 35px;
+
+  }
+
+  &_bottom{
+    display: flex;
+
+
+    &_link{
+      display:inline-block;
+      position: relative;
+
+      &.active{
+        color: $greyPrimary;
+
+        &::after{
+          content: '';
+          position: absolute;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          height: 3px;
+          background-color: $greyPrimary;
+          width: 100%;
+        }
+      }
+
+      &_counter{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        top: 17px;
+        right: 17px;
+        background-color: rgb(247, 74, 224);
+        color: white;
+        border-radius: 50%;
+        font-family: $fontSemi;
+        height: 14px;
+        width: 14px;
+        font-size: 10px;
+        border: 1px solid white;
+        text-align: center;
+      }
+    }
+
+  }
+}
+
 .footer{
   padding-inline: 152px;
-
   display: flex;
   justify-content: space-between;
   border-top: 1px solid $borderGrey;
+
+  @include on-tablet{
+    padding-inline: 24px;
+  }
+
+  @include on-phone{
+    // width: 100px;
+    flex-direction: column;
+    padding-inline: 16px;
+    justify-content: start;
+    gap: 32px;
+    margin-bottom: 32px;
+    padding-top: 32px;
+  }
+
+  & div:last-child{
+    justify-content: center;
+  }
+
 
   &_logo{
     overflow: hidden;
     display: flex;
     justify-content:flex-start;
     &_img{
-      object-position: -25px;
+      object-position: -22px;
+
+      @include on-phone{
+        object-position: -22.5px;
+      }
     }
   }
 
@@ -137,6 +318,16 @@ body {
     justify-content: space-between;
     align-items: center;
     gap:100px;
+
+    @include on-phone{
+      flex-direction: column;
+      justify-content: center;
+      align-items: start;
+      gap:16px;
+    }
+
+
+
     &_links{
       position: relative;
       transition: $transitionSpeed;
@@ -152,7 +343,7 @@ body {
         width: 100%;
         height: 2px;
         background-color: #313237;
-        top: -25px;
+        top: 15px;
         left: 0;
         transition: $transitionSpeed;
         transform: scale(0);
@@ -191,6 +382,97 @@ body {
       border: 1px solid $borderGrey;
       background-color: #fff;
     }
+
   }
 }
 
+.x{
+  display: flex;
+  border-top: 1px solid $borderGrey;
+
+  // border: 1px solid red;
+
+  &_1{
+    border-right: 1px solid $borderGrey;
+    height: 60px;
+    width: 100%;
+    background-image: url('../src/imgs/Favourites\ \(Heart\ Like\).svg');
+    background-position: center;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    position: relative;
+    &.active{
+      color: $greyPrimary;
+
+      &::after{
+        content: '';
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 3px;
+        background-color: $greyPrimary;
+        width: 100%;
+      }
+    }
+
+    &_counterPhone{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: absolute;
+      top: 30%;
+      right: 45%;
+      background-color: rgb(247, 74, 224);
+      color: white;
+      border-radius: 50%;
+      font-family: $fontSemi;
+      height: 14px;
+      width: 14px;
+      font-size: 10px;
+      border: 1px solid white;
+      text-align: center;
+    }
+  }
+  &_2{
+    height: 60px;
+    width: 100%;
+    background-image: url('../src/imgs/Shopping\ bag\ \(Cart\).svg');
+    background-position: center;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    position: relative;
+    &.active{
+      color: $greyPrimary;
+
+      &::after{
+        content: '';
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 3px;
+        background-color: $greyPrimary;
+        width: 100%;
+      }
+    }
+
+    &_counterPhone{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: absolute;
+      top: 30%;
+      right: 45%;
+      background-color: rgb(247, 74, 224);
+      color: white;
+      border-radius: 50%;
+      font-family: $fontSemi;
+      height: 14px;
+      width: 14px;
+      font-size: 10px;
+      border: 1px solid white;
+      text-align: center;
+    }
+  }
+}

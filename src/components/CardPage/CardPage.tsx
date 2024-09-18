@@ -70,38 +70,42 @@ export const CardPage: React.FC = () => {
           <div className="card_items">
             {renderedItems.map((item, index) => (
               <div className="card_items_container" key={index}>
-                <button
-                  className="card_items_container_buttonRemove"
-                  onClick={() => handleButtonRemove(item.itemId)}
-                ></button>
-                <img
-                  src={item.image}
-                  alt="item-image"
-                  className="card_items_container_img"
-                />
-                <p className="card_items_container_title">{item.name}</p>
-                <div className="card_items_container_box">
+                <div className="card_items_container_top">
                   <button
-                    className="card_items_container_box_button"
-                    onClick={() => handleButtonMinus(item.itemId)}
-                    disabled={counter(item.itemId) === 1}
-                    style={{
-                      border: `2px solid ${counter(item.itemId) === 1 ? '#E2E6E9' : '#B4BDC3'}`,
-                    }}
-                  >
-                    -
-                  </button>
-                  <p className="card_items_container_box_count">
-                    {counter(item.itemId)}
-                  </p>
-                  <button
-                    className="card_items_container_box_button"
-                    onClick={() => handleButtonPlus(item.itemId)}
-                  >
-                    +
-                  </button>
+                    className="card_items_container_buttonRemove"
+                    onClick={() => handleButtonRemove(item.itemId)}
+                  ></button>
+                  <img
+                    src={item.image}
+                    alt="item-image"
+                    className="card_items_container_img"
+                  />
+                  <p className="card_items_container_title">{item.name}</p>
                 </div>
-                <p className="card_items_container_price">{`$${item.price * counter(item.itemId)}`}</p>
+                <div className="card_items_container_bottom">
+                  <div className="card_items_container_box">
+                    <button
+                      className="card_items_container_box_button"
+                      onClick={() => handleButtonMinus(item.itemId)}
+                      disabled={counter(item.itemId) === 1}
+                      style={{
+                        border: `2px solid ${counter(item.itemId) === 1 ? '#E2E6E9' : '#B4BDC3'}`,
+                      }}
+                    >
+                      -
+                    </button>
+                    <p className="card_items_container_box_count">
+                      {counter(item.itemId)}
+                    </p>
+                    <button
+                      className="card_items_container_box_button"
+                      onClick={() => handleButtonPlus(item.itemId)}
+                    >
+                      +
+                    </button>
+                  </div>
+                  <p className="card_items_container_price">{`$${item.price * counter(item.itemId)}`}</p>
+                </div>
               </div>
             ))}
           </div>

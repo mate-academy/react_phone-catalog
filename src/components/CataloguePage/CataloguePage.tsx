@@ -110,6 +110,25 @@ export const CataloguePage: React.FC = () => {
     return cardIds.filter((cardId: string) => cardId === id).length === 1;
   };
 
+  const pagesToShow = 5;
+  const halfPagesToShow = Math.floor(pagesToShow / 2);
+  const calculateStartPage = () => {
+    let startPage = Math.max(1, currentPage - halfPagesToShow);
+
+    if (startPage + pagesToShow - 1 > totalPages) {
+      startPage = Math.max(1, totalPages - pagesToShow + 1);
+    }
+
+    return startPage;
+  };
+
+  const currentStartPage = calculateStartPage();
+
+  const visiblePages = Array.from(
+    { length: Math.min(pagesToShow, totalPages - currentPage + 1) },
+    (_, i) => currentStartPage + i,
+  );
+
   return (
     <section className="items">
       <div className="container">
@@ -275,15 +294,22 @@ export const CataloguePage: React.FC = () => {
                 onClick={handlePagePrevious}
                 disabled={currentPage === 1}
               ></button>
-              {Array.from({ length: totalPages }, (_, i) => (
+              {visiblePages.map(page => (
                 <button
-                  key={i + 1}
-                  className={`items_buttons_button${i + 1 === currentPage ? '--active' : ''}`}
+                  key={page}
+                  className={`items_buttons_button${
+                    page === currentPage ? '--active' : ''
+                  }`}
                   onClick={() => {
-                    handlePageChange(i + 1);
+                    handlePageChange(page);
+                    // if (page === currentPage + pagesToShow - 1 && page < totalPages) {
+                    //   setCurrentPage(currentPage + 1);
+                    // } else if (page === currentPage && currentPage > 1) {
+                    //   setCurrentPage(currentPage - 1);
+                    // }
                   }}
                 >
-                  {i + 1}
+                  {page}
                 </button>
               ))}
               <button

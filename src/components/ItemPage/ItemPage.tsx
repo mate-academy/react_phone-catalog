@@ -8,7 +8,7 @@ import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
 import phones from '../../api/phones.json';
 import tablets from '../../api/tablets.json';
 import accessories from '../../api/accessories.json';
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect, useRef, useState } from 'react';
 import { handleButton, utils } from '../../utils/generalFunctions';
 import { LikedIdContext } from '../../utils/context';
 
@@ -170,6 +170,34 @@ export const ItemPage: React.FC = () => {
     return addLikedId(id);
   };
 
+  const sliderRef = useRef<HTMLDivElement>(null);
+  const touchStartX = useRef<number>(0);
+  const touchEndX = useRef<number>(0);
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    touchEndX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchEnd = () => {
+    const touchDiff = touchStartX.current - touchEndX.current;
+
+    if (touchDiff > 50) {
+      const nextImg = activeImg === 4 ? 0 : activeImg + 1;
+
+      console.log(nextImg);
+      setActiveImg(+nextImg);
+    } else if (touchDiff < -50) {
+      const prevImg = activeImg === 0 ? 4 : activeImg - 1;
+
+      console.log(prevImg);
+      setActiveImg(+prevImg);
+    }
+  };
+
   return (
     <section className="item">
       <div className="container">
@@ -197,6 +225,21 @@ export const ItemPage: React.FC = () => {
           </Link>
 
           <p className="item_title">{activeItem.name}</p>
+
+          <div
+            className="item_activeImgContainer item_activeImgContainer--phone"
+            ref={sliderRef}
+            onTouchStart={handleTouchStart}
+            onTouchMove={handleTouchMove}
+            onTouchEnd={handleTouchEnd}
+          >
+            <img
+              src={activeItem.images[activeImg]}
+              alt="activeImg"
+              className="item_activeImgContainer_img"
+            />
+          </div>
+
           <div className="item_imgBox">
             <div className="item_imgBox_innerBox">
               {activeItem.images.map((image, index) => (
@@ -205,6 +248,9 @@ export const ItemPage: React.FC = () => {
                   key={index}
                   onClick={() => {
                     setActiveImg(index);
+                  }}
+                  style={{
+                    border: ` 1px solid ${index === activeImg ? '#89939A' : '#E2E6E9'}`,
                   }}
                 >
                   <img
@@ -217,7 +263,7 @@ export const ItemPage: React.FC = () => {
             </div>
           </div>
 
-          <div className="item_activeImgContainer">
+          <div className="item_activeImgContainer item_activeImgContainer--tablet">
             <img
               src={activeItem.images[activeImg]}
               alt="activeImg"

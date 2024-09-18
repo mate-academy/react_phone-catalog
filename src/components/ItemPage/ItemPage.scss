@@ -16,17 +16,32 @@
   &_imgBox{
     grid-column: 1/2;
 
+    @include on-phone{
+      grid-column: 1/-1;
+    }
+
     &_innerBox{
       display: flex;
       flex-direction: column;
       gap: 16px;
+
+      @include on-phone{
+        flex-direction: row;
+        justify-content: center;
+      }
       &_imgContainer{
         height: 64.4px;
         width: 64.4px;
-        border: 1px solid $borderGrey;
+        border: 1px solid $borderGrey;/////////////////////////////////////////////////////
         overflow: hidden;
         padding: 7px;
         cursor: pointer;
+
+
+      @include on-tablet{
+        height: 35px;
+        width: 35px;
+      }
 
         &_img{
           width: 100%;
@@ -41,10 +56,40 @@
 
 
   &_activeImgContainer{
-    grid-column: 3/12;
+    grid-column: 2/12;
     height: 464px;
     width: 464px;
     margin-bottom: 80px;
+
+
+    @include on-tablet{
+      grid-column: 2/7;
+      margin-bottom: 64px;
+      height: 287px;
+      width: 287px;
+    }
+
+    @include on-phone{
+      grid-column: 1/-1;
+      display: flex;
+      justify-self: center;
+      margin-bottom: 16px;
+    }
+
+    &--phone{
+      display: none;
+
+      @include on-phone{
+        display: block;
+      }
+    }
+    &--tablet{
+      display: block;
+
+      @include on-phone{
+        display: none;
+      }
+    }
 
     &_img{
       width: 100%;
@@ -56,6 +101,14 @@
 
   &_specs{
     grid-column:14/21;
+
+    @include on-tablet{
+      grid-column: 7/-1;
+    }
+
+    @include on-phone{
+      grid-column: 1/-1;
+    }
   }
 
   &_colors{
@@ -153,6 +206,7 @@
 
     &_buttons{
       display: flex;
+      justify-content: space-between;
       gap: 8px;
       margin-bottom: 32px;
 
@@ -167,6 +221,14 @@
         transition: $transitionSpeed;
         font-family: $fontSemi;
         font-size: 14px;
+
+        @include on-tablet{
+          width: 100%;
+        }
+
+        @include on-phone{
+          width: 100%;
+        }
         &:hover{
           box-shadow: 0 3px 13px 0  $darkBorderGrey;
           transition: $transitionSpeed;
@@ -222,6 +284,11 @@
     grid-column: 1/12;
     margin-bottom: 80px;
 
+    @include on-tablet{
+      grid-column: 1/-1;
+      margin-bottom: 64px;
+    }
+
 
     &_title{
       margin: 0;
@@ -257,6 +324,11 @@
 
   &_tech{
     grid-column: 13/-1;
+
+    @include on-tablet{
+      grid-column: 1/-1;
+      margin-bottom: 64px;
+    }
 
     &_title{
       margin: 0;

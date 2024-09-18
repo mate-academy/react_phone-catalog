@@ -1,7 +1,27 @@
+@mixin on-tablet(){
+  @media (max-width: $tablet-max-width) {
+    @content;
+  }
+}
+
+@mixin on-phone(){
+  @media (max-width: $phone-max-width) {
+    @content;
+  }
+}
+
 @mixin page-grid {
   --comumns: 24;
 
   display: grid;
   column-gap: 16px;
   grid-template-columns: repeat(var(--comumns), 1fr);
+
+  @include on-tablet{
+    --comumns: 12;
+  }
+
+  @include on-phone{
+    --comumns: 4;
+  }
 }
