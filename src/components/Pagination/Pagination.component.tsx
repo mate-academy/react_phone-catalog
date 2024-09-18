@@ -1,10 +1,12 @@
 import cn from 'classnames';
+import { NumberPaginator } from './NumberPaginator/NumberPaginator.component';
 
 type Props = {
   pageNumbers: number[];
   currentPage: number;
   onPageClick: (page: number) => void;
 };
+
 export const Pagination: React.FC<Props> = ({
   pageNumbers,
   currentPage,
@@ -24,24 +26,11 @@ export const Pagination: React.FC<Props> = ({
           &lt;
         </div>
       </a>
-      <div className="pagination__numbers">
-        {pageNumbers.map((page: number, index: number) => (
-          <a
-            key={index}
-            className={cn('pagination__link', {
-              'pagination__link--active pagination__item--active':
-                currentPage === page,
-            })}
-            href={`#${page}`}
-            onClick={e => {
-              e.preventDefault();
-              onPageClick(page);
-            }}
-          >
-            <div className="pagination__item">{page}</div>
-          </a>
-        ))}
-      </div>
+      <NumberPaginator
+        totalPages={pageNumbers.length}
+        currentPage={currentPage}
+        onPageClick={onPageClick}
+      />
       <a
         className="pagination__link"
         href="#next"

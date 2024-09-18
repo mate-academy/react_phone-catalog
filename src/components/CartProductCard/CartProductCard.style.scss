@@ -1,26 +1,59 @@
 .cartCard {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
   height: 160px;
+  width: 100%;
   padding: 16px;
   border: 1px solid $c-elements;
   gap: 16px;
+
+  @include on-tablet {
+    flex-direction: row;
+    height: 128px;
+    padding: 24px;
+    gap: 24px;
+  }
+
+  @include on-desktop {
+    flex-direction: row;
+  }
   &__image {
     height: 100%;
     width: 100%;
     object-fit: contain;
   }
   &__container {
+    width: 100%;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
     align-items: center;
     gap: 16px;
     height: 80px;
+
+    @include on-tablet {
+      gap: 24px;
+    }
+
+    @include on-desktop {
+      gap: 24px;
+    }
   }
   &__counterAndPrice {
     display: flex;
+    width: 100%;
     flex-direction: row;
     justify-content: space-between;
+    align-items: center;
+
+    @include on-tablet {
+      justify-content: space-evenly;
+    }
+
+    @include on-desktop {
+      justify-content: space-evenly;
+    }
   }
   &__counter {
     display: flex;

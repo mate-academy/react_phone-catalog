@@ -8,6 +8,13 @@
   grid-column: 1/-1;
   gap: 16px;
   border: 1px solid $c-elements;
+  height: 200px;
+
+  @include on-desktop {
+    grid-column: span 8;
+    margin: 0;
+  }
+
   &__container {
     display: flex;
     flex-direction: column;
