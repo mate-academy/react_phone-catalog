@@ -1,9 +1,8 @@
 import {
-  ButtonAddStyled,
-  ButtonFavoritStyled,
   ButtonsBlockStyled,
   CardStyled,
   CountBlockStyled,
+  ImgFavoriteStyled,
   ImgStyled,
   InfoBlockStyled,
   InfoStyled,
@@ -12,6 +11,7 @@ import {
 } from './styled';
 import { useAppSelector } from '../../../app/hook';
 import favourites from '../../../icons/Favourites.png';
+import { Button } from '../../../components/Button/Button';
 
 type Props = {
   variant: 'HomePage' | 'ListPage';
@@ -55,11 +55,13 @@ const ProductCard: React.FC<Props> = ({ variant }) => {
       </InfoBlockStyled>
 
       <ButtonsBlockStyled>
-        <ButtonAddStyled>Add to cart</ButtonAddStyled>
+        <Button variant="dark" css="width: 100%; padding: 0;">
+          Add to cart
+        </Button>
 
-        <ButtonFavoritStyled>
-          <img src={favourites} />
-        </ButtonFavoritStyled>
+        <Button variant="white" css="width: 40px; flex-shrink: 0;">
+          <ImgFavoriteStyled src={favourites} />
+        </Button>
       </ButtonsBlockStyled>
     </CardStyled>
   );

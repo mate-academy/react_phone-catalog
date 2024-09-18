@@ -8,6 +8,7 @@ import { setAccessories } from './features/accessoriesSlice';
 import { setTables } from './features/tablesSlice';
 import { setPhones } from './features/phoneSlice';
 import { setProducts } from './features/productsSlice';
+import { Footer } from './components/Footer';
 
 export const App = () => {
   const dispatch = useAppDispatch();
@@ -38,6 +39,7 @@ export const App = () => {
     <div className="App">
       <Header />
       <Outlet />
+      <Footer />
     </div>
   );
 };

@@ -155,32 +155,9 @@ const ButtonsBlockStyled = styled.div`
   gap: 8px;
 `;
 
-const ButtonAddStyled = styled.div`
-  background-color: #313237;
-  color: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  font-weight: 600;
-  font-size: 14px;
-  line-height: 21px;
-`;
-
-const ButtonFavoritStyled = styled.div`
-  background-color: white;
-  width: 40px;
-  height: 40px;
-  border: 1px solid #b4bdc3;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-
-  > * {
-    width: 15.34px;
-    object-fit: cover;
-  }
+const ImgFavoriteStyled = styled.img`
+  width: 15.34px;
+  object-fit: cover;
 `;
 
 export {
@@ -192,6 +169,5 @@ export {
   InfoBlockStyled,
   InfoStyled,
   ButtonsBlockStyled,
-  ButtonAddStyled,
-  ButtonFavoritStyled,
+  ImgFavoriteStyled,
 };
