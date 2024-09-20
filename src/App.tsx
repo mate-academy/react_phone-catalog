@@ -6,10 +6,12 @@ import { Footer } from './components/Footer/Footer';
 import classNames from 'classnames';
 
 export const App = () => {
-  const slug = useLocation().pathname.slice(1) ? useLocation().pathname.slice(1) : 'home';
+  // eslint-disable-next-line
+  const slug = 
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    useLocation().pathname.slice(1) ? useLocation().pathname.slice(1) : 'home';
 
   return (
-
     <div className="App">
       <Header />
       <main className={classNames(`page__main ${slug}`)}>

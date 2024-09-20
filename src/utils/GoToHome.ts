@@ -4,4 +4,4 @@ export const GoToHome = () => {
     top: 0,
     behavior: 'smooth',
   });
-}
+};

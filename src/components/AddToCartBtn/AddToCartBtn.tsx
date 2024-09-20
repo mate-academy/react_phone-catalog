@@ -19,7 +19,6 @@ export const AddToCartBtn: React.FC<Props> = ({ product }) => {
         _selected: isSelected,
       })}
       onClick={() => {
-        console.log(cart);
         if (isSelected) {
           return;
         }
