@@ -5,5 +5,5 @@ export const NotFoundPage = () => {
         <h1 className="main-title">Not Found</h1>
       </div>
     </section>
-  )
-}
+  );
+};

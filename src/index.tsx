@@ -15,25 +15,25 @@ createRoot(document.getElementById('root') as HTMLElement).render(
   <CatalogProvider>
     <Router>
       <Routes>
-        <Route path='/' element={<App />}>
+        <Route path="/" element={<App />}>
           <Route index element={<HomePage />} />
-          <Route path='phones'>
+          <Route path="phones">
             <Route index element={<PhonesPage />} />
-            <Route path=':itemId?' element={ <ProductPage />} />
+            <Route path=":itemId?" element={<ProductPage />} />
           </Route>
-          <Route path='tablets' >
+          <Route path="tablets">
             <Route index element={<TabletsPage />} />
-            <Route path=':itemId?' element={ <ProductPage />} />
+            <Route path=":itemId?" element={<ProductPage />} />
           </Route>
-          <Route path='accessories'>
+          <Route path="accessories">
             <Route index element={<AccessoriesPage />} />
-            <Route path=':itemId?' element={ <ProductPage />} />
+            <Route path=":itemId?" element={<ProductPage />} />
           </Route>
-          <Route path='favourites' element={<FavouritesPage />} />
-          <Route path='cart' element={<CartPage />} />
-          <Route path='*' element={<NotFoundPage />} />
+          <Route path="favourites" element={<FavouritesPage />} />
+          <Route path="cart" element={<CartPage />} />
+          <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Routes>
     </Router>
-  </CatalogProvider>
+  </CatalogProvider>,
 );

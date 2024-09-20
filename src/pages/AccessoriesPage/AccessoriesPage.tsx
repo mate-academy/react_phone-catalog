@@ -60,6 +60,7 @@ export const AccessoriesPage = () => {
 
       sortedProducts.slice(startItem, endItem);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [sort, perPage]);
 
   return (
@@ -82,9 +83,8 @@ export const AccessoriesPage = () => {
         <Outlet />
         {accessoriesForShow.length > 0 &&
           perPage &&
-          accessoriesForShow.length > +perPage && (
-          <Pagination itemsNumber={accessoriesForShow.length} />
-        )}
+          accessoriesForShow.length > +perPage && ( // eslint-disable-next-line
+          <Pagination itemsNumber={accessoriesForShow.length} />)}
       </div>
     </section>
   );
