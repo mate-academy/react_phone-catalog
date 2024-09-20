@@ -100,7 +100,7 @@ export const NewItems: React.FC<NewItemsProps> = ({
               onClick={prevPage}
             >
               <img
-                src="../img/icons/SliderButtonDefault(right).svg"
+                src={`${process.env.PUBLIC_URL}/img/icons/SliderButtonDefault(right).svg`}
                 alt="arrowLeft"
               />
             </button>
@@ -110,7 +110,7 @@ export const NewItems: React.FC<NewItemsProps> = ({
               onClick={nextPage}
             >
               <img
-                src="../img/icons/SliderButtonDefault(right).svg"
+                src={`${process.env.PUBLIC_URL}/img/icons/SliderButtonDefault(right).svg`}
                 alt="arrowRight"
               />
             </button>
