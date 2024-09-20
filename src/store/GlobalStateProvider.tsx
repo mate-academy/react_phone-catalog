@@ -12,7 +12,7 @@ const initialStates = {
   favorites: getLocalStorage('favs', []),
   categories: [],
   isMenuOpen: false,
-  // isReady: false,
+  isReady: false,
   totalCartItems: 0,
   selectedProduct: undefined,
 };
@@ -25,7 +25,7 @@ type Action =
   | { type: 'increaseQuantity'; payload: number }
   | { type: 'decreaseQuantity'; payload: number }
   | { type: 'isMenuOpen'; payload: boolean }
-  // | { type: 'isReady'; payload: boolean }
+  | { type: 'isReady'; payload: boolean }
   | { type: 'selectedProduct'; payload: ProductSpecs | undefined };
 
 type DispatchContextType = {
@@ -70,9 +70,9 @@ function reducer(states: States, action: Action) {
     case 'isMenuOpen':
       newStates = { ...newStates, isMenuOpen: action.payload };
       break;
-    // case 'isReady':
-    //   newStates = { ...newStates, isReady: action.payload };
-    //   break;
+    case 'isReady':
+      newStates = { ...newStates, isReady: action.payload };
+      break;
     case 'selectedProduct':
       newStates = { ...newStates, selectedProduct: action.payload };
       break;

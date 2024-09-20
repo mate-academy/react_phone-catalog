@@ -9,7 +9,7 @@ type Props = {
   showDiscount: boolean;
 };
 
-export const ProductCard: React.FC<Props> = ({ product }) => {
+export const ProductCard: React.FC<Props> = ({ product, showDiscount }) => {
   const { category } = useParams();
 
   return (
@@ -20,7 +20,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
         </figure>
         <div className="card__product-name">{product.name}</div>
       </Link>
-      <Price product={product} showDiscount />
+      <Price product={product} showDiscount={showDiscount} />
       <SpecsMini product={product} />
       <CardButtons product={product} />
     </div>

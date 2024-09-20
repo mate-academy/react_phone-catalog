@@ -9,7 +9,7 @@ export interface States {
   favorites: ProductSummary[];
   categories: Category[];
   isMenuOpen: boolean;
-  // isReady: boolean;
+  isReady: boolean;
   totalCartItems: number;
   selectedProduct: ProductSpecs | undefined;
 }

@@ -73,7 +73,7 @@ export const ProductDetailsMain: React.FC = () => {
           </div>
         </div>
         <Line />
-        <>
+        {/* <>
           <div className="card__price-current">
             <h3>${product.price}</h3>
           </div>
@@ -81,7 +81,7 @@ export const ProductDetailsMain: React.FC = () => {
           <h3 className="card__price-discount">
             {calculateDiscount(product).toFixed(1)}% OFF
           </h3>
-        </>
+        </> */}
       </div>
     );
   }
