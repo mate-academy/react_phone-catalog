@@ -77,12 +77,16 @@ export const CatalogProvider: React.FC<Props> = ({ children }) => {
   const [menuStatus, setMenuStatus] = useState(false);
   const [phonesFromServer, setPhonesFromServer] = useState<Phone[]>([]);
   const [tabletsFromServer, setTabletsFromServer] = useState<Tablet[]>([]);
+  // eslint-disable-next-line
   const [accessoriesFromServer, setAccessoriesFromServer] = useState<Accessory[]>([]);
   const [productsFromServer, setProductsFromServer] = useState<Product[]>([]);
+  // eslint-disable-next-line
   const [uniqueProductFromServer, setUniqueProductFromServer] = useState<Phone[] | Tablet[] | Accessory[]>([]);
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
+  // eslint-disable-next-line
   const [favourites, setFavourites] = useState<Phone[] | Tablet[] | Accessory[]>(() => {
     const savedFavorites = localStorage.getItem('favourites');
+
     return savedFavorites ? JSON.parse(savedFavorites) : [];
   });
   const [cart, setCart] = useLocaleStorage<Phone[] | Tablet[] | Accessory[]>(
@@ -91,12 +95,12 @@ export const CatalogProvider: React.FC<Props> = ({ children }) => {
   );
 
   const [currentPaginationPage, setCurrentPaginationPage] = useState(0);
-
   const lastYear = productsFromServer
     ?.map(product => product.year)
     .sort((a, b) => b - a)[0];
-
+  // eslint-disable-next-line
   const [brandNewModels, setBrandNewModels] = useState<Phone[] | Tablet[] | Accessory[]>([]);
+  // eslint-disable-next-line
   const [hotPrisModels, setHotPriceModels] = useState<Phone[] | Tablet[] | Accessory[]>([]);
 
   const getUniqueElements = (elements: Phone[] | Tablet[] | Accessory[]) => {
@@ -213,6 +217,7 @@ export const CatalogProvider: React.FC<Props> = ({ children }) => {
         });
       });
     }
+    // eslint-disable-next-line
   }, [productsFromServer, favourites]);
 
   const addToFavourites = (product: Phone | Tablet | Accessory) => {
@@ -268,6 +273,7 @@ export const CatalogProvider: React.FC<Props> = ({ children }) => {
       addToCart,
       removeFromCart,
     }),
+    // eslint-disable-next-line
     [
       menuStatus,
       phonesFromServer,

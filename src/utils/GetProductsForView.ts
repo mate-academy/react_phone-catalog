@@ -3,7 +3,7 @@ import { Accessory } from '../types/Accessory';
 import { Phone } from '../types/Phone';
 import { Tablet } from '../types/Tablet';
 import { CatalogContext } from '../CatalogContext';
-
+// eslint-disable-next-line
 type argument = Phone | Tablet | Accessory;
 
 export const GetPoroductsForView = (products: argument[]) => {

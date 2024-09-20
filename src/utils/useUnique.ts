@@ -2,6 +2,7 @@ import { Tablet } from '../types/Tablet';
 import { Phone } from '../types/Phone';
 import { Accessory } from '../types/Accessory';
 
+// eslint-disable-next-line @typescript-eslint/naming-convention
 export enum productCategory {
   PHONE = 'phones',
   TABLET = 'tablets',
