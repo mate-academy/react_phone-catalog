@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { useProducts } from '../../context/ProductsProvider';
 import { Footer } from '../Footer/Footer';
 import { Header } from '../HomePage/Header/Header';
 import { CardComponent } from '../main/CardComponent/CardComponent';
@@ -8,6 +7,7 @@ import styles from './phonePage.module.scss';
 import stylePage from '../HomePage/Welcome/homeface.module.scss';
 import { TransitionComponent } from '../main/Transition/TransitionComponent';
 import { Loader } from '../loader/Loader';
+import { useDevices } from '../../context/DeviceProvider';
 
 interface Props {
   filter: string;
@@ -17,7 +17,7 @@ const itemsPerPageOptions = ['all', 4, 8, 16];
 const sortItemsOnPage = ['Newest', 'Alphabetically', 'Cheapest'];
 
 export const PhonePage: React.FC<Props> = ({ filter }) => {
-  const products = useProducts();
+  const { products } = useDevices();
 
   const [SearchParams, setSearchParams] = useSearchParams();
   const [sortItems, setSortItems] = useState(products);

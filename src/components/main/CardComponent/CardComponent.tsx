@@ -2,9 +2,8 @@ import { NavLink } from 'react-router-dom';
 import { Accessories, Product, ProductChars } from '../../../types';
 import styles from './card.module.scss';
 import classNames from 'classnames';
-import { FavoriteProps, useFavorites } from '../../../context/FavoriteProvider';
 import { useEffect, useState } from 'react';
-import { useShoping } from '../../../context/ShopingProvider';
+import { DeviceProps, useDevices } from '../../../context/DeviceProvider';
 
 interface CardComponentProps {
   devices: Product | ProductChars | Accessories;
@@ -14,11 +13,11 @@ interface CardComponentProps {
 export const CardComponent = ({ devices, salePrice }: CardComponentProps) => {
   const itemId = 'itemId' in devices ? devices.itemId : devices.id;
   const category = 'category' in devices ? devices.category : '';
-  const { addToFavorites } = useFavorites();
-  const { addToCart } = useShoping();
+  const { addToFavorites } = useDevices();
+  const { addToCart } = useDevices();
   const [favorites, setFavorites] = useState<Record<string, boolean>>({});
 
-  const handleFavButton = (device: FavoriteProps) => {
+  const handleFavButton = (device: DeviceProps) => {
     const deviceId = device.id;
 
     setFavorites(prevFavorites => ({
@@ -38,7 +37,7 @@ export const CardComponent = ({ devices, salePrice }: CardComponentProps) => {
     const allFavorites: Record<string, boolean> = {};
 
     if (Array.isArray(devices)) {
-      devices.forEach((device: FavoriteProps) => {
+      devices.forEach((device: DeviceProps) => {
         const saved = localStorage.getItem(`isFav_${device.id}`);
 
         if (saved) {

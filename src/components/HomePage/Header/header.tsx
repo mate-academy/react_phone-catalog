@@ -1,13 +1,12 @@
 import { NavLink } from 'react-router-dom';
-import { useFavorites } from '../../../context/FavoriteProvider';
-import { useShoping } from '../../../context/ShopingProvider';
 
 import styles from './header.module.scss';
 import classNames from 'classnames';
+import { useDevices } from '../../../context/DeviceProvider';
 
 export const Header = () => {
-  const { favoriteDevices } = useFavorites();
-  const { addetDevice } = useShoping();
+  const { favoriteDevices } = useDevices();
+  const { addedDevice } = useDevices();
 
   const isActiveButton = ({ isActive }: { isActive: boolean }) => {
     return isActive ? styles.header_buttoms_selected : '';
@@ -65,7 +64,7 @@ export const Header = () => {
           }
         >
           <img src="img/Vector_heart.svg" alt="favorite logo" />
-          {favoriteDevices.length && (
+          {favoriteDevices.length > 0 && (
             <span className={styles.shoping}>{favoriteDevices.length}</span>
           )}
         </NavLink>
@@ -80,8 +79,8 @@ export const Header = () => {
           }
         >
           <img src="img/Shopping_bag.svg" alt="shoping logo" />
-          {addetDevice.length > 0 && (
-            <span className={styles.shoping}>{addetDevice.length}</span>
+          {addedDevice.length > 0 && (
+            <span className={styles.shoping}>{addedDevice.length}</span>
           )}
         </NavLink>
       </div>

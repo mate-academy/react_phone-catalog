@@ -1,14 +1,10 @@
 import classNames from 'classnames';
 import style from './shoping.module.scss';
 import { NavLink } from 'react-router-dom';
-import { usePhones } from '../../../context/PhonesProvider';
-import { useTablets } from '../../../context/TabletProvider';
-import { useAccessories } from '../../../context/AccessoriesProvider';
+import { useDevices } from '../../../context/DeviceProvider';
 
 export const ShopingCard = () => {
-  const phones = usePhones();
-  const tablets = useTablets();
-  const accessories = useAccessories();
+  const { phones, tablets, accessories } = useDevices();
 
   return (
     <div className={style.shop_card}>

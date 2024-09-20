@@ -1,10 +1,10 @@
-import { useFavorites } from '../../context/FavoriteProvider';
 import { Footer } from '../Footer/Footer';
 import { Header } from '../HomePage/Header/Header';
 import { CardComponent } from '../main/CardComponent/CardComponent';
 import { TransitionComponent } from '../main/Transition/TransitionComponent';
 import { useEffect, useState } from 'react';
 import { Loader } from '../loader/Loader';
+import { useDevices } from '../../context/DeviceProvider';
 
 import styles from './favorite.module.scss';
 import h1 from '../PDP/productsDetails.module.scss';
@@ -12,7 +12,7 @@ import span from '../PhonePage/phonePage.module.scss';
 import classNames from 'classnames';
 
 export const FavoriteCart = () => {
-  const { favoriteDevices } = useFavorites();
+  const { favoriteDevices } = useDevices();
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {

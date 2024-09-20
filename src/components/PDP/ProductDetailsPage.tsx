@@ -1,7 +1,4 @@
 import { NavLink, useParams } from 'react-router-dom';
-import { usePhones } from '../../context/PhonesProvider';
-import { useTablets } from '../../context/TabletProvider';
-import { useAccessories } from '../../context/AccessoriesProvider';
 import { useEffect, useState } from 'react';
 import { Accessories, ProductChars } from '../../types';
 import { Header } from '../HomePage/Header/Header';
@@ -17,6 +14,7 @@ import row from '../HomePage/Welcome/productSlider.module.scss';
 import buttom from '../HomePage/Welcome/homeface.module.scss';
 import classNames from 'classnames';
 import { TransitionComponent } from '../main/Transition/TransitionComponent';
+import { useDevices } from '../../context/DeviceProvider';
 
 type Device = ProductChars | Accessories;
 
@@ -38,9 +36,9 @@ export const ProductDetailsPage: React.FC = () => {
     itemId: string;
   }>();
 
-  const phones = usePhones();
-  const tablets = useTablets();
-  const accessories = useAccessories();
+  const { phones } = useDevices();
+  const { tablets } = useDevices();
+  const { accessories } = useDevices();
 
   const totalSlides = items ? phones.length : 0;
 
@@ -48,15 +46,15 @@ export const ProductDetailsPage: React.FC = () => {
     namespaceId: string,
     color: string,
     cap: string,
-    categorys: string,
+    categories: string,
   ) => {
     let foundItems;
 
-    switch (categorys) {
+    switch (categories) {
       case 'phones':
         foundItems = phones.find(
           item =>
-            item.namespaceId === namespaceId &&
+            item.id === namespaceId &&
             item.color === color &&
             item.capacity === cap,
         );
@@ -64,7 +62,7 @@ export const ProductDetailsPage: React.FC = () => {
       case 'tablet':
         foundItems = tablets.find(
           item =>
-            item.namespaceId === namespaceId &&
+            item.id === namespaceId &&
             item.color === color &&
             item.capacity === cap,
         );
@@ -72,17 +70,16 @@ export const ProductDetailsPage: React.FC = () => {
       case 'accessories':
         foundItems = accessories.find(
           item =>
-            item.namespaceId === namespaceId &&
+            item.id === namespaceId &&
             item.color === color &&
             item.capacity === cap,
         );
         break;
       default:
-        foundItems = undefined;
         break;
     }
 
-    if (items) {
+    if (foundItems) {
       setItems(foundItems);
     }
   };
@@ -135,7 +132,7 @@ export const ProductDetailsPage: React.FC = () => {
   }, [itemId, phones, tablets, accessories]);
 
   if (!items) {
-    return <div>Item not found</div>;
+    return <img src="img/page-not-found.png" alt="not_found" />;
   }
 
   const handleCapacityClick = (capacity?: string, color?: string) => {
@@ -210,7 +207,7 @@ export const ProductDetailsPage: React.FC = () => {
                       key={index}
                       style={{ backgroundColor: color }}
                       className={isSelectColor}
-                      onClick={() => handleCapacityClick(color)}
+                      onClick={() => handleCapacityClick(items.capacity, color)}
                     >
                       {}
                     </NavLink>
@@ -228,7 +225,7 @@ export const ProductDetailsPage: React.FC = () => {
                       to={`/${category}/${items.namespaceId}-${cap.toLocaleLowerCase()}-${items.color}`}
                       key={index}
                       className={isSelectCapacity}
-                      onClick={() => handleCapacityClick(cap)}
+                      onClick={() => handleCapacityClick(cap, items.color)}
                     >
                       {cap}
                     </NavLink>

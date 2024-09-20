@@ -1,13 +1,14 @@
 import styles from './homeface.module.scss';
 import row from './productSlider.module.scss';
 import classNames from 'classnames';
+
 import { CardComponent } from '../../main/CardComponent/CardComponent';
-import { useProducts } from '../../../context/ProductsProvider';
 import { ShopingCard } from './ShopingCard';
 import { useState } from 'react';
+import { useDevices } from '../../../context/DeviceProvider';
 
 export const ProductsSlider = () => {
-  const products = useProducts();
+  const { products } = useDevices();
   const [currentSlide, setCurrentSlide] = useState(0);
   const [currentSlideHotPrices, setCurrentSlideHotPrices] = useState(0);
 

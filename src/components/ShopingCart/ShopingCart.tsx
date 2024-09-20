@@ -1,13 +1,13 @@
-import { useShoping } from '../../context/ShopingProvider';
 import { Footer } from '../Footer/Footer';
 import { Header } from '../HomePage/Header/Header';
 import styles from './shopingcart.module.scss';
 import imgstyles from '../Favorite/favorite.module.scss';
 import { useEffect, useState } from 'react';
+import { useDevices } from '../../context/DeviceProvider';
 
 export const ShopingCart = () => {
-  const { addetDevice } = useShoping();
-  const { addToCart } = useShoping();
+  const { addedDevice } = useDevices();
+  const { addToCart } = useDevices();
   const [coutPrice, setCountPrice] = useState(0);
   const [countItems, setCountItems] = useState<Record<number, number>>({});
 
@@ -46,9 +46,9 @@ export const ShopingCart = () => {
   };
 
   useEffect(() => {
-    if (addetDevice.length > 0) {
+    if (addedDevice.length > 0) {
       setCountPrice(
-        addetDevice.reduce((total, device) => {
+        addedDevice.reduce((total, device) => {
           if ('price' in device) {
             return total + device.price * (countItems[device.id] || 1);
           }
@@ -57,7 +57,7 @@ export const ShopingCart = () => {
         }, 0),
       );
     }
-  }, [addetDevice, countItems]);
+  }, [addedDevice, countItems]);
 
   return (
     <div>
@@ -69,7 +69,7 @@ export const ShopingCart = () => {
 
       <div className={styles.shoping_container}>
         <div className={styles.shoping}>
-          {addetDevice.map(device => (
+          {addedDevice.map(device => (
             <>
               <div className={styles.shoping_cart}>
                 <div onClick={() => addToCart(device)}>
@@ -122,13 +122,13 @@ export const ShopingCart = () => {
           ))}
         </div>
 
-        {addetDevice.length > 0 ? (
+        {addedDevice.length > 0 ? (
           <div className={styles.checkout}>
             <div className={styles.checkout_container}>
               <div className={styles.checkout_price}>
                 <div className={styles.checkout_price_cash}>${coutPrice}</div>
                 <div className={styles.checkout_price_total}>
-                  total for {addetDevice.length} items
+                  total for {addedDevice.length} items
                 </div>
               </div>
               <div>
