@@ -1,6 +1,9 @@
 import { useContext } from 'react';
 import { Icon } from '../base/Icon/Icon.component';
-import { DispatchContext } from '../../store/GlobalStateProvider';
+import {
+  DispatchContext,
+  StatesContext,
+} from '../../store/GlobalStateProvider';
 import { ProductSummary } from '../../types/ProductSummary';
 
 type Props = {
@@ -9,6 +12,14 @@ type Props = {
 
 export const CartProductCard: React.FC<Props> = ({ product }) => {
   const dispatch = useContext(DispatchContext);
+  const { cart } = useContext(StatesContext);
+
+  const handleDeleteClick = () => {
+    dispatch({
+      type: 'updateCart',
+      payload: cart.filter(p => p.id !== product.id),
+    });
+  };
 
   const handleMinusClick = () => {
     if (!product.quantity || product.quantity <= 1) {
@@ -29,7 +40,12 @@ export const CartProductCard: React.FC<Props> = ({ product }) => {
   return (
     <div className="cartCard">
       <div className="cartCard__container">
-        <Icon iconType="close" iconUse="button" iconSize="16" />
+        <Icon
+          iconType="close"
+          iconUse="button"
+          iconSize="16"
+          onClick={handleDeleteClick}
+        />
         <img src={product.image} className="cartCard__image" />
         <div className="cartCard__product-name">{product.name}</div>
       </div>

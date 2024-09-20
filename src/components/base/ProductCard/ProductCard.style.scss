@@ -6,6 +6,10 @@
   padding: 32px;
   border: 1px solid $c-elements;
   gap: 8px;
+  &__link {
+    text-decoration: none;
+    color: $c-primary;
+  }
   &__image-wrapper {
     width: 100%;
     height: 0;

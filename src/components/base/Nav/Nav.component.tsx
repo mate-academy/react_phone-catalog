@@ -4,15 +4,22 @@ import {
   DispatchContext,
   StatesContext,
 } from '../../../store/GlobalStateProvider';
-import { useContext } from 'react';
+import { useContext, useEffect, useState } from 'react';
+import { getCategories } from '../../../api/products';
+import { Category } from '../../../types/Category';
 
 type Props = {
   navStyle: string;
 };
 
 export const Nav: React.FC<Props> = ({ navStyle }) => {
+  const [categories, setCategories] = useState<Category[]>([]);
   const dispatch = useContext(DispatchContext);
   const { isMenuOpen } = useContext(StatesContext);
+
+  useEffect(() => {
+    getCategories().then(cats => setCategories(cats));
+  });
 
   return (
     <nav className="nav">
@@ -26,23 +33,8 @@ export const Nav: React.FC<Props> = ({ navStyle }) => {
         >
           <li className="nav__item">HOME</li>
         </Link>
-        <Link to="phones" className={cn('nav__link', `nav__link--${navStyle}`)}>
-          <li className="nav__item">Phones</li>
-        </Link>
-        <Link
-          to="tablets"
-          className={cn('nav__link', `nav__link--${navStyle}`)}
-        >
-          <li className="nav__item">Tablets</li>
-        </Link>
-        <Link
-          to="accessories"
-          className={cn('nav__link', `nav__link--${navStyle}`)}
-        >
-          <li className="nav__item">Accessories</li>
-        </Link>
 
-        {/* {categories.map((category, idx) => {
+        {categories.map((category, idx) => {
           return (
             <Link
               to={`${category.id}`}
@@ -52,7 +44,7 @@ export const Nav: React.FC<Props> = ({ navStyle }) => {
               <li className="nav__item">{category.id.toUpperCase()}</li>
             </Link>
           );
-        })} */}
+        })}
       </ul>
     </nav>
   );

@@ -95,6 +95,7 @@ export const ProductGrid: React.FC<Props> = ({ productsArray, pagination }) => {
           handlePerPage={handlePerPage}
           handleSortBy={handleSortBy}
           sort={sort}
+          perPage={perPage}
         />
       )}
       <article className="productGrid">

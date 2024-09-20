@@ -1,36 +1,32 @@
 import { createContext, useReducer } from 'react';
-import { AccessorySpecs } from '../types/AccessorySpecs';
 import { States } from '../types/State';
-import { PhoneSpecs } from '../types/PhoneSpecs';
-import { TabletSpecs } from '../types/TabletSpecs';
 import { ProductSummary } from '../types/ProductSummary';
 import { Category } from '../types/Category';
 import { getLocalStorage } from '../utils/getLocalStorage';
+import { ProductSpecs } from '../types/ProductSpecs';
 
 const initialStates = {
-  accessories: [],
-  phones: [],
   products: [],
-  tablets: [],
+  productSpecs: [],
   cart: getLocalStorage('cart', []),
   favorites: getLocalStorage('favs', []),
   categories: [],
   isMenuOpen: false,
-  isReady: false,
+  // isReady: false,
+  totalCartItems: 0,
+  selectedProduct: undefined,
 };
 
 type Action =
-  | { type: 'loadAccessories'; payload: AccessorySpecs[] }
-  | { type: 'loadPhones'; payload: PhoneSpecs[] }
-  | { type: 'loadTablets'; payload: TabletSpecs[] }
-  | { type: 'loadProducts'; payload: ProductSummary[] }
   | { type: 'loadCategories'; payload: Category[] }
   | { type: 'updateCart'; payload: ProductSummary[] }
+  | { type: 'updateTotalCartItems'; payload: number }
   | { type: 'updateFavorites'; payload: ProductSummary[] }
   | { type: 'increaseQuantity'; payload: number }
   | { type: 'decreaseQuantity'; payload: number }
   | { type: 'isMenuOpen'; payload: boolean }
-  | { type: 'isReady'; payload: boolean };
+  // | { type: 'isReady'; payload: boolean }
+  | { type: 'selectedProduct'; payload: ProductSpecs | undefined };
 
 type DispatchContextType = {
   (action: Action): void;
@@ -39,23 +35,14 @@ function reducer(states: States, action: Action) {
   let newStates: States = { ...states };
 
   switch (action.type) {
-    case 'loadAccessories':
-      newStates = { ...newStates, accessories: action.payload };
-      break;
-    case 'loadPhones':
-      newStates = { ...newStates, phones: action.payload };
-      break;
-    case 'loadTablets':
-      newStates = { ...newStates, tablets: action.payload };
-      break;
-    case 'loadProducts':
-      newStates = { ...newStates, products: action.payload };
-      break;
     case 'loadCategories':
       newStates = { ...newStates, categories: action.payload };
       break;
     case 'updateCart':
       newStates = { ...newStates, cart: action.payload };
+      break;
+    case 'updateTotalCartItems':
+      newStates = { ...newStates, totalCartItems: action.payload };
       break;
     case 'updateFavorites':
       newStates = { ...newStates, favorites: action.payload };
@@ -64,7 +51,9 @@ function reducer(states: States, action: Action) {
       newStates = {
         ...newStates,
         cart: states.cart.map(p =>
-          p.id === action.payload ? { ...p, quantity: p.quantity! + 1 } : p,
+          p.id === action.payload
+            ? { ...p, quantity: (p.quantity ?? 1) + 1 }
+            : p,
         ),
       };
       break;
@@ -72,15 +61,20 @@ function reducer(states: States, action: Action) {
       newStates = {
         ...newStates,
         cart: states.cart.map(p =>
-          p.id === action.payload ? { ...p, quantity: p.quantity! - 1 } : p,
+          p.id === action.payload
+            ? { ...p, quantity: (p.quantity ?? 1) - 1 }
+            : p,
         ),
       };
       break;
     case 'isMenuOpen':
       newStates = { ...newStates, isMenuOpen: action.payload };
       break;
-    case 'isReady':
-      newStates = { ...newStates, isReady: action.payload };
+    // case 'isReady':
+    //   newStates = { ...newStates, isReady: action.payload };
+    //   break;
+    case 'selectedProduct':
+      newStates = { ...newStates, selectedProduct: action.payload };
       break;
     default:
       return states;

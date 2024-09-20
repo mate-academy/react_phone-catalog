@@ -12,7 +12,7 @@ import { Link } from 'react-router-dom';
 export const Header = () => {
   const dispatch = useContext(DispatchContext);
   const { isMenuOpen } = useContext(StatesContext);
-  const { cart, favorites } = useContext(StatesContext);
+  const { favorites, totalCartItems } = useContext(StatesContext);
   const isMobile = useMediaQuery('(max-width: 640px');
   const handleClick = () => {
     if (isMenuOpen) {
@@ -57,7 +57,7 @@ export const Header = () => {
                 <Icon
                   iconUse="bar"
                   iconType="cart"
-                  length={cart.length}
+                  length={totalCartItems}
                   border
                 />
               </Link>

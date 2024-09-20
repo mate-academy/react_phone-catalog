@@ -12,7 +12,7 @@ export const FavoritesPage = () => {
 
   return (
     <section className="favorites-page">
-      <NavigationPath id={'favorites'} />
+      <NavigationPath firstLevel={'favorites'} />
       <CategoryTitle title={'Favorites'} productsCount={favorites.length} />
       <ProductGrid productsArray={favorites} />
     </section>

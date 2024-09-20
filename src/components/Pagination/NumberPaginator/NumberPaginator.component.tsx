@@ -53,7 +53,7 @@ export const NumberPaginator: React.FC<Props> = ({
 
   while (p <= totalPages) {
     if (
-      p <= 3 ||
+      p <= 2 ||
       p >= totalPages - 2 ||
       (p >= currentPage - 1 && p <= currentPage + 1)
     ) {
