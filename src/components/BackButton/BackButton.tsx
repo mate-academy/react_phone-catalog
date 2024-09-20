@@ -35,7 +35,7 @@ export const BackButton: React.FC<BackButtonProps> = ({
           <>
             <img
               className="back__arrow"
-              src="/img/icons/backHomeArrow.svg"
+              src={`${process.env.PUBLIC_URL}/img/icons/backHomeArrow.svg`}
               alt="arrow home"
             />
             <p className="back__title">{nameProduct}</p>
