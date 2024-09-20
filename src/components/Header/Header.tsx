@@ -1,5 +1,5 @@
-import { Navigation } from "../Navigation/Navigation";
-import { TopAction } from "../TopAction/TopAction";
+import { Navigation } from '../Navigation/Navigation';
+import { TopAction } from '../TopAction/TopAction';
 
 export const Header = () => {
   return (

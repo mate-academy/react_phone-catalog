@@ -7,7 +7,7 @@
   }
 
   &__body {
-
+    overflow-y: scroll;
     & .container {
       max-width: 1440px;
       padding: 0 $container-padding--mobile;
@@ -69,5 +69,14 @@
     font-size: 14px;
     line-height: 1.5;
     color: $secondary-gray;
+  }
+
+  .sub-info {
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 1.5;
+    color: $secondary-gray;
+
+    margin-bottom: 40px;
   }
 }

@@ -5,6 +5,11 @@
   border: 1px solid $secondary-gray;
   height: 100%;
   gap: 24px;
+  transition-duration: 300ms;
+
+  &:hover {
+    transform: scale(0.99);
+  }
 
   &__image-box {
     flex: 1;
@@ -79,19 +84,5 @@
     height: 40px;
     display: flex;
     gap: 8px;
-  }
-
-  &__add-to-cart {
-    height: 100%;
-    color: #fff;
-    background-color: $primary-gray;
-    flex: 1 1 auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 14px;
-    font-weight: 700;
-    line-height: 21px;
-    text-align: center;
   }
 }

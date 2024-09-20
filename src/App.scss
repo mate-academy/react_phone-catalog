@@ -7,11 +7,13 @@
 @import './pages/ProductPage/ProductPage.module';
 @import './pages/PhonesPage/PhonesPage.module';
 @import './pages/FavouritesPage/FavouritesPage.module';
+@import './pages/CartPage/CartPage.module';
 @import './styles/blocks/icon';
 @import './styles/blocks/first-screen';
 @import './styles/blocks/main-title';
 @import './styles/blocks/title';
 @import './styles/blocks/arrow-btn';
+@import './styles/blocks/button.scss';
 @import './components/TopAction/TopAction.module';
 @import './components/Header/Header.module';
 @import './components/Navigation/Navigation.module';
@@ -28,3 +30,7 @@
 @import './components/FavouriteButton/FavouriteButton.module';
 @import './components/FilterProduct/FilterProduct.module';
 @import './components/Pagination/Pagination.module';
+@import './components/AddToCartBtn/AddToCartBtn.module';
+@import './components/CartUnit/CartUnit.module';
+@import './components/ProductCount/ProductCount.module';
+@import './components/СartTotalSumm/CartTotalSumm.module';

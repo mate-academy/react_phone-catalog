@@ -64,6 +64,12 @@
 
   &__to-category {
     text-transform: capitalize;
+    color: $secondary-gray;
+    transition-duration: 300ms;
+
+    &:hover {
+      color: $primary-gray;
+    }
   }
 
   &__slug {
@@ -91,6 +97,11 @@
     display: flex;
     align-items: center;
     margin-bottom: 16px;
+    transition-duration: 300ms;
+
+    &:hover {
+      color: $primary-gray;
+    }
 
     span {
       z-index: -1;
@@ -207,7 +218,6 @@
       top: 0;
       right: 0;
       max-width: 50%;
-
     }
   }
 

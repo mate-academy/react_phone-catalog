@@ -1,6 +1,6 @@
-import { Tablet } from "../types/Tablet";
-import { Phone } from "../types/Phone";
-import { Accessory } from "../types/Accessory";
+import { Tablet } from '../types/Tablet';
+import { Phone } from '../types/Phone';
+import { Accessory } from '../types/Accessory';
 
 export enum productCategory {
   PHONE = 'phones',
@@ -10,54 +10,69 @@ export enum productCategory {
 
 export const useUnique = (
   products: Phone[] | Tablet[] | Accessory[] | null,
-
 ) => {
-
   let uniqueNames: string[] = [];
   let uniqueProductsFromServer: Phone[] | Tablet[] | Accessory[] = [];
+
   if (products) {
     products.forEach(product => {
       switch (product.category) {
         case productCategory.PHONE:
           products?.forEach(phone => {
             if (!uniqueNames.includes(phone.namespaceId)) {
-              const currentProduct = products?.find(item => item.id === phone.id)
-              uniqueNames = [...uniqueNames, phone.namespaceId]
+              const currentProduct = products?.find(
+                item => item.id === phone.id,
+              );
+
+              uniqueNames = [...uniqueNames, phone.namespaceId];
 
               if (currentProduct !== undefined) {
-                uniqueProductsFromServer = [...uniqueProductsFromServer, currentProduct]
+                uniqueProductsFromServer = [
+                  ...uniqueProductsFromServer,
+                  currentProduct,
+                ];
               }
             }
-          })
-          break
+          });
+          break;
         case productCategory.TABLET:
           products?.forEach(tablet => {
             if (!uniqueNames.includes(tablet.namespaceId)) {
-              const currentProduct = products?.find(item => item.id === tablet.id);
-              uniqueNames = [...uniqueNames, tablet.namespaceId]
+              const currentProduct = products?.find(
+                item => item.id === tablet.id,
+              );
+
+              uniqueNames = [...uniqueNames, tablet.namespaceId];
 
               if (currentProduct !== undefined) {
-                uniqueProductsFromServer = [...uniqueProductsFromServer, currentProduct]
+                uniqueProductsFromServer = [
+                  ...uniqueProductsFromServer,
+                  currentProduct,
+                ];
               }
             }
-          })
+          });
           break;
         default:
-          case productCategory.ACCESSORY:
-            products?.forEach(accessory => {
-              if (!uniqueNames.includes(accessory.namespaceId)) {
-                const currentProduct = products?.find(item => item.id === accessory.id);
-                uniqueNames = [...uniqueNames, accessory.namespaceId];
+          products?.forEach(accessory => {
+            if (!uniqueNames.includes(accessory.namespaceId)) {
+              const currentProduct = products?.find(
+                item => item.id === accessory.id,
+              );
 
-                if (currentProduct !== undefined) {
-                  uniqueProductsFromServer = [...uniqueProductsFromServer, currentProduct]
-                }
+              uniqueNames = [...uniqueNames, accessory.namespaceId];
+
+              if (currentProduct !== undefined) {
+                uniqueProductsFromServer = [
+                  ...uniqueProductsFromServer,
+                  currentProduct,
+                ];
               }
-            })
+            }
+          });
       }
-    })
+    });
   }
 
-
-  return uniqueProductsFromServer
-}
+  return uniqueProductsFromServer;
+};

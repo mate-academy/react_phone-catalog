@@ -1,24 +1,25 @@
-import classNames from "classnames"
-import { NavLink } from "react-router-dom"
-import { TopAction } from "../TopAction/TopAction"
-import { useContext } from "react"
-import { CatalogContext } from "../../CatalogContext"
+import classNames from 'classnames';
+import { NavLink } from 'react-router-dom';
+import { TopAction } from '../TopAction/TopAction';
+import { useContext } from 'react';
+import { CatalogContext } from '../../CatalogContext';
+import { getProductForShow } from '../../pages/CartPage/CartPage';
 
 export const Navigation = () => {
-  const { menuStatus, setMenuStatus, favourites } = useContext(CatalogContext);
+  const { menuStatus, setMenuStatus, favourites, cart } =
+    useContext(CatalogContext);
 
   const getLinkClass = (
     { isActive }: { isActive: boolean },
-    additionalClasses?: string
+    additionalClasses?: string,
   ) =>
     classNames('navigation__link', additionalClasses, {
       'is-active': isActive,
-    })
-
+    });
 
   return (
     <nav
-      className={classNames("navigation header__navigation", {
+      className={classNames('navigation header__navigation', {
         'is-open': menuStatus,
       })}
     >
@@ -59,28 +60,29 @@ export const Navigation = () => {
       <div className="navigation__addition-menu">
         <NavLink
           to="/favourites"
-          className={({ isActive }) => getLinkClass({ isActive }, 'favourite__link')}
+          className={({ isActive }) =>
+            getLinkClass({ isActive }, 'favourite__link')
+          }
           onClick={() => setMenuStatus(false)}
         >
-          {(favourites && favourites.length > 0) && <span className="favourites__number">
-            {favourites.length}
-          </span>}
-          <img
-            src="/img/icons/Favourites-Heart.svg"
-            alt="favourites-image"
-          />
+          {favourites && favourites.length > 0 && (
+            <span className="favourites__number">{favourites.length}</span>
+          )}
+          <img src="/img/icons/Favourites-Heart.svg" alt="favourites-image" />
         </NavLink>
         <NavLink
           to="/cart"
-          className={getLinkClass}
+          className={({ isActive }) => getLinkClass({ isActive }, 'cart__link')}
           onClick={() => setMenuStatus(false)}
         >
-          <img
-            src="/img/icons/Shopping-bag.svg"
-            alt="favourites-image"
-          />
+          {cart && cart.length > 0 && (
+            <span className="favourites__number">
+              {getProductForShow(cart).length}
+            </span>
+          )}
+          <img src="/img/icons/Shopping-bag.svg" alt="favourites-image" />
         </NavLink>
       </div>
     </nav>
-  )
-}
+  );
+};

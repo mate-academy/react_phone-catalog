@@ -1,13 +1,22 @@
 .icon {
   display: block;
-
+  width: 16px;
+  height: 16px;
+  background-color: transparent;
   background-position: center;
   background-repeat: no-repeat;
   background-size: 16px;
+  
   &--closer {
     background-image: url("/img/icons/Close.svg");
   }
   &--opener {
     background-image: url("/img/icons/Menu.svg");
+  }
+  &--plus {
+    background-image: url("../../img/Buttons/Icons/Plus.svg");
+  }
+  &--minus {
+    background-image: url("../../img/Buttons/Icons/Minus.svg");
   }
 }
