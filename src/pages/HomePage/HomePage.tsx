@@ -6,7 +6,7 @@ import { ShopPage } from '../../pages/ShopPage';
 
 import './HomePage.scss';
 import '../../styles/container.scss';
-import phones from '../../api/phones.json';
+import phones from '../../api/api/phones.json';
 import { Product } from '../../types';
 import { MainSlider } from '../../components/MainSlider/MainSlider';
 

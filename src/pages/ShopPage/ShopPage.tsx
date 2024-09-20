@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import phones from '../../api/phones.json';
-import accessories from '../../api/accessories.json';
-import tablets from '../../api/tablets.json';
+import phones from '../../api/api/phones.json';
+import accessories from '../../api/api/accessories.json';
+import tablets from '../../api/api/tablets.json';
 import './ShopPage.scss';
 
 export const ShopPage: React.FC = () => {

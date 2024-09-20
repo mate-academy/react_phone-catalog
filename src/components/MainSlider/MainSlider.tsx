@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { images } from '../../api/apiImage';
+import { images } from '../../api/api/apiImage';
 import './MainSlider.scss';
 
 export const MainSlider: React.FC = () => {

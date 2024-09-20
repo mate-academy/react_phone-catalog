@@ -7,7 +7,7 @@ import {
   getProductsByName,
   getProductAPI,
   determineCategoryByProductId,
-} from '../../api/api';
+} from '../../api/api/api';
 import { useProductCategoryContext } from '../../context/ProductCategoryProvider';
 import { PriceDisplay } from '../../components/PriceDisplay';
 import { CartControls } from '../../components/CartControls';
@@ -16,9 +16,10 @@ import { useFavorites } from '../../context/FavoritesContext';
 import './ProductDetailPage.scss';
 import '../../components/PhoneSpecs/PhoneSpecs.scss';
 import { NewItems } from '../../components/NewItems';
-import { ProductDetailed } from '../../types';
+
 import { Loader } from '../../components/Loader';
 import { PhoneSpecs } from '../../components/PhoneSpecs';
+import { ProductDetailed } from '../../types';
 
 export const ProductDetailPage: React.FC = () => {
   const { productId } = useParams<{ productId: string }>();
