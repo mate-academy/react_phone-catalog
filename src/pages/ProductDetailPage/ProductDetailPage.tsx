@@ -7,7 +7,7 @@ import {
   getProductsByName,
   getProductAPI,
   determineCategoryByProductId,
-} from '../../public/api/api';
+} from '../../api/api/api';
 import { useProductCategoryContext } from '../../context/ProductCategoryProvider';
 import { PriceDisplay } from '../../components/PriceDisplay';
 import { CartControls } from '../../components/CartControls';

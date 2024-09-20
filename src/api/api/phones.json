@@ -11,7 +11,7 @@
     "colorsAvailable": ["black", "green", "yellow", "white", "purple", "red"],
     "color": "black",
     "images": [
-      "/img/phones/apple-iphone-11/black/00.webp",
+      "img/phones/apple-iphone-11/black/00.webp",
       "img/phones/apple-iphone-11/black/01.webp",
       "img/phones/apple-iphone-11/black/02.webp",
       "img/phones/apple-iphone-11/black/03.webp",

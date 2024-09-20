@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { Cart } from '../../components/Cart';
 import { Loader } from '../../components/Loader';
-import phonesData from '../../public/api/phones.json';
+import phonesData from '../../api/api/phones.json';
 import './PhonesPage.scss';
 import { Product } from '../../types';
 import { BackButton } from '../../components/BackButton';

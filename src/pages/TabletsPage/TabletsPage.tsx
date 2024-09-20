@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { Cart } from '../../components/Cart';
-import tabletsData from '../../public/api/tablets.json';
+import tabletsData from '../../api/api/tablets.json';
 import { Loader } from '../../components/Loader';
 import './TabletsPage.scss';
 import { Product } from '../../types';
