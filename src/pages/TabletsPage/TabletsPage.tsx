@@ -58,6 +58,7 @@ export const TabletsPage = () => {
 
       sortedProducts.slice(startItem, endItem);
     }
+    // eslint-disable-next-line
   }, [sort, perPage]);
 
   return (
@@ -80,9 +81,9 @@ export const TabletsPage = () => {
         <Outlet />
         {tabletsForShow.length > 0 &&
           perPage &&
-          tabletsForShow.length > +perPage && (
-          <Pagination itemsNumber={tabletsForShow.length} />
-        )}
+          // eslint-disable-next-line
+          tabletsForShow.length > +perPage && // eslint-disable-next-line
+           (<Pagination itemsNumber={tabletsForShow.length} />)}
       </div>
     </section>
   );

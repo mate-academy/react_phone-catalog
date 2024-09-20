@@ -3,11 +3,13 @@ import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import { useMediaQuery } from 'react-responsive';
 import { CatalogContext } from '../../CatalogContext';
 import { GetCurrentProduct } from '../../utils/GetCurrentProduct';
+// eslint-disable-next-line
 import { ProductParametrBox } from '../../components/ProductParametrBox/ProductParametrBox';
 import { ImageGalery } from '../../components/ImageGalery/ImageGalery';
 import { Price } from '../../components/Price/Price';
 import { ProductButtons } from '../../components/ProductButtons/ProductButtons';
 import { ProductInfo } from '../../components/ProductInfo/ProductInfo';
+// eslint-disable-next-line
 import { ProductSliderButtons } from '../../components/ProductSliderButtons/ProductSliderButtons';
 import { ProductSlider } from '../../components/ProductSlider/ProductSlider';
 import { CurrentPath } from '../../components/CurrentPath/CurrentPath';
@@ -30,15 +32,14 @@ export const ProductPage: React.FC = () => {
   const currentProduct = GetCurrentProduct(
     uniqueProductFromServer?.find(item => item.id === itemId),
   );
-
-  const [currentTypeProducts, setCurrentTypeProducts] = useState<
-  Phone[] | Tablet[] | Accessory[]
-  >([]);
+  // eslint-disable-next-line
+  const [currentTypeProducts, setCurrentTypeProducts] = useState<Phone[] | Tablet[] | Accessory[]>([]);
 
   useEffect(() => {
     switch (currentProduct?.category) {
       case 'phones':
         setCurrentTypeProducts(
+          // eslint-disable-next-line
           useUnique(phonesFromServer)?.filter(
             product => product.category === 'phones',
           ) || null,
@@ -46,6 +47,7 @@ export const ProductPage: React.FC = () => {
         break;
       case 'tablets':
         setCurrentTypeProducts(
+          // eslint-disable-next-line
           useUnique(tabletsFromServer)?.filter(
             product => product.category === 'tablets',
           ) || null,
@@ -53,12 +55,14 @@ export const ProductPage: React.FC = () => {
         break;
       default:
         setCurrentTypeProducts(
+          // eslint-disable-next-line
           useUnique(accessoriesFromServer)?.filter(
             product => product.category === 'accessories',
           ) || null,
         );
         break;
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {

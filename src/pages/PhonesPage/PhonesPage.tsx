@@ -58,6 +58,7 @@ export const PhonesPage = () => {
 
       sortedProducts.slice(startItem, endItem);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [sort, perPage]);
 
   return (
@@ -80,9 +81,8 @@ export const PhonesPage = () => {
         <Outlet />
         {phonesForShow.length > 0 &&
           perPage &&
-          phonesForShow.length > +perPage && (
-          <Pagination itemsNumber={phonesForShow.length} />
-        )}
+          // eslint-disable-next-line
+          phonesForShow.length > +perPage && (<Pagination itemsNumber={phonesForShow.length} />)}
       </div>
     </section>
   );
