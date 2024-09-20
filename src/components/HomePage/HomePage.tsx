@@ -27,8 +27,6 @@ type Product = {
 
 export const HomePage: React.FC = () => {
   const images = [image1, image2, image3];
-
-  // const [currentIndex, setCurrentIndex] = useState(0);
   const [brandNewIndex, setBrandNewIndex] = useState(0);
   const [currentHotIndex, setCurrentHotIndex] = useState(0);
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -65,15 +63,6 @@ export const HomePage: React.FC = () => {
     }
   };
 
-  // const slideStyle = {
-  //   width: '100%',
-  //   height: '100%',
-  //   borderRadius: '10px',
-  //   backgroundPosition: 'center',
-  //   backgroundSize: 'cover',
-  //   backgroundRepeat: 'no-repeat',
-  //   backgroundImage: `url(${images[currentIndex]})`,
-  // };
 
   const availabePhones = products.filter(
     product => product.category === 'phones',
@@ -120,22 +109,6 @@ export const HomePage: React.FC = () => {
       prevIndex === images.length - 1 ? 0 : prevIndex + 1,
     );
   };
-
-  // const prevImg = () => {
-  //   setCurrentIndex(prevIndex =>
-  //     prevIndex === 0 ? images.length - 1 : prevIndex - 1,
-  //   );
-  // };
-
-  // const nextImg = () => {
-  //   setCurrentIndex(prevIndex =>
-  //     prevIndex === images.length - 1 ? 0 : prevIndex + 1,
-  //   );
-  // };
-
-  // const goToSlide = (index: number) => {
-  //   setCurrentIndex(index);
-  // };
 
   const brandNewPrev = () => {
     setBrandNewIndex(handleButton.previous(brandNewIndex, phonesNew));

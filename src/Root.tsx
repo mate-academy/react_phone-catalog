@@ -1,7 +1,5 @@
 import { Routes, Route, HashRouter, Navigate } from 'react-router-dom';
-
 import { App } from './App';
-
 import { HomePage } from './components/HomePage/HomePage';
 import { CataloguePage } from './components/CataloguePage/CataloguePage';
 import { ItemPage } from './components/ItemPage';

@@ -6,14 +6,10 @@ import fav from '../src/imgs/Favourites.svg';
 import bag from './imgs/Cart.svg';
 import { useContext, useState } from 'react';
 import { LikedIdContext } from './utils/context';
+import { handleButton } from './utils/generalFunctions';
 
 export const App = () => {
-  const scrollTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
-
   const [menu, setMenu] = useState(false);
-
   const { likedIds, cardIds } = useContext(LikedIdContext);
 
   const handleMenu = () => {
@@ -189,7 +185,7 @@ export const App = () => {
         </div>
         <div className="footer_misc">
           <p className="footer_misc_title">Back to top</p>
-          <button className="footer_misc_button" onClick={scrollTop}>
+          <button className="footer_misc_button" onClick={handleButton.scrollTop}>
             &#10095;
           </button>
         </div>

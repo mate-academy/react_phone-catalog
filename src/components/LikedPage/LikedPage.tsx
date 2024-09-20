@@ -18,6 +18,7 @@ export const LikedPage: React.FC = () => {
     likedIds,
   } = useContext(LikedIdContext);
   const items = utils.findById(likedIds);
+
   const handleButtonCard = (id: string) => {
     if (cardIds.filter((cardId: string) => cardId === id).length === 1) {
       return removeCardId(id);

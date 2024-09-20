@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-// import { utils } from './generalFunctions';
 
 type LikedIdContextType = {
   likedIds: string[];
@@ -15,12 +14,12 @@ type LikedIdContextType = {
 export const LikedIdContext = React.createContext<LikedIdContextType>({
   likedIds: [],
   cardIds: [],
-  setLikedIds: () => {},
-  addLikedId: () => {},
-  removeLikedId: () => {},
-  addCardId: () => {},
-  removeCardId: () => {},
-  setCardIds: () => {},
+  setLikedIds: () => { },
+  addLikedId: () => { },
+  removeLikedId: () => { },
+  addCardId: () => { },
+  removeCardId: () => { },
+  setCardIds: () => { },
 });
 
 type Props = {
@@ -51,32 +50,25 @@ function useLocalStorage<T>(key: string, startValue: T): [T, (v: T) => void] {
 }
 
 export const LikedIdProvider: React.FC<Props> = ({ children }) => {
-  // const likedItems = utils.getFromStorage('liked')
-  // const cardItems = utils.getFromStorage('card')
   const [likedIds, setLikedIds] = useLocalStorage<string[]>('liked', []);
   const [cardIds, setCardIds] = useLocalStorage<string[]>('card', []);
-
-  //usestate needs to be cahnged to custom localstorage hook so i can upgrade the localstorage
 
   const addLikedId = (id: string) => {
     const newLikedId = [...likedIds, id];
 
     setLikedIds(newLikedId);
-    // localStorage.setItem('liked', JSON.stringify(newLikedId))
   };
 
   const removeLikedId = (id: string) => {
     const newLikedId = likedIds.filter((x: string) => x !== id);
 
     setLikedIds(newLikedId);
-    // localStorage.setItem('liked', JSON.stringify(newLikedId))
   };
 
   const addCardId = (id: string) => {
     const newCardId = [...cardIds, id].sort();
 
     setCardIds(newCardId);
-    // localStorage.setItem('card', JSON.stringify(newCardId))
   };
 
   const removeCardId = (id: string) => {
