@@ -79,15 +79,10 @@ export const CatalogProvider: React.FC<Props> = ({ children }) => {
   const [tabletsFromServer, setTabletsFromServer] = useState<Tablet[]>([]);
   const [accessoriesFromServer, setAccessoriesFromServer] = useState<Accessory[]>([]);
   const [productsFromServer, setProductsFromServer] = useState<Product[]>([]);
-  const [uniqueProductFromServer, setUniqueProductFromServer] = useState<
-  Phone[] | Tablet[] | Accessory[]
-  >([]);
+  const [uniqueProductFromServer, setUniqueProductFromServer] = useState<Phone[] | Tablet[] | Accessory[]>([]);
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
-  const [favourites, setFavourites] = useState<
-  Phone[] | Tablet[] | Accessory[]
-  >(() => {
+  const [favourites, setFavourites] = useState<Phone[] | Tablet[] | Accessory[]>(() => {
     const savedFavorites = localStorage.getItem('favourites');
-
     return savedFavorites ? JSON.parse(savedFavorites) : [];
   });
   const [cart, setCart] = useLocaleStorage<Phone[] | Tablet[] | Accessory[]>(
@@ -101,12 +96,8 @@ export const CatalogProvider: React.FC<Props> = ({ children }) => {
     ?.map(product => product.year)
     .sort((a, b) => b - a)[0];
 
-  const [brandNewModels, setBrandNewModels] = useState<
-  Phone[] | Tablet[] | Accessory[]
-  >([]);
-  const [hotPrisModels, setHotPriceModels] = useState<
-  Phone[] | Tablet[] | Accessory[]
-  >([]);
+  const [brandNewModels, setBrandNewModels] = useState<Phone[] | Tablet[] | Accessory[]>([]);
+  const [hotPrisModels, setHotPriceModels] = useState<Phone[] | Tablet[] | Accessory[]>([]);
 
   const getUniqueElements = (elements: Phone[] | Tablet[] | Accessory[]) => {
     let uniqueNames: string[] = [];
