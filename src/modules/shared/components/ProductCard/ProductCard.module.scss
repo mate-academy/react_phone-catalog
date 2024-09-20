@@ -1,0 +1,131 @@
+@use "../../../shared/styles/mixins" as *;
+@use "../../../shared/styles/extends";
+
+$button-height: 40px;
+$card-padding: 32px;
+$card-border-width: 1px;
+$card-gap: 8px;
+
+.Card {
+  display: flex;
+  flex-direction: column;
+  gap: $card-gap;
+
+  box-sizing: border-box;
+  height: 100%;
+  padding: $card-padding $card-padding calc($card-gap + $button-height + $card-padding);
+  border: $card-border-width solid;
+
+  text-decoration: none;
+
+  @include color-transition((
+    background-color: var(--product-card-color),
+    border-color: var(--product-card-border-color)
+  ));
+}
+
+.Image {
+  min-height: 0;
+  object-fit: contain;
+}
+
+.Title {
+  padding-top: 16px;
+
+  @extend %body-text;
+  @include color-transition((color: var(--primary-text-color)));
+}
+
+.Price {
+  padding-right: 8px;
+
+  @extend %h3;
+  @include color-transition((color: var(--primary-text-color)));
+}
+
+.Discount {
+  position: relative;
+  text-decoration: none;
+
+  @extend %discount;
+  @include color-transition((color: var(--secondary-text-color)));
+
+  &::after {
+    content: attr(data-content);
+
+    position: absolute;
+    right: 0;
+
+    clip-path: inset(48% 0 48% 0);
+
+    @extend %discount;
+    @include color-transition((
+      background-color: var(--secondary-text-color),
+      color: var(--product-card-color)
+    ));
+  }
+}
+
+.Line {
+  position: relative;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    height: 1px;
+    width: 100%;
+
+    @include color-transition((background-color: var(--element-color)));
+  }
+}
+
+.Parameters {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 8px 0;
+}
+
+.Parameter {
+  display: flex;
+  justify-content: space-between;
+}
+
+.ParameterName {
+  @extend %small-text;
+  @include color-transition((color: var(--secondary-text-color)));
+}
+
+.ParameterValue {
+  @extend %parameter-value;
+  @include color-transition((color: var(--primary-text-color)));
+}
+
+.Buttons {
+  position: relative;
+  bottom: calc($button-height + $card-border-width + $card-padding);
+
+  display: flex;
+  gap: 8px;
+  padding: 0 $card-padding;
+
+  pointer-events: none;
+}
+
+.AddToCartButton {
+  flex-grow: 1;
+  pointer-events: auto;
+}
+
+.FavouriteButton {
+  height: $button-height;
+  pointer-events: auto;
+}
+
+.ProductCard {
+  &:hover > .Card {
+    border-color: var(--product-card-border-hover-color);
+    box-shadow: 0 2px 16px 0 #0000001A;
+  }
+}

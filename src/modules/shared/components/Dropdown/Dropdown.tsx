@@ -3,7 +3,7 @@ import { DownArrowSVG } from '../SVGs/DownArrowSVG';
 import { UpArrowSVG } from '../SVGs/UpArrowSVG';
 import styles from './Dropdown.module.scss';
 import { useLanguage } from '../Contexts/LanguageContext';
-import { useRef, useState } from 'react';
+import { useId, useRef, useState } from 'react';
 
 type HandleChange = (value: string) => void;
 
@@ -25,7 +25,8 @@ export const Dropdown: React.FC<Props> = ({
   const [isOpened, setIsOpened] = useState(false);
   const dropdownRef = useRef<HTMLElement>(null);
   const selectRef = useRef<HTMLButtonElement>(null);
-  const { expand, collapse } = useLanguage().localeTexts;
+  const id = useId();
+  const { accessExpand, accessCollapse } = useLanguage().localeTexts;
 
   const changeValue = (option: string) => {
     onChange(option);
@@ -64,24 +65,23 @@ export const Dropdown: React.FC<Props> = ({
       onMouseDown={handleMouseDown}
       onBlur={handleBlur}
     >
-      <label
-        htmlFor="select"
-        className={styles.Label}
-        onClick={handleLabelClick}
-      >
+      <label htmlFor={id} className={styles.Label} onClick={handleLabelClick}>
         {title}
       </label>
 
       <button
-        id="select"
+        id={id}
         type="button"
         className={styles.Select}
         ref={selectRef}
         onClick={handleSelectClick}
       >
         {chosenOption}
-        <DownArrowSVG className={styles.DownArrow} label={expand} />
-        <UpArrowSVG className={styles.UpArrow} label={collapse} />
+        {isOpened ? (
+          <UpArrowSVG className={styles.Arrow} label={accessCollapse} />
+        ) : (
+          <DownArrowSVG className={styles.Arrow} label={accessExpand} />
+        )}
       </button>
 
       <menu className={styles.Options}>

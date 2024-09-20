@@ -1,11 +1,7 @@
-@use '../../styles/mixins' as *;
+@use "../../../shared/styles/mixins" as *;
 
 .Label {
   @include visually-hidden-focusable;
-}
-
-.Icon {
-  @include color-transition((color: var(--primary-text-color)));
 }
 
 .Button {
@@ -19,8 +15,17 @@
     (background-color: var(--icon-button-color), border-color: var(--icon-button-border-color)),
     (background-color: var(--icon-button-hover-color), border-color: var(--icon-button-border-hover-color))
   );
+
+  &_active {
+    background-color: transparent;
+    border-color: var(--icon-button-border-state-color);
+  }
 }
 
-.IconButton {
-  @include square(32px);
+.Icon {
+  @include color-transition((color: var(--primary-text-color)));
+}
+
+.FavouriteButton {
+  aspect-ratio: 1;
 }

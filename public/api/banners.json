@@ -1,6 +1,6 @@
 [
   {
-    "src": "./img/banners/banner-phones.png",
+    "image": "./img/banners/banner-phones.png",
     "to": "/phones",
     "label": "See phones",
     "alt": "Colorful phones",
@@ -12,7 +12,7 @@
     }
   },
   {
-    "src": "./img/banners/banner-tablets.png",
+    "image": "./img/banners/banner-tablets.png",
     "to": "/tablets",
     "label": "See tablets",
     "alt": "Tablets with variety of sizes",
@@ -24,7 +24,7 @@
     }
   },
   {
-    "src": "./img/banners/banner-accessories.png",
+    "image": "./img/banners/banner-accessories.png",
     "to": "/accessories",
     "label": "See accessories",
     "alt": "Multiple accessories",

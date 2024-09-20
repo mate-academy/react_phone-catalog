@@ -12,7 +12,7 @@ type Props = {
 
 export const ThemeSettings: React.FC<Props> = ({ className }) => {
   const { theme, handleThemeChange } = useTheme();
-  const { themeSettingsTitle, themeSettingsLabel, bright, dark } =
+  const { themeSettingsTitle, themeSettingsLabel, accessBright, accessDark } =
     useLanguage().localeTexts;
 
   const handleColorChange = (newTheme: string) => {
@@ -30,8 +30,8 @@ export const ThemeSettings: React.FC<Props> = ({ className }) => {
       <ColorRadio
         title={themeSettingsLabel}
         options={[
-          { name: Theme.Bright, label: bright, value: '#FFF' },
-          { name: Theme.Dark, label: dark, value: '#0F1121' },
+          { name: Theme.Bright, label: accessBright, value: '#FFF' },
+          { name: Theme.Dark, label: accessDark, value: '#0F1121' },
         ]}
         chosenColor={theme}
         onChange={handleColorChange}

@@ -31,7 +31,7 @@ const getPageX = (event: HandleSliderDragEvent): number => {
 };
 
 export const PicturesSlider: React.FC<Props> = ({ pictures, className }) => {
-  const { previous, next } = useLanguage().localeTexts;
+  const { accessPrevious, accessNext } = useLanguage().localeTexts;
   const [position, setPosition] = useState(0);
   const [isDragged, setIsDragged] = useState(false);
   const [isClicked, setIsClicked] = useState(true);
@@ -242,7 +242,7 @@ export const PicturesSlider: React.FC<Props> = ({ pictures, className }) => {
       slides.push(
         ...pictures.map((picture, index) => (
           <PictureSlide
-            key={picture.src + i}
+            key={picture.image + i}
             picture={picture}
             tabbable={i === 0 && index === position}
             isClicked={isClicked}
@@ -260,8 +260,7 @@ export const PicturesSlider: React.FC<Props> = ({ pictures, className }) => {
       <IconButton
         svgOption={IconButtonSVGOption.LeftArrow}
         onClick={handlePrevSwipeButtonClick}
-        id="prevSwipeButton"
-        label={previous}
+        label={accessPrevious}
         className={styles.SwipeButton}
       />
 
@@ -288,8 +287,7 @@ export const PicturesSlider: React.FC<Props> = ({ pictures, className }) => {
       <IconButton
         svgOption={IconButtonSVGOption.RightArrow}
         onClick={handleNextSwipeButtonClick}
-        id="nextSwipeButton"
-        label={next}
+        label={accessNext}
         className={styles.SwipeButton}
       />
 

@@ -16,7 +16,7 @@ export const PictureSlide: React.FC<Props> = ({
   isClicked,
   className,
 }) => {
-  const { src, to, label, alt } = picture;
+  const { image, to, label, alt } = picture;
 
   const handleClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
     if (!isClicked) {
@@ -34,7 +34,7 @@ export const PictureSlide: React.FC<Props> = ({
         tabIndex={tabbable ? 0 : -1}
         onClick={handleClick}
       >
-        <img src={src} alt={alt} draggable="false" className={styles.Image} />
+        <img src={image} alt={alt} draggable="false" className={styles.Image} />
       </Link>
     </li>
   );

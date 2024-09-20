@@ -19,3 +19,9 @@ export enum Language {
   English = 'en',
   Polish = 'pl',
 }
+
+export enum Category {
+  Phones = 'phones',
+  Tablets = 'tablets',
+  Accessories = 'accessories',
+}

@@ -1,5 +1,6 @@
 import { Fragment } from 'react/jsx-runtime';
 import styles from './ColorRadio.module.scss';
+import { useId } from 'react';
 
 export type Option = {
   name: string;
@@ -22,6 +23,8 @@ export const ColorRadio: React.FC<Props> = ({
   chosenColor,
   onChange,
 }) => {
+  const id = useId();
+
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const newColor = event.currentTarget.value;
 
@@ -36,7 +39,7 @@ export const ColorRadio: React.FC<Props> = ({
 
       {options.map(option => (
         <Fragment key={option.name}>
-          <label htmlFor={option.name} className={styles.Label}>
+          <label htmlFor={`${option.name}-${id}`} className={styles.Label}>
             {option.label}
           </label>
 
@@ -44,7 +47,7 @@ export const ColorRadio: React.FC<Props> = ({
             type="radio"
             value={option.name}
             name="color"
-            id={option.name}
+            id={`${option.name}-${id}`}
             className={styles.Option}
             style={{ backgroundColor: option.value }}
             checked={chosenColor === option.name}

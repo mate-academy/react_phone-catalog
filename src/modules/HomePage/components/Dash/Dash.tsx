@@ -1,5 +1,6 @@
 import classNames from 'classnames';
 import styles from './Dash.module.scss';
+import { useId } from 'react';
 
 type HandleClick = () => void;
 
@@ -16,17 +17,20 @@ export const Dash: React.FC<Props> = ({
   activePosition,
   onClick,
 }) => {
+  const id = useId();
+
   return (
-    <li
-      className={classNames(activePosition === position && styles.Dash_active)}
-    >
-      <label htmlFor={`Dash${position}`} className={styles.Label}>
+    <li>
+      <label htmlFor={id} className={styles.Label}>
         {label}
       </label>
 
       <button
-        id={`Dash${position}`}
-        className={styles.Button}
+        id={id}
+        className={classNames(
+          styles.Button,
+          activePosition === position && styles.Button_active,
+        )}
         onClick={onClick}
       />
     </li>

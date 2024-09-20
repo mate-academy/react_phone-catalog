@@ -4,13 +4,13 @@ import { LeftArrowSVG } from '../SVGs/LeftArrowSVG';
 import { RightArrowSVG } from '../SVGs/RightArrowSVG';
 import { UpArrowSVG } from '../SVGs/UpArrowSVG';
 import styles from './IconButton.module.scss';
+import { useId } from 'react';
 
 type HandleClick = () => void;
 
 type Props = {
   svgOption: IconButtonSVGOption;
   onClick: HandleClick;
-  id?: string;
   label?: string;
   className?: string;
 };
@@ -18,10 +18,11 @@ type Props = {
 export const IconButton: React.FC<Props> = ({
   svgOption,
   onClick,
-  id,
   label,
   className,
 }) => {
+  const id = useId();
+
   let icon: React.JSX.Element;
 
   switch (svgOption) {
@@ -39,20 +40,15 @@ export const IconButton: React.FC<Props> = ({
   }
 
   return (
-    <>
+    <div className={classNames(styles.IconButton, className)}>
       {label && (
         <label htmlFor={id} className={styles.Label}>
           {label}
         </label>
       )}
-      <button
-        id={id}
-        type="button"
-        className={classNames(styles.IconButton, className)}
-        onClick={onClick}
-      >
+      <button id={id} type="button" className={styles.Button} onClick={onClick}>
         {icon}
       </button>
-    </>
+    </div>
   );
 };

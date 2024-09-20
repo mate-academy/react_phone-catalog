@@ -26,6 +26,7 @@ $select-shift: 15px + $dropdown-gap;
   border: 1px solid;
 
   cursor: pointer;
+  outline: none;
 
   @extend %buttons;
   @include color-transition((
@@ -35,18 +36,11 @@ $select-shift: 15px + $dropdown-gap;
   ));
 
   &:focus-visible {
-    outline: none;
     border-color: var(--dropdown-border-open-color);
   }
 }
 
-.DownArrow {
-  @include color-transition((color: var(--dropdown-arrow-color)));
-}
-
-.UpArrow {
-  display: none;
-
+.Arrow {
   @include color-transition((color: var(--dropdown-arrow-color)));
 }
 
@@ -86,7 +80,7 @@ $select-shift: 15px + $dropdown-gap;
     background-color: var(--background-color),
   ), (
     color: var(--primary-text-color),
-    background-color: var(--dropdown-color)
+    background-color: var(--dropdown-option-hover-color)
   ));
 }
 
@@ -100,24 +94,18 @@ $select-shift: 15px + $dropdown-gap;
     border-color: var(--dropdown-border-open-color);
   }
 
-  &:hover:not(&_open) > .Select:not(:focus-visible) {
-    border-color: var(--dropdown-border-hover-color);
-  }
-
-  &_open .DownArrow {
-    display: none;
-  }
-
-  &:hover .DownArrow {
-    color: var(--dropdown-arrow-hover-color);
-  }
-
-  &_open .UpArrow {
-    display: block;
-  }
-
   &_open > .Options {
     max-height: none;
     visibility: visible;
+  }
+
+  &:hover:has(> .Options:not(:hover)) {
+    & > .Select {
+      border-color: var(--dropdown-border-hover-color);
+    }
+
+    & .Arrow {
+      color: var(--dropdown-arrow-hover-color);
+    }
   }
 }

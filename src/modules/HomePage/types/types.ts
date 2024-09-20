@@ -1,5 +1,5 @@
 export type Picture = {
-  src: string;
+  image: string;
   to: string;
   label: string;
   alt: string;
