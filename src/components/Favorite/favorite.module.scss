@@ -1,0 +1,31 @@
+.cart {
+  display: flex;
+  min-height: 100%;
+
+  &_h1 {
+    margin: 0;
+
+    &_contain {
+      margin-bottom: 40px;
+    }
+  }
+
+  &_img {
+    width: 550px;
+    height: 550px;
+    margin: auto;
+  }
+
+  &_page {
+    margin: 0 10%;
+  }
+
+  &_container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+
+    min-height: 72.5vh;
+  }
+}

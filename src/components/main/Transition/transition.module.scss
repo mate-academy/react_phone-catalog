@@ -1,0 +1,18 @@
+@import '/src/components/colors.scss';
+
+.transition {
+  margin: 20px auto;
+  display: flex;
+  gap: 10px;
+
+  &_link {
+    text-decoration: none;
+    color: $BUTTOM_TEXT_COLOR;
+    transition: 1s;
+
+    &:hover {
+      color: $HOVER_BUTTON_COLOR;
+      transition: 1s;
+    }
+  }
+}

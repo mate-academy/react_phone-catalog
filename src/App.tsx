@@ -7,6 +7,11 @@ import { AccessoriesProvider } from './context/AccessoriesProvider';
 import { PhonesProvider } from './context/PhonesProvider';
 import { PhonePage } from './components/PhonePage/PhonePage';
 import { ProductDetailsPage } from './components/PDP/ProductDetailsPage';
+import { FavoriteCart } from './components/Favorite/FavoriteCart';
+import { FavoriteProvider } from './context/FavoriteProvider';
+import { ShopingProvider } from './context/ShopingProvider';
+import { ShopingCart } from './components/ShopingCart/ShopingCart';
+import { Header } from './components/HomePage/Header/Header';
 
 export const App = () => {
   return (
@@ -15,25 +20,34 @@ export const App = () => {
         <TabletsProvider>
           <AccessoriesProvider>
             <PhonesProvider>
-              <Routes>
-                <Route path="/" element={<HomePage />} />
-                <Route
-                  path="/phones"
-                  element={<PhonePage filter={'phones'} />}
-                />
-                <Route
-                  path="/tablets"
-                  element={<PhonePage filter={'tablets'} />}
-                />
-                <Route
-                  path="/accessories"
-                  element={<PhonePage filter={'accessories'} />}
-                />
-                <Route
-                  path="/:category/:itemId"
-                  element={<ProductDetailsPage />}
-                />
-              </Routes>
+              <ShopingProvider>
+                <FavoriteProvider>
+                  <Header />
+                  <Routes>
+                    <Route path="/" element={<HomePage />} />
+                    <Route
+                      path="/phones"
+                      element={<PhonePage filter={'phones'} />}
+                    />
+                    <Route
+                      path="/tablets"
+                      element={<PhonePage filter={'tablets'} />}
+                    />
+                    <Route
+                      path="/accessories"
+                      element={<PhonePage filter={'accessories'} />}
+                    />
+                    <Route
+                      path="/:category/:itemId"
+                      element={<ProductDetailsPage />}
+                    />
+
+                    <Route path="/favorite" element={<FavoriteCart />} />
+                    <Route path="/shoping" element={<ShopingCart />} />
+                    <Route />
+                  </Routes>
+                </FavoriteProvider>
+              </ShopingProvider>
             </PhonesProvider>
           </AccessoriesProvider>
         </TabletsProvider>

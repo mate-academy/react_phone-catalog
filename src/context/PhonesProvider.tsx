@@ -1,5 +1,8 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import { ProductChars } from '../types';
+import { Header } from '../components/HomePage/Header/Header';
+import { Footer } from '../components/Footer/Footer';
+import { CuteLoader } from '../components/loader/CuteLoader';
 
 const PhonesContext = createContext<ProductChars[]>([]);
 
@@ -14,8 +17,10 @@ export const PhonesProvider: React.FC<{ children: React.ReactNode }> = ({
     fetch('api/phones.json')
       .then(response => response.json())
       .then(data => {
+        setTimeout(() => {
+          setLoading(false);
+        }, 1000);
         setPhones(data);
-        setLoading(false);
       })
       .catch(() => {
         setError('Failed to load phones');
@@ -25,7 +30,13 @@ export const PhonesProvider: React.FC<{ children: React.ReactNode }> = ({
 
   return (
     <PhonesContext.Provider value={phones}>
-      {loading}
+      {loading && (
+        <>
+          <Header />
+          <CuteLoader />
+          <Footer />
+        </>
+      )}
       {error && <div>{error}</div>}
       {children}
     </PhonesContext.Provider>

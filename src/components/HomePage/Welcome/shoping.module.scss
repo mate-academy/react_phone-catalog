@@ -4,7 +4,7 @@
   display: flex;
   align-items: center;
   margin-top: 25px;
-  
+
   &_img {
     object-fit: contain;
     height: 368px;
@@ -12,6 +12,17 @@
     &:last-child {
       margin-right: 0;
     }
+
+    &:hover {
+      transform: scale(1.02);
+      transition: 1s;
+      box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    }
+  }
+
+  &_text {
+    text-decoration: none;
+    color: $HOVER_BUTTON_COLOR;
   }
 
   &_second_font {

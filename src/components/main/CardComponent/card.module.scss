@@ -8,6 +8,15 @@
   height: 506px;
   margin-bottom: 40px;
 
+  box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+  transition: box-shadow 0.8s ease;
+
+
+  &:hover {
+    transition: 0.7s;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+  }
+
   &_images {
     height: 250px;
     width: 206px;
@@ -94,5 +103,15 @@
 
     border: 1px solid $CAROUSEL_BUTTOMS_COLOR;
     cursor: pointer;
+
+    &_un {
+      cursor: pointer;
+      transition: 1s;
+    }
+
+    &_ac {
+      transition: 1s;
+      background-color: #EB5757;
+    }
   }
 }

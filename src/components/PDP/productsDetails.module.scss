@@ -17,6 +17,28 @@
     object-fit: contain;
   }
 
+  &_back {
+    text-decoration: none;
+
+    &_vector {
+      color: $HOVER_BUTTON_COLOR;
+      margin-right: 10px;
+      align-items: center;
+    }
+
+    &_text {
+      color: $BUTTOM_TEXT_COLOR;
+      font-size: 14px;
+      align-items: center;
+      transition: 1s;
+
+      &:hover {
+        transition: 1s;
+        color: $HOVER_BUTTON_COLOR;
+      }
+    }
+  }
+
   &_title {
     margin: 0 10%;
   }

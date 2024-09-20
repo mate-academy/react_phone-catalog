@@ -4,7 +4,7 @@ import { useTablets } from '../../context/TabletProvider';
 import { useAccessories } from '../../context/AccessoriesProvider';
 import { useEffect, useState } from 'react';
 import { Accessories, ProductChars } from '../../types';
-import { Header } from '../HomePage/Header/header';
+import { Header } from '../HomePage/Header/Header';
 import { Footer } from '../Footer/Footer';
 import styles from './productsDetails.module.scss';
 import cardStyles from '.././main/CardComponent/card.module.scss';
@@ -16,6 +16,7 @@ import {
 import row from '../HomePage/Welcome/productSlider.module.scss';
 import buttom from '../HomePage/Welcome/homeface.module.scss';
 import classNames from 'classnames';
+import { TransitionComponent } from '../main/Transition/TransitionComponent';
 
 type Device = ProductChars | Accessories;
 
@@ -154,7 +155,18 @@ export const ProductDetailsPage: React.FC = () => {
       <Header />
 
       <div className={styles.product_title}>
-        <div>{`home > ${category} > ${items.name}`}</div>
+        <TransitionComponent filter={category} itemName={items.name} />
+
+        <NavLink to={`/${category}`} className={styles.product_back}>
+          <span>
+            <img
+              className={styles.product_back_vector}
+              src="img/Vector_left.svg"
+              alt="vector"
+            />
+            <span className={styles.product_back_text}>Back</span>
+          </span>
+        </NavLink>
 
         <div>
           <h1 className={styles.product_h1}>{items.name}</h1>

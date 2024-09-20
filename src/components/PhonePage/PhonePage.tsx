@@ -2,10 +2,12 @@ import { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { useProducts } from '../../context/ProductsProvider';
 import { Footer } from '../Footer/Footer';
-import { Header } from '../HomePage/Header/header';
+import { Header } from '../HomePage/Header/Header';
 import { CardComponent } from '../main/CardComponent/CardComponent';
 import styles from './phonePage.module.scss';
 import stylePage from '../HomePage/Welcome/homeface.module.scss';
+import { TransitionComponent } from '../main/Transition/TransitionComponent';
+import { Loader } from '../loader/Loader';
 
 interface Props {
   filter: string;
@@ -19,6 +21,7 @@ export const PhonePage: React.FC<Props> = ({ filter }) => {
 
   const [SearchParams, setSearchParams] = useSearchParams();
   const [sortItems, setSortItems] = useState(products);
+  const [loaded, setLoaded] = useState(true);
 
   const sortQuery = SearchParams.get('sort') || 'Newest';
   const perPageQuery = +(SearchParams.get('perPage') || 'all');
@@ -102,47 +105,80 @@ export const PhonePage: React.FC<Props> = ({ filter }) => {
     const endIndex = startIndex + perPageQuery;
 
     setSortItems(filteredProducts.slice(startIndex, endIndex));
+
+    if (products.length > 0) {
+      const timer = setTimeout(() => {
+        setLoaded(false);
+      }, 1000);
+
+      return () => clearTimeout(timer);
+    }
+
+    setLoaded(false);
+    window.scrollTo(0, 0);
+
+    return;
   }, [products, filter, pageQuery, perPageQuery]);
 
   useEffect(() => {
     sort(sortQuery);
+    window.scrollTo(0, 0);
   }, [sortQuery, filter]);
 
   return (
     <div>
       <Header />
       <div className={stylePage.home_page}>
-        <div className={styles.phone}>
-          <span>123</span>
-          <span>{' > '}</span>
-          <div className={styles.phone_head}>{filter}</div>
-        </div>
+        <TransitionComponent filter={filter} />
 
         <div className={styles.phone_head}>
-          <h1 className={styles.phone_h1}>{`${filter} page`}</h1>
-          <span>{`${filteredPhones.length} models`}</span>
+          <div className={styles.phone_head_contain}>
+            <h1 className={styles.phone_h1}>{`${filter} page`}</h1>
+            <span
+              className={styles.phone_head_span}
+            >{`${filteredPhones.length} models`}</span>
+          </div>
 
           <div className={styles.phone_select}>
             <form action="select">
-              <label htmlFor="Sort by">Sort by</label>
+              <label htmlFor="Sort by" className={styles.phone_label}>
+                Sort by
+              </label>
 
-              <div>
-                <select name="char" id="0" onChange={handleSortChange}>
+              <div className={styles.phone_sections_container}>
+                <select
+                  name="char"
+                  onChange={handleSortChange}
+                  className={styles.phone_sections}
+                >
                   {sortItemsOnPage.map(option => (
-                    <option key={option} value={option}>
+                    <option
+                      key={option}
+                      value={option}
+                      className={styles.phone_options}
+                    >
                       <a href={`?sort=${option}`}></a>
                       {option}
                     </option>
                   ))}
+
+                  <img src="img/vector_up.png" alt="icon" />
                 </select>
               </div>
             </form>
 
             <form action="select">
-              <label htmlFor="Items of page">Items of page</label>
+              <label htmlFor="Items of page" className={styles.phone_label}>
+                Items of page
+              </label>
 
               <div>
-                <select name="char" id="0" onChange={handlePerPageItems}>
+                <select
+                  name="char"
+                  id="0"
+                  onChange={handlePerPageItems}
+                  className={styles.phone_sections}
+                >
                   {itemsPerPageOptions.map(option => (
                     <option key={option} value={option}>
                       {option}
@@ -154,6 +190,8 @@ export const PhonePage: React.FC<Props> = ({ filter }) => {
           </div>
         </div>
 
+        {loaded && <Loader />}
+
         <div className={styles.phone_row_container}>
           <div className={styles.phone_row}>
             {sortItems.map(phone => (
@@ -164,23 +202,25 @@ export const PhonePage: React.FC<Props> = ({ filter }) => {
           {totalPages > 1 && (
             <div>
               <ul className={styles.ul_containter}>
-                <li className={styles.li}>
-                  <button onClick={() => handlePageClick(pageQuery - 1)}>
-                    «
+                <li>
+                  <button
+                    onClick={() => handlePageClick(pageQuery - 1)}
+                    className={styles.li}
+                  >
+                    <img src="img/Vector_left.svg" alt="" />
                   </button>
                 </li>
                 {Array.from({ length: totalPages }, (_, i) => (
-                  <li
-                    key={i + 1}
-                    className={styles.li}
-                    onClick={() => handlePageClick(i + 1)}
-                  >
-                    <button>{i + 1}</button>
+                  <li key={i + 1} onClick={() => handlePageClick(i + 1)}>
+                    <button className={styles.li}>{i + 1}</button>
                   </li>
                 ))}
-                <li className={styles.li}>
-                  <button onClick={() => handlePageClick(pageQuery + 1)}>
-                    »
+                <li>
+                  <button
+                    onClick={() => handlePageClick(pageQuery + 1)}
+                    className={styles.li}
+                  >
+                    <img src="img/Vector_right.svg" alt="" />
                   </button>
                 </li>
               </ul>
