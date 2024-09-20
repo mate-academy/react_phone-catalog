@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { images } from '../../api/api/apiImage';
 import './MainSlider.scss';
+import { images } from '../../public/api/apiImage';
 
 export const MainSlider: React.FC = () => {
   const [currentIndex, setCurrentIndex] = useState(0);

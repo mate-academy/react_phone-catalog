@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { Cart } from '../../components/Cart';
-import accessoriesData from '../../api/api/accessories.json';
+import accessoriesData from '../../public/api/accessories.json';
 import './Accessories.scss';
 import { Product } from '../../types';
 import { BackButton } from '../../components/BackButton';
