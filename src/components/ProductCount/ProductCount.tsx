@@ -11,8 +11,9 @@ type Props = {
 
 export const ProductCount: React.FC<Props> = ({ product }) => {
   const { cart, addToCart, setCart } = useContext(CatalogContext);
-  const _ = require('lodash');
-  const numberOfProduct = _.countBy(cart, 'name');
+  // eslint-disable-next-line @typescript-eslint/no-var-requires
+  const addInfo = require('lodash');
+  const numberOfProduct = addInfo.countBy(cart, 'name');
   const productName = product.name;
 
   const currentCount = numberOfProduct[productName];
@@ -41,7 +42,6 @@ export const ProductCount: React.FC<Props> = ({ product }) => {
       <button
         className="product-count__btn icon icon--plus"
         onClick={() => {
-          console.log(cart);
           addToCart(product);
         }}
       ></button>

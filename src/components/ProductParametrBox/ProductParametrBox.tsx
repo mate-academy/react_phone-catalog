@@ -1,19 +1,22 @@
-import React from "react"
-import classNames from "classnames"
-import { Phone } from "../../types/Phone"
-import { Tablet } from "../../types/Tablet"
-import { Accessory } from "../../types/Accessory"
-import { Link } from "react-router-dom"
+import React from 'react';
+import classNames from 'classnames';
+import { Phone } from '../../types/Phone';
+import { Tablet } from '../../types/Tablet';
+import { Accessory } from '../../types/Accessory';
+import { Link } from 'react-router-dom';
 
 type Props = {
-  currentProduct: Phone | Tablet | Accessory | undefined,
-  parametr: string,
-}
+  currentProduct: Phone | Tablet | Accessory | undefined;
+  parametr: string;
+};
 
-export const ProductParametrBox: React.FC<Props> = ({ currentProduct, parametr }) => {
+export const ProductParametrBox: React.FC<Props> = ({
+  currentProduct,
+  parametr,
+}) => {
   if (!currentProduct) {
     return null;
-  };
+  }
 
   let values;
 
@@ -21,10 +24,14 @@ export const ProductParametrBox: React.FC<Props> = ({ currentProduct, parametr }
     let result = `/${currentProduct.category}/${currentProduct.namespaceId}-`;
 
     if (!!+value.slice(0, 1)) {
-      result = result + `${value.toLowerCase()}-${currentProduct.color.toLowerCase().replace(/ /g, "-")}`
+      result =
+        result +
+        `${value.toLowerCase()}-${currentProduct.color.toLowerCase().replace(/ /g, '-')}`;
     } else {
-      result = result + `${currentProduct.capacity.toLowerCase()}-${value.toLowerCase().replace(/ /g, "-")}`
-    };
+      result =
+        result +
+        `${currentProduct.capacity.toLowerCase()}-${value.toLowerCase().replace(/ /g, '-')}`;
+    }
 
     return result;
   };
@@ -41,20 +48,25 @@ export const ProductParametrBox: React.FC<Props> = ({ currentProduct, parametr }
   }
 
   return (
-    <div className={`product-parametr-box product__parametr-box product__parametr-box--${parametr}`}>
+    <div
+      className={`product-parametr-box product__parametr-box product__parametr-box--${parametr}`}
+    >
       {values.map((value, index) => (
         <Link
           key={index}
           to={currentLink(value)}
-          className={classNames(`product-parametr-box__link product-parametr-box__link-${parametr} product-parametr-box__link-${parametr}--${value}`,
+          className={classNames(
+            `product-parametr-box__link product-parametr-box__link-${parametr} product-parametr-box__link-${parametr}--${value}`,
             {
-              '_active': currentProduct[parametr as keyof typeof currentProduct] === value,
-            })
-          }
+              _active:
+                currentProduct[parametr as keyof typeof currentProduct] ===
+                value,
+            },
+          )}
         >
           {parametr !== 'color' && value}
         </Link>
       ))}
     </div>
-  )
-}
+  );
+};

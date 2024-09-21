@@ -14,6 +14,7 @@ interface ProductItemProps {
 
 type LinkTo = {
   pathname: string;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   state?: any;
 };
 
@@ -63,7 +64,10 @@ export const ProductItem: React.FC<ProductItemProps> = ({
             <span className="product-item__info-titel product-item__info-side">
               Screen
             </span>
-            <span className="product-item__info-description product-item__info-side">
+            <span
+              className="
+              product-item__info-description product-item__info-side"
+            >
               {product.screen}
             </span>
           </div>

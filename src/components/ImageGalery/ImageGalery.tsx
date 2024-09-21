@@ -1,18 +1,20 @@
-import React, { useEffect, useState } from "react"
-import { Phone } from "../../types/Phone"
-import { Tablet } from "../../types/Tablet"
-import { Accessory } from "../../types/Accessory"
+import React, { useEffect, useState } from 'react';
+import { Phone } from '../../types/Phone';
+import { Tablet } from '../../types/Tablet';
+import { Accessory } from '../../types/Accessory';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { EffectFade, Thumbs } from 'swiper/modules';
-import { useLocation } from "react-router-dom";
+import { useLocation } from 'react-router-dom';
 
 type Props = {
-  currentProduct: Phone | Tablet | Accessory | undefined,
-}
+  currentProduct: Phone | Tablet | Accessory | undefined;
+};
 
 export const ImageGalery: React.FC<Props> = ({ currentProduct }) => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [thumbsSwiper, setThumbsSwiper] = useState<any>(null);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [currentSwiper, setCurrentSwiper] = useState<any>(null);
   const location = useLocation();
 
@@ -23,10 +25,9 @@ export const ImageGalery: React.FC<Props> = ({ currentProduct }) => {
         thumbsSwiper.params.initialSlide = 0;
         thumbsSwiper.update();
         currentSwiper.slideTo(0);
-      }, 100)
+      }, 100);
     }
-
-  }, [location.pathname, thumbsSwiper]);
+  }, [currentSwiper, location.pathname, thumbsSwiper]);
 
   return (
     <main className="image-galery">
@@ -43,7 +44,7 @@ export const ImageGalery: React.FC<Props> = ({ currentProduct }) => {
           },
           0: {
             direction: 'horizontal',
-          }
+          },
         }}
       >
         {currentProduct?.images.map((image, index) => (
@@ -55,7 +56,6 @@ export const ImageGalery: React.FC<Props> = ({ currentProduct }) => {
               src={`${image}`}
               alt="main-image"
               className="image-galery__main-image"
-
             />
           </SwiperSlide>
         ))}
@@ -75,7 +75,7 @@ export const ImageGalery: React.FC<Props> = ({ currentProduct }) => {
           },
           0: {
             direction: 'horizontal',
-          }
+          },
         }}
       >
         {currentProduct?.images.map((image, index) => (
@@ -93,5 +93,5 @@ export const ImageGalery: React.FC<Props> = ({ currentProduct }) => {
         ))}
       </Swiper>
     </main>
-  )
-}
+  );
+};
