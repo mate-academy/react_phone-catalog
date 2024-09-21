@@ -1,10 +1,4 @@
-import React, {
-  createContext,
-  useContext,
-  useState,
-  useEffect,
-  useCallback,
-} from 'react';
+import React, { createContext, useContext, useState, useEffect } from 'react';
 
 interface MenuContextType {
   isOpen: boolean;
@@ -22,14 +16,18 @@ export const MenuContext = createContext<MenuContextType | undefined>(
 export const MenuProvider: React.FC<Props> = ({ children }) => {
   const [isOpen, setIsOpen] = useState(false);
 
-  const toggleMenu = useCallback(() => {
+  const toggleMenu = () => {
+    if (window.innerWidth > 640) {
+      setIsOpen(!isOpen);
+    }
+
     setIsOpen(prevIsOpen => !prevIsOpen);
-  }, []);
+  };
 
   useEffect(() => {
     const body = document.body;
 
-    if (isOpen) {
+    if (isOpen && window.innerWidth < 640) {
       const scrollY = window.scrollY;
 
       body.style.position = 'fixed';
