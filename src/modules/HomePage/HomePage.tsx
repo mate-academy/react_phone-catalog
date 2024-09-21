@@ -1,35 +1,37 @@
-import { FC, useEffect, useState } from 'react';
+import { FC, useCallback, useEffect, useState } from 'react';
 import { PictureSlider } from './components/PictureSlider';
 import { ProductSlider } from '../../components/ProductSlider/ProductSlider';
 import { Category } from './components/Categories/Category';
 import { getHotPriceProducts, getNewProducts } from '../../services/Product';
 
 import styles from './HomePage.module.scss';
-import { useCatalog } from '../../contexts/CatalogProvider';
+import { Product } from '../../types/Product';
 
 export const HomePage: FC = () => {
-  const { hotProducts, setHotProducts, newProducts, setNewProducts } =
-    useCatalog();
+  const [hotProducts, setHotProducts] = useState<Product[]>([]);
+  const [newProducts, setNewProducts] = useState<Product[]>([]);
   const [isLoading, setIsLoading] = useState(true);
 
+  const fetchProducts = useCallback(async () => {
+    try {
+      const [fetchedHotProducts, fetchedNewProducts] = await Promise.all([
+        getHotPriceProducts(),
+        getNewProducts(),
+      ]);
+
+      setHotProducts(fetchedHotProducts);
+      setNewProducts(fetchedNewProducts);
+    } catch (error) {
+      // eslint-disable-next-line
+      console.error('Error fetching products:', error);
+    } finally {
+      setIsLoading(false);
+    }
+  }, [setHotProducts, setNewProducts]);
+
   useEffect(() => {
-    const fetchProducts = async () => {
-      try {
-        const [fetchedHotProducts, fetchedNewProducts] = await Promise.all([
-          getHotPriceProducts(),
-          getNewProducts(),
-        ]);
-
-        setHotProducts(fetchedHotProducts);
-        setNewProducts(fetchedNewProducts);
-      } finally {
-        setIsLoading(false);
-      }
-    };
-
     fetchProducts();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [fetchProducts]);
 
   return (
     <div className={styles.home}>
