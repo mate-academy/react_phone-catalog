@@ -96,3 +96,27 @@
     padding: 0 16px;
   }
 }
+
+%pulse {
+  position: relative;
+  overflow: hidden;
+  border-radius: 4px;
+
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    animation: shimmer 1.0s infinite;
+    height: 100%;
+    transform: translateX(-100%);
+    z-index: 1;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      var(--color-skeleton-pulse),
+      transparent
+    );
+  }
+}

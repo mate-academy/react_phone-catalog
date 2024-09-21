@@ -6,6 +6,7 @@
 
 .categoriesTitle {
   @extend %h2-tablet;
+
   margin-bottom: 24px;
 
   @include on-mobile {
@@ -40,10 +41,12 @@
 
 .itemTitle {
   @extend %h4-tablet;
+  
   margin-bottom: 4px;
 }
 
 .itemCountModels {
   @extend %body-text;
+
   color: var(--color-secondary);
 }

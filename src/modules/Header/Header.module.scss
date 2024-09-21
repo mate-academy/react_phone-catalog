@@ -6,9 +6,6 @@
   align-items: center;
   border-bottom: 1px solid var(--color-elements);
   background-color: var(--color-background);
-  transition:
-    border-bottom $transition-duration,
-    background-color $transition-duration;
   gap: 24px;
   position: sticky;
   top: 0;
@@ -47,7 +44,6 @@
 .content {
   display: flex;
   justify-content: space-between;
-  transition: all $transition-duration;
   background-color: var(--color-background);
   flex: 1;
 
@@ -60,7 +56,6 @@
     height: calc(100vh - 49px);
     background-color: var(--color-background);
     transform: translateY(-120%);
-    transition: transform $transition-duration;
   }
 }
 

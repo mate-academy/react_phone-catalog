@@ -5,15 +5,29 @@ import 'swiper/css/navigation';
 import { Navigation, FreeMode } from 'swiper/modules';
 import { SwiperButton } from '../SwiperButton/SwiperButton';
 import { useIconSrc } from '../../utils/hooks/useIconSrc';
+import { Product } from '../../types/Product';
+import { ProductCard } from '../ProductCard';
 import styles from './ProductSlider.module.scss';
+import { SkeletonCard } from '../SkeletonCard/SkeletonCard';
 
 type ProductSliderProps = {
   title: string;
   mb?: boolean;
+  products: Product[];
+  showFullPrice?: boolean | undefined;
+  isLoading: boolean;
 };
 
-export const ProductSlider: FC<ProductSliderProps> = ({ title, mb }) => {
+export const ProductSlider: FC<ProductSliderProps> = ({
+  title,
+  mb,
+  products,
+  showFullPrice,
+  isLoading,
+}) => {
   const { arrowLeftUrl, arrowRightUrl } = useIconSrc();
+
+  const skeletonCount = 6;
 
   return (
     <div className={styles.productContainer}>
@@ -53,26 +67,21 @@ export const ProductSlider: FC<ProductSliderProps> = ({ title, mb }) => {
           <img src={arrowRightUrl} alt="arrowRight" />
         </SwiperButton>
 
-        {[
-          { id: 1 },
-          { id: 2 },
-          { id: 3 },
-          { id: 4 },
-          { id: 5 },
-          { id: 6 },
-          { id: 7 },
-          { id: 33 },
-          { id: 43 },
-          { id: 53 },
-          { id: 63 },
-          { id: 73 },
-        ].map(item => {
-          return (
-            <SwiperSlide key={item.id} className={styles.productSlide}>
-              <div className="">Side {item.id}</div>
-            </SwiperSlide>
-          );
-        })}
+        {(() => {
+          if (isLoading) {
+            return Array.from({ length: skeletonCount }).map((_, index) => (
+              <SwiperSlide key={index} className={styles.productSlide}>
+                <SkeletonCard />
+              </SwiperSlide>
+            ));
+          } else {
+            return products.map(item => (
+              <SwiperSlide key={item.id} className={styles.productSlide}>
+                <ProductCard product={item} fullPriceOnCard={showFullPrice} />
+              </SwiperSlide>
+            ));
+          }
+        })()}
       </Swiper>
     </div>
   );

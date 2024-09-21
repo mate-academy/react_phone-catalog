@@ -1,11 +1,19 @@
 @import '../../styles/main';
 
 .productContainer {
-  padding: 0 0 0 32px;
+  padding: 0 32px;
   margin: 0 auto;
   max-width: $breakpoint-desktop;
   width: 100%;
   overflow: hidden;
+
+  /* stylelint-disable-next-line selector-pseudo-class-no-unknown */
+  :global {
+
+    .swiper {
+      overflow: visible;
+    }
+  }
 
   @include on-tablet {
     padding: 0 0 0 24px;
@@ -15,13 +23,6 @@
     height: auto;
     padding: 0;
     padding-left: 16px;
-  }
-
-  /* stylelint-disable-next-line selector-pseudo-class-no-unknown */
-  :global {
-    .swiper {
-      overflow: visible;
-    }
   }
 }
 
@@ -42,7 +43,20 @@
   /* stylelint-disable-next-line selector-pseudo-class-no-unknown */
   :global {
     .swiper-wrapper {
-      height: 100%;
+      max-width: 1136px;
+    }
+
+    .swiper-slide {
+      width: 272px;
+      flex: 1;
+
+      @include on-desktop {
+        width: 237px;
+      }
+
+      @include on-mobile {
+        width: 212px;
+      }
     }
 
     .swiper-button-next::after,
@@ -73,32 +87,24 @@
 .productButtonPrev {
   right: 50px;
   left: auto;
+
   @include on-desktop {
     right: 82px;
   }
+
   @include on-mobile {
     right: 66px;
   }
 }
+
 .productButtonNext {
   right: 0;
+
   @include on-desktop {
     right: 32px;
   }
+
   @include on-mobile {
     right: 16px;
   }
-}
-
-.productSlide {
-  display: flex;
-  text-align: center;
-  justify-content: center;
-  align-items: center;
-  width: 272px;
-  height: 506px;
-  padding: 32px;
-
-  background-color: var(--color-icons);
-  border: 1px solid var(--color-elements);
 }

@@ -17,7 +17,6 @@
 
 .footer {
   box-shadow: 0 -1px 0 0 var(--color-elements);
-  transition: box-shadow $transition-duration;
   background-color: var(--color-background);
   margin-top: 80px;
 
@@ -111,13 +110,11 @@
   height: 32px;
   background-color: var(--color-icons);
   border: 1px solid var(--color-surface);
-  transition: border $transition-duration;
   cursor: pointer;
   justify-content: center;
   align-items: center;
 
   &:hover {
-    transition: border $transition-duration;
     border: 1px solid var(--color-primary);
     background-color: var(--color-hover);
   }

@@ -6,13 +6,16 @@ import 'bulma/css/bulma.css';
 import '@fortawesome/fontawesome-free/css/all.css';
 import { AppRouter } from './router/AppRouter';
 import { MenuProvider } from './contexts/MenuProvider';
+import { CatalogProvider } from './contexts/CatalogProvider';
 
 createRoot(document.getElementById('root') as HTMLDivElement).render(
-  <ThemeProvider>
-    <Router>
-      <MenuProvider>
-        <AppRouter />
-      </MenuProvider>
-    </Router>
-  </ThemeProvider>,
+  <CatalogProvider>
+    <ThemeProvider>
+      <Router>
+        <MenuProvider>
+          <AppRouter />
+        </MenuProvider>
+      </Router>
+    </ThemeProvider>
+  </CatalogProvider>,
 );

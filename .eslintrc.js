@@ -4,4 +4,9 @@ module.exports = {
     'plugin:cypress/recommended',
   ],
   rules: {},
+  settings: {
+    react: {
+      version: 'detect',
+    },
+  },
 };

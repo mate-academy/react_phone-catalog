@@ -10,15 +10,22 @@ type Props = {
   children: React.ReactNode;
 };
 
+const getInitialTheme = (): ThemeType => {
+  const savedTheme = localStorage.getItem('theme');
+
+  return savedTheme === ThemeType.DARK ? ThemeType.DARK : ThemeType.LIGHT;
+};
+
 export const ThemeContext = createContext<ThemeContextType | undefined>(
   undefined,
 );
 
 export const ThemeProvider: React.FC<Props> = ({ children }) => {
-  const [theme, setTheme] = useState(ThemeType.LIGHT);
+  const [theme, setTheme] = useState<ThemeType>(getInitialTheme);
 
   useEffect(() => {
     document.body.setAttribute('data-theme', theme);
+    localStorage.setItem('theme', theme);
   }, [theme]);
 
   const toggleTheme = () => {

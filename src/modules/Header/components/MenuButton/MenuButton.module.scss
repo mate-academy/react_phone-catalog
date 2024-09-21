@@ -5,15 +5,13 @@
 }
 
 .showMenuButton {
-  display: none;
-  transition: all $transition-duration;
+  display: none; 
 
   @include on-mobile {
     display: flex;
     align-items: center;
     justify-content: center;
     border-left: 1px solid var(--color-elements);
-    transition: all $transition-duration;
   }
 }
 

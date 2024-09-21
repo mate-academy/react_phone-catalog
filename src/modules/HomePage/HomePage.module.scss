@@ -8,6 +8,7 @@
   @include on-desktop {
     gap: 64px;
   }
+  
   @include on-tablet {
     gap: 56px;
   }
