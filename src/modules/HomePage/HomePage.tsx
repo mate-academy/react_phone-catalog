@@ -28,7 +28,8 @@ export const HomePage: FC = () => {
     };
 
     fetchProducts();
-  }, [hotProducts, newProducts, setHotProducts, setNewProducts]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <div className={styles.home}>
