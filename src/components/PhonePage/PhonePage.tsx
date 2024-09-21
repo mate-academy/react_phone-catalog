@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { Footer } from '../Footer/Footer';
-import { Header } from '../HomePage/Header/Header';
+import { Header } from '../HomePage/Header/HeaderComponent';
 import { CardComponent } from '../main/CardComponent/CardComponent';
 import styles from './phonePage.module.scss';
 import stylePage from '../HomePage/Welcome/homeface.module.scss';
@@ -38,7 +38,7 @@ export const PhonePage: React.FC<Props> = ({ filter }) => {
     switch (type) {
       case 'Newest':
         sortedPhones = [...phones].sort((a, b) => {
-          if (b.year >= a.year) {
+          if (b.year === a.year) {
             return b.price - a.price;
           }
 

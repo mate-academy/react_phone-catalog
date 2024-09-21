@@ -1,7 +1,7 @@
 import { NavLink, useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { Accessories, ProductChars } from '../../types';
-import { Header } from '../HomePage/Header/Header';
+import { Header } from '../HomePage/Header/HeaderComponent';
 import { Footer } from '../Footer/Footer';
 import styles from './productsDetails.module.scss';
 import cardStyles from '.././main/CardComponent/card.module.scss';
@@ -21,7 +21,7 @@ type Device = ProductChars | Accessories;
 export const ProductDetailsPage: React.FC = () => {
   const [selectedImage, setSelectedImage] = useState(0);
   const [currentSlide, setCurrentSlide] = useState(0);
-  const [items, setItems] = useState<Device | undefined>(undefined);
+  const [items, setItems] = useState<Device>();
   const [relatedProducts, setRelatedProducts] = useState<Device[]>([]);
   const isSelectCapacity = ({ isActive }: { isActive: boolean }) =>
     isActive
@@ -40,7 +40,7 @@ export const ProductDetailsPage: React.FC = () => {
   const { tablets } = useDevices();
   const { accessories } = useDevices();
 
-  const totalSlides = items ? phones.length : 0;
+  const totalSlides = relatedProducts.length;
 
   const findByCapacity = (
     namespaceId: string,
@@ -364,9 +364,7 @@ export const ProductDetailsPage: React.FC = () => {
             <div className={row.slider_buttons}>
               <button
                 className={classNames(buttom.product_slide_buttons)}
-                onClick={() =>
-                  previousSlide({ currentSlide, setCurrentSlide, totalSlides })
-                }
+                onClick={() => previousSlide({ currentSlide, setCurrentSlide })}
               >
                 &lt;
               </button>

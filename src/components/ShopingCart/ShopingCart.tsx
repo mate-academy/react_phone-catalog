@@ -1,5 +1,5 @@
 import { Footer } from '../Footer/Footer';
-import { Header } from '../HomePage/Header/Header';
+import { Header } from '../HomePage/Header/HeaderComponent';
 import styles from './shopingcart.module.scss';
 import imgstyles from '../Favorite/favorite.module.scss';
 import { useEffect, useState } from 'react';

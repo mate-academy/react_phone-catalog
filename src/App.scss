@@ -4,4 +4,8 @@
 body {
   margin: 0;
   font-family: 'Mont';
+
+  @media screen and (max-width: 1199px) {
+    max-width: 1199px;
+  }
 }

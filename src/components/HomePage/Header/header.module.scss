@@ -22,6 +22,10 @@
     color: $BUTTOM_TEXT_COLOR;
     text-decoration: none;
 
+    @media screen and (max-width: 1200px) {
+      margin: 0px 10px;
+    }
+
     &:hover {
       color: $HOVER_BUTTON_COLOR;
     }
@@ -68,6 +72,10 @@
     height: 100%;
     border: 1px solid $BORDER_COLOR;
     background-color: #fff;
+
+    @media screen and (max-width: 1199px) {
+      padding: 25px 20px;
+    }
 
     &:hover {
       border-color: $BORDER_COLOR;

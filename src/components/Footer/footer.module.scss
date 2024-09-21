@@ -13,6 +13,10 @@
     text-decoration: none;
     color: $BUTTOM_TEXT_COLOR;
 
+    @media screen and (max-width: 1199px) {
+      margin-right: 25px;
+    }
+
     &:last-child {
       margin-right: 0;
     }

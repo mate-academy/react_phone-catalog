@@ -5,10 +5,21 @@
   align-items: center;
   margin-top: 25px;
 
+  @media screen and (max-width: 1199px) {
+    justify-content: center;
+  }
+
   &_img {
     object-fit: contain;
     height: 368px;
     margin-right: 16px;
+
+    @media screen and (max-width: 1199px) {
+      max-width: 95%;
+      max-height: 200px;
+      min-height: 187px;
+    }
+
     &:last-child {
       margin-right: 0;
     }

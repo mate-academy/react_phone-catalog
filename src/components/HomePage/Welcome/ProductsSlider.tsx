@@ -52,38 +52,40 @@ export const ProductsSlider = () => {
 
   return (
     <>
-      <div className={row.slider}>
-        <div>
-          <h2 className={styles.home_font_h2}>Brand new models</h2>
+      <div className={row.slider_shop_container}>
+        <div className={row.slider}>
+          <div>
+            <h2 className={styles.home_font_h2}>Brand new models</h2>
+          </div>
+
+          <div className={row.slider_buttons}>
+            <button
+              className={classNames(styles.product_slide_buttons)}
+              onClick={previosSlide}
+            >
+              &lt;
+            </button>
+
+            <button
+              className={classNames(styles.product_slide_buttons)}
+              onClick={nextSlide}
+            >
+              &gt;
+            </button>
+          </div>
         </div>
 
-        <div className={row.slider_buttons}>
-          <button
-            className={classNames(styles.product_slide_buttons)}
-            onClick={previosSlide}
+        <div className={row.slider_container}>
+          <div
+            className={row.slider_card}
+            style={{
+              transform: `translateX(calc(-${currentSlide * 25}%))`,
+            }}
           >
-            &lt;
-          </button>
-
-          <button
-            className={classNames(styles.product_slide_buttons)}
-            onClick={nextSlide}
-          >
-            &gt;
-          </button>
-        </div>
-      </div>
-
-      <div className={row.slider_container}>
-        <div
-          className={row.slider_card}
-          style={{
-            transform: `translateX(calc(-${currentSlide * 25}%))`,
-          }}
-        >
-          {productsByYear.map(product => (
-            <CardComponent key={product.id} devices={product} />
-          ))}
+            {productsByYear.map(product => (
+              <CardComponent key={product.id} devices={product} />
+            ))}
+          </div>
         </div>
       </div>
 

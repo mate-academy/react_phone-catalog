@@ -7,26 +7,27 @@
   grid-template-columns: repeat(24, 32px);
   gap: 16px;
 
+  @media screen and (max-width: 1200px) {
+    grid-template-columns: repeat(12, 32px);
+    margin: 0 10px;
+  }
+
   &_h1 {
     grid-column: 1 / 20;
-  }
 
-  &_h2 {
-    grid-column: 1 / 15;
-  }
-
-  &_h2_button_left {
-    grid-column: 23 / 24;
-  }
-
-  &_h2_button_right {
-    grid-column: 24 / 25;
+    @media screen and (max-width: 1200px) {
+      grid-column: 1 / 10;
+    }
   }
 
   &_carousel {
     height: 100%;
 
     grid-column: 2 / 24;
+
+    @media screen and (max-width: 1200px) {
+      grid-column: 2 / 12;
+    }
   }
 
   &_left_button {
@@ -40,6 +41,10 @@
     border: 1px solid $CAROUSEL_BUTTOMS_COLOR;
     text-decoration: none;
     grid-column: 1;
+
+    @media screen and (max-width: 1200px) {
+      height: 87.5%;
+    }
 
     &:hover {
       transition: 0.7s;
@@ -61,10 +66,18 @@
     grid-column: 24 / 25;
     color: $CAROUSEL_BUTTOMS_COLOR;
 
+    @media screen and (max-width: 1200px) {
+      height: 87.5%;
+    }
+
     &:hover {
       color: $HOVER_BUTTON_COLOR;
       transition: 0.7s;
       opacity: 45%;
+    }
+
+    @media screen and (max-width: 1200px) {
+      grid-column: 12 / 12;
     }
   }
 

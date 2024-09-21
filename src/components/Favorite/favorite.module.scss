@@ -18,6 +18,10 @@
 
   &_page {
     margin: 0 10%;
+
+    @media screen and (max-width: 1199px) {
+      margin: 0 2%;
+    }
   }
 
   &_container {

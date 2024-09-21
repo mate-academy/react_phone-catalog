@@ -15,6 +15,12 @@
     height: 464px;
     width: 464px;
     object-fit: contain;
+
+    @media screen and (max-width: 1199px) {
+      max-height: 250px;
+      height: auto;
+      width: auto;
+    }
   }
 
   &_back {
@@ -41,6 +47,10 @@
 
   &_title {
     margin: 0 10%;
+
+    @media screen and (max-width: 1199px) {
+      margin: 0 5%;
+    }
   }
 
   &_titlecontainer {
@@ -156,6 +166,12 @@
       cursor: pointer;
       border: 1px solid $CAROUSEL_IMG;
       padding: 5px;
+
+      @media screen and (max-width: 1199px) {
+        height: 100%;
+        max-height: 30px;
+        max-width: 30px;
+      }
     }
 
     & img.active {
@@ -169,6 +185,10 @@
     gap: 65px;
 
     margin-bottom: 100px;
+
+    @media screen and (max-width: 1199px) {
+      flex-direction: column;
+    }
 
     &_title {
       font-size: 22px;
@@ -184,6 +204,10 @@
       gap: 32px;
 
       width: 50%;
+
+      @media screen and (max-width: 1199px) {
+        width: 100%;
+      }
 
       &_title {
         color: $HOVER_BUTTON_COLOR;
@@ -201,6 +225,10 @@
       flex-direction: column;
       gap: 10px;
       width: 50%;
+
+      @media screen and (max-width: 1199px) {
+        width: 100%;
+      }
 
       &_left {
         color: $BUTTOM_TEXT_COLOR;

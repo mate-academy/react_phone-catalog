@@ -1,5 +1,5 @@
 import { Footer } from '../Footer/Footer';
-import { Header } from '../HomePage/Header/Header';
+import { Header } from '../HomePage/Header/HeaderComponent';
 import { CardComponent } from '../main/CardComponent/CardComponent';
 import { TransitionComponent } from '../main/Transition/TransitionComponent';
 import { useEffect, useState } from 'react';

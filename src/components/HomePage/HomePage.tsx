@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
-import { Header } from './Header/Header';
 import { HomeFace } from './Welcome/HomeFace';
 import { CuteLoader } from '../loader/CuteLoader';
+import { Header } from './Header/HeaderComponent';
 
 export const HomePage = () => {
   const [loader, setLoader] = useState(true);

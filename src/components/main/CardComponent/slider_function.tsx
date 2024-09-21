@@ -4,6 +4,11 @@ type NextSlideParams = {
   totalSlides: number;
 };
 
+type PrevSlide = {
+  currentSlide: number;
+  setCurrentSlide: (slide: number) => void;
+};
+
 export const nextSlide = ({
   currentSlide,
   setCurrentSlide,
@@ -14,12 +19,8 @@ export const nextSlide = ({
   setCurrentSlide(nextSlides);
 };
 
-export const previousSlide = ({
-  currentSlide,
-  setCurrentSlide,
-  totalSlides,
-}: NextSlideParams) => {
-  const prevSlide = currentSlide === 0 ? totalSlides - 1 : currentSlide - 1;
+export const previousSlide = ({ currentSlide, setCurrentSlide }: PrevSlide) => {
+  const prevSlides = currentSlide === 0 ? 0 : currentSlide - 1;
 
-  setCurrentSlide(prevSlide);
+  setCurrentSlide(prevSlides);
 };

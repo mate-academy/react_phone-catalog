@@ -12,6 +12,10 @@
 
     display: flex;
     margin: 30px 10vh;
+
+    @media screen and (max-width: 1199px) {
+      margin: 5% 3%;
+    }
   }
 
   &_container {
@@ -19,6 +23,14 @@
     justify-content: center;
     gap: 16px;
     height: 73vh;
+
+    @media screen and (max-width: 1199px) {
+      flex-direction: column;
+      margin: 1% 2%;
+      justify-content: start;
+      min-height: 73vh;
+      height: 100%;
+    }
   }
 
   &_name {
@@ -39,6 +51,10 @@
     justify-content: space-evenly;
 
     margin: 0 auto;
+
+    @media screen and (max-width: 1199px) {
+      min-width: 100%;
+    }
 
     &_icon {
       height: 66px;
@@ -93,6 +109,12 @@
   max-height: 206px;
   max-width: 368px;
 
+  @media screen and (max-width: 1199px) {
+    width: 100%;
+    max-width: 100%;
+    padding-bottom: 20px;
+  }
+
   border: 1px solid $BORDER_COLOR;
 
   &_price {
@@ -123,6 +145,10 @@
     flex-direction: column;
     align-items: center;
     gap: 25px;
+
+    @media screen and (max-width: 1199px) {
+      width: 100%;
+    }
   }
 
   &_buttom {

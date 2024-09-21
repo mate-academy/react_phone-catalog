@@ -10,6 +10,11 @@
     width: 1270px;
     margin: 0 30px;
   }
+
+  @media screen and (max-width: 1199px) {
+    margin: 0 10px;
+    width: 100%;
+  }
 }
 
 .home_font {
@@ -34,6 +39,10 @@
   height: 44.7vh;
   overflow: hidden;
   position: relative;
+
+  @media screen and (max-width: 1200px) {
+    height: 180px;
+  }
 
   &_buttoms {
     display: flex;
@@ -70,6 +79,11 @@
   background-color: $HOVER_BUTTON_COLOR;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   object-fit: cover;
+
+  @media screen and (max-width: 1200px) {
+    background-size: contain;
+    object-fit: contain;
+  }
 
   &_active {
     z-index: 3;
