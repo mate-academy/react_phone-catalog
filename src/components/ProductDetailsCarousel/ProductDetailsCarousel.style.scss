@@ -53,15 +53,12 @@
     transition: all 0.3s linear;
     &--activetSlide {
       opacity: 1;
-      transform: translateX(0);
     }
     &--lastSlide {
       opacity: 0;
-      transform: translateX(-100%);
     }
     &--nextSlide {
       opacity: 0;
-      transform: translateX(100%);
     }
   }
   &__img-preview {
@@ -79,6 +76,12 @@
       height: 50px;
       width: 50px;
       border: 1px solid $c-elements;
+      &--active {
+        border: 1px solid $c-primary;
+      }
+      &:hover {
+        border: 1px solid $c-primary;
+      }
     }
     &-image {
       height: 100%;

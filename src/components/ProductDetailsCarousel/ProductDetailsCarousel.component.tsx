@@ -7,8 +7,13 @@ export const ProductDetailsCarousel = () => {
   const [index, setIndex] = useState<number>(0);
   const [touchPosition, setTouchPosition] = useState<number | null>(null);
 
-  const prev = () => setIndex(index - 1);
-  const next = () => setIndex(index + 1);
+  const prev = () => {
+    setIndex(index - 1);
+  };
+
+  const next = () => {
+    setIndex(index + 1);
+  };
 
   const handleTouchStart = (e: TouchEvent) => {
     const touchDown = e.touches[0].clientX;
@@ -97,7 +102,6 @@ export const ProductDetailsCarousel = () => {
                     'carousel__img-preview-item--active': idx === index,
                   })}
                 >
-                  {' '}
                   <a
                     className="carousel__img-preview-link"
                     onClick={(e: React.MouseEvent<HTMLAnchorElement>) => {

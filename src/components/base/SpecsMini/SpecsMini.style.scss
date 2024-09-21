@@ -1,0 +1,19 @@
+.specsMini {
+  @extend %small-text;
+
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 8px;
+
+  &-line {
+    display: flex;
+    justify-content: space-between;
+  }
+  &-title {
+    color: $c-secondary;
+  }
+  &-content {
+    color: $c-primary;
+  }
+}

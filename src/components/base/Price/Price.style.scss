@@ -1,0 +1,17 @@
+.price {
+  display: flex;
+  width: 100%;
+  justify-content: start;
+  gap: 8px;
+  align-items: center;
+  position: relative;
+  &-discount {
+    color: $c-red;
+  }
+  &-full {
+    font-family: Mont-semibold, sans-serif;
+    font-size: 22px;
+    text-decoration: line-through;
+    color: $c-secondary;
+  }
+}

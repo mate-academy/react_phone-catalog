@@ -4,8 +4,12 @@
   align-items: center;
   flex-direction: row;
   gap: 8px;
-  padding-block: 24px;
   &__name {
-    color: $c-secondary;
+    &--firstLevel {
+      color: $c-primary;
+    }
+    &--secondLevel {
+      color: $c-secondary;
+    }
   }
 }

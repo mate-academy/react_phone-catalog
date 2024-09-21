@@ -28,7 +28,7 @@ export const CardButtons: React.FC<Props> = ({ product }) => {
   const removeFromCart = () => {
     dispatch({
       type: 'updateCart',
-      payload: [...cart.filter(p => p.id !== product.id)],
+      payload: [...cart.filter(p => p.itemId !== product.itemId)],
     });
   };
 
@@ -39,20 +39,20 @@ export const CardButtons: React.FC<Props> = ({ product }) => {
   const removeFromFavorites = () => {
     dispatch({
       type: 'updateFavorites',
-      payload: [...favorites.filter(p => p.id !== product.id)],
+      payload: [...favorites.filter(p => p.itemId !== product.itemId)],
     });
   };
 
   useEffect(() => {
-    setIsFavorited(!!favorites.find(p => p.id === product.id));
+    setIsFavorited(!!favorites.find(p => p.itemId === product.itemId));
   }, [favorites, product]);
 
   useEffect(() => {
-    setIsAddedToCart(!!cart.find(p => p.id === product.id));
+    setIsAddedToCart(!!cart.find(p => p.itemId === product.itemId));
   }, [cart, product]);
 
   return (
-    <div className="card__buttons">
+    <div className="cardButtons">
       <Button
         title={isAddedToCart ? 'Added' : 'Add to cart'}
         buttonUse="cart"

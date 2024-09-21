@@ -1,0 +1,24 @@
+.productDetailsSpecs {
+  grid-column: 1/-1;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  &__title {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  &__specs {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  &__line {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  &__key {
+    color: $c-secondary;
+  }
+}

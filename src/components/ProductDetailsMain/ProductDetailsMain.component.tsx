@@ -1,8 +1,14 @@
-import { useContext } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { StatesContext } from '../../store/GlobalStateProvider';
 // eslint-disable-next-line max-len
 import { ProductDetailsCarousel } from '../ProductDetailsCarousel/ProductDetailsCarousel.component';
 import { Line } from '../base/Line/Line.component';
+import cn from 'classnames';
+import { Price } from '../base/Price/Price.component';
+import { getProductsSummary } from '../../api/products';
+import { ProductSummary } from '../../types/ProductSummary';
+import { CardButtons } from '../base/CardButtons/CardButtons.component';
+import { SpecsMini } from '../base/SpecsMini/SpecsMini.component';
 
 type Colors = {
   [key: string]: string;
@@ -35,6 +41,17 @@ const colors: Colors = {
 
 export const ProductDetailsMain: React.FC = () => {
   const { selectedProduct } = useContext(StatesContext);
+  const [product, setProduct] = useState<ProductSummary>();
+
+  useEffect(() => {
+    getProductsSummary().then(prods => {
+      if (selectedProduct) {
+        const prodSummary = prods.find(p => p.itemId === selectedProduct.id);
+
+        setProduct(prodSummary);
+      }
+    });
+  }, [selectedProduct]);
 
   if (selectedProduct) {
     return (
@@ -43,16 +60,22 @@ export const ProductDetailsMain: React.FC = () => {
         <ProductDetailsCarousel />
         <div className="productDetailsMain__colors">
           <span className="productDetailsMain__colors-text">
-            Avaiable colors
+            Available colors
           </span>
           <div className="productDetailsMain__colors-button-container">
             {selectedProduct.colorsAvailable.map((c, i) => (
-              <div className="productDetailsMain__colors-button-bg" key={i + c}>
+              <button
+                className={cn('productDetailsMain__colors-button-bg', {
+                  'productDetailsMain__colors-button-bg--selected':
+                    c === selectedProduct.color,
+                })}
+                key={i + c}
+              >
                 <div
                   className="productDetailsMain__colors-button"
                   style={{ background: `${colors[c]}` }}
                 />
-              </div>
+              </button>
             ))}
           </div>
         </div>
@@ -65,7 +88,10 @@ export const ProductDetailsMain: React.FC = () => {
             {selectedProduct.capacityAvailable.map((c, i) => (
               <button
                 key={c + i}
-                className="productDetailsMain__capacity-button"
+                className={cn('productDetailsMain__capacity-button', {
+                  'productDetailsMain__capacity-button--selected':
+                    c === selectedProduct.capacity,
+                })}
               >
                 {c}
               </button>
@@ -73,18 +99,18 @@ export const ProductDetailsMain: React.FC = () => {
           </div>
         </div>
         <Line />
-        {/* <>
-          <div className="card__price-current">
-            <h3>${product.price}</h3>
-          </div>
-          <div className="card__price-full">${product.fullPrice}</div>
-          <h3 className="card__price-discount">
-            {calculateDiscount(product).toFixed(1)}% OFF
-          </h3>
-        </> */}
+        {product && (
+          <>
+            <div className="productDetailsMain__price">
+              <Price product={product} />
+              <CardButtons product={product} />
+            </div>
+            <SpecsMini product={product} />
+          </>
+        )}
       </div>
     );
   }
 
-  return;
+  return 'no selectedProduct';
 };

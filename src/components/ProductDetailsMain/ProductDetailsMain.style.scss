@@ -7,20 +7,32 @@
     display: flex;
     flex-direction: column;
     gap: 8px;
+    cursor: pointer;
     &-text {
       color: $c-secondary;
     }
     &-button {
+      display: flex;
+      justify-content: center;
+      align-items: center;
       border-radius: 50%;
-      width: 30px;
-      height: 30px;
+      width: 100%;
+      height: 100%;
       border: 2px solid $c-white;
       &-bg {
+        margin: 0;
+        padding: 0;
         border: 1px solid $c-elements;
         border-radius: 50%;
         width: 32px;
         height: 32px;
         background-color: transparent;
+        &--selected {
+          border: 1px solid $c-primary;
+        }
+        &:hover {
+          border: 1px solid $c-primary;
+        }
       }
     }
     &-button-container {
@@ -28,7 +40,6 @@
       flex-direction: row;
       gap: 8px;
     }
-
   }
   &__capacity {
     display: flex;
@@ -53,11 +64,20 @@
       height: 100%;
       width: auto;
       padding-inline: 8px;
+      &--selected, :hover {
+        color: $c-white;
+        background: $c-primary;
+      }
       &:hover {
         color: $c-white;
         background: $c-primary;
-
       }
     }
+  }
+  &__price {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-block: 8px;
   }
 }

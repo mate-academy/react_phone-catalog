@@ -1,4 +1,6 @@
 .productDetails-page {
   @include inline-padding;
   @include grid-page;
+  gap: 24px;
+  padding-block: 24px;
 }

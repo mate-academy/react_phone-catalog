@@ -18,7 +18,7 @@ export const NavigationPath: React.FC<Props> = ({
         iconSize="16"
         disabled={true}
       />
-      <span className="navigationPath__name">{firstLevel.toUpperCase()}</span>
+      <span className="navigationPath__name--firstLevel">{`${firstLevel.charAt(0).toUpperCase()}${firstLevel.slice(1, -1)}`}</span>
       {secondLevel && (
         <>
           <Icon
@@ -27,8 +27,8 @@ export const NavigationPath: React.FC<Props> = ({
             iconSize="16"
             disabled={true}
           />
-          <span className="navigationPath__name">
-            {secondLevel.toUpperCase()}
+          <span className="navigationPath__name--secondLevel">
+            {secondLevel}
           </span>
         </>
       )}

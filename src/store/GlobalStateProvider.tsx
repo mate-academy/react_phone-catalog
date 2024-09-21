@@ -26,7 +26,7 @@ type Action =
   | { type: 'decreaseQuantity'; payload: number }
   | { type: 'isMenuOpen'; payload: boolean }
   | { type: 'isReady'; payload: boolean }
-  | { type: 'selectedProduct'; payload: ProductSpecs | undefined };
+  | { type: 'selectedProduct'; payload: ProductSpecs };
 
 type DispatchContextType = {
   (action: Action): void;

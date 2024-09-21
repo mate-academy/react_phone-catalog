@@ -10,6 +10,10 @@ import { locateProduct } from '../../api/products';
 import { BackPath } from '../../components/BackPath/BackPath.component';
 // eslint-disable-next-line max-len
 import { ProductDetailsMain } from '../../components/ProductDetailsMain/ProductDetailsMain.component';
+// eslint-disable-next-line max-len
+import { ProductDetailsDescription } from '../../components/ProductDetailsDescription/ProductDetailsDescription.component';
+// eslint-disable-next-line max-len
+import { ProductDetailsSpecs } from '../../components/ProductDetailsSpecs/ProductDetailsSpecs.component';
 
 export const ProductDetailsPage = () => {
   const { productId } = useParams();
@@ -19,8 +23,12 @@ export const ProductDetailsPage = () => {
   const category = categories.find(cat => cat.id === categoryId);
 
   useEffect(() => {
-    locateProduct(productId ?? '', categoryId ?? '').then(prod => {
-      dispatch({ type: 'selectedProduct', payload: prod });
+    locateProduct(productId as string, categoryId as string).then(prod => {
+      if (prod) {
+        dispatch({ type: 'selectedProduct', payload: prod });
+      }
+
+      return;
     });
   }, [categoryId, dispatch, productId]);
   if (category && isReady && selectedProduct) {
@@ -32,6 +40,8 @@ export const ProductDetailsPage = () => {
         />
         <BackPath />
         <ProductDetailsMain />
+        <ProductDetailsDescription />
+        <ProductDetailsSpecs />
       </div>
     );
   } else {

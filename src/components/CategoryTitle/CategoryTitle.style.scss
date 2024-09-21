@@ -2,13 +2,12 @@
   grid-column: 1/-1;
   display: flex;
   flex-direction: column;
-  padding-bottom: 16px;
   gap: 8px;
 
   @include on-tablet {
     padding-top: 16px;
   }
-  
+
   @include on-desktop {
     padding-top: 16px;
   }
