@@ -42,15 +42,34 @@ export const DeviceProvider = ({ children }: { children: ReactNode }) => {
   };
 
   const addToCart = (device: DeviceProps) => {
-    if (addedDevice.some(dev => dev.id === device.id)) {
+    const deviceId = device.id || ('itemId' in device && device.itemId);
+    const foundDevice = products.find(pro => pro.itemId === deviceId);
+
+    if (addedDevice.some(dev => dev.id === deviceId)) {
       return removeFromCart(device.id);
-    } else {
-      setaddedDevice([...addedDevice, device]);
+    } else if (addedDevice.some(dev => dev.id === foundDevice?.id)) {
+      if (foundDevice) {
+        return removeFromCart(foundDevice.id);
+      }
     }
 
-    const updatedCarts = JSON.stringify([...addedDevice, device]);
+    if (foundDevice) {
+      setaddedDevice(prevDevice => {
+        const updatedDevices = [...prevDevice, foundDevice];
 
-    localStorage.setItem('addedDevice', updatedCarts);
+        localStorage.setItem('addedDevice', JSON.stringify(updatedDevices));
+
+        return updatedDevices;
+      });
+    } else {
+      setaddedDevice(prevDevice => {
+        const updatedDevices = [...prevDevice, device];
+
+        localStorage.setItem('addedDevice', JSON.stringify(updatedDevices));
+
+        return updatedDevices;
+      });
+    }
   };
 
   const removeFromFavorites = (deviceId: string | number) => {

@@ -23,6 +23,9 @@ export const ProductDetailsPage: React.FC = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [items, setItems] = useState<Device>();
   const [relatedProducts, setRelatedProducts] = useState<Device[]>([]);
+  const { addToCart } = useDevices();
+  const { addToFavorites } = useDevices();
+
   const isSelectCapacity = ({ isActive }: { isActive: boolean }) =>
     isActive
       ? styles.product_char_capacity_active
@@ -245,10 +248,16 @@ export const ProductDetailsPage: React.FC = () => {
                 </div>
 
                 <div className={cardStyles.card_buy_container}>
-                  <button className={cardStyles.card_buy_button}>
+                  <button
+                    className={cardStyles.card_buy_button}
+                    onClick={() => addToCart(items)}
+                  >
                     Add to card
                   </button>
-                  <button className={cardStyles.card_follow_button}>
+                  <button
+                    className={cardStyles.card_follow_button}
+                    onClick={() => addToFavorites(items)}
+                  >
                     <img src="./img/Vector(Heart).svg" alt="heart" />
                   </button>
                 </div>
