@@ -1,0 +1,60 @@
+@import '../../utils/mixins';
+@import '../../utils/variables';
+
+.header {
+  display: none;
+
+  @include on-tablet {
+    display: flex;
+    justify-content: space-between;
+    box-shadow: 0 1px 0 0 $color-border-grey;
+  }
+
+  &--mobile {
+    display: flex;
+    justify-content: space-between;
+    box-shadow: 0 1px 0 0 $color-border-grey;
+
+    @include on-tablet {
+      display: none;
+    }
+  }
+
+  &__left {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+
+    @include on-tablet {
+      gap: 24px;
+    }
+  }
+
+  &__right {
+    display: flex;
+  }
+
+  &__logo {
+    display: flex;
+    margin: 13px 16px;
+    width: 64px;
+    height: 22px;
+
+    @include on-desktop {
+      margin: 18px 24px;
+      width: 80px;
+      height: 28px;
+    }
+  }
+
+  &__nav {
+    &_list {
+      display: flex;
+      list-style: none;
+      gap: 32px;
+    }
+    &_link {
+      @include nav-link-styles;
+    }
+  }
+}

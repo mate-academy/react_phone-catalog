@@ -1,0 +1,64 @@
+@import '../../utils/mixins';
+@import '../../utils/variables';
+
+.arrowButton {
+  display: block;
+  width: 32px;
+  height: 32px;
+
+  border: 1px solid $color-border-icons;
+  border-radius: 48px;
+  background-color: #fff;
+
+  background-size: 16px 16px;
+  background-repeat: no-repeat;
+  background-position: center;
+
+  &:hover {
+    border: 1px solid $color-black;
+  }
+
+  &--right {
+    background-image: url(../../img/icons/arrow_right_black.png);
+  }
+
+  &--left {
+    background-image: url(../../img/icons/arrow_left_black.png);
+  }
+
+  &--up {
+    background-image: url(../../img/icons/arrow_up_black.png);
+  }
+
+  &--down {
+    background-image: url(../../img/icons/arrow_down_grey.png);
+  }
+
+  &--wide {
+    height: 189px;
+
+    @include on-desktop {
+      height: 400px;
+    }
+  }
+
+  &--right.arrowButton--disabled {
+    border: 1px solid $color-border-grey;
+    background-image: url(../../img/icons/arrow_right_grey.png);
+  }
+
+  &--left.arrowButton--disabled {
+    border: 1px solid $color-border-grey;
+    background-image: url(../../img/icons/arrow_left_grey.png);
+  }
+
+  &--up.arrowButton--disabled {
+    border: 1px solid $color-border-grey;
+    background-image: url(../../img/icons/arrow_up_grey.png);
+  }
+
+  &--down.arrowButton--disabled {
+    border: 1px solid $color-border-grey;
+    background-image: url(../../img/icons/arrow_down_grey.png);
+  }
+}

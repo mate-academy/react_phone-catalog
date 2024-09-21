@@ -1,0 +1,15 @@
+@import '../../utils/mixins';
+@import '../../utils/variables';
+
+.toBuyButton {
+  flex-grow: 1;
+  background-color: $color-blue;
+  border: none;
+  border-radius: 48px;
+
+  @include buttons-text;
+
+  &:hover {
+    box-shadow: 0 3px 13px 0 #17203166;
+  }
+}

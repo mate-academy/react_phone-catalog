@@ -1,0 +1,15 @@
+@import '../../utils/variables';
+
+.addToFavourites {
+  background-image: url(../../img/icons/heart.png);
+  background-size: 16px 16px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: #fff;
+  border: 1px solid $color-border-icons;
+  border-radius: 48px;
+
+  &:hover {
+    border-color: $color-black;
+  }
+}

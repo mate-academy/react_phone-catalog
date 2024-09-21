@@ -1,0 +1,98 @@
+@import '../../utils/variables';
+@import '../../utils/mixins';
+
+.productCard {
+  height: 440px;
+  padding: 32px;
+  display: flex;
+  gap: 8px;
+  flex-direction: column;
+  border: 1px solid $color-border-grey;
+  border-radius: 8px;
+
+  @include on-tablet {
+    height: 506px;
+  }
+
+  &__imagewrapper {
+    display: flex;
+    width: 100%;
+    min-height: 109px;
+
+    @include on-tablet {
+      min-height: 181px;
+    }
+
+    @include on-desktop {
+      height: 196px;
+    }
+  }
+
+  &__image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  &__title {
+    @include body-text;
+
+    padding-top: 16px;
+  }
+
+  &__prices {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__fullprice {
+    font-size: 22px;
+    font-weight: 800;
+    line-height: 30px;
+  }
+
+  &__price {
+    font-size: 22px;
+    font-weight: 600;
+    line-height: 29px;
+    color: $color-grey;
+    text-decoration: line-through;
+    text-decoration-color: $color-grey;
+    position: relative;
+  }
+
+  &__line {
+    height: 1px;
+    width: 100%;
+    border-bottom: 1px solid $color-grey;
+  }
+
+  &__features-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding-block: 8px;
+  }
+
+  &__features {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__feature {
+    @include small-text;
+
+    color: $color-grey;
+  }
+
+  &__feature-value {
+    font-weight: 700;
+    line-height: 15.34px;
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 8px;
+  }
+}

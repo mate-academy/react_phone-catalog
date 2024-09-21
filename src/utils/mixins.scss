@@ -1,0 +1,39 @@
+@mixin on-tablet {
+  @media (min-width: 640px) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media (min-width: 1200px) {
+    @content;
+  }
+}
+
+@mixin nav-link-styles {
+  text-decoration: none;
+  text-transform: uppercase;
+  color: $color-grey;
+  font-weight: 800;
+  line-height: 11px;
+}
+
+@mixin buttons-text {
+  color: #fff;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+  font-family: inherit;
+}
+
+@mixin body-text {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 21px;
+}
+
+@mixin small-text {
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 15px;
+}

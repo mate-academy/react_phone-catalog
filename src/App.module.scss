@@ -1,0 +1,59 @@
+@import './normilize.css';
+@import './utils/mixins';
+
+@font-face {
+  font-family: Mont;
+  src: url(../public/fonts/Mont-Regular.otf);
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: Mont;
+  src: url(../public/fonts/Mont-Bold.otf);
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: Mont;
+  src: url(../public/fonts/Mont-SemiBold.otf);
+  font-weight: 600;
+}
+
+body {
+  font-family: Mont, sans-serif;
+  font-size: 12px;
+}
+
+.app {
+  scroll-behavior: smooth;
+
+  &__container {
+    max-width: 1136px;
+    margin: 0 auto;
+    padding-inline: 16px;
+
+    @include on-tablet {
+      padding-inline: 24px;
+    }
+
+    @include on-desktop {
+      padding-inline: 32px;
+    }
+  }
+
+  &__menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    z-index: 2;
+
+    &:target {
+      opacity: 1;
+      pointer-events: all;
+    }
+  }
+}
