@@ -1,4 +1,10 @@
-import React, { createContext, useContext, useState, useEffect } from 'react';
+import React, {
+  createContext,
+  useContext,
+  useState,
+  useEffect,
+  useCallback,
+} from 'react';
 
 interface MenuContextType {
   isOpen: boolean;
@@ -16,42 +22,34 @@ export const MenuContext = createContext<MenuContextType | undefined>(
 export const MenuProvider: React.FC<Props> = ({ children }) => {
   const [isOpen, setIsOpen] = useState(false);
 
-  const toggleMenu = () => {
-    setIsOpen(!isOpen);
-  };
+  const toggleMenu = useCallback(() => {
+    setIsOpen(prevIsOpen => !prevIsOpen);
+  }, []);
 
   useEffect(() => {
-    const handleScroll = () => {
-      document.documentElement.style.setProperty(
-        '--scroll-y',
-        `${window.scrollY}px`,
-      );
-    };
+    const body = document.body;
 
     if (isOpen) {
-      handleScroll();
-      const scrollY =
-        document.documentElement.style.getPropertyValue('--scroll-y');
+      const scrollY = window.scrollY;
 
-      document.body.style.position = 'fixed';
-      document.body.style.top = `-${scrollY}`;
-      document.body.style.width = '100%';
+      body.style.position = 'fixed';
+      body.style.top = `-${scrollY}px`;
+      body.style.width = '100%';
     } else {
-      const scrollY = document.body.style.top;
+      const scrollY = body.style.top;
 
-      document.body.style.position = '';
-      document.body.style.top = '';
-      document.body.style.width = '';
+      body.style.position = '';
+      body.style.top = '';
+      body.style.width = '';
+      body.style.overflowY = '';
       window.scrollTo(0, parseInt(scrollY || '0') * -1);
     }
 
-    window.addEventListener('scroll', handleScroll);
-
     return () => {
-      window.removeEventListener('scroll', handleScroll);
-      document.body.style.position = '';
-      document.body.style.top = '';
-      document.body.style.width = '';
+      body.style.position = '';
+      body.style.top = '';
+      body.style.width = '';
+      body.style.overflowY = '';
     };
   }, [isOpen]);
 

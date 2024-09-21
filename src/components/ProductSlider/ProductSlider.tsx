@@ -75,7 +75,7 @@ export const ProductSlider: FC<ProductSliderProps> = ({
               </SwiperSlide>
             ));
           } else {
-            return products.map(item => (
+            return products.slice(0, 15).map(item => (
               <SwiperSlide key={item.id} className={styles.productSlide}>
                 <ProductCard product={item} fullPriceOnCard={showFullPrice} />
               </SwiperSlide>
