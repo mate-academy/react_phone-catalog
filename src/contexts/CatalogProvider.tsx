@@ -4,16 +4,15 @@ import React, {
   useState,
   ReactNode,
   Dispatch,
+  useEffect,
 } from 'react';
 import { Product } from '../types/Product';
+import { getAllProducts } from '../services/Product';
 
 interface CatalogContextType {
   favorites: Product[];
+  products: Product[];
   setFavorites: Dispatch<React.SetStateAction<Product[]>>;
-  // hotProducts: Product[];
-  // setHotProducts: Dispatch<React.SetStateAction<Product[]>>;
-  // newProducts: Product[];
-  // setNewProducts: Dispatch<React.SetStateAction<Product[]>>;
 }
 
 type Props = {
@@ -26,12 +25,24 @@ export const CatalogContext = createContext<CatalogContextType | undefined>(
 
 export const CatalogProvider: React.FC<Props> = ({ children }) => {
   const [favorites, setFavorites] = useState<Product[]>([]);
+  const [products, setProducts] = useState<Product[]>([]);
+
+  useEffect(() => {
+    const fetchProduct = async () => {
+      const data = await getAllProducts();
+
+      setProducts(data);
+    };
+
+    fetchProduct();
+  }, []);
 
   return (
     <CatalogContext.Provider
       value={{
         setFavorites,
         favorites,
+        products,
       }}
     >
       {children}

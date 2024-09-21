@@ -1,0 +1,27 @@
+@import '../../styles/main';
+
+.skeletonTop {
+  height: 250px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.skeletonSpinner {
+  @include on-tablet {
+    width: 100px;
+    height: 100px;
+  }
+}
+
+.skeletonList {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(auto-fill, minmax(212px, 272px));
+  justify-content: center;
+
+  @include on-mobile {
+    grid-template-columns: repeat(auto-fill, minmax(212px, 1fr));
+  }
+}

@@ -21,9 +21,6 @@ export const HomePage: FC = () => {
 
       setHotProducts(fetchedHotProducts);
       setNewProducts(fetchedNewProducts);
-    } catch (error) {
-      // eslint-disable-next-line
-      console.error('Error fetching products:', error);
     } finally {
       setIsLoading(false);
     }

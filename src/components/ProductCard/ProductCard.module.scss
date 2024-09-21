@@ -19,6 +19,7 @@
   display: flex;
   align-items: center;
   cursor: pointer;
+  margin: 0 auto;
 
   height: 196px;
   width: 208px;
@@ -29,7 +30,7 @@
   }
 
   @include on-mobile {
-    width: 148px;
+    width: 158px;
     height: 129px;
   }
 }
@@ -39,7 +40,7 @@
   height: 100%;
   object-fit: contain;
   cursor: pointer;
-  
+
   @include hover(transform, scale(1.05));
 }
 

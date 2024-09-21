@@ -1,6 +1,5 @@
-.red {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 16px;
+@import '../../styles/main';
+
+.listContainer {
+  @extend %container;
 }

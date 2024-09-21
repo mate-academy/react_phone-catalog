@@ -1,14 +1,18 @@
 import { FC } from 'react';
-import { ProductCategoriesMap } from '../Helpers/ProductCategoriesMap';
+import { сategoriesMap } from '../Helpers/сategoriesMap';
+import { getCountByCategory } from '../../../../utils/numberOfProduct';
 import { Link } from 'react-router-dom';
 import styles from './Category.module.scss';
+import { useCatalog } from '../../../../contexts/CatalogProvider';
 
 export const Category: FC = () => {
+  const { products } = useCatalog();
+
   return (
     <div className={styles.container}>
       <h2 className={styles.categoriesTitle}>Shop by category</h2>
       <div className={styles.categoriesWrapper}>
-        {ProductCategoriesMap.map(item => {
+        {сategoriesMap.map(item => {
           return (
             <Link to={item.path} key={item.id}>
               <div className={styles.itemContent}>
@@ -18,7 +22,9 @@ export const Category: FC = () => {
                   alt={item.title}
                 />
                 <h3 className={styles.itemTitle}> {item.title}</h3>
-                <h5 className={styles.itemCountModels}>{232} models</h5>
+                <h5 className={styles.itemCountModels}>
+                  {getCountByCategory(products, item.category)} models
+                </h5>
               </div>
             </Link>
           );

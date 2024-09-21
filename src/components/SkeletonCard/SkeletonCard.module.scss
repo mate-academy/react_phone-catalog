@@ -8,12 +8,13 @@ $skeleton-animation: shimmer 0.3s ease-in-out infinite;
   flex-direction: column;
   gap: 8px;
   padding: 32px;
-  border: 1px solid var(--color-elements); 
+  border: 1px solid var(--color-elements);
 }
 
 .skeletonImage {
   width: 208px;
   height: 196px;
+  margin: 0 auto;
 
   @include on-desktop {
     width: 173px;

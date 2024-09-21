@@ -1,21 +1,25 @@
 @import '../../styles/main';
 
 .productContainer {
-  padding: 0 32px;
   margin: 0 auto;
-  max-width: $breakpoint-desktop;
+  max-width: 1136px;
   width: 100%;
   overflow: hidden;
 
   /* stylelint-disable-next-line selector-pseudo-class-no-unknown */
   :global {
-
     .swiper {
       overflow: visible;
     }
   }
 
+  @include on-desktop {
+    max-width: 100%;
+    padding: 0 0 0 24px;
+  }
+
   @include on-tablet {
+    max-width: 100%;
     padding: 0 0 0 24px;
   }
 
@@ -53,10 +57,6 @@
       @include on-desktop {
         width: 237px;
       }
-
-      @include on-mobile {
-        width: 212px;
-      }
     }
 
     .swiper-button-next::after,
@@ -92,6 +92,10 @@
     right: 82px;
   }
 
+  @include on-tablet {
+    right: 72px;
+  }
+
   @include on-mobile {
     right: 66px;
   }
@@ -102,6 +106,10 @@
 
   @include on-desktop {
     right: 32px;
+  }
+
+  @include on-tablet {
+    right: 24px;
   }
 
   @include on-mobile {

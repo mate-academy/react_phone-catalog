@@ -24,6 +24,7 @@ export const useIconSrc = () => {
   const searchUrl = getIconUrl('search');
   const moonUrl = `${BASE_URL}img/icons/moon.svg`;
   const sunUrl = `${BASE_URL}img/icons/sun.svg`;
+  const spinnerUrl = `${BASE_URL}img/icons/spinner.svg`;
 
   return {
     arrowLeftUrl,
@@ -40,5 +41,6 @@ export const useIconSrc = () => {
     favoriteSelected,
     moonUrl,
     sunUrl,
+    spinnerUrl,
   };
 };

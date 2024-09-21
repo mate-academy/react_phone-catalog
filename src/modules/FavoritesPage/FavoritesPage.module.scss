@@ -1,3 +1,5 @@
-.red {
-  display: block;
+@import '../../styles/main';
+
+.container {
+  @extend %container;
 }
