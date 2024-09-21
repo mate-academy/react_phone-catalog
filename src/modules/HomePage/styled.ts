@@ -13,7 +13,7 @@ const TitleStyled = styled.h2`
   font-size: 32px;
   line-height: 41px;
   margin: 24px 16px;
-  color: #313237;
+  color: ${({ theme }) => theme.textColor};
   width: 288px;
 
   ${media.tablet} {

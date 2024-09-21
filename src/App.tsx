@@ -9,6 +9,8 @@ import { setTables } from './features/tablesSlice';
 import { setPhones } from './features/phoneSlice';
 import { setProducts } from './features/productsSlice';
 import { Footer } from './components/Footer';
+import { ThemeProvider } from './components/Themes/ThemeProvider';
+import { AppStyled } from './AppStyled';
 
 export const App = () => {
   const dispatch = useAppDispatch();
@@ -36,10 +38,12 @@ export const App = () => {
   }, [dispatch]);
 
   return (
-    <div className="App">
-      <Header />
-      <Outlet />
-      <Footer />
-    </div>
+    <ThemeProvider>
+      <AppStyled className="App">
+        <Header />
+        <Outlet />
+        <Footer />
+      </AppStyled>
+    </ThemeProvider>
   );
 };

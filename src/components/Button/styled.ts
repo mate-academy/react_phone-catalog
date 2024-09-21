@@ -10,15 +10,19 @@ const ButtonStyled = styled.div<ButtonProps>`
     switch (variant) {
       case 'dark': {
         return css`
-          background-color: #313237;
-          color: white;
+          background-color: ${({ theme }) => theme.buttonFirstColor};
+          color: ${({ theme }) => theme.textThreeColor};
         `;
       }
 
       case 'white': {
         return css`
-          border: 1px solid #b4bdc3;
-          color: #313237;
+          background-color: ${({ theme }) => theme.buttonSecondBacground};
+          border: 1px solid ${({ theme }) => theme.buttonSecondBorder};
+          svg {
+            fill: ${({ theme }) => theme.buttonSecondColor} !important;
+          }
+          color: ${({ theme }) => theme.buttonSecondColor};
         `;
       }
     }

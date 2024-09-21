@@ -1,73 +1,91 @@
-import s from './Header.module.scss';
+import {
+  HeaderStyled,
+  ListItemStyled,
+  LogoStyled,
+  MenuBoxStyled,
+  MenuImgStyled,
+  MenuStyled,
+  NavListStyled,
+  NavStyled,
+} from './styled';
 import logo from '../../icons/Logo.png';
-import burgerMenu from '../../icons/Menu.png';
-import closeMenu from '../../icons/Close.png';
-import favorites from '../../icons/Favourites.png';
-import shopping from '../../icons/Shopping.png';
+import logo2 from '../../icons/Logo2.png';
 import { useState } from 'react';
-import classNames from 'classnames';
+import { themeMap, useTheme } from '../Themes/ThemeProvider';
+import {
+  BURGERMENU_SVG,
+  CLOSING_SVG,
+  LIKE_SVG,
+  SHOPPING_SVG,
+} from '../../utils/SVG';
 
 export const Header = () => {
   const [isManuActive, setIsActiveMenu] = useState(false);
+  const { theme } = useTheme();
+  const themeKeys = Object.keys(themeMap) as Array<keyof typeof themeMap>;
+
+  const variantLogo = () => {
+    const themeVariant =
+      themeKeys.find(key => themeMap[key] === theme) || 'White';
+
+    switch (themeVariant) {
+      case 'White': {
+        return logo;
+      }
+
+      case 'Dark': {
+        return logo2;
+      }
+
+      default: {
+        return logo;
+      }
+    }
+  };
 
   return (
-    <header className={s.header}>
-      <div className={s.logo}>
-        <img alt="logo" src={logo} className={s.logo__item} />
-      </div>
+    <HeaderStyled>
+      <LogoStyled>
+        <img alt="logo" src={variantLogo()} />
+      </LogoStyled>
 
-      <div
-        className={classNames(s.menu, s.menuIs)}
+      <MenuStyled
+        isMenu={true}
         onClick={() => setIsActiveMenu(prevValue => !prevValue)}
       >
         {isManuActive ? (
-          <img alt="CloseMenu" src={closeMenu} className={s.menu__item} />
+          <MenuImgStyled>
+            <CLOSING_SVG />
+          </MenuImgStyled>
         ) : (
-          <img alt="BurgerMenu" src={burgerMenu} className={s.menu__item} />
+          <MenuImgStyled>
+            <BURGERMENU_SVG />
+          </MenuImgStyled>
         )}
-      </div>
+      </MenuStyled>
 
-      <nav
-        className={classNames(s.nav, {
-          [s.navMobile]: isManuActive,
-        })}
-      >
-        <ul className={s.nav__list}>
-          <li className={s.nav__listItem}>home</li>
-          <li className={s.nav__listItem}>Phones</li>
-          <li className={s.nav__listItem}>tablets</li>
-          <li className={s.nav__listItem}>accessories</li>
-        </ul>
+      <NavStyled isActive={isManuActive}>
+        <NavListStyled>
+          <ListItemStyled>home</ListItemStyled>
+          <ListItemStyled>Phones</ListItemStyled>
+          <ListItemStyled>tablets</ListItemStyled>
+          <ListItemStyled>accessories</ListItemStyled>
+        </NavListStyled>
 
-        <div
-          className={classNames({
-            [s.menu]: !isManuActive,
-            [s.menuMobile]: isManuActive,
-          })}
-        >
-          <div className={s.menu__box}>
-            <img
-              alt="favorites"
-              src={favorites}
-              className={classNames({
-                [s.menu__item]: !isManuActive,
-                [s.menuMobile__item]: isManuActive,
-              })}
-            />
-          </div>
+        <MenuStyled isActive={!isManuActive} isMenu={false}>
+          <MenuBoxStyled>
+            <MenuImgStyled>
+              <LIKE_SVG />
+            </MenuImgStyled>
+          </MenuBoxStyled>
 
-          <div className={s.menu__box}>
-            <img
-              alt="shopping"
-              src={shopping}
-              className={classNames({
-                [s.menu__item]: !isManuActive,
-                [s.menuMobile__item]: isManuActive,
-              })}
-            />
-          </div>
-        </div>
-      </nav>
-    </header>
+          <MenuBoxStyled>
+            <MenuImgStyled>
+              <SHOPPING_SVG />
+            </MenuImgStyled>
+          </MenuBoxStyled>
+        </MenuStyled>
+      </NavStyled>
+    </HeaderStyled>
   );
 };

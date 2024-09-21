@@ -15,6 +15,8 @@ import {
   MainContentStyled,
   PicturesSliderStyled,
 } from './styled';
+import { VECTOR_SVG } from '../../../../utils/SVG';
+import { Button } from '../../../../components/Button/Button';
 
 export const PicturesSlider = () => {
   const [caruselPosition, setCarouselPosition] = useState(0);
@@ -92,7 +94,9 @@ export const PicturesSlider = () => {
     <PicturesSliderStyled>
       <MainContentStyled>
         <ButtonSliderStyled onClick={handleLeftSwipe}>
-          <div>&lt;</div>
+          <Button variant="white">
+            <VECTOR_SVG variant="left" />
+          </Button>
         </ButtonSliderStyled>
 
         <CarouselStyled
@@ -118,28 +122,21 @@ export const PicturesSlider = () => {
         </CarouselStyled>
 
         <ButtonSliderStyled onClick={handleRightSwipe}>
-          <div>&gt;</div>
+          <Button variant="white">
+            <VECTOR_SVG variant="right" />
+          </Button>
         </ButtonSliderStyled>
       </MainContentStyled>
 
       <ButtonsStyled>
-        <ButtonBlockStyled>
-          <ButStyled
-            isActive={caruselPosition === 0}
-            onClick={() => setCarouselPosition(0)}
-          />
+        <ButtonBlockStyled onClick={() => setCarouselPosition(0)}>
+          <ButStyled isActive={caruselPosition === 0} />
         </ButtonBlockStyled>
-        <ButtonBlockStyled>
-          <ButStyled
-            isActive={caruselPosition === 1}
-            onClick={() => setCarouselPosition(1)}
-          />
+        <ButtonBlockStyled onClick={() => setCarouselPosition(1)}>
+          <ButStyled isActive={caruselPosition === 1} />
         </ButtonBlockStyled>
-        <ButtonBlockStyled>
-          <ButStyled
-            isActive={caruselPosition === 2}
-            onClick={() => setCarouselPosition(2)}
-          />
+        <ButtonBlockStyled onClick={() => setCarouselPosition(2)}>
+          <ButStyled isActive={caruselPosition === 2} />
         </ButtonBlockStyled>
       </ButtonsStyled>
     </PicturesSliderStyled>

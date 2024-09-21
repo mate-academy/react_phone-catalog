@@ -6,7 +6,8 @@ type CardProps = {
 };
 
 const CardStyled = styled.div<CardProps>`
-  border: 1px solid #e2e6e9;
+  border: 1px solid ${({ theme }) => theme.cardBorder};
+  background-color: ${({ theme }) => theme.cardBacground};
   padding: 32px;
   display: flex;
   flex-direction: column;
@@ -52,6 +53,7 @@ const CardStyled = styled.div<CardProps>`
 
   &:hover {
     box-shadow: 0px 2px 16px 0px rgba(0, 0, 0, 0.1);
+    border: 1px solid ${({ theme }) => theme.cardBorderHover};
   }
 `;
 
@@ -102,7 +104,7 @@ const NameBlockStyled = styled.div`
   font-weight: 600;
   font-size: 14px;
   line-height: 21px;
-  color: #313237;
+  color: ${({ theme }) => theme.textColor};
   text-align: center;
   padding-top: 16px;
 `;
@@ -111,7 +113,7 @@ const CountBlockStyled = styled.div`
   font-weight: 800;
   font-size: 22px;
   line-height: 30.8px;
-  color: #313237;
+  color: ${({ theme }) => theme.textColor};
   text-align: left;
 
   display: flex;
@@ -125,7 +127,7 @@ const CountBlockStyled = styled.div`
 const RegularPriceStyled = styled.div`
   font-weight: 600;
   line-height: 28.12px;
-  color: #89939a;
+  color: ${({ theme }) => theme.textSecondColor};
   text-decoration: line-through;
 `;
 
@@ -135,7 +137,7 @@ const InfoBlockStyled = styled.div`
   display: flex;
   justify-content: space-between;
   flex-direction: column;
-  color: #89939a;
+  color: ${({ theme }) => theme.textSecondColor};
   font-weight: 700;
   font-size: 12px;
   line-height: 15.34px;
@@ -147,7 +149,7 @@ const InfoBlockStyled = styled.div`
 `;
 
 const InfoStyled = styled.div`
-  color: #313237;
+  color: ${({ theme }) => theme.textColor};
 `;
 
 const ButtonsBlockStyled = styled.div`

@@ -30,22 +30,25 @@ const MainContentStyled = styled.div`
 `;
 
 const ButtonSliderStyled = styled.div`
-  display: none;
+  > * {
+    display: none;
 
-  ${media.tablet} {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 32px;
-    border: 1px solid #b4bdc3;
-    flex-shrink: 0;
-    cursor: pointer;
+    ${media.tablet} {
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 32px;
+      flex-shrink: 0;
+    }
   }
 `;
 
 const CarouselStyled = styled.div`
+  position: relative;
   display: flex;
   overflow: hidden;
+  z-index: 1;
 `;
 
 const ImglStyled = styled.img<ImglStyledProps>`
@@ -71,7 +74,8 @@ const ButtonBlockStyled = styled.div`
 const ButStyled = styled.div<ButStyledProps>`
   width: 14px;
   height: 4px;
-  background-color: ${({ isActive }) => (isActive ? '#313237' : '#E2E6E9')};
+  background-color: ${({ isActive, theme }) =>
+    isActive ? theme.cardSliderActive : theme.cardSliderNotActive};
 `;
 
 export {

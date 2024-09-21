@@ -2,7 +2,6 @@ import {
   ButtonsBlockStyled,
   CardStyled,
   CountBlockStyled,
-  ImgFavoriteStyled,
   ImgStyled,
   InfoBlockStyled,
   InfoStyled,
@@ -10,8 +9,8 @@ import {
   RegularPriceStyled,
 } from './styled';
 import { useAppSelector } from '../../../app/hook';
-import favourites from '../../../icons/Favourites.png';
 import { Button } from '../../../components/Button/Button';
+import { LIKE_SVG } from '../../../utils/SVG';
 
 type Props = {
   variant: 'HomePage' | 'ListPage';
@@ -60,7 +59,7 @@ const ProductCard: React.FC<Props> = ({ variant }) => {
         </Button>
 
         <Button variant="white" css="width: 40px; flex-shrink: 0;">
-          <ImgFavoriteStyled src={favourites} />
+          <LIKE_SVG />
         </Button>
       </ButtonsBlockStyled>
     </CardStyled>

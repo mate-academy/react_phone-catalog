@@ -6,7 +6,7 @@ const LogoImgStyled = styled.img`
   height: 32px;
 `;
 
-const ContainerStyled = styled.div`
+const ContainerStyled = styled.footer`
   width: 100%;
   box-shadow: 0px -1px 0px 0px #e2e6e9;
   display: flex;
@@ -31,6 +31,7 @@ const FooterStyled = styled.div`
     gap: 0;
     justify-content: space-between;
     padding: 32px;
+    flex-wrap: wrap;
   }
 `;
 
@@ -48,7 +49,7 @@ const InfoBlockStyled = styled.ul`
     font-weight: 800;
     font-size: 12px;
     line-height: 11px;
-    color: #89939a;
+    color: ${({ theme }) => theme.footerButton};
   }
 
   ${media.tablet} {
@@ -63,7 +64,7 @@ const InfoBlockStyled = styled.ul`
 `;
 
 const GoTopStyled = styled.div`
-  color: #89939a;
+  color: ${({ theme }) => theme.backToTop};
   width: 100%;
   display: flex;
   align-items: center;
@@ -79,10 +80,25 @@ const GoTopStyled = styled.div`
   }
 `;
 
+const SelectorsStyled = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  flex: 1 1 100%;
+
+  ${media.tablet} {
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 20px;
+  }
+`;
+
 export {
   ContainerStyled,
   LogoImgStyled,
   FooterStyled,
   InfoBlockStyled,
   GoTopStyled,
+  SelectorsStyled,
 };

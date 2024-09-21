@@ -4,10 +4,14 @@ import {
   GoTopStyled,
   InfoBlockStyled,
   LogoImgStyled,
+  SelectorsStyled,
 } from './styled';
 import logo from '../../icons/Logo.png';
 import { Button } from '../Button/Button';
 import { VECTOR_SVG } from '../../utils/SVG';
+import { SelectInput } from '../Inputs/SelectInput/SelectInput';
+import { useState } from 'react';
+import { themeMap, useTheme } from '../Themes/ThemeProvider';
 
 const scrollToTop = () => {
   window.scrollTo({
@@ -17,6 +21,10 @@ const scrollToTop = () => {
 };
 
 export const Footer = () => {
+  const { theme, setTheme } = useTheme();
+  const [value2, setValue2] = useState('English');
+  const themeKeys = Object.keys(themeMap) as Array<keyof typeof themeMap>;
+
   return (
     <ContainerStyled>
       <FooterStyled>
@@ -36,6 +44,26 @@ export const Footer = () => {
             <VECTOR_SVG variant="top" />
           </Button>
         </GoTopStyled>
+
+        <SelectorsStyled>
+          <SelectInput
+            label="Theme"
+            items={themeKeys}
+            variant="topSwipe"
+            value={themeKeys.find(key => themeMap[key] === theme) || 'White'}
+            setValue={setTheme}
+            width="140px"
+          />
+
+          <SelectInput
+            label="Language"
+            items={['English', 'Українська']}
+            variant="topSwipe"
+            value={value2}
+            setValue={setValue2}
+            width="140px"
+          />
+        </SelectorsStyled>
       </FooterStyled>
     </ContainerStyled>
   );
