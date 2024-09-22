@@ -61,7 +61,7 @@ export const HomePage: React.FC = () => {
       <section className="first-screen home__first-screen">
         <div className="container">
           <h1 className="first-screen__title main-title home__main-title">
-            Welcome to Nice Gadgets store!
+            Product Catalog
           </h1>
           <FirstScreenSlider />
         </div>
