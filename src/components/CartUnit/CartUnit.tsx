@@ -20,7 +20,7 @@ export const CartUnit: React.FC<Props> = ({ product }) => {
           onClick={() => removeFromCart(product)}
         ></button>
         <div className="cart-unit__sub-item cart-unit__image-container">
-          <img src={product.images[0]} alt="" className="cart-unit__image" />
+          <img src={`.${product.images[0]}`} alt="" className="cart-unit__image" />
         </div>
         <p className="cart-unit__sub-item cart-unit__name">{product.name}</p>
       </div>
