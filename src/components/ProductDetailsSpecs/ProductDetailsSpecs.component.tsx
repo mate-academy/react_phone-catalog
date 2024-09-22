@@ -37,18 +37,22 @@ export const ProductDetailsSpecs = () => {
               {selectedProduct.ram}
             </div>
           </div>
-          <div className="productDetailsSpecs__line">
-            <div className="productDetailsSpecs__key">Camera</div>
-            <div className="productDetailsSpecs__value">
-              {selectedProduct.camera}
-            </div>
-          </div>
-          <div className="productDetailsSpecs__line">
-            <div className="productDetailsSpecs__key">Zoom</div>
-            <div className="productDetailsSpecs__value">
-              {selectedProduct.zoom}
-            </div>
-          </div>
+          {selectedProduct.category !== 'accessories' && (
+            <>
+              <div className="productDetailsSpecs__line">
+                <div className="productDetailsSpecs__key">Camera</div>
+                <div className="productDetailsSpecs__value">
+                  {selectedProduct.camera}
+                </div>
+              </div>
+              <div className="productDetailsSpecs__line">
+                <div className="productDetailsSpecs__key">Zoom</div>
+                <div className="productDetailsSpecs__value">
+                  {selectedProduct.zoom}
+                </div>
+              </div>
+            </>
+          )}
           <div className="productDetailsSpecs__line">
             <div className="productDetailsSpecs__key">Cell</div>
             <div className="productDetailsSpecs__value">

@@ -3,4 +3,8 @@
   @include grid-page;
   gap: 24px;
   padding-block: 24px;
+&__suggested {
+  padding-block: 32px;
+  grid-column: 1/-1;
+}
 }

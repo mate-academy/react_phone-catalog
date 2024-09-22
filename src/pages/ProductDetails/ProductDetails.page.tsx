@@ -1,4 +1,4 @@
-import { useContext, useEffect } from 'react';
+import { useContext, useEffect, useState } from 'react';
 // eslint-disable-next-line max-len
 import { NavigationPath } from '../../components/NavigationPath/NavigationPath.component';
 import {
@@ -6,7 +6,7 @@ import {
   StatesContext,
 } from '../../store/GlobalStateProvider';
 import { useParams } from 'react-router-dom';
-import { locateProduct } from '../../api/products';
+import { getProductsSummary, locateProduct } from '../../api/products';
 import { BackPath } from '../../components/BackPath/BackPath.component';
 // eslint-disable-next-line max-len
 import { ProductDetailsMain } from '../../components/ProductDetailsMain/ProductDetailsMain.component';
@@ -14,6 +14,9 @@ import { ProductDetailsMain } from '../../components/ProductDetailsMain/ProductD
 import { ProductDetailsDescription } from '../../components/ProductDetailsDescription/ProductDetailsDescription.component';
 // eslint-disable-next-line max-len
 import { ProductDetailsSpecs } from '../../components/ProductDetailsSpecs/ProductDetailsSpecs.component';
+// eslint-disable-next-line max-len
+import { ProductSlider } from '../../components/base/ProductSlider/ProductSlider.component';
+import { ProductSummary } from '../../types/ProductSummary';
 
 export const ProductDetailsPage = () => {
   const { productId } = useParams();
@@ -21,6 +24,7 @@ export const ProductDetailsPage = () => {
   const { categories, isReady, selectedProduct } = useContext(StatesContext);
   const dispatch = useContext(DispatchContext);
   const category = categories.find(cat => cat.id === categoryId);
+  const [suggested, setSuggested] = useState<ProductSummary[]>();
 
   useEffect(() => {
     locateProduct(productId as string, categoryId as string).then(prod => {
@@ -31,6 +35,15 @@ export const ProductDetailsPage = () => {
       return;
     });
   }, [categoryId, dispatch, productId]);
+
+  useEffect(() => {
+    getProductsSummary().then(prods => {
+      setSuggested(prods.filter(p => p.category === selectedProduct?.category));
+
+      setSuggested(prods);
+    });
+  }, [selectedProduct]);
+
   if (category && isReady && selectedProduct) {
     return (
       <div className="productDetails-page">
@@ -42,6 +55,15 @@ export const ProductDetailsPage = () => {
         <ProductDetailsMain />
         <ProductDetailsDescription />
         <ProductDetailsSpecs />
+        {suggested && (
+          <div className="productDetails-page__suggested">
+            <ProductSlider
+              title="You may also like"
+              products={suggested}
+              showDiscount={false}
+            />
+          </div>
+        )}
       </div>
     );
   } else {

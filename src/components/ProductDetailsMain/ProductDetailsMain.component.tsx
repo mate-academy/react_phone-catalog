@@ -81,7 +81,7 @@ export const ProductDetailsMain: React.FC = () => {
         </div>
         <Line />
         <div className="productDetailsMain__capacity">
-          <span className="productDetaisMain__capacity-text">
+          <span className="productDetailsMain__capacity-text">
             Select capacity
           </span>
           <div className="productDetailsMain__capacity-container">
