@@ -16,7 +16,7 @@ export const Footer = () => {
           <div className="footer__main-item footer__logo-box">
             <Link to="/" className="footer__logo-link">
               <img
-                src={`./img/logo.svg`}
+                src={`../img/logo.svg`}
                 alt="logo"
                 className="footer__logo-image"
               />

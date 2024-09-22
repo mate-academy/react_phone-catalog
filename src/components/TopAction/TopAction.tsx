@@ -26,7 +26,7 @@ export const TopAction = () => {
         onClick={hendleClickToHome}
       >
         <img
-          src={`./img/logo.svg`}
+          src={`../img/logo.svg`}
           alt="logo"
           className="top-action__logo-image"
         />

@@ -20,7 +20,7 @@ Follow the [Instruction](https://github.com/mate-academy/react_phone-catalog/blo
 
 ## Data
 
-Use the data from `/public/api` and images from `/public./img` folders. You can reorganize them the way you like.
+Use the data from `/public/api` and images from `/public../img` folders. You can reorganize them the way you like.
 
 ## App
 
