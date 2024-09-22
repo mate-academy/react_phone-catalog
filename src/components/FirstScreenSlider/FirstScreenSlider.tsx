@@ -46,15 +46,15 @@ export const FirstScreenSlider: React.FC = () => {
           <Link to={'phones/apple-iphone-14-pro-1tb-gold'}>
             <picture>
               <source
-                srcSet="/img/first-slider/first-slider-img-desktop.jpg"
+                srcSet="./img/first-slider/first-slider-img-desktop.jpg"
                 media="(min-width: 1200px)"
               />
               <source
-                srcSet="/img/first-slider/first-slider-img-tablet.jpg"
+                srcSet="./img/first-slider/first-slider-img-tablet.jpg"
                 media="(min-width: 640px)"
               />
               <img
-                src="/img/first-slider/first-slider-img-mobile.jpg"
+                src="./img/first-slider/first-slider-img-mobile.jpg"
                 alt="main-benefit"
                 className="first-screen__slide-image"
               />
@@ -65,15 +65,15 @@ export const FirstScreenSlider: React.FC = () => {
           <Link to={'/phones/apple-iphone-14-pro-1tb-gold'}>
             <picture>
               <source
-                srcSet="/img/first-slider/first-slider-img-desktop.jpg"
+                srcSet="./img/first-slider/first-slider-img-desktop.jpg"
                 media="(min-width: 1200px)"
               />
               <source
-                srcSet="/img/first-slider/first-slider-img-tablet.jpg"
+                srcSet="./img/first-slider/first-slider-img-tablet.jpg"
                 media="(min-width: 640px)"
               />
               <img
-                src="/img/first-slider/first-slider-img-mobile.jpg"
+                src="./img/first-slider/first-slider-img-mobile.jpg"
                 alt="main-benefit"
                 className="first-screen__slide-image"
               />
@@ -84,15 +84,15 @@ export const FirstScreenSlider: React.FC = () => {
           <Link to={'/phones/apple-iphone-14-pro-1tb-gold'}>
             <picture>
               <source
-                srcSet="/img/first-slider/first-slider-img-desktop.jpg"
+                srcSet="./img/first-slider/first-slider-img-desktop.jpg"
                 media="(min-width: 1200px)"
               />
               <source
-                srcSet="/img/first-slider/first-slider-img-tablet.jpg"
+                srcSet="./img/first-slider/first-slider-img-tablet.jpg"
                 media="(min-width: 640px)"
               />
               <img
-                src="/img/first-slider/first-slider-img-mobile.jpg"
+                src="./img/first-slider/first-slider-img-mobile.jpg"
                 alt="main-benefit"
                 className="first-screen__slide-image"
               />

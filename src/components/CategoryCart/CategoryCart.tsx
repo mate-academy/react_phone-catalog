@@ -42,7 +42,7 @@ export const CategoryCart: React.FC<Props> = ({ category }) => {
         className={`categories__image-container categories__image-container--${category}`}
       >
         <img
-          src={`/img/banner-${category}.png`}
+          src={`./img/banner-${category}.png`}
           alt="banner"
           className="categories__image"
         />
