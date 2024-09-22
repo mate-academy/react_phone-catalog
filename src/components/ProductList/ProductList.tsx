@@ -10,6 +10,7 @@ import { SkeletonProductList } from '../SkeletonProductList/SkeletonProductList'
 import { useSearchParams } from 'react-router-dom';
 import { Pagination } from '../Pagination/Pagination';
 import { sortProducts } from '../../utils/sortFilter';
+import { Breadcrumbs } from '../Breadcrumbs/Breadcrumbs';
 import styles from './ProductList.module.scss';
 
 interface Props {
@@ -93,7 +94,9 @@ export const ProductList: FC<Props> = ({ category, title }) => {
   return (
     <div className="">
       <div className={styles.productTop}>
-        <div className={styles.breadcrumbs}></div>
+        <div className={styles.breadcrumbs}>
+          <Breadcrumbs />
+        </div>
         <h1 className={styles.title}>{title}</h1>
         <p className={styles.count}>
           {`${products.length} item${products.length > 1 ? 's' : ''}`}
