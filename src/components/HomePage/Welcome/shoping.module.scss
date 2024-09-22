@@ -9,6 +9,11 @@
     justify-content: center;
   }
 
+  @media screen and (max-width: 639px) {
+    flex-direction: column;
+    gap: 30px;
+  }
+
   &_img {
     object-fit: contain;
     height: 368px;
@@ -18,6 +23,10 @@
       max-width: 95%;
       max-height: 200px;
       min-height: 187px;
+    }
+
+    @media screen and (max-width: 639px) {
+      max-height: 100%;
     }
 
     &:last-child {

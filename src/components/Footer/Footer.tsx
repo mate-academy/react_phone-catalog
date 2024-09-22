@@ -19,7 +19,7 @@ export const Footer = () => {
         </a>
       </div>
 
-      <div>
+      <div className={flex.footer_buttoms_container}>
         <a href="#" className={flex.footer_buttoms}>
           github
         </a>
@@ -33,7 +33,7 @@ export const Footer = () => {
 
       <div>
         <div className={flex.footer_top}>
-          back to top
+          Back to top
           <button
             className={classNames(
               buttom.product_slide_buttons,

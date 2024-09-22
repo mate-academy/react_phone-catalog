@@ -7,9 +7,24 @@
   grid-template-columns: repeat(24, 32px);
   gap: 16px;
 
-  @media screen and (max-width: 1200px) {
+  @media screen and (max-width: 639px) {
+    display: flex;
+    flex-direction: column;
+  }
+
+  @media screen and (max-width: 1199px) {
     grid-template-columns: repeat(12, 32px);
     margin: 0 10px;
+  }
+
+  @media screen and (max-width: 639px) {
+    grid-template-columns: repeat(4, 60px);
+    margin: 0 10px;
+  }
+
+  @media screen and (max-width: 639px) {
+    margin: 0;
+    width: 100%;
   }
 
   &_h1 {
@@ -17,6 +32,10 @@
 
     @media screen and (max-width: 1200px) {
       grid-column: 1 / 10;
+    }
+
+    @media screen and (max-width: 639px) {
+      grid-column: 1 / 5;
     }
   }
 
@@ -27,6 +46,10 @@
 
     @media screen and (max-width: 1200px) {
       grid-column: 2 / 12;
+    }
+
+    @media screen and (max-width: 639px) {
+
     }
   }
 
@@ -44,6 +67,10 @@
 
     @media screen and (max-width: 1200px) {
       height: 87.5%;
+    }
+
+    @media screen and (max-width: 639px) {
+      display: none;
     }
 
     &:hover {
@@ -68,6 +95,10 @@
 
     @media screen and (max-width: 1200px) {
       height: 87.5%;
+    }
+
+    @media screen and (max-width: 639px) {
+      display: none;
     }
 
     &:hover {

@@ -132,7 +132,7 @@ export const ProductDetailsPage: React.FC = () => {
     if (itemId) {
       filterItem(itemId);
     }
-  }, [itemId, phones, tablets, accessories]);
+  }, [itemId, phones, tablets, accessories, category]);
 
   if (!items) {
     return <img src="img/page-not-found.png" alt="not_found" />;
@@ -206,13 +206,15 @@ export const ProductDetailsPage: React.FC = () => {
                 <div className={styles.product_char_capacity_container}>
                   {items.colorsAvailable.map((color, index) => (
                     <NavLink
-                      to={`/${category}/${items.namespaceId}-${items.capacity.toLocaleLowerCase()}-${color}`}
+                      to={`/${category}/${items.namespaceId}-${items.capacity.toLocaleLowerCase()}-${color.replace(/\s+/g, '-')}`}
                       key={index}
-                      style={{ backgroundColor: color }}
                       className={isSelectColor}
                       onClick={() => handleCapacityClick(items.capacity, color)}
                     >
-                      {}
+                      <div
+                        className={styles.product_char_capacity_colors}
+                        style={{ backgroundColor: color }}
+                      ></div>
                     </NavLink>
                   ))}
                 </div>

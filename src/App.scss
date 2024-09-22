@@ -8,4 +8,13 @@ body {
   @media screen and (max-width: 1199px) {
     max-width: 1199px;
   }
+
+  @media screen and (max-width: 639px) {
+    max-width: 639px;
+  }
 }
+
+  .no-scroll {
+    overflow: hidden;
+    height: 100vh;
+  }
