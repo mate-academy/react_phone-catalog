@@ -1,0 +1,29 @@
+.footer-navigation {
+  @include on-tablet {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__menu-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    @include on-tablet {
+      flex-direction: row;
+      align-items: center;
+    }
+
+    @include on-desktop {
+      gap: 106px;
+    }
+  }
+
+  &__link {
+    font-size: 12px;
+    font-weight: 800;
+    text-transform: uppercase;
+    color: $secondary-gray;
+  }
+}

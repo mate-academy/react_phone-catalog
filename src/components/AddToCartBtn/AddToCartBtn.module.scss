@@ -1,0 +1,26 @@
+.add-to-cart-btn {
+  height: 100%;
+  color: #fff;
+  background-color: $primary-gray;
+  flex: 1 1 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 21px;
+  text-align: center;
+  transition-duration: 300ms;
+
+  &:hover {
+    box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.4);
+  }
+
+  &._selected {
+    background-color: #fff;
+    border: 1px solid $border-color;
+    color: #27ae60;
+    cursor: default;
+    box-shadow: none;
+  }
+}

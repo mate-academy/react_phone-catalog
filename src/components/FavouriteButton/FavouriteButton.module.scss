@@ -1,0 +1,20 @@
+.add-to-favourite {
+  background-color: transparent;
+  height: 100%;
+  flex: 0 0 40px;
+  border: 1px solid $buttons-border-gray;
+  background-image: url('/img/icons/Favourites-Heart.svg');
+  background-repeat: no-repeat;
+  background-size: 16px;
+  background-position: center;
+  transition-duration: 300ms;
+
+  &:hover {
+    border-color: $primary-gray;
+  }
+
+  &._added {
+    background-image: url('/img/icons/Favourites-Heart-Filled.svg');
+    border-color: $border-color;
+  }
+}

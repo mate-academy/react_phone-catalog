@@ -1,0 +1,56 @@
+.pagination {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+
+  &__arrow {
+    background-image: url('../../img/Buttons/Icons/Arrow-Right.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 16px;
+  }
+
+  &--prev {
+    transform: rotate(180deg);
+    margin-right: 10px;
+  }
+
+  &--next {
+    margin-left: 10px;
+  }
+
+  &__button {
+    display: block;
+    width: 32px;
+    height: 32px;
+    border: 1px solid $border-color;
+    background-color: transparent;
+
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 1;
+    text-align: center;
+    color: $primary-gray;
+
+    transition-duration: 300ms;
+
+    &:hover {
+      border-color: $primary-gray;
+    }
+
+    &._current {
+      color: #fff;
+      background-color: $primary-gray;
+      border-color: $primary-gray;
+    }
+
+    &._disabled {
+      opacity: 0.6;
+      cursor: default;
+
+      &:hover {
+        border-color: $border-color;
+      }
+    }
+  }
+}
