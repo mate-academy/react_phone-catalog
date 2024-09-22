@@ -54,7 +54,7 @@ export const ProductItem: React.FC<ProductItemProps> = ({
         >
           {product.images && product.images.length > 0 && (
             <img
-              src={`/${product.images[0]}`}
+              src={`./${product.images[0]}`}
               alt=""
               className={`product-item__image ${section}__item-image`}
             />
