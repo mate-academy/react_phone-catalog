@@ -3,12 +3,14 @@ import { Product } from '../../types/Product';
 import { getProductsByCategory } from '../../services/Product';
 import { Category } from '../../types/Category';
 import { ProductCard } from '../ProductCard';
-import styles from './ProductList.module.scss';
 import { Select } from '../Select';
 import { FilterType, ItemsPerPage } from '../../types/Filter';
 // eslint-disable-next-line
 import { SkeletonProductList } from '../SkeletonProductList/SkeletonProductList';
 import { useSearchParams } from 'react-router-dom';
+import { Pagination } from '../Pagination/Pagination';
+import { sortProducts } from '../../utils/sortFilter';
+import styles from './ProductList.module.scss';
 
 interface Props {
   category: Category;
@@ -18,22 +20,52 @@ interface Props {
 export const ProductList: FC<Props> = ({ category, title }) => {
   const [products, setProducts] = useState<Product[]>([]);
   const [isLoading, setIsLoading] = useState(true);
-
   const [searchParams, setSearchParams] = useSearchParams();
 
-  const sortType = searchParams.get('sort') || FilterType.age;
+  const page = parseInt(searchParams.get('page') || '1');
   const perPage = searchParams.get('perPage') || ItemsPerPage.All;
+  const sortType = searchParams.get('sort') || 'age';
 
-  const productCount = products.length;
+  const actualPerPage = perPage === 'All' ? products.length : parseInt(perPage);
+  const total = products.length;
+  const startIndex = (page - 1) * actualPerPage;
+  const sortedProducts = sortProducts(products, sortType);
+  const selectedProducts = sortedProducts.slice(
+    startIndex,
+    startIndex + actualPerPage,
+  );
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const data = await getProductsByCategory(category);
+
+        setProducts(data);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    const delay = setTimeout(() => {
+      if (category) {
+        fetchProducts();
+      }
+    }, 250);
+
+    return () => {
+      clearTimeout(delay);
+    };
+  }, [category]);
 
   const handleSortChange = useCallback(
     (event: React.ChangeEvent<HTMLSelectElement>) => {
       setSearchParams({
         sort: event.target.value,
         page: '1',
+        perPage,
       });
     },
-    [setSearchParams],
+    [setSearchParams, perPage],
   );
 
   const handlePerPageChange = useCallback(
@@ -47,28 +79,12 @@ export const ProductList: FC<Props> = ({ category, title }) => {
     [setSearchParams, sortType],
   );
 
-  useEffect(() => {
-    const fetchPhones = async () => {
-      try {
-        const data = await getProductsByCategory(category);
-
-        setProducts(data);
-      } finally {
-        setIsLoading(false);
-      }
-    };
-
-    const delay = setTimeout(() => {
-      if (category) {
-        fetchPhones();
-      }
-    }, 300);
-
-    return () => {
-      clearTimeout(delay);
-    };
-    // eslint-disable-next-line
-  }, []);
+  const handlePageChange = useCallback(
+    (newPage: number) => {
+      setSearchParams({ page: String(newPage), perPage, sort: sortType });
+    },
+    [setSearchParams, perPage, sortType],
+  );
 
   if (isLoading) {
     return <SkeletonProductList isLoading={isLoading} />;
@@ -80,7 +96,7 @@ export const ProductList: FC<Props> = ({ category, title }) => {
         <div className={styles.breadcrumbs}></div>
         <h1 className={styles.title}>{title}</h1>
         <p className={styles.count}>
-          {`${productCount} item${products.length > 1 ? 's' : ''}`}
+          {`${products.length} item${products.length > 1 ? 's' : ''}`}
         </p>
       </div>
 
@@ -106,11 +122,20 @@ export const ProductList: FC<Props> = ({ category, title }) => {
         />
       </div>
       <div className={styles.productList}>
-        {products.map(item => (
+        {selectedProducts.map(item => (
           <ProductCard product={item} key={item.id} />
         ))}
       </div>
-      <div className={styles.pagination}></div>
+      <div className={styles.pagination}>
+        {perPage !== 'All' && (
+          <Pagination
+            total={total}
+            perPage={actualPerPage}
+            currentPage={page}
+            onPageChange={handlePageChange}
+          />
+        )}
+      </div>
     </div>
   );
 };
