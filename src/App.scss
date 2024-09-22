@@ -44,15 +44,15 @@ body {
 
     &_text{
       position: relative;
-      transition: 0.3s;
-
       display: flex;
       justify-content: center;
-      align-self: center;
+      align-items: center;
       text-decoration: none;
       color: #89939A;
       font-size: 12px;
       font-family: $fontSemi;
+      transition: $transitionSpeed;
+      height:60px;
 
       &.active{
         color: $greyPrimary;
@@ -62,11 +62,15 @@ body {
           position: absolute;
           left: 0;
           right: 0;
-          bottom: -25px;
-          height: 3px;
+          bottom: -4px;
+          height: 2px;
           background-color: $greyPrimary;
           width: 100%;
         }
+      }
+
+      &:hover{
+        color: $greyPrimary;
       }
 
       &--phone{

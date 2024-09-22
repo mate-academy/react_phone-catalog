@@ -32,14 +32,24 @@
       border-radius: 16px;
       display: flex;
       align-items: center;
-      gap: 24px;
+      justify-content: space-between;
       padding: 24px;
 
       @include on-phone{
         display: block;
       }
 
+
+      @include on-tablet{
+        justify-content: space-between;
+      }
+
       &_top{
+        display: flex;
+        flex-direction: row;
+        justify-content:center;
+        align-items: center;
+
         @include on-phone{
           display: flex;
           align-items: center;
@@ -47,6 +57,15 @@
         }
       }
       &_bottom{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+
+        @include on-tablet{
+          justify-content: space-between;
+        }
+        
         @include on-phone{
           display: flex;
           justify-content: space-between;
@@ -72,7 +91,6 @@
       }
 
       &_title{
-        width: 336px;
         font-family: $fontNormal;
         font-size: 14px;
         color: $greyPrimary;
@@ -165,6 +183,9 @@
       &:hover{
         box-shadow: 0 3px 13px 0  $darkBorderGrey;
         transition: $transitionSpeed;
+        background-color: #fff;
+        color:$greyPrimary;
+        border: 2px solid #216CFF;
       }
     }
   }
