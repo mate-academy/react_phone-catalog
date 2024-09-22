@@ -68,7 +68,7 @@ export const Navigation = () => {
           {favourites && favourites.length > 0 && (
             <span className="favourites__number">{favourites.length}</span>
           )}
-          <img src="../img/icons/Favourites-Heart.svg" alt="favourites-image" />
+          <img src="./img/icons/Favourites-Heart.svg" alt="favourites-image" />
         </NavLink>
         <NavLink
           to="/cart"
@@ -80,7 +80,7 @@ export const Navigation = () => {
               {getProductForShow(cart).length}
             </span>
           )}
-          <img src="../img/icons/Shopping-bag.svg" alt="favourites-image" />
+          <img src="./img/icons/Shopping-bag.svg" alt="favourites-image" />
         </NavLink>
       </div>
     </nav>

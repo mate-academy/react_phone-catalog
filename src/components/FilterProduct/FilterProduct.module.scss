@@ -28,7 +28,7 @@
       bottom: 10px;
       right: 12px;
 
-      background-image: url('../..../img/Buttons/Icons/Chevron-grey.svg');
+      background-image: url('../../img/Buttons/Icons/Chevron-grey.svg');
       background-position: center;
       background-repeat: no-repeat;
       background-size: contain;
@@ -40,7 +40,7 @@
       &::before {
         transform: rotate(90deg);
 
-        background-image: url('../..../img/Buttons/Icons/Arrow-Right.svg');
+        background-image: url('../../img/Buttons/Icons/Arrow-Right.svg');
       }
     }
   }
