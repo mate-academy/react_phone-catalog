@@ -3,7 +3,7 @@ import { ProductSpecs } from '../types/ProductSpecs';
 import { ProductSummary } from '../types/ProductSummary';
 
 export async function getProductsSummary(): Promise<ProductSummary[]> {
-  const response = await fetch(`http://localhost:3000/api/products.json`);
+  const response = await fetch(`./api/products.json`);
 
   if (!response.ok) {
     throw new Error(response.statusText);
@@ -13,7 +13,7 @@ export async function getProductsSummary(): Promise<ProductSummary[]> {
 }
 
 export async function getProducts(catId: string): Promise<ProductSpecs[]> {
-  const response = await fetch(`http://localhost:3000/api/${catId}.json`);
+  const response = await fetch(`./api/${catId}.json`);
 
   if (!response.ok) {
     throw new Error(response.statusText);
