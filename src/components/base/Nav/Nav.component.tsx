@@ -32,7 +32,7 @@ export const Nav: React.FC<Props> = ({ navStyle }) => {
 
   useEffect(() => {
     getCategories().then(cats => setCategories(cats));
-  });
+  }, []);
 
   return (
     <nav className="nav">
