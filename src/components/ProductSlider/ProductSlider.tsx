@@ -19,6 +19,8 @@ type Props = {
   sectionName: string;
 };
 
+
+
 export const ProductSlider: React.FC<Props> = ({ models, sectionName }) => {
   const { setActiveIndex } = useContext(CatalogContext);
   const swiperRef = useRef<SwiperRef>(null);
