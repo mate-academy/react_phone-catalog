@@ -17,6 +17,8 @@ import { ProductDetailsSpecs } from '../../components/ProductDetailsSpecs/Produc
 // eslint-disable-next-line max-len
 import { ProductSlider } from '../../components/base/ProductSlider/ProductSlider.component';
 import { ProductSummary } from '../../types/ProductSummary';
+// eslint-disable-next-line max-len
+import { ProductDetailsCarousel } from '../../components/ProductDetailsCarousel/ProductDetailsCarousel.component';
 
 export const ProductDetailsPage = () => {
   const { productId } = useParams();
@@ -52,7 +54,11 @@ export const ProductDetailsPage = () => {
           secondLevel={selectedProduct.name}
         />
         <BackPath />
-        <ProductDetailsMain />
+        <h2>{selectedProduct.name}</h2>
+        <div className="productDetails-page__productCard">
+          <ProductDetailsCarousel />
+          <ProductDetailsMain />
+        </div>
         <ProductDetailsDescription />
         <ProductDetailsSpecs />
         {suggested && (

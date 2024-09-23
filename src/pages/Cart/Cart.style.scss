@@ -1,8 +1,13 @@
 .cart-page {
-  @include inline-padding;
-  @include grid-page;
-
   &__link {
     text-decoration: none;
+  }
+
+  & {
+    @include grid-page;
+  }
+
+  & {
+    @include inline-padding;
   }
 }

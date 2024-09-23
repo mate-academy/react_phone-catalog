@@ -1,6 +1,10 @@
 .favorites-page {
-  @include inline-padding;
-  @include grid-page;
   row-gap: 24px;
   padding-block: 24px;
+
+  @include grid-page;
+
+  & {
+    @include inline-padding;
+  }
 }

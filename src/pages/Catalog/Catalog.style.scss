@@ -1,6 +1,9 @@
 .catalog-page {
-  @include inline-padding;
+  row-gap: 24px;
+
   @include grid-page;
 
-  row-gap: 24px;
+  & {
+    @include inline-padding;
+  }
 }

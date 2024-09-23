@@ -1,7 +1,6 @@
 import { useContext, useEffect, useState } from 'react';
 import { StatesContext } from '../../store/GlobalStateProvider';
 // eslint-disable-next-line max-len
-import { ProductDetailsCarousel } from '../ProductDetailsCarousel/ProductDetailsCarousel.component';
 import { Line } from '../base/Line/Line.component';
 import cn from 'classnames';
 import { Price } from '../base/Price/Price.component';
@@ -56,8 +55,6 @@ export const ProductDetailsMain: React.FC = () => {
   if (selectedProduct) {
     return (
       <div className="productDetailsMain">
-        <h2>{selectedProduct.name}</h2>
-        <ProductDetailsCarousel />
         <div className="productDetailsMain__colors">
           <span className="productDetailsMain__colors-text">
             Available colors
