@@ -36,13 +36,11 @@ export const ProductDetailsPage = () => {
 
       return;
     });
-  }, [categoryId, productId]);
+  }, [categoryId, dispatch, productId]);
 
   useEffect(() => {
     getProductsSummary().then(prods => {
       setSuggested(prods.filter(p => p.category === selectedProduct?.category));
-
-      setSuggested(prods);
     });
   }, [selectedProduct]);
 
