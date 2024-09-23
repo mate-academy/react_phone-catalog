@@ -1,6 +1,6 @@
 {
   "name": "react_phone-catalog",
-  "homepage": "https://mixelio.github.io/react_phone-catalog",
+  "homepage": ".",
   "version": "0.1.0",
   "keywords": [],
   "author": "Mate Academy",
@@ -9,7 +9,6 @@
     "@fortawesome/fontawesome-free": "^6.5.2",
     "bulma": "^1.0.1",
     "classnames": "^2.5.1",
-    "jquery": "^3.7.1",
     "lodash": "^4.17.21",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
@@ -21,7 +20,6 @@
   "devDependencies": {
     "@cypress/react18": "^2.0.1",
     "@eslint/js": "^9.11.0",
-    "@mate-academy/scripts": "^1.9.12",
     "@mate-academy/students-ts-config": "*",
     "@mate-academy/stylelint-config": "*",
     "@types/eslint__js": "^8.42.3",
