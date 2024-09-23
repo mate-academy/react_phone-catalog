@@ -28,8 +28,8 @@ export const App = () => {
 
   return (
     <div className="App">
-      <h1 className="h1Hidden">Product Catalog</h1>
       <header className="header">
+        <h1 className="h1Hidden">Product Catalog</h1>
         <Header />
       </header>
       <aside className={cn('menu', { 'menu-isOpen': isMenuOpen })} id="menu">

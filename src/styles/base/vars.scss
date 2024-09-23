@@ -20,6 +20,8 @@ $gridSpan-slider-card-desktop: 6;
 $gridSpan-catalog-card-mobile: 4;
 $gridSpan-catalog-card-tablet: 4;
 $gridSpan-catalog-card-desktop: 6;
-$productSlider-translate-value: calc(-1 * (($grid-auto-col-mobile) + ($grid-cols-gap)) * $gridSpan-slider-card-mobile);
+$productSlider-translate-value: calc(
+  -1 * (($grid-auto-col-mobile) + ($grid-cols-gap)) * $gridSpan-slider-card-mobile
+);
 $transition-duration: 0.3s ease-in-out;
-
+$baseIconPath: '/public/img/icons/';

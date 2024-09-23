@@ -71,76 +71,76 @@
   }
 
   &--menu {
-    background: url('../../../../public/img/icons/menu.svg') no-repeat center;
+    background: url('../../../..' + $baseIconPath + 'menu.svg') no-repeat center;
   }
 
   &--favorite {
-    background: url('../../../../public/img/icons/heart.svg') no-repeat center;
+    background: url('../../../..' + $baseIconPath + 'heart.svg') no-repeat center;
     &-added {
-      background: url('../../../../public/img/icons/heart-filled.svg') no-repeat
+      background: url('../../../..' + $baseIconPath + 'heart-filled.svg') no-repeat
         center;
     }
     &-counter {
-      background: url('../../../../public/img/icons/heart-counter.svg')
+      background: url('../../../..' + $baseIconPath + 'heart-counter.svg')
         no-repeat center;
     }
   }
 
   &--cart {
-    background: url('../../../../public/img/icons/cart.svg') no-repeat center;
+    background: url('../../../..' + $baseIconPath + 'cart.svg') no-repeat center;
     &-counter {
-      background: url('../../../../public/img/icons/cart-counter.svg') no-repeat
+      background: url('../../../..' + $baseIconPath + 'cart-counter.svg') no-repeat
         center;
     }
   }
 
   &--close {
-    background: url('../../../../public/img/icons/close.svg') no-repeat center;
+    background: url('../../../..' + $baseIconPath + 'close.svg') no-repeat center;
   }
 
   &--chevron-left {
-    background: url('../../../../public/img/icons/chevron-left.svg') no-repeat
+    background: url('../../../..' + $baseIconPath + 'chevron-left.svg') no-repeat
       center;
     &-disabled {
-      background: url('../../../../public/img/icons/chevron-left-disabled.svg')
+      background: url('../../../..' + $baseIconPath + 'chevron-left-disabled.svg')
         no-repeat center;
     }
   }
 
   &--chevron-right {
-    background: url('../../../../public/img/icons/chevron-right.svg') no-repeat
+    background: url('../../../..' + $baseIconPath + 'chevron-right.svg') no-repeat
       center;
     &-disabled {
-      background: url('../../../../public/img/icons/chevron-right-disabled.svg')
+      background: url('../../../..' + $baseIconPath + 'chevron-right-disabled.svg')
         no-repeat center;
     }
   }
 
   &--chevron-up {
-    background: url('../../../../public/img/icons/chevron-up.svg') no-repeat
+    background: url('../../../..' + $baseIconPath + 'chevron-up.svg') no-repeat
       center;
   }
 
   &--home {
-    background: url('../../../../public/img/icons/home.svg') no-repeat center;
+    background: url('../../../..' + $baseIconPath + 'home.svg') no-repeat center;
     &-disabled {
-      background: url('../../../../public/img/icons/home-disabled.svg')
+      background: url('../../../..' + $baseIconPath + 'home-disabled.svg')
         no-repeat center;
     }
   }
 
   &--minus {
-    background: url('../../../../public/img/icons/minus.svg') no-repeat center;
+    background: url('../../../..' + $baseIconPath + 'minus.svg') no-repeat center;
     &-disabled {
-      background: url('../../../../public/img/icons/minus-disabled.svg')
+      background: url('../../../..' + $baseIconPath + 'minus-disabled.svg')
         no-repeat center;
     }
   }
 
   &--plus {
-    background: url('../../../../public/img/icons/plus.svg') no-repeat center;
+    background: url('../../../..' + $baseIconPath + 'plus.svg') no-repeat center;
     &-disabled {
-      background: url('../../../../public/img/icons/plus-disabled.svg')
+      background: url('../../../..' + $baseIconPath + 'plus-disabled.svg')
         no-repeat center;
     }
   }

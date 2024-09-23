@@ -20,11 +20,12 @@
     @include grid-page;
   }
   &__prevBtn {
+    cursor: pointer;
     display: none;
     width: 32px;
     height: 100%;
     border: 1px solid $c-icons;
-    background: url('../../../public/img/icons/chevron-left.svg') no-repeat
+    background: url('../../..' + $baseIconPath + 'chevron-left.svg') no-repeat
       center;
 
     @include on-tablet {
@@ -36,12 +37,13 @@
     }
   }
   &__nextBtn {
+    cursor: pointer;
     display: none;
     justify-self: end;
     width: 32px;
     height: 100%;
     border: 1px solid $c-icons;
-    background: url('../../../public/img/icons/chevron-right.svg') no-repeat
+    background: url('../../..' + $baseIconPath + 'chevron-right.svg') no-repeat
       center;
 
     @include on-tablet {
@@ -214,9 +216,9 @@
     cursor: pointer;
     width: 24px;
     height: 24px;
-    background: url('../../../public/img/icons/dot-inactive.svg');
+    background: url('../../..' + $baseIconPath + 'dot-inactive.svg');
     &--active {
-      background: url('../../../public/img/icons/dot-active.svg');
+      background: url('../../..' + $baseIconPath + 'dot-active.svg');
     }
   }
 }
