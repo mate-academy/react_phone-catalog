@@ -27,9 +27,11 @@ export const App = () => {
   }, [dispatch]);
 
   return (
-    <div className="App" id="top">
-      {/* <h1>Product Catalog</h1> */}
-      <Header />
+    <div className="App">
+      <h1 id="h1Hidden">Product Catalog</h1>
+      <header className="header">
+        <Header />
+      </header>
       <aside className={cn('menu', { 'menu-isOpen': isMenuOpen })} id="menu">
         <MenuPage />
       </aside>

@@ -7,4 +7,14 @@
   &:has(.menu-isOpen) {
     overflow-y: hidden;
   }
+  position: relative;
+}
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 999;
+}
+#h1Hidden {
+  display: none;
 }
