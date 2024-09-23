@@ -5,6 +5,7 @@
   box-sizing: border-box;
 
   &__cart {
+    cursor: pointer;
     flex-grow: 1;
     background-color: map-get($colors, gray-primary);
     border: 1px solid transparent;
@@ -21,6 +22,7 @@
   }
 
   &__favourite {
+    cursor: pointer;
     height: 40px;
     width: 40px;
     padding: 12px;
