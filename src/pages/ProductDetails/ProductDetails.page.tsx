@@ -36,7 +36,7 @@ export const ProductDetailsPage = () => {
 
       return;
     });
-  }, [categoryId, dispatch, productId]);
+  }, [categoryId, productId]);
 
   useEffect(() => {
     getProductsSummary().then(prods => {

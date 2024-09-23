@@ -16,7 +16,7 @@ export const App = () => {
       type: 'updateTotalCartItems',
       payload: cart.reduce((acc, prod) => acc + (prod.quantity ?? 1), 0),
     });
-  }, [cart, dispatch]);
+  }, [cart]);
 
   useEffect(() => {
     Promise.allSettled([
@@ -24,7 +24,7 @@ export const App = () => {
         .then(cats => dispatch({ type: 'loadCategories', payload: cats }))
         .catch(() => 'something wrong while fetching products'),
     ]).finally(() => dispatch({ type: 'isReady', payload: true }));
-  }, [dispatch]);
+  }, []);
 
   return (
     <div className="App">
