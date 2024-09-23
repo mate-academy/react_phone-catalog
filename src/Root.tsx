@@ -9,9 +9,7 @@ export const Root = () => (
     <Routes>
       <Route path="/" element={<App />}>
         <Route index element={<HomePage />} />
-        <Route path="phones" element={<Catalog />} />
-        <Route path="tablets" element={<Catalog />} />
-        <Route path="accessories" element={<Catalog />} />
+        <Route path=":category" element={<Catalog />} />
         <Route path="*" element={<NotFoundPage />} />
       </Route>
     </Routes>

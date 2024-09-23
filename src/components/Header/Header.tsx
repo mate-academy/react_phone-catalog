@@ -1,11 +1,18 @@
-import { Link } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 import { IconType } from '../../utils/types';
-import { Icon } from '../HeaderIcon';
+import { HeaderIcon } from '../HeaderIcon';
 
 import logo from '../../img/logo.png';
 import styles from './Header.module.scss';
 
 export const Header = () => {
+  const getLinkStyle = ({ isActive }: { isActive: boolean }) => {
+    return {
+      color: isActive ? '#0f0f11' : '',
+      borderBottom: isActive ? '3px solid #0f0f11' : '',
+    };
+  };
+
   return (
     <>
       <header className={styles.header}>
@@ -15,39 +22,55 @@ export const Header = () => {
           </Link>
           <nav className={styles.header__nav}>
             <ul className={styles.header__nav_list}>
-              <li>
-                <Link className={styles.header__nav_link} to="/">
+              <li className={styles.header__nav_item}>
+                <NavLink
+                  to="/"
+                  className={styles.header__nav_link}
+                  style={getLinkStyle}
+                >
                   home
-                </Link>
+                </NavLink>
               </li>
-              <li>
-                <Link className={styles.header__nav_link} to="/phones">
+              <li className={styles.header__nav_item}>
+                <NavLink
+                  to="/phones"
+                  className={styles.header__nav_link}
+                  style={getLinkStyle}
+                >
                   phones
-                </Link>
+                </NavLink>
               </li>
-              <li>
-                <Link className={styles.header__nav_link} to="/tablets">
+              <li className={styles.header__nav_item}>
+                <NavLink
+                  to="/tablets"
+                  className={styles.header__nav_link}
+                  style={getLinkStyle}
+                >
                   tablets
-                </Link>
+                </NavLink>
               </li>
-              <li>
-                <Link className={styles.header__nav_link} to="/accessories">
+              <li className={styles.header__nav_item}>
+                <NavLink
+                  to="/accessories"
+                  className={styles.header__nav_link}
+                  style={getLinkStyle}
+                >
                   accessories
-                </Link>
+                </NavLink>
               </li>
             </ul>
           </nav>
         </div>
         <div className={styles.header__right}>
-          <Icon type={IconType.favourites} href="#" />
-          <Icon type={IconType.cart} href="#" />
+          <HeaderIcon type={IconType.favourites} href="#" />
+          <HeaderIcon type={IconType.cart} href="#" />
         </div>
       </header>
       <header className={`${styles.header} ${styles['header--mobile']}`}>
         <a href="#" className={styles.header__logo}>
           <img src={logo} alt="page logo" />
         </a>
-        <Icon type={IconType.menu} href="#menu" />
+        <HeaderIcon type={IconType.menu} href="#menu" />
       </header>
     </>
   );

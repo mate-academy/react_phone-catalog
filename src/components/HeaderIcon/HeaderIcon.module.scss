@@ -18,6 +18,10 @@
   &--wide {
     width: 50%;
     height: 64px;
+
+    &:hover {
+      border-bottom: 2px solid #313237;
+    }
   }
 
   &--menu {

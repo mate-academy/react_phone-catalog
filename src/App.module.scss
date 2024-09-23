@@ -1,5 +1,6 @@
 @import './normilize.css';
 @import './utils/mixins';
+@import './utils/variables';
 
 @font-face {
   font-family: Mont;
@@ -19,13 +20,28 @@
   font-weight: 600;
 }
 
+html {
+  &:has(.app__menu:target) {
+    overflow: hidden;
+  }
+
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: Mont, sans-serif;
   font-size: 12px;
+  background-color: $color-page-background;
 }
 
 .app {
-  scroll-behavior: smooth;
+  &__header {
+    position: sticky;
+    z-index: 2;
+    top: 0;
+    left: 0;
+    right: 0;
+  }
 
   &__container {
     max-width: 1136px;

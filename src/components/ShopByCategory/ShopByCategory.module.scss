@@ -1,0 +1,62 @@
+@import '../../utils/mixins';
+@import '../../utils/variables';
+
+.shopByCategory {
+  &__title {
+    margin-bottom: 24px;
+  }
+
+  &__categories {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+
+    @include on-tablet {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 16px;
+    }
+
+    @include on-desktop {
+      grid-template-columns: repeat(24, 32px);
+    }
+  }
+
+  &__category {
+    @include on-tablet {
+      grid-column: span 4;
+    }
+
+    @include on-desktop {
+      grid-column: span 8;
+    }
+  }
+
+  &__link {
+    display: block;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+  }
+
+  &__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    margin-bottom: 24px;
+    transition: transform 0.3s ease-in-out;
+
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+
+  &__category-title {
+    margin-bottom: 4px;
+  }
+
+  &__quantity {
+    color: $color-grey;
+
+    @include body-text;
+  }
+}

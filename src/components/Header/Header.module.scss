@@ -3,17 +3,17 @@
 
 .header {
   display: none;
+  background-color: #fff;
+  border-bottom: 1px solid $color-border-grey;
 
   @include on-tablet {
     display: flex;
     justify-content: space-between;
-    box-shadow: 0 1px 0 0 $color-border-grey;
   }
 
   &--mobile {
     display: flex;
     justify-content: space-between;
-    box-shadow: 0 1px 0 0 $color-border-grey;
 
     @include on-tablet {
       display: none;
@@ -22,7 +22,6 @@
 
   &__left {
     display: flex;
-    align-items: center;
     gap: 16px;
 
     @include on-tablet {
@@ -48,13 +47,39 @@
   }
 
   &__nav {
+    height: 100%;
+    display: flex;
+    align-items: center;
+
     &_list {
+      height: 100%;
       display: flex;
+      align-items: center;
       list-style: none;
       gap: 32px;
     }
+
     &_link {
       @include nav-link-styles;
+
+      display: flex;
+      align-items: center;
+      height: 100%;
+
+      &:hover {
+        color: $color-black;
+      }
+
+      &--active {
+        color: $color-black;
+        border-bottom: 3px solid black;
+      }
+    }
+
+    &_item {
+      height: 100%;
+      display: flex;
+      align-items: center;
     }
   }
 }

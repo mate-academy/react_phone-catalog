@@ -2,10 +2,15 @@ import styles from './HeaderIcon.module.scss';
 
 type Props = {
   type: string;
-  size?: 'default' | 'wide';
   href: string;
+  size?: 'default' | 'wide';
+  onClick?: (value: string) => void;
 };
-export const Icon: React.FC<Props> = ({ type, size = 'default', href }) => {
+export const HeaderIcon: React.FC<Props> = ({
+  type,
+  size = 'default',
+  href,
+}) => {
   const sizeClass = size === 'wide' ? styles['icon--wide'] : '';
 
   return (

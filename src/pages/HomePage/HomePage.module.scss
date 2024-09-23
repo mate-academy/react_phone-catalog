@@ -2,14 +2,26 @@
 
 .homePage {
   &__title {
-    padding-bottom: 24px;
+    padding-block: 24px;
 
     @include on-tablet {
-      padding-bottom: 32px;
+      padding-block: 32px;
     }
 
     @include on-desktop {
-      padding-bottom: 56px;
+      padding-block: 56px;
+    }
+  }
+
+  &__section {
+    margin-bottom: 56px;
+
+    @include on-tablet {
+      margin-bottom: 64px;
+    }
+
+    @include on-desktop {
+      margin-bottom: 80px;
     }
   }
 }

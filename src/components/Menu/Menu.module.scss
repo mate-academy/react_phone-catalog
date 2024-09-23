@@ -36,11 +36,22 @@
     flex-direction: column;
     align-items: center;
     gap: 16px;
-
     list-style: none;
   }
 
   &__nav_link {
     @include nav-link-styles;
+
+    height: 100%;
+    display: flex;
+    align-items: center;
+  }
+
+  &__nav_item {
+    height: 27px;
+
+    &:hover {
+      border-bottom: 2px solid #313237;
+    }
   }
 }
