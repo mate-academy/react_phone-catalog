@@ -30,6 +30,7 @@ export const HomePage: React.FC = () => {
   }, []);
 
   useEffect(() => {
+    setLoader(true);
     if (productsFromServer) {
 
       const uniqueCategories = Array.from(
@@ -39,7 +40,6 @@ export const HomePage: React.FC = () => {
       );
 
       setCategories(uniqueCategories);
-      setLoader(false);
     }
   }, [productsFromServer]);
 
@@ -57,6 +57,12 @@ export const HomePage: React.FC = () => {
 
     return 1;
   };
+
+  useEffect(() => {
+    if(hotPrisModels.length > 0 && brandNewModels.length > 0 && productsFromServer.length > 0) {
+      setLoader(false);
+    }
+  }, [hotPrisModels, brandNewModels, productsFromServer])
 
   return loader ? <div className="container"><p>loading...</p></div> : (
     <>

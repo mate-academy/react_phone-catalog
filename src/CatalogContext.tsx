@@ -223,6 +223,10 @@ export const CatalogProvider: React.FC<Props> = ({ children }) => {
         });
       });
     }
+
+    if (hotPrisModels.length > 0) {
+      setLoader(false);
+    }
     // eslint-disable-next-line
   }, [productsFromServer, favourites]);
 
