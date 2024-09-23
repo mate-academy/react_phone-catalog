@@ -13,12 +13,13 @@ import { ProductSliderButtons } from '../../components/ProductSliderButtons/Prod
 import { useUnique } from '../../utils/useUnique';
 
 export const HomePage: React.FC = () => {
-  const { productsFromServer, hotPrisModels, brandNewModels } =
+  const { productsFromServer, hotPrisModels, brandNewModels, loader, setLoader } =
     useContext(CatalogContext);
   const [categories, setCategories] = useState<string[]>([]);
   const newModelForShow = [...useUnique(brandNewModels)];
   const hotMOdelForShow = [...useUnique(hotPrisModels)];
 
+  console.log(loader);
   useEffect(() => {
     const scrollPosition = localStorage.getItem('scrollPosition');
 
@@ -31,6 +32,7 @@ export const HomePage: React.FC = () => {
 
   useEffect(() => {
     if (productsFromServer) {
+
       const uniqueCategories = Array.from(
         new Set(
           productsFromServer?.map((product: Product) => product.category),
@@ -38,6 +40,7 @@ export const HomePage: React.FC = () => {
       );
 
       setCategories(uniqueCategories);
+      setLoader(false);
     }
   }, [productsFromServer]);
 
@@ -56,7 +59,7 @@ export const HomePage: React.FC = () => {
     return 1;
   };
 
-  return (
+  return loader ? 'loading...' : (
     <>
       <section className="first-screen home__first-screen">
         <div className="container">

@@ -16,6 +16,7 @@ type Props = {
 };
 
 type ContextType = {
+  loader: boolean;
   menuStatus: boolean;
   phonesFromServer: Phone[];
   tabletsFromServer: Tablet[];
@@ -28,6 +29,7 @@ type ContextType = {
   favourites: Phone[] | Tablet[] | Accessory[];
   currentPaginationPage: number;
   cart: Phone[] | Tablet[] | Accessory[];
+  setLoader: (value: boolean) => void;
   setMenuStatus: (value: boolean) => void;
   setPhonesFromServer: (value: Phone[]) => void;
   setTabletsFromServer: (value: Tablet[]) => void;
@@ -45,6 +47,7 @@ type ContextType = {
 };
 
 export const CatalogContext = React.createContext<ContextType>({
+  loader: false,
   menuStatus: false,
   phonesFromServer: [],
   tabletsFromServer: [],
@@ -57,6 +60,7 @@ export const CatalogContext = React.createContext<ContextType>({
   favourites: [],
   currentPaginationPage: 0,
   cart: [],
+  setLoader: () => {},
   setMenuStatus: () => {},
   setPhonesFromServer: () => {},
   setTabletsFromServer: () => {},
@@ -74,6 +78,7 @@ export const CatalogContext = React.createContext<ContextType>({
 });
 
 export const CatalogProvider: React.FC<Props> = ({ children }) => {
+  const [loader, setLoader] = useState(false);
   const [menuStatus, setMenuStatus] = useState(false);
   const [phonesFromServer, setPhonesFromServer] = useState<Phone[]>([]);
   const [tabletsFromServer, setTabletsFromServer] = useState<Tablet[]>([]);
@@ -171,6 +176,7 @@ export const CatalogProvider: React.FC<Props> = ({ children }) => {
   };
 
   useEffect(() => {
+    setLoader(true);
     getPhones().then(res => setPhonesFromServer([...res]));
     getTablets().then(res => setTabletsFromServer([...res]));
     getAccessories().then(res => setAccessoriesFromServer([...res]));
@@ -246,6 +252,7 @@ export const CatalogProvider: React.FC<Props> = ({ children }) => {
 
   const value = useMemo(
     () => ({
+      loader,
       menuStatus,
       phonesFromServer,
       tabletsFromServer,
@@ -258,6 +265,7 @@ export const CatalogProvider: React.FC<Props> = ({ children }) => {
       favourites,
       currentPaginationPage,
       cart,
+      setLoader,
       setMenuStatus,
       setPhonesFromServer,
       setTabletsFromServer,
@@ -275,6 +283,7 @@ export const CatalogProvider: React.FC<Props> = ({ children }) => {
     }),
     // eslint-disable-next-line
     [
+      loader,
       menuStatus,
       phonesFromServer,
       tabletsFromServer,
