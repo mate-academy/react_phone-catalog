@@ -5,13 +5,14 @@ export const FooterNavigation = () => {
     <nav className="footer-navigation">
       <ul className="footer-navigation__menu-list">
         <li className="footer-navigation__menu-item">
-          <Link
+          <a
+            target='blank'
             className="footer-navigation__link"
-            to="
-            https://github.com/mate-academy/react_pagination#react-pagination"
+            href="
+            https://github.com/mixelio/"
           >
             Github
-          </Link>
+          </a>
         </li>
         <li className="footer-navigation__menu-item">
           <Link className="footer-navigation__link" to="/">
