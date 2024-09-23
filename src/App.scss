@@ -2,12 +2,11 @@
   scroll-behavior: smooth;
   width: 100%;
   position: relative;
-  overflow-x: hidden;
   max-height: 100vh;
+
   &:has(.menu-isOpen) {
     overflow-y: hidden;
   }
-  position: relative;
 }
 
 .header {
@@ -15,6 +14,7 @@
   top: 0;
   z-index: 999;
 }
-#h1Hidden {
+
+.h1Hidden {
   display: none;
 }

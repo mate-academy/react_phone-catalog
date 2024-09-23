@@ -15,10 +15,12 @@ export const Header = () => {
   const { favorites, totalCartItems } = useContext(StatesContext);
   const isMobile = useMediaQuery('(max-width: 640px');
   const handleClick = () => {
-    if (isMenuOpen) {
-      dispatch({ type: 'isMenuOpen', payload: false });
-    } else {
-      dispatch({ type: 'isMenuOpen', payload: true });
+    if (isMobile) {
+      if (isMenuOpen) {
+        dispatch({ type: 'isMenuOpen', payload: false });
+      } else {
+        dispatch({ type: 'isMenuOpen', payload: true });
+      }
     }
 
     return isMenuOpen;
@@ -35,14 +37,12 @@ export const Header = () => {
         </div>
         <div className="topbar__icons-container">
           {isMobile ? (
-            <a href={cn({ '#menu': isMenuOpen, '#top': !isMenuOpen })}>
-              <Icon
-                iconUse="bar"
-                iconType={cn({ menu: !isMenuOpen, close: isMenuOpen })}
-                onClick={handleClick}
-                border
-              />
-            </a>
+            <Icon
+              iconUse="bar"
+              iconType={cn({ menu: !isMenuOpen, close: isMenuOpen })}
+              onClick={handleClick}
+              border
+            />
           ) : (
             <>
               <Link to="/favorites">

@@ -28,7 +28,7 @@ export const App = () => {
 
   return (
     <div className="App">
-      <h1 id="h1Hidden">Product Catalog</h1>
+      <h1 className="h1Hidden">Product Catalog</h1>
       <header className="header">
         <Header />
       </header>
@@ -36,6 +36,7 @@ export const App = () => {
         <MenuPage />
       </aside>
       <Outlet />
+
       <Footer />
     </div>
   );

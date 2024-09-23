@@ -19,7 +19,7 @@ export const NumberPaginator: React.FC<Props> = ({
 
     return (
       <a
-        key={i + page}
+        key={i}
         className={cn('pagination__link', {
           'pagination__link--active pagination__item--active':
             currentPage === page,
