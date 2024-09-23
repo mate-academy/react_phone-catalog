@@ -50,8 +50,9 @@ export const Footer = () => {
           </a>
 
           <a
-            href="/not-implemented"
+            href="https://github.com/mykhailonl"
             rel="noopener noreferrer"
+            target="_blank"
             className={footer__link}
           >
             Rights
