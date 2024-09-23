@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState, TouchEvent } from 'react';
 import { ProductCard } from '../ProductCard/ProductCard.component';
 import { Icon } from '../Icon/Icon.component';
 import { ProductSummary } from '../../../types/ProductSummary';
@@ -22,6 +22,7 @@ export const ProductSlider: React.FC<Props> = ({
   const cardRef = useRef<HTMLDivElement>(null);
   const frameRef = useRef<HTMLDivElement>(null);
   const sliderRef = useRef<HTMLDivElement>(null);
+  const [touchPosition, setTouchPosition] = useState<number | null>(null);
 
   const configureSlider = useCallback(() => {
     const { current: card } = cardRef;
@@ -45,6 +46,33 @@ export const ProductSlider: React.FC<Props> = ({
     if (index > -(products.length - 1 - onScreenCount)) {
       setIndex(index - scrollSteps);
     }
+  };
+
+  const handleTouchStart = (e: TouchEvent) => {
+    const touchDown = e.touches[0].clientX;
+
+    setTouchPosition(touchDown);
+  };
+
+  const handleTouchMove = (e: TouchEvent) => {
+    const touchDown = touchPosition;
+
+    if (touchDown === null) {
+      return;
+    }
+
+    const currentTouch = e.touches[0].clientX;
+    const diff = touchDown - currentTouch;
+
+    if (diff > 8) {
+      next();
+    }
+
+    if (diff < -8) {
+      prev();
+    }
+
+    setTouchPosition(null);
   };
 
   useEffect(() => {
@@ -74,7 +102,12 @@ export const ProductSlider: React.FC<Props> = ({
           />
         </div>
       </div>
-      <div className="productSlider__frame" ref={frameRef}>
+      <div
+        className="productSlider__frame"
+        ref={frameRef}
+        onTouchStart={handleTouchStart}
+        onTouchMove={handleTouchMove}
+      >
         <div
           className="productSlider__list"
           style={{

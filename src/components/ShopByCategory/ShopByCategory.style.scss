@@ -4,6 +4,9 @@
   flex-direction: column;
   gap: 32px;
 
+  &__link {
+    text-decoration: none;
+  }
   &__container {
     display: flex;
     flex-direction: column;
