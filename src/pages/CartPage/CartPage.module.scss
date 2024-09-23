@@ -47,18 +47,16 @@
     @include apply-typography(p);
   }
 
-  @include grid(mobile);
+  @include responsive-grid;
   @include content-padding-inline;
 
   @include on-tablet {
     margin-bottom: 64px;
-
-    @include grid(tablet);
   }
 
   @include on-desktop {
     margin-bottom: 80px;
-
-    @include grid(desktop);
+    max-width: 1136px;
+    margin-inline: auto;
   }
 }

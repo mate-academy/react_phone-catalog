@@ -40,6 +40,7 @@ export const DropDown = memo(
     const dropdownRef = useRef<HTMLDivElement>(null);
     const dispatch = useAppDispatch();
 
+
     const { name, urlSearchName, values } = dropdownConfig;
 
     const { activeDropdown } = useAppSelector((state) => state.dropdown);

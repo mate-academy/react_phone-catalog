@@ -13,6 +13,7 @@ import { DropDown } from '../../components/Dropdown';
 import { Pagination } from '../../components/Pagination';
 import { Product } from '../../components/Product/Product';
 import { Loader } from '../../components/Loader';
+import { ButtonPrimary } from '../../components/ButtonPrimary';
 
 import { ProductPageType } from '../../types/ProductList';
 import {
@@ -28,8 +29,7 @@ import {
 } from '../../types/DropDownItemsPerPage';
 
 import styles from './ProductPage.module.scss';
-import { ButtonPrimary } from '../../components/ButtonPrimary';
-const { list, list__content, list__dropdowns, list__products } = styles;
+const { list, list__content, list__dropdowns, list__products, list__noProducts } = styles;
 
 // Configuration for the sort dropdown
 const sortByDropdown: DropDownSort = {
@@ -131,7 +131,7 @@ export const ProductPage = ({
           </div>
         )}
 
-        {noProducts && <p>There are no {category} yet.</p>}
+        {noProducts && <p className={list__noProducts}>There are no {category} yet.</p>}
 
         <div className={list__products}>
           {paginatedProducts.map((prod) => (

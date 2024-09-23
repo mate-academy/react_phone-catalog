@@ -10,18 +10,16 @@ import { SideBar } from './components/SideBar';
 import { Footer } from './components/Footer';
 
 import styles from './App.module.scss';
-const { app, app__isOpen, app__topPoint } = styles;
+const { app, app__isOpen, app__topPoint, app__mainContent } = styles;
 
 export const App = () => {
   const dispatch = useAppDispatch();
 
-  const isOpen = useAppSelector((state) => state.menu.isOpen);
+  const isOpen = useAppSelector(state => state.menu.isOpen);
 
   // * invisible ref with no size to be able to scroll to the top
   // * with each page change
-  const { shouldScrollToTop, behavior } = useAppSelector(
-    (state) => state.scroll,
-  );
+  const { shouldScrollToTop, behavior } = useAppSelector(state => state.scroll);
 
   const topRef = useRef<HTMLDivElement>(null);
 
@@ -41,7 +39,9 @@ export const App = () => {
 
       <SideBar />
 
-      <Outlet />
+      <div className={app__mainContent}>
+        <Outlet />
+      </div>
 
       <Footer />
     </div>

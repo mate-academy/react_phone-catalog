@@ -7,6 +7,7 @@
   justify-content: center;
 
   border: 1px solid map-get($colors, icons);
+  cursor: pointer;
 
   @include on-tablet {
     display: flex;

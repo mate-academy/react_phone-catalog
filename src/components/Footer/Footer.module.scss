@@ -1,7 +1,10 @@
 .footer {
+  width: 100%;
+  align-self: flex-end;
+
+
   &__content {
     align-items: center;
-    width: 100%;
     max-width: 1136px;
     row-gap: 32px;
 
