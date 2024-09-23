@@ -15,6 +15,10 @@
     height: 0;
     padding-top: 100%;
     position: relative;
+    transition: all $transition-duration;
+    &:hover {
+      transform: scale(1.1);
+    }
   }
   &__image {
     position: absolute;

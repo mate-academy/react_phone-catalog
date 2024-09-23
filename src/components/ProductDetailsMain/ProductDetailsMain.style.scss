@@ -44,10 +44,8 @@
         width: 32px;
         height: 32px;
         background-color: transparent;
-        &--selected {
-          border: 1px solid $c-primary;
-        }
-        &:hover {
+        transition: all $transition-duration;
+        &--selected, &:hover {
           border: 1px solid $c-primary;
         }
       }
@@ -83,11 +81,8 @@
       height: 100%;
       width: auto;
       padding-inline: 8px;
+      transition: all $transition-duration;
       &--selected,
-      :hover {
-        color: $c-white;
-        background: $c-primary;
-      }
       &:hover {
         color: $c-white;
         background: $c-primary;

@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { Icon } from '../base/Icon/Icon.component';
 
 type Props = {
@@ -11,7 +12,9 @@ export const NavigationPath: React.FC<Props> = ({
 }) => {
   return (
     <article className="navigationPath">
-      <Icon iconType="home" iconUse="button" iconSize="16" />
+      <Link to="/home">
+        <Icon iconType="home" iconUse="button" iconSize="16" />
+      </Link>
       <Icon
         iconType="chevron-right"
         iconUse="button"

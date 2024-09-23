@@ -19,7 +19,7 @@
     overflow: hidden;
   }
   &__list {
-    transition: 0.3s;
+    transition: $transition-duration;
     width: 100%;
     display: grid;
     grid-auto-columns: $grid-auto-col-mobile;

@@ -62,7 +62,7 @@
     left: 0;
     justify-content: center;
     position: absolute;
-    transition: all 0.3s linear;
+    transition: all $transition-duration;
     &--activetSlide {
       opacity: 1;
     }
@@ -104,6 +104,7 @@
       height: 50px;
       width: 50px;
       border: 1px solid $c-elements;
+      transition: all $transition-duration;
       &--active {
         border: 1px solid $c-primary;
       }

@@ -84,7 +84,7 @@
     background: black;
     justify-content: center;
     position: absolute;
-    transition: all 0.3s linear;
+    transition: all $transition-duration;
     &--activetSlide {
       opacity: 1;
       transform: translateX(0);

@@ -29,6 +29,7 @@
     text-decoration: none;
     color: $c-secondary;
     position: relative;
+    transition: all $transition-duration;
     &::after {
       content: '';
       position: absolute;
@@ -36,10 +37,11 @@
       width: 100%;
       bottom: 0;
       background: $c-primary;
-      transition: 0.3s;
+      transition: all $transition-duration;
       transform: scaleX(0);
     }
     &:hover {
+      transition: all $transition-duration;
       color: $c-primary;
       &::after{
         transform: scaleX(1);

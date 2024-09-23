@@ -27,14 +27,14 @@ export const Footer = () => {
       </nav>
       <div className="footer__backTop">
         <span className="footer__backTop-text">Back to top</span>
-        <a href="#top">
-          <Icon
-            iconType="chevron-up"
-            iconUse="button"
-            iconSize="32"
-            border={true}
-          />
-        </a>
+
+        <Icon
+          iconType="chevron-up"
+          iconUse="button"
+          iconSize="32"
+          border={true}
+          onClick={() => (window.scrollY = 0)}
+        />
       </div>
     </footer>
   );

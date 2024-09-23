@@ -30,6 +30,12 @@
     flex-direction: column;
     gap: 24px;
   }
+  &__image {
+    transition: all $transition-duration;
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
 
 
 }
