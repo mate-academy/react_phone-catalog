@@ -34,7 +34,7 @@ export const Footer = () => {
           iconSize="32"
           border={true}
           onClick={() => {
-            console.log('oi');
+            window.scrollTo(0, 0);
           }}
         />
       </div>
