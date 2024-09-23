@@ -40,7 +40,6 @@ export const DropDown = memo(
     const dropdownRef = useRef<HTMLDivElement>(null);
     const dispatch = useAppDispatch();
 
-
     const { name, urlSearchName, values } = dropdownConfig;
 
     const { activeDropdown } = useAppSelector((state) => state.dropdown);
@@ -98,6 +97,7 @@ export const DropDown = memo(
                     ? getSortKeyFromOption(value as SortOption) || value
                     : value,
                 );
+
                 dispatch(setActiveDropdown(null));
               }}
             >

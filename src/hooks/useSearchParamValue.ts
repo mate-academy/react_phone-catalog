@@ -81,6 +81,12 @@ export const useSearchParamValue = (
 
       if (isValidParamValue(paramName, newValue)) {
         const newSearchParams = new URLSearchParams(searchParams);
+
+        // setting the page to 1 after changing perPage to avoid errors
+        if (paramName === 'perPage') {
+          newSearchParams.set('page', '1');
+        }
+
         newSearchParams.set(paramName, stringValue);
         setSearchParams(newSearchParams);
       } else {
