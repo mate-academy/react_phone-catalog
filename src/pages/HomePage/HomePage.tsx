@@ -19,7 +19,6 @@ export const HomePage: React.FC = () => {
   const newModelForShow = [...useUnique(brandNewModels)];
   const hotMOdelForShow = [...useUnique(hotPrisModels)];
 
-  console.log(loader);
   useEffect(() => {
     const scrollPosition = localStorage.getItem('scrollPosition');
 
@@ -59,7 +58,7 @@ export const HomePage: React.FC = () => {
     return 1;
   };
 
-  return loader ? 'loading...' : (
+  return loader ? <div className="container"><p>loading...</p></div> : (
     <>
       <section className="first-screen home__first-screen">
         <div className="container">
