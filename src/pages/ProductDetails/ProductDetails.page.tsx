@@ -54,8 +54,8 @@ export const ProductDetailsPage = () => {
           secondLevel={selectedProduct.name}
         />
         <BackPath />
-        <h2>{selectedProduct.name}</h2>
-        <div className="productDetails-page__productCard">
+        <h2 className="title">{selectedProduct.name}</h2>
+        <div className="productDetailCard">
           <ProductDetailsCarousel />
           <ProductDetailsMain />
         </div>

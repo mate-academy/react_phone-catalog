@@ -7,16 +7,17 @@
   @include on-tablet {
     grid-column: 8 / span 5;
     grid-row: 1;
-
   }
 
   @include on-desktop {
-    grid-column: 14 / span 11;
+    grid-column: 14 / span 7;
     grid-row: 1;
   }
+
   h2 {
     grid-column: 1/-1;
   }
+
   &__colors {
     grid-column: 1/-1;
     display: flex;

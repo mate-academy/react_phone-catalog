@@ -2,8 +2,5 @@
   row-gap: 24px;
 
   @include grid-page;
-
-  & {
-    @include inline-padding;
-  }
+  @include inline-padding;
 }

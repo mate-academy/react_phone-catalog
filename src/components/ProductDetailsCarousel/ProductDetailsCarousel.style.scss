@@ -23,11 +23,18 @@
     display: flex;
     flex-direction: column;
     gap: 16px;
+    height: 100%;
+
     @include on-tablet {
       display: grid;
       grid-template: repeat(7, 1fr);
       column-gap: 16px;
-      height: 100%;
+    }
+
+    @include on-desktop {
+      display: grid;
+      grid-template-columns: repeat(12, 32px);
+      column-gap: 16px;
     }
   }
   &__frame {
@@ -44,7 +51,7 @@
     }
 
     @include on-desktop {
-      cursor: auto;
+      grid-column: 3 / span 10;
     }
   }
   &__item {
@@ -71,6 +78,11 @@
       grid-column: 1 / span 1;
       grid-row: 1;
     }
+
+    @include on-desktop {
+      grid-column: 1 / span 2;
+      grid-row: 1;
+    }
     &-list {
       display: flex;
       align-items: center;
@@ -81,6 +93,10 @@
       height: 50px;
 
       @include on-tablet {
+        flex-direction: column;
+      }
+
+      @include on-desktop {
         flex-direction: column;
       }
     }

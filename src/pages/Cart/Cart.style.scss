@@ -3,11 +3,6 @@
     text-decoration: none;
   }
 
-  & {
-    @include grid-page;
-  }
-
-  & {
-    @include inline-padding;
-  }
+  @include grid-page;
+  @include inline-padding;
 }
