@@ -46,7 +46,7 @@ export const CartProductCard: React.FC<Props> = ({ product }) => {
           iconSize="16"
           onClick={handleDeleteClick}
         />
-        <img src={product.image} className="cartCard__image" />
+        <img src={`./${product.image}`} className="cartCard__image" />
         <div className="cartCard__product-name">{product.name}</div>
       </div>
       <div className="cartCard__counterAndPrice">

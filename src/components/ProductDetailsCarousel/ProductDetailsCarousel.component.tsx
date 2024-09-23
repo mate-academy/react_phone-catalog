@@ -85,7 +85,7 @@ export const ProductDetailsCarousel = () => {
                   className={`carousel__item carousel__item--${position}`}
                 >
                   <img
-                    src={`../${img}`}
+                    src={`./${img}`}
                     className="carousel__image"
                     alt={selectedProduct.name}
                   />
@@ -110,7 +110,7 @@ export const ProductDetailsCarousel = () => {
                     }}
                   >
                     <img
-                      src={`../${img}`}
+                      src={`./${img}`}
                       className="carousel__img-preview-image"
                     />
                   </a>

@@ -12,7 +12,7 @@ export const ShopByCategory = () => {
           <article className="category__group" key={cat.id}>
             <figure className="category__image-frame">
               <img
-                src={`img/category-${cat.id}-sqr.png`}
+                src={`./img/category-${cat.id}-sqr.png`}
                 alt={cat.title}
                 className="category__image"
               />

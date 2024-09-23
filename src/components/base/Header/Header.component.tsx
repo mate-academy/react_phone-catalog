@@ -28,7 +28,7 @@ export const Header = () => {
     <header>
       <div className="topbar" id="top">
         <div className="topbar__logo-container">
-          <img src="/img/logo.svg" />
+          <img src="./img/logo.svg" />
         </div>
         <div className="topbar__nav-container">
           {!isMobile && <Nav navStyle="bar" />}

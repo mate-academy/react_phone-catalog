@@ -18,7 +18,7 @@ export const ProductCard: React.FC<Props> = ({ product, showDiscount }) => {
         className="card__link"
       >
         <figure className="card__image-wrapper">
-          <img src={`/${product.image}`} className="card__image" />
+          <img src={`./${product.image}`} className="card__image" />
         </figure>
         <div className="card__product-name">{product.name}</div>
       </Link>

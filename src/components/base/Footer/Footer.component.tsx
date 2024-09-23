@@ -4,7 +4,7 @@ export const Footer = () => {
   return (
     <footer className="footer">
       <div className="footer__logo">
-        <img src="../img/logo.svg" alt="Nice Gadgets logo" />
+        <img src="./img/logo.svg" alt="Nice Gadgets logo" />
       </div>
       <nav className="footer__nav">
         <ul className="footer__nav-list">
@@ -33,7 +33,9 @@ export const Footer = () => {
           iconUse="button"
           iconSize="32"
           border={true}
-          onClick={() => (window.scrollY = 0)}
+          onClick={() => {
+            console.log('oi');
+          }}
         />
       </div>
     </footer>
