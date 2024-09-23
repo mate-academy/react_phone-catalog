@@ -74,13 +74,6 @@ export const BasketPage: React.FC = () => {
                   <div className="basket__add">
                     <div className="basket__quantityGoods">
                       <p
-                        className="basket__quantityGoods--plus"
-                        onClick={() => increaseQuantity(item.phone.id)}
-                      >
-                        +
-                      </p>
-                      <p className="basket__countGoods">{item.quantity}</p>
-                      <p
                         className={`basket__quantityGoods--minus ${
                           item.quantity === 1
                             ? 'basket__quantityGoods--disabled'
@@ -91,6 +84,13 @@ export const BasketPage: React.FC = () => {
                         }
                       >
                         -
+                      </p>
+                      <p className="basket__countGoods">{item.quantity}</p>
+                      <p
+                        className="basket__quantityGoods--plus"
+                        onClick={() => increaseQuantity(item.phone.id)}
+                      >
+                        +
                       </p>
                     </div>
                     <p className="basket__priceGoods">
