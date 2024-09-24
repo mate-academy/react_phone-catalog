@@ -8,12 +8,7 @@
   align-items: center;
 }
 
-.skeletonSpinner {
-  @include on-tablet {
-    width: 100px;
-    height: 100px;
-  }
-}
+
 
 .skeletonList {
   display: grid;

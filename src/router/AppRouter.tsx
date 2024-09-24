@@ -1,11 +1,11 @@
-import { Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 import {
   HOME,
   PHONES,
   TABLETS,
   ACCESSORIES,
   FAVORITES,
-  PRODUCTS_ID,
+  PRODUCT_ID,
   CART,
   ALL,
 } from '../utils/routes';
@@ -24,12 +24,13 @@ export const AppRouter = () => {
     <Routes>
       <Route path={HOME} element={<App />}>
         <Route index element={<HomePage />} />
+        <Route path={HOME} element={<Navigate to={HOME} replace />} />
         <Route path={PHONES} element={<PhonesPage />} />
         <Route path={TABLETS} element={<TabletsPage />} />
         <Route path={ACCESSORIES} element={<AccessoriesPage />} />
         <Route path={FAVORITES} element={<FavoritesPage />} />
         <Route path={CART} element={<CartPage />} />
-        <Route path={PRODUCTS_ID} element={<ProductDetailsPage />} />
+        <Route path={PRODUCT_ID} element={<ProductDetailsPage />} />
         <Route path={ALL} element={<NotFoundPage />} />
       </Route>
     </Routes>

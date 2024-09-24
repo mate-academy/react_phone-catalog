@@ -1,7 +1,8 @@
 import React from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, NavLink, useLocation } from 'react-router-dom';
 import styles from './Breadcrumbs.module.scss';
 import { useIconSrc } from '../../utils/hooks/useIconSrc';
+import classNames from 'classnames';
 
 type BreadcrumbsProps = {
   product?: {
@@ -52,11 +53,20 @@ export const Breadcrumbs: React.FC<BreadcrumbsProps> = ({ product }) => {
             />
           </span>
           {crumb.path ? (
-            <Link to={crumb.path} className={styles.label}>
+            <NavLink
+              to={crumb.path}
+              className={({ isActive }) => {
+                return isActive
+                  ? `${styles.label} ${styles.isActive}`
+                  : styles.lable;
+              }}
+            >
               {crumb.label}
-            </Link>
+            </NavLink>
           ) : (
-            <span className={styles.label}>{crumb.label}</span>
+            <p className={classNames(styles.label, styles.clip)}>
+              {crumb.label}
+            </p>
           )}
         </React.Fragment>
       ))}

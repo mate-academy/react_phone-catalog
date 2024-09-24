@@ -1,6 +1,5 @@
 import { FC } from 'react';
-import { PRODUCTS_ID } from '../../utils/routes';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { Product } from '../../types/Product';
 import { BASE_URL } from '../../utils/constants';
 import { CardButtons } from '../CardButtons';
@@ -15,9 +14,11 @@ export const ProductCard: FC<ProductCardProps> = ({
   product,
   fullPriceOnCard,
 }) => {
-  const { image, name, price, screen, capacity, ram, itemId } = product;
+  const { image, name, price, screen, capacity, ram, itemId, category } =
+    product;
 
-  const productDetailsLink = PRODUCTS_ID.replace(':productId', itemId);
+  const productDetailsLink = `/${category}/${itemId}`;
+  const linkState = { category };
 
   const showFullPrice = () => {
     if (fullPriceOnCard) {
@@ -29,13 +30,21 @@ export const ProductCard: FC<ProductCardProps> = ({
 
   return (
     <div className={styles.productCard}>
-      <Link to={productDetailsLink} className={styles.imageContainer}>
+      <NavLink
+        to={productDetailsLink}
+        className={styles.imageContainer}
+        state={linkState}
+      >
         <img className={styles.image} src={`${BASE_URL}${image}`} alt="image" />
-      </Link>
+      </NavLink>
 
-      <Link to={productDetailsLink} className={styles.title}>
+      <NavLink
+        to={productDetailsLink}
+        state={linkState}
+        className={styles.title}
+      >
         {name}
-      </Link>
+      </NavLink>
 
       <div className={styles.price}>
         <div className={styles.existPrice}>${price}</div>

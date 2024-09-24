@@ -4,5 +4,5 @@ export const ACCESSORIES = 'accessories';
 export const TABLETS = 'tablets';
 export const FAVORITES = 'favorites';
 export const CART = 'cart';
-export const PRODUCTS_ID = '/products/:productId';
+export const PRODUCT_ID = ':category/:productId';
 export const ALL = '*';

@@ -1,0 +1,8 @@
+@import '../../styles/main';
+
+.skeletonSpinner {
+  @include on-tablet {
+    width: 100px;
+    height: 100px;
+  }
+}

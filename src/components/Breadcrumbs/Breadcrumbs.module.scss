@@ -1,34 +1,62 @@
 @import '../../styles/main';
 
 .breadcrumbs {
+
+  /* stylelint-disable-next-line selector-pseudo-class-no-unknown */
+  :global {
+    img {
+      display: block;
+      max-width: none;
+    }
+  }
+
   margin-top: 24px;
   display: flex;
-  overflow: hidden;
   gap: 8px;
   height: 16px;
 }
 
+.homeIcon {
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
+}
+
 .chevronSpan {
-  display: block;
+  display: flex;
+  width: auto;
+  height: auto;
 }
 
 .chevronIcon {
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
   opacity: 0.5;
 }
 
 .label {
-  display: flex;
+  @extend %small-text;
+
   text-align: center;
   padding-top: 2px;
   height: 15px;
   text-decoration: none;
-
-  @extend %small-text;
-
   color: var(--color-secondary);
 }
 
-
-.active {
+.isActive {
   color: var(--color-primary);
+
+  &:hover {
+    color: var(--color-primary);
+  }
+}
+
+.clip {
+  overflow: hidden;
+  display: block;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  max-width: 100%;
 }

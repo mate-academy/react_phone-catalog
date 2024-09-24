@@ -1,3 +1,88 @@
-.red {
+@import '../../styles/main';
+
+.container {
+  @extend %container;
+}
+
+.spinnerWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 400px;
+}
+
+.detailsTop {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.goBackButton {
+  margin-top: 40px;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  gap: 8px;
+  height: 16px;
+  width: 66px;
+  border: 0;
+  cursor: pointer;
+  background-color: transparent;
+}
+
+.goBackText {
   display: block;
+  padding-top: 2px;
+
+  @extend %small-text;
+
+  color: var(--color-secondary);
+
+  &:hover {
+    color: var(--color-primary);
+  }
+}
+
+.title {
+  @extend %h2-tablet;
+  
+  margin-bottom: 40px;
+}
+
+.detailsMain {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 80px;
+
+  @include on-mobile {
+    gap: 56px;
+    width: 100%;
+  }
+}
+
+.detailsInfo {
+  width: 100%;
+}
+
+.gallery {
+  width: 100%;
+}
+
+.actionPanel {
+  width: 300px;
+}
+
+.description {
+  display: flex;
+  justify-content: flex-start;
+  gap: 64px;
+
+  @include on-desktop {
+    flex-direction: column;
+    gap: 56px;
+  }
 }

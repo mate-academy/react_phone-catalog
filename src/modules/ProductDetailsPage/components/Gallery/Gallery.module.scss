@@ -1,0 +1,65 @@
+@import '../../../../styles/main';
+
+.slider {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  align-items: center;
+
+  /* stylelint-disable-next-line selector-pseudo-class-no-unknown */
+  :global {
+    .swiper-slide-active {
+      display: flex;
+      justify-content: center;
+    }
+  }
+
+  @include on-mobile {
+    flex-direction: column-reverse;
+    width: 100%;
+  }
+
+  .sliderMainImg {
+    display: flex;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: contain;
+  }
+
+  .thumbs {
+    height: 100%;
+    order: -1;
+  }
+
+  .thumbsContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .sliderThumbImg {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    padding: 2px;
+    border: 1px solid var(--color-elements);
+    cursor: pointer;
+
+    &.active {
+      border: 1px solid var(--color-primary);
+    }
+
+    @include on-mobile {
+      width: 52px;
+      height: 49px;
+    }
+  }
+
+  .mainImg {
+    max-width: 464px;
+
+    @include on-mobile {
+      max-width: 288px;
+    }
+  }
+}

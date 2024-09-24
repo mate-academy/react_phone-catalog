@@ -1,10 +1,17 @@
 import { Product } from '../types/Product';
 import { getData } from '../utils/httpClient';
-import { PRODUCTS_URL } from '../utils/constants';
+import { PRODUCTS_URL, getCategoryUrl } from '../utils/constants';
 import { Category } from '../types/Category';
+import { ProductDetails } from '../types/ProductDetails';
 
 export const getAllProducts = async (): Promise<Product[]> => {
   return getData<Product[]>(PRODUCTS_URL);
+};
+
+export const getProductByIdFromCategory = async (id: string, url: Category) => {
+  const data = await getData<ProductDetails[]>(getCategoryUrl(url));
+
+  return data.find((item: ProductDetails) => item.id === id);
 };
 
 export const getProductsByCategory = async (category: Category) => {

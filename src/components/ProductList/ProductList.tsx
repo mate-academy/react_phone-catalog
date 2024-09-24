@@ -94,9 +94,7 @@ export const ProductList: FC<Props> = ({ category, title }) => {
   return (
     <div className="">
       <div className={styles.productTop}>
-        <div className={styles.breadcrumbs}>
-          <Breadcrumbs />
-        </div>
+        <Breadcrumbs />
         <h1 className={styles.title}>{title}</h1>
         <p className={styles.count}>
           {`${products.length} item${products.length > 1 ? 's' : ''}`}
