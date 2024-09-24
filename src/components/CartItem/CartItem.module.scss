@@ -22,6 +22,10 @@
     align-items: center;
     gap: 16px;
 
+    &:last-child {
+      justify-content: flex-end;
+    }
+
     @include on-tablet {
       gap: 24px;
     }
