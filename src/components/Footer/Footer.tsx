@@ -10,8 +10,11 @@ import logo from '../../icons/Logo.png';
 import { Button } from '../Button/Button';
 import { VECTOR_SVG } from '../../utils/SVG';
 import { SelectInput } from '../Inputs/SelectInput/SelectInput';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { themeMap, useTheme } from '../Themes/ThemeProvider';
+import i18n from 'i18next';
+import { StrCode } from '../../utils/enums';
+import { useTranslation } from 'react-i18next';
 
 const scrollToTop = () => {
   window.scrollTo({
@@ -22,8 +25,18 @@ const scrollToTop = () => {
 
 export const Footer = () => {
   const { theme, setTheme } = useTheme();
-  const [value2, setValue2] = useState('English');
+  const [value2, setValue2] = useState<'English' | 'Українська'>('English');
   const themeKeys = Object.keys(themeMap) as Array<keyof typeof themeMap>;
+  const { t } = useTranslation();
+
+  const languageVariant = {
+    English: 'en',
+    Українська: 'uk',
+  };
+
+  useEffect(() => {
+    i18n.changeLanguage(languageVariant[value2]);
+  }, [value2]);
 
   return (
     <ContainerStyled>
@@ -33,13 +46,13 @@ export const Footer = () => {
         <InfoBlockStyled>
           <li>Github</li>
 
-          <li>Contacts</li>
+          <li>{t(StrCode.Contacts)}</li>
 
-          <li>rights</li>
+          <li>{t(StrCode.Rights)}</li>
         </InfoBlockStyled>
 
         <GoTopStyled onClick={scrollToTop}>
-          Back to top
+          {t(StrCode.BackToTop)}
           <Button variant="white" css="height: 32px; width: 32px; padding: 0;">
             <VECTOR_SVG variant="top" />
           </Button>
@@ -47,7 +60,7 @@ export const Footer = () => {
 
         <SelectorsStyled>
           <SelectInput
-            label="Theme"
+            label={t(StrCode.Theme)}
             items={themeKeys}
             variant="topSwipe"
             value={themeKeys.find(key => themeMap[key] === theme) || 'White'}
@@ -56,7 +69,7 @@ export const Footer = () => {
           />
 
           <SelectInput
-            label="Language"
+            label={t(StrCode.Language)}
             items={['English', 'Українська']}
             variant="topSwipe"
             value={value2}

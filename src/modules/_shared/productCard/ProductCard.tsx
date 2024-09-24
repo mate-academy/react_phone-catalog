@@ -11,6 +11,8 @@ import {
 import { useAppSelector } from '../../../app/hook';
 import { Button } from '../../../components/Button/Button';
 import { LIKE_SVG } from '../../../utils/SVG';
+import { useTranslation } from 'react-i18next';
+import { StrCode } from '../../../utils/enums';
 
 type Props = {
   variant: 'HomePage' | 'ListPage';
@@ -18,6 +20,7 @@ type Props = {
 
 const ProductCard: React.FC<Props> = ({ variant }) => {
   const { phones = [] } = useAppSelector(state => state.phones);
+  const { t } = useTranslation();
 
   if (phones.length === 0) {
     return (
@@ -40,22 +43,22 @@ const ProductCard: React.FC<Props> = ({ variant }) => {
 
       <InfoBlockStyled>
         <div>
-          Screen
+          {t(StrCode.Screen)}
           <InfoStyled>{phones[0].screen}</InfoStyled>
         </div>
         <div>
-          Capacity
+          {t(StrCode.Capacity)}
           <InfoStyled>{phones[0].capacity}</InfoStyled>
         </div>
         <div>
-          RAM
+          {t(StrCode.Ram)}
           <InfoStyled>{phones[0].ram}</InfoStyled>
         </div>
       </InfoBlockStyled>
 
       <ButtonsBlockStyled>
         <Button variant="dark" css="width: 100%; padding: 0;">
-          Add to cart
+          {t(StrCode.AddToCard)}
         </Button>
 
         <Button variant="white" css="width: 40px; flex-shrink: 0;">

@@ -18,11 +18,14 @@ import {
   LIKE_SVG,
   SHOPPING_SVG,
 } from '../../utils/SVG';
+import { useTranslation } from 'react-i18next';
+import { StrCode } from '../../utils/enums';
 
 export const Header = () => {
   const [isManuActive, setIsActiveMenu] = useState(false);
   const { theme } = useTheme();
   const themeKeys = Object.keys(themeMap) as Array<keyof typeof themeMap>;
+  const { t } = useTranslation();
 
   const variantLogo = () => {
     const themeVariant =
@@ -66,10 +69,10 @@ export const Header = () => {
 
       <NavStyled isActive={isManuActive}>
         <NavListStyled>
-          <ListItemStyled>home</ListItemStyled>
-          <ListItemStyled>Phones</ListItemStyled>
-          <ListItemStyled>tablets</ListItemStyled>
-          <ListItemStyled>accessories</ListItemStyled>
+          <ListItemStyled>{t(StrCode.Home)}</ListItemStyled>
+          <ListItemStyled>{t(StrCode.Phones)}</ListItemStyled>
+          <ListItemStyled>{t(StrCode.Tablets)}</ListItemStyled>
+          <ListItemStyled>{t(StrCode.Accessories)}</ListItemStyled>
         </NavListStyled>
 
         <MenuStyled isActive={!isManuActive} isMenu={false}>

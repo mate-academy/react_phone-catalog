@@ -38,7 +38,7 @@ type Props = {
   width?: string;
   variant?: 'default' | 'topSwipe';
   value: string;
-  setValue: (item: string) => void;
+  setValue: (item: any) => void;
 };
 
 export const SelectInput: React.FC<Props> = ({
