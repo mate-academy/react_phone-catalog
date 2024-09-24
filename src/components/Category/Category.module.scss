@@ -3,7 +3,7 @@
 
   display: flex;
   flex-direction: column;
-  // align-items: center;
+  
   gap: 24px;
 
   &__link {
@@ -29,6 +29,8 @@
     height: 100%;
     overflow: hidden;
     border-radius: 18px;
+
+    @include hover(scale, 1.02);
   }
 
   &__img {
@@ -45,12 +47,14 @@
     @include on-tablet {
       top: 20px;
     }
+
+    @include hover(scale, 1.05);
   }
 
   &__description {
     display: flex;
     flex-direction: column;
-    // align-self: start;
+    
     gap: 4px;
   }
 
