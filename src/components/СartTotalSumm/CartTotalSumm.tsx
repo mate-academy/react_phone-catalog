@@ -18,6 +18,8 @@ export const CartTotalSumm = () => {
     }
   }, [cart]);
 
+  // Hello world
+
   return (
     <div className="cart-total-summ">
       <p className="cart-total-summ__value">${totalSumm}</p>
