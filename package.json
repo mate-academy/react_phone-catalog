@@ -1,6 +1,5 @@
 {
   "name": "react_phone-catalog",
-  "homepage": ".",
   "version": "0.1.0",
   "keywords": [],
   "author": "Mate Academy",
@@ -57,8 +56,8 @@
     "vite": "^5.3.1"
   },
   "scripts": {
-    "start": "react-scripts start -l",
-    "build": "react-scripts build",
+    "start": "mate-scripts start -l",
+    "build": "mate-scripts build",
     "test": "mate-scripts test -l",
     "style-format": "npx stylelint 'src/**/*.scss' --fix --allow-empty-input",
     "lint-js": "mate-scripts lint -j",
