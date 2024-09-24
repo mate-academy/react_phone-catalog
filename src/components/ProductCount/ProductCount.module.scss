@@ -1,0 +1,23 @@
+.product-count {
+  display: flex;
+  align-items: center;
+  column-gap: 8px;
+
+  &__btn {
+    display: block;
+    width: 32px;
+    height: 32px;
+    border: 1px solid $buttons-border-gray;
+    transition-duration: 300ms;
+
+    &:hover {
+      border-color: $primary-gray;
+    }
+
+    &._disable {
+      opacity: 0.5;
+      cursor: default;
+      border-color: $buttons-border-gray;
+    }
+  }
+}

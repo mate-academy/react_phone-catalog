@@ -1,0 +1,147 @@
+.navigation {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #fff;
+
+  z-index: 5;
+
+  transition-duration: 300ms;
+  transform: translateY(-100%);
+
+  @include on-tablet {
+    flex-direction: row;
+    transform: translateY(0);
+    height: 48px;
+  }
+
+  @include on-desktop {
+    height: 64px;
+  }
+
+  &.is-open {
+    transform: translateY(0);
+  }
+
+  &__main-menu {
+    height: 100%;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    column-gap: 16px;
+
+    @include on-tablet {
+      flex-direction: row;
+    }
+
+    @include on-desktop {
+      column-gap: 64px;
+    }
+  }
+
+  &__link {
+    position: relative;
+    height: 28px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Mont-Bold, sans-serif;
+    color: #89939A;
+    font-size: 12px;
+    font-weight: 800;
+    text-transform: uppercase;
+
+    @include on-tablet {
+      height: 100%;
+    }
+
+    &:hover {
+      @include on-desktop {
+        &::before {
+          content: '';
+          display: inline-block;
+          position: absolute;
+          height: 3px;
+          width: 100%;
+          bottom: 0;
+          left: 0;
+          background-color: $primary-gray;
+        }
+      }
+    }
+
+    &.is-active {
+      position: relative;
+      color: #313237;
+
+      &::before {
+        content: '';
+        display: inline-block;
+        position: absolute;
+        height: 3px;
+        width: 100%;
+        bottom: 0;
+        left: 0;
+        background-color: $primary-gray;
+      }
+    }
+  }
+
+  &__addition-menu {
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    align-items: center;
+    flex-grow: 0;
+    height: $heder-height-mobile;
+    border-top: 1px solid #E2E6E9;
+
+    @include on-tablet {
+      justify-content: flex-end;
+      border-top: none;
+    }
+
+    @include on-desktop {
+      height: 100%;
+    }
+
+    .navigation__link {
+      width: $heder-height-mobile;
+      flex: 1;
+      height: 100%;
+      &:last-child {
+        border-left: 1px solid #E2E6E9;
+      }
+
+      & img {
+        position: absolute;
+        width: 16px;
+        height: 16px;
+
+        @include on-desktop {
+          width: 24px;
+          height: 24px;
+        }
+      }
+
+      @include on-tablet {
+        height: 100%;
+        width: $heder-height-mobile;
+        flex: 0 0 auto;
+        border-left: 1px solid #E2E6E9;
+      }
+
+      @include on-desktop {
+        height: 100%;
+        width: $heder-height-desktop;
+        border-left: 1px solid #E2E6E9;
+      }
+    }
+  }
+}

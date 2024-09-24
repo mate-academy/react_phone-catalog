@@ -1,0 +1,98 @@
+.first-screen {
+
+  &__slider-container {
+    position: relative;
+    margin-left: -$container-padding--mobile;
+    margin-right: -$container-padding--mobile;
+
+    @include on-tablet {
+      margin: 0;
+    }
+  }
+
+  &__slider {
+    @include on-tablet {
+      width: calc(100% - 104px);
+    }
+  }
+
+  &__slide {
+    width: 100%;
+    padding-bottom: 100%;
+
+    @include on-tablet {
+      padding: 0;
+    }
+  }
+
+  &__slide-image {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+    @include on-tablet {
+      position: relative;
+      height: auto;
+    }
+  }
+
+  &__btn {
+    display: none;
+    position: absolute;
+    top: 0;
+    width: 32px;
+    height: 100%;
+    border: 1px solid $secondary-gray;
+
+    background-color: transparent;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 16px;
+
+    transition-duration: 300ms;
+
+    @include on-tablet {
+      display: block;
+    }
+
+    &:hover {
+      cursor: pointer;
+      border: 1px solid $primary-gray
+    }
+  }
+
+  &__prev-btn {
+    transform: rotate(180deg);
+    left: 0;
+  }
+
+  &__next-btn {
+    right: 0;
+  }
+
+  &__dots {
+    position: absolute;
+    bottom: -32px;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+  }
+
+  &__bullet {
+    width: 14px;
+    height: 4px;
+    background-color: $secondary-gray;
+
+    &._active {
+      background-color: $primary-gray;
+    }
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}

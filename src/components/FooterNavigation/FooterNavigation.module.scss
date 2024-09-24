@@ -1,0 +1,52 @@
+.footer-navigation {
+  @include on-tablet {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__menu-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    @include on-tablet {
+      flex-direction: row;
+      align-items: center;
+    }
+
+    @include on-desktop {
+      gap: 106px;
+    }
+  }
+
+  &__link {
+    font-size: 12px;
+    font-weight: 800;
+    text-transform: uppercase;
+    color: $secondary-gray;
+    position: relative;
+    transition-duration: 300ms;
+
+    &::before {
+      content: '';
+      transition-duration: 300ms;
+      opacity: 0;
+    }
+
+    &:hover {
+      @include on-desktop {
+        &::before {
+          display: inline-block;
+          position: absolute;
+          height: 3px;
+          width: 100%;
+          bottom: -10px;
+          left: 0;
+          background-color: $primary-gray;
+          opacity: 1;
+        }
+      }
+    }
+  }
+}
