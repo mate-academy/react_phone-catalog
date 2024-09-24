@@ -6,6 +6,11 @@
 
   &__link {
     text-decoration: none;
+    color: $c-primary;
+    
+    &:link, &:visited, &:hover, &:focus, &:active {
+      color: $c-primary;
+    }
   }
   &__container {
     display: flex;
