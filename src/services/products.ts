@@ -1,5 +1,5 @@
 export function getProducts() {
-  return fetch('http://localhost:5173/api/products.json').then(response => {
+  return fetch('https://mixelio.github.io/react_phone-catalog/api/products.json').then(response => {
     if (!response.ok) {
     }
 

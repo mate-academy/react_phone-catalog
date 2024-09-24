@@ -1,5 +1,5 @@
 export function getTablets() {
-  return fetch('http://localhost:5173/api/tablets.json').then(response => {
+  return fetch('https://mixelio.github.io/react_phone-catalog/api/tablets.json').then(response => {
     if (!response.ok) {
     }
 
