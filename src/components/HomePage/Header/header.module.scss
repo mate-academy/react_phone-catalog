@@ -172,7 +172,9 @@
   transform: translate(0, 9px) rotate(-45deg);
 }
 
-.change.bar2 {opacity: 0;}
+.change.bar2 {
+  opacity: 0;
+}
 
 .change.bar3 {
   transform: translate(0, -5px) rotate(45deg);

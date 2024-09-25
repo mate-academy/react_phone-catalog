@@ -131,6 +131,7 @@ export const ProductDetailsPage: React.FC = () => {
 
     if (itemId) {
       filterItem(itemId);
+      window.scrollTo(0, 0);
     }
   }, [itemId, phones, tablets, accessories, category]);
 

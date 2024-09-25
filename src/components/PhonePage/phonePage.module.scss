@@ -78,21 +78,34 @@
 }
 
 .ul_containter {
-  display: flex;
   list-style: none;
+  display: flex;
+  gap: 10px;
+  padding: 0;
   justify-content: center;
+  align-items: center;
 }
 
 .li {
-  display: inline-block;
-  vertical-align: top;
-  margin: 0 4px;
-
   border: 1px solid $BORDER_COLOR;
-  background-color: inherit;
-  font-family: 'Mont';
   cursor: pointer;
-
-  width: 32px;
+  background-color: white;
+  transition: background-color 0.3s;
   height: 32px;
+  width: 32px;
+
+  &_span {
+
+  }
+}
+
+.li:disabled {
+  background-color: $HOVER_BUTTON_COLOR;
+  color: white;
+  cursor: default;
+}
+
+.li:hover:not(:disabled) {
+  background-color: $CAROUSEL_BUTTOMS_COLOR;
+  color: white;
 }

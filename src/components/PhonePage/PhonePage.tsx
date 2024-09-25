@@ -8,36 +8,34 @@ import stylePage from '../HomePage/Welcome/homeface.module.scss';
 import { TransitionComponent } from '../main/Transition/TransitionComponent';
 import { Loader } from '../loader/Loader';
 import { useDevices } from '../../context/DeviceProvider';
+import { Product } from '../../types';
+import { Pagination } from './PaginationComponent';
 
 interface Props {
   filter: string;
 }
 
-const itemsPerPageOptions = ['all', 4, 8, 16];
+const itemsPerPageOptions = ['All', '4', '8', '16'];
 const sortItemsOnPage = ['Newest', 'Alphabetically', 'Cheapest'];
 
 export const PhonePage: React.FC<Props> = ({ filter }) => {
   const { products } = useDevices();
 
   const [SearchParams, setSearchParams] = useSearchParams();
-  const [sortItems, setSortItems] = useState(products);
   const [loaded, setLoaded] = useState(true);
-
-  const sortQuery = SearchParams.get('sort') || 'Newest';
-  const perPageQuery = +(SearchParams.get('perPage') || 'all');
-  const pageQuery = +(SearchParams.get('Page') || 1);
+  const [sortItems, setSortItems] = useState<Product[]>([]);
   const filteredPhones = products.filter(a => a.category === filter);
 
-  const totalPages = Math.ceil(filteredPhones.length / perPageQuery);
+  const sortQuery = SearchParams.get('sort') || 'Newest';
+  const perPageQuery = SearchParams.get('perPage') || filteredPhones.length;
+  const pageQuery = +(SearchParams.get('page') || 1);
 
-  const sort = (type: string) => {
-    let sortedPhones;
+  const totalPages = Math.ceil(filteredPhones.length / Number(perPageQuery));
 
-    const phones = products.filter(a => a.category === filter);
-
+  const sort = (type: string, phones: Product[]) => {
     switch (type) {
       case 'Newest':
-        sortedPhones = [...phones].sort((a, b) => {
+        phones.sort((a, b) => {
           if (b.year === a.year) {
             return b.price - a.price;
           }
@@ -47,83 +45,77 @@ export const PhonePage: React.FC<Props> = ({ filter }) => {
         break;
 
       case 'Alphabetically':
-        sortedPhones = [...phones].sort((a, b) => a.name.localeCompare(b.name));
+        phones.sort((a, b) => a.name.localeCompare(b.name));
         break;
 
       case 'Cheapest':
-        sortedPhones = [...phones].sort((a, b) => a.price - b.price);
+        phones.sort((a, b) => a.price - b.price);
         break;
 
       default:
-        sortedPhones = phones;
         break;
     }
 
-    setSortItems(sortedPhones);
-
-    const params = new URLSearchParams(SearchParams);
-
-    params.set('sort', type);
-
-    setSearchParams(params);
+    return phones;
   };
 
   const handleSortChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    sort(event.target.value);
-  };
-
-  const handlePerPageItems = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    const selectedValue = Number(event.target.value);
-
-    const filterItems = sortItems.filter(gadget => gadget.id <= selectedValue);
-
-    setSortItems(filterItems);
+    const sortValue = event.target.value;
 
     const params = new URLSearchParams(SearchParams);
 
-    params.set('perPage', event.target.value);
+    params.set('sort', sortValue);
+    setSearchParams(params);
+  };
+
+  const handlePerPageItems = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    const selectedValue = event.target.value;
+
+    const params = new URLSearchParams(SearchParams);
+
+    if (selectedValue === 'All') {
+      params.set('perPage', 'All');
+    } else {
+      params.set('perPage', selectedValue);
+    }
+
     setSearchParams(params);
   };
 
   const handlePageClick = (page: number) => {
-    if (page < 1 || page > totalPages || isNaN(page)) {
-      setSortItems(filteredPhones);
-
+    if (page < 1 || page > totalPages) {
       return;
     }
 
     const params = new URLSearchParams(SearchParams);
 
-    params.set('Page', page.toString());
+    params.set('page', page.toString());
     setSearchParams(params);
   };
 
   useEffect(() => {
-    const filteredProducts = products.filter(a => a.category === filter);
+    const filteredProducts = products.filter(
+      product => product.category === filter,
+    );
+    const sortedProducts = sort(sortQuery, filteredProducts);
 
-    const startIndex = (pageQuery - 1) * perPageQuery;
-    const endIndex = startIndex + perPageQuery;
+    const startIndex = (pageQuery - 1) * Number(perPageQuery);
+    const endIndex =
+      perPageQuery === 'All'
+        ? sortedProducts.length
+        : startIndex + Number(perPageQuery);
 
-    setSortItems(filteredProducts.slice(startIndex, endIndex));
-
-    if (products.length > 0) {
-      const timer = setTimeout(() => {
-        setLoaded(false);
-      }, 1000);
-
-      return () => clearTimeout(timer);
-    }
-
-    setLoaded(false);
     window.scrollTo(0, 0);
+    setSortItems(sortedProducts.slice(startIndex, endIndex));
 
-    return;
-  }, [products, filter, pageQuery, perPageQuery]);
+    const timer = setTimeout(() => {
+      setLoaded(false);
+    }, 1000);
 
-  useEffect(() => {
-    sort(sortQuery);
-    window.scrollTo(0, 0);
-  }, [sortQuery, filter]);
+    return () => {
+      clearTimeout(timer);
+    };
+  }, [products, filter, pageQuery, perPageQuery, sortQuery]);
 
   return (
     <div>
@@ -210,11 +202,11 @@ export const PhonePage: React.FC<Props> = ({ filter }) => {
                     <img src="img/Vector_left.svg" alt="" />
                   </button>
                 </li>
-                {Array.from({ length: totalPages }, (_, i) => (
-                  <li key={i + 1} onClick={() => handlePageClick(i + 1)}>
-                    <button className={styles.li}>{i + 1}</button>
-                  </li>
-                ))}
+                <Pagination
+                  totalPages={totalPages}
+                  currentPage={pageQuery}
+                  handlePageClick={handlePageClick}
+                />
                 <li>
                   <button
                     onClick={() => handlePageClick(pageQuery + 1)}

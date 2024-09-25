@@ -23,10 +23,12 @@ export const ShopingCart = () => {
     setCountItems(prevCounts => {
       const newCounts = {
         ...prevCounts,
-        [id]: (prevCounts[id] || 1) + 1,
+        [id]: (prevCounts[id] || 0) + 1,
       };
 
-      localStorage.setItem('countItems', JSON.stringify(newCounts));
+      if (newCounts[id] > 0) {
+        localStorage.setItem('countItems', JSON.stringify(newCounts));
+      }
 
       return newCounts;
     });
@@ -34,10 +36,13 @@ export const ShopingCart = () => {
 
   const subtractCount = (id: number) => {
     setCountItems(prevCounts => {
-      const newCounts = {
-        ...prevCounts,
-        [id]: prevCounts[id] > 1 ? prevCounts[id] - 1 : 1,
-      };
+      const newCounts = { ...prevCounts };
+
+      if (newCounts[id] > 1) {
+        newCounts[id] -= 1;
+      } else {
+        delete newCounts[id];
+      }
 
       localStorage.setItem('countItems', JSON.stringify(newCounts));
 
@@ -128,7 +133,12 @@ export const ShopingCart = () => {
               <div className={styles.checkout_price}>
                 <div className={styles.checkout_price_cash}>${coutPrice}</div>
                 <div className={styles.checkout_price_total}>
-                  total for {addedDevice.length} items
+                  total for{' '}
+                  {Object.values(countItems).reduce(
+                    (acc, count) => acc + count,
+                    0,
+                  )}{' '}
+                  items
                 </div>
               </div>
               <div>
