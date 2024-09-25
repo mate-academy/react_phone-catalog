@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './DiscountProductCard.module.scss';
+import { useCart } from '../../UseCart/UseCart';
 
 interface ProductCardProps {
   id: string;
@@ -24,11 +25,25 @@ export const DiscountProductCard: React.FC<ProductCardProps> = ({
   capacity,
   ram,
   imageUrl,
-  isFavorite,
   onAddToCart,
   onToggleFavorite,
 }) => {
   const filteredScreen = screen.replace('(Super Retina XDR)', '').trim();
+  const { state } = useCart();
+  const isInCart = state.cart.some(cartItem => cartItem.id === id);
+  const isFavorite = state.favorites.some(fav => fav.id === id);
+
+  const handleAddToCart = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.stopPropagation();
+    e.preventDefault();
+    onAddToCart(id);
+  };
+
+  const handleToggleFavorite = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.stopPropagation();
+    e.preventDefault();
+    onToggleFavorite(id);
+  };
 
   return (
     <div className={styles.productCard}>
@@ -60,18 +75,26 @@ export const DiscountProductCard: React.FC<ProductCardProps> = ({
             <span className={styles.featureValue}>{ram}</span>
           </div>
         </div>
-        <button
-          className={styles.addToCartButton}
-          onClick={() => onAddToCart(id)}
-        >
-          Add to Cart
-        </button>
-        <button
-          className={`${styles.favoriteButton} ${isFavorite ? styles.favoriteActive : ''}`}
-          onClick={() => onToggleFavorite(id)}
-        >
-          <img src="../../public/img/Favourites.png" alt="" />
-        </button>
+        <div className={styles.bottom_buttons}>
+          <button
+            className={`${styles.addToCartButton} ${isInCart ? styles.addedToCart : ''}`}
+            onClick={handleAddToCart}
+          >
+            {isInCart ? 'Added to Cart' : 'Add to Cart'}
+          </button>
+          <button
+            className={styles.favoriteButton}
+            onClick={handleToggleFavorite}
+          >
+            <img
+              className={styles.favoriteImage}
+              src={
+                isFavorite ? 'img/Favourites-filled.svg' : 'img/Favourites.svg'
+              }
+              alt="favorite"
+            />
+          </button>
+        </div>
       </div>
     </div>
   );

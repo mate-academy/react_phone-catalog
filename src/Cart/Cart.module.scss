@@ -1,0 +1,153 @@
+.button_back {
+  font-family: Mont, sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 15.34px;
+  text-align: left;
+  text-decoration: none;
+  border: 0;
+  background-color: #fff;
+}
+
+.title {
+  margin: 72px 152px 0;
+}
+
+.cartContainer {
+  display: flex;
+}
+
+.empty {
+  margin: 32px 152px 500px;
+}
+
+
+.cartGrid {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  gap: 20px;
+  margin: 32px 152px;
+}
+
+.cartItem {
+  display: grid;
+  grid-template-columns: 50px 128px 1fr 120px 120px;
+  align-items: center;
+  width: 752px;
+  height: 128px;
+  border: 1px solid #ddd;
+}
+
+.removeButton {
+  background: none;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.productImage {
+  width: 80px;
+  height: 80px;
+}
+
+.productDetails {
+  font-family: Mont, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 21px;
+  text-align: left;
+}
+
+.quantityControl {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.quantityButton {
+  background-color: #fff;
+  border: 1px solid black;
+  padding: 5px 10px;
+  cursor: pointer;
+  font-size: 18px;
+  width: 32px;
+  height: 32px;
+}
+
+.quantityButton:hover {
+  background-color: #bbb;
+}
+
+.price {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.discountPrice {
+  margin-right: 10px;
+}
+
+.originalPrice {
+  text-decoration: line-through;
+  color: #888;
+}
+
+.checkout {
+  width: 368px;
+  height: 206px;
+  margin: 30px 10px;
+  padding: 20px;
+  border: 1px solid #ddd;
+  background-color: #f9f9f9;
+  text-align: center;
+}
+
+.totalPrice {
+  margin: 23px 0 0;
+}
+
+.totalPrice_span {
+  font-family: Mont, sans-serif;
+  font-size: 32px;
+  font-weight: 800;
+  line-height: 41px;
+  letter-spacing: -0.01em;
+  text-align: left;
+}
+
+.totalItems {
+  font-family: Mont, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 21px;
+  text-align: center;
+  margin: 0 49px 49px;
+  border-bottom: 1px solid gray;
+  padding-bottom: 25px;
+}
+
+.totalItems_span {
+  font-family: Mont, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 21px;
+  text-align: center;
+  margin: 49px;
+}
+
+.checkoutButton {
+  width: 320px;
+  height: 48px;
+  margin: 0 24px;
+  background-color: #313237;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-family: Mont, sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 21px;
+  text-align: center;
+
+}

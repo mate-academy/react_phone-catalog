@@ -7,7 +7,7 @@ export const Footer: React.FC = () => {
     <>
       <footer className={style.footer}>
         <Link to="/">
-          <img src="../../public/img/Logo.png" alt="Logo" />
+          <img src="img/Logo.png" alt="Logo" />
         </Link>
         <Link to="https://github.com/ogchy">
           <p>GitHub</p>

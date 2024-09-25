@@ -6,11 +6,11 @@ import 'swiper/css/virtual';
 import styles from './PicturesSlider.module.scss';
 
 const images = [
-  { image: '../../public/img/Banner1.png', alt: 'Banner 1' },
-  { image: '../../public/img/banner-phones.png', alt: 'Phones' },
-  { image: '../../public/img/banner-tablets.png', alt: 'Tablets' },
+  { image: 'img/Banner1.svg', alt: 'Banner 1' },
+  { image: 'img/banner-phones.png', alt: 'Phones' },
+  { image: 'img/banner-tablets.png', alt: 'Tablets' },
   {
-    image: '../../public/img/banner-accessories.png',
+    image: 'img/banner-accessories.png',
     alt: 'Accessories',
   },
 ];

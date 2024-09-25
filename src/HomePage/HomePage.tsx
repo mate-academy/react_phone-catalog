@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from '../HomePage/HomePage.module.scss';
 import { PicturesSlider } from '../PicturesSlider/PicturesSlider';
-import { ProductList } from '../ProductList/ProductsList';
+import { BrandNewModels } from '../BrandNewModels/BrandNewModels';
 import { ShopByCategory } from '../ShopByCategory/ShopByCategory';
 import { HotPrices } from '../HotPrices/HotPrices';
 
@@ -14,7 +14,7 @@ export const HomePage: React.FC = () => {
         </p>
       </div>
       <PicturesSlider />
-      <ProductList />
+      <BrandNewModels />
       <ShopByCategory />
       <HotPrices />
     </header>

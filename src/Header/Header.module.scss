@@ -24,7 +24,7 @@
 
 .nav li {
   margin-left: 20px;
-  font-family: 'Mont', sans-serif;
+  font-family: Mont, sans-serif;
   font-size: 12px;
   font-weight: 800;
   line-height: 11px;
@@ -37,29 +37,6 @@
   text-decoration: none;
   color: #333;
   transition: color 0.3s ease;
-}
-
-.nav a:hover {
-  color: #ff6347;
-}
-
-.header {
-  position: sticky;
-  top: 0;
-  background-color: #fff;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  padding: 20px;
-  z-index: 1000;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.logo a {
-  font-size: 24px;
-  font-weight: bold;
-  text-decoration: none;
-  color: #333;
 }
 
 .nav {
@@ -75,7 +52,7 @@
 
 .nav-left li, .nav-right li {
   margin-left: 20px;
-  font-family: 'Mont', sans-serif;
+  font-family: Mont, sans-serif;
   font-size: 12px;
   font-weight: 800;
   line-height: 11px;
@@ -92,3 +69,8 @@
 .nav-left a:hover, .nav-right a:hover {
   color: #ff6347;
 }
+
+.nav a:hover {
+  color: #ff6347;
+}
+

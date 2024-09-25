@@ -1,0 +1,276 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  margin: 80px 152px;
+}
+
+.content {
+  display: flex;
+}
+
+.navigation {
+  display: flex;
+  gap: 10px;
+}
+
+.navigation_text {
+  font-family: Mont, sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 15.34px;
+  text-align: left;
+
+}
+
+.button_back {
+  font-family: Mont, sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 15.34px;
+  text-align: left;
+  text-decoration: none;
+  border: 0;
+  background-color: #fff;
+}
+
+.title {
+  font-family: Mont, sans-serif;
+  font-size: 32px;
+  font-weight: 800;
+  line-height: 41px;
+  letter-spacing: -0.01em;
+  text-align: left;
+}
+
+.side_images {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.side_img {
+  width: 80px;
+  height: 80px;
+  border: 1px solid black;
+  object-fit: contain;
+}
+
+.main_content {
+  display: flex;
+  flex-direction: row;
+  margin: 0 32px 80px;
+  object-fit: contain;
+}
+
+.main_img {
+  width: 442px;
+  height: 442px;
+  object-fit: contain;
+}
+
+.product_details {
+  display: flex;
+  flex-direction: column;
+}
+
+.colors {
+  margin: 0 32px;
+  border-bottom: 1px solid #e0e0e0;
+  padding-bottom: 24px;
+}
+
+.color_circle {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 2px solid #E2E6E9;
+  cursor: pointer;
+  gap: 16px;
+
+}
+
+.active_color {
+  border-color: 2px #313237;
+}
+
+.capacity {
+  margin: 0 32px 56px;
+  border-bottom: 1px solid #e0e0e0;
+  padding-bottom: 24px;
+  gap: 16px;
+}
+
+.capacity_button {
+  font-family: Mont, sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 15.34px;
+  text-align: left;
+  width: 56px;
+  height: 32px;
+  border: 1px solid #B4BDC3;
+  color: #313237;
+  background-color: #fff;
+}
+
+.active_capacity {
+  border-color: #B4BDC3;
+  background-color: #313237;
+  color: #fff;
+}
+
+.priceSection {
+  display: flex;
+  justify-content: left;
+  margin: 0 32px 16px;
+}
+
+.originalPrice {
+  font-family: Mont, sans-serif;
+  font-size: 22px;
+  font-weight: 600;
+  line-height: 28.12px;
+  color: #89939A;
+  text-align: left;
+  text-decoration: line-through;
+
+}
+
+.discountPrice {
+  font-family: Mont, sans-serif;
+  font-size: 22px;
+  font-weight: 600;
+  line-height: 28.12px;
+}
+
+.addToCartButton {
+  width: 263px;
+  height: 48px;
+  padding: 10px 20px;
+  background-color: #313237;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-family: Mont, sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 21px;
+  margin: 0 32px 32px;
+}
+
+.addToCartButton.addedToCart {
+  background-color: #fff;
+  color: #008000;
+}
+
+
+.favoriteButton {
+  width: 48px;
+  height: 48px;
+  background: none;
+  border-radius: 1px black;
+  color: #ddd;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.favoriteButton.favoriteActive {
+  color: red;
+}
+
+.productInfo {
+  margin: 0 32px;
+}
+
+.productFeature {
+  display: flex;
+  justify-content: space-between;
+  color: #555;
+  max-width: 320px;
+  max-height: 84px;
+  font-family: Mont, sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 15.34px;
+  text-align: left;
+}
+
+.featureLabel {
+  font-family: Mont, sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 15.34px;
+  text-align: left;
+  color: #89939A;
+}
+
+.featureValue {
+  font-family: Mont, sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 15.34px;
+  text-align: right;
+  color: #313237;
+}
+
+.about {
+  display: flex;
+  flex-direction: row;
+  gap: 64px;
+}
+
+.description {
+  max-width: 559px;
+  padding: 20px;
+}
+
+.descBlock {
+  margin-bottom: 20px;
+}
+
+.descTitle {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.descText {
+  font-size: 14px;
+  line-height: 1.5;
+  margin-bottom: 10px;
+}
+
+.tech_specs {
+  max-width: 531px;
+  width: 100%;
+}
+
+.tech__title {
+  margin-bottom: 16px;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.spec_row {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.spec_row span {
+  font-size: 14px;
+  font-weight: 600;
+  color: #333;
+}
+
+.spec_row span:first-child {
+  color: #89939A;
+}
+
+.spec_row span:last-child {
+  color: #313237;
+  text-align: right;
+}
+

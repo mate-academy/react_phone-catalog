@@ -2,7 +2,7 @@
   padding: 20px;
   width: 1136px;
   height: 571px;
-  margin: 0 152px 80px 152px;
+  margin: 0 152px 80px;
 }
 
 .productGrid {
@@ -10,4 +10,10 @@
   grid-template-columns: repeat(4, 1fr);
   gap: 16px;
   margin-top: 20px;
+}
+
+.linkProduct {
+  text-decoration: none;
+  color: inherit;
+  display: block;
 }

@@ -1,21 +1,19 @@
-/* eslint-disable no-console */
 import React from 'react';
 import phones from '../../public/api/phones.json';
-// eslint-disable-next-line max-len
-import { DiscountProductCard } from '../HotPrices/DiscountProductCard/DiscountProductCard';
-import styles from './HotPrices.module.scss';
+import { ProductCard } from '../ProductCard/ProductCard';
+import styles from './BrandNewModels.module.scss';
 import { Link } from 'react-router-dom';
 import { useCart } from '../UseCart/UseCart';
 
-export const HotPrices: React.FC = () => {
+export const BrandNewModels: React.FC = () => {
   const filteredProducts = phones.filter(
     phone =>
-      (phone.namespaceId === 'apple-iphone-11' ||
-        phone.namespaceId === 'apple-iphone-11-pro') &&
-      phone.capacity === '128GB' &&
-      (phone.color === 'black' ||
-        phone.color === 'white' ||
-        phone.color === 'gold'),
+      (phone.namespaceId === 'apple-iphone-14-pro' ||
+        phone.namespaceId === 'apple-iphone-14-pro-max') &&
+      (phone.capacity === '128GB' || phone.capacity === '256GB') &&
+      (phone.color === 'spaceblack' ||
+        phone.color === 'gold' ||
+        phone.color === 'midnight'),
   );
   const { dispatch } = useCart();
 
@@ -37,7 +35,7 @@ export const HotPrices: React.FC = () => {
 
   return (
     <div className={styles.productList}>
-      <h1>Hot Prices</h1>
+      <h1>Brand new models</h1>
 
       <div className={styles.productGrid}>
         {filteredProducts.slice(0, 4).map(product => (
@@ -46,7 +44,7 @@ export const HotPrices: React.FC = () => {
             key={product.id}
             className={styles.linkProduct}
           >
-            <DiscountProductCard
+            <ProductCard
               key={product.id}
               id={product.id}
               name={product.name}

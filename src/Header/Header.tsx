@@ -8,11 +8,14 @@ export const Header: React.FC = () => {
     <header className={styles.header}>
       <div className={styles.logo}>
         <Link to="/">
-          <img src="../../public/img/Logo.png" alt="Logo" />
+          <img src="img/Logo.svg" alt="Logo" />
         </Link>
       </div>
       <nav className={styles.nav}>
         <ul className={styles.navLeft}>
+          <li>
+            <Link to="/">Home</Link>
+          </li>
           <li>
             <Link to="/phones">Phones</Link>
           </li>
@@ -26,12 +29,12 @@ export const Header: React.FC = () => {
         <ul className={styles.navRight}>
           <li>
             <Link to="/Favorites">
-              <img src="../../public/img/Favourites.png" alt="Favorites" />
+              <img src="img/Favourites.svg" alt="Favorites" />
             </Link>
           </li>
           <li>
             <Link to="/Cart">
-              <img src="../../public/img/shopping-bag.png" alt="Cart" />
+              <img src="img/shopping-bag.svg" alt="Cart" />
             </Link>
           </li>
         </ul>

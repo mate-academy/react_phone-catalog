@@ -1,8 +1,19 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import phones from '../../public/api/phones.json';
+import tablets from '../../public/api/tablets.json';
+import accessories from '../../public/api/accessories.json';
 import style from './ShopByCategory.module.scss';
 
 export const ShopByCategory: React.FC = () => {
+  const filteredPhones = phones.filter(phone => phone.category === 'phones');
+  const filteredTablets = tablets.filter(
+    tablet => tablet.category === 'tablets',
+  );
+  const filteredAccessories = accessories.filter(
+    accessory => accessory.category === 'accessories',
+  );
+
   return (
     <>
       <div className={style.category}>
@@ -12,7 +23,7 @@ export const ShopByCategory: React.FC = () => {
             <div className={style.mobile}>
               <Link to="/phones">
                 <img
-                  src="../../public/img/category-phonesV2.png"
+                  src="img/category-phones.svg"
                   alt="Mobile phones"
                   className={style.image}
                 />
@@ -20,7 +31,7 @@ export const ShopByCategory: React.FC = () => {
             </div>
             <div className={style.categoryInfo}>
               <p>Mobile phones</p>
-              <p>96 models</p>
+              <p>{filteredPhones.length} models</p>
             </div>
           </div>
 
@@ -28,7 +39,7 @@ export const ShopByCategory: React.FC = () => {
             <div className={style.tablet}>
               <Link to="/tablets">
                 <img
-                  src="../../public/img/category-tablets.webp"
+                  src="img/category-tablets.svg"
                   alt="Tablets"
                   className={style.image}
                 />
@@ -36,7 +47,7 @@ export const ShopByCategory: React.FC = () => {
             </div>
             <div className={style.categoryInfo}>
               <p>Tablets</p>
-              <p>26 models</p>
+              <p>{filteredTablets.length} models</p>
             </div>
           </div>
 
@@ -44,7 +55,7 @@ export const ShopByCategory: React.FC = () => {
             <div className={style.accessories}>
               <Link to="/accessories">
                 <img
-                  src="../../public/img/category-accessories.webp"
+                  src="img/category-accessories.svg"
                   alt="Accessories"
                   className={style.image}
                 />
@@ -52,7 +63,7 @@ export const ShopByCategory: React.FC = () => {
             </div>
             <div className={style.categoryInfo}>
               <p>Accessories</p>
-              <p>26 models</p>
+              <p>{filteredAccessories.length} models</p>
             </div>
           </div>
         </div>
