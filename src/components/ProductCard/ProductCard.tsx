@@ -18,7 +18,6 @@ export const ProductCard: FC<ProductCardProps> = ({
     product;
 
   const productDetailsLink = `/${category}/${itemId}`;
-  const linkState = { category };
 
   const showFullPrice = () => {
     if (fullPriceOnCard) {
@@ -30,19 +29,11 @@ export const ProductCard: FC<ProductCardProps> = ({
 
   return (
     <div className={styles.productCard}>
-      <NavLink
-        to={productDetailsLink}
-        className={styles.imageContainer}
-        state={linkState}
-      >
+      <NavLink to={productDetailsLink} className={styles.imageContainer}>
         <img className={styles.image} src={`${BASE_URL}${image}`} alt="image" />
       </NavLink>
 
-      <NavLink
-        to={productDetailsLink}
-        state={linkState}
-        className={styles.title}
-      >
+      <NavLink to={productDetailsLink} className={styles.title}>
         {name}
       </NavLink>
 
@@ -69,7 +60,7 @@ export const ProductCard: FC<ProductCardProps> = ({
           <p className={styles.descriptionText}>{ram}</p>
         </div>
       </div>
-      <CardButtons product={product} />
+      <CardButtons />
     </div>
   );
 };

@@ -53,10 +53,23 @@
       width: 52px;
       height: 49px;
     }
+
+    @include on-desktop {
+      width: 55px;
+      height: 55px;
+    }
   }
 
   .mainImg {
     max-width: 464px;
+
+    @include on-desktop {
+      max-width: 420px;
+    }
+
+    @include on-tablet {
+      max-width: 300px;
+    }
 
     @include on-mobile {
       max-width: 288px;

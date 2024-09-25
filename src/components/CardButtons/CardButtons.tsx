@@ -1,14 +1,9 @@
 import { FC } from 'react';
-import { Product } from '../../types/Product';
 import { useIconSrc } from '../../utils/hooks/useIconSrc';
 // import classNames from 'classnames';
 import styles from './CardButtons.module.scss';
 
-type Props = {
-  product: Product;
-};
-
-export const CardButtons: FC<Props> = ({}) => {
+export const CardButtons: FC = ({}) => {
   const { favoriteSelected, favoritesUrl } = useIconSrc();
 
   return (
@@ -26,7 +21,6 @@ export const CardButtons: FC<Props> = ({}) => {
           alt="favorite"
         />
       </button>
-      {/* <div className="">{product}</div> */}
     </div>
   );
 };

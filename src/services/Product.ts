@@ -9,9 +9,9 @@ export const getAllProducts = async (): Promise<Product[]> => {
 };
 
 export const getProductByIdFromCategory = async (id: string, url: Category) => {
-  const data = await getData<ProductDetails[]>(getCategoryUrl(url));
+  const products = await getData<ProductDetails[]>(getCategoryUrl(url));
 
-  return data.find((item: ProductDetails) => item.id === id);
+  return products.find((item: ProductDetails) => item.id === id);
 };
 
 export const getProductsByCategory = async (category: Category) => {
@@ -21,23 +21,41 @@ export const getProductsByCategory = async (category: Category) => {
 };
 
 export const getHotPriceProducts = async () => {
-  const response = await getData<Product[]>(PRODUCTS_URL);
+  const products = await getData<Product[]>(PRODUCTS_URL);
 
-  return response.sort((a: Product, b: Product) => {
+  return products.sort((a: Product, b: Product) => {
     return b.fullPrice - b.price - (a.fullPrice - a.price);
   });
 };
 
 export const getNewProducts = async () => {
-  const response = await getData<Product[]>(PRODUCTS_URL);
-  const latestYear = response.reduce(
+  const products = await getData<Product[]>(PRODUCTS_URL);
+  const latestYear = products.reduce(
     (acc: number, product: Product) => Math.max(acc, product.year),
     0,
   );
 
-  return response
+  return products
     .filter((product: Product) => product.year === latestYear)
     .sort((a: Product, b: Product) => b.fullPrice - a.fullPrice);
+};
+
+export const getProductByParams = async (
+  category: Category,
+  namespaceId: string,
+  color: string,
+  capacity: string,
+) => {
+  const products = await getData<ProductDetails[]>(getCategoryUrl(category));
+
+  const newProduct = products.find(
+    p =>
+      p.namespaceId === namespaceId &&
+      p.color === color &&
+      p.capacity === capacity,
+  );
+
+  return newProduct;
 };
 
 // export const getSuggestedProducts = async () => {

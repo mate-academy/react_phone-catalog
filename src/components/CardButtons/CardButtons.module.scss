@@ -21,7 +21,7 @@
   transition: transform $transition-duration ease;
 
   &:hover {
-    transform: scale(1.05);
+    transform: scale(1.02);
     box-shadow: 0 3px 13px 0 #17203166;
     background-color: var(--color-button-hover);
   }

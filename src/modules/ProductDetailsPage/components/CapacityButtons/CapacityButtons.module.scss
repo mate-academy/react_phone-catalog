@@ -1,0 +1,37 @@
+@import '../../../../styles/main';
+
+.capacity {
+  margin: 24px 0;
+  display: flex;
+  flex-direction: column;
+  color: var(--color-secondary);
+  gap: 8px;
+
+  @extend %small-text;
+}
+
+.capacityList {
+  display: flex;
+  gap: 8px;
+}
+
+.capacityButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 3px;
+  padding-inline: 8px;
+  height: 32px;
+  border: 1px solid var(--color-surface);
+  background-color: transparent;
+  color: var(--color-primary);
+  cursor: pointer;
+
+  @extend %body-text;
+}
+
+.active {
+  border: 1px solid var(--color-primary);
+  background-color: var(--color-primary);
+  color: var(--color-background);
+}

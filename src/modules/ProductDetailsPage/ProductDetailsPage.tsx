@@ -1,18 +1,26 @@
 import { FC, useEffect, useState } from 'react';
-import { useLocation, useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import styles from './ProductDetailsPage.module.scss';
-import { getProductByIdFromCategory } from '../../services/Product';
+import {
+  getProductByIdFromCategory,
+  getProductByParams,
+} from '../../services/Product';
 import { ProductDetails } from '../../types/ProductDetails';
 import { Spinner } from '../../components/Spinner/Spinner';
 import { useIconSrc } from '../../utils/hooks/useIconSrc';
 import { Breadcrumbs } from '../../components/Breadcrumbs/Breadcrumbs';
 import { Gallery } from './components/Gallery/Gallery';
-// import { CardButtons } from '../../components/CardButtons';
+import { CardButtons } from '../../components/CardButtons';
+import { ColorButtons } from './components/ColorButtons/ColorButtons';
+import { CapacityButtons } from './components/CapacityButtons/CapacityButtons';
+import { Category } from '../../types/Category';
 
 export const ProductDetailsPage: FC = () => {
   const navigate = useNavigate();
-  const { state } = useLocation();
-  const { productId } = useParams();
+  const { category, productId } = useParams<{
+    category: Category;
+    productId: string;
+  }>();
 
   const { arrowLeftUrl } = useIconSrc();
 
@@ -22,11 +30,8 @@ export const ProductDetailsPage: FC = () => {
   useEffect(() => {
     const fetchDetails = async () => {
       try {
-        if (productId && state) {
-          const data = await getProductByIdFromCategory(
-            productId,
-            state.category,
-          );
+        if (productId && category) {
+          const data = await getProductByIdFromCategory(productId, category);
 
           setProductDetails(data);
         }
@@ -43,7 +48,27 @@ export const ProductDetailsPage: FC = () => {
     return () => {
       clearTimeout(delay);
     };
-  }, [productId, state]);
+  }, [productId, category]);
+
+  const filterChange = async (color: string, capacity: string) => {
+    try {
+      if (productDetails) {
+        const newProduct = await getProductByParams(
+          productDetails.category,
+          productDetails.namespaceId,
+          color,
+          capacity,
+        );
+
+        if (newProduct) {
+          navigate(`/${newProduct.category}/${newProduct.id}`, {
+            replace: true,
+          });
+          setProductDetails(newProduct);
+        }
+      }
+    } catch (error) {}
+  };
 
   if (isLoading) {
     return (
@@ -75,7 +100,55 @@ export const ProductDetailsPage: FC = () => {
             <div className={styles.gallery}>
               <Gallery images={productDetails.images} />
             </div>
-            <div className={styles.actionPanel}>{/* <CardButtons /> */}</div>
+            <div className={styles.actionPanel}>
+              <div className={styles.topPanel}>
+                Available colors
+                <p>ID: 3424234</p>
+              </div>
+              <div className={styles.actionBox}>
+                <ColorButtons
+                  product={productDetails}
+                  filterChange={filterChange}
+                />
+                <hr className={styles.divider} />
+                <CapacityButtons
+                  productDetails={productDetails}
+                  filterChange={filterChange}
+                />
+                <hr className={styles.divider} />
+                <div className={styles.price}>
+                  <div className={styles.existPrice}>
+                    ${productDetails.priceRegular}
+                  </div>
+                  <div className={styles.hotPrice}>
+                    ${productDetails.priceDiscount}
+                  </div>
+                </div>
+                <CardButtons />
+                <div className={styles.specification}>
+                  <div className={styles.spec}>
+                    Screen
+                    <p className={styles.specValue}>{productDetails.screen}</p>
+                  </div>
+                  <div className={styles.spec}>
+                    Resolution
+                    <p className={styles.specValue}>
+                      {productDetails.resolution}
+                    </p>
+                  </div>
+                  <div className={styles.spec}>
+                    Processor
+                    <p className={styles.specValue}>
+                      {productDetails.processor}
+                    </p>
+                  </div>
+                  <div className={styles.spec}>
+                    RAM
+                    <p className={styles.specValue}>{productDetails.ram}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
           <div className={styles.description}>cvbcvbcvb</div>
         </div>
