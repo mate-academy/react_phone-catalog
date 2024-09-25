@@ -21,11 +21,7 @@ export const CatalogLayout: React.FC<Props> = ({ products }) => {
 
   useEffect(() => {
     setSortedProducts([...products].sort((a, b) => b.year - a.year));
-  }, [products]);
-
-  // useEffect(() => {
-  //   setCurrentPage(1);
-  // }, [itemsPerPage]);
+  }, []);
 
   const handlePageChange = (page: number) => {
     setCurrentPage(page);

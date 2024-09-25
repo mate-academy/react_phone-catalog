@@ -54,7 +54,7 @@ export const Controls: React.FC<Props> = ({
     };
 
     sortItems();
-  }, [sortKey]);
+  }, [sortKey, products, setSortedProducts]);
 
   const sortOptions = [
     { value: 'newest', label: 'Newest' },

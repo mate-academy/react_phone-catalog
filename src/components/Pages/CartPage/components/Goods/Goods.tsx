@@ -19,6 +19,7 @@ export const Goods: React.FC<Props> = ({ product, category }) => {
     `items-${product.id}`,
     1,
   );
+
   const price = counterNumber * product.price;
 
   product.quantity = counterNumber;

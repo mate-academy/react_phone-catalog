@@ -10,7 +10,8 @@ type Props = {
 };
 
 export const ToolBar: React.FC<Props> = ({ isOpenMenu }) => {
-  const { isSunSelected, isLiked, isGoods } = useContext(GlobalContext);
+  const { isSunSelected, isLiked, isGoods, totalItems } =
+    useContext(GlobalContext);
 
   return (
     <div
@@ -85,7 +86,7 @@ export const ToolBar: React.FC<Props> = ({ isOpenMenu }) => {
               />
               {isGoods.length > 0 ? (
                 <span className={styles.ToolbarIcons__cart_length}>
-                  {isGoods.length}
+                  {totalItems}
                 </span>
               ) : (
                 ''
@@ -100,7 +101,7 @@ export const ToolBar: React.FC<Props> = ({ isOpenMenu }) => {
               />
               {isGoods.length > 0 ? (
                 <span className={styles.ToolbarIcons__cart_length_dark}>
-                  {isGoods.length}
+                  {totalItems}
                 </span>
               ) : (
                 ''
