@@ -141,3 +141,29 @@ Show `input:search` in the header when a page contains a `ProductList` to search
 1. Save the `Search` value in the URL as a `?query=value` to apply on page load.
 2. Show `There are no phones/tablets/accessories/products matching the query` instead of `ProductList` when needed.
 3. Add `debounce` to the search field.
+
+### DEMO-link
+[DEMO LINK](https://p-nazar.github.io/react_phone-catalog/)
+
+### presentation
+
+Apple Products Online Store
+
+- Welcome to the Apple Products Online Store, a modern web application where you can explore and purchase a variety of Apple products, including iPhones, iPads, MacBooks, Apple Watches, and accessories. The store provides a user-friendly interface with advanced features like product filtering, detailed product descriptions, and a smooth checkout experience.
+
+Features
+Wide Range of Products: Browse through a comprehensive collection of Apple products, from the latest iPhones to high-performance MacBooks.
+Product Filtering: Easily filter products by categories, colors, capacities, screen sizes, and more.
+Product Details: Get detailed information on each product, including technical specifications, images, and pricing.
+Responsive Design: Optimized for both desktop and mobile users, ensuring a seamless experience across all devices.
+Favorites: Mark items as favorites and easily access them later.
+Cart Management: Add products to the cart, adjust quantities, and view the total price dynamically.
+Secure Checkout: Enjoy a smooth and secure checkout process, with support for various payment options.
+Dark Mode: Toggle between light and dark themes to match your preference.
+
+Technologies Used
+React: For building the user interface.
+Material-UI: For styling and responsive components.
+Context API: For managing global states such as user preferences and shopping cart data.
+SCSS: For custom styles and responsive design.
+JavaScript/TypeScript: For functionality and type safety.
