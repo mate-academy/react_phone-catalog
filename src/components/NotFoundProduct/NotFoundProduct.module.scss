@@ -13,7 +13,7 @@
 
   @include on-mobile {
     margin-top: 20px;
-
+    gap: 16px;
     font-size: 20px;
     line-height: 26px;
     font-weight: 600;
@@ -24,6 +24,7 @@
   width: 100%;
   max-width: 600px;
   align-self: center;
+  object-fit: contain;
 
   background: radial-gradient(
     circle,

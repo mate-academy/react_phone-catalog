@@ -33,8 +33,9 @@ export const HomePage: FC = () => {
   return (
     <div className={styles.home}>
       <div>
+        <h1 style={{ visibility: 'hidden' }}>Product Catalog</h1>
         <div className={styles.container}>
-          <h1 className={styles.title}>Welcome to Nice Gadgets store!</h1>
+          <h2 className={styles.title}>Welcome to Nice Gadgets store!</h2>
         </div>
         <PictureSlider />
       </div>

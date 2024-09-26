@@ -16,7 +16,6 @@
   color: var(--color-primary);
 
   @include on-tablet {
-
     @include h3-mobile;
   }
 }

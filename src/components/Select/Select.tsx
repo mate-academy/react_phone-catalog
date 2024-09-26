@@ -7,18 +7,30 @@ type Option = {
 };
 
 type Props = {
+  disabled?: boolean;
   label: string;
   value: string | number;
   options: Option[];
   onChange: (event: React.ChangeEvent<HTMLSelectElement>) => void;
 };
 
-export const Select: FC<Props> = ({ label, value, options, onChange }) => {
+export const Select: FC<Props> = ({
+  label,
+  value,
+  options,
+  onChange,
+  disabled,
+}) => {
   return (
     <label className={styles.label}>
       {label}
 
-      <select value={value} onChange={onChange} className={styles.select}>
+      <select
+        value={value}
+        onChange={onChange}
+        className={styles.select}
+        disabled={disabled}
+      >
         {options.map(option => (
           <option
             key={option.value}

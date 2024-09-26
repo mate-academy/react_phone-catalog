@@ -40,10 +40,10 @@ export const Breadcrumbs: React.FC<BreadcrumbsProps> = ({ product }) => {
   return (
     <nav className={styles.breadcrumbs}>
       <Link to="/">
-        <img src={homeUrl} alt="home" className={styles.homeIcon} />
+        <img src={homeUrl} alt="Home" className={styles.homeIcon} />
       </Link>
       <span className={styles.chevronSpan}>
-        <img src={arrowRightUrl} alt="chevron" className={styles.chevronIcon} />
+        <img src={arrowRightUrl} alt="Chevron" className={styles.chevronIcon} />
       </span>
       {breadcrumbs.map((crumb, index) => (
         <React.Fragment key={index}>

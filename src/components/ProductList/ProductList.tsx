@@ -12,6 +12,7 @@ import { sortProducts } from '../../utils/sortFilter';
 import { Breadcrumbs } from '../Breadcrumbs/Breadcrumbs';
 import styles from './ProductList.module.scss';
 import { Category } from '../../types/Category';
+import { Error } from './components/Error';
 
 interface Props {
   title?: string;
@@ -20,6 +21,7 @@ interface Props {
 export const ProductList: FC<Props> = ({ title }) => {
   const [products, setProducts] = useState<Product[]>([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [errorMessage, setErrorMessage] = useState<boolean>(false);
   const [searchParams, setSearchParams] = useSearchParams();
   const location = useLocation();
 
@@ -38,18 +40,25 @@ export const ProductList: FC<Props> = ({ title }) => {
 
   const category = location.pathname.split('/')[1] as Category;
 
+  const fetchProducts = useCallback(async () => {
+    setErrorMessage(false);
+    setIsLoading(true);
+
+    try {
+      const data = await getProductsByCategory(category);
+
+      setProducts(data);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } catch (error) {
+      setErrorMessage(true);
+      // eslint-disable-next-line
+      console.error('Error during fetching products:', error);
+    } finally {
+      setIsLoading(false);
+    }
+  }, [category]);
+
   useEffect(() => {
-    const fetchProducts = async () => {
-      try {
-        const data = await getProductsByCategory(category);
-
-        setProducts(data);
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      } finally {
-        setIsLoading(false);
-      }
-    };
-
     const delay = setTimeout(() => {
       if (category) {
         fetchProducts();
@@ -59,7 +68,7 @@ export const ProductList: FC<Props> = ({ title }) => {
     return () => {
       clearTimeout(delay);
     };
-  }, [category]);
+  }, [category, fetchProducts]);
 
   const handleSortChange = useCallback(
     (event: React.ChangeEvent<HTMLSelectElement>) => {
@@ -99,47 +108,63 @@ export const ProductList: FC<Props> = ({ title }) => {
       <div className={styles.productTop}>
         <Breadcrumbs />
         <h1 className={styles.title}>{title}</h1>
-        <p className={styles.count}>
-          {`${products.length} item${products.length > 1 ? 's' : ''}`}
-        </p>
-      </div>
 
-      <div className={styles.productFilters}>
-        <Select
-          label="Sort by"
-          onChange={handleSortChange}
-          value={sortType}
-          options={Object.entries(FilterType).map(([key, value]) => ({
-            value: key,
-            label: value,
-          }))}
-        />
-
-        <Select
-          label="Items per page"
-          onChange={handlePerPageChange}
-          value={perPage}
-          options={Object.values(ItemsPerPage).map(value => ({
-            value,
-            label: value,
-          }))}
-        />
-      </div>
-      <div className={styles.productList}>
-        {selectedProducts.map(item => (
-          <ProductCard product={item} key={item.id} />
-        ))}
-      </div>
-      <div className={styles.pagination}>
-        {perPage !== 'All' && (
-          <Pagination
-            total={total}
-            perPage={actualPerPage}
-            currentPage={page}
-            onPageChange={handlePageChange}
-          />
+        {errorMessage ? (
+          ''
+        ) : (
+          <p className={styles.count}>
+            {!selectedProducts.length
+              ? 'Not items'
+              : `${products.length} item${products.length > 1 ? 's' : ''}`}
+          </p>
         )}
       </div>
+      {errorMessage ? (
+        <Error category={category} reload={fetchProducts} products={products} />
+      ) : (
+        <>
+          <div className={styles.productFilters}>
+            <Select
+              disabled={errorMessage}
+              label="Sort by"
+              onChange={handleSortChange}
+              value={sortType}
+              options={Object.entries(FilterType).map(([key, value]) => ({
+                value: key,
+                label: value,
+              }))}
+            />
+
+            <Select
+              disabled={errorMessage}
+              label="Items per page"
+              onChange={handlePerPageChange}
+              value={perPage}
+              options={Object.values(ItemsPerPage).map(value => ({
+                value,
+                label: value,
+              }))}
+            />
+          </div>
+          <>
+            <div className={styles.productList}>
+              {selectedProducts.map(item => (
+                <ProductCard product={item} key={item.id} />
+              ))}
+            </div>
+            <div className={styles.pagination}>
+              {perPage !== 'All' && (
+                <Pagination
+                  total={total}
+                  perPage={actualPerPage}
+                  currentPage={page}
+                  onPageChange={handlePageChange}
+                />
+              )}
+            </div>
+          </>
+        </>
+      )}
     </div>
   );
 };

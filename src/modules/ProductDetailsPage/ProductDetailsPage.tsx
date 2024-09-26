@@ -101,10 +101,9 @@ export const ProductDetailsPage: FC = ({}) => {
     <div className={styles.detailsWrapper}>
       <div className={styles.container}>
         <div className={styles.detailsTop}>
-          <Breadcrumbs product={productDetails} />
-
           {productDetails ? (
             <>
+              <Breadcrumbs product={productDetails} />
               <BackButton />
               <h2 className={styles.title}>{productDetails.name}</h2>
               <div className={styles.detailsMain}>
