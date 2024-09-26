@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build",
+    "build": "tsc && vite build && cp 404.html dist/",
     "clean": "tsc --build --clean",
     "test": "mate-scripts test -l",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
