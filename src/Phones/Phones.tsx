@@ -107,7 +107,9 @@ export const Phones: React.FC = () => {
 
       <div className={styles.productGrid}>
         {currentProducts.map(product => {
-          const phone = phones.find(phone => phone.id === product.itemId);
+          const phone = phones.find(
+            productPhone => productPhone.id === product.itemId,
+          );
 
           return (
             phone && (

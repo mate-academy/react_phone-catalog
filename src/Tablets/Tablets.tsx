@@ -107,31 +107,33 @@ export const Tablets: React.FC = () => {
 
       <div className={styles.productGrid}>
         {currentProducts.map(product => {
-          const productTablets = tablets.find(
-            tablet => tablet.id === product.itemId,
+          const tablet = tablets.find(
+            productTablet => productTablet.id === product.itemId,
           );
 
           return (
-            <Link
-              to={`/product/${productTablets.id}`}
-              key={productTablets.id}
-              className={styles.linkProduct}
-            >
-              <DiscountProductCard
-                key={productTablets.id}
-                id={productTablets.id}
-                name={productTablets.name}
-                price={productTablets.priceRegular}
-                discountPrice={productTablets.priceDiscount}
-                imageUrl={productTablets.images[0]}
-                isFavorite={false}
-                screen={productTablets.screen}
-                capacity={productTablets.capacity}
-                ram={productTablets.ram}
-                onAddToCart={() => handleAddToCart(productTablets.id)}
-                onToggleFavorite={() => handleToggleFavorite(productTablets.id)}
-              />
-            </Link>
+            tablet && (
+              <Link
+                to={`/product/${tablet.id}`}
+                key={tablet.id}
+                className={styles.linkProduct}
+              >
+                <DiscountProductCard
+                  key={tablet.id}
+                  id={tablet.id}
+                  name={tablet.name}
+                  price={tablet.priceRegular}
+                  discountPrice={tablet.priceDiscount}
+                  imageUrl={tablet.images[0]}
+                  isFavorite={false}
+                  screen={tablet.screen}
+                  capacity={tablet.capacity}
+                  ram={tablet.ram}
+                  onAddToCart={() => handleAddToCart(tablet.id)}
+                  onToggleFavorite={() => handleToggleFavorite(tablet.id)}
+                />
+              </Link>
+            )
           );
         })}
       </div>

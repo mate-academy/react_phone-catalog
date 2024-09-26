@@ -2,17 +2,16 @@ import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Autoplay } from 'swiper/modules';
 import 'swiper/css';
-import 'swiper/css/virtual';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import 'swiper/css/autoplay';
 import styles from './PicturesSlider.module.scss';
 
 const images = [
   { image: 'img/Banner1.svg', alt: 'Banner 1' },
   { image: 'img/banner-phones.png', alt: 'Phones' },
   { image: 'img/banner-tablets.png', alt: 'Tablets' },
-  {
-    image: 'img/banner-accessories.png',
-    alt: 'Accessories',
-  },
+  { image: 'img/banner-accessories.png', alt: 'Accessories' },
 ];
 
 export const PicturesSlider: React.FC = () => {

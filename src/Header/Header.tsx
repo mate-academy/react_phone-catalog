@@ -12,7 +12,7 @@ export const Header: React.FC = () => {
         </Link>
       </div>
       <nav className={styles.nav}>
-        <ul className={styles.navLeft}>
+        <ul className={styles.nav_left}>
           <li>
             <Link to="/">Home</Link>
           </li>
@@ -26,7 +26,7 @@ export const Header: React.FC = () => {
             <Link to="/accessories">Accessories</Link>
           </li>
         </ul>
-        <ul className={styles.navRight}>
+        <ul className={styles.nav_right}>
           <li>
             <Link to="/Favorites">
               <img src="img/Favourites.svg" alt="Favorites" />

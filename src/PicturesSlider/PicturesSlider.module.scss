@@ -1,27 +1,65 @@
-.picturesSlider {
-  width: 100%;
-  max-width: 1040px;
-  margin: 0 auto;
-  position: relative;
+:root {
+  --swiper-button-bg-color: #313237; /* Цвет фона для кнопок */
+  --swiper-button-border-radius: 4px; /* Радиус границ для кнопок */
+  --swiper-button-padding: 10px 20px; /* Отступы для кнопок */
+  --swiper-button-border: 2px solid #fff; /* Граница для кнопок */
+
+  --swiper-pagination-color:  #E2E6E9; /* Цвет неактивной точки */
+  --swiper-pagination-bullet-active-color: #313237; /* Цвет активной точки */
+  --swiper-pagination-bullet-width: 16px; /* Ширина точки */
+  --swiper-pagination-bullet-height: 8px; /* Высота точки */
+  --swiper-pagination-bullet-margin: 0 4px; /* Расстояние между точками */
+  --swiper-pagination-active-width: 24px; /* Ширина активной точки */
 }
 
-.slideImage {
-  width: 1040px;
-  height: 400px;
-  object-fit: cover;
+@media screen and (min-width: 1200px){
+  .picturesSlider {
+    width: 100%;
+    max-width: 1040px;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  .slideImage {
+    width: 1040px;
+    height: 400px;
+    object-fit: cover;
+  }
+
+  .swiper-slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+
 }
 
-.swiper-slide {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+@media screen and (max-width: 1199px){
+  .picturesSlider {
+    width: 592px;
+    height: 221px;
 
-.swiper-button-next,
-.swiper-button-prev {
-  color: #333;
-}
+    margin: 32px 75px 96px;
+    position: relative;
+  }
 
-.swiper-pagination-bullet-active {
-  background-color: #ff6347;
+  .slideImage {
+    width: 490px;
+    height: 189px;
+    object-fit: cover;
+  }
+
+  .swiper-slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .swiper-button-next, .swiper-button-prev {
+    color: #fff;
+  }
+}
+@media screen and (max-width: 640px){
+
 }

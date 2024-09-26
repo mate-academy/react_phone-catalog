@@ -108,7 +108,7 @@ export const Accessories: React.FC = () => {
       <div className={styles.productGrid}>
         {currentProducts.map(product => {
           const accessory = accessories.find(
-            accessory => accessory.id === product.itemId,
+            productAccesory => productAccesory.id === product.itemId,
           );
 
           return (
