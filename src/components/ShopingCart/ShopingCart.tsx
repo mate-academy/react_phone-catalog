@@ -10,6 +10,10 @@ export const ShopingCart = () => {
   const { addToCart } = useDevices();
   const [coutPrice, setCountPrice] = useState(0);
   const [countItems, setCountItems] = useState<Record<number, number>>({});
+  const counts = Object.values(countItems).reduce(
+    (acc, count) => acc + count,
+    0,
+  );
 
   useEffect(() => {
     const storedCounts = localStorage.getItem('countItems');
@@ -66,7 +70,7 @@ export const ShopingCart = () => {
 
   return (
     <div>
-      <Header />
+      <Header countItems={counts} />
 
       <div>
         <h1 className={styles.shoping_h1}>Cart</h1>
@@ -133,12 +137,7 @@ export const ShopingCart = () => {
               <div className={styles.checkout_price}>
                 <div className={styles.checkout_price_cash}>${coutPrice}</div>
                 <div className={styles.checkout_price_total}>
-                  total for{' '}
-                  {Object.values(countItems).reduce(
-                    (acc, count) => acc + count,
-                    0,
-                  )}{' '}
-                  items
+                  total for {counts} items
                 </div>
               </div>
               <div>

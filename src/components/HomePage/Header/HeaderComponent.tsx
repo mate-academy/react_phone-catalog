@@ -5,7 +5,11 @@ import classNames from 'classnames';
 import { useDevices } from '../../../context/DeviceProvider';
 import { useEffect, useState } from 'react';
 
-export const Header = () => {
+interface HeaderProps {
+  countItems?: number;
+}
+
+export const Header: React.FC<HeaderProps> = ({ countItems }) => {
   const { favoriteDevices } = useDevices();
   const { addedDevice } = useDevices();
   const [isOpen, setIsOpen] = useState(false);
@@ -109,7 +113,9 @@ export const Header = () => {
           >
             <img src="img/Shopping_bag.svg" alt="shoping logo" />
             {addedDevice.length > 0 && (
-              <span className={styles.shoping}>{addedDevice.length}</span>
+              <span className={styles.shoping}>
+                {addedDevice.length + (countItems ?? 0)}
+              </span>
             )}
           </NavLink>
         </div>

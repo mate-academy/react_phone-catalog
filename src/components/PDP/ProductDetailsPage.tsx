@@ -14,17 +14,59 @@ import row from '../HomePage/Welcome/productSlider.module.scss';
 import buttom from '../HomePage/Welcome/homeface.module.scss';
 import classNames from 'classnames';
 import { TransitionComponent } from '../main/Transition/TransitionComponent';
-import { useDevices } from '../../context/DeviceProvider';
+import { DeviceProps, useDevices } from '../../context/DeviceProvider';
 
 type Device = ProductChars | Accessories;
 
 export const ProductDetailsPage: React.FC = () => {
+  const [items, setItems] = useState<Device>();
+
   const [selectedImage, setSelectedImage] = useState(0);
   const [currentSlide, setCurrentSlide] = useState(0);
-  const [items, setItems] = useState<Device>();
   const [relatedProducts, setRelatedProducts] = useState<Device[]>([]);
   const { addToCart } = useDevices();
   const { addToFavorites } = useDevices();
+
+  const [favorites, setFavorites] = useState<boolean>(false);
+  const [isAdding, setIsAdding] = useState<boolean>(false);
+
+  const handleFavButton = (device: DeviceProps) => {
+    const newFavoriteState = !favorites;
+
+    setFavorites(newFavoriteState);
+    localStorage.setItem(
+      `favorites:${items?.id}`,
+      JSON.stringify(newFavoriteState),
+    );
+    addToFavorites(device);
+  };
+
+  const handleAddToCart = (device: DeviceProps) => {
+    const newAddingState = !isAdding;
+
+    setIsAdding(newAddingState);
+    localStorage.setItem(
+      `isAdding_${items?.id}`,
+      JSON.stringify(newAddingState),
+    );
+    addToCart(device);
+  };
+
+  useEffect(() => {
+    const savedIsAdding = localStorage.getItem(`isAdding_${items?.id}`);
+
+    if (savedIsAdding) {
+      setIsAdding(JSON.parse(savedIsAdding));
+    }
+  }, [items?.id]);
+
+  useEffect(() => {
+    const favoriteDevice = localStorage.getItem(`favorites:${items?.id}`);
+
+    if (favoriteDevice) {
+      setFavorites(JSON.parse(favoriteDevice));
+    }
+  }, [items?.id]);
 
   const isSelectCapacity = ({ isActive }: { isActive: boolean }) =>
     isActive
@@ -228,7 +270,7 @@ export const ProductDetailsPage: React.FC = () => {
                 <div className={styles.product_char_capacity_container}>
                   {items.capacityAvailable.map((cap, index) => (
                     <NavLink
-                      to={`/${category}/${items.namespaceId}-${cap.toLocaleLowerCase()}-${items.color}`}
+                      to={`/${category}/${items.namespaceId}-${cap.toLocaleLowerCase()}-${items.color.replace(/\s+/g, '-')}`}
                       key={index}
                       className={isSelectCapacity}
                       onClick={() => handleCapacityClick(cap, items.color)}
@@ -252,16 +294,30 @@ export const ProductDetailsPage: React.FC = () => {
 
                 <div className={cardStyles.card_buy_container}>
                   <button
-                    className={cardStyles.card_buy_button}
-                    onClick={() => addToCart(items)}
+                    className={classNames(cardStyles.card_buy_button, {
+                      [cardStyles.card_buy_button_active]: isAdding,
+                    })}
+                    onClick={() => handleAddToCart(items)}
                   >
                     Add to card
                   </button>
                   <button
                     className={cardStyles.card_follow_button}
-                    onClick={() => addToFavorites(items)}
+                    onClick={() => handleFavButton(items)}
                   >
-                    <img src="./img/Vector(Heart).svg" alt="heart" />
+                    {favorites ? (
+                      <img
+                        className={classNames(styles.card_follow_button_un)}
+                        src="./img/Heart_Like.svg"
+                        alt="heart"
+                      />
+                    ) : (
+                      <img
+                        className={classNames(styles.card_follow_button_un)}
+                        src="./img/Vector(Heart).svg"
+                        alt="heart"
+                      />
+                    )}
                   </button>
                 </div>
               </div>
