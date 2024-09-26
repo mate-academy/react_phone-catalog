@@ -15,7 +15,7 @@ export const Logo = ({ placement }: LogoProps) => {
   return (
     <Link to="/" className={styles.logo} style={linkStyle}>
       <img
-        src="/logo/logo-3x.png"
+        src={`${import.meta.env.BASE_URL}logo/logo-3x.png`}
         alt="nice gadgets logo"
         className={styles.logo__img}
       />
