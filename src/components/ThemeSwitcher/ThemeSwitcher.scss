@@ -1,0 +1,7 @@
+.theme-toggle__classic {
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: scale(1.2);
+  }
+}

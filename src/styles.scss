@@ -1,0 +1,88 @@
+@import './helpers/mixins';
+
+.main {
+  width: 100vw;
+
+  @include respond-to('desktop') {
+    display: grid;
+    grid-template-columns: repeat(24, 1fr);
+    column-gap: 16px;
+    max-width: 1136px;
+    margin: 0 auto;
+  }
+}
+
+.title {
+  margin-top: 24px;
+  font-size: 32px;
+  font-weight: 800;
+  line-height: 40px;
+  letter-spacing: -0.01em;
+  text-align: left;
+  padding-inline: 16px;
+  color: #313237;
+
+  &.dark {
+    color: white;
+  }
+
+  @include respond-to('tablet') {
+    font-size: 48px;
+    line-height: 56px;
+    margin-top: 32px;
+    padding-inline: 24px;
+  }
+
+  @include respond-to('desktop') {
+    height: 64px;
+    grid-column: span 24;
+    margin-top: 56px;
+    padding: 0;
+  }
+}
+
+.appContainer {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  height: 100vh;
+}
+
+.page-not-found-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 65vh;
+  text-align: center;
+  padding-top: 100px;
+}
+
+.page-not-found-title {
+  color: #89939A;
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 30.8px;
+  margin: 32px 0 10px;
+}
+
+.notFoundPage_Img {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 500px;
+  height: auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.visuallyHidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}

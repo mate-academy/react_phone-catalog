@@ -1,0 +1,234 @@
+@import '../../helpers/mixins';
+
+.card {
+  width: 212px;
+  height: 439px;
+  border: 1px solid #E2E6E9;
+  background-color: #FFFFFF;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  padding: 32px;
+
+  @include respond-to('tablet') {
+    width: 237px;
+    /*  height: auto; */
+    /*   height: 512px; */
+  }
+
+  @include respond-to('desktop') {
+    width: 272px;
+    height: 506px;
+  }
+}
+
+.image {
+  width: 100%;
+  height: 108px;
+  object-fit: contain;
+  object-position: center;
+  /*   background-image: url(../../assets/images/card_images/iPhone_XS.png);
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat; */
+  transition: transform 0.3s ease;
+  cursor: pointer;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+
+  @include respond-to('tablet') {
+    width: 173px;
+    /*   height: 202px; */
+    /*    aspect-ratio: 120%; */
+  }
+
+  @include respond-to('desktop') {
+    width: 208px;
+    height: 196px;
+  }
+}
+
+.text {
+  min-height: 79px;
+  font-size: 14px;
+  line-height: 21px;
+  color: #313237;
+  margin-top: 8px;
+  font-weight: 600;
+  text-align: left;
+  padding-top: 16px;
+  cursor: pointer;
+  box-sizing: border-box;
+
+  &:hover {
+    color: #626666;
+  }
+
+  @include respond-to ('tablet') {
+    min-height: 63px;
+  }
+}
+
+.price {
+  display: flex;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.priceRegular {
+  font-size: 22px;
+  line-height: 30.8px;
+  color: #313237;
+  margin: 0px;
+  font-weight: 800;
+}
+
+.priceDiscount {
+  font-size: 22px;
+  line-height: 30.8px;
+  color: #89939A;
+  text-decoration: line-through;
+  margin: 0px;
+  font-weight: 600;
+}
+
+.separator {
+  border-top: 1px solid #E2E6E9;
+  margin-top: 8px;
+}
+
+.specs {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+
+  @include respond-to('on-tablet') {
+    margin-top: 8px;
+  }
+
+  @include respond-to('desktop') {
+    margin-top: 0;
+  }
+}
+
+.screen,
+.memory,
+.ram {
+  display: flex;
+  justify-content: space-between;
+}
+
+.left {
+  font-size: 12px;
+  line-height: 15.34px;
+  font-weight: 700;
+  color: #89939A;
+}
+
+.right {
+  font-size: 12px;
+  line-height: 15.34px;
+  font-weight: 700;
+  color: #313237;
+}
+
+.buttons {
+  display: flex;
+  gap: 8px;
+  margin-top: 10px;
+
+  @include respond-to('tablet') {
+    margin-top: 16px;
+  }
+
+  @include respond-to('desktop') {
+    margin-top: 12px;
+  }
+}
+
+.add {
+  background-color: #313237;
+  color: #FFFFFF;
+  font-size: 14px;
+  line-height: 21px;
+  height: 40px;
+  font-weight: 700;
+  width: 100px;
+  padding: 0;
+  border: none;
+
+  @include respond-to('tablet') {
+    width: 125px;
+  }
+
+  @include respond-to('desktop') {
+    width: 160px;
+  }
+
+  &:hover {
+    box-shadow: 0px 3px 13px 0px #17203166;
+    cursor: pointer;
+  }
+
+  &:active {
+    border: 1px solid #E2E6E9;
+    color: #27AE60;
+    background-color: #FFFFFF;
+    box-shadow: none;
+  }
+}
+
+.heart {
+  display: flex;
+  height: 40px;
+  width: 40px;
+  background-color: #FFFFFF;
+  border: 1px solid #B4BDC3;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  padding: 0;
+
+  &:hover {
+    border: 1px solid #313237;
+    cursor: pointer;
+  }
+}
+
+.link {
+  text-decoration: none;
+}
+
+.add {
+  background-color: #313237;
+  color: white;
+  border: 1px solid #E2E6E9;
+  padding: 0;
+  cursor: pointer;
+  font-size: 13px;
+  border-radius: 4px;
+  transition: background-color 0.2s, transform 0.1s, color 0.2s;
+
+  &:hover {
+    background-color: #89939A;
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+  &.added {
+    background-color: white;
+    color: #27AE60;
+    transform: scale(1.05);
+  }
+
+  @include respond-to('tablet') {
+    font-size: 14px;
+  }
+}
+

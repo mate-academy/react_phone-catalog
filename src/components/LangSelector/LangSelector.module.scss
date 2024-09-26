@@ -1,0 +1,26 @@
+@import '../../helpers/mixins';
+
+.flagButton {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+  transition: transform 0.3s;
+  width: 48px;
+  height: 48px;
+  box-sizing: border-box;
+  border-left: 1px solid #E2E6E9;
+
+  @include respond-to('desktop') {
+    width: 64px;
+    height: 64px;
+  }
+}
+
+.flag {
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+}

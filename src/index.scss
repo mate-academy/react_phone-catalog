@@ -1,0 +1,40 @@
+@font-face {
+  font-family: 'MyFonts';
+  src: url('./assets/fonts/Mont-Regular.otf') format('opentype');
+  font-weight: 600;
+}
+
+@font-face {
+  font-family: 'MyFonts';
+  src: url('./assets/fonts/Mont-Bold.otf') format('opentype');
+  font-weight: 800;
+}
+
+@font-face {
+  font-family: 'MyFonts';
+  src: url('./assets/fonts/Mont-SemiBold.otf') format('opentype');
+  font-weight: 700;
+}
+
+* {
+  margin: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body.light {
+  --background-color:  #fafbfc;
+}
+
+body.dark {
+  --background-color: rgb(34, 34, 34); 
+}
+
+body {
+  font-family: 'MyFonts', sans-serif;
+  //  background-color: #fafbfc;
+  background-color: var(--background-color);
+  overflow-x: hidden;
+}

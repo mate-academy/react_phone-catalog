@@ -1,0 +1,224 @@
+.bodyNoScroll {
+  overflow: hidden;
+}
+
+.menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: #fff;
+  z-index: 90;
+  transform: translateX(-110%);
+  transition: transform 0.2s ease-in-out;
+  border-bottom: 1px solid #E2E6E9;
+
+  &.dark {
+    background-color: rgb(34, 34, 34)
+  }
+}
+
+.menuOpen {
+  transform: translateX(0);
+}
+
+.menuTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 1px 0 0 #e2e6e9;
+  padding: 13px 16px;
+  position: relative;
+  z-index: 1;
+}
+
+.iconClose {
+  background-color: #fafbfc;
+  padding: 0;
+  height: 48px;
+  width: 48px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  box-sizing: border-box;
+  border: 1px solid #E2E6E9;
+ /*  border-top: 0;
+  border-right: 1px;
+  border-bottom: 0; */
+  background-image: url('../../assets/images/header_images/close-icon.svg');
+  background-size: 16px 16px;
+  background-repeat: no-repeat;
+  background-position: center;
+  cursor: pointer;
+  opacity: 1;
+  z-index: 2;
+  transition: transform 0.5s ease; 
+
+  &.dark {
+    background-color: rgb(34, 34, 34);
+    background-image: url('../../assets/images/header_images/close-icon_darkmode.svg');
+  }  
+
+  &:hover {
+    transform: rotate(180deg); 
+    border: 1px solid #E2E6E9;
+  }
+
+}
+
+.logo {
+  margin: 0;
+  height: 22px;
+  width: 64px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url('../../assets/images/header_images/logo.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  transition: transform 0.3s ease;
+
+  &.dark {
+    background-image: url('../../assets/icons/GadgetsLogoDarkTheme.svg');
+  }
+}
+
+.logo:hover {
+  transform: scale(1.1);
+}
+
+.links {
+  margin-top: 24px;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: center;
+  list-style-type: none;
+}
+
+.link {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  height: 100%;
+  position: relative;
+  text-decoration: none;
+  color: grey;
+  font-size: 12px;
+  font-weight: 800;
+  line-height: 11px;
+  text-align: center;
+  letter-spacing: 0.04;
+  text-transform: uppercase;
+  box-sizing: border-box;
+
+  &.dark {
+    color: white;
+  }
+}
+
+.selectedLink {
+  border-bottom: 2px solid black;
+
+  &.dark {
+    border-bottom: 2px solid white;
+  }
+}
+
+.link:hover {
+  border-bottom: 2px solid black;
+
+  &.dark {
+    border-bottom: 2px solid white;
+  }
+}
+
+.icons {
+  display: flex;
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid #E2E6E9;
+  list-style: none; 
+}
+
+.iconItem {
+  flex: 1; 
+}
+
+.iconLinkHeart,
+.iconLinkBag {
+  display: flex;
+  height: 64px;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  border: 1px solid #E2E6E9;
+  margin: 0;
+  padding: 0;
+  background-repeat: no-repeat;
+  background-position: center;
+  position: relative;
+}
+
+.iconLinkHeart {
+  background-image: url('../../assets/images/header_images/like.png');
+
+  &.dark {
+    background-image: url('../../assets/icons/header_icons/heart_icon_darkmode.svg');
+  }
+
+  &:not(.selected):hover {
+    transform: scale(1.1);
+    border: none;
+  }
+}
+
+.iconLinkBag {
+  background-image: url('../../assets/images/header_images/shoppingBag.png');
+
+  &.dark {
+    background-image: url('../../assets/icons/header_icons/bag_icon_darkmode.svg');
+  }
+
+  &:not(.selected):hover {
+    transform: scale(1.1);
+    border: none; 
+  }
+}
+
+.selected::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background-color: black; 
+  width: 100%;
+}
+
+.selected.dark::after {
+  background-color: white; 
+}
+
+.iconItem {
+  position: relative;
+}
+
+.badge {
+  position: absolute;
+  top: 25%;
+  right: 42%;
+  background-color: red;
+  color: white;
+  border-radius: 50%;
+  padding: 2px 5px;
+  font-size: 12px;
+  line-height: 12px;
+}

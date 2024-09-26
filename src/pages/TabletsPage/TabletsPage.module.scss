@@ -1,0 +1,93 @@
+@import '../../helpers/mixins';
+@import '../../mixins/mixins.scss';
+$colorSecondaryGrey: #89939A;
+
+.pagesContainer {
+  width: 100vw;
+
+  @include respond-to('desktop') {
+    display: grid;
+    grid-template-columns: repeat(24, 1fr);
+    column-gap: 16px;
+    max-width: 1136px;
+    margin: 0 auto;
+  }
+}
+
+.route {
+  display: flex;
+  box-sizing: border-box;
+  margin-top: 24px;
+  margin-left: 16px;
+  gap: 8px;
+  align-items: center;
+
+  @include respond-to('tablet') {
+    margin-left: 32px;
+  }
+
+  @include respond-to('desktop') {
+    margin-left: 0;
+    grid-column: span 24;
+  }
+}
+
+.home {
+  width: 16px;
+  height: 16px;
+  background-image: url(../../assets/icons/Home.svg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  &.dark {
+    background-image: url('../../assets/icons/Home_darkmode.svg');
+  }
+}
+
+.arrow {
+  width: 16px;
+  height: 16px;
+  background-image: url('../../assets/icons/arrow-right.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.pageName {
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 15px;
+  text-align: left;
+  color: $colorSecondaryGrey;
+}
+
+
+.main {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+
+  @include respond-to('tablet') {
+    margin-top: 24px;
+  }
+
+  @include onMobile{
+    margin-top: 24px;
+  }
+}
+
+.main__content {
+  width: 1138px;
+  padding: 0 32px;
+
+  @include onTablet {
+    width: 592px;
+    padding: 0 24px;
+  }
+  
+  @include onMobile {
+    width: 288px;
+    padding: 0 16px;
+  }
+}
