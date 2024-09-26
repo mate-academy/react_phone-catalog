@@ -68,7 +68,7 @@
       width: 64px;
       height: 64px;
     }
-    
+
     display: flex;
     justify-content: center;
     align-items: center;
@@ -117,6 +117,11 @@ color: #89939A;
       padding-bottom: 16px;
       border-bottom: 4px solid black;
       font-family: Mont-bold-navigation-on-tablet, sans-serif;
+
+      @include on-desktop {
+        height: 64px;
+        padding-top: 26px;
+      }
     }
   }
   &__menu-block {

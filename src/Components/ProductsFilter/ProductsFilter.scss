@@ -8,19 +8,66 @@
   src: url('../../../public/fonts/Mont-Regular.otf');
 }
 
+@import '../../utils/mixins';
+
 .productsfilter {
-  &__text {
-    grid-column: 1 / 5;
+  grid-column: 1 / 13;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  &__input {
+    width: 287px;
+    height: 40px;
+    border-radius: 10px;
+    border: 1px solid #89939A;
+    text-overflow: ellipsis;
     font-family: Mont, sans-serif;
+    font-size: 14px;
+    text-indent: 30px;
+    &::placeholder {
+      font-family: Mont, sans-serif;
+      margin-left: 10px;
+    }
+
+  }
+  &__glass {
+    position: relative;
+    top: 65px;
+    right: 6px;
+    width: 50px;
+    height: 50px;
+    background-image: url('../../img/Glass.svg');
+    background-repeat: no-repeat;
+    background-size: 48px 48px;
+  }
+  &__text {
+    font-family: Mont, sans-serif;
+  }
+  &__filter {
+    display: flex;
+    flex-direction: column;
+    height: 80px;
+    width: 136px;
+  }
+  &__filters {
+    display: flex;
+    flex-direction: row;
+    width: 287px;
+    justify-content: space-between;
+
   }
   &__selection {
     grid-column: 1 / 5;
     font-family: Mont, sans-serif;
     border: 1px solid #89939A;
-    width: 187px;
+    width: 136px;
     height: 40px;
     border-radius: 10px;
     cursor: pointer;
+    
+    @include on-tablet {
+      grid-column: 1 / 13;
+    }
   }
 
   &__option {

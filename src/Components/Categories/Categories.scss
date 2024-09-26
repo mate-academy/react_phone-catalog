@@ -67,6 +67,10 @@ text-align: left;
       width: 368px;
     }
   }
+  &__amount {
+    margin-left: 16px;
+    color: #89939A;
+  }
   &__image {
     object-fit: cover;
     width: 288px;

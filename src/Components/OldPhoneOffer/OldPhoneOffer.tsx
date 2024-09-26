@@ -106,118 +106,120 @@ export const OldPhoneOffer = () => {
             {selectedProduct?.productData?.description}
           </div>
           <h1 className="oldphoneoffer__description--header">Tech Specs</h1>
-          <div className="oldphoneoffer__description--spec">
-            <h3 className="oldphoneoffer__description--name">System</h3>
-            <div className="oldphoneoffer__description--data">
-              {`${selectedProduct?.productData?.android.os} ${selectedProduct?.productData?.android.ui}`}
-            </div>
-          </div>
-          <div className="oldphoneoffer__description--spec">
-            <h3 className="oldphoneoffer__description--name">Availability</h3>
-            <div className="oldphoneoffer__description--data">
-              {selectedProduct?.productData?.availability.map(text =>
-                !text ? 'NO' : text,
-              )}
-            </div>
-          </div>
-          <div className="oldphoneoffer__description--spec">
-            <h3 className="oldphoneoffer__description--name">Battery</h3>
-            <div className="oldphoneoffer__description--battery">
+          <div className="oldphoneoffer__description--techspec">
+            <div className="oldphoneoffer__description--spec">
+              <h3 className="oldphoneoffer__description--name">System</h3>
               <div className="oldphoneoffer__description--data">
-                {`StandByTime: ${selectedProduct?.productData?.battery.standbyTime}`}
-              </div>
-              <div className="oldphoneoffer__description--data">
-                {`TalkTime: ${selectedProduct?.productData?.battery.talkTime}`}
-              </div>
-              <div className="oldphoneoffer__description--data">
-                {`Type: ${selectedProduct?.productData?.battery.type}`}
+                {`${selectedProduct?.productData?.android.os} ${selectedProduct?.productData?.android.ui}`}
               </div>
             </div>
-          </div>
-          <div className="oldphoneoffer__description--spec">
-            <h3 className="oldphoneoffer__description--name">Camera</h3>
-            <div className="oldphoneoffer__description--data">
-              {`Features: ${selectedProduct?.productData?.camera.features}`}
-            </div>
-            <div className="oldphoneoffer__description--data">
-              {`Primary: ${selectedProduct?.productData?.camera.primary}`}
-            </div>
-          </div>
-          <div className="oldphoneoffer__description--spec">
-            <h3 className="oldphoneoffer__description--name">Connectivity</h3>
-            <div className="oldphoneoffer__description--connectivity">
+            <div className="oldphoneoffer__description--spec">
+              <h3 className="oldphoneoffer__description--name">Availability</h3>
               <div className="oldphoneoffer__description--data">
-                {`${selectedProduct?.productData?.connectivity.bluetooth} `}
-              </div>
-              <div className="oldphoneoffer__description--data">
-                {`Cell: ${selectedProduct?.productData?.connectivity.cell === '' ? 'NO' : selectedProduct?.productData?.connectivity.cell}`}
-              </div>
-              <div className="oldphoneoffer__description--data">
-                {`GPS: ${selectedProduct?.productData?.connectivity.gps ? 'YES' : 'NO'}`}
-              </div>
-              <div className="oldphoneoffer__description--data">
-                {`INFRARED: ${selectedProduct?.productData?.connectivity.infrared ? 'YES' : 'NO'}`}
-              </div>
-              <div className="oldphoneoffer__description--data">
-                {`WiFi: ${selectedProduct?.productData?.connectivity.wifi}`}
-              </div>
-            </div>
-          </div>
-          <div className="oldphoneoffer__description--spec">
-            <h3 className="oldphoneoffer__description--name">Display</h3>
-            <div className="oldphoneoffer__description--display">
-              <div className="oldphoneoffer__description--data">
-                {`ScreenResolution: ${selectedProduct?.productData?.display.screenResolution}`}
-              </div>
-              <div className="oldphoneoffer__description--data">
-                {`Screen Size: ${selectedProduct?.productData?.display.screenSize}`}
-              </div>
-              <div className="oldphoneoffer__description--data">
-                {`Touch Screen: ${selectedProduct?.productData?.display.touchScreen ? 'YES' : 'NO'}`}
-              </div>
-            </div>
-          </div>
-          <div className="oldphoneoffer__description--spec">
-            <h3 className="oldphoneoffer__description--name">Hardware</h3>
-            <div className="oldphoneoffer__description--hardware">
-              <div className="oldphoneoffer__description--data">
-                {`Accelerometer: ${selectedProduct?.productData?.hardware.accelerometer ? 'YES' : 'NO'}`}
-              </div>
-              <div className="oldphoneoffer__description--data">
-                {`AudioJack: ${selectedProduct?.productData?.hardware.audioJack}`}
-              </div>
-              <div className="oldphoneoffer__description--data">
-                {`CPU: ${selectedProduct?.productData?.hardware.cpu}`}
-              </div>
-              <div className="oldphoneoffer__description--data">
-                {`FMRadio: ${selectedProduct?.productData?.hardware.fmRadio ? 'YES' : 'NO'}`}
-              </div>
-              <div className="oldphoneoffer__description--data">
-                {`USB: ${selectedProduct?.productData?.hardware.usb}`}
-              </div>
-            </div>
-          </div>
-          <div className="oldphoneoffer__description--spec">
-            <h3 className="oldphoneoffer__description--name">
-              Size and weight
-            </h3>
-            <div className="oldphoneoffer__description--dimensions">
-              <div className="oldphoneoffer__description--data">
-                {selectedProduct?.productData?.sizeAndWeight.dimensions.map(
-                  text => `Dimensions: ${text}\
-                  `,
+                {selectedProduct?.productData?.availability.map(text =>
+                  !text ? 'NO' : text,
                 )}
               </div>
-              <div className="oldphoneoffer__description--data">{`Weight: ${selectedProduct?.productData?.sizeAndWeight.weight}`}</div>{' '}
             </div>
-          </div>
-          <div className="oldphoneoffer__description--spec">
-            <h3 className="oldphoneoffer__description--name">Storage</h3>
-            <div className="oldphoneoffer__description--data">
-              {`Flash: ${selectedProduct?.productData?.storage.flash}`}
+            <div className="oldphoneoffer__description--spec">
+              <h3 className="oldphoneoffer__description--name">Battery</h3>
+              <div className="oldphoneoffer__description--battery">
+                <div className="oldphoneoffer__description--data">
+                  {`StandByTime: ${selectedProduct?.productData?.battery.standbyTime}`}
+                </div>
+                <div className="oldphoneoffer__description--data">
+                  {`TalkTime: ${selectedProduct?.productData?.battery.talkTime}`}
+                </div>
+                <div className="oldphoneoffer__description--data">
+                  {`Type: ${selectedProduct?.productData?.battery.type}`}
+                </div>
+              </div>
             </div>
-            <div className="oldphoneoffer__description--data">
-              {`RAM: ${selectedProduct?.productData?.storage.ram}`}
+            <div className="oldphoneoffer__description--spec">
+              <h3 className="oldphoneoffer__description--name">Camera</h3>
+              <div className="oldphoneoffer__description--data">
+                {`Features: ${selectedProduct?.productData?.camera.features}`}
+              </div>
+              <div className="oldphoneoffer__description--data">
+                {`Primary: ${selectedProduct?.productData?.camera.primary}`}
+              </div>
+            </div>
+            <div className="oldphoneoffer__description--spec">
+              <h3 className="oldphoneoffer__description--name">Connectivity</h3>
+              <div className="oldphoneoffer__description--connectivity">
+                <div className="oldphoneoffer__description--data">
+                  {`${selectedProduct?.productData?.connectivity.bluetooth} `}
+                </div>
+                <div className="oldphoneoffer__description--data">
+                  {`Cell: ${selectedProduct?.productData?.connectivity.cell === '' ? 'NO' : selectedProduct?.productData?.connectivity.cell}`}
+                </div>
+                <div className="oldphoneoffer__description--data">
+                  {`GPS: ${selectedProduct?.productData?.connectivity.gps ? 'YES' : 'NO'}`}
+                </div>
+                <div className="oldphoneoffer__description--data">
+                  {`INFRARED: ${selectedProduct?.productData?.connectivity.infrared ? 'YES' : 'NO'}`}
+                </div>
+                <div className="oldphoneoffer__description--data">
+                  {`WiFi: ${selectedProduct?.productData?.connectivity.wifi}`}
+                </div>
+              </div>
+            </div>
+            <div className="oldphoneoffer__description--spec">
+              <h3 className="oldphoneoffer__description--name">Display</h3>
+              <div className="oldphoneoffer__description--display">
+                <div className="oldphoneoffer__description--data">
+                  {`ScreenResolution: ${selectedProduct?.productData?.display.screenResolution}`}
+                </div>
+                <div className="oldphoneoffer__description--data">
+                  {`Screen Size: ${selectedProduct?.productData?.display.screenSize}`}
+                </div>
+                <div className="oldphoneoffer__description--data">
+                  {`Touch Screen: ${selectedProduct?.productData?.display.touchScreen ? 'YES' : 'NO'}`}
+                </div>
+              </div>
+            </div>
+            <div className="oldphoneoffer__description--spec">
+              <h3 className="oldphoneoffer__description--name">Hardware</h3>
+              <div className="oldphoneoffer__description--hardware">
+                <div className="oldphoneoffer__description--data">
+                  {`Accelerometer: ${selectedProduct?.productData?.hardware.accelerometer ? 'YES' : 'NO'}`}
+                </div>
+                <div className="oldphoneoffer__description--data">
+                  {`AudioJack: ${selectedProduct?.productData?.hardware.audioJack}`}
+                </div>
+                <div className="oldphoneoffer__description--data">
+                  {`CPU: ${selectedProduct?.productData?.hardware.cpu}`}
+                </div>
+                <div className="oldphoneoffer__description--data">
+                  {`FMRadio: ${selectedProduct?.productData?.hardware.fmRadio ? 'YES' : 'NO'}`}
+                </div>
+                <div className="oldphoneoffer__description--data">
+                  {`USB: ${selectedProduct?.productData?.hardware.usb}`}
+                </div>
+              </div>
+            </div>
+            <div className="oldphoneoffer__description--spec">
+              <h3 className="oldphoneoffer__description--name">
+                Size and weight
+              </h3>
+              <div className="oldphoneoffer__description--dimensions">
+                <div className="oldphoneoffer__description--data">
+                  {selectedProduct?.productData?.sizeAndWeight.dimensions.map(
+                    text => `Dimensions: ${text}\
+                  `,
+                  )}
+                </div>
+                <div className="oldphoneoffer__description--data">{`Weight: ${selectedProduct?.productData?.sizeAndWeight.weight}`}</div>{' '}
+              </div>
+            </div>
+            <div className="oldphoneoffer__description--spec">
+              <h3 className="oldphoneoffer__description--name">Storage</h3>
+              <div className="oldphoneoffer__description--data">
+                {`Flash: ${selectedProduct?.productData?.storage.flash}`}
+              </div>
+              <div className="oldphoneoffer__description--data">
+                {`RAM: ${selectedProduct?.productData?.storage.ram}`}
+              </div>
             </div>
           </div>
 

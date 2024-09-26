@@ -5,7 +5,7 @@
   display: flex;
   flex-direction: row;
   justify-content: center;
-  height: 400px;
+  height: 500px;
   width: 320px;
   overflow: hidden;
   object-fit: cover;
@@ -39,9 +39,10 @@
       grid-column: 1 / 21;
       width: 1040px;
       height: 500px;
-      :first-child .slick-list {
-        margin-left: -283px;
-      }
+
+      // :first-child .slick-list {
+      //   margin-left: -283px;
+      // }
       :first-child .slick-prev {
         height: 400px;
         width: 35px;
@@ -86,8 +87,8 @@
   &-list {
     display: flex;
     flex-direction: row;
-    width: 336px;
-    gap: 16px;
+    justify-content: start;
+
 
     @include on-tablet {
       width: 490px;
@@ -104,7 +105,7 @@
     justify-content: center;
     list-style: none;
     padding: 0;
-    margin-top: 60px;
+    margin-top: 10px;
     gap: 6px;
 
     li {
@@ -137,3 +138,4 @@
 
   }
 }
+

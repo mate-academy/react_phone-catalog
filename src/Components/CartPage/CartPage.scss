@@ -7,7 +7,7 @@
 
 .CartPage {
   font-family: Mont-bold, sans-serif;
-  width: 456px;
+  width: 320px;
   height: 700px;
 
   @include on-tablet {
@@ -48,17 +48,36 @@
       width: 272px;
     }
   }
+  .slick-list {
+    width: 320px;
+  }
   .slick-track {
     gap: 16px;
   }
+
+  .productcard {
+    height: 450px;
+    gap: 15px;
+    &__image {
+      margin: 0 40px;
+      &--link {
+      margin-top: 15px;
+    }
+  }
+  &__buttons {
+    margin-bottom: 10px;
+  }
+}
 }
 
 .slick {
   &-slider {
-    margin-left: 16px;
-
     @include on-tablet {
       width: 490px;
+    }
+
+    @include on-desktop {
+      width: 1040px;
     }
   }
   &-arrow {
@@ -101,7 +120,7 @@
 
   &-next {
     position: relative;
-    bottom: 553px;
+    bottom: 550px;
     left: 240px;
 
     @include on-tablet {

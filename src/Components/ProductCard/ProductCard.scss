@@ -17,7 +17,6 @@
   display: flex;
   flex-direction: column;
   gap: 16px;
-  margin-bottom: 16px;
 
   @include on-tablet {
     width: 237px;
@@ -33,17 +32,17 @@
     width: 129px;
 
     &--link {
-      margin: 20px auto 0;
+      margin: 20px 0 auto;
     }
 
     @include on-tablet {
-      margin: 30px 41px 0;
+      margin: 5px 41px 0;
     }
 
     @include on-desktop {
       width: 208px;
       height: 196px;
-      margin: 30px 30px 0;
+      margin: 0 30px;
     }
   }
   &__name {
@@ -56,7 +55,7 @@ text-align: center;
 margin: 0 32px;
 
 @include on-tablet {
-  margin: 20px 32px 0;
+  margin: 0 32px;
 }
 
 @include on-desktop {
@@ -174,7 +173,7 @@ text-align: right;
 
 
   @include on-tablet {
-    margin-top: 10px;
+    margin: 10px 0;
   }
 
 }

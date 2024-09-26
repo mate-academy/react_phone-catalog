@@ -1,6 +1,6 @@
-export type PhonesType = {
+export type ProductType = {
   id: string;
-  category: 'phones';
+  category: 'phones' | 'tablets' | 'accessories';
   namespaceId: string;
   name: string;
   capacityAvailable: string[];

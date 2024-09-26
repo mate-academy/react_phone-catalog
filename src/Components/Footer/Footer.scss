@@ -18,6 +18,7 @@
   grid-column: 1 / 5;
   background-color: white;
   border-top: 1px solid #89939A;
+  margin-top: 30px;
 
   &__navigation {
     display: flex;
@@ -53,7 +54,7 @@ text-decoration: none;
   &:hover {
     color: #313237;
     border-bottom: 2px solid #313237;
-    padding-bottom: 6.5px;
+    height: 27px;
   }
   }
   &__back-to-top {

@@ -10,7 +10,7 @@ export const ProductCard = ({ product }: Props) => {
   return (
     <div className="productcard">
       <Link
-        to={`/phones/${product.itemId}`}
+        to={`/${product.category}/${product.itemId}`}
         className="productcard__image--link"
       >
         <img

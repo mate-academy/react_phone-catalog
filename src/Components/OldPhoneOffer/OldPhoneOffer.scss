@@ -8,7 +8,7 @@
 .oldphoneoffer {
   @include page-grid;
 
-  width: 486px;
+  width: 336px;
   overflow: hidden;
   &__breadcrumbs {
     display: flex;
@@ -125,7 +125,8 @@ text-align: left;
   }
   &__phoneslider {
     grid-column: 1 / 5;
-    margin-bottom: 60px;
+    margin: 0;
+    margin-bottom: 120px;
     width: 320px;
     li {
       width: 55px;
@@ -165,6 +166,9 @@ margin: 0 0 20px 16px;
     &--spec {
       display: flex;
     }
+    &--techspec {
+      margin-bottom: 120px;
+    }
     &--data {
       font-family: Mont, sans-serif;
 font-size: 14px;
@@ -183,7 +187,7 @@ font-weight: 500;
 line-height: 21px;
 text-align: left;
 color: #89939A;
-margin: 0 0 20px 16px;
+margin: 0 0 60px 16px;
 
   }
 }

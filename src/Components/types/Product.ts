@@ -1,4 +1,4 @@
-import { PhonesType } from './phones';
+import { ProductType } from './phones';
 
 export type Product = {
   id: string;
@@ -13,5 +13,5 @@ export type Product = {
   ram: string;
   year: number;
   image: string;
-  ProductData: PhonesType | null;
+  ProductData: ProductType | null;
 };

@@ -5,20 +5,123 @@
 
 @import '../../utils/mixins';
 
-.phonespage {
+.productpage {
   @include page-grid;
 
-  margin: 20px 0 0 8px;
-  &__breadcrumbs--image {
-    background-image: url('../../img/Breadcrumbs.svg');
+  margin-left: 8px;
+  width: 320px;
+  overflow: hidden;
+
+  &__breadcrumbs{
+    &--image {
+    background-image: url('../../img/Home.svg');
+    background-position: left;
     background-repeat: no-repeat;
-    width: 96px;
-    height: 22px;
-    grid-column: 1 / 2;
+    width: 16px;
+    height: 14px;
+  }
+  &--category {
+    position: relative;
+    left: -50px;
+    top: 1px;
+    font-family: Mont, sans-serif;
+    grid-column: 2 / 5;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 15.34px;
+    text-align: left;
+    color: #89939A;
 
   }
+  &--link {
+    width: 30px;
+  }
+}
   &__content {
     grid-column: 1 / 5;
+    display: flex;
+    flex-flow: wrap;
+    flex-direction: column;
+    gap: 16px;
+    &--2-per-page {
+      height: 1000px;
+      width: auto;
+    }
+    &--4-per-page {
+      height: 2008px;
+    }
+    &--8-per-page {
+      height: 4150px;
+    }
+
+    &--16-per-page {
+      height: 8100px;
+    }
+
+
+    @include on-tablet {
+      margin-bottom: 60px;
+      grid-column: span 12;
+      display: flex;
+      flex-flow: wrap;
+      flex-direction: row;
+      width: 600px;
+      gap: 16px;
+      .productcard {
+        width: 288px;
+    }
+    .productcard__name {
+      height: 42px;
+    }
+    .productcard__image {
+      margin: 0 80px;
+    }
+    .productcard__adding-button {
+      width: 210px;
+    }
+    }
+  }
+
+  &__arrowprev {
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+    left: 15px;
+    border: 1px solid #89939A;
+    z-index: 1;
+    background-color: #dee9e9;
+    background-image: url('../../img/Arrow-left.svg');
+    background-repeat: no-repeat;
+    background-size: 24px 24px;
+    background-position: 50%;
+    position: relative;
+
+    cursor: pointer;
+    &:hover {
+      background-color: black;
+      background-image: url('../../img/Arrow-left-hover.svg');
+      background-size: 24px 24px;
+    }
+  }
+  &__arrownext {
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+    background-color: #dee9e9;
+    border: 1px solid #89939A;
+    background-image: url('../../img/arrow-right.svg');
+    background-repeat: no-repeat;
+    background-size: 24px 24px;
+    background-position: 50%;
+    position: relative;
+    left: 209px;
+    bottom: 2px;
+    cursor: pointer;
+    &:hover {
+      background-color: black;
+      background-image: url('../../img/arrow-right-hover.svg');
+      background-size: 24px 24px;
+    }
   }
   &__header {
 font-family: Mont-phonepage, sans-serif;
@@ -27,9 +130,18 @@ line-height: 41px;
 letter-spacing: -0.01em;
 text-align: left;
 grid-column: 1 / 5;
+
+@include on-tablet {
+  grid-column: 1 / 13;
+}
   }
   &__amountofmodels {
     grid-column: 1 / 5;
+
+    @include on-tablet {
+      grid-column: 1 / 13;
+    }
+
     color: #89939A;
 font-family: Mont-phonespage, sans-serif;
 font-size: 14px;
@@ -37,5 +149,76 @@ font-weight: 600;
 line-height: 21px;
 text-align: left;
 
+  }
+  &__dot {
+    width: 30px;
+      height: 30px;
+      border-radius: 100%;
+      border: 1px solid #89939A;
+      font-family: Mont, sans-serif;
+      color: black;
+      cursor: pointer;
+  }
+
+  .productcard {
+    height: 490px;
+    width: 287px;
+  }
+  .productcard__image {
+    margin: 10px 65px 0;
+    &--link {
+      margin-bottom: 40px;
+    }
+  }
+
+  .slick-track {
+    display: flex;
+    flex-flow: wrap;
+    flex-direction: column;
+    justify-content: start;
+    row-gap: 16px;
+
+  }
+  .slick-slider {
+    margin: 0;
+    height: 2300px;
+    width: 300px;
+    overflow: hidden;
+  }
+  .slick-dots {
+    width: 156px;
+    height: 50px;
+    overflow: hidden;
+    position: absolute;
+    display: flex;
+    justify-content: start;
+    gap: 10px;
+    margin-left: 68px;
+    margin-top: 0;
+    li {
+      width: 30px;
+      height: 30px;
+      color: black;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    button {
+      width: 30px;
+      height: 30px;
+      border-radius: 100%;
+      border: 1px solid #89939A;
+      font-family: Mont, sans-serif;
+      color: black;
+    }
+    li.slick-active .productpage__dot {
+        color: white;
+        background-color: black;
+    }
+  }
+  .slick-list {
+    height: 2050px;
+    width: 303px;
   }
 }

@@ -3,7 +3,7 @@ import '../icons/icon.scss';
 import '../logo/logo.scss';
 import { Menu } from '../Menu/Menu';
 import { useState } from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import classNames from 'classnames';
 
 export const Navigation = () => {
@@ -36,15 +36,15 @@ export const Navigation = () => {
             </div>
             <div className="navigation__block-link">
               {' '}
-              <Link to="/tablets" className="navigation__link">
+              <NavLink to="/tablets" className={getSelectedLink}>
                 TABLETS
-              </Link>
+              </NavLink>
             </div>
             <div className="navigation__block-link">
               {' '}
-              <Link to="/accessories" className="navigation__link">
+              <NavLink to="/accessories" className={getSelectedLink}>
                 ACCESSORIES
-              </Link>
+              </NavLink>
             </div>
           </div>
           <div className="navigation__icons">

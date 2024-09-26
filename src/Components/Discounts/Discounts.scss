@@ -1,11 +1,6 @@
 @import '../../utils/mixins';
 
 .discounts {
-  width: 456px;
-  overflow: hidden;
-
-
-
   @include on-tablet {
     grid-column: 1 / 13;
     width: 744px;
@@ -13,8 +8,9 @@
 
   @include on-desktop {
     grid-column: 1 / 25;
-    width: 1160px;
+    width: 1156px;
     height: 700px;
+    overflow: hidden;
   }
 
   &__title {
@@ -53,5 +49,13 @@
   }
   .slick-next {
     bottom: 538px;
+
+    @include on-tablet {
+      bottom: 592px;
+    }
+
+    @include on-desktop {
+      bottom: 480px;
+    }
   }
 }

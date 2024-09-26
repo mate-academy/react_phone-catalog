@@ -8,13 +8,10 @@
   src: url('../../../public/fonts/Mont-Bold.otf');
 }
 
-@import '../../utils/mixins';
+@import '../../utils/mixins.scss';
 
-.phoneoffer {
+.productoffer {
   @include page-grid;
-
-  width: 486px;
-  overflow: hidden;
   &__breadcrumbs {
     display: flex;
     align-items: flex-start;
@@ -33,6 +30,7 @@ font-size: 12px;
 font-weight: 700;
 line-height: 15.34px;
 text-align: left;
+grid-column: 3 / 5;
 
 &-active {
   font-family: Mont-bold, sans-serif;
@@ -58,7 +56,7 @@ text-align: left;
       transform: rotate(0.5turn);
     }
     &--back-button {
-      grid-column: 1 / 5;
+
       width: 61px;
       font-family: Mont, sans-serif;
       font-size: 12px;
@@ -106,7 +104,7 @@ text-align: left;
 
   &__panel {
     grid-column: 1 / 5;
-    margin: 32px 0 0 16px;
+    margin: 32px 0 0 8px;
     &--title {
       color: #89939A;
 font-family: Mont, sans-serif;
@@ -278,6 +276,7 @@ color: #89939A;
       line-height: 20.45px;
       text-align: left;
       color:black;
+      grid-column: 1 / 5;
     }
     &--text {
       margin-top: 32px;
@@ -292,7 +291,7 @@ color: #89939A;
   }
   &__techspecs {
     grid-column: 1 / 5;
-    margin: 48px 0 0 16px;
+    margin: 48px 0 0 8px;
     &--data {
       display: flex;
       justify-content: space-between;

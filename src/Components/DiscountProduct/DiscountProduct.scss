@@ -6,7 +6,7 @@
   width: 212px;
   display: flex;
   flex-direction: column;
-  
+
   @include on-tablet {
     height: 512px;
   }
@@ -196,3 +196,4 @@ background-color: white !important;
 border: 1px solid #B4BDC3;
 }
 }
+
