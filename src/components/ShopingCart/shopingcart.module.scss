@@ -40,7 +40,9 @@
     align-items: center;
     gap: 25px;
 
-    max-width: 40%;
+    @media screen and (max-width: 639px) {
+      margin-top: 20px;
+    }
   }
 
   &_cart {
@@ -58,6 +60,12 @@
       min-width: 100%;
     }
 
+    @media screen and (max-width: 639px) {
+      height: 100%;
+      flex-direction: column;
+      align-items: normal;
+    }
+
     &_icon {
       height: 66px;
       width: 66px;
@@ -67,6 +75,22 @@
 
     &_button {
       cursor: pointer;
+    }
+
+    &_left {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+      margin-left: 30px;
+
+      &_container {
+        width: 100%;
+      }
+    }
+
+    &_bottom {
+      display: flex;
+      align-items: center;
     }
   }
 

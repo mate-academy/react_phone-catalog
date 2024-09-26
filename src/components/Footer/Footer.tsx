@@ -20,13 +20,28 @@ export const Footer = () => {
       </div>
 
       <div className={flex.footer_buttoms_container}>
-        <a href="#" className={flex.footer_buttoms}>
+        <a
+          href="https://github.com/Annbpiu"
+          target="_blank"
+          rel="noopener noreferrer"
+          className={flex.footer_buttoms}
+        >
           github
         </a>
-        <a href="#" className={flex.footer_buttoms}>
+        <a
+          href="https://github.com/Annbpiu"
+          target="_blank"
+          rel="noopener noreferrer"
+          className={flex.footer_buttoms}
+        >
           contacts
         </a>
-        <a href="#" className={flex.footer_buttoms}>
+        <a
+          href="https://github.com/Annbpiu"
+          target="_blank"
+          rel="noopener noreferrer"
+          className={flex.footer_buttoms}
+        >
           rights
         </a>
       </div>

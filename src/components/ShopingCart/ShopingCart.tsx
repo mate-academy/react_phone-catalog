@@ -81,50 +81,54 @@ export const ShopingCart = () => {
           {addedDevice.map(device => (
             <>
               <div className={styles.shoping_cart}>
-                <div onClick={() => addToCart(device)}>
-                  <img
-                    src="img/Union.svg"
-                    alt=""
-                    className={styles.shoping_cart_button}
-                  />
-                </div>
-                <div className={styles.shoping_name}>
-                  <img
-                    src={`${'image' in device && device.image}`}
-                    alt="img"
-                    className={styles.shoping_cart_icon}
-                  />
-                  <div>
-                    <span>{device.name}</span>
+                <div className={styles.shoping_cart_left}>
+                  <div onClick={() => addToCart(device)}>
+                    <img
+                      src="img/Union.svg"
+                      alt=""
+                      className={styles.shoping_cart_button}
+                    />
+                  </div>
+                  <div className={styles.shoping_name}>
+                    <img
+                      src={`${'image' in device && device.image}`}
+                      alt="img"
+                      className={styles.shoping_cart_icon}
+                    />
+                    <div className={styles.shoping_cart_left_container}>
+                      <span>{device.name}</span>
+                    </div>
                   </div>
                 </div>
 
-                <div className={styles.buttons}>
-                  <button
-                    className={styles.buttons_counter}
-                    onClick={() => subtractCount(Number(device.id))}
-                  >
-                    <img
-                      src="img/minus.svg"
-                      alt=""
-                      className={styles.buttons_counter_mini}
-                    />
-                  </button>
-                  <span>{countItems[Number(device.id)] || 1}</span>
-                  <button
-                    className={styles.buttons_counter}
-                    onClick={() => addCount(Number(device.id))}
-                  >
-                    <img
-                      src="img/plus.svg"
-                      alt=""
-                      className={styles.buttons_counter_mini}
-                    />
-                  </button>
-                </div>
+                <div className={styles.shoping_cart_bottom}>
+                  <div className={styles.buttons}>
+                    <button
+                      className={styles.buttons_counter}
+                      onClick={() => subtractCount(Number(device.id))}
+                    >
+                      <img
+                        src="img/minus.svg"
+                        alt=""
+                        className={styles.buttons_counter_mini}
+                      />
+                    </button>
+                    <span>{countItems[Number(device.id)] || 1}</span>
+                    <button
+                      className={styles.buttons_counter}
+                      onClick={() => addCount(Number(device.id))}
+                    >
+                      <img
+                        src="img/plus.svg"
+                        alt=""
+                        className={styles.buttons_counter_mini}
+                      />
+                    </button>
+                  </div>
 
-                <div className={styles.shoping_price}>
-                  ${'price' in device && device.price}
+                  <div className={styles.shoping_price}>
+                    ${'price' in device && device.price}
+                  </div>
                 </div>
               </div>
             </>
@@ -137,7 +141,7 @@ export const ShopingCart = () => {
               <div className={styles.checkout_price}>
                 <div className={styles.checkout_price_cash}>${coutPrice}</div>
                 <div className={styles.checkout_price_total}>
-                  total for {counts} items
+                  total for {addedDevice.length + (counts ?? 0)} items
                 </div>
               </div>
               <div>
