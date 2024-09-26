@@ -92,11 +92,11 @@ export const DetailsCard: React.FC<Props> = ({ product }) => {
 
           <div className="card__line"></div>
 
-          <p className="card__price-regular">{`${product.priceRegular}$`}</p>
+          <p className="card__price-regular">{`${product.priceDiscount}$`}</p>
 
           <div className="card__buy">
             <button className="card__buy-cart">Add to cart</button>
-            <img src="./img/add-to-cart.svg" alt="add-to-cart" />
+            <img className='page-home-card__favorite' src="./img/add-to-cart.svg" alt="favorite" />
           </div>
 
           <div className="card__ram">

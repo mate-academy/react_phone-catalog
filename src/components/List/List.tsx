@@ -4,6 +4,7 @@ import { Tablet } from '../../types/tablet';
 import { Accessory } from '../../types/accessory';
 import { Phone } from '../../types/phone';
 import { Products } from '../../types/products';
+import { useLocalStorage } from '../../LocaleStorage';
 
 type Props = {
   products: Phone[] | Tablet[] | Accessory[];
@@ -11,6 +12,9 @@ type Props = {
 };
 
 export const List: React.FC<Props> = ({ type }) => {
+  const [favorites, setFavorites] = useLocalStorage<Products[]>('favorites', [])
+  const [cart, setCart] = useLocalStorage<Products[]>('cart', [])
+
   const location = useLocation();
   const [searchParams] = useSearchParams(location.search);
   const [products, setProducts] = useState<Products[]>([]);
@@ -66,6 +70,26 @@ export const List: React.FC<Props> = ({ type }) => {
     setSortedProducts(sortedData);
   }, [products, searchParams]);
 
+  const toggleFavorite = (product: Products) => {
+    const isFavorite = favorites.some(fav => fav.id === product.id);
+
+    if (isFavorite) {
+      setFavorites(favorites.filter(fav => fav.id !== product.id));
+    } else {
+      setFavorites([...favorites, product]);
+    }
+  };
+
+  const toogleCart = (product: Products) => {
+    const isCart = cart.some(el => el.id === product.id);
+
+    if (isCart) {
+      setCart(cart.filter(el => el.id !== product.id))
+    } else {
+      setCart([...cart, product]);
+    }
+  };
+
   return (
     <ul className='card__grid'>
       {sortedProducts.length > 0 &&
@@ -99,8 +123,20 @@ export const List: React.FC<Props> = ({ type }) => {
             </div>
 
             <div className="card__buy">
-              <button className="card__buy-cart">Add to cart</button>
-              <img src="./img/add-to-cart.svg" alt="add-to-cart" />
+              <button
+                onClick={() => toogleCart(product)}
+                className={`${cart.some(el => el.id === product.id) ? 'added-to-cart' : 'card__buy-cart'}`}
+              >
+                {cart.some(el => el.id === product.id) ? 'Added to cart' : 'Add to cart'}
+              </button>
+              <img
+                onClick={() => toggleFavorite(product)}
+                className='page-home-card__favorite'
+                src={favorites.some(fav => fav.id === product.id)
+                  ? "./img/Add to fovourites - Added.svg"
+                  : "./img/add-to-cart.svg"}
+                alt="favorite"
+              />
             </div>
           </div>
         ))}

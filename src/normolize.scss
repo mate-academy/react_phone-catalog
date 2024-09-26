@@ -25,24 +25,29 @@ a {
 }
 
 body {
-  position: relative;
+  max-width: 1200px; /* Максимальная ширина для контента */
+  margin: 0 auto; /* Центрирование body */
+  padding: 13px 16px; 
+  width: 100%; /* Обеспечиваем растяжение на всю ширину */
 
-  margin: 0;
-  padding: 13px 16px;
-  padding-bottom: 0;
+  /* Добавляем дополнительные отступы для разных экранов */
+  font-family: 'Mont', sans-serif; /* Шрифт для всего тела */
+}
 
-  font-family: 'Mont', sans-serif;
-
-  @media screen and (min-width: 640px) {
+@media screen and (min-width: 640px) {
+  body {
     padding-left: 24px;
     padding-right: 24px;
   }
+}
 
-  @media screen and (min-width: 1200px) {
+@media screen and (min-width: 1200px) {
+  body {
     padding-left: 32px;
     padding-right: 32px;
   }
 }
+
 
 ul {
   margin: 0;
