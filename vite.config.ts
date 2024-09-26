@@ -10,27 +10,42 @@ const __dirname = dirname(__filename);
 export default defineConfig({
   base: '/react_phone-catalog/',
   plugins: [react()],
-  build: {
-    outDir: 'dist',
-    rollupOptions: {
-      output: {
-        manualChunks: undefined,
-      },
-    },
-  },
   resolve: {
     alias: {
       '@': path.resolve(__dirname, 'src'),
+    },
+  },
+  build: {
+    assetsDir: 'assets',
+    rollupOptions: {
+      input: {
+        main: path.resolve(__dirname, 'index.html'),
+      },
+      output: {
+        assetFileNames: assetInfo => {
+          if (assetInfo.name) {
+            let extType = assetInfo.name.split('.').pop();
+            if (extType && /png|jpe?g|svg|gif|tiff|bmp|ico/i.test(extType)) {
+              extType = 'img';
+            }
+            return `assets/${extType || 'misc'}/[name]-[hash][extname]`;
+          }
+          return 'assets/misc/[name]-[hash][extname]';
+        },
+        chunkFileNames: 'assets/js/[name]-[hash].js',
+        entryFileNames: 'assets/js/[name]-[hash].js',
+      },
     },
   },
   css: {
     preprocessorOptions: {
       scss: {
         additionalData: `
-          @import "@/styles/variables.scss";
-          @import "@/styles/mixins.scss";
-          @import "@/styles/typography.scss";
-          @import "@/styles/grid.scss";
+          @import "@/styles/variables";
+          @import "@/styles/mixins";
+          @import "@/styles/fonts";
+          @import "@/styles/grid";
+          @import "@/styles/typography";
         `,
       },
     },
