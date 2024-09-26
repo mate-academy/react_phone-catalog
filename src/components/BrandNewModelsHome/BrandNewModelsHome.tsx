@@ -109,9 +109,8 @@ export const BrandNewModelsHome: React.FC<Props> = ({ type }) => {
         {sortedModels.length > 0 && (
           <Swiper
             modules={[Navigation]}
-            spaceBetween={150}
-            slidesPerView={2}
-            centeredSlides={true}
+            spaceBetween={40}
+            slidesPerView={5}
             loop={true}
             navigation={{
               prevEl: '.page-home__new-models--arrow-disabled',

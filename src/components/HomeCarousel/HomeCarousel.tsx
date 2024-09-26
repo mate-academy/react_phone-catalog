@@ -28,7 +28,7 @@ export const HomeCarousel = () => {
             prevEl: '.carousel--slider--first-button',
             nextEl: '.carousel--slider--second-button',
           }}
-          simulateTouch={false} 
+          simulateTouch={false}
           allowTouchMove={false}
         >
           <SwiperSlide>

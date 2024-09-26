@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Phone } from '../../types/phone';
 import { Tablet } from '../../types/tablet';
 import { Accessory } from '../../types/accessory';
@@ -13,6 +13,7 @@ type Props = {
 
 export const DetailsCard: React.FC<Props> = ({ product }) => {
   const navigate = useNavigate();
+  const [selectedImage, setSelectedImage] = useState<string>(product.images[0]);
 
   const handleMemoryChange = (newCapacity: string) => {
     let updatedURL;
@@ -42,6 +43,8 @@ export const DetailsCard: React.FC<Props> = ({ product }) => {
         <div className="details__image--more">
           {product.images.map(img => (
             <img
+            style={{cursor: 'pointer'}}
+              onClick={() => {setSelectedImage(img)}}
               key={img}
               className="details__image--more__img"
               src={img}
@@ -51,7 +54,7 @@ export const DetailsCard: React.FC<Props> = ({ product }) => {
         </div>
 
         <div className="details__image">
-          <img src={product.images[0]} alt="image" />
+          <img src={selectedImage} alt="image" />
         </div>
 
         <div className='q'>

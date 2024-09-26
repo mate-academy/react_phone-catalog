@@ -65,6 +65,41 @@
   font-weight: 700;
 }
 
+.carousel--slider__second {
+  max-height: 400px;
+}
+
+.carousel--slider__third {
+  max-height: 400px;
+
+}
+
+.nav__button-n-t  {
+  display: none;
+}
+.ret {
+  display: none;
+}
+
+@media screen and (min-width: 640px) {
+  .ret {
+    display: block;
+  }
+  .nav__button-n-t {
+    display: flex;
+    gap: 64px;
+    list-style: none;
+    color: rgb(137, 147, 154);
+    font-family: Mont;
+    font-size: 12px;
+    font-weight: 700;
+
+    li {
+      cursor: pointer;
+    }
+  }
+}
+
 .added-to-cart {
   box-sizing: border-box;
   color: rgb(66, 25, 208);

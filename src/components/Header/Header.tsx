@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 type Props = {
   burgerMenu: boolean;
@@ -7,6 +7,8 @@ type Props = {
 };
 
 export const Header: React.FC<Props> = ({ burgerMenu, setBurgerMenu }) => {
+  const navigate = useNavigate();
+
   return (
     <header>
       <div className="nav">
@@ -19,6 +21,18 @@ export const Header: React.FC<Props> = ({ burgerMenu, setBurgerMenu }) => {
           src="./img/Menu.png"
           alt="Menu"
         />
+
+        <ul className='nav__button-n-t'>
+          <li onClick={() => navigate('/')}>HOME</li>
+          <li onClick={() => navigate('/phones')}>PHONES</li>
+          <li onClick={() => navigate('/tablets')}>TABLETS</li>
+          <li onClick={() => navigate('/accessories')}>ACCESSORIES</li>
+        </ul>
+
+        <div className='ret'></div>
+        <div className='ret'></div>
+        <div className='ret'></div>
+        <div className='ret'></div>
 
         <div className='nav__button'>
           <Link to='/favourites'>

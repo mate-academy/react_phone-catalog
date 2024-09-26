@@ -3,6 +3,8 @@ header {
   z-index: 1000;
   position: sticky;
   top: 0;
+  width: 95vw;
+  transform: translateX(-15%); /* Сдвигаем на половину ширины */
 }
 
 .nav {
