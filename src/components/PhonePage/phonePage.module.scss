@@ -37,6 +37,9 @@
     width: 150px;
     height: 40px;
     padding: 0 5px;
+
+    border: 1px solid #fff;
+    border-radius: 0;
   }
 
   &_h1 {
@@ -93,10 +96,6 @@
   transition: background-color 0.3s;
   height: 32px;
   width: 32px;
-
-  &_span {
-
-  }
 }
 
 .li:disabled {

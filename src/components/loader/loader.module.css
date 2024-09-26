@@ -9,6 +9,7 @@
   box-sizing: border-box;
   border: 1px solid #E2E6E9;
 }
+
 .loader_container {
   display: flex;
   flex-wrap: wrap;
@@ -34,4 +35,4 @@
   to {
     background-position: 185px 0, center 0, center 115px, center 142px;
   }
-}/*# sourceMappingURL=loader.module.css.map */
+}

@@ -22,7 +22,9 @@
     display: flex;
     justify-content: center;
     gap: 16px;
-    height: 73vh;
+    min-height: 73vh;
+
+    margin-bottom: 20px;
 
     @media screen and (max-width: 1199px) {
       flex-direction: column;
@@ -145,6 +147,7 @@
     flex-direction: column;
     align-items: center;
     gap: 25px;
+    padding-bottom: 20px;
 
     @media screen and (max-width: 1199px) {
       width: 100%;

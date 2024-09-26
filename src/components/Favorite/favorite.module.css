@@ -2,29 +2,35 @@
   display: flex;
   min-height: 100%;
 }
+
 .cart_h1 {
   margin: 0;
 }
+
 .cart_h1_contain {
   margin-bottom: 40px;
 }
+
 .cart_img {
   width: 550px;
   height: 550px;
   margin: auto;
 }
+
 .cart_page {
   margin: 0 10%;
 }
+
 @media screen and (max-width: 1199px) {
   .cart_page {
     margin: 0 2%;
   }
 }
+
 .cart_container {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
   gap: 20px;
   min-height: 72.5vh;
-}/*# sourceMappingURL=favorite.module.css.map */
+}

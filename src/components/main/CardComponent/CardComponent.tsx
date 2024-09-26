@@ -15,38 +15,43 @@ export const CardComponent = ({ devices, salePrice }: CardComponentProps) => {
   const category = 'category' in devices ? devices.category : '';
   const { addToFavorites } = useDevices();
   const { addToCart } = useDevices();
-  const [favorites, setFavorites] = useState<Record<string, boolean>>({});
+  const [favorites, setFavorites] = useState<boolean>(false);
+  const [isAdding, setIsAdding] = useState<boolean>(false);
 
   const handleFavButton = (device: DeviceProps) => {
-    const deviceId = device.id;
+    const newFavoriteState = !favorites;
 
-    setFavorites(prevFavorites => ({
-      ...prevFavorites,
-      [deviceId]: !prevFavorites[deviceId],
-    }));
-
+    setFavorites(newFavoriteState);
     localStorage.setItem(
-      `isFav_${deviceId}`,
-      JSON.stringify(!favorites[deviceId]),
+      `favorites:${itemId}`,
+      JSON.stringify(newFavoriteState),
     );
-
     addToFavorites(device);
   };
 
+  const handleAddToCart = (device: DeviceProps) => {
+    const newAddingState = !isAdding;
+
+    setIsAdding(newAddingState);
+    localStorage.setItem(`isAdding_${itemId}`, JSON.stringify(newAddingState));
+    addToCart(device);
+  };
+
   useEffect(() => {
-    const allFavorites: Record<string, boolean> = {};
+    const savedIsAdding = localStorage.getItem(`isAdding_${itemId}`);
 
-    if (Array.isArray(devices)) {
-      devices.forEach((device: DeviceProps) => {
-        const saved = localStorage.getItem(`isFav_${device.id}`);
-
-        if (saved) {
-          allFavorites[device.id] = JSON.parse(saved);
-        }
-      });
-      setFavorites(allFavorites);
+    if (savedIsAdding) {
+      setIsAdding(JSON.parse(savedIsAdding));
     }
-  }, [devices]);
+  }, [devices, itemId]);
+
+  useEffect(() => {
+    const favoriteDevice = localStorage.getItem(`favorites:${itemId}`);
+
+    if (favoriteDevice) {
+      setFavorites(JSON.parse(favoriteDevice));
+    }
+  }, [itemId]);
 
   return (
     <>
@@ -114,8 +119,10 @@ export const CardComponent = ({ devices, salePrice }: CardComponentProps) => {
           </div>
           <div className={styles.card_buy_container}>
             <button
-              className={styles.card_buy_button}
-              onClick={() => addToCart(devices)}
+              className={classNames(styles.card_buy_button, {
+                [styles.card_buy_button_active]: isAdding,
+              })}
+              onClick={() => handleAddToCart(devices)}
             >
               Add to card
             </button>
@@ -123,14 +130,19 @@ export const CardComponent = ({ devices, salePrice }: CardComponentProps) => {
               className={classNames(styles.card_follow_button)}
               onClick={() => handleFavButton(devices)}
             >
-              <img
-                className={classNames({
-                  [styles.card_follow_button_un]: !favorites[devices.id],
-                  [styles.card_follow_button_ac]: favorites[devices.id],
-                })}
-                src="./img/Vector(Heart).svg"
-                alt="heart"
-              />
+              {favorites ? (
+                <img
+                  className={classNames(styles.card_follow_button_un)}
+                  src="./img/Heart_Like.svg"
+                  alt="heart"
+                />
+              ) : (
+                <img
+                  className={classNames(styles.card_follow_button_un)}
+                  src="./img/Vector(Heart).svg"
+                  alt="heart"
+                />
+              )}
             </button>
           </div>
         </div>

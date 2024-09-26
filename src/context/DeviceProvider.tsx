@@ -36,9 +36,11 @@ export const DeviceProvider = ({ children }: { children: ReactNode }) => {
 
   const removeFromCart = (deviceId: string | number) => {
     const uptadeCart = addedDevice.filter(d => d.id !== deviceId);
+    const labelId = products.find(pr => pr.id === deviceId);
 
     setaddedDevice(uptadeCart);
     localStorage.setItem('addedDevice', JSON.stringify(uptadeCart));
+    localStorage.setItem(`isAdding_${labelId?.itemId}`, JSON.stringify(false));
   };
 
   const addToCart = (device: DeviceProps) => {
