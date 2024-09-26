@@ -35,6 +35,7 @@ body {
 }
 
 .app {
+  min-height: 100vh;
   &__header {
     position: sticky;
     z-index: 2;
@@ -45,14 +46,18 @@ body {
 
   &__container {
     max-width: 1136px;
+    min-height: calc(100vh - $header-height-mobile - $footer-height-mobile);
+
     margin: 0 auto;
     padding-inline: 16px;
 
     @include on-tablet {
+      min-height: calc(100vh - $header-height-tablet - $footer-height-tablet);
       padding-inline: 24px;
     }
 
     @include on-desktop {
+      min-height: calc(100vh - $header-height-desktop - $footer-height-desktop);
       padding-inline: 32px;
     }
   }

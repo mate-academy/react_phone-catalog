@@ -7,7 +7,7 @@ import { AddToFavourites } from '../AddToFavourites';
 
 type Props = {
   product: Products;
-  width: number;
+  width?: number;
 };
 export const ProductCard: React.FC<Props> = ({ product, width }) => {
   const { image, name, fullPrice, price, screen, capacity, ram } = product;

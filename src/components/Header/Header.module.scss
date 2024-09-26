@@ -2,6 +2,7 @@
 @import '../../utils/variables';
 
 .header {
+  height: $header-height-mobile;
   display: none;
   background-color: #fff;
   border-bottom: 1px solid $color-border-grey;
@@ -9,6 +10,10 @@
   @include on-tablet {
     display: flex;
     justify-content: space-between;
+  }
+
+  @include on-desktop {
+    height: $header-height-desktop;
   }
 
   &--mobile {

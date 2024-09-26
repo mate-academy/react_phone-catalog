@@ -1,18 +1,16 @@
 import { Products, SortType } from './types';
 
-export const fetchProducts = async (
+export const fetchProducts = (
   category: string,
-  sortBy?: SortType,
+  sortBy: SortType,
 ): Promise<Products[]> => {
-  try {
-    const response = await fetch(`/api/products.json`);
-    const data = await response.json();
+  return fetch(`/api/products.json`)
+    .then(response => response.json())
+    .then(data => {
+      const filteredProducts: Products[] = data.filter(
+        (product: Products) => product.category === category,
+      );
 
-    const filteredProducts: Products[] = data.filter(
-      (product: Products) => product.category === category,
-    );
-
-    if (sortBy) {
       switch (sortBy) {
         case SortType.newest:
           filteredProducts.sort((a, b) => b.year - a.year);
@@ -22,13 +20,16 @@ export const fetchProducts = async (
             (a, b) => b.fullPrice - b.price - (a.fullPrice - a.price),
           );
           break;
+        case SortType.alpha:
+          filteredProducts.sort((a, b) => a.name.localeCompare(b.name));
+          break;
+        case SortType.cheapest:
+          filteredProducts.sort((a, b) => a.price - b.price);
+          break;
         default:
           break;
       }
-    }
 
-    return filteredProducts;
-  } catch (error) {
-    throw new Error('Error');
-  }
+      return filteredProducts;
+    });
 };

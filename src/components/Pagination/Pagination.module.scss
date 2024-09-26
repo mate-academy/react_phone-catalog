@@ -1,0 +1,50 @@
+@import '../../utils/mixins';
+@import '../../utils/variables';
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 64px;
+
+  @include on-desktop {
+    padding-bottom: 80px;
+  }
+
+  &__buttons {
+    display: flex;
+  }
+
+  &__left {
+    padding-right: 16px;
+  }
+
+  &__right {
+    padding-left: 16px;
+  }
+
+  &__numbers {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__button {
+    display: block;
+    width: 32px;
+    height: 32px;
+    border: 1px solid $color-border-grey;
+    background-color: #fff;
+    border-radius: 48px;
+    font-family: inherit;
+    font-size: 14px;
+    line-height: 21px;
+
+    &--active {
+      background-color: $color-black;
+      color: #fff;
+    }
+
+    &:hover {
+      border: 1px solid $color-black;
+    }
+  }
+}

@@ -4,13 +4,24 @@ import { NavLink, useParams } from 'react-router-dom';
 import { Title } from '../../components/Title';
 import { useEffect, useState } from 'react';
 import { fetchProducts } from '../../utils/fetch';
-import { Products } from '../../utils/types';
+import { Products, SortType } from '../../utils/types';
+import { Loader } from '../../components/Loader';
+import { ProductsList } from '../../components/ProductsList';
+import { SortProducts } from '../../components/SortProducts';
+import { useSearchParams } from 'react-router-dom';
+import { Pagination } from '../../components/Pagination';
 
 export const Catalog = () => {
+  // #region state
+  const [products, setProducts] = useState<Products[] | []>([]);
   const [displayedProducts, setDisplayedProducts] = useState<Products[] | []>(
     [],
   );
-  const { category } = useParams();
+  const [isLoading, setIsLoading] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
+  const [updatedAt, setUpdatedAt] = useState(new Date());
+  const [searchParams, setSearchParams] = useSearchParams();
+  // #endregion
   // #region functions
   const getTitleName = (currentCategory: string) => {
     switch (currentCategory) {
@@ -25,16 +36,65 @@ export const Catalog = () => {
     }
   };
 
+  const reloadPage = () => {
+    setUpdatedAt(new Date());
+    setErrorMessage('');
+  };
+
+  const displayPageItems = (
+    allItems: Products[],
+    currentPage: number,
+    itemsOnPage: number,
+  ) => {
+    const indexOfFirst = (currentPage - 1) * itemsOnPage;
+    const indexOfLast = indexOfFirst + itemsOnPage;
+
+    return allItems.slice(indexOfFirst, indexOfLast);
+  };
+
   //  #endregion
+  // #region variables
+  const { category } = useParams();
   const pageTitle = category ? getTitleName(category) : '';
+  const selectedSortType = searchParams.get('sort') as SortType;
+  const itemsOnPage = searchParams.get('perPage') || 'all';
+  const activePage = searchParams.get('page') || '1';
+  const pagesAmount =
+    itemsOnPage === 'all' ? 1 : Math.ceil(products.length / +itemsOnPage);
+  // #endregion
 
   useEffect(() => {
     if (category) {
-      fetchProducts(category).then(res => {
-        setDisplayedProducts(res);
-      });
+      setIsLoading(true);
+      setProducts([]);
+      setDisplayedProducts([]);
+      fetchProducts(category, selectedSortType)
+        .then(res => {
+          setProducts(res);
+        })
+        .catch(() => {
+          setErrorMessage('Something went wrong');
+        })
+        .finally(() => setIsLoading(false));
     }
-  }, [category]);
+  }, [category, updatedAt, selectedSortType]);
+
+  useEffect(() => {
+    if (!searchParams.get('sort')) {
+      searchParams.set('sort', SortType.newest);
+      setSearchParams(searchParams);
+    }
+  }, [category, searchParams, setSearchParams]);
+
+  useEffect(() => {
+    if (itemsOnPage === 'all') {
+      setDisplayedProducts(products);
+    } else {
+      setDisplayedProducts(
+        displayPageItems(products, +activePage, +itemsOnPage),
+      );
+    }
+  }, [products, searchParams, category, activePage, itemsOnPage]);
 
   return (
     <div className={styles.catalog}>
@@ -49,12 +109,50 @@ export const Catalog = () => {
         <img src="./src/img/icons/arrow_right_grey.png" alt="arrow icon" />
         <p className={styles['catalog__current-page']}>{category}</p>
       </div>
-      <div className={styles.catalog__title}>
-        <Title level={1}>{pageTitle}</Title>
-      </div>
-      <p
-        className={styles.catalog__quantity}
-      >{`${displayedProducts.length} models`}</p>
+
+      {isLoading && <Loader />}
+
+      {errorMessage && (
+        <div className={styles.catalog__error}>
+          <h2>{errorMessage}</h2>
+          <button className={styles.catalog__reload} onClick={reloadPage}>
+            Reload
+          </button>
+        </div>
+      )}
+
+      {!isLoading && !errorMessage && products.length === 0 && (
+        <h2
+          style={{ textAlign: 'center' }}
+        >{`There are no ${category} yet`}</h2>
+      )}
+
+      {!isLoading && !errorMessage && displayedProducts.length > 0 && (
+        <>
+          <div className={styles.catalog__title}>
+            <Title level={1}>{pageTitle}</Title>
+          </div>
+          <p className={styles.catalog__quantity}>
+            {`${products.length} models`}
+          </p>
+          <SortProducts
+            selectedSortType={selectedSortType}
+            searchParams={searchParams}
+            setSearchParams={setSearchParams}
+            itemsOnPage={itemsOnPage}
+          />
+          <ProductsList products={displayedProducts} />
+        </>
+      )}
+
+      {pagesAmount > 1 && (
+        <Pagination
+          pagesAmount={pagesAmount}
+          searchParams={searchParams}
+          setSearchParams={setSearchParams}
+          activePage={activePage}
+        />
+      )}
     </div>
   );
 };

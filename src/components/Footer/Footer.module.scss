@@ -2,7 +2,7 @@
 @import '../../utils/variables';
 
 .footer {
-  height: 257px;
+  height: $footer-height-mobile;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -11,7 +11,7 @@
   background-color: #fff;
 
   @include on-tablet {
-    height: 96px;
+    height: $footer-height-tablet;
     padding: 32px;
     flex-direction: row;
     align-items: center;

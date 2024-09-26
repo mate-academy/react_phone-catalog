@@ -25,10 +25,6 @@
 
   &__title {
     padding-bottom: 8px;
-
-    @include on-tablet {
-      padding-top: 40px;
-    }
   }
 
   &__quantity {
@@ -39,6 +35,28 @@
 
     @include on-tablet {
       padding-bottom: 40px;
+    }
+  }
+
+  &__error {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+  }
+
+  &__reload {
+    background-color: $color-blue;
+    border: none;
+    border-radius: 48px;
+    padding: 12px 24px;
+    color: white;
+    cursor: pointer;
+
+    @include buttons-text;
+
+    &:hover {
+      box-shadow: 0 3px 13px 0 #17203166;
     }
   }
 }

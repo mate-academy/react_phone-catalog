@@ -1,0 +1,35 @@
+@import '../../utils/mixins';
+
+.products {
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    padding-bottom: 24px;
+
+    @include on-tablet {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 40px 16px;
+      padding-bottom: 40px;
+    }
+
+    @include on-desktop {
+      grid-template-columns: repeat(24, 1fr);
+    }
+  }
+
+  &__item {
+    @include on-tablet {
+      grid-column: span 6;
+    }
+
+    @include on-media-screen {
+      grid-column: span 4;
+    }
+
+    @include on-desktop {
+      grid-column: span 6;
+    }
+  }
+}

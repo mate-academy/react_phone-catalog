@@ -13,8 +13,11 @@ export enum ArrowType {
 }
 
 export enum SortType {
-  newest = 'newest',
+  withoutSort = 'withoutSort',
+  newest = 'year',
   hotPrice = 'hotPrice',
+  alpha = 'title',
+  cheapest = 'price',
 }
 
 export enum ProductCategory {
