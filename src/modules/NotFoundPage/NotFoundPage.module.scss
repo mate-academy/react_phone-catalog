@@ -9,6 +9,11 @@
   justify-content: center;
   align-items: center;
   gap: 21px;
+  margin-top: 50px;
+
+  @include on-mobile {
+    margin-top: 30px;
+  }
 }
 
 .homeBtn {
@@ -22,6 +27,10 @@
   border: 0;
   background-color: var(--color-button);
   transition: transform $transition-duration ease;
+
+  @include on-mobile {
+    height: 25px;
+  }
 
   &:hover {
     transform: scale(1.02);
@@ -53,13 +62,10 @@
 }
 
 .title {
-  margin-top: 50px;
+  margin: 20px auto;
+  align-self: center;
 
   @extend %h2-tablet;
-
-  @include on-mobile {
-    margin-top: 30px;
-  }
 }
 
 .image {

@@ -1,7 +1,7 @@
 import { Outlet } from 'react-router-dom';
-import { Header } from './modules/Header';
 import { Footer } from './components/Footer';
 import styles from './App.module.scss';
+import { Header } from './components/Header';
 
 export const App = () => {
   return (
