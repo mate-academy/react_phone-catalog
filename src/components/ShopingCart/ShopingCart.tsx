@@ -8,7 +8,7 @@ import { useDevices } from '../../context/DeviceProvider';
 export const ShopingCart = () => {
   const { addedDevice } = useDevices();
   const { addToCart } = useDevices();
-  const [coutPrice, setCountPrice] = useState(0);
+  const [coutPrice, setCountPrice] = useState(1);
   const [countItems, setCountItems] = useState<Record<number, number>>({});
   const counts = Object.values(countItems).reduce(
     (acc, count) => acc + count,
@@ -30,9 +30,7 @@ export const ShopingCart = () => {
         [id]: (prevCounts[id] || 0) + 1,
       };
 
-      if (newCounts[id] > 0) {
-        localStorage.setItem('countItems', JSON.stringify(newCounts));
-      }
+      localStorage.setItem('countItems', JSON.stringify(newCounts));
 
       return newCounts;
     });
@@ -113,7 +111,11 @@ export const ShopingCart = () => {
                         className={styles.buttons_counter_mini}
                       />
                     </button>
-                    <span>{countItems[Number(device.id)] || 1}</span>
+                    <span>
+                      {countItems[Number(device.id)] >= 1
+                        ? 1 + countItems[Number(device.id)]
+                        : 1}
+                    </span>
                     <button
                       className={styles.buttons_counter}
                       onClick={() => addCount(Number(device.id))}
