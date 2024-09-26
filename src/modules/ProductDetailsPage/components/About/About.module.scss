@@ -1,1 +1,57 @@
 @import '../../../../styles/main';
+
+.descriptionSection {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.descriptionItemSection {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.sectionTitle {
+  font-family: Mont, sans-serif;
+  font-size: 22px;
+  line-height: 31.8px;
+  letter-spacing: 0;
+  font-weight: 800;
+  color: var(--color-primary);
+  margin-bottom: 16px;
+
+  @include on-tablet {
+    @include h3-mobile;
+  }
+}
+
+.divider {
+  width: 100%;
+  height: 0;
+  border-top: 1px solid var(--color-elements);
+  margin: 0;
+}
+
+.descriptionTitle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  font-family: Mont, sans-serif;
+  font-size: 20px;
+  line-height: 26px;
+  font-weight: 700;
+  letter-spacing: 0;
+  color: var(--color-primary);
+
+  @include on-tablet {
+    @include h4-mobile;
+  }
+}
+
+.descriptionText {
+  @extend %body-text;
+
+  color: var(--color-secondary);
+}

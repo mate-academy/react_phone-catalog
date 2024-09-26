@@ -1,0 +1,61 @@
+@import '../../styles/main';
+
+.notFound {
+  width: 100%;
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 50px;
+
+  @extend %h2-tablet;
+
+  @include on-mobile {
+    margin-top: 20px;
+
+    font-size: 20px;
+    line-height: 26px;
+    font-weight: 600;
+  }
+}
+
+.notFoundImg {
+  width: 100%;
+  max-width: 600px;
+  align-self: center;
+
+  background: radial-gradient(
+    circle,
+    rgba(144, 91, 255, 1) 0%,
+    rgba(31, 31, 111, 0) 66%
+  );
+  padding: 86px;
+}
+
+.goBackButton {
+  margin-top: 40px;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  gap: 8px;
+  height: 16px;
+  width: 66px;
+  border: 0;
+  cursor: pointer;
+  background-color: transparent;
+}
+
+.goBackText {
+  display: block;
+  padding-top: 2px;
+
+  @extend %small-text;
+
+  color: var(--color-secondary);
+
+  &:hover {
+    color: var(--color-primary);
+  }
+}

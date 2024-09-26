@@ -42,31 +42,36 @@ export const Breadcrumbs: React.FC<BreadcrumbsProps> = ({ product }) => {
       <Link to="/">
         <img src={homeUrl} alt="home" className={styles.homeIcon} />
       </Link>
-
+      <span className={styles.chevronSpan}>
+        <img src={arrowRightUrl} alt="chevron" className={styles.chevronIcon} />
+      </span>
       {breadcrumbs.map((crumb, index) => (
         <React.Fragment key={index}>
-          <span className={styles.chevronSpan}>
-            <img
-              src={arrowRightUrl}
-              alt="chevron"
-              className={styles.chevronIcon}
-            />
-          </span>
-          {crumb.path ? (
-            <NavLink
-              to={crumb.path}
-              className={({ isActive }) => {
-                return isActive
-                  ? `${styles.label} ${styles.isActive}`
-                  : styles.lable;
-              }}
-            >
-              {crumb.label}
-            </NavLink>
-          ) : (
+          {index > 0 && (
+            <span className={styles.chevronSpan}>
+              <img
+                src={arrowRightUrl}
+                alt="chevron"
+                className={styles.chevronIcon}
+              />
+            </span>
+          )}
+
+          {index === breadcrumbs.length - 1 ? (
             <p className={classNames(styles.label, styles.clip)}>
               {crumb.label}
             </p>
+          ) : (
+            <NavLink
+              to={crumb.path || '#'}
+              className={({ isActive }) =>
+                classNames(styles.label, {
+                  [styles.isActive]: isActive,
+                })
+              }
+            >
+              {crumb.label}
+            </NavLink>
           )}
         </React.Fragment>
       ))}

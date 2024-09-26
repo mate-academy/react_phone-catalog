@@ -50,7 +50,7 @@ export const HomePage: FC = () => {
         mb
         products={hotProducts}
         title={'Hot prices'}
-        showFullPrice={true}
+        discount={true}
         isLoading={isLoading}
       />
     </div>

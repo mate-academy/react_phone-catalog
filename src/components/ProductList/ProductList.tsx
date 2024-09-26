@@ -1,27 +1,27 @@
 import { FC, useState, useEffect, useCallback } from 'react';
 import { Product } from '../../types/Product';
 import { getProductsByCategory } from '../../services/Product';
-import { Category } from '../../types/Category';
 import { ProductCard } from '../ProductCard';
 import { Select } from '../Select';
 import { FilterType, ItemsPerPage } from '../../types/Filter';
 // eslint-disable-next-line
 import { SkeletonProductList } from '../SkeletonProductList/SkeletonProductList';
-import { useSearchParams } from 'react-router-dom';
+import { useLocation, useSearchParams } from 'react-router-dom';
 import { Pagination } from '../Pagination/Pagination';
 import { sortProducts } from '../../utils/sortFilter';
 import { Breadcrumbs } from '../Breadcrumbs/Breadcrumbs';
 import styles from './ProductList.module.scss';
+import { Category } from '../../types/Category';
 
 interface Props {
-  category: Category;
-  title: string;
+  title?: string;
 }
 
-export const ProductList: FC<Props> = ({ category, title }) => {
+export const ProductList: FC<Props> = ({ title }) => {
   const [products, setProducts] = useState<Product[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [searchParams, setSearchParams] = useSearchParams();
+  const location = useLocation();
 
   const page = parseInt(searchParams.get('page') || '1');
   const perPage = searchParams.get('perPage') || ItemsPerPage.All;
@@ -36,12 +36,15 @@ export const ProductList: FC<Props> = ({ category, title }) => {
     startIndex + actualPerPage,
   );
 
+  const category = location.pathname.split('/')[1] as Category;
+
   useEffect(() => {
     const fetchProducts = async () => {
       try {
         const data = await getProductsByCategory(category);
 
         setProducts(data);
+        window.scrollTo({ top: 0, behavior: 'smooth' });
       } finally {
         setIsLoading(false);
       }

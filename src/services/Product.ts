@@ -3,15 +3,16 @@ import { getData } from '../utils/httpClient';
 import { PRODUCTS_URL, getCategoryUrl } from '../utils/constants';
 import { Category } from '../types/Category';
 import { ProductDetails } from '../types/ProductDetails';
+import { ShuffleArray } from '../utils/shaffle';
 
 export const getAllProducts = async (): Promise<Product[]> => {
   return getData<Product[]>(PRODUCTS_URL);
 };
 
 export const getProductByIdFromCategory = async (id: string, url: Category) => {
-  const products = await getData<ProductDetails[]>(getCategoryUrl(url));
+  const product = await getData<ProductDetails[]>(getCategoryUrl(url));
 
-  return products.find((item: ProductDetails) => item.id === id);
+  return product.find((item: ProductDetails) => item.id === id);
 };
 
 export const getProductsByCategory = async (category: Category) => {
@@ -58,9 +59,9 @@ export const getProductByParams = async (
   return newProduct;
 };
 
-// export const getSuggestedProducts = async () => {
-//   const products = await getData<Product[]>(PRODUCTS_URL);
-//   const suggestedProducts = ShuffleArray(products);
+export const getSuggestedProducts = async () => {
+  const products = await getData<Product[]>(PRODUCTS_URL);
+  const suggestedProducts = ShuffleArray(products);
 
-//   return suggestedProducts;
-// };
+  return suggestedProducts;
+};

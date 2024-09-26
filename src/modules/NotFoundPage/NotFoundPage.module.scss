@@ -1,3 +1,79 @@
-.not {
-  display: block;
+@import '../../styles/main';
+
+.container {
+  @extend %container;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 21px;
+}
+
+.homeBtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  height: 40px;
+  width: 100%;
+  max-width: 100px;
+  border: 0;
+  background-color: var(--color-button);
+  transition: transform $transition-duration ease;
+
+  &:hover {
+    transform: scale(1.02);
+    box-shadow: 0 3px 13px 0 #17203166;
+    background-color: var(--color-button-hover);
+  }
+}
+
+.buttonText {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+
+  @extend %body-text;
+
+  color: var(--color-white);
+}
+
+.notFoundWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+
+  @include on-mobile {
+    gap: 20px;
+  }
+}
+
+.title {
+  margin-top: 50px;
+
+  @extend %h2-tablet;
+
+  @include on-mobile {
+    margin-top: 30px;
+  }
+}
+
+.image {
+  max-width: 500px;
+  align-self: center;
+  background: radial-gradient(
+    circle,
+    rgba(144, 91, 255, 1) 0%,
+    rgba(31, 31, 111, 0) 70%
+  );
+  padding: 70px;
+
+  @include on-mobile {
+    margin-top: 20px;
+    max-width: 330px;
+  }
 }

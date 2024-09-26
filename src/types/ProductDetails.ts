@@ -1,12 +1,11 @@
 import { Category } from './Category';
-import { Color } from './Color';
 
 interface ProductDescriptionItem {
   title: string;
   text: string[];
 }
 
-type ProductDescription = ProductDescriptionItem[];
+export type ProductDescription = ProductDescriptionItem[];
 
 export interface ProductDetails {
   id: string;
@@ -18,7 +17,7 @@ export interface ProductDetails {
   priceRegular: number;
   priceDiscount: number;
   colorsAvailable: string[];
-  color: Color;
+  color: string;
   images: string[];
   description: ProductDescription;
   screen: string;

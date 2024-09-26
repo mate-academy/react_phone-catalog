@@ -25,6 +25,8 @@ export const useIconSrc = () => {
   const moonUrl = `${BASE_URL}img/icons/moon.svg`;
   const sunUrl = `${BASE_URL}img/icons/sun.svg`;
   const spinnerUrl = `${BASE_URL}img/icons/spinner.svg`;
+  const notFound = `${BASE_URL}img/product-not-found.png`;
+  const notFoundUrl = `${BASE_URL}img/page-not-found.png`;
 
   return {
     arrowLeftUrl,
@@ -42,5 +44,7 @@ export const useIconSrc = () => {
     moonUrl,
     sunUrl,
     spinnerUrl,
+    notFound,
+    notFoundUrl,
   };
 };

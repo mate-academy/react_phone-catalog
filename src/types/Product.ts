@@ -1,5 +1,4 @@
 import { Category } from './Category';
-import { Color } from './Color';
 
 export interface Product {
   id: string;
@@ -10,7 +9,7 @@ export interface Product {
   capacity: string;
   fullPrice: number;
   price: number;
-  color: Color;
+  color: string;
   image: string;
   screen: string;
   ram: string;

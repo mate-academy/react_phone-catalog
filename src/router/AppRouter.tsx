@@ -25,12 +25,20 @@ export const AppRouter = () => {
       <Route path={HOME} element={<App />}>
         <Route index element={<HomePage />} />
         <Route path={HOME} element={<Navigate to={HOME} replace />} />
-        <Route path={PHONES} element={<PhonesPage />} />
-        <Route path={TABLETS} element={<TabletsPage />} />
-        <Route path={ACCESSORIES} element={<AccessoriesPage />} />
+        <Route path={PHONES}>
+          <Route index element={<PhonesPage />} />
+          <Route path={PRODUCT_ID} element={<ProductDetailsPage />} />
+        </Route>
+        <Route path={TABLETS}>
+          <Route index element={<TabletsPage />} />
+          <Route path={PRODUCT_ID} element={<ProductDetailsPage />} />
+        </Route>
+        <Route path={ACCESSORIES}>
+          <Route index element={<AccessoriesPage />} />
+          <Route path={PRODUCT_ID} element={<ProductDetailsPage />} />
+        </Route>
         <Route path={FAVORITES} element={<FavoritesPage />} />
         <Route path={CART} element={<CartPage />} />
-        <Route path={PRODUCT_ID} element={<ProductDetailsPage />} />
         <Route path={ALL} element={<NotFoundPage />} />
       </Route>
     </Routes>

@@ -1,5 +1,23 @@
 @import '../../styles/main';
 
+.detailsWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 80px;
+  width: 100%;
+
+  @include on-desktop {
+    gap: 64px;
+  }
+
+  @include on-mobile {
+    gap: 56px;
+    width: 100%;
+  }
+}
+
 .container {
   @extend %container;
 }
@@ -16,33 +34,6 @@
   flex-direction: column;
   align-items: flex-start;
   justify-content: flex-start;
-}
-
-.goBackButton {
-  margin-top: 40px;
-  margin-bottom: 16px;
-  display: flex;
-  align-items: center;
-  overflow: hidden;
-  gap: 8px;
-  height: 16px;
-  width: 66px;
-  border: 0;
-  cursor: pointer;
-  background-color: transparent;
-}
-
-.goBackText {
-  display: block;
-  padding-top: 2px;
-
-  @extend %small-text;
-
-  color: var(--color-secondary);
-
-  &:hover {
-    color: var(--color-primary);
-  }
 }
 
 .title {
@@ -62,6 +53,10 @@
   align-items: flex-start;
   gap: 80px;
   width: 100%;
+
+  @include on-desktop {
+    gap: 64px;
+  }
 
   @include on-mobile {
     gap: 56px;
@@ -180,12 +175,13 @@
 }
 
 .description {
-  display: flex;
-  justify-content: flex-start;
-  gap: 64px;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 64px;
 
   @include on-desktop {
-    flex-direction: column;
-    gap: 56px;
+    row-gap: 64px;
+    grid-template-columns: repeat(1, 1fr);
   }
 }

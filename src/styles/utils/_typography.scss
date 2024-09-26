@@ -116,11 +116,29 @@
   color: var(--color-primary);
 }
 
+@mixin h3-mobile {
+  font-family: Mont, sans-serif;
+  font-size: 20px;
+  line-height: 26px;
+  letter-spacing: 0;
+  font-weight: 600;
+  color: var(--color-primary);
+}
+
 %h4-mobile {
   font-family: Mont, sans-serif;
   font-size: 16px;
   line-height: 20px;
   letter-spacing: 0;
-  font-weight: 600;
+  font-weight: 700;
+  color: var(--color-primary);
+}
+
+@mixin h4-mobile {
+  font-family: Mont, sans-serif;
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: 0;
+  font-weight: 700;
   color: var(--color-primary);
 }

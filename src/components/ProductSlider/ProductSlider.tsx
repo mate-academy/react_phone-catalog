@@ -14,7 +14,7 @@ type ProductSliderProps = {
   title: string;
   mb?: boolean;
   products: Product[];
-  showFullPrice?: boolean | undefined;
+  discount?: boolean | undefined;
   isLoading: boolean;
 };
 
@@ -22,7 +22,7 @@ export const ProductSlider: FC<ProductSliderProps> = ({
   title,
   mb,
   products,
-  showFullPrice,
+  discount,
   isLoading,
 }) => {
   const { arrowLeftUrl, arrowRightUrl } = useIconSrc();
@@ -77,7 +77,7 @@ export const ProductSlider: FC<ProductSliderProps> = ({
           } else {
             return products.slice(0, 15).map(item => (
               <SwiperSlide key={item.id} className={styles.productSlide}>
-                <ProductCard product={item} fullPriceOnCard={showFullPrice} />
+                <ProductCard product={item} fullPriceOnCard={discount} />
               </SwiperSlide>
             ));
           }
