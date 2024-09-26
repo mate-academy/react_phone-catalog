@@ -4,7 +4,6 @@ import * as path from 'path';
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
 
-// Эмуляция глобальных переменных __dirname и __filename
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
@@ -13,6 +12,12 @@ export default defineConfig({
   plugins: [react()],
   build: {
     outDir: 'dist',
+    assetsDir: 'assets',
+    rollupOptions: {
+      output: {
+        manualChunks: undefined,
+      },
+    },
   },
   server: {
     open: true,
