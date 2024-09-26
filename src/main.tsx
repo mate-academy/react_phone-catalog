@@ -17,52 +17,57 @@ import { ProductPageWrapper } from './components/ProductPageWraper/ProductPageWr
 
 import './index.css';
 
-const router = createBrowserRouter([
+const router = createBrowserRouter(
+  [
+    {
+      path: '/',
+      element: <App />,
+      children: [
+        {
+          index: true,
+          element: <HomePage />,
+        },
+        {
+          path: 'catalog',
+          children: [
+            {
+              path: ':category',
+              element: <ProductPageWrapper />,
+            },
+            {
+              path: ':category/:itemPage',
+              element: <ItemCard />,
+            },
+          ],
+        },
+        {
+          path: 'user',
+          children: [
+            {
+              path: 'favourites',
+              element: <FavouritesPage />,
+            },
+            {
+              path: 'cart',
+              element: <Cart />,
+            },
+          ],
+        },
+        {
+          path: 'not-implemented',
+          element: <PageNotFound notImplemented />,
+        },
+        {
+          path: '*',
+          element: <PageNotFound />,
+        },
+      ],
+    },
+  ],
   {
-    path: '/',
-    element: <App />,
-    children: [
-      {
-        index: true,
-        element: <HomePage />,
-      },
-      {
-        path: 'catalog',
-        children: [
-          {
-            path: ':category',
-            element: <ProductPageWrapper />,
-          },
-          {
-            path: ':category/:itemPage',
-            element: <ItemCard />,
-          },
-        ],
-      },
-      {
-        path: 'user',
-        children: [
-          {
-            path: 'favourites',
-            element: <FavouritesPage />,
-          },
-          {
-            path: 'cart',
-            element: <Cart />,
-          },
-        ],
-      },
-      {
-        path: 'not-implemented',
-        element: <PageNotFound notImplemented />,
-      },
-      {
-        path: '*',
-        element: <PageNotFound />,
-      },
-    ],
+    basename: '/react_phone-catalog', 
   },
-]);
+);
 
 // Create a client
 const queryClient = new QueryClient({

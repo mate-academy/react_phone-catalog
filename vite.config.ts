@@ -9,6 +9,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 export default defineConfig({
+  base: '/react_phone-catalog/',
   plugins: [react()],
   build: {
     outDir: 'dist',
