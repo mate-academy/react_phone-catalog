@@ -25,6 +25,18 @@ export const CartItem = () => {
       <h1>Cart</h1>
       <p>{cart.length} items</p>
 
+      {cart.map(el => (
+        <div className='cart__card'>
+          <div style={{display: 'flex', alignItems: 'center', columnGap: '16px'}}>
+            <img className='cart__card-close' src="./img/Icons_Close.png" alt="" />
+            <img className='cart__card-img' src={el.image} alt="" />
+            <p>{el.name}</p>
+          </div>
+          <p className='cart__card-price'>${el.price}</p>
+        </div>
+      ))}
+
+
       <div className='cart__checkout'>
         <h2 className='cart__text'>{`$${sumCart()}`}</h2>
         <p>Total for 0 items</p>
