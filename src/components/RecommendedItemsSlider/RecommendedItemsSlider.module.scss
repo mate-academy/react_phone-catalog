@@ -1,0 +1,99 @@
+@import '../../helpers/mixins';
+
+.newPhoneModels__container {
+  @include respond-to('desktop') {
+    grid-column: span 24;
+  }
+}
+
+.newPhoneModels__bottom {
+  width: 100%;
+  height: fit-content;
+  margin-top: 24px;
+
+  @include respond-to('desktop') {
+    margin-left: 0;
+  }
+}
+
+.newPhoneModels__title {
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 31px;
+  text-align: left;
+  color: #313237;
+
+  &.dark {
+    color: white;
+  }
+
+  @include respond-to('tablet') {
+    font-size: 32px;
+    line-height: 41px;
+    width: 100%;
+  }
+}
+
+.newPhoneModels__header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 24px;
+  margin-top: 56px;
+
+  @include respond-to('tablet') {
+    margin-top: 64px;
+  }
+
+  @include respond-to('desktop') {
+    grid-column: span 24;
+    margin-top: 80px;
+  }
+}
+
+.newPhoneModels__buttonsWrapper {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.arrowLeft {
+  width: 32px;
+  height: 32px;
+  box-sizing: border-box;
+  border: 1px solid black;
+  background-image: url('../../assets/icons/arrow-right-active.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  transform: rotate(180deg);
+  cursor: pointer;
+
+  &:hover {
+    background-color: rgb(231, 231, 231);
+  }
+
+  &:disabled {
+    background-image: url('../../assets/icons/arrow-right.svg');
+  }
+}
+
+.arrowRight {
+  width: 32px;
+  height: 32px;
+  box-sizing: border-box;
+  border: 1px solid black;
+  background-image: url('../../assets/icons/arrow-right-active.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  cursor: pointer;
+
+  &:hover {
+    background-color: rgb(231, 231, 231);
+  }
+
+  &:disabled {
+    background-image: url('../../assets/icons/arrow-right.svg');
+  }
+}
+
+
+

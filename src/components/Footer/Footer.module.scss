@@ -1,0 +1,125 @@
+@import '../../helpers/mixins';
+$secondary-color: #89939a;
+
+.footer {
+  margin-top: 80px;
+  padding: 32px 152px;
+  box-shadow: 0px -1px 0px 0px rgba(226, 230, 233, 1);
+
+  @media (max-width: 1200px) {
+    padding: 32px;
+    margin-top: 64px;
+  }
+
+  @media (max-width: 640px) {
+    padding: 32px 16px;
+    margin-top: 64px;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin: auto;
+    max-width: 1200px;
+
+    @media (max-width: 640px) {
+      flex-direction: column;
+      align-items: start;
+      gap: 32px;
+    }
+  }
+
+  &__links {
+    display: flex;
+    gap: 100px;
+    font-weight: 800;
+
+    @media (max-width: 1200px) {
+      gap: 13.5px;
+    }
+
+    @media (max-width: 640px) {
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    &__item {
+      font-size: 12px;
+      height: 11px;
+      text-decoration: none;
+      color: $secondary-color;
+
+      &.dark {
+        color: white;
+      }
+
+      &:hover {
+        color: rgb(109, 107, 107);
+      }
+    }
+  }
+
+  &__backToTop {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    font-size: 12px;
+    line-height: 0;
+    color: $secondary-color;
+    user-select: none;
+    font-weight: 700;
+
+
+    @media (max-width: 640px) {
+      align-self: center;
+    }
+
+    &__button {
+      width: 32px;
+      height: 32px;
+      border: none;
+      padding: 0;
+      transition: transform 0.3s ease;
+
+      &:hover {
+        transform: scale(1.1);
+      }
+    }
+
+    &__icon {
+      width: 32px;
+      height: 32px;
+      cursor: pointer;
+      transform: rotate(270deg);
+      border: none;
+      background: transparent;
+    }
+
+    &__title {
+      font-size: 12px;
+      line-height: 15.34px;
+      text-align: right;
+    }
+  }
+}
+
+.bottomBar {
+  &__link {
+    text-decoration: none;
+    display: block;
+    transition: transform 0.3s ease;
+    height: 32px;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+
+  &__logo {
+    width: 89px;
+    height: 32px;
+   }
+}

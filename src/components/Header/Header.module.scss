@@ -1,0 +1,282 @@
+@import "../../helpers/mixins";
+
+.container {
+  width: 100%;
+  height: 48px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 1px solid #E2E6E9;
+  box-sizing: border-box;
+
+  @include respond-to('desktop') {
+    height: 64px;
+  }
+}
+
+.logo {
+  height: 22px;
+  width: 64px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 16px;
+  background-image: url('../../assets/images/header_images/logo.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+
+  @include respond-to('desktop') {
+    height: 28px;
+    width: 80px;
+    padding: 0 24px;
+  } 
+
+  &.dark {
+    background-image: url('../../assets/icons/GadgetsLogoDarkTheme.svg');
+  }
+}
+
+
+.links {
+  margin: 0;
+  padding: 0;
+  display: none;
+  list-style: none;
+  gap: 32px;
+  height: 100%;
+  margin-left: 16px;
+
+  @include respond-to('tablet') {
+    display: flex;
+    gap: 15px;
+  }
+
+  @media (min-width: 700px) {
+    gap: 32px;
+  }
+
+  @include respond-to('desktop') {
+    margin-left: 24px;
+    gap: 64px;
+  }
+}
+
+li {
+  height: 100%;
+}
+
+.link {
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 48px;
+  color: #89939A;
+  text-transform: uppercase;
+  font-size: 12px;
+  font-weight: 800;
+  line-height: 11px;
+  letter-spacing: 0.04em;
+  text-align: left;
+  box-sizing: border-box;
+
+  &.dark {
+    color: white; 
+  }
+
+
+  @include respond-to('desktop') {
+    height: 64px;
+  }
+}
+
+.link:hover {
+  color: #313237;
+  border-bottom: 3px solid #313237;
+
+  &.dark {
+    border-bottom: 3px solid white;
+    color: #89939A;
+  }
+}
+
+.selected {
+  color: #313237;
+  border-bottom: 3px solid #313237;
+
+  &.dark {
+    border-bottom: 3px solid white;
+  }
+}
+
+.icons {
+  margin: 0;
+  height: 100%;
+  display: flex;
+  margin-left: auto;
+  padding: 0;
+  list-style: none;
+}
+
+.iconLink_burger {
+  background-color: #fafbfc;
+  display: block;
+  width: 48px;
+  height: 48px;
+  padding: 0;
+  border: 1px solid #E2E6E9;
+  border-top: 0;
+  border-right: 1px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url(../../assets/images/header_images/burger.png);
+  box-sizing: border-box;
+  transition: background-size 0.3s ease;
+  cursor: pointer;
+
+  &.dark {
+    background-color: rgb(34, 34, 34);
+    background-image: url(../../assets/icons/header_icons/menu_icon_darkmode.svg);
+  }
+
+  &:hover {
+    background-size: 18px 18px;
+  }
+
+  @include respond-to('tablet') {
+    display: none;
+  }
+}
+
+.iconLink_heart {
+  width: 48px;
+  height: 48px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url(../../assets/images/header_images/like.png);
+  box-sizing: border-box;
+  transition: background-size 0.3s ease;
+  position: relative;
+
+  &.dark {
+    background-image: url('../../assets/icons/header_icons/heart_icon_darkmode.svg');
+  }
+
+  &:not(.selected):hover {
+    background-size: 18px 18px;
+  }
+
+  @include respond-to('tablet') {
+    display: block;
+    border-left: 1px solid #E2E6E9;
+
+    &::after {
+      content: attr(data-count);
+      position: absolute;
+      top: 15%;
+      right: 15%;
+      width: 14px;
+      height: 14px;
+      background-color: red;
+      color: white;
+      font-size: 12px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 9px;
+      font-weight: 700;
+      visibility: hidden;
+    }
+
+    &[data-count]:not([data-count=""])::after {
+      visibility: visible;
+    }
+  }
+
+  @include respond-to('desktop') {
+    height: 64px;
+    width: 64px;
+
+    &::after {
+      content: attr(data-count);
+      position: absolute;
+      top: 25%;
+      right: 20%;
+      width: 14px;
+      height: 14px;
+      background-color: red;
+      color: white;
+      font-size: 12px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 9px;
+      font-weight: 700;
+      visibility: hidden;
+    }
+
+    &[data-count]:not([data-count=""])::after {
+      visibility: visible;
+    }
+  }
+}
+
+.iconLink_bag {
+  width: 48px;
+  height: 48px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url(../../assets/images/header_images/shoppingBag.png);
+  box-sizing: border-box;
+  transition: background-size 0.3s ease;
+
+  &.dark {
+    background-image: url('../../assets/icons/header_icons/bag_icon_darkmode.svg');
+  }
+  position: relative;
+
+  &:not(.selected):hover {
+    background-size: 18px 18px;
+  }
+
+  @include respond-to('tablet') {
+    display: block;
+    border-left: 1px solid #E2E6E9;
+
+    &::after {
+      content: attr(data-count);
+      position: absolute;
+      top: 25%;
+      right: 20%;
+      width: 14px;
+      height: 14px;
+      background-color: red;
+      color: white;
+      font-size: 12px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 9px;
+      font-weight: 700;
+      visibility: hidden;
+    }
+
+    &[data-count]:not([data-count=""])::after {
+      visibility: visible;
+    }
+  }
+
+  @include respond-to('desktop') {
+    width: 64px;
+    height: 64px;
+  }
+}

@@ -1,0 +1,111 @@
+@import '../../helpers/mixins';
+
+
+.carouselImageOne {
+  width: 100%;
+  aspect-ratio: 1/1;
+
+  background-image: url('../../assets/images/carousel_images/image\ 16.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  @include respond-to('tablet') {
+    width: calc(100% - 150px);
+    aspect-ratio: 49/18;
+    background-image: url('../../assets/images/carousel_images/Banner.webp');
+  }
+}
+
+.carouselImageTwo {
+  width: 100%;
+  aspect-ratio: 1/1;
+
+  background-image: url('../../assets/images/carousel_images/6314115_3183793.webp');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  @include respond-to('tablet') {
+    width: calc(100% - 150px);
+    aspect-ratio: 49/18;
+    background-image: url('../../assets/images/carousel_images/omar-al-ghosson-_oD_jjajz1U-unsplash.webp');
+  }
+}
+
+.carouselImageThree {
+  width: 100%;
+  aspect-ratio: 1/1;
+
+  background-image: url('../../assets/images/carousel_images/vecteezy_bangkok-thailand-october-18-2023-close-up-reveals-the_33054660.webp');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  @include respond-to('tablet') {
+    width: calc(100% - 150px);
+    aspect-ratio: 49/18;
+    background-image: url('../../assets/images/carousel_images/photo-1663373460363-448cf1bf9402.webp');
+  }
+}
+
+.carousel .slick-slider {
+  width: 100%;
+
+  @include respond-to('tablet') {
+    width: calc(100% - 80px);
+    margin: 0 auto;
+  }
+}
+
+.carousel {
+  width: 100%;
+  aspect-ratio: 10/11;
+  margin-top: 24px;
+  display: flex;
+
+  @include respond-to('tablet') {
+    width: calc(100% - 48px);
+    aspect-ratio: 59/22;
+    box-sizing: border-box;
+    margin: 32px 24px 0 24px;
+  }
+
+  @include respond-to('desktop') {
+    height: 432px;
+    width: 100%;
+    grid-column: span 24;
+    margin-top: 56px;
+    margin-inline: 0;
+  }
+
+  .slick-dots {
+    bottom: 5px;
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+
+    @include respond-to('tablet') {
+      bottom: 4px;
+    }
+    
+    @include respond-to('desktop') {
+      bottom: 7px;
+    }
+  }
+
+  .slick-dots li button::before {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 100%;
+    background-image: url('../../assets/icons/Rectangle\ 23-not-active.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+
+  .slick-dots li.slick-active button::before {
+    background-image: url('../../assets/icons/Rectangle\ 23.svg');
+  }
+}

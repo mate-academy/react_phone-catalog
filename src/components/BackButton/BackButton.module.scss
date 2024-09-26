@@ -1,0 +1,39 @@
+$secondaryColor: #89939A;
+$primaryColor: #313237;
+
+.arrow {
+  background-image: url(../../assets/icons/backButton_icons/left_arrow.svg);
+  width: 16px;
+  height: 16px;
+  background-repeat: no-repeat;
+  background-position: center;
+
+  &.dark {
+    background-image: url('../../assets/icons/backButton_icons/left_arrow_darkTheme.svg');
+  }
+}
+
+.backButton{
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+  width: 66px;
+  height: 16px;
+
+  &:hover{
+  /*   .arrow{
+     background-image: url(../../assets/icons/backButton_icons/left_arrow_hover.svg);
+    } */
+    .text{
+      color: rgb(112, 112, 112);
+    }
+  }
+ 
+}
+
+.text{
+  font-size: 12px;
+  font-weight: 600;
+  color: $secondaryColor;
+}

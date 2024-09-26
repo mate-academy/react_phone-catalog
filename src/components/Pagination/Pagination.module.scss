@@ -1,0 +1,75 @@
+$primary-color: #313237;
+$icons-placeholders-color: #b4bdc3;
+$elements-color: #e2e6e9;
+$secondary-color: #89939a;
+$white-color: #fff;
+
+.paginationContainer {
+  grid-column: span 24
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  justify-self: center;
+  margin-top: 40px;
+}
+
+.paginationButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 5px;
+  width: 32px;
+  height: 32px;
+  border: 1px solid $elements-color;
+  background-color: $white-color;
+  color: $primary-color;
+  cursor: pointer;
+  transition:
+    border 0.2s,
+    color 0.2s;
+}
+
+.paginationButton:hover:not(:disabled) {
+  border: 1px solid $primary-color;
+}
+
+.paginationLeftArrow {
+  background-image: url(../../assets/icons/pagination_icons/arrowDefaultRight.svg);
+  transform: rotate(180deg);
+  border: 0;
+}
+
+.paginationLeftArrow:hover:not(:disabled) {
+  background-image: url(../../assets/icons/pagination_icons/arrowHoverRight.svg);
+  transform: rotate(180deg);
+  border: 0;
+}
+
+.paginationLeftArrow:disabled {
+  background-image: url(../../assets/icons/pagination_icons/arrowDisabledRight.svg);
+  transform: rotate(180deg);
+}
+
+.paginationRightArrow {
+  background-image: url(../../assets/icons/pagination_icons/arrowDefaultRight.svg);
+  border: 0;
+}
+
+.paginationRightArrow:hover:not(:disabled) {
+  background-image: url(../../assets/icons/pagination_icons/arrowHoverRight.svg);
+  border: 0;
+}
+
+.paginationRightArrow:disabled {
+  background-image: url(../../assets/icons/pagination_icons/arrowDisabledRight.svg);
+}
+
+
+
+.isActive {
+  background-color: $primary-color;
+  color: $white-color;
+}

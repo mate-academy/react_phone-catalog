@@ -1,0 +1,134 @@
+@import '../../helpers/mixins';
+
+.skeleton {
+  width: 212px;
+  height: 439px;
+  box-sizing: border-box;
+  border: 1px solid #E2E6E9;
+  margin-left: 26px;
+  padding: 32px;
+  position: relative;
+  overflow: hidden;
+
+  @include respond-to('tablet') {
+    width: 237px;
+    height: 439px;
+  }
+
+  @include respond-to('desktop') {
+    width: 272px;
+    height: 506px;
+  }
+}
+
+.image,
+.title,
+.price,
+.info,
+.buttons {
+  background: #e0e0e0;
+  border-radius: 4px;
+  position: relative;
+  overflow: hidden;
+  animation: shimmer 1.5s infinite;
+}
+
+.image {
+  width: 146px;
+  height: 114px;
+
+  @include respond-to('tablet') {
+    width: 171px;
+    height: 114px;
+  }
+  
+  @include respond-to('desktop') {
+    width: 206px;
+    height: 202px;
+  }
+}
+
+.title {
+  margin-top: 8px;
+  width: 146px;
+  height: 79px;
+
+  @include respond-to('tablet') {
+    width: 171px;
+    height: 63px;
+  }
+
+  @include respond-to('desktop') {
+    width: 206px;
+  }
+}
+
+.price {
+  margin-top: 8px;
+  width: 146px;
+  height: 30.8px;
+
+  @include respond-to('tablet') {
+    width: 171px;
+  }
+
+  @include respond-to('desktop') {
+    width: 206px;
+  }
+}
+
+.info {
+  margin-top: 16px;
+  width: 146px;
+  height: 62px;
+
+  @include respond-to('tablet') {
+    width: 171px;
+  }
+  
+  @include respond-to('desktop') {
+    width: 206px;
+    margin-top: 9px;
+  }
+}
+
+.buttons {
+  margin-top: 18px;
+  width: 146px;
+  height: 40px;
+
+  @include respond-to('tablet') {
+    width: 171px;
+  }
+
+  @include respond-to('desktop') {
+    width: 206px;
+    margin-top: 12px;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200px 0;
+  }
+
+  100% {
+    background-position: 200px 0;
+  }
+}
+
+.image:before,
+.title:before,
+.price:before,
+.info:before,
+.buttons:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.6) 50%, rgba(255, 255, 255, 0.2) 100%);
+  animation: shimmer 1.5s infinite;
+  z-index: 1;
+}
