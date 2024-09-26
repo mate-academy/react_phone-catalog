@@ -192,7 +192,7 @@ export const ItemCard = () => {
 
             <div className={card__imgBlock}>
               <img
-                src={`/${currentItem.images[targetImgIndex]}`}
+                src={`${import.meta.env.BASE_URL}${currentItem.images[targetImgIndex]}`}
                 alt={`${currentItem.name} photo`}
                 className={card__img}
               />
@@ -208,7 +208,7 @@ export const ItemCard = () => {
                   onClick={() => handlePreviewClick(index)}
                 >
                   <img
-                    src={`/${photo}`}
+                    src={`${import.meta.env.BASE_URL}${photo}`}
                     alt={`${currentItem.name} photo preview`}
                     className={card__sliderImg}
                   />
@@ -281,7 +281,7 @@ export const ItemCard = () => {
           */}
           <ProductSlider
             title="You may also like"
-            apiUrl="/api/products.json"
+            apiUrl={`${import.meta.env.BASE_URL}api/products.json`}
             discount={itemWithDiscount}
             newOnly={false}
             suggestedProducts={true}

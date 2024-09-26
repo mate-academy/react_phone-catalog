@@ -53,7 +53,7 @@ export const CartItem = ({ product }: CartItemProps) => {
     <div className={item}>
       <div className={item__row}>
         <Button
-          bgImg={'/icons/icon-close.svg'}
+          bgImg={`${import.meta.env.BASE_URL}icons/icon-close.svg`}
           action={() => deleteProduct(product.id)}
           disabled={false}
           additionalStyles={{
@@ -80,7 +80,7 @@ export const CartItem = ({ product }: CartItemProps) => {
       <div className={item__row}>
         <div className={item__counter}>
           <Button
-            bgImg={'/icons/icon-minus.svg'}
+            bgImg={`${import.meta.env.BASE_URL}icons/icon-minus.svg`}
             disabled={minusButtonDisabled}
             action={() => deleteProduct(product.id)}
           />
@@ -88,7 +88,7 @@ export const CartItem = ({ product }: CartItemProps) => {
           <p className={item__amount}>{currentItem.quantity}</p>
 
           <Button
-            bgImg={'/icons/icon-plus.svg'}
+            bgImg={`${import.meta.env.BASE_URL}icons/icon-plus.svg`}
             disabled={false}
             action={() => addProduct(product)}
             additionalStyles={{ borderColor: '#B4BDC3' }}

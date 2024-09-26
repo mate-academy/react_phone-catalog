@@ -37,7 +37,7 @@ export const SecondaryNavLink = ({
   };
 
   // #region conditions
-  const img = amount ? `/icons/${name}-counter.svg` : image;
+  const img = amount ? `${import.meta.env.BASE_URL}icons/${name}-counter.svg` : image;
   const locatedInCategory = pathname.includes(name);
   // #endregion
 

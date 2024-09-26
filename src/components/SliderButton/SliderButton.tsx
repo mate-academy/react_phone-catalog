@@ -19,7 +19,7 @@ export const SliderButton: React.FC<SliderButtonProps> = React.memo(
         <div
           className={`${sliderButton__wrapper} ${direction === 'left' && sliderButton__wrapper__left}`}
         >
-          <img src="/icons/icon-arrow.svg" alt={`${direction} arrow`} />
+          <img src={`${import.meta.env.BASE_URL}icons/icon-arrow.svg`} alt={`${direction} arrow`} />
         </div>
       </button>
     );

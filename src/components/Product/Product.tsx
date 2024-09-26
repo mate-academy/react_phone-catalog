@@ -57,7 +57,7 @@ export const Product = ({ product, discount, isInCategory }: Props) => {
       >
         <div className={prod__imgWrapper}>
           <img
-            src={`/${product.image}`}
+            src={`${import.meta.env.BASE_URL}${product.image}`}
             alt={`${product.image} photo`}
             className={prod__img}
           />

@@ -10,25 +10,25 @@ export const Categories = () => {
 
       <Category
         name="Mobile phones"
-        photo="/img/category-phones.webp"
+        photo={`${import.meta.env.BASE_URL}img/category-phones.webp`}
         url="/catalog/phones"
-        products="/api/phones.json"
+        products={`${import.meta.env.BASE_URL}api/phones.json`}
         additionalStyles={{ backgroundColor: '#6D6474' }}
       />
 
       <Category
         name="Tablets"
-        photo="/img/category-tablets.webp"
+        photo={`${import.meta.env.BASE_URL}img/category-tablets.webp`}
         url="/catalog/tablets"
-        products="/api/tablets.json"
+        products={`${import.meta.env.BASE_URL}api/tablets.json`}
         additionalStyles={{ backgroundColor: '#8D8D92' }}
       />
 
       <Category
         name="Accessories"
-        photo="/img/category-accessories.webp"
+        photo={`${import.meta.env.BASE_URL}img/category-accessories.webp`}
         url="/catalog/accessories"
-        products="/api/accessories.json"
+        products={`${import.meta.env.BASE_URL}api/accessories.json`}
         additionalStyles={{ backgroundColor: '#973D5F' }}
       />
     </div>

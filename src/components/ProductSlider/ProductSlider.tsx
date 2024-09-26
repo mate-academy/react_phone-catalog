@@ -88,7 +88,7 @@ export const ProductSlider = memo(
 
           <div className={productSlider__buttonsWrapper}>
             <Button
-              bgImg="/icons/icon-arrow.svg"
+              bgImg={`${import.meta.env.BASE_URL}icons/icon-arrow.svg`}
               action={handlePrevClick}
               disabled={productsStartPosition}
               additionalStyles={{
@@ -98,7 +98,7 @@ export const ProductSlider = memo(
             />
 
             <Button
-              bgImg="/icons/icon-arrow.svg"
+              bgImg={`${import.meta.env.BASE_URL}icons/icon-arrow.svg`}
               action={handleNextClick}
               disabled={productsEndPosition}
               additionalStyles={{ borderColor: '#B4BDC3' }}

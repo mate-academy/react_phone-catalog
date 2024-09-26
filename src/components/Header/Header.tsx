@@ -62,7 +62,7 @@ export const Header = () => {
         <div className={header__buttons}>
           <div className={header__buttonWrapper}>
             <SecondaryNavLink
-              image="/icons/emty-heart.svg"
+              image={`${import.meta.env.BASE_URL}icons/emty-heart.svg`}
               url="/user/favourites"
               amount={favItemsAmount}
               name="favourites"
@@ -71,7 +71,7 @@ export const Header = () => {
 
           <div className={header__buttonWrapper}>
             <SecondaryNavLink
-              image="/icons/icon-cart.svg"
+              image={`${import.meta.env.BASE_URL}icons/icon-cart.svg`}
               url="/user/cart"
               amount={cartItemsAmount}
               name="cart"

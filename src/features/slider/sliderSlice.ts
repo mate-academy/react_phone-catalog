@@ -5,17 +5,17 @@ const initialState: SliderState = {
   slides: [
     {
       id: 1,
-      image: '/slider-images/banner-phones.png',
+      image: `${import.meta.env.BASE_URL}slider-images/banner-phones.png`,
       link: '/catalog/phones/apple-iphone-14-pro-1tb-spaceblack',
     },
     {
       id: 2,
-      image: '/slider-images/banner-tablets.webp',
+      image: `${import.meta.env.BASE_URL}slider-images/banner-tablets.webp`,
       link: '/catalog/tablets/apple-ipad-pro-11-2021-2tb-silver',
     },
     {
       id: 3,
-      image: '/slider-images/banner-accessories.webp',
+      image: `${import.meta.env.BASE_URL}slider-images/banner-accessories.webp`,
       link: '/catalog/accessories/apple-watch-series-6-44mm-space-gray',
     },
   ],

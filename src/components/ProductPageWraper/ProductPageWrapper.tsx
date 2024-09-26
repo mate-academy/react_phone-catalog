@@ -15,7 +15,7 @@ export const ProductPageWrapper = () => {
     favourites: 'Favourites',
   };
 
-  const productsUrl = '/api/products.json';
+  const productsUrl = `${import.meta.env.BASE_URL}api/products.json`;
 
   if (
     !category ||

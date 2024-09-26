@@ -51,7 +51,7 @@ export const Pagination = ({
   return (
     <div className={pagination}>
       <Button
-        bgImg="/icons/icon-arrow.svg"
+        bgImg={`${import.meta.env.BASE_URL}icons/icon-arrow.svg`}
         action={() => handlePageChange(currentPage - 1)}
         disabled={currentPage === 1}
         additionalStyles={{ transform: 'rotate(-180deg)' }}
@@ -69,7 +69,7 @@ export const Pagination = ({
       </div>
 
       <Button
-        bgImg="/icons/icon-arrow.svg"
+        bgImg={`${import.meta.env.BASE_URL}icons/icon-arrow.svg`}
         action={() => handlePageChange(currentPage + 1)}
         disabled={currentPage === totalPages}
         additionalStyles={{}}
