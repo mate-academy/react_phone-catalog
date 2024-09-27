@@ -19,12 +19,16 @@
 
   &_page {
     margin: 0 10%;
-    min-height: 38.5vw;
+    flex: 1;
 
     @media screen and (max-width: 1199px) {
       margin: 0 2%;
-      min-height: 65vw;
+    }
 
+    &_container {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
     }
   }
 
@@ -34,4 +38,13 @@
     flex-wrap: wrap;
     gap: 20px;
   }
+}
+
+.footer {
+  position: relative;
+  margin-top: auto;
+  background-color: #333;
+  color: white;
+  text-align: center;
+  padding: 10px;
 }

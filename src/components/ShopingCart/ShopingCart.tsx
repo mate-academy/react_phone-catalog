@@ -79,7 +79,7 @@ export const ShopingCart = () => {
   }, [addedDevice, countItems]);
 
   return (
-    <div>
+    <div className={imgstyles.cart_page_container}>
       <Header countItems={counts} />
 
       <div>

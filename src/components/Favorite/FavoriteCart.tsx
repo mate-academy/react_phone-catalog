@@ -30,7 +30,7 @@ export const FavoriteCart = () => {
   }, [favoriteDevices]);
 
   return (
-    <div>
+    <div className={styles.cart_page_container}>
       <Header />
       <div className={styles.cart_page}>
         <TransitionComponent filter={'Favorite'} />
