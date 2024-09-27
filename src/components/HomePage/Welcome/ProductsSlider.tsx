@@ -60,14 +60,19 @@ export const ProductsSlider = () => {
 
           <div className={row.slider_buttons}>
             <button
-              className={classNames(styles.product_slide_buttons)}
+              className={classNames(styles.product_slide_buttons, {
+                [styles.product_slide_buttons_disable]: currentSlide === 0,
+              })}
               onClick={previosSlide}
             >
               &lt;
             </button>
 
             <button
-              className={classNames(styles.product_slide_buttons)}
+              className={classNames(styles.product_slide_buttons, {
+                [styles.product_slide_buttons_disable]:
+                  currentSlide === products.length,
+              })}
               onClick={nextSlide}
             >
               &gt;
@@ -101,14 +106,20 @@ export const ProductsSlider = () => {
 
         <div className={row.slider_buttons}>
           <button
-            className={classNames(styles.product_slide_buttons)}
+            className={classNames(styles.product_slide_buttons, {
+              [styles.product_slide_buttons_disable]:
+                currentSlideHotPrices === 0,
+            })}
             onClick={prevSlideHotPrices}
           >
             &lt;
           </button>
 
           <button
-            className={classNames(styles.product_slide_buttons)}
+            className={classNames(styles.product_slide_buttons, {
+              [styles.product_slide_buttons_disable]:
+                currentSlideHotPrices === products.length,
+            })}
             onClick={nextSlideHotPrices}
           >
             &gt;

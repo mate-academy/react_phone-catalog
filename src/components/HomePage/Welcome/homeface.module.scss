@@ -123,19 +123,19 @@
   &_buttons {
     height: 32px;
     width: 32px;
-    border: 1px solid $BORDER_COLOR;
+    border: 1px solid $CAROUSEL_BUTTOMS_COLOR;
     background-color: transparent;
     cursor: pointer;
     padding: auto;
 
-    color: $BORDER_COLOR;
+    color: black;
     font-size: 18px;
     font-family: Arial, Helvetica, sans-serif;
-
-    &:hover {
-      border-color: $CAROUSEL_BUTTOMS_COLOR;
-      transition: 0.7s;
-      color: black;
+    &_disable {
+      color: $BORDER_COLOR;
+      height: 32px;
+      width: 32px;
+      border: 1px solid $BORDER_COLOR;
     }
 
     &:first-child {

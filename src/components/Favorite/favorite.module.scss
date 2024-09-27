@@ -11,8 +11,9 @@
   }
 
   &_img {
-    width: 550px;
-    height: 550px;
+    object-fit: contain;
+    max-height: 300px;
+    max-width: 300px;
     margin: auto;
   }
 
@@ -30,6 +31,6 @@
     flex-wrap: wrap;
     gap: 20px;
 
-    min-height: 72.5vh;
+    height: 50%;
   }
 }

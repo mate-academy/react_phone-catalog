@@ -16,18 +16,19 @@ import classNames from 'classnames';
 import { TransitionComponent } from '../main/Transition/TransitionComponent';
 import { DeviceProps, useDevices } from '../../context/DeviceProvider';
 import { COLORS } from '../../colors';
+import { CuteLoader } from '../loader/CuteLoader';
 
 type Device = ProductChars | Accessories;
 
 export const ProductDetailsPage: React.FC = () => {
-  const [items, setItems] = useState<Device>();
+  const [items, setItems] = useState<Device | null>(null);
 
   const [selectedImage, setSelectedImage] = useState(0);
   const [currentSlide, setCurrentSlide] = useState(0);
   const [relatedProducts, setRelatedProducts] = useState<Device[]>([]);
   const { addToCart } = useDevices();
   const { addToFavorites } = useDevices();
-
+  const [isLoading, setIsloading] = useState(true);
   const [favorites, setFavorites] = useState<boolean>(false);
   const [isAdding, setIsAdding] = useState<boolean>(false);
 
@@ -139,9 +140,11 @@ export const ProductDetailsPage: React.FC = () => {
             ? tablets.find(device => device.id === id)
             : category === 'accessories'
               ? accessories.find(device => device.id === id)
-              : undefined;
+              : null;
 
-      setItems(foundItem);
+      if (foundItem !== undefined) {
+        setItems(foundItem || null);
+      }
 
       if (foundItem) {
         const fetchRelatedProducts = () => {
@@ -156,6 +159,8 @@ export const ProductDetailsPage: React.FC = () => {
               break;
             case 'accessories':
               products = accessories.filter(device => device.id !== id);
+              break;
+            default:
               break;
           }
 
@@ -172,11 +177,19 @@ export const ProductDetailsPage: React.FC = () => {
       }
     };
 
+    setIsloading(true);
+
     if (itemId) {
       filterItem(itemId);
       window.scrollTo(0, 0);
     }
+
+    setIsloading(false);
   }, [itemId, phones, tablets, accessories, category]);
+
+  if (isLoading) {
+    return <CuteLoader />;
+  }
 
   if (!items) {
     return <img src="img/page-not-found.png" alt="not_found" />;
