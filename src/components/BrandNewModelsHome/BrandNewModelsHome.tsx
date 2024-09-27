@@ -9,12 +9,15 @@ import { Products } from '../../types/products';
 import { Link, useLocation } from 'react-router-dom';
 import { useLocalStorage } from '../../LocaleStorage';
 import classNames from 'classnames';
+import { useWindowResize } from '../../useWindowSize';
 
 type Props = {
   type: 'Hot Prices' | 'Brand new models' | 'You may also like';
 };
 
 export const BrandNewModelsHome: React.FC<Props> = ({ type }) => {
+  const [width, height] = useWindowResize();
+
   const [favorites, setFavorites] = useLocalStorage<Products[]>('favorites', []);
   const [cart, setCart] = useLocalStorage<Products[]>('cart', []);
 
@@ -59,6 +62,8 @@ export const BrandNewModelsHome: React.FC<Props> = ({ type }) => {
   function alsoLike(products: Products[]) {
     return products;
   }
+
+  const slidesPerView = width > 1200 ? 5 : width > 900 ? 4 : width > 800 ? 3.5 : width > 700 ? 3 : width > 600 ? 2.5 : 2
 
   useEffect(() => {
     fetch('./api/products.json')
@@ -110,7 +115,7 @@ export const BrandNewModelsHome: React.FC<Props> = ({ type }) => {
           <Swiper
             modules={[Navigation]}
             spaceBetween={40}
-            slidesPerView={5}
+            slidesPerView={slidesPerView}
             loop={true}
             navigation={{
               prevEl: '.page-home__new-models--arrow-disabled',
