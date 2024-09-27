@@ -3,7 +3,7 @@ import { Header } from '../HomePage/Header/HeaderComponent';
 import styles from './shopingcart.module.scss';
 import imgstyles from '../Favorite/favorite.module.scss';
 import { useEffect, useState } from 'react';
-import { useDevices } from '../../context/DeviceProvider';
+import { DeviceProps, useDevices } from '../../context/DeviceProvider';
 
 export const ShopingCart = () => {
   const { addedDevice } = useDevices();
@@ -34,6 +34,18 @@ export const ShopingCart = () => {
 
       return newCounts;
     });
+  };
+
+  const handleDelete = (device: DeviceProps) => {
+    addToCart(device);
+
+    if (device.id in countItems) {
+      const updatedCounts = { ...countItems };
+
+      delete updatedCounts[device.id as number];
+      setCountItems(updatedCounts);
+      localStorage.setItem('countItems', JSON.stringify(updatedCounts));
+    }
   };
 
   const subtractCount = (id: number) => {
@@ -80,7 +92,7 @@ export const ShopingCart = () => {
             <>
               <div className={styles.shoping_cart}>
                 <div className={styles.shoping_cart_left}>
-                  <div onClick={() => addToCart(device)}>
+                  <div onClick={() => handleDelete(device)}>
                     <img
                       src="img/Union.svg"
                       alt=""
