@@ -1,3 +1,7 @@
+.details__image {
+  height: 288px;
+
+}
 @media screen and (min-width: 640px) {
   .qwerty {
     display: grid;
@@ -36,6 +40,8 @@
 
   .details__image {
     grid-column: 3 / 10;
+    height: 464px;
+
   }
 
   .q {
@@ -97,6 +103,7 @@
   }
 
   &-close {
+    cursor: pointer;
     height: 16px;
     width: 16px;
   }
@@ -187,7 +194,9 @@
   height: 40px;
   cursor: pointer;
 }
-
+.cart__card-close:hover {
+  content: url('../img/Icons_Close (1).png');
+}
 .page-home-card__favorite:hover {
   content: url('../img/Add to fovourites - Hover.svg');
   /* Меняем изображение при наведении */
@@ -464,8 +473,8 @@
       }
 
       &__img {
-        height: 51px;
-        width: 49px;
+        height: 59px;
+        width: 45px;
       }
     }
   }

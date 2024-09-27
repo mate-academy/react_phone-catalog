@@ -24,25 +24,25 @@ a {
   color: #000;
 }
 
-body {
+.container {
   max-width: 1200px; /* Максимальная ширина для контента */
-  margin: 0 auto; /* Центрирование body */
-  padding: 13px 16px; 
-  width: 100%; /* Обеспечиваем растяжение на всю ширину */
+  margin: 0 auto;
+  padding: 13px 16px;
+}
 
-  /* Добавляем дополнительные отступы для разных экранов */
+body {
   font-family: 'Mont', sans-serif; /* Шрифт для всего тела */
 }
 
 @media screen and (min-width: 640px) {
-  body {
+  .container {
     padding-left: 24px;
     padding-right: 24px;
   }
 }
 
 @media screen and (min-width: 1200px) {
-  body {
+  .container {
     padding-left: 32px;
     padding-right: 32px;
   }

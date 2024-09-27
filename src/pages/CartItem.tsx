@@ -15,6 +15,11 @@ export const CartItem = () => {
     return sum
   }
 
+  const handleRemoveItem = (productId: number) => {
+    const updatedCart = cart.filter(product => product.id !== productId);
+    setCart(updatedCart);
+  };
+
   return (
     <>
       <div className='details__back'>
@@ -28,7 +33,7 @@ export const CartItem = () => {
       {cart.map(el => (
         <div className='cart__card'>
           <div style={{display: 'flex', alignItems: 'center', columnGap: '16px'}}>
-            <img className='cart__card-close' src="./img/Icons_Close.png" alt="" />
+            <img onClick={() => handleRemoveItem(el.id)} className='cart__card-close' src="./img/Icons_Close.png" />
             <img className='cart__card-img' src={el.image} alt="" />
             <p>{el.name}</p>
           </div>

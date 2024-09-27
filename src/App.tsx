@@ -16,7 +16,9 @@ export const App = () => {
         <BurgerMenu burgerMenu={burgerMenu} setBurgerMenu={setBurgerMenu} />
       ) : (
         <>
-          <Outlet />
+          <div className="container">
+            <Outlet />
+          </div>
           <Footer />
         </>
       )}
