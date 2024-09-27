@@ -3,20 +3,20 @@ import { useEffect, useState } from 'react';
 import { Accessories, ProductChars } from '../../types';
 import { Header } from '../HomePage/Header/HeaderComponent';
 import { Footer } from '../Footer/Footer';
-import styles from './productsDetails.module.scss';
-import cardStyles from '.././main/CardComponent/card.module.scss';
+import { TransitionComponent } from '../main/Transition/TransitionComponent';
 import { CardComponent } from '../main/CardComponent/CardComponent';
+import { DeviceProps, useDevices } from '../../context/DeviceProvider';
+import { COLORS } from '../../colors';
+import { CuteLoader } from '../loader/CuteLoader';
 import {
   nextSlide,
   previousSlide,
 } from '../main/CardComponent/slider_function';
+import styles from './productsDetails.module.scss';
+import cardStyles from '.././main/CardComponent/card.module.scss';
 import row from '../HomePage/Welcome/productSlider.module.scss';
 import buttom from '../HomePage/Welcome/homeface.module.scss';
 import classNames from 'classnames';
-import { TransitionComponent } from '../main/Transition/TransitionComponent';
-import { DeviceProps, useDevices } from '../../context/DeviceProvider';
-import { COLORS } from '../../colors';
-import { CuteLoader } from '../loader/CuteLoader';
 
 type Device = ProductChars | Accessories;
 
@@ -177,14 +177,14 @@ export const ProductDetailsPage: React.FC = () => {
       }
     };
 
-    setIsloading(true);
-
     if (itemId) {
       filterItem(itemId);
       window.scrollTo(0, 0);
     }
 
     setIsloading(false);
+
+    return;
   }, [itemId, phones, tablets, accessories, category]);
 
   if (isLoading) {

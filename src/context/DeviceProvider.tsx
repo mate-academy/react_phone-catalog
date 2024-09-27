@@ -6,6 +6,7 @@ import {
   createContext,
 } from 'react';
 import { Accessories, Product, ProductChars } from '../types';
+import { CuteLoader } from '../components/loader/CuteLoader';
 
 export type DeviceProps = Product | ProductChars | Accessories;
 
@@ -117,57 +118,28 @@ export const DeviceProvider = ({ children }: { children: ReactNode }) => {
   }, []);
 
   useEffect(() => {
-    fetch('api/accessories.json')
-      .then(response => response.json())
-      .then(data => {
-        setAccessories(data);
-        setLoading(false);
-      })
-      .catch(() => {
-        setError('Failed to load accessories');
-        setLoading(false);
-      });
-  }, []);
+    const fetchData = async () => {
+      try {
+        const [accessoriesRes, tabletsRes, phonesRes, productsRes] =
+          await Promise.all([
+            fetch('api/accessories.json').then(res => res.json()),
+            fetch('api/tablets.json').then(res => res.json()),
+            fetch('api/phones.json').then(res => res.json()),
+            fetch('api/products.json').then(res => res.json()),
+          ]);
 
-  useEffect(() => {
-    fetch('api/tablets.json')
-      .then(response => response.json())
-      .then(data => {
-        setTablets(data);
+        setAccessories(accessoriesRes);
+        setTablets(tabletsRes);
+        setPhones(phonesRes);
+        setProducts(productsRes);
+      } catch (errors) {
+        setError('Failed to load data');
+      } finally {
         setLoading(false);
-      })
-      .catch(() => {
-        setError('Failed to load tablets');
-        setLoading(false);
-      });
-  }, []);
+      }
+    };
 
-  useEffect(() => {
-    fetch('api/phones.json')
-      .then(response => response.json())
-      .then(data => {
-        setTimeout(() => {
-          setLoading(false);
-        }, 1000);
-        setPhones(data);
-      })
-      .catch(() => {
-        setError('Failed to load phones');
-        setLoading(false);
-      });
-  }, []);
-
-  useEffect(() => {
-    fetch('api/products.json')
-      .then(response => response.json())
-      .then(data => {
-        setProducts(data);
-        setLoading(false);
-      })
-      .catch(() => {
-        setError('Failed to load products');
-        setLoading(false);
-      });
+    fetchData();
   }, []);
 
   return (
@@ -185,9 +157,7 @@ export const DeviceProvider = ({ children }: { children: ReactNode }) => {
         products,
       }}
     >
-      {loading}
-      {error && <div>{error}</div>}
-      {children}
+      {loading ? <CuteLoader /> : error ? <div>{error}</div> : children}
     </DevicesContext.Provider>
   );
 };

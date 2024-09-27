@@ -19,9 +19,12 @@
 
   &_page {
     margin: 0 10%;
+    min-height: 38.5vw;
 
     @media screen and (max-width: 1199px) {
       margin: 0 2%;
+      min-height: 65vw;
+
     }
   }
 
@@ -30,7 +33,5 @@
     justify-content: center;
     flex-wrap: wrap;
     gap: 20px;
-
-    height: 50%;
   }
 }
