@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { Navigation } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
@@ -63,8 +63,23 @@ export const BrandNewModelsHome: React.FC<Props> = ({ type }) => {
     return products;
   }
 
-  const slidesPerView = width > 1200 ? 5 : width > 900 ? 4 : width > 800 ? 3.5 : width > 700 ? 3 : width > 600 ? 2.5 : 2
-
+  const slidesPerView = useMemo(() => {
+    return width > 1200
+      ? 5
+      : width > 900
+        ? 4
+        : width > 800
+          ? 3.5
+          : width > 700
+            ? 3
+            : width > 600
+              ? 2.5
+              : width > 450
+                ? 2
+                : width > 400
+                  ? 1.6
+                  : 1.4;
+  }, [width]);
   useEffect(() => {
     fetch('./api/products.json')
       .then(response => response.json())
