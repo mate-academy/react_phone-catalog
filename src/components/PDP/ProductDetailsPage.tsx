@@ -15,6 +15,7 @@ import buttom from '../HomePage/Welcome/homeface.module.scss';
 import classNames from 'classnames';
 import { TransitionComponent } from '../main/Transition/TransitionComponent';
 import { DeviceProps, useDevices } from '../../context/DeviceProvider';
+import { COLORS } from '../../colors';
 
 type Device = ProductChars | Accessories;
 
@@ -256,7 +257,12 @@ export const ProductDetailsPage: React.FC = () => {
                     >
                       <div
                         className={styles.product_char_capacity_colors}
-                        style={{ backgroundColor: color }}
+                        style={{
+                          backgroundColor:
+                            COLORS[
+                              color.replace(/\s+/g, '') as keyof typeof COLORS
+                            ],
+                        }}
                       ></div>
                     </NavLink>
                   ))}
