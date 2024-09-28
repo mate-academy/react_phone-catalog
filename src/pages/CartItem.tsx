@@ -31,7 +31,7 @@ export const CartItem = () => {
       <p>{cart.length} items</p>
 
       {cart.map(el => (
-        <div className='cart__card'>
+        <div key={el.id} className='cart__card'>
           <div style={{display: 'flex', alignItems: 'center', columnGap: '16px'}}>
             <img onClick={() => handleRemoveItem(el.id)} className='cart__card-close' src="./img/Icons_Close.png" />
             <img className='cart__card-img' src={el.image} alt="" />

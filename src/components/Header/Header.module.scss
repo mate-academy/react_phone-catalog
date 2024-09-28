@@ -4,7 +4,6 @@ header {
   position: sticky;
   top: 0;
   padding-left: 16px;
-  padding-right: 16px;
 }
 
 .nav {
@@ -14,6 +13,16 @@ header {
   height: 48px;
   margin-top: -13px;
   margin-bottom: 24px;
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+
+    border: 1px solid rgb(226, 230, 233);
+    width: 100%;
+  }
 
   &-item {
     color: rgb(137, 147, 154);
@@ -28,9 +37,14 @@ header {
       &::before {
         content: '';
         position: absolute;
-        bottom: 0;
+        bottom: -20px;
         width: 100%;
         border: 1px solid rgb(15, 15, 17);
+
+        @media screen and (max-width: 1200px) {
+          bottom: -13px;
+        }
+
       }
     }
   }

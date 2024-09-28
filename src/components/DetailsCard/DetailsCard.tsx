@@ -1,9 +1,11 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Phone } from '../../types/phone';
 import { Tablet } from '../../types/tablet';
 import { Accessory } from '../../types/accessory';
 import classNames from 'classnames';
 import { useNavigate } from 'react-router-dom';
+import { Products } from '../../types/products';
+import { useLocalStorage } from '../../LocaleStorage';
 
 type Product = Phone | Tablet | Accessory;
 
@@ -12,8 +14,12 @@ type Props = {
 }
 
 export const DetailsCard: React.FC<Props> = ({ product }) => {
+  const [cart, setCart] = useLocalStorage<Products[]>('cart', [])
+  const [favorites, setFavorites] = useLocalStorage<Products[]>('favorites', [])
+
   const navigate = useNavigate();
   const [selectedImage, setSelectedImage] = useState<string>(product.images[0]);
+  const [products, setProducts] = useState<Products[]>([]);
 
   const handleMemoryChange = (newCapacity: string) => {
     let updatedURL;
@@ -35,6 +41,41 @@ export const DetailsCard: React.FC<Props> = ({ product }) => {
     navigate(updatedURL);
   };
 
+
+  useEffect(() => {
+    fetch('./api/products.json')
+      .then(response => response.json())
+      .then(data => setProducts(data));
+  }, [product])
+
+  const toogleFavoritesOfDetails = (productId: string) => {
+    const productToAdd = products.find(el => el.itemId === productId);
+
+    const isInCart = favorites.some(el => el.id === productToAdd?.id);
+
+    if (isInCart) {
+      // Если товар уже в корзине, удаляем его
+      setFavorites(favorites.filter(el => el.id !== productToAdd?.id));
+    } else if (productToAdd) {
+      // Если товара нет в корзине, добавляем его
+      setFavorites([...cart, productToAdd]);
+    }
+  }
+
+  const toogleCartOfDetails = (productId: string) => {
+    const productToAdd = products.find(el => el.itemId === productId);
+
+    const isInCart = cart.some(el => el.id === productToAdd?.id);
+
+    if (isInCart) {
+      // Если товар уже в корзине, удаляем его
+      setCart(cart.filter(el => el.id !== productToAdd?.id));
+    } else if (productToAdd) {
+      // Если товара нет в корзине, добавляем его
+      setCart([...cart, productToAdd]);
+    }
+  };
+
   return (
     <>
       <h1 className="details__text">{product.name}</h1>
@@ -43,8 +84,8 @@ export const DetailsCard: React.FC<Props> = ({ product }) => {
         <div className="details__image--more">
           {product.images.map(img => (
             <img
-            style={{cursor: 'pointer'}}
-              onClick={() => {setSelectedImage(img)}}
+              style={{ cursor: 'pointer' }}
+              onClick={() => { setSelectedImage(img) }}
               key={img}
               className="details__image--more__img"
               src={img}
@@ -79,7 +120,7 @@ export const DetailsCard: React.FC<Props> = ({ product }) => {
 
           <div className='flex-capacity'>
             {product.capacityAvailable.map((el) => (
-              <div style={{ cursor: 'pointer' }} onClick={() => handleMemoryChange(el.toLowerCase())}
+              <div key={`${product.id}-${el}`} style={{ cursor: 'pointer' }} onClick={() => handleMemoryChange(el.toLowerCase())}
                 className={
                   classNames({
                     'capacity-default': el !== product.capacity,
@@ -98,28 +139,36 @@ export const DetailsCard: React.FC<Props> = ({ product }) => {
           <p className="card__price-regular">{`${product.priceDiscount}$`}</p>
 
           <div className="card__buy">
-            <button className="card__buy-cart">Add to cart</button>
-            <img className='page-home-card__favorite' src="./img/add-to-cart.svg" alt="favorite" />
+            <button
+              onClick={() => { toogleCartOfDetails(product.id) }}
+              className={`${cart.some(el => el.itemId === product.id) ? 'added-to-cart' : 'card__buy-cart'}`}
+            >
+              {cart.some(el => el.itemId === product.id) ? 'Added to cart' : 'Add to cart'}
+            </button>
+            <img onClick={() => { toogleFavoritesOfDetails(product.id) }}
+              className='page-home-card__favorite' src="./img/add-to-cart.svg" alt="favorite" />
           </div>
 
-          <div className="card__ram">
-            <p className="card__ram-name">Screen</p>
-            <p className="card__ram-info">{product.screen}</p>
-          </div>
+          <div style={{ marginTop: '20px' }}>
+            <div className="card__ram">
+              <p className="card__ram-name">Screen</p>
+              <p className="card__ram-info">{product.screen}</p>
+            </div>
 
-          <div className="card__ram">
-            <p className="card__ram-name">Resolution</p>
-            <p className="card__ram-info">{product.resolution}</p>
-          </div>
+            <div className="card__ram">
+              <p className="card__ram-name">Resolution</p>
+              <p className="card__ram-info">{product.resolution}</p>
+            </div>
 
-          <div className="card__ram">
-            <p className="card__ram-name">Processor</p>
-            <p className="card__ram-info">{product.processor}</p>
-          </div>
+            <div className="card__ram">
+              <p className="card__ram-name">Processor</p>
+              <p className="card__ram-info">{product.processor}</p>
+            </div>
 
-          <div className="card__ram">
-            <p className="card__ram-name">RAM</p>
-            <p className="card__ram-info">{product.ram}</p>
+            <div className="card__ram">
+              <p className="card__ram-name">RAM</p>
+              <p className="card__ram-info">{product.ram}</p>
+            </div>
           </div>
         </div>
       </div>
