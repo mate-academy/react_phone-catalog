@@ -1,18 +1,39 @@
+import { useAppSelector } from '../../hooks/hookStore';
 import { StrCode } from '../../utils/enums';
-import ProductCard from '../_shared/productCard/ProductCard';
 import { PicturesSlider } from './components/PicturesSlider/PicturesSlider';
+import ProductsSlider from './components/ProductsSlider/ProductsSlider';
 import { HomePageStyled, TitleStyled } from './styled';
 import { useTranslation } from 'react-i18next';
 
 export const HomePage = () => {
   const { t } = useTranslation();
+  const { products = [] } = useAppSelector(state => state.products) || {};
+
+  const newModelProducts = [...products]
+    .sort((a, b) => b.year - a.year)
+    .slice(0, 10);
+  const hotPriceProducts = [...products]
+    .sort((a, b) => b.fullPrice - b.price - (a.fullPrice - a.price))
+    .slice(0, 15);
 
   return (
-    <HomePageStyled>
+    <div>
       <h1 style={{ display: 'none' }}>Product Catalog</h1>
+
       <TitleStyled>{t(StrCode.WelcomeMessage)}</TitleStyled>
-      <PicturesSlider />
-      <ProductCard variant="HomePage" />
-    </HomePageStyled>
+      <HomePageStyled>
+        <PicturesSlider />
+
+        <ProductsSlider
+          name={t(StrCode.NewModels)}
+          products={newModelProducts}
+        />
+
+        <ProductsSlider
+          name={t(StrCode.HotPrices)}
+          products={hotPriceProducts}
+        />
+      </HomePageStyled>
+    </div>
   );
 };

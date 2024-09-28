@@ -3,6 +3,8 @@ import accessoriesSlice from '../features/accessoriesSlice';
 import phoneSlice from '../features/phoneSlice';
 import productsSlice from '../features/productsSlice';
 import tablesSlice from '../features/tablesSlice';
+import backetSlice from '../features/basketSlice';
+import favoritSlice from '../features/favoritSlice';
 
 export const store = configureStore({
   reducer: {
@@ -10,6 +12,8 @@ export const store = configureStore({
     phones: phoneSlice,
     products: productsSlice,
     tables: tablesSlice,
+    backets: backetSlice,
+    favorit: favoritSlice,
   },
 });
 

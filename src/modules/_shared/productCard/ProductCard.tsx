@@ -8,63 +8,97 @@ import {
   NameBlockStyled,
   RegularPriceStyled,
 } from './styled';
-import { useAppSelector } from '../../../app/hook';
 import { Button } from '../../../components/Button/Button';
 import { LIKE_SVG } from '../../../utils/SVG';
 import { useTranslation } from 'react-i18next';
 import { StrCode } from '../../../utils/enums';
+import { ProductType } from '../../../types/productsType';
+import { addBacketId, deleteBacketId } from '../../../features/basketSlice';
+import { addFavoritId, deleteFavoritId } from '../../../features/favoritSlice';
+import { useAppDispatch, useAppSelector } from '../../../hooks/hookStore';
 
 type Props = {
   variant: 'HomePage' | 'ListPage';
+  product?: ProductType;
 };
 
-const ProductCard: React.FC<Props> = ({ variant }) => {
-  const { phones = [] } = useAppSelector(state => state.phones);
+const ProductCard: React.FC<Props> = ({ variant, product }) => {
   const { t } = useTranslation();
+  const dispatch = useAppDispatch();
+  const { backetsId } = useAppSelector(state => state.backets);
+  const { favoritId } = useAppSelector(state => state.favorit);
 
-  if (phones.length === 0) {
-    return (
-      <div>
-        <div></div>
-      </div>
-    );
-  }
+  const handleToBasket = () => {
+    if (!product) {
+      return;
+    }
+
+    if (backetsId.includes(product.itemId)) {
+      dispatch(deleteBacketId(product.itemId));
+    } else {
+      dispatch(addBacketId(product.itemId));
+    }
+  };
+
+  const handleToFavorit = () => {
+    if (!product) {
+      return;
+    }
+
+    if (favoritId.includes(product.itemId)) {
+      dispatch(deleteFavoritId(product.itemId));
+    } else {
+      dispatch(addFavoritId(product.itemId));
+    }
+  };
 
   return (
     <CardStyled variant={variant}>
-      <ImgStyled src={phones[0].images[0]} variant={variant} />
+      {product && (
+        <>
+          <ImgStyled src={product.image} variant={variant} />
 
-      <NameBlockStyled>{phones[0].name}</NameBlockStyled>
+          <NameBlockStyled>{product.name}</NameBlockStyled>
 
-      <CountBlockStyled>
-        ${phones[0].priceDiscount}
-        <RegularPriceStyled>${phones[0].priceRegular}</RegularPriceStyled>
-      </CountBlockStyled>
+          <CountBlockStyled>
+            ${product.price}
+            <RegularPriceStyled>${product.fullPrice}</RegularPriceStyled>
+          </CountBlockStyled>
 
-      <InfoBlockStyled>
-        <div>
-          {t(StrCode.Screen)}
-          <InfoStyled>{phones[0].screen}</InfoStyled>
-        </div>
-        <div>
-          {t(StrCode.Capacity)}
-          <InfoStyled>{phones[0].capacity}</InfoStyled>
-        </div>
-        <div>
-          {t(StrCode.Ram)}
-          <InfoStyled>{phones[0].ram}</InfoStyled>
-        </div>
-      </InfoBlockStyled>
+          <InfoBlockStyled>
+            <div>
+              {t(StrCode.Screen)}
+              <InfoStyled>{product.screen}</InfoStyled>
+            </div>
+            <div>
+              {t(StrCode.Capacity)}
+              <InfoStyled>{product.capacity}</InfoStyled>
+            </div>
+            <div>
+              {t(StrCode.Ram)}
+              <InfoStyled>{product.ram}</InfoStyled>
+            </div>
+          </InfoBlockStyled>
 
-      <ButtonsBlockStyled>
-        <Button variant="dark" css="width: 100%; padding: 0;">
-          {t(StrCode.AddToCard)}
-        </Button>
+          <ButtonsBlockStyled>
+            <Button
+              variant="dark"
+              css="width: 100%; padding: 0; text-align: center;"
+              onFunc={handleToBasket}
+            >
+              {t(StrCode.AddToCard)}
+            </Button>
 
-        <Button variant="white" css="width: 40px; flex-shrink: 0;">
-          <LIKE_SVG />
-        </Button>
-      </ButtonsBlockStyled>
+            <Button
+              variant="white"
+              css="width: 40px; flex-shrink: 0;"
+              onFunc={handleToFavorit}
+            >
+              <LIKE_SVG />
+            </Button>
+          </ButtonsBlockStyled>
+        </>
+      )}
     </CardStyled>
   );
 };

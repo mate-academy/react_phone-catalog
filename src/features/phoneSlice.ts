@@ -10,7 +10,7 @@ const initialState: InitialStateType = {
 };
 
 const phoneSlice = createSlice({
-  name: 'PWA',
+  name: 'phones',
   initialState,
   reducers: {
     setPhones: (

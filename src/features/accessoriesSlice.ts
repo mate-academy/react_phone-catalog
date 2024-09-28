@@ -10,7 +10,7 @@ const initialState: InitialStateType = {
 };
 
 const accessoriesSlice = createSlice({
-  name: 'PWA',
+  name: 'accesories',
   initialState,
   reducers: {
     setAccessories: (

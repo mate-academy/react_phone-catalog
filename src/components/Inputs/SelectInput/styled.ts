@@ -1,4 +1,3 @@
-/* eslint-disable */
 import styled, { css } from 'styled-components';
 
 type InputType = {

@@ -10,7 +10,7 @@ const initialState: InitialStateType = {
 };
 
 const tablesSlice = createSlice({
-  name: 'PWA',
+  name: 'tables',
   initialState,
   reducers: {
     setTables: (

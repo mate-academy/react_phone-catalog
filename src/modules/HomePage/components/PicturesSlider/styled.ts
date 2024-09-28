@@ -30,14 +30,15 @@ const MainContentStyled = styled.div`
 `;
 
 const ButtonSliderStyled = styled.div`
-  > * {
-    display: none;
+  display: none;
 
+  ${media.tablet} {
+    display: flex;
+  }
+
+  > * {
     ${media.tablet} {
       height: 100%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
       width: 32px;
       flex-shrink: 0;
     }
