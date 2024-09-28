@@ -1,5 +1,5 @@
 import { Product } from "../../../types/product";
-import ProductCard from "../../ProductCard/ProductCard";
+import ProductCard from "../../../UI/ProductCard/ProductCard";
 
 type Props = {
   curElem: number;
