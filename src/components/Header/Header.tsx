@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 import React from 'react';
-import { Link, NavLink, useNavigate } from 'react-router-dom';
+import { Link, NavLink, useLocation } from 'react-router-dom';
 
 type Props = {
   burgerMenu: boolean;
@@ -8,8 +8,7 @@ type Props = {
 };
 
 export const Header: React.FC<Props> = ({ burgerMenu, setBurgerMenu }) => {
-  const navigate = useNavigate();
-
+const location = useLocation()
   return (
     <header>
       <div className="nav">
@@ -71,8 +70,7 @@ export const Header: React.FC<Props> = ({ burgerMenu, setBurgerMenu }) => {
           <Link to='/favourites'>
             <img className='nav__button--first' src="./img/Favourites_nav.svg" alt="Favourites" />
           </Link>
-
-          <Link to='/cart'>
+          <Link state={{ from: location.pathname }} to='/cart'>
             <img className='nav__button--second' src="./img/Cart_nav.svg" alt="Cart" />
           </Link>
         </div>
