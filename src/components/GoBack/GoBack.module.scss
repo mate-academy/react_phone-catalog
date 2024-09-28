@@ -1,0 +1,11 @@
+@import '../../utils/mixins';
+@import '../../utils/variables';
+
+.goBack {
+  @include small-text;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: $color-grey;
+}

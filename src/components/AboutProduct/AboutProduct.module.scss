@@ -1,0 +1,25 @@
+@import '../../utils/mixins';
+@import '../../utils/variables';
+
+.aboutProduct {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+
+  &__title {
+    padding-bottom: 16px;
+    border-bottom: 1px solid $color-border-grey;
+  }
+
+  &__description {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__text {
+    @include body-text;
+
+    color: $color-grey;
+  }
+}

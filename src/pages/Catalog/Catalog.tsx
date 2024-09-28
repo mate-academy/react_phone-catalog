@@ -106,7 +106,7 @@ export const Catalog = () => {
             alt="home icon"
           />
         </NavLink>
-        <img src="./src/img/icons/arrow_right_grey.png" alt="arrow icon" />
+        <img src="../src/img/icons/arrow_right_grey.png" alt="arrow icon" />
         <p className={styles['catalog__current-page']}>{category}</p>
       </div>
 

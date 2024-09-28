@@ -44,6 +44,8 @@
     @include body-text;
 
     padding-top: 16px;
+    text-decoration: none;
+    color: $color-black;
   }
 
   &__prices {

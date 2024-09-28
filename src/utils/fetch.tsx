@@ -1,4 +1,4 @@
-import { Products, SortType } from './types';
+import { Product, Products, SortType } from './types';
 
 export const fetchProducts = (
   category: string,
@@ -7,7 +7,7 @@ export const fetchProducts = (
   return fetch(`/api/products.json`)
     .then(response => response.json())
     .then(data => {
-      const filteredProducts: Products[] = data.filter(
+      let filteredProducts: Products[] = data.filter(
         (product: Products) => product.category === category,
       );
 
@@ -26,10 +26,38 @@ export const fetchProducts = (
         case SortType.cheapest:
           filteredProducts.sort((a, b) => a.price - b.price);
           break;
+        case SortType.random:
+          const randomItems = new Set();
+
+          while (randomItems.size < 10) {
+            const randomIndex = Math.floor(
+              Math.random() * filteredProducts.length,
+            );
+
+            randomItems.add(filteredProducts[randomIndex]);
+          }
+
+          filteredProducts = Array.from(randomItems) as Products[];
+          break;
         default:
           break;
       }
 
       return filteredProducts;
+    });
+};
+
+export const fetchProduct = (
+  category: string,
+  productId: string,
+): Promise<Product> => {
+  return fetch(`/api/${category}.json`)
+    .then(response => response.json())
+    .then(data => {
+      const product = data.find((item: Product) => {
+        return item.id === productId;
+      });
+
+      return product;
     });
 };

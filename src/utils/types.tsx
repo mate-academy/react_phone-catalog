@@ -18,6 +18,7 @@ export enum SortType {
   hotPrice = 'hotPrice',
   alpha = 'title',
   cheapest = 'price',
+  random = 'random',
 }
 
 export enum ProductCategory {
@@ -52,7 +53,7 @@ export type Product = {
   category: string;
   namespaceId: string;
   name: string;
-  capacityAvailable: string;
+  capacityAvailable: string[];
   capacity: string;
   priceRegular: number;
   priceDiscount: number;

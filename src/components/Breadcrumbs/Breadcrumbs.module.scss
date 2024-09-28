@@ -1,0 +1,33 @@
+@import '../../utils/mixins';
+@import '../../utils/variables';
+
+.breadcrumbs {
+  padding-top: 24px;
+  padding-bottom: 24px;
+  display: flex;
+  gap: 8px;
+
+  @include on-tablet {
+    padding-bottom: 40px;
+  }
+
+  &__prev-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    font-weight: 600;
+    color: $color-black;
+    line-height: 15px;
+    text-transform: capitalize;
+  }
+
+  &__current-page {
+    line-height: 15px;
+    font-weight: 600;
+    color: $color-grey;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}

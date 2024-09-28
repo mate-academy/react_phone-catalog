@@ -1,10 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import {
-  ArrowType,
-  ProductCategory,
-  Products,
-  SortType,
-} from '../../utils/types';
+import { ArrowType, Products, SortType } from '../../utils/types';
 import { fetchProducts } from '../../utils/fetch';
 import { ProductCard } from '../ProductCard';
 import styles from './ProductSlider.module.scss';
@@ -13,15 +8,13 @@ import { ArrowButton } from '../ArrowButton';
 
 type Props = {
   title: string;
-  category: ProductCategory;
+  category: string;
   sortBy: SortType;
 };
 
 export const ProductSlider: React.FC<Props> = ({ title, category, sortBy }) => {
   const [cardWidth, setCardWidth] = useState(0);
-  const [displayedProducts, setDisplayedProducts] = useState<Products[] | []>(
-    [],
-  );
+  const [displayedProducts, setDisplayedProducts] = useState<Products[]>([]);
   const [leftImageIndex, setLeftImageIndex] = useState(0);
 
   const SLIDER_GAP = 16;
@@ -39,11 +32,11 @@ export const ProductSlider: React.FC<Props> = ({ title, category, sortBy }) => {
       }
     };
 
-    handleResize(); // виклик при першому рендері
-    window.addEventListener('resize', handleResize); // додати слухач подій
+    handleResize();
+    window.addEventListener('resize', handleResize);
 
     return () => {
-      window.removeEventListener('resize', handleResize); // видалити слухач при демонтуванні компонента
+      window.removeEventListener('resize', handleResize);
     };
   }, []);
 
@@ -51,18 +44,14 @@ export const ProductSlider: React.FC<Props> = ({ title, category, sortBy }) => {
     fetchProducts(category, sortBy).then(result => {
       setDisplayedProducts(result);
     });
-  }, []);
+  }, [category, sortBy]);
 
   const handleNextClick = () => {
-    setLeftImageIndex(prevIndex => {
-      return prevIndex + 1;
-    });
+    setLeftImageIndex(prevIndex => prevIndex + 1);
   };
 
   const handlePrevClick = () => {
-    setLeftImageIndex(prevIndex => {
-      return prevIndex - 1;
-    });
+    setLeftImageIndex(prevIndex => prevIndex - 1);
   };
 
   return (
@@ -78,7 +67,7 @@ export const ProductSlider: React.FC<Props> = ({ title, category, sortBy }) => {
           <ArrowButton
             type={ArrowType.right}
             onClick={handleNextClick}
-            disabled={leftImageIndex === displayedProducts.length - 1}
+            disabled={leftImageIndex >= displayedProducts.length - 1}
           />
         </div>
       </div>
@@ -87,7 +76,7 @@ export const ProductSlider: React.FC<Props> = ({ title, category, sortBy }) => {
           className={styles.productSlider__innerwrapper}
           style={{ transform: `translateX(-${widthToSlide}px)` }}
         >
-          {displayedProducts.map((displayedProduct: Products) => (
+          {displayedProducts?.map(displayedProduct => (
             <ProductCard
               key={displayedProduct.id}
               product={displayedProduct}

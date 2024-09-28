@@ -4,6 +4,7 @@ import React from 'react';
 import { Products } from '../../utils/types';
 import { ToBuyButton } from '../ToBuyButton';
 import { AddToFavourites } from '../AddToFavourites';
+import { Link } from 'react-router-dom';
 
 type Props = {
   product: Products;
@@ -14,10 +15,22 @@ export const ProductCard: React.FC<Props> = ({ product, width }) => {
 
   return (
     <article className={styles.productCard} style={{ minWidth: `${width}px` }}>
-      <a href="#" className={styles.productCard__imagewrapper}>
-        <img className={styles.productCard__image} src={image} alt={name} />
-      </a>
-      <p className={styles.productCard__title}>{name}</p>
+      <Link
+        to={`/${product.category}/${product.itemId}`}
+        className={styles.productCard__imagewrapper}
+      >
+        <img
+          className={styles.productCard__image}
+          src={`/${image}`}
+          alt={name}
+        />
+      </Link>
+      <Link
+        to={`/${product.category}/${product.itemId}`}
+        className={styles.productCard__title}
+      >
+        {name}
+      </Link>
       <div className={styles.productCard__prices}>
         <p className={styles.productCard__fullprice}>{`$${fullPrice}`}</p>
         <p className={styles.productCard__price}>{price}</p>

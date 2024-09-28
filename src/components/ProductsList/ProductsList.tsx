@@ -11,7 +11,7 @@ export const ProductsList: React.FC<Props> = ({ products }) => {
     <div className={styles.products__list}>
       {products.map((product: Products) => {
         return (
-          <div key={product.id} className={styles.products__item}>
+          <div key={product.itemId} className={styles.products__item}>
             <ProductCard product={product} />
           </div>
         );

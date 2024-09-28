@@ -2,6 +2,7 @@
 @import '../../utils/variables';
 
 .toBuyButton {
+  max-width: 263px;
   flex-grow: 1;
   background-color: $color-blue;
   border: none;
