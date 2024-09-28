@@ -58,7 +58,7 @@ export const DetailsCard: React.FC<Props> = ({ product }) => {
       setFavorites(favorites.filter(el => el.id !== productToAdd?.id));
     } else if (productToAdd) {
       // Если товара нет в корзине, добавляем его
-      setFavorites([...cart, productToAdd]);
+      setFavorites([...favorites, productToAdd]);
     }
   }
 
@@ -146,7 +146,9 @@ export const DetailsCard: React.FC<Props> = ({ product }) => {
               {cart.some(el => el.itemId === product.id) ? 'Added to cart' : 'Add to cart'}
             </button>
             <img onClick={() => { toogleFavoritesOfDetails(product.id) }}
-              className='page-home-card__favorite' src="./img/add-to-cart.svg" alt="favorite" />
+              className='page-home-card__favorite' src={favorites.some(fav => fav.itemId === product.id)
+                ? "./img/Add to fovourites - Added.svg"
+                : "./img/add-to-cart.svg"} alt="favorite" />
           </div>
 
           <div style={{ marginTop: '20px' }}>
