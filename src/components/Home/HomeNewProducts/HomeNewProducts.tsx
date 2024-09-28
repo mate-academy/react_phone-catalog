@@ -1,7 +1,7 @@
 import { useState } from "react";
 import HomeNewProductsButtons from "./HomeNewProductsButtons";
 import { useAppContext } from "../../../context/AppContext";
-import HomeSlider from "../HomeSlider/HomeSlider";
+import Slider from "../../../UI/Slider";
 
 const HomeNewProducts = () => {
   const { productsList } = useAppContext();
@@ -24,7 +24,7 @@ const HomeNewProducts = () => {
           handleStateChangeCurElem={handleStateChangeCurElem}
         />
       </section>
-      <HomeSlider curElem={curElem} newProducts={newProducts} />
+      <Slider curElem={curElem} newProducts={newProducts} />
     </section>
   );
 };

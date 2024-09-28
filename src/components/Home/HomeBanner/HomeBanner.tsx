@@ -34,7 +34,7 @@ const HomeBanner = () => {
   return (
     <section>
       <h1 className="mb-14">Welcome to Nice Gadgets store!</h1>
-      <div className="flex flex-row gap-4">
+      <div className="mb-2 flex flex-row gap-4">
         <HomeBannerButton
           onClick={handleClickPrevImage}
           arrow={<ArrowLeft fill={primary} />}

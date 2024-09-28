@@ -50,8 +50,8 @@ export const useAppContext = () => {
 const bannerImages: Image[] = [
   {
     id: 0,
-    src: "/react_phone-catalog/img/bannerHome/Banner-1",
-    color: "#000fff",
+    src: "/react_phone-catalog/img/bannerHome/Banner-1.webp",
+    color: "#000000",
   },
   {
     id: 1,

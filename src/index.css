@@ -35,6 +35,13 @@ html {
   grid-template-rows: auto 1fr auto;
 }
 
+@media (width < 1200px) {
+  .max-w-slider {
+    max-width: calc(100dvw - 24px);
+    margin-right: -24px;
+  }
+}
+
 h1 {
   @apply text-h1mobile small:text-h1;
 }

@@ -9,7 +9,7 @@ const HomeBannerScreen = () => {
   const bannerImageSize = 100 / (bannerImagesCount + 2);
 
   return (
-    <div className="mb-2 h-banner w-full overflow-hidden rounded-lg">
+    <div className="h-bannerMd w-full overflow-hidden rounded-lg desktop:desktop:h-banner">
       <section
         ref={homeBannerEl}
         style={{

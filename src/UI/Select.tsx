@@ -50,7 +50,7 @@ const Select = ({ name, options, localStoreName }: Props) => {
       <p className="text-bodyText text-sec">{name}</p>
       <button
         onClick={handleClickFocused}
-        className="flex w-full items-center justify-between rounded-lg border-1 border-icon p-3 hover:border-sec focus:border-primary"
+        className="flex w-full items-center justify-between rounded-lg border-1 border-icon p-3 duration-150 hover:border-sec focus:border-primary"
       >
         <p className="text-bodyText">{option}</p>
         <div className={`${isFocused && "rotate-180"} duration-150`}>
@@ -62,7 +62,7 @@ const Select = ({ name, options, localStoreName }: Props) => {
           {options.map((option) => (
             <p
               onClick={() => handleClickChangeOption(option)}
-              className="cursor-pointer rounded-lg px-3 py-2 text-left text-bodyText text-sec hover:bg-hoverBg hover:text-primary"
+              className="cursor-pointer rounded-lg px-3 py-2 text-left text-bodyText text-sec duration-150 hover:bg-hoverBg hover:text-primary"
             >
               {option}
             </p>

@@ -4,6 +4,7 @@ export default {
   theme: {
     screens: {
       small: "640px",
+      section: "920px",
       desktop: "1200px",
     },
     fontSize: {
@@ -103,10 +104,14 @@ export default {
       white: "#fff",
       green: "#27ae60",
       red: "#eb5757",
+      transparent: "transparent",
     },
     extend: {
       boxShadow: {
         buttonHover: "0 3px 13px 0 #17203166",
+      },
+      maxWidth: {
+        slider: "1200px",
       },
       width: {
         page: "min(100%, calc(1200px + (2rem * 2)))",
@@ -115,6 +120,7 @@ export default {
       },
       height: {
         banner: "400px",
+        bannerMd: "200px",
       },
       borderWidth: {
         1: "1px",

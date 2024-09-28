@@ -6,9 +6,10 @@ import { itemSpecifics } from "./ProductsCard.data";
 type ops = {
   product: Product;
   isSectHP?: boolean;
+  isSlider?: boolean;
 };
 
-const ProductCard = ({ product, isSectHP }: ops) => {
+const ProductCard = ({ product, isSectHP, isSlider }: ops) => {
   const { colors } = useAppContext();
   const { primary } = colors;
 
@@ -26,7 +27,9 @@ const ProductCard = ({ product, isSectHP }: ops) => {
   };
 
   return (
-    <div className="flex w-53 flex-shrink-0 flex-col items-center justify-center gap-2 rounded-lg border-1 border-elem p-8 duration-300 hover:shadow-xl small:w-69">
+    <div
+      className={`${isSlider ? "w-53 small:w-69" : "w-auto"} flex flex-shrink-0 flex-col items-center justify-center gap-2 rounded-lg border-1 border-elem p-8 duration-300 hover:shadow-xl`}
+    >
       <picture className="w-fit">
         <img
           src={image}
@@ -34,7 +37,9 @@ const ProductCard = ({ product, isSectHP }: ops) => {
           className="size-52 object-contain duration-300 hover:scale-105"
         />
       </picture>
-      <span className="w-full pt-4 text-bodyText">{name}</span>
+      <span className="line-clamp-2 min-h-16 w-full text-balance pt-4 text-bodyText">
+        {name}
+      </span>
 
       <div className="flex w-full justify-start gap-2">
         {isSectHP ? (
@@ -58,7 +63,7 @@ const ProductCard = ({ product, isSectHP }: ops) => {
         ))}
       </div>
       <div className="grid w-full grid-cols-[1fr_auto] justify-between gap-2">
-        <button className="hover:shadow-buttonHover h-10 rounded-lg bg-accent text-bodyText text-white duration-300">
+        <button className="h-10 rounded-lg bg-accent text-bodyText text-white duration-300 hover:shadow-buttonHover">
           Add to cart
         </button>
         <button className="grid aspect-square h-10 place-items-center rounded-full border-1 border-icon duration-300 hover:border-primary">
