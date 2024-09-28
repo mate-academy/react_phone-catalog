@@ -8,9 +8,6 @@ export const CartItem = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  console.log(location.state.from);
-
-
   const sumCart = () => {
     let sum = 0;
 

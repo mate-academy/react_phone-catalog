@@ -8,7 +8,8 @@ type Props = {
 };
 
 export const Header: React.FC<Props> = ({ burgerMenu, setBurgerMenu }) => {
-const location = useLocation()
+  const location = useLocation();
+
   return (
     <header>
       <div className="nav">
@@ -26,7 +27,7 @@ const location = useLocation()
           <NavLink
             className={({ isActive }) => classNames({
               'nav-item-is-active': isActive,
-              'nav-item' : !isActive,
+              'nav-item': !isActive,
             })}
             to='/'
           >
@@ -35,7 +36,7 @@ const location = useLocation()
           <NavLink
             className={({ isActive }) => classNames({
               'nav-item-is-active': isActive,
-              'nav-item' : !isActive,
+              'nav-item': !isActive,
             })}
             to='/phones'
           >
@@ -44,7 +45,7 @@ const location = useLocation()
           <NavLink
             className={({ isActive }) => classNames({
               'nav-item-is-active': isActive,
-              'nav-item' : !isActive,
+              'nav-item': !isActive,
             })}
             to='/tablets'
           >
@@ -53,7 +54,7 @@ const location = useLocation()
           <NavLink
             className={({ isActive }) => classNames({
               'nav-item-is-active': isActive,
-              'nav-item' : !isActive,
+              'nav-item': !isActive,
             })}
             to='/accessories'
           >
