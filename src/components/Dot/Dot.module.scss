@@ -1,0 +1,22 @@
+.dot {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: none;
+  background: none;
+
+  height: 100%;
+  width: 24px;
+
+  &__content {
+    height: 4px;
+    width: 14px;
+
+    background-color: map-get($colors, elements);
+  }
+
+  &__isActive {
+    background-color: map-get($colors, gray-primary);
+  }
+}

@@ -1,0 +1,25 @@
+.app {
+  display: flex;
+  flex-direction: column;
+
+  width: 100%;
+  min-height: 100vh;
+
+  max-width: 100vw;
+
+  &__isOpen {
+    overflow: hidden;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+  }
+
+  &__topPoint {
+    height: 0;
+    overflow: hidden;
+  }
+
+  &__mainContent {
+    flex: 1;
+  }
+}

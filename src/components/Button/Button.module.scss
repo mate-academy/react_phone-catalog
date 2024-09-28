@@ -1,0 +1,25 @@
+.button {
+  appearance: none;
+  cursor: pointer;
+  box-sizing: border-box;
+  border: 1px solid map-get($colors, elements);
+  padding: 7px;
+
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+
+  &__img {
+    display: flex;
+
+    padding: 3px 5px;
+  }
+
+  &__disabled {
+    opacity: 50%;
+    cursor: default;
+  }
+}

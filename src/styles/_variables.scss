@@ -1,0 +1,28 @@
+$colors: (
+  gray-primary: #313237,
+  secondary: #89939A,
+  icons: #B4BDC3,
+  elements: #E2E6E9,
+  hover-bg: #FAFBFC,
+  white: #FFFFFF,
+  green: #27AE60,
+  red: #EB5757,
+  mobileCategory: #6D6474,
+  tabletCategory: #8D8D92,
+  accessoriesCategory: #973D5F,
+);
+
+$font-families: (
+  mont: ('Mont', sans-serif)
+);
+
+$breakpoints: (
+  sm: 320px,
+  md: 640px,
+  lg: 1200px,
+);
+
+$duration: (
+  '0.3': 300ms,
+  '0.5': 500ms,
+);

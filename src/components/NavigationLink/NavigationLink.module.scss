@@ -1,0 +1,36 @@
+.navigationLink {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  height: 100%;
+
+  color: map-get($colors, secondary);
+
+  @include hover(color, map-get($colors, $key: gray-primary));
+
+  &__name {
+    @include apply-typography(a);
+  }
+
+  &::after {
+    position: absolute;
+    bottom: 0;
+    content: '';
+
+    width: 100%;
+
+    transition: transform map-get($duration, $key: '0.3') ease-in-out;
+    transform: scaleX(0);
+    transform-origin: left;
+    background-color: map-get($colors, $key: gray-primary);
+
+    height: 3px;
+  }
+
+  &:hover::after {
+    transform: scaleX(1);
+  }
+}
