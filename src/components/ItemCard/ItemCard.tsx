@@ -75,7 +75,7 @@ export const ItemCard = () => {
             : category === 'accessories' &&
               itemPage.split('-').slice(0, 4).join('-');
 
-      const response: Item[] = await fetchProducts(`/api/${category}.json`);
+      const response: Item[] = await fetchProducts(`${import.meta.env.BASE_URL}api/${category}.json`);
 
       return response.filter((item) => item.namespaceId === modelPrefix);
     },
@@ -91,7 +91,7 @@ export const ItemCard = () => {
   } = useQuery<Product[], Error>({
     queryKey: productQueryKey,
     queryFn: async () => {
-      const products: Product[] = await fetchProducts(`/api/products.json`);
+      const products: Product[] = await fetchProducts(`${import.meta.env.BASE_URL}api/products.json`);
 
       return products;
     },

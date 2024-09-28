@@ -34,8 +34,8 @@ export const Header = () => {
   );
 
   const menuIcon = isOpen
-    ? '/icons/icon-close.svg'
-    : '/icons/header-burger-menu.svg';
+    ? `${import.meta.env.BASE_URL}icons/icon-close.svg`
+    : `${import.meta.env.BASE_URL}icons/header-burger-menu.svg`;
 
   return (
     <header id="header" className={header}>

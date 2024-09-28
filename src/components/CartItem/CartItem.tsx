@@ -69,7 +69,7 @@ export const CartItem = ({ product }: CartItemProps) => {
           state={isInCart && { from: 'user', previousPath: pathname }}
         >
           <img
-            src={`/${product.image}`}
+            src={`${import.meta.env.BASE_URL}${product.image}`}
             alt={`${product.name} image`}
             className={item__img}
           />
