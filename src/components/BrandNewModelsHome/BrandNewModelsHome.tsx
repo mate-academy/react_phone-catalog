@@ -80,6 +80,7 @@ export const BrandNewModelsHome: React.FC<Props> = ({ type }) => {
                   ? 1.6
                   : 1.4;
   }, [width]);
+
   useEffect(() => {
     fetch('./api/products.json')
       .then(response => response.json())

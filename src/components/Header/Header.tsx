@@ -1,5 +1,6 @@
+import classNames from 'classnames';
 import React from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
 
 type Props = {
   burgerMenu: boolean;
@@ -23,10 +24,42 @@ export const Header: React.FC<Props> = ({ burgerMenu, setBurgerMenu }) => {
         />
 
         <ul className='nav__button-n-t'>
-          <li onClick={() => navigate('/')}>HOME</li>
-          <li onClick={() => navigate('/phones')}>PHONES</li>
-          <li onClick={() => navigate('/tablets')}>TABLETS</li>
-          <li onClick={() => navigate('/accessories')}>ACCESSORIES</li>
+          <NavLink
+            className={({ isActive }) => classNames({
+              'nav-item-is-active': isActive,
+              'nav-item' : !isActive,
+            })}
+            to='/'
+          >
+            HOME
+          </NavLink>
+          <NavLink
+            className={({ isActive }) => classNames({
+              'nav-item-is-active': isActive,
+              'nav-item' : !isActive,
+            })}
+            to='/phones'
+          >
+            PHONES
+          </NavLink>
+          <NavLink
+            className={({ isActive }) => classNames({
+              'nav-item-is-active': isActive,
+              'nav-item' : !isActive,
+            })}
+            to='/tablets'
+          >
+            TABLETS
+          </NavLink>
+          <NavLink
+            className={({ isActive }) => classNames({
+              'nav-item-is-active': isActive,
+              'nav-item' : !isActive,
+            })}
+            to='/accessories'
+          >
+            ACCESSORIES
+          </NavLink>
         </ul>
 
         <div className='ret'></div>

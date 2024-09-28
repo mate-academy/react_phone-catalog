@@ -3,6 +3,8 @@ header {
   z-index: 1000;
   position: sticky;
   top: 0;
+  padding-left: 16px;
+  padding-right: 16px;
 }
 
 .nav {
@@ -13,9 +15,27 @@ header {
   margin-top: -13px;
   margin-bottom: 24px;
 
-  @media screen and (min-width: 600px) {
+  &-item {
+    color: rgb(137, 147, 154);
+    font-family: Mont;
+    font-size: 12px;
+    font-weight: 700;
 
+    &-is-active {
+      color: rgb(0, 0, 0);
+      position: relative;
+
+      &::before {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        border: 1px solid rgb(15, 15, 17);
+      }
+    }
   }
+
+  @media screen and (min-width: 600px) {}
 
 
   @media screen and (min-width: 1200px) {
