@@ -40,7 +40,7 @@ export const BreadCrumbs = ({ item }: BreadCrumbsProps) => {
         '/',
         breadcrumbs__link,
         <img
-          src="/icons/icon-home.svg"
+          src={`${import.meta.env.BASE_URL}icons/icon-home.svg`}
           alt="home link"
           className={breadcrumbs__icon}
         />,

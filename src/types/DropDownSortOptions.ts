@@ -27,7 +27,6 @@ export type SortKeyOptionMap = {
 
 // Type-safe mapping between keys and options
 export const SORT_KEY_OPTION_MAP: SortKeyOptionMap = SORT_OPTIONS_MAP;
-console.log(SORT_KEY_OPTION_MAP);
 
 // Function to get SortKey from SortOption
 export function getSortKeyFromOption(option: SortOption): SortKey | undefined {

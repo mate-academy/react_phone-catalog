@@ -77,8 +77,6 @@ export const useSearchParamValue = (
         stringValue = String(newValue);
       }
 
-      console.log('StringValue is ', stringValue);
-
       if (isValidParamValue(paramName, newValue)) {
         const newSearchParams = new URLSearchParams(searchParams);
 

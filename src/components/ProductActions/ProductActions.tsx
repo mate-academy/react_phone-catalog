@@ -64,8 +64,8 @@ export const ProductActions = ({ product }: productActionsProps) => {
 
   const cartButtonText = isInCart ? 'Added' : 'Add to cart';
   const favImgSrc = isInFavorites
-    ? '/icons/fav-heart.svg'
-    : '/icons/emty-heart.svg';
+    ? `${import.meta.env.BASE_URL}icons/fav-heart.svg`
+    : `${import.meta.env.BASE_URL}icons/emty-heart.svg`;
 
   return (
     <div className={buttons}>

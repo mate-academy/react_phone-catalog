@@ -18,8 +18,6 @@ export const BackButton = ({ notFoundPage }: BackButtonProps) => {
   const { category, itemPage } = useParams();
   const location = useLocation();
 
-  console.log(location);
-
   const handleBack = () => {
     if (location.state?.from === 'user' && location.state.previousPath) {
       // * if we get there from cart or fav - get back there

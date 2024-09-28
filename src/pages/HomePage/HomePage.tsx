@@ -18,7 +18,7 @@ export const HomePage = () => {
 
         <ProductSlider
           title="Brand new models"
-          apiUrl="/api/products.json"
+          apiUrl={`${import.meta.env.BASE_URL}api/products.json`}
           discount={false}
           newOnly={true}
         />
@@ -27,7 +27,7 @@ export const HomePage = () => {
 
         <ProductSlider
           title="Hot prices"
-          apiUrl="/api/products.json"
+          apiUrl={`${import.meta.env.BASE_URL}api/products.json`}
           discount={true}
           newOnly={false}
         />

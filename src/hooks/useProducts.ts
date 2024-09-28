@@ -55,9 +55,6 @@ export const useProducts = (
     refetchInterval: 0, // Disable automatic refetching
   });
 
-  console.log('Data', products);
-  console.log('Error', isError);
-
   // Sorting products based on the selected option
   const sortedProducts = sortProducts(
     category === 'favourites' ? favoriteItems : products,
