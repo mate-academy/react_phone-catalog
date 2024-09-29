@@ -60,7 +60,7 @@ export const ProductCard: FC<ProductCardProps> = ({
           <p className={styles.descriptionText}>{ram}</p>
         </div>
       </div>
-      <CardButtons />
+      <CardButtons product={product} />
     </div>
   );
 };

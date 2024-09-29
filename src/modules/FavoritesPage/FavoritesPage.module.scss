@@ -3,3 +3,43 @@
 .container {
   @extend %container;
 }
+
+.productTop {
+  margin-bottom: 40px;
+
+  @include on-mobile {
+    margin-bottom: 32px;
+  }
+}
+
+.title {
+  margin-top: 40px;
+  margin-bottom: 8px;
+
+  @extend %h1-tablet;
+
+  @include on-tablet {
+    @include h1-mobile-mix;
+  }
+
+  @include on-mobile {
+    margin-top: 24px;
+  }
+}
+
+.count {
+  @extend %body-text;
+
+  color: var(--color-secondary);
+}
+
+.list {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(auto-fill, minmax(212px, 272px));
+  justify-content: center;
+
+  @include on-mobile {
+    grid-template-columns: repeat(auto-fill, minmax(212px, 1fr));
+  }
+}

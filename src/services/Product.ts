@@ -15,6 +15,12 @@ export const getProductByIdFromCategory = async (id: string, url: Category) => {
   return product.find((item: ProductDetails) => item.id === id);
 };
 
+export const getProductById = async (id: string) => {
+  const product = await getData<Product[]>(PRODUCTS_URL);
+
+  return product.find((item: Product) => item.itemId === id);
+};
+
 export const getProductsByCategory = async (category: Category) => {
   const products = await getData<Product[]>(PRODUCTS_URL);
 

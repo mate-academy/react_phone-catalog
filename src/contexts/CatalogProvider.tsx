@@ -4,15 +4,18 @@ import React, {
   useState,
   ReactNode,
   Dispatch,
-  useEffect,
+  useCallback,
 } from 'react';
 import { Product } from '../types/Product';
-import { getAllProducts } from '../services/Product';
+import { useLocalStorage } from '../utils/hooks/useLocalStorage';
 
 interface CatalogContextType {
   favorites: Product[];
   products: Product[];
+  setProducts: Dispatch<React.SetStateAction<Product[]>>;
   setFavorites: Dispatch<React.SetStateAction<Product[]>>;
+  addToFavorites: (product: Product) => void;
+  removeFromFavorites: (productId: string) => void;
 }
 
 type Props = {
@@ -24,18 +27,24 @@ export const CatalogContext = createContext<CatalogContextType | undefined>(
 );
 
 export const CatalogProvider: React.FC<Props> = ({ children }) => {
-  const [favorites, setFavorites] = useState<Product[]>([]);
+  const [favorites, setFavorites] = useLocalStorage('favourites', []);
   const [products, setProducts] = useState<Product[]>([]);
 
-  useEffect(() => {
-    const fetchProduct = async () => {
-      const data = await getAllProducts();
+  const addToFavorites = useCallback(
+    (product: Product) => {
+      setFavorites((prevFavorites: Product[]) => [...prevFavorites, product]);
+    },
+    [setFavorites],
+  );
 
-      setProducts(data);
-    };
-
-    fetchProduct();
-  }, []);
+  const removeFromFavorites = useCallback(
+    (productId: string) => {
+      setFavorites((prevFavorites: Product[]) =>
+        prevFavorites.filter(product => product.id !== productId),
+      );
+    },
+    [setFavorites],
+  );
 
   return (
     <CatalogContext.Provider
@@ -43,6 +52,9 @@ export const CatalogProvider: React.FC<Props> = ({ children }) => {
         setFavorites,
         favorites,
         products,
+        addToFavorites,
+        setProducts,
+        removeFromFavorites,
       }}
     >
       {children}

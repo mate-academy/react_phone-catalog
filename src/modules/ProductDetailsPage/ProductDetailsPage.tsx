@@ -5,6 +5,7 @@ import {
   getProductByIdFromCategory,
   getProductByParams,
   getSuggestedProducts,
+  getProductById,
 } from '../../services/Product';
 import { ProductDetails } from '../../types/ProductDetails';
 import { Spinner } from '../../components/Spinner/Spinner';
@@ -30,6 +31,7 @@ export const ProductDetailsPage: FC = ({}) => {
   const { productId } = useParams<Params>();
   const location = useLocation();
   const [isLoading, setIsLoading] = useState(true);
+  const [product, setProduct] = useState<Product>();
   const [productDetails, setProductDetails] = useState<ProductDetails>();
   const [suggestedProducts, setSuggestedProducts] = useState<Product[]>([]);
 
@@ -46,9 +48,12 @@ export const ProductDetailsPage: FC = ({}) => {
           );
 
           setProductDetails(data);
+
           const cugettedProducts: Product[] = await getSuggestedProducts();
+          const productFromProducts = await getProductById(productId);
 
           setSuggestedProducts(cugettedProducts);
+          setProduct(productFromProducts);
         }
 
         window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -135,7 +140,7 @@ export const ProductDetailsPage: FC = ({}) => {
                           ${productDetails.priceDiscount}
                         </div>
                       </div>
-                      <CardButtons />
+                      <CardButtons product={product} />
                       <div className={styles.specification}>
                         <div className={styles.spec}>
                           Screen
