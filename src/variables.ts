@@ -15,4 +15,3 @@ export const COLORS = {
   graphite: '#7F7F7F',
   sierrablue: '#A8B3C8',
 };
-
