@@ -15,7 +15,11 @@ export const HomeCarousel = () => {
       <h1 className="carousel-home--text">Welcome to Nice Gadgets store!</h1>
 
       <div className="carousel--slider">
-        <img className='carousel--slider--first-button' src="./img/Buttons_Slider button - Default (right) (1).svg" alt="button" />
+        <img
+          className="carousel--slider--first-button"
+          src="./img/Buttons_Slider button - Default (right) (1).svg"
+          alt="button"
+        />
         <Swiper
           modules={[Pagination, A11y, Autoplay, Navigation]}
           spaceBetween={50}
@@ -60,7 +64,11 @@ export const HomeCarousel = () => {
             />
           </SwiperSlide>
         </Swiper>
-        <img className='carousel--slider--second-button' src="./img/Buttons_Slider button - Default (right) (2).svg" alt="button" />
+        <img
+          className="carousel--slider--second-button"
+          src="./img/Buttons_Slider button - Default (right) (2).svg"
+          alt="button"
+        />
       </div>
     </>
   );

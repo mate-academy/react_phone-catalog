@@ -7,14 +7,13 @@ type Product = Phone | Tablet | Accessory;
 
 type Props = {
   product: Product;
-}
+};
 
 export const DetailsTechSpecs: React.FC<Props> = ({ product }) => {
   return (
     <>
-
-      <div className='about__grid'>
-        <div className='about__grid-el'>
+      <div className="about__grid">
+        <div className="about__grid-el">
           <h3>About</h3>
           <div className="card__line"></div>
 
@@ -32,27 +31,29 @@ export const DetailsTechSpecs: React.FC<Props> = ({ product }) => {
 
           <h4>Camera</h4>
           <p>
-            Meet the first triple‑camera system to combine cutting‑edge technology
-            with the legendary simplicity of iPhone. Capture up to four times more
-            scene. Get beautiful images in drastically lower light. Shoot the
-            highest‑quality video in a smartphone — then edit with the same tools
-            you love for photos. You’ve never shot with anything like it.
+            Meet the first triple‑camera system to combine cutting‑edge
+            technology with the legendary simplicity of iPhone. Capture up to
+            four times more scene. Get beautiful images in drastically lower
+            light. Shoot the highest‑quality video in a smartphone — then edit
+            with the same tools you love for photos. You’ve never shot with
+            anything like it.
           </p>
 
           <h4>
-            Shoot it. Flip it. Zoom it. Crop it. Cut it. Light it. Tweak it. Love
-            it.
+            Shoot it. Flip it. Zoom it. Crop it. Cut it. Light it. Tweak it.
+            Love it.
           </h4>
           <p>
-            iPhone 11 Pro lets you capture videos that are beautifully true to life,
-            with greater detail and smoother motion. Epic processing power means it
-            can shoot 4K video with extended dynamic range and cinematic video
-            stabilization — all at 60 fps. You get more creative control, too, with
-            four times more scene and powerful new editing tools to play with.
+            iPhone 11 Pro lets you capture videos that are beautifully true to
+            life, with greater detail and smoother motion. Epic processing power
+            means it can shoot 4K video with extended dynamic range and
+            cinematic video stabilization — all at 60 fps. You get more creative
+            control, too, with four times more scene and powerful new editing
+            tools to play with.
           </p>
         </div>
 
-        <div className='about__grid-el'>
+        <div className="about__grid-el">
           <h3>Tech specs</h3>
           <div className="card__line"></div>
 
@@ -92,15 +93,20 @@ export const DetailsTechSpecs: React.FC<Props> = ({ product }) => {
           </div>
 
           <div className="card__ram">
-            <p className='card__ram-name'>Cell</p>
+            <p className="card__ram-name">Cell</p>
             <div style={{ display: 'flex', columnGap: '3px' }}>
               {product.cell.map((el, index) => (
-                <p key={`${product.id}-cell-${index}`} className="card__ram-info">{el}</p>
+                <p
+                  key={`${product.id}-cell-${index}`}
+                  className="card__ram-info"
+                >
+                  {el}
+                </p>
               ))}
             </div>
           </div>
         </div>
       </div>
     </>
-  )
-}
+  );
+};

@@ -6,10 +6,9 @@ import { Accessory } from '../../types/accessory';
 
 type Product = Phone | Tablet | Accessory;
 
-
 type Props = {
-  product: Product
-}
+  product: Product;
+};
 
 export const DetailsBack: React.FC<Props> = ({ product }) => {
   const location = useLocation();
@@ -25,13 +24,16 @@ export const DetailsBack: React.FC<Props> = ({ product }) => {
           src="./img/Chevron (Arrow Right).svg"
           alt="Chevron"
         />
-        <Link to={location.pathname.includes('/tablets')
-          ? '/tablets'
-          : location.pathname.includes('/phones')
-            ? '/phones'
-            : location.pathname.includes('/accessories')
-              ? '/accessories'
-              : ''}
+        <Link
+          to={
+            location.pathname.includes('/tablets')
+              ? '/tablets'
+              : location.pathname.includes('/phones')
+                ? '/phones'
+                : location.pathname.includes('/accessories')
+                  ? '/accessories'
+                  : ''
+          }
         >
           <p className="page-phones__catygory-text">
             {location.pathname.includes('/tablets')
@@ -41,7 +43,8 @@ export const DetailsBack: React.FC<Props> = ({ product }) => {
                 : location.pathname.includes('/accessories')
                   ? 'Accessories'
                   : ''}
-          </p></Link>
+          </p>
+        </Link>
 
         <img
           className="page-phones__arrow"
@@ -52,19 +55,21 @@ export const DetailsBack: React.FC<Props> = ({ product }) => {
         <div>{product.name}</div>
       </div>
 
-      <Link to={
-        location.state?.from ||
-        (location.pathname.includes('/tablets')
-          ? '/tablets'
-          : location.pathname.includes('/phones')
-            ? '/phones'
-            : location.pathname.includes('/accessories')
-              ? '/accessories'
-              : '')
-      }>
-        <div className='details__back'>
+      <Link
+        to={
+          location.state?.from ||
+          (location.pathname.includes('/tablets')
+            ? '/tablets'
+            : location.pathname.includes('/phones')
+              ? '/phones'
+              : location.pathname.includes('/accessories')
+                ? '/accessories'
+                : '')
+        }
+      >
+        <div className="details__back">
           <img src="./img/Icons_Chevron (Arrow Right).svg" alt="Back" />
-          <p className='details__back--text'>Back</p>
+          <p className="details__back--text">Back</p>
         </div>
       </Link>
     </>

@@ -4,9 +4,6 @@ import { HomeCarousel } from '../components/HomeCarousel';
 import { BrandNewModelsHome } from '../components/BrandNewModelsHome';
 
 export const HomePage = () => {
-
-
-
   return (
     <>
       <HomeCarousel />

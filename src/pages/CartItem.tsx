@@ -12,45 +12,63 @@ export const CartItem = () => {
     let sum = 0;
 
     for (let i = 0; i < cart.length; i++) {
-      sum += cart[i].price
+      sum += cart[i].price;
     }
 
-    return sum
-  }
+    return sum;
+  };
 
   const handleRemoveItem = (productId: number) => {
     const updatedCart = cart.filter(product => product.id !== productId);
+
     setCart(updatedCart);
   };
 
   return (
     <>
-      <div className='details__back'>
-        <img style={{cursor: 'pointer'}} src="./img/Icons_Chevron (Arrow Right).svg" alt="Home" />
-        <p style={{cursor: 'pointer'}} onClick={() => {navigate(`${location.state.from}`)}} className='details__back--text'>Back</p>
+      <div className="details__back">
+        <img
+          style={{ cursor: 'pointer' }}
+          src="./img/Icons_Chevron (Arrow Right).svg"
+          alt="Home"
+        />
+        <p
+          style={{ cursor: 'pointer' }}
+          onClick={() => {
+            navigate(`${location.state.from}`);
+          }}
+          className="details__back--text"
+        >
+          Back
+        </p>
       </div>
 
       <h1>Cart</h1>
       <p>{cart.length} items</p>
 
       {cart.map(el => (
-        <div key={el.id} className='cart__card'>
-          <div style={{display: 'flex', alignItems: 'center', columnGap: '16px'}}>
-            <img onClick={() => handleRemoveItem(el.id)} className='cart__card-close' src="./img/Icons_Close.png" />
-            <img className='cart__card-img' src={el.image} alt="" />
+        <div key={el.id} className="cart__card">
+          <div
+            style={{ display: 'flex', alignItems: 'center', columnGap: '16px' }}
+          >
+            <img
+              onClick={() => handleRemoveItem(el.id)}
+              className="cart__card-close"
+              src="./img/Icons_Close.png"
+            />
+            <img className="cart__card-img" src={el.image} alt="" />
             <p>{el.name}</p>
           </div>
-          <p className='cart__card-price'>${el.price}</p>
+          <p className="cart__card-price">${el.price}</p>
         </div>
       ))}
 
-
-      <div className='cart__checkout'>
-        <h2 className='cart__text'>{`$${sumCart()}`}</h2>
+      <div className="cart__checkout">
+        <h2 className="cart__text">{`$${sumCart()}`}</h2>
         <p>Total for {cart.length} items</p>
-        <div className='cart__line'></div>
+        <div className="cart__line"></div>
         <button className="card__buy-cart">Checkout</button>
       </div>
     </>
-  )
+  );
 };

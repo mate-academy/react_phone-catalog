@@ -23,56 +23,72 @@ export const Header: React.FC<Props> = ({ burgerMenu, setBurgerMenu }) => {
           alt="Menu"
         />
 
-        <ul className='nav__button-n-t'>
+        <ul className="nav__button-n-t">
           <NavLink
-            className={({ isActive }) => classNames({
-              'nav-item-is-active': isActive,
-              'nav-item': !isActive,
-            })}
-            to='/'
+            className={({ isActive }) =>
+              classNames({
+                'nav-item-is-active': isActive,
+                'nav-item': !isActive,
+              })
+            }
+            to="/"
           >
             HOME
           </NavLink>
           <NavLink
-            className={({ isActive }) => classNames({
-              'nav-item-is-active': isActive,
-              'nav-item': !isActive,
-            })}
-            to='/phones'
+            className={({ isActive }) =>
+              classNames({
+                'nav-item-is-active': isActive,
+                'nav-item': !isActive,
+              })
+            }
+            to="/phones"
           >
             PHONES
           </NavLink>
           <NavLink
-            className={({ isActive }) => classNames({
-              'nav-item-is-active': isActive,
-              'nav-item': !isActive,
-            })}
-            to='/tablets'
+            className={({ isActive }) =>
+              classNames({
+                'nav-item-is-active': isActive,
+                'nav-item': !isActive,
+              })
+            }
+            to="/tablets"
           >
             TABLETS
           </NavLink>
           <NavLink
-            className={({ isActive }) => classNames({
-              'nav-item-is-active': isActive,
-              'nav-item': !isActive,
-            })}
-            to='/accessories'
+            className={({ isActive }) =>
+              classNames({
+                'nav-item-is-active': isActive,
+                'nav-item': !isActive,
+              })
+            }
+            to="/accessories"
           >
             ACCESSORIES
           </NavLink>
         </ul>
 
-        <div className='ret'></div>
-        <div className='ret'></div>
-        <div className='ret'></div>
-        <div className='ret'></div>
+        <div className="ret"></div>
+        <div className="ret"></div>
+        <div className="ret"></div>
+        <div className="ret"></div>
 
-        <div className='nav__button'>
-          <Link to='/favourites'>
-            <img className='nav__button--first' src="./img/Favourites_nav.svg" alt="Favourites" />
+        <div className="nav__button">
+          <Link to="/favourites">
+            <img
+              className="nav__button--first"
+              src="./img/Favourites_nav.svg"
+              alt="Favourites"
+            />
           </Link>
-          <Link state={{ from: location.pathname }} to='/cart'>
-            <img className='nav__button--second' src="./img/Cart_nav.svg" alt="Cart" />
+          <Link state={{ from: location.pathname }} to="/cart">
+            <img
+              className="nav__button--second"
+              src="./img/Cart_nav.svg"
+              alt="Cart"
+            />
           </Link>
         </div>
       </div>

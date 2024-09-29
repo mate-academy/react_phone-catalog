@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
 
 type WidthAndHeightTuple = [number, number];
 
@@ -8,7 +8,7 @@ function getCurrentWidthAndHeight(): WidthAndHeightTuple {
 
 export function useWindowResize() {
   const [widthAndHeight, setWidthAndHeight] = useState(
-    getCurrentWidthAndHeight()
+    getCurrentWidthAndHeight(),
   );
 
   function handler() {
@@ -16,8 +16,9 @@ export function useWindowResize() {
   }
 
   useEffect(() => {
-    window.addEventListener("resize", handler);
-    return () => window.removeEventListener("resize", handler);
+    window.addEventListener('resize', handler);
+
+    return () => window.removeEventListener('resize', handler);
   }, []);
 
   return widthAndHeight;

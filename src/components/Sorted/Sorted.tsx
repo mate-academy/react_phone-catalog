@@ -9,12 +9,14 @@ export const Sorted = () => {
 
   function updateSearchParam(key: string, value: string) {
     const newSearchParams = new URLSearchParams(searchParams);
+
     newSearchParams.set(key, value);
     setSearchParams(newSearchParams);
   }
 
   function removeSearchParam(key: string) {
     const newSearchParams = new URLSearchParams(searchParams);
+
     newSearchParams.delete(key);
     setSearchParams(newSearchParams);
   }
@@ -42,7 +44,7 @@ export const Sorted = () => {
           <div className="sort-list--select">
             <p
               onClick={() => {
-                removeSearchParam('sort')
+                removeSearchParam('sort');
                 setNewestList(false);
               }}
               className="sort-list--select-text"
@@ -109,7 +111,7 @@ export const Sorted = () => {
             </p>
             <p
               onClick={() => {
-                removeSearchParam('perPage')
+                removeSearchParam('perPage');
                 setAllList(false);
               }}
               className="sort-list--select-text"

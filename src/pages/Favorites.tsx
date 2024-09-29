@@ -6,7 +6,10 @@ import { Products } from '../types/products';
 export const Favorites = () => {
   const location = useLocation();
   const navigate = useNavigate();
-  const [favorites, setFavorites] = useLocalStorage<Products[]>('favorites', []);
+  const [favorites, setFavorites] = useLocalStorage<Products[]>(
+    'favorites',
+    [],
+  );
 
   const toggleFavorite = (product: Products) => {
     const isFavorite = favorites.some(fav => fav.id === product.id);
@@ -45,12 +48,14 @@ export const Favorites = () => {
       <h1>Favourites</h1>
       <p>{favorites.length} items</p>
 
-      <ul className='card__grid'>
+      <ul className="card__grid">
         {favorites.length > 0 &&
           favorites.map(product => (
             <div key={product.id} className="card">
               <img
-                onClick={() => {navigate(`/${product.category}/${product.itemId}`)}}
+                onClick={() => {
+                  navigate(`/${product.category}/${product.itemId}`);
+                }}
                 className="card__image"
                 src={product.image}
                 alt="card-image"
@@ -78,11 +83,16 @@ export const Favorites = () => {
               <div className="card__buy">
                 <button className="card__buy-cart">Add to cart</button>
                 <img
-                  onClick={() => { toggleFavorite(product) }}
-                  className='page-home-card__favorite'
-                  src={favorites.some(fav => fav.id === product.id)
-                    ? "./img/Add to fovourites - Added.svg"
-                    : "./img/add-to-cart.svg"} alt="favorite"
+                  onClick={() => {
+                    toggleFavorite(product);
+                  }}
+                  className="page-home-card__favorite"
+                  src={
+                    favorites.some(fav => fav.id === product.id)
+                      ? './img/Add to fovourites - Added.svg'
+                      : './img/add-to-cart.svg'
+                  }
+                  alt="favorite"
                 />
               </div>
             </div>

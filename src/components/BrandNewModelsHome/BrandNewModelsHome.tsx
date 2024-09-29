@@ -16,19 +16,23 @@ type Props = {
 };
 
 export const BrandNewModelsHome: React.FC<Props> = ({ type }) => {
-  const [width, height] = useWindowResize();
+  const [width] = useWindowResize();
 
-  const [favorites, setFavorites] = useLocalStorage<Products[]>('favorites', []);
+  const [favorites, setFavorites] = useLocalStorage<Products[]>(
+    'favorites',
+    [],
+  );
   const [cart, setCart] = useLocalStorage<Products[]>('cart', []);
 
   const [models, setModels] = useState<Products[]>([]);
   const [sortedModels, setSortedModels] = useState<Products[]>([]);
-  const location = useLocation()
+  const location = useLocation();
 
   function hotPrices(products: Products[]) {
     return [...products].sort((a, b) => {
       const discountA = a.fullPrice - a.price;
       const discountB = b.fullPrice - b.price;
+
       return discountB - discountA;
     });
   }
@@ -47,7 +51,7 @@ export const BrandNewModelsHome: React.FC<Props> = ({ type }) => {
     const isCart = cart.some(el => el.id === product.id);
 
     if (isCart) {
-      setCart(cart.filter(el => el.id !== product.id))
+      setCart(cart.filter(el => el.id !== product.id));
     } else {
       setCart([...cart, product]);
     }
@@ -91,6 +95,7 @@ export const BrandNewModelsHome: React.FC<Props> = ({ type }) => {
 
   useEffect(() => {
     let sorted;
+
     switch (type) {
       case 'Hot Prices':
         sorted = hotPrices(models);
@@ -104,6 +109,7 @@ export const BrandNewModelsHome: React.FC<Props> = ({ type }) => {
       default:
         sorted = models;
     }
+
     setSortedModels(sorted.slice(0, 10));
   }, [type, models]);
 
@@ -138,10 +144,13 @@ export const BrandNewModelsHome: React.FC<Props> = ({ type }) => {
               nextEl: '.page-home__new-models--arrow-default',
             }}
           >
-            {sortedModels.map((product) => (
+            {sortedModels.map(product => (
               <SwiperSlide key={product.id}>
                 <div className="page-home-card">
-                  <Link state={{ from: location.pathname }} to={`/${product.category}/${product.itemId}`}>
+                  <Link
+                    state={{ from: location.pathname }}
+                    to={`/${product.category}/${product.itemId}`}
+                  >
                     <img
                       className="page-home-card__image"
                       src={product.image} // Ensure correct image path
@@ -174,17 +183,29 @@ export const BrandNewModelsHome: React.FC<Props> = ({ type }) => {
                   </div>
 
                   <div className="page-home-card__buy">
-                    <button onClick={() => toogleCart(product)} className={classNames({
-                      'card__buy-cart': !cart.some(el => product.id === el.id),
-                      'added-to-cart': cart.some(el => product.id === el.id)
-                    })}>
-                      {cart.some(el => el.id === product.id) ? 'Added to cart' : 'Add to cart'}
+                    <button
+                      onClick={() => toogleCart(product)}
+                      className={classNames({
+                        'card__buy-cart': !cart.some(
+                          el => product.id === el.id,
+                        ),
+                        'added-to-cart': cart.some(el => product.id === el.id),
+                      })}
+                    >
+                      {cart.some(el => el.id === product.id)
+                        ? 'Added to cart'
+                        : 'Add to cart'}
                     </button>
-                    <img onClick={() => toggleFavorite(product)}
-                      className='page-home-card__favorite' src={favorites.some(fav => fav.id === product.id)
-                        ? "./img/Add to fovourites - Added.svg"
-                        : "./img/add-to-cart.svg"}
-                      alt="favorite" />
+                    <img
+                      onClick={() => toggleFavorite(product)}
+                      className="page-home-card__favorite"
+                      src={
+                        favorites.some(fav => fav.id === product.id)
+                          ? './img/Add to fovourites - Added.svg'
+                          : './img/add-to-cart.svg'
+                      }
+                      alt="favorite"
+                    />
                   </div>
                 </div>
               </SwiperSlide>

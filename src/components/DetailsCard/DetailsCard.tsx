@@ -11,11 +11,14 @@ type Product = Phone | Tablet | Accessory;
 
 type Props = {
   product: Product;
-}
+};
 
 export const DetailsCard: React.FC<Props> = ({ product }) => {
-  const [cart, setCart] = useLocalStorage<Products[]>('cart', [])
-  const [favorites, setFavorites] = useLocalStorage<Products[]>('favorites', [])
+  const [cart, setCart] = useLocalStorage<Products[]>('cart', []);
+  const [favorites, setFavorites] = useLocalStorage<Products[]>(
+    'favorites',
+    [],
+  );
 
   const navigate = useNavigate();
   const [selectedImage, setSelectedImage] = useState<string>(product.images[0]);
@@ -34,19 +37,16 @@ export const DetailsCard: React.FC<Props> = ({ product }) => {
   };
 
   const handleColorChange = (color: string) => {
-    let updatedURL;
-
-    updatedURL = `/${product.category}/${product.namespaceId}-${product.capacity.toLowerCase()}-${color}`;
+    const updatedURL = `/${product.category}/${product.namespaceId}-${product.capacity.toLowerCase()}-${color}`;
 
     navigate(updatedURL);
   };
-
 
   useEffect(() => {
     fetch('./api/products.json')
       .then(response => response.json())
       .then(data => setProducts(data));
-  }, [product])
+  }, [product]);
 
   const toogleFavoritesOfDetails = (productId: string) => {
     const productToAdd = products.find(el => el.itemId === productId);
@@ -60,7 +60,7 @@ export const DetailsCard: React.FC<Props> = ({ product }) => {
       // Если товара нет в корзине, добавляем его
       setFavorites([...favorites, productToAdd]);
     }
-  }
+  };
 
   const toogleCartOfDetails = (productId: string) => {
     const productToAdd = products.find(el => el.itemId === productId);
@@ -85,7 +85,9 @@ export const DetailsCard: React.FC<Props> = ({ product }) => {
           {product.images.map(img => (
             <img
               style={{ cursor: 'pointer' }}
-              onClick={() => { setSelectedImage(img) }}
+              onClick={() => {
+                setSelectedImage(img);
+              }}
               key={img}
               className="details__image--more__img"
               src={img}
@@ -98,7 +100,7 @@ export const DetailsCard: React.FC<Props> = ({ product }) => {
           <img src={selectedImage} alt="image" />
         </div>
 
-        <div className='q'>
+        <div className="q">
           <div className="details-flex">
             <p className="details-flex-text">Aviables colors</p>
           </div>
@@ -106,10 +108,18 @@ export const DetailsCard: React.FC<Props> = ({ product }) => {
           <div className="details__colors-container">
             {product.colorsAvailable.map(color => (
               <div
-                onClick={() => { handleColorChange(color) }}
+                onClick={() => {
+                  handleColorChange(color);
+                }}
                 key={color}
                 className="details__color"
-                style={{ backgroundColor: color, width: '32px', height: '32px', borderRadius: '50%', marginRight: '8px' }}
+                style={{
+                  backgroundColor: color,
+                  width: '32px',
+                  height: '32px',
+                  borderRadius: '50%',
+                  marginRight: '8px',
+                }}
               />
             ))}
           </div>
@@ -118,18 +128,18 @@ export const DetailsCard: React.FC<Props> = ({ product }) => {
 
           <p className="details-flex-text">Select capacity</p>
 
-          <div className='flex-capacity'>
-            {product.capacityAvailable.map((el) => (
-              <div key={`${product.id}-${el}`} style={{ cursor: 'pointer' }} onClick={() => handleMemoryChange(el.toLowerCase())}
-                className={
-                  classNames({
-                    'capacity-default': el !== product.capacity,
-                    'capacity': el === product.capacity,
-                  })}
+          <div className="flex-capacity">
+            {product.capacityAvailable.map(el => (
+              <div
+                key={`${product.id}-${el}`}
+                style={{ cursor: 'pointer' }}
+                onClick={() => handleMemoryChange(el.toLowerCase())}
+                className={classNames({
+                  'capacity-default': el !== product.capacity,
+                  capacity: el === product.capacity,
+                })}
               >
-                <div className="capacity-text">
-                  {el}
-                </div>
+                <div className="capacity-text">{el}</div>
               </div>
             ))}
           </div>
@@ -140,15 +150,27 @@ export const DetailsCard: React.FC<Props> = ({ product }) => {
 
           <div className="card__buy">
             <button
-              onClick={() => { toogleCartOfDetails(product.id) }}
+              onClick={() => {
+                toogleCartOfDetails(product.id);
+              }}
               className={`${cart.some(el => el.itemId === product.id) ? 'added-to-cart' : 'card__buy-cart'}`}
             >
-              {cart.some(el => el.itemId === product.id) ? 'Added to cart' : 'Add to cart'}
+              {cart.some(el => el.itemId === product.id)
+                ? 'Added to cart'
+                : 'Add to cart'}
             </button>
-            <img onClick={() => { toogleFavoritesOfDetails(product.id) }}
-              className='page-home-card__favorite' src={favorites.some(fav => fav.itemId === product.id)
-                ? "./img/Add to fovourites - Added.svg"
-                : "./img/add-to-cart.svg"} alt="favorite" />
+            <img
+              onClick={() => {
+                toogleFavoritesOfDetails(product.id);
+              }}
+              className="page-home-card__favorite"
+              src={
+                favorites.some(fav => fav.itemId === product.id)
+                  ? './img/Add to fovourites - Added.svg'
+                  : './img/add-to-cart.svg'
+              }
+              alt="favorite"
+            />
           </div>
 
           <div style={{ marginTop: '20px' }}>

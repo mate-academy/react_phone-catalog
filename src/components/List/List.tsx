@@ -12,8 +12,11 @@ type Props = {
 };
 
 export const List: React.FC<Props> = ({ type }) => {
-  const [favorites, setFavorites] = useLocalStorage<Products[]>('favorites', [])
-  const [cart, setCart] = useLocalStorage<Products[]>('cart', [])
+  const [favorites, setFavorites] = useLocalStorage<Products[]>(
+    'favorites',
+    [],
+  );
+  const [cart, setCart] = useLocalStorage<Products[]>('cart', []);
 
   const location = useLocation();
   const [searchParams] = useSearchParams(location.search);
@@ -25,6 +28,7 @@ export const List: React.FC<Props> = ({ type }) => {
       .then(response => response.json())
       .then((data: Products[]) => {
         const filteredProducts = data.filter(el => el.category === type);
+
         setProducts(filteredProducts);
         setSortedProducts(filteredProducts);
       });
@@ -34,9 +38,12 @@ export const List: React.FC<Props> = ({ type }) => {
     let sortedData = [...products];
 
     const sortParam = searchParams.get('sort') || 'Default';
+
     switch (sortParam) {
       case 'Alphabetically':
-        sortedData = sortedData.sort((one, two) => one.name.localeCompare(two.name));
+        sortedData = sortedData.sort((one, two) =>
+          one.name.localeCompare(two.name),
+        );
         break;
 
       case 'Cheapest':
@@ -49,6 +56,7 @@ export const List: React.FC<Props> = ({ type }) => {
     }
 
     const itemsOnPage = searchParams.get('perPage') || 'Default';
+
     switch (itemsOnPage) {
       case '4':
         sortedData = sortedData.slice(0, 4);
@@ -84,14 +92,14 @@ export const List: React.FC<Props> = ({ type }) => {
     const isCart = cart.some(el => el.id === product.id);
 
     if (isCart) {
-      setCart(cart.filter(el => el.id !== product.id))
+      setCart(cart.filter(el => el.id !== product.id));
     } else {
       setCart([...cart, product]);
     }
   };
 
   return (
-    <ul className='card__grid'>
+    <ul className="card__grid">
       {sortedProducts.length > 0 &&
         sortedProducts.map(product => (
           <div key={product.id} className="card">
@@ -127,14 +135,18 @@ export const List: React.FC<Props> = ({ type }) => {
                 onClick={() => toogleCart(product)}
                 className={`${cart.some(el => el.id === product.id) ? 'added-to-cart' : 'card__buy-cart'}`}
               >
-                {cart.some(el => el.id === product.id) ? 'Added to cart' : 'Add to cart'}
+                {cart.some(el => el.id === product.id)
+                  ? 'Added to cart'
+                  : 'Add to cart'}
               </button>
               <img
                 onClick={() => toggleFavorite(product)}
-                className='page-home-card__favorite'
-                src={favorites.some(fav => fav.id === product.id)
-                  ? "./img/Add to fovourites - Added.svg"
-                  : "./img/add-to-cart.svg"}
+                className="page-home-card__favorite"
+                src={
+                  favorites.some(fav => fav.id === product.id)
+                    ? './img/Add to fovourites - Added.svg'
+                    : './img/add-to-cart.svg'
+                }
                 alt="favorite"
               />
             </div>
