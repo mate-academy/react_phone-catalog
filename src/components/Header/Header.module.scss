@@ -29,6 +29,26 @@ header {
     font-family: Mont, sans-serif;
     font-size: 12px;
     font-weight: 700;
+    position: relative;
+    transition: all 0.3s;
+
+    &:hover {
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: -20px;
+        left: 50%; // Сдвигаем элемент к центру
+        width: 100%;
+
+        border: 1px solid rgb(15, 15, 17);
+        transform: translateX(-50%); // Сдвигаем элемент влево на 50% ширины
+
+        @media screen and (max-width: 1200px) {
+          bottom: -13px;
+        }
+
+      }
+    }
 
     &-is-active {
       color: rgb(0, 0, 0);

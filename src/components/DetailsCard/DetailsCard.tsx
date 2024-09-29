@@ -6,6 +6,7 @@ import classNames from 'classnames';
 import { useNavigate } from 'react-router-dom';
 import { Products } from '../../types/products';
 import { useLocalStorage } from '../../LocaleStorage';
+import { COLORS } from '../../variables';
 
 type Product = Phone | Tablet | Accessory;
 
@@ -36,7 +37,7 @@ export const DetailsCard: React.FC<Props> = ({ product }) => {
     navigate(updatedURL);
   };
 
-  const handleColorChange = (color: string) => {
+  const handleColorChange = (color: keyof typeof COLORS) => {
     const updatedURL = `/${product.category}/${product.namespaceId}-${product.capacity.toLowerCase()}-${color}`;
 
     navigate(updatedURL);
@@ -83,16 +84,20 @@ export const DetailsCard: React.FC<Props> = ({ product }) => {
       <div className="qwerty">
         <div className="details__image--more">
           {product.images.map(img => (
-            <img
-              style={{ cursor: 'pointer' }}
+            <div
               onClick={() => {
                 setSelectedImage(img);
               }}
-              key={img}
-              className="details__image--more__img"
-              src={img}
-              alt="image"
-            />
+              className={`details__image--more__wrapper ${selectedImage === img ? 'selected' : ''}`}
+              key={`${img}-${product.id}`}
+            >
+              <img
+                style={{ cursor: 'pointer' }}
+                className="details__image--more__img"
+                src={img}
+                alt="image"
+              />
+            </div>
           ))}
         </div>
 
@@ -108,17 +113,15 @@ export const DetailsCard: React.FC<Props> = ({ product }) => {
           <div className="details__colors-container">
             {product.colorsAvailable.map(color => (
               <div
-                onClick={() => {
-                  handleColorChange(color);
-                }}
-                key={color}
+              key={color}
+                onClick={() => handleColorChange(color as keyof typeof COLORS)}
                 className="details__color"
                 style={{
-                  backgroundColor: color,
+                  backgroundColor: COLORS[color as keyof typeof COLORS],
                   width: '32px',
                   height: '32px',
                   borderRadius: '50%',
-                  marginRight: '8px',
+                  marginRight: '4px',
                 }}
               />
             ))}

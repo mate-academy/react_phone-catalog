@@ -81,7 +81,7 @@ export const Header: React.FC<Props> = ({ burgerMenu, setBurgerMenu }) => {
               className="nav__button--first"
               src="./img/Favourites_nav.svg"
               alt="Favourites"
-            />
+            ></img>
           </Link>
           <Link state={{ from: location.pathname }} to="/cart">
             <img

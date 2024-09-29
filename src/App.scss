@@ -1,4 +1,3 @@
-
 @media screen and (min-width: 640px) {
   .qwerty {
     display: grid;
@@ -474,9 +473,25 @@
         flex-direction: column;
       }
 
+      &__wrapper {
+        border: 1px solid #ccc; // Цвет бордера
+        border-radius: 8px; // Скругление углов (по желанию)
+        width: 55px; // Ширина контейнера
+        height: 55px; // Высота контейнера
+        display: flex; // Центрирование изображения
+        justify-content: center; // Центрирование изображения
+        align-items: center; // Центрирование изображения
+
+        cursor: pointer;
+      }
+
       &__img {
-        height: 59px;
-        width: 45px;
+        width: auto; // Занимает всю ширину контейнера
+        height: 90%; // Высота автоматически
+      }
+
+      &__wrapper.selected {
+        border: 1px solid #000; // Измените на желаемый цвет для выделенного изображения
       }
     }
   }
