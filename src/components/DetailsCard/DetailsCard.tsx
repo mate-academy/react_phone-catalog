@@ -113,7 +113,7 @@ export const DetailsCard: React.FC<Props> = ({ product }) => {
           <div className="details__colors-container">
             {product.colorsAvailable.map(color => (
               <div
-              key={color}
+                key={color}
                 onClick={() => handleColorChange(color as keyof typeof COLORS)}
                 className="details__color"
                 style={{
