@@ -1,7 +1,4 @@
-.details__image {
-  height: 288px;
 
-}
 @media screen and (min-width: 640px) {
   .qwerty {
     display: grid;
@@ -66,7 +63,7 @@
 .card__buy-cart {
   margin: 0;
   color: rgb(255, 255, 255);
-  font-family: Mont;
+  font-family: Mont, sans-serif;
   font-size: 14px;
   font-weight: 700;
 }
@@ -110,7 +107,7 @@
 
   &-price {
     color: rgb(15, 15, 17);
-    font-family: Mont;
+    font-family: Mont, sans-serif;
     font-size: 22px;
     font-weight: 700;
   }
@@ -126,7 +123,7 @@
     gap: 64px;
     list-style: none;
     color: rgb(137, 147, 154);
-    font-family: Mont;
+    font-family: Mont, sans-serif;
     font-size: 12px;
     font-weight: 700;
 
@@ -143,7 +140,7 @@
 .added-to-cart {
   box-sizing: border-box;
   color: rgb(66, 25, 208);
-  font-family: Mont;
+  font-family: Mont, sans-serif;
   font-size: 14px;
   font-weight: 700;
   border: 1px solid rgb(226, 230, 233);
@@ -154,14 +151,16 @@
   &:hover {
     cursor: pointer;
 
-    box-shadow: 0px 3px 13px 0px rgba(23, 32, 49, 0.4);
+    box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.4);
   }
 }
 
 .card__buy-cart:hover {
+  cursor: pointer;
+
   border-radius: 48px;
 
-  box-shadow: 0px 3px 13px 0px rgba(23, 32, 49, 0.4);
+  box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.4);
   background: rgb(66, 25, 208);
 }
 
@@ -179,13 +178,6 @@
   margin: 0;
 }
 
-.details__back--text:hover {
-  color: black;
-}
-
-.card__buy-cart:hover {
-  cursor: pointer;
-}
 
 .cart__line {
   border: 1px solid rgb(226, 230, 233);
@@ -198,11 +190,14 @@
   height: 40px;
   cursor: pointer;
 }
+
 .cart__card-close:hover {
   content: url('../img/Icons_Close (1).png');
 }
+
 .page-home-card__favorite:hover {
   content: url('../img/Add to fovourites - Hover.svg');
+
   /* Меняем изображение при наведении */
 }
 
@@ -257,7 +252,7 @@
       font-size: 14px;
       font-weight: 500;
 
-      margin: 0px 0px 8px 0px;
+      margin: 0 0 8px;
     }
 
     &__price-regular {
@@ -265,14 +260,14 @@
       font-size: 22px;
       font-weight: 700;
 
-      margin: 0px 0px 8px 0px;
+      margin: 0 0 8px;
     }
 
     &__line {
       border-top: 1px solid rgb(226, 230, 233);
       width: 100%;
 
-      margin: 0px 0px 16px 0px;
+      margin: 0 0 16px;
     }
 
     &__screen {
@@ -431,6 +426,9 @@
       margin: 0;
       line-height: 15px;
 
+      &:hover {
+        color: black;
+      }
     }
   }
 
@@ -497,13 +495,12 @@
 }
 
 
-@import url(./normolize.scss);
-@import url(./components/Header/Header.module.scss);
-@import url(./components/HomeCarousel/HomeCarousel.module.scss);
-@import url(./components/Sorted/Sorted.module.scss);
-@import url(./components/ShopByCategory/BrandNewModelsHome.module.scss);
-@import url(./components/Footer/Footer.module.scss);
-@import url(./components/ProductHome/ProductHome.module.scss
-);
-@import url(./components/List/List.module.scss);
-@import url(./components/BurgerMenu/BurgerMenu.module.scss);
+@import './normolize';
+@import './components/Header/Header.module';
+@import './components/HomeCarousel/HomeCarousel.module';
+@import './components/Sorted/Sorted.module';
+@import './components/ShopByCategory/BrandNewModelsHome.module';
+@import './components/Footer/Footer.module';
+@import './components/ProductHome/ProductHome.module';
+@import './components/List/List.module';
+@import './components/BurgerMenu/BurgerMenu.module';

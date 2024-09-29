@@ -1,19 +1,19 @@
 @font-face {
-  font-family: 'Mont';
+  font-family: Mont;
   src: url('/fonts/Mont-Regular.otf') format('opentype');
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'Mont';
+  font-family: Mont;
   src: url('/fonts/Mont-Bold.otf') format('opentype');
   font-weight: bold;
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'Mont';
+  font-family: Mont;
   src: url('/fonts/Mont-SemiBold.otf') format('opentype');
   font-weight: 600;
   font-style: normal;
@@ -31,7 +31,7 @@ a {
 }
 
 body {
-  font-family: 'Mont', sans-serif; /* Шрифт для всего тела */
+  font-family: Mont, sans-serif; /* Шрифт для всего тела */
 }
 
 @media screen and (min-width: 640px) {

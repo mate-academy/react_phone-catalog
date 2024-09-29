@@ -26,7 +26,7 @@ header {
 
   &-item {
     color: rgb(137, 147, 154);
-    font-family: Mont;
+    font-family: Mont, sans-serif;
     font-size: 12px;
     font-weight: 700;
 
@@ -48,9 +48,6 @@ header {
       }
     }
   }
-
-  @media screen and (min-width: 600px) {}
-
 
   @media screen and (min-width: 1200px) {
     height: 64px;

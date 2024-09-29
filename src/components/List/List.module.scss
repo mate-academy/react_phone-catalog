@@ -16,8 +16,7 @@
 
     @media screen and (min-width: 640px) {
       grid-template-columns: repeat(2, 1fr);
-      column-gap: 16px;
-      row-gap: 40px;
+      gap: 40px 16px;
     }
 
     @media screen and (min-width: 1200px) {
@@ -35,6 +34,7 @@
 
     @media screen and (min-width: 1200px) {
       transition: all 0.3s;
+
       &:hover {
         transform: scale(1.05);
       }
@@ -46,7 +46,7 @@
     font-size: 14px;
     font-weight: 500;
 
-    margin: 0px 0px 8px 0px;
+    margin: 0 0 8px;
   }
 
   &__price-regular {
@@ -54,14 +54,14 @@
     font-size: 22px;
     font-weight: 700;
 
-    margin: 0px 0px 8px 0px;
+    margin: 0 0 8px;
   }
 
   &__line {
     border-top: 1px solid rgb(226, 230, 233);
     width: 100%;
 
-    margin: 0px 0px 16px 0px;
+    margin: 0 0 16px;
   }
 
   &__screen {
