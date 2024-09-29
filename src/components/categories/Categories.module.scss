@@ -1,0 +1,83 @@
+@import '../../shared/global/utils/mixins';
+@import '../../shared/global/globalStyles/globalStyles.scss';
+@import '../../shared/global/utils/vars';
+@import '../../shared/global/utils/fonts';
+
+.categories {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  &__link {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  &__title {
+    @include header-3;
+
+    @include on-tablet {
+      @include header-2;
+    }
+  }
+
+  &__categories_wrapper {
+    @include page-grid;
+  }
+
+  &__category {
+    grid-column: 1 / -1;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+    @include on-tablet {
+      grid-column: span 6;
+    }
+
+    @include on-desktop {
+      grid-column: span 8;
+    }
+
+    &_photo {
+      position: relative;
+      overflow: hidden;
+
+      height: 368px;
+
+      &_1 {
+        background-color: #6d6474;
+      }
+
+      &_2 {
+        background-color: #8d8d92;
+      }
+
+      &_3 {
+        background-color: #d53c51;
+      }
+    }
+
+    &_img {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+
+      @include hover(transform, scale(1.05));
+    }
+
+    &_info {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    &_title {
+      @include header-4;
+    }
+
+    &_description {
+      color: $secondary-text-color;
+    }
+  }
+}

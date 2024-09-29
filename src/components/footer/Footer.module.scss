@@ -1,0 +1,37 @@
+@import '../../shared/global/utils/mixins';
+@import '../../shared/global/globalStyles/globalStyles.scss';
+@import '../../shared/global/utils/vars';
+
+.footer {
+  background-color: $white;
+  width: 100%;
+
+  &__body {
+    @include content-padding-inline;
+
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    justify-content: space-between;
+    padding-block: 32px;
+
+    @include on-tablet {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      margin: 0 auto;
+    }
+  }
+
+  border-top: 1px solid $elements-border-color;
+
+  &__logo {
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__logoimage {
+    display: block;
+    height: 32px;
+  }
+}
