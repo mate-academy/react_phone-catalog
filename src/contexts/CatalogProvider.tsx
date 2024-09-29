@@ -11,8 +11,8 @@ import { useLocalStorage } from '../utils/hooks/useLocalStorage';
 
 interface CatalogContextType {
   favorites: Product[];
-  products: Product[];
-  setProducts: Dispatch<React.SetStateAction<Product[]>>;
+  productsCategory: Product[];
+  setProductsCategory: Dispatch<React.SetStateAction<Product[]>>;
   setFavorites: Dispatch<React.SetStateAction<Product[]>>;
   addToFavorites: (product: Product) => void;
   removeFromFavorites: (productId: string) => void;
@@ -28,7 +28,7 @@ export const CatalogContext = createContext<CatalogContextType | undefined>(
 
 export const CatalogProvider: React.FC<Props> = ({ children }) => {
   const [favorites, setFavorites] = useLocalStorage('favourites', []);
-  const [products, setProducts] = useState<Product[]>([]);
+  const [productsCategory, setProductsCategory] = useState<Product[]>([]);
 
   const addToFavorites = useCallback(
     (product: Product) => {
@@ -51,9 +51,9 @@ export const CatalogProvider: React.FC<Props> = ({ children }) => {
       value={{
         setFavorites,
         favorites,
-        products,
+        productsCategory,
         addToFavorites,
-        setProducts,
+        setProductsCategory,
         removeFromFavorites,
       }}
     >

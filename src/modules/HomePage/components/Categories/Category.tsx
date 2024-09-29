@@ -1,12 +1,23 @@
-import { FC } from 'react';
+import { FC, useEffect, useState } from 'react';
 import { сategoriesMap } from '../Helpers/сategoriesMap';
 import { getCountByCategory } from '../../../../utils/numberOfProduct';
 import { Link } from 'react-router-dom';
 import styles from './Category.module.scss';
-import { useCatalog } from '../../../../contexts/CatalogProvider';
+import { Product } from '../../../../types/Product';
+import { getAllProducts } from '../../../../services/Product';
 
 export const Category: FC = () => {
-  const { products } = useCatalog();
+  const [prod, setProd] = useState<Product[]>([]);
+
+  useEffect(() => {
+    const fetchProduct = async () => {
+      const data = await getAllProducts();
+
+      setProd(data);
+    };
+
+    fetchProduct();
+  }, []);
 
   return (
     <div className={styles.container}>
@@ -23,7 +34,7 @@ export const Category: FC = () => {
                 />
                 <h3 className={styles.itemTitle}> {item.title}</h3>
                 <h5 className={styles.itemCountModels}>
-                  {getCountByCategory(products, item.category)} models
+                  {getCountByCategory(prod, item.category)} models
                 </h5>
               </div>
             </Link>
