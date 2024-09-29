@@ -466,23 +466,32 @@
     &--more {
       display: flex;
       justify-content: center;
-      gap: 35px;
+      gap: 8px;
       margin-bottom: 40px;
 
       @media screen and (min-width: 640px) {
         flex-direction: column;
       }
 
+      @media screen and (min-width: 1200px) {
+        gap: 16px;
+      }
+
       &__wrapper {
         border: 1px solid #ccc; // Цвет бордера
         border-radius: 8px; // Скругление углов (по желанию)
-        width: 55px; // Ширина контейнера
-        height: 55px; // Высота контейнера
+        width: 48px; // Ширина контейнера
+        height: 48px; // Высота контейнера
         display: flex; // Центрирование изображения
         justify-content: center; // Центрирование изображения
         align-items: center; // Центрирование изображения
 
         cursor: pointer;
+
+        @media screen and (min-width: 1200px) {
+          width: 70px; // Ширина контейнера
+          height: 70px; // Высота контейнера
+        }
       }
 
       &__img {

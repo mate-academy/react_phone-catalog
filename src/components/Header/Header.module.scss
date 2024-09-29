@@ -32,21 +32,22 @@ header {
     position: relative;
     transition: all 0.3s;
 
+    &::before {
+      content: '';
+      position: absolute;
+      bottom: -20px;
+      left: 50%;
+      width: 0; // Початкове значення ширини
+      border: 1px solid rgb(15, 15, 17);
+      opacity: 0; // Початкове значення opacity
+      transform: translateX(-50%); // Сдвигаем элемент влево на 50% ширини
+      transition: width 0.3s ease, opacity 0.3s ease; // Плавна анімація width і opacity
+    }
+
     &:hover {
-      &::after {
-        content: '';
-        position: absolute;
-        bottom: -20px;
-        left: 50%; // Сдвигаем элемент к центру
-        width: 100%;
-
-        border: 1px solid rgb(15, 15, 17);
-        transform: translateX(-50%); // Сдвигаем элемент влево на 50% ширины
-
-        @media screen and (max-width: 1200px) {
-          bottom: -13px;
-        }
-
+      &::before {
+        width: 100%; // Коли наведено, ширина 100%
+        opacity: 1; // Коли наведено
       }
     }
 
