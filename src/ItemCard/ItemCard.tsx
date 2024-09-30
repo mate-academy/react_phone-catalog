@@ -20,26 +20,26 @@ export const ItemCard: React.FC = () => {
   };
 
   const allProducts = [...phones, ...tablets, ...accessories];
-  const product = allProducts.find(item => item.id === productId);
+  const productFind = allProducts.find(item => item.id === productId);
 
   const { state, dispatch } = useCart();
 
-  const isFavorite = state.favorites.some(fav => fav.id === product?.id);
-  const isInCart = state.cart.some(cartItem => cartItem.id === product?.id);
+  const isFavorite = state.favorites.some(fav => fav.id === productFind?.id);
+  const isInCart = state.cart.some(cartItem => cartItem.id === productFind?.id);
 
   const [selectedColor, setSelectedColor] = useState<string>(
-    product?.colorsAvailable[0] || '',
+    productFind?.colorsAvailable[0] || '',
   );
   const [selectedCapacity, setSelectedCapacity] = useState<string>(
-    product?.capacityAvailable[0] || '',
+    productFind?.capacityAvailable[0] || '',
   );
   const [selectedImages, setSelectedImages] = useState<string[]>(
-    product?.images || [],
+    productFind?.images || [],
   );
   const [selectedImageIndex, setSelectedImageIndex] = useState<number>(0);
 
   const updateProductUrl = (color: string, capacity: string) => {
-    const newProductId = `${product?.namespaceId}-${capacity.toLocaleLowerCase()}-${color}`;
+    const newProductId = `${productFind?.namespaceId}-${capacity.toLocaleLowerCase()}-${color}`;
 
     navigate(`/product/${newProductId}`);
   };
@@ -51,8 +51,8 @@ export const ItemCard: React.FC = () => {
   const handleColorChange = (color: string) => {
     setSelectedColor(color);
 
-    const colorImages = product?.images.map(img =>
-      img.replace(product.color, color),
+    const colorImages = productFind?.images.map(img =>
+      img.replace(productFind.color, color),
     );
 
     if (colorImages) {
@@ -107,7 +107,7 @@ export const ItemCard: React.FC = () => {
     }
   };
 
-  if (!product) {
+  if (!productFind) {
     return <p>Product not found</p>;
   }
 
@@ -119,10 +119,10 @@ export const ItemCard: React.FC = () => {
         </button>
         <img src="img/Arrow-right.svg" alt="" />
         <h2 className={styles.navigation_text}>
-          {capitalizeFirstLetter(product.category)}
+          {capitalizeFirstLetter(productFind.category)}
         </h2>
         <img src="img/Arrow-right.svg" alt="" />
-        <h2 className={styles.navigation_text}>{product.name}</h2>
+        <h2 className={styles.navigation_text}>{productFind.name}</h2>
       </div>
       <div>
         <button className={styles.button_back} onClick={handleBackClick}>
@@ -130,10 +130,10 @@ export const ItemCard: React.FC = () => {
           Back
         </button>
       </div>
-      <h1 className={styles.title}>{product.name}</h1>
+      <h1 className={styles.title}>{productFind.name}</h1>
       <div className={styles.content}>
         <div className={styles.side_images}>
-          {product.images.map((img, index) => (
+          {productFind.images.map((img, index) => (
             <img
               key={index}
               src={img}
@@ -152,7 +152,7 @@ export const ItemCard: React.FC = () => {
           <div className={styles.product_details}>
             <div className={styles.colors}>
               <p>Available colors</p>
-              {product.colorsAvailable.map(color => (
+              {productFind.colorsAvailable.map(color => (
                 <button
                   key={color}
                   className={`${styles.color_circle} ${
@@ -166,7 +166,7 @@ export const ItemCard: React.FC = () => {
 
             <div className={styles.capacity}>
               <p>Select capacity</p>
-              {product.capacityAvailable.map(capacity => (
+              {productFind.capacityAvailable.map(capacity => (
                 <button
                   key={capacity}
                   className={`${styles.capacity_button} ${
@@ -179,17 +179,19 @@ export const ItemCard: React.FC = () => {
               ))}
             </div>
             <div className={styles.priceSection}>
-              {product.priceDiscount ? (
+              {productFind.priceDiscount ? (
                 <>
                   <span className={styles.discountPrice}>
-                    ${product.priceDiscount}
+                    ${productFind.priceDiscount}
                   </span>
                   <span className={styles.originalPrice}>
-                    ${product.priceRegular}
+                    ${productFind.priceRegular}
                   </span>
                 </>
               ) : (
-                <span className={styles.price}>${product.priceRegular}</span>
+                <span className={styles.price}>
+                  ${productFind.priceRegular}
+                </span>
               )}
             </div>
             <div>
@@ -216,19 +218,19 @@ export const ItemCard: React.FC = () => {
             <div className={styles.productInfo}>
               <div className={styles.productFeature}>
                 <span className={styles.featureLabel}>Screen</span>
-                <span className={styles.featureValue}>{product.screen}</span>
+                <span className={styles.featureValue}>{productFind.screen}</span>
               </div>
               <div className={styles.productFeature}>
                 <span className={styles.featureLabel}>Capacity</span>
-                <span className={styles.featureValue}>{product.capacity}</span>
+                <span className={styles.featureValue}>{productFind.capacity}</span>
               </div>
               <div className={styles.productFeature}>
                 <span className={styles.featureLabel}>Processor</span>
-                <span className={styles.featureValue}>{product.processor}</span>
+                <span className={styles.featureValue}>{productFind.processor}</span>
               </div>
               <div className={styles.productFeature}>
                 <span className={styles.featureLabel}>RAM</span>
-                <span className={styles.featureValue}>{product.ram}</span>
+                <span className={styles.featureValue}>{productFind.ram}</span>
               </div>
             </div>
           </div>
@@ -237,7 +239,7 @@ export const ItemCard: React.FC = () => {
       <div className={styles.about}>
         <div className={styles.description}>
           <h2 className={styles.descTitle}>About</h2>
-          {product.description.map((desc, index) => (
+          {productFind.description.map((desc, index) => (
             <div key={index} className={styles.descBlock}>
               <h3 className={styles.descTitle}>{desc.title}</h3>
               {desc.text.map((paragraph, pIndex) => (
@@ -252,31 +254,31 @@ export const ItemCard: React.FC = () => {
           <h2 className={styles.tech__title}>Tech specs</h2>
           <div className={styles.spec_row}>
             <span>Screen</span>
-            <span>{product.screen}</span>
+            <span>{productFind.screen}</span>
           </div>
           <div className={styles.spec_row}>
             <span>Resolution</span>
-            <span>{product.resolution}</span>
+            <span>{productFind.resolution}</span>
           </div>
           <div className={styles.spec_row}>
             <span>Processor</span>
-            <span>{product.processor}</span>
+            <span>{productFind.processor}</span>
           </div>
           <div className={styles.spec_row}>
             <span>RAM</span>
-            <span>{product.ram}</span>
+            <span>{productFind.ram}</span>
           </div>
           <div className={styles.spec_row}>
             <span>Camera</span>
-            <span>{product.camera}</span>
+            <span>{productFind.camera}</span>
           </div>
           <div className={styles.spec_row}>
             <span>Zoom</span>
-            <span>{product.zoom}</span>
+            <span>{productFind.zoom}</span>
           </div>
           <div className={styles.spec_row}>
             <span>Cell</span>
-            <span>{product.cell.join(', ')}</span>
+            <span>{productFind.cell.join(', ')}</span>
           </div>
         </div>
       </div>
@@ -285,8 +287,8 @@ export const ItemCard: React.FC = () => {
         <div className={styles.container_also_like}>
           {randomDiscountProduct.map(randomProduct => (
             <Link
-              to={`/product/${product.id}`}
-              key={product.id}
+              to={`/product/${productFind.id}`}
+              key={productFind.id}
               className={styles.linkProduct}
             >
               <DiscountProductCard

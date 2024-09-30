@@ -279,11 +279,11 @@
     display: grid;
     grid-template-columns: repeat(4, 4fr);
   }
-}
-.linkProduct {
-  text-decoration: none;
-  color: inherit;
-  display: block;
+  .linkProduct {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+  }
 }
 
 @media screen and (max-width: 1199px) {
