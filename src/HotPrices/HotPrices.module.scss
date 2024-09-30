@@ -1,5 +1,3 @@
-
-
 @media screen and (min-width: 1200px){
   .productList {
     padding: 20px;
@@ -21,6 +19,7 @@
     display: block;
   }
 }
+
 @media screen and (max-width: 1199px){
   .productList {
     padding: 20px;
@@ -42,12 +41,12 @@
     display: block;
   }
 }
+
 @media screen and (max-width: 640px){
   .productList {
     padding: 20px;
-    width: 440px;
-    height: 495px;
-    margin: 0 16px 64px;
+    max-width: 640px;
+    margin: 0 16px 120px;
   }
 
   .productGrid {
@@ -55,6 +54,8 @@
     grid-template-columns: repeat(4, 1fr);
     gap: 16px;
     margin-top: 20px;
+    width: 440px;
+    height: 526px;
   }
 
   .linkProduct {

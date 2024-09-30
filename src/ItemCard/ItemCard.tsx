@@ -1,10 +1,12 @@
+/* eslint-disable max-len */
 import React, { useState } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import phones from '../../public/api/phones.json';
 import tablets from '../../public/api/tablets.json';
 import accessories from '../../public/api/accessories.json';
 import styles from './ItemCard.module.scss';
 import { useCart } from '../UseCart/UseCart';
+import { DiscountProductCard } from '../HotPrices/DiscountProductCard/DiscountProductCard';
 
 export const ItemCard: React.FC = () => {
   const { productId } = useParams<{ productId: string }>();
@@ -71,6 +73,38 @@ export const ItemCard: React.FC = () => {
 
   const capitalizeFirstLetter = (string: string) => {
     return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
+  };
+
+  const getDiscountedProducts = products => {
+    return products.filter(
+      product =>
+        product.priceDiscount && product.priceDiscount < product.priceRegular,
+    );
+  };
+
+  const getRandomDiscountProducts = (products, count) => {
+    const discountedProducts = getDiscountedProducts(products);
+    const shuffled = [...discountedProducts].sort(() => 0.5 - Math.random());
+
+    return shuffled.slice(0, count);
+  };
+
+  const randomDiscountProduct = getRandomDiscountProducts(allProducts, 4);
+
+  const handleAddToCart = (id: string) => {
+    const product = phones.find(p => p.id === id);
+
+    if (product) {
+      dispatch({ type: 'ADD_TO_CART', product });
+    }
+  };
+
+  const handleToggleFavorite = (id: string) => {
+    const product = phones.find(p => p.id === id);
+
+    if (product) {
+      dispatch({ type: 'TOGGLE_FAVORITE', product });
+    }
   };
 
   if (!product) {
@@ -245,8 +279,34 @@ export const ItemCard: React.FC = () => {
             <span>{product.cell.join(', ')}</span>
           </div>
         </div>
-        <div>
-          <h1>You may also like</h1>
+      </div>
+      <div>
+        <h1>You may also like</h1>
+        <div className={styles.container_also_like}>
+          {randomDiscountProduct.map(randomProduct => (
+            <Link
+              to={`/product/${product.id}`}
+              key={product.id}
+              className={styles.linkProduct}
+            >
+              <DiscountProductCard
+                key={randomProduct.id}
+                id={randomProduct.id}
+                name={randomProduct.name}
+                price={randomProduct.priceRegular}
+                discountPrice={randomProduct.priceDiscount}
+                screen={randomProduct.screen}
+                capacity={randomProduct.capacity}
+                ram={randomProduct.ram}
+                imageUrl={randomProduct.images[0]}
+                isFavorite={state.favorites.some(
+                  fav => fav.id === randomProduct.id,
+                )}
+                onAddToCart={() => handleAddToCart(randomProduct.id)}
+                onToggleFavorite={() => handleToggleFavorite(randomProduct.id)}
+              />
+            </Link>
+          ))}
         </div>
       </div>
     </div>

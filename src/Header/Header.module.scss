@@ -71,11 +71,8 @@
     color: #ff6347;
   }
 
-  .nav a:hover {
-    color: #ff6347;
-  }
-
 }
+
 @media screen and (max-width: 1199px){
   .header {
     position: sticky;
@@ -217,14 +214,5 @@
     color: #333;
     transition: color 0.3s ease;
   }
-
-  .nav-left a:hover, .nav-right a:hover {
-    color: #ff6347;
-  }
-
-  .nav a:hover {
-    color: #ff6347;
-  }
-
 }
 

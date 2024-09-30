@@ -52,14 +52,19 @@ export const BrandNewModels: React.FC = () => {
     <div className={styles.productList}>
       <h1>Brand new models</h1>
       <div className={styles.controls}>
-        <button onClick={handlePrev} disabled={currentIndex === 0}>
-          ◀
+        <button
+          onClick={handlePrev}
+          disabled={currentIndex === 0}
+          className={styles.buttons_controls}
+        >
+          <img src="../../public/img/Arrow-left.png" alt="" />
         </button>
         <button
           onClick={handleNext}
           disabled={currentIndex + productsPerPage >= filteredProducts.length}
+          className={styles.buttons_controls}
         >
-          ▶
+          <img src="../../public/img/Arrow-right.png" alt="" />
         </button>
       </div>
 

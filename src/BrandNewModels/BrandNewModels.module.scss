@@ -6,6 +6,19 @@
     margin: 0 152px 80px;
   }
 
+  .controls {
+    gap: 16px;
+  }
+
+  .buttons_controls {
+    width: 32px;
+    height: 32px;
+    gap: 16px;
+    background-color: #fff;
+    border: 1px solid gray;
+    cursor: pointer;
+  }
+
   .productGrid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -24,7 +37,7 @@
   .productList {
     padding: 20px;
     max-width: 1199px;
-    margin: 24px 0 0 0;
+    margin: 24px 0 0;
   }
 
   .controls {
@@ -69,6 +82,8 @@
     grid-template-columns: repeat(4, 1fr);
     gap: 16px;
     margin-top: 20px;
+    width: 440px;
+    height: 526px;
   }
 
   .linkProduct {

@@ -1,21 +1,23 @@
 :root {
-  --swiper-button-bg-color: #313237; /* Цвет фона для кнопок */
-  --swiper-button-border-radius: 4px; /* Радиус границ для кнопок */
-  --swiper-button-padding: 10px 20px; /* Отступы для кнопок */
-  --swiper-button-border: 2px solid #fff; /* Граница для кнопок */
+  --swiper-button-bg-color: #313237;
+  --swiper-button-padding: 10px 20px;
+  --swiper-button-border: 2px solid #fff;
 
-  --swiper-pagination-color:  #E2E6E9; /* Цвет неактивной точки */
-  --swiper-pagination-bullet-active-color: #313237; /* Цвет активной точки */
-  --swiper-pagination-bullet-width: 16px; /* Ширина точки */
-  --swiper-pagination-bullet-height: 8px; /* Высота точки */
-  --swiper-pagination-bullet-margin: 0 4px; /* Расстояние между точками */
-  --swiper-pagination-active-width: 24px; /* Ширина активной точки */
+  --swiper-pagination-color: #E2E6E9;
+  --swiper-pagination-bullet-active-color: #313237;
+  --swiper-pagination-bullet-width: 16px;
+  --swiper-pagination-bullet-height: 8px;
+  --swiper-pagination-bullet-margin: 0 4px;
+  --swiper-pagination-active-width: 24px;
+
+  --swiper-navigation-color: #313237;
+  --swiper-theme-color: #fff;
 }
 
 @media screen and (min-width: 1200px){
   .picturesSlider {
     width: 100%;
-    max-width: 1040px;
+    max-width: 1200px;
     margin: 0 auto;
     position: relative;
   }
@@ -23,6 +25,7 @@
   .slideImage {
     width: 1040px;
     height: 400px;
+    margin: auto 80px 30px;
     object-fit: cover;
   }
 
@@ -32,6 +35,35 @@
     align-items: center;
   }
 
+  .swiper-button-prev {
+    color: var(--swiper-navigation-color), var(--swiper-theme-color); /* Используем переменные */
+    background-color: var(--swiper-button-bg-color); /* Цвет фона кнопки */
+    border-radius: var(--swiper-button-border-radius); /* Радиус кнопки */
+    padding: var(--swiper-button-padding); /* Отступы внутри кнопки */
+    border: var(--swiper-button-border); /* Граница кнопки */
+  }
+
+  /* Кнопка "Вперед" аналогично */
+  .swiper-button-next {
+    color: var(--swiper-navigation-color), var(--swiper-theme-color);
+    background-color: var(--swiper-button-bg-color);
+    border-radius: var(--swiper-button-border-radius);
+    padding: var(--swiper-button-padding);
+    border: var(--swiper-button-border);
+  }
+
+  /* Стили для пагинации */
+  .swiper-pagination-bullet {
+    width: var(--swiper-pagination-bullet-width);
+    height: var(--swiper-pagination-bullet-height);
+    background-color: var(--swiper-pagination-color);
+    margin: var(--swiper-pagination-bullet-margin);
+  }
+
+  .swiper-pagination-bullet-active {
+    background-color: var(--swiper-pagination-bullet-active-color);
+    width: var(--swiper-pagination-active-width);
+  }
 
 }
 
@@ -60,6 +92,7 @@
     color: #fff;
   }
 }
-@media screen and (max-width: 640px){
 
-}
+// @media screen and (max-width: 640px){
+
+// }

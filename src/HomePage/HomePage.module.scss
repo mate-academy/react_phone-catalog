@@ -1,5 +1,5 @@
 @media screen and (min-width: 1200px){
-  .header {
+  .container {
     margin: 56px 200px;
   }
 
@@ -52,8 +52,10 @@
 }
 
 @media screen and (max-width: 1199px){
-  .header {
+  .container {
     max-width: 1199px;
+    margin: 24px auto;
+
   }
 
   .slider {
@@ -107,7 +109,7 @@
 }
 
 @media screen and (max-width: 640px){
-  .header {
+  .container {
     max-width: 640px;
   }
 
