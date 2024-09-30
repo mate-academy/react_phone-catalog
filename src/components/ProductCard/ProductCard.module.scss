@@ -9,8 +9,10 @@
   padding: 32px;
   border: 1px solid var(--color-elements);
   background-color: var(--color-slide-card);
+  transition: all $transition-duration;
 
   &:hover {
+    transition: all $transition-duration;
     border: 1px solid var(--color-primary);
     box-shadow: 0 2px 16px 0 rgba(0, 0, 0, 0.1);
   }

@@ -27,6 +27,7 @@ export const useIconSrc = () => {
   const spinnerUrl = `${BASE_URL}img/icons/spinner.svg`;
   const notFound = `${BASE_URL}img/product-not-found.png`;
   const notFoundUrl = `${BASE_URL}img/page-not-found.png`;
+  const emptyCartUrl = `${BASE_URL}img/cart-is-empty.png`;
 
   return {
     arrowLeftUrl,
@@ -46,5 +47,6 @@ export const useIconSrc = () => {
     spinnerUrl,
     notFound,
     notFoundUrl,
+    emptyCartUrl,
   };
 };

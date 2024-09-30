@@ -87,6 +87,7 @@
 .productButtonPrev {
   right: 50px;
   left: auto;
+  transition: all $transition-duration;
 
   @include on-desktop {
     right: 82px;
@@ -103,6 +104,7 @@
 
 .productButtonNext {
   right: 0;
+  transition: all $transition-duration;
 
   @include on-desktop {
     right: 32px;

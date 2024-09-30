@@ -4,6 +4,7 @@ import { useIconSrc } from '../../utils/hooks/useIconSrc';
 import styles from './CardButtons.module.scss';
 import { Product } from '../../types/Product';
 import { useCatalog } from '../../contexts/CatalogProvider';
+import classNames from 'classnames';
 
 type Props = {
   product?: Product | undefined;
@@ -11,11 +12,20 @@ type Props = {
 
 export const CardButtons: FC<Props> = ({ product }) => {
   const { favoriteSelected, favoritesUrl } = useIconSrc();
-  const { favorites, removeFromFavorites, addToFavorites } = useCatalog();
+  const {
+    favorites,
+    carts,
+    removeFromFavorites,
+    addToFavorites,
+    addToCart,
+    removeFromCart,
+  } = useCatalog();
 
   const isFavorite = favorites.some(
     favProduct => favProduct.id === product?.id,
   );
+
+  const isCart = carts.some(cart => cart.id === product?.id);
 
   const handleFavoriteClick = () => {
     if (product) {
@@ -27,10 +37,25 @@ export const CardButtons: FC<Props> = ({ product }) => {
     }
   };
 
+  const handleCartClick = () => {
+    if (product) {
+      if (isCart) {
+        removeFromCart(product.id);
+      } else {
+        addToCart(product);
+      }
+    }
+  };
+
   return (
     <div className={styles.buttons}>
-      <button className={styles.buttonCard}>
-        <p className={styles.buttonText}>{false ? 'Remove' : 'Add to cart'}</p>
+      <button
+        className={classNames(styles.buttonCard, {
+          [styles.buttonActive]: isCart,
+        })}
+        onClick={handleCartClick}
+      >
+        <p className={styles.buttonText}>{isCart ? 'Added' : 'Add to cart'}</p>
       </button>
       <button className={styles.buttonFavorite} onClick={handleFavoriteClick}>
         <img

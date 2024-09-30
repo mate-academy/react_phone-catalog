@@ -1,0 +1,136 @@
+@import '../../../../styles/main';
+
+.item {
+  padding: 24px;
+  border: 1px solid var(--color-elements);
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+
+  @include on-mobile {
+    flex-direction: column;
+    gap: 16px;
+  }
+}
+
+.wrapperBoxOne {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 24px;
+
+  @include on-mobile {
+    gap: 16px;
+  }
+}
+
+.wrapperBoxTwo {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 24px;
+
+  @include on-mobile {
+    gap: 16px;
+    justify-content: space-between;
+  }
+}
+
+.close {
+  height: 16px;
+  width: 16px;
+  object-fit: contain;
+  border: none;
+  background-color: transparent;
+  opacity: 0.5;
+  transition: all $transition-duration;
+
+  img {
+    max-width: none;
+  }
+
+  &:hover {
+    transition: all $transition-duration;
+    opacity: 1;
+  }
+}
+
+.cartImage {
+  img {
+    max-width: none;
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+  }
+}
+
+.itemTitle {
+  max-width: 336px;
+
+  @extend %body-text;
+}
+
+.wrapperBox {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  align-items: center;
+}
+
+.quantityButtons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.quantity {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  @extend %body-text;
+}
+
+.countBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  border: 1px solid var(--color-surface);
+  background-color: var(--color-icons);
+  height: 32px;
+  cursor: pointer;
+
+  transition: transform $transition-duration ease;
+
+  &:hover {
+    transform: scale(1.02);
+    border: 1px solid var(--color-primary);
+    background-color: var(--color-hover);
+  }
+}
+
+.disabled {
+  cursor: default;
+  background-color: var(--color-background);
+  opacity: 0.5;
+
+  &:hover {
+    transform: none;
+    border: 1px solid var(--color-surface);
+    background-color: transparent;
+  }
+}
+
+.itemPrice {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 80px;
+  color: var(--color-primary);
+
+  @extend %h3-tablet;
+}

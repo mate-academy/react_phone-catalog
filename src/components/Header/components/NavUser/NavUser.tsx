@@ -10,7 +10,7 @@ import { useCatalog } from '../../../../contexts/CatalogProvider';
 
 export const NavUser: FC = () => {
   const { toggleMenu } = useMenu();
-  const { favorites } = useCatalog();
+  const { favorites, carts } = useCatalog();
   const { favoritesUrl, cartUrl } = useIconSrc();
 
   const isActiveLink = getActiveLinkClass(styles);
@@ -33,7 +33,14 @@ export const NavUser: FC = () => {
         </div>
         <div className={styles.item}>
           <NavLink to={CART} className={isActiveLink} onClick={toggleMenu}>
-            <img src={cartUrl} alt="" className={styles.img} />
+            <div className={styles.img}>
+              <img src={cartUrl} alt="" />
+              {carts.length > 0 && (
+                <span className={styles.count}>
+                  <p className={styles.countText}>{carts.length}</p>
+                </span>
+              )}
+            </div>
           </NavLink>
         </div>
       </div>

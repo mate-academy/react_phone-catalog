@@ -62,9 +62,11 @@
     .swiper-button-prev {
       left: 0;
       right: auto;
+      transition: all $transition-duration;
     }
 
     .swiper-button-next {
+      transition: all $transition-duration;
       right: 0;
       left: auto;
     }

@@ -15,12 +15,14 @@ $transition-duration: 0.3s;
   --color-red: #eb5757;
   --color-button: #313237;
   --color-button-hover: #313237;
+  --color-button-active: #fff;
   --color-white: #fff;
   --color-black: #000;
   --color-filter-bg: #fff;
   --color-skeleton-bg: #e2e6e9;
   --color-skeleton-pulse: #ffffffc0;
   --color-slide-card: #fff;
+  --color-text-green: #27AE60;
 }
 
 [data-theme='dark'] {

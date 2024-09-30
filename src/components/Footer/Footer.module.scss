@@ -74,8 +74,10 @@
   color: var(--color-secondary);
 
   cursor: pointer;
+  transition: all $transition-duration;
 
   &:hover {
+    transition: all $transition-duration;
     color: var(--color-primary);
   }
 }
@@ -113,8 +115,10 @@
   cursor: pointer;
   justify-content: center;
   align-items: center;
+  transition: all $transition-duration;
 
   &:hover {
+    transition: all $transition-duration;
     border: 1px solid var(--color-primary);
     background-color: var(--color-hover);
   }

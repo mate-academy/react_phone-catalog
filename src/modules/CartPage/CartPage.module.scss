@@ -1,1 +1,97 @@
 @import '../../styles/main';
+
+.container {
+  @extend %container;
+}
+
+.title {
+  margin-top: 40px;
+  margin-bottom: 32px;
+
+  @extend %h1-tablet;
+
+  @include on-tablet {
+    @include h1-mobile-mix;
+  }
+
+  @include on-mobile {
+    margin-top: 24px;
+  }
+}
+
+.cartWrapper {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+
+  @include on-desktop {
+    flex-direction: column;
+  }
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 752px;
+  width: 100%;
+
+  @include on-desktop {
+    max-width: 100%;
+  }
+}
+
+.chekout {
+  height: fit-content;
+  max-width: 368px;
+  width: 100%;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  border: 1px solid var(--color-elements);
+
+  @include on-desktop {
+    max-width: 100%;
+  }
+}
+
+.mainPrice {
+  @extend %h2-tablet;
+
+  color: var(--color-primary);
+}
+
+.totalItems {
+  margin-bottom: 24px;
+  color: var(--color-secondary);
+
+  @extend %body-text;
+}
+
+.divider {
+  margin-bottom: 24px;
+  width: 100%;
+  height: 0;
+  border-top: 1px solid var(--color-elements);
+}
+
+.chekoutBtn {
+  width: 100%;
+  height: 48px;
+  background-color: var(--color-button);
+  border: none;
+  color: var(--color-white);
+  transition: all $transition-duration;
+  cursor: pointer;
+
+  @extend %body-text;
+
+  &:hover {
+    transition: all $transition-duration;
+    transform: scale(1.02);
+    box-shadow: 0 3px 13px 0 #17203166;
+    background-color: var(--color-button-hover);
+  }
+}

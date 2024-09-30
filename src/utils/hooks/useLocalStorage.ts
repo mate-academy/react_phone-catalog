@@ -1,8 +1,7 @@
 import { useEffect, useState } from 'react';
-import { Product } from '../../types/Product';
 
-export const useLocalStorage = (key: string, initialValue: Product[]) => {
-  const getValue = () => {
+export const useLocalStorage = <T>(key: string, initialValue: T) => {
+  const getValue = (): T => {
     const storage = localStorage.getItem(key);
 
     if (storage) {
@@ -12,7 +11,7 @@ export const useLocalStorage = (key: string, initialValue: Product[]) => {
     return initialValue;
   };
 
-  const [value, setValue] = useState<Product[]>(getValue);
+  const [value, setValue] = useState<T>(getValue);
 
   useEffect(() => {
     localStorage.setItem(key, JSON.stringify(value));
