@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useIconSrc } from '../../../../utils/hooks/useIconSrc';
 import { FAVORITES, CART } from '../../../../utils/routes';
@@ -10,10 +10,15 @@ import { useCatalog } from '../../../../contexts/CatalogProvider';
 
 export const NavUser: FC = () => {
   const { toggleMenu } = useMenu();
-  const { favorites, carts } = useCatalog();
+  const { favorites, carts, getTotalQuantity } = useCatalog();
   const { favoritesUrl, cartUrl } = useIconSrc();
+  const [count, setCount] = useState<number>();
 
   const isActiveLink = getActiveLinkClass(styles);
+
+  useEffect(() => {
+    setCount(getTotalQuantity());
+  }, [getTotalQuantity]);
 
   return (
     <div className={styles.navUser}>
@@ -37,7 +42,7 @@ export const NavUser: FC = () => {
               <img src={cartUrl} alt="" />
               {carts.length > 0 && (
                 <span className={styles.count}>
-                  <p className={styles.countText}>{carts.length}</p>
+                  <p className={styles.countText}>{count}</p>
                 </span>
               )}
             </div>
