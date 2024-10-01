@@ -39,7 +39,6 @@
   @extend %small-text;
 
   text-align: center;
-  padding-top: 2px;
   height: 15px;
   text-decoration: none;
   color: var(--color-secondary);
@@ -55,8 +54,6 @@
 
 .clip {
   overflow: hidden;
-  display: block;
   white-space: nowrap;
   text-overflow: ellipsis;
-  max-width: 100%;
 }
