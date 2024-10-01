@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useLocalStorage } from '../LocaleStorage';
 import { Products } from '../types/products';
 import { useLocation, useNavigate } from 'react-router-dom';
@@ -7,12 +7,13 @@ export const CartItem = () => {
   const [cart, setCart] = useLocalStorage<Products[]>('cart', []);
   const navigate = useNavigate();
   const location = useLocation();
+  const [quantities, setQuantities] = useState(cart.map(() => 1));
 
   const sumCart = () => {
     let sum = 0;
 
     for (let i = 0; i < cart.length; i++) {
-      sum += cart[i].price;
+      sum += cart[i].price * quantities[i]; // Зміна тут: множимо ціну на кількість
     }
 
     return sum;
@@ -22,6 +23,24 @@ export const CartItem = () => {
     const updatedCart = cart.filter(product => product.id !== productId);
 
     setCart(updatedCart);
+  };
+
+  const handleIncrease = (index: number) => {
+    const newQuantities = [...quantities];
+
+    newQuantities[index] += 1;
+
+    setQuantities(newQuantities);
+  };
+
+  const handleDecrease = (index: number) => {
+    const newQuantities = [...quantities];
+
+    if (newQuantities[index] > 1) {
+      newQuantities[index] -= 1;
+    }
+
+    setQuantities(newQuantities);
   };
 
   return (
@@ -46,7 +65,7 @@ export const CartItem = () => {
       <h1>Cart</h1>
       <p>{cart.length} items</p>
 
-      {cart.map(el => (
+      {cart.map((el, index) => (
         <div key={el.id} className="cart__card">
           <div
             style={{ display: 'flex', alignItems: 'center', columnGap: '16px' }}
@@ -59,7 +78,34 @@ export const CartItem = () => {
             <img className="cart__card-img" src={el.image} alt="" />
             <p>{el.name}</p>
           </div>
-          <p className="cart__card-price">${el.price}</p>
+
+          <div
+            className="cart__card--second-div"
+            style={{
+              display: 'flex',
+              justifyContent: 'space-between',
+              alignItems: 'center',
+            }}
+          >
+            <div className="cart__counter">
+              <button
+                style={{ cursor: 'pointer' }}
+                onClick={() => handleIncrease(index)}
+                className="cart__counter-text"
+              >
+                +
+              </button>
+              <p className="cart__counter-text">{quantities[index]}</p>
+              <button
+                style={{ cursor: 'pointer' }}
+                onClick={() => handleDecrease(index)}
+                className="cart__counter-text"
+              >
+                -
+              </button>
+            </div>
+            <p className="cart__card-price">${el.price * quantities[index]}</p>
+          </div>
         </div>
       ))}
 

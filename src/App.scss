@@ -1,8 +1,22 @@
+.cart__counter {
+  display: flex;
+  column-gap: 8px;
+
+  &-text {
+    margin: 0;
+    color: rgb(0, 0, 0);
+    font-family: Mont, sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+  }
+}
+
 @media screen and (min-width: 640px) {
   .qwerty {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
     column-gap: 16px;
+    align-items: center;
 
     @media screen and (min-width: 1200px) {
       grid-template-columns: repeat(24, 1fr);
@@ -85,6 +99,8 @@
 }
 
 .cart__card {
+  display: flex;
+  flex-direction: column;
   padding: 16px;
   box-sizing: border-box;
   border: 1px solid rgb(226, 230, 233);
@@ -92,6 +108,21 @@
   background: rgb(255, 255, 255);
 
   margin-bottom: 10px;
+
+  @media screen and (min-width: 640px) {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  &--second-div {
+    @media screen and (min-width: 640px) {
+      column-gap: 8px;
+    }
+
+    @media screen and (min-width: 640px) {
+      column-gap: 16px;
+    }
+  }
 
   &-img {
     height: 76px;
