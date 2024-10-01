@@ -9,6 +9,7 @@
   flex-direction: column;
   justify-content: space-between;
   width: 270px;
+  height: 506px;
 }
 
 .productCard:hover {
@@ -19,6 +20,7 @@
   width: 207px;
   height: 196px;
   margin: 0 32px 8px;
+  object-fit: contain;
 }
 
 .productDetails {

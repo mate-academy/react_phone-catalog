@@ -123,7 +123,7 @@ export const ItemCard: React.FC = () => {
       setSelectedImages(product.images || []);
       setSelectedImageIndex(0);
     }
-  }, [productId]);
+  }, [product, productId]);
 
   if (!product) {
     return <p>Product not found</p>;
