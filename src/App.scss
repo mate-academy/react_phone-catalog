@@ -11,6 +11,23 @@
   }
 }
 
+.nav__count--first, .nav__count--second {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  position: absolute;
+  top: 27%;
+  right: 27%;
+  width: 15px;
+  height: 15px;
+  font-size: 10px; /* Размер шрифта для корректного отображения цифр */
+  border: 1px solid rgb(255, 255, 255);
+  background: rgb(66, 25, 208);
+  border-radius: 100%;
+  box-sizing: border-box;
+}
+
 @media screen and (min-width: 640px) {
   .qwerty {
     display: grid;

@@ -75,7 +75,12 @@ export const CartItem = () => {
               className="cart__card-close"
               src="./img/Icons_Close.png"
             />
-            <img className="cart__card-img" src={el.image} alt="" />
+            <img
+              onClick={() => navigate(`/${el.category}/${el.itemId}`)}
+              className="cart__card-img"
+              src={el.image}
+              style={{ cursor: 'pointer' }}
+            />
             <p>{el.name}</p>
           </div>
 
