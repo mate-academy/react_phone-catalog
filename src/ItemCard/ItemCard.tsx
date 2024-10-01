@@ -1,5 +1,5 @@
 /* eslint-disable max-len */
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import phones from '../../public/api/phones.json';
 import tablets from '../../public/api/tablets.json';
@@ -81,8 +81,9 @@ export const ItemCard: React.FC = () => {
 
   const getDiscountedProducts = products => {
     return products.filter(
-      product =>
-        product.priceDiscount && product.priceDiscount < product.priceRegular,
+      production =>
+        production.priceDiscount &&
+        production.priceDiscount < production.priceRegular,
     );
   };
 
@@ -96,20 +97,33 @@ export const ItemCard: React.FC = () => {
   const randomDiscountProduct = getRandomDiscountProducts(allProducts, 4);
 
   const handleAddToCart = (id: string) => {
-    const product = phones.find(p => p.id === id);
+    const production = phones.find(p => p.id === id);
 
-    if (product) {
+    if (production) {
       dispatch({ type: 'ADD_TO_CART', product });
     }
   };
 
   const handleToggleFavorite = (id: string) => {
-    const product = phones.find(p => p.id === id);
+    const production = phones.find(p => p.id === id);
 
-    if (product) {
+    if (production) {
       dispatch({ type: 'TOGGLE_FAVORITE', product });
     }
   };
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [productId]);
+
+  useEffect(() => {
+    if (product) {
+      setSelectedColor(product.colorsAvailable[0] || '');
+      setSelectedCapacity(product.capacityAvailable[0] || '');
+      setSelectedImages(product.images || []);
+      setSelectedImageIndex(0);
+    }
+  }, [productId]);
 
   if (!product) {
     return <p>Product not found</p>;
@@ -131,7 +145,7 @@ export const ItemCard: React.FC = () => {
       <div>
         <button className={styles.button_back} onClick={handleBackClick}>
           <img src="img/Arrow-left.png" alt="" />
-          Back
+          <p>Back</p>
         </button>
       </div>
       <h1 className={styles.title}>{product.name}</h1>
@@ -289,8 +303,8 @@ export const ItemCard: React.FC = () => {
         <div className={styles.container_also_like}>
           {randomDiscountProduct.map(randomProduct => (
             <Link
-              to={`/product/${product.id}`}
-              key={product.id}
+              to={`/product/${randomProduct.id}`}
+              key={randomProduct.id}
               className={styles.linkProduct}
             >
               <DiscountProductCard

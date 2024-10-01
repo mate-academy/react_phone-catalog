@@ -30,7 +30,8 @@ type Action =
   | { type: 'REMOVE_FROM_CART'; productId: string }
   | { type: 'TOGGLE_FAVORITE'; product: Product }
   | { type: 'INCREASE_QUANTITY'; productId: string }
-  | { type: 'DECREASE_QUANTITY'; productId: string };
+  | { type: 'DECREASE_QUANTITY'; productId: string }
+  | { type: 'CLEAR_CART' };
 
 const initialState: CartState = {
   cart: [],
@@ -87,6 +88,13 @@ const cartReducer = (state: CartState, action: Action): CartState => {
             ? { ...product, quantity: product.quantity - 1 }
             : product,
         ),
+      };
+    }
+
+    case 'CLEAR_CART': {
+      return {
+        ...state,
+        cart: [],
       };
     }
 

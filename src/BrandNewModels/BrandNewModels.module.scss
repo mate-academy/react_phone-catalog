@@ -7,6 +7,17 @@
   }
 
   .controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .title {
+    text-align: left;
+  }
+
+  .buttonsGroup {
+    display: flex;
     gap: 16px;
   }
 
@@ -16,7 +27,13 @@
     gap: 16px;
     background-color: #fff;
     border: 1px solid gray;
+    transition: background-color 0.3s ease, opacity 0.3s ease;
     cursor: pointer;
+  }
+
+  .buttons_controls:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
   }
 
   .productGrid {

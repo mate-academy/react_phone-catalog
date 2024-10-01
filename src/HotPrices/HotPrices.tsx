@@ -31,7 +31,7 @@ export const HotPrices: React.FC = () => {
     accessories.some(accessory => accessory.id === product.id),
   );
 
-  let productsWithMaxDiscount = [
+  const productsWithMaxDiscount = [
     maxDiscountPhones,
     maxDiscountTablets,
     maxDiscountAccessories,

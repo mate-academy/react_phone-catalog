@@ -20,9 +20,15 @@ export const Cart: React.FC = () => {
     navigate(-1);
   };
 
+  const handleCheckOut = () => {
+    dispatch({ type: 'CLEAR_CART' });
+    navigate('/');
+  };
+
   return (
     <div>
       <button className={styles.button_back} onClick={handleBackClick}>
+        <img src="img/Arrow-left.png" alt="" />
         Back
       </button>
       <h1 className={styles.title}>Cart</h1>
@@ -108,7 +114,12 @@ export const Cart: React.FC = () => {
                   Total for {totalItems} items
                 </span>
               </div>
-              <button className={styles.checkoutButton}>Checkout</button>
+              <button
+                className={styles.checkoutButton}
+                onClick={() => handleCheckOut()}
+              >
+                Checkout
+              </button>
             </div>
           </div>
         )}
