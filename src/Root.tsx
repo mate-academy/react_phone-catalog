@@ -7,8 +7,8 @@ import { TabletPage } from './pages/TabletPage';
 import { AccessoriesPage } from './pages/AccessoriesPage';
 import { FavoritesPage } from './pages/FavoritesPage';
 import { CartPage } from './pages/CartPage';
-import './styles/index.scss';
 import { NotFoundPage } from './pages/NotFoundPage';
+import './styles/index.scss';
 
 export const Root = () => (
   <Router>
