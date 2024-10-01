@@ -19,27 +19,31 @@ export const ItemCard: React.FC = () => {
     navigate('/');
   };
 
+  const handleCategoClick = () => {
+    navigate('/phones');
+  };
+
   const allProducts = [...phones, ...tablets, ...accessories];
-  const productFind = allProducts.find(item => item.id === productId);
+  const product = allProducts.find(item => item.id === productId);
 
   const { state, dispatch } = useCart();
 
-  const isFavorite = state.favorites.some(fav => fav.id === productFind?.id);
-  const isInCart = state.cart.some(cartItem => cartItem.id === productFind?.id);
+  const isFavorite = state.favorites.some(fav => fav.id === product?.id);
+  const isInCart = state.cart.some(cartItem => cartItem.id === product?.id);
 
   const [selectedColor, setSelectedColor] = useState<string>(
-    productFind?.colorsAvailable[0] || '',
+    product?.colorsAvailable[0] || '',
   );
   const [selectedCapacity, setSelectedCapacity] = useState<string>(
-    productFind?.capacityAvailable[0] || '',
+    product?.capacityAvailable[0] || '',
   );
   const [selectedImages, setSelectedImages] = useState<string[]>(
-    productFind?.images || [],
+    product?.images || [],
   );
   const [selectedImageIndex, setSelectedImageIndex] = useState<number>(0);
 
   const updateProductUrl = (color: string, capacity: string) => {
-    const newProductId = `${productFind?.namespaceId}-${capacity.toLocaleLowerCase()}-${color}`;
+    const newProductId = `${product?.namespaceId}-${capacity.toLocaleLowerCase()}-${color}`;
 
     navigate(`/product/${newProductId}`);
   };
@@ -51,8 +55,8 @@ export const ItemCard: React.FC = () => {
   const handleColorChange = (color: string) => {
     setSelectedColor(color);
 
-    const colorImages = productFind?.images.map(img =>
-      img.replace(productFind.color, color),
+    const colorImages = product?.images.map(img =>
+      img.replace(product.color, color),
     );
 
     if (colorImages) {
@@ -107,7 +111,7 @@ export const ItemCard: React.FC = () => {
     }
   };
 
-  if (!productFind) {
+  if (!product) {
     return <p>Product not found</p>;
   }
 
@@ -118,11 +122,11 @@ export const ItemCard: React.FC = () => {
           <img src="img/Home.svg" alt="" />
         </button>
         <img src="img/Arrow-right.svg" alt="" />
-        <h2 className={styles.navigation_text}>
-          {capitalizeFirstLetter(productFind.category)}
-        </h2>
+        <button className={styles.button_back} onClick={handleCategoClick}>
+          {capitalizeFirstLetter(product.category)}
+        </button>
         <img src="img/Arrow-right.svg" alt="" />
-        <h2 className={styles.navigation_text}>{productFind.name}</h2>
+        <h2 className={styles.navigation_text}>{product.name}</h2>
       </div>
       <div>
         <button className={styles.button_back} onClick={handleBackClick}>
@@ -130,10 +134,10 @@ export const ItemCard: React.FC = () => {
           Back
         </button>
       </div>
-      <h1 className={styles.title}>{productFind.name}</h1>
+      <h1 className={styles.title}>{product.name}</h1>
       <div className={styles.content}>
         <div className={styles.side_images}>
-          {productFind.images.map((img, index) => (
+          {product.images.map((img, index) => (
             <img
               key={index}
               src={img}
@@ -152,7 +156,7 @@ export const ItemCard: React.FC = () => {
           <div className={styles.product_details}>
             <div className={styles.colors}>
               <p>Available colors</p>
-              {productFind.colorsAvailable.map(color => (
+              {product.colorsAvailable.map(color => (
                 <button
                   key={color}
                   className={`${styles.color_circle} ${
@@ -166,7 +170,7 @@ export const ItemCard: React.FC = () => {
 
             <div className={styles.capacity}>
               <p>Select capacity</p>
-              {productFind.capacityAvailable.map(capacity => (
+              {product.capacityAvailable.map(capacity => (
                 <button
                   key={capacity}
                   className={`${styles.capacity_button} ${
@@ -179,19 +183,17 @@ export const ItemCard: React.FC = () => {
               ))}
             </div>
             <div className={styles.priceSection}>
-              {productFind.priceDiscount ? (
+              {product.priceDiscount ? (
                 <>
                   <span className={styles.discountPrice}>
-                    ${productFind.priceDiscount}
+                    ${product.priceDiscount}
                   </span>
                   <span className={styles.originalPrice}>
-                    ${productFind.priceRegular}
+                    ${product.priceRegular}
                   </span>
                 </>
               ) : (
-                <span className={styles.price}>
-                  ${productFind.priceRegular}
-                </span>
+                <span className={styles.price}>${product.priceRegular}</span>
               )}
             </div>
             <div>
@@ -218,19 +220,19 @@ export const ItemCard: React.FC = () => {
             <div className={styles.productInfo}>
               <div className={styles.productFeature}>
                 <span className={styles.featureLabel}>Screen</span>
-                <span className={styles.featureValue}>{productFind.screen}</span>
+                <span className={styles.featureValue}>{product.screen}</span>
               </div>
               <div className={styles.productFeature}>
                 <span className={styles.featureLabel}>Capacity</span>
-                <span className={styles.featureValue}>{productFind.capacity}</span>
+                <span className={styles.featureValue}>{product.capacity}</span>
               </div>
               <div className={styles.productFeature}>
                 <span className={styles.featureLabel}>Processor</span>
-                <span className={styles.featureValue}>{productFind.processor}</span>
+                <span className={styles.featureValue}>{product.processor}</span>
               </div>
               <div className={styles.productFeature}>
                 <span className={styles.featureLabel}>RAM</span>
-                <span className={styles.featureValue}>{productFind.ram}</span>
+                <span className={styles.featureValue}>{product.ram}</span>
               </div>
             </div>
           </div>
@@ -239,7 +241,7 @@ export const ItemCard: React.FC = () => {
       <div className={styles.about}>
         <div className={styles.description}>
           <h2 className={styles.descTitle}>About</h2>
-          {productFind.description.map((desc, index) => (
+          {product.description.map((desc, index) => (
             <div key={index} className={styles.descBlock}>
               <h3 className={styles.descTitle}>{desc.title}</h3>
               {desc.text.map((paragraph, pIndex) => (
@@ -254,31 +256,31 @@ export const ItemCard: React.FC = () => {
           <h2 className={styles.tech__title}>Tech specs</h2>
           <div className={styles.spec_row}>
             <span>Screen</span>
-            <span>{productFind.screen}</span>
+            <span>{product.screen}</span>
           </div>
           <div className={styles.spec_row}>
             <span>Resolution</span>
-            <span>{productFind.resolution}</span>
+            <span>{product.resolution}</span>
           </div>
           <div className={styles.spec_row}>
             <span>Processor</span>
-            <span>{productFind.processor}</span>
+            <span>{product.processor}</span>
           </div>
           <div className={styles.spec_row}>
             <span>RAM</span>
-            <span>{productFind.ram}</span>
+            <span>{product.ram}</span>
           </div>
           <div className={styles.spec_row}>
             <span>Camera</span>
-            <span>{productFind.camera}</span>
+            <span>{product.camera}</span>
           </div>
           <div className={styles.spec_row}>
             <span>Zoom</span>
-            <span>{productFind.zoom}</span>
+            <span>{product.zoom}</span>
           </div>
           <div className={styles.spec_row}>
             <span>Cell</span>
-            <span>{productFind.cell.join(', ')}</span>
+            <span>{product.cell.join(', ')}</span>
           </div>
         </div>
       </div>
@@ -287,8 +289,8 @@ export const ItemCard: React.FC = () => {
         <div className={styles.container_also_like}>
           {randomDiscountProduct.map(randomProduct => (
             <Link
-              to={`/product/${productFind.id}`}
-              key={productFind.id}
+              to={`/product/${product.id}`}
+              key={product.id}
               className={styles.linkProduct}
             >
               <DiscountProductCard

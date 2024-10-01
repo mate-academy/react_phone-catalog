@@ -57,14 +57,14 @@ export const BrandNewModels: React.FC = () => {
           disabled={currentIndex === 0}
           className={styles.buttons_controls}
         >
-          <img src="../../public/img/Arrow-left.png" alt="" />
+          <img src="img/Arrow-left.png" alt="" />
         </button>
         <button
           onClick={handleNext}
           disabled={currentIndex + productsPerPage >= filteredProducts.length}
           className={styles.buttons_controls}
         >
-          <img src="../../public/img/Arrow-right.png" alt="" />
+          <img src="img/Arrow-right.png" alt="" />
         </button>
       </div>
 
