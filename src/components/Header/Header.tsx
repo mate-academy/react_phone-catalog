@@ -89,7 +89,7 @@ export const Header: React.FC<Props> = ({ burgerMenu, setBurgerMenu }) => {
         <div className="ret"></div>
         <div className="ret"></div>
 
-        <div style={{ display: 'flex' }} className="nav__button">
+        <div className="nav__button">
           <Link style={{ position: 'relative' }} to="/favourites">
             <img
               className="nav__button--first"

@@ -92,7 +92,7 @@ header {
       cursor: pointer;
     }
 
-    @media screen and (min-width: 600px) {
+    @media screen and (min-width: 640px) {
       display: none;
     }
   }
@@ -100,29 +100,30 @@ header {
   &__button {
     display: none;
 
-    @media screen and (min-width: 600px) {
+    @media screen and (min-width: 640px) {
       display: block;
+      display: flex;
     }
 
     &--first {
-      @media screen and (min-width: 600px) {
+      @media screen and (min-width: 640px) {
         height: 48px;
         width: 48px;
       }
 
-      @media screen and (min-width: 600px) {
+      @media screen and (min-width: 1200px) {
         height: 65px;
         width: 65px;
       }
     }
 
     &--second {
-      @media screen and (min-width: 600px) {
+      @media screen and (min-width: 640px) {
         height: 48px;
         width: 48px;
       }
 
-      @media screen and (min-width: 600px) {
+      @media screen and (min-width: 1200px) {
         height: 65px;
         width: 65px;
       }
