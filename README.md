@@ -1,6 +1,6 @@
 # Online Shop Frontend Application
 
-![NiceGadgets](https://github.com/meljaszuk/SpaceTraveler-Game-in-React/blob/main/space-1.jpg)
+![NiceGadgets](https://github.com/meljaszuk/react_phone-catalog/blob/master/1.jpg)
 
 **Project Description**
 This application is a fully developed eCommerce platform that simulates API calls to display product data dynamically. Key features include engaging product sliders and a mobile swiper for an interactive browsing experience. Users can navigate through extensive product listings seamlessly, benefiting from efficient dynamic pagination that enhances performance and user experience.
@@ -10,6 +10,8 @@ The application allows users to sort products easily by various parameters, such
 To further enrich user interaction, a loader is implemented during data fetch operations, providing visual feedback while products are being loaded. The design is based on Figma and is fully responsive, ensuring an optimal viewing experience across various devices, including laptops, tablets, and mobile phones.
 
 This project was **fully developed by me from scratch**, showcasing my skills in front-end development and my ability to create a user-friendly application.
+
+![NiceGadgets](https://github.com/meljaszuk/react_phone-catalog/blob/master/2.jpg)
 
 ## Key Features
 
