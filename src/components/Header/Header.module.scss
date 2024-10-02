@@ -53,7 +53,7 @@
     position: fixed;
     flex-direction: column;
     top: 49px;
-    height: calc(100vh - 49px);
+    height: calc(100svh - 49px);
     background-color: var(--color-background);
     transform: translateY(-120%);
     transition: transform $transition-duration;
