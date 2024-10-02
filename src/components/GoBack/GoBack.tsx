@@ -15,11 +15,13 @@ export const GoBack: React.FC = () => {
 
   return (
     <button className={styles.goBackButton} onClick={handleGoBack}>
-      <img src={`${theme === 'dark' ? chevronIconDT : chevronIcon}`} alt="home" className={styles.chevronIcon} />
+      <img
+        src={`${theme === 'dark' ? chevronIconDT : chevronIcon}`}
+        alt="home"
+        className={styles.chevronIcon}
+      />
       <div className={styles.goBackText}>
-        <div className={styles.label}>
-          Back
-        </div>
+        <div className={styles.label}>Back</div>
       </div>
     </button>
   );

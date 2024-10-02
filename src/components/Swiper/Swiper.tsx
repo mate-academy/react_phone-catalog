@@ -18,13 +18,13 @@ export const MobileSwiper: React.FC = () => {
         className="swiper"
       >
         <SwiperSlide>
-          <img src='./img/mobile-banner-1.png' alt='Banner 1' />
+          <img src="./img/mobile-banner-1.png" alt="Banner 1" />
         </SwiperSlide>
         <SwiperSlide>
-          <img src='./img/mobile-banner-2.png' alt='Banner 2' />
+          <img src="./img/mobile-banner-2.png" alt="Banner 2" />
         </SwiperSlide>
         <SwiperSlide>
-          <img src='./img/mobile-banner-3.png' alt='Banner 3' />
+          <img src="./img/mobile-banner-3.png" alt="Banner 3" />
         </SwiperSlide>
       </Swiper>
     </div>

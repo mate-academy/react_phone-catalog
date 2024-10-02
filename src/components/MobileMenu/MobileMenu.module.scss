@@ -66,7 +66,9 @@
   align-items: center;
   justify-content: center;
   color: var(--color-secondary);
-  box-shadow: 0 -1px 0 0 var(--color-elements), 1px 0 0 0 var(--color-elements);
+  box-shadow:
+    0 -1px 0 0 var(--color-elements),
+    1px 0 0 0 var(--color-elements);
   cursor: pointer;
 }
 
@@ -93,7 +95,7 @@
 }
 
 .countText {
-  color: #F1F2F9;
+  color: #f1f2f9;
   font-size: 9px;
   font-weight: 700;
   line-height: 11.5px;
@@ -116,7 +118,7 @@
 
   &::after {
     position: absolute;
-    content: "";
+    content: '';
     bottom: 0;
     left: 0;
     right: 0;
@@ -148,7 +150,7 @@
 }
 
 .countText {
-  color: #F1F2F9;
+  color: #f1f2f9;
   font-size: 9px;
   font-weight: 400;
   line-height: 10px;

@@ -25,12 +25,14 @@ export const ImageGallery: React.FC = () => {
 
   return (
     <div className={styles.imageGallery}>
-      <div className={`${styles.thumbnailContainerTablet} ${styles.thumbnailContainerMobile}`}>
+      <div
+        className={`${styles.thumbnailContainerTablet} ${styles.thumbnailContainerMobile}`}
+      >
         {images.map((item: string, index: number) => (
           <img
             key={index}
             src={item}
-            className={`${styles.thumbnail} ${item === zoomedImage ? styles.selectedThumbnail : ""}`}
+            className={`${styles.thumbnail} ${item === zoomedImage ? styles.selectedThumbnail : ''}`}
             alt={`Thumbnail ${index}`}
             onClick={() => handleClick(index)}
           />

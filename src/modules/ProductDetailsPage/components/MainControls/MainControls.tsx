@@ -14,7 +14,14 @@ type MainControlsProps = {
 };
 
 export const MainControls: React.FC<MainControlsProps> = () => {
-  const { clickedProduct, setClickedProduct, productDetails, products, previousCurrentPage, colors } = useAppContext();
+  const {
+    clickedProduct,
+    setClickedProduct,
+    productDetails,
+    products,
+    previousCurrentPage,
+    colors,
+  } = useAppContext();
 
   useEffect(() => {
     if (clickedProduct) {
@@ -34,38 +41,50 @@ export const MainControls: React.FC<MainControlsProps> = () => {
 
   const handleCapacity = (capacity: string) => {
     let currentUrl = `${location.pathname}`;
-    let currentUrlArray = currentUrl.split("-");
+    let currentUrlArray = currentUrl.split('-');
     let newUrlArray = [...currentUrlArray];
     let newUrl: string;
 
     newUrlArray[newUrlArray.length - 2] = capacity.toLowerCase();
-    newUrl = newUrlArray.join("-");
+    newUrl = newUrlArray.join('-');
     history.push(newUrl);
 
     if (clickedProduct === undefined) {
-      const newClickedProduct = products.find((item: LimitedProduct) => item.itemId === previousCurrentPage[1].slice(9, newUrl.length));
+      const newClickedProduct = products.find(
+        (item: LimitedProduct) =>
+          item.itemId === previousCurrentPage[1].slice(9, newUrl.length),
+      );
       setClickedProduct(newClickedProduct);
     } else {
-      const newClickedProduct = products.find((item: LimitedProduct) => item.itemId === newUrl.slice(9, newUrl.length));
+      const newClickedProduct = products.find(
+        (item: LimitedProduct) =>
+          item.itemId === newUrl.slice(9, newUrl.length),
+      );
       setClickedProduct(newClickedProduct);
     }
   };
 
   const handleColor = (color: string) => {
     let currentUrl = `${location.pathname}`;
-    let currentUrlArray = currentUrl.split("-");
+    let currentUrlArray = currentUrl.split('-');
     let newUrlArray = [...currentUrlArray];
     let newUrl: string;
 
     newUrlArray[newUrlArray.length - 1] = color.toLowerCase();
-    newUrl = newUrlArray.join("-");
+    newUrl = newUrlArray.join('-');
     history.push(newUrl);
 
     if (clickedProduct === undefined) {
-      const newClickedProduct = products.find((item: LimitedProduct) => item.itemId === previousCurrentPage[1].slice(9, newUrl.length));
+      const newClickedProduct = products.find(
+        (item: LimitedProduct) =>
+          item.itemId === previousCurrentPage[1].slice(9, newUrl.length),
+      );
       setClickedProduct(newClickedProduct);
     } else {
-      const newClickedProduct = products.find((item: LimitedProduct) => item.itemId === newUrl.slice(9, newUrl.length));
+      const newClickedProduct = products.find(
+        (item: LimitedProduct) =>
+          item.itemId === newUrl.slice(9, newUrl.length),
+      );
       setClickedProduct(newClickedProduct);
     }
   };
@@ -79,7 +98,7 @@ export const MainControls: React.FC<MainControlsProps> = () => {
             {productDetails.colorsAvailable.map((color: string) => (
               <div className={styles.colorButtonContainer} key={color}>
                 <button
-                  className={`${styles.colorButton} ${color === clickedProduct?.color ? styles.activeColorsAvailable : ""}`}
+                  className={`${styles.colorButton} ${color === clickedProduct?.color ? styles.activeColorsAvailable : ''}`}
                   style={{ backgroundColor: colors[color] }}
                   onClick={() => handleColor(color)}
                 />
@@ -95,7 +114,7 @@ export const MainControls: React.FC<MainControlsProps> = () => {
           <div className={styles.buttons}>
             {productDetails.capacityAvailable.map((capacity: string) => (
               <button
-                className={`${styles.capacityButton} ${clickedProduct?.capacity === capacity ? styles.active : ""}`}
+                className={`${styles.capacityButton} ${clickedProduct?.capacity === capacity ? styles.active : ''}`}
                 key={capacity}
                 onClick={() => handleCapacity(capacity)}
               >

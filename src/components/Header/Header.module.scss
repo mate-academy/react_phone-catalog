@@ -164,7 +164,7 @@
 }
 
 .countText {
-  color: #F1F2F9;
+  color: #f1f2f9;
   font-size: 9px;
   font-weight: 400;
   line-height: 10px;
@@ -200,7 +200,7 @@
 
   &::after {
     position: absolute;
-    content: "";
+    content: '';
     bottom: 0;
     left: 0;
     right: 0;
@@ -229,4 +229,3 @@
     display: none;
   }
 }
-

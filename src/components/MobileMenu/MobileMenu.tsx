@@ -9,9 +9,12 @@ import cartIconSrcDT from '../../img/icons/CartIcon--DarkTheme.svg';
 import { Theme } from '../Theme';
 
 export const MobileMenu: React.FC = () => {
-  const { setIsMobMenuOpen, theme, productsInCartCount, favoriteProducts } = useAppContext();
+  const { setIsMobMenuOpen, theme, productsInCartCount, favoriteProducts } =
+    useAppContext();
   const [cartCount, setCartCount] = useState<number>(0);
-  const [windowWidth, setWindowWidth] = useState<number>(typeof window !== "undefined" ? window.innerWidth : 0)
+  const [windowWidth, setWindowWidth] = useState<number>(
+    typeof window !== 'undefined' ? window.innerWidth : 0,
+  );
 
   useEffect(() => {
     const handleResize = () => {
@@ -30,11 +33,14 @@ export const MobileMenu: React.FC = () => {
   };
 
   useEffect(() => {
-    setIsMobMenuOpen(false)
-  }, [windowWidth])
+    setIsMobMenuOpen(false);
+  }, [windowWidth]);
 
   useEffect(() => {
-    let totalCartCount = productsInCartCount.reduce((acc, count) => acc + count, 0);
+    let totalCartCount = productsInCartCount.reduce(
+      (acc, count) => acc + count,
+      0,
+    );
     setCartCount(totalCartCount);
   }, [productsInCartCount]);
 
@@ -93,7 +99,9 @@ export const MobileMenu: React.FC = () => {
                 src={`${theme === 'dark' ? favoritesIconSrcDT : favoritesIconSrc}`}
                 alt="Favorites"
               />
-              <div className={`${favoriteProducts.length > 0 ? styles.count : styles.hidden}`}>
+              <div
+                className={`${favoriteProducts.length > 0 ? styles.count : styles.hidden}`}
+              >
                 <div className={styles.countText}>
                   {favoriteProducts.length}
                 </div>
@@ -114,10 +122,10 @@ export const MobileMenu: React.FC = () => {
                 alt="Cart"
                 className={styles.icon}
               />
-              <div className={`${cartCount > 0 ? styles.count : styles.hidden}`}>
-                <div className={styles.countText}>
-                  {cartCount}
-                </div>
+              <div
+                className={`${cartCount > 0 ? styles.count : styles.hidden}`}
+              >
+                <div className={styles.countText}>{cartCount}</div>
               </div>
             </div>
           </div>

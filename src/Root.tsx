@@ -11,7 +11,7 @@ import { FavoritesPage } from './modules/FavoritesPage';
 import { CartPage } from './modules/CartPage';
 import { ProductDetailsPage } from './modules/ProductDetailsPage';
 import { NotFoundPage } from './modules/NotFoundPage';
-import styles from './App.module.scss'
+import styles from './App.module.scss';
 import { MobileMenu } from './components/MobileMenu';
 import { useAppContext } from './context/AppContext';
 
@@ -31,20 +31,22 @@ export const Root = () => {
         ) : (
           <>
             <Header />
-            <div className={`${isMobMenuOpen ? styles.menuVisible : styles.menuHidden}`}>
+            <div
+              className={`${isMobMenuOpen ? styles.menuVisible : styles.menuHidden}`}
+            >
               <MobileMenu />
             </div>
             <div className={styles.menuPaddingCorrection} />
-              <Switch>
-                <Route exact path="/" component={HomePage} />
-                <Route path="/phones" component={PhonesPage} />
-                <Route path="/tablets" component={TabletsPage} />
-                <Route path="/accessories" component={AccessoriesPage} />
-                <Route path="/cart" component={CartPage} />
-                <Route path="/favorites" component={FavoritesPage} />
-                <Route path="/product" component={ProductDetailsPage} />
-                <Route path="*" component={NotFoundPage} />
-              </Switch>
+            <Switch>
+              <Route exact path="/" component={HomePage} />
+              <Route path="/phones" component={PhonesPage} />
+              <Route path="/tablets" component={TabletsPage} />
+              <Route path="/accessories" component={AccessoriesPage} />
+              <Route path="/cart" component={CartPage} />
+              <Route path="/favorites" component={FavoritesPage} />
+              <Route path="/product" component={ProductDetailsPage} />
+              <Route path="*" component={NotFoundPage} />
+            </Switch>
             <Footer />
           </>
         )}

@@ -26,7 +26,7 @@ export const ProductDetailsPage: React.FC = () => {
     fetchedCategory,
     setFetchedCategory,
     products,
-    setProducts
+    setProducts,
   } = useAppContext();
 
   const [isLoading, setIsLoading] = useState<boolean>(true);
@@ -34,9 +34,11 @@ export const ProductDetailsPage: React.FC = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-          const response = await fetch(`https://meljaszuk.github.io/react_phone-catalog/api/products.json`);
-          const data = await response.json();
-          setProducts(data);
+        const response = await fetch(
+          `https://meljaszuk.github.io/react_phone-catalog/api/products.json`,
+        );
+        const data = await response.json();
+        setProducts(data);
       } catch (error) {
         console.error('Error fetching data:', error);
       }
@@ -48,52 +50,60 @@ export const ProductDetailsPage: React.FC = () => {
   useEffect(() => {
     const fetchCategory = async () => {
       try {
-          const slug = location.pathname.split("/").pop();
-          let fetchedProduct = products.find((item: LimitedProduct) => item.itemId === slug);
+        const slug = location.pathname.split('/').pop();
+        let fetchedProduct = products.find(
+          (item: LimitedProduct) => item.itemId === slug,
+        );
 
-          if (fetchedProduct) {
-            setClickedProduct(fetchedProduct);
-            const response = await fetch(`https://meljaszuk.github.io/react_phone-catalog/api/${fetchedProduct.category}.json`);
-            const data = await response.json();
-            setFetchedCategory(data);
+        if (fetchedProduct) {
+          setClickedProduct(fetchedProduct);
+          const response = await fetch(
+            `https://meljaszuk.github.io/react_phone-catalog/api/${fetchedProduct.category}.json`,
+          );
+          const data = await response.json();
+          setFetchedCategory(data);
         }
       } catch (error) {
         console.error('Error fetching data:', error);
-        }
-    }
+      }
+    };
 
     fetchCategory();
-},[products, location.pathname, clickedProduct])
+  }, [products, location.pathname, clickedProduct]);
 
   useEffect(() => {
     if (fetchedCategory && clickedProduct) {
-      const productDetails = fetchedCategory.find(item => item.id === clickedProduct.itemId);
+      const productDetails = fetchedCategory.find(
+        item => item.id === clickedProduct.itemId,
+      );
       setProductDetails(productDetails);
     }
   }, [fetchedCategory, clickedProduct, setProductDetails]);
 
   const [dynamicColor, setDynamicColor] = useState<string>('');
   const [dynamicCapacity, setDynamicCapacity] = useState<string>('');
-  const [productGroup, setProductGroup] = useState<string>("")
+  const [productGroup, setProductGroup] = useState<string>('');
 
   useEffect(() => {
     if (fetchedCategory && clickedProduct && products) {
-      setIsLoading(false)
+      setIsLoading(false);
     }
-  }, [productDetails, fetchedCategory,clickedProduct, products]);
+  }, [productDetails, fetchedCategory, clickedProduct, products]);
 
   useEffect(() => {
-    const slug = location.pathname.split("/").pop();
-    let fetchedProduct = fetchedCategory?.find((item: Product) => item.id === slug);
+    const slug = location.pathname.split('/').pop();
+    let fetchedProduct = fetchedCategory?.find(
+      (item: Product) => item.id === slug,
+    );
 
     if (fetchedProduct) {
-      setProductGroup(fetchedProduct.namespaceId)
+      setProductGroup(fetchedProduct.namespaceId);
     }
-  }, [productDetails])
+  }, [productDetails]);
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
-  }, [productGroup])
+  }, [productGroup]);
 
   return (
     <div className={styles.productDetailsPage}>
@@ -103,11 +113,16 @@ export const ProductDetailsPage: React.FC = () => {
         ) : !clickedProduct ? (
           <div className={styles.noProductContainer}>
             <div className={styles.noProduct}></div>
-            <img src="img/product-not-found.png" className={styles.imageNotFound} />
+            <img
+              src="img/product-not-found.png"
+              className={styles.imageNotFound}
+            />
           </div>
         ) : (
           <div className={styles.container}>
-            {productDetails && <Breadcrumbs category={productDetails.category} />}
+            {productDetails && (
+              <Breadcrumbs category={productDetails.category} />
+            )}
             <PreviousPage category={category} />
             <GoBack />
             <h2 className={styles.title}>{clickedProduct.name}</h2>
@@ -122,7 +137,14 @@ export const ProductDetailsPage: React.FC = () => {
             <TechSpecs />
           </div>
         )}
-        {clickedProduct && <ProductSlider title="You may also like" category={clickedProduct.category} sortMethod={'random'} count={5}/>}
+        {clickedProduct && (
+          <ProductSlider
+            title="You may also like"
+            category={clickedProduct.category}
+            sortMethod={'random'}
+            count={5}
+          />
+        )}
       </main>
     </div>
   );

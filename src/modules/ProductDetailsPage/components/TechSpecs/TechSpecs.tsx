@@ -2,10 +2,8 @@ import React from 'react';
 import styles from './TechSpecs.module.scss';
 import { useAppContext } from '../../../../context/AppContext';
 
-
 export const TechSpecs: React.FC = () => {
-
-  const {productDetails} = useAppContext();
+  const { productDetails } = useAppContext();
   if (productDetails !== undefined) {
     return (
       <div className={styles.section}>
@@ -16,47 +14,63 @@ export const TechSpecs: React.FC = () => {
           <ul className={styles.specsList}>
             <li className={styles.specs}>
               <strong className={styles.specsKey}>Screen</strong>
-              <span className={styles.specsValue}>{`${productDetails.screen}`}</span>
+              <span
+                className={styles.specsValue}
+              >{`${productDetails.screen}`}</span>
             </li>
 
             <li className={styles.specs}>
               <strong className={styles.specsKey}>Resolution</strong>
-              <span className={styles.specsValue}>{`${productDetails.resolution}`}</span>
+              <span
+                className={styles.specsValue}
+              >{`${productDetails.resolution}`}</span>
             </li>
 
             <li className={styles.specs}>
               <strong className={styles.specsKey}>Processor</strong>
-              <span className={styles.specsValue}>{`${productDetails.processor}`}</span>
+              <span
+                className={styles.specsValue}
+              >{`${productDetails.processor}`}</span>
             </li>
 
             <li className={styles.specs}>
               <strong className={styles.specsKey}>Ram</strong>
-              <span className={styles.specsValue}>{`${productDetails.ram}`}</span>
+              <span
+                className={styles.specsValue}
+              >{`${productDetails.ram}`}</span>
             </li>
 
             <li className={styles.specs}>
               <strong className={styles.specsKey}>Built in memory</strong>
-              <span className={styles.specsValue}>{`${productDetails.capacity}`}</span>
+              <span
+                className={styles.specsValue}
+              >{`${productDetails.capacity}`}</span>
             </li>
 
             {'camera' in productDetails && (
               <li className={styles.specs}>
                 <strong className={styles.specsKey}>Camera</strong>
-                <span className={styles.specsValue}>{`${productDetails.camera}`}</span>
+                <span
+                  className={styles.specsValue}
+                >{`${productDetails.camera}`}</span>
               </li>
             )}
 
             {'zoom' in productDetails && (
               <li className={styles.specs}>
                 <strong className={styles.specsKey}>Zoom</strong>
-                <span className={styles.specsValue}>{`${productDetails.zoom}`}</span>
+                <span
+                  className={styles.specsValue}
+                >{`${productDetails.zoom}`}</span>
               </li>
             )}
 
             {'ceil' in productDetails && (
               <li className={styles.specs}>
                 <strong className={styles.specsKey}>Cell</strong>
-                <span className={styles.specsValue}>{`${productDetails.ceil}`}</span>
+                <span
+                  className={styles.specsValue}
+                >{`${productDetails.ceil}`}</span>
               </li>
             )}
           </ul>

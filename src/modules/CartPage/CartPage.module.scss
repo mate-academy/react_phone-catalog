@@ -2,13 +2,13 @@
 
 @keyframes cartAnimation {
   0% {
-    transform: scale(90%)
+    transform: scale(90%);
   }
   50% {
-    transform: scale(100%)
+    transform: scale(100%);
   }
   100% {
-    transform: scale(90%)
+    transform: scale(90%);
   }
 }
 
@@ -129,7 +129,7 @@
 }
 
 .image {
-  width:30%;
+  width: 30%;
   align-self: center;
   animation: cartAnimation 2s infinite ease-in-out;
 }

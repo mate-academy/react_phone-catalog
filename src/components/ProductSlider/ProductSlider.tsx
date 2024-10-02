@@ -14,33 +14,40 @@ type ProductSliderProps = {
   count: number;
 };
 
-export const ProductSlider: React.FC<ProductSliderProps> = ({ title, category, sortMethod, count }) => {
+export const ProductSlider: React.FC<ProductSliderProps> = ({
+  title,
+  category,
+  sortMethod,
+  count,
+}) => {
   const [products, setProducts] = useState<LimitedProduct[]>([]);
   const { theme } = useAppContext();
   const sliderRef = useRef<HTMLUListElement>(null);
   const [position, setPosition] = useState<number>(0);
   const [positionCount, setPositionCount] = useState<number>(0);
-  const [displayedItems, setDisplayedItems] = useState<LimitedProduct[] | []>([])
+  const [displayedItems, setDisplayedItems] = useState<LimitedProduct[] | []>(
+    [],
+  );
   const [windowWidth, setWindowWidth] = useState<number>(window.innerWidth);
-  const [cardWidth, setCardWidth] = useState<number>(0)
-  const [numberOfVisibleCards, setNumberOfVisibleCards] = useState<number>(0)
+  const [cardWidth, setCardWidth] = useState<number>(0);
+  const [numberOfVisibleCards, setNumberOfVisibleCards] = useState<number>(0);
 
   useEffect(() => {
     if (sliderRef?.current?.clientWidth) {
-      const cardWidth = sliderRef?.current?.clientWidth / displayedItems.length
-      setCardWidth(cardWidth)
+      const cardWidth = sliderRef?.current?.clientWidth / displayedItems.length;
+      setCardWidth(cardWidth);
     }
-  }, [windowWidth,displayedItems])
+  }, [windowWidth, displayedItems]);
 
-  useEffect(() =>{
-    if(windowWidth < 1300) {
-      const visibleCards = Math.floor(windowWidth / cardWidth)
-      setNumberOfVisibleCards(visibleCards)
+  useEffect(() => {
+    if (windowWidth < 1300) {
+      const visibleCards = Math.floor(windowWidth / cardWidth);
+      setNumberOfVisibleCards(visibleCards);
     } else {
       const visibleCards = 4;
-      setNumberOfVisibleCards(visibleCards)
+      setNumberOfVisibleCards(visibleCards);
     }
-  }, [cardWidth, windowWidth])
+  }, [cardWidth, windowWidth]);
 
   useEffect(() => {
     const fetchProductData = async () => {
@@ -53,8 +60,8 @@ export const ProductSlider: React.FC<ProductSliderProps> = ({ title, category, s
   }, []);
 
   useEffect(() => {
-    setDisplayedItems(products)
-  }, [products])
+    setDisplayedItems(products);
+  }, [products]);
 
   const getScrollStep = () => {
     if (sliderRef.current) {
@@ -64,15 +71,15 @@ export const ProductSlider: React.FC<ProductSliderProps> = ({ title, category, s
   };
 
   const handlePositionCount = (change: number) => {
-    setPositionCount((prev) => prev + change);
+    setPositionCount(prev => prev + change);
   };
 
   const handleNextSlide = () => {
-    if(positionCount !== displayedItems.length - numberOfVisibleCards) {
+    if (positionCount !== displayedItems.length - numberOfVisibleCards) {
       const step = getScrollStep();
       if (step > 0) {
         handlePositionCount(1);
-        setPosition((prevPosition) => prevPosition - step);
+        setPosition(prevPosition => prevPosition - step);
       }
     }
   };
@@ -81,14 +88,14 @@ export const ProductSlider: React.FC<ProductSliderProps> = ({ title, category, s
     const step = getScrollStep();
     if (step > 0) {
       handlePositionCount(-1);
-      setPosition((prevPosition) => prevPosition + step);
+      setPosition(prevPosition => prevPosition + step);
     }
   };
 
   useEffect(() => {
     setPosition(0);
-    setPositionCount(0)
-  }, [windowWidth])
+    setPositionCount(0);
+  }, [windowWidth]);
 
   const resetSliderPosition = () => {
     if (sliderRef.current) {
@@ -110,7 +117,6 @@ export const ProductSlider: React.FC<ProductSliderProps> = ({ title, category, s
 
   useEffect(() => {
     resetSliderPosition();
-
   }, [windowWidth]);
 
   return (
@@ -119,25 +125,32 @@ export const ProductSlider: React.FC<ProductSliderProps> = ({ title, category, s
         <h2 className={styles.title}>{title}</h2>
         <div className={styles.buttonContainer}>
           <button
-            className={`${styles.arrowButton} ${position === 0 ? styles.disabled : ""}`}
+            className={`${styles.arrowButton} ${position === 0 ? styles.disabled : ''}`}
             onClick={() => {
               if (positionCount !== 0) {
                 handlePreviousSlide();
               }
             }}
           >
-            <img src={`${theme === 'dark' ? chevronIconDT : chevronIcon}`} alt="scroll left" />
+            <img
+              src={`${theme === 'dark' ? chevronIconDT : chevronIcon}`}
+              alt="scroll left"
+            />
           </button>
 
           <button
-            className={`${styles.arrowButton} ${positionCount === displayedItems.length - numberOfVisibleCards ? styles.disabled : ""}`}
+            className={`${styles.arrowButton} ${positionCount === displayedItems.length - numberOfVisibleCards ? styles.disabled : ''}`}
             onClick={() => {
               if (positionCount !== displayedItems.length) {
                 handleNextSlide();
               }
             }}
           >
-            <img src={`${theme === 'dark' ? chevronIconDT : chevronIcon}`} alt="scroll right" className={styles.iconNext} />
+            <img
+              src={`${theme === 'dark' ? chevronIconDT : chevronIcon}`}
+              alt="scroll right"
+              className={styles.iconNext}
+            />
           </button>
         </div>
       </div>
@@ -152,7 +165,7 @@ export const ProductSlider: React.FC<ProductSliderProps> = ({ title, category, s
                 transform: `translateX(${position}px)`,
               }}
             >
-              {displayedItems.map((product) => (
+              {displayedItems.map(product => (
                 <li key={product.id} className={styles.productCard}>
                   <ProductCard product={product} />
                 </li>

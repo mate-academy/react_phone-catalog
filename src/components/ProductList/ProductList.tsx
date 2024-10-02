@@ -14,8 +14,12 @@ type ProductListProps = {
   title: string;
 };
 
-export const ProductList: React.FC<ProductListProps> = ({ category, title }) => {
-  const { numberOfProductsPerPage, sortMethod, products, setProducts } = useAppContext();
+export const ProductList: React.FC<ProductListProps> = ({
+  category,
+  title,
+}) => {
+  const { numberOfProductsPerPage, sortMethod, products, setProducts } =
+    useAppContext();
   const [displayedPage, setDisplayedPage] = useState(1);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -47,7 +51,7 @@ export const ProductList: React.FC<ProductListProps> = ({ category, title }) => 
   }, [displayedPage]);
 
   useEffect(() => {
-       window.scrollTo({ top: 0, behavior: 'auto' });
+    window.scrollTo({ top: 0, behavior: 'auto' });
   }, [displayedPage]);
 
   const handleDisplayedPage = useCallback((newPage: number) => {
@@ -59,7 +63,10 @@ export const ProductList: React.FC<ProductListProps> = ({ category, title }) => 
   }, [displayedPage, numberOfProductsPerPage]);
 
   const arrayOfDisplayedIndexes = useMemo(() => {
-    return products.slice(firstDisplayedIndexOnPage, firstDisplayedIndexOnPage + numberOfProductsPerPage);
+    return products.slice(
+      firstDisplayedIndexOnPage,
+      firstDisplayedIndexOnPage + numberOfProductsPerPage,
+    );
   }, [products, firstDisplayedIndexOnPage, numberOfProductsPerPage]);
 
   if (isLoading) {
@@ -76,16 +83,14 @@ export const ProductList: React.FC<ProductListProps> = ({ category, title }) => 
         <Breadcrumbs category={category} />
         <h1 className={styles.title}>{title}</h1>
 
-        <div className={styles.count}>
-          {products.length} items
-        </div>
+        <div className={styles.count}>{products.length} items</div>
 
         <div className={styles.controls}>
           <Sort />
           <DropDown numberOfProducts={products.length} />
         </div>
         <ul className={styles.container} id="list_top">
-          {arrayOfDisplayedIndexes.map((product) => (
+          {arrayOfDisplayedIndexes.map(product => (
             <li key={product.id} className={styles.product}>
               <ProductCard product={product} />
             </li>

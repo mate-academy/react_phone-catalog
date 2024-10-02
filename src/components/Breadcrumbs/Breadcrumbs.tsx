@@ -28,23 +28,41 @@ export const Breadcrumbs: React.FC<BreadcrumbsProps> = ({ category }) => {
   return (
     <nav className={styles.breadcrumbs}>
       <Link to="/">
-        <img src={`${theme === 'dark' ? homeIconDT : homeIcon}`} alt="Home" className={styles.homeIcon} />
+        <img
+          src={`${theme === 'dark' ? homeIconDT : homeIcon}`}
+          alt="Home"
+          className={styles.homeIcon}
+        />
       </Link>
 
       <span className={styles.chevronSpan}>
-        <img src={`${theme === 'dark' ? chevronIconDT : chevronIcon}`} alt="Chevron" className={styles.chevronIcon} />
+        <img
+          src={`${theme === 'dark' ? chevronIconDT : chevronIcon}`}
+          alt="Chevron"
+          className={styles.chevronIcon}
+        />
       </span>
 
-      <Link to={`/${category}`} className={`${includeProduct ? styles.labelBlack : styles.label}`}>
+      <Link
+        to={`/${category}`}
+        className={`${includeProduct ? styles.labelBlack : styles.label}`}
+      >
         {editedCategory}
       </Link>
 
       {includeProduct && clickedProduct && (
         <>
           <span className={styles.chevronSpan}>
-            <img src={`${theme === 'dark' ? chevronIconDT : chevronIcon}`} alt="Chevron" className={styles.chevronIcon} />
+            <img
+              src={`${theme === 'dark' ? chevronIconDT : chevronIcon}`}
+              alt="Chevron"
+              className={styles.chevronIcon}
+            />
           </span>
-          <Link to={`/product/${encodeURIComponent(clickedProduct.itemId)}`} className={styles.label}>
+          <Link
+            to={`/product/${encodeURIComponent(clickedProduct.itemId)}`}
+            className={styles.label}
+          >
             {clickedProductName}
           </Link>
         </>

@@ -80,9 +80,6 @@
   padding: 0 15px;
   @extend %h2-mobile;
 
-
-
-
   @include on-tablet {
     padding: 0;
     @include h2-tablet;
@@ -119,8 +116,8 @@
   border-radius: 5%;
 
   &:hover {
-      border: 1px solid var(--color-primary);
-      background-color: var(--color-hover);
+    border: 1px solid var(--color-primary);
+    background-color: var(--color-hover);
   }
 }
 

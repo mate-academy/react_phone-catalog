@@ -14,7 +14,13 @@ export const CartPage: React.FC = () => {
     window.scrollTo({ top: 0, behavior: 'auto' });
   }, []);
 
-  const { handleNotReady, productsInCart, setProductsInCart, productsInCartCount, setProductsInCartCount } = useAppContext();
+  const {
+    handleNotReady,
+    productsInCart,
+    setProductsInCart,
+    productsInCartCount,
+    setProductsInCartCount,
+  } = useAppContext();
 
   useEffect(() => {
     const storedCartItems = localStorage.getItem('productsInCart');
@@ -22,11 +28,15 @@ export const CartPage: React.FC = () => {
       setProductsInCart(JSON.parse(storedCartItems));
     }
 
-    const storedProductsInCartCount = localStorage.getItem('productsInCartCount');
-    if (storedProductsInCartCount !== null && storedProductsInCartCount.length !== 0) {
+    const storedProductsInCartCount = localStorage.getItem(
+      'productsInCartCount',
+    );
+    if (
+      storedProductsInCartCount !== null &&
+      storedProductsInCartCount.length !== 0
+    ) {
       setProductsInCartCount(JSON.parse(storedProductsInCartCount));
     }
-
   }, []);
 
   const [totalCount, totalAmount]: number[] = useMemo(() => {
@@ -34,13 +44,14 @@ export const CartPage: React.FC = () => {
     let totalCount = 0;
     let totalAmount = 0;
 
-    for (i = 0; i < productsInCart.length; i++){
+    for (i = 0; i < productsInCart.length; i++) {
       totalCount = totalCount + productsInCartCount[i];
-      totalAmount = totalAmount + productsInCartCount[i] * productsInCart[i].price;
+      totalAmount =
+        totalAmount + productsInCartCount[i] * productsInCart[i].price;
     }
 
-    return [totalCount, totalAmount]
-  }, [productsInCart, productsInCartCount])
+    return [totalCount, totalAmount];
+  }, [productsInCart, productsInCartCount]);
 
   return (
     <div>
@@ -51,7 +62,7 @@ export const CartPage: React.FC = () => {
 
         <div className={styles.topContainer}>
           <div className={styles.topLeft}>
-              <GoBack />
+            <GoBack />
           </div>
 
           <h1 className={styles.title}>Cart</h1>
@@ -60,7 +71,7 @@ export const CartPage: React.FC = () => {
         <div className={styles.emptyContainer}>
           <img
             src="img/cart-is-empty.png"
-            className={`${styles.image} ${productsInCart.length > 0 ? styles.hidden : ""}`}
+            className={`${styles.image} ${productsInCart.length > 0 ? styles.hidden : ''}`}
           />
         </div>
 
@@ -73,13 +84,13 @@ export const CartPage: React.FC = () => {
 
           <div
             className={`${styles.bottomContainer} ${
-              productsInCart.length === 0 ? styles.hidden : ""
+              productsInCart.length === 0 ? styles.hidden : ''
             }`}
           >
             <div className={styles.checkout}>
               <h2 className={styles.totalPrice}>${totalAmount}</h2>
               <p className={styles.totalItems}>
-                {`Total for ${totalCount} ${totalCount === 1 ? "item" : "items"}`}
+                {`Total for ${totalCount} ${totalCount === 1 ? 'item' : 'items'}`}
               </p>
 
               <div className={styles.divider}></div>

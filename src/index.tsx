@@ -11,5 +11,5 @@ createRoot(document.getElementById('root') as HTMLElement).render(
         <Root />
       </Router>
     </AppProvider>
-  </React.StrictMode>
+  </React.StrictMode>,
 );

@@ -10,50 +10,53 @@ import { useAppContext } from '../../context/AppContext';
 export const Footer: React.FC = () => {
   const { theme } = useAppContext();
 
-  return (<footer className={styles.wrapper}>
-    <Link to="/" className={styles.logoLink}>
-      <img src={`${theme === 'dark' ? LogoIconDT : LogoIcon}`} alt="Logo" />
-    </Link>
+  return (
+    <footer className={styles.wrapper}>
+      <Link to="/" className={styles.logoLink}>
+        <img src={`${theme === 'dark' ? LogoIconDT : LogoIcon}`} alt="Logo" />
+      </Link>
 
-    <nav className={styles.nav}>
-      <a
-        href="https://github.com/meljaszuk"
-        target="_blank"
-        className={styles.item}
-        rel="noopener noreferrer"
-      >
-        GitHub
-      </a>
+      <nav className={styles.nav}>
+        <a
+          href="https://github.com/meljaszuk"
+          target="_blank"
+          className={styles.item}
+          rel="noopener noreferrer"
+        >
+          GitHub
+        </a>
 
-      <a
-        href="https://github.com/meljaszuk"
-        target="_blank"
-        className={styles.item}
-        rel="noopener noreferrer"
-      >
-        Contact
-      </a>
+        <a
+          href="https://github.com/meljaszuk"
+          target="_blank"
+          className={styles.item}
+          rel="noopener noreferrer"
+        >
+          Contact
+        </a>
 
-      <a
-        href="https://github.com/meljaszuk"
-        target="_blank"
-        className={styles.item}
-        rel="noopener noreferrer"
-      >
-        Rights
-      </a>
-    </nav>
+        <a
+          href="https://github.com/meljaszuk"
+          target="_blank"
+          className={styles.item}
+          rel="noopener noreferrer"
+        >
+          Rights
+        </a>
+      </nav>
 
-    <div className={styles.backToTop}>
-      <div className={styles.backToTopText}>
-        Back to top
+      <div className={styles.backToTop}>
+        <div className={styles.backToTopText}>Back to top</div>
+        <div
+          className={styles.backToTopButton}
+          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+        >
+          <img
+            src={`${theme === 'dark' ? ChevronIconDT : ChevronIcon}`}
+            className={styles.backToTopIcon}
+          />
+        </div>
       </div>
-      <div
-        className={styles.backToTopButton}
-        onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-      >
-        <img src={`${theme === 'dark' ? ChevronIconDT : ChevronIcon}`} className={styles.backToTopIcon }/>
-      </div>
-    </div>
-  </footer>
-)}
+    </footer>
+  );
+};

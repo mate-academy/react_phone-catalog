@@ -16,14 +16,14 @@ export const BannerSlider: React.FC = () => {
   };
 
   const incrementDisplayedImageIndex = () => {
-    setDisplayedImageIndex((prevIndex) =>
-      prevIndex === sliderImages.length - 1 ? 0 : prevIndex + 1
+    setDisplayedImageIndex(prevIndex =>
+      prevIndex === sliderImages.length - 1 ? 0 : prevIndex + 1,
     );
   };
 
   const decrementDisplayedImageIndex = () => {
-    setDisplayedImageIndex((prevIndex) =>
-      prevIndex === 0 ? sliderImages.length - 1 : prevIndex - 1
+    setDisplayedImageIndex(prevIndex =>
+      prevIndex === 0 ? sliderImages.length - 1 : prevIndex - 1,
     );
   };
 
@@ -51,7 +51,9 @@ export const BannerSlider: React.FC = () => {
             <div className={styles.container}>
               <div
                 className={styles.sliderWrapper}
-                style={{ transform: `translateX(-${displayedImageIndex * 100}%)` }}
+                style={{
+                  transform: `translateX(-${displayedImageIndex * 100}%)`,
+                }}
               >
                 {sliderImages.map((image, index) => (
                   <img

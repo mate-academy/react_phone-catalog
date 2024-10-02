@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { NavLink, Link } from "react-router-dom";
+import { NavLink, Link } from 'react-router-dom';
 import styles from './Header.module.scss';
 import LogoIcon from '../../img/icons/LogoIcon.svg';
 import cartIcon from '../../img/icons/CartIcon.svg';
@@ -15,8 +15,16 @@ import { Theme } from '../Theme';
 import { useAppContext } from '../../context/AppContext';
 
 export const Header: React.FC = () => {
-  const { theme, productsInCartCount, favoriteProducts, isMobMenuOpen, setIsMobMenuOpen, sortMethod, numberOfProductsPerPage } = useAppContext();
-  const [cartCount, setCartCount] = useState<number>(0)
+  const {
+    theme,
+    productsInCartCount,
+    favoriteProducts,
+    isMobMenuOpen,
+    setIsMobMenuOpen,
+    sortMethod,
+    numberOfProductsPerPage,
+  } = useAppContext();
+  const [cartCount, setCartCount] = useState<number>(0);
 
   useEffect(() => {
     document.body.style.overflowX = 'hidden';
@@ -30,17 +38,16 @@ export const Header: React.FC = () => {
 
   const handleMenu = () => {
     setIsMobMenuOpen(!isMobMenuOpen);
-  }
+  };
 
   useEffect(() => {
     let cartCount: number = 0;
 
     for (let i = 0; i < productsInCartCount.length; i++) {
-      cartCount = cartCount + productsInCartCount[i]
+      cartCount = cartCount + productsInCartCount[i];
     }
 
-    setCartCount(cartCount)
-
+    setCartCount(cartCount);
   }, [productsInCartCount]);
 
   return (
@@ -55,26 +62,56 @@ export const Header: React.FC = () => {
 
       <div className={styles.container}>
         <nav className={styles.nav}>
-          <NavLink to="/" exact className={styles.navItem} activeClassName={styles.isActive}>
+          <NavLink
+            to="/"
+            exact
+            className={styles.navItem}
+            activeClassName={styles.isActive}
+          >
             Home
           </NavLink>
 
-          <NavLink to={{pathname: "/phones", search: `?sort=${sortMethod}&perPage=${numberOfProductsPerPage}`}} className={styles.navItem} activeClassName={styles.isActive}>
+          <NavLink
+            to={{
+              pathname: '/phones',
+              search: `?sort=${sortMethod}&perPage=${numberOfProductsPerPage}`,
+            }}
+            className={styles.navItem}
+            activeClassName={styles.isActive}
+          >
             Phones
           </NavLink>
 
-          <NavLink to={{pathname: "/tablets", search: `?sort=${sortMethod}&perPage=${numberOfProductsPerPage}`}} className={styles.navItem} activeClassName={styles.isActive}>
+          <NavLink
+            to={{
+              pathname: '/tablets',
+              search: `?sort=${sortMethod}&perPage=${numberOfProductsPerPage}`,
+            }}
+            className={styles.navItem}
+            activeClassName={styles.isActive}
+          >
             Tablets
           </NavLink>
 
-          <NavLink to={{pathname: "/accessories", search: `?sort=${sortMethod}&perPage=${numberOfProductsPerPage}`}} className={styles.navItem} activeClassName={styles.isActive}>
+          <NavLink
+            to={{
+              pathname: '/accessories',
+              search: `?sort=${sortMethod}&perPage=${numberOfProductsPerPage}`,
+            }}
+            className={styles.navItem}
+            activeClassName={styles.isActive}
+          >
             Accessories
           </NavLink>
         </nav>
 
         <div className={styles.actionsContainer}>
           <div className={styles.actions}>
-            <NavLink to="/favorites" className={styles.actionItem} activeClassName={styles.isActive}>
+            <NavLink
+              to="/favorites"
+              className={styles.actionItem}
+              activeClassName={styles.isActive}
+            >
               <div className={styles.actionIcon}>
                 <img
                   src={`${theme === 'dark' ? favIconDT : favIcon}`}
@@ -82,14 +119,20 @@ export const Header: React.FC = () => {
                   className={styles.icon}
                 />
               </div>
-              <div className={`${favoriteProducts.length > 0 ? styles.count : styles.hidden}`}>
+              <div
+                className={`${favoriteProducts.length > 0 ? styles.count : styles.hidden}`}
+              >
                 <div className={styles.countText}>
                   {favoriteProducts.length}
                 </div>
               </div>
             </NavLink>
 
-            <NavLink to="/cart" className={styles.actionItem} activeClassName={styles.isActive}>
+            <NavLink
+              to="/cart"
+              className={styles.actionItem}
+              activeClassName={styles.isActive}
+            >
               <div className={styles.actionIcon}>
                 <img
                   src={`${theme === 'dark' ? cartIconDT : cartIcon}`}
@@ -98,10 +141,10 @@ export const Header: React.FC = () => {
                 />
               </div>
 
-              <div className={`${cartCount > 0 ? styles.count : styles.hidden}`}>
-                <div className={styles.countText}>
-                  {cartCount}
-                </div>
+              <div
+                className={`${cartCount > 0 ? styles.count : styles.hidden}`}
+              >
+                <div className={styles.countText}>{cartCount}</div>
               </div>
             </NavLink>
 
@@ -109,24 +152,30 @@ export const Header: React.FC = () => {
               <Theme />
             </div>
 
-            <div className={`${isMobMenuOpen ? styles.menu : styles.hidden}`} onClick={handleMenu}>
+            <div
+              className={`${isMobMenuOpen ? styles.menu : styles.hidden}`}
+              onClick={handleMenu}
+            >
               <img
-                  src={`${theme === 'dark' ? crossIconDT : crossIcon}`}
-                  alt="Menu"
-                  className={styles.icon}
+                src={`${theme === 'dark' ? crossIconDT : crossIcon}`}
+                alt="Menu"
+                className={styles.icon}
               />
             </div>
 
-            <div className={`${!isMobMenuOpen ? styles.menu : styles.hidden}`} onClick={handleMenu}>
+            <div
+              className={`${!isMobMenuOpen ? styles.menu : styles.hidden}`}
+              onClick={handleMenu}
+            >
               <img
-                  src={`${theme === 'dark' ? menuIconDT : menuIcon}`}
-                  alt="Menu"
-                  className={styles.icon}
+                src={`${theme === 'dark' ? menuIconDT : menuIcon}`}
+                alt="Menu"
+                className={styles.icon}
               />
             </div>
           </div>
         </div>
       </div>
     </header>
-  )
+  );
 };

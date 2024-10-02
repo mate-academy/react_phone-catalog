@@ -3,7 +3,7 @@ import styles from './Sort.module.scss';
 import { useAppContext } from '../../context/AppContext';
 import { useHistory, useLocation } from 'react-router-dom';
 
-export type SortMethodTypes = "newest" | "alpha" | "price";
+export type SortMethodTypes = 'newest' | 'alpha' | 'price';
 
 export const Sort: React.FC = () => {
   const { sortMethod, setSortMethod } = useAppContext();
@@ -28,12 +28,16 @@ export const Sort: React.FC = () => {
     history.push({ search: params.toString() });
 
     localStorage.setItem('sortMethod', JSON.stringify(value));
-  }
+  };
 
   return (
     <div className={styles.container}>
       <div className={styles.label}>Sort by</div>
-      <select onChange={handleMethodChange} className={styles.select} value={sortMethod}>
+      <select
+        onChange={handleMethodChange}
+        className={styles.select}
+        value={sortMethod}
+      >
         <option value="newest">Newest</option>
         <option value="alpha">Alphabetically</option>
         <option value="price">Cheapest</option>

@@ -8,16 +8,22 @@ type DropDownProps = {
 };
 
 export const DropDown: React.FC<DropDownProps> = ({ numberOfProducts }) => {
-  const { numberOfProductsPerPage, setNumberOfProductsPerPage } = useAppContext();
+  const { numberOfProductsPerPage, setNumberOfProductsPerPage } =
+    useAppContext();
   const history = useHistory();
   const location = useLocation();
 
-  const handleSelectionChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+  const handleSelectionChange = (
+    event: React.ChangeEvent<HTMLSelectElement>,
+  ) => {
     const value = event.target.value;
     const perPageValue = value === 'all' ? numberOfProducts : Number(value);
 
     setNumberOfProductsPerPage(perPageValue);
-    localStorage.setItem('numberOfProductsPerPage', JSON.stringify(perPageValue));
+    localStorage.setItem(
+      'numberOfProductsPerPage',
+      JSON.stringify(perPageValue),
+    );
 
     const searchParams = new URLSearchParams(location.search);
     if (perPageValue === numberOfProducts) {
@@ -46,7 +52,11 @@ export const DropDown: React.FC<DropDownProps> = ({ numberOfProducts }) => {
       <select
         onChange={handleSelectionChange}
         className={styles.select}
-        value={numberOfProductsPerPage === numberOfProducts ? 'all' : numberOfProductsPerPage}
+        value={
+          numberOfProductsPerPage === numberOfProducts
+            ? 'all'
+            : numberOfProductsPerPage
+        }
       >
         <option value="4">4</option>
         <option value="8">8</option>

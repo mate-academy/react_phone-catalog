@@ -22,7 +22,7 @@
 .count {
   @extend %body-text;
   color: var(--color-secondary);
-  padding-top: 10px;;
+  padding-top: 10px;
 }
 
 .noResults {
@@ -95,4 +95,3 @@
   display: flex;
   gap: 20px;
 }
-

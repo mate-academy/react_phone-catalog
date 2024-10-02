@@ -31,13 +31,17 @@ export const Theme: React.FC = () => {
         {theme === 'light' && <div className={styles.label}>DARK</div>}
       </div>
 
-      <div className={`${theme === 'light' ? styles.bcgWrapperLight :  styles.bcgWrapperDark}`}>
+      <div
+        className={`${theme === 'light' ? styles.bcgWrapperLight : styles.bcgWrapperDark}`}
+      >
         <div className={styles.circle} />
         <div className={styles.rectangle} />
         <div className={styles.circle} />
       </div>
 
-      <div className={`${styles.button} ${theme === "light" ? styles.modeLight  : styles.modeDark}`} />
+      <div
+        className={`${styles.button} ${theme === 'light' ? styles.modeLight : styles.modeDark}`}
+      />
     </div>
   );
 };

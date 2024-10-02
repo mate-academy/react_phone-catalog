@@ -51,7 +51,7 @@
 }
 
 .imageNotFound {
-  width:30%;
+  width: 30%;
   align-self: center;
   animation: Animation 5s infinite ease-in-out;
 }
@@ -64,14 +64,14 @@
 
 @keyframes Animation {
   0% {
-    transform: rotate(20deg) scale(90%)
+    transform: rotate(20deg) scale(90%);
   }
 
   50% {
-    transform: rotate(-10deg) scale(100%)
+    transform: rotate(-10deg) scale(100%);
   }
 
   100% {
-    transform: rotate(20deg) scale(90%)
+    transform: rotate(20deg) scale(90%);
   }
 }

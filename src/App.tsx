@@ -1,7 +1,7 @@
 import './App.module.scss';
 import React, { useState, useEffect } from 'react';
 import { Loader } from './components/Loader/Loader';
-import { HomePage } from './modules/HomePage'
+import { HomePage } from './modules/HomePage';
 
 export const App: React.FC = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -17,7 +17,8 @@ export const App: React.FC = () => {
         <div>
           <HomePage />
         </div>
-      )};
+      )}
+      ;
     </div>
   );
 };

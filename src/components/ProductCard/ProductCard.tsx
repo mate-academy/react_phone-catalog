@@ -10,16 +10,16 @@ type ProductCardProps = {
   product: LimitedProduct;
 };
 
-export const ProductCard: React.FC<ProductCardProps> = ({ product}) => {
+export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   const { image, name, price, fullPrice, screen, capacity, ram } = product;
   const { setClickedProduct } = useAppContext();
 
   const handleClickedProduct = () => {
-    if(product !== undefined) {
+    if (product !== undefined) {
       localStorage.setItem('clickedProduct', JSON.stringify(product));
-      setClickedProduct(product)
+      setClickedProduct(product);
     }
-    setClickedProduct(product)
+    setClickedProduct(product);
   };
 
   return (
@@ -27,20 +27,16 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product}) => {
       <Link
         to={`/product/${encodeURIComponent(product.itemId)}`}
         className={styles.imageContainer}
-        onClick = {handleClickedProduct}
+        onClick={handleClickedProduct}
       >
-        <img
-          className={styles.image}
-          src={image}
-          alt={name}
-        />
+        <img className={styles.image} src={image} alt={name} />
       </Link>
 
       <div className={styles.wrapper}>
         <Link
           to={`/product/${encodeURIComponent(product.itemId)}`}
           className={styles.title}
-          onClick = {handleClickedProduct}
+          onClick={handleClickedProduct}
         >
           {name}
         </Link>

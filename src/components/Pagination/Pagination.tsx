@@ -17,7 +17,10 @@ export const Pagination: React.FC<PaginationProps> = ({
   handleDisplayedPage,
   displayedPage,
 }) => {
-  const arrayOfPageButtons = Array.from({ length: numberOfPages }, (_, i) => i + 1);
+  const arrayOfPageButtons = Array.from(
+    { length: numberOfPages },
+    (_, i) => i + 1,
+  );
   const [visiblePages, setVisiblePages] = useState<number[]>([1, 5]);
   const { theme } = useAppContext();
   const location = useLocation();
@@ -37,7 +40,10 @@ export const Pagination: React.FC<PaginationProps> = ({
   }, [numberOfPages]);
 
   const move = (mvm: 1 | -1) => {
-    if (displayedPage + mvm !== 0 && displayedPage + mvm !== numberOfPages + 1) {
+    if (
+      displayedPage + mvm !== 0 &&
+      displayedPage + mvm !== numberOfPages + 1
+    ) {
       const newPage = displayedPage + mvm;
       handleDisplayedPage(newPage);
 
@@ -56,7 +62,7 @@ export const Pagination: React.FC<PaginationProps> = ({
   return (
     <ul className={styles.pagination}>
       <button
-        className={`${styles.button} ${displayedPage === 1 ? styles.disabled : ""}`}
+        className={`${styles.button} ${displayedPage === 1 ? styles.disabled : ''}`}
         onClick={() => move(-1)}
       >
         <img
@@ -69,7 +75,7 @@ export const Pagination: React.FC<PaginationProps> = ({
         <div className={styles.buttonWrapper}>
           {arrayOfPageButtons.map(pageButton => (
             <div
-              className={`${pageButton >= visiblePages[0] && pageButton <= visiblePages[1] ? "" : styles.hidden}`}
+              className={`${pageButton >= visiblePages[0] && pageButton <= visiblePages[1] ? '' : styles.hidden}`}
               key={pageButton}
             >
               <button
@@ -92,7 +98,7 @@ export const Pagination: React.FC<PaginationProps> = ({
       </div>
 
       <button
-        className={`${styles.button} ${numberOfPages === displayedPage ? styles.disabled : ""}`}
+        className={`${styles.button} ${numberOfPages === displayedPage ? styles.disabled : ''}`}
         onClick={() => move(1)}
       >
         <img

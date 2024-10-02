@@ -30,21 +30,21 @@
 }
 
 .buttonCardRemove {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    height: 40px;
-    width: 100%;
-    border: 0;
-    background-color: transparent;
-    border: solid 1px var(--color-button);
-    transition: transform $transition-duration ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  height: 40px;
+  width: 100%;
+  border: 0;
+  background-color: transparent;
+  border: solid 1px var(--color-button);
+  transition: transform $transition-duration ease;
 
-    &:hover {
-      transform: scale(1.05);
-      box-shadow: 0 3px 13px 0 #17203166;
-      background-color: transparent;
+  &:hover {
+    transform: scale(1.05);
+    box-shadow: 0 3px 13px 0 #17203166;
+    background-color: transparent;
   }
 }
 
