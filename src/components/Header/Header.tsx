@@ -1,33 +1,17 @@
 import classNames from 'classnames';
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
-import { Products } from '../../types/products';
+import { useLocalStorage } from '../../LocaleStorage';
 
 type Props = {
-  cart: Products[];
-  favorites: Products[];
   burgerMenu: boolean;
   setBurgerMenu: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
-export const Header: React.FC<Props> = ({
-  cart,
-  favorites,
-  burgerMenu,
-  setBurgerMenu,
-}) => {
+export const Header: React.FC<Props> = ({ burgerMenu, setBurgerMenu }) => {
   const location = useLocation();
-
-  const [favoritesCount, setFavoritesCount] = useState(favorites.length);
-  const [cartCount, setCartCount] = useState(cart.length);
-
-  useEffect(() => {
-    setFavoritesCount(favorites.length);
-  }, [favorites]);
-
-  useEffect(() => {
-    setCartCount(cart.length);
-  }, [cart]);
+  const [favorites, setFavorites] = useLocalStorage('favorites', []);
+  const [cart, setCart] = useLocalStorage('cart', []);
 
   return (
     <header>
@@ -101,20 +85,16 @@ export const Header: React.FC<Props> = ({
               src="./img/Favourites_nav.svg"
               alt="Favourites"
             />
-            <div className="nav__count--first">{favoritesCount}</div>
+            <div className="nav__count--first">{favorites.length}</div>
           </Link>
 
-          <Link
-            style={{ position: 'relative' }}
-            state={{ from: location.pathname }}
-            to="/cart"
-          >
+          <Link style={{ position: 'relative' }} state={{ from: location.pathname }} to="/cart">
             <img
               className="nav__button--second"
               src="./img/Cart_nav.svg"
               alt="Cart"
             />
-            <div className="nav__count--second">{cartCount}</div>
+            <div className="nav__count--second">{cart.length}</div>
           </Link>
         </div>
       </div>
