@@ -2,7 +2,56 @@
   margin-top: 30px;
   display: flex;
   justify-content: center;
+  column-gap: 4px;
+
+  &--previous {
+    cursor: pointer;
+    width: 32px;
+    height: 32px;
+    box-sizing: border-box;
+    /* Gray / Icons + Placeholders */
+    border: 1px solid rgb(180, 189, 196);
+    border-radius: 48px;
+  }
+
+  &--next {
+    cursor: pointer;
+    color: #000;
+    width: 32px;
+    height: 32px;
+    box-sizing: border-box;
+    /* Gray / Icons + Placeholders */
+    border: 1px solid rgb(180, 189, 196);
+    border-radius: 48px;
+  }
+
+  &--str {
+    cursor: pointer;
+    font-family: Mont, sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    width: 32px;
+    height: 32px;
+    box-sizing: border-box;
+    border: 1px solid rgb(226, 230, 233);
+    border-radius: 48px;
+  }
+
+  &--str.active {
+    cursor: pointer;
+    color: #fff;
+    font-family: Mont, sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    width: 32px;
+    height: 32px;
+    box-sizing: border-box;
+    border-radius: 48px;
+    background: rgb(15, 15, 17);
+  }
 }
+
+
 
 .cart__counter {
   display: flex;
@@ -17,7 +66,8 @@
   }
 }
 
-.nav__count--first, .nav__count--second {
+.nav__count--first,
+.nav__count--second {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -27,7 +77,8 @@
   right: 27%;
   width: 15px;
   height: 15px;
-  font-size: 10px; /* Размер шрифта для корректного отображения цифр */
+  font-size: 10px;
+  /* Размер шрифта для корректного отображения цифр */
   border: 1px solid rgb(255, 255, 255);
   background: rgb(66, 25, 208);
   border-radius: 100%;

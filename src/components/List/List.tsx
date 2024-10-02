@@ -150,27 +150,29 @@ export const List: React.FC<Props> = ({ type }) => {
 
       <div className="pagination">
         <button
+          className='pagination--previous'
           onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
           disabled={currentPage === 1}
         >
-          Previous
+          {'<'}
         </button>
 
-        {Array.from({ length: totalPages }, (_, index) => (
-          <button
-            key={index + 1}
-            className={currentPage === index + 1 ? 'active' : ''}
-            onClick={() => setCurrentPage(index + 1)}
-          >
-            {index + 1}
-          </button>
-        ))}
+          {Array.from({ length: totalPages }, (_, index) => (
+            <button
+              key={index + 1}
+              className={`pagination--str ${currentPage === index + 1 ? 'active' : ''}`}
+              onClick={() => setCurrentPage(index + 1)}
+            >
+              {index + 1}
+            </button>
+          ))}
 
         <button
+          className='pagination--next'
           onClick={() => setCurrentPage(prev => Math.min(prev + 1, totalPages))}
           disabled={currentPage === totalPages}
         >
-          Next
+          {'>'}
         </button>
       </div>
     </>

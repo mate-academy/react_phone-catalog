@@ -105,6 +105,7 @@ export const CartItem = () => {
                 style={{ cursor: 'pointer' }}
                 onClick={() => handleDecrease(index)}
                 className="cart__counter-text"
+                disabled={quantities[index] === 1}
               >
                 -
               </button>
