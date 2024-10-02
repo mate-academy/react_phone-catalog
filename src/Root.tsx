@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, HashRouter as Router, Routes } from 'react-router-dom';
+import { HashRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { App } from './App';
 import { HomePage } from './pages/HomePage';
 import { PhonePage } from './pages/PhonePage';
@@ -15,6 +15,7 @@ export const Root = () => (
     <Routes>
       <Route path="/" element={<App />}>
         <Route index element={<HomePage />} />
+        <Route path="home" element={<Navigate to="/" replace />} />
         <Route path="phones" element={<PhonePage />} />
         <Route path="tablets" element={<TabletPage />} />
         <Route path="accessories" element={<AccessoriesPage />} />
