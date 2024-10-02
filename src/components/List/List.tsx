@@ -12,10 +12,7 @@ type Props = {
 };
 
 export const List: React.FC<Props> = ({ type }) => {
-  const [favorites, setFavorites] = useLocalStorage<Products[]>(
-    'favorites',
-    [],
-  );
+  const [favorites, setFavorites] = useLocalStorage<Products[]>('favorites', []);
   const [cart, setCart] = useLocalStorage<Products[]>('cart', []);
 
   const location = useLocation();
@@ -23,12 +20,14 @@ export const List: React.FC<Props> = ({ type }) => {
   const [products, setProducts] = useState<Products[]>([]);
   const [sortedProducts, setSortedProducts] = useState<Products[]>([]);
 
+  const [currentPage, setCurrentPage] = useState(1);
+  const [itemsPerPage, setItemsPerPage] = useState(4); // Set a default value
+
   useEffect(() => {
     fetch('./api/products.json')
       .then(response => response.json())
       .then((data: Products[]) => {
         const filteredProducts = data.filter(el => el.category === type);
-
         setProducts(filteredProducts);
         setSortedProducts(filteredProducts);
       });
@@ -55,28 +54,24 @@ export const List: React.FC<Props> = ({ type }) => {
         break;
     }
 
-    const itemsOnPage = searchParams.get('perPage') || 'Default';
+    const itemsOnPage = searchParams.get('perPage') || '4'; // Set a default here
 
-    switch (itemsOnPage) {
-      case '4':
-        sortedData = sortedData.slice(0, 4);
-        break;
+    setItemsPerPage(Number(itemsOnPage));
 
-      case '8':
-        sortedData = sortedData.slice(0, 8);
-        break;
+    // If there are no search parameters, show all products
+    if (!searchParams.toString()) {
+      setSortedProducts(sortedData);
+    } else {
+      const paginatedData = sortedData.slice(
+        (currentPage - 1) * itemsPerPage,
+        currentPage * itemsPerPage
+      );
 
-      case '16':
-        sortedData = sortedData.slice(0, 16);
-        break;
-
-      case 'Default':
-        sortedData = [...sortedData];
-        break;
+      setSortedProducts(paginatedData);
     }
+  }, [products, searchParams, currentPage, itemsPerPage]);
 
-    setSortedProducts(sortedData);
-  }, [products, searchParams]);
+  const totalPages = Math.ceil(products.length / itemsPerPage);
 
   const toggleFavorite = (product: Products) => {
     const isFavorite = favorites.some(fav => fav.id === product.id);
@@ -88,7 +83,7 @@ export const List: React.FC<Props> = ({ type }) => {
     }
   };
 
-  const toogleCart = (product: Products) => {
+  const toggleCart = (product: Products) => {
     const isCart = cart.some(el => el.id === product.id);
 
     if (isCart) {
@@ -99,59 +94,85 @@ export const List: React.FC<Props> = ({ type }) => {
   };
 
   return (
-    <ul className="card__grid">
-      {sortedProducts.length > 0 &&
-        sortedProducts.map(product => (
-          <div key={product.id} className="card">
-            <Link to={`/${type}/${product.itemId}`}>
-              <img
-                className="card__image"
-                src={product.image}
-                alt="card-image"
-              />
-            </Link>
-            <p className="card__name">{product.name}</p>
-            <p className="card__price-regular">{`${product.price}$`}</p>
+    <>
+      <ul className="card__grid">
+        {sortedProducts.length > 0 &&
+          sortedProducts.map(product => (
+            <div key={product.id} className="card">
+              <Link to={`/${type}/${product.itemId}`}>
+                <img
+                  className="card__image"
+                  src={product.image}
+                  alt="card-image"
+                />
+              </Link>
+              <p className="card__name">{product.name}</p>
+              <p className="card__price-regular">{`${product.price}$`}</p>
 
-            <div className="card__line"></div>
+              <div className="card__line"></div>
 
-            <div className="card__screen">
-              <p className="card__screen-name">Screen</p>
-              <p className="card__screen-info">{product.screen}</p>
+              <div className="card__screen">
+                <p className="card__screen-name">Screen</p>
+                <p className="card__screen-info">{product.screen}</p>
+              </div>
+
+              <div className="card__capacity">
+                <p className="card__capacity-name">Capacity</p>
+                <p className="card__capacity-info">{product.capacity}</p>
+              </div>
+
+              <div className="card__ram">
+                <p className="card__ram-name">Ram</p>
+                <p className="card__ram-info">{product.ram}</p>
+              </div>
+
+              <div className="card__buy">
+                <button
+                  onClick={() => toggleCart(product)}
+                  className={`${cart.some(el => el.id === product.id) ? 'added-to-cart' : 'card__buy-cart'}`}
+                >
+                  {cart.some(el => el.id === product.id) ? 'Added to cart' : 'Add to cart'}
+                </button>
+                <img
+                  onClick={() => toggleFavorite(product)}
+                  className="page-home-card__favorite"
+                  src={
+                    favorites.some(fav => fav.id === product.id)
+                      ? './img/Add to fovourites - Added.svg'
+                      : './img/add-to-cart.svg'
+                  }
+                  alt="favorite"
+                />
+              </div>
             </div>
+          ))}
+      </ul>
 
-            <div className="card__capacity">
-              <p className="card__capacity-name">Capacity</p>
-              <p className="card__capacity-info">{product.capacity}</p>
-            </div>
+      <div className="pagination">
+        <button
+          onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
+          disabled={currentPage === 1}
+        >
+          Previous
+        </button>
 
-            <div className="card__ram">
-              <p className="card__ram-name">Ram</p>
-              <p className="card__ram-info">{product.ram}</p>
-            </div>
-
-            <div className="card__buy">
-              <button
-                onClick={() => toogleCart(product)}
-                className={`${cart.some(el => el.id === product.id) ? 'added-to-cart' : 'card__buy-cart'}`}
-              >
-                {cart.some(el => el.id === product.id)
-                  ? 'Added to cart'
-                  : 'Add to cart'}
-              </button>
-              <img
-                onClick={() => toggleFavorite(product)}
-                className="page-home-card__favorite"
-                src={
-                  favorites.some(fav => fav.id === product.id)
-                    ? './img/Add to fovourites - Added.svg'
-                    : './img/add-to-cart.svg'
-                }
-                alt="favorite"
-              />
-            </div>
-          </div>
+        {Array.from({ length: totalPages }, (_, index) => (
+          <button
+            key={index + 1}
+            className={currentPage === index + 1 ? 'active' : ''}
+            onClick={() => setCurrentPage(index + 1)}
+          >
+            {index + 1}
+          </button>
         ))}
-    </ul>
+
+        <button
+          onClick={() => setCurrentPage(prev => Math.min(prev + 1, totalPages))}
+          disabled={currentPage === totalPages}
+        >
+          Next
+        </button>
+      </div>
+    </>
   );
 };
