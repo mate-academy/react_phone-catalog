@@ -7,7 +7,7 @@
   "ADD_TO_CART": "Додати до кошика",
   "SHOP_BY_CATEGORY": "Купити за категоріями",
   "MOBILE_PHONES": "Мобільні телефони",
-  "MODELS": "Моделі",
+  "MODELS": "моделі",
   "TABLETS": "Планшети",
   "ACCESSORIES": "Аксесуари",
   "HOT_PRICES": "Гарячі ціни",
@@ -17,5 +17,6 @@
   "THEME": "Тема",
   "LANGUAGE": "Мова",
   "HOME": "Головна",
-  "PHONES": "Телефони"
+  "PHONES": "Телефони",
+  "ADDED": "Добавлено"
 }

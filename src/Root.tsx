@@ -10,6 +10,11 @@ export const Root = () => (
       <Routes>
         <Route path="/" element={<App />}>
           <Route index element={<HomePage />} />
+          <Route path="phones" element={<></>} />
+          <Route path="tablets" element={<></>} />
+          <Route path="accessories" element={<></>} />
+          <Route path="cart" element={<></>} />
+          <Route path="favorites" element={<></>} />
           <Route path="*" element={<p>NoPages</p>} />
         </Route>
       </Routes>

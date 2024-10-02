@@ -1,4 +1,5 @@
 import {
+  CountStyled,
   HeaderStyled,
   ListItemStyled,
   LogoStyled,
@@ -20,12 +21,18 @@ import {
 } from '../../utils/SVG';
 import { useTranslation } from 'react-i18next';
 import { StrCode } from '../../utils/enums';
+import { useAppSelector } from '../../hooks/hookStore';
 
 export const Header = () => {
   const [isManuActive, setIsActiveMenu] = useState(false);
   const { theme } = useTheme();
   const themeKeys = Object.keys(themeMap) as Array<keyof typeof themeMap>;
   const { t } = useTranslation();
+  const { backetsId } = useAppSelector(state => state.backets);
+  const { favoritId } = useAppSelector(state => state.favorit);
+
+  const backsetCount = backetsId.length;
+  const favoritCount = favoritId.length;
 
   const variantLogo = () => {
     const themeVariant =
@@ -80,12 +87,16 @@ export const Header = () => {
             <MenuImgStyled>
               <LIKE_SVG />
             </MenuImgStyled>
+
+            {!!favoritCount && <CountStyled>{favoritCount}</CountStyled>}
           </MenuBoxStyled>
 
           <MenuBoxStyled>
             <MenuImgStyled>
               <SHOPPING_SVG />
             </MenuImgStyled>
+
+            {!!backsetCount && <CountStyled>{backsetCount}</CountStyled>}
           </MenuBoxStyled>
         </MenuStyled>
       </NavStyled>

@@ -1,7 +1,7 @@
 import { ButtonStyled } from './styled';
 
 type Props = {
-  variant: 'dark' | 'white';
+  variant: 'dark' | 'white' | 'disabled' | 'activate';
   css?: string;
   children: React.ReactNode;
   onFunc?: () => void;

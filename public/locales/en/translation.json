@@ -7,7 +7,7 @@
   "ADD_TO_CART": "Add to cart",
   "SHOP_BY_CATEGORY": "Shop by category",
   "MOBILE_PHONES": "Mobile phones",
-  "MODELS": "Models",
+  "MODELS": "models",
   "TABLETS": "Tablets",
   "ACCESSORIES": "Accessories",
   "HOT_PRICES": "Hot prices",
@@ -17,5 +17,6 @@
   "THEME": "Theme",
   "LANGUAGE": "Language",
   "HOME": "Home",
-  "PHONES": "Phones"
+  "PHONES": "Phones",
+  "ADDED": "Added"
 }

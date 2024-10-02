@@ -1,5 +1,6 @@
 import { useAppSelector } from '../../hooks/hookStore';
 import { StrCode } from '../../utils/enums';
+import CategoryBlock from './components/CategoryBlock/CategoryBlock';
 import { PicturesSlider } from './components/PicturesSlider/PicturesSlider';
 import ProductsSlider from './components/ProductsSlider/ProductsSlider';
 import { HomePageStyled, TitleStyled } from './styled';
@@ -28,6 +29,8 @@ export const HomePage = () => {
           name={t(StrCode.NewModels)}
           products={newModelProducts}
         />
+
+        <CategoryBlock />
 
         <ProductsSlider
           name={t(StrCode.HotPrices)}

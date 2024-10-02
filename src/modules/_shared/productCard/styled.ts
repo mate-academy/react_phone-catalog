@@ -115,6 +115,7 @@ const CountBlockStyled = styled.div`
   line-height: 30.8px;
   color: ${({ theme }) => theme.textColor};
   text-align: left;
+  font-family: 'Mont-Bold', sans-serif;
 
   display: flex;
   align-items: center;
@@ -125,6 +126,7 @@ const CountBlockStyled = styled.div`
 `;
 
 const RegularPriceStyled = styled.div`
+font-family: 'Mont-Regular', sans-serif;
   font-weight: 600;
   line-height: 28.12px;
   color: ${({ theme }) => theme.textSecondColor};
@@ -141,6 +143,7 @@ const InfoBlockStyled = styled.div`
   font-weight: 700;
   font-size: 12px;
   line-height: 15.34px;
+  font-family: 'Mont-SemiBold', sans-serif;
 
   > * {
     display: flex;

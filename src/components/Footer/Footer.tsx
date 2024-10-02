@@ -7,6 +7,7 @@ import {
   SelectorsStyled,
 } from './styled';
 import logo from '../../icons/Logo.png';
+import logo2 from '../../icons/Logo2.png';
 import { Button } from '../Button/Button';
 import { VECTOR_SVG } from '../../utils/SVG';
 import { SelectInput } from '../Inputs/SelectInput/SelectInput';
@@ -38,10 +39,29 @@ export const Footer = () => {
     i18n.changeLanguage(languageVariant[value2]);
   }, [value2]);
 
+  const variantLogo = () => {
+    const themeVariant =
+      themeKeys.find(key => themeMap[key] === theme) || 'White';
+
+    switch (themeVariant) {
+      case 'White': {
+        return logo;
+      }
+
+      case 'Dark': {
+        return logo2;
+      }
+
+      default: {
+        return logo;
+      }
+    }
+  };
+
   return (
     <ContainerStyled>
       <FooterStyled>
-        <LogoImgStyled src={logo} alt="logo" />
+        <LogoImgStyled src={variantLogo()} alt="logo" />
 
         <InfoBlockStyled>
           <li>Github</li>

@@ -3,16 +3,8 @@
   transition: all 0.3s;
 }
 
-@font-face {
-  font-family: Mont;
-  src: url('../public/fonts/Mont-Bold.otf') format('opentype'),
-    url('../public/fonts/Mont-Regular.otf') format('opentype'),
-    url('../public/fonts/Mont-SemiBold.otf') format('opentype');
-}
-
 body {
   margin: 0;
-  font-family: Mont, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }

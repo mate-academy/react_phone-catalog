@@ -9,11 +9,11 @@ import {
   RegularPriceStyled,
 } from './styled';
 import { Button } from '../../../components/Button/Button';
-import { LIKE_SVG } from '../../../utils/SVG';
+import { FAVORIT_SVG, LIKE_SVG } from '../../../utils/SVG';
 import { useTranslation } from 'react-i18next';
 import { StrCode } from '../../../utils/enums';
 import { ProductType } from '../../../types/productsType';
-import { addBacketId, deleteBacketId } from '../../../features/basketSlice';
+import { addBacketId } from '../../../features/basketSlice';
 import { addFavoritId, deleteFavoritId } from '../../../features/favoritSlice';
 import { useAppDispatch, useAppSelector } from '../../../hooks/hookStore';
 
@@ -33,11 +33,7 @@ const ProductCard: React.FC<Props> = ({ variant, product }) => {
       return;
     }
 
-    if (backetsId.includes(product.itemId)) {
-      dispatch(deleteBacketId(product.itemId));
-    } else {
-      dispatch(addBacketId(product.itemId));
-    }
+    dispatch(addBacketId(product.itemId));
   };
 
   const handleToFavorit = () => {
@@ -50,6 +46,22 @@ const ProductCard: React.FC<Props> = ({ variant, product }) => {
     } else {
       dispatch(addFavoritId(product.itemId));
     }
+  };
+
+  const includesBacket = () => {
+    if (!product) {
+      return;
+    }
+
+    return backetsId.includes(product.itemId);
+  };
+
+  const includesFavorit = () => {
+    if (!product) {
+      return false;
+    }
+
+    return favoritId.includes(product.itemId);
   };
 
   return (
@@ -70,10 +82,12 @@ const ProductCard: React.FC<Props> = ({ variant, product }) => {
               {t(StrCode.Screen)}
               <InfoStyled>{product.screen}</InfoStyled>
             </div>
+
             <div>
               {t(StrCode.Capacity)}
               <InfoStyled>{product.capacity}</InfoStyled>
             </div>
+            
             <div>
               {t(StrCode.Ram)}
               <InfoStyled>{product.ram}</InfoStyled>
@@ -82,19 +96,19 @@ const ProductCard: React.FC<Props> = ({ variant, product }) => {
 
           <ButtonsBlockStyled>
             <Button
-              variant="dark"
+              variant={includesBacket() ? 'activate' : 'dark'}
               css="width: 100%; padding: 0; text-align: center;"
               onFunc={handleToBasket}
             >
-              {t(StrCode.AddToCard)}
+              {includesBacket() ? t(StrCode.Added) : t(StrCode.AddToCard)}
             </Button>
 
             <Button
-              variant="white"
+              variant={includesFavorit() ? 'disabled' : 'white'}
               css="width: 40px; flex-shrink: 0;"
               onFunc={handleToFavorit}
             >
-              <LIKE_SVG />
+              {includesFavorit() ? <FAVORIT_SVG /> : <LIKE_SVG />}
             </Button>
           </ButtonsBlockStyled>
         </>

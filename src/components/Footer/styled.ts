@@ -47,6 +47,7 @@ const InfoBlockStyled = styled.ul`
   > * {
     text-transform: uppercase;
     font-weight: 800;
+    font-family: 'Mont-Bold', sans-serif;
     font-size: 12px;
     line-height: 11px;
     color: ${({ theme }) => theme.footerButton};
@@ -74,6 +75,7 @@ const GoTopStyled = styled.div`
   font-size: 12px;
   line-height: 15.34px;
   cursor: pointer;
+  font-family: 'Mont-SemiBold', sans-serif;
 
   ${media.tablet} {
     width: auto;

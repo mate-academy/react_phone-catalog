@@ -19,6 +19,7 @@ const HomePageStyled = styled.div`
 
 const TitleStyled = styled.h2`
   font-weight: 800;
+  font-family: 'Mont-Bold', sans-serif;
   font-size: 32px;
   line-height: 41px;
   margin: 0;
@@ -34,9 +35,11 @@ const TitleStyled = styled.h2`
   }
 
   ${media.desktop} {
-    padding: 56px 32px;
+    padding: 56px 0;
     margin: 0;
     width: 100%;
+    max-width: 1136px;
+    margin-inline: auto;
   }
 `;
 

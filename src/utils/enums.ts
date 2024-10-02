@@ -18,4 +18,5 @@ export enum StrCode {
   Language = 'LANGUAGE',
   Home = 'HOME',
   Phones = 'PHONES',
+  Added = 'ADDED',
 }

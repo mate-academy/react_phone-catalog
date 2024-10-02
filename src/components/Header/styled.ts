@@ -141,12 +141,13 @@ const NavListStyled = styled.ul`
   }
 `;
 
-const ListItemStyled = styled.div`
+const ListItemStyled = styled.li`
   text-transform: uppercase;
   height: 27px;
   padding-block: 8px;
   font-size: 12px;
   font-weight: 800;
+  font-family: 'Mont-Bold', sans-serif;
   line-height: 11px;
   color: ${({ theme }) => theme.textSecondColor};
 
@@ -163,6 +164,7 @@ const MenuBoxStyled = styled.div`
   justify-content: center;
   align-items: center;
   box-shadow: -1px 0 0 ${({ theme }) => theme.borderDefault};
+  position: relative;
 
   ${media.tablet} {
     width: 48px;
@@ -184,6 +186,27 @@ const MenuImgStyled = styled.div`
   }
 `;
 
+const CountStyled = styled.div`
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  border: 1px solid ${({ theme }) => theme.bacgroundDefault};
+  background: #eb5757;
+  border-radius: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 600;
+  font-size: 9px;
+  line-height: 11.5px;
+  color: ${({ theme }) => theme.textThreeColor};
+
+
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) translate(7px, -7px);
+`;
+
 export {
   HeaderStyled,
   LogoStyled,
@@ -193,4 +216,5 @@ export {
   ListItemStyled,
   MenuBoxStyled,
   MenuImgStyled,
+  CountStyled,
 };

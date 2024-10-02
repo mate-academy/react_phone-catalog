@@ -1,9 +1,9 @@
-import { ButtonsBlockStyled, ItemsStyled, ProductStyled } from './styled';
+import { ButtonsBlockStyled, ItemsStyled, ProductStyled, TitleStyled } from './styled';
 import { Button } from '../../../../components/Button/Button';
 import { VECTOR_SVG } from '../../../../utils/SVG';
 import { ProductType } from '../../../../types/productsType';
 import ProductCard from '../../../_shared/productCard/ProductCard';
-import { useRef } from 'react';
+import useScrollButtons from '../../../../hooks/useScrollButtons';
 
 type Props = {
   name: string;
@@ -11,44 +11,22 @@ type Props = {
 };
 
 const ProductsSlider: React.FC<Props> = ({ name, products = [] }) => {
-  const scrollRef = useRef<HTMLDivElement | null>(null);
-
-  const getScrollAmount = (pos: 'left' | 'right') => {
-    if (window.innerWidth >= 1200) {
-      return pos === 'left' ? -1152 : 1152;
-    } else if (window.innerWidth >= 640) {
-      return pos === 'left' ? -508 : 508;
-    } else {
-      return pos === 'left' ? -229 : 229;
-    }
-  };
-
-  const handleScrollLeft = () => {
-    if (scrollRef.current) {
-      scrollRef.current.scrollBy({
-        left: getScrollAmount('left'),
-        behavior: 'smooth',
-      });
-    }
-  };
-
-  const handleScrollRight = () => {
-    if (scrollRef.current) {
-      scrollRef.current.scrollBy({
-        left: getScrollAmount('right'),
-        behavior: 'smooth',
-      });
-    }
-  };
+  const {
+    scrollRef,
+    canScrollLeft,
+    canScrollRight,
+    handleScrollLeft,
+    handleScrollRight,
+  } = useScrollButtons();
 
   return (
     <div>
       <ProductStyled>
-        {name}
+        <TitleStyled>{name}</TitleStyled>
 
         <ButtonsBlockStyled>
           <Button
-            variant="white"
+            variant={canScrollLeft ? 'white' : 'disabled'}
             css="width: 32px; flex-shrink: 0; height: 32px"
             onFunc={handleScrollLeft}
           >
@@ -56,7 +34,7 @@ const ProductsSlider: React.FC<Props> = ({ name, products = [] }) => {
           </Button>
 
           <Button
-            variant="white"
+            variant={canScrollRight ? 'white' : 'disabled'}
             css="width: 32px; flex-shrink: 0; height: 32px"
             onFunc={handleScrollRight}
           >
