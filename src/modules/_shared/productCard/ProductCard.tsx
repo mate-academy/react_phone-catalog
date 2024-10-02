@@ -87,7 +87,7 @@ const ProductCard: React.FC<Props> = ({ variant, product }) => {
               {t(StrCode.Capacity)}
               <InfoStyled>{product.capacity}</InfoStyled>
             </div>
-            
+
             <div>
               {t(StrCode.Ram)}
               <InfoStyled>{product.ram}</InfoStyled>

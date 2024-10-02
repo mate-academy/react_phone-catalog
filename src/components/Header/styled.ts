@@ -201,7 +201,6 @@ const CountStyled = styled.div`
   line-height: 11.5px;
   color: ${({ theme }) => theme.textThreeColor};
 
-
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%) translate(7px, -7px);

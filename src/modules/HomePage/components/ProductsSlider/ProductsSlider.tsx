@@ -1,4 +1,9 @@
-import { ButtonsBlockStyled, ItemsStyled, ProductStyled, TitleStyled } from './styled';
+import {
+  ButtonsBlockStyled,
+  ItemsStyled,
+  ProductStyled,
+  TitleStyled,
+} from './styled';
 import { Button } from '../../../../components/Button/Button';
 import { VECTOR_SVG } from '../../../../utils/SVG';
 import { ProductType } from '../../../../types/productsType';

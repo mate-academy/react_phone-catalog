@@ -126,7 +126,7 @@ const CountBlockStyled = styled.div`
 `;
 
 const RegularPriceStyled = styled.div`
-font-family: 'Mont-Regular', sans-serif;
+  font-family: 'Mont-Regular', sans-serif;
   font-weight: 600;
   line-height: 28.12px;
   color: ${({ theme }) => theme.textSecondColor};
