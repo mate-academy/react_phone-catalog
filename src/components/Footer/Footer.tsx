@@ -12,7 +12,7 @@ export const Footer: React.FC = () => {
         <ul className={styles.footer__list}>
           <li className={styles.footer__item}>
             <a
-              href="https://github.com/Opokhvalenko"
+              href="https://github.com/pokhvalenkos"
               className={styles.footer__link}
               target="_blank"
               rel="noreferrer"
@@ -22,7 +22,7 @@ export const Footer: React.FC = () => {
           </li>
           <li className={styles.footer__item}>
             <a
-              href="https://github.com/Opokhvalenko"
+              href="https://github.com/pokhvalenkos"
               className={styles.footer__link}
               target="_blank"
               rel="noreferrer"
