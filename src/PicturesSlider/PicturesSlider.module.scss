@@ -109,10 +109,11 @@
   .pictures_slider {
     display: flex;
     width: 320px;
-    height: 320px;
-    margin: 0 0 80px;
+    margin: 0 auto;
     position: relative;
-    gap: 19px;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 56px;
   }
 
   .picture_img {
@@ -121,11 +122,17 @@
     object-fit: contain;
   }
 
+  .button_right,
+  .button_left {
+    display: none;
+  }
+
 
   .swiper-pagination {
     display: flex;
     justify-content: center;
     margin-top: 10px;
+
   }
 
   .swiper-pagination-bullet {

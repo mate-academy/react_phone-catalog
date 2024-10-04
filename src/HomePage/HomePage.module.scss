@@ -1,6 +1,7 @@
 .container {
   max-width: 1136px;
   margin: 0 auto;
+  overflow: hidden;
 }
 
 .slider {
@@ -211,7 +212,7 @@
     font-weight: 800;
     line-height: 41px;
     letter-spacing: -0.01em;
-    text-align: left;
+    text-align: center;
   }
 
 }

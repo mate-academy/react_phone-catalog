@@ -1,6 +1,6 @@
 /* eslint-disable max-len */
 /* eslint-disable no-console */
-import React from 'react';
+import React, { useState } from 'react';
 import phones from '../../public/api/phones.json';
 import tablets from '../../public/api/tablets.json';
 import accessories from '../../public/api/accessories.json';
@@ -68,9 +68,42 @@ export const HotPrices: React.FC = () => {
     }
   };
 
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const productsPerPage = 4;
+
+  const handleNext = () => {
+    if (currentIndex + productsPerPage < productsWithMaxDiscount.length) {
+      setCurrentIndex(currentIndex + productsPerPage);
+    }
+  };
+
+  const handlePrev = () => {
+    if (currentIndex > 0) {
+      setCurrentIndex(currentIndex - productsPerPage);
+    }
+  };
+
   return (
     <div className={styles.productList}>
       <h1>Hot Prices</h1>
+      <div className={styles.buttonsGroup}>
+        <button
+          onClick={handlePrev}
+          disabled={currentIndex === 0}
+          className={styles.buttons_controls}
+        >
+          <img src="img/Arrow-left.png" alt="Previous" />
+        </button>
+        <button
+          onClick={handleNext}
+          disabled={
+            currentIndex + productsPerPage >= productsWithMaxDiscount.length
+          }
+          className={styles.buttons_controls}
+        >
+          <img src="img/Arrow-right.png" alt="Next" />
+        </button>
+      </div>
 
       <div className={styles.productGrid}>
         {productsWithMaxDiscount.map(product => (

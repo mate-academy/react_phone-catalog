@@ -7,16 +7,18 @@ import { HotPrices } from '../HotPrices/HotPrices';
 
 export const HomePage: React.FC = () => {
   return (
-    <div className={styles.container}>
-      <div className={styles.logo}>
-        <p className={styles.header__paragraph}>
-          Welcome to Nice Gadgets store!
-        </p>
+    <div>
+      <div className={styles.container}>
+        <div className={styles.logo}>
+          <p className={styles.header__paragraph}>
+            Welcome to Nice Gadgets store!
+          </p>
+        </div>
+        <PicturesSlider />
+        <BrandNewModels />
+        <ShopByCategory />
+        <HotPrices />
       </div>
-      <PicturesSlider />
-      <BrandNewModels />
-      <ShopByCategory />
-      <HotPrices />
     </div>
   );
 };

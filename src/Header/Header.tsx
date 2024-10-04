@@ -13,14 +13,26 @@ export const Header: React.FC = () => {
   return (
     <header className={styles.header}>
       <div className={styles.logo}>
-        <Link to="/" onClick={toggleMenu}>
-          <img src="img/Logo.svg" alt="Logo" />
+        <Link to="/">
+          <img src="img/Logo.svg" alt="Logo" className={styles.logo_img} />
         </Link>
       </div>
 
-      <button className={styles.header_burger_bnt} onClick={toggleMenu}>
-        <img src="img/burger-menu.png" alt="Burger Menu" />
-      </button>
+      <div className={styles.burger} onClick={toggleMenu}>
+        {menuOpen ? (
+          <img
+            src="img/close.png"
+            alt="Burger Menu"
+            className={styles.burger_img}
+          />
+        ) : (
+          <img
+            src="img/burger-menu.png"
+            alt="Burger Menu"
+            className={styles.burger_img}
+          />
+        )}
+      </div>
 
       <nav className={`${styles.nav} ${menuOpen ? styles.nav_open : ''}`}>
         <ul className={styles.nav_left}>

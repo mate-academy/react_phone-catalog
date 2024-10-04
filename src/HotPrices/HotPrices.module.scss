@@ -48,7 +48,7 @@
   .productList {
     padding: 20px;
     max-width: 640px;
-    margin: 0 16px 120px;
+    margin: 0 auto;
   }
 
   .productGrid {
@@ -64,5 +64,25 @@
     text-decoration: none;
     color: inherit;
     display: block;
+  }
+
+  .buttonsGroup {
+    display: flex;
+    gap: 16px;
+  }
+
+  .buttons_controls {
+    width: 32px;
+    height: 32px;
+    gap: 16px;
+    background-color: #fff;
+    border: 1px solid gray;
+    transition: background-color 0.3s ease, opacity 0.3s ease;
+    cursor: pointer;
+  }
+
+  .buttons_controls:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
   }
 }
