@@ -6,6 +6,7 @@ import {
   MenuBoxStyled,
   MenuImgStyled,
   MenuStyled,
+  NavLinkStyled,
   NavListStyled,
   NavStyled,
 } from './styled';
@@ -76,27 +77,44 @@ export const Header = () => {
 
       <NavStyled isActive={isManuActive}>
         <NavListStyled>
-          <ListItemStyled>{t(StrCode.Home)}</ListItemStyled>
-          <ListItemStyled>{t(StrCode.Phones)}</ListItemStyled>
-          <ListItemStyled>{t(StrCode.Tablets)}</ListItemStyled>
-          <ListItemStyled>{t(StrCode.Accessories)}</ListItemStyled>
+          <ListItemStyled>
+            <NavLinkStyled to="/">{t(StrCode.Home)}</NavLinkStyled>
+          </ListItemStyled>
+
+          <ListItemStyled>
+            <NavLinkStyled to="/phones">{t(StrCode.Phones)}</NavLinkStyled>
+          </ListItemStyled>
+
+          <ListItemStyled>
+            <NavLinkStyled to="/tablets">{t(StrCode.Tablets)}</NavLinkStyled>
+          </ListItemStyled>
+
+          <ListItemStyled>
+            <NavLinkStyled to="/accessories">
+              {t(StrCode.Accessories)}
+            </NavLinkStyled>
+          </ListItemStyled>
         </NavListStyled>
 
         <MenuStyled isActive={!isManuActive} isMenu={false}>
           <MenuBoxStyled>
-            <MenuImgStyled>
-              <LIKE_SVG />
-            </MenuImgStyled>
+            <NavLinkStyled to="/favorites" isIcon={true}>
+              <MenuImgStyled>
+                <LIKE_SVG />
+              </MenuImgStyled>
 
-            {!!favoritCount && <CountStyled>{favoritCount}</CountStyled>}
+              {!!favoritCount && <CountStyled>{favoritCount}</CountStyled>}
+            </NavLinkStyled>
           </MenuBoxStyled>
 
           <MenuBoxStyled>
-            <MenuImgStyled>
-              <SHOPPING_SVG />
-            </MenuImgStyled>
+            <NavLinkStyled to="/cart" isIcon={true}>
+              <MenuImgStyled>
+                <SHOPPING_SVG />
+              </MenuImgStyled>
 
-            {!!backsetCount && <CountStyled>{backsetCount}</CountStyled>}
+              {!!backsetCount && <CountStyled>{backsetCount}</CountStyled>}
+            </NavLinkStyled>
           </MenuBoxStyled>
         </MenuStyled>
       </NavStyled>

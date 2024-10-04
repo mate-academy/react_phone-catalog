@@ -1,5 +1,6 @@
-import styled, { css } from 'styled-components';
+import styled, { css, keyframes } from 'styled-components';
 import { media } from '../../utils/const';
+import { NavLink } from 'react-router-dom';
 
 const HeaderStyled = styled.header`
   width: 100%;
@@ -149,12 +150,79 @@ const ListItemStyled = styled.li`
   font-weight: 800;
   font-family: 'Mont-Bold', sans-serif;
   line-height: 11px;
-  color: ${({ theme }) => theme.textSecondColor};
+  position: relative;
 
   ${media.tablet} {
     padding: 0;
     height: auto;
   }
+`;
+
+const appearAnimation = keyframes`
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+`;
+
+type NavLinkType = {
+  isIcon?: boolean;
+};
+
+const NavLinkStyled = styled(NavLink)<NavLinkType>`
+  text-decoration: none;
+  color: ${({ theme }) => theme.textSecondColor};
+
+  &.active {
+    color: ${({ theme }) => theme.textColor};
+
+    &:after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 2px;
+      background-color: ${({ theme }) => theme.textColor};
+      left: 0;
+      bottom: 0;
+      border-radius: 1px;
+      animation: ${appearAnimation} 0.3s ease forwards;
+
+      ${({ isIcon }) => {
+        if (isIcon) {
+          return css`
+            bottom: 0;
+            border-radius: 0;
+          `;
+        }
+
+        return css`
+          ${media.tablet} {
+            bottom: -18.5px;
+          }
+
+          ${media.desktop} {
+            bottom: -26.5px;
+          }
+        `;
+      }}
+    }
+  }
+
+  ${({ isIcon }) => {
+    if (isIcon) {
+      return css`
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      `;
+    }
+
+    return;
+  }}
 `;
 
 const MenuBoxStyled = styled.div`
@@ -213,6 +281,7 @@ export {
   NavStyled,
   NavListStyled,
   ListItemStyled,
+  NavLinkStyled,
   MenuBoxStyled,
   MenuImgStyled,
   CountStyled,

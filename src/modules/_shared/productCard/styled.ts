@@ -98,6 +98,10 @@ const ImgStyled = styled.img<CardProps>`
       }
     }
   }}
+
+  &:hover {
+    transform: scale(1.1);
+  }
 `;
 
 const NameBlockStyled = styled.div`

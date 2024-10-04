@@ -28,6 +28,10 @@ export const theme1 = {
   optionHoverText: '#313237',
   cardSliderActive: '#313237',
   cardSliderNotActive: '#e2e6e9',
+  buttonHoverBacground: '#313237',
+  buttonHoverShadow: '#17203166',
+  buttonSecondHoverBacground: '#fff',
+  buttonSecondHoverBorder: '#313237',
 };
 
 export const theme2 = {
@@ -60,6 +64,10 @@ export const theme2 = {
   optionHoverText: '#f1f2f9',
   cardSliderActive: '#f1f2f9',
   cardSliderNotActive: '#3b3e4a',
+  buttonHoverBacground: '#a378ff',
+  buttonHoverShadow: 'none',
+  buttonSecondHoverBacground: '#4a4d58',
+  buttonSecondHoverBorder: '#4a4d58',
 };
 
 export const theme3 = {
@@ -92,6 +100,10 @@ export const theme3 = {
   optionHoverText: '#313237',
   cardSliderActive: '',
   cardSliderNotActive: '',
+  buttonHoverBacground: '',
+  buttonHoverShadow: '',
+  buttonSecondHoverBacground: '',
+  buttonSecondHoverBorder: '',
 };
 
 export const theme4 = {
@@ -124,6 +136,10 @@ export const theme4 = {
   optionHoverText: '#313237',
   cardSliderActive: '',
   cardSliderNotActive: '',
+  buttonHoverBacground: '',
+  buttonHoverShadow: '',
+  buttonSecondHoverBacground: '',
+  buttonSecondHoverBorder: '',
 };
 
 export const theme5 = {
@@ -156,4 +172,8 @@ export const theme5 = {
   optionHoverText: '#313237',
   cardSliderActive: '',
   cardSliderNotActive: '',
+  buttonHoverBacground: '',
+  buttonHoverShadow: '',
+  buttonSecondHoverBacground: '',
+  buttonSecondHoverBorder: '',
 };

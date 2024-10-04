@@ -10,7 +10,7 @@ import { setPhones } from './features/phoneSlice';
 import { setProducts } from './features/productsSlice';
 import { Footer } from './components/Footer';
 import { ThemeProvider } from './components/Themes/ThemeProvider';
-import { AppStyled } from './AppStyled';
+import { AppStyled, MainStyled } from './AppStyled';
 
 export const App = () => {
   const dispatch = useAppDispatch();
@@ -41,7 +41,11 @@ export const App = () => {
     <ThemeProvider>
       <AppStyled className="App">
         <Header />
+
+        <MainStyled />
+
         <Outlet />
+
         <Footer />
       </AppStyled>
     </ThemeProvider>

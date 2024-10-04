@@ -23,10 +23,12 @@ const CategoryBlock = () => {
       <CategoryTitleStyled>{t(StrCode.ShopByCategory)}</CategoryTitleStyled>
 
       <CategotyStyled>
-        <CategoryItemStyled>
-          <ContainerImgStyled variang="first">
-            <CategoryImageStyled variang="first" />
-          </ContainerImgStyled>
+        <CategoryItemStyled to="/phones">
+          <div style={{ overflow: 'hidden', marginBottom: '20px' }}>
+            <ContainerImgStyled variang="first">
+              <CategoryImageStyled variang="first" />
+            </ContainerImgStyled>
+          </div>
 
           <CategoryTextStyled>{t(StrCode.MobilePhones)}</CategoryTextStyled>
 
@@ -35,10 +37,12 @@ const CategoryBlock = () => {
           </SecondTextStyled>
         </CategoryItemStyled>
 
-        <CategoryItemStyled>
-          <ContainerImgStyled variang="second">
-            <CategoryImageStyled variang="second" />
-          </ContainerImgStyled>
+        <CategoryItemStyled to="/tablets">
+          <div style={{ overflow: 'hidden', marginBottom: '20px' }}>
+            <ContainerImgStyled variang="second">
+              <CategoryImageStyled variang="second" />
+            </ContainerImgStyled>
+          </div>
 
           <CategoryTextStyled>{t(StrCode.Tablets)}</CategoryTextStyled>
 
@@ -47,10 +51,12 @@ const CategoryBlock = () => {
           </SecondTextStyled>
         </CategoryItemStyled>
 
-        <CategoryItemStyled>
-          <ContainerImgStyled variang="three">
-            <CategoryImageStyled variang="three" />
-          </ContainerImgStyled>
+        <CategoryItemStyled to="/accessories">
+          <div style={{ overflow: 'hidden', marginBottom: '20px' }}>
+            <ContainerImgStyled variang="three">
+              <CategoryImageStyled variang="three" />
+            </ContainerImgStyled>
+          </div>
 
           <CategoryTextStyled>{t(StrCode.Accessories)}</CategoryTextStyled>
 

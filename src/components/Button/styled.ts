@@ -14,6 +14,11 @@ const ButtonStyled = styled.div<ButtonProps>`
         return css`
           background-color: ${({ theme }) => theme.buttonFirstColor};
           color: ${({ theme }) => theme.textThreeColor};
+
+          &:hover {
+            background-color: ${({ theme }) => theme.buttonHoverBacground};
+            box-shadow: 0 3px 13px 0 ${({ theme }) => theme.buttonHoverShadow};
+          }
         `;
       }
 
@@ -25,6 +30,12 @@ const ButtonStyled = styled.div<ButtonProps>`
             fill: ${({ theme }) => theme.buttonSecondColor} !important;
           }
           color: ${({ theme }) => theme.buttonSecondColor};
+
+          &:hover {
+            background-color: ${({ theme }) =>
+              theme.buttonSecondHoverBacground};
+            border: 1px solid ${({ theme }) => theme.buttonSecondHoverBorder};
+          }
         `;
       }
 

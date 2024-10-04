@@ -1,5 +1,6 @@
 import styled, { css } from 'styled-components';
 import { media } from '../../../../utils/const';
+import { NavLink } from 'react-router-dom';
 
 const ContainerStyled = styled.div`
   padding-inline: 16px;
@@ -16,6 +17,11 @@ const CategoryTitleStyled = styled.div`
   font-family: 'Mont-Bold', sans-serif;
   line-height: 30.8px;
   color: ${({ theme }) => theme.textColor};
+
+  ${media.tablet} {
+    font-size: 32px;
+    line-height: 41px;
+  }
 `;
 
 const CategotyStyled = styled.div`
@@ -30,7 +36,8 @@ const CategotyStyled = styled.div`
   }
 `;
 
-const CategoryItemStyled = styled.div`
+const CategoryItemStyled = styled(NavLink)`
+  text-decoration: none;
   display: flex;
   gap: 4px;
   flex-direction: column;
@@ -46,6 +53,7 @@ type ImgContainerType = {
 
 const ContainerImgStyled = styled.div<ImgContainerType>`
   width: 100%;
+  position: relative;
 
   ${({ variang }) => {
     switch (variang) {
@@ -72,7 +80,9 @@ const ContainerImgStyled = styled.div<ImgContainerType>`
     }
   }}
 
-  margin-bottom: 20px;
+  &:hover {
+    transform: scale(1.1);
+  }
 `;
 
 const CategoryImageStyled = styled.div<ImgContainerType>`
