@@ -5,7 +5,6 @@ type InputType = {
 };
 
 const InputBlockStyled = styled.div<InputType>`
-  margin: 10px;
   display: flex;
   flex-direction: column;
   position: relative;

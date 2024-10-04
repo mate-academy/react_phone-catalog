@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { media } from './utils/const';
 
 const AppStyled = styled.div`
   background-color: ${({ theme }) => theme.bacgroundDefault};
@@ -6,6 +7,10 @@ const AppStyled = styled.div`
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+
+  ${media.desktop} {
+    padding-top: 64px;
+  }
 `;
 
 const MainStyled = styled.main`

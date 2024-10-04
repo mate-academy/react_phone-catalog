@@ -19,4 +19,6 @@ export enum StrCode {
   Home = 'HOME',
   Phones = 'PHONES',
   Added = 'ADDED',
+  SortBy = 'SORT_BY',
+  ItemsOnPage = 'ITEMS_ON_PAGE',
 }

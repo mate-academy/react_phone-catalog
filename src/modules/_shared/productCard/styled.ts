@@ -12,6 +12,7 @@ const CardStyled = styled.div<CardProps>`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  cursor: pointer;
 
   ${({ variant }) => {
     switch (variant) {
@@ -34,16 +35,9 @@ const CardStyled = styled.div<CardProps>`
 
       case 'ListPage': {
         return css`
-          width: 287px;
           height: 440px;
 
           ${media.tablet} {
-            width: 229px;
-            height: 506px;
-          }
-
-          ${media.desktop} {
-            width: 272px;
             height: 506px;
           }
         `;
@@ -60,6 +54,7 @@ const CardStyled = styled.div<CardProps>`
 const ImgStyled = styled.img<CardProps>`
   width: 100%;
   object-fit: contain;
+  align-self: center;
 
   ${({ variant }) => {
     switch (variant) {
@@ -82,16 +77,13 @@ const ImgStyled = styled.img<CardProps>`
 
       case 'ListPage': {
         return css`
-          width: 223px;
           height: 130px;
 
           ${media.tablet} {
-            width: 165px;
             height: 196px;
           }
 
           ${media.desktop} {
-            width: 208px;
             height: 196px;
           }
         `;

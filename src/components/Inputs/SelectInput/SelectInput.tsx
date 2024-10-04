@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import {
   InputBlockStyled,
   ContainerStyled,
@@ -8,29 +8,7 @@ import {
 } from './styled';
 import OptionSwiper from './OptionSwiper/OptionSwiper';
 import { VECTOR_SVG } from '../../../utils/SVG';
-
-const useOutsideClick = (
-  ref: React.MutableRefObject<HTMLDivElement | null>,
-  callback: () => void,
-) => {
-  const handleClick = (e: MouseEvent | TouchEvent) => {
-    if (!ref.current || ref.current.contains(e.target as Node)) {
-      return;
-    }
-
-    callback();
-  };
-
-  useEffect(() => {
-    document.addEventListener('mousedown', handleClick);
-    document.addEventListener('touchstart', handleClick);
-
-    return () => {
-      document.removeEventListener('mousedown', handleClick);
-      document.removeEventListener('touchstart', handleClick);
-    };
-  }, [ref, callback]);
-};
+import { useOutsideClick } from '../../../hooks/useOutsideClick';
 
 type Props = {
   label?: string;
@@ -44,7 +22,7 @@ type Props = {
 export const SelectInput: React.FC<Props> = ({
   label = '',
   items,
-  width = '176px',
+  width = '100%',
   variant = 'default',
   value,
   setValue,
@@ -57,7 +35,7 @@ export const SelectInput: React.FC<Props> = ({
       case 'default': {
         return {
           left: '0',
-          top: !!label ? '53px' : '44px',
+          top: !!label ? '63px' : '44px',
           width: width,
         };
       }

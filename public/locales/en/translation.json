@@ -18,5 +18,8 @@
   "LANGUAGE": "Language",
   "HOME": "Home",
   "PHONES": "Phones",
-  "ADDED": "Added"
+  "ADDED": "Added",
+  "PAGE_NOT_FOUND": "Page not found!",
+  "SORT_BY": "Sort by",
+  "ITEMS_ON_PAGE": "Items on page"
 }
