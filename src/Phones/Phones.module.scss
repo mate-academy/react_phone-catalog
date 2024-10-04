@@ -146,9 +146,8 @@
 
 @media screen and (max-width: 640px){
   .productList {
-    padding: 20px;
     max-width: 639px;
-    max-height: 7500px;
+    max-height: 100hv;
     margin: 16px auto;
   }
 
@@ -156,7 +155,6 @@
     display: grid;
     grid-template-columns: repeat(1, 4fr);
     gap: 16px;
-    margin-top: 20px;
   }
 
   .linkProduct {
@@ -169,12 +167,9 @@
   .pagination {
     display: flex;
     justify-content: center;
-    margin-top: 20px;
   }
 
   .pagination button {
-    padding: 10px 15px;
-    margin: 0 5px;
     background-color: #f0f0f0;
     border: 1px solid #ddd;
     cursor: pointer;

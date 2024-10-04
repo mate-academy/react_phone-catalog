@@ -1,96 +1,139 @@
-:root {
-  --swiper-button-bg-color: #313237;
-  --swiper-button-padding: 10px 20px;
-  --swiper-button-border: 2px solid #fff;
-  --swiper-pagination-color: #E2E6E9;
-  --swiper-pagination-bullet-active-color: #313237;
-  --swiper-pagination-bullet-width: 16px;
-  --swiper-pagination-bullet-height: 8px;
-  --swiper-pagination-bullet-margin: 0 4px;
-  --swiper-pagination-active-width: 24px;
-  --swiper-navigation-color: #313237;
-  --swiper-theme-color: #fff;
-}
-
 @media screen and (min-width: 1200px){
-  .picturesSlider {
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
+  .pictures_slider {
+    display: flex;
+    width: 1136px;
+    height: 432px;
+    margin: 0 0 80px;
     position: relative;
+    gap: 19px;
   }
 
-  .slideImage {
+  .button_right,
+  .button_left {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 400px;
+    background: transparent;
+    border: 1px solid #B4BDC3;
+    cursor: pointer;
+  }
+
+  .button_right img,
+  .button_left img {
+    width: 16px;
+    height: 16px;
+  }
+
+  .picture_img {
     width: 1040px;
     height: 400px;
-    margin: auto 80px 30px;
-    object-fit: cover;
+    object-fit: contain;
   }
 
-  .swiper-slide {
+  .button_left {
+    transform: rotate(-180deg);
+  }
+
+  .swiper-pagination {
     display: flex;
     justify-content: center;
-    align-items: center;
+    margin-top: 10px;
   }
 
-  .swiper-button-prev {
-    color: var(--swiper-navigation-color), var(--swiper-theme-color); /* Используем переменные */
-    background-color: var(--swiper-button-bg-color); /* Цвет фона кнопки */
-    border-radius: var(--swiper-button-border-radius); /* Радиус кнопки */
-    padding: var(--swiper-button-padding); /* Отступы внутри кнопки */
-    border: var(--swiper-button-border); /* Граница кнопки */
-  }
-
-  /* Кнопка "Вперед" аналогично */
-  .swiper-button-next {
-    color: var(--swiper-navigation-color), var(--swiper-theme-color);
-    background-color: var(--swiper-button-bg-color);
-    border-radius: var(--swiper-button-border-radius);
-    padding: var(--swiper-button-padding);
-    border: var(--swiper-button-border);
-  }
-
-  /* Стили для пагинации */
   .swiper-pagination-bullet {
-    width: var(--swiper-pagination-bullet-width);
-    height: var(--swiper-pagination-bullet-height);
-    background-color: var(--swiper-pagination-color);
-    margin: var(--swiper-pagination-bullet-margin);
-  }
+    opacity: 0.5;
+    background-color: #ffffff;
+}
 
-  .swiper-pagination-bullet-active {
-    background-color: var(--swiper-pagination-bullet-active-color);
-    width: var(--swiper-pagination-active-width);
-  }
+.swiper-pagination-bullet-active {
+  opacity: 1;
+}
 
 }
 
 @media screen and (max-width: 1199px){
-  .picturesSlider {
+  .pictures_slider {
+    display: flex;
     width: 592px;
     height: 221px;
-
-    margin: 32px 75px 96px;
+    margin: 32px 24px;
     position: relative;
+    gap: 19px;
+  }
+  .button_right,
+  .button_left {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 189px;
+    background: transparent;
+    border: 1px solid #B4BDC3;
+    cursor: pointer;
   }
 
-  .slideImage {
+  .button_right img,
+  .button_left img {
+    width: 16px;
+    height: 16px;
+  }
+
+  .picture_img {
     width: 490px;
     height: 189px;
-    object-fit: cover;
   }
 
-  .swiper-slide {
+  .button_left {
+    transform: rotate(-180deg);
+  }
+
+  .swiper-pagination {
     display: flex;
     justify-content: center;
-    align-items: center;
+    margin-top: 10px;
   }
 
-  .swiper-button-next, .swiper-button-prev {
-    color: #fff;
-  }
+  .swiper-pagination-bullet {
+    opacity: 0.5;
+    background-color: #ffffff;
 }
 
-// @media screen and (max-width: 640px){
+.swiper-pagination-bullet-active {
+  opacity: 1;
+}
+}
 
-// }
+@media screen and (max-width: 640px){
+  .pictures_slider {
+    display: flex;
+    width: 320px;
+    height: 320px;
+    margin: 0 0 80px;
+    position: relative;
+    gap: 19px;
+  }
+
+  .picture_img {
+    width: 320px;
+    height: 320px;
+    object-fit: contain;
+  }
+
+
+  .swiper-pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+  }
+
+  .swiper-pagination-bullet {
+    opacity: 0.5;
+    background-color: #ffffff;
+}
+
+  .swiper-pagination-bullet-active {
+    opacity: 1;
+  }
+}

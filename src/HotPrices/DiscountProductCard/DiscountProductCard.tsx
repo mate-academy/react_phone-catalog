@@ -54,8 +54,8 @@ export const DiscountProductCard: React.FC<ProductCardProps> = ({
         <div className={styles.priceSection}>
           {discountPrice ? (
             <>
-              <span className={styles.discountPrice}>${discountPrice}</span>
-              <span className={styles.originalPrice}>${price}</span>
+              <p className={styles.discountPrice}>${discountPrice}</p>
+              <p className={styles.originalPrice}>${price}</p>
             </>
           ) : (
             <span className={styles.price}>${price}</span>

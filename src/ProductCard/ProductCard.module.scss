@@ -17,8 +17,12 @@
 }
 
 .productImage {
-  width: 207px;
+  width: 208px;
   height: 196px;
+  max-width: 207px;
+  max-height: 196px;
+  min-width: 207px;
+  min-height: 196px;
   margin: 0 32px 8px;
   object-fit: contain;
 }

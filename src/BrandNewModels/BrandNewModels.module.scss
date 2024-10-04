@@ -1,9 +1,60 @@
-@media screen and (min-width: 1200px){
+.productList {
+  max-width: 1136px;
+  width: 100%;
+  height: 571px;
+  margin-bottom: 80px;
+}
+
+.controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.title {
+  text-align: left;
+}
+
+.buttonsGroup {
+  display: flex;
+  gap: 16px;
+}
+
+.buttons_controls {
+  width: 32px;
+  height: 32px;
+  gap: 16px;
+  background-color: #fff;
+  border: 1px solid gray;
+  transition: background-color 0.3s ease, opacity 0.3s ease;
+  cursor: pointer;
+}
+
+.buttons_controls:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.productGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-top: 20px;
+}
+
+.linkProduct {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+@media screen and (max-width: 1199px){
   .productList {
     padding: 20px;
-    width: 1136px;
-    height: 571px;
-    margin: 0 152px 80px;
+    max-width: 1199px;
+    width: 100%;
+    height: 577px;
+    margin: 0 32px 80px;
   }
 
   .controls {
@@ -52,23 +103,40 @@
 
 @media screen and (max-width: 1199px){
   .productList {
-    padding: 20px;
     max-width: 1199px;
+    width: 100%;
     margin: 24px 0 0;
   }
 
   .controls {
     display: flex;
-    gap: 10px;
+    justify-content: space-between;
+    align-items: center;
+    width: 592px;
   }
 
-  .controls button {
+  .title {
+    text-align: left;
+  }
+
+  .buttonsGroup {
+    display: flex;
+    gap: 16px;
+  }
+
+  .buttons_controls {
+    width: 32px;
+    height: 32px;
+    gap: 16px;
     background-color: #fff;
-    border: 1px solid #ccc;
-    padding: 8px 16px;
-    font-size: 16px;
+    border: 1px solid gray;
+    transition: background-color 0.3s ease, opacity 0.3s ease;
     cursor: pointer;
-    border-radius: 4px;
+  }
+
+  .buttons_controls:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
   }
 
   .productGrid {
@@ -90,7 +158,6 @@
 
 @media screen and (max-width: 640px){
   .productList {
-    padding: 20px;
     max-width: 640px;
   }
 

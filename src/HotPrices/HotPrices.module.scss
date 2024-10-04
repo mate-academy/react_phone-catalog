@@ -3,7 +3,6 @@
     padding: 20px;
     width: 1136px;
     height: 571px;
-    margin: 0 152px 80px;
   }
 
   .productGrid {
@@ -25,7 +24,7 @@
     padding: 20px;
     width: 1136px;
     height: 571px;
-    margin: 0 152px 80px;
+    margin: 24px 0 0;
   }
 
   .productGrid {
@@ -33,6 +32,9 @@
     grid-template-columns: repeat(4, 1fr);
     gap: 16px;
     margin-top: 20px;
+    width: 744px;
+    height: 577px;
+    overflow: hidden;
   }
 
   .linkProduct {
