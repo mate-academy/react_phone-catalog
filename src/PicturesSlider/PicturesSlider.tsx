@@ -21,13 +21,13 @@ export const PicturesSlider = () => {
       </button>
       <Swiper
         style={{
-          "--swiper-pagination-color": "#313237",
-          "--swiper-pagination-bullet-inactive-color": "#999999",
-          "--swiper-pagination-bullet-inactive-opacity": "1",
-          "--swiper-pagination-bullet-width": "14px",
-          "--swiper-pagination-bullet-height": "4px",
-          "--swiper-pagination-bullet-border-radius": "0px",
-          "--swiper-pagination-bullet-horizontal-gap": "6px"
+          '--swiper-pagination-color': '#313237',
+          '--swiper-pagination-bullet-inactive-color': '#999999',
+          '--swiper-pagination-bullet-inactive-opacity': '1',
+          '--swiper-pagination-bullet-width': '14px',
+          '--swiper-pagination-bullet-height': '4px',
+          '--swiper-pagination-bullet-border-radius': '0px',
+          '--swiper-pagination-bullet-horizontal-gap': '6px',
         }}
         navigation
         pagination={{ clickable: true }}

@@ -321,11 +321,6 @@
     transition: color 0.3s ease;
   }
 
-  .nav_left a:hover {
-    color: #ff6347;
-  }
-
-  /* Закрепляем Favorites и Cart внизу */
   .nav_bottom {
     position: absolute;
     bottom: 20px;
@@ -341,7 +336,8 @@
     transition: color 0.3s ease;
   }
 
-  .nav_bottom a:hover {
+  .nav_left a:hover {
     color: #ff6347;
   }
+
 }

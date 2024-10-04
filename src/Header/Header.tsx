@@ -25,16 +25,24 @@ export const Header: React.FC = () => {
       <nav className={`${styles.nav} ${menuOpen ? styles.nav_open : ''}`}>
         <ul className={styles.nav_left}>
           <li>
-            <Link to="/" onClick={toggleMenu}>Home</Link>
+            <Link to="/" onClick={toggleMenu}>
+              Home
+            </Link>
           </li>
           <li>
-            <Link to="/phones" onClick={toggleMenu}>Phones</Link>
+            <Link to="/phones" onClick={toggleMenu}>
+              Phones
+            </Link>
           </li>
           <li>
-            <Link to="/tablets" onClick={toggleMenu}>Tablets</Link>
+            <Link to="/tablets" onClick={toggleMenu}>
+              Tablets
+            </Link>
           </li>
           <li>
-            <Link to="/accessories" onClick={toggleMenu}>Accessories</Link>
+            <Link to="/accessories" onClick={toggleMenu}>
+              Accessories
+            </Link>
           </li>
         </ul>
 
