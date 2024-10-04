@@ -88,7 +88,7 @@ Create `ProductDetailsPage` available at `/product/:productId`.
    - Choose `Tech specs` you want to show.
 4. Add the ability to choose a picture.
 5. Implement `You may also like` block with products choosen randomly:
-    Create `getSuggestedProducts` method fetching the suggested products. <!-- - `IT HAS TO BE FETCH?` -->
+    Create `getSuggestedProducts` method fetching the suggested products.
 6. Add `Back` button working the same way as a Browser `Back` button.
 7. Add `Breadcrumbs` at the top with:
    - A Home page link;
@@ -114,6 +114,8 @@ Use React Context or Redux to store Items.
    - Clear the Cart if the user confirms the order;
    - Keep the Cart items and close the confirmation on cancel;
    - Use the `confirm` function if you don't have a better solution.
+
+   
 
 ## Favorites page
 
