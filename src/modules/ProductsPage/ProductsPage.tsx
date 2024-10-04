@@ -1,15 +1,23 @@
-import { useState } from "react";
-import { useAppSelector } from "../../hooks/hookStore";
-import BreadCrumbs from "../_shared/BreadCrumbs/BreadCrumbs";
-import { ModelsStyled, ProductListStyled, ProductsPageStyled, SelectFixInput, SelectFixSecond, SelectsStyled, TitleStyled } from "./styled";
-import { useTranslation } from "react-i18next";
-import { StrCode } from "../../utils/enums";
-import { SelectInput } from "../../components/Inputs/SelectInput/SelectInput";
-import ProductCard from "../_shared/productCard/ProductCard";
+import { useState } from 'react';
+import { useAppSelector } from '../../hooks/hookStore';
+import BreadCrumbs from '../_shared/BreadCrumbs/BreadCrumbs';
+import {
+  ModelsStyled,
+  ProductListStyled,
+  ProductsPageStyled,
+  SelectFixInput,
+  SelectFixSecond,
+  SelectsStyled,
+  TitleStyled,
+} from './styled';
+import { useTranslation } from 'react-i18next';
+import { StrCode } from '../../utils/enums';
+import { SelectInput } from '../../components/Inputs/SelectInput/SelectInput';
+import ProductCard from '../_shared/productCard/ProductCard';
 
 type Props = {
   variant: 'phones' | 'tabless' | 'accesories';
-}
+};
 
 const ProductsPage: React.FC<Props> = ({ variant }) => {
   const { products } = useAppSelector(state => state.products);
@@ -19,7 +27,7 @@ const ProductsPage: React.FC<Props> = ({ variant }) => {
   const [currentPage] = useState(1);
 
   const sortedAndPaginatedProducts = () => {
-    const productsUsed = products.filter((item) => {
+    const productsUsed = products.filter(item => {
       switch (variant) {
         case 'phones':
           return item.category === 'phones';
@@ -30,7 +38,7 @@ const ProductsPage: React.FC<Props> = ({ variant }) => {
       }
     });
 
-    let sortedProducts = [...productsUsed];
+    const sortedProducts = [...productsUsed];
 
     switch (valueSort) {
       case 'Newest':
@@ -49,13 +57,13 @@ const ProductsPage: React.FC<Props> = ({ variant }) => {
     if (valuePerPage === 'all') {
       return sortedProducts;
     } else {
-      const perPage = Number(valuePerPage)
+      const perPage = Number(valuePerPage);
       const startIndex = (currentPage - 1) * perPage;
       const endIndex = startIndex + perPage;
+
       return sortedProducts.slice(startIndex, endIndex);
     }
   };
-
 
   const FirstTitleH1 = {
     phones: 'Phones page',
@@ -73,9 +81,7 @@ const ProductsPage: React.FC<Props> = ({ variant }) => {
       <ProductsPageStyled>
         <BreadCrumbs />
 
-        <TitleStyled>
-          {t(StrCode.MobilePhones)}
-        </TitleStyled>
+        <TitleStyled>{t(StrCode.MobilePhones)}</TitleStyled>
 
         <ModelsStyled>
           {`${sortedAndPaginatedProducts().length} ${t(StrCode.Models)}`}
@@ -103,16 +109,12 @@ const ProductsPage: React.FC<Props> = ({ variant }) => {
 
         <ProductListStyled>
           {sortedAndPaginatedProducts().map(item => (
-            <ProductCard
-              key={item.id}
-              variant='ListPage'
-              product={item}
-            />
+            <ProductCard key={item.id} variant="ListPage" product={item} />
           ))}
         </ProductListStyled>
       </ProductsPageStyled>
     </div>
-  )
+  );
 };
 
 export default ProductsPage;

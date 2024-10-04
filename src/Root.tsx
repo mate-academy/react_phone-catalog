@@ -12,9 +12,12 @@ export const Root = () => (
       <Routes>
         <Route path="/" element={<App />}>
           <Route index element={<HomePage />} />
-          <Route path="phones" element={<ProductsPage variant='phones' />} />
-          <Route path="tablets" element={<ProductsPage variant='tabless' />} />
-          <Route path="accessories" element={<ProductsPage variant='accesories' />} />
+          <Route path="phones" element={<ProductsPage variant="phones" />} />
+          <Route path="tablets" element={<ProductsPage variant="tabless" />} />
+          <Route
+            path="accessories"
+            element={<ProductsPage variant="accesories" />}
+          />
           <Route path="cart" element={<></>} />
           <Route path="favorites" element={<></>} />
           <Route path="*" element={<BreadCrumbs />} />

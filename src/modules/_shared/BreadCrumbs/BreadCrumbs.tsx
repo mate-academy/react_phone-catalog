@@ -1,8 +1,8 @@
-import { useLocation, useParams } from "react-router-dom";
-import { BreadCrumbsStyled, ContainerSVGStyled, CrumbStyled } from "./styled";
-import { HOME_SVG, VECTOR_SVG } from "../../../utils/SVG";
-import { useTranslation } from "react-i18next";
-import { StrCode } from "../../../utils/enums";
+import { useLocation, useParams } from 'react-router-dom';
+import { BreadCrumbsStyled, ContainerSVGStyled, CrumbStyled } from './styled';
+import { HOME_SVG, VECTOR_SVG } from '../../../utils/SVG';
+import { useTranslation } from 'react-i18next';
+import { StrCode } from '../../../utils/enums';
 
 const BreadCrumbs = () => {
   const { pathname } = useLocation();
@@ -11,10 +11,14 @@ const BreadCrumbs = () => {
 
   const adressName = () => {
     switch (pathname) {
-      case '/phones': return t(StrCode.Phones);
-      case '/tablets': return t(StrCode.Tablets);
-      case '/accessories': return t(StrCode.Accessories);
-      default: return 'Page not found!';
+      case '/phones':
+        return t(StrCode.Phones);
+      case '/tablets':
+        return t(StrCode.Tablets);
+      case '/accessories':
+        return t(StrCode.Accessories);
+      default:
+        return 'Page not found!';
     }
   };
 
@@ -24,7 +28,9 @@ const BreadCrumbs = () => {
     return formattedName.charAt(0).toUpperCase() + formattedName.slice(1);
   };
 
-  const itemsUsed = !productId ? [adressName()] : [adressName(), formatProductName(productId)];
+  const itemsUsed = !productId
+    ? [adressName()]
+    : [adressName(), formatProductName(productId)];
 
   return (
     <BreadCrumbsStyled>
@@ -36,7 +42,7 @@ const BreadCrumbs = () => {
         {itemsUsed.map(item => (
           <>
             <ContainerSVGStyled>
-              <VECTOR_SVG variant='right' />
+              <VECTOR_SVG variant="right" />
             </ContainerSVGStyled>
 
             <div>{item}</div>
@@ -44,7 +50,7 @@ const BreadCrumbs = () => {
         ))}
       </CrumbStyled>
     </BreadCrumbsStyled>
-  )
+  );
 };
 
 export default BreadCrumbs;

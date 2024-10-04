@@ -35,8 +35,4 @@ const ContainerSVGStyled = styled.div`
   align-items: center;
 `;
 
-export {
-  BreadCrumbsStyled,
-  CrumbStyled,
-  ContainerSVGStyled,
-}
+export { BreadCrumbsStyled, CrumbStyled, ContainerSVGStyled };

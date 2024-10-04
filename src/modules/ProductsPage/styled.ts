@@ -68,4 +68,4 @@ export {
   SelectFixInput,
   SelectFixSecond,
   ProductListStyled,
-}
+};
