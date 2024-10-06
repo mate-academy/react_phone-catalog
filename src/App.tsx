@@ -9,6 +9,7 @@ import { TabletsPage } from './Components/ProductPage/TabletsPage';
 import { AccessoriesPage } from './Components/ProductPage/AccessoriesPage';
 import { TabletsOffer } from './Components/ProductOffer/TabletsOffer';
 import { AccessoriesOffer } from './Components/ProductOffer/AccessoriesOffer';
+import { Favourites } from './Components/Favourites/Favourites';
 
 export const App = () => (
   <div className="App">
@@ -24,6 +25,7 @@ export const App = () => (
         <Route path="/tablets/:itemId" element={<TabletsOffer />} />
         <Route path="/accessories/:itemId" element={<AccessoriesOffer />} />
         <Route path="/oldPhones/:oldItemId" element={<OldPhoneOffer />} />
+        <Route path="/favourites" element={<Favourites />} />
       </Routes>
     </Router>
   </div>

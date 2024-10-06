@@ -188,12 +188,23 @@ text-align: right;
 border-radius: 8px;
 border: 0;
 
-background-color: #216CFF !important;
+background-color: #216CFF;
 color: white;
 font-family: Mont-normal, sans-serif;
 font-size: 10px;
 line-height: 21px;
 text-align: center;
+
+&--is-active {
+  background-color: white;
+  color: #216CFF;
+  border: 1px solid #216CFF;
+}
+&:hover {
+  background-color: white;
+  color: #216CFF;
+  border: 3px solid #216CFF;
+}
 
 }
 &__button-with-heart {
@@ -205,5 +216,21 @@ background-repeat: no-repeat;
 background-position: center;
 background-color: white !important;
 border: 1px solid #B4BDC3;
+&--is-active {
+  width: 40px;
+height: 40px;
+border-radius: 100%;
+border: 1px solid #E2E6E9;
+background-repeat: no-repeat;
+background-position: center;
+background-color: white;
+  background-image: url('../../img/Add\ to\ fovourites\ -\ Added.svg');
+  &:hover {
+    background-image: url('../../img/Add\ to\ fovourites\ -\ Added.svg');
+  }
 }
+&:hover {
+  background-image: url('../../img/Add\ to\ favorites-hover.svg');
+}
+  }
 }

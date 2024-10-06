@@ -7,6 +7,7 @@ import Slider from 'react-slick';
 import classNames from 'classnames';
 import { Footer } from '../Footer/Footer';
 import { ProductCard } from '../ProductCard/ProductCard';
+import { useNavigate } from 'react-router-dom';
 
 export const PhonesOffer = () => {
   const { phones, products } = useContext(CatalogContext);
@@ -23,6 +24,8 @@ export const PhonesOffer = () => {
   );
   const [activeImage, setActiveImage] = useState(false);
   const id = (Math.random() * 100000).toFixed(0);
+
+  const navigate = useNavigate();
 
   const settings = {
     className: 'productoffer__phoneslider',
@@ -93,11 +96,16 @@ export const PhonesOffer = () => {
               const getSelectedColor = (currentColor: string) => {
                 if (color === currentColor) {
                   setSelectedColor(color);
+
+                  navigate(
+                    `/phones/${selectedPhone.namespaceId}-${selectedCapacity?.toLowerCase()}-${selectedColor}`,
+                  );
                 }
               };
 
               return (
                 <button
+                  key={color}
                   onClick={() => getSelectedColor(color)}
                   className={classNames(
                     'productoffer__panel--color-selection',
@@ -106,7 +114,6 @@ export const PhonesOffer = () => {
                         selectedColor === color,
                     },
                   )}
-                  key={color}
                   style={{ backgroundColor: `${color}` }}
                 ></button>
               );
@@ -121,6 +128,10 @@ export const PhonesOffer = () => {
               if (currentCapacity === capacity) {
                 setSelectedCapacity(capacity);
               }
+
+              navigate(
+                `/phones/${selectedPhone.namespaceId}-${selectedCapacity?.toLowerCase()}-${selectedColor}`,
+              );
             };
 
             return (

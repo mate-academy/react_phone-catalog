@@ -8,14 +8,16 @@
   src: url('../../../public/fonts/Mont-Bold.otf');
 }
 
-@import '../../utils/mixins.scss';
+@import '../../utils/mixins';
 
 .productoffer {
   @include page-grid;
+
+  margin-right: 0;
   &__breadcrumbs {
     display: flex;
     align-items: flex-start;
-    margin: 32px 0 0 16px;
+    margin-top: 16px;
     grid-column: 1 / 5;
     &--home {
       background-image: url('../../img/Home.svg');
@@ -56,7 +58,6 @@ grid-column: 3 / 5;
       transform: rotate(0.5turn);
     }
     &--back-button {
-
       width: 61px;
       font-family: Mont, sans-serif;
       font-size: 12px;
@@ -66,7 +67,7 @@ grid-column: 3 / 5;
       text-decoration: none;
       color: #89939A;
       display: flex;
-      margin: 32px 0 0 16px;
+      margin-top: 16px;
     }
   }
   &__line {
@@ -188,7 +189,6 @@ color: #89939A;
 
     }
     &--price {
-      margin-right: 10px;
       font-family: Mont-bold, sans-serif;
       font-size: 32px;
       font-weight: 800;
@@ -232,6 +232,7 @@ color: #89939A;
       display: flex;
       flex-direction: column;
       gap: 10px;
+      grid-column: 1 / 5;
       margin-top: 32px;
       &-data {
         display: flex;
@@ -252,13 +253,13 @@ color: #89939A;
         line-height: 15.34px;
         text-align: right;
         color: black;
+        margin-right: 24px;
       }
 
     }
   }
   &__description {
     grid-column: 1 / 5;
-    margin-left: 16px;
     &--header {
       margin-top: 64px;
       font-family: Mont-bold, sans-serif;
@@ -269,7 +270,7 @@ color: #89939A;
       color:black;
     }
     &--title {
-      margin-top: 32px;
+      margin: 32px 24px 0 8px;
       font-family: Mont-bold, sans-serif;
       font-size: 16px;
       font-weight: 700;
@@ -277,9 +278,11 @@ color: #89939A;
       text-align: left;
       color:black;
       grid-column: 1 / 5;
+      margin-left: 8px;
     }
     &--text {
-      margin-top: 32px;
+      grid-column: 1 / 5;
+      margin: 32px 24px 0 8px;
       font-family: Mont, sans-serif;
       font-size: 14px;
       font-weight: 600;
@@ -291,7 +294,7 @@ color: #89939A;
   }
   &__techspecs {
     grid-column: 1 / 5;
-    margin: 48px 0 0 8px;
+    margin-top: 32px;
     &--data {
       display: flex;
       justify-content: space-between;
@@ -304,6 +307,7 @@ color: #89939A;
       line-height: 21px;
       text-align: left;
       color:#89939A;
+      margin-left: 8px;
     }
     &--text {
       font-family: Mont, sans-serif;
@@ -312,6 +316,9 @@ color: #89939A;
       line-height: 21px;
       text-align: right;
       color: black;
+      &:last-child {
+        margin-right: 24px;
+      }
     }
   }
   &__slider {
@@ -328,12 +335,19 @@ color: #89939A;
       text-align: left;
     }
   }
-  &__proposition {
-    margin-top: 20px;
-  }
 
   .slick-list {
     width: 240px;
+  }
+
+  .slick-dots {
+    margin: 10px 8px;
+  }
+  .slick-track {
+    margin: 32px 0 0 16px;
+  }
+  .slick-prev {
+    bottom: 38px;
   }
 
   :not(div) .slick-active {

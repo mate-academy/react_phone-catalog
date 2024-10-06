@@ -2,12 +2,13 @@ import { Link } from 'react-router-dom';
 import { Footer } from '../Footer/Footer';
 import { Navigation } from '../Navigation/Navigation';
 import './ProductPage.scss';
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect } from 'react';
 import { ProductCard } from '../ProductCard/ProductCard';
 import { ProductsFilter } from '../ProductsFilter/ProductsFilter';
 import { FilterType } from '../types/FilterType';
 import { CatalogContext } from '../CatalogProvider';
 import { ItemPerPage } from '../types/ItemPerPage';
+import { Pagination } from '../Pagination/Pagination';
 
 export const PhonesPage = () => {
   const {
@@ -18,9 +19,8 @@ export const PhonesPage = () => {
     query,
     itemsPerPage,
     slidePages,
-    setSlidePages,
+    pageNumber,
   } = useContext(CatalogContext);
-  const [pageNumber, setPageNumber] = useState(0);
 
   const filteredOptions = (allPhones: FilterType) => {
     const selectedProducts = products.filter(
@@ -103,36 +103,32 @@ export const PhonesPage = () => {
     setProducts(fullProductData);
   }, []);
 
-  const useItemsPerPage = (perPage: ItemPerPage) => {
+  const rest =
+    filteredPhones.length -
+    Math.floor(filteredPhones.length / +itemsPerPage) * +itemsPerPage;
+
+  const amountOfPages = Math.ceil(filteredPhones.length / +itemsPerPage);
+
+  // console.log(rest);
+  // console.log(filterPhones.length);
+  // console.log(+itemsPerPage * 490 + (+itemsPerPage - 1) * 16);
+
+  const setItemsPerPage = (perPage: ItemPerPage) => {
     switch (perPage) {
       case ItemPerPage.ALL:
-        return 'productpage__content';
-      case ItemPerPage.TWO_PER_PAGE:
-        return 'productpage__content productpage__content--2-per-page';
-      case ItemPerPage.FOUR_PER_PAGE:
-        return 'productpage__content productpage__content--4-per-page';
-      case ItemPerPage.EIGHT_PER_PAGE:
-        return 'productpage__content productpage__content--8-per-page';
+        return filteredPhones.length;
       case ItemPerPage.SIXTEEN_PER_PAGE:
-        return 'productpage__content productpage__content--16-per-page';
+        return 16;
+      case ItemPerPage.EIGHT_PER_PAGE:
+        return 8;
+      case ItemPerPage.FOUR_PER_PAGE:
+        return 4;
+      case ItemPerPage.TWO_PER_PAGE:
+        return 2;
       default:
-        return ItemPerPage.ALL;
+        return filterPhones.length;
     }
   };
-
-  const amountOfPages = Math.floor(filterPhones.length / +itemsPerPage);
-
-  const getPagination = (pages: number) => {
-    const pagination: number[] = [];
-
-    for (let i = 1; i <= pages; i++) {
-      pagination.push(i);
-    }
-
-    return pagination;
-  };
-
-  const pagination = getPagination(amountOfPages);
 
   // console.log(slidePages);
   // console.log(itemsPerPage);
@@ -152,47 +148,21 @@ export const PhonesPage = () => {
         <span className="productpage__amountofmodels">{`${phones.length} models`}</span>
         <ProductsFilter />
         <div
-          style={{ transform: `translateX(${slidePages}px)` }}
-          className={useItemsPerPage(itemsPerPage)}
+          style={{
+            transform: `translateX(${slidePages}px)`,
+            height: `${amountOfPages === pageNumber ? rest * 490 + (rest - 1) * 16 + 50 : setItemsPerPage(itemsPerPage) * 490 + (setItemsPerPage(itemsPerPage) - 1) * 16 + 50}px`,
+          }}
+          className="productpage__content"
         >
           {filteredPhones.map(product => (
             <ProductCard product={product} key={product.id} />
           ))}
         </div>
       </div>
-      {itemsPerPage !== ('all' as ItemPerPage) && (
-        <>
-          <button
-            className="productpage__arrowprev"
-            onClick={() => {
-              setPageNumber(pageNumber - 1);
-              if (slidePages === 0) {
-                setPageNumber(0);
-
-                return;
-              }
-
-              setSlidePages(slidePages + 303);
-            }}
-          ></button>
-          <div className="productpage__pagination">
-            {pagination.map(page => (
-              <button key={page}>{page}</button>
-            ))}
-          </div>
-          <button
-            className="productpage__arrownext"
-            onClick={() => {
-              if (pageNumber < amountOfPages) {
-                setPageNumber(pageNumber + 1);
-                setSlidePages(slidePages - 303);
-              }
-
-              return pageNumber - 1;
-            }}
-          ></button>
-        </>
+      {itemsPerPage !== ('1' as ItemPerPage) && (
+        <Pagination filteredItems={filteredPhones} />
       )}
+
       <Footer />
     </>
   );

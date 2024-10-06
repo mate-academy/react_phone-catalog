@@ -1,0 +1,113 @@
+.pagination {
+  grid-column: 1 / 5;
+  margin: 0 8px;
+  &__arrowprev {
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+    border: 1px solid #89939A;
+    z-index: 1;
+    background-color: #dee9e9;
+    background-image: url('../../img/Arrow-left.svg');
+    background-repeat: no-repeat;
+    background-size: 24px 24px;
+    background-position: 50%;
+    cursor: pointer;
+    margin-right: 130px;
+    &:hover {
+      background-color: black;
+      background-image: url('../../img/Arrow-left-hover.svg');
+      background-size: 24px 24px;
+    }
+  }
+  &__arrows {
+    display: flex;
+    justify-content: space-between;
+    width: 300px;
+    margin-left: -5px;
+
+  }
+  &__arrownext {
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+    background-color: #dee9e9;
+    border: 1px solid #89939A;
+    background-image: url('../../img/arrow-right.svg');
+    background-repeat: no-repeat;
+    background-size: 24px 24px;
+    background-position: 50%;
+    cursor: pointer;
+    &:hover {
+      background-color: black;
+      background-image: url('../../img/arrow-right-hover.svg');
+      background-size: 24px 24px;
+    }
+  }
+
+  &__arrow--slide-to-first {
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+    background-color: #dee9e9;
+    border: 1px solid #89939A;
+    background-image: url('../../img/arrow-slide-to-first.svg');
+    background-repeat: no-repeat;
+    background-size: 24px 24px;
+    background-position: 50%;
+    cursor: pointer;
+    &:hover {
+      background-color: black;
+      background-image: url('../../img/arrow-slide-to-first-hover.svg');
+      background-size: 24px 24px;
+  }
+  }
+  &__arrow--slide-to-last {
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+    background-color: #dee9e9;
+    border: 1px solid #89939A;
+    background-image: url('../../img/arrow-slide-to-last.svg');
+    background-repeat: no-repeat;
+    background-size: 24px 24px;
+    background-position: 50%;
+    cursor: pointer;
+    &:hover {
+      background-color: black;
+      background-image: url('../../img/arrow-slide-to-last-hover.svg');
+      background-size: 24px 24px;
+  }
+}
+  &__dots {
+    width: 138px;
+    overflow: hidden;
+    position: relative;
+    bottom: 35px;
+    left: 78px;
+  }
+  &__content {
+    width: 90000px;
+    display: flex;
+    gap: 5px;
+    position: relative;
+
+  }
+  &__dot {
+    width: 30px;
+    height: 30px;
+    border-radius: 100%;
+    border: 1px solid #89939A;
+    font-family: Mont, sans-serif;
+    color: black;
+    cursor: pointer;
+    &:hover {
+      background-color: black;
+      color: white;
+    }
+    &--is-active {
+      background-color: black;
+      color: white;
+    }
+  }
+}

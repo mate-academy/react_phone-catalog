@@ -1,6 +1,9 @@
 @import '../../utils/mixins';
 
 .discounts {
+  grid-column: 1 / 5;
+  overflow: hidden;
+  
   @include on-tablet {
     grid-column: 1 / 13;
     width: 744px;
@@ -51,7 +54,7 @@
     bottom: 538px;
 
     @include on-tablet {
-      bottom: 592px;
+      bottom: 593px;
     }
 
     @include on-desktop {

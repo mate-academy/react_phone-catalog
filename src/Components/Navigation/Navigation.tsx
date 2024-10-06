@@ -3,7 +3,7 @@ import '../icons/icon.scss';
 import '../logo/logo.scss';
 import { Menu } from '../Menu/Menu';
 import { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import classNames from 'classnames';
 
 export const Navigation = () => {
@@ -57,7 +57,10 @@ export const Navigation = () => {
                 <a href="" className="icon__navigation-bag"></a>
               </div>
               <div className="navigation__block-heart">
-                <a href="" className="icon__navigation-heart"></a>
+                <Link
+                  to="/favourites"
+                  className="icon__navigation-heart"
+                ></Link>
               </div>
             </div>
           </div>

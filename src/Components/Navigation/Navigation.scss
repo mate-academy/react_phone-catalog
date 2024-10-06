@@ -74,6 +74,11 @@
     align-items: center;
     border-left: 1px solid #E2E6E9;
 
+    &:hover {
+      border-bottom: 4px solid black;
+      padding-top: 4px;
+    }
+
   }
   &-heart {
     width: 48px;
@@ -89,6 +94,11 @@
     justify-content: center;
     align-items: center;
     border-left: 1px solid #E2E6E9;
+
+    &:hover {
+      border-bottom: 4px solid black;
+      padding-top: 4px;
+    }
 
   }
 }

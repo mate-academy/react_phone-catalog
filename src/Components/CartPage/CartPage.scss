@@ -56,7 +56,7 @@
   }
 
   .productcard {
-    height: 450px;
+    height: 500px;
     gap: 15px;
     &__image {
       margin: 0 40px;
@@ -125,7 +125,7 @@
 
     @include on-tablet {
       left: 545px;
-      bottom: 593px;
+      bottom: 582px;
     }
 
     @include on-desktop {

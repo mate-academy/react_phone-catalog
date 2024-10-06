@@ -7,10 +7,20 @@ import { ProductCard } from '../ProductCard/ProductCard';
 import { ProductsFilter } from '../ProductsFilter/ProductsFilter';
 import { FilterType } from '../types/FilterType';
 import { CatalogContext } from '../CatalogProvider';
+import { ItemPerPage } from '../types/ItemPerPage';
+import { Pagination } from '../Pagination/Pagination';
 
 export const TabletsPage = () => {
-  const { products, setProducts, tablets, filter, query } =
-    useContext(CatalogContext);
+  const {
+    products,
+    setProducts,
+    tablets,
+    filter,
+    query,
+    itemsPerPage,
+    slidePages,
+    pageNumber,
+  } = useContext(CatalogContext);
 
   const filteredOptions = (allTablets: FilterType) => {
     const selectedProducts = products.filter(
@@ -93,6 +103,29 @@ export const TabletsPage = () => {
     setProducts(fullProductData);
   }, []);
 
+  const rest =
+    filteredTablets.length -
+    Math.floor(filteredTablets.length / +itemsPerPage) * +itemsPerPage;
+
+  const amountOfPages = Math.ceil(filteredTablets.length / +itemsPerPage);
+
+  const setItemsPerPage = (perPage: ItemPerPage) => {
+    switch (perPage) {
+      case ItemPerPage.ALL:
+        return filteredTablets.length;
+      case ItemPerPage.SIXTEEN_PER_PAGE:
+        return 16;
+      case ItemPerPage.EIGHT_PER_PAGE:
+        return 8;
+      case ItemPerPage.FOUR_PER_PAGE:
+        return 4;
+      case ItemPerPage.TWO_PER_PAGE:
+        return 2;
+      default:
+        return filterTablets.length;
+    }
+  };
+
   return (
     <>
       <Navigation />
@@ -105,12 +138,21 @@ export const TabletsPage = () => {
         <h1 className="productpage__header">Tablets</h1>
         <span className="productpage__amountofmodels">{`${tablets.length} models`}</span>
         <ProductsFilter />
-        <div className="productpage__content">
+        <div
+          className="productpage__content"
+          style={{
+            transform: `translateX(${slidePages}px)`,
+            height: `${amountOfPages === pageNumber ? rest * 490 + (rest - 1) * 16 + 50 : setItemsPerPage(itemsPerPage) * 490 + (setItemsPerPage(itemsPerPage) - 1) * 16 + 50}px`,
+          }}
+        >
           {filteredTablets.map(product => (
             <ProductCard product={product} key={product.id} />
           ))}
         </div>
       </div>
+      {itemsPerPage !== ('1' as ItemPerPage) && (
+        <Pagination filteredItems={filteredTablets} />
+      )}
       <Footer />
     </>
   );

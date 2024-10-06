@@ -36,6 +36,14 @@ export const CatalogContext = createContext<ContextType>({
   setItemsPerPage: () => {},
   slidePages: 0,
   setSlidePages: () => {},
+  pageNumber: 0,
+  setPageNumber: () => {},
+  slideDots: 0,
+  setSlideDots: () => {},
+  favouriteItems: [],
+  setFavouriteItems: () => {},
+  isFavourite: false,
+  setIsFavourite: () => {},
 });
 
 type Props = {
@@ -52,11 +60,15 @@ export const GlobalCatalogProvider = ({ children }: Props) => {
   const [oldProductOffers, setOldProductOffers] = useState<OldProductType[]>(
     [],
   );
+  const [favouriteItems, setFavouriteItems] = useState<Product[]>([]);
   const [query, setQuery] = useState('');
   const [itemsPerPage, setItemsPerPage] = useState<ItemPerPage>(
     ItemPerPage.ALL,
   );
   const [slidePages, setSlidePages] = useState(0);
+  const [slideDots, setSlideDots] = useState(0);
+  const [pageNumber, setPageNumber] = useState(1);
+  const [isFavourite, setIsFavourite] = useState(false);
 
   useEffect(() => {
     getPhones().then(setPhones);
@@ -105,6 +117,14 @@ export const GlobalCatalogProvider = ({ children }: Props) => {
         setItemsPerPage,
         slidePages,
         setSlidePages,
+        pageNumber,
+        setPageNumber,
+        slideDots,
+        setSlideDots,
+        favouriteItems,
+        setFavouriteItems,
+        isFavourite,
+        setIsFavourite,
       }}
     >
       {children}

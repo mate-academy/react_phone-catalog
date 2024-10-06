@@ -1,4 +1,4 @@
-import { Link, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import { Navigation } from '../Navigation/Navigation';
 import './ProductOffer.scss';
 import { useContext, useState } from 'react';
@@ -23,6 +23,8 @@ export const TabletsOffer = () => {
   );
   const [activeImage, setActiveImage] = useState(false);
   const id = (Math.random() * 100000).toFixed(0);
+
+  const navigate = useNavigate();
 
   const settings = {
     className: 'productoffer__phoneslider',
@@ -96,6 +98,10 @@ export const TabletsOffer = () => {
               const getSelectedColor = (currentColor: string) => {
                 if (color === currentColor) {
                   setSelectedColor(color);
+
+                  navigate(
+                    `/tablets/${selectedTablet.namespaceId}-${selectedCapacity?.toLowerCase()}-${selectedColor}`,
+                  );
                 }
               };
 
@@ -123,6 +129,10 @@ export const TabletsOffer = () => {
             const getSelectedCapacity = (currentCapacity: string) => {
               if (currentCapacity === capacity) {
                 setSelectedCapacity(capacity);
+
+                navigate(
+                  `/tablets/${selectedTablet.namespaceId}-${selectedCapacity?.toLowerCase()}-${selectedColor}`,
+                );
               }
             };
 

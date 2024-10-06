@@ -25,5 +25,13 @@ export type ContextType = {
   itemsPerPage: ItemPerPage;
   setItemsPerPage: (itemsPerPage: ItemPerPage) => void;
   slidePages: number;
+  slideDots: number;
+  setSlideDots: (slideDots: number) => void;
   setSlidePages: (slidePages: number) => void;
+  pageNumber: number;
+  setPageNumber: (pageNumber: number) => void;
+  favouriteItems: Product[];
+  setFavouriteItems: (favouriteItems: Product[]) => void;
+  isFavourite: boolean;
+  setIsFavourite: (isFavourite: boolean) => void;
 };

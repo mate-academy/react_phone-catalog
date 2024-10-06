@@ -1,0 +1,62 @@
+@import '../../utils/mixins';
+
+@font-face {
+  font-family: Mont-bold;
+  src: url('../../../public/fonts/Mont-Bold.otf');
+}
+
+@font-face {
+  font-family: Mont;
+  src: url('../../../public/fonts/Mont-Regular.otf');
+}
+
+.favourites {
+  @include page-grid;
+
+  grid-column: 1 / 5;
+  margin-right: 8px;
+  &__breadcrumbs {
+    display: flex;
+    grid-column: 1 / 5;
+    &--home {
+      background-image: url('../../img/Home.svg');
+      background-repeat: no-repeat;
+      background-position: 0% 1%;
+      background-size: 16px 16px;
+      width: 26px;
+      height: 32px;
+    }
+   &--text {
+    margin-top: 2px;
+    font-family: Mont,sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 15.34px;
+    text-align: left;
+    color: gray;
+   }
+  }
+  &__title {
+    grid-column: 1 / 5;
+font-family: Mont-bold, sans-serif;
+font-size: 32px;
+font-weight: 800;
+line-height: 41px;
+letter-spacing: -0.01em;
+text-align: left;
+  }
+
+  &__amountofitems {
+    grid-column: 1 / 5;
+font-family: Mont, sans-serif;
+font-size: 14px;
+font-weight: 600;
+line-height: 21px;
+text-align: left;
+color: #89939A;
+  }
+
+  &__addeditems {
+    grid-column: 1 / 5;
+  }
+}

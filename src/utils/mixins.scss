@@ -14,17 +14,17 @@
 @mixin page-grid {
   @media (min-width: 320px) {
     display: grid;
-    grid-template-columns: 60px 60px 60px 60px;
+    grid-template-columns: repeat(4, 1fr);
     gap: 16px;
   }
 
   @include on-tablet {
-    grid-template-columns: repeat(12, 32px);
+    grid-template-columns: repeat(12, 1fr);
     gap: 16px;
   }
 
   @include on-desktop {
-grid-template-columns: repeat(24, 32px);
+grid-template-columns: repeat(24, 1fr);
 gap: 16px;
   }
 }
