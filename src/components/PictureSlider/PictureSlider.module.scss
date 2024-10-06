@@ -1,0 +1,12 @@
+.picture__slider {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(272px, 288px));
+  grid-template-rows: 1fr;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 40px;
+  column-gap: 16px;
+  margin: 0;
+  overflow: hidden;
+}

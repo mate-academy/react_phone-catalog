@@ -1,0 +1,177 @@
+.icon {
+  position: relative;
+  display: flex;
+  box-sizing: border-box;
+  width: 48px;
+  height: 48px;
+  border: 1px solid var(--c-border);
+  background-color: var(--c-bg);
+  box-shadow: -1px 0 0 0 var(--c-hover);
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+
+  &:hover {
+    z-index: 322;
+    border: 1px solid var(--c-primary);
+    background-color: var(--c-hover);
+  }
+
+  &.active {
+    border-bottom: 3px solid var(--c-primary);
+  }
+
+  @include ondesktop {
+    width: 64px;
+    height: 64px;
+  }
+}
+
+.close__icon {
+  mask: url('../icons/Close.png');
+  width: 16px;
+  height: 16px;
+  border: none;
+  background-color: var(--c-primary);
+  transition: 500ms;
+  cursor: pointer;
+  grid-row: 1 / 1;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+
+.plus__icon {
+  mask: url('../icons/Plus.png');
+  width: 16px;
+  height: 16px;
+  border: none;
+  background-color: var(--c-primary);
+  cursor: pointer;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+
+.minus__icon {
+  mask: url('../icons/Minus.png');
+  width: 16px;
+  height: 16px;
+  border: none;
+  background-color: var(--c-primary);
+  cursor: pointer;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+
+.up__arrow {
+  mask: url('../icons/arrow_up.png') no-repeat 50% 50%;
+  display: flex;
+  background-size: contain;
+  width: 16px;
+  height: 16px;
+  mask-size: 16px;
+  background-color: var(--c-primary);
+}
+
+.left__arrow {
+  mask: url('../icons/arrow_left.png');
+  display: flex;
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 16px;
+  height: 16px;
+  background-color: var(--c-primary);
+}
+
+.right__arrow {
+  mask: url('../icons/arrow_right.png');
+  background-color: var(--c-primary);
+  display: flex;
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 16px;
+  height: 16px;
+}
+
+.home__icon {
+  mask: url('../icons/Home.png');
+  background-color: var(--c-primary);
+  mask-size: 16px;
+  background-size: contain;
+  width: 16px;
+  height: 16px;
+  display: flex;
+  transition: 500ms;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+
+.search__field__icon {
+  mask: url(../icons/Search.png) no-repeat 50% 50%;
+  background-color: var(--c-primary);
+  mask-size: 16px;
+  width: 16px;
+  height: 16px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 8px;
+}
+
+.sun__icon {
+  mask: url('../icons/sun__icon.png') no-repeat;
+  background-color: var(--c-primary);
+  mask-size: 24px;
+  display: flex;
+  width: 24px;
+  height: 24px;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.menu__icon {
+  mask: url('../icons/Menu.png') no-repeat 50% 50%;
+  background-color: var(--c-primary);
+  mask-size: 16px;
+  width: 16px;
+  height: 16px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 16px;
+}
+
+.favourites__icon {
+  mask: url(../icons/Favourites.png);
+  background-color: var(--c-primary);
+  mask-size: 16px;
+  width: 16px;
+  height: 16px;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  &.is-filled {
+    mask: url(../icons/favourites__filled.png);
+    background-color: red;
+    mask-size: 16px;
+    width: 16px;
+    height: 16px;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+}
+
+.shopping-bag__icon {
+  mask: url(../icons/Shopping-bag.png);
+  background-color: var(--c-primary);
+  mask-size: 16px;
+  width: 16px;
+  height: 16px;
+  background-repeat: no-repeat;
+  background-size: cover;
+}

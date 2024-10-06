@@ -1,0 +1,145 @@
+.footer {
+  @include pagegrid;
+
+  grid-column: 1 / -1;
+  margin: 0;
+  padding: 0;
+  padding-inline: 16px;
+  padding-block: 32px;
+  margin-top: auto;
+  width: 100%;
+  justify-content: space-between;
+  box-shadow: 0 -1px 0 0 var(--c-hover);
+  align-items: center;
+
+  @include ontablet {
+    padding-inline: 32px;
+  }
+
+  @include ondesktop {
+    padding-inline: 32px;
+  }
+
+  @media (width: 1200px) {
+    padding-inline: 32px;
+  }
+
+  &__logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 500ms;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+
+    &__wrapper {
+      grid-column: 1 / -1;
+      width: 100%;
+      display: flex;
+      justify-content: flex-start;
+
+      @include ontablet {
+        grid-column: span 4;
+      }
+
+      @include ondesktop {
+        grid-column: span 8;
+      }
+    }
+
+    &__image {
+      background-image: url(../../icons/Logo.png);
+      background-repeat: no-repeat;
+      background-size: contain;
+      width: 89px;
+      height: 32px;
+      margin: 0;
+
+      &.is-dark {
+        background-image: url(../../icons/Logo-dark.png);
+      }
+    }
+  }
+
+  &__nav {
+    grid-column: 1 / -1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-block: 32px;
+
+    @include ontablet {
+      grid-column: span 4;
+      flex-direction: row;
+      gap: 0;
+      padding-block: 0;
+    }
+
+    @include ondesktop {
+      grid-column: span 8;
+      flex-direction: row;
+      gap: 0;
+      padding-block: 0;
+    }
+
+    &__list {
+      display: flex;
+      height: 100%;
+      width: 100%;
+      padding: 0;
+      margin: 0;
+      list-style-type: none;
+      justify-content: space-between;
+      align-items: start;
+      flex-direction: column;
+      gap: 16px;
+
+      @include ontablet {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      @include ondesktop {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+      }
+    }
+  }
+}
+
+.back {
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+
+  @include ontablet {
+    grid-column: span 4;
+    justify-content: end;
+  }
+
+  @include ondesktop {
+    grid-column: span 8;
+    justify-content: end;
+  }
+
+  &__text {
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 15.34px;
+    text-align: right;
+    color: var(--c-secondary);
+    text-decoration: none;
+    transition: 500ms;
+
+    &:hover {
+      transform: scale(1.1);
+      color: var(--c-primary);
+    }
+  }
+}

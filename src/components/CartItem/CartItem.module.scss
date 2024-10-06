@@ -1,0 +1,103 @@
+@import '../../styles/mixines';
+
+.cart__item {
+  display: grid;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid var(--c-border);
+  padding: 24px;
+  gap: 16px;
+  grid-column: 1 / -1;
+  grid-template-rows: auto;
+
+  @include ontablet {
+    gap: 24px;
+  }
+
+  @include ondesktop {
+    gap: 24px;
+  }
+
+  &__image {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    cursor: pointer;
+    transition: 500ms;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+
+  &__title {
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 21px;
+    text-align: left;
+    color: var(--c-primary);
+    text-decoration: none;
+    cursor: pointer;
+    transition: 500ms;
+    grid-row: 1 / 1;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+
+  &__quantity {
+    display: flex;
+    flex-direction: row;
+    grid-row: 2 / 2;
+    grid-column: span 2;
+
+    @include ontablet {
+      grid-row: 1 / 1;
+    }
+
+    @include ondesktop {
+      grid-row: 1 / 1;
+    }
+
+    &__icon {
+      width: 32px;
+      height: 32px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border: 1px solid var(--c-border);
+    }
+
+    &__counter {
+      color: var(--c-primary);
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 21px;
+      text-align: center;
+    }
+  }
+
+  &__price {
+    font-size: 22px;
+    font-weight: 800;
+    line-height: 30.8px;
+    text-align: right;
+    color: var(--c-primary);
+    grid-row: 2 / 2;
+    grid-column: span 1;
+
+    @include ontablet {
+      grid-row: 1 / 1;
+    }
+
+    @include ondesktop {
+      grid-row: 1 / 1;
+    }
+  }
+}
+
+.image__holder {
+  display: grid;
+  grid-row: 1 / 1;
+}

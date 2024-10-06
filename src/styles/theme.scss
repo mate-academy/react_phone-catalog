@@ -1,0 +1,16 @@
+.page {
+  --c-primary: #313237;
+  --c-bg: #fff;
+  --c-hover: #E2E6E9;
+  --c-border: #B4BDC3;
+  --c-secondary: #89939A;
+}
+
+.page.dark-theme {
+  --c-primary: #fff;
+  --c-bg: #313237;
+  --c-hover: #B4BDC3;
+  --c-border: #E2E6E9;
+}
+
+

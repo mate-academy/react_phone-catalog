@@ -1,0 +1,16 @@
+.ProductDetails {
+  min-height: 100vh;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.details__breadcrumbs {
+  padding: 16px 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+  grid-column: 1 / -1;
+  transition: 500ms;
+}

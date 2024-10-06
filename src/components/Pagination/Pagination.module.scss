@@ -1,0 +1,66 @@
+@import '../../styles/mixines';
+
+.pagination {
+  margin: 0 auto;
+  margin-bottom: 64px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  grid-column: 1 / -1;
+
+  @include ontablet {
+    margin: 16px 0 64px;
+  }
+
+  @include ondesktop {
+    margin: 16px 0 80px;
+  }
+
+  &__list {
+    display: flex;
+    list-style-type: none;
+    align-items: center;
+    gap: 8px;
+    justify-content: space-between;
+    padding-inline: 16px;
+  }
+
+  &__button {
+    all: unset;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 32px;
+    height: 32px;
+    border: 1px solid var(--c-border);
+    cursor: pointer;
+    color: var(--c-primary);
+
+    &:hover {
+      border: 1px solid var(--c-primary);
+      background-color: var(--c-hover);
+    }
+
+    &.is-not-active {
+      color: var(--c-secondary);
+      cursor: default;
+      background-color: var(--c-bg);
+    }
+
+    &.is-pressed {
+      background-color: var(--c-primary);
+      color: var(--c-bg);
+      cursor: default;
+
+      &:hover {
+        border: 1px solid var(--c-border);
+        background-color: var(--c-primary);
+      }
+    }
+  }
+
+  &__dots {
+    color: var(--c-primary);
+  }
+}

@@ -1,0 +1,19 @@
+@import '../../styles/mixines';
+
+.RandomProducts {
+  padding-block: 56px;
+  margin: 0;
+  gap: 24px;
+
+  @include pagegrid;
+
+  grid-column: 1 / -1;
+
+  @include ontablet {
+    padding-block: 64px;
+  }
+
+  @include ondesktop {
+    padding-block: 80px;
+  }
+}

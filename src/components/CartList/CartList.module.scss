@@ -1,0 +1,13 @@
+@import '../../styles/mixines';
+
+.CartList {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 16px;
+  grid-column: 1 / -1;
+
+  @include ondesktop {
+    grid-column: span 16;
+  }
+}

@@ -1,0 +1,17 @@
+@import '../../styles/mixines';
+
+.hot-prices {
+  @include pagegrid;
+
+  grid-column: 1 / -1;
+
+  padding: 56px 0 64px;
+
+  @include ontablet {
+    padding-block: 80px;
+  }
+
+  @include ondesktop {
+    padding-block: 80px;
+  }
+}

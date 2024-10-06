@@ -1,0 +1,19 @@
+.errorMessage {
+  grid-column: 1 / -1;
+  padding-block: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.reload__button {
+  display: flex;
+  color: var(--c-bg);
+  background-color: var(--c-primary);
+  width: 100px;
+  height: 40px;
+  cursor: pointer;
+  justify-content: center;
+  align-items: center;
+}

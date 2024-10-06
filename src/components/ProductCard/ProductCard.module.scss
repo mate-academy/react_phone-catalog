@@ -1,0 +1,150 @@
+@import '../../styles/mixines';
+
+.product__card {
+  width: 287px;
+  height: 506px;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  box-shadow: 0 2px 16px #0000001A;
+  border: 1px solid var(--c-border);
+  grid-row:unset;
+  margin: 0 auto;
+  padding: 32px;
+
+  @include ontablet {
+    margin: 0;
+    width: 288px;
+  }
+
+  @include ondesktop {
+    margin: 0;
+    width: 272px;
+  }
+
+  &__image {
+    display: flex;
+    width: 100%;
+    height: 208px;
+    object-fit: contain;
+    transition: 500ms;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+
+  &__title {
+    margin: 8px 0;
+    padding: 16px 0 0;
+    min-height: 34px;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 21px;
+    text-align: left;
+    color: var(--c-primary);
+    text-wrap: wrap;
+    text-decoration: none;
+    transition: 500ms;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+
+  &__description {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 16px 0 8px;
+    padding: 0;
+  }
+
+  &__price {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 0;
+    padding: 0;
+
+    &__discount {
+      color: var(--c-primary);
+    }
+
+    &__regular {
+      color: var(--c-secondary);
+    }
+  }
+
+  &__chars {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+
+    &__title {
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 15.34px;
+      text-align: left;
+      color: var(--c-secondary);
+    }
+
+    &__value {
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 15.34px;
+      text-align: right;
+      color: var(--c-primary);
+    }
+  }
+}
+
+.year {
+  color: var(--c-primary);
+}
+
+.price {
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 30.8px;
+  text-align: left;
+}
+
+.card__buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 8px;
+  width: 100%;
+}
+
+.fav__button {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--c-bg);
+  border: 1px solid var(--c-border);
+  cursor: pointer;
+}
+
+.add__button {
+  width: 100%;
+  height: 40px;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 21px;
+  text-align: center;
+  color: var(--c-bg);
+  background-color: var(--c-primary);
+  cursor: pointer;
+}
+
+
+.is-disabled {
+  cursor: unset;
+}

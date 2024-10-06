@@ -1,0 +1,270 @@
+@import '../../styles/mixines';
+
+.header {
+  width: 100%;
+  display: flex;
+  box-sizing: border-box;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  margin: 0;
+  padding: 0;
+  box-shadow: 0 1px 0 0 var(--c-hover);
+  gap: 24px;
+  background-color: var(--c-bg);
+  align-items: center;
+  z-index: 3;
+
+  @include ontablet {
+    gap: 16px;
+  }
+
+  &__logo {
+    background-image: url(../../icons/Logo.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 64px;
+    height: 22px;
+    margin: 0;
+
+    @include ondesktop {
+      width: 80px;
+      height: 28px;
+    }
+
+    &.is-dark {
+      background-image: url(../../icons/Logo-dark.png);
+    }
+  }
+}
+
+.nav {
+  display: none;
+
+  @include ontablet {
+    display: flex;
+  }
+
+  @include ondesktop {
+    display: flex;
+  }
+
+  &__link {
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 800;
+    line-height: 11px;
+    letter-spacing: 0.04em;
+    text-align: left;
+    color: var(--c-secondary);
+    text-transform: uppercase;
+    transition: 500ms;
+
+    &:hover {
+      transform: scale(1.1);
+      color: var(--c-primary);
+    }
+  }
+
+  &__list {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+
+    list-style-type: none;
+    justify-content: space-between;
+    align-items: center;
+
+    @include ontablet {
+      gap: 24px;
+    }
+
+    @include ondesktop {
+      gap: 64px;
+    }
+  }
+
+  &__item {
+    margin: 0;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 800;
+    line-height: 11px;
+    letter-spacing: 0.04em;
+    text-align: left;
+    color: var(--c-secondary);
+    text-transform: uppercase;
+    transition: 500ms;
+    padding: 8px 0;
+
+    &:hover {
+      transform: scale(1.1);
+      color: var(--c-primary);
+    }
+
+    @include ontablet {
+      padding: 17px 0;
+    }
+
+    @include ondesktop {
+      padding: 25px 0;
+    }
+
+    &.is-active {
+      border-bottom: 3px solid var(--c-primary);
+      color: var(--c-primary);
+    }
+  }
+}
+
+.search__field {
+  display: flex;
+  box-sizing: border-box;
+  width: 48px;
+  height: 48px;
+  border: 1px solid var(--c-border);
+  box-shadow: -1px 0 0 var(--c-hover);
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+
+  &:hover {
+    z-index: 322;
+    border: 1px solid var(--c-primary);
+    background-color: var(--c-hover);
+  }
+
+  &.is-searching {
+    width: auto;
+    border: 1px solid var(--c-primary);
+    z-index: 999;
+  }
+
+  @include ondesktop {
+    width: 64px;
+    height: 64px;
+  }
+
+  &__input {
+    all: unset;
+    padding: 8px 0;
+    margin: 0 8px;
+    border: none;
+    line-height: 11px;
+    width: 100%;
+
+    &:active {
+      border: none;
+    }
+  }
+}
+
+.header__icons {
+  display: none;
+  width: 100%;
+  justify-content: flex-end;
+  margin: 0;
+  padding: 0;
+
+  @include ontablet {
+    display: flex;
+  }
+
+  @include ondesktop {
+    display: flex;
+  }
+}
+
+.mobile__menu {
+  position: fixed;
+  inset: 0;
+  opacity: 1;
+  background-color: var(--c-bg);
+  z-index: 1000;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+
+  &__header {
+    display: flex;
+    box-sizing: border-box;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    margin: 0;
+    padding: 0;
+    box-shadow: 0 1px 0 0 var(--c-hover);
+    background-color: var(--c-bg);
+    align-items: center;
+    height: 48px;
+    width: 100%;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 24px;
+  }
+
+  &__icons {
+    display: flex;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+  }
+
+  &__icon {
+    width: 100%;
+
+    @include ontablet {
+      display: none;
+    }
+
+    @include ondesktop {
+      display: none;
+    }
+
+  }
+}
+
+.icons__wrapper {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.span__counter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  font-size: 9px;
+  font-weight: 700;
+  line-height: 11.5px;
+  text-align: center;
+  color: #fff;
+  background-color: #EB5757;
+  border-radius: 50%;
+  width: 14px;
+  height: 14px;
+  top: 8px;
+  left: 50%;
+  gap: 0;
+  border: 1px 0 0;
+  opacity: 0;
+
+  @include ontablet {
+    top: 8px;
+    right: 8px;
+  }
+
+  @include ondesktop {
+    top: 14px;
+    right: 14px;
+  }
+}

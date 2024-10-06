@@ -1,0 +1,30 @@
+@import '../../styles/mixines';
+
+.favouritespage {
+  min-height: 100vh;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  &__counter {
+    grid-column: 1 / -1;
+    padding: 0;
+    padding-block: 8px;
+    margin: 0;
+
+    @include ontablet {
+      padding: 8px 0 16px;
+    }
+
+    @include ondesktop {
+      padding: 8px 0 16px;
+    }
+  }
+}
+
+.fav-empty {
+  margin: 0;
+  padding: 0;
+}
+
+

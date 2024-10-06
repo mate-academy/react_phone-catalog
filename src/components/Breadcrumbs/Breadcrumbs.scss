@@ -1,0 +1,33 @@
+.breadcrumbs {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+  grid-column: 1 / -1;
+  padding-block: 24px;
+
+  .breadcrumbs__paragraph {
+    display: flex;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 15.34px;
+    text-align: left;
+    color: var(--c-secondary);
+    text-decoration: none;
+    transition: 500ms;
+
+    &--active {
+      color: var(--c-primary);
+
+      &:hover {
+        transform: scale(1.1);
+      }
+    }
+  }
+}
+
+p.breadcrumbs__paragraph:hover {
+  transform: none;
+}
+
+

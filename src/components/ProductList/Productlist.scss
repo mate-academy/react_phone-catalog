@@ -1,0 +1,12 @@
+@import '../../styles/mixines';
+
+.productlist {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(272px, 1fr));
+  align-items: center;
+  gap: 40px;
+  column-gap: 16px;
+  margin: 0;
+  padding-block: 24px;
+  grid-column: 1 / -1;
+}

@@ -1,0 +1,104 @@
+@import '../../styles/mixines';
+
+.dropdowns {
+  display: flex;
+  gap: 16px;
+
+  @include pagegrid;
+
+  grid-column: 1 / -1;
+}
+
+.dropdown {
+  display: flex;
+  flex-direction: column;
+  grid-column: span 2;
+  box-sizing: border-box;
+  gap: 4px;
+  position: relative;
+
+  @include ontablet {
+    grid-column: span 3;
+  }
+
+  @include ondesktop {
+    grid-column: span 4;
+  }
+
+  &__description {
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 15.34px;
+    text-align: left;
+    color: var(--c-secondary);
+  }
+
+  &__options {
+    box-sizing: border-box;
+    z-index: 2;
+    padding: 0;
+    width: 100%;
+    padding-block: 8px;
+    background-color: var(--c-bg);
+    border: 1px solid var(--c-border);
+    list-style-type: none;
+    text-decoration: none;
+    text-align: left;
+
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -20px;
+    transform: translateY(100%);
+  }
+
+  &__option {
+    padding: 6px 12px;
+    color: var(--c-secondary);
+
+    &:hover {
+      color: var(--c-primary);
+      background-color: var(--c-hover);
+      cursor: pointer;
+    }
+  }
+
+  &__select {
+    all: unset;
+    box-sizing: border-box;
+    cursor: pointer;
+    display: flex;
+    width: 100%;
+    padding: 9px 11px;
+    border: 1px solid var(--c-border);
+    color: var(--c-primary);
+    background-color: var(--c-bg);
+    position: relative;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 21px;
+    text-align: left;
+
+    &:hover {
+      border: 1px solid var(--c-primary);
+    }
+
+    &:focus {
+      border: 1px solid var(--c-primary);
+    }
+
+
+    &::before {
+      content: '';
+      position: absolute;
+      display: block;
+      width: 16px;
+      height: 16px;
+      top: 11px;
+      right: 11px;
+      background-color: var(--c-border);
+      mask: url('../../icons/arrow_right.png') no-repeat 50% 50%;
+      transform: rotate(90deg);
+    }
+  }
+}

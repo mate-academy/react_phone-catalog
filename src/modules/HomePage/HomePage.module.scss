@@ -1,0 +1,13 @@
+@import '../../styles/mixines';
+
+.homepage_title {
+  padding-block: 24px;
+
+  @include ontablet {
+    padding-block: 32px;
+  }
+
+  @include ondesktop {
+    padding-block: 56px;
+  }
+}
