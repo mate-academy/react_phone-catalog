@@ -73,29 +73,30 @@ export const ProductDetails = () => {
         {error && <ErrorMessage reload={setReload} />}
 
         {item && currentProduct && !isLoading && !error && (
-          <div className="container">
-            <Breadcrumbs paragraph={'Phones'} model={item.name} />
-            <div className="details__breadcrumbs">
-              <div
-                className="left__arrow"
-                style={{ cursor: 'pointer' }}
-                onClick={() => BackNavigate()}
-              ></div>
-              <div
-                className="breadcrumbs__paragraph back__paragraph"
-                onClick={() => BackNavigate()}
-              >
-                Back
+          <>
+            <div className="container">
+              <Breadcrumbs paragraph={'Phones'} model={item.name} />
+              <div className="details__breadcrumbs">
+                <div
+                  className="left__arrow"
+                  style={{ cursor: 'pointer' }}
+                  onClick={() => BackNavigate()}
+                ></div>
+                <div
+                  className="breadcrumbs__paragraph back__paragraph"
+                  onClick={() => BackNavigate()}
+                >
+                  Back
+                </div>
               </div>
+              <ProductView
+                currentProduct={currentProduct}
+                product={item}
+                deck={deck}
+              />
             </div>
-            <ProductView
-              currentProduct={currentProduct}
-              product={item}
-              deck={deck}
-            />
-
             <RandomProducts sliderProducts={sliderProducts} />
-          </div>
+          </>
         )}
       </div>
       <Footer id={'ProductView'} />
