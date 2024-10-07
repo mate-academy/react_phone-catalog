@@ -1,4 +1,3 @@
-import React from 'react';
 import { NavLink, Link } from 'react-router-dom';
 import styles from './Header.module.scss';
 import classNames from 'classnames';
