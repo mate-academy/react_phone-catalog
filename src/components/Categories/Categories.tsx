@@ -4,15 +4,21 @@ import { Title } from '../Title';
 import React from 'react';
 
 interface Props {
-  data: {
-    phones: number;
-    tablets: number;
-    accessories: number;
-  };
+  products: {
+    category: string;
+  }[];
 }
 
-export const Categories: React.FC<Props> = ({ data }) => {
-  const { phones, tablets, accessories } = data;
+export const Categories: React.FC<Props> = ({ products }) => {
+  const phonesCount = products.filter(
+    product => product.category === 'phones',
+  ).length;
+  const tabletsCount = products.filter(
+    product => product.category === 'tablets',
+  ).length;
+  const accessoriesCount = products.filter(
+    product => product.category === 'accessories',
+  ).length;
 
   return (
     <div className="categories">
@@ -30,7 +36,7 @@ export const Categories: React.FC<Props> = ({ data }) => {
           </div>
           <div className="categories__description">
             <h2 className="categories__name">Mobile phones</h2>
-            <p className="categories__count">{phones} models</p>
+            <p className="categories__count">{phonesCount} models</p>
           </div>
         </div>
         <div className="categories__item">
@@ -45,7 +51,7 @@ export const Categories: React.FC<Props> = ({ data }) => {
           </div>
           <div className="categories__description">
             <h2 className="categories__name">Tablets</h2>
-            <p className="categories__count">{tablets} models</p>
+            <p className="categories__count">{tabletsCount} models</p>
           </div>
         </div>
         <div className="categories__item">
@@ -60,7 +66,7 @@ export const Categories: React.FC<Props> = ({ data }) => {
           </div>
           <div className="categories__description">
             <h2 className="categories__name">Accessories</h2>
-            <p className="categories__count">{accessories} models</p>
+            <p className="categories__count">{accessoriesCount} models</p>
           </div>
         </div>
       </div>

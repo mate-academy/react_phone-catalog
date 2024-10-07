@@ -16,34 +16,23 @@ export const HomePage = () => {
   const newProducts = products.filter(
     (product: Product) => product.year === latestYear,
   );
-  const phonesCount = products.filter(
-    (product: Product) => product.category === 'phones',
-  ).length;
-  const tabletsCount = products.filter(
-    (product: Product) => product.category === 'tablets',
-  ).length;
-  const accessoriesCount = products.filter(
-    (product: Product) => product.category === 'accessories',
-  ).length;
-  const categoriesData = {
-    phones: phonesCount,
-    tablets: tabletsCount,
-    accessories: accessoriesCount,
-  };
 
   return (
     <>
       <Title hidden>Product Catalog</Title>
       <Title level={HeadingLevel.h2}>Welcome to Nice Gadgets store!</Title>
       <MainSlider />
-      {newProducts.length && (
+
+      {newProducts.length > 0 && (
         <>
           <Title level={HeadingLevel.h2}>Brand new models</Title>
           <ProductsSlider products={newProducts} />
         </>
       )}
-      <Categories data={categoriesData} />
-      {hotPriceProducts.length && (
+
+      <Categories products={products} />
+
+      {hotPriceProducts.length > 0 && (
         <>
           <Title level={HeadingLevel.h2}>Hot prices</Title>
           <ProductsSlider products={hotPriceProducts} showFullPrice />

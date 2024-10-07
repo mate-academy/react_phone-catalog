@@ -109,7 +109,7 @@ export const CartPage = () => {
           <div className="divider"></div>
           <button
             className="cart__checkout__button"
-            onClick={() => alert('Thanks for watching, you are the best =)')}
+            onClick={() => alert('Sold')}
           >
             Checkout
           </button>
