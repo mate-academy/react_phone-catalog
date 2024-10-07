@@ -27,6 +27,7 @@ This project was **fully developed by me from scratch**, showcasing my skills in
 - **Demo**: [Play the Application](https://meljaszuk.github.io/react_phone-catalog/)
 - **Figma Design**: [View on Figma](<https://www.figma.com/design/T5ttF21UnT6RRmCQQaZc6L/Phone-catalog-(V2)-Original?t=vnUCzAUAqEpERno7-0>)
 - **Source Code**: [View on GitHub](https://github.com/meljaszuk/react_phone-catalog)
+- 
 
 ## Technologies Used
 
