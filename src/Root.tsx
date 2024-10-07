@@ -16,18 +16,18 @@ import { NotFoundPage } from './pages/NotFoundPage';
 import './styles/index.scss';
 
 export const Root = () => (
-<Router>
-  <Routes>
-    <Route path="/" element={<App />}>
-      <Route index element={<HomePage />} />
-      <Route path="home" element={<Navigate to="/" replace />} />
-      <Route path="phones" element={<PhonePage />} />
-      <Route path="tablets" element={<TabletPage />} />
-      <Route path="accessories" element={<AccessoriesPage />} />
-      <Route path="favorites" element={<FavoritesPage />} />
-      <Route path="cart" element={<CartPage />} />
-    </Route>
-    <Route path="*" element={<NotFoundPage />} />
-  </Routes>
-</Router>
+  <Router>
+    <Routes>
+      <Route path="/" element={<App />}>
+        <Route index element={<HomePage />} />
+        <Route path="home" element={<Navigate to="/" replace />} />
+        <Route path="phones" element={<PhonePage />} />
+        <Route path="tablets" element={<TabletPage />} />
+        <Route path="accessories" element={<AccessoriesPage />} />
+        <Route path="favorites" element={<FavoritesPage />} />
+        <Route path="cart" element={<CartPage />} />
+      </Route>
+      <Route path="*" element={<NotFoundPage />} />
+    </Routes>
+  </Router>
 );
