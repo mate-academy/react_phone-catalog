@@ -1,7 +1,12 @@
 $transition-duration: 0.3s;
 $hover-scale: scale(1.1);
 $hover-transform: (transform: $hover-scale);
+$desktop-grid-columns-amount: 24;
+$tablet-grid-columns-amount: 12;
+$mobile-grid-columns-amount: 4;
+$tablet-grid-margin: 24px;
 $mobile-grid-margin: 16px;
+$grid-gap: 16px;
 $active-underline-width: 3px;
 $burger-menu-active-underline-width: 2px;
 $small-navigation-height: 48px;

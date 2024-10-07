@@ -8,10 +8,17 @@ import { Category } from '../../types/enums';
 
 type Props = {
   product: Product;
+  isClicked?: boolean;
+  draggable?: boolean;
   className?: string;
 };
 
-export const ProductCard: React.FC<Props> = ({ product, className }) => {
+export const ProductCard: React.FC<Props> = ({
+  product,
+  isClicked = true,
+  draggable = true,
+  className,
+}) => {
   const {
     screen: screenLabel,
     capacity: capacityLabel,
@@ -22,10 +29,26 @@ export const ProductCard: React.FC<Props> = ({ product, className }) => {
   const { category, name, fullPrice, price, screen, capacity, ram, image } =
     product;
 
+  const handleClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
+    if (!isClicked) {
+      event.preventDefault();
+    }
+  };
+
   return (
     <article className={classNames(styles.ProductCard, className)}>
-      <a href="placeholder" className={styles.Card}>
-        <img src={image} alt={name} className={styles.Image} />
+      <a
+        href="placeholder"
+        draggable={draggable}
+        className={styles.Card}
+        onClick={handleClick}
+      >
+        <img
+          src={image}
+          alt={name}
+          draggable={draggable}
+          className={styles.Image}
+        />
         <h4 className={styles.Title}>{name}</h4>
 
         <div>

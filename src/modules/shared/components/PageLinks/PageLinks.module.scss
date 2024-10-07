@@ -4,8 +4,6 @@
   display: flex;
   gap: 32px;
 
-  list-style: none;
-
   @include for-desktop {
     gap: 64px;
   }

@@ -90,17 +90,17 @@
   display: grid;
   justify-content: center;
 
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 0 16px;
-  margin: 0 $mobile-grid-margin;
+  grid-template-columns: repeat($desktop-grid-columns-amount, 32px);
+  column-gap: $grid-gap;
 
   @include for-tablet {
-    grid-template-columns: repeat(12, minmax(0, 1fr));
-    margin: 0 24px
+    grid-template-columns: repeat($tablet-grid-columns-amount, minmax(0, 1fr));
+    margin: 0 $tablet-grid-margin;
   }
 
-  @include for-desktop {
-    grid-template-columns: repeat(24, 32px);
+  @include for-mobile {
+    grid-template-columns: repeat($mobile-grid-columns-amount, minmax(0, 1fr));
+    margin: 0 $mobile-grid-margin;
   }
 }
 
@@ -110,13 +110,13 @@
 }
 
 @mixin full-grid-width {
-  grid-column: 1 / 5;
+  grid-column: 1 / calc($mobile-grid-columns-amount + 1);
 
   @include for-tablet {
-    grid-column: 1 / 13;
+    grid-column: 1 / calc($tablet-grid-columns-amount + 1);
   }
 
   @include for-desktop {
-    grid-column: 1 / 25;
+    grid-column: 1 / calc($desktop-grid-columns-amount + 1);
   }
 }

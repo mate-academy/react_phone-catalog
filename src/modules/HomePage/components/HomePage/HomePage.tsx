@@ -1,36 +1,18 @@
-import { useCallback, useEffect, useState } from 'react';
-import { PicturesSlider } from '../PicturesSlider';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import styles from './HomePage.module.scss';
-import { Picture } from '../../types/types';
+import { Product } from '../../../shared/types/types';
+import { Welcome } from '../Welcome';
+import { ProductsSlider } from '../../../shared/components/ProductsSlider';
 // eslint-disable-next-line max-len
 import { useLanguage } from '../../../shared/components/Contexts/LanguageContext';
 import { translateItem } from '../../../shared/functions/functions';
-import { BrandNew } from '../BrandNew';
-import { Product } from '../../../shared/types/types';
 
 export const HomePage: React.FC = () => {
-  const [pictures, setPictures] = useState<Picture[]>([]);
   const [products, setProducts] = useState<Product[]>([]);
   const { language, localeTexts } = useLanguage();
-  const { homeTitle } = localeTexts;
+  const { newModels, hotPrices } = localeTexts;
 
-  const fetchPictures = useCallback(async () => {
-    try {
-      const response = await fetch('api/banners.json');
-
-      if (!response.ok) {
-        throw new Error(`An error has occured: ${response.status}`);
-      }
-
-      const loadedPictures = await response.json();
-
-      setPictures(translateItem<Picture>(loadedPictures, language));
-    } catch (error) {
-      throw error;
-    }
-  }, [language]);
-
-  const fetchProducts = async () => {
+  const fetchProducts = useCallback(async () => {
     try {
       const response = await fetch('api/products.json');
 
@@ -40,23 +22,55 @@ export const HomePage: React.FC = () => {
 
       const loadedProducts = await response.json();
 
-      setProducts(loadedProducts);
+      setProducts(translateItem<Product>(loadedProducts, language));
     } catch (error) {
       throw error;
     }
-  };
+  }, [language]);
 
   useEffect(() => {
-    fetchPictures();
     fetchProducts();
-  }, [fetchPictures]);
+  }, [fetchProducts]);
+
+  const brandNewProducts = useMemo(() => {
+    const newestYear = products.reduce(
+      (year, product) => (product.year > year ? product.year : year),
+      0,
+    );
+
+    return products
+      .filter(
+        product =>
+          product.year === newestYear || product.year === newestYear - 1,
+      )
+      .sort(
+        (firstProduct, secondProduct) =>
+          secondProduct.fullPrice - firstProduct.fullPrice,
+      );
+  }, [products]);
+
+  const minDiscount = 0.1;
+
+  const hotPriceProducts = useMemo(() => {
+    return products
+      .filter(
+        product =>
+          product.fullPrice - product.price > product.fullPrice * minDiscount,
+      )
+      .sort(
+        (firstProduct, secondProduct) =>
+          secondProduct.fullPrice -
+          secondProduct.price -
+          (firstProduct.fullPrice - firstProduct.price),
+      );
+  }, [products]);
 
   return (
     <main className={styles.HomePage}>
       <h1 className={styles.HiddenTitle}>Product Catalog</h1>
-      <h2 className={styles.Title}>{homeTitle}</h2>
-      <PicturesSlider pictures={pictures} className={styles.PicturesSlider} />
-      <BrandNew product={products[0]} />
+      <Welcome />
+      <ProductsSlider title={newModels} products={brandNewProducts} />
+      <ProductsSlider title={hotPrices} products={hotPriceProducts} />
     </main>
   );
 };

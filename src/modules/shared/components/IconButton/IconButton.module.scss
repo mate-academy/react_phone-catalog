@@ -15,12 +15,27 @@
   height: 100%;
   cursor: pointer;
 
-  @include color-and-hover-transition(
-    (background-color: var(--icon-button-color), border-color: var(--icon-button-border-color)),
-    (background-color: var(--icon-button-hover-color), border-color: var(--icon-button-border-hover-color))
-  );
+  @include color-transition((
+    background-color: var(--icon-button-color),
+    border-color: var(--icon-button-border-color)
+  ));
 }
 
 .IconButton {
   @include square(32px);
+
+  &_disabled .Button {
+    background-color: transparent;
+    border-color: var(--icon-button-border-state-color);
+    cursor: default;
+  }
+
+  &:not(&_disabled):hover .Button {
+    background-color: var(--icon-button-hover-color);
+    border-color: var(--icon-button-border-hover-color);
+  }
+
+  &_disabled .Icon {
+    color: var(--icon-button-icon-state-color)
+  }
 }

@@ -8,26 +8,12 @@ import { PictureSlide } from '../PictureSlide';
 import { Dashes } from '../Dashes';
 // eslint-disable-next-line max-len
 import { useLanguage } from '../../../shared/components/Contexts/LanguageContext';
-
-type HandleSliderDragEvent =
-  | React.MouseEvent<HTMLUListElement>
-  | React.TouchEvent<HTMLUListElement>;
+import { HandleSliderDragEvent } from '../../../shared/types/types';
+import { getPageX } from '../../../shared/functions/functions';
 
 type Props = {
   pictures: Picture[];
   className?: string;
-};
-
-const getPageX = (event: HandleSliderDragEvent): number => {
-  const type = event.type;
-
-  if (type === 'touchmove' || type === 'touchstart') {
-    return (event as React.TouchEvent<HTMLUListElement>).touches[0].pageX;
-  } else if (type === 'mousemove' || type === 'mousedown') {
-    return (event as React.MouseEvent<HTMLUListElement>).pageX;
-  } else {
-    throw new Error('Handle slider drag event type is not valid!!!');
-  }
 };
 
 export const PicturesSlider: React.FC<Props> = ({ pictures, className }) => {
@@ -256,7 +242,7 @@ export const PicturesSlider: React.FC<Props> = ({ pictures, className }) => {
   };
 
   return (
-    <section className={classNames(styles.PicturesSlider, className)}>
+    <article className={classNames(styles.PicturesSlider, className)}>
       <IconButton
         svgOption={IconButtonSVGOption.LeftArrow}
         onClick={handlePrevSwipeButtonClick}
@@ -297,6 +283,6 @@ export const PicturesSlider: React.FC<Props> = ({ pictures, className }) => {
         onClick={handleDashClick}
         className={styles.Dashes}
       />
-    </section>
+    </article>
   );
 };

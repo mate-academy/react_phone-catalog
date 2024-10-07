@@ -3,7 +3,7 @@
 .SwipeButton {
   min-height: 100%;
 
-  &:nth-of-type(2) {
+  &:nth-child(3) {
     justify-self: end;
   }
 
@@ -26,8 +26,8 @@
   height: 100%;
 
   overflow: hidden;
-  list-style: none;
   scroll-behavior: smooth;
+
   cursor: pointer;
 
   &_dragged {
@@ -46,7 +46,7 @@
 
   @include for-mobile {
     @include full-grid-width;
-    
+
     aspect-ratio: 1;
   }
 }
@@ -55,16 +55,7 @@
   @include child-grid;
 
   row-gap: 18px;
-  padding-top: 56px;
   overflow: hidden;
-
-  @include for-tablet {
-    padding-top: 32px;
-  }
-
-  @include for-mobile {
-    padding-top: 24px;
-  }
 }
 
 

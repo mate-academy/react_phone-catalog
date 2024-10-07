@@ -1,36 +1,13 @@
-@use "../../../shared/styles/vars" as *;
 @use "../../../shared/styles/mixins" as *;
-@use "../../../shared/styles/extends";
 
 .HiddenTitle {
   @include visually-hidden;
 }
 
-.Title {
-  @include full-grid-width;
-  @extend %h1;
-  @include color-transition((color: var(--primary-text-color)));
-
-  padding-top: 24px;
+.HomePage {
+  padding-bottom: 80px;
 
   @include for-tablet {
-    padding-top: 32px;
+    padding-bottom: 64px;
   }
-
-  @include for-desktop {
-    padding-top: 56px;
-  }
-}
-
-.PicturesSlider {
-  @include full-grid-width;
-
-  @include for-mobile {
-    margin-left: -$mobile-grid-margin;
-    margin-right: -$mobile-grid-margin;
-  }
-}
-
-.HomePage {
-  @include grid;
 }

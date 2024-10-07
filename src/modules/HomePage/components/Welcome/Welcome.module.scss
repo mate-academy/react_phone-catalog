@@ -1,0 +1,42 @@
+@use "../../../shared/styles/vars" as *;
+@use "../../../shared/styles/mixins" as *;
+@use "../../../shared/styles/extends";
+
+.Title {
+  @include full-grid-width;
+  @extend %h1;
+  @include color-transition((color: var(--primary-text-color)));
+
+  margin-bottom: 56px;
+
+  @include for-tablet {
+    margin-bottom: 32px;
+  }
+
+  @include for-mobile {
+    margin-bottom: 24px;
+  }
+}
+
+.PicturesSlider {
+  @include full-grid-width;
+
+  @include for-mobile {
+    margin-left: -$mobile-grid-margin;
+    margin-right: -$mobile-grid-margin;
+  }
+}
+
+.Welcome {
+  @include grid;
+
+  padding-top: 24px;
+
+  @include for-tablet {
+    padding-top: 32px;
+  }
+
+  @include for-desktop {
+    padding-top: 56px;
+  }
+}

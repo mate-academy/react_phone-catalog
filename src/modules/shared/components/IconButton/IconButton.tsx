@@ -11,6 +11,7 @@ type HandleClick = () => void;
 type Props = {
   svgOption: IconButtonSVGOption;
   onClick: HandleClick;
+  disabled?: boolean;
   label?: string;
   className?: string;
 };
@@ -18,6 +19,7 @@ type Props = {
 export const IconButton: React.FC<Props> = ({
   svgOption,
   onClick,
+  disabled,
   label,
   className,
 }) => {
@@ -40,13 +42,25 @@ export const IconButton: React.FC<Props> = ({
   }
 
   return (
-    <div className={classNames(styles.IconButton, className)}>
+    <div
+      className={classNames(
+        styles.IconButton,
+        disabled && styles.IconButton_disabled,
+        className,
+      )}
+    >
       {label && (
         <label htmlFor={id} className={styles.Label}>
           {label}
         </label>
       )}
-      <button id={id} type="button" className={styles.Button} onClick={onClick}>
+      <button
+        id={id}
+        type="button"
+        disabled={disabled}
+        className={styles.Button}
+        onClick={onClick}
+      >
         {icon}
       </button>
     </div>

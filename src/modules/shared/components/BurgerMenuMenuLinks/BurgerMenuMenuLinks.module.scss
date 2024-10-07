@@ -8,7 +8,6 @@
 
 .BurgerMenuMenuLinks {
   display: flex;
-  list-style: none;
 
   @include color-transition((box-shadow: 0 -1px 0 0 var(--element-color)));
 }

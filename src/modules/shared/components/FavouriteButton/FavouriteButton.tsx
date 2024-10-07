@@ -16,16 +16,18 @@ export const FavouriteButton: React.FC<Props> = ({ active, className }) => {
     useLanguage().localeTexts;
 
   return (
-    <div className={classNames(styles.FavouriteButton, className)}>
+    <div
+      className={classNames(
+        styles.FavouriteButton,
+        active && styles.FavouriteButton_active,
+        className,
+      )}
+    >
       <label htmlFor={id} className={styles.Label}>
         {active ? accessRemoveFromFavourites : accessAddToFavourites}
       </label>
 
-      <button
-        id={id}
-        type="button"
-        className={classNames(styles.Button, active && styles.Button_active)}
-      >
+      <button id={id} type="button" className={styles.Button}>
         {active ? <FullHeartSVG /> : <HeartSVG className={styles.Icon} />}
       </button>
     </div>

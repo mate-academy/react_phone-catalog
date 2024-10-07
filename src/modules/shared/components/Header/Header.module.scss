@@ -28,7 +28,6 @@ $navigation-desktop-gap: 24px;
 .MenuLinks {
   display: flex;
   justify-content: flex-end;
-  list-style: none;
 }
 
 .MenuLinksWrapper {
@@ -60,7 +59,6 @@ $navigation-desktop-gap: 24px;
 .Menu {
   display: flex;
   gap: $navigation-gap;
-  list-style: none;
 
   @include for-desktop {
     gap: $navigation-desktop-gap;

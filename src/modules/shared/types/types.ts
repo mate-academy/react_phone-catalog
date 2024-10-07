@@ -14,3 +14,7 @@ export type Product = {
   year: number;
   image: string;
 };
+
+export type HandleSliderDragEvent =
+  | React.MouseEvent<HTMLUListElement>
+  | React.TouchEvent<HTMLUListElement>;

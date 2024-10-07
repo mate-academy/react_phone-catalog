@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom';
 import { Picture } from '../../types/types';
-import classNames from 'classnames';
 import styles from './PictureSlide.module.scss';
 
 type Props = {
@@ -25,7 +24,7 @@ export const PictureSlide: React.FC<Props> = ({
   };
 
   return (
-    <li className={classNames(styles.PictureSlide, className)}>
+    <li className={className}>
       <Link
         to={to}
         draggable="false"
