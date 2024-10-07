@@ -49,13 +49,13 @@
     }
 
     &.is-pressed {
-      background-color: var(--c-primary);
-      color: var(--c-bg);
+      background-color: var(--c-button-bg);
+      color: var(--c-button-color);
       cursor: default;
 
       &:hover {
         border: 1px solid var(--c-border);
-        background-color: var(--c-primary);
+        background-color: var(--c-button-bg);
       }
     }
   }

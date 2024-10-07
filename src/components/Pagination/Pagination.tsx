@@ -5,11 +5,10 @@ import { useSearchParams } from 'react-router-dom';
 import { getSearchWith } from '../../utils/searchHelper';
 
 type Props = {
-  total: number;
-  perPage: string;
+  totalPages: number;
 };
 
-export const Pagination: React.FC<Props> = ({ total, perPage }) => {
+export const Pagination: React.FC<Props> = ({ totalPages }) => {
   const [searchParams, setSearchParams] = useSearchParams();
   const page = searchParams.get('page') || '';
 
@@ -20,8 +19,6 @@ export const Pagination: React.FC<Props> = ({ total, perPage }) => {
 
     setSearchParams(newSearchParams.toLowerCase());
   };
-
-  const totalPages = Math.ceil(total / +perPage);
 
   const handleNext = () => {
     if (+page < totalPages) {
@@ -94,26 +91,26 @@ export const Pagination: React.FC<Props> = ({ total, perPage }) => {
 
   return (
     <div className="pagination">
-      <div className="pagination__item">
+      <div className={cn('arrow__button', { 'is-not-active': +page === 1 })}>
         <button
-          className={cn('pagination__button', { 'is-not-active': +page === 1 })}
+          className={cn('left__arrow button', { 'is-not-active': +page === 1 })}
           disabled={+page === 1}
           onClick={handlePrev}
-        >
-          «
-        </button>
+        ></button>
       </div>
       <ul className="pagination__list">{PageLinks()}</ul>
-      <div className="pagination__item">
+      <div
+        className={cn('arrow__button', {
+          'is-not-active': +page === totalPages,
+        })}
+      >
         <button
-          className={cn('pagination__button', {
+          className={cn('right__arrow button', {
             'is-not-active': +page === totalPages,
           })}
           disabled={+page === totalPages}
           onClick={handleNext}
-        >
-          »
-        </button>
+        ></button>
       </div>
     </div>
   );

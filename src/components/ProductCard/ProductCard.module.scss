@@ -127,9 +127,17 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: var(--c-bg);
-  border: 1px solid var(--c-border);
+  background-color: var(--c-selected-bg);
+  border: 1px solid var(--c-border-disabled);
   cursor: pointer;
+
+  &:hover {
+    background-color: var(--c-icons-hover);
+  }
+}
+
+.fav__button.selected {
+  background-color: var(--c-bg);
 }
 
 .add__button {
@@ -139,9 +147,19 @@
   font-weight: 700;
   line-height: 21px;
   text-align: center;
-  color: var(--c-bg);
-  background-color: var(--c-primary);
+  color: var(--c-button-color);
+  background-color: var(--c-button-bg);
   cursor: pointer;
+
+  &:hover {
+    background-color: var(--c-button-hover);
+  }
+}
+
+.add__button.added {
+  background-color: var(--c-selected-bg);
+  color: var(--c-selected-color);
+  border: 1px solid var(--c-border-disabled);
 }
 
 

@@ -24,7 +24,7 @@ export const HomePage = () => {
         <HotPrices />
       </div>
 
-      <Footer id={'home'} />
+      <Footer />
     </div>
   );
 };

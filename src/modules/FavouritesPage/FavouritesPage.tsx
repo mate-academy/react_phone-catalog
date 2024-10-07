@@ -27,7 +27,7 @@ export const FavouritesPage = () => {
         )}
       </div>
 
-      <Footer id={'favourites'} />
+      <Footer />
     </div>
   );
 };

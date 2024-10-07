@@ -97,7 +97,7 @@ export const CartPage = () => {
         </div>
       )}
 
-      <Footer id={'cart'} />
+      <Footer />
     </div>
   );
 };

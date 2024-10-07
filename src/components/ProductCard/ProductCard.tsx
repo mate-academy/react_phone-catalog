@@ -78,7 +78,7 @@ export const ProductCard: React.FC<Props> = ({
       </div>
       <div className="card__buttons">
         {cart.some(el => el.id === product.id) === true ? (
-          <button className="add__button" onClick={takeFromCart}>
+          <button className="add__button added" onClick={takeFromCart}>
             Added
           </button>
         ) : (
@@ -88,7 +88,7 @@ export const ProductCard: React.FC<Props> = ({
         )}
 
         {favourites.some(el => el.id === product.id) === true ? (
-          <button className="fav__button" onClick={takeFromFav}>
+          <button className="fav__button selected" onClick={takeFromFav}>
             <div className="favourites__icon is-filled"></div>
           </button>
         ) : (

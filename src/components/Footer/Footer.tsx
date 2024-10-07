@@ -3,12 +3,12 @@ import { Link } from 'react-router-dom';
 import cn from 'classnames';
 import { useAppSelector } from '../../utils/store';
 
-type Props = {
-  id: string;
-};
-
-export const Footer: React.FC<Props> = ({ id }) => {
+export const Footer: React.FC = () => {
   const theme = useAppSelector(state => state.theme);
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0 });
+  };
 
   return (
     <footer className="footer">
@@ -26,12 +26,15 @@ export const Footer: React.FC<Props> = ({ id }) => {
       <nav className="footer__nav">
         <ul className="footer__nav__list">
           <li>
-            <Link
-              to="https://indigo04.github.io/react_phone-catalog/"
+            <a
+              href={
+                'https://github.com/mate-academy/' +
+                'react_phone-catalog/pull/513'
+              }
               className="nav__link"
             >
               Github
-            </Link>
+            </a>
           </li>
           <li>
             <Link to="/contacts" className="nav__link">
@@ -47,11 +50,11 @@ export const Footer: React.FC<Props> = ({ id }) => {
       </nav>
 
       <div className="back">
-        <a href="#home" className="back__text">
+        <div onClick={scrollToTop} className="back__text">
           Back to top
-        </a>
+        </div>
         <div className="arrow__button">
-          <a className="up__arrow button" href={`#${id}`}></a>
+          <div className="up__arrow button" onClick={scrollToTop}></div>
         </div>
       </div>
     </footer>

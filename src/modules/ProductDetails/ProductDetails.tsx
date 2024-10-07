@@ -99,7 +99,7 @@ export const ProductDetails = () => {
           </>
         )}
       </div>
-      <Footer id={'ProductView'} />
+      <Footer />
     </div>
   );
 };

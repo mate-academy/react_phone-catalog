@@ -40,6 +40,11 @@ export const AccessoriesPage = () => {
   const [searchParams] = useSearchParams();
   const perpage = searchParams.get('perpage') || '';
   const total = currentproducts.length;
+  let totalPages = 0;
+
+  if (perpage) {
+    totalPages = Math.ceil(total / +perpage);
+  }
 
   return (
     <div className="accessoriespage" id="accessories">
@@ -61,10 +66,10 @@ export const AccessoriesPage = () => {
           ) : (
             <h1 className="emptylist__title">There are no accessories yet</h1>
           )}
-          {perpage && <Pagination total={total} perPage={perpage} />}
+          {totalPages > 1 && <Pagination totalPages={totalPages} />}
         </div>
       )}
-      <Footer id={'accessories'} />
+      <Footer />
     </div>
   );
 };

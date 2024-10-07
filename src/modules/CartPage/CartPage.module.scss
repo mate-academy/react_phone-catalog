@@ -100,8 +100,8 @@
       font-weight: 700;
       line-height: 21px;
       text-align: center;
-      color: var(--c-bg);
-      background-color: var(--c-primary);
+      color: var(--c-button-color);
+      background-color: var(--c-button-bg);
       cursor: pointer;
     }
 
@@ -160,13 +160,13 @@
   }
 
   &__button {
-    background-color: var(--c-primary);
+    background-color: var(--c-button-bg);
     height: 48px;
     font-size: 14px;
     font-weight: 700;
     line-height: 21px;
     text-align: center;
-    color: var(--c-bg);
+    color: var(--c-button-color);
     margin-top: 32px;
     position: relative;
     padding: 0;
