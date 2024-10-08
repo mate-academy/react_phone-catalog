@@ -43,6 +43,12 @@ export const Header: React.FC<Props> = ({ search = false }) => {
 
   const [showMenu, setShowMenu] = useState(false);
 
+  if (showMenu) {
+    document.body.style.overflow = 'hidden';
+  } else {
+    document.body.style.overflow = 'auto';
+  }
+
   return (
     <header className="header">
       <div className="logo">
@@ -143,7 +149,7 @@ export const Header: React.FC<Props> = ({ search = false }) => {
             </div>
           </div>
         ) : (
-          <div className="mobile__menu">
+          <div className="mobile__menu" id="menu">
             <header className="mobile__menu__header">
               <div className="logo">
                 <a

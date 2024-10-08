@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import cn from 'classnames';
 import { useAppSelector } from '../../utils/store';
 
@@ -26,25 +25,19 @@ export const Footer: React.FC = () => {
       <nav className="footer__nav">
         <ul className="footer__nav__list">
           <li>
-            <a
-              href={
-                'https://github.com/mate-academy/' +
-                'react_phone-catalog/pull/513'
-              }
-              className="nav__link"
-            >
+            <a href="https://github.com/indigo04" className="nav__link">
               Github
             </a>
           </li>
           <li>
-            <Link to="/contacts" className="nav__link">
+            <a href="https://github.com/indigo04" className="nav__link">
               Contacts
-            </Link>
+            </a>
           </li>
           <li>
-            <Link to="/rights" className="nav__link">
+            <a href="https://github.com/indigo04" className="nav__link">
               Rights
-            </Link>
+            </a>
           </li>
         </ul>
       </nav>

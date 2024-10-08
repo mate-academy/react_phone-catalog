@@ -18,6 +18,43 @@
     gap: 24px;
   }
 
+  &__top {
+    display: flex;
+    grid-row: 1 / 1;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    width: 100%;
+    grid-column: unset;
+
+    @include ontablet {
+      gap: 24px;
+    }
+
+    @include ondesktop {
+      gap: 24px;
+    }
+  }
+
+  &__bottom {
+    grid-row: 2 / 2;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    width: 100%;
+    grid-column: unset;
+
+    @include ontablet {
+      grid-row: 1 / 1;
+      gap: 24px;
+    }
+
+    @include ondesktop {
+      grid-row: 1 / 1;
+      gap: 24px;
+    }
+  }
+
   &__image {
     width: 80px;
     height: 80px;
@@ -39,7 +76,6 @@
     text-decoration: none;
     cursor: pointer;
     transition: 500ms;
-    grid-row: 1 / 1;
 
     &:hover {
       transform: scale(1.1);
@@ -49,16 +85,6 @@
   &__quantity {
     display: flex;
     flex-direction: row;
-    grid-row: 2 / 2;
-    grid-column: span 2;
-
-    @include ontablet {
-      grid-row: 1 / 1;
-    }
-
-    @include ondesktop {
-      grid-row: 1 / 1;
-    }
 
     &__icon {
       width: 32px;
@@ -84,8 +110,7 @@
     line-height: 30.8px;
     text-align: right;
     color: var(--c-primary);
-    grid-row: 2 / 2;
-    grid-column: span 1;
+    width: 80px;
 
     @include ontablet {
       grid-row: 1 / 1;
@@ -99,5 +124,4 @@
 
 .image__holder {
   display: grid;
-  grid-row: 1 / 1;
 }
