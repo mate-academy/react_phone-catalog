@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 import store from './app/store';
 import { HomePage } from './modules/HomePage/HomePage';
 import ProductsPage from './modules/ProductsPage/ProductsPage';
-import BreadCrumbs from './modules/_shared/BreadCrumbs/BreadCrumbs';
+import PageNotFound from './modules/PageNotFound/PageNotFound';
 
 export const Root = () => (
   <Provider store={store}>
@@ -20,7 +20,7 @@ export const Root = () => (
           />
           <Route path="cart" element={<></>} />
           <Route path="favorites" element={<></>} />
-          <Route path="*" element={<BreadCrumbs />} />
+          <Route path="*" element={<PageNotFound />} />
         </Route>
       </Routes>
     </HashRouter>

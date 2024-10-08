@@ -18,6 +18,11 @@ const TitleStyled = styled.h2`
   line-height: 41px;
   font-family: 'Mont-Bold', sans-serif;
   color: ${({ theme }) => theme.textColor};
+
+  ${media.tablet} {
+    font-size: 48px;
+    line-height: 56px;
+  }
 `;
 
 const ModelsStyled = styled.div`
@@ -60,6 +65,22 @@ const ProductListStyled = styled.div`
   margin-top: 24px;
 `;
 
+const ProductsNotFound = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+
+  font-size: 32px;
+  line-height: 41px;
+
+  color: ${({ theme }) => theme.textColor};
+`;
+
+const NotFoundImg = styled.img`
+  width: 100%;
+`;
+
 export {
   ProductsPageStyled,
   TitleStyled,
@@ -68,4 +89,6 @@ export {
   SelectFixInput,
   SelectFixSecond,
   ProductListStyled,
+  ProductsNotFound,
+  NotFoundImg,
 };

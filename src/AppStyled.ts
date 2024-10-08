@@ -7,6 +7,7 @@ const AppStyled = styled.div`
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  min-width: 320px;
 
   ${media.desktop} {
     padding-top: 64px;

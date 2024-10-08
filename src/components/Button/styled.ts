@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 
 type ButtonProps = {
-  variant: 'dark' | 'white' | 'disabled' | 'activate';
+  variant: 'dark' | 'white' | 'disabled' | 'activate' | 'pagination';
   cssStyle: string;
 };
 
@@ -57,6 +57,20 @@ const ButtonStyled = styled.div<ButtonProps>`
           border: 1px solid ${({ theme }) => theme.cardSliderNotActive};
           color: ${({ theme }) => theme.buttonThreeColor};
           cursor: default;
+        `;
+      }
+
+      case 'pagination': {
+        return css`
+          background-color: ${({ theme }) => theme.cardBacground};
+          border: 1px solid ${({ theme }) => theme.cardBorder};
+          color: ${({ theme }) => theme.buttonSecondColor};
+          cursor: pointer;
+
+          &:hover {
+            background-color: ${({ theme }) => theme.buttonPaginationHover};
+            border: 1px solid ${({ theme }) => theme.butPaginHovBor};
+          }
         `;
       }
     }

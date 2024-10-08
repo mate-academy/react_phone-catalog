@@ -1,13 +1,15 @@
-import { useLocation, useParams } from 'react-router-dom';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import { BreadCrumbsStyled, ContainerSVGStyled, CrumbStyled } from './styled';
 import { HOME_SVG, VECTOR_SVG } from '../../../utils/SVG';
 import { useTranslation } from 'react-i18next';
 import { StrCode } from '../../../utils/enums';
+import { useEffect, useState } from 'react';
 
 const BreadCrumbs = () => {
   const { pathname } = useLocation();
   const { productId } = useParams();
   const { t } = useTranslation();
+  const navigate = useNavigate();
 
   const adressName = () => {
     switch (pathname) {
@@ -22,6 +24,22 @@ const BreadCrumbs = () => {
     }
   };
 
+  const navigateTo = (aress: string) => {
+    switch (aress) {
+      case t(StrCode.Phones):
+        navigate('/phones');
+        break;
+      case t(StrCode.Tablets):
+        navigate('/tablets');
+        break;
+      case t(StrCode.Accessories):
+        navigate('/accessories');
+        break;
+      default:
+        break;
+    }
+  };
+
   const formatProductName = (productName: string) => {
     const formattedName = productName.replace(/-/g, ' ');
 
@@ -32,20 +50,30 @@ const BreadCrumbs = () => {
     ? [adressName()]
     : [adressName(), formatProductName(productId)];
 
+  const [itemUsed, setItemUsed] = useState(itemsUsed);
+
+  useEffect(() => {
+    setItemUsed(
+      !productId
+        ? [adressName()]
+        : [adressName(), formatProductName(productId)],
+    );
+  }, [t, pathname, productId]);
+
   return (
     <BreadCrumbsStyled>
-      <ContainerSVGStyled>
+      <ContainerSVGStyled onClick={() => navigate('/')}>
         <HOME_SVG />
       </ContainerSVGStyled>
 
       <CrumbStyled>
-        {itemsUsed.map(item => (
+        {itemUsed.map(item => (
           <>
             <ContainerSVGStyled>
               <VECTOR_SVG variant="right" />
             </ContainerSVGStyled>
 
-            <div>{item}</div>
+            <div onClick={() => navigateTo(item)}>{item}</div>
           </>
         ))}
       </CrumbStyled>

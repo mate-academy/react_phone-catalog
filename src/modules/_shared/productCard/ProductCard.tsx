@@ -7,6 +7,7 @@ import {
   InfoStyled,
   NameBlockStyled,
   RegularPriceStyled,
+  SkeletonImg,
 } from './styled';
 import { Button } from '../../../components/Button/Button';
 import { FAVORIT_SVG, LIKE_SVG } from '../../../utils/SVG';
@@ -16,6 +17,7 @@ import { ProductType } from '../../../types/productsType';
 import { addBacketId } from '../../../features/basketSlice';
 import { addFavoritId, deleteFavoritId } from '../../../features/favoritSlice';
 import { useAppDispatch, useAppSelector } from '../../../hooks/hookStore';
+import { Skeleton } from '../Skeleton/Skeleton';
 
 type Props = {
   variant: 'HomePage' | 'ListPage';
@@ -66,7 +68,7 @@ const ProductCard: React.FC<Props> = ({ variant, product }) => {
 
   return (
     <CardStyled variant={variant}>
-      {product && (
+      {product ? (
         <>
           <ImgStyled src={product.image} variant={variant} />
 
@@ -110,6 +112,28 @@ const ProductCard: React.FC<Props> = ({ variant, product }) => {
             >
               {includesFavorit() ? <FAVORIT_SVG /> : <LIKE_SVG />}
             </Button>
+          </ButtonsBlockStyled>
+        </>
+      ) : (
+        <>
+          <SkeletonImg>
+            <Skeleton />
+          </SkeletonImg>
+
+          <Skeleton height="58px" />
+
+          <Skeleton height="31px" />
+
+          <InfoBlockStyled>
+            <Skeleton height="15px" />
+            <Skeleton height="15px" />
+            <Skeleton height="15px" />
+          </InfoBlockStyled>
+
+          <ButtonsBlockStyled>
+            <Skeleton height="40px" />
+
+            <Skeleton height="40px" width="40px" />
           </ButtonsBlockStyled>
         </>
       )}

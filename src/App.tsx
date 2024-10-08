@@ -42,9 +42,9 @@ export const App = () => {
       <AppStyled className="App">
         <Header />
 
-        <MainStyled />
-
         <Outlet />
+
+        <MainStyled />
 
         <Footer />
       </AppStyled>

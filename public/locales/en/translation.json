@@ -19,7 +19,15 @@
   "HOME": "Home",
   "PHONES": "Phones",
   "ADDED": "Added",
-  "PAGE_NOT_FOUND": "Page not found!",
+  "PAGE_NOT_FOUND": "Page Not Found. Go to home page?",
   "SORT_BY": "Sort by",
-  "ITEMS_ON_PAGE": "Items on page"
+  "ITEMS_ON_PAGE": "Items on page",
+  "SORT_AGE": "Newest",
+  "SORT_NAME": "Alphabetically",
+  "SORT_PRICE": "Cheapest",
+  "NOT_PHONES": "Sorry... There are no phones yet... Go to phones page?",
+  "NOT_TABLETS": "Sorry... There are no tablets yet... Go to tablets page?",
+  "NOT_ACCESSORIES": "Sorry... There are no accessories yet... Go to accessories page?",
+  "GO_BACK": "GO BACK",
+  "GO_HOME": "GO HOME PAGE"
 }

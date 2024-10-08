@@ -8,6 +8,10 @@ const BreadCrumbsStyled = styled.div`
   svg {
     fill: ${({ theme }) => theme.buttonSecondColor} !important;
   }
+
+  & > :first-child {
+    cursor: pointer;
+  }
 `;
 
 const CrumbStyled = styled.div`
@@ -20,6 +24,14 @@ const CrumbStyled = styled.div`
 
   svg {
     fill: ${({ theme }) => theme.buttonSecondNotColor} !important;
+  }
+
+  & > :nth-child(2) {
+    cursor: pointer;
+
+    &:hover {
+      color: ${({ theme }) => theme.textColor};
+    }
   }
 
   & > :last-child {

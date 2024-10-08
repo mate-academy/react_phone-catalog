@@ -82,10 +82,6 @@ const ImgStyled = styled.img<CardProps>`
           ${media.tablet} {
             height: 196px;
           }
-
-          ${media.desktop} {
-            height: 196px;
-          }
         `;
       }
     }
@@ -155,11 +151,23 @@ const ButtonsBlockStyled = styled.div`
   display: flex;
   justify-content: space-between;
   gap: 8px;
+
+  & > :last-child {
+    flex-shrink: 0;
+  }
 `;
 
 const ImgFavoriteStyled = styled.img`
   width: 15.34px;
   object-fit: cover;
+`;
+
+const SkeletonImg = styled.div`
+  height: 130px;
+
+  ${media.tablet} {
+    height: 196px;
+  }
 `;
 
 export {
@@ -172,4 +180,5 @@ export {
   InfoStyled,
   ButtonsBlockStyled,
   ImgFavoriteStyled,
+  SkeletonImg,
 };

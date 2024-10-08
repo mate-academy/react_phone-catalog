@@ -32,6 +32,8 @@ export const theme1 = {
   buttonHoverShadow: '#17203166',
   buttonSecondHoverBacground: '#fff',
   buttonSecondHoverBorder: '#313237',
+  buttonPaginationHover: '#fff',
+  butPaginHovBor: '#313237',
 };
 
 export const theme2 = {
@@ -68,6 +70,8 @@ export const theme2 = {
   buttonHoverShadow: 'none',
   buttonSecondHoverBacground: '#4a4d58',
   buttonSecondHoverBorder: '#4a4d58',
+  buttonPaginationHover: '#3b3e4a',
+  butPaginHovBor: '#3b3e4a',
 };
 
 export const theme3 = {
@@ -104,6 +108,8 @@ export const theme3 = {
   buttonHoverShadow: '',
   buttonSecondHoverBacground: '',
   buttonSecondHoverBorder: '',
+  buttonPaginationHover: '',
+  butPaginHovBor: '',
 };
 
 export const theme4 = {
@@ -140,6 +146,8 @@ export const theme4 = {
   buttonHoverShadow: '',
   buttonSecondHoverBacground: '',
   buttonSecondHoverBorder: '',
+  buttonPaginationHover: '',
+  butPaginHovBor: '',
 };
 
 export const theme5 = {
@@ -176,4 +184,6 @@ export const theme5 = {
   buttonHoverShadow: '',
   buttonSecondHoverBacground: '',
   buttonSecondHoverBorder: '',
+  buttonPaginationHover: '',
+  butPaginHovBor: '',
 };

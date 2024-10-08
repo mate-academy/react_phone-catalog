@@ -21,4 +21,13 @@ export enum StrCode {
   Added = 'ADDED',
   SortBy = 'SORT_BY',
   ItemsOnPage = 'ITEMS_ON_PAGE',
+  SortAge = 'SORT_AGE',
+  SortName = 'SORT_NAME',
+  SortPrice = 'SORT_PRICE',
+  NotPhones = 'NOT_PHONES',
+  NotTablets = 'NOT_TABLETS',
+  NotAccessories = 'NOT_ACCESSORIES',
+  GoBack = 'GO_BACK',
+  PageNotFound = 'PAGE_NOT_FOUND',
+  GoHome = 'GO_HOME',
 }
