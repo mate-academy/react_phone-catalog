@@ -46,48 +46,49 @@ export const DiscountProductCard: React.FC<ProductCardProps> = ({
   };
 
   return (
-    <div className={styles.productCard}>
-      <img src={imageUrl} alt={name} className={styles.productImage} />
-
-      <div className={styles.productDetails}>
-        <h3 className={styles.productTitle}>{name}</h3>
-        <div className={styles.priceSection}>
+    <div className={styles.product_card}>
+      <div className={styles.product_container_img}>
+        <img src={imageUrl} alt={name} className={styles.product_image} />
+      </div>
+      <div className={styles.product_details}>
+        <h3 className={styles.product_title}>{name}</h3>
+        <div className={styles.price_section}>
           {discountPrice ? (
             <>
-              <p className={styles.discountPrice}>${discountPrice}</p>
-              <p className={styles.originalPrice}>${price}</p>
+              <p className={styles.discount_price}>${discountPrice}</p>
+              <p className={styles.original_price}>${price}</p>
             </>
           ) : (
             <span className={styles.price}>${price}</span>
           )}
         </div>
-        <div className={styles.productInfo}>
-          <div className={styles.productFeature}>
-            <span className={styles.featureLabel}>Screen</span>
-            <span className={styles.featureValue}>{filteredScreen}</span>
+        <div className={styles.product_info}>
+          <div className={styles.product_feature}>
+            <span className={styles.feature_label}>Screen</span>
+            <span className={styles.feature_value}>{filteredScreen}</span>
           </div>
-          <div className={styles.productFeature}>
-            <span className={styles.featureLabel}>Capacity</span>
-            <span className={styles.featureValue}>{capacity}</span>
+          <div className={styles.product_feature}>
+            <span className={styles.feature_label}>Capacity</span>
+            <span className={styles.feature_value}>{capacity}</span>
           </div>
-          <div className={styles.productFeature}>
-            <span className={styles.featureLabel}>RAM</span>
-            <span className={styles.featureValue}>{ram}</span>
+          <div className={styles.product_feature}>
+            <span className={styles.feature_label}>RAM</span>
+            <span className={styles.feature_value}>{ram}</span>
           </div>
         </div>
         <div className={styles.bottom_buttons}>
           <button
-            className={`${styles.addToCartButton} ${isInCart ? styles.addedToCart : ''}`}
+            className={`${styles.add_to_cart_button} ${isInCart ? styles.added_to_cart : ''}`}
             onClick={handleAddToCart}
           >
             {isInCart ? 'Added to Cart' : 'Add to Cart'}
           </button>
           <button
-            className={styles.favoriteButton}
+            className={styles.favorite_button}
             onClick={handleToggleFavorite}
           >
             <img
-              className={styles.favoriteImage}
+              className={styles.favorite_image}
               src={
                 isFavorite ? 'img/Favourites-filled.svg' : 'img/Favourites.svg'
               }

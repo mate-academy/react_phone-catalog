@@ -178,9 +178,8 @@
   }
 }
 
-@media (max-width: 767px) {
+@media (max-width: 640px) {
   .header {
-    width: 1;
     position: sticky;
     max-width: 640px;
     width: 100%;
@@ -267,9 +266,7 @@
     transition: color 0.3s ease;
   }
 
-  .nav_left a:hover {
-    color: #ff6347;
-  }
+
 
   .header__burger_open::before,
   .header__burger_open::after {

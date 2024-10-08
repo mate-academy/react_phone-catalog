@@ -24,3 +24,20 @@ body {
   flex-direction: column;
   min-height: 100%;
 }
+
+
+@media screen and (min-width: 1200px) {
+  .content {
+    padding-top: 120px;
+  }
+}
+@media screen and (max-width: 1199px) {
+  .content {
+    padding-top: 32px;
+  }
+}
+@media screen and (max-width: 640px) {
+  .content {
+    padding-top: 24px;
+  }
+}

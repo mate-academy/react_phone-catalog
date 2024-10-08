@@ -3,6 +3,27 @@
     padding: 20px;
     width: 1136px;
     height: 571px;
+    margin-bottom: 140px;
+  }
+
+  .buttonsGroup {
+    display: flex;
+    gap: 16px;
+  }
+
+  .buttons_controls {
+    width: 32px;
+    height: 32px;
+    gap: 16px;
+    background-color: #fff;
+    border: 1px solid gray;
+    transition: background-color 0.3s ease, opacity 0.3s ease;
+    cursor: pointer;
+  }
+
+  .buttons_controls:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
   }
 
   .productGrid {
@@ -24,7 +45,27 @@
     padding: 20px;
     width: 1136px;
     height: 571px;
-    margin: 24px 0 0;
+    margin: 24px 0 120px;
+  }
+
+  .buttonsGroup {
+    display: flex;
+    gap: 16px;
+  }
+
+  .buttons_controls {
+    width: 32px;
+    height: 32px;
+    gap: 16px;
+    background-color: #fff;
+    border: 1px solid gray;
+    transition: background-color 0.3s ease, opacity 0.3s ease;
+    cursor: pointer;
+  }
+
+  .buttons_controls:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
   }
 
   .productGrid {
@@ -49,6 +90,26 @@
     padding: 20px;
     max-width: 640px;
     margin: 0 auto;
+  }
+
+  .buttonsGroup {
+    display: flex;
+    gap: 16px;
+  }
+
+  .buttons_controls {
+    width: 32px;
+    height: 32px;
+    gap: 16px;
+    background-color: #fff;
+    border: 1px solid gray;
+    transition: background-color 0.3s ease, opacity 0.3s ease;
+    cursor: pointer;
+  }
+
+  .buttons_controls:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
   }
 
   .productGrid {

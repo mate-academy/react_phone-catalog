@@ -2,7 +2,6 @@
   .productList {
     padding: 20px;
     max-width: 1199px;
-    width: 100%;
     height: 577px;
     margin-bottom: 80px;
   }
@@ -25,7 +24,6 @@
   .buttons_controls {
     width: 32px;
     height: 32px;
-    gap: 16px;
     background-color: #fff;
     border: 1px solid gray;
     transition: background-color 0.3s ease, opacity 0.3s ease;
