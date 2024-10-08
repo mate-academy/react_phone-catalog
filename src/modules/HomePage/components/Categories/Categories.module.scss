@@ -1,0 +1,27 @@
+@import '/src/style/main.scss';
+
+.Categories{
+  @include inline-padding-content;
+
+  width: 100%;
+
+  &__title{
+    @include h2;
+    color: $c-primary;
+
+    margin-bottom: 24px;
+  }
+
+  &__content{
+    @include grid-layout;
+
+    & > div {
+      grid-column: span 4;
+
+      @include on-desktop{
+        grid-column: span 8 ;
+      }
+    }
+  }
+}
+

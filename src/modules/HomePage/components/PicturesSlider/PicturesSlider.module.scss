@@ -1,0 +1,76 @@
+@import '/src/style/main.scss';
+
+.PicturesSlider {
+  &__content {
+    display: flex;
+
+    gap: 20px;
+
+    @include on-tablet {
+      @include inline-padding-content;
+    }
+  }
+
+  &__button {
+    display: none;
+    min-width: 32px;
+    background-repeat: no-repeat;
+    background-position: center;
+    border: 1px solid $c-icons;
+
+    @include on-tablet {
+      display: block;
+    }
+
+    &_left {
+      background-image: url('/public/icons/Arrow-back.svg');
+    }
+    &_right {
+      background-image: url('/public/icons/Arrow-next.svg');
+    }
+  }
+
+  &__slider {
+    overflow: hidden;
+  }
+
+  &__allSlides {
+    display: flex;
+    gap: 5px;
+    transition: all 1s;
+
+    & > div {
+      min-width: 100%;
+    }
+  }
+
+  &__bottomBtns {
+    margin-top: 8px;
+    display: flex;
+    justify-content: center;
+    gap: 4px;
+  }
+
+  &__bottomBtn{
+    display: block;
+    position: relative;
+    width: 24px;
+    height: 24px;
+
+    &::after{
+      content: '';
+      position: absolute;
+      width: 14px;
+      height: 4px;
+      background-color: $c-elements;
+      top: 10px;
+      left: 5px;
+    }
+
+    &_active{
+      &::after{
+        background-color: black;
+      }
+    }
+  }
+}

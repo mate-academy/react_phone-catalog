@@ -1,0 +1,37 @@
+@import '/src/style/main.scss';
+
+.ButtonArrow {
+  width: 32px;
+  height: 32px;
+  border: 1px solid $c-icons;
+  color: $c-icons;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all $transition;
+
+  &:hover {
+    border: 1px solid $c-primary;
+  }
+
+  &:disabled {
+    border: 1px solid $c-icons;
+
+    & path {
+      fill: $c-icons;
+    }
+  }
+
+  &_top {
+    transform: rotate(90deg);
+  }
+
+  &_right {
+    transform: rotate(180deg);
+  }
+
+  &_bottom {
+    transform: rotate(270deg);
+  }
+}
