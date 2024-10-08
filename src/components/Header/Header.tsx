@@ -23,6 +23,7 @@ import {
 import { useTranslation } from 'react-i18next';
 import { StrCode } from '../../utils/enums';
 import { useAppSelector } from '../../hooks/hookStore';
+import SearchForm from './SerchBar/SerchBar';
 
 export const Header = () => {
   const [isManuActive, setIsActiveMenu] = useState(false);
@@ -118,6 +119,8 @@ export const Header = () => {
           </MenuBoxStyled>
         </MenuStyled>
       </NavStyled>
+
+      <SearchForm />
     </HeaderStyled>
   );
 };
