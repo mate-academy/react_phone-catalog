@@ -25,10 +25,12 @@ type Props = {
 };
 
 export const ThemeProvider: React.FC<Props> = ({ children }) => {
-  const [themeName, setThemeName] = useState<ThemeNames>(defaultThemeName);
+  const storedThemeName = localStorage.getItem('themeName') as ThemeNames;
+  const [themeName, setThemeName] = useState<ThemeNames>(storedThemeName || defaultThemeName);
 
   const setTheme = (name: ThemeNames) => {
     setThemeName(name);
+    localStorage.setItem('themeName', name);
   };
 
   return (

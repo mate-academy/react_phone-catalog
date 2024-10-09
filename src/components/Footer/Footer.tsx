@@ -27,9 +27,15 @@ const scrollToTop = () => {
 
 export const Footer = () => {
   const { theme, setTheme } = useTheme();
-  const [value2, setValue2] = useState<'English' | 'Українська'>('English');
+  const valueLanguage = localStorage.getItem('valueLanguage') as 'English' | 'Українська';
+  const [value2, setValue2] = useState<'English' | 'Українська'>(valueLanguage || 'English');
   const themeKeys = Object.keys(themeMap) as Array<keyof typeof themeMap>;
   const { t } = useTranslation();
+
+  const setLanguage = (name: "English" | "Українська") => {
+    setValue2(name);
+    localStorage.setItem('valueLanguage', name);
+  };
 
   const languageVariant = {
     English: 'en',
@@ -96,7 +102,7 @@ export const Footer = () => {
             items={['English', 'Українська']}
             variant="topSwipe"
             value={value2}
-            setValue={setValue2}
+            setValue={setLanguage}
             width="140px"
           />
         </SelectorsStyled>

@@ -1,4 +1,4 @@
-import { Outlet } from 'react-router-dom';
+import { Outlet, useLocation } from 'react-router-dom';
 import './App.scss';
 import { Header } from './components/Header';
 import { useEffect } from 'react';
@@ -14,6 +14,15 @@ import { AppStyled, MainStyled } from './AppStyled';
 
 export const App = () => {
   const dispatch = useAppDispatch();
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  }, [pathname]);
+
 
   useEffect(() => {
     const fetchItems = async () => {

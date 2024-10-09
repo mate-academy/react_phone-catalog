@@ -19,6 +19,8 @@ const BreadCrumbs = () => {
         return t(StrCode.Tablets);
       case '/accessories':
         return t(StrCode.Accessories);
+      case '/favorites':
+        return 'Favourites';
       default:
         return 'Page not found!';
     }
