@@ -1,14 +1,35 @@
-// eslint-disable-next-line import/no-extraneous-dependencies
 import { createSlice } from '@reduxjs/toolkit';
 import { Product } from '../types/Product';
 
+const loadFromLocalStorage = () => {
+  const savedFavourites = localStorage.getItem('favourites');
+
+  return savedFavourites ? JSON.parse(savedFavourites) : [];
+};
+
+const saveToLocalStorage = (favourites: Product[]) => {
+  localStorage.setItem('favourites', JSON.stringify(favourites));
+};
+
 export const favouriteSlice = createSlice({
   name: 'favourite',
-  initialState: [] as Product[],
+  initialState: loadFromLocalStorage() as Product[],
   reducers: {
-    addToFavourite: (favourite, action) => [...favourite, action.payload],
-    removeFromFavourite: (favourite, action) => {
-      return favourite.filter((item: Product) => item.id !== action.payload.id);
+    addToFavourite: (favourites, action) => {
+      const updatedFavourites = [...favourites, action.payload];
+
+      saveToLocalStorage(updatedFavourites);
+
+      return updatedFavourites;
+    },
+    removeFromFavourite: (favourites, action) => {
+      const updatedFavourites = favourites.filter(
+        (item: Product) => item.id !== action.payload.id,
+      );
+
+      saveToLocalStorage(updatedFavourites);
+
+      return updatedFavourites;
     },
   },
 });
