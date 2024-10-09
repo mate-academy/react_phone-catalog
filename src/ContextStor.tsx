@@ -1,13 +1,13 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { createContext, useContext, ReactNode } from 'react';
 import { useLocalStorage } from './LocaleStorage';
-
+import { Products } from './types/products';
 
 interface AppContextProps {
-  favorites: any[];
-  setFavorites: (favorites: any[]) => void;
-  cart: any[];
-  setCart: (cart: any[]) => void;
+  favorites: Products[];
+  setFavorites: (favorites: Products[]) => void;
+  cart: Products[];
+  setCart: (cart: Products[]) => void;
 }
 
 const AppContext = createContext<AppContextProps>({
@@ -22,7 +22,7 @@ interface AppProviderProps {
 }
 
 export const AppProvider: React.FC<AppProviderProps> = ({ children }) => {
-  const [favorites, setFavorites] = useLocalStorage<FavoriteItem[]>(
+  const [favorites, setFavorites] = useLocalStorage<Products[]>(
     'favorites',
     [],
   );
