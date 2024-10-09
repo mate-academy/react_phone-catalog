@@ -1,0 +1,29 @@
+.burger-menu {
+  position: relative;
+  height: calc(100vh - 72px);
+
+  &--text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    column-gap: 16px;
+
+    &-button {
+      color: rgb(137, 147, 154);
+    }
+  }
+
+  &--button {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+
+    @media screen and (min-width: 600px) {
+      position: relative;
+    }
+  }
+}

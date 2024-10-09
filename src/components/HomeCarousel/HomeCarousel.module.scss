@@ -1,0 +1,82 @@
+.carousel {
+  &--text {
+    margin: 0;
+    margin-bottom: 24px;
+  }
+
+  &--slider {
+    width: calc(100% + 32px);
+    transform: translateX(-16px);
+    margin-bottom: 56px;
+
+    @media screen and (min-width: 640px) {
+      display: flex;
+      column-gap: 16px;
+      margin-bottom: 64px;
+
+
+      width: 100%;
+      transform: translateX(0);
+    }
+
+    @media screen and (min-width: 1200px) {
+      margin-bottom: 80px;
+    }
+
+    &-banner {
+      display: none;
+
+      @media screen and (min-width: 640px) {
+        display: block;
+        width: 100%;
+      }
+    }
+
+    &__first {
+      width: 100%;
+
+      @media screen and (min-width: 640px) {
+        display: none;
+      }
+    }
+
+    &__second {
+      width: 100%;
+
+      @media screen and (min-width: 640px) {
+        object-fit: cover;
+
+      }
+
+    }
+
+    &__third {
+      width: 100%;
+
+      @media screen and (min-width: 640px) {
+        object-fit: cover;
+
+      }
+    }
+
+    &--first-button {
+      display: none;
+      cursor: pointer;
+
+      @media screen and (min-width: 640px) {
+        display: block;
+
+      }
+    }
+
+    &--second-button {
+      display: none;
+      cursor: pointer;
+
+
+      @media screen and (min-width: 640px) {
+        display: block;
+      }
+    }
+  }
+}
