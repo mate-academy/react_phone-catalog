@@ -4,7 +4,7 @@ import { Tablet } from '../../types/tablet';
 import { Accessory } from '../../types/accessory';
 import { Phone } from '../../types/phone';
 import { Products } from '../../types/products';
-import { useLocalStorage } from '../../LocaleStorage';
+import { useAppContext } from '../../ContextStor';
 
 type Props = {
   products: Phone[] | Tablet[] | Accessory[];
@@ -12,8 +12,7 @@ type Props = {
 };
 
 export const List: React.FC<Props> = ({ type }) => {
-  const [favorites, setFavorites] = useLocalStorage<Products[]>('favorites', []);
-  const [cart, setCart] = useLocalStorage<Products[]>('cart', []);
+  const { favorites, cart, setCart, setFavorites } = useAppContext();
 
   const location = useLocation();
   const [searchParams] = useSearchParams(location.search);
@@ -28,6 +27,7 @@ export const List: React.FC<Props> = ({ type }) => {
       .then(response => response.json())
       .then((data: Products[]) => {
         const filteredProducts = data.filter(el => el.category === type);
+
         setProducts(filteredProducts);
         setSortedProducts(filteredProducts);
       });
@@ -64,7 +64,7 @@ export const List: React.FC<Props> = ({ type }) => {
     } else {
       const paginatedData = sortedData.slice(
         (currentPage - 1) * itemsPerPage,
-        currentPage * itemsPerPage
+        currentPage * itemsPerPage,
       );
 
       setSortedProducts(paginatedData);
@@ -131,7 +131,9 @@ export const List: React.FC<Props> = ({ type }) => {
                   onClick={() => toggleCart(product)}
                   className={`${cart.some(el => el.id === product.id) ? 'added-to-cart' : 'card__buy-cart'}`}
                 >
-                  {cart.some(el => el.id === product.id) ? 'Added to cart' : 'Add to cart'}
+                  {cart.some(el => el.id === product.id)
+                    ? 'Added to cart'
+                    : 'Add to cart'}
                 </button>
                 <img
                   onClick={() => toggleFavorite(product)}
@@ -150,25 +152,25 @@ export const List: React.FC<Props> = ({ type }) => {
 
       <div className="pagination">
         <button
-          className='pagination--previous'
+          className="pagination--previous"
           onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
           disabled={currentPage === 1}
         >
           {'<'}
         </button>
 
-          {Array.from({ length: totalPages }, (_, index) => (
-            <button
-              key={index + 1}
-              className={`pagination--str ${currentPage === index + 1 ? 'active' : ''}`}
-              onClick={() => setCurrentPage(index + 1)}
-            >
-              {index + 1}
-            </button>
-          ))}
+        {Array.from({ length: totalPages }, (_, index) => (
+          <button
+            key={index + 1}
+            className={`pagination--str ${currentPage === index + 1 ? 'active' : ''}`}
+            onClick={() => setCurrentPage(index + 1)}
+          >
+            {index + 1}
+          </button>
+        ))}
 
         <button
-          className='pagination--next'
+          className="pagination--next"
           onClick={() => setCurrentPage(prev => Math.min(prev + 1, totalPages))}
           disabled={currentPage === totalPages}
         >

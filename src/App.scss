@@ -9,7 +9,6 @@
     width: 32px;
     height: 32px;
     box-sizing: border-box;
-    /* Gray / Icons + Placeholders */
     border: 1px solid rgb(180, 189, 196);
     border-radius: 48px;
   }
@@ -20,7 +19,6 @@
     width: 32px;
     height: 32px;
     box-sizing: border-box;
-    /* Gray / Icons + Placeholders */
     border: 1px solid rgb(180, 189, 196);
     border-radius: 48px;
   }
@@ -51,13 +49,18 @@
   }
 }
 
-
-
 .cart__counter {
   display: flex;
   column-gap: 8px;
+  align-items: center;
+
 
   &-text {
+    box-sizing: border-box;
+    border: 1px solid rgb(180, 189, 196);
+    border-radius: 48px;
+    width: 32px;
+    height: 32px;
     margin: 0;
     color: rgb(0, 0, 0);
     font-family: Mont, sans-serif;
@@ -78,7 +81,6 @@
   width: 15px;
   height: 15px;
   font-size: 10px;
-  /* Размер шрифта для корректного отображения цифр */
   border: 1px solid rgb(255, 255, 255);
   background: rgb(66, 25, 208);
   border-radius: 100%;
@@ -106,7 +108,6 @@
     @media screen and (min-width: 1200px) {
       grid-template-columns: repeat(24, 1fr);
       column-gap: 16px;
-
     }
 
     &-el {
@@ -125,7 +126,6 @@
   .details__image {
     grid-column: 3 / 10;
     height: 464px;
-
   }
 
   .q {
@@ -161,7 +161,6 @@
 
 .carousel--slider__third {
   max-height: 400px;
-
 }
 
 .nav__button-n-t {
@@ -282,7 +281,6 @@
   margin: 0;
 }
 
-
 .cart__line {
   border: 1px solid rgb(226, 230, 233);
   width: 100%;
@@ -340,9 +338,6 @@
     background: rgb(255, 255, 255);
     padding: 32px;
 
-
-
-
     &__image {
       display: block;
       height: 110px;
@@ -394,7 +389,6 @@
         font-size: 12px;
         font-weight: 700;
         margin-bottom: 8px;
-
       }
     }
 
@@ -431,7 +425,6 @@
         font-weight: 700;
         margin: 0;
         margin-bottom: 16px;
-
       }
 
       &-info {
@@ -440,7 +433,6 @@
         font-weight: 700;
         margin: 0;
         margin-bottom: 16px;
-
       }
     }
 
@@ -461,11 +453,7 @@
       }
     }
   }
-
 }
-
-
-
 
 .flex-capacity {
   display: flex;
@@ -512,7 +500,6 @@
 }
 
 .details {
-
   &__text {
     margin: 0;
     margin-bottom: 32px;
@@ -559,14 +546,12 @@
 
     @media screen and (min-width: 640px) {
       display: block;
-
     }
 
     & img {
       max-width: 100%;
       max-height: 100%;
     }
-
 
     &--more {
       display: flex;
@@ -614,7 +599,6 @@
     display: flex;
     justify-content: space-between;
 
-
     &-text {
       color: rgb(137, 147, 154);
       margin: 0;
@@ -622,7 +606,6 @@
     }
   }
 }
-
 
 @import './normolize';
 @import './components/Header/Header.module';

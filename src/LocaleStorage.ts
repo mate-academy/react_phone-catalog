@@ -12,7 +12,7 @@ export function useLocalStorage<T>(
     }
 
     try {
-      return JSON.parse(data);
+      return JSON.parse(data) as T;
     } catch (e) {
       localStorage.removeItem(key);
 

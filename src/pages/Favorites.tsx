@@ -1,15 +1,12 @@
 import React from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { useLocalStorage } from '../LocaleStorage';
 import { Products } from '../types/products';
+import { useAppContext } from '../ContextStor';
 
 export const Favorites = () => {
   const location = useLocation();
   const navigate = useNavigate();
-  const [favorites, setFavorites] = useLocalStorage<Products[]>(
-    'favorites',
-    [],
-  );
+  const { favorites, setFavorites } = useAppContext();
 
   const toggleFavorite = (product: Products) => {
     const isFavorite = favorites.some(fav => fav.id === product.id);

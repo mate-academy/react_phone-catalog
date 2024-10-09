@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 import React, { useEffect, useState } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
-import { useLocalStorage } from '../../LocaleStorage';
+import { useAppContext } from '../../ContextStor';
 
 type Props = {
   burgerMenu: boolean;
@@ -10,8 +10,7 @@ type Props = {
 
 export const Header: React.FC<Props> = ({ burgerMenu, setBurgerMenu }) => {
   const location = useLocation();
-  const [favorites, setFavorites] = useLocalStorage('favorites', []);
-  const [cart, setCart] = useLocalStorage('cart', []);
+  const { favorites, cart } = useAppContext();
 
   const [favoritesCount, setFavoritesCount] = useState(favorites.length);
   const [cartCount, setCartCount] = useState(cart.length);
@@ -99,7 +98,11 @@ export const Header: React.FC<Props> = ({ burgerMenu, setBurgerMenu }) => {
             <div className="nav__count--first">{favoritesCount}</div>
           </Link>
 
-          <Link style={{ position: 'relative' }} state={{ from: location.pathname }} to="/cart">
+          <Link
+            style={{ position: 'relative' }}
+            state={{ from: location.pathname }}
+            to="/cart"
+          >
             <img
               className="nav__button--second"
               src="./img/Cart_nav.svg"

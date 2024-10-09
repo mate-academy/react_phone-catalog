@@ -5,8 +5,8 @@ import { Accessory } from '../../types/accessory';
 import classNames from 'classnames';
 import { useNavigate } from 'react-router-dom';
 import { Products } from '../../types/products';
-import { useLocalStorage } from '../../LocaleStorage';
 import { COLORS } from '../../variables';
+import { useAppContext } from '../../ContextStor';
 
 type Product = Phone | Tablet | Accessory;
 
@@ -15,11 +15,7 @@ type Props = {
 };
 
 export const DetailsCard: React.FC<Props> = ({ product }) => {
-  const [cart, setCart] = useLocalStorage<Products[]>('cart', []);
-  const [favorites, setFavorites] = useLocalStorage<Products[]>(
-    'favorites',
-    [],
-  );
+  const { favorites, cart, setCart, setFavorites } = useAppContext();
 
   const navigate = useNavigate();
   const [selectedImage, setSelectedImage] = useState<string>(product.images[0]);

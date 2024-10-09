@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
-import { useLocalStorage } from '../LocaleStorage';
-import { Products } from '../types/products';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { useAppContext } from '../ContextStor';
 
 export const CartItem = () => {
-  const [cart, setCart] = useLocalStorage<Products[]>('cart', []);
+  const { cart, setCart } = useAppContext();
   const navigate = useNavigate();
   const location = useLocation();
   const [quantities, setQuantities] = useState(cart.map(() => 1));
@@ -100,7 +99,7 @@ export const CartItem = () => {
               >
                 +
               </button>
-              <p className="cart__counter-text">{quantities[index]}</p>
+              <p>{quantities[index]}</p>
               <button
                 style={{ cursor: 'pointer' }}
                 onClick={() => handleDecrease(index)}

@@ -4,15 +4,10 @@ import { Outlet } from 'react-router-dom';
 import { Header } from './components/Header';
 import { BurgerMenu } from './components/BurgerMenu';
 import { Footer } from './components/Footer/Footer';
-import { useLocalStorage } from './LocaleStorage';
-import { Products } from './types/products';
+import { useAppContext } from './ContextStor';
 
 export const App = () => {
-  const [favorites, setFavorites] = useLocalStorage<Products[]>(
-    'favorites',
-    [],
-  );
-  const [cart, setCart] = useLocalStorage<Products[]>('cart', []);
+  const { favorites, cart } = useAppContext();
 
   const [burgerMenu, setBurgerMenu] = useState(false);
 

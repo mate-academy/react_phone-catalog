@@ -7,9 +7,9 @@ import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 import { Products } from '../../types/products';
 import { Link, useLocation } from 'react-router-dom';
-import { useLocalStorage } from '../../LocaleStorage';
 import classNames from 'classnames';
 import { useWindowResize } from '../../useWindowSize';
+import { useAppContext } from '../../ContextStor';
 
 type Props = {
   type: 'Hot Prices' | 'Brand new models' | 'You may also like';
@@ -18,11 +18,7 @@ type Props = {
 export const BrandNewModelsHome: React.FC<Props> = ({ type }) => {
   const [width] = useWindowResize();
 
-  const [favorites, setFavorites] = useLocalStorage<Products[]>(
-    'favorites',
-    [],
-  );
-  const [cart, setCart] = useLocalStorage<Products[]>('cart', []);
+  const { favorites, cart, setCart, setFavorites } = useAppContext();
 
   const [models, setModels] = useState<Products[]>([]);
   const [sortedModels, setSortedModels] = useState<Products[]>([]);
