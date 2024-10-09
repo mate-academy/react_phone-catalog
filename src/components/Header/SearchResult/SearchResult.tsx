@@ -1,6 +1,14 @@
 import React from 'react';
 import { useAppDispatch, useAppSelector } from '../../../hooks/hookStore';
-import { ButtonsStyled, ImgStyled, NoResultStyled, PriceStyled, SearchItemsStyled, SearchListStyled, SearchResultStyled } from './styled';
+import {
+  ButtonsStyled,
+  ImgStyled,
+  NoResultStyled,
+  PriceStyled,
+  SearchItemsStyled,
+  SearchListStyled,
+  SearchResultStyled,
+} from './styled';
 import { Button } from '../../Button/Button';
 import { setIsFocused, setSearchValue } from '../../../features/core';
 import { useLocation, useNavigate, useSearchParams } from 'react-router-dom';
@@ -36,11 +44,7 @@ const SearchResult: React.FC = () => {
         return item.name
           .replace(/\s+/g, '')
           .toLowerCase()
-          .includes(
-            searchValue
-              .replace(/\s+/g, '')
-              .toLowerCase()
-          );
+          .includes(searchValue.replace(/\s+/g, '').toLowerCase());
       })
       .sort((a, b) => a.name.localeCompare(b.name));
   };
@@ -48,7 +52,7 @@ const SearchResult: React.FC = () => {
   const handleClearSearch = () => {
     dispatch(setSearchValue(''));
     dispatch(setIsFocused(false));
-  }
+  };
 
   const handleSearch = (path = 'phones') => {
     switch (pathname) {
@@ -78,35 +82,50 @@ const SearchResult: React.FC = () => {
     }
   };
 
-  const isProductPathname = pathname === '/phones' || pathname === '/tablets' || pathname === '/accessories';
+  const isProductPathname =
+    pathname === '/phones' ||
+    pathname === '/tablets' ||
+    pathname === '/accessories';
 
   return (
     <SearchResultStyled isActive={!!searchValue}>
-        {handleInputChange().length ? (
-          <SearchListStyled>
-            {handleInputChange().map((item) => (<SearchItemsStyled key={item.id}>
-              <ImgStyled src={item.image}/>
+      {handleInputChange().length ? (
+        <SearchListStyled>
+          {handleInputChange().map(item => (
+            <SearchItemsStyled key={item.id}>
+              <ImgStyled src={item.image} />
 
               {item.name}
 
               <PriceStyled>{`${item.price}$`}</PriceStyled>
-            </SearchItemsStyled>))}
-          </SearchListStyled>
-        ) : (
-          <NoResultStyled>No results...</NoResultStyled>
-        )}
+            </SearchItemsStyled>
+          ))}
+        </SearchListStyled>
+      ) : (
+        <NoResultStyled>No results...</NoResultStyled>
+      )}
 
       <ButtonsStyled>
         {!!isProductPathname ? (
-          <Button variant='dark' onFunc={handleSearch}>See all</Button>
+          <Button variant="dark" onFunc={handleSearch}>
+            See all
+          </Button>
         ) : (
           <>
-            <Button variant='dark' onFunc={() => handleSearch('phones')}>See phones</Button>
-            <Button variant='dark' onFunc={() => handleSearch('tablets')}>See tablets</Button>
-            <Button variant='dark' onFunc={() => handleSearch('accessories')}>See accesories</Button>
+            <Button variant="dark" onFunc={() => handleSearch('phones')}>
+              See phones
+            </Button>
+            <Button variant="dark" onFunc={() => handleSearch('tablets')}>
+              See tablets
+            </Button>
+            <Button variant="dark" onFunc={() => handleSearch('accessories')}>
+              See accesories
+            </Button>
           </>
         )}
-        <Button variant='white' onFunc={handleClearSearch}>Clear</Button>
+        <Button variant="white" onFunc={handleClearSearch}>
+          Clear
+        </Button>
       </ButtonsStyled>
     </SearchResultStyled>
   );

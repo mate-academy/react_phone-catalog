@@ -93,13 +93,13 @@ export const useProductPage = (
   });
 
   const productsUsed = searchParam
-  ? [...productsVariant].filter(item => {
-      return item.name
-        .replace(/\s+/g, '')
-        .toLowerCase()
-        .includes(searchParam.replace(/\s+/g, '').toLowerCase());
-    })
-  : [...productsVariant];
+    ? [...productsVariant].filter(item => {
+        return item.name
+          .replace(/\s+/g, '')
+          .toLowerCase()
+          .includes(searchParam.replace(/\s+/g, '').toLowerCase());
+      })
+    : [...productsVariant];
 
   const sortedAndPaginatedProducts = () => {
     const sortedProducts = [...productsUsed];

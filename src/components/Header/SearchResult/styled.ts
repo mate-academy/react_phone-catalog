@@ -3,7 +3,7 @@ import { media } from '../../../utils/const';
 
 type SearchResultType = {
   isActive: boolean;
-}
+};
 
 const SearchResultStyled = styled.div<SearchResultType>`
   position: absolute;
@@ -14,11 +14,11 @@ const SearchResultStyled = styled.div<SearchResultType>`
   right: 0;
   gap: 10px;
 
-  max-height: ${({ isActive }) => isActive ? '400px' : '0px'};
+  max-height: ${({ isActive }) => (isActive ? '400px' : '0px')};
   border: 1px solid ${({ theme }) => theme.buttonSecondBorder};
   background-color: ${({ theme }) => theme.bacgroundDefault};
 
-  opacity: ${({ isActive }) => isActive ? '1' : '0'};
+  opacity: ${({ isActive }) => (isActive ? '1' : '0')};
   box-shadow: 0 3px 5px 0 ${({ theme }) => theme.buttonHoverShadow};
 
   display: flex;
@@ -102,4 +102,4 @@ export {
   ImgStyled,
   PriceStyled,
   ButtonsStyled,
-}
+};

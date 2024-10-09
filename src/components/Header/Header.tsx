@@ -61,7 +61,7 @@ export const Header = () => {
     <HeaderStyled>
       <Link to="/">
         <LogoStyled>
-            <img alt="logo" src={variantLogo()} />
+          <img alt="logo" src={variantLogo()} />
         </LogoStyled>
       </Link>
 
