@@ -19,14 +19,6 @@ import {
 } from '../../api/products';
 import { ProductData } from '../../types/ProductData';
 
-const colorMap: Record<string, string> = {
-  'rose-gold': 'salmon',
-  'sky-blue': 'skyblue',
-  'space-gray': 'gray',
-  graphite: 'SaddleBrown',
-  sierrablue: 'CornflowerBlue',
-};
-
 export const ProductPage = () => {
   const [product, setProduct] = useState<ProductData | null>(null);
   const [products, setProducts] = useState<Product[]>([]);
@@ -37,12 +29,10 @@ export const ProductPage = () => {
   const { itemId } = useParams();
   const location = useLocation();
   const category = location.pathname.slice(1).split('/')[0];
-
-  const isInCart = cart.some((item: Product) => item.itemId === product?.id);
-  const isFavourite = favourite.some(
+  const isInCart = cart.find((item: Product) => item.itemId === product?.id);
+  const isFavourite = favourite.find(
     (item: Product) => item.itemId === product?.id,
   );
-
   const mayLike = products.filter(
     (item: Product) => item.category === product?.category,
   );
@@ -65,25 +55,25 @@ export const ProductPage = () => {
     }
 
     fetchCategory.then(response => {
-      const productToShow: ProductData | undefined = response.find(
+      const productToShow: ProductData = response.filter(
         (item: ProductData) => item.id === itemId,
-      );
+      )[0];
 
       setCategoryProducts(response);
-      setProduct(productToShow || null);
+      setProduct(productToShow);
     });
   }, [category, itemId]);
 
   const getColorLink = (color: string) => {
-    const productToLink = categoryProducts.find(
+    const productToLink: ProductData = categoryProducts.filter(
       (item: ProductData) =>
         item.color.replace(' ', '-') === color &&
         item.capacity === product?.capacity &&
         item.category === product?.category &&
         item.namespaceId === product?.namespaceId,
-    );
+    )[0];
 
-    return productToLink ? `/${product?.category}/${productToLink.id}` : '#';
+    return `/${product?.category}/${productToLink.id}`;
   };
 
   const getCapacityLink = (capacity: string) => {
@@ -91,31 +81,27 @@ export const ProductPage = () => {
   };
 
   const handleAddToCart = () => {
-    const good: Product | undefined = products.find(
-      (item: Product) => item.itemId === product?.id,
-    );
+    const good = products.filter(item => item.itemId === product?.id)[0];
 
-    if (good) {
-      if (isInCart) {
-        dispatch(cartSlice.actions.deleteFromCart(good));
-      } else {
-        dispatch(cartSlice.actions.addToCart(good));
-      }
+    if (isInCart) {
+      dispatch(cartSlice.actions.deleteFromCart(good));
+
+      return;
     }
+
+    dispatch(cartSlice.actions.addToCart(good));
   };
 
   const handleAddToFavourite = () => {
-    const good: Product | undefined = products.find(
-      (item: Product) => item.itemId === product?.id,
-    );
+    const good = products.filter(item => item.itemId === product?.id)[0];
 
-    if (good) {
-      if (isFavourite) {
-        dispatch(favouriteSlice.actions.removeFromFavourite(good));
-      } else {
-        dispatch(favouriteSlice.actions.addToFavourite(good));
-      }
+    if (isFavourite) {
+      dispatch(favouriteSlice.actions.removeFromFavourite(good));
+
+      return;
     }
+
+    dispatch(favouriteSlice.actions.addToFavourite(good));
   };
 
   const colorsAvailable = () => {
@@ -123,13 +109,19 @@ export const ProductPage = () => {
   };
 
   const getId = () => {
-    return (
-      products.find((item: Product) => item.itemId === product?.id)?.id ?? 0
-    );
+    return products.filter(item => item.itemId === product?.id)[0]?.id ?? 0;
+  };
+
+  const backgroundColors: { [key: string]: string } = {
+    'rose-gold': 'salmon',
+    'sky-blue': 'skyblue',
+    'space-gray': 'gray',
+    graphite: 'SaddleBrown',
+    sierrablue: 'CornflowerBlue',
   };
 
   const getBackgroundColor = (color: string) => {
-    return colorMap[color] || color;
+    return backgroundColors[color] || color;
   };
 
   return (
@@ -240,7 +232,7 @@ export const ProductPage = () => {
                 </li>
                 <li className="main-information__description__item">
                   <span className="main-information__description__item__name">
-                    RAM
+                    Ram
                   </span>
                   <span className="main-information__description__item__value">
                     {product.ram}
@@ -249,10 +241,70 @@ export const ProductPage = () => {
               </ul>
             </div>
           </div>
-          <Title level={HeadingLevel.h2}>You may also like</Title>
-          <ProductsSlider products={mayLike} />
+          <div className="product-description">
+            <div className="product-description__part">
+              <h3 className="product-description__part__title">About</h3>
+              <div className="divider"></div>
+              {product.description.map((info, index) => (
+                <div key={index}>
+                  <h4 className="product-description__part__subtitle">
+                    {info.title}
+                  </h4>
+                  {info.text.map((text, i) => (
+                    <p key={i} className="product-description__part__text">
+                      {text}
+                    </p>
+                  ))}
+                </div>
+              ))}
+            </div>
+            <div className="product-description__part">
+              <h3 className="product-description__part__title">Tech specs</h3>
+              <div className="divider"></div>
+              <div className="product-description__tech">
+                <div className="tech-info">
+                  <span className="tech-info__name">Screen</span>
+                  <span className="tech-info__value">{product.screen}</span>
+                </div>
+                <div className="tech-info">
+                  <span className="tech-info__name">Resolution</span>
+                  <span className="tech-info__value">{product.resolution}</span>
+                </div>
+                <div className="tech-info">
+                  <span className="tech-info__name">Processor</span>
+                  <span className="tech-info__value">{product.processor}</span>
+                </div>
+                <div className="tech-info">
+                  <span className="tech-info__name">RAM</span>
+                  <span className="tech-info__value">{product.ram}</span>
+                </div>
+                <div className="tech-info">
+                  <span className="tech-info__name">Built in memory</span>
+                  <span className="tech-info__value">{product.capacity}</span>
+                </div>
+                {product.camera && (
+                  <div className="tech-info">
+                    <span className="tech-info__name">Camera</span>
+                    <span className="tech-info__value">{product.camera}</span>
+                  </div>
+                )}
+                {product.zoom && (
+                  <div className="tech-info">
+                    <span className="tech-info__name">Zoom</span>
+                    <span className="tech-info__value">{product.zoom}</span>
+                  </div>
+                )}
+                <div className="tech-info">
+                  <span className="tech-info__name">Cell</span>
+                  <span className="tech-info__value">{product.cell}</span>
+                </div>
+              </div>
+            </div>
+          </div>
         </>
       )}
+      <Title level={HeadingLevel.h2}>You may also like</Title>
+      <ProductsSlider products={mayLike} />
     </main>
   );
 };
