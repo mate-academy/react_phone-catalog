@@ -2,14 +2,10 @@
 import React, { createContext, useContext, ReactNode } from 'react';
 import { useLocalStorage } from './LocaleStorage';
 
-interface FavoriteItem {
-  id: string;
-  name: string;
-}
 
 interface AppContextProps {
-  favorites: FavoriteItem[];
-  setFavorites: (favorites: FavoriteItem[]) => void;
+  favorites: any[];
+  setFavorites: (favorites: any[]) => void;
   cart: any[];
   setCart: (cart: any[]) => void;
 }
