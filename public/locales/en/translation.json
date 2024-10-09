@@ -29,5 +29,6 @@
   "NOT_TABLETS": "Sorry... There are no tablets yet... Go to tablets page?",
   "NOT_ACCESSORIES": "Sorry... There are no accessories yet... Go to accessories page?",
   "GO_BACK": "GO BACK",
-  "GO_HOME": "GO HOME PAGE"
+  "GO_HOME": "HOME PAGE",
+  "SEARCH_TEXT": "Enter search text!"
 }

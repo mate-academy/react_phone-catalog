@@ -58,18 +58,12 @@ const SelectFixSecond = styled.div`
   }
 `;
 
-const ProductListStyled = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(229px, 1fr));
-  gap: 40px 16px;
-  margin-top: 24px;
-`;
-
 const ProductsNotFound = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 20px;
+  text-align: center;
 
   font-size: 32px;
   line-height: 41px;
@@ -88,7 +82,6 @@ export {
   SelectsStyled,
   SelectFixInput,
   SelectFixSecond,
-  ProductListStyled,
   ProductsNotFound,
   NotFoundImg,
 };

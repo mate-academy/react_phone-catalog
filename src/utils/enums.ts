@@ -30,4 +30,5 @@ export enum StrCode {
   GoBack = 'GO_BACK',
   PageNotFound = 'PAGE_NOT_FOUND',
   GoHome = 'GO_HOME',
+  SearchText = 'SEARCH_TEXT',
 }

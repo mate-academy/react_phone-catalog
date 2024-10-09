@@ -1,19 +1,31 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { FormStyled, InputStyled, IconStyled } from './styled';
 import { SEARCH_SVG } from '../../../utils/SVG';
+import { useTranslation } from 'react-i18next';
+import { StrCode } from '../../../utils/enums';
+import { useAppDispatch, useAppSelector } from '../../../hooks/hookStore';
+import { setIsFocused, setSearchValue } from '../../../features/core';
 
 const SearchForm: React.FC = () => {
-  const [isFocused, setIsFocused] = useState(false);
   const inputRef = React.useRef<HTMLInputElement>(null);
+  const { t } = useTranslation();
+
+  const { searchValue } = useAppSelector(state => state.core);
+  const { isFocused } = useAppSelector(state => state.core);
+  const dispatch = useAppDispatch();
+
+  const handleChangeValue = (e: React.ChangeEvent<HTMLInputElement>) => {
+    dispatch(setSearchValue(e.target.value));
+  };
 
   const handleFocus = () => {
-    setIsFocused(true);
+    dispatch(setIsFocused(true));
     inputRef.current?.focus();
   };
 
   const handleBlur = () => {
     if (!inputRef.current?.value) {
-      setIsFocused(false);
+      dispatch(setIsFocused(false));
     }
   };
 
@@ -22,9 +34,11 @@ const SearchForm: React.FC = () => {
       <InputStyled
         type="text"
         ref={inputRef}
-        required
+        value={searchValue}
         isFocused={isFocused}
+        onChange={handleChangeValue}
         onBlur={handleBlur}
+        placeholder={t(StrCode.SearchText)}
       />
       <IconStyled className="fa fa-search" isFocused={isFocused}>
         <SEARCH_SVG />

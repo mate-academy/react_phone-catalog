@@ -50,6 +50,11 @@ const InfoBlockStyled = styled.ul`
     font-size: 12px;
     line-height: 11px;
     color: ${({ theme }) => theme.footerButton};
+    cursor: pointer;
+
+    &:hover {
+      color: ${({ theme }) => theme.buttonHoverBacground};
+    }
   }
 
   ${media.tablet} {
@@ -78,6 +83,10 @@ const GoTopStyled = styled.div`
 
   ${media.tablet} {
     width: auto;
+  }
+
+  &:hover {
+    color: ${({ theme }) => theme.textColor};
   }
 `;
 

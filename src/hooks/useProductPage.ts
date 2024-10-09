@@ -14,6 +14,7 @@ export const useProductPage = (
 
   const pageParam = searchParams.get('page') || 1;
   const perPageParam = searchParams.get('perPage') || '16';
+  const searchParam = searchParams.get('search');
 
   const sortParamObj = {
     age: t(StrCode.SortAge),
@@ -80,7 +81,7 @@ export const useProductPage = (
     setValuePerPage(value);
   };
 
-  const productsUsed = products.filter(item => {
+  const productsVariant = products.filter(item => {
     switch (variant) {
       case 'phones':
         return item.category === 'phones';
@@ -90,6 +91,15 @@ export const useProductPage = (
         return item.category === 'tablets';
     }
   });
+
+  const productsUsed = searchParam
+  ? [...productsVariant].filter(item => {
+      return item.name
+        .replace(/\s+/g, '')
+        .toLowerCase()
+        .includes(searchParam.replace(/\s+/g, '').toLowerCase());
+    })
+  : [...productsVariant];
 
   const sortedAndPaginatedProducts = () => {
     const sortedProducts = [...productsUsed];
@@ -130,9 +140,11 @@ export const useProductPage = (
 
   const sordedProduct = sortedAndPaginatedProducts();
   const productsLength = productsUsed.length;
+  const productsVariantLength = productsVariant.length;
 
   return {
     productsLength,
+    productsVariantLength,
     valueSort,
     updateSort,
     valuePerPage,

@@ -2,7 +2,6 @@ import BreadCrumbs from '../_shared/BreadCrumbs/BreadCrumbs';
 import {
   ModelsStyled,
   NotFoundImg,
-  ProductListStyled,
   ProductsNotFound,
   ProductsPageStyled,
   SelectFixInput,
@@ -13,11 +12,11 @@ import {
 import { useTranslation } from 'react-i18next';
 import { StrCode } from '../../utils/enums';
 import { SelectInput } from '../../components/Inputs/SelectInput/SelectInput';
-import ProductCard from '../_shared/productCard/ProductCard';
 import Pagination from './components/Pagination/Pagination';
 import { useProductPage } from '../../hooks/useProductPage';
 import { Button } from '../../components/Button/Button';
 import { useLocation, useNavigate } from 'react-router-dom';
+import ProductList from '../_shared/ProductList/ProductList';
 
 type Props = {
   variant: 'phones' | 'tabless' | 'accesories';
@@ -35,6 +34,7 @@ const ProductsPage: React.FC<Props> = ({ variant }) => {
   };
 
   const {
+    productsVariantLength,
     productsLength,
     valueSort,
     updateSort,
@@ -101,17 +101,12 @@ const ProductsPage: React.FC<Props> = ({ variant }) => {
           </SelectFixSecond>
         </SelectsStyled>
 
-        <ProductListStyled>
-          {productsLength !== 0
-            ? sordedProduct.map(item => (
-                <ProductCard key={item.id} variant="ListPage" product={item} />
-              ))
-            : [1, 2, 3, 4].map(item => (
-                <ProductCard variant="ListPage" key={item} />
-              ))}
-        </ProductListStyled>
+        <ProductList
+          productLength={productsVariantLength}
+          products={sordedProduct}
+        />
 
-        {productsLength !== 0 && sordedProduct.length === 0 && (
+        {productsVariantLength !== 0 && sordedProduct.length === 0 && (
           <ProductsNotFound>
             {productNoYet[variant]}
 

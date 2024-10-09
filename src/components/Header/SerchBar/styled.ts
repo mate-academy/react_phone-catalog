@@ -5,13 +5,12 @@ type Props = {
   isFocused: boolean;
 };
 
-const FormStyled = styled.form<Props>`
+const FormStyled = styled.div<Props>`
   position: absolute;
   right: 50px;
   width: ${({ isFocused }) => (isFocused ? '150px' : '48px')};
   height: 48px;
   background: ${({ theme }) => theme.bacgroundDefault};
-  cursor: pointer;
   z-index: 3;
 
   display: flex;
@@ -63,6 +62,7 @@ const IconStyled = styled.div<Props>`
   border-radius: 4px;
   background: ${({ isFocused, theme }) =>
     isFocused ? theme.textColor : theme.bacgroundDefault};
+  cursor: pointer;
 
   display: flex;
   justify-content: center;

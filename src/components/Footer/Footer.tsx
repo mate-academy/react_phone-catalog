@@ -16,6 +16,7 @@ import { themeMap, useTheme } from '../Themes/ThemeProvider';
 import i18n from 'i18next';
 import { StrCode } from '../../utils/enums';
 import { useTranslation } from 'react-i18next';
+import { Link } from 'react-router-dom';
 
 const scrollToTop = () => {
   window.scrollTo({
@@ -61,7 +62,9 @@ export const Footer = () => {
   return (
     <ContainerStyled>
       <FooterStyled>
-        <LogoImgStyled src={variantLogo()} alt="logo" />
+        <Link to="/">
+          <LogoImgStyled src={variantLogo()} alt="logo" />
+        </Link>
 
         <InfoBlockStyled>
           <li>Github</li>
