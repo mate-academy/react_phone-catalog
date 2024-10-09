@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import { HeadingLevel } from '../../types/HeadingLevel';
 import { Title } from '../../components/Title';
 import { BackButton } from '../../components/BackButton';
@@ -14,6 +15,7 @@ export const CartPage = () => {
     (a: Product, b: Product) => a.price - b.price,
   );
   const itemsCount = productsInCart.length;
+
   const productsToShow = productsInCart.reduce(
     (acc: CartProduct[], product) => {
       const existingProduct = acc.find(
@@ -30,6 +32,7 @@ export const CartPage = () => {
     },
     [],
   );
+
   const totalPrice = productsInCart.reduce((acc, item: Product) => {
     return acc + item.price;
   }, 0);
@@ -77,7 +80,6 @@ export const CartPage = () => {
                 >
                   <img src="./img/icons/minus.svg" alt="Minus" />
                 </div>
-                {/* eslint-disable-next-line max-len */}
                 <span className="quantity-counter__item quantity-counter__count">
                   {product.amount}
                 </span>
