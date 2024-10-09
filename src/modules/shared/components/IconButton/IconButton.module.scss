@@ -5,6 +5,9 @@
 }
 
 .Icon {
+  display: block;
+  margin: auto;
+
   @include color-transition((color: var(--primary-text-color)));
 }
 

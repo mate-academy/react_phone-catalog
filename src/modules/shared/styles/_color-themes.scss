@@ -4,7 +4,6 @@ $bright-icons-color: #B4BDC3;
 $bright-elements-color: #E2E6E9;
 $bright-hover-color: #FAFBFC;
 $bright-white-color: #FFF;
-$bright-green-color: #27AE60;
 $bright-button-shadow: 0 3px 13px 0 #17203166;
 $dark-secondary-color: #75767F;
 $dark-icons-color: #4A4D58;
@@ -15,6 +14,8 @@ $dark-black-color: #0F1121;
 $dark-white-color: #F1F2F9;
 $dark-accent-color: #905BFF;
 $dark-light-accent-color: #A378FF;
+$green-color: #27AE60;
+$red-color: #EB5757;
 
 :root {
   --background-color: #{$bright-white-color};
@@ -23,12 +24,14 @@ $dark-light-accent-color: #A378FF;
   --icon-color: #{$bright-primary-color};
   --element-color: #{$bright-elements-color};
   --active-color: #{$bright-primary-color};
+  --loading-color: #{$bright-icons-color};
+  --loading-gradient-color: #{$bright-elements-color};
   --footer-text-color: #{$bright-secondary-color};
   --button-color: #{$bright-primary-color};
   --button-text-color: #{$bright-white-color};
   --button-hover-color: #{$bright-primary-color};
   --button-active-color: #{$bright-white-color};
-  --button-active-text-color: #{$bright-green-color};
+  --button-active-text-color: #{$green-color};
   --button-active-border-color: #{$bright-elements-color};
   --button-shadow: #{$bright-button-shadow};
   --icon-button-color: #{$bright-white-color};
@@ -53,6 +56,9 @@ $dark-light-accent-color: #A378FF;
   --dropdown-arrow-color: #{$bright-icons-color};
   --dropdown-arrow-hover-color: #{$bright-icons-color};
   --dropdown-option-hover-color: #{$bright-hover-color};
+  --error-color: #{$red-color};
+  --error-background-color: #{$bright-secondary-color};
+  --error-reload-color: #{$bright-primary-color};
 }
 
 [theme='dark'] {
@@ -62,6 +68,8 @@ $dark-light-accent-color: #A378FF;
   --icon-color: #{$dark-white-color};
   --element-color: #{$dark-elements-color};
   --active-color: #{$dark-white-color};
+  --loading-color: #{$dark-icons-color};
+  --loading-gradient-color: #{$dark-secondary-color};
   --footer-text-color: #{$dark-white-color};
   --button-color: #{$dark-accent-color};
   --button-text-color: #{$dark-white-color};
@@ -92,4 +100,7 @@ $dark-light-accent-color: #A378FF;
   --dropdown-arrow-color: #{$dark-secondary-color};
   --dropdown-arrow-hover-color: #{$dark-icons-color};
   --dropdown-option-hover-color: #{$dark-surface2-color};
+  --error-color: #{$red-color};
+  --error-background-color: #{$dark-surface2-color};
+  --error-reload-color: #{$dark-black-color};
 }

@@ -1,0 +1,88 @@
+@use "../../../shared/styles/mixins" as *;
+
+.SwipeButton {
+  min-height: 100%;
+
+  &:nth-child(3) {
+    justify-self: end;
+  }
+
+  @include for-mobile {
+    display: none;
+  }
+}
+
+.DashLabel {
+  @include visually-hidden-focusable;
+}
+
+.Dash {
+  display: block;
+
+  width: 14px;
+  height: 4px;
+  padding: 0;
+  border: none;
+
+  @include color-transition((background-color: var(--loading-color)));
+}
+
+.Dashes {
+  @include full-grid-width;
+
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+}
+
+.PictureSlide {
+  height: 400px;
+  width: 75%;
+  margin: auto;
+  border-radius: 20px;
+
+  @include color-transition((background-color: var(--loading-color)));
+
+  @include for-tablet {
+    height: 189px;
+  }
+
+  @include for-mobile {
+    height: 75%;
+    width: 100%;
+  }
+}
+
+.List {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.Wrapper {
+  grid-column: 2 / -2;
+  background-color: black;
+
+  @include for-mobile {
+    @include full-grid-width;
+
+    aspect-ratio: 1;
+  }
+}
+
+.PicturesSliderSkeleton {
+  @include child-grid;
+
+  row-gap: 18px;
+  position: relative;
+
+  &_loading {
+    & .PictureSlide {
+      @include loading;
+    }
+
+    & .Dash {
+      @include loading;
+    }
+  }
+}

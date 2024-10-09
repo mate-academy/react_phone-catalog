@@ -1,3 +1,9 @@
+export enum LoadingStatus {
+  Success = 'Success',
+  Loading = 'Loading',
+  Error = 'Error',
+}
+
 export enum MenuLinkSVGOption {
   Settings = 'Settings',
   Heart = 'Heart',

@@ -10,10 +10,10 @@ type HandleClick = () => void;
 
 type Props = {
   svgOption: IconButtonSVGOption;
-  onClick: HandleClick;
   disabled?: boolean;
   label?: string;
   className?: string;
+  onClick?: HandleClick;
 };
 
 export const IconButton: React.FC<Props> = ({

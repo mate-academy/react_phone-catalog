@@ -56,3 +56,9 @@ export const getMenuLinkSVG = (
       throw new Error('Menu link SVG option is not valid!!!');
   }
 };
+
+export function wait(delay: number) {
+  return new Promise(resolve => {
+    setTimeout(resolve, delay);
+  });
+} //Delete!!!
