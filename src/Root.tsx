@@ -1,6 +1,6 @@
 import { App } from './App';
 import {
-  BrowserRouter as Router,
+  HashRouter as Router,
   Routes,
   Route,
   Navigate,
