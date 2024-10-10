@@ -1,0 +1,45 @@
+@import '../../styles/main';
+
+.accessoriesPage {
+  width: 100%;
+  height: 100%;
+
+  &__title {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 24px;
+
+    &-text {
+      font-family: Mont, sans-serif;
+      font-weight: 800;
+      font-size: 32px;
+      line-height: 41px;
+      letter-spacing: -1%;
+      color: var(--text-color);
+    }
+
+    &-count {
+      font-family: Mont, sans-serif;
+      font-weight: 600;
+      font-size: 14px;
+      line-height: 21px;
+      color: var(--secondary-color);
+    }
+  }
+
+  &__dropdownBox {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    gap: 16px;
+    margin-top: 32px;
+
+    @include on-tablet {
+      justify-content: left;
+      margin-top: 40px;
+    }
+  }
+}
