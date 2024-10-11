@@ -27,6 +27,8 @@
   "accessCollapse": "Zwiń",
   "accessNext": "Następny",
   "accessPrevious": "Poprzedni",
+  "accessLoadingProducts": "Przycisk jest wyłączony, produkty się ładują",
+  "accessLoadingProductsFailed": "Przycisk jest wyłączony, produkty nie mogły się załadować",
   "wrong": "Coś poszło nie tak!",
   "error": "Błąd:",
   "accessReload": "Przeładuj",

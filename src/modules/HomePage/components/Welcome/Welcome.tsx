@@ -3,7 +3,7 @@ import { useCallback, useEffect, useState } from 'react';
 import { useLanguage } from '../../../shared/components/Contexts/LanguageContext';
 import { Picture } from '../../types/types';
 import { PicturesSlider } from '../PicturesSlider';
-import { translateItem } from '../../../shared/functions/functions';
+import { translateItem, wait } from '../../../shared/functions/functions';
 import styles from './Welcome.module.scss';
 import { PicturesSliderSkeleton } from '../PicturesSliderSkeleton';
 import { LoadingStatus } from '../../../shared/types/enums';
@@ -25,6 +25,7 @@ export const Welcome: React.FC = () => {
     setResponseStatus(undefined);
 
     try {
+      await wait(1000);
       const response = await fetch('api/banners.json');
 
       if (!response.ok) {

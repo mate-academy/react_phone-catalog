@@ -99,11 +99,11 @@ $select-shift: 15px + $dropdown-gap;
   }
 
   &:hover:has(> .Options:not(:hover)) {
-    & > .Select {
+    > .Select {
       border-color: var(--dropdown-border-hover-color);
     }
 
-    & .Arrow {
+    .Arrow {
       color: var(--dropdown-arrow-hover-color);
     }
   }

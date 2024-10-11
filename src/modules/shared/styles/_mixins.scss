@@ -122,13 +122,14 @@
 }
 
 @mixin loading {
-  background: linear-gradient(110deg, var(--loading-color) 8%, var(--loading-gradient-color) 18%, var(--loading-color) 33%);
+  background: linear-gradient(100deg, var(--loading-color) 40%, var(--loading-gradient-color) 50%, var(--loading-color) 60%);
   background-size: 200% 100%;
+  background-position-x: 180%;
   animation: 1.5s shine linear infinite;
 }
 
 @keyframes shine {
   to {
-    background-position-x: -200%;
+    background-position-x: -20%;
   }
 }

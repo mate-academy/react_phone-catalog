@@ -16,9 +16,6 @@ $card-gap: 8px;
   padding: $card-padding $card-padding calc($card-gap + $button-height + $card-padding);
   border: $card-border-width solid;
 
-  text-decoration: none;
-  cursor: inherit;
-
   @include color-transition((
     background-color: var(--product-card-color),
     border-color: var(--product-card-border-color)
@@ -27,45 +24,27 @@ $card-gap: 8px;
 
 .Image {
   flex-grow: 1;
-  min-height: 0;
-  object-fit: contain;
+  border-radius: 10px;
+
+  @include color-transition((background-color: var(--loading-color)));
 }
 
 .Title {
   padding-top: 16px;
+  height: 1lh;
+  border-radius: 10px;
 
+  @include color-transition((background-color: var(--loading-color)));
   @extend %body-text;
-  @include color-transition((color: var(--primary-text-color)));
 }
 
-.Price {
-  padding-right: 8px;
+.Prices {
+  height: 1lh;
+  width: 60%;
+  border-radius: 10px;
 
   @extend %h3;
-  @include color-transition((color: var(--primary-text-color)));
-}
-
-.Discount {
-  position: relative;
-  text-decoration: none;
-
-  @extend %discount;
-  @include color-transition((color: var(--secondary-text-color)));
-
-  &::after {
-    content: attr(data-content);
-
-    position: absolute;
-    right: 0;
-
-    clip-path: inset(48% 0 48% 0);
-
-    @extend %discount;
-    @include color-transition((
-      background-color: var(--secondary-text-color),
-      color: var(--product-card-color)
-    ));
-  }
+  @include color-transition((background-color: var(--loading-color)));
 }
 
 .Line {
@@ -95,13 +74,21 @@ $card-gap: 8px;
 }
 
 .ParameterName {
+  height: 1lh;
+  width: 40%;
+  border-radius: 10px;
+
   @extend %small-text;
-  @include color-transition((color: var(--secondary-text-color)));
+  @include color-transition((background-color: var(--loading-color)));
 }
 
 .ParameterValue {
+  height: 1lh;
+  width: 25%;
+  border-radius: 10px;
+
   @extend %parameter-value;
-  @include color-transition((color: var(--primary-text-color)));
+  @include color-transition((background-color: var(--loading-color)));
 }
 
 .Buttons {
@@ -113,21 +100,32 @@ $card-gap: 8px;
   padding: 0 $card-padding;
 }
 
-.AddToCartButton {
+.ButtonLabel {
+  @include visually-hidden-focusable;
+}
+
+.Button {
+  border: none;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+
+  @include color-transition((background-color: var(--loading-color)));
+}
+
+.AddToCart {
   flex-grow: 1;
-  cursor: inherit;
 }
 
-.FavouriteButton {
+.AddToFavourite {
   height: $button-height;
-  cursor: inherit;
+  aspect-ratio: 1;
 }
 
-.ProductCard {
-  cursor: pointer;
-
-  &:hover > .Card {
-    border-color: var(--product-card-border-hover-color);
-    box-shadow: 0 2px 16px 0 #0000001A;
+.ProductCardSkeleton {
+  &_loading {
+    .Image, .Title, .Prices, .ParameterName, .ParameterValue, .Button {
+      @include loading;
+    }
   }
 }

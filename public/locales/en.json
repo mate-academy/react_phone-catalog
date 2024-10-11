@@ -27,6 +27,8 @@
   "accessCollapse": "Collapse",
   "accessNext": "Next",
   "accessPrevious": "Previous",
+  "accessLoadingProducts": "Button is disabled, products are loading",
+  "accessLoadingProductsFailed": "Button is disabled, products could not load",
   "wrong": "Something went wrong!",
   "error": "Error:",
   "accessReload": "Reload",

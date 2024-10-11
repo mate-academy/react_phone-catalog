@@ -1,0 +1,87 @@
+@use "../../../shared/styles/vars" as *;
+@use "../../../shared/styles/mixins" as *;
+@use "../../../shared/styles/extends";
+
+@function get-column-width($columns-amount) {
+  @return calc((100% - $grid-gap * ($columns-amount - 1)) / $columns-amount)
+};
+
+.Header {
+  @include full-grid-width;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+}
+
+.Title {
+  @extend %h2;
+  @include color-transition((color: var(--primary-text-color)));
+}
+
+.Buttons {
+  display: flex;
+  gap: 16px;
+}
+
+.Wrapper {
+  @include full-grid-width;
+}
+
+.List {
+  display: grid;
+  grid-gap: $grid-gap;
+  grid-auto-flow: column;
+  grid-auto-columns: get-column-width($desktop-grid-columns-amount);
+
+  overflow-x: hidden;
+
+  @include for-tablet {
+    grid-auto-columns: get-column-width($tablet-grid-columns-amount);
+    margin: 0 (-$tablet-grid-margin);
+    padding: 0 $tablet-grid-margin;
+  }
+
+  @include for-mobile {
+    grid-auto-columns: get-column-width($mobile-grid-columns-amount);
+    margin: 0 (-$mobile-grid-margin);
+    padding: 0 $mobile-grid-margin;
+  }
+}
+
+.Item {
+  grid-column: span 6;
+  height: 506px;
+
+  @include for-tablet {
+    grid-column: span 5;
+    height: 512px;
+  }
+
+  @include for-mobile {
+    grid-column: span 3;
+    height: 439px;
+  }
+}
+
+.ProductCard {
+  height: 100%;
+}
+
+.ProductsSliderSkeleton {
+  @include grid;
+
+  position: relative;
+  align-items: center;
+  row-gap: 24px;
+  padding-top: 80px;
+
+  @include for-tablet {
+    padding-top: 64px;
+  }
+
+  @include for-mobile {
+    padding-top: 56px;
+  }
+}

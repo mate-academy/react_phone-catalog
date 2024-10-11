@@ -17,14 +17,9 @@ enum DisabledButton {
 type Props = {
   title: string;
   products: Product[];
-  className?: string;
 };
 
-export const ProductsSlider: React.FC<Props> = ({
-  title,
-  products,
-  className,
-}) => {
+export const ProductsSlider: React.FC<Props> = ({ title, products }) => {
   const { accessPrevious, accessNext } = useLanguage().localeTexts;
   const [isDragged, setIsDragged] = useState(false);
   const [isClicked, setIsClicked] = useState(true);
@@ -51,13 +46,13 @@ export const ProductsSlider: React.FC<Props> = ({
 
   const buttonSwipe = (next: boolean) => {
     const list = listRef.current;
+    const item = list?.firstElementChild;
 
-    if (list && list.firstElementChild) {
+    if (item) {
       const listStyles = getComputedStyle(list);
       const gap = parseFloat(listStyles.gap);
       const listWidth = parseFloat(listStyles.width);
-      const productCardWidth =
-        parseFloat(getComputedStyle(list.firstElementChild).width) || 0;
+      const productCardWidth = parseFloat(getComputedStyle(item).width) || 0;
 
       const padding = (list.clientWidth - listWidth) / 2;
       const restOfListWidth = listWidth + padding;
@@ -133,7 +128,6 @@ export const ProductsSlider: React.FC<Props> = ({
       className={classNames(
         styles.ProductsSlider,
         isDragged && styles.ProductsSlider_dragged,
-        className,
       )}
     >
       <header className={styles.Header}>
@@ -166,7 +160,6 @@ export const ProductsSlider: React.FC<Props> = ({
           {products.map(product => (
             <li key={product.id} className={styles.Item}>
               <ProductCard
-                key={product.id}
                 product={product}
                 isClicked={isClicked}
                 draggable={false}
