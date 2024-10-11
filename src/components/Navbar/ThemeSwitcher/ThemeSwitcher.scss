@@ -1,0 +1,18 @@
+.theme-switcher {
+  cursor: pointer;
+  width: 32px;
+  height: 32px;
+  margin: 4px;
+  border-radius: 4px;
+  border: none;
+  background-color: var(--background-color-nav-bar);
+  background-image: var(--theme);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  &:hover {
+    background-color: var(--border-color-switcher);
+    background-image: url(../../../icons/hover.svg);
+  }
+}

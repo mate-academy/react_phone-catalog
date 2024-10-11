@@ -1,0 +1,15 @@
+@import '../../../mixins';
+
+.images {
+  &__conteiner {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    grid-column: 1 / 3;
+
+    @include on-tablet {
+      flex-direction: column;
+    }
+  }
+}
+

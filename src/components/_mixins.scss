@@ -1,0 +1,80 @@
+$tablet-min-width: 639px;
+$desktop-min-width: 1199px;
+
+@mixin hover($_property, $_toValue) {
+  transition: #{$_property} 0.3s;
+  &:hover {
+    #{$_property}: $_toValue;
+  }
+}
+
+@mixin on-tablet {
+  @media(min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media(min-width: $desktop-min-width) {
+    @content;
+  }
+}
+
+@mixin page-grid {
+  --colums: 4;
+
+  display: grid;
+  column-gap: 16px;
+  grid-template-columns: repeat(var(--colums), 1fr);
+
+  @include on-tablet {
+    --colums: 12;
+
+    column-gap: 16px;
+  }
+
+  @include on-desktop {
+    grid-template-columns: repeat(24, 32px);
+    column-gap: 16px;
+    margin: 0 auto;
+  }
+}
+
+@mixin contest-pading-inline() {
+  padding-inline: 16px;
+
+  @include on-tablet {
+    padding-inline: 24px;
+  }
+
+  @include on-desktop {
+    max-width: 1136px;
+    margin-inline: auto;
+    padding-inline: 0;
+  }
+}
+
+.container {
+  @include contest-pading-inline;
+}
+
+@mixin underline-hover($color: #F86800, $thickness: 1px, $transitionTime: 0.3s) {
+  position: relative;
+  display: inline-block;
+  padding-bottom: 5px;
+
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: $thickness;
+    background-color: $color;
+    transition: width $transitionTime ease;
+  }
+
+  &:hover::after {
+    width: 100%;
+  }
+}

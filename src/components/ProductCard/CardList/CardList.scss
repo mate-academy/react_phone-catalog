@@ -1,0 +1,7 @@
+@import '../../mixins';
+
+.card__list {
+  @include page-grid;
+
+  row-gap: 40px;
+}

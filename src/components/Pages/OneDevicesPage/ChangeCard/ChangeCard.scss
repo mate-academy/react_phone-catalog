@@ -1,0 +1,82 @@
+@import '../../../mixins';
+
+.change-card {
+
+  &__block {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding-bottom: 24px;
+    margin-bottom: 24px;
+    border-bottom: 1px solid var(--border-color-page-section);
+
+    &__content {
+      display: flex;
+      flex-direction: row;
+      gap: 8px;
+    }
+  }
+
+  &__text {
+    color: var(--text-color-tech-title);
+  }
+
+  &__price-buttons {
+    margin: 8px 0 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+}
+
+.color {
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  border: 2px solid var(--border-color-circle);
+  background-color: inherit;
+  position: relative;
+  z-index: 1;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: -3px;
+    border-radius: 50%;
+    border: 1px solid var(--border-color-circle-big);
+    z-index: -1;
+  }
+
+  &:hover::before {
+    border: 1px solid var(--border-color-circle-big-hover);
+  }
+
+  &--active {
+    &::before {
+      border: 1px solid var(--border-color-circle-big-active);
+    }
+  }
+
+  &__block {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+  }
+}
+
+.capacity {
+  color: var(--text-color-capacity);
+  background-color: var(--background-color-capacity);
+  border-radius: var(border-radius-capacity);
+  border: 1px solid var(--border-color-capacity);
+  padding: 7px 8px 4px;
+
+  @include hover(transform, scale(1.05));
+
+  &--active {
+    color: var(--text-color-capacity-active);
+    background-color: var(--background-color-capacity-active);
+    border: 1px solid var(--background-color-capacity-active);
+  }
+}

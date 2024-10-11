@@ -1,0 +1,86 @@
+@import 'mixins';
+@import '../fonts';
+
+.text--h1 {
+  font-family: Monte, sans-serif;
+  font-size: 32px;
+  font-weight: 800;
+  line-height: 41px;
+  text-align: left;
+  letter-spacing: -1%;
+  margin: 0;
+  color: var(--text-color);
+
+  @include on-tablet {
+    font-size: 48px;
+    line-height: 56px;
+  }
+}
+
+.text--h2 {
+  font-family: Monte, sans-serif;
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 31px;
+  text-align: left;
+  letter-spacing: 0;
+  margin: 0;
+  color: var(--text-color);
+
+  @include on-tablet {
+    font-size: 32px;
+    line-height: 41px;
+  }
+}
+
+.text--h3 {
+  font-family: Monte, sans-serif;
+  font-size: 20px;
+  font-weight: 800;
+  line-height: 26px;
+  text-align: left;
+  letter-spacing: 0;
+  margin: 0;
+  color: var(--text-color);
+
+  @include on-tablet {
+    font-size: 22px;
+    line-height: 31px;
+  }
+}
+
+.text--h4 {
+  font-family: Monte-SemiBold, sans-serif;
+  font-size: 16px;
+  font-weight: 800;
+  line-height: 20px;
+  text-align: left;
+  letter-spacing: 0;
+  margin: 0;
+  color: var(--text-color);
+
+  @include on-tablet {
+    font-size: 20px;
+    line-height: 26px;
+  }
+}
+
+.text--body {
+  font-family: Monte-Regular, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 21px;
+  text-align: left;
+  letter-spacing: 0;
+  margin: 0;
+}
+
+.text--small {
+  font-family: Monte, sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 16px;
+  text-align: left;
+  letter-spacing: 0;
+  margin: 0;
+}
