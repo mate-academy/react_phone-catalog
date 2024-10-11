@@ -30,5 +30,13 @@
   "NOT_ACCESSORIES": "Sorry... There are no accessories yet... Go to accessories page?",
   "GO_BACK": "GO BACK",
   "GO_HOME": "HOME PAGE",
-  "SEARCH_TEXT": "Enter search text!"
+  "SEARCH_TEXT": "Enter search text!",
+  "FAVOURITES": "Favourites",
+  "NO_SEARCH": "No search results...",
+  "SEE_ALL": "Search",
+  "SEE_PHONES": "See phones",
+  "SEE_TABLETS": "See tablets",
+  "SEE_ACCESORIES": "See accesories",
+  "CLEAR": "Clear",
+  "NOT_FAVOURITES": "There are no favourites yet..."
 }

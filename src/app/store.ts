@@ -23,10 +23,7 @@ const persistConfig = {
   key: 'root-config',
   storage,
   blacklist: [],
-  whitelist: [
-    'backets',
-    'favorit'
-  ],
+  whitelist: ['backets', 'favorit'],
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

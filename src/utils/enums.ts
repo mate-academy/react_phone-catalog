@@ -31,4 +31,12 @@ export enum StrCode {
   PageNotFound = 'PAGE_NOT_FOUND',
   GoHome = 'GO_HOME',
   SearchText = 'SEARCH_TEXT',
+  Favourites = 'FAVOURITES',
+  NotSearch = 'NO_SEARCH',
+  SeeAll = 'SEE_ALL',
+  SeePhones = 'SEE_PHONES',
+  SeeTablets = 'SEE_TABLETS',
+  SeeAccesories = 'SEE_ACCESORIES',
+  Clear = 'CLEAR',
+  NotFavourites = 'NOT_FAVOURITES',
 }

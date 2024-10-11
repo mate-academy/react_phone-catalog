@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { media } from '../../../utils/const';
 
 type SearchResultType = {
@@ -13,8 +13,9 @@ const SearchResultStyled = styled.div<SearchResultType>`
   max-width: 500px;
   right: 0;
   gap: 10px;
+  min-width: 286px;
 
-  max-height: ${({ isActive }) => (isActive ? '400px' : '0px')};
+  height: ${({ isActive }) => (isActive ? '400px' : '0px')};
   border: 1px solid ${({ theme }) => theme.buttonSecondBorder};
   background-color: ${({ theme }) => theme.bacgroundDefault};
 
@@ -27,6 +28,14 @@ const SearchResultStyled = styled.div<SearchResultType>`
   ${media.desktop} {
     top: 69px;
   }
+
+  ${({ isActive }) =>
+    !isActive &&
+    css`
+      & * {
+        display: none !important;
+      }
+    `}
 `;
 
 const SearchListStyled = styled.ul`
@@ -46,6 +55,23 @@ const NoResultStyled = styled.div`
   line-height: 41px;
   color: #313237;
   padding: 30px 30px 10px;
+  height: 266px;
+
+  display: flex;
+  flex-direction: column;
+
+  ${media.tablet} {
+    height: 319px;
+  }
+
+  & * {
+    max-height: 185px;
+    object-fit: contain;
+
+    ${media.tablet} {
+      max-height: 238px;
+    }
+  }
 `;
 
 const SearchItemsStyled = styled.li`

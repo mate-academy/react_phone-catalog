@@ -27,12 +27,16 @@ const scrollToTop = () => {
 
 export const Footer = () => {
   const { theme, setTheme } = useTheme();
-  const valueLanguage = localStorage.getItem('valueLanguage') as 'English' | 'Українська';
-  const [value2, setValue2] = useState<'English' | 'Українська'>(valueLanguage || 'English');
+  const valueLanguage = localStorage.getItem('valueLanguage') as
+    | 'English'
+    | 'Українська';
+  const [value2, setValue2] = useState<'English' | 'Українська'>(
+    valueLanguage || 'English',
+  );
   const themeKeys = Object.keys(themeMap) as Array<keyof typeof themeMap>;
   const { t } = useTranslation();
 
-  const setLanguage = (name: "English" | "Українська") => {
+  const setLanguage = (name: 'English' | 'Українська') => {
     setValue2(name);
     localStorage.setItem('valueLanguage', name);
   };

@@ -34,8 +34,12 @@ const ModelsStyled = styled.div`
   margin-bottom: 32px;
 `;
 
-export {
-  FavoritePageStyled,
-  TitleStyled,
-  ModelsStyled,
-}
+const NotFoundStyled = styled.div`
+  font-size: 32px;
+  line-height: 41px;
+  margin-top: 20px;
+
+  color: ${({ theme }) => theme.textColor};
+`;
+
+export { FavoritePageStyled, TitleStyled, ModelsStyled, NotFoundStyled };

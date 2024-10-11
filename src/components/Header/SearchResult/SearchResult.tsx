@@ -12,6 +12,8 @@ import {
 import { Button } from '../../Button/Button';
 import { setIsFocused, setSearchValue } from '../../../features/core';
 import { useLocation, useNavigate, useSearchParams } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
+import { StrCode } from '../../../utils/enums';
 
 const SearchResult: React.FC = () => {
   const { products } = useAppSelector(state => state.products);
@@ -19,6 +21,7 @@ const SearchResult: React.FC = () => {
   const dispatch = useAppDispatch();
   const { pathname } = useLocation();
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   const [searchParams, setSearchParams] = useSearchParams();
 
@@ -102,29 +105,32 @@ const SearchResult: React.FC = () => {
           ))}
         </SearchListStyled>
       ) : (
-        <NoResultStyled>No results...</NoResultStyled>
+        <NoResultStyled>
+          {t(StrCode.NotSearch)}
+          <img src="/img/product-not-found.png" />
+        </NoResultStyled>
       )}
 
       <ButtonsStyled>
         {!!isProductPathname ? (
           <Button variant="dark" onFunc={handleSearch}>
-            See all
+            {t(StrCode.SeeAll)}
           </Button>
         ) : (
           <>
             <Button variant="dark" onFunc={() => handleSearch('phones')}>
-              See phones
+              {t(StrCode.SeePhones)}
             </Button>
             <Button variant="dark" onFunc={() => handleSearch('tablets')}>
-              See tablets
+              {t(StrCode.SeeTablets)}
             </Button>
             <Button variant="dark" onFunc={() => handleSearch('accessories')}>
-              See accesories
+              {t(StrCode.SeeAccesories)}
             </Button>
           </>
         )}
         <Button variant="white" onFunc={handleClearSearch}>
-          Clear
+          {t(StrCode.Clear)}
         </Button>
       </ButtonsStyled>
     </SearchResultStyled>

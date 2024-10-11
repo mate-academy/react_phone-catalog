@@ -11,29 +11,39 @@ import { startTransition } from 'react';
 
 export const Root = () => {
   const handleLoad = () => {
-    startTransition(() => {
-    });
+    startTransition(() => {});
   };
 
   return (
-  <Provider store={store}>
-    <PersistGate loading={null} persistor={persistor} onBeforeLift={handleLoad}>
-      <HashRouter>
-        <Routes>
-          <Route path="/" element={<App />}>
-            <Route index element={<HomePage />} />
-            <Route path="phones" element={<ProductsPage variant="phones" />} />
-            <Route path="tablets" element={<ProductsPage variant="tabless" />} />
-            <Route
-              path="accessories"
-              element={<ProductsPage variant="accesories" />}
-            />
-            <Route path="cart" element={<></>} />
-            <Route path="favorites" element={<FavoritePage />} />
-            <Route path="*" element={<PageNotFound />} />
-          </Route>
-        </Routes>
-      </HashRouter>
-    </PersistGate>
-  </Provider>
-)};
+    <Provider store={store}>
+      <PersistGate
+        loading={null}
+        persistor={persistor}
+        onBeforeLift={handleLoad}
+      >
+        <HashRouter>
+          <Routes>
+            <Route path="/" element={<App />}>
+              <Route index element={<HomePage />} />
+              <Route
+                path="phones"
+                element={<ProductsPage variant="phones" />}
+              />
+              <Route
+                path="tablets"
+                element={<ProductsPage variant="tabless" />}
+              />
+              <Route
+                path="accessories"
+                element={<ProductsPage variant="accesories" />}
+              />
+              <Route path="cart" element={<></>} />
+              <Route path="favorites" element={<FavoritePage />} />
+              <Route path="*" element={<PageNotFound />} />
+            </Route>
+          </Routes>
+        </HashRouter>
+      </PersistGate>
+    </Provider>
+  );
+};

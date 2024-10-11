@@ -35,7 +35,9 @@ const ProductCard: React.FC<Props> = ({ variant, product }) => {
       return;
     }
 
-    dispatch(addBacketId(product.itemId));
+    if (!backetsId.includes(product.itemId)) {
+      dispatch(addBacketId(product.itemId));
+    }
   };
 
   const handleToFavorit = () => {
@@ -107,7 +109,7 @@ const ProductCard: React.FC<Props> = ({ variant, product }) => {
 
             <Button
               variant={includesFavorit() ? 'disabled' : 'white'}
-              css="width: 40px; flex-shrink: 0;"
+              css="width: 40px; flex-shrink: 0; cursor: pointer;"
               onFunc={handleToFavorit}
             >
               {includesFavorit() ? <FAVORIT_SVG /> : <LIKE_SVG />}
