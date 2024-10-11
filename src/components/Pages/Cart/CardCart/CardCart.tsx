@@ -14,7 +14,6 @@ type Props = {
 
 export const CardCart: React.FC<Props> = ({ product, quantity }) => {
   const { cartList, setCartList } = useCart();
-  const imagePath = `../../../${product.image}`;
 
   const addFromCart = (cartProduct: Product) => {
     if (cartList) {
@@ -71,7 +70,7 @@ export const CardCart: React.FC<Props> = ({ product, quantity }) => {
         >
           <img
             className="cart__card__photo"
-            src={imagePath}
+            src={`/react_phone-catalog/${product.image}`}
             alt="product image"
           />
         </Link>

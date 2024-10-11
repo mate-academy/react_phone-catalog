@@ -41,13 +41,15 @@
     padding-left: 35px;
     font-size: 14px;
     font-weight: '700';
-    color: '#0F0F11';
+    color: #0F0F11;
     font-family: Monte, sans-serif;
     &:hover {
       border: 1px solid var(--border-color-dropaut-active);
     }
 
     &:focus {
+      outline: none;
+      box-shadow: none;
       color: var(--text-color-dropaut-main);
       background-color: var(--background-color-dropaut-hover);
     }

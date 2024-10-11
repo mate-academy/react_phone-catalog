@@ -25,8 +25,6 @@ export const Card: React.FC<Props> = ({ product }) => {
     window.scrollTo(0, 0);
   }, []);
 
-  const imagePath = `../../../${product.image}`;
-
   return (
     <div className="card">
       <div className="card__content">
@@ -34,7 +32,7 @@ export const Card: React.FC<Props> = ({ product }) => {
           className="card__link"
           to={`/${product.category}/${product.itemId}?lang=${currentLanguage}`}
         >
-          <img className="card__photo" src={imagePath} alt={product.name} />
+          <img className="card__photo" src={`/react_phone-catalog/${product.image}`} alt={product.name} />
         </Link>
 
         <Link

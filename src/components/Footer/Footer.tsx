@@ -1,4 +1,3 @@
-import React from 'react';
 import './Footer.scss';
 import { NavLink } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
@@ -19,7 +18,9 @@ export const Footer = () => {
         </NavLink>
 
         <div className="footer__links">
-          <NavLink className="footer__text footer__text--link" to="/">
+          <NavLink
+            className="footer__text footer__text--link"
+            to="https://github.com/VladKugot">
             {t('footer.0')}
           </NavLink>
           <NavLink

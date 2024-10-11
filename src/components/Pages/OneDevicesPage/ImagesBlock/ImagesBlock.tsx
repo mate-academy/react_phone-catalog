@@ -6,21 +6,20 @@ type Props = {
 };
 
 export const ImagesBlock: React.FC<Props> = ({ images }) => {
-  const imagesPath = images.map(image => `../../../../${image}`);
 
   return (
     <div className="images">
       <div className="images__conteiner">
-        {imagesPath.map(imagePath => (
+        {images.map(image => (
           <img
-            key={imagePath}
+            key={image}
             className="img images__small"
-            src={imagePath}
-            alt={imagePath}
+            src={`/react_phone-catalog/${image}`}
+            alt={image}
           />
         ))}
       </div>
-      <img className="img images__main" src={imagesPath[0]} alt={images[0]} />
+      <img className="img images__main" src={`/react_phone-catalog/${images[0]}`} alt={images[0]} />
     </div>
   );
 };

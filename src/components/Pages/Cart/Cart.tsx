@@ -6,6 +6,7 @@ import { CartProduct } from '../../type/Product';
 import classNames from 'classnames';
 import { PreviousPage } from '../../PartToPage/PreviousPage';
 import { useTranslation } from 'react-i18next';
+import { totalQuantity } from '../../../utils/CartUtils';
 
 export const Cart: React.FC = () => {
   const { cartList, setCartList } = useCart();
@@ -21,14 +22,6 @@ export const Cart: React.FC = () => {
     return total;
   }, 0);
 
-  const totalQuantity = cartItems.reduce((total: number, item: CartProduct) => {
-    if (item && item.quantity) {
-      return total + item.quantity;
-    }
-
-    return total;
-  }, 0);
-
   const SendOrder = () => {
     if (cartList) {
       setCartList({});
@@ -39,6 +32,8 @@ export const Cart: React.FC = () => {
       }, 3000);
     }
   };
+
+  const quantity = totalQuantity(cartItems);
 
   return (
     <div className="cart">
@@ -90,9 +85,9 @@ export const Cart: React.FC = () => {
                 ${totalPrice}
               </h2>
 
-              {totalQuantity !== 0 ? (
+              {quantity !== 0 ? (
                 <p className="cart__button__block__title">
-                  {t('cartPage.1')} {totalQuantity} {t('cartPage.2')}
+                  {t('cartPage.1')} {quantity} {t('cartPage.2')}
                 </p>
               ) : (
                 <p className="cart__button__block__title">

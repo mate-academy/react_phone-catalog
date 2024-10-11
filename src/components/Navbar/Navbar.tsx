@@ -7,6 +7,7 @@ import { Menu } from './Menu/Menu';
 import { useCart } from '../Context/CartContext';
 import { useFavourites } from '../Context/FavouritesContext';
 import { ThemeSwitcher } from './ThemeSwitcher/ThemeSwitcher';
+import { totalQuantity } from '../../utils/CartUtils';
 
 type Props = {
   setIsOverflow: (value: boolean) => void;
@@ -33,6 +34,7 @@ export const Navbar: React.FC<Props> = ({ setIsOverflow, isOverflow }) => {
   const navRef = useRef<HTMLDivElement>(null);
   const location = useLocation();
   const [searchParams, setSearchParams] = useSearchParams();
+  const quantity = totalQuantity(cartItems);
 
   useEffect(() => {
     const navElement = navRef.current;
@@ -165,8 +167,8 @@ export const Navbar: React.FC<Props> = ({ setIsOverflow, isOverflow }) => {
                 >
                   <div className="icon__with-number">
                     <div className="icon icon--cart"></div>
-                    {cartItems.length > 0 && (
-                      <p className="icon--text">{cartItems.length}</p>
+                    {quantity > 0 && (
+                      <p className="icon--text">{quantity}</p>
                     )}
                   </div>
                 </NavLink>

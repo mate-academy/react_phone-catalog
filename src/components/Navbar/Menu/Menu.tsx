@@ -5,6 +5,7 @@ import './Menu.scss';
 import { useTranslation } from 'react-i18next';
 import { useCart } from '../../Context/CartContext';
 import { useFavourites } from '../../Context/FavouritesContext';
+import { totalQuantity } from '../../../utils/CartUtils';
 
 export const Menu = () => {
   const { i18n, t } = useTranslation();
@@ -12,6 +13,7 @@ export const Menu = () => {
   const { cartList } = useCart();
   const { favouriteList } = useFavourites();
   const cartItems = cartList ? Object.values(cartList) : [];
+  const quantity = totalQuantity(cartItems);
 
   const hasActiveLink = ({ isActive }: { isActive: boolean }) =>
     classNames('nav__link menu__link', {
@@ -75,8 +77,8 @@ export const Menu = () => {
         >
           <div className="icon__with-number">
             <div className="icon icon--cart menu__icon"></div>
-            {cartItems.length > 0 && (
-              <p className="icon--text">{cartItems.length}</p>
+            {quantity > 0 && (
+              <p className="icon--text">{quantity}</p>
             )}
           </div>
         </NavLink>
