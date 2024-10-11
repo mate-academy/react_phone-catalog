@@ -1,5 +1,4 @@
 import styles from './ProductCard.module.scss';
-
 import React from 'react';
 import { Products } from '../../utils/types';
 import { ToBuyButton } from '../ToBuyButton';
@@ -10,6 +9,7 @@ type Props = {
   product: Products;
   width?: number;
 };
+
 export const ProductCard: React.FC<Props> = ({ product, width }) => {
   const { image, name, fullPrice, price, screen, capacity, ram } = product;
 
@@ -51,8 +51,8 @@ export const ProductCard: React.FC<Props> = ({ product, width }) => {
         </div>
       </div>
       <div className={styles.productCard__buttons}>
-        <ToBuyButton height="40" />
-        <AddToFavourites size="s" />
+        <ToBuyButton height="40" product={product} />
+        <AddToFavourites size="s" product={product} />
       </div>
     </article>
   );

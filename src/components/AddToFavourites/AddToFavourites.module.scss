@@ -9,6 +9,11 @@
   border: 1px solid $color-border-icons;
   border-radius: 48px;
 
+  &--added {
+    background-image: url(../../img/icons/heart_yellow.png);
+    border-color: $color-border-grey;
+  }
+
   &:hover {
     border-color: $color-black;
   }

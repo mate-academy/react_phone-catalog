@@ -1,0 +1,76 @@
+@import '../../utils/mixins';
+@import '../../utils/variables';
+
+.cartPage {
+  &__goback {
+    display: flex;
+    gap: 4px;
+    padding-block: 24px;
+
+    @include on-tablet {
+      padding-top: 40px;
+      padding-bottom: 16px;
+    }
+  }
+
+  &__title {
+    padding-bottom: 32px;
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    padding-bottom: 56px;
+
+    @include on-tablet {
+      padding-bottom: 64px;
+    }
+
+    @include on-desktop {
+      display: grid;
+      grid-template-columns: repeat(24, 32px);
+      column-gap: 16px;
+      padding-bottom: 80px;
+    }
+  }
+
+  &__items {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    @include on-desktop {
+      grid-column: 1 / 17;
+    }
+  }
+
+  &__total {
+    width: 100%;
+    height: 190px;
+    padding: 24px;
+    border: 1px solid $color-border-grey;
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+
+    @include on-desktop {
+      height: 206px;
+      grid-column: 17 / -1;
+    }
+  }
+
+  &__totalItems {
+    color: $color-grey;
+
+    @include body-text;
+  }
+
+  &__line {
+    height: 1px;
+    width: 100%;
+    border-bottom: 1px solid $color-border-grey;
+  }
+}

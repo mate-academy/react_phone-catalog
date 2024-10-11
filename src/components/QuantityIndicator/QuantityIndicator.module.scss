@@ -1,0 +1,15 @@
+@import '../../utils/mixins';
+@import '../../utils/variables';
+
+.quantityIndicator {
+  display: flex;
+  width: 14px;
+  height: 14px;
+  background-color: $color-blue;
+  border: 1px solid #fff;
+  border-radius: 50%;
+  font-size: 9px;
+  color: #fff;
+  justify-content: center;
+  align-items: center;
+}

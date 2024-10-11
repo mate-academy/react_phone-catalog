@@ -47,6 +47,16 @@ export const fetchProducts = (
     });
 };
 
+export const fetchProductsItem = (
+  itemId: string,
+): Promise<Products | undefined> => {
+  return fetch(`/api/products.json`)
+    .then(response => response.json())
+    .then((data: Products[]) => {
+      return data.find(item => item.itemId === itemId);
+    });
+};
+
 export const fetchProduct = (
   category: string,
   productId: string,

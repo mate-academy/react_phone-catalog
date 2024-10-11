@@ -69,3 +69,9 @@ export type Product = {
   zoom: string;
   cell: string[];
 };
+
+export type CartItem = {
+  id: number;
+  quantity: number;
+  product: Products;
+};

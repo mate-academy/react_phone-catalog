@@ -1,31 +1,33 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { IconType } from '../../utils/types';
 import { HeaderIcon } from '../HeaderIcon';
 import styles from './Menu.module.scss';
 import logo from '../../img/logo.png';
 import { Link } from 'react-router-dom';
+import { CartContext } from '../../context/CartContext';
+import { FavoritesContext } from '../../context/FavoritesContext';
 
 type Props = {
-  className?: string;
+  closeMenu: () => void;
 };
 
-export const Menu: React.FC<Props> = ({ className }) => {
-  const closeMenu = (value: string) => {
-    window.location.hash = value;
-  };
+export const Menu: React.FC<Props> = ({ closeMenu }) => {
+  const { cart } = useContext(CartContext);
+  const { favorites } = useContext(FavoritesContext);
+  const cartQuantity = cart ? cart.length : null;
+  const favoritesQuantity = favorites ? favorites.length : null;
 
   return (
-    <aside className={`${styles.menu} ${className}`} id="menu">
+    <aside className={styles.menu} id="menu">
       <div className={styles.menu__top}>
         <div className={styles['menu__top-bar']}>
-          <a href="#" className={styles.menu__logo}>
+          <Link to="/" className={styles.menu__logo} onClick={closeMenu}>
             <img src={logo} alt="page logo" />
-          </a>
-          <HeaderIcon
-            type={IconType.close}
-            href="#"
-            onClick={() => closeMenu('#')}
-          />
+          </Link>
+          <button
+            className={styles.menu__closeButton}
+            onClick={closeMenu}
+          ></button>
         </div>
         <nav className={styles.menu__nav}>
           <ul className={styles.menu__nav_list}>
@@ -33,7 +35,7 @@ export const Menu: React.FC<Props> = ({ className }) => {
               <Link
                 className={styles.menu__nav_link}
                 to="/"
-                onClick={() => closeMenu('/')}
+                onClick={closeMenu}
               >
                 home
               </Link>
@@ -42,7 +44,7 @@ export const Menu: React.FC<Props> = ({ className }) => {
               <Link
                 className={styles.menu__nav_link}
                 to="/phones"
-                onClick={() => closeMenu('/phones')}
+                onClick={closeMenu}
               >
                 phones
               </Link>
@@ -51,7 +53,7 @@ export const Menu: React.FC<Props> = ({ className }) => {
               <Link
                 className={styles.menu__nav_link}
                 to="/tablets"
-                onClick={() => closeMenu('/tablets')}
+                onClick={closeMenu}
               >
                 tablets
               </Link>
@@ -60,7 +62,7 @@ export const Menu: React.FC<Props> = ({ className }) => {
               <Link
                 className={styles.menu__nav_link}
                 to="/accessories"
-                onClick={() => closeMenu('/accessories')}
+                onClick={closeMenu}
               >
                 accessories
               </Link>
@@ -69,8 +71,20 @@ export const Menu: React.FC<Props> = ({ className }) => {
         </nav>
       </div>
       <div className={styles.menu__bottom}>
-        <HeaderIcon type={IconType.favourites} size="wide" href="#" />
-        <HeaderIcon type={IconType.cart} size="wide" href="#" />
+        <HeaderIcon
+          type={IconType.favourites}
+          size="wide"
+          href="/favourites"
+          onClick={closeMenu}
+          number={favoritesQuantity}
+        />
+        <HeaderIcon
+          type={IconType.cart}
+          size="wide"
+          href="/cart"
+          onClick={closeMenu}
+          number={cartQuantity}
+        />
       </div>
     </aside>
   );

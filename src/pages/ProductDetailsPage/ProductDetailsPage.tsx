@@ -1,7 +1,7 @@
 import { useNavigate, useParams } from 'react-router-dom';
-import { fetchProduct } from '../../utils/fetch';
+import { fetchProduct, fetchProductsItem } from '../../utils/fetch';
 import { useEffect, useState } from 'react';
-import { Product, SortType } from '../../utils/types';
+import { Product, Products, SortType } from '../../utils/types';
 import styles from './ProductDetailsPage.module.scss';
 import { Loader } from '../../components/Loader';
 import { Breadcrumbs } from '../../components/Breadcrumbs';
@@ -16,35 +16,19 @@ import { TechSpecs } from '../../components/TechSpecs';
 import { ProductSlider } from '../../components/ProductSlider';
 
 export const ProductDetailsPage = () => {
+  // #region state
   const [isLoading, setIsLoading] = useState(false);
   const [displayedProduct, setDisplayedProduct] = useState<Product | null>(
     null,
   );
-
+  const [displayedProductInCategory, setDisplayedProductInCategory] =
+    useState<Products | null>(null);
   const [errorMessage, setErrorMessage] = useState('');
   const [displayedImageIndex, setDisplayedImageIndex] = useState(0);
-
   const { category, productId } = useParams();
   const navigate = useNavigate();
-
-  useEffect(() => {
-    if (category && productId) {
-      setIsLoading(true);
-      fetchProduct(category, productId)
-        .then(result => {
-          if (result) {
-            setDisplayedProduct(result);
-          } else {
-            setErrorMessage('Product was not found');
-          }
-        })
-        .catch(() => setErrorMessage('Something went wrong'))
-        .finally(() => {
-          setIsLoading(false);
-        });
-    }
-  }, [productId, category]);
-
+  // #endregion
+  // #region functions
   const handleColorChange = (color: string) => {
     if (category === 'accessories') {
       const normalizedColor = color.split(' ').join('-');
@@ -76,6 +60,36 @@ export const ProductDetailsPage = () => {
       );
     }
   };
+
+  // #endregion
+
+  useEffect(() => {
+    if (category && productId) {
+      setIsLoading(true);
+
+      Promise.all([
+        fetchProduct(category, productId),
+        fetchProductsItem(productId),
+      ])
+        .then(([productResult, productItemResult]) => {
+          if (productResult) {
+            setDisplayedProduct(productResult);
+          } else {
+            setErrorMessage('Product was not found');
+          }
+
+          if (productItemResult) {
+            setDisplayedProductInCategory(productItemResult);
+          }
+        })
+        .catch(() => {
+          setErrorMessage('Something went wrong');
+        })
+        .finally(() => {
+          setIsLoading(false);
+        });
+    }
+  }, [productId, category]);
 
   return (
     <div className={styles.productDetails}>
@@ -136,28 +150,26 @@ export const ProductDetailsPage = () => {
                   <div className={styles.productDetails__selectorButtons}>
                     {displayedProduct?.colorsAvailable.map(color => {
                       return (
-                        <>
-                          <div
-                            className={classNames(
-                              styles.productDetails__colorButtonContainer,
-                              {
-                                [styles[
-                                  'productDetails__colorButtonContainer--active'
-                                ]]: displayedProduct.color === color,
-                              },
-                            )}
-                            key={color}
-                          >
-                            <input
-                              type="radio"
-                              name="color"
-                              style={{ backgroundColor: colors[color] }}
-                              className={styles.productDetails__colorButton}
-                              checked={displayedProduct.color === color}
-                              onChange={() => handleColorChange(color)}
-                            />
-                          </div>
-                        </>
+                        <div
+                          className={classNames(
+                            styles.productDetails__colorButtonContainer,
+                            {
+                              [styles[
+                                'productDetails__colorButtonContainer--active'
+                              ]]: displayedProduct.color === color,
+                            },
+                          )}
+                          key={color}
+                        >
+                          <input
+                            type="radio"
+                            name="color"
+                            style={{ backgroundColor: colors[color] }}
+                            className={styles.productDetails__colorButton}
+                            checked={displayedProduct.color === color}
+                            onChange={() => handleColorChange(color)}
+                          />
+                        </div>
                       );
                     })}
                   </div>
@@ -198,8 +210,18 @@ export const ProductDetailsPage = () => {
                 >{`$${displayedProduct.priceDiscount}`}</p>
               </div>
               <div className={styles.productDetails__buttons}>
-                <ToBuyButton height="48" />
-                <AddToFavourites size="m" />
+                {displayedProductInCategory && (
+                  <>
+                    <ToBuyButton
+                      height="48"
+                      product={displayedProductInCategory}
+                    />
+                    <AddToFavourites
+                      size="m"
+                      product={displayedProductInCategory}
+                    />
+                  </>
+                )}
               </div>
               <div className={styles.productDetails__characteristics}>
                 <div className={styles.productDetails__characteristic}>

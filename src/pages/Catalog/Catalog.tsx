@@ -141,7 +141,9 @@ export const Catalog = () => {
             setSearchParams={setSearchParams}
             itemsOnPage={itemsOnPage}
           />
-          <ProductsList products={displayedProducts} />
+          <div className={styles.catalog__list}>
+            <ProductsList products={displayedProducts} />
+          </div>
         </>
       )}
 

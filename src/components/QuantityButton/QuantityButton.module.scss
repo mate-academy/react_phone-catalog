@@ -1,0 +1,33 @@
+@import '../../utils/mixins';
+@import '../../utils/variables';
+
+.quantityButton {
+  display: block;
+  width: 32px;
+  height: 32px;
+
+  border: 1px solid $color-border-icons;
+  border-radius: 48px;
+  background-color: #fff;
+
+  background-size: 16px 16px;
+  background-repeat: no-repeat;
+  background-position: center;
+
+  &:hover {
+    border: 1px solid $color-black;
+  }
+
+  &--plus {
+    background-image: url(../../img/icons/plus.png);
+  }
+
+  &--minus {
+    background-image: url(../../img/icons/minus.png);
+  }
+
+  &--minus.quantityButton--disabled {
+    border: 1px solid $color-border-grey;
+    background-image: url(../../img/icons/minus-grey.png);
+  }
+}

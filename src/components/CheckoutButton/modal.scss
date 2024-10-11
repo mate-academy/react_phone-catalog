@@ -1,0 +1,28 @@
+@import 'bootstrap/scss/functions';
+@import 'bootstrap/scss/variables';
+@import 'bootstrap/scss/mixins';
+@import 'bootstrap/scss/transitions';
+@import 'bootstrap/scss/bootstrap-utilities';
+@import 'bootstrap/scss/modal';
+@import 'bootstrap/scss/buttons';
+@import '../../utils/variables';
+
+.custom-modal {
+  .modal-content {
+    font-size: 18px;
+  }
+  .modal-footer {
+    .btn {
+      border-radius: 48px;
+    }
+    .btn-secondary {
+      background-color: $color-grey;
+    }
+    .btn-primary {
+      width: 84px;
+      height: 38px;
+      border: none;
+      background-color: $color-blue;
+    }
+  }
+}

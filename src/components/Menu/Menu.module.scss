@@ -12,6 +12,24 @@
     display: none;
   }
 
+  &__closeButton {
+    display: block;
+    width: 48px;
+    height: 48px;
+    background-size: 16px 16px;
+    background-repeat: no-repeat;
+    background-position: center;
+    box-shadow: -1px 0 0 0 $color-border-grey;
+    border: none;
+    background-color: #fff;
+    background-image: url(../../img/icons/close.png);
+
+    @include on-desktop {
+      width: 64px;
+      height: 64px;
+    }
+  }
+
   &__top-bar {
     display: flex;
     margin-bottom: 24px;

@@ -1,7 +1,7 @@
 @import '../../utils/mixins';
 @import '../../utils/variables';
 
-.catalog {
+.favorites {
   &__navigation {
     padding-top: 24px;
     padding-bottom: 24px;
@@ -37,33 +37,16 @@
       padding-bottom: 40px;
     }
   }
+
   &__list {
-    padding-bottom: 24px;
+    padding-bottom: 56px;
 
     @include on-tablet {
-      padding-bottom: 40px;
+      padding-bottom: 64px;
     }
-  }
 
-  &__error {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    align-items: center;
-  }
-
-  &__reload {
-    background-color: $color-blue;
-    border: none;
-    border-radius: 48px;
-    padding: 12px 24px;
-    color: white;
-    cursor: pointer;
-
-    @include buttons-text;
-
-    &:hover {
-      box-shadow: 0 3px 13px 0 #17203166;
+    @include on-desktop {
+      padding-bottom: 80px;
     }
   }
 }

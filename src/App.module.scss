@@ -36,6 +36,7 @@ body {
 
 .app {
   min-height: 100vh;
+
   &__header {
     position: sticky;
     z-index: 2;
@@ -46,6 +47,7 @@ body {
 
   &__container {
     max-width: 1136px;
+    box-sizing: content-box;
     min-height: calc(100vh - $header-height-mobile - $footer-height-mobile);
 
     margin: 0 auto;
@@ -72,7 +74,7 @@ body {
     transition: opacity 0.3s ease;
     z-index: 2;
 
-    &:target {
+    &--open {
       opacity: 1;
       pointer-events: all;
     }

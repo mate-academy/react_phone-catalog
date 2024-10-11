@@ -25,6 +25,25 @@
     }
   }
 
+  &__menuButton {
+    display: block;
+    width: 48px;
+    height: 48px;
+    background-size: 16px 16px;
+    background-repeat: no-repeat;
+    background-position: center;
+    box-shadow: -1px 0 0 0 $color-border-grey;
+    border: none;
+    border-bottom: 1px solid $color-border-grey;
+    background-color: #fff;
+    background-image: url(../../img/icons/menu.png);
+
+    @include on-desktop {
+      width: 64px;
+      height: 64px;
+    }
+  }
+
   &__left {
     display: flex;
     gap: 16px;
