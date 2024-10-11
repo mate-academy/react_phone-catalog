@@ -77,9 +77,7 @@ export const Menu = () => {
         >
           <div className="icon__with-number">
             <div className="icon icon--cart menu__icon"></div>
-            {quantity > 0 && (
-              <p className="icon--text">{quantity}</p>
-            )}
+            {quantity > 0 && <p className="icon--text">{quantity}</p>}
           </div>
         </NavLink>
       </div>

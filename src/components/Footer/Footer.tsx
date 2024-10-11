@@ -20,7 +20,8 @@ export const Footer = () => {
         <div className="footer__links">
           <NavLink
             className="footer__text footer__text--link"
-            to="https://github.com/VladKugot">
+            to="https://github.com/VladKugot"
+          >
             {t('footer.0')}
           </NavLink>
           <NavLink

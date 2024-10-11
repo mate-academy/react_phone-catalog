@@ -167,9 +167,7 @@ export const Navbar: React.FC<Props> = ({ setIsOverflow, isOverflow }) => {
                 >
                   <div className="icon__with-number">
                     <div className="icon icon--cart"></div>
-                    {quantity > 0 && (
-                      <p className="icon--text">{quantity}</p>
-                    )}
+                    {quantity > 0 && <p className="icon--text">{quantity}</p>}
                   </div>
                 </NavLink>
               </>

@@ -32,7 +32,11 @@ export const Card: React.FC<Props> = ({ product }) => {
           className="card__link"
           to={`/${product.category}/${product.itemId}?lang=${currentLanguage}`}
         >
-          <img className="card__photo" src={`/react_phone-catalog/${product.image}`} alt={product.name} />
+          <img
+            className="card__photo"
+            src={`/react_phone-catalog/${product.image}`}
+            alt={product.name}
+          />
         </Link>
 
         <Link

@@ -19,7 +19,7 @@ export const OneDevicesPage: React.FC = () => {
 
   const { t } = useTranslation();
   const images = product?.images || [];
-  const imagesPath = images.map(image => `../../../../${image}`);
+  const imagesPath = images.map(image => `/react_phone-catalog/${image}`);
 
   const getRandomProducts = (products: Product[]) => {
     const randomProducts = [];
@@ -57,7 +57,7 @@ export const OneDevicesPage: React.FC = () => {
 
         setProduct(foundProduct || null);
         if (foundProduct?.images.length) {
-          setHeadImg(`../../../../${foundProduct.images[0]}`);
+          setHeadImg(`/react_phone-catalog/${foundProduct.images[0]}`);
         }
       } catch (error) {
         return;
