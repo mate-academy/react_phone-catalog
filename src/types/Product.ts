@@ -14,4 +14,5 @@ export interface Product {
   year: number;
   image: string;
   data: ProductData;
+  namespaceId: string;
 }

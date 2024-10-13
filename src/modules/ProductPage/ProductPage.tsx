@@ -34,7 +34,7 @@ export const ProductPage = () => {
     (item: Product) => item.itemId === product?.id,
   );
   const mayLike = products.filter(
-    (item: Product) => item.category === product?.category,
+    (item: Product) => item.color === product?.color,
   );
 
   useEffect(() => {

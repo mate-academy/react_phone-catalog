@@ -19,35 +19,6 @@ export const App = () => {
     });
   }, [pathname]);
 
-  // useEffect(() => {
-  //   const fetchAndMergeData = async () => {
-  //     try {
-  //       const products = await getAllProducts().then(response => response);
-  //       const responses = await Promise.all([
-  //         getPhones(),
-  //         getTablets(),
-  //         getAccessories(),
-  //       ]);
-
-  //       const updatedProducts = products.map((item: Product) => {
-  //         const apiData = responses
-  //           .flat()
-  //           .find(productData => productData.id === item.itemId);
-
-  //         if (apiData) {
-  //           return { ...item, data: apiData };
-  //         }
-
-  //         return item;
-  //       });
-
-  //       dispatch(productsSlice.actions.setProducts(updatedProducts));
-  //     } catch (error) {}
-  //   };
-
-  //   fetchAndMergeData();
-  // }, [dispatch]);
-
   useEffect(() => {
     const fetchProducts = async () => {
       try {

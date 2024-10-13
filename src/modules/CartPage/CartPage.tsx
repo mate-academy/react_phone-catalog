@@ -12,7 +12,7 @@ export const CartPage = () => {
   const dispatch = useAppDispatch();
   const cartProducts = useAppSelector(state => state.cart);
   const productsInCart = [...cartProducts].sort(
-    (a: Product, b: Product) => a.price - b.price,
+    (a: Product, b: Product) => a.id - b.id,
   );
   const itemsCount = productsInCart.length;
 
@@ -51,6 +51,11 @@ export const CartPage = () => {
 
   const handleRemove = (product: Product) => {
     dispatch(cartSlice.actions.deleteFromCart(product));
+  };
+
+  const handleCheckout = () => {
+    alert('Sold');
+    dispatch(cartSlice.actions.clearCart());
   };
 
   return (
@@ -109,10 +114,7 @@ export const CartPage = () => {
           <h4 className="cart__checkout__price">${totalPrice}</h4>
           <p className="cart__checkout__info">Total for {itemsCount} items</p>
           <div className="divider"></div>
-          <button
-            className="cart__checkout__button"
-            onClick={() => alert('Sold')}
-          >
+          <button className="cart__checkout__button" onClick={handleCheckout}>
             Checkout
           </button>
         </div>
