@@ -3,7 +3,7 @@ export const media = {
   desktop: '@media (min-width: 1200px)',
 };
 
-export function shuffleAndTrimarr(arr: any[]) {
+export function shuffleAndTrimArray(arr: any[]) {
   const arrayCopy = [...arr];
 
   for (let i = arrayCopy.length - 1; i > 0; i--) {
