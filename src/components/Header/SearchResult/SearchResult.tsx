@@ -14,6 +14,7 @@ import { setIsFocused, setSearchValue } from '../../../features/core';
 import { useLocation, useNavigate, useSearchParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { StrCode } from '../../../utils/enums';
+import { ProductType } from '../../../types/productsType';
 
 const SearchResult: React.FC = () => {
   const { products } = useAppSelector(state => state.products);
@@ -89,12 +90,21 @@ const SearchResult: React.FC = () => {
     pathname === '/tablets' ||
     pathname === '/accessories';
 
+  const handleViewItem = (product: ProductType) => {
+    navigate(`/${product.category}/${product.itemId}`);
+    dispatch(setSearchValue(''));
+    dispatch(setIsFocused(false));
+  };
+
   return (
     <SearchResultStyled isActive={!!searchValue}>
       {handleInputChange().length ? (
         <SearchListStyled>
           {handleInputChange().map(item => (
-            <SearchItemsStyled key={item.id}>
+            <SearchItemsStyled
+              key={item.id}
+              onClick={() => handleViewItem(item)}
+            >
               <ImgStyled src={item.image} />
 
               {item.name}

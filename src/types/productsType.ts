@@ -19,6 +19,8 @@ export type AccessoryType = {
   processor: string;
   ram: string;
   cell: string[];
+  camera?: string;
+  zoom?: string;
 };
 
 export type PhoneType = {

@@ -1,11 +1,9 @@
 import { useTranslation } from 'react-i18next';
 import { Button } from '../../components/Button/Button';
 import { useAppDispatch, useAppSelector } from '../../hooks/hookStore';
-import { VECTOR_SVG } from '../../utils/SVG';
 import CartCard from './components/CartCard/CartCard';
 import {
   AllPriceStyled,
-  BackStyled,
   ButtonsModalStyled,
   CartStyled,
   ContainerStyled,
@@ -16,33 +14,21 @@ import {
   TitleStyled,
 } from './styled';
 import { StrCode } from '../../utils/enums';
-import { useNavigate } from 'react-router-dom';
 import { NotFoundImg, ProductsNotFound } from '../ProductsPage/styled';
 import { useState } from 'react';
 import Modal from '../../components/Popup/Popup';
 import { clearBacketId } from '../../features/basketSlice';
+import GoBack from '../_shared/GoBack/GoBack';
 
 const CartPage = () => {
   const [isBying, setIsBying] = useState(false);
   const { backetsId } = useAppSelector(state => state.backets);
   const { t } = useTranslation();
-  const navigate = useNavigate();
   const dispatch = useAppDispatch();
 
   const handleClear = () => {
     dispatch(clearBacketId());
     setIsBying(false);
-  };
-
-  const handleBack = () => {
-    if (
-      document.referrer &&
-      document.referrer.includes(window.location.hostname)
-    ) {
-      navigate(-1);
-    } else {
-      navigate('/');
-    }
   };
 
   const backetsPrice = backetsId
@@ -67,11 +53,7 @@ const CartPage = () => {
         </ButtonsModalStyled>
       </Modal>
 
-      <BackStyled onClick={handleBack}>
-        <VECTOR_SVG variant="left" />
-
-        {t(StrCode.Back)}
-      </BackStyled>
+      <GoBack />
 
       <TitleStyled>{t(StrCode.Cart)}</TitleStyled>
 

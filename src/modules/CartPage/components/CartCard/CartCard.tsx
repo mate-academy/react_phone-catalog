@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom';
 import { Button } from '../../../../components/Button/Button';
 import {
   addCoundBacketId,
@@ -23,8 +24,10 @@ type Props = {
 
 const CartCard: React.FC<Props> = ({ product, count }) => {
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
 
-  const handleDeleteItem = () => {
+  const handleDeleteItem = (event: React.MouseEvent<HTMLDivElement>) => {
+    event.stopPropagation();
     dispatch(deleteBacketId(product.itemId));
   };
 
@@ -40,8 +43,16 @@ const CartCard: React.FC<Props> = ({ product, count }) => {
     }
   };
 
+  const handleViewItem = () => {
+    if (!product) {
+      return;
+    }
+
+    navigate(`/${product.category}/${product.itemId}`);
+  };
+
   return (
-    <CartCardStyled>
+    <CartCardStyled onClick={handleViewItem}>
       <InfoStyled>
         <div onClick={handleDeleteItem}>
           <CLOSING_SVG />

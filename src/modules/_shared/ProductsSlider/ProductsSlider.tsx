@@ -4,11 +4,11 @@ import {
   ProductStyled,
   TitleStyled,
 } from './styled';
-import { Button } from '../../../../components/Button/Button';
-import { VECTOR_SVG } from '../../../../utils/SVG';
-import { ProductType } from '../../../../types/productsType';
-import ProductCard from '../../../_shared/productCard/ProductCard';
-import useScrollButtons from '../../../../hooks/useScrollButtons';
+import { Button } from '../../../components/Button/Button';
+import { VECTOR_SVG } from '../../../utils/SVG';
+import { ProductType } from '../../../types/productsType';
+import ProductCard from '../productCard/ProductCard';
+import useScrollButtons from '../../../hooks/useScrollButtons';
 
 type Props = {
   name: string;

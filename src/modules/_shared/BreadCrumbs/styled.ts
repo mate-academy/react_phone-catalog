@@ -21,6 +21,7 @@ const CrumbStyled = styled.div`
   font-weight: 600;
   font-size: 12px;
   color: ${({ theme }) => theme.textColor};
+  user-select: none;
 
   svg {
     fill: ${({ theme }) => theme.buttonSecondNotColor} !important;
@@ -36,6 +37,7 @@ const CrumbStyled = styled.div`
 
   & > :last-child {
     color: ${({ theme }) => theme.textSecondColor};
+    cursor: default;
   }
 `;
 

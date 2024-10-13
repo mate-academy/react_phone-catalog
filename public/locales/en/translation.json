@@ -47,5 +47,15 @@
   "CHECKOUT": "Checkout",
   "CART_CHECKOUT_MSG": "Checkout is not implemented yet. Do you want to clear the Cart?",
   "CONFIRM": "Confirm",
-  "CANCEL": "Cancel"
+  "CANCEL": "Cancel",
+  "AVAILABLE_COLORS": "Available Colors",
+  "SELECT_CAPACITY": "Select capacity",
+  "RESOLUTION": "Resolution",
+  "PROCESSOR": "Processor",
+  "ABOUT": "About",
+  "TECH_SPECS": "Tech specs",
+  "BUILT_IN_MEMORY": "Built in memory",
+  "CELL": "Cell",
+  "CAMERA": "Camera",
+  "ZOOM": "Zoom"
 }

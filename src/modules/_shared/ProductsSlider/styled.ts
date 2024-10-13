@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { media } from '../../../../utils/const';
+import { media } from '../../../utils/const';
 
 const ProductStyled = styled.div`
   display: flex;

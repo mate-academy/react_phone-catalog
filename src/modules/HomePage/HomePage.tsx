@@ -2,7 +2,7 @@ import { useAppSelector } from '../../hooks/hookStore';
 import { StrCode } from '../../utils/enums';
 import CategoryBlock from './components/CategoryBlock/CategoryBlock';
 import { PicturesSlider } from './components/PicturesSlider/PicturesSlider';
-import ProductsSlider from './components/ProductsSlider/ProductsSlider';
+import ProductsSlider from '../_shared/ProductsSlider/ProductsSlider';
 import { HomePageStyled, TitleStyled } from './styled';
 import { useTranslation } from 'react-i18next';
 

@@ -7,6 +7,7 @@ const CartCardStyled = styled.div`
   border: 1px solid ${({ theme }) => theme.cardBorder};
   background-color: ${({ theme }) => theme.cardBacground};
   color: ${({ theme }) => theme.textColor};
+  cursor: pointer;
 
   gap: 16px;
   padding: 16px;
@@ -40,6 +41,10 @@ const InfoStyled = styled.div`
   svg {
     fill: ${({ theme }) => theme.buttonSecondNotColor};
     cursor: pointer;
+
+    &:hover {
+      transform: scale(1.3);
+    }
   }
 `;
 

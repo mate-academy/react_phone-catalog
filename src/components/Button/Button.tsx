@@ -13,8 +13,13 @@ export const Button: React.FC<Props> = ({
   children,
   onFunc = () => {},
 }) => {
+  const handleChildClick = (event: React.MouseEvent<HTMLDivElement>) => {
+    event.stopPropagation();
+    onFunc();
+  };
+
   return (
-    <ButtonStyled variant={variant} cssStyle={css} onClick={onFunc}>
+    <ButtonStyled variant={variant} cssStyle={css} onClick={handleChildClick}>
       {children}
     </ButtonStyled>
   );

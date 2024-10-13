@@ -94,7 +94,7 @@ export const PicturesSlider = () => {
     <PicturesSliderStyled>
       <MainContentStyled>
         <ButtonSliderStyled onClick={handleLeftSwipe}>
-          <Button variant="white">
+          <Button variant="white" onFunc={handleLeftSwipe}>
             <VECTOR_SVG variant="left" />
           </Button>
         </ButtonSliderStyled>
@@ -122,7 +122,7 @@ export const PicturesSlider = () => {
         </CarouselStyled>
 
         <ButtonSliderStyled onClick={handleRightSwipe}>
-          <Button variant="white">
+          <Button variant="white" onFunc={handleRightSwipe}>
             <VECTOR_SVG variant="right" />
           </Button>
         </ButtonSliderStyled>

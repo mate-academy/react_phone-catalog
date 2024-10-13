@@ -11,8 +11,10 @@ const BreadCrumbs = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
 
+  const basePath = pathname.split('/').slice(0, 2).join('/');
+
   const adressName = () => {
-    switch (pathname) {
+    switch (basePath) {
       case '/phones':
         return t(StrCode.Phones);
       case '/tablets':
