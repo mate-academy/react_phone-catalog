@@ -1,5 +1,5 @@
-import { CLOSING_SVG } from "../../utils/SVG";
-import { ContainerStyled, ExitPopUpStyled, PopUpStyled } from "./styled";
+import { CLOSING_SVG } from '../../utils/SVG';
+import { ContainerStyled, ExitPopUpStyled, PopUpStyled } from './styled';
 import ReactDOM from 'react-dom';
 
 type ModalProps = {
@@ -8,13 +8,8 @@ type ModalProps = {
   children: React.ReactNode;
 };
 
-const Modal: React.FC<ModalProps> = ({
-  isOpen,
-  onClose,
-  children
-}) => {
+const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children }) => {
   if (!isOpen) return null;
-
 
   return ReactDOM.createPortal(
     <PopUpStyled>
@@ -26,7 +21,7 @@ const Modal: React.FC<ModalProps> = ({
         {children}
       </ContainerStyled>
     </PopUpStyled>,
-    document.getElementById('modal-root') as HTMLElement
+    document.getElementById('modal-root') as HTMLElement,
   );
 };
 

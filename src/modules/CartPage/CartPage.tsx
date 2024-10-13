@@ -13,7 +13,7 @@ import {
   PriceBlockStyled,
   PriceInfoStyled,
   ProductItemsStyled,
-  TitleStyled
+  TitleStyled,
 } from './styled';
 import { StrCode } from '../../utils/enums';
 import { useNavigate } from 'react-router-dom';
@@ -35,32 +35,33 @@ const CartPage = () => {
   };
 
   const handleBack = () => {
-    if (document.referrer && document.referrer.includes(window.location.hostname)) {
+    if (
+      document.referrer &&
+      document.referrer.includes(window.location.hostname)
+    ) {
       navigate(-1);
     } else {
       navigate('/');
     }
   };
 
-  const backetsPrice = backetsId.map(item => item.count * item.product.price)
+  const backetsPrice = backetsId
+    .map(item => item.count * item.product.price)
     .reduce((cou, item) => cou + item, 0);
 
   const backetsCoung = backetsId.reduce((acc, item) => acc + item.count, 0);
 
   return (
     <CartStyled>
-      <Modal
-        isOpen={isBying}
-        onClose={() => setIsBying(false)}
-      >
+      <Modal isOpen={isBying} onClose={() => setIsBying(false)}>
         <ModalTextStyled>{t(StrCode.CheckoutCart)}</ModalTextStyled>
 
         <ButtonsModalStyled>
-          <Button variant='dark' onFunc={handleClear}>
+          <Button variant="dark" onFunc={handleClear}>
             {t(StrCode.Confirm)}
           </Button>
 
-          <Button variant='white' onFunc={() => setIsBying(false)}>
+          <Button variant="white" onFunc={() => setIsBying(false)}>
             {t(StrCode.Cancel)}
           </Button>
         </ButtonsModalStyled>
@@ -72,31 +73,31 @@ const CartPage = () => {
         {t(StrCode.Back)}
       </BackStyled>
 
-      <TitleStyled>
-        {t(StrCode.Cart)}
-      </TitleStyled>
+      <TitleStyled>{t(StrCode.Cart)}</TitleStyled>
 
       {!!backetsId.length ? (
         <ContainerStyled>
           <ProductItemsStyled>
             {backetsId.map(item => (
-              <CartCard product={item.product} count={item.count} key={item.itemId}/>
+              <CartCard
+                product={item.product}
+                count={item.count}
+                key={item.itemId}
+              />
             ))}
           </ProductItemsStyled>
 
           <PriceBlockStyled>
-              <AllPriceStyled>
-                {`$${backetsPrice}`}
-              </AllPriceStyled>
+            <AllPriceStyled>{`$${backetsPrice}`}</AllPriceStyled>
 
-              <PriceInfoStyled>
-                {`${t(StrCode.TotalFor)} ${backetsCoung} ${t(StrCode.Items)}`}
-              </PriceInfoStyled>
+            <PriceInfoStyled>
+              {`${t(StrCode.TotalFor)} ${backetsCoung} ${t(StrCode.Items)}`}
+            </PriceInfoStyled>
 
-              <Button variant='dark' onFunc={() => setIsBying(true)}>
-                {t(StrCode.Checkout)}
-              </Button>
-            </PriceBlockStyled>
+            <Button variant="dark" onFunc={() => setIsBying(true)}>
+              {t(StrCode.Checkout)}
+            </Button>
+          </PriceBlockStyled>
         </ContainerStyled>
       ) : (
         <ProductsNotFound>
@@ -106,7 +107,7 @@ const CartPage = () => {
         </ProductsNotFound>
       )}
     </CartStyled>
-  )
+  );
 };
 
 export default CartPage;

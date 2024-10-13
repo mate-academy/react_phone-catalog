@@ -19,7 +19,10 @@ const backetSlice = createSlice({
   name: 'backets',
   initialState,
   reducers: {
-    addBacketId: (state: InitialStateType, action: PayloadAction<BacketType>) => {
+    addBacketId: (
+      state: InitialStateType,
+      action: PayloadAction<BacketType>,
+    ) => {
       state.backetsId.push(action.payload);
     },
     addCoundBacketId: (
@@ -50,10 +53,8 @@ const backetSlice = createSlice({
         item => item.itemId !== action.payload,
       );
     },
-    clearBacketId: (
-      state: InitialStateType,
-    ) => {
-      state.backetsId = []
+    clearBacketId: (state: InitialStateType) => {
+      state.backetsId = [];
     },
   },
 });

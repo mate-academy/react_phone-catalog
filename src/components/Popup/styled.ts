@@ -65,8 +65,4 @@ const ExitPopUpStyled = styled.div`
   }
 `;
 
-export {
-  PopUpStyled,
-  ContainerStyled,
-  ExitPopUpStyled,
-}
+export { PopUpStyled, ContainerStyled, ExitPopUpStyled };

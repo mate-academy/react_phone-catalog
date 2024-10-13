@@ -36,11 +36,13 @@ const ProductCard: React.FC<Props> = ({ variant, product }) => {
     }
 
     if (!backetsId.map(item => item.itemId).includes(product.itemId)) {
-      dispatch(addBacketId({
-        itemId: product.itemId,
-        count: 1,
-        product: product,
-      }));
+      dispatch(
+        addBacketId({
+          itemId: product.itemId,
+          count: 1,
+          product: product,
+        }),
+      );
     }
   };
 
