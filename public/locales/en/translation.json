@@ -38,5 +38,14 @@
   "SEE_TABLETS": "See tablets",
   "SEE_ACCESORIES": "See accesories",
   "CLEAR": "Clear",
-  "NOT_FAVOURITES": "There are no favourites yet..."
+  "NOT_FAVOURITES": "There are no favourites yet...",
+  "NOT_CART": "Your cart is empty...",
+  "BACK": "Back",
+  "CART": "Cart",
+  "TOTAL_FOR": "Total for",
+  "ITEMS": "items",
+  "CHECKOUT": "Checkout",
+  "CART_CHECKOUT_MSG": "Checkout is not implemented yet. Do you want to clear the Cart?",
+  "CONFIRM": "Confirm",
+  "CANCEL": "Cancel"
 }

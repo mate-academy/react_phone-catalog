@@ -39,4 +39,13 @@ export enum StrCode {
   SeeAccesories = 'SEE_ACCESORIES',
   Clear = 'CLEAR',
   NotFavourites = 'NOT_FAVOURITES',
+  NotCart = 'NOT_CART',
+  Back = 'BACK',
+  Cart = 'CART',
+  TotalFor = 'TOTAL_FOR',
+  Items = 'ITEMS',
+  Checkout = 'CHECKOUT',
+  CheckoutCart = 'CART_CHECKOUT_MSG',
+  Confirm = 'CONFIRM',
+  Cancel = 'CANCEL',
 }

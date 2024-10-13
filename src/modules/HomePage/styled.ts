@@ -5,6 +5,7 @@ const HomePageStyled = styled.div`
   display: flex;
   flex-direction: column;
   gap: 56px;
+  padding-bottom: 56px;
 
   ${media.tablet} {
     gap: 56px;
@@ -14,6 +15,7 @@ const HomePageStyled = styled.div`
     max-width: 1136px;
     margin-inline: auto;
     gap: 80px;
+    padding-bottom: 64px;
   }
 `;
 

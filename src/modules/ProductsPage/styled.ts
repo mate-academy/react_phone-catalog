@@ -22,6 +22,7 @@ const TitleStyled = styled.h2`
   ${media.tablet} {
     font-size: 48px;
     line-height: 56px;
+    margin: 40px 0 8px;
   }
 `;
 

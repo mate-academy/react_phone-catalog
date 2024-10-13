@@ -48,8 +48,7 @@ const SearchResult: React.FC = () => {
           .replace(/\s+/g, '')
           .toLowerCase()
           .includes(searchValue.replace(/\s+/g, '').toLowerCase());
-      })
-      .sort((a, b) => a.name.localeCompare(b.name));
+      });
   };
 
   const handleClearSearch = () => {
@@ -113,18 +112,36 @@ const SearchResult: React.FC = () => {
 
       <ButtonsStyled>
         {!!isProductPathname ? (
-          <Button variant="dark" onFunc={handleSearch}>
+          <Button
+            variant={handleInputChange().length ? 'dark' : 'disabled'}
+            onFunc={handleInputChange().length ? handleSearch : () => {}}
+          >
             {t(StrCode.SeeAll)}
           </Button>
         ) : (
           <>
-            <Button variant="dark" onFunc={() => handleSearch('phones')}>
+            <Button
+              variant={handleInputChange().length ? 'dark' : 'disabled'}
+              onFunc={() =>
+                handleInputChange().length ? handleSearch('phones') : {}
+              }
+            >
               {t(StrCode.SeePhones)}
             </Button>
-            <Button variant="dark" onFunc={() => handleSearch('tablets')}>
+            <Button
+              variant={handleInputChange().length ? 'dark' : 'disabled'}
+              onFunc={() =>
+                handleInputChange().length ? handleSearch('tablets') : {}
+              }
+            >
               {t(StrCode.SeeTablets)}
             </Button>
-            <Button variant="dark" onFunc={() => handleSearch('accessories')}>
+            <Button
+              variant={handleInputChange().length ? 'dark' : 'disabled'}
+              onFunc={() =>
+                handleInputChange().length ? handleSearch('accessories') : {}
+              }
+            >
               {t(StrCode.SeeAccesories)}
             </Button>
           </>

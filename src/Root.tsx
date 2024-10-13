@@ -8,6 +8,7 @@ import PageNotFound from './modules/PageNotFound/PageNotFound';
 import FavoritePage from './modules/FavoritePage/FavoritePage';
 import { PersistGate } from 'redux-persist/integration/react';
 import { startTransition } from 'react';
+import CartPage from './modules/CartPage/CartPage';
 
 export const Root = () => {
   const handleLoad = () => {
@@ -37,7 +38,7 @@ export const Root = () => {
                 path="accessories"
                 element={<ProductsPage variant="accesories" />}
               />
-              <Route path="cart" element={<></>} />
+              <Route path="cart" element={<CartPage />} />
               <Route path="favorites" element={<FavoritePage />} />
               <Route path="*" element={<PageNotFound />} />
             </Route>

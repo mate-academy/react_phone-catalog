@@ -1,6 +1,11 @@
 import { useTranslation } from 'react-i18next';
 import BreadCrumbs from '../_shared/BreadCrumbs/BreadCrumbs';
-import { FavoritePageStyled, ModelsStyled, NotFoundStyled, TitleStyled } from './styled';
+import {
+  FavoritePageStyled,
+  ModelsStyled,
+  NotFoundStyled,
+  TitleStyled,
+} from './styled';
 import { useAppSelector } from '../../hooks/hookStore';
 import { StrCode } from '../../utils/enums';
 import ProductList from '../_shared/ProductList/ProductList';
@@ -25,11 +30,9 @@ const FavoritePage = () => {
         <ModelsStyled>{`${productFilter.length} ${t(StrCode.Models)}`}</ModelsStyled>
       ) : (
         <>
-        <NotFoundStyled>
-          {t(StrCode.NotFavourites)}
-        </NotFoundStyled>
+          <NotFoundStyled>{t(StrCode.NotFavourites)}</NotFoundStyled>
 
-        <NotFoundImg src="/img/product-not-found.png" />
+          <NotFoundImg src="/img/product-not-found.png" />
         </>
       )}
 

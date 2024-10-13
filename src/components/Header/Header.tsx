@@ -83,19 +83,25 @@ export const Header = () => {
       <NavStyled isActive={isManuActive}>
         <NavListStyled>
           <ListItemStyled>
-            <NavLinkStyled to="/">{t(StrCode.Home)}</NavLinkStyled>
+            <NavLinkStyled to="/" onClick={() => {setIsActiveMenu(false)}}>
+              {t(StrCode.Home)}
+            </NavLinkStyled>
           </ListItemStyled>
 
           <ListItemStyled>
-            <NavLinkStyled to="/phones">{t(StrCode.Phones)}</NavLinkStyled>
+            <NavLinkStyled to="/phones" onClick={() => {setIsActiveMenu(false)}}>
+              {t(StrCode.Phones)}
+            </NavLinkStyled>
           </ListItemStyled>
 
           <ListItemStyled>
-            <NavLinkStyled to="/tablets">{t(StrCode.Tablets)}</NavLinkStyled>
+            <NavLinkStyled to="/tablets" onClick={() => {setIsActiveMenu(false)}}>
+              {t(StrCode.Tablets)}
+            </NavLinkStyled>
           </ListItemStyled>
 
           <ListItemStyled>
-            <NavLinkStyled to="/accessories">
+            <NavLinkStyled to="/accessories" onClick={() => {setIsActiveMenu(false)}}>
               {t(StrCode.Accessories)}
             </NavLinkStyled>
           </ListItemStyled>
@@ -103,7 +109,7 @@ export const Header = () => {
 
         <MenuStyled isActive={!isManuActive} isMenu={false}>
           <MenuBoxStyled>
-            <NavLinkStyled to="/favorites" isIcon={true}>
+            <NavLinkStyled to="/favorites" isIcon={true} onClick={() => {setIsActiveMenu(false)}}>
               <MenuImgStyled>
                 <LIKE_SVG />
               </MenuImgStyled>
@@ -113,7 +119,7 @@ export const Header = () => {
           </MenuBoxStyled>
 
           <MenuBoxStyled>
-            <NavLinkStyled to="/cart" isIcon={true}>
+            <NavLinkStyled to="/cart" isIcon={true} onClick={() => {setIsActiveMenu(false)}}>
               <MenuImgStyled>
                 <SHOPPING_SVG />
               </MenuImgStyled>

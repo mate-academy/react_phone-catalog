@@ -54,6 +54,8 @@ export const App = () => {
 
         <MainStyled />
 
+        <div id="modal-root"></div>
+
         <Footer />
       </AppStyled>
     </ThemeProvider>
