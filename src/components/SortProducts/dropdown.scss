@@ -1,0 +1,76 @@
+@import '../../utils/mixins';
+@import '../../utils/variables';
+@import 'bootstrap/scss/functions';
+@import 'bootstrap/scss/variables';
+@import 'bootstrap/scss/mixins';
+@import 'bootstrap/scss/dropdown';
+
+.dropdown-toggle {
+  display: flex !important;
+  align-items: center;
+  width: 136px;
+  height: 40px;
+  padding: 10px 12px !important;
+  font-family: inherit;
+  font-size: 14px !important;
+  line-height: 21px !important;
+  border: 1px solid $color-border-icons !important;
+  border-radius: 8px !important;
+  background-color: white !important;
+  color: black !important;
+  position: relative;
+
+  &::after {
+    display: none;
+  }
+
+  &::before {
+    content: '';
+    background-image: url(../../img/icons/arrow_down_grey.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 16px;
+    height: 16px;
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  &:hover {
+    border-color: $color-grey !important;
+  }
+
+  &:focus {
+    border-color: $color-black !important;
+  }
+
+  @include on-tablet {
+    width: 187px;
+  }
+
+  @include on-desktop {
+    width: 176px;
+  }
+}
+
+.dropdown-menu {
+  width: 100%;
+  border: 1px solid $color-border-icons !important;
+  box-shadow: 0 2px 15px 0 #0000000d !important;
+  border-radius: 8px;
+  padding-block: 8px;
+}
+
+.dropdown-item {
+  @include body-text;
+
+  color: $color-grey;
+  padding: 6px 12px;
+  cursor: pointer;
+
+  &:hover {
+    color: $color-black;
+    background-color: $color-page-background;
+  }
+}

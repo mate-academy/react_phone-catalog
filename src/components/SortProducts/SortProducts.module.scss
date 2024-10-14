@@ -6,33 +6,10 @@
   display: flex;
   gap: 16px;
 
-  &__select {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-  }
-
   &__label {
     @include small-text;
 
     color: $color-grey;
-  }
-
-  &__field {
-    font-family: inherit;
-    width: 136px;
-    height: 40px;
-    font-size: 14px;
-    line-height: 21px;
-    border: 1px solid $color-border-icons;
-    border-radius: 8px;
-
-    @include on-tablet {
-      width: 187px;
-    }
-
-    @include on-desktop {
-      width: 176px;
-    }
+    margin-bottom: 4px;
   }
 }

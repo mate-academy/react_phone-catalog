@@ -62,7 +62,6 @@ export const ProductDetailsPage = () => {
   };
 
   // #endregion
-
   useEffect(() => {
     if (category && productId) {
       setIsLoading(true);
@@ -80,6 +79,8 @@ export const ProductDetailsPage = () => {
 
           if (productItemResult) {
             setDisplayedProductInCategory(productItemResult);
+          } else {
+            setErrorMessage('Product was not found');
           }
         })
         .catch(() => {
@@ -97,7 +98,14 @@ export const ProductDetailsPage = () => {
 
       {errorMessage && (
         <div className={styles.productDetails__error}>
-          <h2>{errorMessage}</h2>
+          <h2 className={styles.productDetails__errorMessage}>
+            {errorMessage}
+          </h2>
+          <img
+            className={styles.productDetails__errorImage}
+            src="../src/img/notFound/product-not-found.png"
+            alt="product not found image"
+          />
         </div>
       )}
       {!isLoading && !errorMessage && displayedProduct && category && (
