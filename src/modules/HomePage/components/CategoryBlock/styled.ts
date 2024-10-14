@@ -90,7 +90,7 @@ const ContainerImgStyled = styled.div<ImgContainerType>`
 const CategoryImageStyled = styled.div<ImgContainerType>`
   width: 100%;
   padding-top: 100%;
-  background-image: url('/img/category-phones.webp');
+  background-image: url('/react_phone-catalog/img/category-phones.webp');
   background-position: top left;
   background-repeat: no-repeat;
   border-radius: ${({ theme }) => theme.borderRadius};
@@ -99,21 +99,21 @@ const CategoryImageStyled = styled.div<ImgContainerType>`
     switch (variang) {
       case 'first': {
         return css`
-          background-image: url('/img/category-phones.webp');
+          background-image: url('/react_phone-catalog/img/category-phones.webp');
           background-size: 110%;
         `;
       }
 
       case 'second': {
         return css`
-          background-image: url('/img/category-tablets.png');
+          background-image: url('/react_phone-catalog/img/category-tablets.png');
           background-size: 155%;
         `;
       }
 
       case 'three': {
         return css`
-          background-image: url('/img/category-accessories.webp');
+          background-image: url('/react_phone-catalog/img/category-accessories.webp');
           background-size: 130%;
         `;
       }

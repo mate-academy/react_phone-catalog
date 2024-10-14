@@ -24,7 +24,7 @@ const PageNotFound = () => {
         {t(StrCode.GoHome)}
       </Button>
 
-      <NotFoundImg src="/img/page-not-found.png" />
+      <NotFoundImg src="/react_phone-catalog/img/page-not-found.png" />
     </NotFoundStyled>
   );
 };

@@ -116,7 +116,7 @@ const SearchResult: React.FC = () => {
       ) : (
         <NoResultStyled>
           {t(StrCode.NotSearch)}
-          <img src="/img/product-not-found.png" />
+          <img src="/react_phone-catalog/img/product-not-found.png" />
         </NoResultStyled>
       )}
 

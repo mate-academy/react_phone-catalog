@@ -118,7 +118,7 @@ const ProductsPage: React.FC<Props> = ({ variant }) => {
               {t(StrCode.GoBack)}
             </Button>
 
-            <NotFoundImg src="/img/product-not-found.png" />
+            <NotFoundImg src="/react_phone-catalog/img/product-not-found.png" />
           </ProductsNotFound>
         )}
 

@@ -152,7 +152,7 @@ const ItemPage = () => {
             {t(StrCode.GoHome)}
           </Button>
 
-          <NotFoundImg src="/img/product-not-found.png" />
+          <NotFoundImg src="/react_phone-catalog/img/product-not-found.png" />
         </ProductsNotFound>
       )}
     </ItemPageStyled>
