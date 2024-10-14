@@ -71,12 +71,14 @@ export const useProductPage = (
     };
 
     searchParams.set('sort', valueChange());
+    searchParams.set('page', '1');
     setSearchParams(searchParams);
     setValueSort(value as SortOptions);
   };
 
   const updatePerPage = (value: string) => {
     searchParams.set('perPage', value);
+    searchParams.set('page', '1');
     setSearchParams(searchParams);
     setValuePerPage(value);
   };

@@ -79,6 +79,10 @@ export const Footer = () => {
     }
   };
 
+  const handleGithub = () => {
+    window.location.href = 'https://github.com/Anothar';
+  };
+
   return (
     <ContainerStyled>
       <FooterStyled>
@@ -87,17 +91,18 @@ export const Footer = () => {
         </Link>
 
         <InfoBlockStyled>
-          <li>Github</li>
+          <li onClick={handleGithub}>Github</li>
 
-          <li>{t(StrCode.Contacts)}</li>
+          <li onClick={handleGithub}>{t(StrCode.Contacts)}</li>
 
-          <li>{t(StrCode.Rights)}</li>
+          <li onClick={handleGithub}>{t(StrCode.Rights)}</li>
         </InfoBlockStyled>
 
         <GoTopStyled onClick={scrollToTop}>
           {t(StrCode.BackToTop)}
           <Button
-            variant="white" css="height: 32px; width: 32px; padding: 0;"
+            variant="white"
+            css="height: 32px; width: 32px; padding: 0;"
             onFunc={scrollToTop}
           >
             <VECTOR_SVG variant="top" />
