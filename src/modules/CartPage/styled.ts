@@ -58,6 +58,7 @@ const PriceBlockStyled = styled.div`
   width: 100%;
   padding: 24px;
   justify-content: center;
+  border-radius: ${({ theme }) => theme.borderSecRdius};
 
   ${media.desktop} {
     align-self: start;

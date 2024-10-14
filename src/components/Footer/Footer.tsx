@@ -8,6 +8,8 @@ import {
 } from './styled';
 import logo from '../../icons/Logo.png';
 import logo2 from '../../icons/Logo2.png';
+import logo3 from '../../icons/Logo3.png';
+import logo45 from '../../icons/Logo45.png';
 import { Button } from '../Button/Button';
 import { VECTOR_SVG } from '../../utils/SVG';
 import { SelectInput } from '../Inputs/SelectInput/SelectInput';
@@ -63,8 +65,16 @@ export const Footer = () => {
         return logo2;
       }
 
-      default: {
-        return logo;
+      case 'Theme3': {
+        return logo3;
+      }
+
+      case 'Theme4': {
+        return logo45;
+      }
+
+      case 'Theme5': {
+        return logo45;
       }
     }
   };

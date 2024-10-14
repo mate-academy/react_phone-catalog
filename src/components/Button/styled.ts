@@ -1,7 +1,14 @@
 import styled, { css } from 'styled-components';
 
 type ButtonProps = {
-  variant: 'dark' | 'white' | 'disabled' | 'activate' | 'pagination';
+  variant:
+    | 'dark'
+    | 'white'
+    | 'disabled'
+    | 'activate'
+    | 'pagination'
+    | 'capacity'
+    | 'notCapacity';
   cssStyle: string;
 };
 
@@ -14,6 +21,7 @@ const ButtonStyled = styled.div<ButtonProps>`
         return css`
           background-color: ${({ theme }) => theme.buttonFirstColor};
           color: ${({ theme }) => theme.textThreeColor};
+          border-radius: ${({ theme }) => theme.buttonFirstRadius};
 
           &:hover {
             background-color: ${({ theme }) => theme.buttonHoverBacground};
@@ -26,8 +34,9 @@ const ButtonStyled = styled.div<ButtonProps>`
         return css`
           background-color: ${({ theme }) => theme.buttonSecondBacground};
           border: 1px solid ${({ theme }) => theme.buttonSecondBorder};
+          border-radius: ${({ theme }) => theme.borderThreeRadius};
           svg {
-            fill: ${({ theme }) => theme.buttonSecondColor} !important;
+            fill: ${({ theme }) => theme.buttonSecondColor};
           }
           color: ${({ theme }) => theme.buttonSecondColor};
 
@@ -43,8 +52,9 @@ const ButtonStyled = styled.div<ButtonProps>`
         return css`
           background-color: inherit;
           border: 1px solid ${({ theme }) => theme.cardSliderNotActive};
+          border-radius: ${({ theme }) => theme.borderThreeRadius};
           svg {
-            fill: ${({ theme }) => theme.buttonSecondNotColor} !important;
+            fill: ${({ theme }) => theme.buttonSecondNotColor};
           }
           color: ${({ theme }) => theme.buttonSecondNotColor};
           cursor: default;
@@ -56,6 +66,7 @@ const ButtonStyled = styled.div<ButtonProps>`
           background-color: ${({ theme }) => theme.buttonSecondBacground};
           border: 1px solid ${({ theme }) => theme.cardSliderNotActive};
           color: ${({ theme }) => theme.buttonThreeColor};
+          border-radius: ${({ theme }) => theme.buttonFirstRadius};
           cursor: default;
         `;
       }
@@ -65,11 +76,36 @@ const ButtonStyled = styled.div<ButtonProps>`
           background-color: ${({ theme }) => theme.cardBacground};
           border: 1px solid ${({ theme }) => theme.cardBorder};
           color: ${({ theme }) => theme.buttonSecondColor};
+          border-radius: ${({ theme }) => theme.borderThreeRadius};
           cursor: pointer;
 
           &:hover {
             background-color: ${({ theme }) => theme.buttonPaginationHover};
             border: 1px solid ${({ theme }) => theme.butPaginHovBor};
+          }
+        `;
+      }
+
+      case 'capacity': {
+        return css`
+          background-color: ${({ theme }) => theme.capacityBack};
+          color: ${({ theme }) => theme.capacityColor};
+          border-radius: ${({ theme }) => theme.capacityRadius};
+
+          &:hover {
+            box-shadow: 0 3px 13px 0 ${({ theme }) => theme.buttonHoverShadow};
+          }
+        `;
+      }
+
+      case 'notCapacity': {
+        return css`
+          color: ${({ theme }) => theme.capacityBack};
+          border-radius: ${({ theme }) => theme.capacityRadius};
+          border: 1px solid ${({ theme }) => theme.capacityBorder};
+
+          &:hover {
+            border: 1px solid ${({ theme }) => theme.capacityBack};
           }
         `;
       }

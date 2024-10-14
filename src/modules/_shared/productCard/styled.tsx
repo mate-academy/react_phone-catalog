@@ -13,6 +13,7 @@ const CardStyled = styled.div<CardProps>`
   flex-direction: column;
   justify-content: space-between;
   cursor: pointer;
+  border-radius: ${({ theme }) => theme.borderRadius};
 
   ${({ variant }) => {
     switch (variant) {

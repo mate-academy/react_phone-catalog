@@ -17,6 +17,7 @@ import { ProductType } from '../../../types/productsType';
 import { Skeleton } from '../Skeleton/Skeleton';
 import { useAddCartFavorit } from '../../../hooks/useAddCartFavorit';
 import { useNavigate } from 'react-router-dom';
+import { useTheme } from '../../../components/Themes/ThemeProvider';
 
 type Props = {
   variant: 'HomePage' | 'ListPage';
@@ -26,6 +27,7 @@ type Props = {
 const ProductCard: React.FC<Props> = ({ variant, product }) => {
   const { t } = useTranslation();
   const navigate = useNavigate();
+  const { theme } = useTheme();
 
   const { handleToBasket, handleToFavorit, includesBacket, includesFavorit } =
     useAddCartFavorit(product?.itemId);
@@ -82,7 +84,11 @@ const ProductCard: React.FC<Props> = ({ variant, product }) => {
               css="width: 40px; flex-shrink: 0; cursor: pointer;"
               onFunc={handleToFavorit}
             >
-              {includesFavorit() ? <FAVORIT_SVG /> : <LIKE_SVG />}
+              {includesFavorit() ? (
+                <FAVORIT_SVG fill={theme.favoritIconColor} />
+              ) : (
+                <LIKE_SVG />
+              )}
             </Button>
           </ButtonsBlockStyled>
         </>

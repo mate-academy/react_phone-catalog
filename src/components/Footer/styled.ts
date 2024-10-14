@@ -4,6 +4,7 @@ import { media } from '../../utils/const';
 const LogoImgStyled = styled.img`
   width: 89px;
   height: 32px;
+  user-select: none;
 `;
 
 const ContainerStyled = styled.footer`
@@ -11,6 +12,7 @@ const ContainerStyled = styled.footer`
   box-shadow: 0px -1px 0px 0px #e2e6e9;
   display: flex;
   justify-content: center;
+  background-color: ${({ theme }) => theme.bacgroundDefault};
 
   ${media.desktop} {
     gap: 80px;

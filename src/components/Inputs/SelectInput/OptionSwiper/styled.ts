@@ -21,6 +21,7 @@ const OptionsSelectStyled = styled.div<OptionsSelectType>`
   transform-origin: ${({ variant }) =>
     variant === 'default' ? 'top' : 'bottom'};
   z-index: 1000;
+  border-radius: ${({ theme }) => theme.borderRadius};
 
   ${({ css }) => css}
 `;

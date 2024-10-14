@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { media } from './utils/const';
 
 const AppStyled = styled.div`
-  background-color: ${({ theme }) => theme.bacgroundDefault};
+  background-color: ${({ theme }) => theme.bacgroundPage};
   padding-top: 48px;
   min-height: 100vh;
   display: flex;

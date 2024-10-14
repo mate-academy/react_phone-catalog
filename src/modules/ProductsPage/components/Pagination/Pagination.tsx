@@ -1,4 +1,5 @@
 import { Button } from '../../../../components/Button/Button';
+import { useTheme } from '../../../../components/Themes/ThemeProvider';
 import { VECTOR_SVG } from '../../../../utils/SVG';
 import { ListItemStyled, PaginationStyled } from './styled';
 
@@ -15,9 +16,12 @@ const Pagination: React.FC<Props> = ({
   currentPage,
   onPageChange,
 }) => {
+  const { theme } = useTheme();
+
   if (perPage === 'all' || total <= Number(perPage)) {
     return <></>;
   }
+
 
   const handleChangePage = (num: number) => {
     onPageChange(num);
@@ -64,7 +68,10 @@ const Pagination: React.FC<Props> = ({
               <Button
                 variant={currentPage === item ? 'dark' : 'pagination'}
                 onFunc={() => currentPage !== item && handleChangePage(item)}
-                css="width: 40px;"
+                css={`
+                  width: 40px;
+                  border-radius: ${theme.borderThreeRadius};
+                `}
               >
                 {item}
               </Button>
@@ -77,7 +84,10 @@ const Pagination: React.FC<Props> = ({
             <Button
               variant={currentPage === 1 ? 'dark' : 'pagination'}
               onFunc={() => currentPage !== 1 && handleChangePage(1)}
-              css="width: 40px;"
+              css={`
+                width: 40px;
+                border-radius: ${theme.borderThreeRadius};
+              `}
             >
               1
             </Button>

@@ -20,6 +20,7 @@ const LogoStyled = styled.div`
   height: 22px;
   margin: 13px 16px;
   flex-shrink: 0;
+  user-select: none;
 
   ${media.desktop} {
     width: 80px;
@@ -259,7 +260,7 @@ const CountStyled = styled.div`
   width: 14px;
   height: 14px;
   border: 1px solid ${({ theme }) => theme.bacgroundDefault};
-  background: #eb5757;
+  background: ${({ theme }) => theme.iconColor};
   border-radius: 100%;
   display: flex;
   justify-content: center;

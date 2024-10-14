@@ -17,6 +17,8 @@ const PicturesSliderStyled = styled.div`
   ${media.desktop} {
     padding-inline: 0;
   }
+
+  user-select: none;
 `;
 
 const MainContentStyled = styled.div`
@@ -50,6 +52,8 @@ const CarouselStyled = styled.div`
   display: flex;
   overflow: hidden;
   z-index: 1;
+
+  border-radius: ${({ theme }) => theme.borderRadius};
 `;
 
 const ImglStyled = styled.img<ImglStyledProps>`

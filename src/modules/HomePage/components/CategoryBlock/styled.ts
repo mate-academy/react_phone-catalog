@@ -41,6 +41,7 @@ const CategoryItemStyled = styled(NavLink)`
   display: flex;
   gap: 4px;
   flex-direction: column;
+  border-radius: ${({ theme }) => theme.borderRadius};
 
   ${media.tablet} {
     flex: 1;
@@ -54,6 +55,7 @@ type ImgContainerType = {
 const ContainerImgStyled = styled.div<ImgContainerType>`
   width: 100%;
   position: relative;
+  border-radius: ${({ theme }) => theme.borderRadius};
 
   ${({ variang }) => {
     switch (variang) {
@@ -91,6 +93,7 @@ const CategoryImageStyled = styled.div<ImgContainerType>`
   background-image: url('/img/category-phones.webp');
   background-position: top left;
   background-repeat: no-repeat;
+  border-radius: ${({ theme }) => theme.borderRadius};
 
   ${({ variang }) => {
     switch (variang) {

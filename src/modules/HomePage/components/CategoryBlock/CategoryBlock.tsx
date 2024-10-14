@@ -11,12 +11,14 @@ import {
 } from './styled';
 import { StrCode } from '../../../../utils/enums';
 import { useAppSelector } from '../../../../hooks/hookStore';
+import { useTheme } from '../../../../components/Themes/ThemeProvider';
 
 const CategoryBlock = () => {
   const { t } = useTranslation();
   const { phones } = useAppSelector(state => state.phones);
   const { tables } = useAppSelector(state => state.tables);
   const { accessories } = useAppSelector(state => state.accessories);
+  const { theme } = useTheme();
 
   return (
     <ContainerStyled>
@@ -24,7 +26,13 @@ const CategoryBlock = () => {
 
       <CategotyStyled>
         <CategoryItemStyled to="/phones">
-          <div style={{ overflow: 'hidden', marginBottom: '20px' }}>
+          <div
+            style={{
+              overflow: 'hidden',
+              marginBottom: '20px',
+              borderRadius: theme.borderRadius,
+            }}
+          >
             <ContainerImgStyled variang="first">
               <CategoryImageStyled variang="first" />
             </ContainerImgStyled>
@@ -38,7 +46,13 @@ const CategoryBlock = () => {
         </CategoryItemStyled>
 
         <CategoryItemStyled to="/tablets">
-          <div style={{ overflow: 'hidden', marginBottom: '20px' }}>
+          <div
+            style={{
+              overflow: 'hidden',
+              marginBottom: '20px',
+              borderRadius: theme.borderRadius,
+            }}
+          >
             <ContainerImgStyled variang="second">
               <CategoryImageStyled variang="second" />
             </ContainerImgStyled>
@@ -52,7 +66,13 @@ const CategoryBlock = () => {
         </CategoryItemStyled>
 
         <CategoryItemStyled to="/accessories">
-          <div style={{ overflow: 'hidden', marginBottom: '20px' }}>
+          <div
+            style={{
+              overflow: 'hidden',
+              marginBottom: '20px',
+              borderRadius: theme.borderRadius,
+            }}
+          >
             <ContainerImgStyled variang="three">
               <CategoryImageStyled variang="three" />
             </ContainerImgStyled>

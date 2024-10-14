@@ -8,6 +8,7 @@ const CartCardStyled = styled.div`
   background-color: ${({ theme }) => theme.cardBacground};
   color: ${({ theme }) => theme.textColor};
   cursor: pointer;
+  border-radius: ${({ theme }) => theme.borderSecRdius};
 
   gap: 16px;
   padding: 16px;

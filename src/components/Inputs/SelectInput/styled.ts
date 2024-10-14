@@ -46,6 +46,7 @@ const SelectStyled = styled.div<SelectType>`
   color: ${({ theme }) => theme.textColor};
   position: relative;
   background-color: ${({ theme }) => theme.selectBackground};
+  border-radius: ${({ theme }) => theme.borderRadius};
 
   &:hover {
     border: ${({ isOpened, theme }) => {

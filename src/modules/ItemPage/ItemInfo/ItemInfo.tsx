@@ -17,6 +17,7 @@ import {
 } from './styled';
 import { FAVORIT_SVG, LIKE_SVG } from '../../../utils/SVG';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
+import { useTheme } from '../../../components/Themes/ThemeProvider';
 
 type Props = {
   product: AccessoryType;
@@ -29,6 +30,7 @@ const ItemInfo: React.FC<Props> = ({ product }) => {
   const { pathname } = useLocation();
   const navigate = useNavigate();
   const { productId } = useParams();
+  const { theme } = useTheme();
 
   const changeProduct = (newProductId: string) => {
     const basePath = pathname.split('/')[1];
@@ -76,7 +78,7 @@ const ItemInfo: React.FC<Props> = ({ product }) => {
         <ButtonsStyled>
           {product.capacityAvailable.map(item => (
             <Button
-              variant={item === product.capacity ? 'dark' : 'white'}
+              variant={item === product.capacity ? 'capacity' : 'notCapacity'}
               onFunc={() => handleReplase(product.capacity, item)}
               key={item}
             >
@@ -105,7 +107,11 @@ const ItemInfo: React.FC<Props> = ({ product }) => {
           css="width: 40px; flex-shrink: 0; cursor: pointer;"
           onFunc={handleToFavorit}
         >
-          {includesFavorit() ? <FAVORIT_SVG /> : <LIKE_SVG />}
+          {includesFavorit() ? (
+            <FAVORIT_SVG fill={theme.favoritIconColor} />
+          ) : (
+            <LIKE_SVG />
+          )}
         </Button>
       </ButtonsBlockStyled>
 

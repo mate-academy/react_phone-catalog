@@ -58,4 +58,5 @@ export enum StrCode {
   Cell = 'CELL',
   Camera = 'CAMERA',
   Zoom = 'ZOOM',
+  ProductNot = 'PRODUCT_NOT',
 }

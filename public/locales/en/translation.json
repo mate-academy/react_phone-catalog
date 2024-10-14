@@ -57,5 +57,6 @@
   "BUILT_IN_MEMORY": "Built in memory",
   "CELL": "Cell",
   "CAMERA": "Camera",
-  "ZOOM": "Zoom"
+  "ZOOM": "Zoom",
+  "PRODUCT_NOT": "Product not found. Go home page?"
 }
