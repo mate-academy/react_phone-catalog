@@ -1,4 +1,4 @@
-const BASE_URL = 'http://localhost:3000/';
+const BASE_URL = 'https://anothar.github.io/react_phone-catalog/';
 
 function wait(delay: number) {
   return new Promise(resolve => {
