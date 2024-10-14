@@ -22,7 +22,6 @@ const Pagination: React.FC<Props> = ({
     return <></>;
   }
 
-
   const handleChangePage = (num: number) => {
     onPageChange(num);
 
