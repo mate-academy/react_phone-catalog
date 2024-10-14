@@ -20,6 +20,7 @@ export const DetailsCard: React.FC<Props> = ({ product }) => {
   const navigate = useNavigate();
   const [selectedImage, setSelectedImage] = useState<string>(product.images[0]);
   const [products, setProducts] = useState<Products[]>([]);
+  const [activeColor, setActiveColor] = useState<string | null>(null);
 
   const handleMemoryChange = (newCapacity: string) => {
     let updatedURL;
@@ -110,8 +111,15 @@ export const DetailsCard: React.FC<Props> = ({ product }) => {
             {product.colorsAvailable.map(color => (
               <div
                 key={color}
-                onClick={() => handleColorChange(color as keyof typeof COLORS)}
-                className="details__color"
+                onClick={() => {
+                  setActiveColor(color);
+
+                  handleColorChange(color as keyof typeof COLORS);
+                }}
+                className={classNames({
+                  details__color: color !== activeColor,
+                  'details__color--is-active': color === activeColor,
+                })}
                 style={{
                   backgroundColor: COLORS[color as keyof typeof COLORS],
                   width: '32px',

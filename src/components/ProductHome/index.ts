@@ -1,1 +1,1 @@
-export * from './PhonesHome';
+export * from './ProductHome';

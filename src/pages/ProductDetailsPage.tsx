@@ -5,7 +5,7 @@ import { Tablet } from '../types/tablet';
 import { Accessory } from '../types/accessory';
 import { DetailsBack } from '../components/DetailsHome';
 import { DetailsCard } from '../components/DetailsCard';
-import { DetailsTechSpecs } from '../components/DetailsTechSpecs/DetailsTechSpecs';
+import { DetailsTechSpecs } from '../components/DetailsTechSpecs';
 import { BrandNewModelsHome } from '../components/BrandNewModelsHome';
 
 type Product = Phone | Tablet | Accessory;
@@ -41,9 +41,8 @@ export const ProductDetailsPage = () => {
         }
 
         setProduct(selectedProduct);
-      } catch (error) {
+      } catch (errorN) {
         setError('Failed to fetch product details');
-        console.error('Error fetching product details:', error);
       } finally {
         setLoading(false);
       }

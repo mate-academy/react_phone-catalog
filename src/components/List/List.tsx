@@ -20,7 +20,13 @@ export const List: React.FC<Props> = ({ type }) => {
   const [sortedProducts, setSortedProducts] = useState<Products[]>([]);
 
   const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPerPage, setItemsPerPage] = useState(4); // Set a default value
+  const [itemsPerPage, setItemsPerPage] = useState(4);
+  const totalPages = Math.ceil(products.length / itemsPerPage);
+
+  const visiblePageCount = 3;
+
+  const startPage = Math.max(currentPage - Math.floor(visiblePageCount / 2), 1);
+  const endPage = Math.min(startPage + visiblePageCount - 1, totalPages);
 
   useEffect(() => {
     fetch('./api/products.json')
@@ -54,11 +60,10 @@ export const List: React.FC<Props> = ({ type }) => {
         break;
     }
 
-    const itemsOnPage = searchParams.get('perPage') || '4'; // Set a default here
+    const itemsOnPage = searchParams.get('perPage') || '4';
 
     setItemsPerPage(Number(itemsOnPage));
 
-    // If there are no search parameters, show all products
     if (!searchParams.toString()) {
       setSortedProducts(sortedData);
     } else {
@@ -70,8 +75,6 @@ export const List: React.FC<Props> = ({ type }) => {
       setSortedProducts(paginatedData);
     }
   }, [products, searchParams, currentPage, itemsPerPage]);
-
-  const totalPages = Math.ceil(products.length / itemsPerPage);
 
   const toggleFavorite = (product: Products) => {
     const isFavorite = favorites.some(fav => fav.id === product.id);
@@ -159,15 +162,19 @@ export const List: React.FC<Props> = ({ type }) => {
           {'<'}
         </button>
 
-        {Array.from({ length: totalPages }, (_, index) => (
-          <button
-            key={index + 1}
-            className={`pagination--str ${currentPage === index + 1 ? 'active' : ''}`}
-            onClick={() => setCurrentPage(index + 1)}
-          >
-            {index + 1}
-          </button>
-        ))}
+        {Array.from({ length: endPage - startPage + 1 }, (_, index) => {
+          const page = startPage + index;
+
+          return (
+            <button
+              key={index + 1}
+              className={`pagination--str ${currentPage === page ? 'active' : ''}`}
+              onClick={() => setCurrentPage(page)}
+            >
+              {page}
+            </button>
+          );
+        })}
 
         <button
           className="pagination--next"

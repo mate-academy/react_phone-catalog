@@ -54,7 +54,6 @@
   column-gap: 8px;
   align-items: center;
 
-
   &-text {
     box-sizing: border-box;
     border: 1px solid rgb(180, 189, 196);
@@ -169,6 +168,23 @@
 
 .ret {
   display: none;
+}
+
+@media screen and (min-width: 1200px) {
+  .cart__flex {
+    display: grid;
+    column-gap: 16px;
+
+    grid-template-columns: repeat(16, 1fr);
+  }
+
+  .cart__card {
+    grid-column: span 10;
+  }
+
+  .cart__checkout {
+    grid-column: span 6;
+  }
 }
 
 .cart__card {
@@ -529,6 +545,10 @@
     border: 2px solid rgb(180, 189, 196);
 
     &:hover {
+      border: 2px solid rgb(62, 62, 63);
+    }
+
+    &--is-active {
       border: 2px solid rgb(62, 62, 63);
     }
   }
