@@ -37,7 +37,7 @@ export const Header = () => {
   const { backetsId } = useAppSelector(state => state.backets);
   const { favoritId } = useAppSelector(state => state.favorit);
 
-  const backsetCount = backetsId.length;
+  const backsetCount = backetsId.reduce((cu, item) => cu + item.count, 0);
   const favoritCount = favoritId.length;
 
   const variantLogo = () => {

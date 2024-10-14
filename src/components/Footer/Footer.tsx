@@ -96,7 +96,10 @@ export const Footer = () => {
 
         <GoTopStyled onClick={scrollToTop}>
           {t(StrCode.BackToTop)}
-          <Button variant="white" css="height: 32px; width: 32px; padding: 0;">
+          <Button
+            variant="white" css="height: 32px; width: 32px; padding: 0;"
+            onFunc={scrollToTop}
+          >
             <VECTOR_SVG variant="top" />
           </Button>
         </GoTopStyled>

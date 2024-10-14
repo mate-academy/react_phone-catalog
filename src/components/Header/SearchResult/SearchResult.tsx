@@ -61,18 +61,21 @@ const SearchResult: React.FC = () => {
     switch (pathname) {
       case '/phones':
         searchParams.set('search', searchValue);
+        searchParams.set('page', '1');
         setSearchParams(searchParams);
         dispatch(setSearchValue(''));
         dispatch(setIsFocused(false));
         break;
       case '/tablets':
         searchParams.set('search', searchValue);
+        searchParams.set('page', '1');
         setSearchParams(searchParams);
         dispatch(setSearchValue(''));
         dispatch(setIsFocused(false));
         break;
       case '/accessories':
         searchParams.set('search', searchValue);
+        searchParams.set('page', '1');
         setSearchParams(searchParams);
         dispatch(setSearchValue(''));
         dispatch(setIsFocused(false));
