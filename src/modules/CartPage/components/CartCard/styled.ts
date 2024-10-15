@@ -69,12 +69,17 @@ const InfoSecondStyled = styled.div`
 const CountCalcStyled = styled.div`
   display: flex;
   align-items: center;
-  gap: 13px;
+  justify-content: space-between;
+  width: 96px;
   font-weight: 600;
   font-size: 14px;
   line-height: 21px;
   color: ${({ theme }) => theme.textColor};
   user-select: none;
+`;
+
+const CountNumberStyled = styled.div`
+  width: 32px;
 `;
 
 const PriceItemStyled = styled.div`
@@ -91,5 +96,6 @@ export {
   InfoImgStyled,
   InfoSecondStyled,
   CountCalcStyled,
+  CountNumberStyled,
   PriceItemStyled,
 };

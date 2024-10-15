@@ -11,6 +11,7 @@ import { CLOSING_SVG, MINUS_SVG, PLUS_SVG } from '../../../../utils/SVG';
 import {
   CartCardStyled,
   CountCalcStyled,
+  CountNumberStyled,
   InfoImgStyled,
   InfoSecondStyled,
   InfoStyled,
@@ -72,7 +73,9 @@ const CartCard: React.FC<Props> = ({ product, count }) => {
           >
             <MINUS_SVG />
           </Button>
-          {count}
+
+          <CountNumberStyled>{count}</CountNumberStyled>
+
           <Button
             variant="white"
             css="flex-shrink: 0; width: 32px; height: 32px; padding: 0px;"
