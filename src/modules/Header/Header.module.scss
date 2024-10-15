@@ -1,0 +1,85 @@
+@import '../../styles/utils';
+
+.header {
+  border-bottom: 1px solid $elements;
+  position: sticky;
+  z-index: 2;
+
+  display: flex;
+  gap: 16px;
+  justify-content: space-between;
+
+  @include on-tablet {
+    display: grid;
+    grid-template-columns: min-content 1fr;
+  }
+
+  &__link-logo {
+    display: flex;
+    width: min-content;
+    align-items: center;
+    justify-content: center;
+    padding: 13px 16px;
+  }
+
+  &__logo {
+    display: block;
+    width: 64px;
+    height: 22px;
+
+    @include on-desktop {
+      width: 80px;
+      height: 28px;
+    }
+  }
+
+  &__menu {
+    position: absolute;
+    z-index: 1;
+    inset: 0;
+    background-color: $white;
+    padding-top: 72px;
+
+    @include on-tablet {
+      display: none;
+    }
+  }
+
+  &__menu-btn {
+    height: 48px;
+    width: 48px;
+    border: none;
+    border-left: 1px solid $elements;
+    background-color: inherit;
+
+    background-repeat: no-repeat;
+    background-position: center;
+
+    &--open {
+      background-image: url('../../assets/images/icons/close.svg');
+    }
+
+    &--close {
+      background-image: url('../../assets/images/icons/menu.svg');
+    }
+
+    @include on-tablet {
+      display: none;
+    }
+  }
+
+  &__nav-bar {
+    display: none;
+
+    @include on-tablet {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
+
+  &__actions {
+    display: flex;
+  }
+}

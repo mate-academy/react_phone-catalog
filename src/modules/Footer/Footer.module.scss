@@ -1,0 +1,64 @@
+@import '../../styles/utils';
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  padding: 32px;
+  color: $secondary;
+  box-shadow: 0 -1px 0 0 $elements;
+
+  @include page-padding-inline;
+
+  @include on-tablet {
+    flex-direction: row;
+    gap: 15px;
+    justify-content: space-between;
+  }
+
+  &__logo {
+    width: 89px;
+    height: 32px;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    @include uppercase;
+
+    @include on-tablet {
+      flex-flow: row wrap;
+      gap: 13.5px;
+    }
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+  }
+
+  &__link {
+    cursor: pointer;
+
+    @include transition;
+
+    &:hover {
+      color: $primary;
+    }
+  }
+
+  &__container {
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    background-color: inherit;
+    border: none;
+    color: inherit;
+
+    @include small-text;
+  }
+}

@@ -1,0 +1,22 @@
+@import '../../styles/utils';
+
+.round-button {
+  background-color: inherit;
+  border-radius: 50%;
+  border: 1px solid $icons;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  aspect-ratio: 1 / 1;
+
+  @include transition;
+
+  &:hover {
+    border-color: $primary;
+  }
+
+  &:disabled {
+    border-color: $elements;
+  }
+}

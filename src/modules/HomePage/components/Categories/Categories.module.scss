@@ -1,0 +1,63 @@
+@import '../../../../styles/utils';
+
+.categories {
+  @include page-padding-inline;
+
+  &__title {
+    margin-bottom: 24px;
+
+    @include h2-mobile;
+
+    @include on-tablet {
+      @include h2-tablet-desktop;
+    }
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+
+    @include on-tablet {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+  }
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__item-title {
+    margin: 0;
+    margin-bottom: 4px;
+
+    @include h4-tablet-desktop;
+  }
+
+  &__text {
+    color: $secondary;
+
+    @include body-text;
+  }
+
+  &__img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: contain;
+    border-radius: 8px;
+    margin-bottom: 24px;
+    overflow: hidden;
+
+    @include transition;
+  }
+
+  &__link {
+    &:hover .categories__img {
+      transform: scale(1.05);
+    }
+  }
+}
