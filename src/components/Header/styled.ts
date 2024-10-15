@@ -113,8 +113,7 @@ const NavStyled = styled.nav<NavProps>`
         z-index: 2;
       `;
     } else {
-      return css`
-      `;
+      return css``;
     }
   }}
 `;

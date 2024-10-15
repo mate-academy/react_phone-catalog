@@ -85,7 +85,7 @@ const CartPage = () => {
         <ProductsNotFound>
           {t(StrCode.NotCart)}
 
-          <NotFoundImg src="/react_phone-catalog/img/product-not-found.png" />
+          <NotFoundImg src="/react_phone-catalog/img/cart-is-empty.png" />
         </ProductsNotFound>
       )}
     </CartStyled>

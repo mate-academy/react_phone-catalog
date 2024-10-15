@@ -73,7 +73,7 @@ export const Header = () => {
     } else {
       document.body.style.overflow = 'auto';
     }
-  }, [isManuActive])
+  }, [isManuActive]);
 
   return (
     <HeaderStyled>
