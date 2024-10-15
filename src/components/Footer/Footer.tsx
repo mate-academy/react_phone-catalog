@@ -80,7 +80,7 @@ export const Footer = () => {
   };
 
   const handleGithub = () => {
-    window.location.href = 'https://github.com/Anothar';
+    window.open('https://github.com/Anothar', '_blank');
   };
 
   return (

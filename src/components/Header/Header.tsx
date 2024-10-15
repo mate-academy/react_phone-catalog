@@ -67,6 +67,10 @@ export const Header = () => {
     }
   };
 
+  if (isManuActive) {
+    document.body.style.overflow = 'hidden';
+  }
+
   return (
     <HeaderStyled>
       <Link to="/">

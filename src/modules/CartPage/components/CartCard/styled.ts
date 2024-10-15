@@ -82,6 +82,7 @@ const PriceItemStyled = styled.div`
   font-size: 22px;
   line-height: 30.8px;
   font-family: Mont-Bold, sans-serif;
+  width: 90px;
 `;
 
 export {

@@ -82,9 +82,10 @@ type NavProps = {
 };
 
 const NavStyled = styled.nav<NavProps>`
-  display: none;
+  transform: translateX(100%);
 
   ${media.tablet} {
+    transform: translateX(0);
     display: flex;
     justify-content: space-between;
     width: calc(100vw - 96px);
@@ -100,7 +101,7 @@ const NavStyled = styled.nav<NavProps>`
         top: 49px;
         left: 0;
         background-color: ${({ theme }) => theme.bacgroundDefault};
-        height: calc(100vh - 48px);
+        height: calc(100dvh - 49px);
         padding-top: 32px;
         width: 100vw;
         transform: translateX(100%);
@@ -155,7 +156,7 @@ const ListItemStyled = styled.li`
 
   ${media.tablet} {
     padding: 0;
-    height: auto;
+    height: 100%;
   }
 `;
 
@@ -175,6 +176,14 @@ type NavLinkType = {
 const NavLinkStyled = styled(NavLink)<NavLinkType>`
   text-decoration: none;
   color: ${({ theme }) => theme.textSecondColor};
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+
+  &:hover {
+    color: ${({ theme }) => theme.textColor};
+  }
 
   &.active {
     color: ${({ theme }) => theme.textColor};
@@ -199,13 +208,7 @@ const NavLinkStyled = styled(NavLink)<NavLinkType>`
         }
 
         return css`
-          ${media.tablet} {
-            bottom: -18.5px;
-          }
-
-          ${media.desktop} {
-            bottom: -26.5px;
-          }
+          bottom: 0;
         `;
       }}
     }
