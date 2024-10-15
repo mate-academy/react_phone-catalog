@@ -80,6 +80,7 @@ const CountCalcStyled = styled.div`
 
 const CountNumberStyled = styled.div`
   width: 32px;
+  text-align: center;
 `;
 
 const PriceItemStyled = styled.div`
