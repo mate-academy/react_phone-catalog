@@ -14,7 +14,7 @@ import logo from '../../icons/Logo.png';
 import logo2 from '../../icons/Logo2.png';
 import logo3 from '../../icons/Logo3.png';
 import logo45 from '../../icons/Logo45.png';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { themeMap, useTheme } from '../Themes/ThemeProvider';
 import {
   BURGERMENU_SVG,
@@ -67,9 +67,13 @@ export const Header = () => {
     }
   };
 
-  if (isManuActive) {
-    document.body.style.overflow = 'hidden';
-  }
+  useEffect(() => {
+    if (isManuActive) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'auto';
+    }
+  }, [isManuActive])
 
   return (
     <HeaderStyled>
