@@ -58,6 +58,8 @@ const CartSlice = createSlice({
         // eslint-disable-next-line no-param-reassign
         state.productsOfCart[index].quantity += 1;
       }
+
+      updatedLocalStorage(state.productsOfCart);
     },
 
     decrement: (state, action: PayloadAction<number>) => {
@@ -76,6 +78,8 @@ const CartSlice = createSlice({
           state.productsOfCart.splice(index, 1);
         }
       }
+
+      updatedLocalStorage(state.productsOfCart);
     },
   },
 });

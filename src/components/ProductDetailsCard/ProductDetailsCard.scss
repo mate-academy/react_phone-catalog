@@ -126,6 +126,7 @@
     &-link {
       display: flex;
       height: 100%;
+      cursor: pointer;
 
       @include on-desktop {
         width: 100%;

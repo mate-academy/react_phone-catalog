@@ -18,20 +18,20 @@ type Props = {
 };
 
 export const CartItem: React.FC<Props> = React.memo(({ product }) => {
-  const [price, setPrice] = useState<number>(product.price);
+  const [price, setPrice] = useState<number>(product.price * product.quantity);
   const dispatch = useAppDispath();
   const { theme } = useAppSelector(state => state.theme);
 
   const handlePlus = (prodId: number) => {
     dispatch(increment(prodId));
-    setPrice(price + product.price);
+    setPrice(prev => prev + product.price);
   };
 
   const handleMinus = (prodId: number) => {
     if (product.quantity === 1) {
       return;
     } else {
-      setPrice(price - product.price);
+      setPrice(prev => prev - product.price);
     }
 
     dispatch(decrement(prodId));

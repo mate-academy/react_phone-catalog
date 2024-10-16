@@ -20,13 +20,16 @@ export const SearchField = () => {
     debounce((params: URLSearchParams) => {
       setSearchParams(params);
     }, 1000),
-    [],
+    [searchParams],
   );
 
   const handleQueryChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const params = new URLSearchParams(searchParams);
 
     params.set('query', event.target.value);
+    params.set('page', '1');
+    params.set('trans', '0');
+    params.set('group', '0');
 
     debouncedSearch(params);
     setQueery(event.target.value);
@@ -36,6 +39,9 @@ export const SearchField = () => {
     const params = new URLSearchParams(searchParams);
 
     params.set('query', '');
+    params.set('page', '1');
+    params.set('trans', '0');
+    params.set('group', '0');
 
     setSearchParams(params);
     setQueery('');
