@@ -56,7 +56,7 @@ export const Categories = () => {
           <div className="categories__items">
             {Object.values(categoriesList).map(category => (
               <div className="categories__item" key={category.title}>
-                <Link to={`/${category}`} className="categories__item_link">
+                <Link to={`${category.type}`} className="categories__item_link">
                   <img
                     src={category.image}
                     alt="Phones"
