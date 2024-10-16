@@ -66,16 +66,20 @@
         &--active {
           color: var(--text-color);
           border-bottom: 2px solid var(--text-color);
+
+          @include on-tablet {
+            padding-bottom: 11px;
+          }
+
+          @include on-desktop {
+            padding-bottom: 20px;
+          }
         }
       }
 
       &_link:hover {
         color: var(--text-color);
       }
-
-      // &_link:active {
-      //   border-bottom: 2px solid $primaryColor;
-      // }
     }
   }
 

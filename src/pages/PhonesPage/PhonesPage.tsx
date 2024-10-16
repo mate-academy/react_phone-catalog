@@ -29,19 +29,18 @@ export const PhonesPage: React.FC = () => {
   const dispatch = useDispatch();
 
   const [searchParams] = useSearchParams();
-  const query = searchParams.get('query' || '');
-
-  const sort = searchParams.get('sort' || '');
+  const query = searchParams.get('query');
+  const sort = searchParams.get('sort');
 
   const sortProducts = (item: Product[], sortType: string) => {
     switch (sortType) {
-      case 'Newest':
+      case `${t('dropdownMenu.item.newest')}`:
         return item.sort((a, b) => b.year - a.year);
 
-      case 'Alphabetically':
+      case `${t('dropdownMenu.item.alphabetically')}`:
         return item.sort((a, b) => a.name.localeCompare(b.name));
 
-      case 'Cheapset':
+      case `${t('dropdownMenu.item.cheapset')}`:
         return item.sort((a, b) => a.price - b.price);
 
       default:
@@ -82,7 +81,7 @@ export const PhonesPage: React.FC = () => {
           setIsLoading(false);
         }, 500);
       });
-  }, [dispatch]);
+  }, [dispatch, searchParams]);
 
   useEffect(() => {
     window.scrollTo({ top: 0 });

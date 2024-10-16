@@ -49,7 +49,7 @@ export const Footer: React.FC = () => {
             <ul className="Footer__nav-list">
               <li className="Footer__nav-item">
                 <Link
-                  to="https://github.com/Igor-Yaremchuk/react_phone-catalog"
+                  to="https://github.com/Igor-Yaremchuk"
                   className="Footer__nav-item-link"
                   target="blank"
                 >
@@ -65,7 +65,6 @@ export const Footer: React.FC = () => {
             className={classNames('Footer__button', {
               'Footer__button-hiden': !isScrolled,
             })}
-            // className="Footer__button"
           >
             <p className="Footer__button-text">{t('footer.backToTop')}</p>
             <button className="Footer__button-link" onClick={goTop}>

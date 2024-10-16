@@ -16,9 +16,8 @@ import { useAppDispath, useAppSelector } from '../../hooks/hooks';
 import classNames from 'classnames';
 import { SearchField } from '../SearchField';
 import { toggleTheme } from '../../features/theme';
-
-import { useTranslation } from 'react-i18next';
 import i18next from 'i18next';
+import { useTranslation } from 'react-i18next';
 import { Lang } from '../../types/Language';
 
 import './Header.scss';
@@ -160,7 +159,11 @@ export const Header = () => {
                 />
                 {productsOfCart.length > 0 && (
                   <div className="header__icons--cart_img-count">
-                    {productsOfCart.length}
+                    {/* {productsOfCart.length} */}
+                    {productsOfCart.reduce(
+                      (acc, item) => acc + item.quantity,
+                      0,
+                    )}
                   </div>
                 )}
               </NavLink>

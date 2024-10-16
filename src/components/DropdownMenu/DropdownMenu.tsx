@@ -6,6 +6,7 @@ import classNames from 'classnames';
 import { useSearchParams } from 'react-router-dom';
 import { useAppSelector } from '../../hooks/hooks';
 import { useTranslation } from 'react-i18next';
+import i18next from 'i18next';
 
 export const DropdownMenu = () => {
   const [isActive, setIsActive] = useState(false);
@@ -13,6 +14,12 @@ export const DropdownMenu = () => {
   const { t } = useTranslation();
   const [searchParams, setSearchParams] = useSearchParams();
   const dropdownRef = useRef<HTMLDivElement>(null);
+
+  const options = [
+    t('dropdownMenu.item.newest'),
+    t('dropdownMenu.item.alphabetically'),
+    t('dropdownMenu.item.cheapset'),
+  ];
 
   const handleClickOutside = (event: MouseEvent) => {
     if (
@@ -41,6 +48,36 @@ export const DropdownMenu = () => {
     return setIsActive;
   };
 
+  const transSort = (sort: string | null) => {
+    const params = new URLSearchParams(searchParams);
+
+    if (sort === 'Найновіші' && i18next.language === 'en') {
+      params.set('sort', 'Newest');
+      setSearchParams(params);
+    } else if (sort === 'Newest' && i18next.language === 'uk') {
+      params.set('sort', 'Найновіші');
+      setSearchParams(params);
+    }
+
+    if (sort === 'Алфавітом' && i18next.language === 'en') {
+      params.set('sort', 'Alphabetically');
+      setSearchParams(params);
+    } else if (sort === 'Alphabetically' && i18next.language === 'uk') {
+      params.set('sort', 'Алфавітом');
+      setSearchParams(params);
+    }
+
+    if (sort === 'Найдешевші' && i18next.language === 'en') {
+      params.set('sort', 'Cheapset');
+      setSearchParams(params);
+    } else if (sort === 'Cheapset' && i18next.language === 'uk') {
+      params.set('sort', 'Найдешевші');
+      setSearchParams(params);
+    }
+
+    return sort;
+  };
+
   useEffect(() => {
     if (isActive) {
       document.addEventListener('mousedown', handleClickOutside);
@@ -60,7 +97,7 @@ export const DropdownMenu = () => {
       <label className="dropdownMenu__button" onClick={toggleMenu}>
         <p className="dropdownMenu__button-text">
           {searchParams.has('sort')
-            ? searchParams.get('sort')
+            ? transSort(searchParams.get('sort'))
             : `${t('dropdownMenu.select')}`}
         </p>
         <img
@@ -77,7 +114,21 @@ export const DropdownMenu = () => {
           'dropdownMenu__list-active': isActive,
         })}
       >
-        <li
+        {options.map(option => (
+          <li
+            className="dropdownMenu__item"
+            key={option}
+            onClick={() => {
+              setIsActive(false);
+
+              handleSelectOpiton(option);
+            }}
+          >
+            {option}
+          </li>
+        ))}
+
+        {/* <li
           className="dropdownMenu__item"
           onClick={() => {
             setIsActive(false);
@@ -104,7 +155,7 @@ export const DropdownMenu = () => {
           }}
         >
           {t('dropdownMenu.item.cheapset')}
-        </li>
+        </li> */}
       </ul>
     </div>
   );

@@ -88,24 +88,26 @@ export const ProductDetailsCard: React.FC<Props> = React.memo(
                         image === selectedImage,
                     })}
                   >
-                    <a
-                      href="#"
+                    <div
+                      // href="#"
                       className="productDetailsCard__photo-link"
                       onClick={() => setSelectedImage(image)}
                     >
                       <img
-                        src={`/${image}`}
+                        // src={`/${image}`}
+                        src={image}
                         alt={currProd?.namespaceId}
                         className="productDetailsCard__photo-item--img"
                       />
-                    </a>
+                    </div>
                   </li>
                 ))}
               </ul>
 
               <div className="productDetailsCard__photo">
                 <img
-                  src={`/${selectedImage}`}
+                  // src={`/${selectedImage}`}
+                  src={selectedImage}
                   alt={currProd?.namespaceId}
                   className="productDetailsCard__photo-img"
                 />

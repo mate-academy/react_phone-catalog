@@ -64,7 +64,8 @@ export const CartPage: React.FC = () => {
                 <div className="cart__total-priceBlock">
                   <p className="cart__total-price">{`$${totalInitPrice}`}</p>
                   <p className="cart__total-count">
-                    {productsOfCart.length === 1
+                    {/* {productsOfCart.length === 1 */}
+                    {totalCartQuantity === 1
                       ? `${t('cartPage.total.item')}`
                       : `${t('cartPage.total.items', { total: totalCartQuantity })}`}
                   </p>

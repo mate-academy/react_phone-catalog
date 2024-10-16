@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './Pagination.scss';
 import { useSearchParams } from 'react-router-dom';
 import arrow from '../../images/icons/arrow_right.png';
@@ -10,12 +10,15 @@ type Props = {
   totalItems: number;
 };
 
-export const Pagination: React.FC<Props> = React.memo(({ totalItems }) => {
+export const Pagination: React.FC<Props> = ({ totalItems }) => {
   const [searchParams, setSearchParams] = useSearchParams();
-  const [transformValue, setTransformValue] = useState(0);
+  const [transformValue, setTransformValue] = useState(
+    searchParams.get('trans') || 0,
+  );
   const currPage = searchParams.get('page') || 1;
   const perPage = searchParams.get('perPage') || 'All';
   const totalPages = Math.ceil(totalItems / +perPage);
+  const query = searchParams.get('query');
 
   const { theme } = useAppSelector(state => state.theme);
 
@@ -31,32 +34,15 @@ export const Pagination: React.FC<Props> = React.memo(({ totalItems }) => {
 
   const numbersOfPage = getNumberOfPages(totalPages);
 
-  const [groupIndex, setGroupIndex] = useState(0);
+  const [groupIndex, setGroupIndex] = useState(searchParams.get('group') || 0);
 
   const itemsPerPage = 4;
-  const start = groupIndex * itemsPerPage;
+  const start = +groupIndex * itemsPerPage;
   const end = start + itemsPerPage;
   const currentGroup = numbersOfPage.slice(start, end);
 
   const firstItemOnPage = currentGroup[0];
   const lastItemOnPage = currentGroup[3];
-
-  const handleButtonLeft = () => {
-    const params = new URLSearchParams(searchParams);
-
-    if (+currPage !== 1) {
-      params.set('page', `${+currPage - 1}`);
-    } else {
-      params.get('page');
-    }
-
-    if (+currPage === firstItemOnPage) {
-      setGroupIndex(groupIndex - 1);
-      setTransformValue(transformValue - 160);
-    }
-
-    setSearchParams(params);
-  };
 
   const handleButtonRight = () => {
     const params = new URLSearchParams(searchParams);
@@ -68,8 +54,29 @@ export const Pagination: React.FC<Props> = React.memo(({ totalItems }) => {
     }
 
     if (+currPage === lastItemOnPage) {
-      setGroupIndex(groupIndex + 1);
-      setTransformValue(transformValue + 160);
+      setGroupIndex(+groupIndex + 1);
+      setTransformValue(+transformValue + 160);
+      params.set('group', `${+groupIndex + 1}`);
+      params.set('trans', `${+transformValue + 160}`);
+    }
+
+    setSearchParams(params);
+  };
+
+  const handleButtonLeft = () => {
+    const params = new URLSearchParams(searchParams);
+
+    if (+currPage !== 1) {
+      params.set('page', `${+currPage - 1}`);
+    } else {
+      params.get('page');
+    }
+
+    if (+currPage === firstItemOnPage) {
+      setGroupIndex(+groupIndex - 1);
+      setTransformValue(+transformValue - 160);
+      params.set('group', `${+groupIndex - 1}`);
+      params.set('trans', `${+transformValue - 160}`);
     }
 
     setSearchParams(params);
@@ -82,6 +89,13 @@ export const Pagination: React.FC<Props> = React.memo(({ totalItems }) => {
 
     setSearchParams(params);
   };
+
+  useEffect(() => {
+    if (query || query === '') {
+      setTransformValue(0);
+      setGroupIndex(0);
+    }
+  }, [query]);
 
   return (
     <div className="pagination">
@@ -102,7 +116,7 @@ export const Pagination: React.FC<Props> = React.memo(({ totalItems }) => {
       <div className="pagination__block">
         <ul
           className="pagination__list"
-          style={{ transform: `translateX(-${transformValue}px)` }}
+          style={{ transform: `translateX(-${+transformValue}px)` }}
         >
           {numbersOfPage.map(item => (
             <li
@@ -133,6 +147,6 @@ export const Pagination: React.FC<Props> = React.memo(({ totalItems }) => {
       </button>
     </div>
   );
-});
+};
 
 Pagination.displayName = 'Pagination';

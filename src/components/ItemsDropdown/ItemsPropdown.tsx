@@ -7,18 +7,14 @@ import { useSearchParams } from 'react-router-dom';
 import { useAppSelector } from '../../hooks/hooks';
 import { useTranslation } from 'react-i18next';
 
-const options: string[] = ['4', '8', '16', 'All'];
-
 export const ItemsDropdown = () => {
   const [isActive, setIsActive] = useState(false);
-
   const { theme } = useAppSelector(state => state.theme);
-
   const { t } = useTranslation();
-
   const [searchParams, setSearchParams] = useSearchParams();
-
   const dropdownRef = useRef<HTMLDivElement>(null);
+
+  const options: string[] = ['4', '8', '16', t('itemsDropdown.all')];
 
   const handleClickOutside = (event: MouseEvent) => {
     if (
@@ -32,7 +28,7 @@ export const ItemsDropdown = () => {
   const handleSelectOption = (option: string) => {
     const params = new URLSearchParams(searchParams);
 
-    if (option === 'All') {
+    if (option === t('itemsDropdown.all')) {
       params.delete('perPage');
       params.delete('page');
     } else {

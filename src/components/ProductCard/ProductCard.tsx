@@ -58,6 +58,7 @@ export const ProductCard: React.FC<Props> = React.memo(
             {slash ? (
               <img
                 src={`/${image}`}
+                // src={image}
                 alt={name}
                 className="productCard__link_img"
               />
