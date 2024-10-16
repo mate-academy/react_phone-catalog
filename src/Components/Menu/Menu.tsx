@@ -1,6 +1,7 @@
 import './menu.scss';
 import '../icons/icon.scss';
 import classNames from 'classnames';
+import { Link } from 'react-router-dom';
 
 type Props = {
   showMenu: boolean;
@@ -22,25 +23,25 @@ export const Menu = ({ showMenu, setShowMenu }: Props) => {
         </div>
       </div>
       <nav className="menu__navigation">
-        <a href="" className="menu__link">
+        <Link to="/home" className="menu__link">
           HOME
-        </a>
-        <a href="" className="menu__link">
+        </Link>
+        <Link to="/phones" className="menu__link">
           PHONES
-        </a>
-        <a href="" className="menu__link">
+        </Link>
+        <Link to="/tablets" className="menu__link">
           TABLETS
-        </a>
-        <a href="" className="menu__link">
+        </Link>
+        <Link to="/accessories" className="menu__link">
           ACCESSORIES
-        </a>
+        </Link>
       </nav>
       <footer className="menu__footer">
         <div className="menu__footer-block menu__footer-block--line">
-          <a className="icon__menu-heart"></a>
+          <Link to="/favourites" className="icon__menu-heart"></Link>
         </div>
         <div className="menu__footer-block">
-          <a className="icon__menu-bag"></a>
+          <Link to="/cart" className="icon__menu-bag"></Link>
         </div>
       </footer>
     </menu>

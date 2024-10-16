@@ -14,10 +14,13 @@
   @include page-grid;
 
   margin-right: 0;
+
+
+  overflow: hidden;
   &__breadcrumbs {
     display: flex;
     align-items: flex-start;
-    margin-top: 16px;
+    margin: 16px 0 0 16px;
     grid-column: 1 / 5;
     &--home {
       background-image: url('../../img/Home.svg');
@@ -67,7 +70,7 @@ grid-column: 3 / 5;
       text-decoration: none;
       color: #89939A;
       display: flex;
-      margin-top: 16px;
+      margin: 16px 0 0 16px;
     }
   }
   &__line {
@@ -79,7 +82,7 @@ grid-column: 3 / 5;
   }
   &__title {
     grid-column: 1 / 5;
-    margin: 32px 0 0 16px;
+    margin: 32px 25px 0 16px;
 font-family: Mont-bold, sans-serif;
 font-size: 22px;
 font-weight: 800;
@@ -89,9 +92,14 @@ text-align: left;
   }
   &__image {
     margin-top: 45px;
-    width: 288px;
-    height: 288px;
+    grid-column: 1 / 5;
     object-fit: contain;
+
+    @include on-tablet {
+      grid-column: 3 / 9;
+      width: 288px;
+      height: 288px;
+    }
 
     &::selection {
       border: 2px solid black;
@@ -100,11 +108,23 @@ text-align: left;
   }
   &__phoneslider {
     grid-column: 1 / 5;
-    width: 320px;
+    width: 550px;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-around;
+
+    @include on-tablet {
+      grid-column: 1 / 9;
+    }
   }
 
   &__panel {
     grid-column: 1 / 5;
+    
+    @include on-tablet {
+      grid-column: 9 / 13;
+    }
+
     margin: 32px 0 0 8px;
     &--title {
       color: #89939A;
@@ -146,7 +166,7 @@ font-family: Mont, sans-serif;
 font-size: 12px;
 font-weight: 700;
 line-height: 15.34px;
-text-align: right;
+margin-right: 12px;
 
     }
     &--capacity {
@@ -195,6 +215,7 @@ color: #89939A;
       line-height: 41px;
       letter-spacing: -0.01em;
       text-align: left;
+      margin-right: 5px;
         &-discount {
           font-family: Mont, sans-serif;
           font-size: 22px;
@@ -208,6 +229,7 @@ color: #89939A;
     &--buttons {
       display: flex;
       gap: 8px;
+      justify-content: center;
     }
     &--adding-button {
       width: 231px;
@@ -216,6 +238,13 @@ color: #89939A;
       background-color: #216CFF;
       color: white;
       border: 0;
+
+font-family: Mont, sans-serif;
+font-size: 14px;
+font-weight: 700;
+line-height: 21px;
+text-align: center;
+
     }
     &--heart-button {
       width: 48px;
@@ -227,13 +256,27 @@ color: #89939A;
       background-size: 16px 16px;
       background-position: center;
       background-color: white;
+          &--is-active {
+      width: 48px;
+    height: 48px;
+    border-radius: 100%;
+    border: 1px solid #E2E6E9;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: white;
+    background-size: 48px 48px;
+      background-image: url('../../img/Add\ to\ fovourites\ -\ Added.svg');
+      &:hover {
+        background-image: url('../../img/Add\ to\ fovourites\ -\ Added.svg');
+      }
+    }
     }
     &--basicspec {
       display: flex;
       flex-direction: column;
       gap: 10px;
       grid-column: 1 / 5;
-      margin-top: 32px;
+      margin: 32px 1px 0;
       &-data {
         display: flex;
         justify-content: space-between;
@@ -298,7 +341,7 @@ color: #89939A;
     &--data {
       display: flex;
       justify-content: space-between;
-      margin-top: 10px;
+      margin: 10px 5px 0 1px;
     }
     &--title {
       font-family: Mont, sans-serif;
@@ -335,19 +378,46 @@ color: #89939A;
       text-align: left;
     }
   }
+  .productcard {
+    height: 460px;
+  }
+  .productcard__buttons {
+    margin-bottom: 10px;
+  }
+  .productcard__image {
+    margin-left: 35px;
+  }
 
   .slick-list {
     width: 240px;
+
+    @include on-tablet {
+      div {
+        margin-right: 40px;
+      }
+    }
   }
 
   .slick-dots {
+    grid-column: 1 / 5;
     margin: 10px 8px;
+
+    @include on-tablet {
+      flex-direction: column;
+      gap: 12px;
+      li {
+        height: 76px;
+      }
+    }
   }
   .slick-track {
-    margin: 32px 0 0 16px;
+    margin-top: 32px;
   }
   .slick-prev {
     bottom: 38px;
+  }
+  .slick-next {
+    bottom: 570px;
   }
 
   :not(div) .slick-active {

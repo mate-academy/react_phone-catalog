@@ -13,6 +13,29 @@
 .favourites {
   @include page-grid;
 
+  &__empty-card {
+    &--image {
+      grid-column: 1 / 5;
+      margin-top: 100px;
+    background-image: url('../../img/product-not-found.png');
+    background-repeat: no-repeat;
+    background-size: 100% 400px;
+    height: 400px;
+    width: 100%;
+    }
+
+    &--title {
+      grid-column: 1 / 5;
+      margin-left: 16px;
+font-family: Mont-bold, sans-serif;
+font-size: 48px;
+font-weight: 800;
+line-height: 56px;
+letter-spacing: -0.01em;
+
+    }
+  }
+
   grid-column: 1 / 5;
   margin-right: 8px;
   &__breadcrumbs {
@@ -58,5 +81,13 @@ color: #89939A;
 
   &__addeditems {
     grid-column: 1 / 5;
+  }
+
+  .productcard {
+    margin-bottom: 16px;
+
+  }
+  .productcard__image {
+    margin: 0 70px;
   }
 }

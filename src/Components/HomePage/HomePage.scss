@@ -10,8 +10,8 @@
 
   &__title {
     font-family: Mont-bold, sans-serif;
-    margin: 32px 16px 0;
-    grid-column: 1 / 5;
+    margin: 32px 16px 0 0;
+    grid-column: 1 / 4;
 
     @include on-tablet {
       grid-column: 1 / 13;

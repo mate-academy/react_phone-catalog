@@ -16,4 +16,5 @@ export type Product = {
   ProductData: ProductType | null;
   isFavourite: boolean;
   isAdded: boolean;
+  amountOfModels: number;
 };

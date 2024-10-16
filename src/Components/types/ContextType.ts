@@ -34,4 +34,10 @@ export type ContextType = {
   setFavouriteItems: (favouriteItems: Product[]) => void;
   isFavourite: boolean;
   setIsFavourite: (isFavourite: boolean) => void;
+  addedItems: Product[];
+  setAddedItems: (addedItems: Product[]) => void;
+  isAdded: boolean;
+  setIsAdded: (isAdded: boolean) => void;
+  totalPrice: number;
+  setTotalPrice: (totalPrice: number) => void;
 };

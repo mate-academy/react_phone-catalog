@@ -10,6 +10,8 @@ import { AccessoriesPage } from './Components/ProductPage/AccessoriesPage';
 import { TabletsOffer } from './Components/ProductOffer/TabletsOffer';
 import { AccessoriesOffer } from './Components/ProductOffer/AccessoriesOffer';
 import { Favourites } from './Components/Favourites/Favourites';
+import { CartItems } from './Components/CartItems/CartItems';
+import { PagesNotFound } from './Components/PagesNotFound/PagesNotFound';
 
 export const App = () => (
   <div className="App">
@@ -26,6 +28,8 @@ export const App = () => (
         <Route path="/accessories/:itemId" element={<AccessoriesOffer />} />
         <Route path="/oldPhones/:oldItemId" element={<OldPhoneOffer />} />
         <Route path="/favourites" element={<Favourites />} />
+        <Route path="/cart" element={<CartItems />} />
+        <Route path="*" element={<PagesNotFound />} />
       </Routes>
     </Router>
   </div>

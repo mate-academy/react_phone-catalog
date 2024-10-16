@@ -10,25 +10,58 @@ type Props = {
 };
 
 export const ProductCard = ({ product }: Props) => {
-  const { favouriteItems, setFavouriteItems, isFavourite, setIsFavourite } =
-    useContext(CatalogContext);
+  const {
+    favouriteItems,
+    setFavouriteItems,
+    isFavourite,
+    setIsFavourite,
+    addedItems,
+    setAddedItems,
+    setIsAdded,
+    setTotalPrice,
+    totalPrice,
+  } = useContext(CatalogContext);
 
-  const addProduct = (favouriteProduct: Product) => {
+  const addItems = (addedItem: Product) => {
+    const readyToAdd = addedItems.some(item => item.id === addedItem.id);
+
+    if (addedItem.id !== product.id) {
+      setIsAdded(false);
+      const updateItem = addedItems.filter(item => item.id !== addedItem.id);
+
+      setAddedItems(updateItem);
+    } else {
+      setIsAdded(true);
+      setAddedItems([...addedItems, addedItem]);
+    }
+
+    if (!addedItems.find(item => item.id === addedItem.id)) {
+      setTotalPrice(totalPrice + addedItem.price);
+    } else {
+      setTotalPrice(totalPrice - addedItem.amountOfModels * addedItem.price);
+    }
+
+    if (readyToAdd) {
+      const updateItem = addedItems.filter(item => item.id !== addedItem.id);
+
+      setAddedItems(updateItem);
+    }
+  };
+
+  const addFavouriteProduct = (favouriteProduct: Product) => {
     const readyToAddItem = favouriteItems.some(
       item => item.id === favouriteProduct.id,
     );
 
-    if (favouriteProduct.id === product.id) {
-      setIsFavourite(!isFavourite);
-      setFavouriteItems([...favouriteItems, favouriteProduct]);
-    }
-
-    if (isFavourite) {
+    if (favouriteProduct.id !== product.id) {
       const updateItem = favouriteItems.filter(
         item => item.id !== favouriteProduct.id,
       );
 
       setFavouriteItems(updateItem);
+    } else {
+      setIsFavourite(!isFavourite);
+      setFavouriteItems([...favouriteItems, favouriteProduct]);
     }
 
     if (readyToAddItem) {
@@ -73,14 +106,21 @@ export const ProductCard = ({ product }: Props) => {
         </div>
       </div>
       <div className="productcard__buttons">
-        <button className="productcard__adding-button">Add to cart</button>
+        <button
+          className="productcard__adding-button"
+          onClick={() => addItems(product)}
+        >
+          {addedItems.find(item => item.id === product.id)
+            ? 'ADDED'
+            : 'Add to cart'}
+        </button>
         <button
           className={classNames('productcard__button-with-heart', {
             'productcard__button-with-heart--is-active': favouriteItems.find(
               item => item.id === product.id,
             ),
           })}
-          onClick={() => addProduct(product)}
+          onClick={() => addFavouriteProduct(product)}
         ></button>
       </div>
     </div>

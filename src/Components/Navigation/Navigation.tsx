@@ -54,7 +54,7 @@ export const Navigation = () => {
             ></a>
             <div className="navigation__icons-block">
               <div className="navigation__block-bag">
-                <a href="" className="icon__navigation-bag"></a>
+                <Link to="/cart" className="icon__navigation-bag"></Link>
               </div>
               <div className="navigation__block-heart">
                 <Link

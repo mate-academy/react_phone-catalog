@@ -7,8 +7,9 @@
 
 .CartPage {
   font-family: Mont-bold, sans-serif;
-  width: 320px;
+  width: 440px;
   height: 700px;
+  margin-left: 16px;
 
   @include on-tablet {
     width: 744px;
@@ -120,7 +121,7 @@
 
   &-next {
     position: relative;
-    bottom: 550px;
+    bottom: 599px;
     left: 240px;
 
     @include on-tablet {

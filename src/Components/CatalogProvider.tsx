@@ -14,7 +14,6 @@ import {
 } from '../api/products';
 import { OldProductType } from './types/OldProductType';
 import { ItemPerPage } from './types/ItemPerPage';
-
 export const CatalogContext = createContext<ContextType>({
   filter: FilterType.AllPhones,
   setFilter: () => {},
@@ -44,13 +43,17 @@ export const CatalogContext = createContext<ContextType>({
   setFavouriteItems: () => {},
   isFavourite: false,
   setIsFavourite: () => {},
+  addedItems: [],
+  setAddedItems: () => {},
+  isAdded: false,
+  setIsAdded: () => {},
+  totalPrice: 1,
+  setTotalPrice: () => {},
 });
 
-type Props = {
-  children: React.ReactNode;
-};
-
-export const GlobalCatalogProvider = ({ children }: Props) => {
+export const GlobalCatalogProvider: React.FC<{
+  children: React.ReactElement;
+}> = ({ children }) => {
   const [phones, setPhones] = useState<ProductType[]>([]);
   const [tablets, setTablets] = useState<ProductType[]>([]);
   const [accessories, setAccessories] = useState<ProductType[]>([]);
@@ -69,6 +72,9 @@ export const GlobalCatalogProvider = ({ children }: Props) => {
   const [slideDots, setSlideDots] = useState(0);
   const [pageNumber, setPageNumber] = useState(1);
   const [isFavourite, setIsFavourite] = useState(false);
+  const [isAdded, setIsAdded] = useState(false);
+  const [addedItems, setAddedItems] = useState<Product[]>([]);
+  const [totalPrice, setTotalPrice] = useState(0);
 
   useEffect(() => {
     getPhones().then(setPhones);
@@ -93,6 +99,10 @@ export const GlobalCatalogProvider = ({ children }: Props) => {
   useEffect(() => {
     getOldOffer().then(setOldProductOffers);
   }, []);
+
+  useEffect(() => {
+    localStorage.setItem('favouriteItems', JSON.stringify(favouriteItems));
+  }, [favouriteItems]);
 
   return (
     <CatalogContext.Provider
@@ -125,6 +135,12 @@ export const GlobalCatalogProvider = ({ children }: Props) => {
         setFavouriteItems,
         isFavourite,
         setIsFavourite,
+        addedItems,
+        setAddedItems,
+        isAdded,
+        setIsAdded,
+        totalPrice,
+        setTotalPrice,
       }}
     >
       {children}

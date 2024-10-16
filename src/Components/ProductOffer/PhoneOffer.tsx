@@ -8,11 +8,20 @@ import classNames from 'classnames';
 import { Footer } from '../Footer/Footer';
 import { ProductCard } from '../ProductCard/ProductCard';
 import { useNavigate } from 'react-router-dom';
+import { Product } from '../types/Product';
 
 export const PhonesOffer = () => {
-  const { phones, products } = useContext(CatalogContext);
+  const {
+    phones,
+    products,
+    isFavourite,
+    setIsFavourite,
+    setFavouriteItems,
+    favouriteItems,
+  } = useContext(CatalogContext);
   const { itemId } = useParams();
   const selectedPhone = phones.find(phone => phone.id === itemId);
+  const selectedProduct = products.find(product => product.itemId === itemId);
   const proposedPhones = products.filter(
     product =>
       product.category === 'phones' &&
@@ -53,6 +62,33 @@ export const PhonesOffer = () => {
         })}
       ></img>
     ),
+  };
+
+  const addProduct = (favouriteProduct: Product) => {
+    const readyToAddItem = favouriteItems.some(
+      item => item.id === favouriteProduct.id,
+    );
+
+    if (favouriteProduct.itemId === itemId) {
+      setIsFavourite(!isFavourite);
+      setFavouriteItems([...favouriteItems, favouriteProduct]);
+    }
+
+    if (isFavourite) {
+      const updateItem = favouriteItems.filter(
+        item => item.id !== favouriteProduct.id,
+      );
+
+      setFavouriteItems(updateItem);
+    }
+
+    if (readyToAddItem) {
+      const updateItem = favouriteItems.filter(
+        item => item.id !== favouriteProduct.id,
+      );
+
+      setFavouriteItems(updateItem);
+    }
   };
 
   const secondSettings = {
@@ -156,7 +192,15 @@ export const PhonesOffer = () => {
             <button className="productoffer__panel--adding-button">
               Add to cart
             </button>
-            <button className="productoffer__panel--heart-button"></button>
+            {selectedProduct && (
+              <button
+                className={classNames('productoffer__panel--heart-button', {
+                  'productoffer__panel--heart-button--is-active':
+                    favouriteItems.find(item => item.itemId === itemId),
+                })}
+                onClick={() => addProduct(selectedProduct)}
+              ></button>
+            )}
           </div>
           <div className="productoffer__panel--basicspec">
             <div className="productoffer__panel--basicspec-data">

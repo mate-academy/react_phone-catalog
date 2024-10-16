@@ -1,0 +1,213 @@
+@font-face {
+  font-family: Mont;
+  src: url('../../../public/fonts/Mont-Regular.otf');
+}
+
+@font-face {
+  font-family: Mont-Bold;
+  src: url('../../../public/fonts/Mont-Bold.otf');
+}
+
+.cartitems {
+  &__empty-card {
+    &--image {
+      grid-column: 1 / 5;
+      margin-top: 100px;
+    background-image: url('../../img/cart-is-empty.png');
+    background-repeat: no-repeat;
+    background-size: 100% 400px;
+    height: 400px;
+    width: 100%;
+    }
+    &--title {
+      grid-column: 1 / 5;
+      margin-left: 16px;
+font-family: Mont-bold, sans-serif;
+font-size: 48px;
+font-weight: 800;
+line-height: 56px;
+letter-spacing: -0.01em;
+
+    }
+  }
+  &__back-button {
+    border: 0;
+    background-color: transparent;
+    cursor: pointer;
+font-family: Mont, sans-serif;
+font-size: 12px;
+font-weight: 700;
+line-height: 15.34px;
+text-align: left;
+color: #89939A;
+margin: 16px 0 32px 16px;
+  }
+  &__title {
+font-family: Mont-Bold, sans-serif;
+font-size: 32px;
+font-weight: 800;
+line-height: 41px;
+letter-spacing: -0.01em;
+text-align: left;
+margin-left: 16px;
+  }
+  &__item {
+    width: 280px;
+    height: 160px;
+    border: 1px solid #E2E6E9;
+    border-radius: 10px;
+    margin-left: 24px;
+  }
+
+  &__image {
+    width: 80px;
+    height: 80px;
+  }
+
+  &__name {
+font-family: Mont, sans-serif;
+font-size: 14px;
+font-weight: 600;
+line-height: 21px;
+text-align: left;
+
+  }
+
+  &__price {
+font-family: Mont-bold, sans-serif;
+font-size: 22px;
+font-weight: 800;
+line-height: 30.8px;
+margin-left: 90px;
+  }
+
+  &__cross-button {
+    background-image: url('../../img/Close.svg');
+    background-color: transparent;
+    border: 0;
+    width: 16px;
+    height: 16px;
+    margin: auto 0;
+    cursor: pointer;
+  }
+
+  &__image-container {
+    margin: 15px auto 0;
+    display: flex;
+    width: 256px;
+    gap: 16px;
+  }
+
+  &__price-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 256px;
+    margin: 20px 0 0 8px;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin: 40px 0;
+  }
+
+  &__amount-of-models {
+    width: 4.64px;
+font-family: Mont, sans-serif;
+font-size: 14px;
+font-weight: 600;
+line-height: 21px;
+text-align: center;
+
+  }
+
+  &__button {
+    &--decreased {
+      width: 32px;
+height: 32px;
+background-color: transparent;
+gap: 0;
+border-radius: 100%;
+border: 1px solid #89939A;
+opacity: 0;
+font-size: 22px;
+cursor: pointer;
+&--disabled {
+  border: 1px solid #E2E6E9;
+}
+
+    }
+    &--increased {
+      width: 32px;
+height: 32px;
+background-color: transparent;
+gap: 0;
+border-radius: 100%;
+border: 1px solid #89939A;
+opacity: 0;
+font-size: 22px;
+cursor: pointer;
+&--disabled {
+  border: 1px solid #E2E6E9;
+}
+    }
+  }
+  &__total {
+    width: 288px;
+    background-color: transparent;
+padding-top: 24px;
+gap: 16px;
+border-radius: 10px;
+border: 1px solid #E2E6E9;
+margin-left: 16px;
+  }
+
+
+  &__line {
+    width: 240px;
+    border: 1px solid #E2E6E9;
+    margin: 0 0 20px 16px;
+  }
+  &__total-price {
+font-family: Mont-bold, sans-serif;
+font-size: 32px;
+font-weight: 800;
+line-height: 41px;
+letter-spacing: -0.01em;
+text-align: center;
+margin: 20px 0;
+
+  }
+
+  &__all-products {
+font-family: Mont, sans-serif;
+font-size: 14px;
+font-weight: 600;
+line-height: 21px;
+text-align: center;
+color: #89939A;
+  }
+
+  &__checkout-button {
+    width: 240px;
+    height: 80px;
+    border: 0;
+    border-radius: 10px;
+    background-color: #216CFF;
+    color: white;
+font-family: Mont, sans-serif;
+font-size: 14px;
+font-weight: 700;
+line-height: 21px;
+text-align: center;
+margin: 0 0 20px 16px;
+cursor: pointer;
+&:hover {
+  background-color: white;
+  color: blue;
+  border: 2px solid blue;
+}
+  }
+}
