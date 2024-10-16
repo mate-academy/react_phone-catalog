@@ -4,5 +4,13 @@ module.exports = {
     'plugin:cypress/recommended',
     "prettier",
   ],
+  overrides: [
+    {
+      files: ["declarations.d.ts"],
+      rules: {
+        "no-undef": "off",
+      },
+    },
+  ],
   rules: {},
 };

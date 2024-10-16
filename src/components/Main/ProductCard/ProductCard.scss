@@ -1,0 +1,99 @@
+@import "../../../styles/utils";
+
+.product-card {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-right: 16px;
+  max-width: 212px;
+  height: 440px;
+  padding: 32px;
+  border: 1px solid $c-element;
+
+  &__line {
+    width: 100%;
+    margin: 0;
+  }
+
+  &__image {
+    width: 148px;
+    height: 129px;
+    object-fit: contain;
+  }
+
+  &__name {
+    margin: 0;
+    color: $c-primary;
+  }
+
+  &__prices {
+    display: flex;
+    gap: 10px;
+    margin: 0;
+  }
+
+  &__price {
+    font-weight: 800;
+    margin: 0;
+  }
+
+  &__fullprice {
+    color: $c-secondary;
+    text-decoration: line-through;
+    margin: 0;
+  }
+
+  &__specs {
+    margin: 0;
+    width: 100%;
+    flex-grow: 1;
+  }
+
+  &__spec {
+    display: flex;
+    justify-content: space-between;
+    color: $c-secondary;
+    margin: 8px 0;
+    padding: 0;
+  }
+
+  &__options {
+    color: $c-primary;
+  }
+
+
+  &__buttons {
+    display: flex;
+    margin-top: auto;
+    gap: 8px;
+  }
+
+  &__add-to-cart {
+    cursor: pointer;
+    width: 100px;
+    height: 40px;
+
+    background-color: $c-primary;
+    border: none;
+    color: $c-white;
+  }
+
+  &__wishlist {
+    display: flex;
+    cursor: pointer;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    margin: 0;
+
+    background-color: transparent;
+    border: 1px solid $c-icon;
+  }
+
+  &__favourites {
+    width: 16px;
+    height: 16px;
+  }
+}

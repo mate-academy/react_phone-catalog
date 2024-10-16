@@ -1,0 +1,29 @@
+[
+  {
+    "id": 1,
+    "category": "mobile",
+    "name": "mobile-shop",
+    "image": "img/category-phones.png",
+
+    "title": "Mobile phones",
+    "subtitle": "95 models"
+  },
+
+  {
+    "id": 2,
+    "category": "tablet",
+    "name": "tablet-shop",
+    "image": "img/category-tablets.png",
+    "title": "Tablets",
+    "subtitle": "24 models"
+  },
+
+  {
+    "id": 3,
+    "category": "accessories",
+    "name": "accessories-shop",
+    "image": "img/category-accessories.png",
+    "title": "Accessories",
+    "subtitle": "100 models"
+  }
+]

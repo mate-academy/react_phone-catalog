@@ -1,0 +1,35 @@
+.shop-block {
+  margin-top: 24px;
+  margin-bottom: 56px;
+
+  &__container-img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #6D6474;
+    width: 288px;
+    height: 288px;
+    overflow: hidden;
+  }
+
+
+  &__img {
+    display: block;
+    object-fit: cover;
+    width: 150%;
+    padding: 110px 0 0 80px;
+  }
+
+
+  &__title {
+    font-weight: 700;
+    font-size: 20px;
+    padding: 0;
+    margin: 24px 0 4px;
+  }
+  &__subtitle {
+    font-weight: 700;
+    color: $c-secondary;
+    margin: 0 0 32px;
+  }
+}

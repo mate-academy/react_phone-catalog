@@ -1,19 +1,99 @@
+@import '../../styles/utils';
+
 .header {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+
+  align-items: center;
+  background-color: $c-white;
+  box-shadow: 0 1px 0 0 $c-element;
+  position: fixed;
+  height: 48px;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+
+  &__link-logo {
+    display: flex;
+    align-items: center;
+    margin-left: 16px;
+  }
 
   &__logo {
     width: 64px;
-    height: 22px;
+  }
+
+  &__cart,
+  &__favourites {
+    width: 16px;
+  }
+
+  &__link-favourites,
+  &__link-cart {
+    display: none;
+    box-shadow: 0 0 0 1px $c-element;
+    padding: 16px;
+  }
+
+  &__link-cart {
+    box-shadow: 0 0 0 0 $c-element;
   }
 }
 
-.nav-bar {
-  display: flex;
-  gap: 10px;
-  &__link {
-    color: black;
-    text-transform: uppercase;
-    text-decoration: none;
-    font-size: 12px;
+/* #region Media on-tablet(640) */
+
+@include on-tablet {
+  .header {
+    padding-right: 0;
+
+    @include template {
+      grid-template-columns: repeat(6, 1fr);
+      gap: 16px;
+    }
+
+    &__link-cart,
+    &__link-favourites {
+      display: flex;
+      align-items: center;
+    }
+
+    &__links {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      grid-area: 1 / 6;
+      grid-column: span 6;
+    }
   }
 }
+
+/* #endregion */
+
+/* #region Media on-laptop(1200) */
+
+@include on-laptop {
+  .header {
+    height: 64px;
+
+    @include template {
+      grid-template-columns: repeat(24, 1fr);
+      gap: 24px;
+    }
+
+    &__logo {
+      width: 80;
+    }
+
+    &__link-favourites,
+    &__link-cart {
+      padding: 24px;
+    }
+
+    &__links {
+      grid-area: 1 / 24;
+    }
+  }
+}
+
+/* #endregion */

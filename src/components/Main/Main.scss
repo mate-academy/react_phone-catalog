@@ -1,0 +1,47 @@
+@import '../../styles/utils';
+
+.main {
+  @include container;
+
+  margin-top: 72px;
+  overflow: hidden;
+}
+
+.welcome-block {
+  &__title {
+    margin: 0 0 24px;
+  }
+}
+
+.new-models-block {
+  &__head {
+    margin: 56px 0 24px;
+  }
+
+  &__title {
+    display: block;
+    margin-top: 56px + 26px;
+  }
+
+  &__products {
+    display: flex;
+  }
+}
+
+.shops-block {
+  &__title {
+    margin: 56px 0 24px;
+  }
+}
+
+.section-block {
+  display: block;
+  margin-top: 56px;
+}
+
+.section__title {
+  font-weight: 800;
+  font-size: 22px;
+  padding: 0;
+  margin: 0;
+}

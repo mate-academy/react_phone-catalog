@@ -1,27 +1,28 @@
-import { Link, NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import './Header.scss';
+import { BurgerMenu } from './BurgerMenu/BurgerMenu';
 
 export const Header: React.FC = () => {
   return (
     <header className="header">
-      <Link to="/">
+      <Link to="/" className="header__link-logo">
         <img src="./img/icons/Logo.png" alt="Nice gadgets" className="header__logo" />
       </Link>
-      <nav className="nav-bar">
-        <NavLink to="/home" className="nav-bar__link">
-          Home
-        </NavLink>
-        <NavLink to="/home" className="nav-bar__link">
-          Phones
-        </NavLink>
-        <NavLink to="/home" className="nav-bar__link">
-          tablets
-        </NavLink>
-        <NavLink to="/home" className="nav-bar__link">
-          accessories
-        </NavLink>
-      </nav>
-      <h1>HELLO</h1>
+
+      <BurgerMenu />
+
+      <div className="header__links">
+        <Link to="/cart" className="header__link-favourites">
+          <img
+            src="./img/icons/Favourites (Heart Like).png"
+            alt="Favourites"
+            className="header__favourites"
+          />
+        </Link>
+        <Link to="/favorites" className="header__link-cart">
+          <img src="./img/icons/Shopping bag (Cart).png" alt="Cart" className="header__cart" />
+        </Link>
+      </div>
     </header>
   );
 };
