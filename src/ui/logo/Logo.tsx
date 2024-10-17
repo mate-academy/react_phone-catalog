@@ -7,7 +7,7 @@ import { ROUTES } from '@utils/constants/routes';
 import styles from './logo.module.scss';
 
 type TProps = {
-  onClickAction?: () => void;
+  onClickAction: () => void;
 };
 
 const LogoComponent: FC<TProps> = ({ onClickAction }) => (

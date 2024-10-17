@@ -13,6 +13,7 @@ import { useCart } from '@hooks/useCart';
 import { useProducts } from '@hooks/useProducts';
 import { useFavourites } from '@hooks/useFavourites';
 import { useOutsideClick } from '@hooks/useOutsideClick ';
+import { scrollToTop } from '@utils/helpers/scrollToTop';
 import { ROUTES } from '@utils/constants/routes';
 import { DATA_MENU } from '../navbar/navbar.data';
 
@@ -62,7 +63,7 @@ export const NavDesktop: FC = () => {
   return (
     <nav className={styles.navDesktop}>
       <div className={styles.items}>
-        <Logo />
+        <Logo onClickAction={scrollToTop} />
 
         <ul className={styles.links}>
           {DATA_MENU.map(item => (

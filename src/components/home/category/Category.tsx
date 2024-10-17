@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 
 import { useAppSelector } from '@hooks/typedHooks';
 import { CATEGORY } from '@utils/constants/imagesCategory';
+import { getCategoriesUrl } from '@utils/helpers/getProductUrl';
 
 import styles from './category.module.scss';
 
@@ -22,23 +23,32 @@ export const Category: FC = () => {
     length: categoryLengths[item.id] || 0,
   }));
 
+  const URL = (category: string) => getCategoriesUrl(category);
+
   return (
     <section className={styles.category}>
       <h2>Shop by category</h2>
 
       <div className={styles.products}>
-        {updatedCategories.map(item => (
-          <div className={styles.item} key={item.id}>
-            <Link to={item.routes} title={`Go to the ${item.category}`}>
+        {updatedCategories.map(category => (
+          <div className={styles.item} key={category.id}>
+            <Link
+              to={URL(category.category)}
+              title={`Go to the ${category.title}`}
+            >
               <div
                 className={styles.image}
-                style={{ backgroundColor: `${item.color}` }}
+                style={{ backgroundColor: `${category.color}` }}
               >
-                <img src={item.img} alt={item.category} loading="lazy" />
+                <img
+                  src={category.img}
+                  alt={category.category}
+                  loading="lazy"
+                />
               </div>
               <div className={styles.text}>
-                <h3>{item.name}</h3>
-                <span>{item.length} models</span>
+                <h3>{category.name}</h3>
+                <span>{category.length} models</span>
               </div>
             </Link>
           </div>

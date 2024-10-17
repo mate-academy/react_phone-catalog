@@ -1,6 +1,7 @@
 import { FC } from 'react';
 
 import styles from './pagination.module.scss';
+import { scrollToTop } from '@utils/helpers/scrollToTop';
 
 type TProps = {
   itemPerPage: number;
@@ -21,12 +22,17 @@ export const Pagination: FC<TProps> = ({
     paginationNumbers.push(i);
   }
 
+  const onCLick = (data: number) => {
+    handlePagination(data);
+    scrollToTop();
+  };
+
   return (
     <div className={styles.pagination}>
       {paginationNumbers.map(data => (
         <button
           key={data}
-          onClick={() => handlePagination(data)}
+          onClick={() => onCLick(data)}
           className={currentPage === data ? styles.active : ''}
         >
           {data}

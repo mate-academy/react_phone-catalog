@@ -7,7 +7,8 @@ export const CATEGORY = [
   {
     id: 1,
     name: 'Mobile phones',
-    category: 'Category mobile phones',
+    category: 'phones',
+    title: 'mobile phones category',
     color: '#6d6474',
     img: product1,
     routes: ROUTES.PHONES,
@@ -16,7 +17,8 @@ export const CATEGORY = [
   {
     id: 2,
     name: 'Tablets',
-    category: 'Category Tablets',
+    category: 'tablets',
+    title: 'tablets category',
     color: '#8D8D92',
     img: product2,
     routes: ROUTES.TABLETS,
@@ -25,7 +27,8 @@ export const CATEGORY = [
   {
     id: 3,
     name: 'Accessories',
-    category: 'Category Accessories',
+    category: 'accessories',
+    title: 'accessories category',
     color: '#973D5F',
     img: product3,
     routes: ROUTES.ACCESSORIES,

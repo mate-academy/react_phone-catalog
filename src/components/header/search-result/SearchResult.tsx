@@ -6,6 +6,7 @@ import { TProduct } from '@utils/types/product.type';
 import { getProductUrl } from '@utils/helpers/getProductUrl';
 
 import styles from './SearchResult.module.scss';
+import { scrollToTop } from '@utils/helpers/scrollToTop';
 
 type TProps = {
   currentItemId: string;
@@ -23,6 +24,10 @@ export const SearchResult: FC<TProps> = ({
 
   const NO_RESULT = filteredProducts.length === 0;
 
+  const onClick = () => {
+    setQuery();
+    scrollToTop();
+  };
   return (
     <div className={styles.box}>
       {NO_RESULT ? (
@@ -41,7 +46,7 @@ export const SearchResult: FC<TProps> = ({
             )}
             title={`View details for ${name}`}
             aria-label={`View details for ${name}`}
-            onClick={setQuery}
+            onClick={onClick}
           >
             <div className={styles.wrapper}>
               <div
