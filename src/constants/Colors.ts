@@ -3,6 +3,7 @@ import { ColorPalette } from '../types/ColorPalet';
 export const Colors: ColorPalette = {
   'space gray': '#6E6E73',
   spacegray: '#6E6E73',
+  'space-gray': '#6E6E73',
   silver: '#C0C0C0',
   gold: '#D4AF37',
   blue: '#0071E3',

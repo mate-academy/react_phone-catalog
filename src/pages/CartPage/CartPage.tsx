@@ -32,7 +32,7 @@ export const CartPage: React.FC = () => {
 
   useEffect(() => {
     window.scrollTo({ top: 0 });
-  }, []);
+  }, [productsOfCart]);
 
   return (
     <section className="cart">

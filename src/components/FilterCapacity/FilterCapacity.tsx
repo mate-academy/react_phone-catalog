@@ -21,7 +21,38 @@ export const FilterCapacity: React.FC<Props> = React.memo(({ product }) => {
   const replaceCapacity = (newCapacity: string) => {
     const path = pathname.split('-');
 
-    path[path.length - 2] = newCapacity.toLowerCase();
+    if (
+      path.some(item => {
+        switch (item) {
+          case '38mm':
+            return true;
+
+          case '40mm':
+            return true;
+
+          case '42mm':
+            return true;
+
+          case '44mm':
+            return true;
+
+          default:
+            return false;
+        }
+      })
+    ) {
+      const indexCapacity = path.findIndex(
+        item =>
+          item.includes('38mm') ||
+          item.includes('42mm') ||
+          item.includes('40mm') ||
+          item.includes('44mm'),
+      );
+
+      path[indexCapacity] = newCapacity.toLowerCase();
+    } else {
+      path[path.length - 2] = newCapacity.toLowerCase();
+    }
 
     const newPath = path.join('-');
 

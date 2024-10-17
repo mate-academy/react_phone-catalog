@@ -18,10 +18,33 @@ export const Filter: React.FC<Props> = React.memo(({ product, products }) => {
   const { t } = useTranslation();
   const navigate = useNavigate();
   const { pathname } = useLocation();
-  const path = pathname.split('-');
+
+  let path = pathname.split('-');
 
   const replaceColor = (newColor: string) => {
-    path[path.length - 1] = newColor;
+    if (
+      path.some(item => {
+        switch (item) {
+          case 'space':
+            return true;
+
+          case 'rose':
+            return true;
+
+          case 'sky':
+            return true;
+
+          default:
+            return false;
+        }
+      })
+    ) {
+      path = path.slice(0, -2);
+      path.push(newColor);
+    } else {
+      path = path.slice(0, -1);
+      path.push(newColor.replace(' ', '-'));
+    }
 
     const newPath = path.join('-');
 
