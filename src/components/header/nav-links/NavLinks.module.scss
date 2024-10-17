@@ -1,27 +1,16 @@
 .link {
-  display: flex;
-  align-items: center;
+  @include flex-center;
+
   position: relative;
   text-decoration: none;
   height: var(--size-64);
 
   &::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 0;
-    height: 3px;
-    background-color: var(--primary);
-    transition-duration: var(--transition-duration);
+    @include pseudo(0, 3px, var(--primary));
   }
 
   &:hover::after {
     width: 100%;
-  }
-
-  &:hover {
-    color: var(--primary);
   }
 
   &.active {
@@ -31,10 +20,12 @@
       width: 100%;
     }
   }
-}
 
-@media (max-width: 639px) {
-  .link {
+  &:hover {
+    color: var(--primary);
+  }
+
+  @include mobile {
     height: var(--size-32);
 
     &::after {

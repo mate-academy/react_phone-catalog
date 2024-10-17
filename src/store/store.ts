@@ -12,7 +12,7 @@ import {
 import storage from 'redux-persist/lib/storage';
 
 import productsSlice from './features/product/product.slice';
-import favoriteSlice from './features/favorite/favorite.slice';
+import favouritesSlice from './features/favourites/favourites.slice';
 import cartSlice from './features/cart/cart.slice';
 import phonesSlice from './features/phones/phones.slice';
 import tabletSlice from './features/tablets/tablet.slice';
@@ -21,12 +21,12 @@ import accessoriesSlice from './features/accessories/accessories.slice';
 const persistConfig = {
   key: 'product-cart',
   storage,
-  whitelist: ['cart', 'favorite'],
+  whitelist: ['cart', 'favourite'],
 };
 
 const rootReducer = combineReducers({
   products: productsSlice,
-  favorite: favoriteSlice,
+  favourite: favouritesSlice,
   cart: cartSlice,
   phones: phonesSlice,
   tablets: tabletSlice,

@@ -1,54 +1,52 @@
-import { FC, useEffect, useState } from 'react';
+import { FC, useCallback, useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import Hamburger from 'hamburger-react';
 import { AnimatePresence, motion } from 'framer-motion';
-import { useLocation } from 'react-router-dom';
 
-import { Logo } from '@ui/logo/Logo';
 import { NavLinks } from '../nav-links/NavLinks';
-
-import { menu } from '../navbar/navbar.data';
-
-import { BagIcon } from '@ui/icon/BagIcon';
 import { NavIcon } from '../nav-icon/NavIcon';
-import { ROUTES } from '@utils/constants/routes';
+import { Logo } from '@ui/logo/Logo';
+import { BagIcon } from '@ui/icon/BagIcon';
 import { HeartIcon } from '@ui/icon/HeartIcon';
-import { useAppSelector } from '@hooks/hook';
-import { selectTotalQuantity } from '@store/features/cart/cart.slice';
+
+import { useCart } from '@hooks/useCart';
+import { useFavourites } from '@hooks/useFavourites';
+import { ROUTES } from '@utils/constants/routes';
+import { DATA_MENU } from '../navbar/navbar.data';
 
 import styles from './NavMobile.module.scss';
 
 export const NavMobile: FC = () => {
-  const { items } = useAppSelector(state => state.favorite);
-  const totalQuantity = useAppSelector(selectTotalQuantity);
-  const [isOpenFavorite, setIsOpenFavorite] = useState(false);
-  const [isOpenMenu, setOpenMenu] = useState(false);
   const { pathname } = useLocation();
+  const { hasCartProduct } = useCart();
+  const { hasFavouritesProduct } = useFavourites();
+
+  const [isOpenFavourite, setIsOpenFavourite] = useState(false);
+  const [isOpenMenu, setOpenMenu] = useState(false);
 
   useEffect(() => {
-    setIsOpenFavorite(pathname === ROUTES.FAVORITE);
+    setIsOpenFavourite(pathname === ROUTES.FAVOURITES);
   }, [pathname]);
 
-  const closeMenu = () => {
+  const closeMenu = useCallback(() => {
     setOpenMenu(false);
-    document.body.classList.remove(styles.hiddenScroll);
-  };
+    document.body.classList.remove('hiddenScroll');
+  }, []);
 
   const toggleMenu = () => {
     setOpenMenu(!isOpenMenu);
 
     if (!isOpenMenu) {
-      document.body.classList.add(styles.hiddenScroll);
+      document.body.classList.add('hiddenScroll');
     } else {
-      document.body.classList.remove(styles.hiddenScroll);
+      document.body.classList.remove('hiddenScroll');
     }
   };
-
-  const hasProduct = items.length;
 
   return (
     <nav className={styles.navMobile}>
       <div className={styles.headerBurger}>
-        <Logo closeMenu={closeMenu} />
+        <Logo onClickAction={closeMenu} />
 
         <div className={styles.burger}>
           <Hamburger
@@ -74,7 +72,7 @@ export const NavMobile: FC = () => {
             transition={{ duration: 0.2 }}
           >
             <ul className={styles.links}>
-              {menu.map((item, idx) => (
+              {DATA_MENU.map((item, idx) => (
                 <NavLinks
                   key={item.name}
                   item={item}
@@ -85,16 +83,16 @@ export const NavMobile: FC = () => {
             </ul>
             <div className={styles.wrapper}>
               <NavIcon
-                text="Favorite"
-                products={hasProduct}
-                ROUTE={ROUTES.FAVORITE}
+                text="Favourite"
+                products={hasFavouritesProduct}
+                ROUTE={ROUTES.FAVOURITES}
                 closeMenu={closeMenu}
               >
-                <HeartIcon isOpen={isOpenFavorite} />
+                <HeartIcon isOpen={isOpenFavourite} />
               </NavIcon>
               <NavIcon
                 text="Cart"
-                products={totalQuantity}
+                products={hasCartProduct}
                 ROUTE={ROUTES.CART}
                 closeMenu={closeMenu}
               >

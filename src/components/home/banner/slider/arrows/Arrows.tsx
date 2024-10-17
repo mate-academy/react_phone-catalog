@@ -10,12 +10,7 @@ type TProps = {
   children: ReactNode;
 };
 
-export const Arrows: FC<TProps> = ({
-  slider = () => {},
-  label,
-  children,
-  disabled = false,
-}) => (
+export const Arrows: FC<TProps> = ({ slider, label, children, disabled }) => (
   <button
     className={cn(styles.arrows, disabled && styles.disabled)}
     aria-label={label}

@@ -1,0 +1,48 @@
+.buttons {
+  @include flex-center;
+
+  column-gap: var(--size-8);
+
+  .add,
+  .added {
+    @include size(100%, 40px);
+  }
+
+  .add {
+    border: var(--border-primary);
+    background: var(--primary);
+    color: var(--white);
+
+    @include hover {
+      box-shadow: var(--button-shadow);
+    }
+  }
+
+  .added {
+    color: var(--green);
+    background: var(--white);
+    border: var(--border-element);
+
+    @include hover {
+      color: var(--white);
+      border-color: var(--red);
+      background-color: var(--red);
+      box-shadow: var(--button-shadow-red);
+    }
+  }
+
+  .favourites {
+    display: flex;
+    border: var(--border-element);
+    padding: 11px;
+
+    @include hover {
+      background-color: var(--hover-bg);
+      border-color: var(--primary);
+    }
+
+    svg {
+      animation-play-state: paused;
+    }
+  }
+}

@@ -1,7 +1,7 @@
 import { FC, ReactNode } from 'react';
+import cn from 'classnames';
 
 import styles from './quantityControl.module.scss';
-import cn from 'classnames';
 
 interface IProps {
   onClick: () => void;

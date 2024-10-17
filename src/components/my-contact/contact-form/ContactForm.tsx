@@ -19,7 +19,7 @@ export const ContactForm: FC = () => {
           placeholder="  Andrew Jhones"
           required
         />
-        <label htmlFor="name">Email</label>
+        <label htmlFor="email">Email</label>
         <input
           id="email"
           type="email"

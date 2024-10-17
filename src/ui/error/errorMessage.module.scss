@@ -1,2 +1,11 @@
-// .error {
-// }
+.error {
+  position: absolute;
+  top: 3%;
+  right: 8%;
+  text-wrap: balance;
+  width: 220px;
+  background-color: var(--red);
+  text-align: center;
+  border-radius: 5px;
+  font-weight: var(--fw-700);
+}

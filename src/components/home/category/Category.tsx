@@ -1,10 +1,10 @@
 import { FC } from 'react';
 import { Link } from 'react-router-dom';
 
-import styles from './category.module.scss';
-
-import { useAppSelector } from '@hooks/hook';
+import { useAppSelector } from '@hooks/typedHooks';
 import { CATEGORY } from '@utils/constants/imagesCategory';
+
+import styles from './category.module.scss';
 
 export const Category: FC = () => {
   const { phones } = useAppSelector(state => state.phones);
@@ -29,12 +29,12 @@ export const Category: FC = () => {
       <div className={styles.products}>
         {updatedCategories.map(item => (
           <div className={styles.item} key={item.id}>
-            <Link to={item.routes}>
+            <Link to={item.routes} title={`Go to the ${item.category}`}>
               <div
                 className={styles.image}
                 style={{ backgroundColor: `${item.color}` }}
               >
-                <img src={item.img} alt={item.category} />
+                <img src={item.img} alt={item.category} loading="lazy" />
               </div>
               <div className={styles.text}>
                 <h3>{item.name}</h3>

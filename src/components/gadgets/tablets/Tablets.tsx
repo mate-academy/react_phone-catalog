@@ -2,11 +2,11 @@ import { FC } from 'react';
 
 import { Catalog } from '@components/catalog/Catalog';
 
-import { useAppSelector } from '@hooks/hook';
+import { useProducts } from '@hooks/useProducts';
 import { filterByCategory } from '@utils/helpers/filterByCategory';
 
 export const Tablets: FC = () => {
-  const { products, loading } = useAppSelector(state => state.products);
+  const { products } = useProducts();
 
   const tablets = filterByCategory(products, 'tablets');
 
@@ -15,9 +15,8 @@ export const Tablets: FC = () => {
       title="Apple iPad"
       products={tablets}
       text="Tablets"
-      loading={loading}
-      dropdown={true}
-      pagination={true}
+      dropdown
+      pagination
     />
   );
 };

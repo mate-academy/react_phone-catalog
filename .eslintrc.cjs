@@ -72,7 +72,7 @@ module.exports = {
     ],
     'implicit-arrow-linebreak:': 0,
 
-    'react/prop-types': 0,
+    'react/prop-types': 'off',
     'react/require-default-props': 0,
     'import/prefer-default-export': 0,
     'standard/no-callback-literal': 0,

@@ -1,0 +1,28 @@
+.colors {
+  display: grid;
+  grid-template-columns: repeat(8, var(--size-32));
+  grid-template-rows: 1fr var(--size-32);
+  grid-gap: var(--size-8);
+
+  span {
+    grid-area: 1 / 1 / 2 / 10;
+    font-size: var(--size-12);
+    color: var(--secondary);
+  }
+
+  .circle {
+    border: var(--border-element);
+    border-radius: 50%;
+
+    &:is(.active, :hover) {
+      border-color: var(--primary);
+    }
+  }
+
+  .rectangle {
+    @include size(30px, 30px);
+
+    border: 2px solid var(--white);
+    border-radius: 36px;
+  }
+}

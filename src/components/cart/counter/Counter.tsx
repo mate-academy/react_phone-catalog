@@ -1,12 +1,12 @@
 import { FC } from 'react';
 
-import styles from './counter.module.scss';
-
-import { onKeyDown } from '@utils/helpers/pressOnKey';
-
 import { MinusIcon } from '@ui/icon/MinusIcon';
 import { PlusIcon } from '@ui/icon/PlusIcon';
 import { QuantityControl } from '@ui/button/quantity-control/QuantityControl';
+
+import { onKeyDown } from '@utils/helpers/pressOnKey';
+
+import styles from './counter.module.scss';
 
 type TProps = {
   quantity: number;
@@ -37,7 +37,8 @@ export const Counter: FC<TProps> = ({
         type="number"
         min="1"
         value={quantity}
-        onKeyDown={e => onKeyDown(e, onAddClick, onDeleteClick)}
+        onChange={onAddClick}
+        onKeyDown={e => onKeyDown(e, quantity, onAddClick, onDeleteClick)}
         readOnly={showError}
       />
       <QuantityControl

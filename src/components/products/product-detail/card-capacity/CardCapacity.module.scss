@@ -1,0 +1,30 @@
+.capacity {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--size-8);
+
+  span {
+    flex-basis: 100%;
+    font-size: var(--size-12);
+    color: var(--secondary);
+  }
+
+  .rectangle {
+    border: var(--border-icon);
+    font-weight: var(--fw-500);
+    height: var(--size-32);
+    padding-inline: var(--size-8);
+
+    @include hover {
+      border-color: var(--primary);
+      background-color: var(--hover-bg);
+    }
+
+    &.active {
+      border-color: var(--primary);
+      background-color: var(--primary);
+      color: var(--white);
+      box-shadow: var(--button-shadow);
+    }
+  }
+}

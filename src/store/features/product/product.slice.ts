@@ -3,6 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 import { TProduct } from 'utils/types/product.type';
 import { getProducts } from './getProductsApi';
+import { applySorting } from '@utils/helpers/sortByOptions';
 
 type ProductState = {
   products: TProduct[];
@@ -10,6 +11,7 @@ type ProductState = {
   related?: TProduct[];
   loading: boolean;
   error: string | undefined;
+  sortBy: string;
 };
 
 const initialState: ProductState = {
@@ -18,19 +20,25 @@ const initialState: ProductState = {
   related: [],
   loading: false,
   error: '',
+  sortBy: 'year',
 };
 
 export const productsSlice = createSlice({
   name: 'product',
   initialState: initialState,
-  reducers: {},
+  reducers: {
+    setSortBy: (state, actions) => {
+      state.sortBy = actions.payload;
+      state.products = applySorting(state.products, state.sortBy);
+    },
+  },
   extraReducers: builder => {
     builder
       .addCase(getProducts.pending, state => {
         state.loading = true;
       })
       .addCase(getProducts.fulfilled, (state, { payload }) => {
-        state.products = payload;
+        state.products = applySorting(payload, state.sortBy);
         state.loading = false;
       })
       .addCase(getProducts.rejected, (state, actions) => {
@@ -42,3 +50,4 @@ export const productsSlice = createSlice({
 });
 
 export default productsSlice.reducer;
+export const { setSortBy } = productsSlice.actions;

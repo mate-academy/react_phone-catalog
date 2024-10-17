@@ -9,7 +9,7 @@ import { getProducts } from '@store/features/product/getProductsApi';
 import { getPhones } from '@store/features/phones/getPhoneApi';
 import { getTablets } from '@store/features/tablets/getTabletsApi';
 import { getAccessories } from '@store/features/accessories/getAccessoriesApi';
-import { useAppDispatch } from '@hooks/hook';
+import { useAppDispatch } from '@hooks/typedHooks';
 
 import styles from './App.module.scss';
 

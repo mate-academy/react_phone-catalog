@@ -4,16 +4,8 @@
   height: var(--size-64);
   background-color: var(--white);
   z-index: 999;
-}
 
-@media (max-width: 1199px) {
-  .header {
-    height: var(--size-48);
-  }
-}
-
-@media (max-width: 699px) {
-  .header {
+  @include large {
     height: var(--size-48);
   }
 }

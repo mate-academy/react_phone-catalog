@@ -1,0 +1,54 @@
+.sliderList {
+  @include flex-items-center;
+  @include size(100%, 100%);
+
+  color: var(--secondary);
+  font-weight: var(--fw-400);
+  overflow: hidden;
+
+  .slide {
+    @include flex-column;
+    @include size(100%, 100%);
+
+    justify-content: space-between;
+    flex: 1 0 100%;
+    position: relative;
+    transition: transform 1.5s;
+
+    .text {
+      @include flex-column;
+
+      align-items: center;
+      row-gap: var(--size-8);
+      margin-top: var(--size-48);
+      text-wrap: balance;
+      text-align: center;
+
+      .title {
+        color: var(--white);
+        font-weight: var(--fw-600);
+        font-size: clamp(var(--size-32), 0.86rem + 2.86vw, var(--size-48));
+      }
+
+      p {
+        font-size: clamp(var(--size-24), 0.93rem + 1.43vw, var(--size-32));
+      }
+
+      @include mobile {
+        margin-block: 0 var(--size-24);
+      }
+    }
+
+    img {
+      max-height: 300px;
+      width: 100%;
+      object-fit: contain;
+    }
+  }
+
+  @include large {
+    .slide img {
+      max-height: 250px;
+    }
+  }
+}

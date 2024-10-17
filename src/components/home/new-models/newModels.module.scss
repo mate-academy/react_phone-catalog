@@ -1,15 +1,11 @@
 .newModels {
-  margin-bottom: 80px;
-}
+  margin-bottom: var(--size-80);
 
-@media (max-width: 1199px) {
-  .newModels {
+  @include large {
     margin-bottom: var(--size-64);
   }
-}
 
-@media (max-width: 639px) {
-  .newModels {
+  @include mobile {
     margin-bottom: var(--size-56);
   }
 }

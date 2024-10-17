@@ -1,6 +1,6 @@
 .dots {
-  display: flex;
-  justify-content: center;
+  @include flex-center;
+
   column-gap: 10px;
 
   .dot {

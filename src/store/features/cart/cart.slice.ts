@@ -2,7 +2,7 @@
 import { createSelector, createSlice } from '@reduxjs/toolkit';
 import { ICartItem } from 'utils/types/cart.interface';
 
-interface InitialState {
+export interface InitialState {
   items: ICartItem[];
 }
 const initialState: InitialState = {
@@ -42,6 +42,9 @@ const cartSlice = createSlice({
         }
       }
     },
+    checkoutItems: state => {
+      state.items = [];
+    },
   },
 });
 
@@ -60,4 +63,5 @@ export const selectTotalQuantity = createSelector(
 );
 
 export default cartSlice.reducer;
-export const { addCart, deleteCart, toggleCart } = cartSlice.actions;
+export const { addCart, deleteCart, toggleCart, checkoutItems } =
+  cartSlice.actions;

@@ -1,0 +1,16 @@
+.about {
+  margin-bottom: var(--size-32);
+
+  h4 {
+    margin-bottom: var(--size-16);
+
+    @include mobile {
+      font-size: var(--size-16);
+    }
+  }
+
+  p {
+    font-weight: var(--fw-500);
+    color: var(--secondary);
+  }
+}

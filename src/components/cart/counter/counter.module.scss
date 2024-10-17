@@ -1,6 +1,5 @@
 .counter {
-  display: flex;
-  align-items: center;
+  @include flex-items-center;
 
   .quantity {
     width: var(--size-32);

@@ -1,0 +1,85 @@
+.productCard {
+  margin-block: var(--size-24) var(--size-80);
+
+  .card {
+    @include flex-column;
+
+    .features {
+      display: grid;
+      justify-content: space-between;
+      grid-template-columns: minmax(287px, 464px) minmax(237px, 320px) auto;
+      margin-top: 40px;
+      column-gap: var(--size-16);
+      position: relative;
+
+      @include mobile {
+        grid-template-columns: 1fr;
+        row-gap: 40px;
+        margin-top: var(--size-32);
+      }
+
+      .wrapper {
+        @include flex-column;
+
+        gap: var(--size-24);
+
+        .price {
+          @include flex-column;
+
+          row-gap: var(--size-16);
+          margin-block: var(--size-8);
+        }
+
+        @include mobile {
+          min-width: 233px;
+        }
+      }
+
+      .ids {
+        font-weight: var(--fw-700);
+        font-size: var(--size-12);
+        color: var(--icons);
+        text-align: end;
+        height: fit-content;
+        position: absolute;
+        right: 0;
+      }
+    }
+
+    .overview {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(512px, 1fr));
+      column-gap: var(--size-64);
+      margin-bottom: var(--size-80);
+
+      h3 {
+        margin-block: var(--size-80) var(--size-16);
+
+        @include large {
+          margin-block: var(--size-64) var(--size-16);
+          font-size: var(--size-20);
+        }
+
+        @include mobile {
+          margin-block: var(--size-56) var(--size-16);
+          font-size: var(--size-20);
+        }
+      }
+
+      hr {
+        margin-bottom: var(--size-32);
+      }
+
+      @include mobile {
+        grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+      }
+    }
+
+    h2 {
+      @include mobile {
+        font-size: var(--size-22);
+        line-height: 1.4;
+      }
+    }
+  }
+}

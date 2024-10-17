@@ -1,21 +1,20 @@
 .contact {
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  grid-template-rows: repeat(5, 1fr);
-  column-gap: var(--size-32);
+  display: flex;
+  flex-direction: column;
   row-gap: var(--size-48);
 
   .wrapper {
-    grid-area: 2 / 1 / 6 / 7;
-    display: grid;
-    grid-template-columns: var(--grid-columns-2);
-    grid-template-rows: 1fr;
+    display: flex;
     column-gap: var(--size-32);
+  }
+
+  @include large {
+    row-gap: var(--size-32);
   }
 }
 
-@media (max-width: 1199px) {
-  .contact {
-    row-gap: var(--size-32);
+@media (max-width: 740px) {
+  .contact .wrapper {
+    flex-direction: column;
   }
 }

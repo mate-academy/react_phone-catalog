@@ -1,6 +1,7 @@
 .details {
-  display: flex;
-  flex-direction: column;
+  @include flex-column;
+
+  flex: 1 1 50%;
   align-items: center;
   justify-content: space-between;
   row-gap: var(--size-24);
@@ -13,21 +14,21 @@
   }
 
   .contacts {
-    display: flex;
-    flex-direction: column;
+    @include flex-column;
+
     row-gap: var(--size-16);
   }
 
   .follow {
-    display: flex;
-    flex-direction: column;
+    @include flex-column;
+
     align-items: center;
     row-gap: var(--size-8);
 
     .socials {
-      display: flex;
+      @include flex-center;
+
       flex-wrap: wrap;
-      justify-content: center;
       column-gap: var(--size-8);
     }
   }

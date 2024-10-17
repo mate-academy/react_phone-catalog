@@ -1,0 +1,65 @@
+.box {
+  @include size(350px, 200px);
+  @include fade-in;
+
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 110%;
+  border: var(--border-element);
+  border-radius: 5px;
+  background-color: var(--white);
+  padding-block: var(--size-8);
+  row-gap: var(--size-12);
+  overflow-x: auto;
+
+  &::-webkit-scrollbar {
+    width: var(--size-12);
+  }
+
+  &::-webkit-scrollbar-track {
+    background-color: var(--elements);
+    border-radius: 100px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: var(--icons);
+    border-radius: 100px;
+    height: 35%;
+  }
+
+  .noMatch {
+    text-wrap: balance;
+  }
+
+  .noMatch,
+  .link {
+    padding: 5px var(--size-12);
+  }
+
+  .link {
+    display: flex;
+    color: var(--secondary);
+    font-weight: var(--fw-500);
+
+    .wrapper {
+      display: flex;
+      align-items: center;
+      column-gap: var(--size-8);
+
+      .image {
+        @include size(52px, 52px);
+
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: contain;
+      }
+    }
+
+    &:is(.active, :hover) {
+      color: var(--primary);
+      background-color: var(--hover-bg);
+      border-radius: var(--size-8);
+    }
+  }
+}

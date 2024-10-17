@@ -1,16 +1,16 @@
 .pagination {
   display: flex;
+  justify-content: center;
   flex-wrap: wrap;
-  column-gap: var(--size-8);
+  gap: var(--size-8);
 
   button {
+    @include size(var(--size-32), var(--size-32));
+
     border: var(--border-element);
     font-weight: var(--fw-600);
-    width: var(--size-32);
-    height: var(--size-32);
-    padding: 0;
 
-    &:hover {
+    @include hover {
       border-color: var(--primary);
     }
 

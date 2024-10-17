@@ -1,0 +1,57 @@
+.images {
+  display: grid;
+  grid-template-columns: var(--size-80) repeat(1, 1fr);
+  grid-template-rows: repeat(5, var(--size-80));
+  gap: var(--size-16);
+
+  @include fade-in;
+
+  .currentImage {
+    grid-area: 1 / 2 / 6 / 6;
+    height: 464px;
+
+    img {
+      @include size(100%, 100%);
+
+      object-fit: contain;
+    }
+
+    @include mobile {
+      height: 287px;
+      grid-column: 1 / -1;
+    }
+  }
+
+  .imagesList {
+    @include size(var(--size-80), var(--size-80));
+
+    border: var(--border-element);
+    transition-duration: var(--transition-duration);
+    cursor: pointer;
+
+    img {
+      @include size(100%, 100%);
+
+      object-fit: contain;
+
+      @include hover {
+        scale: 1.2;
+      }
+    }
+
+    &:is(.active, :hover) {
+      border-color: var(--primary);
+      background-color: var(--hover-bg);
+    }
+
+    @include mobile {
+      @include size(51px, 49px);
+    }
+  }
+
+  @include mobile {
+    grid-template-columns: repeat(auto-fit, minmax(51px, 1fr));
+    grid-template-rows: auto;
+    gap: var(--size-16) var(--size-8);
+  }
+}

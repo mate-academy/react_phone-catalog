@@ -1,14 +1,14 @@
 import { FC } from 'react';
 import { Link } from 'react-router-dom';
 
+import { ProductPrice } from '@components/products/product-prices/ProductPrice';
+import { ProductSpec } from '@components/products/product-specs/ProductSpec';
 import { ActionButtons } from '@ui/button/action-buttons/ActionButtons';
 
 import { TProduct } from '@utils/types/product.type';
 import { getProductUrl } from '@utils/helpers/getProductUrl';
 
-import styles from './product.module.scss';
-import { ProductPrice } from '@components/products/product-prices/ProductPrice';
-import { ProductSpec } from '@components/products/product-specs/ProductSpec';
+import styles from './ProductList.module.scss';
 
 interface TProps {
   product: TProduct;
@@ -32,10 +32,23 @@ export const ProductList: FC<TProps> = ({ product, discount }) => {
   const URL = getProductUrl(category, itemId);
 
   return (
-    <div className={styles.list} key={id}>
-      <Link to={URL} className={styles.product} state={{ itemId: itemId }}>
+    <article className={styles.item} key={id}>
+      <Link
+        to={URL}
+        className={styles.product}
+        state={{ itemId: itemId }}
+        title={`View details for ${name}`}
+        aria-label={`View details for ${product.name}`}
+        onClick={() => window.scrollTo(0, 0)}
+      >
         <div className={styles.image}>
-          <img src={image} alt={name} width={208} height={196} />
+          <img
+            src={image}
+            alt={`${name} product image`}
+            width={208}
+            height={196}
+            loading="lazy"
+          />
         </div>
 
         <div className={styles.title}>
@@ -50,6 +63,6 @@ export const ProductList: FC<TProps> = ({ product, discount }) => {
       <ProductSpec screen={screen} capacity={capacity} ram={ram} />
 
       <ActionButtons product={product} />
-    </div>
+    </article>
   );
 };

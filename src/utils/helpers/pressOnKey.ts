@@ -1,5 +1,6 @@
 export const onKeyDown = (
   e: React.KeyboardEvent<HTMLInputElement>,
+  quantity: number,
   onAdd: () => void,
   onDelete: () => void,
 ) => {
@@ -9,6 +10,7 @@ export const onKeyDown = (
   }
 
   if (e.key === 'ArrowDown') {
+    if (quantity <= 1) return;
     e.preventDefault();
     onDelete();
   }

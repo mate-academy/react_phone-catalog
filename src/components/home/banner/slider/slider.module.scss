@@ -1,6 +1,6 @@
 .slider {
-  display: flex;
-  flex-direction: column;
+  @include flex-column;
+
   row-gap: 18px;
   margin-top: 56px;
   font-weight: var(--fw-700);
@@ -16,10 +16,8 @@
       background-color: var(--black);
     }
   }
-}
 
-@media (max-width: 1199px) {
-  .slider {
+  @include large {
     margin-top: var(--size-32);
     row-gap: var(--size-8);
 
@@ -27,11 +25,10 @@
       column-gap: var(--size-20);
     }
   }
-}
 
-@media (max-width: 639px) {
-  .slider {
+  @include mobile {
     row-gap: var(--size-20);
+    margin-inline: -5vw;
 
     .wrapper {
       .content {

@@ -29,10 +29,10 @@ export const NavIcon: FC<TProps> = ({
         cn(styles.navIcon, isActive && styles.active)
       }
       onClick={closeMenu}
-      title={text}
+      title={`Products ${text}`}
       aria-label={text}
     >
-      <div>
+      <div className={styles.wrapper}>
         {children}
         {hasProducts && (
           <span

@@ -1,8 +1,8 @@
 import { FC } from 'react';
 
-import styles from './banner.module.scss';
-
 import { Slider } from './slider/Slider';
+
+import styles from './banner.module.scss';
 
 export const Banner: FC = () => {
   return (

@@ -3,16 +3,15 @@ import { Route, Routes } from 'react-router-dom';
 
 import { ROUTES } from '@utils/constants/routes';
 
-import { HomePage } from '@pages/homePage/HomePage';
-import { CartPage } from '@pages/cartPage/CartPage';
-import { FavoritePage } from '@pages/favoritePage/FavoritePage';
-import { PhonePage } from '@pages/phonePage/PhonePage';
-import { TabletPage } from '@pages/tabletPage/TabletPage';
-import { AccessoriesPage } from '@pages/accessoriesPage/AccessoriesPage';
-import { ProductCard } from '@components/products/products-card/ProductCard';
-import { ContactPage } from '@pages/contactPage/ContactPage';
-import { ProductNotFound } from '@pages/errorsPage/ProductNotFound';
-import { NotFound } from '@pages/errorsPage/NotFound';
+import { ProductDetail } from '@components/products/product-detail/ProductDetail';
+import { HomePage } from '@pages/HomePage/HomePage';
+import { CartPage } from '@pages/CartPage/CartPage';
+import { FavouritesPage } from '@pages/FavouritesPage/FavouritesPage';
+import { CategoryPage } from '@pages/CategoryPage/CategoryPage';
+import { ContactPage } from '@pages/ContactPage/ContactPage';
+import { RightsPage } from '@pages/Rights/RightsPage';
+import { ProductNotFound } from '@pages/ErrorsPage/ProductNotFound';
+import { NotFound } from '@pages/ErrorsPage/NotFound';
 
 export const AppRoutes: FC = () => (
   <Routes>
@@ -20,26 +19,19 @@ export const AppRoutes: FC = () => (
       <Route index element={<HomePage />} />
 
       <Route path={ROUTES.CART} element={<CartPage />} />
-      <Route path={ROUTES.FAVORITE} element={<FavoritePage />} />
+      <Route path={ROUTES.FAVOURITES} element={<FavouritesPage />} />
 
-      <Route path={ROUTES.PHONES}>
-        <Route index element={<PhonePage />} />
-        <Route path={ROUTES.PRODUCT} element={<ProductCard />} />
-      </Route>
-
-      <Route path={ROUTES.ACCESSORIES}>
-        <Route index element={<AccessoriesPage />} />
-        <Route path={ROUTES.PRODUCT} element={<ProductCard />} />
-      </Route>
-
-      <Route path={ROUTES.TABLETS}>
-        <Route index element={<TabletPage />} />
-        <Route path={ROUTES.PRODUCT} element={<ProductCard />} />
+      <Route path={ROUTES.CATEGORIES}>
+        <Route path={ROUTES.CATEGORY}>
+          <Route index element={<CategoryPage />} />
+          <Route path={ROUTES.PRODUCT_DETAIL} element={<ProductDetail />} />
+        </Route>
       </Route>
 
       <Route path={ROUTES.CONTACT} element={<ContactPage />} />
-      <Route path={ROUTES.ERROR} element={<NotFound />} />
+      <Route path={ROUTES.RIGHTS} element={<RightsPage />} />
       <Route path={ROUTES.NOTFOUND} element={<ProductNotFound />} />
+      <Route path={ROUTES.ERROR} element={<NotFound />} />
     </Route>
   </Routes>
 );

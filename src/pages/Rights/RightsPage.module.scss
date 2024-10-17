@@ -1,0 +1,28 @@
+.rightsPage {
+  margin-top: var(--size-48);
+  text-wrap: balance;
+
+  h1 {
+    margin-bottom: var(--size-32);
+  }
+
+  article:not(:last-child) {
+    margin-bottom: var(--size-24);
+  }
+
+  @include large {
+    margin-top: var(--size-32);
+
+    h1 {
+      margin-bottom: var(--size-16);
+    }
+
+    article {
+      margin-bottom: var(--size-20);
+    }
+  }
+
+  @include mobile {
+    margin-top: var(--size-24);
+  }
+}

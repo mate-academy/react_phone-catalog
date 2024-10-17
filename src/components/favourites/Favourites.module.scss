@@ -1,0 +1,32 @@
+.favorite {
+  @include flex-center;
+  @include size(var(--size-64), var(--size-64));
+
+  position: relative;
+  border-inline: var(--border-icon);
+
+  &::after {
+    @include pseudo(0, 3px, var(--primary));
+  }
+
+  &.active {
+    border-inline-color: var(--primary);
+
+    &::after {
+      width: 100%;
+    }
+  }
+
+  &:hover {
+    border-inline-color: var(--primary);
+    background-color: var(--hover-bg);
+  }
+
+  &:hover::after {
+    width: 100%;
+  }
+
+  @include large {
+    @include size(var(--size-48), var(--size-48));
+  }
+}

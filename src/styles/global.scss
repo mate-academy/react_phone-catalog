@@ -1,9 +1,14 @@
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: var(--font-family);
   font-weight: var(--fw-600);
   font-size: var(--size-14);
   line-height: 1.5;
   margin: 0;
+  color: var(--primary);
   background-color: var(--white);
   overflow-x: hidden;
 }
@@ -54,6 +59,7 @@ button {
 a {
   color: var(--secondary);
   text-decoration: none;
+  scroll-behavior: smooth;
 }
 
 ul,
@@ -64,8 +70,8 @@ li {
 }
 
 svg {
-  width: var(--size-16);
-  height: var(--size-16);
+  @include size(var(--size-16), var(--size-16));
+
   color: var(--primary);
 }
 
@@ -77,33 +83,50 @@ button {
   cursor: pointer;
 }
 
-h1 {
+h1,
+h2,
+h3 {
   font-weight: var(--fw-700);
-  font-size: var(--size-48);
+  color: var(--primary);
+}
+
+h1 {
+  font-size: clamp(var(--size-32), 1rem + 5vw, var(--size-48));
   line-height: 1.16;
   letter-spacing: -0.01em;
-  color: var(--primary);
+
+  @include mobile {
+    line-height: 1.28;
+  }
 }
 
 h2 {
-  font-weight: var(--fw-700);
-  font-size: var(--size-32);
+  font-size: clamp(var(--size-22), 0.75rem + 3.13vw, var(--size-32));
   line-height: 1.28;
   letter-spacing: -0.01em;
-  color: var(--primary);
+
+  @include mobile {
+    line-height: 1.4;
+    letter-spacing: 0;
+  }
 }
 
 h3 {
-  font-weight: var(--fw-700);
-  font-size: var(--size-22);
+  font-size: clamp(var(--size-20), 1.13rem + 0.63vw, var(--size-22));
   line-height: 1.4;
-  color: var(--primary);
+
+  @include mobile {
+    line-height: 1.3;
+  }
 }
 
 h4 {
-  font-size: var(--size-20);
+  font-size: clamp(var(--size-16), 0.75rem + 1.25vw, var(--size-20));
   line-height: 1.3;
-  color: var(--primary);
+
+  @include mobile {
+    line-height: 1.25;
+  }
 }
 
 input::-webkit-outer-spin-button,
@@ -131,6 +154,15 @@ hr {
   max-width: 1200px;
   margin-inline: auto;
   padding-inline: var(--size-32);
+  overflow: hidden;
+
+  @include large {
+    padding-inline: var(--size-24);
+  }
+
+  @include mobile {
+    padding-inline: var(--size-16);
+  }
 }
 
 .visually-hidden {
@@ -146,15 +178,6 @@ hr {
   overflow: hidden !important;
 }
 
-@media (max-width: 1199px) {
-  .container {
-    padding-inline: var(--size-24);
-  }
-}
-
-@media (max-width: 639px) {
-  .container {
-    padding-inline: var(--size-16);
-    margin-inline: 0;
-  }
+.hiddenScroll {
+  overflow: hidden;
 }

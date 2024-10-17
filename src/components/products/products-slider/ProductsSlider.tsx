@@ -1,7 +1,5 @@
 import { FC, useState } from 'react';
 
-import styles from './products.module.scss';
-
 import { ProductList } from '../products-list/ProductList';
 import { Arrows } from '@components/home/banner/slider/arrows/Arrows';
 
@@ -10,10 +8,12 @@ import { ArrowRightIcon } from '@ui/icon/ArrowRightIcon';
 
 import { TProduct } from '@utils/types/product.type';
 
+import styles from './ProductsSlider.module.scss';
+
 type TProps = {
   title: string;
-  discount?: boolean;
   products: TProduct[];
+  discount?: boolean;
 };
 
 export const ProductsSlider: FC<TProps> = ({
@@ -23,7 +23,7 @@ export const ProductsSlider: FC<TProps> = ({
 }) => {
   const [productIndex, setProductIndex] = useState(0);
 
-  const itemsToShow = 4;
+  const itemsToShow = 1;
 
   const showNextProduct = () => {
     setProductIndex(index =>

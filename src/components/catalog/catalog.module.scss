@@ -1,12 +1,12 @@
 .catalog {
-  display: flex;
-  flex-direction: column;
+  @include flex-column;
+
   row-gap: 40px;
-  margin-block: var(--size-24) 80px;
+  margin-block: var(--size-24) var(--size-80);
 
   .links {
-    display: flex;
-    align-items: center;
+    @include flex-items-center;
+
     column-gap: var(--size-8);
     color: var(--secondary);
     font-size: var(--size-12);
@@ -34,8 +34,8 @@
   }
 
   .wrapper {
-    display: flex;
-    flex-direction: column;
+    @include flex-column;
+
     row-gap: var(--size-24);
 
     .dropdowns {
@@ -46,7 +46,12 @@
     .list {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(272px, 1fr));
-      gap: var(--size-16);
+      gap: 40px var(--size-16);
+
+      @include mobile {
+        grid-template-columns: 288px;
+        justify-content: center;
+      }
     }
   }
 

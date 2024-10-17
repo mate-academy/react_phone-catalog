@@ -1,20 +1,21 @@
 import { FC } from 'react';
 
-import styles from './hotPrice.module.scss';
-
 import { ProductsSlider } from '@components/products/products-slider/ProductsSlider';
 
-import { useAppSelector } from '@hooks/hook';
-import { getProductWithLargestDiscount } from '@utils/helpers/sortedByPrice';
+import { useProducts } from '@hooks/useProducts';
+
+import styles from './hotPrice.module.scss';
 
 export const HotPrice: FC = () => {
-  const { products } = useAppSelector(state => state.products);
-
-  const list = getProductWithLargestDiscount(products);
+  const { productWithDiscount } = useProducts();
 
   return (
     <section className={styles.hotPrice}>
-      <ProductsSlider title="Hot prices" products={list} discount={true} />
+      <ProductsSlider
+        title="Hot prices"
+        products={productWithDiscount}
+        discount
+      />
     </section>
   );
 };

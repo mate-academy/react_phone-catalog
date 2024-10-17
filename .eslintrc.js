@@ -30,5 +30,6 @@ module.exports = {
       { devDependencies: ['**/*.test.js', '**/*.spec.js'] },
     ],
     'react/react-in-jsx-scope': 'off',
+    'react/prop-types': 'off',
   },
 };

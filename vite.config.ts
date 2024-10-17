@@ -4,6 +4,13 @@ import { resolve } from 'path';
 
 export default defineConfig({
   plugins: [react()],
+  css: {
+    preprocessorOptions: {
+      scss: {
+        additionalData: '@import "./src/styles/mixins.scss";',
+      },
+    },
+  },
   resolve: {
     alias: {
       '@components': resolve(__dirname, 'src/components'),

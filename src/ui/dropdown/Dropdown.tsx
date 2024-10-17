@@ -1,51 +1,90 @@
-import { FC, useEffect, useState } from 'react';
+import { FC, useCallback, useEffect, useState } from 'react';
+import cn from 'classnames';
+
+import { ArrowUpIcon } from '@ui/icon/ArrowUpIcon';
+import { ArrowDownIcon } from '@ui/icon/ArrowDownIcon';
+
+import { useOutsideClick } from '@hooks/useOutsideClick ';
+import { TDropdownProps } from './TDropdownProps.type';
 
 import styles from './dropdown.module.scss';
 
-import { TOptions } from 'utils/constants/optionsForSort';
-
-type TProps = {
-  text: string;
-  options: TOptions[];
-  setItemPerPage?: (value: number) => void;
-};
-
-export const Dropdown: FC<TProps> = ({
+export const Dropdown: FC<TDropdownProps> = ({
   text,
   options,
+  isDropdownOpen,
+  small,
+  setIsDropdownOpen,
   setItemPerPage = () => {},
+  setCurrentPage = () => {},
+  closeDropdown = () => {},
+  setSortBy = () => {},
 }) => {
-  const [selectedValue, setSelectedValue] = useState<number>(() => {
-    const initialValue = options[0]?.value;
-
-    return typeof initialValue === 'number' ? initialValue : 10;
-  });
+  const ref = useOutsideClick(closeDropdown);
+  const [selectedValue, setSelectedValue] = useState<number | string>(
+    options[0]?.value || '',
+  );
 
   useEffect(() => {
-    setItemPerPage(selectedValue);
+    setItemPerPage(Number(selectedValue));
   }, [selectedValue, setItemPerPage]);
 
-  const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    const value = e.target.value;
+  const handleOptionSelect = useCallback(
+    (value: string | number) => {
+      setSelectedValue(value);
+      if (typeof value === 'string') {
+        setSortBy(value);
+      } else if (typeof value === 'number') {
+        setItemPerPage(value);
+        setCurrentPage(1);
+      }
+    },
+    [setItemPerPage],
+  );
 
-    setSelectedValue(Number(value));
-  };
+  const currentOption =
+    options.find(option => option.value === selectedValue)?.label ||
+    options[0]?.label;
 
   return (
-    <div className={styles.dropdown}>
+    <div className={styles.dropdown} ref={ref}>
       <label htmlFor={text}>{text}</label>
-      <select
+
+      <button
         id={text}
-        className={styles.select}
-        value={selectedValue}
-        onChange={handleChange}
+        className={cn(styles.select, small && styles.smallSelect)}
+        onClick={setIsDropdownOpen}
+        aria-expanded={isDropdownOpen}
+        aria-haspopup="true"
+        type="button"
       >
-        {options.map(option => (
-          <option key={option.value} value={option.value}>
-            {option.label}
-          </option>
-        ))}
-      </select>
+        <span className={styles.dropdownTitle}>
+          {currentOption}
+          {isDropdownOpen ? <ArrowUpIcon /> : <ArrowDownIcon />}
+        </span>
+
+        {isDropdownOpen && (
+          <div className={styles.optionsList}>
+            <ul className={styles.option}>
+              {options.map(option => (
+                <li
+                  key={option.value}
+                  onClick={() => handleOptionSelect(option.value)}
+                  role="menuitem"
+                >
+                  <span
+                    className={cn(
+                      selectedValue === option.value && styles.active,
+                    )}
+                  >
+                    {option.label}
+                  </span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+      </button>
     </div>
   );
 };

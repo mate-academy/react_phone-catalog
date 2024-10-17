@@ -1,20 +1,18 @@
 .info {
-  display: flex;
-  align-items: center;
+  @include flex-items-center;
+
   column-gap: var(--size-8);
 
-  &:hover {
-    svg {
-      scale: 1.2;
-    }
+  &:hover svg {
+    scale: 1.2;
   }
 
   a {
-    background-image: linear-gradient(to right, #891ce8, #7560fa 50%, #000 50%);
+    background-image: var(--bg-image-gradient);
     background-size: 200% 100%;
     background-position: -100%;
     position: relative;
-    -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
   }
 
@@ -39,8 +37,8 @@
   }
 
   & address {
-    display: flex;
-    align-items: center;
+    @include flex-items-center;
+
     column-gap: var(--size-8);
   }
 }

@@ -1,14 +1,15 @@
 .item {
-  display: flex;
-  align-items: center;
+  @include flex-items-center;
+
   justify-content: space-between;
+  position: relative;
   column-gap: var(--size-24);
   padding: var(--size-24);
   border: var(--border-element);
 
   .wrapper {
-    display: flex;
-    align-items: center;
+    @include flex-items-center;
+
     column-gap: var(--size-24);
 
     .delete {
@@ -18,7 +19,7 @@
       svg {
         color: var(--icons);
 
-        &:hover {
+        @include hover {
           color: var(--primary);
         }
       }
@@ -33,33 +34,46 @@
       font-size: var(--size-22);
       line-height: 1.4;
       text-align: end;
-      width: 80px;
+      width: var(--size-80);
     }
 
     .image {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 80px;
-      height: 80px;
+      @include flex-center;
+      @include size(var(--size-80), var(--size-80));
+
+      transition-duration: var(--transition-duration);
 
       img {
         height: 66px;
         object-fit: contain;
       }
+
+      @include hover {
+        scale: 1.1;
+      }
+    }
+
+    .title {
+      color: var(--primary);
+      width: 336px;
+      text-wrap: balance;
+
+      @include hover {
+        text-shadow: var(--text-shadow);
+      }
     }
   }
-}
 
-@media (max-width: 1199px) {
-  .item {
+  @include large {
     padding: var(--size-24);
     justify-content: space-evenly;
-  }
-}
 
-@media (max-width: 639px) {
-  .item {
+    .wrapper .title {
+      width: 176px;
+    }
+  }
+
+  @include mobile {
     padding: var(--size-16);
     row-gap: var(--size-16);
     flex-direction: column;
@@ -68,6 +82,10 @@
       justify-content: space-around;
       column-gap: var(--size-16);
       width: 100%;
+
+      .title {
+        width: 176px;
+      }
     }
   }
 }

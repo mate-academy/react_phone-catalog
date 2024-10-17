@@ -1,0 +1,30 @@
+.products {
+  .wrapper {
+    @include flex-items-center;
+
+    justify-content: space-between;
+    margin-bottom: var(--size-24);
+    column-gap: 72px;
+
+    .arrows {
+      display: flex;
+      column-gap: var(--size-16);
+
+      button {
+        display: flex;
+        padding: 7px;
+      }
+    }
+  }
+
+  .list {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(272px, 1fr));
+    column-gap: var(--size-16);
+    overflow: hidden;
+
+    @include mobile {
+      grid-template-columns: repeat(4, minmax(212px, 272px));
+    }
+  }
+}

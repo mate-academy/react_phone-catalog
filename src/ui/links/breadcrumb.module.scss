@@ -16,15 +16,17 @@
     }
   }
 
+  p {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
   svg {
     color: var(--icon);
   }
 
   .active {
     color: var(--primary);
-  }
-
-  .offline {
-    color: var(--secondary);
   }
 }

@@ -1,7 +1,6 @@
 .summary {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  @include flex-center-column;
+
   font-size: var(--size-14);
   border: var(--border-element);
   padding: 23px;
@@ -19,16 +18,15 @@
   }
 
   .separator {
-    height: 1px;
-    width: 320px;
+    @include size(320px, 1px);
+
     background-color: var(--elements);
     margin-block: var(--size-24);
   }
 
   button {
-    width: 100%;
-    height: var(--size-48);
-    font-weight: var(--fw-700);
+    @include size(100%, var(--size-48));
+
     color: var(--white);
     background: var(--primary);
 
@@ -36,19 +34,15 @@
       box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.4);
     }
   }
-}
 
-@media (max-width: 1199px) {
-  .summary {
+  @include large {
     .separator {
       width: 100%;
       margin-block: var(--size-16);
     }
   }
-}
 
-@media (max-width: 639px) {
-  .summary {
+  @include mobile {
     padding: var(--size-24);
   }
 }

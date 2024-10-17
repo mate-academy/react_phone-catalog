@@ -1,6 +1,6 @@
 .arrows {
-  display: flex;
-  align-items: center;
+  @include flex-items-center;
+
   border: var(--border-icon);
   padding-inline: 7px;
 

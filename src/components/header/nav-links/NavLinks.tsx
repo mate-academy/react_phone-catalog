@@ -29,7 +29,7 @@ export const NavLinks: FC<IMenuItem> = ({ item, idx = 0, closeMenu }) => {
         to={item.link}
         className={({ isActive }) => cn(styles.link, isActive && styles.active)}
         onClick={closeMenu}
-        title={item.name}
+        title={`Go to to the ${item.name} page`}
         aria-label={item.name}
       >
         {item.name}

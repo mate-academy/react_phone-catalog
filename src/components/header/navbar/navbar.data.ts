@@ -1,21 +1,21 @@
 import { ROUTES } from '@utils/constants/routes';
 import { IMenuLink } from '../nav-links/navLinks-items.interface';
 
-export const menu: IMenuLink[] = [
+export const DATA_MENU: IMenuLink[] = [
   {
     link: ROUTES.HOME,
-    name: 'HOME',
+    name: 'home',
   },
   {
-    link: ROUTES.PHONES,
-    name: 'PHONES',
+    link: `${ROUTES.CATEGORIES}/${ROUTES.PHONES}`,
+    name: 'phones',
   },
   {
-    link: ROUTES.TABLETS,
-    name: 'TABLETS',
+    link: `${ROUTES.CATEGORIES}/${ROUTES.TABLETS}`,
+    name: 'tablets',
   },
   {
-    link: ROUTES.ACCESSORIES,
-    name: 'ACCESSORIES',
+    link: `${ROUTES.CATEGORIES}/${ROUTES.ACCESSORIES}`,
+    name: 'accessories',
   },
 ];

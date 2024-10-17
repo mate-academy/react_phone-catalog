@@ -6,12 +6,10 @@
     'facebook': #3b5999,
   );
 
+  @include flex-center;
+  @include size(var(--size-48), var(--size-48));
+
   position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: var(--size-48);
-  height: var(--size-48);
   border-radius: 100%;
   background: var(--white);
 
@@ -28,10 +26,10 @@
   }
 
   svg {
+    @include size(percentage(0.4), percentage(0.4));
+
     position: relative;
     z-index: 1;
-    height: percentage(0.4);
-    width: percentage(0.4);
     transition-duration: var(--transition-duration);
   }
 
@@ -42,8 +40,8 @@
     }
 
     &::after {
-      width: calc(100% + 2px);
-      height: calc(100% + 2px);
+      @include size(calc(100% + 2px), calc(100% + 2px));
+
       margin-left: calc(-50% - 1px);
     }
   }

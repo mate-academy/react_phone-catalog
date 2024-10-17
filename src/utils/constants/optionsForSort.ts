@@ -3,7 +3,7 @@ export type TOptions = {
   label: string;
 };
 
-export const SORT_BY: TOptions[] = [
+export const SORT_OPTIONS: TOptions[] = [
   { value: 'year', label: 'Newest' },
   { value: 'fullPrice', label: 'Expensive' },
   { value: 'price', label: 'Discount' },

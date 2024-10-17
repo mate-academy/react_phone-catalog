@@ -6,7 +6,7 @@
     height: var(--size-32);
   }
 
-  &:hover {
+  @include hover {
     scale: 1.1;
   }
 }

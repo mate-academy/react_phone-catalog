@@ -8,11 +8,20 @@
   --green: #27ae60;
   --red: #eb5757;
   --black: #000;
+  --text-shadow: 1px 1px 2px var(--secondary);
+  --button-shadow: 0 3px 13px 0 var(--secondary);
+  --button-shadow-red: 0 3px 13px 0 var(--red);
   --filter-primary: brightness(0) saturate(100%) invert(17%) sepia(5%)
     saturate(747%) hue-rotate(193deg) brightness(97%) contrast(91%);
   --filter-red: brightness(0) saturate(100%) invert(28%) sepia(81%)
     saturate(7419%) hue-rotate(355deg) brightness(98%) contrast(123%);
   --gradient: linear-gradient(49deg, #891ce8 0%, #7560fa 47.05%, #e963ff 100%);
+  --bg-image-gradient: linear-gradient(
+    to right,
+    #891ce8,
+    #7560fa 50%,
+    #000 50%
+  );
   --transition-duration: 0.2s;
   --font-family: 'Mont', sans-serif;
   --fw-800: 800;
@@ -20,6 +29,7 @@
   --fw-600: 600;
   --fw-500: 500;
   --fw-400: 400;
+  --size-80: 80px;
   --size-64: 64px;
   --size-56: 56px;
   --size-48: 48px;
