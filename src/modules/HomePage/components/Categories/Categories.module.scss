@@ -1,0 +1,39 @@
+@use "../../../shared/styles/mixins" as *;
+@use "../../../shared/styles/extends";
+
+.Title {
+  margin-bottom: 24px;
+
+  @include full-grid-width;
+  @include color-transition((color: var(--primary-text-color)));
+  @extend %h2;
+}
+
+.List {
+  @include full-grid-width;
+  @include child-grid;
+
+  row-gap: 32px;
+}
+
+.Item {
+  grid-column: span 4;
+
+  @include for-desktop {
+    grid-column: span 8;
+  }
+}
+
+.Categories {
+  @include grid;
+
+  padding-top: 80px;
+
+  @include for-tablet {
+    padding-top: 64px;
+  }
+
+  @include for-mobile {
+    padding-top: 56px;
+  }
+}

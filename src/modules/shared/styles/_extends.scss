@@ -43,6 +43,19 @@
   }
 }
 
+%h4 {
+  font-family: Mont, Arial, Helvetica, sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 25.56px;
+  text-align: left;
+
+  @include for-mobile {
+    font-size: 16px;
+    line-height: 20.45px;
+  }
+}
+
 %uppercase {
   font-family: Mont, Arial, Helvetica, sans-serif;
   font-size: 12px;

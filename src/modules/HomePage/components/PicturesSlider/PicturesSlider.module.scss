@@ -42,7 +42,7 @@
 
   user-select: none;
 
-  @include hover(transform, scale(1.01));
+  @include big-element-scale-on-hover;
 
   @include for-mobile {
     @include full-grid-width;

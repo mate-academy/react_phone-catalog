@@ -52,6 +52,10 @@
   @include hover(transform, $hover-scale)
 }
 
+@mixin big-element-scale-on-hover {
+  @include hover(transform, $big-element-hover-scale)
+}
+
 @mixin visually-hidden {
   clip: rect(0 0 0 0);
   clip-path: inset(50%);

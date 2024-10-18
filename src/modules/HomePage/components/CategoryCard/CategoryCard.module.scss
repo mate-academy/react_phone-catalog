@@ -1,0 +1,38 @@
+@use "../../../shared/styles/vars" as *;
+@use "../../../shared/styles/mixins" as *;
+@use "../../../shared/styles/extends";
+
+.ImageWrapper {
+  width: 100%;
+  aspect-ratio: 1;
+  margin-bottom: 24px;
+  overflow: hidden;
+  transition: transform $transition-duration;
+}
+
+.Image {
+  position: relative;
+  object-fit: contain;
+}
+
+.Title {
+  margin-bottom: 4px;
+
+  @extend %h4;
+  @include color-transition((color: var(--primary-text-color)));
+}
+
+.AmountOfModels {
+  height: 1lh;
+
+  @extend %body-text;
+  @include color-transition((color: var(--secondary-text-color)));
+}
+
+.CategoryCard {
+  text-decoration: none;
+
+  &:hover .ImageWrapper {
+    transform: $big-element-hover-scale;
+  }
+}

@@ -9,6 +9,7 @@ import { translateItem, wait } from '../../../shared/functions/functions';
 // eslint-disable-next-line max-len
 import { ProductsSliderSkeleton } from '../../../shared/components/ProductsSliderSkeleton';
 import { LoadingStatus } from '../../../shared/types/enums';
+import { Categories } from '../Categories';
 
 export const HomePage: React.FC = () => {
   const [products, setProducts] = useState<Product[]>([]);
@@ -98,6 +99,8 @@ export const HomePage: React.FC = () => {
             <ProductsSlider title={newModels} products={brandNewProducts} />
           )}
 
+          <Categories products={products} loadingStatus={loadingStatus} />
+
           {hotPriceProducts.length && (
             <ProductsSlider title={hotPrices} products={hotPriceProducts} />
           )}
@@ -110,6 +113,8 @@ export const HomePage: React.FC = () => {
             onReloadClick={handleReloadClick}
             responseStatus={responseStatus}
           />
+
+          <Categories products={products} loadingStatus={loadingStatus} />
 
           <ProductsSliderSkeleton
             title={hotPrices}
