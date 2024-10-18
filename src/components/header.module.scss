@@ -1,0 +1,30 @@
+.header {
+  box-shadow: 0px 1px 1px 0px #e2e6e9;
+
+  &_div {
+    height: 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &_logo {
+    width: 64px;
+    height: 22px;
+  }
+
+  &_icon {
+    display: block;
+    width: 16px;
+    height: 16px;
+    background-size: cover;
+    background-image: url(/img/littleImages/Menu-header.svg);
+  }
+
+  &_menu {
+    align-content: center;
+    height: 48px;
+    padding-left: 16px;
+    box-shadow: -1px 1px 1px 0px #e2e6e9;
+  }
+}
