@@ -10,11 +10,6 @@ export const HomePage = () => {
   return (
     <div className={styles.homePage}>
       <div className={styles.homePage__title}>
-        <h1
-          className={`${styles.homePage__title} ${styles['homePage__title--hidden']}`}
-        >
-          Product Catalog
-        </h1>
         <Title level={1}>Welcome to Nice Gadgets store!</Title>
       </div>
       <section className={styles.homePage__section}>
