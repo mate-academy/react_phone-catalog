@@ -22,7 +22,7 @@ export const Slider = () => {
     }, 3000);
 
     return () => window.clearInterval(intervalId);
-  }, [activeImgIndex]);
+  }, [activeImgIndex, imgs.length]);
 
   useEffect(() => {
     if (activeImgIndex === imgs.length - 1) {
@@ -36,7 +36,7 @@ export const Slider = () => {
         setActiveImgIndex(2);
       }, 3000);
     }
-  }, [activeImgIndex]);
+  }, [activeImgIndex, imgs.length]);
 
   const handleSlideCount = (index: number) => {
     setActiveImgIndex(index);
