@@ -1,0 +1,122 @@
+@font-face {
+  font-family: "Mont Regular";
+  src: url("../../public/fonts/Mont-Regular.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "Mont Bold";
+  src: url("../../public/fonts/Mont-Bold.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "Mont Semibold";
+  src: url("../../public/fonts/Mont-SemiBold.otf") format("opentype");
+}
+
+%mont-bold {
+  font-family: "Mont Bold", sans-serif;
+}
+
+%mont-semi-bold {
+  font-family: "Mont Semibold", sans-serif;
+}
+
+%mont-regular {
+  font-family: "Mont Regular", sans-serif;
+}
+
+%h1 {
+  @extend %mont-bold;
+
+  font-size: 4.8rem;
+  line-height: 5.6rem;
+  letter-spacing: -0.01em;
+
+  &-mobile {
+    @extend %h1;
+
+    font-size: 3.2rem;
+    line-height: 4.1rem;
+  }
+}
+
+%h2 {
+  @extend %mont-bold;
+
+  font-size: 3.2rem;
+  line-height: 4.1rem;
+  letter-spacing: -0.01em;
+
+  &-mobile {
+    @extend %h2;
+
+    font-size: 2.2rem;
+    line-height: 3.1rem;
+    letter-spacing: 0;
+  }
+}
+
+%h3 {
+  @extend %mont-semi-bold;
+
+  font-size: 2.2rem;
+  line-height: 3.1rem;
+  letter-spacing: 0;
+
+  &-mobile {
+    @extend %h3;
+
+    font-size: 2rem;
+    line-height: 2.6rem;
+  }
+}
+
+%h4 {
+  @extend %mont-semi-bold;
+
+  font-size: 2rem;
+  line-height: 2.6rem;
+  letter-spacing: 0;
+
+  &-mobile {
+    @extend %h4;
+
+    font-size: 1.6rem;
+    line-height: 2rem;
+  }
+}
+
+%text {
+  @extend %mont-bold;
+
+  &-uppercase {
+  @extend %text;
+
+  text-transform: uppercase;
+  font-size: 1.2rem;
+  line-height: 1.1rem;
+  letter-spacing: 0.04em;
+  }
+
+  &-buttons{
+    @extend %mont-semi-bold;
+
+    font-size: 1.4rem;
+    line-height: 2.1rem;
+    letter-spacing: 0;
+  }
+
+  &-body {
+    @extend %text-buttons;
+    @extend %mont-regular;
+  }
+
+  &-small {
+    @extend %mont-semi-bold;
+
+    font-size: 1.2rem;
+    line-height: 1.5rem;
+    letter-spacing: 0;
+  }
+}
+

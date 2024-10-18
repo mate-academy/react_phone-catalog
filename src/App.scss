@@ -1,1 +1,18 @@
-// not empty
+@import "normalize.css";
+@import "./styles/index";
+
+h1 {
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  font-family: Mont, sans-serif;
+  font-size: 62.5%;
+}
+
+.App {
+  position: relative;
+  background-color: $color-background;
+  min-width: 32rem;
+}

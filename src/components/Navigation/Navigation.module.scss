@@ -1,0 +1,65 @@
+@import "src/styles";
+
+.nav {
+  display: flex;
+  gap: 1.6rem;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 8rem;
+
+  @include on-tablet {
+    flex-direction: row;
+    gap: 3.2rem;
+    margin-top: 0;
+  }
+
+  @include on-m-desktop {
+    gap: 6.4rem;
+  }
+}
+
+.navItem {
+  @extend %text-uppercase;
+
+  position: relative;
+  text-decoration: none;
+  color: $color-secondary;
+
+  padding-block: 0.8rem;
+
+  transition: all $transition-duration ease-out;;
+
+  @include on-tablet{
+    padding-block: 1.85rem;
+  }
+
+  @include on-m-desktop{
+    padding-block: 2.65rem;
+  }
+
+  &::before, &::after{
+    content: '';
+    position: absolute;
+    bottom: 0;
+    width: 0;
+    height: 2px;
+    background-color: $color-text-hover;
+    transition: width $transition-duration ease-out;
+  }
+
+  &::before {
+    left: 50%;
+  }
+
+  &::after {
+    right: 50%
+  }
+
+  &:hover {
+    color: $color-text-hover;
+
+    &::before, &::after{
+    width: 50%;
+    }
+  }
+}

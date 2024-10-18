@@ -1,0 +1,40 @@
+@import "src/styles/colors";
+
+.sliderContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  overflow-x: hidden;
+}
+
+.sliderImgContainer {
+  display: flex;
+
+  transition: all 1s ease-in-out;
+}
+
+.sliderImg {
+  width: 100vw;
+  aspect-ratio: 1;
+}
+
+.positionBtnContainer {
+  align-self: center;
+  display: flex;
+  gap: 0.4rem;
+}
+
+.positionBtn {
+  height: 0.4rem;
+  width: 1.4rem;
+
+  margin: 1rem .5rem;
+  background-color: $color-elements;
+  border: none;
+  cursor: pointer;
+}
+
+.positionBtnActive {
+  background-color: $color-primary;
+}
+

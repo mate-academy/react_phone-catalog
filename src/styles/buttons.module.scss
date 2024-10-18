@@ -1,0 +1,46 @@
+@import 'colors';
+@import "mixins";
+
+%button {
+  background-position: center;
+  background-color: $color-white;
+  background-repeat: no-repeat;
+  background-size: 1.6rem;
+  cursor: pointer;
+
+  box-shadow: -1px 0 0 0 $color-elements;
+
+
+  width: 4.8rem;
+  height: 4.8rem;
+  border: none;
+
+  @include on-m-desktop {
+    height: 6.4rem;
+    width: 6.4rem;
+  }
+}
+
+.buttonMenu {
+  @extend %button;
+
+  background-image: url("../assets/icons/menu.svg");
+}
+
+.buttonClose {
+  @extend %button;
+
+  background-image: url("../assets/icons/close.svg");
+}
+
+.buttonFavourite {
+  @extend %button;
+
+  background-image: url("../assets/icons/favourites.svg");
+}
+
+.buttonCart {
+  @extend %button;
+
+  background-image: url("../assets/icons/cart.svg");
+}

@@ -1,0 +1,12 @@
+@import "src/styles/typography";
+
+.heroContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.heroTitle {
+  @extend %h1-mobile;
+
+  margin: 2.4rem 1.6rem;
+}

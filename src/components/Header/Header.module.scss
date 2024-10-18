@@ -1,0 +1,92 @@
+@import '../../styles';
+
+.topBar {
+  position: sticky;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  z-index: 2;
+
+  background-color: $color-white;
+  box-shadow: 0 1px 0 0 $color-elements;
+}
+
+.topBarLogo {
+  display: flex;
+
+  height: 2.2rem;
+  width: 6.4rem;
+  padding: 1.3rem 1.6rem;
+
+  @include on-m-desktop{
+    width: 8rem;
+    height: 2.65rem;
+    padding: 1.8rem 2.4rem;
+  }
+}
+
+.navContainer {
+  display: none;
+
+  @include on-tablet{
+    display: block;
+    margin-inline: 1.6rem auto;
+  }
+
+  @include on-m-desktop{
+    margin-left: 2.4rem;
+  }
+}
+
+.buttonMenu {
+  @include on-tablet {
+    display: none;
+  }
+}
+
+.buttonsContainer {
+    display: none;
+
+  @include on-tablet {
+    display: flex;
+  }
+}
+
+.button{
+  position: relative;
+  display: block;
+
+  @include on-m-desktop{
+    height: 6.4rem;
+    width: 6.4rem;
+  }
+
+  &::after,  &::before{
+    content: '';
+    position: absolute;
+    bottom: 0;
+    width: 0;
+    height: 2px;
+    background-color: $color-text-hover;
+    transition: width $transition-duration ease-out;
+  }
+
+  &::before {
+    left: 50%;
+  }
+
+  &::after {
+    right: 50%
+  }
+
+  &:hover {
+    color: $color-text-hover;
+
+    &::before, &::after{
+      width: 50%;
+    }
+  }
+}
+
+
