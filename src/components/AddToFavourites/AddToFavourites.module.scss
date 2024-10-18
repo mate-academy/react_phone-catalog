@@ -5,16 +5,22 @@
   background-size: 16px 16px;
   background-repeat: no-repeat;
   background-position: center;
-  background-color: #fff;
-  border: 1px solid $color-border-icons;
+  background-color: var(--color-button);
+  border: 1px solid var(--color-button-border);
   border-radius: 48px;
+
+  &--dark {
+    background-image: url(../../img/icons/night_theme_heart.png);
+  }
 
   &--added {
     background-image: url(../../img/icons/heart_yellow.png);
-    border-color: $color-border-grey;
+    background-color: var(--color-button-disabled);
+    border: 1px solid var(--color-button-border-disabled);
   }
 
   &:hover {
-    border-color: $color-black;
+    background-color: var(--color-button-hover);
+    border: 1px solid var(--color-button-border-hover);
   }
 }

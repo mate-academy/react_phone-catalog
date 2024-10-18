@@ -6,28 +6,41 @@
   width: 32px;
   height: 32px;
 
-  border: 1px solid $color-border-icons;
+  border: 1px solid var(--color-button-border);
+  background-color: var(--color-button);
   border-radius: 48px;
-  background-color: #fff;
 
   background-size: 16px 16px;
   background-repeat: no-repeat;
   background-position: center;
 
   &:hover {
-    border: 1px solid $color-black;
+    border-color: var(--color-button-border-hover);
+    background-color: var(--color-button-hover);
   }
 
   &--right {
     background-image: url(../../img/icons/arrow_right_black.png);
   }
 
+  &--right-dark {
+    background-image: url(../../img/icons/arrow_right_white.png);
+  }
+
   &--left {
     background-image: url(../../img/icons/arrow_left_black.png);
   }
 
+  &--left-dark {
+    background-image: url(../../img/icons/arrow_left_white.png);
+  }
+
   &--up {
     background-image: url(../../img/icons/arrow_up_black.png);
+  }
+
+  &--up-dark {
+    background-image: url(../../img/icons/arrow_up_white.png);
   }
 
   &--down {
@@ -42,23 +55,29 @@
     }
   }
 
-  &--right.arrowButton--disabled {
-    border: 1px solid $color-border-grey;
+  &--right.arrowButton--disabled,
+  &--right-dark.arrowButton--disabled {
+    background-color: var(--color-button-disabled);
+    border: 1px solid var(--color-button-border-disabled);
     background-image: url(../../img/icons/arrow_right_grey.png);
   }
 
-  &--left.arrowButton--disabled {
-    border: 1px solid $color-border-grey;
+  &--left.arrowButton--disabled,
+  &--left-dark.arrowButton--disabled {
+    background-color: var(--color-button-disabled);
+    border: 1px solid var(--color-button-border-disabled);
     background-image: url(../../img/icons/arrow_left_grey.png);
   }
 
   &--up.arrowButton--disabled {
-    border: 1px solid $color-border-grey;
+    background-color: var(--color-button-disabled);
+    border: 1px solid var(--color-button-border-disabled);
     background-image: url(../../img/icons/arrow_up_grey.png);
   }
 
   &--down.arrowButton--disabled {
-    border: 1px solid $color-border-grey;
+    background-color: var(--color-button-disabled);
+    border: 1px solid var(--color-button-border-disabled);
     background-image: url(../../img/icons/arrow_down_grey.png);
   }
 }

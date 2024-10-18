@@ -4,23 +4,31 @@
 .toBuyButton {
   max-width: 263px;
   flex-grow: 1;
-  background-color: $color-blue;
-  border: none;
+  background-color: var(--color-accent);
+  border: 1px solid var(--color-accent-button-border);
   border-radius: 48px;
 
   @include buttons-text;
 
   &:hover {
+    background-color: var(--color-accent-button-hover);
     box-shadow: 0 3px 13px 0 #17203166;
   }
 
+  &--dark {
+    &:hover {
+      box-shadow: none;
+    }
+  }
+
   &--exist {
-    border: 1px solid $color-border-grey;
-    background-color: #fff;
-    color: $color-blue;
+    border: 1px solid var(--color-accent-button-border-selected);
+    background-color: var(--color-accent-button-selected);
+    color: var(--color-button-selected-text);
 
     &:hover {
       box-shadow: none;
+      background-color: var(--color-accent-button-selected);
     }
   }
 }

@@ -4,8 +4,8 @@
 .header {
   height: $header-height-mobile;
   display: none;
-  background-color: #fff;
-  border-bottom: 1px solid $color-border-grey;
+  background-color: var(--color-header-footer);
+  border-bottom: 1px solid var(--color-grey-third);
 
   @include on-tablet {
     display: flex;
@@ -32,11 +32,16 @@
     background-size: 16px 16px;
     background-repeat: no-repeat;
     background-position: center;
-    box-shadow: -1px 0 0 0 $color-border-grey;
+    box-shadow: -1px 0 0 0 var(--color-grey-third);
     border: none;
-    border-bottom: 1px solid $color-border-grey;
+    border-bottom: 1px solid var(--color-grey-third);
     background-color: #fff;
     background-image: url(../../img/icons/menu.png);
+
+    &--dark {
+      background-color: #0f1121;
+      background-image: url(../../img/icons/menu-white.png);
+    }
 
     @include on-desktop {
       width: 64px;
@@ -91,12 +96,7 @@
       height: 100%;
 
       &:hover {
-        color: $color-black;
-      }
-
-      &--active {
-        color: $color-black;
-        border-bottom: 3px solid black;
+        color: var(--color-black);
       }
     }
 

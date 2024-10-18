@@ -2,6 +2,7 @@ import React from 'react';
 import styles from './ArrowButton.module.scss';
 import classNames from 'classnames';
 import { ArrowType } from '../../utils/types';
+import { useTheme } from '../../context/ThemeContext';
 
 type Props = {
   type: ArrowType;
@@ -16,14 +17,14 @@ export const ArrowButton: React.FC<Props> = ({
   disabled = false,
   onClick = () => {},
 }) => {
-  const buttonClass = classNames(
-    styles.arrowButton,
-    styles[`arrowButton--${type}`],
-    {
-      [styles['arrowButton--wide']]: size === 'wide',
-      [styles['arrowButton--disabled']]: disabled,
-    },
-  );
+  const { isDarkTheme } = useTheme();
+
+  const buttonClass = classNames(styles.arrowButton, {
+    [styles[`arrowButton--${type}`]]: !isDarkTheme,
+    [styles[`arrowButton--${type}-dark`]]: isDarkTheme,
+    [styles['arrowButton--wide']]: size === 'wide',
+    [styles['arrowButton--disabled']]: disabled,
+  });
 
   return (
     <button

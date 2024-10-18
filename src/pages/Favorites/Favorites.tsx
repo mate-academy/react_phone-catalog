@@ -4,9 +4,13 @@ import { Title } from '../../components/Title';
 import { useContext } from 'react';
 import { FavoritesContext } from '../../context/FavoritesContext';
 import { ProductsList } from '../../components/ProductsList';
+import homeIcon from '../../img/icons/home.png';
+import homeIconDark from '../../img/icons/night_theme_home.png';
+import { useTheme } from '../../context/ThemeContext';
 
 export const Favorites = () => {
   const { favorites } = useContext(FavoritesContext);
+  const { isDarkTheme } = useTheme();
 
   return (
     <div className={styles.favorites}>
@@ -14,7 +18,7 @@ export const Favorites = () => {
         <NavLink to={'/'} style={{ display: 'block' }}>
           <img
             style={{ display: 'block' }}
-            src="../src/img/icons/home.png"
+            src={isDarkTheme ? homeIconDark : homeIcon}
             alt="home icon"
           />
         </NavLink>

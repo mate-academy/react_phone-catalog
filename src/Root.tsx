@@ -13,13 +13,13 @@ export const Root = () => (
       <Route path="/" element={<App />}>
         <Route index element={<HomePage />} />
 
+        <Route path="cart" element={<CartPage />} />
+        <Route path="favourites" element={<Favorites />} />
+
         <Route path=":category">
           <Route index element={<Catalog />} />
           <Route path=":productId" element={<ProductDetailsPage />} />
         </Route>
-
-        <Route path="cart" element={<CartPage />} />
-        <Route path="favourites" element={<Favorites />} />
 
         <Route path="*" element={<NotFoundPage />} />
       </Route>

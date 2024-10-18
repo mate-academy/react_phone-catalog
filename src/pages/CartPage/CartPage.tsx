@@ -11,14 +11,18 @@ import {
 } from '../../utils/functions';
 import { CheckoutButton } from '../../components/CheckoutButton';
 import { CartItem } from '../../utils/types';
+import blackArrow from '../../img/icons/arrow_left_black.png';
+import whiteArrow from '../../img/icons/arrow_left_white.png';
+import { useTheme } from '../../context/ThemeContext';
 
 export const CartPage = () => {
   const { cart } = useContext(CartContext);
+  const { isDarkTheme } = useTheme();
 
   return (
     <div className={styles.cartPage}>
       <div className={styles.cartPage__goback}>
-        <img src="../src/img/icons/arrow_left_black.png" alt="arrow icon" />
+        <img src={isDarkTheme ? whiteArrow : blackArrow} alt="arrow icon" />
         <GoBack> Back </GoBack>
       </div>
       <div className={styles.cartPage__title}>

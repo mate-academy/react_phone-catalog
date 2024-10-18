@@ -31,11 +31,11 @@ html {
 body {
   font-family: Mont, sans-serif;
   font-size: 12px;
-  background-color: $color-page-background;
 }
 
 .app {
   min-height: 100vh;
+  background-color: var(--color-page-background);
 
   &__header {
     position: sticky;

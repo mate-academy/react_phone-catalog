@@ -14,6 +14,9 @@ import { AddToFavourites } from '../../components/AddToFavourites';
 import { AboutProduct } from '../../components/AboutProduct';
 import { TechSpecs } from '../../components/TechSpecs';
 import { ProductSlider } from '../../components/ProductSlider';
+import { useTheme } from '../../context/ThemeContext';
+import blackArrow from '../../img/icons/arrow_left_black.png';
+import whiteArrow from '../../img/icons/arrow_left_white.png';
 
 export const ProductDetailsPage = () => {
   // #region state
@@ -27,6 +30,7 @@ export const ProductDetailsPage = () => {
   const [displayedImageIndex, setDisplayedImageIndex] = useState(0);
   const { category, productId } = useParams();
   const navigate = useNavigate();
+  const { isDarkTheme } = useTheme();
   // #endregion
   // #region functions
   const handleColorChange = (color: string) => {
@@ -112,7 +116,8 @@ export const ProductDetailsPage = () => {
         <>
           <Breadcrumbs name={displayedProduct.name} />
           <div className={styles.productDetails__goback}>
-            <img src="../src/img/icons/arrow_left_black.png" alt="arrow icon" />
+            <img src={isDarkTheme ? whiteArrow : blackArrow} alt="arrow icon" />
+
             <GoBack> Back </GoBack>
           </div>
           <div className={styles.productDetails__title}>

@@ -55,7 +55,7 @@
   }
 
   &__quantity {
-    color: $color-grey;
+    color: var(--color-grey);
 
     @include body-text;
   }

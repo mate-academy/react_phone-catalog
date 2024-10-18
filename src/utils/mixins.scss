@@ -19,7 +19,7 @@
 @mixin nav-link-styles {
   text-decoration: none;
   text-transform: uppercase;
-  color: $color-grey;
+  color: var(--color-grey);
   font-weight: 800;
   line-height: 11px;
 }

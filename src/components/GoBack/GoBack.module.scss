@@ -7,9 +7,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  color: $color-grey;
+  color: var(--color-grey);
 
   &:hover {
-    color: $color-black;
+    color: var(--color-black);
   }
 }

@@ -31,20 +31,23 @@
     display: block;
     width: 32px;
     height: 32px;
-    border: 1px solid $color-border-grey;
-    background-color: #fff;
+    border: 1px solid var(--color-pagination-border);
+    background-color: var(--color-pagination-background);
+    color: var(--color-black);
     border-radius: 48px;
     font-family: inherit;
     font-size: 14px;
     line-height: 21px;
 
     &--active {
-      background-color: $color-black;
+      background-color: var(--color-pagination-background-selected);
+      border-color: var(--color-pagination-border-selected);
       color: #fff;
     }
 
     &:hover {
-      border: 1px solid $color-black;
+      background-color: var(--color-pagination-background-hover);
+      border-color: var(--color-pagination-border-hover);
     }
   }
 }

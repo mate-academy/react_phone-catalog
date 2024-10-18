@@ -9,7 +9,7 @@
   &__label {
     @include small-text;
 
-    color: $color-grey;
+    color: var(--color-grey);
     margin-bottom: 4px;
   }
 }

@@ -10,6 +10,10 @@ import { ProductsList } from '../../components/ProductsList';
 import { SortProducts } from '../../components/SortProducts';
 import { useSearchParams } from 'react-router-dom';
 import { Pagination } from '../../components/Pagination';
+import { NotFoundPage } from '../NotFoundPage';
+import homeIcon from '../../img/icons/home.png';
+import homeIconDark from '../../img/icons/night_theme_home.png';
+import { useTheme } from '../../context/ThemeContext';
 
 export const Catalog = () => {
   // #region state
@@ -21,6 +25,7 @@ export const Catalog = () => {
   const [errorMessage, setErrorMessage] = useState('');
   const [updatedAt, setUpdatedAt] = useState(new Date());
   const [searchParams, setSearchParams] = useSearchParams();
+  const { isDarkTheme } = useTheme();
   // #endregion
   // #region functions
   const getTitleName = (currentCategory: string) => {
@@ -55,6 +60,7 @@ export const Catalog = () => {
   //  #endregion
   // #region variables
   const { category } = useParams();
+  const knownCategories = ['phones', 'tablets', 'accessories'];
   const pageTitle = category ? getTitleName(category) : '';
   const selectedSortType = searchParams.get('sort') as SortType;
   const itemsOnPage = searchParams.get('perPage') || 'all';
@@ -64,6 +70,10 @@ export const Catalog = () => {
   // #endregion
 
   useEffect(() => {
+    if (!category || !knownCategories.includes(category)) {
+      return; // Перевірка на неіснуючу категорію
+    }
+
     if (category) {
       setIsLoading(true);
       setProducts([]);
@@ -96,13 +106,17 @@ export const Catalog = () => {
     }
   }, [products, searchParams, category, activePage, itemsOnPage]);
 
+  if (!category || !knownCategories.includes(category)) {
+    return <NotFoundPage />;
+  }
+
   return (
     <div className={styles.catalog}>
       <div className={styles.catalog__navigation}>
         <NavLink to={'/'} style={{ display: 'block' }}>
           <img
             style={{ display: 'block' }}
-            src="../src/img/icons/home.png"
+            src={isDarkTheme ? homeIconDark : homeIcon}
             alt="home icon"
           />
         </NavLink>

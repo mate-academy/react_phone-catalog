@@ -3,10 +3,14 @@ import { IconType } from '../../utils/types';
 import { HeaderIcon } from '../HeaderIcon';
 
 import logo from '../../img/logo.png';
+import logoDarkTheme from '../../img/night_theme_logo.png';
 import styles from './Header.module.scss';
 import React, { useContext } from 'react';
 import { CartContext } from '../../context/CartContext';
 import { FavoritesContext } from '../../context/FavoritesContext';
+import { useTheme } from '../../context/ThemeContext';
+import { DarkThemeButton } from '../DarkThemeButton';
+import classNames from 'classnames';
 
 type Props = {
   onMenuClick: () => void;
@@ -16,12 +20,27 @@ type Props = {
 export const Header: React.FC<Props> = ({ onMenuClick, closeMenu }) => {
   const { cart } = useContext(CartContext);
   const { favorites } = useContext(FavoritesContext);
+  const { isDarkTheme } = useTheme();
   const cartQuantity = cart ? cart.length : null;
   const favoritesQuantity = favorites ? favorites.length : null;
   const getLinkStyle = ({ isActive }: { isActive: boolean }) => {
+    let color;
+    let borderBottom;
+
+    if (isActive && isDarkTheme) {
+      color = '#F1F2F9';
+      borderBottom = '3px solid #F1F2F9';
+    } else if (isActive && !isDarkTheme) {
+      color = '#0F0F11';
+      borderBottom = '3px solid #0F0F11';
+    } else {
+      color = '';
+      borderBottom = '';
+    }
+
     return {
-      color: isActive ? '#0f0f11' : '',
-      borderBottom: isActive ? '3px solid #0f0f11' : '',
+      color,
+      borderBottom,
     };
   };
 
@@ -30,7 +49,7 @@ export const Header: React.FC<Props> = ({ onMenuClick, closeMenu }) => {
       <header className={styles.header}>
         <div className={styles.header__left}>
           <Link to="/" className={styles.header__logo}>
-            <img src={logo} alt="page logo" />
+            <img src={isDarkTheme ? logoDarkTheme : logo} alt="page logo" />
           </Link>
           <nav className={styles.header__nav}>
             <ul className={styles.header__nav_list}>
@@ -74,6 +93,8 @@ export const Header: React.FC<Props> = ({ onMenuClick, closeMenu }) => {
           </nav>
         </div>
         <div className={styles.header__right}>
+          <DarkThemeButton />
+
           <HeaderIcon
             type={IconType.favourites}
             href="/favourites"
@@ -90,12 +111,17 @@ export const Header: React.FC<Props> = ({ onMenuClick, closeMenu }) => {
       </header>
       <header className={`${styles.header} ${styles['header--mobile']}`}>
         <Link to="/" className={styles.header__logo}>
-          <img src={logo} alt="page logo" />
+          <img src={isDarkTheme ? logoDarkTheme : logo} alt="page logo" />
         </Link>
-        <button
-          className={styles.header__menuButton}
-          onClick={onMenuClick}
-        ></button>
+        <div className={styles.header__right}>
+          <DarkThemeButton />
+          <button
+            className={classNames(styles.header__menuButton, {
+              [styles['header__menuButton--dark']]: isDarkTheme,
+            })}
+            onClick={onMenuClick}
+          ></button>
+        </div>
       </header>
     </>
   );

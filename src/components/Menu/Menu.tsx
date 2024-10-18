@@ -2,10 +2,12 @@ import React, { useContext } from 'react';
 import { IconType } from '../../utils/types';
 import { HeaderIcon } from '../HeaderIcon';
 import styles from './Menu.module.scss';
-import logo from '../../img/logo.png';
 import { Link } from 'react-router-dom';
 import { CartContext } from '../../context/CartContext';
 import { FavoritesContext } from '../../context/FavoritesContext';
+import { useTheme } from '../../context/ThemeContext';
+import logo from '../../img/logo.png';
+import logoDarkTheme from '../../img/night_theme_logo.png';
 
 type Props = {
   closeMenu: () => void;
@@ -14,6 +16,7 @@ type Props = {
 export const Menu: React.FC<Props> = ({ closeMenu }) => {
   const { cart } = useContext(CartContext);
   const { favorites } = useContext(FavoritesContext);
+  const { isDarkTheme } = useTheme();
   const cartQuantity = cart ? cart.length : null;
   const favoritesQuantity = favorites ? favorites.length : null;
 
@@ -22,10 +25,10 @@ export const Menu: React.FC<Props> = ({ closeMenu }) => {
       <div className={styles.menu__top}>
         <div className={styles['menu__top-bar']}>
           <Link to="/" className={styles.menu__logo} onClick={closeMenu}>
-            <img src={logo} alt="page logo" />
+            <img src={isDarkTheme ? logoDarkTheme : logo} alt="page logo" />
           </Link>
           <button
-            className={styles.menu__closeButton}
+            className={`${styles.menu__closeButton} ${isDarkTheme ? styles['menu__closeButton--dark'] : ''}`}
             onClick={closeMenu}
           ></button>
         </div>

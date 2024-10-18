@@ -1,9 +1,78 @@
-$color-black: #0f0f11;
-$color-grey: #89939a;
-$color-border-grey: #e2e6e9;
-$color-border-icons: #b4bdc3;
-$color-page-background: #fafbfc;
-$color-blue: #4219d0;
+:root {
+  --color-white: #fff;
+  --color-black: #0f0f11;
+  --color-titles: #0f0f11;
+  --color-grey: #89939a;
+  --color-grey-second: #b4bdc3;
+  --color-grey-third: #e2e6e9;
+  --color-page-background: #fafbfc;
+  --color-accent: #4219d0;
+  --color-accent-button-border: #4219d0;
+  --color-accent-button-hover: #4219d0;
+  --color-accent-button-selected: #fafbfc;
+  --color-accent-button-border-selected: #e2e6e9;
+  --color-button-selected-text: #4219d0;
+  --color-card-background: #fff;
+  --color-card-border: #e2e6e9;
+  --color-header-footer: #fff;
+  --color-button: #fafbfc;
+  --color-button-border: #b4bdc3;
+  --color-button-hover: #fafbfc;
+  --color-button-border-hover: #0f0f11;
+  --color-button-disabled: #fafbfc;
+  --color-button-border-disabled: #e2e6e9;
+  --color-footer-links: #89939a;
+  --color-dropdownfield-background: #fafbfc;
+  --color-dropdown-background: #fff;
+  --color-dropdown-border: #e2e6e9;
+  --color-dropdown-hover: #fafbfc;
+  --color-dropdown-hover-text: #0f0f11;
+  --color-pagination-background: #fff;
+  --color-pagination-border: #e2e6e9;
+  --color-pagination-background-hover: #fff;
+  --color-pagination-border-hover: #0f0f11;
+  --color-pagination-background-selected: #0f0f11;
+  --color-pagination-border-selected: #e2e6e9;
+}
+
+body.dark-theme {
+  --color-white: #0f1121;
+  --color-black: #f1f2f9;
+  --color-page-background: #0f1121;
+  --color-titles: #f1f2f9;
+  --color-grey: #75767f;
+  --color-grey-second: #4a4d58;
+  --color-grey-third: #3b3e4a;
+  --color-accent: #905bff;
+  --color-accent-button-border: #905bff;
+  --color-accent-button-hover: #a378ff;
+  --color-accent-button-selected: #323542;
+  --color-accent-button-border-selected: #323542;
+  --color-button-selected-text: #f1f2f9;
+  --color-button: #323542;
+  --color-button-border: #323542;
+  --color-button-hover: #4a4d58;
+  --color-button-border-hover: #4a4d58;
+  --color-button-disabled: #0f1121;
+  --color-button-border-disabled: #3b3e4a;
+  --color-card-background: #161827;
+  --color-card-border: #161827;
+  --color-header-footer: #0f1121;
+  --color-footer-links: #f1f2f9;
+  --color-dropdownfield-background: #323542;
+  --color-dropdown-background: #0f1121;
+  --color-dropdown-border: #3b3e4a;
+  --color-dropdown-hover: #323542;
+  --color-dropdown-hover-text: #f1f2f9;
+  --color-pagination-background: #161827;
+  --color-pagination-border: #161827;
+  --color-pagination-background-hover: #3b3e4a;
+  --color-pagination-border-hover: #3b3e4a;
+  --color-pagination-background-selected: #905bff;
+  --color-pagination-border-selected: #905bff;
+}
+
+// elements height
 $header-height-mobile: 48px;
 $header-height-tablet: 48px;
 $header-height-desktop: 64px;

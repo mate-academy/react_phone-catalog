@@ -3,12 +3,14 @@ import styles from './AddToFavourites.module.scss';
 import classNames from 'classnames';
 import { Products } from '../../utils/types';
 import { FavoritesContext } from '../../context/FavoritesContext';
+import { useTheme } from '../../context/ThemeContext';
 
 type Props = {
   size: 's' | 'm';
   product: Products;
 };
 export const AddToFavourites: React.FC<Props> = ({ size, product }) => {
+  const { isDarkTheme } = useTheme();
   const { favorites, setFavorites } = useContext(FavoritesContext);
 
   const productExistinFavorites = favorites.find(
@@ -34,6 +36,7 @@ export const AddToFavourites: React.FC<Props> = ({ size, product }) => {
     <button
       style={elementSize}
       className={classNames(styles.addToFavourites, {
+        [styles['addToFavourites--dark']]: isDarkTheme,
         [styles['addToFavourites--added']]: productExistinFavorites,
       })}
       onClick={

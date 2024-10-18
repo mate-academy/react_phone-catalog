@@ -16,13 +16,13 @@
       border-radius: 48px;
     }
     .btn-secondary {
-      background-color: $color-grey;
+      background-color: var(--color-grey);
     }
     .btn-primary {
       width: 84px;
       height: 38px;
       border: none;
-      background-color: $color-blue;
+      background-color: var(--color-accent);
     }
   }
 }

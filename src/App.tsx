@@ -6,8 +6,47 @@ import { Menu } from './components/Menu';
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
 import { CartProvider } from './context/CartContext';
-import { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { FavoritesProvider } from './context/FavoritesContext';
+import { ThemeProvider, useTheme } from './context/ThemeContext';
+type Props = {
+  isMenuOpen: boolean;
+  openMenu: () => void;
+  closeMenu: () => void;
+};
+
+const AppContent: React.FC<Props> = ({ isMenuOpen, openMenu, closeMenu }) => {
+  const { isDarkTheme } = useTheme();
+
+  useEffect(() => {
+    if (isDarkTheme) {
+      document.body.classList.add('dark-theme');
+    } else {
+      document.body.classList.remove('dark-theme');
+    }
+  }, [isDarkTheme]);
+
+  return (
+    <div className={styles.app} id="top">
+      <div className={styles.app__header}>
+        <Header onMenuClick={openMenu} closeMenu={closeMenu} />
+      </div>
+      <div
+        className={`${styles.app__menu} ${
+          isMenuOpen ? styles['app__menu--open'] : ''
+        }`}
+      >
+        <Menu closeMenu={closeMenu} />
+      </div>
+      <main className={styles.app__container}>
+        <Outlet />
+      </main>
+      <div className={styles.app__footer}>
+        <Footer />
+      </div>
+    </div>
+  );
+};
 
 export const App = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -23,27 +62,16 @@ export const App = () => {
   };
 
   return (
-    <FavoritesProvider>
-      <CartProvider>
-        <div className={styles.app} id="top">
-          <div className={styles.app__header}>
-            <Header onMenuClick={openMenu} closeMenu={closeMenu} />
-          </div>
-          <div
-            className={`${styles.app__menu} ${
-              isMenuOpen ? styles['app__menu--open'] : ''
-            }`}
-          >
-            <Menu closeMenu={closeMenu} />
-          </div>
-          <main className={styles.app__container}>
-            <Outlet />
-          </main>
-          <div className={styles.app__footer}>
-            <Footer />
-          </div>
-        </div>
-      </CartProvider>
-    </FavoritesProvider>
+    <ThemeProvider>
+      <FavoritesProvider>
+        <CartProvider>
+          <AppContent
+            isMenuOpen={isMenuOpen}
+            openMenu={openMenu}
+            closeMenu={closeMenu}
+          />
+        </CartProvider>
+      </FavoritesProvider>
+    </ThemeProvider>
   );
 };

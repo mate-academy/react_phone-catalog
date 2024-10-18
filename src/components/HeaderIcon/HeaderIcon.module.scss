@@ -16,7 +16,7 @@
     height: 64px;
 
     &:hover {
-      border-bottom: 2px solid #313237;
+      border-bottom: 2px solid var(--color-black);
     }
   }
 
@@ -27,15 +27,23 @@
     background-size: 16px 16px;
     background-repeat: no-repeat;
     background-position: center;
-    box-shadow: -1px 0 0 0 $color-border-grey;
+    box-shadow: -1px 0 0 0 var(--color-grey-third);
   }
 
   &__image--favourites {
     background-image: url(../../img/icons/favourites.png);
   }
 
+  &__image--favourites-dark {
+    background-image: url(../../img/icons/night_theme_heart.png);
+  }
+
   &__image--cart {
     background-image: url(../../img/icons/cart.png);
+  }
+
+  &__image--cart-dark {
+    background-image: url(../../img/icons/night_theme_cart.png);
   }
 
   &__quantity {

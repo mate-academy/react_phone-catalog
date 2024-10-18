@@ -6,28 +6,42 @@
   width: 32px;
   height: 32px;
 
-  border: 1px solid $color-border-icons;
+  border: 1px solid var(--color-button-border);
+  background-color: var(--color-button);
   border-radius: 48px;
-  background-color: #fff;
 
   background-size: 16px 16px;
   background-repeat: no-repeat;
   background-position: center;
 
   &:hover {
-    border: 1px solid $color-black;
+    border: 1px solid var(--color-button-border-hover);
+    background-color: var(--color-button-hover);
   }
 
   &--plus {
     background-image: url(../../img/icons/plus.png);
   }
 
+  &--plus-dark {
+    background-image: url(../../img/icons/plus-white.png);
+  }
+
   &--minus {
     background-image: url(../../img/icons/minus.png);
   }
 
-  &--minus.quantityButton--disabled {
-    border: 1px solid $color-border-grey;
+  &--minus-dark {
+    background-image: url(../../img/icons/minus-white.png);
+  }
+
+  &--disabled {
     background-image: url(../../img/icons/minus-grey.png);
+    background-color: var(--color-button-disabled);
+    border-color: var(--color-button-border-disabled);
+
+    &:hover {
+      background-color: var(--color-page-background);
+    }
   }
 }

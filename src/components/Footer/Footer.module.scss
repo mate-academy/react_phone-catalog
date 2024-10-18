@@ -7,8 +7,8 @@
   flex-direction: column;
   justify-content: space-between;
   padding: 32px 16px;
-  border-top: 1px solid $color-border-grey;
-  background-color: #fff;
+  border-top: 1px solid var(--color-grey-third);
+  background-color: var(--color-header-footer);
 
   @include on-tablet {
     height: $footer-height-tablet;
@@ -40,7 +40,7 @@
 
   &__contact {
     display: block;
-    color: $color-grey;
+    color: var(--color-footer-links);
     text-decoration: none;
     text-transform: uppercase;
     font-weight: 800;
@@ -48,7 +48,7 @@
     letter-spacing: 4%;
 
     &:hover {
-      color: $color-black;
+      color: var(--color-grey);
     }
   }
 
@@ -60,7 +60,7 @@
   }
 
   &__back-title {
-    color: $color-grey;
+    color: var(--color-grey);
 
     @include small-text;
   }
