@@ -1,28 +1,51 @@
+import useWindowSize from "../../../hooks/useWindowSize.hook";
 import { Image } from "../../../types/image";
 
 type Props = {
   image: Image;
   size: number;
+  index: number;
 };
 
-const HomeBannerScreenImage = ({ image, size }: Props) => {
-  const { color, src } = image;
-  const boxShadowStyle = `inset 0 0 6em 1em ${color}`;
+const HomeBannerScreenImage = ({ image, size, index }: Props) => {
+  const { color, src, title, paragraph } = image;
+  const boxShadowStyle = `inset 0 0 6rem 1rem ${color}`;
+  const isOddPlate = index % 2 !== 0;
+  const { width } = useWindowSize();
+  const isScreenSmall = width > 640;
 
   return (
     <section
       style={{
-        maxWidth: `${size}%`,
+        width: `${size}%`,
         backgroundColor: `${color}`,
       }}
-      className="grid max-w-full grid-cols-1 grid-rows-2 gap-10 p-4 small:grid-cols-[4fr_5fr] small:grid-rows-1"
+      className="grid grid-cols-1 grid-rows-2 small:grid-cols-[4fr_5fr] small:grid-rows-1"
     >
-      <div className="rounded-2xl bg-[#ffffff5e] p-12">
-        <p className="bg-gradient-to-r from-[#800080] to-[#dd9fdd] bg-clip-text text-transparent small:text-h1">
-          Now available in our store! <span className="text-primary">👌</span>
-        </p>
+      <div
+        className={`m-3 box-border flex flex-col justify-between rounded-2xl ${!isScreenSmall && "items-center"} ${isScreenSmall && "bg-plate"} p-4 desktop:m-6 desktop:p-8 ${isOddPlate && !isScreenSmall && "items-end"}`}
+      >
+        <article
+          className={`${isOddPlate && "text-right"} ${!isScreenSmall && "text-center"}`}
+        >
+          <p className="bg-gradient-to-r from-[#800080] to-[#dd9fdd] bg-clip-text text-bannerTextTitleSmall text-transparent desktop:text-bannerTextTitle">
+            {title} <span className="text-primary">👌</span>
+          </p>
+          <p
+            className={`text-bodyText text-sec ${!isScreenSmall && "text-center"}`}
+          >
+            {paragraph}
+          </p>
+        </article>
+        {isScreenSmall && (
+          <button className="w-fit rounded-full border-1 border-sec px-8 py-3 text-bannerTextButton uppercase text-sec">
+            order now
+          </button>
+        )}
       </div>
-      <div className="relative grid place-items-center">
+      <div
+        className={`relative box-border grid place-items-center ${isOddPlate && "row-start-1"}`}
+      >
         <div
           className="absolute h-full w-full"
           style={{ boxShadow: boxShadowStyle }}

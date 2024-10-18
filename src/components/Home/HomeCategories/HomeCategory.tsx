@@ -20,7 +20,7 @@ const HomeCategory = ({ category }: Props) => {
         <img
           src={img}
           alt={name}
-          className="ease aspect-square w-full cursor-pointer object-none object-left-top duration-300 hover:scale-110"
+          className="ease aspect-square w-full cursor-pointer object-cover object-left-top duration-300 hover:scale-110"
         />
       </Link>
       <div>

@@ -28,7 +28,7 @@ const Header = () => {
   return (
     <header
       id="header"
-      className="sticky left-0 top-0 z-[100] grid h-12 grid-cols-2 gap-4 border-b-1 border-elem bg-white small:grid-cols-header desktop:h-16 desktop:gap-8"
+      className="sticky left-0 top-0 z-[100] grid h-12 w-dvw grid-cols-2 gap-4 border-b-1 border-elem bg-white small:grid-cols-header desktop:h-16 desktop:gap-8"
     >
       <NavLink to="/">
         <picture className="flex h-12 w-24 pl-6 desktop:h-16 desktop:w-32 desktop:pl-8">
@@ -60,7 +60,7 @@ const Header = () => {
         )}
       </div>
 
-      {isBurgerOpen && isMobile && <HeaderBurger />}
+      {isMobile && <HeaderBurger isBurgerOpen={isBurgerOpen} />}
     </header>
   );
 };

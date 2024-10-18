@@ -9,7 +9,7 @@ const HomeBannerScreen = () => {
   const bannerImageSize = 100 / (bannerImagesCount + 2);
 
   return (
-    <div className="h-bannerMd w-full overflow-hidden rounded-lg desktop:desktop:h-banner">
+    <section className="h-bannerSm w-full overflow-hidden small:h-bannerMd small:rounded-lg desktop:desktop:h-banner">
       <section
         ref={homeBannerEl}
         style={{
@@ -21,17 +21,23 @@ const HomeBannerScreen = () => {
         <HomeBannerScreenImage
           image={bannerImages[lastImage]}
           size={bannerImageSize}
+          index={lastImage}
         />
-        {bannerImages.map((image) => (
+        {bannerImages.map((image, index) => (
           <HomeBannerScreenImage
             key={image.id}
             image={image}
             size={bannerImageSize}
+            index={index}
           />
         ))}
-        <HomeBannerScreenImage image={bannerImages[0]} size={bannerImageSize} />
+        <HomeBannerScreenImage
+          image={bannerImages[0]}
+          size={bannerImageSize}
+          index={0}
+        />
       </section>
-    </div>
+    </section>
   );
 };
 

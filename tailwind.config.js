@@ -92,6 +92,9 @@ export default {
           letterSpacing: "0",
         },
       ],
+      bannerTextTitle: "2em",
+      bannerTextTitleSmall: "1.25em",
+      bannerTextButton: "0.75em",
     },
     colors: {
       accent: "#f86800",
@@ -121,6 +124,7 @@ export default {
       height: {
         banner: "400px",
         bannerMd: "200px",
+        bannerSm: "320px",
       },
       borderWidth: {
         1: "1px",
@@ -129,11 +133,15 @@ export default {
       gridTemplateColumns: {
         header: "1fr minmax(0, 1200px) 1fr",
         footer: "auto 40% auto",
+        homeBanner: "2rem 1fr 2rem",
       },
       fontFamily: {
         mont: "Mont",
         montSemi: "Mont SemiBold",
         montBold: "Mont Bold",
+      },
+      colors: {
+        plate: "#ffffff5e",
       },
     },
   },

@@ -2,9 +2,15 @@ import { navButtons, navOptions } from "../Header.data";
 import HeaderButton from "../HeaderButton";
 import HeaderLink from "../HeaderLink";
 
-const HeaderBurger = () => {
+type Props = {
+  isBurgerOpen: boolean;
+};
+
+const HeaderBurger = ({ isBurgerOpen }: Props) => {
   return (
-    <menu className="fixed top-0 -z-50 grid h-full w-full grid-rows-[1fr_auto] bg-white pt-12">
+    <menu
+      className={`fixed top-12 duration-150 ${!isBurgerOpen ? "translate-x-full" : ""} -z-50 grid h-[calc(100%-3rem)] w-full grid-rows-[1fr_auto] bg-white`}
+    >
       <ul className="flex flex-col items-center gap-4 p-6">
         {navOptions.map((option) => (
           <li className="h-4 w-fit">

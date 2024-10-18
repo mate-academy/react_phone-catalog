@@ -5,7 +5,7 @@ import HomeNewProducts from "./HomeNewProducts/HomeNewProducts";
 
 const Home = () => {
   return (
-    <section className="mb-20 flex w-full flex-col gap-20 pt-6 small:pt-8 desktop:pt-16">
+    <section className="mb-20 flex flex-col gap-20 pt-6 small:pt-8 desktop:pt-16">
       <HomeBanner />
       <HomeNewProducts />
       <HomeCategories />
