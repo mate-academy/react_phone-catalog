@@ -1,3 +1,36 @@
+@import '../../styles/utils';
+
 .breadcrumbs {
-  display: block;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  &__icon {
+    display: block;
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 15px;
+    color: $primary;
+
+    &:last-child {
+      font-weight: 600;
+      color: $secondary;
+    }
+
+    &:not(:last-child)::after {
+      display: block;
+      content: '';
+      width: 16px;
+      height: 16px;
+      background-image: url('../../assets/images/icons/arrow.svg');
+      background-size: cover;
+      transform: rotate(90deg);
+    }
+  }
 }

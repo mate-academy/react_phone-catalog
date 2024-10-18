@@ -50,14 +50,10 @@
   }
 
   &__container {
-    padding: 0;
-    display: flex;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: 1fr 32px;
     align-items: center;
     gap: 16px;
-    background-color: inherit;
-    border: none;
-    color: inherit;
 
     @include small-text;
   }

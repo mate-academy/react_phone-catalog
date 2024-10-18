@@ -1,0 +1,95 @@
+@import '../../../../styles/utils';
+
+.selector {
+  &__title {
+    color: $secondary;
+    margin-bottom: 4px;
+
+    @include small-text;
+  }
+
+  &__dropdown {
+    position: relative;
+    width: 100%;
+  }
+
+  &__btn {
+    width: 100%;
+    height: 40px;
+    border-radius: 8px;
+    border: 1px solid $icons;
+    padding-inline: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    background-color: inherit;
+
+    &:hover {
+      border-color: $secondary;
+    }
+
+    &:focus {
+      border-color: $primary;
+      outline: none;
+    }
+  }
+
+  &__text {
+    font-weight: 700;
+    color: $primary;
+  }
+
+  &__icon {
+    width: 16px;
+    height: 16px;
+    transform: rotate(180deg);
+
+    svg {
+      fill: $icons;
+    }
+  }
+
+  &__menu {
+    width: 100%;
+    display: none;
+    position: absolute;
+    z-index: 2;
+    padding-top: 4px;
+
+    &--active {
+      display: block;
+    }
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    border-radius: 8px;
+    border: 1px solid $elements;
+    background-color: $white;
+  }
+
+  &__item {
+    text-align: start;
+    line-height: 32px;
+    cursor: pointer;
+    font-weight: 600;
+    color: $secondary;
+    padding-inline: 12px;
+    background-color: inherit;
+    border: none;
+
+    &:hover,
+    &:focus,
+    &--active {
+      background-color: $hover-bg;
+      border-radius: 8px;
+      color: $primary;
+    }
+
+    &--active {
+      cursor: default;
+    }
+  }
+}

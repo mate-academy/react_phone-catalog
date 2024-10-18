@@ -13,7 +13,7 @@ export const RoundButton: React.FC<Props> = ({
   ...rest
 }) => {
   return (
-    <button className={cn(className, styles['round-button'])} {...rest}>
+    <button className={cn(styles['round-button'], className)} {...rest}>
       {children}
     </button>
   );

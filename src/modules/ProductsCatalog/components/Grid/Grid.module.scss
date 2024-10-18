@@ -1,0 +1,28 @@
+@import '../../../../styles/utils';
+
+.grid {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+
+  @include on-tablet {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @include on-desktop {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  &__item {
+    height: 440px;
+
+    @include on-tablet {
+      height: 506px;
+    }
+  }
+}

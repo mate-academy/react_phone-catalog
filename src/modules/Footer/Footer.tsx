@@ -4,21 +4,10 @@ import { SvgIcon } from '../../components/SvgIcon';
 
 import styles from './Footer.module.scss';
 import { RoundButton } from '../../components/RoundButton';
+import { scrollToTop } from '../../utils/utility';
 
 export const Footer = () => {
-  const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth',
-    });
-  };
-
-  interface ILink {
-    title: string;
-    path: string;
-  }
-
-  const links: ILink[] = [
+  const links = [
     { title: 'Github', path: '#' },
     { title: 'Contacts', path: '#' },
     { title: 'Rights', path: '#' },

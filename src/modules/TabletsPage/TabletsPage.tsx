@@ -3,11 +3,11 @@ import { Product } from '../../types/Product';
 import { getProductsByCategory } from '../../servises/products';
 import { ProductsCatalog } from '../ProductsCatalog';
 
-export const PhonesPage = () => {
+export const TabletsPage = () => {
   const [phones, setPhones] = useState<Product[]>([]);
 
   useEffect(() => {
-    getProductsByCategory('phones').then(setPhones);
+    getProductsByCategory('tablets').then(setPhones);
   }, []);
 
   return <ProductsCatalog title="Mobile phones" products={phones} />;

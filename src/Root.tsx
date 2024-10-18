@@ -3,6 +3,8 @@ import { App } from './App';
 import { HomePage } from './modules/HomePage';
 import { PhonesPage } from './modules/PhonesPage';
 import { MainNavigation } from './utils/constants';
+import { TabletsPage } from './modules/TabletsPage';
+import { AccessoriesPage } from './modules/AccessoriesPage';
 
 export const Root = () => {
   return (
@@ -10,8 +12,8 @@ export const Root = () => {
       <Route path="/" element={<App />}>
         <Route index element={<HomePage />} />
         <Route path={MainNavigation.PHONES} element={<PhonesPage />} />
-        <Route path="tablets" element={<HomePage />} />
-        <Route path="accessories" element={<HomePage />} />
+        <Route path="tablets" element={<TabletsPage />} />
+        <Route path="accessories" element={<AccessoriesPage />} />
         <Route path="favourites" element={<HomePage />} />
         <Route path="cart" element={<HomePage />} />
         <Route path="*" element={<p>Not found</p>} />
