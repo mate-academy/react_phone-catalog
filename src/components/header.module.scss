@@ -1,5 +1,5 @@
 .header {
-  box-shadow: 0px 1px 1px 0px #e2e6e9;
+  box-shadow: 0 1px 1px 0 #e2e6e9;
 
   &_div {
     height: 48px;
@@ -25,6 +25,6 @@
     align-content: center;
     height: 48px;
     padding-left: 16px;
-    box-shadow: -1px 1px 1px 0px #e2e6e9;
+    box-shadow: -1px 1px 1px 0 #e2e6e9;
   }
 }
