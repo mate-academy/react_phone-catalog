@@ -1,5 +1,10 @@
+@import '../styles/main';
 .header {
   box-shadow: 0 1px 1px 0 #e2e6e9;
+
+  @include on-tablet {
+    display: none;
+  }
 
   &_div {
     height: 48px;
