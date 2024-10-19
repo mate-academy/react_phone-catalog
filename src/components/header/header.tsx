@@ -14,6 +14,7 @@ export const Header: React.FC = () => {
 
   return (
     <>
+      <h1>Product Catalog</h1>
       <header className={styles.header}>
         <div className="container">
           <div className={styles.header_div}>
