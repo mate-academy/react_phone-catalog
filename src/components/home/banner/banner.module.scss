@@ -20,7 +20,6 @@
   margin-left: auto;
   margin-right: auto;
   width: 490px;
-  height: 100%;
   object-fit: cover;
   height: 189px;
 }
@@ -53,8 +52,4 @@
     background-color: white;
     right: 10px;
   }
-}
-
-:global(.slick-track) {
-  height: 189px;
 }
