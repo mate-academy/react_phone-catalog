@@ -1,5 +1,4 @@
-@import '../styles/main';
-
+@import '../../styles/main.scss';
 .header {
   box-shadow: 0 1px 1px 0 #e2e6e9;
 
@@ -19,12 +18,28 @@
     height: 22px;
   }
 
-  &_icon {
+  &_icon_open {
     display: block;
     width: 16px;
     height: 16px;
     background-size: cover;
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
     background-image: url(/img/littleImages/Menu-header.svg);
+  }
+
+  &_icon_close {
+    display: block;
+    width: 16px;
+    height: 16px;
+    background-size: cover;
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    background-image: url(/public/img/littleImages/Close-header.svg);
   }
 
   &_menu {

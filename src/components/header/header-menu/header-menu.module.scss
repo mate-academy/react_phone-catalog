@@ -1,0 +1,54 @@
+@import '../../../styles/main.scss';
+
+.header {
+  margin-bottom: 276px;
+
+  &_link {
+    text-decoration: none;
+    color: $secondary-text-color;
+  }
+
+  &_list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 24px;
+    gap: 16px;
+  }
+
+  &_favorite {
+    display: block;
+    width: 16px;
+    height: 16px;
+    background-size: cover;
+    background-image: url(../../../../public/img/littleImages/Favourites-header.svg);
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  &_cart {
+    display: block;
+    width: 16px;
+    height: 16px;
+    background-size: cover;
+    background-image: url(../../../../public/img/littleImages/Shopping-bag-header.svg);
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  &_div1 {
+    height: 64px;
+    width: 50%;
+    border-top: 1px solid #e2e6e9;
+    border-bottom: 1px solid #e2e6e9;
+    align-content: center;
+  }
+
+  &_div2 {
+    height: 64px;
+    width: 50%;
+    border: 1px solid #e2e6e9;
+    align-content: center;
+  }
+}

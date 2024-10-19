@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './header-tablet.module.scss';
-import LogoImage from '../assets/images/Logo-header.png';
+import LogoImage from '../../../assets/images/Logo-header.png';
 
 export const HeaderTablet: React.FC = () => {
   return (
