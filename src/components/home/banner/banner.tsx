@@ -1,5 +1,5 @@
 /* eslint-disable import/no-extraneous-dependencies */
-import React from 'react';
+import React, { useState } from 'react';
 import styles from './banner.module.scss';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
@@ -9,6 +9,8 @@ import banner2 from '../../../assets/images/banners/iphone-13pro.jpg';
 import banner3 from '../../../assets/images/banners/iphone-12pro.jpg';
 
 export const Banner: React.FC = () => {
+  const [currentSlide, setCurrentSlide] = useState(0);
+
   const settings = {
     dots: true,
     infinite: true,
@@ -16,6 +18,21 @@ export const Banner: React.FC = () => {
     slidesToShow: 1,
     slidesToScroll: 1,
     arrows: false,
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    beforeChange: (current: any, next: React.SetStateAction<number>) =>
+      setCurrentSlide(next),
+    customPaging: (i: number) => (
+      <div
+        style={{
+          width: '14px',
+          height: '4px',
+          backgroundColor: i === currentSlide ? '#313237' : '#E2E6E9',
+          margin: '8px 5px 0',
+          borderRadius: '2px',
+          cursor: 'pointer',
+        }}
+      />
+    ),
   };
 
   return (
