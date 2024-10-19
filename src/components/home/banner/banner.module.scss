@@ -10,14 +10,51 @@
   }
 
   &_div {
-    width: 100%;
     overflow: hidden;
-    position: relative;
   }
 }
 
 .banner img {
-  width: 100%;
+  padding: 0;
+  margin: 0;
+  margin-left: auto;
+  margin-right: auto;
+  width: 490px;
   height: 100%;
   object-fit: cover;
+  height: 189px;
+}
+
+.arrow {
+  position: absolute;
+  width: 32px;
+  height: 189px;
+  border: 1px solid #b4bdc3;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  font-size: 24px;
+  z-index: 1;
+
+  &.prev {
+    background-image: url(/public/img/littleImages/Arrow-left.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    background-color: white;
+    left: 10px;
+  }
+
+  &.next {
+    background-image: url(/public/img/littleImages/Arrow-right.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    background-color: white;
+    right: 10px;
+  }
+}
+
+:global(.slick-track) {
+  height: 189px;
 }

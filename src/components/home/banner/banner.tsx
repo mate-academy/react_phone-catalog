@@ -1,7 +1,7 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import React, { useState } from 'react';
 import styles from './banner.module.scss';
-import Slider from 'react-slick';
+import Slider, { Settings } from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import banner1 from '../../../assets/images/banners/Iphone14Pro_banner.jpg';
@@ -9,18 +9,33 @@ import banner2 from '../../../assets/images/banners/iphone-13pro.jpg';
 import banner3 from '../../../assets/images/banners/iphone-12pro.jpg';
 
 export const Banner: React.FC = () => {
-  const [currentSlide, setCurrentSlide] = useState(0);
+  const [currentSlide, setCurrentSlide] = useState<number>(0);
 
-  const settings = {
+  // Определяем тип для стрелок
+  interface ArrowProps {
+    onClick?: () => void;
+  }
+
+  const PrevArrow: React.FC<ArrowProps> = ({ onClick }) => (
+    <div className={`${styles.arrow} ${styles.prev}`} onClick={onClick}></div>
+  );
+
+  const NextArrow: React.FC<ArrowProps> = ({ onClick }) => (
+    <div className={`${styles.arrow} ${styles.next}`} onClick={onClick}></div>
+  );
+
+  const settings: Settings = {
     dots: true,
     infinite: true,
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
+    prevArrow: <PrevArrow />,
+    nextArrow: <NextArrow />,
     arrows: false,
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    beforeChange: (current: any, next: React.SetStateAction<number>) =>
-      setCurrentSlide(next),
+    autoplay: true,
+    autoplaySpeed: 5000,
+    beforeChange: (_current: number, next: number) => setCurrentSlide(next),
     customPaging: (i: number) => (
       <div
         style={{
