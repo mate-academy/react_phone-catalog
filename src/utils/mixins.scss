@@ -1,18 +1,24 @@
 @mixin on-tablet {
   @media (min-width: 640px) {
-    @content;
+    & {
+      @content;
+    }
   }
 }
 
 @mixin on-media-screen {
   @media (min-width: 768px) {
-    @content;
+    & {
+      @content;
+    }
   }
 }
 
 @mixin on-desktop {
   @media (min-width: 1200px) {
-    @content;
+    & {
+      @content;
+    }
   }
 }
 

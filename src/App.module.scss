@@ -21,11 +21,11 @@
 }
 
 html {
+  scroll-behavior: smooth;
+
   &:has(.app__menu:target) {
     overflow: hidden;
   }
-
-  scroll-behavior: smooth;
 }
 
 body {
