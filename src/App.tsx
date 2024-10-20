@@ -28,7 +28,7 @@ const AppContent: React.FC<Props> = ({ isMenuOpen, openMenu, closeMenu }) => {
 
   return (
     <div className={styles.app} id="top">
-      <h1 className={`${styles.app__hiddenTitle}`}>Product Catalog</h1>
+      <h1 className={`${styles.app__title}`}>Product Catalog</h1>
       <div className={styles.app__header}>
         <Header onMenuClick={openMenu} closeMenu={closeMenu} />
       </div>
