@@ -2,7 +2,7 @@ import { Product, Products, SortType } from './types';
 
 export const fetchProducts = (
   category: string,
-  sortBy: SortType,
+  sortBy?: SortType,
 ): Promise<Products[]> => {
   return fetch(`/api/products.json`)
     .then(response => response.json())

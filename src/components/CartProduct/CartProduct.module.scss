@@ -65,6 +65,8 @@
     color: var(--color-black);
     width: 128px;
 
+    @include body-text;
+
     @include on-tablet {
       width: 136px;
     }
@@ -72,8 +74,6 @@
     @include on-desktop {
       width: 100%;
     }
-
-    @include body-text;
   }
 
   &__quantity {

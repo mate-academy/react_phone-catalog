@@ -25,7 +25,7 @@ export const ShopByCategory = () => {
         <div className={styles.shopByCategory__category}>
           <Link to="/phones" className={styles.shopByCategory__link}>
             <img
-              src="src/img/shopByCategory/phones.png"
+              src="/img/shopByCategory/phones.png"
               alt="phone category image"
               className={styles.shopByCategory__image}
             />
@@ -40,7 +40,7 @@ export const ShopByCategory = () => {
         <div className={styles.shopByCategory__category}>
           <Link to="/tablets" className={styles.shopByCategory__link}>
             <img
-              src="src/img/shopByCategory/tablets.png"
+              src="/img/shopByCategory/tablets.png"
               alt="phone category image"
               className={styles.shopByCategory__image}
             />
@@ -55,7 +55,7 @@ export const ShopByCategory = () => {
         <div className={styles.shopByCategory__category}>
           <Link to="/accessories" className={styles.shopByCategory__link}>
             <img
-              src="src/img/shopByCategory/accessories.png"
+              src="/img/shopByCategory/accessories.png"
               alt="phone category image"
               className={styles.shopByCategory__image}
             />

@@ -5,9 +5,9 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import './Swiper.scss';
 
-import image1 from '../../img/banners/image1.png';
-import image2 from '../../img/banners/image2.png';
-import image3 from '../../img/banners/image3.png';
+import image1 from '/img/banners/image1.png';
+import image2 from '/img/banners/image2.png';
+import image3 from '/img/banners/image3.png';
 
 export const MobileSwiper = () => {
   return (

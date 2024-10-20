@@ -1,9 +1,9 @@
 import styles from './Slider.module.scss';
 
 import { useEffect, useState } from 'react';
-import image1 from '../../img/banners/image1.png';
-import image2 from '../../img/banners/image2.png';
-import image3 from '../../img/banners/image3.png';
+import image1 from '/img/banners/image1.png';
+import image2 from '/img/banners/image2.png';
+import image3 from '/img/banners/image3.png';
 import { ArrowButton } from '../ArrowButton';
 import { ArrowType } from '../../utils/types';
 import classNames from 'classnames';
