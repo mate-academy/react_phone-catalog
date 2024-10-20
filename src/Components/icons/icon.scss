@@ -1,5 +1,10 @@
 @import '../../utils/mixins';
 
+@font-face {
+  font-family: Mont;
+  src: url('../../../public/fonts/Mont-Bold.otf');
+}
+
 .icon {
   &__menu {
     display: flex;
@@ -72,10 +77,35 @@
       cursor: pointer;
       transform: scale(1);
       transition: 0.3 s ease transform;
+      &--circle {
+        position: relative;
+        left: 7px;
+        font-family: Mont, sans-serif;
+font-size: 9px;
+font-weight: 700;
+line-height: 11.5px;
+text-align: center;
+
+
+      }
       &:hover {
         transition: 0.3 s ease transform;
         transform: scale(1.1);
       }
     }
+  }
+  &__circle {
+    height: 14px;
+    width: 14px;
+    border-radius: 100%;
+    background-color: palevioletred;
+    color: white;
+    font-family: Mont, sans-serif;
+font-size: 9px;
+font-weight: 700;
+line-height: 11.5px;
+text-align: center;
+position: relative;
+bottom: 6px;
   }
 }

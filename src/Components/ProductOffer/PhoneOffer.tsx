@@ -11,14 +11,8 @@ import { useNavigate } from 'react-router-dom';
 import { Product } from '../types/Product';
 
 export const PhonesOffer = () => {
-  const {
-    phones,
-    products,
-    isFavourite,
-    setIsFavourite,
-    setFavouriteItems,
-    favouriteItems,
-  } = useContext(CatalogContext);
+  const { phones, products, setFavouriteItems, favouriteItems } =
+    useContext(CatalogContext);
   const { itemId } = useParams();
   const selectedPhone = phones.find(phone => phone.id === itemId);
   const selectedProduct = products.find(product => product.itemId === itemId);
@@ -69,17 +63,14 @@ export const PhonesOffer = () => {
       item => item.id === favouriteProduct.id,
     );
 
-    if (favouriteProduct.itemId === itemId) {
-      setIsFavourite(!isFavourite);
-      setFavouriteItems([...favouriteItems, favouriteProduct]);
-    }
-
-    if (isFavourite) {
+    if (favouriteProduct.itemId !== itemId) {
       const updateItem = favouriteItems.filter(
         item => item.id !== favouriteProduct.id,
       );
 
       setFavouriteItems(updateItem);
+    } else {
+      setFavouriteItems([...favouriteItems, favouriteProduct]);
     }
 
     if (readyToAddItem) {

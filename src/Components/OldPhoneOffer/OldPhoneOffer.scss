@@ -92,7 +92,57 @@ text-align: left;
     &::selection {
       border: 2px solid black;
     }
+  }
 
+  &__panel {
+    &--buttons {
+      display: flex;
+      gap: 12px;
+      margin-left: 8px;
+    }
+    &--adding-button {
+      width: 158px;
+  height: 40px;
+border-radius: 8px;
+border: 0;
+background-color: #216CFF;
+color: white;
+font-family: Mont-normal, sans-serif;
+font-size: 10px;
+line-height: 21px;
+text-align: center;
+
+&:hover {
+  background-color: white;
+  color: #216CFF;
+  border: 3px solid #216CFF;
+}
+    }
+    &--heart-button {
+      width: 40px;
+height: 40px;
+border-radius: 48px;
+background-image: url('../../img/Favourites\ \(Heart\ Like\).svg');
+background-repeat: no-repeat;
+background-position: center;
+background-color: white !important;
+border: 1px solid #B4BDC3;
+cursor: pointer;
+&:hover {
+  background-image: url('../../img/Add\ to\ favorites-hover.svg');
+}
+
+  &--is-active {
+    width: 40px;
+height: 40px;
+border-radius: 100%;
+border: 1px solid #E2E6E9;
+background-repeat: no-repeat;
+background-position: center;
+background-color: white;
+  background-image: url('../../img/Add\ to\ fovourites\ -\ Added.svg');
+  }
+    }
   }
 
   &__slider {

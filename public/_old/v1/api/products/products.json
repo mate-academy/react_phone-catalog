@@ -9,6 +9,7 @@
     "price": 780,
     "discount": 0,
     "screen": "10.1' IPS",
+    "amountOfModels": 1,
     "capacity": "32000MB",
     "ram": "1000MB"
   },
@@ -22,6 +23,7 @@
     "price": 910,
     "discount": 10,
     "screen": "10.1' IPS",
+    "amountOfModels": 1,
     "capacity": "32000MB",
     "ram": "1000MB"
   },
@@ -35,6 +37,7 @@
     "price": 430,
     "discount": 0,
     "screen": "4.0' IPS",
+    "amountOfModels": 1,
     "capacity": "",
     "ram": ""
   },
@@ -48,6 +51,7 @@
     "price": 150,
     "discount": 0,
     "screen": "7.0' IPS",
+    "amountOfModels": 1,
     "capacity": "16000MB",
     "ram": "512MB"
   },
@@ -61,6 +65,7 @@
     "price": 560,
     "discount": 10,
     "screen": "3.2' IPS",
+    "amountOfModels": 1,
     "capacity": "220MB",
     "ram": "256MB"
   },
@@ -74,6 +79,7 @@
     "price": 300,
     "discount": 0,
     "screen": "4.1' IPS",
+    "amountOfModels": 1,
     "capacity": "1000MB",
     "ram": "512MB"
   },
@@ -87,6 +93,7 @@
     "price": 480,
     "discount": 10,
     "screen": "4.0' IPS",
+    "amountOfModels": 1,
     "capacity": "16384MB",
     "ram": "512MB"
   },
@@ -100,6 +107,7 @@
     "price": 590,
     "discount": 20,
     "screen": "3.2' IPS",
+    "amountOfModels": 1,
     "capacity": "126MB",
     "ram": "256MB"
   },
@@ -113,6 +121,7 @@
     "price": 190,
     "discount": 0,
     "screen": "7.0' IPS",
+    "amountOfModels": 1,
     "capacity": "16384MB",
     "ram": "640MB"
   },
@@ -126,6 +135,7 @@
     "price": 350,
     "discount": 20,
     "screen": "4.0' IPS",
+    "amountOfModels": 1,
     "capacity": "2048MB",
     "ram": "512MB"
   },
@@ -139,6 +149,7 @@
     "price": 350,
     "discount": 20,
     "screen": "3.7' IPS",
+    "amountOfModels": 1,
     "capacity": "8192MB",
     "ram": "512MB"
   },
@@ -152,6 +163,7 @@
     "price": 740,
     "discount": 10,
     "screen": "3.1' IPS",
+    "amountOfModels": 1,
     "capacity": "2048MB",
     "ram": "512MB"
   },
@@ -165,6 +177,7 @@
     "price": 250,
     "discount": 0,
     "screen": "3.7' IPS",
+    "amountOfModels": 1,
     "capacity": "2000MB",
     "ram": "512MB"
   },
@@ -179,6 +192,7 @@
     "price": 920,
     "discount": 20,
     "screen": "3.7' IPS",
+    "amountOfModels": 1,
     "capacity": "2000MB",
     "ram": "512MB"
   },
@@ -192,6 +206,7 @@
     "price": 390,
     "discount": 10,
     "screen": "3.8' IPS",
+    "amountOfModels": 1,
     "capacity": "1100MB",
     "ram": "768MB"
   },
@@ -205,6 +220,7 @@
     "price": 960,
     "discount": 10,
     "screen": "4.0' IPS",
+    "amountOfModels": 1,
     "capacity": "2048MB",
     "ram": "512MB"
   },
@@ -218,6 +234,7 @@
     "price": 750,
     "discount": 20,
     "screen": "3.5' IPS",
+    "amountOfModels": 1,
     "capacity": "130MB",
     "ram": "256MB"
   },
@@ -231,6 +248,7 @@
     "price": 30,
     "discount": 20,
     "screen": "3.5' IPS",
+    "amountOfModels": 1,
     "capacity": "180MB",
     "ram": "384MB"
   },
@@ -244,6 +262,7 @@
     "price": 640,
     "discount": 0,
     "screen": "3.7' IPS",
+    "amountOfModels": 1,
     "capacity": "4000MB",
     "ram": "512MB"
   },
@@ -257,6 +276,7 @@
     "price": 400,
     "discount": 0,
     "screen": "2.8' IPS",
+    "amountOfModels": 1,
     "capacity": "150MB",
     "ram": "512MB"
   }

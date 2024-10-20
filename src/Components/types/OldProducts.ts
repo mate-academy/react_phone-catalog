@@ -10,6 +10,7 @@ export type OldProduct = {
   price: number;
   discount: number;
   screen: string;
+  amountOfModels: number;
   capacity: string;
   ram: string;
   productData: OldProductType | null;

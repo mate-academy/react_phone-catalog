@@ -23,19 +23,13 @@
   &__navigation {
     display: flex;
     flex-direction: column;
-
-    @include on-tablet {
-      grid-column: 3 / 10;
-      flex-direction: row;
-      padding-top: 40px;
-    }
-
     gap: 16px;
     align-items: start;
     margin-left: 40px;
 
     @include on-tablet {
-      margin-left: 70px;
+      flex-direction: row;
+      margin: 50px 0 0 30px;
     }
 
     margin-top: 15px;

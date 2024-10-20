@@ -2,11 +2,13 @@ import './Navigation.scss';
 import '../icons/icon.scss';
 import '../logo/logo.scss';
 import { Menu } from '../Menu/Menu';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import classNames from 'classnames';
+import { CatalogContext } from '../CatalogProvider';
 
 export const Navigation = () => {
+  const { addedItems } = useContext(CatalogContext);
   const [showMenu, setShowMenu] = useState(false);
 
   const getSelectedLink = ({ isActive }: { isActive: boolean }) => {
@@ -53,15 +55,19 @@ export const Navigation = () => {
               onClick={() => setShowMenu(!showMenu)}
             ></a>
             <div className="navigation__icons-block">
-              <div className="navigation__block-bag">
-                <Link to="/cart" className="icon__navigation-bag"></Link>
-              </div>
-              <div className="navigation__block-heart">
-                <Link
-                  to="/favourites"
-                  className="icon__navigation-heart"
-                ></Link>
-              </div>
+              <Link to="/cart" className="navigation__block-bag">
+                <div
+                  className={classNames('icon__navigation-bag', {
+                    'icon__navigation-bag--circle': addedItems.length !== 0,
+                  })}
+                ></div>
+                {addedItems.length !== 0 && (
+                  <div className="icon__circle">{addedItems.length}</div>
+                )}
+              </Link>
+              <Link to="/favourites" className="navigation__block-heart">
+                <div className="icon__navigation-heart"></div>
+              </Link>
             </div>
           </div>
         </div>

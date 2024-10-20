@@ -14,7 +14,6 @@ export type Product = {
   year: number;
   image: string;
   ProductData: ProductType | null;
-  isFavourite: boolean;
   isAdded: boolean;
   amountOfModels: number;
 };

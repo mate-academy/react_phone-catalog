@@ -5,12 +5,19 @@ import './OldPhoneOffer.scss';
 import Slider from 'react-slick';
 import { useContext, useEffect } from 'react';
 import { CatalogContext } from '../CatalogProvider';
-import { DiscountProduct } from '../DiscountProduct/DiscountProduct';
+import { DiscountProduct } from '../OldProductCard/OldProductCard';
+import classNames from 'classnames';
+import { OldProduct } from '../types/OldProducts';
 
 export const OldPhoneOffer = () => {
   const { oldItemId } = useParams();
-  const { oldProducts, oldProductOffers, setOldProducts } =
-    useContext(CatalogContext);
+  const {
+    oldProducts,
+    oldProductOffers,
+    setOldProducts,
+    favouriteOldItems,
+    setFavouriteOldItems,
+  } = useContext(CatalogContext);
   const proposedPhones = oldProducts.filter(
     product => product.type === 'phone',
   );
@@ -63,6 +70,28 @@ export const OldPhoneOffer = () => {
     className: 'oldphoneoffer__proposition',
   };
 
+  const addOldProduct = (oldItem: OldProduct) => {
+    const readyToAdd = favouriteOldItems.some(item => item.id === oldItem.id);
+
+    if (oldItem.id !== selectedProduct?.id) {
+      const updateItem = favouriteOldItems.filter(
+        item => item.id !== oldItem.id,
+      );
+
+      setFavouriteOldItems(updateItem);
+    } else {
+      setFavouriteOldItems([...favouriteOldItems, oldItem]);
+    }
+
+    if (readyToAdd) {
+      const updateItem = favouriteOldItems.filter(
+        item => item.id !== oldItem.id,
+      );
+
+      setFavouriteOldItems(updateItem);
+    }
+  };
+
   return (
     <>
       <Navigation />
@@ -91,6 +120,21 @@ export const OldPhoneOffer = () => {
             <img key={i} src={product} />
           ))}
         </Slider>
+
+        <div className="oldphoneoffer__panel--buttons">
+          <button className="oldphoneoffer__panel--adding-button">
+            Add to cart
+          </button>
+          {selectedProduct && (
+            <button
+              className={classNames('oldphoneoffer__panel--heart-button', {
+                'oldphoneoffer__panel--heart-button--is-active':
+                  favouriteOldItems.find(item => item.id === oldItemId),
+              })}
+              onClick={() => addOldProduct(selectedProduct)}
+            ></button>
+          )}
+        </div>
         <div className="oldphoneoffer__description">
           <h1 className="oldphoneoffer__description--header">Description</h1>
           <h2 className="oldphoneoffer__description--title">

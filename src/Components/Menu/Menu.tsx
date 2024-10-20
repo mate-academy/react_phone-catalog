@@ -37,12 +37,15 @@ export const Menu = ({ showMenu, setShowMenu }: Props) => {
         </Link>
       </nav>
       <footer className="menu__footer">
-        <div className="menu__footer-block menu__footer-block--line">
-          <Link to="/favourites" className="icon__menu-heart"></Link>
-        </div>
-        <div className="menu__footer-block">
-          <Link to="/cart" className="icon__menu-bag"></Link>
-        </div>
+        <Link
+          to="/favourites"
+          className="menu__footer-block menu__footer-block--line"
+        >
+          <div className="icon__menu-heart"></div>
+        </Link>
+        <Link to="/cart" className="menu__footer-block">
+          <div className="icon__menu-bag"></div>
+        </Link>
       </footer>
     </menu>
   );

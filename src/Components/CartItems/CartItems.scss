@@ -131,7 +131,6 @@ background-color: transparent;
 gap: 0;
 border-radius: 100%;
 border: 1px solid #89939A;
-opacity: 0;
 font-size: 22px;
 cursor: pointer;
 &--disabled {
@@ -146,7 +145,6 @@ background-color: transparent;
 gap: 0;
 border-radius: 100%;
 border: 1px solid #89939A;
-opacity: 0;
 font-size: 22px;
 cursor: pointer;
 &--disabled {
@@ -209,5 +207,20 @@ cursor: pointer;
   color: blue;
   border: 2px solid blue;
 }
+  }
+
+  &__header {
+    font-family: Mont, sans-serif;
+    margin-left: 16px;
+  }
+
+  &__summary {
+    font-family: Mont-Bold, sans-serif;
+    color: #89939A;
+    margin-left: 16px;
+    &--price {
+      color: black;
+      font-style: oblique;
+    }
   }
 }

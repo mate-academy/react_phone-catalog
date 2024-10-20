@@ -178,16 +178,14 @@ text-align: right;
 
 }
 &__adding-button {
-  width: 158px;
-
   @include on-desktop {
     width: 160px;
   }
 
+  width: 158px;
   height: 40px;
 border-radius: 8px;
 border: 0;
-
 background-color: #216CFF;
 color: white;
 font-family: Mont-normal, sans-serif;

@@ -139,9 +139,8 @@ export const PhonesPage = () => {
     <>
       <Navigation />
       <div className="productpage">
-        <Link to="/home" className="productpage__breadcrumbs--link">
-          <div className="productpage__breadcrumbs--image"></div>
-        </Link>
+        <Link to="/home" className="productpage__breadcrumbs--image"></Link>
+
         <div className="productpage__breadcrumbs--category"> {'>'} Phones</div>
 
         <h1 className="productpage__header">Mobile phones</h1>

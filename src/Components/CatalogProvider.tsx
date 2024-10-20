@@ -41,14 +41,24 @@ export const CatalogContext = createContext<ContextType>({
   setSlideDots: () => {},
   favouriteItems: [],
   setFavouriteItems: () => {},
-  isFavourite: false,
-  setIsFavourite: () => {},
   addedItems: [],
   setAddedItems: () => {},
-  isAdded: false,
-  setIsAdded: () => {},
   totalPrice: 1,
   setTotalPrice: () => {},
+  favouriteOldItems: [],
+  setFavouriteOldItems: () => {},
+  oldAddedItems: [],
+  setOldAddedItems: () => {},
+  amountOfModels: 1,
+  setAmountOfModels: () => {},
+  totalModels: 0,
+  setTotalModels: () => {},
+  totalOldModels: 0,
+  setTotalOldModels: () => {},
+  totalOldProductsPrice: 0,
+  setTotalOldProductsPrice: () => {},
+  amountOfOldModels: 0,
+  setAmountOfOldModels: () => {},
 });
 
 export const GlobalCatalogProvider: React.FC<{
@@ -71,10 +81,15 @@ export const GlobalCatalogProvider: React.FC<{
   const [slidePages, setSlidePages] = useState(0);
   const [slideDots, setSlideDots] = useState(0);
   const [pageNumber, setPageNumber] = useState(1);
-  const [isFavourite, setIsFavourite] = useState(false);
-  const [isAdded, setIsAdded] = useState(false);
   const [addedItems, setAddedItems] = useState<Product[]>([]);
   const [totalPrice, setTotalPrice] = useState(0);
+  const [favouriteOldItems, setFavouriteOldItems] = useState<OldProduct[]>([]);
+  const [oldAddedItems, setOldAddedItems] = useState<OldProduct[]>([]);
+  const [amountOfModels, setAmountOfModels] = useState(1);
+  const [totalModels, setTotalModels] = useState(0);
+  const [totalOldModels, setTotalOldModels] = useState(0);
+  const [totalOldProductsPrice, setTotalOldProductsPrice] = useState(0);
+  const [amountOfOldModels, setAmountOfOldModels] = useState(0);
 
   useEffect(() => {
     getPhones().then(setPhones);
@@ -133,14 +148,24 @@ export const GlobalCatalogProvider: React.FC<{
         setSlideDots,
         favouriteItems,
         setFavouriteItems,
-        isFavourite,
-        setIsFavourite,
         addedItems,
         setAddedItems,
-        isAdded,
-        setIsAdded,
         totalPrice,
         setTotalPrice,
+        favouriteOldItems,
+        setFavouriteOldItems,
+        oldAddedItems,
+        setOldAddedItems,
+        amountOfModels,
+        setAmountOfModels,
+        totalModels,
+        setTotalModels,
+        totalOldModels,
+        setTotalOldModels,
+        totalOldProductsPrice,
+        setTotalOldProductsPrice,
+        amountOfOldModels,
+        setAmountOfOldModels,
       }}
     >
       {children}

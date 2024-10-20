@@ -3,7 +3,7 @@ import { MainSlider } from '../MainSlider/MainSlider';
 import { Navigation } from '../Navigation/Navigation';
 import { CartPage } from '../CartPage/CartPage';
 import './HomePage.scss';
-import { Discounts } from '../Discounts/Discounts';
+import { Discounts } from '../OldProductPage/OldProductPage';
 import { Footer } from '../Footer/Footer';
 
 export const HomePage = () => {

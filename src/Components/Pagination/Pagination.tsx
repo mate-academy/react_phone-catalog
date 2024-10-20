@@ -171,6 +171,7 @@ export const Pagination = ({ filteredItems }: Props) => {
           })}
         </div>
       </div>
+      div.pagination__
     </div>
   );
 };

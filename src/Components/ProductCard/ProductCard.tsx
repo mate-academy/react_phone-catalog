@@ -13,32 +13,36 @@ export const ProductCard = ({ product }: Props) => {
   const {
     favouriteItems,
     setFavouriteItems,
-    isFavourite,
-    setIsFavourite,
     addedItems,
     setAddedItems,
-    setIsAdded,
     setTotalPrice,
     totalPrice,
+    setTotalModels,
+    totalModels,
+    amountOfModels,
   } = useContext(CatalogContext);
 
   const addItems = (addedItem: Product) => {
     const readyToAdd = addedItems.some(item => item.id === addedItem.id);
 
-    if (addedItem.id !== product.id) {
-      setIsAdded(false);
+    if (
+      addedItem.id === product.id &&
+      addedItems.find(item => item.id === addedItem.id)
+    ) {
       const updateItem = addedItems.filter(item => item.id !== addedItem.id);
 
+      setTotalModels(totalModels - amountOfModels);
       setAddedItems(updateItem);
-    } else {
-      setIsAdded(true);
-      setAddedItems([...addedItems, addedItem]);
+      setTotalPrice(totalPrice - amountOfModels * addedItem.price);
     }
 
-    if (!addedItems.find(item => item.id === addedItem.id)) {
+    if (
+      addedItem.id === product.id &&
+      !addedItems.find(item => item.id === addedItem.id)
+    ) {
+      setTotalModels(totalModels + 1);
       setTotalPrice(totalPrice + addedItem.price);
-    } else {
-      setTotalPrice(totalPrice - addedItem.amountOfModels * addedItem.price);
+      setAddedItems([...addedItems, addedItem]);
     }
 
     if (readyToAdd) {
@@ -60,7 +64,6 @@ export const ProductCard = ({ product }: Props) => {
 
       setFavouriteItems(updateItem);
     } else {
-      setIsFavourite(!isFavourite);
       setFavouriteItems([...favouriteItems, favouriteProduct]);
     }
 

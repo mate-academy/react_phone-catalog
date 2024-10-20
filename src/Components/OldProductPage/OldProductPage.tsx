@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/indent */
 import { useContext, useEffect } from 'react';
 import { getOldProducts } from '../../api/products';
-import { DiscountProduct } from '../DiscountProduct/DiscountProduct';
-import './Discounts.scss';
+import { DiscountProduct } from '../OldProductCard/OldProductCard';
+import './OldProductPage.scss';
 import Slider from 'react-slick';
 import { CatalogContext } from '../CatalogProvider';
 
@@ -23,7 +23,7 @@ export const Discounts = () => {
 
   return (
     <div className="discounts">
-      <h2 className="discounts__title">Hot prices</h2>
+      <h2 className="discounts__title">Old Products</h2>
       <div className="discounts__content">
         <Slider {...settings}>
           {oldProducts.map(hotProduct => (
