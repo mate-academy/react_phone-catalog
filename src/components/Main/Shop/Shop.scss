@@ -1,34 +1,58 @@
-.shop-block {
+@import '../../../styles/utils';
+
+.shop-wrapper {
   margin-top: 24px;
-  margin-bottom: 56px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  @include on-tablet {
+    flex-direction: row;
+    gap: 16px;
+  }
+}
+
+.shop-block {
+  width: auto;
+
+  @include on-tablet {
+    width: 187px;
+    height: 262px;
+  }
 
   &__container-img {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #6D6474;
-    width: 288px;
+    background-color: #6d6474;
+    width: auto;
     height: 288px;
     overflow: hidden;
-  }
 
+    @include on-tablet {
+      width: 187px;
+      height: 187px;
+    }
+  }
 
   &__img {
     display: block;
     object-fit: cover;
     width: 150%;
     padding: 110px 0 0 80px;
+
+    &--large {
+      width: 290%;
+      padding: 44px 0 0 300px;
+    }
   }
 
-
   &__title {
-    font-weight: 700;
     font-size: 20px;
     padding: 0;
     margin: 24px 0 4px;
   }
   &__subtitle {
-    font-weight: 700;
     color: $c-secondary;
     margin: 0 0 32px;
   }

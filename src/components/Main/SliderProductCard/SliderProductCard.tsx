@@ -1,48 +1,99 @@
-import Slider from 'react-slick';
+import Slider, { CustomArrowProps } from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
+import './SliderProductCard.scss';
 
 import { ProductCard } from '../ProductCard/ProductCard';
-
 import { Product } from '../../../types/Product';
+import { useEffect, useRef, useState } from 'react';
 
 interface ProductSliderProps {
   products: Product[];
   showFullPrice: boolean;
+  sliderTitle: string;
 }
 
-export const SliderProductCard: React.FC<ProductSliderProps> = ({ products }) => {
+const NextArrow: React.FC<CustomArrowProps> = ({ className, onClick }) => {
+  return <div className={`product-arrow__next product-arrow ${className}`} onClick={onClick} />;
+};
+
+const PrevArrow: React.FC<CustomArrowProps> = ({ className, onClick }) => {
+  return <div className={`product-arrow__prev product-arrow ${className}`} onClick={onClick} />;
+};
+
+export const SliderProductCard: React.FC<ProductSliderProps> = ({
+  products,
+  sliderTitle,
+  showFullPrice,
+}) => {
+  const sliderRef = useRef<Slider | null>(null);
+  const [arrowSpacing, setArrowSpacing] = useState(20);
+
+  useEffect(() => {
+    const updateArrowSpacing = () => {
+      if (
+        sliderRef.current &&
+        sliderRef.current.innerSlider &&
+        sliderRef.current.innerSlider.list
+      ) {
+        const sliderWidth = sliderRef.current.innerSlider.list.offsetWidth;
+        const newSpacing = Math.max((sliderWidth - 100) / 2, 20);
+
+        setArrowSpacing(newSpacing);
+      }
+    };
+
+    window.addEventListener('resize', updateArrowSpacing);
+    updateArrowSpacing();
+
+    return () => window.removeEventListener('resize', updateArrowSpacing);
+  }, []);
+
   const settings = {
+    className: 'product-slider',
     dots: false,
     infinite: true,
+    arrows: false,
     speed: 500,
     slidesToShow: 1,
     variableWidth: true,
-
-    // responsive: [
-    //   {
-    //     breakpoint: 1024,
-    //     settings: {
-    //       slidesToShow: 2,
-    //       slidesToScroll: 1,
-    //     },
-    //   },
-    //   {
-    //     breakpoint: 600,
-    //     settings: {
-    //       slidesToShow: 2,
-    //       slidesToScroll: 1,
-    //     },
-    //   },
-    // ],
+    responsive: [
+      {
+        breakpoint: 640,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 1,
+        },
+      },
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 4,
+          slidesToScroll: 1,
+        },
+      },
+    ],
   };
 
   return (
     <div className="slider-productcard__container">
-      <Slider {...settings}>
+      <h2 className="slider-productcard__title">{sliderTitle}</h2>
+      <div className="arrows-container">
+        <PrevArrow
+          className="product-arrow__prev slick-prev"
+          onClick={() => sliderRef.current?.slickPrev()}
+          style={{ marginRight: arrowSpacing }}
+        />
+        <NextArrow
+          className="product-arrow__next slick-next"
+          onClick={() => sliderRef.current?.slickNext()}
+          style={{ marginLeft: arrowSpacing }}
+        />
+      </div>
+      <Slider ref={sliderRef} {...settings}>
         {products.map(product => (
           <div key={product.id} className="slider__block">
-            <ProductCard product={product} showFullPrice={false} />
+            <ProductCard product={product} showFullPrice={showFullPrice} />
           </div>
         ))}
       </Slider>

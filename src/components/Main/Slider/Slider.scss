@@ -1,7 +1,13 @@
+@import '../../../styles/utils';
+
 .slider {
   &__container {
     width: 100%;
-    height: 320px;
+
+    @include on-tablet {
+      display: flex;
+      justify-content: center;
+    }
   }
 
   &__image {
@@ -9,12 +15,14 @@
     max-width: 100%;
     height: 320px;
     object-fit: cover;
-  }
+    margin: 0 auto;
+    margin-top: 5px;
 
-  &-productcard__container {
-    display: block;
-    max-width: 440px;
-    overflow: visible;
+    @include on-tablet {
+      width: 120%;
+      height: 198px;
+      object-fit: cover;
+    }
   }
 
   &__block {
@@ -28,44 +36,56 @@
     width: 16px;
     height: 16px;
   }
+
 }
 
 .slick {
   &-prev,
   &-next {
-    display: block;
-    position: absolute;
+    background-color: rgba(255, 255, 255, 0.8);
     border: 1px solid $c-icon;
-    background-color: $c-white;
+    cursor: pointer;
+    width: 32px;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
     z-index: 1;
-    width: 40px;
-    height: 40px;
-    top: -55px;
+
 
     &::before {
       content: '';
     }
+
+    @include on-tablet {
+      display: flex;
+    }
   }
 
   &-prev {
+    grid-column: 0;
+    justify-self: start;
     background-image: url('./icons/Chevron\ \(Arrow\ Left\).png');
     background-repeat: no-repeat;
     background-position: center;
-    left: 185px;
+    right: 59px;
 
     &:hover {
       background-image: url('./icons/Chevron\ \(Arrow\ Left\).png');
       background-repeat: no-repeat;
       background-position: center;
+
+      cursor: pointer;
+      border: 1px solid $c-primary;
     }
   }
 
   &-next {
+    grid-column: 4;
+    justify-self: end;
     background-image: url('./icons/Chevron\ \(Arrow\ Right\).png');
     background-repeat: no-repeat;
     background-position: center;
 
-    left: 250px;
 
     &:hover {
       background-image: url('./icons/Chevron\ \(Arrow\ Right\).png');
@@ -77,6 +97,20 @@
     }
   }
 
+  &-list {
+    grid-column: 2;
+  }
+
+  &-slider {
+    @include on-tablet {
+      display: grid;
+      grid-template-columns: 32px 1fr 32px;
+      align-items: center;
+      position: relative;
+      width: 560px;
+      height: 198px;
+    }
+  }
 }
 
 .slick-dots {

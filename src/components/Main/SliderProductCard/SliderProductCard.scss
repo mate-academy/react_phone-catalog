@@ -1,0 +1,76 @@
+@import '../../../styles/utils';
+@import './../Slider/Slider';
+
+.slider-productcard__container {
+  display: grid;
+  max-width: 1980px;
+  grid-template-columns: 136px auto;
+  grid-template-rows: auto auto;
+  align-items: center;
+  overflow: hidden;
+
+  @include on-tablet {
+    grid-template-columns: 300px auto;
+  }
+}
+
+.slider-productcard__title {
+  width: 136px;
+  max-width: 300px;
+
+  @include on-tablet {
+    width: 100%;
+  }
+}
+
+.arrows-container {
+  grid-column: 2;
+  grid-row: 1;
+
+  margin-top: 30px;
+  display: flex;
+  position: relative;
+  justify-self: flex-end;
+  float: right;
+  align-items: center;
+  gap: 16px;
+  max-width: 80px;
+  height: 32px;
+}
+
+.product {
+  &-arrow {
+    &__next {
+      position: relative;
+      width: 32px;
+      height: 32px;
+
+      top: 0;
+      right: 0;
+      bottom: 0;
+    }
+
+    &__prev {
+      position: relative;
+      width: 32px;
+      height: 32px;
+
+      top: 0;
+      right: 0;
+      bottom: 0;
+    }
+  }
+
+  &-slider {
+    display: block;
+    grid-row: 2;
+    grid-column: 1;
+    width: 640px;
+    height: 440px;
+
+    @include on-tablet {
+      width: 1199px;
+      height: 512px;
+    }
+  }
+}

@@ -6,7 +6,7 @@ interface ProductCardProps {
   showFullPrice?: boolean;
 }
 
-export const ProductCard: React.FC<ProductCardProps> = ({ product, showFullPrice = false }) => {
+export const ProductCard: React.FC<ProductCardProps> = ({ product, showFullPrice }) => {
   return (
     <div className="product-card">
       <img src={product.image} alt={product.name} className="product-card__image" />

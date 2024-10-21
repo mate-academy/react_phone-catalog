@@ -6,7 +6,6 @@ import newProductsData from '../../api/brand-new__models.json';
 import productsData from '../../api/products.json';
 import { Shop } from './Shop/Shop';
 import shops from '../../api/shops.json';
-import { HotPriceModels } from './HotPrices/HotPrices';
 
 const newproducts: Product[] = newProductsData; // brand-new models
 const products: Product[] = productsData; // brand-new models
@@ -19,12 +18,11 @@ export const Main: React.FC = () => {
         <Slider />
       </section>
       <section className="new-models-block">
-        <h2 className="new-models-block__title">
-          Brand new <br /> models
-        </h2>
-        <div className="new-models-block__products">
-          <SliderProductCard products={newproducts} showFullPrice={false} />
-        </div>
+        <SliderProductCard
+          products={newproducts}
+          showFullPrice={false}
+          sliderTitle="Brand new models"
+        />
       </section>
       <section className="section-block">
         <h2 className="section__title">Shop by category</h2>
@@ -32,8 +30,7 @@ export const Main: React.FC = () => {
       </section>
 
       <section className="section-block">
-        <h2 className="section__title hot-title">Hot prices</h2>
-        <HotPriceModels products={products} />
+        <SliderProductCard products={products} showFullPrice={true} sliderTitle="Hot prices" />
       </section>
     </main>
   );

@@ -14,12 +14,20 @@ export default function SimpleSlider() {
     dots: true,
     infinite: true,
     speed: 500,
-    arrows: false,
+    arrows: true,
     slidesToShow: 1,
     slidesToScroll: 1,
     autoplay: false,
     autoplaySpeed: 3000,
     centerMode: false,
+    responsive: [
+      {
+        breakpoint: 640,
+        settings: {
+          arrows: false,
+        },
+      },
+    ],
   };
 
   return (

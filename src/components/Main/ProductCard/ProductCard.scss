@@ -6,9 +6,13 @@
   gap: 8px;
   margin-right: 16px;
   max-width: 212px;
-  height: 440px;
   padding: 32px;
   border: 1px solid $c-element;
+
+  @include on-tablet {
+    width: 237px;
+    height: 512px;
+  }
 
   &__line {
     width: 100%;
@@ -18,7 +22,14 @@
   &__image {
     width: 148px;
     height: 129px;
+    margin: 0 auto;
     object-fit: contain;
+
+    @include on-tablet {
+      padding-right: 28px;
+      width: 173px;
+      height: 181px;
+    }
   }
 
   &__name {

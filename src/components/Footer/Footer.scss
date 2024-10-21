@@ -1,3 +1,5 @@
+@import '../../styles/utils';
+
 .footer {
   display: flex;
   flex-direction: column;
@@ -5,6 +7,24 @@
   margin-top: 64px;
   padding: 32px 16px;
   border: 1px solid $c-icon;
+
+  @include on-tablet {
+    display: grid;
+    grid-template-columns: 3;
+    padding: 32px;
+
+    &__logo {
+      grid-column: 1;
+    }
+
+    &__nav-bar {
+      grid-column: 2;
+    }
+
+    &__nav-up {
+      grid-column: 3;
+    }
+  }
 
   &__link-logo {
     cursor: pointer;
@@ -25,6 +45,13 @@
     flex-direction: column;
     gap: 16px;
 
+    @include on-tablet {
+      flex-direction: row;
+      align-items: center;
+
+      margin: 0 auto;
+    }
+
     &__link {
       max-width: 110px;
       text-decoration: none;
@@ -43,6 +70,7 @@
         text-underline-offset: 11px;
         text-decoration-thickness: 2px;
       }
+
     }
   }
   &__nav-up {
