@@ -95,7 +95,9 @@ export const Header: React.FC<Props> = ({ burgerMenu, setBurgerMenu }) => {
               src="./img/Favourites_nav.svg"
               alt="Favourites"
             />
-            <div className="nav__count--first">{favoritesCount}</div>
+            {favoritesCount > 0 && (
+              <div className="nav__count--first">{favoritesCount}</div>
+            )}
           </Link>
 
           <Link
@@ -108,7 +110,9 @@ export const Header: React.FC<Props> = ({ burgerMenu, setBurgerMenu }) => {
               src="./img/Cart_nav.svg"
               alt="Cart"
             />
-            <div className="nav__count--second">{cartCount}</div>
+            {cartCount > 0 && (
+              <div className="nav__count--second">{cartCount}</div>
+            )}
           </Link>
         </div>
       </div>

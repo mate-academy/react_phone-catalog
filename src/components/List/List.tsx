@@ -96,6 +96,8 @@ export const List: React.FC<Props> = ({ type }) => {
     }
   };
 
+  const isPaginationEnabled = searchParams.has('perPage');
+
   return (
     <>
       <ul className="card__grid">
@@ -153,37 +155,41 @@ export const List: React.FC<Props> = ({ type }) => {
           ))}
       </ul>
 
-      <div className="pagination">
-        <button
-          className="pagination--previous"
-          onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
-          disabled={currentPage === 1}
-        >
-          {'<'}
-        </button>
+      {isPaginationEnabled && itemsPerPage && (
+        <div className="pagination">
+          <button
+            className="pagination--previous"
+            onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
+            disabled={currentPage === 1}
+          >
+            {'<'}
+          </button>
 
-        {Array.from({ length: endPage - startPage + 1 }, (_, index) => {
-          const page = startPage + index;
+          {Array.from({ length: endPage - startPage + 1 }, (_, index) => {
+            const page = startPage + index;
 
-          return (
-            <button
-              key={index + 1}
-              className={`pagination--str ${currentPage === page ? 'active' : ''}`}
-              onClick={() => setCurrentPage(page)}
-            >
-              {page}
-            </button>
-          );
-        })}
+            return (
+              <button
+                key={index + 1}
+                className={`pagination--str ${currentPage === page ? 'active' : ''}`}
+                onClick={() => setCurrentPage(page)}
+              >
+                {page}
+              </button>
+            );
+          })}
 
-        <button
-          className="pagination--next"
-          onClick={() => setCurrentPage(prev => Math.min(prev + 1, totalPages))}
-          disabled={currentPage === totalPages}
-        >
-          {'>'}
-        </button>
-      </div>
+          <button
+            className="pagination--next"
+            onClick={() =>
+              setCurrentPage(prev => Math.min(prev + 1, totalPages))
+            }
+            disabled={currentPage === totalPages}
+          >
+            {'>'}
+          </button>
+        </div>
+      )}
     </>
   );
 };
