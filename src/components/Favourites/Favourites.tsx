@@ -38,11 +38,14 @@ export const Favourites: React.FC<Props> = ({ models }) => {
             <div className={styles.favourites__main}>
               <div className={styles.favourites__breadcrumbs}>
                 <Link className={styles['favourites__breadcrumbs-link']} to="/">
-                  <img src={`${BASE_URL}/src/img/products/home.svg`} alt="home" />
+                  <img
+                    src={`../public/img/products/home.svg`}
+                    alt="home"
+                  />
                 </Link>
                 <img
                   className={styles['favourites__breadcrumbs-link']}
-                  src={`${BASE_URL}/src/img/products/arrow.svg`}
+                  src={`..public/img/products/arrow.svg`}
                   alt="arrow"
                 />
                 <Link
