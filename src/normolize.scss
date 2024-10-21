@@ -32,7 +32,8 @@ a {
 }
 
 body {
-  font-family: Mont, sans-serif; /* Шрифт для всего тела */
+  font-family: Mont, sans-serif;
+  margin: 0; /* Шрифт для всего тела */
 }
 
 @media screen and (min-width: 640px) {

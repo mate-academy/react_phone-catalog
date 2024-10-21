@@ -6,9 +6,9 @@ import { BrandNewModelsHome } from '../components/BrandNewModelsHome';
 export const HomePage = () => {
   return (
     <>
-      <HomeCarousel />
-
       <div className="container">
+        <HomeCarousel />
+
         <BrandNewModelsHome type="Brand new models" />
         <ShopByCategory />
         <BrandNewModelsHome type="Hot Prices" />

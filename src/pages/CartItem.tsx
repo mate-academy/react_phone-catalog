@@ -42,6 +42,10 @@ export const CartItem = () => {
     setQuantities(newQuantities);
   };
 
+  const totalItems = () => {
+    return quantities.reduce((total, qty) => total + qty, 0);
+  };
+
   return (
     <>
       <div className="container">
@@ -65,7 +69,7 @@ export const CartItem = () => {
         <h1>Cart</h1>
         {cart.length > 0 ? (
           <>
-            <p>{cart.length} items</p>
+            <p>{totalItems()} items</p>
 
             <div className="cart__flex">
               <div className="dfg">
@@ -128,7 +132,7 @@ export const CartItem = () => {
 
               <div className="cart__checkout">
                 <h2 className="cart__text">{`$${sumCart()}`}</h2>
-                <p>Total for {cart.length} items</p>
+                <p>Total for {totalItems()} items</p>
                 <div className="cart__line"></div>
                 <button className="card__buy-cart">Checkout</button>
               </div>
