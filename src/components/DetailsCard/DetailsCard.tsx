@@ -3,7 +3,7 @@ import { Phone } from '../../types/phone';
 import { Tablet } from '../../types/tablet';
 import { Accessory } from '../../types/accessory';
 import classNames from 'classnames';
-import { useNavigate } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { Products } from '../../types/products';
 import { COLORS } from '../../variables';
 import { useAppContext } from '../../ContextStor';
@@ -20,7 +20,6 @@ export const DetailsCard: React.FC<Props> = ({ product }) => {
   const navigate = useNavigate();
   const [selectedImage, setSelectedImage] = useState<string>(product.images[0]);
   const [products, setProducts] = useState<Products[]>([]);
-  const [activeColor, setActiveColor] = useState<string | null>(null);
 
   const handleMemoryChange = (newCapacity: string) => {
     let updatedURL;
@@ -30,12 +29,6 @@ export const DetailsCard: React.FC<Props> = ({ product }) => {
     } else {
       updatedURL = `/${product.category}/${product.namespaceId}-${newCapacity}-${product.color}`;
     }
-
-    navigate(updatedURL);
-  };
-
-  const handleColorChange = (color: keyof typeof COLORS) => {
-    const updatedURL = `/${product.category}/${product.namespaceId}-${product.capacity.toLowerCase()}-${color}`;
 
     navigate(updatedURL);
   };
@@ -109,17 +102,15 @@ export const DetailsCard: React.FC<Props> = ({ product }) => {
 
           <div className="details__colors-container">
             {product.colorsAvailable.map(color => (
-              <div
+              <NavLink
                 key={color}
-                onClick={() => {
-                  setActiveColor(color);
-
-                  handleColorChange(color as keyof typeof COLORS);
-                }}
-                className={classNames({
-                  details__color: color !== activeColor,
-                  'details__color--is-active': color === activeColor,
-                })}
+                to={`/${product.category}/${product.namespaceId}-${product.capacity.toLowerCase()}-${color.replace(/\s+/g, '-').toLowerCase()}`}
+                className={({ isActive }) =>
+                  classNames({
+                    details__color: !isActive,
+                    'details__color--is-active': isActive,
+                  })
+                }
                 style={{
                   backgroundColor: COLORS[color as keyof typeof COLORS],
                   width: '32px',

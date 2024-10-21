@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 type Props = {
   burgerMenu: boolean;
@@ -7,6 +7,8 @@ type Props = {
 };
 
 export const BurgerMenu: React.FC<Props> = ({ burgerMenu, setBurgerMenu }) => {
+  const location = useLocation();
+
   return (
     <div className="burger-menu">
       <div className="burger-menu--text">
@@ -47,7 +49,11 @@ export const BurgerMenu: React.FC<Props> = ({ burgerMenu, setBurgerMenu }) => {
         <Link onClick={() => setBurgerMenu(!burgerMenu)} to="/favourites">
           <img src="./img/Favourites.svg" alt="Favourites" />
         </Link>
-        <Link onClick={() => setBurgerMenu(!burgerMenu)} to="/cart">
+        <Link
+          state={{ from: location.pathname }}
+          onClick={() => setBurgerMenu(!burgerMenu)}
+          to="/cart"
+        >
           <img src="./img/Cart.svg" alt="Cart" />
         </Link>
       </div>

@@ -8,11 +8,11 @@ export const HomePage = () => {
     <>
       <HomeCarousel />
 
-      <BrandNewModelsHome type="Brand new models" />
-
-      <ShopByCategory />
-
-      <BrandNewModelsHome type="Hot Prices" />
+      <div className="container">
+        <BrandNewModelsHome type="Brand new models" />
+        <ShopByCategory />
+        <BrandNewModelsHome type="Hot Prices" />
+      </div>
     </>
   );
 };

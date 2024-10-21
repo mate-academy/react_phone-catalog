@@ -28,6 +28,7 @@ a {
   max-width: 1200px; /* Максимальная ширина для контента */
   margin: 0 auto;
   padding: 13px 16px;
+  min-height: 70vh; /* Высота контейнера на весь экран */
 }
 
 body {

@@ -14,9 +14,11 @@ export const AccessoriesPage = () => {
 
   return (
     <>
-      <ProductHome product={accessoriesList} />
+      <div className="container">
+        <ProductHome product={accessoriesList} />
 
-      <List products={accessoriesList} type="accessories" />
+        <List products={accessoriesList} type="accessories" />
+      </div>
     </>
   );
 };

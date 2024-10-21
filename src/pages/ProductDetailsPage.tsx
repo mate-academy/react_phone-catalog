@@ -64,14 +64,16 @@ export const ProductDetailsPage = () => {
   }
 
   return (
-    <div className="details">
-      <DetailsBack product={product} />
+    <div className="container">
+      <div className="details">
+        <DetailsBack product={product} />
 
-      <DetailsCard product={product} />
+        <DetailsCard product={product} />
 
-      <DetailsTechSpecs product={product} />
+        <DetailsTechSpecs product={product} />
 
-      <BrandNewModelsHome type="You may also like" />
+        <BrandNewModelsHome type="You may also like" />
+      </div>
     </div>
   );
 };

@@ -14,7 +14,6 @@
       column-gap: 16px;
       margin-bottom: 64px;
 
-
       width: 100%;
       transform: translateX(0);
     }
@@ -28,7 +27,9 @@
 
       @media screen and (min-width: 640px) {
         display: block;
+        max-height: 400px;
         width: 100%;
+
       }
     }
 
@@ -45,9 +46,7 @@
 
       @media screen and (min-width: 640px) {
         object-fit: cover;
-
       }
-
     }
 
     &__third {
@@ -55,7 +54,6 @@
 
       @media screen and (min-width: 640px) {
         object-fit: cover;
-
       }
     }
 
@@ -65,14 +63,12 @@
 
       @media screen and (min-width: 640px) {
         display: block;
-
       }
     }
 
     &--second-button {
       display: none;
       cursor: pointer;
-
 
       @media screen and (min-width: 640px) {
         display: block;

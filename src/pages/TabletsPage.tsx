@@ -14,9 +14,11 @@ export const TabletsPage = () => {
 
   return (
     <>
-      <ProductHome product={tabletsList} />
+      <div className="container">
+        <ProductHome product={tabletsList} />
 
-      <List products={tabletsList} type="tablets" />
+        <List products={tabletsList} type="tablets" />
+      </div>
     </>
   );
 };

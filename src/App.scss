@@ -187,6 +187,10 @@
   }
 }
 
+.dfg {
+  grid-column: span 10;
+}
+
 .cart__card {
   display: flex;
   flex-direction: column;
@@ -284,6 +288,7 @@
 }
 
 .cart__checkout {
+  align-self: baseline;
   border: 1px solid rgb(226, 230, 233);
   border-radius: 16px;
   display: flex;
