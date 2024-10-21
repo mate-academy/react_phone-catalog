@@ -6,8 +6,10 @@ import { Footer } from '../Footer';
 import { useAppContext } from '../../AppContext';
 import { Link } from 'react-router-dom';
 
-const BASE_URL =
-  'https://github.com/Pokhvalenkos/react_phone-catalog';
+const BASE_URL = `https://raw.githubusercontent.com/
+Pokhvalenkos/react_phone-catalog/
+develop/public/img/products/`;
+
 
 interface Props {
   models: Products[];
@@ -39,14 +41,11 @@ export const Favourites: React.FC<Props> = ({ models }) => {
             <div className={styles.favourites__main}>
               <div className={styles.favourites__breadcrumbs}>
                 <Link className={styles['favourites__breadcrumbs-link']} to="/">
-                  <img
-                    src={`${BASE_URL}/public/img/products/home.svg`}
-                    alt="home"
-                  />
+                  <img src={`${BASE_URL}home.svg`} alt="home" />
                 </Link>
                 <img
                   className={styles['favourites__breadcrumbs-link']}
-                  src={`${BASE_URL}public/img/products/arrow.svg`}
+                  src={`${BASE_URL}arrow.svg`}
                   alt="arrow"
                 />
                 <Link
