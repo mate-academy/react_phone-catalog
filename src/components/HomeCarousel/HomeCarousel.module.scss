@@ -5,17 +5,16 @@
   }
 
   &--slider {
-    width: calc(100% + 32px);
-    transform: translateX(-16px);
-    margin-bottom: 56px;
+    max-width: 1200px;
+    width: 100vw;
 
     @media screen and (min-width: 640px) {
-      display: flex;
       column-gap: 16px;
-      margin-bottom: 64px;
 
       width: 100%;
       transform: translateX(0);
+
+      display: flex;
     }
 
     @media screen and (min-width: 1200px) {
@@ -58,6 +57,8 @@
     }
 
     &--first-button {
+      width: 40px;
+
       display: none;
       cursor: pointer;
 
@@ -67,6 +68,7 @@
     }
 
     &--second-button {
+      width: 40px;
       display: none;
       cursor: pointer;
 
