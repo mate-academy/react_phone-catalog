@@ -6,7 +6,6 @@ import { FilterBy } from '../../types/FilterBy';
 import { PageSection } from '../../types/PageSection';
 import { PerPage } from '../../types/ItemsPerPage';
 import classNames from 'classnames';
-import 'bulma/css/bulma.css';
 import { Pagination } from './Pagination';
 import { Footer } from '../Footer';
 import { useAppContext } from '../../AppContext';
