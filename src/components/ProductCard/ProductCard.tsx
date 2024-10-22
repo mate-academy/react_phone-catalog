@@ -4,6 +4,7 @@ import { Products } from '../../utils/types';
 import { ToBuyButton } from '../ToBuyButton';
 import { AddToFavourites } from '../AddToFavourites';
 import { Link } from 'react-router-dom';
+import { BASE_URL } from '../../utils/constants';
 
 type Props = {
   product: Products;
@@ -21,7 +22,7 @@ export const ProductCard: React.FC<Props> = ({ product, width }) => {
       >
         <img
           className={styles.productCard__image}
-          src={`/${image}`}
+          src={`${BASE_URL}/${image}`}
           alt={name}
         />
       </Link>

@@ -7,6 +7,7 @@ import { ProductsList } from '../../components/ProductsList';
 import homeIcon from '../../img/icons/home.png';
 import homeIconDark from '../../img/icons/night_theme_home.png';
 import { useTheme } from '../../context/ThemeContext';
+import { ArrowGrey } from '../../components/ArrowGrey';
 
 export const Favorites = () => {
   const { favorites } = useContext(FavoritesContext);
@@ -22,7 +23,7 @@ export const Favorites = () => {
             alt="home icon"
           />
         </NavLink>
-        <img src="../src/img/icons/arrow_right_grey.png" alt="arrow icon" />
+        <ArrowGrey />
         <p className={styles['favorites__current-page']}>Favorites</p>
       </div>
       <div className={styles.favorites__title}>

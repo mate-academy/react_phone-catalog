@@ -1,3 +1,4 @@
+import { BASE_URL } from '../../utils/constants';
 import { Title } from '../Title';
 import styles from './CartIsEmpty.module.scss';
 
@@ -7,7 +8,7 @@ export const CartIsEmpty = () => {
       <div className={styles.cartIsEmpty__container}>
         <Title level={2}>Your cart is empty</Title>
         <img
-          src={'../src/img/cart-is-empty.png'}
+          src={`${BASE_URL}/img/cart-is-empty.png`}
           alt="not found image"
           className={styles.cartIsEmpty__image}
         />

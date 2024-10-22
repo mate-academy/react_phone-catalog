@@ -1,10 +1,11 @@
+import { BASE_URL } from './constants';
 import { Product, Products, SortType } from './types';
 
 export const fetchProducts = (
   category: string,
   sortBy?: SortType,
 ): Promise<Products[]> => {
-  return fetch(`/api/products.json`)
+  return fetch(`${BASE_URL}/api/products.json`)
     .then(response => response.json())
     .then(data => {
       let filteredProducts: Products[] = data.filter(
@@ -50,7 +51,7 @@ export const fetchProducts = (
 export const fetchProductsItem = (
   itemId: string,
 ): Promise<Products | undefined> => {
-  return fetch(`/api/products.json`)
+  return fetch(`${BASE_URL}/api/products.json`)
     .then(response => response.json())
     .then((data: Products[]) => {
       return data.find(item => item.itemId === itemId);
@@ -61,7 +62,7 @@ export const fetchProduct = (
   category: string,
   productId: string,
 ): Promise<Product> => {
-  return fetch(`/api/${category}.json`)
+  return fetch(`${BASE_URL}/api/${category}.json`)
     .then(response => response.json())
     .then(data => {
       const product = data.find((item: Product) => {

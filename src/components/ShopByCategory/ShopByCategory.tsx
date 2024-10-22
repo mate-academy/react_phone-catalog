@@ -4,11 +4,12 @@ import { fetchProducts } from '../../utils/fetch';
 import { useEffect, useState } from 'react';
 import { Products } from '../../utils/types';
 import { Link } from 'react-router-dom';
+import { BASE_URL } from '../../utils/constants';
 
 export const ShopByCategory = () => {
-  const [phones, setPhones] = useState<Products[] | []>([]);
-  const [tablets, setTablets] = useState<Products[] | []>([]);
-  const [accessories, setAccessories] = useState<Products[] | []>([]);
+  const [phones, setPhones] = useState<Products[]>([]);
+  const [tablets, setTablets] = useState<Products[]>([]);
+  const [accessories, setAccessories] = useState<Products[]>([]);
 
   useEffect(() => {
     fetchProducts('phones').then(res => setPhones(res));
@@ -25,7 +26,7 @@ export const ShopByCategory = () => {
         <div className={styles.shopByCategory__category}>
           <Link to="/phones" className={styles.shopByCategory__link}>
             <img
-              src="/img/shopByCategory/phones.png"
+              src={`${BASE_URL}/img/shopByCategory/phones.png`}
               alt="phone category image"
               className={styles.shopByCategory__image}
             />
@@ -40,7 +41,7 @@ export const ShopByCategory = () => {
         <div className={styles.shopByCategory__category}>
           <Link to="/tablets" className={styles.shopByCategory__link}>
             <img
-              src="/img/shopByCategory/tablets.png"
+              src={`${BASE_URL}/img/shopByCategory/tablets.png`}
               alt="phone category image"
               className={styles.shopByCategory__image}
             />
@@ -55,7 +56,7 @@ export const ShopByCategory = () => {
         <div className={styles.shopByCategory__category}>
           <Link to="/accessories" className={styles.shopByCategory__link}>
             <img
-              src="/img/shopByCategory/accessories.png"
+              src={`${BASE_URL}/img/shopByCategory/accessories.png`}
               alt="phone category image"
               className={styles.shopByCategory__image}
             />

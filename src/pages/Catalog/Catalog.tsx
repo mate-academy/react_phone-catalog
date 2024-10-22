@@ -14,6 +14,7 @@ import { NotFoundPage } from '../NotFoundPage';
 import homeIcon from '../../img/icons/home.png';
 import homeIconDark from '../../img/icons/night_theme_home.png';
 import { useTheme } from '../../context/ThemeContext';
+import { ArrowGrey } from '../../components/ArrowGrey';
 
 export const Catalog = () => {
   // #region state
@@ -120,7 +121,7 @@ export const Catalog = () => {
             alt="home icon"
           />
         </NavLink>
-        <img src="../src/img/icons/arrow_right_grey.png" alt="arrow icon" />
+        <ArrowGrey />
         <p className={styles['catalog__current-page']}>{category}</p>
       </div>
 

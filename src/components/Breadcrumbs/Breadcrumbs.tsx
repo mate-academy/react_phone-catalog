@@ -4,6 +4,7 @@ import React from 'react';
 import { useTheme } from '../../context/ThemeContext';
 import homeIcon from '../../img/icons/home.png';
 import homeIconDark from '../../img/icons/night_theme_home.png';
+import { ArrowGrey } from '../ArrowGrey';
 
 type Props = {
   name: string | undefined;
@@ -21,11 +22,11 @@ export const Breadcrumbs: React.FC<Props> = ({ name }) => {
           alt="home icon"
         />
       </NavLink>
-      <img src="../src/img/icons/arrow_right_grey.png" alt="arrow icon" />
+      <ArrowGrey />
       <NavLink to={'..'} className={styles['breadcrumbs__prev-page']}>
         {category}
       </NavLink>
-      <img src="../src/img/icons/arrow_right_grey.png" alt="arrow icon" />
+      <ArrowGrey />
       <p className={styles['breadcrumbs__current-page']}>{name}</p>
     </div>
   );

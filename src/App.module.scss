@@ -22,7 +22,6 @@
 
 html {
   scroll-behavior: smooth;
-
   &:has(.app__menu:target) {
     overflow: hidden;
   }

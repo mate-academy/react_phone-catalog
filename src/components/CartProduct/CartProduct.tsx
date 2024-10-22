@@ -4,6 +4,7 @@ import { CartItem } from '../../utils/types';
 import { QuantityButton } from '../QuantityButton';
 import { Title } from '../Title';
 import { CartContext } from '../../context/CartContext';
+import { BASE_URL } from '../../utils/constants';
 
 type Props = {
   cartProduct: CartItem;
@@ -53,11 +54,11 @@ export const CartProduct: React.FC<Props> = ({ cartProduct }) => {
             handleProductDelete(cartProduct.id);
           }}
         >
-          <img src="../src/img/icons/close-grey.png" alt="close icon" />
+          <div className={styles.cartProduct__deleteIcon}></div>
         </button>
 
         <img
-          src={product.image}
+          src={`${BASE_URL}/${product.image}`}
           className={styles.cartProduct__image}
           alt="product image"
         />

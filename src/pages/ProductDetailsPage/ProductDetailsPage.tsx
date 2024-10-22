@@ -17,6 +17,7 @@ import { ProductSlider } from '../../components/ProductSlider';
 import { useTheme } from '../../context/ThemeContext';
 import blackArrow from '../../img/icons/arrow_left_black.png';
 import whiteArrow from '../../img/icons/arrow_left_white.png';
+import { BASE_URL } from '../../utils/constants';
 
 export const ProductDetailsPage = () => {
   // #region state
@@ -126,7 +127,7 @@ export const ProductDetailsPage = () => {
           <div className={styles.productDetails__top}>
             <div className={styles.productDetails__imageContainer}>
               <img
-                src={`/${displayedProduct.images[displayedImageIndex]}`}
+                src={`${BASE_URL}/${displayedProduct.images[displayedImageIndex]}`}
                 alt="product image"
                 className={styles.productDetails__image}
               />
@@ -136,7 +137,7 @@ export const ProductDetailsPage = () => {
               {displayedProduct.images.map((image, index) => {
                 return (
                   <img
-                    src={`/${image}`}
+                    src={`${BASE_URL}/${image}`}
                     className={classNames(
                       styles['productDetails__images-item'],
                       {
