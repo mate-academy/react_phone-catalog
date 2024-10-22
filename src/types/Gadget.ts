@@ -1,9 +1,9 @@
-interface Description {
+export interface Description {
   title: string;
   text: string[];
 }
 
-export interface Phone {
+export interface BaseGadget {
   id: string;
   category: string;
   namespaceId: string;
@@ -20,7 +20,16 @@ export interface Phone {
   resolution: string;
   processor: string;
   ram: string;
-  camera: string;
-  zoom: string;
   cell: string[];
 }
+
+export type Accessory = BaseGadget;
+
+export interface Phone extends BaseGadget {
+  camera: string;
+  zoom: string;
+}
+
+export type Tablet = Phone;
+
+export type GadgetType = Phone | Tablet | Accessory;

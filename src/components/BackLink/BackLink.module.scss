@@ -1,0 +1,20 @@
+@import '../../styles/utils';
+
+.back-link {
+  width: 65px;
+  display: flex;
+  gap: 4px;
+  align-items: center;
+  height: 16px;
+
+  &__icon {
+    transform: rotate(-90deg);
+  }
+
+  &__text {
+    @include small-text;
+
+    color: $secondary;
+    line-height: 15px;
+  }
+}

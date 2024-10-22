@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
 import styles from './HomePage.module.scss';
 import { Categories } from './components/Categories';
-import { ProductsSlider } from './components/ProductsSlider';
 import { MainSlider } from './components/MainSlider';
 import { getHotPriceProducts, getNewProducts } from '../../servises/products';
 import { Product } from '../../types/Product';
+import { ProductsSlider } from '../../components/ProductsSlider';
 
 export const HomePage = () => {
   const [newModels, setNewModels] = useState<Product[]>([]);

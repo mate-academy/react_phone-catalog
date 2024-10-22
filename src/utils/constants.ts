@@ -3,4 +3,7 @@ export const MainNavigation = {
   PHONES: '/phones',
   TABLETS: '/tablets',
   ACCESSORIES: '/accessories',
+  FAVOURITES: '/favourites',
+  CART: '/cart',
+  NOT_FOUND: '*',
 };

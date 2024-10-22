@@ -1,0 +1,36 @@
+@import '../../styles/utils';
+
+.product-page {
+  max-width: $desktop-width;
+  margin: 0 auto;
+  padding-top: 24px;
+  padding-bottom: 56px;
+
+  @include on-tablet {
+    padding-bottom: 64px;
+  }
+
+  @include on-desktop {
+    padding-bottom: 80px;
+  }
+
+  &__nav-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+    @include page-padding-inline;
+
+    @include on-tablet {
+      gap: 40px;
+    }
+  }
+
+  &__gadget {
+    margin-bottom: 64px;
+
+    @include on-tablet {
+      margin-bottom: 80px;
+    }
+  }
+}

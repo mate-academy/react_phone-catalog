@@ -1,0 +1,50 @@
+@import '../../../../styles/utils';
+
+.available-capacity {
+  padding-bottom: 24px;
+  position: relative;
+
+  &::after {
+    display: block;
+    position: absolute;
+    content: '';
+    width: 100%;
+    height: 1px;
+    background-color: $elements;
+    bottom: 0;
+  }
+
+  &__title {
+    @include small-text;
+
+    color: $secondary;
+    margin-bottom: 8px;
+    font-weight: 600;
+  }
+
+  &__list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  &__link {
+    display: block;
+    border: 1px solid $icons;
+    padding: 5px 8px 4px;
+    border-radius: 4px;
+
+    @include transition;
+
+    &--active {
+      background-color: $primary;
+      border-color: $primary;
+      color: $white;
+      cursor: auto;
+    }
+
+    &:not(&--active):hover {
+      border-color: $primary;
+    }
+  }
+}

@@ -1,47 +1,53 @@
-import { useState } from 'react';
-import { SvgIcon } from '../SvgIcon';
 import styles from './ProductCard.module.scss';
 import cn from 'classnames';
 import { Product } from '../../types/Product';
+import { Link } from 'react-router-dom';
+import { Actions } from '../Actions';
+import { scrollToTop } from '../../utils/utility';
 
 interface Props {
   product: Product;
 }
 
-interface Properties {
-  term: string;
-  desc: string;
-}
-
 export const ProductCard: React.FC<Props> = ({ product }) => {
-  const [isFavourite, setIsFavourite] = useState(false);
+  const {
+    name,
+    image,
+    price,
+    fullPrice,
+    screen,
+    capacity,
+    ram,
+    category,
+    itemId,
+  } = product;
 
-  const { name, image, price, fullPrice, screen, capacity, ram, id } = product;
-
-  const properties: Properties[] = [
+  const properties = [
     { term: 'Screen', desc: screen },
     { term: 'Capacity', desc: capacity },
     { term: 'RAM', desc: ram },
   ];
 
-  const changeFavouriteStatus = (evt: React.ChangeEvent<HTMLInputElement>) => {
-    setIsFavourite(evt.target.checked);
-  };
+  const pathLink = `/${category}/${itemId}`;
 
   return (
     <div className={cn(styles['product-card'])}>
-      <a href="#" className={cn(styles['product-card__photo-link'])}>
+      <Link
+        to={pathLink}
+        className={cn(styles['product-card__photo-link'])}
+        onClick={scrollToTop}
+      >
         <img
           className={cn(styles['product-card__photo'])}
           src={image}
           alt={name}
         />
-      </a>
+      </Link>
 
       <div className={styles['product-card__wrapper']}>
-        <a href="#">
+        <Link to={pathLink} onClick={scrollToTop}>
           <h3 className={cn(styles['product-card__title'])}>{name}</h3>
-        </a>
+        </Link>
 
         <div className={styles['product-card__price-wrapper']}>
           <p className={cn(styles['product-card__price'])}>${price}</p>
@@ -63,43 +69,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
           ))}
         </ul>
 
-        <div className={cn(styles['product-card__actions'])}>
-          <button
-            className={cn(
-              styles['product-card__btn'],
-              styles['product-card__btn--cart'],
-            )}
-          >
-            Add to cart
-          </button>
-
-          <div>
-            <input
-              id={`favourites-${id}`}
-              type="checkbox"
-              onChange={changeFavouriteStatus}
-              className={cn(
-                styles['product-card__checkbox-favourites'],
-                'visually-hidden',
-              )}
-            />
-
-            <label
-              className={cn(
-                styles['product-card__btn'],
-                styles['product-card__btn--favourites'],
-              )}
-              htmlFor={`favourites-${id}`}
-            >
-              {isFavourite ? (
-                <SvgIcon type={'heart-like'} />
-              ) : (
-                <SvgIcon type={'heart'} />
-              )}
-              <span className="visually-hidden">Change favourite status</span>
-            </label>
-          </div>
-        </div>
+        <Actions productId={itemId} />
       </div>
     </div>
   );

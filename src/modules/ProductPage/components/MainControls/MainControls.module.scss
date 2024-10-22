@@ -1,0 +1,81 @@
+@import '../../../../styles/utils';
+
+.main-controls {
+  position: relative;
+
+  @include on-desktop {
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    gap: 16px;
+  }
+
+  &__colors {
+    margin-bottom: 24px;
+  }
+
+  &__capacity {
+    margin-bottom: 32px;
+  }
+
+  &__price {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+
+  &__price-discount {
+    font-size: 32px;
+    font-weight: 800;
+    line-height: 41px;
+  }
+
+  &__price-full {
+    font-size: 22px;
+    font-weight: 500;
+    line-height: 28px;
+    text-decoration: line-through;
+  }
+
+  &__actions {
+    height: 48px;
+    margin-bottom: 32px;
+  }
+
+  &__prop-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__prop-item {
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+
+    @include small-text;
+  }
+
+  &__term {
+    color: $secondary;
+    font-weight: 600;
+  }
+
+  &__desc {
+    margin: 0;
+  }
+
+  &__id {
+    @include small-text;
+
+    color: $icons;
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    @include on-desktop {
+      position: static;
+      text-align: right;
+    }
+  }
+}

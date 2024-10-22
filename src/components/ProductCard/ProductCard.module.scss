@@ -107,44 +107,4 @@
   &__definition-desc {
     margin: 0;
   }
-
-  &__actions {
-    display: flex;
-    justify-content: space-between;
-    gap: 8px;
-  }
-
-  &__btn {
-    height: 40px;
-  }
-
-  &__btn--cart {
-    border: none;
-    display: block;
-    flex-grow: 1;
-    background-color: $accent;
-    color: $white;
-    border-radius: 8px;
-    padding: 9px;
-  }
-
-  &__btn--favourites {
-    width: 40px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: 1px $icons solid;
-    border-radius: 50%;
-    cursor: pointer;
-
-    @include transition;
-
-    &:hover {
-      border-color: $primary;
-    }
-  }
-
-  &__checkbox-favourites:checked + .product-card__btn--favourites {
-    border-color: $elements;
-  }
 }

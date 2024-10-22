@@ -5,18 +5,38 @@ import { PhonesPage } from './modules/PhonesPage';
 import { MainNavigation } from './utils/constants';
 import { TabletsPage } from './modules/TabletsPage';
 import { AccessoriesPage } from './modules/AccessoriesPage';
+import { ProductPage } from './modules/ProductPage';
 
 export const Root = () => {
   return (
     <Routes>
       <Route path="/" element={<App />}>
         <Route index element={<HomePage />} />
+
         <Route path={MainNavigation.PHONES} element={<PhonesPage />} />
-        <Route path="tablets" element={<TabletsPage />} />
-        <Route path="accessories" element={<AccessoriesPage />} />
-        <Route path="favourites" element={<HomePage />} />
-        <Route path="cart" element={<HomePage />} />
-        <Route path="*" element={<p>Not found</p>} />
+        <Route
+          path={`${MainNavigation.PHONES}/:id`}
+          element={<ProductPage />}
+        />
+
+        <Route path={MainNavigation.TABLETS} element={<TabletsPage />} />
+        <Route
+          path={`${MainNavigation.TABLETS}/:id`}
+          element={<ProductPage />}
+        />
+
+        <Route
+          path={MainNavigation.ACCESSORIES}
+          element={<AccessoriesPage />}
+        />
+        <Route
+          path={`${MainNavigation.ACCESSORIES}/:id`}
+          element={<ProductPage />}
+        />
+
+        <Route path={MainNavigation.FAVOURITES} element={<HomePage />} />
+        <Route path={MainNavigation.CART} element={<HomePage />} />
+        <Route path={MainNavigation.NOT_FOUND} element={<p>Not found 1</p>} />
       </Route>
     </Routes>
   );

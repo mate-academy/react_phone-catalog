@@ -16,6 +16,8 @@ export const Breadcrumbs: React.FC<Props> = ({ className }) => {
     .split('/')
     .filter(crumb => !!crumb.length);
 
+  let currentLink = '';
+
   return (
     <ul className={cn(styles.breadcrumbs, className)}>
       <li className={styles.breadcrumbs__item}>
@@ -29,13 +31,17 @@ export const Breadcrumbs: React.FC<Props> = ({ className }) => {
       </li>
 
       {crumbs.map((crumb, i, arr) => {
-        const currentLink = `/${crumb}`;
-        const title = firstLetterCap(crumb);
+        currentLink += `/${crumb}`;
+        const title = firstLetterCap(crumb).replaceAll('-', ' ');
         const isLast = i === arr.length - 1;
 
         return (
           <li key={crumb} className={styles.breadcrumbs__item}>
-            {isLast ? <p>{title}</p> : <Link to={currentLink}>{title}</Link>}
+            {isLast ? (
+              <p className={styles['breadcrumbs__last-text']}>{title}</p>
+            ) : (
+              <Link to={currentLink}>{title}</Link>
+            )}
           </li>
         );
       })}

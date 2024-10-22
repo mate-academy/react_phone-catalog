@@ -1,10 +1,10 @@
 import styles from './ProductsSlider.module.scss';
 import cn from 'classnames';
-import { RoundButton } from '../../../../components/RoundButton';
-import { SvgIcon } from '../../../../components/SvgIcon';
 import { useEffect, useState } from 'react';
-import { Product } from '../../../../types/Product';
-import { ProductCard } from '../../../../components/ProductCard';
+import { Product } from '../../types';
+import { RoundButton } from '../RoundButton';
+import { SvgIcon } from '../SvgIcon';
+import { ProductCard } from '../ProductCard';
 
 interface Props {
   title: string;
