@@ -1,0 +1,61 @@
+@import '../../styles/index';
+
+.cart {
+  &__wrapper {
+    @include flex;
+
+    gap: 16px;
+    margin-top: 32px;
+
+    @media (max-width: 991px) {
+      flex-direction: column;
+    }
+  }
+
+  &__checkout {
+    width: 368px;
+    height: fit-content;
+    border-radius: 16px;
+    border: 1px solid $elements-color;
+    padding: 24px;
+    text-align: center;
+
+    @media (max-width: 991px) {
+      width: 100%;
+
+      &__btn {
+        margin: 0 auto;
+        width: 60%;
+
+        @media (max-width: 575px) {
+          width: 100%;
+        }
+      }
+    }
+  }
+
+  &__quantity {
+    color: $secondary-text-color;
+    font-weight: 500;
+  }
+
+  &__divider {
+    @include divider;
+
+    margin: 24px 0;
+  }
+
+  &__empty {
+    margin: 40px 0 30px;
+  }
+
+  &__emptyImg {
+    width: 400px;
+    margin: 0 auto 30px;
+    display: block;
+
+    @media (max-width: 425px) {
+      width: 100%;
+    }
+  }
+}
