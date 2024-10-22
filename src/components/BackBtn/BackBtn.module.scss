@@ -1,0 +1,17 @@
+@import '../../styles/index';
+
+.backBtn {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin: 40px 0 16px;
+  width: fit-content;
+  color: $secondary-text-color;
+  cursor: pointer;
+
+  @include hover((color, $main-text-color));
+
+  p {
+    padding-top: 2px;
+  }
+}
