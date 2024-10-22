@@ -8,6 +8,7 @@ import homeIcon from '../../img/icons/home.png';
 import homeIconDark from '../../img/icons/night_theme_home.png';
 import { useTheme } from '../../context/ThemeContext';
 import { ArrowGrey } from '../../components/ArrowGrey';
+import { BASE_URL } from '../../utils/constants';
 
 export const Favorites = () => {
   const { favorites } = useContext(FavoritesContext);
@@ -16,7 +17,7 @@ export const Favorites = () => {
   return (
     <div className={styles.favorites}>
       <div className={styles.favorites__navigation}>
-        <NavLink to={'/'} style={{ display: 'block' }}>
+        <NavLink to={`${BASE_URL}/`} style={{ display: 'block' }}>
           <img
             style={{ display: 'block' }}
             src={isDarkTheme ? homeIconDark : homeIcon}

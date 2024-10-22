@@ -6,11 +6,12 @@ import { NotFoundPage } from './pages/NotFoundPage';
 import { ProductDetailsPage } from './pages/ProductDetailsPage';
 import { CartPage } from './pages/CartPage';
 import { Favorites } from './pages/Favorites';
+import { BASE_URL } from './utils/constants';
 
 export const Root = () => (
   <BrowserRouter>
     <Routes>
-      <Route path="/" element={<App />}>
+      <Route path={`${BASE_URL}/`} element={<App />}>
         <Route index element={<HomePage />} />
 
         <Route path="cart" element={<CartPage />} />

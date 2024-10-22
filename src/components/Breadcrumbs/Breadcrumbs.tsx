@@ -5,6 +5,7 @@ import { useTheme } from '../../context/ThemeContext';
 import homeIcon from '../../img/icons/home.png';
 import homeIconDark from '../../img/icons/night_theme_home.png';
 import { ArrowGrey } from '../ArrowGrey';
+import { BASE_URL } from '../../utils/constants';
 
 type Props = {
   name: string | undefined;
@@ -15,7 +16,7 @@ export const Breadcrumbs: React.FC<Props> = ({ name }) => {
 
   return (
     <div className={styles.breadcrumbs}>
-      <NavLink to={'/'} style={{ display: 'block' }}>
+      <NavLink to={`${BASE_URL}/`} style={{ display: 'block' }}>
         <img
           style={{ display: 'block' }}
           src={isDarkTheme ? homeIconDark : homeIcon}

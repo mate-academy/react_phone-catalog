@@ -8,6 +8,7 @@ import { FavoritesContext } from '../../context/FavoritesContext';
 import { useTheme } from '../../context/ThemeContext';
 import logo from '../../img/logo.png';
 import logoDarkTheme from '../../img/night_theme_logo.png';
+import { BASE_URL } from '../../utils/constants';
 
 type Props = {
   closeMenu: () => void;
@@ -37,7 +38,7 @@ export const Menu: React.FC<Props> = ({ closeMenu }) => {
             <li className={styles.menu__nav_item}>
               <Link
                 className={styles.menu__nav_link}
-                to="/"
+                to={`${BASE_URL}/`}
                 onClick={closeMenu}
               >
                 home
@@ -46,7 +47,7 @@ export const Menu: React.FC<Props> = ({ closeMenu }) => {
             <li className={styles.menu__nav_item}>
               <Link
                 className={styles.menu__nav_link}
-                to="/phones"
+                to={`${BASE_URL}/phones`}
                 onClick={closeMenu}
               >
                 phones
@@ -55,7 +56,7 @@ export const Menu: React.FC<Props> = ({ closeMenu }) => {
             <li className={styles.menu__nav_item}>
               <Link
                 className={styles.menu__nav_link}
-                to="/tablets"
+                to={`${BASE_URL}/tablets`}
                 onClick={closeMenu}
               >
                 tablets
@@ -64,7 +65,7 @@ export const Menu: React.FC<Props> = ({ closeMenu }) => {
             <li className={styles.menu__nav_item}>
               <Link
                 className={styles.menu__nav_link}
-                to="/accessories"
+                to={`${BASE_URL}/accessories`}
                 onClick={closeMenu}
               >
                 accessories

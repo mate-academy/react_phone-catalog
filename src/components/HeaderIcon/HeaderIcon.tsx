@@ -2,6 +2,7 @@ import { NavLink } from 'react-router-dom';
 import styles from './HeaderIcon.module.scss';
 import { QuantityIndicator } from '../QuantityIndicator';
 import { useTheme } from '../../context/ThemeContext';
+import { BASE_URL } from '../../utils/constants';
 
 type Props = {
   type: string;
@@ -30,7 +31,7 @@ export const HeaderIcon: React.FC<Props> = ({
       <NavLink
         className={`${styles.icon__image} ${isDarkTheme ? styles[`icon__image--${type}-dark`] : styles[`icon__image--${type}`]}`}
         style={getLinkStyle}
-        to={href}
+        to={`${BASE_URL}${href}`}
         onClick={onClick}
       ></NavLink>
       {number !== null && (

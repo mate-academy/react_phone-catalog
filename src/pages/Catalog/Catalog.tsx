@@ -15,6 +15,7 @@ import homeIcon from '../../img/icons/home.png';
 import homeIconDark from '../../img/icons/night_theme_home.png';
 import { useTheme } from '../../context/ThemeContext';
 import { ArrowGrey } from '../../components/ArrowGrey';
+import { BASE_URL } from '../../utils/constants';
 
 export const Catalog = () => {
   // #region state
@@ -63,7 +64,8 @@ export const Catalog = () => {
   const { category } = useParams();
   const knownCategories = ['phones', 'tablets', 'accessories'];
   const pageTitle = category ? getTitleName(category) : '';
-  const selectedSortType = searchParams.get('sort') as SortType;
+  const selectedSortType =
+    (searchParams.get('sort') as SortType) || SortType.newest;
   const itemsOnPage = searchParams.get('perPage') || 'all';
   const activePage = searchParams.get('page') || '1';
   const pagesAmount =
@@ -72,7 +74,7 @@ export const Catalog = () => {
 
   useEffect(() => {
     if (!category || !knownCategories.includes(category)) {
-      return; // Перевірка на неіснуючу категорію
+      return;
     }
 
     if (category) {
@@ -90,12 +92,12 @@ export const Catalog = () => {
     }
   }, [category, updatedAt, selectedSortType]);
 
-  useEffect(() => {
-    if (!searchParams.get('sort')) {
-      searchParams.set('sort', SortType.newest);
-      setSearchParams(searchParams);
-    }
-  }, [category, searchParams, setSearchParams]);
+  // useEffect(() => {
+  //   if (category && !searchParams.get('sort')) {
+  //     searchParams.set('sort', SortType.newest);
+  //     setSearchParams(searchParams);
+  //   }
+  // }, [category, searchParams, setSearchParams]);
 
   useEffect(() => {
     if (itemsOnPage === 'all') {
@@ -114,7 +116,7 @@ export const Catalog = () => {
   return (
     <div className={styles.catalog}>
       <div className={styles.catalog__navigation}>
-        <NavLink to={'/'} style={{ display: 'block' }}>
+        <NavLink to={`${BASE_URL}/`} style={{ display: 'block' }}>
           <img
             style={{ display: 'block' }}
             src={isDarkTheme ? homeIconDark : homeIcon}

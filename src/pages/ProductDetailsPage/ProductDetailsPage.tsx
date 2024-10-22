@@ -39,13 +39,13 @@ export const ProductDetailsPage = () => {
       const normalizedColor = color.split(' ').join('-');
 
       navigate(
-        `/${category}/${displayedProduct?.namespaceId + '-' + displayedProduct?.capacity + '-' + normalizedColor}`,
+        `${BASE_URL}/${category}/${displayedProduct?.namespaceId + '-' + displayedProduct?.capacity + '-' + normalizedColor}`,
       );
     }
 
     if (category === 'phones' || category === 'tablets') {
       navigate(
-        `/${category}/${displayedProduct?.namespaceId + '-' + displayedProduct?.capacity.toLowerCase() + '-' + color}`,
+        `${BASE_URL}/${category}/${displayedProduct?.namespaceId + '-' + displayedProduct?.capacity.toLowerCase() + '-' + color}`,
       );
     }
   };
@@ -55,13 +55,13 @@ export const ProductDetailsPage = () => {
       const normalizedColor = displayedProduct?.color.split(' ').join('-');
 
       navigate(
-        `/${category}/${displayedProduct?.namespaceId + '-' + capacity.toLowerCase() + '-' + normalizedColor}`,
+        `${BASE_URL}/${category}/${displayedProduct?.namespaceId + '-' + capacity.toLowerCase() + '-' + normalizedColor}`,
       );
     }
 
     if (category === 'phones' || category === 'tablets') {
       navigate(
-        `/${category}/${displayedProduct?.namespaceId + '-' + capacity.toLowerCase() + '-' + displayedProduct?.color}`,
+        `${BASE_URL}/${category}/${displayedProduct?.namespaceId + '-' + capacity.toLowerCase() + '-' + displayedProduct?.color}`,
       );
     }
   };

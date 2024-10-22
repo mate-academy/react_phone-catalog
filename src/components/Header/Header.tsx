@@ -11,6 +11,7 @@ import { FavoritesContext } from '../../context/FavoritesContext';
 import { useTheme } from '../../context/ThemeContext';
 import { DarkThemeButton } from '../DarkThemeButton';
 import classNames from 'classnames';
+import { BASE_URL } from '../../utils/constants';
 
 type Props = {
   onMenuClick: () => void;
@@ -48,23 +49,24 @@ export const Header: React.FC<Props> = ({ onMenuClick, closeMenu }) => {
     <>
       <header className={styles.header}>
         <div className={styles.header__left}>
-          <Link to="/" className={styles.header__logo}>
+          <Link to={`${BASE_URL}/`} className={styles.header__logo}>
             <img src={isDarkTheme ? logoDarkTheme : logo} alt="page logo" />
           </Link>
           <nav className={styles.header__nav}>
             <ul className={styles.header__nav_list}>
               <li className={styles.header__nav_item}>
                 <NavLink
-                  to="/"
+                  to={`${BASE_URL}/`}
                   className={styles.header__nav_link}
                   style={getLinkStyle}
+                  end
                 >
                   home
                 </NavLink>
               </li>
               <li className={styles.header__nav_item}>
                 <NavLink
-                  to="/phones"
+                  to={`${BASE_URL}/phones`}
                   className={styles.header__nav_link}
                   style={getLinkStyle}
                 >
@@ -73,7 +75,7 @@ export const Header: React.FC<Props> = ({ onMenuClick, closeMenu }) => {
               </li>
               <li className={styles.header__nav_item}>
                 <NavLink
-                  to="/tablets"
+                  to={`${BASE_URL}/tablets`}
                   className={styles.header__nav_link}
                   style={getLinkStyle}
                 >
@@ -82,7 +84,7 @@ export const Header: React.FC<Props> = ({ onMenuClick, closeMenu }) => {
               </li>
               <li className={styles.header__nav_item}>
                 <NavLink
-                  to="/accessories"
+                  to={`${BASE_URL}/accessories`}
                   className={styles.header__nav_link}
                   style={getLinkStyle}
                 >
@@ -110,7 +112,7 @@ export const Header: React.FC<Props> = ({ onMenuClick, closeMenu }) => {
         </div>
       </header>
       <header className={`${styles.header} ${styles['header--mobile']}`}>
-        <Link to="/" className={styles.header__logo}>
+        <Link to={`${BASE_URL}/`} className={styles.header__logo}>
           <img src={isDarkTheme ? logoDarkTheme : logo} alt="page logo" />
         </Link>
         <div className={styles.header__right}>

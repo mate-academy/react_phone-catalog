@@ -17,7 +17,7 @@ export const ProductCard: React.FC<Props> = ({ product, width }) => {
   return (
     <article className={styles.productCard} style={{ minWidth: `${width}px` }}>
       <Link
-        to={`/${product.category}/${product.itemId}`}
+        to={`${BASE_URL}/${product.category}/${product.itemId}`}
         className={styles.productCard__imagewrapper}
       >
         <img
@@ -27,7 +27,7 @@ export const ProductCard: React.FC<Props> = ({ product, width }) => {
         />
       </Link>
       <Link
-        to={`/${product.category}/${product.itemId}`}
+        to={`${BASE_URL}/${product.category}/${product.itemId}`}
         className={styles.productCard__title}
       >
         {name}

@@ -24,7 +24,10 @@ export const ShopByCategory = () => {
       </div>
       <div className={styles.shopByCategory__categories}>
         <div className={styles.shopByCategory__category}>
-          <Link to="/phones" className={styles.shopByCategory__link}>
+          <Link
+            to={`${BASE_URL}/phones`}
+            className={styles.shopByCategory__link}
+          >
             <img
               src={`${BASE_URL}/img/shopByCategory/phones.png`}
               alt="phone category image"
@@ -39,7 +42,10 @@ export const ShopByCategory = () => {
           >{`${phones.length} models`}</p>
         </div>
         <div className={styles.shopByCategory__category}>
-          <Link to="/tablets" className={styles.shopByCategory__link}>
+          <Link
+            to={`${BASE_URL}/tablets`}
+            className={styles.shopByCategory__link}
+          >
             <img
               src={`${BASE_URL}/img/shopByCategory/tablets.png`}
               alt="phone category image"
@@ -54,7 +60,10 @@ export const ShopByCategory = () => {
           >{`${tablets.length} models`}</p>
         </div>
         <div className={styles.shopByCategory__category}>
-          <Link to="/accessories" className={styles.shopByCategory__link}>
+          <Link
+            to={`${BASE_URL}/accessories`}
+            className={styles.shopByCategory__link}
+          >
             <img
               src={`${BASE_URL}/img/shopByCategory/accessories.png`}
               alt="phone category image"
