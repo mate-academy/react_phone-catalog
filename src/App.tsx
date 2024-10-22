@@ -12,14 +12,12 @@ export const App = () => {
     <div className="App">
       <Header burgerMenu={burgerMenu} setBurgerMenu={setBurgerMenu} />
 
-      {burgerMenu ? (
-        <BurgerMenu burgerMenu={burgerMenu} setBurgerMenu={setBurgerMenu} />
-      ) : (
-        <>
-          <Outlet />
-          <Footer />
-        </>
-      )}
+      {/* Меню всегда в DOM, но его видимость контролируется классами */}
+      <BurgerMenu burgerMenu={burgerMenu} setBurgerMenu={setBurgerMenu} />
+
+      {/* Основной контент */}
+      <Outlet />
+      <Footer />
     </div>
   );
 };

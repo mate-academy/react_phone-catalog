@@ -1,6 +1,27 @@
 .burger-menu {
-  position: relative;
-  height: calc(100vh - 72px);
+  position: fixed; // Меню поверх всего
+  top: 48px; // Убедись, что это соответствует высоте хедера
+  right: 0;
+  height: calc(100vh - 48px); // Учитываем высоту хедера
+  width: 100vw;
+  background-color: white;
+  z-index: 1000;
+
+  transform: translateX(100%);
+  transition: transform 0.5s ease-in-out;
+  &--active {
+    transform: translateX(0);
+
+    body {
+      overflow: hidden;
+    }
+  }
+  &__inner {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
 
   &--text {
     display: flex;
@@ -8,7 +29,6 @@
     align-items: center;
     flex-direction: column;
     gap: 20px;
-
 
     &-button {
       color: rgb(137, 147, 154);

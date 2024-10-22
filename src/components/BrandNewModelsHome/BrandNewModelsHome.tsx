@@ -189,7 +189,7 @@ export const BrandNewModelsHome: React.FC<Props> = ({ type }) => {
                       })}
                     >
                       {cart.some(el => el.id === product.id)
-                        ? 'Added to cart'
+                        ? 'Added'
                         : 'Add to cart'}
                     </button>
                     <img

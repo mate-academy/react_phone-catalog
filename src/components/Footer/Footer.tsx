@@ -9,15 +9,15 @@ export const Footer = () => {
         <img className="footer__logo" src="./img/Logo.png" alt="Logo" />
 
         <div className="footer__about-us">
-          <a
-            style={{ color: '#89939A', cursor: 'pointer' }}
-            href="https://github.com/jdifek"
-            className="footer__text"
-          >
+          <a href="https://github.com/jdifek" className="footer__text">
             GITHUB
           </a>
-          <p className="footer__text">CONTACTS</p>
-          <p className="footer__text">RIGHTS</p>
+          <a href="https://github.com/jdifek" className="footer__text">
+            CONTACTS
+          </a>
+          <a href="https://github.com/jdifek" className="footer__text">
+            RIGHTS
+          </a>
         </div>
 
         <div className="footer__slide">

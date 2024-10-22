@@ -17,10 +17,6 @@
   .footer__logo {
     margin: 0;
   }
-
-  .footer__about-us {
-    margin: 0;
-  }
 }
 
 @media screen and (min-width: 1200px) {
@@ -34,6 +30,10 @@
   .footer__about-us {
     display: flex;
     flex-direction: column;
+    margin: 0;
+    margin-bottom: 32px;
+    column-gap: 8px;
+    margin: 0;
   }
 
   .footer__logo {
@@ -41,19 +41,13 @@
     margin-bottom: 32px;
 
   }
-
-  .footer__about-us {
-    margin: 0;
-    margin-bottom: 32px;
-    column-gap: 8px;
-
-  }
 }
 .footer {
+  position: relative;
+
   box-sizing: border-box;
   margin-top: 64px;
   padding: 32px 16px;
-  position: relative;
 
   &__line {
     border-top: 1px solid rgb(226, 230, 233);
@@ -79,7 +73,13 @@
 
   &__text {
     margin: 0;
+    cursor: pointer;
+    color: #89939A;
 
+    &:hover {
+      color: #2d2d2e;
+
+    }
   }
 
   &__slide {
