@@ -24,8 +24,8 @@ export const Main: React.FC = () => {
           sliderTitle="Brand new models"
         />
       </section>
-      <section className="section-block">
-        <h2 className="section__title">Shop by category</h2>
+      <section className="shops-block">
+        <h2 className="shops-block__title">Shop by category</h2>
         <Shop shops={shops} />
       </section>
 

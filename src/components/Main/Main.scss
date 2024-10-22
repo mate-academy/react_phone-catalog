@@ -8,12 +8,20 @@
 }
 
 .welcome-block {
+  max-width: 897px;
+  margin: 0 auto;
+
   &__title {
     margin: 0;
     margin-bottom: 24px;
 
     @include on-tablet {
       margin-bottom: 32px;
+    }
+
+
+    @include on-laptop {
+      margin: 56px 0;
     }
   }
 }
@@ -39,8 +47,15 @@
 }
 
 .shops-block {
+  max-width: 897px;
+  margin: 56px auto;
+
   &__title {
-    margin: 56px 0 24px;
+    margin: 0  0 24px;
+  }
+
+  @include on-laptop {
+    margin: 64px auto;
   }
 }
 

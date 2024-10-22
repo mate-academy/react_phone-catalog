@@ -3,10 +3,17 @@
 .slider {
   &__container {
     width: 100%;
+    margin: 0 auto;
 
     @include on-tablet {
+      width: 93%;
       display: flex;
       justify-content: center;
+      max-width: 1136px;
+    }
+
+    @include on-laptop {
+      height: 400px;
     }
   }
 
@@ -16,12 +23,13 @@
     height: 320px;
     object-fit: cover;
     margin: 0 auto;
-    margin-top: 5px;
 
     @include on-tablet {
-      width: 120%;
-      height: 198px;
-      object-fit: cover;
+      height: 189px;
+    }
+
+    @include on-laptop {
+      height: 400px;
     }
   }
 
@@ -29,14 +37,6 @@
     display: block;
     max-width: 320px;
   }
-
-  &-img {
-    display: block;
-    margin: 0 auto;
-    width: 16px;
-    height: 16px;
-  }
-
 }
 
 .slick {
@@ -107,8 +107,13 @@
       grid-template-columns: 32px 1fr 32px;
       align-items: center;
       position: relative;
-      width: 560px;
+      width: 100%;
+      max-width: 1132px;
       height: 198px;
+    }
+
+    @include on-laptop {
+      height: 400px;
     }
   }
 }

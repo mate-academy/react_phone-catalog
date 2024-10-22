@@ -16,8 +16,12 @@
   width: auto;
 
   @include on-tablet {
-    width: 187px;
+    width: 100%;
+    max-width: 368px;
+    min-width: 187px;
     height: 262px;
+    max-height: 368px;
+    min-height: 187px;
   }
 
   &__container-img {
@@ -30,8 +34,11 @@
     overflow: hidden;
 
     @include on-tablet {
-      width: 187px;
-      height: 187px;
+      width: 100%;
+      max-width: 368px;
+      min-width: 187px;
+      height: 90%;
+      max-height: 368px;
     }
   }
 

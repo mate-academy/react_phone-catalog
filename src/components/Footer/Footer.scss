@@ -26,6 +26,10 @@
     }
   }
 
+  @include on-laptop {
+    padding: 32px 152px;
+  }
+
   &__link-logo {
     cursor: pointer;
   }
@@ -48,8 +52,12 @@
     @include on-tablet {
       flex-direction: row;
       align-items: center;
-
+      gap: 13px;
       margin: 0 auto;
+    }
+
+    @include on-laptop {
+      gap: 106px;
     }
 
     &__link {
@@ -75,10 +83,16 @@
   }
   &__nav-up {
     display: flex;
-    justify-content: center;
+    max-width: 140px;
+    margin: 0 auto;
     cursor: pointer;
     gap: 16px;
     align-items: center;
+
+    @include on-tablet {
+      margin: 0;
+      justify-self: end;
+    }
   }
 
   &__button {

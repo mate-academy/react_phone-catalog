@@ -26,17 +26,32 @@ export const Shop: React.FC<ShopProps> = ({ shops }) => {
     } else if (windowWidth >= 360 && windowWidth < 500) {
       return {
         width: index === 2 ? '150%' : '100%',
-        padding: index === 2 ? '124px 0 0 200px' : '130px 0 0 50px',
+        padding: index === 2 ? '130px 0 0 150px' : '130px 0 0 50px',
       };
     } else if (windowWidth >= 500 && windowWidth < 640) {
       return {
         width: index === 2 ? '120%' : '80%',
         padding: index === 2 ? '124px 0 0 130px' : '130px 0 0 50px',
       };
-    } else if (windowWidth >= 640) {
+    } else if (windowWidth >= 640 && windowWidth < 680) {
       return {
         width: index === 2 ? '300%' : '170%',
-        padding: index === 2 ? '54px 0 0 200px' : '100px 0 0 70px',
+        padding: index === 2 ? '70px 0 0 200px' : '115px 0 0 70px',
+      };
+    } else if (windowWidth >= 680 && windowWidth < 780) {
+      return {
+        width: index === 2 ? '290%' : '150%',
+        padding: index === 2 ? '70px 0 0 220px' : '100px 0 0 60px',
+      };
+    } else if (windowWidth >= 780 && windowWidth < 880) {
+      return {
+        width: index === 2 ? '250%' : '150%',
+        padding: index === 2 ? '70px 0 0 200px' : '150px 0 0 70px',
+      };
+    } else if (windowWidth >= 880) {
+      return {
+        width: index === 2 ? '230%' : '150%',
+        padding: index === 2 ? '80px 0 0 200px' : '180px 0 0 80px',
       };
     }
 
