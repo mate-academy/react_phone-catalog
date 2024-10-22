@@ -3,9 +3,11 @@ import { Home } from './components/home';
 import '../src/styles/main.scss';
 import './App.scss';
 
-export const App = () => (
-  <div className="App">
-    <Header />
-    <Home />
-  </div>
-);
+export const App = () => {
+  return (
+    <div className="App">
+      <Header />
+      <Home />
+    </div>
+  );
+};
