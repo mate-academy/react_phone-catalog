@@ -1,5 +1,5 @@
 import React from 'react';
-import './Title.module.scss';
+import styles from './Title.module.scss';
 
 type Props = {
   level: 1 | 2 | 3 | 4;
@@ -8,5 +8,5 @@ type Props = {
 export const Title: React.FC<Props> = ({ level, children }) => {
   const Tag = `h${level}` as keyof JSX.IntrinsicElements;
 
-  return <Tag>{children}</Tag>;
+  return <Tag className={styles[`h${level}`]}>{children}</Tag>;
 };

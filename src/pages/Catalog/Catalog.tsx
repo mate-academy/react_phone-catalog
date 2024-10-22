@@ -88,7 +88,7 @@ export const Catalog = () => {
         })
         .finally(() => setIsLoading(false));
     }
-  }, [category, updatedAt, selectedSortType]);
+  }, [category, updatedAt, selectedSortType, knownCategories]);
 
   useEffect(() => {
     if (!searchParams.get('sort')) {

@@ -1,6 +1,6 @@
 @import '../../utils/mixins';
 
-h1 {
+.h1 {
   font-size: 32px;
   font-weight: 700;
   line-height: 41px;
@@ -13,7 +13,7 @@ h1 {
   }
 }
 
-h2 {
+.h2 {
   font-size: 22px;
   font-weight: 700;
   line-height: 31px;
@@ -27,7 +27,7 @@ h2 {
   }
 }
 
-h3 {
+.h3 {
   font-size: 20px;
   font-weight: 600;
   line-height: 26px;
@@ -42,7 +42,7 @@ h3 {
   }
 }
 
-h4 {
+.h4 {
   font-size: 16px;
   font-weight: 600;
   line-height: 20px;
