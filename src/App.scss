@@ -153,6 +153,8 @@
   font-family: Mont, sans-serif;
   font-size: 13px;
   font-weight: 700;
+  transition: all 0.3s;
+
 }
 
 .carousel--slider__second {
@@ -227,6 +229,8 @@
     cursor: pointer;
     height: 16px;
     width: 16px;
+    transition: all 0.3s;
+
   }
 
   &-price {
@@ -271,6 +275,7 @@
   border-radius: 48px;
   width: 100%;
   height: 40px;
+  transition: all 0.3s;
 
   &:hover {
     cursor: pointer;
@@ -284,7 +289,7 @@
 
   border-radius: 48px;
 
-  box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.4);
+  box-shadow: 0 8px 13px 0 rgba(6, 11, 19, 0.4);
   background: rgb(66, 25, 208);
 }
 
@@ -313,6 +318,9 @@
   width: 40px;
   height: 40px;
   cursor: pointer;
+
+  transition: all 0.3s;
+
 }
 
 .cart__card-close:hover {
@@ -502,6 +510,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    transition: all 0.3s;
+
 
     &:hover {
       border: 1px solid rgb(62, 62, 63);
@@ -538,6 +548,8 @@
       font-size: 12px;
       margin: 0;
       line-height: 15px;
+      transition: all 0.3s;
+
 
       &:hover {
         color: black;
@@ -549,6 +561,8 @@
     cursor: pointer;
 
     border: 2px solid rgb(180, 189, 196);
+    transition: all 0.3s;
+
 
     &:hover {
       border: 2px solid rgb(62, 62, 63);

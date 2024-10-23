@@ -57,7 +57,7 @@
     }
 
     &--first-button {
-      width: 40px;
+      width: 32px;
 
       display: none;
       cursor: pointer;
@@ -65,15 +65,23 @@
       @media screen and (min-width: 640px) {
         display: block;
       }
+
+      @media screen and (min-width: 1200px) {
+        content: url('./img/Slider button - Default (right).svg');
+      }
     }
 
     &--second-button {
-      width: 40px;
+      width: 32px;
       display: none;
       cursor: pointer;
 
       @media screen and (min-width: 640px) {
         display: block;
+      }
+
+      @media screen and (min-width: 1200px) {
+        content: url('./img/Slider button - Default (right).png');
       }
     }
   }

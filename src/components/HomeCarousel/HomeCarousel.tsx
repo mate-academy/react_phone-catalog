@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 
 import { Pagination, A11y, Autoplay, Navigation } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -8,8 +8,15 @@ import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 import 'swiper/css/autoplay';
 import './pagination.scss';
+import { useWindowResize } from '../../useWindowSize';
 
 export const HomeCarousel = () => {
+  const [width] = useWindowResize();
+  const allowTouchMove = useMemo(() => {
+    return width < 640;
+  }, [width]);
+  const swiperKey = useMemo(() => `swiper-${width}`, [width]);
+
   return (
     <>
       <h1 className="carousel-home--text">Welcome to Nice Gadgets store!</h1>
@@ -22,6 +29,7 @@ export const HomeCarousel = () => {
             alt="button"
           />
           <Swiper
+            key={swiperKey}
             modules={[Pagination, A11y, Autoplay, Navigation]}
             spaceBetween={50}
             slidesPerView={1}
@@ -33,8 +41,9 @@ export const HomeCarousel = () => {
               prevEl: '.carousel--slider--first-button',
               nextEl: '.carousel--slider--second-button',
             }}
-            simulateTouch={false}
-            allowTouchMove={false}
+            allowTouchMove={allowTouchMove}
+            simulateTouch={allowTouchMove}
+            touchStartPreventDefault={allowTouchMove}
           >
             <SwiperSlide>
               <img

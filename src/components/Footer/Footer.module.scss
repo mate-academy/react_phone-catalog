@@ -30,10 +30,8 @@
   .footer__about-us {
     display: flex;
     flex-direction: column;
-    margin: 0;
-    margin-bottom: 32px;
     column-gap: 8px;
-    margin: 0;
+    margin-bottom: 32px;
   }
 
   .footer__logo {
@@ -44,7 +42,6 @@
 }
 .footer {
   position: relative;
-
   box-sizing: border-box;
   margin-top: 64px;
   padding: 32px 16px;
@@ -75,6 +72,8 @@
     margin: 0;
     cursor: pointer;
     color: #89939A;
+    transition: all 0.3s;
+
 
     &:hover {
       color: #2d2d2e;

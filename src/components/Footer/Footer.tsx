@@ -9,13 +9,25 @@ export const Footer = () => {
         <img className="footer__logo" src="./img/Logo.png" alt="Logo" />
 
         <div className="footer__about-us">
-          <a href="https://github.com/jdifek" className="footer__text">
+          <a
+            target="_blanket"
+            href="https://github.com/jdifek"
+            className="footer__text"
+          >
             GITHUB
           </a>
-          <a href="https://github.com/jdifek" className="footer__text">
+          <a
+            target="_blanket"
+            href="https://github.com/jdifek"
+            className="footer__text"
+          >
             CONTACTS
           </a>
-          <a href="https://github.com/jdifek" className="footer__text">
+          <a
+            target="_blanket"
+            href="https://github.com/jdifek"
+            className="footer__text"
+          >
             RIGHTS
           </a>
         </div>

@@ -34,6 +34,8 @@
     &-text {
       margin: 0;
       cursor: pointer;
+      transition: all 0.3s;
+
 
       &:hover {
         background-color: #ebe3e3;
@@ -79,6 +81,8 @@
       color: #000;
 
       border-radius: 8px;
+      transition: all 0.3s;
+
 
       &:hover {
         border: 1px solid rgb(64, 65, 67);
