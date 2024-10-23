@@ -51,11 +51,16 @@
 
 .cart__counter {
   display: flex;
-  column-gap: 8px;
+  column-gap: 12px;
 
   align-items: center;
+  width: 120px;
+  justify-content: flex-end; /* добавляем это свойство */
+
+
 
   &-text {
+
     box-sizing: border-box;
     border: 1px solid rgb(180, 189, 196);
     border-radius: 48px;
@@ -154,7 +159,6 @@
   font-size: 13px;
   font-weight: 700;
   transition: all 0.3s;
-
 }
 
 .carousel--slider__second {
@@ -230,7 +234,6 @@
     height: 16px;
     width: 16px;
     transition: all 0.3s;
-
   }
 
   &-price {
@@ -238,6 +241,9 @@
     font-family: Mont, sans-serif;
     font-size: 22px;
     font-weight: 700;
+    width: 120px;
+    text-align: right; /* добавляем это свойство */
+
   }
 }
 
@@ -320,7 +326,6 @@
   cursor: pointer;
 
   transition: all 0.3s;
-
 }
 
 .cart__card-close:hover {
@@ -512,7 +517,6 @@
     align-items: center;
     transition: all 0.3s;
 
-
     &:hover {
       border: 1px solid rgb(62, 62, 63);
     }
@@ -550,7 +554,6 @@
       line-height: 15px;
       transition: all 0.3s;
 
-
       &:hover {
         color: black;
       }
@@ -562,7 +565,6 @@
 
     border: 2px solid rgb(180, 189, 196);
     transition: all 0.3s;
-
 
     &:hover {
       border: 2px solid rgb(62, 62, 63);

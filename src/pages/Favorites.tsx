@@ -6,7 +6,7 @@ import { useAppContext } from '../ContextStor';
 export const Favorites = () => {
   const location = useLocation();
   const navigate = useNavigate();
-  const { favorites, setFavorites } = useAppContext();
+  const { favorites, setFavorites, setCart, cart } = useAppContext();
 
   const toggleFavorite = (product: Products) => {
     const isFavorite = favorites.some(fav => fav.id === product.id);
@@ -15,6 +15,16 @@ export const Favorites = () => {
       setFavorites(favorites.filter(fav => fav.id !== product.id));
     } else {
       setFavorites([...favorites, product]);
+    }
+  };
+
+  const toggleCart = (product: Products) => {
+    const isCart = cart.some(el => el.id === product.id);
+
+    if (isCart) {
+      setCart(cart.filter(el => el.id !== product.id));
+    } else {
+      setCart([...cart, product]);
     }
   };
 
@@ -83,11 +93,16 @@ export const Favorites = () => {
                 </div>
 
                 <div className="card__buy">
-                  <button className="card__buy-cart">Add to cart</button>
+                  <button
+                    onClick={() => toggleCart(product)}
+                    className={`${cart.some(el => el.id === product.id) ? 'added-to-cart' : 'card__buy-cart'}`}
+                  >
+                    {cart.some(el => el.id === product.id)
+                      ? 'Added to cart'
+                      : 'Add to cart'}
+                  </button>
                   <img
-                    onClick={() => {
-                      toggleFavorite(product);
-                    }}
+                    onClick={() => toggleFavorite(product)}
                     className="page-home-card__favorite"
                     src={
                       favorites.some(fav => fav.id === product.id)
