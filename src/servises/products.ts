@@ -25,3 +25,9 @@ export const getNewProducts = async () => {
     .filter(p => p.year === latestYear)
     .sort((a, b) => b.fullPrice - a.fullPrice);
 };
+
+export const getProductById = async (id: string) => {
+  const products = await getAllProducts;
+
+  return products.find(p => p.itemId === id) || null;
+};

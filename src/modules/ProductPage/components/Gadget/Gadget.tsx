@@ -1,17 +1,18 @@
 import cn from 'classnames';
-import { GadgetType } from '../../../../types/Gadget';
 import { About } from '../About';
 import { ProductPhotos } from '../ProductPhotos';
 import { TechSpecs } from '../TechSpecs';
 import styles from './Gadget.module.scss';
 import { MainControls } from '../MainControls';
+import { Product, GadgetType } from '../../../../types';
 
 interface Props {
   gadget: GadgetType;
   className?: string;
+  product: Product;
 }
 
-export const Gadget: React.FC<Props> = ({ gadget, className }) => {
+export const Gadget: React.FC<Props> = ({ gadget, className, product }) => {
   const {
     name,
     images,
@@ -65,7 +66,7 @@ export const Gadget: React.FC<Props> = ({ gadget, className }) => {
 
       <div className={styles.gadget__details}>
         <ProductPhotos photos={images} className={styles.gadget__photos} />
-        <MainControls gadget={gadget} />
+        <MainControls gadget={gadget} product={product} />
         <About className={styles.gadget__about} description={description} />
         <TechSpecs
           className={styles['gadget__tech-specs']}

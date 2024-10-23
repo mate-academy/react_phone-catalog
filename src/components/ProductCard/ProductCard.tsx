@@ -69,7 +69,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
           ))}
         </ul>
 
-        <Actions productId={itemId} />
+        <Actions product={product} />
       </div>
     </div>
   );

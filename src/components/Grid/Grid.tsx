@@ -1,6 +1,6 @@
 import styles from './Grid.module.scss';
-import { Product } from '../../../../types/Product';
-import { ProductCard } from '../../../../components/ProductCard';
+import { Product } from '../../types/Product';
+import { ProductCard } from '../ProductCard';
 
 interface Props {
   products: Product[];

@@ -1,23 +1,27 @@
 import cn from 'classnames';
 
 import styles from './MainControls.module.scss';
-import { GadgetType } from '../../../../types/Gadget';
 import { Actions } from '../../../../components/Actions';
 import { AvailableColors } from '../AvailableColors';
 import { AvailableCapacity } from '../AvailableCapacity';
+import { Product, GadgetType } from '../../../../types';
 
 interface Props {
   gadget: GadgetType;
   className?: string;
+  product: Product;
 }
 
-export const MainControls: React.FC<Props> = ({ className, gadget }) => {
+export const MainControls: React.FC<Props> = ({
+  className,
+  gadget,
+  product,
+}) => {
   const {
     colorsAvailable,
     color,
     priceDiscount,
     priceRegular,
-    id,
     screen,
     resolution,
     processor,
@@ -52,7 +56,10 @@ export const MainControls: React.FC<Props> = ({ className, gadget }) => {
           </p>
           <p className={styles['main-controls__price-full']}>{priceRegular}$</p>
         </div>
-        <Actions productId={id} className={styles['main-controls__actions']} />
+        <Actions
+          product={product}
+          className={styles['main-controls__actions']}
+        />
         <ul className={styles['main-controls__prop-list']}>
           {properties.map(property => (
             <li
@@ -65,7 +72,7 @@ export const MainControls: React.FC<Props> = ({ className, gadget }) => {
           ))}
         </ul>
       </div>
-      <p className={styles['main-controls__id']}>ID: 802390</p>
+      <p className={styles['main-controls__id']}>ID: {product.id}</p>
     </div>
   );
 };

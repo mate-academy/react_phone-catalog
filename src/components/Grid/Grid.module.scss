@@ -1,4 +1,4 @@
-@import '../../../../styles/utils';
+@import '../../styles/utils';
 
 .grid {
   display: flex;
@@ -8,6 +8,7 @@
   @include on-tablet {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
+    gap: 40px 16px;
   }
 
   @media (min-width: 768px) {

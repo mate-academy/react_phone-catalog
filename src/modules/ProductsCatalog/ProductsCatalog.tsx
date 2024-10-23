@@ -3,7 +3,7 @@ import { Breadcrumbs } from '../../components/Breadcrumbs';
 import { Pagination } from './components/Pagination';
 import styles from './ProductsCatalog.module.scss';
 import { Selector } from './components/Selector';
-import { Grid } from './components/Grid';
+import { Grid } from '../../components/Grid';
 import { useUpdateSearchParams } from '../../hooks';
 
 interface Props {

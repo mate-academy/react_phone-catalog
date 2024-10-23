@@ -1,0 +1,45 @@
+@import '../../styles/utils';
+
+.favourites-page {
+  max-width: $desktop-width;
+  margin: 0 auto;
+  padding-top: 24px;
+  padding-bottom: 56px;
+
+  @include page-padding-inline;
+
+  @include on-tablet {
+    padding-bottom: 64px;
+  }
+
+  @include on-desktop {
+    padding-bottom: 80px;
+  }
+
+  &__breadcrumbs {
+    margin-bottom: 24px;
+
+    @include on-tablet {
+      margin-bottom: 40px;
+    }
+  }
+
+  &__title {
+    margin-bottom: 8px;
+
+    @include h1-mobile;
+
+    @include on-tablet {
+      @include h1-tablet-desktop;
+    }
+  }
+
+  &__text {
+    color: $secondary;
+    margin-bottom: 32px;
+
+    @include on-tablet {
+      margin-bottom: 40px;
+    }
+  }
+}

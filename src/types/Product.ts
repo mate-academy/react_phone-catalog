@@ -12,3 +12,7 @@ export interface Product {
   ram: string;
   year: number;
 }
+
+export interface CartProduct extends Product {
+  quantity: number;
+}

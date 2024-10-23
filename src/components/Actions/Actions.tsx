@@ -1,23 +1,50 @@
 import cn from 'classnames';
 import styles from './Actions.module.scss';
-import { useState } from 'react';
+import { useContext } from 'react';
 import { SvgIcon } from '../SvgIcon';
+import { DispatchContext, StateContext } from '../../contex/State';
+import { Product } from '../../types';
 
 interface Props {
-  productId: string;
+  product: Product;
   className?: string;
 }
 
-export const Actions: React.FC<Props> = ({ className }) => {
-  const [isFavourite, setIsFavourite] = useState(false);
+export const Actions: React.FC<Props> = ({ className, product }) => {
+  const { favourites, cart } = useContext(StateContext);
+  const dispatch = useContext(DispatchContext);
+
+  const { itemId } = product;
+
+  const isFavourite = favourites.find(p => p.itemId === itemId);
+  const isInCart = cart.find(p => p.itemId === itemId);
 
   const changeFavouriteStatus = () => {
-    setIsFavourite(value => !value);
+    if (isFavourite) {
+      dispatch({ type: 'removeFavourites', payload: itemId });
+    } else {
+      dispatch({ type: 'addFavourites', payload: product });
+    }
+  };
+
+  const changeCartStatus = () => {
+    if (isInCart) {
+      dispatch({ type: 'removeCart', payload: itemId });
+    } else {
+      dispatch({ type: 'addCart', payload: { ...product, quantity: 1 } });
+    }
   };
 
   return (
     <div className={cn(styles.actions, className)}>
-      <button className={cn(styles['actions__btn-cart'])}>Add to cart</button>
+      <button
+        className={cn(styles['actions__btn-cart'], {
+          [styles['actions__btn-cart--active']]: isInCart,
+        })}
+        onClick={changeCartStatus}
+      >
+        {isInCart ? 'Added to cart' : 'Add to cart'}
+      </button>
 
       <button
         className={cn(styles['actions__btn-favourites'], {

@@ -5,15 +5,15 @@ import { BackLink } from '../../components/BackLink';
 import { useLocation, useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { getGadgetById } from '../../servises/gadgets';
-import { Category, Product } from '../../types';
+import { Category, Product, GadgetType } from '../../types';
 
 import { ProductsSlider } from '../../components/ProductsSlider';
-import { getHotPriceProducts } from '../../servises/products';
+import { getHotPriceProducts, getProductById } from '../../servises/products';
 import { Gadget } from './components/Gadget';
-import { GadgetType } from '../../types/Gadget';
 
 export const ProductPage = () => {
   const [currentGadget, setCurrentGadget] = useState<GadgetType | null>(null);
+  const [currentProduct, setCurrentProduct] = useState<Product | null>(null);
   const [hotPrices, setHotPrices] = useState<Product[]>([]);
 
   const params = useParams();
@@ -26,12 +26,13 @@ export const ProductPage = () => {
   useEffect(() => {
     if (id && category) {
       getGadgetById(category, id).then(setCurrentGadget);
+      getProductById(id).then(setCurrentProduct);
     }
 
     getHotPriceProducts().then(setHotPrices);
   }, [category, id]);
 
-  if (!currentGadget) {
+  if (!currentGadget || !currentProduct) {
     return <p>not found</p>;
   }
 
@@ -43,6 +44,7 @@ export const ProductPage = () => {
       </div>
       <Gadget
         gadget={currentGadget}
+        product={currentProduct}
         className={styles['product-page__gadget']}
       />
       <ProductsSlider title="You may also like" products={hotPrices} />
