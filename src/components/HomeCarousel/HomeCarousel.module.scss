@@ -7,6 +7,7 @@
   &--slider {
     max-width: 1200px;
     width: 100vw;
+    margin-bottom: 20px;
 
     @media screen and (min-width: 640px) {
       column-gap: 16px;

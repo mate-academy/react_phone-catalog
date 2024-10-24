@@ -55,12 +55,9 @@
 
   align-items: center;
   width: 120px;
-  justify-content: flex-end; /* добавляем это свойство */
-
-
+  justify-content: space-between; /* добавляем это свойство */
 
   &-text {
-
     box-sizing: border-box;
     border: 1px solid rgb(180, 189, 196);
     border-radius: 48px;
@@ -162,11 +159,39 @@
 }
 
 .carousel--slider__second {
-  max-height: 400px;
+  height: 189px;
+
+  @media screen and (max-width: 640px) {
+    height: 320px;
+  }
+
+  @media screen and (min-width: 1200px) {
+    height: 400px;
+  }
 }
 
 .carousel--slider__third {
-  max-height: 400px;
+  height: 189px;
+
+  @media screen and (max-width: 640px) {
+    height: 320px;
+  }
+
+  @media screen and (min-width: 1200px) {
+    height: 400px;
+  }
+}
+
+.carousel--slider__first {
+  height: 189px;
+
+  @media screen and (max-width: 640px) {
+    height: 320px;
+  }
+
+  @media screen and (min-width: 1200px) {
+    height: 400px;
+  }
 }
 
 .nav__button-n-t {
@@ -243,7 +268,6 @@
     font-weight: 700;
     width: 120px;
     text-align: right; /* добавляем это свойство */
-
   }
 }
 

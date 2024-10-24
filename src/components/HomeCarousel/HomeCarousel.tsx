@@ -47,12 +47,7 @@ export const HomeCarousel = () => {
           >
             <SwiperSlide>
               <img
-                className="carousel--slider__first"
-                src="./img/slider-first-photo.png"
-                alt="Menu"
-              />
-              <img
-                className="carousel--slider-banner"
+                className="carousel--slider__third"
                 src="./img/slider-third-photo.jpg"
                 alt="Menu"
               />
