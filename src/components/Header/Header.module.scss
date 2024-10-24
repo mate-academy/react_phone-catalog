@@ -1,0 +1,61 @@
+@import '../../styles/main';
+
+
+.container {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+  height: 48px;
+  padding: 0;
+  box-shadow: 0 1px 0 0 var(--c-elements);
+
+  @include ondesktop {
+    height: 64px;
+    gap: 24px;
+  }
+}
+
+.header {
+  &_logo {
+    display: flex;
+    box-sizing: border-box;
+    align-items: center;
+    height: 22px;
+    padding-inline: 16px;
+    min-width: 96px;
+
+    @include ondesktop {
+      padding-inline: 24px;
+    }
+  }
+
+  &_links {
+    display: none;
+
+    @include ontablet {
+      display: block;
+      height: 100%;
+    }
+  }
+
+  &_icons {
+    width: 100%;
+    height: 100%;
+
+    &_fav_cart {
+      display: none;
+
+
+      @include ontablet {
+        display: block;
+        height: 100%;
+      }
+    }
+
+    &_menu {
+      height: 100%;
+    }
+  }
+
+}

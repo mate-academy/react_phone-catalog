@@ -1,0 +1,7 @@
+Progress:
+stopeped:
+-  greated grid with media and mixins
+- finished scss typography
+
+Next:
+- start builwing header

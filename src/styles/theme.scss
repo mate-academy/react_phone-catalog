@@ -1,0 +1,24 @@
+.theme {
+  --c-accent: #F86800;
+  --c-accent-secondary: #476DF4;
+  --c-primary: #313237;
+  --c-secondary: #89939A;
+  --c-icons: #B4BDC3;
+  --c-elements: #E2E6E9;
+  --c-backgroud: #FFF;
+  --c-white: #FFF;
+  --c-green: #27ae60;
+
+  &_dark {
+    --c-accent: #905BFF;
+    --c-accent-secondary: #476DF4;
+    --c-primary: #ffffff;
+    --c-secondary: #89939A;
+    --c-icons: #4A4D58;
+    ;
+    --c-elements: #3B3E4A;
+    --c-backgroud: #0F1121;
+    --c-white: #ffffff;
+    --c-green: #27ae60;
+  }
+}

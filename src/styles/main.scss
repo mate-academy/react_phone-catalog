@@ -1,0 +1,62 @@
+@import './mixines';
+@import './icons';
+@import './typography';
+@import './variables';
+@import './theme';
+
+@font-face {
+  font-family: Mont;
+  src: url('../../public/fonts/Mont-Regular.otf');
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: Mont;
+  src: url('../../public/fonts/Mont-SemiBold.otf');
+  font-weight: 600;
+}
+
+@font-face {
+  font-family: Mont;
+  src: url('../../public/fonts/Mont-Bold.otf');
+  font-weight: bold;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--c-backgroud);
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+html {
+  font-family: Mont, sans-serif;
+  scroll-behavior: smooth;
+  box-sizing: border-box;
+}
+
+p {
+  margin: 0;
+}
+
+h1 {
+  margin: 0;
+}
+
+h2 {
+  margin: 0;
+}
+
+h3 {
+  margin: 0;
+}
+
+%link {
+  text-decoration: none;
+  color: var(--c-secondary);
+}
+
+.isActive_link {
+  @include isActive;
+}

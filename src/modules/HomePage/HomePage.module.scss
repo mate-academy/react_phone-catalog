@@ -1,0 +1,80 @@
+@import '../../styles/main';
+
+.container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding-block: 24px 64px;
+
+  @include ontablet {
+    gap: 32px;
+  }
+
+  @include ondesktop {
+    gap: 56px;
+  }
+
+  &_homepage {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    row-gap: 56px;
+
+    width: 100%;
+
+    @include ontablet {
+      row-gap: 64px;
+    }
+
+    @include ondesktop {
+      row-gap: 80px;
+    }
+  }
+}
+
+.title {
+  @include pageGrid;
+
+  &_text {
+    grid-column: 1/-1;
+
+  }
+}
+
+.photoSlide {
+  box-sizing: border-box;
+
+
+  @include ontablet {
+    padding-inline: 24px;
+    min-height: 221px;
+    max-height: 432px;
+  }
+}
+
+.slider_container {
+  box-sizing: border-box;
+  width: 100%;
+  // height: 439px;
+  padding-inline: 16px;
+
+  @include ontablet {
+    // height: 512px;
+    padding-inline: 24px;
+  }
+
+  @include ondesktop {
+    // height: 506px;
+    padding-inline: 32px;
+  }
+
+}
+
+.container_categories {
+  @include pageGrid;
+
+  &_body {
+    grid-column: 1/-1;
+  }
+}

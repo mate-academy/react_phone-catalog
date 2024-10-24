@@ -1,0 +1,36 @@
+ @import '../../styles/main';
+ @import '../../styles/theme';
+
+ .container {
+   display: flex;
+   justify-content: space-between;
+   column-gap: 32px;
+   box-sizing: border-box;
+
+   @include ondesktop {
+     column-gap: 64px;
+   }
+
+   &_isMobileMenu {
+     flex-direction: column;
+     align-items: center;
+     row-gap: 16px;
+   }
+ }
+
+ .link {
+   @extend %uppercase;
+   @extend %link;
+   padding: 17px 0;
+
+
+   @include ondesktop {
+     padding: 25px 0;
+   }
+
+   &_isMobileMenu {
+     padding-block: 8px;
+   }
+
+   @include hover;
+ }

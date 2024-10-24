@@ -1,0 +1,86 @@
+@import '../../styles/main.scss';
+
+.photoSwiper_container {
+  display: flex;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  gap: 19px;
+}
+
+.photoSwiper.swiper {
+  display: flex;
+  flex-direction: column;
+}
+
+.photoSwiper .swiper-pagination {
+  position: relative;
+  bottom: unset;
+  height: 24px;
+
+  &-bullet {
+    height: 4px;
+    width: 14px;
+    border-radius: 0%;
+    background-color: var(--c-primary);
+  }
+}
+
+.photoSwiper .swiper-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  height: 100vw;
+
+  @include ontablet {
+    height: 189px;
+  }
+
+  @include ondesktop {
+    height: 400px;
+  }
+}
+
+.photoSwiper img {
+  height: 100%;
+}
+
+
+.photoSwiper_container .icon {
+  box-sizing: content-box;
+
+  &_container {
+    @extend %icon_container;
+    display: none;
+    flex-shrink: 0;
+    width: 32px;
+    height: 100%;
+
+    @include ontablet {
+      display: flex;
+      height: 189px;
+    }
+
+    @include ondesktop {
+      height: 400px;
+    }
+
+  }
+
+  &_right {
+    @include iconBg(url('../../icons/arrowRight.svg'));
+
+    &_disabled {
+      @include iconBg(url('../../icons/arrowRight_disabled.svg'))
+    }
+  }
+
+  &_left {
+    @include iconBg(url('../../icons/arrowLeft.svg'));
+
+    &_disabled {
+      @include iconBg(url('../../icons/arrowLeft_disabled.svg'));
+    }
+  }
+}

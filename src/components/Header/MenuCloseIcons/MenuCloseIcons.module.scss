@@ -1,0 +1,46 @@
+@import '../../../styles/main.scss';
+
+.container {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  height: 100%;
+
+  &_menu {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+
+    @include ontablet {
+      display: none;
+    }
+  }
+
+  &_close {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+  }
+}
+
+.icon {
+  &_container {
+    @extend %icon_container;
+    width: 48px;
+    height: 48px;
+  }
+
+  &_menu {
+    @include iconBg(url('../../../icons/Menu.svg'));
+
+  }
+
+  &_close {
+    @include iconBg(url('../../../icons/Close.svg'));
+
+  }
+}

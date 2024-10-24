@@ -1,0 +1,83 @@
+@import '../../styles/main.scss';
+@import '../../styles/mixines.scss';
+
+.container {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  border: 1px solid var(--c-elements);
+  padding: 32px;
+
+  &_price {
+    width: 100%;
+    display: flex;
+    gap: 8px;
+    border-bottom: 1px solid var(--c-elements);
+
+  }
+
+  &_specs {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &_bts {
+    display: flex;
+    width: 100%;
+  }
+}
+
+img.image {
+  width: 148px;
+  height: 128px;
+  object-fit: contain;
+
+  @include ontablet {
+    width: 173px;
+    height: 181px;
+  }
+
+  @include ondesktop {
+    width: 208px;
+    height: 196px;
+  }
+}
+
+h3.price {
+  &_discount {
+    color: var(--c-secondary);
+    text-decoration: line-through;
+    text-decoration-thickness: 2px;
+  }
+
+}
+
+.divider {
+  height: 1px;
+  width: 100%;
+  border: 1px solid var(--c-elements);
+}
+
+.spec {
+  &_row {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+    padding-block: 8px;
+  }
+
+  &_name {
+    @extend %small-text;
+    color: var(--c-secondary);
+  }
+
+  &_param {
+    @extend %small-text;
+  }
+}

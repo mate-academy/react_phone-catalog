@@ -1,0 +1,73 @@
+@import './variables';
+@import './theme.scss';
+
+@mixin ondesktop {
+  @media (min-width: $desktop-min-width) {
+    @content;
+  }
+}
+
+@mixin ontablet {
+  @media (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin pageGrid {
+  box-sizing: border-box;
+  --columns: 4;
+
+  display: grid;
+  column-gap: 16px;
+  padding-inline: $mobil-padding-inline;
+
+
+  grid-template-columns: repeat(var(--columns), 1fr);
+
+  @include ontablet {
+    --columns: 12;
+    padding-inline: $tablet-padding-inline;
+  }
+
+  @include ondesktop {
+    --columns: 24;
+    grid-template-columns: repeat(var(--columns), 32px);
+    padding-inline: $desktop-padding-inline;
+  }
+}
+
+@mixin headings {
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @content;
+  }
+}
+
+@mixin hover($property: transform, $toValue: scale(1.1)) {
+  transition: #{$property} 0.3s;
+
+  &:hover {
+    color: var(--c-primary);
+    #{$property}: $toValue;
+  }
+}
+
+@mixin isActive {
+  border-bottom: 3px solid var(--c-primary);
+  color: var(--c-primary);
+}
+
+@mixin iconBg($url, $bgColor: var(--c-primary)) {
+  // mask: #{$url} no-repeat 50% 50% / 16px;
+  // background-color: #{$bgColor};
+  background-image: #{$url};
+  width: 16px;
+  height: 16px;
+  background-repeat: no-repeat;
+  background-size: cover;
+}

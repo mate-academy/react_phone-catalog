@@ -1,0 +1,49 @@
+@import '../../styles/main';
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  row-gap: 32px;
+  height: 100%;
+  width: 100%;
+  padding: 32px 16px;
+
+  box-shadow: 0 1px 0 0 var(--c-elements);
+
+  &_logo {
+    display: flex;
+    box-sizing: border-box;
+    align-items: center;
+    height: 32px;
+    width: 100%;
+  }
+
+  &_back_top {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    column-gap: 16px;
+    width: 100%;
+  }
+}
+
+.back_top_text {
+  @extend %small-text;
+  cursor: pointer;
+  color: var(--c-secondary);
+}
+
+.icon {
+  &_container {
+    box-sizing: border-box;
+    @extend %icon_container;
+    width: 32px;
+    height: 32px;
+  }
+
+  &_upArrow {
+    @include iconBg(url('../../icons/arrowUp.svg'));
+
+  }
+}

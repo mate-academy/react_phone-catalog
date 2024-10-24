@@ -1,0 +1,58 @@
+  @import '../../styles/icons';
+
+  .container {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+
+    &_icon {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      height: 100%;
+
+      &_link {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+
+      }
+    }
+  }
+
+  .icon {
+    &_container {
+      @extend %icon_container;
+
+      @include ontablet {
+        width: 48px;
+        height: 48px;
+      }
+
+      @include ondesktop {
+        width: 64px;
+        height: 64px;
+      }
+    }
+
+    &_dark {
+      @include iconBg(url('../../icons/dark_mode.svg'));
+
+    }
+
+    &_favorite {
+      @include iconBg(url('../../icons/favorite.svg'));
+    }
+
+    &_cart {
+      @include iconBg(url('../../icons/cart.svg'));
+    }
+  }
+
+  .mobile_menu {
+    width: 100%;
+    height: 64px;
+  }

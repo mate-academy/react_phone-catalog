@@ -1,0 +1,66 @@
+export const PhonePage = () => {
+  return (
+    <div>
+      <div>PHONE PAGE</div>
+      <div>PHONE PAGE</div>
+      <div>PHONE PAGE</div>
+      <div>PHONE PAGE</div>
+      <div>PHONE PAGE</div>
+      <div>PHONE PAGE</div>
+      <div>PHONE PAGE</div>
+      <div>PHONE PAGE</div>
+      <div>PHONE PAGE</div>
+      <div>PHONE PAGE</div>
+      <div>PHONE PAGE</div>
+      <div>PHONE PAGE</div>
+      <div>PHONE PAGE</div>
+      <div>PHONE PAGE</div>
+      <div>PHONE PAGE</div>
+      <div>PHONE PAGE</div>
+      <div>PHONE PAGE</div>
+      <div>PHONE PAGE</div>
+      <div>PHONE PAGE</div>
+      <div>PHONE PAGE</div>
+      <div>PHONE PAGE</div>
+      <div>PHONE PAGE</div>
+      <div>PHONE PAGE</div>
+      <div>PHONE PAGE</div>
+      <div>PHONE PAGE</div>
+      <div>PHONE PAGE</div>
+      <div>PHONE PAGE</div>
+      <div>PHONE PAGE</div>
+      <div>PHONE PAGE</div>
+      <div>PHONE PAGE</div>
+      <div>PHONE PAGE</div>
+      <div>PHONE PAGE</div>
+      <div>PHONE PAGE</div>
+      <div>PHONE PAGE</div>
+      <div>PHONE PAGE</div>
+      <div>PHONE PAGE</div>
+      <div>PHONE PAGE</div>
+      <div>PHONE PAGE</div>
+      <div>PHONE PAGE</div>
+      <div>PHONE PAGE</div>
+      <div>PHONE PAGE</div>
+      <div>PHONE PAGE</div>
+      <div>PHONE PAGE</div>
+      <div>PHONE PAGE</div>
+      <div>PHONE PAGE</div>
+      <div>PHONE PAGE</div>
+      <div>PHONE PAGE</div>
+      <div>PHONE PAGE</div>
+      <div>PHONE PAGE</div>
+      <div>PHONE PAGE</div>
+      <div>PHONE PAGE</div>
+      <div>PHONE PAGE</div>
+      <div>PHONE PAGE</div>
+      <div>PHONE PAGE</div>
+      <div>PHONE PAGE</div>
+      <div>PHONE PAGE</div>
+      <div>PHONE PAGE</div>
+      <div>PHONE PAGE</div>
+      <div>PHONE PAGE</div>
+      <div>PHONE PAGE</div>
+    </div>
+  );
+};

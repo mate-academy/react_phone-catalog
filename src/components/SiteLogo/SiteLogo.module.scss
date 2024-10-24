@@ -1,0 +1,18 @@
+@import '../../styles/main.scss';
+
+.logo {
+
+  &_img {
+    display: flex;
+    box-sizing: border-box;
+    align-items: flex-start;
+    height: 32px;
+    width: 90px;
+    background: url('../../icons/Logo.png') no-repeat center/contain;
+    @include hover;
+
+    &_darkmode {
+      background: url('../../icons/Logo-dark.png') no-repeat center/contain;
+    }
+  }
+}

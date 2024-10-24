@@ -1,0 +1,36 @@
+@import '../../../styles/main.scss';
+
+.container {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+
+  &_icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    height: 100%;
+  }
+}
+
+.icon {
+  &_container {
+    @extend %icon_container;
+    width: 48px;
+    height: 100%
+  }
+
+  &_favorite {
+    @include iconBg(url('../../../icons/favorite.svg'));
+
+
+  }
+
+}
+
+.selected {
+  @include iconBg(url('../../../icons/favorite_selected.svg'));
+}
