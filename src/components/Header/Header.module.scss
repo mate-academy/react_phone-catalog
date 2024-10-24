@@ -3,8 +3,6 @@ header {
   z-index: 1000;
   position: sticky;
   top: 0;
-  padding-left: 16px;
-  padding-right: 16px;
 }
 
 .nav {
@@ -78,6 +76,8 @@ header {
   &__logo {
     width: 64px;
     height: 22px;
+    padding-left: 16px;
+
 
     @media screen and (min-width: 1200px) {
       height: 28px;
@@ -88,7 +88,25 @@ header {
   &__menu {
     width: 16px;
     height: 16px;
+  }
+  &__menu-container {
+    width: 16px;
+    height: 16px;
+    position: relative;
     transition: all 0.3s;
+    padding-right: 16px;
+
+
+    &::before {
+      content: "";
+      position: absolute;
+      left: calc(-100% - 8px);
+      bottom: 50%;
+      border: 1px solid rgb(226, 230, 233);
+      width: 48px;
+
+      transform: rotate(90deg);
+    }
 
 
     &:hover {

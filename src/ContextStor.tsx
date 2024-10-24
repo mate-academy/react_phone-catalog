@@ -29,7 +29,14 @@ export const AppProvider: React.FC<AppProviderProps> = ({ children }) => {
   const [cart, setCart] = useLocalStorage<any[]>('cart', []);
 
   return (
-    <AppContext.Provider value={{ favorites, setFavorites, cart, setCart }}>
+    <AppContext.Provider
+      value={{
+        favorites,
+        setFavorites,
+        cart,
+        setCart,
+      }}
+    >
       {children}
     </AppContext.Provider>
   );

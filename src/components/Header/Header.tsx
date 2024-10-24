@@ -29,12 +29,14 @@ export const Header: React.FC<Props> = ({ burgerMenu, setBurgerMenu }) => {
         <Link to="/">
           <img className="nav__logo" src="./img/Logo.png" alt="Logo" />
         </Link>
-        <img
-          onClick={() => setBurgerMenu(!burgerMenu)}
-          className="nav__menu"
-          src="./img/Menu.png"
-          alt="Menu"
-        />
+        <div className="nav__menu-container">
+          <img
+            onClick={() => setBurgerMenu(!burgerMenu)}
+            className="nav__menu"
+            src="./img/Menu.png"
+            alt="Menu"
+          />
+        </div>
 
         <ul className="nav__button-n-t">
           <NavLink

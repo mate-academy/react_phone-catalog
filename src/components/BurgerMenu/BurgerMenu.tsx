@@ -1,5 +1,6 @@
+import classNames from 'classnames';
 import React, { useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 
 type Props = {
   burgerMenu: boolean;
@@ -26,47 +27,76 @@ export const BurgerMenu: React.FC<Props> = ({ burgerMenu, setBurgerMenu }) => {
     <div className={`burger-menu ${burgerMenu ? 'burger-menu--active' : ''}`}>
       <div className="burger-menu__inner">
         <div className="burger-menu--text">
-          <Link
-            className="burger-menu--text-button"
+          <NavLink
+            className={({ isActive }) =>
+              classNames('burger-menu--text-button', {
+                'burger-menu--text-button--is-active': isActive,
+              })
+            }
             onClick={() => setBurgerMenu(false)}
             to="/"
           >
             HOME
-          </Link>
-          <Link
-            className="burger-menu--text-button"
+          </NavLink>
+          <NavLink
+            className={({ isActive }) =>
+              classNames('burger-menu--text-button', {
+                'burger-menu--text-button--is-active': isActive,
+              })
+            }
             onClick={() => setBurgerMenu(false)}
             to="/phones"
           >
             PHONES
-          </Link>
-          <Link
-            className="burger-menu--text-button"
+          </NavLink>
+          <NavLink
+            className={({ isActive }) =>
+              classNames('burger-menu--text-button', {
+                'burger-menu--text-button--is-active': isActive,
+              })
+            }
             onClick={() => setBurgerMenu(false)}
             to="/tablets"
           >
             TABLETS
-          </Link>
-          <Link
-            className="burger-menu--text-button"
+          </NavLink>
+          <NavLink
+            className={({ isActive }) =>
+              classNames('burger-menu--text-button', {
+                'burger-menu--text-button--is-active': isActive,
+              })
+            }
             onClick={() => setBurgerMenu(false)}
             to="/accessories"
           >
             ACCESSORIES
-          </Link>
+          </NavLink>
         </div>
 
         <div className="burger-menu--button">
-          <Link onClick={() => setBurgerMenu(false)} to="/favourites">
+          <NavLink
+            className={({ isActive }) =>
+              classNames('b-s-d', {
+                'b-s-d--is-active': isActive,
+              })
+            }
+            onClick={() => setBurgerMenu(false)}
+            to="/favourites"
+          >
             <img src="./img/Favourites.svg" alt="Favourites" />
-          </Link>
-          <Link
+          </NavLink>
+          <NavLink
+            className={({ isActive }) =>
+              classNames('b-s-d', {
+                'b-s-d--is-active': isActive,
+              })
+            }
             state={{ from: location.pathname }}
             onClick={() => setBurgerMenu(false)}
             to="/cart"
           >
             <img src="./img/Cart.svg" alt="Cart" />
-          </Link>
+          </NavLink>
         </div>
       </div>
     </div>

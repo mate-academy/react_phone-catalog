@@ -65,7 +65,7 @@ export const BrandNewModelsHome: React.FC<Props> = ({ type }) => {
 
   const slidesPerView = useMemo(() => {
     return width > 1200
-      ? 5
+      ? 4
       : width > 900
         ? 4
         : width > 800
@@ -154,7 +154,9 @@ export const BrandNewModelsHome: React.FC<Props> = ({ type }) => {
                     />
                   </Link>
 
-                  <p className="page-home-card__name">{product.name}</p>
+                  <p style={{ width: '70%' }} className="page-home-card__name">
+                    {product.name}
+                  </p>
                   <p className="page-home-card__price-regular">{`${product.price}$`}</p>
 
                   <div className="page-home-card__line"></div>

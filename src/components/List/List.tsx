@@ -64,17 +64,22 @@ export const List: React.FC<Props> = ({ type }) => {
 
     setItemsPerPage(Number(itemsOnPage));
 
-    if (!searchParams.toString()) {
-      setSortedProducts(sortedData);
-    } else {
-      const paginatedData = sortedData.slice(
-        (currentPage - 1) * itemsPerPage,
-        currentPage * itemsPerPage,
-      );
+    setCurrentPage(1);
 
-      setSortedProducts(paginatedData);
-    }
-  }, [products, searchParams, currentPage, itemsPerPage]);
+    const paginatedData = sortedData.slice(0, itemsPerPage);
+
+    setSortedProducts(paginatedData);
+  }, [products, searchParams, itemsPerPage]);
+
+  useEffect(() => {
+    // Когда меняется текущая страница, обновляем отображаемые продукты
+    const paginatedData = products.slice(
+      (currentPage - 1) * itemsPerPage,
+      currentPage * itemsPerPage,
+    );
+
+    setSortedProducts(paginatedData);
+  }, [currentPage, products, itemsPerPage]);
 
   const toggleFavorite = (product: Products) => {
     const isFavorite = favorites.some(fav => fav.id === product.id);

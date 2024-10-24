@@ -392,7 +392,6 @@
   &-card {
     border: 1px solid rgb(226, 230, 233);
     border-radius: 8px;
-    width: 140px;
 
     background: rgb(255, 255, 255);
     padding: 32px;
@@ -682,3 +681,7 @@
 @import './components/ProductHome/ProductHome.module';
 @import './components/List/List.module';
 @import './components/BurgerMenu/BurgerMenu.module';
+
+.b-s-d {
+  width: 50%;
+}
