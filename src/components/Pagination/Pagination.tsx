@@ -21,7 +21,7 @@ export const Pagination: React.FC<Props> = ({
     { length: pagesAmount },
     (_, index) => index + 1,
   );
-
+  // #region functions
   const handlePageSelect = (number: number) => {
     const params = new URLSearchParams(searchParams);
 
@@ -43,6 +43,26 @@ export const Pagination: React.FC<Props> = ({
     setSearchParams(params);
   };
 
+  const pagesAmountSlicedArray = (
+    pageIsActive: number,
+    pagesToSlice: number,
+  ) => {
+    const activeIndex = pagesAmountArray.indexOf(pageIsActive);
+    const sliced = pagesAmountArray.slice(
+      activeIndex,
+      activeIndex + pagesToSlice + 1,
+    );
+
+    return sliced;
+  };
+  // #endregion
+
+  // #region vars
+
+  const slicedArray = pagesAmountSlicedArray(+activePage, 2);
+
+  // #endregion
+
   return (
     <div className={styles.pagination}>
       <div className={styles.pagination__buttons}>
@@ -54,21 +74,74 @@ export const Pagination: React.FC<Props> = ({
           />
         </div>
         <div className={styles.pagination__numbers}>
-          {pagesAmountArray.map((pageNumber: number) => {
-            return (
-              <button
-                key={pageNumber}
-                className={classNames(styles.pagination__button, {
-                  [styles['pagination__button--active']]:
-                    pageNumber === +activePage,
-                })}
-                onClick={() => handlePageSelect(pageNumber)}
-              >
-                {pageNumber}
-              </button>
-            );
-          })}
+          {
+            pagesAmount <= 5 ? (
+              pagesAmountArray.map((pageNumber: number) => (
+                <button
+                  key={pageNumber}
+                  className={classNames(styles.pagination__button, {
+                    [styles['pagination__button--active']]:
+                      pageNumber === +activePage,
+                  })}
+                  onClick={() => handlePageSelect(pageNumber)}
+                >
+                  {pageNumber}
+                </button>
+              ))
+            ) : (
+              /* eslint-disable @typescript-eslint/indent */
+              <>
+                {slicedArray[slicedArray.length - 1] === pagesAmount ||
+                slicedArray[slicedArray.length - 1] + 1 === pagesAmount ? (
+                  pagesAmountArray.slice(-5).map((pageNumber: number) => (
+                    <button
+                      key={pageNumber}
+                      className={classNames(styles.pagination__button, {
+                        [styles['pagination__button--active']]:
+                          pageNumber === +activePage,
+                      })}
+                      onClick={() => handlePageSelect(pageNumber)}
+                    >
+                      {pageNumber}
+                    </button>
+                  ))
+                ) : (
+                  <>
+                    {slicedArray.map((pageNumber: number) => (
+                      <button
+                        key={pageNumber}
+                        className={classNames(styles.pagination__button, {
+                          [styles['pagination__button--active']]:
+                            pageNumber === +activePage,
+                        })}
+                        onClick={() => handlePageSelect(pageNumber)}
+                      >
+                        {pageNumber}
+                      </button>
+                    ))}
+
+                    <button className={styles.pagination__button} disabled>
+                      ...
+                    </button>
+
+                    <button
+                      key={pagesAmount}
+                      className={classNames(styles.pagination__button, {
+                        [styles['pagination__button--active']]:
+                          pagesAmount === +activePage,
+                      })}
+                      onClick={() => handlePageSelect(pagesAmount)}
+                    >
+                      {pagesAmount}
+                    </button>
+                  </>
+                )}
+              </>
+            )
+            /* eslint-enable @typescript-eslint/indent */
+          }
         </div>
+
         <div className={styles.pagination__right}>
           <ArrowButton
             type={ArrowType.right}

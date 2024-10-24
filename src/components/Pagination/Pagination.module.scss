@@ -11,20 +11,15 @@
   }
 
   &__buttons {
+    // max-width: 248px;
     display: flex;
-  }
-
-  &__left {
-    padding-right: 16px;
-  }
-
-  &__right {
-    padding-left: 16px;
+    gap: 16px;
   }
 
   &__numbers {
     display: flex;
     gap: 8px;
+    flex-wrap: wrap;
   }
 
   &__button {
@@ -39,10 +34,14 @@
     font-size: 14px;
     line-height: 21px;
 
-    &--active {
+    &.pagination__button--active {
       background-color: var(--color-pagination-background-selected);
       border-color: var(--color-pagination-border-selected);
       color: #fff;
+
+      &:hover {
+        background-color: var(--color-pagination-background-selected);
+      }
     }
 
     &:hover {
