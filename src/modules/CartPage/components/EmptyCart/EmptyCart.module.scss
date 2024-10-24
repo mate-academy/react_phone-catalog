@@ -1,0 +1,26 @@
+@import '../../../../styles/utils';
+
+.empty-cart {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+
+  &__text {
+    @include h2-mobile;
+
+    @include on-tablet {
+      @include h2-tablet-desktop;
+    }
+  }
+
+  &__img {
+    width: 100%;
+    max-width: 450px;
+    background: radial-gradient(circle, $accent 0, $hover-bg 70%);
+    padding: 60px;
+    object-fit: contain;
+    aspect-ratio: 1 / 1;
+  }
+
+}

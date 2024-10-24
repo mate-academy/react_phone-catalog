@@ -1,0 +1,132 @@
+@import '../../../../styles/utils';
+
+.cart-item {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 16px;
+  border: 1px solid $elements;
+  border-radius: 16px;
+  background-color: $white;
+
+  @include on-tablet {
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 24px;
+    padding: 24px;
+  }
+
+  &__container {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+
+    @include on-tablet {
+      gap: 24px;
+    }
+  }
+
+  &__del {
+    flex-shrink: 0;
+    position: relative;
+    width: 16px;
+    height: 16px;
+    align-self: center;
+    border: none;
+    background-color: inherit;
+    padding: 0;
+
+    &::before,
+    &::after {
+      position: absolute;
+      content: '';
+      width: 12px;
+      height: 1px;
+      background-color: $icons;
+      border-radius: 1px;
+      top: 50%;
+      left: 50%;
+    }
+
+    &::before {
+      transform: translate(-50%, -50%) rotate(45deg);
+    }
+
+    &::after {
+      transform: translate(-50%, -50%) rotate(-45deg);
+    }
+  }
+
+  &__img {
+    width: 80px;
+    object-fit: contain;
+    aspect-ratio: 1 / 1;
+  }
+
+  &__link {
+    @include transition;
+
+    &:hover {
+      color: $icons;
+    }
+  }
+
+  &__count {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  &__count-btn {
+    position: relative;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    border: 1px solid $icons;
+    background-color: inherit;
+
+    &::before,
+    &::after {
+      position: absolute;
+      content: '';
+      width: 11px;
+      height: 1px;
+      background-color: #000;
+      border-radius: 1px;
+      top: 50%;
+      left: 50%;
+    }
+
+    &--minus::before,
+    &--minus::after {
+      transform: translate(-50%);
+    }
+
+    &--plus::after {
+      transform: translate(-50%);
+    }
+    &--plus::before {
+      transform: translate(-50%) rotate(90deg);
+    }
+
+    &:disabled {
+      border-color: $elements;
+
+      &::before,
+      &::after {
+        background-color: $icons;
+      }
+    }
+  }
+
+  &__price {
+    margin-left: auto;
+
+    @include h3-tablet-desktop;
+
+    @include on-tablet {
+      width: 80px;
+      text-align: end;
+    }
+  }
+}

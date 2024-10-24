@@ -1,8 +1,14 @@
 import styles from './BackLink.module.scss';
 import { Link, useNavigate } from 'react-router-dom';
 import { SvgIcon } from '../SvgIcon';
+import React from 'react';
+import cn from 'classnames';
 
-export const BackLink = () => {
+interface Props {
+  className?: string;
+}
+
+export const BackLink: React.FC<Props> = ({ className }) => {
   const navigate = useNavigate();
 
   const onClickHandler = (
@@ -13,7 +19,11 @@ export const BackLink = () => {
   };
 
   return (
-    <Link to={''} className={styles['back-link']} onClick={onClickHandler}>
+    <Link
+      to={''}
+      className={cn(styles['back-link'], className)}
+      onClick={onClickHandler}
+    >
       <SvgIcon type="arrow" className={styles['back-link__icon']} />
       <p className={styles['back-link__text']}>Back</p>
     </Link>

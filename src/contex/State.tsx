@@ -6,7 +6,9 @@ type Action =
   | { type: 'addFavourites'; payload: Product }
   | { type: 'removeFavourites'; payload: string }
   | { type: 'addCart'; payload: CartProduct }
-  | { type: 'removeCart'; payload: string };
+  | { type: 'removeCart'; payload: string }
+  | { type: 'increaseCountInCart'; payload: string }
+  | { type: 'decreaseCountInCart'; payload: string };
 
 interface State {
   favourites: Product[];
@@ -39,6 +41,22 @@ const reducer = (state: State, action: Action): State => {
       );
 
       return { ...state, favourites: filteredFavousrites };
+
+    case 'increaseCountInCart':
+      return {
+        ...state,
+        cart: state.cart.map(p =>
+          p.itemId === action.payload ? { ...p, quantity: p.quantity + 1 } : p,
+        ),
+      };
+
+    case 'decreaseCountInCart':
+      return {
+        ...state,
+        cart: state.cart.map(p =>
+          p.itemId === action.payload ? { ...p, quantity: p.quantity - 1 } : p,
+        ),
+      };
 
     default:
       return { ...state };
