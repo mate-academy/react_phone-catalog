@@ -10,5 +10,12 @@ export const useUpdateSearchParams = () => {
     setSearchParams(params);
   };
 
-  return { searchParams, updateSearchParams };
+  const deleteSearchParam = (key: string) => {
+    const newSearchParams = new URLSearchParams(searchParams);
+
+    newSearchParams.delete(key);
+    setSearchParams(newSearchParams);
+  };
+
+  return { searchParams, updateSearchParams, deleteSearchParam };
 };

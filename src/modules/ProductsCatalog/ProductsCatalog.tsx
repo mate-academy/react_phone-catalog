@@ -6,6 +6,7 @@ import { Selector } from './components/Selector';
 import { Grid } from '../../components/Grid';
 import { useUpdateSearchParams } from '../../hooks';
 import { Loader } from '../../components/Loader';
+import { Search } from './components/Search';
 
 interface Props {
   title: string;
@@ -40,9 +41,18 @@ export const ProductsCatalog: React.FC<Props> = ({
       ?.value || PER_PAGE_OPTIONS[0].value;
 
   const sort = searchParams.get('sort') || SORT_OPTIONS[0].value;
+  const query = searchParams.get('query');
 
-  const sortProducts = (p: Product[]) => {
-    return p.slice().sort((a, b) => {
+  const refineProducts = (p: Product[]) => {
+    let currentProducts = p.slice();
+
+    if (query) {
+      currentProducts = currentProducts.filter(a =>
+        a.name.toLowerCase().includes(query.toLowerCase()),
+      );
+    }
+
+    return currentProducts.sort((a, b) => {
       switch (sort) {
         case 'age':
           return b.year - a.year;
@@ -56,11 +66,11 @@ export const ProductsCatalog: React.FC<Props> = ({
     });
   };
 
-  const sortedProducts = sortProducts(products);
+  const refinedProducts = refineProducts(products);
 
   const getCurrentPage = () => {
     const page = Number(searchParams.get('page')) || 1;
-    const maxPages = Math.ceil(sortedProducts.length / +perPage);
+    const maxPages = Math.ceil(refinedProducts.length / +perPage);
 
     return page > maxPages ? maxPages : page;
   };
@@ -79,7 +89,7 @@ export const ProductsCatalog: React.FC<Props> = ({
     return p.slice(startIndex, endIndex);
   };
 
-  const visibleProducts = getVisibleProducts(sortedProducts);
+  const visibleProducts = getVisibleProducts(refinedProducts);
 
   if (loading) {
     return <Loader />;
@@ -100,18 +110,27 @@ export const ProductsCatalog: React.FC<Props> = ({
             </p>
           </div>
           <div>
-            <div className={styles['products-catalog__selectors-wrapper']}>
-              <Selector title="Sort by" type="sort" items={SORT_OPTIONS} />
-              <Selector
-                title="Items per page"
-                type="perPage"
-                items={PER_PAGE_OPTIONS}
-              />
+            <div className={styles['products-catalog__controllers']}>
+              <div className={styles['products-catalog__selectors-wrapper']}>
+                <Selector title="Sort by" type="sort" items={SORT_OPTIONS} />
+                <Selector
+                  title="Items per page"
+                  type="perPage"
+                  items={PER_PAGE_OPTIONS}
+                />
+              </div>
+              <Search />
             </div>
-            <Grid products={visibleProducts} />
+            {refinedProducts.length ? (
+              <Grid products={visibleProducts} />
+            ) : (
+              <p className={styles['products-catalog__no-found']}>
+                No matches found
+              </p>
+            )}
           </div>
           <Pagination
-            total={sortedProducts.length}
+            total={refinedProducts.length}
             perPage={perPage}
             currentPage={currentPage}
             onPageChange={page => updateSearchParams('page', page)}

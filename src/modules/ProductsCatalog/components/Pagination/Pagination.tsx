@@ -66,6 +66,16 @@ export const Pagination: React.FC<Props> = ({
     );
   };
 
+  const onClickPrevPage = () => {
+    onPageChange(Math.max(currentPage - 1, 1));
+    scrollToTop();
+  };
+
+  const onClickNextPage = () => {
+    onPageChange(Math.max(currentPage + 1, 1));
+    scrollToTop();
+  };
+
   return (
     <div className={cn(styles.pagination, className)}>
       <div
@@ -74,10 +84,7 @@ export const Pagination: React.FC<Props> = ({
           styles['pagination__item--prev'],
         )}
       >
-        <RoundButton
-          onClick={() => onPageChange(Math.max(currentPage - 1, 1))}
-          disabled={isFirstPage}
-        >
+        <RoundButton onClick={onClickPrevPage} disabled={isFirstPage}>
           <SvgIcon type="arrow" />
         </RoundButton>
       </div>
@@ -114,10 +121,7 @@ export const Pagination: React.FC<Props> = ({
           styles['pagination__item--next'],
         )}
       >
-        <RoundButton
-          onClick={() => onPageChange(Math.min(currentPage + 1, pages.length))}
-          disabled={isLastPage}
-        >
+        <RoundButton onClick={onClickNextPage} disabled={isLastPage}>
           <SvgIcon type="arrow" />
         </RoundButton>
       </div>
