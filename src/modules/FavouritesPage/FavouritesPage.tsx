@@ -11,10 +11,16 @@ export const FavouritesPage = () => {
     <section className={styles['favourites-page']}>
       <Breadcrumbs className={styles['favourites-page__breadcrumbs']} />
       <h1 className={styles['favourites-page__title']}>Favourites</h1>
-      <p className={styles['favourites-page__text']}>
-        {favourites.length} items
-      </p>
-      <Grid products={favourites} />
+      {favourites.length ? (
+        <>
+          <p className={styles['favourites-page__text']}>
+            {favourites.length} item{favourites.length === 1 ? '' : 's'}
+          </p>
+          <Grid products={favourites} />
+        </>
+      ) : (
+        <p className={styles['favourites-page__text']}>No items</p>
+      )}
     </section>
   );
 };

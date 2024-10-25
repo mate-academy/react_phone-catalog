@@ -5,10 +5,23 @@ import { ProductsCatalog } from '../ProductsCatalog';
 
 export const PhonesPage = () => {
   const [phones, setPhones] = useState<Product[]>([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
 
   useEffect(() => {
-    getProductsByCategory('phones').then(setPhones);
+    setLoading(true);
+    getProductsByCategory('phones')
+      .then(setPhones)
+      .catch(() => setError('Something went wrong'))
+      .finally(() => setLoading(false));
   }, []);
 
-  return <ProductsCatalog title="Mobile phones" products={phones} />;
+  return (
+    <ProductsCatalog
+      title="Mobile phones"
+      products={phones}
+      loading={loading}
+      error={error}
+    />
+  );
 };

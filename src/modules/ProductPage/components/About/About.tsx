@@ -19,7 +19,7 @@ export const About: React.FC<Props> = ({ description, className }) => {
 
           return (
             <li key={title}>
-              <h4 className={styles.about__subtitle}>{title}</h4>
+              <p className={styles.about__subtitle}>{title}</p>
               {text.map(t => {
                 return (
                   <p className={styles.about__text} key={t}>

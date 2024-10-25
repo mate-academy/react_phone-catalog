@@ -9,6 +9,7 @@ import { AccessoriesPage } from './modules/AccessoriesPage';
 import { ProductPage } from './modules/ProductPage';
 import { FavouritesPage } from './modules/FavouritesPage';
 import { CartPage } from './modules/CartPage';
+import { NotFoundPage } from './modules/NotFoundPage';
 
 export const Root = () => {
   return (
@@ -39,7 +40,7 @@ export const Root = () => {
 
         <Route path={MainNavigation.FAVOURITES} element={<FavouritesPage />} />
         <Route path={MainNavigation.CART} element={<CartPage />} />
-        <Route path={MainNavigation.NOT_FOUND} element={<p>Not found 1</p>} />
+        <Route path={MainNavigation.NOT_FOUND} element={<NotFoundPage />} />
       </Route>
     </Routes>
   );

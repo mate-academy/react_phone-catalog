@@ -1,0 +1,15 @@
+@import '../../styles/utils';
+
+.loader {
+  margin: 32px auto;
+  justify-content: center;
+
+  svg {
+    fill: $accent;
+    stroke: $secondary-accent;
+  }
+
+  svg circle {
+    stroke: rgba($color: #fff, $alpha: 0.5);
+  }
+}

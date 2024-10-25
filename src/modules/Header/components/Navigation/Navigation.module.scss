@@ -6,7 +6,6 @@
     flex-direction: column;
     align-items: center;
     gap: 16px;
-    line-height: 27px;
 
     @include on-tablet {
       flex-direction: row;
@@ -26,6 +25,10 @@
     @include transition;
 
     @include on-tablet {
+      line-height: 48px;
+    }
+
+    @include on-desktop {
       line-height: 64px;
     }
 

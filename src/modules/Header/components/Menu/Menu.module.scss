@@ -13,6 +13,7 @@
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     border-top: 1px solid $elements;
+    height: 64px;
   }
 
   @include on-tablet {

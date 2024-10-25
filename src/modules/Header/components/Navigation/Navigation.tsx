@@ -18,7 +18,7 @@ interface Props {
 
 export const Navigation: React.FC<Props> = ({ className }) => {
   return (
-    <nav>
+    <nav className={styles.navigation}>
       <ul className={cn(styles.navigation__list, className)}>
         {mainNav.map(({ title, path }) => {
           return (

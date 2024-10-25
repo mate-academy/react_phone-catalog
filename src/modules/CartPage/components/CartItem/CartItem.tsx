@@ -10,7 +10,8 @@ interface Props {
 }
 
 export const CartItem: React.FC<Props> = ({ product }) => {
-  const { name, image, quantity, price, itemId } = product;
+  const { name, image, price, itemId, category } = product.product;
+  const { quantity } = product;
   const dispatch = useContext(DispatchContext);
 
   const deleteGood = () => {
@@ -25,7 +26,7 @@ export const CartItem: React.FC<Props> = ({ product }) => {
     dispatch({ type: 'decreaseCountInCart', payload: itemId });
   };
 
-  const path = `/${product.category}/${product.itemId}`;
+  const path = `/${category}/${itemId}`;
 
   return (
     <div className={styles['cart-item']}>

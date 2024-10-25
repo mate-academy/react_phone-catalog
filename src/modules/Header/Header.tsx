@@ -6,6 +6,7 @@ import { Menu } from './components/Menu';
 import { Navigation } from './components/Navigation';
 import { Actions } from './components/Actions';
 import { MainNavigation } from '../../utils/constants';
+import { disableScroll, enableScroll } from '../../utils/utility';
 
 export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -14,6 +15,14 @@ export const Header = () => {
   useEffect(() => {
     setIsMenuOpen(false);
   }, [location]);
+
+  useEffect(() => {
+    if (isMenuOpen) {
+      disableScroll();
+    } else {
+      enableScroll();
+    }
+  }, [isMenuOpen]);
 
   return (
     <>

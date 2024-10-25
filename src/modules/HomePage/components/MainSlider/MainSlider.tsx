@@ -1,7 +1,7 @@
 import cn from 'classnames';
 import styles from './MainSlider.module.scss';
 import { SvgIcon } from '../../../../components/SvgIcon';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const slides = [
   '/img/banner-accessories.png',
@@ -23,6 +23,12 @@ export const MainSlider: React.FC<Props> = ({ className = '' }) => {
   const handlePrev = () => {
     setCurrentSlide(prev => (prev - 1 + slides.length) % slides.length);
   };
+
+  useEffect(() => {
+    const intervalId = setInterval(handleNext, 5000);
+
+    return () => clearInterval(intervalId);
+  }, []);
 
   return (
     <section className={cn(styles['main-slider'], className)}>

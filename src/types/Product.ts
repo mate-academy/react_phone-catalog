@@ -1,6 +1,8 @@
+import { Category } from './Category';
+
 export interface Product {
   id: number;
-  category: string;
+  category: Category;
   itemId: string;
   name: string;
   capacity: string;
@@ -13,6 +15,8 @@ export interface Product {
   year: number;
 }
 
-export interface CartProduct extends Product {
+export interface CartProduct {
   quantity: number;
+  id: string;
+  product: Product;
 }

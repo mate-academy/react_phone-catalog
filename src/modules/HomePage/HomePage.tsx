@@ -18,10 +18,11 @@ export const HomePage = () => {
   return (
     <div className={styles['home-page']}>
       <div className={styles['home-page__wrapper']}>
-        <h1 className={styles['home-page__title']}>
+        <h1 className="visually-hidden">Product Catalog</h1>
+        <h2 className={styles['home-page__title']}>
           Welcome to Nice <br className={styles['home-page__title-break']} />
           Gadgets store!
-        </h1>
+        </h2>
 
         <MainSlider className={styles['home-page__main-slider']} />
       </div>

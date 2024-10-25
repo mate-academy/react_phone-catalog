@@ -31,3 +31,9 @@ export const getProductById = async (id: string) => {
 
   return products.find(p => p.itemId === id) || null;
 };
+
+export const getSuggestedProducts = async () => {
+  const products = await getAllProducts;
+
+  return products.filter(() => Math.random() > 0.5);
+};

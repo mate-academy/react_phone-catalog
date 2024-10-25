@@ -5,13 +5,21 @@ import styles from './ProductsCatalog.module.scss';
 import { Selector } from './components/Selector';
 import { Grid } from '../../components/Grid';
 import { useUpdateSearchParams } from '../../hooks';
+import { Loader } from '../../components/Loader';
 
 interface Props {
   title: string;
   products: Product[];
+  loading: boolean;
+  error: string;
 }
 
-export const ProductsCatalog: React.FC<Props> = ({ title, products }) => {
+export const ProductsCatalog: React.FC<Props> = ({
+  title,
+  products,
+  loading,
+  error,
+}) => {
   const { searchParams, updateSearchParams } = useUpdateSearchParams();
 
   const SORT_OPTIONS = [
@@ -73,33 +81,44 @@ export const ProductsCatalog: React.FC<Props> = ({ title, products }) => {
 
   const visibleProducts = getVisibleProducts(sortedProducts);
 
+  if (loading) {
+    return <Loader />;
+  }
+
   return (
     <section className={styles['products-catalog']}>
       <Breadcrumbs />
-      <div>
-        <h1 className={styles['products-catalog__title']}>{title}</h1>
-        <p className={styles['products-catalog__text']}>
-          {products.length} models
-        </p>
-      </div>
-      <div>
-        <div className={styles['products-catalog__selectors-wrapper']}>
-          <Selector title="Sort by" type="sort" items={SORT_OPTIONS} />
-          <Selector
-            title="Items per page"
-            type="perPage"
-            items={PER_PAGE_OPTIONS}
+
+      {error ? (
+        <p className={styles['products-catalog__title']}>{error}</p>
+      ) : (
+        <>
+          <div>
+            <h1 className={styles['products-catalog__title']}>{title}</h1>
+            <p className={styles['products-catalog__text']}>
+              {products.length} models
+            </p>
+          </div>
+          <div>
+            <div className={styles['products-catalog__selectors-wrapper']}>
+              <Selector title="Sort by" type="sort" items={SORT_OPTIONS} />
+              <Selector
+                title="Items per page"
+                type="perPage"
+                items={PER_PAGE_OPTIONS}
+              />
+            </div>
+            <Grid products={visibleProducts} />
+          </div>
+          <Pagination
+            total={sortedProducts.length}
+            perPage={perPage}
+            currentPage={currentPage}
+            onPageChange={page => updateSearchParams('page', page)}
+            className={styles['products-catalog__pagination']}
           />
-        </div>
-        <Grid products={visibleProducts} />
-      </div>
-      <Pagination
-        total={sortedProducts.length}
-        perPage={perPage}
-        currentPage={currentPage}
-        onPageChange={page => updateSearchParams('page', page)}
-        className={styles['products-catalog__pagination']}
-      />
+        </>
+      )}
     </section>
   );
 };

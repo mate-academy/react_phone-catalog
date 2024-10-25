@@ -1,29 +1,57 @@
 import { Link } from 'react-router-dom';
 import styles from './Categories.module.scss';
 import { MainNavigation } from '../../../../utils/constants';
-
-const categories = [
-  {
-    title: 'Mobile phones',
-    count: 95,
-    img: '/img/category-phones.png',
-    path: MainNavigation.PHONES,
-  },
-  {
-    title: 'Tablets',
-    count: 24,
-    img: '/img/category-tablets.png',
-    path: MainNavigation.TABLETS,
-  },
-  {
-    title: 'Accessories',
-    count: 100,
-    img: '/img/category-accessories.png',
-    path: MainNavigation.ACCESSORIES,
-  },
-];
+import { useEffect, useState } from 'react';
+import { getAllProducts } from '../../../../servises/products';
+import { Category } from '../../../../types';
 
 export const Categories = () => {
+  const initialCategories = [
+    {
+      title: 'Mobile phones',
+      count: 0,
+      category: 'phones',
+      img: '/img/category-phones.png',
+      path: MainNavigation.PHONES,
+    },
+    {
+      title: 'Tablets',
+      count: 0,
+      category: 'tablets',
+      img: '/img/category-tablets.png',
+      path: MainNavigation.TABLETS,
+    },
+    {
+      title: 'Accessories',
+      count: 0,
+      category: 'accessories',
+      img: '/img/category-accessories.png',
+      path: MainNavigation.ACCESSORIES,
+    },
+  ];
+  const [categories, setCategories] = useState(initialCategories);
+
+  useEffect(() => {
+    getAllProducts.then(products => {
+      const counts: Record<Category, number> = {
+        phones: 0,
+        tablets: 0,
+        accessories: 0,
+      };
+
+      products.forEach(p => {
+        counts[p.category] += 1;
+      });
+
+      setCategories(current =>
+        current.map(category => ({
+          ...category,
+          count: counts[category.category as Category],
+        })),
+      );
+    });
+  }, []);
+
   return (
     <section className={styles.categories}>
       <h2 className={styles.categories__title}>Shop by category</h2>

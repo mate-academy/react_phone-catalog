@@ -17,7 +17,7 @@ export const Actions: React.FC<Props> = ({ className, product }) => {
   const { itemId } = product;
 
   const isFavourite = favourites.find(p => p.itemId === itemId);
-  const isInCart = cart.find(p => p.itemId === itemId);
+  const isInCart = cart.find(p => p.id === itemId);
 
   const changeFavouriteStatus = () => {
     if (isFavourite) {
@@ -29,9 +29,12 @@ export const Actions: React.FC<Props> = ({ className, product }) => {
 
   const changeCartStatus = () => {
     if (isInCart) {
-      dispatch({ type: 'removeCart', payload: itemId });
+      return;
     } else {
-      dispatch({ type: 'addCart', payload: { ...product, quantity: 1 } });
+      dispatch({
+        type: 'addCart',
+        payload: { product: product, quantity: 1, id: product.itemId },
+      });
     }
   };
 

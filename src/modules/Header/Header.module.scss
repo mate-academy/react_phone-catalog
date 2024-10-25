@@ -3,15 +3,21 @@
 .header {
   border-bottom: 1px solid $elements;
   position: sticky;
+  top: 0;
   z-index: 2;
-
+  background-color: $white;
   display: flex;
   gap: 16px;
   justify-content: space-between;
+  height: 48px;
 
   @include on-tablet {
     display: grid;
     grid-template-columns: min-content 1fr;
+  }
+
+  @include on-desktop {
+    height: 64px;
   }
 
   &__link-logo {
@@ -20,6 +26,12 @@
     align-items: center;
     justify-content: center;
     padding: 13px 16px;
+
+    @include transition;
+
+    &:hover {
+      scale: 1.1;
+    }
   }
 
   &__logo {
@@ -34,7 +46,7 @@
   }
 
   &__menu {
-    position: absolute;
+    position: fixed;
     z-index: 1;
     inset: 0;
     background-color: $white;
@@ -46,7 +58,7 @@
   }
 
   &__menu-btn {
-    height: 48px;
+    height: 100%;
     width: 48px;
     border: none;
     border-left: 1px solid $elements;
@@ -81,5 +93,10 @@
 
   &__actions {
     display: flex;
+    height: 48px;
+
+    @include on-desktop {
+      height: 64px;
+    }
   }
 }

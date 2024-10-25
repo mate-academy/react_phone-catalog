@@ -27,7 +27,7 @@ const reducer = (state: State, action: Action): State => {
 
     case 'removeCart':
       const filteredCart = state.cart.filter(
-        product => product.itemId !== action.payload,
+        product => product.id !== action.payload,
       );
 
       return { ...state, cart: filteredCart };
@@ -46,7 +46,7 @@ const reducer = (state: State, action: Action): State => {
       return {
         ...state,
         cart: state.cart.map(p =>
-          p.itemId === action.payload ? { ...p, quantity: p.quantity + 1 } : p,
+          p.id === action.payload ? { ...p, quantity: p.quantity + 1 } : p,
         ),
       };
 
@@ -54,7 +54,7 @@ const reducer = (state: State, action: Action): State => {
       return {
         ...state,
         cart: state.cart.map(p =>
-          p.itemId === action.payload ? { ...p, quantity: p.quantity - 1 } : p,
+          p.id === action.payload ? { ...p, quantity: p.quantity - 1 } : p,
         ),
       };
 

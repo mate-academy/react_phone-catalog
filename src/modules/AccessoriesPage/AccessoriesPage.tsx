@@ -4,11 +4,24 @@ import { getProductsByCategory } from '../../servises/products';
 import { ProductsCatalog } from '../ProductsCatalog';
 
 export const AccessoriesPage = () => {
-  const [phones, setPhones] = useState<Product[]>([]);
+  const [accessories, setAccessories] = useState<Product[]>([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
 
   useEffect(() => {
-    getProductsByCategory('accessories').then(setPhones);
+    setLoading(true);
+    getProductsByCategory('accessories')
+      .then(setAccessories)
+      .catch(() => setError('Something went wrong'))
+      .finally(() => setLoading(false));
   }, []);
 
-  return <ProductsCatalog title="Mobile phones" products={phones} />;
+  return (
+    <ProductsCatalog
+      title="Accessories"
+      products={accessories}
+      loading={loading}
+      error={error}
+    />
+  );
 };

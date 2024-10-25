@@ -9,9 +9,11 @@ export const CartPage = () => {
   const { cart } = useContext(StateContext);
 
   const totalPrice = cart.reduce(
-    (total, product) => total + product.price * product.quantity,
+    (total, p) => total + p.product.price * p.quantity,
     0,
   );
+
+  const totalQuantity = cart.reduce((count, p) => count + p.quantity, 0);
 
   return (
     <section className={styles['cart-page']}>
@@ -31,7 +33,7 @@ export const CartPage = () => {
           <div className={styles['cart-page__total']}>
             <p className={styles['cart-page__total-price']}>${totalPrice}</p>
             <p className={styles['cart-page__total-desc']}>
-              Total for {cart.length} item{cart.length > 1 ? 's' : ''}
+              Total for {totalQuantity} item{cart.length > 1 ? 's' : ''}
             </p>
             <button className={styles['cart-page__checkout']}>Checkout</button>
           </div>
