@@ -28,7 +28,9 @@ export const CatalogPage: React.FC = () => {
   ];
 
   useEffect(() => {
-    fetch(`/api/${state.category}.json`)
+    fetch(
+      `/https://yuron-maker.github.io/react_phone-catalog/api/${state.category}.json`,
+    )
       .then(response => response.json())
       .then(data => setProducts(data));
   }, [state.category]);
