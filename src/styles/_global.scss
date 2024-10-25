@@ -1,0 +1,110 @@
+@use './variables' as v;
+@use './mixins' as mix;
+
+@font-face {
+  font-family: "Mont";
+  src: local("Mont-Regular"),
+    url("/public/fonts/Mont-Regular.otf");
+}
+
+@font-face {
+  font-family: "Mont-Bold";
+  src: local("Mont-Bold"),
+    url("/public/fonts/Mont-Bold.otf");
+}
+
+@font-face {
+  font-family: "Mont-SemiBold";
+  src: local("Mont-SemiBold"),
+  url("/public/fonts/Mont-SemiBold.otf");
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  transition: all 0.3s ease;
+}
+
+html {
+  font-size: 16px;
+
+  @include mix.respond-to(tablet) {
+    font-size: 8px;
+  }
+}
+
+body {
+  background-color: v.$colorBlack;
+  font-family: Mont, serif;
+}
+
+button {
+  border: none;
+  cursor: pointer;
+}
+
+h1 {
+  font-size: 48px;
+  line-height: 56px;
+  letter-spacing: -0.01em;
+  color: v.$colorWhite;
+  font-family: Mont-Bold, serif;
+
+  @include mix.respond-to(mobile) {
+    line-height: 41px;
+    font-size: 32px;
+  }
+}
+
+h2 {
+  font-size: 32px;
+  line-height: 41px;
+  letter-spacing: 0;
+  color: v.$colorWhite;
+  font-family: Mont-Bold, serif;
+
+  @include mix.respond-to(mobile) {
+    line-height: 31px;
+    font-size: 22px;
+  }
+}
+
+h3 {
+  font-size: 22px;
+  line-height: 31px;
+  letter-spacing: 0;
+  color: v.$colorWhite;
+  font-family: Mont-Bold, serif;
+
+  @include mix.respond-to(mobile) {
+    line-height: 26px;
+    font-size: 20px;
+    font-family: Mont-SemiBold, serif;
+  }
+}
+
+h4 {
+  font-size: 20px;
+  line-height: 26px;
+  letter-spacing: 0;
+  color: v.$colorWhite;
+  font-family: Mont-SemiBold, serif;
+
+  @include mix.respond-to(mobile) {
+    line-height: 20px;
+    font-size: 16px;
+  }
+}
+
+button {
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 0;
+  color: v.$colorWhite;
+  font-family: Mont-SemiBold, serif;
+}
+
+a {
+  text-decoration: none;
+}

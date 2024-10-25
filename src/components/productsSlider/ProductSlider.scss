@@ -1,0 +1,26 @@
+@use './../../styles/variables' as v;
+
+.productSlider {
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 24px;
+  }
+
+  &__title {
+    color: v.$colorWhite;
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 16px;
+  }
+}
+
+.slick-slider {
+  width: calc(100% + 24px);
+}
+.slick-track {
+  display: flex;
+  gap: 16px;
+}

@@ -1,0 +1,70 @@
+@use '../../styles/variables' as v;
+@use '../../styles/mixins' as mix;
+
+.homePage {
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+  padding-bottom: 80px;
+
+  @include mix.respond-to(tablet) {
+    gap: 64px;
+    padding-bottom: 64px;
+  }
+
+  &__title {
+    margin:  56px 0;
+    @include mix.respond-to(tablet) {
+      margin: 32px 0;
+    }
+  }
+}
+
+.categories {
+
+  &__links {
+    display: flex;
+    gap: 16px;
+  }
+
+  &__item {
+    flex-grow: 1;
+    flex-basis: 0;
+  }
+
+  &__photos {
+    display: block;
+    width: 100%;
+    padding-bottom: 100%;
+    background-repeat: no-repeat;
+    &--phone {
+      background-color: #f0d198;
+      background-image: url(../../../public/img/category-phones.png);
+      background-size: 100%;
+      background-position: 50px 30px;
+    }
+
+    &--tablet {
+      background-color: #8D8D92;
+      background-position: 20px 27px;
+      background-size: 170%;
+      background-image: url(../../../public/img/category-tablets.png);
+    }
+
+    &--accessoirs {
+      background-color: #973D5F;
+      background-position: 45px 65px;
+      background-size: 180%;
+      background-image: url(../../../public/img/category-accessories.png);
+    }
+  }
+
+  &__name {
+    margin-top: 24px;
+  }
+
+  &__count {
+    @include mix.bodyText;
+    color: v.$colorSecondary;
+  }
+}

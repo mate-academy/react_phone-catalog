@@ -1,0 +1,30 @@
+@use '../../styles/mixins' as mix;
+@use '../../styles/variables' as v;
+
+.arrowButton {
+  @include mix.square(32px);
+  background-color: v.$colorSurface2;
+
+  &--disabled {
+    border: 1px solid v.$colorElements;
+    background-color: transparent;
+    cursor: auto;
+  }
+
+  &__img {
+    fill: v.$colorWhite;
+    &--right {
+      transform: rotate(180deg);
+    }
+    &--top {
+      transform: rotate(90deg);
+    }
+    &--bottom {
+      transform: rotate(-90deg);
+    }
+
+    &--disabled {
+      fill: v.$colorElements;
+    }
+  }
+}
