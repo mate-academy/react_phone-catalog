@@ -1,0 +1,41 @@
+:root {
+  --primary-color: #313237; /* Primary */
+  --secondary-color-light: #89939a; /* Secondary */
+  --icons-color-light: #b4bdc3; /* Icons */
+  --elements-color: #e2e6e9; /* Elements */
+  --hover-bg-color: #fafbfc; /* Hover + BG */
+  --white-color: #fff; /* White */
+  --green-color-light: #27ae60; /* Green */
+  --red-color-light: #eb5757; /* Red */
+
+  --secondary-color-dark: #75767f; /* Secondary */
+  --icons-color-dark: #4a4d58; /* Icons */
+  --elements-color-dark: #3b3e4a; /* Elements */
+  --surface2-color: #323542; /* Surface 2 */
+  --surface1-color: #161827; /* Surface 1 */
+  --black-color-dark: #0f1121; /* Black */
+  --white-color-dark: #f1f2f9; /* White */
+  --accent-color: #905bff; /* Accent */
+}
+
+.light-theme {
+  --bg-color: var(--white-color);
+  --borders-color: var(--elements-color);
+  --main-color: var(--primary-color);
+  --secondary-color: var(--secondary-color-light);
+  --hover-color: var(--elements-color);
+  --navigation-buttons: var(--icons-color-light);
+
+  transition: all 0.3s ease;
+}
+
+.dark-theme {
+  --bg-color: var(--black-color-dark);
+  --borders-color: var(--elements-color-dark);
+  --main-color: var(--white-color-dark);
+  --secondary-color: var(--secondary-color-dark);
+  --hover-color: var(--surface2-color);
+  --navigation-buttons: var(--surface2-color);
+
+  transition: all 0.3s ease;
+}

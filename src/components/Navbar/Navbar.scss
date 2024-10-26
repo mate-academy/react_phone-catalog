@@ -1,0 +1,210 @@
+@import '../../styles/main.scss';
+
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  height: 48px;
+  border-bottom: 1px solid var(--borders-color);
+  padding-left: 16px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+  @include on-dekstop {
+    height: 64px;
+    padding-left: 24px;
+  }
+
+  &__left {
+    height: 100%;
+    display: flex;
+    align-items: center;
+
+    @include on-tablet {
+      gap: 32px;
+    }
+
+    @include on-dekstop {
+      gap: 48px;
+    }
+  }
+
+  &__logo_link {
+    display: flex;
+  }
+
+  &__logo_img {
+    max-height: 28px;
+    max-width: 80px;
+  }
+
+  &__item {
+    height: 27px;
+
+    @include on-tablet {
+      height: 100%;
+    }
+  }
+
+  &__links {
+    display: none;
+
+    @include on-tablet {
+      height: 100%;
+      flex-direction: row;
+      display: flex;
+      align-items: center;
+      gap: 32px;
+    }
+
+    @include on-dekstop {
+      gap: 64px;
+    }
+  }
+
+  &__link {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    color: var(--secondary-color);
+
+    @include on-tablet {
+      &:hover {
+        color: var(--main-color);
+      }
+    }
+
+    &--active {
+      border-bottom: 2px solid var(--main-color);
+      color: var(--main-color);
+
+      @include on-tablet {
+        border-bottom: 3px solid var(--main-color);
+        padding-top: 3px;
+      }
+    }
+  }
+
+  &__right {
+    display: flex;
+    height: 100%;
+
+    @include on-tablet {
+      & > *:hover {
+        background-color: var(--hover-color);
+      }
+    }
+  }
+
+  &__burger {
+    width: 48px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-left: 1px solid var(--borders-color);
+
+    @include on-tablet {
+      display: none;
+    }
+  }
+
+  &__favourites,
+  &__cart {
+    display: none;
+    @include on-tablet {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 48px;
+      border-left: 1px solid var(--borders-color);
+    }
+
+    @include on-dekstop {
+      width: 62px;
+    }
+  }
+
+  &__theme {
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 48px;
+    border-left: 1px solid var(--borders-color);
+
+    @include on-dekstop {
+      width: 62px;
+    }
+  }
+
+  &__menu {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    top: 48px;
+    right: 0;
+    width: 100%;
+    background-color: var(--bg-color);
+    height: calc(100vh - 100%);
+    z-index: 100;
+    transition: all 0.3s ease;
+    animation: slideInRight 0.5s ease-in-out forwards;
+
+    @keyframes slideInRight {
+      from {
+        left: 100%;
+      }
+      to {
+        left: 0;
+        opacity: 1;
+      }
+    }
+
+    &-links {
+      padding-top: 32px;
+      flex-direction: column;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    &-link {
+      height: 32px;
+    }
+
+    @include on-tablet {
+      display: none;
+    }
+
+    &-icons {
+      height: 64px;
+      display: flex;
+      flex-direction: row;
+    }
+
+    &-cart,
+    &-favourites {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      border-left: 1px solid var(--borders-color);
+      border-top: 1px solid var(--borders-color);
+
+      &--active {
+        border-bottom: 3px solid var(--main-color);
+      }
+    }
+
+    & > *:last-child {
+      border-right: 1px solid var(--borders-color);
+    }
+  }
+}
+
+body.lock-scroll {
+  overflow: hidden;
+}

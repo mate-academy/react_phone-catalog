@@ -1,1 +1,25 @@
-// not empty
+@import './styles/main.scss';
+
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 64px;
+
+  @include on-dekstop {
+    margin-bottom: 80px;
+  }
+
+  & > * {
+    min-width: 320px;
+
+    @include on-tablet {
+      min-width: 592px;
+    }
+
+    @include on-dekstop {
+      max-width: 1136px;
+    }
+  }
+}

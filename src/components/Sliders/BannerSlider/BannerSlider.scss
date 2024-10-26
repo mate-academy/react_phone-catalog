@@ -1,0 +1,42 @@
+@import '../../../styles/utils/mixins.scss';
+
+.pictures-slider {
+  width: 100%;
+  height: 352px;
+  overflow: hidden;
+
+  @include on-tablet {
+    height: 221px;
+  }
+
+  @include on-dekstop {
+    height: 432px;
+  }
+
+  &__button {
+    width: 32px;
+    height: 100%;
+    background-color: var(--navigation-buttons);
+  }
+
+  &__main {
+    width: 100%;
+    height: calc(100% - 24px);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    & > :first-child {
+      margin-right: 20px;
+    }
+
+    & > :last-child {
+      margin-left: 20px;
+    }
+  }
+
+  &__switch {
+    width: 100%;
+    height: 24px;
+  }
+}

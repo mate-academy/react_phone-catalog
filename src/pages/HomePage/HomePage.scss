@@ -1,0 +1,29 @@
+@import '../../styles/main.scss';
+
+.home-page {
+  width: 100%;
+
+  & > * {
+    margin-left: 16px;
+    margin-right: 16px;
+
+    @include on-tablet {
+      margin-left: 24px;
+      margin-right: 24px;
+    }
+  }
+
+  &__title {
+    margin-top: 24px;
+    margin-bottom: 24px;
+
+    @include on-tablet {
+      margin-top: 32px;
+      margin-bottom: 32px;
+    }
+
+    @include on-dekstop {
+      margin: 56px auto;
+    }
+  }
+}
