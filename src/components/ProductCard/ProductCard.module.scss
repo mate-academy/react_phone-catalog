@@ -116,6 +116,7 @@ margin-top: auto;
   cursor: pointer;
   border: 1px solid $color-accent;
   color: $color-white;
+  padding-inline: 0;
 
   &:hover {
     box-shadow: 0 3px 13px 0 $color-btn-shadow;
