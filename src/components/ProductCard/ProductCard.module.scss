@@ -1,0 +1,162 @@
+@import "src/styles/typography";
+@import "src/styles/colors";
+@import "src/styles/mixins";
+
+.productCardContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  padding: 3.2rem;
+  color: $color-primary;
+  text-decoration: none;
+  min-width: 21.4rem;
+  box-sizing: border-box;
+  border-radius: 0.8rem;
+  border: 1px solid $color-elements;
+
+  @include on-tablet {
+    min-width: 23.7rem;
+  }
+
+  @include on-m-desktop {
+    min-width: 27.2rem;
+  }
+}
+
+.productImgContainer {
+  display: flex;
+  justify-content: center;
+  height: 12.9rem;
+}
+
+.productImg{
+  height: 100%;
+}
+
+.title {
+  @extend %text-body;
+
+  margin-top: 1.6rem;
+}
+
+.priceContainer {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+
+margin-top: auto;
+
+}
+
+.price {
+  @extend %h3;
+
+  &Discount {
+    @extend %mont-regular;
+
+    position: relative;
+    font-weight: 600;
+    line-height: 2.81rem;
+    color: $color-secondary;
+
+    &::after {
+      position: absolute;
+      top: 45%;
+      left: 0;
+
+      mix-blend-mode: color-dodge;
+
+
+      content: '';
+      width: 100%;
+      border-top: 1px solid $color-secondary;
+    }
+  }
+}
+
+.line {
+  border-bottom: 1px solid $color-elements;
+}
+
+.productInfo {
+  list-style: none;
+
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+
+  margin-block: 0.8rem;
+}
+
+.productInfoItem {
+  @extend %text-small;
+
+  display: flex;
+  justify-content: space-between;
+
+  & :first-child {
+    color: $color-secondary;
+    margin-right: auto;
+  }
+}
+
+.btnContainer {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.8rem;
+}
+
+.btnCart {
+  @extend %text-buttons;
+
+  width: 100%;
+  background-color: $color-accent;
+  border-radius: 4.8rem;
+  padding-block: 0.95rem;
+  cursor: pointer;
+  border: 1px solid $color-accent;
+  color: $color-white;
+
+  &:hover {
+    box-shadow: 0 3px 13px 0 $color-btn-shadow;
+  }
+
+  &Pressed {
+    color: $color-accent;
+    background-color: $color-white;
+    border: 1px solid $color-elements;
+
+
+    &:hover {
+      box-shadow: none;
+    }
+  }
+}
+
+.btnFavourite {
+  height: 4rem;
+  min-width: 4rem;
+  box-shadow: none;
+
+  border-radius: 50%;
+
+  border: 1px solid $color-icons;
+
+  &:hover {
+    border: 1px solid $color-primary;
+  }
+
+  &Pressed {
+    border: 1px solid $color-elements;
+    background-image: url("../../assets/icons/favourites_filled.svg");
+
+    &:hover {
+      border: 1px solid $color-secondary-accent;
+    }
+  }
+
+  @include on-m-desktop {
+    height: 4rem;
+    width: 4rem;
+  }
+}

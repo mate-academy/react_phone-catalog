@@ -1,21 +1,17 @@
-import styles from './Slider.module.scss';
-
-// import classNames from 'classnames';
-import { imagesHero } from '../../../../../constants/imagesHero';
-// import { useEffect, useState } from 'react';
-
+import { Link } from 'react-router-dom';
+import classNames from 'classnames';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Pagination, Autoplay, Navigation, Keyboard } from 'swiper/modules';
+import { Pagination, Autoplay, Navigation } from 'swiper/modules';
 
-// Import Swiper styles
 import 'swiper/scss';
 import 'swiper/scss/pagination';
 import 'swiper/css/navigation';
-
 import './SwiperLibrary.scss';
-import { Link } from 'react-router-dom';
-import classNames from 'classnames';
+import styles from './Slider.module.scss';
+
+import { imagesHero } from '../../../../../constants/imagesHero';
 import { CTAId } from '../../../../../types/CTAId';
+// import { useEffect, useState } from 'react';
 
 export const Slider = () => {
   // const [activeImgIndex, setActiveImgIndex] = useState(1);
@@ -93,12 +89,9 @@ export const Slider = () => {
         <div className={styles.swiperContainer}>
           <Swiper
             pagination={pagination}
-            spaceBetween={10}
-            modules={[Pagination, Autoplay, Navigation, Keyboard]}
-            className={'mySlider'}
-            keyboard={{
-              enabled: true,
-            }}
+            // spaceBetween={10}
+            modules={[Pagination, Autoplay, Navigation]}
+            className="mySlider heroSlider"
             navigation={true}
             autoplay={{
               delay: 3000,

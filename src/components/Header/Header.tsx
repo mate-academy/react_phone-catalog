@@ -3,9 +3,10 @@ import { Link } from 'react-router-dom';
 import styles from './Header.module.scss';
 import logo from '../../assets/icons/logo.png';
 import stylesButton from '../../styles/buttons.module.scss';
-import React from 'react';
+import React, { useContext } from 'react';
 import classNames from 'classnames';
 import { Navigation } from '../Navigation';
+import { CartContext, FavouriteContext } from '../../ContextProvider';
 
 interface Props {
   isMobileMenuOpen: boolean;
@@ -19,6 +20,9 @@ export const Header: React.FC<Props> = ({
   const handleMenu = () => {
     handleMobileMenu(!isMobileMenuOpen);
   };
+
+  const { cartProducts } = useContext(CartContext);
+  const { favouriteProducts } = useContext(FavouriteContext);
 
   return (
     <div className={styles.topBar}>
@@ -40,11 +44,34 @@ export const Header: React.FC<Props> = ({
         <Link
           to="/fovourites"
           className={classNames(stylesButton.buttonFavourite, styles.button)}
-        ></Link>
+          aria-label="My favourite products"
+        >
+          {!!favouriteProducts.length && (
+            <span
+              className={classNames({
+                [styles.buttonFavouriteWrapper]: true,
+              })}
+            >
+              {favouriteProducts.length}
+            </span>
+          )}
+        </Link>
+
         <Link
           to="/cart"
           className={classNames(stylesButton.buttonCart, styles.button)}
-        ></Link>
+          aria-label="Products added to cart"
+        >
+          {!!cartProducts.length && (
+            <span
+              className={classNames({
+                [styles.buttonCartWrapper]: true,
+              })}
+            >
+              {cartProducts.length}
+            </span>
+          )}
+        </Link>
       </div>
     </div>
   );

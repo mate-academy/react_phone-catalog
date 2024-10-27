@@ -11,15 +11,7 @@
   flex-direction: column;
   z-index: 0;
   padding-bottom: 3rem;
-  margin-bottom: 5.6rem;
 
-  @include on-tablet {
-    margin-bottom: 6.4rem;
-  }
-
-  @include on-m-desktop {
-    margin-bottom: 8rem;
-  }
 
   // background-color: red;
   // gap: 0.8rem;

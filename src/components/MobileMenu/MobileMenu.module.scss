@@ -13,12 +13,12 @@
 
   position: absolute;
   top: 0;
-  bottom: 0;
   width: 100%;
   min-height: 100vh;
   transform: translateY(-100%);
   opacity: 1;
   z-index: 1;
+
 
   transition: transform $transition-duration ease-in-out,
   opacity $transition-duration ease-in-out;

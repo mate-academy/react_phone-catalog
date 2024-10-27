@@ -36,7 +36,9 @@
 .buttonFavourite {
   @extend %button;
 
+  position: relative;
   background-image: url("../assets/icons/favourites.svg");
+
 }
 
 .buttonCart {

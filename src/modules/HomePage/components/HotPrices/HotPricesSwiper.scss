@@ -1,0 +1,110 @@
+@import "src/styles/colors";
+@import "src/styles/mixins";
+
+
+.swiper.hotPrices {
+  gap: 1.6rem;
+  width: 100%;
+  height: 100%;
+  position: static;
+}
+
+.hotPrices .swiper-slide {
+  display: flex;
+  max-width: 21.4rem;
+  height: auto;
+
+
+  @include on-tablet {
+    max-width: 23.7rem;
+  }
+
+  @include on-m-desktop {
+    max-width: 27.2rem;
+  }
+}
+
+.hotPrices .swiper-wrapper {
+  position: static;
+}
+
+/* stylelint-disable-next-line no-duplicate-selectors */
+.hotPrices .swiper-slide {
+  &:first-child{
+    margin-left: 1.6rem;
+
+    @include on-tablet{
+      margin-left: 2.4rem;
+    }
+
+    @include on-m-desktop{
+      margin-left: 0;
+    }
+  }
+
+  &:last-child {
+    margin-right: 1.6rem;
+
+    @include on-tablet{
+      margin-right: 2.4rem;
+    }
+
+    @include on-m-desktop{
+      margin-right: 0;
+    }
+  }
+}
+
+
+.hotPrices .swiper-button-prev {
+  right: 6.4rem;
+
+  @include on-tablet{
+    right: 7.2rem;
+  }
+
+  @include on-m-desktop{
+    right: 4.8rem;
+  }
+
+  &::after {
+    mask: url("/src/assets/icons/arrow-left.svg");
+  }
+}
+
+.hotPrices .swiper-button-next {
+  right: 1.6rem;
+
+  @include on-tablet{
+    right: 2.4rem;
+  }
+
+  @include on-m-desktop{
+    right: 0
+  }
+
+  &::after {
+    mask: url("/src/assets/icons/arrow-right.svg");
+  }
+}
+
+.hotPrices .swiper-button-prev,
+.hotPrices .swiper-button-next {
+  grid-row: 1/2;
+
+  z-index: 0;
+  width: 3.2rem;
+  height: 3.2rem;
+  border-radius: 50%;
+  border: 1px solid $color-primary;
+  left: auto;
+  margin-top: -1.65rem;
+
+  &::after {
+    content: '';
+    height: 1.6rem;
+    width: 1.6rem;
+    background-color: $color-primary;
+  }
+}
+
