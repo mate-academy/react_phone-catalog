@@ -1,7 +1,7 @@
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import './Slider.scss';
+import './WelcomeSlider.scss';
 
 import image1 from './images/banner-phones.png';
 import image2 from './images/banner-tablets.png';
@@ -57,12 +57,12 @@ export default function SimpleSlider() {
     className: 'welcome-slider',
     dots: true,
     infinite: true,
-    speed: 500,
+    speed: 1000,
     arrows: true,
     slidesToShow: 1,
     slidesToScroll: 1,
-    autoplay: false,
-    autoplaySpeed: 3000,
+    autoplay: true,
+    autoplaySpeed: 7000,
     centerMode: false,
     responsive: [
       {

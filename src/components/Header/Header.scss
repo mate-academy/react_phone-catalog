@@ -26,7 +26,10 @@
 
   &__cart,
   &__favourites {
+    display: block;
     width: 16px;
+
+    @include hover(transform, scale(1.2), 0.25s);
   }
 
   &__link-favourites,

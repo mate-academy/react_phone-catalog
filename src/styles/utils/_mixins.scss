@@ -1,5 +1,5 @@
-@mixin hover($_property, $_toValue) {
-  transition: #{$_property} 0.3s;
+@mixin hover($_property, $_toValue, $_duration: 0.3s) {
+  transition: #{$_property} $_duration;
   &:hover {
     #{$_property}: $_toValue;
   }

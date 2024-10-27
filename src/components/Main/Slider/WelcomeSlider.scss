@@ -1,6 +1,23 @@
 @import '../../../styles/utils';
+.welcome-slider {
+  @include on-tablet {
+    display: grid;
+    grid-template-columns: 32px 1fr 32px;
+    align-items: center;
+    position: relative;
+    width: 100%;
+    max-width: 1132px;
+    height: 198px;
+  }
+
+  @include on-laptop {
+    height: 400px;
+  }
+}
 
 .slider {
+  will-change: auto;
+
   &__container {
     width: 100%;
     margin: 0 auto;
@@ -32,11 +49,6 @@
       height: 400px;
     }
   }
-
-  &__block {
-    display: block;
-    max-width: 320px;
-  }
 }
 
 .slick {
@@ -51,6 +63,7 @@
     justify-content: center;
     z-index: 1;
 
+    @include hover(background-color, $c-hover-bg);
 
     &::before {
       content: '';
@@ -77,6 +90,20 @@
       cursor: pointer;
       border: 1px solid $c-primary;
     }
+
+    &:active {
+      background-image: url('./icons/Chevron\ \(Arrow\ Left\).png');
+      background-repeat: no-repeat;
+      background-position: center;
+      background-color: $c-primary;
+
+      cursor: pointer;
+      border: 1px solid $c-primary;
+    }
+
+    &:disabled {
+      border: 1px solid $c-element;
+    }
   }
 
   &-next {
@@ -95,26 +122,19 @@
       cursor: pointer;
       border: 1px solid $c-primary;
     }
+    &:active {
+      background-image: url('./icons/Chevron\ \(Arrow\ Right\).png');
+      background-color: $c-primary;
+      background-repeat: no-repeat;
+      background-position: center;
+
+      cursor: pointer;
+      border: 1px solid $c-primary;
+    }
   }
 
   &-list {
     grid-column: 2;
-  }
-
-  &-slider {
-    @include on-tablet {
-      display: grid;
-      grid-template-columns: 32px 1fr 32px;
-      align-items: center;
-      position: relative;
-      width: 100%;
-      max-width: 1132px;
-      height: 198px;
-    }
-
-    @include on-laptop {
-      height: 400px;
-    }
   }
 }
 
@@ -122,6 +142,11 @@
   bottom: -33px;
   li {
     cursor: pointer;
+    height: 0;
+
+    button {
+      height: 0;
+    }
 
     button::before {
       content: '';

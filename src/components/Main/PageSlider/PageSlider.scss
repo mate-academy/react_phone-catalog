@@ -1,0 +1,27 @@
+@import '../../../styles/utils';
+
+.slider-block {
+  width: 200px;
+}
+
+.page-slider {
+  &__container {
+    display: grid;
+    max-width: 320px;
+    margin: 0 auto;
+
+    grid-template-columns: 136px auto;
+    grid-template-rows: auto auto;
+    align-items: center;
+    overflow: hidden;
+  }
+
+  @include on-tablet {
+    grid-template-columns: 300px auto;
+  }
+
+  &__dots {
+    display: flex;
+    justify-content: center;
+  }
+}

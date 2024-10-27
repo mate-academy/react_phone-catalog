@@ -1,7 +1,35 @@
 import { Link, NavLink } from 'react-router-dom';
 import './Footer.scss';
+import { useEffect, useState } from 'react';
 
 export const Footer: React.FC = () => {
+  const [showButton, setShowButton] = useState(false);
+
+  // Функція, яка показує/ховає кнопку при скролі
+  const handleScroll = () => {
+    if (window.scrollY > 20) {
+      setShowButton(true);
+    } else {
+      setShowButton(false);
+    }
+  };
+
+  // Функція для прокрутки до верху сторінки
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  };
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
   return (
     <footer className="footer">
       <Link to="/" className="footer__link-logo">
@@ -18,10 +46,12 @@ export const Footer: React.FC = () => {
           Rights
         </NavLink>
       </nav>
-      <div className="footer__nav-up">
-        <p className="footer__nav-up--subtitle">Back to top</p>
-        <button className="footer__button"></button>
-      </div>
+      {showButton && (
+        <div className="footer__nav-up" onClick={scrollToTop}>
+          <p className="footer__nav-up--subtitle">Back to top</p>
+          <button className="footer__button"></button>
+        </div>
+      )}
     </footer>
   );
 };

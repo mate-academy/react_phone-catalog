@@ -14,6 +14,7 @@
 
 .shop-block {
   width: auto;
+  overflow: hidden;
 
   @include on-tablet {
     width: 100%;
@@ -22,6 +23,8 @@
     height: 262px;
     max-height: 368px;
     min-height: 187px;
+
+    overflow: inherit;
   }
 
   &__container-img {
@@ -48,19 +51,27 @@
     width: 150%;
     padding: 110px 0 0 80px;
 
-    &--large {
-      width: 290%;
-      padding: 44px 0 0 300px;
-    }
   }
 
   &__title {
     font-size: 20px;
     padding: 0;
     margin: 24px 0 4px;
+
   }
   &__subtitle {
     color: $c-secondary;
     margin: 0 0 32px;
+
+  }
+}
+
+@keyframes slidein {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  } to {
+    transform: translateX(0);
+    opacity: 1;
   }
 }

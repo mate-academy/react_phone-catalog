@@ -3,6 +3,8 @@
 .footer {
   display: flex;
   flex-direction: column;
+  position: absolute;
+  width: 100%;
   gap: 32px;
   margin-top: 64px;
   padding: 32px 16px;
