@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import './App.scss';
 import { Header } from './components/Header';
 import { MobileMenu } from './components/MobileMenu';
+import { Footer } from './components/Footer';
 
 export const App = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -27,10 +28,14 @@ export const App = () => {
         isMobileMenuOpen={isMobileMenuOpen}
       />
 
-      <MobileMenu isMobileMenuOpen={isMobileMenuOpen} />
+      <MobileMenu
+        isMobileMenuOpen={isMobileMenuOpen}
+        setIsMobileMenuOpen={setIsMobileMenuOpen}
+      />
       <main>
         <Outlet />
       </main>
+      <Footer />
     </div>
   );
 };

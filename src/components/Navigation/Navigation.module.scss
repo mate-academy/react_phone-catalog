@@ -29,21 +29,21 @@
 
   transition: all $transition-duration ease-out;;
 
-  @include on-tablet{
+  @include on-tablet {
     padding-block: 1.85rem;
   }
 
-  @include on-m-desktop{
+  @include on-m-desktop {
     padding-block: 2.65rem;
   }
 
-  &::before, &::after{
+  &::before, &::after {
     content: '';
     position: absolute;
     bottom: 0;
     width: 0;
     height: 2px;
-    background-color: $color-text-hover;
+    background-color: $color-text-hover-secondary;
     transition: width $transition-duration ease-out;
   }
 
@@ -56,10 +56,28 @@
   }
 
   &:hover {
-    color: $color-text-hover;
+    color: $color-text-hover-secondary;
 
-    &::before, &::after{
+    &::before, &::after {
+      width: 50%;
+    }
+  }
+}
+
+.activeLink {
+  color: $color-text-hover;
+
+  &:hover {
+    color: $color-text-hover;
+  }
+
+
+  &::before, &::after {
     width: 50%;
+    background-color: $color-text-hover;
+
+    &:hover {
+      background-color: $color-text-hover;
     }
   }
 }

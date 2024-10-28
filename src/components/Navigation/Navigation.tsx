@@ -1,22 +1,38 @@
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 import styles from './Navigation.module.scss';
+import { NavItems } from '../../types/NavItems';
+import React, { ReactNode } from 'react';
+import classNames from 'classnames';
 
-export const Navigation = () => {
+interface Props {
+  isMobileMenuOpen?: boolean;
+  setIsMobileMenuOpen?: (open: boolean) => void;
+}
+
+const activeLink = ({ isActive }: { isActive: ReactNode }) => {
+  return classNames(styles.navItem, { [styles.activeLink]: isActive });
+};
+
+export const Navigation: React.FC<Props> = ({
+  isMobileMenuOpen,
+  setIsMobileMenuOpen,
+}) => {
+  const handleClick = () =>
+    setIsMobileMenuOpen && setIsMobileMenuOpen(!isMobileMenuOpen);
+
   return (
     <nav className={styles.nav}>
-      <Link to="/" className={styles.navItem}>
-        Home
-      </Link>
-      <Link to="/phones" className={styles.navItem}>
-        Phones
-      </Link>
-      <Link to="/tablets" className={styles.navItem}>
-        Tablets
-      </Link>
-      <Link to="/accessories" className={styles.navItem}>
-        Accessories
-      </Link>
+      {Object.entries(NavItems).map(([key, value]) => (
+        <NavLink
+          to={`/${value}`}
+          className={activeLink}
+          key={key}
+          onClick={handleClick}
+        >
+          {key}
+        </NavLink>
+      ))}
     </nav>
   );
 };

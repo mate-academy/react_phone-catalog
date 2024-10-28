@@ -12,9 +12,13 @@ import { CartContext, FavouriteContext } from '../../ContextProvider';
 
 interface Props {
   isMobileMenuOpen: boolean;
+  setIsMobileMenuOpen: (open: boolean) => void;
 }
 
-export const MobileMenu: React.FC<Props> = ({ isMobileMenuOpen }) => {
+export const MobileMenu: React.FC<Props> = ({
+  isMobileMenuOpen,
+  setIsMobileMenuOpen,
+}) => {
   const { cartProducts } = useContext(CartContext);
   const { favouriteProducts } = useContext(FavouriteContext);
 
@@ -24,7 +28,10 @@ export const MobileMenu: React.FC<Props> = ({ isMobileMenuOpen }) => {
         [styles.mobileMenuContainerVisible]: isMobileMenuOpen,
       })}
     >
-      <Navigation />
+      <Navigation
+        isMobileMenuOpen={isMobileMenuOpen}
+        setIsMobileMenuOpen={setIsMobileMenuOpen}
+      />
 
       <div className={styles.mobileMenuBottom}>
         <Link
@@ -33,6 +40,7 @@ export const MobileMenu: React.FC<Props> = ({ isMobileMenuOpen }) => {
             stylesButton.buttonFavourite,
             styles.mobileMenuBottomBtn,
           )}
+          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
         >
           {!!favouriteProducts.length && (
             <span className="buttonFavouriteWrapper">
@@ -47,6 +55,7 @@ export const MobileMenu: React.FC<Props> = ({ isMobileMenuOpen }) => {
             stylesButton.buttonCart,
             styles.mobileMenuBottomBtn,
           )}
+          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
         >
           {!!cartProducts.length && (
             <span className="buttonCartWrapper">{cartProducts.length}</span>

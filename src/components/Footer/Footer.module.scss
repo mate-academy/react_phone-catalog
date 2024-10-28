@@ -1,0 +1,31 @@
+@import "src/styles/mixins";
+
+.footerContainer {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+
+  gap: 1.6rem 3.2rem;
+
+  padding: 3.2rem 1.6rem;
+
+  @include on-tablet {
+    grid-template-columns: repeat(12, 1fr);
+    padding: 3.2rem 2.4rem;
+  }
+
+  @include on-m-desktop {
+    grid-template-columns: repeat(24, 1fr);
+    padding: 3.2rem;
+  }
+
+  @include on-l-desktop {
+    padding: 3.2rem 0;
+  }
+}
+
+.footerLogo {
+  display: flex;
+
+  height: 3.2rem;
+  width: 8.9rem;
+}
