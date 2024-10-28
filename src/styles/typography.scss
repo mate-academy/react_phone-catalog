@@ -1,16 +1,16 @@
 @font-face {
   font-family: "Mont Regular";
-  src: url("../../public/fonts/Mont-Regular.otf") format("opentype");
+  src: url("/fonts/Mont-Regular.otf") format("opentype");
 }
 
 @font-face {
   font-family: "Mont Bold";
-  src: url("../../public/fonts/Mont-Bold.otf") format("opentype");
+  src: url("/fonts/Mont-Bold.otf") format("opentype");
 }
 
 @font-face {
   font-family: "Mont Semibold";
-  src: url("../../public/fonts/Mont-SemiBold.otf") format("opentype");
+  src: url("/fonts/Mont-SemiBold.otf") format("opentype");
 }
 
 %mont-bold {
