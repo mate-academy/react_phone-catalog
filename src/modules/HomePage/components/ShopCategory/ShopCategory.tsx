@@ -21,7 +21,7 @@ export const ShopCategory = () => {
             )}
           >
             <img
-              src={`/public/img/${category}-category.png`}
+              src={`img/${category}-category.png`}
               alt={`${category}`}
               className={styles.imgItem}
             />
