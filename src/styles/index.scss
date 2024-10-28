@@ -1,4 +1,8 @@
-@import './reset';
-@import './fonts';
-@import './variables';
-@import './global';
+@use 'reset';
+@use 'fonts';
+@use 'mixins';
+@use 'variables';
+@use 'typography';
+@use 'global';
+@use 'theme/theme-light';
+@use 'theme/theme-dark';

@@ -1,6 +1,8 @@
 import { NavLink, Link } from 'react-router-dom';
 import styles from './Header.module.scss';
 import classNames from 'classnames';
+import { useContext } from 'react';
+import { ThemeContext } from '../../context/ThemeContext';
 
 export const Header = () => {
   const getNavLinkClass = (isActive: boolean) => {
@@ -9,6 +11,14 @@ export const Header = () => {
       isActive ? styles.header__link_active : '',
     );
   };
+
+  const themeContext = useContext(ThemeContext);
+
+  if (!themeContext) {
+    return null;
+  }
+
+  const { theme, toggleTheme } = themeContext;
 
   return (
     <header className={styles.header}>
@@ -58,19 +68,50 @@ export const Header = () => {
         </nav>
       </div>
       <div className={styles.header__toolbar}>
+        <button className={styles.header__icon} onClick={toggleTheme}>
+          {theme === 'light' ? (
+            <img
+              className={styles.header__icon_img}
+              src="icons/theme-light.svg"
+              alt="cart icon"
+            />
+          ) : (
+            <img
+              className={styles.header__icon_img}
+              src="icons/theme-dark.svg"
+              alt="cart icon"
+            />
+          )}
+        </button>
         <Link to="/favorites" className={styles.header__icon}>
-          <img
-            className={styles.header__icon_img}
-            src="/icons/heart.svg"
-            alt="heart icon"
-          />
+          {theme === 'light' ? (
+            <img
+              className={styles.header__icon_img}
+              src="icons/heart.svg"
+              alt="heart icon"
+            />
+          ) : (
+            <img
+              className={styles.header__icon_img}
+              src="icons/heart-dark.svg"
+              alt="cart icon"
+            />
+          )}
         </Link>
         <Link to="/cart" className={styles.header__icon}>
-          <img
-            className={styles.header__icon_img}
-            src="/icons/cart.svg"
-            alt="cart icon"
-          />
+          {theme === 'light' ? (
+            <img
+              className={styles.header__icon_img}
+              src="icons/cart.svg"
+              alt="cart icon"
+            />
+          ) : (
+            <img
+              className={styles.header__icon_img}
+              src="icons/cart-dark.svg"
+              alt="cart icon"
+            />
+          )}
         </Link>
       </div>
     </header>

@@ -1,43 +1,72 @@
+@use '../../styles/mixins.scss' as *;
+@use '../../styles/theme/theme-dark.scss' as *;
+@use '../../styles/theme/theme-light.scss' as *;
+
 .logo {
-  padding: 18px 24px;
+  font-size: 14px;
   line-height: 100%;
+  padding-left: 16px;
   cursor: pointer;
+
+  @include on-desktop {
+    font-size: 16px;
+    padding-left: 24px;
+  }
 }
 
 .header {
-  height: 65px;
+  height: 48px;
   display: flex;
   justify-content: space-between;
-  border-bottom: 1px solid #E2E6E9;
+  border-bottom: 1px solid var(--header-border);
+
+  @include on-desktop {
+    height: 65px;
+  }
 
   &__wrapper {
     display: flex;
     align-items: center;
-    column-gap: 24px;
+    column-gap: 16px;
+
+    @include on-desktop {
+      column-gap: 24px;
+    }
   }
 
   &__nav {
     height: 100%;
+    display: none;
+
+    @include on-tablet {
+      display: block;
+    }
   }
 
   &__toolbar {
-    display: flex;
-    align-items:center;
-    justify-content:center;
+    display: none;
+
+    @include on-tablet {
+      display: flex;
+      align-items:center;
+      justify-content:center;
+    }
   }
 
   &__list {
     display: flex;
     align-items: center;
-    column-gap: 64px;
+    column-gap: 32px;
     height: 100%;
     font-size: 12px;
     font-weight: 800;
-    line-height: 11px;
-    letter-spacing: 0.04em;
-    color: #ccc;
+    color: var(--header-text);
     vertical-align: middle;
     text-transform: uppercase;
+
+    @include on-desktop {
+      column-gap: 64px;
+    }
   }
 
   &__item {
@@ -48,32 +77,44 @@
 
   &__link {
     height: 100%;
-    line-height: 65px;
+    line-height: 45px;
 
     &:hover {
-      color: #313237;
+      color: var(--header-text-active);
     }
 
     &_active{
-      color: #313237;
-      border-bottom: 3px solid #313237;
+      color: var(--header-text-active);
+      border-bottom: 3px solid var(--header-text-active);
       transition: none;
+    }
+
+    @include on-desktop {
+      line-height: 65px;
     }
   }
 
   &__icon {
-    width: 64px;
+    width: 48px;
     height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    border-left: 1px solid #E2E6E9;
+    border-left: 1px solid var(--header-border);
+    font-weight: 800;
+    font-size: 13px;
 
     &:hover {
+      font-size: 14px;
+
       .header__icon_img {
         width: 18px;
         height: 18px;
       }
+    }
+
+    @include on-desktop {
+      width: 64px;
     }
   }
 }

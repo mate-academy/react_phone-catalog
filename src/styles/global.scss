@@ -1,4 +1,11 @@
+@use '../styles/theme/theme-dark.scss' as *;
+@use '../styles/theme/theme-light.scss' as *;
+
 * {
   scroll-behavior: smooth;
-  transition: all 0.2s ease;
+}
+
+body {
+  background-color: var(--background-color);
+  color: var(--text-color);
 }
