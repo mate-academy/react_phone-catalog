@@ -31,14 +31,14 @@
     letter-spacing: -0.01em;
   }
 
-  margin-inline: 1.6rem;
+  margin-left: 1.6rem;
 
   @include on-tablet {
-    margin-inline: 2.4rem;
+    margin-left: 2.4rem;
   }
 
   @include on-m-desktop {
-    margin-inline: 0;
+    margin-left: 0;
   }
 }
 

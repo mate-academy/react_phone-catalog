@@ -19,6 +19,7 @@
 .heroTitle {
   @extend %h1-mobile;
 
+  font-size: 3rem;
   margin: 2.4rem 1.6rem;
 
   @include on-tablet{

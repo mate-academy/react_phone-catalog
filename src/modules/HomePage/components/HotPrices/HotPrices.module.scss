@@ -21,7 +21,7 @@
 .title {
   @extend %h2-mobile;
 
-  grid-column: 1/ 4;
+  grid-column: 1/ 3;
 
   @include on-tablet {
     font-size: 3.2rem;
