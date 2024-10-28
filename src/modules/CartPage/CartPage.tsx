@@ -1,11 +1,13 @@
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { StateContext } from '../../contex/State';
 import styles from './CartPage.module.scss';
 import { BackLink } from '../../components/BackLink';
 import { CartItem } from './components/CartItem';
 import { EmptyCart } from './components/EmptyCart';
+import { Modal } from './components/Modal';
 
 export const CartPage = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const { cart } = useContext(StateContext);
 
   const totalPrice = cart.reduce(
@@ -35,11 +37,24 @@ export const CartPage = () => {
             <p className={styles['cart-page__total-desc']}>
               Total for {totalQuantity} item{cart.length > 1 ? 's' : ''}
             </p>
-            <button className={styles['cart-page__checkout']}>Checkout</button>
+            <button
+              className={styles['cart-page__checkout']}
+              onClick={() => setIsModalOpen(true)}
+            >
+              Checkout
+            </button>
           </div>
         </div>
       ) : (
         <EmptyCart />
+      )}
+
+      {isModalOpen && (
+        <Modal
+          close={() => {
+            setIsModalOpen(false);
+          }}
+        />
       )}
     </section>
   );

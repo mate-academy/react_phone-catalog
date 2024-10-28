@@ -7,6 +7,7 @@ type Action =
   | { type: 'removeFavourites'; payload: string }
   | { type: 'addCart'; payload: CartProduct }
   | { type: 'removeCart'; payload: string }
+  | { type: 'clearCart' }
   | { type: 'increaseCountInCart'; payload: string }
   | { type: 'decreaseCountInCart'; payload: string };
 
@@ -31,6 +32,9 @@ const reducer = (state: State, action: Action): State => {
       );
 
       return { ...state, cart: filteredCart };
+
+    case 'clearCart':
+      return { ...state, cart: [] };
 
     case 'addFavourites':
       return { ...state, favourites: [...state.favourites, action.payload] };

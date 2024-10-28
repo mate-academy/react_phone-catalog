@@ -1,0 +1,60 @@
+@import '../../../../styles/utils';
+
+.modal {
+  position: fixed;
+  z-index: 3;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin: 0;
+  padding: 40px;
+  border: 2px solid $accent;
+  border-radius: 16px;
+  width: 80%;
+  max-width: 600px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  &__close {
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    top: 10px;
+    right: 10px;
+    background-image: url('../../../../assets/images/icons/close.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+    border: none;
+    background-color: inherit;
+
+    @include transition;
+
+    &:hover {
+      transform: scale(1.2);
+      opacity: 0.5;
+    }
+  }
+
+  &__text {
+    text-align: center;
+
+    @include h4-mobile;
+
+    @include on-tablet {
+      @include h4-tablet-desktop;
+    }
+  }
+
+  &__confirm {
+    padding: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: $accent;
+    border: none;
+    color: $white;
+    border-radius: 8px;
+  }
+}
