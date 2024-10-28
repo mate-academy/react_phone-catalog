@@ -4,6 +4,7 @@ import { PicturesSlide as Slide } from '../PicturesSlide/PicturesSlide';
 import { PagesPath } from '../../../../types/PagesPath';
 import { PicturesSlide } from '../../../../types/PicturesSlide';
 import { useEffect, useRef, useState } from 'react';
+import { Arrow } from '../../../shared/Icons/Arrow/Arrow';
 
 const slidesData: PicturesSlide[] = [
   {
@@ -71,12 +72,11 @@ export const PicturesSlider = () => {
     <div className={styles.PicturesSlider}>
       <div className={styles.PicturesSlider__content}>
         <button
-          className={classNames(
-            styles.PicturesSlider__button,
-            styles.PicturesSlider__button_left,
-          )}
+          className={styles.PicturesSlider__button}
           onClick={handlePrevSlide}
-        />
+        >
+          <Arrow />
+        </button>
 
         <div className={styles.PicturesSlider__slider}>
           <div
@@ -96,12 +96,11 @@ export const PicturesSlider = () => {
         </div>
 
         <button
-          className={classNames(
-            styles.PicturesSlider__button,
-            styles.PicturesSlider__button_right,
-          )}
+          className={styles.PicturesSlider__button}
           onClick={handleNextSlide}
-        />
+        >
+          <Arrow orientation="right" />
+        </button>
       </div>
 
       <div className={styles.PicturesSlider__bottomBtns}>

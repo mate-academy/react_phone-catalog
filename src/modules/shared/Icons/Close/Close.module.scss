@@ -1,0 +1,9 @@
+@import '/src/style/main';
+
+.Close{
+  display: flex;
+  
+  &_secondary path{
+    fill: $c-secondary;
+  }
+}

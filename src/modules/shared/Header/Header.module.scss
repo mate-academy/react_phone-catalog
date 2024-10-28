@@ -1,16 +1,16 @@
-@import '/src/style/main.scss';
+@import '/src/style/main';
 
-.header {
-  --height: 48px;
+.Header {
+  height: 48px;
+  width: 100%;
+  overflow: hidden;
 
   @include on-desktop {
-    --height: 64px;
+    height: 64px;
   }
 
-  height: var(--height);
-
   &_overflowMenu {
-    height: 100vh;
+    min-height: 100%;
   }
 
   background-color: $c-white;
@@ -22,160 +22,68 @@
 
   display: flex;
   flex-direction: column;
-}
 
-.content_top {
-  height: var(--height);
-  // width: 100%;
-  // max-width: $max-width;
-  // margin: 0 auto;
-
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-
-  padding-left: 16px;
-  box-shadow: 0px 1px 0px 0px #e2e6e9;
-
-  @include on-tablet {
-    justify-content: flex-start;
-
-    column-gap: 32px;
-  }
-
-  @include on-desktop {
-    column-gap: 48px;
-  }
-}
-
-.content_bottom {
-  flex: 1 1 auto;
-  opacity: 0;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-
-  transform: translate(-100%);
-  transition: all 1s;
-
-  &_active {
-    transform: translate(0);
-    opacity: 1;
-    transition: all 1s;
-    background-color: $c-white;
-  }
-}
-
-.logo {
-  width: 64px;
-
-  @include on-desktop {
-    width: 80px;
-  }
-
-  & > img {
-    width: 100%;
-  }
-}
-
-.menu {
-  display: none;
-
-  @include on-tablet {
-    flex: 1 1 auto;
+  &__contentTop {
+    height: 100%;
+    z-index: 10;
 
     display: flex;
-    height: 100%;
-    column-gap: 32px;
+    align-items: center;
+    justify-content: flex-start;
+
+    padding-left: 16px;
+    border-bottom: 1px solid #e2e6e9;
+    box-sizing: border-box;
   }
 
-  @include on-desktop {
-    column-gap: 48px;
-  }
-}
+  &__logo {
+    flex: 1 1 auto;
+    transition: all $transition;
 
-.phoneMenu {
-  margin-block: 24px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  row-gap: 16px;
-
-  & > .menuLink {
-    height: 27px;
-  }
-}
-
-.menuLink {
-  height: 100%;
-  position: relative;
-
-  display: flex;
-  align-items: center;
-
-  @include uppercase;
-  color: $c-secondary;
-
-  &_active {
-    color: $c-primary;
-
-    &::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      width: 100%;
-      height: 3px;
-      background-color: $c-primary;
-    }
-  }
-}
-
-.buttons {
-  display: none;
-
-  @include on-tablet {
-    display: block;
-  }
-
-  &_phoneMenu {
-    display: block;
-    box-shadow: 0px 0px 0px 1px #e2e6e9;
-  }
-}
-
-.button {
-  position: relative;
-  display: inline-block;
-  width: var(--height);
-  height: var(--height);
-
-  box-shadow: -1px 0px 0px 0px #e2e6e9;
-
-  background-repeat: no-repeat;
-  background-position: center;
-
-  &_favourites {
-    background-image: url('/public/icons/Favourites.svg');
-  }
-
-  &_cart {
-    background-image: url('/public/icons/ShoppingBag.svg');
-  }
-
-  &_burgerMenu {
-    background-image: url('/public/icons/BurgerMenu.svg');
+    
 
     @include on-tablet {
-      display: none;
+      flex: 0 0 auto;
+    }
+
+    &:hover {
+      transform: scale(1.1);
+    }
+
+    & > img {
+      min-width: 30px;
+      width: 64px;
+  
+      @include on-tablet {
+        width: 80px;
+      }
     }
   }
 
-  &_closeMenu {
-    background-image: url('/public/icons/Close.svg');
+  &__menu {
+    display: none;
 
     @include on-tablet {
-      display: none;
+      flex: 1 1 auto;
+
+      display: flex;
+      height: 100%;
+      column-gap: 25px;
+      margin-inline: 20px 10px;
+    }
+
+    @include on-desktop {
+      column-gap: 48px;
+      margin-inline: 48px;
+    }
+  }
+
+  &__buttons {
+    display: none;
+
+    @include on-tablet {
+      display: flex;
+      height: 100%;
     }
   }
 }

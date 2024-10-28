@@ -1,8 +1,15 @@
-import { Link, NavLink } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import styles from './Header.module.scss';
 import { useEffect, useState } from 'react';
 import classNames from 'classnames';
 import { PagesPath } from '../../../types/PagesPath';
+import { Favourites } from '../Icons/Favourites';
+import { ShoppingBag } from '../Icons/ShoppingBag';
+import { Menu } from './components/Menu/Menu';
+import { LinkItem } from './components/LinkItem';
+import { BurgerButton } from './components/BurgerButton';
+import { Search } from './components/Search';
+import { ValidCategories } from '../../../constants/ValidCategories';
 
 type PageLink = { name: string; path: string };
 
@@ -13,18 +20,15 @@ const pages: PageLink[] = [
   { name: 'Accessories', path: PagesPath.Accessories },
 ];
 
-function getClass({ isActive }: { isActive: boolean }) {
-  return classNames(styles.menuLink, { [styles.menuLink_active]: isActive });
-}
-
 export const Header = () => {
   const [isMenuActive, setIsMenuActive] = useState(false);
+  const { category, productId } = useParams();
 
   useEffect(() => {
     if (isMenuActive) {
       document.body.style.overflow = 'hidden';
     } else {
-      document.body.style.overflow = 'auto';
+      document.body.style.overflow = 'inherit';
     }
 
     const handleResize = () => {
@@ -38,82 +42,65 @@ export const Header = () => {
     return () => window.removeEventListener('resize', handleResize);
   }, [isMenuActive]);
 
+  const handleLinkClick = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    if (isMenuActive) {
+      setIsMenuActive(false);
+    }
+  };
+
   return (
     <header
-      className={classNames(styles.header, {
-        [styles.header_overflowMenu]: isMenuActive,
+      className={classNames(styles.Header, {
+        [styles.Header_overflowMenu]: isMenuActive,
       })}
     >
-      <div className={styles.content_top}>
-        <Link to={PagesPath.Home} className={styles.logo}>
+      <div className={styles.Header__contentTop}>
+        <Link to={PagesPath.Home} className={styles.Header__logo}>
           <img src="/public/icons/logo.svg" alt="Logo" />
         </Link>
 
-        <nav className={styles.menu}>
+        <nav className={styles.Header__menu}>
           {pages.map(page => (
-            <NavLink key={page.path} to={page.path} className={getClass}>
-              {page.name}
-            </NavLink>
-          ))}
-        </nav>
-
-        <div className={styles.buttons}>
-          <NavLink
-            to="/"
-            className={`${styles.button} ${styles.button_favourites}`}
-          />
-          <NavLink
-            to="/"
-            className={`${styles.button} ${styles.button_cart}`}
-          />
-        </div>
-
-        {isMenuActive ? (
-          <button
-            className={`${styles.button} ${styles.button_closeMenu}`}
-            onClick={() => setIsMenuActive(false)}
-          />
-        ) : (
-          <button
-            className={`${styles.button} ${styles.button_burgerMenu}`}
-            onClick={() => setIsMenuActive(true)}
-          />
-        )}
-      </div>
-
-      <div
-        className={classNames(styles.content_bottom, {
-          [styles.content_bottom_active]: isMenuActive,
-        })}
-      >
-        <nav className={`${styles.phoneMenu}`}>
-          {pages.map(page => (
-            <NavLink
+            <LinkItem
               key={page.path}
-              to={page.path}
-              className={getClass}
-              onClick={() => setIsMenuActive(false)}
+              type="link"
+              path={page.path}
+              onClick={handleLinkClick}
             >
               {page.name}
-            </NavLink>
+            </LinkItem>
           ))}
         </nav>
 
-        <div className={styles.buttons_phoneMenu}>
-          <NavLink
-            to="/"
-            className={`${styles.button} ${styles.button_favourites}`}
-            style={{ width: '50%', height: '64px' }}
-            onClick={() => setIsMenuActive(false)}
-          />
-          <NavLink
-            to="/"
-            className={`${styles.button} ${styles.button_cart}`}
-            style={{ width: '50%', height: '64px' }}
-            onClick={() => setIsMenuActive(false)}
-          />
+        {category && ValidCategories.includes(category) && !productId && (
+          <Search />
+        )}
+
+        <div className={styles.Header__buttons}>
+          <LinkItem
+            type="btn"
+            path={PagesPath.Favourites}
+            onClick={handleLinkClick}
+          >
+            <Favourites />
+          </LinkItem>
+          <LinkItem type="btn" path={PagesPath.Cart} onClick={handleLinkClick}>
+            <ShoppingBag />
+          </LinkItem>
         </div>
+
+        <BurgerButton
+          isMenuActive={isMenuActive}
+          onChangeIsMenuActive={setIsMenuActive}
+        />
       </div>
+
+      <Menu
+        isActive={isMenuActive}
+        onLinkClick={handleLinkClick}
+        links={pages}
+      />
     </header>
   );
 };

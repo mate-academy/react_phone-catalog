@@ -1,11 +1,10 @@
 import { useContext, useMemo } from 'react';
-import styles from './HotPrices.module.scss';
-import { StateContext } from '../../../../store/GlobalProvider';
-import { getSortedProducts } from '../../../../utils/getSortedProducts';
+import { getSortedProducts } from '../../../../utils/productsHelper';
 import { ProductsSlider } from '../../../shared/ProductsSlider';
+import { ProductsContext } from '../../../../store/ProductsProvider';
 
 export const HotPrices = () => {
-  const { products } = useContext(StateContext);
+  const { products } = useContext(ProductsContext);
 
   const filtredProducts = useMemo(
     () =>
@@ -22,9 +21,5 @@ export const HotPrices = () => {
     [products],
   );
 
-  return (
-    <div className={styles.NewModels}>
-      <ProductsSlider title={'Hot prices'} products={filtredProducts} />
-    </div>
-  );
+  return <ProductsSlider title={'Hot prices'} products={filtredProducts} />;
 };

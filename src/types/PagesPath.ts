@@ -3,4 +3,6 @@ export enum PagesPath {
   Phones = '/phones',
   Tablets = '/tablets',
   Accessories = '/accessories',
+  Favourites = '/favourites',
+  Cart = '/cart',
 }

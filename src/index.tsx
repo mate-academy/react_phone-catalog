@@ -1,9 +1,9 @@
 import { createRoot } from 'react-dom/client';
 import { Root } from './Root';
-import { GlobalProvider } from './store/GlobalProvider';
+import { ProductsProvider } from './store/ProductsProvider';
 
 createRoot(document.getElementById('root') as HTMLElement).render(
-  <GlobalProvider>
+  <ProductsProvider>
     <Root />
-  </GlobalProvider>,
+  </ProductsProvider>,
 );

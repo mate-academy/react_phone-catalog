@@ -1,4 +1,4 @@
-@import '/src/style/main.scss';
+@import '/src/style/main';
 
 .Categories{
   @include inline-padding-content;
@@ -7,7 +7,8 @@
 
   &__title{
     @include h2;
-    color: $c-primary;
+    
+    color: inherit;
 
     margin-bottom: 24px;
   }

@@ -1,10 +1,10 @@
 import { useContext } from 'react';
 import { Category } from '../../../../types/Category';
 import { PagesPath } from '../../../../types/PagesPath';
-import { getFiltredProducts } from '../../../../utils/getFiltredProducts';
+import { getFiltredProducts } from '../../../../utils/productsHelper';
 import { CategoryCard } from '../CategoryCard';
 import styles from './Categories.module.scss';
-import { StateContext } from '../../../../store/GlobalProvider';
+import { ProductsContext } from '../../../../store/ProductsProvider';
 
 const categories: Category[] = [
   {
@@ -31,7 +31,7 @@ const categories: Category[] = [
 ];
 
 export const Categories = () => {
-  const { products } = useContext(StateContext);
+  const { products } = useContext(ProductsContext);
 
   return (
     <div className={styles.Categories}>

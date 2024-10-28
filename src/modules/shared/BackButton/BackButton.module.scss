@@ -1,0 +1,15 @@
+@import '/src/style/main';
+
+.BackButton {
+  @include small-text;
+
+  color: $c-secondary;
+  transition: all $transition;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+
+  &:hover {
+    color: $c-primary;
+  }
+}

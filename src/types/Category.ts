@@ -1,7 +1,7 @@
 import { PagesPath } from './PagesPath';
-import { ProductCategory } from './Product';
+import { ProductCategory } from './ProductGeneral';
 
-type HexColor = `#${string}`;
+export type HexColor = `#${string}`;
 
 export type Category = {
   id: ProductCategory;

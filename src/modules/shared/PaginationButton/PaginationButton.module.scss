@@ -1,0 +1,24 @@
+@import '/src/style/main';
+
+.PaginationButton{
+  width: 32px;
+  height: 32px;
+
+  @include body-text;
+  
+  color: $c-primary;
+  border: 1px solid $c-elements;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &_active {
+    background-color: $c-primary;
+    color: $c-white;
+  }
+
+  &:hover {
+    border: 1px solid $c-primary;
+  }
+}

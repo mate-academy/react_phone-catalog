@@ -1,14 +1,15 @@
 import React, { useMemo, useState } from 'react';
-import { Product } from '../../../types/Product';
+import { ProductGeneral } from '../../../types/ProductGeneral';
 import styles from './ProductsSlider.module.scss';
 import classNames from 'classnames';
 import { ProductCard } from '../ProductCard';
 import { usePageWidth } from '../../../hooks/usePageWidth';
-import { ButtonArrow } from '../ButtonArrow';
+import { SliderButton } from '../SliderButton';
+import { Arrow } from '../Icons/Arrow/Arrow';
 
 type Props = {
   title: string;
-  products: Product[];
+  products: ProductGeneral[];
   otherClass?: string;
   isFullPrice?: boolean;
 };
@@ -81,18 +82,21 @@ export const ProductsSlider: React.FC<Props> = ({
       <div className={styles.productsSlider__top}>
         <h2 className={styles.productsSlider__title}>{title}</h2>
         <div className={styles.productsSlider__buttons}>
-          <ButtonArrow
-            type="left"
+          <SliderButton
             onClick={handleBack}
             isDisabled={currentFirstCardIndex === 0}
-          />
-          <ButtonArrow
-            type="right"
+          >
+            <Arrow orientation="left" />
+          </SliderButton>
+
+          <SliderButton
             onClick={handleNext}
             isDisabled={
               currentFirstCardIndex === products.length - countProductsOnPage
             }
-          />
+          >
+            <Arrow orientation="right" />
+          </SliderButton>
         </div>
       </div>
 

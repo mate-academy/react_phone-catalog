@@ -1,9 +1,9 @@
-@import '/src/style/main.scss';
+@import '/src/style/main';
 
 .HomePage {
   margin-top: 24px;
   margin-bottom: 64px;
-
+  
   @include on-tablet {
     margin-top: 32px;
   }
@@ -16,7 +16,8 @@
   &__title {
     @include inline-padding-content;
     @include h1;
-    color: $c-primary;
+    
+    color: inherit;
     margin-bottom: 24px;
 
     @include on-tablet {

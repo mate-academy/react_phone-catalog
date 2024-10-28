@@ -1,8 +1,9 @@
 import styles from './Footer.module.scss';
-import { ButtonArrow } from '../ButtonArrow';
 import Logo from '/public/icons/Logo.svg';
 import { Link } from 'react-router-dom';
 import { PagesPath } from '../../../types/PagesPath';
+import { SliderButton } from '../SliderButton';
+import { Arrow } from '../Icons/Arrow/Arrow';
 
 type NavLink = { title: string; path: string };
 
@@ -30,7 +31,7 @@ export const Footer = () => {
         <nav className={styles.Footer__nav}>
           <ul className={styles.Footer__list}>
             {links.map(link => (
-              <li key={link.path} className={styles.Footer__item}>
+              <li key={link.title} className={styles.Footer__item}>
                 <a
                   href={link.path}
                   target="_blank"
@@ -46,7 +47,10 @@ export const Footer = () => {
 
         <div className={styles.Footer__backTop}>
           <span>Back to top</span>
-          <ButtonArrow type="top" onClick={scrollToTop} />
+
+          <SliderButton onClick={scrollToTop}>
+            <Arrow orientation="top" />
+          </SliderButton>
         </div>
       </div>
     </footer>

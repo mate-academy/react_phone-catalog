@@ -1,0 +1,30 @@
+@import '/src/style/main';
+
+.ProductDescription{
+  &__block {
+    margin-top: 32px;
+    
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__blockTitle{
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 25.56px;
+    color: $c-primary;
+  }
+
+  &__blockText{
+    @include body-text;
+
+    color: $c-secondary;
+
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+}
+

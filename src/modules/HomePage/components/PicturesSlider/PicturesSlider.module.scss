@@ -1,4 +1,4 @@
-@import '/src/style/main.scss';
+@import '/src/style/main';
 
 .PicturesSlider {
   &__content {
@@ -14,19 +14,15 @@
   &__button {
     display: none;
     min-width: 32px;
-    background-repeat: no-repeat;
-    background-position: center;
     border: 1px solid $c-icons;
+    transition: all $transition;
 
     @include on-tablet {
       display: block;
     }
 
-    &_left {
-      background-image: url('/public/icons/Arrow-back.svg');
-    }
-    &_right {
-      background-image: url('/public/icons/Arrow-next.svg');
+    &:hover{
+      border-color: $c-primary;
     }
   }
 
@@ -51,13 +47,13 @@
     gap: 4px;
   }
 
-  &__bottomBtn{
+  &__bottomBtn {
     display: block;
     position: relative;
     width: 24px;
     height: 24px;
 
-    &::after{
+    &::after {
       content: '';
       position: absolute;
       width: 14px;
@@ -67,8 +63,8 @@
       left: 5px;
     }
 
-    &_active{
-      &::after{
+    &_active {
+      &::after {
         background-color: black;
       }
     }

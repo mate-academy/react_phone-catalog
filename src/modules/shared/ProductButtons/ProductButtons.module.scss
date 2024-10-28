@@ -1,0 +1,50 @@
+@import '/src/style/main';
+
+.Buttons {
+  display: flex;
+  column-gap: 8px;
+
+  &__buttonAdd {
+    @include buttons;
+
+    flex: 1 1 auto;
+    background-color: $c-primary;
+    color: $c-white;
+    padding: 9.5px;
+    transition: all $transition;
+
+    &:hover {
+      box-shadow: 0 3px 13px 0 #17203166;
+    }
+
+    &_active{
+      border: 1px solid $c-elements;
+      background-color: #fff;
+      color: $c-green;
+
+      &:hover {
+        box-shadow: 0 0 5px 0 $c-green;
+      }
+    }
+
+    
+  }
+
+  &__buttonLike {
+    height: 40px;
+    width: 40px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid $c-icons;
+    transition: all $transition;
+
+    &:hover {
+      border: 1px solid $c-primary;
+    }
+  }
+}
+
+

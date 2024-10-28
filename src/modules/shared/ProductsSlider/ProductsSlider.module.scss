@@ -1,4 +1,4 @@
-@import '../../../style/main.scss';
+@import '../../../style/main';
 
 .productsSlider {
   &__top {
@@ -17,6 +17,7 @@
 
   &__title {
     @include h2;
+    
     color: $c-primary;
   }
 

@@ -1,4 +1,4 @@
-@import './style/main.scss';
+@import './style/main';
 
 html {
   font-family: $font-family, sans-serif;
@@ -10,8 +10,12 @@ html {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  min-width: $mobile-width;
 
   &__main{
     flex: 1 1 auto;
+
+    display: flex;
+    flex-direction: column;
   }
 }

@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './PicturesSlide.module.scss';
 import { PicturesSlide as Slide } from '../../../../types/PicturesSlide';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { usePageWidth } from '../../../../hooks/usePageWidth';
 
 type Props = {
@@ -10,9 +10,17 @@ type Props = {
 
 export const PicturesSlide: React.FC<Props> = ({ slide }) => {
   const pageWidth = usePageWidth();
+  const navigate = useNavigate();
 
   return (
-    <div className={styles.PicturesSlide}>
+    <div
+      className={styles.PicturesSlide}
+      onClick={() => {
+        if (pageWidth < 640) {
+          navigate(slide.link);
+        }
+      }}
+    >
       <div className={styles.PicturesSlide__left}>
         <h2 className={styles.PicturesSlide__title}>
           Now available

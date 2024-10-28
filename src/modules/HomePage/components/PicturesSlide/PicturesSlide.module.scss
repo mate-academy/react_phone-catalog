@@ -1,4 +1,4 @@
-@import '/src/style/main.scss';
+@import '/src/style/main';
 
 .PicturesSlide {
   display: flex;
@@ -50,22 +50,19 @@
     letter-spacing: -0.05em;
     text-align: center;
 
-    background: linear-gradient(
-      to right,
-      #9c27b0,
-      #42a5f5
-    ); /* Градієнт для фону */
-    -webkit-background-clip: text; /* Застосовує фон тільки до тексту */
-    -webkit-text-fill-color: transparent; /* Робить текст прозорим, щоб градієнт став видимим */
+    background: linear-gradient(to right, #9c27b0, #42a5f5);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 
     @include on-tablet {
-      font-size:  clamp(18px, 3vw, 48px);
+      font-size: clamp(18px, 3vw, 48px);
       text-align: left;
     }
   }
 
   &__subTitle {
     @include body-text;
+    
     color: $c-secondary;
 
     flex: 1 1 auto;
@@ -79,6 +76,11 @@
 
     text-transform: uppercase;
     font-size: 0.8em;
+    transition: all $transition;
+
+    &:hover {
+      transform: scale(1.2);
+    }
   }
 
   &__imgTitle {
@@ -91,18 +93,19 @@
     @include on-tablet {
       margin-top: 0;
       font-size: 3vw;
-      font-size:  clamp(16px, 3vw, 36px);
+      font-size: clamp(16px, 3vw, 36px);
     }
   }
 
   &__imgSubTitle {
     @include body-text;
+    
     font-size: 3vw;
     line-height: 150%;
     color: $c-secondary;
 
     @include on-tablet {
-      font-size:  clamp(12px, 1.5vw, 24px);
+      font-size: clamp(12px, 1.5vw, 24px);
     }
   }
 
