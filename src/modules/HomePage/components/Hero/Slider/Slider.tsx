@@ -89,7 +89,6 @@ export const Slider = () => {
         <div className={styles.swiperContainer}>
           <Swiper
             pagination={pagination}
-            // spaceBetween={10}
             modules={[Pagination, Autoplay, Navigation]}
             className="mySlider heroSlider"
             navigation={true}
