@@ -11,7 +11,7 @@
   }
 
 
-  position: absolute;
+  position: fixed;
   top: 0;
   width: 100%;
   min-height: 100vh;
@@ -37,6 +37,7 @@
 }
 
 .mobileMenuBottomBtn {
+  position: relative;
   border: 1px solid $color-elements;
   width: 50%;
   height: 6.4rem;

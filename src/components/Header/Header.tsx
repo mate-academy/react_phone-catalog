@@ -47,11 +47,7 @@ export const Header: React.FC<Props> = ({
           aria-label="My favourite products"
         >
           {!!favouriteProducts.length && (
-            <span
-              className={classNames({
-                [styles.buttonFavouriteWrapper]: true,
-              })}
-            >
+            <span className="buttonFavouriteWrapper">
               {favouriteProducts.length}
             </span>
           )}
@@ -63,13 +59,7 @@ export const Header: React.FC<Props> = ({
           aria-label="Products added to cart"
         >
           {!!cartProducts.length && (
-            <span
-              className={classNames({
-                [styles.buttonCartWrapper]: true,
-              })}
-            >
-              {cartProducts.length}
-            </span>
+            <span className="buttonCartWrapper">{cartProducts.length}</span>
           )}
         </Link>
       </div>

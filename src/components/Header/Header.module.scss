@@ -57,28 +57,6 @@
   }
 }
 
-.buttonFavouriteWrapper, .buttonCartWrapper {
-    box-sizing: border-box;
-    font-family: "Mont Regular", sans-serif;
-    display: flex;
-    font-weight: 700;
-    justify-content: center;
-    align-items: center;
-    color: $color-white;
-    font-size: 9px;
-    line-height: 1.15rem;
-    position: absolute;
-    top: 36%;
-    left: 50%;
-    transform: translate(0%, -50%);
-    border-radius: 50%;
-    padding-top: 0.15rem;
-    height: 1.4rem;
-    width: 1.4rem;
-    border: 1px solid $color-white;
-    background-color: $color-accent;
-}
-
 .button{
   position: relative;
   display: block;
