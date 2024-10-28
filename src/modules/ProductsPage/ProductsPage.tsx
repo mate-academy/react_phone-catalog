@@ -117,7 +117,7 @@ export const ProductsPage = () => {
         <Error errorMessage={errorText} />
       ) : (
         <>
-          <h1 className={styles.ProductsPage__title}>{titleText}</h1>
+          <h2 className={styles.ProductsPage__title}>{titleText}</h2>
           <p className={styles.ProductsPage__countModels}>
             {productsByCategory.length} models
           </p>
