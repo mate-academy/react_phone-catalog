@@ -2,7 +2,7 @@ export const imagesHero = [
   {
     id: 'iPad Air',
     srcSmall: './src/assets/images/ipad-air.png',
-    srcLarge: '/public/img/hero-slider/ipad-air-large.png',
+    srcLarge: './public/img/hero-slider/ipad-air-large.png',
   },
   {
     id: 'iPhone 16 Pro Max',
