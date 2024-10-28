@@ -106,7 +106,7 @@ export const ProductsCatalog: React.FC<Props> = ({
           <div>
             <h1 className={styles['products-catalog__title']}>{title}</h1>
             <p className={styles['products-catalog__text']}>
-              {products.length} models
+              {refinedProducts.length} models
             </p>
           </div>
           <div>

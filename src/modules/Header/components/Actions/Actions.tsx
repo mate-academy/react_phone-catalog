@@ -13,7 +13,7 @@ export const Actions: React.FC<Props> = ({ className }) => {
 
   const actions = [
     { name: 'favourites', count: favourites.length },
-    { name: 'cart', count: cart.length },
+    { name: 'cart', count: cart.reduce((count, p) => count + p.quantity, 0) },
   ];
 
   return (
