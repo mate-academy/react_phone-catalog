@@ -1,6 +1,6 @@
 import styles from './ProductsFilter.module.scss';
-import { Dropdown } from '../../../shared/Dropdown';
 import classNames from 'classnames';
+import { Dropdown } from '../../../shared/Dropdown';
 import { FilterSort } from '../../../../types/FilterSort';
 
 type Filter = string[];

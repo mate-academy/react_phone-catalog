@@ -1,8 +1,8 @@
 import { useContext } from 'react';
-import { Breadcrumbs } from '../shared/Breadcrumbs';
-import styles from './FavouritesPage.module.scss';
 import { ProductsContext } from '../../store/ProductsProvider';
+import { Breadcrumbs } from '../shared/Breadcrumbs';
 import { ProductsList } from '../shared/ProductsList';
+import styles from './FavouritesPage.module.scss';
 
 export const FavouritesPage = () => {
   const { likedProducts, products } = useContext(ProductsContext);

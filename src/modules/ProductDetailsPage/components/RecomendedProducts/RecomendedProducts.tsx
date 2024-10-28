@@ -1,8 +1,8 @@
 import { useContext, useMemo } from 'react';
+import { ProductsContext } from '../../../../store/ProductsProvider';
 import { ProductGeneral } from '../../../../types/ProductGeneral';
 import { getSuggestedProducts } from '../../../../utils/productsHelper';
 import { ProductsSlider } from '../../../shared/ProductsSlider';
-import { ProductsContext } from '../../../../store/ProductsProvider';
 
 export const RecomendedProducts = () => {
   const { products } = useContext(ProductsContext);

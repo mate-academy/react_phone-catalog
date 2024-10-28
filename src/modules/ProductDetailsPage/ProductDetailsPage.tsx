@@ -17,9 +17,9 @@ import { Breadcrumbs } from '../shared/Breadcrumbs';
 import { Loader } from '../shared/Loader';
 import { Price } from '../shared/Price';
 import { Error } from '../shared/Error';
+import { BackButton } from '../shared/BackButton';
 
 import styles from './ProductDetailsPage.module.scss';
-import { BackButton } from '../shared/BackButton';
 
 export const ProductDetailsPage = () => {
   const { pathname } = useLocation();

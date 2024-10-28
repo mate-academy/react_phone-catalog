@@ -1,7 +1,9 @@
 import React from 'react';
-import styles from './CategoryCard.module.scss';
-import { Category } from '../../../../types/Category';
 import { useNavigate } from 'react-router-dom';
+
+import { Category } from '../../../../types/Category';
+
+import styles from './CategoryCard.module.scss';
 
 type Props = {
   category: Category;

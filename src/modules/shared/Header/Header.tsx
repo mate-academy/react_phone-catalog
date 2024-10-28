@@ -10,6 +10,7 @@ import { LinkItem } from './components/LinkItem';
 import { BurgerButton } from './components/BurgerButton';
 import { Search } from './components/Search';
 import { ValidCategories } from '../../../constants/ValidCategories';
+import Logo from '/public/icons/Logo.svg';
 
 type PageLink = { name: string; path: string };
 
@@ -57,7 +58,7 @@ export const Header = () => {
     >
       <div className={styles.Header__contentTop}>
         <Link to={PagesPath.Home} className={styles.Header__logo}>
-          <img src="/public/icons/logo.svg" alt="Logo" />
+          <img src={Logo} alt="Logo" />
         </Link>
 
         <nav className={styles.Header__menu}>

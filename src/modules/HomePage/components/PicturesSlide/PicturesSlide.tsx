@@ -1,8 +1,8 @@
 import React from 'react';
-import styles from './PicturesSlide.module.scss';
-import { PicturesSlide as Slide } from '../../../../types/PicturesSlide';
 import { Link, useNavigate } from 'react-router-dom';
+import { PicturesSlide as Slide } from '../../../../types/PicturesSlide';
 import { usePageWidth } from '../../../../hooks/usePageWidth';
+import styles from './PicturesSlide.module.scss';
 
 type Props = {
   slide: Slide;

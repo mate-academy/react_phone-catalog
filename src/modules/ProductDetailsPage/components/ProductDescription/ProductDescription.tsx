@@ -1,7 +1,7 @@
 import React from 'react';
+import classNames from 'classnames';
 import { DescriptionProduct } from '../../../../types/Product';
 import styles from './ProductDescription.module.scss';
-import classNames from 'classnames';
 
 type Props = {
   descriptions: DescriptionProduct[];

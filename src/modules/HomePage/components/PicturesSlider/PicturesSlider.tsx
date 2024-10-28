@@ -1,24 +1,30 @@
+import { useEffect, useRef, useState } from 'react';
 import classNames from 'classnames';
-import styles from './PicturesSlider.module.scss';
+
 import { PicturesSlide as Slide } from '../PicturesSlide/PicturesSlide';
 import { PagesPath } from '../../../../types/PagesPath';
 import { PicturesSlide } from '../../../../types/PicturesSlide';
-import { useEffect, useRef, useState } from 'react';
 import { Arrow } from '../../../shared/Icons/Arrow/Arrow';
+
+import IphoneImgLink from '/public/img/banner/iphone-14-pro.webp';
+import IpadImgLink from '/public/img/banner/ipad-01.jpeg';
+import WatchImgLink from '/public/img/banner/apple-watch-series-9.jpg';
+
+import styles from './PicturesSlider.module.scss';
 
 const slidesData: PicturesSlide[] = [
   {
     title: 'Iphone 14 Pro',
     subTitle: 'Pro.Beyond.',
-    imgBig: '/public/img/banner/iphone-14-pro.webp',
+    imgBig: IphoneImgLink,
     link: PagesPath.Phones,
   },
   {
-    imgBig: '/public/img/banner/ipad-01.jpeg',
+    imgBig: IpadImgLink,
     link: PagesPath.Tablets,
   },
   {
-    imgBig: '/public/img/banner/apple-watch-series-9.jpg',
+    imgBig: WatchImgLink,
     link: PagesPath.Accessories,
   },
 ];

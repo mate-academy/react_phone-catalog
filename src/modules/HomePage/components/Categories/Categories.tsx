@@ -1,31 +1,39 @@
+/* eslint-disable max-len */
 import { useContext } from 'react';
+
 import { Category } from '../../../../types/Category';
 import { PagesPath } from '../../../../types/PagesPath';
 import { getFiltredProducts } from '../../../../utils/productsHelper';
-import { CategoryCard } from '../CategoryCard';
-import styles from './Categories.module.scss';
 import { ProductsContext } from '../../../../store/ProductsProvider';
+
+import { CategoryCard } from '../CategoryCard';
+
+import PhonesImg from '/public/img/category/category-phones.png';
+import TabletsImg from '/public/img/category/category-tablets.png';
+import AccessoriesImg from '/public/img/category/category-accessories.png';
+
+import styles from './Categories.module.scss';
 
 const categories: Category[] = [
   {
     id: 'phones',
     title: 'Mobile phones',
     link: PagesPath.Phones,
-    img: '/public/img/category/category-phones-2.png',
+    img: PhonesImg,
     bgc: '#5f5766',
   },
   {
     id: 'tablets',
     title: 'Tablets',
     link: PagesPath.Tablets,
-    img: '/public/img/category/category-tablets.png',
+    img: TabletsImg,
     bgc: '#8c8c91',
   },
   {
     id: 'accessories',
     title: 'Accessories',
     link: PagesPath.Accessories,
-    img: '/public/img/category/category-accessories-2.png',
+    img: AccessoriesImg,
     bgc: '#ac385e',
   },
 ];

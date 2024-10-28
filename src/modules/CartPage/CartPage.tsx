@@ -1,11 +1,14 @@
 import { useContext, useMemo, useState } from 'react';
-import styles from './CartPage.module.scss';
+import classNames from 'classnames';
+
 import { ProductsContext } from '../../store/ProductsProvider';
 import { BackButton } from '../shared/BackButton';
-import { Card } from './components/Card';
 import { Price } from '../shared/Price';
+
+import { Card } from './components/Card';
 import { Modal } from './components/Modal';
-import classNames from 'classnames';
+
+import styles from './CartPage.module.scss';
 
 export const CartPage = () => {
   const { addedProducts, setAddedProducts } = useContext(ProductsContext);

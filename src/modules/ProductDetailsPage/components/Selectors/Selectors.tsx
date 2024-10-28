@@ -1,10 +1,11 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import classNames from 'classnames';
+
 import { HexColor } from '../../../../types/Category';
+import { Product } from '../../../../types/Product';
 import { getColor } from '../../../../utils/getColor';
 import styles from './Selectors.module.scss';
-import classNames from 'classnames';
-import { useNavigate } from 'react-router-dom';
-import { Product } from '../../../../types/Product';
 
 type Props = {
   product: Product;

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import styles from './PhotosSlider.module.scss';
 import classNames from 'classnames';
+import styles from './PhotosSlider.module.scss';
 
 type Props = {
   photos: string[];
