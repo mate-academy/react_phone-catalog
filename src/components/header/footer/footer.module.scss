@@ -1,4 +1,4 @@
-@import '../../../styles/main.scss';
+@import '../../../styles/main';
 
 .footer {
   margin-top: 64px;
@@ -75,7 +75,6 @@
     display: block;
     width: 16px;
     height: 16px;
-    background: none;
     border: none;
     padding: 0;
     margin: 0;
@@ -115,7 +114,6 @@
         display: block;
         width: 16px;
         height: 16px;
-        background: none;
         border: none;
         padding: 0;
         margin: 0;

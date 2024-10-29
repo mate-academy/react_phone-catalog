@@ -10,7 +10,7 @@ export const Phones: React.FC = () => {
 
   const phones = useSelector((state: RootState) => state.phones.items);
 
-  const status = useSelector((state: RootState) => state.phones.status);
+  // const status = useSelector((state: RootState) => state.phones.status);
 
   useEffect(() => {
     dispatch(fetchPhones());
