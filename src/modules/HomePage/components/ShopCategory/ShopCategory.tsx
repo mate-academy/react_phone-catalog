@@ -12,7 +12,13 @@ export const ShopCategory = () => {
       <h2 className={styles.title}>Shop by category</h2>
 
       {Object.keys(Category).map((category, index) => (
-        <div className={styles.categoryContainer} key={category}>
+        <div
+          className={classNames(
+            styles.categoryContainer,
+            styles[`categoryContainer${index + 1}`],
+          )}
+          key={category}
+        >
           <Link
             to=".."
             className={classNames(
