@@ -1,1 +1,1 @@
-export * from './swiper';
+export * from './Swiper';
