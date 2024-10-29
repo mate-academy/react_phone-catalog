@@ -1,10 +1,10 @@
 import { Link } from 'react-router-dom';
-import logo from '../../assets/images/logo.svg';
 import { SvgIcon } from '../../components/SvgIcon';
 
 import styles from './Footer.module.scss';
 import { RoundButton } from '../../components/RoundButton';
 import { scrollToTop } from '../../utils/utility';
+import { Logo } from '../../components/Logo';
 
 export const Footer = () => {
   const links = [
@@ -15,7 +15,7 @@ export const Footer = () => {
 
   return (
     <footer className={styles.footer}>
-      <img className={styles.footer__logo} src={logo} alt="logo" />
+      <Logo className={styles.footer__logo} />
 
       <ul className={styles.footer__list}>
         {links.map(link => (

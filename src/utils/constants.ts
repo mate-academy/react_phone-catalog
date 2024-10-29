@@ -7,3 +7,8 @@ export const MainNavigation = {
   CART: '/cart',
   NOT_FOUND: '*',
 };
+
+export enum Theme {
+  LIGTH = 'light-theme',
+  DARK = 'dark-theme',
+}

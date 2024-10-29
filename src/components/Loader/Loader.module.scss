@@ -5,11 +5,10 @@
   justify-content: center;
 
   svg {
-    fill: $accent;
-    stroke: $secondary-accent;
+    stroke: var(--accent);
   }
 
   svg circle {
-    stroke: rgba($color: #fff, $alpha: 0.5);
+    stroke: rgba($color: var(--primary), $alpha: 0.5);
   }
 }

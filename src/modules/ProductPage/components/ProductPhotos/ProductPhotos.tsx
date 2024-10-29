@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import styles from './ProductPhotos.module.scss';
 import cn from 'classnames';
 
@@ -8,14 +8,18 @@ interface Props {
 }
 
 export const ProductPhotos: React.FC<Props> = ({ photos, className }) => {
-  const [cuurrentImage, setCurrentImage] = useState(photos[0]);
+  const [currentImage, setCurrentImage] = useState(photos[0]);
+
+  useEffect(() => {
+    setCurrentImage(photos[0]);
+  }, [photos]);
 
   return (
     <div className={cn(styles['product-photos'], className)}>
       <div className={styles['product-photos__current']}>
         <img
           className={styles['product-photos__img']}
-          src={cuurrentImage}
+          src={currentImage}
           alt=""
         />
       </div>

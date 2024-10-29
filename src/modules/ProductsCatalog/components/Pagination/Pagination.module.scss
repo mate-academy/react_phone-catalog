@@ -21,14 +21,6 @@
     }
   }
 
-  &__btn {
-    &--active {
-      background-color: $primary;
-      color: $white;
-      border-color: $primary;
-    }
-  }
-
   &__dots {
     align-self: end;
   }

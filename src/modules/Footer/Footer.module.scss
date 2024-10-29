@@ -5,8 +5,9 @@
   flex-direction: column;
   gap: 32px;
   padding: 32px;
-  color: $secondary;
-  box-shadow: 0 -1px 0 0 $elements;
+  color: var(--text-footer);
+  box-shadow: 0 -1px 0 0 var(--elements);
+  background-color: var(--bg-header-footer);
 
   @include page-padding-inline;
 
@@ -40,16 +41,17 @@
   }
 
   &__link {
-    cursor: pointer;
+    color: var(--active-link);
 
     @include transition;
 
     &:hover {
-      color: $primary;
+      color: var(--link);
     }
   }
 
   &__container {
+    color: var(--link);
     display: grid;
     grid-template-columns: 1fr 32px;
     align-items: center;

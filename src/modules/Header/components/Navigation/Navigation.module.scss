@@ -20,7 +20,7 @@
     font-weight: 800;
     line-height: 27px;
     letter-spacing: 0.04em;
-    color: $secondary;
+    color: var(--link);
 
     @include transition;
 
@@ -33,11 +33,11 @@
     }
 
     &:hover {
-      color: $primary;
+      color: var(--active-link);
     }
 
     &--active {
-      color: $primary;
+      color: var(--active-link);
       cursor: default;
     }
 
@@ -46,7 +46,7 @@
       content: '';
       width: 100%;
       height: 2px;
-      background-color: $primary;
+      background-color: var(--active-link);
       bottom: 0;
       left: 0;
     }

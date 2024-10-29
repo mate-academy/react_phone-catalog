@@ -27,7 +27,7 @@
   }
 
   &__text {
-    color: $secondary;
+    color: var(--secondary);
     margin-bottom: 8px;
 
     @include on-tablet {

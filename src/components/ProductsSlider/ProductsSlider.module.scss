@@ -43,7 +43,7 @@
 
     &:disabled {
       svg path {
-        fill: $elements;
+        fill: var(--elements);
       }
     }
   }

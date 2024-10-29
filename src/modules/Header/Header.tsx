@@ -1,12 +1,15 @@
 import { NavLink, useLocation } from 'react-router-dom';
 import styles from './Header.module.scss';
-import logo from '../../assets/images/logo.svg';
 import { useEffect, useState } from 'react';
 import { Menu } from './components/Menu';
 import { Navigation } from './components/Navigation';
 import { Actions } from './components/Actions';
 import { MainNavigation } from '../../utils/constants';
 import { disableScroll, enableScroll } from '../../utils/utility';
+import { ThemeSwitcher } from './components/ThemeSwitcher';
+import { Logo } from '../../components/Logo';
+import { SvgIcon } from '../../components/SvgIcon';
+import classNames from 'classnames';
 
 export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -31,21 +34,31 @@ export const Header = () => {
           className={styles['header__link-logo']}
           to={MainNavigation.HOME}
         >
-          <img className={styles.header__logo} src={logo} alt="logo" />
+          <Logo className={styles.header__logo} />
         </NavLink>
-        <button
-          className={`${styles['header__menu-btn']} ${
-            isMenuOpen
-              ? styles['header__menu-btn--open']
-              : styles['header__menu-btn--close']
-          }`}
-          onClick={() => setIsMenuOpen(!isMenuOpen)}
-          aria-label="toggle menu"
-        />
+
+        <div
+          className={classNames(
+            styles.header__wrapper,
+            styles['header__wrapper--mobile'],
+          )}
+        >
+          <ThemeSwitcher className={styles['header__theme-switcher']} />
+          <button
+            className={styles['header__menu-btn']}
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            aria-label="toggle menu"
+          >
+            {isMenuOpen ? <SvgIcon type="close" /> : <SvgIcon type="menu" />}
+          </button>
+        </div>
+
         <div className={styles['header__nav-bar']}>
           <Navigation />
-
-          <Actions className={styles.header__actions} />
+          <div className={styles.header__wrapper}>
+            <ThemeSwitcher className={styles['header__theme-switcher']} />
+            <Actions className={styles.header__actions} />
+          </div>
         </div>
       </header>
 

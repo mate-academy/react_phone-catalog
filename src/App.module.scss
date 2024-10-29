@@ -5,11 +5,11 @@
   display: grid;
   grid-template-rows: min-content 1fr min-content;
   font-family: Mont, Arial, sans-serif;
-  color: $primary;
+  color: var(--primary);
 
   @include body-text;
 
   &__main {
-    background-color: $hover-bg;
+    background-color: var(--hover-bg);
   }
 }

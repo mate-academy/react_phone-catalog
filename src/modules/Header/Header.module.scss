@@ -1,11 +1,11 @@
 @import '../../styles/utils';
 
 .header {
-  border-bottom: 1px solid $elements;
+  border-bottom: 1px solid var(--elements);
   position: sticky;
   top: 0;
   z-index: 2;
-  background-color: $white;
+  background-color: var(--bg-header-footer);
   display: flex;
   gap: 16px;
   justify-content: space-between;
@@ -49,7 +49,7 @@
     position: fixed;
     z-index: 1;
     inset: 0;
-    background-color: $white;
+    background-color: var(--bg-header-footer);
     padding-top: 72px;
 
     @include on-tablet {
@@ -57,26 +57,40 @@
     }
   }
 
+  &__wrapper {
+    display: flex;
+    gap: 8px;
+
+    &--mobile {
+      @include on-tablet {
+      display: none;
+    }
+    }
+  }
+
+  &__theme-switcher {
+    width: 48px;
+    height: 48px;
+
+    @include on-desktop {
+      width: 64px;
+      height: 64px;
+    }
+  }
+
   &__menu-btn {
     height: 100%;
     width: 48px;
     border: none;
-    border-left: 1px solid $elements;
+    border-left: 1px solid var(--elements);
     background-color: inherit;
 
-    background-repeat: no-repeat;
-    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-    &--open {
-      background-image: url('../../assets/images/icons/close.svg');
-    }
-
-    &--close {
-      background-image: url('../../assets/images/icons/menu.svg');
-    }
-
-    @include on-tablet {
-      display: none;
+    svg path {
+      fill: var(--icon-primary);
     }
   }
 

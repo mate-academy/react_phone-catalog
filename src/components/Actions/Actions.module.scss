@@ -10,15 +10,15 @@
   &__btn-cart {
     border: none;
     flex: 1 1;
-    background-color: $accent;
-    color: $white;
+    background-color: var(--accent);
+    color: var(--white);
     border-radius: 8px;
     padding: 9px;
 
     &--active {
       background-color: inherit;
-      color: $accent;
-      box-shadow: 0 0 0 1px $elements;
+      color: var(--accent);
+      box-shadow: 0 0 0 1px var(--elements);
     }
   }
 
@@ -28,18 +28,22 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 1px $icons solid;
+    border: 1px var(--icon-secondary) solid;
     border-radius: 50%;
     background-color: inherit;
 
     @include transition;
 
     &:hover {
-      border-color: $primary;
+      border-color: var(--icon-primary);
     }
 
     &--active {
-      border-color: $elements;
+      border-color: var(--elements);
+    }
+
+    svg path {
+      fill: var(--icon-primary);
     }
   }
 }

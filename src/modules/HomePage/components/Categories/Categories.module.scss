@@ -38,7 +38,7 @@
   }
 
   &__text {
-    color: $secondary;
+    color: var(--secondary);
 
     @include body-text;
   }

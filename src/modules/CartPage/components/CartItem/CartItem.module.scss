@@ -5,9 +5,9 @@
   flex-direction: column;
   gap: 16px;
   padding: 16px;
-  border: 1px solid $elements;
+  border: 1px solid var(--elements);
   border-radius: 16px;
-  background-color: $white;
+  background-color: var(--bg-secondary);
 
   @include on-tablet {
     flex-direction: row;
@@ -42,11 +42,13 @@
       content: '';
       width: 12px;
       height: 1px;
-      background-color: $icons;
+      background-color: var(--icon-secondary);
       border-radius: 1px;
       top: 50%;
       left: 50%;
     }
+
+    @include transition;
 
     &::before {
       transform: translate(-50%, -50%) rotate(45deg);
@@ -54,6 +56,10 @@
 
     &::after {
       transform: translate(-50%, -50%) rotate(-45deg);
+    }
+
+    &:hover {
+      scale: 1.2;
     }
   }
 
@@ -67,7 +73,7 @@
     @include transition;
 
     &:hover {
-      color: $icons;
+      color: var(--icon-secondary);
     }
   }
 
@@ -82,7 +88,7 @@
     border-radius: 50%;
     width: 30px;
     height: 30px;
-    border: 1px solid $icons;
+    border: 1px solid var(--icon-secondary);
     background-color: inherit;
 
     &::before,
@@ -91,7 +97,7 @@
       content: '';
       width: 11px;
       height: 1px;
-      background-color: #000;
+      background-color: var(--primary);
       border-radius: 1px;
       top: 50%;
       left: 50%;
@@ -110,11 +116,11 @@
     }
 
     &:disabled {
-      border-color: $elements;
+      border-color: var(--elements);
 
       &::before,
       &::after {
-        background-color: $icons;
+        background-color: var(--icon-secondary);
       }
     }
   }

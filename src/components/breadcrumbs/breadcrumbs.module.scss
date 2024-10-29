@@ -16,7 +16,7 @@
     font-size: 12px;
     font-weight: 700;
     line-height: 15px;
-    color: $primary;
+    color: var(--primary);
 
     &:not(:last-child)::after {
       display: block;
@@ -31,8 +31,17 @@
     &:last-child {
       flex: 1;
       font-weight: 600;
-      color: $secondary;
+      color: var(--secondary);
       width: 50px;
+    }
+  }
+
+  &__link {
+    display: flex;
+    align-items: center;
+
+    svg path{
+      fill: var(--icon-primary);
     }
   }
 

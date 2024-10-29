@@ -2,6 +2,7 @@ import cn from 'classnames';
 import styles from './Search.module.scss';
 import { useUpdateSearchParams } from '../../../../hooks';
 import { useEffect, useState } from 'react';
+import { SvgIcon } from '../../../../components/SvgIcon';
 
 interface Props {
   className?: string;
@@ -48,11 +49,9 @@ export const Search: React.FC<Props> = ({ className }) => {
           value={value}
         />
         {value && (
-          <input
-            className={styles.search__clear}
-            type="button"
-            onClick={clear}
-          />
+          <button className={styles.search__clear} onClick={clear}>
+            <SvgIcon type="close" />
+          </button>
         )}
       </div>
     </div>

@@ -6,7 +6,7 @@
   }
 
   @include on-desktop {
-    padding-inline: $desktop-padding-inline;
+    padding-inline: desktop-padding-inline;
   }
 
   &__container {
@@ -35,13 +35,13 @@
       display: block;
       width: 32px;
       border-radius: 48px;
-      border: 1px solid $icons;
+      border: 1px solid var(--icon-secondary);
       background-color: inherit;
       padding: 8px;
 
       svg {
         path {
-          fill: $primary;
+          fill: var(--icon-primary);
         }
       }
     }
@@ -75,7 +75,7 @@
     height: 100%;
     flex: 0 0 auto;
     transition: transform 0.5s ease-in-out;
-    background: $white;
+    background: var(--bg-secondary);
   }
 
   &__img {
@@ -102,12 +102,12 @@
       display: block;
       width: 14px;
       height: 4px;
-      background-color: $elements;
+      background-color: var(--elements);
     }
 
     &--active {
       &::after {
-        background-color: $primary;
+        background-color: var(--primary);
       }
     }
   }

@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useCallback, useMemo } from 'react';
 import cn from 'classnames';
 import styles from './Pagination.module.scss';
 import { RoundButton } from '../../../../components/RoundButton';
 import { SvgIcon } from '../../../../components/SvgIcon';
 import { scrollToTop } from '../../../../utils/utility';
+import { PaginationItem } from '../PaginationItem';
 
 interface Props {
   perPage: string;
@@ -22,19 +23,12 @@ export const Pagination: React.FC<Props> = ({
 }) => {
   const perPageNumber = perPage === 'all' ? total : Number(perPage);
 
-  if (total <= perPageNumber) {
-    return null;
-  }
-
-  const pages = Array.from(
-    { length: Math.ceil(total / +perPage) },
-    (_, i) => i + 1,
+  const pages = useMemo(
+    () => Array.from({ length: Math.ceil(total / +perPage) }, (_, i) => i + 1),
+    [perPage, total],
   );
 
-  const isFirstPage = currentPage === 1;
-  const isLastPage = pages.length === currentPage;
-
-  const getMiddlePages = () => {
+  const getMiddlePages = useCallback(() => {
     const pagesCount = pages.length;
 
     if (currentPage <= 2) {
@@ -46,25 +40,10 @@ export const Pagination: React.FC<Props> = ({
     }
 
     return [currentPage - 1, currentPage, currentPage + 1];
-  };
+  }, [currentPage, pages.length]);
 
-  const PaginationItem = ({ page }: { page: number }) => {
-    return (
-      <div className={cn(styles.pagination__item)}>
-        <RoundButton
-          className={cn({
-            [styles['pagination__btn--active']]: page === currentPage,
-          })}
-          onClick={() => {
-            onPageChange(page);
-            scrollToTop();
-          }}
-        >
-          {page}
-        </RoundButton>
-      </div>
-    );
-  };
+  const isFirstPage = currentPage === 1;
+  const isLastPage = pages.length === currentPage;
 
   const onClickPrevPage = () => {
     onPageChange(Math.max(currentPage - 1, 1));
@@ -75,6 +54,10 @@ export const Pagination: React.FC<Props> = ({
     onPageChange(Math.max(currentPage + 1, 1));
     scrollToTop();
   };
+
+  if (total <= perPageNumber) {
+    return null;
+  }
 
   return (
     <div className={cn(styles.pagination, className)}>
@@ -91,10 +74,23 @@ export const Pagination: React.FC<Props> = ({
 
       <div className={styles.pagination__container}>
         {pages.length <= 5 ? (
-          pages.map(page => <PaginationItem key={page} page={page} />)
+          pages.map(page => (
+            <PaginationItem
+              className={styles.pagination__item}
+              key={page}
+              page={page}
+              onPageChange={onPageChange}
+              isCurrent={page === currentPage}
+            />
+          ))
         ) : (
           <>
-            <PaginationItem page={1} />
+            <PaginationItem
+              className={styles.pagination__item}
+              page={1}
+              onPageChange={onPageChange}
+              isCurrent={currentPage === 1}
+            />
             {currentPage > 3 && (
               <p key={'dots-left'} className={styles.pagination__dots}>
                 ...
@@ -102,7 +98,15 @@ export const Pagination: React.FC<Props> = ({
             )}
 
             {getMiddlePages().map(page => {
-              return <PaginationItem key={page} page={page} />;
+              return (
+                <PaginationItem
+                  className={styles.pagination__item}
+                  key={page}
+                  page={page}
+                  onPageChange={onPageChange}
+                  isCurrent={page === currentPage}
+                />
+              );
             })}
 
             {currentPage < pages.length - 3 && (
@@ -110,7 +114,12 @@ export const Pagination: React.FC<Props> = ({
                 ...
               </p>
             )}
-            <PaginationItem page={pages.length} />
+            <PaginationItem
+              className={styles.pagination__item}
+              page={pages.length}
+              onPageChange={onPageChange}
+              isCurrent={pages.length === currentPage}
+            />
           </>
         )}
       </div>

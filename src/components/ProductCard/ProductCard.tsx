@@ -45,7 +45,11 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
       </Link>
 
       <div className={styles['product-card__wrapper']}>
-        <Link to={pathLink} onClick={scrollToTop}>
+        <Link
+          className={cn(styles['product-card__link'])}
+          to={pathLink}
+          onClick={scrollToTop}
+        >
           <h3 className={cn(styles['product-card__title'])}>{name}</h3>
         </Link>
 

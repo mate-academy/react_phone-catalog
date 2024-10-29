@@ -29,7 +29,11 @@ export const getNewProducts = async () => {
 export const getProductById = async (id: string) => {
   const products = await getAllProducts;
 
-  return products.find(p => p.itemId === id) || null;
+  return (
+    products.find(p => {
+      return p.itemId.toLowerCase() === id.toLowerCase();
+    }) || null
+  );
 };
 
 export const getSuggestedProducts = async () => {

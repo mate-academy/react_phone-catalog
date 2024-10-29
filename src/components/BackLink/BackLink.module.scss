@@ -14,7 +14,11 @@
   &__text {
     @include small-text;
 
-    color: $secondary;
+    color: var(--secondary);
     line-height: 15px;
+  }
+
+  svg {
+    fill: var(--icon-primary);
   }
 }

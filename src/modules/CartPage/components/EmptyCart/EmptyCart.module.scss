@@ -17,7 +17,7 @@
   &__img {
     width: 100%;
     max-width: 450px;
-    background: radial-gradient(circle, $secondary-accent 0, $hover-bg 70%);
+    background: radial-gradient(circle, var(--accent) 0, var(--hover-bg) 70%);
     padding: 60px;
     object-fit: contain;
     aspect-ratio: 1 / 1;

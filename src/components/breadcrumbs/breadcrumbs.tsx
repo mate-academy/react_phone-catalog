@@ -1,8 +1,8 @@
 import { Link, useLocation } from 'react-router-dom';
 import styles from './Breadcrumbs.module.scss';
-import home from '../../assets/images/icons/home.svg';
 import cn from 'classnames';
 import { firstLetterCap } from '../../utils/utility';
+import { SvgIcon } from '../SvgIcon';
 
 interface Props {
   className?: string;
@@ -21,12 +21,8 @@ export const Breadcrumbs: React.FC<Props> = ({ className }) => {
   return (
     <ul className={cn(styles.breadcrumbs, className)}>
       <li className={styles.breadcrumbs__item}>
-        <Link to={'/'}>
-          <img
-            className={styles.breadcrumbs__icon}
-            src={home}
-            alt="home icon"
-          />
+        <Link className={styles.breadcrumbs__link} to={'/'}>
+          <SvgIcon type="home" />
         </Link>
       </li>
 
@@ -40,7 +36,9 @@ export const Breadcrumbs: React.FC<Props> = ({ className }) => {
             {isLast ? (
               <p className={styles['breadcrumbs__last-text']}>{title}</p>
             ) : (
-              <Link to={currentLink}>{title}</Link>
+              <Link className={styles.breadcrumbs__link} to={currentLink}>
+                {title}
+              </Link>
             )}
           </li>
         );

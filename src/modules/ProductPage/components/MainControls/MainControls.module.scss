@@ -35,6 +35,7 @@
     font-weight: 500;
     line-height: 28px;
     text-decoration: line-through;
+    color: var(--secondary);
   }
 
   &__actions {
@@ -57,7 +58,7 @@
   }
 
   &__term {
-    color: $secondary;
+    color: var(--secondary);
     font-weight: 600;
   }
 
@@ -68,7 +69,7 @@
   &__id {
     @include small-text;
 
-    color: $icons;
+    color: var(--icon-secondary);
     position: absolute;
     top: 0;
     right: 0;

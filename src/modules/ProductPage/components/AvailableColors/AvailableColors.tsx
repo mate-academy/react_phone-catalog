@@ -23,21 +23,22 @@ export const AvailableColors: React.FC<Props> = ({
       <p className={styles['available-colors__title']}>Available colors</p>
       <ul className={styles['available-colors__list']}>
         {colors.map(c => {
-          const isActive = c === currentColor;
-          const pathArr = path.split('-');
+          const color = c.split(' ').join('-');
 
-          pathArr[pathArr.length - 1] = c;
-          const currentPath = pathArr.join('-');
+          const isActive = c === currentColor;
+          const currentPath = path
+            .split(currentColor.split(' ').join('-'))
+            .join(color);
 
           return (
             <li
               className={cn(styles['available-colors__item'], {
                 [styles['available-colors__item--active']]: isActive,
               })}
-              key={c}
+              key={color}
             >
               <Link
-                style={{ backgroundColor: colorMap[c] }}
+                style={{ backgroundColor: colorMap[c.replaceAll(' ', '')] }}
                 className={styles['available-colors__link']}
                 to={isActive ? '' : currentPath}
               ></Link>

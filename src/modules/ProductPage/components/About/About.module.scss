@@ -15,7 +15,7 @@
       display: block;
       content: '';
       height: 1px;
-      background-color: $elements;
+      background-color: var(--elements);
       margin-top: 16px;
     }
   }
@@ -38,7 +38,7 @@
   }
 
   &__text {
-    color: $secondary;
+    color: var(--secondary);
 
     &:not(:last-child) {
       margin-bottom: 21px;
