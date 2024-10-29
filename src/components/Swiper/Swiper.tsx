@@ -7,7 +7,7 @@ import { ThemeContext } from '../../context/ThemeContext';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
-import styles from './swiper.module.scss';
+import styles from './Swiper.module.scss';
 
 export const HomeSwiper = () => {
   const homeSwiperRef = useRef<SwiperCore | null>(null);
