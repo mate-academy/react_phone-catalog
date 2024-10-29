@@ -1,0 +1,36 @@
+.swiper-slide {
+  display: flex;
+
+}
+
+.swiper-button-next::after, .swiper-button-prev::after {
+  content: '';
+  display: flex;
+  align-items: center;
+  color: #000;
+  border: 1px solid #B4BDC3;
+  padding: 10px;
+  font-size: 16px !important;
+  height: 400px;
+}
+
+.swiper__container {
+  max-height: 400px;
+}
+
+
+ .swiper-pagination {
+  margin: 10px;
+  position: relative !important;
+}
+
+.swiper-pagination > span {
+  background-color: black;
+  border-radius: 1px;
+  width: 14px;
+  height: 4px;
+}
+
+.slider__image {
+  margin: 0 auto;
+}

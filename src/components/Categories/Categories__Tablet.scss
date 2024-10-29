@@ -1,0 +1,35 @@
+@media (min-width: 640px) and (max-width: 1199px) {
+  .category-item {
+    &__img{
+    background-size: contain;
+    background-repeat: no-repeat;
+    min-height: 368px;
+  }
+    &__title, &__models-count {
+      font-family: 'Mont';
+      text-align: left;
+    }
+
+    &__title {
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 25.56px;
+  color: #313237;
+    }
+
+    &__models-count {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 21px;
+  color: #89939A;
+    }
+  }
+}
+
+@media (min-width: 640px) and (max-width: 999px) {
+  .category-item {
+    &__img {
+      min-height: 268px;
+    }
+  }
+}

@@ -1,0 +1,16 @@
+@media (min-width:819px) and (max-width:1099px) {
+  .catalog-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(200px, 1fr));
+    gap: 16px;
+  }
+}
+
+@media (min-width:550px) and (max-width:818px) {
+  .catalog-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(200px, 1fr));
+    gap: 16px;
+  }
+}
+

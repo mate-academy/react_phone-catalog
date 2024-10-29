@@ -1,0 +1,81 @@
+@import '../../styles/mixins.scss';
+
+.dropdown {
+  position: relative;
+
+  &__label {
+    color: #89939A;
+  font-family: Mont;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 15.34px;
+  text-align: left;
+  }
+
+  &__button {
+    box-sizing: border-box;
+    width: 176px;
+    height: 40px;
+    border: 1px solid #B4BDC3;
+    background-color: #fff;
+    @include flex-space_between-center;
+    cursor: pointer;
+
+    &:hover {
+      border: 1px solid #89939A;
+    }
+  }
+
+  &__title {
+    color: #313237;
+  font-family: Mont;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 21px;
+  }
+
+  &__menu {
+    position: relative;
+    display: none;
+    z-index: 5;
+  }
+
+  &__item {
+    color: #89939A;
+  font-family: Mont;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 21px;
+  text-align: left;
+
+  &:hover {
+    color: #313237;
+    background-color: #FAFBFC;
+  }
+  }
+
+  &.is-active {
+    .dropdown__menu {
+      display: flex;
+      box-sizing: border-box;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 10px 12px;
+      position: absolute;
+      width: 176px;
+      min-height: 100%;
+      border: 1px solid #E2E6E9;
+      background-color: #FFFFFF;
+      box-shadow: 0px 2px 15px 0px #0000000D;
+    }
+  }
+}
+
+.dropdown__menu > a {
+  color: #89939A;
+}
+
+.dropdown__menu > a:hover {
+  background-color: #fbfcfc;
+  color: #000;
+}

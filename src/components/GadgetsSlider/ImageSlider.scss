@@ -1,0 +1,32 @@
+.slider__container {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.slide-picture, .slide-picture > img {
+  width: 100%;
+  height: 100%;
+}
+
+.slider__button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 32px;
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: 2;
+  cursor: pointer;
+}
+
+.slider__button-left {
+  background-image: url('../../../public/img/svg/slider-arrow-left.svg');
+  left: 0;
+}
+
+.slider__button-right {
+  background-image: url('../../../public/img/svg/slider-arrow-right.svg');
+  right: 0;
+}
