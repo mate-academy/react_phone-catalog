@@ -5,9 +5,8 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-family: "Montserrat", sans-serif;
+  font-family: 'Poppins', 'Montserrat', sans-serif;
   margin-bottom: 56px;
-
 
   &__logo {
     display: flex;
@@ -56,7 +55,7 @@
 .main {
   max-width: 1136px;
   margin: 0 auto;
-  font-family: "Poppins", sans-serif;
+  font-family: 'Poppins', 'Montserrat', sans-serif;
 
   &__title {
     margin-bottom: 56px;
@@ -198,10 +197,6 @@
     margin-bottom: 8px;
   }
 
-  // &__content {
-  //   flex-grow: 1;
-  // }
-
   &__price {
     position: relative;
     display: flex;
@@ -283,9 +278,6 @@
     // background: linear-gradient(45deg,#f1ea9c, #024c29);
     background-color: #78b829;
     // background-color: greenyellow;
-
-
-
   }
 
   &__button:hover {
@@ -296,7 +288,6 @@
     // opacity: 0.5;
     // background-color: black;
     // color: white;
-
   }
 
   &__icon {
@@ -346,7 +337,8 @@
   justify-content: space-between;
   max-width: 1136px;
   margin: 0 auto;
-  font-family: "Poppins", sans-serif;
+  font-family: 'Poppins', 'Montserrat', sans-serif;
+
 }
 
 .footer__nav-list {
@@ -379,23 +371,32 @@
 .product-content {
   display: flex;
   justify-content: space-between;
-  border: 1px solid yellow;
+
+}
+
+.product-galleery {
+
+  height: 485px;
 }
 
 .product-gallery__thumbnails {
+  height: 100%;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   gap: 16px;
-  border: 1px solid #04581a;
+
 }
 
 .thumbnail {
-  width: 80px;
-  height: 80px;
+
+  width: 100px;
+  height: 100px;
   cursor: pointer;
   border: 1px solid #B4BDC4;
   border-radius: 4px;
   padding: 4px;
+
 }
 
 .thumbnail.active {
@@ -411,7 +412,7 @@
 .product-gallery__main-image {
   width: 464px;
   height: 464px;
-  border: 1px solid #E2E6E9;
+
   border-radius: 4px;
   padding: 8px;
 }
@@ -429,7 +430,7 @@
   color: #ffff;
   width: 320px;
   height: 512px;
-  background: rgb(30, 28, 28);
+  // background: rgb(30, 28, 28);
   padding: 32px;
   color:#F1F2F9;
   transition: box-shadow 0.3s ease, transform 0.3s ease;
@@ -438,7 +439,7 @@
 .product-page {
   max-width: 1136px;
   margin: 0 auto;
-  font-family: "Poppins", sans-serif;
+  font-family: 'Poppins', 'Montserrat', sans-serif;
   display: flex;
   justify-content: space-between;
   gap: 64px;
@@ -450,7 +451,7 @@
 
 .picker-title {
   color: #75767F;
-  font-family: "Poppins", sans-serif;
+  font-family: 'Poppins', 'Montserrat', sans-serif;
   font-size: 12px;
   font-weight: 700;
   line-height: 15.34px;
@@ -461,7 +462,16 @@
 .color-picker__options {
   position: relative;
   display: flex;
+  margin-bottom: 42px;
 
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -24px;
+    left: 0;
+    width: 100%;
+    border: 1px solid #3B3E4A
+  }
 
 }
 .color-picker__option {
@@ -476,30 +486,17 @@
   &:active {
     border-color: #2f542f;
   }
-
-
-  &::after {
-    content: '';
-    position: absolute;
-    bottom: -24px;
-    left: 0;
-    width: 100%;
-    border: 1px solid #3B3E4A
-
-  }
 }
-
-
 
 .color-picker__option--gold {
   background-color: #EFD4B8;
 }
 
-.color-picker__option--green {
-  background-color: #546F6B;
+.color-picker__option--silver {
+  background-color: #484949;
 }
 
-.color-picker__option--black {
+.color-picker__option--space--grey {
   background-color: #424242;
 }
 
@@ -510,6 +507,7 @@
 .capacity-picker__options {
   display: flex;
   position: relative;
+  margin-bottom: 32px;
 
   &::after {
     content: '';
@@ -525,7 +523,7 @@
   height: 32px;
   margin-right: 8px;
   outline: none;
-  font-family: "Poppins", sans-serif;
+  font-family: 'Poppins', 'Montserrat', sans-serif;
   font-size: 14px;
   font-weight: 600;
   line-height: 21px;
@@ -542,12 +540,11 @@
   }
 }
 
-
-
 .product-actions {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 32px;
 
   &__button {
     color: rgb(83, 82, 82);
@@ -563,7 +560,7 @@
     line-height: 21px;
     transition: all 0.7s ease;
     background-color: #78b829;
-
+    margin-right: 8px;
   }
 
   &__button:hover {
@@ -580,12 +577,11 @@
   }
 }
 
-
-
-
 .specs {
   font-size: 12px;
+  font-weight: 700;
   margin-bottom: 16px;
+  font-family: 'Poppins', 'Montserrat', sans-serif;
 
   &__details {
     display: flex;
@@ -594,18 +590,13 @@
   }
 
   &__property {
-    font-family: "Poppins", sans-serif;
-    font-size: 12px;
-    font-weight: 600;
     line-height: 15.34px;
     text-align: left;
     color: #89939A;
   }
 
   &__value {
-    font-weight: 700;
     color: #F1F2F9;
-    font-size: 12px;
   }
 }
 
@@ -613,7 +604,6 @@
   color: #4A4D58;
   font-size: 12px;
   font-weight: 600;
-
 }
 
 .products-details {
@@ -622,7 +612,8 @@
 }
 
 .products-details__title {
-  font-family: "Poppins", sans-serif;
+  font-family: 'Poppins', 'Montserrat', sans-serif;
+
   color: #F1F2F9;
   font-size: 22px;
   font-weight: 700;
@@ -638,11 +629,21 @@
 .about {
   // margin-right: 64px;
   max-width: 559px;
+  font-family: 'Poppins', 'Montserrat', sans-serif;
+
+  &__title {
+    font-size: 22px;
+    font-weight: 800;
+    line-height: 30.8px;
+    text-align: left;
+    color: #F1F2F9;
+    margin-bottom: 48px;
+  }
 }
 
 .about__text {
   color: #75767F;
-  font-family: "Poppins", sans-serif;
+  font-family: 'Poppins', 'Montserrat', sans-serif;
   font-size: 14px;
   font-weight: 600;
   line-height: 21px;
@@ -654,6 +655,18 @@
   font-size: 12px;
   margin-bottom: 16px;
 
+  &__title {
+    color: #ffff;
+    width: 511px;
+    height: 31px;
+    top: 801px;
+    left: 777px;
+    gap: 0px;
+    opacity: 0px;
+    margin-bottom: 41px;
+
+  }
+
   &__details {
     display: flex;
     justify-content: space-between;
@@ -661,7 +674,7 @@
   }
 
   &__property {
-    font-family: "Poppins", sans-serif;
+    font-family: 'Poppins', 'Montserrat', sans-serif;
     font-size: 12px;
     font-weight: 600;
     line-height: 15.34px;
@@ -675,3 +688,76 @@
     font-size: 12px;
   }
 }
+
+.product-price {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.product-price__current {
+  font-size: 32px;
+  font-weight: 800;
+  color: #ffffff;
+}
+
+.product-price__old {
+  font-size: 22px;
+  font-weight: 600;
+  color: #89939A;
+  text-decoration: line-through;
+  opacity: 0.7;
+}
+
+
+.about__text {
+  margin-bottom: 32px;
+}
+
+.breadcrumbs {
+  margin-bottom: 40px;
+}
+
+
+.breadcrumbs__icon {
+  margin-right: 8px;
+}
+
+.breadcrumbs__text {
+  text-decoration: none;
+  color: #ffff;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.back-button {
+  margin-bottom: 40px;
+}
+
+.back-button__link {
+  text-decoration: none;
+}
+
+
+.suggested-product__name {
+  font-family: 'Poppins', 'Montserrat', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 21px;
+  text-align: left;
+  color: #F1F2F9;
+
+}
+
+.suggested-product__link {
+  text-decoration: none;
+}
+
+.suggested-products__list {
+  /* Дозволяє елементам бути в ряд */
+  overflow-x: auto; /* Додає горизонтальну прокрутку */
+  scroll-behavior: smooth; /* Для плавної прокрутки */
+  /* Інші стилі, такі як ширина, висота тощо */
+}
+

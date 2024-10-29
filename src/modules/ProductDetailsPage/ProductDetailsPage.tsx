@@ -1,15 +1,14 @@
-import { useEffect } from 'react';
-import { useNavigate, useParams, useSearchParams } from 'react-router-dom';
-import { Product } from '../../types/ProductCard';
+import { useEffect, useRef } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useState } from 'react';
 import homeIcon from '../../../public/img/icons/Home.svg';
 import arrowRight from '../../../public/img/icons/ArrowRight.svg';
 import strokeLeft from '../../../public/img/icons/StrokeLeft.svg';
 import strokeRight from '../../../public/img/icons/StrokeRight.svg';
 import { ProductDescription } from '../../types/Accessories';
-import styles from './ProductDetails.module.css';
 import { Link } from 'react-router-dom';
 import favouritesIcon from '../../../public/img/icons/Favourites.svg';
+import { SuggestedProducts } from '../../components/ScrollSuggestingProducts/ScrollSuggestingProducts';
 
 interface ProductDetailsPageProps {
   productDescription: ProductDescription;
@@ -18,7 +17,8 @@ interface ProductDetailsPageProps {
 export const ProductDetailsPage: React.FC<ProductDetailsPageProps> = () => {
   const { itemId } = useParams<{ itemId: string }>();
   const params = useParams();
-  const [searchParams, setSearchParams] = useSearchParams();
+  console.log('params', params)
+
   const [product, setProduct] = useState<ProductDescription | null>(null);
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
@@ -26,11 +26,9 @@ export const ProductDetailsPage: React.FC<ProductDetailsPageProps> = () => {
 
   const [chooseColor, setChooseColor] = useState<string | null>(null);
   const [chooseCapacity, setChooseCapacity] = useState('');
-  const activeColor = searchParams.get('color') || 'gold';
-  const activeCapacity = searchParams.get('capacity') || '';
-  const navigate = useNavigate();
+  const [suggestedProducts, setSuggestedProducts] = useState<ProductDescription[]>([]);
 
-  console.log('product', product);
+  const navigate = useNavigate();
 
   const fetchProducts = async () => {
     setLoading(true);
@@ -44,7 +42,8 @@ export const ProductDetailsPage: React.FC<ProductDetailsPageProps> = () => {
       if (selectedProduct) {
         setProduct(selectedProduct);
 
-        setSelectedImage(selectedProduct.images[0]);
+        setSelectedImage(`../${selectedProduct.images[0]}`);
+        setChooseCapacity(selectedProduct.capacity);
 
         setChooseColor(selectedProduct.color);
       } else {
@@ -57,20 +56,36 @@ export const ProductDetailsPage: React.FC<ProductDetailsPageProps> = () => {
     }
   };
 
-  // useEffect(() => {
-  //   if (product) {
-  //     const newImage = product.images.find(img => img.colorsAvailable === activeColor) || product.images[0];
-  //     setSelectedImage(newImage);
-  //   }
-  // }, [product, activeColor]);
+  const fetchSuggestingProducts = async () => {
+    setLoading(true);
+    try {
+      const response = await fetch('/api/accessories.json');
+      const data = await response.json();
+
+      const suggestedProducts = data.filter((item: ProductDescription) => item.id !== itemId);
+
+      const shuffled = suggestedProducts.sort(() => 0.5 - Math.random());
+      const randomSuggested = shuffled.slice(0, 4);
+      setSuggestedProducts(randomSuggested);
+
+      return randomSuggested;
+
+    } catch (error) {
+      setError('Unable get recomenation products');
+      return [];
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  useEffect(() => {
+    fetchProducts();
+    fetchSuggestingProducts();
+  }, [itemId]);
 
   const handleBackClick = () => {
     navigate(-1);
   };
-
-  useEffect(() => {
-    fetchProducts();
-  }, [itemId]);
 
   const handleReload = () => {
     fetchProducts();
@@ -82,30 +97,19 @@ export const ProductDetailsPage: React.FC<ProductDetailsPageProps> = () => {
 
   const handleCapacityChange = (capacity: string) => {
     setChooseCapacity(capacity);
-    setSearchParams(prevParams => {
-      const newParams = new URLSearchParams(prevParams);
-
-      newParams.set('capacity', capacity);
-
-      return newParams;
-    });
   };
 
   const handleColorChange = (color: string) => {
     setChooseColor(color);
-    setSearchParams(prevParams => {
-      const newParams = new URLSearchParams(prevParams);
-
-      newParams.set('color', color);
-      newParams.set('capacity', activeCapacity);
-
-      return newParams;
-    });
   };
 
-  const baseImagePath = `img/${product?.category}/${product?.namespaceId}/${chooseColor}`;
+  const baseImagePath = `../img/${product?.category}/${product?.namespaceId}/${chooseColor}`;
+
   const imageFiles = ['00.webp', '01.webp', '02.webp'];
   // "img/accessories/apple-watch-series-6/silver/00.webp",
+
+  if (loading) return <div>Loading...</div>;
+  if (error) return <div>{error}</div>;
 
   return (
     <div className="section section--product-details">
@@ -118,23 +122,33 @@ export const ProductDetailsPage: React.FC<ProductDetailsPageProps> = () => {
           />
         </a>
         <span className="breadcrumbs__separator">/</span>
-        <a href="/accessories" className="breadcrumbs__item">
-          Accessories
+        <a href="#">
+            <img src={strokeRight} alt="Previous"></img>
         </a>
         <span className="breadcrumbs__separator">/</span>
-        <span className="breadcrumbs__item breadcrumbs__item--current">
+        <a href="/accessories" className="breadcrumbs__item">
+          {product?.category}
+        </a>
+        <span className="breadcrumbs__separator">/</span>
+        <a href="#">
+            <img src={strokeRight} alt="Previous"></img>
+        </a>
+        <span className="breadcrumbs__separator">/</span>
+        <a href="/product.id" className="breadcrumbs__item">
           {product?.name}
-        </span>
+        </a>
       </nav>
 
-      <Link to="#" onClick={handleBackClick} aria-label="Go back">
-        <img
-          src={arrowRight}
-          alt="Arrow Right"
-          className="breadcrumbs__item breadcrumbs__item--home"
-        />
-        Back
-      </Link>
+      <div className='back-button'>
+          <span className="breadcrumbs__separator">/</span>
+          <a href="#" onClick={handleBackClick} aria-label="Go back" className="back-button__link">
+            <span className="breadcrumbs__icon">
+            <img src={strokeLeft} alt="Stroke left" />
+            </span>
+            <span className="breadcrumbs__text">Back</span>
+          </a>
+      </div>
+
 
       <main>
         <h1 className="section__title">{product?.name}</h1>
@@ -143,30 +157,22 @@ export const ProductDetailsPage: React.FC<ProductDetailsPageProps> = () => {
           <div className="product-content">
             <div className="product-gallery">
               <div className="product-gallery product-gallery__thumbnails">
-                {/* {product?.images?.map((image: string, index: number) => (
-                  <div
-                    key={index}
-                    className={`thumbnail ${selectedImage === image ? 'active' : ''}`}
-                    onClick={() => handleThumbnailClick(image)}>
-                    <img src={image} alt={`${product.name} ${index + 1}`} />
-                  </div>
-                ))} */}
-
                 {imageFiles.map((fileName, index) => (
                   <img
                     key={index}
                     src={`${baseImagePath}/${fileName}`}
                     className={`thumbnail ${selectedImage === fileName ? 'active' : ''}`}
-                    onClick={() => handleThumbnailClick(fileName)}
+                    onClick={() => handleThumbnailClick(`${baseImagePath}/${fileName}`)}
                     alt={`${product?.name} ${chooseColor} ${index + 1}`}
                   />
                 ))}
               </div>
-              <div className="product-gallery product-gallery__main-image">
-                <img src={selectedImage || ''} alt="Product main view" />
-              </div>
             </div>
           </div>
+
+          <div className="product-gallery product-gallery__main-image">
+                <img src={selectedImage ? `${selectedImage}` :''} alt="Product main view" />
+              </div>
 
           <div className="product-info">
             <div className="color-picker">
@@ -174,32 +180,16 @@ export const ProductDetailsPage: React.FC<ProductDetailsPageProps> = () => {
                 Available colors
               </h3>
               <div className="color-picker__options">
-                {/* {product?.colorsAvailable.map((colorsAvailable: string, index: number) => (
-                    <Link
-                    key={colorsAvailable}
-                    to={`?color=${colorsAvailable}->capacity=${activeCapacity}`}
-                    onClick={() => handleColorChange(colorsAvailable)}
-                    aria-label={`Select ${colorsAvailable}`}
-                  >
-                    <button
-                      className={`color-picker__option color-picker__option--${colorsAvailable.replace(' ', '-')} ${activeColor === colorsAvailable ? 'active' : ''}`}
-                    >
-                      {colorsAvailable}
-                    </button>
-                  </Link>
-                ))} */}
-
                 {product?.colorsAvailable.map(color => {
                   const isCurrColor = color === product?.color;
 
                   return (
                     <Link
                       key={color}
-                      to={`/${baseImagePath}/${product?.namespaceId}-${color}-${product?.capacity}`}
+                      to={`/product/${product?.namespaceId}-${product?.capacity}-${color}`}
                       onClick={() => handleColorChange(color)}
                       className={`color-picker__option color-picker__option--${color.replace(' ', '-')} ${isCurrColor ? 'active' : ''}`}
                     >
-                      {color}
                     </Link>
                   );
                 })}
@@ -211,18 +201,21 @@ export const ProductDetailsPage: React.FC<ProductDetailsPageProps> = () => {
                 Select capacity
               </h3>
               <div className="capacity-picker__options">
-                {product?.capacityAvailable.map(
-                  (capacity: string, index: number) => (
-                    <button
-                      key={index}
-                      className={`capacity-picker__option ${activeCapacity === capacity ? 'active' : ''}`}
+                {product?.capacityAvailable.map((capacity: string) => {
+                  const isCurrCapacity = capacity === product?.capacity;
+
+                  return (
+                    <Link
+                      key={capacity}
+                      to={`/product/${product?.namespaceId}-${capacity}-${product?.color}`}
+                      className={`capacity-picker__option ${isCurrCapacity ? 'active' : ''}`}
                       aria-label={`Select ${capacity}`}
                       onClick={() => handleCapacityChange(capacity)}
                     >
                       {capacity}
-                    </button>
-                  ),
-                )}
+                    </Link>
+                  );
+                })}
               </div>
             </div>
 
@@ -272,38 +265,21 @@ export const ProductDetailsPage: React.FC<ProductDetailsPageProps> = () => {
 
         <section className="products-details">
           <div className="about">
-            <h2 className="products-details__title">About</h2>
-            <div className="section-first">
-              <h3 className="section-title">And then there was Pro</h3>
-              <p className="about__text">
-                A transformative triple-camera system that adds tons of
-                capability without complexity.
-              </p>
+            <h2 className="about__title">About</h2>
+            {product?.description.map((section, index) => (
+              <div className={`section-${index + 1}`}>
+              <h3 className="section-title"></h3>
+              {section.text.map((paragraph, idx) => (
+                <p key={idx}
+                   className="about__text">
+                    {paragraph}
+                </p>
+              ))}
             </div>
-            <div className="section-second">
-              <h3 className="section-title">Camera</h3>
-              <p className="about__text">
-                A transformative triple-camera system that adds tons of
-                capability without complexity.
-              </p>
-            </div>
-            <div className="section-third">
-              <h3 className="products-details__title section-title">
-                Shoot it. Flip it. Zoom it. Crop it. Cut it. Light it. Tweak it.
-                Love it.
-              </h3>
-              <p className="about__text">
-                iPhone 11 Pro lets you capture videos that are beautifully true
-                to life, with greater detail and smoother motion. Epic
-                processing power means it can shoot 4K video with extended
-                dynamic range and cinematic video stabilization — all at 60 fps.
-                You get more creative control, too, with four times more scene
-                and powerful new editing tools to play with.
-              </p>
-            </div>
+            ))}
           </div>
           <div className="tech-specs">
-            <h2 className="specs__title">Tech specs</h2>
+            <h2 className="specs__title ">Tech specs</h2>
             <div className="specs">
               <div className="specs__details">
                 <span className="specs__property">Screen</span>
@@ -344,17 +320,68 @@ export const ProductDetailsPage: React.FC<ProductDetailsPageProps> = () => {
         </section>
       </main>
 
-      <section className="additionally">
-        <div className="section__header">
-          <h1 className="section__title">Hot prices</h1>
-          <a href="#">
-            <img src={strokeLeft} alt="Previous"></img>
-          </a>
-          <a href="#">
-            <img src={strokeRight} alt="Next"></img>
-          </a>
+      <SuggestedProducts products={suggestedProducts} />
+
+
+      {/* <section className='section section--hot-prices'>
+        <div className='section__header'>
+          <h1 className='section__title'>You may also like</h1>
+          <a href="#" ><img src={strokeLeft} alt="Previous" ></img></a>
+          <a href="#" ><img src={strokeRight} alt="Next"></img></a>
         </div>
-      </section>
+
+        <section className="suggested-products ">
+            <div className="suggested-products__list product-grid">
+            {suggestedProducts.map(product => (
+              <div key={product.id} className="suggested-product product-card">
+                <Link to={`/product/${product.namespaceId}-${product.capacity}-${product.color}`} className="suggested-product__link">
+                  <img
+                    src={`../${product.images[0]}`}
+                    alt={product.name}
+                    className="product-card__image"
+                  />
+                </Link>
+
+                <Link to={`/product/${product.namespaceId}-${product.capacity}-${product.color}`}
+                  className="suggested-product__link">
+                  <h3 className="suggested-product__name">{product.name}</h3>
+                </Link>
+                <div className='suggested-product__price product-price'>
+                  <span className="suggested-product__price product-price__current">{product.priceDiscount}$</span>
+                  <span className="suggested-product__price product-price__old">{product.priceRegular}$</span>
+                </div>
+
+                <div className="product-card__specs">
+                  <div className="product-card__details">
+                    <span className="product-card__property">Screen:</span>
+                    <span className="product-card__value">{product.screen}</span>
+                  </div>
+                  <div className="product-card__details">
+                    <span className="product-card__property">Capacity</span>
+                    <span className="product-card__value">{product.capacity}</span>
+                  </div>
+                  <div className="product-card__details">
+                    <span className="product-card__property">RAM</span>
+                    <span className="product-card__value">{product.ram}</span>
+                  </div>
+                </div>
+                <div className="product-card__actions">
+                  <button className="product-card__button">Add to cart</button>
+                    <a href="#">
+                      <img
+                        src={favouritesIcon}
+                        alt="Favourites"
+                        className="product-card__icon"
+                      />
+                    </a>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+      </section> */}
+
     </div>
   );
 };
