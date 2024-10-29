@@ -1,20 +1,18 @@
 @import "src/styles/mixins";
+@import "src/styles/typography";
+@import "src/styles/colors";
 
 .footerContainer {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-
-  gap: 1.6rem 3.2rem;
-
   padding: 3.2rem 1.6rem;
 
+  background-color: $color-white;
+  box-shadow: 0 -1px 0 0 $color-elements;
+
   @include on-tablet {
-    grid-template-columns: repeat(12, 1fr);
     padding: 3.2rem 2.4rem;
   }
 
   @include on-m-desktop {
-    grid-template-columns: repeat(24, 1fr);
     padding: 3.2rem;
   }
 
@@ -23,9 +21,105 @@
   }
 }
 
-.footerLogo {
-  display: flex;
+.contentWrapper {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 3.2rem 1.6rem;
+  place-items: center;
 
+  max-width: 114rem;
+  margin: 0 auto;
+
+  @include on-tablet {
+    grid-template-columns: repeat(12, 1fr);
+  }
+
+  @include on-m-desktop {
+    grid-template-columns: repeat(24, 1fr);
+  }
+}
+
+.footerLogo {
+  grid-column: 1 / -1;
+  grid-row: 1 / -1;
+  justify-self: start;
+
+  display: flex;
   height: 3.2rem;
   width: 8.9rem;
+}
+
+.reachMeContainer {
+  grid-column: 1 / -1;
+
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  justify-self: start;
+
+
+  gap: 1.6rem;
+
+  @include on-tablet {
+    grid-row: 1 / -1;
+    flex-direction: row;
+    justify-self: center;
+    gap: 1.35rem;
+  }
+
+  @include on-m-desktop {
+    gap: 10.68rem;
+  }
+}
+
+.reachMeItem {
+  @extend %text-uppercase;
+
+  color: $color-secondary;
+  text-decoration: none;
+  width: min-content;
+
+  &:hover {
+    color: $color-primary;
+  }
+}
+
+.toTop {
+  @extend %text-small;
+
+  grid-column: 1 / -1;
+  justify-self: center;
+
+  display: flex;
+  align-items: center;
+  gap: 1.6rem;
+
+  text-decoration: none;
+  color: $color-secondary;
+
+  &:hover {
+    color: $color-primary;
+  }
+
+  &:hover > button {
+    border-color: $color-primary;
+  }
+
+  @include on-tablet {
+    grid-column: -4 / -1;
+    grid-row: 1 / -1;
+  }
+}
+
+.toTopBtn {
+  box-shadow: none;
+
+  width: 3.2rem;
+  height: 3.2rem;
+  border: 1px solid $color-icons;
+  border-radius: 50%;
+
+  &:hover {
+    border-color: $color-primary;
+  }
 }

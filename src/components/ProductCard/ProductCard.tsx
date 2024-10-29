@@ -3,7 +3,6 @@ import { NavLink } from 'react-router-dom';
 
 import styles from './ProductCard.module.scss';
 import { Product } from '../../types/Product';
-import stylesBtn from '../../styles/buttons.module.scss';
 import classNames from 'classnames';
 import { CartContext, FavouriteContext } from '../../ContextProvider';
 
@@ -120,11 +119,9 @@ export const ProductCard: React.FC<Props> = ({
           {isAddedToCart ? 'In Cart' : 'Add to Cart'}
         </button>
         <button
-          className={classNames(
-            stylesBtn.buttonFavourite,
-            styles.btnFavourite,
-            { [styles.btnFavouritePressed]: isAddedToFavourite },
-          )}
+          className={classNames('buttonFavourite', styles.btnFavourite, {
+            [styles.btnFavouritePressed]: isAddedToFavourite,
+          })}
           onClick={handleAddToFavourite}
           aria-label="Add to favourite"
         ></button>

@@ -2,7 +2,6 @@ import { Link } from 'react-router-dom';
 
 import styles from './Header.module.scss';
 import logo from '../../assets/icons/logo.png';
-import stylesButton from '../../styles/buttons.module.scss';
 import React, { useContext } from 'react';
 import classNames from 'classnames';
 import { Navigation } from '../Navigation';
@@ -30,8 +29,8 @@ export const Header: React.FC<Props> = ({
         <img src={logo} alt="Nice gadgets logo" />
       </Link>
       <button
-        className={classNames(stylesButton.buttonMenu, styles.buttonMenu, {
-          [stylesButton.buttonClose]: isMobileMenuOpen,
+        className={classNames('buttonMenu', styles.buttonMenu, {
+          buttonClose: isMobileMenuOpen,
         })}
         onClick={handleMenu}
       ></button>
@@ -43,7 +42,7 @@ export const Header: React.FC<Props> = ({
       <div className={styles.buttonsContainer}>
         <Link
           to="/fovourites"
-          className={classNames(stylesButton.buttonFavourite, styles.button)}
+          className={classNames('buttonFavourite', styles.button)}
           aria-label="My favourite products"
         >
           {!!favouriteProducts.length && (
@@ -55,7 +54,7 @@ export const Header: React.FC<Props> = ({
 
         <Link
           to="/cart"
-          className={classNames(stylesButton.buttonCart, styles.button)}
+          className={classNames('buttonCart', styles.button)}
           aria-label="Products added to cart"
         >
           {!!cartProducts.length && (

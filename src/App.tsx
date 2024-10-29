@@ -2,6 +2,7 @@ import { Outlet } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 
 import './App.scss';
+import './styles/buttons.scss';
 import { Header } from './components/Header';
 import { MobileMenu } from './components/MobileMenu';
 import { Footer } from './components/Footer';

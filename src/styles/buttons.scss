@@ -46,3 +46,9 @@
 
   background-image: url("../assets/icons/cart.svg");
 }
+
+.buttonArrowUp {
+  @extend %button;
+
+  background-image: url("../assets/icons/arrow-up.svg");
+}

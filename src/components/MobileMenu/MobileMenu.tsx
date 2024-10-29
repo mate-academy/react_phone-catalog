@@ -2,10 +2,7 @@ import React, { useContext } from 'react';
 import classNames from 'classnames';
 
 import styles from './MobileMenu.module.scss';
-import stylesButton from '../../styles/buttons.module.scss';
 import '../../App.scss';
-
-// import { Header } from '../Header';
 import { Navigation } from '../Navigation';
 import { Link } from 'react-router-dom';
 import { CartContext, FavouriteContext } from '../../ContextProvider';
@@ -36,10 +33,7 @@ export const MobileMenu: React.FC<Props> = ({
       <div className={styles.mobileMenuBottom}>
         <Link
           to="/favourites"
-          className={classNames(
-            stylesButton.buttonFavourite,
-            styles.mobileMenuBottomBtn,
-          )}
+          className={classNames('buttonFavourite', styles.mobileMenuBottomBtn)}
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
         >
           {!!favouriteProducts.length && (
@@ -51,10 +45,7 @@ export const MobileMenu: React.FC<Props> = ({
 
         <Link
           to="/cart"
-          className={classNames(
-            stylesButton.buttonCart,
-            styles.mobileMenuBottomBtn,
-          )}
+          className={classNames('buttonCart', styles.mobileMenuBottomBtn)}
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
         >
           {!!cartProducts.length && (
