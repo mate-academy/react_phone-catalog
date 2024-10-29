@@ -10,12 +10,10 @@ export interface ProductDescription {
   colorsAvailable: string[];
   color: string;
   images: string[];
-  description: { text: string[]}[];
+  description: { text: string[] }[];
   screen: string;
   resolution: string;
   processor: string;
   ram: string;
   cell: string[];
-
 }
-

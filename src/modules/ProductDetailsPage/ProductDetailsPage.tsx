@@ -17,7 +17,8 @@ interface ProductDetailsPageProps {
 export const ProductDetailsPage: React.FC<ProductDetailsPageProps> = () => {
   const { itemId } = useParams<{ itemId: string }>();
   const params = useParams();
-  console.log('params', params)
+
+  console.log('params', params);
 
   const [product, setProduct] = useState<ProductDescription | null>(null);
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
@@ -26,7 +27,9 @@ export const ProductDetailsPage: React.FC<ProductDetailsPageProps> = () => {
 
   const [chooseColor, setChooseColor] = useState<string | null>(null);
   const [chooseCapacity, setChooseCapacity] = useState('');
-  const [suggestedProducts, setSuggestedProducts] = useState<ProductDescription[]>([]);
+  const [suggestedProducts, setSuggestedProducts] = useState<
+    ProductDescription[]
+  >([]);
 
   const navigate = useNavigate();
 
@@ -62,21 +65,24 @@ export const ProductDetailsPage: React.FC<ProductDetailsPageProps> = () => {
       const response = await fetch('/api/accessories.json');
       const data = await response.json();
 
-      const suggestedProducts = data.filter((item: ProductDescription) => item.id !== itemId);
+      const suggestedProducts = data.filter(
+        (item: ProductDescription) => item.id !== itemId,
+      );
 
       const shuffled = suggestedProducts.sort(() => 0.5 - Math.random());
       const randomSuggested = shuffled.slice(0, 4);
+
       setSuggestedProducts(randomSuggested);
 
       return randomSuggested;
-
     } catch (error) {
       setError('Unable get recomenation products');
+
       return [];
     } finally {
       setLoading(false);
     }
-  }
+  };
 
   useEffect(() => {
     fetchProducts();
@@ -108,8 +114,8 @@ export const ProductDetailsPage: React.FC<ProductDetailsPageProps> = () => {
   const imageFiles = ['00.webp', '01.webp', '02.webp'];
   // "img/accessories/apple-watch-series-6/silver/00.webp",
 
-  if (loading) return <div>Loading...</div>;
-  if (error) return <div>{error}</div>;
+  if (loading) {return <div>Loading...</div>;}
+  if (error) {return <div>{error}</div>;}
 
   return (
     <div className="section section--product-details">
@@ -123,7 +129,7 @@ export const ProductDetailsPage: React.FC<ProductDetailsPageProps> = () => {
         </a>
         <span className="breadcrumbs__separator">/</span>
         <a href="#">
-            <img src={strokeRight} alt="Previous"></img>
+          <img src={strokeRight} alt="Previous"></img>
         </a>
         <span className="breadcrumbs__separator">/</span>
         <a href="/accessories" className="breadcrumbs__item">
@@ -131,7 +137,7 @@ export const ProductDetailsPage: React.FC<ProductDetailsPageProps> = () => {
         </a>
         <span className="breadcrumbs__separator">/</span>
         <a href="#">
-            <img src={strokeRight} alt="Previous"></img>
+          <img src={strokeRight} alt="Previous"></img>
         </a>
         <span className="breadcrumbs__separator">/</span>
         <a href="/product.id" className="breadcrumbs__item">
@@ -139,16 +145,15 @@ export const ProductDetailsPage: React.FC<ProductDetailsPageProps> = () => {
         </a>
       </nav>
 
-      <div className='back-button'>
-          <span className="breadcrumbs__separator">/</span>
-          <a href="#" onClick={handleBackClick} aria-label="Go back" className="back-button__link">
-            <span className="breadcrumbs__icon">
+      <div className="back-button">
+        <span className="breadcrumbs__separator">/</span>
+        <a href="#" onClick={handleBackClick} aria-label="Go back" className="back-button__link">
+          <span className="breadcrumbs__icon">
             <img src={strokeLeft} alt="Stroke left" />
-            </span>
-            <span className="breadcrumbs__text">Back</span>
-          </a>
+          </span>
+          <span className="breadcrumbs__text">Back</span>
+        </a>
       </div>
-
 
       <main>
         <h1 className="section__title">{product?.name}</h1>
@@ -162,7 +167,9 @@ export const ProductDetailsPage: React.FC<ProductDetailsPageProps> = () => {
                     key={index}
                     src={`${baseImagePath}/${fileName}`}
                     className={`thumbnail ${selectedImage === fileName ? 'active' : ''}`}
-                    onClick={() => handleThumbnailClick(`${baseImagePath}/${fileName}`)}
+                    onClick={() =>
+                      handleThumbnailClick(`${baseImagePath}/${fileName}`)
+                    }
                     alt={`${product?.name} ${chooseColor} ${index + 1}`}
                   />
                 ))}
@@ -171,8 +178,8 @@ export const ProductDetailsPage: React.FC<ProductDetailsPageProps> = () => {
           </div>
 
           <div className="product-gallery product-gallery__main-image">
-                <img src={selectedImage ? `${selectedImage}` :''} alt="Product main view" />
-              </div>
+            <img src={selectedImage ? `${selectedImage}` :''} alt="Product main view" />
+          </div>
 
           <div className="product-info">
             <div className="color-picker">
@@ -189,8 +196,7 @@ export const ProductDetailsPage: React.FC<ProductDetailsPageProps> = () => {
                       to={`/product/${product?.namespaceId}-${product?.capacity}-${color}`}
                       onClick={() => handleColorChange(color)}
                       className={`color-picker__option color-picker__option--${color.replace(' ', '-')} ${isCurrColor ? 'active' : ''}`}
-                    >
-                    </Link>
+                    ></Link>
                   );
                 })}
               </div>
@@ -268,14 +274,14 @@ export const ProductDetailsPage: React.FC<ProductDetailsPageProps> = () => {
             <h2 className="about__title">About</h2>
             {product?.description.map((section, index) => (
               <div className={`section-${index + 1}`}>
-              <h3 className="section-title"></h3>
-              {section.text.map((paragraph, idx) => (
-                <p key={idx}
-                   className="about__text">
+                <h3 className="section-title"></h3>
+                {section.text.map((paragraph, idx) => (
+                  <p key={idx}
+                    className="about__text">
                     {paragraph}
-                </p>
-              ))}
-            </div>
+                  </p>
+                ))}
+              </div>
             ))}
           </div>
           <div className="tech-specs">
@@ -321,7 +327,6 @@ export const ProductDetailsPage: React.FC<ProductDetailsPageProps> = () => {
       </main>
 
       <SuggestedProducts products={suggestedProducts} />
-
 
       {/* <section className='section section--hot-prices'>
         <div className='section__header'>
@@ -381,7 +386,6 @@ export const ProductDetailsPage: React.FC<ProductDetailsPageProps> = () => {
         </section>
 
       </section> */}
-
     </div>
   );
 };
