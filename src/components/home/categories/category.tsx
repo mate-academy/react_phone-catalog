@@ -1,42 +1,59 @@
 import React from 'react';
 import styles from './category.module.scss';
-import phones from '../../../assets/images/category/phones.png';
-import tablets from '../../../assets/images/category/tablets.png';
-import accessories from '../../../assets/images/category/accessories.png';
+import phonesImg from '../../../assets/images/category/phones.png';
+import tabletsImg from '../../../assets/images/category/tablets.png';
+import accessoriesImg from '../../../assets/images/category/accessories.png';
 import classNames from 'classnames';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../../app/store';
 
 export const Category: React.FC = () => {
+  const phones = useSelector((state: RootState) => state.products.items).filter(
+    product => product.category === 'phones',
+  );
+  const tablets = useSelector(
+    (state: RootState) => state.products.items,
+  ).filter(product => product.category === 'tablets');
+
+  const accessories = useSelector(
+    (state: RootState) => state.products.items,
+  ).filter(product => product.category === 'accessories');
+
   return (
     <section className={classNames(styles.category, 'container')}>
       <h2 className={styles.category_title}>Shop by category</h2>
       <ul className={styles.category_list}>
         <li>
           <a href="/" className={styles.category_mobile}>
-            <img src={phones} alt="phones" className={styles.category_img} />
+            <img src={phonesImg} alt="phones" className={styles.category_img} />
           </a>
 
           <p className={styles.category_name}>Mobile phones</p>
-          <p className={styles.category_quan}>0 models</p>
+          <p className={styles.category_quan}>{phones.length} models</p>
         </li>
         <li>
           <a href="/" className={styles.category_tablets}>
-            <img src={tablets} alt="tablets" className={styles.category_img} />
+            <img
+              src={tabletsImg}
+              alt="tablets"
+              className={styles.category_img}
+            />
           </a>
 
           <p className={styles.category_name}>Tablets</p>
-          <p className={styles.category_quan}>0 models</p>
+          <p className={styles.category_quan}>{tablets.length} models</p>
         </li>
         <li>
           <a href="/" className={styles.category_accessories}>
             <img
-              src={accessories}
+              src={accessoriesImg}
               alt="accessories"
               className={styles.category_img}
             />
           </a>
 
           <p className={styles.category_name}>Accessories</p>
-          <p className={styles.category_quan}>0 models</p>
+          <p className={styles.category_quan}>{accessories.length} models</p>
         </li>
       </ul>
     </section>

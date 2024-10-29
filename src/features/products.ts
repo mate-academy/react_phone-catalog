@@ -15,7 +15,7 @@ const initialState: ProductsState = {
 export const fetchProducts = createAsyncThunk(
   'products/fetchProducts',
   async () => {
-    const response = await fetch('/public/api/products.json ');
+    const response = await fetch('api/products.json');
 
     if (!response.ok) {
       throw new Error('Network response was not ok');

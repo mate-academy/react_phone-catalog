@@ -1,25 +1,26 @@
 import React from 'react';
 import styles from './header-tablet.module.scss';
 import LogoImage from '../../../assets/images/Logo-header.png';
+import { NavLink } from 'react-router-dom';
 
 export const HeaderTablet: React.FC = () => {
   return (
     <header className={styles.header}>
       <div className="container flex">
-        <a href="/" className={styles.header_logo__link}>
+        <NavLink to="/" className={styles.header_logo__link}>
           <img src={LogoImage} alt="Logo" className={styles.header_logo} />
-        </a>
+        </NavLink>
         <nav className={styles.header_nav}>
           <ul className={styles.header_list}>
             <li className={styles.header_item}>
-              <a href="/" className={styles.header_link}>
+              <NavLink to="/" className={styles.header_link}>
                 HOME
-              </a>
+              </NavLink>
             </li>
             <li>
-              <a href="/" className={styles.header_link}>
+              <NavLink to="phones" className={styles.header_link}>
                 PHONES
-              </a>
+              </NavLink>
             </li>
             <li>
               <a href="/" className={styles.header_link}>

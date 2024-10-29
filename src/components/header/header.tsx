@@ -4,6 +4,7 @@ import logoImage from '../../assets/images/Logo-header.png';
 import { HeaderTablet } from './header-tablet/header-tablet';
 import { HeaderMenu } from './header-menu';
 import classNames from 'classnames';
+import { NavLink } from 'react-router-dom';
 
 export const Header: React.FC = () => {
   const [isHeaderModalOpen, setIsHeaderModalOpen] = useState<boolean>(false);
@@ -18,9 +19,9 @@ export const Header: React.FC = () => {
       <header className={styles.header}>
         <div className="container">
           <div className={styles.header_div}>
-            <a href="/">
+            <NavLink to="/">
               <img src={logoImage} alt="logo" className={styles.header_logo} />
-            </a>
+            </NavLink>
             <div className={styles.header_menu}>
               <button
                 className={classNames(styles.header_icon_open, {
