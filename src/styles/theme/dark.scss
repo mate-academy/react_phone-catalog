@@ -1,14 +1,15 @@
 @import '../utils';
 
 body.dark-theme {
-  --green: #27ae60;
-  --red: #eb5757;
+  --green: #{$green};
+  --red: #{$red};
   --primary: #{$dark-white};
   --secondary: #{$dark-secondary};
   --white: #{$dark-white};
   --elements: #{$dark-elements};
   --hover-bg: #{$dark-black};
   --accent: #{$dark-accent};
+  --secondary-accent: #{$red};
   --text-footer: #{$dark-white};
   --bg-header-footer: #{$dark-black};
   --link: #{$dark-secondary};

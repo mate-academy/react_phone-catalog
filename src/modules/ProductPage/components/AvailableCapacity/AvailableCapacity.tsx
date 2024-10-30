@@ -4,55 +4,53 @@ import cn from 'classnames';
 
 interface Props {
   capacity: string[];
-  current: string;
+  activeCapacity: string;
   className?: string;
 }
 
 export const AvailableCapacity: React.FC<Props> = ({
   capacity,
-  current,
+  activeCapacity,
   className,
 }) => {
   const location = useLocation();
 
-  const normalizeCapacity = capacity.map(c => {
+  const normalizeCapacity = (cap: string) => {
     let res = '';
 
-    for (let i = 0; i < c.length; i++) {
-      if (c[i].toLowerCase() === c[i].toUpperCase()) {
-        res += c[i];
+    for (let i = 0; i < cap.length; i++) {
+      if (cap[i].toLowerCase() === cap[i].toUpperCase()) {
+        res += cap[i];
       } else {
-        res += ' ' + c.slice(i);
+        res += ' ' + cap.slice(i);
         break;
       }
     }
 
     return res;
-  });
+  };
 
-  const path = location.pathname;
+  const path = location.pathname.toLowerCase();
 
   return (
     <div className={cn(styles['available-capacity'], className)}>
       <p className={styles['available-capacity__title']}>Select capacity</p>
       <ul className={styles['available-capacity__list']}>
-        {normalizeCapacity.map(c => {
-          const activeCapacity = c.replaceAll(' ', '');
-          const isActive = activeCapacity === current;
-          const pathArr = path.split('-');
-
-          pathArr[pathArr.length - 2] = activeCapacity;
-          const currentPath = pathArr.join('-');
+        {capacity.map(cap => {
+          const isActive = activeCapacity === cap;
+          const currentPath = path
+            .split(activeCapacity.toLowerCase())
+            .join(cap.toLowerCase());
 
           return (
-            <li className={styles['available-capacity__item']} key={c}>
+            <li className={styles['available-capacity__item']} key={cap}>
               <Link
                 className={cn(styles['available-capacity__link'], {
                   [styles['available-capacity__link--active']]: isActive,
                 })}
                 to={isActive ? '' : currentPath}
               >
-                {c}
+                {normalizeCapacity(cap)}
               </Link>
             </li>
           );

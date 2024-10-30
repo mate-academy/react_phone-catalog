@@ -13,6 +13,9 @@
     background-color: var(--accent);
     color: var(--white);
     border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     padding: 9px;
 
     &--active {
@@ -40,6 +43,10 @@
 
     &--active {
       border-color: var(--elements);
+
+      svg path {
+        fill: var(--secondary-accent);
+      }
     }
 
     svg path {

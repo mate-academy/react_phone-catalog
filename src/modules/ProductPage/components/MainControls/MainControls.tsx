@@ -47,7 +47,7 @@ export const MainControls: React.FC<Props> = ({
         />
         <AvailableCapacity
           capacity={capacityAvailable}
-          current={capacity}
+          activeCapacity={capacity}
           className={styles['main-controls__capacity']}
         />
         <div className={styles['main-controls__price']}>

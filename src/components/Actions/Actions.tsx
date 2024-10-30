@@ -27,10 +27,8 @@ export const Actions: React.FC<Props> = ({ className, product }) => {
     }
   };
 
-  const changeCartStatus = () => {
-    if (isInCart) {
-      return;
-    } else {
+  const addToCart = () => {
+    if (!isInCart) {
       dispatch({
         type: 'addCart',
         payload: { product: product, quantity: 1, id: product.itemId },
@@ -44,7 +42,7 @@ export const Actions: React.FC<Props> = ({ className, product }) => {
         className={cn(styles['actions__btn-cart'], {
           [styles['actions__btn-cart--active']]: isInCart,
         })}
-        onClick={changeCartStatus}
+        onClick={addToCart}
       >
         {isInCart ? 'Added to cart' : 'Add to cart'}
       </button>

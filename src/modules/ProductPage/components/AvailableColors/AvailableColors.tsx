@@ -16,7 +16,7 @@ export const AvailableColors: React.FC<Props> = ({
 }) => {
   const location = useLocation();
 
-  const path = location.pathname;
+  const path = location.pathname.toLowerCase();
 
   return (
     <div className={cn(styles['available-colors'], className)}>
