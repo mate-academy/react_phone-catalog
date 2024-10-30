@@ -1,0 +1,15 @@
+.nav-item {
+  display: block;
+  width: 16px;
+  height: 16px;
+
+  &-fav {
+    background-image: url('../../../public/img/svg/favorites.svg');
+    background-position: center;
+  }
+
+  &-cart {
+    background-image: url('../../../public/img/svg/cart.svg');
+    background-position: center;
+  }
+}

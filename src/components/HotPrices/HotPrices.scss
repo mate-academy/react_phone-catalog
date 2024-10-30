@@ -1,0 +1,48 @@
+.hotPrices {
+  margin-top: 155px;
+  &__list {
+    display: flex;
+    overflow: hidden;
+  }
+  &__item {
+    min-width: 272px;
+  }
+  &__top {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+.top__buttons {
+  display: flex;
+}
+
+.card-slider__button-left, .card-slider__button-right {
+  width: 32px;
+  height: 32px;
+  border: 1px solid#ecf0f1;
+  background-color: #fff;
+  background-repeat: no-repeat;
+  cursor: pointer;
+}
+
+.card-slider__button-left:hover, .card-slider__button-right:hover {
+  border: 1px solid #313237 ;
+}
+
+.card-slider__button-left {
+  position: absolute;
+  right: 5px;
+  background-image: url('../../../public/img/svg/slider-arrow-right.svg');
+  background-position: center
+}
+
+.card-slider__button-right {
+  position: absolute;
+  right: 37px;
+  background-image: url('../../../public/img/svg/slider-arrow-left.svg');
+  background-position: center;
+}

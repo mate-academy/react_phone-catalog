@@ -1,0 +1,106 @@
+@import '../../styles/mixins.scss';
+
+.cart__item, .checkout {
+  border: 1px solid #E2E6E9;
+  width: 40%;
+}
+
+.cart {
+  display: flex;
+  gap: 16px;
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    width: 60%;
+  }
+
+  &-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24px 24px;
+    margin-bottom: 16px;
+    width: 100%;
+    box-sizing: border-box;
+
+    &__cross {
+      background: transparent;
+      background-image: url('../../../public/img/svg/cross.svg');
+      width: 16px;
+      height: 16px;
+      border: none;
+      cursor: pointer;
+    }
+
+    &__icon {
+      display: block;
+      width: 66px;
+      height: 80px;
+    }
+
+    &__title, &__price {
+      font-family: Mont;
+    }
+
+    &__title {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 21px;
+  text-align: left;
+  color: #313237;
+    }
+    &__price {
+      font-weight: 800;
+      font-size: 22px;
+    }
+
+    &__count {
+      @include flex-center-center;
+    }
+
+    &__count > div {
+      @include flex-center-center;
+      width: 32px;
+      height: 32px;
+    }
+    &__count > button {
+      background: none;
+      border: 1px solid #E2E6E9;
+    }
+  }
+}
+
+.checkout div {
+  font-family: Mont;
+}
+
+.checkout {
+  &__total-price {
+    color: #313237;
+  font-size: 32px;
+  font-weight: 800;
+  line-height: 41px;
+  letter-spacing: -0.01em;
+  text-align: center;
+  }
+
+  &__text {
+font-size: 14px;
+font-weight: 500;
+line-height: 21px;
+text-align: center;
+  }
+
+  &__button {
+    background-color: #313237;
+    border: none;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 21px;
+    text-align: center;
+    padding: 24px 0;
+  }
+}

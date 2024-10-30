@@ -1,0 +1,10 @@
+.burger-ico {
+  width: 16px;
+  height: 16px;
+  &-open {
+    background-image: url('.././../../public/img/svg/burger/open.svg');
+  }
+  &-close {
+    background-image: url('.././../../public/img/svg/burger/close.svg');
+  }
+}

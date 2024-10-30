@@ -1,1 +1,26 @@
-// not empty
+@import './styles/normalize.css';
+
+@font-face {
+  font-family: 'Mont';
+  src: url('../public/fonts/Mont-Regular.otf');
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  position: relative;
+  background-color: #FFF;
+  height: 100%;
+}
+
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+}

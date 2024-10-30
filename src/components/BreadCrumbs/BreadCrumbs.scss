@@ -1,0 +1,22 @@
+.bread-crumbs {
+  margin-top: 24px;
+  display: grid;
+  align-items: end;
+  grid-template-columns: 16px 16px auto;
+  gap: 8px;
+
+  &__icon, &__arrow {
+    height: 16px;
+  }
+
+  &__name {
+    width: fit-content;
+    color: #89939A;
+    font-family: 'Mont';
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 15.34px;
+    text-align: left;
+
+  }
+}
