@@ -25,6 +25,11 @@
   &__links {
     display: flex;
     gap: 16px;
+
+    @include mix.respond-to(mobile) {
+      flex-direction: column;
+      gap: 32px;
+    }
   }
 
   &__item {
@@ -51,7 +56,7 @@
       background-image: url(../../../public/img/category-tablets.png);
     }
 
-    &--accessoirs {
+    &--accessories {
       background-color: #973D5F;
       background-position: 45px 65px;
       background-size: 180%;

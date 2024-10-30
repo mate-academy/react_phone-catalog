@@ -1,12 +1,14 @@
-import './Slider.scss';
+import { useEffect, useState } from 'react';
+import classNames from 'classnames';
+
+import styles from './Slider.module.scss';
 
 import photo1 from '../../assets/images/slider/iPhone-14-Pro-vs-16.jpg';
 import photo2 from '../../assets/images/slider/iPhone-16-Pro-and-iPhone-16.jpg';
 import photo3 from '../../assets/images/slider/iPhone-16-Side-2-Feature.jpg';
 import photo4 from '../../assets/images/slider/maxresdefault.jpg';
-import { useEffect, useState } from 'react';
-import classNames from 'classnames';
-import { ArrowButton } from '../arrowButton/ArrowButton';
+
+import { ArrowButton } from '../ArrowButton';
 
 const imageFiles = [photo1, photo2, photo3, photo4];
 
@@ -78,23 +80,23 @@ export const Slider: React.FC = () => {
 
   return (
     <div
-      className="slider"
+      className={styles.slider}
       onTouchStart={handleTouchStart}
       onTouchMove={handleTouchMove}
       onTouchEnd={handleTouchEnd}
     >
-      <div className="slider__photos">
+      <div className={styles.slider__photos}>
         <ArrowButton diraction="left" disable={false} click={prevSlide} />
-        <div className="slider__photosContainer">
+        <div className={styles.slider__photosContainer}>
           <img
             src={imageFiles[sliderIndex]}
             alt="slider photo"
-            className="slider__photo"
+            className={styles.slider__photo}
           />
         </div>
         <ArrowButton diraction="right" disable={false} click={nextSlide} />
       </div>
-      <div className="slider__lines">
+      <div className={styles.slider__lines}>
         {imageFiles.map((img, i) => (
           <div
             className={classNames('slider__line', {

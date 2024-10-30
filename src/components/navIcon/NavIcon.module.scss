@@ -38,5 +38,15 @@
     text-align: center;
     color: v.$colorWhite;
     background-color: v.$colorRed;
+
+    @include mix.respond-to(tablet) {
+      top: 10px;
+      left: 25px;
+    }
+
+    @include mix.respond-to(mobile) {
+      top: 27%;
+      left: 50%;
+    }
   }
 }

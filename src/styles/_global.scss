@@ -108,3 +108,12 @@ button {
 a {
   text-decoration: none;
 }
+
+hr {
+  border: 0;
+  border-top: 1px solid  v.$colorElements;
+}
+
+img:hover {
+  transform: scale(1.1);
+}

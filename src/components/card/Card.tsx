@@ -1,20 +1,27 @@
+import { Link } from 'react-router-dom';
 import classNames from 'classnames';
+
 import { changeFavorites } from '../../redux/favoritesSlice';
-import { Categories, Product } from '../../types/Product';
 import { useAppDispatch } from '../../utils/hooks';
-import './Card.scss';
 import { addCart } from '../../redux/cartSlice';
-import { Phone } from '../../types/Phone';
-import { Accessoirs } from '../../types/Accesories';
-import { Tables } from '../../types/Tablets';
+
+import { AllProduct } from '../../types/UnionType';
+
+import styles from './Card.module.scss';
 
 interface Props {
-  card: Product | Phone | Accessoirs | Tables;
+  card: AllProduct;
   showSale?: boolean;
   favorite: boolean;
+  cart: boolean;
 }
 
-export const Card: React.FC<Props> = ({ card, showSale = false, favorite }) => {
+export const Card: React.FC<Props> = ({
+  card,
+  showSale = false,
+  favorite,
+  cart,
+}) => {
   const dispatch = useAppDispatch();
 
   const handleFavoritesChange = () => {
@@ -26,49 +33,57 @@ export const Card: React.FC<Props> = ({ card, showSale = false, favorite }) => {
   };
 
   return (
-    <div className="card">
-      <img
-        src={'image' in card ? card.image : card.images[0]}
-        alt={card.name}
-        className="card__img"
-      />
-      <span className="card__title">{card.name}</span>
-      <div className="card__prices">
-        <h3 className="card__price">{`$${'price' in card ? card.price : card.priceDiscount}`}</h3>
-        <h3 className="card__fullPrice">
+    <div className={styles.card}>
+      <Link
+        className={styles.card__imgLink}
+        to={`/${card.category}/${card.name.split(' ').join('_').toLowerCase()}`}
+      >
+        <img
+          src={'image' in card ? card.image : card.images[0]}
+          alt={card.name}
+          className={styles.card__img}
+        />
+      </Link>
+      <Link
+        to={`/${card.category}/${card.name.split(' ').join('_').toLowerCase()}`}
+      >
+        <span className={styles.card__title}>{card.name}</span>
+      </Link>
+      <div className={styles.card__prices}>
+        <h3
+          className={styles.card__price}
+        >{`$${'price' in card ? card.price : card.priceDiscount}`}</h3>
+        <h3 className={styles.card__fullPrice}>
           {showSale === true
             ? `$${'fullPrice' in card ? card.fullPrice : card.priceRegular}`
             : ''}
         </h3>
       </div>
-      <hr className="card__line" />
-      <div className="card__infoBlock">
-        <p className="card__infoTitle">Screen</p>
-        <p className="card__infoText">{card.screen}</p>
+      <hr />
+      <div className={styles.card__infoBlock}>
+        <p className={styles.card__infoTitle}>Screen</p>
+        <p className={styles.card__infoText}>{card.screen}</p>
       </div>
-      <div className="card__infoBlock">
-        <p className="card__infoTitle">Capacity</p>
-        <p className="card__infoText">{card.capacity}</p>
+      <div className={styles.card__infoBlock}>
+        <p className={styles.card__infoTitle}>Capacity</p>
+        <p className={styles.card__infoText}>{card.capacity}</p>
       </div>
-      <div className="card__infoBlock">
-        <p className="card__infoTitle">RAM</p>
-        <p className="card__infoText">{card.ram}</p>
+      <div className={styles.card__infoBlock}>
+        <p className={styles.card__infoTitle}>RAM</p>
+        <p className={styles.card__infoText}>{card.ram}</p>
       </div>
-      <div className="card__infoBlock">
-        <p className="card__infoTitle">RAM</p>
-        <p className="card__infoText">{card.ram}</p>
-      </div>
-      <div className="card__infoBlock">
-        <p className="card__infoTitle">RAM</p>
-        <p className="card__infoText">{card.ram}</p>
-      </div>
-      <div className="card__buttons">
-        <button className="card__cartButton" onClick={() => handleAddToCart()}>
-          Add to cart
+      <div className={styles.card__buttons}>
+        <button
+          className={classNames(styles.card__cartButton, {
+            [styles['card__cartButton--clicked']]: cart,
+          })}
+          onClick={() => handleAddToCart()}
+        >
+          {cart ? 'Added to cart' : 'Add to cart'}
         </button>
         <button
-          className={classNames('card__favButton', {
-            'card__favButton--clicked': favorite,
+          className={classNames(styles.card__favButton, {
+            [styles['card__favButton--clicked']]: favorite,
           })}
           onClick={() => handleFavoritesChange()}
         />

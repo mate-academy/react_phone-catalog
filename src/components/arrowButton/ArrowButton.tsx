@@ -1,5 +1,5 @@
-import './ArrowButton.scss';
 import classNames from 'classnames';
+import styles from './ArrowButton.module.scss';
 
 interface Props {
   click: () => void;
@@ -10,8 +10,8 @@ interface Props {
 export const ArrowButton: React.FC<Props> = ({ click, diraction, disable }) => {
   return (
     <button
-      className={classNames('arrowButton', {
-        'arrowButton--disabled': disable,
+      className={classNames(styles.arrowButton, {
+        [styles['arrowButton--disabled']]: disable,
       })}
       onClick={() => click()}
     >
@@ -22,9 +22,9 @@ export const ArrowButton: React.FC<Props> = ({ click, diraction, disable }) => {
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
         className={classNames(
-          'arrowButton__img',
-          `arrowButton__img--${diraction}`,
-          { 'arrowButton__img--disabled': disable },
+          styles.arrowButton__img,
+          styles[`arrowButton__img--${diraction}`],
+          { [styles['arrowButton__img--disabled']]: disable },
         )}
       >
         <path

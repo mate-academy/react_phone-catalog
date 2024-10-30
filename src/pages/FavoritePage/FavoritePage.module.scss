@@ -2,6 +2,7 @@
 @use '../../styles/mixins' as mix;
 
 .favoritePage {
+  padding-top: 24px;
   margin-bottom: 80px;
   &__title {
     margin-top: 40px;

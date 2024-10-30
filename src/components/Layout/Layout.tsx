@@ -1,12 +1,16 @@
 import { Outlet } from 'react-router-dom';
-import { Footer } from '../footer/Footer';
-import { Header } from '../header/Header';
-import './Layout.scss';
+
+import styles from './Layout.module.scss';
+
+import { Footer } from '../Footer';
+import { Header } from '../header';
+import { ScrollToTop } from '../ScrollToTop';
 
 export const Layout = () => (
-  <div className="layout">
+  <div className={styles.layout}>
+    <ScrollToTop />
     <Header />
-    <div className="layout__content">
+    <div className={styles.layout__content}>
       <Outlet />
       <Footer />
     </div>

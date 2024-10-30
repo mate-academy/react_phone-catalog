@@ -1,0 +1,116 @@
+@use '../../styles/mixins' as mix;
+@use '../../styles/variables' as v;
+
+.card {
+  padding: 32px;
+  height: 506px;
+  display: flex;
+  width: 100%;
+  background-color: v.$colorSurface1;
+  flex-direction: column;
+  gap: 8px;
+  
+  @include mix.respond-to(tablet) {
+    height: 512px;
+  }
+
+  @include mix.respond-to(mobile) {
+    height: 439px;
+  }
+
+  &:hover {
+    box-shadow: 0 0 0 1px v.$colorSurface2;
+  }
+
+  &__imgLink {
+    display: block;
+    flex-grow: 1;
+    flex-shrink: 1;
+    min-height: 150px;
+  }
+
+  &__img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+
+    @include mix.respond-to(tablet) {
+    }
+  }
+
+  &__title {
+    margin-top: 16px;
+    @include mix.bodyText;
+    color: v.$colorWhite;
+  }
+
+  &__prices {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__price {
+    color: v.$colorWhite;
+  }
+
+  &__fullPrice {
+    text-decoration: line-through;
+    color: v.$colorSecondary;
+  }
+
+
+  &__infoBlock {
+    display: flex;
+    gap: 8px;
+    justify-content: space-between;
+  }
+
+  &__infoTitle {
+    @include mix.smallText;
+    color: v.$colorSecondary;
+  }
+
+  &__infoText {
+    @include mix.smallText;
+    color: v.$colorWhite;
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__favButton {
+    @include mix.square(40px);
+    background-color: v.$colorSurface2;
+    background-image: url(../../assets/images/icons/favourites.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+
+    &:hover {
+      background-color: v.$colorIcons;
+    }
+
+    &--clicked {
+      background-image: url(../../assets/images/icons/favoritesSelected.svg);
+      background-color: transparent;
+      border: 1px solid v.$colorElements;
+    }
+  }
+
+  &__cartButton {
+    background-color: v.$colorAccent;
+    color: v.$colorWhite;
+    flex-grow: 1;
+    align-content: center;
+
+    &:hover {
+      background-color: #A378FF;
+      ;
+    }
+
+    &--clicked {
+      background-color: v.$colorSurface2;
+    }
+  }
+}

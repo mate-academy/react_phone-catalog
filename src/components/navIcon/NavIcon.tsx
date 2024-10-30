@@ -1,8 +1,11 @@
 /* eslint-disable prettier/prettier */
 /* eslint-disable react-hooks/rules-of-hooks */
+
+import classNames from 'classnames';
 import { Categories } from '../../types/Product';
 import { useAppSelector } from '../../utils/hooks';
-import './NavIcon.scss';
+
+import styles from './NavIcon.module.scss';
 
 interface Props {
   type: 'favorite' | 'cart';
@@ -21,8 +24,8 @@ export const NavIcon: React.FC<Props> = ({ type }) => {
       );
 
   return (
-    <div className={`navIcon navIcon--${type}`}>
-      {count !== 0 && <div className="navIcon__count">{count}</div>}
+    <div className={classNames(styles.navIcon, styles[`navIcon--${type}`])}>
+      {count !== 0 && <div className={styles.navIcon__count}>{count}</div>}
     </div>
   );
 };

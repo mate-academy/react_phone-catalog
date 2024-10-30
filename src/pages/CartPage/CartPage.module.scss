@@ -2,6 +2,8 @@
 @use '../../styles/mixins' as mix;
 
 .cartPage {
+  padding-top: 24px;
+
   &__title {
     margin-top: 16px;
     margin-bottom: 32px;

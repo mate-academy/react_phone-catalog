@@ -1,12 +1,15 @@
-import { NavLink, useLocation } from 'react-router-dom';
-import Logo from '../../assets/images/logo.svg';
-import './Header.scss';
-import { NavIcon } from '../navIcon/NavIcon';
+/* eslint-disable prettier/prettier */
 import { useState } from 'react';
+import { NavLink } from 'react-router-dom';
 import classNames from 'classnames';
 
+import Logo from '../../assets/images/logo.svg';
+
+import styles from './Header.module.scss';
+
+import { NavIcon } from '../NavIcon';
+
 export const Header: React.FC = () => {
-  const { state } = useLocation();
   const [openBurger, setOpenBurger] = useState(false);
 
   const handleBugreg = () => {
@@ -14,63 +17,72 @@ export const Header: React.FC = () => {
   };
 
   return (
-    <div className="header">
-      <div className="header__big">
-        <div className="header__nav">
-          <NavLink to="/" className="header__navLogo">
-            <img src={Logo} alt="logo" className="header__logo" />
+    <div className={styles.header}>
+      <div className={styles.header__big}>
+        <div className={styles.header__nav}>
+          <NavLink to="/" className={styles.header__navLogo}>
+            <img src={Logo} alt="logo" className={styles.header__logo} />
           </NavLink>
-          <div className="header__links">
+          <div className={styles.header__links}>
             <NavLink
               to="/"
               className={({ isActive }) =>
                 isActive
-                  ? 'header__navItem--text header__navItem--active'
-                  : 'header__navItem--text'
+                  ? classNames(
+                    styles['header__navItem--text'],
+                    styles['header__navItem--active'],
+                  )
+                  : classNames(styles['header__navItem--text'])
               }
             >
               Home
             </NavLink>
             <NavLink
-              to="/catalog"
+              to="/phones"
               className={({ isActive }) =>
-                isActive && state.category === 'phones'
-                  ? 'header__navItem--text header__navItem--active'
-                  : 'header__navItem--text'
+                isActive
+                  ? classNames(
+                    styles['header__navItem--text'],
+                    styles['header__navItem--active'],
+                  )
+                  : classNames(styles['header__navItem--text'])
               }
-              state={{ category: 'phones' }}
             >
               Phones
             </NavLink>
             <NavLink
-              to="/catalog"
+              to="/tablets"
               className={({ isActive }) =>
-                isActive && state.category === 'tablets'
-                  ? 'header__navItem--text header__navItem--active'
-                  : 'header__navItem--text'
+                isActive
+                  ? classNames(
+                    styles['header__navItem--text'],
+                    styles['header__navItem--active'],
+                  )
+                  : classNames(styles['header__navItem--text'])
               }
-              state={{ category: 'tablets' }}
             >
               Tablets
             </NavLink>
             <NavLink
-              to="/catalog"
+              to="/accessories"
               className={({ isActive }) =>
-                isActive && state.category === 'accessories'
-                  ? 'header__navItem--text header__navItem--active'
-                  : 'header__navItem--text'
+                isActive
+                  ? classNames(
+                    styles['header__navItem--text'],
+                    styles['header__navItem--active'],
+                  )
+                  : classNames(styles['header__navItem--text'])
               }
-              state={{ category: 'accessories' }}
             >
               Accessories
             </NavLink>
           </div>
         </div>
-        <div className="header__icons">
+        <div className={styles.header__icons}>
           <NavLink
             to="/favorites"
             className={({ isActive }) =>
-              isActive ? 'header__navItem--active' : ''
+              isActive ? styles['header__navItem--active'] : ''
             }
           >
             <NavIcon type="favorite" />
@@ -78,35 +90,39 @@ export const Header: React.FC = () => {
           <NavLink
             to="/cart"
             className={({ isActive }) =>
-              isActive ? 'header__navItem--active' : ''
+              isActive ? styles['header__navItem--active'] : ''
             }
+            state={{ category: 'cart' }}
           >
             <NavIcon type="cart" />
           </NavLink>
         </div>
       </div>
-      <div className="header__small">
-        <NavLink to="/" className="header__navLogo">
-          <img src={Logo} alt="logo" className="header__logo" />
+      <div className={styles.header__small}>
+        <NavLink to="/" className={styles.header__navLogo}>
+          <img src={Logo} alt="logo" className={styles.header__logo} />
         </NavLink>
         <div
-          className={classNames('header__burgerButton', {
-            'header__burgerButton--active': openBurger,
+          className={classNames(styles.header__burgerButton, {
+            [styles['header__burgerButton--active']]: openBurger,
           })}
           onClick={handleBugreg}
         />
         <div
-          className={classNames('header__smallContainer', {
-            'header__smallContainer--clicked': openBurger,
+          className={classNames(styles.header__smallContainer, {
+            [styles['header__smallContainer--clicked']]: openBurger,
           })}
         >
-          <div className="header__links">
+          <div className={styles.header__links}>
             <NavLink
               to="/"
               className={({ isActive }) =>
                 isActive
-                  ? 'header__navItem--text header__navItem--active'
-                  : 'header__navItem--text'
+                  ? classNames(
+                    styles['header__navItem--text'],
+                    styles['header__navItem--active'],
+                  )
+                  : classNames(styles['header__navItem--text'])
               }
             >
               Home
@@ -114,9 +130,12 @@ export const Header: React.FC = () => {
             <NavLink
               to="/catalog"
               className={({ isActive }) =>
-                isActive && state.category === 'phones'
-                  ? 'header__navItem--text header__navItem--active'
-                  : 'header__navItem--text'
+                isActive
+                  ? classNames(
+                    styles['header__navItem--text'],
+                    styles['header__navItem--active'],
+                  )
+                  : classNames(styles['header__navItem--text'])
               }
               state={{ category: 'phones' }}
             >
@@ -125,9 +144,12 @@ export const Header: React.FC = () => {
             <NavLink
               to="/catalog"
               className={({ isActive }) =>
-                isActive && state.category === 'tablets'
-                  ? 'header__navItem--text header__navItem--active'
-                  : 'header__navItem--text'
+                isActive
+                  ? classNames(
+                    styles['header__navItem--text'],
+                    styles['header__navItem--active'],
+                  )
+                  : classNames(styles['header__navItem--text'])
               }
               state={{ category: 'tablets' }}
             >
@@ -136,20 +158,23 @@ export const Header: React.FC = () => {
             <NavLink
               to="/catalog"
               className={({ isActive }) =>
-                isActive && state.category === 'accessories'
-                  ? 'header__navItem--text header__navItem--active'
-                  : 'header__navItem--text'
+                isActive
+                  ? classNames(
+                    styles['header__navItem--text'],
+                    styles['header__navItem--active'],
+                  )
+                  : classNames(styles['header__navItem--text'])
               }
               state={{ category: 'accessories' }}
             >
               Accessories
             </NavLink>
           </div>
-          <div className="header__icons">
+          <div className={styles.header__icons}>
             <NavLink
               to="/favorites"
               className={({ isActive }) =>
-                isActive ? 'header__navItem--active' : ''
+                isActive ? styles['header__navItem--active'] : ''
               }
             >
               <NavIcon type="favorite" />
@@ -157,7 +182,7 @@ export const Header: React.FC = () => {
             <NavLink
               to="/cart"
               className={({ isActive }) =>
-                isActive ? 'header__navItem--active' : ''
+                isActive ? styles['header__navItem--active'] : ''
               }
             >
               <NavIcon type="cart" />

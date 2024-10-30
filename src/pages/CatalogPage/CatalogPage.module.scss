@@ -2,8 +2,12 @@
 @use '../../styles/mixins' as mix;
 
 .catalogPage {
+  padding-top: 24px;
+  padding-bottom: 80px;
+
   &__title {
-    margin-top: 56px;
+    text-transform: capitalize;
+    margin-top: 40px;
   }
 
   &__modelCount {
@@ -24,6 +28,26 @@
     display: flex;
     flex-direction: column;
     gap: 4px;
+
+    &--by {
+      width: 176px;
+
+      @include mix.respond-to(tablet) {
+        width: 187px;
+      }
+
+      @include mix.respond-to(mobile) {
+        width: 136px;
+      }
+    }
+
+    &--perPage{
+      width: 128px;
+
+      @include mix.respond-to(tablet) {
+        width: 136px;
+      }
+    }
   }
 
   &__selTitle {

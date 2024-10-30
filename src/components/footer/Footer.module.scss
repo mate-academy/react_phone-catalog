@@ -23,7 +23,7 @@
     border-top: 1px solid  v.$colorElements;
     position: absolute;
     left: 0;
-    width: 100vw;
+    right: 0;
     bottom: 96px;
 
     @include mix.respond-to(mobile) {

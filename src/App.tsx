@@ -5,6 +5,7 @@ import { HomePage } from './pages/HomePage/HomePage';
 import { CatalogPage } from './pages/CatalogPage/CatalogPage';
 import { FavoritePage } from './pages/FavoritePage/FavoritePage';
 import { CartPage } from './pages/CartPage/CartPage';
+import { ItemPage } from './pages/ItemPage/ItemPage';
 
 export const App = () => {
   const router = createHashRouter([
@@ -17,8 +18,12 @@ export const App = () => {
           element: <HomePage />,
         },
         {
-          path: 'catalog',
+          path: '/:category',
           element: <CatalogPage />,
+        },
+        {
+          path: '/:category/:itemName',
+          element: <ItemPage />,
         },
         {
           path: 'favorites',
@@ -30,6 +35,10 @@ export const App = () => {
         },
         {
           path: '*',
+          element: <NotFoundPage />,
+        },
+        {
+          path: '/404',
           element: <NotFoundPage />,
         },
       ],

@@ -1,18 +1,21 @@
 @use '../../styles/mixins' as mix;
 @use '../../styles/variables' as v;
 
-.card {
+.cardSkeleton {
   padding: 32px;
-  width: 272px;
   height: 506px;
   display: flex;
+  width: 100%;
   background-color: v.$colorSurface1;
   flex-direction: column;
   gap: 8px;
   
   @include mix.respond-to(tablet) {
-    width: 237px;
     height: 512px;
+  }
+
+  @include mix.respond-to(mobile) {
+    height: 439px;
   }
 
   &:hover {
@@ -20,37 +23,23 @@
   }
 
   &__img {
-    display: block;
-    flex-grow: 1;
     width: 100%;
+    height: 200px;
 
-    @include mix.respond-to(tablet) {
+    @include mix.respond-to(mobile) {
+      height: 150px;
     }
   }
+
 
   &__title {
     margin-top: 16px;
     @include mix.bodyText;
-    color: v.$colorWhite;
-  }
-
-  &__prices {
-    display: flex;
-    gap: 8px;
   }
 
   &__price {
-    color: v.$colorWhite;
-  }
-
-  &__fullPrice {
-    text-decoration: line-through;
-    color: v.$colorSecondary;
-  }
-
-  &__line {
-    border: 0;
-    border-top: 1px solid  v.$colorElements;
+    margin-bottom: 10px;
+    height: 20px;
   }
 
   &__infoBlock {
@@ -67,6 +56,7 @@
   &__infoText {
     @include mix.smallText;
     color: v.$colorWhite;
+    width: 80px;
   }
 
   &__buttons {
@@ -84,20 +74,11 @@
     &:hover {
       background-color: v.$colorIcons;
     }
-
-    &--clicked {
-      background-image: url(../../assets/images/icons/favoritesSelected.svg);
-      background-color: transparent;
-      border: 1px solid v.$colorElements;
-    }
   }
 
   &__cartButton {
     background-color: v.$colorAccent;
-    font-weight: 700;
     color: v.$colorWhite;
-    size: 14px;
-    line-height: 21px;
     flex-grow: 1;
     align-content: center;
 

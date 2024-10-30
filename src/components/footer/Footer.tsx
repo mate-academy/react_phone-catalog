@@ -1,9 +1,12 @@
 import { Link } from 'react-router-dom';
-import Logo from '../../assets/images/logo.svg';
-import './Footer.scss';
-import { ArrowButton } from '../arrowButton/ArrowButton';
 
-export const Footer = () => {
+import Logo from '../../assets/images/logo.svg';
+
+import styles from './Footer.module.scss';
+
+import { ArrowButton } from '../ArrowButton';
+
+export const Footer: React.FC = () => {
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
@@ -12,22 +15,22 @@ export const Footer = () => {
   };
 
   return (
-    <div className="footer">
-      <hr className="footer__line" />
-      <img src={Logo} alt="logo" className="footer__logo" />
-      <div className="footer__links">
-        <Link to="" className="footer__linkText">
+    <div className={styles.footer}>
+      <hr className={styles.footer__line} />
+      <img src={Logo} alt="logo" className={styles.footer__logo} />
+      <div className={styles.footer__links}>
+        <Link to="" className={styles.footer__linkText}>
           Github
         </Link>
-        <Link to="" className="footer__linkText">
+        <Link to="" className={styles.footer__linkText}>
           Contacts
         </Link>
-        <Link to="" className="footer__linkText">
+        <Link to="" className={styles.footer__linkText}>
           Rights
         </Link>
       </div>
-      <div className="footer__toTop">
-        <p className="footer__text">Back to top</p>
+      <div className={styles.footer__toTop}>
+        <p className={styles.footer__text}>Back to top</p>
         <ArrowButton
           diraction="top"
           click={() => scrollToTop()}
