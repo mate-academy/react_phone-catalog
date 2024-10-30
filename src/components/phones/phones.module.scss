@@ -41,8 +41,7 @@
     padding: 32px;
     display: flex;
     margin-bottom: 40px;
-
-    flex-direction: column;
+    flex-flow: column nowrap;
 
     @include on-tablet {
       height: 506px;
@@ -53,7 +52,7 @@
     }
 
     &:hover {
-      box-shadow: 0px 2px 15px 0px #0000001a;
+      box-shadow: 0 2px 15px 0 rgba(0, 0, 0, 0.1);
     }
   }
 
@@ -65,8 +64,7 @@
     flex-direction: column;
 
     @include on-tablet {
-      flex-direction: row;
-      flex-wrap: wrap;
+      flex-flow: row wrap;
       gap: 16px;
       justify-content: center;
     }
