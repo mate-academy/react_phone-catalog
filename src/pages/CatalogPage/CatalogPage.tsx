@@ -70,6 +70,7 @@ export const CatalogPage: React.FC = () => {
     }
 
     setProducts(filteredProducts);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [filter]);
 
   const handleSortByChange = (
