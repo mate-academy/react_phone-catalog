@@ -1,7 +1,7 @@
 @use '../../styles/variables' as v;
 @use '../../styles/mixins' as mix;
 
-.cartEmpty {
+.wentWrong {
   flex-grow: 1;
   background-color: v.$colorSurface2;
   display: flex;
@@ -28,7 +28,7 @@
 
   &__img {
     display: block;
-    
+
     @include mix.square(400px);
 
     object-fit: contain;

@@ -29,7 +29,7 @@ export const HomePage: React.FC = () => {
 
   useEffect(() => {
     setLoader(true);
-    fetch('/api/products.json')
+    fetch('/react_phone-catalog/api/products.json')
       .then(response => response.json())
       .then(data => setProducts(data))
       .catch(() => setError(true))

@@ -45,7 +45,7 @@ export const CatalogPage: React.FC = () => {
       navigate('/404', { replace: true });
     } else {
       setLoader(true);
-      fetch(`/api/${category}.json`)
+      fetch(`/react_phone-catalog/api/${category}.json`)
         .then(response => response.json())
         .then(data => setProducts(data))
         .catch(() => setError(true))

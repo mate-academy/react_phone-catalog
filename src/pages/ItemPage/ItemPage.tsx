@@ -30,7 +30,7 @@ export const ItemPage: React.FC = () => {
 
   useEffect(() => {
     setLoader(true);
-    fetch(`/api/${category}.json`)
+    fetch(`/react_phone-catalog/api/${category}.json`)
       .then(response => response.json())
       .then(data => {
         setCard(
