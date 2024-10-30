@@ -35,7 +35,9 @@ export const PhonesPage: React.FC = () => {
     } catch (error) {
       setError('Something went wrong. Please try again.');
     } finally {
-      setLoader(false);
+      setTimeout(() => {
+        setLoader(false);
+      }, 1000);
     }
   };
 

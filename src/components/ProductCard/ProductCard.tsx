@@ -7,11 +7,11 @@ interface ProductCardProps {
 }
 
 export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
-  const productId = product.itemId;
+  const productId = product.itemId || product.id;
 
   return (
     <div className="product-card">
-      <Link to={`/product/${productId}`}>
+      <Link to={`/product/${product.category}/${productId}`}>
         <img
           src={product.image}
           alt={product.name}

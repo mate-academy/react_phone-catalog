@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom';
-import { useRef } from 'react';
 import strokeLeft from '../../../public/img/icons/StrokeLeft.svg';
 import strokeRight from '../../../public/img/icons/StrokeRight.svg';
 import favouritesIcon from '../../../public/img/icons/Favourites.svg';
+import { useEffect, useState } from 'react';
 
 import { ProductDescription } from '../../types/Accessories';
 
@@ -13,50 +13,52 @@ interface SuggestedProductsProps {
 export const SuggestedProducts: React.FC<SuggestedProductsProps> = ({
   products,
 }) => {
-  const scrollContainerRef = useRef<HTMLDivElement>(null);
 
-  const scrollLeft = () => {
-    console.log('Scroll left', scrollLeft);
-    scrollContainerRef.current?.scrollBy({
-      left: -300,
-      behavior: 'smooth',
-    });
+  const [currentIndex, setCurrentIndex] = useState<number>(0);
+
+  const productsPerPage = 4;
+  const totalProducts = products.length;
+  const totalPages = Math.ceil(totalProducts / productsPerPage);
+
+  const nextPage = () => {
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % totalPages);
   };
 
-  const scrollRight = () => {
-    console.log('Scroll Right');
-    scrollContainerRef.current?.scrollBy({
-      left: 300,
-      behavior: 'smooth',
-    });
+  const prevPage = () => {
+    setCurrentIndex((prevIndex) => (prevIndex - 1 + totalPages) % totalPages);
   };
+
+  const startIndex = currentIndex * productsPerPage;
+  const currentProducts = products.slice(startIndex, startIndex + productsPerPage);
+
 
   return (
     <section className="section section--hot-prices">
       <div className='section__header'>
         <h1 className='section__title'>You may also like</h1>
-        <a href="#" onClick={(event) => {
- event.preventDefault(); scrollLeft()
-}}><img src={strokeLeft} alt="Previous" ></img></a>
-        <a href="#" onClick={(event) => {
- event.preventDefault(); scrollRight()
-}}><img src={strokeRight} alt="Next"></img></a>
+        <div className='section__icons'>
+          <button onClick={prevPage} className='section__icon section__icon--left'>
+            <img src={strokeLeft} alt="Previous"/>
+          </button>
+          <button onClick={nextPage} className='section__icon section__icon--right'>
+            <img src={strokeRight} alt="Next"/>
+          </button>
+        </div>
       </div>
 
       <section className="suggested-products ">
-        <div ref={scrollContainerRef} className="suggested-products__list product-grid">
-        >
-          {products.map(product => (
+        <div className="suggested-products__list product-grid">
+          {currentProducts.map(product => (
             <div key={product.id} className="suggested-product product-card">
-              <Link to={`/product/${product.namespaceId}-${product.capacity}-${product.color}`} className="suggested-product__link">
+              <Link to={`/product/${product?.category}/${product?.namespaceId}-${product?.capacity}-${product?.color}`} className="suggested-product__link">
                 <img
-                  src={`../${product.images[0]}`}
+                  src={`/${product.images[0]}`}
                   alt={product.name}
                   className="product-card__image"
                 />
               </Link>
 
-              <Link to={`/product/${product.namespaceId}-${product.capacity}-${product.color}`}
+              <Link to={`/product/${product.category}/${product.namespaceId}-${product.capacity}-${product.color}`}
                 className="suggested-product__link">
                 <h3 className="suggested-product__name">{product.name}</h3>
               </Link>

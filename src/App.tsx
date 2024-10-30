@@ -366,6 +366,7 @@ import ProductsPage from './modules/ProductsPage/ProductsPage';
 import AccessoriesPage from './modules/AccessoriesPage/AccessoriesPage';
 import TabletsPage from './modules/TabletsPage/TabletsPage';
 import { ProductDetailsPage } from './modules/ProductDetailsPage/ProductDetailsPage';
+import { HomePage } from './modules/HomePage/HomePage';
 
 export const App: React.FC = () => {
   const topRef = useRef<HTMLDivElement | null>(null);
@@ -376,11 +377,11 @@ export const App: React.FC = () => {
         <Header ref={topRef} />
         <main className="main">
           <Routes>
-            <Route path="/" element={<ProductsPage />} />
+            <Route path="/" element={<HomePage />} />
             <Route path="/phones" element={<PhonesPage />} />
             <Route path="/tablets" element={<TabletsPage />} />
             <Route path="/accessories" element={<AccessoriesPage />} />
-            <Route path="/product/:itemId" element={<ProductDetailsPage />} />
+            <Route path="/product/:category/:itemId" element={<ProductDetailsPage />} />
             <Route path="/favourites" element={<div>Favourites Page</div>} />
             <Route
               path="/shopping-bag"

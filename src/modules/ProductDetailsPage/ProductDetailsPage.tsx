@@ -15,7 +15,7 @@ interface ProductDetailsPageProps {
 }
 
 export const ProductDetailsPage: React.FC<ProductDetailsPageProps> = () => {
-  const { itemId } = useParams<{ itemId: string }>();
+  const { itemId, category } = useParams<{ itemId: string; category: string }>();
   const params = useParams();
 
   console.log('params', params);
@@ -36,7 +36,7 @@ export const ProductDetailsPage: React.FC<ProductDetailsPageProps> = () => {
   const fetchProducts = async () => {
     setLoading(true);
     try {
-      const response = await fetch('/api/accessories.json');
+      const response = await fetch(`/api/${category}.json`);
       const data = await response.json();
       const selectedProduct = data.find(
         (item: ProductDescription) => item.id === itemId,
@@ -45,7 +45,7 @@ export const ProductDetailsPage: React.FC<ProductDetailsPageProps> = () => {
       if (selectedProduct) {
         setProduct(selectedProduct);
 
-        setSelectedImage(`../${selectedProduct.images[0]}`);
+        setSelectedImage(`/${selectedProduct.images[0]}`);
         setChooseCapacity(selectedProduct.capacity);
 
         setChooseColor(selectedProduct.color);
@@ -62,7 +62,8 @@ export const ProductDetailsPage: React.FC<ProductDetailsPageProps> = () => {
   const fetchSuggestingProducts = async () => {
     setLoading(true);
     try {
-      const response = await fetch('/api/accessories.json');
+      // const response = await fetch('/api/accessories.json');
+      const response = await fetch(`/api/${category}.json`);
       const data = await response.json();
 
       const suggestedProducts = data.filter(
@@ -109,13 +110,18 @@ export const ProductDetailsPage: React.FC<ProductDetailsPageProps> = () => {
     setChooseColor(color);
   };
 
-  const baseImagePath = `../img/${product?.category}/${product?.namespaceId}/${chooseColor}`;
+  const baseImagePath = `/img/${product?.category}/${product?.namespaceId}/${chooseColor}`;
 
   const imageFiles = ['00.webp', '01.webp', '02.webp'];
   // "img/accessories/apple-watch-series-6/silver/00.webp",
 
-  if (loading) {return <div>Loading...</div>;}
-  if (error) {return <div>{error}</div>;}
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>{error}</div>;
+  }
 
   return (
     <div className="section section--product-details">
@@ -147,7 +153,12 @@ export const ProductDetailsPage: React.FC<ProductDetailsPageProps> = () => {
 
       <div className="back-button">
         <span className="breadcrumbs__separator">/</span>
-        <a href="#" onClick={handleBackClick} aria-label="Go back" className="back-button__link">
+        <a
+          href="#"
+          onClick={handleBackClick}
+          aria-label="Go back"
+          className="back-button__link"
+        >
           <span className="breadcrumbs__icon">
             <img src={strokeLeft} alt="Stroke left" />
           </span>
@@ -178,7 +189,10 @@ export const ProductDetailsPage: React.FC<ProductDetailsPageProps> = () => {
           </div>
 
           <div className="product-gallery product-gallery__main-image">
-            <img src={selectedImage ? `${selectedImage}` :''} alt="Product main view" />
+            <img
+              src={selectedImage ? `${selectedImage}` : ''}
+              alt="Product main view"
+            />
           </div>
 
           <div className="product-info">
@@ -193,7 +207,7 @@ export const ProductDetailsPage: React.FC<ProductDetailsPageProps> = () => {
                   return (
                     <Link
                       key={color}
-                      to={`/product/${product?.namespaceId}-${product?.capacity}-${color}`}
+                      to={`/product/${product?.category}/${product?.namespaceId}-${product?.capacity}-${color}`}
                       onClick={() => handleColorChange(color)}
                       className={`color-picker__option color-picker__option--${color.replace(' ', '-')} ${isCurrColor ? 'active' : ''}`}
                     ></Link>
@@ -213,7 +227,7 @@ export const ProductDetailsPage: React.FC<ProductDetailsPageProps> = () => {
                   return (
                     <Link
                       key={capacity}
-                      to={`/product/${product?.namespaceId}-${capacity}-${product?.color}`}
+                      to={`/product/${product?.category}/${product?.namespaceId}-${capacity}-${product?.color}`}
                       className={`capacity-picker__option ${isCurrCapacity ? 'active' : ''}`}
                       aria-label={`Select ${capacity}`}
                       onClick={() => handleCapacityChange(capacity)}
@@ -273,11 +287,12 @@ export const ProductDetailsPage: React.FC<ProductDetailsPageProps> = () => {
           <div className="about">
             <h2 className="about__title">About</h2>
             {product?.description.map((section, index) => (
-              <div className={`section-${index + 1}`}>
+              <div
+                key={index}
+                className={`section-${index + 1}`}>
                 <h3 className="section-title"></h3>
                 {section.text.map((paragraph, idx) => (
-                  <p key={idx}
-                    className="about__text">
+                  <p key={idx} className="about__text">
                     {paragraph}
                   </p>
                 ))}
@@ -326,7 +341,7 @@ export const ProductDetailsPage: React.FC<ProductDetailsPageProps> = () => {
         </section>
       </main>
 
-      <SuggestedProducts products={suggestedProducts} />
+      <SuggestedProducts  products={suggestedProducts} />
 
       {/* <section className='section section--hot-prices'>
         <div className='section__header'>

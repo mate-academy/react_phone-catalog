@@ -50,7 +50,11 @@ import { NavLink } from 'react-router-dom';
 import { logo, favouritesIcon, shoppingBagIcon } from '../assets/icons';
 import '../App.scss';
 import classNames from 'classnames';
-export const Header: React.FC = forwardRef<HTMLDivElement>((props, ref) => {
+
+interface HeaderProps {
+
+}
+export const Header = forwardRef<HTMLDivElement, HeaderProps>((props, ref) => {
   const selectedPage = (isActive: boolean) =>
     classNames('header__nav-link', { active: isActive });
 

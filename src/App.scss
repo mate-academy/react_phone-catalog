@@ -68,7 +68,7 @@
 .section {
   position: relative;
   width: 100%;
-  overflow: hidden;
+  // overflow: hidden;
   box-sizing: border-box;
   margin-bottom: 80px;
 
@@ -495,9 +495,25 @@
 .color-picker__option--silver {
   background-color: #484949;
 }
+.color-picker__option--skyblue {
+  background-color: #149ad3;
+}
+.color-picker__option--spacegray {
+  background-color: #5e6060;
+}
+.color-picker__option--midnightgreen {
+  background-color: #1d3c3c;
+}
+.color-picker__option--pink {
+  background-color: #dc31d3;
+}
+
 
 .color-picker__option--space--grey {
   background-color: #424242;
+}
+.color-picker__option--space--yellow {
+  background-color: #c1cd18;
 }
 
 .color-picker__option--white {
@@ -755,9 +771,99 @@
 }
 
 .suggested-products__list {
-  /* Дозволяє елементам бути в ряд */
-  overflow-x: auto; /* Додає горизонтальну прокрутку */
-  scroll-behavior: smooth; /* Для плавної прокрутки */
-  /* Інші стилі, такі як ширина, висота тощо */
+
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  flex-wrap: nowrap;
 }
 
+.suggested-products {
+  position: relative;
+  width: 100%;
+}
+
+
+//Slider//
+
+
+.slider-container {
+  position: relative;
+  width: 100%;
+  max-width: 1040px;
+  margin: auto;
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+.slider-container img {
+  transition: opacity 0.5s ease-in-out;
+  width: 100%;
+  height: auto;
+  // position: absolute;
+  top: 0;
+  left: 0;
+  // display: none;
+}
+
+.slider-container img.active {
+  display: block;
+}
+
+.section__icons {
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+.section__icon {
+  pointer-events: auto;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 10px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.section__icon:hover {
+  background-color: rgba(0, 0, 0, 0.7);
+  background-color: greenyellow;
+  background-color: rgba(173, 255, 47, 0.7);
+}
+
+.section__icon--left {
+  margin-left: 10px;
+}
+
+.section__icon--right {
+  margin-right: 10px;
+}
+
+.slider-indicators {
+  display: flex;
+  justify-content: center;
+  margin-bottom: -20px;
+}
+
+.slider-indicator {
+  height: 4px;
+  width: 14px;
+  margin: 0 5px;
+  background-color: #bbb;
+  display: inline-block;
+
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.slider-indicator.active {
+  background-color: greenyellow;
+  transform: scale(1.2);
+}
+
+.product-slider__track {
+  transition: transform 0.5 ease-in-out;
+}
