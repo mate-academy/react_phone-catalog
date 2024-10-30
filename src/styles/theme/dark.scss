@@ -14,12 +14,11 @@ body.dark-theme {
   --bg-header-footer: #{$dark-black};
   --link: #{$dark-secondary};
   --active-link: #{$dark-white};
-  --action-count: #{$red};
   --icon-primary: #{$dark-white};
   --icon-secondary: #{$dark-icons};
   --round-btn-hover: #{$dark-icons};
   --round-btn-hover-border: #{$dark-icons};
   --bg-secondary: #{$dark-surface-1};
-  --search-img: url('../../assets/images/icons/search-dark.svg');
   --text-active: #{$dark-black};
+  --search-img: url('../../assets/images/icons/search-dark.svg');
 }

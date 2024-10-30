@@ -37,6 +37,10 @@
 
     @include transition;
 
+    svg path {
+      fill: var(--icon-primary);
+    }
+
     &:hover {
       border-color: var(--icon-primary);
     }
@@ -47,10 +51,6 @@
       svg path {
         fill: var(--secondary-accent);
       }
-    }
-
-    svg path {
-      fill: var(--icon-primary);
     }
   }
 }
