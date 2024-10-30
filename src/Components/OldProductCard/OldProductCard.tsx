@@ -54,31 +54,21 @@ export const DiscountProduct = ({ discountProduct }: Props) => {
   };
 
   const addOldProductToFavourite = (oldItem: OldProduct) => {
-    const readyToAdd = favouriteOldItems.some(item => item.id === oldItem.id);
+    const readyToAddItem = favouriteOldItems.some(
+      item => item.id === oldItem.id,
+    );
 
-    if (
-      oldItem.id === discountProduct.id &&
-      oldAddedItems.find(item => item.id === oldItem.id)
-    ) {
-      const updateItem = oldAddedItems.filter(item => item.id !== oldItem.id);
-
-      setTotalOldModels(totalOldModels - amountOfOldModels);
-      setOldAddedItems(updateItem);
-      setTotalOldProductsPrice(
-        totalOldProductsPrice - amountOfOldModels * oldItem.price,
+    if (oldItem.id !== discountProduct.id) {
+      const updateItem = favouriteOldItems.filter(
+        item => item.id !== oldItem.id,
       );
+
+      setFavouriteOldItems(updateItem);
+    } else {
+      setFavouriteOldItems([...favouriteOldItems, oldItem]);
     }
 
-    if (
-      oldItem.id === discountProduct.id &&
-      !oldAddedItems.find(item => item.id === oldItem.id)
-    ) {
-      setTotalOldModels(totalOldModels + 1);
-      setTotalOldProductsPrice(totalOldProductsPrice + oldItem.price);
-      setOldAddedItems([...oldAddedItems, oldItem]);
-    }
-
-    if (readyToAdd) {
+    if (readyToAddItem) {
       const updateItem = favouriteOldItems.filter(
         item => item.id !== oldItem.id,
       );

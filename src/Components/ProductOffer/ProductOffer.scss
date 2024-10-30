@@ -22,6 +22,10 @@
     align-items: flex-start;
     margin: 16px 0 0 16px;
     grid-column: 1 / 5;
+
+    @include on-tablet {
+      grid-column: 1 / 13;
+    }
     &--home {
       background-image: url('../../img/Home.svg');
       background-repeat: no-repeat;
@@ -82,6 +86,11 @@ grid-column: 3 / 5;
   }
   &__title {
     grid-column: 1 / 5;
+
+    @include on-tablet {
+      grid-column: 1 / 13;
+    }
+
     margin: 32px 25px 0 16px;
 font-family: Mont-bold, sans-serif;
 font-size: 22px;
@@ -90,39 +99,63 @@ line-height: 30.8px;
 text-align: left;
 
   }
+
+  &__images {
+    display: flex;
+    flex-direction: column;
+
+    @include on-tablet {
+      grid-column: 1 / 8;
+      width: auto;
+    }
+  }
   &__image {
     margin-top: 45px;
     grid-column: 1 / 5;
     object-fit: contain;
+    width: 288px;
+      height: 288px;
+  }
+
+  &__dot-image {
+    grid-column: 1 / 5;
+    object-fit: contain;
+    background-color: transparent;
+    margin-top: 62px;
 
     @include on-tablet {
       grid-column: 3 / 9;
       width: 288px;
       height: 288px;
+      margin: 0;
     }
-
-    &::selection {
-      border: 2px solid black;
-    }
-
+  }
+  &__sliderimage {
+    margin-top: 70px;
+    width: 288px;
+    height: 288px;
+    object-fit: contain;
   }
   &__phoneslider {
-    grid-column: 1 / 5;
-    width: 550px;
     display: flex;
-    flex-direction: row-reverse;
+    flex-direction: column;
     justify-content: space-around;
 
     @include on-tablet {
       grid-column: 1 / 9;
+      flex-direction: row-reverse;
+      width: auto;
+      div {
+        width: 228px;
+      }
     }
   }
 
   &__panel {
     grid-column: 1 / 5;
-    
+
     @include on-tablet {
-      grid-column: 9 / 13;
+      grid-column: 8 / 13;
     }
 
     margin: 32px 0 0 8px;
@@ -227,6 +260,7 @@ color: #89939A;
         }
     }
     &--buttons {
+      height: 100px;
       display: flex;
       gap: 8px;
       justify-content: center;
@@ -238,12 +272,17 @@ color: #89939A;
       background-color: #216CFF;
       color: white;
       border: 0;
-
 font-family: Mont, sans-serif;
 font-size: 14px;
 font-weight: 700;
 line-height: 21px;
 text-align: center;
+cursor: pointer;
+&:hover {
+  border: 2px solid blue;
+  background-color: white;
+  color: blue;
+}
 
     }
     &--heart-button {
@@ -256,6 +295,11 @@ text-align: center;
       background-size: 16px 16px;
       background-position: center;
       background-color: white;
+      cursor: pointer;
+      &:hover {
+        background-image: url('../../img/Add\ to\ favorites-hover.svg');
+        background-size: 50px 50px;
+      }
           &--is-active {
       width: 48px;
     height: 48px;
@@ -266,9 +310,6 @@ text-align: center;
     background-color: white;
     background-size: 48px 48px;
       background-image: url('../../img/Add\ to\ fovourites\ -\ Added.svg');
-      &:hover {
-        background-image: url('../../img/Add\ to\ fovourites\ -\ Added.svg');
-      }
     }
     }
     &--basicspec {
@@ -303,6 +344,10 @@ text-align: center;
   }
   &__description {
     grid-column: 1 / 5;
+
+    @include on-tablet {
+      grid-column: 1 / 7;
+    }
     &--header {
       margin-top: 64px;
       font-family: Mont-bold, sans-serif;
@@ -332,11 +377,16 @@ text-align: center;
       line-height: 21px;
       text-align: left;
       color:#89939A;
-
     }
   }
   &__techspecs {
     grid-column: 1 / 5;
+
+    @include on-tablet {
+      margin-top: 100px;
+      grid-column: 7 / 13;
+    }
+
     margin-top: 32px;
     &--data {
       display: flex;
@@ -367,8 +417,9 @@ text-align: center;
   &__slider {
     margin-top: 64px;
     grid-column: 1 / 5;
+    width: 212px;
     div {
-      width: 212px;
+      width: 260px;
     }
     &--header {
       font-family: Mont-bold, sans-serif;
@@ -380,22 +431,44 @@ text-align: center;
   }
   .productcard {
     height: 460px;
+    width: 228px;
   }
+  .productcard__name {
+    height: 26px;
+  }
+  .productcard__line {
+    width: 150px;
+    margin: 0 auto;
+  }
+  .productcard__screen--title {
+      margin-left: 20px;
+      width: 40px;
+  }
+  .productcard__screen--value {
+    width: 100px;
+    margin-right: 59px;
+  }
+  .productcard__capacity--title {
+    margin-left: 20px;
+}
+.productcard__capacity--value {
+  width: 59px;
+  margin-right: 59px;
+}
+.productcard__ram--title {
+  margin-left: 20px;
+}
+.productcard__ram--value {
+  width: 59px;
+  margin-right: 59px;
+}
+
   .productcard__buttons {
     margin-bottom: 10px;
+    width: auto;
   }
   .productcard__image {
     margin-left: 35px;
-  }
-
-  .slick-list {
-    width: 240px;
-
-    @include on-tablet {
-      div {
-        margin-right: 40px;
-      }
-    }
   }
 
   .slick-dots {
@@ -404,7 +477,9 @@ text-align: center;
 
     @include on-tablet {
       flex-direction: column;
-      gap: 12px;
+      gap: 50px;
+      margin-top: 60px;
+
       li {
         height: 76px;
       }
@@ -412,12 +487,15 @@ text-align: center;
   }
   .slick-track {
     margin-top: 32px;
+    height: 430px;
+    width: 212px;
   }
   .slick-prev {
     bottom: 38px;
   }
   .slick-next {
-    bottom: 570px;
+    bottom: 543px;
+
   }
 
   :not(div) .slick-active {
@@ -429,14 +507,16 @@ text-align: center;
     align-items: center;
     padding-bottom: 60px;
 
-  }
+    @include on-tablet {
+      padding: 0;
+    }
 
+  }
 
    li {
      width: 55px;
      display: flex;
      align-items: center;
-     padding-top: 15px;
    }
 }
 

@@ -9,20 +9,20 @@ import { FilterType } from '../types/FilterType';
 import { CatalogContext } from '../CatalogProvider';
 import { ItemPerPage } from '../types/ItemPerPage';
 import { Pagination } from '../Pagination/Pagination';
+import { useSearchParams } from 'react-router-dom';
 
 export const AccessoriesPage = () => {
-  const {
-    products,
-    setProducts,
-    accessories,
-    filter,
-    query,
-    itemsPerPage,
-    slidePages,
-    pageNumber,
-  } = useContext(CatalogContext);
+  const { products, setProducts, accessories, pageNumber } =
+    useContext(CatalogContext);
 
-  const filteredOptions = (allAccessories: FilterType) => {
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const queries = searchParams.get('query') || '';
+  const sortOptions = searchParams.get('sort') || '';
+  const items = searchParams.get('perPage') || '';
+  const itemsInNumber = parseInt(items);
+
+  const filteredOptions = (allAccessories: string) => {
     const selectedProducts = products.filter(
       product => product.category === 'accessories',
     );
@@ -77,7 +77,7 @@ export const AccessoriesPage = () => {
     }
   };
 
-  const filterAccessories = filteredOptions(filter);
+  const filterAccessories = filteredOptions(sortOptions);
 
   const filteredAccessories = filterAccessories.filter(accessory => {
     const searchedText = `${accessory.capacity}${accessory.price}${accessory.color}${accessory.name}${accessory.ram}${accessory.screen}`;
@@ -85,7 +85,7 @@ export const AccessoriesPage = () => {
     return searchedText
       .toLowerCase()
       .trim()
-      .includes(query.trim().toLowerCase());
+      .includes(queries.trim().toLowerCase());
   });
 
   useEffect(() => {
@@ -103,26 +103,20 @@ export const AccessoriesPage = () => {
     setProducts(fullProductData);
   }, []);
 
-  const rest =
-    filteredAccessories.length -
-    Math.floor(filteredAccessories.length / +itemsPerPage) * +itemsPerPage;
-
-  const amountOfPages = Math.ceil(filteredAccessories.length / +itemsPerPage);
-
-  const setItemsPerPage = (perPage: ItemPerPage) => {
-    switch (perPage) {
+  const getVisibleItems = (itemsOptions: ItemPerPage) => {
+    switch (itemsOptions) {
       case ItemPerPage.ALL:
-        return filteredAccessories.length;
+        return filteredAccessories;
       case ItemPerPage.SIXTEEN_PER_PAGE:
-        return 16;
       case ItemPerPage.EIGHT_PER_PAGE:
-        return 8;
       case ItemPerPage.FOUR_PER_PAGE:
-        return 4;
       case ItemPerPage.TWO_PER_PAGE:
-        return 2;
+        return filteredAccessories.slice(
+          (pageNumber - 1) * itemsInNumber,
+          pageNumber * itemsInNumber,
+        );
       default:
-        return filterAccessories.length;
+        return filteredAccessories;
     }
   };
 
@@ -140,21 +134,23 @@ export const AccessoriesPage = () => {
 
         <h1 className="productpage__header">Accessories</h1>
         <span className="productpage__amountofmodels">{`${accessories.length} models`}</span>
-        <ProductsFilter />
-        <div
-          className="productpage__content"
-          style={{
-            transform: `translateX(${slidePages}px)`,
-            height: `${amountOfPages === pageNumber ? rest * 490 + (rest - 1) * 16 + 50 : setItemsPerPage(itemsPerPage) * 490 + (setItemsPerPage(itemsPerPage) - 1) * 16 + 50}px`,
-          }}
-        >
-          {filteredAccessories.map(product => (
+        <ProductsFilter
+          queries={queries}
+          setParams={setSearchParams}
+          sort={sortOptions}
+          perPage={items}
+        />
+        <div className="productpage__content">
+          {getVisibleItems(itemsInNumber).map(product => (
             <ProductCard product={product} key={product.id} />
           ))}
         </div>
       </div>
-      {itemsPerPage !== ('1' as ItemPerPage) && (
-        <Pagination filteredItems={filteredAccessories} />
+      {itemsInNumber !== (1 as ItemPerPage) && (
+        <Pagination
+          filteredItems={filteredAccessories}
+          itemsInNumber={itemsInNumber}
+        />
       )}
       <Footer />
     </>

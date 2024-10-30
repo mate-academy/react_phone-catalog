@@ -15,6 +15,12 @@
   display: flex;
   justify-content: space-between;
   flex-direction: column;
+  
+  @include on-tablet {
+    flex-direction: row;
+    justify-content: left;
+    gap: 16px;
+  }
   &__input {
     width: 287px;
     height: 40px;
@@ -32,16 +38,29 @@
   }
   &__glass {
     position: relative;
-    top: 65px;
+    top: -126px;
     right: 6px;
     width: 50px;
     height: 50px;
     background-image: url('../../img/Glass.svg');
     background-repeat: no-repeat;
     background-size: 48px 48px;
+
+    @include on-tablet {
+      position: relative;
+      top: 15px;
+      right: 612px;
+
+    }
   }
   &__text {
     font-family: Mont, sans-serif;
+  }
+  &__query {
+    @include on-tablet {
+      display: flex;
+      flex-direction: column;
+    }
   }
   &__filter {
     display: flex;
@@ -52,9 +71,8 @@
   &__filters {
     display: flex;
     flex-direction: row;
-    width: 287px;
     justify-content: space-between;
-
+    gap: 16px;
   }
   &__selection {
     grid-column: 1 / 5;
@@ -64,7 +82,7 @@
     height: 40px;
     border-radius: 10px;
     cursor: pointer;
-    
+
     @include on-tablet {
       grid-column: 1 / 13;
     }

@@ -1,3 +1,5 @@
+@import '../../utils/mixins';
+
 .pagination {
   grid-column: 1 / 5;
   margin: 0 8px;
@@ -14,6 +16,12 @@
     background-position: 50%;
     cursor: pointer;
     margin-right: 130px;
+
+    @include on-tablet {
+      position: relative;
+      top: 35px;
+      right: 3px;
+    }
     &:hover {
       background-color: black;
       background-image: url('../../img/Arrow-left-hover.svg');
@@ -25,6 +33,10 @@
     justify-content: space-between;
     width: 300px;
     margin-left: -5px;
+
+    @include on-tablet {
+      margin: 30px auto 0;
+    }
 
   }
   &__arrownext {
@@ -38,6 +50,11 @@
     background-size: 24px 24px;
     background-position: 50%;
     cursor: pointer;
+
+    @include on-tablet {
+      position: relative;
+      top: 35px;
+    }
     &:hover {
       background-color: black;
       background-image: url('../../img/arrow-right-hover.svg');
@@ -56,6 +73,11 @@
     background-size: 24px 24px;
     background-position: 50%;
     cursor: pointer;
+
+    @include on-tablet {
+      position: relative;
+      top: 35px;
+    }
     &:hover {
       background-color: black;
       background-image: url('../../img/arrow-slide-to-first-hover.svg');
@@ -73,6 +95,11 @@
     background-size: 24px 24px;
     background-position: 50%;
     cursor: pointer;
+
+    @include on-tablet {
+      position: relative;
+      top: 35px;
+    }
     &:hover {
       background-color: black;
       background-image: url('../../img/arrow-slide-to-last-hover.svg');
@@ -83,8 +110,13 @@
     width: 138px;
     overflow: hidden;
     position: relative;
-    bottom: 35px;
     left: 78px;
+    bottom: 35px;
+
+    @include on-tablet {
+      left: 248px;
+      top: 0;
+    }
   }
   &__content {
     width: 90000px;

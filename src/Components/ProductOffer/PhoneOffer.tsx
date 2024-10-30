@@ -11,8 +11,19 @@ import { useNavigate } from 'react-router-dom';
 import { Product } from '../types/Product';
 
 export const PhonesOffer = () => {
-  const { phones, products, setFavouriteItems, favouriteItems } =
-    useContext(CatalogContext);
+  const {
+    phones,
+    products,
+    setFavouriteItems,
+    favouriteItems,
+    addedItems,
+    setAddedItems,
+    totalModels,
+    setTotalModels,
+    amountOfModels,
+    totalPrice,
+    setTotalPrice,
+  } = useContext(CatalogContext);
   const { itemId } = useParams();
   const selectedPhone = phones.find(phone => phone.id === itemId);
   const selectedProduct = products.find(product => product.itemId === itemId);
@@ -37,7 +48,7 @@ export const PhonesOffer = () => {
     appendDots: (dots: number) => (
       <ul
         style={{
-          width: '240px',
+          width: '80px',
           height: '49px',
           display: 'flex',
           justifyContent: 'space-between',
@@ -51,14 +62,14 @@ export const PhonesOffer = () => {
         style={{ width: '51.2px', height: '49px', objectFit: 'contain' }}
         src={selectedPhone?.images[i]}
         onClick={() => setActiveImage(true)}
-        className={classNames('productoffer__image', {
+        className={classNames('productoffer__dot-image', {
           'productoffer__image--active': activeImage,
         })}
       ></img>
     ),
   };
 
-  const addProduct = (favouriteProduct: Product) => {
+  const addProductToFavourite = (favouriteProduct: Product) => {
     const readyToAddItem = favouriteItems.some(
       item => item.id === favouriteProduct.id,
     );
@@ -79,6 +90,36 @@ export const PhonesOffer = () => {
       );
 
       setFavouriteItems(updateItem);
+    }
+  };
+
+  const addItems = (addedItem: Product) => {
+    const readyToAdd = addedItems.some(item => item.id === addedItem.id);
+
+    if (
+      addedItem.id === itemId &&
+      addedItems.find(item => item.id === addedItem.id)
+    ) {
+      const updateItem = addedItems.filter(item => item.id !== addedItem.id);
+
+      setTotalModels(totalModels - amountOfModels);
+      setAddedItems(updateItem);
+      setTotalPrice(totalPrice - amountOfModels * addedItem.price);
+    }
+
+    if (
+      addedItem.id === selectedProduct?.id &&
+      !addedItems.find(item => item.id === addedItem.id)
+    ) {
+      setTotalModels(totalModels + 1);
+      setTotalPrice(totalPrice + addedItem.price);
+      setAddedItems([...addedItems, addedItem]);
+    }
+
+    if (readyToAdd) {
+      const updateItem = addedItems.filter(item => item.id !== addedItem.id);
+
+      setAddedItems(updateItem);
     }
   };
 
@@ -107,12 +148,17 @@ export const PhonesOffer = () => {
           <div className="productoffer__breadcrumbs--back-arrow"></div> Back
         </Link>
         <h1 className="productoffer__title">{selectedPhone?.name}</h1>
-
-        <Slider {...settings}>
-          {selectedPhone?.images.map((image, index) => (
-            <img key={index} src={image} className="productoffer__image" />
-          ))}
-        </Slider>
+        <div className="productoffer__images">
+          <Slider {...settings}>
+            {selectedPhone?.images.map((image, index) => (
+              <img
+                key={index}
+                src={image}
+                className="productoffer__sliderimage"
+              />
+            ))}
+          </Slider>
+        </div>
         <div className="productoffer__panel">
           <div className="productoffer__panel--id-and-title">
             <h2 className="productoffer__panel--title">Available colors</h2>
@@ -122,10 +168,10 @@ export const PhonesOffer = () => {
             {selectedPhone?.colorsAvailable.map(color => {
               const getSelectedColor = (currentColor: string) => {
                 if (color === currentColor) {
-                  setSelectedColor(color);
+                  setSelectedColor(currentColor);
 
                   navigate(
-                    `/phones/${selectedPhone.namespaceId}-${selectedCapacity?.toLowerCase()}-${selectedColor}`,
+                    `/phones/${selectedPhone.namespaceId}-${selectedPhone.capacity.toLowerCase()}-${currentColor}`,
                   );
                 }
               };
@@ -138,7 +184,8 @@ export const PhonesOffer = () => {
                     'productoffer__panel--color-selection',
                     {
                       'productoffer__panel--color-selection--selected':
-                        selectedColor === color,
+                        selectedColor === color ||
+                        color === selectedPhone.color,
                     },
                   )}
                   style={{ backgroundColor: `${color}` }}
@@ -152,20 +199,21 @@ export const PhonesOffer = () => {
           </div>
           {selectedPhone?.capacityAvailable.map(capacity => {
             const getSelectedCapacity = (currentCapacity: string) => {
-              if (currentCapacity === capacity) {
-                setSelectedCapacity(capacity);
-              }
+              if (currentCapacity.toLowerCase() === capacity.toLowerCase()) {
+                setSelectedCapacity(currentCapacity);
 
-              navigate(
-                `/phones/${selectedPhone.namespaceId}-${selectedCapacity?.toLowerCase()}-${selectedColor}`,
-              );
+                navigate(
+                  `/phones/${selectedPhone.namespaceId}-${currentCapacity.toLowerCase()}-${selectedPhone.color}`,
+                );
+              }
             };
 
             return (
               <button
                 className={classNames('productoffer__panel--capacity-option', {
                   'productoffer__panel--capacity-option-selected':
-                    selectedCapacity === capacity,
+                    selectedCapacity === capacity ||
+                    capacity === selectedPhone.capacity,
                 })}
                 key={capacity}
                 onClick={() => getSelectedCapacity(capacity)}
@@ -180,16 +228,24 @@ export const PhonesOffer = () => {
             <del className="productoffer__panel--price-discount">{`$${selectedPhone?.priceRegular}`}</del>
           </div>
           <div className="productoffer__panel--buttons">
-            <button className="productoffer__panel--adding-button">
-              Add to cart
-            </button>
             {selectedProduct && (
               <button
+                className="productoffer__panel--adding-button"
+                onClick={() => addItems(selectedProduct)}
+              >
+                {addedItems.find(item => item.id === selectedProduct.id)
+                  ? 'ADDED'
+                  : 'Add to cart'}
+              </button>
+            )}
+
+            {selectedProduct && (
+              <button
+                onClick={() => addProductToFavourite(selectedProduct)}
                 className={classNames('productoffer__panel--heart-button', {
                   'productoffer__panel--heart-button--is-active':
                     favouriteItems.find(item => item.itemId === itemId),
                 })}
-                onClick={() => addProduct(selectedProduct)}
               ></button>
             )}
           </div>

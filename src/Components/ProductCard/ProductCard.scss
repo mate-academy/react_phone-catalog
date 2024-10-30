@@ -11,12 +11,13 @@
 @import '../../utils/mixins';
 
 .productcard {
-  border: 1px solid #89939A;
+  border: 1px solid #B4BDC3;
   height: 439px;
   width: 287px;
   display: flex;
   flex-direction: column;
   gap: 16px;
+  border-radius: 8px;
 
   @include on-tablet {
     width: 237px;
@@ -214,6 +215,9 @@ background-repeat: no-repeat;
 background-position: center;
 background-color: white !important;
 border: 1px solid #B4BDC3;
+&:hover {
+  background-image: url('../../img/Add\ to\ favorites-hover.svg');
+}
 &--is-active {
   width: 40px;
 height: 40px;
@@ -223,12 +227,6 @@ background-repeat: no-repeat;
 background-position: center;
 background-color: white;
   background-image: url('../../img/Add\ to\ fovourites\ -\ Added.svg');
-  &:hover {
-    background-image: url('../../img/Add\ to\ fovourites\ -\ Added.svg');
-  }
-}
-&:hover {
-  background-image: url('../../img/Add\ to\ favorites-hover.svg');
 }
   }
 }

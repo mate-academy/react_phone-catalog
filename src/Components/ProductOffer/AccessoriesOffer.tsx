@@ -7,13 +7,27 @@ import Slider from 'react-slick';
 import classNames from 'classnames';
 import { Footer } from '../Footer/Footer';
 import { ProductCard } from '../ProductCard/ProductCard';
+import { Product } from '../types/Product';
 
 export const AccessoriesOffer = () => {
-  const { accessories, products } = useContext(CatalogContext);
+  const {
+    accessories,
+    products,
+    favouriteItems,
+    setFavouriteItems,
+    addedItems,
+    setAddedItems,
+    setTotalModels,
+    totalModels,
+    amountOfModels,
+    totalPrice,
+    setTotalPrice,
+  } = useContext(CatalogContext);
   const { itemId } = useParams();
   const selectedAccessory = accessories.find(
     accessory => accessory.id === itemId,
   );
+  const selectedProduct = products.find(product => product.itemId === itemId);
   const proposedPhones = products.filter(
     product =>
       product.category === 'accessories' &&
@@ -35,7 +49,7 @@ export const AccessoriesOffer = () => {
     appendDots: (dots: number) => (
       <ul
         style={{
-          width: '240px',
+          width: '100px',
           height: '49px',
           display: 'flex',
           justifyContent: 'space-between',
@@ -49,11 +63,65 @@ export const AccessoriesOffer = () => {
         style={{ width: '51.2px', height: '49px', objectFit: 'contain' }}
         src={selectedAccessory?.images[i]}
         onClick={() => setActiveImage(true)}
-        className={classNames('productoffer__image', {
+        className={classNames('productoffer__dot-image', {
           'productoffer__image--active': activeImage,
         })}
       ></img>
     ),
+  };
+
+  const addProductToFavourite = (favouriteProduct: Product) => {
+    const readyToAddItem = favouriteItems.some(
+      item => item.id === favouriteProduct.id,
+    );
+
+    if (favouriteProduct.itemId !== itemId) {
+      const updateItem = favouriteItems.filter(
+        item => item.id !== favouriteProduct.id,
+      );
+
+      setFavouriteItems(updateItem);
+    } else {
+      setFavouriteItems([...favouriteItems, favouriteProduct]);
+    }
+
+    if (readyToAddItem) {
+      const updateItem = favouriteItems.filter(
+        item => item.id !== favouriteProduct.id,
+      );
+
+      setFavouriteItems(updateItem);
+    }
+  };
+
+  const addItems = (addedItem: Product) => {
+    const readyToAdd = addedItems.some(item => item.id === addedItem?.id);
+
+    if (
+      addedItem.id === selectedProduct?.id &&
+      addedItems.find(item => item.id === addedItem.id)
+    ) {
+      const updateItem = addedItems.filter(item => item.id !== addedItem?.id);
+
+      setTotalModels(totalModels - amountOfModels);
+      setAddedItems(updateItem);
+      setTotalPrice(totalPrice - amountOfModels * addedItem.price);
+    }
+
+    if (
+      addedItem.id === selectedProduct?.id &&
+      !addedItems.find(item => item.id === addedItem.id)
+    ) {
+      setTotalModels(totalModels + 1);
+      setTotalPrice(totalPrice + addedItem.price);
+      setAddedItems([...addedItems, addedItem]);
+    }
+
+    if (readyToAdd) {
+      const updateItem = addedItems.filter(item => item.id !== addedItem.id);
+
+      setAddedItems(updateItem);
+    }
   };
 
   const secondSettings = {
@@ -84,12 +152,17 @@ export const AccessoriesOffer = () => {
           <div className="productoffer__breadcrumbs--back-arrow"></div> Back
         </Link>
         <h1 className="productoffer__title">{selectedAccessory?.name}</h1>
-
-        <Slider {...settings}>
-          {selectedAccessory?.images.map((image, index) => (
-            <img key={index} src={image} className="productoffer__image" />
-          ))}
-        </Slider>
+        <div className="productoffer__images">
+          <Slider {...settings}>
+            {selectedAccessory?.images.map((image, index) => (
+              <img
+                key={index}
+                src={image}
+                className="productoffer__sliderimage"
+              />
+            ))}
+          </Slider>
+        </div>
         <div className="productoffer__panel">
           <div className="productoffer__panel--id-and-title">
             <h2 className="productoffer__panel--title">Available colors</h2>
@@ -99,10 +172,10 @@ export const AccessoriesOffer = () => {
             {selectedAccessory?.colorsAvailable.map(color => {
               const getSelectedColor = (currentColor: string) => {
                 if (color === currentColor) {
-                  setSelectedColor(color);
+                  setSelectedColor(currentColor);
 
                   navigate(
-                    `/accessories/${selectedAccessory.namespaceId}-${selectedCapacity?.toLowerCase()}-${selectedColor}`,
+                    `/accessories/${selectedAccessory.namespaceId}-${selectedAccessory.capacity}-${currentColor}`,
                   );
                 }
               };
@@ -114,7 +187,8 @@ export const AccessoriesOffer = () => {
                     'productoffer__panel--color-selection',
                     {
                       'productoffer__panel--color-selection--selected':
-                        selectedColor === color,
+                        selectedColor === color ||
+                        color === selectedAccessory.color,
                     },
                   )}
                   key={color}
@@ -130,10 +204,10 @@ export const AccessoriesOffer = () => {
           {selectedAccessory?.capacityAvailable.map(capacity => {
             const getSelectedCapacity = (currentCapacity: string) => {
               if (currentCapacity === capacity) {
-                setSelectedCapacity(capacity);
+                setSelectedCapacity(currentCapacity);
 
                 navigate(
-                  `/accessories/${selectedAccessory.namespaceId}-${selectedCapacity?.toLowerCase()}-${selectedColor}`,
+                  `/accessories/${selectedAccessory.namespaceId}-${currentCapacity.toLowerCase().trim()}-${selectedAccessory.color}`,
                 );
               }
             };
@@ -142,7 +216,8 @@ export const AccessoriesOffer = () => {
               <button
                 className={classNames('productoffer__panel--capacity-option', {
                   'productoffer__panel--capacity-option-selected':
-                    selectedCapacity === capacity,
+                    selectedCapacity === capacity ||
+                    capacity === selectedAccessory.capacity,
                 })}
                 key={capacity}
                 onClick={() => getSelectedCapacity(capacity)}
@@ -157,10 +232,26 @@ export const AccessoriesOffer = () => {
             <del className="productoffer__panel--price-discount">{`$${selectedAccessory?.priceRegular}`}</del>
           </div>
           <div className="productoffer__panel--buttons">
-            <button className="productoffer__panel--adding-button">
-              Add to cart
-            </button>
-            <button className="productoffer__panel--heart-button"></button>
+            {selectedProduct && (
+              <button
+                className="productoffer__panel--adding-button"
+                onClick={() => addItems(selectedProduct)}
+              >
+                {addedItems.find(item => item.id === selectedProduct.id)
+                  ? 'ADDED'
+                  : 'Add to cart'}
+              </button>
+            )}
+
+            {selectedProduct && (
+              <button
+                className={classNames('productoffer__panel--heart-button', {
+                  'productoffer__panel--heart-button--is-active':
+                    favouriteItems.find(item => item.id === selectedProduct.id),
+                })}
+                onClick={() => addProductToFavourite(selectedProduct)}
+              ></button>
+            )}
           </div>
           <div className="productoffer__panel--basicspec">
             <div className="productoffer__panel--basicspec-data">

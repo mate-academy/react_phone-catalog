@@ -60,6 +60,7 @@ export const CartItems = () => {
                           totalPrice - amountOfModels * deletedItem.price,
                         );
                         setTotalModels(totalModels - amountOfModels);
+                        setAmountOfModels(1);
                       }
 
                       return item;
@@ -147,7 +148,7 @@ export const CartItems = () => {
                   {addedItems.length !== 0 && (
                     <div className="cartitems__summary">
                       <div className="cartitems__summary--price">{`Total price for new products: $${totalPrice}`}</div>
-                      <div className="cartitems__summary--total">{`You have ${totalModels} new products`}</div>
+                      <div className="cartitems__summary--total">{`You have ${totalModels} new ${totalModels === 1 ? 'product' : 'products'}`}</div>
                     </div>
                   )}
                 </>
@@ -168,6 +169,7 @@ export const CartItems = () => {
                             amountOfOldModels * deletedOldItem.price,
                         );
                         setTotalOldModels(totalOldModels - amountOfOldModels);
+                        setAmountOfOldModels(1);
                       }
 
                       return oldItem;
@@ -268,7 +270,7 @@ export const CartItems = () => {
                       {`$${totalOldProductsPrice}`}
                     </span>
                   </div>
-                  <div className="cartitems__summary--total">{`You have ${totalOldModels} old products`}</div>
+                  <div className="cartitems__summary--total">{`You have ${totalOldModels} old ${totalOldModels === 1 ? 'product' : 'products'}`}</div>
                 </div>
               )}
             </div>

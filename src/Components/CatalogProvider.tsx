@@ -59,6 +59,8 @@ export const CatalogContext = createContext<ContextType>({
   setTotalOldProductsPrice: () => {},
   amountOfOldModels: 0,
   setAmountOfOldModels: () => {},
+  visibleItems: [],
+  setVisibleItems: () => {},
 });
 
 export const GlobalCatalogProvider: React.FC<{
@@ -89,7 +91,8 @@ export const GlobalCatalogProvider: React.FC<{
   const [totalModels, setTotalModels] = useState(0);
   const [totalOldModels, setTotalOldModels] = useState(0);
   const [totalOldProductsPrice, setTotalOldProductsPrice] = useState(0);
-  const [amountOfOldModels, setAmountOfOldModels] = useState(0);
+  const [amountOfOldModels, setAmountOfOldModels] = useState(1);
+  const [visibleItems, setVisibleItems] = useState<Product[]>([]);
 
   useEffect(() => {
     getPhones().then(setPhones);
@@ -166,6 +169,8 @@ export const GlobalCatalogProvider: React.FC<{
         setTotalOldProductsPrice,
         amountOfOldModels,
         setAmountOfOldModels,
+        visibleItems,
+        setVisibleItems,
       }}
     >
       {children}

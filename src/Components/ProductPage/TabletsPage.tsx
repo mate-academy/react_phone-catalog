@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 import { Footer } from '../Footer/Footer';
 import { Navigation } from '../Navigation/Navigation';
 import './ProductPage.scss';
@@ -11,18 +11,17 @@ import { ItemPerPage } from '../types/ItemPerPage';
 import { Pagination } from '../Pagination/Pagination';
 
 export const TabletsPage = () => {
-  const {
-    products,
-    setProducts,
-    tablets,
-    filter,
-    query,
-    itemsPerPage,
-    slidePages,
-    pageNumber,
-  } = useContext(CatalogContext);
+  const { products, setProducts, tablets, pageNumber } =
+    useContext(CatalogContext);
 
-  const filteredOptions = (allTablets: FilterType) => {
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const queries = searchParams.get('query') || '';
+  const sortOptions = searchParams.get('sort') || '';
+  const items = searchParams.get('perPage') || '';
+  const itemsInNumber = parseInt(items);
+
+  const filteredOptions = (allTablets: string) => {
     const selectedProducts = products.filter(
       product => product.category === 'tablets',
     );
@@ -77,7 +76,7 @@ export const TabletsPage = () => {
     }
   };
 
-  const filterTablets = filteredOptions(filter);
+  const filterTablets = filteredOptions(sortOptions);
 
   const filteredTablets = filterTablets.filter(tablet => {
     const searchedText = `${tablet.capacity}${tablet.price}${tablet.color}${tablet.name}${tablet.ram}${tablet.screen}`;
@@ -85,7 +84,7 @@ export const TabletsPage = () => {
     return searchedText
       .toLowerCase()
       .trim()
-      .includes(query.trim().toLowerCase());
+      .includes(queries.trim().toLowerCase());
   });
 
   useEffect(() => {
@@ -103,26 +102,20 @@ export const TabletsPage = () => {
     setProducts(fullProductData);
   }, []);
 
-  const rest =
-    filteredTablets.length -
-    Math.floor(filteredTablets.length / +itemsPerPage) * +itemsPerPage;
-
-  const amountOfPages = Math.ceil(filteredTablets.length / +itemsPerPage);
-
-  const setItemsPerPage = (perPage: ItemPerPage) => {
-    switch (perPage) {
+  const getVisibleItems = (itemsOptions: ItemPerPage) => {
+    switch (itemsOptions) {
       case ItemPerPage.ALL:
-        return filteredTablets.length;
+        return filteredTablets;
       case ItemPerPage.SIXTEEN_PER_PAGE:
-        return 16;
       case ItemPerPage.EIGHT_PER_PAGE:
-        return 8;
       case ItemPerPage.FOUR_PER_PAGE:
-        return 4;
       case ItemPerPage.TWO_PER_PAGE:
-        return 2;
+        return filteredTablets.slice(
+          (pageNumber - 1) * itemsInNumber,
+          pageNumber * itemsInNumber,
+        );
       default:
-        return filterTablets.length;
+        return filteredTablets;
     }
   };
 
@@ -137,21 +130,23 @@ export const TabletsPage = () => {
 
         <h1 className="productpage__header">Tablets</h1>
         <span className="productpage__amountofmodels">{`${tablets.length} models`}</span>
-        <ProductsFilter />
-        <div
-          className="productpage__content"
-          style={{
-            transform: `translateX(${slidePages}px)`,
-            height: `${amountOfPages === pageNumber ? rest * 490 + (rest - 1) * 16 + 50 : setItemsPerPage(itemsPerPage) * 490 + (setItemsPerPage(itemsPerPage) - 1) * 16 + 50}px`,
-          }}
-        >
-          {filteredTablets.map(product => (
+        <ProductsFilter
+          queries={queries}
+          setParams={setSearchParams}
+          sort={sortOptions}
+          perPage={items}
+        />
+        <div className="productpage__content">
+          {getVisibleItems(itemsInNumber).map(product => (
             <ProductCard product={product} key={product.id} />
           ))}
         </div>
       </div>
-      {itemsPerPage !== ('1' as ItemPerPage) && (
-        <Pagination filteredItems={filteredTablets} />
+      {itemsInNumber !== (1 as ItemPerPage) && (
+        <Pagination
+          filteredItems={filteredTablets}
+          itemsInNumber={itemsInNumber}
+        />
       )}
       <Footer />
     </>

@@ -7,11 +7,25 @@ import Slider from 'react-slick';
 import classNames from 'classnames';
 import { Footer } from '../Footer/Footer';
 import { ProductCard } from '../ProductCard/ProductCard';
+import { Product } from '../types/Product';
 
 export const TabletsOffer = () => {
-  const { tablets, products } = useContext(CatalogContext);
+  const {
+    tablets,
+    products,
+    favouriteItems,
+    setFavouriteItems,
+    addedItems,
+    setAddedItems,
+    totalModels,
+    setTotalModels,
+    totalPrice,
+    setTotalPrice,
+    amountOfModels,
+  } = useContext(CatalogContext);
   const { itemId } = useParams();
   const selectedTablet = tablets.find(tablet => tablet.id === itemId);
+  const selectedProduct = products.find(product => product.itemId === itemId);
   const proposedTablets = products.filter(
     product =>
       product.category === 'tablets' &&
@@ -33,7 +47,7 @@ export const TabletsOffer = () => {
     appendDots: (dots: number) => (
       <ul
         style={{
-          width: '240px',
+          width: '100px',
           height: '49px',
           display: 'flex',
           justifyContent: 'space-between',
@@ -47,7 +61,7 @@ export const TabletsOffer = () => {
         style={{ width: '51.2px', height: '49px', objectFit: 'contain' }}
         src={selectedTablet?.images[i]}
         onClick={() => setActiveImage(true)}
-        className={classNames('productoffer__image', {
+        className={classNames('productoffer__dot-image', {
           'productoffer__image--active': activeImage,
         })}
       ></img>
@@ -58,6 +72,60 @@ export const TabletsOffer = () => {
     infinite: false,
     arrows: true,
     className: 'productoffer__proposition',
+  };
+
+  const addProductToFavourite = (favouriteProduct: Product) => {
+    const readyToAddItem = favouriteItems.some(
+      item => item.id === favouriteProduct.id,
+    );
+
+    if (favouriteProduct.itemId !== itemId) {
+      const updateItem = favouriteItems.filter(
+        item => item.id !== favouriteProduct.id,
+      );
+
+      setFavouriteItems(updateItem);
+    } else {
+      setFavouriteItems([...favouriteItems, favouriteProduct]);
+    }
+
+    if (readyToAddItem) {
+      const updateItem = favouriteItems.filter(
+        item => item.id !== favouriteProduct.id,
+      );
+
+      setFavouriteItems(updateItem);
+    }
+  };
+
+  const addItems = (addedItem: Product) => {
+    const readyToAdd = addedItems.some(item => item.id === addedItem.id);
+
+    if (
+      addedItem.itemId === itemId &&
+      addedItems.find(item => item.id === addedItem.id)
+    ) {
+      const updateItem = addedItems.filter(item => item.id !== addedItem.id);
+
+      setTotalModels(totalModels - amountOfModels);
+      setAddedItems(updateItem);
+      setTotalPrice(totalPrice - amountOfModels * addedItem.price);
+    }
+
+    if (
+      addedItem.itemId === itemId &&
+      !addedItems.find(item => item.id === addedItem.id)
+    ) {
+      setTotalModels(totalModels + 1);
+      setTotalPrice(totalPrice + addedItem.price);
+      setAddedItems([...addedItems, addedItem]);
+    }
+
+    if (readyToAdd) {
+      const updateItem = addedItems.filter(item => item.id !== addedItem.id);
+
+      setAddedItems(updateItem);
+    }
   };
 
   return (
@@ -83,11 +151,13 @@ export const TabletsOffer = () => {
         </Link>
         <h1 className="productoffer__title">{selectedTablet?.name}</h1>
 
-        <Slider {...settings}>
-          {selectedTablet?.images.map((image, index) => (
-            <img key={index} src={image} className="productoffer__image" />
-          ))}
-        </Slider>
+        <div className="productoffer__images">
+          <Slider {...settings}>
+            {selectedTablet?.images.map((image, index) => (
+              <img key={index} src={image} className="productoffer__image" />
+            ))}
+          </Slider>
+        </div>
         <div className="productoffer__panel">
           <div className="productoffer__panel--id-and-title">
             <h2 className="productoffer__panel--title">Available colors</h2>
@@ -97,10 +167,10 @@ export const TabletsOffer = () => {
             {selectedTablet?.colorsAvailable.map(color => {
               const getSelectedColor = (currentColor: string) => {
                 if (color === currentColor) {
-                  setSelectedColor(color);
+                  setSelectedColor(currentColor);
 
                   navigate(
-                    `/tablets/${selectedTablet.namespaceId}-${selectedCapacity?.toLowerCase()}-${selectedColor}`,
+                    `/tablets/${selectedTablet.namespaceId}-${selectedTablet.capacity.toLowerCase()}-${currentColor}`,
                   );
                 }
               };
@@ -112,7 +182,8 @@ export const TabletsOffer = () => {
                     'productoffer__panel--color-selection',
                     {
                       'productoffer__panel--color-selection--selected':
-                        selectedColor === color,
+                        selectedColor === color ||
+                        color === selectedTablet.color,
                     },
                   )}
                   key={color}
@@ -128,10 +199,10 @@ export const TabletsOffer = () => {
           {selectedTablet?.capacityAvailable.map(capacity => {
             const getSelectedCapacity = (currentCapacity: string) => {
               if (currentCapacity === capacity) {
-                setSelectedCapacity(capacity);
+                setSelectedCapacity(undefined);
 
                 navigate(
-                  `/tablets/${selectedTablet.namespaceId}-${selectedCapacity?.toLowerCase()}-${selectedColor}`,
+                  `/tablets/${selectedTablet.namespaceId}-${currentCapacity.toLowerCase()}-${selectedTablet.color}`,
                 );
               }
             };
@@ -140,7 +211,8 @@ export const TabletsOffer = () => {
               <button
                 className={classNames('productoffer__panel--capacity-option', {
                   'productoffer__panel--capacity-option-selected':
-                    selectedCapacity === capacity,
+                    selectedCapacity === capacity ||
+                    capacity === selectedTablet.capacity,
                 })}
                 key={capacity}
                 onClick={() => getSelectedCapacity(capacity)}
@@ -155,10 +227,25 @@ export const TabletsOffer = () => {
             <del className="productoffer__panel--price-discount">{`$${selectedTablet?.priceRegular}`}</del>
           </div>
           <div className="productoffer__panel--buttons">
-            <button className="productoffer__panel--adding-button">
-              Add to cart
-            </button>
-            <button className="productoffer__panel--heart-button"></button>
+            {selectedProduct && (
+              <button
+                className="productoffer__panel--adding-button"
+                onClick={() => addItems(selectedProduct)}
+              >
+                {addedItems.find(item => item.id === selectedProduct.id)
+                  ? 'ADDED'
+                  : 'Add to cart'}
+              </button>
+            )}
+            {selectedProduct && (
+              <button
+                className={classNames('productoffer__panel--heart-button', {
+                  'productoffer__panel--heart-button--is-active':
+                    favouriteItems.find(item => item.id === selectedProduct.id),
+                })}
+                onClick={() => addProductToFavourite(selectedProduct)}
+              ></button>
+            )}
           </div>
           <div className="productoffer__panel--basicspec">
             <div className="productoffer__panel--basicspec-data">

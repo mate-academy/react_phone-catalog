@@ -8,7 +8,7 @@ import classNames from 'classnames';
 import { CatalogContext } from '../CatalogProvider';
 
 export const Navigation = () => {
-  const { addedItems } = useContext(CatalogContext);
+  const { addedItems, oldAddedItems } = useContext(CatalogContext);
   const [showMenu, setShowMenu] = useState(false);
 
   const getSelectedLink = ({ isActive }: { isActive: boolean }) => {
@@ -19,7 +19,7 @@ export const Navigation = () => {
 
   return (
     <>
-      <nav className="navigation" id="#navigation">
+      <nav className="navigation" id="backtotop">
         <div className="navigation__logo-block">
           <div className="logo__navigation"></div>
         </div>
@@ -62,7 +62,9 @@ export const Navigation = () => {
                   })}
                 ></div>
                 {addedItems.length !== 0 && (
-                  <div className="icon__circle">{addedItems.length}</div>
+                  <div className="icon__circle">
+                    {addedItems.length + oldAddedItems.length}
+                  </div>
                 )}
               </Link>
               <Link to="/favourites" className="navigation__block-heart">

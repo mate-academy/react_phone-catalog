@@ -17,6 +17,13 @@ export const OldPhoneOffer = () => {
     setOldProducts,
     favouriteOldItems,
     setFavouriteOldItems,
+    oldAddedItems,
+    setOldAddedItems,
+    amountOfOldModels,
+    totalOldProductsPrice,
+    setTotalOldProductsPrice,
+    setTotalOldModels,
+    totalOldModels,
   } = useContext(CatalogContext);
   const proposedPhones = oldProducts.filter(
     product => product.type === 'phone',
@@ -71,9 +78,43 @@ export const OldPhoneOffer = () => {
   };
 
   const addOldProduct = (oldItem: OldProduct) => {
-    const readyToAdd = favouriteOldItems.some(item => item.id === oldItem.id);
+    const readyToAdd = oldAddedItems.some(item => item.id === oldItem.id);
 
-    if (oldItem.id !== selectedProduct?.id) {
+    if (
+      oldItem.id === oldItemId &&
+      oldAddedItems.find(item => item.id === oldItem.id)
+    ) {
+      const updateItem = oldAddedItems.filter(item => item.id !== oldItem.id);
+
+      setFavouriteOldItems(updateItem);
+      setTotalOldModels(totalOldModels - amountOfOldModels);
+      setTotalOldProductsPrice(
+        totalOldProductsPrice - amountOfOldModels * oldItem.price,
+      );
+    }
+
+    if (
+      oldItem.id === oldItemId &&
+      !oldAddedItems.find(item => item.id === oldItem.id)
+    ) {
+      setTotalOldModels(totalOldModels + 1);
+      setTotalOldProductsPrice(totalOldProductsPrice + oldItem.price);
+      setOldAddedItems([...oldAddedItems, oldItem]);
+    }
+
+    if (readyToAdd) {
+      const updateItem = oldAddedItems.filter(item => item.id !== oldItem.id);
+
+      setOldAddedItems(updateItem);
+    }
+  };
+
+  const addProductToFavourite = (oldItem: OldProduct) => {
+    const readyToAddItem = favouriteOldItems.some(
+      item => item.id === oldItem.id,
+    );
+
+    if (oldItem.id !== oldItemId) {
       const updateItem = favouriteOldItems.filter(
         item => item.id !== oldItem.id,
       );
@@ -83,7 +124,7 @@ export const OldPhoneOffer = () => {
       setFavouriteOldItems([...favouriteOldItems, oldItem]);
     }
 
-    if (readyToAdd) {
+    if (readyToAddItem) {
       const updateItem = favouriteOldItems.filter(
         item => item.id !== oldItem.id,
       );
@@ -122,16 +163,23 @@ export const OldPhoneOffer = () => {
         </Slider>
 
         <div className="oldphoneoffer__panel--buttons">
-          <button className="oldphoneoffer__panel--adding-button">
-            Add to cart
-          </button>
+          {selectedProduct && (
+            <button
+              className="oldphoneoffer__panel--adding-button"
+              onClick={() => addOldProduct(selectedProduct)}
+            >
+              {oldAddedItems.find(item => item.id === selectedProduct.id)
+                ? 'ADDED'
+                : 'Add to cart'}
+            </button>
+          )}
           {selectedProduct && (
             <button
               className={classNames('oldphoneoffer__panel--heart-button', {
                 'oldphoneoffer__panel--heart-button--is-active':
                   favouriteOldItems.find(item => item.id === oldItemId),
               })}
-              onClick={() => addOldProduct(selectedProduct)}
+              onClick={() => addProductToFavourite(selectedProduct)}
             ></button>
           )}
         </div>

@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 import { Footer } from '../Footer/Footer';
 import { Navigation } from '../Navigation/Navigation';
 import './ProductPage.scss';
@@ -11,18 +11,17 @@ import { ItemPerPage } from '../types/ItemPerPage';
 import { Pagination } from '../Pagination/Pagination';
 
 export const PhonesPage = () => {
-  const {
-    products,
-    setProducts,
-    phones,
-    filter,
-    query,
-    itemsPerPage,
-    slidePages,
-    pageNumber,
-  } = useContext(CatalogContext);
+  const { products, setProducts, phones, pageNumber } =
+    useContext(CatalogContext);
 
-  const filteredOptions = (allPhones: FilterType) => {
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const queries = searchParams.get('query') || '';
+  const sortOptions = searchParams.get('sort') || '';
+  const items = searchParams.get('perPage') || '';
+  const itemsInNumber = parseInt(items);
+
+  const filteredOptions = (allPhones: string) => {
     const selectedProducts = products.filter(
       product => product.category === 'phones',
     );
@@ -77,7 +76,7 @@ export const PhonesPage = () => {
     }
   };
 
-  const filterPhones = filteredOptions(filter);
+  const filterPhones = filteredOptions(sortOptions);
 
   const filteredPhones = filterPhones.filter(phone => {
     const serchedText = `${phone.capacity}${phone.price}${phone.color}${phone.name}${phone.ram}${phone.screen}`;
@@ -85,7 +84,7 @@ export const PhonesPage = () => {
     return serchedText
       .toLowerCase()
       .trim()
-      .includes(query.trim().toLowerCase());
+      .includes(queries.trim().toLowerCase());
   });
 
   useEffect(() => {
@@ -103,37 +102,22 @@ export const PhonesPage = () => {
     setProducts(fullProductData);
   }, []);
 
-  const rest =
-    filteredPhones.length -
-    Math.floor(filteredPhones.length / +itemsPerPage) * +itemsPerPage;
-
-  const amountOfPages = Math.ceil(filteredPhones.length / +itemsPerPage);
-
-  // console.log(rest);
-  // console.log(filterPhones.length);
-  // console.log(+itemsPerPage * 490 + (+itemsPerPage - 1) * 16);
-
-  const setItemsPerPage = (perPage: ItemPerPage) => {
-    switch (perPage) {
+  const getVisibleItems = (itemsOptions: ItemPerPage) => {
+    switch (itemsOptions) {
       case ItemPerPage.ALL:
-        return filteredPhones.length;
+        return filteredPhones;
       case ItemPerPage.SIXTEEN_PER_PAGE:
-        return 16;
       case ItemPerPage.EIGHT_PER_PAGE:
-        return 8;
       case ItemPerPage.FOUR_PER_PAGE:
-        return 4;
       case ItemPerPage.TWO_PER_PAGE:
-        return 2;
+        return filteredPhones.slice(
+          (pageNumber - 1) * itemsInNumber,
+          pageNumber * itemsInNumber,
+        );
       default:
-        return filterPhones.length;
+        return filteredPhones;
     }
   };
-
-  // console.log(slidePages);
-  // console.log(itemsPerPage);
-  // console.log(Math.floor(filterPhones.length / +itemsPerPage));
-  // console.log(pageNumber);
 
   return (
     <>
@@ -144,24 +128,25 @@ export const PhonesPage = () => {
         <div className="productpage__breadcrumbs--category"> {'>'} Phones</div>
 
         <h1 className="productpage__header">Mobile phones</h1>
-        <span className="productpage__amountofmodels">{`${phones.length} models`}</span>
-        <ProductsFilter />
-        <div
-          style={{
-            transform: `translateX(${slidePages}px)`,
-            height: `${amountOfPages === pageNumber ? rest * 490 + (rest - 1) * 16 + 50 : setItemsPerPage(itemsPerPage) * 490 + (setItemsPerPage(itemsPerPage) - 1) * 16 + 50}px`,
-          }}
-          className="productpage__content"
-        >
-          {filteredPhones.map(product => (
+        <span className="productpage__amountofmodels">{`${filteredPhones.length} ${filteredPhones.length === 1 ? 'model' : 'models'}`}</span>
+        <ProductsFilter
+          queries={queries}
+          setParams={setSearchParams}
+          sort={sortOptions}
+          perPage={items}
+        />
+        <div className="productpage__content">
+          {getVisibleItems(itemsInNumber).map(product => (
             <ProductCard product={product} key={product.id} />
           ))}
         </div>
       </div>
-      {itemsPerPage !== ('1' as ItemPerPage) && (
-        <Pagination filteredItems={filteredPhones} />
+      {itemsInNumber !== (1 as ItemPerPage) && (
+        <Pagination
+          filteredItems={filteredPhones}
+          itemsInNumber={itemsInNumber}
+        />
       )}
-
       <Footer />
     </>
   );

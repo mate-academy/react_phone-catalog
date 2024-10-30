@@ -50,4 +50,6 @@ export type ContextType = {
   setTotalOldProductsPrice: (totalOldProductsPrice: number) => void;
   amountOfOldModels: number;
   setAmountOfOldModels: (amountOfOldModels: number) => void;
+  visibleItems: Product[];
+  setVisibleItems: (visibleItems: Product[]) => void;
 };

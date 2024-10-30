@@ -20,13 +20,13 @@
       left: 40px;
       top: 297px;
       border-radius: 10px;
-      height: 187px;
+      height: 212px;
       z-index: 1;
 
     }
     :first-child .slick-next {
         position: absolute;
-      height: 187px;
+      height: 212px;
       left: 560px;
       top: 297px;
       border-radius: 10px;
@@ -57,13 +57,9 @@
     }
   }
 
-
-
   ul {
     margin-top: 60px;
   }
-
-
 &__photo {
   width: 320px;
   height: 320px;
@@ -73,7 +69,7 @@
     height: 189px;
     width: 490px;
   }
-
+  
   @include on-desktop {
     width: 1040px;
     height: 400px;
@@ -82,7 +78,6 @@
 }
 
 .slick {
-
   &-list {
     display: flex;
     flex-direction: row;
@@ -108,10 +103,10 @@
     margin-top: 10px;
     gap: 6px;
 
-    li {
-      width: 14px;
-      height: 4px;
-    }
+  li {
+    width: 14px;
+    height: 4px;
+  }
 
     button {
       height: 4px;
@@ -119,23 +114,20 @@
       border: none;
       color: transparent;
     }
+    .slick-active {
+      width: 14px;
+      height: 4px;
 
+      button {
+        background-color: black;
+      }
+    }
 
   }
   &-track {
     display: flex;
     flex-direction: row;
     justify-content: start;
-  }
-
-  &-active {
-    width: 14px;
-    height: 4px;
-
-    button {
-      background-color: black;
-    }
-
   }
 }
 

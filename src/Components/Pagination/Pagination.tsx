@@ -6,20 +6,20 @@ import classNames from 'classnames';
 
 type Props = {
   filteredItems: Product[];
+  itemsInNumber: number;
 };
 
-export const Pagination = ({ filteredItems }: Props) => {
+export const Pagination = ({ filteredItems, itemsInNumber }: Props) => {
   const {
     setPageNumber,
     setSlidePages,
     pageNumber,
     slidePages,
-    itemsPerPage,
     slideDots,
     setSlideDots,
   } = useContext(CatalogContext);
 
-  const amountOfPages = Math.ceil(filteredItems.length / +itemsPerPage);
+  const amountOfPages = Math.ceil(filteredItems.length / itemsInNumber);
 
   const getPagination = (pages: number) => {
     const pagination: number[] = [];
@@ -171,7 +171,6 @@ export const Pagination = ({ filteredItems }: Props) => {
           })}
         </div>
       </div>
-      div.pagination__
     </div>
   );
 };

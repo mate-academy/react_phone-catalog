@@ -3,24 +3,49 @@ import { FilterType } from '../types/FilterType';
 import './ProductsFilter.scss';
 import { CatalogContext } from '../CatalogProvider';
 import { ItemPerPage } from '../types/ItemPerPage';
+import { SetURLSearchParams } from 'react-router-dom';
 
-export const ProductsFilter = () => {
-  const { setFilter, setQuery, query, setItemsPerPage } =
+type Props = {
+  queries: string;
+  setParams: SetURLSearchParams;
+  sort: string;
+  perPage: string;
+};
+
+export const ProductsFilter = ({
+  queries,
+  setParams,
+  sort,
+  perPage,
+}: Props) => {
+  const { setSlideDots, setSlidePages, setPageNumber } =
     useContext(CatalogContext);
 
   return (
     <div className="productsfilter">
-      <div className="productsfilter__glass" />
-      <label htmlFor="sortby" className="productsfilter__text">
-        Search item
-      </label>
-      <input
-        type="text"
-        className="productsfilter__input"
-        placeholder="search item..."
-        onChange={e => setQuery(e.target.value)}
-        value={query}
-      />
+      <div className="productsfilter__query">
+        <label htmlFor="sortby" className="productsfilter__text">
+          Search item
+        </label>
+
+        <input
+          type="text"
+          className="productsfilter__input"
+          placeholder="search item..."
+          onChange={e => {
+            setParams(prev => {
+              prev.set('query', e.target.value);
+
+              return prev;
+            });
+
+            setSlideDots(0);
+            setSlidePages(0);
+            setPageNumber(1);
+          }}
+          value={queries}
+        />
+      </div>
 
       <div className="productsfilter__filters">
         <div className="productsfilter__filter">
@@ -30,7 +55,16 @@ export const ProductsFilter = () => {
           <select
             id="sortby"
             className="productsfilter__selection"
-            onChange={e => setFilter(e.target.value as FilterType)}
+            onChange={e => {
+              setParams(prev => {
+                prev.set('sort', e.target.value as FilterType);
+
+                return prev;
+              });
+              setSlidePages(0);
+              setSlideDots(0);
+            }}
+            value={sort}
           >
             <option className="productsfilter__option--disabled" disabled>
               Select filter
@@ -179,7 +213,17 @@ export const ProductsFilter = () => {
             name=""
             id=""
             className="productsfilter__selection"
-            onChange={e => setItemsPerPage(e.target.value as ItemPerPage)}
+            onChange={e => {
+              setParams(prev => {
+                prev.set('perPage', e.target.value.toString());
+
+                return prev;
+              });
+              setSlideDots(0);
+              setSlidePages(0);
+              setPageNumber(1);
+            }}
+            value={parseInt(perPage)}
           >
             <option value="all" className="productsfilter__option">
               All
@@ -211,6 +255,7 @@ export const ProductsFilter = () => {
           </select>
         </div>
       </div>
+      <div className="productsfilter__glass" />
     </div>
   );
 };
