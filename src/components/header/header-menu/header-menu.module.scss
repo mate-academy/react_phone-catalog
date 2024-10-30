@@ -1,8 +1,6 @@
 @import '../../../styles/main';
 
 .header {
-  margin-bottom: 276px;
-
   &_link {
     text-decoration: none;
     color: $secondary-text-color;
@@ -50,5 +48,9 @@
     width: 50%;
     border: 1px solid #e2e6e9;
     align-content: center;
+  }
+
+  &_container {
+    height: 100vh;
   }
 }

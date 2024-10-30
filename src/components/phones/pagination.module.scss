@@ -1,0 +1,41 @@
+.pagination {
+  &_button {
+    width: 32px;
+    height: 32px;
+    display: block;
+    border-radius: 0;
+
+    &_iconL {
+      background-image: url(/public/img/littleImages/Arrow-left.svg);
+      display: block;
+      width: 16px;
+      height: 16px;
+    }
+  }
+
+  &_button {
+    width: 32px;
+    height: 32px;
+    display: block;
+    border-radius: 0;
+
+    &_iconR {
+      background-image: url(/public/img/littleImages/Arrow-right.svg);
+      display: block;
+      width: 16px;
+      height: 16px;
+    }
+  }
+
+  &_list {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    display: flex;
+  }
+
+  &_active {
+    background-color: #313237;
+    color: #ffffff;
+  }
+}

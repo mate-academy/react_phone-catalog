@@ -1,0 +1,250 @@
+@import '../../styles/main';
+
+.product {
+  &_img {
+    width: 288px;
+    height: 288px;
+    object-fit: contain;
+
+    &_container {
+      display: flex;
+      gap: 8px;
+    }
+  }
+
+  &_imgs {
+    width: 52px;
+    height: 49px;
+    object-fit: contain;
+    border: 1px solid #e2e6e9;
+    margin-bottom: 40px;
+  }
+
+  &_colors {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    margin-bottom: 24px;
+
+    &_item {
+      width: 32px;
+      height: 32px;
+      border: 1px solid #e2e6e9;
+      border-radius: 50%;
+    }
+
+    &_link {
+      display: block;
+      width: 30px;
+      height: 30px;
+      border: 2px solid #e2e6e9;
+      border-radius: 50%;
+    }
+  }
+
+  &_capacity {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 8px;
+
+    &_div {
+      border-top: 1px solid #e2e6e9;
+      border-bottom: 1px solid #e2e6e9;
+      padding-top: 24px;
+      padding-bottom: 32px;
+    }
+
+    &_text {
+      margin-bottom: 8px;
+    }
+
+    &_link {
+      padding: 7px 8px 4px 8px;
+      border: 1px solid #b4bdc3;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 21px;
+      color: #313237;
+    }
+  }
+}
+
+.buy {
+  margin-top: 32px;
+
+  &_priceD {
+    font-size: 32px;
+    font-weight: 800;
+    line-height: 41px;
+    color: #313237;
+    display: flex;
+    align-items: center;
+  }
+
+  &_priceR {
+    margin-left: 8px;
+    font-size: 22px;
+    font-weight: 500;
+    line-height: 28.12px;
+    color: #89939a;
+    text-decoration: line-through;
+  }
+
+  &_buttonBuy {
+    background-color: #313237;
+
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 21px;
+    width: 231px;
+    height: 40px;
+
+    color: #fff;
+    padding: 0;
+    margin: 0;
+    border: none;
+
+    @include on-tablet {
+      width: 176px;
+    }
+
+    @include on-desktop {
+      width: 263px;
+    }
+  }
+
+  &_favor {
+    box-sizing: border-box;
+    width: 40px;
+    height: 40px;
+    margin: 0;
+    padding: 0;
+    border-radius: 0;
+    border: 1px solid #b4bdc3;
+    background-color: #fff;
+    margin-left: 8px;
+
+    &_icon {
+      background-image: url(/public/img/littleImages/Favourites-header.svg);
+      background-size: cover;
+      display: block;
+      width: 16px;
+      height: 16px;
+
+      border: none;
+      padding: 0;
+      margin: 0;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+
+  &_buttonDiv {
+    display: flex;
+    margin-bottom: 32px;
+  }
+
+  &_text {
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 15.34px;
+    color: #89939a;
+    display: flex;
+    justify-content: space-between;
+
+    &_cont {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+  }
+
+  &_span {
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 15.34px;
+
+    color: #313237;
+  }
+}
+
+.about {
+  margin-top: 56px;
+
+  &_title {
+    padding-bottom: 16px;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 25.56px;
+    color: #313237;
+    border-bottom: 1px solid #e2e6e9;
+  }
+
+  &_describe {
+    margin-top: 32px;
+    margin-bottom: 16px;
+
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 25.56px;
+    color: #313237;
+  }
+
+  &_text {
+    margin-bottom: 32px;
+
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 21px;
+    color: #89939a;
+  }
+}
+
+.spec {
+  margin-top: 64px;
+
+  &_title {
+    font-size: 22px;
+    font-weight: 800;
+    line-height: 30.8px;
+    color: #313237;
+    padding-bottom: 16px;
+    border-bottom: 1px solid #e2e6e9;
+  }
+
+  &_list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  &_item {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+    color: #89939a;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &_span {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+    color: #313237;
+  }
+}
+
+// For choose active img border
+.black {
+  border: 1px solid #313237;
+}
+
+.black_capacity {
+  background-color: #313237;
+  color: #ffffff;
+}

@@ -1,64 +1,175 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
+import { Routes, Route, useNavigate } from 'react-router-dom';
 import { AppDispatch, RootState } from '../../app/store';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchPhones } from '../../features/phones';
-import styles from './phones.module.scss';
+import { fetchProducts } from '../../features/products';
+import { setCurrentPage, setTotalPages } from '../../features/pagination';
+import styles from '../phones/phones.module.scss';
 import classNames from 'classnames';
+import { PhoneCard } from '../phones/phoneCard';
+import Pagination from '../phones/pagination';
+import { ProductDetail } from '../productDetail';
+import { fetchPhones, setSelectedPhone } from '../../features/phones';
+import { Product } from '../../types/Product';
 
 export const Phones: React.FC = () => {
   const dispatch: AppDispatch = useDispatch();
+  const navigate = useNavigate(); // Hook to navigate programmatically
+  const allProducts = useSelector((state: RootState) => state.products.items);
+  const selectedPhone = useSelector(
+    (state: RootState) => state.phones.selectedPhone,
+  );
+  const currentPage = useSelector(
+    (state: RootState) => state.pagination.currentPage,
+  );
+  const totalPages = useSelector(
+    (state: RootState) => state.pagination.totalPages,
+  );
 
-  const phones = useSelector((state: RootState) => state.phones.items);
-
-  // const status = useSelector((state: RootState) => state.phones.status);
+  const [itemsPerPage, setItemsPerPage] = useState(8);
+  const [product, setProduct] = useState<Product[]>([]);
+  const [sortType, setSortType] = useState('Newest');
 
   useEffect(() => {
+    dispatch(fetchProducts());
     dispatch(fetchPhones());
   }, [dispatch]);
 
+  useEffect(() => {
+    const filteredProducts = allProducts.filter(
+      pro => pro.category.trim() === 'phones',
+    );
+
+    setProduct(filteredProducts);
+    const total = Math.ceil(filteredProducts.length / itemsPerPage);
+
+    dispatch(setTotalPages(total));
+  }, [allProducts, itemsPerPage, dispatch]);
+
+  useEffect(() => {
+    dispatch(setCurrentPage(1));
+  }, [dispatch]);
+
+  const sortedPhones = React.useMemo(() => {
+    return [...product].sort((a, b) => {
+      if (sortType === 'Newest') {
+        return b.year - a.year;
+      }
+
+      if (sortType === 'Alphabetically') {
+        return a.name.localeCompare(b.name);
+      }
+
+      if (sortType === 'Cheapest') {
+        return a.price - b.price;
+      }
+
+      return 0;
+    });
+  }, [product, sortType]);
+
+  const getProductsForCurrentPage = () => {
+    const startIndex = (currentPage - 1) * itemsPerPage;
+    const endIndex = startIndex + itemsPerPage;
+
+    return sortedPhones.slice(startIndex, endIndex);
+  };
+
+  const handlePageChange = (page: number) => {
+    if (page >= 1 && page <= totalPages) {
+      dispatch(setCurrentPage(page));
+    }
+  };
+
+  const handleItemsPerPageChange = (
+    event: React.ChangeEvent<HTMLSelectElement>,
+  ) => {
+    const value =
+      event.target.value === 'all'
+        ? product.length
+        : parseInt(event.target.value);
+
+    setItemsPerPage(value);
+    dispatch(setCurrentPage(1));
+  };
+
+  const handleSortChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    setSortType(event.target.value);
+  };
+
+  const handleProductClick = (selectedProduct: Product) => {
+    dispatch(setSelectedPhone(selectedProduct.itemId));
+    navigate(`/phones/${selectedProduct.itemId}`);
+  };
+
   return (
-    <section className={classNames(styles.phones, 'container')}>
-      <nav className={styles.phones_nav}>
-        <a href="/" className={styles.phones_home}></a>
-        <a href="/">Phones</a>
-      </nav>
+    <div className={styles.content}>
+      <section className={classNames(styles.phones, 'container')}>
+        <nav className={styles.phones_nav}>
+          <a href="/" className={styles.phones_home}></a>
+          <a href="/">Phones</a>
+        </nav>
 
-      <h2 className={styles.phones_title}>Mobile phones</h2>
-      <p className={styles.phones_models}>{phones.length} models</p>
-      <ul className={styles.phones_list}>
-        {phones.map(phone => {
-          return (
-            <li className={styles.phones_cart} key={phone.id}>
-              <img
-                src={phone.images[0]}
-                alt="phone"
-                className={styles.phones_img}
-              />
-              <p>{phone.name}</p>
-              <div className={classNames(styles.phones_priceC, 'flex')}>
-                <p className={styles.phones_priceD}>${phone.priceDiscount}</p>
-                <p className={styles.phones_priceR}>${phone.priceRegular}</p>
-              </div>
+        <Routes>
+          <Route
+            path=":phoneId"
+            element={<ProductDetail selectedPhone={selectedPhone} />}
+          />
+          <Route
+            index
+            element={
+              <>
+                <h2 className={styles.phones_title}>Phones</h2>
+                <p className={styles.phones_models}>{product.length} models</p>
+                <div className="flex">
+                  <div>
+                    <p>Sort by</p>
+                    <select
+                      name="sort"
+                      value={sortType}
+                      onChange={handleSortChange}
+                    >
+                      <option value="Newest">Newest</option>
+                      <option value="Alphabetically">Alphabetically</option>
+                      <option value="Cheapest">Cheapest</option>
+                    </select>
+                  </div>
 
-              <p className={styles.phones_screen}>
-                Screen <span>{phone.screen}</span>
-              </p>
-              <p className={styles.phones_capacity}>
-                Capacity <span>{phone.capacity}</span>
-              </p>
-              <p className={styles.phones_ram}>
-                RAM <span>{phone.ram}</span>
-              </p>
-              <div className={styles.phones_buttonDiv}>
-                <button className={styles.phones_buttonBuy}>Add to cart</button>
-                <button className={styles.phones_favor}>
-                  <span className={styles.phones_favor_icon}></span>
-                </button>
-              </div>
-            </li>
-          );
-        })}
-      </ul>
-    </section>
+                  <div>
+                    <p>Items on page</p>
+                    <select
+                      name="itemsPerPage"
+                      value={
+                        itemsPerPage === product.length ? 'all' : itemsPerPage
+                      }
+                      onChange={handleItemsPerPageChange}
+                    >
+                      <option value="4">4</option>
+                      <option value="8">8</option>
+                      <option value="16">16</option>
+                      <option value="all">All</option>
+                    </select>
+                  </div>
+                </div>
+                <ul className={styles.phones_list}>
+                  {getProductsForCurrentPage().map(item => (
+                    <PhoneCard
+                      key={item.id}
+                      {...item}
+                      onClick={() => handleProductClick(item)}
+                    />
+                  ))}
+                </ul>
+                <Pagination
+                  currentPage={currentPage}
+                  totalPages={totalPages}
+                  onPageChange={handlePageChange}
+                />
+              </>
+            }
+          />
+        </Routes>
+      </section>
+    </div>
   );
 };

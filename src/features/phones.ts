@@ -1,15 +1,17 @@
 /* eslint-disable no-param-reassign */
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { Phones } from '../types/Phones';
 
 export interface PhonesState {
   items: Phones[];
   status: 'idle' | 'loading' | 'succeeded' | 'failed';
+  selectedPhone: Phones | null;
 }
 
 const initialState: PhonesState = {
   items: [],
   status: 'idle',
+  selectedPhone: null,
 };
 
 export const fetchPhones = createAsyncThunk('phones/fetchPhones', async () => {
@@ -28,8 +30,13 @@ export const phonesSlice = createSlice({
   name: 'phones',
   initialState,
   reducers: {
-    setPhones(state, action) {
+    setPhones(state, action: PayloadAction<Phones[]>) {
       state.items = action.payload;
+    },
+    setSelectedPhone(state, action: PayloadAction<string>) {
+      const phone = state.items.find(phon => phon.id === action.payload);
+
+      state.selectedPhone = phone || null;
     },
   },
   extraReducers: builder => {
@@ -47,6 +54,6 @@ export const phonesSlice = createSlice({
   },
 });
 
-export const { setPhones } = phonesSlice.actions;
+export const { setPhones, setSelectedPhone } = phonesSlice.actions;
 
 export default phonesSlice.reducer;

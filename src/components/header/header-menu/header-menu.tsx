@@ -1,30 +1,35 @@
 import React from 'react';
 import styles from './header-menu.module.scss';
+import { NavLink } from 'react-router-dom';
 
-export const HeaderMenu: React.FC = () => {
+interface HeaderMenuProps {
+  onClose: () => void;
+}
+
+export const HeaderMenu: React.FC<HeaderMenuProps> = ({ onClose }) => {
   return (
-    <>
+    <div className={styles.header_container}>
       <nav className={styles.header}>
         <ul className={styles.header_list}>
-          <li className={styles.header_item}>
-            <a href="/" className={styles.header_link}>
+          <li className={styles.header_item} onClick={onClose}>
+            <NavLink to="/" className={styles.header_link}>
               HOME
-            </a>
+            </NavLink>
           </li>
-          <li className={styles.header_item}>
-            <a href="/" className={styles.header_link}>
+          <li className={styles.header_item} onClick={onClose}>
+            <NavLink to="phones" className={styles.header_link}>
               PHONES
-            </a>
+            </NavLink>
           </li>
-          <li className={styles.header_item}>
-            <a href="/" className={styles.header_link}>
+          <li className={styles.header_item} onClick={onClose}>
+            <NavLink to="tablets" className={styles.header_link}>
               TABLETS
-            </a>
+            </NavLink>
           </li>
-          <li className={styles.header_item}>
-            <a href="/" className={styles.header_link}>
+          <li className={styles.header_item} onClick={onClose}>
+            <NavLink to="accessories" className={styles.header_link}>
               ACCESSORIES
-            </a>
+            </NavLink>
           </li>
         </ul>
       </nav>
@@ -36,6 +41,6 @@ export const HeaderMenu: React.FC = () => {
           <a href="/" className={styles.header_cart}></a>
         </div>
       </div>
-    </>
+    </div>
   );
 };

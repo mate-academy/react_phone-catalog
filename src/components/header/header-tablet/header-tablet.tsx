@@ -23,14 +23,14 @@ export const HeaderTablet: React.FC = () => {
               </NavLink>
             </li>
             <li>
-              <a href="/" className={styles.header_link}>
+              <NavLink to="tablets" className={styles.header_link}>
                 TABLETS
-              </a>
+              </NavLink>
             </li>
             <li>
-              <a href="/" className={styles.header_link}>
+              <NavLink to="accessories" className={styles.header_link}>
                 ACCESSORIES
-              </a>
+              </NavLink>
             </li>
           </ul>
         </nav>
