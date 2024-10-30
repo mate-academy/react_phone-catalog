@@ -2,6 +2,8 @@
 
 import classNames from 'classnames';
 import styles from './Arrow.module.scss';
+import { useContext } from 'react';
+import { ThemeContext } from '../../../../store/ThemeProvider';
 
 type Props = {
   orientation?: 'top' | 'right' | 'bottom' | 'left';
@@ -12,6 +14,8 @@ export const Arrow: React.FC<Props> = ({
   orientation = 'left',
   colorSecondary = false,
 }) => {
+  const { isThemeDark } = useContext(ThemeContext);
+
   return (
     <span
       className={classNames(styles.Arrow, {
@@ -19,6 +23,8 @@ export const Arrow: React.FC<Props> = ({
         [styles.Arrow_right]: orientation === 'right',
         [styles.Arrow_bottom]: orientation === 'bottom',
         [styles.Arrow_secondary]: colorSecondary,
+        [styles.Arrow_darkTheme]: isThemeDark,
+        [styles.Arrow_secondary_darkTheme]: isThemeDark && colorSecondary,
       })}
     >
       <svg

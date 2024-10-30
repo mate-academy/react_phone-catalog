@@ -1,11 +1,12 @@
 import { useLocation, useParams } from 'react-router-dom';
-import { useEffect, useMemo, useState } from 'react';
+import { useContext, useEffect, useMemo, useState } from 'react';
 import classNames from 'classnames';
 
 import { getProductById } from '../../api/products';
 import { ProductCategory } from '../../types/ProductGeneral';
 import { ErrorMessage } from '../../types/ErrorMessage';
 import { Product } from '../../types/Product';
+import { ThemeContext } from '../../store/ThemeProvider';
 
 import { ProductDescription } from './components/ProductDescription';
 import { RecomendedProducts } from './components/RecomendedProducts';
@@ -22,6 +23,7 @@ import { BackButton } from '../shared/BackButton';
 import styles from './ProductDetailsPage.module.scss';
 
 export const ProductDetailsPage = () => {
+  const { isThemeDark } = useContext(ThemeContext);
   const { pathname } = useLocation();
 
   const category: ProductCategory = useMemo(
@@ -123,13 +125,25 @@ export const ProductDetailsPage = () => {
             )}
           >
             <div className={styles.secondaryInfo__left}>
-              <h3 className={styles.secondaryInfo__blockTitle}>About</h3>
+              <h3
+                className={classNames(styles.secondaryInfo__blockTitle, {
+                  [styles.secondaryInfo__blockTitle_darkTheme]: isThemeDark,
+                })}
+              >
+                About
+              </h3>
 
               <ProductDescription descriptions={product.description} />
             </div>
 
             <div className={styles.secondaryInfo__rigth}>
-              <h3 className={styles.secondaryInfo__blockTitle}>Tech specs</h3>
+              <h3
+                className={classNames(styles.secondaryInfo__blockTitle, {
+                  [styles.secondaryInfo__blockTitle_darkTheme]: isThemeDark,
+                })}
+              >
+                Tech specs
+              </h3>
 
               <ProductDetails
                 values={{

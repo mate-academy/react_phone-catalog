@@ -6,13 +6,19 @@ html {
   background-color: $c-white;
 }
 
-.App{
+.App {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
   min-width: $mobile-width;
+  background-color: $c-white;
 
-  &__main{
+  &_darkTheme {
+    color: $c-white-dark;
+    background-color: $c-black-dark;
+  }
+
+  &__main {
     flex: 1 1 auto;
 
     display: flex;

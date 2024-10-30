@@ -16,6 +16,11 @@
     flex-wrap: nowrap;
   }
 
+  &_darkTheme{
+    background-color: $c-surface1-dark;
+    border-color: $c-surface1-dark;
+  }
+
   &__removeBtn {
     transition: all 1s;
 

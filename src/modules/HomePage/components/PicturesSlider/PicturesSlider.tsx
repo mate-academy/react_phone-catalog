@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useContext, useEffect, useRef, useState } from 'react';
 import classNames from 'classnames';
 
 import { PicturesSlide as Slide } from '../PicturesSlide/PicturesSlide';
@@ -11,6 +11,7 @@ import IpadImgLink from '/public/img/banner/ipad-01.jpeg';
 import WatchImgLink from '/public/img/banner/apple-watch-series-9.jpg';
 
 import styles from './PicturesSlider.module.scss';
+import { ThemeContext } from '../../../../store/ThemeProvider';
 
 const slidesData: PicturesSlide[] = [
   {
@@ -30,6 +31,7 @@ const slidesData: PicturesSlide[] = [
 ];
 
 export const PicturesSlider = () => {
+  const { isThemeDark } = useContext(ThemeContext);
   const [currentSlide, setCurrentSlide] = useState(0);
   const [swipeStartX, setSwipeStartX] = useState(0);
   const timerId = useRef(0);
@@ -78,7 +80,9 @@ export const PicturesSlider = () => {
     <div className={styles.PicturesSlider}>
       <div className={styles.PicturesSlider__content}>
         <button
-          className={styles.PicturesSlider__button}
+          className={classNames(styles.PicturesSlider__button, {
+            [styles.PicturesSlider__button_darkTheme]: isThemeDark,
+          })}
           onClick={handlePrevSlide}
         >
           <Arrow />
@@ -102,7 +106,9 @@ export const PicturesSlider = () => {
         </div>
 
         <button
-          className={styles.PicturesSlider__button}
+          className={classNames(styles.PicturesSlider__button, {
+            [styles.PicturesSlider__button_darkTheme]: isThemeDark,
+          })}
           onClick={handleNextSlide}
         >
           <Arrow orientation="right" />
@@ -115,6 +121,9 @@ export const PicturesSlider = () => {
             key={slide.imgBig}
             className={classNames(styles.PicturesSlider__bottomBtn, {
               [styles.PicturesSlider__bottomBtn_active]: index === currentSlide,
+              [styles.PicturesSlider__bottomBtn_darkTheme]: isThemeDark,
+              [styles.PicturesSlider__bottomBtn_active_darkTheme]:
+                isThemeDark && index === currentSlide,
             })}
             onClick={() => setCurrentSlide(index)}
           />

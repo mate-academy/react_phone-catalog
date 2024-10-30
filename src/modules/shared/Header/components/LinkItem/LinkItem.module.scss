@@ -2,7 +2,7 @@
 
 .LinkItem {
   position: relative;
-  
+
   display: flex;
   align-items: center;
   color: $c-secondary;
@@ -27,23 +27,38 @@
     }
   }
 
+  &_darkTheme {
+    color: $c-secondary-dark;
+
+    &::after {
+      background-color: $c-white-dark;
+    }
+
+    &:hover {
+      color: $c-white-dark;
+    }
+  }
+
   &_active {
     color: $c-primary;
 
     &::after {
       transform: scaleX(1);
     }
+
+    &_darkTheme {
+      color: $c-white-dark;
+    }
   }
 
-  &_link {
+  &__link {
     height: 100%;
     min-height: 27px;
 
     @include uppercase;
-    
   }
 
-  &_btn {
+  &__btn {
     justify-content: center;
     width: 50%;
     height: 64px;
@@ -57,6 +72,10 @@
 
     @include on-desktop {
       width: 64px;
+    }
+
+    &_darkTheme {
+      box-shadow: -1px 0 0 0 $c-surface2-dark;
     }
   }
 }

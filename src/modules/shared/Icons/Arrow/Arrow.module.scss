@@ -5,6 +5,10 @@
   align-items: center;
   justify-content: center;
 
+  &_darkTheme path{
+    fill: $c-white-dark;
+  }
+
   &_top {
     transform: rotate(90deg);
   }
@@ -19,5 +23,9 @@
 
   &_secondary path{
     fill: $c-secondary;
+
+    &_darkTheme path{
+      fill: $c-icons-dark;
+    }
   }
 }

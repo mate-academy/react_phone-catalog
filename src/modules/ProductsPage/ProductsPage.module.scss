@@ -9,7 +9,7 @@
   height: 100%;
   display: flex;
   flex-direction: column;
-  
+
   @include on-desktop {
     padding-block: 24px 80px;
   }
@@ -17,7 +17,7 @@
   &__title {
     @include h1;
 
-    color: $c-primary;
+    color: inherit;
     margin-top: 24px;
 
     @include on-tablet{

@@ -21,8 +21,17 @@
       display: block;
     }
 
-    &:hover{
+    &:hover {
       border-color: $c-primary;
+    }
+
+    &_darkTheme {
+      background-color: $c-surface2-dark;
+      border-color: $c-surface2-dark;
+
+      &:hover {
+        border-color: $c-secondary-dark;
+      }
     }
   }
 
@@ -63,9 +72,17 @@
       left: 5px;
     }
 
+    &_darkTheme::after {
+      background-color: $c-elements-dark;
+    }
+
     &_active {
       &::after {
-        background-color: black;
+        background-color: $c-primary;
+      }
+
+      &_darkTheme::after {
+        background-color: $c-white-dark;
       }
     }
   }

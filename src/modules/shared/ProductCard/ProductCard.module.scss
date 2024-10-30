@@ -10,8 +10,8 @@
   height: 439px;
   transition: all $transition;
 
-  &:hover{
-    box-shadow: 0 2px 16px 0 #0000001A;
+  &:hover {
+    box-shadow: 0 2px 16px 0 #0000001a;
   }
 
   @include on-tablet {
@@ -20,6 +20,11 @@
 
   @include on-desktop {
     height: 506px;
+  }
+
+  &_darkTheme {
+    background-color: $c-surface1-dark;
+    border-color: $c-surface1-dark;
   }
 
   &__content {
@@ -50,7 +55,7 @@
 
     transition: all $transition;
 
-    &:hover{
+    &:hover {
       transform: scale(1.1);
     }
   }
@@ -65,10 +70,16 @@
     row-gap: 8px;
 
     border-bottom: 1px solid #e2e6e9;
+
+    &_darkTheme {
+      border-bottom-color: $c-elements-dark;
+    }
   }
 
   &__title {
     @include body-text;
+    
+    color: inherit;
   }
 
   &__secondaryInfo {

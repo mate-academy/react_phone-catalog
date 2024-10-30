@@ -1,10 +1,13 @@
 /* eslint-disable max-len */
 import { useContext, useMemo } from 'react';
 import { ProductsContext } from '../../../../store/ProductsProvider';
+import { ThemeContext } from '../../../../store/ThemeProvider';
 
 import styles from './ShoppingBag.module.scss';
+import classNames from 'classnames';
 
 export const ShoppingBag = () => {
+  const { isThemeDark } = useContext(ThemeContext);
   const { addedProducts } = useContext(ProductsContext);
 
   const countItems = useMemo(
@@ -13,7 +16,11 @@ export const ShoppingBag = () => {
   );
 
   return (
-    <div className={styles.ShoppingBag}>
+    <div
+      className={classNames(styles.ShoppingBag, {
+        [styles.ShoppingBag_darkTheme]: isThemeDark,
+      })}
+    >
       <svg
         width="16"
         height="16"

@@ -1,9 +1,13 @@
 import styles from './Footer.module.scss';
 import Logo from '/public/icons/Logo.svg';
+import LogoLight from '/public/icons/Logo_light.svg';
 import { Link } from 'react-router-dom';
 import { PagesPath } from '../../../types/PagesPath';
 import { SliderButton } from '../SliderButton';
 import { Arrow } from '../Icons/Arrow/Arrow';
+import { useContext } from 'react';
+import { ThemeContext } from '../../../store/ThemeProvider';
+import classNames from 'classnames';
 
 type NavLink = { title: string; path: string };
 
@@ -21,11 +25,17 @@ const scrollToTop = () => {
 };
 
 export const Footer = () => {
+  const { isThemeDark } = useContext(ThemeContext);
+
   return (
-    <footer className={styles.Footer}>
+    <footer
+      className={classNames(styles.Footer, {
+        [styles.Footer_darkTheme]: isThemeDark,
+      })}
+    >
       <div className={styles.Footer__content}>
         <Link to={PagesPath.Home} className={styles.Footer__logo}>
-          <img src={Logo} alt="Logo" />
+          <img src={isThemeDark ? LogoLight : Logo} alt="Logo" />
         </Link>
 
         <nav className={styles.Footer__nav}>

@@ -19,7 +19,7 @@
     transform: translate(0);
     opacity: 1;
     transition: all 1s;
-    background-color: $c-white;
+    background-color: inherit;
   }
 
   &__list {
@@ -34,8 +34,12 @@
     }
   }
 
-  &__buttons{
+  &__buttons {
     display: flex;
     box-shadow: 0 0 0 1px #e2e6e9;
+  }
+
+  &_darkTheme &__buttons{
+    box-shadow: 0 0 0 1px $c-surface2-dark;
   }
 }

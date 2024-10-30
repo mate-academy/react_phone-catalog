@@ -13,7 +13,7 @@
 
   &__content {
     @include inline-padding-content;
-    
+
     padding-top: 24px;
     padding-bottom: 56px;
 
@@ -34,8 +34,8 @@
     margin-top: 16px;
 
     @include h2;
-    
-    color: $c-primary;
+
+    color: inherit;
   }
 
   &__mainInfo {
@@ -111,7 +111,7 @@
 
 .secondaryInfo {
   @include grid-layout;
-  
+
   row-gap: 56px;
 
   @include on-tablet {
@@ -136,10 +136,14 @@
 
   &__blockTitle {
     @include h3;
-    
-    color: $c-primary;
+
+    color: inherit;
     padding-bottom: 16px;
     border-bottom: 1px solid $c-elements;
+
+    &_darkTheme{
+      border-bottom-color: $c-icons-dark;
+    }
   }
 
   &__details {

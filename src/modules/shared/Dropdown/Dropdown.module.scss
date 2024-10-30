@@ -5,7 +5,11 @@
 
   // max-width: 176px;
   text-transform: capitalize;
-  background-color: #fff;
+  background-color: $c-white;
+
+  &_darkTheme {
+    background-color: $c-surface2-dark;
+  }
 
   &__header {
     border: 1px solid $c-icons;
@@ -14,7 +18,8 @@
     align-items: center;
     justify-content: space-between;
     cursor: pointer;
-    color: $c-primary;
+    color: inherit;
+    transition: all $transition;
 
     @include buttons;
 
@@ -22,11 +27,27 @@
       border: 1px solid $c-secondary;
     }
 
+    &_darkTheme {
+      border-color: $c-surface2-dark;
+
+      &:hover {
+        border-color: $c-accent-dark;
+      }
+    }
+
     &_active {
       border: 1px solid $c-primary;
 
-      &:hover{
-        border:1px solid $c-primary;
+      &:hover {
+        border: 1px solid $c-primary;
+      }
+
+      &_darkTheme {
+        border-color: $c-accent-dark;
+
+        &:hover {
+          border-color: $c-accent-dark;
+        }
       }
     }
   }
@@ -51,6 +72,11 @@
 
     padding-block: 8px;
 
+    &_darkTheme {
+      background-color: $c-black-dark;
+      border-color: $c-elements-dark;
+    }
+
     &_active {
       top: 105%;
       opacity: 1;
@@ -66,13 +92,22 @@
 
   &__item {
     @include body-text;
-    
+
     padding: 6px 12px;
     color: $c-secondary;
     transition: all $transition;
 
     &:hover {
       color: $c-primary;
+    }
+
+    &_darkTheme {
+      color: $c-secondary-dark;
+
+      &:hover {
+        color: $c-white-dark;
+        background-color: $c-surface2-dark;
+      }
     }
   }
 }

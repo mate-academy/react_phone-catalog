@@ -7,9 +7,13 @@
   width: 48px;
   height: 100%;
 
-  box-shadow: -1px 0 0 0 #e2e6e9;
+  border-left: 1px solid #e2e6e9;
   
   @include on-tablet {
   display: none;
+  }
+
+  &_darkTheme{
+    border-left-color: $c-surface2-dark;
   }
 }

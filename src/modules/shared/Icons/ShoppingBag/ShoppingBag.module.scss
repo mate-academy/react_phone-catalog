@@ -3,6 +3,10 @@
 .ShoppingBag {
   position: relative;
 
+  &_darkTheme path {
+    fill: $c-white-dark;
+  }
+
   &__countItems {
     position: absolute;
     box-sizing: border-box;

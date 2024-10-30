@@ -4,11 +4,22 @@
   box-shadow: 0 -1px 0 0 #e2e6e9;
   width: 100%;
 
+  &_darkTheme {
+    box-shadow: 0 -1px 0 0 $c-surface2-dark;
+
+    &__link {
+      color: $c-secondary-dark;
+    }
+
+    &__backTop {
+      color: $c-secondary-dark;
+    }
+  }
+
   &__content {
     @include inline-padding-content;
-    
-    width: 100%;
 
+    width: 100%;
     padding-block: 32px;
 
     display: flex;
@@ -29,7 +40,6 @@
       width: 100%;
     }
   }
-
 
   &__list {
     display: flex;

@@ -1,12 +1,14 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { Close } from '../../../Icons/Close';
-import styles from './Search.module.scss';
 import classNames from 'classnames';
 import { useParams, useSearchParams } from 'react-router-dom';
 import { getSearchWith } from '../../../../../utils/searchHelper';
 import { useDebounce } from '../../../../../hooks/useDebounce';
+import { ThemeContext } from '../../../../../store/ThemeProvider';
+import styles from './Search.module.scss';
 
 export const Search = () => {
+  const { isThemeDark } = useContext(ThemeContext);
   const { category } = useParams();
   const [searchParams, setSearchParams] = useSearchParams();
   const query = searchParams.get('query') || '';
@@ -41,7 +43,12 @@ export const Search = () => {
   };
 
   return (
-    <form className={styles.Search} onReset={handleClear}>
+    <form
+      className={classNames(styles.Search, {
+        [styles.Search_darkTheme]: isThemeDark,
+      })}
+      onReset={handleClear}
+    >
       <input
         type="search"
         placeholder="Search"

@@ -9,12 +9,9 @@
     width: 16px;
     height: 16px;
 
-    -webkit-mask-image: url('/public/icons/Home.svg');
-    mask-image: url('/public/icons/Home.svg');
-    background-color: $c-primary;
     transition: all $transition;
 
-    &:hover{
+    &:hover {
       transform: scale(1.1);
     }
   }
@@ -30,10 +27,14 @@
     text-transform: capitalize;
     color: $c-primary;
 
-    &_text{
+    &_darkTheme {
+      color: $c-white-dark;
+    }
+
+    &_text {
       position: relative;
 
-      &::after{
+      &::after {
         content: '';
         position: absolute;
         bottom: -3px;
@@ -46,17 +47,25 @@
         transform-origin: center;
         transition: all $transition;
       }
+
+      &_darkTheme {
+        &::after {
+          background-color: $c-white-dark;
+        }
+      }
     }
 
-    &:hover > &_text::after{
+    &:hover > &_text::after {
       transform: scaleX(1);
       transition: all $transition;
     }
 
-
     &_disabled {
       color: $c-secondary;
-    }
 
+      &_darkTheme {
+        color: $c-secondary-dark;
+      }
+    }
   }
 }

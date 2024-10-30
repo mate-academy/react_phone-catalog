@@ -5,15 +5,7 @@
   width: 100%;
   overflow: hidden;
 
-  @include on-desktop {
-    height: 64px;
-  }
-
-  &_overflowMenu {
-    min-height: 100%;
-  }
-
-  background-color: $c-white;
+  background-color: inherit;
   position: sticky;
   top: 0;
   left: 0;
@@ -22,6 +14,14 @@
 
   display: flex;
   flex-direction: column;
+
+  @include on-desktop {
+    height: 64px;
+  }
+
+  &_overflowMenu {
+    min-height: 100%;
+  }
 
   &__contentTop {
     height: 100%;
@@ -36,11 +36,13 @@
     box-sizing: border-box;
   }
 
+  &_darkTheme &__contentTop{
+    border-bottom-color: $c-surface2-dark;
+  }
+
   &__logo {
     flex: 1 1 auto;
     transition: all $transition;
-
-    
 
     @include on-tablet {
       flex: 0 0 auto;

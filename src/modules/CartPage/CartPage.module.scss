@@ -44,6 +44,7 @@
 
     margin-top: 24px;
     margin-bottom: 32px;
+    color: inherit;
 
     @include on-tablet {
       margin-top: 16px;
@@ -76,6 +77,10 @@
 
     padding: 24px;
     border: 1px solid $c-elements;
+
+    &_darkTheme{
+      border-color: $c-elements-dark;
+    }
   }
 
   &__totalCount{
@@ -92,6 +97,11 @@
       padding-bottom: 25px;
       margin-bottom: 24px;
     }
+
+    &_darkTheme {
+      border-bottom-color: $c-elements-dark;
+      color: $c-secondary-dark;
+    }
   }
 
   &__chekout{
@@ -106,6 +116,15 @@
 
     &:hover {
       box-shadow: 0 3px 13px 0 #17203166;
+    }
+
+    &_darkTheme{
+      background-color: $c-accent-dark;
+      color: $c-white-dark;
+
+      &:hover {
+        background-color: #A378FF;
+      }
     }
   }
 }

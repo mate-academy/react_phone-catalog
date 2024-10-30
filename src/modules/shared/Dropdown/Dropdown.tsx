@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import classNames from 'classnames';
 import { getSearchWith } from '../../../utils/searchHelper';
 
 import styles from './Dropdown.module.scss';
 import { Arrow } from '../Icons/Arrow/Arrow';
+import { ThemeContext } from '../../../store/ThemeProvider';
 
 type Props = {
   name: string;
@@ -13,6 +14,7 @@ type Props = {
 };
 
 export const Dropdown: React.FC<Props> = ({ name, values, defaultValue }) => {
+  const { isThemeDark } = useContext(ThemeContext);
   const [searchParams, setSearchParams] = useSearchParams();
   const valueFromSearchParams = searchParams.get(name) || '';
 
@@ -42,10 +44,16 @@ export const Dropdown: React.FC<Props> = ({ name, values, defaultValue }) => {
   };
 
   return (
-    <div className={styles.Dropdown}>
+    <div
+      className={classNames(styles.Dropdown, {
+        [styles.Dropdown_darkTheme]: isThemeDark,
+      })}
+    >
       <div
         className={classNames(styles.Dropdown__header, {
           [styles.Dropdown__header_active]: isOpen,
+          [styles.Dropdown__header_darkTheme]: isThemeDark,
+          [styles.Dropdown__header_active_darkTheme]: isOpen && isThemeDark,
         })}
         onClick={() => setIsOpen(!isOpen)}
       >
@@ -62,13 +70,16 @@ export const Dropdown: React.FC<Props> = ({ name, values, defaultValue }) => {
       <div
         className={classNames(styles.Dropdown__content, {
           [styles.Dropdown__content_active]: isOpen,
+          [styles.Dropdown__content_darkTheme]: isThemeDark,
         })}
       >
         <ul className={styles.Dropdown__list}>
           {values.map(value => (
             <li
               key={value}
-              className={styles.Dropdown__item}
+              className={classNames(styles.Dropdown__item, {
+                [styles.Dropdown__item_darkTheme]: isThemeDark,
+              })}
               onClick={() => handleSelectOption(value)}
             >
               {value}

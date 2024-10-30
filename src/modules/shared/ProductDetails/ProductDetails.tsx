@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styles from './ProductDetails.module.scss';
 import classNames from 'classnames';
+import { ThemeContext } from '../../../store/ThemeProvider';
 
 type Props = {
   values: { [key: string]: string | string[] };
@@ -8,6 +9,8 @@ type Props = {
 };
 
 export const ProductDetails: React.FC<Props> = ({ values, otherClass }) => {
+  const { isThemeDark } = useContext(ThemeContext);
+
   return (
     <div className={classNames(styles.ProductDetails, otherClass)}>
       {Object.keys(values).map(key => {
@@ -22,7 +25,12 @@ export const ProductDetails: React.FC<Props> = ({ values, otherClass }) => {
         }
 
         return (
-          <p className={styles.ProductDetails__item} key={key}>
+          <p
+            className={classNames(styles.ProductDetails__item, {
+              [styles.ProductDetails__item_darkTheme]: isThemeDark,
+            })}
+            key={key}
+          >
             {key} <span>{value}</span>
           </p>
         );

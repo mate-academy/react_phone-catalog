@@ -11,8 +11,8 @@
 
   &__field {
     @include small-text;
-    
-    color: $c-secondary;
+
+    color: $c-primary;
     background-color: inherit;
 
     box-sizing: border-box;
@@ -21,7 +21,7 @@
     min-width: 90px;
     border: none;
     outline: none;
-    border-left: 1px solid var(--border-color);
+    border-left: 1px solid #e2e6e9;
     padding-left: 34px;
     background-position-x: 10px;
     background-position-y: center;
@@ -32,24 +32,33 @@
     &::-webkit-search-cancel-button {
       -webkit-appearance: none; /* Для Chrome, Safari */
     }
-    
+
     &::-ms-clear {
       display: none; /* Для Edge */
     }
 
     &::placeholder {
       @include small-text;
-      
+
       color: $c-secondary;
     }
   }
 
+  &_darkTheme &__field {
+    color: $c-white-dark;
+    border-left-color: $c-surface2-dark;
+
+    &::placeholder {
+      color: $c-secondary-dark;
+    }
+  }
+  
   &__clearBtn {
     opacity: 0;
     pointer-events: none;
     padding-inline: 5px;
 
-    &_active{
+    &_active {
       opacity: 1;
       pointer-events: all;
     }

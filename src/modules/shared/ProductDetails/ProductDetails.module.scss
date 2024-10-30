@@ -16,6 +16,13 @@
     & > span {
       color: $c-primary;
     }
+
+    &_darkTheme {
+      color: $c-secondary-dark;
+
+      & > span {
+        color: $c-white-dark;
+      }
+    }
   }
 }
-

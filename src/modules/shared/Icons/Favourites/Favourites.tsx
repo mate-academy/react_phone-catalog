@@ -1,16 +1,23 @@
 /* eslint-disable max-len */
 import { useContext, useMemo } from 'react';
 import { ProductsContext } from '../../../../store/ProductsProvider';
+import { ThemeContext } from '../../../../store/ThemeProvider';
 
 import styles from './Favourites.module.scss';
+import classNames from 'classnames';
 
 export const Favourites = () => {
+  const { isThemeDark } = useContext(ThemeContext);
   const { likedProducts } = useContext(ProductsContext);
 
   const countItems = useMemo(() => likedProducts.length, [likedProducts]);
 
   return (
-    <div className={styles.Favourites}>
+    <div
+      className={classNames(styles.Favourites, {
+        [styles.Favourites_darkTheme]: isThemeDark,
+      })}
+    >
       <svg
         width="16"
         height="16"

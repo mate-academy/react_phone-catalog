@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styles from './BurgerButton.module.scss';
 import { Close } from '../../../Icons/Close';
 import { BurgerMenu } from '../../../Icons/BurgerMenu';
+import { ThemeContext } from '../../../../../store/ThemeProvider';
+import classNames from 'classnames';
 
 type Props = {
   isMenuActive: boolean;
@@ -12,9 +14,13 @@ export const BurgerButton: React.FC<Props> = ({
   isMenuActive,
   onChangeIsMenuActive,
 }) => {
+  const { isThemeDark } = useContext(ThemeContext);
+
   return (
     <button
-      className={styles.BurgerButton}
+      className={classNames(styles.BurgerButton, {
+        [styles.BurgerButton_darkTheme]: isThemeDark,
+      })}
       onClick={() => onChangeIsMenuActive(!isMenuActive)}
     >
       {isMenuActive ? <Close /> : <BurgerMenu />}

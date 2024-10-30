@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styles from './SliderButton.module.scss';
+import { ThemeContext } from '../../../store/ThemeProvider';
+import classNames from 'classnames';
 
 type Props = {
   onClick: () => void;
@@ -12,9 +14,13 @@ export const SliderButton: React.FC<Props> = ({
   isDisabled = false,
   children,
 }) => {
+  const { isThemeDark } = useContext(ThemeContext);
+
   return (
     <button
-      className={styles.SliderButton}
+      className={classNames(styles.SliderButton, {
+        [styles.SliderButton_darkTheme]: isThemeDark,
+      })}
       onClick={onClick}
       disabled={isDisabled}
     >

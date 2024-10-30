@@ -1,8 +1,11 @@
+import { useContext } from 'react';
 import { AddedProduct } from '../../../../store/ProductsProvider';
 import { Close } from '../../../shared/Icons/Close';
 import { Price } from '../../../shared/Price';
 import { SliderButton } from '../../../shared/SliderButton';
 import styles from './Card.module.scss';
+import { ThemeContext } from '../../../../store/ThemeProvider';
+import classNames from 'classnames';
 
 type Props = {
   product: AddedProduct;
@@ -15,8 +18,14 @@ export const Card: React.FC<Props> = ({
   onChangeCount,
   onRemoveProduct,
 }) => {
+  const { isThemeDark } = useContext(ThemeContext);
+
   return (
-    <li className={styles.Card}>
+    <li
+      className={classNames(styles.Card, {
+        [styles.Card_darkTheme]: isThemeDark,
+      })}
+    >
       <button className={styles.Card__removeBtn} onClick={onRemoveProduct}>
         <Close colorSecondary={true} />
       </button>

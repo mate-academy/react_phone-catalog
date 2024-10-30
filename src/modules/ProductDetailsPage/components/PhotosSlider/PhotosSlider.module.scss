@@ -8,12 +8,12 @@
     flex-direction: column;
     row-gap: 16px;
 
-    @include on-tablet{
+    @include on-tablet {
       flex-direction: row-reverse;
       column-gap: 16px;
     }
   }
-  
+
   &__btnPhoto {
     cursor: pointer;
     position: relative;
@@ -22,8 +22,16 @@
     width: 100%;
     transition: all $transition;
 
-    &:hover{
+    &:hover {
       border: 1px solid $c-primary;
+    }
+
+    &_darkTheme {
+      border-color: $c-elements-dark;
+
+      &:hover {
+        border-color: $c-white-dark;
+      }
     }
 
     & > img {
@@ -35,8 +43,12 @@
       object-fit: contain;
     }
 
-    &_active{
+    &_active {
       border: 1px solid $c-primary;
+
+      &_darkTheme {
+        border-color: $c-white-dark;
+      }
     }
   }
 
@@ -57,7 +69,7 @@
       object-fit: contain;
       transition: all $transition;
 
-      &:hover{
+      &:hover {
         transform: scale(1.1);
       }
     }
@@ -72,11 +84,9 @@
     grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
     gap: 8px;
 
-    @include on-tablet{
+    @include on-tablet {
       grid-template-rows: repeat(auto-fit, minmax(35px, 1fr));
       grid-template-columns: 1fr;
     }
   }
-
-
 }

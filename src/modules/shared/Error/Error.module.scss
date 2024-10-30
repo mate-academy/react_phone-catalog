@@ -14,7 +14,7 @@
   &__title {
     @include h1;
     
-    color: $c-primary;
+    color: inherit;
     margin: 24px;
     text-align: center;
   }

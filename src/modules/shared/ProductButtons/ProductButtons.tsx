@@ -3,6 +3,7 @@ import styles from './ProductButtons.module.scss';
 import classNames from 'classnames';
 import { AddedProduct, ProductsContext } from '../../../store/ProductsProvider';
 import { Like } from '../Icons/Like';
+import { ThemeContext } from '../../../store/ThemeProvider';
 
 type Props = {
   productId: string;
@@ -10,6 +11,7 @@ type Props = {
 };
 
 export const ProductButtons: React.FC<Props> = ({ otherClass, productId }) => {
+  const { isThemeDark } = useContext(ThemeContext);
   const {
     likedProducts,
     setLikedProducts,
@@ -82,13 +84,20 @@ export const ProductButtons: React.FC<Props> = ({ otherClass, productId }) => {
       <button
         className={classNames(styles.Buttons__buttonAdd, {
           [styles.Buttons__buttonAdd_active]: isAdded,
+          [styles.Buttons__buttonAdd_darkTheme]: isThemeDark,
+          [styles.Buttons__buttonAdd_active_darkTheme]: isThemeDark && isAdded,
         })}
         onClick={event => handleAddBtnClick(event)}
       >
         {cartBtnText}
       </button>
+
       <button
-        className={styles.Buttons__buttonLike}
+        className={classNames(styles.Buttons__buttonLike, {
+          [styles.Buttons__buttonLike_active]: isLiked,
+          [styles.Buttons__buttonLike_darkTheme]: isThemeDark,
+          [styles.Buttons__buttonLike_active_darkTheme]: isThemeDark && isLiked,
+        })}
         onClick={event => handleLikeBtnClick(event)}
       >
         <Like isActive={isLiked} />

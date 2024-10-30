@@ -9,8 +9,10 @@ import { Card } from './components/Card';
 import { Modal } from './components/Modal';
 
 import styles from './CartPage.module.scss';
+import { ThemeContext } from '../../store/ThemeProvider';
 
 export const CartPage = () => {
+  const { isThemeDark } = useContext(ThemeContext);
   const { addedProducts, setAddedProducts } = useContext(ProductsContext);
   const [isModalOpened, setIsModalOpened] = useState(false);
   const total = useMemo(
@@ -84,19 +86,29 @@ export const CartPage = () => {
               ))}
             </ul>
 
-            <div className={styles.CartPage__total}>
+            <div
+              className={classNames(styles.CartPage__total, {
+                [styles.CartPage__total_darkTheme]: isThemeDark,
+              })}
+            >
               <Price
                 price={total.price}
                 otherClass={styles.CartPage__totalPrice}
                 isBigTextSize={true}
               />
 
-              <p className={styles.CartPage__totalCount}>
+              <p
+                className={classNames(styles.CartPage__totalCount, {
+                  [styles.CartPage__totalCount_darkTheme]: isThemeDark,
+                })}
+              >
                 Total for {total.count} items
               </p>
 
               <button
-                className={styles.CartPage__chekout}
+                className={classNames(styles.CartPage__chekout, {
+                  [styles.CartPage__chekout_darkTheme]: isThemeDark,
+                })}
                 onClick={() => setIsModalOpened(true)}
               >
                 Checkout

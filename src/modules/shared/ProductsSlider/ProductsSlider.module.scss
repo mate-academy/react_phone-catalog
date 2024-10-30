@@ -17,8 +17,8 @@
 
   &__title {
     @include h2;
-    
-    color: $c-primary;
+
+    color: inherit;
   }
 
   &__buttons {

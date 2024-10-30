@@ -22,4 +22,24 @@
       fill: $c-icons;
     }
   }
+
+  &_darkTheme {
+    border-color: $c-surface2-dark;
+    color: $c-white-dark;
+    background-color: $c-surface2-dark;
+
+    &:hover {
+      background-color: $c-icons-dark;
+      border-color: $c-icons-dark;
+    }
+
+    &:disabled {
+      border-color: $c-elements-dark;
+      background-color: inherit;
+
+      & path {
+        fill: $c-elements-dark;
+      }
+    }
+  }
 }

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import classNames from 'classnames';
 
@@ -6,12 +6,14 @@ import { HexColor } from '../../../../types/Category';
 import { Product } from '../../../../types/Product';
 import { getColor } from '../../../../utils/getColor';
 import styles from './Selectors.module.scss';
+import { ThemeContext } from '../../../../store/ThemeProvider';
 
 type Props = {
   product: Product;
 };
 
 export const Selectors: React.FC<Props> = ({ product }) => {
+  const { isThemeDark } = useContext(ThemeContext);
   const navigate = useNavigate();
   const { namespaceId, color, colorsAvailable, capacity, capacityAvailable } =
     product;
@@ -27,7 +29,11 @@ export const Selectors: React.FC<Props> = ({ product }) => {
 
   return (
     <div className={styles.Selectors}>
-      <div className={styles.Selectors__block}>
+      <div
+        className={classNames(styles.Selectors__block, {
+          [styles.Selectors__block_darkTheme]: isThemeDark,
+        })}
+      >
         <p className={styles.Selectors__title}>Available colors</p>
 
         <div className={styles.Selectors__links}>
@@ -45,6 +51,9 @@ export const Selectors: React.FC<Props> = ({ product }) => {
                 styles.Selectors__link_color,
                 {
                   [styles.Selectors__link_color_active]: color === value,
+                  [styles.Selectors__link_color_darkTheme]: isThemeDark,
+                  [styles.Selectors__link_color_active_darkTheme]:
+                    isThemeDark && color === value,
                 },
               )}
             />
@@ -52,7 +61,11 @@ export const Selectors: React.FC<Props> = ({ product }) => {
         </div>
       </div>
 
-      <div className={styles.Selectors__block}>
+      <div
+        className={classNames(styles.Selectors__block, {
+          [styles.Selectors__block_darkTheme]: isThemeDark,
+        })}
+      >
         <p className={styles.Selectors__title}>Select capacity</p>
 
         <div className={styles.Selectors__links}>
@@ -69,6 +82,9 @@ export const Selectors: React.FC<Props> = ({ product }) => {
                 styles.Selectors__link_capacity,
                 {
                   [styles.Selectors__link_capacity_active]: capacity === value,
+                  [styles.Selectors__link_capacity_darkTheme]: isThemeDark,
+                  [styles.Selectors__link_capacity_active_darkTheme]:
+                    isThemeDark && capacity === value,
                 },
               )}
             >

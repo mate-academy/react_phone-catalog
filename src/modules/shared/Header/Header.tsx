@@ -1,7 +1,9 @@
 import { Link, useParams } from 'react-router-dom';
 import styles from './Header.module.scss';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import classNames from 'classnames';
+import { ThemeContext } from '../../../store/ThemeProvider';
+import { ValidCategories } from '../../../constants/ValidCategories';
 import { PagesPath } from '../../../types/PagesPath';
 import { Favourites } from '../Icons/Favourites';
 import { ShoppingBag } from '../Icons/ShoppingBag';
@@ -9,8 +11,9 @@ import { Menu } from './components/Menu/Menu';
 import { LinkItem } from './components/LinkItem';
 import { BurgerButton } from './components/BurgerButton';
 import { Search } from './components/Search';
-import { ValidCategories } from '../../../constants/ValidCategories';
+import { ThemeSwitch } from './components/ThemeSwitch';
 import Logo from '/public/icons/Logo.svg';
+import LogoLight from '/public/icons/Logo_light.svg';
 
 type PageLink = { name: string; path: string };
 
@@ -22,6 +25,7 @@ const pages: PageLink[] = [
 ];
 
 export const Header = () => {
+  const { isThemeDark } = useContext(ThemeContext);
   const [isMenuActive, setIsMenuActive] = useState(false);
   const { category, productId } = useParams();
 
@@ -54,11 +58,12 @@ export const Header = () => {
     <header
       className={classNames(styles.Header, {
         [styles.Header_overflowMenu]: isMenuActive,
+        [styles.Header_darkTheme]: isThemeDark,
       })}
     >
       <div className={styles.Header__contentTop}>
         <Link to={PagesPath.Home} className={styles.Header__logo}>
-          <img src={Logo} alt="Logo" />
+          <img src={isThemeDark ? LogoLight : Logo} alt="Logo" />
         </Link>
 
         <nav className={styles.Header__menu}>
@@ -73,6 +78,8 @@ export const Header = () => {
             </LinkItem>
           ))}
         </nav>
+
+        <ThemeSwitch />
 
         {category && ValidCategories.includes(category) && !productId && (
           <Search />

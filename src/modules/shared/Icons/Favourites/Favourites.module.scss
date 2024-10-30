@@ -3,6 +3,10 @@
 .Favourites {
   position: relative;
 
+  &_darkTheme path{
+    fill: $c-white-dark;
+  }
+
   &__countItems {
     position: absolute;
     top: -25%;

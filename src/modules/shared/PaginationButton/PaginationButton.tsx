@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import classNames from 'classnames';
 import styles from './PaginationButton.module.scss';
+import { ThemeContext } from '../../../store/ThemeProvider';
 
 type Props = {
   onClick: () => void;
@@ -13,10 +14,14 @@ export const PaginationButton: React.FC<Props> = ({
   isActive = false,
   children,
 }) => {
+  const { isThemeDark } = useContext(ThemeContext);
+
   return (
     <button
       className={classNames(styles.PaginationButton, {
         [styles.PaginationButton_active]: isActive,
+        [styles.PaginationButton_darkTheme]: isThemeDark,
+        [styles.PaginationButton_active_darkTheme]: isActive && isThemeDark,
       })}
       onClick={onClick}
     >
