@@ -1,0 +1,117 @@
+@import '/src/style/main';
+
+.PicturesSlide {
+  display: flex;
+  gap: 15px;
+  width: 100%;
+  font-size: 16px;
+  background-color: black;
+  color: $c-white;
+  align-items: center;
+  justify-content: center;
+
+  @include on-tablet {
+    align-items: normal;
+  }
+
+  &__left {
+    display: none;
+
+    @include on-tablet {
+      flex-basis: 40%;
+      margin: 15px;
+      padding: 30px;
+      background-color: rgb(36, 36, 36);
+      border-radius: 25px;
+
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+  }
+
+  &__right {
+    margin-top: 20px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    @include on-tablet {
+      margin-top: 40px;
+      flex-basis: 60%;
+    }
+  }
+
+  &__title {
+    font-size: 8vw;
+    font-weight: 800;
+    line-height: 85%;
+    letter-spacing: -0.05em;
+    text-align: center;
+
+    background: linear-gradient(to right, #9c27b0, #42a5f5);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    @include on-tablet {
+      font-size: clamp(18px, 3vw, 48px);
+      text-align: left;
+    }
+  }
+
+  &__subTitle {
+    @include body-text;
+    
+    color: $c-secondary;
+
+    flex: 1 1 auto;
+  }
+
+  &__btn {
+    padding: 15px 30px;
+    border-radius: 25px;
+    border: 1px solid $c-secondary;
+    width: max-content;
+
+    text-transform: uppercase;
+    font-size: 0.8em;
+    transition: all $transition;
+
+    &:hover {
+      transform: scale(1.2);
+    }
+  }
+
+  &__imgTitle {
+    margin-top: 15px;
+    font-size: 5vw;
+    line-height: 100%;
+    font-weight: 600;
+    color: $c-white;
+
+    @include on-tablet {
+      margin-top: 0;
+      font-size: 3vw;
+      font-size: clamp(16px, 3vw, 36px);
+    }
+  }
+
+  &__imgSubTitle {
+    @include body-text;
+    
+    font-size: 3vw;
+    line-height: 150%;
+    color: $c-secondary;
+
+    @include on-tablet {
+      font-size: clamp(12px, 1.5vw, 24px);
+    }
+  }
+
+  &__img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: cover;
+  }
+}

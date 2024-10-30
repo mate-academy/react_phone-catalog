@@ -1,0 +1,42 @@
+iframe {
+  display: none;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+a,
+li,
+ul,
+button {
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+li{
+  list-style: none;
+}
+
+img {
+  display: block;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+button {
+  border: none;
+  font: inherit;
+  color: inherit;
+  background-color: transparent;
+  cursor: pointer;
+}
