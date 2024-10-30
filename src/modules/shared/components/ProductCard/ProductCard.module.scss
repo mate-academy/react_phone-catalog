@@ -17,6 +17,7 @@
 }
 
 .productInfo {
+  cursor: default;
   display: flex;
   flex-direction: column;
   gap: 8px;
@@ -25,12 +26,14 @@
 .imageWrapper {
   display: flex;
   justify-content: center;
+  cursor: pointer;
 }
 
 .image {
   width: 208px;
   height: 196px;
   object-fit: contain;
+  transition: transform 0.3s ease;
 
   @media (max-width: $tablet-breakpoint) {
     width: 173px;
@@ -41,11 +44,16 @@
     width: 148px;
     height: 129px;
   }
+
+  &:hover {
+    transform: scale(1.1);
+  }
 }
 
 .title {
   @include body-text-desktop-tablet;
 
+  cursor: pointer;
   margin-top: 16px;
 }
 
@@ -105,6 +113,12 @@
   height: 40px;
   background-color: $color-accent;
   border: none;
+
+  transition: background-color 0.3s ease;
+
+  &:hover{
+    background-color: $color-accent-light;
+  }
 }
 
 .favourite {
@@ -115,4 +129,9 @@
   height: 40px;
   background-color: $color-surface2;
   border: none;
+  transition: background-color 0.3s ease;
+
+  &:hover{
+    background-color: $color-icons;
+  }
 }

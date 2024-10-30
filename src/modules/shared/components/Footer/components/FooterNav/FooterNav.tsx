@@ -11,10 +11,10 @@ export const FooterNav = () => {
       >
         GitHub
       </Link>
-      <Link to="contacts" className={styles.navbarLink}>
+      <Link to="/contacts" className={styles.navbarLink}>
         Contacts
       </Link>
-      <Link to="rights" className={styles.navbarLink}>
+      <Link to="/rights" className={styles.navbarLink}>
         Rights
       </Link>
     </nav>

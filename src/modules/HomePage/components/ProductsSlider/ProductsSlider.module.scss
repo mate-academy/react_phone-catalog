@@ -13,7 +13,7 @@
 
 .topWrapper {
   @include flex-center;
-  
+
   box-sizing: border-box;
   justify-content: space-between;
   width: 100%;
@@ -38,6 +38,7 @@
 
 .sliderButtonPrev,
 .sliderButtonNext {
+  cursor: pointer;
   box-sizing: border-box;
   display: flex;
   flex-direction: row;
@@ -51,7 +52,6 @@
   background-position: center;
   background-repeat: no-repeat;
   transition: background-color 0.5s ease-in-out;
-  cursor: pointer;
 
   &:hover {
     background-color: $color-icons;

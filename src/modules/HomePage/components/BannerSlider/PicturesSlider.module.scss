@@ -26,11 +26,12 @@
   .swiperButtonNext {
     @include flex-center;
 
+    cursor: pointer;
     position: relative;
     width: 32px;
     height: 400px;
     background-color: $color-surface2;
-    cursor: pointer;
+    transition: background-color 0.5s ease-in-out;
 
     @media (max-width: $tablet-breakpoint) {
       height: 189px;
@@ -46,6 +47,10 @@
       width: 16px;
       height: 16px;
       transform: translateY(-50%);
+    }
+
+    &.swiperButtonPrev:hover, &.swiperButtonNext:hover {
+      background-color: $color-icons;
     }
   }
 
