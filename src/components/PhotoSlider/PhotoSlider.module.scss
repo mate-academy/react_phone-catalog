@@ -13,6 +13,7 @@
 
   &__main {
     @include mix.square(464px);
+
     object-fit: contain;
 
     @include mix.respond-to(tablet) {
@@ -33,6 +34,7 @@
 
   &__photo {
     @include mix.square(80px);
+  
     display: block;
     object-fit: contain;
     border: 1px solid v.$colorElements;

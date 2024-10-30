@@ -3,11 +3,8 @@
 
 .modal {
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
+  inset: 0;
   background: #32354273;
-  bottom: 0;
   z-index: 1000;
 
   &__container {

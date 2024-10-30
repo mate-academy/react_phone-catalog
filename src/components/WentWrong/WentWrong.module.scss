@@ -28,7 +28,9 @@
 
   &__img {
     display: block;
+    
     @include mix.square(400px);
+
     object-fit: contain;
 
     @include mix.respond-to(tablet) {

@@ -8,6 +8,7 @@
 
   &__text {
     @include mix.smallText;
+
     color: v.$colorWhite;
     text-transform: capitalize;
     text-align: center;
@@ -19,12 +20,15 @@
 
   &__home {
     background-image: url(./../../assets/images/icons/home.svg);
+
     @include mix.square(16px);
   }
 
   &__arrow {
     background-image: url(./../../assets/images/icons/greyArrow.svg);
+
     @include mix.square(16px);
+
     background-repeat: no-repeat;
     background-position: center;
   }

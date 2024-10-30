@@ -28,11 +28,13 @@
 
   &__infoTitle {
     @include mix.smallText;
+
     color: v.$colorSecondary;
   }
 
   &__infoText {
     @include mix.smallText;
+
     color: v.$colorWhite;
   }
 

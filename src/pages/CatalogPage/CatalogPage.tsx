@@ -51,7 +51,7 @@ export const CatalogPage: React.FC = () => {
         .catch(() => setError(true))
         .finally(() => setLoader(false));
     }
-  }, [category]);
+  }, [category, navigate]);
 
   useEffect(() => {
     let filteredProducts = [...products];

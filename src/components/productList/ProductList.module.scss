@@ -10,10 +10,11 @@
 
   &__grid {
     --column-count: 4;
+
     width: 100%;
     display: grid;
     grid-template-columns: repeat(var(--column-count), minmax(229px, 288px));
-    row-gap: 40px;
+    gap: 40px;
     column-gap: 16px;
     justify-content: center;
   
@@ -27,6 +28,7 @@
   
     @media (max-width: 500px){
       --column-count: 1;
+
       justify-content: center;
     }
   
@@ -41,9 +43,12 @@
 
   & a {
     cursor: pointer;
+
     display: block;
+
     @include mix.square(32px);
     @include mix.bodyText;
+
     line-height: 32px;
     text-align: center;
     color: v.$colorWhite;

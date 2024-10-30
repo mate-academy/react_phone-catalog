@@ -12,7 +12,9 @@
 
   &__modelCount {
     margin-top: 8px;
+
     @include mix.bodyText;
+
     color: v.$colorSecondary;
   }
 
@@ -52,6 +54,7 @@
 
   &__selTitle {
     @include mix.smallText;
+
     color: v.$colorSecondary;
     width: 136px;
 

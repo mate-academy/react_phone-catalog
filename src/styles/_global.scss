@@ -2,19 +2,19 @@
 @use './mixins' as mix;
 
 @font-face {
-  font-family: "Mont";
+  font-family: Mont;
   src: local("Mont-Regular"),
     url("/public/fonts/Mont-Regular.otf");
 }
 
 @font-face {
-  font-family: "Mont-Bold";
+  font-family: Mont-Bold;
   src: local("Mont-Bold"),
     url("/public/fonts/Mont-Bold.otf");
 }
 
 @font-face {
-  font-family: "Mont-SemiBold";
+  font-family: Mont-SemiBold;
   src: local("Mont-SemiBold"),
   url("/public/fonts/Mont-SemiBold.otf");
 }
@@ -37,11 +37,6 @@ html {
 body {
   background-color: v.$colorBlack;
   font-family: Mont, serif;
-}
-
-button {
-  border: none;
-  cursor: pointer;
 }
 
 h1 {
@@ -98,6 +93,8 @@ h4 {
 }
 
 button {
+  border: none;
+  cursor: pointer;
   font-size: 14px;
   line-height: 21px;
   letter-spacing: 0;

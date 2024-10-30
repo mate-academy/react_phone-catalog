@@ -23,6 +23,7 @@
 
   &__text {
     @include mix.bodyText;
+
     color: v.$colorSecondary;
   }
 

@@ -10,13 +10,16 @@
 
   &__arrow {
     background-image: url(./../../assets/images/icons/arrow.svg);
+
     @include mix.square(16px);
+
     background-repeat: no-repeat;
     background-position: center;
   }
 
   &__text {
     @include mix.smallText;
+
     color: v.$colorWhite;
   }
 }

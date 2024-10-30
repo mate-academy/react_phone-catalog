@@ -10,6 +10,7 @@
 
   &__text {
     @include mix.smallText;
+
     color: v.$colorSecondary;
   }
 
@@ -32,12 +33,14 @@
   }
 
   &__color {
-    --bgCloor: v.$colorBlack;
+    --bg-cloor: v.$colorBlack;
+
     border-radius: 50%;
     border: 2px solid v.$colorElements;
+
     @include mix.square(32px);
+
     background-color: transparent;
-    border-radius: 50%;
     position: relative;
 
     &--active {
@@ -46,8 +49,10 @@
 
     &::after {
       content: '';
+
       @include mix.square(25px);
-      background-color: var(--bgCloor);
+
+      background-color: var(--bg-cloor);
       display: block;
       border-radius: 50%;
       position: absolute;
@@ -57,58 +62,58 @@
     }
 
     &--white {
-      --bgCloor: #F0F0F0;
+      --bg-cloor: #F0F0F0;
     }
   
     &--yellow {
-      --bgCloor: yellow;
+      --bg-cloor: yellow;
     }
 
     &--red {
-      --bgCloor: rgb(212, 62, 62);
+      --bg-cloor: rgb(212, 62, 62);
     }
 
     &--coral {
-      --bgCloor: rgb(150, 75, 75);
+      --bg-cloor: rgb(150, 75, 75);
     }
     &--spacegray {
-      --bgCloor: rgb(85, 85, 85);
+      --bg-cloor: rgb(85, 85, 85);
     }
     &--midnightgreen {
-      --bgCloor: rgb(34, 68, 19);
+      --bg-cloor: rgb(34, 68, 19);
     }
     &--gold {
-      --bgCloor: #ffd700;
+      --bg-cloor: #ffd700;
     }
     &--silver {
-      --bgCloor: #c0c0c0;
+      --bg-cloor: #c0c0c0;
     }
     &--black {
-      --bgCloor: black;
+      --bg-cloor: black;
     }
     &--rosegold {
-      --bgCloor: #f1e1e9;
+      --bg-cloor: #f1e1e9;
     }
     &--purple {
-      --bgCloor: #ffd0e2;
+      --bg-cloor: #ffd0e2;
     }
     &--spaceblack {
-      --bgCloor: #303030;
+      --bg-cloor: #303030;
     }
     &--blue {
-      --bgCloor: #8ac0da;
+      --bg-cloor: #8ac0da;
     }
     &--pink {
-      --bgCloor: #e492ba;
+      --bg-cloor: #e492ba;
     }
     &--sierrablue {
-      --bgCloor: #a5c7e5;
+      --bg-cloor: #a5c7e5;
     }
     &--graphite {
-      --bgCloor: #bbbbbb;
+      --bg-cloor: #bbb;
     }
     &--green {
-      --bgCloor: #b5c2a6;
+      --bg-cloor: #b5c2a6;
     }
   }
 
@@ -127,8 +132,11 @@
     border: 1px solid v.$colorIcons;
     height: 32px;
     width: auto;
+
     padding: 7px 8px 4px;
+
     @include mix.bodyText;
+
     text-align: center;
 
     &--active {
@@ -161,6 +169,7 @@
 
   &__favButton {
     @include mix.square(40px);
+
     background-color: v.$colorSurface2;
     background-image: url(../../assets/images/icons/favourites.svg);
     background-repeat: no-repeat;
@@ -207,11 +216,13 @@
 
   &__infoTitle {
     @include mix.smallText;
+
     color: v.$colorSecondary;
   }
 
   &__infoText {
     @include mix.smallText;
+  
     color: v.$colorWhite;
   }
 

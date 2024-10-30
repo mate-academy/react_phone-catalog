@@ -34,6 +34,7 @@
 
   &__title {
     margin-top: 16px;
+
     @include mix.bodyText;
   }
 
@@ -50,11 +51,13 @@
 
   &__infoTitle {
     @include mix.smallText;
+
     color: v.$colorSecondary;
   }
 
   &__infoText {
     @include mix.smallText;
+
     color: v.$colorWhite;
     width: 80px;
   }
@@ -66,6 +69,7 @@
 
   &__favButton {
     @include mix.square(40px);
+
     background-color: v.$colorSurface2;
     background-image: url(../../assets/images/icons/favourites.svg);
     background-repeat: no-repeat;
