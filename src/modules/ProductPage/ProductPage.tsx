@@ -60,7 +60,7 @@ export const ProductPage = () => {
           </p>
           <img
             className={styles['product-page__not-found-img']}
-            src="/img/product-not-found.png"
+            src="img/product-not-found.png"
             alt="product not found"
           />
         </div>
