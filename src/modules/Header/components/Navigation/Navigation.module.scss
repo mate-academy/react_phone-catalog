@@ -32,16 +32,7 @@
       line-height: 64px;
     }
 
-    &:hover {
-      color: var(--active-link);
-    }
-
-    &--active {
-      color: var(--active-link);
-      cursor: default;
-    }
-
-    &--active::after {
+    &::after {
       position: absolute;
       content: '';
       width: 100%;
@@ -49,6 +40,26 @@
       background-color: var(--active-link);
       bottom: 0;
       left: 0;
+
+      transition: transform 0.3s;
+      transform: scale(0);
+      transform-origin: left;
+    }
+
+    &:hover {
+      color: var(--active-link);
+
+      &::after {
+        transform: scale(1);
+      }
+    }
+
+    &--active {
+      color: var(--active-link);
+
+      &::after {
+        transform: scale(1);
+      }
     }
   }
 }

@@ -4,9 +4,9 @@ import { SvgIcon } from '../../../../components/SvgIcon';
 import { useEffect, useState } from 'react';
 
 const slides = [
-  '/img/banner-accessories.png',
-  '/img/banner-phones.png',
-  '/img/banner-tablets.png',
+  'img/banner-accessories.png',
+  'img/banner-phones.png',
+  'img/banner-tablets.png',
 ];
 
 interface Props {

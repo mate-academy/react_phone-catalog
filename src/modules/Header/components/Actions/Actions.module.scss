@@ -18,13 +18,36 @@
       width: 64px;
     }
 
-    svg path{
-      fill: var(--icon-primary);
+    &::after {
+      position: absolute;
+      content: '';
+      width: 100%;
+      height: 2px;
+      background-color: var(--active-link);
+      bottom: 0;
+      left: 0;
+
+      transition: transform 0.3s;
+      transform: scale(0);
+      transform-origin: left;
+    }
+
+    &:hover {
+      &::after {
+        transform: scale(1);
+      }
     }
 
     &--active {
-      border-bottom: 2px solid var(--active-link);
       cursor: auto;
+
+      &::after {
+        transform: scale(1);
+      }
+    }
+
+    svg path {
+      fill: var(--icon-primary);
     }
   }
 
