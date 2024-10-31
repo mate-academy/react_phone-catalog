@@ -88,7 +88,7 @@ export const ProductDetailsPage: React.FC<ProductDetailsPageProps> = () => {
   useEffect(() => {
     fetchProducts();
     fetchSuggestingProducts();
-  }, [itemId]);
+  }, [itemId, category]);
 
   const handleBackClick = () => {
     navigate(-1);

@@ -16,8 +16,16 @@ export const SuggestedProducts: React.FC<SuggestedProductsProps> = ({
 
   const [currentIndex, setCurrentIndex] = useState<number>(0);
 
+  const [goods, setGoods] = useState<ProductDescription[]>([]);
+
+  useEffect(() => {
+    if (products.length > 0) {
+      setGoods(products);
+    }
+  }, [products]);
+
   const productsPerPage = 4;
-  const totalProducts = products.length;
+  const totalProducts = goods.length;
   const totalPages = Math.ceil(totalProducts / productsPerPage);
 
   const nextPage = () => {
@@ -29,19 +37,19 @@ export const SuggestedProducts: React.FC<SuggestedProductsProps> = ({
   };
 
   const startIndex = currentIndex * productsPerPage;
-  const currentProducts = products.slice(startIndex, startIndex + productsPerPage);
+  const currentProducts = goods.slice(startIndex, startIndex + productsPerPage);
 
 
   return (
     <section className="section section--hot-prices">
-      <div className='section__header'>
-        <h1 className='section__title'>You may also like</h1>
-        <div className='section__icons'>
-          <button onClick={prevPage} className='section__icon section__icon--left'>
-            <img src={strokeLeft} alt="Previous"/>
+      <div>
+        <h2 className='section__title'>You may also like</h2>
+        <div className="slider-controls">
+          <button onClick={prevPage}>
+            <img src={strokeLeft} alt="Previous" />
           </button>
-          <button onClick={nextPage} className='section__icon section__icon--right'>
-            <img src={strokeRight} alt="Next"/>
+          <button onClick={nextPage}>
+            <img src={strokeRight} alt="Next" />
           </button>
         </div>
       </div>

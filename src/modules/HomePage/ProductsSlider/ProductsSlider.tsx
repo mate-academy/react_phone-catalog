@@ -1,50 +1,17 @@
 import { useEffect, useState } from "react"
-import { ProductCard } from "../../../components/ProductCard/ProductCard";
 import { Product } from '../../../types/ProductCard';
 import { Link } from "react-router-dom";
 import favouritesIcon from '../../../../public/img/icons/Favourites.svg';
-
 import strokeLeft from '../../../../public/img/icons/StrokeLeft.svg';
 import strokeRight from '../../../../public/img/icons/StrokeRight.svg';
+import { ProductDescription } from "../../../types/Accessories";
 
-import { SuggestedProducts } from "../../../components/ScrollSuggestingProducts/ScrollSuggestingProducts";
+interface ProductsSliderProps {
+  goods: ProductDescription[];
+}
 
-
-export const ProductsSlider: React.FC = () => {
-  const [goods, setGoods] = useState<Product[]>([]);
-  const [error, setError] = useState('');
-  const [loading, setLoading] = useState<boolean>(true);
+export const ProductsSlider: React.FC<ProductsSliderProps> = ( { goods }) => {
   const [currentIndex, setCurrentIndex] = useState<number>(0);
-
-  useEffect(() => {
-    const fetchProducts = async () => {
-      try {
-        const response = await fetch('../../../public/api/products.json');
-
-        if (!response.ok) {
-          throw new Error('Something wrang');
-        }
-        const data = await response.json();
-        const filteredProducts = data.sort((a: Product, b: Product) => b.year - a.year)
-        setGoods(filteredProducts);
-      } catch (error){
-        setError('Unable loading goods');
-
-      } finally {
-        setLoading(false);
-      }
-    }
-
-    fetchProducts();
-  }, []);
-
-  if (loading) {
-    return <div>Loading...</div>;
-  }
-
-  if (error) {
-    return <div>{error}</div>;
-  }
 
   const productsPerPage = 4;
   const totalProducts = goods.length;

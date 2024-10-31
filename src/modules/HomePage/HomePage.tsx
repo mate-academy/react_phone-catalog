@@ -8,8 +8,45 @@ import React from 'react';
 // import { ProductDetailsPage } from './modules/ProductDetailsPage/ProductDetailsPage';
 import { PicturesSlider } from './PicturesSlider/PicturesSlider';
 import { ProductsSlider } from './ProductsSlider/ProductsSlider';
+import { useEffect, useState } from 'react';
+import { ProductDescription } from '../../types/Accessories';
 
 export const HomePage: React.FC = () => {
+  const [goods, setGoods] = useState<ProductDescription[] >([]);
+  const [error, setError] = useState('');
+  const [loading, setLoading] = useState<boolean>(true);
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const response = await fetch('/api/products.json');
+
+        if (!response.ok) {
+          throw new Error('Something wrang');
+        }
+        const data = await response.json();
+        const filteredProducts = data.sort((a: ProductDescription, b: ProductDescription) => b.year - a.year)
+        setGoods(filteredProducts);
+      } catch (error){
+        setError('Unable loading goods');
+
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    fetchProducts();
+  }, []);
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>{error}</div>;
+  }
+
+
     return (
 
 
@@ -18,7 +55,7 @@ export const HomePage: React.FC = () => {
 
           <PicturesSlider />
 
-          <ProductsSlider />
+          <ProductsSlider goods={goods}/>
 
           {/* <section className='section section--brand-new'>
             <h2 className='section__title'>Brand new models</h2>
