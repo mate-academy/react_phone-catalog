@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react';
 import { Routes, Route, useNavigate } from 'react-router-dom';
 import { AppDispatch, RootState } from '../../app/store';
@@ -9,16 +10,20 @@ import classNames from 'classnames';
 import { PhoneCard } from '../phones/phoneCard';
 import Pagination from '../phones/pagination';
 import { ProductDetail } from '../productDetail';
-import { fetchPhones, setSelectedPhone } from '../../features/phones';
+import { fetchPhones } from '../../features/phones';
 import { Product } from '../../types/Product';
+import { fetchTablets } from '../../features/tablets';
+import { fetchAccessories } from '../../features/accessories';
 
-export const Phones: React.FC = () => {
+interface PhonesProps {
+  category: string;
+}
+
+export const Phones: React.FC<PhonesProps> = ({ category }) => {
   const dispatch: AppDispatch = useDispatch();
-  const navigate = useNavigate(); // Hook to navigate programmatically
+  const navigate = useNavigate();
   const allProducts = useSelector((state: RootState) => state.products.items);
-  const selectedPhone = useSelector(
-    (state: RootState) => state.phones.selectedPhone,
-  );
+
   const currentPage = useSelector(
     (state: RootState) => state.pagination.currentPage,
   );
@@ -32,12 +37,22 @@ export const Phones: React.FC = () => {
 
   useEffect(() => {
     dispatch(fetchProducts());
-    dispatch(fetchPhones());
+    if (category === 'phones') {
+      dispatch(fetchPhones());
+    }
+
+    if (category === 'tablets') {
+      dispatch(fetchTablets());
+    }
+
+    if (category === 'accessories') {
+      dispatch(fetchAccessories());
+    }
   }, [dispatch]);
 
   useEffect(() => {
     const filteredProducts = allProducts.filter(
-      pro => pro.category.trim() === 'phones',
+      pro => pro.category.trim() === category,
     );
 
     setProduct(filteredProducts);
@@ -98,8 +113,7 @@ export const Phones: React.FC = () => {
   };
 
   const handleProductClick = (selectedProduct: Product) => {
-    dispatch(setSelectedPhone(selectedProduct.itemId));
-    navigate(`/phones/${selectedProduct.itemId}`);
+    navigate(`/${category}/${selectedProduct.itemId}`);
   };
 
   return (
@@ -107,19 +121,16 @@ export const Phones: React.FC = () => {
       <section className={classNames(styles.phones, 'container')}>
         <nav className={styles.phones_nav}>
           <a href="/" className={styles.phones_home}></a>
-          <a href="/">Phones</a>
+          <a href="/">{category}</a>
         </nav>
 
         <Routes>
-          <Route
-            path=":phoneId"
-            element={<ProductDetail selectedPhone={selectedPhone} />}
-          />
+          <Route path=":tabletId" element={<ProductDetail />} />
           <Route
             index
             element={
               <>
-                <h2 className={styles.phones_title}>Phones</h2>
+                <h2 className={styles.phones_title}>{category}</h2>
                 <p className={styles.phones_models}>{product.length} models</p>
                 <div className="flex">
                   <div>
@@ -135,7 +146,7 @@ export const Phones: React.FC = () => {
                     </select>
                   </div>
 
-                  <div>
+                  <div className={styles.q}>
                     <p>Items on page</p>
                     <select
                       name="itemsPerPage"

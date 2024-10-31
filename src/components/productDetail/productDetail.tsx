@@ -1,36 +1,59 @@
-import React, { useState } from 'react';
-import { Phones } from '../../types/Phones';
+import React, { useEffect, useState } from 'react';
 import styles from './productDetail.module.scss';
 import classNames from 'classnames';
-import { Smartwatch } from '../../types/Accessories';
-import { Tablet } from '../../types/Tablets';
+import { useParams } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../app/store';
 
-interface ProductDetailProps {
-  selectedPhone: Phones | Smartwatch | Tablet | null;
-}
-
-export const ProductDetail: React.FC<ProductDetailProps> = ({
-  selectedPhone,
-}) => {
-  const [mainImage, setMainImage] = useState<string | undefined>(
-    selectedPhone?.images[0],
+export const ProductDetail: React.FC = () => {
+  const { itemId } = useParams();
+  let selectedProduct = useSelector((state: RootState) =>
+    state.phones.items.find(phone => phone.id === itemId),
   );
+  const selectedTablet = useSelector((state: RootState) =>
+    state.tablets.items.find(tablet => tablet.id === itemId),
+  );
+
+  const selectedAccess = useSelector((state: RootState) =>
+    state.accessories.items.find(acces => acces.id === itemId),
+  );
+
+  if (selectedTablet) {
+    selectedProduct = selectedTablet;
+  }
+
+  if (selectedAccess) {
+    selectedProduct = selectedAccess;
+  }
+
+  const [mainImage, setMainImage] = useState<string | undefined>(undefined);
+
+  useEffect(() => {
+    if (selectedProduct) {
+      setMainImage(selectedProduct.images[0]);
+    }
+  }, [selectedProduct]);
 
   const handleImageClick = (image: string | undefined) => {
     setMainImage(image);
   };
 
+  if (!selectedProduct) {
+    return <p>Продукт не найден. Пожалуйста, проверьте URL.</p>; // Или используйте Redirect
+    // return <Redirect to="/404" />; // Пример перенаправления на страницу 404
+  }
+
   return (
     <div className={classNames(styles.product, 'container')}>
-      <h2>{selectedPhone?.name}</h2>
+      <h2>{selectedProduct?.name}</h2>
 
       <img
         src={mainImage}
         className={styles.product_img}
-        alt={selectedPhone?.name}
+        alt={selectedProduct?.name}
       />
       <div className={styles.product_img_container}>
-        {selectedPhone?.images.map(
+        {selectedProduct?.images.map(
           (image: string | undefined, index: React.Key | null | undefined) => (
             <img
               key={index}
@@ -50,13 +73,13 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({
         Available colors <span>ID: 843256</span>
       </p>
       <ul className={styles.product_colors}>
-        {selectedPhone?.colorsAvailable.map((color, index) => {
+        {selectedProduct?.colorsAvailable.map((color, index) => {
           return (
             <li
               key={index}
               className={classNames({
                 [styles.product_colors_item]: true,
-                [styles.black]: selectedPhone.color === color,
+                [styles.black]: selectedProduct.color === color,
               })}
             >
               <a
@@ -73,7 +96,7 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({
       <div className={styles.product_capacity_div}>
         <p className={styles.product_capacity_text}>Select capacity</p>
         <ul className={styles.product_capacity}>
-          {selectedPhone?.capacityAvailable.map((capacity, index) => {
+          {selectedProduct?.capacityAvailable.map((capacity, index) => {
             return (
               <li key={index} className={styles.product_capacity_item}>
                 <a
@@ -81,7 +104,7 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({
                   className={classNames({
                     [styles.product_capacity_link]: true,
                     [styles.black_capacity]:
-                      selectedPhone.capacity === capacity,
+                      selectedProduct.capacity === capacity,
                   })}
                 >
                   {capacity}
@@ -93,9 +116,9 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({
       </div>
       <section className={styles.buy}>
         <p className={styles.buy_priceD}>
-          ${selectedPhone?.priceDiscount}
+          ${selectedProduct?.priceDiscount}
           <span className={styles.buy_priceR}>
-            ${selectedPhone?.priceRegular}
+            ${selectedProduct?.priceRegular}
           </span>
         </p>
         <div className={styles.buy_buttonDiv}>
@@ -108,26 +131,30 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({
           <p className={styles.buy_text}>
             Screen
             <span className={styles.buy_span}>
-              {selectedPhone?.screen.split(' ').slice(0, 2).join(' ')}
+              {selectedProduct?.screen.split(' ').slice(0, 2).join(' ')}
             </span>
           </p>
           <p className={styles.buy_text}>
             Resolution
-            <span className={styles.buy_span}>{selectedPhone?.resolution}</span>
+            <span className={styles.buy_span}>
+              {selectedProduct?.resolution}
+            </span>
           </p>
           <p className={styles.buy_text}>
             Processor
-            <span className={styles.buy_span}>{selectedPhone?.processor}</span>
+            <span className={styles.buy_span}>
+              {selectedProduct?.processor}
+            </span>
           </p>
           <p className={styles.buy_text}>
-            RAM <span className={styles.buy_span}>{selectedPhone?.ram}</span>
+            RAM <span className={styles.buy_span}>{selectedProduct?.ram}</span>
           </p>
         </div>
       </section>
       <section className={styles.about}>
         <h3 className={styles.about_title}>About</h3>
 
-        {selectedPhone?.description.map((describe, index) => {
+        {selectedProduct?.description.map((describe, index) => {
           return (
             <React.Fragment key={index}>
               <h3 className={styles.about_describe}>{describe.title}</h3>
@@ -141,36 +168,41 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({
         <ul className={styles.spec_list}>
           <li className={styles.spec_item}>
             Screen
-            <span className={styles.spec_span}>{selectedPhone?.screen}</span>
+            <span className={styles.spec_span}>{selectedProduct?.screen}</span>
           </li>
           <li className={styles.spec_item}>
             Resolution
             <span className={styles.spec_span}>
-              {selectedPhone?.resolution}
+              {selectedProduct?.resolution}
             </span>
           </li>
           <li className={styles.spec_item}>
             Processor
-            <span className={styles.spec_span}>{selectedPhone?.processor}</span>
+            <span className={styles.spec_span}>
+              {selectedProduct?.processor}
+            </span>
           </li>
           <li className={styles.spec_item}>
-            RAM <span className={styles.spec_span}>{selectedPhone?.ram}</span>
+            RAM <span className={styles.spec_span}>{selectedProduct?.ram}</span>
           </li>
           <li className={styles.spec_item}>
             Built in memory
-            <span className={styles.spec_span}>{selectedPhone?.capacity}</span>
+            <span className={styles.spec_span}>
+              {selectedProduct?.capacity}
+            </span>
           </li>
           <li className={styles.spec_item}>
             Camera
-            <span className={styles.spec_span}>{selectedPhone?.camera}</span>
+            <span className={styles.spec_span}>{selectedProduct?.camera}</span>
           </li>
           <li className={styles.spec_item}>
-            Zoom <span className={styles.spec_span}>{selectedPhone?.zoom}</span>
+            Zoom{' '}
+            <span className={styles.spec_span}>{selectedProduct?.zoom}</span>
           </li>
           <li className={styles.spec_item}>
             Cell
             <span className={styles.spec_span}>
-              {selectedPhone?.cell.join(', ')}
+              {selectedProduct?.cell.join(', ')}
             </span>
           </li>
         </ul>

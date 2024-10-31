@@ -1,31 +1,31 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
+import { Routes, Route, useNavigate } from 'react-router-dom';
 import { AppDispatch, RootState } from '../../app/store';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchProducts } from '../../features/products';
+import { fetchTablets, setSelectedTablet } from '../../features/tablets';
+import { setCurrentPage, setTotalPages } from '../../features/pagination';
 import styles from '../phones/phones.module.scss';
 import classNames from 'classnames';
 import { PhoneCard } from '../phones/phoneCard';
-import { setCurrentPage, setTotalPages } from '../../features/pagination';
 import Pagination from '../phones/pagination';
-import { Product } from '../../types/Product';
-import { fetchTablets, setSelectedTablet } from '../../features/tablets';
 import { ProductDetail } from '../productDetail';
+import { Product } from '../../types/Product';
 
 export const Tablets: React.FC = () => {
   const dispatch: AppDispatch = useDispatch();
+  const navigate = useNavigate();
   const allProducts = useSelector((state: RootState) => state.products.items);
-  const selectedTablet = useSelector(
-    (state: RootState) => state.tablets.selectedTablet,
-  );
   const currentPage = useSelector(
     (state: RootState) => state.pagination.currentPage,
   );
   const totalPages = useSelector(
     (state: RootState) => state.pagination.totalPages,
   );
-  const [itemsPerPage, setItemsPerPage] = React.useState(8);
-  const [product, setProduct] = React.useState<Product[]>([]);
-  const [sortType, setSortType] = React.useState('Newest');
+
+  const [itemsPerPage, setItemsPerPage] = useState(8);
+  const [product, setProduct] = useState<Product[]>([]);
+  const [sortType, setSortType] = useState('Newest');
 
   useEffect(() => {
     dispatch(fetchProducts());
@@ -38,7 +38,6 @@ export const Tablets: React.FC = () => {
     );
 
     setProduct(filteredProducts);
-
     const total = Math.ceil(filteredProducts.length / itemsPerPage);
 
     dispatch(setTotalPages(total));
@@ -48,7 +47,7 @@ export const Tablets: React.FC = () => {
     dispatch(setCurrentPage(1));
   }, [dispatch]);
 
-  const sortedPhones = React.useMemo(() => {
+  const sortedTablets = React.useMemo(() => {
     return [...product].sort((a, b) => {
       if (sortType === 'Newest') {
         return b.year - a.year;
@@ -70,7 +69,7 @@ export const Tablets: React.FC = () => {
     const startIndex = (currentPage - 1) * itemsPerPage;
     const endIndex = startIndex + itemsPerPage;
 
-    return sortedPhones.slice(startIndex, endIndex);
+    return sortedTablets.slice(startIndex, endIndex);
   };
 
   const handlePageChange = (page: number) => {
@@ -97,6 +96,7 @@ export const Tablets: React.FC = () => {
 
   const handleProductClick = (selectedProduct: Product) => {
     dispatch(setSelectedTablet(selectedProduct.itemId));
+    navigate(`/tablets/${selectedProduct.itemId}`); // Navigate to product detail
   };
 
   return (
@@ -106,56 +106,63 @@ export const Tablets: React.FC = () => {
           <a href="/" className={styles.phones_home}></a>
           <a href="/">Tablets</a>
         </nav>
-        {selectedTablet ? (
-          <ProductDetail selectedPhone={selectedTablet} />
-        ) : (
-          <>
-            <h2 className={styles.phones_title}>Tablets</h2>
-            <p className={styles.phones_models}>{product.length} models</p>
-            <div className="flex">
-              <div>
-                <p>Sort by</p>
-                <select
-                  name="sort"
-                  value={sortType}
-                  onChange={handleSortChange}
-                >
-                  <option value="Newest">Newest</option>
-                  <option value="Alphabetically">Alphabetically</option>
-                  <option value="Cheapest">Cheapest</option>
-                </select>
-              </div>
 
-              <div>
-                <p>Items on page</p>
-                <select
-                  name="itemsPerPage"
-                  value={itemsPerPage === product.length ? 'all' : itemsPerPage}
-                  onChange={handleItemsPerPageChange}
-                >
-                  <option value="4">4</option>
-                  <option value="8">8</option>
-                  <option value="16">16</option>
-                  <option value="all">All</option>
-                </select>
-              </div>
-            </div>
-            <ul className={styles.phones_list}>
-              {getProductsForCurrentPage().map(item => (
-                <PhoneCard
-                  key={item.id}
-                  {...item}
-                  onClick={() => handleProductClick(item)}
+        <Routes>
+          <Route path=":itemId" element={<ProductDetail />} />
+          <Route
+            index
+            element={
+              <>
+                <h2 className={styles.phones_title}>Tablets</h2>
+                <p className={styles.phones_models}>{product.length} models</p>
+                <div className="flex">
+                  <div>
+                    <p>Sort by</p>
+                    <select
+                      name="sort"
+                      value={sortType}
+                      onChange={handleSortChange}
+                    >
+                      <option value="Newest">Newest</option>
+                      <option value="Alphabetically">Alphabetically</option>
+                      <option value="Cheapest">Cheapest</option>
+                    </select>
+                  </div>
+
+                  <div>
+                    <p>Items on page</p>
+                    <select
+                      name="itemsPerPage"
+                      value={
+                        itemsPerPage === product.length ? 'all' : itemsPerPage
+                      }
+                      onChange={handleItemsPerPageChange}
+                    >
+                      <option value="4">4</option>
+                      <option value="8">8</option>
+                      <option value="16">16</option>
+                      <option value="all">All</option>
+                    </select>
+                  </div>
+                </div>
+                <ul className={styles.phones_list}>
+                  {getProductsForCurrentPage().map(item => (
+                    <PhoneCard
+                      key={item.id}
+                      {...item}
+                      onClick={() => handleProductClick(item)}
+                    />
+                  ))}
+                </ul>
+                <Pagination
+                  currentPage={currentPage}
+                  totalPages={totalPages}
+                  onPageChange={handlePageChange}
                 />
-              ))}
-            </ul>
-            <Pagination
-              currentPage={currentPage}
-              totalPages={totalPages}
-              onPageChange={handlePageChange}
-            />
-          </>
-        )}
+              </>
+            }
+          />
+        </Routes>
       </section>
     </div>
   );

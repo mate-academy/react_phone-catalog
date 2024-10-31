@@ -10,9 +10,11 @@ import Pagination from '../phones/pagination';
 import { Product } from '../../types/Product';
 import { fetchAccessories, setSelectedAcces } from '../../features/accessories';
 import { ProductDetail } from '../productDetail';
+import { useNavigate } from 'react-router-dom';
 
 export const Accessories: React.FC = () => {
   const dispatch: AppDispatch = useDispatch();
+  const navigate = useNavigate();
   const allProducts = useSelector((state: RootState) => state.products.items);
   const selectedAcces = useSelector(
     (state: RootState) => state.accessories.selectedAcces,
