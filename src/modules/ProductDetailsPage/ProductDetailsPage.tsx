@@ -15,7 +15,10 @@ interface ProductDetailsPageProps {
 }
 
 export const ProductDetailsPage: React.FC<ProductDetailsPageProps> = () => {
-  const { itemId, category } = useParams<{ itemId: string; category: string }>();
+  const { itemId, category } = useParams<{
+    itemId: string;
+    category: string;
+  }>();
   const params = useParams();
 
   console.log('params', params);
@@ -287,9 +290,7 @@ export const ProductDetailsPage: React.FC<ProductDetailsPageProps> = () => {
           <div className="about">
             <h2 className="about__title">About</h2>
             {product?.description.map((section, index) => (
-              <div
-                key={index}
-                className={`section-${index + 1}`}>
+              <div key={index} className={`section-${index + 1}`}>
                 <h3 className="section-title"></h3>
                 {section.text.map((paragraph, idx) => (
                   <p key={idx} className="about__text">
@@ -341,7 +342,7 @@ export const ProductDetailsPage: React.FC<ProductDetailsPageProps> = () => {
         </section>
       </main>
 
-      <SuggestedProducts  products={suggestedProducts} />
+      <SuggestedProducts products={suggestedProducts} />
 
       {/* <section className='section section--hot-prices'>
         <div className='section__header'>

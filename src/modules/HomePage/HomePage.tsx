@@ -1,6 +1,5 @@
 import React from 'react';
 
-
 // import PhonesPage from './modules/PhonesPage/PhonesPage';
 // import ProductsPage from './modules/ProductsPage/ProductsPage';
 // import AccessoriesPage from './modules/AccessoriesPage/AccessoriesPage';
@@ -12,7 +11,7 @@ import { useEffect, useState } from 'react';
 import { ProductDescription } from '../../types/Accessories';
 
 export const HomePage: React.FC = () => {
-  const [goods, setGoods] = useState<ProductDescription[] >([]);
+  const [goods, setGoods] = useState<ProductDescription[]>([]);
   const [error, setError] = useState('');
   const [loading, setLoading] = useState<boolean>(true);
 
@@ -24,16 +23,19 @@ export const HomePage: React.FC = () => {
         if (!response.ok) {
           throw new Error('Something wrang');
         }
-        const data = await response.json();
-        const filteredProducts = data.sort((a: ProductDescription, b: ProductDescription) => b.year - a.year)
-        setGoods(filteredProducts);
-      } catch (error){
-        setError('Unable loading goods');
 
+        const data = await response.json();
+        const filteredProducts = data.sort(
+          (a: ProductDescription, b: ProductDescription) => b.year - a.year,
+        );
+
+        setGoods(filteredProducts);
+      } catch (error) {
+        setError('Unable loading goods');
       } finally {
         setLoading(false);
       }
-    }
+    };
 
     fetchProducts();
   }, []);
@@ -46,18 +48,15 @@ export const HomePage: React.FC = () => {
     return <div>{error}</div>;
   }
 
+  return (
+    <main className="main">
+      <h1 className="main__title">Welcome to Nice Gadgets store!</h1>
 
-    return (
+      <PicturesSlider />
 
+      <ProductsSlider goods={goods} />
 
-        <main className='main'>
-          <h1 className='main__title'>Welcome to Nice Gadgets store!</h1>
-
-          <PicturesSlider />
-
-          <ProductsSlider goods={goods}/>
-
-          {/* <section className='section section--brand-new'>
+      {/* <section className='section section--brand-new'>
             <h2 className='section__title'>Brand new models</h2>
             <div className='product-grid'>
               <div className='product-card'>
@@ -156,7 +155,7 @@ export const HomePage: React.FC = () => {
             </div>
           </section> */}
 
-          {/* <section className='section'>
+      {/* <section className='section'>
             <h2 className='section__title'>Shop by category</h2>
             <div className='categories'>
               <div className='category category--mobiles'>
@@ -177,7 +176,7 @@ export const HomePage: React.FC = () => {
             </div>
           </section> */}
 
-          {/* <section className='section section--hot-prices'>
+      {/* <section className='section section--hot-prices'>
             <div className='section__header'>
               <h1 className='section__title'>Hot prices</h1>
               <a href="#"><img src={strokeLeft} alt="Previous" ></img></a>
@@ -294,9 +293,6 @@ export const HomePage: React.FC = () => {
               </div>
             </div>
           </section> */}
-        </main>
-
-    );
-  };
-
-
+    </main>
+  );
+};

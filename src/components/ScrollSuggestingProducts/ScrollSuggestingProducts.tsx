@@ -13,7 +13,6 @@ interface SuggestedProductsProps {
 export const SuggestedProducts: React.FC<SuggestedProductsProps> = ({
   products,
 }) => {
-
   const [currentIndex, setCurrentIndex] = useState<number>(0);
 
   const [goods, setGoods] = useState<ProductDescription[]>([]);
@@ -29,21 +28,20 @@ export const SuggestedProducts: React.FC<SuggestedProductsProps> = ({
   const totalPages = Math.ceil(totalProducts / productsPerPage);
 
   const nextPage = () => {
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % totalPages);
+    setCurrentIndex(prevIndex => (prevIndex + 1) % totalPages);
   };
 
   const prevPage = () => {
-    setCurrentIndex((prevIndex) => (prevIndex - 1 + totalPages) % totalPages);
+    setCurrentIndex(prevIndex => (prevIndex - 1 + totalPages) % totalPages);
   };
 
   const startIndex = currentIndex * productsPerPage;
   const currentProducts = goods.slice(startIndex, startIndex + productsPerPage);
 
-
   return (
     <section className="section section--hot-prices">
       <div>
-        <h2 className='section__title'>You may also like</h2>
+        <h2 className="section__title">You may also like</h2>
         <div className="slider-controls">
           <button onClick={prevPage}>
             <img src={strokeLeft} alt="Previous" />
@@ -58,7 +56,10 @@ export const SuggestedProducts: React.FC<SuggestedProductsProps> = ({
         <div className="suggested-products__list product-grid">
           {currentProducts.map(product => (
             <div key={product.id} className="suggested-product product-card">
-              <Link to={`/product/${product?.category}/${product?.namespaceId}-${product?.capacity}-${product?.color}`} className="suggested-product__link">
+              <Link
+                to={`/product/${product?.category}/${product?.namespaceId}-${product?.capacity}-${product?.color}`}
+                className="suggested-product__link"
+              >
                 <img
                   src={`/${product.images[0]}`}
                   alt={product.name}
@@ -66,13 +67,19 @@ export const SuggestedProducts: React.FC<SuggestedProductsProps> = ({
                 />
               </Link>
 
-              <Link to={`/product/${product.category}/${product.namespaceId}-${product.capacity}-${product.color}`}
-                className="suggested-product__link">
+              <Link
+                to={`/product/${product.category}/${product.namespaceId}-${product.capacity}-${product.color}`}
+                className="suggested-product__link"
+              >
                 <h3 className="suggested-product__name">{product.name}</h3>
               </Link>
-              <div className='suggested-product__price product-price'>
-                <span className="suggested-product__price product-price__current">{product.priceDiscount}$</span>
-                <span className="suggested-product__price product-price__old">{product.priceRegular}$</span>
+              <div className="suggested-product__price product-price">
+                <span className="suggested-product__price product-price__current">
+                  {product.priceDiscount}$
+                </span>
+                <span className="suggested-product__price product-price__old">
+                  {product.priceRegular}$
+                </span>
               </div>
 
               <div className="product-card__specs">
@@ -82,7 +89,9 @@ export const SuggestedProducts: React.FC<SuggestedProductsProps> = ({
                 </div>
                 <div className="product-card__details">
                   <span className="product-card__property">Capacity</span>
-                  <span className="product-card__value">{product.capacity}</span>
+                  <span className="product-card__value">
+                    {product.capacity}
+                  </span>
                 </div>
                 <div className="product-card__details">
                   <span className="product-card__property">RAM</span>
