@@ -65,7 +65,10 @@ export const ProductDetailsPage: React.FC<ProductDetailsPageProps> = () => {
   const fetchSuggestingProducts = async () => {
     setLoading(true);
     try {
-      const response = await fetch(`/api/${category}.json`);
+
+      // const response = await fetch(`/api/${category}.json`);
+      const response = await fetch('https://anastasiiakorolko.github.io/react_phone-catalog/api/phones.json');
+
       const data = await response.json();
 
       const suggestedProducts = data.filter(

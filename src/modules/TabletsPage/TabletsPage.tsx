@@ -19,7 +19,10 @@ export const TabletsPage: React.FC = () => {
     const fetchProducts = async () => {
       setLoading(true);
       try {
-        const resolve = await fetch('../../../public/api/products.json');
+        // const resolve = await fetch('../../../public/api/products.json');
+
+        const resolve = await fetch('https://anastasiiakorolko.github.io/react_phone-catalog/api/phones.json');
+
 
         if (!resolve.ok) {
           throw new Error('Products its not found');

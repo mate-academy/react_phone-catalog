@@ -22,6 +22,7 @@ export const HomePage: React.FC = () => {
     const fetchProducts = async () => {
       try {
         const responses = await Promise.all(
+          // categories.map(category => fetch(`/api/${category}.json`))
           categories.map(category => fetch(`/api/${category}.json`))
         );
 

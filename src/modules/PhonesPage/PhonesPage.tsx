@@ -19,7 +19,10 @@ export const PhonesPage: React.FC = () => {
   const fetchProducts = async () => {
     setLoader(true);
     try {
-      const response = await fetch('../../../public/api/products.json');
+      const response = await fetch('https://anastasiiakorolko.github.io/react_phone-catalog/api/phones.json');
+
+
+
 
       if (!response.ok) {
         throw new Error('There are no products yet');
