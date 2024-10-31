@@ -9,6 +9,7 @@ export interface ProductDescription {
   price: number;
   priceRegular: number;
   priceDiscount: number;
+  fullPrice?: number;
   colorsAvailable: string[];
   color: string;
   images: string[];

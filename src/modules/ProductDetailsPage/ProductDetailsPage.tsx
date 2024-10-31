@@ -8,7 +8,7 @@ import strokeRight from '../../../public/img/icons/StrokeRight.svg';
 import { ProductDescription } from '../../types/Accessories';
 import { Link } from 'react-router-dom';
 import favouritesIcon from '../../../public/img/icons/Favourites.svg';
-import { SuggestedProducts } from '../../components/ScrollSuggestingProducts/ScrollSuggestingProducts';
+import { SliderProducts } from '../../components/SliderProducts/SliderProducts';
 
 interface ProductDetailsPageProps {
   productDescription: ProductDescription;
@@ -21,7 +21,7 @@ export const ProductDetailsPage: React.FC<ProductDetailsPageProps> = () => {
   }>();
   const params = useParams();
 
-  console.log('params', params);
+
 
   const [product, setProduct] = useState<ProductDescription | null>(null);
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
@@ -41,9 +41,12 @@ export const ProductDetailsPage: React.FC<ProductDetailsPageProps> = () => {
     try {
       const response = await fetch(`/api/${category}.json`);
       const data = await response.json();
+      console.log('data', data)
       const selectedProduct = data.find(
         (item: ProductDescription) => item.id === itemId,
       );
+
+      console.log('selectedProduct', selectedProduct)
 
       if (selectedProduct) {
         setProduct(selectedProduct);
@@ -210,7 +213,7 @@ export const ProductDetailsPage: React.FC<ProductDetailsPageProps> = () => {
                   return (
                     <Link
                       key={color}
-                      to={`/product/${product?.category}/${product?.namespaceId}-${product?.capacity}-${color}`}
+                      to={`/product/${product?.category}/${product?.namespaceId}-${product?.capacity.toLowerCase()}-${color}`}
                       onClick={() => handleColorChange(color)}
                       className={`color-picker__option color-picker__option--${color.replace(' ', '-')} ${isCurrColor ? 'active' : ''}`}
                     ></Link>
@@ -230,7 +233,7 @@ export const ProductDetailsPage: React.FC<ProductDetailsPageProps> = () => {
                   return (
                     <Link
                       key={capacity}
-                      to={`/product/${product?.category}/${product?.namespaceId}-${capacity}-${product?.color}`}
+                      to={`/product/${product?.category}/${product?.namespaceId}-${capacity.toLowerCase()}-${product?.color}`}
                       className={`capacity-picker__option ${isCurrCapacity ? 'active' : ''}`}
                       aria-label={`Select ${capacity}`}
                       onClick={() => handleCapacityChange(capacity)}
@@ -342,7 +345,7 @@ export const ProductDetailsPage: React.FC<ProductDetailsPageProps> = () => {
         </section>
       </main>
 
-      <SuggestedProducts products={suggestedProducts} />
+      <SliderProducts products={suggestedProducts} />
 
       {/* <section className='section section--hot-prices'>
         <div className='section__header'>

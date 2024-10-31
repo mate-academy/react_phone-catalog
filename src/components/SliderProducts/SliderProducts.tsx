@@ -3,14 +3,15 @@ import strokeLeft from '../../../public/img/icons/StrokeLeft.svg';
 import strokeRight from '../../../public/img/icons/StrokeRight.svg';
 import favouritesIcon from '../../../public/img/icons/Favourites.svg';
 import { useEffect, useState } from 'react';
+import { ProductCard } from '../ProductCard/ProductCard';
 
 import { ProductDescription } from '../../types/Accessories';
 
-interface SuggestedProductsProps {
+interface SliderProductsProps {
   products: ProductDescription[];
 }
 
-export const SuggestedProducts: React.FC<SuggestedProductsProps> = ({
+export const SliderProducts: React.FC<SliderProductsProps> = ({
   products,
 }) => {
   const [currentIndex, setCurrentIndex] = useState<number>(0);
@@ -57,7 +58,7 @@ export const SuggestedProducts: React.FC<SuggestedProductsProps> = ({
           {currentProducts.map(product => (
             <div key={product.id} className="suggested-product product-card">
               <Link
-                to={`/product/${product?.category}/${product?.namespaceId}-${product?.capacity}-${product?.color}`}
+                to={`/product/${product?.category}/${product?.namespaceId}-${product?.capacity.toLowerCase()}-${product?.color}`}
                 className="suggested-product__link"
               >
                 <img
@@ -68,7 +69,7 @@ export const SuggestedProducts: React.FC<SuggestedProductsProps> = ({
               </Link>
 
               <Link
-                to={`/product/${product.category}/${product.namespaceId}-${product.capacity}-${product.color}`}
+                to={`/product/${product.category}/${product.namespaceId}-${product.capacity.toLowerCase()}-${product.color}`}
                 className="suggested-product__link"
               >
                 <h3 className="suggested-product__name">{product.name}</h3>
