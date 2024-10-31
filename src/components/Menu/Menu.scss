@@ -1,0 +1,18 @@
+@import '../../utils';
+
+.menu {
+  &__list {
+    display: flex;
+    align-items: center;
+    gap: 64px;
+    list-style: none;
+  }
+
+  &__link {
+    text-transform: uppercase;
+    color: #89939a;
+    font-family: $font-family;
+    font-weight: 800;
+    font-size: 12px;
+  }
+}

@@ -1,0 +1,21 @@
+.header {
+  &_container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    height: 64px;
+    border-bottom: 1px solid #e2e6e9;
+  }
+
+  &__nav {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+  }
+
+  &__shopping {
+    display: flex;
+    height: 100%;
+  }
+}
