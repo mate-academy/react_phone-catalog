@@ -19,9 +19,6 @@ export const ProductDetailsPage: React.FC<ProductDetailsPageProps> = () => {
     itemId: string;
     category: string;
   }>();
-  const params = useParams();
-
-
 
   const [product, setProduct] = useState<ProductDescription | null>(null);
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
@@ -68,7 +65,6 @@ export const ProductDetailsPage: React.FC<ProductDetailsPageProps> = () => {
   const fetchSuggestingProducts = async () => {
     setLoading(true);
     try {
-      // const response = await fetch('/api/accessories.json');
       const response = await fetch(`/api/${category}.json`);
       const data = await response.json();
 

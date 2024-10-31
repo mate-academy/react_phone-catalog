@@ -61,5 +61,29 @@ export const PicturesSlider: React.FC = () => {
       </div>
     </section>
 
+    // <section className='section'>
+    //   <div className="slider-container">
+    //     <img src={images[imageIndex]} alt={`Slider-${imageIndex + 1}`}
+    //       className="slider-image"/>
+    //   </div>
+
+    //   <div className='section__icons'>
+    //     <button onClick={prevImage} className='section__icon section__icon--left'>
+    //       <img src={strokeLeft} alt="Previous"/>
+    //     </button>
+    //     <button onClick={nextImage} className='section__icon section__icon--right'>
+    //       <img src={strokeRight} alt="Next"/>
+    //     </button>
+    //   </div>
+    //   <div className="slider-indicators">
+    //     {images.map((_, index) => (
+    //       <span
+    //         key={index}
+    //         className={`slider-indicator ${index === imageIndex ? 'active' : ''}`}
+    //         onClick={() => handleDotClick(index)}>
+    //       </span>
+    //     ))}
+    //   </div>
+    // </section>
   )
 }

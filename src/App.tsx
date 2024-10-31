@@ -35,29 +35,29 @@
 //     <div className={styles.container}>
 
 //       <header id="top" className="header">
-//         <div className='header__logo'>
-//           <a href="/" className='header__logo-link'>
-//             <img src={logo} alt="Logo" className='header__logo-logo' />
+//         <div className='logo'>
+//           <a href="/" className='logo-link'>
+//             <img src={logo} alt="Logo" className='logo-image' />
 //           </a>
-//           <nav>
-//             <ul className='header__nav-list'>
+//           <nav className='nav'>
+//             <ul className='nav-list'>
 //               <li>
-//                 <a href="/" className='header__nav-link active'>HOME</a>
+//                 <a href="/" className='nav-link active'>HOME</a>
 //               </li>
 //               <li>
-//                 <a href="/phones" className='header__nav-link'>PHONES</a>
+//                 <a href="/phones" className='nav-link'>PHONES</a>
 //               </li>
 //               <li>
-//                 <a href="/tablets" className='header__nav-link'>TABLETS</a>
+//                 <a href="/tablets" className='nav-link'>TABLETS</a>
 //               </li>
 //               <li>
-//                 <a href="/accessories" className='header__nav-link'>ACCESSORIES</a>
+//                 <a href="/accessories" className='nav-link'>ACCESSORIES</a>
 //               </li>
 //             </ul>
 //           </nav>
 //         </div>
 
-//         <div className='header__icons'>
+//         <div className='icons'>
 //           <a href="/favourites" className="header__icon header__icon--favourites">
 //             <img src={favouritesIcon} alt="Favourites" />
 //           </a>
@@ -67,14 +67,14 @@
 //         </div>
 //       </header>
 
-//       <main className='main'>
-//         <h1 className='main__title'>Welcome to Nice Gadgets store!</h1>
+//       <main className='main-content'>
+//         <h1 className='title'>Welcome to Nice Gadgets store!</h1>
 
-//         <section className='section'>
-//           <img src={banner} alt="Banner" className='section__image' />
-//           <div className='section__icons'>
-//             <a href="#"><img src={strokeLeft} alt="Previous" className='section__icon section__icon--left'/></a>
-//             <a href="#"><img src={strokeRight} alt="Next" className='section__icon section__icon--right'></img></a>
+//         <section className='banner-section'>
+//           <img src={banner} alt="Banner" className='banner-image' />
+//           <div className='banner__icons'>
+//             <a href="#"><img src={strokeLeft} alt="Previous" className=' banner-icon left'/></a>
+//             <a href="#"><img src={strokeRight} alt="Next" className='banner-icon right'></img></a>
 //           </div>
 //           <div className="slider-indicators">
 //             <span className="slider-indicator active"></span>
@@ -355,7 +355,7 @@
 
 // src/App.tsx
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { HashRouter as Router, Route, Routes } from 'react-router-dom';
 import { Header } from './layout/Header';
 import { Footer } from './layout/Footer';
 import './App.scss';
