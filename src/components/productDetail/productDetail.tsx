@@ -5,6 +5,7 @@ import { useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../../app/store';
 import { handleAddToFavorites } from '../../app/services/functions';
+import { handleAddToCart } from '../../app/services/handleAddCartItem';
 
 export const ProductDetail: React.FC = () => {
   const { itemId } = useParams();
@@ -12,6 +13,7 @@ export const ProductDetail: React.FC = () => {
   const favoritesProducts = useSelector(
     (state: RootState) => state.favorite.items,
   );
+  const cartProducts = useSelector((state: RootState) => state.cart.items);
 
   let selectedProduct = useSelector((state: RootState) =>
     state.phones.items.find(phone => phone.id === itemId),
@@ -59,6 +61,22 @@ export const ProductDetail: React.FC = () => {
         selectedProduct.category,
 
         favoritesProducts,
+        dispatch,
+      );
+    }
+  };
+
+  const handleCartClick = () => {
+    if (selectedProduct) {
+      handleAddToCart(
+        selectedProduct.id,
+        selectedProduct.itemId,
+        selectedProduct.images[0],
+        selectedProduct.name,
+        selectedProduct.priceDiscount,
+        selectedProduct.category,
+        1,
+        cartProducts,
         dispatch,
       );
     }
@@ -148,7 +166,18 @@ export const ProductDetail: React.FC = () => {
         </p>
 
         <div className={styles.buy_buttonDiv}>
-          <button className={styles.buy_buttonBuy}>Add to cart</button>
+          <button
+            className={classNames(styles.buy_buttonBuy, {
+              [styles.buyed]: cartProducts.some(product =>
+                product.itemId
+                  ? product.itemId === selectedProduct?.id
+                  : product.id === itemId,
+              ),
+            })}
+            onClick={handleCartClick}
+          >
+            Add to cart
+          </button>
           <button className={styles.buy_favor} onClick={handleFavoriteClick}>
             <span
               className={classNames(
@@ -232,7 +261,7 @@ export const ProductDetail: React.FC = () => {
             <span className={styles.spec_span}>{selectedProduct?.camera}</span>
           </li>
           <li className={styles.spec_item}>
-            Zoom{' '}
+            Zoom
             <span className={styles.spec_span}>{selectedProduct?.zoom}</span>
           </li>
           <li className={styles.spec_item}>

@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../app/store';
 import classNames from 'classnames';
 import { handleAddToFavorites } from '../../app/services/functions';
+import { handleAddToCart } from '../../app/services/handleAddCartItem';
 
 export interface ProductCardProps {
   category: string;
@@ -36,6 +37,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
   const favoritesProducts = useSelector(
     (state: RootState) => state.favorite.items,
   );
+  const cartProducts = useSelector((state: RootState) => state.cart.items);
 
   const handleFavoriteClick = () => {
     handleAddToFavorites(
@@ -50,6 +52,20 @@ export const ProductCard: React.FC<ProductCardProps> = ({
       ram,
       category,
       favoritesProducts,
+      dispatch,
+    );
+  };
+
+  const handleCartClick = () => {
+    handleAddToCart(
+      id,
+      itemId,
+      image,
+      name,
+      price,
+      category,
+      1,
+      cartProducts,
       dispatch,
     );
   };
@@ -78,7 +94,20 @@ export const ProductCard: React.FC<ProductCardProps> = ({
         RAM <span>{ram}</span>
       </p>
       <div className={styles.phones_buttonDiv}>
-        <button className={styles.phones_buttonBuy}>Add to cart</button>
+        <button
+          className={classNames(styles.phones_buttonBuy, {
+            [styles.buyed]: cartProducts.some(
+              product =>
+                (product.itemId && product.itemId === itemId) ||
+                (product.itemId && product.itemId === id) ||
+                (product.id && product.id === id) ||
+                (product.id && product.id === itemId),
+            ),
+          })}
+          onClick={handleCartClick}
+        >
+          Add to cart
+        </button>
         <button className={styles.phones_favor} onClick={handleFavoriteClick}>
           <span
             className={classNames(

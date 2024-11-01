@@ -42,7 +42,7 @@ export const HeaderTablet: React.FC = () => {
             ></NavLink>
           </div>
           <div className={styles.header_div2}>
-            <a href="/" className={styles.header_button__cart}></a>
+            <NavLink to="cart" className={styles.header_button__cart}></NavLink>
           </div>
         </div>
       </div>

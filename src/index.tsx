@@ -7,6 +7,7 @@ import { Home } from './components/home';
 import { ProductDetail } from './components/productDetail';
 import { Products } from './components/products';
 import { Favorite } from './components/favorite';
+import { Cart } from './components/cart';
 
 const NotFound = () => {
   return <h2>404: Page Not Found</h2>;
@@ -36,6 +37,7 @@ createRoot(document.getElementById('root') as HTMLElement).render(
             <Route path=":itemId" element={<ProductDetail />} />
           </Route>
           <Route path="favorites" element={<Favorite />} />
+          <Route path="cart" element={<Cart />} />
           <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>
