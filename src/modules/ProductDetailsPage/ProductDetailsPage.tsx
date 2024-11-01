@@ -51,7 +51,7 @@ export const ProductDetailsPage: React.FC<ProductDetailsPageProps> = () => {
 
       if (selectedProduct) {
         setProduct(selectedProduct);
-        setSelectedImage(`/${selectedProduct.images[0]}`);
+        setSelectedImage(`./${selectedProduct.images[0]}`);
         setChooseCapacity(selectedProduct.capacity);
         setChooseColor(selectedProduct.color);
       } else {

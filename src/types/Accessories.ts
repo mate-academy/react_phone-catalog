@@ -1,5 +1,5 @@
 export interface ProductDescription {
-  id: string;
+  id: string | number;
   itemId?: string;
   name: string;
   namespaceId?: string;

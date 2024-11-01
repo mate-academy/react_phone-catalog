@@ -5,6 +5,7 @@ import favouritesIcon from '../../../public/img/icons/Favourites.svg';
 import strokeLeft from '../../../public/img/icons/StrokeLeft.svg';
 import strokeRight from '../../../public/img/icons/StrokeRight.svg';
 import { ProductDescription } from '../../types/Accessories';
+import { ProductCard } from '../ProductCard/ProductCard';
 
 interface ProductsSliderProps {
   goods: ProductDescription[];
@@ -52,60 +53,7 @@ export const ProductsSlider: React.FC<ProductsSliderProps> = ({ goods, title }) 
         <section className='products'>
           <div className="products__list product-grid">
             {currentProducts.map(product => (
-              <div key={product.id} className="product-card">
-                <Link
-                  to={`/product/${product?.category}/${product?.namespaceId}-${product?.capacity.toLowerCase()}-${product?.color}`}
-                  className="product-card__link"
-                >
-                  <img
-                    src={`/${product.images[0]}`}
-                    alt={product.name}
-                    className="product-card__image"
-                  />
-                </Link>
-
-                <Link
-                  to={`/product/${product.category}/${product.namespaceId}-${product.capacity.toLowerCase()}-${product.color}`}
-                  className="product-card__link"
-                >
-                  <h3 className="product-card__title">{product.name}</h3>
-                </Link>
-                <div className="product-card__price product-price">
-                  <span className="product-card__price product-price__current">
-                    {product.priceDiscount}$
-                  </span>
-                  <span className="product-card__price product-price__old">
-                    {product.priceRegular}$
-                  </span>
-                </div>
-
-                <div className="product-card__specs">
-                  <div className="product-card__details">
-                    <span className="product-card__property">Screen:</span>
-                    <span className="product-card__value">{product.screen}</span>
-                  </div>
-                  <div className="product-card__details">
-                    <span className="product-card__property">Capacity</span>
-                    <span className="product-card__value">
-                      {product.capacity}
-                    </span>
-                  </div>
-                  <div className="product-card__details">
-                    <span className="product-card__property">RAM</span>
-                    <span className="product-card__value">{product.ram}</span>
-                  </div>
-                </div>
-                <div className="product-card__actions">
-                  <button className="product-card__button">Add to cart</button>
-                  <a href="#">
-                    <img
-                      src={favouritesIcon}
-                      alt="Favourites"
-                      className="product-card__icon"
-                    />
-                  </a>
-                </div>
-              </div>
+              <ProductCard product={product}/>
             ))}
           </div>
         </section>
