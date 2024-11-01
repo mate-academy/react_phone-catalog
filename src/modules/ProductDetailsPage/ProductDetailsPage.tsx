@@ -251,13 +251,6 @@ export const ProductDetailsPage: React.FC<ProductDetailsPageProps> = () => {
             </div>
           </div>
 
-          {/* <div className="product-gallery product-gallery__main-image">
-            <img
-              src={selectedImage ? `${selectedImage}` : ''}
-              alt="Product main view"
-            />
-          </div> */}
-
           <div className="product-info">
             <div className="color-picker">
               <h3 className="color-picker__title picker-title">

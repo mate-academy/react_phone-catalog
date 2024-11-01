@@ -32,7 +32,7 @@ export const ProductsSlider: React.FC<ProductsSliderProps> = ({ goods, title }) 
   const currentProducts = goods.slice(startIndex, startIndex + productsPerPage);
 
   return (
-      <section className="suggested-products ">
+      <section className="section section--section ">
         <div>
           <h2 className="section__title">{title}</h2>
           <div className="slider-controls">

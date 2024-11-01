@@ -54,6 +54,15 @@
   }
 }
 
+.header__icon--favourites {
+  margin-right: 48px;
+}
+
+.header__icon--bag {
+  margin-right: 24px;
+}
+
+//main//
 .main {
   max-width: 1136px;
   margin: 0 auto;
@@ -66,7 +75,10 @@
     color: #ffff;
   }
 }
+//end----main---//
 
+
+//start----section---//
 .section {
   position: relative;
   width: 100%;
@@ -74,40 +86,29 @@
   box-sizing: border-box;
   margin-bottom: 80px;
 
-  &__header {
-    display: flex;
-    justify-content: space-between;
-  }
-
   &__title {
     margin-bottom: 24px;
     color: #ffff;
   }
+}
 
-  &__image {
-    width: 100%;
-    display: block;
-    margin-bottom: 40px;
-  }
+.slider__icons {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 20px;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
 
-  &__icons {
-    position: absolute;
-    top: 50%;
-    left: 0;
-    right: 0;
-    display: flex;
-    justify-content: space-between;
-    padding: 0 20px;
-    transform: translateY(-50%);
-    pointer-events: none;
-  }
-
-  &.section__icon {
-    width: 8px;
-    height: auto;
-    pointer-events: auto;
-    cursor: pointer;
-  }
+.slider__icon {
+  width: 8px;
+  height: auto;
+  pointer-events: auto;
+  cursor: pointer;
 }
 
 .slider-indicators {
@@ -134,13 +135,8 @@
   background-color: #bd3eac;
 }
 
-.header__icon--favourites {
-  margin-right: 48px;
-}
+//end----slider---//
 
-.header__icon--bag {
-  margin-right: 24px;
-}
 
 .product-grid {
   display: grid;
@@ -306,16 +302,24 @@
     border-radius: 30px;
   }
 
-  &__title {
-    margin-bottom: 8px;
-    font-size: 20px;
-    font-weight: 700;
-    color: #ffff;
-  }
+
 
   &__count {
     color: #38715e;
   }
+}
+
+//carts product//
+
+.product-name {
+  margin-bottom: 8px;
+  font-size: 20px;
+  font-weight: 700;
+  color: #ffff;
+}
+
+.card-image {
+
 }
 
 .footer__container {
@@ -479,6 +483,8 @@
   }
 }
 
+
+
 .color-picker__option--gold {
   background-color: #EFD4B8;
 }
@@ -498,7 +504,6 @@
 .color-picker__option--pink {
   background-color: #dc31d3;
 }
-
 
 .color-picker__option--space--grey {
   background-color: #424242;
