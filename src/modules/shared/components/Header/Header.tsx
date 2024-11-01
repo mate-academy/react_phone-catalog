@@ -2,16 +2,16 @@ import { Logo } from '../Logo/Logo';
 import { HeaderNav } from './components/HeaderNav/HeaderNav';
 import { UserActions } from './components/UserActions/UserActions';
 import { Menu } from './components/Menu';
-import { useMenu } from './components/Menu/MenuContext';
 import { useMediaQuery } from '@mui/material';
 import styles from './Header.module.scss';
 import classNames from 'classnames';
 import { useEffect } from 'react';
 import { closeMenu } from 'modules/shared/helpers/handlers';
+import { useMenuContext } from 'contexts/MenuContext';
 
 export const Header = () => {
   const isMobile = useMediaQuery('(max-width: 639px)');
-  const { isMenuOpen, toggleMenu } = useMenu();
+  const { isMenuOpen, toggleMenu } = useMenuContext();
 
   useEffect(() => {
     if (!isMobile) {

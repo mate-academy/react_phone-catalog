@@ -1,15 +1,18 @@
-import { createContext, useContext, useState } from 'react';
-
-export const MenuContext = createContext({
-  isMenuOpen: false,
-  toggleMenu: () => {},
-});
+import { createContext, useState } from 'react';
 
 type Props = {
   children: React.ReactNode;
 };
 
-export const useMenu = () => useContext(MenuContext);
+type MenuContextType = {
+  isMenuOpen: boolean;
+  toggleMenu: () => void;
+};
+
+export const MenuContext = createContext<MenuContextType>({
+  isMenuOpen: false,
+  toggleMenu: () => {},
+});
 
 export const MenuProvider: React.FC<Props> = ({ children }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);

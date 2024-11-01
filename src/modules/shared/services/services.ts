@@ -5,9 +5,9 @@ export function getAllProducts() {
   return client.get<Product[]>('/products.json');
 }
 
-// export function getProdutsByCategory(category: string): Promise<Product[]> {
-//   return client.get<Product[]>(`/${category}.json`);
-// }
+export function getProdutsByCategory(category: string): Promise<Product[]> {
+  return client.get<Product[]>(`/${category}.json`);
+}
 
 export function getHotPriceProducts(): Promise<Product[]> {
   return getAllProducts()

@@ -23,7 +23,7 @@ export const ProductsSlider: React.FC<Props> = ({
   return (
     <div className={styles.container}>
       <div className={styles.topWrapper}>
-        <h1 className={styles.title}>{title}</h1>
+        <h2 className={styles.title}>{title}</h2>
 
         <div className={styles.navButtons}>
           <div id={navigationPrevId} className={styles.sliderButtonPrev}></div>

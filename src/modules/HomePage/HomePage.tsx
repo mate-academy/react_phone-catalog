@@ -1,5 +1,5 @@
 // eslint-disable-next-line max-len
-// import { ProductsCategory } from './components/ProductsCategory/ProductsCategory';
+import { ProductsCategory } from './components/ProductsCategory/ProductsCategory';
 import { ProductsSlider } from './components/ProductsSlider/ProductsSlider';
 import {
   getBrandNewProducts,
@@ -13,7 +13,7 @@ import { useEffect, useState } from 'react';
 export const HomePage = () => {
   const [newModels, setNewModels] = useState<Product[]>([]);
   const [hotPrices, setHotPrices] = useState<Product[]>([]);
-  // const [isLoading, setIsLoading] = useState(true);
+  // const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -24,7 +24,7 @@ export const HomePage = () => {
         setNewModels(fetchedNewModels);
         setHotPrices(fetchedHotPrices);
       } finally {
-        // setIsLoading(false);
+        // setLoading(false);
       }
     };
 
@@ -47,10 +47,9 @@ export const HomePage = () => {
         />
       </div>
 
-      {/* <div className={styles.section}>
-        <h1 className={styles.subTitle}>Shop by category</h1>
+      <div className={styles.section}>
         <ProductsCategory />
-      </div> */}
+      </div>
 
       <div className={styles.section}>
         <ProductsSlider

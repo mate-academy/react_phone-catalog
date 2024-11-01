@@ -1,8 +1,8 @@
 import { NavLink } from 'react-router-dom';
 import classNames from 'classnames';
 import styles from './UserActions.module.scss';
-import { useMenu } from '../Menu/MenuContext';
 import { closeMenu } from 'modules/shared/helpers/handlers';
+import { useMenuContext } from 'contexts/MenuContext';
 
 const getLinkClass = ({ isActive }: { isActive: boolean }) =>
   classNames(styles.icon, {
@@ -10,7 +10,7 @@ const getLinkClass = ({ isActive }: { isActive: boolean }) =>
   });
 
 export const UserActions = () => {
-  const { isMenuOpen, toggleMenu } = useMenu();
+  const { isMenuOpen, toggleMenu } = useMenuContext();
 
   return (
     <div

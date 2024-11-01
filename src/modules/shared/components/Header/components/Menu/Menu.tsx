@@ -1,8 +1,8 @@
 import styles from './Menu.module.scss';
-import { useMenu } from './MenuContext';
+import { useMenuContext } from 'contexts/MenuContext';
 
 export const Menu = () => {
-  const { isMenuOpen, toggleMenu } = useMenu();
+  const { isMenuOpen, toggleMenu } = useMenuContext();
 
   return (
     <div className={styles.burger} onClick={toggleMenu}>

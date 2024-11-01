@@ -3,16 +3,19 @@ import styles from './App.module.scss';
 import { Header } from './modules/shared/components/Header';
 import { Main } from 'modules/shared/components/Main';
 import { Footer } from './modules/shared/components/Footer/Footer';
-import { MenuProvider } from 'modules/shared/components/Header/components/Menu/MenuContext';
+import { MenuProvider } from 'contexts/MenuContext/MenuContext';
+import { ProductsProvider } from 'contexts/ProductsContext/ProductsContext';
 
 export const App = () => (
   <MenuProvider>
-    <div className={styles.App}>
-      <Header />
+    <ProductsProvider>
+      <div className={styles.App}>
+        <Header />
 
-      <Main />
+        <Main />
 
-      <Footer />
-    </div>
+        <Footer />
+      </div>
+    </ProductsProvider>
   </MenuProvider>
 );
