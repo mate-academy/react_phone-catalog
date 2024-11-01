@@ -1,7 +1,9 @@
 @import '../../styles/main';
+
 * {
   box-sizing: border-box;
 }
+
 .favorite {
   &_list {
     list-style: none;
@@ -18,7 +20,7 @@
   }
 
   &_title {
-    font-family: Mont-bold;
+    font-family: Mont-bold, sans-serif;
     font-size: 32px;
     font-weight: 800;
     line-height: 41px;
