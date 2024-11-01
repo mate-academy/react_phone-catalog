@@ -26,8 +26,6 @@ export const TabletsPage: React.FC = () => {
           : 'https://anastasiiakorolko.github.io/react_phone-catalog/api';
 
         const resolve = await fetch(`${baseUrl}/products.json`);
-
-
         // const resolve = await fetch('https://anastasiiakorolko.github.io/react_phone-catalog/api/phones.json');
 
 

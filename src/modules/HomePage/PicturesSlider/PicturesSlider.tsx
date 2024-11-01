@@ -39,14 +39,14 @@ export const PicturesSlider: React.FC = () => {
     <section className='section'>
       <div className="slider-container">
         <img src={images[imageIndex]} alt={`Slider-${imageIndex + 1}`}
-          className="slider-image"/>
+          className="slider-container__image"/>
       </div>
 
       <div className='slider__icons'>
-        <button onClick={prevImage} className='slider__icon slider__icon--left'>
+        <button onClick={prevImage} className='icon slider__icon--left'>
           <img src={strokeLeft} alt="Previous"/>
         </button>
-        <button onClick={nextImage} className='slider__icon slider__icon--right'>
+        <button onClick={nextImage} className='icon slider__icon--right'>
           <img src={strokeRight} alt="Next"/>
         </button>
       </div>

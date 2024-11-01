@@ -1,6 +1,6 @@
 import React from 'react';
 import { PicturesSlider } from './PicturesSlider/PicturesSlider';
-import { ProductsSlider } from './ProductsSlider/ProductsSlider';
+import { ProductsSlider } from '../../components/ProductsSlider/ProductsSlider';
 import { useEffect, useState } from 'react';
 import { ProductDescription } from '../../types/Accessories';
 import { Link } from 'react-router-dom';
@@ -122,38 +122,38 @@ export const HomePage: React.FC = () => {
       <PicturesSlider />
 
       <ProductsSlider goods={newestGoods} title="Brand new models"/>
-      <section className='section'>
-        <h2 className='section__title'>Shop by category</h2>
-        <div className='categories'>
-          <div className='category category--mobiles'>
-            <Link to={'/phones'}>
-              <img src={categoryFirst} alt="Phones" className='category__image' />
-            </Link>
-            <Link to={'/phones'} >
-              <h3 className='category__title'>Mobile phones</h3>
-            </Link>
-             <p className='category__count'>95 models</p>
-          </div>
-          <div className='category category--tablets'>
-            <Link to={'/tablets'}>
-              <img src={categorySecond} alt="Tablets" className='category__image' />
-            </Link>
-            <Link to={'/tablets'}>
-              <h3 className='category__title'>Tablets</h3>
-            </Link>
-            <p className='category__count'>95 models</p>
-          </div>
-          <div className='category category--accessories'>
-          <Link to={'/accessories'}>
-            <img src={categoryThird} alt="Accessories" className='category__image' />
+
+      <h2 className='section__title'>Shop by category</h2>
+      <div className='categories'>
+        <div className='category category--mobiles'>
+          <Link to={'/phones'}>
+            <img src={categoryFirst} alt="Phones" className='category__image' />
           </Link>
-          <Link to={'/accessories'}>
-            <h3 className='category__title'>Accessories</h3>
+          <Link to={'/phones'} >
+            <h3 className='category__title'>Mobile phones</h3>
+          </Link>
+            <p className='category__count'>95 models</p>
+        </div>
+        <div className='category category--tablets'>
+          <Link to={'/tablets'}>
+            <img src={categorySecond} alt="Tablets" className='category__image' />
+          </Link>
+          <Link to={'/tablets'}>
+            <h3 className='category__title'>Tablets</h3>
           </Link>
           <p className='category__count'>95 models</p>
-          </div>
         </div>
-      </section>
+        <div className='category category--accessories'>
+        <Link to={'/accessories'}>
+          <img src={categoryThird} alt="Accessories" className='category__image' />
+        </Link>
+        <Link to={'/accessories'}>
+          <h3 className='category__title'>Accessories</h3>
+        </Link>
+        <p className='category__count'>95 models</p>
+        </div>
+      </div>
+
       <ProductsSlider goods={hotGoods} title="Hot Prices"/>
     </main>
   );

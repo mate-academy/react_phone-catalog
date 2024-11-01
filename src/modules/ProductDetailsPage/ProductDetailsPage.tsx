@@ -8,7 +8,7 @@ import strokeRight from '../../../public/img/icons/StrokeRight.svg';
 import { ProductDescription } from '../../types/Accessories';
 import { Link } from 'react-router-dom';
 import favouritesIcon from '../../../public/img/icons/Favourites.svg';
-import { SliderProducts } from '../../components/SliderProducts/SliderProducts';
+import { ProductsSlider } from '../../components/ProductsSlider/ProductsSlider';
 
 interface ProductDetailsPageProps {
   productDescription: ProductDescription;
@@ -194,7 +194,7 @@ export const ProductDetailsPage: React.FC<ProductDetailsPageProps> = () => {
           <img src={strokeRight} alt="Previous"></img>
         </a>
         <span className="breadcrumbs__separator">/</span>
-        <a href="/accessories" className="breadcrumbs__item">
+        <a href="/accessories" className="breadcrumbs__item item-category">
           {product?.category}
         </a>
         <span className="breadcrumbs__separator">/</span>
@@ -202,7 +202,7 @@ export const ProductDetailsPage: React.FC<ProductDetailsPageProps> = () => {
           <img src={strokeRight} alt="Previous"></img>
         </a>
         <span className="breadcrumbs__separator">/</span>
-        <a href="/product.id" className="breadcrumbs__item">
+        <a href="/product.id" className="breadcrumbs__item item-name">
           {product?.name}
         </a>
       </nav>
@@ -224,7 +224,6 @@ export const ProductDetailsPage: React.FC<ProductDetailsPageProps> = () => {
 
       <main>
         <h1 className="section__title">{product?.name}</h1>
-
         <div className="product-page">
           <div className="product-content">
             <div className="product-gallery">
@@ -296,7 +295,7 @@ export const ProductDetailsPage: React.FC<ProductDetailsPageProps> = () => {
             </div>
 
             <div className="product-price">
-              <span className="product-price__current">
+              <span className="product-price__new">
                 {product?.priceDiscount}$
               </span>
               <span className="product-price__old">
@@ -395,7 +394,7 @@ export const ProductDetailsPage: React.FC<ProductDetailsPageProps> = () => {
         </section>
       </main>
 
-      <SliderProducts products={suggestedProducts} />
+      <ProductsSlider goods={suggestedProducts} title='You may also like'/>
     </div>
   );
 };

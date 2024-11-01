@@ -28,8 +28,7 @@ export const PhonesPage: React.FC = () => {
           : 'https://anastasiiakorolko.github.io/react_phone-catalog/api';
 
       const resolve = await fetch(`${baseUrl}/products.json`);
-
-
+      
       if (!resolve.ok) {
         throw new Error('There are no products yet');
       }
