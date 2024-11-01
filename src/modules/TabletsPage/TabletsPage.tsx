@@ -20,8 +20,10 @@ export const TabletsPage: React.FC = () => {
       setLoading(true);
       try {
         // const resolve = await fetch('../../../public/api/products.json');
+        const resolve = await fetch('http://localhost:5173/api/products.json');
 
-        const resolve = await fetch('https://anastasiiakorolko.github.io/react_phone-catalog/api/phones.json');
+
+        // const resolve = await fetch('https://anastasiiakorolko.github.io/react_phone-catalog/api/phones.json');
 
 
         if (!resolve.ok) {

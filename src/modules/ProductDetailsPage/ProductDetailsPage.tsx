@@ -33,24 +33,26 @@ export const ProductDetailsPage: React.FC<ProductDetailsPageProps> = () => {
 
   const navigate = useNavigate();
 
+
   const fetchProducts = async () => {
     setLoading(true);
     try {
-      const response = await fetch(`/api/${category}.json`);
-      const data = await response.json();
-      console.log('data', data)
-      const selectedProduct = data.find(
-        (item: ProductDescription) => item.id === itemId,
-      );
+      const baseUrl =
+        window.location.hostname === 'localhost'
+          ? 'http://localhost:5173/api'
+          : 'https://anastasiiakorolko.github.io/react_phone-catalog/api';
 
-      console.log('selectedProduct', selectedProduct)
+      const response = await fetch(`${baseUrl}/${category}.json`);
+      const data = await response.json();
+
+      const selectedProduct = data.find(
+        (item: ProductDescription) => item.id === itemId
+      );
 
       if (selectedProduct) {
         setProduct(selectedProduct);
-
         setSelectedImage(`/${selectedProduct.images[0]}`);
         setChooseCapacity(selectedProduct.capacity);
-
         setChooseColor(selectedProduct.color);
       } else {
         setError('Product not found');
@@ -62,38 +64,87 @@ export const ProductDetailsPage: React.FC<ProductDetailsPageProps> = () => {
     }
   };
 
-  const fetchSuggestingProducts = async () => {
-    setLoading(true);
+  const fetchSuggestedProducts = async () => {
     try {
+      const baseUrl =
+        window.location.hostname === 'localhost'
+          ? 'http://localhost:5173/api'
+          : 'https://anastasiiakorolko.github.io/react_phone-catalog/api';
 
-      // const response = await fetch(`/api/${category}.json`);
-      const response = await fetch('https://anastasiiakorolko.github.io/react_phone-catalog/api/phones.json');
-
+      const response = await fetch(`${baseUrl}/${category}.json`);
       const data = await response.json();
 
-      const suggestedProducts = data.filter(
-        (item: ProductDescription) => item.id !== itemId,
+      const filteredProducts = data.filter(
+        (item: ProductDescription) => item.id !== itemId
       );
 
-      const shuffled = suggestedProducts.sort(() => 0.5 - Math.random());
+      const shuffled = filteredProducts.sort(() => 0.5 - Math.random());
       const randomSuggested = shuffled.slice(0, 4);
 
       setSuggestedProducts(randomSuggested);
-
-      return randomSuggested;
     } catch (error) {
-      setError('Unable get recomenation products');
-
-      return [];
-    } finally {
-      setLoading(false);
+      setError('Unable to get recommendation products');
     }
   };
 
   useEffect(() => {
     fetchProducts();
-    fetchSuggestingProducts();
+    fetchSuggestedProducts();
   }, [itemId, category]);
+
+
+  // const fetchProducts = async () => {
+  //   setLoading(true);
+  //   try {
+  //     // const resolve = await fetch(`/api/${category}.json`);
+  //     // const resolve = await fetch('http://localhost:5173/api/products.json');
+  //     const resolve = await fetch('http://localhost:5173/api/${category}.json');
+  //     const data = await resolve.json();
+  //     const selectedProduct = data.find(
+  //       (item: ProductDescription) => item.id === itemId,
+  //     );
+
+  //     if (selectedProduct) {
+  //       setProduct(selectedProduct);
+  //       setSelectedImage(`/${selectedProduct.images[0]}`);
+  //       setChooseCapacity(selectedProduct.capacity);
+  //       setChooseColor(selectedProduct.color);
+  //     } else {
+  //       setError('Product not found');
+  //     }
+  //   } catch (error) {
+  //     setError('Something went wrong. Please try again.');
+  //   } finally {
+  //     setLoading(false);
+  //   }
+  // };
+
+  // const fetchSuggestingProducts = async () => {
+  //   setLoading(true);
+  //   try {
+  //     const response = await fetch(`/api/${category}.json`);
+  //     // const response = await fetch('https://anastasiiakorolko.github.io/react_phone-catalog/api/phones.json');
+  //     // const response = await fetch('http://localhost:5173/api/products.json');
+  //     const data = await response.json();
+  //     const suggestedProducts = data.filter(
+  //       (item: ProductDescription) => item.id !== itemId,
+  //     );
+  //     const shuffled = suggestedProducts.sort(() => 0.5 - Math.random());
+  //     const randomSuggested = shuffled.slice(0, 4);
+  //     setSuggestedProducts(randomSuggested);
+  //     return randomSuggested;
+  //   } catch (error) {
+  //     setError('Unable get recomenation products');
+  //     return [];
+  //   } finally {
+  //     setLoading(false);
+  //   }
+  // };
+
+  // useEffect(() => {
+  //   fetchProducts();
+  //   fetchSuggestingProducts();
+  // }, [itemId, category]);
 
   const handleBackClick = () => {
     navigate(-1);
@@ -191,14 +242,21 @@ export const ProductDetailsPage: React.FC<ProductDetailsPageProps> = () => {
                 ))}
               </div>
             </div>
+
+            <div className="product-gallery product-gallery__main-image">
+              <img className='image'
+              src={selectedImage ? `${selectedImage}` : ''}
+              alt="Product main view"
+              />
+            </div>
           </div>
 
-          <div className="product-gallery product-gallery__main-image">
+          {/* <div className="product-gallery product-gallery__main-image">
             <img
               src={selectedImage ? `${selectedImage}` : ''}
               alt="Product main view"
             />
-          </div>
+          </div> */}
 
           <div className="product-info">
             <div className="color-picker">
@@ -345,65 +403,6 @@ export const ProductDetailsPage: React.FC<ProductDetailsPageProps> = () => {
       </main>
 
       <SliderProducts products={suggestedProducts} />
-
-      {/* <section className='section section--hot-prices'>
-        <div className='section__header'>
-          <h1 className='section__title'>You may also like</h1>
-          <a href="#" ><img src={strokeLeft} alt="Previous" ></img></a>
-          <a href="#" ><img src={strokeRight} alt="Next"></img></a>
-        </div>
-
-        <section className="suggested-products ">
-            <div className="suggested-products__list product-grid">
-            {suggestedProducts.map(product => (
-              <div key={product.id} className="suggested-product product-card">
-                <Link to={`/product/${product.namespaceId}-${product.capacity}-${product.color}`} className="suggested-product__link">
-                  <img
-                    src={`../${product.images[0]}`}
-                    alt={product.name}
-                    className="product-card__image"
-                  />
-                </Link>
-
-                <Link to={`/product/${product.namespaceId}-${product.capacity}-${product.color}`}
-                  className="suggested-product__link">
-                  <h3 className="suggested-product__name">{product.name}</h3>
-                </Link>
-                <div className='suggested-product__price product-price'>
-                  <span className="suggested-product__price product-price__current">{product.priceDiscount}$</span>
-                  <span className="suggested-product__price product-price__old">{product.priceRegular}$</span>
-                </div>
-
-                <div className="product-card__specs">
-                  <div className="product-card__details">
-                    <span className="product-card__property">Screen:</span>
-                    <span className="product-card__value">{product.screen}</span>
-                  </div>
-                  <div className="product-card__details">
-                    <span className="product-card__property">Capacity</span>
-                    <span className="product-card__value">{product.capacity}</span>
-                  </div>
-                  <div className="product-card__details">
-                    <span className="product-card__property">RAM</span>
-                    <span className="product-card__value">{product.ram}</span>
-                  </div>
-                </div>
-                <div className="product-card__actions">
-                  <button className="product-card__button">Add to cart</button>
-                    <a href="#">
-                      <img
-                        src={favouritesIcon}
-                        alt="Favourites"
-                        className="product-card__icon"
-                      />
-                    </a>
-                </div>
-              </div>
-            ))}
-          </div>
-        </section>
-
-      </section> */}
     </div>
   );
 };
