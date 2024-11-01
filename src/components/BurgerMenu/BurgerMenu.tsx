@@ -76,14 +76,14 @@ export const BurgerMenu: React.FC<Props> = ({ burgerMenu, setBurgerMenu }) => {
         <div className="burger-menu--button">
           <NavLink
             className={({ isActive }) =>
-              classNames('b-s-d', {
+              classNames('b-s-d ertyu', {
                 'b-s-d--is-active': isActive,
               })
             }
             onClick={() => setBurgerMenu(false)}
             to="/favourites"
           >
-            <img src="./img/Favourites.svg" alt="Favourites" />
+            <img src="./img/Favourites (1).svg" alt="Favourites" />
           </NavLink>
           <NavLink
             className={({ isActive }) =>
@@ -95,7 +95,7 @@ export const BurgerMenu: React.FC<Props> = ({ burgerMenu, setBurgerMenu }) => {
             onClick={() => setBurgerMenu(false)}
             to="/cart"
           >
-            <img src="./img/Cart.svg" alt="Cart" />
+            <img src="./img/Cart (1).svg" alt="Cart" />
           </NavLink>
         </div>
       </div>

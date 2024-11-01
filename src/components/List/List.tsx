@@ -60,9 +60,9 @@ export const List: React.FC<Props> = ({ type }) => {
         break;
     }
 
-    const itemsOnPage = searchParams.get('perPage') || '4';
+    const itemsOnPage = searchParams.get('perPage');
 
-    setItemsPerPage(Number(itemsOnPage));
+    setItemsPerPage(itemsOnPage ? Number(itemsOnPage) : products.length); // Показываем все, если perPage нет
 
     setCurrentPage(1);
 

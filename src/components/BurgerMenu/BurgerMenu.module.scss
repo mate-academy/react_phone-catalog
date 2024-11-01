@@ -53,8 +53,16 @@
       width: 100%;
     }
 
-    @media screen and (min-width: 600px) {
-      position: relative;
+    &::after {
+      content: '';
+      box-sizing: border-box;
+      position: absolute;
+      top: 50%;
+
+      border: 1px solid rgb(226, 230, 233);
+      width: 64px;
+
+      transform: rotate(90deg);
     }
   }
 }
@@ -74,6 +82,6 @@
   position: absolute;
   bottom: 10px;
 
-  border: 1px solid #313237;
-  width: 50%;
+  border: 2px solid #313237;
+  width: 47%;
 }
