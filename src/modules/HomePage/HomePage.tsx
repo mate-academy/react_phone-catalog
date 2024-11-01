@@ -18,38 +18,47 @@ export const HomePage: React.FC = () => {
 
   const categories = ["phones", "tablets", "accessories"]
 
+
   useEffect(() => {
     const fetchProducts = async () => {
+      setLoading(true);
+      setError('');
+
       try {
+
+        const baseUrl =
+        window.location.hostname === 'localhost'
+          ? 'http://localhost:5173/api'
+          : 'https://anastasiiakorolko.github.io/react_phone-catalog/api';
         const responses = await Promise.all(
-          // categories.map(category => fetch(`/api/${category}.json`))
-          categories.map(category => fetch(`/api/${category}.json`))
+          categories.map(category => fetch(`${baseUrl}/${category}.json`))
         );
 
         responses.forEach(response => {
           if (!response.ok) {
-            throw new Error('Something went wrong');
+            throw new Error(`Error fetching category: ${response.url}`);
           }
         });
 
         const data = await Promise.all(responses.map(response => response.json()));
-
         const allProducts = data.flat();
         setAllGoods(allProducts);
 
-        console.log('allProducts', allProducts)
+
 
         const discountProducts = allProducts
           .filter(product => product.priceDiscount > 0)
           .sort((a, b) => Math.abs(b.priceRegular - b.priceDiscount) - Math.abs(a.priceRegular - a.priceDiscount));
         setHotGoods(discountProducts);
-        console.log('discountProducts', discountProducts)
 
-        const newestProducts = allProducts.sort((a, b) => b.year - a.year);
+
+        const newestProducts = [...allProducts].sort((a, b) => b.year - a.year);
         setNewestGoods(newestProducts);
-        console.log('newestProducts', newestProducts)
+
+
       } catch (error) {
-        setError('Unable loading goods');
+        console.error(error);
+        setError('Error: Unable to load products.');
       } finally {
         setLoading(false);
       }
@@ -57,6 +66,46 @@ export const HomePage: React.FC = () => {
 
     fetchProducts();
   }, []);
+
+  // useEffect(() => {
+  //   const fetchProducts = async () => {
+  //     try {
+  //       const responses = await Promise.all(
+  //         // categories.map(category => fetch(`/api/${category}.json`))
+  //         categories.map(category => fetch(`/api/${category}.json`))
+  //       );
+
+  //       responses.forEach(response => {
+  //         if (!response.ok) {
+  //           throw new Error('Something went wrong');
+  //         }
+  //       });
+
+  //       const data = await Promise.all(responses.map(response => response.json()));
+
+  //       const allProducts = data.flat();
+  //       setAllGoods(allProducts);
+
+  //       console.log('allProducts', allProducts)
+
+  //       const discountProducts = allProducts
+  //         .filter(product => product.priceDiscount > 0)
+  //         .sort((a, b) => Math.abs(b.priceRegular - b.priceDiscount) - Math.abs(a.priceRegular - a.priceDiscount));
+  //       setHotGoods(discountProducts);
+  //       console.log('discountProducts', discountProducts)
+
+  //       const newestProducts = allProducts.sort((a, b) => b.year - a.year);
+  //       setNewestGoods(newestProducts);
+  //       console.log('newestProducts', newestProducts)
+  //     } catch (error) {
+  //       setError('Unable loading goods');
+  //     } finally {
+  //       setLoading(false);
+  //     }
+  //   };
+
+  //   fetchProducts();
+  // }, []);
 
   if (loading) {
     return <div>Loading...</div>;
