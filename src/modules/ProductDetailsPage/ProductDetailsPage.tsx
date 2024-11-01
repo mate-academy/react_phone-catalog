@@ -166,10 +166,12 @@ export const ProductDetailsPage: React.FC<ProductDetailsPageProps> = () => {
     setChooseColor(color);
   };
 
-  const baseImagePath = `/img/${product?.category}/${product?.namespaceId}/${chooseColor}`;
+  const baseImagePath = `./img/${product?.category}/${product?.namespaceId}/${chooseColor}`;
 
   const imageFiles = ['00.webp', '01.webp', '02.webp'];
   // "img/accessories/apple-watch-series-6/silver/00.webp",
+  // ./img/tablets/apple-ipad-mini-5th-gen/silver/00.webp
+
 
   if (loading) {
     return <div>Loading...</div>;

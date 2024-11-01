@@ -427,9 +427,23 @@ $font-weight-regular: 400;
   color: #89939A;
 }
 .footer__image {
-  margin-left: 16px;
   height: 16px;
   width: 16px;
+}
+
+.footer__button {
+  margin-left: 16px;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  background-color: transparent;
+}
+.footer__button:hover {
+  margin-left: 16px;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  background-color: yellowgreen;
 }
 //END--FOOTER--//
 
