@@ -1,21 +1,35 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react';
-import { Routes, Route, useNavigate } from 'react-router-dom';
+import { Routes, Route, useNavigate, useLocation } from 'react-router-dom';
 import { AppDispatch, RootState } from '../../app/store';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchProducts } from '../../features/products';
-import { fetchTablets, setSelectedTablet } from '../../features/tablets';
 import { setCurrentPage, setTotalPages } from '../../features/pagination';
-import styles from '../phones/phones.module.scss';
+import styles from '../products/products.module.scss';
 import classNames from 'classnames';
-import { PhoneCard } from '../phones/phoneCard';
-import Pagination from '../phones/pagination';
+import { ProductCard } from './productCard';
+import Pagination from './pagination/pagination';
 import { ProductDetail } from '../productDetail';
+import { fetchPhones } from '../../features/phones';
 import { Product } from '../../types/Product';
+import { fetchTablets } from '../../features/tablets';
+import { fetchAccessories } from '../../features/accessories';
 
-export const Tablets: React.FC = () => {
+interface ProductsProps {
+  category: string;
+}
+
+export const Products: React.FC<ProductsProps> = ({ category }) => {
   const dispatch: AppDispatch = useDispatch();
   const navigate = useNavigate();
   const allProducts = useSelector((state: RootState) => state.products.items);
+
+  const location = useLocation();
+  const queryParams = new URLSearchParams(location.search);
+  const pageFromUrl = parseInt(queryParams.get('page') || '1');
+  const itemsPerPageFromUrl = parseInt(queryParams.get('perPage') || '8');
+  const sortTypeFromUrl = queryParams.get('sort') || 'Newest';
+
   const currentPage = useSelector(
     (state: RootState) => state.pagination.currentPage,
   );
@@ -23,18 +37,28 @@ export const Tablets: React.FC = () => {
     (state: RootState) => state.pagination.totalPages,
   );
 
-  const [itemsPerPage, setItemsPerPage] = useState(8);
+  const [itemsPerPage, setItemsPerPage] = useState(itemsPerPageFromUrl);
   const [product, setProduct] = useState<Product[]>([]);
-  const [sortType, setSortType] = useState('Newest');
+  const [sortType, setSortType] = useState(sortTypeFromUrl);
 
   useEffect(() => {
     dispatch(fetchProducts());
-    dispatch(fetchTablets());
+    if (category === 'phones') {
+      dispatch(fetchPhones());
+    }
+
+    if (category === 'tablets') {
+      dispatch(fetchTablets());
+    }
+
+    if (category === 'accessories') {
+      dispatch(fetchAccessories());
+    }
   }, [dispatch]);
 
   useEffect(() => {
     const filteredProducts = allProducts.filter(
-      pro => pro.category.trim() === 'tablets',
+      pro => pro.category.trim() === category,
     );
 
     setProduct(filteredProducts);
@@ -44,10 +68,14 @@ export const Tablets: React.FC = () => {
   }, [allProducts, itemsPerPage, dispatch]);
 
   useEffect(() => {
-    dispatch(setCurrentPage(1));
-  }, [dispatch]);
+    if (pageFromUrl >= 1 && pageFromUrl <= totalPages) {
+      dispatch(setCurrentPage(pageFromUrl));
+    } else {
+      dispatch(setCurrentPage(1));
+    }
+  }, [pageFromUrl, totalPages, dispatch]);
 
-  const sortedTablets = React.useMemo(() => {
+  const sortedPhones = React.useMemo(() => {
     return [...product].sort((a, b) => {
       if (sortType === 'Newest') {
         return b.year - a.year;
@@ -69,12 +97,27 @@ export const Tablets: React.FC = () => {
     const startIndex = (currentPage - 1) * itemsPerPage;
     const endIndex = startIndex + itemsPerPage;
 
-    return sortedTablets.slice(startIndex, endIndex);
+    return sortedPhones.slice(startIndex, endIndex);
   };
 
   const handlePageChange = (page: number) => {
     if (page >= 1 && page <= totalPages) {
       dispatch(setCurrentPage(page));
+
+      const urlParts = [`/${category}`];
+      const params = new URLSearchParams();
+
+      if (sortType !== 'Newest') {
+        params.set('sort', sortType);
+      }
+
+      if (itemsPerPage !== 8) {
+        params.set('perPage', itemsPerPage.toString());
+      }
+
+      params.set('page', page.toString());
+
+      navigate(`${urlParts.join('')}?${params.toString()}`);
     }
   };
 
@@ -88,15 +131,19 @@ export const Tablets: React.FC = () => {
 
     setItemsPerPage(value);
     dispatch(setCurrentPage(1));
+    navigate(`/${category}?sort=${sortType}&perPage=${value}`);
   };
 
   const handleSortChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    setSortType(event.target.value);
+    const selectedSort = event.target.value;
+
+    setSortType(selectedSort);
+    dispatch(setCurrentPage(1));
+    navigate(`/${category}?sort=${selectedSort}&perPage=${itemsPerPage}`);
   };
 
   const handleProductClick = (selectedProduct: Product) => {
-    dispatch(setSelectedTablet(selectedProduct.itemId));
-    navigate(`/tablets/${selectedProduct.itemId}`); // Navigate to product detail
+    navigate(`/${category}/${selectedProduct.itemId}`);
   };
 
   return (
@@ -104,16 +151,16 @@ export const Tablets: React.FC = () => {
       <section className={classNames(styles.phones, 'container')}>
         <nav className={styles.phones_nav}>
           <a href="/" className={styles.phones_home}></a>
-          <a href="/">Tablets</a>
+          <a href="/">{category}</a>
         </nav>
 
         <Routes>
-          <Route path=":itemId" element={<ProductDetail />} />
+          <Route path=":productId" element={<ProductDetail />} />
           <Route
-            index
+            path="/"
             element={
               <>
-                <h2 className={styles.phones_title}>Tablets</h2>
+                <h2 className={styles.phones_title}>{category}</h2>
                 <p className={styles.phones_models}>{product.length} models</p>
                 <div className="flex">
                   <div>
@@ -129,7 +176,7 @@ export const Tablets: React.FC = () => {
                     </select>
                   </div>
 
-                  <div>
+                  <div className={styles.q}>
                     <p>Items on page</p>
                     <select
                       name="itemsPerPage"
@@ -147,7 +194,7 @@ export const Tablets: React.FC = () => {
                 </div>
                 <ul className={styles.phones_list}>
                   {getProductsForCurrentPage().map(item => (
-                    <PhoneCard
+                    <ProductCard
                       key={item.id}
                       {...item}
                       onClick={() => handleProductClick(item)}

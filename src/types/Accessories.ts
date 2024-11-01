@@ -1,5 +1,6 @@
 export interface Smartwatch {
-  id: string;
+  itemId: string;
+  id: string | number;
   category: string;
   namespaceId: string;
   name: string;

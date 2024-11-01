@@ -248,3 +248,17 @@
   background-color: #313237;
   color: #fff;
 }
+
+.filled_heart {
+  background-image: url(/public/img/littleImages/Favourites_Filled.svg);
+  background-size: cover;
+  display: block;
+  width: 16px;
+  height: 16px;
+
+  border: none;
+  padding: 0;
+  margin: 0;
+  margin-left: auto;
+  margin-right: auto;
+}

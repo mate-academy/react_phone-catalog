@@ -44,7 +44,7 @@ export const Header: React.FC = () => {
 
   return (
     <>
-      <h1>Product Catalog</h1>
+      <h1 className={styles.header_title_inv}>Product Catalog</h1>
 
       {windowWidth >= 640 ? (
         <HeaderTablet />

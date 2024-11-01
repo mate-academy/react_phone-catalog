@@ -36,7 +36,10 @@ export const HeaderTablet: React.FC = () => {
         </nav>
         <div className={styles.header_button__div}>
           <div className={styles.header_div1}>
-            <a href="/" className={styles.header_button__favorite}></a>
+            <NavLink
+              to="favorites"
+              className={styles.header_button__favorite}
+            ></NavLink>
           </div>
           <div className={styles.header_div2}>
             <a href="/" className={styles.header_button__cart}></a>

@@ -1,5 +1,7 @@
 @import '../../styles/main';
-
+* {
+  box-sizing: border-box;
+}
 .phones {
   box-sizing: border-box;
   margin-top: 24px;
@@ -21,6 +23,7 @@
   }
 
   &_title {
+    text-transform: capitalize;
     margin-top: 24px;
 
     font-size: 32px;
@@ -201,4 +204,18 @@
   display: flex;
 
   justify-content: center;
+}
+
+.filled_heart {
+  background-image: url(/public/img/littleImages/Favourites_Filled.svg);
+  background-size: cover;
+  display: block;
+  width: 16px;
+  height: 16px;
+
+  border: none;
+  padding: 0;
+  margin: 0;
+  margin-left: auto;
+  margin-right: auto;
 }

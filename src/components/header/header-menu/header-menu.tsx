@@ -35,7 +35,7 @@ export const HeaderMenu: React.FC<HeaderMenuProps> = ({ onClose }) => {
       </nav>
       <div className="flex">
         <div className={styles.header_div1}>
-          <a href="/" className={styles.header_favorite}></a>
+          <NavLink to="favorites" className={styles.header_favorite}></NavLink>
         </div>
         <div className={styles.header_div2}>
           <a href="/" className={styles.header_cart}></a>

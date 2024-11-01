@@ -5,6 +5,7 @@ import tabletReducer from '../features/tablets';
 import accessoriesReducer from '../features/accessories';
 import screenWidthReducer from '../features/screenWidth';
 import paginationReducer from '../features/pagination';
+import favoriteReducer from '../features/favorite';
 
 const rootReducer = combineReducers({
   products: productsReducer,
@@ -13,6 +14,7 @@ const rootReducer = combineReducers({
   accessories: accessoriesReducer,
   screenWidth: screenWidthReducer,
   pagination: paginationReducer,
+  favorite: favoriteReducer,
 });
 
 export const store = configureStore({

@@ -2,11 +2,17 @@ import React, { useEffect, useState } from 'react';
 import styles from './productDetail.module.scss';
 import classNames from 'classnames';
 import { useParams } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../../app/store';
+import { handleAddToFavorites } from '../../app/services/functions';
 
 export const ProductDetail: React.FC = () => {
   const { itemId } = useParams();
+  const dispatch = useDispatch();
+  const favoritesProducts = useSelector(
+    (state: RootState) => state.favorite.items,
+  );
+
   let selectedProduct = useSelector((state: RootState) =>
     state.phones.items.find(phone => phone.id === itemId),
   );
@@ -38,9 +44,28 @@ export const ProductDetail: React.FC = () => {
     setMainImage(image);
   };
 
+  const handleFavoriteClick = () => {
+    if (selectedProduct) {
+      handleAddToFavorites(
+        selectedProduct.id,
+        selectedProduct.itemId,
+        selectedProduct.images[0],
+        selectedProduct.name,
+        selectedProduct.priceDiscount,
+        selectedProduct.priceRegular,
+        selectedProduct.screen,
+        selectedProduct.capacity,
+        selectedProduct.ram,
+        selectedProduct.category,
+
+        favoritesProducts,
+        dispatch,
+      );
+    }
+  };
+
   if (!selectedProduct) {
-    return <p>Продукт не найден. Пожалуйста, проверьте URL.</p>; // Или используйте Redirect
-    // return <Redirect to="/404" />; // Пример перенаправления на страницу 404
+    return <p>Продукт не найден. Пожалуйста, проверьте URL.</p>;
   }
 
   return (
@@ -121,10 +146,21 @@ export const ProductDetail: React.FC = () => {
             ${selectedProduct?.priceRegular}
           </span>
         </p>
+
         <div className={styles.buy_buttonDiv}>
           <button className={styles.buy_buttonBuy}>Add to cart</button>
-          <button className={styles.buy_favor}>
-            <span className={styles.buy_favor_icon}></span>
+          <button className={styles.buy_favor} onClick={handleFavoriteClick}>
+            <span
+              className={classNames(
+                favoritesProducts.some(product =>
+                  product.itemId
+                    ? product.itemId === selectedProduct?.id
+                    : product.id === itemId,
+                )
+                  ? styles.filled_heart
+                  : styles.buy_favor_icon,
+              )}
+            ></span>
           </button>
         </div>
         <div className={styles.buy_text_cont}>

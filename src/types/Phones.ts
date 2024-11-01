@@ -1,5 +1,6 @@
 export interface Phones {
-  id: string;
+  itemId: string;
+  id: string | number;
   category: string;
   namespaceId: string;
   name: string;
