@@ -201,9 +201,6 @@ export const ProductDetail: React.FC = () => {
 
     const newColor = selectParts.join('-');
 
-    console.log(color1);
-    console.log(select);
-
     navigate(`/${selectedProduct?.category}/${newColor}`);
   };
 
