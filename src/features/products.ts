@@ -34,6 +34,9 @@ export const productsSlice = createSlice({
     setProducts(state, action) {
       state.items = action.payload;
     },
+    resetStatusProducts: state => {
+      state.status = 'idle';
+    },
   },
   extraReducers: builder => {
     builder
@@ -49,6 +52,6 @@ export const productsSlice = createSlice({
       });
   },
 });
-export const { setProducts } = productsSlice.actions;
+export const { setProducts, resetStatusProducts } = productsSlice.actions;
 
 export default productsSlice.reducer;

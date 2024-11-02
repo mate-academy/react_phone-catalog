@@ -25,6 +25,8 @@ export const fetchTablets = createAsyncThunk(
 
     const data = await response.json();
 
+    await new Promise(resolve => setTimeout(resolve, 1000));
+
     return data;
   },
 );

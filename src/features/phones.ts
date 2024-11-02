@@ -23,6 +23,8 @@ export const fetchPhones = createAsyncThunk('phones/fetchPhones', async () => {
 
   const data = await response.json();
 
+  await new Promise(resolve => setTimeout(resolve, 1000));
+
   return data;
 });
 
@@ -37,6 +39,9 @@ export const phonesSlice = createSlice({
       const phone = state.items.find(phon => phon.id === action.payload);
 
       state.selectedPhone = phone || null;
+    },
+    resetStatus: state => {
+      state.status = 'idle';
     },
   },
   extraReducers: builder => {
@@ -54,6 +59,6 @@ export const phonesSlice = createSlice({
   },
 });
 
-export const { setPhones, setSelectedPhone } = phonesSlice.actions;
+export const { setPhones, setSelectedPhone, resetStatus } = phonesSlice.actions;
 
 export default phonesSlice.reducer;

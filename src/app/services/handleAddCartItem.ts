@@ -27,10 +27,10 @@ export const handleAddToCart = (
       setCarts([
         {
           id,
+          itemId,
           image,
           name,
           price,
-          itemId,
           category,
           quantity,
         },

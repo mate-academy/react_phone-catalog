@@ -7,6 +7,8 @@
 .phones {
   box-sizing: border-box;
   margin-top: 24px;
+  min-height: 100vh;
+  width: 1200px;
 
   &_home {
     display: block;
@@ -224,4 +226,11 @@
   background-color: #fff;
   color: #27ae60;
   border: 1px solid #e2e6e9;
+}
+
+.loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 25vh;
 }

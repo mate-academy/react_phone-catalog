@@ -40,6 +40,7 @@
       height: 30px;
       border: 2px solid #e2e6e9;
       border-radius: 50%;
+      cursor: pointer;
     }
   }
 
@@ -69,6 +70,7 @@
       font-weight: 500;
       line-height: 21px;
       color: #313237;
+      cursor: pointer;
     }
   }
 }
@@ -267,4 +269,11 @@
   background-color: #fff;
   color: #27ae60;
   border: 1px solid #e2e6e9;
+}
+
+.loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 25vh;
 }

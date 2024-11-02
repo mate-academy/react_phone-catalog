@@ -1,9 +1,10 @@
+/* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react';
 import { Routes, Route, useNavigate, useLocation } from 'react-router-dom';
 import { AppDispatch, RootState } from '../../app/store';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchProducts } from '../../features/products';
+import { fetchProducts, resetStatusProducts } from '../../features/products';
 import { setCurrentPage, setTotalPages } from '../../features/pagination';
 import styles from '../products/products.module.scss';
 import classNames from 'classnames';
@@ -14,6 +15,7 @@ import { fetchPhones } from '../../features/phones';
 import { Product } from '../../types/Product';
 import { fetchTablets } from '../../features/tablets';
 import { fetchAccessories } from '../../features/accessories';
+import { CircleLoader } from 'react-spinners';
 
 interface ProductsProps {
   category: string;
@@ -23,6 +25,22 @@ export const Products: React.FC<ProductsProps> = ({ category }) => {
   const dispatch: AppDispatch = useDispatch();
   const navigate = useNavigate();
   const allProducts = useSelector((state: RootState) => state.products.items);
+  let status;
+  const statusPhones = useSelector((state: RootState) => state.phones.status);
+  const statusTablets = useSelector((state: RootState) => state.tablets.status);
+  const statusAccessories = useSelector(
+    (state: RootState) => state.accessories.status,
+  );
+
+  if (category === 'phones') {
+    status = statusPhones;
+  } else if (category === 'tablets') {
+    status = statusTablets;
+  } else if (category === 'accessories') {
+    status = statusAccessories;
+  } else {
+    status = 'idle';
+  }
 
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
@@ -42,6 +60,7 @@ export const Products: React.FC<ProductsProps> = ({ category }) => {
   const [sortType, setSortType] = useState(sortTypeFromUrl);
 
   useEffect(() => {
+    dispatch(resetStatusProducts());
     dispatch(fetchProducts());
     if (category === 'phones') {
       dispatch(fetchPhones());
@@ -54,7 +73,7 @@ export const Products: React.FC<ProductsProps> = ({ category }) => {
     if (category === 'accessories') {
       dispatch(fetchAccessories());
     }
-  }, [dispatch]);
+  }, [dispatch, category, location.pathname]);
 
   useEffect(() => {
     const filteredProducts = allProducts.filter(
@@ -65,7 +84,7 @@ export const Products: React.FC<ProductsProps> = ({ category }) => {
     const total = Math.ceil(filteredProducts.length / itemsPerPage);
 
     dispatch(setTotalPages(total));
-  }, [allProducts, itemsPerPage, dispatch]);
+  }, [allProducts, itemsPerPage, dispatch, category]);
 
   useEffect(() => {
     if (pageFromUrl >= 1 && pageFromUrl <= totalPages) {
@@ -161,51 +180,64 @@ export const Products: React.FC<ProductsProps> = ({ category }) => {
             element={
               <>
                 <h2 className={styles.phones_title}>{category}</h2>
-                <p className={styles.phones_models}>{product.length} models</p>
-                <div className="flex">
-                  <div>
-                    <p>Sort by</p>
-                    <select
-                      name="sort"
-                      value={sortType}
-                      onChange={handleSortChange}
-                    >
-                      <option value="Newest">Newest</option>
-                      <option value="Alphabetically">Alphabetically</option>
-                      <option value="Cheapest">Cheapest</option>
-                    </select>
-                  </div>
 
-                  <div className={styles.q}>
-                    <p>Items on page</p>
-                    <select
-                      name="itemsPerPage"
-                      value={
-                        itemsPerPage === product.length ? 'all' : itemsPerPage
-                      }
-                      onChange={handleItemsPerPageChange}
-                    >
-                      <option value="4">4</option>
-                      <option value="8">8</option>
-                      <option value="16">16</option>
-                      <option value="all">All</option>
-                    </select>
+                {status === 'loading' ? (
+                  <div className={styles.loader}>
+                    <CircleLoader size={150} color="#1c5a9b" />
                   </div>
-                </div>
-                <ul className={styles.phones_list}>
-                  {getProductsForCurrentPage().map(item => (
-                    <ProductCard
-                      key={item.id}
-                      {...item}
-                      onClick={() => handleProductClick(item)}
+                ) : (
+                  <>
+                    <p className={styles.phones_models}>
+                      {product.length} models
+                    </p>
+                    <div className="flex">
+                      <div>
+                        <p>Sort by</p>
+                        <select
+                          name="sort"
+                          value={sortType}
+                          onChange={handleSortChange}
+                        >
+                          <option value="Newest">Newest</option>
+                          <option value="Alphabetically">Alphabetically</option>
+                          <option value="Cheapest">Cheapest</option>
+                        </select>
+                      </div>
+
+                      <div className={styles.q}>
+                        <p>Items on page</p>
+                        <select
+                          name="itemsPerPage"
+                          value={
+                            itemsPerPage === product.length
+                              ? 'all'
+                              : itemsPerPage
+                          }
+                          onChange={handleItemsPerPageChange}
+                        >
+                          <option value="4">4</option>
+                          <option value="8">8</option>
+                          <option value="16">16</option>
+                          <option value="all">All</option>
+                        </select>
+                      </div>
+                    </div>
+                    <ul className={styles.phones_list}>
+                      {getProductsForCurrentPage().map(item => (
+                        <ProductCard
+                          key={item.id}
+                          {...item}
+                          onClick={() => handleProductClick(item)}
+                        />
+                      ))}
+                    </ul>
+                    <Pagination
+                      currentPage={currentPage}
+                      totalPages={totalPages}
+                      onPageChange={handlePageChange}
                     />
-                  ))}
-                </ul>
-                <Pagination
-                  currentPage={currentPage}
-                  totalPages={totalPages}
-                  onPageChange={handlePageChange}
-                />
+                  </>
+                )}
               </>
             }
           />
