@@ -1,4 +1,3 @@
-import { useState } from "react";
 import useWindowSize from "../hooks/useWindowSize.hook";
 import { Product } from "../types/product";
 import ProductCard from "./ProductCard/ProductCard";
