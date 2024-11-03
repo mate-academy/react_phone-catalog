@@ -18,11 +18,6 @@ const Slider = ({ curElem, newProducts, isSectHP }: Props) => {
   const maxTranslate = newProducts.length * containerCurrentSize - 32;
   const currentPosition = containerCurrentSize * curElem;
   const windowPosition = widthX + currentPosition;
-  const [pizda, setPizda] = useState(windowPosition - maxTranslate + widthX + 32)
-
-
-
-
 
   const position =
     windowPosition > maxTranslate
