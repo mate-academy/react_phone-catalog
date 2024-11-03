@@ -1,7 +1,7 @@
 import styles from './SortProduct.module.scss';
 import classNames from 'classnames';
 import { Select } from '../../types/Select';
-import React, { MouseEventHandler, useRef, useState } from 'react';
+import React, { MouseEventHandler, useEffect, useRef, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { getSearchWith } from '../../utils/getSearchWith';
 import { SortBy } from '../../types/SortBy';
@@ -67,6 +67,69 @@ export const SortProduct: React.FC<Props> = ({}) => {
       setIsSortItemsOpen(!isSortItemsOpen);
     }
   };
+
+  const handleBtnBlurMobile: EventListener = e => {
+    const target = e.target as HTMLElement;
+    const select = target.getAttribute('data-select') || '';
+
+    if (target.textContent === Select.sortBy) {
+      if (isSortItemsOpen) {
+        setIsSortItemsOpen(false);
+
+        return;
+      }
+    }
+
+    if (target.textContent === Select.itemsOnPage) {
+      if (isSortByOpen) {
+        setIsSortByOpen(false);
+
+        return;
+      }
+    }
+
+    if (
+      sortBy.current?.classList.contains(styles.selectBtnIsActive) &&
+      select === Select.sortBy
+    ) {
+      if (
+        target?.hasAttribute('tabIndex') &&
+        target !== itemsTitleRef.current
+      ) {
+        return;
+      }
+
+      setIsSortByOpen(false);
+    }
+
+    if (
+      itemsOnPage.current?.classList.contains(styles.selectBtnIsActive) &&
+      select === Select.itemsOnPage
+    ) {
+      if (target?.hasAttribute('tabIndex') && target !== sortTitleRef.current) {
+        return;
+      }
+
+      setIsSortItemsOpen(false);
+    }
+
+    if (!target?.hasAttribute('tabIndex') && target !== sortTitleRef.current) {
+      setIsSortByOpen(false);
+    }
+
+    if (!target?.hasAttribute('tabIndex') && target !== itemsTitleRef.current) {
+      setIsSortItemsOpen(false);
+    }
+  };
+
+  useEffect(() => {
+    if (isSortByOpen || isSortItemsOpen) {
+      document.addEventListener('touchstart', handleBtnBlurMobile);
+    }
+
+    return () =>
+      document.removeEventListener('touchstart', handleBtnBlurMobile);
+  }, [isSortByOpen, isSortItemsOpen]);
 
   const handleBtnBlur: React.FocusEventHandler<HTMLButtonElement> = e => {
     const select = e.currentTarget.getAttribute('data-select');
