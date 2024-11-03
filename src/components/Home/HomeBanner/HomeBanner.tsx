@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import ArrowLeft from "../../../assets/icons/ArrowLeft";
 import ArrowRight from "../../../assets/icons/ArrowRight";
 import { useAppContext } from "../../../context/AppContext";
@@ -58,10 +59,18 @@ const HomeBanner = () => {
     return handleChangeBannerImage(prevImg);
   };
 
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      handleClickNextImage();
+    }, 5000);
+
+    return () => clearInterval(intervalId);
+  }, [chosenBanner]);
+
   return (
-    <section className="-mx-[1.5rem] w-[100dvw] small:mx-0 small:w-full">
+    <section className="">
       <h1 className="mb-14">Welcome to Nice Gadgets store!</h1>
-      <section className="mb-2 grid w-full grid-cols-1 gap-4 small:ml-0 small:grid-cols-homeBanner">
+      <section className="-mx-6 mb-2 grid w-[100dvw] grid-cols-1 gap-4 small:mx-0 small:ml-0 small:w-full small:grid-cols-homeBanner">
         <HomeBannerButton
           onClick={handleClickPrevImage}
           arrow={<ArrowLeft fill={primary} />}

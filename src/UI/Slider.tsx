@@ -1,3 +1,4 @@
+import { useState } from "react";
 import useWindowSize from "../hooks/useWindowSize.hook";
 import { Product } from "../types/product";
 import ProductCard from "./ProductCard/ProductCard";
@@ -9,16 +10,32 @@ type Props = {
 };
 
 const Slider = ({ curElem, newProducts, isSectHP }: Props) => {
-  const screen = useWindowSize();
+  const { width } = useWindowSize();
+  const widthX = width - 48;
   const containerSize = 276 + 32;
   const containerSizeSmall = 212 + 32;
-  const xxx = screen.width < 640 ? containerSizeSmall : containerSize;
+  const containerCurrentSize = width < 640 ? containerSizeSmall : containerSize;
+  const maxTranslate = newProducts.length * containerCurrentSize - 32;
+  const currentPosition = containerCurrentSize * curElem;
+  const windowPosition = widthX + currentPosition;
+  const [pizda, setPizda] = useState(windowPosition - maxTranslate + widthX + 32)
+
+
+
+
+
+  const position =
+    windowPosition > maxTranslate
+      ? windowPosition - maxTranslate + widthX
+      : currentPosition;
+
+  console.log(windowPosition - maxTranslate + widthX);
 
   return (
     <section className="max-w-slider overflow-hidden">
       <section
         style={{
-          transform: `translateX(-${xxx * curElem}px)`,
+          transform: `translateX(-${position}px)`,
         }}
         className="flex w-full gap-8 duration-150"
       >

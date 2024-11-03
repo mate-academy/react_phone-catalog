@@ -1,6 +1,7 @@
 import ArrowLeft from "../../../assets/icons/ArrowLeft";
 import ArrowRight from "../../../assets/icons/ArrowRight";
 import { useAppContext } from "../../../context/AppContext";
+import useWindowSize from "../../../hooks/useWindowSize.hook";
 import { Product } from "../../../types/product";
 
 type Props = {
@@ -17,9 +18,14 @@ const HomeNewProductsButtons = ({
   handleStateChangeCurElem,
 }: Props) => {
   const { colors } = useAppContext();
+  const { width } = useWindowSize();
   const firstElem = 0;
-  const lastElem = newProducts.length - 4;
+  const lastElSubtract = width < 640 ? 1 : 4;
+  const lastElem = newProducts.length - lastElSubtract;
   const { icon, primary } = colors;
+  const activeButton = (num: number) => {
+    return curElem === num ? icon : primary;
+  };
 
   const handleClickNextEl = () => {
     if (curElem === 0) {
@@ -43,13 +49,13 @@ const HomeNewProductsButtons = ({
         onClick={handleClickNextEl}
         className={`grid size-8 place-items-center rounded-full border-1 duration-150 ${curElem === firstElem ? "border-elem" : "border-icon"}`}
       >
-        <ArrowLeft fill={curElem === firstElem ? icon : primary} />
+        <ArrowLeft fill={activeButton(firstElem)} />
       </button>
       <button
         onClick={handleClickPrevEl}
         className={`grid size-8 place-items-center rounded-full border-1 duration-150 ${curElem === lastElem ? "border-elem" : "border-icon"}`}
       >
-        <ArrowRight fill={curElem === lastElem ? icon : primary} />
+        <ArrowRight fill={activeButton(lastElem)} />
       </button>
     </section>
   );

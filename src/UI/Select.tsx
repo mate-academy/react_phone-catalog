@@ -61,6 +61,7 @@ const Select = ({ name, options, localStoreName }: Props) => {
         <div className="absolute top-[110%] flex w-full flex-col overflow-hidden rounded-lg border-1 border-icon bg-white">
           {options.map((option) => (
             <p
+              key={option}
               onClick={() => handleClickChangeOption(option)}
               className="cursor-pointer rounded-lg px-3 py-2 text-left text-bodyText text-sec duration-150 hover:bg-hoverBg hover:text-primary"
             >

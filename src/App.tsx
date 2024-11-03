@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useLocation } from "react-router-dom";
 import Footer from "./components/Footer/Footer";
 import Header from "./components/Header/Header";
 import Home from "./components/Home/Home";
@@ -8,8 +8,15 @@ import Cart from "./components/Cart/Cart";
 import Accessories from "./components/Accessories/Accessories";
 import Favorites from "./components/Favorites/Favorites";
 import NoPage from "./components/NoPage/NoPage";
+import { useEffect } from "react";
 
 const App = () => {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
   return (
     <>
       <Header />

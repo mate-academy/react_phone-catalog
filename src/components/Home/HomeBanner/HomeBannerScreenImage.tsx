@@ -1,8 +1,8 @@
 import useWindowSize from "../../../hooks/useWindowSize.hook";
-import { Image } from "../../../types/image";
+import { BannerImage } from "../../../types/bannerImage";
 
 type Props = {
-  image: Image;
+  image: BannerImage;
   size: number;
   index: number;
 };

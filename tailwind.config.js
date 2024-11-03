@@ -118,8 +118,8 @@ export default {
       },
       width: {
         page: "min(100%, calc(1200px + (2rem * 2)))",
-        69: "276px",
-        53: "212px",
+        card: "276px",
+        cardSmall: "212px",
       },
       height: {
         banner: "400px",

@@ -7,18 +7,19 @@ import {
   useRef,
   useState,
 } from "react";
-import { Image } from "../types/image";
-import { Item } from "../types/item";
 import { Category } from "../types/category";
 import { Product } from "../types/product";
+import { BannerImage } from "../types/bannerImage";
+import useLocalStorage from "../hooks/useLocalStorage.hook";
+import { SortType } from "../types/sortType";
 
 type Props = {
   children: ReactNode;
 };
 
 type AppContextProps = {
-  accessoriesList: Item[];
-  bannerImages: Image[];
+  accessoriesList: Product[];
+  bannerImages: BannerImage[];
   categories: Category[];
   chosenBanner: number;
   colors: { [key: string]: string };
@@ -28,11 +29,12 @@ type AppContextProps = {
   handleChangeBurger: (arg: boolean) => void;
   handleClickSwitchBurger: () => void;
   homeBannerEl: React.RefObject<HTMLElement>;
-  phonesList: Item[];
+  phonesList: Product[];
   productsList: Product[];
   selectItemPerPage: string[];
   selectSortBy: string[];
-  tabletsList: Item[];
+  sortList: (list: Product[], sortType: SortType) => Product[];
+  tabletsList: Product[];
 };
 
 const AppContext = createContext({} as AppContextProps);
@@ -47,7 +49,7 @@ export const useAppContext = () => {
   return context;
 };
 
-const bannerImages: Image[] = [
+const bannerImages: BannerImage[] = [
   {
     id: 0,
     src: "/react_phone-catalog/img/bannerHome/Banner-1.webp",
@@ -58,7 +60,7 @@ const bannerImages: Image[] = [
   {
     id: 1,
     src: "/react_phone-catalog/img/bannerHome/Banner-2.webp",
-    color: "#303030",
+    color: "#dbdbdb",
     title: "Best of the best",
     paragraph: "Make sure of this!",
   },
@@ -89,12 +91,15 @@ const selectItemPerPage = ["4", "8", "16", "All"];
 const selectSortBy = ["Newest", "Alphabet", "Cheaper", "Expensive"];
 
 export const AppContextContainer = ({ children }: Props) => {
-  const [chosenBanner, setChosenBanner] = useState<number>(0);
+  const [chosenBanner, setChosenBanner] = useLocalStorage<number>(
+    "bannerHome",
+    0,
+  );
   const homeBannerEl = useRef<HTMLElement>(null);
   const [isBurgerOpen, setIsBurgerOpen] = useState<boolean>(false);
-  const [phonesList, setPhonesList] = useState<Item[]>([]);
-  const [tabletsList, setTabletsList] = useState<Item[]>([]);
-  const [accessoriesList, setAccessoriesList] = useState<Item[]>([]);
+  const [phonesList, setPhonesList] = useState<Product[]>([]);
+  const [tabletsList, setTabletsList] = useState<Product[]>([]);
+  const [accessoriesList, setAccessoriesList] = useState<Product[]>([]);
   const [productsList, setProductsList] = useState<Product[]>([]);
   const [favorite] = useState<number>(0);
 
@@ -126,63 +131,40 @@ export const AppContextContainer = ({ children }: Props) => {
   ];
 
   useEffect(() => {
-    const fetchPhones = async () => {
-      try {
-        const response = await fetch("/react_phone-catalog/api/phones.json");
-        if (!response.ok) {
-          throw new Error("Network response was not ok");
-        }
-        const data = await response.json();
-        setPhonesList(data);
-      } catch (err) {
-        console.error("Something went wrong", err);
-      }
-    };
-
-    const fetchTablets = async () => {
-      try {
-        const response = await fetch("/react_phone-catalog/api/tablets.json");
-        if (!response.ok) {
-          throw new Error("Network response was not ok");
-        }
-        const data = await response.json();
-        setTabletsList(data);
-      } catch (err) {
-        console.error("Something went wrong", err);
-      }
-    };
-
-    const fetchAccessories = async () => {
-      try {
-        const response = await fetch(
-          "/react_phone-catalog/api/accessories.json",
-        );
-        if (!response.ok) {
-          throw new Error("Network response was not ok");
-        }
-        const data = await response.json();
-        setAccessoriesList(data);
-      } catch (err) {
-        console.error("Something went wrong", err);
-      }
-    };
-
     const fetchProducts = async () => {
       try {
         const response = await fetch("/react_phone-catalog/api/products.json");
+
         if (!response.ok) {
           throw new Error("Network response was not ok");
         }
-        const data = await response.json();
+
+        const data: Product[] = await response.json();
+
+        const spitedCategories = data.reduce(
+          (
+            acc: Record<Product["category"], Product[]>,
+            currentProduct: Product,
+          ) => {
+            const key = currentProduct.category;
+
+            acc[key] = acc[key]
+              ? [...acc[key], currentProduct]
+              : [currentProduct];
+            return acc;
+          },
+          {},
+        );
+
         setProductsList(data);
+        setPhonesList(spitedCategories.phones);
+        setTabletsList(spitedCategories.tablets);
+        setAccessoriesList(spitedCategories.accessories);
       } catch (err) {
         console.error("Something went wrong", err);
       }
     };
 
-    fetchPhones();
-    fetchTablets();
-    fetchAccessories();
     fetchProducts();
   }, []);
 
@@ -196,6 +178,23 @@ export const AppContextContainer = ({ children }: Props) => {
 
   const handleClickSwitchBurger = () => {
     setIsBurgerOpen((prev) => !prev);
+  };
+
+  const sortList = (list: Product[], sortType: SortType) => {
+    return [...list].sort((a, b) => {
+      switch (sortType) {
+        case "Newest":
+          return b.year - a.year;
+        case "Alphabet":
+          return a.name.localeCompare(b.name);
+        case "Expensive":
+          return b.fullPrice - a.fullPrice;
+        case "Cheaper":
+          return a.fullPrice - b.fullPrice;
+        default:
+          return 0;
+      }
+    });
   };
 
   return (
@@ -216,6 +215,7 @@ export const AppContextContainer = ({ children }: Props) => {
         productsList,
         selectItemPerPage,
         selectSortBy,
+        sortList,
         tabletsList,
       }}
     >

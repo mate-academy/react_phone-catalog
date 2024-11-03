@@ -4,16 +4,16 @@
 
 @font-face {
   font-family: "Mont";
-  src: url("/fonts/Mont-Regular.otf") format("opentype");
   font-weight: 400;
   font-style: normal;
+  src: url("/fonts/Mont-Regular.otf") format("opentype");
 }
 
 @font-face {
   font-family: "Mont SemiBold";
-  src: url("/fonts/Mont-SemiBold.otf") format("opentype");
   font-weight: 700;
   font-style: normal;
+  src: url("/fonts/Mont-SemiBold.otf") format("opentype");
 }
 
 @font-face {
@@ -26,13 +26,15 @@
 body,
 html {
   overflow-x: hidden;
+  scroll-behavior: smooth;
   width: 100dvw;
+  overscroll-behavior: none;
 }
 
 #root {
-  min-height: 100dvh;
   display: grid;
   grid-template-rows: auto 1fr auto;
+  min-height: 100dvh;
 }
 
 @media (width < 1200px) {

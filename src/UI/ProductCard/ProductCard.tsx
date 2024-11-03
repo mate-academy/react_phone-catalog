@@ -28,7 +28,7 @@ const ProductCard = ({ product, isSectHP, isSlider }: ops) => {
 
   return (
     <div
-      className={`${isSlider ? "w-53 small:w-69" : "w-auto"} flex flex-shrink-0 flex-col items-center justify-center gap-2 rounded-lg border-1 border-elem p-8 duration-300 hover:shadow-xl`}
+      className={`${isSlider ? "w-cardSmall small:w-card" : "w-auto"} flex flex-shrink-0 flex-col items-center justify-center gap-2 rounded-lg border-1 border-elem p-8 duration-300 hover:shadow-xl`}
     >
       <picture className="w-fit">
         <img

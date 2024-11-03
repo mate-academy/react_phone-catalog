@@ -17,7 +17,6 @@ const Header = () => {
   const isMobile = width <= 640;
 
   useScrollLock(isBurgerOpen && isMobile);
-  console.log(isBurgerOpen && isMobile);
 
   useEffect(() => {
     if (!isMobile) {

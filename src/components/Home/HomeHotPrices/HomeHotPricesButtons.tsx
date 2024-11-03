@@ -1,6 +1,7 @@
 import ArrowLeft from "../../../assets/icons/ArrowLeft";
 import ArrowRight from "../../../assets/icons/ArrowRight";
 import { useAppContext } from "../../../context/AppContext";
+import useWindowSize from "../../../hooks/useWindowSize.hook";
 import { Product } from "../../../types/product";
 
 type Props = {
@@ -17,8 +18,10 @@ const HomeHotPricesButtons = ({
   handleStateChangeCurElem,
 }: Props) => {
   const { colors } = useAppContext();
+  const { width } = useWindowSize();
   const firstElem = 0;
-  const lastElem = newProducts.length - 4;
+  const lastElSubtract = width < 640 ? 1 : 4;
+  const lastElem = newProducts.length - lastElSubtract;
   const { icon, primary } = colors;
 
   const handleClickNextEl = () => {
