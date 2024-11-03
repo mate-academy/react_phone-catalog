@@ -20,7 +20,7 @@ export const ShopCategory = () => {
           key={category}
         >
           <Link
-            to=".."
+            to={`${category}`}
             className={classNames(
               styles.imgContainer,
               styles[`imgContainer${index + 1}`],
@@ -33,19 +33,19 @@ export const ShopCategory = () => {
             />
           </Link>
           <h4 className={styles.categoryTitle}>
-            {category === Category.mobile
+            {category === Category.phones
               ? 'Mobile phones'
-              : category === Category.tablet
+              : category === Category.tablets
                 ? 'Tablets'
                 : 'Watches'}
           </h4>
           <p className={styles.categoryNumModels}>
-            {(category === Category.mobile
+            {(category === Category.phones
               ? phone.length
-              : category === Category.tablet
+              : category === Category.tablets
                 ? tablet.length
                 : watch.length) + ' '}
-            products
+            models
           </p>
         </div>
       ))}

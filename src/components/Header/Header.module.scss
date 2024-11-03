@@ -1,18 +1,21 @@
 @import '../../styles';
 
-.topBar {
+.topBarContainer {
   position: sticky;
   top: 0;
+  z-index: 2;
+
+  background-color: $color-white;
+  box-shadow: 0 1px 0 0 $color-elements;
+
+}
+
+.topBar {
   display: flex;
   justify-content: space-between;
   align-items: center;
 
   max-width: 144rem;
-
-  z-index: 2;
-
-  background-color: $color-white;
-  box-shadow: 0 1px 0 0 $color-elements;
   margin-inline: auto;
 }
 
@@ -64,6 +67,11 @@
   @include on-m-desktop{
     height: 6.4rem;
     width: 6.4rem;
+  }
+
+  &:last-child{
+    border-right: 1px solid $color-elements;
+
   }
 
   &::after,  &::before{

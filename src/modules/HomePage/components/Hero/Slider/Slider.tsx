@@ -14,9 +14,6 @@ import { CTAId } from '../../../../../types/CTAId';
 // import { useEffect, useState } from 'react';
 
 export const Slider = () => {
-  // const [activeImgIndex, setActiveImgIndex] = useState(1);
-  // const [isTransitioning, setIsTransitioning] = useState(true);
-
   const pagination = {
     clickable: true,
     renderBullet: function (_: number, className: string) {
@@ -24,68 +21,11 @@ export const Slider = () => {
     },
   };
 
-  // const imgs = [
-  //   imagesHero[imagesHero.length - 1],
-  //   ...imagesHero,
-  //   imagesHero[0],
-  // ];
-
   const imgs = [...imagesHero];
-
-  // useEffect(() => {
-  //   const intervalId = setInterval(() => {
-  //     setActiveImgIndex(prevIndex =>
-  //       prevIndex !== imgs.length - 1 ? prevIndex + 1 : 1,
-  //     );
-  //   }, 3000);
-  //
-  //   return () => window.clearInterval(intervalId);
-  // }, [activeImgIndex, imgs.length]);
-  //
-  // useEffect(() => {
-  //   if (activeImgIndex === imgs.length - 1) {
-  //     setTimeout(() => {
-  //       setIsTransitioning(false);
-  //       setActiveImgIndex(1);
-  //     }, 1000);
-  //
-  //     setTimeout(() => {
-  //       setIsTransitioning(true);
-  //       setActiveImgIndex(2);
-  //     }, 3000);
-  //   }
-  // }, [activeImgIndex, imgs.length]);
-  //
-  // const handleSlideCount = (index: number) => {
-  //   setActiveImgIndex(index);
-  //
-  //   if (imagesHero.length < activeImgIndex) {
-  //     setIsTransitioning(false);
-  //     setActiveImgIndex(1);
-  //
-  //     setTimeout(() => {
-  //       setIsTransitioning(true);
-  //       setActiveImgIndex(index);
-  //     }, 1000);
-  //
-  //     return;
-  //   }
-  //
-  //   setIsTransitioning(true);
-  // }
 
   return (
     <div className={styles.sliderContainer}>
-      <div
-      // className={classNames(styles.sliderImgContainer, {
-      //   [styles.sliderImgContainerTransition]:
-      //     imgs.length - 1 === activeImgIndex,
-      // })}
-      // style={{
-      //   transition: isTransitioning ? 'all 1s ease-out' : 'none',
-      //   transform: `translateX(${-100 * activeImgIndex}%)`,
-      // }}
-      >
+      <div>
         <div className={styles.swiperContainer}>
           <Swiper
             pagination={pagination}
@@ -130,7 +70,7 @@ export const Slider = () => {
                   </p>
                   <div>
                     <Link
-                      to=".."
+                      to={`${id === CTAId.iphone ? '/phones' : id === CTAId.watch ? '/accessories' : '/tablets'}`}
                       className={classNames(styles.ctaBtn, {
                         [styles.ctaBtnBlack]: id === CTAId.iphone,
                         [styles.ctaBtnWhite]: id === CTAId.watch,

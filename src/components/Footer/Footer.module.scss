@@ -1,6 +1,7 @@
 @import "src/styles/mixins";
 @import "src/styles/typography";
 @import "src/styles/colors";
+@import "src/styles/variables";
 
 .footerContainer {
   padding: 3.2rem 1.6rem;
@@ -27,7 +28,7 @@
   gap: 3.2rem 1.6rem;
   place-items: center;
 
-  max-width: 114rem;
+  max-width: $maxContainerWidth;
   margin: 0 auto;
 
   @include on-tablet {

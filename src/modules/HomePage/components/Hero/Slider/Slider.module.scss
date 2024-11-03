@@ -6,23 +6,13 @@
 .sliderContainer {
   position: relative;
   display: flex;
-
-  // justify-content: center;
   flex-direction: column;
   z-index: 0;
   padding-bottom: 3rem;
-
-
-  // background-color: red;
-  // gap: 0.8rem;
-  // justify-content: center;
 }
 
 .swiperContainer {
   padding: 0;
-
-  // background-color: red;
-  // margin-inline: auto;
 
   @include on-tablet {
     padding-inline: 7.5rem;
@@ -126,38 +116,5 @@
       box-shadow: 0 1px 11px 2px $color-cta-btn-shadow-grey;
     }
   }
-
-
 }
-
-// .sliderImgContainer {
-//  display: flex;
-
-//  transition: all 1s ease-in-out;
-// }
-
-// .sliderImg {
-//  width: 100vw;
-//  aspect-ratio: 1;
-// }
-
-// .positionBtnContainer {
-//  align-self: center;
-//  display: flex;
-//  gap: 0.4rem;
-// }
-
-// .positionBtn {
-//  height: 0.4rem;
-//  width: 1.4rem;
-
-//  margin: 1rem .5rem;
-//  background-color: $color-elements;
-//  border: none;
-//  cursor: pointer;
-// }
-
-// .positionBtnActive {
-//  background-color: $color-primary;
-// }
 

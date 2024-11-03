@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { MouseEventHandler, useContext } from 'react';
 import { NavLink } from 'react-router-dom';
 
 import styles from './ProductCard.module.scss';
@@ -46,7 +46,7 @@ export const ProductCard: React.FC<Props> = ({
     id,
   };
 
-  const handleAddToCart = () => {
+  const handleAddToCart: MouseEventHandler<HTMLButtonElement> = e => {
     // setCartProducts([
     //   ...cartProducts,
     //   {
@@ -61,6 +61,8 @@ export const ProductCard: React.FC<Props> = ({
     //   },
     // ]);
 
+    e.preventDefault();
+
     setCartProducts(
       isAddedToCart
         ? cartProducts.filter(product => product.id !== id)
@@ -68,7 +70,9 @@ export const ProductCard: React.FC<Props> = ({
     );
   };
 
-  const handleAddToFavourite = () => {
+  const handleAddToFavourite: MouseEventHandler<HTMLButtonElement> = e => {
+    e.preventDefault();
+
     setFavouriteProducts(
       isAddedToFavourite
         ? favouriteProducts.filter(product => product.id !== id)
@@ -77,7 +81,7 @@ export const ProductCard: React.FC<Props> = ({
   };
 
   return (
-    <NavLink to=".." className={styles.productCardContainer}>
+    <NavLink to=".." className={classNames(styles.productCardContainer)}>
       <div className={styles.productImgContainer}>
         <img src={images[0]} alt={name} className={styles.productImg} />
       </div>

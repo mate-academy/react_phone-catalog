@@ -1,0 +1,101 @@
+@import "src/styles/colors";
+@import "src/styles/typography";
+
+.paginationContainer {
+  display: flex;
+  grid-column: 1 / -1;
+
+  margin-inline: auto;
+}
+
+.productsPages {
+  list-style: none;
+
+  display: flex;
+  gap: 0.8rem;
+
+  @media screen and (max-width: 350px) {
+    gap: 0.4rem;
+  }
+}
+
+.productsPage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  text-decoration: none;
+
+  padding-top: 0.3rem;
+}
+
+.btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: transparent;
+  background-position: center;
+  background-repeat: no-repeat;
+  border: 1px solid $color-icons;
+
+  & svg {
+    fill: $color-primary;
+  }
+
+
+  &Prev {
+    margin-right: 0.8rem;
+  }
+
+  &Next {
+    margin-left: 0.8rem;
+  }
+
+  &:disabled {
+    pointer-events: none;
+    border: 1px solid $color-icons;
+
+    & svg {
+      fill: $color-icons;
+    }
+  }
+}
+
+.productsPage, .btn {
+  @extend %text-body;
+
+  box-sizing: border-box;
+  width: 3.2rem;
+  height: 3.2rem;
+
+  color: $color-primary;
+  border: 1px solid $color-elements;
+  border-radius: 50%;
+  cursor: pointer;
+
+  &IsActive {
+    background-color: $color-primary;
+    color: $color-white;
+  }
+
+
+  &:hover {
+    border: 1px solid $color-primary;
+  }
+
+  &Dots {
+    pointer-events: none;
+    width: min-content;
+    border: none;
+    cursor: default;
+
+    &:hover {
+      border: none;
+    }
+  }
+}
+
+
+
+

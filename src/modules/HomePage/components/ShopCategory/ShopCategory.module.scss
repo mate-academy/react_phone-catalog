@@ -101,6 +101,12 @@
   width: 100%;
   transition: transform $transition-duration ease-out;
 
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-drag: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+
   &:hover{
     transform: scale(1.15);
   }

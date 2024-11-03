@@ -3,10 +3,16 @@ import logo from '../../assets/icons/logo.png';
 import classNames from 'classnames';
 
 export const Footer = () => {
+  const handleBackToTop: React.MouseEventHandler<HTMLAnchorElement> = e => {
+    e.preventDefault();
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+  };
+
   return (
     <footer className={styles.footerContainer}>
       <div className={styles.contentWrapper}>
-        <a href="#" className={styles.footerLogo}>
+        <a href="#" className={styles.footerLogo} onClick={handleBackToTop}>
           <img src={logo} alt="Nice gadgets logo" />
         </a>
         <div className={styles.reachMeContainer}>
@@ -33,7 +39,7 @@ export const Footer = () => {
             Rights
           </a>
         </div>
-        <a href="#" className={styles.toTop}>
+        <a href="#" className={styles.toTop} onClick={handleBackToTop}>
           Back to top
           <button
             className={classNames('buttonArrowUp', styles.toTopBtn)}
