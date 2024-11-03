@@ -7,6 +7,13 @@
 .banner {
   margin-top: 24px;
 
+  position: relative;
+
+  &__title {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
   @include on-tablet {
     margin-top: 32px;
     padding: 0 24px;
@@ -18,7 +25,7 @@
   }
 
   &_title {
-    font-family: Mont-bold;
+    font-family: Mont-bold, sans-serif;
 
     font-size: 48px;
     font-weight: 800;
@@ -101,15 +108,6 @@
   }
 }
 
-.banner {
-  position: relative;
-
-  &__title {
-    text-align: center;
-    margin-bottom: 20px;
-  }
-}
-
 .button_prev {
   display: none;
   position: fixed;
@@ -122,6 +120,7 @@
   background-image: url('../../../../public/img/littleImages/Arrow-left.svg');
   background-repeat: no-repeat;
   background-position: center;
+
   @include on-tablet {
     display: block;
   }
@@ -164,6 +163,7 @@
     background-color: #b4bdc3;
     color: black;
   }
+
   @include on-desktop {
     height: 60px;
     width: 250px;

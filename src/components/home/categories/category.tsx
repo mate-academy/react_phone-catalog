@@ -6,7 +6,7 @@ import accessoriesImg from '../../../assets/images/category/accessories.png';
 import classNames from 'classnames';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../../app/store';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 export const Category: React.FC = () => {
   const phones = useSelector((state: RootState) => state.products.items).filter(

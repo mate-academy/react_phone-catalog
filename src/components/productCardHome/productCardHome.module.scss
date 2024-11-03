@@ -44,7 +44,9 @@
   &_cart {
     &:hover {
       cursor: pointer;
+      box-shadow: 0 2px 15px 0 rgba(0, 0, 0, 0.1);
     }
+
     transition: all #{$animation};
     width: 212px;
     height: 440px;
@@ -62,10 +64,6 @@
     @include on-desktop {
       width: 272px;
       height: 506px;
-    }
-
-    &:hover {
-      box-shadow: 0 2px 15px 0 rgba(0, 0, 0, 0.1);
     }
   }
 
