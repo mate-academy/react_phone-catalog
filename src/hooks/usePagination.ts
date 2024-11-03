@@ -46,7 +46,7 @@ export const usePagination = ({
 
     // Case 2: only right dots to show
     if (!shouldShowLeftDots && shouldShowRightDots) {
-      const leftItemCount = 1 + 2 * siblingCount;
+      const leftItemCount = 2 + 2 * siblingCount;
       const leftRange = getArrayRange(1, leftItemCount);
 
       return [...leftRange, DOTS, totalPageCount];
@@ -54,7 +54,7 @@ export const usePagination = ({
 
     // Case 3: only left dots to show
     if (shouldShowLeftDots && !shouldShowRightDots) {
-      const rightItemCount = 1 + 2 * siblingCount;
+      const rightItemCount = 2 + 2 * siblingCount;
       const rightRange = getArrayRange(
         totalPageCount - rightItemCount + 1,
         totalPageCount,

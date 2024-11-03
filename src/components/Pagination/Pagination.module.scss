@@ -45,20 +45,27 @@
 
 
   &Prev {
+    background-image: url("../../assets/icons/arrow-left.svg");
     margin-right: 0.8rem;
+
+    &:disabled {
+      background-image: url("../../assets/icons/arrow-left-gray.svg");
+    }
   }
 
   &Next {
+    background-image: url("../../assets/icons/arrow-right.svg");
     margin-left: 0.8rem;
+
+    &:disabled {
+      background-image: url("../../assets/icons/arrow-right-gray.svg");
+    }
   }
 
   &:disabled {
     pointer-events: none;
-    border: 1px solid $color-icons;
+    border: 1px solid $color-elements;
 
-    & svg {
-      fill: $color-icons;
-    }
   }
 }
 
