@@ -5,7 +5,7 @@ html {
 *,
 *::before,
 *::after {
-  box-sizing: inherit;
+  box-sizing: border-box;
 }
 
 .flex {
@@ -27,6 +27,28 @@ body.no-scroll {
   overflow: hidden;
 }
 
-body {
-  overflow-x: hidden;
+.slick-track {
+  height: 500px !important;
+}
+
+.swiper {
+  display: flex !important;
+}
+
+.swiper-pagination {
+  bottom: -27px !important;
+}
+
+.swiper-pagination-bullet {
+  width: 14px !important;
+  height: 4px !important;
+  border-radius: 0 !important;
+}
+
+.swiper-pagination-bullet:hover {
+  cursor: pointer;
+}
+
+.swiper-pagination-bullet-active {
+  background-color: #313237 !important;
 }

@@ -1,71 +1,106 @@
-/* eslint-disable import/no-extraneous-dependencies */
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styles from './banner.module.scss';
-import Slider, { Settings } from 'react-slick';
+
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import banner1 from '../../../assets/images/banners/Iphone14Pro_banner.jpg';
-import banner2 from '../../../assets/images/banners/iphone-13pro.jpg';
-import banner3 from '../../../assets/images/banners/iphone-12pro.jpg';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { EffectFlip, Navigation, Pagination, Autoplay } from 'swiper/modules';
+import classNames from 'classnames';
+import banner1 from '../../../assets/images/img/Banner.jpeg';
+import banner2 from '../../../assets/images/img/banner2.jpeg';
+import banner3 from '../../../assets/images/img/banner3.jpeg';
+import bannerSmall from '../../../assets/images/img/image23.png';
+import bannerSmall2 from '../../../assets/images/img/banner2Small.jpeg';
+import bannerSmall3 from '../../../assets/images/img/banner3Small.jpeg';
+import { Link } from 'react-router-dom';
 
 export const Banner: React.FC = () => {
-  const [currentSlide, setCurrentSlide] = useState<number>(0);
+  const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth <= 640);
 
-  // Определяем тип для стрелок
-  interface ArrowProps {
-    onClick?: () => void;
-  }
+  useEffect(() => {
+    const handleResize = () => {
+      setIsSmallScreen(window.innerWidth <= 640);
+    };
 
-  const PrevArrow: React.FC<ArrowProps> = ({ onClick }) => (
-    <div className={`${styles.arrow} ${styles.prev}`} onClick={onClick}></div>
-  );
+    window.addEventListener('resize', handleResize);
 
-  const NextArrow: React.FC<ArrowProps> = ({ onClick }) => (
-    <div className={`${styles.arrow} ${styles.next}`} onClick={onClick}></div>
-  );
-
-  const settings: Settings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    prevArrow: <PrevArrow />,
-    nextArrow: <NextArrow />,
-    arrows: false,
-    autoplay: true,
-    autoplaySpeed: 5000,
-    beforeChange: (_current: number, next: number) => setCurrentSlide(next),
-    customPaging: (i: number) => (
-      <div
-        style={{
-          width: '14px',
-          height: '4px',
-          backgroundColor: i === currentSlide ? '#313237' : '#E2E6E9',
-          margin: '8px 5px 0',
-          borderRadius: '2px',
-          cursor: 'pointer',
-        }}
-      />
-    ),
-  };
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   return (
-    <section className={styles.banner}>
-      <h2 className={styles.banner_title}>Welcome to Nice Gadgets store!</h2>
-      <div className="slider-container">
-        <Slider {...settings}>
-          <div className={styles.banner_div}>
-            <img src={banner1} alt="iphone-14-pro" />
-          </div>
-          <div className={styles.banner_div}>
-            <img src={banner2} alt="iphone-13-pro" />
-          </div>
-          <div className={styles.banner_div}>
-            <img src={banner3} alt="iphone-12-pro" />
-          </div>
-        </Slider>
+    <section className={classNames(styles.banner)}>
+      <div className="container">
+        <h2 className={styles.banner_title}>Welcome to Nice Gadgets store!</h2>
       </div>
+
+      <Swiper
+        effect={'flip'}
+        navigation={{
+          nextEl: '#bannerNext',
+          prevEl: '#bannerPrev',
+        }}
+        pagination={{
+          clickable: true,
+        }}
+        modules={[Navigation, Pagination, EffectFlip, Autoplay]}
+        loop={true}
+        autoplay={{
+          delay: 5000,
+          disableOnInteraction: false,
+        }}
+      >
+        <SwiperSlide>
+          <div>
+            <button className={styles.button_prev} id={'bannerPrev'}></button>
+            <button className={styles.button_next} id={'bannerNext'}></button>
+            <img
+              src={isSmallScreen ? bannerSmall : banner1}
+              alt="Banner"
+              className={styles.banner1}
+            />
+            <Link
+              to={'/phones/apple-iphone-14-pro-128gb-gold'}
+              className={styles.button_order}
+            >
+              Order now
+            </Link>
+          </div>
+        </SwiperSlide>
+        <SwiperSlide>
+          <div>
+            <button className={styles.button_prev} id={'bannerPrev'}></button>
+            <button className={styles.button_next} id={'bannerNext'}></button>
+            <img
+              src={isSmallScreen ? bannerSmall2 : banner2}
+              alt=""
+              className={styles.banner2}
+            />
+            <Link
+              to={'phones/apple-iphone-13-pro-max-1tb-sierrablue'}
+              className={styles.button_order2}
+            >
+              Order now
+            </Link>
+          </div>
+        </SwiperSlide>
+        <SwiperSlide>
+          <div>
+            <button className={styles.button_prev} id={'bannerPrev'}></button>
+            <button className={styles.button_next} id={'bannerNext'}></button>
+            <img
+              src={isSmallScreen ? bannerSmall3 : banner3}
+              alt=""
+              className={styles.banner3}
+            />
+            <Link
+              to={'/phones/apple-iphone-14-128gb-purple'}
+              className={styles.button_order3}
+            >
+              Order now
+            </Link>
+          </div>
+        </SwiperSlide>
+      </Swiper>
     </section>
   );
 };

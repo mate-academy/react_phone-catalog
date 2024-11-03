@@ -36,7 +36,7 @@ export const Footer: React.FC = () => {
             </li>
             <li className={styles.footer_backtop}>
               <p className={styles.footer_text}>Back to top</p>
-              <a href="#top" className={styles.footer_backtop_link}></a>
+              <a href="#" className={styles.footer_backtop_link}></a>
             </li>
           </ul>
         </nav>

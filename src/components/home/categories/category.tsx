@@ -6,6 +6,7 @@ import accessoriesImg from '../../../assets/images/category/accessories.png';
 import classNames from 'classnames';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../../app/store';
+import { Link, useNavigate } from 'react-router-dom';
 
 export const Category: React.FC = () => {
   const phones = useSelector((state: RootState) => state.products.items).filter(
@@ -24,33 +25,33 @@ export const Category: React.FC = () => {
       <h2 className={styles.category_title}>Shop by category</h2>
       <ul className={styles.category_list}>
         <li>
-          <a href="/" className={styles.category_mobile}>
+          <Link to="phones" className={styles.category_mobile}>
             <img src={phonesImg} alt="phones" className={styles.category_img} />
-          </a>
+          </Link>
 
           <p className={styles.category_name}>Mobile phones</p>
           <p className={styles.category_quan}>{phones.length} models</p>
         </li>
         <li>
-          <a href="/" className={styles.category_tablets}>
+          <Link to="tablets" className={styles.category_tablets}>
             <img
               src={tabletsImg}
               alt="tablets"
               className={styles.category_img}
             />
-          </a>
+          </Link>
 
           <p className={styles.category_name}>Tablets</p>
           <p className={styles.category_quan}>{tablets.length} models</p>
         </li>
         <li>
-          <a href="/" className={styles.category_accessories}>
+          <Link to="accessories" className={styles.category_accessories}>
             <img
               src={accessoriesImg}
               alt="accessories"
               className={styles.category_img}
             />
-          </a>
+          </Link>
 
           <p className={styles.category_name}>Accessories</p>
           <p className={styles.category_quan}>{accessories.length} models</p>

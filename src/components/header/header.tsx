@@ -31,7 +31,7 @@ export const Header: React.FC = () => {
     <>
       <h1 className={styles.header_title_inv}>Product Catalog</h1>
 
-      <header className={styles.header}>
+      <header className={styles.header} id="top">
         <div className={styles.header_cont}>
           <div className={styles.header_div}>
             <NavLink to="/">

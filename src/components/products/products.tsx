@@ -60,6 +60,7 @@ export const Products: React.FC<ProductsProps> = ({ category }) => {
   const [sortType, setSortType] = useState(sortTypeFromUrl);
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     dispatch(resetStatusProducts());
     dispatch(fetchProducts());
     if (category === 'phones') {

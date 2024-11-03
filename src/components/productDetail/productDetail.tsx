@@ -63,6 +63,7 @@ export const ProductDetail: React.FC = () => {
   const [mainImage, setMainImage] = useState<string | undefined>(undefined);
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     dispatch(resetStatus());
     if (selectedProduct?.category === 'phones') {
       dispatch(fetchPhones());
@@ -141,7 +142,7 @@ export const ProductDetail: React.FC = () => {
     const selectParts = selectString?.split('-');
 
     if (selectedProduct?.category === 'phones') {
-      selectParts[3] = memory;
+      selectParts[selectParts.length - 2] = memory;
     }
 
     if (selectedProduct?.category === 'tablets') {
@@ -306,7 +307,13 @@ export const ProductDetail: React.FC = () => {
                 })}
                 onClick={handleCartClick}
               >
-                Add to cart
+                {cartProducts.some(product =>
+                  product.itemId
+                    ? product.itemId === selectedProduct?.id
+                    : product.id === itemId,
+                )
+                  ? 'Added to cart'
+                  : 'Add to cart'}
               </button>
               <button
                 className={styles.buy_favor}

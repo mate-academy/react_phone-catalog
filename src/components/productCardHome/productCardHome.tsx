@@ -1,12 +1,11 @@
-import React from 'react';
-import styles from './products.module.scss';
+import classNames from 'classnames';
+import styles from './productCardHome.module.scss';
+import { handleAddToCart } from '../../app/services/handleAddCartItem';
+import { handleAddToFavorites } from '../../app/services/functions';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../app/store';
-import classNames from 'classnames';
-import { handleAddToFavorites } from '../../app/services/functions';
-import { handleAddToCart } from '../../app/services/handleAddCartItem';
 
-export interface ProductCardProps {
+export interface ProductCardHomeProps {
   category: string;
   itemId: string;
   id: string | number;
@@ -18,8 +17,10 @@ export interface ProductCardProps {
   capacity: string;
   ram: string;
   onClick?: () => void;
+  isNew?: boolean;
 }
-export const ProductCard: React.FC<ProductCardProps> = ({
+
+export const ProductCardHome: React.FC<ProductCardHomeProps> = ({
   category,
   itemId,
   id,
@@ -31,6 +32,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
   capacity,
   ram,
   onClick,
+  isNew,
 }) => {
   const dispatch = useDispatch();
   const favoritesProducts = useSelector(
@@ -86,7 +88,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
   };
 
   return (
-    <li className={styles.phones_cart} key={itemId}>
+    <div className={styles.phones_cart} key={itemId}>
       <img
         src={image}
         alt="phone"
@@ -96,7 +98,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
       <p className={styles.phones_name}>{name}</p>
       <div className={`${styles.phones_priceC} flex`}>
         <p className={styles.phones_priceD}>${price}</p>
-        <p className={styles.phones_priceR}>${fullPrice}</p>
+        {isNew ? <p className={styles.phones_priceR}>${fullPrice}</p> : null}
       </div>
 
       <p className={styles.phones_screen}>
@@ -125,6 +127,6 @@ export const ProductCard: React.FC<ProductCardProps> = ({
           ></span>
         </button>
       </div>
-    </li>
+    </div>
   );
 };
