@@ -52,6 +52,10 @@ export const ProductsPage = () => {
     }
   }, [sortBy, itemsPerPage]);
 
+  useEffect(() => {
+    window.scroll(0, 0);
+  }, [pathname]);
+
   return (
     <section className={styles.phonePageContainer}>
       <Path />
