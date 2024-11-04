@@ -23,6 +23,7 @@ const HomeNewProductsButtons = ({
   const lastElSubtract = width < 640 ? 1 : 4;
   const lastElem = newProducts.length - lastElSubtract;
   const { icon, primary } = colors;
+
   const activeButton = (num: number) => {
     return curElem === num ? icon : primary;
   };

@@ -11,19 +11,14 @@ type Props = {
 const Slider = ({ curElem, newProducts, isSectHP }: Props) => {
   const { width } = useWindowSize();
   const widthX = width - 48;
-  const containerSize = 276 + 32;
-  const containerSizeSmall = 212 + 32;
-  const containerCurrentSize = width < 640 ? containerSizeSmall : containerSize;
+  const containerCurrentSize = width < 640 ? 212 + 32 : 276 + 32;
   const maxTranslate = newProducts.length * containerCurrentSize - 32;
   const currentPosition = containerCurrentSize * curElem;
   const windowPosition = widthX + currentPosition;
-
   const position =
-    windowPosition > maxTranslate
-      ? windowPosition - maxTranslate + widthX
-      : currentPosition;
+    windowPosition > maxTranslate ? maxTranslate - widthX : currentPosition;
 
-  console.log(windowPosition - maxTranslate + widthX);
+  console.log(maxTranslate - widthX);
 
   return (
     <section className="max-w-slider overflow-hidden">

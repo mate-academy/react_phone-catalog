@@ -191,8 +191,6 @@ export const AppContextContainer = ({ children }: Props) => {
           return b.fullPrice - a.fullPrice;
         case "Cheaper":
           return a.fullPrice - b.fullPrice;
-        default:
-          return 0;
       }
     });
   };
