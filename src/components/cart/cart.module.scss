@@ -35,7 +35,7 @@
       cursor: pointer;
     }
 
-    &:before {
+    &::before {
       content: '';
       background-image: url('../../../public/img/littleImages/Arrow-left.svg');
       display: block;

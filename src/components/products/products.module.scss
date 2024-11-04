@@ -161,10 +161,6 @@
     margin-left: auto;
     margin-right: auto;
 
-    &:hover {
-      cursor: pointer;
-    }
-
     @include on-tablet {
       min-width: 224px;
       min-height: 196px;
@@ -176,6 +172,7 @@
     }
 
     &:hover {
+      cursor: pointer;
       transform: scale(1.05);
     }
   }
@@ -322,7 +319,7 @@
     background-repeat: no-repeat;
     background-position: calc(100% - 12px) center;
 
-    font-family: Mont;
+    font-family: Mont, sans-serif;
     font-size: 14px;
     font-weight: 700;
     line-height: 21px;

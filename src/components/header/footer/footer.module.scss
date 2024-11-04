@@ -33,11 +33,13 @@
 
   &_contact {
     transition: all $animation;
+
     &:hover {
       transition: all $animation;
       cursor: pointer;
       transform: scale(1.02);
     }
+
     @include on-desktop {
       margin-left: 106px;
     }
@@ -45,10 +47,12 @@
 
   &_rights {
     transition: all $animation;
+
     &:hover {
       cursor: pointer;
       transform: scale(1.02);
     }
+
     @include on-desktop {
       margin-left: 106px;
     }
@@ -59,7 +63,9 @@
       cursor: pointer;
       transform: scale(1.02);
     }
+
     transition: all $animation;
+
     @include on-tablet {
       margin-left: auto;
     }
@@ -120,6 +126,7 @@
     &:hover {
       cursor: pointer;
     }
+
     display: flex;
     align-items: center;
     justify-content: center;
