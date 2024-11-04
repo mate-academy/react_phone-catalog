@@ -70,7 +70,6 @@ export const SortProduct: React.FC<Props> = ({}) => {
 
   const handleBtnBlurMobile: EventListener = e => {
     const target = e.target as HTMLElement;
-    const select = target.getAttribute('data-select') || '';
 
     if (target.textContent === Select.sortBy) {
       if (isSortItemsOpen) {
@@ -88,37 +87,45 @@ export const SortProduct: React.FC<Props> = ({}) => {
       }
     }
 
+    // if (
+    //   sortBy.current?.classList.contains(styles.selectBtnIsActive) &&
+    //   select === Select.sortBy
+    // ) {
+    //   if (
+    //     target?.hasAttribute('tabIndex') &&
+    //     target !== itemsTitleRef.current
+    //   ) {
+    //     return;
+    //   }
+    //
+    //   setIsSortByOpen(false);
+    // }
+    //
+    // if (
+    //   itemsOnPage.current?.classList.contains(styles.selectBtnIsActive) &&
+    //   select === Select.itemsOnPage
+    // ) {
+    //   if (target?.hasAttribute('tabIndex') && target !== sortTitleRef.current) {
+    //     return;
+    //   }
+    //
+    //   setIsSortItemsOpen(false);
+    // }
+
     if (
-      sortBy.current?.classList.contains(styles.selectBtnIsActive) &&
-      select === Select.sortBy
+      !target?.hasAttribute('tabIndex') &&
+      target !== sortTitleRef.current &&
+      target !== sortBy.current
     ) {
-      if (
-        target?.hasAttribute('tabIndex') &&
-        target !== itemsTitleRef.current
-      ) {
-        return;
-      }
-
-      setIsSortByOpen(false);
+      setTimeout(() => setIsSortByOpen(false), 150);
     }
 
     if (
-      itemsOnPage.current?.classList.contains(styles.selectBtnIsActive) &&
-      select === Select.itemsOnPage
+      !target?.hasAttribute('tabIndex') &&
+      target !== itemsTitleRef.current &&
+      target !== itemsOnPage.current
     ) {
-      if (target?.hasAttribute('tabIndex') && target !== sortTitleRef.current) {
-        return;
-      }
-
-      setIsSortItemsOpen(false);
-    }
-
-    if (!target?.hasAttribute('tabIndex') && target !== sortTitleRef.current) {
-      setIsSortByOpen(false);
-    }
-
-    if (!target?.hasAttribute('tabIndex') && target !== itemsTitleRef.current) {
-      setIsSortItemsOpen(false);
+      setTimeout(() => setIsSortItemsOpen(false), 150);
     }
   };
 
@@ -173,7 +180,17 @@ export const SortProduct: React.FC<Props> = ({}) => {
     }
   };
 
-  const changeItemsPerPageTitle: MouseEventHandler = e => {
+  // const changeSortByTitleMobile: TouchEventHandler<HTMLUListElement> = e => {
+  //   const target = e.target as HTMLElement;
+  //
+  //   if (target.textContent) {
+  //     setSearchWith({ sortBy: target.textContent.toLowerCase() });
+  //
+  //     setIsSortByOpen(false);
+  //   }
+  // };
+
+  const changeItemsPerPageTitle: MouseEventHandler<HTMLUListElement> = e => {
     const target = e.target as HTMLElement;
 
     if (target.textContent) {
@@ -181,6 +198,17 @@ export const SortProduct: React.FC<Props> = ({}) => {
       setIsSortItemsOpen(false);
     }
   };
+
+  // const changeItemsPerPageTitleMobile: TouchEventHandler<
+  //   HTMLUListElement
+  // > = e => {
+  //   const target = e.target as HTMLElement;
+  //
+  //   if (target.textContent) {
+  //     setSearchWith({ perPage: target.textContent.toLowerCase() });
+  //     setIsSortItemsOpen(false);
+  //   }
+  // };
 
   return (
     <div className={styles.sortContainer} onClick={handleFocus}>

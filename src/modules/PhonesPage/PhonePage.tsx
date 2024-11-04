@@ -76,9 +76,7 @@ export const PhonePage = () => {
       </div>
 
       <h1 className={styles.title}>Mobile phones</h1>
-      <p className={styles.categoryNumModels}>
-        {filteredProductList.length} models
-      </p>
+      <p className={styles.categoryNumModels}>{productList.length} models</p>
       <SortProduct />
       <div className={styles.productsContainer}>
         {filteredProductList.map(product => (
