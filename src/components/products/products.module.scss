@@ -11,6 +11,10 @@
   width: 320px;
 
   @include on-tablet {
+    width: 640px;
+  }
+
+  @include on-desktop {
     width: 1200px;
   }
 
@@ -197,6 +201,8 @@
   &_priceC {
     padding-bottom: 16px;
     border-bottom: 1px solid #e2e6e9;
+    align-items: center;
+    gap: 8px;
   }
 
   &_screen {

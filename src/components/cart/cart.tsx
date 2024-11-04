@@ -50,6 +50,12 @@ export const Cart: React.FC = () => {
     navigate(`/${seceltedProduct.category}/${seceltedProduct.itemId}`);
   };
 
+  let items = 'item';
+
+  if (cartItem.length > 1) {
+    items = 'items';
+  }
+
   return (
     <section className={classNames(styles.cart, 'container')}>
       <span onClick={back} className={styles.cart_back}>
@@ -106,7 +112,7 @@ export const Cart: React.FC = () => {
                 )}
               </p>
               <p className={styles.cart_shop_totalPrice}>
-                {`Total for ${cartItem.reduce((totalSum, item) => totalSum + item.quantity, 0)} items`}
+                {`Total for ${cartItem.reduce((totalSum, item) => totalSum + item.quantity, 0)} ${items}`}
               </p>
               <button
                 type="button"
