@@ -87,31 +87,6 @@ export const SortProduct: React.FC<Props> = ({}) => {
       }
     }
 
-    // if (
-    //   sortBy.current?.classList.contains(styles.selectBtnIsActive) &&
-    //   select === Select.sortBy
-    // ) {
-    //   if (
-    //     target?.hasAttribute('tabIndex') &&
-    //     target !== itemsTitleRef.current
-    //   ) {
-    //     return;
-    //   }
-    //
-    //   setIsSortByOpen(false);
-    // }
-    //
-    // if (
-    //   itemsOnPage.current?.classList.contains(styles.selectBtnIsActive) &&
-    //   select === Select.itemsOnPage
-    // ) {
-    //   if (target?.hasAttribute('tabIndex') && target !== sortTitleRef.current) {
-    //     return;
-    //   }
-    //
-    //   setIsSortItemsOpen(false);
-    // }
-
     if (
       !target?.hasAttribute('tabIndex') &&
       target !== sortTitleRef.current &&
@@ -180,16 +155,6 @@ export const SortProduct: React.FC<Props> = ({}) => {
     }
   };
 
-  // const changeSortByTitleMobile: TouchEventHandler<HTMLUListElement> = e => {
-  //   const target = e.target as HTMLElement;
-  //
-  //   if (target.textContent) {
-  //     setSearchWith({ sortBy: target.textContent.toLowerCase() });
-  //
-  //     setIsSortByOpen(false);
-  //   }
-  // };
-
   const changeItemsPerPageTitle: MouseEventHandler<HTMLUListElement> = e => {
     const target = e.target as HTMLElement;
 
@@ -198,17 +163,6 @@ export const SortProduct: React.FC<Props> = ({}) => {
       setIsSortItemsOpen(false);
     }
   };
-
-  // const changeItemsPerPageTitleMobile: TouchEventHandler<
-  //   HTMLUListElement
-  // > = e => {
-  //   const target = e.target as HTMLElement;
-  //
-  //   if (target.textContent) {
-  //     setSearchWith({ perPage: target.textContent.toLowerCase() });
-  //     setIsSortItemsOpen(false);
-  //   }
-  // };
 
   return (
     <div className={styles.sortContainer} onClick={handleFocus}>

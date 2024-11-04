@@ -1,4 +1,48 @@
+@import "src/styles/colors";
+@import "src/styles/mixins";
+
 .pathContainer {
+  grid-column: 1 / -1;
+
   display: flex;
-  flex-direction: column;
+  align-items: center;
+  gap: 0.8rem;
+
+  margin-bottom: 2.4rem;
+
+  @include on-tablet {
+    margin-bottom: 4rem;
+  }
+}
+
+.toHome {
+  display: inline-block;
+  background-image: url("../../assets/icons/home.svg");
+  width: 1.6rem;
+  height: 1.6rem;
+}
+
+.arrowRight {
+  display: inline-block;
+  width: 1.6rem;
+  height: 1.6rem;
+  background-image: url("../../assets/icons/arrow-right.svg");
+  background-size: contain;
+  background-position: 10%;
+}
+
+.currPlace {
+  display: inline-block;
+  text-decoration: none;
+  font-family: 'Mont Regular', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 600;
+  line-height: 1;
+  padding-top: 3px;
+  color: $color-primary;
+
+  &IsDisabled{
+    color: $color-secondary;
+    pointer-events: none;
+  }
 }
