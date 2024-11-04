@@ -8,10 +8,7 @@ import { ProductDetail } from './components/productDetail';
 import { Products } from './components/products';
 import { Favorite } from './components/favorite';
 import { Cart } from './components/cart';
-
-const NotFound = () => {
-  return <h2>404: Page Not Found</h2>;
-};
+import { NotFound } from './components/pageNotFound';
 
 const phones = 'phones';
 const tablets = 'tablets';

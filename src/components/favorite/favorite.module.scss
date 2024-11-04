@@ -5,6 +5,10 @@
 }
 
 .favorite {
+  &_text {
+    font-size: 40px;
+    font-family: Mont-bold, sans-serif;
+  }
   &_list {
     list-style: none;
     margin: 0;

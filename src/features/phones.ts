@@ -23,7 +23,7 @@ export const fetchPhones = createAsyncThunk('phones/fetchPhones', async () => {
 
   const data = await response.json();
 
-  await new Promise(resolve => setTimeout(resolve, 1000));
+  await new Promise(resolve => setTimeout(resolve, 500));
 
   return data;
 });

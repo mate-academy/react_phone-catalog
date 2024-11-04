@@ -7,6 +7,7 @@ import screenWidthReducer from '../features/screenWidth';
 import paginationReducer from '../features/pagination';
 import favoriteReducer from '../features/favorite';
 import cartReducer from '../features/cart';
+import ProductNameReducer from '../features/productName';
 
 const rootReducer = combineReducers({
   products: productsReducer,
@@ -17,6 +18,7 @@ const rootReducer = combineReducers({
   pagination: paginationReducer,
   favorite: favoriteReducer,
   cart: cartReducer,
+  productName: ProductNameReducer,
 });
 
 export const store = configureStore({

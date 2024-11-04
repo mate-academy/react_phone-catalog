@@ -43,7 +43,6 @@
 
   &_cart {
     &:hover {
-      cursor: pointer;
       box-shadow: 0 2px 15px 0 rgba(0, 0, 0, 0.1);
     }
 
@@ -90,6 +89,11 @@
     margin-left: auto;
     margin-right: auto;
 
+    &:hover {
+      transform: scale(1.1);
+      cursor: pointer;
+    }
+
     @include on-tablet {
       min-width: 173px;
       min-height: 181px;
@@ -110,6 +114,7 @@
   }
 
   &_priceR {
+    margin-left: 8px;
     font-size: 22px;
     font-weight: 600;
     line-height: 28.12px;
@@ -143,18 +148,26 @@
   }
 
   &_buttonBuy {
+    transition: all $animation;
+    width: 100px;
     background-color: #313237;
 
     font-size: 14px;
     font-weight: 700;
     line-height: 21px;
-    width: 160px;
     height: 40px;
 
     color: #fff;
     padding: 0;
     margin: 0;
     border: none;
+
+    &:hover {
+      background-color: #fff;
+      border: 1px solid #e2e6e9;
+      color: #313237;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    }
 
     @include on-tablet {
       width: 176px;
@@ -166,6 +179,7 @@
   }
 
   &_favor {
+    transition: all $animation;
     box-sizing: border-box;
     width: 40px;
     height: 40px;
@@ -174,6 +188,10 @@
     border-radius: 0;
     border: 1px solid #b4bdc3;
     background-color: #fff;
+
+    &:hover {
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    }
 
     &_icon {
       background-image: url(/public/img/littleImages/Favourites-header.svg);
@@ -234,8 +252,4 @@
   justify-content: center;
   align-items: center;
   margin-top: 25vh;
-}
-
-.phones_cart:hover .phones_img {
-  transform: scale(1.1);
 }

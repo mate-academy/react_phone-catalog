@@ -8,7 +8,80 @@
   box-sizing: border-box;
   margin-top: 24px;
   min-height: 100vh;
-  width: 1200px;
+  width: 320px;
+
+  @include on-tablet {
+    width: 1200px;
+  }
+
+  &_category {
+    text-transform: capitalize;
+    font-family: Mont, sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 15.34px;
+
+    display: flex;
+    align-items: flex-end;
+    gap: 8px;
+    color: #89939a;
+
+    &_link {
+      text-transform: capitalize;
+      font-family: Mont, sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      line-height: 15.34px;
+
+      display: flex;
+      align-items: flex-end;
+      gap: 8px;
+      text-decoration: none;
+      color: #313237;
+
+      &::before {
+        content: '';
+        background-image: url('../../../public/img/littleImages/Arrow-right.svg');
+        display: block;
+        width: 16px;
+        height: 16px;
+        background-repeat: no-repeat;
+        opacity: 0.5;
+      }
+    }
+
+    &::before {
+      content: '';
+      background-image: url('../../../public/img/littleImages/Arrow-right.svg');
+      display: block;
+      width: 16px;
+      height: 16px;
+      background-repeat: no-repeat;
+      opacity: 0.5;
+    }
+
+    &_name {
+      font-family: Mont, sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      line-height: 15.34px;
+      color: #89939a;
+
+      display: flex;
+      align-items: flex-end;
+      gap: 8px;
+
+      &::before {
+        content: '';
+        background-image: url('../../../public/img/littleImages/Arrow-right.svg');
+        display: block;
+        width: 16px;
+        height: 16px;
+        background-repeat: no-repeat;
+        opacity: 0.5;
+      }
+    }
+  }
 
   &_home {
     display: block;
@@ -24,6 +97,8 @@
 
   &_nav {
     display: flex;
+    align-items: center;
+    gap: 8px;
   }
 
   &_title {
@@ -78,12 +153,17 @@
   }
 
   &_img {
+    transition: all $animation;
     display: block;
     object-fit: contain;
     width: 229px;
     height: 130px;
     margin-left: auto;
     margin-right: auto;
+
+    &:hover {
+      cursor: pointer;
+    }
 
     @include on-tablet {
       min-width: 224px;
@@ -142,6 +222,7 @@
   }
 
   &_buttonBuy {
+    transition: all $animation;
     background-color: #313237;
 
     font-size: 14px;
@@ -155,6 +236,13 @@
     margin: 0;
     border: none;
 
+    &:hover {
+      background-color: #fff;
+      color: #313237;
+      border: 1px solid #89939a;
+      box-shadow: 0 2px 15px 0 rgba(0, 0, 0, 0.1);
+    }
+
     @include on-tablet {
       width: 176px;
     }
@@ -165,6 +253,7 @@
   }
 
   &_favor {
+    transition: all $animation;
     box-sizing: border-box;
     width: 40px;
     height: 40px;
@@ -173,6 +262,13 @@
     border-radius: 0;
     border: 1px solid #b4bdc3;
     background-color: #fff;
+
+    &:hover {
+      background-color: #fff;
+      color: #313237;
+      border: 1px solid #89939a;
+      box-shadow: 0 2px 15px 0 rgba(0, 0, 0, 0.1);
+    }
 
     &_icon {
       background-image: url(/public/img/littleImages/Favourites-header.svg);
@@ -201,6 +297,69 @@
     font-weight: 600;
     line-height: 21px;
     color: #313237;
+  }
+
+  &_filterText {
+    margin-top: 40px;
+    margin-bottom: 4px;
+    font-family: Mont, sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 15.34px;
+    color: #89939a;
+  }
+
+  &_filter {
+    transition: all $animation;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    padding-left: 10px;
+    width: 136px;
+    height: 40px;
+    color: #313237;
+    background-image: url('../../../public/img/littleImages/Chevron_down.svg');
+    background-repeat: no-repeat;
+    background-position: calc(100% - 12px) center;
+
+    font-family: Mont;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 21px;
+    border-radius: 0;
+    margin-bottom: 24px;
+    border: 1px solid #b4bdc3;
+
+    &:hover {
+      cursor: pointer;
+      border-color: #313237;
+    }
+
+    @include on-tablet {
+      width: 187px;
+    }
+  }
+
+  &_filterPagina {
+    transition: all $animation;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    padding-left: 10px;
+    height: 40px;
+    border-radius: 0;
+    width: 136px;
+    margin-left: 8px;
+    border: 1px solid #b4bdc3;
+
+    background-image: url('../../../public/img/littleImages/Chevron_down.svg');
+    background-repeat: no-repeat;
+    background-position: calc(100% - 12px) center;
+
+    &:hover {
+      cursor: pointer;
+      border-color: #313237;
+    }
   }
 }
 

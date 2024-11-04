@@ -23,7 +23,12 @@ export const Favorite: React.FC = () => {
   return (
     <section className={classNames(styles.favorite, 'container')}>
       <h1 className={styles.favorite_title}>Favourites</h1>
-      <p className={styles.favorite_quantity}>{favorites.length} items</p>
+      {favorites.length > 0 ? (
+        <p className={styles.favorite_quantity}>{favorites.length} items</p>
+      ) : (
+        <p className={styles.favorite_text}>You dont have favorites items</p>
+      )}
+
       <ul className={styles.favorite_list}>
         {favorites.map(fav => (
           <ProductCard

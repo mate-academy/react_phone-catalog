@@ -1,7 +1,13 @@
 /* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react';
-import { Routes, Route, useNavigate, useLocation } from 'react-router-dom';
+import {
+  Routes,
+  Route,
+  useNavigate,
+  useLocation,
+  Link,
+} from 'react-router-dom';
 import { AppDispatch, RootState } from '../../app/store';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchProducts, resetStatusProducts } from '../../features/products';
@@ -16,6 +22,7 @@ import { Product } from '../../types/Product';
 import { fetchTablets } from '../../features/tablets';
 import { fetchAccessories } from '../../features/accessories';
 import { CircleLoader } from 'react-spinners';
+import { clearName } from '../../features/productName';
 
 interface ProductsProps {
   category: string;
@@ -31,6 +38,7 @@ export const Products: React.FC<ProductsProps> = ({ category }) => {
   const statusAccessories = useSelector(
     (state: RootState) => state.accessories.status,
   );
+  const productName = useSelector((state: RootState) => state.productName.item);
 
   if (category === 'phones') {
     status = statusPhones;
@@ -62,6 +70,7 @@ export const Products: React.FC<ProductsProps> = ({ category }) => {
   useEffect(() => {
     window.scrollTo(0, 0);
     dispatch(resetStatusProducts());
+    dispatch(clearName());
     dispatch(fetchProducts());
     if (category === 'phones') {
       dispatch(fetchPhones());
@@ -170,8 +179,18 @@ export const Products: React.FC<ProductsProps> = ({ category }) => {
     <div className={styles.content}>
       <section className={classNames(styles.phones, 'container')}>
         <nav className={styles.phones_nav}>
-          <a href="/" className={styles.phones_home}></a>
-          <a href="/">{category}</a>
+          <Link to="/" className={styles.phones_home}></Link>
+          {productName ? (
+            <Link to={`/${category}`} className={styles.phones_category_link}>
+              {category}
+            </Link>
+          ) : (
+            <p className={styles.phones_category}>{category}</p>
+          )}
+
+          {productName && (
+            <p className={styles.phones_category_name}>{productName}</p>
+          )}
         </nav>
 
         <Routes>
@@ -193,11 +212,12 @@ export const Products: React.FC<ProductsProps> = ({ category }) => {
                     </p>
                     <div className="flex">
                       <div>
-                        <p>Sort by</p>
+                        <p className={styles.phones_filterText}>Sort by</p>
                         <select
                           name="sort"
                           value={sortType}
                           onChange={handleSortChange}
+                          className={styles.phones_filter}
                         >
                           <option value="Newest">Newest</option>
                           <option value="Alphabetically">Alphabetically</option>
@@ -206,7 +226,9 @@ export const Products: React.FC<ProductsProps> = ({ category }) => {
                       </div>
 
                       <div className={styles.q}>
-                        <p>Items on page</p>
+                        <p className={styles.phones_filterText}>
+                          Items on page
+                        </p>
                         <select
                           name="itemsPerPage"
                           value={
@@ -215,6 +237,7 @@ export const Products: React.FC<ProductsProps> = ({ category }) => {
                               : itemsPerPage
                           }
                           onChange={handleItemsPerPageChange}
+                          className={styles.phones_filterPagina}
                         >
                           <option value="4">4</option>
                           <option value="8">8</option>

@@ -17,6 +17,7 @@
   }
 
   &_img {
+    transition: all $animation;
     display: block;
     margin: 0;
     padding: 0;
@@ -31,18 +32,34 @@
   }
 
   &_contact {
+    transition: all $animation;
+    &:hover {
+      transition: all $animation;
+      cursor: pointer;
+      transform: scale(1.02);
+    }
     @include on-desktop {
       margin-left: 106px;
     }
   }
 
   &_rights {
+    transition: all $animation;
+    &:hover {
+      cursor: pointer;
+      transform: scale(1.02);
+    }
     @include on-desktop {
       margin-left: 106px;
     }
   }
 
   &_github {
+    &:hover {
+      cursor: pointer;
+      transform: scale(1.02);
+    }
+    transition: all $animation;
     @include on-tablet {
       margin-left: auto;
     }
@@ -69,6 +86,11 @@
     line-height: 11px;
     letter-spacing: 0.04em;
     color: $secondary-text-color;
+    transition: all $animation;
+
+    &:hover {
+      color: black;
+    }
   }
 
   &_span {
@@ -83,13 +105,21 @@
   }
 
   &_text {
+    transition: all $animation;
     font-size: 12px;
     font-weight: 700;
     line-height: 15.34px;
     color: $secondary-text-color;
+
+    &:hover {
+      color: black;
+    }
   }
 
   &_backtop {
+    &:hover {
+      cursor: pointer;
+    }
     display: flex;
     align-items: center;
     justify-content: center;

@@ -6,9 +6,18 @@
     height: 288px;
     object-fit: contain;
 
+    @include on-desktop {
+      width: 464px;
+      height: 464px;
+    }
+
     &_container {
       display: flex;
       gap: 8px;
+
+      @include on-tablet {
+        flex-direction: column;
+      }
     }
   }
 
@@ -18,6 +27,18 @@
     object-fit: contain;
     border: 1px solid #e2e6e9;
     margin-bottom: 40px;
+
+    @include on-tablet {
+      margin: 0;
+      width: 32px;
+      height: 32px;
+      margin-right: 16px;
+    }
+
+    @include on-desktop {
+      width: 80px;
+      height: 80px;
+    }
   }
 
   &_colors {
@@ -177,11 +198,16 @@
 .about {
   margin-top: 56px;
 
+  @include on-desktop {
+    max-width: 560px;
+    margin-top: 80px;
+  }
+
   &_title {
     padding-bottom: 16px;
-    font-size: 20px;
-    font-weight: 700;
-    line-height: 25.56px;
+    font-size: 22px;
+    font-weight: 800;
+    line-height: 30.8px;
     color: #313237;
     border-bottom: 1px solid #e2e6e9;
   }
@@ -208,6 +234,12 @@
 
 .spec {
   margin-top: 64px;
+
+  @include on-desktop {
+    min-width: 512px;
+    margin-left: 64px;
+    margin-top: 80px;
+  }
 
   &_title {
     font-size: 22px;
@@ -276,4 +308,112 @@
   justify-content: center;
   align-items: center;
   margin-top: 25vh;
+}
+
+.back {
+  margin-top: 25px;
+  display: flex;
+  align-items: flex-end;
+  font-family: Mont, sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 15.34px;
+  color: #89939a;
+  margin-bottom: 16px;
+
+  @include on-tablet {
+    margin-top: 40px;
+  }
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  &::before {
+    content: '';
+    background-image: url('../../../public/img/littleImages/Arrow-left.svg');
+    background-repeat: no-repeat;
+    width: 16px;
+    height: 16px;
+    display: block;
+  }
+}
+
+.tablet_container {
+  @include on-tablet {
+    margin-top: 40px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  @include on-desktop {
+    justify-content: normal;
+  }
+}
+
+.tablet_container2 {
+  @include on-tablet {
+    display: flex;
+    flex-direction: row-reverse;
+  }
+
+  @include on-desktop {
+    margin-right: 16px;
+  }
+}
+
+.tablet_contaier3 {
+  @include on-desktop {
+    display: flex;
+  }
+}
+
+.hot {
+  &_list {
+    display: flex;
+  }
+
+  &_cont {
+    margin-top: 88px;
+    margin-bottom: 24px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &_buttonPrev {
+    display: block;
+    width: 32px;
+    height: 32px;
+    background-color: #fff;
+
+    background-image: url(../../../public/img/littleImages/Arrow-left.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    border: 1px solid #b4bdc3;
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+  }
+
+  &_buttonNext {
+    display: block;
+    width: 32px;
+    height: 32px;
+    background-color: #fff;
+    background-image: url(../../../public/img/littleImages/Arrow-right.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    border: 1px solid #b4bdc3;
+
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+  }
+
+  &_buttons {
+    display: flex;
+    gap: 16px;
+  }
 }

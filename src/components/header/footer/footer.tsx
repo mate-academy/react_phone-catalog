@@ -4,6 +4,13 @@ import logo from '../../../assets/images/Logo-header.png';
 import classNames from 'classnames';
 
 export const Footer: React.FC = () => {
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  };
+
   return (
     <footer className={classNames(styles.footer)}>
       <div className={classNames(styles.footer_container, 'container')}>
@@ -25,18 +32,32 @@ export const Footer: React.FC = () => {
               </a>
             </li>
             <li className={styles.footer_contact}>
-              <a href="/contacts" className={styles.footer_link}>
+              <a
+                href="https://www.linkedin.com/in/valeriy-zhyla/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.footer_link}
+              >
                 CONTACTS
               </a>
             </li>
             <li className={styles.footer_rights}>
-              <a href="/rights" className={styles.footer_link}>
+              <a
+                href="https://github.com/vanvalera"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.footer_link}
+              >
                 RIGHTS
               </a>
             </li>
             <li className={styles.footer_backtop}>
               <p className={styles.footer_text}>Back to top</p>
-              <a href="#" className={styles.footer_backtop_link}></a>
+              <p
+                className={styles.footer_backtop_link}
+                onClick={scrollToTop}
+                style={{ cursor: 'pointer' }}
+              ></p>
             </li>
           </ul>
         </nav>
