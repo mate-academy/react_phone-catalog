@@ -54,7 +54,7 @@ export const ProductsPage = () => {
 
   useEffect(() => {
     window.scroll(0, 0);
-  }, [pathname]);
+  }, [pathname, currentPage]);
 
   return (
     <section className={styles.phonePageContainer}>
