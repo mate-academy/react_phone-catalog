@@ -1,0 +1,67 @@
+@font-face {
+  font-family: 'Mont';
+  src: url('./fonts/Mont-Regular.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Mont';
+  src: url('./fonts/Mont-Bold.otf') format('opentype');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Mont';
+  src: url('./fonts/Mont-SemiBold.otf') format('opentype');
+  font-weight: 600;
+  font-style: normal;
+}
+
+.itemsContainer {
+  width: 800px;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+
+
+}
+.itemCart {
+  display: flex;
+  margin-bottom: 20px;
+  background: rgb(30, 28, 28);
+  align-items: center;
+  text-align: center;
+  padding: 24px;
+
+  justify-content: space-between;
+}
+
+.productCart__title{
+  color: #F1F2F9;
+  $font-primary: 'Mont', 'Montserrat', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 21px;
+  text-align: left;
+}
+.productCart__image {
+    width: 80;
+
+    max-height: 80px;
+
+    transition: transform 0.3s ease;
+
+
+}
+.productQuantity {
+  display: flex;
+}
+.productQuantity button {
+  width: 30px;
+  height: 30px;
+}
+
+

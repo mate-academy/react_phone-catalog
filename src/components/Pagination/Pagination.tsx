@@ -5,24 +5,20 @@ interface PaginationProps {
   totalPages: number;
   onPageChange: (page: number) => void;
   itemsPerPage: number;
-  onItemsPerPageChange: (event: React.ChangeEvent<HTMLSelectElement>) => void;
-  totalItems: number;
 }
 
 export const Pagination: React.FC<PaginationProps> = ({
   currentPage,
   totalPages,
   onPageChange,
-  itemsPerPage,
-  onItemsPerPageChange,
-  totalItems,
 }) => {
   const pages = Array.from({ length: totalPages }, (_, index) => index + 1);
 
   return (
     <div className="pagination">
-      <div>
+      <div className='pagination__controls'>
         <button
+          className='pagination__button pagination__button--previous'
           disabled={currentPage === 1}
           onClick={() => onPageChange(currentPage - 1)}
         >
@@ -31,7 +27,7 @@ export const Pagination: React.FC<PaginationProps> = ({
         {pages.map(page => (
           <button
             key={page}
-            className={page === currentPage ? 'active' : ''}
+            className={`pagination__page-button ${page === currentPage ? 'active' : ''}`}
             onClick={() => onPageChange(page)}
           >
             {page}
@@ -39,19 +35,13 @@ export const Pagination: React.FC<PaginationProps> = ({
         ))}
 
         <button
+          className='pagination__button pagination__button--next'
           disabled={currentPage === totalPages}
           onClick={() => onPageChange(currentPage + 1)}
         >
           Next
         </button>
       </div>
-
-      <select value={itemsPerPage} onChange={onItemsPerPageChange}>
-        <option value={4}>4</option>
-        <option value={8}>8</option>
-        <option value={16}>16</option>
-        <option value={totalItems}>All</option>
-      </select>
     </div>
   );
 };

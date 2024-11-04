@@ -1,17 +1,19 @@
 import { useEffect, useState } from 'react';
-// import './PicturesSlider.module.scss';
+import styles from './PicturesSlider.module.scss';
 import strokeLeft from '../../../../public/img/icons/StrokeLeft.svg';
 import strokeRight from '../../../../public/img/icons/StrokeRight.svg';
 
+import image1 from '../../../../public/img/PicturesSlider/Apple50.jpg';
+import image2 from '../../../../public/img/PicturesSlider/Apple55.jpg';
+import image3 from '../../../../public/img/PicturesSlider/Apple56.jpg';
+import image4 from '../../../../public/img/PicturesSlider/Apple1.jpg';
+import image5 from '../../../../public/img/PicturesSlider/Apple30.jpg';
+import image6 from '../../../../public/img/PicturesSlider/Apple18.jpg';
+import image7 from '../../../../public/img/PicturesSlider/Apple8.jpg'
+import image8 from '../../../../public/img/PicturesSlider/Apple2.jpg';
+import image9 from '../../../../public/img/PicturesSlider/Apple9.jpg';
 
-import image1 from '../../../../public/img/PicturesSlider/Apple1.jpg';
-import image2 from '../../../../public/img/PicturesSlider/Apple2.jpg';
-import image3 from '../../../../public/img/PicturesSlider/Apple3.jpg';
-import image4 from '../../../../public/img/PicturesSlider/Apple8.jpg'
-import image5 from '../../../../public/img/PicturesSlider/Apple9.jpg';
-import image7 from '../../../../public/img/PicturesSlider/Apple11.jpg';
-
-const images = [ image7, image4,image1, image2, image3, image5 ];
+const images = [ image5, image2, image4, image6, image7, image8, image9 ];
 
 export const PicturesSlider: React.FC = () => {
   const [imageIndex, setImageIndex] = useState<number>(0);
@@ -37,7 +39,7 @@ export const PicturesSlider: React.FC = () => {
 
   return (
     <section className='section'>
-      <div className="slider-container">
+      <div className={"slider-container"}>
         <img src={images[imageIndex]} alt={`Slider-${imageIndex + 1}`}
           className="slider-container__image"/>
       </div>

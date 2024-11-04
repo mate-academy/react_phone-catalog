@@ -1,17 +1,17 @@
-import { useEffect, useRef } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
-import { useState } from 'react';
-import homeIcon from '../../../public/img/icons/Home.svg';
-import arrowRight from '../../../public/img/icons/ArrowRight.svg';
-import strokeLeft from '../../../public/img/icons/StrokeLeft.svg';
-import strokeRight from '../../../public/img/icons/StrokeRight.svg';
-import { ProductDescription } from '../../types/Accessories';
-import { Link } from 'react-router-dom';
+import React from 'react';
+
+import { useNavigate, useParams, Link } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+
 import favouritesIcon from '../../../public/img/icons/Favourites.svg';
+import strokeLeft from '../../../public/img/icons/StrokeLeft.svg';
+
+import { Product } from '../../types/Product';
 import { ProductsSlider } from '../../components/ProductsSlider/ProductsSlider';
+import { Breadcrumbs } from '../../components/Breadcrumbs/Breadcrumbs';
 
 interface ProductDetailsPageProps {
-  productDescription: ProductDescription;
+  productDescription: Product;
 }
 
 export const ProductDetailsPage: React.FC<ProductDetailsPageProps> = () => {
@@ -20,7 +20,7 @@ export const ProductDetailsPage: React.FC<ProductDetailsPageProps> = () => {
     category: string;
   }>();
 
-  const [product, setProduct] = useState<ProductDescription | null>(null);
+  const [product, setProduct] = useState<Product | null>(null);
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState('');
@@ -28,7 +28,7 @@ export const ProductDetailsPage: React.FC<ProductDetailsPageProps> = () => {
   const [chooseColor, setChooseColor] = useState<string | null>(null);
   const [chooseCapacity, setChooseCapacity] = useState('');
   const [suggestedProducts, setSuggestedProducts] = useState<
-    ProductDescription[]
+  Product[]
   >([]);
 
   const navigate = useNavigate();
@@ -46,7 +46,7 @@ export const ProductDetailsPage: React.FC<ProductDetailsPageProps> = () => {
       const data = await response.json();
 
       const selectedProduct = data.find(
-        (item: ProductDescription) => item.id === itemId
+        (item: Product) => item.id === itemId
       );
 
       if (selectedProduct) {
@@ -75,11 +75,11 @@ export const ProductDetailsPage: React.FC<ProductDetailsPageProps> = () => {
       const data = await response.json();
 
       const filteredProducts = data.filter(
-        (item: ProductDescription) => item.id !== itemId
+        (item: Product) => item.id !== itemId
       );
 
       const shuffled = filteredProducts.sort(() => 0.5 - Math.random());
-      const randomSuggested = shuffled.slice(0, 4);
+      const randomSuggested = shuffled.slice(0, shuffled.length);
 
       setSuggestedProducts(randomSuggested);
     } catch (error) {
@@ -91,60 +91,6 @@ export const ProductDetailsPage: React.FC<ProductDetailsPageProps> = () => {
     fetchProducts();
     fetchSuggestedProducts();
   }, [itemId, category]);
-
-
-  // const fetchProducts = async () => {
-  //   setLoading(true);
-  //   try {
-  //     // const resolve = await fetch(`/api/${category}.json`);
-  //     // const resolve = await fetch('http://localhost:5173/api/products.json');
-  //     const resolve = await fetch('http://localhost:5173/api/${category}.json');
-  //     const data = await resolve.json();
-  //     const selectedProduct = data.find(
-  //       (item: ProductDescription) => item.id === itemId,
-  //     );
-
-  //     if (selectedProduct) {
-  //       setProduct(selectedProduct);
-  //       setSelectedImage(`/${selectedProduct.images[0]}`);
-  //       setChooseCapacity(selectedProduct.capacity);
-  //       setChooseColor(selectedProduct.color);
-  //     } else {
-  //       setError('Product not found');
-  //     }
-  //   } catch (error) {
-  //     setError('Something went wrong. Please try again.');
-  //   } finally {
-  //     setLoading(false);
-  //   }
-  // };
-
-  // const fetchSuggestingProducts = async () => {
-  //   setLoading(true);
-  //   try {
-  //     const response = await fetch(`/api/${category}.json`);
-  //     // const response = await fetch('https://anastasiiakorolko.github.io/react_phone-catalog/api/phones.json');
-  //     // const response = await fetch('http://localhost:5173/api/products.json');
-  //     const data = await response.json();
-  //     const suggestedProducts = data.filter(
-  //       (item: ProductDescription) => item.id !== itemId,
-  //     );
-  //     const shuffled = suggestedProducts.sort(() => 0.5 - Math.random());
-  //     const randomSuggested = shuffled.slice(0, 4);
-  //     setSuggestedProducts(randomSuggested);
-  //     return randomSuggested;
-  //   } catch (error) {
-  //     setError('Unable get recomenation products');
-  //     return [];
-  //   } finally {
-  //     setLoading(false);
-  //   }
-  // };
-
-  // useEffect(() => {
-  //   fetchProducts();
-  //   fetchSuggestingProducts();
-  // }, [itemId, category]);
 
   const handleBackClick = () => {
     navigate(-1);
@@ -169,9 +115,6 @@ export const ProductDetailsPage: React.FC<ProductDetailsPageProps> = () => {
   const baseImagePath = `./img/${product?.category}/${product?.namespaceId}/${chooseColor}`;
 
   const imageFiles = ['00.webp', '01.webp', '02.webp'];
-  // "img/accessories/apple-watch-series-6/silver/00.webp",
-  // ./img/tablets/apple-ipad-mini-5th-gen/silver/00.webp
-
 
   if (loading) {
     return <div>Loading...</div>;
@@ -183,31 +126,8 @@ export const ProductDetailsPage: React.FC<ProductDetailsPageProps> = () => {
 
   return (
     <div className="section section--product-details">
-      <nav className="breadcrumbs">
-        <a href="/">
-          <img
-            src={homeIcon}
-            alt="Home"
-            className="breadcrumbs__item breadcrumbs__item--home"
-          />
-        </a>
-        <span className="breadcrumbs__separator">/</span>
-        <a href="#">
-          <img src={strokeRight} alt="Previous"></img>
-        </a>
-        <span className="breadcrumbs__separator">/</span>
-        <a href="/accessories" className="breadcrumbs__item item-category">
-          {product?.category}
-        </a>
-        <span className="breadcrumbs__separator">/</span>
-        <a href="#">
-          <img src={strokeRight} alt="Previous"></img>
-        </a>
-        <span className="breadcrumbs__separator">/</span>
-        <a href="/product.id" className="breadcrumbs__item item-name">
-          {product?.name}
-        </a>
-      </nav>
+
+      {product && <Breadcrumbs productDescription={product} />}
 
       <div className="back-button">
         <span className="breadcrumbs__separator">/</span>

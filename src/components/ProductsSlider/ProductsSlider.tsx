@@ -1,14 +1,11 @@
-import { useEffect, useState } from 'react';
-import { Product } from '../../types/ProductCard';
-import { Link } from 'react-router-dom';
-import favouritesIcon from '../../../public/img/icons/Favourites.svg';
+import { useState } from 'react';
 import strokeLeft from '../../../public/img/icons/StrokeLeft.svg';
 import strokeRight from '../../../public/img/icons/StrokeRight.svg';
-import { ProductDescription } from '../../types/Accessories';
+import { Product } from '../../types/Product';
 import { ProductCard } from '../ProductCard/ProductCard';
 
 interface ProductsSliderProps {
-  goods: ProductDescription[];
+  goods: Product[];
   title: string;
 }
 
@@ -40,11 +37,13 @@ export const ProductsSlider: React.FC<ProductsSliderProps> = ({ goods, title }) 
           <h2 className="section__title">{title}</h2>
           <div className="slider">
             <button onClick={prevPage}
-              className='slider__button button--prev'>
+              className='slider__button button--prev'
+              disabled={currentIndex === 0}>
               <img src={strokeLeft} alt="Previous" className='slider__icon--prev'/>
             </button>
             <button onClick={nextPage}
-              className='slider__button'>
+              className='slider__button'
+              disabled={currentIndex >= totalPages - 1 }>
               <img src={strokeRight} alt="Next" className='slider__icon--next'/>
             </button>
           </div>
@@ -53,7 +52,7 @@ export const ProductsSlider: React.FC<ProductsSliderProps> = ({ goods, title }) 
         <section className='products'>
           <div className="products__list product-grid">
             {currentProducts.map(product => (
-              <ProductCard product={product}/>
+              <ProductCard key={product.id} product={product}/>
             ))}
           </div>
         </section>

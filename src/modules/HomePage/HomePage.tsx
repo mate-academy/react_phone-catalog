@@ -2,7 +2,7 @@ import React from 'react';
 import { PicturesSlider } from './PicturesSlider/PicturesSlider';
 import { ProductsSlider } from '../../components/ProductsSlider/ProductsSlider';
 import { useEffect, useState } from 'react';
-import { ProductDescription } from '../../types/Accessories';
+import { Product } from '../../types/Product';
 import { Link } from 'react-router-dom';
 import categoryFirst from '../../../public/img/Category/categoryFirst.svg';
 import categorySecond from '../../../public/img/Category/categorySecond.svg';
@@ -12,20 +12,17 @@ export const HomePage: React.FC = () => {
 
   const [error, setError] = useState('');
   const [loading, setLoading] = useState<boolean>(true);
-  const [hotGoods, setHotGoods] = useState<ProductDescription[]>([]);
-  const [newestGoods, setNewestGoods] = useState<ProductDescription[]>([]);
-  const [allGoods, setAllGoods] = useState<ProductDescription[]>([]);
+  const [hotGoods, setHotGoods] = useState<Product[]>([]);
+  const [newestGoods, setNewestGoods] = useState<Product[]>([]);
+  const [allGoods, setAllGoods] = useState<Product[]>([]);
 
   const categories = ["phones", "tablets", "accessories"]
-
 
   useEffect(() => {
     const fetchProducts = async () => {
       setLoading(true);
       setError('');
-
       try {
-
         const baseUrl =
         window.location.hostname === 'localhost'
           ? 'http://localhost:5173/api'
@@ -44,17 +41,13 @@ export const HomePage: React.FC = () => {
         const allProducts = data.flat();
         setAllGoods(allProducts);
 
-
-
         const discountProducts = allProducts
           .filter(product => product.priceDiscount > 0)
           .sort((a, b) => Math.abs(b.priceRegular - b.priceDiscount) - Math.abs(a.priceRegular - a.priceDiscount));
         setHotGoods(discountProducts);
 
-
         const newestProducts = [...allProducts].sort((a, b) => b.year - a.year);
         setNewestGoods(newestProducts);
-
 
       } catch (error) {
         console.error(error);
@@ -66,46 +59,6 @@ export const HomePage: React.FC = () => {
 
     fetchProducts();
   }, []);
-
-  // useEffect(() => {
-  //   const fetchProducts = async () => {
-  //     try {
-  //       const responses = await Promise.all(
-  //         // categories.map(category => fetch(`/api/${category}.json`))
-  //         categories.map(category => fetch(`/api/${category}.json`))
-  //       );
-
-  //       responses.forEach(response => {
-  //         if (!response.ok) {
-  //           throw new Error('Something went wrong');
-  //         }
-  //       });
-
-  //       const data = await Promise.all(responses.map(response => response.json()));
-
-  //       const allProducts = data.flat();
-  //       setAllGoods(allProducts);
-
-  //       console.log('allProducts', allProducts)
-
-  //       const discountProducts = allProducts
-  //         .filter(product => product.priceDiscount > 0)
-  //         .sort((a, b) => Math.abs(b.priceRegular - b.priceDiscount) - Math.abs(a.priceRegular - a.priceDiscount));
-  //       setHotGoods(discountProducts);
-  //       console.log('discountProducts', discountProducts)
-
-  //       const newestProducts = allProducts.sort((a, b) => b.year - a.year);
-  //       setNewestGoods(newestProducts);
-  //       console.log('newestProducts', newestProducts)
-  //     } catch (error) {
-  //       setError('Unable loading goods');
-  //     } finally {
-  //       setLoading(false);
-  //     }
-  //   };
-
-  //   fetchProducts();
-  // }, []);
 
   if (loading) {
     return <div>Loading...</div>;

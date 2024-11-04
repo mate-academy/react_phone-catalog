@@ -1,6 +1,6 @@
 import React from 'react';
 import { ProductCard } from '../../../components/ProductCard/ProductCard';
-import { Product } from '../../../types/ProductCard';
+import { Product } from '../../../types/Product';
 
 interface AccessoriesListProps {
   products: Product[];

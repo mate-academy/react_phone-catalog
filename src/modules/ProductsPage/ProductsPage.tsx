@@ -1,13 +1,15 @@
 import React, { useEffect } from 'react';
+
 import { ProductCard } from '../../components/ProductCard/ProductCard';
-import { Product } from '../../types/ProductCard';
 import { useState } from 'react';
-// import packageJson from '../../../public/api/products.json';
+import { Product } from '../../types/Product';
+import { ErrorMessage } from '../../components/ErrorMessage/ErrorMessage';
+import { Loader } from '../../components/Loader/Loader';
 
 const ProductsPage: React.FC = () => {
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
-  const [error, setError] = useState('');
+  const [error, setError] = useState<string>('');
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -32,11 +34,11 @@ const ProductsPage: React.FC = () => {
   }, []);
 
   if (loading) {
-    return <div>Loading</div>;
+    return <Loader />;
   }
 
   if (error) {
-    return <div>{error}</div>;
+    return <ErrorMessage message={error}/>;
   }
 
   return (
@@ -44,7 +46,7 @@ const ProductsPage: React.FC = () => {
       <h1>Products</h1>
       <div className="products-list">
         {products.length === 0 ? (
-          <div>There are no products available yet.</div>
+          <ErrorMessage message={error}/>
         ) : (
           products.map(product => (
             <ProductCard key={product.id} product={product} />
