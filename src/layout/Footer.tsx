@@ -6,7 +6,7 @@ import '../App.scss';
 import { FooterProps } from '../types/Footer';
 
 export const Footer: React.FC<FooterProps> = ({ topRef }) => {
-  
+
   const scrollToTop = () => {
     if (topRef.current) {
       topRef.current.scrollIntoView({ behavior: 'smooth' });

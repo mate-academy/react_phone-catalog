@@ -1,4 +1,4 @@
-import { setItem } from 'localforage';
+
 import React, { createContext, useContext, useState, useEffect } from 'react';
 
 import { Product } from '../../types/Product';
@@ -52,7 +52,7 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const updateQuantity = (id: number, quantity: number) => {
     setCart(prevCart =>
       prevCart.map(item => (item.id === id ? { ...item, quantity} : item))
-      
+
     );
   };
 

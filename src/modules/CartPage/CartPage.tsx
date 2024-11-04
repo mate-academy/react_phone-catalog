@@ -1,7 +1,6 @@
 // src/pages/CartPage.tsx
 import React from 'react';
 import { useCart } from '../../context/CartContext/CartContext';
-// import styles from '../../components/ProductCard/ProductCard.module.scss';
 import styles from './CartPage.module.scss';
 
 export const CartPage: React.FC = () => {
@@ -29,7 +28,11 @@ export const CartPage: React.FC = () => {
               <div className={`${styles.productCart__quantity} ${styles.productQuantity}`}>
                 <button
                   className={styles.productQuantity__}
-                  onClick={() => updateQuantity(item.id, item.quantity - 1)}>
+                  onClick={() => {
+                    if (item.quantity > 0) {
+                      updateQuantity(item.id, item.quantity - 1)}
+                    }
+                  }>
                     -
                 </button>
                 <span>{item.quantity}</span>
