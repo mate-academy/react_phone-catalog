@@ -5,6 +5,7 @@ import { Category } from '../../../../types/Category';
 import phone from '../../../../../public/api/phones.json';
 import tablet from '../../../../../public/api/tablets.json';
 import watch from '../../../../../public/api/accessories.json';
+import { ProductType } from '../../../../types/ProductType';
 
 export const ShopCategory = () => {
   return (
@@ -33,16 +34,16 @@ export const ShopCategory = () => {
             />
           </Link>
           <h4 className={styles.categoryTitle}>
-            {category === Category.phones
+            {category === ProductType.phones
               ? 'Mobile phones'
-              : category === Category.tablets
+              : category === ProductType.tablets
                 ? 'Tablets'
                 : 'Watches'}
           </h4>
           <p className={styles.categoryNumModels}>
-            {(category === Category.phones
+            {(category === ProductType.phones
               ? phone.length
-              : category === Category.tablets
+              : category === ProductType.tablets
                 ? tablet.length
                 : watch.length) + ' '}
             models
