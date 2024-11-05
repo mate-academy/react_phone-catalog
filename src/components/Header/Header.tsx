@@ -1,7 +1,9 @@
 import classNames from 'classnames';
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
+import { useCartAndFavorites } from '../../hooks/useCartAndFavorites';
 import { useAppContext } from '../../ContextStor';
+import { useLocalStorage } from '../../LocaleStorage';
 
 type Props = {
   burgerMenu: boolean;
@@ -10,18 +12,17 @@ type Props = {
 
 export const Header: React.FC<Props> = ({ burgerMenu, setBurgerMenu }) => {
   const location = useLocation();
-  const { favorites, cart } = useAppContext();
+  const { cart } = useAppContext();
+  const [quantities] = useLocalStorage<number[]>(
+    'quantities',
+    cart.length > 0 ? cart.map(() => 1) : [],
+  );
 
-  const [favoritesCount, setFavoritesCount] = useState(favorites.length);
-  const [cartCount, setCartCount] = useState(cart.length);
+  const totalItems = () => {
+    return quantities.reduce((total, qty) => total + qty, 0);
+  };
 
-  useEffect(() => {
-    setFavoritesCount(favorites.length);
-  }, [favorites.length]);
-
-  useEffect(() => {
-    setCartCount(cart.length);
-  }, [cart.length]);
+  const { favoritesCount, cartCount } = useCartAndFavorites();
 
   return (
     <header>
@@ -113,7 +114,7 @@ export const Header: React.FC<Props> = ({ burgerMenu, setBurgerMenu }) => {
               alt="Cart"
             />
             {cartCount > 0 && (
-              <div className="nav__count--second">{cartCount}</div>
+              <div className="nav__count--second">{totalItems()}</div>
             )}
           </Link>
         </div>

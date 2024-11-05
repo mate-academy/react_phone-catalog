@@ -5,6 +5,7 @@ import { Accessory } from '../../types/accessory';
 import { Phone } from '../../types/phone';
 import { Products } from '../../types/products';
 import { useAppContext } from '../../ContextStor';
+import { useLocalStorage } from '../../LocaleStorage';
 
 type Props = {
   products: Phone[] | Tablet[] | Accessory[];
@@ -13,7 +14,10 @@ type Props = {
 
 export const List: React.FC<Props> = ({ type }) => {
   const { favorites, cart, setCart, setFavorites } = useAppContext();
-
+  const [, setQuantities] = useLocalStorage<number[]>(
+    'quantities',
+    cart.length > 0 ? cart.map(() => 1) : []
+  );
   const location = useLocation();
   const [searchParams] = useSearchParams(location.search);
   const [products, setProducts] = useState<Products[]>([]);
@@ -96,8 +100,12 @@ export const List: React.FC<Props> = ({ type }) => {
 
     if (isCart) {
       setCart(cart.filter(el => el.id !== product.id));
+      setQuantities(prevQuantities =>
+        prevQuantities.filter((_, index) => cart[index].id !== product.id),
+      );
     } else {
       setCart([...cart, product]);
+      setQuantities(prevQuantities => [...prevQuantities, 1]);
     }
   };
 

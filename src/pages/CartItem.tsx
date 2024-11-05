@@ -1,12 +1,16 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useAppContext } from '../ContextStor';
+import { useLocalStorage } from '../LocaleStorage';
 
 export const CartItem = () => {
   const { cart, setCart } = useAppContext();
   const navigate = useNavigate();
   const location = useLocation();
-  const [quantities, setQuantities] = useState(cart.map(() => 1));
+  const [quantities, setQuantities] = useLocalStorage<number[]>(
+    'quantities',
+    cart.length > 0 ? cart.map(() => 1) : [],
+  );
 
   const sumCart = () => {
     let sum = 0;
@@ -21,7 +25,17 @@ export const CartItem = () => {
   const handleRemoveItem = (productId: number) => {
     const updatedCart = cart.filter(product => product.id !== productId);
 
+    // Находим индекс удаляемого продукта в корзине
+    const indexToRemove = cart.findIndex(product => product.id === productId);
+
+    // Обновляем массив quantities, удаляя элемент по индексу
+    const updatedQuantities = quantities.filter(
+      (_, index) => index !== indexToRemove,
+    );
+
+    // Устанавливаем новые значения для cart и quantities
     setCart(updatedCart);
+    setQuantities(updatedQuantities);
   };
 
   const handleIncrease = (index: number) => {

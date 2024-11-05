@@ -7,6 +7,7 @@ import { NavLink, useNavigate } from 'react-router-dom';
 import { Products } from '../../types/products';
 import { COLORS } from '../../variables';
 import { useAppContext } from '../../ContextStor';
+import { useLocalStorage } from '../../LocaleStorage';
 
 type Product = Phone | Tablet | Accessory;
 
@@ -16,7 +17,10 @@ type Props = {
 
 export const DetailsCard: React.FC<Props> = ({ product }) => {
   const { favorites, cart, setCart, setFavorites } = useAppContext();
-
+  const [, setQuantities] = useLocalStorage<number[]>(
+    'quantities',
+    cart.length > 0 ? cart.map(() => 1) : [],
+  );
   const navigate = useNavigate();
   const [selectedImage, setSelectedImage] = useState<string>(product.images[0]);
   const [products, setProducts] = useState<Products[]>([]);
@@ -61,9 +65,13 @@ export const DetailsCard: React.FC<Props> = ({ product }) => {
     if (isInCart) {
       // Если товар уже в корзине, удаляем его
       setCart(cart.filter(el => el.id !== productToAdd?.id));
+      setQuantities(prevQuantities =>
+        prevQuantities.filter((_, index) => cart[index].id !== product.id),
+      );
     } else if (productToAdd) {
       // Если товара нет в корзине, добавляем его
       setCart([...cart, productToAdd]);
+      setQuantities(prevQuantities => [...prevQuantities, 1]);
     }
   };
 

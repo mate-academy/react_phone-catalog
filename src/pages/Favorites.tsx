@@ -2,11 +2,16 @@ import React from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Products } from '../types/products';
 import { useAppContext } from '../ContextStor';
+import { useLocalStorage } from '../LocaleStorage';
 
 export const Favorites = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const { favorites, setFavorites, setCart, cart } = useAppContext();
+  const [, setQuantities] = useLocalStorage<number[]>(
+    'quantities',
+    cart.length > 0 ? cart.map(() => 1) : [],
+  );
 
   const toggleFavorite = (product: Products) => {
     const isFavorite = favorites.some(fav => fav.id === product.id);
@@ -23,8 +28,12 @@ export const Favorites = () => {
 
     if (isCart) {
       setCart(cart.filter(el => el.id !== product.id));
+      setQuantities(prevQuantities =>
+        prevQuantities.filter((_, index) => cart[index].id !== product.id),
+      );
     } else {
       setCart([...cart, product]);
+      setQuantities(prevQuantities => [...prevQuantities, 1]);
     }
   };
 

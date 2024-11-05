@@ -10,6 +10,7 @@ import { Link, useLocation } from 'react-router-dom';
 import classNames from 'classnames';
 import { useWindowResize } from '../../useWindowSize';
 import { useAppContext } from '../../ContextStor';
+import { useLocalStorage } from '../../LocaleStorage';
 
 type Props = {
   type: 'Hot Prices' | 'Brand new models' | 'You may also like';
@@ -19,7 +20,10 @@ export const BrandNewModelsHome: React.FC<Props> = ({ type }) => {
   const [width] = useWindowResize();
 
   const { favorites, cart, setCart, setFavorites } = useAppContext();
-
+  const [, setQuantities] = useLocalStorage<number[]>(
+    'quantities',
+    cart.length > 0 ? cart.map(() => 1) : [],
+  );
   const [models, setModels] = useState<Products[]>([]);
   const [sortedModels, setSortedModels] = useState<Products[]>([]);
   const location = useLocation();
@@ -48,8 +52,12 @@ export const BrandNewModelsHome: React.FC<Props> = ({ type }) => {
 
     if (isCart) {
       setCart(cart.filter(el => el.id !== product.id));
+      setQuantities(prevQuantities =>
+        prevQuantities.filter((_, index) => cart[index].id !== product.id),
+      );
     } else {
       setCart([...cart, product]);
+      setQuantities(prevQuantities => [...prevQuantities, 1]);
     }
   };
 
