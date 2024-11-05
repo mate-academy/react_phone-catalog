@@ -93,7 +93,7 @@
   color: #313237;
 }
 
-@keyframes menu_enter {
+@keyframes menu-e {
   from {
     opacity: 0;
   }
@@ -102,7 +102,7 @@
   }
 }
 
-@keyframes menu_exit {
+@keyframes menu-v {
   from {
     opacity: 1;
   }
@@ -112,9 +112,9 @@
 }
 
 .menu_enter {
-  animation: menu_enter 0.5s forwards;
+  animation: menu-e 0.5s forwards;
 }
 
 .menu_exit {
-  animation: menu_exit 0.5s forwards;
+  animation: menu-v 0.5s forwards;
 }
