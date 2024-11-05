@@ -30,7 +30,6 @@ export const Header: React.FC = () => {
   return (
     <>
       <h1 className={styles.header_title_inv}>Product Catalog</h1>
-
       <header className={styles.header} id="top">
         <div className={styles.header_cont}>
           <div className={styles.header_div}>
@@ -121,7 +120,7 @@ export const Header: React.FC = () => {
         </div>
       </header>
 
-      {isHeaderModalOpen && <HeaderMenu onClose={toggleModal} />}
+      <HeaderMenu onClose={toggleModal} isHeaderModalOpen={isHeaderModalOpen} />
     </>
   );
 };

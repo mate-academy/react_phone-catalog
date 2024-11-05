@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './header-menu.module.scss';
 import { Link, NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
@@ -7,14 +7,40 @@ import classNames from 'classnames';
 
 interface HeaderMenuProps {
   onClose: () => void;
+  isHeaderModalOpen: boolean;
 }
 
-export const HeaderMenu: React.FC<HeaderMenuProps> = ({ onClose }) => {
+export const HeaderMenu: React.FC<HeaderMenuProps> = ({
+  onClose,
+  isHeaderModalOpen,
+}) => {
   const favoriteItem = useSelector((state: RootState) => state.favorite.items);
   const cartItems = useSelector((state: RootState) => state.cart.items);
+  const [isVisible, setIsVisible] = useState(isHeaderModalOpen);
+
+  useEffect(() => {
+    if (isHeaderModalOpen) {
+      setIsVisible(true);
+    } else {
+      const timeout = setTimeout(() => {
+        setIsVisible(false);
+      }, 300);
+
+      return () => clearTimeout(timeout);
+    }
+  }, [isHeaderModalOpen]);
+
+  if (!isVisible) {
+    return null;
+  }
 
   return (
-    <div className={styles.header_container}>
+    <div
+      className={classNames(styles.header_container, {
+        [styles.menu_enter]: isHeaderModalOpen,
+        [styles.menu_exit]: !isHeaderModalOpen,
+      })}
+    >
       <nav className={styles.header}>
         <ul className={styles.header_list}>
           <li className={styles.header_item} onClick={onClose}>

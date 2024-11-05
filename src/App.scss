@@ -7,3 +7,26 @@
 main {
   flex: 1;
 }
+
+.slide-enter {
+  transform: translateX(-100%);
+  opacity: 0;
+}
+.slide-enter-active {
+  transform: translateX(0);
+  opacity: 1;
+  transition:
+    transform 500ms ease-in,
+    opacity 500ms ease-in;
+}
+.slide-exit {
+  transform: translateX(0);
+  opacity: 1;
+}
+.slide-exit-active {
+  transform: translateX(-100%);
+  opacity: 0;
+  transition:
+    transform 500ms ease-in,
+    opacity 500ms ease-in;
+}

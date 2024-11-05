@@ -67,6 +67,7 @@
   position: fixed;
   width: 100%;
   bottom: 0;
+  z-index: 1000;
 }
 
 .quan {
@@ -90,4 +91,30 @@
 .is_active {
   border-bottom: 3px solid #313237;
   color: #313237;
+}
+
+@keyframes menu_enter {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes menu_exit {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+.menu_enter {
+  animation: menu_enter 0.5s forwards;
+}
+
+.menu_exit {
+  animation: menu_exit 0.5s forwards;
 }
