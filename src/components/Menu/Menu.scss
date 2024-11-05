@@ -1,18 +1,32 @@
 @import '../../utils';
 
 .menu {
+  @media (max-width: $mobile) {
+    display: none;
+  }
+
   &__list {
     display: flex;
     align-items: center;
     gap: 64px;
     list-style: none;
+
+    @media (max-width: $tablet) {
+      gap: 32px;
+    }
   }
 
   &__link {
     text-transform: uppercase;
-    color: #89939a;
+    color: $secondary;
     font-family: $font-family;
     font-weight: 800;
     font-size: 12px;
+
+    &:hover {
+      color: $primary;
+      border-bottom: 3px solid $primary;
+      padding-bottom: 20px;
+    }
   }
 }

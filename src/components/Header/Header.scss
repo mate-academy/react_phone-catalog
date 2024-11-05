@@ -1,3 +1,5 @@
+@import '../../utils';
+
 .header {
   &_container {
     display: flex;
@@ -5,17 +7,25 @@
     align-items: center;
 
     height: 64px;
-    border-bottom: 1px solid #e2e6e9;
+    border-bottom: 1px solid $elements;
   }
 
   &__nav {
     display: flex;
     align-items: center;
     gap: 24px;
+
+    @media (max-width: $tablet) {
+      gap: 16px;
+    }
   }
 
   &__shopping {
     display: flex;
     height: 100%;
+
+    @media (max-width: $mobile) {
+      display: none;
+    }
   }
 }

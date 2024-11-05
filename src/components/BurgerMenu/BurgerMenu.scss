@@ -1,0 +1,14 @@
+@import '../../utils';
+
+.burger-menu {
+  display: none;
+  border-left: 1px solid $elements;
+  width: 64px;
+  height: 64px;
+  align-items: center;
+  justify-content: center;
+
+  @media (max-width: $mobile) {
+    display: flex;
+  }
+}

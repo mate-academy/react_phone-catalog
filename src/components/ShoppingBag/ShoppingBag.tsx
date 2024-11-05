@@ -1,9 +1,14 @@
-import React from 'react';
+import React, { FC } from 'react';
 import './ShoppingBag.scss';
+import classNames from 'classnames';
 
-export const ShoppingBag = () => {
+export const ShoppingBag: FC<{ isMobile?: boolean }> = ({ isMobile }) => {
   return (
-    <div className="shopping-bag">
+    <div
+      className={classNames('shopping-bag', {
+        'shopping-bag--mobile': isMobile,
+      })}
+    >
       <a href="#basket" className="shopping-bag__link">
         <img
           src="../../../img/shopping-bag.svg"
