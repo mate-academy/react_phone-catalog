@@ -1,0 +1,441 @@
+@import '../../utils/mixins.scss';
+@import '../../utils/vars.scss';
+
+.itemInformation {
+  @include content-padding-inline;
+  margin: 24px 0 80px 0;
+
+  &_route {
+    margin-bottom: 24px;
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    justify-content: left;
+    align-items: center;
+
+    @include on-tablet {
+      margin-bottom: 40px;
+    }
+
+    h3 {
+      margin-top: 2px;
+      color: $color-for-buttons;
+      font-size: 12px;
+    }
+
+    p {
+      color: $color-for-main-text;
+      font-size: 12px;
+    }
+  }
+
+  &_buttonBack {
+    margin-bottom: 16px;
+    display: flex;
+    flex-direction: row;
+    gap: 4px;
+
+    p {
+      margin-top: 2px;
+      color: $color-for-main-text;
+      font-size: 12px;
+    }
+  }
+
+  &_title {
+    margin-bottom: 36px;
+    font-size: 22px;
+
+    @include on-tablet {
+      font-size: 32px;
+    }
+  }
+
+  &_generalInfo {
+    @include page-grid;
+    margin-bottom: 40px;
+
+    @include on-tablet {
+      margin-bottom: 64px;
+    }
+
+    @include on-desktop {
+      margin-bottom: 80px;
+    }
+
+    &_mainImage {
+      grid-column: 1 /-1;
+      margin-bottom: 16px;
+
+      @include on-tablet {
+        grid-column: 2 / 8;
+      }
+
+      @include on-desktop {
+        grid-column: 3 / 13;
+      }
+
+      img {
+        width: 100%;
+        height: 280px;
+        object-fit: contain;
+
+        @include on-desktop {
+          height: 464px;
+        }
+      }
+    }
+
+    &_additionalImgOnPhone {
+      margin-bottom: 40px;
+      grid-column: 1 / -1;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+
+      @include on-tablet {
+        display: none;
+      }
+
+      div {
+        width: 66px;
+        height: 66px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      img {
+        padding: 2px;
+        width: 60px;
+        height: 60px;
+        object-fit: contain;
+      }
+    }
+
+    &_additionalImgOnTablet {
+      display: none;
+
+      @include on-tablet {
+        grid-column: 1 / 2;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+      }
+
+      @include on-desktop {
+        grid-column: 1 / 3;
+      }
+
+      div {
+        width: 66px;
+        height: 66px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      img {
+        width: 60px;
+        height: 60px;
+        object-fit: contain;
+      }
+    }
+
+    &_edit {
+      grid-column: 1 / -1;
+
+      @include on-tablet {
+        grid-column: 8 / 13;
+      }
+
+      @include on-desktop {
+        grid-column: 14 / 25;
+      }
+
+      &__wrapper {
+        display: flex;
+        flex-direction: column;
+      }
+
+      &__colours {
+        margin-bottom: 24px;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+
+        p {
+          font-size: 12px;
+          color: $color-for-main-text;
+        }
+
+        &_circles {
+          display: flex;
+          flex-direction: row;
+          gap: 8px;
+
+          div {
+            width: 36px;
+            height: 36px;
+            border: 2px solid;
+            border-color: $color-for-borders;
+            border-radius: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            div {
+              width: 30px;
+              height: 30px;
+            }
+
+            &:hover {
+              border-color: #B4BDC3;
+            }
+
+          }
+        }
+      }
+
+      &__string {
+        margin-bottom: 24px;
+        width: 100%;
+        height: 1px;
+        background-color: $color-for-borders;
+
+        @include on-tablet {
+          width: 70%;
+        }
+
+        &1 {
+          margin-bottom: 32px;
+          width: 100%;
+          height: 1px;
+          background-color: $color-for-borders;
+
+          @include on-tablet {
+            width: 70%;
+          }
+        }
+      }
+
+      &__storage {
+        margin-bottom: 24px;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+
+        p {
+          font-size: 12px;
+          color: $color-for-main-text;
+        }
+
+        div {
+          display: flex;
+          flex-direction: row;
+          gap: 8px;
+
+            div {
+              width: 56px;
+              height: 32px;
+              border: 1px solid;
+              border-color: $color-for-borders;
+              color: black;
+
+              &:hover {
+                border-color: $color-for-buttons;
+              }
+
+              p {
+                color: black;
+                margin: 0 auto;
+                line-height: 32px;
+              }
+            }
+        }
+      }
+
+      &__prices {
+        margin-bottom: 16px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 8px;
+
+
+        h3 {
+          color: $color-for-title;
+          font-size: 32px;
+
+        }
+
+        p {
+          color: $color-for-main-text;
+          font-size: 22px;
+          text-decoration: line-through;
+        }
+      }
+    }
+
+    &_buttons {
+      display: flex;
+      flex-direction: row;
+      height: 48px;
+      justify-content: space-between;
+      margin-bottom: 32px;
+
+      @include on-tablet {
+        justify-content: unset;
+        gap: 8px;
+      }
+
+      &_add {
+        height: 48px;
+        color: $color-for-white-text;
+        background-color: $color-for-buttons;
+        border: 1px solid;
+        border-color: $color-for-buttons;
+        box-sizing: border-box;
+        width: 85%;
+        line-height: 48px;
+        text-align: center;
+        font-size: 14px;
+
+        @include on-tablet {
+          width: 70%;
+        }
+
+        &:hover {
+          cursor: pointer;
+          box-shadow: 4px 4px 4px 0px rgba(0,0,0,0.2);
+        }
+      }
+
+      &_favourite {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 48px;
+        height: 48px;
+        border: 1px solid;
+        box-sizing: border-box;
+        border-color: #B4BDC3;
+        line-height: 50px;
+        text-align: center;
+
+        &:hover {
+          cursor: pointer;
+          border-color: $color-for-buttons;
+        }
+      }
+    }
+
+    &_info {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 8px;
+      width: 100%;
+
+      @include on-tablet {
+        width: 90%;
+      }
+
+      @include on-desktop {
+        width: 81%;
+      }
+
+      &_string {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+
+        &__title {
+          color: $color-for-main-text;
+          font-size: 14px;
+        }
+
+        &__text {
+          font-size: 14px;
+          color: $color-for-buttons;
+        }
+      }
+    }
+  }
+
+  &_info {
+    margin-bottom: 64px;
+    @include page-grid;
+
+    @include on-tablet {
+      margin-bottom: 80px;
+    }
+    &_title {
+      margin-bottom: 16px;
+      font-size: 22px;
+    }
+
+    &_string {
+      margin-bottom: 32px;
+      width: 100%;
+      height: 1px;
+      background-color: $color-for-borders;
+    }
+
+    &_about {
+      grid-column: 1 / -1;
+
+      @include on-desktop {
+        grid-column: span 12;
+      }
+
+      &_description {
+        display: flex;
+        flex-direction: column;
+        gap: 32px;
+
+        &_title {
+          margin-bottom: 16px;
+          font-size: 20px;
+          color: $color-for-buttons;
+        }
+
+        &_text {
+          font-size: 14px;
+          color: $color-for-main-text;
+        }
+      }
+    }
+
+    &_techSpecs {
+      grid-column: 1 / -1;
+
+      @include on-desktop {
+        grid-column: 14 / 25;
+      }
+
+      &_description {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+
+
+        &_opt {
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+
+          &__title {
+            color: $color-for-main-text;
+            font-size: 14px;
+          }
+
+          &__text {
+            font-size: 14px;
+            color: $color-for-buttons;
+          }
+        }
+      }
+    }
+  }
+}

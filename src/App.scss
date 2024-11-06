@@ -1,1 +1,59 @@
-// not empty
+@import './utils/mixins.scss';
+@import './utils/vars.scss';
+
+@font-face {
+  font-family: 'Mont-Bold';
+  src: url('/fonts/Mont-Bold.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'Mont-Regular';
+  src: url('/fonts/Mont-Regular.otf') format('opentype');
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.header {
+  background-color: #fff;
+  position: sticky; top: 0;
+  z-index: 1;
+}
+
+.main {
+  min-height: calc(100vh - 170px);
+}
+
+h1, h2, h3, h4, li {
+  font-family: 'Mont-Bold', sans-serif;
+}
+
+p {
+  font-family: 'Mont-Regular', sans-serif;
+}
+
+.fade-enter {
+  opacity: 0;
+  transform: translateX(-100%);
+}
+.fade-enter-active {
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity 300ms, transform 300ms;
+}
+
+.fade-exit {
+  opacity: 1;
+  transform: translateX(0);
+}
+.fade-exit-active {
+  opacity: 0;
+  transform: translateX(100%);
+  transition: opacity 300ms, transform 300ms;
+}

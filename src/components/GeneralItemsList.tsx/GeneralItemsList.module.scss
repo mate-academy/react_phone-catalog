@@ -1,0 +1,16 @@
+@import '../../utils/mixins.scss';
+@import '../../utils/vars.scss';
+
+.itemsListPhones {
+  margin-bottom: 40px;
+  grid-row-gap: 40px;
+  @include page-grid;
+
+  div {
+    grid-column: 1 / -1;
+
+    @include on-tablet {
+      grid-column: span 6;
+    }
+  }
+}
