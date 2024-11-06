@@ -1,11 +1,11 @@
-module.exports = {
+export default {
   env: {
     browser: true,
     es2024: true,
   },
   extends: [
     'plugin:react/recommended',
-    "plugin:react-hooks/recommended",
+    'plugin:react-hooks/recommended',
     'airbnb-typescript',
     'plugin:@typescript-eslint/eslint-recommended',
     'plugin:@typescript-eslint/recommended',
@@ -37,7 +37,6 @@ module.exports = {
     'prettier'
   ],
   rules: {
-    // JS
     'semi': 'off',
     '@typescript-eslint/semi': ['error', 'always'],
     'prefer-const': 2,
@@ -92,12 +91,11 @@ module.exports = {
     '@typescript-eslint/no-unused-vars': ['error'],
     '@typescript-eslint/indent': ['error', 2],
     '@typescript-eslint/ban-types': ['error', {
-        extendDefaults: true,
-        types: {
-          '{}': false,
-        },
+      extendDefaults: true,
+      types: {
+        '{}': false,
       },
-    ],
+    }],
   },
   ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.ts', 'src/vite-env.d.ts', 'cypress'],
   settings: {

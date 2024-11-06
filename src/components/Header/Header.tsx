@@ -41,10 +41,10 @@ export const Header = () => {
     <div className={styles.topbar}>
       <div className={styles.topbarLogoAndButtons}>
         <Link to='/home'>
-          <img 
+          <img
            className={styles.topbarLogoAndButtons__logo}
             src="/img/logo.png"
-            alt="Nice Gadgets" 
+            alt="Nice Gadgets"
           />
         </Link>
 
@@ -86,7 +86,7 @@ export const Header = () => {
               alt="favourites"
             />
             <div className={styles.topbarIcons_icon__amountFav}>
-              {favouriteAmount}
+              {favouriteAmount > 0 && <span>{favouriteAmount}</span>}
             </div>
           </NavLink>
         </div>
@@ -98,7 +98,7 @@ export const Header = () => {
               alt="bucket_header"
             />
             <div className={styles.topbarIcons_icon__amountBucket}>
-              {bucketAmount}
+              {bucketAmount > 0 && <span>{bucketAmount}</span>}
             </div>
           </NavLink>
         </div>

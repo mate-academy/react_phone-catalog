@@ -36,13 +36,13 @@ export const AsideMenu = () => {
       <div className={styles.menu_icons}>
         <div className={styles.menu_icons_icon}>
           <Link to={'../favourites'}>
-            <img src="img/icons/favourites.svg" alt="" />
+            <img src="/img/icons/favourites.svg" alt="" />
           </Link>
         </div>
         <div className={styles.menu_icons_line}></div>
         <div className={styles.menu_icons_icon}>
           <Link to={'../bucket'}>
-            <img src="img/icons/bucket_header.svg" alt="" />
+            <img src="/img/icons/shopping-bag.svg" alt="" />
           </Link>
         </div>
       </div>

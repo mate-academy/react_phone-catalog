@@ -3,9 +3,8 @@
 
 .itemsListPhones {
   margin-bottom: 40px;
-  @include page-grid;
   grid-row-gap: 40px;
-
+  @include page-grid;
 
   div {
     grid-column: 1 / -1;
