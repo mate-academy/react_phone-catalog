@@ -1,1 +1,31 @@
-// not empty
+@use "./utils/mixins" as mixin;
+@use "./utils/variables" as var;
+@use "./utils/fonts" as *;
+
+body {
+  font-family: Mont, Arial, serif;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+}
+
+.app {
+  &__header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background-color: var.$white;
+  }
+
+  &__container {
+    height: 100vh;
+
+    @include mixin.flex(flex, false, false, column);
+  }
+
+  &__main {
+    flex: 1;
+  }
+}

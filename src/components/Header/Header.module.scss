@@ -1,0 +1,83 @@
+@use "../../utils/mixins" as mixin;
+@use "../../utils/variables" as var;
+
+.header {
+  box-sizing: border-box;
+  border-bottom: solid 0.5px var.$elements;
+
+  &__container {
+    @include mixin.sizes(100%, 48px);
+    @include mixin.flex(flex, center, space-between, false);
+
+    @include mixin.on-tablet {
+      height: 48px;
+    }
+
+    @include mixin.on-desktop {
+      height: 64px;
+    }
+  }
+
+  &__left,
+  &__right {
+    @include mixin.on-tablet {
+      @include mixin.flex(flex, center, false, false);
+    }
+  }
+
+  &__item_menu {
+    @include mixin.on-mobile {
+      @include mixin.sizes(48px, 48px);
+      @include mixin.flex(flex, center, center, false);
+
+      border-left: solid 0.5px var.$elements;
+    }
+
+    @include mixin.on-tablet {
+      display: none;
+    }
+  }
+
+  &__item_close {
+    @include mixin.on-mobile {
+      @include mixin.sizes(48px, 48px);
+      @include mixin.flex(flex, center, center, false);
+
+      border-left: solid 0.5px var.$elements;
+    }
+
+    @include mixin.on-tablet {
+      display: none;
+    }
+  }
+
+  &__image {
+    @include mixin.sizes(16px, 16px);
+  }
+
+  &__logo {
+    @include mixin.on-tablet {
+      margin-right: 32px;
+    }
+
+    @include mixin.on-desktop {
+      margin-right: 64px;
+    }
+  }
+
+  &__navbar,
+  &__favourites,
+  &__cart {
+    @include mixin.on-mobile {
+      display: none;
+    }
+
+    @include mixin.on-tablet {
+      display: flex;
+    }
+
+    @include mixin.on-desktop {
+      display: flex;
+    }
+  }
+}

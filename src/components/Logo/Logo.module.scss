@@ -1,0 +1,24 @@
+@use "../../utils/mixins" as mixin;
+
+.logo {
+  display: block;
+  transition: all 0.3s;
+
+  &:hover {
+    @include mixin.hover-effect;
+  }
+
+  &--image {
+    @include mixin.on-mobile {
+      @include mixin.sizes(96px, 48px);
+    }
+
+    @include mixin.on-tablet {
+      @include mixin.sizes(96px, 48px);
+    }
+
+    @include mixin.on-desktop {
+      @include mixin.sizes(128px, 64px);
+    }
+  }
+}

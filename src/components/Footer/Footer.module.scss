@@ -1,0 +1,97 @@
+@use "../../utils/mixins" as mixin;
+@use "../../utils/variables" as var;
+
+.footer {
+  box-sizing: border-box;
+  border-top: 0.5px solid var.$elements;
+  width: 100%;
+
+  @include mixin.on-mobile {
+    @include mixin.flex(flex, false, false, column);
+
+    padding: 25px 0 32px;
+  }
+
+  @include mixin.on-tablet {
+    @include mixin.flex(flex, center, space-between, row);
+
+    padding: 32px 25px 32px 0;
+  }
+
+  @include mixin.on-desktop {
+    @include mixin.flex(flex, center, space-between, row);
+
+    padding: 32px 25px 32px 0;
+  }
+
+  &__link_container {
+    display: flex;
+
+    @include mixin.on-mobile {
+      flex-direction: column;
+      gap: 16px;
+      padding: 16px 25px;
+    }
+
+    @include mixin.on-tablet {
+      flex-direction: row;
+      justify-content: space-between;
+    }
+  }
+
+  &__item {
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var.$secondary-gray;
+
+    @include mixin.uppercase-desktop-tablet;
+
+    @include mixin.on-mobile {
+      padding: 0;
+    }
+
+    @include mixin.on-tablet {
+      padding-right: 24px;
+    }
+
+    @include mixin.on-desktop {
+      padding-right: 36px;
+    }
+  }
+
+  &__button_container {
+    @include mixin.on-mobile {
+      @include mixin.flex(flex, center, center, false);
+    }
+  }
+
+  &__text {
+    @include mixin.small-text-desktop-tablet;
+
+    color: var.$secondary-gray;
+    margin-right: 16px;
+    transition: all 0.3s;
+
+    &:hover {
+      @include mixin.hover-effect;
+    }
+  }
+
+  &__button {
+    @include mixin.sizes(32px, 32px);
+
+    border: 1px solid var.$icons-placeholders;
+    background-color: white;
+    transition: all 0.3s;
+
+    &:hover {
+      border: 1px solid var.$primary-gray;
+    }
+  }
+
+  &__image {
+    @include mixin.sizes(16px, 16px);
+
+    color: var.$primary-gray;
+  }
+}

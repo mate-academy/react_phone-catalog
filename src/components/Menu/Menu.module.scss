@@ -1,0 +1,49 @@
+@use "../../utils/mixins" as mixin;
+@use "../../utils/variables" as var;
+
+.menu {
+  @include mixin.flex(flex, false, false, column);
+
+  box-sizing: border-box;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+
+
+  &__container {
+    @include mixin.flex(flex, false, false, column);
+
+    height: 100%;
+  }
+
+  &__top {
+    @include mixin.flex(flex, center, false, column);
+
+    gap: 1rem;
+    margin-top: 32px;
+    flex: 1 1 auto;
+  }
+
+  &__bottom {
+    @include mixin.flex(flex, center, center, false);
+
+    position: sticky;
+    bottom: 0;
+  }
+
+  &__navbar,
+  &__favourites,
+  &__cart {
+    @include mixin.on-mobile {
+      display: flex;
+    }
+
+    @include mixin.on-tablet {
+      display: none;
+    }
+
+    @include mixin.on-desktop {
+      display: none;
+    }
+  }
+}
