@@ -9,3 +9,7 @@ export interface FavouriteContextType {
   favouriteProducts: Product[];
   setFavouriteProducts: (newProduct: Product[]) => void;
 }
+
+export interface ProductListContextType {
+  productList: Product[];
+}

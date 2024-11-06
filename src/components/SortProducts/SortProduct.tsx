@@ -149,7 +149,9 @@ export const SortProduct: React.FC<Props> = ({}) => {
     const target = e.target as HTMLElement;
 
     if (target.textContent) {
-      setSearchWith({ sortBy: target.textContent.toLowerCase() });
+      if (target.textContent !== sortedBy) {
+        setSearchWith({ sortBy: target.textContent.toLowerCase(), page: 1 });
+      }
 
       setIsSortByOpen(false);
     }
@@ -159,7 +161,10 @@ export const SortProduct: React.FC<Props> = ({}) => {
     const target = e.target as HTMLElement;
 
     if (target.textContent) {
-      setSearchWith({ perPage: target.textContent.toLowerCase() });
+      if (target.textContent !== itemsPerPage) {
+        setSearchWith({ perPage: target.textContent.toLowerCase(), page: 1 });
+      }
+
       setIsSortItemsOpen(false);
     }
   };

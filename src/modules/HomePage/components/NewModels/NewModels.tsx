@@ -9,9 +9,10 @@ import styles from './NewModels.module.scss';
 
 import { ProductCard } from '../../../../components/ProductCard';
 import { newPhoneModels } from '../../../../constants/newPhoneModels';
+import { Product } from '../../../../types/Product';
 
 export const NewModels = () => {
-  const newModels = [...newPhoneModels];
+  const newModels: Product[] = [...newPhoneModels];
 
   return (
     <section className={styles.newModelsContainer}>

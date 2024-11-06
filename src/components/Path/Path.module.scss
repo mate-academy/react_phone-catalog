@@ -18,15 +18,15 @@
 .toHome {
   display: inline-block;
   background-image: url("../../assets/icons/home.svg");
-  width: 1.6rem;
+  min-width: 1.6rem;
   height: 1.6rem;
 }
 
 .arrowRight {
   display: inline-block;
-  width: 1.6rem;
+  min-width: 1.6rem;
   height: 1.6rem;
-  background-image: url("../../assets/icons/arrow-right.svg");
+  background-image: url("../../assets/icons/arrow-right-gray.svg");
   background-size: contain;
   background-position: 10%;
 }
@@ -44,5 +44,10 @@
   &IsDisabled{
     color: $color-secondary;
     pointer-events: none;
+
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+
   }
 }

@@ -83,37 +83,13 @@ export const Slider = () => {
                 <picture key={id + i}>
                   <source media="(max-width: 639px)" srcSet={srcSmall} />
                   <source media="(min-width: 640px)" srcSet={srcLarge} />
-                  <img
-                    src={srcSmall}
-                    alt={id}
-                    // className={styles.sliderImg}
-                  />
+                  <img src={srcSmall} alt={id} />
                 </picture>
-                {/*<img*/}
-                {/*  key={id + i}*/}
-                {/*  src={srcSmall}*/}
-                {/*  alt={id}*/}
-                {/*  // className={styles.sliderImg}*/}
-                {/*/>*/}
               </SwiperSlide>
             ))}
           </Swiper>
         </div>
       </div>
-      {/*<button onClick={() => swiper.slideNext()}>Ola</button>*/}
-      {/*<div className={styles.positionBtnContainer}>*/}
-      {/*  {imagesHero.map((img, index) => (*/}
-      {/*    <button*/}
-      {/*      key={img.id}*/}
-      {/*      id={`btn${index}`}*/}
-      {/*      onClick={() => handleSlideCount(index + 1)}*/}
-      {/*      className={classNames(styles.positionBtn, {*/}
-      {/*        [styles.positionBtnActive]:*/}
-      {/*          index + 1 === activeImgIndex*/}
-      {/*      })}*/}
-      {/*    ></button>*/}
-      {/*  ))}*/}
-      {/*</div>*/}
     </div>
   );
 };

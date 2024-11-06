@@ -1,9 +1,14 @@
 import styles from './Path.module.scss';
 import { Link, NavLink, useLocation } from 'react-router-dom';
-import { Fragment, useMemo } from 'react';
+import React, { Fragment, useMemo } from 'react';
 import classNames from 'classnames';
+import { Product } from '../../types/Product';
 
-export const Path = () => {
+interface Props {
+  productList: Product[];
+}
+
+export const Path: React.FC<Props> = ({ productList }) => {
   const { pathname } = useLocation();
 
   const breadcrumbs = useMemo(() => {
@@ -14,7 +19,12 @@ export const Path = () => {
       .filter(location => !!location)
       .map(crumb => {
         currentLink += '/' + crumb;
-        const locationName = crumb.slice(0, 1).toUpperCase() + crumb.slice(1);
+        const productName = productList.find(
+          product => product.id === crumb,
+        )?.name;
+
+        const locationName =
+          productName || crumb.slice(0, 1).toUpperCase() + crumb.slice(1);
 
         return [currentLink, locationName];
       });

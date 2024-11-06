@@ -1,87 +1,54 @@
-import React, { MouseEventHandler, useContext } from 'react';
-import { NavLink } from 'react-router-dom';
+import React, { MouseEventHandler } from 'react';
+import { NavLink, useLocation, useSearchParams } from 'react-router-dom';
 
 import styles from './ProductCard.module.scss';
 import { Product } from '../../types/Product';
 import classNames from 'classnames';
-import { CartContext, FavouriteContext } from '../../ContextProvider';
+import { useCart } from '../../hooks/useCart';
+import { useFavourite } from '../../hooks/useFavourite';
+import { formatSpecText } from '../../utils/formatSpecText';
 
 interface Props {
   product: Product;
   isDiscount?: boolean;
 }
 
-export const ProductCard: React.FC<Props> = ({
-  product: {
-    images,
-    name,
-    priceRegular,
-    priceDiscount,
-    screen,
-    capacity,
-    ram,
-    id,
-  },
-  isDiscount,
-}) => {
-  const { cartProducts, setCartProducts } = useContext(CartContext);
-  const { favouriteProducts, setFavouriteProducts } =
-    useContext(FavouriteContext);
-
-  const isAddedToCart = !!cartProducts.find(product => product?.id === id);
-
-  const isAddedToFavourite = !!favouriteProducts.find(
-    product => product?.id === id,
+export const ProductCard: React.FC<Props> = ({ product, isDiscount }) => {
+  const [searchParams] = useSearchParams();
+  const { pathname } = useLocation();
+  const [isAddedToCart, addToCart] = useCart(product.id, product);
+  const [isAddedToFavourite, addToFavourite] = useFavourite(
+    product.id,
+    product,
   );
 
-  const screenSpec = screen.slice(0, screen.indexOf("'") + 1) + ' OLED';
-  const theProduct = {
+  const {
     images,
     name,
+    screen,
     priceRegular,
     priceDiscount,
-    screen,
     capacity,
     ram,
     id,
-  };
+    category,
+  } = product;
 
-  const handleAddToCart: MouseEventHandler<HTMLButtonElement> = e => {
-    // setCartProducts([
-    //   ...cartProducts,
-    //   {
-    //     id,
-    //     images,
-    //     name,
-    //     priceRegular,
-    //     priceDiscount,
-    //     screen,
-    //     capacity,
-    //     ram,
-    //   },
-    // ]);
+  const handleClick: MouseEventHandler<HTMLAnchorElement> = e => {
+    const target = e.target as HTMLElement;
 
-    e.preventDefault();
-
-    setCartProducts(
-      isAddedToCart
-        ? cartProducts.filter(product => product.id !== id)
-        : [...cartProducts, theProduct],
-    );
-  };
-
-  const handleAddToFavourite: MouseEventHandler<HTMLButtonElement> = e => {
-    e.preventDefault();
-
-    setFavouriteProducts(
-      isAddedToFavourite
-        ? favouriteProducts.filter(product => product.id !== id)
-        : [...favouriteProducts, theProduct],
-    );
+    if (!(target instanceof HTMLButtonElement)) {
+      window.scroll(0, 0);
+    }
   };
 
   return (
-    <NavLink to=".." className={classNames(styles.productCardContainer)}>
+    <NavLink
+      to={`/${category}/${id}`}
+      state={{ search: searchParams.toString(), pathname, id }}
+      className={classNames(styles.productCardContainer)}
+      onClick={handleClick}
+    >
       <div className={styles.productImgContainer}>
         <img src={images[0]} alt={name} className={styles.productImg} />
       </div>
@@ -100,33 +67,33 @@ export const ProductCard: React.FC<Props> = ({
       <ul className={styles.productInfo}>
         <li className={styles.productInfoItem}>
           <span>Screen</span>
-          <span>{screenSpec}</span>
+          <span>{formatSpecText(screen)}</span>
         </li>
         <li className={styles.productInfoItem}>
           <span>Capacity</span>
-          <span>{capacity}</span>
+          <span>{formatSpecText(capacity)}</span>
         </li>
         <li className={styles.productInfoItem}>
           <span>RAM</span>
-          <span>{ram}</span>
+          <span>{formatSpecText(ram)}</span>
         </li>
       </ul>
 
       <div className={styles.btnContainer}>
         <button
-          className={classNames(styles.btnCart, {
-            [styles.btnCartPressed]: isAddedToCart,
+          className={classNames('btnCart', {
+            btnCartPressed: isAddedToCart,
           })}
-          onClick={handleAddToCart}
+          onClick={addToCart}
           // disabled={isAddedToCart}
         >
           {isAddedToCart ? 'In Cart' : 'Add to Cart'}
         </button>
         <button
-          className={classNames('buttonFavourite', styles.btnFavourite, {
-            [styles.btnFavouritePressed]: isAddedToFavourite,
+          className={classNames('buttonFavourite', 'btnFavourite', {
+            btnFavouritePressed: isAddedToFavourite,
           })}
-          onClick={handleAddToFavourite}
+          onClick={addToFavourite}
           aria-label="Add to favourite"
         ></button>
       </div>

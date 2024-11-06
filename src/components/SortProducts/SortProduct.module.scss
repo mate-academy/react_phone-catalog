@@ -98,6 +98,7 @@
   width: 100%;
   overflow: hidden;
   box-shadow: 0 2px 15px 0 $color-box-shadow;
+  z-index: 1;
 
   transition: height 0.3s ease-in-out,
   border 0.3s ease-in-out;

@@ -1,4 +1,9 @@
-import { useLocation, useSearchParams } from 'react-router-dom';
+import {
+  Outlet,
+  useLocation,
+  useParams,
+  useSearchParams,
+} from 'react-router-dom';
 
 import styles from './ProductsPage.module.scss';
 import { ProductCard } from '../../components/ProductCard';
@@ -13,15 +18,18 @@ import phones from '../../../public/api/phones.json';
 import tablets from '../../../public/api/tablets.json';
 import accessories from '../../../public/api/accessories.json';
 import { Product } from '../../types/Product';
+import { ProductListContext } from '../../ContextProvider';
 
 export const ProductsPage = () => {
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams] = useSearchParams();
   const { pathname } = useLocation();
-  const productType = pathname.split('/').filter(location => !!location)[0];
+  const { productId } = useParams();
 
+  const productType = pathname.split('/').filter(location => !!location)[0];
   const itemsPerPage = searchParams.get('perPage') || '4';
   const sortBy = (searchParams.get('sortBy') || SortBy.newest).toLowerCase();
   const currentPage = +(searchParams.get('page') || 1);
+
   const [productList, title] = useMemo(() => {
     let list: Product[] = [];
     let productTitle = '';
@@ -32,7 +40,7 @@ export const ProductsPage = () => {
     } else if (productType === ProductType.tablets) {
       list = [...tablets];
       productTitle = 'Tablets';
-    } else {
+    } else if (productType === ProductType.accessories) {
       list = [...accessories];
       productTitle = 'Accessories';
     }
@@ -46,29 +54,35 @@ export const ProductsPage = () => {
   );
 
   useEffect(() => {
-    if (currentPage !== 1) {
-      searchParams.set('page', '1');
-      setSearchParams(searchParams);
-    }
-  }, [sortBy, itemsPerPage]);
-
-  useEffect(() => {
     window.scroll(0, 0);
-  }, [pathname, currentPage]);
+  }, [currentPage]);
 
   return (
     <section className={styles.phonePageContainer}>
-      <Path />
-      <h1 className={styles.title}>{title}</h1>
-      <p className={styles.categoryNumModels}>{productList.length} models</p>
-      <SortProduct />
-      <div className={styles.productsContainer}>
-        {filteredProductList.map(product => (
-          <ProductCard product={product} key={product.id} />
-        ))}
-      </div>
+      <Path productList={productList} />
+      {productId ? (
+        <ProductListContext.Provider value={{ productList }}>
+          <Outlet />
+        </ProductListContext.Provider>
+      ) : (
+        <>
+          <h1 className={styles.title}>{title}</h1>
+          <p className={styles.categoryNumModels}>
+            {productList.length} models
+          </p>
+          <SortProduct />
+          <div className={styles.productsContainer}>
+            {filteredProductList.map(product => (
+              <ProductCard product={product} key={product.id} />
+            ))}
+          </div>
 
-      <Pagination totalCount={productList.length} currentPage={currentPage} />
+          <Pagination
+            totalCount={productList.length}
+            currentPage={currentPage}
+          />
+        </>
+      )}
     </section>
   );
 };

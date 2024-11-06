@@ -9,9 +9,10 @@ import styles from './HotPrices.module.scss';
 
 import { ProductCard } from '../../../../components/ProductCard';
 import { hotPricesPhones } from '../../../../constants/hotPrices';
+import { Product } from '../../../../types/Product';
 
 export const HotPrices = () => {
-  const olderModels = [...hotPricesPhones];
+  const olderModels: Product[] = [...hotPricesPhones];
 
   return (
     <section className={styles.hotPricesContainer}>

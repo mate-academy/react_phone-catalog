@@ -8,6 +8,7 @@ import { App } from './App';
 import { HomePage } from './modules/HomePage';
 import { ContextProvider } from './ContextProvider';
 import { ProductsPage } from './modules/ProductsPage';
+import { ProductPage } from './modules/ProductPage';
 // import { TabletsPage } from './modules/TabletsPage';
 
 export const Root = () => (
@@ -17,10 +18,15 @@ export const Root = () => (
         <Route path="/" element={<App />}>
           <Route index element={<HomePage />} />
           <Route path="home" element={<Navigate to="/" />} />
-          <Route path="phones" element={<ProductsPage />} />
-          <Route path="tablets" element={<ProductsPage />} />
-          <Route path="accessories" element={<ProductsPage />} />
-          {/*<Route path="*" element={<Navigate to="/" />} />*/}
+          <Route path="phones" element={<ProductsPage />}>
+            <Route path=":productId" element={<ProductPage />} />
+          </Route>
+          <Route path="tablets" element={<ProductsPage />}>
+            <Route path=":productId" element={<ProductPage />} />
+          </Route>
+          <Route path="accessories" element={<ProductsPage />}>
+            <Route path=":productId" element={<ProductPage />} />
+          </Route>
         </Route>
       </Routes>
     </Router>
