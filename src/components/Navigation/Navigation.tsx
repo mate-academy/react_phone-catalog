@@ -18,8 +18,13 @@ export const Navigation: React.FC<Props> = ({
   isMobileMenuOpen,
   setIsMobileMenuOpen,
 }) => {
-  const handleClick = () =>
-    setIsMobileMenuOpen && setIsMobileMenuOpen(!isMobileMenuOpen);
+  const handleClick = () => {
+    if (setIsMobileMenuOpen) {
+      setIsMobileMenuOpen(!isMobileMenuOpen);
+    }
+
+    window.scroll(0, 0);
+  };
 
   return (
     <nav className={styles.nav}>

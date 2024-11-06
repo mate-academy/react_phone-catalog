@@ -242,7 +242,7 @@ export const ProductPage = () => {
               )}
             >
               <span>Zoom</span>
-              <span>{zoom}</span>
+              <span>{formatSpecText(zoom)}</span>
             </li>
           )}
           {cell.includes('Not applicable') || (
