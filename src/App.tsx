@@ -9,9 +9,9 @@ import { AsideMenu } from './components/AsideMenu';
 import { HomePage } from './components/HomePage';
 import { GeneralProductsPage } from './components/GeneralProductsPage';
 import { ItemInformation } from './components/ItemInformation';
-import { Footer } from './components/Footer/Footer';
-import { FavoritesPage } from './components/FavoritesPage/FavoritesPage';
-import { BucketPage } from './components/BucketPage/BucketPage';
+import { BucketPage } from './components/BucketPage';
+import { FavoritesPage } from './components/FavoritesPage';
+import { Footer } from './components/Footer';
 
 export const App = () => {
   const dispatch = useAppDispatch();
@@ -62,18 +62,18 @@ export const App = () => {
                     />
                     <Route path="phones">
                        <Route index element={<GeneralProductsPage />} />
-                      <Route path=":productId?" element={<ItemInformation />} /> 
+                      <Route path=":productId?" element={<ItemInformation />} />
                     </Route>
                     <Route path="tablets">
                        <Route index element={<GeneralProductsPage />} />
-                      <Route path=":productId?" element={<ItemInformation />} /> 
+                      <Route path=":productId?" element={<ItemInformation />} />
                     </Route>
                     <Route path="accessories">
                       <Route index element={<GeneralProductsPage />} />
                       <Route path=":productId?" element={<ItemInformation />} />
                     </Route>
                      <Route path="favourites" element={<FavoritesPage />} />
-                    <Route path="bucket" element={<BucketPage />} /> 
+                    <Route path="bucket" element={<BucketPage />} />
                     <Route path="*" element={<p>Page not found</p>} />
                   </Routes>
                 </CSSTransition>
@@ -83,7 +83,7 @@ export const App = () => {
 
           {!isMenuOpen && (
             <footer className="footer">
-              <Footer />
+              <Footer/>
             </footer>
           )}
         </div>
@@ -91,5 +91,4 @@ export const App = () => {
     </>
   );
 };
-
 
