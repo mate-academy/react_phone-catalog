@@ -1,0 +1,85 @@
+@import '../../main';
+
+.productSlider {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 24px;
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+
+    @include page-container;
+
+    .title {
+      @include font-set($mobile-h2);
+
+      @include on-tablet {
+        @include font-set($tablet-h2);
+      }
+    }
+
+    .arrows {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+
+      &__left {
+        height: 32px;
+        width: 32px;
+        padding: 8px;
+        border: 1px solid $elements;
+        border-radius: 48px;
+        cursor: pointer;
+        background-image: url(../../assets/img/icons/arrow-right.svg);
+        transform: scaleX(-1);
+        background-repeat: no-repeat;
+        background-position: center;
+
+        &--active {
+          background-image: url(../../assets/img/icons/arrow-right-active.svg);
+          transform: scaleX(-1);
+          background-repeat: no-repeat;
+          background-position: center;
+          border: 1px solid $icons;
+        }
+      }
+
+      &__right {
+        height: 32px;
+        width: 32px;
+        padding: 8px;
+        border: 1px solid $elements;
+        border-radius: 48px;
+        cursor: pointer;
+        background-image: url(../../assets/img/icons/arrow-right.svg);
+        background-repeat: no-repeat;
+        background-position: center;
+
+        &--active {
+          background-image: url(../../assets/img/icons/arrow-right-active.svg);
+          background-repeat: no-repeat;
+          background-position: center;
+          border: 1px solid $icons;
+        }
+      }
+    }
+  }
+
+  .productCard {
+    display: flex;
+    gap: 16px;
+    padding-left: $container-padding-mobile;
+    overflow-x: auto;
+
+    @include on-tablet {
+      padding-left: $container-padding-tablet;
+    }
+
+    @include on-desktop {
+      padding-left: $container-padding-desktop;
+    }
+  }
+}

@@ -1,0 +1,76 @@
+@import '../../main';
+
+.dropdown {
+  position: relative;
+  z-index: 150;
+
+  .label {
+    margin-bottom: 4px;
+    font-weight: 700;
+    color: $secondary;
+  }
+
+  .main {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px;
+    border: 1px solid $icons;
+    border-radius: 8px;
+    cursor: pointer;
+
+    @include hover {
+      border: 1px solid $secondary;
+    }
+
+    &--active {
+      border: 1px solid $primary;
+
+      @include hover {
+        border: 1px solid $primary;
+      }
+    }
+
+    &__text {
+      @include font-set($buttons);
+    }
+
+    &__icon {
+      background-image: url(../../assets/img/icons/arrow-down.svg);
+      background-repeat: no-repeat;
+      width: $icons-size;
+      height: $icons-size;
+      background-position: center;
+      transition: transform 0.3s ease;
+
+      &--active {
+        transform: rotate(180deg);
+      }
+    }
+  }
+
+  .options {
+    border: 1px solid $elements;
+    border-radius: 8px;
+    position: absolute;
+    width: 100%;
+    top: 70px;
+    background-color: $white;
+
+    .option {
+      @include font-set($body-text);
+
+      padding: 6px 12px;
+      cursor: pointer;
+      color: $secondary;
+      text-transform: capitalize;
+
+      @include hover {
+        color: $primary;
+      }
+
+      &--active {
+        color: $primary;
+      }
+    }
+  }
+}

@@ -1,0 +1,56 @@
+@import '../../main';
+
+.pageNotFound {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: $white;
+  border: 1px solid $elements;
+  border-radius: 36px;
+  padding: 16px;
+  margin: 32px auto 0;
+  width: 90%;
+
+  @include on-tablet {
+    padding: 24px;
+    width: 70%;
+  }
+
+  @include on-desktop {
+    padding: 32px;
+    width: 50%;
+  }
+
+  &__title {
+    @include font-set($mobile-h1);
+
+    @include on-tablet {
+      @include font-set($tablet-h1);
+    }
+  }
+
+  &__button {
+    @include font-set($buttons);
+
+    margin: 8px;
+    padding: 9.5px;
+    background-color: $accent;
+    color: $white;
+    border: 1px solid $icons;
+    border-radius: 36px;
+    cursor: pointer;
+  }
+
+  &__img {
+    width: 100%;
+
+    @include on-tablet {
+      width: 80%;
+    }
+
+    @include on-desktop {
+      width: 60%;
+    }
+  }
+}
