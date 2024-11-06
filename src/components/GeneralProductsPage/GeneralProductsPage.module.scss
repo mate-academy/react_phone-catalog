@@ -1,0 +1,155 @@
+@import '../../utils/mixins.scss';
+@import '../../utils/vars.scss';
+
+.phonesPage {
+  padding: 24px 0 80px 0;
+  @include content-padding-inline;
+
+  &_route {
+    margin-bottom: 24px;
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    justify-content: left;
+    align-items: center;
+
+    @include on-tablet {
+      margin-bottom: 40px;
+    }
+
+    p {
+      color: $color-for-main-text;
+      font-size: 12px;
+    }
+  }
+
+  &_title {
+    margin-bottom: 8px;
+    font-size: 32px;
+
+    @include on-tablet {
+      font-size: 48px;
+    }
+  }
+
+  &_amountOfPhones {
+    margin-bottom: 40px;
+    font-size: 14px;
+    color: $color-for-main-text;
+  }
+
+  &_filters {
+    margin-bottom: 24px;
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+    @include page-grid;
+
+    &_dropdown {
+      grid-column: span 2;
+      position: relative;
+      display: inline-block;
+
+      &_text {
+        color: $color-for-main-text;
+        font-size: 14px;
+        margin-bottom: 4px;
+      }
+
+      @include on-tablet {
+        grid-column: span 4;
+      }
+
+      &_dropbtn {
+        // width: 100%;
+        white-space: nowrap;
+        background-color: unset;
+        border: 1px solid;
+        border-color: #B4BDC3;
+        padding: 10px 12px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+
+        &_text {
+          font-size: 16px;
+          color: $color-for-buttons;
+        }
+      }
+
+      &_dropdownContent {
+        margin-top: 2px;
+        display: none;
+        position: absolute;
+        background-color: #fff;
+        width: 100%;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 1;
+
+        a {
+          color: $color-for-main-text;
+          padding: 12px 16px;
+          text-decoration: none;
+          display: block;
+        }
+      }
+    }
+
+    &_dropdown:hover &_dropdown_dropdownContent {
+      display: block;
+      cursor: pointer;
+    }
+
+    &_dropdown_dropdownContent a:hover {color: $color-for-buttons;}
+    &_dropdown:hover &_dropdown_dropbtn {border-color: $color-for-buttons;}
+  }
+}
+
+.pagination {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  justify-content: center;
+
+  &__pageButton {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    background-color: unset;
+    border: 1px solid;
+    border-color: $color-for-borders;
+    cursor: pointer;
+
+    &_press {
+      background-color: $color-for-buttons;
+      color: white;
+    }
+  }
+}
+
+.activePage {
+  cursor: pointer;
+  border: none;
+  width: 32px;
+  height: 32px;
+  color: white;
+  background-color: $color-for-buttons;
+}
+
+.page {
+  cursor: pointer;
+  border: none;
+  border: 1px solid;
+  border-color: $color-for-borders;
+  width: 32px;
+  height: 32px;
+  color: black;
+  background-color: white;
+
+  &_dots {
+    cursor: pointer;
+  }
+}

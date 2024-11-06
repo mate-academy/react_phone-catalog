@@ -1,0 +1,63 @@
+@import '../../utils/mixins.scss';
+@import '../../utils/vars.scss';
+
+.slider {
+  position: relative;
+  height: 60vh;
+  align-items: center;
+  margin-bottom: 8px;
+  
+  @include page-grid;
+
+  &_buttonLeft, &_buttonRight {
+    grid-column: span 1;
+    border: 1px solid #B4BDC3;
+    background: none;
+    width: 40px;
+    height: 100%;
+    display: none;
+    cursor: pointer;
+
+    img {
+      width: 20px;
+      height: 20px;
+    }
+
+    @include on-tablet {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+
+  &_img {
+    background-position: center top;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100%;
+    grid-column: 1 / -1;
+    transition: background-image 0.3s ease-out;
+
+    @include on-tablet {
+      grid-column: 2 / -2;
+    }
+  }
+
+  &_lowerSwitches {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+
+    .switch {
+      background-color: #E2E6E9;
+      width: 14px;
+      height: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .active {
+      background-color:#313237;
+    }
+  }
+}
