@@ -1,0 +1,41 @@
+@import '../../utils/mixins';
+@import '../../utils/vars';
+
+.category_blocks_block {
+  margin-bottom: 40px;
+  grid-column: 1 / -1;
+  
+  @include hover(transform, scale(1.05));
+
+  @include on-tablet {
+    margin-bottom: 0;
+    grid-column: span 4;
+  }
+
+  @include on-desktop {
+    grid-column: span 8;
+  }
+
+  img {
+    width: 100%;
+    margin-bottom: 24px;
+  }
+
+  h2 {
+    width: fit-content;
+  }
+
+  h3 {
+    font-size: 20px;
+    margin-bottom: 8px;
+    color: black;
+    width: fit-content;
+  }
+
+  p {
+    width: fit-content;
+    color: #89939A;
+    font-size: 14px;
+
+  }
+}
