@@ -6,6 +6,7 @@
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   margin-block: 2.4rem 5.6rem;
+  overflow: hidden;
 
 
   @include on-tablet {

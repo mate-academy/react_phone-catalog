@@ -11,6 +11,7 @@ import { Product } from '../../types/Product';
 import { ProductCard } from '../ProductCard';
 import React from 'react';
 import { SliderTitle } from '../../types/SliderTitle';
+import classNames from 'classnames';
 
 interface Props {
   productList: Product[];
@@ -27,7 +28,13 @@ export const SuggestionsSlider: React.FC<Props> = ({
 
   return (
     <section className={styles.suggestionsContainer}>
-      <h2 className={styles.title}>{title}</h2>
+      <h2
+        className={classNames(styles.title, {
+          [styles.titleGridCol]: title === SliderTitle.suggestions,
+        })}
+      >
+        {title}
+      </h2>
       <div className={styles.productCardsContainer}>
         <Swiper
           slidesPerView={'auto'}

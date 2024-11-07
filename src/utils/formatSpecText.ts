@@ -1,25 +1,39 @@
 export const formatSpecText = (spec: string) => {
-  if (spec.includes("'")) {
-    return spec.slice(0, spec.indexOf("'") + 1) + ' OLED';
+  let specCopy = spec;
+
+  if (specCopy.includes("'")) {
+    return specCopy.slice(0, specCopy.indexOf("'") + 1) + ' OLED';
   }
 
-  if (spec.includes('x;')) {
-    return spec.replaceAll('x;', 'x /');
+  if (specCopy.includes('x;')) {
+    return specCopy.replaceAll('x;', 'x /');
   }
 
-  if (spec.includes('MP')) {
-    return spec.replaceAll('MP', ' Mp');
+  if (specCopy.toLowerCase().includes('mp')) {
+    if (specCopy.includes('MP')) {
+      specCopy = specCopy.replaceAll('MP', ' Mp');
+    }
+
+    return specCopy
+      .split('Mp')
+      .filter(p => p !== '')
+      .map(part => part.trim() + ' Mp')
+      .join(' ');
   }
 
-  if (spec.includes('GB') || spec.includes('TB') || spec.includes('mm')) {
-    const i = spec.includes('GB')
-      ? spec.indexOf('GB')
-      : spec.includes('TB')
-        ? spec.indexOf('TB')
-        : spec.indexOf('mm');
+  if (
+    specCopy.includes('GB') ||
+    specCopy.includes('TB') ||
+    specCopy.includes('mm')
+  ) {
+    const i = specCopy.includes('GB')
+      ? specCopy.indexOf('GB')
+      : specCopy.includes('TB')
+        ? specCopy.indexOf('TB')
+        : specCopy.indexOf('mm');
 
-    return spec.slice(0, i) + ' ' + spec.slice(i);
+    return specCopy.slice(0, i) + ' ' + specCopy.slice(i);
   }
 
-  return spec;
+  return specCopy;
 };
