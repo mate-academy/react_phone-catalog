@@ -27,7 +27,12 @@ export const SuggestionsSlider: React.FC<Props> = ({
   const products = [...productList];
 
   return (
-    <section className={styles.suggestionsContainer}>
+    <section
+      className={classNames(styles.suggestionsContainer, {
+        [styles.suggestionsContainerNoMarginB]:
+          title === SliderTitle.suggestions,
+      })}
+    >
       <h2
         className={classNames(styles.title, {
           [styles.titleGridCol]: title === SliderTitle.suggestions,

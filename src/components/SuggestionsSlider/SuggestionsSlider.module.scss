@@ -21,6 +21,18 @@
   @include on-m-desktop {
     margin-bottom: 8rem;
   }
+
+  &NoMarginB {
+    margin-bottom: 0;
+
+    @include on-tablet {
+      margin-bottom: 0;
+    }
+
+    @include on-m-desktop {
+      margin-bottom: 0;
+    }
+  }
 }
 
 .title {
@@ -42,6 +54,10 @@
 
   &GridCol {
     grid-column: 1/ 4;
+
+    @media screen and (max-width: 340px) {
+      font-size: 2rem;
+    }
   }
 }
 
