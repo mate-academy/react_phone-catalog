@@ -159,11 +159,7 @@
 .configSelection {
   display: flex;
   gap: 0.8rem;
-
-
-  @include on-tablet {
-    flex-wrap: wrap;
-  }
+  flex-wrap: wrap;
 }
 
 .color {
