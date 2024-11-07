@@ -61,7 +61,8 @@
     "update": "mate-scripts update",
     "postinstall": "npm run update && cypress verify",
     "predeploy": "npm run build",
-    "deploy": "mate-scripts deploy"
+    "deploy": "mate-scripts deploy",
+    "cypress:run": "cypress run --headless"
   },
   "browserslist": {
     "production": [
