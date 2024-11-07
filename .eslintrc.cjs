@@ -11,6 +11,7 @@ module.exports = {
     'plugin:@typescript-eslint/recommended',
     'plugin:prettier/recommended',
     'plugin:cypress/recommended',
+    "prettier",
   ],
   overrides: [
     {
@@ -61,14 +62,13 @@ module.exports = {
       { blankLine: 'always', prev: 'directive', next: '*' },
       { blankLine: 'always', prev: 'block-like', next: '*' },
     ],
-    'implicit-arrow-linebreak:': 0,
+    'implicit-arrow-linebreak': 0,
 
     // React
     'react/prop-types': 0,
     'react/require-default-props': 0,
     'import/prefer-default-export': 0,
-    'standard/no-callback-literal': 0,
-    'react/jsx-filename-extension': [1, { extensions: ['.tsx'] }],
+    'react/jsx-filename-extension': [1, { extensions: ['.tsx', '.jsx'] }],
     'react/destructuring-assignment': 0,
     'react/jsx-props-no-spreading': 0,
     'react/state-in-constructor': [2, 'never'],
@@ -98,6 +98,14 @@ module.exports = {
         },
       },
     ],
+    'import/extensions': [
+      'error',
+      'never',
+      {
+        'ts': 'never',
+        'tsx': 'never'
+      }
+    ]
   },
   ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.ts', 'src/vite-env.d.ts', 'cypress'],
   settings: {
