@@ -11,7 +11,7 @@ import { Pagination } from '../../components/Pagination';
 import { SortProduct } from '../../components/SortProducts';
 import { useEffect, useMemo } from 'react';
 import { SortBy } from '../../types/SortBy';
-import { Path } from '../../components/Path';
+import { Breadcrumbs } from '../../components/Breadcrumbs';
 import { filterProducts } from '../../utils/filterProducts';
 import { ProductType } from '../../types/ProductType';
 import phones from '../../../public/api/phones.json';
@@ -58,14 +58,14 @@ export const ProductsPage = () => {
   }, [currentPage]);
 
   return (
-    <section className={styles.productsPageContainer}>
-      <Path productList={productList} />
+    <section className={styles.productsPageWrapper}>
+      <Breadcrumbs productList={productList} />
       {productId ? (
         <ProductListContext.Provider value={{ productList }}>
           <Outlet />
         </ProductListContext.Provider>
       ) : (
-        <>
+        <div className={styles.productsPageContainer}>
           <h1 className={styles.title}>{title}</h1>
           <p className={styles.categoryNumModels}>
             {productList.length} models
@@ -81,7 +81,7 @@ export const ProductsPage = () => {
             totalCount={productList.length}
             currentPage={currentPage}
           />
-        </>
+        </div>
       )}
     </section>
   );

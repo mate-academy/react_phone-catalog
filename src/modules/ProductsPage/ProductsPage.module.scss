@@ -2,24 +2,47 @@
 @import "src/styles/typography";
 @import "src/styles/mixins";
 
-.productsPageContainer {
+.productsPageWrapper {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  padding-inline: 1.6rem;
   margin-block: 2.4rem 5.6rem;
-  max-width: $maxContainerWidth;
-  margin-inline: auto;
+
 
   @include on-tablet {
     grid-template-columns: repeat(12, 1fr);
     margin-bottom: 6.4rem;
-    padding-inline: 2.4rem;
   }
 
   @include on-m-desktop {
     grid-template-columns: repeat(24, 1fr);
     margin-bottom: 8.1rem;
-    padding-inline: 3.2rem;
+  }
+}
+
+.productsPageContainer{
+  grid-column: 1 / -1;
+
+  box-sizing: border-box;
+
+  margin-inline: auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+
+  width: 100%;
+
+  max-width: $maxContainerWidth;
+  padding-inline: 1.6rem;
+
+
+
+  @include on-tablet {
+    grid-template-columns: repeat(12, 1fr);
+    padding-inline: 2.4rem;
+  }
+
+  @include on-m-desktop {
+    grid-template-columns: repeat(24, 1fr);
+    padding-inline: 0;
   }
 }
 

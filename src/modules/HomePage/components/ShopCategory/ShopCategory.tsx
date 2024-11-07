@@ -6,6 +6,7 @@ import phone from '../../../../../public/api/phones.json';
 import tablet from '../../../../../public/api/tablets.json';
 import watch from '../../../../../public/api/accessories.json';
 import { ProductType } from '../../../../types/ProductType';
+import { instantScroll } from '../../../../utils/instantScroll';
 
 export const ShopCategory = () => {
   return (
@@ -26,6 +27,7 @@ export const ShopCategory = () => {
               styles.imgContainer,
               styles[`imgContainer${index + 1}`],
             )}
+            onClick={instantScroll}
           >
             <img
               src={`img/${category}-category.webp`}

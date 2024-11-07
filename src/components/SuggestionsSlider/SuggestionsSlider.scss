@@ -2,14 +2,14 @@
 @import "src/styles/mixins";
 
 
-.swiper.hotPrices {
+.swiper.SuggestionsSlider {
   gap: 1.6rem;
   width: 100%;
   height: 100%;
   position: static;
 }
 
-.hotPrices .swiper-slide {
+.SuggestionsSlider .swiper-slide {
   display: flex;
   max-width: 21.4rem;
   height: auto;
@@ -24,12 +24,12 @@
   }
 }
 
-.hotPrices .swiper-wrapper {
+.SuggestionsSlider .swiper-wrapper {
   position: static;
 }
 
 /* stylelint-disable-next-line no-duplicate-selectors */
-.hotPrices .swiper-slide {
+.SuggestionsSlider .swiper-slide {
   &:first-child{
     margin-left: 1.6rem;
 
@@ -56,7 +56,7 @@
 }
 
 
-.hotPrices .swiper-button-prev {
+.SuggestionsSlider .swiper-button-prev {
   right: 6.4rem;
 
   @include on-tablet{
@@ -72,7 +72,7 @@
   }
 }
 
-.hotPrices .swiper-button-next {
+.SuggestionsSlider .swiper-button-next {
   right: 1.6rem;
 
   @include on-tablet{
@@ -88,8 +88,8 @@
   }
 }
 
-.hotPrices .swiper-button-prev,
-.hotPrices .swiper-button-next {
+.SuggestionsSlider .swiper-button-prev,
+.SuggestionsSlider .swiper-button-next {
   grid-row: 1/2;
 
   z-index: 0;
@@ -107,4 +107,3 @@
     background-color: $color-primary;
   }
 }
-

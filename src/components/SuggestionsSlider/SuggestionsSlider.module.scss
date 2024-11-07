@@ -1,7 +1,12 @@
 @import "src/styles/typography";
 @import "src/styles/mixins";
 
-.hotPricesContainer {
+.suggestionsContainer {
+  grid-column: 1/-1;
+
+  max-width: $maxContainerWidth;
+  margin-inline: auto;
+
   position: relative;
   display: grid;
   width: 100%;

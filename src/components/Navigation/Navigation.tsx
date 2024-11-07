@@ -4,6 +4,7 @@ import styles from './Navigation.module.scss';
 import { NavItems } from '../../types/NavItems';
 import React, { ReactNode } from 'react';
 import classNames from 'classnames';
+import { instantScroll } from '../../utils/instantScroll';
 
 interface Props {
   isMobileMenuOpen?: boolean;
@@ -22,8 +23,6 @@ export const Navigation: React.FC<Props> = ({
     if (setIsMobileMenuOpen) {
       setIsMobileMenuOpen(!isMobileMenuOpen);
     }
-
-    window.scroll(0, 0);
   };
 
   return (
@@ -34,6 +33,7 @@ export const Navigation: React.FC<Props> = ({
           className={activeLink}
           key={key}
           onClick={handleClick}
+          onMouseUp={instantScroll}
         >
           {key}
         </NavLink>

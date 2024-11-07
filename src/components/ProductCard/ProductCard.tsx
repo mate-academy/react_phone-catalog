@@ -1,4 +1,4 @@
-import React, { MouseEventHandler } from 'react';
+import React from 'react';
 import { NavLink, useLocation, useSearchParams } from 'react-router-dom';
 
 import styles from './ProductCard.module.scss';
@@ -7,6 +7,7 @@ import classNames from 'classnames';
 import { useCart } from '../../hooks/useCart';
 import { useFavourite } from '../../hooks/useFavourite';
 import { formatSpecText } from '../../utils/formatSpecText';
+import { instantScroll } from '../../utils/instantScroll';
 
 interface Props {
   product: Product;
@@ -34,20 +35,12 @@ export const ProductCard: React.FC<Props> = ({ product, isDiscount }) => {
     category,
   } = product;
 
-  const handleClick: MouseEventHandler<HTMLAnchorElement> = e => {
-    const target = e.target as HTMLElement;
-
-    if (!(target instanceof HTMLButtonElement)) {
-      window.scroll(0, 0);
-    }
-  };
-
   return (
     <NavLink
       to={`/${category}/${id}`}
       state={{ search: searchParams.toString(), pathname, id }}
       className={classNames(styles.productCardContainer)}
-      onClick={handleClick}
+      onClick={instantScroll}
     >
       <div className={styles.productImgContainer}>
         <img src={images[0]} alt={name} className={styles.productImg} />
