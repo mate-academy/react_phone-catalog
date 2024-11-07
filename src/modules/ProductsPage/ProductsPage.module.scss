@@ -2,19 +2,24 @@
 @import "src/styles/typography";
 @import "src/styles/mixins";
 
-.phonePageContainer {
+.productsPageContainer {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  padding: 2.4rem 1.6rem 6.4rem;
+  padding-inline: 1.6rem;
+  margin-block: 2.4rem 5.6rem;
   max-width: $maxContainerWidth;
   margin-inline: auto;
 
   @include on-tablet {
     grid-template-columns: repeat(12, 1fr);
+    margin-bottom: 6.4rem;
+    padding-inline: 2.4rem;
   }
 
   @include on-m-desktop {
     grid-template-columns: repeat(24, 1fr);
+    margin-bottom: 8.1rem;
+    padding-inline: 3.2rem;
   }
 }
 

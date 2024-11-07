@@ -40,6 +40,7 @@ export const ProductPageSlider: React.FC<Props> = ({ productName, images }) => {
         // @ts-ignore
         onSwiper={setThumbsSwiper}
         spaceBetween={10}
+        // direction={'vertical'}
         slidesPerView={5}
         freeMode={true}
         watchSlidesProgress={true}

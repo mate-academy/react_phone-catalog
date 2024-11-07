@@ -58,7 +58,7 @@ export const ProductsPage = () => {
   }, [currentPage]);
 
   return (
-    <section className={styles.phonePageContainer}>
+    <section className={styles.productsPageContainer}>
       <Path productList={productList} />
       {productId ? (
         <ProductListContext.Provider value={{ productList }}>

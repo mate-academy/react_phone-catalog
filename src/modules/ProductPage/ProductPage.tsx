@@ -8,6 +8,7 @@ import classNames from 'classnames';
 import { useCart } from '../../hooks/useCart';
 import { useFavourite } from '../../hooks/useFavourite';
 import { formatSpecText } from '../../utils/formatSpecText';
+import { idGenerator } from '../../utils/idGenerator';
 
 export const ProductPage = () => {
   const { state } = useLocation();
@@ -96,6 +97,7 @@ export const ProductPage = () => {
               ></span>
             ))}
           </div>
+          <span className={styles.randomID}>{idGenerator()}</span>
         </div>
         <div className={styles.configContainer}>
           <span className={styles.subTitle}>Select capacity</span>
