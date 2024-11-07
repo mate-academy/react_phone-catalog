@@ -63,8 +63,7 @@
     "postinstall": "npm run update && cypress verify",
     "predeploy": "npm run build",
     "deploy": "mate-scripts deploy",
-    "cypress:run": "cypress run --headless",
-    "test-with-xvfb": "node xvfb-setup.js"
+    "cypress:run": "cypress run --headless"
   },
   "browserslist": {
     "production": [
