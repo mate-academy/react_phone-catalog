@@ -2,7 +2,7 @@
 
 .container {
   box-sizing: border-box;
-  width: 100%;
+  max-width: 1136px;
 
   @media (max-width: $tablet-breakpoint) {
     padding: 0 24px;
@@ -11,8 +11,6 @@
   @media (max-width: $mobile-breakpoint) {
     padding: 0 16px;
   }
-
-  background-color: aqua;
 }
 
 .title {
@@ -27,12 +25,14 @@
   }
 }
 
-.productContainer {
-  @include flex-center;
-
-  flex-direction: row;
+.productsContainer {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  width: 100%;
 
   @media (max-width: $mobile-breakpoint) {
-    flex-direction: column;
+    grid-template-columns: 1fr;
+    gap: 32px;
   }
 }

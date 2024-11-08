@@ -33,7 +33,6 @@
   width: 208px;
   height: 196px;
   object-fit: contain;
-  transition: transform 0.3s ease;
 
   @media (max-width: $tablet-breakpoint) {
     width: 173px;
@@ -45,9 +44,7 @@
     height: 129px;
   }
 
-  &:hover {
-    transform: scale(1.1);
-  }
+  @include hover-scale-10;
 }
 
 .title {
