@@ -16,8 +16,8 @@ interface Props {
 
 export const ProductCard: React.FC<Props> = ({ product, isDiscount }) => {
   const [searchParams] = useSearchParams();
-  const { pathname } = useLocation();
   const [isAddedToCart, addToCart] = useCart(product.id, product);
+  const { pathname } = useLocation();
   const [isAddedToFavourite, addToFavourite] = useFavourite(
     product.id,
     product,
@@ -38,7 +38,7 @@ export const ProductCard: React.FC<Props> = ({ product, isDiscount }) => {
   return (
     <NavLink
       to={`/${category}/${id}`}
-      state={{ search: searchParams.toString(), pathname, id }}
+      state={{ search: searchParams.toString(), pathname }}
       className={classNames(styles.productCardContainer)}
       onClick={instantScroll}
     >

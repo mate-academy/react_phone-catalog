@@ -1,4 +1,9 @@
-import { Link, Navigate, useLocation, useNavigate } from 'react-router-dom';
+import {
+  Navigate,
+  useLocation,
+  useNavigate,
+  useParams,
+} from 'react-router-dom';
 
 import styles from './ProductPage.module.scss';
 import { useContext } from 'react';
@@ -14,10 +19,20 @@ import { SuggestionsSlider } from '../../components/SuggestionsSlider';
 import { SliderTitle } from '../../types/SliderTitle';
 
 export const ProductPage = () => {
-  const { state } = useLocation();
+  const { state, pathname } = useLocation();
+  const { productId: id = '' } = useParams();
   const { productList } = useContext(ProductListContext);
   const navigate = useNavigate();
-  const { search, pathname, id } = state;
+
+  const prevPath = pathname
+    .split('/')
+    .filter(path => path !== '')
+    .map(path => '/' + path)
+    .slice(0, -1)
+    .join('');
+
+  const { search, pathname: path } = state ?? { search: '', pathname: '' };
+
   const product = productList.find(item => item.id === id);
 
   const [isAddedToCart, addToCart] = useCart(id, product);
@@ -51,6 +66,17 @@ export const ProductPage = () => {
     item => item.namespaceId === product.namespaceId,
   );
 
+  const goBack = () => {
+    if (path) {
+      navigate(-1);
+    } else {
+      navigate({
+        pathname: prevPath,
+        search,
+      });
+    }
+  };
+
   const changeSpec = (
     availableCapacity: string = capacity,
     availableColor: string = color,
@@ -67,7 +93,7 @@ export const ProductPage = () => {
     navigate(`../${differentProductId}`, {
       state: {
         search,
-        pathname,
+        pathname: prevPath,
         id: differentProductId,
       },
     });
@@ -76,10 +102,10 @@ export const ProductPage = () => {
   return (
     <>
       <section className={styles.container}>
-        <Link to={{ pathname, search }} className={styles.goBack}>
+        <div onClick={goBack} className={styles.goBack}>
           <span className={styles.arrowLeft}></span>
           <span className={styles.backText}>Back</span>
-        </Link>
+        </div>
         <h2 className={styles.productTitle}>{name}</h2>
         <ProductPageSlider productName={name} images={images} />
 

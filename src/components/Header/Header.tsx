@@ -42,7 +42,7 @@ export const Header: React.FC<Props> = ({
 
         <div className={styles.buttonsContainer}>
           <Link
-            to="/fovourites"
+            to="/favorites"
             className={classNames('buttonFavourite', styles.button)}
             aria-label="My favourite products"
           >

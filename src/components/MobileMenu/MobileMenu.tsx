@@ -32,7 +32,7 @@ export const MobileMenu: React.FC<Props> = ({
 
       <div className={styles.mobileMenuBottom}>
         <Link
-          to="/favourites"
+          to="/favorites"
           className={classNames('buttonFavourite', styles.mobileMenuBottomBtn)}
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
         >
