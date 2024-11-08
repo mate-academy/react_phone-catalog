@@ -145,7 +145,7 @@
   color: $color-secondary;
 }
 
-.randomID{
+.randomID {
   position: absolute;
   color: $color-icons;
   right: 0;
@@ -375,16 +375,15 @@
     font-size: 2.2rem;
     line-height: 2.81rem;
     color: $color-secondary;
+    z-index: 0;
 
     &::after {
       position: absolute;
       top: 45%;
       left: 0;
-
       mix-blend-mode: color-dodge;
-
-
       content: '';
+      z-index: 0;
       width: 100%;
       border-top: 1px solid $color-secondary;
     }

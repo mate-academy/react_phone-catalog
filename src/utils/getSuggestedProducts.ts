@@ -10,8 +10,8 @@ export const getSuggestedProducts = () => {
 
   const suggestProducts = [
     ...shuffle(phones, 4),
-    ...shuffle(tablets, 3),
-    ...shuffle(accessories, 3),
+    ...shuffle(tablets, 4),
+    ...shuffle(accessories, 4),
   ];
 
   return shuffle(suggestProducts);
