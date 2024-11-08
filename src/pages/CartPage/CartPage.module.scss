@@ -42,6 +42,7 @@
 
   &__totalItems {
     @include mix.bodyText;
+
     color: v.$colorSecondary;
   }
 
@@ -75,7 +76,9 @@
 
   &__cross {
     display: block;
+
     @include mix.square(16px);
+
     background-image: url(./../../assets/images/icons/cross.svg);
     background-repeat: no-repeat;
     background-position: center;
@@ -87,6 +90,7 @@
 
   &__img {
     @include mix.square(80px);
+  
     object-fit: contain;
   }
 
@@ -100,7 +104,9 @@
 
   &__button {
     cursor: pointer;
+
     @include mix.square(32px);
+  
     line-height: 18px;
     font-size: 18px;
     color: v.$colorWhite;
@@ -121,8 +127,11 @@
 
   &__count {
     @include mix.square(32px);
+
     display: block;
+
     @include mix.bodyText;
+    
     padding-top: 7px;
     text-align: center;
   }

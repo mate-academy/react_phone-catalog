@@ -19,10 +19,18 @@ export const Footer: React.FC = () => {
       <hr className={styles.footer__line} />
       <img src={Logo} alt="logo" className={styles.footer__logo} />
       <div className={styles.footer__links}>
-        <Link to="" className={styles.footer__linkText}>
+        <Link
+          to="https://github.com/yuron-maker"
+          target="_blank"
+          className={styles.footer__linkText}
+        >
           Github
         </Link>
-        <Link to="" className={styles.footer__linkText}>
+        <Link
+          to="https://www.instagram.com/yurko_kom/"
+          target="_blank"
+          className={styles.footer__linkText}
+        >
           Contacts
         </Link>
         <Link to="" className={styles.footer__linkText}>
