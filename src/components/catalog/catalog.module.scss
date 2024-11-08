@@ -1,0 +1,23 @@
+.catalog {
+  @include flex-column;
+
+  row-gap: var(--size-40);
+  margin-block: var(--size-24) var(--size-80);
+
+  .wrapper {
+    @include flex-column;
+
+    row-gap: var(--size-24);
+
+    .list {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(272px, 1fr));
+      gap: var(--size-40) var(--size-16);
+
+      @include mobile {
+        grid-template-columns: 288px;
+        justify-content: center;
+      }
+    }
+  }
+}

@@ -1,0 +1,34 @@
+.cartEmpty {
+  margin-inline: auto;
+  height: 752px;
+  text-align: center;
+
+  .wrapper {
+    @include flex-center-column;
+
+    .caption {
+      font-size: clamp(var(--size-22), 0.75rem + 3.13vw, var(--size-32));
+      line-height: 1.28;
+      letter-spacing: -0.01em;
+      color: var(--text-color);
+
+      span {
+        color: var(--secondary);
+
+        b {
+          color: var(--green);
+        }
+      }
+    }
+
+    img {
+      @include size(100%, 80%);
+
+      object-fit: contain;
+    }
+  }
+
+  @include mobile {
+    height: 602px;
+  }
+}

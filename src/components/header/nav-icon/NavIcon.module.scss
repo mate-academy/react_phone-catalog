@@ -1,0 +1,69 @@
+.navIcon {
+  @include flex-center;
+  @include size(var(--size-64), var(--size-64));
+
+  position: relative;
+  border-inline: var(--border-icon);
+
+  &::after {
+    @include pseudo(0, 3px, var(--text-color));
+  }
+
+  &.active {
+    border-inline-color: var(--text-color);
+
+    &::after {
+      width: 100%;
+    }
+
+    .wrapper .countFavorite {
+      background-color: var(--primary);
+    }
+  }
+
+  .wrapper {
+    position: relative;
+    display: flex;
+
+    .count {
+      @include flex-center;
+      @include size(var(--size-14), var(--size-14));
+
+      position: absolute;
+      color: var(--white);
+      background-color: var(--red);
+      border-radius: 50%;
+      font-size: 9px;
+      bottom: 0.5rem;
+      left: 0.5rem;
+    }
+  }
+
+  &:active {
+    border-inline-color: var(--text-color);
+    background-color: var(--hover-bg);
+  }
+
+  @include hover {
+    border-inline-color: var(--text-color);
+    background-color: var(--hover-bg);
+
+    &::after {
+      width: 100%;
+    }
+  }
+
+  @include large {
+    @include size(var(--size-48), var(--size-48));
+  }
+
+  @include mobile {
+    &.active {
+      border-inline-color: currentcolor;
+
+      &::after {
+        width: 100%;
+      }
+    }
+  }
+}

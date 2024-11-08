@@ -1,0 +1,16 @@
+.counter {
+  @include flex-items-center;
+
+  .quantity {
+    width: var(--size-32);
+    text-align: center;
+
+    &:focus-visible {
+      outline-width: 1px;
+    }
+
+    &.error {
+      outline-color: var(--red);
+    }
+  }
+}

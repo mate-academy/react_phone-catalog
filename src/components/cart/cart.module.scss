@@ -1,0 +1,43 @@
+.page {
+  margin-top: var(--size-40);
+  margin-bottom: var(--size-80);
+
+  h2 {
+    font-weight: var(--fw-800);
+    font-size: var(--size-48);
+    line-height: 1.16;
+  }
+
+  .content {
+    display: flex;
+    align-items: flex-start;
+    column-gap: var(--size-16);
+    margin-top: var(--size-32);
+
+    .items {
+      @include flex-column;
+
+      row-gap: var(--size-16);
+      width: 100%;
+    }
+  }
+
+  @include large {
+    margin-bottom: var(--size-64);
+
+    .content {
+      flex-direction: column;
+      align-items: stretch;
+      row-gap: var(--size-32);
+    }
+  }
+
+  @include mobile {
+    margin-bottom: var(--size-56);
+    margin-top: var(--size-24);
+
+    .back {
+      margin-bottom: var(--size-24);
+    }
+  }
+}

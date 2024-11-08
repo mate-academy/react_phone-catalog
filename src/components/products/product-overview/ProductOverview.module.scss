@@ -1,0 +1,28 @@
+.overview {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(512px, 1fr));
+  column-gap: var(--size-64);
+  margin-bottom: var(--size-80);
+
+  h3 {
+    margin-block: var(--size-80) var(--size-16);
+
+    @include large {
+      margin-block: var(--size-64) var(--size-16);
+      font-size: var(--size-20);
+    }
+
+    @include mobile {
+      margin-block: var(--size-56) var(--size-16);
+      font-size: var(--size-20);
+    }
+  }
+
+  hr {
+    margin-bottom: var(--size-32);
+  }
+
+  @include mobile {
+    grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+  }
+}

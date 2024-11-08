@@ -1,0 +1,27 @@
+.quantityControl {
+  display: flex;
+  padding: 7px;
+  border: var(--border-current);
+  color: var(--text-color);
+  background-color: var(--bg-arrow);
+
+  @include hover {
+    border-color: var(--hover-border);
+    background-color: var(--hover-arrow);
+
+    svg {
+      color: currentColor;
+    }
+  }
+
+  &.disabled {
+    border-color: var(--elements);
+    background-color: var(--bg-primary);
+    cursor: not-allowed;
+
+    svg {
+      color: var(--icons);
+      cursor: not-allowed;
+    }
+  }
+}

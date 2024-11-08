@@ -1,0 +1,27 @@
+.categorySection {
+  margin-bottom: var(--size-80);
+
+  h2 {
+    margin-bottom: var(--size-24);
+  }
+
+  .products {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(178px, 1fr));
+    justify-content: center;
+    column-gap: var(--size-16);
+  }
+
+  @include large {
+    margin-bottom: var(--size-64);
+  }
+
+  @include mobile {
+    margin-bottom: var(--size-56);
+
+    .products {
+      grid-template-columns: repeat(1, minmax(288px, 386px));
+      row-gap: var(--size-32);
+    }
+  }
+}

@@ -1,0 +1,29 @@
+.productCard {
+  margin-block: var(--size-24) var(--size-80);
+
+  .card {
+    @include flex-column;
+
+    .features {
+      position: relative;
+      display: grid;
+      justify-content: space-between;
+      grid-template-columns: minmax(287px, 464px) minmax(237px, 320px) auto;
+      margin-top: var(--size-40);
+      column-gap: var(--size-16);
+
+      @include mobile {
+        grid-template-columns: 1fr;
+        row-gap: var(--size-40);
+        margin-top: var(--size-32);
+      }
+    }
+
+    h2 {
+      @include mobile {
+        font-size: var(--size-22);
+        line-height: 1.4;
+      }
+    }
+  }
+}

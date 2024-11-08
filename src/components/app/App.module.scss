@@ -1,0 +1,10 @@
+.App {
+  @include flex-column;
+
+  justify-content: flex-start;
+  min-height: 100vh;
+
+  footer {
+    margin-top: auto;
+  }
+}

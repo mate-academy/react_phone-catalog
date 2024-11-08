@@ -1,0 +1,11 @@
+.newModels {
+  margin-bottom: var(--size-80);
+
+  @include large {
+    margin-bottom: var(--size-64);
+  }
+
+  @include mobile {
+    margin-bottom: var(--size-56);
+  }
+}

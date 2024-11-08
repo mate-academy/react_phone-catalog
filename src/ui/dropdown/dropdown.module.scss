@@ -1,0 +1,52 @@
+.dropdown {
+  @include flex-column;
+
+  row-gap: var(--size-4);
+  color: var(--primary);
+  font-weight: var(--fw-700);
+
+  label {
+    color: var(--secondary);
+    font-size: var(--size-12);
+    line-height: 1.25;
+    cursor: pointer;
+  }
+
+  .select {
+    @include size(187px, var(--size-40));
+
+    position: relative;
+    border: var(--border-current);
+    background-color: var(--bg-search);
+    font-weight: var(--fw-600);
+    font-size: var(--size-14);
+    line-height: 1.5;
+
+    @include large {
+      @include size(clamp(136px, 5.31rem + 15.94vw, 187px), var(--size-40));
+    }
+
+    .dropdownTitle {
+      @include flex-items-center;
+
+      justify-content: space-between;
+      padding-inline: var(--size-12);
+    }
+
+    @include hover {
+      border-color: var(--hover-dropdown);
+    }
+
+    &:focus {
+      border-color: var(--primary);
+    }
+  }
+
+  .small {
+    @include size(128px, var(--size-40));
+
+    @include large {
+      @include size(132px, var(--size-40));
+    }
+  }
+}

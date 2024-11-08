@@ -1,0 +1,23 @@
+.input {
+  padding: 5px;
+  border-bottom: var(--border-element);
+  margin-bottom: var(--size-8);
+
+  &::placeholder {
+    color: var(--icons);
+    font-weight: var(--fw-600);
+    font-size: var(--size-12);
+  }
+
+  &:user-valid {
+    outline-color: var(--green);
+  }
+
+  &:user-invalid {
+    outline-color: var(--red);
+  }
+
+  @include hover {
+    border-color: var(--secondary);
+  }
+}

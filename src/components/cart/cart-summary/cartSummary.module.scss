@@ -1,0 +1,50 @@
+.summary {
+  @include flex-center-column;
+
+  padding: 23px;
+  border: var(--border-element);
+  font-size: var(--size-14);
+
+  span {
+    color: var(--text-color);
+    font-weight: var(--fw-800);
+    font-size: var(--size-32);
+    line-height: 1.28;
+    letter-spacing: -0.01em;
+  }
+
+  p {
+    color: var(--secondary);
+    font-weight: var(--fw-500);
+  }
+
+  .separator {
+    @include size(320px, 1px);
+
+    background-color: var(--elements);
+    margin-block: var(--size-24);
+  }
+
+  button {
+    @include size(100%, var(--size-48));
+
+    color: var(--white);
+    background: var(--primary);
+
+    @include hover {
+      background-color: var(--hover-bg-primary);
+      box-shadow: var(--box-shadow);
+    }
+  }
+
+  @include large {
+    .separator {
+      width: 100%;
+      margin-block: var(--size-16);
+    }
+  }
+
+  @include mobile {
+    padding: var(--size-24);
+  }
+}

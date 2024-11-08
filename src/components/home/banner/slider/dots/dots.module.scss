@@ -1,0 +1,16 @@
+.dots {
+  @include flex-center;
+
+  column-gap: 10px;
+
+  .dot {
+    height: var(--size-4);
+    background-color: var(--icons);
+    padding-inline: 7px;
+    border-radius: 1px;
+
+    &.active {
+      background-color: var(--text-color);
+    }
+  }
+}

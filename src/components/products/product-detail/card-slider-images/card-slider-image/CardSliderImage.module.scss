@@ -1,0 +1,29 @@
+.imagesList {
+  @include size(var(--size-80), var(--size-80));
+
+  border: var(--border-element);
+
+  img {
+    @include size(100%, 100%);
+
+    object-fit: contain;
+
+    @include hover {
+      scale: 1.2;
+    }
+  }
+
+  @include hover {
+    border-color: var(--text-color);
+    background-color: var(--hover-bg);
+  }
+
+  &:is(.active) {
+    border-color: var(--text-color);
+    background-color: var(--hover-bg);
+  }
+
+  @include mobile {
+    @include size(51px, 49px);
+  }
+}

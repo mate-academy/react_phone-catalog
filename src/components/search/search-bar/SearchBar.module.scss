@@ -1,0 +1,61 @@
+.wrapper {
+  position: relative;
+
+  @include size(100%, 65%);
+  @include flex-items-center;
+
+  &.modal {
+    @include medium {
+      @include pop-up;
+
+      height: 100%;
+      justify-content: center;
+      border: var(--border-element);
+      background: var(--bg-primary);
+    }
+  }
+
+  .searchBar {
+    @include size(100%, 100%);
+
+    padding-inline: var(--size-8);
+    border: var(--border-element);
+    border-radius: var(--size-8);
+    background-color: var(--bg-search);
+    font-weight: var(--fw-600);
+
+    &.active {
+      @include large {
+        position: absolute;
+        left: -180px;
+        display: block;
+        width: 220px;
+        background-color: var(--bg-search);
+      }
+
+      @include medium {
+        @include size(100%, 70%);
+
+        max-width: 290px;
+        left: auto;
+      }
+    }
+
+    &::placeholder {
+      color: var(--secondary);
+    }
+
+    @include hover {
+      border-color: var(--secondary);
+    }
+
+    &:focus {
+      border-color: var(--primary);
+      box-shadow: var(--button-shadow);
+    }
+
+    @include large {
+      display: none;
+    }
+  }
+}

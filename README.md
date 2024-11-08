@@ -2,11 +2,10 @@
 
 Implement the catalog with a shopping cart and favorites page according to one of the next designs:
 
-- [Original](https://www.figma.com/file/T5ttF21UnT6RRmCQQaZc6L/Phone-catalog-(V2)-Original)
-- [Original Dark](https://www.figma.com/file/BUusqCIMAWALqfBahnyIiH/Phone-catalog-(V2)-Original-Dark)
-- [Rounded Blue](https://www.figma.com/file/FRxncC4lfyhs6og1L6FGEU/Phone-catalog-(V2)-Rounded-Style-2?node-id=0%3A1)
-- [Rounded Purple](https://www.figma.com/file/xMK2Dy0mfBbJJSNctmOuLW/Phone-catalog-(V2)-Rounded-Style-1?node-id=0%3A1)
-- [Rounded Orange](https://www.figma.com/file/7JTa0q8n3dTSAyMNaA0u8o/Phone-catalog-(V2)-Rounded-Style-3?node-id=0%3A1)
+- [DEMO LINK](https://Galers.github.io/react_phone-catalog/)
+
+- [Original](<https://www.figma.com/file/T5ttF21UnT6RRmCQQaZc6L/Phone-catalog-(V2)-Original>)
+- [Original Dark](<https://www.figma.com/file/BUusqCIMAWALqfBahnyIiH/Phone-catalog-(V2)-Original-Dark>)
 
 You may also implement color theme switching!
 
@@ -82,7 +81,7 @@ Create `ProductDetailsPage` available at `/product/:productId`.
 2. Use `Loader` when fetching the product details.
 3. Show the details on the page:
    - Display the available colors from colorsAvailable and the capacities from capacityAvailable as radio inputs, allowing the selection of one value from the offered options;
-   - `About` section should contain just a description (without any subheaders);
+   - `About` section should contain just a description (without any subheadings);
    - Choose `Tech specs` you want to show.
 4. Add the ability to choose a picture.
 5. Implement `You may also like` block with products chosen randomly:
@@ -128,7 +127,7 @@ Create `Favorites` page with a `ProductsList` showing favorite products at `/fav
 1. Add `NotFoundPage` containing text `Page not found` for all the other URLs with the link to `HomePage`.
 2. Implement the `Product was not found` state for the `ProductDetailsPage`.
 
-## (*) Advanced tasks
+## (\*) Advanced tasks
 
 - Implement color theme switching!
 - Use [skeletons](https://freefrontend.com/css-skeleton-loadings/) to make loading more natural.

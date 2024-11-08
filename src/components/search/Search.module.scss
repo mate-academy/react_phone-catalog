@@ -1,0 +1,28 @@
+.search {
+  @include flex-items-center;
+  @include size(100%, 100%);
+
+  max-width: 327px;
+  position: relative;
+  padding-left: var(--size-16);
+  border-left: var(--border-element);
+
+  @include large {
+    position: absolute;
+    right: 192px;
+    width: var(--size-48);
+    padding-left: 0;
+    border-left: none;
+  }
+
+  @include medium {
+    top: var(--size-48);
+    right: 0;
+    max-width: 100%;
+    width: 100%;
+
+    &.hidden {
+      visibility: hidden;
+    }
+  }
+}

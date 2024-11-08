@@ -1,0 +1,327 @@
+{
+  "title": "Bienvenue dans le magasin Nice Gadgets!",
+  "select": "Langue du site: Français",
+  "toggleTheme": "Thème basculant",
+  "button": {
+    "add": "Ajouter au panier",
+    "added": "Ajouté",
+    "remove": "Retirer",
+    "ariaLabel": "le produit dans votre"
+  },
+  "nav": {
+    "home": "Accueil",
+    "phones": "Téléphones",
+    "tablets": "Tablettes",
+    "accessories": "Accessoires",
+    "favourites": "Favoris",
+    "label": "Aller à la page {{name}}",
+    "show": "Afficher le menu",
+    "link": {
+      "title": "{{productType}}",
+      "aria": "Description pour {{productType}}"
+    },
+    "productTypes": {
+      "Favourites": "$t(nav.favourites)",
+      "Cart": "$t(cart.title)"
+    }
+  },
+  "cart": {
+    "title": "Panier",
+    "checkout": "Passer à la caisse",
+    "item_one": "Juste pour 1 produit",
+    "item_other": "Juste pour {{item}} produits",
+    "quantity": {
+      "label": "Quantité",
+      "decrease": "Diminuer la quantité",
+      "increase": "Augmenter la quantité "
+    },
+    "empty": {
+      "title": "Votre panier est actuellement vide",
+      "sub": "Ajouter quelque chose pour me rendre",
+      "happy": "heureux!",
+      "alt": "Cart is empty"
+    },
+    "product": {
+      "delete": "Supprimer un produit",
+      "view": "Voir le produit {{name}}",
+      "imageAlt": "Image de {{name}}"
+    },
+    "modal": {
+      "confirmation": "Vider le panier?",
+      "text": "Le paiement n'est pas encore implémenté. Voulez-vous vider le panier?",
+      "accept": "Oui, videz-le!",
+      "cancel": "Annuler",
+      "closeLabel": "Fermer la fenêtre modale",
+      "clearLabel": "Vider le panier si le client confirme la commande",
+      "cancelLabel": "Conserver les articles du panier et fermer la confirmation lors de l'annulation."
+    },
+    "summary": {
+      "checkout": "Paiement",
+      "label": "Ouvrir la fenêtre modale de confirmation de la commande"
+    }
+  },
+  "alert": {
+    "warning": {
+      "severity": "alerte!",
+      "message": "Malheureusement, il n'y a pas beaucoup de produits disponibles."
+    },
+    "info": {
+      "severity": "Notifications",
+      "message": "Il s'agit d'un message d'information pour vous tenir au courant."
+    },
+    "error": {
+      "severity": "erreur",
+      "message": "Une erreur s'est produite. Veuillez réessayer plus tard."
+    }
+  },
+  "catalog": {
+    "title": {
+      "phones": "Téléphones mobiles",
+      "tablets": "Tablettes",
+      "accessories": "Accessoires",
+      "favourites": "Favoris"
+    },
+    "noItem": "Désolé, aucune {{title}} n'est actuellement disponible.",
+    "other": {
+      "phones": "téléphones mobiles",
+      "tablets": "tablettes",
+      "accessories": "accessoires"
+    }
+  },
+  "breadcrumbs": {
+    "category": "Aller à la page {{category}}",
+    "titleLink": "Aller à la page d'accueil"
+  },
+  "item": {
+    "item_one": "{{count}} objet",
+    "item_other": "{{count}} objets",
+    "item_zero": ""
+  },
+  "favourites": {
+    "text": "Votre liste de favoris est vide."
+  },
+  "error": {
+    "title": "Quelque chose n'a pas fonctionné... Veuillez réessayer.",
+    "text": "Rechargement",
+    "label": "Recharger la page",
+    "404": "Page non trouvée",
+    "notFound": "Produit non trouvé"
+  },
+  "pagination": {
+    "label": {
+      "previous": "Page précédente",
+      "next": "Page suivante"
+    }
+  },
+  "dropdown": {
+    "name": {
+      "sortByProperties": "Trier par",
+      "sortByPage": "Articles par page"
+    },
+    "ariaLabel": {
+      "select": "Sélectionné par {{option}}",
+      "list": "Liste des options"
+    },
+    "options": {
+      "All": "Tout",
+      "Newest": "Plus récent",
+      "Alphabetically": "Alphabétique",
+      "Expensive": "Chers",
+      "Cheapest": "Moins chers",
+      "Discount": "Remise",
+      "Screen": "Écran",
+      "Capacity": "Capacité",
+      "RAM": "Mémoire vive",
+      "64": "64",
+      "32": "32",
+      "16": "16",
+      "8": "8",
+      "4": "4"
+    }
+  },
+  "footer": {
+    "GitHub": "GitHub",
+    "Rights": "Droits",
+    "Contact": "Contacts",
+    "aria": {
+      "nav": "Navigation en pied de page",
+      "visit": "Visiter {{name}}",
+      "go": "Aller à {{name}}",
+      "back": "Défilement vers le haut de la page"
+    },
+    "back": "Retour en haut de page"
+  },
+  "logo": {
+    "alt": "Nice Gadgets!",
+    "title": "$t(nav.home) page"
+  },
+  "home": {
+    "new": "Modèles tout nouveaux",
+    "hot": "Prix intéressants",
+    "banner": {
+      "dots": "Aller à la diapositive {{count}}",
+      "order": {
+        "title": "Désormais disponible dans notre magasin !",
+        "text": "Soyez les premiers !",
+        "order": "Commander maintenant",
+        "aria": "Bouton de commande pour acheter le produit"
+      },
+      "slider": {
+        "previous": "Image précédente",
+        "next": "Image suivante"
+      }
+    },
+    "categories": {
+      "title": "Acheter par catégorie",
+      "alt": "Catégorie {{name}}",
+      "sub": "Aller à la catégorie {{name}}",
+
+      "category": {
+        "phones": "$t(catalog.title.phones)",
+        "tablets": "$t(nav.tablets)",
+        "accessories": "$t(nav.accessories)"
+      },
+      "model_one": "{{count}} modèle",
+      "model_other": "{{count}} modèles"
+    }
+  },
+  "rights": {
+    "userRights": "Droits de l'utilisateur",
+    "titles": {
+      "title1": "1. Droit à l'information",
+      "title2": "2. Droit de retour",
+      "title3": "3. Droit au service de garantie",
+      "title4": "4. Droit à la confidentialité",
+      "title5": "5. Droit au paiement sécurisé",
+      "title6": "6. Droit au support",
+      "title7": "7. Droit à l'échange"
+    },
+    "content": {
+      "text1": "L'utilisateur a le droit de recevoir des informations précises et complètes sur le produit, ses caractéristiques, son prix, sa disponibilité, ses conditions de livraison et ses garanties.",
+      "text2": "L'utilisateur a le droit de retourner le produit dans un délai de 14 jours après l'achat, à condition qu'il n'ait pas été utilisé et qu'il soit conservé dans son état d'origine.",
+      "text3": "Tous les produits sont soumis à un service de garantie selon les termes spécifiés par le fabricant ou le magasin.",
+      "text4": "Les données personnelles de l'utilisateur sont protégées et utilisées uniquement pour le traitement des commandes, conformément à la politique de confidentialité.",
+      "text5": "Tous les paiements effectués via le site Web sont sécurisés, et l'utilisateur a le droit de choisir une méthode de paiement pratique et sécurisée.",
+      "text6": "L'utilisateur a le droit de recevoir un support concernant toute question relative à la commande, au paiement ou à la livraison du produit.",
+      "text7": "L'utilisateur peut échanger le produit en cas de défauts ou de divergences avec les spécifications indiquées."
+    }
+  },
+  "search": {
+    "search": "Recherche",
+    "title": "Aucun résultat trouvé",
+    "text": "Veuillez spécifier votre demande.",
+    "details": "Veuillez préciser votre demande.",
+    "clear": "Effacer la requête de recherche",
+    "focus": "Concentrez-vous sur la requête de recherche"
+  },
+  "banner": {
+    "title": "Maintenant disponible dans notre magasin!👌",
+    "placeholder": "Soyez le premier!"
+  },
+  "value": {
+    "white": "blanc",
+    "pink": "rose",
+    "red": "rouge",
+    "black": "noir",
+    "blue": "bleu",
+    "green": "vert",
+    "yellow": "jaune",
+    "gold": "or",
+    "purple": "violet",
+    "silver": "argent",
+    "coral": "corail",
+    "midnight": "minuit",
+    "midnightgreen": "vert-minuit",
+    "spaceblackk": "noir cosmique",
+    "sierrablue": "bleu-sierra",
+    "graphite": "graphite",
+    "spacegray": "gris cosmique",
+    "space-gray": "$t(value.spacegray)",
+    "starlight": "lumière-d'étoile",
+    "rosegold": "or-rose",
+    "rose gold": "$t(value.rosegold)",
+    "sky-blue": "bleu-ciel",
+    "2TB": "2TB",
+    "1TB": "1TB",
+    "512GB": "512GB",
+    "256GB": "256GB",
+    "128GB": "128GB",
+    "64GB": "64GB",
+    "32GB": "32GB",
+    "44mm": "44mm",
+    "42mm": "42mm",
+    "40mm": "40mm",
+    "38mm": "38mm"
+  },
+  "back": {
+    "title": "Retour",
+    "aria": "Retour à la page précédente",
+    "sub": "$t(back.title)"
+  },
+  "contact": {
+    "title": "Informations de contact",
+    "follow": "Suivez-moi",
+    "address": "Adresse : Kyiv, Ukraine",
+    "greeting": {
+      "greet_1": "Bonjour!👋🏿",
+      "greet_2": "Je suis heureux que tu sois là!🎉",
+      "greet_3": "J'espère que vous avez",
+      "greet_4": "aimé explorer ce projet",
+      "greet_5": "que j'ai créé avec amour.❤️",
+      "greet_6": "Bon visionnage !👀"
+    }
+  },
+  "form": {
+    "title": "Entrer en contact",
+    "phone": "Téléphone",
+    "email": "Email",
+    "name": "Nom",
+    "send": "envoyer le message…",
+    "message": "Message",
+    "text": "Veuillez remplir le formulaire ci-dessous pour nous envoyer un email et nous vous répondrons dès que possible.",
+    "placeholder": {
+      "name": "Votre nom",
+      "email": "VotreEmail@gmail.com",
+      "number": "+33(7) 11 11 11 11",
+      "write": "Écrivez votre message"
+    },
+    "label": {
+      "name": "$t(form.name)",
+      "email": "$t(form.email)",
+      "phone": "$t(form.phone)"
+    }
+  },
+  "price": {
+    "main": "Prix: {{val, currency(USD)}}",
+    "original": "Original price: {{val, currency(USD)}}"
+  },
+  "product": {
+    "color": "Couleurs disponibles",
+    "capacity": "Sélectionner la capacité",
+    "title": "Vous aimerez aussi",
+    "id": "ID généré",
+    "about": "À propos",
+    "image": {
+      "not": "Aucune image disponible",
+      "select": "Image sélectionnée",
+      "count": "Sélectionner l'image {{count}}",
+      "alt": "Image {{count}}",
+      "main": "Image du produit {{name}}"
+    },
+    "tech": {
+      "title": "Spécifications techniques",
+      "screen": "Écran",
+      "resolution": "Résolution",
+      "processor": "Processeur",
+      "ram": "Mémoire vive",
+      "capacity": "Capacité",
+      "memory": "Mémoire interne",
+      "camera": "Caméra",
+      "zoom": "Zoom",
+      "cell": "Réseau"
+    },
+    "list": {
+      "aria": "Consulter des informations détaillées sur {{name}}"
+    }
+  }
+}

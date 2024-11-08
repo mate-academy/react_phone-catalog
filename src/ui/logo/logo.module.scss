@@ -1,0 +1,7 @@
+.logo {
+  align-content: center;
+
+  @include hover {
+    scale: 1.1;
+  }
+}

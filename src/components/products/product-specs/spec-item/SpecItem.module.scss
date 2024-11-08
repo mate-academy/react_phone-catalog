@@ -1,0 +1,13 @@
+.spec {
+  display: flex;
+  justify-content: space-between;
+  column-gap: var(--size-8);
+
+  p:first-of-type {
+    color: var(--secondary);
+  }
+
+  p:last-of-type {
+    color: var(--text-color);
+  }
+}

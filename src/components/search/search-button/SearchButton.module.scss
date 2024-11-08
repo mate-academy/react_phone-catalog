@@ -1,0 +1,69 @@
+.icon {
+  @include flex-center;
+
+  position: absolute;
+  right: 0;
+  background: none;
+
+  @include hover {
+    svg {
+      scale: 1.1;
+    }
+  }
+}
+
+.close {
+  height: 40px;
+  padding: var(--size-8);
+
+  @include large {
+    right: var(--size-8);
+  }
+
+  @include medium {
+    @include size(var(--size-32), var(--size-32));
+
+    position: relative;
+    right: -130px;
+  }
+}
+
+.search {
+  padding: var(--size-12);
+  visibility: visible;
+
+  @include large {
+    @include size(var(--size-48), 100%);
+
+    left: 0;
+    right: 0;
+    border-inline: var(--border-icon);
+
+    &.disabled {
+      display: none;
+    }
+
+    &::after {
+      @include pseudo(0, 3px, var(--text-color));
+    }
+
+    @include hover {
+      border-color: var(--text-color);
+
+      &::after {
+        width: 100%;
+      }
+    }
+  }
+
+  @include medium {
+    right: 192px;
+    bottom: var(--size-48);
+    left: auto;
+    border-inline: var(--border-icon);
+  }
+
+  @include small {
+    right: 144px;
+  }
+}

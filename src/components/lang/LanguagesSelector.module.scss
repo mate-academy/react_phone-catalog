@@ -1,0 +1,73 @@
+.menu {
+  li {
+    position: relative;
+  }
+
+  .list {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: var(--size-64);
+    height: var(--size-64);
+    position: relative;
+    border-inline: var(--border-icon);
+
+    @include hover {
+      border-inline-color: var(--text-color);
+      background-color: var(--hover-bg);
+    }
+
+    li {
+      display: inline-flex;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
+      cursor: pointer;
+
+      span {
+        display: inline-block;
+        align-content: center;
+
+        @include large {
+          width: 32px;
+        }
+      }
+
+      @include hover {
+        .subMenu {
+          display: block;
+        }
+      }
+
+      .subMenu {
+        display: none;
+        position: absolute;
+        top: 64px;
+        min-width: 94px;
+        border: var(--border-element);
+        box-shadow: 0 2px 15px 0 rgba(0, 0, 0, 0.05);
+        background: var(--bg-primary);
+
+        @include fade-in;
+
+        &.open {
+          display: block;
+        }
+
+        li {
+          display: flex;
+          margin-block: 8px;
+        }
+
+        @include large {
+          top: 48px;
+        }
+      }
+    }
+
+    @include large {
+      width: 48px;
+      height: 48px;
+    }
+  }
+}

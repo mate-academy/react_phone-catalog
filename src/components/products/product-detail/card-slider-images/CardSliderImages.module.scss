@@ -1,0 +1,14 @@
+.images {
+  display: grid;
+  grid-template-columns: var(--size-80) repeat(1, 1fr);
+  grid-template-rows: repeat(5, var(--size-80));
+  gap: var(--size-16);
+
+  @include fade-in;
+
+  @include mobile {
+    grid-template-columns: repeat(auto-fit, minmax(51px, 1fr));
+    grid-template-rows: auto;
+    gap: var(--size-16) var(--size-8);
+  }
+}

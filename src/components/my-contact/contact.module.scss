@@ -1,0 +1,20 @@
+.contact {
+  @include flex-column;
+
+  row-gap: var(--size-48);
+
+  .wrapper {
+    display: flex;
+    column-gap: var(--size-32);
+  }
+
+  @include large {
+    row-gap: var(--size-32);
+  }
+}
+
+@media (max-width: 740px) {
+  .contact .wrapper {
+    flex-direction: column;
+  }
+}

@@ -1,0 +1,18 @@
+.option {
+  align-content: center;
+  height: var(--size-32);
+  padding-inline: var(--size-12);
+  color: var(--secondary);
+
+  @include hover {
+    color: var(--text-color);
+    background-color: var(--hover-bg);
+    font-weight: var(--fw-600);
+  }
+
+  &:is(.active, :focus) {
+    color: var(--text-color);
+    background-color: var(--hover-bg);
+    font-weight: var(--fw-600);
+  }
+}

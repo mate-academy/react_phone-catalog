@@ -1,0 +1,36 @@
+.pagination {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: var(--size-8);
+
+  .item {
+    display: inline-flex;
+    border: var(--border-cart);
+    background-color: var(--bg-cart);
+    text-align: center;
+    transition-duration: var(--transition-duration);
+
+    @include hover {
+      border-color: var(--hover-border);
+      background-color: var(--hover-arrow);
+    }
+
+    a {
+      @include size(var(--size-32), var(--size-32));
+
+      align-content: center;
+      color: var(--text-color);
+    }
+
+    &.active {
+      border-color: var(--primary);
+      background-color: var(--primary);
+      box-shadow: var(--button-shadow);
+
+      a {
+        color: var(--white);
+      }
+    }
+  }
+}

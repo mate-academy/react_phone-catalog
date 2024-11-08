@@ -1,0 +1,7 @@
+.specs {
+  @include flex-column;
+
+  row-gap: var(--size-8);
+  text-align: end;
+  text-wrap: balance;
+}

@@ -1,0 +1,38 @@
+.greeting {
+  @include flex-center-column;
+
+  color: var(--text-color);
+  white-space: nowrap;
+  overflow: hidden;
+  transition-duration: var(--transition-duration);
+  animation: animated-text 4s linear 1s 1 normal both;
+
+  span {
+    --bg-h: 100%;
+
+    width: fit-content;
+    background: var(--gradient) no-repeat right bottom / 0 var(--bg-h);
+    transition-duration: 0.35s;
+
+    @include hover {
+      background-size: 100% var(--bg-h);
+      background-position-x: left;
+      color: var(--white);
+    }
+  }
+
+  span:where(:focus-visible) {
+    background-size: 100% var(--bg-h);
+    background-position-x: left;
+    color: var(--white);
+  }
+}
+
+@keyframes animated-text {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}

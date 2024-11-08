@@ -1,0 +1,43 @@
+.slider {
+  @include flex-column;
+
+  row-gap: var(--size-18);
+  margin-top: var(--size-56);
+  font-weight: var(--fw-700);
+  font-size: var(--size-32);
+
+  .wrapper {
+    display: flex;
+    column-gap: var(--size-16);
+
+    .content {
+      display: flex;
+      overflow: hidden;
+      background-color: var(--black-light);
+    }
+  }
+
+  @include large {
+    margin-top: var(--size-32);
+    row-gap: var(--size-8);
+
+    .wrapper {
+      column-gap: var(--size-20);
+    }
+  }
+
+  @include mobile {
+    row-gap: var(--size-20);
+    margin-inline: -5vw;
+
+    .wrapper {
+      .content {
+        flex-direction: column;
+      }
+
+      button {
+        display: none;
+      }
+    }
+  }
+}

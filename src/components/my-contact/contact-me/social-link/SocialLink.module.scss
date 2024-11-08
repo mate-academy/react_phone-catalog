@@ -1,0 +1,70 @@
+.link a {
+  $social-colors: (
+    'linkedin': #0077b5,
+    'telegram': #0072c6,
+    'twitter': #55acee,
+    'facebook': #3b5999,
+  );
+
+  @include flex-center;
+  @include size(var(--size-48), var(--size-48));
+
+  position: relative;
+  border-radius: 100%;
+  background: var(--white);
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: -1px;
+    left: 50%;
+    display: block;
+    width: 0;
+    height: 0;
+    border-radius: 100%;
+    transition-duration: var(--transition-duration);
+  }
+
+  svg {
+    @include size(percentage(0.4), percentage(0.4));
+
+    fill: var(--black-light);
+    position: relative;
+    z-index: 1;
+    transition-duration: var(--transition-duration);
+  }
+
+  @include hover {
+    svg {
+      fill: var(--white);
+    }
+
+    &::after {
+      @include size(calc(100% + 2px), calc(100% + 2px));
+
+      margin-left: calc(-50% - 1px);
+    }
+  }
+
+  &:focus {
+    svg {
+      fill: var(--white);
+    }
+
+    &::after {
+      @include size(calc(100% + 2px), calc(100% + 2px));
+
+      margin-left: calc(-50% - 1px);
+    }
+  }
+
+  @each $name, $color in $social-colors {
+    &.#{$name} {
+      color: $color;
+
+      &::after {
+        background: $color;
+      }
+    }
+  }
+}

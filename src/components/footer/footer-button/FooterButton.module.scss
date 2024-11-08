@@ -1,0 +1,29 @@
+.button {
+  @include flex-items-center;
+
+  column-gap: var(--size-16);
+  color: var(--secondary);
+  background-color: transparent;
+  font-size: var(--size-12);
+
+  svg {
+    @include size(var(--size-32), var(--size-32));
+
+    border: var(--border-current);
+    padding: var(--size-8);
+    background-color: var(--bg-arrow);
+  }
+
+  @include hover {
+    color: var(--text-color);
+
+    svg {
+      border-color: var(--hover-border);
+      background-color: var(--hover-arrow);
+    }
+  }
+
+  @include mobile {
+    margin: 0 auto;
+  }
+}

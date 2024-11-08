@@ -1,0 +1,221 @@
+*,
+::after,
+::before {
+  box-sizing: border-box;
+}
+
+* :not(dialog) {
+  margin: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-family);
+  font-weight: var(--fw-600);
+  font-size: var(--size-14);
+  color: var(--color-primary);
+  background-color: var(--bg-primary);
+  line-height: 1.5;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+  padding: 0;
+  overflow-wrap: break-word;
+}
+
+p {
+  text-wrap: pretty;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  text-wrap: balance;
+}
+
+figure {
+  margin: 0;
+  height: 100%;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a,
+button,
+input,
+textarea,
+img,
+svg,
+svg * {
+  transition-duration: var(--transition-duration);
+}
+
+input,
+button {
+  border: none;
+  background: none;
+  outline: none;
+  color: var(--text-color);
+  font-family: inherit;
+  font-weight: var(--fw-700);
+  font-size: var(--size-14);
+}
+
+input[type='search']::-webkit-search-decoration,
+input[type='search']::-webkit-search-cancel-button,
+input[type='search']::-webkit-search-results-button,
+input[type='search']::-webkit-search-results-decoration {
+  display: none;
+}
+
+a {
+  color: var(--secondary);
+  text-decoration: none;
+  scroll-behavior: smooth;
+}
+
+:is(a, input, button) {
+  &:focus-visible {
+    border-radius: 3px;
+    outline: var(--outline);
+  }
+}
+
+ul,
+li {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+svg {
+  @include size(var(--size-16), var(--size-16));
+
+  color: var(--text-color);
+}
+
+button {
+  padding: 0;
+  line-height: 1.5;
+  text-align: center;
+  cursor: pointer;
+}
+
+h1,
+h2,
+h3 {
+  font-weight: var(--fw-700);
+  color: var(--text-color);
+}
+
+h1 {
+  font-size: clamp(var(--size-32), 1rem + 5vw, var(--size-48));
+  line-height: 1.16;
+  letter-spacing: -0.01em;
+
+  @include mobile {
+    line-height: 1.28;
+  }
+}
+
+h2 {
+  font-size: clamp(var(--size-22), 0.75rem + 3.13vw, var(--size-32));
+  line-height: 1.28;
+  letter-spacing: -0.01em;
+
+  @include mobile {
+    line-height: 1.4;
+    letter-spacing: 0;
+  }
+}
+
+h3 {
+  font-size: clamp(var(--size-20), 1.13rem + 0.63vw, var(--size-22));
+  line-height: 1.4;
+
+  @include mobile {
+    line-height: 1.3;
+  }
+}
+
+h4 {
+  font-size: clamp(var(--size-16), 0.75rem + 1.25vw, var(--size-20));
+  line-height: 1.3;
+
+  @include mobile {
+    line-height: 1.25;
+  }
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type='number'] {
+  appearance: textfield;
+  -moz-appearance: textfield;
+}
+
+input {
+  padding: 0;
+}
+
+hr {
+  height: 1px;
+  background-color: var(--elements);
+  margin: 0;
+  border: none;
+}
+
+.container {
+  max-width: 1200px;
+  margin-inline: auto;
+  padding-inline: var(--size-32);
+  overflow: hidden;
+
+  @include large {
+    padding-inline: var(--size-24);
+  }
+
+  @include mobile {
+    padding-inline: var(--size-16);
+  }
+}
+
+.visually-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  margin: -1px !important;
+  border: 0 !important;
+  padding: 0 !important;
+  white-space: nowrap !important;
+  clip-path: inset(100%) !important;
+  clip: react(0 0 0 0) !important;
+  overflow: hidden !important;
+}
+
+.hiddenScroll {
+  overflow: hidden;
+}

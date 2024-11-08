@@ -1,0 +1,31 @@
+.link {
+  display: flex;
+  padding: 5px var(--size-12);
+  font-weight: var(--fw-500);
+
+  .wrapper {
+    @include flex-items-center;
+
+    column-gap: var(--size-8);
+
+    .image {
+      @include size(52px, 52px);
+
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: contain;
+    }
+  }
+
+  @include hover {
+    color: var(--text-color);
+    border-radius: var(--size-8);
+    background-color: var(--hover-bg);
+  }
+
+  &:is(.active, :focus-visible) {
+    color: var(--text-color);
+    border-radius: var(--size-8);
+    background-color: var(--hover-bg);
+  }
+}

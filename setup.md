@@ -1,16 +1,21 @@
 ## How to setup the project
+
 There are different ways to set up a brand-new React project. The most common methods are:
 
 ### 1. Create React App _vs_ React + Vite
+
 > Instruction link for CRA: https://create-react-app.dev/docs/getting-started.
 
 > Instruction link for React + Vite: https://vitejs.dev/guide/
 
 It is recommended to select the TypeScript template (`my-app` should be the **real name** of your project app):
+
 ```
 npx create-react-app my-app --template typescript
 ```
+
 OR
+
 ```
 npm create vite my-app -- --template react-ts
 ```
@@ -18,17 +23,24 @@ npm create vite my-app -- --template react-ts
 There is an option to include **Redux** in your template from the beginning. Don't hesitate to add it to the project creation step; it will be easier to implement later.
 
 ### 2. Add Eslint, Prettier, husky, lint-staged
+
 Install needed packages for **Eslint**:
+
 ```
 npm install eslint eslint-plugin-react eslint-plugin-react-hooks eslint-import-resolver-typescript eslint-plugin-import --save-dev
 ```
+
 After installing ESLint, you need to create a configuration file:
+
 ```
-npx eslint --init 
+npx eslint --init
 ```
+
 Then you should have an **eslintrc.json** file in the root. Configure it as follows:
+
 - Copy from one of your homework projects (don't forget to install required packages starting with `@mate-academy/...`)
 - Create your own configuration, for example:
+
 ```
 {
     "env": {
@@ -62,28 +74,36 @@ Then you should have an **eslintrc.json** file in the root. Configure it as foll
     "rules": {
         // Customize rules here as per your project's needs
     }
-} 
+}
 ```
 
-----
+---
+
 **Prettier** Setup (additional but nice to have):
+
 ```
 npm install --save-dev prettier eslint-config-prettier eslint-plugin-prettier
 ```
+
 Create Prettier config file:
+
 ```
 touch .prettierrc
 ```
+
 Add the required configuration (this is a small example; you must check all rules here: https://prettier.io/docs/en/options.html):
+
 ```
 {
-    "printWidth": 100,   
+    "printWidth": 100,
     "tabWidth": 2,
     "singleQuote": true,
     "semi": true,
 }
 ```
+
 Add Prettier to the .eslintrc.json under the **plugins** and **extends** sections:
+
 ```
     ...
     "extends": [
@@ -101,14 +121,19 @@ Add Prettier to the .eslintrc.json under the **plugins** and **extends** section
     ],
     ...
 ```
+
 Install the **Prettier VSCode** extension if you haven’t installed it already.
 
-----
+---
+
 The last step would be to install **Husky**
+
 ```
 npm i husky --save-dev
 ```
+
 Then add following code to you package.json
+
 ```
 {
     ...
@@ -132,21 +157,24 @@ Then add following code to you package.json
 ```
 
 ### 3. Auto deploy
+
 > Check if you have connected your local project to Git (follow the instruction from Github).
 
 You have mostly worked with GitHub Pages for deployment. Here's the instruction to enable auto-deploy using **Github Actions**, so you don't have to run the deploy command on each change in the main branch:
+
 - **First of all follow your old instruction to enable deploy on GH-Pages.**
 - Create folder **.github** in the project root. Then inside create anither folder named **workflows**. Inside the workflows folder, make a file named **deploy.yml**.
 - Your project files structure should be next:
-├── .github
-│   ├── workflows
-│   │   ├── deploy.yml
-├── src
-├── public
-└── .gitignore
-├── package.json
-├── package-lock.json
+  ├── .github
+  │ ├── workflows
+  │ │ ├── deploy.yml
+  ├── src
+  ├── public
+  └── .gitignore
+  ├── package.json
+  ├── package-lock.json
 - Paste the next code inside **deploy.yml** file
+
 ```
 name: Github Page Deploy Workflow
 
@@ -172,7 +200,9 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 ```
+
 Push your change to main branch.
+
 <details>
   <summary>Explanation of the file content if needed</summary>
   - We are having a Github action named Github Page Deploy Workflow.
@@ -186,17 +216,13 @@ Push your change to main branch.
   - Last but not the least, we authenticate the Github actions workflow using secret GITHUB_TOKEN.
 </details>
 
-----
+---
 
-OR you can use easier and most coomon approach to deploy youir applicaiton. 
+OR you can use easier and most coomon approach to deploy youir applicaiton.
 **There are a couple of similar services for faster auto deploy.**
+
 - [Vercel](https://vercel.com)
 - [Render](https://render.com/)
 - [Heroku](https://www.heroku.com/)
 
-Just register on one of them and follow the instruction. It's very clear and straight forward. 
-
-
-
-
-
+Just register on one of them and follow the instruction. It's very clear and straight forward.

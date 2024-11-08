@@ -1,0 +1,26 @@
+.arrows {
+  @include flex-items-center;
+
+  padding-inline: 7px;
+  border: var(--border-current);
+  background-color: var(--bg-arrow);
+
+  @include hover {
+    border-color: var(--hover-border);
+    background-color: var(--hover-arrow);
+
+    svg {
+      color: currentColor;
+    }
+  }
+
+  &.disabled {
+    border-color: var(--elements);
+    background-color: var(--bg-primary);
+    cursor: not-allowed;
+
+    svg {
+      color: var(--elements);
+    }
+  }
+}

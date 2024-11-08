@@ -1,0 +1,26 @@
+.back {
+  @include flex-items-center;
+
+  column-gap: var(--size-4);
+  width: 66px;
+  height: var(--size-16);
+  margin-block: var(--size-40) var(--size-16);
+  color: var(--color-breadcrumb);
+  font-weight: var(--fw-700);
+
+  svg {
+    transition: fill 0.01s ease;
+  }
+
+  @include hover {
+    color: var(--primary);
+
+    svg {
+      fill: var(--primary);
+    }
+  }
+
+  @include mobile {
+    margin-top: var(--size-24);
+  }
+}
