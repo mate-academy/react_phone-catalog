@@ -24,13 +24,16 @@ export const formatSpecText = (spec: string) => {
   if (
     specCopy.includes('GB') ||
     specCopy.includes('TB') ||
+    specCopy.includes('MB') ||
     specCopy.includes('mm')
   ) {
     const i = specCopy.includes('GB')
       ? specCopy.indexOf('GB')
       : specCopy.includes('TB')
         ? specCopy.indexOf('TB')
-        : specCopy.indexOf('mm');
+        : specCopy.includes('MB')
+          ? specCopy.indexOf('MB')
+          : specCopy.indexOf('mm');
 
     return specCopy.slice(0, i) + ' ' + specCopy.slice(i);
   }

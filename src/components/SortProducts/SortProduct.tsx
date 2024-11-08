@@ -107,10 +107,13 @@ export const SortProduct: React.FC<Props> = ({}) => {
   useEffect(() => {
     if (isSortByOpen || isSortItemsOpen) {
       document.addEventListener('touchstart', handleBtnBlurMobile);
+      document.addEventListener('mousedown', handleBtnBlurMobile);
     }
 
-    return () =>
+    return () => {
       document.removeEventListener('touchstart', handleBtnBlurMobile);
+      document.removeEventListener('mousedown', handleBtnBlurMobile);
+    };
   }, [isSortByOpen, isSortItemsOpen]);
 
   const handleBtnBlur: React.FocusEventHandler<HTMLButtonElement> = e => {
