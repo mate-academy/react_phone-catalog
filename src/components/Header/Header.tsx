@@ -42,7 +42,7 @@ export const Header = () => {
         <Link to="/home">
           <img
             className={styles.topbarLogoAndButtons__logo}
-            src="/img/logo.png"
+            src="img/logo.png"
             alt="Nice Gadgets"
           />
         </Link>
@@ -81,7 +81,7 @@ export const Header = () => {
           <NavLink to="/favourites" className={getAdditionalButtonsClass}>
             <img
               className={styles.topbarIcons_icon_inside}
-              src="/img/icons/favourites.svg"
+              src="img/icons/favourites.svg"
               alt="favourites"
             />
             <div className={styles.topbarIcons_icon__amountFav}>
@@ -93,7 +93,7 @@ export const Header = () => {
           <NavLink to="/bucket" className={getAdditionalButtonsClass}>
             <img
               className={styles.topbarIcons_icon_inside}
-              src="/img/icons/shopping-bag.svg"
+              src="img/icons/shopping-bag.svg"
               alt="bucket_header"
             />
             <div className={styles.topbarIcons_icon__amountBucket}>
@@ -108,7 +108,7 @@ export const Header = () => {
           <Link to="/home">
             <img
               className={styles.topbarIcons_menu_button}
-              src="/img/icons/icon-close.svg"
+              src="img/icons/icon-close.svg"
               alt="menu-close"
             />
           </Link>
@@ -116,7 +116,7 @@ export const Header = () => {
           <Link to={'/menu'}>
             <img
               className={styles.topbarIcons_menu_button}
-              src="/img/icons/icon-menu.svg"
+              src="img/icons/icon-menu.svg"
               alt="menu"
             />
           </Link>

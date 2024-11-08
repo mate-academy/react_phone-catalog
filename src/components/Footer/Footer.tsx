@@ -13,7 +13,7 @@ export const Footer = () => {
           <Link to={'../'}>
             <img
               className={styles.footer_wrapper_logo}
-              src="../img/logo.png"
+              src="img/logo.png"
               alt="footer_logo"
               onClick={scrollToTop}
             />
@@ -23,13 +23,13 @@ export const Footer = () => {
             <ul>
               <Link
                 target="_blank"
-                to={'https://github.com/Prokopovych16?tab=repositories'}
+                to={'https://github.com/AvramenkoMarina/react_phone-catalog'}
               >
                 <li>github</li>
               </Link>
               <Link
                 target="_blank"
-                to={'https://github.com/Prokopovych16/react_phone-catalog'}
+                to={'https://github.com/AvramenkoMarina/react_phone-catalog'}
               >
                 <li>contacts</li>
               </Link>
@@ -43,7 +43,7 @@ export const Footer = () => {
             <p>Back to top</p>
             <img
               onClick={scrollToTop}
-              src="../img/icons/Chevron.svg"
+              src="img/icons/Chevron.svg"
               alt="toTop"
             />
           </div>

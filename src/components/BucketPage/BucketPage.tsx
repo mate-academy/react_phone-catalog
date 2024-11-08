@@ -76,7 +76,7 @@ export const BucketPage = () => {
                         // eslint-disable-next-line max-len
                         styles.bucket__generalProducts_products_product_section_close
                       }
-                      src="/img/icons/icon-close.svg"
+                      src="img/icons/icon-close.svg"
                       alt="close"
                     />
                     <img
@@ -84,7 +84,7 @@ export const BucketPage = () => {
                         // eslint-disable-next-line max-len
                         styles.bucket__generalProducts_products_product_section_image
                       }
-                      src={`/${product.image}`}
+                      src={`${product.image}`}
                       alt="img"
                     />
                     <p>{product.name}</p>
@@ -114,9 +114,9 @@ export const BucketPage = () => {
                         }}
                       >
                         {product.quantity === 1 ? (
-                          <img src="/img/icons/Minus-dis.svg" alt="minus" />
+                          <img src="img/icons/Minus-dis.svg" alt="minus" />
                         ) : (
-                          <img src="/img/icons/Minus.svg" alt="minus" />
+                          <img src="img/icons/Minus.svg" alt="minus" />
                         )}
                       </div>
                       <p
@@ -136,7 +136,7 @@ export const BucketPage = () => {
                           handleAddQuantity(product.id);
                         }}
                       >
-                        <img src="/img/icons/Plus.svg" alt="plus" />
+                        <img src="img/icons/Plus.svg" alt="plus" />
                       </div>
                     </div>
                     <h3

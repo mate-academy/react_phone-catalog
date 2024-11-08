@@ -39,13 +39,13 @@ export const ItemsProduct: React.FC<Props> = ({ product, discount }) => {
     <div className={styles.product}>
       <Link
         to={{
-          pathname: `/${product.category}/${product.itemId}`,
+          pathname: `${product.category}${product.itemId}`,
         }} // string
         className={styles.product_image}
       >
         <img
           className={styles.product_image_img}
-          src={product.images ? `${product.images[0]}` : `/${product.image}`}
+          src={product.images ? `${product.images[0]}` : `${product.image}`}
           alt="image/product"
         />
       </Link>
@@ -110,9 +110,9 @@ export const ItemsProduct: React.FC<Props> = ({ product, discount }) => {
           className={styles.product_buttons_favourite}
         >
           {isClickedOnFavourite ? (
-            <img src="/img/icons/FavouritesFilledHeart.svg" alt="like" />
+            <img src="img/icons/FavouritesFilledHeart.svg" alt="like" />
           ) : (
-            <img src="/img/icons/favourites.svg" alt="dislike" />
+            <img src="img/icons/favourites.svg" alt="dislike" />
           )}
         </div>
       </div>

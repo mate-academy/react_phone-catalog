@@ -64,8 +64,8 @@ export const ItemsList = () => {
             <img
               src={
                 currentIndex === 0
-                  ? '/img/icons/Chevron-left-dis.svg'
-                  : '/img/icons/Chevron-left.svg'
+                  ? 'img/icons/Chevron-left-dis.svg'
+                  : 'img/icons/Chevron-left.svg'
               }
               alt="left"
             />
@@ -77,8 +77,8 @@ export const ItemsList = () => {
             <img
               src={
                 currentIndex + itemsPerPage >= newProducts.length
-                  ? '/img/icons/Chevron-right-dis.svg'
-                  : '/img/icons/Chevron-right.svg'
+                  ? 'img/icons/Chevron-right-dis.svg'
+                  : 'img/icons/Chevron-right.svg'
               }
               alt="right"
             />
