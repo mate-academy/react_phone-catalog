@@ -1,0 +1,7 @@
+.bgColor {
+  @include size(30px, 30px);
+
+  display: inline-block;
+  border: 2px solid var(--bg-primary);
+  border-radius: var(--size-36);
+}

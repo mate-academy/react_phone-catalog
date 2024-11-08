@@ -1,13 +1,15 @@
-import { FC, useState } from 'react';
+import { FC, useMemo } from 'react';
+import { useTranslation } from 'react-i18next';
 
-import { ProductList } from '../products-list/ProductList';
-import { Arrows } from '@components/home/banner/slider/arrows/Arrows';
+import { Arrows } from '@components/home/banner/slider/';
 
-import { ArrowLeftIcon } from '@ui/icon/ArrowLeftIcon';
-import { ArrowRightIcon } from '@ui/icon/ArrowRightIcon';
+import { Icons, Title } from '@ui/index';
+
+import { useProductNavigation } from '@hooks/useProductNavigation';
 
 import { TProduct } from '@utils/types/product.type';
 
+import { ProductList } from '../index';
 import styles from './ProductsSlider.module.scss';
 
 type TProps = {
@@ -21,52 +23,50 @@ export const ProductsSlider: FC<TProps> = ({
   products,
   discount = false,
 }) => {
-  const [productIndex, setProductIndex] = useState(0);
+  const productsLength = products.length;
+  const {
+    productIndex,
+    showPrevProduct,
+    showNextProduct,
+    isNextDisabled,
+    isPrevDisabled,
+  } = useProductNavigation({ productsLength });
 
-  const itemsToShow = 1;
+  const displayedProducts = useMemo(
+    () => products.slice(productIndex, productIndex + 4),
+    [productIndex, products],
+  );
+  const { t } = useTranslation();
 
-  const showNextProduct = () => {
-    setProductIndex(index =>
-      index + itemsToShow < products.length ? index + itemsToShow : 0,
-    );
-  };
-
-  const showPrevProduct = () => {
-    setProductIndex(index =>
-      index - itemsToShow >= 0
-        ? index - itemsToShow
-        : products.length - itemsToShow,
-    );
-  };
-
-  const isPrevDisabled = productIndex === 0;
-  const isNextDisabled = productIndex + itemsToShow >= products.length;
+  const localPrevious = t('home.banner.slider.previous');
+  const localNext = t('home.banner.slider.next');
 
   return (
     <div className={styles.products}>
       <div className={styles.wrapper}>
-        <h2>{title}</h2>
+        <Title level={2}>{title}</Title>
+
         <div className={styles.arrows}>
           <Arrows
-            slider={showPrevProduct}
-            label={'Previous Image'}
+            onClick={showPrevProduct}
+            label={localPrevious}
             disabled={isPrevDisabled}
           >
-            <ArrowLeftIcon />
+            <Icons.ArrowLeftIcon />
           </Arrows>
 
           <Arrows
-            slider={showNextProduct}
-            label={'Next Image'}
+            onClick={showNextProduct}
+            label={localNext}
             disabled={isNextDisabled}
           >
-            <ArrowRightIcon />
+            <Icons.ArrowRightIcon />
           </Arrows>
         </div>
       </div>
 
       <div className={styles.list}>
-        {products.slice(productIndex, productIndex + 4).map(product => (
+        {displayedProducts.map(product => (
           <ProductList key={product.id} product={product} discount={discount} />
         ))}
       </div>

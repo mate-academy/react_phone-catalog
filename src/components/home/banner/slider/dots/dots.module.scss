@@ -4,13 +4,13 @@
   column-gap: 10px;
 
   .dot {
-    height: 4px;
+    height: var(--size-4);
     background-color: var(--icons);
     padding-inline: 7px;
     border-radius: 1px;
 
     &.active {
-      background-color: var(--primary);
+      background-color: var(--text-color);
     }
   }
 }

@@ -1,86 +1,52 @@
 .dropdown {
-  display: flex;
-  flex-direction: column;
-  row-gap: 4px;
-  font-weight: var(--fw-700);
+  @include flex-column;
+
+  row-gap: var(--size-4);
   color: var(--primary);
+  font-weight: var(--fw-700);
 
   label {
-    font-size: var(--size-12);
     color: var(--secondary);
+    font-size: var(--size-12);
     line-height: 1.25;
     cursor: pointer;
   }
 
   .select {
-    @include size(187px, 40px);
+    @include size(187px, var(--size-40));
 
-    border: var(--border-icon);
+    position: relative;
+    border: var(--border-current);
+    background-color: var(--bg-search);
     font-weight: var(--fw-600);
     font-size: var(--size-14);
     line-height: 1.5;
-    position: relative;
 
     @include large {
-      @include size(clamp(136px, 5.31rem + 15.94vw, 187px), 40px);
+      @include size(clamp(136px, 5.31rem + 15.94vw, 187px), var(--size-40));
     }
 
     .dropdownTitle {
-      display: flex;
+      @include flex-items-center;
+
       justify-content: space-between;
-      align-items: center;
       padding-inline: var(--size-12);
     }
 
     @include hover {
-      border-color: var(--secondary);
+      border-color: var(--hover-dropdown);
     }
 
     &:focus {
       border-color: var(--primary);
     }
-
-    .optionsList {
-      position: absolute;
-      width: 100%;
-      top: 42px;
-      padding: var(--size-8) 1px;
-      border: var(--border-element);
-      background: var(--white);
-      box-shadow: 0 2px 15px 0 rgba(0, 0, 0, 0.05);
-      text-align: start;
-      z-index: 100;
-
-      .option {
-        display: flex;
-        flex-direction: column;
-        row-gap: 5px;
-
-        li {
-          color: var(--secondary);
-          align-content: center;
-          padding-inline: var(--size-12);
-          height: var(--size-32);
-
-          .active {
-            color: var(--primary);
-          }
-
-          @include hover {
-            font-weight: var(--fw-600);
-            color: var(--primary);
-            background-color: var(--hover-bg);
-          }
-        }
-      }
-    }
   }
 
-  .smallSelect {
-    @include size(128px, 40px);
+  .small {
+    @include size(128px, var(--size-40));
 
     @include large {
-      @include size(132px, 40px);
+      @include size(132px, var(--size-40));
     }
   }
 }

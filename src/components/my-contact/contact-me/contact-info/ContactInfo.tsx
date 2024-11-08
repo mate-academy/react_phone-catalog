@@ -1,32 +1,51 @@
 import { FC } from 'react';
-import { FiMapPin } from 'react-icons/fi';
+import { useTranslation } from 'react-i18next';
 import { CgMail } from 'react-icons/cg';
 import { FaPhoneAlt } from 'react-icons/fa';
+import { FiMapPin } from 'react-icons/fi';
 
 import styles from './ContactInfo.module.scss';
 
-const mailto = 'galosaandrew@gmail.com';
+const CONTACT_EMAIL = 'galosaandrew@gmail.com';
+const CONTACT_PHONE = '+380501111111';
+const ADDRESS_URL = 'https://maps.app.goo.gl/EYTkJAt3WgGURQuM6';
 
 export const ContactInfo: FC = () => {
+  const { t } = useTranslation();
+  const localEmail = t('form.email');
+  const localPhone = t('form.phone');
+  const localAddress = t('contact.address');
+
   return (
     <>
       <div className={styles.info}>
-        <CgMail />
-        <a href={`mailto:${mailto}`}>{mailto}</a>
+        <a
+          href={`mailto:${CONTACT_EMAIL}`}
+          aria-label={`${localEmail}: ${CONTACT_EMAIL}`}
+        >
+          <CgMail aria-hidden="true" />
+          <span>{CONTACT_EMAIL}</span>
+        </a>
       </div>
       <div className={styles.info}>
-        <FaPhoneAlt />
-        <a href="tel:+380501111111">Phone: +380 50 111 11 11</a>
+        <a
+          href="tel:+380501111111"
+          aria-label={`${localPhone}: ${CONTACT_PHONE}`}
+        >
+          <FaPhoneAlt aria-hidden="true" />
+          <span>{`${localPhone}: ${CONTACT_PHONE}`}</span>
+        </a>
       </div>
       <div className={styles.info}>
         <address>
-          <FiMapPin />
           <a
-            href="https://maps.app.goo.gl/EYTkJAt3WgGURQuM6"
+            href={ADDRESS_URL}
+            aria-label={localAddress}
             target="_blank"
             rel="noreferrer"
           >
-            Address: Kyiv, Ukraine
+            <FiMapPin aria-hidden="true" />
+            {localAddress}
           </a>
         </address>
       </div>

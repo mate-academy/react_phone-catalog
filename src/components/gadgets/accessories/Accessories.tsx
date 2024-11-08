@@ -1,22 +1,23 @@
 import { FC } from 'react';
 
-import { Catalog } from '@components/catalog/Catalog';
+import { Catalog } from '@components/catalog/';
 
-import { useProducts } from '@hooks/useProducts';
-import { filterByCategory } from '@utils/helpers/filterByCategory';
+import { useProducts } from '@hooks/index';
+
+import { filterByCategory } from '@utils/helpers/productUtils';
+import { CatalogTitle } from '@utils/types/catalog.interface';
 
 export const Accessories: FC = () => {
   const { products } = useProducts();
 
-  const accessories = filterByCategory(products, 'accessories');
+  const accessories = filterByCategory(products, CatalogTitle.accessories);
 
   return (
     <Catalog
-      title="Accessories (Apple Watch)"
+      text={CatalogTitle.accessories}
       products={accessories}
-      text="Accessories"
-      dropdown
-      pagination
+      isDropdown
+      isPagination
     />
   );
 };

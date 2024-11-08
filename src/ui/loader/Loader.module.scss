@@ -1,0 +1,36 @@
+.loading {
+  .spinner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: -25px 0 0 -25px;
+    width: 50px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background:
+      radial-gradient(farthest-side, var(--secondary) 94%, #0000)
+        top/var(--size-8) var(--size-8) no-repeat,
+      conic-gradient(#0000 30%, var(--secondary));
+    -webkit-mask: radial-gradient(
+      farthest-side,
+      #0000 calc(100% - var(--size-8)),
+      var(--black) 0
+    );
+    mask: radial-gradient(
+      farthest-side,
+      transparent calc(100% - var(--size-8, 8px)),
+      var(--black, #000) 0
+    );
+    animation: spinner 1s infinite linear;
+
+    @include mobile {
+      top: 35%;
+    }
+  }
+
+  @keyframes spinner {
+    100% {
+      transform: rotate(1turn);
+    }
+  }
+}

@@ -1,0 +1,26 @@
+.error {
+  @include flex-center;
+
+  flex-direction: column;
+  row-gap: var(--size-48);
+  min-height: 65vh;
+  text-wrap: balance;
+  text-align: center;
+
+  .reloadButton {
+    @include flex-center;
+    @include size(290px, 40px);
+
+    column-gap: var(--size-8);
+    border: var(--border-primary);
+    background: var(--primary);
+    color: var(--white);
+
+    @include hover {
+      color: var(--white);
+      border-color: var(--red);
+      background-color: var(--red);
+      box-shadow: var(--button-shadow-red);
+    }
+  }
+}

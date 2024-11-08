@@ -1,27 +1,34 @@
 :root {
-  --primary: #313237;
-  --secondary: #89939a;
-  --icons: #b4bdc3;
-  --elements: #e2e6e9;
-  --hover-bg: #fafbfc;
-  --white: #fff;
+  --primary-light: #313237;
+  --primary-dark: #905bff;
+  --secondary-light: #89939a;
+  --secondary-dark: #75767f;
+  --icons-light: #b4bdc3;
+  --icons-dark: #4a4d58;
+  --elements-light: #e2e6e9;
+  --elements-dark: #3b3e4a;
+  --hover-bg-light: #fafbfc;
+  --hover-primary-dark: #a378ff;
+  --white-light: #fff;
+  --white-dark: #f1f2f9;
+  --black-light: #000;
+  --black-dark: #0f1121;
+  --surface1-dark: #161827;
+  --surface2-dark: #323542;
   --green: #27ae60;
+  --gold: #ffac33;
   --red: #eb5757;
-  --black: #000;
-  --text-shadow: 1px 1px 2px var(--secondary);
-  --button-shadow: 0 3px 13px 0 var(--secondary);
+  --blue: #1b6ef3;
+  --box-shadow-light: 0 3px 13px 0 rgba(23, 32, 49, 0.4);
+  --box-shadow-dark: 0 3px 13px 0 rgb(144, 91, 255, 0.4);
   --button-shadow-red: 0 3px 13px 0 var(--red);
+  --alert-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1),
+    0 2px 4px -2px rgb(0 0 0 / 0.1);
   --filter-primary: brightness(0) saturate(100%) invert(17%) sepia(5%)
     saturate(747%) hue-rotate(193deg) brightness(97%) contrast(91%);
   --filter-red: brightness(0) saturate(100%) invert(28%) sepia(81%)
     saturate(7419%) hue-rotate(355deg) brightness(98%) contrast(123%);
   --gradient: linear-gradient(49deg, #891ce8 0%, #7560fa 47.05%, #e963ff 100%);
-  --bg-image-gradient: linear-gradient(
-    to right,
-    #891ce8,
-    #7560fa 50%,
-    #000 50%
-  );
   --transition-duration: 0.2s;
   --font-family: 'Mont', sans-serif;
   --fw-800: 800;
@@ -30,19 +37,111 @@
   --fw-500: 500;
   --fw-400: 400;
   --size-80: 80px;
+  --size-72: 72px;
   --size-64: 64px;
   --size-56: 56px;
+  --size-52: 52px;
   --size-48: 48px;
+  --size-40: 40px;
+  --size-36: 36px;
   --size-32: 32px;
+  --size-28: 28px;
+  --size-26: 26px;
   --size-24: 24px;
   --size-22: 22px;
   --size-20: 20px;
+  --size-18: 18px;
   --size-16: 16px;
   --size-14: 14px;
   --size-12: 12px;
   --size-8: 8px;
-  --border-element: 1px solid var(--elements);
-  --border-icon: 1px solid var(--icons);
-  --border-primary: 1px solid var(--primary);
+  --size-4: 4px;
+  --outline: 2px solid var(--blue);
+  --border-white: 1px solid var(--white-light);
   --grid-columns-2: repeat(2, 1fr);
+}
+
+.light {
+  --white: var(--white-light);
+  --black: var(--black-light);
+  --primary: var(--primary-light);
+  --text-color: var(--primary-light);
+  --color-primary: var(--primary-light);
+  --color-added-btn: var(--green);
+  --color-breadcrumb: var(--secondary-light);
+  --bg-added-btn: var(--white-light);
+  --bg-primary: var(--white-light);
+  --bg-search: var(--white-light);
+  --bg-navbar: var(--white-light);
+  --bg-arrow: var(--white-light);
+  --bg-cart: var(--white-light);
+  --hover-bg: var(--hover-bg-light);
+  --hover-border: var(--primary-light);
+  --hover-dropdown: var(--secondary-light);
+  --hover-arrow: var(--hover-bg-light);
+  --hover-border-circle: var(--icons-light);
+  --hover-bg-primary: var(--primary-light);
+  --box-shadow: var(--box-shadow-light);
+  --secondary: var(--secondary-light);
+  --icons: var(--icons-light);
+  --elements: var(--elements-light);
+  --hover: var(--hover-bg-light);
+  --text-shadow: 1px 1px 2px var(--secondary-light);
+  --button-shadow: 0 3px 13px 0 var(--secondary-light);
+  --border-primary: 1px solid var(--primary-light);
+  --border-element: 1px solid var(--elements-light);
+  --border-cart: 1px solid var(--elements-light);
+  --border-current: 1px solid var(--icons-light);
+  --border-icon: 1px solid var(--icons-light);
+  --color-start-light: #891ce8;
+  --color-mid-light: #7560fa;
+  --bg-image-gradient: linear-gradient(
+    to right,
+    var(--color-start-light),
+    var(--color-mid-light) 50%,
+    var(--black) 50%
+  );
+}
+
+.dark {
+  --black: var(--black-dark);
+  --white: var(--white-dark);
+  --surface1: var(--surface1-dark);
+  --surface2: var(--surface2-dark);
+  --primary: var(--primary-dark);
+  --text-color: var(--white-dark);
+  --color-primary: var(--black-dark);
+  --color-added-btn: var(--white-dark);
+  --color-breadcrumb: var(--white-dark);
+  --bg-primary: var(--black-dark);
+  --bg-navbar: var(--black-dark);
+  --bg-added-btn: var(--surface2-dark);
+  --bg-search: var(--surface2-dark);
+  --bg-arrow: var(--surface2-dark);
+  --bg-cart: var(--surface1-dark);
+  --hover-bg: var(--surface2-dark);
+  --hover-border: var(--surface2-dark);
+  --hover-arrow: var(--icons-dark);
+  --hover-border-circle: var(--secondary-dark);
+  --hover-bg-primary: var(--hover-primary-dark);
+  --hover-dropdown: var(--icons-dark);
+  --box-shadow: var(--box-shadow-dark);
+  --secondary: var(--secondary-dark);
+  --icons: var(--icons-dark);
+  --elements: var(--elements-dark);
+  --border-primary: 1px solid var(--primary-dark);
+  --border-icon: 1px solid var(--icons-dark);
+  --text-shadow: 1px 1px 2px var(--secondary-dark);
+  --button-shadow: 0 3px 13px 0 var(--secondary-dark);
+  --border-element: 1px solid var(--surface2-dark);
+  --border-current: 1px solid var(--surface2-dark);
+  --border-cart: 1px solid var(--surface1-dark);
+  --color-start-light: #9838ec;
+  --color-mid-light: #9888fd;
+  --bg-image-gradient: linear-gradient(
+    to right,
+    var(--color-start-light),
+    var(--color-mid-light) 50%,
+    var(--white) 50%
+  );
 }

@@ -1,15 +1,13 @@
 import { FC } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Link, useLocation } from 'react-router-dom';
 
-import { HomeIcon } from '@ui/icon/HomeIcon';
-import { ArrowRightIcon } from '@ui/icon/ArrowRightIcon';
-
-import { ROUTES } from '@utils/constants/routes';
+import { Icons } from '@ui/index';
 
 import { regProducts } from '@utils/constants/regProducts';
-import { getUpperCaseFirstLetter } from '@utils/helpers/getUpperCaseFirstLetter';
+import { ROUTES } from '@utils/constants/routes';
 
-import styles from './breadcrumb.module.scss';
+import styles from './Breadcrumb.module.scss';
 
 type TProps = {
   text?: string;
@@ -18,33 +16,36 @@ type TProps = {
 };
 
 export const Breadcrumbs: FC<TProps> = ({ text = '', id, category }) => {
+  const { t } = useTranslation();
   const { pathname } = useLocation();
 
   const regIsActive = regProducts.test(pathname);
-
-  const upperCaseFirstLetter = getUpperCaseFirstLetter(text);
+  const localizedText = t(`nav.${text}`);
+  const localizedCategory = t('breadcrumbs.category', { category });
 
   return (
     <div className={styles.links}>
-      <Link to={ROUTES.HOME} title="Go to the home page">
-        <HomeIcon />
+      <Link to={ROUTES.HOME} title={t('breadcrumbs.titleLink')}>
+        <Icons.HomeIcon />
       </Link>
-      <ArrowRightIcon />
+      <Icons.ArrowRightIcon />
 
       {regIsActive && category ? (
         <>
           <Link
-            to={`/${ROUTES.CATEGORIES}/${category}`}
+            to={`/${category}`}
             className={styles.active}
-            title={`Go to the ${category} page`}
+            title={localizedCategory}
+            aria-label={localizedCategory}
+            aria-current="page"
           >
-            {upperCaseFirstLetter}
+            {localizedText}
           </Link>
-          <ArrowRightIcon />
-          <p>{id}</p>
+          <Icons.ArrowRightIcon aria-hidden="true" />
+          <span>{id}</span>
         </>
       ) : (
-        <p>{upperCaseFirstLetter}</p>
+        <span>{localizedText}</span>
       )}
     </div>
   );

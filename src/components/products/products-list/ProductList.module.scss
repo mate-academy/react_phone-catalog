@@ -1,43 +1,24 @@
 .item {
   @include flex-column;
+  @include pop-up;
 
   row-gap: var(--size-8);
   padding: 31px;
-  border: var(--border-element);
+  border: var(--border-cart);
   transition-duration: var(--transition-duration);
+  background-color: var(--bg-cart);
 
   @include hover {
+    border: var(--border-element);
     box-shadow: 0 2px 16px 0 rgba(0, 0, 0, 0.1);
   }
 
   .product {
-    @include hover {
-      img {
-        scale: 1.1;
-      }
-    }
-
-    .image {
-      @include size(100%, 196px);
-
-      display: flex;
-      justify-content: center;
-      margin-bottom: var(--size-24);
-
-      img {
-        height: 100%;
-        object-fit: contain;
-      }
-
-      @include mobile {
-        @include size(100%, 129px);
-      }
-    }
-
     .title {
-      height: 40px;
+      height: var(--size-40);
       overflow: hidden;
       display: -webkit-box;
+      line-clamp: 2;
       -webkit-line-clamp: 2;
       -webkit-box-orient: vertical;
       text-overflow: ellipsis;
@@ -51,6 +32,12 @@
         @include hover {
           text-shadow: var(--text-shadow);
         }
+      }
+    }
+
+    img {
+      @include hover {
+        scale: 1.1;
       }
     }
   }

@@ -19,11 +19,9 @@ export const getColorHex = (color: ColorNames) => {
     sierrablue: '#BFDAF7',
     graphite: '#4B4E53',
     spacegray: '#717378',
-    'space gray': '#717378',
     'space-gray': '#717378',
     starlight: '#F8F9EC',
     rosegold: '#E0BFB8',
-    'rose gold': '#E0BFB8',
     'sky-blue': '#87CEEB',
   };
 

@@ -1,14 +1,15 @@
 import { FC } from 'react';
 
-import { TSocials } from './socials.data';
-
 import styles from './SocialLink.module.scss';
+import { TSocials } from './socials.data';
 
 type TProps = {
   item: TSocials;
 };
 
 export const SocialLink: FC<TProps> = ({ item }) => {
+  if (!item.href || !item.svg) return null;
+
   return (
     <li className={styles.link}>
       <a

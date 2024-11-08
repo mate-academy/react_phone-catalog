@@ -1,0 +1,25 @@
+.link {
+  position: relative;
+
+  &::after {
+    @include pseudo(0, 3px, var(--text-color));
+
+    top: 15px;
+  }
+
+  &.active {
+    color: var(--text-color);
+
+    &::after {
+      width: 100%;
+    }
+  }
+
+  @include hover {
+    color: var(--text-color);
+
+    &::after {
+      width: 100%;
+    }
+  }
+}

@@ -1,10 +1,9 @@
 import { FC } from 'react';
 
-import styles from './contact.module.scss';
+import { BackArrow } from '@ui/index';
 
-import { ContactMe } from './contact-me/ContactMe';
-import { ContactForm } from './contact-form/ContactForm';
-import { BackArrow } from '@ui/button/arrow/BackArrow';
+import styles from './Contact.module.scss';
+import { ContactForm, ContactMe } from './index';
 
 export const Contact: FC = () => (
   <section className={styles.contact}>

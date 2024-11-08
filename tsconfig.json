@@ -1,15 +1,19 @@
 {
   "extends": "@mate-academy/students-ts-config",
-  "include": ["src"],
+  "include": ["src", "src/@types/i18next.d.ts"],
   "compilerOptions": {
     "sourceMap": false,
-    "types": ["node", "cypress"],
+    "types": ["node", "cypress", "i18next"],
+    "typeRoots": ["./node_modules/@types", "./src/types"],
     "moduleResolution": "node",
     "resolveJsonModule": true,
+    "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
     "baseUrl": "./src",
     "paths": {
       "@components/*": ["components/*"],
+      "@context/*": ["context/*"],
+      "@locales/*": ["locales/*"],
       "@hooks/*": ["hooks/*"],
       "@images/*": ["images/*"],
       "@pages/*": ["pages/*"],

@@ -1,8 +1,15 @@
+import {
+  selectCartTotal,
+  selectTotalQuantity,
+} from '@store/features/cart/cart.slice';
+
 import { useAppSelector } from './typedHooks';
 
 export const useCart = () => {
   const cartItems = useAppSelector(state => state.cart.items);
-  const hasCartProduct = cartItems.length;
+  const totalPrice = useAppSelector(selectCartTotal);
+  const totalQuantity = useAppSelector(selectTotalQuantity);
+  const cartCount = cartItems.length;
 
-  return { cartItems, hasCartProduct };
+  return { cartItems, cartCount, totalPrice, totalQuantity };
 };

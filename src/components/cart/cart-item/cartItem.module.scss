@@ -2,10 +2,10 @@
   @include flex-items-center;
 
   justify-content: space-between;
-  position: relative;
   column-gap: var(--size-24);
   padding: var(--size-24);
-  border: var(--border-element);
+  border: var(--border-cart);
+  background-color: var(--bg-cart);
 
   .wrapper {
     @include flex-items-center;
@@ -14,27 +14,29 @@
 
     .delete {
       display: flex;
-      padding: 0;
 
       svg {
         color: var(--icons);
 
         @include hover {
-          color: var(--primary);
+          color: var(--text-color);
         }
       }
     }
 
-    a:first-of-type {
-      color: var(--primary);
-    }
-
     p:last-child {
+      width: var(--size-80);
+      color: var(--text-color);
       font-weight: var(--fw-800);
       font-size: var(--size-22);
       line-height: 1.4;
       text-align: end;
-      width: var(--size-80);
+    }
+
+    a {
+      @include hover {
+        scale: 1.1;
+      }
     }
 
     .image {
@@ -47,15 +49,11 @@
         height: 66px;
         object-fit: contain;
       }
-
-      @include hover {
-        scale: 1.1;
-      }
     }
 
     .title {
-      color: var(--primary);
       width: 336px;
+      color: var(--text-color);
       text-wrap: balance;
 
       @include hover {
@@ -65,8 +63,8 @@
   }
 
   @include large {
-    padding: var(--size-24);
     justify-content: space-evenly;
+    padding: var(--size-24);
 
     .wrapper .title {
       width: 176px;
@@ -74,9 +72,9 @@
   }
 
   @include mobile {
+    flex-direction: column;
     padding: var(--size-16);
     row-gap: var(--size-16);
-    flex-direction: column;
 
     .wrapper {
       justify-content: space-around;

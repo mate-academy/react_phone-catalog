@@ -1,16 +1,26 @@
 import { FC } from 'react';
+import { useTranslation } from 'react-i18next';
 
-import styles from './order.module.scss';
+import { Title } from '@ui/index';
 
-export const Order: FC = () => (
-  <div className={styles.order}>
-    <h2 className={styles.text}>
-      <span className={styles.gradient}>Now available in our store!</span>
-      👌
-    </h2>
-    <p>Be the first!</p>
-    <button className={styles.button} type="button">
-      Order now
-    </button>
-  </div>
-);
+import styles from './Order.module.scss';
+
+export const Order: FC = () => {
+  const { t } = useTranslation();
+  const localTitle = t('home.banner.order.title');
+  const localText = t('home.banner.order.text');
+  const localOrder = t('home.banner.order.order');
+  const localAria = t('home.banner.order.aria');
+
+  return (
+    <div className={styles.order}>
+      <Title level={3}>
+        <span className={styles.gradient}>{localTitle}</span>👌
+      </Title>
+      <p>{localText}</p>
+      <button className={styles.button} type="button" aria-label={localAria}>
+        {localOrder}
+      </button>
+    </div>
+  );
+};

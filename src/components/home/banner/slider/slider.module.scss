@@ -1,8 +1,8 @@
 .slider {
   @include flex-column;
 
-  row-gap: 18px;
-  margin-top: 56px;
+  row-gap: var(--size-18);
+  margin-top: var(--size-56);
   font-weight: var(--fw-700);
   font-size: var(--size-32);
 
@@ -13,7 +13,7 @@
     .content {
       display: flex;
       overflow: hidden;
-      background-color: var(--black);
+      background-color: var(--black-light);
     }
   }
 

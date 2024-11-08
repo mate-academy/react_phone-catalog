@@ -6,11 +6,11 @@
   border-inline: var(--border-icon);
 
   &::after {
-    @include pseudo(0, 3px, var(--primary));
+    @include pseudo(0, 3px, var(--text-color));
   }
 
   &.active {
-    border-inline-color: var(--primary);
+    border-inline-color: var(--text-color);
 
     &::after {
       width: 100%;
@@ -39,14 +39,18 @@
     }
   }
 
-  &:hover,
   &:active {
-    border-inline-color: var(--primary);
+    border-inline-color: var(--text-color);
     background-color: var(--hover-bg);
   }
 
-  &:hover::after {
-    width: 100%;
+  @include hover {
+    border-inline-color: var(--text-color);
+    background-color: var(--hover-bg);
+
+    &::after {
+      width: 100%;
+    }
   }
 
   @include large {

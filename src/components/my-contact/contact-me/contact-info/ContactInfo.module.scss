@@ -3,40 +3,47 @@
 
   column-gap: var(--size-8);
 
-  &:hover svg {
-    scale: 1.2;
+  @include hover {
+    svg {
+      scale: 1.2;
+    }
   }
 
   a {
+    @include flex-items-center;
+
+    gap: var(--size-8);
     background-image: var(--bg-image-gradient);
     background-size: 200% 100%;
     background-position: -100%;
     position: relative;
     background-clip: text;
     -webkit-text-fill-color: transparent;
+
+    &::before {
+      content: '';
+      background: var(--gradient);
+      display: block;
+      position: absolute;
+      bottom: -3px;
+      left: 0;
+      width: 0;
+      height: 3px;
+      transition-duration: var(--transition-duration);
+    }
+
+    @include hover {
+      background-position: 0;
+    }
+
+    @include hover {
+      &::before {
+        width: 100%;
+      }
+    }
   }
 
-  a::before {
-    content: '';
-    background: var(--gradient);
-    display: block;
-    position: absolute;
-    bottom: -3px;
-    left: 0;
-    width: 0;
-    height: 3px;
-    transition-duration: var(--transition-duration);
-  }
-
-  a:hover {
-    background-position: 0;
-  }
-
-  a:hover::before {
-    width: 100%;
-  }
-
-  & address {
+  address {
     @include flex-items-center;
 
     column-gap: var(--size-8);

@@ -4,16 +4,18 @@ export const useOutsideClick = (callback: () => void) => {
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const handleClick = (event: MouseEvent) => {
+    const onClick = (event: MouseEvent | TouchEvent) => {
       if (ref.current && !ref.current.contains(event.target as Node)) {
         callback();
       }
     };
 
-    document.addEventListener('mousedown', handleClick);
+    document.addEventListener('mousedown', onClick);
+    document.addEventListener('touchstart', onClick);
 
     return () => {
-      document.removeEventListener('mousedown', handleClick);
+      document.removeEventListener('mousedown', onClick);
+      document.removeEventListener('touchstart', onClick);
     };
   }, [ref]);
 

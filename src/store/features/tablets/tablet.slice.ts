@@ -1,8 +1,9 @@
 /* eslint-disable no-param-reassign */
 import { createSlice } from '@reduxjs/toolkit';
 
-import { getTablets } from './getTabletsApi';
 import { TabletState } from '@utils/types/rootState.type';
+
+import { getTablets } from './getTabletsApi';
 
 const initialState: TabletState = {
   tablets: [],

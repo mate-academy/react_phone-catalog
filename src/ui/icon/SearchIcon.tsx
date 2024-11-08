@@ -1,4 +1,4 @@
 import { FC } from 'react';
-import { CiSearch } from 'react-icons/ci';
+import { FiSearch } from 'react-icons/fi';
 
-export const SearchIcon: FC = () => <CiSearch />;
+export const SearchIcon: FC = () => <FiSearch />;

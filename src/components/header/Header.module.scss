@@ -2,7 +2,7 @@
   position: sticky;
   top: 0;
   height: var(--size-64);
-  background-color: var(--white);
+  background-color: var(--bg-navbar);
   z-index: 999;
 
   @include large {

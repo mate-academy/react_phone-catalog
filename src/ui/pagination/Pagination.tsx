@@ -1,43 +1,50 @@
-import { FC } from 'react';
+import { FC, memo } from 'react';
 
-import styles from './pagination.module.scss';
+import cn from 'classnames';
+
+import { SearchLink } from '@components/search/';
+
 import { scrollToTop } from '@utils/helpers/scrollToTop';
+
+import styles from './Pagination.module.scss';
 
 type TProps = {
   itemPerPage: number;
   length: number;
   currentPage: number;
-  handlePagination: (data: number) => void;
+  handlePagination: (page: number) => void;
 };
 
-export const Pagination: FC<TProps> = ({
-  itemPerPage,
-  length,
-  currentPage,
-  handlePagination,
-}) => {
-  const paginationNumbers = [];
+export const Pagination: FC<TProps> = memo(
+  ({ length, currentPage, itemPerPage, handlePagination }) => {
+    const totalPages = Math.ceil(length / itemPerPage);
+    const paginationNumbers = Array.from(
+      { length: totalPages },
+      (_, i) => i + 1,
+    );
 
-  for (let i = 1; i <= Math.ceil(length / itemPerPage); i++) {
-    paginationNumbers.push(i);
-  }
+    const onCLick = (page: number) => {
+      handlePagination(page);
+      scrollToTop();
+    };
 
-  const onCLick = (data: number) => {
-    handlePagination(data);
-    scrollToTop();
-  };
-
-  return (
-    <div className={styles.pagination}>
-      {paginationNumbers.map(data => (
-        <button
-          key={data}
-          onClick={() => onCLick(data)}
-          className={currentPage === data ? styles.active : ''}
-        >
-          {data}
-        </button>
-      ))}
-    </div>
-  );
-};
+    return (
+      <nav aria-label="Pagination Navigation">
+        <ul className={styles.pagination}>
+          {paginationNumbers.map(page => (
+            <li
+              key={page}
+              onClick={() => onCLick(page)}
+              className={cn(styles.item, {
+                [styles.active]: currentPage === page,
+              })}
+              aria-current={currentPage === page ? 'page' : undefined}
+            >
+              <SearchLink params={{ page: page.toString() }}>{page}</SearchLink>
+            </li>
+          ))}
+        </ul>
+      </nav>
+    );
+  },
+);

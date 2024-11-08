@@ -1,12 +1,14 @@
-import { FC } from 'react';
+import { FC, memo } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 
-import { ProductPrice } from '@components/products/product-prices/ProductPrice';
-import { ProductSpec } from '@components/products/product-specs/ProductSpec';
-import { ActionButtons } from '@ui/button/action-buttons/ActionButtons';
+import { ProductImage, ProductPrice, ProductSpec } from '@components/products/';
 
+import { ActionButtons, Title } from '@ui/index';
+
+import { getProductUrl } from '@utils/helpers/productUtils';
+import { scrollToTop } from '@utils/helpers/scrollToTop';
 import { TProduct } from '@utils/types/product.type';
-import { getProductUrl } from '@utils/helpers/getProductUrl';
 
 import styles from './ProductList.module.scss';
 
@@ -15,7 +17,7 @@ interface TProps {
   discount?: boolean;
 }
 
-export const ProductList: FC<TProps> = ({ product, discount }) => {
+export const ProductList: FC<TProps> = memo(({ product, discount }) => {
   const {
     id,
     name,
@@ -28,31 +30,23 @@ export const ProductList: FC<TProps> = ({ product, discount }) => {
     itemId,
     category,
   } = product;
-
+  const { t } = useTranslation();
   const URL = getProductUrl(category, itemId);
+  const localAria = t('product.list.aria', { name: name });
 
   return (
     <article className={styles.item} key={id}>
       <Link
         to={URL}
         className={styles.product}
-        state={{ itemId: itemId }}
-        title={`View details for ${name}`}
-        aria-label={`View details for ${product.name}`}
-        onClick={() => window.scrollTo(0, 0)}
+        onClick={scrollToTop}
+        title={localAria}
+        aria-label={localAria}
       >
-        <div className={styles.image}>
-          <img
-            src={image}
-            alt={`${name} product image`}
-            width={208}
-            height={196}
-            loading="lazy"
-          />
-        </div>
+        <ProductImage image={image} name={name} />
 
         <div className={styles.title}>
-          <h3>{name}</h3>
+          <Title level={3}>{name}</Title>
         </div>
       </Link>
 
@@ -65,4 +59,4 @@ export const ProductList: FC<TProps> = ({ product, discount }) => {
       <ActionButtons product={product} />
     </article>
   );
-};
+});

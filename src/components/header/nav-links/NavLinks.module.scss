@@ -6,26 +6,28 @@
   height: var(--size-64);
 
   &::after {
-    @include pseudo(0, 3px, var(--primary));
+    @include pseudo(0, 3px, var(--text-color));
   }
 
-  &:hover::after {
-    width: 100%;
+  @include hover {
+    &::after {
+      width: 100%;
+    }
   }
 
   &.active {
-    color: var(--primary);
+    color: var(--text-color);
 
     &::after {
       width: 100%;
     }
   }
 
-  &:hover {
-    color: var(--primary);
+  @include hover {
+    color: var(--text-color);
   }
 
-  @include mobile {
+  @include small {
     height: var(--size-32);
 
     &::after {
@@ -33,7 +35,7 @@
     }
 
     &.active {
-      color: var(--primary);
+      color: var(--text-color);
 
       &::after {
         width: 100%;

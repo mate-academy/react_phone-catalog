@@ -1,0 +1,22 @@
+.utils {
+  @include flex-items-center;
+
+  justify-content: space-between;
+  flex: 1 1 auto;
+  column-gap: 16px;
+  height: 100%;
+
+  .box {
+    display: inline-flex;
+
+    @include large {
+      justify-content: flex-end;
+      height: 100%;
+    }
+  }
+
+  @include large {
+    margin-right: 0;
+    justify-content: flex-end;
+  }
+}

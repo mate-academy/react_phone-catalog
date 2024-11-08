@@ -1,0 +1,11 @@
+.button {
+  @include size(100%, 40px);
+
+  max-width: 176px;
+  color: var(--white);
+
+  @include hover {
+    opacity: 0.9;
+    box-shadow: var(--button-shadow);
+  }
+}

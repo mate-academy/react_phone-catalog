@@ -1,6 +1,6 @@
 .links {
-  display: flex;
-  align-items: center;
+  @include flex-items-center;
+
   column-gap: var(--size-8);
   color: var(--secondary);
   font-size: var(--size-12);
@@ -9,14 +9,14 @@
   a {
     display: flex;
     column-gap: var(--size-8);
-    color: var(--primary);
+    color: var(--text-color);
 
     &::first-letter {
       text-transform: uppercase;
     }
   }
 
-  p {
+  span {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -27,6 +27,6 @@
   }
 
   .active {
-    color: var(--primary);
+    color: var(--text-color);
   }
 }

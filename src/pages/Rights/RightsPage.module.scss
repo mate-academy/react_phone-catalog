@@ -6,6 +6,10 @@
     margin-bottom: var(--size-32);
   }
 
+  p {
+    color: var(--text-color);
+  }
+
   article:not(:last-child) {
     margin-bottom: var(--size-24);
   }

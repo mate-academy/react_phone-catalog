@@ -3,33 +3,35 @@
   border-bottom: var(--border-element);
 
   .items {
+    background-color: var(--bg-navbar);
     font-weight: var(--fw-800);
     font-size: var(--size-12);
     text-transform: uppercase;
     line-height: 0.9;
     letter-spacing: 0.04em;
-    background-color: var(--white);
   }
 
-  @include mobile {
+  @include small {
     @include flex-column;
 
     .headerBurger {
-      display: grid;
-      grid-template-columns: var(--grid-columns-2);
-      grid-template-rows: var(--size-48);
-      justify-items: start;
-      grid-column-gap: var(--size-16);
+      display: flex;
       margin-left: var(--size-16);
+
+      .headerWrapper {
+        display: flex;
+        justify-content: space-between;
+        flex: 1 1 auto;
+      }
 
       .burger {
         justify-self: end;
-        border-inline: var(--border-element);
         width: var(--size-48);
+        border-inline: var(--border-element);
         transition: var(--transition-duration);
 
         &:active {
-          border: var(--border-element);
+          background-color: var(--bg-cart);
           border-color: var(--primary);
         }
       }
@@ -39,10 +41,10 @@
       @include flex-column;
       @include size(100%, 100vh);
 
-      justify-content: space-between;
-      padding-top: var(--size-48);
       position: absolute;
       z-index: -1;
+      justify-content: space-between;
+      padding-top: var(--size-48);
 
       .links {
         @include flex-center-column;
@@ -51,8 +53,7 @@
         margin-top: var(--size-24);
 
         li {
-          display: flex;
-          align-items: center;
+          @include flex-items-center;
         }
       }
 
@@ -65,10 +66,10 @@
         a {
           @include size(100%, var(--size-64));
 
-          border-block: var(--border-element);
+          border-top: var(--border-element);
 
           @include hover {
-            border-color: var(--primary);
+            border-color: var(--text-color);
           }
         }
       }

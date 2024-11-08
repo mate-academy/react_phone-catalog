@@ -1,6 +1,6 @@
 .contact {
-  display: flex;
-  flex-direction: column;
+  @include flex-column;
+
   row-gap: var(--size-48);
 
   .wrapper {

@@ -1,17 +1,20 @@
 import { FC } from 'react';
+import { useTranslation } from 'react-i18next';
 
-import { ProductsSlider } from '@components/products/products-slider/ProductsSlider';
+import { ProductsSlider } from '@components/products/';
 
-import { useProducts } from '@hooks/useProducts';
+import { useProducts } from '@hooks/index';
 
-import styles from './newModels.module.scss';
+import styles from './NewModels.module.scss';
 
 export const NewModels: FC = () => {
-  const { expensiveProduct } = useProducts();
+  const { newModels } = useProducts();
+  const { t } = useTranslation();
+  const localTitle = t('home.new');
 
   return (
     <section className={styles.newModels}>
-      <ProductsSlider title="Brand new models" products={expensiveProduct} />
+      <ProductsSlider title={localTitle} products={newModels} />
     </section>
   );
 };

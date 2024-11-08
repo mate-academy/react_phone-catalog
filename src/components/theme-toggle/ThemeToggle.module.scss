@@ -1,0 +1,161 @@
+.toggle {
+  @include flex-center;
+  @include size(var(--size-64), var(--size-64));
+
+  position: relative;
+  border-inline: var(--border-icon);
+  cursor: pointer;
+
+  &::after {
+    @include pseudo(0, 3px, var(--text-color));
+  }
+
+  @include hover {
+    border-inline-color: var(--text-color);
+    background-color: var(--hover-bg);
+
+    .container input:checked ~ .switch::after,
+    .container input:checked ~ .switch::before {
+      background-color: var(--hover-bg);
+    }
+
+    .container input:checked ~ .switch span {
+      background: var(--gold);
+    }
+
+    &::after {
+      width: 100%;
+    }
+  }
+
+  @include large {
+    @include size(var(--size-48), var(--size-48));
+  }
+
+  .container {
+    --c: translate(-50%, -50%);
+
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: var(--c);
+    padding: var(--size-16);
+    cursor: pointer;
+
+    @include large {
+      padding: 10px;
+    }
+
+    .switch {
+      @include size(var(--size-28), var(--size-28));
+
+      position: relative;
+      left: 0;
+      top: 0;
+
+      span {
+        @include size(70%, 70%);
+
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: var(--c);
+        border-radius: 50%;
+        background: var(--gold);
+        transition-duration: var(--transition-duration);
+      }
+
+      div {
+        @include size(100%, 100%);
+
+        position: absolute;
+        left: 0;
+        top: 0;
+      }
+
+      &::before,
+      &::after {
+        content: ' ';
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: var(--c);
+        border-radius: 50%;
+        background-color: var(--bg-primary);
+        transition-duration: var(--transition-duration);
+      }
+
+      &::before {
+        @include size(0%, 0%);
+
+        z-index: 10;
+      }
+
+      &::after {
+        @include size(50%, 50%);
+      }
+    }
+
+    .switch div::before,
+    .switch div::after {
+      content: ' ';
+
+      @include size(12%, 130%);
+
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: var(--c);
+      background: var(--gold);
+      border-radius: var(--size-8);
+      transition-duration: var(--transition-duration);
+    }
+
+    .switch div:nth-child(1)::before {
+      transform: var(--c) rotate(0deg);
+    }
+
+    .switch div:nth-child(1)::after {
+      transform: var(--c) rotate(45deg);
+    }
+
+    .switch div:nth-child(2)::before {
+      transform: var(--c) rotate(90deg);
+    }
+
+    .switch div:nth-child(2)::after {
+      transform: var(--c) rotate(135deg);
+    }
+
+    input {
+      display: none;
+
+      &:checked ~ .switch span {
+        @include size(100%, 100%);
+
+        background: var(--white);
+      }
+
+      &:checked ~ .switch div::before,
+      &:checked ~ .switch div::after {
+        height: 50%;
+      }
+
+      &:checked ~ .switch::before {
+        @include size(90%, 90%);
+
+        left: 30%;
+        top: 30%;
+      }
+
+      &:checked ~ .switch::after {
+        @include size(0%, 0%);
+      }
+
+      &:not(:checked) ~ .switch {
+        transform: rotate(180deg);
+        transition: all ease 2.15s 0.1s;
+      }
+    }
+  }
+}

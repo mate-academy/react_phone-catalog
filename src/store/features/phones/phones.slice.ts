@@ -1,9 +1,9 @@
 /* eslint-disable no-param-reassign */
 import { createSlice } from '@reduxjs/toolkit';
 
-import { getPhones } from './getPhoneApi';
-
 import { PhoneState } from '@utils/types/rootState.type';
+
+import { getPhones } from './getPhoneApi';
 
 const initialState: PhoneState = {
   phones: [],
@@ -24,9 +24,9 @@ const phonesSlice = createSlice({
         state.phones = payload;
         state.loading = false;
       })
-      .addCase(getPhones.rejected, (state, actions) => {
+      .addCase(getPhones.rejected, (state, action) => {
         state.phones = [];
-        state.error = actions.error.message;
+        state.error = action.error.message;
         state.loading = false;
       });
   },

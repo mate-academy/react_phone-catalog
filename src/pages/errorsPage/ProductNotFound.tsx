@@ -1,11 +1,16 @@
 import { FC } from 'react';
-
-import ErrorImage from '/img/error/product-not-found.png';
+import { useTranslation } from 'react-i18next';
 
 import styles from './errorsPage.module.scss';
+import NOT_FOUND from '/img/error/product-not-found.webp';
 
-export const ProductNotFound: FC = () => (
-  <div className={styles.image}>
-    <img src={ErrorImage} alt="Product not found" />
-  </div>
-);
+export const ProductNotFound: FC = () => {
+  const { t } = useTranslation();
+  const localAlt = t('error.notFound');
+
+  return (
+    <section className={styles.image}>
+      <img src={NOT_FOUND} alt={localAlt} />
+    </section>
+  );
+};

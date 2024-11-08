@@ -1,32 +1,24 @@
 import { FC } from 'react';
 
-import styles from './CardDescription.module.scss';
+import { Title } from '@ui/index';
 
-interface IDescription {
-  title: string;
-  text: string[];
-}
+import { sliceText } from '@utils/helpers/workWithText';
+import { IDescription } from '@utils/types/description.interface';
+
+import styles from './CardDescription.module.scss';
 
 type TProps = {
   description?: IDescription[];
 };
 
 export const CardDescription: FC<TProps> = ({ description = [] }) => {
-  const sliceText = (description: IDescription[]) =>
-    description.map(item => {
-      const combinedText = item.text.join('<br/><br/>');
-
-      return {
-        title: item.title,
-        text: combinedText,
-      };
-    });
-
   const newText = sliceText(description);
+
+  if (!newText.length) return null;
 
   return newText.map(item => (
     <div className={styles.about} key={item.title}>
-      <h4>{item.title}</h4>
+      <Title level={4}>{item.title}</Title>
       <p dangerouslySetInnerHTML={{ __html: item.text }} />
     </div>
   ));

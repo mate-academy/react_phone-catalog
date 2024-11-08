@@ -1,88 +1,46 @@
-import { FC, useEffect, useState } from 'react';
+import { FC } from 'react';
+import { useTranslation } from 'react-i18next';
 
-import styles from './slider.module.scss';
+import { Icons } from '@ui/index';
 
-import { Arrows } from './arrows/Arrows';
-import { Order } from './order/Order';
-import { Dots } from './dots/Dots';
-import { SliderList } from './slider-list/SliderList';
+import { useImageSlider } from '@hooks/useImageSlider';
 
-import { ArrowLeftIcon } from '@ui/icon/ArrowLeftIcon';
-import { ArrowRightIcon } from '@ui/icon/ArrowRightIcon';
 import { IMAGES } from '@utils/constants/imagesSLider';
 
+import styles from './Slider.module.scss';
+import { Arrows, Dots, Order, SliderList } from './index';
+
 export const Slider: FC = () => {
-  const [imgIndex, setImgIndex] = useState(0);
-  const [touchStart, setTouchStart] = useState<number | null>(null);
-  const [touchEnd, setTouchEnd] = useState<number | null>(null);
+  const slider = useImageSlider(IMAGES);
+  const { t } = useTranslation();
 
-  const lastIndex = IMAGES.length - 1;
-
-  const showNextImage = () => {
-    setImgIndex(index => (index === lastIndex ? 0 : index + 1));
-  };
-
-  const showPrevImage = () => {
-    setImgIndex(index => (index === 0 ? lastIndex : index - 1));
-  };
-
-  const handleTouchStart = (e: React.TouchEvent) => {
-    setTouchStart(e.targetTouches[0].clientX);
-  };
-  const handleTouchMove = (e: React.TouchEvent) => {
-    setTouchEnd(e.targetTouches[0].clientX);
-  };
-
-  const handleTouchEnd = () => {
-    if (!touchStart || !touchEnd) return;
-
-    const swipeDistance = touchStart - touchEnd;
-    const minSwipeDistance = 50;
-
-    if (swipeDistance > minSwipeDistance) {
-      showNextImage();
-    } else if (swipeDistance < -minSwipeDistance) {
-      showPrevImage();
-    }
-
-    setTouchStart(null);
-    setTouchEnd(null);
-  };
-
-  const goToImage = (index: number) => {
-    setImgIndex(index);
-  };
-
-  useEffect(() => {
-    const slider = setInterval(showNextImage, 5000);
-
-    return () => clearInterval(slider);
-  }, [imgIndex, lastIndex]);
+  const localPrevious = t('home.banner.slider.previous');
+  const localNext = t('home.banner.slider.next');
 
   return (
     <div
       className={styles.slider}
-      onTouchStart={handleTouchStart}
-      onTouchMove={handleTouchMove}
-      onTouchEnd={handleTouchEnd}
+      onTouchStart={slider.onTouchStart}
+      onTouchMove={slider.onTouchMove}
+      onTouchEnd={slider.onTouchEnd}
     >
       <div className={styles.wrapper}>
-        <Arrows slider={showPrevImage} label="Previous Image">
-          <ArrowLeftIcon />
+        <Arrows onClick={slider.showPrevImage} label={localPrevious}>
+          <Icons.ArrowLeftIcon />
         </Arrows>
 
         <div className={styles.content}>
           <Order />
 
-          <SliderList index={imgIndex} />
+          <SliderList index={slider.imgIndex} />
         </div>
 
-        <Arrows slider={showNextImage} label="Next Image">
-          <ArrowRightIcon />
+        <Arrows onClick={slider.showNextImage} label={localNext}>
+          <Icons.ArrowRightIcon />
         </Arrows>
       </div>
 
-      <Dots goToImage={goToImage} imgIndex={imgIndex} />
+      <Dots goToImage={slider.goToImage} imgIndex={slider.imgIndex} />
     </div>
   );
 };

@@ -1,11 +1,14 @@
-import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-export const getAccessories = createAsyncThunk(
+import { createAsyncThunk } from '@reduxjs/toolkit';
+
+import { TProductBase } from '@utils/types/productBase.type';
+
+export const getAccessories = createAsyncThunk<TProductBase[]>(
   'api/getAccessories',
   async () => {
-    const response = await axios.get('api/accessories.json');
+    const { data } = await axios.get<TProductBase[]>('api/accessories.json');
 
-    return response.data;
+    return data;
   },
 );

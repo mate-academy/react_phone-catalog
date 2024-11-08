@@ -1,0 +1,16 @@
+.wrapper {
+  @include flex-column;
+
+  gap: var(--size-24);
+
+  .price {
+    @include flex-column;
+
+    row-gap: var(--size-16);
+    margin-block: var(--size-8);
+  }
+
+  @include mobile {
+    min-width: 233px;
+  }
+}

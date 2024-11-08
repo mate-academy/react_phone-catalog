@@ -39,10 +39,24 @@
 }
 
 $large: 1199px;
+$medium: 992px;
+$small: 768px;
 $mobile: 639px;
 
 @mixin large {
   @media only screen and (max-width: $large) {
+    @content;
+  }
+}
+
+@mixin medium {
+  @media only screen and (max-width: $medium) {
+    @content;
+  }
+}
+
+@mixin small {
+  @media only screen and (max-width: $small) {
     @content;
   }
 }
@@ -77,5 +91,52 @@ $mobile: 639px;
   }
   100% {
     opacity: 1;
+  }
+}
+
+@mixin fade-out {
+  animation: fade-out 1s forwards;
+}
+
+@keyframes fade-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+}
+
+@mixin pop-up {
+  animation-name: pop-up;
+  animation-duration: 0.5s;
+  animation-timing-function: cubic-bezier(0.26, 0.53, 0.74, 1);
+}
+
+@keyframes pop-up {
+  0% {
+    opacity: 0;
+    transform: scale(0.5, 0.5);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1, 1);
+  }
+}
+
+@mixin pulsing {
+  animation: pulsing 2s infinite;
+}
+
+@keyframes pulsing {
+  0% {
+    scale: 1;
+  }
+  50% {
+    scale: 1.2;
+  }
+  100% {
+    scale: 1;
   }
 }

@@ -1,8 +1,0 @@
-.counter {
-  @include flex-items-center;
-
-  .quantity {
-    width: var(--size-32);
-    text-align: center;
-  }
-}

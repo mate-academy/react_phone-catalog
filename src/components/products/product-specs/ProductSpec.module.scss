@@ -1,17 +1,7 @@
 .specs {
   @include flex-column;
 
-  text-align: end;
   row-gap: var(--size-8);
+  text-align: end;
   text-wrap: balance;
-
-  .spec {
-    display: flex;
-    justify-content: space-between;
-    column-gap: var(--size-8);
-
-    p:first-of-type {
-      color: var(--secondary);
-    }
-  }
 }

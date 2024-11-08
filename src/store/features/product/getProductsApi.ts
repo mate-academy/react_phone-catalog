@@ -1,8 +1,14 @@
-import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-export const getProducts = createAsyncThunk('api/getProducts', async () => {
-  const response = await axios.get('api/products.json');
+import { createAsyncThunk } from '@reduxjs/toolkit';
 
-  return response.data;
-});
+import { TProduct } from '@utils/types/product.type';
+
+export const getProducts = createAsyncThunk<TProduct[]>(
+  'api/getProducts',
+  async () => {
+    const { data } = await axios.get<TProduct[]>('api/products.json');
+
+    return data;
+  },
+);

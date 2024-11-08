@@ -1,11 +1,12 @@
 .summary {
   @include flex-center-column;
 
-  font-size: var(--size-14);
-  border: var(--border-element);
   padding: 23px;
+  border: var(--border-element);
+  font-size: var(--size-14);
 
   span {
+    color: var(--text-color);
     font-weight: var(--fw-800);
     font-size: var(--size-32);
     line-height: 1.28;
@@ -13,8 +14,8 @@
   }
 
   p {
-    font-weight: var(--fw-500);
     color: var(--secondary);
+    font-weight: var(--fw-500);
   }
 
   .separator {
@@ -30,8 +31,9 @@
     color: var(--white);
     background: var(--primary);
 
-    &:hover {
-      box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.4);
+    @include hover {
+      background-color: var(--hover-bg-primary);
+      box-shadow: var(--box-shadow);
     }
   }
 

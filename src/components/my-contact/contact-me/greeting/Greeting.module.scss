@@ -1,5 +1,7 @@
 .greeting {
-  text-align: center;
+  @include flex-center-column;
+
+  color: var(--text-color);
   white-space: nowrap;
   overflow: hidden;
   transition-duration: var(--transition-duration);
@@ -8,12 +10,18 @@
   span {
     --bg-h: 100%;
 
+    width: fit-content;
     background: var(--gradient) no-repeat right bottom / 0 var(--bg-h);
     transition-duration: 0.35s;
-    display: block;
+
+    @include hover {
+      background-size: 100% var(--bg-h);
+      background-position-x: left;
+      color: var(--white);
+    }
   }
 
-  span:where(:hover, :focus-visible) {
+  span:where(:focus-visible) {
     background-size: 100% var(--bg-h);
     background-position-x: left;
     color: var(--white);
@@ -25,6 +33,6 @@
     width: 0;
   }
   to {
-    width: 235px;
+    width: 100%;
   }
 }

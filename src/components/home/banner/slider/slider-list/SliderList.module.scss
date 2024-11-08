@@ -5,14 +5,15 @@
   color: var(--secondary);
   font-weight: var(--fw-400);
   overflow: hidden;
+  transition-duration: var(--transition-duration);
 
   .slide {
     @include flex-column;
     @include size(100%, 100%);
 
+    position: relative;
     justify-content: space-between;
     flex: 1 0 100%;
-    position: relative;
     transition: transform 1.5s;
 
     .text {
@@ -24,7 +25,7 @@
       text-wrap: balance;
       text-align: center;
 
-      .title {
+      h3 {
         color: var(--white);
         font-weight: var(--fw-600);
         font-size: clamp(var(--size-32), 0.86rem + 2.86vw, var(--size-48));

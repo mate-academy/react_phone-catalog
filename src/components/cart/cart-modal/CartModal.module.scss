@@ -1,0 +1,67 @@
+.modal {
+  padding: var(--size-24) var(--size-16);
+  border-color: var(--white);
+
+  @include fade-in;
+
+  &::backdrop {
+    background-color: rgba(0, 0, 0, 0.4);
+  }
+
+  .header {
+    @include flex-items-center;
+
+    justify-content: space-between;
+    padding-bottom: var(--size-20);
+
+    h3 {
+      color: currentColor;
+    }
+
+    button {
+      display: flex;
+      height: 100%;
+
+      svg {
+        color: var(--secondary);
+      }
+
+      @include hover {
+        svg {
+          color: var(--color-primary);
+          scale: 1.1;
+        }
+      }
+    }
+  }
+
+  .text {
+    padding-bottom: var(--size-26);
+    max-width: 460px;
+    width: 100%;
+    color: var(--color-primary);
+
+    p {
+      text-align: center;
+      text-wrap: balance;
+    }
+  }
+
+  .buttons {
+    display: flex;
+    justify-content: flex-end;
+    column-gap: var(--size-16);
+
+    button:first-child {
+      background-color: var(--red);
+
+      @include hover {
+        box-shadow: var(--button-shadow-red);
+      }
+    }
+
+    button:last-child {
+      background-color: var(--icons);
+    }
+  }
+}

@@ -1,14 +1,13 @@
 /* eslint-disable no-param-reassign */
 import { createSlice } from '@reduxjs/toolkit';
 
-import { TProduct } from 'utils/types/product.type';
-import { getProducts } from './getProductsApi';
 import { applySorting } from '@utils/helpers/sortByOptions';
+import { TProduct } from '@utils/types/product.type';
+
+import { getProducts } from './getProductsApi';
 
 type ProductState = {
   products: TProduct[];
-  filtered?: TProduct[];
-  related?: TProduct[];
   loading: boolean;
   error: string | undefined;
   sortBy: string;
@@ -16,10 +15,8 @@ type ProductState = {
 
 const initialState: ProductState = {
   products: [],
-  filtered: [],
-  related: [],
   loading: false,
-  error: '',
+  error: undefined,
   sortBy: 'year',
 };
 
@@ -27,8 +24,8 @@ export const productsSlice = createSlice({
   name: 'product',
   initialState: initialState,
   reducers: {
-    setSortBy: (state, actions) => {
-      state.sortBy = actions.payload;
+    setSortBy: (state, action: { payload: string }) => {
+      state.sortBy = action.payload;
       state.products = applySorting(state.products, state.sortBy);
     },
   },
@@ -38,12 +35,12 @@ export const productsSlice = createSlice({
         state.loading = true;
       })
       .addCase(getProducts.fulfilled, (state, { payload }) => {
+        state.products = payload;
         state.products = applySorting(payload, state.sortBy);
         state.loading = false;
       })
-      .addCase(getProducts.rejected, (state, actions) => {
-        state.products = [];
-        state.error = actions.error.message;
+      .addCase(getProducts.rejected, (state, action) => {
+        state.error = action.error.message;
         state.loading = false;
       });
   },

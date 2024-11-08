@@ -1,33 +1,52 @@
 .contactForm {
-  display: flex;
-  flex-direction: column;
+  @include flex-column;
+
   padding: var(--size-24);
   row-gap: var(--size-32);
 
   h2,
   p {
     text-align: center;
+    color: var(--text-color);
   }
 
   .form {
     @include flex-column;
 
+    color: var(--text-color);
     justify-content: space-between;
     row-gap: var(--size-16);
 
-    label {
-      margin-bottom: 4px;
+    label:has(+ [required])::after {
+      content: ' *';
+      color: var(--red);
     }
 
-    input {
-      border-bottom: var(--border-element);
-      margin-bottom: var(--size-8);
-      padding: 5px;
+    textarea {
+      resize: none;
+      display: block;
+      padding: 6px;
+      border: var(--border-cart);
+      border-radius: var(--size-4);
+      background-color: var(--bg-search);
+      color: var(--text-color);
+      font-family: var(--font-family);
+      font-weight: var(--fw-600);
+      font-size: var(--size-14);
+      line-height: 1.5;
 
-      &::placeholder {
-        color: var(--icons);
-        font-weight: var(--fw-600);
-        font-size: var(--size-12);
+      &:focus-visible {
+        border-radius: var(--size-4);
+        outline: var(--outline);
+      }
+
+      &:focus {
+        border-color: var(--primary);
+        box-shadow: var(--button-shadow);
+      }
+
+      @include hover {
+        border-color: var(--secondary);
       }
     }
 
@@ -38,6 +57,11 @@
       color: var(--white);
       background-color: var(--primary);
       align-self: end;
+
+      @include hover {
+        box-shadow: var(--button-shadow);
+        background-color: var(--hover-bg-primary);
+      }
     }
   }
 }

@@ -1,33 +1,40 @@
 import { FC } from 'react';
+import { useTranslation } from 'react-i18next';
 
-import { useAppSelector } from '@hooks/typedHooks';
-import { useAction } from '@hooks/useActions';
-import {
-  selectCartTotal,
-  selectTotalQuantity,
-} from '@store/features/cart/cart.slice';
+import { useCart } from '@hooks/useCart';
 
-import { getPlural } from '@utils/helpers/getPlural';
+import styles from './CartSummary.module.scss';
 
-import styles from './cartSummary.module.scss';
+type TProps = {
+  toggleModal: () => void;
+};
 
-export const CartSummary: FC = () => {
-  const { checkoutItems } = useAction();
+export const CartSummary: FC<TProps> = ({ toggleModal }) => {
+  const { totalPrice, totalQuantity } = useCart();
+  const { t } = useTranslation();
 
-  const totalPrice = useAppSelector(selectCartTotal);
-  const totalQuantity = useAppSelector(selectTotalQuantity);
-
-  const plural = getPlural(totalQuantity);
+  const localPrice = t('price.main', { val: totalPrice });
+  const localLabel = t('cart.summary.label');
+  const localCheckout = t('cart.summary.checkout');
+  const localItems = t('cart.item', {
+    count: totalQuantity,
+    item: totalQuantity,
+  });
 
   return (
     <div className={styles.summary}>
-      <span>${totalPrice}</span>
-      <p>
-        Total for {totalQuantity} {plural}
-      </p>
+      <span aria-live="polite" aria-label={localPrice}>
+        ${totalPrice}
+      </span>
+      <p>{localItems}</p>
       <div className={styles.separator}></div>
-      <button type="button" onClick={() => checkoutItems()}>
-        Checkout
+      <button
+        type="button"
+        onClick={toggleModal}
+        aria-haspopup="dialog"
+        aria-label={localLabel}
+      >
+        {localCheckout}
       </button>
     </div>
   );

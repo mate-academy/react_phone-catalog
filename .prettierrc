@@ -1,4 +1,5 @@
 {
+  "plugins": ["@trivago/prettier-plugin-sort-imports"],
   "arrowParens": "avoid",
   "singleQuote": true,
   "tabWidth": 2,
@@ -7,5 +8,24 @@
   "printWidth": 80,
   "semi": true,
   "bracketSpacing": true,
-  "bracketSameLine": false
+  "bracketSameLine": false,
+  "importOrder": [
+    "react",
+    "^@reduxjs/(.*)$",
+    "i18n",
+    "<THIRD_PARTY_MODULES>|classnames|framer-motion",
+    "^@store/(.*)$",
+    "^@context/(.*)$",
+    "^@locales/(.*)$",
+    "^@pages/",
+    "^@routes/",
+    "^@components/(.*)$",
+    "^@ui/index",
+    "^@hooks/(.*)$",
+    "^@utils/(.*)$",
+    "^[./]",
+    "^[.*\\.module\\.scss]$"
+  ],
+  "importOrderSeparation": true,
+  "importOrderSortSpecifiers": true
 }

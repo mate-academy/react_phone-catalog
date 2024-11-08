@@ -1,0 +1,16 @@
+.image {
+  @include size(100%, 196px);
+
+  display: flex;
+  justify-content: center;
+  margin-bottom: var(--size-24);
+
+  img {
+    height: 100%;
+    object-fit: contain;
+  }
+
+  @include mobile {
+    @include size(100%, 129px);
+  }
+}

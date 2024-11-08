@@ -1,8 +1,7 @@
 .details {
-  @include flex-column;
+  @include flex-center-column;
 
   flex: 1 1 50%;
-  align-items: center;
   justify-content: space-between;
   row-gap: var(--size-24);
   background-color: var(--elements);
@@ -20,9 +19,8 @@
   }
 
   .follow {
-    @include flex-column;
+    @include flex-center-column;
 
-    align-items: center;
     row-gap: var(--size-8);
 
     .socials {
@@ -31,5 +29,9 @@
       flex-wrap: wrap;
       column-gap: var(--size-8);
     }
+  }
+
+  @include mobile {
+    padding: var(--size-16);
   }
 }

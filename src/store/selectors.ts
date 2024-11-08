@@ -1,4 +1,5 @@
 import { createSelector } from 'reselect';
+
 import { TProductBase } from '@utils/types/productBase.type';
 
 const selectPhones = (state: { phones: { phones: TProductBase[] } }) =>

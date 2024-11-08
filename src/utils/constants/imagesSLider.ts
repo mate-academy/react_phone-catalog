@@ -1,10 +1,12 @@
-import product1 from '../../images/slider/slider-1.jpg';
-import product2 from '../../images/slider/slider-2.jpg';
-import product3 from '../../images/slider/slider-3.jpg';
-import product4 from '../../images/slider/slider-4.jpg';
-import product5 from '../../images/slider/slider-5.jpg';
+import { ISliderImage } from '@utils/types/sliderImage.interface';
 
-export const IMAGES = [
+import product1 from '../../images/slider/slider-1.webp';
+import product2 from '../../images/slider/slider-2.webp';
+import product3 from '../../images/slider/slider-3.webp';
+import product4 from '../../images/slider/slider-4.webp';
+import product5 from '../../images/slider/slider-5.webp';
+
+export const IMAGES: ISliderImage[] = [
   {
     id: 1,
     name: 'iPhone 14 Pro',

@@ -1,8 +1,7 @@
 import { FC } from 'react';
 
-import { NavBar } from './navbar/NavBar';
-
 import styles from './Header.module.scss';
+import { NavBar } from './index';
 
 export const Header: FC = () => {
   return (

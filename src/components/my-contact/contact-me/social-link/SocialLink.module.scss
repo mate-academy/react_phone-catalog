@@ -28,15 +28,27 @@
   svg {
     @include size(percentage(0.4), percentage(0.4));
 
+    fill: var(--black-light);
     position: relative;
     z-index: 1;
     transition-duration: var(--transition-duration);
   }
 
-  &:focus,
-  &:hover {
+  @include hover {
     svg {
-      color: var(--white);
+      fill: var(--white);
+    }
+
+    &::after {
+      @include size(calc(100% + 2px), calc(100% + 2px));
+
+      margin-left: calc(-50% - 1px);
+    }
+  }
+
+  &:focus {
+    svg {
+      fill: var(--white);
     }
 
     &::after {

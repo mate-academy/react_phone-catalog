@@ -1,13 +1,35 @@
 import { TProduct } from '@utils/types/product.type';
-import { convertToMB } from './convertToMB';
 
-export const applySorting = (item: TProduct[], sortBy: string): TProduct[] => {
-  return item.sort((a, b) => {
+import { convertToMB } from './workWithText';
+
+export const getMostExpensiveProduct = (products: TProduct[]) =>
+  [...products].sort((a, b) => b.price - a.price);
+
+export const getProductWithLargestDiscount = (products: TProduct[]) =>
+  [...products].sort((a, b) => b.fullPrice - b.price - (a.fullPrice - a.price));
+
+export const getProductsSortedByYearAndStorage = (products: TProduct[]) =>
+  [...products].sort((a, b) => {
+    if (b.year !== a.year) {
+      return b.year - a.year;
+    }
+
+    if (b.fullPrice !== a.fullPrice) {
+      return b.fullPrice - a.fullPrice;
+    }
+
+    return parseInt(b.capacity) - parseInt(a.capacity);
+  });
+
+export const applySorting = (items: TProduct[], sortBy: string): TProduct[] =>
+  [...items].sort((a, b) => {
     switch (sortBy) {
       case 'year':
         return b.year - a.year;
       case 'fullPrice':
         return b.fullPrice - a.fullPrice;
+      case 'smallPrice':
+        return a.fullPrice - b.fullPrice;
       case 'price': {
         const discountA = a.fullPrice - a.price;
         const discountB = b.fullPrice - b.price;
@@ -18,18 +40,16 @@ export const applySorting = (item: TProduct[], sortBy: string): TProduct[] => {
         const screenB = parseFloat(b.screen);
         return screenB - screenA;
       }
+      case 'name': {
+        return a.name.localeCompare(b.name);
+      }
       case 'capacity': {
-        const capacityA = parseInt(a.capacity);
-        const capacityB = parseInt(b.capacity);
-        return capacityB - capacityA;
+        return parseInt(b.capacity) - parseInt(a.capacity);
       }
       case 'ram': {
-        const ramA = convertToMB(a.ram);
-        const ramB = convertToMB(b.ram);
-        return ramB - ramA;
+        return convertToMB(b.ram) - convertToMB(a.ram);
       }
       default:
         return 0;
     }
   });
-};

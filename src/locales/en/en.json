@@ -1,0 +1,324 @@
+{
+  "title": "Welcome to Nice Gadgets store!",
+  "select": "Website language: English",
+  "toggleTheme": "Toggle theme",
+  "button": {
+    "add": "Add to cart",
+    "added": "Added",
+    "remove": "Remove",
+    "ariaLabel": "the product to your"
+  },
+  "nav": {
+    "home": "Home",
+    "phones": "Phones",
+    "tablets": "Tablets",
+    "accessories": "Accessories",
+    "favourites": "Favourites",
+    "label": "Go to to the {{name}} page",
+    "show": "Show menu",
+    "link": {
+      "title": "{{productType}}",
+      "aria": "Description for {{productType}}"
+    },
+    "productTypes": {
+      "Favourites": "$t(nav.favourites)",
+      "Cart": "$t(cart.title)"
+    }
+  },
+  "cart": {
+    "title": "Cart",
+    "checkout": "Checkout",
+    "item_one": "Total for 1 item",
+    "item_other": "Total for {{item}} items",
+    "quantity": {
+      "label": "Quantity",
+      "decrease": "Decrease quantity",
+      "increase": "Increase quantity"
+    },
+    "empty": {
+      "title": "Your cart is currently empty",
+      "sub": "Add something to make me",
+      "happy": "happy!",
+      "alt": "Cart is empty"
+    },
+    "product": {
+      "delete": "Delete product",
+      "view": "View product {{name}}",
+      "imageAlt": "Image of {{name}}",
+      "price": "Price: {{price}}"
+    },
+    "modal": {
+      "confirmation": "Clear the cart?",
+      "text": "Checkout is not implemented yet. Do you want to clear the Cart?",
+      "accept": "Yes, clear it!",
+      "cancel": "Cancel",
+      "closeLabel": "Close modal window",
+      "clearLabel": "Clear the Cart if the you confirms the order",
+      "cancelLabel": "Keep the Cart items and close the confirmation on cancel"
+    },
+    "summary": {
+      "checkout": "Checkout",
+      "label": "Open checkout confirmation modal"
+    }
+  },
+  "alert": {
+    "labelText": "Close alert",
+    "warning": {
+      "severity": "warning!",
+      "message": "Unfortunately, there aren’t that many products available."
+    },
+    "info": {
+      "severity": "info",
+      "message": "This is an informational message to keep you updated."
+    },
+    "error": {
+      "severity": "error",
+      "message": "An error has occurred. Please try again later."
+    }
+  },
+  "catalog": {
+    "title": {
+      "phones": "Mobile phones",
+      "tablets": "iPad",
+      "accessories": "Apple Watch",
+      "favourites": "Favourites"
+    },
+    "other": {
+      "phones": "mobile phones",
+      "tablets": "iPad",
+      "accessories": "accessories"
+    },
+    "noItem": "Sorry... There are no {{title}} yet"
+  },
+  "breadcrumbs": {
+    "category": "Go to the {{category}} page",
+    "titleLink": "Go to the home page"
+  },
+  "item": {
+    "item_one": "{{count}} item",
+    "item_other": "{{count}} items",
+    "item_zero": ""
+  },
+  "favourites": {
+    "text": "Your favourites list is empty."
+  },
+  "error": {
+    "title": "Something went wrong... Please try again.",
+    "text": "Reload",
+    "label": "Reload the page",
+    "404": "Page not found",
+    "notFound": "Product not found"
+  },
+  "pagination": {
+    "label": {
+      "previous": "Previous page",
+      "next": "Next page"
+    }
+  },
+  "dropdown": {
+    "name": {
+      "sortByProperties": "Sort by",
+      "sortByPage": "Items on page"
+    },
+    "ariaLabel": {
+      "select": "Selected by {{option}}",
+      "list": "Options List"
+    },
+    "options": {
+      "All": "All",
+      "Newest": "Newest",
+      "Alphabetically": "Alphabetically",
+      "Expensive": "Expensive",
+      "Cheapest": "Cheapest",
+      "Discount": "Discount",
+      "Screen": "Screen",
+      "Capacity": "Capacity",
+      "RAM": "RAM",
+      "64": "64",
+      "32": "32",
+      "16": "16",
+      "8": "8",
+      "4": "4"
+    }
+  },
+  "footer": {
+    "GitHub": "GitHub",
+    "Rights": "Rights",
+    "Contact": "Contact",
+    "aria": {
+      "nav": "Footer navigation",
+      "visit": "Visit {{name}}",
+      "go": "Go to {{name}}",
+      "back": "Scroll to the top of the page"
+    },
+    "back": "Back to top"
+  },
+  "logo": {
+    "alt": "Nice Gadgets!",
+    "title": "$t(nav.home) page"
+  },
+  "home": {
+    "new": "Brand new models",
+    "hot": "Hot prices",
+    "banner": {
+      "dots": "Go to slide {{count}}",
+      "order": {
+        "title": "Now available in our store!",
+        "text": "Be the first!",
+        "order": "Order now",
+        "aria": "Order button to purchase the product"
+      },
+      "slider": {
+        "previous": "Previous Image",
+        "next": "Next Image"
+      }
+    },
+    "categories": {
+      "title": "Shop by category",
+      "alt": "{{name}} category",
+      "sub": "Go to the {{name}} category",
+
+      "category": {
+        "phones": "$t(catalog.title.phones)",
+        "tablets": "$t(nav.tablets)",
+        "accessories": "$t(nav.accessories)"
+      },
+      "model_one": "{{count}} model",
+      "model_other": "{{count}} models"
+    }
+  },
+  "rights": {
+    "userRights": "User Rights",
+    "titles": {
+      "title1": "1. Right to Information",
+      "title2": "2. Right to Return",
+      "title3": "3. Right to Warranty Service",
+      "title4": "4. Right to Privacy",
+      "title5": "5. Right to Secure Payment",
+      "title6": "6. Right to Support",
+      "title7": "7. Right to Exchange"
+    },
+    "content": {
+      "text1": "The user has the right to receive accurate and complete information about the product, its features, price, availability, delivery terms, and warranties.",
+      "text2": "The user has the right to return the product within 14 days after purchase, provided it has not been used and is kept in its original condition.",
+      "text3": "All products are subject to warranty service according to the terms specified by the manufacturer or the store.",
+      "text4": "User personal data is protected and used only for order processing, in accordance with the Privacy Policy.",
+      "text5": "All payments through the website are secure, and the user has the right to choose a convenient and safe payment method.",
+      "text6": "The user has the right to receive support regarding any questions related to the order, payment, or product delivery.",
+      "text7": "The user can exchange the product in case of defects or discrepancies with the stated specifications."
+    }
+  },
+  "search": {
+    "search": "Search",
+    "title": "No Results Found",
+    "text": "Please specify your request.",
+    "details": "Please specify your request.",
+    "clear": "Clear search query",
+    "focus": "Focus on search input"
+  },
+  "value": {
+    "white": "white",
+    "pink": "pink",
+    "red": "red",
+    "black": "black",
+    "blue": "blue",
+    "green": "green",
+    "yellow": "yellow",
+    "gold": "gold",
+    "purple": "purple",
+    "silver": "silver",
+    "coral": "coral",
+    "midnight": "midnight",
+    "midnightgreen": "midnight-green",
+    "spaceblackk": "space-black",
+    "sierrablue": "sierra-blue",
+    "graphite": "graphite",
+    "spacegray": "space-gray",
+    "space-gray": "$t(value.spacegray)",
+    "starlight": "starlight",
+    "rosegold": "rose-gold",
+    "sky-blue": "sky-blue",
+    "2TB": "2TB",
+    "1TB": "1TB",
+    "512GB": "512GB",
+    "256GB": "256GB",
+    "128GB": "128GB",
+    "64GB": "64GB",
+    "32GB": "32GB",
+    "44mm": "44mm",
+    "42mm": "42mm",
+    "40mm": "40mm",
+    "38mm": "38mm"
+  },
+  "back": {
+    "title": "Back",
+    "aria": "Go back to the previous page",
+    "sub": "Go back"
+  },
+  "contact": {
+    "title": "Contact Information",
+    "follow": "Follow me",
+    "address": "Address: Kyiv, Ukraine",
+    "greeting": {
+      "greet_1": "Welcome to this project!👋🏿",
+      "greet_2": "I'm so happy you're here!🎉",
+      "greet_3": "I really hope you",
+      "greet_4": "enjoyed exploring this project",
+      "greet_5": "that I created with love.❤️",
+      "greet_6": "Welcome, and enjoy browsing!👀"
+    }
+  },
+  "form": {
+    "title": "Get In Touch",
+    "phone": "Phone",
+    "email": "Email",
+    "name": "Name",
+    "message": "Message",
+    "send": "Send message",
+    "text": "Please fill out the form below to send us an email and we will get back to you as soon as possible.",
+    "placeholder": {
+      "name": "Your name",
+      "email": "YourEmail@gmail.com",
+      "number": "+1 (area code) (subscriber number)",
+      "write": "Write your message…"
+    },
+    "label": {
+      "name": "$t(form.name)",
+      "email": "$t(form.email)",
+      "tel": "$t(form.phone)"
+    }
+  },
+  "price": {
+    "main": "Price: {{val, currency(USD)}}",
+    "original": "Original price: {{val, currency(USD)}}"
+  },
+  "product": {
+    "color": "Available colors",
+    "capacity": "Select capacity",
+    "title": "You may also like",
+    "id": "Generated ID",
+    "about": "About",
+    "image": {
+      "not": "No images available",
+      "select": "Selected image",
+      "count": "Select image {{count}}",
+      "alt": "Image {{count}}",
+      "main": "{{name}} product image"
+    },
+    "tech": {
+      "title": "Tech specs",
+      "screen": "Screen",
+      "resolution": "Resolution",
+      "processor": "Processor",
+      "ram": "RAM",
+      "capacity": "Capacity",
+      "memory": "Built-in memory",
+      "camera": "Camera",
+      "zoom": "Zoom",
+      "cell": "Cell"
+    },
+    "list": {
+      "aria": "View details for {{name}}"
+    }
+  }
+}

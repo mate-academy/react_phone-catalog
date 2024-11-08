@@ -1,6 +1,7 @@
 /* eslint-disable no-param-reassign */
-import { createSelector, createSlice } from '@reduxjs/toolkit';
 import { ICartItem } from 'utils/types/cart.interface';
+
+import { createSelector, createSlice } from '@reduxjs/toolkit';
 
 export interface InitialState {
   items: ICartItem[];
@@ -14,6 +15,8 @@ const cartSlice = createSlice({
   initialState,
   reducers: {
     addCart: (state, { payload: product }) => {
+      if (!product?.id) return;
+
       const existingItem = state.items.find(
         item => item.product.id === product.id,
       );

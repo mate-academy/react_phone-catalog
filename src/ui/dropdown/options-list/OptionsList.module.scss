@@ -1,0 +1,15 @@
+.optionsList {
+  position: absolute;
+  z-index: 100;
+  top: 42px;
+  width: 100%;
+  padding-block: var(--size-8);
+  border: var(--border-element);
+  box-shadow: 0 2px 15px 0 rgba(0, 0, 0, 0.05);
+  background: var(--bg-primary);
+  text-align: start;
+
+  .options {
+    @include flex-column;
+  }
+}

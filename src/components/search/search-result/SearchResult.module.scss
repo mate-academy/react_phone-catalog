@@ -1,0 +1,44 @@
+.box {
+  @include size(350px, 200px);
+  @include fade-in;
+
+  position: absolute;
+  top: 110%;
+  display: flex;
+  flex-direction: column;
+  padding-block: var(--size-8);
+  row-gap: var(--size-12);
+  border: var(--border-element);
+  border-radius: 5px;
+  background-color: var(--bg-primary);
+  overflow-x: auto;
+
+  @include large {
+    right: 0;
+  }
+
+  &::-webkit-scrollbar {
+    width: var(--size-12);
+  }
+
+  &::-webkit-scrollbar-track {
+    border-radius: 100px;
+    background-color: var(--elements);
+  }
+
+  &::-webkit-scrollbar-thumb {
+    height: 35%;
+    border-radius: 100px;
+    background-color: var(--icons);
+
+    @include hover {
+      background-color: var(--secondary);
+    }
+  }
+
+  @include medium {
+    @include size(100%, 270px);
+
+    top: 47px;
+  }
+}

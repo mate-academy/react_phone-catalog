@@ -1,47 +1,56 @@
-import { FC, ReactNode } from 'react';
+import { FC, ReactNode, memo } from 'react';
+import { useTranslation } from 'react-i18next';
 import { NavLink } from 'react-router-dom';
+
 import cn from 'classnames';
+
+import { Labels } from '@utils/types/labels.enum';
 
 import styles from './NavIcon.module.scss';
 
 type TProps = {
   text: string;
   products: number;
-  children: ReactNode;
   ROUTE: string;
-  closeMenu?: () => void;
+  children: ReactNode;
+  onIconClick?: () => void;
 };
 
-export const NavIcon: FC<TProps> = ({
-  children,
-  closeMenu,
-  text,
-  products,
-  ROUTE,
-}) => {
-  const hasProducts = !!products;
-  const isFavorite = text === 'Favorite';
+export const NavIcon: FC<TProps> = memo(
+  ({ text, products, ROUTE, children, onIconClick }) => {
+    const { t } = useTranslation();
 
-  return (
-    <NavLink
-      to={ROUTE}
-      className={({ isActive }) =>
-        cn(styles.navIcon, isActive && styles.active)
-      }
-      onClick={closeMenu}
-      title={`Products ${text}`}
-      aria-label={text}
-    >
-      <div className={styles.wrapper}>
-        {children}
-        {hasProducts && (
-          <span
-            className={cn(styles.count, isFavorite && styles.countFavorite)}
-          >
-            {products}
-          </span>
-        )}
-      </div>
-    </NavLink>
-  );
-};
+    const hasProducts = !!products;
+    const isFavorite = text === Labels.Favourite;
+    const localType = t(`nav.productTypes.${text}`);
+    const localTitle = t('nav.link.title', {
+      productType: localType,
+    });
+    const localAria = t('nav.link.aria', { productType: localType });
+
+    return (
+      <NavLink
+        to={ROUTE}
+        className={({ isActive }) =>
+          cn(styles.navIcon, { [styles.active]: isActive })
+        }
+        onClick={onIconClick}
+        title={localTitle}
+        aria-label={localAria}
+      >
+        <div className={styles.wrapper}>
+          {children}
+          {hasProducts && (
+            <span
+              className={cn(styles.count, {
+                [styles.countFavorite]: isFavorite,
+              })}
+            >
+              {products}
+            </span>
+          )}
+        </div>
+      </NavLink>
+    );
+  },
+);

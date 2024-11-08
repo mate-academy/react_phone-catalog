@@ -4,9 +4,9 @@
   margin-right: 0;
   border-radius: var(--size-48);
   background-color: #222;
-  padding: 52px 80px 48px 52px;
+  padding: var(--size-52) var(--size-80) var(--size-48) var(--size-52);
 
-  .text {
+  h3 {
     margin-bottom: var(--size-24);
     font-size: clamp(var(--size-32), 0.86rem + 2.86vw, var(--size-48));
     line-height: 1.06;
@@ -52,7 +52,7 @@
     font-size: clamp(var(--size-16), 0.71rem + 0.71vw, var(--size-20));
     text-transform: uppercase;
 
-    &:hover {
+    @include hover {
       box-shadow: 0 3px 13px 0 rgba(203, 206, 212, 0.4);
     }
 

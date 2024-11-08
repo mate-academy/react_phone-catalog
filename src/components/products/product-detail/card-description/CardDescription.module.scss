@@ -3,6 +3,7 @@
 
   h4 {
     margin-bottom: var(--size-16);
+    color: var(--text-color);
 
     @include mobile {
       font-size: var(--size-16);

@@ -1,38 +1,56 @@
 import { FC, useEffect } from 'react';
 
-import { Header } from '@components/header/Header';
-import { Footer } from '@components/footer/Footer';
-
 import { AppRoutes } from '@routes/Routes';
 
-import { getProducts } from '@store/features/product/getProductsApi';
-import { getPhones } from '@store/features/phones/getPhoneApi';
-import { getTablets } from '@store/features/tablets/getTabletsApi';
-import { getAccessories } from '@store/features/accessories/getAccessoriesApi';
-import { useAppDispatch } from '@hooks/typedHooks';
+import { Footer } from '@components/footer/Footer';
+import { Header } from '@components/header/';
+
+import { Loader } from '@ui/index';
+
+import { useAppSelector, useProducts } from '@hooks/index';
+import { useAction } from '@hooks/useActions';
 
 import styles from './App.module.scss';
 
 export const App: FC = () => {
-  const dispatch = useAppDispatch();
+  const { getProducts, getPhones, getTablets, getAccessories } = useAction();
+  const { loading: productsLoading } = useProducts();
+  const phonesLoading = useAppSelector(state => state.phones.loading);
+  const tabletsLoading = useAppSelector(state => state.tablets.loading);
+  const accessoriesLoading = useAppSelector(state => state.accessories.loading);
+
+  const isLoading =
+    productsLoading || phonesLoading || tabletsLoading || accessoriesLoading;
 
   useEffect(() => {
-    dispatch(getProducts());
-    dispatch(getPhones());
-    dispatch(getTablets());
-    dispatch(getAccessories());
-  }, [dispatch]);
+    const fetchData = async () => {
+      try {
+        await Promise.all([
+          getProducts(),
+          getPhones(),
+          getTablets(),
+          getAccessories(),
+        ]);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
 
-  console.log('Render App');
+    fetchData();
+  }, [getProducts, getPhones, getTablets, getAccessories]);
 
   return (
     <div className={styles.App}>
       <Header />
-      <main>
-        <div className="container">
-          <AppRoutes />
-        </div>
-      </main>
+      {isLoading ? (
+        <Loader />
+      ) : (
+        <main>
+          <div className="container">
+            <AppRoutes />
+          </div>
+        </main>
+      )}
       <Footer />
     </div>
   );

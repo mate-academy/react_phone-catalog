@@ -14,48 +14,6 @@ footer {
       font-weight: var(--fw-800);
       letter-spacing: 0.04em;
       line-height: 0.91;
-
-      a {
-        position: relative;
-
-        &::after {
-          @include pseudo(0, 3px, var(--primary));
-
-          top: 15px;
-        }
-
-        &:hover::after {
-          width: 100%;
-        }
-
-        @include hover {
-          color: var(--primary);
-        }
-      }
-    }
-
-    .button {
-      @include flex-items-center;
-
-      column-gap: var(--size-16);
-      color: var(--secondary);
-      font-size: var(--size-12);
-
-      svg {
-        @include size(var(--size-32), var(--size-32));
-
-        border: var(--border-icon);
-        padding: var(--size-8);
-      }
-
-      @include hover {
-        color: var(--primary);
-      }
-
-      &:hover svg {
-        border-color: var(--primary);
-        background-color: var(--hover-bg);
-      }
     }
 
     @include large {
@@ -79,10 +37,6 @@ footer {
         align-items: flex-start;
         row-gap: var(--size-16);
         flex: 0 0;
-      }
-
-      .button {
-        margin: 0 auto;
       }
     }
   }

@@ -1,6 +1,8 @@
 import { FC } from 'react';
+import { useTranslation } from 'react-i18next';
 
 import styles from './ProductSpec.module.scss';
+import { SpecItem } from './spec-item/SpecItem';
 
 type TProps = {
   screen?: string;
@@ -25,67 +27,30 @@ export const ProductSpec: FC<TProps> = ({
   zoom,
   cell,
 }) => {
-  const cellText = cell?.join(', ');
+  const { t } = useTranslation();
+
+  const specs = {
+    screen,
+    resolution,
+    processor,
+    ram,
+    capacity: memory ? '' : capacity,
+    memory,
+    camera,
+    zoom,
+    cell: cell?.join(', ') || '',
+  };
 
   return (
     <div className={styles.specs}>
-      <div className={styles.spec}>
-        <p>Screen</p>
-        <p>{screen}</p>
-      </div>
-
-      {resolution && (
-        <div className={styles.spec}>
-          <p>Resolution</p>
-          <p>{resolution}</p>
-        </div>
-      )}
-
-      {processor && (
-        <div className={styles.spec}>
-          <p>Processor</p>
-          <p>{processor}</p>
-        </div>
-      )}
-
-      {capacity && (
-        <div className={styles.spec}>
-          <p>Capacity</p>
-          <p>{capacity}</p>
-        </div>
-      )}
-
-      <div className={styles.spec}>
-        <p>RAM</p>
-        <p>{ram}</p>
-      </div>
-
-      {memory && (
-        <div className={styles.spec}>
-          <p>Built in memory</p>
-          <p>{memory}</p>
-        </div>
-      )}
-
-      {camera && (
-        <div className={styles.spec}>
-          <p>Camera</p>
-          <p>{camera}</p>
-        </div>
-      )}
-
-      {zoom && (
-        <div className={styles.spec}>
-          <p>Zoom</p>
-          <p>{zoom}</p>
-        </div>
-      )}
-
-      {cell && (
-        <div className={styles.spec}>
-          <p>Cell</p>
-          <p>{cellText}</p>
-        </div>
+      {Object.entries(specs).map(([spec, value]) =>
+        value ? (
+          <SpecItem
+            key={spec}
+            label={t(`product.tech.${spec}`)}
+            value={value}
+          />
+        ) : null,
       )}
     </div>
   );

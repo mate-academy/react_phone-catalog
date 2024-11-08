@@ -1,19 +1,24 @@
 import { FC } from 'react';
+import { useTranslation } from 'react-i18next';
 import { NavLink } from 'react-router-dom';
-import { motion } from 'framer-motion';
-import cn from 'classnames';
 
-import { IMenuLink } from './navLinks-items.interface';
+import cn from 'classnames';
+import { motion } from 'framer-motion';
 
 import styles from './NavLinks.module.scss';
+import { IMenuLink } from './navLinks-items.interface';
 
 interface IMenuItem {
   item: IMenuLink;
   idx?: number;
-  closeMenu?: () => void;
+  onClick?: () => void;
 }
 
-export const NavLinks: FC<IMenuItem> = ({ item, idx = 0, closeMenu }) => {
+export const NavLinks: FC<IMenuItem> = ({ item, idx = 0, onClick }) => {
+  const { t } = useTranslation();
+  const localName = t(`nav.${item.name}`);
+  const localTitle = t('nav.label', { name: localName });
+
   return (
     <motion.li
       initial={{ scale: 0, opacity: 0 }}
@@ -27,12 +32,14 @@ export const NavLinks: FC<IMenuItem> = ({ item, idx = 0, closeMenu }) => {
     >
       <NavLink
         to={item.link}
-        className={({ isActive }) => cn(styles.link, isActive && styles.active)}
-        onClick={closeMenu}
-        title={`Go to to the ${item.name} page`}
-        aria-label={item.name}
+        className={({ isActive }) =>
+          cn(styles.link, { [styles.active]: isActive })
+        }
+        onClick={onClick}
+        title={localTitle}
+        aria-label={localName}
       >
-        {item.name}
+        {localName}
       </NavLink>
     </motion.li>
   );

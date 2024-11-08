@@ -1,14 +1,21 @@
-import { FC, useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { FC, useEffect, useMemo, useState } from 'react';
+import { useTranslation } from 'react-i18next';
+import { useParams } from 'react-router-dom';
+
 import cn from 'classnames';
 
-import { HeartIcon } from '@ui/icon/HeartIcon';
+import { Icons } from '@ui/index';
 
-import { useAppDispatch, useAppSelector } from '@hooks/typedHooks';
+import {
+  useAction,
+  useAriaLabelText,
+  useCart,
+  useFavourites,
+} from '@hooks/index';
+
+import { ADD_TO } from '@utils/constants/actionButtons';
+import { CHOICE } from '@utils/types/cart-favourites.enum';
 import { TProduct } from '@utils/types/product.type';
-import { ariaLabelText } from '@utils/helpers/ariaLabelTextToButton';
-import { addCart } from '@store/features/cart/cart.slice';
-import { addFavourites } from '@store/features/favourites/favourites.slice';
 
 import styles from './ActionButtons.module.scss';
 
@@ -16,80 +23,88 @@ type TProps = {
   product?: TProduct;
 };
 
-enum CHOICE {
-  cart = 'cart',
-  favourites = 'favourites',
-}
-
-const ADD_TO = {
-  cart: CHOICE.cart,
-  favourites: CHOICE.favourites,
-};
-
 export const ActionButtons: FC<TProps> = ({ product }) => {
-  const location = useLocation();
-  const { itemId } = (location.state as { itemId: string }) || {};
-
-  const { items: cartItems } = useAppSelector(state => state.cart);
-  const { items: favouritesItems } = useAppSelector(state => state.favourite);
-  const dispatch = useAppDispatch();
-
-  useEffect(() => {
-    const hasItemCart = cartItems.some(item => item.product.id === product?.id);
-    const hasItemFavourites = favouritesItems.some(
-      item => item.id === product?.id,
-    );
-
-    setIsAdded({
-      cart: hasItemCart,
-      favourites: hasItemFavourites,
-    });
-  }, [itemId, cartItems, favouritesItems, product?.id]);
-
-  const [text, setText] = useState('Added');
+  const { itemId } = useParams();
+  const { cartItems } = useCart();
+  const { favouritesItems } = useFavourites();
+  const { addCart, addFavourites } = useAction();
+  const { t } = useTranslation();
   const [isAdded, setIsAdded] = useState({
     cart: false,
     favourites: false,
   });
 
+  const localAdded = t('button.added');
+  const localRemove = t('button.remove');
+  const localAddToCart = t('button.add');
+
+  const [buttonText, setButtonText] = useState(localAdded);
+
+  const isInCart = useMemo(
+    () => cartItems.some(item => item.product?.id === product?.id),
+    [cartItems, product],
+  );
+  const isInFavourites = useMemo(
+    () => favouritesItems.some(item => item.id === product?.id),
+    [favouritesItems, product],
+  );
+
+  useEffect(() => {
+    if (!product) return;
+    setIsAdded({ cart: isInCart, favourites: isInFavourites });
+    setButtonText(isInCart ? localAdded : localAddToCart);
+  }, [itemId, isInCart, isInFavourites, product]);
+
   const onMouseEnter = () => {
-    setText('Remove');
+    setButtonText(localRemove);
   };
 
   const onMouseLeave = () => {
-    setText('Added');
+    setButtonText(localAdded);
   };
 
-  const handleStatus = (type: CHOICE, item: TProduct | undefined) => {
-    if (type === ADD_TO.cart) dispatch(addCart(item));
-    if (type === ADD_TO.favourites) dispatch(addFavourites(item));
+  const onClickStatus = (type: CHOICE, item: TProduct | undefined) => {
+    if (!item) return;
+
+    if (type === ADD_TO.cart) addCart(item);
+    if (type === ADD_TO.favourites) addFavourites(item);
 
     setIsAdded(prev => ({
       ...prev,
       [type]: !prev[type],
     }));
+
+    setButtonText(!isAdded.cart ? t('button.added') : t('button.add'));
   };
+
+  const cartAriaLabel = useAriaLabelText(isAdded.cart, ADD_TO.cart);
+  const favouritesAriaLabel = useAriaLabelText(
+    isAdded.favourites,
+    ADD_TO.favourites,
+  );
 
   return (
     <div className={styles.buttons}>
       <button
         className={cn(!isAdded.cart ? styles.add : styles.added)}
-        onClick={() => handleStatus(ADD_TO.cart, product)}
+        onClick={() => onClickStatus(ADD_TO.cart, product)}
         onMouseEnter={onMouseEnter}
         onMouseLeave={onMouseLeave}
         type="button"
-        aria-label={ariaLabelText(isAdded.cart, ADD_TO.cart)}
+        aria-label={cartAriaLabel}
       >
-        {!isAdded.cart ? 'Add to cart' : text}
+        {!isAdded.cart ? localAddToCart : buttonText}
       </button>
 
       <button
-        className={styles.favourites}
-        onClick={() => handleStatus(ADD_TO.favourites, product)}
+        className={cn(styles.favourites, {
+          [styles.favorite]: isAdded.favourites,
+        })}
+        onClick={() => onClickStatus(ADD_TO.favourites, product)}
         type="button"
-        aria-label={ariaLabelText(isAdded.favourites, ADD_TO.favourites)}
+        aria-label={favouritesAriaLabel}
       >
-        <HeartIcon isOpen={isAdded.favourites} />
+        <Icons.HeartIcon isOpen={isAdded.favourites} />
       </button>
     </div>
   );

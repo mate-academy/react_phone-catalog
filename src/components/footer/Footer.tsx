@@ -1,47 +1,32 @@
 import { FC } from 'react';
-import { Link } from 'react-router-dom';
-import { Logo } from '@ui/logo/Logo';
-import { ArrowUpIcon } from '@ui/icon/ArrowUpIcon';
+import { useTranslation } from 'react-i18next';
 
-import { ROUTES } from '@utils/constants/routes';
+import { Logo } from '@ui/index';
+
+import { LINKS } from '@utils/constants/footerLinks';
 import { scrollToTop } from '@utils/helpers/scrollToTop';
 
 import styles from './Footer.module.scss';
+import { FooterButton } from './footer-button/FooterButton';
+import { FooterNav } from './footer-nav/FooterNav';
 
 export const Footer: FC = () => {
+  const { t } = useTranslation();
+  const localAria = t(`footer.aria.nav`);
+
   return (
     <footer>
       <div className="container">
         <div className={styles.footer}>
           <Logo onClickAction={scrollToTop} />
 
-          <div className={styles.contacts}>
-            <a
-              href="https://github.com/Galers"
-              target="_blank"
-              rel="noreferrer"
-              title="GitHub"
-            >
-              GitHub
-            </a>
-            <Link to={ROUTES.CONTACT} title="Contact">
-              Contact
-            </Link>
-            <Link to={ROUTES.RIGHTS} title="Rights">
-              Rights
-            </Link>
-          </div>
+          <nav className={styles.contacts} aria-label={localAria}>
+            {LINKS.map(link => (
+              <FooterNav key={link.name} link={link} />
+            ))}
+          </nav>
 
-          <button
-            className={styles.button}
-            onClick={scrollToTop}
-            type="button"
-            aria-label="Scroll to the top of the page"
-            title="Back to top"
-          >
-            Back to top
-            <ArrowUpIcon />
-          </button>
+          <FooterButton />
         </div>
       </div>
     </footer>
