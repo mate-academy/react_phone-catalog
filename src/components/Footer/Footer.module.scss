@@ -1,5 +1,5 @@
-@import '../../styles/variables.scss';
-@import '../../styles/mixins.scss';
+@import '../../styles/variables';
+@import '../../styles/mixins';
 
 .footer {
   height: 100%;
@@ -15,12 +15,6 @@
   @include on-phone {
     flex-direction: column;
     gap: 32px;
-  }
-
-  @include on-tablet {
-  }
-
-  @include on-desktop {
   }
 }
 
@@ -76,9 +70,6 @@
 
   @include on-tablet {
     gap: 13.5px;
-  }
-
-  @include on-desktop {
   }
 }
 

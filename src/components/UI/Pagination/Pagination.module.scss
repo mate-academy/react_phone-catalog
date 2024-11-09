@@ -1,4 +1,4 @@
-@import '../../../styles/variables.scss';
+@import '../../../styles/variables';
 
 .paginationControls {
   display: flex;
@@ -17,7 +17,7 @@
     -webkit-appearance: none;
     -moz-appearance: none;
     outline: none;
-    padding: 10px 0px 9px 12px;
+    padding: 10px 0 9px 12px;
     font-size: 14px;
     line-height: 21px;
     width: 128px;
@@ -26,13 +26,6 @@
     color: $main-white-color;
     border-color: #323542;
 
-    &:-ms-input-placeholder {
-      color: #323542;
-    }
-
-    &::-ms-expand {
-      display: none;
-    }
     &:hover {
       border-color: $gray-secondary;
     }

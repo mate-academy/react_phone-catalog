@@ -15,9 +15,12 @@ export const ProductControls = () => {
 
   useEffect(() => {
     const params = new URLSearchParams();
+
     params.set('sort', sort);
 
-    if (sort !== 'age') params.set('sort', sort);
+    if (sort !== 'age') {
+      params.set('sort', sort);
+    }
 
     navigate({ search: params.toString() });
   }, [sort, navigate]);

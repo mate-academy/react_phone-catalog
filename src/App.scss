@@ -1,10 +1,10 @@
-#root {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
+.page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
-.main{
+.main {
   display: flex;
   flex-direction: column;
   overflow: hidden;

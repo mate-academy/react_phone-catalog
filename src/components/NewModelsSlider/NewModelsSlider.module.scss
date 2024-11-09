@@ -1,4 +1,4 @@
-@import '../../styles/mixins.scss';
+@import '../../styles/mixins';
 
 .productCards {
   gap: 16px;
@@ -63,15 +63,15 @@
     border: 1px solid #3b3e4a;
   }
 
+  .icon {
+    width: 16px;
+    height: 16px;
+
+    color: $main-white-color;
+  }
+
   &:disabled .icon {
     color: #4a4d58;
     pointer-events: none;
   }
-}
-
-.icon {
-  width: 16px;
-  height: 16px;
-
-  color: $main-white-color;
 }

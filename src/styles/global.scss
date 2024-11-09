@@ -52,10 +52,12 @@ h1 {
     letter-spacing: -0.01em;
     text-align: left;
   }
+
   @include on-tablet {
     font-size: 48px;
     line-height: 56px;
   }
+
   @include on-desktop {
     font-size: 48px;
     line-height: 56px;
@@ -69,11 +71,13 @@ h2 {
     line-height: 30.8px;
     text-align: left;
   }
+
   @include on-tablet {
     font-size: 32px;
     line-height: 41px;
     letter-spacing: -0.01em;
   }
+  
   @include on-desktop {
     font-size: 32px;
     line-height: 41px;

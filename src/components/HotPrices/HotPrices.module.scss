@@ -1,4 +1,4 @@
-@import '../../styles/mixins.scss';
+@import '../../styles/mixins';
 
 .hotModelsSection {
   position: relative;
@@ -42,6 +42,7 @@
 
 .sectionTitle {
   font-weight: 800;
+
   @include on-phone {
     max-width: 136px;
   }

@@ -1,7 +1,8 @@
-@import '../../styles/global.scss';
+@import '../../styles/global';
 
 .header {
   @include page-grid;
+
   position: sticky;
   border-bottom: 1px solid $border-header-color;
   z-index: 1001;
@@ -70,7 +71,6 @@
 
 .icon {
   display: inline-block;
-  height: 100%;
   width: 16px;
   height: 16px;
   color: $main-white-color;

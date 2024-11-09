@@ -24,9 +24,14 @@ export const Pagination: React.FC = () => {
   useEffect(() => {
     const params = new URLSearchParams();
 
-    if (page > 1) params.set('page', page.toString());
+    if (page > 1) {
+      params.set('page', page.toString());
+    }
 
-    if (perPage !== 'all') params.set('perPage', perPage);
+    if (perPage !== 'all') {
+      params.set('perPage', perPage);
+    }
+
     navigate({ search: params.toString() });
   }, [page, perPage, navigate]);
 

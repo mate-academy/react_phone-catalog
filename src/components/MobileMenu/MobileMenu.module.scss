@@ -1,4 +1,4 @@
-@import '../../styles/global.scss';
+@import '../../styles/global';
 
 .mobileMenu {
   position: fixed;
@@ -86,7 +86,6 @@
 
 .icon {
   display: inline-block;
-  height: 100%;
   width: 16px;
   height: 16px;
   color: $main-white-color;
@@ -104,7 +103,9 @@
 
 .mobileMenuIconWrapper {
   height: 64px;
+
   --columns: 4;
+
   display: grid;
   grid-template-columns: repeat(var(--columns), 1fr);
 }

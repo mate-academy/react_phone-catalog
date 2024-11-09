@@ -1,4 +1,4 @@
-@import 'variables.scss';
+@import 'variables';
 
 @mixin on-phone {
   @media (min-width: $phone-min-width) and (max-width: $phone-max-width) {
