@@ -8,6 +8,7 @@ import { StorageContext } from '../../components/StorageContext';
 import { CartItemType } from '../../types/CartItemType';
 import { CartItem } from '../../components/CartItem';
 import { IMAGES } from '../../images-style/images';
+import { Breadcrumbs } from '../../components/Breadcrubs';
 
 type CartPageProps = {
   setCartLength: React.Dispatch<number>,
@@ -40,6 +41,8 @@ export const CartPage: React.FC<CartPageProps> = ({
 
   return (
     <div className="cart-page">
+      <Breadcrumbs />
+
       {cart.length > 0
         ? (
           <>
