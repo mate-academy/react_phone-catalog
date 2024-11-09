@@ -4,9 +4,10 @@
 .category {
   &__title {
     @include mixin.h2-desktop-tablet;
+
     color: var.$primary-gray;
     text-align: left;
-    margin: 0 16px 20px 16px;
+    margin: 0 16px 20px;
 
     @include mixin.on-tablet {
       margin-bottom: 24px;
@@ -19,6 +20,7 @@
 
   &__container {
     @include mixin.grid;
+
     @include mixin.on-mobile {
       margin: 0 16px;
     }
@@ -53,11 +55,13 @@
 
   &__name {
     @include mixin.h4-desktop-tablet;
+
     color: var.$primary-gray;
   }
 
   &__amount {
     @include mixin.body-text-desktop-tablet;
+
     color: var.$secondary-gray;
   }
 }

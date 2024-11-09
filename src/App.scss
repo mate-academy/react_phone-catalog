@@ -19,6 +19,7 @@ body {
 
   &__container {
     height: 100vh;
+
     @include mixin.flex(flex, false, false, column);
   }
 

@@ -15,6 +15,7 @@
 
   &__title {
     @include mixin.h1-mobile;
+
     color: var.$primary-gray;
     text-align: center;
     margin: 16px;
@@ -26,6 +27,7 @@
 
     @include mixin.on-desktop {
       @include mixin.h1-desktop-tablet;
+
       text-align-last: left;
       margin: 40px 0;
     }
@@ -102,6 +104,7 @@
 
   &__slide {
     @include mixin.sizes(100%, 100%);
+
     object-fit: cover;
     object-position: center;
   }
@@ -120,11 +123,13 @@
   &__container {
     @include mixin.flex(flex, center, center, false);
     @include mixin.sizes(30px, 24px);
+
     cursor: pointer;
   }
 
   &__item {
     @include mixin.sizes(14px, 4px);
+
     background-color: var.$elements;
     border: none;
     cursor: pointer;
@@ -133,10 +138,7 @@
     &::before {
       content: "";
       position: absolute;
-      top: -10px;
-      left: -10px;
-      right: -10px;
-      bottom: -10px;
+      inset: -10px;
       z-index: -1;
     }
 
