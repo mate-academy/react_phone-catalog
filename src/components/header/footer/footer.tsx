@@ -23,7 +23,7 @@ export const Footer: React.FC = () => {
             </li>
             <li className={styles.footer_github}>
               <a
-                href="https://github.com/vanvalera"
+                href="https://github.com/mykyta01"
                 target="_blank"
                 rel="noopener noreferrer"
                 className={styles.footer_link}
@@ -33,7 +33,7 @@ export const Footer: React.FC = () => {
             </li>
             <li className={styles.footer_contact}>
               <a
-                href="https://www.linkedin.com/in/valeriy-zhyla/"
+                href="https://www.linkedin.com/in/nromanishyn/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className={styles.footer_link}
@@ -43,7 +43,7 @@ export const Footer: React.FC = () => {
             </li>
             <li className={styles.footer_rights}>
               <a
-                href="https://github.com/vanvalera"
+                href="https://github.com/mykyta01"
                 target="_blank"
                 rel="noopener noreferrer"
                 className={styles.footer_link}

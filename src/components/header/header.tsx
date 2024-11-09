@@ -19,6 +19,8 @@ export const Header: React.FC = () => {
     setIsHeaderModalOpen(prevState => !prevState);
   };
 
+  const totalItems = cartItems.reduce((sum, item) => sum + item.quantity, 0);
+
   useEffect(() => {
     if (isHeaderModalOpen) {
       document.body.style.overflow = 'hidden';
@@ -98,9 +100,9 @@ export const Header: React.FC = () => {
               </NavLink>
               <Link to={'cart'} className={styles.header_cart}>
                 <span className={styles.header_icon2}>
-                  {cartItems.length > 0 ? (
+                  {totalItems > 0 ? (
                     <span className={styles.header_icon1_quan}>
-                      {cartItems.length}
+                      {totalItems}
                     </span>
                   ) : null}
                 </span>

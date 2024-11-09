@@ -16,6 +16,7 @@ export const HeaderMenu: React.FC<HeaderMenuProps> = ({
 }) => {
   const favoriteItem = useSelector((state: RootState) => state.favorite.items);
   const cartItems = useSelector((state: RootState) => state.cart.items);
+
   const [isVisible, setIsVisible] = useState(isHeaderModalOpen);
 
   useEffect(() => {
