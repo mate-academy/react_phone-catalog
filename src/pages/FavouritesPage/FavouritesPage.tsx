@@ -4,7 +4,6 @@ import { Breadcrumbs } from '../../components/Breadcrubs';
 import { StorageContext } from '../../components/StorageContext';
 import { ProductList } from '../../components/ProductList';
 import { Product } from '../../types/Product';
-import { NoSearchResults } from '../../components/NoSearchResults';
 
 type FavoritesPageProps = {
   setFavLength: React.Dispatch<number>,
@@ -39,25 +38,29 @@ export const FavoritesPage: React.FC<FavoritesPageProps> = ({
     <div className="fav-page">
       <Breadcrumbs />
 
-      <div className="fav-page__title">
-        Favourites
-      </div>
-
-      <div className="fav-page__quantity">
-        {`${fav.length} items`}
-      </div>
-
       {newFav.length > 0
         ? (
-          <ProductList
-            products={newFav}
-            isNormal
-            setFavLength={setFavLength}
-            setCartLength={setCartLength}
-          />
+          <>
+            <div className="fav-page__title">
+              Favourites
+            </div>
+
+            <div className="fav-page__quantity">
+              {`${fav.length} items`}
+            </div>
+
+            <ProductList
+              products={newFav}
+              isNormal
+              setFavLength={setFavLength}
+              setCartLength={setCartLength}
+            />
+          </>
         )
         : (
-          <NoSearchResults />
+          <div className="fav-page__empty-favourites">
+            Your favourites are empty
+          </div>
         )}
     </div>
   );

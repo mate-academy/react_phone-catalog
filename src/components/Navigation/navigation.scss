@@ -21,6 +21,7 @@
 
   &__search {
     @extend %body-text;
+
     position: relative;
     padding: 24px;
     height: 64px;
@@ -49,11 +50,11 @@
       cursor: pointer;
 
       &--close {
-        background-image: url(../../images-style/Icons/Close.svg);
+        background-image: url("../../images-style/Icons/Close.svg");
       }
 
       &--search {
-        background-image: url(../../images-style/Icons/Search.svg);
+        background-image: url("../../images-style/Icons/Search.svg");
       }
     }
   }
@@ -65,6 +66,7 @@
 
   &__link {
     @extend %UPPERCASE;
+
     display: flex;
     position: relative;
     line-height: 100%;
@@ -113,18 +115,19 @@
       box-shadow: -1px 0 0 0 $super-light-gray;
     }
 
-    &--favorites {
-      background-image: url(../../images-style/Icons/favorites.svg);
+    &--favourites {
+      background-image: url("../../images-style/Icons/favorites.svg");
       position: relative;
     }
 
     &--cart {
-      background-image: url(../../images-style/Icons/cart.svg);
+      background-image: url("../../images-style/Icons/cart.svg");
       position: relative;
     }
 
     &-count {
       @extend %UPPERCASE;
+      
       position: absolute;
       display: flex;
       justify-content: center;

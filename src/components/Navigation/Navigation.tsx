@@ -129,8 +129,8 @@ export const Navigation: React.FC<NavigationProps> = ({
 
         <div className="nav__saving-categories">
           <NavigationLink
-            to="/favorites"
-            extraClass="nav__link--favorites nav__link--right"
+            to="/favourites"
+            extraClass="nav__link--favourites nav__link--right"
           >
             {favLength > 0 && (
               <div className="nav__link-count">

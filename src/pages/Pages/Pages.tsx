@@ -100,22 +100,18 @@ export const Pages: React.FC<PagesProps> = ({
           />
         </Route>
         <Route
-          path="/favorites"
+          path="/favourites"
           element={(
-            <>
-              <FavoritesPage
-                setFavLength={setFavLength}
-                setCartLength={setCartLength}
-              />
-            </>
+            <FavoritesPage
+              setFavLength={setFavLength}
+              setCartLength={setCartLength}
+            />
           )}
         />
         <Route
           path="/cart"
           element={(
-            <>
-              <CartPage setCartLength={setCartLength} />
-            </>
+            <CartPage setCartLength={setCartLength} />
           )}
         />
         <Route path="*" element={<NotFoundPage />} />

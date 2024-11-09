@@ -109,7 +109,7 @@ export const CartPage: React.FC<CartPageProps> = ({
                   >
                     <div className="cart-page__info-message-button">
                       <img
-                        src="_new/img/Close.svg"
+                        src={IMAGES.Close}
                         alt="close button for message"
                         className="cart-page__info-message-button-picture"
                         onClick={() => setIsMessage(false)}
