@@ -114,7 +114,7 @@ export const ItemInformation = () => {
         to={`/img/${currentProduct?.category}`}
         className={styles.itemInformation_buttonBack}
       >
-        <img src="img/icons/Chevron-left.svg" alt="back" />
+        <img src="/img/icons/Chevron-left.svg" alt="back" />
         <p>Back</p>
       </Link>
 
@@ -186,7 +186,7 @@ export const ItemInformation = () => {
                 {currentProduct?.colorsAvailable.map(color => (
                   <Link
                     key={color}
-                    to={`${currentProduct.namespaceId}-${currentProduct.capacity.toLowerCase()}-${color}`}
+                    to={`../${currentProduct.namespaceId}-${currentProduct.capacity.toLowerCase()}-${color}`}
                   >
                     <div
                       style={{
@@ -210,7 +210,7 @@ export const ItemInformation = () => {
                 {currentProduct?.capacityAvailable.map(capacity => (
                   <Link
                     key={capacity}
-                    to={`${currentProduct.namespaceId}-${capacity.toLowerCase()}-${currentProduct.color}`}
+                    to={`../${currentProduct.namespaceId}-${capacity.toLowerCase()}-${currentProduct.color}`}
                     className={styles.capacityLink}
                   >
                     <div
@@ -265,9 +265,9 @@ export const ItemInformation = () => {
                 className={styles.itemInformation_generalInfo_buttons_favourite}
               >
                 {isClickedOnFavourite ? (
-                  <img src="img/icons/FavouritesFilledHeart.svg" alt="" />
+                  <img src="/img/icons/FavouritesFilledHeart.svg" alt="" />
                 ) : (
-                  <img src="img/icons/favourites.svg" alt="" />
+                  <img src="/img/icons/favourites.svg" alt="" />
                 )}
               </div>
             </div>

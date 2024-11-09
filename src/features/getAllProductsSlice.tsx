@@ -57,5 +57,4 @@ export const getAllProductsSlice = createSlice({
   },
 });
 
-// Correct export: only export the reducer, not the entire slice
 export default getAllProductsSlice.reducer;

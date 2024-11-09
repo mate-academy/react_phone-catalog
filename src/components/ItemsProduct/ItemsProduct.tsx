@@ -39,8 +39,8 @@ export const ItemsProduct: React.FC<Props> = ({ product, discount }) => {
     <div className={styles.product}>
       <Link
         to={{
-          pathname: `${product.category}${product.itemId}`,
-        }} // string
+          pathname: `/${product.category}/${product.itemId}`,
+        }}
         className={styles.product_image}
       >
         <img

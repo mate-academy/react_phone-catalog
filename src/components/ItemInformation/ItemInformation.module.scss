@@ -226,47 +226,48 @@
         display: flex;
         flex-direction: column;
         gap: 8px;
-      
+
         p {
           font-size: 12px;
           color: $color-for-main-text;
         }
-      
-        .capacityOptions {
-          display: flex;
-          gap: 8px;
+      }
+
+      .capacityOptions {
+        margin-top: 8px;
+        display: flex;
+        gap: 8px;
+      }
+
+      .capacityLink {
+        text-decoration: none;
+      }
+
+      .capacityBox {
+        width: 56px;
+        height: 32px;
+        border: 1px solid $color-for-borders;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        &:hover {
+          border-color: $color-for-buttons;
         }
-      
-        .capacityLink {
-          text-decoration: none;
+
+        &.active {
+          background-color: black;
         }
-      
-        .capacityBox {
-          width: 56px;
-          height: 32px;
-          border: 1px solid $color-for-borders;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-      
-          &:hover {
-            border-color: $color-for-buttons;
-          }
-      
-          &.active {
-            background-color: black;
-          }
-        }
-      
-        .capacityText {
-          color: black;
-          font-size: 14px;
-          line-height: 32px;
-        }
-      
-        .activeText {
-          color: white;
-        }
+      }
+
+      .capacityText {
+        color: black;
+        font-size: 14px;
+        line-height: 32px;
+      }
+
+      .activeText {
+        color: white;
       }
 
       &__prices {

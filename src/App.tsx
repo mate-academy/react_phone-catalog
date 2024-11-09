@@ -62,15 +62,15 @@ export const App = () => {
                     />
                     <Route path="phones">
                       <Route index element={<GeneralProductsPage />} />
-                      <Route path=":productId?" element={<ItemInformation />} />
+                      <Route path=":productId" element={<ItemInformation />} />
                     </Route>
                     <Route path="tablets">
                       <Route index element={<GeneralProductsPage />} />
-                      <Route path=":productId?" element={<ItemInformation />} />
+                      <Route path=":productId" element={<ItemInformation />} />
                     </Route>
                     <Route path="accessories">
                       <Route index element={<GeneralProductsPage />} />
-                      <Route path=":productId?" element={<ItemInformation />} />
+                      <Route path=":productId" element={<ItemInformation />} />
                     </Route>
                     <Route path="favourites" element={<FavoritesPage />} />
                     <Route path="bucket" element={<BucketPage />} />
