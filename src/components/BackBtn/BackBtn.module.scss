@@ -1,0 +1,37 @@
+@import 'src/styles/colors';
+
+.goBack {
+  grid-column: 1/-1;
+
+  display: flex;
+  align-items: center;
+  width: max-content;
+
+  color: $color-secondary;
+  cursor: pointer;
+
+  margin-bottom: 1.6rem;
+
+  &:hover {
+    color: $color-primary;
+  }
+}
+
+.arrowLeft {
+  display: inline-block;
+  min-width: 1.6rem;
+  height: 1.6rem;
+  background-image: url("../../assets/icons/arrow-left.svg");
+  background-size: contain;
+  background-position: 10%;
+}
+
+.backText {
+  text-decoration: none;
+  font-family: 'Mont Regular', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 600;
+  line-height: 1;
+  padding-top: 3px;
+  color: inherit;
+}

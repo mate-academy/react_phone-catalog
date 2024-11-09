@@ -1,4 +1,4 @@
-import styles from '../ProductPage.module.scss';
+import styles from '../../ProductPage.module.scss';
 import classNames from 'classnames';
 import React, { useState } from 'react';
 

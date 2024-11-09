@@ -1,0 +1,439 @@
+@import 'src/styles/colors';
+@import 'src/styles/mixins';
+@import 'src/styles/typography';
+
+.productSpecsContainer {
+  grid-column: 1/-1;
+
+  display: flex;
+  flex-direction: column;
+
+  margin-bottom: 5.6rem;
+
+  @include on-tablet {
+    margin-bottom: 6.4rem;
+
+    grid-column: 8/-1;
+  }
+
+  @include on-m-desktop {
+    margin-bottom: 0;
+
+    @include on-m-desktop {
+      grid-column: 14/ span 7;
+    }
+  }
+}
+
+.configContainer {
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 0.8rem;
+
+  padding-bottom: 2.4rem;
+  margin-bottom: 2.4rem;
+  border-bottom: 1px solid $color-elements;
+
+  @include on-m-desktop {
+    position: static;
+  }
+}
+
+.subTitle, .randomID {
+  @extend %text-small;
+
+  font-family: 'Mont Regular', sans-serif;
+  color: $color-secondary;
+}
+
+.randomID {
+  position: absolute;
+  color: $color-icons;
+  right: 0;
+
+  @include on-m-desktop {
+    right: 2.4rem;
+  }
+}
+
+.configSelection {
+  display: flex;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+}
+
+.color {
+  position: relative;
+
+  box-sizing: border-box;
+  cursor: pointer;
+  display: inline-block;
+  padding: 2px;
+  border: 1px solid $color-elements;
+  height: 3.2rem;
+  width: 3.2rem;
+  border-radius: 50%;
+  overflow: hidden;
+
+  &::after {
+    position: absolute;
+    box-sizing: border-box;
+
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    content: '';
+    display: inline-block;
+    height: 3rem;
+    width: 3rem;
+    border: 2px solid $color-white;
+  }
+
+  &IsActive {
+    border: 1px solid $color-primary;
+    cursor: auto;
+  }
+
+  &phones-spaceblack {
+    background-color: $color-phones-spaceblack;
+
+    &.colorIsActive {
+      border-color: $color-phones-spaceblack;
+    }
+  }
+
+  &phones-gold {
+    background-color: $color-phones-gold;
+
+    &.colorIsActive {
+      border-color: $color-phones-gold-shade;
+    }
+  }
+
+  &phones-graphite {
+    background-color: $color-phones-graphite;
+
+    &.colorIsActive {
+      border-color: $color-phones-graphite;
+    }
+  }
+
+  &phones-sierrablue {
+    background-color: $color-phones-sierrablue;
+
+    &.colorIsActive {
+      border-color: $color-phones-sierrablue-shade;
+    }
+  }
+
+  &phones-midnight {
+    background-color: $color-phones-midnight;
+
+    &.colorIsActive {
+      border-color: $color-phones-midnight;
+    }
+  }
+
+  &phones-yellow {
+    background-color: $color-phones-yellow;
+
+    &.colorIsActive {
+      border-color: $color-phones-yellow-shade;
+    }
+  }
+
+  &phones-purple {
+    background-color: $color-phones-purple;
+
+    &.colorIsActive {
+      border-color:$color-phones-purple-shade;
+    }
+  }
+
+  &phones-white {
+    background-color: $color-phones-white;
+
+
+    &.colorIsActive {
+      border-color: $color-phones-white-shade;
+    }
+  }
+
+  &phones-blue {
+    background-color: $color-phones-blue;
+
+    &.colorIsActive {
+      border-color: $color-phones-blue;
+    }
+  }
+
+  &phones-pink {
+    background-color: $color-phones-pink;
+
+    &.colorIsActive {
+      border-color: $color-phones-pink-shade;
+    }
+  }
+
+  &phones-black {
+    background-color: $color-phones-black;
+
+    &.colorIsActive {
+      border-color: $color-phones-black;
+    }
+  }
+
+  &phones-red {
+    background-color: $color-phones-red;
+
+    &.colorIsActive {
+      border-color: $color-phones-red;
+    }
+  }
+
+  &phones-green {
+    background-color: $color-phones-green;
+
+    &.colorIsActive {
+      border-color:  $color-phones-green-shade;
+    }
+  }
+
+  &phones-spacegray {
+    background-color: $color-phones-spacegray;
+
+    &.colorIsActive {
+      border-color:  $color-phones-spacegray;
+    }
+  }
+
+  &phones-midnightgreen {
+    background-color: $color-phones-midnightgreen;
+
+    &.colorIsActive {
+      border-color:  $color-phones-midnightgreen;
+    }
+  }
+
+  &phones-silver {
+    background-color: $color-phones-silver;
+
+    &.colorIsActive {
+      border-color:  $color-phones-silver-shade;
+    }
+  }
+
+  &phones-coral {
+    background-color: $color-phones-coral;
+
+    &.colorIsActive {
+      border-color:  $color-phones-coral;
+    }
+  }
+
+  &phones-rosegold {
+    background-color: $color-phones-rosegold;
+
+    &.colorIsActive {
+      border-color:  $color-phones-rosegold-shade;
+    }
+  }
+
+  &tablets-spacegray {
+    background-color: $color-tablets-spacegray;
+
+    &.colorIsActive {
+      border-color:  $color-tablets-spacegray;
+    }
+  }
+
+  &tablets-starlight {
+    background-color: $color-tablets-starlight;
+
+    &.colorIsActive {
+      border-color: $color-tablets-starlight-shade;
+    }
+  }
+
+  &tablets-pink {
+    background-color: $color-tablets-pink;
+
+    &.colorIsActive {
+      border-color: $color-tablets-pink-shade;
+    }
+  }
+
+  &tablets-rosegold {
+    background-color: $color-tablets-rosegold;
+
+    &.colorIsActive {
+      border-color: $color-tablets-rosegold-shade;
+    }
+  }
+
+  &tablets-silver {
+    background-color: $color-tablets-silver;
+
+    &.colorIsActive {
+      border-color: $color-tablets-silver-shade;
+    }
+  }
+
+
+  &tablets-green {
+    background-color: $color-tablets-green;
+
+    &.colorIsActive {
+      border-color: $color-tablets-green-shade;
+    }
+  }
+
+  &tablets-skyblue {
+    background-color: $color-tablets-skyblue;
+
+    &.colorIsActive {
+      border-color: $color-tablets-skyblue-shade;
+    }
+  }
+
+  &tablets-gold {
+    background-color: $color-tablets-gold;
+
+    &.colorIsActive {
+      border-color: $color-tablets-gold-shade;
+    }
+  }
+
+  &accessories-spacegray {
+    background-color: $color-accessories-spacegray;
+
+    &.colorIsActive {
+      border-color: $color-accessories-spacegray;
+    }
+  }
+
+  &accessories-silver {
+    background-color: $color-accessories-silver;
+
+    &.colorIsActive {
+      border-color: $color-accessories-silver-shade;
+    }
+  }
+
+  &accessories-gold {
+    background-color: $color-accessories-gold;
+
+    &.colorIsActive {
+      border-color: $color-accessories-gold-shade;
+    }
+  }
+
+  &accessories-blue {
+    background-color: $color-accessories-blue;
+
+    &.colorIsActive {
+      border-color: $color-accessories-blue;
+    }
+  }
+
+  &accessories-red {
+    background-color: $color-accessories-red;
+
+    &.colorIsActive {
+      border-color: $color-accessories-red;
+    }
+  }
+}
+
+.capacity {
+  @extend %text-body;
+
+  box-sizing: border-box;
+  display: flex;
+  cursor: pointer;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0.4rem;
+  color: $color-primary;
+  width: 6.5rem;
+  height: 3.2rem;
+  padding-inline: 0.8rem;
+  line-height: 1;
+  padding-top: 0.2rem;
+  border: 1px solid $color-icons;
+
+  &IsActive {
+    cursor: default;
+    background-color: $color-primary;
+    color: $color-white;
+    border: 1px solid $color-primary;
+  }
+}
+
+.priceContainer {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+
+  margin-block: 0.8rem 1.6rem;
+
+}
+
+.price {
+  @extend %h2;
+
+  &Discount {
+    @extend %mont-regular;
+
+    position: relative;
+    font-weight: 500;
+    font-size: 2.2rem;
+    line-height: 2.81rem;
+    color: $color-secondary;
+    z-index: 0;
+
+    &::after {
+      position: absolute;
+      top: 45%;
+      left: 0;
+      mix-blend-mode: color-dodge;
+      content: '';
+      z-index: 0;
+      width: 100%;
+      border-top: 1px solid $color-secondary;
+    }
+  }
+}
+
+.btnContainer {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.8rem;
+
+  margin-bottom: 3.2rem;
+}
+
+.productInfo {
+  list-style: none;
+
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.productInfoItem {
+  @extend %text-small;
+
+  font-family: 'Mont Regular', sans-serif;
+  display: flex;
+  justify-content: space-between;
+
+  & :first-child {
+    color: $color-secondary;
+    margin-right: auto;
+  }
+}

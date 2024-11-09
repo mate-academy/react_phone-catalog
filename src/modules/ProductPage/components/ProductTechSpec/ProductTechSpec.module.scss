@@ -1,0 +1,69 @@
+@import "src/styles/mixins";
+@import "src/styles/colors";
+@import "src/styles/typography";
+
+.productTechSpecContainer {
+  grid-column: 1/-1;
+
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+
+  margin-bottom: 5.6rem;
+
+  @include on-tablet {
+    margin-bottom: 6.4rem;
+  }
+
+  @include on-m-desktop {
+    margin-bottom: 0;
+    grid-column: 14/ -1;
+  }
+}
+
+.aboutTitle {
+  @extend %h3-mobile;
+
+  font-family: "Mont Regular", sans-serif;
+
+  padding-bottom: 1.6rem;
+  border-bottom: 1px solid $color-elements;
+
+
+  @include on-tablet {
+    font-family: "Mont Semibold", sans-serif;
+    font-size: 2.2rem;
+    line-height: 3.1rem;
+  }
+}
+
+.productInfo {
+  list-style: none;
+
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.productInfoItem {
+  @extend %text-small;
+
+  font-family: 'Mont Regular', sans-serif;
+  display: flex;
+  justify-content: space-between;
+
+  & :first-child {
+    color: $color-secondary;
+    margin-right: auto;
+  }
+}
+
+.productSpecItem {
+  font-weight: 500;
+  font-size: 1.4rem;
+  line-height: 2.1rem;
+  letter-spacing: 0;
+  text-align: right;
+
+  gap: 2.4rem;
+}

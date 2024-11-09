@@ -1,0 +1,64 @@
+@import "src/styles/mixins";
+@import "src/styles/colors";
+@import "src/styles/typography";
+
+.aboutProductContainer {
+  grid-column: 1/-1;
+
+  display: flex;
+  flex-direction: column;
+  gap: 3.2rem;
+
+  margin-bottom: 5.6rem;
+
+  @include on-tablet {
+    margin-bottom: 6.4rem;
+  }
+
+  @include on-m-desktop {
+    margin-bottom: 8rem;
+    grid-column: 1/ span 12;
+  }
+}
+
+.aboutTitle {
+  @extend %h3-mobile;
+
+  font-family: "Mont Regular", sans-serif;
+
+  padding-bottom: 1.6rem;
+  border-bottom: 1px solid $color-elements;
+
+
+  @include on-tablet {
+    font-family: "Mont Semibold", sans-serif;
+    font-size: 2.2rem;
+    line-height: 3.1rem;
+  }
+}
+
+.descriptionContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+}
+
+.descriptionTitle {
+  @extend %h4-mobile;
+
+  font-family: "Mont Regular", sans-serif;
+
+  @include on-tablet {
+    font-family: "Mont Semibold", sans-serif;
+    font-size: 2rem;
+    line-height: 2.6rem;
+  }
+}
+
+.descriptionText {
+  @extend %text-body;
+
+  text-align: justify;
+
+  color: $color-secondary;
+}
