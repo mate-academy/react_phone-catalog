@@ -5,22 +5,23 @@
 .favoritesPageWrapper {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  margin-block: 2.4rem 5.6rem;
+  grid-template-rows: max-content 1fr;
+  margin-top: 2.4rem;
   overflow: hidden;
+  min-height: calc(100vh - 58px - 110px);
 
 
   @include on-tablet {
     grid-template-columns: repeat(12, 1fr);
-    margin-bottom: 6.4rem;
   }
 
   @include on-m-desktop {
     grid-template-columns: repeat(24, 1fr);
-    margin-bottom: 8.1rem;
+    min-height: calc(100vh - 74px - 110px);
   }
 }
 
-.favoritesPageContainer{
+.favoritesPageContainer {
   grid-column: 1 / -1;
 
   box-sizing: border-box;
@@ -28,13 +29,11 @@
   margin-inline: auto;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-
+  grid-template-rows: max-content max-content 1fr;
   width: 100%;
 
   max-width: $maxContainerWidth;
   padding-inline: 1.6rem;
-
-
 
   @include on-tablet {
     grid-template-columns: repeat(12, 1fr);
@@ -71,17 +70,65 @@
   }
 }
 
-.productsContainer {
+.mainPartContainer {
   grid-column: 1 / -1;
 
+  margin-bottom: 5.6rem;
+
+  @include on-tablet {
+    margin-bottom: 6.4rem;
+  }
+
+  @include on-m-desktop {
+    margin-bottom: 8rem;
+  }
+}
+
+.productsContainer {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(21.4rem, 1fr));
   gap: 4rem 1.6rem;
 
-  margin-bottom: 2.4rem;
+  @include on-tablet {
+    grid-template-columns: repeat(auto-fill, minmax(23.7rem, 1fr));
+  }
+}
+
+.titleEmpty {
+  @extend %h3;
+
+  grid-column: 1 / -1;
+  color: $color-secondary;
+  text-align: center;
+  font-size: 1.4rem;
+  line-height: 2.1rem;
+  margin-bottom: 1.6rem;
 
   @include on-tablet {
-    grid-template-columns: repeat(auto-fit, minmax(23.7rem, 1fr));
-    margin-bottom: 4rem;
+    font-size: 2rem;
+    line-height: 2.6rem;
+  }
+
+  @include on-m-desktop {
+    font-size: 2.2rem;
+    line-height: 3.1rem;
+  }
+}
+
+.emptyFavImg {
+  grid-column: 1 / -1;
+  background-image: url("../../assets/icons/empty-favorites.svg");
+  width: 100%;
+  justify-self: center;
+  aspect-ratio: 1;
+
+  max-width: 15rem;
+
+  @include on-tablet {
+    max-width: 25rem;
+  }
+
+  @include on-m-desktop {
+    max-width: 30rem;
   }
 }

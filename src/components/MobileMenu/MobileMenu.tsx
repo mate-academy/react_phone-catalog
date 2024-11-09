@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { MouseEventHandler, useContext } from 'react';
 import classNames from 'classnames';
 
 import styles from './MobileMenu.module.scss';
@@ -6,6 +6,7 @@ import '../../App.scss';
 import { Navigation } from '../Navigation';
 import { Link } from 'react-router-dom';
 import { CartContext, FavouriteContext } from '../../ContextProvider';
+import { instantScroll } from '../../utils/instantScroll';
 
 interface Props {
   isMobileMenuOpen: boolean;
@@ -18,6 +19,11 @@ export const MobileMenu: React.FC<Props> = ({
 }) => {
   const { cartProducts } = useContext(CartContext);
   const { favouriteProducts } = useContext(FavouriteContext);
+
+  const handleClick: MouseEventHandler<HTMLAnchorElement> = e => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
+    instantScroll(e);
+  };
 
   return (
     <aside
@@ -34,7 +40,7 @@ export const MobileMenu: React.FC<Props> = ({
         <Link
           to="/favorites"
           className={classNames('buttonFavourite', styles.mobileMenuBottomBtn)}
-          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          onClick={handleClick}
         >
           {!!favouriteProducts.length && (
             <span className="buttonFavouriteWrapper">
@@ -46,7 +52,7 @@ export const MobileMenu: React.FC<Props> = ({
         <Link
           to="/cart"
           className={classNames('buttonCart', styles.mobileMenuBottomBtn)}
-          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          onClick={handleClick}
         >
           {!!cartProducts.length && (
             <span className="buttonCartWrapper">{cartProducts.length}</span>

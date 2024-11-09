@@ -15,10 +15,22 @@ export const FavoritesPage = () => {
         <p className={styles.categoryNumModels}>
           {favouriteProducts.length} models
         </p>
-        <div className={styles.productsContainer}>
-          {favouriteProducts.map(product => (
-            <ProductCard product={product} key={product.id} />
-          ))}
+        <div className={styles.mainPartContainer}>
+          {favouriteProducts.length ? (
+            <div className={styles.productsContainer}>
+              {favouriteProducts.map(product => (
+                <ProductCard product={product} key={product.id} />
+              ))}
+            </div>
+          ) : (
+            <>
+              <p className={styles.titleEmpty}>
+                Your favorites will appear here.
+                Start&nbsp;adding&nbsp;some&nbsp;items&nbsp;you&nbsp;like!
+              </p>
+              <div className={styles.emptyFavImg}></div>
+            </>
+          )}
         </div>
       </div>
     </section>
