@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import classNames from 'classnames';
 
 import { idGenerator } from '../../../../utils/idGenerator';
@@ -42,6 +42,10 @@ export const ProductConfig: React.FC<Props> = ({
     screen,
     resolution,
   } = product;
+
+  const [randomID, formattedScreen, formattedRam] = useMemo(() => {
+    return [idGenerator(), formatSpecText(screen), formatSpecText(ram)];
+  }, [id]);
 
   const productsSameModel = productList.filter(
     item => item.namespaceId === product.namespaceId,
@@ -88,7 +92,7 @@ export const ProductConfig: React.FC<Props> = ({
             ></span>
           ))}
         </div>
-        <span className={styles.randomID}>{idGenerator()}</span>
+        <span className={styles.randomID}>{randomID}</span>
       </div>
       <div className={styles.configContainer}>
         <span className={styles.subTitle}>Select capacity</span>
@@ -135,7 +139,7 @@ export const ProductConfig: React.FC<Props> = ({
       <ul className={styles.productInfo}>
         <li className={styles.productInfoItem}>
           <span>Screen</span>
-          <span>{formatSpecText(screen)}</span>
+          <span>{formattedScreen}</span>
         </li>
         <li className={styles.productInfoItem}>
           <span>Resolution</span>
@@ -147,7 +151,7 @@ export const ProductConfig: React.FC<Props> = ({
         </li>
         <li className={styles.productInfoItem}>
           <span>RAM</span>
-          <span>{formatSpecText(ram)}</span>
+          <span>{formattedRam}</span>
         </li>
       </ul>
     </div>
