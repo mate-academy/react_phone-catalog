@@ -1,0 +1,151 @@
+@use "../../utils/mixins" as mixin;
+@use "../../utils/variables" as var;
+
+.slider {
+  position: relative;
+  margin-bottom: 32px;
+
+  @include mixin.on-tablet {
+    margin: 0 16px 32px;
+  }
+
+  @include mixin.on-desktop {
+    margin: 0 16px 40px;
+  }
+
+  &__title {
+    @include mixin.h1-mobile;
+    color: var.$primary-gray;
+    text-align: center;
+    margin: 16px;
+
+    @include mixin.on-tablet {
+      text-align: left;
+      margin: 24px 0;
+    }
+
+    @include mixin.on-desktop {
+      @include mixin.h1-desktop-tablet;
+      text-align-last: left;
+      margin: 40px 0;
+    }
+  }
+
+  &__container {
+    position: relative;
+    width: 100%;
+    height: 320px;
+
+    @include mixin.grid;
+
+    @include mixin.on-tablet {
+      height: 400px;
+    }
+
+    @include mixin.on-desktop {
+      height: 480px;
+    }
+  }
+
+  &__button {
+    display: none;
+    background-color: var.$white;
+    border: solid 1px var.$icons-placeholders;
+    border-radius: 10px;
+    transition: border 0.3s;
+
+    @include mixin.on-tablet {
+      @include mixin.sizes(32px, 100%);
+      @include mixin.flex(flex, center, center, false);
+    }
+
+    @include mixin.on-desktop {
+      @include mixin.sizes(32px, 100%);
+      @include mixin.flex(flex, center, center, false);
+    }
+
+    &--left {
+      grid-column: 1;
+    }
+
+    &--right {
+      grid-column: -1;
+    }
+
+    &:hover {
+      border-color: var.$primary-gray;
+    }
+  }
+
+  &__content {
+    position: absolute;
+    grid-column: 1/-1;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+
+    @include mixin.sizes(100%, 320px);
+
+    @include mixin.on-tablet {
+      grid-column: 2/-1;
+      height: 400px;
+    }
+
+    @include mixin.on-desktop {
+      grid-column: 2/-1;
+      height: 480px;
+    }
+
+    &--active {
+      opacity: 1;
+    }
+  }
+
+  &__slide {
+    @include mixin.sizes(100%, 100%);
+    object-fit: cover;
+    object-position: center;
+  }
+
+  &__img {
+    @include mixin.sizes(20px, 20px);
+  }
+}
+
+.dots {
+  display: flex;
+  gap: 4px;
+  justify-content: center;
+  margin-top: 8px;
+
+  &__container {
+    @include mixin.flex(flex, center, center, false);
+    @include mixin.sizes(30px, 24px);
+    cursor: pointer;
+  }
+
+  &__item {
+    @include mixin.sizes(14px, 4px);
+    background-color: var.$elements;
+    border: none;
+    cursor: pointer;
+    position: relative;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: -10px;
+      left: -10px;
+      right: -10px;
+      bottom: -10px;
+      z-index: -1;
+    }
+
+    &:hover {
+      border: solid 0.5px var.$primary-gray;
+    }
+
+    &--active {
+      background-color: var.$primary-gray;
+    }
+  }
+}

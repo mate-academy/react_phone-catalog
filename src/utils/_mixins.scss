@@ -16,6 +16,23 @@
   }
 }
 
+@mixin grid {
+  display: grid;
+  column-gap: 16px;
+
+  @include on-mobile {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  @include on-tablet {
+    grid-template-columns: repeat(12, 1fr);
+  }
+
+  @include on-desktop {
+    grid-template-columns: repeat(24, 1fr);
+  }
+}
+
 @mixin flex($type: flex, $align: false, $justify: false, $direction: false) {
   display: $type;
 

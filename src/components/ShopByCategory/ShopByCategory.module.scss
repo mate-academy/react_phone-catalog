@@ -1,0 +1,63 @@
+@use "../../utils/mixins" as mixin;
+@use "../../utils/variables" as var;
+
+.category {
+  &__title {
+    @include mixin.h2-desktop-tablet;
+    color: var.$primary-gray;
+    text-align: left;
+    margin: 0 16px 20px 16px;
+
+    @include mixin.on-tablet {
+      margin-bottom: 24px;
+    }
+
+    @include mixin.on-desktop {
+      margin-bottom: 32px;
+    }
+  }
+
+  &__container {
+    @include mixin.grid;
+    @include mixin.on-mobile {
+      margin: 0 16px;
+    }
+  }
+
+  &__link {
+    text-decoration: none;
+    margin-bottom: 32px;
+    grid-column: 1/-1;
+
+    @include mixin.on-tablet {
+      margin-bottom: 0;
+      grid-column: span 4;
+    }
+
+    @include mixin.on-desktop {
+      margin-bottom: 0;
+      grid-column: span 8;
+    }
+  }
+
+  &__image {
+    width: 100%;
+    margin-bottom: 16px;
+    transition: all 0.3s;
+
+    &:hover {
+      border-radius: 15px;
+      transform: scale(1.05);
+    }
+  }
+
+  &__name {
+    @include mixin.h4-desktop-tablet;
+    color: var.$primary-gray;
+  }
+
+  &__amount {
+    @include mixin.body-text-desktop-tablet;
+    color: var.$secondary-gray;
+  }
+}

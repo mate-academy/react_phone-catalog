@@ -1,12 +1,10 @@
 @use "./utils/mixins" as mixin;
 @use "./utils/variables" as var;
 @use "./utils/fonts" as *;
+@use "./utils/normalize.scss";
 
 body {
   font-family: Mont, Arial, serif;
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
   height: 100%;
   width: 100%;
 }
@@ -21,11 +19,11 @@ body {
 
   &__container {
     height: 100vh;
-
     @include mixin.flex(flex, false, false, column);
   }
 
   &__main {
     flex: 1;
+    margin: 0;
   }
 }
