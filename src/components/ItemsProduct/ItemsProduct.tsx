@@ -45,7 +45,11 @@ export const ItemsProduct: React.FC<Props> = ({ product, discount }) => {
       >
         <img
           className={styles.product_image_img}
-          src={product.images ? `${product.images[0]}` : `${product.image}`}
+          src={
+            product.images
+              ? `/img/${product.images[0]}`
+              : `/img/${product.image}`
+          }
           alt="image/product"
         />
       </Link>
