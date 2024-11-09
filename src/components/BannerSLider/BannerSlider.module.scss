@@ -1,0 +1,164 @@
+@import '../../styles/global.scss';
+
+.sliderContainer {
+  position: relative;
+}
+
+.swiperWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 0;
+
+  @include on-desktop {
+    margin: 0 auto;
+    max-width: 1136px;
+    padding-inline: 0;
+  }
+}
+
+.slider {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  height: 352px;
+
+  @include on-tablet {
+    height: 221px;
+  }
+
+  @include on-desktop {
+    height: 432px;
+  }
+}
+
+.sliderItem {
+  flex: 0 0 100%;
+  height: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 19px;
+}
+
+.sliderItem img {
+  width: 100%;
+  height: 320px;
+  object-fit: cover;
+  aspect-ratio: 1 / 1;
+
+  @include on-tablet {
+    max-width: calc(100% - 112px);
+    height: 189px;
+    padding-inline: 19px;
+  }
+
+  @include on-desktop {
+    max-width: 1040px;
+    padding-inline: 16px;
+    height: 400px;
+  }
+}
+
+.navigation {
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  z-index: 2;
+  justify-content: space-between;
+  transform: translateY(-50%);
+
+  @include on-phone {
+    display: none;
+  }
+
+  @include on-tablet {
+    display: flex;
+    padding-inline: 24px;
+  }
+}
+
+.navigationBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #323542;
+  width: 32px;
+  height: 189px;
+  border: none;
+  cursor: pointer;
+
+  &:hover {
+    background: #4a4d58;
+  }
+
+  &:disabled {
+    background: none;
+    border: 1px solid #3b3e4a;
+  }
+
+  &:disabled .icon {
+    color: #4a4d58;
+    pointer-events: none;
+  }
+
+  @include on-phone {
+    display: none;
+  }
+
+  @include on-tablet {
+    display: flex;
+  }
+
+  @include on-desktop {
+    display: flex;
+    height: 400px;
+  }
+}
+
+.icon {
+  width: 16px;
+  height: 16px;
+
+  color: $main-white-color;
+}
+
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  height: 24px;
+  gap: 4px;
+  z-index: 2;
+}
+
+.paginationItem {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  padding: 0;
+  border: none;
+  background: none;
+  width: 24px;
+  height: 24px;
+}
+
+.paginationBtn {
+  width: 14px;
+  height: 4px;
+  background: #3b3e4a;
+
+  &.active {
+    background: $main-white-color;
+  }
+}

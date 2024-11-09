@@ -1,0 +1,22 @@
+@import '../../styles/mixins.scss';
+
+.intro {
+  position: relative;
+  z-index: 10;
+  height: auto;
+}
+
+.app-container {
+  @include content-padding-inline;
+}
+
+.introContent {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.introTitle {
+  font-weight: 800;
+  margin-top: 24px;
+}

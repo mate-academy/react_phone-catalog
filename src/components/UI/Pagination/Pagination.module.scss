@@ -1,0 +1,72 @@
+@import '../../../styles/variables.scss';
+
+.paginationControls {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 4px;
+
+  .paginationWrapper {
+    display: flex;
+    position: relative;
+  }
+
+  .dropDownMenu {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    outline: none;
+    padding: 10px 0px 9px 12px;
+    font-size: 14px;
+    line-height: 21px;
+    width: 128px;
+    cursor: pointer;
+    background: #323542;
+    color: $main-white-color;
+    border-color: #323542;
+
+    &:-ms-input-placeholder {
+      color: #323542;
+    }
+
+    &::-ms-expand {
+      display: none;
+    }
+    &:hover {
+      border-color: $gray-secondary;
+    }
+    &:focus {
+      outline: none;
+    }
+  }
+
+  .sortName {
+    font-family: $font-primary;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 15.34px;
+    text-align: left;
+    color: $gray-secondary;
+  }
+
+  .arrow {
+    position: absolute;
+    right: 12px;
+    bottom: 12px;
+    pointer-events: none;
+    display: flex;
+    align-items: center;
+
+    svg {
+      width: 16px;
+      height: 16px;
+      color: $gray-secondary;
+      transition: all 0.3s ease-in-out;
+    }
+  }
+
+  .dropDownMenu:hover + .arrow svg {
+    color: $gray-white;
+  }
+}

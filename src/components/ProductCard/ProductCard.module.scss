@@ -1,0 +1,180 @@
+@import '../../styles/mixins.scss';
+
+.productCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: rgba(22, 24, 39, 1);
+
+  @include on-phone {
+    width: 212px;
+    height: 439px;
+  }
+
+  @include on-tablet {
+    width: 237px;
+    height: 512px;
+  }
+
+  @include on-desktop {
+    width: 272px;
+    height: 506px;
+  }
+}
+
+.productDetails {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  height: 100%;
+  padding: 32px;
+  gap: 8px;
+}
+
+.imageWrapper {
+  &.wrapperLarge {
+    width: 100%;
+
+    @include on-phone {
+      height: 129px;
+    }
+    @include on-tablet {
+      height: 202px;
+    }
+    @include on-desktop {
+      height: 196px;
+    }
+  }
+
+  &.wrapperSmall {
+    width: 100%;
+
+    @include on-phone {
+      height: 108px;
+    }
+    @include on-tablet {
+      height: 181px;
+    }
+    @include on-desktop {
+      height: 175px;
+    }
+  }
+}
+
+.textWrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  justify-content: space-between;
+  gap: 8px;
+  padding-block: 8px;
+
+  &::before {
+    position: absolute;
+    content: '';
+    display: block;
+    width: 100%;
+    height: 1px;
+    background-color: rgba(59, 62, 74, 1);
+    top: -8px;
+  }
+}
+
+.productImage {
+  object-fit: contain;
+  width: 100%;
+  height: 100%;
+  align-self: center;
+
+  @include hover(transform, scale(1.1));
+}
+
+.productName {
+  font-size: 14px;
+  font-weight: 600;
+  height: auto;
+  line-height: 21px;
+  text-align: left;
+  padding-top: 16px;
+  word-break: break-all;
+  text-overflow: ellipsis;
+  color: rgba(241, 242, 249, 1);
+}
+
+.productStrikePrice {
+  font-size: 22px;
+  font-weight: 600;
+  line-height: 28.12px;
+  text-align: left;
+  color: rgba(137, 147, 154, 1);
+}
+
+.productPriceDiscount {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 8px;
+  width: 100%;
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 30.8px;
+  text-align: left;
+  color: rgba(241, 242, 249, 1);
+  position: relative;
+}
+
+.productCharacteristicsWrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 15.34px;
+  text-align: left;
+  width: 100%;
+  color: rgba(117, 118, 127, 1);
+}
+
+.productCardButtons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.addToFavouriteBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border: none;
+  background: rgba(50, 53, 66, 1);
+
+  @include hover(background-color, rgba(74, 77, 88, 1));
+}
+
+.icon {
+  width: 16px;
+  height: 16px;
+  color: $main-white-color;
+}
+
+.characteristics {
+  width: 40%;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 15.34px;
+  text-align: right;
+  color: rgb(241, 242, 249);
+  text-overflow: ellipsis;
+  overflow: hidden;
+  word-break: break-all;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
+}

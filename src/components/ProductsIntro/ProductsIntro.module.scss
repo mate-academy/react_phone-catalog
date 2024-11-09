@@ -1,0 +1,58 @@
+@import '../../styles/variables.scss';
+
+.introContainer {
+  padding-block: 24px 40px;
+}
+
+.navigationHome {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 8px;
+}
+
+.introTitle {
+  color: $gray-white;
+  font-size: 48px;
+  font-weight: 800;
+  line-height: 56px;
+  letter-spacing: -0.01em;
+  text-align: left;
+  margin-block: 40px 8px;
+}
+
+.homeBtn {
+  background: none;
+  border: none;
+  color: $main-white-color;
+
+  svg {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+.arrowLeft {
+  color: $gray-icons;
+
+  svg {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+.modelsCount {
+  color: $gray-secondary;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 21px;
+  text-align: left;
+}
+
+.productName {
+  color: $gray-secondary;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 15.34px;
+  text-align: left;
+}

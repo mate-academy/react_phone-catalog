@@ -1,0 +1,110 @@
+@import '../../styles/global.scss';
+
+.mobileMenu {
+  position: fixed;
+  bottom: 0;
+  top: 49px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: $pageColor;
+  z-index: 1000;
+  opacity: 0;
+  transform: translateY(-100%);
+  transition:
+    transform 0.4s ease-in-out,
+    opacity 0.3s ease-in-out;
+
+  &.active {
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  @include on-tablet {
+    display: none;
+  }
+
+  @include on-desktop {
+    display: none;
+  }
+}
+
+.mobileMenuNav {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding-top: 24px;
+  gap: 24px;
+}
+
+.mobileMenuNavLink {
+  color: $gray-secondary;
+  text-transform: uppercase;
+  font-size: 12px;
+  font-weight: 800;
+  line-height: 11px;
+  letter-spacing: 0.04em;
+  text-align: left;
+  transition: all 0.3s ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 27px;
+  position: relative;
+
+  &:hover {
+    color: $main-white-color;
+  }
+
+  &.active {
+    position: relative;
+    color: $main-white-color;
+  }
+
+  &.active::after {
+    content: '';
+    position: absolute;
+    width: 102%;
+    height: 3px;
+    background: rgba(241, 242, 249, 1);
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 0;
+  }
+}
+
+.mobileFavouriteBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  grid-column: 1 / span 2;
+  border-top: 1px solid $border-header-color;
+}
+
+.icon {
+  display: inline-block;
+  height: 100%;
+  width: 16px;
+  height: 16px;
+  color: $main-white-color;
+}
+
+.mobileCartIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-left: 1px solid $border-header-color;
+  border-top: 1px solid $border-header-color;
+  cursor: pointer;
+  grid-column: 3 / span 2;
+}
+
+.mobileMenuIconWrapper {
+  height: 64px;
+  --columns: 4;
+  display: grid;
+  grid-template-columns: repeat(var(--columns), 1fr);
+}

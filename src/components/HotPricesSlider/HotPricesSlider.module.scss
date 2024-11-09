@@ -1,0 +1,77 @@
+@import '../../styles/mixins.scss';
+
+.productCards {
+  gap: 16px;
+  width: 100%;
+  position: relative;
+}
+
+.swiperSlide {
+  height: auto;
+
+  @include on-phone {
+    width: 212px;
+  }
+
+  @include on-tablet {
+    width: 237px;
+  }
+
+  @include on-desktop {
+    width: 272px;
+  }
+}
+
+.navigation {
+  display: flex;
+  width: 100%;
+  justify-content: flex-end;
+  gap: 16px;
+  position: absolute;
+
+  @include on-phone {
+    right: 16px;
+    top: -71px;
+  }
+
+  @include on-tablet {
+    top: -60px;
+    right: 0;
+  }
+
+  @include on-desktop {
+    top: -56px;
+  }
+}
+
+.navigationBtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+  background: #323542;
+  border: none;
+
+  &:hover {
+    background: #4a4d58;
+  }
+
+  &:disabled {
+    background: none;
+    border: 1px solid #3b3e4a;
+  }
+
+  &:disabled .icon {
+    color: #4a4d58;
+    pointer-events: none;
+  }
+}
+
+.icon {
+  width: 16px;
+  height: 16px;
+
+  color: $main-white-color;
+}

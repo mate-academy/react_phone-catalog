@@ -1,0 +1,93 @@
+@import '../../styles/variables.scss';
+@import '../../styles/mixins.scss';
+
+.footer {
+  height: 100%;
+  border-top: 1px solid $border-header-color;
+}
+
+.footerContent {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  padding: 32px 0;
+
+  @include on-phone {
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  @include on-tablet {
+  }
+
+  @include on-desktop {
+  }
+}
+
+.logoFooter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 89px;
+  height: 100%;
+}
+
+.footerBackIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border: none;
+  background: rgba(50, 53, 66, 1);
+
+  @include hover(background-color, rgba(74, 77, 88, 1));
+}
+
+.icon {
+  width: 16px;
+  height: 16px;
+  color: $main-white-color;
+}
+
+.footerButton {
+  display: flex;
+  color: $gray-secondary;
+  background: unset;
+  border: unset;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  padding: 0;
+}
+
+.footerNav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 154px;
+
+  @include on-phone {
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  @include on-tablet {
+    gap: 13.5px;
+  }
+
+  @include on-desktop {
+  }
+}
+
+.footerNavLink {
+  font-size: 12px;
+  font-weight: 800;
+  line-height: 11px;
+  letter-spacing: 0.04em;
+  text-align: left;
+  color: $textColor;
+  text-transform: uppercase;
+}

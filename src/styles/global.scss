@@ -1,0 +1,114 @@
+@import 'mixins';
+@import 'variables';
+@import 'fonts';
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: $font-primary;
+  scroll-behavior: smooth;
+
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus,
+  textarea:-webkit-autofill,
+  textarea:-webkit-autofill:hover,
+  textarea:-webkit-autofill:focus,
+  select:-webkit-autofill,
+  select:-webkit-autofill:hover,
+  select:-webkit-autofill:focus {
+    -webkit-text-fill-color: $textColor;
+    -webkit-box-shadow: 0 0 0 1000px $pageColor inset;
+    transition: background-color 5000s ease-in-out 0s;
+  }
+}
+
+body {
+  min-width: 320px;
+  background-color: $pageColor;
+  margin: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  color: $textColor;
+  margin: 0;
+}
+
+h1 {
+  @include on-phone {
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+    text-align: left;
+  }
+  @include on-tablet {
+    font-size: 48px;
+    line-height: 56px;
+  }
+  @include on-desktop {
+    font-size: 48px;
+    line-height: 56px;
+  }
+}
+
+h2 {
+  @include on-phone {
+    font-size: 22px;
+    font-weight: 800;
+    line-height: 30.8px;
+    text-align: left;
+  }
+  @include on-tablet {
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+  }
+  @include on-desktop {
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+  }
+}
+
+h4 {
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 25.56px;
+}
+
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+button {
+  font-family: $font-primary;
+  cursor: pointer;
+}
+
+span {
+  font-family: $font-primary;
+}
+
+img {
+  display: block;
+  width: 100%;
+  height: auto;
+}

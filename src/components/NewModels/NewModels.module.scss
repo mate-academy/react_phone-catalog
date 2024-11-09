@@ -1,0 +1,56 @@
+@import '../../styles/mixins.scss';
+
+.newModelsSection {
+  position: relative;
+
+  @include on-phone {
+    width: calc(100% + 16px);
+  }
+
+  @include on-tablet {
+    width: 100%;
+  }
+
+  @include on-desktop {
+    width: 100%;
+  }
+}
+
+.newModelsSectionContent {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  @include on-phone {
+    width: calc(100% - 16px);
+  }
+
+  @include on-tablet {
+    width: 100%;
+  }
+
+  @include on-desktop {
+    width: 100%;
+  }
+}
+
+.sectionTitle {
+  font-weight: 800;
+  @include on-phone {
+    max-width: 136px;
+  }
+
+  @include on-tablet {
+    max-width: 560px;
+  }
+
+  @include on-desktop {
+    max-width: 560px;
+  }
+}

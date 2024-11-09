@@ -1,0 +1,207 @@
+@import '../../styles/global.scss';
+
+.header {
+  @include page-grid;
+  position: sticky;
+  border-bottom: 1px solid $border-header-color;
+  z-index: 1001;
+  top: 0;
+  background: rgb(15, 17, 33, 0.9);
+}
+
+.logoHeader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 64px;
+
+  @include on-phone {
+    grid-column: 1 / span 1;
+  }
+
+  @include on-tablet {
+    grid-column: 1 / span 2;
+  }
+
+  @include on-desktop {
+    width: 80px;
+  }
+}
+
+.HeaderMenuWrapper {
+  display: flex;
+  justify-self: end;
+  border-left: 1px solid $border-header-color;
+
+  @include on-phone {
+    grid-column: 4 / span 1;
+  }
+
+  @include on-tablet {
+    grid-column: 11 / span 2;
+  }
+
+  @include on-desktop {
+    grid-column: 23 / span 2;
+  }
+}
+
+.headerFavouriteBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+
+  @include on-phone {
+    display: none;
+  }
+
+  @include on-tablet {
+    width: 48px;
+    height: 48px;
+  }
+
+  @include on-desktop {
+    width: 64px;
+    height: 64px;
+  }
+}
+
+.icon {
+  display: inline-block;
+  height: 100%;
+  width: 16px;
+  height: 16px;
+  color: $main-white-color;
+}
+
+.headerMenuIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  cursor: pointer;
+
+  @include on-tablet {
+    display: none;
+  }
+
+  @include on-desktop {
+    display: none;
+  }
+}
+
+.headerCloseIcon {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  cursor: pointer;
+
+  @include on-tablet {
+    display: none;
+  }
+
+  @include on-desktop {
+    display: none;
+  }
+}
+
+.headerCartIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-left: 1px solid $border-header-color;
+  cursor: pointer;
+
+  @include on-phone {
+    display: none;
+  }
+
+  @include on-tablet {
+    width: 48px;
+    height: 48px;
+  }
+
+  @include on-desktop {
+    width: 64px;
+    height: 64px;
+  }
+}
+
+.headerLogoWrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 96px;
+
+  @include on-desktop {
+    width: 128px;
+  }
+}
+
+.headerNav {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+
+  @include on-phone {
+    display: none;
+  }
+
+  @include on-tablet {
+    gap: 32px;
+    grid-column: 2 / span 7;
+  }
+
+  @include on-desktop {
+    gap: 64px;
+    grid-column: 2 / span 9;
+  }
+}
+
+.headerNavLink {
+  color: $gray-secondary;
+  text-transform: uppercase;
+  font-size: 12px;
+  font-weight: 800;
+  line-height: 11px;
+  letter-spacing: 0.04em;
+  text-align: left;
+  transition: all 0.3s ease-in-out;
+
+  &:hover {
+    color: $main-white-color;
+  }
+
+  &.active {
+    position: relative;
+    color: $main-white-color;
+  }
+
+  &.active::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 3px;
+    background: rgba(241, 242, 249, 1);
+    left: 50%;
+    transform: translateX(-50%);
+
+    @include on-phone {
+      display: none;
+    }
+
+    @include on-tablet {
+      bottom: -18.5px;
+    }
+
+    @include on-desktop {
+      bottom: -26.5px;
+    }
+  }
+}

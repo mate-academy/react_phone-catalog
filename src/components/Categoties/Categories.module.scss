@@ -1,0 +1,72 @@
+@import '../../styles/mixins.scss';
+
+.categoriesContent {
+  @include page-grid;
+
+  @include on-phone {
+    gap: 32px;
+  }
+
+  @include on-tablet {
+    gap: 16px;
+  }
+
+  @include on-desktop {
+    gap: 16px;
+  }
+}
+
+.categoryItem {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  @include on-phone {
+    grid-column: 1 / -1;
+  }
+
+  @include on-tablet {
+    grid-column: span 4;
+  }
+
+  @include on-desktop {
+    grid-column: span 8;
+  }
+
+  @include hover(transform, scale(1.04));
+}
+
+.categoryTextWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.categoryCount {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 21px;
+  text-align: left;
+  color: rgba(117, 118, 127, 1);
+}
+
+.categoryLinkImage {
+  height: 288px;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+
+.categoryLinkImage img {
+  height: 100%;
+  left: 63px;
+  object-fit: cover;
+  object-position: top left;
+  position: absolute;
+  top: 55px;
+  width: 100%;
+}
+
+.categorySectionTitle {
+  margin-bottom: 24px;
+}

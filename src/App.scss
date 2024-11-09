@@ -1,1 +1,13 @@
-// not empty
+#root {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.main{
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  gap: 56px;
+  flex-grow: 1;
+}
