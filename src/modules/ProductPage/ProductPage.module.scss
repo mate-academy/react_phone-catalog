@@ -151,8 +151,7 @@
   right: 0;
 
   @include on-m-desktop {
-    right: 0;
-    margin-left: auto;
+    right: 2.4rem;
   }
 }
 
@@ -197,127 +196,252 @@
 
   &phones-spaceblack {
     background-color: $color-phones-spaceblack;
+
+    &.colorIsActive {
+      border-color: $color-phones-spaceblack;
+    }
   }
 
   &phones-gold {
     background-color: $color-phones-gold;
+
+    &.colorIsActive {
+      border-color: $color-phones-gold-shade;
+    }
   }
 
   &phones-graphite {
     background-color: $color-phones-graphite;
+
+    &.colorIsActive {
+      border-color: $color-phones-graphite;
+    }
   }
 
   &phones-sierrablue {
     background-color: $color-phones-sierrablue;
+
+    &.colorIsActive {
+    border-color: $color-phones-sierrablue-shade;
+      }
   }
 
   &phones-midnight {
     background-color: $color-phones-midnight;
+
+    &.colorIsActive {
+      border-color: $color-phones-midnight;
+    }
   }
 
   &phones-yellow {
     background-color: $color-phones-yellow;
+
+    &.colorIsActive {
+      border-color: $color-phones-yellow-shade;
+    }
   }
 
   &phones-purple {
     background-color: $color-phones-purple;
+
+    &.colorIsActive {
+      border-color:$color-phones-purple-shade;
+    }
   }
 
   &phones-white {
     background-color: $color-phones-white;
+
+
+    &.colorIsActive {
+      border-color: $color-phones-white-shade;
+    }
   }
 
   &phones-blue {
     background-color: $color-phones-blue;
+
+    &.colorIsActive {
+      border-color: $color-phones-blue;
+    }
   }
 
   &phones-pink {
     background-color: $color-phones-pink;
+
+    &.colorIsActive {
+      border-color: $color-phones-pink-shade;
+    }
   }
 
   &phones-black {
     background-color: $color-phones-black;
+
+    &.colorIsActive {
+      border-color: $color-phones-black;
+    }
   }
 
   &phones-red {
     background-color: $color-phones-red;
+
+    &.colorIsActive {
+      border-color: $color-phones-red;
+    }
   }
 
   &phones-green {
     background-color: $color-phones-green;
+
+    &.colorIsActive {
+      border-color:  $color-phones-green-shade;
+    }
   }
 
   &phones-spacegray {
     background-color: $color-phones-spacegray;
+
+    &.colorIsActive {
+      border-color:  $color-phones-spacegray;
+    }
   }
 
   &phones-midnightgreen {
     background-color: $color-phones-midnightgreen;
+
+    &.colorIsActive {
+      border-color:  $color-phones-midnightgreen;
+    }
   }
 
   &phones-silver {
     background-color: $color-phones-silver;
+
+    &.colorIsActive {
+      border-color:  $color-phones-silver-shade;
+    }
   }
 
   &phones-coral {
     background-color: $color-phones-coral;
+
+    &.colorIsActive {
+      border-color:  $color-phones-coral;
+    }
   }
 
   &phones-rosegold {
     background-color: $color-phones-rosegold;
+
+    &.colorIsActive {
+      border-color:  $color-phones-rosegold-shade;
+    }
   }
 
   &tablets-spacegray {
-    background-color: $color-tablets-spacegray
+    background-color: $color-tablets-spacegray;
+
+    &.colorIsActive {
+      border-color:  $color-tablets-spacegray;
+    }
   }
 
   &tablets-starlight {
-    background-color: $color-tablets-starlight
+    background-color: $color-tablets-starlight;
+
+    &.colorIsActive {
+      border-color: $color-tablets-starlight-shade;
+    }
   }
 
   &tablets-pink {
     background-color: $color-tablets-pink;
+
+    &.colorIsActive {
+      border-color: $color-tablets-pink-shade;
+    }
   }
 
   &tablets-rosegold {
     background-color: $color-tablets-rosegold;
+
+    &.colorIsActive {
+      border-color: $color-tablets-rosegold-shade;
+    }
   }
 
   &tablets-silver {
     background-color: $color-tablets-silver;
+
+    &.colorIsActive {
+      border-color: $color-tablets-silver-shade;
+    }
   }
 
 
   &tablets-green {
     background-color: $color-tablets-green;
+
+    &.colorIsActive {
+      border-color: $color-tablets-green-shade;
+    }
   }
 
   &tablets-skyblue {
     background-color: $color-tablets-skyblue;
+
+    &.colorIsActive {
+      border-color: $color-tablets-skyblue-shade;
+    }
   }
 
   &tablets-gold {
     background-color: $color-tablets-gold;
+
+    &.colorIsActive {
+      border-color: $color-tablets-gold-shade;
+    }
   }
 
   &accessories-spacegray {
     background-color: $color-accessories-spacegray;
+
+    &.colorIsActive {
+      border-color: $color-accessories-spacegray;
+    }
   }
 
   &accessories-silver {
     background-color: $color-accessories-silver;
+
+    &.colorIsActive {
+      border-color: $color-accessories-silver-shade;
+    }
   }
 
   &accessories-gold {
     background-color: $color-accessories-gold;
+
+    &.colorIsActive {
+      border-color: $color-accessories-gold-shade;
+    }
   }
 
   &accessories-blue {
     background-color: $color-accessories-blue;
+
+    &.colorIsActive {
+      border-color: $color-accessories-blue;
+    }
   }
 
   &accessories-red {
     background-color: $color-accessories-red;
+
+    &.colorIsActive {
+      border-color: $color-accessories-red;
+    }
   }
 }
 

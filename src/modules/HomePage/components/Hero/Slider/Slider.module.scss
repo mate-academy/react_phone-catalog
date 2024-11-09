@@ -101,10 +101,9 @@
     box-shadow: 0 3px 13px 0 $color-btn-shadow;
 
     &:active {
-      box-shadow: 0 3px 13px 2px $color-btn-shadow;
+      box-shadow: inset 1px 1px 8px rgba($color-white, 0.5), inset -1px -1px 8px rgba($color-primary, 0.2);
     }
   }
-
 
 
   &White{
@@ -113,7 +112,7 @@
     box-shadow: 0 1px 11px 0 $color-cta-btn-shadow-grey;
 
     &:active {
-      box-shadow: 0 1px 11px 2px $color-cta-btn-shadow-grey;
+      box-shadow: inset 1px 1px 8px rgba($color-primary, 0.5), inset -1px -1px 8px rgba($color-white, 0.2);
     }
   }
 }

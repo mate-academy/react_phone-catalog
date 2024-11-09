@@ -1184,7 +1184,7 @@
     "capacity": "40mm",
     "priceRegular": 279,
     "priceDiscount": 249,
-    "colorsAvailable": ["silver", "gold", "spacegray"],
+    "colorsAvailable": ["silver", "spacegray", "gold"],
     "color": "silver",
     "images": [
       "img/accessories/apple-watch-se/silver/00.webp",
@@ -1226,7 +1226,7 @@
     "capacity": "44mm",
     "priceRegular": 309,
     "priceDiscount": 279,
-    "colorsAvailable": ["silver", "gold", "spacegray"],
+    "colorsAvailable": ["spacegray", "silver", "gold"],
     "color": "silver",
     "images": [
       "img/accessories/apple-watch-se/silver/00.webp",
@@ -1394,7 +1394,7 @@
     "capacity": "44mm",
     "priceRegular": 309,
     "priceDiscount": 289,
-    "colorsAvailable": ["silver", "spacegray", "gold"],
+    "colorsAvailable": ["spacegray", "silver", "gold"],
     "color": "spacegray",
     "images": [
       "img/accessories/apple-watch-se/space-gray/00.webp",
