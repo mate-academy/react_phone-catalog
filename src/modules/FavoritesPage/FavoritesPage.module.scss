@@ -121,8 +121,12 @@
   width: 100%;
   margin-inline: auto;
   aspect-ratio: 1;
-
   max-width: 15rem;
+
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
 
   @include on-tablet {
     max-width: 25rem;

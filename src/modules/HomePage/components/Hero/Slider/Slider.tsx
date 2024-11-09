@@ -6,7 +6,7 @@ import { Pagination, Autoplay, Navigation } from 'swiper/modules';
 import 'swiper/scss';
 import 'swiper/scss/pagination';
 import 'swiper/css/navigation';
-import './SwiperLibrary.scss';
+import './Slider.scss';
 import styles from './Slider.module.scss';
 
 import { imagesHero } from '../../../../../constants/imagesHero';
