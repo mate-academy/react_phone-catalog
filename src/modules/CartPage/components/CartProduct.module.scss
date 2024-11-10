@@ -1,0 +1,136 @@
+@import "src/styles/mixins";
+@import "src/styles/typography";
+@import "src/styles/colors";
+
+.cartProductContainer {
+  display: flex;
+  gap: 1.6rem;
+  flex-direction: column;
+  padding: 1.6rem;
+  border: 1px solid $color-elements;
+  border-radius: 1.6rem;
+  background-color: $color-white;
+  transition: box-shadow $transition-duration ease-out;
+
+  @include on-tablet {
+    gap: 2.4rem;
+    flex-direction: row;
+    padding: 2.4rem;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &:hover {
+    box-shadow: 0 0 2px 0 $color-btn-shadow;
+  }
+}
+
+.topWrapper {
+  display: flex;
+  gap: 1.6rem;
+
+  @include on-tablet {
+    gap: 2.4rem;
+  }
+}
+
+.productContainer {
+  display: flex;
+  gap: 1.6rem;
+  align-items: center;
+
+  text-decoration: none;
+
+  @include on-tablet {
+    gap: 2.4rem;
+  }
+}
+
+.btnClose {
+  background-color: transparent;
+  border: none;
+  align-self: center;
+  height: 1.6rem;
+  width: 1.6rem;
+
+  background-image: url("../../../assets/icons/close-gray.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  cursor: pointer;
+
+  &:hover {
+    background-image: url("../../../assets/icons/close.svg");
+  }
+}
+
+.imgContainer {
+  box-sizing: border-box;
+  height: 8rem;
+  width: 8rem;
+  padding: 0.7rem;
+
+  & img {
+    height: 100%;
+  }
+}
+
+.productName {
+  @extend %text-body;
+
+  color: $color-primary;
+}
+
+.counterContainer{
+  display: flex;
+  align-items: center;
+}
+
+.btnCounter {
+  display: inline-block;
+
+  width: 3.2rem;
+  height: 3.2rem;
+  border-radius: 50%;
+  border: 1px solid $color-icons;
+  background-color: transparent;
+  cursor: pointer;
+  background-repeat: no-repeat;
+  background-position: center;
+
+  &Minus{
+    background-image: url("../../../assets/icons/minus.svg");
+
+    &:disabled {
+      background-image: url("../../../assets/icons/minus-gray.svg");
+    }
+  }
+
+  &Plus{
+    background-image: url("../../../assets/icons/plus.svg");
+  }
+
+  &:hover {
+    border: 1px solid $color-primary;
+  }
+
+  &::after {
+    content: '';
+    height: 1.6rem;
+    width: 1.6rem;
+    background-color: $color-primary;
+  }
+
+  &:disabled {
+    border: 1px solid $color-elements;
+    cursor: auto;
+  }
+}
+
+.textCounter{
+  @extend %text-body;
+
+  display: inline-block;
+  min-width: max-content;
+  width: 3.2rem;
+  text-align: center;
+}

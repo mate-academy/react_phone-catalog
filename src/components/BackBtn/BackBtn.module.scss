@@ -1,4 +1,5 @@
 @import 'src/styles/colors';
+@import 'src/styles/typography';
 
 .goBack {
   grid-column: 1/-1;
@@ -27,11 +28,12 @@
 }
 
 .backText {
+  @extend %text-small;
+
   text-decoration: none;
   font-family: 'Mont Regular', sans-serif;
-  font-size: 1.2rem;
-  font-weight: 600;
   line-height: 1;
-  padding-top: 3px;
+  padding-top: 2px;
   color: inherit;
+  margin-left: 4px;
 }

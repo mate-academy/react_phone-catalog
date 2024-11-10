@@ -44,7 +44,16 @@
   height: 6.4rem;
   border-bottom: 2px solid transparent;
 
-  &:hover, &:active {
+  &:hover {
+    border-bottom: 2px solid $color-text-hover-secondary;
+  }
+
+  &Active {
+
+    &:hover {
+      border-bottom: 2px solid $color-text-hover;
+    }
+
     border-bottom: 2px solid $color-text-hover;
   }
 }

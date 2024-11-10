@@ -14,6 +14,7 @@ import { AboutProduct } from './components/AboutProduct';
 import { ProductTechSpec } from './components/ProductTechSpec';
 
 import styles from './ProductPage.module.scss';
+import { getPrevPath } from '../../utils/getPrevPath';
 
 export const ProductPage = () => {
   const { state, pathname } = useLocation();
@@ -22,12 +23,7 @@ export const ProductPage = () => {
 
   const suggestedProducts = useMemo(getSuggestedProducts, [pathname]);
 
-  const prevPath = pathname
-    .split('/')
-    .filter(path => path !== '')
-    .map(path => '/' + path)
-    .slice(0, -1)
-    .join('');
+  const prevPath = getPrevPath(pathname);
 
   const { search, pathname: path } = state ?? { search: '', pathname: '' };
 

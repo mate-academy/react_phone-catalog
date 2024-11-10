@@ -10,6 +10,7 @@ import { ContextProvider } from './ContextProvider';
 import { ProductsPage } from './modules/ProductsPage';
 import { ProductPage } from './modules/ProductPage';
 import { FavoritesPage } from './modules/FavoritesPage';
+import { CartPage } from './modules/CartPage';
 // import { TabletsPage } from './modules/TabletsPage';
 
 export const Root = () => (
@@ -29,6 +30,7 @@ export const Root = () => (
             <Route path=":productId" element={<ProductPage />} />
           </Route>
           <Route path="favorites" element={<FavoritesPage />} />
+          <Route path="cart" element={<CartPage />} />
         </Route>
       </Routes>
     </Router>

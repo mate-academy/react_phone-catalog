@@ -1,0 +1,60 @@
+@import "src/styles/mixins";
+@import "src/styles/colors";
+@import "src/styles/typography";
+
+.container {
+  grid-column: 1/-1;
+
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: max-content max-content 1fr;
+  column-gap: 1.6rem;
+  max-width: $maxContainerWidth;
+  min-height: calc(100vh - 74px - 110px);
+  margin-inline: auto;
+  padding-inline: 1.6rem;
+  padding-top: 2.4rem;
+
+  @include on-tablet {
+    grid-template-columns: repeat(12, 1fr);
+    padding-inline: 2.4rem;
+    padding-top: 4rem;
+  }
+
+  @include on-m-desktop {
+    position: relative;
+    grid-template-columns: repeat(24, 1fr);
+  }
+}
+
+.productTitle {
+  @extend %h1-mobile;
+
+  grid-column: 1/-1;
+  margin-bottom: 3.2rem;
+  margin-top: 0.8rem;
+
+  @include on-tablet {
+    font-size: 4.8rem;
+    line-height: 5.6rem;
+    margin-top: 0;
+  }
+}
+
+.contentContainer {
+  grid-column: 1/-1;
+
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+
+  margin-bottom: 5.6rem;
+
+  @include on-tablet {
+    margin-bottom: 6.4rem;
+  }
+
+  @include on-m-desktop {
+    margin-bottom: 8rem;
+  }
+}

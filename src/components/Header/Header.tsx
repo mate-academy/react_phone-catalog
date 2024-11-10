@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, NavLink, useLocation, useSearchParams } from 'react-router-dom';
 
 import styles from './Header.module.scss';
 import logo from '../../assets/icons/logo.png';
@@ -6,11 +6,20 @@ import React, { useContext } from 'react';
 import classNames from 'classnames';
 import { Navigation } from '../Navigation';
 import { CartContext, FavouriteContext } from '../../ContextProvider';
+import { BtnType } from '../../types/BtnType';
 
 interface Props {
   isMobileMenuOpen: boolean;
   handleMobileMenu: (open: boolean) => void;
 }
+
+const activeLink = (isActive: boolean, btnType: BtnType) => {
+  return classNames(styles.button, {
+    buttonFavourite: btnType === BtnType.favorites,
+    buttonCart: btnType === BtnType.cart,
+    [styles.buttonActive]: isActive,
+  });
+};
 
 export const Header: React.FC<Props> = ({
   isMobileMenuOpen,
@@ -22,6 +31,8 @@ export const Header: React.FC<Props> = ({
 
   const { cartProducts } = useContext(CartContext);
   const { favouriteProducts } = useContext(FavouriteContext);
+  const { pathname } = useLocation();
+  const [searchParams] = useSearchParams();
 
   return (
     <header className={styles.topBarContainer} id="header">
@@ -41,9 +52,11 @@ export const Header: React.FC<Props> = ({
         </div>
 
         <div className={styles.buttonsContainer}>
-          <Link
+          <NavLink
             to="/favorites"
-            className={classNames('buttonFavourite', styles.button)}
+            className={({ isActive }) =>
+              activeLink(isActive, BtnType.favorites)
+            }
             aria-label="My favourite products"
           >
             {!!favouriteProducts.length && (
@@ -51,17 +64,18 @@ export const Header: React.FC<Props> = ({
                 {favouriteProducts.length}
               </span>
             )}
-          </Link>
+          </NavLink>
 
-          <Link
+          <NavLink
             to="/cart"
-            className={classNames('buttonCart', styles.button)}
+            state={{ search: searchParams.toString(), pathname }}
+            className={({ isActive }) => activeLink(isActive, BtnType.cart)}
             aria-label="Products added to cart"
           >
             {!!cartProducts.length && (
               <span className="buttonCartWrapper">{cartProducts.length}</span>
             )}
-          </Link>
+          </NavLink>
         </div>
       </div>
     </header>

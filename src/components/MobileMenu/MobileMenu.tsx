@@ -4,14 +4,23 @@ import classNames from 'classnames';
 import styles from './MobileMenu.module.scss';
 import '../../App.scss';
 import { Navigation } from '../Navigation';
-import { Link } from 'react-router-dom';
+import { NavLink, useLocation, useSearchParams } from 'react-router-dom';
 import { CartContext, FavouriteContext } from '../../ContextProvider';
 import { instantScroll } from '../../utils/instantScroll';
+import { BtnType } from '../../types/BtnType';
 
 interface Props {
   isMobileMenuOpen: boolean;
   setIsMobileMenuOpen: (open: boolean) => void;
 }
+
+const activeLink = (isActive: boolean, btnType: BtnType) => {
+  return classNames(styles.mobileMenuBottomBtn, {
+    buttonFavourite: btnType === BtnType.favorites,
+    buttonCart: btnType === BtnType.cart,
+    [styles.mobileMenuBottomBtnActive]: isActive,
+  });
+};
 
 export const MobileMenu: React.FC<Props> = ({
   isMobileMenuOpen,
@@ -19,6 +28,8 @@ export const MobileMenu: React.FC<Props> = ({
 }) => {
   const { cartProducts } = useContext(CartContext);
   const { favouriteProducts } = useContext(FavouriteContext);
+  const { pathname } = useLocation();
+  const [searchParams] = useSearchParams();
 
   const handleClick: MouseEventHandler<HTMLAnchorElement> = e => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
@@ -37,9 +48,9 @@ export const MobileMenu: React.FC<Props> = ({
       />
 
       <div className={styles.mobileMenuBottom}>
-        <Link
+        <NavLink
           to="/favorites"
-          className={classNames('buttonFavourite', styles.mobileMenuBottomBtn)}
+          className={({ isActive }) => activeLink(isActive, BtnType.favorites)}
           onClick={handleClick}
         >
           {!!favouriteProducts.length && (
@@ -47,17 +58,18 @@ export const MobileMenu: React.FC<Props> = ({
               {favouriteProducts.length}
             </span>
           )}
-        </Link>
+        </NavLink>
 
-        <Link
+        <NavLink
           to="/cart"
-          className={classNames('buttonCart', styles.mobileMenuBottomBtn)}
+          state={{ search: searchParams.toString(), pathname }}
+          className={({ isActive }) => activeLink(isActive, BtnType.cart)}
           onClick={handleClick}
         >
           {!!cartProducts.length && (
             <span className="buttonCartWrapper">{cartProducts.length}</span>
           )}
-        </Link>
+        </NavLink>
       </div>
     </aside>
   );
