@@ -47,8 +47,8 @@ export const ItemsProduct: React.FC<Props> = ({ product, discount }) => {
           className={styles.product_image_img}
           src={
             product.images
-              ? `./img/${product.category.toLowerCase()}/${product.images[0]}`
-              : `./img/${product.category.toLowerCase()}/${product.images}`
+              ? `${process.env.PUBLIC_URL}/img/${product.category.toLowerCase()}/${product.images[0]}`
+              : `${process.env.PUBLIC_URL}/img/${product.category.toLowerCase()}/${product.images}`
           }
           alt="image/product"
         />
