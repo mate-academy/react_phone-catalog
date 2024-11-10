@@ -35,6 +35,8 @@ export const ItemsProduct: React.FC<Props> = ({ product, discount }) => {
     }
   };
 
+  const BASE_URL = 'https://avramenkomarina.github.io/react_phone-catalog';
+
   return (
     <div className={styles.product}>
       <Link
@@ -47,8 +49,8 @@ export const ItemsProduct: React.FC<Props> = ({ product, discount }) => {
           className={styles.product_image_img}
           src={
             product.images
-              ? `/react_phone-catalog/img/${product.images[0]}`
-              : `/react_phone-catalog/img/${product.image}`
+              ? `${BASE_URL}/img/${product.images[0]}`
+              : `${BASE_URL}/img/${product.image}`
           }
           alt="image/product"
         />
