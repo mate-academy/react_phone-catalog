@@ -98,17 +98,15 @@ export const ItemInformation = () => {
     return str[0].toUpperCase() + str.slice(1);
   }
 
-  const BASE_URL = 'https://avramenkomarina.github.io/react_phone-catalog';
-
   return (
     <div className={styles.itemInformation}>
       <div className={styles.itemInformation_route}>
         <Link to={'/'}>
-          <img src={`${BASE_URL}/img/icons/Home.svg`} alt="home" />
+          <img src={`./img/icons/Home.svg`} alt="home" />
         </Link>
-        <img src={`${BASE_URL}/img/icons/Chevron-right-dis.svg`} alt="home" />
+        <img src={`./img/icons/Chevron-right-dis.svg`} alt="home" />
         <h3>{ucFirst(currentProduct?.category)}</h3>
-        <img src={`${BASE_URL}/img/icons/Chevron-right-dis.svg`} alt="home" />
+        <img src={`./img/icons/Chevron-right-dis.svg`} alt="home" />
         <p>{currentProduct?.name}</p>
       </div>
 
@@ -116,7 +114,7 @@ export const ItemInformation = () => {
         to={`../img/${currentProduct?.category}`}
         className={styles.itemInformation_buttonBack}
       >
-        <img src={`${BASE_URL}/img/icons/Chevron-left.svg`} alt="back" />
+        <img src={`./img/icons/Chevron-left.svg`} alt="back" />
         <p>Back</p>
       </Link>
       <h2 className={styles.itemInformation_title}>{currentProduct?.name}</h2>
@@ -137,7 +135,7 @@ export const ItemInformation = () => {
                 onClick={() => {
                   isClickedOnImage(image);
                 }}
-                src={`${BASE_URL}/${image}`}
+                src={`./${image}`}
                 alt="img"
               />
             </div>
@@ -146,7 +144,7 @@ export const ItemInformation = () => {
         {/**  */}
 
         <div className={styles.itemInformation_generalInfo_mainImage}>
-          <img src={`${BASE_URL}/${currentImage}`} alt="image" />
+          <img src={`./${currentImage}`} alt="image" />
         </div>
 
         {/* on phone */}
@@ -164,7 +162,7 @@ export const ItemInformation = () => {
                 onClick={() => {
                   isClickedOnImage(image);
                 }}
-                src={`${BASE_URL}/${currentImage}`}
+                src={`./${currentImage}`}
                 alt="img"
                 style={{
                   border: currentImage === image ? '1px solid #313237' : '',
@@ -267,11 +265,11 @@ export const ItemInformation = () => {
               >
                 {isClickedOnFavourite ? (
                   <img
-                    src={`${BASE_URL}/img/icons/FavouritesFilledHeart.svg`}
-                    alt=""
+                    src={`./img/icons/FavouritesFilledHeart.svg`}
+                    alt="img"
                   />
                 ) : (
-                  <img src={`${BASE_URL}/img/icons/favourites.svg`} alt="" />
+                  <img src={`./img/icons/favourites.svg`} alt="" />
                 )}
               </div>
             </div>
