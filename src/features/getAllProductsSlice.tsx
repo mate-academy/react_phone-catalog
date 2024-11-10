@@ -18,13 +18,20 @@ export const getAllProductsAsync = createAsyncThunk(
   'products/getAllProducts',
   async () => {
     // Завантажуємо всі три файли одночасно
+    /* eslint-disable max-len */
     const [phonesResponse, tabletsResponse, accessoriesResponse] =
       await Promise.all([
-        fetch('../api/phones.json'),
-        fetch('../api/tablets.json'),
-        fetch('../api/accessories.json'),
+        fetch(
+          'https://avramenkomarina.github.io/react_phone-catalog/api/phones.json',
+        ),
+        fetch(
+          'https://avramenkomarina.github.io/react_phone-catalog/api/tablets.json',
+        ),
+        fetch(
+          'https://avramenkomarina.github.io/react_phone-catalog/api/accessories.json',
+        ),
       ]);
-
+    /* eslint-enable max-len */
     // Парсимо JSON з кожного файлу
     const [phones, tablets, accessories] = await Promise.all([
       phonesResponse.json(),

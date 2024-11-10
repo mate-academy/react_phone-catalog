@@ -23,10 +23,10 @@ const initialState: SetProductsInterface = {
 export const getProductsAsync = createAsyncThunk(
   'products/getProductsSlice',
   async () => {
-    const response = await fetch('/api/products.json');
+    const response = await fetch(
+      'https://avramenkomarina.github.io/react_phone-catalog/api/products.json',
+    );
     const products = await response.json();
-
-    console.log(products);
 
     return products;
   },
