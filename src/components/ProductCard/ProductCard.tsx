@@ -8,13 +8,13 @@ import { useCart } from '../../hooks/useCart';
 import { useFavourite } from '../../hooks/useFavourite';
 import { formatSpecText } from '../../utils/formatSpecText';
 import { instantScroll } from '../../utils/instantScroll';
+import { hasDiscount } from '../../utils/hasDiscount';
 
 interface Props {
   product: Product;
-  isDiscount?: boolean;
 }
 
-export const ProductCard: React.FC<Props> = ({ product, isDiscount }) => {
+export const ProductCard: React.FC<Props> = ({ product }) => {
   const [searchParams] = useSearchParams();
   const [isAddedToCart, addToCart] = useCart(product.id, product);
   const { pathname } = useLocation();
@@ -35,6 +35,8 @@ export const ProductCard: React.FC<Props> = ({ product, isDiscount }) => {
     category,
   } = product;
 
+  const withDiscount = hasDiscount(name);
+
   return (
     <NavLink
       to={`/${category}/${id}`}
@@ -47,10 +49,12 @@ export const ProductCard: React.FC<Props> = ({ product, isDiscount }) => {
       </div>
       <p className={styles.title}>{name}</p>
       <div className={styles.priceContainer}>
-        <p className={styles.price}>{'$' + priceRegular}</p>
-        {isDiscount && (
+        <p className={styles.price}>
+          {'$' + (withDiscount ? priceDiscount : priceRegular)}
+        </p>
+        {withDiscount && (
           <p className={classNames(styles.price, styles.priceDiscount)}>
-            {'$' + priceDiscount}
+            {'$' + priceRegular}
           </p>
         )}
       </div>

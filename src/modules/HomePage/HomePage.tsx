@@ -19,7 +19,6 @@ export const HomePage = () => {
       <SuggestionsSlider
         productList={hotPricesPhones}
         title={SliderTitle.hotPrices}
-        isDiscount={true}
       />
     </div>
   );

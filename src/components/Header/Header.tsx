@@ -37,7 +37,11 @@ export const Header: React.FC<Props> = ({
   return (
     <header className={styles.topBarContainer} id="header">
       <div className={styles.topBar} id="header">
-        <Link to="/" className={styles.topBarLogo}>
+        <Link
+          to="/"
+          className={styles.topBarLogo}
+          onClick={() => handleMobileMenu(false)}
+        >
           <img src={logo} alt="Nice gadgets logo" />
         </Link>
         <button

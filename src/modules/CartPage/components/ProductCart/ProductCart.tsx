@@ -1,9 +1,10 @@
 import styles from './ProductCart.module.scss';
 import { Link, useLocation } from 'react-router-dom';
 import React from 'react';
-import { CartBtnType } from '../../../types/CartBtnType';
+import { CartBtnType } from '../../../../types/CartBtnType';
 import classNames from 'classnames';
-import { CartProduct } from '../../../types/Context';
+import { CartProduct } from '../../../../types/Context';
+import { hasDiscount } from '../../../../utils/hasDiscount';
 
 interface Props {
   cartProduct: CartProduct;
@@ -15,7 +16,9 @@ export const ProductCart: React.FC<Props> = ({
   handleCart,
 }) => {
   const { state } = useLocation();
-  const { category, images, name } = product;
+  const { category, images, name, priceDiscount, priceRegular } = product;
+  const withDiscount = hasDiscount(name);
+  const price = withDiscount ? priceDiscount : priceRegular;
 
   return (
     <article className={styles.cartProductContainer}>
@@ -48,6 +51,7 @@ export const ProductCart: React.FC<Props> = ({
             onClick={() => handleCart(CartBtnType.add, id)}
           ></button>
         </div>
+        <span className={styles.priceForProduct}>{'$' + quantity * price}</span>
       </div>
     </article>
   );

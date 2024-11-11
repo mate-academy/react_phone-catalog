@@ -67,6 +67,10 @@
 .activeLink {
   color: $color-text-hover;
 
+  @include on-tablet {
+    pointer-events: none;
+  }
+
   &:hover {
     color: $color-text-hover;
   }

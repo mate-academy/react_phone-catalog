@@ -1,8 +1,10 @@
-@import "src/styles/mixins";
-@import "src/styles/typography";
-@import "src/styles/colors";
+@import "../../../../styles/mixins";
+@import "../../../../styles/typography";
+@import "../../../../styles/colors";
 
 .cartProductContainer {
+  grid-column: 1/-1;
+
   display: flex;
   gap: 1.6rem;
   flex-direction: column;
@@ -10,6 +12,7 @@
   border: 1px solid $color-elements;
   border-radius: 1.6rem;
   background-color: $color-white;
+  height: max-content;
 
   @include on-tablet {
     gap: 2.4rem;
@@ -22,6 +25,10 @@
     &:hover {
       box-shadow: 0 0 2px 0 $color-btn-shadow;
     }
+  }
+
+  @include on-m-desktop{
+    grid-column: 1/ span 16;
   }
 
 
@@ -55,14 +62,14 @@
   height: 1.6rem;
   width: 1.6rem;
 
-  background-image: url("../../../assets/icons/close-gray.svg");
+  background-image: url("../../../../assets/icons/close-gray.svg");
   background-repeat: no-repeat;
   background-position: center;
   cursor: pointer;
 
-  @include on-tablet{
+  @include on-tablet {
     &:hover {
-      background-image: url("../../../assets/icons/close.svg");
+      background-image: url("../../../../assets/icons/close.svg");
     }
   }
 }
@@ -84,7 +91,13 @@
   color: $color-primary;
 }
 
-.counterContainer{
+.bottomWrapper {
+  display: flex;
+  gap: 2.4rem;
+  justify-content: space-between;
+}
+
+.counterContainer {
   display: flex;
   align-items: center;
 }
@@ -107,16 +120,16 @@
     }
   }
 
-  &Minus{
-    background-image: url("../../../assets/icons/minus.svg");
+  &Minus {
+    background-image: url("../../../../assets/icons/minus.svg");
 
     &:disabled {
-      background-image: url("../../../assets/icons/minus-gray.svg");
+      background-image: url("../../../../assets/icons/minus-gray.svg");
     }
   }
 
-  &Plus{
-    background-image: url("../../../assets/icons/plus.svg");
+  &Plus {
+    background-image: url("../../../../assets/icons/plus.svg");
   }
 
   &::after {
@@ -132,11 +145,22 @@
   }
 }
 
-.textCounter{
+.textCounter {
   @extend %text-body;
 
   display: inline-block;
   min-width: max-content;
   width: 3.2rem;
   text-align: center;
+}
+
+.priceForProduct {
+  @extend %h3;
+
+  display: inline-block;
+  text-align: right;
+
+  @include on-tablet {
+    width: 8rem;
+  }
 }

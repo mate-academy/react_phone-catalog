@@ -9,6 +9,7 @@ import { useNavigate } from 'react-router-dom';
 import { useCart } from '../../../../hooks/useCart';
 import { useFavourite } from '../../../../hooks/useFavourite';
 import { Product } from '../../../../types/Product';
+import { hasDiscount } from '../../../../utils/hasDiscount';
 
 interface Props {
   id: string;
@@ -41,6 +42,7 @@ export const ProductConfig: React.FC<Props> = ({
     processor,
     screen,
     resolution,
+    name,
   } = product;
 
   const [randomID, formattedScreen, formattedRam] = useMemo(() => {
@@ -50,6 +52,8 @@ export const ProductConfig: React.FC<Props> = ({
   const productsSameModel = productList.filter(
     item => item.namespaceId === product.namespaceId,
   );
+
+  const withDiscount = hasDiscount(name);
 
   const changeSpec = (
     availableCapacity: string = capacity,
@@ -113,10 +117,14 @@ export const ProductConfig: React.FC<Props> = ({
         </div>
       </div>
       <div className={styles.priceContainer}>
-        <p className={styles.price}>{'$' + priceRegular}</p>
-        <p className={classNames(styles.price, styles.priceDiscount)}>
-          {'$' + priceDiscount}
+        <p className={styles.price}>
+          {'$' + (withDiscount ? priceDiscount : priceRegular)}
         </p>
+        {withDiscount && (
+          <p className={classNames(styles.price, styles.priceDiscount)}>
+            {'$' + priceRegular}
+          </p>
+        )}
       </div>
       <div className={styles.btnContainer}>
         <button

@@ -15,15 +15,10 @@ import classNames from 'classnames';
 
 interface Props {
   productList: Product[];
-  isDiscount?: boolean;
   title: SliderTitle;
 }
 
-export const SuggestionsSlider: React.FC<Props> = ({
-  productList,
-  isDiscount,
-  title,
-}) => {
+export const SuggestionsSlider: React.FC<Props> = ({ productList, title }) => {
   const products = [...productList];
 
   return (
@@ -50,7 +45,7 @@ export const SuggestionsSlider: React.FC<Props> = ({
         >
           {products.map(phone => (
             <SwiperSlide key={phone.id}>
-              <ProductCard product={phone} isDiscount={isDiscount} />
+              <ProductCard product={phone} />
             </SwiperSlide>
           ))}
         </Swiper>

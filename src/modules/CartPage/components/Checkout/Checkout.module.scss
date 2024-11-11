@@ -1,0 +1,65 @@
+@import "src/styles/mixins";
+@import "src/styles/typography";
+@import "src/styles/colors";
+
+.checkoutContainer {
+  grid-column: 1/-1;
+
+  height: min-content;
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+  padding: 2.4rem;
+  margin-bottom: 5.6rem;
+  background-color: $color-white;
+  border: 1px solid $color-elements;
+  border-radius: 1.6rem;
+
+  @include on-tablet {
+    margin-bottom: 6.4rem;
+    transition: box-shadow $transition-duration ease-out;
+
+    &:hover {
+      box-shadow: 0 0 2px 0 $color-btn-shadow;
+    }
+  }
+
+  @include on-m-desktop {
+    gap: 2.4rem;
+    margin-bottom: 0;
+
+    @include on-m-desktop{
+      grid-column: 17/ -1;
+      grid-row: 1/-1;
+    }
+  }
+}
+
+.totalContainer{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 1.6rem;
+  border-bottom: 1px solid $color-elements;
+
+  @include on-m-desktop {
+    padding-bottom: 2.4rem;
+  }
+}
+
+.totalPrice {
+  @extend %h2;
+
+  display: inline-block;
+}
+
+.totalText{
+  @extend %text-body;
+
+  color: $color-secondary;
+  font-weight: 500;
+}
+
+.btnCheckout{
+  padding-block: 1.4rem 1.1rem;
+}

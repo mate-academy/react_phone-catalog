@@ -2,10 +2,12 @@ import styles from './CartPage.module.scss';
 import { BackBtn } from '../../components/BackBtn';
 import { getPrevPath } from '../../utils/getPrevPath';
 import { useLocation } from 'react-router-dom';
-import { ProductCart } from './components';
+import { ProductCart } from './components/ProductCart/ProductCart';
 import { useContext } from 'react';
 import { CartContext } from '../../ContextProvider';
 import { CartBtnType } from '../../types/CartBtnType';
+import { Checkout } from './components/Checkout';
+import { hasDiscount } from '../../utils/hasDiscount';
 
 export const CartPage = () => {
   const { cartProducts, setCartProducts } = useContext(CartContext);
@@ -50,19 +52,35 @@ export const CartPage = () => {
     setCartProducts(changeQuantity());
   };
 
+  const totalPrice = cartProducts.reduce((a, b) => {
+    return (
+      a +
+      b.quantity *
+        (hasDiscount(b.product.name)
+          ? b.product.priceDiscount
+          : b.product.priceRegular)
+    );
+  }, 0);
+
   return (
     <section className={styles.container}>
       <BackBtn path={path} prevPath={prevPath} search={search} />
       <h2 className={styles.productTitle}>Cart</h2>
       <div className={styles.contentContainer}>
         {!!cartProducts.length ? (
-          cartProducts.map(product => (
-            <ProductCart
-              cartProduct={product}
-              handleCart={handleCart}
-              key={product.id}
+          <>
+            {cartProducts.map(product => (
+              <ProductCart
+                cartProduct={product}
+                handleCart={handleCart}
+                key={product.id}
+              />
+            ))}
+            <Checkout
+              totalPrice={totalPrice}
+              numOfProducts={cartProducts.length}
             />
-          ))
+          </>
         ) : (
           <>
             <p className={styles.titleEmpty}>
