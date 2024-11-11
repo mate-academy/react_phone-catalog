@@ -60,21 +60,23 @@
   width: 100%;
   background-color: $color-accent;
   border-radius: 4.8rem;
-  padding-block:1.05rem 0.85rem;
+  padding-block: 1.05rem 0.85rem;
   cursor: pointer;
   border: 1px solid $color-accent;
   color: $color-white;
   padding-inline: 0;
   transition: box-shadow $transition-duration ease-out;
 
-  &:hover {
-    box-shadow: 0 3px 13px 0 $color-btn-shadow;
+  @include on-tablet {
+    &:hover {
+      box-shadow: 0 3px 13px 0 $color-btn-shadow;
+    }
+
+    &:active {
+      box-shadow: $color-btn-shadow 3px 3px 6px 0 inset, $color-btn-shadow -3px -3px 6px 1px inset;
+    }
   }
 
-
-  &:active {
-    box-shadow: $color-btn-shadow 3px 3px 6px 0 inset, $color-btn-shadow -3px -3px 6px 1px inset;
-  }
 
   &Pressed {
     color: $color-accent;
@@ -82,12 +84,14 @@
     border: 1px solid $color-elements;
 
 
-    &:hover {
-      box-shadow: 0 0 6px 0 $color-btn-shadow;
-    }
+    @include on-tablet {
+      &:hover {
+        box-shadow: 0 0 6px 0 $color-btn-shadow;
+      }
 
-    &:active {
-      box-shadow:inset 0 0 6px 0 $color-btn-shadow;
+      &:active {
+        box-shadow: inset 0 0 6px 0 $color-btn-shadow;
+      }
     }
   }
 }
@@ -102,16 +106,20 @@
 
   border: 1px solid $color-icons;
 
-  &:hover {
-    border: 1px solid $color-primary;
+  @include on-tablet {
+    &:hover {
+      border: 1px solid $color-primary;
+    }
   }
 
   &Pressed {
     border: 1px solid $color-elements;
     background-image: url("../assets/icons/favourites_filled.svg");
 
-    &:hover {
-      border: 1px solid $color-secondary-accent;
+    @include on-tablet {
+      &:hover {
+        border: 1px solid $color-secondary-accent;
+      }
     }
   }
 
