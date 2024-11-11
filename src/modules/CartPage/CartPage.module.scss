@@ -24,6 +24,7 @@
   @include on-m-desktop {
     position: relative;
     grid-template-columns: repeat(24, 1fr);
+    min-height: calc(100vh - 90px - 110px);
   }
 }
 

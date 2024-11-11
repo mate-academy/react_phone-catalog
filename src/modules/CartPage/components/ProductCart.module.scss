@@ -10,7 +10,6 @@
   border: 1px solid $color-elements;
   border-radius: 1.6rem;
   background-color: $color-white;
-  transition: box-shadow $transition-duration ease-out;
 
   @include on-tablet {
     gap: 2.4rem;
@@ -18,11 +17,14 @@
     padding: 2.4rem;
     align-items: center;
     justify-content: space-between;
+    transition: box-shadow $transition-duration ease-out;
+
+    &:hover {
+      box-shadow: 0 0 2px 0 $color-btn-shadow;
+    }
   }
 
-  &:hover {
-    box-shadow: 0 0 2px 0 $color-btn-shadow;
-  }
+
 }
 
 .topWrapper {
@@ -97,6 +99,12 @@
   background-repeat: no-repeat;
   background-position: center;
 
+  @include on-tablet {
+    &:hover {
+      border: 1px solid $color-primary;
+    }
+  }
+
   &Minus{
     background-image: url("../../../assets/icons/minus.svg");
 
@@ -107,10 +115,6 @@
 
   &Plus{
     background-image: url("../../../assets/icons/plus.svg");
-  }
-
-  &:hover {
-    border: 1px solid $color-primary;
   }
 
   &::after {
