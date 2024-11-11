@@ -31,7 +31,7 @@ export const useCart = (
       isAddedToCart
         ? cartProducts.filter(item => item.id !== id)
         : product
-          ? [...cartProducts, product]
+          ? [...cartProducts, { id, quantity: 1, product }]
           : [...cartProducts],
     );
   };

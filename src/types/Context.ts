@@ -1,13 +1,19 @@
 import { Product } from './Product';
 
+export interface CartProduct {
+  id: string;
+  quantity: number;
+  product: Product;
+}
+
 export interface CartContextType {
-  cartProducts: Product[];
-  setCartProducts: (newProduct: Product[]) => void;
+  cartProducts: CartProduct[];
+  setCartProducts: (products: CartProduct[]) => void;
 }
 
 export interface FavouriteContextType {
   favouriteProducts: Product[];
-  setFavouriteProducts: (newProduct: Product[]) => void;
+  setFavouriteProducts: (products: Product[]) => void;
 }
 
 export interface ProductListContextType {

@@ -46,7 +46,6 @@
 
   display: flex;
   flex-direction: column;
-  gap: 1.6rem;
 
   margin-bottom: 5.6rem;
 
@@ -56,5 +55,53 @@
 
   @include on-m-desktop {
     margin-bottom: 8rem;
+  }
+
+  & article{
+    margin-bottom: 1.6rem;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.titleEmpty {
+  @extend %h3;
+
+  color: $color-secondary;
+  text-align: center;
+  font-size: 1.4rem;
+  line-height: 2.1rem;
+
+  @include on-tablet {
+    font-size: 2rem;
+    line-height: 2.6rem;
+  }
+
+  @include on-m-desktop {
+    font-size: 2.2rem;
+    line-height: 3.1rem;
+  }
+}
+
+.emptyFavImg {
+  background-image: url("../../assets/icons/empty-cart.svg");
+  width: 100%;
+  margin-inline: auto;
+  aspect-ratio: 1;
+  max-width: 15rem;
+
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+
+  @include on-tablet {
+    max-width: 25rem;
+  }
+
+  @include on-m-desktop {
+    max-width: 30rem;
   }
 }

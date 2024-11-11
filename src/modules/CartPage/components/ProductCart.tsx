@@ -1,25 +1,21 @@
-import styles from './CartProduct.module.scss';
+import styles from './ProductCart.module.scss';
 import { Link, useLocation } from 'react-router-dom';
-import { Product } from '../../../types/Product';
-import React, { useState } from 'react';
+import React from 'react';
 import { CartBtnType } from '../../../types/CartBtnType';
-// import { CartContext } from '../../../ContextProvider';
 import classNames from 'classnames';
+import { CartProduct } from '../../../types/Context';
 
 interface Props {
-  product: Product;
+  cartProduct: CartProduct;
   handleCart: (cartBtnType: CartBtnType, productId: string) => void;
 }
 
-export const CartProduct: React.FC<Props> = ({
-  product: { id, name, category, images },
+export const ProductCart: React.FC<Props> = ({
+  cartProduct: { id, quantity, product },
   handleCart,
 }) => {
-  const [counter, setCounter] = useState(1);
-  // const { cartProducts } = useContext(CartContext);
   const { state } = useLocation();
-
-  // const numOfItems = cartProducts.filter(item => item.id === id).length;
+  const { category, images, name } = product;
 
   return (
     <article className={styles.cartProductContainer}>
@@ -43,13 +39,13 @@ export const CartProduct: React.FC<Props> = ({
         <div className={styles.counterContainer}>
           <button
             className={classNames(styles.btnCounter, styles.btnCounterMinus)}
-            onClick={() => setCounter(prevCounter => prevCounter - 1)}
-            disabled={counter === 1}
+            onClick={() => handleCart(CartBtnType.subtract, id)}
+            disabled={quantity === 1}
           ></button>
-          <span className={styles.textCounter}>{counter}</span>
+          <span className={styles.textCounter}>{quantity}</span>
           <button
             className={classNames(styles.btnCounter, styles.btnCounterPlus)}
-            onClick={() => setCounter(prevCounter => prevCounter + 1)}
+            onClick={() => handleCart(CartBtnType.add, id)}
           ></button>
         </div>
       </div>
