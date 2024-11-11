@@ -1,5 +1,6 @@
 @import "src/styles/colors";
 @import "src/styles/typography";
+@import "src/styles/mixins";
 
 .paginationContainer {
   display: flex;
@@ -86,9 +87,10 @@
     color: $color-white;
   }
 
-
-  &:hover {
-    border: 1px solid $color-primary;
+  @include on-tablet {
+    &:hover {
+      border: 1px solid $color-primary;
+    }
   }
 
   &Dots {

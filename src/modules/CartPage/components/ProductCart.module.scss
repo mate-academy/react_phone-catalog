@@ -60,8 +60,10 @@
   background-position: center;
   cursor: pointer;
 
-  &:hover {
-    background-image: url("../../../assets/icons/close.svg");
+  @include on-tablet{
+    &:hover {
+      background-image: url("../../../assets/icons/close.svg");
+    }
   }
 }
 
