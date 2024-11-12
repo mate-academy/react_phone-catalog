@@ -1,0 +1,94 @@
+.swiperContainer {
+  width: calc(100% + 32px);
+  margin-left: -16px;
+  position: relative;
+
+  @include on-tablet {
+    width: 100%;
+    margin: 0;
+  }
+
+  .swiper {
+    @include on-tablet {
+      width: calc(100% - 102px);
+    }
+
+    @include on-desktop {
+      width: calc(100% - 96px);
+    }
+
+    .swiperSlide {
+      img {
+        display: block;
+        width: 100%;
+
+        @include on-tablet {
+          width: 100%;
+          margin-left: auto;
+        }
+      }
+    }
+
+    :global(.swiper-pagination) {
+      display: flex;
+      width: 100%;
+      justify-content: center;
+      margin-top: 18px;
+      gap: 14px;
+
+      &:global(-bullet) {
+        display: block;
+        width: 14px;
+        height: 4px;
+        background-color: var(--home-slider-dot-bg);
+        cursor: pointer;
+        transition: opacity 0.2 ease;
+
+        &:global(-active) {
+          background-color: var(--home-slider-dot-active-bg);
+        }
+
+        @include on-desktop {
+          &:hover {
+            opacity: var(--main-hover-opacity);
+          }
+        }
+      }
+    }
+  }
+
+  .swiperArrow {
+    width: 32px;
+    top: 0;
+    bottom: 22px;
+    position: absolute;
+    background-color: var(--home-slider-button-bg);
+    border: 1px solid var(--home-slider-button-border-color);
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+
+    &:active {
+      background-color: var(--main-button-hover-bg);
+    }
+
+    @include on-desktop {
+      &:hover {
+        background-color: var(--main-button-hover-bg);
+      }
+    }
+
+    svg {
+      path {
+        fill: var(--main-button-color);
+      }
+    }
+
+    &.prevArrow {
+      left: 0;
+    }
+
+    &.nextArrow {
+      right: 0;
+    }
+  }
+}

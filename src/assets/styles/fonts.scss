@@ -1,0 +1,41 @@
+@font-face {
+  font-family: Mont;
+  src: url('public/fonts/Mont-Bold.eot');
+  src:
+    local('Mont Bold'),
+    local('Mont-Bold'),
+    url('public/fonts/Mont-Bold.eot?#iefix') format('embedded-opentype'),
+    url('public/fonts/Mont-Bold.woff') format('woff'),
+    url('public/fonts/Mont-Bold.woff2') format('woff2'),
+    url('public/fonts/Mont-Bold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: Mont;
+  src: url('public/fonts/Mont-SemiBold.eot');
+  src:
+    local('Mont SemiBold'),
+    local('Mont-SemiBold'),
+    url('public/fonts/Mont-SemiBold.eot?#iefix') format('embedded-opentype'),
+    url('public/fonts/Mont-SemiBold.woff') format('woff'),
+    url('public/fonts/Mont-SemiBold.woff2') format('woff2'),
+    url('public/fonts/Mont-SemiBold.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: Mont;
+  src: url('public/fonts/Mont-Regular.eot');
+  src:
+    local('Mont Regular'),
+    local('Mont-Regular'),
+    url('public/fonts/Mont-Regular.eot?#iefix') format('embedded-opentype'),
+    url('public/fonts/Mont-Regular.woff') format('woff'),
+    url('public/fonts/Mont-Regular.woff2') format('woff2'),
+    url('public/fonts/Mont-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}

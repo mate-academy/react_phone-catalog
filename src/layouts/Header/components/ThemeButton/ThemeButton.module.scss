@@ -1,0 +1,25 @@
+.themeButton {
+  background-color: var(--main-bg);
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s ease;
+  cursor: pointer;
+
+  &:active {
+    background-color: var(--main-button-hover-bg);
+  }
+
+  svg {
+    path {
+      fill: var(--main-button-color);
+    }
+  }
+
+  @include on-desktop {
+    &:hover {
+      background-color: var(--main-button-hover-bg);
+    }
+  }
+}

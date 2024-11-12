@@ -1,7 +1,13 @@
+import { RouterProvider } from 'react-router-dom';
+
+import { ThemeProvider } from '@shared/contexts/theme/Theme.context';
+
+import { router } from './router';
+
 import './App.scss';
 
 export const App = () => (
-  <div className="App">
-    <h1>Product Catalog</h1>
-  </div>
+  <ThemeProvider>
+    <RouterProvider router={router} />
+  </ThemeProvider>
 );

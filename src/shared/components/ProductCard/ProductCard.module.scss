@@ -1,0 +1,69 @@
+.card {
+  padding: 32px;
+  border: 1px solid var(--card-main-border-color);
+  background-color: var(--card-bg);
+
+  .link {
+    display: block;
+    height: 196px;
+
+    img {
+      margin: 0 auto;
+      display: block;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+
+    &:hover {
+      img {
+        transform: scale(1.1);
+      }
+    }
+  }
+
+  .description {
+    margin-top: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--card-internal-border);
+
+    .price {
+      display: flex;
+      gap: 8px;
+
+      // line through invert
+      .old {
+        color: var(--card-cross-out-text-color);
+        text-decoration: none;
+
+        &::after {
+          content: '';
+          display: block;
+          width: 100%;
+          height: 2px;
+          backdrop-filter: invert(1);
+          position: relative;
+          top: -12px;
+        }
+      }
+    }
+  }
+
+  .feature {
+    padding-top: 8px;
+    margin-top: 8px;
+    gap: 8px;
+
+    .featureRow {
+      display: flex;
+      justify-content: space-between;
+
+      & > :first-child {
+        color: var(--grey-700);
+      }
+    }
+  }
+}

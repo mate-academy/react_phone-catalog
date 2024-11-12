@@ -1,0 +1,45 @@
+:root {
+  --main-hover-opacity: 0.8;
+
+  .light {
+    // main
+    --main-bg: var(--white);
+    --main-border-color: var(--grey-300);
+    --main-button-color: var(--grey-900);
+    --main-button-hover-bg: var(--grey-200);
+    --main-text-color: var(--grey-900);
+
+    // home-slider
+    --home-slider-button-bg: var(--white);
+    --home-slider-button-border-color: var(--grey-500);
+    --home-slider-dot-bg: var(--grey-300);
+    --home-slider-dot-active-bg: var(--grey-900);
+
+    // card
+    --card-bg: var(--white);
+    --card-main-border-color: var(--grey-300);
+    --card-internal-border: var(--grey-300);
+    --card-cross-out-text-color: var(--grey-700);
+  }
+
+  .dark {
+    // main
+    --main-bg: var(--blue-grey-900);
+    --main-border-color: var(--blue-grey-500);
+    --main-button-color: var(--grey-200);
+    --main-button-hover-bg: var(--blue-grey-300);
+    --main-text-color: var(--grey-200);
+
+    // home-slider
+    --home-slider-button-bg: var(--blue-grey-700);
+    --home-slider-button-border-color: transparent;
+    --home-slider-dot-bg: var(--blue-grey-500);
+    --home-slider-dot-active-bg: var(--grey-200);
+
+    // card
+    --card-bg: var(--blue-grey-800);
+    --card-main-border-color: var(--blue-grey-800);
+    --card-internal-border: var(--blue-grey-500);
+    --card-cross-out-text-color: var(--blue-grey-100);
+  }
+}

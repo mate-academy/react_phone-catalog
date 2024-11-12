@@ -1,1 +1,26 @@
-// not empty
+@import '@assets/styles/index';
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Mont, sans-serif;
+  font-weight: normal;
+  color: var(--main-text-color);
+}
+
+body {
+  background-color: var(--main-bg);
+}
+
+a {
+  text-decoration: none;
+}
+
+.container {
+  width: 100%;
+  max-width: 1136px;
+  margin: 0 auto;
+
+  @include page-grid;
+}

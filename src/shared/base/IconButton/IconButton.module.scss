@@ -1,0 +1,61 @@
+.btn {
+  border: 1px solid transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--white);
+  cursor: pointer;
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease;
+
+  .sm {
+    width: 32px;
+    height: 32px;
+  }
+
+  .md {
+    width: 40px;
+    height: 40px;
+  }
+
+  .lg {
+    width: 48px;
+    height: 48px;
+  }
+
+  .primary {
+    border-color: var(--grey-300);
+    color: var(--grey-900);
+    background-color: var(--white);
+
+    &:active {
+      border-color: var(--grey-900);
+      background-color: var(--grey-900);
+      color: var(--white);
+    }
+
+    @include on-desktop {
+      &:hover {
+        border-color: var(--grey-900);
+      }
+    }
+  }
+
+  .disabled,
+  .disabled:hover,
+  .disabled:active {
+    cursor: default;
+    color: var(--grey-300);
+    background-color: var(--white);
+    border-color: var(--grey-300);
+  }
+
+  svg {
+    path {
+      fill: currentColor;
+      transition: fill 0.2s ease;
+    }
+  }
+}

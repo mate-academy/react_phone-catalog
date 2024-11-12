@@ -1,0 +1,35 @@
+@mixin page-grid {
+  --columns: 4;
+
+  padding: 0 16px;
+
+  @include on-tablet {
+    --columns: 12;
+
+    padding: 0 24px;
+  }
+
+  @include on-desktop {
+    --columns: 24;
+
+    padding: 0 32px;
+  }
+}
+
+@mixin on-mobile {
+  @media screen and (min-width: $breakpoint-sm) {
+    @content;
+  }
+}
+
+@mixin on-tablet {
+  @media screen and (min-width: $breakpoint-md) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media screen and (min-width: $breakpoint-lg) {
+    @content;
+  }
+}

@@ -1,0 +1,91 @@
+h1 {
+  font-size: px-to-rem(32);
+  line-height: px-to-rem(41);
+  letter-spacing: -0.01rem;
+  font-weight: bold;
+
+  @include on-tablet {
+    font-size: px-to-rem(48);
+    line-height: px-to-rem(56);
+  }
+}
+
+h2 {
+  font-size: px-to-rem(22);
+  line-height: px-to-rem(31);
+  letter-spacing: 0;
+  font-weight: bold;
+
+  @include on-tablet {
+    font-size: px-to-rem(32);
+    line-height: px-to-rem(41);
+    letter-spacing: -0.01rem;
+  }
+}
+
+h3 {
+  font-size: px-to-rem(20);
+  line-height: px-to-rem(26);
+  letter-spacing: 0;
+  font-weight: 600;
+
+  @include on-tablet {
+    font-size: px-to-rem(22);
+    line-height: px-to-rem(31);
+    font-weight: bold;
+  }
+}
+
+h4 {
+  font-size: px-to-rem(16);
+  line-height: px-to-rem(20);
+  letter-spacing: 0;
+  font-weight: 600;
+
+  @include on-tablet {
+    font-size: px-to-rem(20);
+    line-height: px-to-rem(26);
+  }
+}
+
+.uppercase {
+  font-size: px-to-rem(12);
+  line-height: px-to-rem(11);
+  letter-spacing: 0.04rem;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.buttons {
+  font-size: px-to-rem(14);
+  line-height: px-to-rem(21);
+  letter-spacing: 0;
+  font-weight: 600;
+}
+
+.body {
+  font-size: px-to-rem(14);
+  line-height: px-to-rem(21);
+  letter-spacing: 0;
+  font-weight: normal;
+}
+
+.crossed-out {
+  font-size: px-to-rem(20);
+  line-height: px-to-rem(26);
+  letter-spacing: 0;
+  font-weight: normal;
+  text-decoration: line-through;
+
+  @include on-tablet {
+    font-size: px-to-rem(22);
+    line-height: px-to-rem(31);
+  }
+}
+
+.small {
+  font-size: px-to-rem(12);
+  line-height: px-to-rem(15);
+  letter-spacing: 0;
+  font-weight: 600;
+}
