@@ -29,8 +29,7 @@ export const GadgetsInCartList: React.FC<Props> = ({
     setTotalPrice(total);
     setModelsCount(
       phones.reduce(
-        (acc: number, phone: PhoneFromServer) =>
-          acc + (phone.priceRegular > 0 ? 1 : 0),
+        (acc: number, phone: PhoneFromServer) => acc + (phone.count || 0),
         0,
       ),
     );
@@ -62,7 +61,9 @@ export const GadgetsInCartList: React.FC<Props> = ({
       </ul>
       <div className="cart__checkout checkout">
         <div className="checkout__total-price">${totalPrice}</div>
-        <div className="checkout__text">Total for {modelsCount} items</div>
+        <div className="checkout__text">
+          Total for {modelsCount} {modelsCount === 1 ? 'item' : 'items'}
+        </div>
         <hr />
         <div className="checkout__button">Checkout</div>
       </div>

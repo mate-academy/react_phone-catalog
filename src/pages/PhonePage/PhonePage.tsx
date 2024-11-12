@@ -27,7 +27,7 @@ export const PhonePage = () => {
   useEffect(() => {
     const fetchPhones = async () => {
       try {
-        const response = await fetch('/api/phones.json');
+        const response = await fetch('api/phones.json');
 
         if (!response.ok) {
           throw new Error('response is not ok');

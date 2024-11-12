@@ -62,9 +62,7 @@ export const GadgetInCartList: React.FC<Props> = ({
 
   return (
     <li key={phone.id} className="cart__item cart-item">
-      <button onClick={() => deletePhone(phone)} className="cart-item__cross">
-        X
-      </button>
+      <button onClick={() => deletePhone(phone)} className="cart-item__cross" />
       <img
         src={`${phone.images[0]}`}
         alt={phone.id}

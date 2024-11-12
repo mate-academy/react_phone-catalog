@@ -11,7 +11,7 @@ export const Footer = () => {
       <footer className="footer">
         <div className="footer__container">
           <div className="footer__icon footer__block block">
-            <img className="block__img" src="/img/svg/logo.svg" alt="logo" />
+            <img className="block__img" src="img/svg/logo.svg" alt="logo" />
           </div>
           <div className="footer__text footer__block block">
             <Link className="block__text">GITHUB</Link>

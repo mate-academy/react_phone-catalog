@@ -8,6 +8,8 @@ import { HotPrices } from '../../components/HotPrices/HotPrices';
 import phonesFromServer from '../../api/phones.json';
 import { PhoneFromServer } from '../../types/Phone';
 import './PhoneDetailsPage.scss';
+import './PhoneDetailsPage__Tablet.scss';
+import './PhoneDetailsPage__Phone.scss';
 
 export const PhoneDetailsPage = () => {
   const [imgUrl, setImgUrl] = useState('');
@@ -85,10 +87,12 @@ export const PhoneDetailsPage = () => {
                 </ul>
                 <div className="details-top__img">
                   <img
+                    className="details-top-img"
                     src={!imgUrl ? `${phone.images[0]}` : `${imgUrl}`}
                     alt="Main image"
                   />
                 </div>
+
                 <div className="details-top__buying buying">
                   <div className="buying__colors colors">
                     <div className="buying__title">Available colors</div>
