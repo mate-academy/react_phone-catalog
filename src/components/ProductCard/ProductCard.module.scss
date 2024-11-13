@@ -148,7 +148,7 @@
     background-color: var.$primary-gray;
     color: var.$white;
 
-    @include flex(flex, center, center, false);
+    @include mixin.flex(flex, center, center, false);
 
     transition: box-shadow 0.3s;
 
@@ -177,7 +177,7 @@
     height: 100%;
     aspect-ratio: 1 / 1;
 
-    @include flex(flex, center, center, false);
+    @include mixin.flex(flex, center, center, false);
 
     border: solid 1px var.$icons-placeholders;
     background-color: inherit;
