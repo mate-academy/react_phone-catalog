@@ -2,8 +2,8 @@
 import cn from 'classnames';
 
 import styles from './PicturesSlider.module.scss';
-import arrowLeft from '../../images/icons/arrow_left.png';
-import arrowRight from '../../images/icons/arrow_right.png';
+import arrowLeft from '../../images/icons/arrow_left.svg';
+import arrowRight from '../../images/icons/arrow_right.svg';
 import { useEffect, useState } from 'react';
 import img1 from '../../images/slider/banner-accessories.png';
 import img2 from '../../images/slider/banner-phones.png';

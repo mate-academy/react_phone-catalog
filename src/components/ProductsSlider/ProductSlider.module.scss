@@ -1,0 +1,103 @@
+@use "../../utils/mixins" as mixin;
+@use "../../utils/variables" as var;
+
+.product-slider {
+  &__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 16px;
+    margin-bottom: 20px;
+
+    @include mixin.on-desktop {
+      margin-bottom: 24px;
+    }
+  }
+
+  &__buttons {
+    @include mixin.flex(flex, center, center, false);
+
+    gap: 10px;
+  }
+
+  &__title {
+    @include mixin.h2-mobile;
+
+    color: var.$primary-gray;
+    text-align: center;
+
+    @include mixin.on-tablet {
+      @include mixin.h2-desktop-tablet;
+    }
+
+    @include mixin.on-desktop {
+      @include mixin.h2-desktop-tablet;
+    }
+  }
+
+  &__image {
+    @include mixin.sizes(16px, 16px);
+  }
+
+  &__button {
+    @include mixin.sizes(32px, 32px);
+    @include mixin.flex(flex, center, center, false);
+
+    border: solid 1px var.$elements;
+    cursor: pointer;
+
+    &:hover {
+      border: solid 1px var.$primary-gray;
+    }
+
+    &:disabled {
+      border: solid 1px var.$elements;
+    }
+
+    &--next {
+      margin-right: 16px;
+    }
+  }
+}
+
+.products {
+  box-sizing: border-box;
+
+  @include mixin.grid;
+
+  &__container {
+    grid-column: 1/-1;
+    margin: 0 0 20px 16px;
+
+    @include mixin.on-tablet {
+      margin: 0 0 32px 16px;
+    }
+
+    @include mixin.on-desktop {
+      margin: 0 0 40px 16px;
+    }
+  }
+
+  &__list {
+    display: flex;
+    overflow: hidden;
+    height: auto;
+    gap: 16px;
+  }
+
+  &__item {
+    border: solid 1px var.$elements;
+
+    @include mixin.on-mobile {
+      @include mixin.sizes(212px, 439px);
+    }
+
+    @include mixin.on-tablet {
+      @include mixin.sizes(237px, 512px);
+    }
+
+    @include mixin.on-desktop {
+      @include mixin.sizes(272px, 506px);
+    }
+  }
+}

@@ -4,7 +4,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { Logo } from '../Logo';
 
 import styles from './Footer.module.scss';
-import top from '../../images/icons/arrow_up.png';
+import top from '../../images/icons/arrow_up.svg';
 
 export const Footer = () => {
   const { pathname } = useLocation();

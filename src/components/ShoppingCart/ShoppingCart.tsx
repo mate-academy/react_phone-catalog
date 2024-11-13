@@ -3,7 +3,7 @@ import cn from 'classnames';
 import { NavLink } from 'react-router-dom';
 
 import styles from './ShoppingCart.module.scss';
-import cart from '../../images/icons/shopping_bag.png';
+import cart from '../../images/icons/shopping_bag.svg';
 
 type Props = {
   className?: string;

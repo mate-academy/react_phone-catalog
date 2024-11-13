@@ -1,0 +1,190 @@
+@use "../../utils/mixins" as mixin;
+@use "../../utils/variables" as var;
+
+.product {
+  transition: box-shadow 0.3s;
+
+  &:hover {
+    box-shadow: 0 3px 13px 0 #17203166;
+  }
+
+  &__container {
+    color: var.$primary-gray;
+    padding: 32px;
+    gap: 8px;
+
+    @include mixin.flex(flex, space-between, false, column);
+    @include mixin.sizes(100%, 100%);
+
+    @include mixin.on-mobile {
+      padding: 24px;
+    }
+  }
+
+  &__link {
+    text-decoration: none;
+    color: var.$primary-gray;
+  }
+
+  &__img_container {
+    @include mixin.flex(flex, center, center, false);
+
+    overflow: hidden;
+    margin-bottom: 10px;
+    transition: all 0.3s;
+
+    @include mixin.on-mobile {
+      @include mixin.sizes(148px, 129px);
+    }
+
+    @include mixin.on-tablet {
+      @include mixin.sizes(173px, 202px);
+    }
+
+    @include mixin.on-desktop {
+      @include mixin.sizes(208px, 196px);
+    }
+
+    &:hover {
+      @include mixin.hover-effect;
+    }
+  }
+
+  &__image {
+    @include mixin.sizes(100%, 100%);
+
+    object-fit: contain;
+  }
+
+  &__name {
+    @include mixin.body-text-desktop-tablet;
+
+    font-size: 16px;
+    min-height: 63px;
+    text-decoration: none;
+    color: var.$primary-gray;
+    transition: text-decoration 0.3s;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  &__prices {
+    @include mixin.flex(flex, false, false, row);
+
+    gap: 8px;
+  }
+
+  &__price {
+    @include mixin.h3-mobile;
+
+    @include mixin.on-tablet {
+      @include mixin.h3-desktop-tablet;
+    }
+
+    @include mixin.on-desktop {
+      @include mixin.h3-desktop-tablet;
+    }
+  }
+
+  &__fullPrice {
+    color: var.$secondary-gray;
+    text-decoration: line-through;
+
+    @include mixin.h3-mobile;
+
+    @include mixin.on-tablet {
+      @include mixin.h3-desktop-tablet;
+    }
+
+    @include mixin.on-desktop {
+      @include mixin.h3-desktop-tablet;
+    }
+  }
+
+  &__line {
+    width: 100%;
+    height: 1px;
+    background-color: var.$elements;
+  }
+
+  &__details {
+    @include mixin.flex(flex, false, false, column);
+
+    gap: 8px;
+    margin-bottom: 10px;
+  }
+
+  &__detail {
+    @include mixin.small-text-desktop-tablet;
+    @include mixin.flex(flex, space-between, false, false);
+
+    width: 100%;
+
+    &--name {
+      color: var.$secondary-gray;
+      text-align: left;
+      flex: 1;
+    }
+
+    &--value {
+      text-align: right;
+      flex: 2;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+    width: 100%;
+    height: 40px;
+  }
+
+  &__button--add {
+    border: none;
+    flex: 1 1;
+    background-color: var.$primary-gray;
+    color: var.$white;
+
+    @include flex(flex, center, center, false);
+
+    transition: box-shadow 0.3s;
+
+    @include mixin.on-mobile {
+      font-size: 12px;
+    }
+
+    @include mixin.on-tablet {
+      @include mixin.buttons-desktop-tablet;
+
+      padding: 9px;
+    }
+
+    @include mixin.on-desktop {
+      @include mixin.buttons-desktop-tablet;
+
+      padding: 9px;
+    }
+
+    &:hover {
+      box-shadow: 0 3px 13px 0 #17203166;
+    }
+  }
+
+  &__button--fav {
+    height: 100%;
+    aspect-ratio: 1 / 1;
+
+    @include flex(flex, center, center, false);
+
+    border: solid 1px var.$icons-placeholders;
+    background-color: inherit;
+    transition: border 0.3s;
+
+    &:hover {
+      border: solid 1px var.$primary-gray;
+    }
+  }
+}

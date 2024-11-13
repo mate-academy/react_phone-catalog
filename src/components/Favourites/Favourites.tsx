@@ -3,7 +3,7 @@ import cn from 'classnames';
 import { NavLink } from 'react-router-dom';
 import styles from './Favourites.module.scss';
 
-import favourites from '../../images/icons/favourites.png';
+import favourites from '../../images/icons/favourites.svg';
 
 type Props = {
   className?: string;

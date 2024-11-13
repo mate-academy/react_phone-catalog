@@ -9,8 +9,8 @@ import { Favourites } from '../Favourites';
 import { ShoppingCart } from '../ShoppingCart';
 
 import styles from './Header.module.scss';
-import menu from '../../images/icons/menu_burger.png';
-import close from '../../images/icons/close.png';
+import menu from '../../images/icons/menu_burger.svg';
+import close from '../../images/icons/close.svg';
 
 export const Header = () => {
   const { pathname } = useLocation();
