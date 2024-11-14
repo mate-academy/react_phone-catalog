@@ -1,1 +1,18 @@
-// not-empty
+@import '../../utils';
+@import '../../layout/container';
+
+.home-page {
+  &__title {
+    margin-top: 56px;
+    margin-bottom: 56px;
+    font-family: $font-family;
+    font-size: 48px;
+    font-weight: $font-weight-bolt;
+    color: $primary;
+
+    @media (max-width: $mobile) {
+      margin: 24px 16px;
+      font-size: 32px;
+    }
+  }
+}
