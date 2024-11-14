@@ -118,13 +118,15 @@ $font-weight-regular: 400;
 
 @media (min-width: 320px) and (max-width: 639px) {
   .main {
-    max-width: 288px;
+    // max-width: 288px;
     margin: 0 auto;
     &__title {
       margin-bottom: 24px;
       font-size: 32px;
       font-weight: 800;
       color: #F1F2F9;
+      display: block;
+      width: 100%;
 
     }
 

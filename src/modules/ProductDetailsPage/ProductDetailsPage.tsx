@@ -315,16 +315,16 @@ export const ProductDetailsPage: React.FC<ProductDetailsPageProps> = () => {
               <div className={styles.specs__details}>
                 <span className={styles.specs__property}>Camera</span>
                 <span className={styles.specs__value}>
-                  12 Mp + 12 Mp + 12 Mp (Triple)
+                  {product?.camera}
                 </span>
               </div>
               <div className={styles.specs__details}>
-                <span className="specs__name">Zoom</span>
-                <span className={styles.specs__value}>Optical, 2x</span>
+                <span className={styles.specs__property}>Zoom</span>
+                <span className={styles.specs__value}>{product?.zoom}</span>
               </div>
               <div className={styles.specs__details}>
-                <span className="specs__name">Cell</span>
-                <span className={styles.specs__value}>GSM, LTE, UMTS</span>
+                <span className={styles.specs__property}>Cell</span>
+                <span className={styles.specs__value}>{product?.cell}</span>
               </div>
             </div>
           </div>
