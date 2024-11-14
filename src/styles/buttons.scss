@@ -161,7 +161,7 @@
   margin-inline: auto;
   max-width: 15rem;
   width: 100%;
-  border: 2px solid $color-cta-text-orange;
+  border: 2px solid $color-cta-gold;
   transition: color $transition-duration ease, border-color $transition-duration ease, transform $transition-duration ease, box-shadow $transition-duration ease;
   font-size: 1.2rem;
   padding-block: 0.65rem 0.45rem;
@@ -169,9 +169,9 @@
   text-decoration: none;
   text-align: center;
 
-  color: $color-cta-text-orange;
+  color: $color-cta-text-gold;
   transform: scale(1.01);
-  box-shadow: 0 0 5px 0 $color-cta-text-orange;
+  box-shadow: 0 0 5px 0 $color-cta-text-gold;
 
   @include on-tablet {
     padding-block: 1.05rem 0.85rem;
@@ -182,14 +182,14 @@
     margin-bottom: 1.6rem;
 
     &:hover {
-      color: $color-cta-text-orange;
-      border-color: $color-cta-text-orange;
+      color: $color-cta-text-gold;
+      border-color: $color-cta-gold;
       transform: scale(1.01);
-      box-shadow: 0 0 5px 0 $color-cta-text-orange;
+      box-shadow: 0 0 5px 0 $color-cta-text-gold;
     }
 
     &:active {
-      box-shadow: $color-cta-text-orange 0 0 2px 1px inset;
+      box-shadow: $color-cta-text-gold 0 0 2px 1px inset;
       transform: scale(0.99);
     }
   }

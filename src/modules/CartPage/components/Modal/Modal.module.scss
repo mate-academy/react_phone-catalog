@@ -148,16 +148,16 @@
 .btnCancel {
   background-color: $color-white;
 
-  color: $color-cta-text-orange;
-  border: 2px solid $color-cta-text-orange;
+  color: $color-cta-text-gold;
+  border: 2px solid $color-cta-gold;
 
   @include on-tablet {
     &:hover {
-      box-shadow: 0 1px 5px 0 $color-cta-text-orange;
+      box-shadow: 0 1px 5px 0 $color-cta-text-gold;
     }
 
     &:active {
-      box-shadow: $color-cta-text-orange 1px 1px 3px 0 inset, $color-cta-text-orange -1px -1px 3px 1px inset;
+      box-shadow: $color-cta-text-gold 1px 1px 3px 0 inset, $color-cta-text-gold -1px -1px 3px 1px inset;
     }
   }
 }

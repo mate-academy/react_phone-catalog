@@ -9,7 +9,7 @@
   grid-template-rows: max-content max-content 1fr;
   column-gap: 1.6rem;
   max-width: $maxContainerWidth;
-  min-height: calc(100vh - 74px - 110px);
+  min-height: calc(100vh - 170px - 110px);
   margin-inline: auto;
   padding-inline: 1.6rem;
   padding-top: 2.4rem;
@@ -25,7 +25,6 @@
   @include on-m-desktop {
     position: relative;
     grid-template-columns: repeat(24, 1fr);
-    min-height: calc(100vh - 90px - 110px);
     margin-bottom: 8rem;
   }
 }
@@ -33,7 +32,6 @@
 
 .notFoundImgWrapper {
   grid-column: 1 / -1;
-
 
   width: 20rem;
   margin-inline: auto;
@@ -91,9 +89,9 @@
   margin-bottom: 0;
 
   max-width: 20rem;
-  border: 2px solid #f3c861;
-  color: #daaf47;
-  box-shadow: 0 0 5px 0 #daaf47;
+  border: 2px solid $color-cta-gold;
+  color: $color-cta-text-gold;
+  box-shadow: 0 0 5px 0 $color-cta-text-gold;
 
 
   @include on-tablet {
@@ -101,13 +99,13 @@
     padding: 1.25rem 1rem 1.05rem;
 
     &:hover {
-      color: #daaf47;
-      border-color: #f2c24f;
-      box-shadow: 0 0 5px 0 #daaf47;
+      color: $color-cta-text-gold;
+      border-color: $color-cta-gold;
+      box-shadow: 0 0 5px 0 $color-cta-text-gold;
     }
 
     &:active {
-      box-shadow: #f2c24f 0 0 2px 1px inset;
+      box-shadow: $color-cta-gold 0 0 2px 1px inset;
     }
   }
 
