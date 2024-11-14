@@ -71,9 +71,13 @@ function reducer(state: State, action: Action): State {
       };
 
     case 'setInFavotites':
+      accessLocalStorage.set(action.payload, LocalAccessKeys.favorites);
+
       return { ...state, inFavorites: action.payload };
 
     case 'setInCart':
+      accessLocalStorage.set(action.payload, LocalAccessKeys.cart);
+
       return { ...state, inCart: action.payload };
 
     default:

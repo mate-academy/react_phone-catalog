@@ -1,19 +1,18 @@
 import style from './CartPage.module.scss';
-import { accessLocalStorage } from '../../utils/accessLocalStorage';
-import { LocalAccessKeys } from '../../utils/LocalAccessKeys';
 import { CartItem } from './CartItem';
 import { Product } from '../../types/Product';
 import { v4 as uuidv4 } from 'uuid';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { getProducts } from '../../utils/getProducts';
 import classNames from 'classnames';
 import { useNavigate } from 'react-router-dom';
+import { DispatchContext, StateContext } from '../../components/GlobalProvider';
 
 export const CartPage = () => {
   const navigate = useNavigate();
-  const [products, setProducts] = useState<Product[]>(
-    accessLocalStorage.get(LocalAccessKeys.cart),
-  );
+  const { inCart: products } = useContext(StateContext);
+  const dispatch = useContext(DispatchContext);
+
   const [uniqueProducts, setUniqueProducts] = useState<Product[]>([]);
   const [checkOutActive, setCheckoutActive] = useState(false);
 
@@ -31,56 +30,40 @@ export const CartPage = () => {
     setUniqueProducts(() => [...uniqueArr].sort((a, b) => b.price - a.price));
   }, [products]);
 
-  function countProducts(itemId: string) {
-    const data = accessLocalStorage.get(LocalAccessKeys.cart);
-
-    return data.filter((prod: Product) => itemId === prod.itemId).length;
-  }
+  const countProducts = (itemId: string) =>
+    products.filter((prod: Product) => itemId === prod.itemId).length;
 
   const handleCountIncrease = (id: string) => {
-    setProducts(prev => {
-      const newProd = getProducts.getProductById(products, id);
+    const newProd = getProducts.getProductById(products, id);
 
-      if (newProd) {
-        accessLocalStorage.append(newProd, LocalAccessKeys.cart);
-
-        return [...prev, newProd];
-      }
-
-      return prev;
-    });
+    if (newProd) {
+      dispatch({ type: 'setInCart', payload: [...products, newProd] });
+    } else {
+      dispatch({ type: 'setInCart', payload: [...products] });
+    }
   };
 
   const handleCountDecrease = (id: string) => {
     if (countProducts(id) - 1 > 0) {
-      setProducts(prev => {
-        const delIndex = prev.findIndex(prod => prod.itemId === id);
-        const newArr = [...prev];
+      const delIndex = products.findIndex(prod => prod.itemId === id);
+      const newArr = [...products];
 
-        newArr.splice(delIndex, 1);
-        accessLocalStorage.set(newArr, LocalAccessKeys.cart);
-
-        return newArr;
-      });
+      newArr.splice(delIndex, 1);
+      dispatch({ type: 'setInCart', payload: newArr });
     }
   };
 
   const handleClearItem = (id: string) => {
     const clearedProds = products.filter(prod => prod.itemId !== id);
 
-    setProducts(() => clearedProds);
-
-    accessLocalStorage.set(clearedProds, LocalAccessKeys.cart);
+    dispatch({ type: 'setInCart', payload: clearedProds });
   };
 
   const getTotalProce = () => {
     return products.reduce((acc, cur) => acc + cur.price, 0);
   };
 
-  const clearCart = () => {
-    setProducts([]);
-    accessLocalStorage.clearKey(LocalAccessKeys.cart);
-  };
+  const clearCart = () => dispatch({ type: 'setInCart', payload: [] });
 
   return (
     <div className={style.cart_container}>
