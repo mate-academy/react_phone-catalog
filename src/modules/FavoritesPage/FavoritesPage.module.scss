@@ -10,10 +10,12 @@
   margin-top: 2.4rem;
   overflow: hidden;
   min-height: calc(100vh - 58px - 110px);
+  padding-inline: 1.6rem;
 
 
   @include on-tablet {
     grid-template-columns: repeat(12, 1fr);
+    padding-inline: 2.4rem;
   }
 
   @include on-m-desktop {
@@ -34,11 +36,9 @@
   width: 100%;
 
   max-width: $maxContainerWidth;
-  padding-inline: 1.6rem;
 
   @include on-tablet {
     grid-template-columns: repeat(12, 1fr);
-    padding-inline: 2.4rem;
   }
 
   @include on-m-desktop {

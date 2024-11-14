@@ -12,7 +12,7 @@ export const PageNotFound = () => {
   return (
     <section className={styles.container}>
       <div className={styles.notFoundImgWrapper}>
-        <img src={img} alt="Page not found" className={styles.notFoundImg} />
+        <img src={img} alt="Product not found" className={styles.notFoundImg} />
       </div>
       <p className={styles.notFoundTitle}>Oops! This page doesn’t exist.</p>
       <Link to={'/'} className={classNames('ctaBtn', styles.homepageBtn)}>

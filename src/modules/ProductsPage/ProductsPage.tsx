@@ -11,7 +11,6 @@ import { Pagination } from '../../components/Pagination';
 import { SortProduct } from '../../components/SortProducts';
 import { useEffect, useMemo } from 'react';
 import { SortBy } from '../../types/SortBy';
-import { Breadcrumbs } from '../../components/Breadcrumbs';
 import { filterProducts } from '../../utils/filterProducts';
 import { ProductType } from '../../types/ProductType';
 import phones from '../../../public/api/phones.json';
@@ -64,7 +63,6 @@ export const ProductsPage = () => {
 
   return (
     <section className={styles.productsPageWrapper}>
-      <Breadcrumbs productList={productList} />
       {productId ? (
         <ProductListContext.Provider value={{ productList }}>
           <Outlet />

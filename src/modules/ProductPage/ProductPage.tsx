@@ -1,4 +1,4 @@
-import { Navigate, useLocation, useParams } from 'react-router-dom';
+import { useLocation, useParams } from 'react-router-dom';
 import { useContext, useMemo } from 'react';
 
 import { ProductListContext } from '../../ContextProvider';
@@ -15,6 +15,8 @@ import { ProductTechSpec } from './components/ProductTechSpec';
 
 import styles from './ProductPage.module.scss';
 import { getPrevPath } from '../../utils/getPrevPath';
+import { ProductNotFound } from './components/ProductNotFound';
+import { Breadcrumbs } from '../../components/Breadcrumbs';
 
 export const ProductPage = () => {
   const { state, pathname } = useLocation();
@@ -30,7 +32,7 @@ export const ProductPage = () => {
   const product = productList.find(item => item.id === id);
 
   if (!product) {
-    return <Navigate to=".." />;
+    return <ProductNotFound path={path} prevPath={prevPath} search={search} />;
   }
 
   const { name, images, description } = product;
@@ -38,6 +40,7 @@ export const ProductPage = () => {
   return (
     <>
       <section className={styles.container}>
+        <Breadcrumbs productList={productList} />
         <BackBtn path={path} prevPath={prevPath} search={search} />
         <h2 className={styles.productTitle}>{name}</h2>
         <ProductPageSlider productName={name} images={images} />

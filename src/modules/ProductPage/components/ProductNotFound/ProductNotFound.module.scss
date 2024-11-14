@@ -1,0 +1,92 @@
+@import "src/styles/mixins";
+@import "src/styles/colors";
+@import "src/styles/typography";
+
+.container {
+  grid-column: 1/-1;
+
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: min-content max-content 1fr;
+  column-gap: 1.6rem;
+  width: 100%;
+  max-width: $maxContainerWidth;
+  min-height: calc(100vh - 74px - 110px);
+  margin-inline: auto;
+
+  @include on-tablet {
+    grid-template-columns: repeat(12, 1fr);
+    padding-top: 1.6rem;
+  }
+
+  @include on-m-desktop {
+    position: relative;
+    grid-template-columns: repeat(24, 1fr);
+    min-height: calc(100vh - 90px - 110px);
+  }
+}
+
+.back {
+  margin-left: 1.6rem;
+
+  @include on-tablet {
+    margin-left: 2.4rem;
+  }
+
+  @include on-m-desktop {
+    margin-left: 0;
+  }
+}
+
+.contentContainer {
+  grid-column: 1 / -1;
+}
+
+.titleEmpty {
+  @extend %h3;
+
+  grid-column: 1 / -1;
+  color: $color-secondary;
+  text-align: center;
+  font-size: 1.4rem;
+  line-height: 2.1rem;
+  padding-inline: 2.4rem;
+
+  @include on-tablet {
+    font-size: 2rem;
+    line-height: 2.6rem;
+  }
+
+  @include on-m-desktop {
+    font-size: 2.4rem;
+    line-height: 3.1rem;
+  }
+}
+
+.notFoundImgWrapper {
+  grid-column: 1 / -1;
+
+  width: 15rem;
+  margin-inline: auto;
+  aspect-ratio: 1;
+
+  @include on-tablet {
+    width: 25rem;
+  }
+
+  @include on-m-desktop {
+    width: 40rem;
+  }
+}
+
+.notFoundImg {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+
+  user-select: none;
+  -webkit-user-drag: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+}

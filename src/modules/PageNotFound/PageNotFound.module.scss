@@ -36,10 +36,6 @@
   width: 20rem;
   margin-inline: auto;
   height: 10rem;
-  user-select: none;
-  -moz-user-select: none;
-  -webkit-user-select: none;
-  -ms-user-select: none;
 
   @include on-tablet {
     height: 10rem;
@@ -58,6 +54,11 @@
   height: 100%;
   width: 100%;
   object-fit: cover;
+  -webkit-user-drag: none;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
 }
 
 .notFoundTitle {
