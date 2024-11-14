@@ -180,7 +180,7 @@ img.iconSwitch {
 
 @media (min-width: 640px) and (max-width: 1199px) {
   .header {
-    max-width: 640px;
+    width: 100%;
     height: 48px;
     display: flex;
     justify-content: space-between;
@@ -190,6 +190,7 @@ img.iconSwitch {
 
     &__navList ul {
       gap: 32px;
+      margin-right: 20px;
     }
 
     &__navLink {
@@ -203,7 +204,7 @@ img.iconSwitch {
   }
 
   .header__iconFavourites {
-    margin-right: 32px;
+    margin-right: 20px;
 
   }
 

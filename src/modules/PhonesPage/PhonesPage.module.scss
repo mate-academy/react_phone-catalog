@@ -8,6 +8,9 @@
   .phonesPage {
     padding: 17px;
   }
+  h1 {
+    font-size: 32px;
+  }
 }
 
 
@@ -15,8 +18,7 @@
   .productGrid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    // flex-shrink: 1;
-    
+
   }
 }
 

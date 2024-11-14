@@ -81,6 +81,7 @@ $font-weight-regular: 400;
     display: flex;
     gap: 10px;
     max-width: 100%;
+    justify-content: center;
   }
 
   &__button {
@@ -134,4 +135,19 @@ $font-weight-regular: 400;
 .pagination__pageButton:active {
   background-color: greenyellow;
   color: rgb(46, 46, 46);
+}
+
+@media (min-width: 640px) and (max-width: 1199px) {
+
+  .paginationContainer {
+    width: 100%;
+  }
+  .pagination__controls {
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+@media (min-width: 320px) and (max-width: 639px) {
 }

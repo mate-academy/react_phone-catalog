@@ -186,6 +186,14 @@ $font-weight-regular: 400;
     }
 }
 
+@media (min-width: 640px) and (max-width: 1199px) {
+  .productCard {
+    display: flex;
+    width: 100%;
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
 @media (min-width: 320px) and (max-width: 639px) {
   .productCard {
     display: flex;

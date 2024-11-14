@@ -43,6 +43,16 @@ $font-weight-regular: 400;
   font-family: $font-primary;
 }
 
+// div {
+//   width: 100%;
+// }
+
+h1 {
+  width: 60%;
+  overflow-wrap: break-word;
+  white-space: normal;
+}
+
 .productGrid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -50,4 +60,23 @@ $font-weight-regular: 400;
   gap: 16px;
   margin-bottom: 40px;
   width: 100%;
+}
+
+@media (min-width: 640px) and (max-width: 1199px) {
+  .productGrid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 320px) and (max-width: 639px) {
+  .productGrid {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+  }
+  h1 {
+    font-size: 32px;
+    overflow-wrap: break-word;
+    white-space: normal;
+  }
 }
