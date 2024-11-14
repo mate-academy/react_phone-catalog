@@ -70,7 +70,7 @@ export const usePagination = ({
       return [firstPageIndex, DOTS, ...middleRange, DOTS, lastPageIndex];
     }
 
-    throw new Error('Smth went wrong');
+    return;
   }, [totalCount, itemsPerPage, currentPage, siblingCount]);
 
   return pagination;

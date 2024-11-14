@@ -65,6 +65,7 @@
     font-weight: 600;
     line-height: 2.81rem;
     color: $color-secondary;
+    z-index: 0;
 
     &::after {
       position: absolute;

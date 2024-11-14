@@ -2,7 +2,7 @@ import styles from './Pagination.module.scss';
 import classNames from 'classnames';
 import { usePagination, DOTS } from '../../hooks/usePagination';
 import React from 'react';
-import { Link, useSearchParams } from 'react-router-dom';
+import { Link, Navigate, useSearchParams } from 'react-router-dom';
 import { getSearchWith } from '../../utils/getSearchWith';
 
 interface Props {
@@ -23,6 +23,11 @@ export const Pagination: React.FC<Props> = ({ totalCount, currentPage }) => {
     currentPage,
     itemsPerPage,
   });
+
+  if (!paginationRange || !paginationRange?.includes(currentPage)) {
+    return <Navigate to="./" />;
+  }
+
   const lastPage = paginationRange[paginationRange.length - 1];
 
   if (currentPage === 0 || paginationRange.length < 2) {

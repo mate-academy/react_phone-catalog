@@ -5,6 +5,7 @@ import React, { MouseEventHandler, useEffect, useRef, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { getSearchWith } from '../../utils/getSearchWith';
 import { SortBy } from '../../types/SortBy';
+import { ItemsPerPage } from '../../types/ItemsPerPage';
 
 interface Props {}
 
@@ -12,10 +13,20 @@ export const SortProduct: React.FC<Props> = ({}) => {
   const [isSortByOpen, setIsSortByOpen] = useState(false);
   const [isSortItemsOpen, setIsSortItemsOpen] = useState(false);
   const [searchParams, setSearchParams] = useSearchParams();
-  const sortedBy =
-    (searchParams.get('sortBy') || SortBy.newest)[0].toUpperCase() +
-    (searchParams.get('sortBy') || SortBy.newest).slice(1);
-  let itemsPerPage = searchParams.get('perPage') || '4';
+
+  const sort =
+    (Object.keys(SortBy).includes(String(searchParams.get('sortBy'))) &&
+      searchParams.get('sortBy')) ||
+    SortBy.newest;
+
+  const sortedBy = sort[0].toUpperCase() + sort.slice(1);
+  const items = Object.values(ItemsPerPage).includes(
+    searchParams.get('perPage') as ItemsPerPage,
+  )
+    ? (searchParams.get('perPage') as ItemsPerPage)
+    : ItemsPerPage.four;
+
+  let itemsPerPage = items.toString();
 
   if (!+itemsPerPage) {
     itemsPerPage = itemsPerPage[0].toUpperCase() + itemsPerPage.slice(1);

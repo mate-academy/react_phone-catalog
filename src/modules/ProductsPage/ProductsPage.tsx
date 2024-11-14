@@ -19,6 +19,7 @@ import tablets from '../../../public/api/tablets.json';
 import accessories from '../../../public/api/accessories.json';
 import { Product } from '../../types/Product';
 import { ProductListContext } from '../../ContextProvider';
+import { ItemsPerPage } from '../../types/ItemsPerPage';
 
 export const ProductsPage = () => {
   const [searchParams] = useSearchParams();
@@ -26,8 +27,12 @@ export const ProductsPage = () => {
   const { productId } = useParams();
 
   const productType = pathname.split('/').filter(location => !!location)[0];
-  const itemsPerPage = searchParams.get('perPage') || '4';
-  const sortBy = (searchParams.get('sortBy') || SortBy.newest).toLowerCase();
+  const itemsPerPage = searchParams.get('perPage') || ItemsPerPage.four;
+  const sortBy = (
+    (Object.keys(SortBy).includes(String(searchParams.get('sortBy'))) &&
+      searchParams.get('sortBy')) ||
+    SortBy.newest
+  ).toLowerCase();
   const currentPage = +(searchParams.get('page') || 1);
 
   const [productList, title] = useMemo(() => {
