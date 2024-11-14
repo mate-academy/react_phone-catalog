@@ -1,19 +1,25 @@
 import styles from './CartPage.module.scss';
 import { BackBtn } from '../../components/BackBtn';
 import { getPrevPath } from '../../utils/getPrevPath';
-import { useLocation } from 'react-router-dom';
-import { ProductCart } from './components/ProductCart/ProductCart';
-import { useContext } from 'react';
+import { Link, useLocation } from 'react-router-dom';
+import { ProductCart } from './components/ProductCart';
+import { useContext, useState } from 'react';
 import { CartContext } from '../../ContextProvider';
 import { CartBtnType } from '../../types/CartBtnType';
 import { Checkout } from './components/Checkout';
 import { hasDiscount } from '../../utils/hasDiscount';
+import { getTotalProductsInCart } from '../../utils/getTotalProductsInCart';
+import { Modal } from './components/Modal';
+import classNames from 'classnames';
 
 export const CartPage = () => {
   const { cartProducts, setCartProducts } = useContext(CartContext);
   const { state, pathname } = useLocation();
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   const prevPath = getPrevPath(pathname);
   const { search, pathname: path } = state ?? { search: '', pathname: '' };
+  const totalNumOfProducts = getTotalProductsInCart(cartProducts);
 
   const handleCart = (cartBtnType: CartBtnType, productId: string) => {
     const item = cartProducts.find(({ id }) => id === productId);
@@ -78,7 +84,8 @@ export const CartPage = () => {
             ))}
             <Checkout
               totalPrice={totalPrice}
-              numOfProducts={cartProducts.length}
+              numOfProducts={totalNumOfProducts}
+              handleModal={setIsModalOpen}
             />
           </>
         ) : (
@@ -87,10 +94,14 @@ export const CartPage = () => {
               Looks like you haven’t added anything to your cart yet.
               Let’s&nbsp;fill&nbsp;it&nbsp;up!
             </p>
+            <Link to={'/'} className={classNames('ctaBtn', styles.ctaBtn)}>
+              Find Your Next Device
+            </Link>
             <div className={styles.emptyFavImg}></div>
           </>
         )}
       </div>
+      {isModalOpen && <Modal handleModal={setIsModalOpen} />}
     </section>
   );
 };

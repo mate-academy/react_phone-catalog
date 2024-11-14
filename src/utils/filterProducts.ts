@@ -1,5 +1,6 @@
 import { SortBy } from '../types/SortBy';
 import { Product } from '../types/Product';
+import productsInfo from '../../public/api/products.json';
 
 export const filterProducts = (
   sortBy: string,
@@ -7,6 +8,8 @@ export const filterProducts = (
   itemsPerPage: string,
   currentPage: number,
 ) => {
+  const productListCopy = [...productList];
+
   if (
     sortBy === SortBy.cheapest.toLowerCase() ||
     sortBy === SortBy.expensive.toLowerCase()
@@ -17,7 +20,9 @@ export const filterProducts = (
       direction = -1;
     }
 
-    productList.sort((a, b) => direction * (a.priceRegular - b.priceRegular));
+    productListCopy.sort(
+      (a, b) => direction * (a.priceRegular - b.priceRegular),
+    );
   }
 
   if (
@@ -30,11 +35,13 @@ export const filterProducts = (
       direction = 1;
     }
 
-    productList.sort((a, b) => {
-      const processorA = a.processor.split(' ');
-      const processorB = b.processor.split(' ');
+    productListCopy.sort((a, b) => {
+      const productYearA =
+        productsInfo.find(product => product.itemId === a.id)?.year || 0;
+      const productYearB =
+        productsInfo.find(product => product.itemId === b.id)?.year || 0;
 
-      return direction * (+processorA[1].slice(1) - +processorB[1].slice(1));
+      return direction * (productYearA - productYearB);
     });
   }
 
@@ -44,7 +51,7 @@ export const filterProducts = (
 
   const toDisplay = +itemsPerPage || 0;
 
-  return productList.slice(
+  return productListCopy.slice(
     (currentPage - 1) * toDisplay,
     (currentPage - 1) * toDisplay + toDisplay,
   );

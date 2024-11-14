@@ -1,6 +1,7 @@
 @import "src/styles/colors";
 @import "src/styles/typography";
 @import "src/styles/mixins";
+@import "src/styles/variables";
 
 .favoritesPageWrapper {
   display: grid;
@@ -107,6 +108,7 @@
   @include on-tablet {
     font-size: 2rem;
     line-height: 2.6rem;
+    margin-bottom: 2.4rem;
   }
 
   @include on-m-desktop {

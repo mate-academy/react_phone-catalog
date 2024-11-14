@@ -1,0 +1,163 @@
+@import "src/styles/colors";
+@import "src/styles/mixins";
+@import "src/styles/typography";
+@import "src/styles/variables";
+
+.modalWrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  z-index: 10;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  animation: opacity $transition-duration forwards ease-in-out;
+
+  &Closed{
+    animation: opacity-reverse $transition-duration forwards ease-in-out;
+  }
+}
+
+@keyframes opacity {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes opacity-reverse {
+  0% {
+    opacity: 1;
+
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.modalContainer {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.3);
+  opacity: 0;
+  padding: 2.4rem 1.6rem;
+  width: max-content;
+  background-color: $color-background;
+  border: 2px solid $color-elements;
+  box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.3);
+  border-radius: 2.4rem;
+  text-align: center;
+  animation: scale-modal $transition-duration forwards ease-in-out;
+
+  @media screen and (min-width: 380px) {
+    padding: 2.4rem;
+  }
+
+  @include on-tablet {
+    padding: 3.2rem;
+  }
+
+  &Closed {
+    animation: scale-modal-reverse $transition-duration forwards ease-out;
+  }
+}
+
+@keyframes scale-modal-reverse {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(0.3);
+    opacity: 0;
+  }
+}
+
+@keyframes scale-modal {
+  0% {
+    transform: translate(-50%, -50%) scale(0.3);
+    opacity: 0;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+}
+
+.modalText {
+  @extend %h3;
+
+  color: $color-text-hover;
+  font-size: 1.2rem;
+  line-height: 2.1rem;
+  margin-bottom: 1.6rem;
+
+  @media screen and (min-width: 380px) {
+    font-size: 1.4rem;
+  }
+
+  @include on-tablet {
+    font-size: 1.6rem;
+    line-height: 2.6rem;
+  }
+
+  @include on-m-desktop {
+    font-size: 2.2rem;
+    line-height: 3.1rem;
+    margin-bottom: 2.4rem;
+  }
+}
+
+.btnContainer {
+  display: flex;
+  gap: 1.6rem;
+  justify-content: center;
+
+  @include on-tablet {
+    gap: 2.4rem;
+  }
+}
+
+.btnConfirm, .btnCancel {
+  padding-block: 0.4rem 0.25rem;
+  font-size: 1.2rem;
+
+  @media screen and (min-width: 380px) {
+    font-size: 1.4rem;
+    padding-block: 0.6rem 0.45rem;
+  }
+
+  @include on-tablet {
+    font-size: 1.6rem;
+    padding-block: 1.05rem 0.85rem;
+
+    &:active {
+      transform: translateY(1px);
+    }
+  }
+
+  @include on-m-desktop {
+    width: 15rem;
+  }
+}
+
+.btnCancel {
+  background-color: $color-white;
+
+  color: $color-cta-text-orange;
+  border: 2px solid $color-cta-text-orange;
+
+  @include on-tablet {
+    &:hover {
+      box-shadow: 0 1px 5px 0 $color-cta-text-orange;
+    }
+
+    &:active {
+      box-shadow: $color-cta-text-orange 1px 1px 3px 0 inset, $color-cta-text-orange -1px -1px 3px 1px inset;
+    }
+  }
+}

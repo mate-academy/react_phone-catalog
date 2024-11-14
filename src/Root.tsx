@@ -11,6 +11,7 @@ import { ProductsPage } from './modules/ProductsPage';
 import { ProductPage } from './modules/ProductPage';
 import { FavoritesPage } from './modules/FavoritesPage';
 import { CartPage } from './modules/CartPage';
+import { PageNotFound } from './modules/PageNotFound';
 // import { TabletsPage } from './modules/TabletsPage';
 
 export const Root = () => (
@@ -31,6 +32,7 @@ export const Root = () => (
           </Route>
           <Route path="favorites" element={<FavoritesPage />} />
           <Route path="cart" element={<CartPage />} />
+          <Route path="*" element={<PageNotFound />} />
         </Route>
       </Routes>
     </Router>

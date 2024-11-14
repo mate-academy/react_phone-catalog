@@ -1,0 +1,119 @@
+@import "src/styles/mixins";
+@import "src/styles/colors";
+@import "src/styles/typography";
+@import "src/styles/variables";
+
+.container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: max-content max-content 1fr;
+  column-gap: 1.6rem;
+  max-width: $maxContainerWidth;
+  min-height: calc(100vh - 74px - 110px);
+  margin-inline: auto;
+  padding-inline: 1.6rem;
+  padding-top: 2.4rem;
+  margin-bottom: 5.6rem;
+
+  @include on-tablet {
+    grid-template-columns: repeat(12, 1fr);
+    padding-inline: 2.4rem;
+    padding-top: 4rem;
+    margin-bottom: 6.4rem;
+  }
+
+  @include on-m-desktop {
+    position: relative;
+    grid-template-columns: repeat(24, 1fr);
+    min-height: calc(100vh - 90px - 110px);
+    margin-bottom: 8rem;
+  }
+}
+
+
+.notFoundImgWrapper {
+  grid-column: 1 / -1;
+
+
+  width: 20rem;
+  margin-inline: auto;
+  height: 10rem;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+
+  @include on-tablet {
+    height: 10rem;
+    width: 30rem;
+    margin-bottom: 2.4rem;
+  }
+
+  @include on-m-desktop {
+    margin-bottom: 3.2rem;
+    height: 15rem;
+    width: 40rem;
+  }
+}
+
+.notFoundImg {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.notFoundTitle {
+  @extend %h3;
+
+  grid-column: 1 / -1;
+  color: $color-secondary;
+  text-align: center;
+  font-size: 1.4rem;
+  line-height: 2.1rem;
+  margin-bottom: 1.6rem;
+
+  @include on-tablet {
+    font-size: 2rem;
+    line-height: 2.6rem;
+    margin-bottom: 2.4rem;
+  }
+
+  @include on-m-desktop {
+    font-size: 2.4rem;
+    line-height: 3.1rem;
+  }
+}
+
+.homepageBtn {
+  grid-column: 1 / -1;
+  height: max-content;
+
+  margin-bottom: 0;
+
+  max-width: 20rem;
+  border: 2px solid #f3c861;
+  color: #daaf47;
+  box-shadow: 0 0 5px 0 #daaf47;
+
+
+  @include on-tablet {
+    max-width: 25rem;
+    padding: 1.25rem 1rem 1.05rem;
+
+    &:hover {
+      color: #daaf47;
+      border-color: #f2c24f;
+      box-shadow: 0 0 5px 0 #daaf47;
+    }
+
+    &:active {
+      box-shadow: #f2c24f 0 0 2px 1px inset;
+    }
+  }
+
+  @include on-m-desktop{
+    padding-block: 1.85rem 1.65rem;
+    max-width: 35rem;
+    font-size: 2.2rem;
+  }
+}

@@ -128,3 +128,78 @@
     width: 4rem;
   }
 }
+
+.buttonFavouriteWrapper, .buttonCartWrapper {
+  box-sizing: border-box;
+  font-family: "Mont Regular", sans-serif;
+  display: flex;
+  font-weight: 700;
+  justify-content: center;
+  align-items: center;
+  color: $color-white;
+  font-size: 9px;
+  line-height: 1.15rem;
+  position: absolute;
+  top: 36%;
+  left: 50%;
+  transform: translate(0%, -50%);
+  border-radius: 50%;
+  padding: 1.5px 1.5px 0;
+  min-height: 1.6rem;
+  aspect-ratio: 1;
+  border: 1px solid $color-white;
+  background-color: $color-accent;
+}
+
+.ctaBtn {
+  @extend %text-buttons;
+
+  cursor: pointer;
+  border-radius: 4.8rem;
+  background-color: $color-white;
+  display: block;
+  margin-inline: auto;
+  max-width: 15rem;
+  width: 100%;
+  border: 2px solid $color-cta-text-orange;
+  transition: color $transition-duration ease, border-color $transition-duration ease, transform $transition-duration ease, box-shadow $transition-duration ease;
+  font-size: 1.2rem;
+  padding-block: 0.65rem 0.45rem;
+  margin-bottom: 0.8rem;
+  text-decoration: none;
+  text-align: center;
+
+  color: $color-cta-text-orange;
+  transform: scale(1.01);
+  box-shadow: 0 0 5px 0 $color-cta-text-orange;
+
+  @include on-tablet {
+    padding-block: 1.05rem 0.85rem;
+    font-size: 1.6rem;
+    color: $color-secondary;
+    border: 1.5px solid $color-secondary;
+    box-shadow: none;
+    margin-bottom: 1.6rem;
+
+    &:hover {
+      color: $color-cta-text-orange;
+      border-color: $color-cta-text-orange;
+      transform: scale(1.01);
+      box-shadow: 0 0 5px 0 $color-cta-text-orange;
+    }
+
+    &:active {
+      box-shadow: $color-cta-text-orange 0 0 2px 1px inset;
+      transform: scale(0.99);
+    }
+  }
+
+  @include on-tablet {
+    max-width: 25rem;
+  }
+
+  @include on-m-desktop {
+    max-width: 30rem;
+  }
+}
+

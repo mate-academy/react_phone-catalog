@@ -17,7 +17,7 @@ export const AboutProduct: React.FC<Props> = ({ description }) => {
       {description.map(({ title, text }) => {
         return (
           <div className={styles.descriptionContainer} key={title}>
-            <h4 className={styles.descriptionTitle}>{title}</h4>
+            <p className={styles.descriptionTitle}>{title}</p>
             {text.map(paragraph => (
               <p className={styles.descriptionText} key={paragraph}>
                 {paragraph}

@@ -8,6 +8,7 @@ import { NavLink, useLocation, useSearchParams } from 'react-router-dom';
 import { CartContext, FavouriteContext } from '../../ContextProvider';
 import { instantScroll } from '../../utils/instantScroll';
 import { BtnType } from '../../types/BtnType';
+import { getTotalProductsInCart } from '../../utils/getTotalProductsInCart';
 
 interface Props {
   isMobileMenuOpen: boolean;
@@ -31,6 +32,7 @@ export const MobileMenu: React.FC<Props> = ({
   const { pathname } = useLocation();
   const [searchParams] = useSearchParams();
 
+  const totalNumOfProducts = getTotalProductsInCart(cartProducts);
   const handleClick: MouseEventHandler<HTMLAnchorElement> = e => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
     instantScroll(e);
@@ -66,8 +68,8 @@ export const MobileMenu: React.FC<Props> = ({
           className={({ isActive }) => activeLink(isActive, BtnType.cart)}
           onClick={handleClick}
         >
-          {!!cartProducts.length && (
-            <span className="buttonCartWrapper">{cartProducts.length}</span>
+          {!!totalNumOfProducts && (
+            <span className="buttonCartWrapper">{totalNumOfProducts}</span>
           )}
         </NavLink>
       </div>

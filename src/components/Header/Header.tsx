@@ -7,6 +7,7 @@ import classNames from 'classnames';
 import { Navigation } from '../Navigation';
 import { CartContext, FavouriteContext } from '../../ContextProvider';
 import { BtnType } from '../../types/BtnType';
+import { getTotalProductsInCart } from '../../utils/getTotalProductsInCart';
 
 interface Props {
   isMobileMenuOpen: boolean;
@@ -33,6 +34,8 @@ export const Header: React.FC<Props> = ({
   const { favouriteProducts } = useContext(FavouriteContext);
   const { pathname } = useLocation();
   const [searchParams] = useSearchParams();
+
+  const totalNumOfProducts = getTotalProductsInCart(cartProducts);
 
   return (
     <header className={styles.topBarContainer} id="header">
@@ -76,8 +79,8 @@ export const Header: React.FC<Props> = ({
             className={({ isActive }) => activeLink(isActive, BtnType.cart)}
             aria-label="Products added to cart"
           >
-            {!!cartProducts.length && (
-              <span className="buttonCartWrapper">{cartProducts.length}</span>
+            {!!totalNumOfProducts && (
+              <span className="buttonCartWrapper">{totalNumOfProducts}</span>
             )}
           </NavLink>
         </div>

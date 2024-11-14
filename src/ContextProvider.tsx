@@ -7,6 +7,7 @@ import {
   ProductListContextType,
 } from './types/Context';
 import { Product } from './types/Product';
+import { ContextName } from './types/ContextName';
 
 export const CartContext = createContext<CartContextType>({
   cartProducts: [],
@@ -28,11 +29,11 @@ export const ContextProvider = ({
   children: React.ReactNode;
 }) => {
   const [cartProducts, setCartProducts] = useLocalStorage<CartProduct>(
-    'cartProducts',
+    ContextName.cartProducts,
     [],
   );
   const [favouriteProducts, setFavouriteProducts] = useLocalStorage<Product>(
-    'favouriteProducts',
+    ContextName.favouriteProducts,
     [],
   );
 
