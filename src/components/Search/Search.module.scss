@@ -1,0 +1,34 @@
+.searchContainer {
+  margin-bottom: 20px;
+}
+
+.input {
+  padding: 8px 20px;
+  border-radius: 20px;
+  border: 2px solid #ccc;
+  background-color: #f9f9f9;
+  color: #333;
+  font-size: 16px;
+  outline: none;
+  transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+  margin-bottom: 20px;
+}
+
+.input:hover {
+  background-color: #f0f0f0;
+  border-color: #aaa;
+  cursor: text;
+}
+
+/* Стиль при фокусі */
+.input:focus {
+  background-color: #fff; /* Білий фон при фокусі */
+  border-color: #b2d235; /* Зелена рамка */
+  box-shadow: 0 0 5px rgba(178, 210, 53, 0.5); /* Легке підсвічування */
+}
+
+/* Стиль для введеного тексту */
+.input::placeholder {
+  color: #aaa; /* Світло-сірий текст для placeholder */
+  opacity: 0.8;
+}

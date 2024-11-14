@@ -3,9 +3,7 @@ import styles from './PicturesSlider.module.scss';
 import strokeLeft from '../../../../public/img/icons/StrokeLeft.svg';
 import strokeRight from '../../../../public/img/icons/StrokeRight.svg';
 
-import image1 from '../../../../public/img/PicturesSlider/Apple50.jpg';
 import image2 from '../../../../public/img/PicturesSlider/Apple55.jpg';
-import image3 from '../../../../public/img/PicturesSlider/Apple56.jpg';
 import image4 from '../../../../public/img/PicturesSlider/Apple1.jpg';
 import image5 from '../../../../public/img/PicturesSlider/Apple30.jpg';
 import image6 from '../../../../public/img/PicturesSlider/Apple18.jpg';
@@ -13,7 +11,7 @@ import image7 from '../../../../public/img/PicturesSlider/Apple8.jpg'
 import image8 from '../../../../public/img/PicturesSlider/Apple2.jpg';
 import image9 from '../../../../public/img/PicturesSlider/Apple9.jpg';
 
-const images = [ image5, image2, image4, image6, image7, image8, image9 ];
+const images = [image4, image6, image5, image2, image7, image8, image9 ];
 
 export const PicturesSlider: React.FC = () => {
   const [imageIndex, setImageIndex] = useState<number>(0);
@@ -38,25 +36,25 @@ export const PicturesSlider: React.FC = () => {
   }
 
   return (
-    <section className='section'>
-      <div className={"slider-container"}>
+    <section className={styles.section}>
+      <div className={styles.sliderContainer}>
         <img src={images[imageIndex]} alt={`Slider-${imageIndex + 1}`}
-          className="slider-container__image"/>
+          className={styles.sliderContainer__image}/>
       </div>
 
-      <div className='slider__icons'>
-        <button onClick={prevImage} className='icon slider__icon--left'>
+      <div className={styles.slider__icons}>
+        <button onClick={prevImage} className={`${styles.icon} ${styles.slider__iconLeft}`}>
           <img src={strokeLeft} alt="Previous"/>
         </button>
-        <button onClick={nextImage} className='icon slider__icon--right'>
+        <button onClick={nextImage} className={`${styles.icon} ${styles.slider__iconRight}`}>
           <img src={strokeRight} alt="Next"/>
         </button>
       </div>
-      <div className="slider-indicators">
+      <div className={styles.sliderIndicators}>
         {images.map((_, index) => (
           <span
             key={index}
-            className={`slider-indicator ${index === imageIndex ? 'active' : ''}`}
+            className={`${styles.sliderIndicator} ${index === imageIndex ? styles.active : ''}`}
             onClick={() => handleDotClick(index)}>
           </span>
         ))}

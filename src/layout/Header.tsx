@@ -1,77 +1,50 @@
-// import classNames from "classnames";
-// import { NavLink } from "react-router-dom";
-// // import { logo, favouritesIcon, shoppingBagIcon } from '../assets/icons';
-// import logo from '../../public/img/logo/Logo.svg';
-// import favouritesIcon from '../../public/img/icons/Favourites.svg';
-// import shoppingBagIcon from '../../public/img/icons/ShoppingBag.svg';
-
-// export  const Navbar = () => {
-//   const selectedPage = ({ isActive }: { isActive: boolean }) =>
-//     classNames('header__nav-link', { 'header__nav-link--active': isActive});
-//   return (
-//     <header id="top" className="header">
-//         <div className='header__logo'>
-//           <a href="/" className='header__logo-link'>
-//             <img src={logo} alt="Logo" className='header__logo-logo' />
-//           </a>
-//           <nav>
-//             <ul className='header__nav-list'>
-
-//                 <NavLink to="/" className={selectedPage}>HOME</NavLink>
-
-//                 <NavLink to="/phones" className={selectedPage}>PHONES</NavLink>
-
-//                 <NavLink to="/tablets" className={selectedPage}>TABLETS</NavLink>
-
-//                 <NavLink to="/accessories" className={selectedPage}>ACCESSORIES</NavLink>
-//             </ul>
-//           </nav>
-//         </div>
-
-//         <div className='header__icons'>
-//           <a href="/favourites" className="header__icon header__icon--favourites">
-//             <img src={favouritesIcon} alt="Favourites" />
-//           </a>
-//           <a href="/shopping-bag" className="header__icon header__icon--bag">
-//             <img src={shoppingBagIcon} alt="Shopping Bag" />
-//           </a>
-//         </div>
-//       </header>
-
-//   )
-// }
-
-// src/components/Header.tsx
-
-
-import React, { forwardRef } from 'react';
+import React, { forwardRef, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { logo, favouritesIcon, shoppingBagIcon } from '../assets/icons';
 import '../App.scss';
 import classNames from 'classnames';
 import { useFavorites } from '../context/FavoritesContext/FavoritesContext';
 import { useCart } from '../context/CartContext/CartContext';
+import styles from './Header.module.scss';
+import { useTheme } from '../context/ThemeContext/ThemeContext';
+import switchIcon from '../../public/img/icons/offButton.png';
+import ofButton from '../../public/img/icons/iconSwitch1.png';
+import { Search } from '../components/Search/Search';
 
 interface HeaderProps {
 
 }
 export const Header = forwardRef<HTMLDivElement, HeaderProps>((props, ref) => {
   const { totalQuantity } = useCart();
-  const { favorites } = useFavorites();
+  const { totalFavorites } = useFavorites();
+  const { theme, toggleTheme } = useTheme();
   const selectedPage = (isActive: boolean) =>
-    classNames('header__nav-link', { active: isActive });
+    classNames(styles.header__navLink, { [styles.active]: isActive });
+
+  const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
+  const [isIconFixed, setIsIconFixed] = useState<boolean>(false);
+
+  const toggleBurgerMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+    setIsIconFixed(!isIconFixed);
+  };
+
+  const closedMenu = () => {
+    setIsMenuOpen(false);
+  }
 
   return (
-    <header ref={ref} className="header">
-      <div className="header__logo">
-        <NavLink to="/" className="header__logo-link">
-          <img src={logo} alt="Logo" className="header__logo-logo" />
+    <header ref={ref} className={styles.header}>
+      <div className={styles.header__logo}>
+        <NavLink to="/" className={styles.header__logoLink}>
+          <img src={logo} alt="Logo" className={styles.header__logoLogo} />
         </NavLink>
 
-        <nav>
-          <ul className="header__nav-list">
+        <nav className={`${styles.header__navList} ${isMenuOpen ? styles.open : ''}`}>
+          <ul>
             <li>
               <NavLink
+                onClick={closedMenu}
                 to="/"
                 className={({ isActive }) => selectedPage(isActive)}
               >
@@ -80,6 +53,7 @@ export const Header = forwardRef<HTMLDivElement, HeaderProps>((props, ref) => {
             </li>
             <li>
               <NavLink
+                onClick={closedMenu}
                 to="/phones"
                 className={({ isActive }) => selectedPage(isActive)}
               >
@@ -88,6 +62,7 @@ export const Header = forwardRef<HTMLDivElement, HeaderProps>((props, ref) => {
             </li>
             <li>
               <NavLink
+                onClick={closedMenu}
                 to="/tablets"
                 className={({ isActive }) => selectedPage(isActive)}
               >
@@ -96,6 +71,7 @@ export const Header = forwardRef<HTMLDivElement, HeaderProps>((props, ref) => {
             </li>
             <li>
               <NavLink
+                onClick={closedMenu}
                 to="/accessories"
                 className={({ isActive }) => selectedPage(isActive)}
               >
@@ -105,23 +81,54 @@ export const Header = forwardRef<HTMLDivElement, HeaderProps>((props, ref) => {
           </ul>
         </nav>
       </div>
+      <div className={styles.switchIcon}>
+        <img src={theme === 'light' ? switchIcon : ofButton}
+          alt="Switch theme" onClick={toggleTheme}
+          className={styles.iconSwitch}
+        />
+      </div>
 
-      <div className="header__icons">
-        <NavLink
+      <div
+        className={`${styles.header__icons} ${isMenuOpen ? styles.fixed : ''}`}>
+
+        <div className={styles.iconFavourites__container}>
+
+          <NavLink
+          onClick={closedMenu}
           to="/favourites"
-          className="header__icon header__icon--favourites"
+          className={`${styles.header__icon} ${styles.header__iconFavourites}`}
         >
           <img src={favouritesIcon} alt="Favourites" />
-
-        </NavLink>
-        <NavLink to="/cart" className="header__icon header__icon--bag">
-
-          <img src={shoppingBagIcon} alt="Shopping Bag" />
-          {totalQuantity > 0 && (
-            <span>{totalQuantity}</span>
+          {totalFavorites > 0 && (
+            <span
+              className={styles.totalFavorites}>{totalFavorites}</span>
           )}
-        </NavLink>
+
+          </NavLink>
+        </div>
+
+        <div className={styles.iconBag__container}>
+          <NavLink
+            onClick={closedMenu}
+            to="/cart"
+            className={`${styles.header__icon} ${styles.header__iconBag}`}>
+            <img src={shoppingBagIcon} alt="Shopping Bag" />
+            {totalQuantity > 0 && (
+              <span
+                className={styles.totalQuantity}>{totalQuantity}</span>
+            )}
+          </NavLink>
+        </div>
+
       </div>
+
+
+
+      <button className={`${styles.burgerMenu} ${isMenuOpen ? styles.open : ''}`} onClick={toggleBurgerMenu}>
+        <span className={isMenuOpen ? styles.cross : ''}></span>
+        <span className={isMenuOpen ? styles.cross : ''}></span>
+        <span className={isMenuOpen ? styles.cross : ''}></span>
+      </button>
     </header>
   );
 });

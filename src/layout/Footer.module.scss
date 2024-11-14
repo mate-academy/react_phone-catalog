@@ -1,0 +1,170 @@
+@font-face {
+  font-family: 'Mont';
+  src: url('./fonts/Mont-Regular.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Mont';
+  src: url('./fonts/Mont-Bold.otf') format('opentype');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Mont';
+  src: url('./fonts/Mont-SemiBold.otf') format('opentype');
+  font-weight: 600;
+  font-style: normal;
+}
+
+// variables.scss
+
+// Colors
+$color-primary: #78b829;
+$color-secondary: #89939A;
+$color-white: #FFFFFF;
+$color-dark: #1e1c1c;
+$color-light-gray: #F1F2F9;
+$color-active: #f0f0f0;
+
+// Font families
+$font-primary: 'Mont', 'Montserrat', sans-serif;
+$font-weight-bold: 800;
+$font-weight-medium: 600;
+$font-weight-regular: 400;
+
+.footer__container {
+  display: flex;
+  justify-content: space-between;
+  max-width: 1136px;
+  margin: 0 auto;
+  font-family: $font-primary;
+  height: 96px;
+  align-items: center;
+}
+
+.footer__logo {
+  gap: 48px;
+  margin-left: 24px;
+}
+
+.footer__navList {
+  list-style-type: none;
+  display: flex;
+  gap: 106px;
+}
+.footer__navLink {
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: 800;
+  color: #ffff;
+}
+
+.footer__elements {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+}
+.footer__text {
+  font-weight: 700px;
+  font-size: 12px;
+  color: #89939A;
+  margin: 0 auto;
+}
+.footer__image {
+  height: 16px;
+  width: 16px;
+}
+
+.footer__button {
+  margin: 0 auto;
+  margin-left: 16px;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+}
+.footer__button:hover {
+  margin-left: 16px;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  background-color: yellowgreen;
+}
+
+@media (min-width: 640px) and (max-width: 1199px) {
+  .footer {
+    max-width: 640px;
+  }
+  .footer__navList {
+    display: flex;
+    gap: 13.5px;
+  }
+
+  .footer__button {
+    margin-right: 16px;
+  }
+}
+
+@media (min-width: 320px) and (max-width: 639px) {
+  .footer__container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 16px 16px;
+    gap: 24px;
+    font-family: $font-primary;
+  }
+
+  .footer__logo {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .footer__navList {
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-left: 25px;
+    gap: 8px;
+
+  }
+
+  .footer__navLink {
+    text-decoration: none;
+  }
+
+  .footer__elements {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    gap: 4px;
+    justify-content: center;
+    text-align: center;
+    margin-top: 16px;
+
+  }
+
+  .footer__text {
+    text-align: center;
+    margin: 0;
+  }
+
+  .footer__button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    margin: 0 auto;
+    padding: 0;
+    margin: 0;
+  }
+}

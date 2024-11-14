@@ -37,4 +37,7 @@ export const useFetchProducts = (category: string) => {
     fetchProducts();
   }, [category]);
   return { products, loading, error };
+
 }
+
+

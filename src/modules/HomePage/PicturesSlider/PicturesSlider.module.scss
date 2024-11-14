@@ -1,0 +1,121 @@
+.section {
+  position: relative;
+  width: 100%;
+  box-sizing: border-box;
+  margin-bottom: 80px;
+
+  &__title {
+    margin-bottom: 24px;
+    color: #ffff;
+  }
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+.sliderContainer {
+  width: 100%;
+  max-width: 1000px;
+  margin: auto;
+  overflow: hidden;
+  border-radius: 10px;
+  overflow: hidden;
+  max-height: 500px;
+  position: relative;
+  margin-bottom: 80px;
+}
+
+.sliderContainer__image {
+  transition: opacity 0.5s ease-in-out;
+  width: 100%;
+  height: auto;
+  margin: 0 auto;
+  max-height: 100%;
+  object-fit: cover;
+
+}
+
+.slider__icons {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 20px;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+.icon {
+  pointer-events: auto;
+  background-color: rgba(249, 249, 249, 0.5);
+  padding: 10px;
+  width: 40px;
+  height: 40px;
+  border-radius: 60%;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.slider__iconLeft {
+  margin-right: 20px;
+}
+.slider__iconRight {
+  margin-left: 20px;
+}
+
+.icon:hover {
+  background-color: rgba(173, 255, 47, 0.7);
+}
+
+.sliderIndicators {
+  display: flex;
+  justify-content: center;
+  margin-top: 5px;
+  margin-bottom: 0;
+}
+
+.sliderIndicator {
+  height: 4px;
+  width: 14px;
+  margin: 0 5px;
+  background-color: #bbb;
+  display: inline-block;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+.sliderIndicator.active {
+  background-color: greenyellow;
+  transform: scale(1.2);
+}
+
+@media (min-width: 640px) and (max-width: 1199px) {
+
+  .sliderContainer {
+    width: 100%;
+    max-width: 490px;
+    margin: auto;
+    overflow: hidden;
+    border-radius: 10px;
+    overflow: hidden;
+    max-height: 189px;
+    position: relative;
+    margin-bottom: 64px;
+  }
+}
+
+@media (min-width: 320px) and (max-width: 639px) {
+  .sliderContainer {
+    width: 320px;
+    max-width: 490px;
+    margin: auto;
+    overflow: hidden;
+    border-radius: 10px;
+    overflow: hidden;
+    max-height: 189px;
+    position: relative;
+    margin-bottom: 56px;
+  }
+}

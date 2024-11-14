@@ -1,0 +1,88 @@
+@font-face {
+  font-family: 'Mont';
+  src: url('./fonts/Mont-Regular.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Mont';
+  src: url('./fonts/Mont-Bold.otf') format('opentype');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Mont';
+  src: url('./fonts/Mont-SemiBold.otf') format('opentype');
+  font-weight: 600;
+  font-style: normal;
+}
+
+// variables.scss
+
+// Colors
+$color-primary: #78b829;
+$color-secondary: #89939A;
+$color-white: #FFFFFF;
+$color-dark: #1e1c1c;
+$color-light-gray: #F1F2F9;
+$color-active: #f0f0f0;
+
+// Font families
+$font-primary: 'Mont', 'Montserrat', sans-serif;
+$font-size-base: 12px;
+$font-weight-bold: 800;
+$font-weight-medium: 600;
+$font-weight-regular: 400;
+
+.blocks {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.sorting__select {
+  width: 187;
+  height: 40px;
+  padding: 12px;
+  background-color: var(--filter-select);
+  outline: none;
+  color: #F1F2F9;
+  border: none;
+  font-family: $font-primary;
+}
+.sorting__option {
+  font-size: $font-size-base;
+  font-family: $font-primary;
+}
+
+.itemsPerPage__label{
+  color: var(--filter-text);
+  font-weight: 700;
+  font-size: 12px;
+  font-family: $font-primary;
+}
+
+.sorting__label {
+  color: var(--filter-text);
+  font-weight: 700;
+  font-size: 12px;
+  font-family: $font-primary;
+}
+
+.itemsPerPage__select {
+  width: 136px;
+  height: 40px;
+  padding: 12px;
+  background-color: var(--filter-select);
+  outline: none;
+  color: #F1F2F9;
+  border: none;
+
+}
+
+.itemsPerPage__option {
+  font-size: $font-size-base;
+  font-family: $font-primary;
+}

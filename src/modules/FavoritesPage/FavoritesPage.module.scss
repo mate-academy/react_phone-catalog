@@ -1,0 +1,53 @@
+@font-face {
+  font-family: 'Mont';
+  src: url('./fonts/Mont-Regular.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Mont';
+  src: url('./fonts/Mont-Bold.otf') format('opentype');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Mont';
+  src: url('./fonts/Mont-SemiBold.otf') format('opentype');
+  font-weight: 600;
+  font-style: normal;
+}
+
+// variables.scss
+
+// Colors
+$color-primary: #78b829;
+$color-secondary: #89939A;
+$color-white: #FFFFFF;
+$color-dark: #1e1c1c;
+$color-light-gray: #F1F2F9;
+$color-active: #f0f0f0;
+
+// Font families
+$font-primary: 'Mont', 'Montserrat', sans-serif;
+$font-weight-bold: 800;
+$font-weight-medium: 600;
+$font-weight-regular: 400;
+
+.totalFavorites {
+  font-size: 14px;
+  font-weight: 600;
+  color: #75767F;
+  margin-bottom: 40px;
+  font-family: $font-primary;
+}
+
+.productGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  box-sizing: border-box;
+  gap: 16px;
+  margin-bottom: 40px;
+  width: 100%;
+}

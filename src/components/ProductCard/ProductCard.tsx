@@ -4,6 +4,7 @@ import styles from  './ProductCard.module.scss';
 
 import { Link } from 'react-router-dom';
 import { favouritesIcon } from '../../assets/icons';
+import  redIcon  from '../../../public/img/icons/red.png';
 import { Product } from '../../types/Product';
 import { useCart } from '../../context/CartContext/CartContext';
 import { useFavorites } from '../../context/FavoritesContext/FavoritesContext';
@@ -13,7 +14,7 @@ interface ProductCardProps {
 }
 
 export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
-  const { addToCart, cart } = useCart();
+  const { addToCart, cart, } = useCart();
   const { toggleFavorite, isFavorite } = useFavorites();
 
   const isInCart = cart.some(item => item.id === product.id);
@@ -64,14 +65,11 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
             className={styles.productCard__button}>
             {isInCart ? "Added to cart" : 'Add to cart'}
           </button>
-
-        <Link to="/favourites">
-          <img onClick={() => toggleFavorite(product)}
-            src={favouritesIcon}
+            <img onClick={() => toggleFavorite(product)}
+            src={isFavorite(product.id) ? redIcon : favouritesIcon}
             alt="Favourites"
-            className={styles.productCard__icon}
+            className={`${styles.productCard__icon} `}
           />
-        </Link>
       </div>
     </div>
   );

@@ -1,17 +1,21 @@
 import React from 'react';
 
-import { useNavigate, useParams, Link } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 
 import favouritesIcon from '../../../public/img/icons/Favourites.svg';
-import strokeLeft from '../../../public/img/icons/StrokeLeft.svg';
 
 import { Product } from '../../types/Product';
 import { ProductsSlider } from '../../components/ProductsSlider/ProductsSlider';
 import { Breadcrumbs } from '../../components/Breadcrumbs/Breadcrumbs';
+import { BackButton } from '../../components/BackButton/BackButton';
+import { useCart } from '../../context/CartContext/CartContext';
+import { useFavorites } from '../../context/FavoritesContext/FavoritesContext';
+import redIcon from '../../../public/img/icons/red.png';
+import styles from './ProductDetailsPage.module.scss';
 
 interface ProductDetailsPageProps {
-  productDescription: Product;
+  productDescription?: Product;
 }
 
 export const ProductDetailsPage: React.FC<ProductDetailsPageProps> = () => {
@@ -30,9 +34,12 @@ export const ProductDetailsPage: React.FC<ProductDetailsPageProps> = () => {
   const [suggestedProducts, setSuggestedProducts] = useState<
   Product[]
   >([]);
+  const { addToCart, cart } = useCart();
+  const { favorites, toggleFavorite, isFavorite, } = useFavorites();
 
-  const navigate = useNavigate();
+  console.log('product', product);
 
+  const isInCart = (id: number) => cart.some(product => product.id === id);
 
   const fetchProducts = async () => {
     setLoading(true);
@@ -92,15 +99,12 @@ export const ProductDetailsPage: React.FC<ProductDetailsPageProps> = () => {
     fetchSuggestedProducts();
   }, [itemId, category]);
 
-  const handleBackClick = () => {
-    navigate(-1);
-  };
-
   const handleReload = () => {
     fetchProducts();
   };
 
   const handleThumbnailClick = (image: string) => {
+
     setSelectedImage(image);
   };
 
@@ -110,6 +114,27 @@ export const ProductDetailsPage: React.FC<ProductDetailsPageProps> = () => {
 
   const handleColorChange = (color: string) => {
     setChooseColor(color);
+  };
+
+  const handleAddToCart = () => {
+    if (product) {
+      const productToAdd = {
+        ...product,
+        color: chooseColor,
+        capacity: chooseCapacity,
+      };
+      addToCart(productToAdd);
+    }
+  };
+  const handleAddToFavorites = () => {
+    if (product) {
+      const productToAdd = {
+        ...product,
+        color: chooseColor,
+        capacity: chooseCapacity,
+      };
+      toggleFavorite(productToAdd);
+    }
   };
 
   const baseImagePath = `./img/${product?.category}/${product?.namespaceId}/${chooseColor}`;
@@ -125,38 +150,25 @@ export const ProductDetailsPage: React.FC<ProductDetailsPageProps> = () => {
   }
 
   return (
-    <div className="section section--product-details">
+    <div className={`${styles.section} ${styles.sectionProduct__details}`}>
 
       {product && <Breadcrumbs productDescription={product} />}
 
-      <div className="back-button">
-        <span className="breadcrumbs__separator">/</span>
-        <a
-          href="#"
-          onClick={handleBackClick}
-          aria-label="Go back"
-          className="back-button__link"
-        >
-          <span className="breadcrumbs__icon">
-            <img src={strokeLeft} alt="Stroke left" />
-          </span>
-          <span className="breadcrumbs__text">Back</span>
-        </a>
-      </div>
+      <BackButton />
 
       <main>
-        <h1 className="section__title">{product?.name}</h1>
-        <div className="product-page">
-          <div className="product-content">
-            <div className="product-gallery">
-              <div className="product-gallery product-gallery__thumbnails">
-                {imageFiles.map((fileName, index) => (
+        <h1 className={styles.section__title}>{product?.name}</h1>
+        <div className={styles.productPage}>
+          <div className={styles.productContent}>
+            <div className={styles.productGallery}>
+              <div className={`${styles.productGallery} ${styles.productGallery__thumbnails}`}>
+                {product?.images.map((fileName, index) => (
                   <img
                     key={index}
-                    src={`${baseImagePath}/${fileName}`}
-                    className={`thumbnail ${selectedImage === fileName ? 'active' : ''}`}
+                    src={`./${fileName}`}
+                    className={`${styles.thumbnail} ${selectedImage === fileName ? styles.active : ''}`}
                     onClick={() =>
-                      handleThumbnailClick(`${baseImagePath}/${fileName}`)
+                      handleThumbnailClick(`${fileName}`)
                     }
                     alt={`${product?.name} ${chooseColor} ${index + 1}`}
                   />
@@ -164,40 +176,40 @@ export const ProductDetailsPage: React.FC<ProductDetailsPageProps> = () => {
               </div>
             </div>
 
-            <div className="product-gallery product-gallery__main-image">
-              <img className='image'
+            <div className={`${styles.productGallery} ${styles.productGallery__mainImage}`}>
+              <img className={styles.image}
               src={selectedImage ? `${selectedImage}` : ''}
               alt="Product main view"
               />
             </div>
           </div>
 
-          <div className="product-info">
-            <div className="color-picker">
-              <h3 className="color-picker__title picker-title">
+          <div className={styles.productInfo}>
+            <div className={styles.colorPicker}>
+              <h3 className={`${styles.colorPicker__title} ${styles.pickerTitle}`}>
                 Available colors
               </h3>
-              <div className="color-picker__options">
+              <div className={styles.colorPicker__options}>
                 {product?.colorsAvailable.map(color => {
                   const isCurrColor = color === product?.color;
 
                   return (
                     <Link
                       key={color}
-                      to={`/product/${product?.category}/${product?.namespaceId}-${product?.capacity.toLowerCase()}-${color}`}
+                      to={`/product/${product?.category}/${product?.namespaceId}-${product?.capacity.toLowerCase()}-${color.replace(' ', '-')}`}
                       onClick={() => handleColorChange(color)}
-                      className={`color-picker__option color-picker__option--${color.replace(' ', '-')} ${isCurrColor ? 'active' : ''}`}
+                      className={`${styles.colorPicker__option} ${styles[`colorPicker__option--${color.replace(' ', '-')}`]} ${isCurrColor ? 'active' : ''}`}
                     ></Link>
                   );
                 })}
               </div>
             </div>
 
-            <div className="capacity-picker">
-              <h3 className="capacity-picker__title picker-title">
+            <div className={styles.capacityPicker}>
+              <h3 className={`${styles.capacityPicker__title} ${styles.pickerTitle}`}>
                 Select capacity
               </h3>
-              <div className="capacity-picker__options">
+              <div className={styles.capacityPicker__options}>
                 {product?.capacityAvailable.map((capacity: string) => {
                   const isCurrCapacity = capacity === product?.capacity;
 
@@ -205,7 +217,7 @@ export const ProductDetailsPage: React.FC<ProductDetailsPageProps> = () => {
                     <Link
                       key={capacity}
                       to={`/product/${product?.category}/${product?.namespaceId}-${capacity.toLowerCase()}-${product?.color}`}
-                      className={`capacity-picker__option ${isCurrCapacity ? 'active' : ''}`}
+                      className={`${styles.capacityPicker__option} ${isCurrCapacity ? styles.active : ''}`}
                       aria-label={`Select ${capacity}`}
                       onClick={() => handleCapacityChange(capacity)}
                     >
@@ -216,100 +228,103 @@ export const ProductDetailsPage: React.FC<ProductDetailsPageProps> = () => {
               </div>
             </div>
 
-            <div className="product-price">
-              <span className="product-price__new">
+            <div className={styles.productPrice}>
+              <span className={styles.productPrice__new}>
                 {product?.priceDiscount}$
               </span>
-              <span className="product-price__old">
+              <span className={styles.productPrice__old}>
                 {product?.priceRegular}$
               </span>
             </div>
 
-            <div className="product-actions">
-              <button className="product-actions__button">Add to cart</button>
-              <a href="#">
+            <div className={styles.productActions}>
+              <button
+                className={styles.productActions__button}
+                onClick={handleAddToCart}>{isInCart(product?.id || 0) ? 'Added to cart' : "Add to cart"}</button>
+
                 <img
-                  src={favouritesIcon}
+                  onClick={handleAddToFavorites}
+                  src={isFavorite(product.id) ? redIcon : favouritesIcon}
                   alt="Favourites"
-                  className="product-actions__icon"
+                  className={styles.productActions__icon}
                 />
-              </a>
+
             </div>
 
-            <div className="specs">
-              <div className="specs__details">
-                <span className="specs__property">Screen</span>
-                <span className="specs__value">{product?.screen}</span>
+            <div className={styles.specs}>
+              <div className={styles.specs__details}>
+                <span className={styles.specs__property}>Screen</span>
+                <span className={styles.specs__value}>{product?.screen}</span>
               </div>
-              <div className="specs__details">
-                <span className="specs__property">Resolution</span>
-                <span className="specs__value">{product?.resolution}</span>
+              <div className={styles.specs__details}>
+                <span className={styles.specs__property}>Resolution</span>
+                <span className={styles.specs__value}>{product?.resolution}</span>
               </div>
-              <div className="specs__details">
-                <span className="specs__property">Processor</span>
-                <span className="specs__value">{product?.processor}</span>
+              <div className={styles.specs__details}>
+                <span className={styles.specs__property}>Processor</span>
+                <span className={styles.specs__value}>{product?.processor}</span>
               </div>
-              <div className="specs__details">
-                <span className="specs__property">RAM</span>
-                <span className="specs__value">{product?.ram}</span>
+              <div className={styles.specs__details}>
+                <span className={styles.specs__property}>RAM</span>
+                <span className={styles.specs__value}>{product?.ram}</span>
               </div>
             </div>
           </div>
-          <div className="product-id">
-            <div className="product-info__id">ID: BD3390</div>
+          <div className={styles.productId}>
+            <div className={styles.productInfo__id}>ID: {product?.id}</div>
           </div>
         </div>
 
-        <section className="products-details">
-          <div className="about">
-            <h2 className="about__title">About</h2>
+        <section className={styles.productsDetails}>
+          <div className={styles.about}>
+            <h2 className={styles.about__title}>About</h2>
             {product?.description.map((section, index) => (
               <div key={index} className={`section-${index + 1}`}>
-                <h3 className="section-title"></h3>
+                <h3 className={styles.sectionTitle}></h3>
                 {section.text.map((paragraph, idx) => (
-                  <p key={idx} className="about__text">
+                  <p key={idx} className={styles.about__text}>
                     {paragraph}
                   </p>
                 ))}
               </div>
             ))}
           </div>
-          <div className="tech-specs">
-            <h2 className="specs__title ">Tech specs</h2>
-            <div className="specs">
-              <div className="specs__details">
-                <span className="specs__property">Screen</span>
-                <span className="specs__value">{product?.screen}</span>
+          <div className={styles.techSpecs}>
+            <h2 className={styles.specs__title}>Tech specs</h2>
+            <div className={styles.specs}>
+              <div className={styles.specs__details}>
+                <span className={styles.specs__property}>Screen</span>
+                <span className={styles.specs__value}>{product?.screen}</span>
               </div>
-              <div className="specs__details">
-                <span className="specs__property">Resolution</span>
-                <span className="specs__value">{product?.resolution}</span>
+              <div className={styles.specs__details}>
+                <span className={styles.specs__property}>Resolution</span>
+                <span className={styles.specs__value}>{product?.resolution}</span>
               </div>
-              <div className="specs__details">
-                <span className="specs__property">Processor</span>
-                <span className="specs__value">{product?.processor}</span>
+              <div className={styles.specs__details}>
+                <span className={styles.specs__property}>Processor</span>
+                <span className={styles.specs__value}>{product?.processor}</span>
               </div>
-              <div className="specs__details">
-                <span className="specs__property">RAM</span>
-                <span className="specs__value">{product?.ram}</span>
+              <div className={styles.specs__details}>
+                <span className={styles.specs__property}>RAM</span>
+                <span className={styles.specs__value}>{product?.ram}</span>
               </div>
-              <div className="specs__details">
-                <span className="specs__property">Built in memory</span>
-                <span className="specs__value">64 GB</span>
+              <div className={styles.specs__details}>
+                <span className={styles.specs__property}>Built in memory</span>
+                <span className={styles.specs__value}>64 GB</span>
               </div>
-              <div className="specs__details">
-                <span className="specs__property">Camera</span>
-                <span className="specs__value">
+              <div className={styles.specs__details}>
+                <span className={styles.specs__property}>Camera</span>
+                <span className={styles.specs__value}>
                   12 Mp + 12 Mp + 12 Mp (Triple)
                 </span>
               </div>
-              <div className="specs__details">
+              <div className={styles.specs__details}>
                 <span className="specs__name">Zoom</span>
-                <span className="specs__value">Optical, 2x</span>
+                <span className={styles.specs__value}>Optical, 2x</span>
               </div>
-              <div className="specs__details">
+              <div className={styles.specs__details}>
                 <span className="specs__name">Cell</span>
-                <span className="specs__value">GSM, LTE, UMTS</span>
+                <span className={styles.specs__value}>GSM, LTE, UMTS</span>
               </div>
             </div>
           </div>

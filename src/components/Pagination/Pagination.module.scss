@@ -1,0 +1,137 @@
+@font-face {
+  font-family: 'Mont';
+  src: url('./fonts/Mont-Regular.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Mont';
+  src: url('./fonts/Mont-Bold.otf') format('opentype');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Mont';
+  src: url('./fonts/Mont-SemiBold.otf') format('opentype');
+  font-weight: 600;
+  font-style: normal;
+}
+
+// variables.scss
+
+// Colors
+$color-primary: #78b829;
+$color-secondary: #89939A;
+$color-white: #FFFFFF;
+$color-dark: #1e1c1c;
+$color-light-gray: #F1F2F9;
+$color-active: #f0f0f0;
+
+// Font families
+$font-primary: 'Mont', 'Montserrat', sans-serif;
+$font-weight-bold: 800;
+$font-weight-medium: 600;
+$font-weight-regular: 400;
+
+.paginationContainer {
+  position: relative;
+  max-width: 1136px;
+  overflow-x: auto;
+  padding-bottom: 12px;
+  margin-bottom: 80px;
+}
+
+.paginationContainer::before,
+.paginationContainer::after {
+  content: "›";
+  position: absolute;
+  top: 40%;
+  font-size: 24px;
+  color: rgba(154, 205, 50, 0.3);
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+.paginationContainer::before {
+  left: 10px;
+  transform: translateY(-50%) rotate(180deg);
+}
+
+.paginationContainer::after {
+  right: 10px;
+}
+
+.pagination {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 80px;
+  max-width: 1136px;
+  box-sizing: border-box;
+  overflow-x: auto;
+  padding-bottom: 10px;
+  scrollbar-color: #7aaf4c #1c1c1c;
+  scrollbar-width: thin;
+
+
+  &__controls {
+    display: flex;
+    gap: 10px;
+    max-width: 100%;
+  }
+
+  &__button {
+    padding: 8px 12px;
+    cursor: pointer;
+    flex-shrink: 0;
+  }
+}
+
+.pagination__buttonPrevious,
+.pagination__buttonNext {
+  background-color: var(--pagination-buttonReferral);
+  border: none;
+  color: rgb(142, 141, 141);
+  font-family: $font-primary;
+  font-size: 14px;
+  font-weight: 700px;
+  flex-shrink: 0;
+}
+
+.pagination__buttonPrevious:hover,
+.pagination__buttonNext:hover {
+  border: none;
+  background-color: #131313;
+  color: #ffff;
+  font-family: $font-primary;
+  font-size: 14px;
+  font-weight: 700px;
+}
+
+.pagination__pageButton {
+  padding: 8px 12px;
+  cursor: pointer;
+  background-color: var(--pagination-button);
+  color: #ffff;
+  border: none;
+  font-size: 14px;
+  font-weight: 600;
+  font-family: $font-primary;
+  flex-shrink: 0;
+}
+
+.pagination__pageButton:hover {
+  background-color: hsl(84, 77%, 76%, 0.8);
+  transition: 0.8 all ease;
+  font-size: 14px;
+  font-weight: 600;
+  font-family: $font-primary;
+}
+
+.pagination__pageButton:active {
+  background-color: greenyellow;
+  color: rgb(46, 46, 46);
+}

@@ -1,7 +1,7 @@
 import logo from '../../public/img/logo/Logo.svg';
 import favouritesIcon from '../../public/img/icons/Favourites.svg';
 import shoppingBagIcon from '../../public/img/icons/ShoppingBag.svg';
-// import strokeLeft from '../../public/img/icons/StrokeLeft.svg';
+import strokeLeft from '../../public/img/icons/StrokeLeft.svg';
 // import strokeRight from '../../public/img/icons/StrokeRight.svg';
 
 // export {
@@ -13,4 +13,4 @@ import shoppingBagIcon from '../../public/img/icons/ShoppingBag.svg';
 
 // };
 
-export { logo, favouritesIcon, shoppingBagIcon };
+export { logo, favouritesIcon, shoppingBagIcon, strokeLeft };

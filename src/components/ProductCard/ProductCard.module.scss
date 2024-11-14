@@ -39,17 +39,18 @@ $font-weight-regular: 400;
 .productCard {
   width: 237px;
   height: 512px;
-  background: rgb(30, 28, 28);
+  background: var(--card-background);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   padding: 32px;
-  color:#F1F2F9;
+  color: var(--text-color);
   transition: box-shadow 0.3s ease, transform 0.3s ease;
+  border-radius: 20px;
 
   &:hover {
-    box-shadow: 0 10px 10px rgba(205, 236, 94, 0.4);
-    background: #0d0d0d;
+    box-shadow: var(--card-boxShadow);
+    background: var(--card-backgroundHover);
 
   }
 
@@ -75,6 +76,7 @@ $font-weight-regular: 400;
 
   &__price {
     font-size: 22px;
+    color: #F1F2F9;
   }
 
 
@@ -94,7 +96,7 @@ $font-weight-regular: 400;
 
   &__property {
     font-weight: 600;
-    color: #5c5c5c;
+    color: var(--text-property);
     flex: 1;
     white-space: nowrap;
 
@@ -102,7 +104,7 @@ $font-weight-regular: 400;
 
   &__value {
     font-weight: 600;
-    color: #ffffff;
+    color: var(--text-value);
     text-align: right;
     white-space: nowrap;
     overflow: hidden;
@@ -128,14 +130,16 @@ $font-weight-regular: 400;
     font-size: 14px;
     line-height: 21px;
     transition: all 0.7s ease;
-    background-color: #78b829;
+    background-color: var(--button-background);
+
   }
 
   &__button:hover {
-    background: linear-gradient(120deg, #000000, #064d6c, #57788c,);
-    color: rgb(143, 143, 145);
+    // background: linear-gradient(120deg, #000000, #064d6c, #57788c,);
+    border: var(--border-button);
+    color: var(--text-button);
     scale: 1.1;
-    background: #304d0d;
+    background: var(--button-backgroundHover);
   }
 
   &__icon {
@@ -160,12 +164,14 @@ $font-weight-regular: 400;
       font-weight: 800;
       font-size: 22px;
       margin-right: 7px;
+      color: #F1F2F9;
     }
 
     &__old {
       font-weight: 600;
       font-size: 22px;
       color: #363837;
+      text-decoration: line-through;
     }
 
     &::after {
@@ -178,4 +184,12 @@ $font-weight-regular: 400;
       height: 0.8px;
 
     }
+}
+
+@media (min-width: 320px) and (max-width: 639px) {
+  .productCard {
+    display: flex;
+    width: 100%;
+    max-width: 639px;
+  }
 }

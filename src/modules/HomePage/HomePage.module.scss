@@ -1,0 +1,137 @@
+@font-face {
+  font-family: 'Mont';
+  src: url('./fonts/Mont-Regular.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Mont';
+  src: url('./fonts/Mont-Bold.otf') format('opentype');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Mont';
+  src: url('./fonts/Mont-SemiBold.otf') format('opentype');
+  font-weight: 600;
+  font-style: normal;
+}
+
+// variables.scss
+
+// Colors
+$color-primary: #78b829;
+$color-secondary: #89939A;
+$color-white: #FFFFFF;
+$color-dark: #1e1c1c;
+$color-light-gray: #F1F2F9;
+$color-active: #f0f0f0;
+
+// Font families
+$font-primary: 'Mont', 'Montserrat', sans-serif;
+$font-weight-bold: 800;
+$font-weight-medium: 600;
+$font-weight-regular: 400;
+
+.main {
+  max-width: 1136px;
+  margin: 0 auto;
+  font-family: $font-primary;
+  margin-top: 120px;
+
+  &__title {
+    margin-bottom: 56px;
+    font-size: 48px;
+    font-weight: 800;
+    color: #F1F2F9;
+  }
+}
+
+.section__title {
+  margin-bottom: 24px;
+  color: #F1F2F9;
+}
+
+.categories {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-bottom: 81px;
+}
+
+.categories {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-bottom: 81px;
+}
+.category {
+  border-radius: 16px;
+  padding: 24px;
+
+  &__image {
+    width: 100%;
+    max-height: 320px;
+    margin-bottom: 16px;
+    background: linear-gradient(120deg, #0b3d26, #78b829,#0b3d26, #082b1c);
+    background: var(--category-background);
+    border-radius: 30px;
+  }
+
+  &__title {
+    font-family: $font-primary;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 25.56px;
+    text-align: left;
+    color: #F1F2F9;
+    text-decoration: none;
+    outline: none;
+    margin-bottom: 8px;
+  }
+
+  &__count {
+    color: var(--category-count);
+  }
+}
+
+.link {
+  text-decoration: none;
+}
+
+@media (min-width: 640px) and (max-width: 1199px) {
+
+  .main {
+    max-width: 640px;
+    margin: 0 auto;
+    &__title {
+      margin-bottom: 32px;
+      font-size: 48px;
+      font-weight: 800;
+      color: #F1F2F9;
+
+    }
+  }
+}
+
+@media (min-width: 320px) and (max-width: 639px) {
+  .main {
+    max-width: 288px;
+    margin: 0 auto;
+    &__title {
+      margin-bottom: 24px;
+      font-size: 32px;
+      font-weight: 800;
+      color: #F1F2F9;
+
+    }
+
+    .categories {
+      display: grid;
+      grid-template-columns: repeat(1, 1fr);
+      margin-bottom: 81px;
+    }
+  }
+}

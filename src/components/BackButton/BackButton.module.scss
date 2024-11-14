@@ -1,0 +1,22 @@
+.backButton {
+  margin-bottom: 40px;
+
+  &__link {
+    text-decoration: none;
+  }
+}
+
+.breadcrumbs {
+  margin-bottom: 40px;
+
+  &__icon {
+    margin-right: 8px;
+  }
+
+  &__text {
+    text-decoration: none;
+    color: #ffff;
+    font-size: 12px;
+    font-weight: 700;
+  }
+}

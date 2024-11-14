@@ -1,0 +1,33 @@
+.breadcrumbs {
+  margin-bottom: 40px;
+
+  &__icon {
+    margin-right: 8px;
+  }
+
+  &__text {
+    text-decoration: none;
+    color: #ffff;
+    font-size: 12px;
+    font-weight: 700;
+  }
+}
+
+span {
+  color: var(--span-color);
+}
+
+.itemName {
+  color: #75767F;
+  font-size: 12px;
+  font-weight: 700px;
+  text-decoration: none;
+}
+
+.itemCategory {
+  color: #F1F2F9;
+  font-size: 12px;
+  font-weight: 700;
+  text-decoration: none;
+}
+

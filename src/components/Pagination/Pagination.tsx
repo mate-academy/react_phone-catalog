@@ -1,4 +1,5 @@
 import React from 'react';
+import styles from './Pagination.module.scss';
 
 interface PaginationProps {
   currentPage: number;
@@ -15,32 +16,37 @@ export const Pagination: React.FC<PaginationProps> = ({
   const pages = Array.from({ length: totalPages }, (_, index) => index + 1);
 
   return (
-    <div className="pagination">
-      <div className='pagination__controls'>
-        <button
-          className='pagination__button pagination__button--previous'
-          disabled={currentPage === 1}
-          onClick={() => onPageChange(currentPage - 1)}
-        >
-          Previous
-        </button>
-        {pages.map(page => (
+    <div className={styles.paginationContainer}>
+      <div className={styles.pagination}>
+        <div className={styles.pagination__controls}>
           <button
-            key={page}
-            className={`pagination__page-button ${page === currentPage ? 'active' : ''}`}
-            onClick={() => onPageChange(page)}
+            className={`${styles.pagination__button}
+            ${styles.pagination__buttonPrevious}`}
+            disabled={currentPage === 1}
+            onClick={() => onPageChange(currentPage - 1)}
           >
-            {page}
+            Previous
           </button>
-        ))}
+          {pages.map(page => (
+            <button
+              key={page}
+              className={`${styles.pagination__pageButton}
+              ${page === currentPage ? styles.active : ''}`}
+              onClick={() => onPageChange(page)}
+            >
+              {page}
+            </button>
+          ))}
 
-        <button
-          className='pagination__button pagination__button--next'
-          disabled={currentPage === totalPages}
-          onClick={() => onPageChange(currentPage + 1)}
-        >
-          Next
-        </button>
+          <button
+            className={`${styles.pagination__button}
+            ${styles.pagination__buttonNext}`}
+            disabled={currentPage === totalPages}
+            onClick={() => onPageChange(currentPage + 1)}
+          >
+            Next
+          </button>
+        </div>
       </div>
     </div>
   );
