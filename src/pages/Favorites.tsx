@@ -2,16 +2,13 @@ import React from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Products } from '../types/products';
 import { useAppContext } from '../ContextStor';
-import { useLocalStorage } from '../LocaleStorage';
+import { useQuantityContext } from '../QuantityContext';
 
 export const Favorites = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const { favorites, setFavorites, setCart, cart } = useAppContext();
-  const [, setQuantities] = useLocalStorage<number[]>(
-    'quantities',
-    cart.length > 0 ? cart.map(() => 1) : [],
-  );
+  const { quantities, setQuantities } = useQuantityContext();
 
   const toggleFavorite = (product: Products) => {
     const isFavorite = favorites.some(fav => fav.id === product.id);

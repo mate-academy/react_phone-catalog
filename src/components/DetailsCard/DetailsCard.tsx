@@ -8,6 +8,7 @@ import { Products } from '../../types/products';
 import { COLORS } from '../../variables';
 import { useAppContext } from '../../ContextStor';
 import { useLocalStorage } from '../../LocaleStorage';
+import { useQuantityContext } from '../../QuantityContext';
 
 type Product = Phone | Tablet | Accessory;
 
@@ -17,10 +18,8 @@ type Props = {
 
 export const DetailsCard: React.FC<Props> = ({ product }) => {
   const { favorites, cart, setCart, setFavorites } = useAppContext();
-  const [, setQuantities] = useLocalStorage<number[]>(
-    'quantities',
-    cart.length > 0 ? cart.map(() => 1) : [],
-  );
+  const { quantities, setQuantities } = useQuantityContext();
+
   const navigate = useNavigate();
   const [selectedImage, setSelectedImage] = useState<string>(product.images[0]);
   const [products, setProducts] = useState<Products[]>([]);

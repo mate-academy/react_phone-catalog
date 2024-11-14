@@ -1,16 +1,13 @@
 import React from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useAppContext } from '../ContextStor';
-import { useLocalStorage } from '../LocaleStorage';
+import { useQuantityContext } from '../QuantityContext';
 
 export const CartItem = () => {
   const { cart, setCart } = useAppContext();
   const navigate = useNavigate();
   const location = useLocation();
-  const [quantities, setQuantities] = useLocalStorage<number[]>(
-    'quantities',
-    cart.length > 0 ? cart.map(() => 1) : [],
-  );
+  const { quantities, setQuantities } = useQuantityContext();
 
   const sumCart = () => {
     let sum = 0;

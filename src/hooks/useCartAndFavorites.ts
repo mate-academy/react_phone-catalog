@@ -1,13 +1,12 @@
 import { useCallback, useEffect, useState } from 'react';
 import { useAppContext } from '../ContextStor';
 import { useLocalStorage } from '../LocaleStorage';
+import { useQuantityContext } from '../QuantityContext';
 
 export const useCartAndFavorites = () => {
   const { cart, favorites } = useAppContext();
-  const [quantities] = useLocalStorage<number[]>(
-    'quantities',
-    cart.length > 0 ? cart.map(() => 1) : [],
-  );
+  const { quantities, setQuantities } = useQuantityContext();
+
 
   const [favoritesCount, setFavoritesCount] = useState(favorites.length);
   const [cartCount, setCartCount] = useState(0);

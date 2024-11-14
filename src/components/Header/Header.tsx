@@ -4,6 +4,7 @@ import { Link, NavLink, useLocation } from 'react-router-dom';
 import { useCartAndFavorites } from '../../hooks/useCartAndFavorites';
 import { useAppContext } from '../../ContextStor';
 import { useLocalStorage } from '../../LocaleStorage';
+import { useQuantityContext } from '../../QuantityContext';
 
 type Props = {
   burgerMenu: boolean;
@@ -13,10 +14,8 @@ type Props = {
 export const Header: React.FC<Props> = ({ burgerMenu, setBurgerMenu }) => {
   const location = useLocation();
   const { cart } = useAppContext();
-  const [quantities] = useLocalStorage<number[]>(
-    'quantities',
-    cart.length > 0 ? cart.map(() => 1) : [],
-  );
+  const { quantities, setQuantities } = useQuantityContext();
+
 
   const totalItems = () => {
     return quantities.reduce((total, qty) => total + qty, 0);

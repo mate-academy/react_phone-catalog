@@ -6,6 +6,7 @@ import { Phone } from '../../types/phone';
 import { Products } from '../../types/products';
 import { useAppContext } from '../../ContextStor';
 import { useLocalStorage } from '../../LocaleStorage';
+import { useQuantityContext } from '../../QuantityContext';
 
 type Props = {
   products: Phone[] | Tablet[] | Accessory[];
@@ -14,10 +15,8 @@ type Props = {
 
 export const List: React.FC<Props> = ({ type }) => {
   const { favorites, cart, setCart, setFavorites } = useAppContext();
-  const [, setQuantities] = useLocalStorage<number[]>(
-    'quantities',
-    cart.length > 0 ? cart.map(() => 1) : []
-  );
+  const { quantities, setQuantities } = useQuantityContext();
+
   const location = useLocation();
   const [searchParams] = useSearchParams(location.search);
   const [products, setProducts] = useState<Products[]>([]);

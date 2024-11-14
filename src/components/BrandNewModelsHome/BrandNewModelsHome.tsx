@@ -11,6 +11,7 @@ import classNames from 'classnames';
 import { useWindowResize } from '../../useWindowSize';
 import { useAppContext } from '../../ContextStor';
 import { useLocalStorage } from '../../LocaleStorage';
+import { useQuantityContext } from '../../QuantityContext';
 
 type Props = {
   type: 'Hot Prices' | 'Brand new models' | 'You may also like';
@@ -20,10 +21,8 @@ export const BrandNewModelsHome: React.FC<Props> = ({ type }) => {
   const [width] = useWindowResize();
 
   const { favorites, cart, setCart, setFavorites } = useAppContext();
-  const [, setQuantities] = useLocalStorage<number[]>(
-    'quantities',
-    cart.length > 0 ? cart.map(() => 1) : [],
-  );
+  const { quantities, setQuantities } = useQuantityContext();
+
   const [models, setModels] = useState<Products[]>([]);
   const [sortedModels, setSortedModels] = useState<Products[]>([]);
   const location = useLocation();
