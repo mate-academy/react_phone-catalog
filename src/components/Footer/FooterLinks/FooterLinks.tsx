@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 export const FooterLinks: React.FC = () => {
   return (
-    <div className={classNames(style.container)}>
+    <div className={classNames(style.link_container)}>
       <Link
         to={'/'}
         className={classNames(style.link)}

@@ -1,4 +1,4 @@
-@import '../../styles/main.scss';
+@import '../../styles/main';
 
 .logo {
 
@@ -8,11 +8,10 @@
     align-items: flex-start;
     height: 32px;
     width: 90px;
-    background: url('../../icons/Logo.png') no-repeat center/contain;
+    background: no-repeat center/contain;
+    background-image: var(--fls-logo);
+
     @include hover;
 
-    &_darkmode {
-      background: url('../../icons/Logo-dark.png') no-repeat center/contain;
-    }
   }
 }

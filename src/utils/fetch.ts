@@ -24,11 +24,11 @@ function request<T>(
     };
   }
 
-  return wait(3000)
+  return wait(1000)
     .then(() => fetch(BASE_API_URL + url, options))
     .then(response => {
       if (!response.ok) {
-        throw new Error();
+        throw new Error('Error in Fetch');
       }
 
       return response.json();

@@ -1,4 +1,4 @@
-@import '../../../styles/main.scss';
+@import '../../../styles/main';
 
 .container {
   display: flex;
@@ -29,18 +29,18 @@
 
 .icon {
   &_container {
-    @extend %icon_container;
+    @extend %icon-container;
+
     width: 48px;
     height: 48px;
   }
 
   &_menu {
-    @include iconBg(url('../../../icons/Menu.svg'));
+    @include icon-bg(var(--fls-menu));
 
   }
 
   &_close {
-    @include iconBg(url('../../../icons/Close.svg'));
-
+    @include icon-bg(var(--fls-close));
   }
 }

@@ -1,0 +1,132 @@
+@import '../../../styles/main';
+
+.cartItem_container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border: 1px solid var(--c-elements);
+  padding: 16px;
+  gap: 16px;
+
+  @include ontablet {
+    flex-direction: row;
+    gap: 24px;
+  }
+
+  & .icon {
+    display: flex;
+    align-items: center;
+    width: 16px;
+    height: 16px;
+
+    &_container {
+      @extend %icon-container;
+
+      background-color: var(--c-buttons-nav);
+
+      &_disabled {
+        border-color: var(--c-elements);
+        background-color: var(--c-background);
+
+        &:hover {
+          border-color: var(--c-elements);
+        }
+      }
+    }
+  }
+
+  & .top {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+
+    @include ontablet {
+      gap: 24px;
+    }
+
+    & .icon {
+      &_container {
+        cursor: pointer;
+        width: 16px;
+        height: 16px;
+        border: none;
+        flex-shrink: 0;
+
+        &_close {
+          background-color: var(--c-background);
+        }
+      }
+
+      &_close {
+        @include icon-bg(var(--fls-close));
+      }
+    }
+
+    & .container_image {
+      width: 80px;
+      height: 80px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-shrink: 0;
+    }
+
+    & .image {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    & .name {
+      text-decoration: none;
+      color: (var(--c-primary));
+      cursor: default;
+
+      @include hover;
+    }
+
+  }
+
+  & .bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+
+    @include ontablet {
+      gap: 24px;
+    }
+
+    & .counter_container {
+      display: flex;
+      align-items: center;
+
+      & .icon {
+
+        &_container {
+          width: 32px;
+          height: 32px;
+          flex-shrink: 0;
+        }
+
+        &_plus {
+          @include icon-bg(var(--fls-plus));
+        }
+
+        &_minus {
+          @include icon-bg(var(--fls-minus));
+
+          &_disabled {
+            @include icon-bg(var(--fls-minus-disabled));
+          }
+        }
+      }
+
+      & .count_text {
+        width: 32px;
+        text-align: center;
+      }
+    }
+
+  }
+}

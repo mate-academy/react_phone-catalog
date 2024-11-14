@@ -2,25 +2,24 @@ import style from './FavoriteIcon.module.scss';
 import classNames from 'classnames';
 import React, { useContext } from 'react';
 import { DispatchContext, StateContext } from '../../GlobalProvider';
+import { Product } from '../../../types/Product';
 
 type Props = {
   curProductId: string;
 };
 export const FavoriteIcon: React.FC<Props> = ({ curProductId }) => {
-  const { productsInFavorive } = useContext(StateContext);
+  const { inFavorites } = useContext(StateContext);
   const dispatch = useContext(DispatchContext);
-  const prodInFavorite = !!productsInFavorive.find(
-    prod => prod.itemId === curProductId,
-  );
+
+  const prodInFavorite = inFavorites
+    ? !!inFavorites.find((prod: Product) => prod.itemId === curProductId)
+    : false;
 
   return (
     <div
-      className={classNames(
-        style.icon_container,
-        style.icon_container_favorite,
-      )}
+      className={classNames(style.icon_container)}
       onClick={() =>
-        dispatch({ type: 'setFavoriteProducts', payload: curProductId })
+        dispatch({ type: 'toggleInFavorites', payload: curProductId })
       }
     >
       <div

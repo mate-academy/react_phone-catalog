@@ -1,5 +1,5 @@
 @import './variables';
-@import './theme.scss';
+@import './theme';
 
 @mixin ondesktop {
   @media (min-width: $desktop-min-width) {
@@ -13,25 +13,35 @@
   }
 }
 
-@mixin pageGrid {
+@mixin page-grid {
   box-sizing: border-box;
+
   --columns: 4;
 
   display: grid;
   column-gap: 16px;
-  padding-inline: $mobil-padding-inline;
-
 
   grid-template-columns: repeat(var(--columns), 1fr);
 
   @include ontablet {
     --columns: 12;
-    padding-inline: $tablet-padding-inline;
   }
 
   @include ondesktop {
     --columns: 24;
+
     grid-template-columns: repeat(var(--columns), 32px);
+  }
+}
+
+@mixin inline-padding {
+  padding-inline: $mobil-padding-inline;
+
+  @include ontablet {
+    padding-inline: $tablet-padding-inline;
+  }
+
+  @include ondesktop {
     padding-inline: $desktop-padding-inline;
   }
 }
@@ -57,14 +67,12 @@
   }
 }
 
-@mixin isActive {
+@mixin is-active {
   border-bottom: 3px solid var(--c-primary);
   color: var(--c-primary);
 }
 
-@mixin iconBg($url, $bgColor: var(--c-primary)) {
-  // mask: #{$url} no-repeat 50% 50% / 16px;
-  // background-color: #{$bgColor};
+@mixin icon-bg($url, $bgColor: var(--c-primary)) {
   background-image: #{$url};
   width: 16px;
   height: 16px;

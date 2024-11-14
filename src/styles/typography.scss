@@ -2,18 +2,17 @@
 @import './mixines';
 
 @include headings {
-  font-family: Mont;
+  font-family: Mont, sans-serif;;
   letter-spacing: 0;
   color: var(--c-primary);
 }
 
 body {
-  font-family: Mont;
+  font-family: Mont, sans-serif;;
   margin: 0;
 }
 
 h1 {
-  //styleName: Mobile/H1;
   font-size: 32px;
   font-weight: 800;
   line-height: 41px;
@@ -22,21 +21,18 @@ h1 {
   text-align: left;
 
   @include ontablet {
-    //styleName: Desktop & Tablet/H1;
     font-size: 48px;
     line-height: 56px;
   }
 }
 
 h2 {
-  //styleName: Mobile/H2;
   font-size: 22px;
   font-weight: 800;
   line-height: 30.8px;
   margin: 0;
 
   @include ontablet {
-    //styleName: Desktop & Tablet/H2;
     font-size: 32px;
     line-height: 41px;
     letter-spacing: -0.01em;
@@ -44,14 +40,12 @@ h2 {
 }
 
 h3 {
-  //styleName: Mobile/H3;
   font-size: 20px;
   font-weight: 700;
   line-height: 25.56px;
   margin: 0;
 
   @include ontablet {
-    //styleName: Desktop & Tablet/H3;
     font-size: 22px;
     font-weight: 800;
     line-height: 30.8px;
@@ -59,14 +53,12 @@ h3 {
 }
 
 h4 {
-  //styleName: Mobile/H4;
   font-size: 16px;
   font-weight: 700;
   line-height: 20.45px;
   margin: 0;
 
   @include ontablet {
-    //styleName: Desktop & Tablet/H4;
     font-size: 20px;
     font-weight: 700;
     line-height: 25.56px;
@@ -74,7 +66,6 @@ h4 {
 }
 
 p {
-  //styleName: Body text 14;
   font-size: 14px;
   font-weight: 600;
   line-height: 21px;
@@ -82,8 +73,8 @@ p {
   margin: 0;
 }
 
+
 %uppercase {
-  //styleName: Uppercase;
   font-size: 12px;
   font-weight: 800;
   line-height: 11px;
@@ -93,17 +84,15 @@ p {
 }
 
 %buttons {
-  //styleName: Uppercase;
   font-size: 12px;
   font-weight: 800;
   line-height: 11px;
   letter-spacing: 0.04em;
-  color: var(--c-white);
   margin: 0;
+  text-align: center;
 }
 
 %small-text {
-  //styleName: Small text 12;
   font-size: 12px;
   font-weight: 700;
   line-height: 15.34px;

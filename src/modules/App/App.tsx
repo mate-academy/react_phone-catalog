@@ -6,16 +6,15 @@ import '../../styles/theme.scss';
 import '../../styles/main.scss';
 import { Footer } from '../../components/Footer';
 import { Header } from '../../components/Header';
-import { useContext, useEffect } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { MobileMenu } from '../../components/MobileMenu';
-import { StateContext } from '../../components/GlobalProvider';
+import { DispatchContext, StateContext } from '../../components/GlobalProvider';
 import { Loader } from '../../components/Loader';
+import { getProducts } from '../../utils/getProducts';
 
 const ScrollToTop = () => {
-  // Extracts pathname property(key) from an object
   const { pathname } = useLocation();
 
-  // Automatically scrolls to top whenever pathname changes
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [pathname]);
@@ -24,7 +23,19 @@ const ScrollToTop = () => {
 };
 
 export const App = () => {
-  const { showMenu, loading } = useContext(StateContext);
+  const { showMenu } = useContext(StateContext);
+  const dispatch = useContext(DispatchContext);
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    setLoading(() => true);
+    getProducts
+      .fetchProducts()
+      .then(res => {
+        dispatch({ type: 'setProducts', payload: res });
+      })
+      .finally(() => setLoading(() => false));
+  }, [dispatch]);
 
   return (
     <div
@@ -44,7 +55,9 @@ export const App = () => {
       {!showMenu && (
         <>
           {loading ? (
-            <Loader />
+            <div className="loader_container">
+              <Loader />
+            </div>
           ) : (
             <div className={classNames(style.container_body)}>
               <Outlet />

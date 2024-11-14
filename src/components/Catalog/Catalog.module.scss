@@ -1,0 +1,55 @@
+@import '../../styles/main';
+
+.catalog_container {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding-block: 24px 64px;
+  width: 100%;
+
+  @include inline-padding;
+
+  & .container {
+
+    &_title {
+      @include ontablet {
+        grid-area: 2/ 1/ 2/ -1;
+      }
+
+      &_text {
+        padding-bottom: 8px;
+      }
+
+      &_count {
+        color: var(--c-secondary);
+      }
+    }
+
+    &_catalog {
+      display: flex;
+      flex-flow: row wrap;
+      gap: 40px;
+      width: 100%;
+      justify-content: center;
+
+
+      @include ontablet {
+        flex-direction: row;
+        gap: 16px;
+      }
+    }
+
+    &_product {
+      display: flex;
+      flex-direction: row;
+      width: 220px;
+
+      @include ontablet {
+        flex-wrap: wrap;
+        width: 230px;
+
+      }
+    }
+  }
+}

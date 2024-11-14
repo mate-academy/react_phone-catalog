@@ -1,5 +1,6 @@
 @import './mixines';
 @import './icons';
+@import './buttons';
 @import './typography';
 @import './variables';
 @import './theme';
@@ -25,7 +26,7 @@
 body {
   margin: 0;
   padding: 0;
-  background-color: var(--c-backgroud);
+  background-color: var(--c-background);
   min-height: 100vh;
   box-sizing: border-box;
 }
@@ -38,6 +39,7 @@ html {
 
 p {
   margin: 0;
+  color: var(--c-primary);
 }
 
 h1 {
@@ -58,5 +60,13 @@ h3 {
 }
 
 .isActive_link {
-  @include isActive;
+  @include is-active;
+}
+
+.hidden {
+  display: none;
+}
+
+.loader_container {
+  flex-grow: 1;
 }

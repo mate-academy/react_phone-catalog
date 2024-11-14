@@ -1,5 +1,14 @@
 @import '../../styles/main';
 
+.title {
+  @include page-grid;
+
+  &_text {
+    grid-column: 1/-1;
+
+  }
+}
+
 .container {
   width: 100%;
   display: flex;
@@ -13,6 +22,10 @@
 
   @include ondesktop {
     gap: 56px;
+  }
+
+  & .title {
+    @include inline-padding;
   }
 
   &_homepage {
@@ -33,16 +46,7 @@
   }
 }
 
-.title {
-  @include pageGrid;
-
-  &_text {
-    grid-column: 1/-1;
-
-  }
-}
-
-.photoSlide {
+.photoSlide_wraper {
   box-sizing: border-box;
 
 
@@ -56,23 +60,14 @@
 .slider_container {
   box-sizing: border-box;
   width: 100%;
-  // height: 439px;
-  padding-inline: 16px;
 
-  @include ontablet {
-    // height: 512px;
-    padding-inline: 24px;
-  }
-
-  @include ondesktop {
-    // height: 506px;
-    padding-inline: 32px;
-  }
+  @include inline-padding;
 
 }
 
 .container_categories {
-  @include pageGrid;
+  @include inline-padding;
+  @include page-grid;
 
   &_body {
     grid-column: 1/-1;

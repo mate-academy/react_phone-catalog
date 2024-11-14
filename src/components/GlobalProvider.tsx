@@ -1,10 +1,9 @@
 import React, { useEffect, useReducer } from 'react';
 import { Product } from '../types/Product';
-import { getProducts } from '../utils/getProducts';
-import { getProductById } from '../utils/getProductById';
-import { MenuItems } from '../modules/constants';
-import { getProductsByCategory } from '../utils/getProductsByCategory';
 import { ProductItem } from '../types/ProductItem';
+import { accessLocalStorage } from '../utils/accessLocalStorage';
+import { getProducts } from '../utils/getProducts';
+import { LocalAccessKeys } from '../utils/LocalAccessKeys';
 
 type State = {
   showMenu: boolean;
@@ -13,9 +12,8 @@ type State = {
   phones: ProductItem[];
   tablets: ProductItem[];
   accessories: ProductItem[];
-  productsInCart: Product[];
-  productsInFavorive: Product[];
-  loading: boolean;
+  inFavorites: Product[];
+  inCart: Product[];
 };
 
 type Action =
@@ -25,17 +23,10 @@ type Action =
   | { type: 'setPhones'; payload: ProductItem[] }
   | { type: 'setTablets'; payload: ProductItem[] }
   | { type: 'setAccessories'; payload: ProductItem[] }
-  | { type: 'setCartProducts'; payload: string }
-  | { type: 'setFavoriteProducts'; payload: string }
-  | { type: 'setLoading'; payload: boolean };
-
-function addProduct(data: Product[], target: Product) {
-  return [...data, target];
-}
-
-function removeProduct(data: Product[], target: Product) {
-  return [...data.filter(item => item.itemId !== target.itemId)];
-}
+  | { type: 'toggleInFavorites'; payload: string }
+  | { type: 'toggleInCart'; payload: string }
+  | { type: 'setInFavotites'; payload: Product[] }
+  | { type: 'setInCart'; payload: Product[] };
 
 function reducer(state: State, action: Action): State {
   switch (action.type) {
@@ -57,61 +48,37 @@ function reducer(state: State, action: Action): State {
     case 'setAccessories':
       return { ...state, accessories: action.payload };
 
-    case 'setCartProducts':
-      const curProd = getProductById(state.products, action.payload);
+    case 'toggleInFavorites':
+      accessLocalStorage.toggle(
+        getProducts.getProductById(state.products, action.payload),
+        LocalAccessKeys.favorites,
+      );
 
-      if (curProd) {
-        if (
-          !state.productsInCart.find(prod => prod.itemId === curProd.itemId)
-        ) {
-          return {
-            ...state,
-            productsInCart: addProduct(state.productsInCart, curProd),
-          };
-        } else {
-          return {
-            ...state,
-            productsInCart: removeProduct(state.productsInCart, curProd),
-          };
-        }
-      }
+      return {
+        ...state,
+        inFavorites: accessLocalStorage.get(LocalAccessKeys.favorites),
+      };
 
-      break;
+    case 'toggleInCart':
+      accessLocalStorage.toggle(
+        getProducts.getProductById(state.products, action.payload),
+        LocalAccessKeys.cart,
+      );
 
-    case 'setFavoriteProducts':
-      const curFavProd = getProductById(state.products, action.payload);
+      return {
+        ...state,
+        inCart: accessLocalStorage.get(LocalAccessKeys.cart),
+      };
 
-      if (curFavProd) {
-        if (
-          !state.productsInFavorive.find(
-            prod => prod.itemId === curFavProd.itemId,
-          )
-        ) {
-          return {
-            ...state,
-            productsInFavorive: addProduct(
-              state.productsInFavorive,
-              curFavProd,
-            ),
-          };
-        } else {
-          return {
-            ...state,
-            productsInFavorive: removeProduct(
-              state.productsInFavorive,
-              curFavProd,
-            ),
-          };
-        }
-      }
+    case 'setInFavotites':
+      return { ...state, inFavorites: action.payload };
 
-      break;
+    case 'setInCart':
+      return { ...state, inCart: action.payload };
 
-    case 'setLoading':
-      return { ...state, loading: action.payload };
+    default:
+      return { ...state };
   }
-
-  return { ...state };
 }
 
 const initialState: State = {
@@ -121,9 +88,8 @@ const initialState: State = {
   phones: [],
   tablets: [],
   accessories: [],
-  productsInCart: [],
-  productsInFavorive: [],
-  loading: false,
+  inFavorites: [],
+  inCart: [],
 };
 
 export const StateContext = React.createContext(initialState);
@@ -140,34 +106,14 @@ export const GlobalProvider: React.FC<Props> = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   useEffect(() => {
-    dispatch({ type: 'setLoading', payload: true });
-
-    const prodsPromise = getProducts().then(res => {
-      dispatch({ type: 'setProducts', payload: res });
+    dispatch({
+      type: 'setInFavotites',
+      payload: accessLocalStorage.get(LocalAccessKeys.favorites),
     });
-
-    const phonesPromise = getProductsByCategory(MenuItems.phones).then(res => {
-      dispatch({ type: 'setPhones', payload: res });
+    dispatch({
+      type: 'setInCart',
+      payload: accessLocalStorage.get(LocalAccessKeys.cart),
     });
-
-    const tabletsPromise = getProductsByCategory(MenuItems.tablets).then(
-      res => {
-        dispatch({ type: 'setTablets', payload: res });
-      },
-    );
-
-    const accesPromise = getProductsByCategory(MenuItems.accessories).then(
-      res => {
-        dispatch({ type: 'setAccessories', payload: res });
-      },
-    );
-
-    Promise.allSettled([
-      prodsPromise,
-      phonesPromise,
-      tabletsPromise,
-      accesPromise,
-    ]).finally(() => dispatch({ type: 'setLoading', payload: false }));
   }, []);
 
   return (

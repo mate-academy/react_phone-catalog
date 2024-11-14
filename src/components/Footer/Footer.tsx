@@ -10,16 +10,16 @@ export const Footer = () => {
   };
 
   return (
-    <div className={classNames(style.container)}>
-      <div className={classNames(style.container_logo)}>
+    <div className={classNames(style.footer_container)}>
+      <div className={classNames(style.footer_container_logo)}>
         <SiteLogo />
       </div>
 
-      <div className={classNames(style.container_links)}>
+      <div className={classNames(style.footer_container_links)}>
         <FooterLinks />
       </div>
 
-      <div className={classNames(style.container_back_top)}>
+      <div className={classNames(style.footer_container_back_top)}>
         <div
           className={classNames(style.back_top_text)}
           onClick={() => scrollToTop()}
@@ -32,11 +32,9 @@ export const Footer = () => {
             style.icon_container,
             style.icon_container_upArrow,
           )}
+          onClick={() => scrollToTop()}
         >
-          <div
-            className={classNames(style.icon, style.icon_upArrow)}
-            onClick={() => scrollToTop()}
-          />
+          <div className={classNames(style.icon, style.icon_upArrow)} />
         </div>
       </div>
     </div>

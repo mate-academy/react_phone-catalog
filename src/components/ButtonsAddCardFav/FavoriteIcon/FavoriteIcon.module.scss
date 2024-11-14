@@ -1,36 +1,18 @@
-@import '../../../styles/main.scss';
-
-.container {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  width: 100%;
-  height: 100%;
-
-  &_icon {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-    height: 100%;
-  }
-}
+@import '../../../styles/main';
 
 .icon {
   &_container {
-    @extend %icon_container;
-    width: 48px;
-    height: 100%
+    @extend %icon-container;
+
+    height: 100%;
+    width: 100%;
   }
 
   &_favorite {
-    @include iconBg(url('../../../icons/favorite.svg'));
-
-
+    @include icon-bg(var(--fls-favorite));
   }
-
 }
 
 .selected {
-  @include iconBg(url('../../../icons/favorite_selected.svg'));
+  @include icon-bg(var(--fls-favorite-selected));
 }

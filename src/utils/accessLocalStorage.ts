@@ -1,12 +1,16 @@
-// import { MenuItems } from '../types/MenuItems';
 import { Product } from '../types/Product';
-import { ProductItem } from '../types/ProductItem';
+import { LocalAccessKeys } from './LocalAccessKeys';
 
-// type Keys = keyof typeof MenuItems | 'favorites' | 'cart';
-type Keys = 'favorites' | 'cart';
+function addProduct(data: Product[], target: Product) {
+  return [...data, target];
+}
+
+function removeProduct(data: Product[], target: Product) {
+  return [...data.filter(item => item.itemId !== target.itemId)];
+}
 
 export const accessLocalStorage = {
-  get(key: Keys) {
+  get(key: LocalAccessKeys) {
     const data = localStorage.getItem(key);
 
     try {
@@ -16,7 +20,7 @@ export const accessLocalStorage = {
     }
   },
 
-  set(data: Product[] | ProductItem[], key: Keys) {
+  set(data: Product[], key: LocalAccessKeys) {
     try {
       localStorage.setItem(key, JSON.stringify(data));
 
@@ -24,5 +28,50 @@ export const accessLocalStorage = {
     } catch {
       return [];
     }
+  },
+
+  toggle(product: Product | undefined, key: LocalAccessKeys) {
+    const inMemory = this.get(key);
+    let newList = [];
+
+    if (product) {
+      if (!inMemory.find((prod: Product) => prod.itemId === product.itemId)) {
+        newList = addProduct(inMemory, product);
+      } else {
+        newList = removeProduct(inMemory, product);
+      }
+
+      this.set(newList, key);
+    }
+
+    return this.get(key);
+  },
+
+  append(product: Product | undefined, key: LocalAccessKeys) {
+    if (product) {
+      const newList = addProduct(this.get(key), product);
+
+      this.set(newList, key);
+
+      return newList;
+    }
+
+    return;
+  },
+
+  remove(product: Product | undefined, key: LocalAccessKeys) {
+    if (product) {
+      const newList = removeProduct(this.get(key), product);
+
+      this.set(newList, key);
+
+      return newList;
+    }
+
+    return;
+  },
+
+  clearKey(key: LocalAccessKeys) {
+    localStorage.removeItem(key);
   },
 };

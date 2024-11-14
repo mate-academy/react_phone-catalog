@@ -1,0 +1,63 @@
+@import '../../../styles/main';
+
+.ItemPhoto_container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  @include ontablet {
+    flex-direction: row-reverse;
+  }
+
+  & .ItemPhoto {
+    &_thumbs {
+      // width: 100%;
+
+      & .swiper-wrapper {
+        @include ontablet {
+          flex-direction: column;
+        }
+      }
+
+      & .swiper-slide {
+        box-sizing: border-box;
+        overflow: hidden;
+        height: 49px;
+        width: 49px;
+        display: flex;
+        justify-content: center;
+        gap: 8px;
+        padding: 4px;
+        border: 1px solid var(--c-elements);
+
+      }
+
+      & .swiper-slide-thumb-active {
+        border: 1px solid var(--c-primary)
+      }
+    }
+
+    &_main {
+      width: 100%;
+      height: 288px;
+
+
+      & .swiper-wrapper {
+        height: 100%;
+      }
+
+      & .swiper-slide {
+        box-sizing: border-box;
+        display: flex;
+        justify-content: center;
+        height: 100%;
+        overflow: hidden;
+        aspect-ratio: 1/1;
+
+
+      }
+
+    }
+  }
+}

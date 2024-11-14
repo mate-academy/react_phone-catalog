@@ -8,8 +8,12 @@ import {
 import { App } from '../App/App';
 import { HomePage } from '../HomePage/HomePage';
 import { PhonePage } from '../PhonePage';
-import { FavotitePage } from '../FavotitePage';
+import { FavoritePage } from '../FavotitePage';
 import { CartPage } from '../CartPage';
+import { TabletPage } from '../TabletPage';
+import { AccessoriesPage } from '../AccessoriesPage';
+import { ProductDetailsPage } from '../ProductDetailsPage';
+import { MenuItems } from '../../types/MenuItems';
 
 export const Root = () => {
   return (
@@ -34,27 +38,48 @@ export const Root = () => {
             }
           />
 
-          <Route
-            path="/phones"
-            element={<PhonePage />}
-          />
+          <Route path={`/${MenuItems.phones}`}>
+            <Route
+              index
+              element={<PhonePage />}
+            />
+            <Route
+              path=":productId"
+              element={<ProductDetailsPage category={MenuItems.phones} />}
+            />
+          </Route>
 
-          <Route
-            path="/tablets"
-            element={<HomePage />}
-          />
+          <Route path={`/${MenuItems.tablets}`}>
+            <Route
+              index
+              element={<TabletPage />}
+            />
+            <Route
+              path=":productId"
+              element={<ProductDetailsPage category={MenuItems.tablets} />}
+            />
+          </Route>
+
+          <Route path={`/${MenuItems.accessories}`}>
+            <Route
+              index
+              element={<AccessoriesPage />}
+            />
+            <Route
+              path=":productId"
+              element={<ProductDetailsPage category={MenuItems.accessories} />}
+            />
+          </Route>
 
           <Route
             path="/favorite"
-            element={<FavotitePage />}
+            element={<FavoritePage />}
           />
 
           <Route
             path="/cart"
             element={<CartPage />}
           />
-
-          {/* <Route path="/people/:slug?" element={<PeoplePage />} /> */}
 
           {/* <Route path="*" element={<PageNotFound />} /> */}
         </Route>

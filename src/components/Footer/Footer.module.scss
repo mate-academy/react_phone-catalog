@@ -1,49 +1,65 @@
 @import '../../styles/main';
 
-.container {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  row-gap: 32px;
-  height: 100%;
-  width: 100%;
-  padding: 32px 16px;
+.footer {
 
-  box-shadow: 0 1px 0 0 var(--c-elements);
-
-  &_logo {
+  &_container {
     display: flex;
-    box-sizing: border-box;
-    align-items: center;
-    height: 32px;
+    flex-direction: column;
+    justify-content: space-between;
+    row-gap: 32px;
+    height: 100%;
     width: 100%;
-  }
+    padding: 32px 16px;
 
-  &_back_top {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    column-gap: 16px;
-    width: 100%;
+    box-shadow: 0 1px 0 0 var(--c-elements);
+
+    @include ontablet {
+      flex-direction: row;
+      padding: 32px;
+    }
+
+    &_logo {
+      display: flex;
+      box-sizing: border-box;
+      align-items: center;
+      height: 32px;
+      width: 100%;
+    }
+
+    &_back_top {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      column-gap: 16px;
+      width: 100%;
+
+      @include ontablet {
+        justify-content: flex-end
+      }
+
+    }
   }
 }
 
 .back_top_text {
   @extend %small-text;
-  cursor: pointer;
+
+  cursor: default;
   color: var(--c-secondary);
 }
 
 .icon {
   &_container {
     box-sizing: border-box;
-    @extend %icon_container;
+
+    @extend %icon-container;
+
     width: 32px;
     height: 32px;
+    background-color: var(--c-buttons-nav);
   }
 
   &_upArrow {
-    @include iconBg(url('../../icons/arrowUp.svg'));
-
+    @include icon-bg(var(--fls-up));
   }
 }

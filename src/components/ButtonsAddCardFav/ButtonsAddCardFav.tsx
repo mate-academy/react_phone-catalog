@@ -3,36 +3,39 @@ import classNames from 'classnames';
 import React, { useContext } from 'react';
 import { DispatchContext, StateContext } from '../GlobalProvider';
 import { FavoriteIcon } from './FavoriteIcon';
+import { Product } from '../../types/Product';
 
 type Props = {
   productId: string;
 };
 
 export const ButtonsAddCardFav: React.FC<Props> = ({ productId }) => {
-  const { productsInCart } = useContext(StateContext);
+  const { inCart } = useContext(StateContext);
   const dispatch = useContext(DispatchContext);
-  const prodInCart = !!productsInCart.find(prod => prod.itemId === productId);
+  const prodInCart = inCart
+    ? !!inCart.find((prod: Product) => prod.itemId === productId)
+    : false;
 
   return (
     <div className={classNames(style.container)}>
       <div
-        className={classNames(style.addToCart_container, {
-          [style.addToCart_container_inCart]: prodInCart,
+        className={classNames(style.container_addToCart, 'buttons_container', {
+          buttons_container_selected: prodInCart,
         })}
-        onClick={() =>
-          dispatch({ type: 'setCartProducts', payload: productId })
-        }
+        onClick={() => {
+          dispatch({ type: 'toggleInCart', payload: productId });
+        }}
       >
         <div
-          className={classNames(style.addToCart_text, {
-            [style.addToCart_text_inCart]: prodInCart,
+          className={classNames('buttons_text', {
+            buttons_text_selected: prodInCart,
           })}
         >
-          Add to cart
+          {!prodInCart ? 'Add to cart' : 'Added to cart'}
         </div>
       </div>
 
-      <div className={classNames(style.favorite_container)}>
+      <div className={classNames(style.container_favorite)}>
         <FavoriteIcon curProductId={productId} />
       </div>
     </div>

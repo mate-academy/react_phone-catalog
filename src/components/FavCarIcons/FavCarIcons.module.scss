@@ -24,8 +24,34 @@
   }
 
   .icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+
+
+    & .container_count {
+      position: absolute;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 14px;
+      height: 14px;
+      border: 1px solid var(--c-white);
+      border-radius: 50%;
+      background-color: red;
+      left: 50%;
+      bottom: 50%;
+    }
+
+    & .count {
+      font-size: 9px;
+      font-weight: 700;
+      color: var(--c-white);
+    }
+
     &_container {
-      @extend %icon_container;
+      @extend %icon-container;
 
       @include ontablet {
         width: 48px;
@@ -39,16 +65,16 @@
     }
 
     &_dark {
-      @include iconBg(url('../../icons/dark_mode.svg'));
+      @include icon-bg(var(--fls-dark-mode));
 
     }
 
     &_favorite {
-      @include iconBg(url('../../icons/favorite.svg'));
+      @include icon-bg(var(--fls-favorite));
     }
 
     &_cart {
-      @include iconBg(url('../../icons/cart.svg'));
+      @include icon-bg(var(--fls-cart));
     }
   }
 

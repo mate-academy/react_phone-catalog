@@ -8,7 +8,7 @@ import { DispatchContext, StateContext } from '../GlobalProvider';
 type Props = { mobileView?: boolean };
 export const FavCarIcons: React.FC<Props> = ({ mobileView = false }) => {
   const dispatch = useContext(DispatchContext);
-  const { inDarkMode } = useContext(StateContext);
+  const { inDarkMode, inCart, inFavorites } = useContext(StateContext);
 
   return (
     <div className={style.container}>
@@ -43,7 +43,13 @@ export const FavCarIcons: React.FC<Props> = ({ mobileView = false }) => {
           }
           onClick={() => dispatch({ type: 'setShowMenu', payload: false })}
         >
-          <div className={classNames(style.icon, style.icon_favorite)} />
+          <div className={classNames(style.icon, style.icon_favorite)}>
+            {inFavorites.length > 0 && (
+              <div className={style.container_count}>
+                <span className={style.count}>{inFavorites.length}</span>
+              </div>
+            )}
+          </div>
         </NavLink>
 
         <NavLink
@@ -56,7 +62,13 @@ export const FavCarIcons: React.FC<Props> = ({ mobileView = false }) => {
           }
           onClick={() => dispatch({ type: 'setShowMenu', payload: false })}
         >
-          <div className={classNames(style.icon, style.icon_cart)} />
+          <div className={classNames(style.icon, style.icon_cart)}>
+            {inCart.length > 0 && (
+              <div className={style.container_count}>
+                <span className={style.count}>{inCart.length}</span>
+              </div>
+            )}
+          </div>
         </NavLink>
       </div>
     </div>

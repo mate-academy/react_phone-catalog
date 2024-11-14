@@ -4,18 +4,21 @@ import style from './HomePage.module.scss';
 import { PhoneSlider } from '../../components/PhoneSlider';
 import { useContext, useMemo } from 'react';
 import { StateContext } from '../../components/GlobalProvider';
-import { getNewProducts } from '../../utils/getNewProducts';
 import { Categories } from '../../components/Categories';
-import { getHotDealsProducts } from '../../utils/getHotDealsProducts';
 import { PicturesSlider } from '../../components/PicturesSlider';
+import { getProducts } from '../../utils/getProducts';
 
 export const HomePage = () => {
-  const { products, phones, tablets, accessories } = useContext(StateContext);
-  const newPhone = useMemo(() => getNewProducts(products), [products]);
+  const { products } = useContext(StateContext);
+
+  const newPhone = useMemo(
+    () => getProducts.getNewProducts(products),
+    [products],
+  );
+
   const hotDealsProducts = useMemo(
-    () =>
-      getHotDealsProducts(products, [...phones, ...tablets, ...accessories]),
-    [products, phones, tablets, accessories],
+    () => getProducts.getHotDealsProducts(products),
+    [products],
   );
 
   return (
@@ -27,7 +30,7 @@ export const HomePage = () => {
       </div>
 
       <div className={classNames(style.container_homepage)}>
-        <div className={classNames(style.photoSlide)}>
+        <div className={classNames(style.photoSlide_wraper)}>
           <PicturesSlider />
         </div>
 

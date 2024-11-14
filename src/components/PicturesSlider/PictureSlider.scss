@@ -1,86 +1,94 @@
-@import '../../styles/main.scss';
+@import '../../styles/main';
 
-.photoSwiper_container {
-  display: flex;
-  box-sizing: border-box;
-  width: 100%;
-  height: 100%;
-  gap: 19px;
-}
-
-.photoSwiper.swiper {
-  display: flex;
-  flex-direction: column;
-}
-
-.photoSwiper .swiper-pagination {
-  position: relative;
-  bottom: unset;
-  height: 24px;
-
-  &-bullet {
-    height: 4px;
-    width: 14px;
-    border-radius: 0%;
-    background-color: var(--c-primary);
-  }
-}
-
-.photoSwiper .swiper-slide {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
-  height: 100vw;
-
-  @include ontablet {
-    height: 189px;
-  }
-
-  @include ondesktop {
-    height: 400px;
-  }
-}
-
-.photoSwiper img {
-  height: 100%;
-}
-
-
-.photoSwiper_container .icon {
-  box-sizing: content-box;
-
+.photoSwiper {
   &_container {
-    @extend %icon_container;
-    display: none;
-    flex-shrink: 0;
-    width: 32px;
+    display: flex;
+    box-sizing: border-box;
+    width: 100%;
     height: 100%;
+    gap: 19px;
 
     @include ontablet {
-      display: flex;
+      flex-direction: row;
+    }
+
+    & .icon {
+      box-sizing: content-box;
+
+      &_container {
+        @extend %icon-container;
+
+        display: none;
+        flex-shrink: 0;
+        width: 32px;
+        height: 100%;
+        background-color: var(--c-buttons-nav);
+
+        @include ontablet {
+          display: flex;
+          height: 189px;
+        }
+
+        @include ondesktop {
+          height: 400px;
+        }
+
+      }
+
+      &_right {
+        @include icon-bg(var(--fls-right));
+
+        &_disabled {
+          @include icon-bg(var(--fls-right-disabled))
+        }
+      }
+
+      &_left {
+        @include icon-bg(var(--fls-left));
+
+        &_disabled {
+          @include icon-bg(var(--fls-left-disabled));
+        }
+      }
+    }
+  }
+
+  &.swiper {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  & img {
+    height: 100%;
+  }
+
+  & .swiper-slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    height: 100vw;
+
+    @include ontablet {
       height: 189px;
     }
 
     @include ondesktop {
       height: 400px;
     }
-
   }
 
-  &_right {
-    @include iconBg(url('../../icons/arrowRight.svg'));
+  & .swiper-pagination {
+    position: relative;
+    bottom: unset;
+    height: 24px;
 
-    &_disabled {
-      @include iconBg(url('../../icons/arrowRight_disabled.svg'))
-    }
-  }
-
-  &_left {
-    @include iconBg(url('../../icons/arrowLeft.svg'));
-
-    &_disabled {
-      @include iconBg(url('../../icons/arrowLeft_disabled.svg'));
+    &-bullet {
+      height: 4px;
+      width: 14px;
+      border-radius: 0%;
+      background-color: var(--c-primary);
     }
   }
 }

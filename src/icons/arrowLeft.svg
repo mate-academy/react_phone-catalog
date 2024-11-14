@@ -24,12 +24,12 @@
      inkscape:pagecheckerboard="0"
      showgrid="false"
      inkscape:zoom="44.9375"
-     inkscape:cx="7.9888734"
-     inkscape:cy="8"
-     inkscape:window-width="1707"
-     inkscape:window-height="996"
-     inkscape:window-x="-8"
-     inkscape:window-y="-8"
+     inkscape:cx="8"
+     inkscape:cy="7.9888734"
+     inkscape:window-width="1920"
+     inkscape:window-height="1009"
+     inkscape:window-x="-1928"
+     inkscape:window-y="-443"
      inkscape:window-maximized="1"
      inkscape:current-layer="svg4" />
   <path
@@ -37,5 +37,6 @@
      clip-rule="evenodd"
      d="m 10.471562,3.52864 c -0.26035,-0.26035 -0.6824595,-0.26035 -0.9428095,0 l -4.00003,4 c -0.2603,0.26035 -0.2603,0.68246 0,0.94281 l 4.00003,3.99995 c 0.26035,0.2604 0.6824595,0.2604 0.9428095,0 0.260351,-0.2603 0.260351,-0.6824 0,-0.9428 L 6.9429725,8.00004 10.471562,4.47145 c 0.260351,-0.26035 0.260351,-0.68246 0,-0.94281 z"
      fill="#313237"
-     id="path2" />
+     id="path2"
+     style="fill:#313237;fill-opacity:1" />
 </svg>

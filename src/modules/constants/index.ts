@@ -1,1 +1,1 @@
-export * from '../../types/MenuItems';
+export * from './productColors';

@@ -6,7 +6,7 @@ import classNames from 'classnames';
 
 import { useRef } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Pagination } from 'swiper/modules';
+import { Autoplay, Navigation, Pagination } from 'swiper/modules';
 import type SwiperCore from 'swiper';
 import './PictureSlider.scss';
 
@@ -28,7 +28,11 @@ export const PicturesSlider = () => {
         pagination={{
           clickable: true,
         }}
-        modules={[Pagination, Navigation]}
+        autoplay={{
+          delay: 5000,
+          disableOnInteraction: true,
+        }}
+        modules={[Autoplay, Pagination, Navigation]}
         onBeforeInit={swiper => {
           swiperRef.current = swiper;
         }}

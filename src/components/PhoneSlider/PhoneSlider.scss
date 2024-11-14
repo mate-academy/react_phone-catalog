@@ -1,5 +1,4 @@
-@import '../../styles/main.scss';
-
+@import '../../styles/main';
 
 .phoneSlider.container {
   box-sizing: border-box;
@@ -17,8 +16,6 @@
   padding-bottom: 24px;
 }
 
-
-
 .phoneSlider.swiper {
   &_container {
     width: 100%;
@@ -34,17 +31,14 @@
 .phoneSlider .swiper-slide {
   text-align: center;
   font-size: 18px;
-  background: #fff;
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-
-.phoneSlider .swiper-slide {
+  height: 440px;
   width: 212px;
 
   @include ontablet {
+    height: 506px;
     width: 237px;
   }
 
@@ -60,24 +54,32 @@
 }
 
 .phoneSlider .icon {
-  &_container {
-    @extend %icon_container;
-
-  }
-
   &_right {
-    @include iconBg(url('../../icons/arrowRight.svg'));
-
-    &_disabled {
-      @include iconBg(url('../../icons/arrowRight_disabled.svg'))
-    }
+    @include icon-bg(var(--fls-right));
   }
 
   &_left {
-    @include iconBg(url('../../icons/arrowLeft.svg'));
+    @include icon-bg(var(--fls-left));
+  }
 
-    &_disabled {
-      @include iconBg(url('../../icons/arrowLeft_disabled.svg'));
+  &_container {
+    @extend %icon-container;
+
+    background-color: var(--c-buttons-nav);
+
+    &.swiper-button-disabled {
+      background-color: var(--c-background);
+
+      & .icon {
+
+        &_left {
+          @include icon-bg(var(--fls-left-disabled));
+        }
+
+        &_right {
+          @include icon-bg(var(--fls-right-disabled));
+        }
+      }
     }
   }
 }
