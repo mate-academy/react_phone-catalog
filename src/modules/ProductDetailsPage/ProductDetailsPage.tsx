@@ -176,7 +176,7 @@ export const ProductDetailsPage: React.FC<ProductDetailsPageProps> = () => {
               </div>
             </div>
 
-            <div className={`${styles.productGallery} ${styles.productGallery__mainImage}`}>
+            <div className={styles.productGallery__mainImage}>
               <img className={styles.image}
               src={selectedImage ? `${selectedImage}` : ''}
               alt="Product main view"

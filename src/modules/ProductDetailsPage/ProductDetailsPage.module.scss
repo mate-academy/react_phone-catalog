@@ -545,7 +545,8 @@ main {
 
   }
   .productContent {
-    display: block;
+    display: flex;
+    flex-direction: column-reverse;
     justify-content: center;
     // max-height: 485px;
   }
@@ -575,11 +576,11 @@ main {
     flex-direction: column;
     justify-content: center;
     text-align: center;
+    width: 100%;
   }
 
   .image {
-
-    width: 320px;
+    width: 100%;
     height: auto;
     margin: 0 auto;
     margin: 0;
@@ -594,10 +595,6 @@ main {
     width: 100%;
     margin-bottom: 20px;
   }
-
-
-
-
   // .productPage {
   //   display: block;
   //   // flex-direction: column;
@@ -694,7 +691,6 @@ main {
   // }
 }
 
-
 .colorPicker__option--sierrablue {
   background-color: #EFD4B8;
 }
@@ -741,7 +737,6 @@ main {
 .colorPicker__option--spaceyellow {
   background-color: #c1cd18;
 }
-
 .colorPicker__option--white {
   background-color: #F4F4F4;
 }
@@ -751,7 +746,6 @@ main {
 .colorPicker__option--yellow {
   background-color: #e8f47e;
 }
-
 .colorPicker__option--sky-blue {
   background-color: #98b7e8;
 }
