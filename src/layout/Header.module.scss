@@ -1,35 +1,30 @@
 @font-face {
-  font-family: 'Mont';
+  font-family: Mont;
   src: url('./fonts/Mont-Regular.otf') format('opentype');
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'Mont';
+  font-family: Mont;
   src: url('./fonts/Mont-Bold.otf') format('opentype');
   font-weight: bold;
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'Mont';
+  font-family: Mont;
   src: url('./fonts/Mont-SemiBold.otf') format('opentype');
   font-weight: 600;
   font-style: normal;
 }
 
-// variables.scss
-
-// Colors
 $color-primary: #78b829;
 $color-secondary: #89939A;
-$color-white: #FFFFFF;
+$color-white: #FFF;
 $color-dark: #1e1c1c;
 $color-light-gray: #F1F2F9;
 $color-active: #f0f0f0;
-
-// Font families
 $font-primary: 'Mont', 'Montserrat', sans-serif;
 $font-size-base: 12px;
 $font-weight-bold: 800;
@@ -44,8 +39,6 @@ $font-weight-regular: 400;
   align-items: center;
   text-align: center;
   font-family: $font-primary;
-  // margin-bottom: 56px;
-
 
   &__logo {
     display: flex;
@@ -74,7 +67,7 @@ $font-weight-regular: 400;
     font-weight: 700;
     letter-spacing: 2px;
     text-align: center;
-    color: var(--header-navLink);
+    color: var(--header-nav-link);
     text-decoration: none;
     transition: color 0.3s;
     display: flex;
@@ -126,6 +119,7 @@ $font-weight-regular: 400;
 .header__icons {
   display: flex;
 }
+
 .switchIcon {
   border-radius: 20%;
   width: 40px;
@@ -267,12 +261,11 @@ img.iconSwitch {
 .burgerMenu.open span:nth-child(2) {
   opacity: 0;
 }
+
 .burgerMenu.open span:nth-child(3) {
   transform: rotate(-45deg);
   position: absolute;
 }
-
-
 
 @media (min-width: 320px) and (max-width: 639px) {
   .header__navList ul {
@@ -286,30 +279,13 @@ img.iconSwitch {
   }
   .header__icons.fixed {
     display: flex;
-    // width: 320px;
-    // height: 64px;
     justify-content: center;
     align-items: center;
-
     position: fixed;
     bottom: 20px;
     right: 40%;
     z-index: 1000;
   }
-
-  // .iconFavourites__container {
-  //   width: 50%;
-  //   height: 60px;
-  //   border: 1px solid wheat;
-  // }
-  // .iconBag__container {
-  //   align-items: center;
-  //   text-align: center;
-  //   width: 50%;
-  //   height: 60px;
-  //   border: 1px solid wheat;
-  // }
-
   .header__navList li {
     text-align: center;
   }
@@ -317,14 +293,10 @@ img.iconSwitch {
     display: flex;
     flex-direction: column;
     position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+    inset: 0;
     background-color: rgba(0, 0, 0, 0.9);
     z-index: 1000;
     overflow-y: auto;
-    // padding: 20px;
     justify-content: center;
     align-items: center;
     gap: 32px;

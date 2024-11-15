@@ -1,43 +1,37 @@
 // not empty
 
 @font-face {
-    font-family: 'Mont';
-    src: url('./fonts/Mont-Regular.otf') format('opentype');
-    font-weight: normal;
-    font-style: normal;
+  font-family: Mont;
+  src: url('./fonts/Mont-Regular.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
 }
 
 @font-face {
-    font-family: 'Mont';
-    src: url('./fonts/Mont-Bold.otf') format('opentype');
-    font-weight: bold;
-    font-style: normal;
+  font-family: Mont;
+  src: url('./fonts/Mont-Bold.otf') format('opentype');
+  font-weight: bold;
+  font-style: normal;
 }
 
 @font-face {
-    font-family: 'Mont';
-    src: url('./fonts/Mont-SemiBold.otf') format('opentype');
-    font-weight: 600;
-    font-style: normal;
+  font-family: Mont;
+  src: url('./fonts/Mont-SemiBold.otf') format('opentype');
+  font-weight: 600;
+  font-style: normal;
 }
 
-// variables.scss
-
-// Colors
 $color-primary: #78b829;
 $color-secondary: #89939A;
-$color-white: #FFFFFF;
+$color-white: #FFF;
 $color-dark: #1e1c1c;
 $color-light-gray: #F1F2F9;
 $color-active: #f0f0f0;
-
-// Font families
 $font-primary: 'Mont', 'Montserrat', sans-serif;
 $font-weight-bold: 800;
 $font-weight-medium: 600;
 $font-weight-regular: 400;
 
-//main//
 .main {
   max-width: 1136px;
   margin: 0 auto;
@@ -47,11 +41,10 @@ $font-weight-regular: 400;
     margin-bottom: 56px;
     font-size: 48px;
     font-weight: 800;
-    color: #ffff;
+    color: #fff;
   }
 }
-//end----main---//
-//start----section---//
+
 .section {
   position: relative;
   width: 100%;
@@ -60,7 +53,7 @@ $font-weight-regular: 400;
 
   &__title {
     margin-bottom: 24px;
-    color: #ffff;
+    color: #fff;
   }
 
   &__header {
@@ -69,10 +62,10 @@ $font-weight-regular: 400;
   }
 }
 
-//end----slider---//
 .slider {
   margin-right: 30px;
 }
+
 .slider__button {
   width: 30px;
   height: 30px;
@@ -95,9 +88,11 @@ $font-weight-regular: 400;
   width: 16px;
   height: 16px;
 }
+
 .button--prev {
   margin-right: 20px;
 }
+
 .product-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -119,6 +114,7 @@ $font-weight-regular: 400;
   font-weight: 700;
   margin-bottom: 48px;
 }
+
 .section-title {
   font-size: 20px;
   font-weight: 700;
@@ -154,12 +150,12 @@ $font-weight-regular: 400;
   justify-content: space-between;
 }
 
-//-----pagination-sorting----//
 .blocks {
   display: flex;
   gap: 16px;
   margin-bottom: 24px;
 }
+
 p {
   color: var(--about-text);
   font-family: $font-primary;
@@ -170,36 +166,26 @@ p {
 }
 
 .lightTheme {
-  background-color: rgb(0, 0, 0);
-}
-
-.darkTheme {
-  background-color: rgb(0, 0, 0);
-  color: rgb(123, 123, 123);
-  --header__icons: color: black;
-}
-
-.lightTheme {
   --background-color: black;
   --text-color: #75767F;
   --header-bg: lightgray;
   --link-color: blue;
   --text-property: #5c5c5c;
-  --text-value: #ffffff;
+  --text-value: #fff;
   --border-button: none;
   --text-button: rgb(143, 143, 145);
   --button-background: #78b829;
-  --button-backgroundHover: #304d0d;
+  --button-background-hover: #304d0d;
   --card-background: rgb(30, 28, 28);
-  --card-backgroundHover: #0d0d0d;
-  --card-boxShadow: 0 10px 10px rgba(205, 236, 94, 0.4);
+  --card-background-hover: #0d0d0d;
+  --card-box-shadow: 0 10px 10px rgba(205, 236, 94, 0.4);
   --about-text: #75767f;
   --camera-text: #75767f;
   --filter-text: #89939A;
   --filter-select: #2e2d2d;
   --pagination-button: #2e2d2d;
-  --pagination-buttonReferral: #302f2f;
-  --color-titleOptions: #75767F;
+  --pagination-button-referral: #302f2f;
+  --color-title-options: #75767F;
   --category-background: linear-gradient(120deg, #0b3d26, #78b829,#0b3d26, #082b1c);
   --category-count: greenyellow;
   --span-color: black;
@@ -207,16 +193,16 @@ p {
   --item-cart: rgb(30, 28, 28);
   --total-quantity: #75767F;
   --header-background: rgba(0, 0, 0, 0.7);
-  --header-navLink: greenyellow;
+  --header-nav-link: greenyellow;
   --total-favorites: greenyellow;
   --slider-indicator: greenyellow;
-  --icon-sliderHover: rgba(173, 255, 47, 0.7);
-  --button-sliderBorder: greenyellow;
-  --slider-buttonHover: greenyellow;
-  --button-infoProduct: #78b829;
-  --button-textColor: rgb(83, 82, 82);
-  --pagination__pageButton-active: greenyellow;
-  --pagination__pageButton-hover: hsl(84, 77%, 76%, 0.8);
+  --icon-slider-hover: rgba(173, 255, 47, 0.7);
+  --button-slider-border: greenyellow;
+  --slider-button-hover: greenyellow;
+  --button-info-product: #78b829;
+  --button-text-color: rgb(83, 82, 82);
+  --pagination-page-button-active: greenyellow;
+  --pagination-page-button-hover: hsl(84deg, 77%, 76%, 0.8);
   --footer-button: yellowgreen;
   --color: none;
 }
@@ -229,29 +215,28 @@ p {
   --link-color: lightblue;
   --text-property: #343333;
   --text-value: #F1F2F9;
-  --text-button: #ffffff;
-  --button-background: #000000;
-  --button-backgroundHover: #08224d;
+  --text-button: #fff;
+  --button-background: #000;
+  --button-background-hover: #08224d;
   --card-background: linear-gradient(
   135deg,
   rgb(0, 56, 125) 0%,
   rgb(88, 211, 224) 50%,
   rgb(28, 68, 116) 100%
 );
---card-backgroundHover: linear-gradient(
+--card-background-hover: linear-gradient(
   135deg,
   rgb(1, 16, 75) 0%,
   rgb(81, 196, 214) 50%,
   rgb(3, 15, 93) 100%
 );
-  --card-boxShadow: 0 10px 10px rgba(72, 194, 239, 0.4);
+  --card-box-shadow: 0 10px 10px rgba(72, 194, 239, 0.4);
   --about-text: #d8dbdc;
   --camera-text: #131313;
   --filter-text: #414343;
-  // --filter-select: #081e4d;
   --pagination-button: #081e4d;
-  --pagination-buttonReferral: rgb(47, 220, 255);
-  --color-titleOptions: #2f2f30;
+  --pagination-button-referral: rgb(47, 220, 255);
+  --color-titleoptions: #2f2f30;
   --category-count: rgb(47, 220, 255);
   --span-color: black;
   --item-cart: linear-gradient(
@@ -261,17 +246,17 @@ p {
     rgb(28, 104, 116) 100%
   );
   --total-quantity: #c1c1c1;
-  --header-background: #6c6c6cb3;
-  --header-navLink: rgb(47, 220, 255);
+  --headerbackground: #6c6c6cb3;
+  --header-nav-link: rgb(47, 220, 255);
   --total-favorites:rgb(47, 220, 255);
   --slider-indicator: rgb(47, 220, 255);
-  --icon-sliderHover: rgb(121, 188, 202);
-  --button-sliderBorder: rgb(47, 220, 255);
-  --slider-buttonHover: rgb(11, 132, 156);
-  --button-infoProduct: rgb(23, 161, 189);
-  --button-textColor: #ffff;
-  --pagination__pageButton-active: rgb(11, 132, 156);
-  --pagination__pageButton-hover: rgba(53, 145, 175, 0.8);
+  --icon-slider-hover: rgb(121, 188, 202);
+  --button-slider-border: rgb(47, 220, 255);
+  --slider-button-hover: rgb(11, 132, 156);
+  --button-info-product: rgb(23, 161, 189);
+  --button-text-color: #fff;
+  --pagination-page-button-active: rgb(11, 132, 156);
+  --pagination-page-button-hover: rgba(53, 145, 175, 0.8);
   --footer-button: rgb(47, 220, 255);
   --color: rgb(47, 220, 255);
 }

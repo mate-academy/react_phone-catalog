@@ -1,30 +1,27 @@
 @font-face {
-  font-family: 'Mont';
+  font-family: Mont;
   src: url('./fonts/Mont-Regular.otf') format('opentype');
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'Mont';
+  font-family: Mont;
   src: url('./fonts/Mont-Bold.otf') format('opentype');
   font-weight: bold;
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'Mont';
+  font-family: Mont;
   src: url('./fonts/Mont-SemiBold.otf') format('opentype');
   font-weight: 600;
   font-style: normal;
 }
 
-// variables.scss
-
-// Colors
 $color-primary: #78b829;
 $color-secondary: #89939A;
-$color-white: #FFFFFF;
+$color-white: #FFF;
 $color-dark: #1e1c1c;
 $color-light-gray: #F1F2F9;
 $color-active: #f0f0f0;
@@ -49,8 +46,8 @@ $font-weight-regular: 400;
   border-radius: 20px;
 
   &:hover {
-    box-shadow: var(--card-boxShadow);
-    background: var(--card-backgroundHover);
+    box-shadow: var(--card-box-shadow);
+    background: var(--card-background-hover);
 
   }
 
@@ -118,7 +115,7 @@ $font-weight-regular: 400;
   }
 
   &__button {
-    color: var(--button-textColor);
+    color: var(--button-text-color);
     border: none;
     border-radius: 30px;
     padding: 8px 16px;
@@ -135,11 +132,10 @@ $font-weight-regular: 400;
   }
 
   &__button:hover {
-    // background: linear-gradient(120deg, #000000, #064d6c, #57788c,);
     border: var(--border-button);
     color: var(--text-button);
     scale: 1.1;
-    background: var(--button-backgroundHover);
+    background: var(--button-background-hover);
   }
 
   &__icon {

@@ -1,35 +1,30 @@
 @font-face {
-  font-family: 'Mont';
+  font-family: Mont;
   src: url('./fonts/Mont-Regular.otf') format('opentype');
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'Mont';
+  font-family: Mont;
   src: url('./fonts/Mont-Bold.otf') format('opentype');
   font-weight: bold;
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'Mont';
+  font-family: Mont;
   src: url('./fonts/Mont-SemiBold.otf') format('opentype');
   font-weight: 600;
   font-style: normal;
 }
 
-// variables.scss
-
-// Colors
 $color-primary: #78b829;
 $color-secondary: #89939A;
-$color-white: #FFFFFF;
+$color-white: #FFF;
 $color-dark: #1e1c1c;
 $color-light-gray: #F1F2F9;
 $color-active: #f0f0f0;
-
-// Font families
 $font-primary: 'Mont', 'Montserrat', sans-serif;
 $font-weight-bold: 800;
 $font-weight-medium: 600;
@@ -61,12 +56,6 @@ $font-weight-regular: 400;
   margin-bottom: 81px;
 }
 
-.categories {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
-  margin-bottom: 81px;
-}
 .category {
   border-radius: 16px;
   padding: 24px;
@@ -118,7 +107,6 @@ $font-weight-regular: 400;
 
 @media (min-width: 320px) and (max-width: 639px) {
   .main {
-    // max-width: 288px;
     margin: 0 auto;
     &__title {
       margin-bottom: 24px;

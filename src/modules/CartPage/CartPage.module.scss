@@ -1,35 +1,30 @@
 @font-face {
-  font-family: 'Mont';
+  font-family: Mont;
   src: url('./fonts/Mont-Regular.otf') format('opentype');
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'Mont';
+  font-family: Mont;
   src: url('./fonts/Mont-Bold.otf') format('opentype');
   font-weight: bold;
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'Mont';
+  font-family: Mont;
   src: url('./fonts/Mont-SemiBold.otf') format('opentype');
   font-weight: 600;
   font-style: normal;
 }
 
-// variables.scss
-
-// Colors
 $color-primary: #78b829;
 $color-secondary: #89939A;
-$color-white: #FFFFFF;
+$color-white: #FFF;
 $color-dark: #1e1c1c;
 $color-light-gray: #F1F2F9;
 $color-active: #f0f0f0;
-
-// Font families
 $font-primary: 'Mont', 'Montserrat', sans-serif;
 $font-weight-bold: 800;
 $font-weight-medium: 600;
@@ -71,19 +66,16 @@ h1 {
   flex-direction: column;
   box-sizing: border-box;
   margin-right: 16px;
-
-
 }
+
 .itemCart {
   display: flex;
   margin-bottom: 20px;
-  justify-content: space-between;
   background: var(--item-cart);
   align-items: center;
   text-align: center;
   padding: 24px;
   border-radius: 20px;
-
   justify-content: space-between;
 }
 
@@ -97,6 +89,7 @@ h1 {
   cursor: pointer;
   margin-right: 20px;
 }
+
 .product__removeButton:active {
   width: 30px;
   height: 30px;
@@ -115,13 +108,14 @@ h1 {
   line-height: 21px;
   text-align: left;
 }
+
 .productCart__image {
   margin-right: 40px;
-
-    width: 80;
-    max-height: 80px;
-    transition: transform 0.3s ease;
+  width: 80;
+  max-height: 80px;
+  transition: transform 0.3s ease;
 }
+
 .productQuantity {
   display: flex;
 }
@@ -137,16 +131,8 @@ h1 {
   margin-right: 20px;
 }
 
-.productQuantity__elementActive {
-  background-color: yellowgreen;
-  outline: none;
-  border: none;
-  width: 30px;
-  height: 30px;
-}
 .productQuantity__element {
   background: none;
-  border: 1px solid #87888c;
   cursor: pointer;
   font-size: 20px;
   font-weight: 600;
@@ -171,6 +157,7 @@ h1 {
   width: 30px;
   height: 30px;
 }
+
 .productCart__price {
   font-size: 22px;
   font-weight: 800;
@@ -199,11 +186,12 @@ h1 {
 .cartSummary {
   display: block;
   justify-items: center;
-  padding: 23px 23px;
+  padding: 23px;
   max-width: 380px;
   height: 206px;
   border: 1px solid #3B3E4A;
   text-align: center;
+  border-radius: 20px;
 }
 
 .totalAmount {
@@ -225,8 +213,8 @@ h1 {
   font-family: $font-primary;
   width: 300px;
   margin-bottom: 49px;
-
 }
+
 .totalQuantity::after {
   content: '';
   position: absolute;
@@ -251,9 +239,6 @@ h1 {
   text-align: center;
   border-radius: 20px;
 }
-.cartSummary {
-  border-radius: 20px;
-}
 
 @media (min-width: 640px) and (max-width: 1199px) {
   .cartContainer {
@@ -275,10 +260,9 @@ h1 {
     height: auto;
     width: 100%;
   }
-
 }
-@media (min-width: 320px) and (max-width: 639px) {
 
+@media (min-width: 320px) and (max-width: 639px) {
   .cartBlock {
     margin-bottom: 80px;
     display: block;
@@ -296,14 +280,7 @@ h1 {
     text-align: center;
     padding: 24px;
     border-radius: 20px;
-
     justify-content: space-between;
-  }
-
-  .productCart__quantity {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
   }
 
   .informationItem {
@@ -312,10 +289,12 @@ h1 {
     align-items: center;
     margin-bottom: 40px;
   }
+
   .productCart__price {
     align-items: center;
     justify-content: space-between;
   }
+
   .quantity {
     display: flex;
     justify-content: space-between;

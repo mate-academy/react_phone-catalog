@@ -3,37 +3,32 @@
 }
 
 @font-face {
-  font-family: 'Mont';
+  font-family: Mont;
   src: url('./fonts/Mont-Regular.otf') format('opentype');
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'Mont';
+  font-family: Mont;
   src: url('./fonts/Mont-Bold.otf') format('opentype');
   font-weight: bold;
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'Mont';
+  font-family: Mont;
   src: url('./fonts/Mont-SemiBold.otf') format('opentype');
   font-weight: 600;
   font-style: normal;
 }
 
-// variables.scss
-
-// Colors
 $color-primary: #78b829;
 $color-secondary: #89939A;
-$color-white: #FFFFFF;
+$color-white: #FFF;
 $color-dark: #1e1c1c;
 $color-light-gray: #F1F2F9;
 $color-active: #f0f0f0;
-
-// Font families
 $font-primary: 'Mont', 'Montserrat', sans-serif;
 $font-weight-bold: 800;
 $font-weight-medium: 600;
@@ -61,17 +56,18 @@ $font-weight-regular: 400;
 .slider {
   margin-right: 30px;
 }
+
 .slider__button {
   width: 30px;
   height: 30px;
   background-color: transparent;
   cursor: pointer;
   transition: 0.5 ease;
-  border: 0.5px solid var(--button-sliderBorder);
+  border: 0.5px solid var(--button-slider-border);
 }
 
 .slider__button:hover {
-  background-color: var(--slider-buttonHover);
+  background-color: var(--slider-button-hover);
 }
 
 .slider__button:disabled {
@@ -83,6 +79,7 @@ $font-weight-regular: 400;
   width: 16px;
   height: 16px;
 }
+
 .buttonPrev {
   margin-right: 20px;
 }

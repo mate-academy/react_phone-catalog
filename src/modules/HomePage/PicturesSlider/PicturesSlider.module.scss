@@ -19,7 +19,6 @@
   width: 100%;
   max-width: 1000px;
   margin: auto;
-  overflow: hidden;
   border-radius: 10px;
   overflow: hidden;
   max-height: 500px;
@@ -59,15 +58,17 @@
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
+
 .slider__iconLeft {
   margin-right: 20px;
 }
+
 .slider__iconRight {
   margin-left: 20px;
 }
 
 .icon:hover {
-  background-color: var(--icon-sliderHover);
+  background-color: var(--icon-slider-hover);
 }
 
 .sliderIndicators {
@@ -86,6 +87,7 @@
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.3s ease;
 }
+
 .sliderIndicator.active {
   background-color: var(--slider-indicator);
   transform: scale(1.2);
@@ -116,7 +118,6 @@
     margin: auto;
     overflow: hidden;
     border-radius: 10px;
-    overflow: hidden;
     max-height: 500px;
     position: relative;
     margin-bottom: 80px;
@@ -140,7 +141,6 @@
     width: 320px;
     max-width: 490px;
     margin: auto;
-    overflow: hidden;
     border-radius: 10px;
     overflow: hidden;
     max-height: 189px;
