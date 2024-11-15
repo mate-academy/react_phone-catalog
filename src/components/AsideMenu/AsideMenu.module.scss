@@ -9,12 +9,12 @@
 
 
   opacity: 0;
-  transform: translateY(-20px);
-  transition: opacity 0.3s ease, transform 0.3s ease;
+  transform: translateX(-100%);
+  transition: transform 0.5s ease-out;
 
   &_open {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateX(0);
   }
 
   &_buttons {

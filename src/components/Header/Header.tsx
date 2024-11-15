@@ -37,7 +37,11 @@ export const Header = () => {
   };
 
   return (
-    <div className={styles.topbar}>
+    <div
+      className={classNames(styles.topbar, {
+        [styles.open]: isMenuOpen,
+      })}
+    >
       <div className={styles.topbarLogoAndButtons}>
         <Link to="/home">
           <img

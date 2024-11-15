@@ -11,6 +11,10 @@ import { ItemsList } from '../ItemsList/ItemsList';
 export const ItemInformation = () => {
   const { productId } = useParams();
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [productId]);
+
   // список, лоадер та можлива помилка для конкретного селектора
   const items = useAppSelector(state => state.allProducts.items);
   const loaded = useAppSelector(state => state.allProducts.loaded);
