@@ -63,3 +63,4 @@ createRoot(document.getElementById('root') as HTMLElement)
       </Router>
     </>,
   );
+createRoot(document.getElementById('root') as HTMLElement).render(<App />);

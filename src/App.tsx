@@ -5,6 +5,7 @@ import { Header } from './components/Header';
 import { GeneralProvider } from './helpers/GeneralContext';
 
 export const App = () => (
+
   <GeneralProvider>
     <div className="App">
       <Header />
@@ -20,4 +21,7 @@ export const App = () => (
       <Footer />
     </div>
   </GeneralProvider>
+  <div className="App">
+    <h1>Product Catalog</h1>
+  </div>
 );
