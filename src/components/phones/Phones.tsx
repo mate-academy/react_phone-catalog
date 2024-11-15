@@ -10,6 +10,7 @@ import { Reload } from '../reload/Reload';
 
 export const Phones: React.FC = () => {
   const {
+    loadingErrPhones,
     phonesTotalNumber,
     itemsPerPage,
     activePage,
@@ -44,11 +45,11 @@ export const Phones: React.FC = () => {
     <div className={Styles['phones']}>
       {isLoadingPhones && <Skeleton />}
 
-      {!isLoadingPhones && loadingErr && <Reload />}
-
-      {!isLoadingPhones && !loadingErr && phonesTotalNumber === 0 && (
-        <p className={Styles.tablets__no_item}>There are no tablets yet</p>
+      {!isLoadingPhones && phonesTotalNumber === 0 && (
+        <p className={Styles.phones__no_item}>There are no phones yet</p>
       )}
+
+      {!isLoadingPhones && loadingErr && !loadingErrPhones && <Reload />}
 
       {!isLoadingPhones && (
         <>

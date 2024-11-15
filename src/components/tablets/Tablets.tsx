@@ -10,6 +10,7 @@ import { Reload } from '../reload/Reload';
 
 export const Tablets: React.FC = () => {
   const {
+    loadingErrTablets,
     tabletsTotalNumber,
     isLoadingTablets,
     tablets,
@@ -48,7 +49,7 @@ export const Tablets: React.FC = () => {
         <p className={Styles.tablets__no_item}>There are no tablets yet</p>
       )}
 
-      {!isLoadingTablets && loadingErr && <Reload />}
+      {!isLoadingTablets && loadingErr && !loadingErrTablets && <Reload />}
 
       {!isLoadingTablets && !loadingErr && tabletsTotalNumber !== 0 && (
         <>
@@ -97,7 +98,15 @@ export const Tablets: React.FC = () => {
           <div className={Styles['tablets__container']}>
             {tabletsOnPage.map(phone => {
               return (
-                <ProductCard key={phone.id} type={'tablets'} product={phone} />
+                <ProductCard
+                  style={{
+                    transform: `translateX(0px)`,
+                    transition: 'transform 0s ease-in-out',
+                  }}
+                  key={phone.id}
+                  type={'tablets'}
+                  product={phone}
+                />
               );
             })}
           </div>

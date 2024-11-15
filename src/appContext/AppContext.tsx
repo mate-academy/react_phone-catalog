@@ -14,6 +14,12 @@ type AppContextProps = {
   app: React.RefObject<HTMLDivElement>;
   setProducts: React.Dispatch<React.SetStateAction<Product[]>>;
   products: Product[];
+  loadingErrPhones: boolean;
+  setLoadingErrPhones: React.Dispatch<React.SetStateAction<boolean>>;
+  loadingErrAccessories: boolean;
+  setLoadingErrAccessories: React.Dispatch<React.SetStateAction<boolean>>;
+  loadingErrTablets: boolean;
+  setLoadingErrTablets: React.Dispatch<React.SetStateAction<boolean>>;
   productsTotalNumber: number;
   phonesTotalNumber: number;
   phones: Item[];
@@ -85,6 +91,10 @@ export const AppContext: React.FC<Props> = ({ children }) => {
   const [phonesTotalNumber, setPhonesTotalNumber] = useState(0);
   const [productsTotalNumber, setProductsTotalNumber] = useState(0);
   const [tabletsTotalNumber, setTabletsTotalNumber] = useState(0);
+  const [loadingErrPhones, setLoadingErrPhones] = useState<boolean>(false);
+  const [loadingErrAccessories, setLoadingErrAccessories] =
+    useState<boolean>(false);
+  const [loadingErrTablets, setLoadingErrTablets] = useState<boolean>(false);
   const [loadingErr, setLoadingErr] = useState<boolean>(false);
 
   const perPage = searchParams.get('perPage');
@@ -254,7 +264,7 @@ export const AppContext: React.FC<Props> = ({ children }) => {
         setAccessoriesTotalNumber(response.length);
       })
       .catch(err => {
-        setLoadingErr(true);
+        setLoadingErrAccessories(true);
         throw new Error('Smething went wrong', err);
       })
       .finally(() => {
@@ -271,7 +281,7 @@ export const AppContext: React.FC<Props> = ({ children }) => {
         setPhonesTotalNumber(response.length);
       })
       .catch(err => {
-        setLoadingErr(true);
+        setLoadingErrPhones(true);
         throw new Error('There are no phones yet', err);
       })
       .finally(() => {
@@ -288,7 +298,7 @@ export const AppContext: React.FC<Props> = ({ children }) => {
         setTabletsTotalNumber(response.length);
       })
       .catch(err => {
-        setLoadingErr(true);
+        setLoadingErrTablets(true);
         throw new Error('Something went wrong', err);
       })
       .finally(() => {
@@ -315,6 +325,12 @@ export const AppContext: React.FC<Props> = ({ children }) => {
   return (
     <ContextApp.Provider
       value={{
+        loadingErrAccessories,
+        loadingErrPhones,
+        loadingErrTablets,
+        setLoadingErrAccessories,
+        setLoadingErrPhones,
+        setLoadingErrTablets,
         loadingErr,
         setLoadingErr,
         handleClearParams,
