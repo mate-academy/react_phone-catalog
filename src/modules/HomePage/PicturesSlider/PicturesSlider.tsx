@@ -11,7 +11,7 @@ import image7 from '../../../../public/img/PicturesSlider/Apple8.jpg'
 import image8 from '../../../../public/img/PicturesSlider/Apple2.jpg';
 import image9 from '../../../../public/img/PicturesSlider/Apple9.jpg';
 
-const images = [image4, image6, image5, image2, image7, image8, image9 ];
+const images = [ image4, image6, image5, image2, image7, image8, image9 ];
 
 export const PicturesSlider: React.FC = () => {
   const [imageIndex, setImageIndex] = useState<number>(0);

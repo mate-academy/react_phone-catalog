@@ -1,9 +1,7 @@
 import React from 'react';
-
 import { Link, useParams } from 'react-router-dom';
 import { Product } from '../../types/Product';
 import styles from './Breadcrumbs.module.scss';
-
 import homeIcon from '../../../public/img/icons/Home.svg';
 import strokeRight from '../../../public/img/icons/StrokeRight.svg';
 

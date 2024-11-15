@@ -67,7 +67,7 @@
 }
 
 .icon:hover {
-  background-color: rgba(173, 255, 47, 0.7);
+  background-color: var(--icon-sliderHover);
 }
 
 .sliderIndicators {
@@ -87,7 +87,7 @@
   transition: background-color 0.3s ease, transform 0.3s ease;
 }
 .sliderIndicator.active {
-  background-color: greenyellow;
+  background-color: var(--slider-indicator);
   transform: scale(1.2);
 }
 

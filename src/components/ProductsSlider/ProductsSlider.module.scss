@@ -67,11 +67,11 @@ $font-weight-regular: 400;
   background-color: transparent;
   cursor: pointer;
   transition: 0.5 ease;
-  border: 0.5px solid yellowgreen;
+  border: 0.5px solid var(--button-sliderBorder);
 }
 
 .slider__button:hover {
-  background-color: yellowgreen;
+  background-color: var(--slider-buttonHover);
 }
 
 .slider__button:disabled {

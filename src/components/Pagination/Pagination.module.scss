@@ -125,7 +125,7 @@ $font-weight-regular: 400;
 }
 
 .pagination__pageButton:hover {
-  background-color: hsl(84, 77%, 76%, 0.8);
+  background-color: var(--pagination__pageButton-hover);
   transition: 0.8 all ease;
   font-size: 14px;
   font-weight: 600;
@@ -133,7 +133,7 @@ $font-weight-regular: 400;
 }
 
 .pagination__pageButton:active {
-  background-color: greenyellow;
+  background-color: var(--pagination__pageButton-active);
   color: rgb(46, 46, 46);
 }
 

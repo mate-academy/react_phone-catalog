@@ -1,10 +1,8 @@
 import React from 'react';
-
 import styles from  './ProductCard.module.scss';
-
 import { Link } from 'react-router-dom';
 import { favouritesIcon } from '../../assets/icons';
-import  redIcon  from '../../../public/img/icons/red.png';
+import redIcon from '../../../public/img/icons/red.png';
 import { Product } from '../../types/Product';
 import { useCart } from '../../context/CartContext/CartContext';
 import { useFavorites } from '../../context/FavoritesContext/FavoritesContext';
@@ -17,8 +15,8 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   const { addToCart, cart, } = useCart();
   const { toggleFavorite, isFavorite } = useFavorites();
 
-  const isInCart = cart.some(item => item.id === product.id);
   const productId = product.itemId || product.id;
+  const isInCart = cart.some(item => item.id === productId);
   const productImage = product.image || product.images[0];
   const productPrise = product.price || product.priceDiscount;
   const productAdditionalPrice = product.priceRegular ? `$${product.priceRegular}` : '';
@@ -58,7 +56,6 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         </div>
       </div>
       <div className={styles.productCard__actions}>
-
           <button
             onClick={() => addToCart(product)}
             disabled={isInCart}

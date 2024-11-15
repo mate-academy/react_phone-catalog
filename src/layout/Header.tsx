@@ -7,9 +7,8 @@ import { useFavorites } from '../context/FavoritesContext/FavoritesContext';
 import { useCart } from '../context/CartContext/CartContext';
 import styles from './Header.module.scss';
 import { useTheme } from '../context/ThemeContext/ThemeContext';
-import switchIcon from '../../public/img/icons/offButton.png';
-import ofButton from '../../public/img/icons/iconSwitch1.png';
-import { Search } from '../components/Search/Search';
+import ofButton from '../../public/img/icons/SwitchLeft.svg';
+import switchIcon from '../../public/img/icons/onButton.png';
 
 interface HeaderProps {
 
@@ -119,10 +118,7 @@ export const Header = forwardRef<HTMLDivElement, HeaderProps>((props, ref) => {
             )}
           </NavLink>
         </div>
-
       </div>
-
-
 
       <button className={`${styles.burgerMenu} ${isMenuOpen ? styles.open : ''}`} onClick={toggleBurgerMenu}>
         <span className={isMenuOpen ? styles.cross : ''}></span>

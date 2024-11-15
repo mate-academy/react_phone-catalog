@@ -14,7 +14,6 @@ import styles from './PhonesPage.module.scss';
 import { Breadcrumbs } from '../../components/Breadcrumbs/Breadcrumbs';
 import { Search } from '../../components/Search/Search';
 
-
 export const PhonesPage: React.FC = () => {
   const { products, loading, error } = useFetchProducts('phones');
   const {
@@ -88,8 +87,8 @@ export const PhonesPage: React.FC = () => {
             sort={sort}
             itemsPerPage={itemsPerPage}
             onSortChange={handleSortChange}
-            onItemsPerPageChange={handleItemsPerPageChange}/>
-
+            onItemsPerPageChange={handleItemsPerPageChange}
+          />
 
           <ProductsList products={filteredProducts} />
 

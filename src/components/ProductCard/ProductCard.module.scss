@@ -118,7 +118,7 @@ $font-weight-regular: 400;
   }
 
   &__button {
-    color: rgb(83, 82, 82);
+    color: var(--button-textColor);
     border: none;
     border-radius: 30px;
     padding: 8px 16px;
@@ -192,6 +192,10 @@ $font-weight-regular: 400;
     width: 100%;
     grid-template-columns: repeat(2, 1fr);
   }
+
+  .productCard__button {
+    width: 100%;
+  }
 }
 
 @media (min-width: 320px) and (max-width: 639px) {
@@ -199,5 +203,9 @@ $font-weight-regular: 400;
     display: flex;
     width: 100%;
     max-width: 639px;
+  }
+
+  .productCard__button {
+    width: 100%;
   }
 }

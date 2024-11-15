@@ -124,7 +124,6 @@ export const CartPage: React.FC = () => {
 
         <button
           className={styles.chekoutButton}
-
           onClick={() => {
           if (window.confirm('Checkout is not implemented yet. Do you want to clear the Cart?')) {
             clearCart();

@@ -44,7 +44,7 @@ $font-weight-regular: 400;
   align-items: center;
   text-align: center;
   font-family: $font-primary;
-  margin-bottom: 56px;
+  // margin-bottom: 56px;
 
 
   &__logo {
@@ -74,7 +74,7 @@ $font-weight-regular: 400;
     font-weight: 700;
     letter-spacing: 2px;
     text-align: center;
-    color: greenyellow;
+    color: var(--header-navLink);
     text-decoration: none;
     transition: color 0.3s;
     display: flex;
@@ -125,7 +125,6 @@ $font-weight-regular: 400;
 
 .header__icons {
   display: flex;
-
 }
 .switchIcon {
   border-radius: 20%;
@@ -160,7 +159,7 @@ img.iconSwitch {
   border-radius: 50%;
   padding: 2px 5px;
   text-decoration: none;
-  color: greenyellow;
+  color: var(--total-favorites);
   font-size: 16px;
   outline: none;
   margin-left: 5px;
@@ -171,7 +170,7 @@ img.iconSwitch {
   top: -10px;
   left: 10px;
   text-decoration: none;
-  color: greenyellow;
+  color: var(--total-favorites);
   padding: 2px 5px;
   font-size: 16px;
   outline: none;
@@ -198,6 +197,13 @@ img.iconSwitch {
     }
   }
 
+  img.iconSwitch {
+    text-align: center;
+    width: 35px;
+    height: 30px;
+    margin: 0;
+  }
+
   .header__icons {
     display: flex;
     align-items: center;
@@ -205,11 +211,14 @@ img.iconSwitch {
 
   .header__iconFavourites {
     margin-right: 20px;
-
+    align-items: center;
+    display: flex;
   }
 
   .header__iconBag {
     margin-right: 15px;
+    align-items: center;
+    display: flex;
   }
 
   .totalFavorites {

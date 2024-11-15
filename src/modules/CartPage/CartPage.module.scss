@@ -134,6 +134,7 @@ h1 {
 
 .productQuantity button {
   transition: background-color 0.3s ease;
+  margin-right: 20px;
 }
 
 .productQuantity__elementActive {
@@ -185,6 +186,7 @@ h1 {
   width: 30px;
   height: 30px;
   color: #F1F2F9;
+  margin-right: 10px;
 }
 
 .productQuantity__numberActive {
@@ -281,17 +283,13 @@ h1 {
     margin-bottom: 80px;
     display: block;
     width: 100%;
-
   }
   .cartContainer {
-
     flex-direction: column;
-
   }
 
   .itemCart {
     display: block;
-
     margin-bottom: 20px;
     background: var(--item-cart);
     align-items: center;
@@ -329,33 +327,11 @@ h1 {
     display: flex;
     align-items: center;
     justify-content: center;
-
   }
-
-  // .itemCart {
-  //   width: 100%;
-  //   display: block;
-  //   flex-direction: column;
-  // }
-
-  // .productCart__title{
-  //   color: #F1F2F9;
-  //   font-family: $font-primary;
-  //   font-size: 14px;
-  //   font-weight: 600;
-  //   line-height: 21px;
-  //   text-align: right;
-  //   display: block;
-  // }
-
-  // .productQuantity {
-  //   display: block;
-  // }
 
   .productCart__image {
     display:block;
     justify-content: flex-start;
-
   }
 
   .product__removeButton {

@@ -3,9 +3,7 @@ import  strokeLeft  from '../../../public/img/icons/StrokeLeft.svg';
 import styles from './BackButton.module.scss';
 
 export const BackButton = () => {
-
   const navigate = useNavigate();
-
   const handleBackClick = () => {
     navigate(-1);
   }

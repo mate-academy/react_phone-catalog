@@ -93,7 +93,7 @@ $font-weight-regular: 400;
   width: 30px;
   height: 30px;
   cursor: pointer;
-  background-color: yellowgreen;
+  background-color: var(--footer-button);
 }
 
 @media (min-width: 640px) and (max-width: 1199px) {

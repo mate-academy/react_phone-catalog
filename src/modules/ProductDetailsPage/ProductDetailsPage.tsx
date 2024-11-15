@@ -35,7 +35,7 @@ export const ProductDetailsPage: React.FC<ProductDetailsPageProps> = () => {
   Product[]
   >([]);
   const { addToCart, cart } = useCart();
-  const { favorites, toggleFavorite, isFavorite, } = useFavorites();
+  const { toggleFavorite, isFavorite, } = useFavorites();
 
   console.log('product', product);
 

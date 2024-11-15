@@ -107,8 +107,6 @@ main {
 
 .productId {
   display: flex;
-
-
 }
 
 .pickerTitle {
@@ -218,7 +216,7 @@ main {
   margin-bottom: 32px;
 
   &__button {
-    color: rgb(83, 82, 82);
+    color: var(--button-textColor);
     border: none;
     border-radius: 30px;
     padding: 8px 16px;
@@ -229,15 +227,14 @@ main {
     font-size: 14px;
     line-height: 21px;
     transition: all 0.7s ease;
-    background-color: #78b829;
+    background-color: var(--button-infoProduct);
     margin-right: 20px;
   }
 
   &__button:hover {
-    background: linear-gradient(120deg, #000000, #064d6c, #57788c,);
     color: rgb(143, 143, 145);
     scale: 1.1;
-    background: #304d0d;
+    background: var(--button-backgroundHover);
   }
 
   &__icon {
@@ -398,6 +395,9 @@ main {
 
 
 @media (min-width: 640px) and (max-width: 1199px) {
+  .productActions__button {
+    width: 100%;
+  }
   .section__title {
     width: 100%;
   }
@@ -565,14 +565,12 @@ main {
     display: flex;
     flex-direction: column-reverse;
     justify-content: center;
-    // max-height: 485px;
   }
 
   .productGallery__thumbnails {
     height: auto;
     display: flex;
     flex-direction: row;
-    // justify-content: flex-start;
     justify-content: center;
     gap: 16px;
     overflow-x: auto;

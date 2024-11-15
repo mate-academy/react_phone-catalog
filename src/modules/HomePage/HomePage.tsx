@@ -11,13 +11,11 @@ import styles from './HomePage.module.scss';
 import { Loader } from '../../components/Loader/Loader';
 
 export const HomePage: React.FC = () => {
-
   const [error, setError] = useState('');
   const [loading, setLoading] = useState<boolean>(true);
   const [hotGoods, setHotGoods] = useState<Product[]>([]);
   const [newestGoods, setNewestGoods] = useState<Product[]>([]);
   const [allProducts, setAllProducts] = useState<Product[]>([]);
-
 
   const categories = ["phones", "tablets", "accessories"]
 

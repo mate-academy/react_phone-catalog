@@ -38,7 +38,7 @@ $font-weight-regular: 400;
 
 .blocks {
   display: flex;
-  
+
   gap: 16px;
   margin-bottom: 24px;
 }
@@ -52,6 +52,14 @@ $font-weight-regular: 400;
   color: #F1F2F9;
   border: none;
   font-family: $font-primary;
+}
+
+.sorting__selectContainer {
+  border: 1px solid var(--color);
+}
+
+.itemsPerPage__selectContainer {
+  border: 1px solid var(--color);
 }
 .sorting__option {
   font-size: $font-size-base;
