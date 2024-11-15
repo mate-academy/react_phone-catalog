@@ -198,10 +198,13 @@ $font-weight-regular: 400;
   .productCard {
     display: flex;
     width: 100%;
+    width: 212px;
     max-width: 639px;
   }
 
   .productCard__button {
     width: 100%;
+    margin-right: 4px;
+    padding: 4px 8px;
   }
 }
