@@ -18,6 +18,10 @@ export const Favourites: React.FC = () => {
         {fav.map(product => {
           return (
             <ProductCard
+              style={{
+                transform: `translateX(0px)`,
+                transition: 'transform 0s ease-in-out',
+              }}
               key={product.id}
               type={product.category}
               product={product}

@@ -98,7 +98,15 @@ export const Phones: React.FC = () => {
           <div className={Styles['phones__container']}>
             {phonesOnPage.map(phone => {
               return (
-                <ProductCard key={phone.id} type={'phones'} product={phone} />
+                <ProductCard
+                  style={{
+                    transform: `translateX(0px)`,
+                    transition: 'transform 0s ease-in-out',
+                  }}
+                  key={phone.id}
+                  type={'phones'}
+                  product={phone}
+                />
               );
             })}
           </div>

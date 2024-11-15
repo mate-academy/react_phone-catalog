@@ -57,7 +57,6 @@ export const ItemSlider: React.FC<Props> = ({
     let maxNumber = Math.max(4, getNumber(minNumber, number));
 
     if (minNumber === maxNumber) {
-      console.log('in');
       maxNumber = Math.max(4, getNumber(minNumber, number));
     }
     const newProducts = list.slice(minNumber, maxNumber);

@@ -6,14 +6,14 @@ import { Suspense, useContext } from 'react';
 import { ContextApp } from './appContext/AppContext';
 import { NotFoundPage } from './components/notFoundPage';
 import { Home } from './components/home';
+import { BackToTop } from './components/backToTop';
+import React from 'react';
 // import { Tablets } from './components/tablets';
 // import { Phones } from './components/phones';
 // import { Accessories } from './components/accessories';
 // import { Details } from './components/details';
 // import { Favourites } from './components/favourites/Favourtes';
 // import { Cart } from './components/cart';
-import { BackToTop } from './components/backToTop';
-import React from 'react';
 
 const Tablets = React.lazy(() => import('./components/tablets').then(module => ({ default: module.Tablets })));
 const Phones = React.lazy(() => import('./components/phones').then(module => ({ default: module.Phones })));

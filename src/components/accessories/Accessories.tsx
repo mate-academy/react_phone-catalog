@@ -103,6 +103,10 @@ export const Accessories: React.FC = () => {
             {accessoriesOnPage.map(accessory => {
               return (
                 <ProductCard
+                  style={{
+                    transform: `translateX(0px)`,
+                    transition: 'transform 0s ease-in-out',
+                  }}
                   type={'accessories'}
                   key={accessory.id}
                   product={accessory}
