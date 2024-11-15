@@ -35,6 +35,18 @@ $font-weight-bold: 800;
 $font-weight-medium: 600;
 $font-weight-regular: 400;
 
+.informationItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.quantity {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .cartBlock {
   margin-bottom: 80px;
 }
@@ -65,6 +77,7 @@ h1 {
 .itemCart {
   display: flex;
   margin-bottom: 20px;
+  justify-content: space-between;
   background: var(--item-cart);
   align-items: center;
   text-align: center;
@@ -82,6 +95,7 @@ h1 {
   border: none;
   font-size: 20px;
   cursor: pointer;
+  margin-right: 20px;
 }
 .product__removeButton:active {
   width: 30px;
@@ -102,6 +116,8 @@ h1 {
   text-align: left;
 }
 .productCart__image {
+  margin-right: 40px;
+
     width: 80;
     max-height: 80px;
     transition: transform 0.3s ease;
@@ -274,23 +290,77 @@ h1 {
   }
 
   .itemCart {
-    width: 100%;
     display: block;
-    flex-direction: column;
+
+    margin-bottom: 20px;
+    background: var(--item-cart);
+    align-items: center;
+    text-align: center;
+    padding: 24px;
+    border-radius: 20px;
+
+    justify-content: space-between;
   }
 
-  .productCart__title{
-    color: #F1F2F9;
-    font-family: $font-primary;
-    font-size: 14px;
-    font-weight: 600;
-    line-height: 21px;
-    text-align: right;
-    display: block;
+  .productCart__quantity {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
   }
 
-  .productQuantity {
-    display: block;
+  .informationItem {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+  }
+  .productCart__price {
+    align-items: center;
+    justify-content: space-between;
+  }
+  .quantity {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 50px;
+  }
+
+  .productCart__quantity {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+  }
+
+  // .itemCart {
+  //   width: 100%;
+  //   display: block;
+  //   flex-direction: column;
+  // }
+
+  // .productCart__title{
+  //   color: #F1F2F9;
+  //   font-family: $font-primary;
+  //   font-size: 14px;
+  //   font-weight: 600;
+  //   line-height: 21px;
+  //   text-align: right;
+  //   display: block;
+  // }
+
+  // .productQuantity {
+  //   display: block;
+  // }
+
+  .productCart__image {
+    display:block;
+    justify-content: flex-start;
+
+  }
+
+  .product__removeButton {
+    display:block;
+    justify-content: flex-start;
   }
 
 }

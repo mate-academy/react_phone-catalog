@@ -73,44 +73,47 @@ export const CartPage: React.FC = () => {
           {cart.map(item => (
 
             <div className={styles.itemCart} key={item.id}>
-              <button
-                className={`${styles.product__removeButton} ${activeRemoveButton[item.id] ? styles.active : ''}`}
-                onClick={() => handleButtonRemove(item)}>x</button>
-              <img
-                src={`/${item.product.image}`}
-                alt={item.product.name}
-                className={styles.productCart__image}
-              />
-              <h3 className={styles.productCart__title}>{item.product.name}</h3>
-              <div className={`${styles.productCart__quantity} ${styles.productQuantity}`}>
+              <div className={styles.informationItem}>
                 <button
-                  className={
-                    activeButtons[item.id]?.decrease
-                    ? styles.productQuantity__elementActive
-                    : styles.productQuantity__element
-                  }
-                  onClick={() => handleButtonPress(item, false)}>
-                    -
-                </button>
-                <span
-                  className={
-                    activeQuantity[item.id]
-                    ? styles.productQuantity__numberActive
-                    : styles.productQuantity__number
-                  }
-                >
-                  {item.quantity}
-                </span>
-                <button
-                  className={
-                    activeButtons[item.id]?.increase
-                    ? styles.productQuantity__elementActive
-                    : styles.productQuantity__element
-                  }
-                  onClick={() => handleButtonPress(item, true)}>+</button>
+                  className={`${styles.product__removeButton} ${activeRemoveButton[item.id] ? styles.active : ''}`}
+                  onClick={() => handleButtonRemove(item)}>x</button>
+                <img
+                  src={`/${item.product.image}`}
+                  alt={item.product.name}
+                  className={styles.productCart__image}
+                />
+                <h3 className={styles.productCart__title}>{item.product.name}</h3>
               </div>
-              <p className={styles.productCart__price}>${item.product.price}</p>
-
+              <div className={styles.quantity}>
+                <div className={`${styles.productCart__quantity} ${styles.productQuantity}`}>
+                  <button
+                    className={
+                      activeButtons[item.id]?.decrease
+                      ? styles.productQuantity__elementActive
+                      : styles.productQuantity__element
+                    }
+                    onClick={() => handleButtonPress(item, false)}>
+                      -
+                  </button>
+                  <span
+                    className={
+                      activeQuantity[item.id]
+                      ? styles.productQuantity__numberActive
+                      : styles.productQuantity__number
+                    }
+                  >
+                  {item.quantity}
+                  </span>
+                  <button
+                    className={
+                      activeButtons[item.id]?.increase
+                      ? styles.productQuantity__elementActive
+                      : styles.productQuantity__element
+                    }
+                    onClick={() => handleButtonPress(item, true)}>+</button>
+                </div>
+                <p className={styles.productCart__price}>${item.product.price}</p>
+              </div>
             </div>
           ))}
         </div>
