@@ -1,0 +1,51 @@
+.swiperContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  .swiperHead {
+    align-items: center;
+
+    .title {
+      grid-column: 1 / 3;
+    }
+
+    .swiperControls {
+      grid-column: 3 / -1;
+      display: flex;
+      justify-content: flex-end;
+      gap: 16px;
+    }
+
+    .swiperControlsSkeleton {
+      justify-content: flex-end;
+    }
+  }
+
+  .swiper {
+    &:global(.swiper) {
+      overflow: visible;
+
+      @include on-desktop {
+        overflow: hidden;
+      }
+
+      :global(.swiper-slide) {
+        width: 212px;
+
+        @include on-tablet {
+          width: 237px;
+        }
+
+        @include on-desktop {
+          width: 272px;
+        }
+      }
+    }
+  }
+
+  .swiperSkeleton {
+    width: fit-content;
+    overflow: hidden;
+  }
+}

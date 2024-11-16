@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 
+import { LocalStorage } from '@shared/services/LocalStorage';
 import { contextFactory } from '@shared/utils/contextFactory';
 
 interface ThemeProps {
@@ -29,10 +30,18 @@ const { context: ThemeContext, useContext: useTheme } = contextFactory<Theme>({
 });
 
 const ThemeProvider = ({ children }: ThemeProps) => {
-  const [theme, setTheme] = useState<Theme['theme']>('light');
+  const currentTheme = LocalStorage.getItem('theme') ?? 'light';
+
+  const [theme, setTheme] = useState<Theme['theme']>(currentTheme);
 
   const onToggleTheme = () => {
-    setTheme(prev => getOppositeTheme(prev));
+    setTheme(prev => {
+      const newTheme = getOppositeTheme(prev);
+
+      LocalStorage.setItem('theme', newTheme);
+
+      return newTheme;
+    });
   };
 
   useEffect(() => {

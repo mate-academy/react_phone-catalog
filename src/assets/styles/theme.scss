@@ -20,6 +20,29 @@
     --card-main-border-color: var(--grey-300);
     --card-internal-border: var(--grey-300);
     --card-cross-out-text-color: var(--grey-700);
+
+    // icon button
+    --primary-button-border-color: var(--grey-500);
+    --primary-button-bg: var(--white);
+    --primary-button-color: var(--grey-900);
+    --primary-button-active-bg: var(--grey-900);
+    --primary-button-active-border-color: var(--grey-900);
+    --primary-button-active-color: var(--white);
+    --primary-button-hover-border-color: var(--grey-900);
+    --primary-button-hover-bg: var(--white);
+    --primary-button-disabled-bg: var(--white);
+    --primary-button-disabled-color: var(--grey-300);
+    --primary-button-disabled-border-color: var(--grey-300);
+
+    // skeleton
+    --skeleton-bg: var(--grey-300);
+    --skeleton-gradient: linear-gradient(
+      90deg,
+      var(--skeleton-bg) 0,
+      rgba(255, 255, 255, 0.3) 20%,
+      rgba(255, 255, 255, 0.6) 60%,
+      var(--skeleton-bg)
+    );
   }
 
   .dark {
@@ -41,5 +64,28 @@
     --card-main-border-color: var(--blue-grey-800);
     --card-internal-border: var(--blue-grey-500);
     --card-cross-out-text-color: var(--blue-grey-100);
+
+    // icon button
+    --primary-button-border-color: var(--blue-grey-700);
+    --primary-button-bg: var(--blue-grey-700);
+    --primary-button-color: var(--grey-200);
+    --primary-button-active-bg: var(--purple);
+    --primary-button-active-border-color: var(--purple);
+    --primary-button-active-color: var(--grey-200);
+    --primary-button-hover-border-color: var(--blue-grey-300);
+    --primary-button-hover-bg: var(--blue-grey-300);
+    --primary-button-disabled-bg: var(--blue-grey-900);
+    --primary-button-disabled-color: var(--blue-grey-500);
+    --primary-button-disabled-border-color: var(--blue-grey-500);
+
+    // skeleton
+    --skeleton-bg: var(--blue-grey-800);
+    --skeleton-gradient: linear-gradient(
+      90deg,
+      var(--skeleton-bg) 0,
+      rgba(50, 53, 66, 0.1) 20%,
+      rgba(50, 53, 66, 0.2) 60%,
+      var(--skeleton-bg)
+    );
   }
 }

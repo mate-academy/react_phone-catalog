@@ -3,7 +3,7 @@
   border: 1px solid var(--card-main-border-color);
   background-color: var(--card-bg);
 
-  .link {
+  .imgLink {
     display: block;
     height: 196px;
 
@@ -30,24 +30,30 @@
     padding-bottom: 8px;
     border-bottom: 1px solid var(--card-internal-border);
 
+    .titleLink {
+      .title {
+        @include line-clamp(2);
+
+        &:active {
+          opacity: var(--main-hover-opacity);
+        }
+      }
+
+      @include on-desktop {
+        &:hover {
+          .title {
+            opacity: var(--main-hover-opacity);
+          }
+        }
+      }
+    }
+
     .price {
       display: flex;
       gap: 8px;
 
-      // line through invert
       .old {
         color: var(--card-cross-out-text-color);
-        text-decoration: none;
-
-        &::after {
-          content: '';
-          display: block;
-          width: 100%;
-          height: 2px;
-          backdrop-filter: invert(1);
-          position: relative;
-          top: -12px;
-        }
       }
     }
   }

@@ -10,52 +10,65 @@
     border-color 0.2s ease,
     color 0.2s ease;
 
-  .sm {
+  &.sm {
     width: 32px;
     height: 32px;
   }
 
-  .md {
+  &.md {
     width: 40px;
     height: 40px;
   }
 
-  .lg {
+  &.lg {
     width: 48px;
     height: 48px;
-  }
-
-  .primary {
-    border-color: var(--grey-300);
-    color: var(--grey-900);
-    background-color: var(--white);
-
-    &:active {
-      border-color: var(--grey-900);
-      background-color: var(--grey-900);
-      color: var(--white);
-    }
-
-    @include on-desktop {
-      &:hover {
-        border-color: var(--grey-900);
-      }
-    }
-  }
-
-  .disabled,
-  .disabled:hover,
-  .disabled:active {
-    cursor: default;
-    color: var(--grey-300);
-    background-color: var(--white);
-    border-color: var(--grey-300);
   }
 
   svg {
     path {
       fill: currentColor;
       transition: fill 0.2s ease;
+    }
+  }
+
+  &.primary {
+    border-color: var(--primary-button-border-color);
+    color: var(--primary-button-color);
+    background-color: var(--primary-button-bg);
+
+    &:active {
+      border-color: var(--primary-button-active-border-color);
+      background-color: var(--primary-button-active-bg);
+      color: var(--primary-button-active-color);
+
+      svg {
+        path {
+          fill: var(--primary-button-active-color);
+        }
+      }
+    }
+
+    @include on-desktop {
+      &:hover {
+        background-color: var(--primary-button-hover-bg);
+        border-color: var(--primary-button-hover-border-color);
+      }
+    }
+
+    &.disabled,
+    &.disabled:hover,
+    &.disabled:active {
+      cursor: default;
+      color: var(--primary-button-disabled-color);
+      background-color: var(--primary-button-disabled-bg);
+      border-color: var(--primary-button-disabled-border-color);
+
+      svg {
+        path {
+          fill: var(--primary-button-disabled-color);
+        }
+      }
     }
   }
 }

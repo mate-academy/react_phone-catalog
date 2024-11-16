@@ -15,3 +15,17 @@ export const extractBreakPoints = () => {
     parseInt(root.getPropertyValue(value)),
   );
 };
+
+export const generateImgUrls = (url: string) => {
+  const strArr = url.split('.');
+
+  if (strArr.length !== 2) {
+    return [];
+  }
+
+  const urlsArr = ['sm', 'md', 'lg'].map(
+    size => `${strArr.at(0)}-${size}.${strArr.at(1)}`,
+  );
+
+  return urlsArr;
+};

@@ -9,9 +9,15 @@ export class LocalStorage {
     return null;
   }
 
-  // static setItem(key: string, value: V) {
-  //   const item;
-  // }
+  static setItem<V>(key: string, value: V) {
+    if (value) {
+      const item = JSON.stringify(value);
 
-  static removeItem: () => {};
+      localStorage.setItem(key, item);
+    }
+  }
+
+  static removeItem(key: string) {
+    localStorage.removeItem(key);
+  }
 }

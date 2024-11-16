@@ -1,19 +1,28 @@
 @mixin page-grid {
   --columns: 4;
 
-  padding: 0 16px;
+  display: grid;
+  grid-template-columns: repeat(var(--columns), 1fr);
+  padding-inline: 16px;
 
   @include on-tablet {
     --columns: 12;
 
-    padding: 0 24px;
+    padding-inline: 24px;
   }
 
   @include on-desktop {
     --columns: 24;
 
-    padding: 0 32px;
+    padding-inline: 0;
   }
+}
+
+@mixin line-clamp($value) {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: $value;
+  -webkit-box-orient: vertical;
 }
 
 @mixin on-mobile {

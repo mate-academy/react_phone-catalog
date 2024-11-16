@@ -6,7 +6,7 @@ import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 import { useMedia } from '@shared/hooks/useMedia';
 import { extractBreakPoints } from '@shared/utils/helpers';
 
-export const useMainSlider = () => {
+export const useHeroSlider = () => {
   const { isMobile } = useMedia();
 
   const swiperRef = useRef<SwiperType>();
@@ -18,7 +18,7 @@ export const useMainSlider = () => {
       modules: [Pagination, Autoplay, Navigation],
       pagination: { clickable: true },
       slidesPerGroup: 1,
-      allowTouchMove: false,
+      spaceBetween: 16,
       autoplay: {
         delay: 5000,
         disableOnInteraction: false,

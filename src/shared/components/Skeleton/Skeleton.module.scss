@@ -1,0 +1,27 @@
+.skeletonContainer {
+  width: 100%;
+  display: flex;
+
+  .skeletonItem {
+    width: 100%;
+    min-height: #{$html-font-size}px;
+    background-color: var(--skeleton-bg);
+    position: relative;
+    overflow: hidden;
+
+    &::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      transform: translateX(-100%);
+      background-image: var(--skeleton-gradient);
+      animation: shimmer 3s infinite;
+    }
+  }
+
+  @keyframes shimmer {
+    100% {
+      transform: translateX(100%);
+    }
+  }
+}

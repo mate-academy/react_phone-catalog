@@ -1,18 +1,13 @@
 .homePage {
-  .heroSection {
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-    padding-top: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 56px;
 
-    @include on-tablet {
-      gap: 32px;
-      padding-top: 32px;
-    }
+  @include on-tablet {
+    gap: 64px;
+  }
 
-    @include on-desktop {
-      gap: 56px;
-      padding-top: 56px;
-    }
+  @include on-desktop {
+    gap: 80px;
   }
 }
