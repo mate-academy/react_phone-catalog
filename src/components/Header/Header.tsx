@@ -40,24 +40,15 @@ export const Header: React.FC<Props> = ({
 
   useEffect(() => {
     if (searchInput.current && isSearchOpen) {
-      // searchInput.current.focus();
-      searchInput.current?.blur();
-      setTimeout(() => {
-        if (searchInput.current) {
-          searchInput.current?.focus();
-        }
-      }, 350);
+      searchInput.current.focus();
+      // searchInput.current?.blur();
+      // setTimeout(() => {
+      //   if (searchInput.current) {
+      //     searchInput.current?.focus();
+      //   }
+      // }, 350);
     }
   }, [isSearchOpen]);
-
-  const handleFocus = () => {
-    setTimeout(() => {
-      if (searchInput.current) {
-        searchInput.current?.focus();
-        searchInput.current?.click();
-      }
-    }, 350);
-  }
 
   const handleMenu = () => {
     handleMobileMenu(!isMobileMenuOpen);
@@ -115,7 +106,6 @@ export const Header: React.FC<Props> = ({
               aria-label={`Search in ${category}...`}
               inputMode="text"
               value={query}
-              onFocus={handleFocus}
               onBlur={() => setIsSearchOpen(false)}
               onChange={e => setQuery(e.target.value)}
             />

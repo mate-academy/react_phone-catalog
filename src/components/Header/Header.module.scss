@@ -130,30 +130,27 @@
   position: absolute;
   box-sizing: border-box;
   height: 100%;
-  width: 100%;
+  width: 0;
+  right: 0;
   transition: all $transition-duration ease-out;
-  transform: translateX(100%);
   outline: none;
-  padding: 2.2rem 2rem 2rem;
-  font-size: 1.2rem;
+  font-size: 1.6rem;
   color: $color-primary;
-  vertical-align: center;
   border: none;
-  caret-shape: bar;
   caret-color: $color-secondary;
 
 
   &::placeholder {
     font-size: inherit;
     color: $color-secondary;
-    vertical-align: center;
   }
 
   &IsActive {
-    transform: translateX(0%);
+    padding: 2.2rem 2rem 2rem;
+    width: 100%;
   }
 
-  &CaretActive{
+  &CaretActive {
     caret-color: $color-primary;
   }
 }
