@@ -40,7 +40,7 @@ export const Header: React.FC<Props> = ({
 
   useEffect(() => {
     if (searchInput.current && isSearchOpen) {
-      setTimeout(() => searchInput.current?.focus(), 300);
+      searchInput.current?.focus();
     }
   }, [isSearchOpen]);
 
