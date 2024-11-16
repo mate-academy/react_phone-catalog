@@ -97,6 +97,8 @@ export const Header: React.FC<Props> = ({
                 [styles.searchInputCaretActive]: !!query,
               })}
               placeholder={`Search in ${category}...`}
+              aria-label={`Search in ${category}...`}
+              inputMode="text"
               value={query}
               onBlur={() => setIsSearchOpen(false)}
               onChange={e => setQuery(e.target.value)}
