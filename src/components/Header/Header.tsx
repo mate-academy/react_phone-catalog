@@ -40,7 +40,13 @@ export const Header: React.FC<Props> = ({
 
   useEffect(() => {
     if (searchInput.current && isSearchOpen) {
-      setTimeout(() => searchInput.current?.focus(), 300);
+      searchInput.current.readOnly = true;
+      setTimeout(() => {
+        if (searchInput.current) {
+          searchInput.current.readOnly = false;
+          searchInput.current.focus();
+        }
+      }, 300);
     }
   }, [isSearchOpen]);
 
@@ -99,7 +105,6 @@ export const Header: React.FC<Props> = ({
               placeholder={`Search in ${category}...`}
               aria-label={`Search in ${category}...`}
               inputMode="text"
-              autoFocus
               value={query}
               onBlur={() => setIsSearchOpen(false)}
               onChange={e => setQuery(e.target.value)}
