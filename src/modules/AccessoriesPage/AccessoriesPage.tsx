@@ -65,6 +65,9 @@ export const AccessoriesPage: React.FC = () => {
         newParams.delete('query');
       }
 
+      newParams.set('page', '1');
+      debouncedSetParams(newParams)
+
       debouncedSetParams(newParams);
     },
     [searchParams, debouncedSetParams],

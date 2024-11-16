@@ -91,7 +91,7 @@ export const CartPage: React.FC = () => {
                     x
                   </button>
                   <img
-                    src={`/${item.product.image}`}
+                    src={`${item.product.image}`}
                     alt={item.product.name}
                     className={styles.productCart__image}
                   />
