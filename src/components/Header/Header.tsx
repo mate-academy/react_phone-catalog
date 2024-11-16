@@ -62,7 +62,7 @@ export const Header: React.FC<Props> = ({
     }
 
     return () => setIsSearchBtnVisible(false);
-  }, [pathname]);
+  }, [category]);
 
   const openSearch = () => {
     setIsSearchOpen(true);
