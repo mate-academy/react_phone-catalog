@@ -1,3 +1,6 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable  max-len */
+
 import React, { useCallback, useEffect, useState } from 'react';
 import { Loader } from '../../components/Loader/Loader';
 import { ErrorMessage } from '../../components/ErrorMessage/ErrorMessage';
@@ -37,7 +40,7 @@ export const TabletsPage: React.FC = () => {
     debounce((newParams: URLSearchParams) => {
       setSearchParams(newParams);
     }, 500),
-    [setSearchParams]
+    [setSearchParams],
   );
 
   useEffect(() => {
@@ -49,26 +52,29 @@ export const TabletsPage: React.FC = () => {
   const handleSearchChange = useCallback(
     (event: React.ChangeEvent<HTMLInputElement>) => {
       const value = event.target.value;
+
       setInputValue(value);
 
       const newParams = new URLSearchParams(searchParams.toString());
+
       if (value) {
         newParams.set('query', value);
       } else {
         newParams.delete('query');
       }
+
       debouncedSetParams(newParams);
     },
-    [searchParams, debouncedSetParams]
+    [searchParams, debouncedSetParams],
   );
 
   const filteredProducts = paginatedProducts.filter(product =>
-    product.name.toLowerCase().includes(inputValue.toLowerCase())
+    product.name.toLowerCase().includes(inputValue.toLowerCase()),
   );
 
   return (
     <div className={styles.tabletsPage}>
-      <Breadcrumbs categor='Tablets' productDescription={[]} />
+      <Breadcrumbs categor="Tablets" productDescription={[]} />
       <h1>Tablets Page</h1>
 
       {loading && <Loader />}
@@ -105,4 +111,3 @@ export const TabletsPage: React.FC = () => {
 };
 
 export default TabletsPage;
-

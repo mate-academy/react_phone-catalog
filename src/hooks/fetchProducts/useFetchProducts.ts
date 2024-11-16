@@ -1,5 +1,7 @@
-import { useState, useEffect } from "react"
-import { Product } from "../../types/Product"
+// eslint-disable-line react-hooks/exhaustive-deps
+
+import { useState, useEffect } from 'react';
+import { Product } from '../../types/Product';
 
 export const useFetchProducts = (category: string) => {
   const [products, setProducts] = useState<Product[]>([]);
@@ -11,9 +13,9 @@ export const useFetchProducts = (category: string) => {
       setLoading(true);
       try {
         const baseUrl =
-        window.location.hostname === 'localhost'
-          ? 'http://localhost:5173/api'
-          : 'https://anastasiiakorolko.github.io/react_phone-catalog/api';
+          window.location.hostname === 'localhost'
+            ? 'http://localhost:5173/api'
+            : 'https://anastasiiakorolko.github.io/react_phone-catalog/api';
 
         const resolve = await fetch(`${baseUrl}/products.json`);
 
@@ -27,7 +29,7 @@ export const useFetchProducts = (category: string) => {
         );
 
         setProducts(filteredProducts);
-      } catch (error) {
+      } catch (er) {
         setError('There are no products yet');
       } finally {
         setLoading(false);
@@ -36,8 +38,6 @@ export const useFetchProducts = (category: string) => {
 
     fetchProducts();
   }, [category]);
+
   return { products, loading, error };
-
-}
-
-
+};

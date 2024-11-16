@@ -1,3 +1,6 @@
+/* eslint-disable  react-hooks/exhaustive-deps */
+/* eslint-disable  max-len */
+
 import React from 'react';
 import { useCallback, useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
@@ -39,7 +42,7 @@ export const PhonesPage: React.FC = () => {
     debounce((newParams: URLSearchParams) => {
       setSearchParams(newParams);
     }, 500),
-    [setSearchParams]
+    [setSearchParams],
   );
 
   useEffect(() => {
@@ -51,26 +54,29 @@ export const PhonesPage: React.FC = () => {
   const handleSearchChange = useCallback(
     (event: React.ChangeEvent<HTMLInputElement>) => {
       const value = event.target.value;
+
       setInputValue(value);
 
       const newParams = new URLSearchParams(searchParams.toString());
+
       if (value) {
         newParams.set('query', value);
       } else {
         newParams.delete('query');
       }
+
       debouncedSetParams(newParams);
     },
-    [searchParams, debouncedSetParams]
+    [searchParams, debouncedSetParams],
   );
 
   const filteredProducts = paginatedProducts.filter(product =>
-    product.name.toLowerCase().includes(inputValue.toLowerCase())
+    product.name.toLowerCase().includes(inputValue.toLowerCase()),
   );
 
   return (
     <div className={styles.phonesPage}>
-      <Breadcrumbs categor='Phones' productDescription={[]}/>
+      <Breadcrumbs categor="Phones" productDescription={[]} />
       <h1>Phones Page</h1>
 
       {loading && <Loader />}

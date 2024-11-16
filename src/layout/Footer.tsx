@@ -7,11 +7,9 @@ import { FooterProps } from '../types/Footer';
 import styles from './Footer.module.scss';
 
 export const Footer: React.FC<FooterProps> = ({ topRef }) => {
-
   const scrollToTop = () => {
     if (topRef.current) {
       topRef.current.scrollIntoView({ behavior: 'smooth' });
-      console.log('current', topRef.current)
     }
   };
 
@@ -50,7 +48,11 @@ export const Footer: React.FC<FooterProps> = ({ topRef }) => {
         <div className={styles.footer__elements}>
           <p className={styles.footer__text}>Back to top</p>
           <button onClick={scrollToTop} className={styles.footer__button}>
-            <img src={arrowUp} alt="Arrow up" className={styles.footer__image} />
+            <img
+              src={arrowUp}
+              alt="Arrow up"
+              className={styles.footer__image}
+            />
           </button>
         </div>
       </div>

@@ -1,3 +1,5 @@
+/* eslint-disable  max-len */
+
 // import './App.scss';
 // src/App.tsx
 import React from 'react';
@@ -17,10 +19,10 @@ import { FavoritesProvider } from './context/FavoritesContext/FavoritesContext';
 import { CartPage } from './modules/CartPage/CartPage';
 import { FavoritesPage } from './modules/FavoritesPage/FavoritesPage';
 import { ThemeProvider } from './context/ThemeContext/ThemeContext';
-import ProductsPage from './modules/ProductsPage/ProductsPage';
 
 export const App: React.FC = () => {
   const topRef = useRef<HTMLDivElement | null>(null);
+
   return (
     <Router>
       <div className={styles.container}>
@@ -38,12 +40,8 @@ export const App: React.FC = () => {
                     path="/product/:category/:itemId"
                     element={<ProductDetailsPage />}
                   />
-                  <Route
-                    path="/favourites"
-                    element={<FavoritesPage />}
-                  />
+                  <Route path="/favourites" element={<FavoritesPage />} />
                   <Route path="/cart" element={<CartPage />} />
-                  <Route path="/search" element={<ProductsPage />} />
                   <Route path="*" element={<h1>Page not found</h1>} />
                 </Routes>
               </main>

@@ -1,3 +1,5 @@
+/* eslint-disable  react-hooks/exhaustive-deps */
+
 import React from 'react';
 
 import { useParams, Link } from 'react-router-dom';
@@ -31,15 +33,11 @@ export const ProductDetailsPage: React.FC<ProductDetailsPageProps> = () => {
 
   const [chooseColor, setChooseColor] = useState<string | null>(null);
   const [chooseCapacity, setChooseCapacity] = useState('');
-  const [suggestedProducts, setSuggestedProducts] = useState<
-  Product[]
-  >([]);
+  const [suggestedProducts, setSuggestedProducts] = useState<Product[]>([]);
   const { addToCart, cart } = useCart();
-  const { toggleFavorite, isFavorite, } = useFavorites();
+  const { toggleFavorite, isFavorite } = useFavorites();
 
-  console.log('product', product);
-
-  const isInCart = (id: number) => cart.some(product => product.id === id);
+  const isInCart = (id: number) => cart.some(prod => prod.id === id);
 
   const fetchProducts = async () => {
     setLoading(true);
@@ -52,19 +50,17 @@ export const ProductDetailsPage: React.FC<ProductDetailsPageProps> = () => {
       const response = await fetch(`${baseUrl}/${category}.json`);
       const data = await response.json();
 
-      const selectedProduct = data.find(
-        (item: Product) => item.id === itemId
-      );
+      const foundProducts = data.find((item: Product) => item.id === itemId);
 
-      if (selectedProduct) {
-        setProduct(selectedProduct);
-        setSelectedImage(`./${selectedProduct.images[0]}`);
-        setChooseCapacity(selectedProduct.capacity);
-        setChooseColor(selectedProduct.color);
+      if (foundProducts) {
+        setProduct(foundProducts);
+        setSelectedImage(`./${foundProducts.images[0]}`);
+        setChooseCapacity(foundProducts.capacity);
+        setChooseColor(foundProducts.color);
       } else {
         setError('Product not found');
       }
-    } catch (error) {
+    } catch (er) {
       setError('Something went wrong. Please try again.');
     } finally {
       setLoading(false);
@@ -82,14 +78,14 @@ export const ProductDetailsPage: React.FC<ProductDetailsPageProps> = () => {
       const data = await response.json();
 
       const filteredProducts = data.filter(
-        (item: Product) => item.id !== itemId
+        (item: Product) => item.id !== itemId,
       );
 
       const shuffled = filteredProducts.sort(() => 0.5 - Math.random());
       const randomSuggested = shuffled.slice(0, shuffled.length);
 
       setSuggestedProducts(randomSuggested);
-    } catch (error) {
+    } catch (er) {
       setError('Unable to get recommendation products');
     }
   };
@@ -99,12 +95,7 @@ export const ProductDetailsPage: React.FC<ProductDetailsPageProps> = () => {
     fetchSuggestedProducts();
   }, [itemId, category]);
 
-  const handleReload = () => {
-    fetchProducts();
-  };
-
   const handleThumbnailClick = (image: string) => {
-
     setSelectedImage(image);
   };
 
@@ -123,9 +114,11 @@ export const ProductDetailsPage: React.FC<ProductDetailsPageProps> = () => {
         color: chooseColor,
         capacity: chooseCapacity,
       };
+
       addToCart(productToAdd);
     }
   };
+
   const handleAddToFavorites = () => {
     if (product) {
       const productToAdd = {
@@ -133,13 +126,10 @@ export const ProductDetailsPage: React.FC<ProductDetailsPageProps> = () => {
         color: chooseColor,
         capacity: chooseCapacity,
       };
+
       toggleFavorite(productToAdd);
     }
   };
-
-  const baseImagePath = `./img/${product?.category}/${product?.namespaceId}/${chooseColor}`;
-
-  const imageFiles = ['00.webp', '01.webp', '02.webp'];
 
   if (loading) {
     return <div>Loading...</div>;
@@ -151,7 +141,6 @@ export const ProductDetailsPage: React.FC<ProductDetailsPageProps> = () => {
 
   return (
     <div className={`${styles.section} ${styles.sectionProduct__details}`}>
-
       {product && <Breadcrumbs productDescription={product} />}
 
       <BackButton />
@@ -161,15 +150,15 @@ export const ProductDetailsPage: React.FC<ProductDetailsPageProps> = () => {
         <div className={styles.productPage}>
           <div className={styles.productContent}>
             <div className={styles.productGallery}>
-              <div className={`${styles.productGallery} ${styles.productGallery__thumbnails}`}>
+              <div
+                className={`${styles.productGallery} ${styles.productGallery__thumbnails}`}
+              >
                 {product?.images.map((fileName, index) => (
                   <img
                     key={index}
                     src={`./${fileName}`}
                     className={`${styles.thumbnail} ${selectedImage === fileName ? styles.active : ''}`}
-                    onClick={() =>
-                      handleThumbnailClick(`${fileName}`)
-                    }
+                    onClick={() => handleThumbnailClick(`${fileName}`)}
                     alt={`${product?.name} ${chooseColor} ${index + 1}`}
                   />
                 ))}
@@ -177,16 +166,19 @@ export const ProductDetailsPage: React.FC<ProductDetailsPageProps> = () => {
             </div>
 
             <div className={styles.productGallery__mainImage}>
-              <img className={styles.image}
-              src={selectedImage ? `${selectedImage}` : ''}
-              alt="Product main view"
+              <img
+                className={styles.image}
+                src={selectedImage ? `${selectedImage}` : ''}
+                alt="Product main view"
               />
             </div>
           </div>
 
           <div className={styles.productInfo}>
             <div className={styles.colorPicker}>
-              <h3 className={`${styles.colorPicker__title} ${styles.pickerTitle}`}>
+              <h3
+                className={`${styles.colorPicker__title} ${styles.pickerTitle}`}
+              >
                 Available colors
               </h3>
               <div className={styles.colorPicker__options}>
@@ -206,7 +198,9 @@ export const ProductDetailsPage: React.FC<ProductDetailsPageProps> = () => {
             </div>
 
             <div className={styles.capacityPicker}>
-              <h3 className={`${styles.capacityPicker__title} ${styles.pickerTitle}`}>
+              <h3
+                className={`${styles.capacityPicker__title} ${styles.pickerTitle}`}
+              >
                 Select capacity
               </h3>
               <div className={styles.capacityPicker__options}>
@@ -240,15 +234,17 @@ export const ProductDetailsPage: React.FC<ProductDetailsPageProps> = () => {
             <div className={styles.productActions}>
               <button
                 className={styles.productActions__button}
-                onClick={handleAddToCart}>{isInCart(product?.id || 0) ? 'Added to cart' : "Add to cart"}</button>
+                onClick={handleAddToCart}
+              >
+                {isInCart(product?.id || 0) ? 'Added to cart' : 'Add to cart'}
+              </button>
 
-                <img
-                  onClick={handleAddToFavorites}
-                  src={isFavorite(product.id) ? redIcon : favouritesIcon}
-                  alt="Favourites"
-                  className={styles.productActions__icon}
-                />
-
+              <img
+                onClick={handleAddToFavorites}
+                src={isFavorite(product.id) ? redIcon : favouritesIcon}
+                alt="Favourites"
+                className={styles.productActions__icon}
+              />
             </div>
 
             <div className={styles.specs}>
@@ -258,11 +254,15 @@ export const ProductDetailsPage: React.FC<ProductDetailsPageProps> = () => {
               </div>
               <div className={styles.specs__details}>
                 <span className={styles.specs__property}>Resolution</span>
-                <span className={styles.specs__value}>{product?.resolution}</span>
+                <span className={styles.specs__value}>
+                  {product?.resolution}
+                </span>
               </div>
               <div className={styles.specs__details}>
                 <span className={styles.specs__property}>Processor</span>
-                <span className={styles.specs__value}>{product?.processor}</span>
+                <span className={styles.specs__value}>
+                  {product?.processor}
+                </span>
               </div>
               <div className={styles.specs__details}>
                 <span className={styles.specs__property}>RAM</span>
@@ -298,11 +298,15 @@ export const ProductDetailsPage: React.FC<ProductDetailsPageProps> = () => {
               </div>
               <div className={styles.specs__details}>
                 <span className={styles.specs__property}>Resolution</span>
-                <span className={styles.specs__value}>{product?.resolution}</span>
+                <span className={styles.specs__value}>
+                  {product?.resolution}
+                </span>
               </div>
               <div className={styles.specs__details}>
                 <span className={styles.specs__property}>Processor</span>
-                <span className={styles.specs__value}>{product?.processor}</span>
+                <span className={styles.specs__value}>
+                  {product?.processor}
+                </span>
               </div>
               <div className={styles.specs__details}>
                 <span className={styles.specs__property}>RAM</span>
@@ -314,9 +318,7 @@ export const ProductDetailsPage: React.FC<ProductDetailsPageProps> = () => {
               </div>
               <div className={styles.specs__details}>
                 <span className={styles.specs__property}>Camera</span>
-                <span className={styles.specs__value}>
-                  {product?.camera}
-                </span>
+                <span className={styles.specs__value}>{product?.camera}</span>
               </div>
               <div className={styles.specs__details}>
                 <span className={styles.specs__property}>Zoom</span>
@@ -331,7 +333,7 @@ export const ProductDetailsPage: React.FC<ProductDetailsPageProps> = () => {
         </section>
       </main>
 
-      <ProductsSlider goods={suggestedProducts} title='You may also like'/>
+      <ProductsSlider goods={suggestedProducts} title="You may also like" />
     </div>
   );
 };

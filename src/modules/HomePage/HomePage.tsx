@@ -1,3 +1,5 @@
+/* eslint-disable  react-hooks/exhaustive-deps */
+
 import React from 'react';
 import { PicturesSlider } from './PicturesSlider/PicturesSlider';
 import { ProductsSlider } from '../../components/ProductsSlider/ProductsSlider';
@@ -15,9 +17,9 @@ export const HomePage: React.FC = () => {
   const [loading, setLoading] = useState<boolean>(true);
   const [hotGoods, setHotGoods] = useState<Product[]>([]);
   const [newestGoods, setNewestGoods] = useState<Product[]>([]);
-  const [allProducts, setAllProducts] = useState<Product[]>([]);
+  // const [allProducts, setAllProducts] = useState<Product[]>([]);
 
-  const categories = ["phones", "tablets", "accessories"]
+  const categories = ['phones', 'tablets', 'accessories'];
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -25,11 +27,11 @@ export const HomePage: React.FC = () => {
       setError('');
       try {
         const baseUrl =
-        window.location.hostname === 'localhost'
-          ? 'http://localhost:5173/api'
-          : 'https://anastasiiakorolko.github.io/react_phone-catalog/api';
+          window.location.hostname === 'localhost'
+            ? 'http://localhost:5173/api'
+            : 'https://anastasiiakorolko.github.io/react_phone-catalog/api';
         const responses = await Promise.all(
-          categories.map(category => fetch(`${baseUrl}/${category}.json`))
+          categories.map(category => fetch(`${baseUrl}/${category}.json`)),
         );
 
         responses.forEach(response => {
@@ -38,20 +40,27 @@ export const HomePage: React.FC = () => {
           }
         });
 
-        const data = await Promise.all(responses.map(response => response.json()));
+        const data = await Promise.all(
+          responses.map(response => response.json()),
+        );
         const allProducts = data.flat();
-        setAllProducts(allProducts);
+
+        // setAllProducts(allProducts);
 
         const discountProducts = allProducts
           .filter(product => product.priceDiscount > 0)
-          .sort((a, b) => Math.abs(b.priceRegular - b.priceDiscount) - Math.abs(a.priceRegular - a.priceDiscount));
+          .sort(
+            (a, b) =>
+              Math.abs(b.priceRegular - b.priceDiscount) -
+              Math.abs(a.priceRegular - a.priceDiscount),
+          );
+
         setHotGoods(discountProducts);
 
         const newestProducts = [...allProducts].sort((a, b) => b.year - a.year);
-        setNewestGoods(newestProducts);
 
-      } catch (error) {
-        console.error(error);
+        setNewestGoods(newestProducts);
+      } catch (er) {
         setError('Error: Unable to load products.');
       } finally {
         setLoading(false);
@@ -62,7 +71,11 @@ export const HomePage: React.FC = () => {
   }, []);
 
   if (loading) {
-    return <div><Loader /></div>;
+    return (
+      <div>
+        <Loader />
+      </div>
+    );
   }
 
   if (error) {
@@ -75,22 +88,34 @@ export const HomePage: React.FC = () => {
 
       <PicturesSlider />
 
-      <ProductsSlider goods={newestGoods} title="Brand new models"/>
+      <ProductsSlider
+        goods={newestGoods}
+        title="Brand new models"
+        isHomePage={true}
+      />
 
       <h2 className={styles.section__title}>Shop by category</h2>
       <div className={styles.categories}>
         <div className={`${styles.category} ${styles.categoryMobiles}`}>
           <Link to={'/phones'}>
-            <img src={categoryFirst} alt="Phones" className={styles.category__image} />
+            <img
+              src={categoryFirst}
+              alt="Phones"
+              className={styles.category__image}
+            />
           </Link>
           <Link to={'/phones'} className={styles.link}>
             <h3 className={styles.category__title}>Mobile phones</h3>
           </Link>
-            <p className={styles.category__count}>95 models</p>
+          <p className={styles.category__count}>95 models</p>
         </div>
         <div className={`${styles.category} ${styles.categoryTablets}`}>
           <Link to={'/tablets'} className={styles.link}>
-            <img src={categorySecond} alt="Tablets" className={styles.category__image} />
+            <img
+              src={categorySecond}
+              alt="Tablets"
+              className={styles.category__image}
+            />
           </Link>
           <Link to={'/tablets'} className={styles.link}>
             <h3 className={styles.category__title}>Tablets</h3>
@@ -98,17 +123,21 @@ export const HomePage: React.FC = () => {
           <p className={styles.category__count}>95 models</p>
         </div>
         <div className={`${styles.category} ${styles.categoryAccessories}`}>
-        <Link to={'/accessories'} className={styles.link}>
-          <img src={categoryThird} alt="Accessories" className={styles.category__image} />
-        </Link>
-        <Link to={'/accessories'} className={styles.link}>
-          <h3 className={styles.category__title}>Accessories</h3>
-        </Link>
-        <p className={styles.category__count}>95 models</p>
+          <Link to={'/accessories'} className={styles.link}>
+            <img
+              src={categoryThird}
+              alt="Accessories"
+              className={styles.category__image}
+            />
+          </Link>
+          <Link to={'/accessories'} className={styles.link}>
+            <h3 className={styles.category__title}>Accessories</h3>
+          </Link>
+          <p className={styles.category__count}>95 models</p>
         </div>
       </div>
 
-      <ProductsSlider goods={hotGoods} title="Hot Prices"/>
+      <ProductsSlider goods={hotGoods} title="Hot Prices" isHomePage={true} />
     </main>
   );
 };

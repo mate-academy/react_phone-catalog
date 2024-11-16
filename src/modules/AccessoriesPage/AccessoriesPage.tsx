@@ -1,3 +1,6 @@
+/* eslint-disable  react-hooks/exhaustive-deps */
+/* eslint-disable  max-len */
+
 import React from 'react';
 import { useEffect, useCallback, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
@@ -27,7 +30,6 @@ export const AccessoriesPage: React.FC = () => {
     handleItemsPerPageChange,
   } = usePaginationAndSorting(products);
 
-
   const [searchParams, setSearchParams] = useSearchParams();
   const query = searchParams.get('query') || '';
   const [inputValue, setInputValue] = useState(query);
@@ -40,7 +42,7 @@ export const AccessoriesPage: React.FC = () => {
     debounce((newParams: URLSearchParams) => {
       setSearchParams(newParams);
     }, 500),
-    [setSearchParams]
+    [setSearchParams],
   );
 
   useEffect(() => {
@@ -52,26 +54,29 @@ export const AccessoriesPage: React.FC = () => {
   const handleSearchChange = useCallback(
     (event: React.ChangeEvent<HTMLInputElement>) => {
       const value = event.target.value;
+
       setInputValue(value);
 
       const newParams = new URLSearchParams(searchParams.toString());
+
       if (value) {
         newParams.set('query', value);
       } else {
         newParams.delete('query');
       }
+
       debouncedSetParams(newParams);
     },
-    [searchParams, debouncedSetParams]
+    [searchParams, debouncedSetParams],
   );
 
   const filteredProducts = paginatedProducts.filter(product =>
-    product.name.toLowerCase().includes(inputValue.toLowerCase())
+    product.name.toLowerCase().includes(inputValue.toLowerCase()),
   );
 
   return (
     <div className={styles.accessoriesPage}>
-      <Breadcrumbs categor='Accessories' productDescription={[]}/>
+      <Breadcrumbs categor="Accessories" productDescription={[]} />
       <h1>Accessories page</h1>
 
       {loading && <Loader />}
@@ -82,13 +87,13 @@ export const AccessoriesPage: React.FC = () => {
 
       {!loading && !error && products.length > 0 && (
         <>
-
           <Search value={inputValue} onChange={handleSearchChange} />
           <ProductFilter
             sort={sort}
             itemsPerPage={itemsPerPage}
             onSortChange={handleSortChange}
-            onItemsPerPageChange={handleItemsPerPageChange}/>
+            onItemsPerPageChange={handleItemsPerPageChange}
+          />
 
           <AccessoriesList products={filteredProducts} />
 
