@@ -41,16 +41,12 @@ export const Header: React.FC<Props> = ({
   useEffect(() => {
     if (searchInput.current && isSearchOpen) {
       // searchInput.current.focus();
-
-      searchInput.current.inputMode = 'search';
       setTimeout(() => {
         if (searchInput.current) {
+          searchInput.current?.blur();
           searchInput.current?.focus();
-          searchInput.current?.click(); // Programmatically trigger a click
-          // Revert inputMode if needed
-          searchInput.current.inputMode = 'text';
         }
-      }, 300);
+      }, 350);
     }
   }, [isSearchOpen]);
 
