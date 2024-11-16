@@ -9,14 +9,19 @@ interface FavoritesContextType {
   totalFavorites: number;
 }
 
-const FavoritesContext = createContext<FavoritesContextType | undefined>(undefined);
+const FavoritesContext = createContext<FavoritesContextType | undefined>(
+  undefined,
+);
 
-export const FavoritesProvider: React.FC<{ children: React.ReactNode}> = ({ children }) => {
+export const FavoritesProvider: React.FC<{ children: React.ReactNode }> = ({
+  children,
+}) => {
   const [favorites, setFavorites] = useState<Product[]>([]);
 
   useEffect(() => {
     const load = localStorage.getItem('favorites');
-    if(load) {
+
+    if (load) {
       setFavorites(JSON.parse(load));
     }
   }, []);
@@ -26,29 +31,32 @@ export const FavoritesProvider: React.FC<{ children: React.ReactNode}> = ({ chil
   }, [favorites]);
 
   const toggleFavorite = (product: Product) => {
-
     setFavorites(prevFavorites =>
       prevFavorites.some(fav => fav.id === product.id)
-      ? prevFavorites.filter(fav => fav.id !== product.id)
-      : [...prevFavorites, product]
-
+        ? prevFavorites.filter(fav => fav.id !== product.id)
+        : [...prevFavorites, product],
     );
   };
 
-  const isFavorite = (id: number): boolean => favorites.some(fav => fav.id === id);
+  const isFavorite = (id: number): boolean =>
+    favorites.some(fav => fav.id === id);
   const totalFavorites = favorites.length;
 
   return (
-    <FavoritesContext.Provider value={{ favorites, toggleFavorite, isFavorite, totalFavorites}}>
+    <FavoritesContext.Provider
+      value={{ favorites, toggleFavorite, isFavorite, totalFavorites }}
+    >
       {children}
     </FavoritesContext.Provider>
-  )
+  );
 };
 
 export const useFavorites = () => {
   const context = useContext(FavoritesContext);
+
   if (!context) {
     throw new Error('useFavorites must be used within a FavoritesProvider');
   }
+
   return context;
-}
+};

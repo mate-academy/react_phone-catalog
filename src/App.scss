@@ -32,10 +32,18 @@ $font-weight-bold: 800;
 $font-weight-medium: 600;
 $font-weight-regular: 400;
 
+.app-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
 .main {
   max-width: 1136px;
   margin: 0 auto;
   font-family: $font-primary;
+  flex: 1 0 auto;
+  width: 100%;
 
   &__title {
     margin-bottom: 56px;

@@ -11,11 +11,10 @@ export const FavoritesPage: React.FC = () => {
   return (
     <div>
       {favorites && favorites.length > 0 && (
-        <Breadcrumbs categor='Favourites' productDescription={[]} />
+        <Breadcrumbs categor="Favourites" productDescription={[]} />
       )}
       <h1>Favorites</h1>
-      <p
-        className={styles.totalFavorites}>{totalFavorites} items</p>
+      <p className={styles.totalFavorites}>{totalFavorites} items</p>
       {favorites.length === 0 ? (
         <p>No favorite products yet.</p>
       ) : (

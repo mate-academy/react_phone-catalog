@@ -1,6 +1,6 @@
-import React from "react";
-import { useSearchParams } from "react-router-dom";
-import { Product } from "../../types/Product";
+import React from 'react';
+import { useSearchParams } from 'react-router-dom';
+import { Product } from '../../types/Product';
 
 export const usePaginationAndSorting = (products: Product[]) => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -30,27 +30,37 @@ export const usePaginationAndSorting = (products: Product[]) => {
   const handlePageChange = (page: number) => {
     setSearchParams(prevParams => {
       const newParams = new URLSearchParams(prevParams);
+
       newParams.set('page', String(page));
+
       return newParams;
     });
   };
 
-  const handleItemsPerPageChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+  const handleItemsPerPageChange = (
+    event: React.ChangeEvent<HTMLSelectElement>,
+  ) => {
     const perPage = event.target.value;
+
     setSearchParams(prevParams => {
       const newParams = new URLSearchParams(prevParams);
+
       newParams.set('page', '1');
       newParams.set('perPage', perPage);
+
       return newParams;
     });
   };
 
   const handleSortChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const sortValue = event.target.value;
+
     setSearchParams(prevParams => {
       const newParams = new URLSearchParams(prevParams);
+
       newParams.set('page', '1');
       newParams.set('sort', sortValue);
+
       return newParams;
     });
   };
@@ -63,6 +73,6 @@ export const usePaginationAndSorting = (products: Product[]) => {
     handlePageChange,
     handleItemsPerPageChange,
     handleSortChange,
-    sort
+    sort,
   };
 };

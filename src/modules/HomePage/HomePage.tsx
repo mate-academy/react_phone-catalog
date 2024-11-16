@@ -17,7 +17,6 @@ export const HomePage: React.FC = () => {
   const [loading, setLoading] = useState<boolean>(true);
   const [hotGoods, setHotGoods] = useState<Product[]>([]);
   const [newestGoods, setNewestGoods] = useState<Product[]>([]);
-  // const [allProducts, setAllProducts] = useState<Product[]>([]);
 
   const categories = ['phones', 'tablets', 'accessories'];
 
@@ -44,8 +43,6 @@ export const HomePage: React.FC = () => {
           responses.map(response => response.json()),
         );
         const allProducts = data.flat();
-
-        // setAllProducts(allProducts);
 
         const discountProducts = allProducts
           .filter(product => product.priceDiscount > 0)

@@ -29,23 +29,25 @@ export const App: React.FC = () => {
         <ThemeProvider>
           <FavoritesProvider>
             <CartProvider>
-              <Header ref={topRef} />
-              <main className="main">
-                <Routes>
-                  <Route path="/" element={<HomePage />} />
-                  <Route path="/phones" element={<PhonesPage />} />
-                  <Route path="/tablets" element={<TabletsPage />} />
-                  <Route path="/accessories" element={<AccessoriesPage />} />
-                  <Route
-                    path="/product/:category/:itemId"
-                    element={<ProductDetailsPage />}
-                  />
-                  <Route path="/favourites" element={<FavoritesPage />} />
-                  <Route path="/cart" element={<CartPage />} />
-                  <Route path="*" element={<h1>Page not found</h1>} />
-                </Routes>
-              </main>
-              <Footer topRef={topRef} />
+              <div className="app-container">
+                <Header ref={topRef} />
+                <main className="main">
+                  <Routes>
+                    <Route path="/" element={<HomePage />} />
+                    <Route path="/phones" element={<PhonesPage />} />
+                    <Route path="/tablets" element={<TabletsPage />} />
+                    <Route path="/accessories" element={<AccessoriesPage />} />
+                    <Route
+                      path="/product/:category/:itemId"
+                      element={<ProductDetailsPage />}
+                    />
+                    <Route path="/favourites" element={<FavoritesPage />} />
+                    <Route path="/cart" element={<CartPage />} />
+                    <Route path="*" element={<h1>Page not found</h1>} />
+                  </Routes>
+                </main>
+                <Footer topRef={topRef} />
+              </div>
             </CartProvider>
           </FavoritesProvider>
         </ThemeProvider>

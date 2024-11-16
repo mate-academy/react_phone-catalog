@@ -24,7 +24,7 @@ export const Footer: React.FC<FooterProps> = ({ topRef }) => {
           <ul className={styles.footer__navList}>
             <li>
               <a
-                href="https://github.com"
+                href="https://anastasiiakorolko.github.io/react_phone-catalog/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className={styles.footer__navLink}

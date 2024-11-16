@@ -20,5 +20,3 @@ export const Search: React.FC<SearchProps> = ({ value, onChange }) => {
     </div>
   );
 };
-
-

@@ -26,11 +26,14 @@ interface CartContextType {
 
 const CartContext = createContext<CartContextType | undefined>(undefined);
 
-export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+export const CartProvider: React.FC<{ children: React.ReactNode }> = ({
+  children,
+}) => {
   const [cart, setCart] = useState<CartItem[]>([]);
 
   useEffect(() => {
     const storedCard = localStorage.getItem('cart');
+
     if (storedCard) {
       setCart(JSON.parse(storedCard));
     }
@@ -45,22 +48,26 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
       id: product.itemId || product.id,
       product: {
         id: product.itemId || product.id,
-        name: product.name || product.title || "",
+        name: product.name || product.title || '',
         price: product.price || product.priceDiscount || 0,
-        image: product.image || product.images?.[0] || "",
+        image: product.image || product.images?.[0] || '',
       },
       quantity: 1,
-
     };
   };
 
   const addToCart = (product: Product) => {
     setCart(prevCart => {
-        const normalizedProduct = normalizeProductData(product);
-        const existingItem = prevCart.find(item => item.id === normalizedProduct.id);
+      const normalizedProduct = normalizeProductData(product);
+      const existingItem = prevCart.find(
+        item => item.id === normalizedProduct.id,
+      );
 
-        if (existingItem) return prevCart;
-        return [...prevCart, normalizedProduct];
+      if (existingItem) {
+        return prevCart;
+      }
+
+      return [...prevCart, normalizedProduct];
     });
   };
 
@@ -70,7 +77,7 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   const updateQuantity = (id: number, quantity: number) => {
     setCart(prevCart =>
-      prevCart.map((item => item.id === id ? {...item, quantity} : item))
+      prevCart.map(item => (item.id === id ? { ...item, quantity } : item)),
     );
   };
 
@@ -78,11 +85,24 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
     setCart([]);
   };
 
-  const totalQuantity = cart.reduce((sum, item) => item.quantity + sum, 0 );
-  const totalAmount = cart.reduce((sum, item) => sum + item.product.price * item.quantity, 0 )
+  const totalQuantity = cart.reduce((sum, item) => item.quantity + sum, 0);
+  const totalAmount = cart.reduce(
+    (sum, item) => sum + item.product.price * item.quantity,
+    0,
+  );
 
   return (
-    <CartContext.Provider value={{ cart, addToCart, removeFromCart, updateQuantity, clearCart, totalQuantity, totalAmount }}>
+    <CartContext.Provider
+      value={{
+        cart,
+        addToCart,
+        removeFromCart,
+        updateQuantity,
+        clearCart,
+        totalQuantity,
+        totalAmount,
+      }}
+    >
       {children}
     </CartContext.Provider>
   );
@@ -90,6 +110,10 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
 export const useCart = () => {
   const context = useContext(CartContext);
-  if (!context) throw new Error('useCart must be used within a CartProvider');
+
+  if (!context) {
+    throw new Error('useCart must be used within a CartProvider');
+  }
+
   return context;
-}
+};

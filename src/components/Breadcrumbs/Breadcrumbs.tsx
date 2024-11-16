@@ -10,8 +10,10 @@ interface ProductDetailsPageProps {
   productDescription: Product | Product[];
 }
 
-export const Breadcrumbs: React.FC<ProductDetailsPageProps> =({ productDescription, categor = 'Favorites', }) => {
-
+export const Breadcrumbs: React.FC<ProductDetailsPageProps> = ({
+  productDescription,
+  categor = 'Favorites',
+}) => {
   const { category = categor, itemId } = useParams<{
     itemId: string;
     category?: string;
@@ -21,35 +23,38 @@ export const Breadcrumbs: React.FC<ProductDetailsPageProps> =({ productDescripti
 
   return (
     <nav className={styles.breadcrumbs}>
-        <Link to="/">
-          <img
-            src={homeIcon}
-            alt="Home"
-            className={`${styles.breadcrumbs__item} ${styles.breadcrumbs__itemHome}`}
-          />
-        </Link>
-        <span className={styles.breadcrumbs__separator}>/</span>
+      <Link to="/">
+        <img
+          src={homeIcon}
+          alt="Home"
+          className={`${styles.breadcrumbs__item} ${styles.breadcrumbs__itemHome}`}
+        />
+      </Link>
+      <span className={styles.breadcrumbs__separator}>/</span>
 
-        <img src={strokeRight} alt="Previous"></img>
+      <img src={strokeRight} alt="Previous"></img>
 
-        <span className={styles.breadcrumbs__separator}>/</span>
-        <Link to={`/${categoryName}`}
-          className={`${styles.breadcrumbs__item} ${styles.itemCategory}`}>
-          {categoryName}
-        </Link>
-        <span className={styles.breadcrumbs__separator}>/</span>
+      <span className={styles.breadcrumbs__separator}>/</span>
+      <Link
+        to={`/${categoryName}`}
+        className={`${styles.breadcrumbs__item} ${styles.itemCategory}`}
+      >
+        {categoryName}
+      </Link>
+      <span className={styles.breadcrumbs__separator}>/</span>
 
-        {itemId && (
-          <>
-            <img src={strokeRight} alt="Previous"></img>
-            <span className={styles.breadcrumbs__separator}>/</span>
-            <Link to={`/product/${(productDescription as Product).id}`}
-              className={`${styles.breadcrumbs__item} ${styles.itemName}`}>
-              {(productDescription as Product).name}
-            </Link>
-          </>
-        )}
-      </nav>
-
-  )
-}
+      {itemId && (
+        <>
+          <img src={strokeRight} alt="Previous"></img>
+          <span className={styles.breadcrumbs__separator}>/</span>
+          <Link
+            to={`/product/${(productDescription as Product).id}`}
+            className={`${styles.breadcrumbs__item} ${styles.itemName}`}
+          >
+            {(productDescription as Product).name}
+          </Link>
+        </>
+      )}
+    </nav>
+  );
+};
