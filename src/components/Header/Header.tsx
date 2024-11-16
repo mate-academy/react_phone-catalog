@@ -45,6 +45,7 @@ export const Header: React.FC<Props> = ({
         if (searchInput.current) {
           searchInput.current.readOnly = false;
           searchInput.current.focus();
+          searchInput.current.click();
         }
       }, 300);
     }
