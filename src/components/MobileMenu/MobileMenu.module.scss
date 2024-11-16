@@ -18,6 +18,7 @@
   opacity: 0;
   -webkit-opacity: 0;
   z-index: 2;
+  pointer-events: none;
 
 
   transition: transform $transition-duration ease-in-out,
@@ -28,6 +29,7 @@
   transform: translateY(0);
   opacity: 100%;
   -webkit-opacity: 100%;
+  pointer-events: auto;
 }
 
 .mobileMenuBottom {

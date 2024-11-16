@@ -4,6 +4,7 @@
   position: sticky;
   top: 0;
   z-index: 3;
+  overflow: hidden;
 
   background-color: $color-white;
   box-shadow: 0 1px 0 0 $color-elements;
@@ -26,7 +27,7 @@
   width: 6.4rem;
   padding: 1.3rem 1.6rem;
 
-  @include on-m-desktop{
+  @include on-m-desktop {
     width: 8rem;
     height: 2.65rem;
     padding: 1.8rem 2.4rem;
@@ -36,12 +37,12 @@
 .navContainer {
   display: none;
 
-  @include on-tablet{
+  @include on-tablet {
     display: block;
     margin-inline: 1.6rem auto;
   }
 
-  @include on-m-desktop{
+  @include on-m-desktop {
     margin-left: 2.4rem;
   }
 }
@@ -53,28 +54,28 @@
 }
 
 .buttonsContainer {
-    display: none;
+  display: none;
 
   @include on-tablet {
     display: flex;
   }
 }
 
-.button{
+.button {
   position: relative;
   display: block;
 
-  @include on-m-desktop{
+  @include on-m-desktop {
     height: 6.4rem;
     width: 6.4rem;
   }
 
-  &:last-child{
+  &:last-child {
     border-right: 1px solid $color-elements;
 
   }
 
-  &::after,  &::before{
+  &::after, &::before {
     content: '';
     position: absolute;
     bottom: 0;
@@ -95,7 +96,7 @@
   &:hover {
     color: $color-text-hover-secondary;
 
-    &::before, &::after{
+    &::before, &::after {
       width: 50%;
     }
   }
@@ -116,6 +117,44 @@
         background-color: $color-text-hover;
       }
     }
+  }
+}
+
+.btnSearch {
+  margin-left: auto;
+}
+
+.searchInput {
+  @extend %mont-regular;
+
+  position: absolute;
+  box-sizing: border-box;
+  height: 100%;
+  width: 100%;
+  transition: all $transition-duration ease-out;
+  transform: translateX(100%);
+  outline: none;
+  padding: 2.2rem 2rem 2rem;
+  font-size: 1.2rem;
+  color: $color-primary;
+  vertical-align: center;
+  border: none;
+  caret-shape: bar;
+  caret-color: $color-secondary;
+
+
+  &::placeholder {
+    font-size: inherit;
+    color: $color-secondary;
+    vertical-align: center;
+  }
+
+  &IsActive {
+    transform: translateX(0%);
+  }
+
+  &CaretActive{
+    caret-color: $color-primary;
   }
 }
 

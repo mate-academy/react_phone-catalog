@@ -2,12 +2,19 @@ import { Link, NavLink, useLocation, useSearchParams } from 'react-router-dom';
 
 import styles from './Header.module.scss';
 import logo from '../../assets/icons/logo.png';
-import React, { useContext } from 'react';
+import React, {
+  useContext,
+  useEffect,
+  useLayoutEffect,
+  useRef,
+  useState,
+} from 'react';
 import classNames from 'classnames';
 import { Navigation } from '../Navigation';
 import { CartContext, FavouriteContext } from '../../ContextProvider';
 import { BtnType } from '../../types/BtnType';
 import { getTotalProductsInCart } from '../../utils/getTotalProductsInCart';
+import { ProductType } from '../../types/ProductType';
 
 interface Props {
   isMobileMenuOpen: boolean;
@@ -26,6 +33,17 @@ export const Header: React.FC<Props> = ({
   isMobileMenuOpen,
   handleMobileMenu,
 }) => {
+  const [isSearchBtnVisible, setIsSearchBtnVisible] = useState(false);
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const [query, setQuery] = useState('');
+  const searchInput = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    if (searchInput.current && isSearchOpen) {
+      setTimeout(() => searchInput.current?.focus(), 300);
+    }
+  }, [isSearchOpen]);
+
   const handleMenu = () => {
     handleMobileMenu(!isMobileMenuOpen);
   };
@@ -34,6 +52,22 @@ export const Header: React.FC<Props> = ({
   const { favouriteProducts } = useContext(FavouriteContext);
   const { pathname } = useLocation();
   const [searchParams] = useSearchParams();
+  const category = Object.keys(ProductType).find(
+    productType => productType === pathname.slice(1),
+  );
+
+  useLayoutEffect(() => {
+    if (category) {
+      setIsSearchBtnVisible(true);
+    }
+
+    return () => setIsSearchBtnVisible(false);
+  }, [pathname]);
+
+  const openSearch = () => {
+    setIsSearchOpen(true);
+    handleMobileMenu(false);
+  };
 
   const totalNumOfProducts = getTotalProductsInCart(cartProducts);
 
@@ -47,10 +81,33 @@ export const Header: React.FC<Props> = ({
         >
           <img src={logo} alt="Nice gadgets logo" />
         </Link>
+        {isSearchBtnVisible && (
+          <>
+            <button
+              className={classNames('buttonSearch', styles.btnSearch)}
+              aria-label="Search products"
+              onClick={openSearch}
+            ></button>
+
+            <input
+              ref={searchInput}
+              type="text"
+              className={classNames(styles.searchInput, {
+                [styles.searchInputIsActive]: isSearchOpen,
+                [styles.searchInputCaretActive]: !!query,
+              })}
+              placeholder={`Search in ${category}...`}
+              value={query}
+              onBlur={() => setIsSearchOpen(false)}
+              onChange={e => setQuery(e.target.value)}
+            />
+          </>
+        )}
         <button
           className={classNames('buttonMenu', styles.buttonMenu, {
             buttonClose: isMobileMenuOpen,
           })}
+          aria-label="Mobile menu"
           onClick={handleMenu}
         ></button>
 
@@ -64,7 +121,7 @@ export const Header: React.FC<Props> = ({
             className={({ isActive }) =>
               activeLink(isActive, BtnType.favorites)
             }
-            aria-label="My favourite products"
+            aria-label="Go to favourite products"
           >
             {!!favouriteProducts.length && (
               <span className="buttonFavouriteWrapper">
@@ -77,7 +134,7 @@ export const Header: React.FC<Props> = ({
             to="/cart"
             state={{ search: searchParams.toString(), pathname }}
             className={({ isActive }) => activeLink(isActive, BtnType.cart)}
-            aria-label="Products added to cart"
+            aria-label="Go to cart"
           >
             {!!totalNumOfProducts && (
               <span className="buttonCartWrapper">{totalNumOfProducts}</span>

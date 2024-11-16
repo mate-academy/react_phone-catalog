@@ -28,6 +28,13 @@
   background-image: url("../assets/icons/menu.svg");
 }
 
+.buttonSearch {
+  @extend %button;
+
+  box-shadow: -1px 0 0 0 $color-elements, 1px 0 0 0 $color-elements;
+  background-image: url("../assets/icons/find.svg");
+}
+
 .buttonClose {
   @extend %button;
 
