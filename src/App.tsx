@@ -11,6 +11,10 @@ export const App = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
+    sessionStorage.setItem('browsing', 'true');
+  }, []);
+
+  useEffect(() => {
     if (isMobileMenuOpen) {
       document.body.style.overflow = 'hidden';
     }

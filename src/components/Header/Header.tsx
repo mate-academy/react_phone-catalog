@@ -2,19 +2,13 @@ import { Link, NavLink, useLocation, useSearchParams } from 'react-router-dom';
 
 import styles from './Header.module.scss';
 import logo from '../../assets/icons/logo.png';
-import React, {
-  useContext,
-  useEffect,
-  useLayoutEffect,
-  useRef,
-  useState,
-} from 'react';
+import React, { useContext } from 'react';
 import classNames from 'classnames';
 import { Navigation } from '../Navigation';
 import { CartContext, FavouriteContext } from '../../ContextProvider';
 import { BtnType } from '../../types/BtnType';
 import { getTotalProductsInCart } from '../../utils/getTotalProductsInCart';
-import { ProductType } from '../../types/ProductType';
+import { SearchInput } from '../SearchInput';
 
 interface Props {
   isMobileMenuOpen: boolean;
@@ -33,82 +27,13 @@ export const Header: React.FC<Props> = ({
   isMobileMenuOpen,
   handleMobileMenu,
 }) => {
-  const [isSearchBtnVisible, setIsSearchBtnVisible] = useState(false);
-  const [isSearchOpen, setIsSearchOpen] = useState(false);
-  const [query, setQuery] = useState('');
-  const searchInput = useRef<HTMLInputElement>(null);
-
-  useEffect(() => {
-    if (searchInput.current && isSearchOpen) {
-      searchInput.current.focus();
-    }
-  }, [isSearchOpen]);
-
-  const handleMenu = () => {
-    handleMobileMenu(!isMobileMenuOpen);
-  };
-
+  const [searchParams] = useSearchParams();
   const { cartProducts } = useContext(CartContext);
   const { favouriteProducts } = useContext(FavouriteContext);
   const { pathname } = useLocation();
-  const [searchParams, setSearchParams] = useSearchParams();
-  const category = Object.keys(ProductType).find(
-    productType => productType === pathname.slice(1),
-  );
 
-  useLayoutEffect(() => {
-    if (category) {
-      setIsSearchBtnVisible(true);
-      setQuery('');
-    }
-
-    return () => setIsSearchBtnVisible(false);
-  }, [category]);
-
-  const openSearch = () => {
-    setIsSearchOpen(true);
-    handleMobileMenu(false);
-  };
-
-  const closeSearch = () => {
-    setIsSearchOpen(false);
-  };
-
-  const handleSearchInput: React.ChangeEventHandler<HTMLInputElement> = e => {
-    setQuery(e.target.value);
-
-    const trimmedQuery = e.target.value.trim().toLowerCase();
-
-    if (trimmedQuery) {
-      searchParams.set(
-        'query',
-        trimmedQuery
-          .split(' ')
-          .map(str => str.trim())
-          .filter(str => str)
-          .join(' '),
-      );
-      searchParams.set('page', '1');
-    } else {
-      searchParams.delete('query');
-    }
-
-    setSearchParams(searchParams);
-  };
-
-  const handleKeyPress: React.KeyboardEventHandler<HTMLInputElement> = e => {
-    if (e.key === 'Escape') {
-      setQuery('');
-      setIsSearchOpen(false);
-      searchParams.delete('query');
-      setSearchParams(searchParams);
-
-      return;
-    }
-
-    if (e.key === 'Enter') {
-      setIsSearchOpen(false);
-    }
+  const handleMenu = () => {
+    handleMobileMenu(!isMobileMenuOpen);
   };
 
   const totalNumOfProducts = getTotalProductsInCart(cartProducts);
@@ -127,42 +52,7 @@ export const Header: React.FC<Props> = ({
         <div className={styles.navContainer}>
           <Navigation />
         </div>
-
-        {isSearchBtnVisible && (
-          <>
-            <button
-              className={classNames('buttonSearch', styles.btnSearch)}
-              aria-label="Search products"
-              onClick={openSearch}
-            ></button>
-
-            <div
-              className={classNames(styles.searchInputContainer, {
-                [styles.searchInputContainerIsActive]: isSearchOpen,
-              })}
-            >
-              <input
-                ref={searchInput}
-                type="text"
-                className={classNames(styles.searchInput, {
-                  [styles.searchInputCaretActive]: !!query,
-                })}
-                placeholder={`Search in ${category}...`}
-                aria-label={`Search in ${category}...`}
-                inputMode="text"
-                value={query}
-                onBlur={() => setIsSearchOpen(false)}
-                onKeyDown={handleKeyPress}
-                onChange={handleSearchInput}
-              />
-              <button
-                className={classNames('buttonClose', styles.btnCloseSearch)}
-                aria-label="Reset search"
-                onClick={closeSearch}
-              ></button>
-            </div>
-          </>
-        )}
+        <SearchInput handleMobileMenu={handleMobileMenu} />
         <button
           className={classNames('buttonMenu', styles.buttonMenu, {
             buttonClose: isMobileMenuOpen,

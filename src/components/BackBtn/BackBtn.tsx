@@ -11,9 +11,10 @@ interface Props {
 
 export const BackBtn: React.FC<Props> = ({ path, prevPath, search }) => {
   const navigate = useNavigate();
+  const browsing = sessionStorage.getItem('browsing');
 
   const goBack = () => {
-    if (path) {
+    if (path || browsing) {
       navigate(-1);
     } else {
       navigate({
