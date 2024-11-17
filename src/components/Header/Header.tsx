@@ -96,6 +96,21 @@ export const Header: React.FC<Props> = ({
     setSearchParams(searchParams);
   };
 
+  const handleKeyPress: React.KeyboardEventHandler<HTMLInputElement> = e => {
+    if (e.key === 'Escape') {
+      setQuery('');
+      setIsSearchOpen(false);
+      searchParams.delete('query');
+      setSearchParams(searchParams);
+
+      return;
+    }
+
+    if (e.key === 'Enter') {
+      setIsSearchOpen(false);
+    }
+  };
+
   const totalNumOfProducts = getTotalProductsInCart(cartProducts);
 
   return (
@@ -137,6 +152,7 @@ export const Header: React.FC<Props> = ({
                 inputMode="text"
                 value={query}
                 onBlur={() => setIsSearchOpen(false)}
+                onKeyDown={handleKeyPress}
                 onChange={handleSearchInput}
               />
               <button

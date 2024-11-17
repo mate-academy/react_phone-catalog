@@ -30,6 +30,7 @@
   height: 100%;
 
   max-width: 28.8rem;
+  padding-block: 2px;
   aspect-ratio: 1;
   z-index: 0;
   margin: 0;
@@ -37,10 +38,8 @@
   @include on-tablet {
     height: max-content;
     max-width: 100%;
-
-    @include on-tablet {
-      max-height: 46.4rem;
-    }
+    max-height: 46.4rem;
+    padding-block: 0;
 
     margin-inline: auto;
   }
