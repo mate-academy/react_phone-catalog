@@ -19,6 +19,7 @@ import accessories from '../../../public/api/accessories.json';
 import { Product } from '../../types/Product';
 import { ProductListContext } from '../../ContextProvider';
 import { ItemsPerPage } from '../../types/ItemsPerPage';
+import { useDebounce } from '../../hooks/useDebounce';
 
 export const ProductsPage = () => {
   const [searchParams] = useSearchParams();
@@ -34,6 +35,7 @@ export const ProductsPage = () => {
   ).toLowerCase();
   const currentPage = +(searchParams.get('page') || 1);
   const query = searchParams.get('query') || '';
+  const debouncedQuery = useDebounce(query);
 
   const [productList, title] = useMemo(() => {
     let list: Product[] = [];
@@ -55,7 +57,7 @@ export const ProductsPage = () => {
 
   const [filteredProductListPerPage, filteredProductList] = useMemo(
     () => filterProducts(sortBy, productList, itemsPerPage, currentPage, query),
-    [sortBy, itemsPerPage, currentPage, productType, query],
+    [sortBy, itemsPerPage, currentPage, productType, debouncedQuery],
   );
 
   useEffect(() => {
