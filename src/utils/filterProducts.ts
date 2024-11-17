@@ -7,8 +7,15 @@ export const filterProducts = (
   productList: Product[],
   itemsPerPage: string,
   currentPage: number,
+  query: string,
 ) => {
-  const productListCopy = [...productList];
+  let productListCopy = [...productList];
+
+  if (query) {
+    productListCopy = productListCopy.filter(({ name }) =>
+      name.toLowerCase().includes(query),
+    );
+  }
 
   if (
     sortBy === SortBy.cheapest.toLowerCase() ||
@@ -45,14 +52,17 @@ export const filterProducts = (
     });
   }
 
-  if (!+itemsPerPage) {
-    return productList;
+  if (!+itemsPerPage || !productListCopy.length) {
+    return [productListCopy, productListCopy];
   }
 
   const toDisplay = +itemsPerPage || 0;
 
-  return productListCopy.slice(
-    (currentPage - 1) * toDisplay,
-    (currentPage - 1) * toDisplay + toDisplay,
-  );
+  return [
+    productListCopy.slice(
+      (currentPage - 1) * toDisplay,
+      (currentPage - 1) * toDisplay + toDisplay,
+    ),
+    productListCopy,
+  ];
 };

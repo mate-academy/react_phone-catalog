@@ -12,6 +12,7 @@
 }
 
 .topBar {
+  position: relative;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -120,8 +121,53 @@
   }
 }
 
+.searchInputContainer {
+  position: absolute;
+  box-sizing: border-box;
+  top: 0;
+  bottom: 0;
+  width: 0;
+  overflow: hidden;
+  right: 0;
+  background-color: $color-white;
+  height: 100%;
+  transition: all $transition-duration ease-out;
+
+  @include on-m-desktop{
+    position: relative;
+    height: 6.4rem;
+    margin-left: 2.4rem;
+  }
+
+  &IsActive {
+    width: 100%;
+
+    @include on-tablet {
+      box-shadow: -1px 0 0 0 $color-elements;
+      right: 9.8rem;
+      width: calc(100% - 19.4rem);
+    }
+
+    @include on-m-desktop {
+      right: 0;
+      width: calc(100% - 73rem);
+    }
+  }
+}
+
 .btnSearch {
   margin-left: auto;
+
+  @include on-m-desktop{
+    position: absolute;
+    right: 13rem;
+  }
+}
+
+.btnCloseSearch{
+  position: absolute;
+  right: 0;
+  box-shadow: none;
 }
 
 .searchInput {
@@ -130,24 +176,22 @@
   position: absolute;
   box-sizing: border-box;
   height: 100%;
-  width: 0;
-  right: 0;
-  transition: all $transition-duration ease-out;
+  width: 100%;
+
   outline: none;
   font-size: 1.6rem;
   color: $color-primary;
   border: none;
   caret-color: $color-secondary;
+  padding: 2.2rem 4.8rem 2rem 1.6rem;
 
+  @include on-tablet {
+    padding-inline: 2.4rem 4.8rem;
+  }
 
   &::placeholder {
     font-size: inherit;
     color: $color-secondary;
-  }
-
-  &IsActive {
-    padding: 2.2rem 2rem 2rem;
-    width: 100%;
   }
 
   &CaretActive {

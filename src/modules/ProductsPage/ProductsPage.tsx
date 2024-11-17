@@ -33,6 +33,7 @@ export const ProductsPage = () => {
     SortBy.newest
   ).toLowerCase();
   const currentPage = +(searchParams.get('page') || 1);
+  const query = searchParams.get('query') || '';
 
   const [productList, title] = useMemo(() => {
     let list: Product[] = [];
@@ -52,14 +53,20 @@ export const ProductsPage = () => {
     return [list, productTitle];
   }, [productType]);
 
-  const filteredProductList = useMemo(
-    () => filterProducts(sortBy, productList, itemsPerPage, currentPage),
-    [sortBy, itemsPerPage, currentPage, productType],
+  const [filteredProductListPerPage, filteredProductList] = useMemo(
+    () => filterProducts(sortBy, productList, itemsPerPage, currentPage, query),
+    [sortBy, itemsPerPage, currentPage, productType, query],
   );
 
   useEffect(() => {
     window.scroll(0, 0);
   }, [currentPage]);
+
+  const numOfProductsTitle = !filteredProductList.length
+    ? 'No products'
+    : filteredProductList.length === 1
+      ? '1 model'
+      : `${filteredProductList.length} models`;
 
   return (
     <section className={styles.productsPageWrapper}>
@@ -70,20 +77,30 @@ export const ProductsPage = () => {
       ) : (
         <div className={styles.productsPageContainer}>
           <h1 className={styles.title}>{title}</h1>
-          <p className={styles.categoryNumModels}>
-            {productList.length} models
-          </p>
+          <p className={styles.categoryNumModels}>{numOfProductsTitle}</p>
           <SortProduct />
-          <div className={styles.productsContainer}>
-            {filteredProductList.map(product => (
-              <ProductCard product={product} key={product.id} />
-            ))}
-          </div>
+          {!!filteredProductListPerPage.length ? (
+            <>
+              <div className={styles.productsContainer}>
+                {filteredProductListPerPage.map(product => (
+                  <ProductCard product={product} key={product.id} />
+                ))}
+              </div>
 
-          <Pagination
-            totalCount={productList.length}
-            currentPage={currentPage}
-          />
+              <Pagination
+                totalCount={filteredProductList.length}
+                currentPage={currentPage}
+              />
+            </>
+          ) : (
+            <>
+              <div className={styles.noResultImg}></div>
+              <p className={styles.noResultText}>
+                No {productType} found for your search.
+                Try&nbsp;another&nbsp;keyword.
+              </p>
+            </>
+          )}
         </div>
       )}
     </section>

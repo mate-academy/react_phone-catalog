@@ -41,12 +41,6 @@ export const Header: React.FC<Props> = ({
   useEffect(() => {
     if (searchInput.current && isSearchOpen) {
       searchInput.current.focus();
-      // searchInput.current?.blur();
-      // setTimeout(() => {
-      //   if (searchInput.current) {
-      //     searchInput.current?.focus();
-      //   }
-      // }, 350);
     }
   }, [isSearchOpen]);
 
@@ -57,7 +51,7 @@ export const Header: React.FC<Props> = ({
   const { cartProducts } = useContext(CartContext);
   const { favouriteProducts } = useContext(FavouriteContext);
   const { pathname } = useLocation();
-  const [searchParams] = useSearchParams();
+  const [searchParams, setSearchParams] = useSearchParams();
   const category = Object.keys(ProductType).find(
     productType => productType === pathname.slice(1),
   );
@@ -65,6 +59,7 @@ export const Header: React.FC<Props> = ({
   useLayoutEffect(() => {
     if (category) {
       setIsSearchBtnVisible(true);
+      setQuery('');
     }
 
     return () => setIsSearchBtnVisible(false);
@@ -73,6 +68,32 @@ export const Header: React.FC<Props> = ({
   const openSearch = () => {
     setIsSearchOpen(true);
     handleMobileMenu(false);
+  };
+
+  const closeSearch = () => {
+    setIsSearchOpen(false);
+  };
+
+  const handleSearchInput: React.ChangeEventHandler<HTMLInputElement> = e => {
+    setQuery(e.target.value);
+
+    const trimmedQuery = e.target.value.trim().toLowerCase();
+
+    if (trimmedQuery) {
+      searchParams.set(
+        'query',
+        trimmedQuery
+          .split(' ')
+          .map(str => str.trim())
+          .filter(str => str)
+          .join(' '),
+      );
+      searchParams.set('page', '1');
+    } else {
+      searchParams.delete('query');
+    }
+
+    setSearchParams(searchParams);
   };
 
   const totalNumOfProducts = getTotalProductsInCart(cartProducts);
@@ -87,6 +108,11 @@ export const Header: React.FC<Props> = ({
         >
           <img src={logo} alt="Nice gadgets logo" />
         </Link>
+
+        <div className={styles.navContainer}>
+          <Navigation />
+        </div>
+
         {isSearchBtnVisible && (
           <>
             <button
@@ -95,20 +121,30 @@ export const Header: React.FC<Props> = ({
               onClick={openSearch}
             ></button>
 
-            <input
-              ref={searchInput}
-              type="text"
-              className={classNames(styles.searchInput, {
-                [styles.searchInputIsActive]: isSearchOpen,
-                [styles.searchInputCaretActive]: !!query,
+            <div
+              className={classNames(styles.searchInputContainer, {
+                [styles.searchInputContainerIsActive]: isSearchOpen,
               })}
-              placeholder={`Search in ${category}...`}
-              aria-label={`Search in ${category}...`}
-              inputMode="text"
-              value={query}
-              onBlur={() => setIsSearchOpen(false)}
-              onChange={e => setQuery(e.target.value)}
-            />
+            >
+              <input
+                ref={searchInput}
+                type="text"
+                className={classNames(styles.searchInput, {
+                  [styles.searchInputCaretActive]: !!query,
+                })}
+                placeholder={`Search in ${category}...`}
+                aria-label={`Search in ${category}...`}
+                inputMode="text"
+                value={query}
+                onBlur={() => setIsSearchOpen(false)}
+                onChange={handleSearchInput}
+              />
+              <button
+                className={classNames('buttonClose', styles.btnCloseSearch)}
+                aria-label="Reset search"
+                onClick={closeSearch}
+              ></button>
+            </div>
           </>
         )}
         <button
@@ -118,10 +154,6 @@ export const Header: React.FC<Props> = ({
           aria-label="Mobile menu"
           onClick={handleMenu}
         ></button>
-
-        <div className={styles.navContainer}>
-          <Navigation />
-        </div>
 
         <div className={styles.buttonsContainer}>
           <NavLink
