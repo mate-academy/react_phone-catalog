@@ -40,7 +40,7 @@ export const PicturesSlider = () => {
       >
         <SwiperSlide>
           <img
-            src="\img\banner-accessories.png"
+            src="img\banner-accessories.png"
             alt="banner-accessorie"
           />
         </SwiperSlide>
