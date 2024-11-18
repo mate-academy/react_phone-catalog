@@ -9,8 +9,6 @@ import { SearchParams } from '../../types/SearchParams';
 import { catalogHelper } from '../../utils/catalogHelper';
 import { useEffect, useState } from 'react';
 import { Pagination } from './Pagination';
-import { getProductItems } from '../../utils/getProductItems';
-import { Loader } from '../Loader';
 
 type Props = {
   title: string;
@@ -24,20 +22,8 @@ export const Catalog: React.FC<Props> = ({
 }) => {
   const [searchParams] = useSearchParams();
   const [sortedProducts, setSortedProducts] = useState<Product[]>([]);
-  const [loading, setLoading] = useState(false);
   const [pages, setPages] = useState<Product[][]>([[]]);
   const [curPage, setCurPage] = useState(0);
-
-  useEffect(() => {
-    const category = products ? products[0].category : undefined;
-
-    if (category) {
-      setLoading(true);
-      getProductItems
-        .fetchByCategory(category)
-        .finally(() => setLoading(false));
-    }
-  }, [products]);
 
   useEffect(() => {
     setSortedProducts(() =>
@@ -58,9 +44,7 @@ export const Catalog: React.FC<Props> = ({
 
   return (
     <div className={classNames(style.catalog_container)}>
-      {loading ? (
-        <Loader />
-      ) : products ? (
+      {products ? (
         <>
           <div className={classNames(style.container_breadcrubs)}>
             <BreadCrumbs />
