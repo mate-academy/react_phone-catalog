@@ -7,7 +7,7 @@
 
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: min-content max-content 1fr;
+  grid-template-rows: max-content 1fr 1fr;
   column-gap: 1.6rem;
   width: 100%;
   max-width: $maxContainerWidth;
@@ -22,7 +22,7 @@
   @include on-m-desktop {
     position: relative;
     grid-template-columns: repeat(24, 1fr);
-    min-height: calc(100vh - 90px - 110px);
+    min-height: calc(100vh - 175px - 110px);
   }
 }
 
@@ -40,6 +40,10 @@
 
 .contentContainer {
   grid-column: 1 / -1;
+  grid-row: 2 / -1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .titleEmpty {

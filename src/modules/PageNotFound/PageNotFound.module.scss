@@ -6,14 +6,14 @@
 .container {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: max-content max-content 1fr;
+  grid-template-rows: repeat(3, max-content);
+  align-content: center;
   column-gap: 1.6rem;
   max-width: $maxContainerWidth;
   min-height: calc(100vh - 170px - 110px);
-  margin-inline: auto;
+  margin: 0 auto 5.6rem;
   padding-inline: 1.6rem;
   padding-top: 2.4rem;
-  margin-bottom: 5.6rem;
 
   @include on-tablet {
     grid-template-columns: repeat(12, 1fr);

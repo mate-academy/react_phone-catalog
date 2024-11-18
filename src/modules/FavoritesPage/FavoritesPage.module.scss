@@ -81,8 +81,9 @@
   }
 
   @include on-m-desktop {
-    margin-bottom: 8rem;
+    margin-bottom: 5.6rem;
   }
+
 }
 
 .productsContainer {
@@ -120,7 +121,7 @@
 .ctaBtn{
   grid-column: 1 / -1;
 
-  margin-bottom: 3.2rem;
+  margin-bottom: 2.4rem;
 }
 
 .emptyFavImg {
