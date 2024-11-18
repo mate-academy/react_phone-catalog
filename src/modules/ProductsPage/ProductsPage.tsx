@@ -9,24 +9,33 @@ import styles from './ProductsPage.module.scss';
 import { ProductCard } from '../../components/ProductCard';
 import { Pagination } from '../../components/Pagination';
 import { SortProduct } from '../../components/SortProducts';
-import { useEffect, useMemo } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { SortBy } from '../../types/SortBy';
 import { filterProducts } from '../../utils/filterProducts';
-import { ProductType } from '../../types/ProductType';
-import phones from '../../../public/api/phones.json';
-import tablets from '../../../public/api/tablets.json';
-import accessories from '../../../public/api/accessories.json';
 import { Product } from '../../types/Product';
 import { ProductListContext } from '../../ContextProvider';
 import { ItemsPerPage } from '../../types/ItemsPerPage';
 import { useDebounce } from '../../hooks/useDebounce';
+import { getProducts } from '../../utils/getProducts';
+import { FetchDataType } from '../../types/FetchDataType';
 
 export const ProductsPage = () => {
+  const [productList, setProductList] = useState<Product[]>([]);
+  // const [error, setError] = useState('');
+
   const [searchParams] = useSearchParams();
   const { pathname } = useLocation();
   const { productId } = useParams();
 
-  const productType = pathname.split('/').filter(location => !!location)[0];
+  const productType = pathname
+    .split('/')
+    .filter(location => !!location)[0] as FetchDataType;
+  const title =
+    productType === FetchDataType.phones
+      ? 'Mobile phones'
+      : productType === FetchDataType.tablets
+        ? 'Tablets'
+        : 'Accessories';
   const itemsPerPage = searchParams.get('perPage') || ItemsPerPage.four;
   const sortBy = (
     (Object.keys(SortBy).includes(String(searchParams.get('sortBy'))) &&
@@ -37,27 +46,23 @@ export const ProductsPage = () => {
   const query = searchParams.get('query') || '';
   const debouncedQuery = useDebounce(query);
 
-  const [productList, title] = useMemo(() => {
-    let list: Product[] = [];
-    let productTitle = '';
-
-    if (productType === ProductType.phones) {
-      list = [...phones];
-      productTitle = 'Mobile phones';
-    } else if (productType === ProductType.tablets) {
-      list = [...tablets];
-      productTitle = 'Tablets';
-    } else if (productType === ProductType.accessories) {
-      list = [...accessories];
-      productTitle = 'Accessories';
-    }
-
-    return [list, productTitle];
+  useEffect(() => {
+    getProducts(productType).then(res => {
+      setProductList(res);
+    });
+    // .catch(e => setError(e));
   }, [productType]);
 
   const [filteredProductListPerPage, filteredProductList] = useMemo(
     () => filterProducts(sortBy, productList, itemsPerPage, currentPage, query),
-    [sortBy, itemsPerPage, currentPage, productType, debouncedQuery],
+    [
+      sortBy,
+      itemsPerPage,
+      currentPage,
+      productType,
+      debouncedQuery,
+      productList,
+    ],
   );
 
   useEffect(() => {

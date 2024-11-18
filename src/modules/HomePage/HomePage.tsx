@@ -3,23 +3,38 @@ import styles from './HomePage.module.scss';
 import { ShopCategory } from './components/ShopCategory';
 import { SuggestionsSlider } from '../../components/SuggestionsSlider';
 
-import { newPhoneModels } from '../../constants/newPhoneModels';
 import { SliderTitle } from '../../types/SliderTitle';
 import { getUniqueItems } from '../../utils/getUniqueItems';
-import phones from '../../../public/api/phones.json';
+import { useEffect, useState } from 'react';
+import { getProducts } from '../../utils/getProducts';
+import { Product, ProductOtherData } from '../../types/Product';
+import { brandNewModels } from '../../utils/brandNewModels';
+import { FetchDataType } from '../../types/FetchDataType';
 
 export const HomePage = () => {
-  const uniquePhones = getUniqueItems(phones);
+  const [products, setProducts] = useState<Product[]>([]);
+  const [productList, setProductList] = useState<ProductOtherData[]>([]);
+  // const [error, setError] = useState('');
 
-  const hotPricesPhones = uniquePhones
+  useEffect(() => {
+    getProducts(FetchDataType.phones).then(res => setProducts(res));
+    // .catch(e => setError(e));
+
+    getProducts(FetchDataType.products).then(res => setProductList(res));
+    // .catch(e => setError(e));
+  }, []);
+
+  const hotPricesPhones = getUniqueItems(products)
     .filter(phone => !phone.name.includes('iPhone 14'))
     .slice(0, 7);
+
+  const newModels = brandNewModels(products, productList, 'capacity', '256GB');
 
   return (
     <div className={styles.hero}>
       <Hero />
       <SuggestionsSlider
-        productList={newPhoneModels}
+        productList={newModels}
         title={SliderTitle.newModels}
       />
       <ShopCategory />
