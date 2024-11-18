@@ -14,6 +14,7 @@ import { TabletPage } from '../TabletPage';
 import { AccessoriesPage } from '../AccessoriesPage';
 import { ProductDetailsPage } from '../ProductDetailsPage';
 import { MenuItems } from '../../types/MenuItems';
+import { PageNotFoundPage } from '../PageNotFoundPage';
 
 export const Root = () => {
   return (
@@ -81,7 +82,10 @@ export const Root = () => {
             element={<CartPage />}
           />
 
-          {/* <Route path="*" element={<PageNotFound />} /> */}
+          <Route
+            path="*"
+            element={<PageNotFoundPage />}
+          />
         </Route>
       </Routes>
     </Router>

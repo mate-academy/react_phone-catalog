@@ -313,7 +313,10 @@ export const ProductDetailsPage: React.FC<Props> = ({ category }) => {
               </div>
             </div>
           ) : (
-            <p>Problem with phones</p>
+            <div className={style.product_not_found_container}>
+              <h3>Sorry Product Not Found</h3>
+              <div className={style.img}></div>
+            </div>
           )}
         </>
       )}

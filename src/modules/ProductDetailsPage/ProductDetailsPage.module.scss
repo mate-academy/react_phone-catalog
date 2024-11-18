@@ -292,4 +292,21 @@
   & .container_seperator {
     border: 1px solid var(--c-elements);
   }
+
+  .product_not_found_container{
+    width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+
+  & .img{
+    flex-grow: 1;
+    width: 30vw;
+    aspect-ratio: 1/1;
+    background: url(../../../public/img/product-not-found.png) no-repeat center/contain;;
+  }
+}
+
 }
