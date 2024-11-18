@@ -29,7 +29,7 @@ export const Catalog: React.FC<Props> = ({
   const [curPage, setCurPage] = useState(0);
 
   useEffect(() => {
-    const category = products[0]?.category;
+    const category = products ? products[0].category : undefined;
 
     if (category) {
       setLoading(true);
@@ -60,7 +60,7 @@ export const Catalog: React.FC<Props> = ({
     <div className={classNames(style.catalog_container)}>
       {loading ? (
         <Loader />
-      ) : (
+      ) : products ? (
         <>
           <div className={classNames(style.container_breadcrubs)}>
             <BreadCrumbs />
@@ -97,6 +97,11 @@ export const Catalog: React.FC<Props> = ({
             {pages.length > 1 && <Pagination pages={pages} />}
           </div>
         </>
+      ) : (
+        <div className={style.products_not_found_container}>
+          <h3>Sorry Products Not Found</h3>
+          <div className={style.img}></div>
+        </div>
       )}
     </div>
   );
