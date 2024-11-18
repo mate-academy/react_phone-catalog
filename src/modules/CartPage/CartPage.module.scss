@@ -80,12 +80,12 @@
   text-align: center;
   font-size: 1.4rem;
   line-height: 2.1rem;
-  margin-bottom: 1.6rem;
+  margin-bottom: 2.4rem;
 
   @include on-tablet {
     font-size: 2rem;
     line-height: 2.6rem;
-    margin-bottom: 2.4rem;
+    margin-bottom: 3.2rem;
   }
 
   @include on-m-desktop {
@@ -98,7 +98,12 @@
   grid-column: 1 / -1;
   margin-bottom: 5.6rem;
 
+  display: flex;
+  justify-content: center;
+
   background-image: url("../../assets/icons/empty-cart.svg");
+  background-repeat: no-repeat;
+  background-position: center;
   width: 100%;
   margin-inline: auto;
   aspect-ratio: 1;
@@ -111,17 +116,15 @@
 
   @include on-tablet {
     max-width: 25rem;
-    margin-bottom: 6.4rem;
   }
 
   @include on-m-desktop {
     max-width: 30rem;
-    margin-bottom: 8rem;
   }
 }
 
 .ctaBtn {
   grid-column: 1 / -1;
 
-  margin-bottom: 0;
+  margin-bottom: 1.6rem;
 }

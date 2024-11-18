@@ -103,12 +103,12 @@
   text-align: center;
   font-size: 1.4rem;
   line-height: 2.1rem;
-  margin-bottom: 1.6rem;
+  margin-bottom: 2.4rem;
 
   @include on-tablet {
     font-size: 2rem;
     line-height: 2.6rem;
-    margin-bottom: 2.4rem;
+    margin-bottom: 3.2rem;
   }
 
   @include on-m-desktop {
@@ -117,9 +117,17 @@
   }
 }
 
+.ctaBtn{
+  grid-column: 1 / -1;
+
+  margin-bottom: 3.2rem;
+}
+
 .emptyFavImg {
   grid-column: 1 / -1;
   background-image: url("../../assets/icons/empty-favorites.svg");
+  background-repeat: no-repeat;
+  background-position: center;
   width: 100%;
   margin-inline: auto;
   aspect-ratio: 1;
