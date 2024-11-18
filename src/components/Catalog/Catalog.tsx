@@ -53,8 +53,10 @@ export const Catalog: React.FC<Props> = ({
           <div className={classNames(style.container_title)}>
             <h1 className={classNames(style.container_title_text)}>{title}</h1>
             <p className={classNames(style.container_title_count)}>
-              {products.length !== 1
-                ? `${products.length} models`
+              {products.length !== 0
+                ? products.length !== 1
+                  ? `${products.length} models`
+                  : '1 model'
                 : 'no models'}
             </p>
           </div>
@@ -63,19 +65,38 @@ export const Catalog: React.FC<Props> = ({
             {sortPerPageEnable && <SortFilter />}
           </div>
 
-          <div className={classNames(style.container_catalog)}>
-            {pages[curPage] &&
-              pages[curPage].map(product => {
-                return (
-                  <div
-                    key={product.id}
-                    className={classNames(style.container_product)}
-                  >
-                    <ProductCard product={product} />
-                  </div>
-                );
-              })}
-          </div>
+          {products.length ? (
+            <div className={classNames(style.container_catalog)}>
+              {pages[curPage] &&
+                pages[curPage].map(product => {
+                  return (
+                    <div
+                      key={product.id}
+                      className={classNames(style.container_product)}
+                    >
+                      <ProductCard product={product} />
+                    </div>
+                  );
+                })}
+            </div>
+          ) : (
+            <h3>
+              <div className={classNames(style.container_catalog)}>
+                {pages[curPage] &&
+                  pages[curPage].map(product => {
+                    return (
+                      <div
+                        key={product.id}
+                        className={classNames(style.container_product)}
+                      >
+                        <ProductCard product={product} />
+                      </div>
+                    );
+                  })}
+              </div>
+              {`There are no ${title.toLocaleLowerCase()} yet.`}
+            </h3>
+          )}
 
           <div className={classNames(style.container_pagination)}>
             {pages.length > 1 && <Pagination pages={pages} />}
