@@ -1,0 +1,51 @@
+@import '../../../styles/main';
+
+.copyright_container {
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: auto;
+  background-color: #89939af4;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+
+  & .modal_overlay {
+    box-sizing: border-box;
+    width: 75vw;
+    max-width: 600px;
+    background-color: var(--c-elements);
+    border-radius: 10px;
+    box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+  }
+  & .modal_content {
+    padding: 15px;
+  }
+
+  & .link {
+    @extend %uppercase;
+    @extend %link;
+
+    cursor: pointer;
+
+    @include hover;
+  }
+
+  & .button {
+    width: 50%;
+    height: 40px;
+    &_wrap {
+      box-sizing: border-box;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding-top: 15px;
+    }
+  }
+}
