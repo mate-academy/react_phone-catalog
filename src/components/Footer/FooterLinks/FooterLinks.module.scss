@@ -4,15 +4,16 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  justify-content: space-between;
   row-gap: 16px;
 
   @include ontablet {
     height: 100%;
+    width: 100%;
     flex-direction: row;
     align-items: center;
     gap: 14px;
   }
-
 }
 
 .link {
