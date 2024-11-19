@@ -40,14 +40,9 @@
   @include ontablet {
     padding-inline: $tablet-padding-inline;
   }
-
-  @include ondesktop {
-    padding-inline: $desktop-padding-inline;
-  }
 }
 
 @mixin headings {
-
   h1,
   h2,
   h3,

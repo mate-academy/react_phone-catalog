@@ -11,7 +11,6 @@
   @include inline-padding;
 
   & .container {
-
     &_title {
       @include ontablet {
         grid-area: 2/ 1/ 2/ -1;
@@ -29,42 +28,34 @@
     &_catalog {
       display: flex;
       flex-flow: row wrap;
-      gap: 40px;
-      width: 100%;
-      justify-content: center;
-
+      gap: 40px 16px;
 
       @include ontablet {
+        justify-content: space-between;
         flex-direction: row;
-        gap: 16px;
       }
     }
 
     &_product {
       display: flex;
       flex-direction: row;
-      width: 220px;
-
-      @include ontablet {
-        flex-wrap: wrap;
-        width: 230px;
-
-      }
+      flex: 1 1 220px;
     }
   }
 
-  & .products_not_found_container{
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 20px;
+  & .products_not_found_container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
 
-  & .img{
-    flex-grow: 1;
-    width: 30vw;
-    aspect-ratio: 1/1;
-    background: url(../../../public/img/product-not-found.png) no-repeat center/contain;;
+    & .img {
+      flex-grow: 1;
+      width: 30vw;
+      aspect-ratio: 1/1;
+      background: url(../../../public/img/product-not-found.png) no-repeat
+        center/contain;
+    }
   }
-}
 }

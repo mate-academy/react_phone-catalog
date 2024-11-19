@@ -18,6 +18,7 @@ export const FooterLinks: React.FC = () => {
       <Link
         to={'https://github.com/syavaYki'}
         className={classNames(style.link)}
+        target="_blank"
       >
         Github
       </Link>
