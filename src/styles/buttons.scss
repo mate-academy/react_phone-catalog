@@ -6,6 +6,7 @@
     align-items: center;
     justify-content: center;
     padding-inline: 5px;
+    cursor: pointer;
 
     &:hover {
       box-shadow: 0 3px 13px 0 #17203166;
@@ -27,7 +28,7 @@
 .buttons_text {
   @extend %buttons;
 
-  cursor: default;
+  cursor: pointer;
   color: var(--c-buttons-text);
 
   &_selected {

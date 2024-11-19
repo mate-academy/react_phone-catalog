@@ -80,11 +80,10 @@
     & .name {
       text-decoration: none;
       color: (var(--c-primary));
-      cursor: default;
+      cursor: pointer;
 
       @include hover;
     }
-
   }
 
   & .bottom {
@@ -102,7 +101,6 @@
       align-items: center;
 
       & .icon {
-
         &_container {
           width: 32px;
           height: 32px;
@@ -127,6 +125,5 @@
         text-align: center;
       }
     }
-
   }
 }

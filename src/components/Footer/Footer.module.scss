@@ -55,7 +55,7 @@
 .back_top_text {
   @extend %small-text;
 
-  cursor: default;
+  cursor: pointer;
   color: var(--c-secondary);
 }
 
