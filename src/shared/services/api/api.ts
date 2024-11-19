@@ -1,7 +1,28 @@
 import axios from 'axios';
 
-import { ProductModel } from '@shared/models/Product';
+import { ProductCoverModel, ProductModel } from '@shared/types/Product';
+import { ProductCategory } from '@shared/types/Product/Product.interfaces';
 import { imitateRequestDelay } from '@shared/utils/imitateRequestDelay';
+
+import {
+  filterProductsCovers,
+  generateProductsCoversPagination,
+} from './api.helpers';
+
+interface Meta {
+  end: boolean;
+  start: boolean;
+  total: number;
+  page: number | null;
+}
+
+interface Response<TData> {
+  data: TData;
+}
+
+export interface ResponseWithPagination<TData> extends Response<TData> {
+  meta: Meta;
+}
 
 const instance = axios.create({
   baseURL: 'api/',
@@ -12,38 +33,85 @@ const instance = axios.create({
 });
 
 const api = {
-  async get<Response>(url: string) {
+  async get<TResponse>(url: string) {
     const response = await imitateRequestDelay(() =>
-      instance.get<Response>(url),
+      instance.get<TResponse>(url),
     );
 
     return response;
   },
 };
 
-export const getProducts = async (): Promise<ProductModel[]> => {
-  const response = await api.get<ProductModel[]>('products.json');
+export const getProductsCovers = async (): Promise<ProductCoverModel[]> => {
+  const response = await api.get<ProductCoverModel[]>('products.json');
 
   return response.data;
 };
 
-export const getBrandNewProducts = async (
+export const getBrandNewProductsCovers = async (
   page?: number,
-): Promise<{ data: ProductModel[]; isEnd: boolean; isStart: boolean }> => {
-  const products = await getProducts();
+): Promise<ResponseWithPagination<ProductCoverModel[]>> => {
+  const allProductsCovers = await getProductsCovers();
 
-  const brandNewProducts = products.filter(({ year }) => year === 2022);
+  const brandNewProductsCovers = filterProductsCovers({
+    variant: 'new',
+    productsCovers: allProductsCovers,
+  });
+
+  return generateProductsCoversPagination({
+    page,
+    productsCovers: brandNewProductsCovers,
+  });
+};
+
+export const getHotProductsCovers = async (
+  page?: number,
+): Promise<ResponseWithPagination<ProductCoverModel[]>> => {
+  const allProductsCovers = await getProductsCovers();
+
+  const hotProductsCovers = filterProductsCovers({
+    variant: 'hot',
+    productsCovers: allProductsCovers,
+  });
+
+  return generateProductsCoversPagination({
+    page,
+    productsCovers: hotProductsCovers,
+  });
+};
+
+export const getProducts = async (
+  category: ProductCategory,
+  page?: number,
+): Promise<ResponseWithPagination<ProductModel[]>> => {
+  const { data } = await api.get<ProductModel[]>(`${category}.json`);
+
+  const response = {
+    data,
+    meta: {
+      page: null,
+      end: true,
+      start: true,
+      total: data.length,
+    },
+  };
 
   if (typeof page === 'undefined') {
-    return { data: brandNewProducts, isEnd: true, isStart: true };
+    return response;
   }
 
-  const to = page * 5;
-  const from = to - 5;
+  const to = page * 10;
+  const from = to - 10;
+
+  const slicedData = data.slice(from, to);
 
   return {
-    data: brandNewProducts.slice(from, to),
-    isEnd: to === brandNewProducts.length,
-    isStart: from === 0,
+    data: slicedData,
+    meta: {
+      page,
+      end: to === data.length || slicedData.length < 10,
+      start: from === 0,
+      total: data.length,
+    },
   };
 };

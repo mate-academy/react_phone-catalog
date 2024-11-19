@@ -21,6 +21,27 @@ a {
   width: 100%;
   max-width: 1136px;
   margin: 0 auto;
+  padding-inline: 16px;
 
   @include page-grid;
+
+  @include on-tablet {
+    padding-inline: 24px;
+  }
+
+  @include on-desktop {
+    padding-inline: 0;
+  }
+}
+
+body::-webkit-scrollbar {
+  width: 4px;
+}
+
+body::-webkit-scrollbar-track {
+  background-color: var(--track);
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: var(--thumb);
 }

@@ -5,6 +5,8 @@ import { Text } from '@shared/base/Text';
 import { formatNumberToCurrency } from '@shared/utils/currencyFormatters';
 
 import styles from './ProductCard.module.scss';
+import { AddToCartBtn } from '../AddToCartBtn';
+import { FavoritesButton } from '../FavoritesButton';
 
 interface ProductCardFeatureProps {
   title: string;
@@ -18,6 +20,7 @@ interface ProductCardProps {
   oldPrice: number;
   newPrice: number;
   features?: ProductCardFeatureProps[];
+  productId: string;
 }
 
 export const ProductCard: React.FC<ProductCardProps> = ({
@@ -26,6 +29,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
   title,
   oldPrice,
   newPrice,
+  productId,
   features,
 }) => (
   <Box className={styles.card}>
@@ -65,5 +69,14 @@ export const ProductCard: React.FC<ProductCardProps> = ({
           ))}
       </Box>
     )}
+
+    <Box className={styles.buttons}>
+      <AddToCartBtn
+        className={styles.addToCartBtn}
+        productId={productId}
+        title={title}
+      />
+      <FavoritesButton productId={productId} title={title} />
+    </Box>
   </Box>
 );

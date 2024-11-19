@@ -33,26 +33,26 @@
   }
 
   &.primary {
-    border-color: var(--primary-button-border-color);
-    color: var(--primary-button-color);
-    background-color: var(--primary-button-bg);
-
-    &:active {
-      border-color: var(--primary-button-active-border-color);
-      background-color: var(--primary-button-active-bg);
-      color: var(--primary-button-active-color);
-
-      svg {
-        path {
-          fill: var(--primary-button-active-color);
-        }
-      }
-    }
+    border-color: var(--primary-icon-button-border-color);
+    color: var(--primary-icon-button-color);
+    background-color: var(--primary-icon-button-bg);
 
     @include on-desktop {
       &:hover {
-        background-color: var(--primary-button-hover-bg);
-        border-color: var(--primary-button-hover-border-color);
+        background-color: var(--primary-icon-button-hover-bg);
+        border-color: var(--primary-icon-button-hover-border-color);
+      }
+    }
+
+    &:active {
+      border-color: var(--primary-icon-button-active-border-color);
+      background-color: var(--primary-icon-button-active-bg);
+      color: var(--primary-icon-button-active-color);
+
+      svg {
+        path {
+          fill: var(--primary-icon-button-active-color);
+        }
       }
     }
 
@@ -60,13 +60,13 @@
     &.disabled:hover,
     &.disabled:active {
       cursor: default;
-      color: var(--primary-button-disabled-color);
-      background-color: var(--primary-button-disabled-bg);
-      border-color: var(--primary-button-disabled-border-color);
+      color: var(--primary-icon-button-disabled-color);
+      background-color: var(--primary-icon-button-disabled-bg);
+      border-color: var(--primary-icon-button-disabled-border-color);
 
       svg {
         path {
-          fill: var(--primary-button-disabled-color);
+          fill: var(--primary-icon-button-disabled-color);
         }
       }
     }

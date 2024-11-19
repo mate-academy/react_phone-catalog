@@ -1,5 +1,6 @@
 :root {
   --main-hover-opacity: 0.8;
+  --main-box-shadow: 0px 3px 13px 0px rgba(23, 32, 49, 0.4);
 
   .light {
     // main
@@ -8,6 +9,9 @@
     --main-button-color: var(--grey-900);
     --main-button-hover-bg: var(--grey-200);
     --main-text-color: var(--grey-900);
+
+    // secondary
+    --secondary-text-color: var(--grey-700);
 
     // home-slider
     --home-slider-button-bg: var(--white);
@@ -21,18 +25,28 @@
     --card-internal-border: var(--grey-300);
     --card-cross-out-text-color: var(--grey-700);
 
+    // button
+    --primary-button-bg: var(--grey-900);
+    --primary-button-color: var(--white);
+    --primary-button-hover-box-shadow: var(--main-box-shadow);
+    --primary-button-hover-bg: currentColor;
+    --primary-button-active-bg: var(--white);
+    --primary-button-active-border-color: var(--grey-300);
+    --primary-button-active-color: var(--green);
+
     // icon button
-    --primary-button-border-color: var(--grey-500);
-    --primary-button-bg: var(--white);
-    --primary-button-color: var(--grey-900);
-    --primary-button-active-bg: var(--grey-900);
-    --primary-button-active-border-color: var(--grey-900);
-    --primary-button-active-color: var(--white);
-    --primary-button-hover-border-color: var(--grey-900);
-    --primary-button-hover-bg: var(--white);
-    --primary-button-disabled-bg: var(--white);
-    --primary-button-disabled-color: var(--grey-300);
-    --primary-button-disabled-border-color: var(--grey-300);
+    --primary-icon-button-border-color: var(--grey-500);
+    --primary-icon-button-bg: var(--white);
+    --primary-icon-button-color: var(--grey-900);
+    --primary-icon-button-active-bg: var(--grey-900);
+    --primary-icon-button-active-border-color: var(--grey-900);
+    --primary-icon-button-active-color: var(--white);
+    --primary-icon-button-hover-border-color: var(--grey-900);
+    --primary-icon-button-hover-bg: var(--white);
+    --primary-icon-button-disabled-bg: var(--white);
+    --primary-icon-button-disabled-color: var(--grey-300);
+    --primary-icon-button-disabled-border-color: var(--grey-300);
+    --favorite-button-active-border-color: var(--grey-300);
 
     // skeleton
     --skeleton-bg: var(--grey-300);
@@ -43,6 +57,14 @@
       rgba(255, 255, 255, 0.6) 60%,
       var(--skeleton-bg)
     );
+
+    // scrollbar
+    --track: var(--grey-300);
+    --thumb: var(--grey-900);
+
+    // footer
+    --navigation-text-color: var(--grey-700);
+    --back-to-top-btn-color: var(--grey-700);
   }
 
   .dark {
@@ -52,6 +74,9 @@
     --main-button-color: var(--grey-200);
     --main-button-hover-bg: var(--blue-grey-300);
     --main-text-color: var(--grey-200);
+
+    // secondary
+    --secondary-text-color: var(--blue-grey-100);
 
     // home-slider
     --home-slider-button-bg: var(--blue-grey-700);
@@ -65,18 +90,28 @@
     --card-internal-border: var(--blue-grey-500);
     --card-cross-out-text-color: var(--blue-grey-100);
 
-    // icon button
-    --primary-button-border-color: var(--blue-grey-700);
-    --primary-button-bg: var(--blue-grey-700);
+    // button
+    --primary-button-bg: var(--purple);
     --primary-button-color: var(--grey-200);
-    --primary-button-active-bg: var(--purple);
-    --primary-button-active-border-color: var(--purple);
+    --primary-button-hover-box-shadow: none;
+    --primary-button-hover-bg: var(--purple-light);
+    --primary-button-active-bg: var(--blue-grey-700);
+    --primary-button-active-border-color: var(--blue-grey-700);
     --primary-button-active-color: var(--grey-200);
-    --primary-button-hover-border-color: var(--blue-grey-300);
-    --primary-button-hover-bg: var(--blue-grey-300);
-    --primary-button-disabled-bg: var(--blue-grey-900);
-    --primary-button-disabled-color: var(--blue-grey-500);
-    --primary-button-disabled-border-color: var(--blue-grey-500);
+
+    // icon button
+    --primary-icon-button-border-color: var(--blue-grey-700);
+    --primary-icon-button-bg: var(--blue-grey-700);
+    --primary-icon-button-color: var(--grey-200);
+    --primary-icon-button-active-bg: var(--purple);
+    --primary-icon-button-active-border-color: var(--purple);
+    --primary-icon-button-active-color: var(--grey-200);
+    --primary-icon-button-hover-border-color: var(--blue-grey-300);
+    --primary-icon-button-hover-bg: var(--blue-grey-300);
+    --primary-icon-button-disabled-bg: var(--blue-grey-900);
+    --primary-icon-button-disabled-color: var(--blue-grey-500);
+    --primary-icon-button-disabled-border-color: var(--blue-grey-500);
+    --favorite-button-active-border-color: var(--blue-grey-500);
 
     // skeleton
     --skeleton-bg: var(--blue-grey-800);
@@ -87,5 +122,13 @@
       rgba(50, 53, 66, 0.2) 60%,
       var(--skeleton-bg)
     );
+
+    // scrollbar
+    --track: var(--blue-grey-500);
+    --thumb: var(--purple);
+
+    // footer
+    --navigation-text-color: var(--grey-200);
+    --back-to-top-btn-color: var(--blue-grey-100);
   }
 }

@@ -1,6 +1,7 @@
 import { RouterProvider } from 'react-router-dom';
 
-import { ThemeProvider } from '@shared/contexts/theme/Theme.context';
+import { StoredProductsProvider } from '@shared/contexts/StoredProducts';
+import { ThemeProvider } from '@shared/contexts/Theme.context';
 
 import { router } from './router';
 
@@ -8,6 +9,8 @@ import './App.scss';
 
 export const App = () => (
   <ThemeProvider>
-    <RouterProvider router={router} />
+    <StoredProductsProvider>
+      <RouterProvider router={router} />
+    </StoredProductsProvider>
   </ThemeProvider>
 );

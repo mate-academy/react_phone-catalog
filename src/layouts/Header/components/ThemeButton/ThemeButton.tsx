@@ -5,7 +5,7 @@ import cn from 'classnames';
 import MoonIcon from '@assets/images/icons/moon-icon.svg?react';
 import SunIcon from '@assets/images/icons/sun-icon.svg?react';
 
-import { useTheme } from '@shared/contexts/theme/Theme.context';
+import { useTheme } from '@shared/contexts/Theme.context';
 import { DefaultProps } from '@shared/types/common';
 
 import styles from './ThemeButton.module.scss';

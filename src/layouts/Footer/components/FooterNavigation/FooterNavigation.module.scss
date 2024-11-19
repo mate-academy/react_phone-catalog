@@ -1,0 +1,36 @@
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  @include on-tablet {
+    flex-direction: row;
+    gap: 13px;
+  }
+
+  @include on-desktop {
+    gap: 105px;
+  }
+
+  .item {
+    line-height: 0;
+  }
+
+  .link {
+    .text {
+      color: var(--navigation-text-color);
+
+      @include on-desktop {
+        @include text-underline(-5px);
+      }
+    }
+
+    @include on-desktop {
+      &:hover {
+        .text::after {
+          transform: scaleX(1);
+        }
+      }
+    }
+  }
+}

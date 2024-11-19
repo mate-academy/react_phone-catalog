@@ -20,7 +20,7 @@ export const Box: React.FC<BoxProps> = ({
     () =>
       React.createElement(
         variant,
-        { className: cn(styles.box, className), ...rest },
+        { className: cn(styles[`box-${variant}`], className), ...rest },
         children,
       ),
     [variant, children, className, rest],

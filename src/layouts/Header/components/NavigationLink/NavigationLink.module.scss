@@ -33,6 +33,27 @@
     }
   }
 
+  .iconContainer {
+    position: relative;
+    width: fit-content;
+
+    .counter {
+      position: absolute;
+      top: -6px;
+      right: -7px;
+      width: 14px;
+      height: 14px;
+      border: 1px solid var(--main-bg);
+      background-color: var(--red);
+      border-radius: 50%;
+      color: var(--white);
+      font-size: 9px;
+      display: flex;
+      justify-content: center;
+      padding-top: 1px;
+    }
+  }
+
   svg {
     path {
       fill: var(--main-button-color);

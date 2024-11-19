@@ -5,12 +5,13 @@
 
   .imgLink {
     display: block;
-    height: 196px;
+    height: 130px;
 
     img {
       margin: 0 auto;
       display: block;
       height: 100%;
+      max-width: 100%;
       object-fit: cover;
       transition: transform 0.3s ease;
     }
@@ -19,6 +20,14 @@
       img {
         transform: scale(1.1);
       }
+    }
+
+    @include on-tablet {
+      height: 200px;
+    }
+
+    @include on-desktop {
+      height: 196px;
     }
   }
 
@@ -31,6 +40,8 @@
     border-bottom: 1px solid var(--card-internal-border);
 
     .titleLink {
+      height: 42px;
+
       .title {
         @include line-clamp(2);
 
@@ -59,6 +70,8 @@
   }
 
   .feature {
+    display: flex;
+    flex-direction: column;
     padding-top: 8px;
     margin-top: 8px;
     gap: 8px;
@@ -70,6 +83,16 @@
       & > :first-child {
         color: var(--grey-700);
       }
+    }
+  }
+
+  .buttons {
+    margin-top: 16px;
+    display: flex;
+    gap: 8px;
+
+    .addToCartBtn {
+      width: calc(100% - 40px);
     }
   }
 }

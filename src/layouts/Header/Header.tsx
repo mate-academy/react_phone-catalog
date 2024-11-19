@@ -1,6 +1,6 @@
 import { Box } from '@shared/base/Box';
 import { Logo } from '@shared/components/Logo';
-import { useTheme } from '@shared/contexts/theme/Theme.context';
+import { useTheme } from '@shared/contexts/Theme.context';
 import { useMedia } from '@shared/hooks/useMedia';
 
 import { DesktopNavigation } from './components/DesktopNavigation';

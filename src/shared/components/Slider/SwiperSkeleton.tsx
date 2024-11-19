@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import { useMemo } from 'react';
 
 import { useMedia } from '@shared/hooks/useMedia';
 
@@ -10,14 +10,14 @@ export const SwiperSkeleton = () => {
 
   const { width, height } = useMemo(() => {
     if (isMobile) {
-      return { width: 212, height: 439 };
+      return { width: 212, height: 438 };
     }
 
     if (isTablet) {
-      return { width: 237, height: 512 };
+      return { width: 237, height: 513 };
     }
 
-    return { width: 272, height: 506 };
+    return { width: 272, height: 509 };
   }, [isMobile, isDesktop, isTablet]);
 
   return (

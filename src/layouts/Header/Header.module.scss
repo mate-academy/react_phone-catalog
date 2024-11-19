@@ -5,6 +5,10 @@
   align-items: center;
   justify-content: space-between;
   border-bottom: 1px solid var(--main-border-color);
+  background-color: var(--main-bg);
+  position: sticky;
+  top: 0;
+  z-index: 2;
 
   @include on-tablet {
     gap: 32px;

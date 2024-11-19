@@ -10,6 +10,7 @@ import { Box } from '@shared/base/Box';
 import { List } from '@shared/base/List';
 import { ListItem } from '@shared/base/ListItem';
 import { Text } from '@shared/base/Text';
+import { useStoredProducts } from '@shared/contexts/StoredProducts';
 
 import styles from './MobileNavigation.module.scss';
 import { NAVIGATION_CONFIG } from '../../utils/navigation.config';
@@ -19,6 +20,7 @@ import { ThemeButton } from '../ThemeButton';
 
 export const MobileNavigation = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const { storedQuantity } = useStoredProducts();
 
   const toggleOpen = () => {
     setIsOpen(prev => !prev);
@@ -64,12 +66,14 @@ export const MobileNavigation = () => {
               href="/favorites"
               className={styles.bottomBarBtn}
               Icon={HeartIcon}
+              counter={storedQuantity.favorite}
             />
 
             <NavigationLink
               href="/cart"
               className={styles.bottomBarBtn}
               Icon={CartIcon}
+              counter={storedQuantity.cart}
             />
 
             <ThemeButton className={styles.bottomBarBtn} />

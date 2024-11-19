@@ -7,24 +7,25 @@ import { SwiperProps } from 'swiper/react';
 import { useMedia } from '@shared/hooks/useMedia';
 
 export interface UseSliderProps {
-  onSwiperReachEnd?: VoidFunction;
-  onSwiperReachStart?: VoidFunction;
+  onSlideChange?: VoidFunction;
 }
 
-export const useSlider = ({
-  onSwiperReachEnd,
-  onSwiperReachStart,
-}: UseSliderProps) => {
+export const useSlider = ({ onSlideChange }: UseSliderProps) => {
   const { isDesktop } = useMedia();
   const swiperRef = useRef<SwiperType>();
 
+  const [isBeginning, setIsBeginning] = useState(true);
   const [isEnd, setIsEnd] = useState(false);
-  const [isBeginning, setIsBeginning] = useState(false);
 
   const slidesPerView = useMemo(
     () => (isDesktop ? 4 : ('auto' as const)),
     [isDesktop],
   );
+
+  const setSliderPositions = (swiper: SwiperType) => {
+    setIsBeginning(swiper.isBeginning);
+    setIsEnd(swiper.isEnd);
+  };
 
   const settings = useMemo(
     () =>
@@ -32,31 +33,25 @@ export const useSlider = ({
         modules: [Navigation],
         slidesPerView,
         spaceBetween: 16,
+        onUpdate: (swiper: SwiperType) => {
+          setSliderPositions(swiper);
+        },
         onBeforeInit: (swiper: SwiperType) => {
           swiperRef.current = swiper;
         },
-        onInit: (swiper: SwiperType) => {
-          setIsEnd(swiper.isEnd);
-          setIsBeginning(swiper.isBeginning);
-        },
         onSlideChange: swiper => {
-          if (swiper.isEnd) {
-            setIsEnd(swiper.isEnd);
+          setSliderPositions(swiper);
 
-            if (onSwiperReachEnd) {
-              onSwiperReachEnd();
-            }
+          if (!onSlideChange) {
+            return;
           }
 
-          if (swiper.isBeginning) {
-            setIsBeginning(swiper.isBeginning);
-            if (onSwiperReachStart) {
-              onSwiperReachStart();
-            }
+          if (swiper.isEnd) {
+            onSlideChange();
           }
         },
       }) as Omit<SwiperProps, 'children'>,
-    [],
+    [slidesPerView, onSlideChange],
   );
 
   const onButtonNext = useCallback(() => swiperRef.current?.slideNext(), []);
@@ -65,9 +60,9 @@ export const useSlider = ({
 
   return {
     settings,
-    swiper: swiperRef?.current,
-    isEnd,
     isBeginning,
+    isEnd,
+    swiper: swiperRef?.current,
     onButtonNext,
     onButtonPrev,
   };

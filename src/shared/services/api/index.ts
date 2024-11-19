@@ -1,1 +1,6 @@
-export { getProducts, getBrandNewProducts } from './api';
+export {
+  getProductsCovers,
+  getBrandNewProductsCovers,
+  getHotProductsCovers,
+  getProducts,
+} from './api';

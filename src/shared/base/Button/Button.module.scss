@@ -1,0 +1,40 @@
+.btn {
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--primary-button-bg);
+  border: 1px solid var(--primary-button-bg);
+  padding-inline: 8px;
+  cursor: pointer;
+  transition:
+    box-shadow 0.2s ease,
+    background-color 0.2s ease;
+
+  .title {
+    color: var(--primary-button-color);
+    vertical-align: middle;
+    line-height: 1;
+  }
+
+  &:active,
+  &.selected {
+    background-color: var(--primary-button-active-bg);
+    border-color: var(--primary-button-active-border-color);
+
+    .title {
+      color: var(--primary-button-active-color);
+    }
+  }
+
+  @include on-desktop {
+    &:hover:not(:active) {
+      box-shadow: var(--primary-button-hover-box-shadow);
+      background-color: var(--primary-button-hover-bg);
+
+      .title {
+        color: var(--primary-button-color);
+      }
+    }
+  }
+}

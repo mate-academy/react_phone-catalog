@@ -14,6 +14,7 @@ import { Skeleton } from '../Skeleton';
 import { SwiperSkeleton } from './SwiperSkeleton';
 
 export interface SliderProps<TData> extends UseSliderProps {
+  title: string;
   data: TData[];
   isLoading?: boolean;
   isInitialLoading?: boolean;
@@ -23,28 +24,29 @@ export interface SliderProps<TData> extends UseSliderProps {
 
 export const Slider = <TData,>({
   data,
+  title,
   isLoading,
-  extractKey,
-  onSwiperReachStart,
-  onSwiperReachEnd,
-  renderSlide,
   isInitialLoading,
+  extractKey,
+  renderSlide,
+  onSlideChange,
 }: SliderProps<TData>) => {
-  const { settings, isBeginning, isEnd, onButtonNext, onButtonPrev } =
+  const { isBeginning, isEnd, settings, onButtonNext, onButtonPrev } =
     useSlider({
-      onSwiperReachStart,
-      onSwiperReachEnd,
+      onSlideChange,
     });
+
+  const showControlsSkeleton = isInitialLoading || isLoading;
 
   return (
     <Box className={styles.swiperContainer}>
       <Box className={cn('container', styles.swiperHead)}>
         <Text variant="h2" className={styles.title}>
-          Brand new models
+          {title}
         </Text>
 
         <Box className={styles.swiperControls}>
-          {isLoading ? (
+          {showControlsSkeleton ? (
             <Skeleton
               quantity={2}
               height={32}
@@ -74,7 +76,10 @@ export const Slider = <TData,>({
             {isInitialLoading ? (
               <SwiperSkeleton />
             ) : (
-              <Swiper className={styles.swiper} {...settings}>
+              <Swiper
+                className={cn(styles.swiper, { [styles.loading]: isLoading })}
+                {...settings}
+              >
                 {data.map((item, idx) => {
                   const key = extractKey(item);
 

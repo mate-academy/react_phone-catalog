@@ -8,6 +8,14 @@
 
     .title {
       grid-column: 1 / 3;
+
+      @include on-tablet {
+        grid-column: 1 / 8;
+      }
+
+      @include on-desktop {
+        grid-column: 1 / 9;
+      }
     }
 
     .swiperControls {
@@ -15,6 +23,14 @@
       display: flex;
       justify-content: flex-end;
       gap: 16px;
+
+      @include on-tablet {
+        grid-column: 8 / -1;
+      }
+
+      @include on-desktop {
+        grid-column: 9 / -1;
+      }
     }
 
     .swiperControlsSkeleton {
@@ -40,6 +56,16 @@
         @include on-desktop {
           width: 272px;
         }
+      }
+    }
+
+    &.loading {
+      opacity: 0.5;
+      pointer-events: none;
+
+      @include on-desktop {
+        opacity: 1;
+        pointer-events: all;
       }
     }
   }

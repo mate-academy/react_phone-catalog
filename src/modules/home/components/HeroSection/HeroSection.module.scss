@@ -1,15 +1,12 @@
 .hero {
   row-gap: 24px;
-  padding-top: 24px;
 
   @include on-tablet {
     row-gap: 32px;
-    padding-top: 32px;
   }
 
   @include on-desktop {
     row-gap: 56px;
-    padding-top: 56px;
   }
 
   .title,
