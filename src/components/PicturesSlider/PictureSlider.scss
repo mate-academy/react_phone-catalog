@@ -32,14 +32,13 @@
         @include ondesktop {
           height: 400px;
         }
-
       }
 
       &_right {
         @include icon-bg(var(--fls-right));
 
         &_disabled {
-          @include icon-bg(var(--fls-right-disabled))
+          @include icon-bg(var(--fls-right-disabled));
         }
       }
 

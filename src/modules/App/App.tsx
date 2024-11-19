@@ -44,6 +44,8 @@ export const App = () => {
     >
       <ScrollToTop />
 
+      <h1 hidden>Product Catalog</h1>
+
       <div className={classNames(style.container_header)}>
         <Header />
       </div>
