@@ -24,7 +24,7 @@ export const ProductCategory: React.FC<Props> = ({
         <div className={styles.categoryInfo}>
           <span className={styles.categoryName}>{title}</span>
           <span className={styles.categoryAmount}>
-            ${products.length} models
+            {products.length} models
           </span>
         </div>
       </div>

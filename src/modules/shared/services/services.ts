@@ -5,7 +5,7 @@ export function getAllProducts() {
   return client.get<Product[]>('/products.json');
 }
 
-export function getProdutsByCategory(category: string): Promise<Product[]> {
+export function getProductsByCategory(category: string): Promise<Product[]> {
   return client.get<Product[]>(`/${category}.json`);
 }
 

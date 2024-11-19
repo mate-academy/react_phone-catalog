@@ -1,20 +1,9 @@
-import { getProdutsByCategory } from 'modules/shared/services/services';
-import { Product } from 'modules/shared/types/Product';
+import { getProductsByCategory } from 'modules/shared/services/services';
+import { DataType, ProductsContextType } from 'modules/shared/types/Context';
 import { createContext, useEffect, useState } from 'react';
 
 type Props = {
   children: React.ReactNode;
-};
-
-type DataType = {
-  phones: Product[] | null;
-  tablets: Product[] | null;
-  accessories: Product[] | null;
-};
-
-type ProductsContextType = {
-  data: DataType;
-  loading: boolean;
 };
 
 export const ProductsContext = createContext<ProductsContextType>({
@@ -47,7 +36,7 @@ export const ProductsProvider: React.FC<Props> = ({ children }) => {
       };
 
       for (const category of categories) {
-        const categoryData = await getProdutsByCategory(category);
+        const categoryData = await getProductsByCategory(category);
 
         fetchedData[category as keyof DataType] = categoryData;
       }

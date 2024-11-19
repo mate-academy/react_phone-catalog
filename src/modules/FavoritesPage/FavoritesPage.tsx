@@ -1,7 +1,7 @@
-export const PhonesPage = () => {
+export const FavoritesPage = () => {
   return (
     <div>
-      <h1>Phones</h1>
+      <h1>Favorites</h1>
       {/* Add your content here */}
     </div>
   );

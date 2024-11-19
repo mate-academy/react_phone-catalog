@@ -45,7 +45,7 @@ export const HeaderNav = () => {
         className={getLinkClass}
         onClick={() => closeMenu(isMenuOpen, toggleMenu)}
       >
-        Accesories
+        Accessories
       </NavLink>
     </nav>
   );
