@@ -14,10 +14,13 @@
 
     &_selected {
       background-color: var(--c-buttons-background-selected);
-      border: 1px solid var(--c-elements)
+      border: 1px solid var(--c-elements);
+
+      &:hover {
+        box-shadow: 0 3px 13px 0 #17203166;
+        background-color: var(--c-buttons-background-selected);
+      }
     }
-
-
   }
 }
 
