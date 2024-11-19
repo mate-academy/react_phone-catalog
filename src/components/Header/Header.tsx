@@ -6,9 +6,10 @@ import { StateContext } from '../GlobalProvider';
 import { useContext } from 'react';
 import { MenuCloseIcons } from './MenuCloseIcons';
 import { SiteLogo } from '../SiteLogo';
+import { SearchModule } from './SearchModule';
 
 export const Header = () => {
-  const { showMenu } = useContext(StateContext);
+  const { showMenu, showSearch } = useContext(StateContext);
 
   return (
     <div className={classNames(style.container)}>
@@ -32,6 +33,12 @@ export const Header = () => {
         <div className={classNames(style.header_icons_menu)}>
           <MenuCloseIcons />
         </div>
+
+        {showSearch && !showMenu && (
+          <div className={style.header_icons_search}>
+            <SearchModule />
+          </div>
+        )}
       </div>
     </div>
   );

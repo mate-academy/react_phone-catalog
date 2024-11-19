@@ -4,4 +4,5 @@ export enum SearchParams {
   'page' = 'page',
   'productColor' = 'productColor',
   'capacity' = 'capacity',
+  'query' = 'query',
 }

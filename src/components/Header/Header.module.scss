@@ -1,6 +1,5 @@
 @import '../../styles/main';
 
-
 .container {
   display: flex;
   align-items: center;
@@ -42,10 +41,18 @@
   &_icons {
     width: 100%;
     height: 100%;
+    display: flex;
+    flex-direction: row-reverse;
+
+    &_search {
+      @include ontablet {
+        display: block;
+        height: 100%;
+      }
+    }
 
     &_fav_cart {
       display: none;
-
 
       @include ontablet {
         display: block;
@@ -54,8 +61,10 @@
     }
 
     &_menu {
-      height: 100%;
+      @include ontablet {
+        display: block;
+        height: 100%;
+      }
     }
   }
-
 }

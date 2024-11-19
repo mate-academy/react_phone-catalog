@@ -7,6 +7,7 @@ import { LocalAccessKeys } from '../utils/LocalAccessKeys';
 
 type State = {
   showMenu: boolean;
+  showSearch: boolean;
   inDarkMode: boolean;
   products: Product[];
   phones: ProductItem[];
@@ -18,6 +19,7 @@ type State = {
 
 type Action =
   | { type: 'setShowMenu'; payload: boolean }
+  | { type: 'setShowSearch'; payload: boolean }
   | { type: 'setInDarkMode'; payload: boolean }
   | { type: 'setProducts'; payload: Product[] }
   | { type: 'setPhones'; payload: ProductItem[] }
@@ -32,6 +34,9 @@ function reducer(state: State, action: Action): State {
   switch (action.type) {
     case 'setShowMenu':
       return { ...state, showMenu: action.payload };
+
+    case 'setShowSearch':
+      return { ...state, showSearch: action.payload };
 
     case 'setInDarkMode':
       return { ...state, inDarkMode: action.payload };
@@ -87,6 +92,7 @@ function reducer(state: State, action: Action): State {
 
 const initialState: State = {
   showMenu: false,
+  showSearch: false,
   inDarkMode: false,
   products: [],
   phones: [],

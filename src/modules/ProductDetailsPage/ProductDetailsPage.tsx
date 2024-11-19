@@ -11,7 +11,7 @@ import { CapacitySelector } from '../../components/CapacitySelector';
 import { getProductItems } from '../../utils/getProductItems';
 import { ButtonsAddCardFav } from '../../components/ButtonsAddCardFav';
 import { PhoneSlider } from '../../components/PhoneSlider';
-import { StateContext } from '../../components/GlobalProvider';
+import { DispatchContext, StateContext } from '../../components/GlobalProvider';
 import { Product } from '../../types/Product';
 import { MenuItems } from '../../types/MenuItems';
 import { ItemPhoto } from './ItemPhoto/ItemPhoto';
@@ -27,7 +27,7 @@ type Props = {
 export const ProductDetailsPage: React.FC<Props> = ({ category }) => {
   const location = useLocation();
   const navigate = useNavigate();
-  const { products } = useContext(StateContext);
+  const { products, showSearch } = useContext(StateContext);
   const [item, setItem] = useState<ProductItem>();
   const [allCatalogProducts, setAllCatalogProducts] = useState<ProductItem[]>(
     [],
@@ -36,6 +36,12 @@ export const ProductDetailsPage: React.FC<Props> = ({ category }) => {
   const [loading, setLoading] = useState(false);
 
   const curItemId = getIdFromURL(location);
+  const dispatch = useContext(DispatchContext);
+
+  useEffect(
+    () => dispatch({ type: 'setShowSearch', payload: false }),
+    [dispatch, showSearch],
+  );
 
   useEffect(() => {
     setLoading(true);

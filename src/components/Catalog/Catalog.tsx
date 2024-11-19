@@ -7,23 +7,31 @@ import { ProductCard } from '../ProductCard';
 import { useSearchParams } from 'react-router-dom';
 import { SearchParams } from '../../types/SearchParams';
 import { catalogHelper } from '../../utils/catalogHelper';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { Pagination } from './Pagination';
+import { DispatchContext } from '../GlobalProvider';
 
 type Props = {
   title: string;
   products: Product[];
   sortPerPageEnable?: boolean;
 };
+
 export const Catalog: React.FC<Props> = ({
   title,
   products,
   sortPerPageEnable = true,
 }) => {
+  const dispatch = useContext(DispatchContext);
   const [searchParams] = useSearchParams();
   const [sortedProducts, setSortedProducts] = useState<Product[]>([]);
   const [pages, setPages] = useState<Product[][]>([[]]);
   const [curPage, setCurPage] = useState(0);
+
+  useEffect(
+    () => dispatch({ type: 'setShowSearch', payload: true }),
+    [dispatch],
+  );
 
   useEffect(() => {
     setSortedProducts(() =>

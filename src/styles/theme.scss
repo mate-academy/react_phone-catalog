@@ -32,6 +32,7 @@
   --fls-plus: url('../img/icons/plus.svg');
   --fls-minus: url('../img/icons/minus.svg');
   --fls-minus-disabled: url('../img/icons/minus_disabled.svg');
+  --fls-search: url('../img/icons/Search.svg');
 
   &_dark {
     --c-accent: #905BFF;
@@ -67,5 +68,6 @@
     --fls-plus: url('../img/icons/darkMode/plus.svg');
     --fls-minus: url('../img/icons/darkMode/minus.svg');
     --fls-minus-disabled: url('../img/icons/minus_disabled.svg');
+    --fls-search: url('../img/icons/darkMode/Search.svg');
   }
 }

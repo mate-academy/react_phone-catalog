@@ -45,4 +45,17 @@ export const getProducts = {
 
     return;
   },
+
+  getFilteredByQuery(
+    products: Product[] | undefined,
+    query: string | null,
+  ): Product[] | [] {
+    if (products && query) {
+      return products.filter(product =>
+        product.name.toLocaleLowerCase().includes(query.toLocaleLowerCase()),
+      );
+    }
+
+    return products;
+  },
 };

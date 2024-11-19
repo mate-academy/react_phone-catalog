@@ -2,14 +2,21 @@ import classNames from 'classnames';
 
 import style from './HomePage.module.scss';
 import { PhoneSlider } from '../../components/PhoneSlider';
-import { useContext, useMemo } from 'react';
-import { StateContext } from '../../components/GlobalProvider';
+import { useContext, useEffect, useMemo } from 'react';
+import { DispatchContext, StateContext } from '../../components/GlobalProvider';
 import { Categories } from '../../components/Categories';
 import { PicturesSlider } from '../../components/PicturesSlider';
 import { getProducts } from '../../utils/getProducts';
 
 export const HomePage = () => {
   const { products } = useContext(StateContext);
+  const { showSearch } = useContext(StateContext);
+  const dispatch = useContext(DispatchContext);
+
+  useEffect(
+    () => dispatch({ type: 'setShowSearch', payload: false }),
+    [dispatch, showSearch],
+  );
 
   const newPhone = useMemo(
     () => getProducts.getNewProducts(products),
