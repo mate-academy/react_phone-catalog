@@ -26,20 +26,9 @@
     }
 
     &_catalog {
-      display: flex;
-      flex-flow: row wrap;
-      gap: 40px 16px;
-
-      @include ontablet {
-        justify-content: space-between;
-        flex-direction: row;
-      }
-    }
-
-    &_product {
-      display: flex;
-      flex-direction: row;
-      flex: 1 1 220px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(229px, 1fr));
+      gap: 16px;
     }
   }
 
