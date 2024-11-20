@@ -1,8 +1,8 @@
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useSearchParams } from 'react-router-dom';
 import styles from './GeneralProductsPage.module.scss';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { Product } from '../../types/products';
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo } from 'react';
 import {
   setCurrentPage,
   setItemsPerPage,
@@ -12,9 +12,11 @@ import { Loader } from '../Loader';
 
 export const GeneralProductsPage = () => {
   const dispatch = useAppDispatch();
-  const [selectedOrder, setSelectedOrder] = useState('Newest');
-  const [selectedAmount, setSelectedAmount] = useState('4');
   const category = useLocation().pathname.slice(1);
+  const [searchParams, setSearchParams] = useSearchParams();
+  const selectedOrder = searchParams.get('sort') || 'Newest';
+  const selectedAmount = searchParams.get('items') || '4';
+  const pageFromUrl = Number(searchParams.get('page')) || 1;
 
   const generalProducts = useAppSelector(state => state.products.items);
   const loadedGeneralProducts = useAppSelector(state => state.products.loaded);
@@ -54,18 +56,33 @@ export const GeneralProductsPage = () => {
   const paginatedProducts = sortedProducts.slice(startIndex, endIndex);
 
   const handleSort = (sortType: string) => {
-    setSelectedOrder(sortType);
+    setSearchParams({
+      ...Object.fromEntries(searchParams),
+      sort: sortType,
+    });
   };
 
   const handleItemsPerPageChange = (amount: string) => {
-    setSelectedAmount(amount);
+    setSearchParams({
+      ...Object.fromEntries(searchParams),
+      items: amount,
+      page: '1',
+    });
     dispatch(setItemsPerPage(Number(amount) || specificProducts.length));
     dispatch(setCurrentPage(1));
   };
 
   const handlePageChange = (pageNumber: number) => {
+    setSearchParams({
+      ...Object.fromEntries(searchParams),
+      page: pageNumber.toString(),
+    });
     dispatch(setCurrentPage(pageNumber));
   };
+
+  useEffect(() => {
+    dispatch(setCurrentPage(pageFromUrl));
+  }, [pageFromUrl, dispatch]);
 
   const totalPages = Math.ceil(specificProducts.length / itemsPerPage);
 
