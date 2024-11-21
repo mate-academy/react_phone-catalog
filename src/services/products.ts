@@ -1,4 +1,4 @@
-import { Product } from '../types/Ptoduct';
+import { Product } from '../types/Product';
 import { client } from '../utils/httpClient';
 
 export const getProducts = () => client.get<Product[]>('/api/products.json');

@@ -6,11 +6,13 @@ import { ShopByCategory } from '../components/ShopByCategory';
 
 export const HomePage = () => {
   return (
-    <div>
-      <PicturesSlider />
-      <BrandNewModels />
-      <ShopByCategory />
-      <HotPrices />
-    </div>
+    <>
+      <div>
+        <PicturesSlider />
+        <BrandNewModels />
+        <ShopByCategory />
+        <HotPrices />
+      </div>
+    </>
   );
 };

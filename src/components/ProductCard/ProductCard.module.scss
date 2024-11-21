@@ -2,6 +2,7 @@
 @use "../../utils/variables" as var;
 
 .product {
+  border: solid 1px var.$elements;
   transition: box-shadow 0.3s;
 
   &:hover {
@@ -10,14 +11,17 @@
 
   &__container {
     color: var.$primary-gray;
-    padding: 32px;
     gap: 8px;
 
-    @include mixin.flex(flex, space-between, false, column);
+    @include mixin.flex(flex, false, space-between, column);
     @include mixin.sizes(100%, 100%);
 
     @include mixin.on-mobile {
       padding: 24px;
+    }
+
+    @include mixin.on-tablet {
+      padding: 32px;
     }
   }
 
@@ -29,7 +33,6 @@
   &__img_container {
     @include mixin.flex(flex, center, center, false);
 
-    overflow: hidden;
     margin-bottom: 10px;
     transition: all 0.3s;
 
@@ -52,8 +55,10 @@
 
   &__image {
     @include mixin.sizes(100%, 100%);
+    @include mixin.flex(flex, center, center, false);
 
     object-fit: contain;
+    object-position: center;
   }
 
   &__name {

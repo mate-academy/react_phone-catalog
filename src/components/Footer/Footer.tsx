@@ -5,13 +5,10 @@ import { Logo } from '../Logo';
 
 import styles from './Footer.module.scss';
 import top from '../../images/icons/arrow_up.svg';
+import { handleClickToTop } from '../../helpers/scrollToTop';
 
 export const Footer = () => {
   const { pathname } = useLocation();
-
-  const handleClickToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
 
   if (pathname === '/menu') {
     return null;

@@ -1,0 +1,26 @@
+@use "../../utils/mixins" as mixin;
+@use "../../utils/variables" as var;
+
+.error {
+  width: max-content;
+  margin: 0 auto;
+  margin-top: 24px;
+
+  @include mixin.flex(flex, center, center, column);
+
+  &__text {
+    color: var.$red;
+    font-size: 24px;
+  }
+
+  &__button {
+    width: 150px;
+    padding: 10px;
+    border: 2px solid var.$elements;
+    transition: border 0.3s;
+
+    &:hover {
+      border: 2px solid var.$primary-gray;
+    }
+  }
+}

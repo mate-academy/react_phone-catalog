@@ -1,0 +1,70 @@
+@use "../../utils/mixins" as mixin;
+@use "../../utils/variables" as var;
+
+.dropdown {
+  position: relative;
+
+  &__container {
+    box-sizing: border-box;
+  }
+
+  &__name {
+    @include mixin.small-text-desktop-tablet;
+
+    color: var.$secondary-gray;
+    margin-bottom: 4px;
+  }
+
+  &__button {
+    @include mixin.sizes(176px, 40px);
+    @include mixin.flex(flex, center, space-between, false);
+
+    border: 1px solid var.$elements;
+    text-align: center;
+    padding: 12px;
+    transition: border 0.3s;
+
+    &:hover {
+      border: 1px solid var.$secondary-gray;
+    }
+
+    &:focus {
+      border: 1px solid var.$primary-gray;
+    }
+  }
+
+  &__img {
+    @include mixin.sizes(16px, 16px);
+  }
+
+  &__list {
+    position: absolute;
+    top: 100%;
+    width: 176px;
+    border: 1px solid var.$elements;
+    margin-top: 4px;
+    padding: 12px;
+    background-color: var.$white;
+    z-index: 2;
+  }
+
+  &__item {
+    color: var.$secondary-gray;
+    padding-bottom: 12px;
+    transition: color 0.3s, transform 0.3s;
+
+    &:hover {
+      color: var.$primary-gray;
+    }
+
+    &:focus {
+      background-color: var.$hover-bg;
+      transform: scale(1.05);
+    }
+
+    &--active {
+      color: var.$primary-gray;
+      cursor: default;
+    }
+  }
+}

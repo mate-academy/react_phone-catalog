@@ -1,4 +1,4 @@
-import { Product } from '../types/Ptoduct';
+import { Product } from '../types/Product';
 
 export const getHotPricesProducts = (products: Product[]) => {
   return [...products].sort((a, b) => {

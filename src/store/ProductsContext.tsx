@@ -1,11 +1,12 @@
 import React, { useEffect, useMemo, useState } from 'react';
-import { Product } from '../types/Ptoduct';
+import { Product } from '../types/Product';
 import { getProducts } from '../services/products';
 
 export const ProductsContext = React.createContext({
   products: [] as Product[],
   loading: false,
   errorMessage: '',
+  reloadProducts: () => {},
 });
 
 type Props = {
@@ -17,17 +18,23 @@ export const ProductsProvider: React.FC<Props> = ({ children }) => {
   const [loading, setLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
 
-  useEffect(() => {
+  const loadProducts = async () => {
     setLoading(true);
+    setErrorMessage('');
 
-    getProducts()
-      .then(data => {
-        setProducts(data);
-      })
-      .catch(() => {
-        setErrorMessage('Failed to load products');
-      })
-      .finally(() => setLoading(false));
+    try {
+      const data = await getProducts();
+
+      setProducts(data);
+    } catch {
+      setErrorMessage('Failed to load products');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    loadProducts();
   }, []);
 
   const value = useMemo(
@@ -35,6 +42,7 @@ export const ProductsProvider: React.FC<Props> = ({ children }) => {
       products,
       loading,
       errorMessage,
+      reloadProducts: loadProducts,
     }),
     [products, loading, errorMessage],
   );

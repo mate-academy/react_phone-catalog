@@ -2,7 +2,7 @@ import React, { useCallback, useEffect, useState } from 'react';
 import cn from 'classnames';
 
 import { ProductCard } from '../ProductCard';
-import { Product } from '../../types/Ptoduct';
+import { Product } from '../../types/Product';
 
 import styles from './ProductSlider.module.scss';
 import arrowPrev from '../../images/icons/arrow_left.svg';

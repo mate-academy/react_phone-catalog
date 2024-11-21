@@ -1,0 +1,42 @@
+@use "../../utils/mixins" as mixin;
+@use "../../utils/variables" as var;
+
+.pagination {
+  width: max-content;
+  margin: 0 auto;
+  margin-bottom: 64px;
+
+  &__container {
+    gap: 8px;
+
+    display: flex;
+    flex-direction: row;
+  }
+
+  &__button {
+    @include mixin.sizes(32px, 32px);
+    @include mixin.flex(flex, center, center, false);
+
+    border: 1px solid var.$elements;
+    transition: border 0.3s;
+
+    &:hover {
+      border: 1px solid var.$icons-placeholders;
+    }
+  }
+
+  &__item {
+    @include mixin.body-text-desktop-tablet;
+
+    color: var.$primary-gray;
+
+    &--active {
+      background-color: var.$primary-gray;
+      color: var.$white;
+    }
+  }
+
+  &__img {
+    @include mixin.sizes(16px, 16px);
+  }
+}

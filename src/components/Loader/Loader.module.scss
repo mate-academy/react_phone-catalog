@@ -1,0 +1,27 @@
+@use "../../utils/mixins" as mixin;
+@use "../../utils/variables" as var;
+
+.loader {
+  width: 100%;
+
+  @include mixin.flex(flex, center, center, false);
+
+  &__content {
+    @include mixin.sizes(2em, 2em);
+
+    border-radius: 50%;
+    margin: 1em auto;
+    border: 0.3em solid #ddd;
+    border-left-color: #000;
+    animation: load8 1.2s infinite linear;
+  }
+}
+
+@keyframes load8 {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

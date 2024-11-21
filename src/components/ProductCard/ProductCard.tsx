@@ -4,7 +4,7 @@ import cn from 'classnames';
 
 import styles from './ProductCard.module.scss';
 import fav from '../../images/icons/favourites.svg';
-import { Product } from '../../types/Ptoduct';
+import { Product } from '../../types/Product';
 
 type Props = {
   product: Product;
