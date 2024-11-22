@@ -1,4 +1,4 @@
-import './Navigation.scss';
+import './Navigation.module.scss';
 import '../icons/icon.scss';
 import '../logo/logo.scss';
 import { Menu } from '../Menu/Menu';
@@ -8,7 +8,8 @@ import classNames from 'classnames';
 import { CatalogContext } from '../CatalogProvider';
 
 export const Navigation = () => {
-  const { addedItems, oldAddedItems } = useContext(CatalogContext);
+  const { addedItems, oldAddedItems, favouriteItems, favouriteOldItems } =
+    useContext(CatalogContext);
   const [showMenu, setShowMenu] = useState(false);
 
   const getSelectedLink = ({ isActive }: { isActive: boolean }) => {
@@ -57,18 +58,30 @@ export const Navigation = () => {
             <div className="navigation__icons-block">
               <Link to="/cart" className="navigation__block-bag">
                 <div
-                  className={classNames('icon__navigation-bag', {
-                    'icon__navigation-bag--circle': addedItems.length !== 0,
+                  className={classNames('icon__bag', {
+                    'icon__bag--circle':
+                      addedItems.length > 0 || oldAddedItems.length > 0,
                   })}
                 ></div>
-                {addedItems.length !== 0 && (
+                {(addedItems.length > 0 || oldAddedItems.length > 0) && (
                   <div className="icon__circle">
                     {addedItems.length + oldAddedItems.length}
                   </div>
                 )}
               </Link>
               <Link to="/favourites" className="navigation__block-heart">
-                <div className="icon__navigation-heart"></div>
+                <div
+                  className={classNames('icon__heart', {
+                    'icon__heart--circle':
+                      favouriteItems.length > 0 || favouriteOldItems.length > 0,
+                  })}
+                ></div>
+                {(favouriteItems.length > 0 ||
+                  favouriteOldItems.length > 0) && (
+                  <div className="icon__circle">
+                    {favouriteItems.length + favouriteOldItems.length}
+                  </div>
+                )}
               </Link>
             </div>
           </div>

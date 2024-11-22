@@ -11,12 +11,30 @@
   }
 };
 
-@mixin page-grid {
+@mixin more-than-1200 {
+  @media (max-width: 1200px) {
+    @content;
+  }
+}
+
+@mixin slider-on-phone {
   @media (min-width: 320px) {
+    @content;
+  }
+}
+
+@mixin slider-on-tablet {
+  @media (min-width: 640px) {
+    @content;
+  }
+}
+
+@mixin page-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 16px;
-  }
+
+
 
   @include on-tablet {
     grid-template-columns: repeat(12, 1fr);
@@ -28,8 +46,3 @@ grid-template-columns: repeat(24, 1fr);
 gap: 16px;
   }
 }
-
-
-
-
-

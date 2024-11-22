@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { Navigation } from '../Navigation/Navigation';
-import './Favourites.scss';
+import './Favourites.module.scss';
 import { Footer } from '../Footer/Footer';
 import { useContext } from 'react';
 import { CatalogContext } from '../CatalogProvider';
@@ -29,27 +29,29 @@ export const Favourites = () => {
               {'>'} Favourites
             </div>
           </div>
-          <div className="favourites__addeditems">
-            {favouriteItems.length !== 0 && (
-              <>
-                <h1 className="favourites__title">Favourite Products</h1>
-                <h2 className="favourites__amountofitems">{`${favouriteItems.length} items`}</h2>
+          {favouriteItems.length !== 0 && (
+            <>
+              <h1 className="favourites__title">Favourite Products</h1>
+              <h2 className="favourites__amountofitems">{`${favouriteItems.length} items`}</h2>
 
+              <div className="favourites__content">
                 {favouriteItems.map(favouriteItem => (
                   <ProductCard key={favouriteItem.id} product={favouriteItem} />
                 ))}
-              </>
-            )}
-            {favouriteOldItems.length !== 0 && (
-              <>
-                <h1 className="favourites__title">Favourite Old Products</h1>
-                <h2 className="favourites__amountofitems">{`${favouriteOldItems.length} items`}</h2>
+              </div>
+            </>
+          )}
+          {favouriteOldItems.length !== 0 && (
+            <>
+              <h1 className="favourites__title">Favourite Old Products</h1>
+              <h2 className="favourites__amountofitems">{`${favouriteOldItems.length} items`}</h2>
+              <div className="favourites__content">
                 {favouriteOldItems.map(oldItem => (
                   <DiscountProduct key={oldItem.id} discountProduct={oldItem} />
                 ))}
-              </>
-            )}
-          </div>
+              </div>
+            </>
+          )}
         </div>
       )}
 

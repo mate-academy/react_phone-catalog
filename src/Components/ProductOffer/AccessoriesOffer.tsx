@@ -1,6 +1,6 @@
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { Navigation } from '../Navigation/Navigation';
-import './ProductOffer.scss';
+import './ProductOffer.module.scss';
 import { useContext, useState } from 'react';
 import { CatalogContext } from '../CatalogProvider';
 import Slider from 'react-slick';
@@ -19,7 +19,7 @@ export const AccessoriesOffer = () => {
     setAddedItems,
     setTotalModels,
     totalModels,
-    amountOfModels,
+    setProducts,
     totalPrice,
     setTotalPrice,
   } = useContext(CatalogContext);
@@ -103,9 +103,11 @@ export const AccessoriesOffer = () => {
     ) {
       const updateItem = addedItems.filter(item => item.id !== addedItem?.id);
 
-      setTotalModels(totalModels - amountOfModels);
+      setTotalModels(totalModels - selectedProduct?.amountOfModels);
       setAddedItems(updateItem);
-      setTotalPrice(totalPrice - amountOfModels * addedItem.price);
+      setTotalPrice(
+        totalPrice - selectedProduct?.amountOfModels * addedItem.price,
+      );
     }
 
     if (
@@ -119,7 +121,18 @@ export const AccessoriesOffer = () => {
 
     if (readyToAdd) {
       const updateItem = addedItems.filter(item => item.id !== addedItem.id);
+      const updateProduct = products.map(currentProduct => {
+        if (currentProduct.id === addedItem.id) {
+          return {
+            ...currentProduct,
+            amountOfModels: 1,
+          };
+        }
 
+        return currentProduct;
+      });
+
+      setProducts(updateProduct);
       setAddedItems(updateItem);
     }
   };
@@ -134,6 +147,12 @@ export const AccessoriesOffer = () => {
     <>
       <Navigation />
       <div className="productoffer">
+        <button
+          className="productoffer__breadcrumbs--back-button"
+          onClick={() => navigate(-1)}
+        >
+          {'<'} Back
+        </button>
         <div className="productoffer__breadcrumbs">
           <Link to="/">
             <div className="productoffer__breadcrumbs--home" />
@@ -148,9 +167,6 @@ export const AccessoriesOffer = () => {
           <div className="productoffer__breadcrumbs--arrow" />
           <div className="productoffer__breadcrumbs--text">{itemId}</div>
         </div>
-        <Link to="/phones" className="productoffer__breadcrumbs--back-button">
-          <div className="productoffer__breadcrumbs--back-arrow"></div> Back
-        </Link>
         <h1 className="productoffer__title">{selectedAccessory?.name}</h1>
         <div className="productoffer__images">
           <Slider {...settings}>

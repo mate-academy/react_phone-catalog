@@ -6,12 +6,24 @@
 @import '../../utils/mixins';
 
 .home {
-  @include page-grid;
+  width: 100%;
+
+
+  &__phonecatalog {
+    clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+  }
 
   &__title {
     font-family: Mont-bold, sans-serif;
-    margin: 32px 16px 0 0;
+    margin: 32px 16px 0 16px;
     grid-column: 1 / 4;
+    height: 161px;
 
     @include on-tablet {
       grid-column: 1 / 13;

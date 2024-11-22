@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import './Categories.scss';
+import './Categories.module.scss';
 import { CatalogContext } from '../CatalogProvider';
 import { Link } from 'react-router-dom';
 

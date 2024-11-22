@@ -86,6 +86,8 @@ margin-right: 30px;
     border-radius: 100%;
     transform: scale(1);
     transition: 0.3s ease transform;
+    border: 0;
+    background-color: transparent;
 
     &:hover {
       transform: scale(1.2);

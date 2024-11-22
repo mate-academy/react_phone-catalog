@@ -12,18 +12,11 @@
 
 .productcard {
   border: 1px solid #B4BDC3;
-  height: 439px;
   width: 287px;
   display: flex;
   flex-direction: column;
   gap: 16px;
   border-radius: 8px;
-
-  @include on-tablet {
-    width: 237px;
-    height: 512px;
-  }
-
   background-color: white;
   &__container {
     margin-top: 20px;
@@ -31,9 +24,15 @@
   &__image {
     height: 148px;
     width: 129px;
-
+    transform: scale(1);
+    transition: 0.3s ease transform;
+    &:hover {
+      transform: scale(1.1);
+      transition: 0.3s ease transform;
+    }
     &--link {
-      margin: 20px 0 auto;
+      display: flex;
+      justify-content: center;
     }
 
     @include on-tablet {
@@ -41,7 +40,7 @@
     }
 
     @include on-desktop {
-      width: 208px;
+      width: 158px;
       height: 196px;
       margin: 0 30px;
     }

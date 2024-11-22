@@ -1,11 +1,13 @@
 @import '../../utils/mixins';
 
 .oldproductcard {
-  border: 1px solid black;
+  border: 1px solid #B4BDC3;
   height: 439px;
   width: 212px;
   display: flex;
   flex-direction: column;
+  border-radius: 8px;
+
 
   @include on-tablet {
     height: 512px;
@@ -23,7 +25,13 @@
     height: 148px;
     width: 129px;
     margin: 20px 41px 0;
-
+    transform: scale(1);
+    transition: 0.3s ease transform;
+    &:hover {
+      transform: scale(1.1);
+      transition: 0.3s ease transform;
+    }
+    
     @include on-desktop {
       width: 208px;
       height: 198px;
@@ -113,7 +121,6 @@ text-align: right;
   }
 }
 &__capacity {
-  width: 148px;
   display: flex;
   justify-content: space-between;
   margin-top: 8px;
@@ -134,7 +141,6 @@ text-align: right;
   }
 }
 &__ram {
-  width: 148px;
   display: flex;
   margin-top: 8px;
 
@@ -172,7 +178,7 @@ text-align: right;
 
 }
 &__adding-button {
-  width:125px;
+  width: 125px;
   height: 40px;
 border-radius: 8px;
 border: 0;

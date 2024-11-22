@@ -1,9 +1,9 @@
 /* eslint-disable no-param-reassign */
 import { useContext } from 'react';
 import { Navigation } from '../Navigation/Navigation';
-import './CartItems.scss';
+import './CartItems.module.scss';
 import { CatalogContext } from '../CatalogProvider';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import classNames from 'classnames';
 import { Product } from '../types/Product';
 import { Footer } from '../Footer/Footer';
@@ -16,18 +16,20 @@ export const CartItems = () => {
     setTotalPrice,
     totalPrice,
     oldAddedItems,
-    setAmountOfModels,
-    amountOfModels,
     setTotalModels,
     totalModels,
     setOldAddedItems,
-    amountOfOldModels,
-    setAmountOfOldModels,
     totalOldModels,
     setTotalOldModels,
     totalOldProductsPrice,
     setTotalOldProductsPrice,
+    products,
+    setProducts,
+    oldProducts,
+    setOldProducts,
   } = useContext(CatalogContext);
+
+  const navigate = useNavigate();
 
   return (
     <>
@@ -42,7 +44,12 @@ export const CartItems = () => {
           </>
         ) : (
           <>
-            <button className="cartitems__back-button"> {'<'} Back</button>
+            <button
+              className="cartitems__back-button"
+              onClick={() => navigate(-1)}
+            >
+              {'<'} Back
+            </button>
             <h1 className="cartitems__title">Cart</h1>
             <div className="cartitems__content">
               {addedItems.length !== 0 && (
@@ -57,10 +64,12 @@ export const CartItems = () => {
 
                         setAddedItems(updateItem);
                         setTotalPrice(
-                          totalPrice - amountOfModels * deletedItem.price,
+                          totalPrice -
+                            deletedItem.amountOfModels * deletedItem.price,
                         );
-                        setTotalModels(totalModels - amountOfModels);
-                        setAmountOfModels(1);
+                        setTotalModels(
+                          totalModels - deletedItem.amountOfModels,
+                        );
                       }
 
                       return item;
@@ -72,7 +81,7 @@ export const CartItems = () => {
                     ) => {
                       if (itemId === item.id) {
                         const updateItem = addedItems.map(currentItem => {
-                          if (currentItem.id === itemId) {
+                          if (currentItem.id === item.id) {
                             setTotalPrice(
                               totalPrice + currentItem.price * changer,
                             );
@@ -87,9 +96,21 @@ export const CartItems = () => {
                           return currentItem;
                         });
 
+                        const updateProduct = products.map(currentProduct => {
+                          if (item.id === currentProduct.id) {
+                            return {
+                              ...currentProduct,
+                              amountOfModels:
+                                currentProduct.amountOfModels + changer,
+                            };
+                          }
+
+                          return currentProduct;
+                        });
+
                         setTotalModels(totalModels + changer);
-                        setAmountOfModels(item.amountOfModels + changer);
                         setAddedItems(updateItem);
+                        setProducts(updateProduct);
                       }
                     };
 
@@ -166,10 +187,12 @@ export const CartItems = () => {
                         setOldAddedItems(updateItem);
                         setTotalOldProductsPrice(
                           totalOldProductsPrice -
-                            amountOfOldModels * deletedOldItem.price,
+                            deletedOldItem.amountOfModels *
+                              deletedOldItem.price,
                         );
-                        setTotalOldModels(totalOldModels - amountOfOldModels);
-                        setAmountOfOldModels(1);
+                        setTotalOldModels(
+                          totalOldModels - deletedOldItem.amountOfModels,
+                        );
                       }
 
                       return oldItem;
@@ -196,9 +219,22 @@ export const CartItems = () => {
 
                           return currentItem;
                         });
+                        const updateProduct = oldProducts.map(
+                          currentProduct => {
+                            if (currentProduct.id === oldItem.id) {
+                              return {
+                                ...currentProduct,
+                                amountOfModels:
+                                  currentProduct.amountOfModels + changer,
+                              };
+                            }
 
+                            return currentProduct;
+                          },
+                        );
+
+                        setOldProducts(updateProduct);
                         setTotalOldModels(totalOldModels + changer);
-                        setAmountOfOldModels(oldItem.amountOfModels + changer);
                         setOldAddedItems(updateItem);
                       }
                     };

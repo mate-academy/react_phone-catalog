@@ -14,11 +14,12 @@
     height: 16px;
     width: 16px;
     cursor: pointer;
+  }
 
     @include on-tablet {
       display: none;
     }
-    &-cross {
+    &__cross {
       background-image: url('../../img/Close.svg');
         background-repeat: no-repeat;
         width: 16px;
@@ -27,8 +28,13 @@
         justify-content: center;
         align-items: center;
         cursor: pointer;
+        &:hover {
+          transform: rotate(2turn);
+          transition: 0.5s ease-in-out transform;
+        }
     }
-    &-heart {
+
+    &__heart {
       background-image: url('../../img/Favourites\ \(Heart\ Like\).svg');
       background-repeat: no-repeat;
       width: 16px;
@@ -37,63 +43,33 @@
       justify-content: center;
       align-items: center;
       cursor: pointer;
-    }
-    &-bag {
-      background-image: url('../../img/Shopping\ bag\ \(Cart\).svg');
-      background-repeat: no-repeat;
-      width: 16px;
-      height: 16px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      cursor: pointer;
-    }
-  }
-  &__navigation {
-    &-heart {
-      background-image: url('../../img/Favourites\ \(Heart\ Like\).svg');
-      background-repeat: no-repeat;
-      width: 16px;
-      height: 16px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      cursor: pointer;
-      transform: scale(1);
-      transition: 0.3 s ease transform;
-      &:hover {
-        transition: 0.3 s ease transform;
-        transform: scale(1.1);
-      }
-    }
-    &-bag {
-      background-image: url('../../img/Shopping\ bag\ \(Cart\).svg');
-      background-repeat: no-repeat;
-      width: 16px;
-      height: 16px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      cursor: pointer;
-      transform: scale(1);
-      transition: 0.3 s ease transform;
       &--circle {
         position: relative;
         left: 7px;
+        font-family: Mont, sans-serif;
+        font-size: 9px;
+        font-weight: 700;
+        line-height: 11.5px;
+        text-align: center;
+      }
+    }
+    &__bag {
+      background-image: url('../../img/Shopping\ bag\ \(Cart\).svg');
+      background-repeat: no-repeat;
+      width: 16px;
+      height: 16px;
+      cursor: pointer;
+      &--circle {
+        position: relative;
+        left: 8px;
         font-family: Mont, sans-serif;
 font-size: 9px;
 font-weight: 700;
 line-height: 11.5px;
 text-align: center;
-
-
-      }
-      &:hover {
-        transition: 0.3 s ease transform;
-        transform: scale(1.1);
       }
     }
-  }
+
   &__circle {
     height: 14px;
     width: 14px;

@@ -9,7 +9,10 @@
   @include page-grid;
 
   width: 336px;
-  overflow: hidden;
+  
+  @include on-tablet {
+    width: 700px;
+  }
   &__breadcrumbs {
     display: flex;
     align-items: flex-start;
@@ -156,11 +159,19 @@ background-color: white;
     .slick-list {
       width: 235px;
     }
-    .discountproduct__buttons {
+    .oldproductcard__buttons {
       gap: 8px;
     }
     .slick-next {
       bottom:569px;
+
+      @include on-tablet {
+        bottom: 625px;
+      };
+    }
+    .slick-dots {
+      display: flex;
+      flex-direction: column;
     }
 
 
@@ -175,9 +186,16 @@ text-align: left;
   }
   &__phoneslider {
     grid-column: 1 / 5;
+
+    @include on-tablet {
+      grid-column: 1 / 13;
+      width: 100%;
+      display: flex;
+      flex-direction: row-reverse;
+    }
+
     margin: 0;
     margin-bottom: 120px;
-    width: 320px;
     li {
       width: 55px;
       height: 55px;
@@ -190,6 +208,10 @@ text-align: left;
   }
   &__description {
     grid-column: 1 / 5;
+
+    @include on-tablet {
+      grid-column: 1 / 13;
+    }
     &--header {
       font-family: Mont-bold, sans-serif;
 font-size: 34px;

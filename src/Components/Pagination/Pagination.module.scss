@@ -3,6 +3,8 @@
 .pagination {
   grid-column: 1 / 5;
   margin: 0 8px;
+  display: flex;
+  flex-direction: column;
   &__arrowprev {
     width: 40px;
     height: 40px;
@@ -15,13 +17,7 @@
     background-size: 24px 24px;
     background-position: 50%;
     cursor: pointer;
-    margin-right: 130px;
-
-    @include on-tablet {
-      position: relative;
-      top: 35px;
-      right: 3px;
-    }
+    margin-right: 0;
     &:hover {
       background-color: black;
       background-image: url('../../img/Arrow-left-hover.svg');
@@ -29,10 +25,14 @@
     }
   }
   &__arrows {
+    width: 293px;
     display: flex;
     justify-content: space-between;
-    width: 300px;
     margin-left: -5px;
+    margin: 0 auto;
+    &--disabled {
+      display: none;
+    }
 
     @include on-tablet {
       margin: 30px auto 0;
@@ -50,11 +50,6 @@
     background-size: 24px 24px;
     background-position: 50%;
     cursor: pointer;
-
-    @include on-tablet {
-      position: relative;
-      top: 35px;
-    }
     &:hover {
       background-color: black;
       background-image: url('../../img/arrow-right-hover.svg');
@@ -74,10 +69,6 @@
     background-position: 50%;
     cursor: pointer;
 
-    @include on-tablet {
-      position: relative;
-      top: 35px;
-    }
     &:hover {
       background-color: black;
       background-image: url('../../img/arrow-slide-to-first-hover.svg');
@@ -95,11 +86,6 @@
     background-size: 24px 24px;
     background-position: 50%;
     cursor: pointer;
-
-    @include on-tablet {
-      position: relative;
-      top: 35px;
-    }
     &:hover {
       background-color: black;
       background-image: url('../../img/arrow-slide-to-last-hover.svg');
@@ -107,22 +93,15 @@
   }
 }
   &__dots {
-    width: 138px;
+    display: flex;
+    width: 136px;
     overflow: hidden;
     position: relative;
-    left: 78px;
-    bottom: 35px;
-
-    @include on-tablet {
-      left: 248px;
-      top: 0;
-    }
+    top: 5px;
   }
   &__content {
-    width: 90000px;
     display: flex;
     gap: 5px;
-    position: relative;
 
   }
   &__dot {

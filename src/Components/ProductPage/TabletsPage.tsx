@@ -1,7 +1,7 @@
 import { Link, useSearchParams } from 'react-router-dom';
 import { Footer } from '../Footer/Footer';
 import { Navigation } from '../Navigation/Navigation';
-import './ProductPage.scss';
+import './ProductPage.module.scss';
 import { useContext, useEffect } from 'react';
 import { ProductCard } from '../ProductCard/ProductCard';
 import { ProductsFilter } from '../ProductsFilter/ProductsFilter';
@@ -19,6 +19,7 @@ export const TabletsPage = () => {
   const queries = searchParams.get('query') || '';
   const sortOptions = searchParams.get('sort') || '';
   const items = searchParams.get('perPage') || '';
+  const numberOfPage = searchParams.get('number') || '';
   const itemsInNumber = parseInt(items);
 
   const filteredOptions = (allTablets: string) => {
@@ -123,10 +124,9 @@ export const TabletsPage = () => {
     <>
       <Navigation />
       <div className="productpage">
-        <Link to="/home" className="phonespage__breadcrumbs--link">
-          <div className="productpage__breadcrumbs--image"></div>
+        <Link className="productpage__breadcrumbs--link" to="/">
+          {'>'} Tablets
         </Link>
-        <div className="productpage__breadcrumbs--category"> {'>'} Tablets</div>
 
         <h1 className="productpage__header">Tablets</h1>
         <span className="productpage__amountofmodels">{`${tablets.length} models`}</span>
@@ -136,16 +136,24 @@ export const TabletsPage = () => {
           sort={sortOptions}
           perPage={items}
         />
-        <div className="productpage__content">
-          {getVisibleItems(itemsInNumber).map(product => (
-            <ProductCard product={product} key={product.id} />
-          ))}
-        </div>
+        {getVisibleItems(itemsInNumber).length === 0 ? (
+          <h1 className="productpage__noresults">
+            There are not tablets matching the query{' '}
+          </h1>
+        ) : (
+          <div className="productpage__content">
+            {getVisibleItems(itemsInNumber).map(product => (
+              <ProductCard product={product} key={product.id} />
+            ))}
+          </div>
+        )}
       </div>
-      {itemsInNumber !== (1 as ItemPerPage) && (
+      {!Number.isNaN(itemsInNumber) && (
         <Pagination
           filteredItems={filteredTablets}
           itemsInNumber={itemsInNumber}
+          number={numberOfPage}
+          setSearchParams={setSearchParams}
         />
       )}
       <Footer />

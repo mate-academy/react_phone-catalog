@@ -11,6 +11,7 @@
 @import '../../utils/mixins';
 
 .categories {
+  @include page-grid;
   grid-column: 1 / 5;
 
   @include on-tablet {
@@ -22,6 +23,10 @@
   }
 
   &__header {
+    grid-column: 1 / 5;
+    @include on-tablet {
+      grid-column: 1 / 13;
+    }
     font-family: Mont, sans-serif;
 font-size: 32px;
 font-weight: 800;
@@ -33,17 +38,28 @@ margin-left: 32px;
   }
 
   &__content {
+    grid-column: 1 / 5;
     @include on-tablet {
-      width: 640px;
+      width: 100%;
+      grid-column: 1 / 13;
       display: flex;
       justify-content: center;
+      align-items: start;
+      gap: 8px;
     }
 
     @include on-desktop {
-      width: 1136px;
       justify-content: space-between;
+      grid-column: 1 / 25;
     }
 
+  }
+
+  &__option {
+    margin-top: 40px;
+    @include on-tablet {
+    height: 100%;
+    }
   }
 
   font-family: Mont, sans-serif;
@@ -56,33 +72,22 @@ line-height: 30.8px;
 text-align: left;
   }
 
-  &__option {
-    margin-top: 30px;
-
-    @include on-tablet {
-      width: 187px;
-    }
-
-    @include on-desktop {
-      width: 368px;
-    }
-  }
   &__amount {
     margin-left: 16px;
     color: #89939A;
   }
   &__image {
-    object-fit: cover;
-    width: 288px;
-
-    @include on-tablet {
-      width: 187px;
-      height: 187px;
+    object-fit: contain;
+    width: 100%;
+    transform: scale(1);
+    transition: 0.3s ease transform;
+    &:hover {
+      transform: scale(1.2);
+      transition: 0.3s ease transform;
     }
-
-    @include on-desktop {
-      width: 368px;
-      height: 368px;
+    @include on-tablet {
+    height: 50%;
+    margin-top: 50px;
     }
   }
 }

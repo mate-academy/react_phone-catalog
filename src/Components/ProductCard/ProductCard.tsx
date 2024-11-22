@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { Product } from '../types/Product';
-import './ProductCard.scss';
+import './ProductCard.module.scss';
 import { useContext } from 'react';
 import { CatalogContext } from '../CatalogProvider';
 import classNames from 'classnames';
@@ -20,6 +20,7 @@ export const ProductCard = ({ product }: Props) => {
     setTotalModels,
     totalModels,
     amountOfModels,
+    setAmountOfModels,
   } = useContext(CatalogContext);
 
   const addItems = (addedItem: Product) => {
@@ -43,6 +44,7 @@ export const ProductCard = ({ product }: Props) => {
       setTotalModels(totalModels + 1);
       setTotalPrice(totalPrice + addedItem.price);
       setAddedItems([...addedItems, addedItem]);
+      setAmountOfModels(1);
     }
 
     if (readyToAdd) {

@@ -3,17 +3,13 @@
 .discounts {
   grid-column: 1 / 5;
   overflow: hidden;
-  
+
   @include on-tablet {
     grid-column: 1 / 13;
-    width: 744px;
   }
 
   @include on-desktop {
     grid-column: 1 / 25;
-    width: 1156px;
-    height: 700px;
-    overflow: hidden;
   }
 
   &__title {
@@ -50,15 +46,46 @@
       width: 272px;
     }
   }
+  .slick-prev {
+    @include on-desktop {
+      left: 990px;
+    }
+  }
   .slick-next {
+    position: relative;
     bottom: 538px;
+    left: 240px;
 
     @include on-tablet {
       bottom: 593px;
+      left: 554px;
     }
 
     @include on-desktop {
-      bottom: 480px;
+      bottom: 587px;
+      left: 1038px;
     }
+    
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+    color: transparent;
+    border: 1px solid black;
+    padding: 0;
+    background-color: white;
+    background-image: url('../../img/arrow-right2.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: pointer;
+    transform: scale(1);
+    transition: 0.3s ease transform;
+
+    &:hover {
+      transform: scale(1.2);
+      transition: transform 0.3s ease;
+    }
+  }
+  .slick-disabled:not(.slick-prev) {
+    border: 1px solid #3132;
   }
 }

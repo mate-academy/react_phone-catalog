@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import './CartPage.scss';
+import './CartPage.module.scss';
 import { ProductCard } from '../ProductCard/ProductCard';
 import Slider from 'react-slick';
 import { CatalogContext } from '../CatalogProvider';
@@ -13,13 +13,12 @@ export const CartPage = () => {
     slideToScroll: 1,
     infinite: false,
     variableWidth: true,
+    className: 'CartPage__slider',
   };
 
   return (
     <div className="CartPage">
-      <div className="CartPage__navigation">
-        <h2 className="CartPage__title">Brand new models</h2>
-      </div>
+      <h2 className="CartPage__title">Brand new models</h2>
 
       <Slider {...settings}>
         {getNewestProducts.map(product => {

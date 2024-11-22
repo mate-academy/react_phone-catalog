@@ -3,13 +3,17 @@
   src: url('../../../public/fonts/Mont-Regular.otf');
 }
 
+@font-face {
+  font-family: Mont-bold;
+  src: url('../../../public/fonts/Mont-Bold.otf');
+}
+
 @import '../../utils/mixins';
 
 .productpage {
   @include page-grid;
 
-  margin-left: 8px;
-  width: 298px;
+
   overflow: hidden;
 
   @include on-tablet {
@@ -17,50 +21,30 @@
   }
 
 
-  &__breadcrumbs{
-    &--image {
+  &__breadcrumbs {
+    &--link {
+      grid-column: 1 / 5;
+      margin: 10px 0 0 8px;
     background-image: url('../../img/Home.svg');
     background-position: left;
     background-repeat: no-repeat;
-    width: 16px;
-    height: 14px;
-  }
-  &--category {
-    position: relative;
-    right: 25px;
-    width: 60px;
-    font-family: Mont, sans-serif;
-    grid-column: 2 / 5;
+    font-family: Mont-phonespage, sans-serif;
+    color: #89939A;
     font-size: 12px;
     font-weight: 600;
     line-height: 15.34px;
-    text-align: center;
-    color: #89939A;
-
+    text-decoration: none;
+    text-indent: 20px;
   }
-  &--link {
-    width: 30px;
   }
-}
-
-&ONTABLET__content {
-  display: none;
-
+&__noresults {
+  grid-column: 1 / 5;
+  font-family: Mont, sans-serif;
   @include on-tablet {
-    display: flex;
-    flex-flow: wrap;
-    flex-direction: row;
-    gap: 16px;
     grid-column: 1 / 13;
-    width: 100%;
-    .productcard__name {
-      height: 21px;
-    }
-    .productcard__image--link {
-      margin-top: 10px;
-    }
   }
 }
+
   &__content {
     grid-column: 1 / 5;
     padding-bottom: 40px;
@@ -68,6 +52,8 @@
     flex-flow: wrap;
     flex-direction: column;
     gap: 16px;
+    justify-content: center;
+    width: 100%;
 
     @include on-tablet {
       display: flex;
@@ -83,6 +69,9 @@
         margin-top: 10px;
       }
     }
+    @include on-desktop {
+      grid-column: 1 / 25;
+    }
   }
   &__header {
 font-family: Mont-phonepage, sans-serif;
@@ -90,6 +79,7 @@ font-size: 32px;
 line-height: 41px;
 letter-spacing: -0.01em;
 text-align: left;
+margin-left: 8px;
 grid-column: 1 / 5;
 
 @include on-tablet {
@@ -98,6 +88,7 @@ grid-column: 1 / 5;
   }
   &__amountofmodels {
     grid-column: 1 / 5;
+    margin-left: 8px;
 
     @include on-tablet {
       grid-column: 1 / 13;
@@ -113,13 +104,20 @@ text-align: left;
   }
 
   .productcard {
-    height: 490px;
     width: 287px;
+    margin: 0 auto;
+    @include on-tablet {
+      margin: 0;
+    }
   }
   .productcard__image {
     margin: 10px 65px 0;
     &--link {
       margin-bottom: 40px;
     }
+  }
+
+  .productcard__buttons {
+    margin-bottom: 10px;
   }
 }

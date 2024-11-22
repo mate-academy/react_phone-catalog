@@ -1,4 +1,4 @@
-@import '../../utils/mixins';
+@import '../../utils/mixins.scss';
 
 @font-face {
   font-family: Mont-bold;
@@ -82,37 +82,65 @@ color: #89939A;
 margin-left: 16px;
   }
 
-  &__addeditems {
-    grid-column: 1 / 5;
-    margin-left: 16px;
+  &__content {
     display: flex;
-    flex-direction: column;
-    gap: 16px;
+    flex-flow: wrap;
+    gap: 12px;
+    grid-column: 1 / 5;
+    @include on-tablet {
+      display: flex;
+      grid-column: 1 / 13;
+      flex-direction: row;
+    }
+    @include on-desktop {
+      grid-column: 1 / 24;
+    }
   }
 
   .productcard {
     margin-bottom: 16px;
+    @include on-tablet {
+      width: 288px;
+    }
 
   }
   .productcard__image {
     margin: 0 70px;
+    @include on-desktop {
+      width: 145px;
+    }
   }
 
   .oldproductcard {
     display: flex;
     flex-direction: column;
     gap: 16px;
+    @include on-tablet {
+      width: 288px;
+      height: 480px;
+    }
+  }
+
+  .oldproductcard__adding-button {
+    @include on-tablet {
+      width: 200px;
+    }
+  }
+
+  .oldproductcard__image {
+    margin: 0 75px;
+    @include on-desktop {
+      margin: 0 30px;
+    }
+  }
+
+  .oldproductcard__prices {
+    padding-top: 0;
   }
 
   .oldproductcard__buttons {
+    width: auto;
     gap: 2px;
-    margin: 0 auto;
   }
 
-  .oldproductcard__capacity {
-    width: 210px;
-  }
-  .oldproductcard__ram {
-    width: 210px;
-  }
 }

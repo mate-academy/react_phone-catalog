@@ -19,7 +19,6 @@ export const OldPhoneOffer = () => {
     setFavouriteOldItems,
     oldAddedItems,
     setOldAddedItems,
-    amountOfOldModels,
     totalOldProductsPrice,
     setTotalOldProductsPrice,
     setTotalOldModels,
@@ -52,7 +51,7 @@ export const OldPhoneOffer = () => {
     appendDots: (dots: number) => (
       <ul
         style={{
-          width: '320px',
+          width: '123px',
           height: '49px',
           display: 'flex',
           justifyContent: 'center',
@@ -81,15 +80,15 @@ export const OldPhoneOffer = () => {
     const readyToAdd = oldAddedItems.some(item => item.id === oldItem.id);
 
     if (
-      oldItem.id === oldItemId &&
+      oldItem.id === selectedProduct?.id &&
       oldAddedItems.find(item => item.id === oldItem.id)
     ) {
       const updateItem = oldAddedItems.filter(item => item.id !== oldItem.id);
 
-      setFavouriteOldItems(updateItem);
-      setTotalOldModels(totalOldModels - amountOfOldModels);
+      setOldAddedItems(updateItem);
+      setTotalOldModels(totalOldModels - selectedProduct?.amountOfModels);
       setTotalOldProductsPrice(
-        totalOldProductsPrice - amountOfOldModels * oldItem.price,
+        totalOldProductsPrice - selectedProduct?.amountOfModels * oldItem.price,
       );
     }
 
@@ -104,7 +103,18 @@ export const OldPhoneOffer = () => {
 
     if (readyToAdd) {
       const updateItem = oldAddedItems.filter(item => item.id !== oldItem.id);
+      const updateProduct = oldProducts.map(currentProduct => {
+        if (currentProduct.id === oldItem.id) {
+          return {
+            ...currentProduct,
+            amountOfModels: 1,
+          };
+        }
 
+        return currentProduct;
+      });
+
+      setOldProducts(updateProduct);
       setOldAddedItems(updateItem);
     }
   };

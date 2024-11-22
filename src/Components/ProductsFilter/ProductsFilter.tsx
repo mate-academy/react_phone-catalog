@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 import { FilterType } from '../types/FilterType';
-import './ProductsFilter.scss';
+import './ProductsFilter.module.scss';
 import { CatalogContext } from '../CatalogProvider';
 import { ItemPerPage } from '../types/ItemPerPage';
 import { SetURLSearchParams } from 'react-router-dom';
@@ -63,6 +63,7 @@ export const ProductsFilter = ({
               });
               setSlidePages(0);
               setSlideDots(0);
+              setPageNumber(1);
             }}
             value={sort}
           >
@@ -254,8 +255,9 @@ export const ProductsFilter = ({
             </option>
           </select>
         </div>
+        <div className="productsfilter__glass" />
       </div>
-      <div className="productsfilter__glass" />
+      <div className="productsfilter__glassONPHONE" />
     </div>
   );
 };

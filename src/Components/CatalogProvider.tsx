@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { FilterType } from './types/FilterType';
 import { ContextType } from './types/ContextType';
 import { createContext, useEffect, useState } from 'react';
@@ -14,6 +15,7 @@ import {
 } from '../api/products';
 import { OldProductType } from './types/OldProductType';
 import { ItemPerPage } from './types/ItemPerPage';
+import { useLocaleStorage } from './hooks/useLocaleStorage';
 export const CatalogContext = createContext<ContextType>({
   filter: FilterType.AllPhones,
   setFilter: () => {},
@@ -75,7 +77,10 @@ export const GlobalCatalogProvider: React.FC<{
   const [oldProductOffers, setOldProductOffers] = useState<OldProductType[]>(
     [],
   );
-  const [favouriteItems, setFavouriteItems] = useState<Product[]>([]);
+  const [favouriteItems, setFavouriteItems] = useLocaleStorage<Product[]>(
+    'favouriteItems',
+    [],
+  );
   const [query, setQuery] = useState('');
   const [itemsPerPage, setItemsPerPage] = useState<ItemPerPage>(
     ItemPerPage.ALL,
@@ -83,15 +88,36 @@ export const GlobalCatalogProvider: React.FC<{
   const [slidePages, setSlidePages] = useState(0);
   const [slideDots, setSlideDots] = useState(0);
   const [pageNumber, setPageNumber] = useState(1);
-  const [addedItems, setAddedItems] = useState<Product[]>([]);
-  const [totalPrice, setTotalPrice] = useState(0);
-  const [favouriteOldItems, setFavouriteOldItems] = useState<OldProduct[]>([]);
-  const [oldAddedItems, setOldAddedItems] = useState<OldProduct[]>([]);
-  const [amountOfModels, setAmountOfModels] = useState(1);
-  const [totalModels, setTotalModels] = useState(0);
-  const [totalOldModels, setTotalOldModels] = useState(0);
-  const [totalOldProductsPrice, setTotalOldProductsPrice] = useState(0);
-  const [amountOfOldModels, setAmountOfOldModels] = useState(1);
+  const [addedItems, setAddedItems] = useLocaleStorage<Product[]>(
+    'addedItems',
+    [],
+  );
+
+  const [favouriteOldItems, setFavouriteOldItems] = useLocaleStorage<
+  OldProduct[]
+  >('favouriteOldItems', []);
+  const [oldAddedItems, setOldAddedItems] = useLocaleStorage<OldProduct[]>(
+    'oldAddedItems',
+    [],
+  );
+  const [totalPrice, setTotalPrice] = useLocaleStorage('totalPrice', 0);
+  const [amountOfModels, setAmountOfModels] = useLocaleStorage(
+    'amountOfModels',
+    1,
+  );
+  const [totalModels, setTotalModels] = useLocaleStorage('totalModels', 0);
+  const [totalOldModels, setTotalOldModels] = useLocaleStorage(
+    'totalOldModels',
+    0,
+  );
+  const [totalOldProductsPrice, setTotalOldProductsPrice] = useLocaleStorage(
+    'totalOldProductsPrice',
+    0,
+  );
+  const [amountOfOldModels, setAmountOfOldModels] = useLocaleStorage(
+    'amountOfOldModels',
+    1,
+  );
   const [visibleItems, setVisibleItems] = useState<Product[]>([]);
 
   useEffect(() => {
