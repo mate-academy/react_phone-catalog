@@ -1,0 +1,29 @@
+@use './../../styles/mixins' as *;
+
+.categories {
+  margin-bottom: 56px;
+  padding-inline: 16px;
+
+  @include tablet-screen {
+    margin-bottom: 64px;
+    padding-inline: 0;
+  }
+
+  @include desktop-screen {
+    margin-bottom: 80px;
+  }
+}
+
+.top {
+  margin-bottom: 24px;
+}
+
+.bottom {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+
+  @include tablet-screen {
+    flex-direction: row;
+  }
+}

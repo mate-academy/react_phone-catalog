@@ -1,0 +1,24 @@
+@use './../../styles/mixins' as *;
+@use './../../styles/vars' as *;
+
+.back {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-bottom: 16px;
+  padding-inline: 16px;
+  color: $secondary-color;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 15px;
+
+  @include transition;
+
+  &:hover {
+    color: $primary-color;
+  }
+
+  @include tablet-screen {
+    padding-inline: 0;
+  }
+}

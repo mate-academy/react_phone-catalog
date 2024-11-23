@@ -1,0 +1,167 @@
+@use './../../styles/mixins' as *;
+@use './../../styles/vars' as *;
+
+.page {
+  padding-block: 24px 64px;
+}
+
+.path {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  margin-bottom: 30px;
+  padding-inline: 16px;
+
+  @include tablet-screen {
+    padding-inline: 0;
+  }
+}
+
+.pathText {
+  color: $secondary-color;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 15px;
+}
+
+.subtitle {
+  margin-bottom: 32px;
+  color: $secondary-color;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 21px;
+  padding-inline: 16px;
+
+  @include tablet-screen {
+    padding-inline: 0;
+  }
+}
+
+.filter {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 20px;
+  padding-inline: 16px;
+  margin-bottom: 24px;
+
+  @include tablet-screen {
+    justify-content: start;
+    gap: 16px;
+
+    padding-inline: 0;
+  }
+}
+
+.dropdown {
+  display: flex;
+  flex-direction: column;
+
+  &:nth-child(3) {
+    position: relative;
+    flex-grow: 1;
+  }
+}
+
+.btns {
+  position: absolute;
+  top: 35px;
+  right: 10px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  @include tablet-screen {
+    top: 30px;
+  }
+}
+
+.search {
+  height: 100%;
+  width: 100%;
+  padding: 10px 40px 10px 20px;
+  outline: none;
+  border: 1px solid $icons-color;
+
+  &:focus {
+    border: 1px solid $primary-color;
+  }
+
+  &:hover {
+    border: 1px solid $secondary-color;
+  }
+
+  @include tablet-screen {
+    padding-block: 0;
+  }
+}
+
+.label {
+  margin-bottom: 5px;
+  color: $secondary-color;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 15px;
+}
+
+.select {
+  appearance: none;
+  padding: 10px 40px 10px 16px;
+  border: 1px solid $icons-color;
+  cursor: pointer;
+  position: relative;
+  outline: none;
+
+  @include transition;
+
+  &:focus {
+    border: 1px solid $primary-color;
+  }
+
+  &:hover {
+    border: 1px solid $secondary-color;
+  }
+
+  &::after {
+    content: '';
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    right: 16px;
+    top: 50%;
+
+    background-color: black;
+    transform: translateY(-50%);
+    pointer-events: none;
+  }
+}
+
+.option {
+  color: $secondary-color;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 21px;
+  cursor: pointer;
+}
+
+.products {
+  display: grid;
+  justify-content: center;
+  gap: 40px 16px;
+
+  margin-bottom: 24px;
+  padding-inline: 16px;
+
+  @include tablet-screen {
+    grid-template-columns: repeat(2, 288px);
+
+    margin-bottom: 40px;
+    padding-inline: 0;
+  }
+
+  @include desktop-screen {
+    grid-template-columns: repeat(4, 272px);
+  }
+}

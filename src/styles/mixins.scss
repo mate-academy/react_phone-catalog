@@ -1,0 +1,17 @@
+@use './vars' as *;
+
+@mixin tablet-screen {
+  @media (min-width: $tablet-screen-size) {
+    @content;
+  }
+}
+
+@mixin desktop-screen {
+  @media (min-width: $desktop-screen-size) {
+    @content;
+  }
+}
+
+@mixin transition {
+  transition: all $transition-time-all ease-in;
+}

@@ -1,0 +1,81 @@
+@use './../../styles/mixins' as *;
+@use './../../styles/vars' as *;
+
+.slider {
+  margin-bottom: 56px;
+  width: 100%;
+  height: 100vw;
+
+  @include tablet-screen {
+    margin-bottom: 64px;
+    height: auto;
+  }
+
+  @include desktop-screen {
+    margin-bottom: 80px;
+  }
+}
+
+.sliders {
+  height: 100%;
+  margin-bottom: 10px;
+
+  @include tablet-screen {
+    display: flex;
+    gap: 20px;
+    height: 190px;
+  }
+
+  @include desktop-screen {
+    height: 400px;
+  }
+}
+
+.btn {
+  display: none;
+  padding-inline: 8px;
+  border: 1px solid $icons-color;
+  cursor: pointer;
+
+  @include transition;
+
+  &:hover {
+    border-color: $color-black;
+  }
+
+  @include tablet-screen {
+    display: block;
+  }
+}
+
+.slide {
+  width: 100%;
+  height: 100%;
+  background-position: center;
+  background-size: cover;
+}
+
+.dots {
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-evenly;
+  padding-block: 10px;
+  width: 80px;
+}
+
+.dot {
+  width: 14px;
+  height: 4px;
+  background: $elements-color;
+  cursor: pointer;
+
+  @include transition;
+
+  &:hover {
+    background: $primary-color;
+  }
+}
+
+.active {
+  background: $primary-color;
+}

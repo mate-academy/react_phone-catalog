@@ -1,0 +1,40 @@
+@use './../../styles/mixins' as *;
+
+.cart {
+  padding-block: 25px 56px;
+
+  @include tablet-screen {
+    padding-block: 40px 64px;
+  }
+
+  @include desktop-screen {
+    padding-bottom: 80px;
+  }
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+
+  @include desktop-screen {
+    flex-direction: row;
+    gap: 16px;
+  }
+}
+
+.items {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  margin-bottom: 32px;
+  padding-inline: 16px;
+
+  @include tablet-screen {
+    padding-inline: 0;
+  }
+
+  @include desktop-screen {
+    width: 100%;
+  }
+}
