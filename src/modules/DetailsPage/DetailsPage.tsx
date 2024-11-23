@@ -148,7 +148,7 @@ const DetailsPage: React.FC<Props> = ({ category }) => {
                 <div className={style.gallery}>
                   <div className={style.device}>
                     <img
-                      src={`/${deviceData?.images[activeImg]}`}
+                      src={`./${deviceData?.images[activeImg]}`}
                       alt="Device"
                     />
                   </div>
@@ -160,7 +160,7 @@ const DetailsPage: React.FC<Props> = ({ category }) => {
                         onClick={() => setActiveImg(index)}
                         className={`${activeImg === index ? style.activeImgStyle : ''}`}
                       >
-                        <img src={`/${img}`} alt="Device" />
+                        <img src={`./${img}`} alt="Device" />
                       </li>
                     ))}
                   </ul>

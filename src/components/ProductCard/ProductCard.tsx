@@ -53,7 +53,7 @@ const ProductCard: React.FC<Props> = ({ product }) => {
   return (
     <article className={style.card}>
       <Link to={`/${category}/${itemId}`}>
-        <img className={style.img} src={`/${image}`} alt="Device" />
+        <img className={style.img} src={`./${image}`} alt="Device" />
       </Link>
 
       <Link to={`/${category}/${itemId}`} className={style.title}>
