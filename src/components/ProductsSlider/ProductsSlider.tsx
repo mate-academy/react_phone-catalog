@@ -43,14 +43,14 @@ const ProductsSlider: React.FC<Props> = ({ title, products }) => {
               disabled={currentIndex === 0}
               onClick={handleClickPrev}
             >
-              <img src="/img/icons/arrow-left.svg" alt="#" />
+              <img src="./img/icons/arrow-left.svg" alt="#" />
             </button>
             <button
               className={`${style.btn} ${currentIndex + itemsPerPage >= products.length ? style.disabled : ''}`}
               onClick={handleClickNext}
               disabled={currentIndex + itemsPerPage >= products.length}
             >
-              <img src="/img/icons/arrow-right.svg" alt="#" />
+              <img src="./img/icons/arrow-right.svg" alt="#" />
             </button>
           </div>
         </div>

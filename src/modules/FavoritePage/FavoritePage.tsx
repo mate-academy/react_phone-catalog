@@ -19,11 +19,11 @@ const FavoritePage = () => {
       <div className="container">
         <div className={style.path}>
           <Link to="/" className={style.pathHome}>
-            <img src="/img/icons/home.svg" alt="Home" />
+            <img src="./img/icons/home.svg" alt="Home" />
           </Link>
           <img
             className={style.pathArrow}
-            src="/img/icons/arrow-right.svg"
+            src="./img/icons/arrow-right.svg"
             alt="Arrow"
           />
           <Link to="/favorite" className={style.pathText}>

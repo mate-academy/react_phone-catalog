@@ -24,19 +24,19 @@ const ShopCategories = () => {
       path: '/phones',
       title: 'Mobile phones',
       count: phones.length || 0,
-      image: '/img/category-phones.webp',
+      image: './img/category-phones.webp',
     },
     {
       path: '/tablets',
       title: 'Tablets',
       count: tablets.length || 0,
-      image: '/img/category-tablets.webp',
+      image: './img/category-tablets.webp',
     },
     {
       path: '/accessories',
       title: 'Accessories',
       count: accessories.length || 0,
-      image: '/img/category-accessories.webp',
+      image: './img/category-accessories.webp',
     },
   ];
 

@@ -52,21 +52,21 @@ const Header = () => {
 
       <div>
         <Link to="/favorite" className={`${style.btn} ${style.favorites}`}>
-          <img src="/img/icons/favorites.svg" alt="Favorites" />
+          <img src="./img/icons/favorites.svg" alt="Favorites" />
           {favorites.length !== 0 && (
             <span className={style.counter}>{favorites.length}</span>
           )}
         </Link>
 
         <Link to="/cart" className={`${style.btn} ${style.bag}`}>
-          <img src="/img/icons/bag.svg" alt="Bag" />
+          <img src="./img/icons/bag.svg" alt="Bag" />
           {cart.length !== 0 && (
             <span className={style.counter}>{cart.length}</span>
           )}
         </Link>
 
         <button className={`${style.btn} ${style.burger}`} onClick={toggleMenu}>
-          <img src="/img/icons/burger.svg" alt="Menu" />
+          <img src="./img/icons/burger.svg" alt="Menu" />
         </button>
       </div>
 

@@ -104,14 +104,14 @@ const ProductCard: React.FC<Props> = ({ product }) => {
             className={style.favorite}
             onClick={() => handleAddFavorite(product)}
           >
-            <img src="/img/icons/favorites.svg" alt="Favorite" />
+            <img src="./icons/favorites.svg" alt="Favorite" />
           </button>
         ) : (
           <button
             className={style.favorite}
             onClick={() => handleRemoveFavorite(itemId)}
           >
-            <img src="/img/icons/like.svg" alt="Like" />
+            <img src="./img/icons/like.svg" alt="Like" />
           </button>
         )}
       </div>

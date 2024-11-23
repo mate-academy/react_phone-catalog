@@ -126,11 +126,11 @@ const ProductPage: React.FC<Props> = ({ category }) => {
       <div className="container">
         <div className={style.path}>
           <Link to="/" className={style.pathHome}>
-            <img src="/img/icons/home.svg" alt="Home" />
+            <img src="./img/icons/home.svg" alt="Home" />
           </Link>
           <img
             className={style.pathArrow}
-            src="/img/icons/arrow-right.svg"
+            src="./img/icons/arrow-right.svg"
             alt="Arrow"
           />
           <Link to={`/${category}`} className={style.pathText}>
@@ -198,10 +198,10 @@ const ProductPage: React.FC<Props> = ({ category }) => {
             <div className={style.btns}>
               {searchValue ? (
                 <button onClick={handleClearSearchValue}>
-                  <img src="/img/icons/close.svg" alt="" />
+                  <img src="./img/icons/close.svg" alt="" />
                 </button>
               ) : (
-                <img src="/img/icons/search.svg" alt="" />
+                <img src="./img/icons/search.svg" alt="" />
               )}
             </div>
           </div>

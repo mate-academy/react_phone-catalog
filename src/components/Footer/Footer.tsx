@@ -61,7 +61,7 @@ const Footer = () => {
           <div className={style.back}>
             <span className={style.text}>Back to top</span>
             <Link to="/" className={style.btn} onClick={handleClick}>
-              <img src="/img/icons/arrow-top.svg" alt="Arrow" />
+              <img src="./img/icons/arrow-top.svg" alt="Arrow" />
             </Link>
           </div>
         </div>

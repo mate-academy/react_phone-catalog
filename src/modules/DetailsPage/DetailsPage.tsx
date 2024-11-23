@@ -110,11 +110,11 @@ const DetailsPage: React.FC<Props> = ({ category }) => {
       <div className="container">
         <div className={style.path}>
           <Link to="/" className={style.pathHome}>
-            <img src="/img/icons/home.svg" alt="Home" />
+            <img src="./img/icons/home.svg" alt="Home" />
           </Link>
           <img
             className={style.pathArrow}
-            src="/img/icons/arrow-right.svg"
+            src="./img/icons/arrow-right.svg"
             alt="Arrow"
           />
           <Link to={`/${category}`} className={style.pathText}>
@@ -122,7 +122,7 @@ const DetailsPage: React.FC<Props> = ({ category }) => {
           </Link>
           <img
             className={style.pathArrow}
-            src="/img/icons/arrow-right.svg"
+            src="./img/icons/arrow-right.svg"
             alt="Arrow"
           />
           <Link
@@ -239,14 +239,14 @@ const DetailsPage: React.FC<Props> = ({ category }) => {
                         className={style.favorite}
                         onClick={() => handleAddFavorite(deviceData?.id)}
                       >
-                        <img src="/img/icons/favorites.svg" alt="Favorite" />
+                        <img src="./img/icons/favorites.svg" alt="Favorite" />
                       </button>
                     ) : (
                       <button
                         className={style.favorite}
                         onClick={() => handleRemoveFavorite(deviceData?.id)}
                       >
-                        <img src="/img/icons/like.svg" alt="Like" />
+                        <img src="./img/icons/like.svg" alt="Like" />
                       </button>
                     )}
                   </section>

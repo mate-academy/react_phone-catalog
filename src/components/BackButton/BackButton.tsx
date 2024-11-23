@@ -6,7 +6,7 @@ const BackButton = () => {
 
   return (
     <button className={style.back} onClick={() => navigate(-1)}>
-      <img src="/img/icons/arrow-left.svg" alt="Arrow" />
+      <img src="./img/icons/arrow-left.svg" alt="Arrow" />
       Back
     </button>
   );

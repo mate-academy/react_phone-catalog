@@ -34,7 +34,7 @@ const Pagination: React.FC<Props> = ({
           className={`${style.item} ${style.arrow} ${currentPage === 1 ? style.disabled : ''}`}
           onClick={() => currentPage > 1 && handlePageChange(currentPage - 1)}
         >
-          <img src="/img/icons/arrow-left.svg" alt="Arrow left" />
+          <img src="./img/icons/arrow-left.svg" alt="Arrow left" />
         </li>
 
         {showPages}
@@ -45,7 +45,7 @@ const Pagination: React.FC<Props> = ({
             currentPage < totalPages && handlePageChange(currentPage + 1)
           }
         >
-          <img src="/img/icons/arrow-right.svg" alt="Arrow right" />
+          <img src="./img/icons/arrow-right.svg" alt="Arrow right" />
         </li>
       </ul>
     </section>

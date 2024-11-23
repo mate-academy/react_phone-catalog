@@ -18,7 +18,7 @@ const BurgerMenu: React.FC<Props> = ({ isMenuOpen, onClose }) => {
         <Logo />
 
         <button className={`${style.btn} ${style.close}`} onClick={onClose}>
-          <img src="/img/icons/close.svg" alt="Close" />
+          <img src="./img/icons/close.svg" alt="Close" />
         </button>
       </header>
 
@@ -53,14 +53,14 @@ const BurgerMenu: React.FC<Props> = ({ isMenuOpen, onClose }) => {
           className={`${style.btn} ${style.favorites}`}
           onClick={onClose}
         >
-          <img src="/img/icons/favorites.svg" alt="Favorites" />
+          <img src="./img/icons/favorites.svg" alt="Favorites" />
         </Link>
         <Link
           to="/cart"
           className={`${style.btn} ${style.bag}`}
           onClick={onClose}
         >
-          <img src="/img/icons/bag.svg" alt="Bag" />
+          <img src="./img/icons/bag.svg" alt="Bag" />
         </Link>
       </footer>
     </aside>

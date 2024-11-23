@@ -36,7 +36,7 @@ const CartItem: React.FC<Props> = ({ product }) => {
           className={style.delete}
           onClick={() => handleRemoveProduct(itemId)}
         >
-          <img src="/img/icons/delete.svg" alt="delete" />
+          <img src="./img/icons/delete.svg" alt="delete" />
         </button>
 
         <Link to={`/${category}/${itemId}`} className={style.title}>
@@ -59,7 +59,7 @@ const CartItem: React.FC<Props> = ({ product }) => {
             onClick={() => handleDecreaseCount(itemId)}
             disabled={count === 1}
           >
-            <img src="/img/icons/minus.svg" alt="Remove" />
+            <img src="./img/icons/minus.svg" alt="Remove" />
           </button>
 
           <span className={style.count}>{count}</span>
@@ -68,7 +68,7 @@ const CartItem: React.FC<Props> = ({ product }) => {
             className={`${style.btn}`}
             onClick={() => handleIncreaseCount(itemId)}
           >
-            <img src="/img/icons/plus.svg" alt="Add" />
+            <img src="./img/icons/plus.svg" alt="Add" />
           </button>
         </div>
 
