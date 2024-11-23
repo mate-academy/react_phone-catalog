@@ -40,7 +40,7 @@ const CartItem: React.FC<Props> = ({ product }) => {
         </button>
 
         <Link to={`/${category}/${itemId}`} className={style.title}>
-          <img className={style.device} src={`./img/${image}`} alt="Device" />
+          <img className={style.device} src={`./${image}`} alt="Device" />
         </Link>
 
         <Link to={`/${category}/${itemId}`} className={style.title}>
