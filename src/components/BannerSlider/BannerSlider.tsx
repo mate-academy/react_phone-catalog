@@ -3,9 +3,9 @@ import style from './BannerSlider.module.scss';
 
 const BannerSlider = () => {
   const slides = [
-    { id: 1, image: '/img/slider/slide-1.jpg' },
-    { id: 2, image: '/img/slider/slide-2.jpg' },
-    { id: 3, image: '/img/slider/slide-3.jpg' },
+    { id: 1, image: './img/slider/slide-1.jpg' },
+    { id: 2, image: './img/slider/slide-2.jpg' },
+    { id: 3, image: './img/slider/slide-3.jpg' },
   ];
 
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -61,7 +61,7 @@ const BannerSlider = () => {
           <button className={style.btn} onClick={goPrev}>
             <img
               className={style.arrow}
-              src="/img/icons/arrow-left.svg"
+              src="./img/icons/arrow-left.svg"
               alt="Left"
             />
           </button>
@@ -72,7 +72,7 @@ const BannerSlider = () => {
           <button className={style.btn} onClick={goNext}>
             <img
               className={style.arrow}
-              src="/img/icons/arrow-right.svg"
+              src="./img/icons/arrow-right.svg"
               alt="Right"
             />
           </button>
