@@ -104,7 +104,7 @@ const ProductCard: React.FC<Props> = ({ product }) => {
             className={style.favorite}
             onClick={() => handleAddFavorite(product)}
           >
-            <img src="./icons/favorites.svg" alt="Favorite" />
+            <img src="./img/icons/favorites.svg" alt="Favorite" />
           </button>
         ) : (
           <button
