@@ -119,6 +119,7 @@
   text-decoration: none;
 
   & svg {
+    width: max-content;
     fill: var(--color-text);
   }
 
