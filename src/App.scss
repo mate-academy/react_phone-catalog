@@ -63,7 +63,7 @@ body {
 }
 
 body::-webkit-scrollbar {
-  scrollbar-width: none;
+  display: none;
 }
 
 .App {

@@ -123,6 +123,7 @@
   fill: var(--color-primary);
 
   & svg {
+    min-width: 1.6rem;
     height: 100%;
   }
 
