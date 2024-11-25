@@ -13,15 +13,17 @@ type Props = {
   disabled?: boolean;
   label?: string;
   className?: string;
+  labelClassName?: string;
   onClick?: HandleClick;
 };
 
 export const IconButton: React.FC<Props> = ({
   svgOption,
-  onClick,
   disabled,
   label,
   className,
+  labelClassName,
+  onClick,
 }) => {
   const id = useId();
 
@@ -50,7 +52,7 @@ export const IconButton: React.FC<Props> = ({
       )}
     >
       {label && (
-        <label htmlFor={id} className={styles.Label}>
+        <label htmlFor={id} className={labelClassName || styles.Label}>
           {label}
         </label>
       )}

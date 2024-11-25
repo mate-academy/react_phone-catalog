@@ -8,8 +8,8 @@ import { PictureSlide } from '../PictureSlide';
 import { Dashes } from '../Dashes';
 // eslint-disable-next-line max-len
 import { useLanguage } from '../../../shared/components/Contexts/LanguageContext';
-import { HandleSliderDragEvent } from '../../../shared/types/types';
 import { getPageX } from '../../../shared/functions/functions';
+import { HandleSliderDragEvent } from '../../../shared/types/handlers';
 
 type Props = {
   pictures: Picture[];

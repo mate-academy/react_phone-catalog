@@ -1,0 +1,60 @@
+@use "../../../shared/styles/mixins" as *;
+@use "../../../shared/styles/extends";
+
+.Header {
+  @include child-grid;
+  @include full-grid-width;
+
+  margin-bottom: 24px;
+}
+
+.AmountOfProducts {
+  @include full-grid-width;
+
+  margin-bottom: 40px;
+
+  @extend %body-text;
+  @include color-transition((color: var(--secondary-text-color)));
+
+  @include for-mobile {
+    margin-bottom: 32px;
+  }
+}
+
+.ListControls {
+  @include full-grid-width;
+}
+
+.List {
+  @include full-grid-width;
+
+  &:not(:last-child) {
+    margin-bottom: 40px;
+
+    @include for-mobile {
+      margin-bottom: 24px;
+    }
+  }
+}
+
+.Message {
+  @include full-grid-width;
+
+  padding: 20px 0;
+  justify-self: center;
+
+  @extend %body-text;
+  @include color-transition((color: var(--primary-text-color)));
+}
+
+.Pagination {
+  @include full-grid-width;
+
+  justify-self: center;
+}
+
+.ProductsDisplay {
+  @include child-grid;
+
+  padding-top: 8px;
+}

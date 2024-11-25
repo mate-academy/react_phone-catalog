@@ -1,4 +1,4 @@
-import { BackButton } from '../BackButton';
+import { BackLink } from '../BackLink';
 import { Breadcrumbs } from '../Breadcrumbs';
 import styles from './PathNavigation.module.scss';
 
@@ -14,7 +14,7 @@ export const PathNavigation: React.FC<Props> = ({ goBack, path }) => {
 
       {goBack && (
         <article className={styles.GoBack}>
-          <BackButton />
+          <BackLink />
         </article>
       )}
     </nav>

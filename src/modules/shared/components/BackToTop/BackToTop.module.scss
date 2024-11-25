@@ -1,12 +1,19 @@
 @use '../../styles/extends';
 @use '../../styles/mixins' as *;
 
-.BackToTop {
-  display: flex;
-  align-items: center;
-  gap: 16px;
+.Label {
+  position: absolute;
+  right: calc(100% + 16px);
+  top: 50%;
+  transform: translateY(-50%);
+
+  text-wrap: nowrap;
   cursor: pointer;
 
   @extend %small-text;
   @include color-transition((color: var(--secondary-text-color)));
+}
+
+.BackToTop {
+  position: relative;
 }

@@ -1,12 +1,13 @@
 import classNames from 'classnames';
 import { IconButtonSVGOption } from '../../types/enums';
-import { HandleSliderDragEvent, Product } from '../../types/types';
 import { useLanguage } from '../Contexts/LanguageContext';
 import { IconButton } from '../IconButton';
 import { ProductCard } from '../ProductCard';
 import styles from './ProductsSlider.module.scss';
 import { useEffect, useRef, useState } from 'react';
 import { getPageX } from '../../functions/functions';
+import { HandleSliderDragEvent } from '../../types/handlers';
+import { Product } from '../../types/types';
 
 enum DisabledButton {
   Left = 'Left',

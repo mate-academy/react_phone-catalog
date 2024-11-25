@@ -1,0 +1,42 @@
+@use "../../../shared/styles/mixins" as *;
+@use "../../../shared/styles/extends";
+
+.Label {
+  display: inline-block;
+  margin-bottom: 4px;
+
+  cursor: pointer;
+  pointer-events: auto;
+
+  @include color-transition((color: var(--secondary-text-color)));
+  @extend %small-text;
+}
+
+.Input {
+  box-sizing: border-box;
+  height: 40px;
+  width: 100%;
+  padding: 0 12px;
+  border: 1px solid;
+  outline: none;
+  pointer-events: auto;
+
+  @extend %buttons;
+  @include color-transition((
+    color: var(--primary-text-color),
+    background-color: var(--input-color),
+    border-color: var(--input-border-color)
+  ));
+
+  &:focus-visible {
+    border-color: var(--input-border-active-color);
+  }
+}
+
+.ListSearch {
+  pointer-events: none;
+
+  &:hover > .Input:not(:focus-visible) {
+    border-color: var(--input-border-hover-color);
+  }
+}

@@ -5,7 +5,7 @@ import { Welcome } from '../Welcome';
 import { ProductsSlider } from '../../../shared/components/ProductsSlider';
 // eslint-disable-next-line max-len
 import { useLanguage } from '../../../shared/components/Contexts/LanguageContext';
-import { translateItem, wait } from '../../../shared/functions/functions';
+import { translateItems, wait } from '../../../shared/functions/functions';
 // eslint-disable-next-line max-len
 import { ProductsSliderSkeleton } from '../../../shared/components/ProductsSliderSkeleton';
 import { LoadingStatus } from '../../../shared/types/enums';
@@ -38,7 +38,7 @@ export const HomePage: React.FC = () => {
 
       const loadedProducts = await response.json();
 
-      setProducts(translateItem<Product>(loadedProducts, language));
+      setProducts(translateItems<Product>(loadedProducts, language));
 
       if (loadedProducts.length) {
         setLoadingStatus(LoadingStatus.Success);

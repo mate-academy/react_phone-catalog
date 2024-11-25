@@ -3,7 +3,7 @@ import { useCallback, useEffect, useState } from 'react';
 import { useLanguage } from '../../../shared/components/Contexts/LanguageContext';
 import { Picture } from '../../types/types';
 import { PicturesSlider } from '../PicturesSlider';
-import { translateItem, wait } from '../../../shared/functions/functions';
+import { translateItems, wait } from '../../../shared/functions/functions';
 import styles from './Welcome.module.scss';
 import { PicturesSliderSkeleton } from '../PicturesSliderSkeleton';
 import { LoadingStatus } from '../../../shared/types/enums';
@@ -35,7 +35,7 @@ export const Welcome: React.FC = () => {
 
       const loadedPictures = await response.json();
 
-      setPictures(translateItem<Picture>(loadedPictures, language));
+      setPictures(translateItems<Picture>(loadedPictures, language));
 
       if (loadedPictures.length) {
         setLoadingStatus(LoadingStatus.Success);

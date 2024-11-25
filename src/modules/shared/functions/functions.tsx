@@ -2,13 +2,14 @@ import { BagSVG } from '../components/SVGs/BagSVG';
 import { HeartSVG } from '../components/SVGs/HeartSVG';
 import { SettingsSVG } from '../components/SVGs/SettingsSVG';
 import { Language, MenuLinkSVGOption } from '../types/enums';
-import { HandleSliderDragEvent } from '../types/types';
+import { HandleSliderDragEvent } from '../types/handlers';
+import { Pagination } from '../types/types';
 
 type ItemWithLocales<Item> = Item & {
   locales: { [key: string]: Partial<Item> };
 };
 
-export const translateItem = <Item,>(
+export const translateItems = <Item,>(
   items: ItemWithLocales<Item>[],
   language: Language,
 ): Item[] => {
@@ -41,6 +42,32 @@ export const getPageX = (event: HandleSliderDragEvent): number => {
   }
 };
 
+export const getAmountOfPages = (
+  pagination: Pagination,
+  amountOfItems: number,
+): number => {
+  return pagination ? Math.ceil(amountOfItems / pagination) : 1;
+};
+
+export const getFirstItemOnPage = (
+  pagination: Pagination,
+  page: number,
+): number => (pagination ? (page - 1) * pagination + 1 : 1);
+
+export const getLastItemOnPage = (
+  pagination: Pagination,
+  page: number,
+  amountOfItems: number,
+): number => {
+  if (pagination) {
+    const lastItem = (page - 1) * pagination + pagination;
+
+    return lastItem > amountOfItems ? amountOfItems : lastItem;
+  } else {
+    return amountOfItems;
+  }
+};
+
 export const getMenuLinkSVG = (
   option: MenuLinkSVGOption,
   className?: string,
@@ -57,8 +84,7 @@ export const getMenuLinkSVG = (
   }
 };
 
-export function wait(delay: number) {
-  return new Promise(resolve => {
+export const wait = (delay: number) =>
+  new Promise(resolve => {
     setTimeout(resolve, delay);
   });
-} //Delete!!!

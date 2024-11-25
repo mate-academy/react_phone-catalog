@@ -1,0 +1,31 @@
+@use "../../../shared/styles/mixins" as *;
+
+.Sorting {
+  grid-column: span 4;
+
+  @include for-mobile {
+    grid-column: span 2;
+  }
+}
+
+.Pagination {
+  grid-column: span 3;
+
+  @include for-mobile {
+    grid-column: span 2;
+  }
+}
+
+.Searching {
+  grid-column: span 5;
+
+  @include for-mobile {
+    grid-column: span 4;
+  }
+}
+
+.ProductsListControlls {
+  @include child-grid;
+
+  row-gap: 16px;
+}

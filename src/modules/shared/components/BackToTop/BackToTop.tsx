@@ -16,12 +16,12 @@ export const BackToTop: React.FC<Props> = ({ className }) => {
   };
 
   return (
-    <label className={classNames(styles.BackToTop, className)}>
-      {backToTop}
-      <IconButton
-        svgOption={IconButtonSVGOption.UpArrow}
-        onClick={handleClick}
-      />
-    </label>
+    <IconButton
+      svgOption={IconButtonSVGOption.UpArrow}
+      label={backToTop}
+      className={classNames(styles.BackToTop, className)}
+      labelClassName={styles.Label}
+      onClick={handleClick}
+    />
   );
 };

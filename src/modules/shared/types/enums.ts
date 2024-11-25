@@ -26,6 +26,12 @@ export enum Language {
   Polish = 'pl',
 }
 
+export enum SortOption {
+  Age,
+  Price,
+  Title,
+}
+
 export enum Category {
   Phones = 'phones',
   Tablets = 'tablets',

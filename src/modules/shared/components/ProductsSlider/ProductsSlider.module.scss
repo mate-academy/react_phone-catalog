@@ -63,21 +63,26 @@
 
 .Item {
   grid-column: span 6;
-  height: 506px;
 
   @include for-tablet {
     grid-column: span 5;
-    height: 512px;
   }
 
   @include for-mobile {
     grid-column: span 3;
-    height: 439px;
   }
 }
 
 .ProductCard {
-  height: 100%;
+  height: 506px;
+
+  @include for-tablet {
+    height: 512px;
+  }
+
+  @include for-mobile {
+    height: 439px;
+  }
 }
 
 .ProductsSlider {

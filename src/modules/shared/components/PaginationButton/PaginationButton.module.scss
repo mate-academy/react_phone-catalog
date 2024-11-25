@@ -1,0 +1,32 @@
+@use '../../styles/vars' as *;
+@use '../../styles/mixins' as *;
+@use '../../styles/extends';
+
+.PageButton {
+  @include square($icon-button-size);
+
+  border: 1px solid;
+  padding: 0;
+
+  text-align: center;
+  cursor: pointer;
+
+  @include color-transition((
+    color: var(--primary-text-color),
+    background-color: var(--pagination-button-color),
+    border-color: var(--pagination-button-border-color)
+  ));
+  @extend %body-text;
+
+  &_active {
+    color: var(--pagination-button-text-active-color);
+    background-color: var((--pagination-button-active-color));
+    border-color: var(--pagination-button-border-active-color);
+    cursor: default;
+  }
+
+  &:not(&_active):hover {
+    background-color: var(--pagination-button-hover-color);
+    border-color: var(--pagination-button-border-hover-color);
+  }
+}

@@ -2,13 +2,13 @@
 @use "../../../shared/styles/mixins" as *;
 
 $dropdown-gap: 4px;
-$select-shift: 15px + $dropdown-gap;
 
 .Label {
-  position: absolute;
-  bottom: 100%;
+  display: inline-block;
   margin-bottom: $dropdown-gap;
+
   cursor: pointer;
+  pointer-events: auto;
 
   @extend %small-text;
   @include color-transition((color: var(--secondary-text-color)));
@@ -25,18 +25,19 @@ $select-shift: 15px + $dropdown-gap;
   padding: 0 12px;
   border: 1px solid;
 
+  pointer-events: auto;
   cursor: pointer;
   outline: none;
 
   @extend %buttons;
   @include color-transition((
     color: var(--primary-text-color),
-    background-color: var(--dropdown-color),
-    border-color: var(--dropdown-border-color)
+    background-color: var(--input-color),
+    border-color: var(--input-border-color)
   ));
 
   &:focus-visible {
-    border-color: var(--dropdown-border-open-color);
+    border-color: var(--input-border-active-color);
   }
 }
 
@@ -57,7 +58,7 @@ $select-shift: 15px + $dropdown-gap;
   max-height: 0;
   visibility: hidden;
 
-  cursor: default;
+  pointer-events: auto;
 
   @include color-transition((
     border-color: var(--element-color),
@@ -85,12 +86,10 @@ $select-shift: 15px + $dropdown-gap;
 
 .Dropdown {
   position: relative;
-  top: $select-shift;
-  margin-bottom: $select-shift;
-  cursor: pointer;
+  pointer-events: none;
 
   &_open > .Select {
-    border-color: var(--dropdown-border-open-color);
+    border-color: var(--input-border-active-color);
   }
 
   &_open > .Options {
@@ -100,7 +99,7 @@ $select-shift: 15px + $dropdown-gap;
 
   &:hover:has(> .Options:not(:hover)) {
     > .Select {
-      border-color: var(--dropdown-border-hover-color);
+      border-color: var(--input-border-hover-color);
     }
 
     .Arrow {

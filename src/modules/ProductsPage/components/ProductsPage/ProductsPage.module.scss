@@ -1,0 +1,28 @@
+@use "../../../shared/styles/extends";
+@use "../../../shared/styles/mixins" as *;
+
+.Title {
+  padding-top: 40px;
+
+  @include full-grid-width;
+  @extend %h1;
+  @include color-transition((color: var(--primary-text-color)));
+
+  @include for-mobile {
+    padding-top: 24px;
+  }
+}
+
+.ProductsDisplay {
+  @include full-grid-width;
+}
+
+.ProductsPage {
+  @include grid;
+
+  padding-bottom: 64px;
+
+  @include for-desktop {
+    padding-bottom: 80px;
+  }
+}

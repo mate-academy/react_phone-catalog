@@ -1,0 +1,22 @@
+@use '../../styles/mixins' as *;
+@use '../../styles/extends';
+
+.Gap {
+  position: relative;
+}
+
+.Dots {
+  position: absolute;
+  bottom: 0;
+  transform: translateX(-50%);
+
+  @include color-transition((color: var(--primary-text-color)));
+  @extend %body-text;
+}
+
+.Pagination {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+}

@@ -15,6 +15,4 @@ export type Product = {
   image: string;
 };
 
-export type HandleSliderDragEvent =
-  | React.MouseEvent<HTMLUListElement>
-  | React.TouchEvent<HTMLUListElement>;
+export type Pagination = number | null;
