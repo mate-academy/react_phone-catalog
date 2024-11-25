@@ -65,6 +65,7 @@
 .btnClose {
   background-color: transparent;
   border: none;
+  text-align: center;
   align-self: center;
   height: 1.6rem;
   width: 1.6rem;
@@ -116,6 +117,7 @@
   border: 1px solid var(--color-icons);
   background-color: transparent;
   cursor: pointer;
+  text-align: center;
   fill: var(--color-primary);
 
   & svg {
