@@ -63,12 +63,19 @@
 }
 
 .btnClose {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: transparent;
   border: none;
   text-align: center;
   align-self: center;
-  height: 1.6rem;
-  width: 1.6rem;
+  height: 3.2rem;
+  width: 3.2rem;
+
+  & svg{
+    min-width: 1.6rem;
+  }
 
   fill: var(--color-icons);
   cursor: pointer;
