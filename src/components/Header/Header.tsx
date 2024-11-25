@@ -19,6 +19,11 @@ const Header = () => {
     document.body.style.overflow = isMenuOpen ? 'auto' : 'hidden';
   };
 
+  const countProductsInCart = cart.reduce(
+    (acc, item) => acc + (item.count ?? 0),
+    0,
+  );
+
   return (
     <header id="header" className={style.header}>
       <div className={style.left}>
@@ -61,7 +66,7 @@ const Header = () => {
         <Link to="/cart" className={`${style.btn} ${style.bag}`}>
           <img src="./img/icons/bag.svg" alt="Bag" />
           {cart.length !== 0 && (
-            <span className={style.counter}>{cart.length}</span>
+            <span className={style.counter}>{countProductsInCart}</span>
           )}
         </Link>
 
