@@ -1,11 +1,10 @@
 @import "src/styles/colors";
 @import "src/styles/mixins";
 
-.pathWrapper{
+.pathWrapper {
   grid-column: 1 / -1;
   width: 100%;
   max-width: $maxContainerWidth;
-
   box-sizing: border-box;
 
   display: grid;
@@ -13,12 +12,12 @@
   column-gap: 1.6rem;
   margin-inline: auto;
 
-  // padding-inline: 1.6rem;
+  padding-inline: 1.6rem;
 
   @include on-tablet {
     grid-template-columns: repeat(12, 1fr);
 
-    // padding-inline: 2.4rem;
+    padding-inline: 2.4rem;
 
     box-sizing: content-box;
   }
@@ -26,6 +25,11 @@
   @include on-m-desktop {
     position: relative;
     grid-template-columns: repeat(24, 1fr);
+    padding-inline: 0;
+  }
+
+  &NoProduct {
+    display: none;
   }
 }
 
@@ -46,18 +50,16 @@
 
 .toHome {
   display: inline-block;
-  background-image: url("../../assets/icons/home.svg");
   min-width: 1.6rem;
   height: 1.6rem;
+  fill: var(--color-primary);
 }
 
 .arrowRight {
   display: inline-block;
   min-width: 1.6rem;
   height: 1.6rem;
-  background-image: url("../../assets/icons/arrow-right-gray.svg");
-  background-size: contain;
-  background-position: 10%;
+  fill: var(--color-icons);
 }
 
 .currPlace {
@@ -68,10 +70,10 @@
   font-weight: 600;
   line-height: 1;
   padding-top: 3px;
-  color: $color-primary;
+  color: var(--color-primary);
 
   &IsDisabled {
-    color: $color-secondary;
+    color: var(--color-secondary);
     pointer-events: none;
 
     white-space: nowrap;

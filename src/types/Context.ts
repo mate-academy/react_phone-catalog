@@ -19,3 +19,8 @@ export interface FavouriteContextType {
 export interface ProductListContextType {
   productList: Product[];
 }
+
+export interface ThemeContextType {
+  theme: string;
+  setTheme: (theme: string) => void;
+}

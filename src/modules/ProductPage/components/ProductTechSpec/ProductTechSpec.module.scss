@@ -24,10 +24,11 @@
 .aboutTitle {
   @extend %h3-mobile;
 
+  color: var(--color-primary);
   font-family: "Mont Regular", sans-serif;
 
   padding-bottom: 1.6rem;
-  border-bottom: 1px solid $color-elements;
+  border-bottom: 1px solid var(--color-elements);
 
 
   @include on-tablet {
@@ -48,12 +49,13 @@
 .productInfoItem {
   @extend %text-small;
 
+  color: var(--color-primary);
   font-family: 'Mont Regular', sans-serif;
   display: flex;
   justify-content: space-between;
 
   & :first-child {
-    color: $color-secondary;
+    color: var(--color-secondary);
     margin-right: auto;
   }
 }

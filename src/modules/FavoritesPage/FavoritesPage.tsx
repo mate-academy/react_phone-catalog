@@ -17,7 +17,9 @@ export const FavoritesPage = () => {
 
   return (
     <section className={styles.favoritesPageWrapper}>
-      <Breadcrumbs productList={favouriteProducts} />
+      <div className={styles.breadCrumbsContainer}>
+        <Breadcrumbs productList={favouriteProducts} />
+      </div>
       <div className={styles.favoritesPageContainer}>
         <h1 className={styles.title}>Favorites</h1>
         <p className={styles.categoryNumModels}>{numOfProductsTitle}</p>

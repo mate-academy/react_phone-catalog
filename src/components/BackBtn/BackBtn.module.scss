@@ -8,23 +8,17 @@
   align-items: center;
   width: max-content;
 
-  color: $color-secondary;
+  color: var(--color-secondary);
   cursor: pointer;
 
   margin-bottom: 1.6rem;
-
-  &:hover {
-    color: $color-primary;
-  }
 }
 
 .arrowLeft {
   display: inline-block;
   min-width: 1.6rem;
   height: 1.6rem;
-  background-image: url("../../assets/icons/arrow-left.svg");
-  background-size: contain;
-  background-position: 10%;
+  fill: var(--color-primary);
 }
 
 .backText {
@@ -32,8 +26,24 @@
 
   text-decoration: none;
   font-family: 'Mont Regular', sans-serif;
+  color: var(--color-text-back-secondary);
   line-height: 1;
   padding-top: 2px;
-  color: inherit;
   margin-left: 4px;
+
+  &:hover {
+    color: var(--color-primary);
+  }
+}
+
+[data-theme = 'light'] {
+  & .backText {
+    --color-text-back-secondary: #89939A;
+  }
+}
+
+[data-theme = 'dark'] {
+  & .backText {
+    --color-text-back-secondary: #F1F2F9;
+  }
 }

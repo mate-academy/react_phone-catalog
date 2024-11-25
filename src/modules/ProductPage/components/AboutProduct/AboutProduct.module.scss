@@ -24,10 +24,11 @@
 .aboutTitle {
   @extend %h3-mobile;
 
+  color: var(--color-primary);
   font-family: "Mont Regular", sans-serif;
 
   padding-bottom: 1.6rem;
-  border-bottom: 1px solid $color-elements;
+  border-bottom: 1px solid var(--color-elements);
 
 
   @include on-tablet {
@@ -46,6 +47,7 @@
 .descriptionTitle {
   @extend %h4-mobile;
 
+  color: var(--color-primary);
   font-family: "Mont Regular", sans-serif;
 
   @include on-tablet {
@@ -60,5 +62,5 @@
 
   text-align: justify;
 
-  color: $color-secondary;
+  color: var(--color-secondary);
 }

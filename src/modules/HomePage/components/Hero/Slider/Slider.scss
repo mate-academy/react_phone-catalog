@@ -63,7 +63,7 @@
   &::after {
     content: '';
     position: absolute;
-    background-color: $color-elements;
+    background-color: var(--color-elements);
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -73,7 +73,7 @@
 }
 
 .heroSlider .swiper-pagination-bullet-active::after {
-  background-color: $color-primary;
+  background-color: var(--color-primary);
 }
 
 .heroSlider .swiper-button-prev {
@@ -88,7 +88,7 @@
     mask: url("/src/assets/icons/arrow-left.svg");
     height: 1.6rem;
     width: 1.6rem;
-    background-color: $color-primary;
+    background-color: var(--color-primary);
   }
 }
 
@@ -104,7 +104,7 @@
     mask: url("/src/assets/icons/arrow-right.svg");
     height: 1.6rem;
     width: 1.6rem;
-    background-color: $color-primary;
+    background-color: var(--color-primary);
   }
 }
 
@@ -116,10 +116,10 @@
   border-radius: 4.8rem;
   width: 3rem;
   height: var(--height);
-  border: 1px solid $color-icons;
+  border: 1px solid var(--color-icons);
 
   &::after {
-    color: $color-primary;
+    color: var(--color-primary);
     font-size: 1.2rem;
   }
 

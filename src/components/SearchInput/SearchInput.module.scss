@@ -1,6 +1,7 @@
 @import 'src/styles/colors';
 @import 'src/styles/mixins';
 @import 'src/styles/typography';
+@import 'src/styles/buttons';
 
 .searchInputContainer {
   position: absolute;
@@ -10,12 +11,10 @@
   width: 0;
   overflow: hidden;
   right: 0;
-  background-color: $color-white;
   height: 100%;
   transition: all $transition-duration ease-out;
 
   @include on-m-desktop{
-    position: relative;
     height: 6.4rem;
     margin-left: 2.4rem;
   }
@@ -24,21 +23,19 @@
     width: 100%;
 
     @include on-tablet {
-      box-shadow: -1px 0 0 0 $color-elements;
+      box-shadow: -1px 0 0 0 var(--color-elements);
       right: 9.8rem;
       width: calc(100% - 19.4rem);
     }
 
     @include on-m-desktop {
-      right: 0;
+      right: 13rem;
       width: calc(100% - 73rem);
     }
   }
 }
 
 .btnSearch {
-  margin-left: auto;
-
   @include on-m-desktop{
     position: absolute;
     right: 13rem;
@@ -46,6 +43,8 @@
 }
 
 .btnCloseSearch{
+  @extend %button;
+
   position: absolute;
   right: 0;
   box-shadow: none;
@@ -58,12 +57,13 @@
   box-sizing: border-box;
   height: 100%;
   width: 100%;
+  background-color: var(--color-white);
 
   outline: none;
   font-size: 1.6rem;
-  color: $color-primary;
+  color: var(--color-primary);
   border: none;
-  caret-color: $color-secondary;
+  caret-color: var(--color-secondary);
   padding: 2.2rem 4.8rem 2rem 1.6rem;
 
   @include on-tablet {
@@ -72,10 +72,10 @@
 
   &::placeholder {
     font-size: inherit;
-    color: $color-secondary;
+    color: var(--color-secondary);
   }
 
   &CaretActive {
-    caret-color: $color-primary;
+    caret-color: var(--color-primary);
   }
 }

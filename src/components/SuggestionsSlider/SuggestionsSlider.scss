@@ -92,7 +92,7 @@
   width: 3.2rem;
   height: 3.2rem;
   border-radius: 50%;
-  border: 1px solid $color-primary;
+  border: 1px solid var(--color-primary);
   left: auto;
   margin-top: -1.65rem;
 
@@ -100,6 +100,6 @@
     content: '';
     height: 1.6rem;
     width: 1.6rem;
-    background-color: $color-primary;
+    background-color: var(--color-primary);
   }
 }

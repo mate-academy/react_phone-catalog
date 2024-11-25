@@ -4,7 +4,7 @@
   display: flex;
   flex-direction: column;
   gap: 2.4rem;
-  background-color: $color-background;
+  background-color: var(--color-background);
 
   @include on-tablet {
     display: none;
@@ -40,21 +40,23 @@
 
 .mobileMenuBottomBtn {
   position: relative;
-  border: 1px solid $color-elements;
+  border-top: 1px solid var(--color-elements);
   width: 50%;
   height: 6.4rem;
   border-bottom: 2px solid transparent;
 
   &:hover {
-    border-bottom: 2px solid $color-text-hover-secondary;
+    border-bottom: 2px solid var(--color-text-hover-secondary);
   }
 
   &Active {
 
     &:hover {
-      border-bottom: 2px solid $color-text-hover;
+      border-bottom:  2px solid var(--color-text-hover);
     }
 
-    border-bottom: 2px solid $color-text-hover;
+    border-bottom: 2px solid var(--color-text-hover);
   }
 }
+
+

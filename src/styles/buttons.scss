@@ -4,12 +4,13 @@
 
 %button {
   background-position: center;
-  background-color: $color-white;
+  background-color: var(--color-white);
   background-repeat: no-repeat;
   background-size: 1.6rem;
   cursor: pointer;
+  text-align: center;
 
-  box-shadow: -1px 0 0 0 $color-elements;
+  box-shadow: -1px 0 0 0 var(--color-elements);
 
 
   width: 4.8rem;
@@ -20,57 +21,44 @@
     height: 6.4rem;
     width: 6.4rem;
   }
-}
 
-.buttonMenu {
-  @extend %button;
+  & svg {
+    fill: var(--color-primary);
+    height: 100%;
+    pointer-events: none;
 
-  background-image: url("../assets/icons/menu.svg");
+  }
 }
 
 .buttonSearch {
   @extend %button;
 
-  box-shadow: -1px 0 0 0 $color-elements, 1px 0 0 0 $color-elements;
-  background-image: url("../assets/icons/find.svg");
-}
-
-.buttonClose {
-  @extend %button;
-
-  background-image: url("../assets/icons/close.svg");
+  fill-rule: evenodd;
+  box-shadow: -1px 0 0 0 var(--color-elements);
 }
 
 .buttonFavourite {
   @extend %button;
 
   position: relative;
-  background-image: url("../assets/icons/favourites.svg");
-
+  display: flex;
+  justify-content: center;
 }
 
 .buttonCart {
   @extend %button;
-
-  background-image: url("../assets/icons/cart.svg");
-}
-
-.buttonArrowUp {
-  @extend %button;
-
-  background-image: url("../assets/icons/arrow-up.svg");
 }
 
 .btnCart {
   @extend %text-buttons;
 
   width: 100%;
-  background-color: $color-accent;
+  background-color: var(--color-accent);
   border-radius: 4.8rem;
   padding-block: 1.05rem 0.85rem;
   cursor: pointer;
-  border: 1px solid $color-accent;
-  color: $color-white;
+  border: 1px solid var(--color-accent);
+  color: var(--color-text-btn);
   padding-inline: 0;
   transition: box-shadow $transition-duration ease-out;
 
@@ -86,9 +74,9 @@
 
 
   &Pressed {
-    color: $color-accent;
-    background-color: $color-white;
-    border: 1px solid $color-elements;
+    color: var(--color-text-cart-pressed);
+    background-color: var(--color-white);
+    border: 1px solid var(--color-elements);
 
 
     @include on-tablet {
@@ -111,21 +99,25 @@
 
   border-radius: 50%;
 
-  border: 1px solid $color-icons;
+  border: 1px solid var(--color-icons);
 
   @include on-tablet {
     &:hover {
-      border: 1px solid $color-primary;
+      border: 1px solid var(--color-primary);
     }
   }
 
   &Pressed {
-    border: 1px solid $color-elements;
-    background-image: url("../assets/icons/favourites_filled.svg");
+
+    & svg {
+      fill: var(--color-secondary-accent);
+    }
+
+    border: 1px solid var(--color-elements);
 
     @include on-tablet {
       &:hover {
-        border: 1px solid $color-secondary-accent;
+        border: 1px solid var(--color-secondary-accent);
       }
     }
   }
@@ -143,7 +135,7 @@
   font-weight: 700;
   justify-content: center;
   align-items: center;
-  color: $color-white;
+  color: var(--color-text-num-of-products);
   font-size: 9px;
   line-height: 1.15rem;
   position: absolute;
@@ -154,8 +146,8 @@
   padding: 1.5px 1.5px 0;
   min-height: 1.6rem;
   aspect-ratio: 1;
-  border: 1px solid $color-white;
-  background-color: $color-accent;
+  border: 1px solid var(--color-white);
+  background-color: var(--color-num-of-products);
 }
 
 .ctaBtn {
@@ -163,7 +155,7 @@
 
   cursor: pointer;
   border-radius: 4.8rem;
-  background-color: $color-white;
+  background-color: var(--color-white);
   display: block;
   margin-inline: auto;
   max-width: 15rem;
@@ -183,8 +175,8 @@
   @include on-tablet {
     padding-block: 1.05rem 0.85rem;
     font-size: 1.6rem;
-    color: $color-secondary;
-    border: 1.5px solid $color-secondary;
+    color: var(--color-secondary);
+    border: 1.5px solid var(--color-secondary);
     box-shadow: none;
     margin-bottom: 1.6rem;
 

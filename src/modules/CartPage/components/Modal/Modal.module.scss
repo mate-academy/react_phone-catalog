@@ -46,8 +46,8 @@
   opacity: 0;
   padding: 2.4rem 1.6rem;
   width: max-content;
-  background-color: $color-background;
-  border: 2px solid $color-elements;
+  background-color: var(--color-background);
+  border: 2px solid var(--color-elements);
   box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.3);
   border-radius: 2.4rem;
   text-align: center;
@@ -91,7 +91,7 @@
 .modalText {
   @extend %h3;
 
-  color: $color-text-hover;
+  color: var(--color-text-hover);
   font-size: 1.2rem;
   line-height: 2.1rem;
   margin-bottom: 1.6rem;
@@ -146,7 +146,7 @@
 }
 
 .btnCancel {
-  background-color: $color-white;
+  background-color: var(--color-white);
 
   color: $color-cta-text-gold;
   border: 2px solid $color-cta-gold;

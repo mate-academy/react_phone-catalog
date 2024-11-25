@@ -23,11 +23,9 @@
 
   position: relative;
   text-decoration: none;
-  color: $color-secondary;
+  color: var(--color-secondary);
 
   padding-block: 0.8rem;
-
-  transition: all $transition-duration ease-out;;
 
   @include on-tablet {
     padding-block: 1.85rem;
@@ -43,7 +41,7 @@
     bottom: 0;
     width: 0;
     height: 2px;
-    background-color: $color-text-hover-secondary;
+    background-color: var(--color-text-hover-secondary);
     transition: width $transition-duration ease-out;
   }
 
@@ -56,7 +54,7 @@
   }
 
   &:hover {
-    color: $color-text-hover-secondary;
+    color: var(--color-text-hover-secondary);
 
     &::before, &::after {
       width: 50%;
@@ -65,23 +63,23 @@
 }
 
 .activeLink {
-  color: $color-text-hover;
+  color: var(--color-text-hover);
 
   @include on-tablet {
     pointer-events: none;
   }
 
   &:hover {
-    color: $color-text-hover;
+    color: var(--color-text-hover);
   }
 
 
   &::before, &::after {
     width: 50%;
-    background-color: $color-text-hover;
+    background-color: var(--color-text-hover);
 
     &:hover {
-      background-color: $color-text-hover;
+      background-color: var(--color-text-hover);
     }
   }
 }

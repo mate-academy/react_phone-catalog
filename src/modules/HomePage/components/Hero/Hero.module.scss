@@ -1,5 +1,6 @@
 @import "src/styles/typography";
 @import "src/styles/mixins";
+@import "src/styles/colors";
 
 .heroContainer {
   display: flex;
@@ -19,6 +20,7 @@
 .heroTitle {
   @extend %h1-mobile;
 
+  color: var(--color-primary);
   font-size: 3rem;
   margin: 2.4rem 1.6rem;
 

@@ -2,12 +2,13 @@
 @import "src/styles/typography";
 @import "src/styles/colors";
 @import "src/styles/variables";
+@import "src/styles/buttons";
 
 .footerContainer {
   padding: 3.2rem 1.6rem;
 
-  background-color: $color-white;
-  box-shadow: 0 -1px 0 0 $color-elements;
+  background-color: var(--color-header-footer);
+  box-shadow: 0 -1px 0 0 var(--color-elements);
 
   @include on-tablet {
     padding: 3.2rem 2.4rem;
@@ -20,6 +21,14 @@
   @include on-l-desktop {
     padding: 3.2rem 0;
   }
+}
+
+[data-theme = 'light'] .footerContainer {
+  --color-text: #89939A;
+}
+
+[data-theme = 'dark'] .footerContainer {
+  --color-text: #F1F2F9;
 }
 
 .contentWrapper {
@@ -48,6 +57,17 @@
   display: flex;
   height: 3.2rem;
   width: 8.9rem;
+
+  background-image: url("../../assets/icons/ok.png");
+  background-repeat: no-repeat;
+  background-position: 4rem 0;
+  background-size: 1.22rem 1.67rem;
+
+  & svg {
+    height: 100%;
+
+    fill: var(--color-primary);
+  }
 }
 
 .reachMeContainer {
@@ -76,12 +96,12 @@
 .reachMeItem {
   @extend %text-uppercase;
 
-  color: $color-secondary;
+  color: var(--color-text);
   text-decoration: none;
   width: min-content;
 
   &:hover {
-    color: $color-primary;
+    color: var(--color-primary);
   }
 }
 
@@ -94,16 +114,22 @@
   display: flex;
   align-items: center;
   gap: 1.6rem;
-
+  color: var(--color-text);
   text-decoration: none;
-  color: $color-secondary;
 
-  &:hover {
-    color: $color-primary;
+  & svg {
+    fill: var(--color-text);
+  }
+
+
+
+  &:hover, &:hover svg {
+    color: var(--color-primary);
+    fill: var(--color-primary);
   }
 
   &:hover > button {
-    border-color: $color-primary;
+    border-color: var(--color-primary);
   }
 
   @include on-tablet {
@@ -113,14 +139,15 @@
 }
 
 .toTopBtn {
-  box-shadow: none;
+  @extend %button;
 
+  box-shadow: none;
   width: 3.2rem;
   height: 3.2rem;
-  border: 1px solid $color-icons;
+  border: 1px solid var(--color-text);
   border-radius: 50%;
 
   &:hover {
-    border-color: $color-primary;
+    border-color: var(--color-primary);
   }
 }

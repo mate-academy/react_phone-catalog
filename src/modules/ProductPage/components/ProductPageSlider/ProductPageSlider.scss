@@ -83,7 +83,7 @@
     margin: 0 !important;
     height: 5.2rem;
     opacity: 0.4;
-    border: 1px solid $color-elements;
+    border: 1px solid var(--color-elements);
     overflow: hidden;
 
     border-radius: 0.4rem;
@@ -101,7 +101,7 @@
 
   .swiper-slide-thumb-active {
     opacity: 1;
-    border: 1px solid $color-primary;
+    border: 1px solid var(--color-primary);
   }
 
   .swiper-slide img {

@@ -36,37 +36,28 @@
   align-items: center;
 
   background-color: transparent;
-  background-position: center;
-  background-repeat: no-repeat;
-  border: 1px solid $color-icons;
-
-  & svg {
-    fill: $color-primary;
-  }
-
+  border: 1px solid var(--color-icons);
+  fill: var(--color-primary);
 
   &Prev {
-    background-image: url("../../assets/icons/arrow-left.svg");
     margin-right: 0.8rem;
-
-    &:disabled {
-      background-image: url("../../assets/icons/arrow-left-gray.svg");
-    }
   }
+
 
   &Next {
-    background-image: url("../../assets/icons/arrow-right.svg");
     margin-left: 0.8rem;
+  }
 
+  &Prev, &Next {
     &:disabled {
-      background-image: url("../../assets/icons/arrow-right-gray.svg");
+      fill: var(--color-icons);
     }
   }
+
 
   &:disabled {
     pointer-events: none;
-    border: 1px solid $color-elements;
-
+    border: 1px solid var(--color-elements);
   }
 }
 
@@ -77,19 +68,19 @@
   width: 3.2rem;
   height: 3.2rem;
 
-  color: $color-primary;
-  border: 1px solid $color-elements;
+  color: var(--color-primary);
+  border: 1px solid var(--color-elements);
   border-radius: 50%;
   cursor: pointer;
 
   &IsActive {
-    background-color: $color-primary;
-    color: $color-white;
+    background-color: var(--color-primary);
+    color: var(--color-white);
   }
 
   @include on-tablet {
     &:hover {
-      border: 1px solid $color-primary;
+      border: 1px solid var(--color-primary);
     }
   }
 

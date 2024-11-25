@@ -1,5 +1,5 @@
 import { useLocation, useParams } from 'react-router-dom';
-import { useContext, useMemo } from 'react';
+import { useContext, useEffect, useState } from 'react';
 
 import { ProductListContext } from '../../ContextProvider';
 
@@ -16,20 +16,40 @@ import { ProductTechSpec } from './components/ProductTechSpec';
 import styles from './ProductPage.module.scss';
 import { getPrevPath } from '../../utils/getPrevPath';
 import { ProductNotFound } from './components/ProductNotFound';
-import { Breadcrumbs } from '../../components/Breadcrumbs';
+import { Product } from '../../types/Product';
+import { ProductType } from '../../types/ProductType';
+import { getProducts } from '../../utils/getProducts';
+import { FetchDataType } from '../../types/FetchDataType';
 
 export const ProductPage = () => {
+  const [suggestedProducts, setSuggestedProducts] = useState<Product[]>([]);
+  // const [error, setError] = useState('');
+
   const { state, pathname } = useLocation();
   const { productId: id = '' } = useParams();
   const { productList } = useContext(ProductListContext);
-
-  const suggestedProducts = useMemo(getSuggestedProducts, [pathname]);
 
   const prevPath = getPrevPath(pathname);
 
   const { search, pathname: path } = state ?? { search: '', pathname: '' };
 
   const product = productList.find(item => item.id === id);
+
+  useEffect(() => {
+    if (product) {
+      const fetchCategories = Object.keys(ProductType).filter(
+        category => category !== product?.category,
+      ) as FetchDataType[];
+
+      Promise.all(fetchCategories.map(category => getProducts(category))).then(
+        ([productList1, productList2]) =>
+          setSuggestedProducts(
+            getSuggestedProducts(productList, productList1, productList2),
+          ),
+      );
+      // .catch(e => setError(e))
+    }
+  }, [product?.namespaceId]);
 
   if (!product) {
     return <ProductNotFound path={path} prevPath={prevPath} search={search} />;
@@ -40,7 +60,6 @@ export const ProductPage = () => {
   return (
     <>
       <section className={styles.container}>
-        <Breadcrumbs productList={productList} />
         <BackBtn path={path} prevPath={prevPath} search={search} />
         <h2 className={styles.productTitle}>{name}</h2>
         <ProductPageSlider productName={name} images={images} />

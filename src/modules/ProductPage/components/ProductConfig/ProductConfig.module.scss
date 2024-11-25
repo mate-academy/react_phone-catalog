@@ -35,7 +35,7 @@
 
   padding-bottom: 2.4rem;
   margin-bottom: 2.4rem;
-  border-bottom: 1px solid $color-elements;
+  border-bottom: 1px solid var(--color-elements);
 
   @include on-m-desktop {
     position: static;
@@ -46,12 +46,12 @@
   @extend %text-small;
 
   font-family: 'Mont Regular', sans-serif;
-  color: $color-secondary;
+  color: var(--color-secondary);
 }
 
 .randomID {
   position: absolute;
-  color: $color-icons;
+  color: var(--color-icons);
   right: 0;
 
   @include on-m-desktop {
@@ -72,7 +72,7 @@
   cursor: pointer;
   display: inline-block;
   padding: 2px;
-  border: 1px solid $color-elements;
+  border: 1px solid var(--color-elements);
   height: 3.2rem;
   width: 3.2rem;
   border-radius: 50%;
@@ -90,11 +90,11 @@
     display: inline-block;
     height: 3rem;
     width: 3rem;
-    border: 2px solid $color-white;
+    border: 2px solid var(--color-white);
   }
 
   &IsActive {
-    border: 1px solid $color-primary;
+    border: 1px solid var(--color-primary);
     cursor: auto;
   }
 
@@ -150,7 +150,7 @@
     background-color: $color-phones-purple;
 
     &.colorIsActive {
-      border-color:$color-phones-purple-shade;
+      border-color: $color-phones-purple-shade;
     }
   }
 
@@ -199,7 +199,7 @@
     background-color: $color-phones-green;
 
     &.colorIsActive {
-      border-color:  $color-phones-green-shade;
+      border-color: $color-phones-green-shade;
     }
   }
 
@@ -207,7 +207,7 @@
     background-color: $color-phones-spacegray;
 
     &.colorIsActive {
-      border-color:  $color-phones-spacegray;
+      border-color: $color-phones-spacegray;
     }
   }
 
@@ -215,7 +215,7 @@
     background-color: $color-phones-midnightgreen;
 
     &.colorIsActive {
-      border-color:  $color-phones-midnightgreen;
+      border-color: $color-phones-midnightgreen;
     }
   }
 
@@ -223,7 +223,7 @@
     background-color: $color-phones-silver;
 
     &.colorIsActive {
-      border-color:  $color-phones-silver-shade;
+      border-color: $color-phones-silver-shade;
     }
   }
 
@@ -231,7 +231,7 @@
     background-color: $color-phones-coral;
 
     &.colorIsActive {
-      border-color:  $color-phones-coral;
+      border-color: $color-phones-coral;
     }
   }
 
@@ -239,7 +239,7 @@
     background-color: $color-phones-rosegold;
 
     &.colorIsActive {
-      border-color:  $color-phones-rosegold-shade;
+      border-color: $color-phones-rosegold-shade;
     }
   }
 
@@ -247,7 +247,7 @@
     background-color: $color-tablets-spacegray;
 
     &.colorIsActive {
-      border-color:  $color-tablets-spacegray;
+      border-color: $color-tablets-spacegray;
     }
   }
 
@@ -358,19 +358,19 @@
   justify-content: center;
   align-items: center;
   border-radius: 0.4rem;
-  color: $color-primary;
+  color: var(--color-primary);
   width: 6.5rem;
   height: 3.2rem;
   padding-inline: 0.8rem;
   line-height: 1;
   padding-top: 0.2rem;
-  border: 1px solid $color-icons;
+  border: 1px solid var(--color-icons);
 
   &IsActive {
     cursor: default;
-    background-color: $color-primary;
-    color: $color-white;
-    border: 1px solid $color-primary;
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    border: 1px solid var(--color-primary);
   }
 }
 
@@ -386,6 +386,8 @@
 .price {
   @extend %h2;
 
+  color: var(--color-primary);
+
   &Discount {
     @extend %mont-regular;
 
@@ -393,7 +395,7 @@
     font-weight: 500;
     font-size: 2.2rem;
     line-height: 2.81rem;
-    color: $color-secondary;
+    color: var(--color-secondary);
     z-index: 0;
 
     &::after {
@@ -404,9 +406,13 @@
       content: '';
       z-index: 0;
       width: 100%;
-      border-top: 1px solid $color-secondary;
+      border-top: 1px solid var(--color-secondary);
     }
   }
+}
+
+[data-theme="dark"] .priceDiscount::after {
+  mix-blend-mode: color-burn;
 }
 
 .btnContainer {
@@ -428,12 +434,13 @@
 .productInfoItem {
   @extend %text-small;
 
+  color: var(--color-primary);
   font-family: 'Mont Regular', sans-serif;
   display: flex;
   justify-content: space-between;
 
   & :first-child {
-    color: $color-secondary;
+    color: var(--color-secondary);
     margin-right: auto;
   }
 }

@@ -53,6 +53,7 @@
 .title {
   @extend %h1-mobile;
 
+  color: var(--color-primary);
   grid-column: 1 / -1;
   margin-bottom: 0.8rem;
 
@@ -66,7 +67,7 @@
   @extend %text-body;
 
   grid-column: 1 / -1;
-  color: $color-secondary;
+  color: var(--color-secondary);
   margin-bottom: 3.2rem;
 
   @include on-tablet {
@@ -121,7 +122,7 @@
     width: 100%;
     font-size: 1.2rem;
 
-    color: $color-background;
+    color: #F1F2F9;
 
     @include on-tablet {
       font-size: 1.4rem;
@@ -141,7 +142,7 @@
   @extend %h3;
 
   grid-column: 1 / -1;
-  color: $color-secondary;
+  color: var(--color-secondary);
   text-align: center;
   font-size: 1.4rem;
   line-height: 2.1rem;

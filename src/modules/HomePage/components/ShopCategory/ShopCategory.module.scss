@@ -9,7 +9,7 @@
   padding-inline: 1.6rem;
   grid-template-columns: repeat(4, 1fr);
   gap: 2.4rem 1.6rem;
-
+  color: var(--color-primary);
 
   margin-bottom: 5.6rem;
 
@@ -82,6 +82,7 @@
   display: flex;
   margin-bottom: 2.4rem;
   border-radius: 0.8rem;
+  overflow: hidden;
 
   &1{
     background: linear-gradient(180deg, rgb(80 93 173), rgb(125 142 209) 70%, rgb(174 188 230));
@@ -121,5 +122,5 @@
 .categoryNumModels {
   @extend %text-body;
 
-  color: $color-secondary;
+  color: var(--color-secondary);
 }

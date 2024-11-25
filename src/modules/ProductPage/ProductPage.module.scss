@@ -26,6 +26,7 @@
 .productTitle {
   @extend %h2-mobile;
 
+  color: var(--color-primary);
   grid-column: 1/-1;
   margin-bottom: 3.2rem;
 

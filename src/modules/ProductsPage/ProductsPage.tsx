@@ -18,9 +18,11 @@ import { ItemsPerPage } from '../../types/ItemsPerPage';
 import { useDebounce } from '../../hooks/useDebounce';
 import { getProducts } from '../../utils/getProducts';
 import { FetchDataType } from '../../types/FetchDataType';
+import { Breadcrumbs } from '../../components/Breadcrumbs';
 
 export const ProductsPage = () => {
   const [productList, setProductList] = useState<Product[]>([]);
+  const [loading, setLoading] = useState(true);
   // const [error, setError] = useState('');
 
   const [searchParams] = useSearchParams();
@@ -47,9 +49,9 @@ export const ProductsPage = () => {
   const debouncedQuery = useDebounce(query);
 
   useEffect(() => {
-    getProducts(productType).then(res => {
-      setProductList(res);
-    });
+    getProducts(productType)
+      .then(setProductList)
+      .finally(() => setTimeout(() => setLoading(false)));
     // .catch(e => setError(e));
   }, [productType]);
 
@@ -75,8 +77,11 @@ export const ProductsPage = () => {
       ? '1 model'
       : `${filteredProductList.length} models`;
 
-  return (
+  return loading ? (
+    <p>Loading</p>
+  ) : (
     <section className={styles.productsPageWrapper}>
+      <Breadcrumbs productList={productList} />
       {productId ? (
         <ProductListContext.Provider value={{ productList }}>
           <Outlet />
