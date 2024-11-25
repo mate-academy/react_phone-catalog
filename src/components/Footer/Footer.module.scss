@@ -136,6 +136,8 @@
 .toTopBtn {
   @extend %button;
 
+  display: flex;
+  justify-content: center;
   box-shadow: none;
   width: 3.2rem;
   height: 3.2rem;
@@ -143,9 +145,8 @@
   border-radius: 50%;
 
   & svg {
-    background-color: blue;
+    background-color: green;
     display: block;
-    margin-inline: auto;
     fill: var(--color-text);
   }
 
