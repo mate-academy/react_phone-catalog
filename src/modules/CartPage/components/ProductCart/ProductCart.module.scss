@@ -43,7 +43,6 @@
 
 .topWrapper {
   display: flex;
-  gap: 1.6rem;
 
   @include on-tablet {
     gap: 2.4rem;
@@ -71,11 +70,10 @@
   text-align: center;
   align-self: center;
   padding: 0;
-  height: 1.6rem;
-  width: 1.6rem;
+  height: 3.2rem;
+  min-width: 3rem;
 
   & svg{
-    margin-left: 1.6rem;
     min-width: 1.6rem;
   }
 
@@ -83,6 +81,9 @@
   cursor: pointer;
 
   @include on-tablet {
+    height: 1.6rem;
+    min-width: 1.6rem;
+
     &:hover {
       fill: var(--color-primary);
     }

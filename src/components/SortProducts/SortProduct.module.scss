@@ -66,12 +66,13 @@
 
   &IsActive {
     background-color: var(--color-sort-btn-active);
+    border: 1px solid var(--color-sort-btn-focus);
 
     & svg {
       transform: translateY(-50%) rotate(180deg);
+      fill: var(--color-sort-arrow-hover)
     }
   }
-
 
   &:hover {
     border: 1px solid var(--color-secondary);
@@ -81,11 +82,11 @@
     }
   }
 
-  &:focus {
+  &IsActive:hover {
     border: 1px solid var(--color-sort-btn-focus);
 
-    & svg{
-      fill: var(--color-sort-arrow-hover);
+    & svg {
+      fill: var(--color-sort-arrow-hover)
     }
   }
 }
