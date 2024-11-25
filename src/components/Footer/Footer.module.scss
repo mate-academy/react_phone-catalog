@@ -113,13 +113,12 @@
 
   display: flex;
   align-items: center;
-  justify-content: center;
+  text-align: center;
   gap: 1.6rem;
   color: var(--color-text);
   text-decoration: none;
 
   & svg {
-    width: max-content;
     fill: var(--color-text);
   }
 
