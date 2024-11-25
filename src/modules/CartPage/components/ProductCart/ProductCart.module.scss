@@ -109,7 +109,9 @@
 }
 
 .btnCounter {
-  display: inline-block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
   width: 3.2rem;
   height: 3.2rem;
@@ -128,13 +130,6 @@
     &:hover {
       border: 1px solid var(--color-primary);
     }
-  }
-
-  &::after {
-    content: '';
-    height: 1.6rem;
-    width: 1.6rem;
-    background-color: var(--color-primary);
   }
 
   &:disabled {
