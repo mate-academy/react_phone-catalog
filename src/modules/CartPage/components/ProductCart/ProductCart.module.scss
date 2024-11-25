@@ -70,10 +70,11 @@
   border: none;
   text-align: center;
   align-self: center;
-  height: 3.2rem;
-  width: 3.2rem;
+  height: 1.6rem;
+  width: 1.6rem;
 
   & svg{
+    margin-left: 1.6rem;
     min-width: 1.6rem;
   }
 
