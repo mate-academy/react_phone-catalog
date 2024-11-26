@@ -1,18 +1,20 @@
-@import '../../scss/main';
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+:root {
+  --swiper-pagination-color: #0f0f11;
+  --swiper-pagination-bullet-width: 14px;
+  --swiper-pagination-bullet-height: 4px;
+  --swiper-pagination-bullet-border-radius: 0;
+  --swiper-pagination-bullet-inactive-color: #828587;
 }
 
-.hidden {
-  display: none;
-}
+.App {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 
-body {
-  background: $white;
-  color: $primary;
-  font-family: Mont, sans-serif;
-
+  &__content {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    flex: 1;
+  }
 }
