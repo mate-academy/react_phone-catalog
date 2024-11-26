@@ -64,6 +64,18 @@
   transform: scale(110%);
 }
 
+@mixin responsive-property($property, $mobile, $tablet, $desktop) {
+  #{$property}: $mobile;
+
+  @include on-tablet {
+    #{$property}: $tablet;
+  }
+
+  @include on-desktop {
+    #{$property}: $desktop;
+  }
+}
+
 @mixin h1-desktop-tablet {
   font-weight: 700;
   font-size: 48px;

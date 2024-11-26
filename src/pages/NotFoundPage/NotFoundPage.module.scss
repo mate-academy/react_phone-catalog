@@ -1,4 +1,4 @@
-@use "../../utils/mixins" as mixin;
+@use "../../utils//mixins" as mixin;
 @use "../../utils/variables" as var;
 
 .error {
@@ -11,6 +11,8 @@
   &__text {
     color: var.$red;
     font-size: 24px;
+
+    @include mixin.h3-desktop-tablet;
   }
 
   &__button {

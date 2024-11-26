@@ -22,11 +22,13 @@ export const ProductSlider: React.FC<Props> = ({ products, title }) => {
   const updateVisibleCards = useCallback(() => {
     const width = window.innerWidth;
 
-    if (width < 340) {
+    if (width < 390) {
+      setVisibleCards(1);
+    } else if (width < 640) {
       setVisibleCards(2);
-    } else if (width < 520) {
+    } else if (width < 820) {
       setVisibleCards(3);
-    } else if (width < 870) {
+    } else if (width < 900) {
       setVisibleCards(4);
     } else {
       setVisibleCards(6);

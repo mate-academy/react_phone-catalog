@@ -1,4 +1,4 @@
-const BASE_URL = `http://localhost:5173`;
+export const BASE_URL = `https://martachobaniuk.github.io/react_phone-catalog/`;
 
 const handleResponse = (response: Response) => {
   if (!response.ok) {

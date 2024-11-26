@@ -3,15 +3,8 @@
 
 .product-slider {
   &__container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-left: 16px;
-    margin-bottom: 20px;
-
-    @include mixin.on-desktop {
-      margin-bottom: 24px;
-    }
+    @include mixin.flex(flex, center, space-between, false);
+    @include mixin.responsive-property(margin-bottom, 16px, 24px, 32px);
   }
 
   &__buttons {
@@ -21,10 +14,10 @@
   }
 
   &__title {
-    @include mixin.h2-mobile;
-
     color: var.$primary-gray;
     text-align: center;
+
+    @include mixin.h2-mobile;
 
     @include mixin.on-tablet {
       @include mixin.h2-desktop-tablet;
@@ -67,15 +60,8 @@
 
   &__container {
     grid-column: 1/-1;
-    margin: 0 0 20px 16px;
 
-    @include mixin.on-tablet {
-      margin: 0 0 32px 16px;
-    }
-
-    @include mixin.on-desktop {
-      margin: 0 0 40px 16px;
-    }
+    @include mixin.responsive-property(margin-bottom, 32px, 32px, 40px);
   }
 
   &__list {
@@ -87,17 +73,5 @@
 
   &__item {
     border: solid 1px var.$elements;
-
-    @include mixin.on-mobile {
-      @include mixin.sizes(212px, 439px);
-    }
-
-    @include mixin.on-tablet {
-      @include mixin.sizes(237px, 512px);
-    }
-
-    @include mixin.on-desktop {
-      @include mixin.sizes(272px, 506px);
-    }
   }
 }

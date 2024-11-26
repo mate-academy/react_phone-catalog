@@ -1,0 +1,32 @@
+@use "../../utils/mixins" as mixin;
+@use "../../utils/variables" as var;
+
+.details {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+
+  &__container {
+    @include mixin.responsive-property(padding-top, 20px, 24px, 32px);
+    @include mixin.responsive-property(padding-left, 20px, 24px, 32px);
+    @include mixin.responsive-property(padding-bottom, 24px, 32px, 64px);
+  }
+
+  &__breadcrumbs {
+    display: flex;
+    justify-content: flex-start;
+
+    @include mixin.responsive-property(margin-bottom, 20px, 24px, 32px);
+    @include mixin.responsive-property(padding-right, 20px, 24px, 32px);
+  }
+
+  &__gadget {
+    @include mixin.responsive-property(margin-bottom, 20px, 24px, 32px);
+    @include mixin.responsive-property(padding-right, 20px, 24px, 32px);
+  }
+
+  &__desc {
+    @include mixin.responsive-property(margin-bottom, 20px, 24px, 32px);
+    @include mixin.responsive-property(padding-right, 20px, 24px, 32px);
+  }
+}

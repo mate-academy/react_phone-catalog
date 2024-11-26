@@ -3,11 +3,11 @@
 
 .category {
   &__title {
-    @include mixin.h2-mobile;
-
     color: var.$primary-gray;
     text-align: left;
-    margin: 0 16px 20px;
+
+    @include mixin.responsive-property(margin-bottom, 32px, 32px, 40px);
+    @include mixin.h2-mobile;
 
     @include mixin.on-tablet {
       @include mixin.h2-desktop-tablet;
@@ -15,21 +15,13 @@
 
     @include mixin.on-desktop {
       @include mixin.h2-desktop-tablet;
-
-      margin-bottom: 24px;
     }
   }
 
   &__container {
     @include mixin.grid;
-
-    @include mixin.on-mobile {
-      margin: 0 16px 20px;
-    }
-
-    @include mixin.on-desktop {
-      margin: 0 16px 24px;
-    }
+    @include mixin.responsive-property(margin-bottom, 32px, 32px, 40px);
+    @include mixin.responsive-property(margin-right, 20px, 24px, 32px);
   }
 
   &__link {

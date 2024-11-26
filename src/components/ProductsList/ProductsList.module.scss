@@ -2,29 +2,23 @@
 @use "../../utils/variables" as var;
 
 .product-list {
+  margin: 0 auto;
   display: grid;
+  gap: 16px;
 
   @include mixin.on-mobile {
-    max-width: 287px;
     grid-template-columns: repeat(1, 1fr);
-    row-gap: 16px;
   }
 
   @include mixin.on-tablet {
-    max-width: 640px;
     grid-template-columns: repeat(2, 1fr);
-    gap: 16px;
   }
 
   @include mixin.on-tablet-2 {
-    max-width: 887px;
     grid-template-columns: repeat(3, 1fr);
-    gap: 16px;
   }
 
   @include mixin.on-desktop {
-    max-width: 1140px;
     grid-template-columns: repeat(4, 1fr);
-    gap: 16px;
   }
 }

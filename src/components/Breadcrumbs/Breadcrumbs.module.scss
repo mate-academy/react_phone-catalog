@@ -1,0 +1,44 @@
+@use "../../utils//mixins" as mixin;
+@use "../../utils/variables" as var;
+
+.breadcrumbs {
+  &__container {
+    @include mixin.flex(flex, center, flex-start, row);
+
+    @include mixin.on-mobile {
+      margin-bottom: 20px;
+    }
+
+    @include mixin.on-tablet {
+      margin-bottom: 24px;
+    }
+
+    @include mixin.on-desktop {
+      margin-bottom: 32px;
+    }
+  }
+
+  &__link,
+  &__arrow {
+    @include mixin.sizes(16px, 16px);
+
+    display: flex;
+    margin-right: 8px;
+  }
+
+  &__img,
+  &__image {
+    align-items: center;
+  }
+
+  &__path {
+    color: var.$secondary-gray;
+    margin-right: 8px;
+    flex-wrap: nowrap;
+
+    &--active {
+      color: var.$primary-gray;
+    }
+  }
+
+}

@@ -2,47 +2,14 @@
 @use "../../utils/variables" as var;
 
 .catalog {
-  &__container {
-    @include mixin.flex(flex, false, false, column);
-
-    margin: 0 auto;
-
-    @include mixin.on-mobile {
-      margin-top: 20px;
-      max-width: 287px;
-    }
-
-    @include mixin.on-tablet {
-      margin-top: 24px;
-      max-width: 640px;
-    }
-
-    @include mixin.on-tablet-2 {
-      max-width: 887px;
-    }
-
-    @include mixin.on-desktop {
-      margin-top: 32px;
-      max-width: 1140px;
-    }
-  }
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px 32px 64px;
+  display: flex;
+  flex-direction: column;
 
   &__content {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 20px;
-
-    @include mixin.on-tablet {
-      margin-bottom: 24px;
-    }
-
-    @include mixin.on-desktop {
-      margin-bottom: 32px;
-    }
-  }
-
-  &__nav {
-    @include mixin.flex(flex, center, flex-start, row);
+    margin: 0 auto;
 
     @include mixin.on-mobile {
       margin-bottom: 20px;
@@ -57,19 +24,13 @@
     }
   }
 
-  &__link,
-  &__arrow {
-    display: flex;
-    margin-right: 8px;
+  &__nav {
+    @include mixin.flex(flex, center, flex-start, row);
   }
 
   &__img,
   &__image {
     align-items: center;
-  }
-
-  &__path {
-    color: var.$secondary-gray;
   }
 
   &__titles {

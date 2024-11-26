@@ -1,0 +1,27 @@
+@use "../../utils/mixins" as mixin;
+@use "../../utils/variables" as var;
+
+.back {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  &__arrow {
+    display: flex;
+    margin-right: 8px;
+  }
+
+  &__img {
+    @include mixin.sizes(16px, 16px);
+  }
+
+  &__link {
+    text-decoration: none;
+    color: var.$secondary-gray;
+    transition: color 0.3s;
+
+    &:hover {
+      color: var.$primary-gray;
+    }
+  }
+}

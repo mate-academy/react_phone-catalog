@@ -2,27 +2,30 @@
 @use "../../utils/variables" as var;
 
 .product {
+  @include mixin.flex(flex, false, space-between, column);
+  @include mixin.responsive-property(padding, 24px, 24px, 32px);
+
+  box-sizing: border-box;
+  margin: 0 auto;
   border: solid 1px var.$elements;
+  color: var.$primary-gray;
+  gap: 8px;
   transition: box-shadow 0.3s;
+
+  @include mixin.on-mobile {
+    @include mixin.sizes(287px, 440px);
+  }
+
+  @include mixin.on-tablet {
+    @include mixin.sizes(272px, 506px);
+  }
+
+  @include mixin.on-desktop {
+    @include mixin.sizes(272px, 506px);
+  }
 
   &:hover {
     box-shadow: 0 3px 13px 0 #17203166;
-  }
-
-  &__container {
-    color: var.$primary-gray;
-    gap: 8px;
-
-    @include mixin.flex(flex, false, space-between, column);
-    @include mixin.sizes(100%, 100%);
-
-    @include mixin.on-mobile {
-      padding: 24px;
-    }
-
-    @include mixin.on-tablet {
-      padding: 32px;
-    }
   }
 
   &__link {
@@ -36,6 +39,12 @@
     margin-bottom: 10px;
     transition: all 0.3s;
 
+    &:hover {
+      @include mixin.hover-effect;
+    }
+  }
+
+  &__image {
     @include mixin.on-mobile {
       @include mixin.sizes(148px, 129px);
     }
@@ -47,15 +56,6 @@
     @include mixin.on-desktop {
       @include mixin.sizes(208px, 196px);
     }
-
-    &:hover {
-      @include mixin.hover-effect;
-    }
-  }
-
-  &__image {
-    @include mixin.sizes(100%, 100%);
-    @include mixin.flex(flex, center, center, false);
 
     object-fit: contain;
     object-position: center;

@@ -3,33 +3,25 @@
 
 .slider {
   position: relative;
-  margin-bottom: 32px;
 
-  @include mixin.on-tablet {
-    margin: 0 16px 32px;
-  }
-
-  @include mixin.on-desktop {
-    margin: 0 16px 40px;
-  }
+  @include mixin.responsive-property(margin-bottom, 32px, 32px, 40px);
+  @include mixin.responsive-property(margin-right, 20px, 24px, 32px);
 
   &__title {
     @include mixin.h1-mobile;
+    @include mixin.responsive-property(margin-bottom, 16px, 24px, 32px);
 
     color: var.$primary-gray;
     text-align: center;
-    margin: 16px;
 
     @include mixin.on-tablet {
       text-align: left;
-      margin: 24px 0;
     }
 
     @include mixin.on-desktop {
       @include mixin.h1-desktop-tablet;
 
       text-align-last: left;
-      margin: 40px 0;
     }
   }
 

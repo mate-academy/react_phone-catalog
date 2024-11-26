@@ -1,0 +1,340 @@
+@use "../../utils//mixins" as mixin;
+@use "../../utils/variables" as var;
+
+.gadget {
+  &__title {
+    @include mixin.responsive-property(margin-bottom, 20px, 24px, 32px);
+
+    @include mixin.on-mobile {
+      @include mixin.h2-mobile;
+    }
+
+    @include mixin.on-tablet {
+      @include mixin.h2-desktop-tablet;
+    }
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+
+    @include mixin.on-tablet {
+      flex-direction: row;
+    }
+
+    @include mixin.on-desktop {
+      flex-direction: row;
+    }
+  }
+
+  &__button {
+    @include mixin.flex(flex, center, center, column);
+    @include mixin.responsive-property(margin-bottom, 16px, 8px, 8px);
+
+    @include mixin.on-mobile {
+      @include mixin.sizes(50px, 50px);
+
+      margin-right: 8px;
+      padding: 2px;
+    }
+
+    @include mixin.on-tablet {
+      @include mixin.sizes(50px, 50px);
+    }
+
+    @include mixin.on-desktop {
+      @include mixin.sizes(80px, 80px);
+    }
+
+    border: 1px solid var.$elements;
+    transition: border 0.3s;
+
+    &--active {
+      border: 1px solid var.$primary-gray;
+    }
+
+    &:hover {
+      border: 1px solid var.$primary-gray;
+    }
+  }
+
+  &__image {
+    @include mixin.sizes(100%, 100%);
+
+    object-fit: contain;
+  }
+
+  &__small-images {
+    &--mobile {
+      @include mixin.on-mobile {
+        @include mixin.flex(flex, center, center, row);
+
+        width: 100%;
+        flex: 0.5;
+        margin-bottom: 16px;
+      }
+
+      @include mixin.on-tablet {
+        display: none;
+      }
+    }
+
+    &--tablet {
+      @include mixin.on-mobile {
+        display: none;
+      }
+
+      @include mixin.on-tablet {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        flex: 0.5;
+      }
+    }
+  }
+
+  &__main-img {
+    @include mixin.on-mobile {
+      @include mixin.flex(flex, center, center, false);
+
+      margin-bottom: 16px;
+    }
+
+    @include mixin.on-tablet {
+      flex: 2;
+      align-items: flex-start;
+    }
+  }
+
+  &__details {
+    flex: 2;
+  }
+
+  &__img-container {
+    @include mixin.sizes(274px, 274px);
+
+    @include mixin.on-tablet-2 {
+      @include mixin.sizes(342px, 342px);
+    }
+
+    @include mixin.on-desktop {
+      @include mixin.sizes(442px, 442px);
+    }
+  }
+
+  &__big-image {
+    @include mixin.sizes(100%, 100%);
+
+    object-fit: contain;
+  }
+
+  &__line {
+    @include mixin.sizes(100%, 1px);
+
+    background-color: var.$elements;
+    margin-bottom: 16px;
+  }
+
+  &__colors {
+    margin-bottom: 16px;
+  }
+
+  &__details-title {
+    @include mixin.small-text-desktop-tablet;
+
+    color: var.$secondary-gray;
+    margin-bottom: 8px;
+  }
+
+  &__list {
+    @include mixin.flex(flex, center, flex-start, row);
+
+    gap: 8px;
+  }
+
+  &__link {
+    @include mixin.sizes(32px, 32px);
+
+    text-decoration: none;
+    cursor: pointer;
+    border-radius: 50%;
+    border: 2px solid var.$white;
+    border: 1px solid var.$elements;
+    transition: border 0.3s;
+
+    &--active {
+      border: 1px solid var.$primary-gray;
+    }
+
+    &:hover {
+      border: 1px solid var.$primary-gray;
+    }
+  }
+
+  &__button-capacity {
+    @include mixin.sizes(63px, 32px);
+    @include mixin.flex(flex, center, center, false);
+
+    text-decoration: none;
+    background-color: var.$white;
+    color: var.$primary-gray;
+    border: 1px solid var.$icons-placeholders;
+
+    &--active {
+      background-color: var.$primary-gray;
+      color: var.$white;
+    }
+  }
+
+  &__capacity {
+    margin-bottom: 16px;
+  }
+
+  &__prices {
+    @include mixin.flex(flex, center, flex-start, row);
+
+    padding-top: 16px;
+    margin-bottom: 16px;
+  }
+
+  &__price-discount {
+    margin-right: 8px;
+    color: var.$primary-gray;
+
+    @include mixin.h2-mobile;
+
+    @include mixin.on-desktop {
+      @include mixin.h2-desktop-tablet;
+    }
+  }
+
+  &__price-full {
+    font-size: 24px;
+    line-height: 28px;
+    text-align: center;
+    font-weight: 500;
+    color: var.$secondary-gray;
+    text-decoration: line-through;
+  }
+
+  &__buttons {
+    @include mixin.flex(flex, false, flex-start, false);
+    @include mixin.sizes(100%, 48px);
+
+    gap: 8px;
+    margin-bottom: 24px;
+  }
+
+  &__button-add {
+    @include mixin.flex(flex, center, center, false);
+    @include mixin.responsive-property(padding, 0, 9px, 9px);
+
+    border: none;
+    flex: 0 1 300px;
+    background-color: var.$primary-gray;
+    color: var.$white;
+    transition: box-shadow 0.3s;
+
+    @include mixin.on-mobile {
+      font-size: 12px;
+    }
+
+    @include mixin.on-tablet {
+      @include mixin.buttons-desktop-tablet;
+    }
+
+    @include mixin.on-desktop {
+      @include mixin.buttons-desktop-tablet;
+    }
+
+    &:hover {
+      box-shadow: 0 3px 13px 0 #17203166;
+    }
+  }
+
+  &__button-fav {
+    height: 100%;
+    aspect-ratio: 1 / 1;
+
+    @include mixin.flex(flex, center, center, false);
+
+    border: solid 1px var.$icons-placeholders;
+    background-color: inherit;
+    transition: border 0.3s;
+
+    &:hover {
+      border: solid 1px var.$primary-gray;
+    }
+  }
+
+  &__img-fav {
+    @include mixin.sizes(16px, 16px);
+  }
+
+  &__info-details {
+    @include mixin.flex(flex, false, false, column);
+
+    gap: 8px;
+    margin-bottom: 10px;
+  }
+
+  &__info {
+    @include mixin.small-text-desktop-tablet;
+    @include mixin.flex(flex, space-between, false, false);
+
+    width: 100%;
+
+    &--name {
+      color: var.$secondary-gray;
+      text-align: left;
+      flex: 1;
+    }
+
+    &--value {
+      text-align: right;
+      flex: 2;
+    }
+  }
+
+  &__id {
+    display: none;
+
+    @include mixin.on-tablet {
+      display: none;
+    }
+
+    @include mixin.on-desktop {
+      display: flex;
+      justify-content: flex-end;
+      flex: 0.5;
+      color: var.$icons-placeholders;
+
+      @include mixin.small-text-desktop-tablet;
+    }
+
+    &--tablet {
+      @include mixin.on-mobile {
+        @include mixin.small-text-desktop-tablet;
+
+        display: flex;
+        color: var.$icons-placeholders;
+      }
+
+      @include mixin.on-tablet {
+        @include mixin.small-text-desktop-tablet;
+
+        display: flex;
+        color: var.$icons-placeholders;
+      }
+
+      @include mixin.on-desktop {
+        display: none;
+      }
+    }
+  }
+
+  &__shell {
+    display: flex;
+    justify-content: space-between;
+  }
+}
