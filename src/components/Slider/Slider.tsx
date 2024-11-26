@@ -36,8 +36,8 @@ export const Slider = () => {
       autoplay={{ delay: 5000 }}
       navigation={
         isActiveNavigation && {
-          nextEl: `.${style.swperButtonNext}`,
-          prevEl: `.${style.swiperButtonPrev}`,
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
         }
       }
       loop={true}

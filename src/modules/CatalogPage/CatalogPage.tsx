@@ -17,17 +17,16 @@ type Props = {
 export const CatalogPage: React.FC<Props> = ({ category }) => {
   const [searchParams, setSearchParams] = useSearchParams();
   const { products, loader, errorMessage } = useContext(ProductContext);
-  const sort = searchParams.get('sort' || '');
-  const perPage = searchParams.get('perPage' || '');
-  const query = searchParams.get('query' || '');
+  const sort = searchParams.get('sort');
+  const perPage = searchParams.get('perPage');
+  const query = searchParams.get('query');
 
   const [currentPage, setCurrentPage] = useState(1);
-
   const [visibleList, setVisibleList] = useState<Product[]>([]);
 
   const navigate = useNavigate();
 
-  const correctPerPage = perPage ? +perPage : visibleList.length;
+  const correctPerPage = perPage ? +perPage : 20; // используй 20 по умолчанию
 
   useEffect(() => {
     const sortedList = getSortedList(products, sort).filter(item => {
@@ -121,7 +120,7 @@ export const CatalogPage: React.FC<Props> = ({ category }) => {
           <ul className={style.cards}>
             {visibleList
               .slice(
-                currentPage * correctPerPage - correctPerPage,
+                (currentPage - 1) * correctPerPage,
                 currentPage * correctPerPage,
               )
               .map(prod => (

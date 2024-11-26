@@ -19,7 +19,7 @@ export const Pagination: React.FC<Props> = ({
 }) => {
   const totalPages = Math.ceil(visibleList.length / perPage);
 
-  const [device, setDevice] = useState<'mobile' | 'tablet'>(() => {
+  const [, setDevice] = useState<'mobile' | 'tablet'>(() => {
     if (window.innerWidth > 639) {
       return 'tablet';
     }
@@ -55,41 +55,30 @@ export const Pagination: React.FC<Props> = ({
 
   const getPageNumbers = () => {
     const pageNumbers = [];
+    const maxPagesToShow = 7;
+    const startDotsThreshold = 4;
+    const endDotsThreshold = totalPages - 3;
 
     pageNumbers.push(1);
 
-    if (totalPages < 6) {
+    if (totalPages <= maxPagesToShow) {
       return getNumbers(1, totalPages);
     }
 
-    if (device === 'tablet') {
-      if (currentPage < 6) {
-        pageNumbers.push(2, 3, 4, 5, 6, 7);
-        pageNumbers.push('...');
-      } else if (currentPage > totalPages - 5) {
-        pageNumbers.push('...');
-        getNumbers(totalPages - 6, totalPages - 1).map(num =>
-          pageNumbers.push(num),
-        );
-      } else {
-        pageNumbers.push('...');
-        getNumbers(currentPage - 2, currentPage + 2).map(num =>
-          pageNumbers.push(num),
-        );
-        pageNumbers.push('...');
-      }
+    if (currentPage < startDotsThreshold) {
+      pageNumbers.push(2, 3, 4, 5, 6, 7);
+      pageNumbers.push('...');
+    } else if (currentPage > endDotsThreshold) {
+      pageNumbers.push('...');
+      getNumbers(totalPages - 6, totalPages - 1).forEach(num =>
+        pageNumbers.push(num),
+      );
     } else {
-      if (currentPage < 3) {
-        pageNumbers.push(2, 3);
-        pageNumbers.push('...');
-      } else if (currentPage > totalPages - 2) {
-        pageNumbers.push('...');
-        getNumbers(totalPages - 2, totalPages - 1).map(num =>
-          pageNumbers.push(num),
-        );
-      } else {
-        pageNumbers.push('...', currentPage, '...');
-      }
+      pageNumbers.push('...');
+      getNumbers(currentPage - 2, currentPage + 2).forEach(num =>
+        pageNumbers.push(num),
+      );
+      pageNumbers.push('...');
     }
 
     pageNumbers.push(totalPages);
