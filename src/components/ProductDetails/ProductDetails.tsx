@@ -168,7 +168,7 @@ export const ProductDetails: React.FC<Props> = ({
                         <div
                           className={styles.color}
                           style={{
-                            backgroundColor: colorMapping[col] || color,
+                            backgroundColor: colorMapping[col] || col,
                           }}
                         ></div>
                       </div>
