@@ -10,4 +10,3 @@ export enum PerPageOption {
   Sixteen = 16,
   All = 0,
 }
-

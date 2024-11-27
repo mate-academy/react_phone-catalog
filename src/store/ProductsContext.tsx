@@ -103,6 +103,7 @@ const productsReducer = (state: State, action: Action): State => {
       const productExists = state.cart.find(
         item => item.id === action.product.id,
       );
+
       if (productExists) {
         return {
           ...state,
@@ -113,38 +114,58 @@ const productsReducer = (state: State, action: Action): State => {
           ),
         };
       }
+
       const updatedCart = [...state.cart, { ...action.product, quantity: 1 }];
+
       localStorage.setItem('cart', JSON.stringify(updatedCart));
+
       return { ...state, cart: updatedCart };
     }
+
     case 'SET_REMOVE_FROM_CART': {
       const updatedCart = state.cart.filter(item => item.id !== action.id);
+
       localStorage.setItem('cart', JSON.stringify(updatedCart));
+
       return { ...state, cart: updatedCart };
     }
+
     case 'SET_UPDATE_QUANTITY': {
       const updatedCart = state.cart.map(item =>
         item.id === action.id ? { ...item, quantity: action.quantity } : item,
       );
+
       localStorage.setItem('cart', JSON.stringify(updatedCart));
+
       return { ...state, cart: updatedCart };
     }
+
     case 'SET_ADD_TO_FAVORITES': {
       const isAlreadyFavorite = state.favorites.some(
         item => item.id === action.product.id,
       );
-      if (isAlreadyFavorite) return state;
+
+      if (isAlreadyFavorite) {
+        return state;
+      }
+
       const updatedFavorites = [...state.favorites, action.product];
+
       localStorage.setItem('favorites', JSON.stringify(updatedFavorites));
+
       return { ...state, favorites: updatedFavorites };
     }
+
     case 'SET_REMOVE_FROM_FAVORITES': {
       const updatedFavorites = state.favorites.filter(
         item => item.id !== action.id,
       );
+
       localStorage.setItem('favorites', JSON.stringify(updatedFavorites));
+
       return { ...state, favorites: updatedFavorites };
     }
+
     default:
       return state;
   }

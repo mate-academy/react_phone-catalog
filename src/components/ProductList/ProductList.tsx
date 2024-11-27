@@ -19,8 +19,8 @@ export const ProductList: React.FC<ProductListProps> = ({
   const { page, setPage } = useContext(ProductsContext);
   const [searchParams] = useSearchParams();
 
-  const handlePageChange = (page: number) => {
-    setPage(page);
+  const handlePageChange = (newPage: number) => {
+    setPage(newPage);
   };
 
   const perPage = +(searchParams.get('perPage') || PerPageOption.Sixteen);

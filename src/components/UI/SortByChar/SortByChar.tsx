@@ -19,16 +19,20 @@ export const SortByChar: React.FC<SortByCharProps> = ({
 
   const setSearchWith = (params: any) => {
     const search = getSearchWith(searchParams, params);
+
     setSearchParams(search);
   };
 
   const handleSortChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const newSortOrder = e.target.value || SortOrder.Newest;
+
     setSearchWith({ char: newSortOrder });
 
-    if (newSortOrder === char) return;
+    if (newSortOrder === char) {
+      return;
+    }
 
-    let sorted = [...filteredProducts];
+    const sorted = [...filteredProducts];
 
     switch (newSortOrder) {
       case SortOrder.Alphabetically:

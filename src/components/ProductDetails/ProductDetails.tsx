@@ -70,10 +70,10 @@ export const ProductDetails: React.FC<Props> = ({
     }
   };
 
-  const handleColorChange = (color: string) => {
-    setSelectedColor(color);
+  const handleColorChange = (newColor: string) => {
+    setSelectedColor(newColor);
 
-    const formattedColor = encodeURIComponent(color.toLowerCase().trim());
+    const formattedColor = encodeURIComponent(newColor.toLowerCase().trim());
 
     const currentPath = location.pathname;
 
@@ -94,8 +94,8 @@ export const ProductDetails: React.FC<Props> = ({
     navigate(newPath);
   };
 
-  const handleCapacityChange = (capacity: string) => {
-    setSelectedCapacity(capacity);
+  const handleCapacityChange = (newCapacity: string) => {
+    setSelectedCapacity(newCapacity);
 
     const currentPath = location.pathname;
 
@@ -105,7 +105,7 @@ export const ProductDetails: React.FC<Props> = ({
 
     const idParts = productId.split('-');
 
-    idParts[idParts.length - 2] = capacity.toLowerCase();
+    idParts[idParts.length - 2] = newCapacity.toLowerCase();
 
     const newProductId = idParts.join('-');
 
@@ -157,18 +157,18 @@ export const ProductDetails: React.FC<Props> = ({
                 <>
                   <p className={styles.selectors__title}>Available colors</p>
                   <div className={styles.selectors__options}>
-                    {colorsAvailable.map(color => (
+                    {colorsAvailable.map(col => (
                       <div
-                        key={color}
+                        key={col}
                         className={classNames(styles.wrapperColor, {
-                          [styles.active]: color === selectedColor,
+                          [styles.active]: col === selectedColor,
                         })}
-                        onClick={() => handleColorChange(color)}
+                        onClick={() => handleColorChange(col)}
                       >
                         <div
                           className={styles.color}
                           style={{
-                            backgroundColor: colorMapping[color] || color,
+                            backgroundColor: colorMapping[col] || color,
                           }}
                         ></div>
                       </div>

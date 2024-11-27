@@ -15,7 +15,10 @@ const Cart: React.FC = () => {
   };
 
   const handleQuantityChange = (id: string, newQuantity: number) => {
-    if (newQuantity < 1) return;
+    if (newQuantity < 1) {
+      return;
+    }
+
     SetUpdateQuantity(id, newQuantity);
   };
 

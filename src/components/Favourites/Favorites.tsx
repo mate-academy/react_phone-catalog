@@ -31,6 +31,7 @@ export const Favorites = () => {
       <ul className={styles.favoritesList}>
         {favorites.map(favorite => (
           <ProductCard
+            key={favorite.id}
             product={favorite}
             showRegularPrice={true}
             imageWrapperSize="large"

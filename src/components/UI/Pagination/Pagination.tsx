@@ -18,6 +18,7 @@ export const Pagination: React.FC<Props> = ({
 
   function setSearchWith(params: any) {
     const search = getSearchWith(searchParams, params);
+
     setSearchParams(search);
   }
 

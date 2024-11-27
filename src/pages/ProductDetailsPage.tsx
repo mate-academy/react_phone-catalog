@@ -15,7 +15,6 @@ export const ProductDetailsPage = () => {
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [products, setProducts] = useState<Product[]>([]);
   const [productsDetails, setProductsDetails] = useState<ProductSpecs[]>([]);
-  
   const product = products.find(item => item.itemId === productId);
   const selectedProduct = productsDetails.find(item => item.id === productId);
 
@@ -36,8 +35,6 @@ export const ProductDetailsPage = () => {
   }, [category]);
 
   const showProductDetails = !isLoading && selectedProduct && product;
-
-  console.log(showProductDetails);
 
   if (isLoading) {
     return <Loader />;

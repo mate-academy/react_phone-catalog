@@ -10,6 +10,7 @@ export const ItemsOnPage = () => {
 
   function setSearchWith(params: any) {
     const search = getSearchWith(searchParams, params);
+
     setSearchParams(search);
   }
 

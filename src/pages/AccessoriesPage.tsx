@@ -30,7 +30,7 @@ export const AccessoriesPage = () => {
 
   return (
     <Container>
-      <ProductsIntro category={category}/>
+      <ProductsIntro category={category} />
       <ProductControls
         filteredProducts={filteredProducts}
         onSortChange={handleSortChange}

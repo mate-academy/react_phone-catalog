@@ -26,6 +26,7 @@ export const Button: React.FC<ButtonProps> = ({ product, className }) => {
         image: product.image,
         quantity: 1,
       };
+
       SetAddToCart(cartProduct);
     }
   };
