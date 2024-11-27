@@ -6,6 +6,21 @@
   align-items: center;
   justify-content: center;
   background: rgba(22, 24, 39, 1);
+  cursor: pointer;
+
+  .productImage {
+    transition: transform 0.3s ease;
+    object-fit: contain;
+    width: 100%;
+    height: 100%;
+    align-self: center;
+  }
+
+  &:hover {
+    .productImage {
+      transform: scale(1.1);
+    }
+  }
 
   @include on-phone {
     width: 212px;
@@ -87,15 +102,6 @@
   }
 }
 
-.productImage {
-  object-fit: contain;
-  width: 100%;
-  height: 100%;
-  align-self: center;
-
-  @include hover(transform, scale(1.1));
-}
-
 .productName {
   font-size: 14px;
   font-weight: 600;
@@ -162,9 +168,14 @@
 }
 
 .icon {
+  transition: color 0.3s ease;
   width: 16px;
   height: 16px;
   color: $main-white-color;
+}
+
+.favoriteIcon {
+  color: #eb5757;
 }
 
 .characteristics {

@@ -1,56 +1,72 @@
 import cn from 'classnames';
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import icons from '../../assets/icons/icons.svg';
 import { Product } from '../../types/Product';
-import { Button } from '../UI/Button';
 import styles from './ProductCard.module.scss';
+import { ProductsContext } from '../../store/ProductsContext';
+import { Button } from '../UI/Button';
 
 interface ProductCardProps {
   product: Product;
   showRegularPrice?: boolean;
   imageWrapperSize?: 'small' | 'large';
+  category?: string;
 }
 
 export const ProductCard: React.FC<ProductCardProps> = ({
   product,
   showRegularPrice,
   imageWrapperSize,
+  category,
 }) => {
+  const { SetAddToFavorites, SetRemoveFromFavorites, favorites } =
+    useContext(ProductsContext);
+
   const imageWrapperClass = cn(styles.imageWrapper, {
     [styles.wrapperSmall]: imageWrapperSize === 'small',
     [styles.wrapperLarge]: imageWrapperSize === 'large',
   });
 
+  const isFavorite = favorites.some(favorite => favorite.id === product.id);
+
+  const handleToggleFavorite = () => {
+    if (isFavorite) {
+      SetRemoveFromFavorites(product.id);
+    } else {
+      SetAddToFavorites(product);
+    }
+  };
+
   return (
-    <div className={styles.productCard}>
+    <Link to={`/${category}/${product.itemId}`} className={styles.productCard}>
       <div className={styles.productDetails}>
-        <Link to={{}} className={imageWrapperClass}>
+        <div className={imageWrapperClass}>
           <img
-            src={product.images[0]}
+            src={product?.image}
             alt={product.name}
             className={styles.productImage}
             loading="lazy"
           />
-        </Link>
+        </div>
 
         <p className={styles.productName}>{product.name}</p>
         <h3 className={styles.productPriceDiscount}>
-          ${product.priceDiscount}
+          ${product.price}
           {showRegularPrice && (
             <del className={styles.productStrikePrice}>
-              ${product.priceRegular}
+              ${product.fullPrice}
             </del>
           )}
         </h3>
 
         <div className={styles.textWrapper}>
           <p className={styles.productCharacteristicsWrapper}>
-            Screen{' '}
+            Screen
             <span className={styles.characteristics}>{product.screen}</span>
           </p>
           <p className={styles.productCharacteristicsWrapper}>
-            Capacity{' '}
+            Capacity
             <span className={styles.characteristics}>{product.capacity}</span>
           </p>
           <p className={styles.productCharacteristicsWrapper}>
@@ -59,14 +75,29 @@ export const ProductCard: React.FC<ProductCardProps> = ({
         </div>
 
         <div className={styles.productCardButtons}>
-          <Button />
-          <button className={styles.addToFavouriteBtn}>
-            <svg className={styles.icon}>
-              <use href={`${icons}#heart-icon`}></use>
+          <Button product={product} />
+          <button
+            className={styles.addToFavouriteBtn}
+            onClick={event => {
+              event.preventDefault();
+              event.stopPropagation();
+              handleToggleFavorite();
+            }}
+          >
+            <svg
+              className={cn(styles.icon, {
+                [styles.favoriteIcon]: isFavorite,
+              })}
+            >
+              {!isFavorite ? (
+                <use href={`${icons}#header-icon-header`}></use>
+              ) : (
+                <use href={`${icons}#heart-icon`}></use>
+              )}
             </svg>
           </button>
         </div>
       </div>
-    </div>
+    </Link>
   );
 };

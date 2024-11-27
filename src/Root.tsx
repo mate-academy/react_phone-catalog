@@ -1,16 +1,14 @@
 import { Route, HashRouter as Router, Routes } from 'react-router-dom';
 import { App } from './App';
 import { AccessoriesPage } from './pages/AccessoriesPage';
-import { AccessoryItemPage } from './pages/AccessoryItemPage';
-import { CartPage } from './pages/CartPage';
-import { FavouritesPage } from './pages/FavouritesPage';
 import { HomePage } from './pages/HomePage';
 import { NotFoundPage } from './pages/NotFoundPage';
-import { PhoneItemPage } from './pages/PhoneItemPage';
 import { PhonesPage } from './pages/PhonesPage';
-import { TabletItemPage } from './pages/TabletItemPage';
 import { TabletsPage } from './pages/TabletsPage';
 import { ProductsProvider } from './store/ProductsContext';
+import { FavoritesPage } from './pages/FavoritesPage';
+import { CartPage } from './pages/CartPage';
+import { ProductDetailsPage } from './pages/ProductDetailsPage';
 
 export const Root = () => (
   <Router>
@@ -18,18 +16,24 @@ export const Root = () => (
       <Routes>
         <Route path="/" element={<App />}>
           <Route index element={<HomePage />} />
-          <Route path="phones" element={<PhonesPage />}>
-            <Route path=":phoneId" element={<PhoneItemPage />} />
-          </Route>
-          <Route path="tablets" element={<TabletsPage />}>
-            <Route path=":tabletId" element={<TabletItemPage />} />
-          </Route>
-          <Route path="accessories" element={<AccessoriesPage />}>
-            <Route path=":accessoryId" element={<AccessoryItemPage />} />
-          </Route>
-          <Route path="cart" element={<CartPage />} />
-          <Route path="catalog" element={<FavouritesPage />} />
 
+          <Route path="phones">
+            <Route index element={<PhonesPage />} />
+            <Route path=":productId" element={<ProductDetailsPage />} />
+          </Route>
+
+          <Route path="tablets">
+            <Route index element={<TabletsPage />} />
+            <Route path=":productId" element={<ProductDetailsPage />} />
+          </Route>
+
+          <Route path="accessories">
+            <Route index element={<AccessoriesPage />} />
+            <Route path=":productId" element={<ProductDetailsPage />} />
+          </Route>
+
+          <Route path="cart" element={<CartPage />} />
+          <Route path="catalog" element={<FavoritesPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Routes>

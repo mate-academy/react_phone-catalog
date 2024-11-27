@@ -1,65 +1,67 @@
 @import '../../../styles/variables';
 
-.paginationControls {
+.paginationContainer {
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
   justify-content: center;
-  gap: 4px;
+  padding-top: 40px;
+  gap: 16px;
+}
 
-  .paginationWrapper {
-    display: flex;
-    position: relative;
+.arrowButtons {
+  display: flex;
+  align-items: center;
+}
+
+.pageNumbers {
+  display: flex;
+  gap: 8px;
+}
+
+.arrowButton {
+  padding: 8px 12px;
+  border: none;
+  background: #323542;
+  color: $gray-white;
+  cursor: pointer;
+  transition: background-color 0.3s;
+
+  &.active {
+    background: #4a4d58;
+    color: white;
+    cursor: default;
   }
 
-  .dropDownMenu {
-    appearance: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    outline: none;
-    padding: 10px 0 9px 12px;
-    font-size: 14px;
-    line-height: 21px;
-    width: 128px;
-    cursor: pointer;
-    background: #323542;
-    color: $main-white-color;
-    border-color: #323542;
-
-    &:hover {
-      border-color: $gray-secondary;
-    }
-    &:focus {
-      outline: none;
-    }
+  &.disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
   }
 
-  .sortName {
-    font-family: $font-primary;
-    font-size: 12px;
-    font-weight: 700;
-    line-height: 15.34px;
-    text-align: left;
-    color: $gray-secondary;
+  &:hover:not(.active, .disabled) {
+    background: #4a4d58;
+  }
+}
+
+.pageButton {
+  padding: 8px 12px;
+  border: none;
+  background: #161827;
+  color: $gray-white;
+  cursor: pointer;
+  transition: background-color 0.3s;
+
+  &.active {
+    background: #905bff;
+    color: white;
+    cursor: default;
   }
 
-  .arrow {
-    position: absolute;
-    right: 12px;
-    bottom: 12px;
-    pointer-events: none;
-    display: flex;
-    align-items: center;
-
-    svg {
-      width: 16px;
-      height: 16px;
-      color: $gray-secondary;
-      transition: all 0.3s ease-in-out;
-    }
+  &.disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
   }
 
-  .dropDownMenu:hover + .arrow svg {
-    color: $gray-white;
+  &:hover:not(.active, .disabled) {
+    background: #905bff;
   }
 }

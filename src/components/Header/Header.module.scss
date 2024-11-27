@@ -16,6 +16,11 @@
   justify-content: center;
   height: 100%;
   width: 64px;
+  transition: all 0.3s ease-in-out;
+
+  &:hover {
+    transform: scale(1.1);
+  }
 
   @include on-phone {
     grid-column: 1 / span 1;
@@ -49,10 +54,32 @@
 }
 
 .headerFavouriteBtn {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  transition: all 0.3s ease-in-out;
+
+  &::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 3px;
+    background: rgba(241, 242, 249, 1);
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    transition: all 0.3s ease-in-out;
+
+    @include on-phone {
+      display: none;
+    }
+  }
+
+  &:hover::after {
+    width: 100%;
+  }
 
   @include on-phone {
     display: none;
@@ -112,11 +139,32 @@
 }
 
 .headerCartIcon {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
   border-left: 1px solid $border-header-color;
   cursor: pointer;
+
+  &::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 3px;
+    background: rgba(241, 242, 249, 1);
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    transition: all 0.3s ease-in-out;
+
+    @include on-phone {
+      display: none;
+    }
+  }
+
+  &:hover::after {
+    width: 100%;
+  }
 
   @include on-phone {
     display: none;

@@ -14,7 +14,7 @@ interface SliderProps {
 
 export const BannerSlider: React.FC<SliderProps> = ({
   images,
-  autoplayDelay = 5000,
+  autoplayDelay = 3000,
 }) => {
   const [swiperInstance, setSwiperInstance] = useState<SwiperType | null>(null);
   const [activeIndex, setActiveIndex] = useState(0);
@@ -54,7 +54,6 @@ export const BannerSlider: React.FC<SliderProps> = ({
           }}
           breakpoints={{
             640: {
-              autoplay: false,
               allowTouchMove: false,
             },
           }}

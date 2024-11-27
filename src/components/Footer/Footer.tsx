@@ -5,6 +5,13 @@ import icons from '../../assets/icons/icons.svg';
 import { Container } from '../Container';
 
 export const Footer = () => {
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  };
+
   return (
     <footer className={styles.footer}>
       <Container>
@@ -27,7 +34,7 @@ export const Footer = () => {
 
           <div className={styles.footerButton}>
             <span>Back to top</span>
-            <button className={styles.footerBackIcon}>
+            <button className={styles.footerBackIcon} onClick={scrollToTop}>
               <svg className={styles.icon}>
                 <use href={`${icons}#arrow-up-icon`}></use>
               </svg>

@@ -1,15 +1,19 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import icons from '../../assets/icons/icons.svg';
 import logo from '../../assets/images/Logo-phone-version.svg';
 import styles from './Header.module.scss';
 import { MobileMenu } from '../MobileMenu';
+import { ProductsContext } from '../../store/ProductsContext';
+import CartIcon from '../Counter/Counter';
+import styles1 from '../../components/Counter/Counter.module.scss';
 
 const getNavLinkClassName = ({ isActive }: { isActive: boolean }) =>
   isActive ? `${styles.headerNavLink} ${styles.active}` : styles.headerNavLink;
 
 export const Header: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const { cart, favorites } = useContext(ProductsContext);
 
   const handleToggleMenu = () => {
     setIsOpen(!isOpen);
@@ -26,6 +30,9 @@ export const Header: React.FC = () => {
       document.body.style.overflow = '';
     };
   }, [isOpen]);
+
+  const itemCount = cart.reduce((total, item) => total + item.quantity, 0);
+  const favoritesCount = favorites.length;
 
   return (
     <>
@@ -66,20 +73,26 @@ export const Header: React.FC = () => {
             </div>
           )}
 
-          <div className={styles.headerFavouriteBtn}>
+          <Link to="/catalog" className={styles.headerFavouriteBtn}>
             <svg className={styles.icon}>
-              <use href={`${icons}#heart-icon`}></use>
+              <use href={`${icons}#header-icon-header`}></use>
             </svg>
-          </div>
-          <div className={styles.headerCartIcon}>
+            <CartIcon
+              itemCount={favoritesCount}
+              className={styles1.favoriteCount}
+            />
+          </Link>
+
+          <Link to="/cart" className={styles.headerCartIcon}>
             <svg className={styles.icon}>
               <use href={`${icons}#shopping-bag-icon`}></use>
             </svg>
-          </div>
+            <CartIcon itemCount={itemCount} className={styles1.cartCount} />
+          </Link>
         </div>
       </header>
 
-      <MobileMenu isOpen={isOpen} />
+      <MobileMenu isOpen={isOpen} onClose={handleToggleMenu} />
     </>
   );
 };

@@ -1,12 +1,10 @@
 @import '../../../styles/global';
 
-.selectContainer {
-  width: 100%;
+.selectWrapper {
+  position: relative;
   display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  padding-bottom: 40px;
-  gap: 16px;
+  flex-direction: column;
+  gap: 4px;
 
   .sortName {
     font-family: $font-primary;
@@ -15,13 +13,6 @@
     line-height: 15.34px;
     text-align: left;
     color: $gray-secondary;
-  }
-
-  .selectWrapper {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
   }
 
   .dropDownMenu {

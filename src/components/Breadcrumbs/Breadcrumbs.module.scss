@@ -1,0 +1,88 @@
+@import '../../styles/variables';
+
+.breadcrumbsContainer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding-top: 24px;
+
+  .wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: color 0.3s ease-in-out;
+    color: $gray-secondary;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 15.34px;
+    text-align: justify;
+    text-decoration-skip-ink: none;
+  }
+
+  .arrowRight {
+    color: $gray-icons;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    svg {
+      transition: color 0.3s ease-in-out;
+      width: 16px;
+      height: 16px;
+    }
+  }
+}
+
+.navigationHome {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  background: none;
+  border: none;
+
+  .homeBtn {
+    background: none;
+    border: none;
+    color: $main-white-color;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    svg {
+      transition: color 0.3s ease-in-out;
+      width: 16px;
+      height: 16px;
+    }
+  }
+
+  .productName {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: color 0.3s ease-in-out;
+    color: $gray-secondary;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 15.34px;
+    text-align: justify;
+    text-decoration-skip-ink: none;
+
+    height: 100%;
+  }
+
+  &:hover {
+    .arrowRight {
+      svg {
+        color: $main-white-color;
+      }
+    }
+
+    .productName {
+      color: $main-white-color;
+    }
+  }
+}

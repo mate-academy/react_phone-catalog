@@ -1,0 +1,49 @@
+@import '../../styles/variables';
+
+.loaderContainer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $pageColor;
+  z-index: 10000;
+}
+
+.loaderContainer svg {
+  stroke: none;
+  stroke-width: 4;
+  fill: none;
+  animation:
+    draw 2s ease-in-out infinite,
+    blink 1s step-start infinite;
+  stroke-dasharray: 3000;
+  stroke-dashoffset: 3000;
+}
+
+.loaderContainer svg path {
+  transition: opacity 0.5s ease;
+}
+
+@keyframes draw {
+  0% {
+    stroke-dashoffset: 3000;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes blink {
+  0%,
+  50% {
+    opacity: 1;
+  }
+  51%,
+  100% {
+    opacity: 0.6;
+  }
+}

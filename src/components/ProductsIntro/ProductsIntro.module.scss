@@ -1,14 +1,7 @@
 @import '../../styles/variables';
 
 .introContainer {
-  padding-block: 24px 40px;
-}
-
-.navigationHome {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  gap: 8px;
+  padding-block: 0 40px;
 }
 
 .introTitle {
@@ -21,38 +14,10 @@
   margin-block: 40px 8px;
 }
 
-.homeBtn {
-  background: none;
-  border: none;
-  color: $main-white-color;
-
-  svg {
-    width: 16px;
-    height: 16px;
-  }
-}
-
-.arrowLeft {
-  color: $gray-icons;
-
-  svg {
-    width: 16px;
-    height: 16px;
-  }
-}
-
 .modelsCount {
   color: $gray-secondary;
   font-size: 14px;
   font-weight: 600;
   line-height: 21px;
-  text-align: left;
-}
-
-.productName {
-  color: $gray-secondary;
-  font-size: 12px;
-  font-weight: 700;
-  line-height: 15.34px;
   text-align: left;
 }

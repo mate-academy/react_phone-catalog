@@ -1,0 +1,101 @@
+@import '../../styles/global';
+
+.favorites {
+  padding-top: 40px;
+}
+
+.navigationHome {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 0;
+
+  background: none;
+  border: none;
+
+  .homeBtn {
+    background: none;
+    border: none;
+    color: $main-white-color;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    svg {
+      transition: color 0.3s ease-in-out;
+      width: 16px;
+      height: 16px;
+    }
+  }
+
+  .arrowRight {
+    color: $gray-icons;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    svg {
+      transition: color 0.3s ease-in-out;
+      width: 16px;
+      height: 16px;
+    }
+  }
+
+  .productName {
+    transition: color 0.3s ease-in-out;
+    color: $gray-secondary;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 15px;
+    text-align: justify;
+    text-decoration-skip-ink: none;
+
+    height: 100%;
+  }
+
+  &:hover {
+    .arrowRight {
+      svg {
+        color: $main-white-color;
+      }
+    }
+
+    .productName {
+      color: $main-white-color;
+    }
+  }
+}
+
+.intro {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 40px;
+  width: 1136px;
+}
+
+.favoritesCount {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 21px;
+  text-align: left;
+  color: $gray-secondary;
+  margin-bottom: 40px;
+}
+
+.favoritesTitle {
+  font-size: 48px;
+  font-weight: 800;
+  line-height: 56px;
+  letter-spacing: -0.01em;
+  text-align: left;
+  margin-bottom: 8px;
+}
+
+.favoritesList {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 40px 16px;
+}

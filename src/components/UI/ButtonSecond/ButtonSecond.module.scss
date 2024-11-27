@@ -1,0 +1,55 @@
+@import '../../../styles/mixins';
+
+.addToCartBtn {
+  height: 40px;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 21px;
+  text-align: center;
+  border: none;
+  color: rgba(241, 242, 249, 1);
+  background: rgba(144, 91, 255, 1);
+
+  @include hover(background-color, rgba(163, 120, 255, 1));
+
+  @include on-phone {
+    width: 100px;
+  }
+
+  @include on-tablet {
+    width: 125px;
+  }
+
+  @include on-desktop {
+    width: 160px;
+  }
+}
+
+.addedToCartBtn {
+  height: 40px;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 21px;
+  text-align: center;
+  border: none;
+  color: rgba(241, 242, 249, 1);
+  background: #323542;
+
+  &:hover {
+    box-shadow: 0 4px 16px rgba(128, 128, 128, 0.3);
+
+    transition: box-shadow 0.3s ease;
+  }
+
+  @include on-phone {
+    width: 100px;
+  }
+
+  @include on-tablet {
+    width: 125px;
+  }
+
+  @include on-desktop {
+    width: 160px;
+  }
+}

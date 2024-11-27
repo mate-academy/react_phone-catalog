@@ -1,28 +1,33 @@
 import { useContext } from 'react';
 import styles from './ProductsIntro.module.scss';
 import { ProductsContext } from '../../store/ProductsContext';
-import icons from '../../assets/icons/icons.svg';
+import { Breadcrumbs } from '../../components/Breadcrumbs';
 
-export const ProductsIntro = () => {
+type Props = {
+  category: string;
+};
+
+export const ProductsIntro: React.FC<Props> = ({ category }) => {
   const { products } = useContext(ProductsContext);
+
+  const filteredProducts = products.filter(
+    product => product.category.toLowerCase() === category.toLowerCase(),
+  );
+
+  const displayCategoryName =
+    category.charAt(0).toUpperCase() + category.slice(1);
 
   return (
     <div className={styles.introContainer}>
-      <div className={styles.navigationHome}>
-        <button className={styles.homeBtn}>
-          <svg>
-            <use href={`${icons}#home-icon`}></use>
-          </svg>
-        </button>
-        <span className={styles.arrowLeft}>
-          <svg>
-            <use href={`${icons}#arrow-right-icon`}></use>
-          </svg>
-        </span>
-        <p className={styles.productName}>Phones</p>
-      </div>
-      <h1 className={styles.introTitle}>Mobile phones</h1>
-      <p className={styles.modelsCount}>{products.length} models</p>
+      <Breadcrumbs />
+
+      <h1 className={styles.introTitle}>
+        {displayCategoryName === 'Phones'
+          ? 'Mobile phones'
+          : displayCategoryName}
+      </h1>
+
+      <p className={styles.modelsCount}>{filteredProducts.length} models</p>
     </div>
   );
 };

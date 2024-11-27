@@ -6,8 +6,9 @@ import React, {
   useReducer,
 } from 'react';
 import { Product } from '../types/Product';
-import apiClient from '../utils/httpClient';
-import { SortOrder } from '../types/Sort';
+import { CartProduct } from '../types/CartProduct';
+import { PerPageOption, SortOrder } from '../types/Sort';
+import { getProducts } from '../api/products';
 
 interface Props {
   children: ReactNode;
@@ -16,9 +17,10 @@ interface Props {
 type State = {
   products: Product[];
   errorMessage: string;
+  cart: CartProduct[];
+  favorites: Product[];
   page: number;
-  perPage: number;
-  totalCount: number;
+  perPage: PerPageOption;
   isLoading: boolean;
   sortOrder: SortOrder;
 };
@@ -27,138 +29,198 @@ type ProductsContextType = State & {
   setProducts: (payload: Product[]) => void;
   setErrorMessage: (payload: string) => void;
   setPage: (payload: number) => void;
-  setPerPage: (payload: number) => void;
-  setTotalCount: (payload: number) => void;
+  setPerPage: (payload: PerPageOption) => void;
   setLoading: (payload: boolean) => void;
   setOrder: (payload: SortOrder) => void;
+  SetAddToCart: (product: CartProduct) => void;
+  SetRemoveFromCart: (id: string) => void;
+  SetUpdateQuantity: (id: string, quantity: number) => void;
+  SetAddToFavorites: (product: Product) => void;
+  SetRemoveFromFavorites: (id: string) => void;
 };
 
 type Action =
-  | { type: 'SetProduct'; payload: Product[] }
-  | { type: 'SetErrorMessage'; payload: string }
-  | { type: 'SetPage'; payload: number }
-  | { type: 'SetPerPage'; payload: number }
-  | { type: 'SetTotalCount'; payload: number }
-  | { type: 'SetLoading'; payload: boolean }
-  | { type: 'SetOrder'; payload: SortOrder };
+  | { type: 'SET_PRODUCTS'; payload: Product[] }
+  | { type: 'SET_ERROR_MESSAGE'; payload: string }
+  | { type: 'SET_PAGE'; payload: number }
+  | { type: 'SET_PER_PAGE'; payload: PerPageOption }
+  | { type: 'SET_LOADING'; payload: boolean }
+  | { type: 'SET_ORDER'; payload: SortOrder }
+  | { type: 'SET_ADD_TO_CART'; product: CartProduct }
+  | { type: 'SET_REMOVE_FROM_CART'; id: string }
+  | { type: 'SET_UPDATE_QUANTITY'; id: string; quantity: number }
+  | { type: 'SET_ADD_TO_FAVORITES'; product: Product }
+  | { type: 'SET_REMOVE_FROM_FAVORITES'; id: string };
 
 export const ProductsContext = createContext<ProductsContextType>({
+  cart: [],
   products: [],
+  favorites: [],
   errorMessage: '',
   page: 1,
-  perPage: 10,
-  totalCount: 0,
+  perPage: PerPageOption.Four,
   isLoading: false,
   sortOrder: SortOrder.Newest,
   setProducts: () => {},
   setErrorMessage: () => {},
   setPage: () => {},
   setPerPage: () => {},
-  setTotalCount: () => {},
   setLoading: () => {},
   setOrder: () => {},
+  SetAddToCart: () => {},
+  SetRemoveFromCart: () => {},
+  SetUpdateQuantity: () => {},
+  SetAddToFavorites: () => {},
+  SetRemoveFromFavorites: () => {},
 });
 
 const initialState: State = {
+  cart: JSON.parse(localStorage.getItem('cart') || '[]'),
+  favorites: JSON.parse(localStorage.getItem('favorites') || '[]'),
   products: [],
   errorMessage: '',
   page: 1,
-  perPage: 10,
-  totalCount: 0,
+  perPage: PerPageOption.Four,
   isLoading: false,
   sortOrder: SortOrder.Newest,
 };
 
 const productsReducer = (state: State, action: Action): State => {
   switch (action.type) {
-    case 'SetProduct':
+    case 'SET_PRODUCTS':
       return { ...state, products: action.payload };
-    case 'SetOrder':
+    case 'SET_ORDER':
       return { ...state, sortOrder: action.payload };
-    case 'SetErrorMessage':
+    case 'SET_ERROR_MESSAGE':
       return { ...state, errorMessage: action.payload };
-    case 'SetPage':
+    case 'SET_PAGE':
       return { ...state, page: action.payload };
-    case 'SetPerPage':
+    case 'SET_PER_PAGE':
       return { ...state, perPage: action.payload };
-    case 'SetTotalCount':
-      return { ...state, totalCount: action.payload };
-    case 'SetLoading':
+    case 'SET_LOADING':
       return { ...state, isLoading: action.payload };
+    case 'SET_ADD_TO_CART': {
+      const productExists = state.cart.find(
+        item => item.id === action.product.id,
+      );
+      if (productExists) {
+        return {
+          ...state,
+          cart: state.cart.map(item =>
+            item.id === action.product.id
+              ? { ...item, quantity: item.quantity + 1 }
+              : item,
+          ),
+        };
+      }
+      const updatedCart = [...state.cart, { ...action.product, quantity: 1 }];
+      localStorage.setItem('cart', JSON.stringify(updatedCart));
+      return { ...state, cart: updatedCart };
+    }
+    case 'SET_REMOVE_FROM_CART': {
+      const updatedCart = state.cart.filter(item => item.id !== action.id);
+      localStorage.setItem('cart', JSON.stringify(updatedCart));
+      return { ...state, cart: updatedCart };
+    }
+    case 'SET_UPDATE_QUANTITY': {
+      const updatedCart = state.cart.map(item =>
+        item.id === action.id ? { ...item, quantity: action.quantity } : item,
+      );
+      localStorage.setItem('cart', JSON.stringify(updatedCart));
+      return { ...state, cart: updatedCart };
+    }
+    case 'SET_ADD_TO_FAVORITES': {
+      const isAlreadyFavorite = state.favorites.some(
+        item => item.id === action.product.id,
+      );
+      if (isAlreadyFavorite) return state;
+      const updatedFavorites = [...state.favorites, action.product];
+      localStorage.setItem('favorites', JSON.stringify(updatedFavorites));
+      return { ...state, favorites: updatedFavorites };
+    }
+    case 'SET_REMOVE_FROM_FAVORITES': {
+      const updatedFavorites = state.favorites.filter(
+        item => item.id !== action.id,
+      );
+      localStorage.setItem('favorites', JSON.stringify(updatedFavorites));
+      return { ...state, favorites: updatedFavorites };
+    }
     default:
       return state;
   }
 };
 
 export const ProductsProvider: React.FC<Props> = ({ children }) => {
-  const [
-    { products, errorMessage, page, perPage, totalCount, isLoading, sortOrder },
-    dispatch,
-  ] = useReducer(productsReducer, initialState);
+  const [state, dispatch] = useReducer(productsReducer, initialState);
 
   const setProducts = (newProducts: Product[]) => {
-    dispatch({ type: 'SetProduct', payload: newProducts });
+    dispatch({ type: 'SET_PRODUCTS', payload: newProducts });
   };
 
   const setErrorMessage = (newErrorMessage: string) => {
-    dispatch({ type: 'SetErrorMessage', payload: newErrorMessage });
+    dispatch({ type: 'SET_ERROR_MESSAGE', payload: newErrorMessage });
   };
 
   const setPage = (newPage: number) => {
-    dispatch({ type: 'SetPage', payload: newPage });
+    dispatch({ type: 'SET_PAGE', payload: newPage });
   };
 
-  const setPerPage = (newPerPage: number) => {
-    dispatch({ type: 'SetPerPage', payload: newPerPage });
-  };
-
-  const setTotalCount = (newTotalCount: number) => {
-    dispatch({ type: 'SetTotalCount', payload: newTotalCount });
+  const setPerPage = (newPerPage: PerPageOption) => {
+    dispatch({ type: 'SET_PER_PAGE', payload: newPerPage });
   };
 
   const setLoading = (newIsLoading: boolean) => {
-    dispatch({ type: 'SetLoading', payload: newIsLoading });
+    dispatch({ type: 'SET_LOADING', payload: newIsLoading });
   };
 
   const setOrder = (newSort: SortOrder) => {
-    dispatch({ type: 'SetOrder', payload: newSort });
+    dispatch({ type: 'SET_ORDER', payload: newSort });
+  };
+
+  const SetAddToCart = (product: CartProduct) => {
+    dispatch({ type: 'SET_ADD_TO_CART', product });
+  };
+
+  const SetRemoveFromCart = (id: string) => {
+    dispatch({ type: 'SET_REMOVE_FROM_CART', id });
+  };
+
+  const SetUpdateQuantity = (id: string, quantity: number) => {
+    dispatch({ type: 'SET_UPDATE_QUANTITY', id, quantity });
+  };
+
+  const SetAddToFavorites = (product: Product) => {
+    dispatch({ type: 'SET_ADD_TO_FAVORITES', product });
+  };
+
+  const SetRemoveFromFavorites = (id: string) => {
+    dispatch({ type: 'SET_REMOVE_FROM_FAVORITES', id });
   };
 
   useEffect(() => {
     setLoading(true);
-    const fetchProducts = async () => {
-      try {
-        const response = await apiClient.get<Product[]>('/phones.json');
 
-        setProducts(response.data);
-        setLoading(false);
-      } catch (error) {
-        setErrorMessage('Something went wrong');
-        throw new Error('Error');
-      }
-    };
-
-    fetchProducts();
+    getProducts()
+      .then(setProducts)
+      .finally(() => setLoading(false));
   }, []);
 
   const value = useMemo(
     () => ({
-      products,
-      errorMessage,
-      page,
-      perPage,
-      totalCount,
-      isLoading,
-      sortOrder,
+      ...state,
       setProducts,
       setErrorMessage,
       setPage,
       setPerPage,
-      setTotalCount,
       setLoading,
       setOrder,
+      SetAddToCart,
+      SetRemoveFromCart,
+      SetUpdateQuantity,
+      SetAddToFavorites,
+      SetRemoveFromFavorites,
     }),
-    [products, errorMessage, page, perPage, totalCount, isLoading, sortOrder],
+    [state],
   );
 
   return (

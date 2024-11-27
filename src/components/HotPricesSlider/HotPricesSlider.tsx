@@ -6,16 +6,19 @@ import { ProductsContext } from '../../store/ProductsContext';
 import { ProductCard } from '../ProductCard';
 import icons from '../../assets/icons/icons.svg';
 import styles from './HotPricesSlider.module.scss';
+import { Category } from '../../types/Category';
 
 export const HotPricesSlider: React.FC = () => {
   const { products } = useContext(ProductsContext);
   const [activeIndex, setActiveIndex] = useState(0);
+
   const hotPriceModels = products.filter(
-    product => product.priceRegular > product.priceDiscount,
+    product =>
+      product.fullPrice > product.price && product.category === Category.Phones,
   );
 
-  const isRegularShow = products.some(
-    product => product.priceRegular > product.priceDiscount,
+  const isRegularShow = hotPriceModels.some(
+    product => product.fullPrice > product.price,
   );
 
   return (
@@ -63,6 +66,7 @@ export const HotPricesSlider: React.FC = () => {
                   product={product}
                   showRegularPrice={isRegularShow}
                   imageWrapperSize="small"
+                  category={Category.Phones}
                 />
               </SwiperSlide>
             ))}

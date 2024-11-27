@@ -3,24 +3,61 @@ import { ProductsContext } from '../../store/ProductsContext';
 import { ProductCard } from '../ProductCard';
 import { Product } from '../../types/Product';
 import styles from './ProductList.module.scss';
+import { useSearchParams } from 'react-router-dom';
+import { PerPageOption } from '../../types/Sort';
+import { Pagination } from '../UI/Pagination';
 
-export const ProductList: React.FC = () => {
-  const { products } = useContext(ProductsContext);
+interface ProductListProps {
+  filteredProducts: Product[];
+  category: string;
+}
+
+export const ProductList: React.FC<ProductListProps> = ({
+  filteredProducts,
+  category,
+}) => {
+  const { page, setPage } = useContext(ProductsContext);
+  const [searchParams] = useSearchParams();
+
+  const handlePageChange = (page: number) => {
+    setPage(page);
+  };
+
+  const perPage = +(searchParams.get('perPage') || PerPageOption.Sixteen);
+
+  const totalPages =
+    perPage === PerPageOption.All
+      ? 1
+      : Math.ceil(filteredProducts.length / perPage);
+
+  const visibleProducts =
+    perPage === PerPageOption.All
+      ? filteredProducts
+      : filteredProducts.slice((page - 1) * perPage, page * perPage);
 
   return (
     <div className={styles.phonesContainer}>
-      {products.length > 0 ? (
+      {visibleProducts.length > 0 ? (
         <div className={styles.phonesWrapper}>
-          {products.map((product: Product) => (
+          {visibleProducts.map((product: Product) => (
             <ProductCard
               key={product.id}
               product={product}
               imageWrapperSize="large"
+              category={category}
             />
           ))}
         </div>
       ) : (
         <p>No products available</p>
+      )}
+
+      {perPage !== 0 && (
+        <Pagination
+          totalPages={totalPages}
+          currentPage={page}
+          onPageChange={handlePageChange}
+        />
       )}
     </div>
   );

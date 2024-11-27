@@ -1,0 +1,385 @@
+@import '../../styles/global';
+
+.block {
+  padding-top: 40px;
+}
+
+.imagesList {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  .imagesItem {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #3b3e4a;
+    transition: border 0.3s ease;
+    height: 80px;
+    width: 80px;
+
+    &:hover {
+      border: 1px solid #f1f2f9;
+    }
+
+    &.active {
+      border: 1px solid #f1f2f9;
+    }
+
+    button {
+      width: 66px;
+      height: 66px;
+      aspect-ratio: 1 / 1;
+      background-size: contain;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-color: unset;
+      border: none;
+      padding: 0;
+    }
+  }
+}
+
+.id {
+  width: 176px;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 15.34px;
+  text-align: right;
+  color: $gray-icons;
+}
+
+.selectors__options {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 48px;
+
+  position: relative;
+
+  &::after {
+    height: 1px;
+    width: 100%;
+    background: #3b3e4a;
+    bottom: -24px;
+    content: '';
+    position: absolute;
+  }
+
+  .wrapperColor {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 36px;
+    background-color: #3b3e4a;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+
+    &:hover {
+      background-color: $gray-white;
+    }
+
+    &.active {
+      background-color: $gray-white;
+    }
+
+    .color {
+      width: 30px;
+      height: 30px;
+      border-radius: 36px;
+      border: 2px solid #0f1121;
+    }
+  }
+}
+
+.information {
+  max-width: 320px;
+  margin-left: 64px;
+  width: 100%;
+}
+
+.slider {
+  display: flex;
+  gap: 16px;
+  padding-bottom: 80px;
+
+  .imageWrapper {
+    width: 464px;
+    height: 464px;
+    img {
+      width: 464px;
+      aspect-ratio: 1 / 1;
+      object-fit: contain;
+    }
+  }
+}
+
+.title {
+  font-size: 32px;
+  font-weight: 800;
+  line-height: 41px;
+  letter-spacing: -0.01em;
+  text-align: left;
+  color: $gray-white;
+  margin-bottom: 40px;
+}
+
+.price {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-bottom: 16px;
+
+  gap: 8px;
+}
+
+.priceCurrent {
+  font-size: 32px;
+  font-weight: 800;
+  line-height: 41px;
+  letter-spacing: -0.01em;
+  text-align: left;
+  color: $gray-white;
+}
+
+.priceFull {
+  font-size: 22px;
+  font-weight: 600;
+  line-height: 28.12px;
+  text-align: left;
+  color: $gray-secondary;
+}
+
+.productCardButtons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 32px;
+}
+
+.addToFavouriteBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border: none;
+  background: rgba(50, 53, 66, 1);
+
+  @include hover(background-color, rgba(74, 77, 88, 1));
+}
+
+.icon {
+  transition: color 0.3s ease;
+  width: 16px;
+  height: 16px;
+  color: $main-white-color;
+}
+
+.favoriteIcon {
+  color: #eb5757;
+}
+
+.specsChar {
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 15.34px;
+  text-align: left;
+  color: $gray-secondary;
+}
+
+.specsProperty {
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 15.34px;
+  text-align: right;
+  color: $gray-white;
+}
+
+.selectors__title {
+  margin-bottom: 8px;
+}
+
+.about__item {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.titleAbout {
+  position: relative;
+  margin-bottom: 48px;
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 30.8px;
+  text-align: left;
+  color: $gray-white;
+
+  &::after {
+    content: '';
+    bottom: -16px;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 1px;
+    width: 100%;
+    background: #3b3e4a;
+    position: absolute;
+  }
+}
+
+.specsWrapper {
+  display: flex;
+  gap: 64px;
+}
+
+.about {
+  max-width: 559px;
+}
+
+.specsList__item {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.specs {
+  width: 100%;
+}
+
+.specsList {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.property {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 21px;
+  text-align: left;
+  color: $gray-secondary;
+}
+
+.mark {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 21px;
+  color: $gray-white;
+  text-align: right;
+}
+
+.specsList__itemSm {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.customButton {
+  @include on-phone {
+    width: 263px;
+    height: 48px;
+  }
+
+  @include on-tablet {
+    width: 263px;
+    height: 48px;
+  }
+
+  @include on-desktop {
+    width: 263px;
+    height: 48px;
+  }
+}
+
+.capacity {
+  border: 1px solid #4a4d58;
+  background: $pageColor;
+  color: $gray-white;
+  transition: background-color 0.3s ease-in-out;
+
+  &:hover {
+    background-color: $gray-white;
+    color: black;
+  }
+
+  &.active {
+    max-width: 60px;
+    padding: 7px 8px 4px;
+    background: $gray-white;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 21px;
+    text-align: center;
+    color: black;
+  }
+}
+
+.about__list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.description {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 21px;
+  text-align: left;
+  color: $gray-secondary;
+}
+
+.navigationBack {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 0;
+  margin-bottom: 16px;
+
+  background: none;
+  border: none;
+
+  .back {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: color 0.3s ease-in-out;
+    color: $gray-secondary;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 15/34px;
+    text-align: justify;
+    text-decoration-skip-ink: none;
+
+    height: 100%;
+  }
+
+  .arrowLeft {
+    color: $gray-icons;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    svg {
+      transition: color 0.3s ease-in-out;
+      width: 16px;
+      height: 16px;
+    }
+  }
+
+  &:hover {
+    .arrowLeft {
+      svg {
+        color: $main-white-color;
+      }
+    }
+
+    .productName {
+      color: $main-white-color;
+    }
+  }
+}

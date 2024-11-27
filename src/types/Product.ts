@@ -3,24 +3,39 @@ export type ProductDescription = {
   text?: string[];
 };
 
-export type Product = {
+export interface Product {
   id: string;
-  camera: string;
-  capacity: string;
-  capacityAvailable: string[];
   category: string;
-  cell: string[];
-  color: string;
-  colorsAvailable: string[];
-  description: ProductDescription[];
-  images: string[];
+  itemId: string;
   name: string;
+  fullPrice: number;
+  price: number;
+  screen: string;
+  capacity: string;
+  color: string;
+  ram: string;
+  year: number;
+  image: string;
+}
+
+export interface ProductSpecs {
+  id: string;
+  category: string;
   namespaceId: string;
-  priceDiscount: number;
+  name: string;
+  capacityAvailable: string[];
+  capacity: string;
   priceRegular: number;
+  priceDiscount: number;
+  colorsAvailable: string[];
+  color: string;
+  images: string[];
+  description: ProductDescription[];
+  screen: string;
+  resolution: string;
   processor: string;
   ram: string;
-  resolution: string;
-  screen: string;
+  camera: string;
   zoom: string;
-};
+  cell: string[];
+}

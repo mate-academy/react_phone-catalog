@@ -24,6 +24,12 @@
   justify-content: space-between;
   width: 89px;
   height: 100%;
+
+  transition: all 0.3s ease-in-out;
+
+  &:hover {
+    transform: scale(1.1);
+  }
 }
 
 .footerBackIcon {

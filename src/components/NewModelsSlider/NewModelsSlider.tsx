@@ -6,16 +6,19 @@ import { ProductsContext } from '../../store/ProductsContext';
 import { ProductCard } from '../ProductCard';
 import icons from '../../assets/icons/icons.svg';
 import styles from './NewModelsSlider.module.scss';
+import { Category } from '../../types/Category';
 
 export const BrandNewModelsSlider: React.FC = () => {
   const { products } = useContext(ProductsContext);
   const [activeIndex, setActiveIndex] = useState(0);
 
-  const newModels = products.filter(product =>
-    product.name.toLowerCase().includes('iphone 14'),
+  const newModels = products.filter(
+    product =>
+      product.name.toLowerCase().includes('iphone 14') &&
+      product.category === Category.Phones,
   );
-  const isRegularShow = products.some(
-    product => product.priceRegular < product.priceDiscount,
+  const isRegularShow = newModels.some(
+    product => product.fullPrice < product.price,
   );
 
   return (
@@ -63,6 +66,7 @@ export const BrandNewModelsSlider: React.FC = () => {
                   product={product}
                   showRegularPrice={isRegularShow}
                   imageWrapperSize="large"
+                  category={Category.Phones}
                 />
               </SwiperSlide>
             ))}
