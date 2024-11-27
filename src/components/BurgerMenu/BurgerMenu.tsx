@@ -13,21 +13,19 @@ export const BurgerMenu: React.FC<Props> = ({
   handleClose,
 }) => {
   return (
-    <div
+    <button
       className="burger-menu"
       onClick={() => (isOpen ? handleClose() : handleOpen())}
     >
-      <a href="#burger-menu" className="burger-menu__link">
-        <img
-          src={
-            isOpen
-              ? '../../../img/close-button.svg'
-              : '../../../img/burger-menu.svg '
-          }
-          alt="Burger menu"
-          className="burger-menu__image"
-        />
-      </a>
-    </div>
+      <img
+        src={
+          isOpen
+            ? '../../../img/close-button.svg'
+            : '../../../img/burger-menu.svg '
+        }
+        alt="Burger menu"
+        className="burger-menu__image"
+      />
+    </button>
   );
 };

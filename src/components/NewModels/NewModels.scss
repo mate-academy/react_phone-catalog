@@ -1,0 +1,15 @@
+@import '../../utils';
+@import '../../layout/container';
+
+.new-models {
+  &__title {
+    font-family: $font-family;
+    font-size: 32px;
+    font-weight: $font-weight-bolt;
+
+    @media (max-width: $mobile) {
+      font-size: 22px;
+      width: 136px;
+    }
+  }
+}

@@ -1,5 +1,6 @@
 .container {
-  max-width: 1040px;
+  padding-bottom: 80px;
+  max-width: 1136px;
   margin: 0 auto;
 
   @media (max-width: $tablet) {
@@ -9,5 +10,12 @@
 
   @media (max-width: $mobile) {
     padding: 0;
+    padding-bottom: 56px;
+  }
+
+  &--mobile {
+    @media (max-width: $mobile) {
+      padding-left: 16px;
+    }
   }
 }

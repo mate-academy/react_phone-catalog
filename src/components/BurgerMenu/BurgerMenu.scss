@@ -2,11 +2,15 @@
 
 .burger-menu {
   display: none;
-  border-left: 1px solid $elements;
   width: 64px;
-  height: 64px;
+  height: 100%;
   align-items: center;
-  justify-content: center;
+  justify-content:center;
+  padding: 0;
+  background: $white;
+  border: 0;
+  border-left: 1px solid $elements;
+  cursor: pointer;
 
   @media (max-width: $mobile) {
     display: flex;
