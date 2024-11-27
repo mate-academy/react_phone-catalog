@@ -1,4 +1,4 @@
-@import '../../scss/main';
+@import '../../styles/main';
 
 .img {
   width: 100%;
@@ -7,9 +7,9 @@
   object-fit: cover;
 
   @include on-tablet {
-    max-height: 324px;
-    object-fit: contain;
-    padding-inline: 75px;
+    max-height: 189px;
+    object-fit:contain;
+    padding-inline: 51px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -17,7 +17,8 @@
   }
 
   @include on-desktop {
-    max-height: 432px;
+    padding-inline: 48px;
+    max-height: 400px;
   }
 }
 
@@ -30,7 +31,7 @@
   background-color: $hover-and-bg;
   border: 1px solid $icons;
   width: 32px;
-  height: 80%;
+  height: 189px;
   border-radius: 48px;
   display: flex;
   align-items: center;
@@ -38,22 +39,22 @@
   cursor: pointer;
   transition: background-color 0.3s;
   position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
+  top: 0;
+  margin-bottom: 0;
+  margin-top: 0;
   z-index: 10;
 
   @include hover {
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: rgba(66, 25, 208, 0.8);
   }
 
-  @include on-desktop {
-    top: 210px;
-    height: 85%;
+@include on-desktop {
+    height: 400px;
   }
 }
 
 .swiperButtonNext {
-  right: 24px;
+  right: 0;
   background-image: url(../../assets/img/icons/arrow-right.svg);
   background-repeat: no-repeat;
   background-position: center;
@@ -65,5 +66,5 @@
   background-repeat: no-repeat;
   background-position: center;
   color: $primary;
-  left: 24px;
+  left: 0;
 }

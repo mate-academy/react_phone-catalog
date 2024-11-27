@@ -1,0 +1,64 @@
+@import '../../styles/main';
+
+.picture {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-self: center;
+  width: 100%;
+  height: 108px;
+
+  @include on-tablet {
+    height: 181px;
+  }
+
+  @include on-desktop {
+    height: 196px;
+  }
+}
+
+.image {
+width: auto;
+height: 100%;
+}
+
+.name{
+  @include font-set($body-text);
+}
+
+.price {
+  width: 100%;
+
+  @include font-set($tablet-h3);
+
+  padding-bottom: 8px;
+  border-bottom: 1px solid $elements;
+}
+
+.details {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.item {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  line-height: 15.34px;
+font-weight: 700;
+}
+
+.itemName {
+  color: $secondary;
+text-align: left;
+}
+
+.itemParam {
+color: $primary;
+text-align: right;
+}
+
+
+

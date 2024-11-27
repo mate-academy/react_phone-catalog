@@ -1,4 +1,4 @@
-@import '../../scss/main';
+@import '../../styles/main';
 
 .homePage {
   display: flex;
@@ -6,6 +6,8 @@
   gap: 56px;
 
   @include on-tablet {
+    @include page-container;
+
     gap: 64px;
   }
 
@@ -14,14 +16,15 @@
   }
 
   &__title {
-    @include page-container;
     @include font-set($mobile-h1);
+    @include page-container;
 
     margin-block: 24px;
 
     @include on-tablet {
       @include font-set($tablet-h1);
-
+      
+      padding-inline: 0;
       margin-block: 32px;
     }
 
@@ -29,4 +32,5 @@
       margin-block: 56px;
     }
   }
+
 }

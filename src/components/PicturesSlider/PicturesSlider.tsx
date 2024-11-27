@@ -1,17 +1,16 @@
 import slider1_mobile from '../../assets/img/slider/slider-1-mobile.png';
-import slider1_tablet from '../../assets/img/slider/slider-1-tablet.png';
+import slider1_tablet from '../../assets/img/slider/slider.png';
 import slider2 from '../../assets/img/slider/slider-2.png';
 import slider3 from '../../assets/img/slider/slider-3.png';
-import style from './MainSlider.module.scss';
+import style from './PicturesSlider.module.scss';
 import { Swiper, SwiperSlide } from 'swiper/react';
-// eslint-disable-next-line import/no-extraneous-dependencies
 import { Pagination, Autoplay, Navigation, Thumbs } from 'swiper/modules';
 import 'swiper/scss';
 import 'swiper/scss/pagination';
 import { useEffect } from 'react';
 import { useState } from 'react';
 
-export const MainSlider = () => {
+export const PicturesSlider = () => {
   const [isActiveNavigation, setIsActiveNavigation] = useState(false);
 
   useEffect(() => {

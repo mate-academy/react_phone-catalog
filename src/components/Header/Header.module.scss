@@ -1,8 +1,8 @@
-@import '../../scss/main';
+@import '../../styles/main';
 
 .header {
   display: flex;
-  background: $white;
+  background: rgba(255, 255, 255, 0.8);
   height: 48px;
   position: sticky;
   top: 0;
