@@ -1,0 +1,107 @@
+@import '../../../../styles/main.scss';
+
+.picturesSlider {
+  margin-bottom: 56px;
+
+  @include on-tablet {
+    @include content-padding-inline;
+    margin-bottom: 64px;
+  }
+
+  @include on-desktop {
+    margin-bottom: 80px;
+  }
+}
+
+.picturesSlider__container {
+  display: flex;
+  margin: 0 auto;
+  justify-content: center;
+  position: relative;
+
+}
+
+.picturesSlider__button {
+  display: none;
+
+  @include on-tablet {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 0;
+    bottom: 0;
+    width: 32px;
+    background-color: $color-white;
+    border: 1px solid $color-gray-icons-placeholders;
+    flex-shrink: 0;
+  }
+}
+
+.picturesSlider__button--left::after {
+  position: absolute;
+  content: url('/public/icons/Chevron\ \(Arrow\ Left\).svg');
+  width: 16px;
+  height: 16px;
+}
+
+.picturesSlider__button--right::after {
+  position: absolute;
+  content: url('/public/icons/Chevron\ \(Arrow\ Right\).svg');
+  width: 16px;
+  height: 16px;
+}
+
+.picturesSlider__container-image {
+  min-height: 320px;
+
+  border: 4px solid black;
+  box-sizing: border-box;
+
+  aspect-ratio: 1 / 1;
+
+  @include on-tablet {
+    aspect-ratio: auto;
+    min-height: 189px;
+    max-height: 400px;
+    margin-inline: 19px;
+    flex-grow: 1;
+  }
+
+  @include on-desktop {
+    margin-inline: 16px;
+  }
+}
+
+.picturesSlider__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.picturesSlider__dots {
+  height: 24px;
+  display: flex;
+  margin: 0 auto;
+  justify-content: center;
+}
+
+.picturesSlider__dot {
+  position: relative;
+  width: 24px;
+  height: 24px;
+}
+
+.picturesSlider__dot::after {
+  position: absolute;
+  content: '';
+  background-color: $color-gray-elements;
+  width: 14px;
+  height: 4px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.picturesSlider__dot--active::after {
+  background-color: $color-gray-primary;
+}

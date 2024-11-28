@@ -1,0 +1,142 @@
+@import '../../../styles/utils/variables.scss';
+
+.productCard {
+  box-sizing: border-box;
+  width: 272px;
+  height: 506px;
+  padding: 32px;
+  border: 1px solid $color-gray-elements;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  &__container {
+    &-photo {
+      width: 208px;
+      height: 196px;
+    }
+
+    &-title {
+      padding-top: 16px;
+    }
+
+    &-price {
+      height: 31px;
+      display: flex;
+      gap: 8px;
+    }
+
+    &-specifications {
+      display: flex;
+      flex-direction: column;
+      height: 77px;
+      padding-block: 8px;
+      gap: 8px;
+    }
+
+    &-buttons {
+      width: 100%;
+      height: 40px;
+      display: flex;
+      gap: 8px;
+    }
+  }
+
+  &__photo {
+    width: 100%; /* Подгоняем по ширине контейнера */
+    height: 100%; /* Подгоняем по высоте контейнера */
+    object-fit: contain; /* Сохраняем пропорции и полностью вписываем в контейнер */
+  }
+
+  &__title {
+    font-family: 'Mont-Regular', sans-serif;
+    color: $color-gray-primary;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 21px;
+  }
+
+  &__price {
+    &-discount {
+      font-family: 'Mont-Bold', sans-serif;
+      color: $color-gray-primary;
+      font-size: 22px;
+      font-weight: 700;
+      line-height: 30.8px;
+    }
+
+    &-regular {
+      font-family: 'Mont-Regular', sans-serif;
+      color: $color-gray-secondary;
+      font-size: 22px;
+      font-weight: 500;
+      line-height: 28.12px;
+      text-decoration-line: line-through;
+    }
+  }
+
+  &__divider {
+    width: 100%; /* Ширина линии */
+    height: 1px; /* Высота линии */
+    background-color: $color-gray-elements; /* Цвет линии */
+  }
+
+  &__block {
+    width: 100%;
+    height: 15px;
+    display: flex;
+    justify-content: space-between;
+
+    font-family: 'Mont-SemiBold', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+  }
+
+  &__info {
+    color: $color-gray-secondary;
+  }
+
+  &__value {
+    color: $color-gray-primary;
+  }
+
+  &__button {
+    &-addToCard {
+      border: none; /* Убираем рамку */
+      cursor: pointer; /* Указываем, что это кнопка */
+
+      width: 160px;
+      height: 100%;
+      background-color: $color-gray-primary;
+
+      font-family: 'Mont-SemiBold', sans-serif;
+      color: $color-white;
+      font-size: 14px;
+      font-weight: 700;
+      line-height: 21px;
+    }
+
+    &-addToFavourite {
+      position: relative;
+      box-sizing: border-box;
+      border: 1px solid $color-gray-icons-placeholders;
+      background-color: #fff;
+      width: 40px;
+      height: 40px;
+      cursor: pointer;
+    }
+
+    &-addToFavourite:after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 16px;
+      height: 16px;
+      background-image: url('/icons/Favourites\ \(Heart\ Like\).svg'); /* Убедитесь, что путь верный */
+      background-size: contain;
+      background-repeat: no-repeat;
+    }
+  }
+}

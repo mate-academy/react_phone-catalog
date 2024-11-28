@@ -1,0 +1,56 @@
+// @import '../../styles/utils/variables.scss';
+// @import '../../styles/utils/mixins.scss';
+
+@import '../../styles/main.scss';
+
+.homePage {
+  &__title {
+    @include content-padding-inline();
+
+    @include on-tablet {
+      font-size: 48px;
+      line-height: 56px;
+    }
+
+    & {
+      margin-block: 32px;
+      font-family: 'Mont-Bold', sans-serif;
+      color: $color-gray-primary;
+      font-size: 32px;
+      font-weight: 800;
+      line-height: 41px;
+      letter-spacing: -0.01em;
+    }
+  }
+}
+
+
+  // &__image {
+  //   width: 100%; /* Занимает всю ширину */
+  //   height: 0; /* Устанавливаем через padding */
+  //   padding-top: 100%; /* Соотношение сторон 1:1 для квадратной картинки */
+  //   background-image: url('/img/Banner Slider.png');
+  //   background-size: cover; /* Заполняет контейнер, сохраняя пропорции */
+  //   background-position: center; /* Центрирует изображение */
+  //   background-repeat: no-repeat; /* Изображение не повторяется */
+
+  //   @include on-tablet {
+  //     background-image: url('/img/Banner.png');
+  //     min-height: 320px; /* Устанавливаем минимальную высоту для планшета */
+  //     max-height: 400px; /* Максимальная высота для предотвращения чрезмерного увеличения */
+  //     padding-top: 0; /* Соотношение сторон для планшета */
+  //     background-size: contain; /* Сохраняет пропорции и заполняет контейнер, не обрезая изображение */
+
+  //     max-width: 1040px; /* Устанавливаем максимальную ширину для картинки */
+  //     margin: 0 auto; /* Центрирует изображение по горизонтали, если оно меньше 1040px */
+  //   }
+
+  //   /* Медиазапрос для мобильных устройств */
+  //   @media (min-width: 768px) {
+  //     background-size: contain; /* Сохраняет пропорции и заполняет контейнер */
+  //     background-position: center; /* Центрирует изображение */
+  //     height: auto; /* Подстраивает высоту */
+  //     padding-top: 0; /* Убирает соотношение сторон */
+  //   }
+  // }
+

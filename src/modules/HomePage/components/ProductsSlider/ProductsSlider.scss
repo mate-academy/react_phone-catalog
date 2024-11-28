@@ -1,0 +1,66 @@
+@import '../../../../styles/main.scss';
+
+.productsSlider {
+  @include content-padding-inline;
+
+  border: 4px solid rgb(204, 255, 0);  /* НУЖНО ПОТОМ УДАЛИТЬ!!!!!! */
+  box-sizing: border-box;  /* НУЖНО ПОТОМ УДАЛИТЬ!!!!!! */
+}
+
+.productsSlider__container-top {
+  border: 4px solid red;  /* НУЖНО ПОТОМ УДАЛИТЬ!!!!!! */
+  box-sizing: border-box;  /* НУЖНО ПОТОМ УДАЛИТЬ!!!!!! */
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.productsSlider__title {
+  font-family: 'Mont-Bold', sans-serif;
+  font-size: 32px;
+  font-weight: 800;
+  line-height: 41px;
+  letter-spacing: -0.01em;
+  color: $color-gray-primary;
+}
+
+.productsSlider__buttons {
+  display: flex;
+  gap: 16px;
+}
+
+.productsSlider__button {
+  position: relative;
+  width: 32px;
+  height: 32px;
+  border: 1px solid $color-gray-elements;
+  background-color: $color-white;
+  box-sizing: border-box;
+}
+
+.productsSlider__button--left::after {
+  position: absolute;
+  content: url('/public/icons/Chevron\ \(Arrow\ Left\).svg');
+  width: 16px;
+  height: 16px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.productsSlider__button--right::after {
+  position: absolute;
+  content: url('/public/icons/Chevron\ \(Arrow\ Right\).svg');
+  width: 16px;
+  height: 16px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.productsSlider__content {
+  display: flex;
+  gap: 16px;
+}

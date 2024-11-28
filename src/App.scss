@@ -1,1 +1,12 @@
-// not empty
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.App {
+  min-width: 320px;
+
+  &__title-hidden {
+    display: none;
+  }
+}
