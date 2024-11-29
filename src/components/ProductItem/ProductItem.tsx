@@ -12,11 +12,15 @@ export const ProductItem: React.FC<Props> = ({
   itemData,
   showFullPrice = false,
 }) => {
+  const productLink = {
+    pathname: `/${itemData.category}/${itemData.itemId}`,
+  };
+
   return (
     <div className="product-item">
       <div className="product-item__container">
         <div className="product-item__top">
-          <Link to={`/${itemData.category}/${itemData.itemId}`}>
+          <Link to={productLink}>
             <img
               className="product-item__top-image image"
               src={itemData.image}
@@ -25,15 +29,12 @@ export const ProductItem: React.FC<Props> = ({
           </Link>
         </div>
 
-        <Link
-          to={`/${itemData.category}/${itemData.itemId}`}
-          className="product-item__title body-text"
-        >
+        <Link to={productLink} className="product-item__title body-text">
           {itemData.name}
         </Link>
 
         <div className="item-price">
-          <Link to={`/${itemData.category}/${itemData.itemId}`}>
+          <Link to={productLink}>
             <h3>${itemData.price}</h3>
           </Link>
 

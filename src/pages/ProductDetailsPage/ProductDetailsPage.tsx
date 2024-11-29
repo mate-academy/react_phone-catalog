@@ -18,6 +18,7 @@ import { FavouritesIcon } from '../../components/FavouritesIcon';
 
 import './ProductDetailsPage.scss';
 import { ProductNotFound } from '../../components/ProductNotFound';
+import { SomethingWentWrong } from '../../components/SomethingWentWrong';
 
 const colorMap: Record<string, string> = {
   black: '#000000',
@@ -53,7 +54,6 @@ export const ProductDetailsPage = () => {
   const itemId = pathSegments[1];
 
   const navigate = useNavigate();
-
   const [products, setProducts] = useState<ProductDetails[] | []>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [hasError, setHasError] = useState(false);
@@ -82,18 +82,17 @@ export const ProductDetailsPage = () => {
   }, [products, itemId]);
 
   const handleBackClick = () => {
-    if (window.history.length > 1) {
-      navigate(-1);
-    } else {
-      navigate('/');
-    }
+    navigate('..');
   };
+
+  /* eslint-disable @typescript-eslint/indent */
 
   const techSpecs = product
     ? Object.keys(product).slice(
         Object.keys(product).indexOf('description') + 1,
       )
     : [];
+  /* eslint-enable @typescript-eslint/indent */
 
   const formatSpecValue = (value: unknown): string => {
     if (Array.isArray(value)) {
@@ -161,9 +160,13 @@ export const ProductDetailsPage = () => {
         <ResponsiveHeader>{product?.name}</ResponsiveHeader>
       </div>
 
-      {!isLoading && !product && <ProductNotFound />}
+      {hasError && <SomethingWentWrong />}
 
-      {!isLoading && product && (
+      {!hasError && !isLoading && !product && (
+        <ProductNotFound title="Product not found!" />
+      )}
+
+      {!hasError && !isLoading && product && (
         <div className="details-page__container">
           <div className="details-page__main">
             <div className="details-page__main-container">

@@ -38,6 +38,8 @@ import searchNight from '/img/icons/search-icon-night.png';
 
 import notFoundProduct from '/img/product-not-found.png';
 
+import notFoundPage from '/img/page-not-found.png';
+
 const themeStyles = (isLightTheme: boolean) => ({
   closeMenuButton: isLightTheme ? closeMenuDay : closeMenuNight,
 
@@ -66,6 +68,8 @@ const themeStyles = (isLightTheme: boolean) => ({
   search: isLightTheme ? searchDay : searchNight,
 
   notFoundProduct,
+
+  notFoundPage,
 });
 
 export default themeStyles;

@@ -4,9 +4,10 @@ import './ProductNotFound.scss';
 
 type Props = {
   category?: Category;
+  title?: string;
 };
 
-export const ProductNotFound: React.FC<Props> = ({ category }) => {
+export const ProductNotFound: React.FC<Props> = ({ category, title }) => {
   const { notFoundProduct } = themeStyles(true);
 
   return (
@@ -14,7 +15,7 @@ export const ProductNotFound: React.FC<Props> = ({ category }) => {
       {category ? (
         <h2>There are no {`${category}`} matching the query!</h2>
       ) : (
-        <h2>Not Found</h2>
+        <h2>{title ? title : ''}</h2>
       )}
 
       <img

@@ -126,7 +126,9 @@ export const Navbar: React.FC = () => {
         >
           <img src={favourites} alt="Favourites" className="icon" />
 
-          <NumberOfItems amount={favouritesItems.length} />
+          {!!favouritesItems.length && (
+            <NumberOfItems amount={favouritesItems.length} />
+          )}
         </NavLink>
 
         <NavLink

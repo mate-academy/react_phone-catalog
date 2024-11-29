@@ -11,7 +11,7 @@ import { Provider } from 'react-redux';
 import { store } from './app/store';
 import { ProductDetailsPage } from './pages/ProductDetailsPage';
 import { ScrollToTop } from './components/ScrollToTop';
-import { ProductNotFound } from './components/ProductNotFound';
+import { PageNotFound } from './components/PageNotFound';
 
 export const Root: React.FC = () => {
   return (
@@ -19,9 +19,9 @@ export const Root: React.FC = () => {
       <HashRouter>
         <ScrollToTop />
         <Routes>
-          <Route path="/" element={<App />}>
-            <Route path="*" element={<ProductNotFound />} />
+          <Route path="*" element={<PageNotFound />} />
 
+          <Route path="/" element={<App />}>
             <Route path="/home" element={<Navigate to="/" replace={true} />} />
             <Route index element={<HomePage />} />
 

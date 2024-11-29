@@ -5,6 +5,7 @@ import { RootState } from '../../app/store';
 import { ProductsList } from '../../components/ProductsList';
 
 import './FavouritesPage.scss';
+import { ProductNotFound } from '../../components/ProductNotFound';
 
 export const FavouritesPage: React.FC = () => {
   const favouritesItems = useSelector(
@@ -20,6 +21,8 @@ export const FavouritesPage: React.FC = () => {
       </div>
 
       <p className="page__subtitle text-gray">{`${favouritesItems.length} models`}</p>
+
+      {!favouritesItems.length && <ProductNotFound />}
 
       <ProductsList products={favouritesItems} />
     </div>
