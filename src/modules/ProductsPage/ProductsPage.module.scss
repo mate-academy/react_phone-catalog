@@ -111,29 +111,29 @@
     width: 30rem;
   }
 
-  &::after{
+  &Text{
     @extend %text-body;
 
     display: block;
     position: absolute;
-    content: "No result";
+    text-align: center;
     top: 50%;
-    left: 41.5%;
-    width: 100%;
+    left: 38%;
+    width: 6.5rem;
     font-size: 1.2rem;
 
     color: #F1F2F9;
 
     @include on-tablet {
       font-size: 1.4rem;
+      width: 9rem;
       top: 51.5%;
-      left: 44%;
     }
 
     @include on-m-desktop {
       font-size: 1.8rem;
+      width: 11rem;
       top: 52%;
-      left: 43%;
     }
   }
 }

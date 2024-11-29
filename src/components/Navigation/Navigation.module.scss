@@ -7,7 +7,7 @@
   align-items: center;
   margin-top: 8rem;
 
-  @include on-tablet {
+  @media screen and (min-width: 780px) {
     flex-direction: row;
     gap: 3.2rem;
     margin-top: 0;
@@ -27,7 +27,7 @@
 
   padding-block: 0.8rem;
 
-  @include on-tablet {
+  @media screen and (min-width: 780px) {
     padding-block: 1.85rem;
   }
 
@@ -65,14 +65,9 @@
 .activeLink {
   color: var(--color-text-hover);
 
-  @include on-tablet {
-    pointer-events: none;
-  }
-
   &:hover {
     color: var(--color-text-hover);
   }
-
 
   &::before, &::after {
     width: 50%;

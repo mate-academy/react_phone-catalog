@@ -19,8 +19,10 @@ import { useDebounce } from '../../hooks/useDebounce';
 import { getProducts } from '../../utils/getProducts';
 import { FetchDataType } from '../../types/FetchDataType';
 import { Breadcrumbs } from '../../components/Breadcrumbs';
+import { useTranslation } from 'react-i18next';
 
 export const ProductsPage = () => {
+  const { t } = useTranslation('common');
   const [productList, setProductList] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
   // const [error, setError] = useState('');
@@ -34,10 +36,10 @@ export const ProductsPage = () => {
     .filter(location => !!location)[0] as FetchDataType;
   const title =
     productType === FetchDataType.phones
-      ? 'Mobile phones'
+      ? t('productCategory.mobilePhones')
       : productType === FetchDataType.tablets
-        ? 'Tablets'
-        : 'Accessories';
+        ? t('productCategory.tablets')
+        : t('productCategory.accessories');
   const itemsPerPage = searchParams.get('perPage') || ItemsPerPage.four;
   const sortBy = (
     (Object.keys(SortBy).includes(String(searchParams.get('sortBy'))) &&
@@ -71,12 +73,6 @@ export const ProductsPage = () => {
     window.scroll(0, 0);
   }, [currentPage]);
 
-  const numOfProductsTitle = !filteredProductList.length
-    ? 'No products'
-    : filteredProductList.length === 1
-      ? '1 model'
-      : `${filteredProductList.length} models`;
-
   return loading ? (
     <p>Loading</p>
   ) : (
@@ -89,7 +85,9 @@ export const ProductsPage = () => {
       ) : (
         <div className={styles.productsPageContainer}>
           <h1 className={styles.title}>{title}</h1>
-          <p className={styles.categoryNumModels}>{numOfProductsTitle}</p>
+          <p className={styles.categoryNumModels}>
+            {t('models', { count: filteredProductList.length })}
+          </p>
           <SortProduct />
           {!!filteredProductListPerPage.length ? (
             <>
@@ -106,10 +104,15 @@ export const ProductsPage = () => {
             </>
           ) : (
             <>
-              <div className={styles.noResultImg}></div>
+              <div className={styles.noResultImg}>
+                <span className={styles.noResultImgText}>
+                  {t('noResult.noResult')}
+                </span>
+              </div>
               <p className={styles.noResultText}>
-                No {productType} found for your search.
-                Try&nbsp;another&nbsp;keyword.
+                {t('noResult.noProductsFound', {
+                  productType: t(`noResult.${productType}`),
+                })}
               </p>
             </>
           )}

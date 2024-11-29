@@ -5,6 +5,7 @@ import { usePagination, DOTS } from '../../hooks/usePagination';
 import React from 'react';
 import { Link, Navigate, useSearchParams } from 'react-router-dom';
 import { getSearchWith } from '../../utils/getSearchWith';
+import { useTranslation } from 'react-i18next';
 
 interface Props {
   totalCount: number;
@@ -12,6 +13,7 @@ interface Props {
 }
 
 export const Pagination: React.FC<Props> = ({ totalCount, currentPage }) => {
+  const { t } = useTranslation('common');
   const [searchParams, setSearchParams] = useSearchParams();
 
   const itemsPerPage =
@@ -55,6 +57,7 @@ export const Pagination: React.FC<Props> = ({ totalCount, currentPage }) => {
         className={classNames(styles.btn, styles.btnPrev)}
         onClick={handlePrev}
         disabled={currentPage === 1}
+        aria-label={t('accessibility.previousPage')}
       >
         <svg
           width="16"
@@ -66,28 +69,27 @@ export const Pagination: React.FC<Props> = ({ totalCount, currentPage }) => {
         </svg>
       </button>
       <ul className={styles.productsPages}>
-        {paginationRange.map((page, index) => {
-          return (
-            <li key={`${page}${index}`}>
-              <Link
-                to={{
-                  search: getSearchWith({ page }, searchParams),
-                }}
-                className={classNames(styles.productsPage, {
-                  [styles.productsPageDots]: page === DOTS,
-                  [styles.productsPageIsActive]: page === currentPage,
-                })}
-              >
-                {page}
-              </Link>
-            </li>
-          );
-        })}
+        {paginationRange.map((page, index) => (
+          <li key={`${page}${index}`}>
+            <Link
+              to={{
+                search: getSearchWith({ page }, searchParams),
+              }}
+              className={classNames(styles.productsPage, {
+                [styles.productsPageDots]: page === DOTS,
+                [styles.productsPageIsActive]: page === currentPage,
+              })}
+            >
+              {page}
+            </Link>
+          </li>
+        ))}
       </ul>
       <button
         className={classNames(styles.btn, styles.btnNext)}
         onClick={handleNext}
         disabled={currentPage === lastPage}
+        aria-label={t('accessibility.nextPage')}
       >
         <svg
           width="16"

@@ -5,15 +5,11 @@ import { FavouriteContext } from '../../ContextProvider';
 import { ProductCard } from '../../components/ProductCard';
 import { Link } from 'react-router-dom';
 import classNames from 'classnames';
+import { useTranslation } from 'react-i18next';
 
 export const FavoritesPage = () => {
+  const { t } = useTranslation('common');
   const { favouriteProducts } = useContext(FavouriteContext);
-
-  const numOfProductsTitle = !favouriteProducts.length
-    ? 'No products'
-    : favouriteProducts.length === 1
-      ? '1 model'
-      : `${favouriteProducts.length} models`;
 
   return (
     <section className={styles.favoritesPageWrapper}>
@@ -21,8 +17,10 @@ export const FavoritesPage = () => {
         <Breadcrumbs productList={favouriteProducts} />
       </div>
       <div className={styles.favoritesPageContainer}>
-        <h1 className={styles.title}>Favorites</h1>
-        <p className={styles.categoryNumModels}>{numOfProductsTitle}</p>
+        <h1 className={styles.title}>{t('favorites')}</h1>
+        <p className={styles.categoryNumModels}>
+          {t('models', { count: favouriteProducts.length })}
+        </p>
         <div className={styles.mainPartContainer}>
           {favouriteProducts.length ? (
             <div className={styles.productsContainer}>
@@ -32,14 +30,14 @@ export const FavoritesPage = () => {
             </div>
           ) : (
             <>
-              <p className={styles.titleEmpty}>
-                Your favorites will appear here.
-                Start&nbsp;adding&nbsp;some&nbsp;items&nbsp;you&nbsp;like!
-              </p>
+              <p className={styles.titleEmpty}>{t('noResult.noFavorites')}</p>
               <Link to={'/'} className={classNames('ctaBtn', styles.ctaBtn)}>
-                Find Your Favorites
+                {t('buttons.findFavorite')}
               </Link>
-              <div className={styles.emptyFavImg}></div>
+              <div
+                className={styles.emptyFavImg}
+                aria-label={t('accessibility.emptyFavorites')}
+              ></div>
             </>
           )}
         </div>

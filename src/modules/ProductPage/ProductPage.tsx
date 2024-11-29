@@ -3,8 +3,6 @@ import { useContext, useEffect, useState } from 'react';
 
 import { ProductListContext } from '../../ContextProvider';
 
-import { SliderTitle } from '../../types/SliderTitle';
-
 import { ProductPageSlider } from './components/ProductPageSlider';
 import { getSuggestedProducts } from '../../utils/getSuggestedProducts';
 import { SuggestionsSlider } from '../../components/SuggestionsSlider';
@@ -20,8 +18,10 @@ import { Product } from '../../types/Product';
 import { ProductType } from '../../types/ProductType';
 import { getProducts } from '../../utils/getProducts';
 import { FetchDataType } from '../../types/FetchDataType';
+import { useTranslation } from 'react-i18next';
 
 export const ProductPage = () => {
+  const { t } = useTranslation('common');
   const [suggestedProducts, setSuggestedProducts] = useState<Product[]>([]);
   // const [error, setError] = useState('');
 
@@ -76,7 +76,7 @@ export const ProductPage = () => {
       </section>
       <SuggestionsSlider
         productList={suggestedProducts}
-        title={SliderTitle.suggestions}
+        title={t('suggestionSliderTitle')}
       />
     </>
   );

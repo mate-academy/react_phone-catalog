@@ -11,9 +11,11 @@ import styles from './Slider.module.scss';
 
 import { imagesHero } from '../../../../../constants/imagesHero';
 import { CTAId } from '../../../../../types/CTAId';
-// import { useEffect, useState } from 'react';
+import { useTranslation, Trans } from 'react-i18next';
 
 export const Slider = () => {
+  const { t } = useTranslation(['homepage', 'common']);
+
   const pagination = {
     clickable: true,
     renderBullet: function (_: number, className: string) {
@@ -53,18 +55,24 @@ export const Slider = () => {
                   >
                     {id === CTAId.ipad ? (
                       <span>
-                        Now available
-                        <br /> in our store!
+                        <Trans i18nKey={'heroSlider.slideTitleTablets'}>
+                          Now available
+                          <br /> in our store!
+                        </Trans>
                       </span>
                     ) : id === CTAId.iphone ? (
                       <span>
-                        AI-opening
-                        <br /> possibilities.
+                        <Trans i18nKey={'heroSlider.slideTitlePhones'}>
+                          AI-opening
+                          <br /> possibilities.
+                        </Trans>
                       </span>
                     ) : (
                       <span>
-                        New finish.
-                        <br /> Never quit.
+                        <Trans i18nKey={'heroSlider.slideTitleAccessories'}>
+                          New finish.
+                          <br /> Never quit.
+                        </Trans>
                       </span>
                     )}
                   </p>
@@ -75,8 +83,9 @@ export const Slider = () => {
                         [styles.ctaBtnBlack]: id === CTAId.iphone,
                         [styles.ctaBtnWhite]: id === CTAId.watch,
                       })}
+                      aria-label={t('accessibility.orderNow', { ns: 'common' })}
                     >
-                      Order now
+                      {t('heroSlider.orderNow', { ns: 'homepage' })}
                     </Link>
                   </div>
                 </div>

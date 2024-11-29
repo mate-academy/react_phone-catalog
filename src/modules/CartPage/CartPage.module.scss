@@ -128,4 +128,12 @@
   grid-column: 1 / -1;
 
   margin-bottom: 1.5rem;
+
+  padding-inline: 1.6rem;
+  max-width: 22rem;
+  width: max-content;
+
+  @include on-tablet {
+    max-width: 27rem;
+  }
 }

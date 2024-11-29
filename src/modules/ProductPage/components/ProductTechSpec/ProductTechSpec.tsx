@@ -3,6 +3,7 @@ import classNames from 'classnames';
 import { formatSpecText } from '../../../../utils/formatSpecText';
 import { Product } from '../../../../types/Product';
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 
 interface Props {
   product: Product;
@@ -11,38 +12,40 @@ interface Props {
 export const ProductTechSpec: React.FC<Props> = ({
   product: { capacity, screen, ram, resolution, processor, camera, zoom, cell },
 }) => {
+  const { t } = useTranslation('common');
+
   return (
     <div className={styles.productTechSpecContainer}>
-      <h3 className={styles.aboutTitle}>Tech specs</h3>
+      <h3 className={styles.aboutTitle}>{t('techSpecTitle')}</h3>
       <ul className={styles.productInfo}>
         <li
           className={classNames(styles.productInfoItem, styles.productSpecItem)}
         >
-          <span>Screen</span>
+          <span>{t('specs.screen')}</span>
           <span>{formatSpecText(screen)}</span>
         </li>
         <li
           className={classNames(styles.productInfoItem, styles.productSpecItem)}
         >
-          <span>Resolution</span>
+          <span>{t('specs.resolution')}</span>
           <span>{resolution}</span>
         </li>
         <li
           className={classNames(styles.productInfoItem, styles.productSpecItem)}
         >
-          <span>Processor</span>
+          <span>{t('specs.processor')}</span>
           <span>{processor}</span>
         </li>
         <li
           className={classNames(styles.productInfoItem, styles.productSpecItem)}
         >
-          <span>RAM</span>
+          <span>{t('specs.ram')}</span>
           <span>{formatSpecText(ram)}</span>
         </li>
         <li
           className={classNames(styles.productInfoItem, styles.productSpecItem)}
         >
-          <span>Built in memory</span>
+          <span>{t('specs.capacity')}</span>
           <span>{formatSpecText(capacity)}</span>
         </li>
         {!!camera && (
@@ -52,7 +55,7 @@ export const ProductTechSpec: React.FC<Props> = ({
               styles.productSpecItem,
             )}
           >
-            <span>Camera</span>
+            <span>{t('specs.camera')}</span>
             <span>{formatSpecText(camera)}</span>
           </li>
         )}
@@ -63,7 +66,7 @@ export const ProductTechSpec: React.FC<Props> = ({
               styles.productSpecItem,
             )}
           >
-            <span>Zoom</span>
+            <span>{t('specs.zoom')}</span>
             <span>{formatSpecText(zoom)}</span>
           </li>
         )}
@@ -74,7 +77,7 @@ export const ProductTechSpec: React.FC<Props> = ({
               styles.productSpecItem,
             )}
           >
-            <span>Cell</span>
+            <span>{t('specs.cell')}</span>
             <span>{cell.join(', ')}</span>
           </li>
         )}

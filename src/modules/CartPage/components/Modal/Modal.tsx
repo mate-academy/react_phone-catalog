@@ -2,12 +2,14 @@ import styles from './Modal.module.scss';
 import classNames from 'classnames';
 import React, { useContext, useEffect, useRef, useState } from 'react';
 import { CartContext } from '../../../../ContextProvider';
+import { useTranslation, Trans } from 'react-i18next';
 
 interface Props {
   handleModal: (open: boolean) => void;
 }
 
 export const Modal: React.FC<Props> = ({ handleModal }) => {
+  const { t } = useTranslation('common');
   const { setCartProducts } = useContext(CartContext);
   const [isClosed, setIsClosed] = useState(false);
   const modal = useRef<HTMLDivElement>(null);
@@ -57,22 +59,25 @@ export const Modal: React.FC<Props> = ({ handleModal }) => {
         })}
       >
         <p className={styles.modalText}>
-          Checkout is coming soon! <br />
-          {/*eslint-disable-next-line max-len*/}
-          For&nbsp;now,&nbsp;would&nbsp;you&nbsp;like&nbsp;to&nbsp;clear&nbsp;your&nbsp;cart?
+          <Trans i18nKey={'common:checkoutIsComing'}>
+            Checkout is coming soon!
+            <br /> For now, would you like to clear your cart?
+          </Trans>
         </p>
         <div className={styles.btnContainer}>
           <button
             className={classNames(styles.btnConfirm, 'btnCart')}
             onClick={handleConfirm}
+            aria-label={t('accessibility.confirmOrder')}
           >
-            Confirm
+            {t('buttons.confirm')}
           </button>
           <button
             className={classNames(styles.btnCancel, 'btnCart')}
             onClick={handleClose}
+            aria-label={t('accessibility.cancelOrder')}
           >
-            Cancel
+            {t('buttons.cancel')}
           </button>
         </div>
       </div>

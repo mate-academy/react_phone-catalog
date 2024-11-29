@@ -33,6 +33,8 @@
 .productImg {
   height: 100%;
 
+  -webkit-user-drag: none;
+
   transition: transform $transition-duration ease-in-out;
 
   &:hover {

@@ -5,6 +5,7 @@ import { NavItems } from '../../types/NavItems';
 import React, { ReactNode } from 'react';
 import classNames from 'classnames';
 import { instantScroll } from '../../utils/instantScroll';
+import { useTranslation } from 'react-i18next';
 
 interface Props {
   isMobileMenuOpen?: boolean;
@@ -19,6 +20,8 @@ export const Navigation: React.FC<Props> = ({
   isMobileMenuOpen,
   setIsMobileMenuOpen,
 }) => {
+  const { t } = useTranslation('navigation');
+
   const handleClick = () => {
     if (setIsMobileMenuOpen) {
       setIsMobileMenuOpen(!isMobileMenuOpen);
@@ -35,7 +38,7 @@ export const Navigation: React.FC<Props> = ({
           onClick={handleClick}
           onMouseUp={instantScroll}
         >
-          {key}
+          {t(key)}
         </NavLink>
       ))}
     </nav>

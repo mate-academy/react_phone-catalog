@@ -4,6 +4,7 @@ import { BackBtn } from '../../../../components/BackBtn';
 
 import styles from './ProductNotFound.module.scss';
 import img from '../../../../assets/icons/product-not-found.svg';
+import { useTranslation } from 'react-i18next';
 
 interface Props {
   path: string;
@@ -16,6 +17,8 @@ export const ProductNotFound: React.FC<Props> = ({
   prevPath,
   search,
 }) => {
+  const { t } = useTranslation('common');
+
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
   }, []);
@@ -27,12 +30,13 @@ export const ProductNotFound: React.FC<Props> = ({
       </div>
       <div className={styles.contentContainer}>
         <div className={styles.notFoundImgWrapper}>
-          <img src={img} alt="Page not found" className={styles.notFoundImg} />
+          <img
+            src={img}
+            alt={t('accessibility.productNotFound')}
+            className={styles.notFoundImg}
+          />
         </div>
-        <p className={styles.titleEmpty}>
-          It looks like this product isn’t here.
-          No&nbsp;worries,&nbsp;there’s&nbsp;lots&nbsp;more&nbsp;to&nbsp;see!
-        </p>
+        <p className={styles.titleEmpty}>{t('noResult.noProductFound')}</p>
       </div>
     </section>
   );

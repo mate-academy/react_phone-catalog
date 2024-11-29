@@ -1,5 +1,6 @@
 import styles from './AboutProduct.module.scss';
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 
 interface DescriptionItem {
   title: string;
@@ -11,9 +12,11 @@ interface Props {
 }
 
 export const AboutProduct: React.FC<Props> = ({ description }) => {
+  const { t } = useTranslation('common');
+
   return (
     <div className={styles.aboutProductContainer}>
-      <h3 className={styles.aboutTitle}>About</h3>
+      <h3 className={styles.aboutTitle}>{t('aboutTitle')}</h3>
       {description.map(({ title, text }) => {
         return (
           <div className={styles.descriptionContainer} key={title}>

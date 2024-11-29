@@ -4,12 +4,14 @@ import styles from './SearchInput.module.scss';
 import React, { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { useLocation, useSearchParams } from 'react-router-dom';
 import { ProductType } from '../../types/ProductType';
+import { useTranslation } from 'react-i18next';
 
 interface Props {
   handleMobileMenu: (open: boolean) => void;
 }
 
 export const SearchInput: React.FC<Props> = ({ handleMobileMenu }) => {
+  const { t } = useTranslation('common');
   const [isSearchBtnVisible, setIsSearchBtnVisible] = useState(false);
   const [query, setQuery] = useState('');
   const [isSearchOpen, setIsSearchOpen] = useState(false);
@@ -81,7 +83,7 @@ export const SearchInput: React.FC<Props> = ({ handleMobileMenu }) => {
       <>
         <button
           className={classNames('buttonSearch', styles.btnSearch)}
-          aria-label="Open search input"
+          aria-label={t('accessibility.openSearch')}
           onClick={openSearch}
         >
           <svg
@@ -106,8 +108,8 @@ export const SearchInput: React.FC<Props> = ({ handleMobileMenu }) => {
             className={classNames(styles.searchInput, {
               [styles.searchInputCaretActive]: !!query,
             })}
-            placeholder={`Search in ${category}...`}
-            aria-label={`Search in ${category}...`}
+            placeholder={`${t('search.searchIn')} ${t(`search.${category}`)}...`}
+            aria-label={`${t('search.searchIn')} ${t(`search.${category}`)}`}
             inputMode="text"
             value={query}
             onBlur={() => setIsSearchOpen(false)}
@@ -116,7 +118,7 @@ export const SearchInput: React.FC<Props> = ({ handleMobileMenu }) => {
           />
           <button
             className={styles.btnCloseSearch}
-            aria-label="Close search"
+            aria-label={t('accessibility.closeSearch')}
             onClick={closeSearch}
           >
             <svg

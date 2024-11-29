@@ -4,12 +4,15 @@ import { Link, NavLink, useLocation, useParams } from 'react-router-dom';
 import React, { Fragment, useMemo } from 'react';
 import classNames from 'classnames';
 import { Product } from '../../types/Product';
+import { ProductType } from '../../types/ProductType';
+import { useTranslation } from 'react-i18next';
 
 interface Props {
   productList: Product[];
 }
 
 export const Breadcrumbs: React.FC<Props> = ({ productList }) => {
+  const { t } = useTranslation('common');
   const { pathname } = useLocation();
   const { productId } = useParams();
 
@@ -43,7 +46,11 @@ export const Breadcrumbs: React.FC<Props> = ({ productList }) => {
       })}
     >
       <div className={styles.pathContainer}>
-        <Link to="/" className={styles.toHome}>
+        <Link
+          to="/"
+          className={styles.toHome}
+          aria-label={t('accessibility.goToHomepage')}
+        >
           <svg
             width="16"
             height="16"
@@ -55,6 +62,14 @@ export const Breadcrumbs: React.FC<Props> = ({ productList }) => {
           </svg>
         </Link>
         {breadcrumbs.map(([location, locationName], index) => {
+          const path = Object.keys(ProductType).includes(
+            locationName.toLowerCase(),
+          )
+            ? t(`productCategory.${locationName.toLowerCase()}`)
+            : locationName === 'Favorites'
+              ? t(`favorites`)
+              : locationName;
+
           return (
             <Fragment key={location}>
               <span className={styles.arrowRight}>
@@ -74,7 +89,7 @@ export const Breadcrumbs: React.FC<Props> = ({ productList }) => {
                     index === breadcrumbs.length - 1,
                 })}
               >
-                {locationName}
+                {path}
               </NavLink>
             </Fragment>
           );

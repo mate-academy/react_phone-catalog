@@ -5,6 +5,7 @@ import React from 'react';
 import { CartBtnType } from '../../../../types/CartBtnType';
 import { CartProduct } from '../../../../types/Context';
 import { hasDiscount } from '../../../../utils/hasDiscount';
+import { useTranslation } from 'react-i18next';
 
 interface Props {
   cartProduct: CartProduct;
@@ -15,6 +16,7 @@ export const ProductCart: React.FC<Props> = ({
   cartProduct: { id, quantity, product },
   handleCart,
 }) => {
+  const { t } = useTranslation('common');
   const { state } = useLocation();
   const { category, images, name, priceDiscount, priceRegular } = product;
   const withDiscount = hasDiscount(name);
@@ -26,6 +28,7 @@ export const ProductCart: React.FC<Props> = ({
         <button
           onClick={() => handleCart(CartBtnType.delete, id)}
           className={styles.btnClose}
+          aria-label={t('accessibility.removeProduct')}
         >
           <svg
             width="16"
@@ -53,7 +56,7 @@ export const ProductCart: React.FC<Props> = ({
             className={styles.btnCounter}
             onClick={() => handleCart(CartBtnType.subtract, id)}
             disabled={quantity <= 1}
-            aria-label="Decrease number of products"
+            aria-label={t('accessibility.deleteOne')}
           >
             <svg
               width="16"
@@ -68,7 +71,7 @@ export const ProductCart: React.FC<Props> = ({
           <button
             className={styles.btnCounter}
             onClick={() => handleCart(CartBtnType.add, id)}
-            aria-label="Increase number of products"
+            aria-label={t('accessibility.addOne')}
           >
             <svg
               width="16"

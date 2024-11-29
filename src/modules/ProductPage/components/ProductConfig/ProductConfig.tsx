@@ -11,6 +11,7 @@ import { useCart } from '../../../../hooks/useCart';
 import { useFavourite } from '../../../../hooks/useFavourite';
 import { Product } from '../../../../types/Product';
 import { hasDiscount } from '../../../../utils/hasDiscount';
+import { useTranslation } from 'react-i18next';
 
 interface Props {
   id: string;
@@ -27,6 +28,7 @@ export const ProductConfig: React.FC<Props> = ({
   search,
   prevPath,
 }) => {
+  const { t } = useTranslation('common');
   const [isAddedToCart, addToCart] = useCart(id, product);
   const [isAddedToFavourite, addToFavourite] = useFavourite(id, product);
   const navigate = useNavigate();
@@ -81,7 +83,7 @@ export const ProductConfig: React.FC<Props> = ({
   return (
     <div className={styles.productSpecsContainer}>
       <div className={styles.configContainer}>
-        <span className={styles.subTitle}>Available colors</span>
+        <span className={styles.subTitle}>{t('availableColors')}</span>
         <div className={styles.configSelection}>
           {colorsAvailable.map(availableColor => (
             <span
@@ -100,7 +102,7 @@ export const ProductConfig: React.FC<Props> = ({
         <span className={styles.randomID}>{randomID}</span>
       </div>
       <div className={styles.configContainer}>
-        <span className={styles.subTitle}>Select capacity</span>
+        <span className={styles.subTitle}>{t('selectCapacity')}</span>
         <div className={styles.configSelection}>
           {capacityAvailable.map(availableCapacity => {
             return (
@@ -133,16 +135,17 @@ export const ProductConfig: React.FC<Props> = ({
             btnCartPressed: isAddedToCart,
           })}
           onClick={addToCart}
+          aria-label={t('accessibility.addToCart')}
           // disabled={isAddedToCart}
         >
-          {isAddedToCart ? 'In Cart' : 'Add to Cart'}
+          {isAddedToCart ? t('buttons.inCart') : t('buttons.addToCart')}
         </button>
         <button
           className={classNames('buttonFavourite', 'btnFavourite', {
             btnFavouritePressed: isAddedToFavourite,
           })}
           onClick={addToFavourite}
-          aria-label="Add to favourite"
+          aria-label={t('accessibility.addToFavorite')}
         >
           <svg
             width="16"
@@ -162,19 +165,19 @@ export const ProductConfig: React.FC<Props> = ({
       </div>
       <ul className={styles.productInfo}>
         <li className={styles.productInfoItem}>
-          <span>Screen</span>
+          <span>{t('specs.screen')}</span>
           <span>{formattedScreen}</span>
         </li>
         <li className={styles.productInfoItem}>
-          <span>Resolution</span>
+          <span>{t('specs.resolution')}</span>
           <span>{resolution}</span>
         </li>
         <li className={styles.productInfoItem}>
-          <span>Processor</span>
+          <span>{t('specs.processor')}</span>
           <span>{processor}</span>
         </li>
         <li className={styles.productInfoItem}>
-          <span>RAM</span>
+          <span>{t('specs.ram')}</span>
           <span>{formattedRam}</span>
         </li>
       </ul>

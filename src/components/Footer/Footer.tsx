@@ -1,8 +1,11 @@
 /* eslint-disable max-len */
 import styles from './Footer.module.scss';
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 
 export const Footer = () => {
+  const { t } = useTranslation(['navigation', 'common']);
+
   const handleBackToTop: React.MouseEventHandler<HTMLAnchorElement> = e => {
     e.preventDefault();
     document.body.scrollTop = 0;
@@ -45,7 +48,7 @@ export const Footer = () => {
             href="mailto:dmtivasenko@gmail.com?subject=Job opportunity"
             className={styles.reachMeItem}
           >
-            Contacts
+            {t('contacts', { ns: 'navigation' })}
           </a>
           <a
             href="https://github.com/modeltoIT"
@@ -53,11 +56,16 @@ export const Footer = () => {
             target="_blank"
             rel="noreferrer"
           >
-            Rights
+            {t('rights', { ns: 'navigation' })}
           </a>
         </div>
-        <a href="#" className={styles.toTop} onClick={handleBackToTop}>
-          Back to top
+        <a
+          href="#"
+          className={styles.toTop}
+          onClick={handleBackToTop}
+          aria-label={t('accessibility.goToTop', { ns: 'common' })}
+        >
+          {t('backToTop', { ns: 'navigation' })}
           <button className={styles.toTopBtn}>
             <svg
               width="16"

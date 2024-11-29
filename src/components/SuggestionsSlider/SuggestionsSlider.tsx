@@ -15,7 +15,7 @@ import classNames from 'classnames';
 
 interface Props {
   productList: Product[];
-  title: SliderTitle;
+  title: string;
 }
 
 export const SuggestionsSlider: React.FC<Props> = ({ productList, title }) => {

@@ -10,12 +10,14 @@ import { useFavourite } from '../../hooks/useFavourite';
 import { formatSpecText } from '../../utils/formatSpecText';
 import { instantScroll } from '../../utils/instantScroll';
 import { hasDiscount } from '../../utils/hasDiscount';
+import { useTranslation } from 'react-i18next';
 
 interface Props {
   product: Product;
 }
 
 export const ProductCard: React.FC<Props> = ({ product }) => {
+  const { t } = useTranslation('common');
   const [searchParams] = useSearchParams();
   const [isAddedToCart, addToCart] = useCart(product.id, product);
   const { pathname } = useLocation();
@@ -44,6 +46,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
       state={{ search: searchParams.toString(), pathname }}
       className={classNames(styles.productCardContainer)}
       onClick={instantScroll}
+      aria-label={t('accessibility.goToProductDetails')}
     >
       <div className={styles.productImgContainer}>
         <img src={images[0]} alt={name} className={styles.productImg} />
@@ -64,15 +67,15 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
 
       <ul className={styles.productInfo}>
         <li className={styles.productInfoItem}>
-          <span>Screen</span>
+          <span>{t('specs.screen')}</span>
           <span>{formatSpecText(screen)}</span>
         </li>
         <li className={styles.productInfoItem}>
-          <span>Capacity</span>
+          <span>{t('specs.capacity')}</span>
           <span>{formatSpecText(capacity)}</span>
         </li>
         <li className={styles.productInfoItem}>
-          <span>RAM</span>
+          <span>{t('specs.ram')}</span>
           <span>{formatSpecText(ram)}</span>
         </li>
       </ul>
@@ -83,16 +86,17 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
             btnCartPressed: isAddedToCart,
           })}
           onClick={addToCart}
+          aria-label={t('accessibility.addToCart')}
           // disabled={isAddedToCart}
         >
-          {isAddedToCart ? 'In Cart' : 'Add to Cart'}
+          {isAddedToCart ? t('buttons.inCart') : t('buttons.addToCart')}
         </button>
         <button
           className={classNames('buttonFavourite', 'btnFavourite', {
             btnFavouritePressed: isAddedToFavourite,
           })}
           onClick={addToFavourite}
-          aria-label="Add to favourite"
+          aria-label={t('accessibility.addToFavorite')}
         >
           <svg
             width="16"

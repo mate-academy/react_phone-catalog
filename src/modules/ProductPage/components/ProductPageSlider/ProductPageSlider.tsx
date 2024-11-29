@@ -4,14 +4,12 @@ import React, { useState } from 'react';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
 
-// Import Swiper styles
 import 'swiper/scss';
 import 'swiper/scss/free-mode';
 import 'swiper/scss/navigation';
 import 'swiper/scss/thumbs';
 import './ProductPageSlider.scss';
 
-// import required modules
 import { Navigation, Thumbs } from 'swiper/modules';
 
 interface Props {
@@ -43,7 +41,6 @@ export const ProductPageSlider: React.FC<Props> = ({ productName, images }) => {
         onSwiper={setThumbsSwiper}
         spaceBetween={10}
         slidesPerView={5}
-        // watchSlidesProgress={true}
         modules={[Navigation, Thumbs]}
         className="mySwiper productPageSlider"
       >

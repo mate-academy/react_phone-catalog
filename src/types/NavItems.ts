@@ -1,6 +1,6 @@
 export enum NavItems {
-  Home = '',
-  Phones = 'phones',
-  Tablets = 'tablets',
-  Accessories = 'accessories',
+  home = '',
+  phones = 'phones',
+  tablets = 'tablets',
+  accessories = 'accessories',
 }

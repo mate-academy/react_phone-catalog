@@ -6,10 +6,6 @@
   gap: 2.4rem;
   background-color: var(--color-background);
 
-  @include on-tablet {
-    display: none;
-  }
-
   position: fixed;
   top: 0;
   width: 100%;
@@ -20,9 +16,12 @@
   z-index: 2;
   pointer-events: none;
 
-
   transition: transform $transition-duration ease-in-out,
   opacity $transition-duration ease-in-out;
+
+  @media screen and (min-width: 780px) {
+    display: none;
+  }
 }
 
 .mobileMenuContainerVisible {

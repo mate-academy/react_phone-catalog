@@ -22,8 +22,16 @@
   &IsActive {
     width: 100%;
 
+
     @include on-tablet {
       box-shadow: -1px 0 0 0 var(--color-elements);
+      right: 5rem;
+      z-index: 1;
+      width: calc(100% - 14.8rem);
+    }
+
+    @media screen and (min-width: 780px) {
+      z-index: 0;
       right: 9.8rem;
       width: calc(100% - 19.4rem);
     }

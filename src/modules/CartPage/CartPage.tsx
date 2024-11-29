@@ -11,8 +11,11 @@ import { hasDiscount } from '../../utils/hasDiscount';
 import { getTotalProductsInCart } from '../../utils/getTotalProductsInCart';
 import { Modal } from './components/Modal';
 import classNames from 'classnames';
+import { useTranslation } from 'react-i18next';
 
 export const CartPage = () => {
+  const { t } = useTranslation('common');
+
   const { cartProducts, setCartProducts } = useContext(CartContext);
   const { state, pathname } = useLocation();
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -71,7 +74,7 @@ export const CartPage = () => {
   return (
     <section className={styles.container}>
       <BackBtn path={path} prevPath={prevPath} search={search} />
-      <h2 className={styles.productTitle}>Cart</h2>
+      <h2 className={styles.productTitle}>{t('cart')}</h2>
       <div className={styles.contentContainer}>
         {!!cartProducts.length ? (
           <>
@@ -90,14 +93,14 @@ export const CartPage = () => {
           </>
         ) : (
           <>
-            <p className={styles.titleEmpty}>
-              Looks like you haven’t added anything to your cart yet.
-              Let’s&nbsp;fill&nbsp;it&nbsp;up!
-            </p>
+            <p className={styles.titleEmpty}>{t('noResult.noCart')}</p>
             <Link to={'/'} className={classNames('ctaBtn', styles.ctaBtn)}>
-              Find Your Next Device
+              {t('buttons.findDevice')}
             </Link>
-            <div className={styles.emptyFavImg}></div>
+            <div
+              className={styles.emptyFavImg}
+              aria-label={t('accessibility.emptyCart')}
+            ></div>
           </>
         )}
       </div>

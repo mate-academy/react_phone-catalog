@@ -7,10 +7,12 @@ import { useSearchParams } from 'react-router-dom';
 import { getSearchWith } from '../../utils/getSearchWith';
 import { SortBy } from '../../types/SortBy';
 import { ItemsPerPage } from '../../types/ItemsPerPage';
+import { useTranslation } from 'react-i18next';
 
 interface Props {}
 
 export const SortProduct: React.FC<Props> = ({}) => {
+  const { t } = useTranslation('common');
   const [isSortByOpen, setIsSortByOpen] = useState(false);
   const [isSortItemsOpen, setIsSortItemsOpen] = useState(false);
   const [searchParams, setSearchParams] = useSearchParams();
@@ -165,7 +167,10 @@ export const SortProduct: React.FC<Props> = ({}) => {
 
     if (target.textContent) {
       if (target.textContent !== sortedBy) {
-        setSearchWith({ sortBy: target.textContent.toLowerCase(), page: 1 });
+        setSearchWith({
+          sortBy: target.dataset.sortby?.toLowerCase(),
+          page: 1,
+        });
       }
 
       setIsSortByOpen(false);
@@ -177,7 +182,10 @@ export const SortProduct: React.FC<Props> = ({}) => {
 
     if (target.textContent) {
       if (target.textContent !== itemsPerPage) {
-        setSearchWith({ perPage: target.textContent.toLowerCase(), page: 1 });
+        setSearchWith({
+          perPage: target.dataset.num?.toLowerCase(),
+          page: 1,
+        });
       }
 
       setIsSortItemsOpen(false);
@@ -193,7 +201,7 @@ export const SortProduct: React.FC<Props> = ({}) => {
         )}
       >
         <span ref={sortTitleRef} className={styles.selectTitle} tabIndex={-1}>
-          Sort by
+          {t('sort.sortBy')}
         </span>
         <div className={styles.selectContainer}>
           <button
@@ -204,8 +212,9 @@ export const SortProduct: React.FC<Props> = ({}) => {
             data-select={Select.sortBy}
             onClick={() => handleClick(Select.sortBy)}
             onBlur={handleBtnBlur}
+            aria-label={t('sort.sortBy')}
           >
-            {sortedBy}
+            {t(`sort.${sortedBy.toLowerCase()}`)}
             <svg
               width="16"
               height="16"
@@ -228,16 +237,17 @@ export const SortProduct: React.FC<Props> = ({}) => {
               [styles.selectMenuListIsNotActive]: !isSortByOpen,
             })}
           >
-            <li className={styles.selectMenuItem}>Newest</li>
-            <li className={styles.selectMenuItem}>Oldest</li>
-            <li className={styles.selectMenuItem}>Expensive</li>
-            <li className={styles.selectMenuItem}>Cheapest</li>
+            {Object.keys(SortBy).map(key => (
+              <li key={key} className={styles.selectMenuItem} data-sortby={key}>
+                {t(`sort.${key}`)}
+              </li>
+            ))}
           </ul>
         </div>
       </div>
       <div className={styles.sortItemContainer}>
         <span ref={itemsTitleRef} className={styles.selectTitle} tabIndex={-1}>
-          Items on page
+          {t('sort.itemsOnPage')}
         </span>
         <div
           className={classNames(
@@ -253,8 +263,11 @@ export const SortProduct: React.FC<Props> = ({}) => {
             data-select={Select.itemsOnPage}
             onClick={() => handleClick(Select.itemsOnPage)}
             onBlur={handleBtnBlur}
+            aria-label={t('sort.itemsOnPage')}
           >
-            {itemsPerPage}
+            {itemsPerPage.toLowerCase() === ItemsPerPage.all
+              ? t('sort.all')
+              : itemsPerPage}
             <svg
               width="16"
               height="16"
@@ -277,10 +290,11 @@ export const SortProduct: React.FC<Props> = ({}) => {
               [styles.selectMenuListIsNotActive]: !isSortItemsOpen,
             })}
           >
-            <li className={styles.selectMenuItem}>4</li>
-            <li className={styles.selectMenuItem}>8</li>
-            <li className={styles.selectMenuItem}>16</li>
-            <li className={styles.selectMenuItem}>All</li>
+            {Object.values(ItemsPerPage).map(num => (
+              <li key={num} className={styles.selectMenuItem} data-num={num}>
+                {num === ItemsPerPage.all ? t('sort.all') : num}
+              </li>
+            ))}
           </ul>
         </div>
       </div>
