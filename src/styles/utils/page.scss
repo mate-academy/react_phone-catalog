@@ -1,0 +1,36 @@
+@import '../../styles/main.scss';
+
+.page {
+  width: 100%;
+
+  & > * {
+    margin-left: 16px;
+    margin-right: 16px;
+
+    @include on-tablet {
+      margin-left: 24px;
+      margin-right: 24px;
+    }
+
+    @include on-desktop {
+      margin-left: 0;
+      margin-right: 0;
+    }
+  }
+
+  &__title {
+    margin-top: 24px;
+
+    @include on-tablet {
+      margin-top: 32px;
+    }
+
+    @include on-desktop {
+      margin-top: 40px;
+    }
+  }
+
+  &__subtitle {
+    margin-top: 8px;
+  }
+}

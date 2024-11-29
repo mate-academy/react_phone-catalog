@@ -5,9 +5,12 @@
   flex-direction: column;
   align-items: center;
   width: 100%;
+  margin-top: 48px;
   margin-bottom: 64px;
+  overflow: hidden;
 
-  @include on-dekstop {
+  @include on-desktop {
+    margin-top: 64px;
     margin-bottom: 80px;
   }
 
@@ -18,7 +21,7 @@
       min-width: 592px;
     }
 
-    @include on-dekstop {
+    @include on-desktop {
       max-width: 1136px;
     }
   }

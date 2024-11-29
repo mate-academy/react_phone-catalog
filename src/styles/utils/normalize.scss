@@ -10,17 +10,36 @@ iframe {
 }
 
 h1,
-h2 {
+h2,
+h3,
+h4 {
   font-weight: 800;
-  font-size: 48px;
-  line-height: 56px;
   letter-spacing: -0.01em;
   color: var(--main-color);
+}
+
+h1 {
+  font-size: 48px;
+  line-height: 56px;
 }
 
 h2 {
   font-size: 32px;
   line-height: 41px;
+  font-weight: 800;
+}
+
+h3 {
+  font-size: 22px;
+  line-height: 30.8px;
+  letter-spacing: 0em;
+}
+
+h4 {
+  font-size: 20px;
+  line-height: 26px;
+  font-weight: 600;
+  letter-spacing: 0em;
 }
 
 ul,
@@ -30,10 +49,12 @@ li {
 
 a {
   text-decoration: none;
+  color: inherit;
 }
 
 button {
   border-style: none;
+  background-color: transparent;
 }
 
 body {

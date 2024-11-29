@@ -1,3 +1,5 @@
+import { ProductsPage } from '../ProductsPage';
+
 export const TabletsPage: React.FC = () => {
-  return <></>;
+  return <ProductsPage title="Tablets" category="tablets" />;
 };

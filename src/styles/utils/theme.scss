@@ -24,7 +24,25 @@
   --main-color: var(--primary-color);
   --secondary-color: var(--secondary-color-light);
   --hover-color: var(--elements-color);
-  --navigation-buttons: var(--icons-color-light);
+  --navigation-buttons: var(--white-color);
+  --elements-border-color: var(--icons-color-light);
+  --arrow-border-color: var(--icons-color-light);
+  --arrow-background-color: none;
+  --button-color: var(--primary-color);
+  --product-border-color: var(--elements-color);
+  --product-background-color: none;
+  --dropdown-color: var(--white-color);
+  --dropdown-border-color: var(--icons-color-light);
+  --pagination-border-color: var(--elements-color);
+  --pagination-background-color: var(--white-color);
+  --pagination-active-color: var(--primary-color);
+  --pagination-active-text: var(--white-color);
+  --footer-text-color: var(--secondary-color-light);
+  --deatails-button-border-color: var(--elements-color);
+  --deatails-button-border-color-active: var(--primary-color);
+  --deatails-button-color: var(--primary-color);
+  --deatails-button-color-active: var(--white-color);
+  --deatails-button-background-color-active: var(--primary-color);
 
   transition: all 0.3s ease;
 }
@@ -36,6 +54,24 @@
   --secondary-color: var(--secondary-color-dark);
   --hover-color: var(--surface2-color);
   --navigation-buttons: var(--surface2-color);
+  --elements-border-color: none;
+  --arrow-border-color: none;
+  --arrow-background-color: var(--surface2-color);
+  --button-color: var(--accent-color);
+  --product-border-color: none;
+  --product-background-color: var(--surface1-color);
+  --dropdown-color: var(--surface2-color);
+  --dropdown-border-color: var(--elements-color-dark);
+  --pagination-border-color: none;
+  --pagination-background-color: var(--surface1-color);
+  --pagination-active-color: var(--accent-color);
+  --pagination-active-text: var(--white-color-dark);
+  --footer-text-color: var(--white-color-dark);
+  --deatails-button-border-color: var(--elements-color-dark);
+  --deatails-button-border-color-active: var(--white-color-dark);
+  --deatails-button-color: var(--white-color-dark);
+  --deatails-button-color-active: var(--black-color-dark);
+  --deatails-button-background-color-active: var(--white-color-dark);
 
   transition: all 0.3s ease;
 }

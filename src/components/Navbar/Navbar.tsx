@@ -1,26 +1,18 @@
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, useLocation } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import classNames from 'classnames';
+import themeStyles from '../../styles/utils/themeStyles';
+
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from '../../app/store';
+import { toggleTheme } from '../../features/currentTheme';
+import useMediaQuery from '../../hooks/useMediaQuery';
+import { ScreenSize } from '../../types/screenSize';
+import { NumberOfItems } from '../NumberOfItems';
+import { SearchInput } from '../SearchInput';
+import { Category } from '../../types/category';
+
 import './Navbar.scss';
-
-// Images import
-import logoDay from '../../../public/img/logo/logo-day.png';
-import logoNight from '../../../public/img/logo/logo-night.png';
-import burgerMenuDay from '../../../public/img/icons/menu-day.svg';
-import burgerMenuNight from '../../../public/img/icons/menu-night.svg';
-import closeMenuDay from '../../../public/img/icons/close-day.svg';
-import closeMenuNight from '../../../public/img/icons/close-night.svg';
-import favouritesDay from '../../../public/img/icons/favourites-day.svg';
-import favouritesNight from '../../../public/img/icons/favourites-night.svg';
-import cartDay from '../../../public/img/icons/cart-day.svg';
-import cartNight from '../../../public/img/icons/cart-night.svg';
-import day from '../../../public/img/icons/day.png';
-import night from '../../../public/img/icons/night.png';
-
-type Props = {
-  onToggleTheme: () => void;
-  isDarkTheme: boolean;
-};
 
 const navItems = [
   { path: '/', label: 'Home' },
@@ -29,11 +21,32 @@ const navItems = [
   { path: '/accessories', label: 'Accessories' },
 ];
 
-export const Navbar: React.FC<Props> = ({ onToggleTheme, isDarkTheme }) => {
+export const Navbar: React.FC = () => {
+  const isMobile = useMediaQuery(ScreenSize.Mobile);
+
+  const location = useLocation();
+
+  const dispatch = useDispatch();
+
+  const currentTheme = useSelector(
+    (state: RootState) => state.currentTheme.theme,
+  );
+
+  const favouritesItems = useSelector(
+    (state: RootState) => state.favourites.items,
+  );
+
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+  const { logo, closeMenuButton, menuButton, favourites, theme, cart } =
+    themeStyles(currentTheme === 'light-theme');
+
+  const handleThemeToggle = () => {
+    dispatch(toggleTheme());
+  };
+
   const toggleMenu = () => {
-    setIsMenuOpen(prev => !prev);
+    setIsMenuOpen(curr => !curr);
   };
 
   // Locks browser scroller
@@ -47,10 +60,10 @@ export const Navbar: React.FC<Props> = ({ onToggleTheme, isDarkTheme }) => {
 
   const getMenuIcon = () => {
     if (isMenuOpen) {
-      return isDarkTheme ? closeMenuNight : closeMenuDay;
+      return closeMenuButton;
     }
 
-    return isDarkTheme ? burgerMenuNight : burgerMenuDay;
+    return menuButton;
   };
 
   const renderNavLinks = () => {
@@ -58,6 +71,11 @@ export const Navbar: React.FC<Props> = ({ onToggleTheme, isDarkTheme }) => {
       <li key={item.path} className="navbar__item">
         <NavLink
           to={item.path}
+          onClick={() => {
+            if (isMenuOpen) {
+              return toggleMenu();
+            }
+          }}
           className={({ isActive }) =>
             classNames('navbar__link', {
               'navbar__link--active': isActive,
@@ -70,16 +88,17 @@ export const Navbar: React.FC<Props> = ({ onToggleTheme, isDarkTheme }) => {
     ));
   };
 
+  const allowedPaths: Category[] = ['phones', 'accessories', 'tablets'];
+  const isOnProductPage = allowedPaths.some(path =>
+    location.pathname.endsWith(`/${path}`),
+  );
+
   return (
     <nav className="navbar">
       <div className="navbar__left">
         <div className="navbar__logo">
-          <Link to="/" className="navbar__logo_link">
-            <img
-              src={isDarkTheme ? logoNight : logoDay}
-              alt="logo"
-              className="navbar__logo_img"
-            />
+          <Link to="/" className="navbar__logo-link">
+            <img src={logo} alt="logo" className="navbar__logo-img" />
           </Link>
         </div>
 
@@ -87,12 +106,10 @@ export const Navbar: React.FC<Props> = ({ onToggleTheme, isDarkTheme }) => {
       </div>
 
       <div className="navbar__right">
-        <div className="navbar__theme" onClick={onToggleTheme}>
-          <img
-            src={isDarkTheme ? night : day}
-            alt="Light/Dark theme"
-            className="icon"
-          />
+        {isOnProductPage && <SearchInput />}
+
+        <div className="navbar__theme" onClick={handleThemeToggle}>
+          <img src={theme} alt="Light/Dark theme" className="icon" />
         </div>
 
         <div className="navbar__burger" onClick={toggleMenu}>
@@ -107,11 +124,9 @@ export const Navbar: React.FC<Props> = ({ onToggleTheme, isDarkTheme }) => {
             })
           }
         >
-          <img
-            src={isDarkTheme ? favouritesNight : favouritesDay}
-            alt="Favourites"
-            className="icon"
-          />
+          <img src={favourites} alt="Favourites" className="icon" />
+
+          <NumberOfItems amount={favouritesItems.length} />
         </NavLink>
 
         <NavLink
@@ -122,45 +137,41 @@ export const Navbar: React.FC<Props> = ({ onToggleTheme, isDarkTheme }) => {
             })
           }
         >
-          <img
-            src={isDarkTheme ? cartNight : cartDay}
-            alt="Cart"
-            className="icon"
-          />
+          <img src={cart} alt="Cart" className="icon" />
         </NavLink>
       </div>
 
-      {isMenuOpen && (
-        <div className="navbar__menu">
+      {isMobile && (
+        <div className={classNames('navbar__menu', { active: isMenuOpen })}>
           <ul className="navbar__menu-links uppercase">{renderNavLinks()}</ul>
           <div className="navbar__menu-icons">
             <NavLink
               to="/favourites"
+              onClick={toggleMenu}
               className={({ isActive }) =>
                 classNames('navbar__menu-favourites', {
                   'navbar__menu-favourites--active': isActive,
                 })
               }
             >
-              <img
-                src={isDarkTheme ? favouritesNight : favouritesDay}
-                alt="Favourites"
-                className="icon"
-              />
+              <div className="navbar__menu-favourites-wrapper">
+                <img src={favourites} alt="Favourites" className="icon" />
+
+                <NumberOfItems amount={favouritesItems.length} />
+              </div>
             </NavLink>
             <NavLink
               to="/cart"
+              onClick={toggleMenu}
               className={({ isActive }) =>
                 classNames('navbar__menu-cart', {
                   'navbar__menu-cart--active': isActive,
                 })
               }
             >
-              <img
-                src={isDarkTheme ? cartNight : cartDay}
-                alt="Cart"
-                className="icon"
-              />
+              <div className="navbar__menu-cart-wrapper">
+                <img src={cart} alt="Cart" className="icon" />
+              </div>
             </NavLink>
           </div>
         </div>

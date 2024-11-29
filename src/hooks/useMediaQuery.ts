@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
+import { ScreenSize } from '../types/screenSize';
 
-const useMediaQuery = (query: string) => {
+const useMediaQuery = (query: ScreenSize) => {
   const [matches, setMatches] = useState(window.matchMedia(query).matches);
 
   useEffect(() => {

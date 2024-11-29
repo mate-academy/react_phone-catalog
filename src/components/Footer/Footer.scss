@@ -1,0 +1,67 @@
+@import '../../styles/main.scss';
+
+.footer {
+  height: 257px;
+  border-top: 1px solid var(--borders-color);
+
+  @include on-tablet {
+    height: 96px;
+  }
+
+  &__container {
+    margin: 32px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+
+    @include on-tablet {
+      flex-direction: row;
+      justify-content: space-around;
+      margin: 32px;
+    }
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 16px;
+    color: var(--footer-text-color);
+
+    @include on-tablet {
+      align-items: center;
+      flex-direction: row;
+      justify-content: space-between;
+      gap: 13.5px;
+    }
+
+    @include on-desktop {
+      width: 100%;
+      max-width: 380px;
+    }
+  }
+
+  &__link {
+    color: var(--secondary-color);
+  }
+
+  &__logo {
+    &-link {
+      display: flex;
+      width: 89px;
+    }
+
+    &-img {
+      width: 89px;
+      height: 32px;
+    }
+  }
+
+  &__to-top {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+    align-items: center;
+    justify-content: center;
+  }
+}

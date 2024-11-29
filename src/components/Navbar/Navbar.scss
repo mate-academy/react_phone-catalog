@@ -1,18 +1,21 @@
 @import '../../styles/main.scss';
 
 .navbar {
-  position: sticky;
+  position: fixed;
   top: 0;
   z-index: 10;
   height: 48px;
+  width: 100%;
   border-bottom: 1px solid var(--borders-color);
   padding-left: 16px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  background-color: var(--bg-color);
+  transition: all 0.3s ease;
 
-  @include on-dekstop {
+  @include on-desktop {
     height: 64px;
     padding-left: 24px;
   }
@@ -26,16 +29,16 @@
       gap: 32px;
     }
 
-    @include on-dekstop {
+    @include on-desktop {
       gap: 48px;
     }
   }
 
-  &__logo_link {
+  &__logo-link {
     display: flex;
   }
 
-  &__logo_img {
+  &__logo-img {
     max-height: 28px;
     max-width: 80px;
   }
@@ -59,7 +62,7 @@
       gap: 32px;
     }
 
-    @include on-dekstop {
+    @include on-desktop {
       gap: 64px;
     }
   }
@@ -91,7 +94,7 @@
     display: flex;
     height: 100%;
 
-    @include on-tablet {
+    @include on-desktop {
       & > *:hover {
         background-color: var(--hover-color);
       }
@@ -111,32 +114,27 @@
   }
 
   &__favourites,
-  &__cart {
-    display: none;
-    @include on-tablet {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      width: 48px;
-      border-left: 1px solid var(--borders-color);
-    }
-
-    @include on-dekstop {
-      width: 62px;
-    }
-  }
-
+  &__cart,
   &__theme {
     cursor: pointer;
-    display: flex;
+    position: relative;
+    display: none;
     justify-content: center;
     align-items: center;
     width: 48px;
     border-left: 1px solid var(--borders-color);
 
-    @include on-dekstop {
-      width: 62px;
+    @include on-tablet {
+      display: flex;
     }
+
+    @include on-desktop {
+      min-width: 64px;
+    }
+  }
+
+  &__theme {
+    display: flex;
   }
 
   &__menu {
@@ -149,18 +147,14 @@
     width: 100%;
     background-color: var(--bg-color);
     height: calc(100vh - 100%);
-    z-index: 100;
-    transition: all 0.3s ease;
-    animation: slideInRight 0.5s ease-in-out forwards;
+    z-index: 2;
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+    overflow-y: auto;
 
-    @keyframes slideInRight {
-      from {
-        left: 100%;
-      }
-      to {
-        left: 0;
-        opacity: 1;
-      }
+    &.active {
+      transition: all 0.3s ease;
+      transform: translateX(0);
     }
 
     &-links {
@@ -196,6 +190,11 @@
 
       &--active {
         border-bottom: 3px solid var(--main-color);
+      }
+
+      &-wrapper {
+        display: flex;
+        position: relative;
       }
     }
 

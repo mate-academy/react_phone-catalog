@@ -1,17 +1,26 @@
-import classNames from 'classnames';
-
-import './Slide.scss';
+import { Link } from 'react-router-dom';
+import '../BannerSlider.scss';
+import { Category } from '../../../../types/category';
 
 type Props = {
   imgUrl: string;
   alt: string;
-  active: boolean;
+  category: Category;
+  productId?: string;
 };
 
-export const Slide: React.FC<Props> = ({ imgUrl, alt, active }) => {
+export const Slide: React.FC<Props> = ({
+  imgUrl,
+  alt,
+  category,
+  productId = '',
+}) => {
   return (
-    <div className={classNames('slide', { active })}>
-      <img src={imgUrl} alt={alt} className="slide__img" />
+    <div className="slide">
+      <Link to={`/${category}/${productId}`}>
+        {' '}
+        <img src={imgUrl} alt={alt} className="slide__img" />
+      </Link>
     </div>
   );
 };
