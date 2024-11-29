@@ -10,7 +10,8 @@ import uaNav from './locales/uk/navigation.json';
 import uaCommon from './locales/uk/common.json';
 import { Languages } from '../../types/Languages';
 
-const preferredLanguage = localStorage.getItem('i18nextLng') || Languages.en;
+const preferredLanguage =
+  localStorage.getItem('i18nextLng') || Languages.en.toLowerCase();
 
 const resources = {
   en: {
@@ -29,7 +30,6 @@ i18n
   .use(LanguageDetector)
   .use(initReactI18next)
   .init({
-    debug: true,
     resources,
     lng: preferredLanguage,
     fallbackLng: 'en',
