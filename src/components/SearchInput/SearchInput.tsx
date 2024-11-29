@@ -43,8 +43,15 @@ export const SearchInput: React.FC<Props> = ({ handleMobileMenu }) => {
     handleMobileMenu(false);
   };
 
-  const closeSearch = () => {
+  const deleteQuery = () => {
+    setQuery('');
     setIsSearchOpen(false);
+    searchParams.delete('query');
+    setSearchParams(searchParams);
+  };
+
+  const closeSearch = () => {
+    deleteQuery();
   };
 
   const handleSearchInput: React.ChangeEventHandler<HTMLInputElement> = e => {
@@ -71,10 +78,7 @@ export const SearchInput: React.FC<Props> = ({ handleMobileMenu }) => {
 
   const handleKeyPress: React.KeyboardEventHandler<HTMLInputElement> = e => {
     if (e.key === 'Escape') {
-      setQuery('');
-      setIsSearchOpen(false);
-      searchParams.delete('query');
-      setSearchParams(searchParams);
+      deleteQuery();
     }
   };
 
