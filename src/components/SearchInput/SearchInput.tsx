@@ -123,7 +123,7 @@ export const SearchInput: React.FC<Props> = ({ handleMobileMenu }) => {
           <button
             className={styles.btnCloseSearch}
             aria-label={t('accessibility.closeSearch')}
-            onClick={closeSearch}
+            onMouseDown={closeSearch}
           >
             <svg
               width="16"
