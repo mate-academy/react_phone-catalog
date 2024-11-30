@@ -1,1 +1,14 @@
-// not empty
+@import './styles/mixins.scss';
+@import './styles/fonts.scss';
+
+html {
+  font-family: Mont, sans-serif;
+}
+
+body {
+  margin: 0;
+}
+
+.App {
+  @include page-grid;
+}
