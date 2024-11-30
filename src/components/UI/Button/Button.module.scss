@@ -13,11 +13,11 @@
   @include hover(background-color, rgba(163, 120, 255, 1));
 
   @include on-phone {
-    width: 100px;
+    width: 100%;
   }
 
   @include on-tablet {
-    width: 125px;
+    width: 100%;
   }
 
   @include on-desktop {
@@ -42,11 +42,11 @@
   }
 
   @include on-phone {
-    width: 100px;
+    width: 100%;
   }
 
   @include on-tablet {
-    width: 125px;
+    width: 100%;
   }
 
   @include on-desktop {

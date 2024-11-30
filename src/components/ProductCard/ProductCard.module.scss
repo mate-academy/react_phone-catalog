@@ -171,18 +171,30 @@
   align-items: center;
   justify-content: center;
   gap: 8px;
+  width: 100%;
 }
 
 .addToFavouriteBtn {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 40px;
   height: 40px;
   border: none;
   background: rgba(50, 53, 66, 1);
 
   @include hover(background-color, rgba(74, 77, 88, 1));
+
+  @include on-phone {
+    min-width: 40px;
+  }
+
+  @include on-tablet {
+    min-width: 40px;
+  }
+
+  @include on-desktop {
+    width: 40px;
+  }
 }
 
 .icon {

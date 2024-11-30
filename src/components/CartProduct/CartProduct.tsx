@@ -1,4 +1,5 @@
 import React, { useContext, useState } from 'react';
+import classNames from 'classnames';
 import styles from './CartProduct.module.scss';
 import icons from '../../assets/icons/icons.svg';
 import { ProductsContext } from '../../store/ProductsContext';
@@ -41,7 +42,9 @@ export const CartProd: React.FC<CartProductProps> = ({ product }) => {
 
   return (
     <li
-      className={`${styles.cartItem} ${isRemoving ? styles.removing : ''}`}
+      className={classNames(styles.cartItem, {
+        [styles.removing]: isRemoving,
+      })}
       key={product.id}
     >
       <div className={styles.cartItemDetails}>
@@ -66,8 +69,11 @@ export const CartProd: React.FC<CartProductProps> = ({ product }) => {
         <div className={styles.priceQuantityWrapper}>
           <div className={styles.cartItemControls}>
             <button
-              className={styles.cartItemControlButton}
+              className={classNames(styles.cartItemControlButton, {
+                [styles.disabled]: product.quantity === 1,
+              })}
               onClick={() => decreaseQuantity(product.id, product.quantity)}
+              disabled={product.quantity === 1}
             >
               -
             </button>

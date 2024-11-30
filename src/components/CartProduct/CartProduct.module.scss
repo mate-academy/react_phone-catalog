@@ -99,6 +99,12 @@
   &:hover {
     background-color: #4a4d58;
   }
+
+  &.disabled {
+    border: 1px solid #3b3e4a;
+    background: none;
+    cursor: not-allowed;
+  }
 }
 
 .cartItemQuantity {
