@@ -1,14 +1,14 @@
 import React from 'react';
 import styles from './Counter.module.scss';
+import classNames from 'classnames';
 
 type CartIconProps = {
   itemCount: number;
-  className?: string;
 };
 
-const CartIcon: React.FC<CartIconProps> = ({ itemCount, className }) => {
+const CartIcon: React.FC<CartIconProps> = ({ itemCount }) => {
   return (
-    <div className={className}>
+    <div className={classNames(styles.counterWrapper)}>
       {itemCount > 0 && (
         <div className={styles.badge}>
           <span>{itemCount}</span>

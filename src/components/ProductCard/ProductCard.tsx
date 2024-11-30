@@ -11,7 +11,6 @@ interface ProductCardProps {
   product: Product;
   showRegularPrice?: boolean;
   imageWrapperSize?: 'small' | 'large';
-  category?: string;
   classNames?: string;
 }
 
@@ -19,7 +18,6 @@ export const ProductCard: React.FC<ProductCardProps> = ({
   product,
   showRegularPrice,
   imageWrapperSize,
-  category,
   classNames,
 }) => {
   const { SetAddToFavorites, SetRemoveFromFavorites, favorites } =
@@ -42,7 +40,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
 
   return (
     <Link
-      to={`/${category}/${product.itemId}`}
+      to={`/${product.category}/${product.itemId}`}
       className={cn(styles.productCard, classNames && styles[classNames])}
     >
       <div className={styles.productDetails}>

@@ -1,0 +1,27 @@
+@import '../../../styles/global';
+
+.checkoutButton {
+  position: relative;
+  width: 320px;
+  height: 48px;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 21px;
+  text-align: center;
+  background: #905bff;
+  color: $gray-white;
+  border: none;
+
+  @include hover(background-color, rgba(163, 120, 255, 1));
+
+  &::after {
+    content: '';
+    position: absolute;
+    height: 1px;
+    top: -24px;
+    width: 100%;
+    background: #3b3e4a;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}

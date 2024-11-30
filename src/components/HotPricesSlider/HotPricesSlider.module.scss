@@ -36,11 +36,12 @@
 
   @include on-tablet {
     top: -60px;
-    right: 0;
+    right: 24px;
   }
 
   @include on-desktop {
     top: -56px;
+    right: 24px;
   }
 }
 

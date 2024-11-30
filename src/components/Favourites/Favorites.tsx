@@ -35,6 +35,7 @@ export const Favorites = () => {
             product={favorite}
             showRegularPrice={true}
             imageWrapperSize="large"
+            classNames="responsive"
           />
         ))}
       </ul>

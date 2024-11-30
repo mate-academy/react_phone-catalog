@@ -1,12 +1,12 @@
-@import '../../styles/mixins';
-
-.favoriteCount {
-  display: inline-block;
+.counterWrapper {
+  position: relative;
+  top: -15px;
+  right: 5px;
 
   .badge {
     position: fixed;
     background-color: #eb5757;
-    color: $main-white-color;
+    color: #fff;
     border-radius: 50%;
     width: 14px;
     height: 14px;
@@ -17,53 +17,5 @@
     font-weight: bold;
     border: 1px solid #0f1121;
     z-index: 10000;
-
-    @include on-phone {
-      display: none;
-    }
-
-    @include on-tablet {
-      top: 11px;
-      right: 57px;
-    }
-
-    @include on-desktop {
-      top: 18px;
-      right: 80px;
-    }
-  }
-}
-
-.cartCount {
-  display: inline-block;
-
-  .badge {
-    position: fixed;
-    background-color: #eb5757;
-    color: $main-white-color;
-    border-radius: 50%;
-    width: 14px;
-    height: 14px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 12px;
-    font-weight: bold;
-    border: 1px solid #0f1121;
-    z-index: 10000;
-
-    @include on-phone {
-      display: none;
-    }
-
-    @include on-tablet {
-      top: 12px;
-      right: 10px;
-    }
-
-    @include on-desktop {
-      top: 18px;
-      right: 20px;
-    }
   }
 }

@@ -1,41 +1,30 @@
 import React, { useContext } from 'react';
 import { ProductsContext } from '../../store/ProductsContext';
-import { CartProduct } from '../../types/CartProduct';
 import styles from './Cart.module.scss';
-import icons from '../../assets/icons/icons.svg';
 import { useNavigate } from 'react-router-dom';
+import icons from '../../assets/icons/icons.svg';
+import { CartProducts } from '../../types/CartProduct';
+import { CartProd } from '../CartProduct';
+import { Checkout } from '../UI/Checkout';
 
 const Cart: React.FC = () => {
-  const { cart, SetUpdateQuantity, SetRemoveFromCart } =
-    useContext(ProductsContext);
+  const { cart, SetClearCart } = useContext(ProductsContext);
   const navigate = useNavigate();
 
-  const handleRemove = (id: string) => {
-    SetRemoveFromCart(id);
-  };
-
-  const handleQuantityChange = (id: string, newQuantity: number) => {
-    if (newQuantity < 1) {
-      return;
-    }
-
-    SetUpdateQuantity(id, newQuantity);
-  };
-
-  const increaseQuantity = (id: string, quantity: number) => {
-    handleQuantityChange(id, quantity + 1);
-  };
-
-  const decreaseQuantity = (id: string, quantity: number) => {
-    if (quantity > 1) {
-      handleQuantityChange(id, quantity - 1);
-    }
-  };
-
   const totalPrice = cart.reduce(
-    (total, item) => total + item.quantity * item.priceRegular,
+    (total, item) => total + item.quantity * item.fullPrice,
     0,
   );
+
+  const handleCheckout = () => {
+    const userConfirmed = window.confirm(
+      'Checkout is not implemented yet. Do you want to clear the Cart?',
+    );
+
+    if (userConfirmed) {
+      SetClearCart();
+    }
+  };
 
   return (
     <div className={styles.cart}>
@@ -58,52 +47,15 @@ const Cart: React.FC = () => {
       ) : (
         <div className={styles.cartContent}>
           <ul className={styles.cartList}>
-            {cart.map((product: CartProduct) => (
-              <li className={styles.cartItem} key={product.id}>
-                <div className={styles.cartItemDetails}>
-                  <button
-                    className={styles.cartItemRemove}
-                    onClick={() => handleRemove(product.id)}
-                  >
-                    <svg>
-                      <use href={`${icons}#icon-close-menu`}></use>
-                    </svg>
-                  </button>
-                  <div className={styles.imageWrapper}>
-                    <img src={product.image} alt={product.name} width="100" />
-                  </div>
-                  <h3 className={styles.cartItemName}>{product.name}</h3>
-                  <div className={styles.cartItemControls}>
-                    <button
-                      className={styles.cartItemControlButton}
-                      onClick={() =>
-                        decreaseQuantity(product.id, product.quantity)
-                      }
-                    >
-                      -
-                    </button>
-                    <p className={styles.cartItemQuantity}>
-                      {product.quantity}
-                    </p>
-                    <button
-                      className={styles.cartItemControlButton}
-                      onClick={() =>
-                        increaseQuantity(product.id, product.quantity)
-                      }
-                    >
-                      +
-                    </button>
-                  </div>
-                  <p className={styles.cartItemPrice}>
-                    ${product.price * product.quantity}
-                  </p>
-                </div>
-              </li>
+            {cart.map((product: CartProducts) => (
+              <CartProd key={product.id} product={product} />
             ))}
           </ul>
           <div className={styles.checkout}>
             <h3> ${totalPrice}</h3>
             <p className={styles.totalFor}>Total for {cart.length} items</p>
+
+            <Checkout onClear={handleCheckout} />
           </div>
         </div>
       )}

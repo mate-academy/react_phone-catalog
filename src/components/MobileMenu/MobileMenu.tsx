@@ -17,30 +17,37 @@ const getNavLinkClassName = ({ isActive }: { isActive: boolean }) =>
     : styles.mobileMenuNavLink;
 
 export const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose }) => {
-  const { cart } = useContext(ProductsContext);
+  const { cart, favorites } = useContext(ProductsContext);
 
   const itemCount = cart.reduce((total, item) => total + item.quantity, 0);
+  const favoritesCount = favorites.length;
 
   return (
     <aside
       className={classNames(styles.mobileMenu, { [styles.active]: isOpen })}
     >
       <nav className={styles.mobileMenuNav}>
-        <NavLink to="/" className={getNavLinkClassName}>
+        <NavLink to="/" className={getNavLinkClassName} onClick={onClose}>
           Home
         </NavLink>
-        <NavLink to="/phones" className={getNavLinkClassName}>
+        <NavLink to="/phones" className={getNavLinkClassName} onClick={onClose}>
           Phones
         </NavLink>
-        <NavLink to="/tablets" className={getNavLinkClassName}>
+        <NavLink
+          to="/tablets"
+          className={getNavLinkClassName}
+          onClick={onClose}
+        >
           Tablets
         </NavLink>
-        <NavLink to="/accessories" className={getNavLinkClassName}>
+        <NavLink
+          to="/accessories"
+          className={getNavLinkClassName}
+          onClick={onClose}
+        >
           Accessories
         </NavLink>
       </nav>
-
-      <CartIcon itemCount={itemCount} />
 
       <div className={styles.mobileMenuIconWrapper}>
         <Link
@@ -49,13 +56,15 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose }) => {
           className={styles.mobileFavouriteBtn}
         >
           <svg className={styles.icon}>
-            <use href={`${icons}#heart-icon`}></use>
+            <use href={`${icons}#header-icon-header`}></use>
           </svg>
+          <CartIcon itemCount={favoritesCount} />
         </Link>
         <Link to="/cart" onClick={onClose} className={styles.mobileCartIcon}>
           <svg className={styles.icon}>
             <use href={`${icons}#shopping-bag-icon`}></use>
           </svg>
+          <CartIcon itemCount={itemCount} />
         </Link>
       </div>
     </aside>

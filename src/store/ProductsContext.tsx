@@ -6,9 +6,9 @@ import React, {
   useReducer,
 } from 'react';
 import { Product } from '../types/Product';
-import { CartProduct } from '../types/CartProduct';
 import { PerPageOption, SortOrder } from '../types/Sort';
 import { getProducts } from '../api/products';
+import { CartProducts } from '../types/CartProduct';
 
 interface Props {
   children: ReactNode;
@@ -17,7 +17,7 @@ interface Props {
 type State = {
   products: Product[];
   errorMessage: string;
-  cart: CartProduct[];
+  cart: CartProducts[];
   favorites: Product[];
   page: number;
   perPage: PerPageOption;
@@ -32,11 +32,12 @@ type ProductsContextType = State & {
   setPerPage: (payload: PerPageOption) => void;
   setLoading: (payload: boolean) => void;
   setOrder: (payload: SortOrder) => void;
-  SetAddToCart: (product: CartProduct) => void;
+  SetAddToCart: (product: CartProducts) => void;
   SetRemoveFromCart: (id: string) => void;
   SetUpdateQuantity: (id: string, quantity: number) => void;
   SetAddToFavorites: (product: Product) => void;
   SetRemoveFromFavorites: (id: string) => void;
+  SetClearCart: () => void;
 };
 
 type Action =
@@ -46,11 +47,12 @@ type Action =
   | { type: 'SET_PER_PAGE'; payload: PerPageOption }
   | { type: 'SET_LOADING'; payload: boolean }
   | { type: 'SET_ORDER'; payload: SortOrder }
-  | { type: 'SET_ADD_TO_CART'; product: CartProduct }
+  | { type: 'SET_ADD_TO_CART'; product: CartProducts }
   | { type: 'SET_REMOVE_FROM_CART'; id: string }
   | { type: 'SET_UPDATE_QUANTITY'; id: string; quantity: number }
   | { type: 'SET_ADD_TO_FAVORITES'; product: Product }
-  | { type: 'SET_REMOVE_FROM_FAVORITES'; id: string };
+  | { type: 'SET_REMOVE_FROM_FAVORITES'; id: string }
+  | { type: 'SET_CLEAR_CART' };
 
 export const ProductsContext = createContext<ProductsContextType>({
   cart: [],
@@ -72,6 +74,7 @@ export const ProductsContext = createContext<ProductsContextType>({
   SetUpdateQuantity: () => {},
   SetAddToFavorites: () => {},
   SetRemoveFromFavorites: () => {},
+  SetClearCart: () => {},
 });
 
 const initialState: State = {
@@ -99,6 +102,10 @@ const productsReducer = (state: State, action: Action): State => {
       return { ...state, perPage: action.payload };
     case 'SET_LOADING':
       return { ...state, isLoading: action.payload };
+    case 'SET_CLEAR_CART': {
+      localStorage.setItem('cart', JSON.stringify([]));
+      return { ...state, cart: [] };
+    }
     case 'SET_ADD_TO_CART': {
       const productExists = state.cart.find(
         item => item.id === action.product.id,
@@ -198,7 +205,11 @@ export const ProductsProvider: React.FC<Props> = ({ children }) => {
     dispatch({ type: 'SET_ORDER', payload: newSort });
   };
 
-  const SetAddToCart = (product: CartProduct) => {
+  const SetClearCart = () => {
+    dispatch({ type: 'SET_CLEAR_CART' });
+  };
+
+  const SetAddToCart = (product: CartProducts) => {
     dispatch({ type: 'SET_ADD_TO_CART', product });
   };
 
@@ -240,6 +251,7 @@ export const ProductsProvider: React.FC<Props> = ({ children }) => {
       SetUpdateQuantity,
       SetAddToFavorites,
       SetRemoveFromFavorites,
+      SetClearCart,
     }),
     [state],
   );

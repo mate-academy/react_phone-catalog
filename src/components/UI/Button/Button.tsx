@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import styles from './Button.module.scss';
 import { ProductsContext } from '../../../store/ProductsContext';
-import { CartProduct } from '../../../types/CartProduct';
+import { CartProducts } from '../../../types/CartProduct';
 import { Product } from '../../../types/Product';
 
 interface ButtonProps {
@@ -11,19 +11,16 @@ interface ButtonProps {
 
 export const Button: React.FC<ButtonProps> = ({ product, className }) => {
   const { SetAddToCart, SetRemoveFromCart, cart } = useContext(ProductsContext);
-
   const handleCartAction = () => {
-    const isInCart = cart.some(item => item.id === product?.id);
+    console.log(product.itemId);
+
+    const isInCart = cart.some(item => item.id === product.id);
 
     if (isInCart) {
-      SetRemoveFromCart(product?.id);
+      SetRemoveFromCart(product.id);
     } else {
-      const cartProduct: CartProduct = {
-        id: product.id,
-        name: product.name,
-        price: product.fullPrice,
-        priceRegular: product.price,
-        image: product.image,
+      const cartProduct: CartProducts = {
+        ...product,
         quantity: 1,
       };
 

@@ -14,7 +14,6 @@ interface ProductListProps {
 
 export const ProductList: React.FC<ProductListProps> = ({
   filteredProducts,
-  category,
 }) => {
   const { page, setPage } = useContext(ProductsContext);
   const [searchParams] = useSearchParams();
@@ -44,7 +43,6 @@ export const ProductList: React.FC<ProductListProps> = ({
               key={product.id}
               product={product}
               imageWrapperSize="large"
-              category={category}
               classNames="responsive"
             />
           ))}

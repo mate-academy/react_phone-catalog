@@ -66,7 +66,6 @@ export const HotPricesSlider: React.FC = () => {
                   product={product}
                   showRegularPrice={isRegularShow}
                   imageWrapperSize="small"
-                  category={Category.Phones}
                 />
               </SwiperSlide>
             ))}
