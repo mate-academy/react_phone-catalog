@@ -10,6 +10,16 @@ import CartIcon from '../Counter/Counter';
 const getNavLinkClassName = ({ isActive }: { isActive: boolean }) =>
   isActive ? `${styles.headerNavLink} ${styles.active}` : styles.headerNavLink;
 
+const getNavLinkFav = ({ isActive }: { isActive: boolean }) =>
+  isActive
+    ? `${styles.headerFavouriteBtn} ${styles.active}`
+    : styles.headerFavouriteBtn;
+
+const getNavLinkCart = ({ isActive }: { isActive: boolean }) =>
+  isActive
+    ? `${styles.headerCartIcon} ${styles.active}`
+    : styles.headerCartIcon;
+
 export const Header: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { cart, favorites } = useContext(ProductsContext);
@@ -72,19 +82,19 @@ export const Header: React.FC = () => {
             </div>
           )}
 
-          <Link to="/catalog" className={styles.headerFavouriteBtn}>
+          <NavLink to="/catalog" className={getNavLinkFav}>
             <svg className={styles.icon}>
               <use href={`${icons}#header-icon-header`}></use>
             </svg>
             <CartIcon itemCount={favoritesCount} />
-          </Link>
+          </NavLink>
 
-          <Link to="/cart" className={styles.headerCartIcon}>
+          <NavLink to="/cart" className={getNavLinkCart}>
             <svg className={styles.icon}>
               <use href={`${icons}#shopping-bag-icon`}></use>
             </svg>
             <CartIcon itemCount={itemCount} />
-          </Link>
+          </NavLink>
         </div>
       </header>
 
