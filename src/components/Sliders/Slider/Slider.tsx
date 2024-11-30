@@ -153,7 +153,7 @@ export const Slider: React.FC<Props> = ({ title, category }) => {
         <div className="slider__top-buttons">
           <button
             className={classNames('arrow-button', {
-              'arrow-button-disabled': !leftButtonIsActive,
+              disabled: !leftButtonIsActive,
             })}
             onClick={handlePrevItem}
           >
@@ -166,7 +166,7 @@ export const Slider: React.FC<Props> = ({ title, category }) => {
 
           <button
             className={classNames('arrow-button', {
-              'arrow-button-disabled': !rightButtonIsActive,
+              disabled: !rightButtonIsActive,
             })}
             onClick={() => {
               if (rightButtonIsActive) {

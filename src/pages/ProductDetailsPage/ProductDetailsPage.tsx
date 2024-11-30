@@ -1,24 +1,22 @@
-import { useSelector } from 'react-redux';
 import { Breadcrumbs } from '../../components/Breadcrumbs';
 import { ResponsiveHeader } from '../../components/ResponsiveHeader';
-import { RootState } from '../../app/store';
-import themeStyles from '../../styles/utils/themeStyles';
 import { usePathSegments } from '../../hooks/usePathSegments';
 import { useEffect, useMemo, useState } from 'react';
 import { getProductsByCategory } from '../../api/products';
 import { Category } from '../../types/category';
 import { ProductDetails } from '../../types/productDetails';
-
 import { ProductDetailsLoader } from './ProductDetailsLoader';
 import classNames from 'classnames';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { Slider } from '../../components/Sliders/Slider';
 import { parseProductId } from '../../utils/parseProductId';
 import { FavouritesIcon } from '../../components/FavouritesIcon';
-
-import './ProductDetailsPage.scss';
 import { ProductNotFound } from '../../components/ProductNotFound';
 import { SomethingWentWrong } from '../../components/SomethingWentWrong';
+import { BackButton } from '../../components/BackButton';
+import { AddToCart } from '../../components/AddToCart';
+
+import './ProductDetailsPage.scss';
 
 const colorMap: Record<string, string> = {
   black: '#000000',
@@ -53,7 +51,6 @@ export const ProductDetailsPage = () => {
   const category = pathSegments[0] as Category;
   const itemId = pathSegments[1];
 
-  const navigate = useNavigate();
   const [products, setProducts] = useState<ProductDetails[] | []>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [hasError, setHasError] = useState(false);
@@ -80,10 +77,6 @@ export const ProductDetailsPage = () => {
       (products.find(prop => prop.id === itemId) as ProductDetails) || null
     );
   }, [products, itemId]);
-
-  const handleBackClick = () => {
-    navigate('..');
-  };
 
   /* eslint-disable @typescript-eslint/indent */
 
@@ -128,12 +121,6 @@ export const ProductDetailsPage = () => {
     return productId.join('-');
   };
 
-  const currentTheme = useSelector(
-    (state: RootState) => state.currentTheme.theme,
-  );
-
-  const { arrow } = themeStyles(currentTheme === 'light-theme');
-
   const handlePhotoClick = (url: string) => {
     setCurrentImage(url);
   };
@@ -149,10 +136,7 @@ export const ProductDetailsPage = () => {
     <div className="details-page page">
       <Breadcrumbs />
 
-      <button className="details-page__back-button" onClick={handleBackClick}>
-        <img src={arrow} alt="Back button" className="icon icon-left" />
-        <span className="text-gray">Back</span>
-      </button>
+      <BackButton />
 
       {isLoading && <ProductDetailsLoader />}
 
@@ -251,9 +235,7 @@ export const ProductDetailsPage = () => {
 
               <div className="details-page__buttons">
                 <div className="item-buttons">
-                  <button className="card-button buttons-text">
-                    Add to Cart
-                  </button>
+                  <AddToCart itemId={product.id} />
 
                   <div className="details-page__favourites-button">
                     <FavouritesIcon itemId={product.id} />

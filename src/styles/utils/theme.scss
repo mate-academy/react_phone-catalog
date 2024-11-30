@@ -43,6 +43,8 @@
   --deatails-button-color: var(--primary-color);
   --deatails-button-color-active: var(--white-color);
   --deatails-button-background-color-active: var(--primary-color);
+  --card-item-background-color: var(--white-color);
+  --card-item-border-color: var(--elements-color);
 
   transition: all 0.3s ease;
 }
@@ -72,6 +74,8 @@
   --deatails-button-color: var(--white-color-dark);
   --deatails-button-color-active: var(--black-color-dark);
   --deatails-button-background-color-active: var(--white-color-dark);
+  --card-item-background-color: var(--surface1-color);
+  --card-item-border-color: none;
 
   transition: all 0.3s ease;
 }

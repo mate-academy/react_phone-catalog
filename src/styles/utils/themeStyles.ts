@@ -40,6 +40,16 @@ import notFoundProduct from '/img/product-not-found.png';
 
 import notFoundPage from '/img/page-not-found.png';
 
+import remove from '/img/icons/remove.svg';
+
+import plusDay from '/img/icons/plus-day.svg';
+import plusNight from '/img/icons/plus-night.svg';
+
+import minusDay from '/img/icons/minus-day.svg';
+import minusNight from '/img/icons/minus-night.svg';
+
+import cartIsEmpty from '../../../public/img/cart-is-empty.png';
+
 const themeStyles = (isLightTheme: boolean) => ({
   closeMenuButton: isLightTheme ? closeMenuDay : closeMenuNight,
 
@@ -70,6 +80,14 @@ const themeStyles = (isLightTheme: boolean) => ({
   notFoundProduct,
 
   notFoundPage,
+
+  remove,
+
+  plus: isLightTheme ? plusDay : plusNight,
+
+  minus: isLightTheme ? minusDay : minusNight,
+
+  cartIsEmpty,
 });
 
 export default themeStyles;

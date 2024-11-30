@@ -1,7 +1,7 @@
 @import '../../styles/main.scss';
 
 .number-of-items {
-  padding-top: 1.5px;
+  padding-top: 1.3px;
   position: absolute;
   top: -25%;
   right: -40%;
@@ -19,6 +19,7 @@
   border: 1px solid var(--borders-color);
 
   @include on-tablet {
+    padding-top: 1px;
     top: 25%;
     right: 20%;
   }

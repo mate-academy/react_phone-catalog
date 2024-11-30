@@ -1,10 +1,11 @@
 import { useSelector } from 'react-redux';
-import './Pagination.scss';
 import { RootState } from '../../app/store';
 import themeStyles from '../../styles/utils/themeStyles';
 import classNames from 'classnames';
 import { useSearchParams } from 'react-router-dom';
 import { scrollToTop } from '../ScrollToTop';
+
+import './Pagination.scss';
 
 type Props = {
   pages: number;
@@ -94,7 +95,7 @@ export const Pagination: React.FC<Props> = ({ pages }) => {
     <div className="pagination">
       <button
         className={classNames('arrow-button', {
-          'arrow-button-disabled': !canLeftClick,
+          disabled: !canLeftClick,
         })}
         onClick={() => {
           scrollToTop();
@@ -122,7 +123,7 @@ export const Pagination: React.FC<Props> = ({ pages }) => {
             <button
               key={index}
               className={classNames('pagination__page pagination-button', {
-                'pagination-button-active': currentPage === +page,
+                active: currentPage === +page,
               })}
               onClick={() => {
                 handlePageChange(+page, true);
@@ -137,7 +138,7 @@ export const Pagination: React.FC<Props> = ({ pages }) => {
 
       <button
         className={classNames('arrow-button', {
-          'arrow-button-disabled': !canRightClick,
+          disabled: !canRightClick,
         })}
         onClick={() => {
           scrollToTop();

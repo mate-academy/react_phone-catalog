@@ -1,7 +1,9 @@
 import { Product } from '../../types/product';
-import './ProductItem.scss';
 import { Link } from 'react-router-dom';
 import { FavouritesIcon } from '../FavouritesIcon';
+import { AddToCart } from '../AddToCart';
+
+import './ProductItem.scss';
 
 type Props = {
   itemData: Product;
@@ -62,9 +64,7 @@ export const ProductItem: React.FC<Props> = ({
 
         <div className="product-item__buttons">
           <div className="item-buttons">
-            <button className="cart-button card-button buttons-text">
-              Add to Cart
-            </button>
+            <AddToCart itemId={itemData.itemId} itemData={itemData} />
 
             <FavouritesIcon itemId={itemData.itemId} itemData={itemData} />
           </div>

@@ -36,6 +36,8 @@ export const Navbar: React.FC = () => {
     (state: RootState) => state.favourites.items,
   );
 
+  const cartItems = useSelector((state: RootState) => state.cartItems.items);
+
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const { logo, closeMenuButton, menuButton, favourites, theme, cart } =
@@ -140,6 +142,8 @@ export const Navbar: React.FC = () => {
           }
         >
           <img src={cart} alt="Cart" className="icon" />
+
+          {!!cartItems.length && <NumberOfItems amount={cartItems.length} />}
         </NavLink>
       </div>
 
@@ -159,7 +163,9 @@ export const Navbar: React.FC = () => {
               <div className="navbar__menu-favourites-wrapper">
                 <img src={favourites} alt="Favourites" className="icon" />
 
-                <NumberOfItems amount={favouritesItems.length} />
+                {!!favouritesItems.length && (
+                  <NumberOfItems amount={favouritesItems.length} />
+                )}
               </div>
             </NavLink>
             <NavLink
@@ -173,6 +179,10 @@ export const Navbar: React.FC = () => {
             >
               <div className="navbar__menu-cart-wrapper">
                 <img src={cart} alt="Cart" className="icon" />
+
+                {!!cartItems.length && (
+                  <NumberOfItems amount={cartItems.length} />
+                )}
               </div>
             </NavLink>
           </div>

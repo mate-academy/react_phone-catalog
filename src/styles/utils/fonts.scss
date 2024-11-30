@@ -24,24 +24,20 @@
   font-weight: 800;
 }
 
+.body-text,
+.text-gray,
 .buttons-text {
-  font-size: 14px;
-  line-height: 21px;
-  font-weight: 500;
-  color: #fff;
-}
-
-.body-text {
   font-weight: 500;
   font-size: 14px;
   line-height: 21px;
   color: var(--main-color);
 }
 
+.buttons-text {
+  color: #fff;
+}
+
 .text-gray {
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 21px;
   color: var(--secondary-color);
 }
 
