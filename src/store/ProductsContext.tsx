@@ -104,8 +104,10 @@ const productsReducer = (state: State, action: Action): State => {
       return { ...state, isLoading: action.payload };
     case 'SET_CLEAR_CART': {
       localStorage.setItem('cart', JSON.stringify([]));
+
       return { ...state, cart: [] };
     }
+
     case 'SET_ADD_TO_CART': {
       const productExists = state.cart.find(
         item => item.id === action.product.id,

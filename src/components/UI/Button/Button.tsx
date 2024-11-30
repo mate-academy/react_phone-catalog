@@ -12,8 +12,6 @@ interface ButtonProps {
 export const Button: React.FC<ButtonProps> = ({ product, className }) => {
   const { SetAddToCart, SetRemoveFromCart, cart } = useContext(ProductsContext);
   const handleCartAction = () => {
-    console.log(product.itemId);
-
     const isInCart = cart.some(item => item.id === product.id);
 
     if (isInCart) {

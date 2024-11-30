@@ -30,8 +30,8 @@
   position: absolute;
 
   @include on-phone {
-    right: 16px;
-    top: -71px;
+    right: 30px;
+    top: -57px;
   }
 
   @include on-tablet {
@@ -41,7 +41,6 @@
 
   @include on-desktop {
     top: -56px;
-    right: 24px;
   }
 }
 
