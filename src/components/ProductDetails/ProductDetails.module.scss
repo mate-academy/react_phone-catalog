@@ -7,7 +7,6 @@
 .imagesList {
   display: flex;
   flex-direction: column;
-  gap: 16px;
 
   .imagesItem {
     display: flex;
@@ -15,8 +14,6 @@
     justify-content: center;
     border: 1px solid #3b3e4a;
     transition: border 0.3s ease;
-    height: 80px;
-    width: 80px;
 
     &:hover {
       border: 1px solid #f1f2f9;
@@ -36,7 +33,82 @@
       background-color: unset;
       border: none;
       padding: 0;
+
+      @include on-phone {
+        max-height: 40.43px;
+        width: 42.43px;
+      }
+
+      @include on-tablet {
+        width: 28px;
+        height: 28px;
+      }
+
+      @include on-desktop {
+        width: 66px;
+        height: 66px;
+      }
     }
+
+    @include on-phone {
+      width: 51.2px;
+      height: 49px;
+    }
+
+    @include on-tablet {
+      height: 35px;
+      width: 35px;
+    }
+
+    @include on-desktop {
+      height: 80px;
+      width: 80px;
+    }
+  }
+
+  @include on-phone {
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
+
+  @include on-tablet {
+    gap: 8px;
+  }
+
+  @include on-desktop {
+    gap: 16px;
+  }
+}
+
+.idWrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.idOnTablet {
+  width: 176px;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 15.34px;
+  text-align: right;
+  color: $gray-icons;
+
+  @include on-phone {
+  }
+
+  @include on-tablet {
+    display: block;
+  }
+
+  @media screen and (min-width: 768px) {
+    display: none;
+  }
+
+  @include on-desktop {
+    display: none;
   }
 }
 
@@ -47,6 +119,22 @@
   line-height: 15.34px;
   text-align: right;
   color: $gray-icons;
+
+  @include on-phone {
+    display: none;
+  }
+
+  @include on-tablet {
+    display: none;
+  }
+
+  @media screen and (min-width: 768px) {
+    display: block;
+  }
+
+  @include on-desktop {
+    display: block;
+  }
 }
 
 .selectors__options {
@@ -94,24 +182,65 @@
 }
 
 .information {
-  max-width: 320px;
-  margin-left: 64px;
   width: 100%;
+
+  @include on-phone {
+  }
+
+  @include on-tablet {
+    min-width: 237px;
+    margin-left: 0px;
+  }
+
+  @media screen and (min-width: 768px) {
+    max-width: 366px;
+  }
+
+  @include on-desktop {
+    max-width: 320px;
+    margin-left: 48px;
+  }
 }
 
 .slider {
   display: flex;
   gap: 16px;
-  padding-bottom: 80px;
 
   .imageWrapper {
-    width: 464px;
-    height: 464px;
     img {
-      width: 464px;
       aspect-ratio: 1 / 1;
       object-fit: contain;
+
+      @include on-phone {
+        width: 288px;
+      }
+
+      @include on-tablet {
+        min-width: 287px;
+      }
+
+      @include on-desktop {
+        width: 464px;
+      }
     }
+
+    @include on-phone {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+
+  @include on-phone {
+    flex-direction: column;
+  }
+
+  @include on-tablet {
+    padding-bottom: 64px;
+  }
+
+  @include on-desktop {
+    padding-bottom: 80px;
   }
 }
 
@@ -154,7 +283,7 @@
 .productCardButtons {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 8px;
   margin-bottom: 32px;
 }
@@ -199,6 +328,11 @@
 }
 
 .selectors__title {
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 15.34px;
+  text-align: left;
+  color: $gray-secondary;
   margin-bottom: 8px;
 }
 
@@ -232,10 +366,32 @@
 .specsWrapper {
   display: flex;
   gap: 64px;
+
+  @include on-phone {
+    flex-direction: column;
+    margin-top: 56px;
+  }
+
+  @include on-tablet {
+    flex-direction: column;
+  }
+
+  @include on-desktop {
+    flex-direction: row;
+  }
 }
 
 .about {
-  max-width: 559px;
+  @include on-phone {
+  }
+
+  @include on-tablet {
+    width: 100%;
+  }
+
+  @include on-desktop {
+    max-width: 560px;
+  }
 }
 
 .specsList__item {
@@ -246,6 +402,23 @@
 
 .specs {
   width: 100%;
+}
+
+.sliderWrapper {
+  display: flex;
+  gap: 16px;
+
+  @include on-phone {
+    flex-direction: column-reverse;
+  }
+
+  @include on-tablet {
+    flex-direction: row;
+  }
+
+  @include on-desktop {
+    flex-direction: row;
+  }
 }
 
 .specsList {
@@ -284,7 +457,7 @@
   }
 
   @include on-tablet {
-    width: 263px;
+    width: 100%;
     height: 48px;
   }
 
@@ -351,7 +524,7 @@
     color: $gray-secondary;
     font-size: 12px;
     font-weight: 700;
-    line-height: 15/34px;
+    line-height: 15.34px;
     text-align: justify;
     text-decoration-skip-ink: none;
 
@@ -372,13 +545,7 @@
   }
 
   &:hover {
-    .arrowLeft {
-      svg {
-        color: $main-white-color;
-      }
-    }
-
-    .productName {
+    .back {
       color: $main-white-color;
     }
   }

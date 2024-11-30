@@ -28,20 +28,20 @@ export const SortByChar: React.FC<SortByCharProps> = ({
 
     setSearchWith({ char: newSortOrder });
 
-    if (newSortOrder === char) {
-      return;
-    }
-
     const sorted = [...filteredProducts];
 
     switch (newSortOrder) {
-      case SortOrder.Alphabetically:
-        sorted.sort((a, b) => a.name.localeCompare(b.name));
+      case SortOrder.Newest:
+        sorted.sort((a, b) => b.year - a.year);
         break;
-      case SortOrder.Chipest:
+      case SortOrder.Alphabetically:
+        sorted.sort((a, b) =>
+          a.name.toLowerCase().localeCompare(b.name.toLowerCase()),
+        );
+        break;
+      case SortOrder.Cheapest:
         sorted.sort((a, b) => a.price - b.price);
         break;
-      case SortOrder.Newest:
       default:
         sorted.sort((a, b) => b.year - a.year);
         break;
@@ -61,7 +61,7 @@ export const SortByChar: React.FC<SortByCharProps> = ({
         >
           <option value={SortOrder.Newest}>Newest</option>
           <option value={SortOrder.Alphabetically}>Alphabetically</option>
-          <option value={SortOrder.Chipest}>Cheapest</option>
+          <option value={SortOrder.Cheapest}>Cheapest</option>
         </select>
         <span className={styles.arrow}>
           <svg>

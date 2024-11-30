@@ -6,6 +6,7 @@ import icons from '../../assets/icons/icons.svg';
 import { Button } from '../UI/Button';
 import { ProductsContext } from '../../store/ProductsContext';
 import classNames from 'classnames';
+import { colorMapping } from '../../constants/colors';
 
 type Props = {
   productDetails: ProductSpecs;
@@ -44,33 +45,6 @@ export const ProductDetails: React.FC<Props> = ({
   const navigate = useNavigate();
 
   const location = useLocation();
-
-  const colorMapping: { [key: string]: string } = {
-    'space gray': '#6E6E73',
-    spacegray: '#6E6E73',
-    'space-gray': '#6E6E73',
-    silver: '#C0C0C0',
-    gold: '#D4AF37',
-    blue: '#0071E3',
-    red: '#FF3B30',
-    'rose gold': '#B76E79',
-    rosegold: '#B76E79',
-    green: '#34C759',
-    'sky blue': '#87CEEB',
-    starlight: '#F9F3EE',
-    pink: '#FFD3E1',
-    black: '#1C1C1E',
-    'midnight green': '#004E3F',
-    midnightgreen: '#004E3F',
-    midnight: '#001E3C',
-    coral: '#FF6F61',
-    white: '#F5F5F7',
-    yellow: '#FFD60A',
-    purple: '#A020F0',
-    spaceblack: '#1D1D1F',
-    graphite: '#4A4A4C',
-    sierrablue: '#9BB5CE',
-  };
 
   useEffect(() => {
     window.scrollTo({ top: 0 });
@@ -147,31 +121,36 @@ export const ProductDetails: React.FC<Props> = ({
 
       <div className={styles.content}>
         <div className={styles.slider}>
-          <ul className={styles.imagesList}>
-            {images.map((img, index) => (
-              <li
-                key={img}
-                className={`${styles.imagesItem} ${index === displayedImageIndex ? styles.active : ''}`}
-              >
-                <button
-                  type="button"
-                  style={{ backgroundImage: `url(${img})` }}
-                  className={styles.imagePreview}
-                  onClick={() => setDisplayedImageIndex(index)}
-                ></button>
-              </li>
-            ))}
-          </ul>
+          <div className={styles.sliderWrapper}>
+            <ul className={styles.imagesList}>
+              {images.map((img, index) => (
+                <li
+                  key={img}
+                  className={`${styles.imagesItem} ${index === displayedImageIndex ? styles.active : ''}`}
+                >
+                  <button
+                    type="button"
+                    style={{ backgroundImage: `url(${img})` }}
+                    className={styles.imagePreview}
+                    onClick={() => setDisplayedImageIndex(index)}
+                  ></button>
+                </li>
+              ))}
+            </ul>
 
-          <div className={styles.imageWrapper}>
-            <img src={images[displayedImageIndex]} alt={name} />
+            <div className={styles.imageWrapper}>
+              <img src={images[displayedImageIndex]} alt={name} />
+            </div>
           </div>
 
           <div className={styles.information}>
             <div className={styles.selectors}>
               {selectedColor && (
                 <>
-                  <p className={styles.selectors__title}>Available colors</p>
+                  <div className={styles.idWrapper}>
+                    <p className={styles.selectors__title}>Available colors</p>
+                    <div className={styles.idOnTablet}>ID:{product.id}</div>
+                  </div>
                   <div className={styles.selectors__options}>
                     {colorsAvailable.map(col => (
                       <div

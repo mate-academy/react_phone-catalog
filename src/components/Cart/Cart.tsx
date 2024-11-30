@@ -53,7 +53,7 @@ const Cart: React.FC = () => {
 
       {cart.length === 0 ? (
         <div className={styles.emptyCart}>
-          <img src="../../../img/cart-is-empty.png" alt="Empty" />
+          <img src="/img/cart-is-empty.png" alt="Empty" />
         </div>
       ) : (
         <div className={styles.cartContent}>

@@ -38,6 +38,10 @@
     &:focus {
       outline: none;
     }
+
+    @include on-phone {
+      width: 136px;
+    }
   }
 
   .arrow {

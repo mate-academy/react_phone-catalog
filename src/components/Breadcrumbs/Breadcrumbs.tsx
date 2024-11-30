@@ -15,15 +15,18 @@ export const Breadcrumbs: React.FC<BreadcrumbsProps> = ({ name }) => {
 
   return (
     <div className={styles.breadcrumbsContainer}>
-      <button
-        className={styles.navigationHome}
-        onClick={() => navigate(`/${category}`)}
-      >
+      <button className={styles.navigationHome} onClick={() => navigate(`/`)}>
         <span className={styles.homeBtn}>
           <svg>
             <use href={`${icons}#home-icon`}></use>
           </svg>
         </span>
+      </button>
+
+      <button
+        className={styles.navigationCategory}
+        onClick={() => navigate(`/${category}`)}
+      >
         <span className={styles.arrowRight}>
           <svg>
             <use href={`${icons}#arrow-right-icon`}></use>

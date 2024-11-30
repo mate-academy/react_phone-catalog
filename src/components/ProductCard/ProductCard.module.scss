@@ -38,6 +38,24 @@
   }
 }
 
+.responsive {
+  @media screen and (max-width: 449px) {
+    width: 100%;
+  }
+
+  @media screen and (min-width: 450px) {
+    width: 100%;
+  }
+
+  @include on-tablet {
+    width: 100%;
+  }
+
+  @include on-desktop {
+    width: 100%;
+  }
+}
+
 .productDetails {
   display: flex;
   flex-direction: column;

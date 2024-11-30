@@ -46,10 +46,14 @@
   .homeBtn {
     background: none;
     border: none;
-    color: $main-white-color;
+    color: $gray-icons;
     display: flex;
     align-items: center;
     justify-content: center;
+
+    &:hover {
+      color: $main-white-color;
+    }
 
     svg {
       transition: color 0.3s ease-in-out;
@@ -57,6 +61,16 @@
       height: 16px;
     }
   }
+}
+
+.navigationCategory {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  background: none;
+  border: none;
 
   .productName {
     display: flex;
@@ -75,12 +89,6 @@
   }
 
   &:hover {
-    .arrowRight {
-      svg {
-        color: $main-white-color;
-      }
-    }
-
     .productName {
       color: $main-white-color;
     }

@@ -1,4 +1,4 @@
-@import '../../../styles/variables';
+@import '../../../styles/global';
 
 .selectWrapper {
   position: relative;
@@ -32,6 +32,10 @@
       }
       &:focus {
         outline: none;
+      }
+
+      @include on-phone {
+        width: 136px;
       }
     }
 

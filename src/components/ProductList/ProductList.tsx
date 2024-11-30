@@ -45,6 +45,7 @@ export const ProductList: React.FC<ProductListProps> = ({
               product={product}
               imageWrapperSize="large"
               category={category}
+              classNames='responsive'
             />
           ))}
         </div>

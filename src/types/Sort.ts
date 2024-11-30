@@ -1,7 +1,7 @@
 export enum SortOrder {
   Newest = 'newest',
   Alphabetically = 'alphabetically',
-  Chipest = 'chipest',
+  Cheapest = 'cheapest',
 }
 
 export enum PerPageOption {
