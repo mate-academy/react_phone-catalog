@@ -1,5 +1,5 @@
-const image1 = '/img/banner-phones.png';
-const image2 = '/img/banner-tablets.png';
-const image3 = '/img/banner-accessories.png';
+const image1 = `${process.env.PUBLIC_URL}/img/banner-phones.png`;
+const image2 = `${process.env.PUBLIC_URL}/img/banner-tablets.png`;
+const image3 = `${process.env.PUBLIC_URL}/img/banner-accessories.png`;
 
 export const images = [image1, image2, image3];

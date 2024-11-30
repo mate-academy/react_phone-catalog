@@ -30,7 +30,7 @@ export const Root = () => (
           <Route path="accessories">
             <Route index element={<AccessoriesPage />} />
             <Route path=":productId" element={<ProductDetailsPage />} />
-          </Route>  
+          </Route>
 
           <Route path="cart" element={<CartPage />} />
           <Route path="catalog" element={<FavoritesPage />} />
