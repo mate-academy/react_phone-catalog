@@ -1,0 +1,66 @@
+@use "../../utils/mixins" as mixin;
+@use "../../utils/variables" as var;
+
+.modal {
+  position: fixed;
+  z-index: 3;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin: 0;
+  padding: 40px;
+  gap: 24px;
+
+  min-width: 320px;
+  max-width: 650px;
+  height: 200px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: var.$primary-gray;
+  color: var.$white;
+  border: 1px solid var.$primary-gray;
+
+  &__close {
+    @include mixin.sizes(24px, 24px);
+    @include mixin.flex(flex, center, center, false);
+
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 0;
+    background-color: var.$white;
+  }
+
+  &__img {
+    @include mixin.sizes(16px, 16px);
+
+    transition: transform 0.3s;
+
+    &:hover {
+      @include mixin.hover-effect;
+    }
+  }
+
+  &__buttons {
+    @include mixin.h4-desktop-tablet;
+
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__button {
+    transition: transform 0.3s;
+
+    &:hover {
+      @include mixin.hover-effect;
+    }
+  }
+
+  &__text {
+    @include mixin.h3-desktop-tablet;
+  }
+}

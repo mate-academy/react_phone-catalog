@@ -5,10 +5,10 @@ import { ProductsCatalog } from '../../components/ProductsCatalog';
 import { ProductsContext } from '../../store/ProductsContext';
 import { getProductsByCategory } from '../../helpers/getProductsByCategory';
 import { Loader } from '../../components/Loader';
-import { NotificationError } from '../../components/NotificationError';
+import { ProductsError } from '../../components/Errors/ProductsError';
 
 export const TabletsPage = () => {
-  const { products, errorMessage, loading } = useContext(ProductsContext);
+  const { products, loading } = useContext(ProductsContext);
   const tablets = getProductsByCategory(products, 'tablets');
 
   const { pathname } = useLocation();
@@ -17,13 +17,14 @@ export const TabletsPage = () => {
   return (
     <>
       {loading && <Loader />}
-      {!loading && !errorMessage && products.length > 0 && (
+      {!loading && products.length > 0 ? (
         <div>
           <ProductsCatalog products={tablets} title="Tablets" />
         </div>
-      )}
-      {errorMessage && products.length === 0 && (
-        <NotificationError path={nameOfPath} />
+      ) : (
+        <div>
+          <ProductsError path={nameOfPath} />
+        </div>
       )}
     </>
   );

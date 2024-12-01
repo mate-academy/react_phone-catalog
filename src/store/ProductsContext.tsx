@@ -1,13 +1,22 @@
 import React, { useEffect, useMemo, useState } from 'react';
-import { Product } from '../types/Product';
 import { getProducts } from '../services/products';
+import { Loader } from '../components/Loader';
+import { LoadingError } from '../components/Errors/LoadingError';
+import { Product } from '../types/Product';
 
-export const ProductsContext = React.createContext({
-  products: [] as Product[],
-  loading: false,
-  errorMessage: '',
+type Context = {
+  products: Product[];
+  reloadProducts: () => void;
+  loading: boolean;
+};
+
+const State: Context = {
+  products: [],
   reloadProducts: () => {},
-});
+  loading: false,
+};
+
+export const ProductsContext = React.createContext(State);
 
 type Props = {
   children: React.ReactNode;
@@ -27,6 +36,7 @@ export const ProductsProvider: React.FC<Props> = ({ children }) => {
 
       setProducts(data);
     } catch {
+      setProducts([]);
       setErrorMessage('Failed to load products');
     } finally {
       setLoading(false);
@@ -40,16 +50,17 @@ export const ProductsProvider: React.FC<Props> = ({ children }) => {
   const value = useMemo(
     () => ({
       products,
-      loading,
-      errorMessage,
       reloadProducts: loadProducts,
+      loading,
     }),
-    [products, loading, errorMessage],
+    [products, loading],
   );
 
   return (
     <ProductsContext.Provider value={value}>
-      {children}
+      {loading && !errorMessage && <Loader />}
+      {!loading && errorMessage && <LoadingError />}
+      {!loading && !errorMessage && children}
     </ProductsContext.Provider>
   );
 };

@@ -337,4 +337,8 @@
     display: flex;
     justify-content: space-between;
   }
+
+  &__actions {
+    @include mixin.responsive-property(margin-bottom, 20px, 24px, 32px);
+  }
 }

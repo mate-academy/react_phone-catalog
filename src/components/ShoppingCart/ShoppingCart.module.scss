@@ -52,4 +52,18 @@
   &__image {
     @include mixin.sizes(16px, 16px);
   }
+
+  &__count {
+    position: absolute;
+    bottom: 50%;
+    left: 50%;
+    background-color: var.$red;
+    color: var.$white;
+    border-radius: 50%;
+    font-size: 9px;
+    font-weight: 600;
+
+    @include mixin.flex(flex, center, center, false);
+    @include mixin.sizes(14px, 14px);
+  }
 }

@@ -4,11 +4,11 @@ import { useLocation } from 'react-router-dom';
 import { ProductsCatalog } from '../../components/ProductsCatalog';
 import { ProductsContext } from '../../store/ProductsContext';
 import { getProductsByCategory } from '../../helpers/getProductsByCategory';
+import { ProductsError } from '../../components/Errors/ProductsError';
 import { Loader } from '../../components/Loader';
-import { NotificationError } from '../../components/NotificationError';
 
 export const PhonesPage = () => {
-  const { products, errorMessage, loading } = useContext(ProductsContext);
+  const { products, loading } = useContext(ProductsContext);
   const phones = getProductsByCategory(products, 'phones');
 
   const { pathname } = useLocation();
@@ -17,13 +17,14 @@ export const PhonesPage = () => {
   return (
     <>
       {loading && <Loader />}
-      {!loading && !errorMessage && products.length > 0 && (
+      {!loading && products.length > 0 ? (
         <div>
           <ProductsCatalog products={phones} title="Mobile phones" />
         </div>
-      )}
-      {errorMessage && products.length === 0 && (
-        <NotificationError path={nameOfPath} />
+      ) : (
+        <div>
+          <ProductsError path={nameOfPath} />
+        </div>
       )}
     </>
   );

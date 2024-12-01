@@ -1,15 +1,18 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import cn from 'classnames';
 import { NavLink } from 'react-router-dom';
 import styles from './Favourites.module.scss';
 
-import favourites from '../../images/icons/favourites.svg';
+import fav from '../../images/icons/favourites.svg';
+import { FavouritesContext } from '../../store/FavouritesContex';
 
 type Props = {
   className?: string;
 };
 
 export const Favourites: React.FC<Props> = ({ className }) => {
+  const { favourites } = useContext(FavouritesContext);
+
   return (
     <NavLink
       to="/favourites"
@@ -21,11 +24,10 @@ export const Favourites: React.FC<Props> = ({ className }) => {
         )
       }
     >
-      <img
-        src={favourites}
-        alt="Favourites"
-        className={styles.favourites__image}
-      />
+      <img src={fav} alt="Favourites" className={styles.favourites__image} />
+      {favourites.length > 0 && (
+        <span className={styles.favourites__count}>{favourites.length}</span>
+      )}
     </NavLink>
   );
 };

@@ -1,28 +1,32 @@
 import { Category } from './Category';
+import { Product } from './Product';
 
 export type Description = {
   title: string;
   text: string[];
 };
 
-export type ProductDetails = {
-  id: string;
+export interface ProductDetails extends Product {
+  id: number | string;
   category: Category;
-  namespaceId: string;
+  itemId: string;
   name: string;
+  namespaceId: string;
   capacityAvailable: string[];
-  capacity: string;
   priceRegular: number;
   priceDiscount: number;
   colorsAvailable: string[];
-  color: string;
   images: string[];
+  image: string;
   description: Description[];
-  screen: string;
   resolution: string;
   processor: string;
-  ram: string;
   camera: string;
   zoom: string;
   cell: string[];
-};
+  screen: string;
+  capacity: string;
+  color: string;
+  ram: string;
+  year: number;
+}

@@ -1,0 +1,62 @@
+@use "../../utils//mixins" as mixin;
+@use "../../utils/variables" as var;
+
+.button {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  width: 100%;
+  height: 40px;
+
+  &__add {
+    border: none;
+    flex: 1 1;
+    background-color: var.$primary-gray;
+    color: var.$white;
+
+    @include mixin.flex(flex, center, center, false);
+
+    transition: box-shadow 0.3s;
+
+    @include mixin.on-mobile {
+      font-size: 12px;
+    }
+
+    @include mixin.on-tablet {
+      @include mixin.buttons-desktop-tablet;
+
+      padding: 9px;
+    }
+
+    @include mixin.on-desktop {
+      @include mixin.buttons-desktop-tablet;
+
+      padding: 9px;
+    }
+
+    &:hover {
+      box-shadow: 0 3px 13px 0 #17203166;
+    }
+
+    &--active {
+      background-color: var.$white;
+      color: var.$green;
+      border: solid 1px var.$icons-placeholders;
+    }
+  }
+
+  &__fav {
+    height: 100%;
+    aspect-ratio: 1 / 1;
+
+    @include mixin.flex(flex, center, center, false);
+
+    border: solid 1px var.$icons-placeholders;
+    background-color: inherit;
+    transition: border 0.3s;
+
+    &:hover {
+      border: solid 1px var.$primary-gray;
+    }
+  }
+}

@@ -1,0 +1,100 @@
+@use "../../utils/mixins" as mixin;
+@use "../../utils/variables" as var;
+
+.item {
+  width: 100%;
+  padding: 24px;
+  gap: 24px;
+  border: 1px solid var.$elements;
+
+  @include mixin.flex(flex, false, space-between, column);
+
+  @include mixin.on-tablet {
+    @include mixin.flex(flex, center, false, row);
+  }
+
+  @include mixin.on-desktop {
+    @include mixin.flex(flex, center, false, row);
+  }
+
+  &__top,
+  &__bottom {
+    gap: 24px;
+
+    @include mixin.on-mobile {
+      @include mixin.flex(flex, center, space-between, false);
+    }
+
+    @include mixin.on-tablet {
+      @include mixin.flex(flex, center, center, row)
+    }
+  }
+
+  &__img-container {
+    @include mixin.sizes(80px, 80px);
+  }
+
+  &__image {
+    @include mixin.sizes(100%, 100%);
+
+    object-fit: contain;
+  }
+
+  &__quantity-block {
+    @include mixin.flex(flex, center, center, row);
+  }
+
+  &__quantity {
+    padding: 0 14px;
+  }
+
+  &__button-count {
+    @include mixin.sizes(32px, 32px);
+    @include mixin.flex(flex, center, center, false);
+
+    border: 1px solid var.$elements;
+    transition: border 0.3s;
+
+    &:hover {
+      border: 1px solid var.$primary-gray;
+    }
+  }
+
+  &__img {
+    @include mixin.sizes(16px, 16px);
+  }
+
+  &__name {
+    text-decoration: none;
+    color: var.$primary-gray;
+    transition: text-decoration 0.3s;
+
+    &:hover {
+      text-decoration: underline;
+    }
+
+    @include mixin.on-desktop {
+      width: 350px;
+    }
+  }
+
+  &__button-cross {
+    transition: scale 0.3s;
+
+    &:hover {
+      @include mixin.hover-effect;
+    }
+  }
+
+  &__price {
+    color: var.$primary-gray;
+
+    @include mixin.on-mobile {
+      @include mixin.h3-mobile;
+    }
+
+    @include mixin.on-tablet {
+      @include mixin.h3-desktop-tablet;
+    }
+  }
+}

@@ -5,8 +5,8 @@ import { HomePage } from './pages/HomePage';
 import { PhonesPage } from './pages/PhonesPage';
 import { TabletsPage } from './pages/TabletsPage';
 import { AccessoriesPage } from './pages/AccessoriesPage';
-import { FavouritesPage } from './pages/FavouritesPage';
-import { ShoppingCartPage } from './pages/ShoppingCartPage';
+import { FavouritesPage } from './pages/Favourites';
+import { CartPage } from './pages/CartPage';
 import { MenuPage } from './pages/MenuPage';
 import { ProductDetailsPage } from './pages/ProductDetailsPage';
 import { NotFoundPage } from './pages/NotFoundPage';
@@ -33,7 +33,7 @@ export const Root = () => (
         </Route>
 
         <Route path="favourites" element={<FavouritesPage />} />
-        <Route path="cart" element={<ShoppingCartPage />} />
+        <Route path="cart" element={<CartPage />} />
         <Route path="menu" element={<MenuPage />} />
 
         <Route path="*" element={<NotFoundPage />} />

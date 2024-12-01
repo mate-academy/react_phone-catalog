@@ -1,5 +1,5 @@
-import { ItemsOnPage } from '../types/ItemsOnPage';
 import { Product } from '../types/Product';
+import { ItemsOnPage } from '../types/ItemsOnPage';
 import { SortField } from '../types/SortField';
 
 export const getSortedProducts = (

@@ -9,10 +9,10 @@ import arrow from '../../images/icons/arrow_right_dis.png';
 import { BackLink } from '../BackLink';
 
 type Props = {
-  product?: ProductDetails | null;
+  gadget?: ProductDetails | null;
 };
 
-export const Breadcrumbs: React.FC<Props> = ({ product }) => {
+export const Breadcrumbs: React.FC<Props> = ({ gadget }) => {
   const { pathname } = useLocation();
   const nameOfPath = pathname.slice(1).split('/')[0];
   const capitalizedPath =
@@ -38,7 +38,7 @@ export const Breadcrumbs: React.FC<Props> = ({ product }) => {
           {capitalizedPath}
         </p>
 
-        {itemId && product && (
+        {itemId && gadget && (
           <>
             <div className={styles.breadcrumbs__arrow}>
               <img
@@ -48,12 +48,12 @@ export const Breadcrumbs: React.FC<Props> = ({ product }) => {
               />
             </div>
 
-            <div className={styles.breadcrumbs__path}>{product.name}</div>
+            <div className={styles.breadcrumbs__path}>{gadget.name}</div>
           </>
         )}
       </div>
 
-      {itemId && product && (
+      {itemId && gadget && (
         <>
           <BackLink />
         </>

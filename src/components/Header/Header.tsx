@@ -12,6 +12,7 @@ import styles from './Header.module.scss';
 import menu from '../../images/icons/menu_burger.svg';
 import close from '../../images/icons/close.svg';
 import { Search } from '../Search';
+import { handleClickToTop } from '../../helpers/scrollToTop';
 
 export const Header = () => {
   const { pathname } = useLocation();
@@ -29,18 +30,24 @@ export const Header = () => {
   };
 
   useEffect(() => {
-    document.body.style.overflow = openMenu ? 'hidden' : '';
+    if (openMenu) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
 
     return () => {
       document.body.style.overflow = '';
+      setOpenMenu(false);
     };
-  }, [openMenu]);
+  }, [openMenu, pathname]);
 
   useEffect(() => {
     switch (pathname) {
       case '/phones':
       case '/tablets':
       case '/accessories':
+        handleClickToTop();
         setIsQuery(true);
         break;
 

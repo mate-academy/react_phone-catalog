@@ -5,10 +5,10 @@ import { ProductsContext } from '../../store/ProductsContext';
 import { getProductsByCategory } from '../../helpers/getProductsByCategory';
 import { Loader } from '../../components/Loader';
 import { useLocation } from 'react-router-dom';
-import { NotificationError } from '../../components/NotificationError';
+import { ProductsError } from '../../components/Errors/ProductsError';
 
 export const AccessoriesPage = () => {
-  const { products, errorMessage, loading } = useContext(ProductsContext);
+  const { products, loading } = useContext(ProductsContext);
   const accessories = getProductsByCategory(products, 'accessories');
 
   const { pathname } = useLocation();
@@ -17,13 +17,15 @@ export const AccessoriesPage = () => {
   return (
     <>
       {loading && <Loader />}
-      {!loading && !errorMessage && products.length > 0 && (
+
+      {!loading && products.length > 0 ? (
         <div>
           <ProductsCatalog products={accessories} title="Accessories" />
         </div>
-      )}
-      {errorMessage && products.length === 0 && (
-        <NotificationError path={nameOfPath} />
+      ) : (
+        <div>
+          <ProductsError path={nameOfPath} />
+        </div>
       )}
     </>
   );

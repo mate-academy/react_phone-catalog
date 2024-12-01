@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import styles from './ProductsCatalog.module.scss';
-import { Product } from '../../types/Product';
 import { ProductsList } from '../ProductsList';
 import { Dropdown } from '../Dropdown';
 import { getSortedProducts } from '../../helpers/getSortedProducts';
@@ -10,6 +9,7 @@ import { SortField } from '../../types/SortField';
 import { ItemsOnPage } from '../../types/ItemsOnPage';
 import { getNumbers } from '../../helpers/getNumbers';
 import { Breadcrumbs } from '../Breadcrumbs';
+import { Product } from '../../types/Product';
 
 type Props = {
   products: Product[];

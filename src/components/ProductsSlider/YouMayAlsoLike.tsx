@@ -15,23 +15,23 @@ type Props = {
   title: string;
 };
 
-export const ProductSlider: React.FC<Props> = ({ products, title }) => {
+export const YouMayAlsoLike: React.FC<Props> = ({ products, title }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [visibleCards, setVisibleCards] = useState(6);
+  const [visibleCards, setVisibleCards] = useState(4);
 
   const updateVisibleCards = useCallback(() => {
     const width = window.innerWidth;
 
-    if (width < 390) {
+    if (width < 340) {
       setVisibleCards(1);
-    } else if (width < 640) {
+    } else if (width < 440) {
       setVisibleCards(2);
-    } else if (width < 820) {
+    } else if (width < 760) {
       setVisibleCards(3);
     } else if (width < 900) {
       setVisibleCards(4);
     } else {
-      setVisibleCards(6);
+      setVisibleCards(4);
     }
   }, []);
 
