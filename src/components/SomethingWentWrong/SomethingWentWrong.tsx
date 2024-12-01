@@ -12,13 +12,15 @@ export const SomethingWentWrong = () => {
 
   return (
     <div className="something-went-wrong">
-      <ResponsiveHeader>{'Something went wrong :('}</ResponsiveHeader>
+      <div className="something-went-wrong__title">
+        <ResponsiveHeader>{'Something went wrong :('}</ResponsiveHeader>
+      </div>
 
       <button onClick={handleReload} className="error-page-button">
         Reload
       </button>
 
-      <img src={notFoundPage} alt="Not Found Page" />
+      <img className="image" src={notFoundPage} alt="Not Found Page" />
     </div>
   );
 };

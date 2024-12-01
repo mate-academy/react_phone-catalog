@@ -1,4 +1,4 @@
-const BASE_URL = '/api';
+const BASE_URL = 'api';
 
 export const fetchData = async (url: string) => {
   function wait(delay: number) {

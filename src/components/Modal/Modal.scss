@@ -1,4 +1,4 @@
-@import '../../styles/main.scss';
+@import '../../styles/main';
 
 .modal {
   margin: 0 !important;
@@ -27,7 +27,7 @@
     display: flex;
     flex-direction: column;
     gap: 20px;
-    animation: fadeIn 0.3s ease-in-out;
+    animation: fade-in 0.3s ease-in-out;
   }
 
   .button-group {
@@ -56,7 +56,6 @@
 
   .clear-cart {
     background-color: var(--red-color-light);
-    border: 2px solid transparent;
 
     &:hover {
       background-color: var(--white-color);
@@ -74,7 +73,7 @@
     }
   }
 
-  @keyframes fadeIn {
+  @keyframes fade-in {
     from {
       opacity: 0;
       transform: translateY(-30px);

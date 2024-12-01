@@ -17,7 +17,7 @@ export const Modal: React.FC<Props> = ({ onClose }) => {
 
   return (
     <div className="modal" onClick={onClose}>
-      <div className="modal-content">
+      <div className="modal-content" onClick={e => e.stopPropagation()}>
         <h3>Checkout is not implemented</h3>
 
         <p className="body-text">Do you want to clear the cart?</p>
