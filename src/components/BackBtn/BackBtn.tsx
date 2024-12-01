@@ -16,12 +16,16 @@ export const BackBtn: React.FC<Props> = ({ path, prevPath, search }) => {
   const browsing = sessionStorage.getItem('browsing');
 
   const goBack = () => {
-    if (path || browsing) {
+    if (path && browsing) {
       navigate(-1);
-    } else {
+    } else if (prevPath) {
       navigate({
         pathname: prevPath,
         search,
+      });
+    } else {
+      navigate({
+        pathname: '/',
       });
     }
   };

@@ -1,13 +1,15 @@
+/* eslint-disable @typescript-eslint/indent */
 import React, { createContext, useState } from 'react';
 import useLocalStorage from './hooks/useLocalStorage';
 import {
+  AggregatedProductListContextType,
   CartContextType,
   CartProduct,
   FavouriteContextType,
   ProductListContextType,
   ThemeContextType,
 } from './types/Context';
-import { Product } from './types/Product';
+import { Product, ProductOtherData } from './types/Product';
 import { ContextName } from './types/ContextName';
 import { ThemeType } from './types/ThemeType';
 
@@ -23,7 +25,14 @@ export const FavouriteContext = createContext<FavouriteContextType>({
 
 export const ProductListContext = createContext<ProductListContextType>({
   productList: [],
+  setProductList: () => {},
 });
+
+export const AggregatedProductListContext =
+  createContext<AggregatedProductListContextType>({
+    aggregatedProductList: [],
+    setAggregatedProductList: () => {},
+  });
 
 export const ThemeContext = createContext<ThemeContextType>({
   theme: '',
@@ -35,28 +44,40 @@ export const ContextProvider = ({
 }: {
   children: React.ReactNode;
 }) => {
+  const [theme, setTheme] = useState(() => {
+    return localStorage.getItem('theme') || ThemeType.light;
+  });
+
+  const [productList, setProductList] = useState<Product[]>([]);
+  const [aggregatedProductList, setAggregatedProductList] = useState<
+    ProductOtherData[]
+  >([]);
+
   const [cartProducts, setCartProducts] = useLocalStorage<CartProduct>(
     ContextName.cartProducts,
     [],
   );
+
   const [favouriteProducts, setFavouriteProducts] = useLocalStorage<Product>(
     ContextName.favouriteProducts,
     [],
   );
 
-  const [theme, setTheme] = useState(() => {
-    return localStorage.getItem('theme') || ThemeType.light;
-  });
-
   return (
     <ThemeContext.Provider value={{ theme, setTheme }}>
-      <CartContext.Provider value={{ cartProducts, setCartProducts }}>
-        <FavouriteContext.Provider
-          value={{ favouriteProducts, setFavouriteProducts }}
+      <ProductListContext.Provider value={{ productList, setProductList }}>
+        <AggregatedProductListContext.Provider
+          value={{ aggregatedProductList, setAggregatedProductList }}
         >
-          {children}
-        </FavouriteContext.Provider>
-      </CartContext.Provider>
+          <CartContext.Provider value={{ cartProducts, setCartProducts }}>
+            <FavouriteContext.Provider
+              value={{ favouriteProducts, setFavouriteProducts }}
+            >
+              {children}
+            </FavouriteContext.Provider>
+          </CartContext.Provider>
+        </AggregatedProductListContext.Provider>
+      </ProductListContext.Provider>
     </ThemeContext.Provider>
   );
 };

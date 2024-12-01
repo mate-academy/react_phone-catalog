@@ -23,7 +23,7 @@
   }
 }
 
-.productsPageContainer{
+.productsPageContainer {
   grid-column: 1 / -1;
 
   box-sizing: border-box;
@@ -36,7 +36,6 @@
 
   max-width: $maxContainerWidth;
   padding-inline: 1.6rem;
-
 
 
   @include on-tablet {
@@ -73,6 +72,11 @@
   @include on-tablet {
     margin-bottom: 4rem;
   }
+
+  &Skeleton {
+    font-size: 1.4rem;
+    width: 8rem;
+  }
 }
 
 .productsContainer {
@@ -90,7 +94,7 @@
   }
 }
 
-.noResultImg{
+.noResultImg {
   position: relative;
   grid-column: 1 / -1;
   width: 17.5rem;
@@ -111,7 +115,7 @@
     width: 30rem;
   }
 
-  &Text{
+  &Text {
     @extend %text-body;
 
     display: block;
@@ -138,7 +142,7 @@
   }
 }
 
-.noResultText{
+.noResultText {
   @extend %h3;
 
   grid-column: 1 / -1;
@@ -158,4 +162,39 @@
     font-size: 2.2rem;
     line-height: 3.1rem;
   }
+}
+
+.paginationSkeletonContainer {
+  display: flex;
+
+  grid-column: 1 / -1;
+
+  margin-inline: auto;
+
+  gap: 0.8rem;
+
+  @media screen and (max-width: 350px) {
+    gap: 0.4rem;
+  }
+}
+
+.paginationSkeletonItem {
+  width: 3.2rem;
+  font-size: 3.2rem;
+
+  &First {
+    margin-right: 0.8rem;
+  }
+
+  &Last {
+    margin-left: 0.8rem;
+  }
+}
+
+.SkeletonDOTS{
+  display: flex;
+  align-items: center;
+  height: 3.2rem;
+  font-size: 1.4rem;
+  color: var(--color-primary);
 }

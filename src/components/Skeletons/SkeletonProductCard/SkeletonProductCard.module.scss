@@ -1,0 +1,118 @@
+@import "src/styles/mixins";
+
+.productCardContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  padding: 3.2rem;
+  min-width: 21.4rem;
+  box-sizing: border-box;
+  border-radius: 0.8rem;
+  border: 1px solid var(--color-elements);
+
+  @include on-tablet {
+    min-width: 23.7rem;
+  }
+
+  @include on-m-desktop {
+    min-width: 27.2rem;
+  }
+}
+
+.productImgContainer {
+  display: flex;
+  justify-content: center;
+  height: 12.9rem;
+}
+
+.productImg {
+  height: 100%;
+}
+
+.titleCard {
+  font-size: 1.4rem;
+  margin-top: 1rem;
+}
+
+.priceContainer {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+
+  margin-top: auto;
+
+}
+
+.price {
+  font-size: 2.2rem;
+  margin-block: 1rem;
+  width: 6rem;
+}
+
+.line {
+  border-bottom: 1px solid var(--color-elements);
+}
+
+.productInfo {
+  list-style: none;
+
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+
+  margin-block: 0.8rem;
+}
+
+.productInfoItem {
+  display: flex;
+  justify-content: space-between;
+
+  & :first-child {
+    margin-right: auto;
+  }
+}
+
+.productItem {
+  font-size: 1.2rem;
+
+  &Screen {
+    width: 4.5rem;
+
+    &1 {
+      width: 6rem;
+    }
+  }
+
+  &Capacity {
+    width: 6rem;
+
+    &1 {
+      width: 4rem;
+    }
+  }
+
+  &RAM {
+    width: 3rem;
+
+    &1 {
+      width: 3rem;
+    }
+  }
+}
+
+
+.btnContainer {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.8rem;
+}
+
+.btnCart {
+  border-radius: 4.8rem;
+  font-size: 4.2rem;
+}
+
+.btnFavorite {
+  font-size: 4.2rem;
+  width: 4.2rem;
+}

@@ -1,4 +1,4 @@
-import { Product } from './Product';
+import { Product, ProductOtherData } from './Product';
 
 export interface CartProduct {
   id: string;
@@ -18,6 +18,12 @@ export interface FavouriteContextType {
 
 export interface ProductListContextType {
   productList: Product[];
+  setProductList: (products: Product[]) => void;
+}
+
+export interface AggregatedProductListContextType {
+  aggregatedProductList: ProductOtherData[];
+  setAggregatedProductList: (products: ProductOtherData[]) => void;
 }
 
 export interface ThemeContextType {

@@ -1,5 +1,6 @@
 import { Outlet } from 'react-router-dom';
 import { useContext, useEffect, useLayoutEffect, useState } from 'react';
+import 'react-loading-skeleton/dist/skeleton.css';
 
 import './App.scss';
 import './styles/buttons.scss';

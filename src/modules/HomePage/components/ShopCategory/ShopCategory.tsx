@@ -2,15 +2,26 @@ import styles from '../ShopCategory/ShopCategory.module.scss';
 import { Link } from 'react-router-dom';
 import classNames from 'classnames';
 import { Category } from '../../../../types/Category';
-import phone from '../../../../../public/api/phones.json';
-import tablet from '../../../../../public/api/tablets.json';
-import watch from '../../../../../public/api/accessories.json';
 import { ProductType } from '../../../../types/ProductType';
 import { instantScroll } from '../../../../utils/instantScroll';
 import { useTranslation } from 'react-i18next';
+import React, { useContext } from 'react';
+import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
+import { ProductListContext } from '../../../../ContextProvider';
 
-export const ShopCategory = () => {
+interface Props {
+  isLoading: boolean;
+}
+
+export const ShopCategory: React.FC<Props> = ({ isLoading }) => {
   const { t } = useTranslation(['homepage', 'common']);
+  const { productList } = useContext(ProductListContext);
+  const [phonesLength, tabletsLength, accessoriesLength] = Object.keys(
+    ProductType,
+  ).map(productType => {
+    return productList.filter(({ category }) => category === productType)
+      .length;
+  });
 
   return (
     <section className={styles.shopCategoryContainer}>
@@ -48,11 +59,17 @@ export const ShopCategory = () => {
                 : t('productCategory.accessories', { ns: 'common' })}
           </h4>
           <p className={styles.categoryNumModels}>
-            {category === ProductType.phones
-              ? t('models', { ns: 'common', count: phone.length })
-              : category === ProductType.tablets
-                ? t('models', { ns: 'common', count: tablet.length })
-                : t('models', { ns: 'common', count: watch.length })}
+            {isLoading ? (
+              <SkeletonTheme baseColor="#3B3E4A" highlightColor="#4A4D58">
+                <Skeleton className={styles.categoryNumModelsSkeleton} />
+              </SkeletonTheme>
+            ) : category === ProductType.phones ? (
+              t('models', { ns: 'common', count: phonesLength })
+            ) : category === ProductType.tablets ? (
+              t('models', { ns: 'common', count: tabletsLength })
+            ) : (
+              t('models', { ns: 'common', count: accessoriesLength })
+            )}
           </p>
         </div>
       ))}

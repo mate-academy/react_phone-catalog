@@ -123,4 +123,9 @@
   @extend %text-body;
 
   color: var(--color-secondary);
+
+  &Skeleton {
+    font-size: 1.4rem;
+    width: 8rem;
+  }
 }

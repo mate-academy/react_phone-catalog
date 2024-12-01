@@ -8,8 +8,11 @@ export const filterProducts = (
   itemsPerPage: string,
   currentPage: number,
   query: string,
+  productType: string,
 ) => {
-  let productListCopy = [...productList];
+  let productListCopy = productList.filter(
+    ({ category }) => category === productType,
+  );
 
   if (query) {
     productListCopy = productListCopy.filter(({ name }) =>

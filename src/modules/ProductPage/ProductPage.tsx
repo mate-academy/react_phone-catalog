@@ -27,7 +27,7 @@ export const ProductPage = () => {
 
   const { state, pathname } = useLocation();
   const { productId: id = '' } = useParams();
-  const { productList } = useContext(ProductListContext);
+  const { productList, setProductList } = useContext(ProductListContext);
 
   const prevPath = getPrevPath(pathname);
 
@@ -36,20 +36,53 @@ export const ProductPage = () => {
   const product = productList.find(item => item.id === id);
 
   useEffect(() => {
+    const controller = new AbortController();
+
     if (product) {
+      const fetchedCategories = Array.from(
+        new Set(productList.map(({ category }) => category)),
+      );
+
+      if (fetchedCategories.length === Object.keys(ProductType).length) {
+        setSuggestedProducts(getSuggestedProducts(productList));
+
+        return;
+      }
+
       const fetchCategories = Object.keys(ProductType).filter(
-        category => category !== product?.category,
+        category => !fetchedCategories.includes(category),
       ) as FetchDataType[];
 
-      Promise.all(fetchCategories.map(category => getProducts(category))).then(
-        ([productList1, productList2]) =>
-          setSuggestedProducts(
-            getSuggestedProducts(productList, productList1, productList2),
+      Promise.all(
+        fetchCategories.map(category =>
+          getProducts(category, controller.signal),
+        ),
+      ).then(results => {
+        const aggregatedProducts = [...productList];
+
+        results.forEach((result: Product[]) =>
+          aggregatedProducts.push(...result),
+        );
+
+        setProductList(aggregatedProducts);
+
+        setSuggestedProducts(
+          getSuggestedProducts(
+            aggregatedProducts.filter(({ id: itemID }) => itemID !== id),
           ),
-      );
+        );
+      });
       // .catch(e => setError(e))
     }
+
+    return () => {
+      controller.abort();
+    };
   }, [product?.namespaceId]);
+
+  if (!productList.length) {
+    return <p>Loading</p>;
+  }
 
   if (!product) {
     return <ProductNotFound path={path} prevPath={prevPath} search={search} />;
