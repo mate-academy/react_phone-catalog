@@ -1,5 +1,6 @@
 @import './styles/mixins.scss';
 @import './styles/fonts.scss';
+@import './styles/typography.scss';
 
 html {
   font-family: Mont, sans-serif;
@@ -10,5 +11,12 @@ body {
 }
 
 .App {
-  @include page-grid;
+}
+
+.container {
+  padding: 0 32px;
+  box-sizing: border-box;
+
+  margin: auto;
+  max-width: 1200px;
 }
