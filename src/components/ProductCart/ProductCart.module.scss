@@ -20,9 +20,15 @@
 .image {
 width: auto;
 height: 100%;
+
+@include hover {
+  transform: scale(1.1);
+}
 }
 
 .name{
+  padding-top: 16px;
+
   @include font-set($body-text);
 }
 
@@ -60,5 +66,9 @@ color: $primary;
 text-align: right;
 }
 
+.actions {
+  display: flex;
+  gap: 8px;
+};
 
 

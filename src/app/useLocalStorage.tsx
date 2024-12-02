@@ -1,22 +1,27 @@
-import { useEffect, useState } from 'react';
-import { Product } from '../types/Product';
+import { useState } from 'react';
 
-export const useLocalStorage = (key: string, initialValue: Product[]) => {
-  const getValue = () => {
-    const storage = localStorage.getItem(key);
+export function useLocalStorage<T>(
+  key: string,
+  startValue: T,
+): [T, (v: T) => void] {
+  const [value, setValue] = useState<T>(() => {
+    const data = localStorage.getItem(key);
 
-    if (storage) {
-      return JSON.parse(storage);
+    if (data === null) {
+      return startValue;
     }
 
-    return initialValue;
+    try {
+      return JSON.parse(data);
+    } catch (e) {
+      return startValue;
+    }
+  });
+
+  const save = (newValue: T) => {
+    setValue(newValue);
+    localStorage.setItem(key, JSON.stringify(newValue));
   };
 
-  const [value, setValue] = useState(getValue);
-
-  useEffect(() => {
-    localStorage.setItem(key, JSON.stringify(value));
-  }, [key, value]);
-
-  return [value, setValue];
-};
+  return [value, save];
+}

@@ -1,0 +1,21 @@
+@import '../../styles/main';
+
+.heartButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  background-color: $white;
+  border-radius: 50%;
+  border: 1px solid $elements;
+  flex-shrink: 0;
+
+  @include hover {
+    background-color: $hover-and-bg;
+}
+
+&:focus {
+  background-color: transparent;
+}
+}

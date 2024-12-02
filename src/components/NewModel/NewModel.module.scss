@@ -2,8 +2,6 @@
 
 .newmodels {
   @include page-grid;
-
-
 }
 
 .header {
@@ -87,8 +85,9 @@ grid-column: 3 / span 2;
   background-color: $white;
   height: auto;
   border: 1px solid $elements;
+  border-radius: 8px;
 
   @include hover {
-    box-shadow: 0 0 4px $elements;
+    box-shadow: 0 0 6px $elements;
 }
 }

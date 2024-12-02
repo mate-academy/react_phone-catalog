@@ -1,20 +1,49 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { Product } from '../types/Product';
+import { getAllProducts } from '../api/products';
 
-const initialState: Product[] = JSON.parse(
-  localStorage.getItem('products') || '[]',
+export interface ProductsState {
+  items: Product[];
+  loading: boolean;
+  error: string | null;
+}
+
+const initialState: ProductsState = {
+  items: [],
+  loading: false,
+  error: null,
+};
+
+export const init = createAsyncThunk<Product[], void>(
+  'products/fetch',
+  async () => {
+    return getAllProducts();
+  },
 );
 
-export const productSlice = createSlice({
+const productsSlice = createSlice({
   name: 'products',
   initialState,
-  reducers: {
-    setProducts: (_: Product[], action: PayloadAction<Product[]>) => {
-      localStorage.setItem('products', JSON.stringify(action.payload));
+  reducers: {},
+  extraReducers: builder => {
+    builder.addCase(init.pending, state => {
+      state.loading = true;
+      state.error = null;
+    });
 
-      return action.payload;
-    },
+    builder.addCase(
+      init.fulfilled,
+      (state, action: PayloadAction<Product[]>) => {
+        state.items = action.payload;
+        state.loading = false;
+      },
+    );
+
+    builder.addCase(init.rejected, state => {
+      state.loading = false;
+      state.error = 'Failed to fetch products';
+    });
   },
 });
-export const { setProducts } = productSlice.actions;
-export default productSlice.reducer;
+
+export default productsSlice.reducer;

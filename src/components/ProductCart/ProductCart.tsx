@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom';
 import { Product } from '../../types/Product';
 import style from './ProductCart.module.scss';
+import { HeartButton } from '../HeartButton';
+import { ButtonAddCart } from '../ButtonAddCart';
 interface ProductCardProps {
   product: Product;
 }
@@ -35,8 +37,8 @@ export const ProductCart: React.FC<ProductCardProps> = ({ product }) => {
         </li>
       </ul>
       <div className={style.actions}>
-        {/* <ButtonAddCart productId={product.itemId} />
-              <ButtonHeart productId={product.itemId} /> */}
+        <ButtonAddCart productId={product.itemId} />
+        <HeartButton productId={product.itemId} />
       </div>
     </>
   );

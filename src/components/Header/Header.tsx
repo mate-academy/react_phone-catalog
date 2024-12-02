@@ -1,9 +1,18 @@
 import { Link, NavLink } from 'react-router-dom';
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import styles from './Header.module.scss';
 import classNames from 'classnames';
+import { useAppSelector } from '../../app/hook';
+import heart from '../../assets/img/icons/favourites.svg';
 export const Header = () => {
+  const favourites = useAppSelector(state => state.favourites.products);
+  const cartProducts = useAppSelector(state => state.cart.products);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const totalCount = useMemo(() => {
+    return cartProducts.reduce((count, product) => count + product.count, 0);
+  }, [cartProducts]);
+
   const handleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
@@ -90,22 +99,27 @@ export const Header = () => {
               <NavLink
                 to="favourites"
                 className={({ isActive }) =>
-                  `${generateLinkClasses({ isActive })} badge-items`
+                  `${generateLinkClasses({ isActive })} ${styles['badge-items']}`
                 }
                 onClick={closeMenu}
               >
                 <img
-                  src={'./img/icons/favourites.svg'}
+                  src={heart}
                   alt="favourites-heart"
                   className={styles.navigation__icon}
                 />
+                {favourites.length > 0 && (
+                  <span className={styles.badgeItemCount}>
+                    {favourites.length}
+                  </span>
+                )}
               </NavLink>
             </div>
             <div className={styles.navigation__icons__item}>
               <NavLink
                 to="cart"
                 className={({ isActive }) =>
-                  `${generateLinkClasses({ isActive })} badge-items`
+                  `${generateLinkClasses({ isActive })} ${styles['badge-items']}`
                 }
                 onClick={closeMenu}
               >
@@ -114,6 +128,9 @@ export const Header = () => {
                   alt="shopping-bag"
                   className={styles.navigation__icon}
                 />
+                {!!totalCount && (
+                  <span className={styles.badgeItemCount}>{totalCount}</span>
+                )}
               </NavLink>
             </div>
           </div>
