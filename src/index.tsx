@@ -21,6 +21,6 @@ const setFavicon = (iconPath: string, type: string = 'image/x-icon') => {
   document.head.appendChild(linkElement);
 };
 
-setFavicon('/img/favicon.svg', 'image/svg+xml');
+setFavicon('img/favicon.svg', 'image/svg+xml');
 
 createRoot(document.getElementById('root') as HTMLElement).render(<Root />);
