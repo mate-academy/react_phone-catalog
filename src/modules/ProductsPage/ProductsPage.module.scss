@@ -1,4 +1,3 @@
-@import "src/styles/colors";
 @import "src/styles/typography";
 @import "src/styles/mixins";
 
@@ -52,6 +51,7 @@
 .title {
   @extend %h1-mobile;
 
+  font-size: 2.8rem;
   color: var(--color-primary);
   grid-column: 1 / -1;
   margin-bottom: 0.8rem;

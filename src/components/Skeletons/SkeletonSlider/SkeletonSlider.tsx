@@ -21,7 +21,13 @@ export const SkeletonSlider: React.FC<Props> = ({ sliderTitle }) => {
 
   return (
     <SkeletonTheme baseColor="#3B3E4A" highlightColor="#4A4D58">
-      <section className={styles.suggestionsContainer}>
+      <section
+        className={classNames(styles.suggestionsContainer, {
+          [styles.suggestionsContainerMayLike]:
+            sliderTitle === SliderTitle.suggestions ||
+            sliderTitle === SliderTitle.suggestionsUA,
+        })}
+      >
         <h2 className={styles.title}>
           <Skeleton
             className={classNames({
@@ -30,6 +36,9 @@ export const SkeletonSlider: React.FC<Props> = ({ sliderTitle }) => {
               [styles.titleHotPrices]:
                 sliderTitle === SliderTitle.hotPrices ||
                 sliderTitle === SliderTitle.hotPricesUA,
+              [styles.titleMayLike]: sliderTitle === SliderTitle.suggestions,
+              [styles.titleMayLikeUA]:
+                sliderTitle === SliderTitle.suggestionsUA,
             })}
           />
           <Skeleton
@@ -38,6 +47,8 @@ export const SkeletonSlider: React.FC<Props> = ({ sliderTitle }) => {
                 i18n.language === Languages.en.toLowerCase() &&
                 (sliderTitle === SliderTitle.newModels ||
                   sliderTitle === SliderTitle.newModelsUA),
+              [styles.titleMayLikeUA2]:
+                sliderTitle === SliderTitle.suggestionsUA,
             })}
           />
         </h2>
@@ -46,7 +57,9 @@ export const SkeletonSlider: React.FC<Props> = ({ sliderTitle }) => {
             [styles.buttonsEN]: i18n.language === Languages.en.toLowerCase(),
             [styles.buttonsHotPrices]:
               sliderTitle === SliderTitle.hotPrices ||
-              sliderTitle === SliderTitle.hotPricesUA,
+              sliderTitle === SliderTitle.hotPricesUA ||
+              sliderTitle === SliderTitle.suggestions ||
+              sliderTitle === SliderTitle.suggestionsUA,
           })}
         >
           <Skeleton circle={true} className={styles.btn} />

@@ -1,42 +1,4 @@
 @import "src/styles/mixins";
-@import "src/styles/colors";
-@import "src/styles/typography";
-
-.container {
-  grid-column: 1/-1;
-
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  column-gap: 1.6rem;
-  max-width: $maxContainerWidth;
-  margin-inline: auto;
-  padding-inline: 1.6rem;
-
-  @include on-tablet {
-    grid-template-columns: repeat(12, 1fr);
-    padding-inline: 2.4rem;
-  }
-
-  @include on-m-desktop {
-    position: relative;
-    grid-template-columns: repeat(24, 1fr);
-  }
-}
-
-.productTitle {
-  @extend %h2-mobile;
-
-  color: var(--color-primary);
-  grid-column: 1/-1;
-  margin-bottom: 3.2rem;
-
-  @include on-tablet {
-    font-size: 3.2rem;
-    line-height: 4.1rem;
-    letter-spacing: -0.01em;
-    margin-bottom: 4rem;
-  }
-}
 
 .swiperContainer {
   grid-column: 1/-1;

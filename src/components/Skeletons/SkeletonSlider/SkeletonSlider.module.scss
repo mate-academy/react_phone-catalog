@@ -20,6 +20,10 @@
   @include on-m-desktop {
     margin-bottom: 8rem;
   }
+
+  &MayLike {
+    margin-bottom: 0;
+  }
 }
 
 .title {
@@ -48,6 +52,27 @@
     &EN {
       @media screen and (max-width: 343px) {
         display: block;
+      }
+    }
+  }
+
+  &MayLike {
+    width: 17rem;
+
+    @include on-tablet {
+      width: 28rem;
+    }
+
+    &UA {
+      @media screen and (min-width: 436px) {
+        width: 28rem;
+      }
+
+      &2 {
+        @media screen and (max-width: 435px) {
+          display: block;
+          width: 16.5rem;
+        }
       }
     }
   }

@@ -18,7 +18,7 @@ export const Breadcrumbs: React.FC<Props> = ({ productList }) => {
 
   const productExist = useMemo(() => {
     return productId ? productList.some(({ id }) => id === productId) : true;
-  }, [productId]);
+  }, [productId, productList]);
 
   const breadcrumbs = useMemo(() => {
     let currentLink = '';
@@ -37,7 +37,7 @@ export const Breadcrumbs: React.FC<Props> = ({ productList }) => {
 
         return [currentLink, locationName];
       });
-  }, [pathname]);
+  }, [pathname, productList]);
 
   return (
     <div

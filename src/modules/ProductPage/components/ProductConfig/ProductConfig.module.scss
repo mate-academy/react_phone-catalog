@@ -12,16 +12,13 @@
 
   @include on-tablet {
     margin-bottom: 6.4rem;
-
     grid-column: 8/-1;
   }
 
   @include on-m-desktop {
     margin-bottom: 0;
+    grid-column: 14/ span 7;
 
-    @include on-m-desktop {
-      grid-column: 14/ span 7;
-    }
   }
 }
 

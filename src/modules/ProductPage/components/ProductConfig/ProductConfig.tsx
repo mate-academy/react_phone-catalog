@@ -131,7 +131,7 @@ export const ProductConfig: React.FC<Props> = ({
       </div>
       <div className={styles.btnContainer}>
         <button
-          className={classNames('btnCart', styles.btnAddToCart, {
+          className={classNames('btnCart', {
             btnCartPressed: isAddedToCart,
           })}
           onClick={addToCart}

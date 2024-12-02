@@ -16,6 +16,7 @@ import {
   ProductListContext,
 } from '../../ContextProvider';
 import { ProductType } from '../../types/ProductType';
+import { getAllProducts } from '../../utils/getAllProducts';
 
 export const HomePage = () => {
   const { t } = useTranslation('homepage');
@@ -31,33 +32,25 @@ export const HomePage = () => {
   useEffect(() => {
     const controller = new AbortController();
 
-    const fetchedCategories = Array.from(
-      new Set(productList.map(({ category }) => category)),
-    );
-
     if (productList.some(({ category }) => category === ProductType.phones)) {
       setPhonesList(
         productList.filter(({ category }) => category === ProductType.phones),
       );
     }
 
-    if (fetchedCategories.length !== Object.keys(ProductType).length) {
-      const fetchCategories = Object.keys(ProductType).filter(
-        category => !fetchedCategories.includes(category),
-      ) as FetchDataType[];
+    const fetchedCategories = Array.from(
+      new Set(productList.map(({ category }) => category)),
+    );
 
+    if (fetchedCategories.length !== Object.keys(ProductType).length) {
       setIsLoadingAllProducts(true);
       setTimeout(() => {
-        Promise.all(
-          fetchCategories.map(category =>
-            getProducts(category, controller.signal),
-          ),
+        getAllProducts(
+          fetchedCategories as ProductType[],
+          controller.signal,
+          productList,
         )
-          .then(results => {
-            const allProducts = [...productList];
-
-            results.forEach((result: Product[]) => allProducts.push(...result));
-
+          .then(allProducts => {
             setPhonesList(
               allProducts.filter(
                 ({ category }) => category === ProductType.phones,
@@ -79,53 +72,6 @@ export const HomePage = () => {
       }, 5000);
     }
 
-    // if (productList.some(({ category }) => category === ProductType.phones)) {
-    //   setIsLoadingAllProduct(true);
-    //   setTimeout(() => {
-    //     getProducts(FetchDataType.products, controller.signal)
-    //       .then(setAllProductList)
-    //       .catch(() => setError(true))
-    //       .finally(() => setIsLoadingAllProduct(false));
-    //   }, 5000);
-    //   setPhonesList(
-    //     productList.filter(({ category }) => category === ProductType.phones),
-    //   );
-    // } else {
-    //   setTimeout(() => {
-    //     setIsLoadingPhones(true);
-    //     setIsLoadingAllProduct(true);
-    //
-    //     Promise.allSettled([
-    //       getProducts(FetchDataType.phones, controller.signal),
-    //       getProducts(FetchDataType.products, controller.signal),
-    //     ])
-    //       .then(results => {
-    //         results.forEach((result, index) => {
-    //           if (result.status === 'fulfilled') {
-    //             if (!index) {
-    //               setPhonesList(result.value);
-    //               setProductList(result.value);
-    //             } else {
-    //               setAllProductList(result.value);
-    //             }
-    //           } else if (result.status === 'rejected') {
-    //             setError(true);
-    //           }
-    //         });
-    //       })
-    //       .finally(() => {
-    //         setIsLoadingPhones(false);
-    //         setIsLoadingAllProduct(false);
-    //       });
-    //   }, 5000);
-    // }
-
-    // getProducts(FetchDataType.phones).then(res => setProducts(res));
-    // .catch(e => setError(e));
-
-    // getProducts(FetchDataType.products).then(res => setProductList(res));
-    // .catch(e => setError(e));
-    // .finally(() => setLoading(false))
     return () => controller.abort();
   }, []);
 

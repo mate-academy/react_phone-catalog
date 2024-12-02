@@ -1,6 +1,8 @@
 @import "src/styles/mixins";
 
 .productCardContainer {
+  --card-width: 21.4rem;
+
   display: flex;
   flex-direction: column;
   gap: 0.8rem;
@@ -11,10 +13,14 @@
   border: 1px solid var(--color-elements);
 
   @include on-tablet {
+    --card-width: 23.7rem;
+
     min-width: 23.7rem;
   }
 
   @include on-m-desktop {
+    --card-width: 27.2rem;
+
     min-width: 27.2rem;
   }
 }
@@ -100,7 +106,6 @@
   }
 }
 
-
 .btnContainer {
   display: flex;
   justify-content: space-between;
@@ -108,8 +113,12 @@
 }
 
 .btnCart {
-  border-radius: 4.8rem;
   font-size: 4.2rem;
+  width: 100%;
+
+  &Radius {
+    border-radius: 4.8rem;
+  }
 }
 
 .btnFavorite {

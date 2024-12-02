@@ -27,7 +27,7 @@ import { SkeletonProductCard } from '../../components/Skeletons/SkeletonProductC
 export const ProductsPage = () => {
   const { t } = useTranslation('common');
   const { productList, setProductList } = useContext(ProductListContext);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
   // const [error, setError] = useState('');
 
   const [searchParams] = useSearchParams();
@@ -69,7 +69,7 @@ export const ProductsPage = () => {
       getProducts(productType, controller.signal)
         .then(data => setProductList([...productList, ...data]))
         .finally(() => setIsLoading(false));
-    }, 5000);
+    }, 1500);
     // .catch(e => setError(e));
 
     return () => {
@@ -105,7 +105,7 @@ export const ProductsPage = () => {
 
   return (
     <section className={styles.productsPageWrapper}>
-      <Breadcrumbs productList={productList} />
+      {!productId && <Breadcrumbs productList={productList} />}
       {productId ? (
         <Outlet />
       ) : (

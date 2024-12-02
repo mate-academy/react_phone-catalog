@@ -1,0 +1,388 @@
+@import "src/styles/mixins";
+@import "src/styles/variables";
+
+.container {
+  grid-column: 1/-1;
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  column-gap: 1.6rem;
+  max-width: $maxContainerWidth;
+  margin-inline: auto;
+  width: 100%;
+  padding-inline: 1.6rem;
+
+  @include on-tablet {
+    grid-template-columns: repeat(12, 1fr);
+    padding-inline: 2.4rem;
+  }
+
+  @include on-m-desktop {
+    position: relative;
+    grid-template-columns: repeat(24, 1fr);
+    padding-inline: 0;
+  }
+}
+
+.breadcrumbs {
+  grid-column: 1/-1;
+  line-height: 1;
+  font-size: 1.6rem;
+  max-width: 40rem;
+  margin-bottom: 2.4rem;
+
+  @include on-tablet {
+    margin-bottom: 4rem;
+  }
+}
+
+.goBack {
+  display: block;
+  grid-column: 1/-1;
+  width: 6rem;
+  font-size: 1.6rem;
+
+  margin-bottom: 1.6rem;
+}
+
+.productTitle {
+  grid-column: 1/-1;
+  font-size: 2.2rem;
+  margin-bottom: 3.2rem;
+  max-width: 49rem;
+
+  @include on-tablet {
+    font-size: 3.2rem;
+    line-height: 4.1rem;
+    margin-bottom: 4rem;
+    max-width: 63rem;
+  }
+}
+
+.swiperContainer {
+  grid-column: 1/-1;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.6rem;
+
+  margin-bottom: 4rem;
+
+  @include on-tablet {
+    margin-bottom: 8rem;
+    flex-direction: row-reverse;
+    align-items: start;
+    gap: 1.6rem;
+    grid-column: 1/ span 7;
+  }
+
+  @include on-m-desktop {
+    grid-column: 1/ span 12;
+  }
+}
+
+.mainImg {
+  height: 100%;
+  overflow: hidden;
+  aspect-ratio: 1;
+  width: 28.8rem;
+  max-height: 28.8rem;
+  font-size: 28.8rem;
+
+  @include on-tablet {
+    width: 100%;
+    max-height: 46.4rem;
+    font-size: 46.4rem;
+    padding-block: 0;
+    margin-inline: auto;
+  }
+
+  & :first-child {
+    display: block;
+  }
+}
+
+.smallImgContainer {
+  display: flex;
+  gap: 0.8rem;
+
+  @include on-tablet {
+    flex-direction: column;
+  }
+}
+
+.smallImg {
+  width: 5.1rem;
+  height: 5.1rem;
+  font-size: 5.1rem;
+
+  @include on-tablet {
+    width: 3.5rem;
+    height: 3.5rem;
+  }
+
+  @include on-m-desktop {
+    width: 8rem;
+    height: 8rem;
+  }
+}
+
+.productSpecsContainer {
+  grid-column: 1/-1;
+  display: flex;
+  flex-direction: column;
+
+  margin-bottom: 5.6rem;
+
+  @include on-tablet {
+    margin-bottom: 6.4rem;
+    grid-column: 8/-1;
+  }
+
+  @include on-m-desktop {
+    margin-bottom: 0;
+    grid-column: 14/ span 7;
+  }
+}
+
+.configContainer {
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 0.8rem;
+
+  padding-bottom: 2.4rem;
+  margin-bottom: 2.4rem;
+  border-bottom: 1px solid var(--color-elements);
+
+  @include on-m-desktop {
+    position: static;
+  }
+}
+
+.subTitle, .randomID {
+  display: inline-block;
+  font-size: 1.2rem;
+  width: 11rem;
+}
+
+.randomID {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 6rem;
+
+  @include on-m-desktop {
+    top: auto;
+  }
+}
+
+.configSelection {
+  display: flex;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+}
+
+.color {
+  position: relative;
+
+  box-sizing: border-box;
+  display: inline-block;
+  height: 3.2rem;
+  width: 3.2rem;
+  border-radius: 50%;
+}
+
+.capacity {
+  box-sizing: border-box;
+  border-radius: 0.4rem;
+  width: 6.5rem;
+  font-size: 3.2rem;
+  padding-inline: 0.8rem;
+  line-height: 1;
+}
+
+.priceContainer {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+
+  margin-block: 0.8rem 1.6rem;
+}
+
+.price {
+  width: 8.5rem;
+  font-size: 3.2rem;
+}
+
+.btnContainer {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.8rem;
+
+  margin-bottom: 3.2rem;
+}
+
+.btnAddToCart {
+  font-size: 4.2rem;
+  width: 100%;
+
+  &Radius {
+    border-radius: 4.8rem;
+  }
+}
+
+.btnFavorite {
+  font-size: 4.2rem;
+  width: 4.2rem;
+}
+
+.productInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+
+  margin-block: 0.8rem;
+}
+
+.productInfoItem {
+  display: flex;
+  justify-content: space-between;
+
+  & :first-child {
+    margin-right: auto;
+    text-align: left;
+  }
+}
+
+.productItem {
+  font-size: 1.2rem;
+
+  &Screen {
+    width: 4.5rem;
+
+    &1 {
+      width: 6rem;
+    }
+  }
+
+  &Resolution {
+    width: 12rem;
+  }
+
+  &Processor {
+    width: 7rem;
+
+    &1 {
+      width: 10rem;
+    }
+
+    &2{
+      width: 13rem;
+    }
+
+    &3{
+      width: 13rem;
+
+      @include on-tablet {
+        width: 28rem;
+      }
+    }
+  }
+
+  &RAM {
+    width: 3rem;
+
+    &1 {
+      width: 3rem;
+    }
+  }
+}
+
+.aboutProductContainer {
+  grid-column: 1/-1;
+
+  display: flex;
+  flex-direction: column;
+  gap: 3.2rem;
+
+  margin-bottom: 5.6rem;
+
+  @include on-tablet {
+    margin-bottom: 6.4rem;
+  }
+
+  @include on-m-desktop {
+    margin-bottom: 8rem;
+    grid-column: 1/ span 12;
+  }
+}
+
+.aboutTitle {
+  font-size: 2rem;
+  padding-bottom: 1.6rem;
+  border-bottom: 1px solid var(--color-elements);
+
+  @include on-tablet {
+    font-size: 2.2rem;
+    line-height: 3.1rem;
+  }
+
+  &Text {
+    max-width: 30rem;
+  }
+}
+
+.descriptionContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+}
+
+.descriptionTitle {
+  font-size: 1.6rem;
+  width: 10rem;
+
+  @include on-tablet {
+    width: 12rem;
+    font-size: 2rem;
+    line-height: 2.6rem;
+  }
+
+  &Last {
+    width: 100%;
+  }
+}
+
+.productTechSpecContainer {
+  grid-column: 1/-1;
+
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+
+  margin-bottom: 5.6rem;
+
+  @include on-tablet {
+    margin-bottom: 6.4rem;
+  }
+
+  @include on-m-desktop {
+    margin-bottom: 0;
+    grid-column: 14/ -1;
+  }
+}
+
+.productSpecItem {
+  font-weight: 500;
+  font-size: 1.4rem;
+  line-height: 2.1rem;
+  letter-spacing: 0;
+  text-align: right;
+
+  gap: 2.4rem;
+}

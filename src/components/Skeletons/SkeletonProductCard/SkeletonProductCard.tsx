@@ -1,37 +1,14 @@
 import classNames from 'classnames';
 import styles from './SkeletonProductCard.module.scss';
 import Skeleton from 'react-loading-skeleton';
-import React, { useLayoutEffect, useState } from 'react';
+import React from 'react';
 
 interface Props {
   isCategory?: boolean;
 }
 
 export const SkeletonProductCard: React.FC<Props> = ({ isCategory }) => {
-  const [btnWidth, setBtnWidth] = useState(100);
-
   let x = 2;
-
-  useLayoutEffect(() => {
-    const productCard = document.querySelector(
-      `.${styles.productCardContainer}`,
-    );
-    const btnFavorite = document.querySelector(`.${styles.btnFavorite}`);
-
-    if (
-      productCard instanceof HTMLElement &&
-      btnFavorite instanceof HTMLElement
-    ) {
-      const style = getComputedStyle(productCard);
-
-      setBtnWidth(
-        productCard.clientWidth -
-          2 * parseFloat(style.paddingInline) -
-          parseFloat(style.gap) -
-          btnFavorite.offsetWidth,
-      );
-    }
-  }, []);
 
   if (
     (isCategory && window.innerWidth <= 475) ||
@@ -92,10 +69,9 @@ export const SkeletonProductCard: React.FC<Props> = ({ isCategory }) => {
       </div>
 
       <div className={styles.btnContainer}>
-        <Skeleton
-          className={styles.btnCart}
-          style={{ width: `${btnWidth}px` }}
-        />
+        <div className={styles.btnCart}>
+          <Skeleton className={styles.btnCartRadius} />
+        </div>
 
         <Skeleton circle={true} className={styles.btnFavorite} />
       </div>

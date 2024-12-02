@@ -6,11 +6,19 @@ export async function getProducts(
   productType: FetchDataType,
   signal: AbortSignal,
 ) {
-  const response = await fetch(API_URL + productType + '.json', { signal });
+  try {
+    const response = await fetch(API_URL + productType + '.json', { signal });
 
-  if (!response.ok) {
-    throw new Error(`Failing to fetch ${productType}`);
+    if (!response.ok) {
+      throw new Error(`Failing to fetch ${productType}`);
+    }
+
+    return await response.json();
+  } catch (error) {
+    if (error instanceof DOMException && error.name === 'AbortError') {
+      return [];
+    }
+
+    throw error;
   }
-
-  return response.json();
 }
