@@ -8,6 +8,9 @@ const storedTheme = localStorage.getItem('theme') || 'light-theme';
 // and then applies them.
 document.documentElement.className = storedTheme;
 
+// Title
+document.title = 'Phone Catalog';
+
 const setFavicon = (iconPath: string, type: string = 'image/x-icon') => {
   const linkElement = document.createElement('link');
 
