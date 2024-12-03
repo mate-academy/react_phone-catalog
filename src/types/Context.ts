@@ -18,7 +18,7 @@ export interface FavouriteContextType {
 
 export interface ProductListContextType {
   productList: Product[];
-  setProductList: (products: Product[]) => void;
+  setProductList: React.Dispatch<React.SetStateAction<Product[]>>;
 }
 
 export interface AggregatedProductListContextType {

@@ -66,7 +66,9 @@ export const HomePage = () => {
       setIsLoadingAggregatedList(true);
       setTimeout(() => {
         getProducts(FetchDataType.products, controller.signal)
-          .then(setAggregatedProductList)
+          .then(res => {
+            setAggregatedProductList(res);
+          })
           // .catch(() => setError(true))
           .finally(() => setIsLoadingAggregatedList(false));
       }, 5000);

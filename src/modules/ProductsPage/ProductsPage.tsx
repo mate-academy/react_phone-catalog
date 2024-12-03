@@ -23,11 +23,12 @@ import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
 import classNames from 'classnames';
 // eslint-disable-next-line max-len
 import { SkeletonProductCard } from '../../components/Skeletons/SkeletonProductCard';
+import { Product } from '../../types/Product';
 
 export const ProductsPage = () => {
   const { t } = useTranslation('common');
   const { productList, setProductList } = useContext(ProductListContext);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   // const [error, setError] = useState('');
 
   const [searchParams] = useSearchParams();
@@ -67,7 +68,19 @@ export const ProductsPage = () => {
 
     const timerID = setTimeout(() => {
       getProducts(productType, controller.signal)
-        .then(data => setProductList([...productList, ...data]))
+        .then((data: Product[]) =>
+          setProductList((prevProductList: Product[]): Product[] => {
+            if (
+              prevProductList.some(
+                ({ category }) => category === data[0].category,
+              )
+            ) {
+              return [...prevProductList];
+            }
+
+            return [...prevProductList, ...data];
+          }),
+        )
         .finally(() => setIsLoading(false));
     }, 1500);
     // .catch(e => setError(e));

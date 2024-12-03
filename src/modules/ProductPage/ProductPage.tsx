@@ -43,7 +43,7 @@ export const ProductPage = () => {
     if (!shouldFetchProducts) {
       setSuggestedProducts(getSuggestedProducts(productList));
     }
-  }, []);
+  }, [id]);
 
   useEffect(() => {
     const controller = new AbortController();

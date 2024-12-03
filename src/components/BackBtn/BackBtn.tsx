@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import styles from './BackBtn.module.scss';
 import { useTranslation } from 'react-i18next';
@@ -16,19 +16,36 @@ export const BackBtn: React.FC<Props> = ({ path, prevPath, search }) => {
   const browsing = sessionStorage.getItem('browsing');
 
   const goBack = () => {
-    if (path && browsing) {
+    if (path === '/page-not-found') {
+      navigate(
+        {
+          pathname: '/',
+        },
+        { replace: true },
+      );
+    } else if (path && browsing) {
       navigate(-1);
     } else if (prevPath) {
-      navigate({
-        pathname: prevPath,
-        search,
-      });
+      navigate(
+        {
+          pathname: prevPath,
+          search,
+        },
+        { replace: true },
+      );
     } else {
-      navigate({
-        pathname: '/',
-      });
+      navigate(
+        {
+          pathname: '/',
+        },
+        { replace: true },
+      );
     }
   };
+
+  useEffect(() => {
+    return () => window.scrollTo(0, 0);
+  }, []);
 
   return (
     <div onClick={goBack} className={styles.goBack}>
