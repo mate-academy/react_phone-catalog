@@ -23,7 +23,10 @@ export const Modal: React.FC<Props> = ({ onClose }) => {
         <p className="body-text">Do you want to clear the cart?</p>
 
         <div className="button-group">
-          <button className="clear-cart" onClick={handleClearButtonClick}>
+          <button
+            className="button clear-cart"
+            onClick={handleClearButtonClick}
+          >
             Clear the cart
           </button>
 

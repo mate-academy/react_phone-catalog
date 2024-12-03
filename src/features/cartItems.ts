@@ -1,6 +1,7 @@
 /* eslint-disable no-param-reassign */
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createSelector, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { Product } from '../types/product';
+import { RootState } from '../app/store';
 
 export interface CartItem extends Product {
   quantity: number;
@@ -62,6 +63,12 @@ const cartItemsSlice = createSlice({
     },
   },
 });
+
+export const selectCartItems = (state: RootState) => state.cartItems.items;
+
+export const selectTotalItems = createSelector(selectCartItems, items =>
+  items.reduce((total, item) => total + item.quantity, 0),
+);
 
 export const {
   addItemToCart,

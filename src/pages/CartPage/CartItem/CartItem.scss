@@ -23,6 +23,7 @@
 
   &__top {
     display: flex;
+    width: 100%;
     flex-direction: row;
     align-items: center;
     gap: 16px;
@@ -33,9 +34,11 @@
   }
 
   &__bottom {
+    width: 100%;
+
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
 
     @include on-tablet {

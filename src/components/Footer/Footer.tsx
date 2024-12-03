@@ -23,17 +23,29 @@ export const Footer = () => {
 
         <ul className="footer__info">
           <li className="uppercase">
-            <Link to="https://github.com/HryniukTaras" className="footer__link">
+            <Link
+              to="https://github.com/HryniukTaras"
+              target="_blank"
+              className="footer__link"
+            >
               github
             </Link>
           </li>
           <li className="uppercase">
-            <Link to="#" className="footer__link">
+            <Link
+              to="https://github.com/HryniukTaras"
+              target="_blank"
+              className="footer__link"
+            >
               contacts
             </Link>
           </li>
           <li className="uppercase">
-            <Link to="#" className="footer__link">
+            <Link
+              to="https://github.com/HryniukTaras"
+              target="_blank"
+              className="footer__link"
+            >
               rights
             </Link>
           </li>

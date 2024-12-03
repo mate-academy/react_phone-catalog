@@ -8,6 +8,7 @@ import {
 import type { CartItem as CartItemType } from '../../../features/cartItems';
 import './CartItem.scss';
 import classNames from 'classnames';
+import { Link } from 'react-router-dom';
 
 type Props = {
   itemData: CartItemType;
@@ -50,14 +51,24 @@ export const CartItem: React.FC<Props> = ({ itemData }) => {
 
         <div className="cart-item__info-container">
           <div className="cart-item__image-block">
-            <img
-              className="cart-item__image"
-              src={itemData.image}
-              alt="Product Image"
-            />
+            <Link
+              to={`/${itemData.category}/${itemData.itemId}`}
+              className="body-text"
+            >
+              <img
+                className="cart-item__image"
+                src={itemData.image}
+                alt="Product Image"
+              />
+            </Link>
           </div>
 
-          <p className="body-text">{itemData.name}</p>
+          <Link
+            to={`/${itemData.category}/${itemData.itemId}`}
+            className="body-text"
+          >
+            {itemData.name}
+          </Link>
         </div>
       </div>
 

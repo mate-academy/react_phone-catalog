@@ -43,6 +43,10 @@
 
   &__link {
     color: var(--secondary-color);
+
+    &:hover {
+      color: var(--main-color);
+    }
   }
 
   &__logo {

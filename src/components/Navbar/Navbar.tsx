@@ -2,7 +2,6 @@ import { Link, NavLink, useLocation } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import classNames from 'classnames';
 import themeStyles from '../../styles/utils/themeStyles';
-
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../app/store';
 import { toggleTheme } from '../../features/currentTheme';
@@ -11,6 +10,7 @@ import { ScreenSize } from '../../types/screenSize';
 import { NumberOfItems } from '../NumberOfItems';
 import { SearchInput } from '../SearchInput';
 import { Category } from '../../types/category';
+import { selectTotalItems } from '../../features/cartItems';
 
 import './Navbar.scss';
 
@@ -36,7 +36,7 @@ export const Navbar: React.FC = () => {
     (state: RootState) => state.favourites.items,
   );
 
-  const cartItems = useSelector((state: RootState) => state.cartItems.items);
+  const cartItems = useSelector(selectTotalItems);
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -143,7 +143,7 @@ export const Navbar: React.FC = () => {
         >
           <img src={cart} alt="Cart" className="icon" />
 
-          {!!cartItems.length && <NumberOfItems amount={cartItems.length} />}
+          {!!cartItems && <NumberOfItems amount={cartItems} />}
         </NavLink>
       </div>
 
@@ -180,9 +180,7 @@ export const Navbar: React.FC = () => {
               <div className="navbar__menu-cart-wrapper">
                 <img src={cart} alt="Cart" className="icon" />
 
-                {!!cartItems.length && (
-                  <NumberOfItems amount={cartItems.length} />
-                )}
+                {!!cartItems && <NumberOfItems amount={cartItems} />}
               </div>
             </NavLink>
           </div>
