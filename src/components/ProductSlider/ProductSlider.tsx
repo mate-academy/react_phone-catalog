@@ -1,31 +1,26 @@
-import { useEffect, useState } from 'react';
-import { Product } from '../../types/Product';
-import { getNewModels } from '../../services/getNewModels';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
 import 'swiper/scss';
 import arrowLeft from '../../assets/img/icons/arrow-left.svg';
 import arrowRight from '../../assets/img/icons/arrow-right.svg';
 
-import style from './NewModel.module.scss';
+import style from './ProductSlider.module.scss';
 import { ProductCart } from '../ProductCart';
-export const NewModel = () => {
-  const [suggestedProducts, setSuggestedProducts] = useState<Product[]>([]);
-
-  useEffect(() => {
-    const fetchSuggestedProducts = async () => {
-      const products = await getNewModels();
-
-      setSuggestedProducts(products);
-    };
-
-    fetchSuggestedProducts();
-  }, []);
-
+import { Product } from '../../types/Product';
+type Props = {
+  suggestedProducts: Product[];
+  title: string;
+  discount: boolean;
+};
+export const ProductSlider: React.FC<Props> = ({
+  suggestedProducts,
+  title,
+  discount,
+}) => {
   return (
-    <div className={style.newmodels}>
+    <section className={style.productSlider}>
       <div className={style.header}>
-        <h3 className={style.title}>Brand new models</h3>
+        <h3 className={style.title}>{title}</h3>
         <div className={style.buttons}>
           <button className={style.prevBtn}>
             <img className={style.icon} src={arrowLeft} alt="Arrow Left" />
@@ -58,12 +53,12 @@ export const NewModel = () => {
           {suggestedProducts.map(product => {
             return (
               <SwiperSlide key={product.id} className={style.card}>
-                <ProductCart product={product} />
+                <ProductCart product={product} discount={discount} />
               </SwiperSlide>
             );
           })}
         </Swiper>
       </div>
-    </div>
+    </section>
   );
 };

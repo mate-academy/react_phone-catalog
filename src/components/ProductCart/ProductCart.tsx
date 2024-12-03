@@ -5,8 +5,12 @@ import { HeartButton } from '../HeartButton';
 import { ButtonAddCart } from '../ButtonAddCart';
 interface ProductCardProps {
   product: Product;
+  discount: boolean;
 }
-export const ProductCart: React.FC<ProductCardProps> = ({ product }) => {
+export const ProductCart: React.FC<ProductCardProps> = ({
+  product,
+  discount,
+}) => {
   return (
     <>
       <Link
@@ -21,7 +25,14 @@ export const ProductCart: React.FC<ProductCardProps> = ({ product }) => {
       >
         {product.name}
       </Link>
-      <p className={style.price}>{`$${product.fullPrice}`}</p>
+      <div className={style.price}>
+        <div className={style.price__actual}>
+          ${discount ? product.price : product.fullPrice}
+        </div>
+        {product.fullPrice && discount && (
+          <div className={style.price__old}>${product.fullPrice}</div>
+        )}
+      </div>
       <ul className={style.details}>
         <li className={style.item}>
           <p className={style.itemName}>Screen</p>

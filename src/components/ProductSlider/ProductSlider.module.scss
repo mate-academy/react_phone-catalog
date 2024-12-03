@@ -1,12 +1,16 @@
 @import '../../styles/main';
 
-.newmodels {
+.productSlider {
   @include page-grid;
 }
 
 .header {
   @include page-grid;
   @include page-container;
+
+  @include on-tablet {
+    padding-inline: 0;
+  }
 
   margin-bottom: $icons-margin-mobile;
   grid-column: 1 / -1;
@@ -70,9 +74,13 @@ grid-column: 3 / span 2;
 .swiper {
   @include page-container;
 
+  @include on-tablet {
+    padding-inline: 0;
+  }
+
   grid-column: 1 / -1;
   width: 100%;
-  height: 300px;
+  height: auto;
 }
 
 .card {
@@ -86,6 +94,7 @@ grid-column: 3 / span 2;
   height: auto;
   border: 1px solid $elements;
   border-radius: 8px;
+  max-width: 272px;
 
   @include hover {
     box-shadow: 0 0 6px $elements;

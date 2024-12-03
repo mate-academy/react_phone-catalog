@@ -33,12 +33,21 @@ height: 100%;
 }
 
 .price {
-  width: 100%;
+display: flex;
+align-items: center;
+gap: 8px;
 
+&__actual {
   @include font-set($tablet-h3);
+}
 
-  padding-bottom: 8px;
-  border-bottom: 1px solid $elements;
+&__old {
+  font-size: 22px;
+  font-weight: 600;
+  line-height: 28.12px;
+  color: $secondary;
+  text-decoration: line-through;
+}
 }
 
 .details {

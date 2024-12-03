@@ -23,7 +23,7 @@
 
     @include on-tablet {
       @include font-set($tablet-h1);
-      
+
       padding-inline: 0;
       margin-block: 32px;
     }
@@ -32,5 +32,22 @@
       margin-block: 56px;
     }
   }
+}
 
+.skeleton {
+  background-color: $elements;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  height: 526px;
+  width: 100%;
+
+  @include on-tablet {
+      height: 577px;
+      width: 100%;
+  }
+
+  @include on-desktop {
+    height: 571px;
+    width: 100%;
+  }
 }
