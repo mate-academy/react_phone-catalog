@@ -63,6 +63,7 @@
 .title {
   @extend %h1-mobile;
 
+  font-size: 2.6rem;
   color: var(--color-primary);
   grid-column: 1 / -1;
   margin-bottom: 0.8rem;
