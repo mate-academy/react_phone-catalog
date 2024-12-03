@@ -21,7 +21,6 @@ export const ProductPage = () => {
   const { t } = useTranslation('common');
   const [suggestedProducts, setSuggestedProducts] = useState<Product[]>([]);
   const [isLoading, setIsLoading] = useState(false);
-  // const [error, setError] = useState('');
 
   const { state, pathname } = useLocation();
   const { productId: id = '' } = useParams();
@@ -67,7 +66,6 @@ export const ProductPage = () => {
             );
           })
           .finally(() => setIsLoading(false));
-        // .catch(e => setError(e))
       }, 1500);
     }
 

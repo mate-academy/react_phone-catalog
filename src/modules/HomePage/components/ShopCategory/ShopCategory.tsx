@@ -8,6 +8,7 @@ import { useTranslation } from 'react-i18next';
 import React, { useContext } from 'react';
 import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
 import { ProductListContext } from '../../../../ContextProvider';
+import { ThemeType } from '../../../../types/ThemeType';
 
 interface Props {
   isLoading: boolean;
@@ -22,6 +23,7 @@ export const ShopCategory: React.FC<Props> = ({ isLoading }) => {
     return productList.filter(({ category }) => category === productType)
       .length;
   });
+  const isDark = localStorage.getItem('theme') === ThemeType.dark;
 
   return (
     <section className={styles.shopCategoryContainer}>
@@ -60,7 +62,10 @@ export const ShopCategory: React.FC<Props> = ({ isLoading }) => {
           </h4>
           <p className={styles.categoryNumModels}>
             {isLoading ? (
-              <SkeletonTheme baseColor="#3B3E4A" highlightColor="#4A4D58">
+              <SkeletonTheme
+                baseColor={isDark ? '#3B3E4A' : '#E2E6E9'}
+                highlightColor={isDark ? '#4A4D58' : '#F4F5F6'}
+              >
                 <Skeleton className={styles.categoryNumModelsSkeleton} />
               </SkeletonTheme>
             ) : category === ProductType.phones ? (

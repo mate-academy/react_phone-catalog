@@ -27,7 +27,6 @@ export const HomePage = () => {
   const [phonesList, setPhonesList] = useState<Product[]>([]);
   const [isLoadingAllProducts, setIsLoadingAllProducts] = useState(false);
   const [isLoadingAggregatedList, setIsLoadingAggregatedList] = useState(false);
-  // const [error, setError] = useState(false);
 
   useEffect(() => {
     const controller = new AbortController();
@@ -38,13 +37,15 @@ export const HomePage = () => {
       );
     }
 
+    let timeoutAllProductsID: ReturnType<typeof setTimeout>;
+    let timeoutAggregatedProductsID: ReturnType<typeof setTimeout>;
     const fetchedCategories = Array.from(
       new Set(productList.map(({ category }) => category)),
     );
 
     if (fetchedCategories.length !== Object.keys(ProductType).length) {
       setIsLoadingAllProducts(true);
-      setTimeout(() => {
+      timeoutAllProductsID = setTimeout(() => {
         getAllProducts(
           fetchedCategories as ProductType[],
           controller.signal,
@@ -64,17 +65,20 @@ export const HomePage = () => {
 
     if (!aggregatedProductList.length) {
       setIsLoadingAggregatedList(true);
-      setTimeout(() => {
+      timeoutAggregatedProductsID = setTimeout(() => {
         getProducts(FetchDataType.products, controller.signal)
           .then(res => {
             setAggregatedProductList(res);
           })
-          // .catch(() => setError(true))
           .finally(() => setIsLoadingAggregatedList(false));
       }, 5000);
     }
 
-    return () => controller.abort();
+    return () => {
+      clearTimeout(timeoutAllProductsID);
+      clearTimeout(timeoutAggregatedProductsID);
+      controller.abort();
+    };
   }, []);
 
   const hotPricesPhones = getUniqueItems(phonesList)

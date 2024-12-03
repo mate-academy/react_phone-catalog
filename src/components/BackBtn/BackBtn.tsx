@@ -26,20 +26,14 @@ export const BackBtn: React.FC<Props> = ({ path, prevPath, search }) => {
     } else if (path && browsing) {
       navigate(-1);
     } else if (prevPath) {
-      navigate(
-        {
-          pathname: prevPath,
-          search,
-        },
-        { replace: true },
-      );
+      navigate({
+        pathname: prevPath,
+        search,
+      });
     } else {
-      navigate(
-        {
-          pathname: '/',
-        },
-        { replace: true },
-      );
+      navigate({
+        pathname: '/',
+      });
     }
   };
 

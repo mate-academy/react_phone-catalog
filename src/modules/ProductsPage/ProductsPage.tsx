@@ -24,16 +24,17 @@ import classNames from 'classnames';
 // eslint-disable-next-line max-len
 import { SkeletonProductCard } from '../../components/Skeletons/SkeletonProductCard';
 import { Product } from '../../types/Product';
+import { ThemeType } from '../../types/ThemeType';
 
 export const ProductsPage = () => {
   const { t } = useTranslation('common');
   const { productList, setProductList } = useContext(ProductListContext);
   const [isLoading, setIsLoading] = useState(true);
-  // const [error, setError] = useState('');
 
   const [searchParams] = useSearchParams();
   const { pathname } = useLocation();
   const { productId } = useParams();
+  const isDark = localStorage.getItem('theme') === ThemeType.dark;
 
   const productType = pathname
     .split('/')
@@ -83,7 +84,6 @@ export const ProductsPage = () => {
         )
         .finally(() => setIsLoading(false));
     }, 1500);
-    // .catch(e => setError(e));
 
     return () => {
       controller.abort();
@@ -125,7 +125,10 @@ export const ProductsPage = () => {
         <div className={styles.productsPageContainer}>
           <h1 className={styles.title}>{title}</h1>
           {isLoading ? (
-            <SkeletonTheme baseColor="#3B3E4A" highlightColor="#4A4D58">
+            <SkeletonTheme
+              baseColor={isDark ? '#3B3E4A' : '#E2E6E9'}
+              highlightColor={isDark ? '#4A4D58' : '#F4F5F6'}
+            >
               <Skeleton
                 className={classNames(
                   styles.categoryNumModels,
@@ -143,7 +146,10 @@ export const ProductsPage = () => {
           {isLoading ? (
             <>
               <div className={styles.productsContainer}>
-                <SkeletonTheme baseColor="#3B3E4A" highlightColor="#4A4D58">
+                <SkeletonTheme
+                  baseColor={isDark ? '#3B3E4A' : '#E2E6E9'}
+                  highlightColor={isDark ? '#4A4D58' : '#F4F5F6'}
+                >
                   {Array(4)
                     .fill(0)
                     .map((_, index) => (
@@ -152,7 +158,10 @@ export const ProductsPage = () => {
                 </SkeletonTheme>
               </div>
 
-              <SkeletonTheme baseColor="#3B3E4A" highlightColor="#4A4D58">
+              <SkeletonTheme
+                baseColor={isDark ? '#3B3E4A' : '#E2E6E9'}
+                highlightColor={isDark ? '#4A4D58' : '#F4F5F6'}
+              >
                 <div className={styles.paginationSkeletonContainer}>
                   {Array(8)
                     .fill(0)

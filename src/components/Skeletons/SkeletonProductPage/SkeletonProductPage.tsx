@@ -1,10 +1,12 @@
 import styles from './SkeletonProductPage.module.scss';
 import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
 import classNames from 'classnames';
+import { ThemeType } from '../../../types/ThemeType';
 
 export const SkeletonProductPage = () => {
   let productTitleRows = 1;
   let descriptionRows = 5;
+  const isDark = localStorage.getItem('theme') === ThemeType.dark;
 
   if (window.innerWidth <= 380) {
     productTitleRows = 2;
@@ -13,7 +15,10 @@ export const SkeletonProductPage = () => {
 
   return (
     <section className={styles.container}>
-      <SkeletonTheme baseColor="#3B3E4A" highlightColor="#4A4D58">
+      <SkeletonTheme
+        baseColor={isDark ? '#3B3E4A' : '#E2E6E9'}
+        highlightColor={isDark ? '#4A4D58' : '#F4F5F6'}
+      >
         <div className={styles.breadcrumbs}>
           <Skeleton />
         </div>

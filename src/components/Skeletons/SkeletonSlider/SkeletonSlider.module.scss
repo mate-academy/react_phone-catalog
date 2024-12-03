@@ -28,7 +28,7 @@
 
 .title {
   grid-column: 1/ 4;
-  margin: 0 1.6rem -0.5rem;
+  margin: 0 1.6rem 0.35rem;
   font-size: 2.2rem;
   width: 13.5rem;
 
@@ -81,6 +81,7 @@
     margin-left: 2.4rem;
     font-size: 3.2rem;
     width: 30rem;
+    margin-bottom: -0.9rem;
   }
 
   @include on-m-desktop {

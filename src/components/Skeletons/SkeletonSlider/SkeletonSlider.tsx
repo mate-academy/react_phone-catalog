@@ -11,6 +11,7 @@ import { Languages } from '../../../types/Languages';
 import { SkeletonProductCard } from '../SkeletonProductCard';
 import React from 'react';
 import { SliderTitle } from '../../../types/SliderTitle';
+import { ThemeType } from '../../../types/ThemeType';
 
 interface Props {
   sliderTitle: string;
@@ -18,9 +19,13 @@ interface Props {
 
 export const SkeletonSlider: React.FC<Props> = ({ sliderTitle }) => {
   const { i18n } = useTranslation();
+  const isDark = localStorage.getItem('theme') === ThemeType.dark;
 
   return (
-    <SkeletonTheme baseColor="#3B3E4A" highlightColor="#4A4D58">
+    <SkeletonTheme
+      baseColor={isDark ? '#3B3E4A' : '#E2E6E9'}
+      highlightColor={isDark ? '#4A4D58' : '#F4F5F6'}
+    >
       <section
         className={classNames(styles.suggestionsContainer, {
           [styles.suggestionsContainerMayLike]:
