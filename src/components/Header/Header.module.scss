@@ -1,6 +1,8 @@
 @import '../../styles/main';
 
 .header {
+  @include page-container;
+
   display: flex;
   background: rgba(255, 255, 255, 1);
   height: 48px;
@@ -19,7 +21,10 @@
 
     @include on-tablet {
       display: flex;
+      gap: 16px;
     }
+
+
   }
 
   &__menu {
@@ -45,17 +50,26 @@
     }
   }
 
+  &__link{
+    display: flex;
+
+  }
   &__logo {
+    width: 64px;
     cursor: pointer;
-    margin-right: 16px;
-    height: 100%;
     transition: transform $hover-transition ease;
 
     &:hover {
       transform: scale(1.1);
     }
 
+    @include on-tablet {
+      margin-right: 16px;
+      width: 80px;
+    }
+
      @include on-desktop {
+      width: 80px;
       margin-right: 24px;
     }
   }

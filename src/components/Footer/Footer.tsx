@@ -1,4 +1,52 @@
+import { NavLink } from 'react-router-dom';
 import styles from './Footer.module.scss';
 export const Footer = () => {
-  return <footer className={styles.footer}></footer>;
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  };
+
+  const navigation = [
+    {
+      href: 'https://github.com/AnnBusya/react_phone-catalog/',
+      name: 'Github',
+    },
+    {
+      href: 'https://www.linkedin.com/in/ann-busyhina-a17113292/',
+      name: 'Contacts',
+    },
+    {
+      href: 'https://github.com/AnnBusya',
+      name: 'Rights',
+    },
+  ];
+
+  return (
+    <footer className={styles.footer}>
+      <a href="#" className={styles.footer__logoLink}>
+        <img
+          src={'./img/icons/logo.svg'}
+          alt="logo"
+          className={styles.footer__logoImg}
+        />
+      </a>
+      <nav className={styles.nav}>
+        <ul className={styles.nav__list}>
+          {navigation.map(({ href, name }) => (
+            <li key={name} className={styles.nav__item}>
+              <NavLink to={href} target="_blank" className={styles.nav__link}>
+                {name}
+              </NavLink>
+            </li>
+          ))}
+        </ul>
+      </nav>
+      <button className={styles.backToTop} onClick={scrollToTop}>
+        <p className={styles.backToTop__text}>Back to top</p>
+        <div className={styles.backToTop__button} />
+      </button>
+    </footer>
+  );
 };

@@ -38,7 +38,7 @@ align-items: center;
 gap: 8px;
 
 &__actual {
-  @include font-set($tablet-h3);
+  @include font-set($mobile-h2);
 }
 
 &__old {

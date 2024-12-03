@@ -1,8 +1,93 @@
+@import '../../styles/main';
+
 .footer {
-  display: none;
-  height: 48px;
-  position: sticky;
-  top: 0;
-  box-shadow: 1px 1px 0 0 #323542;
-  z-index: 3;
+  @include page-container;
+
+  height: 96px;
+  display: flex;
+  flex-direction: column;
+  margin-top: 64px;
+  background-color: $white;
+  box-shadow: 0 -1px 0 0 rgba(226, 230, 233, 1);
+
+  @include on-tablet {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  @include on-desktop {
+    margin-top: 80px;
+  }
+
+  &__logoImg {
+    @include hover {
+      transform: scale(1.1);
+    }
+  }
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 32px;
+
+    @include on-tablet {
+      flex-direction: row;
+      gap:13.5px;
+      margin-bottom: 0;
+    }
+
+    @include on-desktop {
+      gap: 108px;
+  }
+}
+
+  &__link {
+    @include font-set($uppercase);
+
+    color: $secondary;
+  }
+}
+
+.backToTop{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  background-color: transparent;
+  margin-bottom: 32px;
+  cursor: pointer;
+
+  @include hover {
+    transform: scale(1.05);
+  }
+
+  @include on-tablet {
+    margin-bottom: 0;
+  }
+
+  &__text {
+    color: $secondary;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 15.34px;
+  }
+
+  &__button {
+    background-image: url(../../assets/img/icons/arrow-up.svg);
+    background-repeat: no-repeat;
+      background-position: center;
+      height: 32px;
+      width: 32px;
+      padding: 8px;
+      border: 1px solid $icons;
+      border-radius: 48px;
+  }
 }

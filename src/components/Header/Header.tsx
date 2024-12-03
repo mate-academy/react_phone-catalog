@@ -1,4 +1,4 @@
-import { Link, NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { useState, useMemo } from 'react';
 import styles from './Header.module.scss';
 import classNames from 'classnames';
@@ -31,13 +31,13 @@ export const Header = () => {
     <header className={styles.header}>
       <div className={styles.header__container}>
         <div className={styles.header__menu}>
-          <Link to="/" onClick={closeMenu}>
+          <NavLink to="/" onClick={closeMenu} className={styles.header__link}>
             <img
               src={'./img/icons/logo.svg'}
               alt="logo"
               className={styles.header__logo}
             />
-          </Link>
+          </NavLink>
           <div className={styles.header__burger} onClick={handleMenu}>
             <img
               src={

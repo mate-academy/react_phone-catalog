@@ -44,29 +44,25 @@ export const HomePage = () => {
         </h2>
         <PicturesSlider />
       </div>
-      <div className={style.sliderContainer}>
-        {loading ? (
-          <Skeleton className={style.skeleton} />
-        ) : (
-          <ProductSlider
-            suggestedProducts={newModels}
-            title="Brand new models"
-            discount={false}
-          />
-        )}
-      </div>
+      {loading ? (
+        <Skeleton className={style.skeleton} />
+      ) : (
+        <ProductSlider
+          suggestedProducts={newModels}
+          title="Brand new models"
+          discount={false}
+        />
+      )}
       <Categories />
-      <div className={style.sliderContainer}>
-        {loading ? (
-          <Skeleton className={style.skeleton} />
-        ) : (
-          <ProductSlider
-            suggestedProducts={hotPrices}
-            title="Hot prices"
-            discount={true}
-          />
-        )}
-      </div>
+      {loading ? (
+        <Skeleton className={style.skeleton} />
+      ) : (
+        <ProductSlider
+          suggestedProducts={hotPrices}
+          title="Hot prices"
+          discount={true}
+        />
+      )}
     </div>
   );
 };

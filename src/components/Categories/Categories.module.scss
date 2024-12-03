@@ -57,7 +57,7 @@ flex-direction: column;
     margin-bottom: 4px;
   }
 
-  &__discription {
+  &__description {
     @include font-set($body-text);
 
     color: $secondary

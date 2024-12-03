@@ -5,15 +5,18 @@
 }
 
 .header {
-  @include page-grid;
   @include page-container;
 
-  @include on-tablet {
-    padding-inline: 0;
-  }
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
 
   margin-bottom: $icons-margin-mobile;
   grid-column: 1 / -1;
+
+    @include on-tablet {
+      padding-inline: 0;
+    }
 }
 
 .title {
