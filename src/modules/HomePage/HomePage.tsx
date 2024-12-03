@@ -60,7 +60,7 @@ export const HomePage = () => {
             setProductList(allProducts);
           })
           .finally(() => setIsLoadingAllProducts(false));
-      }, 1500);
+      }, 800);
     }
 
     if (!aggregatedProductList.length) {
@@ -71,7 +71,7 @@ export const HomePage = () => {
             setAggregatedProductList(res);
           })
           .finally(() => setIsLoadingAggregatedList(false));
-      }, 1500);
+      }, 800);
     }
 
     return () => {

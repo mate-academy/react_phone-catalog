@@ -83,7 +83,7 @@ export const ProductsPage = () => {
           }),
         )
         .finally(() => setIsLoading(false));
-    }, 1500);
+    }, 800);
 
     return () => {
       controller.abort();

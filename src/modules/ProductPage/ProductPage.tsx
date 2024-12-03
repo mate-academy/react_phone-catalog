@@ -66,7 +66,7 @@ export const ProductPage = () => {
             );
           })
           .finally(() => setIsLoading(false));
-      }, 1500);
+      }, 800);
     }
 
     return () => {
