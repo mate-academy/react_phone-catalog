@@ -1,0 +1,73 @@
+@import "src/styles/typography";
+@import "src/styles/mixins";
+
+.suggestionsContainer {
+  grid-column: 1/-1;
+
+  max-width: $maxContainerWidth;
+  margin-inline: auto;
+
+  position: relative;
+  display: grid;
+  width: 100%;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2.4rem 1.6rem;
+  margin-bottom: 5.6rem;
+
+  @include on-tablet {
+    margin-bottom: 6.4rem;
+  }
+
+  @include on-m-desktop {
+    margin-bottom: 8rem;
+  }
+
+  &NoMarginB {
+    margin-bottom: 0;
+
+    @include on-tablet {
+      margin-bottom: 0;
+    }
+
+    @include on-m-desktop {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.title {
+  @extend %h2-mobile;
+
+  grid-column: 1/ 4;
+  margin-right: 1.6rem;
+  margin-left: 1.6rem;
+  color: var(--color-primary);
+
+  @include on-tablet {
+    font-size: 3.2rem;
+    line-height: 4.1rem;
+    letter-spacing: -0.01em;
+    margin-left: 2.4rem;
+  }
+
+  @include on-m-desktop {
+    margin-left: 0;
+  }
+
+  &NewModels{
+    padding-right: 1.6rem;
+  }
+
+  &GridCol {
+    grid-column: 1/ 4;
+
+    @media screen and (max-width: 340px) {
+      font-size: 2rem;
+    }
+  }
+}
+
+.productCardsContainer {
+  grid-column: 1 / -1;
+  grid-row: 2/3;
+}

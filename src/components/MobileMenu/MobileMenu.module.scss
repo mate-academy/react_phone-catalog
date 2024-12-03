@@ -1,0 +1,61 @@
+@import "src/styles";
+
+.mobileMenuContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 2.4rem;
+  background-color: var(--color-background);
+
+  position: fixed;
+  top: 0;
+  width: 100%;
+  bottom: 0;
+  transform: translateY(-100%);
+  opacity: 0;
+  -webkit-opacity: 0;
+  z-index: 2;
+  pointer-events: none;
+
+  transition: transform $transition-duration ease-in-out,
+  opacity $transition-duration ease-in-out;
+
+  @media screen and (min-width: 780px) {
+    display: none;
+  }
+}
+
+.mobileMenuContainerVisible {
+  transform: translateY(0);
+  opacity: 100%;
+  -webkit-opacity: 100%;
+  pointer-events: auto;
+}
+
+.mobileMenuBottom {
+  display: flex;
+  justify-content: space-between;
+  margin-top: auto;
+}
+
+.mobileMenuBottomBtn {
+  position: relative;
+  border-top: 1px solid var(--color-elements);
+  width: 50%;
+  height: 6.4rem;
+  border-bottom: 2px solid transparent;
+
+  &:hover {
+    border-bottom: 2px solid var(--color-text-hover-secondary);
+  }
+
+  &Active {
+
+    &:hover {
+      border-bottom:  2px solid var(--color-text-hover);
+    }
+
+    border-bottom: 2px solid var(--color-text-hover);
+  }
+}
+
+

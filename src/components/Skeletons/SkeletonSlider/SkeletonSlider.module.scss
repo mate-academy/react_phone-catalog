@@ -1,0 +1,144 @@
+@import "../../../styles/mixins";
+
+.suggestionsContainer {
+  grid-column: 1/-1;
+
+  max-width: $maxContainerWidth;
+  margin-inline: auto;
+
+  position: relative;
+  display: grid;
+  width: 100%;
+  grid-template-columns: repeat(4, 1fr);
+  column-gap: 1.6rem;
+  margin-bottom: 5.6rem;
+
+  @include on-tablet {
+    margin-bottom: 6.4rem;
+  }
+
+  @include on-m-desktop {
+    margin-bottom: 8rem;
+  }
+
+  &MayLike {
+    margin-bottom: 0;
+  }
+}
+
+.title {
+  grid-column: 1/ 4;
+  margin: 0 1.6rem 0.35rem;
+  font-size: 2.2rem;
+  width: 13.5rem;
+
+  &NewModelsUA {
+    @include on-tablet {
+      width: 20rem;
+    }
+  }
+
+  &HotPrices {
+    @include on-tablet {
+      width: 18rem;
+    }
+  }
+
+  &NewModels {
+    display: none;
+    margin-top: 1rem;
+    width: 10rem;
+
+    &EN {
+      @media screen and (max-width: 343px) {
+        display: block;
+      }
+    }
+  }
+
+  &MayLike {
+    width: 17rem;
+
+    @include on-tablet {
+      width: 28rem;
+    }
+
+    &UA {
+      @media screen and (min-width: 436px) {
+        width: 28rem;
+      }
+
+      &2 {
+        @media screen and (max-width: 435px) {
+          display: block;
+          width: 16.5rem;
+        }
+      }
+    }
+  }
+
+  @include on-tablet {
+    margin-left: 2.4rem;
+    font-size: 3.2rem;
+    width: 30rem;
+    margin-bottom: -0.9rem;
+  }
+
+  @include on-m-desktop {
+    margin-left: 0;
+  }
+}
+
+.buttons {
+  position: absolute;
+  right: 1.6rem;
+  display: flex;
+  gap: 1.6rem;
+  top: -0.4rem;
+  margin-left: auto;
+
+  &EN {
+    @media screen and (max-width: 343px) {
+      top: 1.4rem;
+    }
+  }
+
+  &HotPrices {
+    top: -0.4rem;
+  }
+
+  @include on-tablet {
+    top: 0.5rem;
+    right: 2.4rem;
+  }
+
+  @include on-m-desktop {
+    right: 0;
+  }
+}
+
+.btn {
+  width: 3.4rem;
+  font-size: 3.4rem;
+}
+
+
+.productCardsContainer {
+  grid-row: 2/3;
+  grid-column: 1/-1;
+
+  overflow-x: hidden;
+  display: flex;
+  gap: 1.6rem;
+
+  margin-left: 1.6rem;
+
+  @include on-tablet {
+    margin-left: 2.4rem;
+  }
+
+  @include on-m-desktop {
+    margin-left: 0;
+  }
+}
+

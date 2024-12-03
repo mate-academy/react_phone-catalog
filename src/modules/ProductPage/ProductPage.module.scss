@@ -1,0 +1,25 @@
+@import "src/styles/mixins";
+
+.swiperContainer {
+  grid-column: 1/-1;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.6rem;
+
+  margin-bottom: 4rem;
+
+  @include on-tablet {
+    margin-bottom: 8rem;
+    flex-direction: row-reverse;
+    align-items: start;
+    gap: 1.6rem;
+    grid-column: 1/ span 7;
+  }
+
+  @include on-m-desktop {
+    grid-column: 1/ span 12;
+  }
+}

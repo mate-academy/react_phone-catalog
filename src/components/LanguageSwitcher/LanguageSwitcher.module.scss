@@ -1,0 +1,60 @@
+@import "src/styles/typography";
+@import "src/styles/mixins";
+
+@include on-m-desktop {
+  header:has(input) .langSwitcher {
+    right: 7rem;
+  }
+}
+
+.langSwitcher {
+  @extend %text-body;
+
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  list-style: none;
+  margin-left: auto;
+  padding-right: 1.8rem;
+  height: 4.8rem;
+  color: var(--color-secondary);
+
+  @include on-tablet {
+    padding-inline: 1.8rem;
+  }
+
+  &::after {
+    position: absolute;
+    content: "";
+
+    height: 50%;
+    top: 50%;
+    left: calc(50% - 0.9rem);
+    transform: translate(-50%, -50%);
+    border-right: 1px solid var(--color-elements);
+
+    @include on-tablet {
+      left: 50%;
+    }
+  }
+}
+
+.lang {
+  display: inline-block;
+  cursor: pointer;
+
+  &IsActive {
+    pointer-events: none;
+    color: var(--color-active-lang);
+  }
+}
+
+
+[data-theme = 'light'] .lang {
+  --color-active-lang: #0F0F11;
+}
+
+[data-theme = 'dark'] .lang {
+  --color-active-lang: #905BFF;
+}
