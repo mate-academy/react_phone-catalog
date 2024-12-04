@@ -1,0 +1,129 @@
+.selected-image {
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+}
+
+.price {
+  display: flex;
+  &__regular {
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 28px;
+    text-decoration-line: line-through;
+    color: #89939A;
+  }
+
+  &__discond {
+    font-weight: 800;
+    margin-right: 8px;
+    font-size: 22px;
+  }
+}
+
+.image-to-select {
+  border: 1px var(--elements) solid;
+  width: 78px;
+  height: 78px;
+  margin-bottom: 16px;
+  object-fit: contain;
+}
+
+.images {
+  width: 80px;
+  height: 464px;
+  display: flex;
+  flex-direction: column;
+}
+
+.main-image-container {
+  grid-column: 3 / 11;
+  height: 453px;
+  width: 100%;
+  padding: 11px;
+}
+
+.product-container {
+  margin-top: 40px;
+}
+
+.select-panel {
+  grid-column: 12 / 18;
+  height: 464px;
+
+  &__buttons {
+    margin-top: 16px;
+    height: 48px;
+    display: flex;
+    gap: 8px;
+    margin-bottom: 32px;
+
+    &__add {
+      width: 100%;
+    }
+  }
+
+  &__select-color {
+    margin-left: 8px;
+    margin-top: 8px;
+    height: 32px;
+    width: 32px;
+    border-radius: 100%;
+  }
+
+  &__select-capacity {
+    height: 32px;
+    background-color: var(--white);
+    border: 1px var(--icons) solid;
+    border-radius: 4px;
+    margin-right: 8px;
+    margin-top: 8px;
+
+    &__is-active {
+
+    }
+  }
+}
+
+
+.select-panel__select-color {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 2px solid var(--white); /* цвет внешней границы */
+  background-color: grey; /* основной цвет */
+  cursor: pointer;
+  margin: 5px;
+  position: relative;
+}
+
+.select-panel__select-color::before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  right: -4px;
+  bottom: -4px;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  border-color: var(--elements); /* цвет границы для активного элемента */
+}
+
+.select-panel__select-color.active::before {
+  border-color: var(--primary); /* цвет границы для активного элемента */
+}
+
+.about {
+  grid-column: span 10;
+}
+
+.tech-specs {
+  grid-column: 12 / -1;
+}
+
+.tech-specs-line {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
