@@ -8,12 +8,12 @@ import {
 } from 'react-router-dom';
 import BreadCrumbs from '../shared/BreadCrumbs';
 import { useCallback, useContext, useEffect, useMemo, useState } from 'react';
-import classNames from 'classnames';
 import Card from '../shared/Card';
 import { getProducts } from '../../data/httpClient';
 import { getSearch } from '../../data/searchHelper';
 import Filter from '../shared/Filter';
 import { ProductContext } from '../../contexts/ProductContextProvider';
+import classNames from 'classnames';
 
 export interface CatalogTypeDesc {
   title: string;
@@ -57,6 +57,12 @@ export const CatalogPage = () => {
   const navigate = useNavigate();
 
   const [cards, setCards] = useState<CatalogCard[]>([]);
+
+  const pages: number[] = [];
+
+  for (let i = 0; i < Math.ceil(cards.length / perPage); i++) {
+    pages.push(i + 1);
+  }
 
   const apiLink = useMemo(() => {
     switch (pathname) {
@@ -122,19 +128,13 @@ export const CatalogPage = () => {
   }, [apiLink, parentCards, sortBy]);
 
   useEffect(() => {
-    if (perPage * (page - 1) > cards.length) {
+    if (perPage * (page - 1) > cards.length && cards.length !== 0) {
       navigate(`?${getSearch(searchParams, {
         page: Math.ceil(cards.length / perPage).toString(),
       })}
       `);
     }
   }, [cards.length, navigate, page, perPage, searchParams]);
-
-  const pages: number[] = [];
-
-  for (let i = 0; i < Math.ceil(cards.length / perPage); i++) {
-    pages.push(i + 1);
-  }
 
   const title = useMemo(() => {
     switch (pathname) {
@@ -157,17 +157,19 @@ export const CatalogPage = () => {
   const getFirstIndex = useCallback(() => {
     const parsedPage = page ? parseInt(page.toString()) : 1;
 
-    if (parsedPage) {
-      if (parsedPage > pages.length - 2) {
-        return pages.length - 5;
-      }
-
-      if (parsedPage > 3) {
-        return parsedPage - 3;
-      }
+    if (parsedPage - 3 <= 0) {
+      return 0;
     }
 
-    return 0;
+    if (parsedPage + 3 > pages.length) {
+      if (pages.length - 5 < 0) {
+        return 0;
+      }
+
+      return pages.length - 5;
+    }
+
+    return parsedPage - 3;
   }, [page, pages.length]);
 
   const getLink = (newPage: number) => {

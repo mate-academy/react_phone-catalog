@@ -10,7 +10,7 @@ import { CardType } from './types/Card';
 import MenuPage from './components/MenuPage';
 
 export const App = () => {
-  const { setCards } = useContext(ProductContext);
+  const { cards, setCards } = useContext(ProductContext);
 
   useEffect(() => {
     getProducts({ url: 'api/products.json', method: 'GET' }).then(res => {
@@ -26,7 +26,7 @@ export const App = () => {
 
       <MenuPage />
 
-      <Outlet />
+      {cards.length > 0 && <Outlet />}
 
       <Footer />
     </>

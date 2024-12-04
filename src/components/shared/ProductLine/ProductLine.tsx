@@ -53,6 +53,8 @@ export const ProductLine: React.FC<ProductLineType> = ({
 
   useEffect(() => {
     window.addEventListener('resize', handleResize);
+
+    handleResize();
   }, []);
 
   const count = cards.length;

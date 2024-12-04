@@ -74,7 +74,7 @@ export const CardPage = () => {
   useEffect(() => {
     if (itemId) {
       getData({
-        url: 'api/phones.json',
+        url: `api/${state.category}.json`,
         method: 'GET',
         itemId: itemId || '',
       }).then(response => {
@@ -91,7 +91,7 @@ export const CardPage = () => {
         setDataId(response);
       });
     }
-  }, [itemId]);
+  }, [itemId, state.category]);
 
   const isInCart = cartCards.some(card => card.itemId === itemId);
   const isLiked = likeCards.some(card => card.itemId === itemId);
@@ -163,10 +163,10 @@ export const CardPage = () => {
   };
 
   if (activeCards === null) {
-    return <Navigate to={state || '/'} replace />;
+    return <Navigate to={state.pathname || '/'} state={state} replace />;
   }
 
-  const { name } = activeCards;
+  const name = activeCards?.name || '';
 
   return (
     <main className={styles.cardPage}>
@@ -186,24 +186,25 @@ export const CardPage = () => {
         </div>
 
         <div className={styles.cardPage__images}>
-          {images.map((img, ind) => {
-            return (
-              <div
-                key={ind + img}
-                className={classNames(styles.cardPage__imgs, {
-                  [styles['cardPage__imgs--active']]: img === currentImage,
-                })}
-                onClick={() => setCurrentImage(img)}
-              >
-                <div className={styles['cardPage__image-preview-wrapper']}>
-                  <img
-                    src={img}
-                    className={styles['cardPage__image-preview']}
-                  />
+          {images &&
+            images.map((img, ind) => {
+              return (
+                <div
+                  key={ind + img}
+                  className={classNames(styles.cardPage__imgs, {
+                    [styles['cardPage__imgs--active']]: img === currentImage,
+                  })}
+                  onClick={() => setCurrentImage(img)}
+                >
+                  <div className={styles['cardPage__image-preview-wrapper']}>
+                    <img
+                      src={img}
+                      className={styles['cardPage__image-preview']}
+                    />
+                  </div>
                 </div>
-              </div>
-            );
-          })}
+              );
+            })}
         </div>
       </section>
 
@@ -219,7 +220,7 @@ export const CardPage = () => {
             return (
               <Link
                 to={`${getLink(c, 'COLOR')}`}
-                state={pathname}
+                state={state}
                 key={c + ind}
                 className={classNames(styles.cardPage__color, {
                   [styles['cardPage__color--active']]: c === color,
@@ -243,6 +244,7 @@ export const CardPage = () => {
             <Link
               to={`${getLink(cap, 'SIZE')}`}
               key={cap + ind}
+              state={state}
               className={classNames(styles['cardPage__size-item'], {
                 [styles['cardPage__size-item--active']]: cap === capacity,
               })}

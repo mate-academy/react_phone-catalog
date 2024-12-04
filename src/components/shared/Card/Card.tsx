@@ -107,7 +107,7 @@ export const Card: React.FC<CardTypeFor> = ({
       onClick={() => {
         window.scrollTo(0, 0);
 
-        navigate(`/${category}/${itemId}`, { state: pathname });
+        navigate(`/${category}/${itemId}`, { state: { pathname, category } });
       }}
     >
       <div className={styles['card__image-title-wrapper']}>
