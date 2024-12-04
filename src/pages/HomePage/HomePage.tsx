@@ -94,6 +94,28 @@ export const HomePage = () => {
             </div>
           </div>
         </section>
+
+        <section className="home-page__hot-prices home-page__section">
+          <div className="home-page__section-top">
+            <h2 className="home-page__section-title">Brand new models</h2>
+
+            <div className="home-page__section-buttons">
+              <div className="button--arrow button--arrow--disabled">
+                <img src="/icons/arrow_left.svg" alt="Arrow left" />
+              </div>
+              <div className="button--arrow">
+                <img src="/icons/arrow_right.svg" alt="Arrow right" />
+              </div>
+            </div>
+          </div>
+
+          <div className="home-page__hot-prices-container">
+            <ProductCard />
+            <ProductCard />
+            <ProductCard />
+            <ProductCard />
+          </div>
+        </section>
       </main>
     </div>
   );

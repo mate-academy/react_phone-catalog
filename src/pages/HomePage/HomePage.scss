@@ -85,4 +85,11 @@
       }
     }
   }
+
+  &__hot-prices {
+    &-container {
+      display: flex;
+      gap: 16px;
+    }
+  }
 }
