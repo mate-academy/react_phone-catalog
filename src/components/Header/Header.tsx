@@ -8,12 +8,15 @@ export const Header = () => {
 
         <nav className="header__nav">
           <ul className="header__nav-list">
-            <li className="header__nav-item header__nav-item--selected">
+            <li
+              className="header__nav-item text-button 
+                         header__nav-item--selected"
+            >
               Home
             </li>
-            <li className="header__nav-item">Phones</li>
-            <li className="header__nav-item">Tablets</li>
-            <li className="header__nav-item">Accessories</li>
+            <li className="header__nav-item text-button">Phones</li>
+            <li className="header__nav-item text-button">Tablets</li>
+            <li className="header__nav-item text-button">Accessories</li>
           </ul>
         </nav>
       </div>
