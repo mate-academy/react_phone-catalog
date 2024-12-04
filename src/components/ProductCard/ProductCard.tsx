@@ -1,6 +1,11 @@
+import React from 'react';
 import './ProductCard.scss';
 
-export const ProductCard = () => {
+type Props = {
+  oldPrice?: number;
+};
+
+export const ProductCard: React.FC<Props> = ({ oldPrice }) => {
   return (
     <div className="product-card">
       <img
@@ -13,7 +18,13 @@ export const ProductCard = () => {
         <p className="product-card__title body-text">
           Apple iPhone 14 Pro 128GB Silver (MQ023)
         </p>
-        <h3 className="product-card__price">$999</h3>
+
+        <div className="product-card__prices">
+          <h3 className="product-card__price">$999</h3>
+          {oldPrice && (
+            <h3 className="product-card__price--discount">${oldPrice}</h3>
+          )}
+        </div>
 
         <div className="product-card__line"></div>
 

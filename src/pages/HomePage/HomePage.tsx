@@ -97,7 +97,7 @@ export const HomePage = () => {
 
         <section className="home-page__hot-prices home-page__section">
           <div className="home-page__section-top">
-            <h2 className="home-page__section-title">Brand new models</h2>
+            <h2 className="home-page__section-title">Hot prices</h2>
 
             <div className="home-page__section-buttons">
               <div className="button--arrow button--arrow--disabled">
@@ -110,10 +110,10 @@ export const HomePage = () => {
           </div>
 
           <div className="home-page__hot-prices-container">
-            <ProductCard />
-            <ProductCard />
-            <ProductCard />
-            <ProductCard />
+            <ProductCard oldPrice={1299} />
+            <ProductCard oldPrice={1299} />
+            <ProductCard oldPrice={1299} />
+            <ProductCard oldPrice={1299} />
           </div>
         </section>
       </main>
