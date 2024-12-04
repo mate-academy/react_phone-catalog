@@ -20,7 +20,9 @@ h3 {
 
 button,
 .button {
-  padding: 9.5px 39.5px;
+  padding: 9px 39px;
+  box-sizing: border-box;
+
   display: flex;
 
   font-size: 14px;
@@ -34,7 +36,8 @@ button,
   border: none;
 
   &--white {
-    padding: 12px;
+    padding: 11px;
+    box-sizing: border-box;
 
     color: #313237;
 
@@ -45,7 +48,7 @@ button,
   &--arrow {
     width: fit-content;
 
-    padding: 8px;
+    padding: 7px;
     box-sizing: border-box;
 
     display: flex;
@@ -55,6 +58,11 @@ button,
 
     & img {
       height: 16px;
+    }
+
+    &--disabled {
+      opacity: 0.5;
+      pointer-events: none;
     }
   }
 }

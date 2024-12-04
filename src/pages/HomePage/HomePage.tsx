@@ -32,7 +32,7 @@ export const HomePage = () => {
             <h2 className="home-page__section-title">Brand new models</h2>
 
             <div className="home-page__models-buttons">
-              <div className="button--arrow">
+              <div className="button--arrow button--arrow--disabled">
                 <img src="/icons/arrow_left.svg" alt="Arrow left" />
               </div>
               <div className="button--arrow">
@@ -42,6 +42,7 @@ export const HomePage = () => {
           </div>
 
           <div className="home-page__models-container">
+            <ProductCard />
             <ProductCard />
             <ProductCard />
             <ProductCard />
