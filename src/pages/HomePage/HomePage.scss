@@ -19,6 +19,11 @@
       justify-content: space-between;
       align-items: center;
     }
+
+    &-buttons {
+      display: flex;
+      gap: 16px;
+    }
   }
 
   &__banner {
@@ -57,10 +62,27 @@
       display: flex;
       gap: 16px;
     }
+  }
 
-    &-buttons {
+  &__categories {
+    &-container {
       display: flex;
       gap: 16px;
+    }
+
+    &-category {
+      &-photo {
+        margin-bottom: 24px;
+      }
+
+      &-title {
+        margin-bottom: 4px;
+        color: #313237;
+      }
+
+      &-subtitle {
+        color: #89939a;
+      }
     }
   }
 }

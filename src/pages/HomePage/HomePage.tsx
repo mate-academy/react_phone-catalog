@@ -31,7 +31,7 @@ export const HomePage = () => {
           <div className="home-page__section-top">
             <h2 className="home-page__section-title">Brand new models</h2>
 
-            <div className="home-page__models-buttons">
+            <div className="home-page__section-buttons">
               <div className="button--arrow button--arrow--disabled">
                 <img src="/icons/arrow_left.svg" alt="Arrow left" />
               </div>
@@ -46,6 +46,52 @@ export const HomePage = () => {
             <ProductCard />
             <ProductCard />
             <ProductCard />
+          </div>
+        </section>
+
+        <section className="home-page__categories home-page__section">
+          <h2 className="home-page__section-title">Shop by category</h2>
+
+          <div className="home-page__categories-container">
+            <div className="home-page__categories-category">
+              <img
+                className="home-page__categories-category-photo"
+                src="/categories/phones.png"
+                alt="Phones category photo"
+              />
+              <h4 className="home-page__categories-category-title">
+                Mobile phones
+              </h4>
+              <p className="body-text home-page__categories-category-subtitle">
+                95 models
+              </p>
+            </div>
+
+            <div className="home-page__categories-category">
+              <img
+                className="home-page__categories-category-photo"
+                src="/categories/tablets.png"
+                alt="Phones category photo"
+              />
+              <h4 className="home-page__categories-category-title">Tablets</h4>
+              <p className="body-text home-page__categories-category-subtitle">
+                24 models
+              </p>
+            </div>
+
+            <div className="home-page__categories-category">
+              <img
+                className="home-page__categories-category-photo"
+                src="/categories/accessories.png"
+                alt="Phones category photo"
+              />
+              <h4 className="home-page__categories-category-title">
+                Accessories
+              </h4>
+              <p className="body-text home-page__categories-category-subtitle">
+                100 models
+              </p>
+            </div>
           </div>
         </section>
       </main>
