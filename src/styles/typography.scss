@@ -12,9 +12,52 @@ h2 {
   letter-spacing: -0.01em;
 }
 
+h3 {
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 30.8px;
+}
+
+button,
+.button {
+  padding: 9.5px 39.5px;
+  display: flex;
+
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 21px;
+  text-align: center;
+
+  color: #fff;
+
+  background-color: #313237;
+  border: none;
+
+  &--white {
+    padding: 12px;
+
+    color: #313237;
+
+    border: 1px solid #b4bdc3;
+    background: none;
+  }
+}
+
 .text-button {
   font-size: 12px;
   font-weight: 800;
   letter-spacing: 0.04em;
   text-transform: uppercase;
+}
+
+.body-text {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 21px;
+}
+
+.small-text {
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 15.34px;
 }

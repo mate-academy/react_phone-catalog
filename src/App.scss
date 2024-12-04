@@ -2,11 +2,20 @@
 @import './styles/fonts';
 @import './styles/typography';
 
-html {
+html,
+button {
   font-family: Mont, sans-serif;
 }
 
 body {
+  margin: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+p {
   margin: 0;
 }
 
