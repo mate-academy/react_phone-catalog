@@ -1,4 +1,26 @@
 .home-page {
+  &__title {
+    margin: 56px 0;
+  }
+
+  &__container {
+    display: flex;
+    gap: 80px;
+    flex-direction: column;
+  }
+
+  &__section {
+    display: flex;
+    gap: 24px;
+    flex-direction: column;
+
+    &-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
+
   &__banner {
     display: flex;
     gap: 8px;
@@ -11,22 +33,6 @@
       display: flex;
       justify-content: space-between;
       align-items: stretch;
-    }
-
-    &-button {
-      width: fit-content;
-
-      padding: 8px;
-      box-sizing: border-box;
-
-      display: flex;
-      align-items: center;
-
-      border: 1px solid #b4bdc3;
-
-      & img {
-        height: 16px;
-      }
     }
 
     &-pages {
@@ -43,6 +49,18 @@
 
       background-color: #313237;
       background-clip: content-box;
+    }
+  }
+
+  &__models {
+    &-container {
+      display: flex;
+      gap: 16px;
+    }
+
+    &-buttons {
+      display: flex;
+      gap: 16px;
     }
   }
 }
