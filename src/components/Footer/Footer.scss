@@ -1,0 +1,35 @@
+.footer {
+  box-shadow: 0 -1px 0 0 #e2e6e9;
+
+  &__container {
+    padding: 0 32px;
+    max-width: 1200px;
+    box-sizing: border-box;
+    margin: auto;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__logo {
+    padding: 18px 0;
+  }
+
+  &__links {
+    display: flex;
+    gap: 64px;
+
+    &-link {
+      color: #89939a;
+      text-decoration: none;
+    }
+  }
+
+  &__back-to-top {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    color: #89939a;
+  }
+}
