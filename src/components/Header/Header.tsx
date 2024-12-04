@@ -2,7 +2,7 @@ import './Header.scss';
 
 export const Header = () => {
   return (
-    <div className="header">
+    <header className="header">
       <div className="header__left">
         <img src="/logo.svg" alt="Logo" className="header__logo" />
 
@@ -30,6 +30,6 @@ export const Header = () => {
           <img src="/icons/cart.svg" alt="Cart icon" />
         </div>
       </div>
-    </div>
+    </header>
   );
 };
