@@ -8,7 +8,7 @@
   src: url('../../../public/fonts/Mont-Bold.otf');
 }
 
-@import '../../utils/mixins';
+@import '../styles/main';
 
 .productpage {
   @include page-grid;
@@ -22,7 +22,7 @@
 
 
   &__breadcrumbs {
-    &--link {
+    &link {
       grid-column: 1 / 5;
       margin: 10px 0 0 8px;
     background-image: url('../../img/Home.svg');
@@ -40,6 +40,7 @@
 &__noresults {
   grid-column: 1 / 5;
   font-family: Mont, sans-serif;
+
   @include on-tablet {
     grid-column: 1 / 13;
   }
@@ -53,13 +54,13 @@
     flex-direction: column;
     gap: 16px;
     justify-content: center;
+    align-items: center;
     width: 100%;
 
     @include on-tablet {
       display: flex;
       flex-flow: wrap;
       flex-direction: row;
-      gap: 16px;
       grid-column: 1 / 13;
       width: 100%;
       .productcard__name {
@@ -69,6 +70,7 @@
         margin-top: 10px;
       }
     }
+
     @include on-desktop {
       grid-column: 1 / 25;
     }
@@ -106,6 +108,7 @@ text-align: left;
   .productcard {
     width: 287px;
     margin: 0 auto;
+
     @include on-tablet {
       margin: 0;
     }

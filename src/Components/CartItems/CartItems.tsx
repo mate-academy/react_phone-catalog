@@ -1,13 +1,12 @@
 /* eslint-disable no-param-reassign */
 import { useContext } from 'react';
 import { Navigation } from '../Navigation/Navigation';
-import './CartItems.module.scss';
+import cart from './CartItems.module.scss';
 import { CatalogContext } from '../CatalogProvider';
 import { Link, useNavigate } from 'react-router-dom';
 import classNames from 'classnames';
 import { Product } from '../types/Product';
 import { Footer } from '../Footer/Footer';
-import { OldProduct } from '../types/OldProducts';
 
 export const CartItems = () => {
   const {
@@ -18,15 +17,10 @@ export const CartItems = () => {
     oldAddedItems,
     setTotalModels,
     totalModels,
-    setOldAddedItems,
     totalOldModels,
-    setTotalOldModels,
     totalOldProductsPrice,
-    setTotalOldProductsPrice,
     products,
     setProducts,
-    oldProducts,
-    setOldProducts,
   } = useContext(CatalogContext);
 
   const navigate = useNavigate();
@@ -34,27 +28,27 @@ export const CartItems = () => {
   return (
     <>
       <Navigation />
-      <div className="cartitems">
+      <div className={cart.cartitems}>
         {addedItems.length === 0 && oldAddedItems.length === 0 ? (
           <>
-            <h1 className="cartitems__empty-card--title">
+            <h1 className={cart.cartitems__emptycarttitle}>
               Your cart is empty :)
             </h1>
-            <div className="cartitems__empty-card--image"></div>
+            <div className={cart.cartitems__emptycardimage}></div>
           </>
         ) : (
           <>
             <button
-              className="cartitems__back-button"
+              className={cart.cartitems__backbutton}
               onClick={() => navigate(-1)}
             >
               {'<'} Back
             </button>
-            <h1 className="cartitems__title">Cart</h1>
-            <div className="cartitems__content">
+            <h1 className={cart.cartitems__title}>Cart</h1>
+            <div className={cart.cartitems__content}>
               {addedItems.length !== 0 && (
                 <>
-                  <h2 className="cartitems__header">New Products</h2>
+                  <h2 className={cart.cartitems__header}>New Products</h2>
                   {addedItems.map(item => {
                     const deleteItem = (deletedItem: Product) => {
                       if (deletedItem.id === item.id) {
@@ -115,28 +109,28 @@ export const CartItems = () => {
                     };
 
                     return (
-                      <div className="cartitems__item" key={item.id}>
-                        <div className="cartitems__image-container">
+                      <div className={cart.cartitems__item} key={item.id}>
+                        <div className={cart.cartitems__imagecontainer}>
                           <button
-                            className="cartitems__cross-button"
+                            className={cart.cartitems__crossbutton}
                             onClick={() => deleteItem(item)}
                           ></button>
                           <Link to={`/${item.category}/${item.itemId}`}>
                             <img
                               src={item.image}
                               alt=""
-                              className="cartitems__image"
+                              className={cart.cartitems__image}
                             />
                           </Link>
-                          <h2 className="cartitems__name">{item.name}</h2>
+                          <h2 className={cart.cartitems__name}>{item.name}</h2>
                         </div>
-                        <div className="cartitems__price-container">
+                        <div className={cart.cartitems__pricecontainer}>
                           {' '}
                           <button
                             className={classNames(
-                              'cartitems__button--decreased',
+                              [cart.cartitems__buttondecreased],
                               {
-                                'cartitems__button--decreased--disabled':
+                                [cart.cartitems__buttondecreaseddisabled]:
                                   item.amountOfModels === 1,
                               },
                             )}
@@ -145,14 +139,14 @@ export const CartItems = () => {
                           >
                             -
                           </button>
-                          <span className="cartitems__amount-of-models">
+                          <span className={cart.cartitems__amountofmodels}>
                             {item.amountOfModels}
                           </span>
                           <button
                             className={classNames(
-                              'cartitems__button--increased',
+                              [cart.cartitems__buttonincreased],
                               {
-                                'cartitems__button--increased--disabled':
+                                [cart.cartitems__buttonincreaseddisabled]:
                                   item.amountOfModels === 10,
                               },
                             )}
@@ -161,160 +155,37 @@ export const CartItems = () => {
                           >
                             +
                           </button>
-                          <span className="cartitems__price">{`$${item.price}`}</span>
+                          <span
+                            className={cart.cartitems__price}
+                          >{`$${item.price}`}</span>
                         </div>
                       </div>
                     );
                   })}
                   {addedItems.length !== 0 && (
-                    <div className="cartitems__summary">
-                      <div className="cartitems__summary--price">{`Total price for new products: $${totalPrice}`}</div>
-                      <div className="cartitems__summary--total">{`You have ${totalModels} new ${totalModels === 1 ? 'product' : 'products'}`}</div>
+                    <div className={cart.cartitems__summary}>
+                      <div
+                        className={cart.cartitems__summaryprice}
+                      >{`Total price for new products: $${totalPrice}`}</div>
+                      <div
+                        className={cart.cartitems__summarytotal}
+                      >{`You have ${totalModels} new ${totalModels === 1 ? 'product' : 'products'}`}</div>
                     </div>
                   )}
                 </>
               )}
-              {oldAddedItems.length !== 0 && (
-                <>
-                  <h2 className="cartitems__header">Old Products</h2>
-                  {oldAddedItems.map(oldItem => {
-                    const deleteOldItem = (deletedOldItem: OldProduct) => {
-                      if (deletedOldItem.id === oldItem.id) {
-                        const updateItem = oldAddedItems.filter(
-                          currentItem => currentItem.id !== deletedOldItem.id,
-                        );
-
-                        setOldAddedItems(updateItem);
-                        setTotalOldProductsPrice(
-                          totalOldProductsPrice -
-                            deletedOldItem.amountOfModels *
-                              deletedOldItem.price,
-                        );
-                        setTotalOldModels(
-                          totalOldModels - deletedOldItem.amountOfModels,
-                        );
-                      }
-
-                      return oldItem;
-                    };
-
-                    const changeAmountOfOldModels = (
-                      oldItemId: string,
-                      changer: 1 | -1,
-                    ) => {
-                      if (oldItemId === oldItem.id) {
-                        const updateItem = oldAddedItems.map(currentItem => {
-                          if (currentItem.id === oldItemId) {
-                            setTotalOldProductsPrice(
-                              totalOldProductsPrice +
-                                currentItem.price * changer,
-                            );
-
-                            return {
-                              ...currentItem,
-                              amountOfModels:
-                                currentItem.amountOfModels + changer,
-                            };
-                          }
-
-                          return currentItem;
-                        });
-                        const updateProduct = oldProducts.map(
-                          currentProduct => {
-                            if (currentProduct.id === oldItem.id) {
-                              return {
-                                ...currentProduct,
-                                amountOfModels:
-                                  currentProduct.amountOfModels + changer,
-                              };
-                            }
-
-                            return currentProduct;
-                          },
-                        );
-
-                        setOldProducts(updateProduct);
-                        setTotalOldModels(totalOldModels + changer);
-                        setOldAddedItems(updateItem);
-                      }
-                    };
-
-                    return (
-                      <div className="cartitems__item" key={oldItem.id}>
-                        <div className="cartitems__image-container">
-                          <button
-                            className="cartitems__cross-button"
-                            onClick={() => deleteOldItem(oldItem)}
-                          ></button>
-                          <Link to={`/oldPhones/${oldItem.id}`}>
-                            <img
-                              src={oldItem.imageUrl}
-                              alt=""
-                              className="cartitems__image"
-                            />
-                          </Link>
-                          <h2 className="cartitems__name">{oldItem.name}</h2>
-                        </div>
-                        <div className="cartitems__price-container">
-                          {' '}
-                          <button
-                            className={classNames(
-                              'cartitems__button--decreased',
-                              {
-                                'cartitems__button--decreased--disabled':
-                                  oldItem.amountOfModels === 1,
-                              },
-                            )}
-                            onClick={() =>
-                              changeAmountOfOldModels(oldItem.id, -1)
-                            }
-                            disabled={oldItem.amountOfModels === 1}
-                          >
-                            -
-                          </button>
-                          <span className="cartitems__amount-of-models">
-                            {oldItem.amountOfModels}
-                          </span>
-                          <button
-                            className={classNames(
-                              'cartitems__button--increased',
-                              {
-                                'cartitems__button--increased--disabled':
-                                  oldItem.amountOfModels === 10,
-                              },
-                            )}
-                            onClick={() =>
-                              changeAmountOfOldModels(oldItem.id, 1)
-                            }
-                            disabled={oldItem.amountOfModels === 10}
-                          >
-                            +
-                          </button>
-                          <span className="cartitems__price">{`$${oldItem.price}`}</span>
-                        </div>
-                      </div>
-                    );
-                  })}
-                </>
-              )}
-
-              {oldAddedItems.length !== 0 && (
-                <div className="cartitems__summary">
-                  <div className="cartitems__summary--text">
-                    Total price for old products:{' '}
-                    <span className="cartitems__summary--price">
-                      {`$${totalOldProductsPrice}`}
-                    </span>
-                  </div>
-                  <div className="cartitems__summary--total">{`You have ${totalOldModels} old ${totalOldModels === 1 ? 'product' : 'products'}`}</div>
-                </div>
-              )}
             </div>
-            <div className="cartitems__total">
-              <div className="cartitems__total-price">{`$${totalPrice + totalOldProductsPrice}`}</div>
-              <div className="cartitems__all-products">{`Total for ${totalModels + totalOldModels} items`}</div>
-              <div className="cartitems__line"></div>
-              <button className="cartitems__checkout-button">Checkout</button>
+            <div className={cart.cartitems__total}>
+              <div
+                className={cart.cartitems__totalprice}
+              >{`$${totalPrice + totalOldProductsPrice}`}</div>
+              <div
+                className={cart.cartitems__allproducts}
+              >{`Total for ${totalModels + totalOldModels} items`}</div>
+              <div className={cart.cartitemline}></div>
+              <button className={cart.cartitems__checkoutbutton}>
+                Checkout
+              </button>
             </div>
           </>
         )}

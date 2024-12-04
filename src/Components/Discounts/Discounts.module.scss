@@ -1,9 +1,4 @@
- @font-face {
-  font-family: Mont-bold;
-  src: url('../../../public/fonts/Mont-Bold.otf');
- }
-
- @import '../styles/main';
+@import '../styles/main';
 
 .title {
 font-family: Mont, sans-serif;
@@ -31,17 +26,4 @@ text-decoration-skip-ink: none;
 .arrow {
   display: flex;
   gap: 4px;
-}
-
-.productcard {
-  gap: 15px;
-  &__image {
-    margin: 0 40px;
-    &--link {
-    margin-top: 15px;
-  }
-}
-&__buttons {
-  margin-bottom: 10px;
-}
 }

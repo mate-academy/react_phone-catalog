@@ -1,6 +1,7 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, EffectCube } from 'swiper/modules';
-import './MainSlider.module.scss';
+import mainSlider from './MainSlider.module.scss';
+import './swiper.scss';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
@@ -37,18 +38,18 @@ export const MainSlider = () => {
       modules={[Navigation, Pagination, EffectCube]}
       spaceBetween={50}
       slidesPerView={1}
-      navigation={{ prevEl: '.arrow-left', nextEl: '.arrow-right' }}
+      navigation={{ prevEl: '.arrow__left', nextEl: '.arrow__right' }}
       pagination={{ clickable: true }}
       scrollbar={{ draggable: true }}
       grabCursor={true}
       loop={true}
-      className="MainSlider"
+      className={mainSlider.MainSlider}
     >
       {bannerPhotos.map(image => {
         return (
-          <SwiperSlide key={image.id} className="MainSlider__slide">
+          <SwiperSlide key={image.id} className={mainSlider.MainSlider__slide}>
             <button
-              className="arrow-left"
+              className="arrow__left"
               style={{
                 width: '35px',
                 height: 'auto',
@@ -60,7 +61,7 @@ export const MainSlider = () => {
             </button>
             <img
               src={image.image}
-              className="MainSlider__image"
+              className={mainSlider.MainSlider__image}
               style={{
                 paddingTop: `${image.paddingTop}`,
                 paddingBottom: `${image.paddingBottom}`,
@@ -68,7 +69,7 @@ export const MainSlider = () => {
               }}
             />
             <button
-              className="arrow-right"
+              className="arrow__right"
               style={{
                 width: '35px',
                 height: 'auto',

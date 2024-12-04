@@ -1,11 +1,14 @@
-@import '../../utils/mixins';
+@import '../styles/main';
 
 .pagination {
   grid-column: 1 / 5;
   margin: 0 8px;
   display: flex;
   flex-direction: column;
-  &__arrowprev {
+}
+
+  .arrow {
+    &__prev {
     width: 40px;
     height: 40px;
     border-radius: 100%;
@@ -24,22 +27,7 @@
       background-size: 24px 24px;
     }
   }
-  &__arrows {
-    width: 293px;
-    display: flex;
-    justify-content: space-between;
-    margin-left: -5px;
-    margin: 0 auto;
-    &--disabled {
-      display: none;
-    }
-
-    @include on-tablet {
-      margin: 30px auto 0;
-    }
-
-  }
-  &__arrownext {
+  &__next {
     width: 40px;
     height: 40px;
     border-radius: 100%;
@@ -56,8 +44,7 @@
       background-size: 24px 24px;
     }
   }
-
-  &__arrow--slide-to-first {
+  &_to_first {
     width: 40px;
     height: 40px;
     border-radius: 100%;
@@ -75,7 +62,7 @@
       background-size: 24px 24px;
   }
   }
-  &__arrow--slide-to-last {
+  &_to_last {
     width: 40px;
     height: 40px;
     border-radius: 100%;
@@ -92,19 +79,38 @@
       background-size: 24px 24px;
   }
 }
-  &__dots {
+}
+
+  .arrows {
+    width: 293px;
+    display: flex;
+    justify-content: space-between;
+    margin: 0 0 auto -5px;
+    &--disabled {
+      display: none;
+    }
+
+    @include on-tablet {
+      margin: 30px auto 0;
+    }
+
+  }
+
+  .dots {
     display: flex;
     width: 136px;
     overflow: hidden;
     position: relative;
     top: 5px;
   }
-  &__content {
+
+  .content {
     display: flex;
     gap: 5px;
 
   }
-  &__dot {
+
+  .dot {
     width: 30px;
     height: 30px;
     border-radius: 100%;
@@ -116,9 +122,8 @@
       background-color: black;
       color: white;
     }
-    &--is-active {
+    &__active {
       background-color: black;
       color: white;
     }
   }
-}

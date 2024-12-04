@@ -1,0 +1,22 @@
+@import '../styles/main';
+
+.swiper-button-prev, .swiper-button-next {
+ visibility: hidden;
+}
+
+
+.swiper-free-mode .swiper-wrapper {
+  display: flex;
+
+  @include on-tablet {
+    flex-direction: column;
+    height: 20vh;
+  }
+}
+
+ .CartPage {
+  .swiper-wrapper {
+    height: 100%;
+    flex-direction: row;
+  }
+ }

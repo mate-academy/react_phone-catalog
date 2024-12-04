@@ -1,27 +1,30 @@
-import '../icons/icon.scss';
-import './Footer.module.scss';
+import footerlogo from '../logo/logo.module.scss';
+import footer from './Footer.module.scss';
 
 export const Footer = () => {
   return (
-    <footer className="footer">
+    <footer className={footer.footer}>
       <button onClick={() => localStorage.clear()}>Clear locale Storage</button>
-      <div className="logo__footer" />
-      <nav className="footer__navigation">
-        <a href="" className="footer__link">
+      <div className={footerlogo.logo__footer} />
+      <nav className={footer.footer__navigation}>
+        <a
+          href="https://github.com/robsza1122/react_phone-catalog"
+          className={footer.footer__link}
+        >
           GITHUB
         </a>
-        <a href="" className="footer__link">
+        <a href="" className={footer.footer__link}>
           CONTACTS
         </a>
-        <a href="" className="footer__link">
+        <a href="" className={footer.footer__link}>
           RIGHTS
         </a>
       </nav>
-      <div className="footer__back-to-top">
-        <div className="footer__text">Back to top</div>
+      <div className={footer.footer__backtotop}>
+        <div className={footer.footer__text}>Back to top</div>
 
         <button
-          className="footer__link-arrow"
+          className={footer.footer__linkarrow}
           onClick={() =>
             window.scrollTo({
               top: 0,
@@ -29,7 +32,7 @@ export const Footer = () => {
             })
           }
         >
-          <div className="footer__arrow"></div>
+          <div className={footer.footer__arrow}></div>
         </button>
       </div>
     </footer>

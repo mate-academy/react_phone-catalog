@@ -1,57 +1,48 @@
 import { Link } from 'react-router-dom';
 import { Navigation } from '../Navigation/Navigation';
-import './Favourites.module.scss';
+import favourite from './Favourites.module.scss';
 import { Footer } from '../Footer/Footer';
 import { useContext } from 'react';
 import { CatalogContext } from '../CatalogProvider';
 import { ProductCard } from '../ProductCard/ProductCard';
-import { DiscountProduct } from '../OldProductCard/OldProductCard';
 
 export const Favourites = () => {
-  const { favouriteItems, favouriteOldItems } = useContext(CatalogContext);
+  const { favouriteItems } = useContext(CatalogContext);
 
   return (
     <>
       <Navigation />
-      {favouriteItems.length === 0 && favouriteOldItems.length === 0 ? (
+      {favouriteItems.length === 0 ? (
         <>
-          <h1 className="favourites__empty-card--title">
+          <h1 className={favourite.favourites__emptycardtitle}>
             You have no favourite products :)
           </h1>
-          <div className="favourites__empty-card--image"></div>
+          <div className={favourite.favourites__emptycardimage}></div>
         </>
       ) : (
-        <div className="favourites">
-          <div className="favourites__breadcrumbs">
-            <Link className="favourites__breadcrumbs--home" to={'/home'} />
-            <div className="favourites__breadcrumbs--text">
+        <div className={favourite.favourites}>
+          <div className={favourite.favourites__breadcrumbs}>
+            <Link
+              className={favourite.favourites__breadcrumbshome}
+              to={'/home'}
+            />
+            <div className={favourite.favourites__breadcrumbstext}>
               {' '}
               {'>'} Favourites
             </div>
           </div>
-          {favouriteItems.length !== 0 && (
-            <>
-              <h1 className="favourites__title">Favourite Products</h1>
-              <h2 className="favourites__amountofitems">{`${favouriteItems.length} items`}</h2>
+          <>
+            <h1 className={favourite.favourites__title}>Favourite Products</h1>
+            <h2
+              className={favourite.favourites__amountofitems}
+            >{`${favouriteItems.length} items`}</h2>
 
-              <div className="favourites__content">
-                {favouriteItems.map(favouriteItem => (
-                  <ProductCard key={favouriteItem.id} product={favouriteItem} />
-                ))}
-              </div>
-            </>
-          )}
-          {favouriteOldItems.length !== 0 && (
-            <>
-              <h1 className="favourites__title">Favourite Old Products</h1>
-              <h2 className="favourites__amountofitems">{`${favouriteOldItems.length} items`}</h2>
-              <div className="favourites__content">
-                {favouriteOldItems.map(oldItem => (
-                  <DiscountProduct key={oldItem.id} discountProduct={oldItem} />
-                ))}
-              </div>
-            </>
-          )}
+            <div className={favourite.favourites__content}>
+              {favouriteItems.map(favouriteItem => (
+                <ProductCard key={favouriteItem.id} product={favouriteItem} />
+              ))}
+            </div>
+          </>
         </div>
       )}
 

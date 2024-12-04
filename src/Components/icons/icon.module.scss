@@ -1,4 +1,4 @@
-@import '../../utils/mixins';
+@import '../styles/main.scss';
 
 @font-face {
   font-family: Mont;
@@ -43,7 +43,7 @@
       justify-content: center;
       align-items: center;
       cursor: pointer;
-      &--circle {
+      &circle {
         position: relative;
         left: 7px;
         font-family: Mont, sans-serif;
@@ -59,7 +59,7 @@
       width: 16px;
       height: 16px;
       cursor: pointer;
-      &--circle {
+      &circle {
         position: relative;
         left: 8px;
         font-family: Mont, sans-serif;

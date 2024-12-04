@@ -3,10 +3,11 @@
   src: url('../../../public/fonts/Mont-Bold.otf');
 }
 
-@import '../../utils/mixins';
+@import '../styles/main';
 
 .home {
   width: 100%;
+  height: 100%;
 
 
   &__phonecatalog {
@@ -21,7 +22,7 @@
 
   &__title {
     font-family: Mont-bold, sans-serif;
-    margin: 32px 16px 0 16px;
+    margin: 32px 16px 0;
     grid-column: 1 / 4;
     height: 161px;
 

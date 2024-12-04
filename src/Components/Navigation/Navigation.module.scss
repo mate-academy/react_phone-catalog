@@ -1,4 +1,4 @@
-@import '../../utils/mixins';
+@import '../styles/main';
 
 @font-face {
   font-family: Mont-navigation-on-tablet;
@@ -27,7 +27,7 @@
   border-bottom: 1px solid #E2E6E9;
   background-color: white;
 
-  &__logo-block {
+  &__logoblock {
     display: flex;
     align-items: center;
     width: 96px;
@@ -44,7 +44,7 @@
     }
   }
   &__block {
-  &-link {
+  &link {
     height: 48px;
 
     @include on-desktop {
@@ -57,10 +57,10 @@
       padding-top: 4px;
       color: black;
       border-bottom: 4px solid black;
-      font-family: Mont-bold-navigation-on-tablet, sans-serif;
+      font-family: Mont-Bold, sans-serif;
     }
   }
-  &-bag {
+  &bag {
     width: 48px;
     height: 48px;
 
@@ -80,7 +80,7 @@
     }
 
   }
-  &-heart {
+  &heart {
     width: 48px;
     height: 48px;
 
@@ -109,7 +109,7 @@
       display: inline;
       height: 48px;
       padding: 18px 3px 0;
-font-family: Mont-navigation-on-tablet, sans-serif;
+font-family: Mont, sans-serif;
 font-size: 12px;
 font-weight: 800;
 line-height: 11px;
@@ -122,11 +122,11 @@ color: #89939A;
       color: black;
     }
 
-    &--is-active {
+    &active {
       color: black;
       padding-bottom: 16px;
       border-bottom: 4px solid black;
-      font-family: Mont-bold-navigation-on-tablet, sans-serif;
+      font-family: Mont-Bold, sans-serif;
 
       @include on-desktop {
         height: 64px;
@@ -134,7 +134,7 @@ color: #89939A;
       }
     }
   }
-  &__menu-block {
+  &__menublock {
     display: flex;
     justify-content: end;
 
@@ -154,7 +154,7 @@ color: #89939A;
       margin-right: 24px;
     }
   }
-  &__icons-block {
+  &__iconsblock {
     display: none;
 
     @include on-tablet {

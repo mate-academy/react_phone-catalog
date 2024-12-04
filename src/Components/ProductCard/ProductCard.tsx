@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { Product } from '../types/Product';
-import './ProductCard.module.scss';
+import card from './ProductCard.module.scss';
 import { useContext } from 'react';
 import { CatalogContext } from '../CatalogProvider';
 import classNames from 'classnames';
@@ -79,40 +79,40 @@ export const ProductCard = ({ product }: Props) => {
   };
 
   return (
-    <div className="productcard">
+    <div className={card.productcard}>
       <Link
         to={`/${product.category}/${product.itemId}`}
-        className="productcard__image--link"
+        className={card.productcard__imagelink}
       >
         <img
-          className="productcard__image"
+          className={card.productcard__image}
           src={product.image}
           alt={product.name}
         />
       </Link>
 
-      <h2 className="productcard__name">{product.name}</h2>
-      <div className="productcard__prices">
-        <div className="productcard__price">{`$${product.price}`}</div>
+      <h2 className={card.productcard__name}>{product.name}</h2>
+      <div className={card.productcard__prices}>
+        <div className={card.productcard__price}>{`$${product.price}`}</div>
       </div>
-      <div className="productcard__line"></div>
-      <div className="productcard__description">
-        <div className="productcard__screen">
-          <div className="productcard__screen--title">Screen</div>
-          <div className="productcard__screen--value">{product.screen}</div>
+      <div className={card.productcard__line}></div>
+      <div className={card.productcard__description}>
+        <div className={card.productcard__data}>
+          <div className={card.productcard__title}>Screen</div>
+          <div className={card.productcard__value}>{product.screen}</div>
         </div>
-        <div className="productcard__capacity">
-          <div className="productcard__capacity--title">Capacity</div>
-          <div className="productcard__capacity--value">{product.capacity}</div>
+        <div className={card.productcard__data}>
+          <div className={card.productcard__title}>Capacity</div>
+          <div className={card.productcard__value}>{product.capacity}</div>
         </div>
-        <div className="productcard__ram">
-          <div className="productcard__ram--title">RAM</div>
-          <div className="productcard__ram--value">{product.ram}</div>
+        <div className={card.productcard__data}>
+          <div className={card.productcard__title}>RAM</div>
+          <div className={card.productcard__value}>{product.ram}</div>
         </div>
       </div>
-      <div className="productcard__buttons">
+      <div className={card.productcard__buttons}>
         <button
-          className="productcard__adding-button"
+          className={card.productcard__addingbutton}
           onClick={() => addItems(product)}
         >
           {addedItems.find(item => item.id === product.id)
@@ -120,8 +120,8 @@ export const ProductCard = ({ product }: Props) => {
             : 'Add to cart'}
         </button>
         <button
-          className={classNames('productcard__button-with-heart', {
-            'productcard__button-with-heart--is-active': favouriteItems.find(
+          className={classNames([card.productcard__heart], {
+            [card.productcard__heartisactive]: favouriteItems.find(
               item => item.id === product.id,
             ),
           })}

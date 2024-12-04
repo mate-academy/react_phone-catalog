@@ -1,4 +1,4 @@
-@import '../../utils/mixins.scss';
+@import '../styles/main';
 
 @font-face {
   font-family: Mont-bold;
@@ -13,7 +13,7 @@
 .favourites {
   @include page-grid;
 
-  &__empty-card {
+  &__emptycard {
     &--image {
       grid-column: 1 / 5;
       margin-top: 100px;
@@ -24,7 +24,7 @@
     width: 100%;
     }
 
-    &--title {
+    &title {
       grid-column: 1 / 5;
       margin-left: 16px;
 font-family: Mont-bold, sans-serif;
@@ -42,7 +42,7 @@ letter-spacing: -0.01em;
     display: flex;
     margin-left: 16px;
     grid-column: 1 / 5;
-    &--home {
+    &home {
       background-image: url('../../img/Home.svg');
       background-repeat: no-repeat;
       background-position: 0% 1%;
@@ -50,7 +50,7 @@ letter-spacing: -0.01em;
       width: 26px;
       height: 32px;
     }
-   &--text {
+   &text {
     margin-top: 2px;
     font-family: Mont,sans-serif;
     font-size: 12px;
@@ -87,11 +87,13 @@ margin-left: 16px;
     flex-flow: wrap;
     gap: 12px;
     grid-column: 1 / 5;
+
     @include on-tablet {
       display: flex;
       grid-column: 1 / 13;
       flex-direction: row;
     }
+
     @include on-desktop {
       grid-column: 1 / 24;
     }
@@ -99,6 +101,7 @@ margin-left: 16px;
 
   .productcard {
     margin-bottom: 16px;
+
     @include on-tablet {
       width: 288px;
     }
@@ -106,6 +109,7 @@ margin-left: 16px;
   }
   .productcard__image {
     margin: 0 70px;
+
     @include on-desktop {
       width: 145px;
     }
@@ -115,6 +119,7 @@ margin-left: 16px;
     display: flex;
     flex-direction: column;
     gap: 16px;
+
     @include on-tablet {
       width: 288px;
       height: 480px;
@@ -129,6 +134,7 @@ margin-left: 16px;
 
   .oldproductcard__image {
     margin: 0 75px;
+
     @include on-desktop {
       margin: 0 30px;
     }

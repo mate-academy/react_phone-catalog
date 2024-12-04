@@ -1,0 +1,48 @@
+.CartPage {
+  &__arrowright {
+    width: 40px;
+height: 40px;
+border-radius: 100%;
+color: black;
+font-size: 20px;
+background-color: white;
+border: 1px solid black;
+padding: 0;
+cursor: pointer;
+transform: scale(1);
+transition: 0.3s ease transform;
+
+&:hover {
+  transform: scale(1.1);
+  transition: transform 0.3s ease;
+}
+  }
+
+  &__arrowleft {
+    width: 40px;
+height: 40px;
+border-radius: 100%;
+color: black;
+font-size: 20px;
+background-color: white;
+border: 1px solid black;
+padding: 0;
+cursor: pointer;
+transform: scale(1);
+transition: 0.3s ease transform;
+
+&:hover {
+  transform: scale(1.1);
+  transition: transform 0.3s ease;
+}
+  }
+}
+
+.swiper-button-disabled {
+  color: #B4BDC3;
+  border: 1px solid #B4BDC3;
+}
+
+.swiper-wrapper {
+  display: flex;
+}

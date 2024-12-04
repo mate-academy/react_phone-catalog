@@ -8,20 +8,21 @@
   src: url('../../../public/fonts/Mont-Bold.otf');
 }
 
-@import '../../utils/mixins';
+@import '../styles/main';
 
 .productcard {
   border: 1px solid #B4BDC3;
-  width: 287px;
   display: flex;
   flex-direction: column;
   gap: 16px;
+  width: 212px;
   border-radius: 8px;
   background-color: white;
   &__container {
     margin-top: 20px;
   }
   &__image {
+    margin-top: 10px;
     height: 148px;
     width: 129px;
     transform: scale(1);
@@ -30,7 +31,7 @@
       transform: scale(1.1);
       transition: 0.3s ease transform;
     }
-    &--link {
+    &link {
       display: flex;
       justify-content: center;
     }
@@ -95,7 +96,13 @@ text-align: left;
     border: 1px solid #E2E6E9;
 }
 
-&__screen {
+&__description {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+&__data {
   display: flex;
   justify-content: space-between;
 
@@ -106,63 +113,24 @@ text-align: left;
   @include on-desktop {
     margin: 0;
   }
-  &--title {
-    margin-left: 40px;
+}
+
+&__title {
+  margin-left: 40px;
 font-family: Mont, sans-serif;
 font-size: 12px;
 line-height: 15.34px;
 text-align: left;
-  color: #89939A;
-  }
-  &--value {
-    margin-right: 40px;
-    font-family: Mont-normal, sans-serif;
+color: #89939A;
+}
+
+&__value {
+  margin-right: 40px;
+  font-family: Mont-normal, sans-serif;
 font-size: 12px;
 line-height: 15.34px;
 text-align: right;
 
-  }
-}
-&__capacity {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 8px;
-  &--title {
-    margin-left: 40px;
-    font-family: Mont, sans-serif;
-font-size: 12px;
-line-height: 15.34px;
-text-align: left;
-  color: #89939A;
-  }
-  &--value {
-    margin-right: 40px;
-    font-family: Mont-normal, sans-serif;
-font-size: 12px;
-line-height: 15.34px;
-text-align: right;
-  }
-}
-&__ram {
-  display: flex;
-  margin-top: 8px;
-
-  justify-content: space-between;
-  &--title {
-    margin-left: 40px;
-    font-family: Mont, sans-serif;
-font-size: 12px;
-line-height: 15.34px;
-text-align: left;
-  color: #89939A;
-  }
-  &--value {
-    margin-right: 40px;
-    font-family: Mont-normal, sans-serif;
-font-size: 12px;
-line-height: 15.34px;
-text-align: right;
-  }
 }
 
 &__buttons {
@@ -170,6 +138,7 @@ text-align: right;
   justify-content: center;
   height: 40px;
   gap: 4px;
+  margin-bottom: 10px;
 
 
   @include on-tablet {
@@ -177,7 +146,7 @@ text-align: right;
   }
 
 }
-&__adding-button {
+&__addingbutton {
   @include on-desktop {
     width: 160px;
   }
@@ -193,7 +162,7 @@ font-size: 10px;
 line-height: 21px;
 text-align: center;
 
-&--is-active {
+&isactive {
   background-color: white;
   color: #216CFF;
   border: 1px solid #216CFF;
@@ -205,7 +174,7 @@ text-align: center;
 }
 
 }
-&__button-with-heart {
+&__heart {
   width: 40px;
 height: 40px;
 border-radius: 48px;
@@ -217,7 +186,7 @@ border: 1px solid #B4BDC3;
 &:hover {
   background-image: url('../../img/Add\ to\ favorites-hover.svg');
 }
-&--is-active {
+&isactive {
   width: 40px;
 height: 40px;
 border-radius: 100%;

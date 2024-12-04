@@ -1,7 +1,6 @@
 .pagesnotfound {
   &__empty-card {
     &--image {
-      grid-column: 1 / 5;
       margin-top: 100px;
     background-image: url('../../img/page-not-found.png');
     background-repeat: no-repeat;
@@ -11,7 +10,6 @@
     }
 
     &--title {
-      grid-column: 1 / 5;
       margin-left: 16px;
 font-family: Mont-bold, sans-serif;
 font-size: 48px;

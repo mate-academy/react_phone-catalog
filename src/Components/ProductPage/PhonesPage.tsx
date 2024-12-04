@@ -1,7 +1,7 @@
 import { Link, useSearchParams } from 'react-router-dom';
 import { Footer } from '../Footer/Footer';
 import { Navigation } from '../Navigation/Navigation';
-import './ProductPage.module.scss';
+import phonesPage from './ProductPage.module.scss';
 import { useContext, useEffect } from 'react';
 import { ProductCard } from '../ProductCard/ProductCard';
 import { ProductsFilter } from '../ProductsFilter/ProductsFilter';
@@ -123,26 +123,28 @@ export const PhonesPage = () => {
   return (
     <>
       <Navigation />
-      <div className="productpage">
-        <Link className="productpage__breadcrumbs--link" to="/">
+      <div className={phonesPage.productpage}>
+        <Link className={phonesPage.productpage__breadcrumbslink} to="/">
           {'>'} Phones
         </Link>
 
-        <h1 className="productpage__header">Mobile phones</h1>
-        <span className="productpage__amountofmodels">{`${filteredPhones.length} ${filteredPhones.length === 1 ? 'model' : 'models'}`}</span>
+        <h1 className={phonesPage.productpage__header}>Mobile phones</h1>
+        <span
+          className={phonesPage.productpage__amountofmodels}
+        >{`${filteredPhones.length} ${filteredPhones.length === 1 ? 'model' : 'models'}`}</span>
         <ProductsFilter
           queries={queries}
           setParams={setSearchParams}
           sort={sortOptions}
           perPage={items}
         />
-        <div className="productpage__content">
+        <div className={phonesPage.productpage__content}>
           {getVisibleItems(itemsInNumber).length === 0 ? (
-            <h1 className="productpage__noresults">
+            <h1 className={phonesPage.productpage__noresults}>
               There are not phones matching the query{' '}
             </h1>
           ) : (
-            <div className="productpage__content">
+            <div className={phonesPage.productpage__content}>
               {getVisibleItems(itemsInNumber).map(product => (
                 <ProductCard product={product} key={product.id} />
               ))}

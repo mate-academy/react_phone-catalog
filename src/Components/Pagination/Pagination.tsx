@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import { CatalogContext } from '../CatalogProvider';
 import { Product } from '../types/Product';
-import './Pagination.module.scss';
+import paginations from './Pagination.module.scss';
 import classNames from 'classnames';
 import { SetURLSearchParams } from 'react-router-dom';
 
@@ -42,10 +42,10 @@ export const Pagination = ({
   const pagination = getPagination(amountOfPages);
 
   return (
-    <div className="pagination">
-      <div className="pagination__arrows">
+    <div className={paginations.pagination}>
+      <div className={paginations.arrows}>
         <button
-          className="pagination__arrow--slide-to-first"
+          className={paginations.arrow_to_first}
           onClick={() => {
             setSearchParams(prev => {
               prev.set('number', '1');
@@ -58,7 +58,7 @@ export const Pagination = ({
           }}
         ></button>
         <button
-          className="pagination__arrowprev"
+          className={paginations.arrow__prev}
           onClick={() => {
             setSearchParams(prev => {
               const nextPage = pageNumber - 1;
@@ -93,9 +93,9 @@ export const Pagination = ({
             setSlideDots(slideDots + 35);
           }}
         ></button>
-        <div className="pagination__dots">
+        <div className={paginations.dots}>
           <div
-            className="pagination__content"
+            className={paginations.content}
             style={{ transform: `translateX(${slideDots}px)` }}
           >
             {pagination.map((page, id) => {
@@ -144,8 +144,8 @@ export const Pagination = ({
                       return prev;
                     });
                   }}
-                  className={classNames('pagination__dot', {
-                    'pagination__dot--is-active': pageNumber === id + 1,
+                  className={classNames([paginations.dot], {
+                    [paginations.dot__active]: pageNumber === id + 1,
                   })}
                   value={number}
                 >
@@ -157,7 +157,7 @@ export const Pagination = ({
         </div>
 
         <button
-          className="pagination__arrownext"
+          className={paginations.arrow__next}
           onClick={() => {
             setSearchParams(prev => {
               const nextPage = pageNumber + 1;
@@ -193,7 +193,7 @@ export const Pagination = ({
           }}
         ></button>
         <button
-          className="pagination__arrow--slide-to-last"
+          className={paginations.arrow_to_last}
           onClick={() => {
             setPageNumber(amountOfPages);
             setSlidePages(amountOfPages * -303 + 303);

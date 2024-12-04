@@ -4,7 +4,6 @@ import { HomePage } from './Components/HomePage/HomePage';
 import { PhonesPage } from './Components/ProductPage/PhonesPage';
 import { HashRouter as Router } from 'react-router-dom';
 import { PhonesOffer } from './Components/ProductOffer/PhoneOffer';
-import { OldPhoneOffer } from './Components/OldPhoneOffer/OldPhoneOffer';
 import { TabletsPage } from './Components/ProductPage/TabletsPage';
 import { AccessoriesPage } from './Components/ProductPage/AccessoriesPage';
 import { TabletsOffer } from './Components/ProductOffer/TabletsOffer';
@@ -26,7 +25,6 @@ export const App = () => (
         <Route path="/phones/:itemId" element={<PhonesOffer />} />
         <Route path="/tablets/:itemId" element={<TabletsOffer />} />
         <Route path="/accessories/:itemId" element={<AccessoriesOffer />} />
-        <Route path="/oldPhones/:oldItemId" element={<OldPhoneOffer />} />
         <Route path="/favourites" element={<Favourites />} />
         <Route path="/cart" element={<CartItems />} />
         <Route path="*" element={<PagesNotFound />} />

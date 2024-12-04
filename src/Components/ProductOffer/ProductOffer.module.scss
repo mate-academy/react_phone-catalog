@@ -1,26 +1,29 @@
-@font-face {
-  font-family: Mont;
-  src: url('../../../public/fonts/Mont-Regular.otf');
-}
-
-@font-face {
-  font-family: Mont-bold;
-  src: url('../../../public/fonts/Mont-Bold.otf');
-}
-
-@import '../../utils/mixins';
+@import '../styles/main';
 
 .productoffer {
-  @include page-grid;
-
+  overflow: hidden;
   margin-right: 0;
+
   @include on-desktop {
     padding-bottom: 130px;
   }
+}
 
+.container {
+  @include on-tablet {
+    display: flex;
+    flex-direction: row-reverse;
+    width: 60%;
+  }
+}
 
-  overflow: hidden;
-  &__breadcrumbs {
+.containerONTABLET {
+  @include on-tablet {
+    display: flex;
+  }
+}
+
+  .breadcrumbs {
     display: flex;
     align-items: flex-start;
     margin: 16px 0 0 16px;
@@ -29,14 +32,14 @@
     @include on-tablet {
       grid-column: 1 / 13;
     }
-    &--home {
+    &__home {
       background-image: url('../../img/Home.svg');
       background-repeat: no-repeat;
       background-position: center;
       width: 16px;
       height: 16px;
     }
-    &--text {
+    &__text {
       font-family: Mont,sans-serif;
 font-size: 12px;
 font-weight: 700;
@@ -44,22 +47,22 @@ line-height: 15.34px;
 text-align: left;
 grid-column: 3 / 5;
 
-&-active {
-  font-family: Mont-bold, sans-serif;
+&active {
+  font-family: Mont-Bold, sans-serif;
   font-size: 12px;
   text-decoration: none;
   color: black;
 }
 
     }
-    &--arrow {
+    &__arrow {
       background-image: url('../../img/Chevron\ \(Arrow\ Right\).svg');
       background-repeat: no-repeat;
 
       height: 16px;
       width: 16px;
     }
-    &--back-arrow {
+    &__backarrow {
       background-image: url('../../img/Chevron\ \(Arrow\ Right\).svg');
       background-repeat: no-repeat;
       background-position: center;
@@ -67,15 +70,7 @@ grid-column: 3 / 5;
       width: 16px;
       transform: rotate(0.5turn);
     }
-    &--back-button {
-      grid-column: 1 / 5;
-      @include on-tablet {
-        grid-column: 1 / 13;
-      }
-
-      @include on-desktop {
-        grid-column: 1 / 25;
-      }
+    &__backbutton {
       border: 0;
       background-color: transparent;
       width: 61px;
@@ -91,105 +86,71 @@ grid-column: 3 / 5;
       cursor: pointer;
     }
   }
-  &__line {
+
+  .line {
     grid-column: 1 / 5;
     margin: 40px auto 0;
       height: 0;
       width: 228px;
       border: 1px solid #d3d5d7;
   }
-  &__title {
-    grid-column: 1 / 5;
 
-    @include on-tablet {
-      grid-column: 1 / 13;
-    }
-
-    margin: 32px 25px 0 16px;
-font-family: Mont-bold, sans-serif;
+  .title {
+    margin: 32px 25px 30px 16px;
+font-family: Mont-Bold, sans-serif;
 font-size: 22px;
 font-weight: 800;
 line-height: 30.8px;
 text-align: left;
-
   }
 
-  &__images {
+  .image {
+    object-fit: contain;
+    width: 70%;
+    height: 50vh;
+    margin-left: 13%;
+
+    @include on-tablet {
+      margin-top: 26%;
+      width: 70%;
+      height: 56%;
+    }
+  }
+
+  .navImage {
+    height: 55px;
+    width: 55px;
+    object-fit: contain;
+    border: 1px solid #B4BDC3;
+    margin-right: 25px;
+    padding: 5px;
+    &active {
+      border: 2px solid black;
+    }
+    &:first-child {
+      margin-left: 390%;
+    }
+  }
+
+  .navImages {
     display: flex;
-    flex-direction: column;
-    grid-column: 1 / 5;
 
     @include on-tablet {
-      grid-column: 1 / 9;
-      width: auto;
+      flex-direction: column;
+      width: 100%;
+      margin-top: 14%;
+      margin-right: 2%;
     }
-    @include on-desktop {
-      grid-column: 1 / 13;
-    }
-  }
-  &__image {
-    margin-top: 45px;
-    object-fit: contain;
-    width: 288px;
-      height: 288px;
-      @include on-tablet {
-        margin-left: 10%;
-      }
   }
 
-  &__dot-image {
-    grid-column: 1 / 5;
-    object-fit: contain;
-    background-color: transparent;
+  .panel {
+    margin: 14% 0 0 8px;
 
     @include on-tablet {
-      grid-column: 3 / 9;
-      width: 288px;
-      height: 288px;
-      margin: 0;
+      margin-right: 5%;
+      width: 38%;
     }
-  }
-  &__sliderimage {
-    margin-top: 70px;
-    height: 288px;
-    object-fit: contain;
-    @include on-desktop {
-      width: 400px;
-    }
-  }
-  &__phoneslider {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    margin: 0 auto;
-
-    @include on-tablet {
-      grid-column: 1 / 9;
-      flex-direction: row-reverse;
-      width: auto;
-      margin: 0;
-      div {
-        width: 228px;
-      }
-    }
-    @include on-desktop {
-      grid-column: 1 / 12;
-
-    }
-  }
-
-  &__panel {
-    grid-column: 1 / 5;
-
-    @include on-tablet {
-      grid-column: 9 / 13;
-    }
-    @include on-desktop {
-      grid-column: 13 / 25;
-    }
-
-    margin: 32px 0 0 8px;
-    &--title {
+    &__title {
       color: #89939A;
 font-family: Mont, sans-serif;
 font-size: 12px;
@@ -198,13 +159,13 @@ line-height: 15.34px;
 text-align: left;
 
     }
-    &--color-selection {
+    &__colorselection {
       width: 32px;
       height: 32px;
       border-radius: 100%;
       border: 3px solid white;
       outline: 2px solid #89939A;
-      &--selected {
+      &selected {
         width: 32px;
         height: 32px;
         border-radius: 100%;
@@ -212,18 +173,18 @@ text-align: left;
         outline: 3px solid black;
       }
     }
-    &--colors {
+    &__colors {
       margin-top: 20px;
       display: flex;
       flex-direction: row;
       gap: 10px;
     }
-    &--id-and-title {
+    &__id_and_title {
       display: flex;
       flex-direction: row;
       justify-content: space-between;
     }
-    &--id-number {
+    &__idnumber {
       color: #B4BDC3;
 font-family: Mont, sans-serif;
 font-size: 12px;
@@ -232,8 +193,8 @@ line-height: 15.34px;
 margin-right: 12px;
 
     }
-    &--capacity {
-      &-title {
+    &__capacity {
+      &_title {
 margin-top: 20px;
 font-family: Mont, sans-serif;
 font-size: 12px;
@@ -242,7 +203,7 @@ line-height: 15.34px;
 text-align: left;
 color: #89939A;
       }
-      &-option {
+      &_option {
         margin-top: 20px;
         width: 63px;
         height: 32px;
@@ -257,7 +218,7 @@ color: #89939A;
         &:hover {
           background-color: #B4BDC3;
         }
-        &-selected {
+        &selected {
           color: white;
           background-color: black;
           &:hover {
@@ -266,20 +227,20 @@ color: #89939A;
         }
       }
     }
-    &--prices {
+    &__prices {
       margin-top: 32px;
       display: flex;
 
     }
-    &--price {
-      font-family: Mont-bold, sans-serif;
+    &__price {
+      font-family: Mont-Bold, sans-serif;
       font-size: 32px;
       font-weight: 800;
       line-height: 41px;
       letter-spacing: -0.01em;
       text-align: left;
       margin-right: 5px;
-        &-discount {
+        &discount {
           font-family: Mont, sans-serif;
           font-size: 22px;
           font-weight: 800;
@@ -289,13 +250,13 @@ color: #89939A;
           color: #89939A;
         }
     }
-    &--buttons {
+    &__buttons {
       height: 100px;
       display: flex;
       gap: 8px;
       justify-content: center;
     }
-    &--adding-button {
+    &__adding_button {
       width: 231px;
       height: 48px;
       border-radius: 8px;
@@ -315,7 +276,7 @@ cursor: pointer;
 }
 
     }
-    &--heart-button {
+    &__heartbutton {
       width: 48px;
       height: 48px;
       border-radius: 100%;
@@ -330,7 +291,7 @@ cursor: pointer;
         background-image: url('../../img/Add\ to\ favorites-hover.svg');
         background-size: 50px 50px;
       }
-          &--is-active {
+          &_isactive {
       width: 48px;
     height: 48px;
     border-radius: 100%;
@@ -342,17 +303,17 @@ cursor: pointer;
       background-image: url('../../img/Add\ to\ fovourites\ -\ Added.svg');
     }
     }
-    &--basicspec {
+    &__basicspec {
       display: flex;
       flex-direction: column;
       gap: 10px;
       grid-column: 1 / 5;
       margin: 32px 1px 0;
-      &-data {
+      &__data {
         display: flex;
         justify-content: space-between;
       }
-      &-title {
+      &__title {
         font-family: Mont,sans-serif;
         font-size: 12px;
         font-weight: 600;
@@ -360,8 +321,8 @@ cursor: pointer;
         text-align: left;
         color: #89939A;
       }
-      &-text {
-        font-family: Mont-bold,sans-serif;
+      &__text {
+        font-family: Mont-Bold,sans-serif;
         font-size: 12px;
         font-weight: 700;
         line-height: 15.34px;
@@ -372,28 +333,20 @@ cursor: pointer;
 
     }
   }
-  &__description {
-    grid-column: 1 / 5;
 
-    @include on-tablet {
-      grid-column: 1 / 7;
-    }
-
-    @include on-desktop {
-      grid-column: 1 / 13;
-    }
-    &--header {
+  .description {
+    &__header {
       margin-top: 64px;
-      font-family: Mont-bold, sans-serif;
+      font-family: Mont-Bold, sans-serif;
       font-size: 32px;
       font-weight: 700;
       line-height: 20.45px;
       text-align: left;
       color:black;
     }
-    &--title {
+    &__title {
       margin: 32px 24px 0 8px;
-      font-family: Mont-bold, sans-serif;
+      font-family: Mont-Bold, sans-serif;
       font-size: 16px;
       font-weight: 700;
       line-height: 20.45px;
@@ -402,7 +355,7 @@ cursor: pointer;
       grid-column: 1 / 5;
       margin-left: 8px;
     }
-    &--text {
+    &__text {
       grid-column: 1 / 5;
       margin: 32px 24px 0 8px;
       font-family: Mont, sans-serif;
@@ -413,25 +366,15 @@ cursor: pointer;
       color:#89939A;
     }
   }
-  &__techspecs {
-    grid-column: 1 / 5;
 
-    @include on-tablet {
-      margin-top: 100px;
-      grid-column: 7 / 13;
-    }
-
-    @include on-desktop {
-      grid-column: 13 / 25;
-    }
-
-    margin-top: 32px;
-    &--data {
+  .techspec {
+margin-top: 32px;
+    &__data {
       display: flex;
       justify-content: space-between;
       margin: 10px 5px 0 1px;
     }
-    &--title {
+    &__title {
       font-family: Mont, sans-serif;
       font-size: 14px;
       font-weight: 500;
@@ -440,7 +383,7 @@ cursor: pointer;
       color:#89939A;
       margin-left: 8px;
     }
-    &--text {
+    &__text {
       font-family: Mont, sans-serif;
       font-size: 14px;
       font-weight: 600;
@@ -452,136 +395,3 @@ cursor: pointer;
       }
     }
   }
-  &__slider {
-    margin-top: 64px;
-    grid-column: 1 / 5;
-    width: 212px;
-    div {
-      width: 260px;
-    }
-    &--header {
-      font-family: Mont-bold, sans-serif;
-      font-size: 22px;
-      font-weight: 800;
-      line-height: 30.8px;
-      text-align: left;
-    }
-  }
-  .productcard {
-    width: 228px;
-  }
-  .productcard__name {
-    height: 26px;
-  }
-  .productcard__line {
-    width: 150px;
-    margin: 0 auto;
-  }
-  .productcard__screen--title {
-      margin-left: 20px;
-      width: 40px;
-  }
-  .productcard__screen--value {
-    width: 100px;
-    margin-right: 59px;
-  }
-  .productcard__capacity--title {
-    margin-left: 20px;
-}
-.productcard__capacity--value {
-  width: 59px;
-  margin-right: 59px;
-}
-.productcard__ram--title {
-  margin-left: 20px;
-}
-.productcard__ram--value {
-  width: 59px;
-  margin-right: 59px;
-}
-
-  .productcard__buttons {
-    margin-bottom: 10px;
-    width: auto;
-  }
-
-  .slick-dots {
-    grid-column: 1 / 5;
-    margin: 10px 8px;
-    padding: 0;
-
-    @include on-tablet {
-      flex-direction: column;
-      gap: 50px;
-      margin-top: 60px;
-
-      li {
-        height: 76px;
-      }
-    }
-  }
-  .slick-track {
-    margin-top: 32px;
-    height: 430px;
-    width: 212px;
-  }
-  .slick-prev {
-    bottom: 38px;
-    left: 195px;
-  }
-  .slick-next {
-    width: 40px;
-    height: 40px;
-    border-radius: 100%;
-    color: transparent;
-    background-image: url('../../img/arrow-right2.svg');
-    background-color: white;
-    background-repeat: no-repeat;
-    background-size: 12px 12px;
-    background-position: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    bottom: 543px;
-    left: 240px;
-    cursor: pointer;
-    border: 1px solid black;
-    transition: 0.3s ease transform;
-    transform: scale(1);
-    &:hover {
-      transform: scale(1.2);
-      transition: 0.3s ease transform;
-    }
-  }
-
-  .slick-disabled:not(.slick-prev) {
-    border: 1px solid #E2E6E9;
-  }
-
-  :not(div) .slick-active {
-    border: 1px solid black;
-    border-radius: 6px;
-    width: 55px;
-    height: 55px;
-    display: flex;
-    align-items: center;
-
-    @include on-tablet {
-      padding: 0;
-    }
-
-  }
-
-   li {
-     width: 55px;
-     display: flex;
-     align-items: center;
-   }
-}
-
-:nth-child(4) .slick-list {
-  width: 302px;
-  overflow: hidden;
-}
-

@@ -1,7 +1,8 @@
-import './menu.module.scss';
-import '../icons/icon.scss';
+import menuIcon from '../icons/icon.module.scss';
+import menuLogo from '../logo/logo.module.scss';
 import classNames from 'classnames';
 import { Link } from 'react-router-dom';
+import menu from './menu.module.scss';
 import { useContext } from 'react';
 import { CatalogContext } from '../CatalogProvider';
 
@@ -16,62 +17,59 @@ export const Menu = ({ showMenu, setShowMenu }: Props) => {
 
   return (
     <menu
-      className={classNames('menu', {
-        'menu--show-menu': showMenu,
+      className={classNames([menu.menu], {
+        [menu.menu__showmenu]: showMenu,
       })}
     >
-      <div className="menu__header">
-        <div className="menu__logo-block">
-          <div className="logo__menu"></div>
+      <div className={menu.menu__header}>
+        <div className={menu.menu__logoblock}>
+          <div className={menuLogo.logo__menu}></div>
         </div>
 
         <a
-          className="menu__block-with-cross"
+          className={menu.menu__blockwithcross}
           onClick={() => setShowMenu(false)}
         >
-          <div className="icon__cross"></div>
+          <div className={menuIcon.icon__cross}></div>
         </a>
       </div>
-      <nav className="menu__navigation">
-        <Link to="/home" className="menu__link">
+      <nav className={menu.menu__navigation}>
+        <Link to="/home" className={menu.menu__link}>
           HOME
         </Link>
-        <Link to="/phones" className="menu__link">
+        <Link to="/phones" className={menu.menu__link}>
           PHONES
         </Link>
-        <Link to="/tablets" className="menu__link">
+        <Link to="/tablets" className={menu.menu__link}>
           TABLETS
         </Link>
-        <Link to="/accessories" className="menu__link">
+        <Link to="/accessories" className={menu.menu__link}>
           ACCESSORIES
         </Link>
       </nav>
-      <footer className="menu__footer">
-        <Link
-          to="/favourites"
-          className="menu__footer--block menu__footer--block--line"
-        >
+      <footer className={menu.menu__footer}>
+        <Link to="/favourites" className={menu.menu__footerblock}>
           <div
-            className={classNames('icon__heart', {
-              'icon__heart--circle':
+            className={classNames([menuIcon.icon__heart], {
+              [menuIcon.icon__heartcircle]:
                 favouriteItems.length > 0 || favouriteOldItems.length > 0,
             })}
           ></div>
           {(favouriteItems.length > 0 || favouriteOldItems.length > 0) && (
-            <div className="icon__circle">
+            <div className={menuIcon.icon__circle}>
               {favouriteItems.length + favouriteOldItems.length}
             </div>
           )}
         </Link>
-        <Link to="/cart" className="menu__footer--block">
+        <Link to="/cart" className={menu.menu__footerblock}>
           <div
-            className={classNames('icon__bag', {
-              'icon__bag--circle':
+            className={classNames([menuIcon.icon__bag], {
+              [menuIcon.icon__bagcircle]:
                 addedItems.length > 0 || oldAddedItems.length > 0,
             })}
           ></div>
           {(addedItems.length > 0 || oldAddedItems.length > 0) && (
-            <div className="icon__circle">
+            <div className={menuIcon.icon__circle}>
               {addedItems.length + oldAddedItems.length}
             </div>
           )}

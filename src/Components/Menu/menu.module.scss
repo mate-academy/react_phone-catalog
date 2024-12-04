@@ -5,7 +5,7 @@
 
 .menu {
   width: 100vw;
-  height: 110vh;
+  height: 108vh;
   padding: 0;
   border: 1px solid black;
   position: fixed;
@@ -15,7 +15,7 @@
   transition: 0.3s ease transform;
   transform: translateX(-100vw);
   z-index: 3;
-  &--show-menu {
+  &__showmenu {
     transform: translateX(100vw);
     transition: 0.3s ease transform;
   }
@@ -25,7 +25,7 @@
     justify-content: space-between;
     border-bottom: 1px solid #E2E6E9;
   }
-  &__logo-block {
+  &__logoblock {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -33,7 +33,7 @@
     height: 48px;
 
   }
-  &__block-with-cross {
+  &__blockwithcross {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -71,16 +71,14 @@ text-decoration: none;
     width: 100%;
     display: flex;
     border-top: 1px solid #89939A;
-    &--block {
+    &block {
       display: flex;
     justify-content: center;
     align-items: center;
     background-color: white;
     width: 100%;
     z-index: 100;
-    &--line {
-      border-right: 1px solid #89939A;
-    }
+    border-right: 1px solid #89939A;
     }
   }
 }

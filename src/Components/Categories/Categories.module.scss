@@ -8,10 +8,11 @@
   src: url('../../../public/fonts/Mont-Regular.otf');
 }
 
-@import '../../utils/mixins';
+@import '../styles/main';
 
 .categories {
   @include page-grid;
+
   grid-column: 1 / 5;
 
   @include on-tablet {
@@ -24,9 +25,11 @@
 
   &__header {
     grid-column: 1 / 5;
+
     @include on-tablet {
       grid-column: 1 / 13;
     }
+
     font-family: Mont, sans-serif;
 font-size: 32px;
 font-weight: 800;
@@ -39,6 +42,7 @@ margin-left: 32px;
 
   &__content {
     grid-column: 1 / 5;
+
     @include on-tablet {
       width: 100%;
       grid-column: 1 / 13;
@@ -46,6 +50,7 @@ margin-left: 32px;
       justify-content: center;
       align-items: start;
       gap: 8px;
+      margin-left: 5%;
     }
 
     @include on-desktop {
@@ -57,8 +62,13 @@ margin-left: 32px;
 
   &__option {
     margin-top: 40px;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+
     @include on-tablet {
     height: 100%;
+    display: inline;
     }
   }
 
@@ -76,18 +86,28 @@ text-align: left;
     margin-left: 16px;
     color: #89939A;
   }
+
+  &__link {
+    display: flex;
+
+    @include on-tablet {
+      display: inline;
+    }
+  }
   &__image {
     object-fit: contain;
-    width: 100%;
+    width: 80%;
     transform: scale(1);
     transition: 0.3s ease transform;
+    margin: 0 auto;
     &:hover {
-      transform: scale(1.2);
+      transform: scale(1.1);
       transition: 0.3s ease transform;
     }
+
     @include on-tablet {
     height: 50%;
-    margin-top: 50px;
+    margin: 50px auto 0;
     }
   }
 }
