@@ -3,6 +3,12 @@ import { Logo } from '../../components/Logo';
 import classNames from 'classnames';
 
 export default function Footer() {
+  const handleScrollTop = () => {
+    window.scrollTo({
+      top: 0,
+    });
+  };
+
   return (
     <footer className={styles.footer}>
       <div className="container">
@@ -33,7 +39,7 @@ export default function Footer() {
           </ul>
 
           <div className={styles.footer__actions}>
-            <a href="#root" className={styles['back-to-top']}>
+            <button onClick={handleScrollTop} className={styles['back-to-top']}>
               Back to top
               <span
                 className={classNames(
@@ -42,7 +48,7 @@ export default function Footer() {
                   styles['back-to-top__icon'],
                 )}
               ></span>
-            </a>
+            </button>
           </div>
         </div>
       </div>

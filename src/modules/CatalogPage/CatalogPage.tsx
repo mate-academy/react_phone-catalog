@@ -89,7 +89,7 @@ export const CatalogPage: React.FC<Props> = ({ title, category }) => {
         products={products}
         classNameProps={styles.catalog__breadcrumbs}
       />
-      <h1 className={classNames('title', styles.catalog__title)}>{title}</h1>
+      <h2 className={classNames('title', styles.catalog__title)}>{title}</h2>
 
       <p className={styles['count-models']}>{countModels} models</p>
 
