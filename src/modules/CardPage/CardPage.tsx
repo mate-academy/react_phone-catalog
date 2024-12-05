@@ -117,9 +117,9 @@ export const CardPage = () => {
 
       <GoToBack />
 
-      <h2 className={classNames('subTitle', styles['card-page__title'])}>
+      <h1 className={classNames('subTitle', styles['card-page__title'])}>
         {productData?.name}
-      </h2>
+      </h1>
 
       {productData && (
         <ImagesBlock
