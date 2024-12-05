@@ -1,0 +1,51 @@
+import styles from './Footer.module.scss';
+import { Logo } from '../../components/Logo';
+import classNames from 'classnames';
+
+export default function Footer() {
+  return (
+    <footer className={styles.footer}>
+      <div className="container">
+        <div className={styles.footer__content}>
+          <Logo className={styles.footer__logo} />
+
+          <ul className={styles.footer__list}>
+            <li className={styles.footer__item}>
+              <a
+                href="https://github.com/Poviakalo"
+                className={styles.footer__link}
+              >
+                Github
+              </a>
+            </li>
+
+            <li className={styles.footer__item}>
+              <a href="#" className={styles.footer__link}>
+                Contacts
+              </a>
+            </li>
+
+            <li className={styles.footer__item}>
+              <a href="#" className={styles.footer__link}>
+                rights
+              </a>
+            </li>
+          </ul>
+
+          <div className={styles.footer__actions}>
+            <a href="#root" className={styles['back-to-top']}>
+              Back to top
+              <span
+                className={classNames(
+                  'icon',
+                  'icon--arrow',
+                  styles['back-to-top__icon'],
+                )}
+              ></span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  );
+}
