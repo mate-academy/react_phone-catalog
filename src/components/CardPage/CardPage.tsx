@@ -460,7 +460,7 @@ export const CardPage = () => {
                 Math.abs(a.price - priceDiscount) -
                 Math.abs(b.price - priceDiscount),
             )
-            .slice(0, 4)}
+            .slice(0, 8)}
           isResetTitleWidth
         />
       </section>

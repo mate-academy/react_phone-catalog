@@ -11,11 +11,11 @@ export const MainPage = () => {
 
   const [slide, setSlide] = useState(1);
 
-  const newModels = cards.sort((c1, c2) => -(c1.year - c2.year)).slice(0, 4);
+  const newModels = cards.sort((c1, c2) => -(c1.year - c2.year)).slice(0, 8);
 
   const hotPrices = cards
     .sort((c1, c2) => c2.fullPrice - c2.price - (c1.fullPrice - c1.price))
-    .slice(0, 4);
+    .slice(0, 8);
 
   return (
     <main className={styles.main}>
