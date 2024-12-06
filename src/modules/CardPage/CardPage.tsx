@@ -42,7 +42,7 @@ export const CardPage = () => {
   useEffect(() => {
     setLoading(true);
 
-    getData<ProductData[]>(`/api/${category}.json`)
+    getData<ProductData[]>(`api/${category}.json`)
       .then(setProductsOfCategory)
       .catch(() => {
         setError('Не вдалося завантажити дані. Спробуйте ще раз.');

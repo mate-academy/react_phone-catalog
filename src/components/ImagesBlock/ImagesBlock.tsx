@@ -24,11 +24,7 @@ export const ImagesBlock: React.FC<Props> = ({ product, classNameProp }) => {
   return (
     <div className={classNames(styles['images-block'], classNameProp)}>
       <div className={styles['images-block__main']}>
-        <img
-          className={styles.img}
-          src={`/${mainImage}`}
-          alt={`${name}-main`}
-        />
+        <img className={styles.img} src={`${mainImage}`} alt={`${name}-main`} />
       </div>
 
       <div
