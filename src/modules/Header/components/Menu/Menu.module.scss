@@ -4,6 +4,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  transition: 1s;
 
   &__navigation {
     @include page-padding-inline;
@@ -14,6 +15,7 @@
     grid-template-columns: repeat(2, 1fr);
     border-top: 1px solid var(--elements);
     height: 64px;
+    transition: smooth;
   }
 
   @include on-tablet {

@@ -36,6 +36,8 @@
     background-color: inherit;
     padding: 0;
 
+    @include transition;
+
     &::before,
     &::after {
       position: absolute;
@@ -47,8 +49,6 @@
       top: 50%;
       left: 50%;
     }
-
-    @include transition;
 
     &::before {
       transform: translate(-50%, -50%) rotate(45deg);

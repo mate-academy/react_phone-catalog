@@ -8,8 +8,8 @@ import { Logo } from '../../components/Logo';
 
 export const Footer = () => {
   const links = [
-    { title: 'Github', path: '#' },
-    { title: 'Contacts', path: '#' },
+    { title: 'Github', path: 'https://github.com/vneholiuk' },
+    { title: 'Contacts', path: 'https://t.me/neholiuk11' },
     { title: 'Rights', path: '#' },
   ];
 
