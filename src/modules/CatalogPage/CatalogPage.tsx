@@ -56,7 +56,7 @@ export const CatalogPage: React.FC<Props> = ({ title, category }) => {
   useEffect(() => {
     setLoading(true);
 
-    getData<Product[]>(`/api/products.json`)
+    getData<Product[]>(`api/products.json`)
       .then(data => {
         const filteredData = data.filter(
           product => product.category === category,

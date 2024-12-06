@@ -21,7 +21,7 @@ export const Category: React.FC<Props> = ({ data, className }) => {
         )}
       >
         <img
-          src={`/${img}`}
+          src={img}
           alt={title}
           className={classNames(
             styles.category__img,
