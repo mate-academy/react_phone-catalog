@@ -1,0 +1,87 @@
+@import '../../styles/utils';
+
+.products-slider {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+
+  &__header {
+    grid-column: 1 / -1;
+    display: flex;
+    gap: 10px;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+
+    @include page-padding-inline;
+  }
+
+  &__title {
+    margin: 0;
+
+    @include h2-mobile;
+
+    @include on-tablet {
+      @include h2-tablet-desktop;
+    }
+  }
+
+  &__controls {
+    display: flex;
+    gap: 16px;
+  }
+
+  &__btn {
+    width: 32px;
+    height: 32px;
+
+    &--prev {
+      transform: rotate(-90deg);
+    }
+    &--next {
+      transform: rotate(90deg);
+    }
+
+    &:disabled {
+      svg path {
+        fill: var(--elements);
+      }
+    }
+  }
+
+  &__wrapper {
+    grid-column: 1 / -1;
+    padding-left: $mobile-padding-inline;
+
+    @include on-tablet {
+      padding-left: $tablet-padding-inline;
+    }
+
+    @include on-desktop {
+      padding-inline: $desktop-padding-inline;
+    }
+  }
+
+  &__list {
+    display: flex;
+    overflow: hidden;
+    height: auto;
+    gap: 16px;
+  }
+
+  &__slide {
+    flex: 0 0 212px;
+    height: 440px;
+
+    transition: transform 0.5s ease-in-out;
+
+    @include on-tablet {
+      flex: 0 0 237px;
+      height: 512px;
+    }
+
+    @include on-desktop {
+      flex: 0 0 272px;
+      height: 506px;
+    }
+  }
+}

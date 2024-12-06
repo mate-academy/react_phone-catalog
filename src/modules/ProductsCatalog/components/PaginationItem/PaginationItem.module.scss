@@ -1,0 +1,15 @@
+@import '../../../../styles/utils';
+
+.pagination-item {
+  display: block;
+
+  &__btn {
+    &--active,
+    &--active:hover {
+      cursor: auto;
+      background-color: var(--primary);
+      color: var(--text-active);
+      border-color: var(--primary);
+    }
+  }
+}

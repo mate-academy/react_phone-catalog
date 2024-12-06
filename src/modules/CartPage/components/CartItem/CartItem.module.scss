@@ -1,0 +1,138 @@
+@import '../../../../styles/utils';
+
+.cart-item {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 16px;
+  border: 1px solid var(--elements);
+  border-radius: 16px;
+  background-color: var(--bg-secondary);
+
+  @include on-tablet {
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 24px;
+    padding: 24px;
+  }
+
+  &__container {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+
+    @include on-tablet {
+      gap: 24px;
+    }
+  }
+
+  &__del {
+    flex-shrink: 0;
+    position: relative;
+    width: 16px;
+    height: 16px;
+    align-self: center;
+    border: none;
+    background-color: inherit;
+    padding: 0;
+
+    &::before,
+    &::after {
+      position: absolute;
+      content: '';
+      width: 12px;
+      height: 1px;
+      background-color: var(--icon-secondary);
+      border-radius: 1px;
+      top: 50%;
+      left: 50%;
+    }
+
+    @include transition;
+
+    &::before {
+      transform: translate(-50%, -50%) rotate(45deg);
+    }
+
+    &::after {
+      transform: translate(-50%, -50%) rotate(-45deg);
+    }
+
+    &:hover {
+      scale: 1.2;
+    }
+  }
+
+  &__img {
+    width: 80px;
+    object-fit: contain;
+    aspect-ratio: 1 / 1;
+  }
+
+  &__link {
+    @include transition;
+
+    &:hover {
+      color: var(--icon-secondary);
+    }
+  }
+
+  &__count {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  &__count-btn {
+    position: relative;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    border: 1px solid var(--icon-secondary);
+    background-color: inherit;
+
+    &::before,
+    &::after {
+      position: absolute;
+      content: '';
+      width: 11px;
+      height: 1px;
+      background-color: var(--primary);
+      border-radius: 1px;
+      top: 50%;
+      left: 50%;
+    }
+
+    &--minus::before,
+    &--minus::after {
+      transform: translate(-50%);
+    }
+
+    &--plus::after {
+      transform: translate(-50%);
+    }
+    &--plus::before {
+      transform: translate(-50%) rotate(90deg);
+    }
+
+    &:disabled {
+      border-color: var(--elements);
+
+      &::before,
+      &::after {
+        background-color: var(--icon-secondary);
+      }
+    }
+  }
+
+  &__price {
+    margin-left: auto;
+
+    @include h3-tablet-desktop;
+
+    @include on-tablet {
+      width: 80px;
+      text-align: end;
+    }
+  }
+}

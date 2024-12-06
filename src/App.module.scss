@@ -1,0 +1,15 @@
+@import './styles/utils';
+
+.app {
+  min-height: 100vh;
+  display: grid;
+  grid-template-rows: min-content 1fr min-content;
+  font-family: Mont, Arial, sans-serif;
+  color: var(--primary);
+
+  @include body-text;
+
+  &__main {
+    background-color: var(--hover-bg);
+  }
+}

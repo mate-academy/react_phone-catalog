@@ -1,0 +1,72 @@
+@import '../../../../styles/utils';
+
+.actions {
+  &__item {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    box-shadow: -1px 0 0 0 var(--elements);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    @include on-tablet {
+      width: 48px;
+    }
+
+    @include on-desktop {
+      width: 64px;
+    }
+
+    &::after {
+      position: absolute;
+      content: '';
+      width: 100%;
+      height: 2px;
+      background-color: var(--active-link);
+      bottom: 0;
+      left: 0;
+
+      transition: transform 0.3s;
+      transform: scale(0);
+      transform-origin: left;
+    }
+
+    &:hover {
+      &::after {
+        transform: scale(1);
+      }
+    }
+
+    &--active {
+      cursor: auto;
+
+      &::after {
+        transform: scale(1);
+      }
+    }
+
+    svg path {
+      fill: var(--icon-primary);
+    }
+  }
+
+  &__count {
+    position: absolute;
+    border-radius: 50%;
+    background-color: var(--secondary-accent);
+    color: var(--white);
+    width: 14px;
+    height: 14px;
+
+    font-size: 9px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    bottom: 50%;
+    left: 50%;
+
+    border: 1px solid var(--bg-header-footer);
+  }
+}

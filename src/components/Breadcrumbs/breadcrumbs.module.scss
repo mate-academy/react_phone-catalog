@@ -1,0 +1,54 @@
+@import '../../styles/utils';
+
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  &__icon {
+    display: block;
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 15px;
+    color: var(--primary);
+
+    &:not(:last-child)::after {
+      display: block;
+      content: '';
+      width: 16px;
+      height: 16px;
+      background-image: url('../../assets/images/icons/arrow.svg');
+      background-size: cover;
+      transform: rotate(90deg);
+    }
+
+    &:last-child {
+      flex: 1;
+      font-weight: 600;
+      color: var(--secondary);
+      width: 50px;
+    }
+  }
+
+  &__link {
+    display: flex;
+    align-items: center;
+
+    svg path{
+      fill: var(--icon-primary);
+    }
+  }
+  
+  &__last-text {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
+  }
+}

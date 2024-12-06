@@ -1,0 +1,56 @@
+@import '../../styles/utils';
+
+.actions {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  width: 100%;
+  height: 40px;
+
+  &__btn-cart {
+    border: none;
+    flex: 1 1;
+    background-color: var(--accent);
+    color: var(--white);
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 9px;
+
+    &--active {
+      background-color: inherit;
+      color: var(--accent);
+      box-shadow: 0 0 0 1px var(--elements);
+    }
+  }
+
+  &__btn-favourites {
+    height: 100%;
+    aspect-ratio: 1 / 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px var(--icon-secondary) solid;
+    border-radius: 50%;
+    background-color: inherit;
+
+    @include transition;
+
+    svg path {
+      fill: var(--icon-primary);
+    }
+
+    &:hover {
+      border-color: var(--icon-primary);
+    }
+
+    &--active {
+      border-color: var(--elements);
+
+      svg path {
+        fill: var(--secondary-accent);
+      }
+    }
+  }
+}

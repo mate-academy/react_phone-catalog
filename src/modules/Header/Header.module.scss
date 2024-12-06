@@ -1,0 +1,116 @@
+@import '../../styles/utils';
+
+.header {
+  border-bottom: 1px solid var(--elements);
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  background-color: var(--bg-header-footer);
+  display: flex;
+  gap: 16px;
+  justify-content: space-between;
+  height: 48px;
+
+  @include on-tablet {
+    display: grid;
+    grid-template-columns: min-content 1fr;
+  }
+
+  @include on-desktop {
+    height: 64px;
+  }
+
+  &__link-logo {
+    display: flex;
+    width: min-content;
+    align-items: center;
+    justify-content: center;
+    padding: 13px 16px;
+
+    @include transition;
+    
+    &:hover {
+      scale: 1.1;
+    }
+  }
+
+  &__logo {
+    display: block;
+    width: 64px;
+    height: 22px;
+
+    @include on-desktop {
+      width: 80px;
+      height: 28px;
+    }
+  }
+
+  &__menu {
+    position: fixed;
+    z-index: 1;
+    inset: 0;
+    background-color: var(--bg-header-footer);
+    padding-top: 72px;
+
+    @include on-tablet {
+      display: none;
+    }
+  }
+
+  &__wrapper {
+    display: flex;
+    gap: 8px;
+
+    &--mobile {
+      @include on-tablet {
+      display: none;
+    }
+    }
+  }
+
+  &__theme-switcher {
+    width: 48px;
+    height: 48px;
+
+    @include on-desktop {
+      width: 64px;
+      height: 64px;
+    }
+  }
+
+  &__menu-btn {
+    height: 100%;
+    width: 48px;
+    border: none;
+    border-left: 1px solid var(--elements);
+    background-color: inherit;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    svg path {
+      fill: var(--icon-primary);
+    }
+  }
+
+  &__nav-bar {
+    display: none;
+
+    @include on-tablet {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
+
+  &__actions {
+    display: flex;
+    height: 48px;
+
+    @include on-desktop {
+      height: 64px;
+    }
+  }
+}

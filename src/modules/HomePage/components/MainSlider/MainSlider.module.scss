@@ -1,0 +1,120 @@
+@import '../../../../styles/utils';
+
+.main-slider {
+  @include on-tablet {
+    padding-inline: $tablet-padding-inline;
+  }
+
+  @include on-desktop {
+    padding-inline: desktop-padding-inline;
+  }
+
+  &__container {
+    display: flex;
+    width: 100%;
+    height: 320px;
+    gap: 16px;
+
+    @include on-tablet {
+      height: 360px;
+    }
+
+    @include on-desktop {
+      height: 400px;
+    }
+  }
+
+  &__controller {
+    display: none;
+
+    &:hover {
+      animation: squish 200ms ease-in-out;
+    }
+
+    @include on-tablet {
+      display: block;
+      width: 32px;
+      border-radius: 48px;
+      border: 1px solid var(--icon-secondary);
+      background-color: inherit;
+      padding: 8px;
+
+      svg {
+        path {
+          fill: var(--icon-primary);
+        }
+      }
+    }
+
+    &--next {
+      svg {
+        transform: rotate(90deg);
+      }
+    }
+
+    &--prev {
+      svg {
+        transform: rotate(-90deg);
+      }
+    }
+  }
+
+  &__list {
+    display: flex;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+
+    @include on-tablet {
+      border-radius: 8px;
+    }
+  }
+
+  &__slide {
+    width: 100%;
+    height: 100%;
+    flex: 0 0 auto;
+    transition: transform 0.5s ease-in-out;
+    background: var(--bg-secondary);
+  }
+
+  &__img {
+    display: block;
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+  }
+
+  &__dots {
+    display: flex;
+    gap: 4px;
+    justify-content: center;
+  }
+
+  &__dot {
+    width: 24px;
+    height: 24px;
+    border: none;
+    background-color: inherit;
+
+    &::after {
+      content: '';
+      display: block;
+      width: 14px;
+      height: 4px;
+      background-color: var(--elements);
+    }
+
+    &--active {
+      &::after {
+        background-color: var(--primary);
+      }
+    }
+  }
+}
+
+@keyframes squish {
+  50% {
+    scale: 1.2 0.9;
+  }
+}
