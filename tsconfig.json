@@ -5,6 +5,8 @@
   ],
   "compilerOptions": {
     "sourceMap": false,
-    "types": ["node", "cypress"]
+    "types": ["node", "cypress"],
+    "target": "es6", // або більш новий, наприклад, "es2017"
+    "downlevelIteration": true
   }
 }
