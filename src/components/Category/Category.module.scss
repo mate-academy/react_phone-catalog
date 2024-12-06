@@ -1,0 +1,62 @@
+@import '../../main';
+
+.category {
+  width: 100%;
+  box-sizing: border-box;
+
+  &__link {
+    display: block;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    position: relative;
+
+    &--phones {
+      background-color: $-secondary;
+    }
+
+    &--tablets {
+      background-color: $-icons;
+    }
+
+    &--accessories {
+      background-color: rgba(213, 60, 81, 1);
+    }
+  }
+
+  &__img {
+    position: absolute;
+    top: 20%;
+    left: 20%;
+
+    &--phones {
+      width: 100%;
+    }
+
+    &--tablets {
+      height: 120%;
+      left: 15%;
+    }
+
+    &--accessories {
+      height: 80%;
+      top: auto;
+      bottom: 0;
+      left: 15%;
+    }
+  }
+
+  &__title {
+    font-size: 20px;
+    line-height: 26px;
+    color: $-primary;
+    margin-top: 24px;
+  }
+
+  &__text {
+    font-size: 14px;
+    line-height: 21px;
+    color: $-secondary;
+    margin-top: 4px;
+  }
+}

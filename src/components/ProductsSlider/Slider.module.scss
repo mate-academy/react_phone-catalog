@@ -1,0 +1,57 @@
+@import '../../main';
+
+.slider {
+  grid-column: 1 / -1;
+  position: static;
+}
+
+.slide {
+  margin-right: 16px;
+}
+
+.arrow {
+  position: absolute;
+  top: 0;
+  right: 0;
+  border: 1px solid #E2E6E9;
+  box-sizing: border-box;
+
+  display: block;
+  width: 32px;
+  height: 32px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-image: url(../../asset/img/icons/arrow.png);
+  transition: all 0.3s;
+
+  &:hover {
+    background-position: center;
+    background-image: url(../../asset/img/icons/arrow.png);
+    background-color: #FAFBFC;
+    border: 1px solid #B4BDC3;
+  }
+
+  &::before {
+    content: none;
+  }
+}
+
+.next {
+  transform: rotateZ(90deg);
+
+  &:hover {
+    background-repeat: no-repeat;
+    background-color: $-hover;
+  }
+}
+
+.prev {
+  transform: rotateZ(-90deg);
+  right: 60px;
+  left: auto;
+
+  &:hover {
+    background-repeat: no-repeat;
+    background-color: $-hover;
+  }
+}
