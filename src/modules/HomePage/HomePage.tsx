@@ -57,9 +57,13 @@ export const HomePage = () => {
   return (
     <>
       <section className={classNames('section', styles.welcome)}>
-        <h1 className={classNames('title', styles.title)}>
-          Welcome to Nice Gadgets store!
+        <h1 className={classNames('title', styles['title--hidden'])}>
+          Product Catalog
         </h1>
+
+        <h2 className={classNames('title', styles.title)}>
+          Welcome to Nice Gadgets store!
+        </h2>
 
         <PicturesSlider />
       </section>
