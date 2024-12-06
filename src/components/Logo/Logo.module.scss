@@ -1,0 +1,15 @@
+@import '../../main';
+
+.logo {
+  display: flex;
+  padding-inline: 16px;
+
+  &__picture {
+    display: flex;
+    align-items: center;
+  }
+
+  @include on-desktop {
+    padding-inline: 24px;
+  }
+}

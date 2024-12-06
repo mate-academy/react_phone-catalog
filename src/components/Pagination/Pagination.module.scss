@@ -1,0 +1,43 @@
+@import '../../main';
+
+.pagination {
+  grid-column: 1 / -1;
+
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+
+  &__button {
+    width: 32px;
+    height: 32px;
+    border: 1px solid $-elements;
+    font-family: Mont, sans-serif;
+
+    font-size: 14px;
+    line-height: 21px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    transition: all .3s;
+    cursor: pointer;
+
+    &--arrow {
+      border-color: $-icons;
+    }
+
+    &--active {
+      color: #fff;
+      background-color: $-primary;
+    }
+
+    &:hover {
+      border-color: $-primary;
+    }
+
+    &:disabled {
+      border-color: $-elements;
+    }
+  }
+}
