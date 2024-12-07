@@ -19,11 +19,21 @@ p {
   margin: 0;
 }
 
+.App {
+  min-height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+}
+
 .container {
+  width: 100%;
+  min-height: 100%;
+
   padding: 0 32px;
   box-sizing: border-box;
 
-  margin: auto;
+  margin: 0 auto;
   max-width: 1200px;
 
   margin-bottom: 80px;

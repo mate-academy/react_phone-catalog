@@ -1,14 +1,14 @@
-import './App.scss';
-import { Footer } from './components/Footer';
+import { Outlet } from 'react-router-dom';
 import { Header } from './components/Header';
-import { HomePage } from './pages/HomePage';
+import { Footer } from './components/Footer';
+import './App.scss';
 
 export const App = () => (
   <div className="App">
     <Header />
 
     <div className="container">
-      <HomePage />
+      <Outlet />
     </div>
 
     <Footer />
