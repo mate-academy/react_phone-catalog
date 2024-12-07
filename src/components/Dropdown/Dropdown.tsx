@@ -14,6 +14,10 @@ export const Dropdown: React.FC<Props> = ({ options }) => {
     setOpened(!opened);
   };
 
+  const handleBlur = () => {
+    setOpened(false);
+  };
+
   return (
     <div className="dropdown">
       <button
@@ -21,6 +25,7 @@ export const Dropdown: React.FC<Props> = ({ options }) => {
           'dropdown__button--opened': opened,
         })}
         onClick={handleOpen}
+        onBlur={handleBlur}
       >
         {selected}
         <img
