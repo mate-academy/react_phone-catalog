@@ -1,13 +1,46 @@
+import { lazy, Suspense } from 'react';
+
 import { createHashRouter } from 'react-router-dom';
 
+import { PageSkeleton } from '@shared/components/PageSkeleton';
+
 import { MainLayout } from './layouts/MainLayout';
-import { CartPage } from './modules/cart';
-import { FavoritesPage } from './modules/favorites';
-import { HomePage } from './modules/home';
-import { PageNotFound } from './modules/PageNotFound';
-import { ProductPage } from './modules/product';
-import { ProductsPage } from './modules/products';
-import { ServerError } from './modules/ServerError';
+
+const HomePage = lazy(() =>
+  import('./modules/home').then(module => ({
+    default: module.HomePage,
+  })),
+);
+const ProductsPage = lazy(() =>
+  import('./modules/products').then(module => ({
+    default: module.ProductsPage,
+  })),
+);
+const ProductPage = lazy(() =>
+  import('./modules/product').then(module => ({
+    default: module.ProductPage,
+  })),
+);
+const FavoritesPage = lazy(() =>
+  import('./modules/favorites').then(module => ({
+    default: module.FavoritesPage,
+  })),
+);
+const CartPage = lazy(() =>
+  import('./modules/cart').then(module => ({
+    default: module.CartPage,
+  })),
+);
+const ServerError = lazy(() =>
+  import('./modules/ServerError').then(module => ({
+    default: module.ServerError,
+  })),
+);
+const PageNotFound = lazy(() =>
+  import('./modules/PageNotFound').then(module => ({
+    default: module.PageNotFound,
+  })),
+);
 
 export const router = createHashRouter([
   {
@@ -16,31 +49,59 @@ export const router = createHashRouter([
     children: [
       {
         index: true,
-        element: <HomePage />,
+        element: (
+          <Suspense fallback={<PageSkeleton />}>
+            <HomePage />
+          </Suspense>
+        ),
       },
       {
         path: '/products',
-        element: <ProductsPage />,
+        element: (
+          <Suspense fallback={<PageSkeleton />}>
+            <ProductsPage />
+          </Suspense>
+        ),
       },
       {
         path: '/products/:id',
-        element: <ProductPage />,
+        element: (
+          <Suspense fallback={<PageSkeleton />}>
+            <ProductPage />
+          </Suspense>
+        ),
       },
       {
         path: '/favorites',
-        element: <FavoritesPage />,
+        element: (
+          <Suspense fallback={<PageSkeleton />}>
+            <FavoritesPage />
+          </Suspense>
+        ),
       },
       {
         path: '/cart',
-        element: <CartPage />,
+        element: (
+          <Suspense fallback={<PageSkeleton />}>
+            <CartPage />
+          </Suspense>
+        ),
       },
       {
         path: '/error',
-        element: <ServerError />,
+        element: (
+          <Suspense fallback={<PageSkeleton />}>
+            <ServerError />
+          </Suspense>
+        ),
       },
       {
         path: '*',
-        element: <PageNotFound />,
+        element: (
+          <Suspense fallback={<PageSkeleton />}>
+            <PageNotFound />
+          </Suspense>
+        ),
       },
     ],
   },

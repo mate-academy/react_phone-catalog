@@ -21,7 +21,9 @@ export const ProductsPage = () => {
   const { products, category, isLoading } = useProducts();
 
   if (!category) {
-    return navigate('/');
+    navigate('/');
+
+    return null;
   }
 
   return (
