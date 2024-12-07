@@ -1,0 +1,14 @@
+.breadcrumbs {
+  display: flex;
+  gap: 8px;
+  align-items: start;
+
+  &__path {
+    margin-top: 1px;
+    color: #89939a;
+
+    &--black {
+      color: #313237;
+    }
+  }
+}
