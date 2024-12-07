@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import './Breadcrumbs.scss';
 import classNames from 'classnames';
 
@@ -11,7 +11,7 @@ export const Breadcrumbs: React.FC<Props> = ({ paths }) => {
     <div className="breadcrumbs">
       <img src="/icons/home.svg" alt="" />
       {paths.map((path, index) => (
-        <>
+        <Fragment key={index}>
           <img src="/icons/breadcrumbs_arrow_right.svg" alt="Arrow right" />
           <div
             className={classNames('breadcrumbs__path small-text', {
@@ -20,7 +20,7 @@ export const Breadcrumbs: React.FC<Props> = ({ paths }) => {
           >
             {path}
           </div>
-        </>
+        </Fragment>
       ))}
     </div>
   );
