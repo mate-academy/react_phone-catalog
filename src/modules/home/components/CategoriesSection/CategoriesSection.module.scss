@@ -7,9 +7,9 @@
   }
 
   .categories {
-    @include page-grid;
-
     row-gap: 32px;
+
+    @include page-grid;
 
     .category {
       grid-column: 1 / -1;

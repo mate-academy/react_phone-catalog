@@ -3,11 +3,11 @@
   row-gap: 32px;
 
   .cartInfo {
-    @include page-grid;
-
     grid-column: 1 / -1;
 
     row-gap: 32px;
+
+    @include page-grid;
   }
 
   .total {
