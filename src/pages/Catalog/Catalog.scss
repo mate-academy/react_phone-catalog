@@ -1,0 +1,39 @@
+@import '../../styles/mixins';
+
+.catalog {
+  margin-top: 24px;
+
+  &__title {
+    margin-top: 40px;
+  }
+
+  &__count {
+    margin-top: 8px;
+    color: #89939a;
+  }
+
+  &__filters {
+    margin-top: 40px;
+    width: 100%;
+
+    @include page-grid;
+
+    &-filter {
+      grid-column: span 4;
+
+      &-text {
+        color: #89939a;
+      }
+
+      &--small {
+        grid-column: span 3;
+      }
+    }
+  }
+
+  &__container {
+    margin-top: 24px;
+
+    @include page-grid;
+  }
+}
