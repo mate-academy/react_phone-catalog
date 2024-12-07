@@ -52,5 +52,9 @@
       color: #313237;
       background-color: #fafbfc;
     }
+
+    &-text {
+      pointer-events: none;
+    }
   }
 }

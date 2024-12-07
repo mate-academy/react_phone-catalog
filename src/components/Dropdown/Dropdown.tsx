@@ -14,18 +14,19 @@ export const Dropdown: React.FC<Props> = ({ options }) => {
     setOpened(!opened);
   };
 
-  const handleBlur = () => {
-    setOpened(false);
+  const handleBlur = (event: React.FocusEvent) => {
+    if (!event.currentTarget.contains(event.relatedTarget)) {
+      setOpened(false);
+    }
   };
 
   return (
-    <div className="dropdown">
+    <div className="dropdown" onBlur={handleBlur}>
       <button
         className={classNames('dropdown__button button--white', {
           'dropdown__button--opened': opened,
         })}
         onClick={handleOpen}
-        onBlur={handleBlur}
       >
         {selected}
         <img
@@ -41,12 +42,13 @@ export const Dropdown: React.FC<Props> = ({ options }) => {
             <div
               className="dropdown__item"
               onClick={() => {
-                setOpened(false);
                 setSelected(option);
+                setOpened(false);
               }}
               key={index}
+              tabIndex={index}
             >
-              <p className="body-text">{option}</p>
+              <p className="dropdown__item-text body-text">{option}</p>
             </div>
           ))}
         </div>
