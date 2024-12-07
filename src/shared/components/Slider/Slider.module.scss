@@ -47,7 +47,7 @@
       }
 
       :global(.swiper-slide) {
-        width: 212px;
+        width: 214px;
 
         @include on-tablet {
           width: 237px;
@@ -68,10 +68,5 @@
         pointer-events: all;
       }
     }
-  }
-
-  .swiperSkeleton {
-    width: fit-content;
-    overflow: hidden;
   }
 }

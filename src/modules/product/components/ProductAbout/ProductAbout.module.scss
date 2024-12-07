@@ -1,0 +1,19 @@
+.title {
+  margin-bottom: 16px;
+}
+
+.content {
+  color: var(--grey-700);
+}
+
+.skeleton {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+
+  .skeletonItem {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+}

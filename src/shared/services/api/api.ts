@@ -1,5 +1,6 @@
 import axios from 'axios';
 
+import { SortBy, ItemsOnPage, PaginationPage } from '@shared/types/common';
 import { ProductCoverModel, ProductModel } from '@shared/types/Product';
 import { ProductCategory } from '@shared/types/Product/Product.interfaces';
 import { imitateRequestDelay } from '@shared/utils/imitateRequestDelay';
@@ -7,13 +8,15 @@ import { imitateRequestDelay } from '@shared/utils/imitateRequestDelay';
 import {
   filterProductsCovers,
   generateProductsCoversPagination,
-} from './api.helpers';
+  prepareProductsResponse,
+} from './api.service';
 
-interface Meta {
+export interface Meta {
   end: boolean;
   start: boolean;
   total: number;
-  page: number | null;
+  totalPages: number;
+  page: number;
 }
 
 interface Response<TData> {
@@ -22,6 +25,13 @@ interface Response<TData> {
 
 export interface ResponseWithPagination<TData> extends Response<TData> {
   meta: Meta;
+}
+
+interface GetProductsRequestProps {
+  category: ProductCategory;
+  sortBy?: SortBy;
+  itemsOnPage?: ItemsOnPage;
+  page?: PaginationPage;
 }
 
 const instance = axios.create({
@@ -81,37 +91,49 @@ export const getHotProductsCovers = async (
 };
 
 export const getProducts = async (
-  category: ProductCategory,
-  page?: number,
+  props: GetProductsRequestProps,
 ): Promise<ResponseWithPagination<ProductModel[]>> => {
-  const { data } = await api.get<ProductModel[]>(`${category}.json`);
+  const { category, itemsOnPage, page, sortBy } = props;
+  const isValidCategory = ['phones', 'tablets', 'accessories'].includes(
+    category,
+  );
 
-  const response = {
-    data,
-    meta: {
-      page: null,
-      end: true,
-      start: true,
-      total: data.length,
-    },
-  };
-
-  if (typeof page === 'undefined') {
-    return response;
+  if (!isValidCategory) {
+    throw Error("Category doesn't exist");
   }
 
-  const to = page * 10;
-  const from = to - 10;
+  const { data } = await api.get<ProductModel[]>(`${category}.json`);
 
-  const slicedData = data.slice(from, to);
+  return prepareProductsResponse({
+    data,
+    filters: { sortBy, itemsOnPage, page },
+  });
+};
 
-  return {
-    data: slicedData,
-    meta: {
-      page,
-      end: to === data.length || slicedData.length < 10,
-      start: from === 0,
-      total: data.length,
+export const getProductById = async (id: string) => {
+  const allPromises = await Promise.allSettled([
+    getProducts({ category: 'phones', page: 'all' }),
+    getProducts({ category: 'tablets', page: 'all' }),
+    getProducts({ category: 'accessories', page: 'all' }),
+  ]);
+
+  const candidate = allPromises.reduce(
+    (_acc, promise, _idx, arr) => {
+      if (promise.status === 'fulfilled') {
+        const result =
+          promise.value.data.find(product => product.id === id) ?? null;
+
+        if (result) {
+          arr.splice(1);
+        }
+
+        return result;
+      }
+
+      return null;
     },
-  };
+    null as ProductModel | null,
+  );
+
+  return candidate;
 };

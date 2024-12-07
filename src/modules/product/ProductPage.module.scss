@@ -1,0 +1,95 @@
+.page {
+  padding-block: 24px 56px;
+
+  @include on-tablet {
+    padding-block: 24px 64px;
+  }
+
+  @include on-desktop {
+    padding-block: 24px 81px;
+  }
+
+  .details {
+    grid-column: 1 / -1;
+    margin-top: 32px;
+    row-gap: 40px;
+
+    @include page-grid;
+
+    @include on-tablet {
+      margin-top: 40px;
+    }
+  }
+
+  .gallery {
+    grid-column: 1 / -1;
+
+    @include on-tablet {
+      grid-column: 1 / 8;
+    }
+
+    @include on-desktop {
+      grid-column: 1 / 13;
+    }
+  }
+
+  .info {
+    grid-column: 1 / -1;
+
+    @include on-tablet {
+      grid-column: 8 / -1;
+    }
+
+    @include on-desktop {
+      grid-column: 14 / -1;
+    }
+  }
+
+  .description {
+    grid-column: 1 / -1;
+    margin-top: 56px;
+    row-gap: 56px;
+
+    @include page-grid;
+
+    @include on-tablet {
+      margin-top: 64px;
+      row-gap: 64px;
+    }
+
+    @include on-desktop {
+      margin-top: 80px;
+      row-gap: 0;
+    }
+
+    .about {
+      grid-column: 1 / -1;
+
+      @include on-desktop {
+        grid-column: 1 / 13;
+      }
+    }
+
+    .specs {
+      grid-column: 1 / -1;
+
+      @include on-desktop {
+        grid-column: 14 / -1;
+      }
+    }
+  }
+
+  .carousel {
+    grid-column: 1 / -1;
+
+    margin-top: 56px;
+
+    @include on-tablet {
+      margin-top: 64px;
+    }
+
+    @include on-desktop {
+      margin-top: 80px;
+    }
+  }
+}

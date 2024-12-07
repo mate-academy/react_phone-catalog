@@ -20,6 +20,7 @@ export const BrandNewSection = () => {
         renderSlide={({
           name,
           image,
+          category,
           fullPrice,
           price,
           capacity,
@@ -28,16 +29,17 @@ export const BrandNewSection = () => {
           itemId,
         }) => (
           <ProductCard
-            href="/"
+            href={`/products/${itemId}?category=${category}`}
             url={image}
             title={name}
             newPrice={price}
             oldPrice={fullPrice}
             productId={itemId}
+            fromHref="/"
             features={[
               { title: 'Capacity', value: capacity },
               { title: 'Screen', value: screen },
-              { title: 'Ram', value: ram },
+              { title: 'RAM', value: ram },
             ]}
           />
         )}

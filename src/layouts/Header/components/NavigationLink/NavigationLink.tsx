@@ -12,6 +12,9 @@ interface NavigationLinkProps extends DefaultProps {
   Icon: React.FunctionComponent<React.SVGProps<SVGSVGElement>>;
   href: string;
   counter?: number;
+  state?: {
+    [key: string]: string;
+  };
 }
 
 const MAX_ALLOWED_COUNTER_VALUE = 99;
@@ -21,6 +24,7 @@ export const NavigationLink: React.FC<NavigationLinkProps> = ({
   href,
   className,
   counter,
+  state,
   ...rest
 }) => {
   const transformedCounter = useMemo(() => {
@@ -38,6 +42,7 @@ export const NavigationLink: React.FC<NavigationLinkProps> = ({
   return (
     <NavLink
       to={href}
+      state={state}
       className={({ isActive }) =>
         cn(styles.navigationLink, className, {
           [styles.active]: isActive,

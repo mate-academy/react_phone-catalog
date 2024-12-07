@@ -3,14 +3,19 @@ import { useCallback, useEffect, useState } from 'react';
 import { usePagination } from '@shared/hooks/usePagination';
 import { ResponseWithPagination } from '@shared/services/api/api';
 import { ProductCoverModel } from '@shared/types/Product';
+import { INITIAL_PAGINATION_PAGE } from '@shared/utils/constants';
 
 interface UseProductCoversQuery {
+  excludeId?: string;
   queryFn: (
     page: number,
   ) => Promise<ResponseWithPagination<ProductCoverModel[]>>;
 }
 
-export const useProductCoversQuery = ({ queryFn }: UseProductCoversQuery) => {
+export const useProductCoversQuery = ({
+  queryFn,
+  excludeId,
+}: UseProductCoversQuery) => {
   const {
     page: paginationPage,
     pagination,
@@ -21,6 +26,19 @@ export const useProductCoversQuery = ({ queryFn }: UseProductCoversQuery) => {
   const [isLoading, setIsLoading] = useState(false);
   const [isInitialLoading, setIsInitialLoading] = useState(false);
 
+  const updateData = useCallback((newData: ProductCoverModel[]) => {
+    setData(prev => {
+      const filteredNewData = newData
+        .filter(
+          newDataItem =>
+            !prev.some(prevDataItem => prevDataItem.id === newDataItem.id),
+        )
+        .flat();
+
+      return [...prev, ...filteredNewData];
+    });
+  }, []);
+
   const loadSlides = useCallback(
     async (page: number) => {
       setIsLoading(true);
@@ -28,19 +46,19 @@ export const useProductCoversQuery = ({ queryFn }: UseProductCoversQuery) => {
       try {
         const { data: newData, meta } = await queryFn(page);
 
-        setData(prev => [...prev, ...newData]);
+        updateData(newData);
         updatePagination({ end: meta.end, start: meta.start });
       } finally {
         setIsLoading(false);
       }
     },
-    [setIsLoading, setData, updatePagination],
+    [setIsLoading, updatePagination, queryFn, updateData],
   );
 
   useEffect(() => {
     setIsInitialLoading(true);
-    loadSlides(paginationPage).then(() => setIsInitialLoading(false));
-  }, []);
+    loadSlides(INITIAL_PAGINATION_PAGE).then(() => setIsInitialLoading(false));
+  }, [loadSlides, setIsInitialLoading]);
 
   const onLoadNextProducts = () => {
     if (!pagination.end) {
@@ -49,7 +67,7 @@ export const useProductCoversQuery = ({ queryFn }: UseProductCoversQuery) => {
   };
 
   return {
-    products: data,
+    products: data.filter(({ itemId }) => excludeId !== itemId),
     isLoading,
     isInitialLoading,
     onLoadNextProducts,

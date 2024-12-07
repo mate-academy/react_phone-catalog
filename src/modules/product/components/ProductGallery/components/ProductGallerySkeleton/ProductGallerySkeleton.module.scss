@@ -1,0 +1,43 @@
+.skeleton {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-direction: column;
+
+  @include on-tablet {
+    grid-column: 1 / 8;
+    flex-direction: row;
+  }
+
+  @include on-desktop {
+    grid-column: 1 / 13;
+  }
+
+  .skeletonMain {
+    @include on-tablet {
+      order: 2;
+    }
+  }
+
+  .skeletonThumbs {
+    margin-top: 16px;
+    width: fit-content;
+
+    @include on-tablet {
+      order: 1;
+      margin-top: 0;
+      margin-right: 16px;
+    }
+  }
+
+  .skeletonThumb {
+    width: 51px;
+
+    @include on-tablet {
+      width: 35px;
+    }
+
+    @include on-desktop {
+      width: 80px;
+    }
+  }
+}

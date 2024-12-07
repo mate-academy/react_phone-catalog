@@ -1,0 +1,27 @@
+.chip {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid var(--chip-border-color);
+  padding: 2px;
+  overflow: hidden;
+  cursor: pointer;
+
+  @include on-desktop {
+    transition: opacity 0.2s ease;
+
+    &:hover {
+      opacity: var(--main-hover-opacity);
+    }
+  }
+
+  &.selected {
+    border-color: var(--main-button-color);
+  }
+
+  .circle {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+  }
+}

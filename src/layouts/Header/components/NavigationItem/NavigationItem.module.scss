@@ -1,0 +1,20 @@
+.link {
+  @include text-underline;
+
+  &.active,
+  &:hover {
+    color: var(--main-button-color);
+
+    &::after {
+      transform: scaleX(1);
+    }
+  }
+
+  .text {
+    color: var(--grey-700);
+  }
+
+  &.active .text {
+    color: var(--main-button-color);
+  }
+}

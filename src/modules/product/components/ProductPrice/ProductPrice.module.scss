@@ -1,0 +1,34 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  .price {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    .old {
+      color: var(--card-cross-out-text-color);
+    }
+  }
+
+  .buttons {
+    display: flex;
+    gap: 8px;
+
+    .addToCartBtn {
+      width: calc(100% - 48px);
+
+      @include on-tablet {
+        width: calc(100% - 56px);
+      }
+    }
+  }
+}
+
+.skeleton {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}

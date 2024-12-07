@@ -42,3 +42,7 @@ export interface ProductModel {
   zoom: string;
   cell: ProductCell[];
 }
+
+export interface StoredProductModel extends ProductModel {
+  quantity: number;
+}

@@ -8,6 +8,7 @@ import styles from './Box.module.scss';
 
 export interface BoxProps extends DefaultPropsChildren {
   variant?: 'div' | 'span' | 'section';
+  onClick?: VoidFunction;
 }
 
 export const Box: React.FC<BoxProps> = ({

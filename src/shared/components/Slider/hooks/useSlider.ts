@@ -24,6 +24,7 @@ export const useSlider = ({ onSlideChange }: UseSliderProps) => {
 
   const setSliderPositions = (swiper: SwiperType) => {
     setIsBeginning(swiper.isBeginning);
+
     setIsEnd(swiper.isEnd);
   };
 
@@ -39,7 +40,10 @@ export const useSlider = ({ onSlideChange }: UseSliderProps) => {
         onBeforeInit: (swiper: SwiperType) => {
           swiperRef.current = swiper;
         },
-        onSlideChange: swiper => {
+        onInit: (swiper: SwiperType) => {
+          setSliderPositions(swiper);
+        },
+        onSlideChange: (swiper: SwiperType) => {
           setSliderPositions(swiper);
 
           if (!onSlideChange) {

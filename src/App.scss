@@ -6,7 +6,7 @@
   box-sizing: border-box;
   font-family: Mont, sans-serif;
   font-weight: normal;
-  color: var(--main-text-color);
+  color: var(--primary-text-color);
 }
 
 body {
@@ -22,6 +22,7 @@ a {
   max-width: 1136px;
   margin: 0 auto;
   padding-inline: 16px;
+  height: fit-content;
 
   @include page-grid;
 

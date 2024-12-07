@@ -10,7 +10,10 @@ export interface SkeletonProps {
   direction?: 'row' | 'column';
   height?: number | 'auto';
   width?: number;
+  fullWidth?: boolean;
   className?: string;
+  itemClassName?: string;
+  round?: boolean;
 }
 
 export const Skeleton: React.FC<SkeletonProps> = ({
@@ -19,6 +22,9 @@ export const Skeleton: React.FC<SkeletonProps> = ({
   direction = 'row',
   height = 'auto',
   className,
+  fullWidth,
+  itemClassName,
+  round,
   width,
 }) => {
   const containerStyle = {
@@ -29,6 +35,8 @@ export const Skeleton: React.FC<SkeletonProps> = ({
   const itemStyle = {
     height: typeof height === 'number' ? `${height}px` : height,
     ...(width && { width: `${width}px` }),
+    ...(fullWidth && { width: '100%' }),
+    ...(round && { borderRadius: '50%' }),
   };
 
   return (
@@ -37,7 +45,11 @@ export const Skeleton: React.FC<SkeletonProps> = ({
       style={containerStyle}
     >
       {Array.from({ length: quantity }, (_v, idx) => (
-        <Box key={idx} className={styles.skeletonItem} style={itemStyle} />
+        <Box
+          key={idx}
+          className={cn(styles.skeletonItem, itemClassName)}
+          style={itemStyle}
+        />
       ))}
     </Box>
   );

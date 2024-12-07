@@ -8,10 +8,10 @@ import { Box } from '@shared/base/Box';
 import { IconButton } from '@shared/base/IconButton';
 import { Text } from '@shared/base/Text';
 
-import styles from './Slider.module.scss';
-import { useSlider, UseSliderProps } from './useSlider';
 import { Skeleton } from '../Skeleton';
-import { SwiperSkeleton } from './SwiperSkeleton';
+import { SwiperSkeleton } from './components/SwiperSkeleton';
+import { useSlider, UseSliderProps } from './hooks/useSlider';
+import styles from './Slider.module.scss';
 
 export interface SliderProps<TData> extends UseSliderProps {
   title: string;

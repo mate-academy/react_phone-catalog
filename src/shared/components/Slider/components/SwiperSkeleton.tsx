@@ -2,11 +2,11 @@ import { useMemo } from 'react';
 
 import { useMedia } from '@shared/hooks/useMedia';
 
-import styles from './Slider.module.scss';
-import { Skeleton } from '../Skeleton';
+import styles from './SwiperSkeleton.module.scss';
+import { Skeleton } from '../../Skeleton';
 
 export const SwiperSkeleton = () => {
-  const { isMobile, isTablet, isDesktop } = useMedia();
+  const { isMobile, isTablet } = useMedia();
 
   const { width, height } = useMemo(() => {
     if (isMobile) {
@@ -18,7 +18,7 @@ export const SwiperSkeleton = () => {
     }
 
     return { width: 272, height: 509 };
-  }, [isMobile, isDesktop, isTablet]);
+  }, [isMobile, isTablet]);
 
   return (
     <Skeleton

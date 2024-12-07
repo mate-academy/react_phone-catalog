@@ -1,0 +1,33 @@
+.breadCrumbs {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+
+  .homeLink {
+    display: block;
+    line-height: 0;
+    transition: opacity 0.2s ease;
+
+    svg {
+      path {
+        fill: var(--primary-icon-button-color);
+      }
+    }
+
+    @include on-desktop {
+      &:hover {
+        opacity: var(--main-hover-opacity);
+      }
+    }
+  }
+
+  .title {
+    color: var(--secondary-text-color);
+
+    @include line-clamp(1);
+  }
+
+  .link {
+    @include text-underline;
+  }
+}

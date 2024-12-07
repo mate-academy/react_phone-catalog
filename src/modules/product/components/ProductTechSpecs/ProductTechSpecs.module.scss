@@ -1,0 +1,28 @@
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  .row {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+
+    .title {
+      color: var(--secondary-text-color);
+    }
+
+    .value {
+      text-align: right;
+    }
+  }
+}
+
+.skeleton {
+  .skeletonList {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+}

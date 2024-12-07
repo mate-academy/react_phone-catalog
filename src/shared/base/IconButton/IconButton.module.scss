@@ -44,7 +44,8 @@
       }
     }
 
-    &:active {
+    &:active,
+    &.selected {
       border-color: var(--primary-icon-button-active-border-color);
       background-color: var(--primary-icon-button-active-bg);
       color: var(--primary-icon-button-active-color);

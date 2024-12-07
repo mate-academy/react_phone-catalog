@@ -1,0 +1,20 @@
+.container {
+  display: flex;
+  gap: 16px;
+
+  .sortBy {
+    max-width: 187px;
+
+    @include on-desktop {
+      max-width: 176px;
+    }
+  }
+
+  .itemsOnPage {
+    max-width: 136px;
+
+    @include on-desktop {
+      max-width: 128px;
+    }
+  }
+}

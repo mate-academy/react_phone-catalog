@@ -6,7 +6,7 @@ export const imitateRequestDelay = <T>(
       const response = await request();
 
       resolve(response);
-    }, 2000);
+    }, 300);
   });
 
   return promise;

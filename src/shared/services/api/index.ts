@@ -4,3 +4,5 @@ export {
   getHotProductsCovers,
   getProducts,
 } from './api';
+
+export type { Meta } from './api';

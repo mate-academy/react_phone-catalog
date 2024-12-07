@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 
 import { Box } from '@shared/base/Box';
 import { Text } from '@shared/base/Text';
@@ -26,15 +26,20 @@ export const CategoryItem: React.FC<CategoryItemProps> = ({
   category,
   className,
 }) => {
+  const navigate = useNavigate();
   const [total, setTotal] = useState<number | null>(null);
   const [desktopBreakpoint] = extractBreakPoints();
   const [urlSm, , urlLg] = generateImgUrls(url);
 
   useEffect(() => {
-    getProducts(category).then(({ meta }) => {
-      setTotal(meta.total);
-    });
-  }, [category]);
+    getProducts({ category })
+      .then(({ meta }) => {
+        setTotal(meta.total);
+      })
+      .catch(() => {
+        navigate('/error');
+      });
+  }, [category, navigate]);
 
   return (
     <Box className={className}>

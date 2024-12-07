@@ -29,3 +29,10 @@ export const generateImgUrls = (url: string) => {
 
   return urlsArr;
 };
+
+export const replaceSpaceWithCharacter = (
+  string: string,
+  character?: string,
+) => {
+  return string.replace(' ', character ?? '-');
+};

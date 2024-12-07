@@ -1,0 +1,35 @@
+.container {
+  padding-top: 24px;
+  padding-bottom: 56px;
+
+  @include on-tablet {
+    padding-bottom: 64px;
+  }
+
+  @include on-desktop {
+    padding-bottom: 80px;
+  }
+
+  .header {
+    grid-column: 1 / -1;
+    margin-bottom: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+    @include on-tablet {
+      gap: 40px;
+      margin-bottom: 40px;
+    }
+
+    .title {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+
+      .subtitle {
+        color: var(--secondary-text-color);
+      }
+    }
+  }
+}

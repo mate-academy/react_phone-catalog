@@ -3,7 +3,8 @@ import { StoredProduct } from '@shared/types/Product/Product.interfaces';
 export interface UpdateProductsProps {
   products: StoredProduct[];
   productId: string;
-  action?: 'add' | 'remove' | 'toggle';
+  action?: 'add' | 'remove' | 'toggle' | 'addValue';
+  value?: number;
 }
 
 export type DoneAction = 'added' | 'removed';
@@ -12,6 +13,7 @@ export const updateProducts = ({
   productId,
   products,
   action = 'add',
+  value = 0,
 }: UpdateProductsProps) => {
   let newProducts: StoredProduct[] = [];
   let doneAction: DoneAction = 'added';
@@ -41,8 +43,26 @@ export const updateProducts = ({
       break;
     }
 
+    case 'addValue': {
+      newProducts = products
+        .map(product => {
+          if (product.productId === productId) {
+            if (!value) {
+              return;
+            }
+
+            return { ...product, quantity: value };
+          }
+
+          return product;
+        })
+        .filter(product => !!product);
+
+      break;
+    }
+
     case 'remove': {
-      newProducts = products.filter(product => productId === product.productId);
+      newProducts = products.filter(product => productId !== product.productId);
       doneAction = 'removed';
 
       break;

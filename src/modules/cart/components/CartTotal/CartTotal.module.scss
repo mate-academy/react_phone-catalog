@@ -1,0 +1,17 @@
+.container {
+  border: 1px solid var(--card-main-border-color);
+  padding: 24px;
+
+  .header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--card-main-border-color);
+  }
+
+  .checkout {
+    margin-top: 16px;
+    width: 100%;
+  }
+}

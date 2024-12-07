@@ -12,15 +12,17 @@ import { useStoredProducts } from '@shared/contexts/StoredProducts';
 import styles from './FavoritesButton.module.scss';
 
 interface FavoriteButtonProps {
-  productId: string;
+  productId?: string;
   title: string;
   className?: string;
+  size?: 'md' | 'sm' | 'lg';
 }
 
 export const FavoritesButton: React.FC<FavoriteButtonProps> = ({
   productId,
   title,
   className,
+  size = 'md',
 }) => {
   const { storedProducts, updateStoredProducts } = useStoredProducts();
 
@@ -33,21 +35,28 @@ export const FavoritesButton: React.FC<FavoriteButtonProps> = ({
   );
 
   const handleAdd = useCallback(() => {
-    const { doneAction } = updateStoredProducts({
+    if (!productId) {
+      return;
+    }
+
+    updateStoredProducts({
       storedKey: 'favoriteProducts',
       productId,
       action: 'toggle',
       storedProducts,
+      callback: doneAction => {
+        if (doneAction === 'added') {
+          toast.success(
+            `${title} has been added to the favorites successfully`,
+          );
+        } else {
+          toast.success(
+            `${title} has been removed from the favorites successfully`,
+          );
+        }
+      },
     });
-
-    if (doneAction === 'added') {
-      toast.success(`${title} has been added to the favorites successfully`);
-    } else {
-      toast.success(
-        `${title} has been removed from the favorites successfully`,
-      );
-    }
-  }, [productId, storedProducts, updateStoredProducts]);
+  }, [productId, storedProducts, updateStoredProducts, title]);
 
   return (
     <IconButton
@@ -55,8 +64,9 @@ export const FavoritesButton: React.FC<FavoriteButtonProps> = ({
         [styles.active]: isFavorite,
       })}
       Icon={isFavorite ? FilledHeartIcon : HeartIcon}
-      size="md"
+      size={size}
       onClick={handleAdd}
+      disabled={!productId}
     />
   );
 };

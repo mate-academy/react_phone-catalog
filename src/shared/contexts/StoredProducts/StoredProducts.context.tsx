@@ -10,6 +10,8 @@ import {
   UpdateProductsProps,
 } from './updateProducts';
 
+type StoredKey = 'cartProducts' | 'favoriteProducts';
+
 interface StoredProductsProps {
   children: React.ReactNode;
 }
@@ -25,18 +27,19 @@ interface StoredQuantityState {
   cart: number;
 }
 
+interface UpdateStoredProductsProps
+  extends Omit<UpdateProductsProps, 'products'> {
+  storedKey: StoredKey;
+  storedProducts: StoredProductsState;
+  callback?: (doneAction: DoneAction) => void;
+}
+
 interface StoredProducts {
   storedProducts: StoredProductsState;
   storedQuantity: StoredQuantityState;
   updateStoredProducts: (props: UpdateStoredProductsProps) => {
     doneAction: DoneAction;
   };
-}
-
-interface UpdateStoredProductsProps
-  extends Omit<UpdateProductsProps, 'products'> {
-  storedKey: 'cartProducts' | 'favoriteProducts';
-  storedProducts: StoredProductsState;
 }
 
 const initialValue: StoredProducts = {
@@ -97,6 +100,8 @@ const StoredProductsProvider = ({ children }: StoredProductsProps) => {
       storedKey,
       productId,
       action,
+      value,
+      callback,
     }: UpdateStoredProductsProps) => {
       const productsToUpdate = storedProducts[storedKey];
 
@@ -104,10 +109,15 @@ const StoredProductsProvider = ({ children }: StoredProductsProps) => {
         products: productsToUpdate,
         productId,
         action,
+        value,
       });
 
       LocalStorage.setItem(storedKey, newProducts);
       setProducts(prev => ({ ...prev, [storedKey]: newProducts }));
+
+      if (callback) {
+        callback(doneAction);
+      }
 
       return { doneAction };
     },

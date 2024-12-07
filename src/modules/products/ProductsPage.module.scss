@@ -1,0 +1,21 @@
+.container {
+  padding-block: 24px 64px;
+
+  @include on-desktop {
+    padding-block: 24px 80px;
+  }
+
+  .pagination {
+    margin-top: 24px;
+    grid-column: 1 / -1;
+
+    @include on-tablet {
+      margin-top: 40px;
+    }
+  }
+}
+
+.header {
+  margin-bottom: 24px;
+  grid-column: 1 / -1;
+}

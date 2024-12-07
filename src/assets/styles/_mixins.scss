@@ -14,6 +14,12 @@
   }
 }
 
+@mixin cards-grid($size-rule: auto-fit) {
+  display: grid;
+  grid-template-columns: repeat($size-rule, minmax(272px, 1fr)) !important;
+  gap: 40px 16px;
+}
+
 @mixin line-clamp($value) {
   overflow: hidden;
   display: -webkit-box;
@@ -53,5 +59,11 @@
     transform: scaleX(0);
     transform-origin: left;
     transition: transform 0.3s ease;
+  }
+
+  @include on-desktop {
+    &:hover::after {
+      transform: scaleX(1);
+    }
   }
 }

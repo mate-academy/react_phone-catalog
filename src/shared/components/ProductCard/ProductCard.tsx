@@ -1,3 +1,4 @@
+import cn from 'classnames';
 import { NavLink } from 'react-router-dom';
 
 import { Box } from '@shared/base/Box';
@@ -21,6 +22,8 @@ interface ProductCardProps {
   newPrice: number;
   features?: ProductCardFeatureProps[];
   productId: string;
+  className?: string;
+  fromHref?: string;
 }
 
 export const ProductCard: React.FC<ProductCardProps> = ({
@@ -31,26 +34,35 @@ export const ProductCard: React.FC<ProductCardProps> = ({
   newPrice,
   productId,
   features,
+  className,
+  fromHref,
 }) => (
-  <Box className={styles.card}>
-    <NavLink to={href} className={styles.imgLink}>
+  <Box className={cn(styles.card, className)}>
+    <NavLink to={href} className={styles.imgLink} state={{ from: fromHref }}>
       <img src={url} />
     </NavLink>
 
     <Box className={styles.description}>
-      <NavLink to={href} className={styles.titleLink}>
+      <NavLink
+        to={href}
+        className={styles.titleLink}
+        state={{ from: fromHref }}
+      >
         <Text className={styles.title} variant="body" title={title}>
           {title}
         </Text>
       </NavLink>
 
       <Box className={styles.price}>
-        <Text className={styles.new} variant="h3">
-          {formatNumberToCurrency(newPrice)}
-        </Text>
+        {newPrice && (
+          <Text variant="h3">{formatNumberToCurrency(newPrice)}</Text>
+        )}
 
         {oldPrice && (
-          <Text className={styles.old} variant="crossed-out">
+          <Text
+            className={styles.old}
+            variant={newPrice ? 'crossed-out' : 'h3'}
+          >
             {formatNumberToCurrency(oldPrice)}
           </Text>
         )}
@@ -76,6 +88,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
         productId={productId}
         title={title}
       />
+
       <FavoritesButton productId={productId} title={title} />
     </Box>
   </Box>
