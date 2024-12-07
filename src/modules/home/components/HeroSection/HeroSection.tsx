@@ -9,9 +9,11 @@ import styles from './HeroSection.module.scss';
 
 export const HeroSection = () => (
   <Box className={cn('container', styles.hero)} variant="section">
-    <Text variant="h1" className={styles.title}>
+    <Text variant="h2" className={styles.title}>
       Welcome to Nice Gadgets store!
     </Text>
+
+    <h1 style={{ display: 'none' }}>Product Catalog</h1>
 
     <HeroSlider className={styles.slider} images={MAIN_SLIDER_DATA} />
   </Box>
