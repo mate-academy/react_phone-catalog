@@ -10,6 +10,12 @@
   align-items: center;
   flex-direction: column;
 
+  transition: box-shadow 300ms;
+
+  &:hover {
+    box-shadow: 0 2px 16px 0 #0000001a;
+  }
+
   &__image {
     height: 196px;
     margin-bottom: 24px;
