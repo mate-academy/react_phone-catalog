@@ -60,27 +60,6 @@
     background-color: #e2e6e9;
   }
 
-  &__specs {
-    padding: 8px 0;
-
-    display: flex;
-    gap: 8px;
-    flex-direction: column;
-
-    &-entry {
-      display: flex;
-      justify-content: space-between;
-    }
-
-    &-name {
-      color: #89939a;
-    }
-
-    &-value {
-      color: #313237;
-    }
-  }
-
   &__buttons {
     width: max-content;
 

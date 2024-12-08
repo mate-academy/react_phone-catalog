@@ -1,4 +1,5 @@
 import React from 'react';
+import { ProductSpecs } from '../ProductSpecs';
 import './ProductCard.scss';
 
 type Props = {
@@ -28,20 +29,13 @@ export const ProductCard: React.FC<Props> = ({ oldPrice }) => {
 
         <div className="product-card__line"></div>
 
-        <div className="product-card__specs">
-          <div className="product-card__specs-entry">
-            <p className="product-card__specs-name small-text">Screen</p>
-            <p className="product-card__specs-value small-text">6.1” OLED</p>
-          </div>
-          <div className="product-card__specs-entry">
-            <p className="product-card__specs-name small-text">Capacity</p>
-            <p className="product-card__specs-value small-text">128 GB</p>
-          </div>
-          <div className="product-card__specs-entry">
-            <p className="product-card__specs-name small-text">RAM</p>
-            <p className="product-card__specs-value small-text">6 GB</p>
-          </div>
-        </div>
+        <ProductSpecs
+          specs={{
+            Screen: '6.1” OLED',
+            Capacity: '128 GB',
+            RAM: '6 GB',
+          }}
+        />
 
         <div className="product-card__buttons">
           <button>Add to cart</button>
