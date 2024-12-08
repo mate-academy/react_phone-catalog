@@ -1,0 +1,10 @@
+.back-button {
+  display: flex;
+  gap: 4px;
+  align-items: start;
+
+  &__text {
+    margin-top: 1px;
+    color: #89939a;
+  }
+}

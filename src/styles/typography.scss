@@ -32,7 +32,7 @@ button,
   display: flex;
 
   font-size: 14px;
-  font-weight: 600;
+  font-weight: 500;
   line-height: 21px;
   text-align: center;
 
@@ -90,4 +90,10 @@ button,
   font-size: 12px;
   font-weight: 600;
   line-height: 15.34px;
+}
+
+.square-container {
+  width: 100%;
+  height: min-content;
+  aspect-ratio: 1 / 1;
 }
