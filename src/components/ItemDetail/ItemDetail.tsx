@@ -228,7 +228,7 @@ const ItemDetail = () => {
           <section className="grid gap-2">
             {itemInfo &&
               fullSpecs.map((spec) =>
-                itemInfo[spec.option] ? (
+                itemInfo[spec.option as keyof Item] ? (
                   <div className="flex justify-between" key={spec.name}>
                     <p className="text-bodyText text-sec">{spec.name}</p>
                     <p className="text-bodyText">

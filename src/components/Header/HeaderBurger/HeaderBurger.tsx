@@ -21,12 +21,7 @@ const HeaderBurger = ({ isBurgerOpen }: Props) => {
       <div className="grid grid-cols-2 place-items-center">
         {navButtons.map((button) => (
           <button className="relative grid h-16 w-full place-items-center border-1 border-elem">
-            <HeaderButton
-              key={button.name}
-              icon={button.icon}
-              to={button.to}
-              quantityInfo={0}
-            />
+            <HeaderButton key={button.name} icon={button.icon} to={button.to} />
           </button>
         ))}
       </div>
