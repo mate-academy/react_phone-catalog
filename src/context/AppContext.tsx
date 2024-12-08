@@ -12,6 +12,7 @@ import { Product } from "../types/product";
 import { BannerImage } from "../types/bannerImage";
 import useLocalStorage from "../hooks/useLocalStorage.hook";
 import { SortType } from "../types/sortType";
+import { ShoppingCart } from "../types/shoppingCart";
 
 type Props = {
   children: ReactNode;
@@ -23,16 +24,30 @@ type AppContextProps = {
   categories: Category[];
   chosenBanner: number;
   colors: { [key: string]: string };
-  favorite: number;
+  favorite: Product[];
   isBurgerOpen: boolean;
+  handleAddFavoriteItem: (item: Product) => void;
   handleChangeBannerImage: (callback: number) => void;
   handleChangeBurger: (arg: boolean) => void;
+  handleAddProductShop: (item: Product) => void;
+  handleRemoveProductShop: (id: number) => void;
   handleClickSwitchBurger: () => void;
+  handleRemoveFavoriteItem: (itemId: number) => void;
+  handleIncreaseQuantityShop: (
+    id: number,
+    e: React.MouseEvent<HTMLButtonElement>,
+  ) => void;
+  handleDecreaseQuantityShop: (
+    id: number,
+    e: React.MouseEvent<HTMLButtonElement>,
+  ) => void;
   homeBannerEl: React.RefObject<HTMLElement>;
   phonesList: Product[];
   productsList: Product[];
+  productColors: { [key: string]: string };
   selectItemPerPage: string[];
   selectSortBy: string[];
+  shoppingCart: ShoppingCart[];
   sortList: (list: Product[], sortType: SortType) => Product[];
   tabletsList: Product[];
 };
@@ -101,7 +116,11 @@ export const AppContextContainer = ({ children }: Props) => {
   const [tabletsList, setTabletsList] = useState<Product[]>([]);
   const [accessoriesList, setAccessoriesList] = useState<Product[]>([]);
   const [productsList, setProductsList] = useState<Product[]>([]);
-  const [favorite] = useState<number>(0);
+  const [favorite, setFavorite] = useLocalStorage<Product[]>("Favorite", []);
+  const [shoppingCart, setShoppingCart] = useLocalStorage<ShoppingCart[]>(
+    "ShoppingCart",
+    [],
+  );
 
   const categories: Category[] = [
     {
@@ -129,6 +148,28 @@ export const AppContextContainer = ({ children }: Props) => {
       to: "/accessories",
     },
   ];
+
+  const productColors = {
+    black: "#000000",
+    green: "#008000",
+    yellow: "#FFFF00",
+    white: "#FFFFFF",
+    purple: "#800080",
+    red: "#FF0000",
+    spacegray: "#4A4A4A",
+    midnightgreen: "#004953",
+    gold: "#FFD700",
+    silver: "#C0C0C0",
+    rosegold: "#B76E79",
+    coral: "#FF7F50",
+    spaceblack: "#1C1C1C",
+    blue: "#0000FF",
+    pink: "#FFC0CB",
+    graphite: "#383838",
+    sierrablue: "#4682B4",
+    skyblue: "#87CEEB",
+    starlight: "#FCF6E4",
+  };
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -181,8 +222,10 @@ export const AppContextContainer = ({ children }: Props) => {
   };
 
   const sortList = (list: Product[], sortType: SortType) => {
+    const sanitizedSortType = sortType.replace(/^['"]|['"]$/g, "");
+
     return [...list].sort((a, b) => {
-      switch (sortType) {
+      switch (sanitizedSortType) {
         case "Newest":
           return b.year - a.year;
         case "Alphabet":
@@ -191,8 +234,74 @@ export const AppContextContainer = ({ children }: Props) => {
           return b.fullPrice - a.fullPrice;
         case "Cheaper":
           return a.fullPrice - b.fullPrice;
+        default:
+          return 0;
       }
     });
+  };
+
+  const handleAddFavoriteItem = (item: Product) => {
+    setFavorite((prev) => [...prev, item]);
+  };
+
+  const handleRemoveFavoriteItem = (itemId: number) => {
+    setFavorite((prev) => prev.filter((el) => el.id !== itemId));
+  };
+
+  const handleAddProductShop = (item: Product) => {
+    setShoppingCart((prev) => [
+      ...prev,
+      {
+        id: item.id,
+        itemId: item.itemId,
+        category: item.category,
+        img: item.image,
+        name: item.name,
+        price: item.price,
+        quantity: 1,
+      },
+    ]);
+  };
+
+  const handleRemoveProductShop = (id: number) => {
+    setShoppingCart((prev) => prev.filter((el) => el.id !== id));
+  };
+
+  const handleIncreaseQuantityShop = (
+    id: number,
+    e: React.MouseEvent<HTMLButtonElement>,
+  ) => {
+    setShoppingCart((prev) =>
+      prev.map((item) => {
+        if (item.id === id) {
+          return {
+            ...item,
+            quantity: e.shiftKey ? item.quantity + 5 : item.quantity + 1,
+          };
+        }
+
+        return item;
+      }),
+    );
+  };
+
+  const handleDecreaseQuantityShop = (
+    id: number,
+    e: React.MouseEvent<HTMLButtonElement>,
+  ) => {
+    setShoppingCart((prev) =>
+      prev.map((item) => {
+        const itemPerClick = e.shiftKey ? 5 : 1;
+        const itemAfterClick =
+          item.quantity - itemPerClick <= 0 ? 1 : item.quantity - itemPerClick;
+
+        if (item.id === id && item.quantity !== 1) {
+          return { ...item, quantity: itemAfterClick };
+        }
+
+        return item;
+      }),
+    );
   };
 
   return (
@@ -205,14 +314,22 @@ export const AppContextContainer = ({ children }: Props) => {
         chosenBanner,
         favorite,
         isBurgerOpen,
+        handleAddFavoriteItem,
         handleChangeBannerImage,
         handleChangeBurger,
         handleClickSwitchBurger,
+        handleRemoveFavoriteItem,
+        handleAddProductShop,
+        handleRemoveProductShop,
+        handleDecreaseQuantityShop,
+        handleIncreaseQuantityShop,
         homeBannerEl,
         phonesList,
         productsList,
+        productColors,
         selectItemPerPage,
         selectSortBy,
+        shoppingCart,
         sortList,
         tabletsList,
       }}

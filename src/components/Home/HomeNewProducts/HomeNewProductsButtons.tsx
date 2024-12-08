@@ -24,8 +24,15 @@ const HomeNewProductsButtons = ({
   const lastElem = newProducts.length - lastElSubtract;
   const { icon, primary } = colors;
 
+  const widthX = width - 48;
+  const containerCurrentSize = width < 640 ? 212 + 32 : 276 + 32;
+  const maxTranslate = newProducts.length * containerCurrentSize - 32;
+  const currentPosition = containerCurrentSize * curElem;
+  const windowPosition = widthX + currentPosition;
+  const position = windowPosition > maxTranslate;
+
   const activeButton = (num: number) => {
-    return curElem === num ? icon : primary;
+    return curElem === num || position ? icon : primary;
   };
 
   const handleClickNextEl = () => {
@@ -37,7 +44,7 @@ const HomeNewProductsButtons = ({
   };
 
   const handleClickPrevEl = () => {
-    if (curElem === lastElem) {
+    if (curElem === lastElem && position) {
       return;
     }
 

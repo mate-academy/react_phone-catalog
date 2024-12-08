@@ -1,31 +1,33 @@
 import { useEffect, useRef, useState } from "react";
 import ArrowDown from "../assets/icons/ArrowDown";
-import { useAppContext } from "../context/AppContext";
 import useLocalStorage from "../hooks/useLocalStorage.hook";
 
 type Props = {
   name: string;
   options: string[];
-  localStoreName: string;
+  selectedOption: string;
+  onChange: (value: string) => void;
+  localStorage: string;
 };
 
-const Select = ({ name, options, localStoreName }: Props) => {
-  const [option, setOption] = useLocalStorage<string>(
-    localStoreName,
+const Select = ({
+  name,
+  options,
+  selectedOption,
+  onChange,
+  localStorage,
+}: Props) => {
+  const dropdownRef = useRef<HTMLElement>(null);
+  const [isFocused, setIsFocused] = useState<boolean>(false);
+  const [currentOption, setCurrentOption] = useLocalStorage<string>(
+    localStorage,
     options[0],
   );
-  const [isFocused, setIsFocused] = useState<boolean>(false);
-  const dropdownRef = useRef<HTMLElement>(null);
-  const { colors } = useAppContext();
-  const { icon } = colors;
 
-  const handleClickChangeOption = (opt: string) => {
-    setOption(opt);
+  const handleClickChangeOption = (option: string) => {
+    onChange(option);
     setIsFocused(false);
-  };
-
-  const handleClickFocused = () => {
-    setIsFocused((prev) => !prev);
+    setCurrentOption(option);
   };
 
   useEffect(() => {
@@ -49,12 +51,12 @@ const Select = ({ name, options, localStoreName }: Props) => {
     <section className="relative w-full small:w-64" ref={dropdownRef}>
       <p className="text-bodyText text-sec">{name}</p>
       <button
-        onClick={handleClickFocused}
+        onClick={() => setIsFocused((prev) => !prev)}
         className="flex w-full items-center justify-between rounded-lg border-1 border-icon p-3 duration-150 hover:border-sec focus:border-primary"
       >
-        <p className="text-bodyText">{option}</p>
+        <p className="text-bodyText">{selectedOption || currentOption}</p>
         <div className={`${isFocused && "rotate-180"} duration-150`}>
-          <ArrowDown fill={icon} />
+          <ArrowDown fill="black" />
         </div>
       </button>
       {isFocused && (

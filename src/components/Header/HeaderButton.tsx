@@ -4,12 +4,15 @@ import { useAppContext } from "../../context/AppContext";
 type Props = {
   icon: (fill: string) => JSX.Element;
   to: string;
-  quantityInfo: number;
 };
 
-const HeaderButton = ({ icon, to, quantityInfo }: Props) => {
-  const { colors } = useAppContext();
+const HeaderButton = ({ icon, to }: Props) => {
+  const { colors, favorite, shoppingCart } = useAppContext();
   const { primary, sec } = colors;
+  const quantityInfo =
+    to === "/favorites"
+      ? favorite.length
+      : shoppingCart.reduce((a, b) => a + b.quantity, 0);
 
   return (
     <NavLink to={to} className="grid h-full w-full place-items-center">

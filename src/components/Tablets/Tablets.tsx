@@ -1,23 +1,10 @@
 import { useAppContext } from "../../context/AppContext";
-import ProductHeader from "../../UI/ProductHeader";
-import ProductsList from "../../UI/ProductsList";
+import ProductPage from "../../UI/ProductPage/ProductPage";
 
 const Tablets = () => {
-  const { selectItemPerPage, selectSortBy, tabletsList } = useAppContext();
+  const { tabletsList } = useAppContext();
 
-  return (
-    <section className="mb-20 flex w-full flex-col gap-20 pt-6 small:pt-8 desktop:pt-16">
-      <ProductHeader
-        name="Tablets"
-        itemList={tabletsList}
-        optionsItems={selectItemPerPage}
-        optionsSorted={selectSortBy}
-        localStItems="TabletsSelectItemPerPage"
-        localStSort="TabletsSelectSortBy"
-      />
-      <ProductsList products={tabletsList} />
-    </section>
-  );
+  return <ProductPage name="Tablets" productList={tabletsList} />;
 };
 
 export default Tablets;

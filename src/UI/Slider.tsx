@@ -18,8 +18,6 @@ const Slider = ({ curElem, newProducts, isSectHP }: Props) => {
   const position =
     windowPosition > maxTranslate ? maxTranslate - widthX : currentPosition;
 
-  console.log(maxTranslate - widthX);
-
   return (
     <section className="max-w-slider overflow-hidden">
       <section

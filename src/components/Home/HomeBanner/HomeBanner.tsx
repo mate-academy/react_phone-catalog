@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { useSwipeable } from "react-swipeable";
 import ArrowLeft from "../../../assets/icons/ArrowLeft";
 import ArrowRight from "../../../assets/icons/ArrowRight";
 import { useAppContext } from "../../../context/AppContext";
@@ -59,6 +60,13 @@ const HomeBanner = () => {
     return handleChangeBannerImage(prevImg);
   };
 
+  const handlers = useSwipeable({
+    onSwipedLeft: handleClickNextImage,
+    onSwipedRight: handleClickPrevImage,
+    preventScrollOnSwipe: true,
+    trackMouse: true, // Optional: Enables swipe with a mouse
+  });
+
   useEffect(() => {
     const intervalId = setInterval(() => {
       handleClickNextImage();
@@ -68,7 +76,7 @@ const HomeBanner = () => {
   }, [chosenBanner]);
 
   return (
-    <section className="">
+    <section {...handlers}>
       <h1 className="mb-14">Welcome to Nice Gadgets store!</h1>
       <section className="-mx-6 mb-2 grid w-[100dvw] grid-cols-1 gap-4 small:mx-0 small:ml-0 small:w-full small:grid-cols-homeBanner">
         <HomeBannerButton

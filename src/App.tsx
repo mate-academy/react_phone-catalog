@@ -9,6 +9,7 @@ import Accessories from "./components/Accessories/Accessories";
 import Favorites from "./components/Favorites/Favorites";
 import NoPage from "./components/NoPage/NoPage";
 import { useEffect } from "react";
+import ItemDetail from "./components/ItemDetail/ItemDetail";
 
 const App = () => {
   const { pathname } = useLocation();
@@ -25,8 +26,11 @@ const App = () => {
         <Routes>
           <Route index path="/" element={<Home />} />
           <Route path="/phones" element={<Phones />} />
+          <Route path="/phones/:idItem" element={<ItemDetail />} />
           <Route path="/tablets" element={<Tablets />} />
+          <Route path="/tablets/:idItem" element={<ItemDetail />} />
           <Route path="/accessories" element={<Accessories />} />
+          <Route path="/accessories/:idItem" element={<ItemDetail />} />
           <Route path="/favorites" element={<Favorites />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="*" element={<NoPage />} />
