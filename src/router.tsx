@@ -5,12 +5,8 @@ import { createHashRouter } from 'react-router-dom';
 import { PageSkeleton } from '@shared/components/PageSkeleton';
 
 import { MainLayout } from './layouts/MainLayout';
+import { HomePage } from './modules/home';
 
-const HomePage = lazy(() =>
-  import('./modules/home').then(module => ({
-    default: module.HomePage,
-  })),
-);
 const ProductsPage = lazy(() =>
   import('./modules/products').then(module => ({
     default: module.ProductsPage,
@@ -49,11 +45,7 @@ export const router = createHashRouter([
     children: [
       {
         index: true,
-        element: (
-          <Suspense fallback={<PageSkeleton />}>
-            <HomePage />
-          </Suspense>
-        ),
+        element: <HomePage />,
       },
       {
         path: '/products',
