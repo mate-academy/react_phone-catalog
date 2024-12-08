@@ -1,0 +1,566 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: Mont-Bold;
+  src: url('../../public/fonts/Mont-Bold.otf');
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: Mont-Regular;
+  src: url('../../public/fonts/Mont-Regular.otf');
+}
+
+@font-face {
+  font-family: Mont-SemiBold;
+  src: url('../../public/fonts/Mont-SemiBold.otf');
+  font-weight: 600;
+}
+
+@layer components {
+  .nav-link-header {
+    @apply hidden
+      sm:flex 
+      justify-center 
+      items-center 
+      font-mont-bold 
+      uppercase 
+      text-[12px] 
+      text-secondary 
+      leading-[11px] 
+      tracking-[0.04em];
+  }
+
+  .nav-link--active {
+    @apply hover:text-primary 
+      relative 
+      transition 
+      duration-300 
+      ease-in-out
+      sm:after:bottom-[-18px]
+      xl:after:bottom-[-26px]
+      after:bottom-[-8px]
+      after:h-[2px]
+      sm:after:h-[3px];
+
+    &::after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      transition:
+        bottom 0.5s ease-in-out,
+        background-color 0.5s ease-in-out;
+    }
+
+    &:hover::after {
+      background-color: #0f0f11;
+    }
+  }
+
+  .nav-link-menu {
+    @apply flex
+      justify-center 
+      items-center 
+      font-mont-bold
+      uppercase 
+      text-[12px] 
+      text-secondary 
+      leading-[11px] 
+      tracking-[0.04em];
+  }
+
+  .icons {
+    @apply w-[16px] h-[16px];
+  }
+
+  .nav-icons--active {
+    @apply after:bottom-[0]
+      after:left-[0]
+      relative;
+
+    &::after {
+      content: '';
+      position: absolute;
+      height: 3px;
+      width: 100%;
+      transition:
+        bottom 0.5s ease-in-out,
+        background-color 0.5s ease-in-out;
+    }
+
+    &:hover::after {
+      background-color: #0f0f11;
+    }
+  }
+
+  .shadow-el {
+    @apply shadow-[-1px_0_0_0_rgba(226,230,233,1)];
+  }
+
+  .grids {
+    @apply grid 
+      grid-cols-4 
+      gap-x-[16px] 
+      sm:grid-cols-12 
+      xl:grid-cols-24
+      sm:mx-[24px]
+      xl:mx-[32px];
+  }
+
+  .welcome-title {
+    @apply text-[32px]
+      leading-[41px]
+      sm:text-[48px]
+      sm:leading-[56px]
+      font-mont-bold
+      font-extrabold
+      tracking-[-0.01em]
+      text-primary
+      mt-[24px]
+      sm:mt-[32px]
+      xl:mt-[56px]
+      mx-[16px]
+      sm:mx-0;
+  }
+
+  .slider-buttons {
+    @apply rounded-[48px] 
+      border-[1px] 
+      hidden 
+      sm:flex 
+      justify-center 
+      items-center 
+      h-[100%] 
+      w-[32px] 
+      flex-shrink-0
+      border-[rgba(180,189,195,1)]
+      hover:border-[1px]
+      hover:border-[#0F0F11]
+      transition-[border]
+      ease-in-out
+      duration-300;
+  }
+
+  .slider-images {
+    @apply w-[100%] 
+      h-[100%] 
+      object-cover
+      object-center
+      bg-hover
+      flex-shrink-0;
+  }
+
+  .slider-dots {
+    @apply h-[4px]
+      w-[14px]
+      bg-elements;
+  }
+
+  .slider-dots-content {
+    @apply flex 
+      items-center
+      justify-center 
+      py-[10px] 
+      px-[5px]
+      cursor-pointer;
+  }
+
+  .section-title {
+    @apply text-[22px] 
+      font-mont-bold
+      leading-[30.8px]
+      text-primary
+      sm:text-[32px] 
+      sm:leading-[41px] 
+      sm:tracking-[-0.01em];
+  }
+
+  .section-buttons {
+    @apply flex 
+      w-[32px] 
+      h-[32px] 
+      rounded-[48px] 
+      border-[1px] 
+      border-primary
+      justify-center 
+      items-center;
+  }
+
+  .card {
+    @apply
+      flex
+      justify-center
+      flex-col
+      p-[32px]
+      hover:shadow-[0_2px_16px_0_rgba(226,230,233,1)]
+      transition-[all]
+      duration-300
+      ease-in-out
+      box-border
+      rounded-[8px] 
+      border
+      border-elements
+      w-[212px]
+      h-[439px]
+      sm:w-[237px]
+      sm:h-[512px]
+      xl:w-[272px]
+      xl:h-[506px];
+  }
+
+  .params {
+    @apply flex flex-col gap-[8px];
+
+    &::before {
+      content: '';
+      height: 1px;
+      width: 100%;
+      background-color: #e2e6e9;
+      margin-bottom: 6px;
+    }
+  }
+
+  .params-text {
+    @apply font-mont-semi text-[12px] leading-[15.34px];
+  }
+
+  .card-button {
+    @apply font-mont-semi
+      text-[14px]
+      leading-[21px]
+      w-[100px]
+      h-[40px]
+      rounded-[48px]
+      sm:w-[125px]
+      xl:w-[160px]
+      transition-all
+      duration-300
+      ease-in-out
+      hover:shadow-[0_3px_13px_0_rgba(23,32,49,0.4)];
+  }
+
+  .footer-link {
+    @apply uppercase
+      font-mont-bold
+      text-[12px]
+      leading-[11px]
+      tracking-[0.04em]
+      text-secondary;
+  }
+
+  .footer-link--active {
+    @apply after:left-[0]
+      relative
+    hover:text-primary 
+      transition 
+      duration-300 
+      ease-in-out
+      sm:after:bottom-[-18px];
+
+    &::after {
+      content: '';
+      position: absolute;
+      height: 3px;
+      width: 100%;
+      transition:
+        bottom 0.5s ease-in-out,
+        background-color 0.5s ease-in-out;
+      display: none;
+    }
+
+    &:hover::after {
+      background-color: #0f0f11;
+    }
+
+    @media (min-width: 640px) {
+      &::after {
+        display: block;
+      }
+    }
+  }
+
+  .section {
+    @apply flex 
+      justify-between 
+      items-center
+      mb-[24px];
+  }
+
+  .footer {
+    @apply grids
+      py-[32px]
+      px-[16px]
+      sm:px-[32px]
+      sm:items-center
+      m-auto
+      max-w-[1200px]
+      z-20
+      bg-white;
+  }
+
+  .footer-nav {
+    @apply flex 
+      flex-col 
+      gap-[16px] 
+      justify-between 
+      sm:flex-row 
+      mb-[32px]
+      sm:mb-0
+      sm:col-[5/8]
+      xl:col-[9/16];
+  }
+
+  .footer-back-top {
+    @apply flex
+      gap-[16px] 
+      items-center 
+      justify-center 
+      cursor-pointer 
+      col-[1/5] 
+      sm:col-[11/13]
+      xl:col-[22/25];
+  }
+
+  .footer-button {
+    @apply h-[32px] 
+      w-[32px] 
+      rounded-[48px] 
+      border-[1px] 
+      border-elements
+      flex
+      items-center
+      justify-center
+      hover:border-primary
+      transition-[border]
+      ease-in-out
+      duration-300;
+  }
+
+  .card-img {
+    @apply flex
+    justify-center
+      items-center
+      h-[129px] 
+      w-[148px] 
+      sm:w-[173px] 
+      sm:h-[181px] 
+      xl:w-[208px] 
+      xl:h-[196px] 
+      object-contain 
+      mb-[8px]
+      sm:mb-[24px]
+      xl:mb-[8px];
+  }
+
+  .card-button-favourite {
+    @apply flex 
+      items-center 
+      justify-center 
+      w-[40px] 
+      h-[40px] 
+      rounded-[48px] 
+      border-[1px]
+      transition-[border]
+      hover:border-primary
+      duration-300
+      ease-in-out
+      shrink-0;
+  }
+
+  .page-title {
+    @apply text-[32px]
+    leading-[41px]
+    sm:text-[48px]
+    sm:leading-[56px]
+    font-mont-bold
+    tracking-[-0.01em]
+    font-extrabold
+    text-primary
+    mb-[8px];
+  }
+
+  .page-text-models {
+    @apply text-[14px] 
+      font-mont-semi
+      leading-[21px] 
+      text-secondary 
+      mb-[32px] 
+      sm:mb-[40px];
+  }
+
+  .loader--content {
+    @apply rounded-[50%]
+      w-[2em]
+      h-[2em]
+      border-[0.3em]
+    border-white
+    border-x-primary
+      animate-spin;
+  }
+
+  .page-small-text {
+    @apply font-extrabold
+      text-[12px];
+  }
+
+  .selector {
+    @apply flex 
+      items-center 
+      justify-between
+      w-full 
+      h-[40px]
+      border 
+      border-icons-color 
+      rounded-[8px]
+      hover:border-secondary 
+      cursor-pointer
+      font-mont-semi 
+      text-[14px]
+      leading-[21px] 
+      text-primary
+      select-none
+      px-[12px]
+      transition-all
+      duration-300
+      ease-in-out;
+  }
+
+  .option {
+    @apply font-mont-semi 
+    text-[14px] 
+    leading-[21px] 
+    text-secondary 
+    px-4 
+    py-2 
+    hover:bg-hover 
+    hover:text-primary 
+    cursor-pointer
+    transition-all
+    duration-300
+    ease-in-out;
+  }
+
+  .pagination-buttons {
+    @apply hover:border-primary
+      transition-[border]
+      duration-300
+      ease-in-out;
+  }
+
+  .pagination-page {
+    @apply section-buttons
+    border-elements
+      font-semibold
+      text-[14px]
+    text-primary
+      leading-[21px]
+      cursor-pointer
+      transition-[all]
+      duration-300
+      ease-in-out;
+  }
+
+  .icon-count {
+    @apply flex
+    items-center
+    justify-center
+    absolute
+    text-[9px]
+    leading-[11.5px]
+    w-[14px]
+    h-[14px]
+    text-white
+    bg-accent
+    border-white
+    border
+    rounded-[50%]
+    bottom-[50%]
+    left-[50%];
+  }
+
+  .total-container {
+    @apply 
+      flex 
+      flex-col 
+      justify-center 
+      items-center 
+      p-[24px] 
+      pb-0;
+
+    &::after {
+      content: '';
+      height: 1px;
+      width: 100%;
+      background-color: #e2e6e9;
+    }
+  }
+
+  .availaible-colors-container {
+    @apply
+      flex
+      flex-col
+      gap-[24px]
+      mb-[24px];
+
+    &::after {
+      content: '';
+      height: 1px;
+      width: 100%;
+      background-color: #e2e6e9;
+    }
+  }
+
+  .select-capacity-container {
+    @apply 
+      flex
+      flex-col
+      justify-start
+      gap-[24px]
+      mb-[32px];
+
+      &::after {
+        content: '';
+        height: 1px;
+        width: 100%;
+        background-color: #e2e6e9;
+      }
+  }
+
+  .product-section-title {
+    @apply
+      flex
+      flex-col
+      gap-[16px]
+      font-mont-bold
+      text-[22px]
+      leading-[30.8px]
+      text-primary;
+
+      &::after {
+        content: '';
+        height: 1px;
+        width: 100%;
+        background-color: #e2e6e9;
+        margin-bottom: 32px;
+      }
+  }
+
+  .description-title {
+    @apply 
+      font-mont-semi
+      text-[16px]
+      leading-[20.45px]
+      sm:text-[20px]
+      sm:leading-[25.56px];
+  }
+
+  .description-text {
+    @apply 
+    font-mont-semi
+    text-[14px]
+    leading-[21px]
+    text-secondary;
+  }
+}
