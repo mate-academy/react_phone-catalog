@@ -1,5 +1,6 @@
 import { BackButton } from '../../components/BackButton';
 import { Breadcrumbs } from '../../components/Breadcrumbs';
+import { ProductSpecs } from '../../components/ProductSpecs';
 import './Product.scss';
 
 export const Product = () => {
@@ -73,6 +74,17 @@ export const Product = () => {
             <button className="product__favourite-button button--white">
               <img src="/icons/favourite.svg" alt="Favourite icon" />
             </button>
+          </div>
+
+          <div className="product__specs-container">
+            <ProductSpecs
+              specs={{
+                Screen: '6.5” OLED',
+                Resolution: '2688x1242',
+                Processor: 'Apple A12 Bionic',
+                RAM: '3 GB',
+              }}
+            />
           </div>
         </div>
       </div>
