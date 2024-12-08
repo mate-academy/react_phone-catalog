@@ -1,0 +1,1 @@
+export { ProductGallerySkeleton } from './ProductGallerySkeleton';

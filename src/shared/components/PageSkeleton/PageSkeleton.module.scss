@@ -1,0 +1,11 @@
+.skeleton {
+  padding-block: 16px;
+
+  @include on-tablet {
+    padding-block: 24px;
+  }
+
+  .content {
+    grid-column: 1 / -1;
+  }
+}

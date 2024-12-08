@@ -1,0 +1,22 @@
+.btn {
+  width: 48px;
+  height: 47px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--main-bg);
+  border: none;
+  border-left: 1px solid var(--main-border-color);
+  position: relative;
+  transition: background-color 0.2s ease;
+
+  &:active {
+    background-color: var(--main-button-hover-bg);
+  }
+
+  svg {
+    path {
+      fill: var(--main-button-color);
+    }
+  }
+}

@@ -1,0 +1,12 @@
+.container {
+  grid-column: 1 / -1;
+  padding-block: 24px;
+  text-align: center;
+
+  img {
+    display: block;
+    width: 100%;
+    max-width: 400px;
+    margin-inline: auto;
+  }
+}

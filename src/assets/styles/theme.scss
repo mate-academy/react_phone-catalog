@@ -1,0 +1,189 @@
+:root {
+  --main-hover-opacity: 0.8;
+  --primary-box-shadow: 0px 3px 13px 0px rgba(23, 32, 49, 0.4);
+  --secondary-box-shadow: 0px 2px 15px 0px rgba(0, 0, 0, 0.05);
+
+  .light {
+    // main
+    --main-bg: var(--white);
+    --main-border-color: var(--grey-300);
+    --main-button-color: var(--grey-900);
+    --main-button-hover-bg: var(--grey-200);
+
+    // text
+    --primary-text-color: var(--grey-900);
+    --secondary-text-color: var(--grey-700);
+    --third-text-color: var(--grey-700);
+    --fourth-text-color: var(--grey-500);
+
+    // home-slider
+    --home-slider-button-bg: var(--white);
+    --home-slider-button-border-color: var(--grey-500);
+    --home-slider-dot-bg: var(--grey-300);
+    --home-slider-dot-active-bg: var(--grey-900);
+
+    // slider
+    --slider-thumbs-border-color: var(--grey-900);
+
+    // card
+    --card-bg: var(--white);
+    --card-main-border-color: var(--grey-300);
+    --card-internal-border: var(--grey-300);
+    --card-cross-out-text-color: var(--grey-700);
+
+    // button
+    --primary-button-bg: var(--grey-900);
+    --primary-button-color: var(--white);
+    --primary-button-hover-box-shadow: var(--primary-box-shadow);
+    --primary-button-hover-bg: currentColor;
+    --primary-button-active-bg: var(--white);
+    --primary-button-active-border-color: var(--grey-300);
+    --primary-button-active-color: var(--green);
+    --secondary-button-bg: var(--white);
+    --secondary-button-color: var(--grey-900);
+    --secondary-button-border-color: var(--grey-300);
+    --secondary-button-hover-bg: var(--white);
+    --secondary-button-hover-border-color: var(--grey-900);
+    --secondary-button-active-bg: var(--grey-900);
+    --secondary-button-active-border-color: var(--grey-900);
+    --secondary-button-active-color: var(--white);
+
+    // icon button
+    --primary-icon-button-border-color: var(--grey-500);
+    --primary-icon-button-bg: var(--white);
+    --primary-icon-button-color: var(--grey-900);
+    --primary-icon-button-active-bg: var(--grey-900);
+    --primary-icon-button-active-border-color: var(--grey-900);
+    --primary-icon-button-active-color: var(--white);
+    --primary-icon-button-hover-border-color: var(--grey-900);
+    --primary-icon-button-hover-bg: var(--white);
+    --primary-icon-button-disabled-bg: var(--white);
+    --primary-icon-button-disabled-color: var(--grey-300);
+    --primary-icon-button-disabled-border-color: var(--grey-300);
+    --favorite-button-active-border-color: var(--grey-300);
+
+    // chip
+    --chip-border-color: var(--grey-200);
+
+    // select
+    --select-border-color: var(--grey-500);
+    --select-hover-border-color: var(--grey-700);
+    --select-focused-border-color: var(--grey-900);
+    --select-bg: var(--white);
+    --select-label-color: var(--grey-700);
+    --select-indicator-color: var(--grey-500);
+    --select-dropdown-bg: var(--white);
+    --select-option-hover-bg: var(--grey-100);
+    --select-option-hover-color: var(--grey-900);
+
+    // skeleton
+    --skeleton-bg: var(--grey-300);
+    --skeleton-gradient: linear-gradient(
+      90deg,
+      var(--skeleton-bg) 0,
+      rgba(255, 255, 255, 0.3) 20%,
+      rgba(255, 255, 255, 0.6) 60%,
+      var(--skeleton-bg)
+    );
+
+    // scrollbar
+    --track: var(--grey-300);
+    --thumb: var(--grey-900);
+
+    // footer
+    --navigation-text-color: var(--grey-700);
+    --back-to-top-btn-color: var(--grey-700);
+  }
+
+  .dark {
+    // main
+    --main-bg: var(--blue-grey-900);
+    --main-border-color: var(--blue-grey-500);
+    --main-button-color: var(--grey-200);
+    --main-button-hover-bg: var(--blue-grey-300);
+
+    // text
+    --primary-text-color: var(--grey-200);
+    --secondary-text-color: var(--blue-grey-100);
+    --third-text-color: var(--grey-200);
+    --fourth-text-color: var(--blue-grey-300);
+
+    // home-slider
+    --home-slider-button-bg: var(--blue-grey-700);
+    --home-slider-button-border-color: transparent;
+    --home-slider-dot-bg: var(--blue-grey-500);
+    --home-slider-dot-active-bg: var(--grey-200);
+
+    // slider
+    --slider-thumbs-border-color: var(--grey-200);
+
+    // card
+    --card-bg: var(--blue-grey-800);
+    --card-main-border-color: var(--blue-grey-800);
+    --card-internal-border: var(--blue-grey-500);
+    --card-cross-out-text-color: var(--blue-grey-100);
+
+    // button
+    --primary-button-bg: var(--purple);
+    --primary-button-color: var(--grey-200);
+    --primary-button-hover-box-shadow: none;
+    --primary-button-hover-bg: var(--purple-light);
+    --primary-button-active-bg: var(--blue-grey-700);
+    --primary-button-active-border-color: var(--blue-grey-700);
+    --primary-button-active-color: var(--grey-200);
+    --secondary-button-bg: var(--blue-grey-800);
+    --secondary-button-color: var(--grey-200);
+    --secondary-button-border-color: var(--blue-grey-800);
+    --secondary-button-hover-bg: var(--blue-grey-500);
+    --secondary-button-hover-border-color: var(--blue-grey-500);
+    --secondary-button-active-bg: var(--grey-900);
+    --secondary-button-active-border-color: var(--grey-900);
+    --secondary-button-active-color: var(--grey-200);
+
+    // icon button
+    --primary-icon-button-border-color: var(--blue-grey-700);
+    --primary-icon-button-bg: var(--blue-grey-700);
+    --primary-icon-button-color: var(--grey-200);
+    --primary-icon-button-active-bg: var(--purple);
+    --primary-icon-button-active-border-color: var(--purple);
+    --primary-icon-button-active-color: var(--grey-200);
+    --primary-icon-button-hover-border-color: var(--blue-grey-300);
+    --primary-icon-button-hover-bg: var(--blue-grey-300);
+    --primary-icon-button-disabled-bg: var(--blue-grey-900);
+    --primary-icon-button-disabled-color: var(--blue-grey-500);
+    --primary-icon-button-disabled-border-color: var(--blue-grey-500);
+    --favorite-button-active-border-color: var(--blue-grey-500);
+
+    // chip
+    --chip-border-color: var(--blue-grey-500);
+
+    // select
+    --select-border-color: var(--blue-grey-700);
+    --select-hover-border-color: var(--blue-grey-300);
+    --select-focused-border-color: var(--purple);
+    --select-bg: var(--blue-grey-700);
+    --select-label-color: var(--blue-grey-100);
+    --select-dropdown-bg: var(--blue-grey-900);
+    --select-indicator-color: var(--blue-grey-100);
+    --select-option-hover-bg: var(--blue-grey-700);
+    --select-option-hover-color: var(--grey-200);
+
+    // skeleton
+    --skeleton-bg: var(--blue-grey-800);
+    --skeleton-gradient: linear-gradient(
+      90deg,
+      var(--skeleton-bg) 0,
+      rgba(50, 53, 66, 0.1) 20%,
+      rgba(50, 53, 66, 0.2) 60%,
+      var(--skeleton-bg)
+    );
+
+    // scrollbar
+    --track: var(--blue-grey-500);
+    --thumb: var(--purple);
+
+    // footer
+    --navigation-text-color: var(--grey-200);
+    --back-to-top-btn-color: var(--blue-grey-100);
+  }
+}

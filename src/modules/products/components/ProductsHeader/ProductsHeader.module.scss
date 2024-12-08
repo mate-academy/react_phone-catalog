@@ -1,0 +1,25 @@
+.header {
+  .breadCrumbs {
+    margin-bottom: 24px;
+
+    @include on-tablet {
+      margin-bottom: 40px;
+    }
+  }
+
+  .title {
+    margin-bottom: 8px;
+  }
+
+  .subtitle {
+    color: var(--secondary-text-color);
+  }
+
+  .filters {
+    margin-top: 32px;
+
+    @include on-tablet {
+      margin-top: 40px;
+    }
+  }
+}

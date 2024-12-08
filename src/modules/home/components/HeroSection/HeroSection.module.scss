@@ -1,0 +1,16 @@
+.hero {
+  row-gap: 24px;
+
+  @include on-tablet {
+    row-gap: 32px;
+  }
+
+  @include on-desktop {
+    row-gap: 56px;
+  }
+
+  .title,
+  .slider {
+    grid-column: 1 / -1;
+  }
+}

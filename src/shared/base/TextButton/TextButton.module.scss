@@ -1,0 +1,46 @@
+.btn {
+  border: none;
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+
+  .text {
+    color: var(--third-text-color);
+    transition: color 0.2s ease;
+  }
+
+  svg {
+    path {
+      fill: var(--primary-icon-button-color);
+      transition: fill 0.2s ease;
+    }
+  }
+
+  &:active {
+    .text {
+      color: var(--primary-icon-button-active-bg);
+    }
+
+    svg {
+      path {
+        fill: var(--primary-icon-button-active-bg);
+      }
+    }
+  }
+
+  @include on-desktop {
+    &:hover {
+      .text {
+        color: var(--primary-icon-button-active-bg);
+      }
+
+      svg {
+        path {
+          fill: var(--primary-icon-button-active-bg);
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,72 @@
+.swiperContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  .swiperHead {
+    align-items: center;
+
+    .title {
+      grid-column: 1 / 3;
+
+      @include on-tablet {
+        grid-column: 1 / 8;
+      }
+
+      @include on-desktop {
+        grid-column: 1 / 9;
+      }
+    }
+
+    .swiperControls {
+      grid-column: 3 / -1;
+      display: flex;
+      justify-content: flex-end;
+      gap: 16px;
+
+      @include on-tablet {
+        grid-column: 8 / -1;
+      }
+
+      @include on-desktop {
+        grid-column: 9 / -1;
+      }
+    }
+
+    .swiperControlsSkeleton {
+      justify-content: flex-end;
+    }
+  }
+
+  .swiper {
+    &:global(.swiper) {
+      overflow: visible;
+
+      @include on-desktop {
+        overflow: hidden;
+      }
+
+      :global(.swiper-slide) {
+        width: 214px;
+
+        @include on-tablet {
+          width: 237px;
+        }
+
+        @include on-desktop {
+          width: 272px;
+        }
+      }
+    }
+
+    &.loading {
+      opacity: 0.5;
+      pointer-events: none;
+
+      @include on-desktop {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
+  }
+}

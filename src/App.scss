@@ -1,1 +1,48 @@
-// not empty
+@import '@assets/styles/index';
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Mont, sans-serif;
+  font-weight: normal;
+  color: var(--primary-text-color);
+}
+
+body {
+  background-color: var(--main-bg);
+}
+
+a {
+  text-decoration: none;
+}
+
+.container {
+  width: 100%;
+  max-width: 1136px;
+  margin: 0 auto;
+  padding-inline: 16px;
+  height: fit-content;
+
+  @include page-grid;
+
+  @include on-tablet {
+    padding-inline: 24px;
+  }
+
+  @include on-desktop {
+    padding-inline: 0;
+  }
+}
+
+body::-webkit-scrollbar {
+  width: 4px;
+}
+
+body::-webkit-scrollbar-track {
+  background-color: var(--track);
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: var(--thumb);
+}

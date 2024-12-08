@@ -1,0 +1,1 @@
+export { ProductsFilters } from './ProductsFilters';

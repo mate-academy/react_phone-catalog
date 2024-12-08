@@ -1,0 +1,99 @@
+.btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-inline: 8px;
+  cursor: pointer;
+  transition:
+    box-shadow 0.2s ease,
+    background-color 0.2s ease,
+    border-color 0.2s ease;
+
+  .title {
+    vertical-align: middle;
+    line-height: 1;
+  }
+
+  &.primary {
+    background-color: var(--primary-button-bg);
+    border: 1px solid var(--primary-button-bg);
+
+    .title {
+      color: var(--primary-button-color);
+    }
+
+    &:active,
+    &.selected {
+      background-color: var(--primary-button-active-bg);
+      border-color: var(--primary-button-active-border-color);
+
+      .title {
+        color: var(--primary-button-active-color);
+      }
+    }
+
+    &:disabled {
+      cursor: default;
+      background-color: var(--primary-icon-button-disabled-bg);
+      border-color: var(--primary-icon-button-disabled-border-color);
+
+      .title {
+        color: var(--primary-icon-button-disabled-color);
+      }
+    }
+
+    @include on-desktop {
+      &:hover:not(:active) {
+        box-shadow: var(--primary-button-hover-box-shadow);
+        background-color: var(--primary-button-hover-bg);
+
+        .title {
+          color: var(--primary-button-color);
+        }
+      }
+    }
+  }
+
+  &.secondary {
+    background-color: var(--secondary-button-bg);
+    border: 1px solid var(--secondary-button-border-color);
+    color: var(--secondary-button-color);
+
+    title {
+      color: var(--secondary-button-color);
+    }
+
+    &:active,
+    &.selected {
+      background-color: var(--secondary-button-active-bg);
+      border-color: var(--secondary-button-active-border-color);
+
+      .title {
+        color: var(--secondary-button-active-color);
+      }
+    }
+
+    @include on-desktop {
+      &:hover:not(:active) {
+        background-color: var(--secondary-button-hover-bg);
+        border-color: var(--secondary-button-hover-border-color);
+
+        .title {
+          color: var(--secondary-button-color);
+        }
+      }
+    }
+  }
+
+  &.lg {
+    height: 48px;
+  }
+
+  &.md {
+    height: 40px;
+  }
+
+  &.sm {
+    height: 32px;
+  }
+}

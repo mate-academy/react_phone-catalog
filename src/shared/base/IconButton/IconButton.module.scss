@@ -1,0 +1,75 @@
+.btn {
+  border: 1px solid transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--white);
+  cursor: pointer;
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease;
+
+  &.sm {
+    width: 32px;
+    height: 32px;
+  }
+
+  &.md {
+    width: 40px;
+    height: 40px;
+  }
+
+  &.lg {
+    width: 48px;
+    height: 48px;
+  }
+
+  svg {
+    path {
+      fill: currentColor;
+      transition: fill 0.2s ease;
+    }
+  }
+
+  &.primary {
+    border-color: var(--primary-icon-button-border-color);
+    color: var(--primary-icon-button-color);
+    background-color: var(--primary-icon-button-bg);
+
+    @include on-desktop {
+      &:hover {
+        background-color: var(--primary-icon-button-hover-bg);
+        border-color: var(--primary-icon-button-hover-border-color);
+      }
+    }
+
+    &:active,
+    &.selected {
+      border-color: var(--primary-icon-button-active-border-color);
+      background-color: var(--primary-icon-button-active-bg);
+      color: var(--primary-icon-button-active-color);
+
+      svg {
+        path {
+          fill: var(--primary-icon-button-active-color);
+        }
+      }
+    }
+
+    &.disabled,
+    &.disabled:hover,
+    &.disabled:active {
+      cursor: default;
+      color: var(--primary-icon-button-disabled-color);
+      background-color: var(--primary-icon-button-disabled-bg);
+      border-color: var(--primary-icon-button-disabled-border-color);
+
+      svg {
+        path {
+          fill: var(--primary-icon-button-disabled-color);
+        }
+      }
+    }
+  }
+}

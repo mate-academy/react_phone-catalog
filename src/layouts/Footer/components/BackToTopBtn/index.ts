@@ -1,0 +1,1 @@
+export { BackToTopBtn } from './BackToTopBtn';

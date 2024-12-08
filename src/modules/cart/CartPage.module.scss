@@ -1,0 +1,28 @@
+.container {
+  padding-block: 24px 56px;
+  row-gap: 32px;
+
+  .cartInfo {
+    grid-column: 1 / -1;
+
+    row-gap: 32px;
+
+    @include page-grid;
+  }
+
+  .total {
+    grid-column: 1 / -1;
+
+    @include on-desktop {
+      grid-column: 17 / -1;
+    }
+  }
+
+  .list {
+    grid-column: 1 / -1;
+
+    @include on-desktop {
+      grid-column: 1 / 17;
+    }
+  }
+}

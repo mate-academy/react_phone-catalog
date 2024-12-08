@@ -1,0 +1,33 @@
+.container {
+  .content {
+    grid-column: 1 / -1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 50px;
+    gap: 32px;
+
+    .header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      .link {
+        text-decoration: underline;
+        transition: opacity 0.2s ease;
+
+        @include on-desktop {
+          &:hover {
+            opacity: var(--main-hover-opacity);
+          }
+        }
+      }
+    }
+
+    .image {
+      display: block;
+      width: 100%;
+      max-width: 600px;
+    }
+  }
+}

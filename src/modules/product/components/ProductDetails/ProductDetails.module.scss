@@ -1,0 +1,22 @@
+.features {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 8px;
+
+  .featureRow {
+    display: flex;
+    justify-content: space-between;
+
+    & > :first-child {
+      color: var(--grey-700);
+    }
+  }
+}
+
+.skeleton {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 8px;
+}

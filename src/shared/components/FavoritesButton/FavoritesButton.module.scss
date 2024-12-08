@@ -1,0 +1,13 @@
+.btn {
+  &:active,
+  &.active {
+    border-color: var(--favorite-button-active-border-color) !important;
+    background-color: var(--primary-icon-button-bg) !important;
+
+    svg {
+      path {
+        fill: var(--red) !important;
+      }
+    }
+  }
+}

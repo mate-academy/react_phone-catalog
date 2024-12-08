@@ -1,0 +1,1 @@
+export { AddToCartBtn } from './AddToCartBtn';

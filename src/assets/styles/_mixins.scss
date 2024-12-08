@@ -1,0 +1,69 @@
+@mixin page-grid {
+  --columns: 4;
+
+  display: grid;
+  grid-template-columns: repeat(var(--columns), 1fr);
+  column-gap: 16px;
+
+  @include on-tablet {
+    --columns: 12;
+  }
+
+  @include on-desktop {
+    --columns: 24;
+  }
+}
+
+@mixin cards-grid($size-rule: auto-fit) {
+  display: grid;
+  grid-template-columns: repeat($size-rule, minmax(272px, 1fr)) !important;
+  gap: 40px 16px;
+}
+
+@mixin line-clamp($value) {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: $value;
+  -webkit-box-orient: vertical;
+}
+
+@mixin on-mobile {
+  @media screen and (min-width: $breakpoint-sm) {
+    @content;
+  }
+}
+
+@mixin on-tablet {
+  @media screen and (min-width: $breakpoint-md) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media screen and (min-width: $breakpoint-lg) {
+    @content;
+  }
+}
+
+@mixin text-underline($bottom: -1px) {
+  position: relative;
+
+  &::after {
+    content: '';
+    width: 100%;
+    height: 2px;
+    position: absolute;
+    bottom: $bottom;
+    left: 0;
+    background-color: var(--main-button-color);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+  }
+
+  @include on-desktop {
+    &:hover::after {
+      transform: scaleX(1);
+    }
+  }
+}

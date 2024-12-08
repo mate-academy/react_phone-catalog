@@ -1,0 +1,18 @@
+.homePage {
+  display: flex;
+  flex-direction: column;
+  gap: 56px;
+  padding-top: 24px;
+  padding-bottom: 64px;
+
+  @include on-tablet {
+    gap: 64px;
+    padding-top: 32px;
+  }
+
+  @include on-desktop {
+    gap: 80px;
+    padding-top: 56px;
+    padding-bottom: 80px;
+  }
+}

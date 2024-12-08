@@ -1,0 +1,50 @@
+.link {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  transition: opacity 0.2s ease;
+
+  .imageWrapper {
+    position: relative;
+    overflow: hidden;
+
+    img {
+      display: block;
+      width: 100%;
+      transition: transform 0.2s ease;
+    }
+  }
+
+  .description {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+
+    .title {
+      position: relative;
+      width: fit-content;
+
+      @include text-underline;
+    }
+
+    .total {
+      color: var(--secondary-text-color);
+    }
+  }
+
+  :active {
+    opacity: var(--main-hover-opacity);
+  }
+
+  @include on-desktop {
+    &:hover {
+      img {
+        transform: scale(1.1);
+      }
+
+      .title::after {
+        transform: scaleX(1);
+      }
+    }
+  }
+}

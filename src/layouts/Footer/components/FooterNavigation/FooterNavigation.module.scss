@@ -1,0 +1,26 @@
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  @include on-tablet {
+    flex-direction: row;
+    gap: 13px;
+  }
+
+  @include on-desktop {
+    gap: 105px;
+  }
+
+  .item {
+    line-height: 0;
+  }
+
+  .link {
+    @include text-underline(-5px);
+
+    .text {
+      color: var(--navigation-text-color);
+    }
+  }
+}

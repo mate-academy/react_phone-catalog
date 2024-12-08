@@ -1,0 +1,76 @@
+.cartList {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  .cartItem {
+    border: 1px solid var(--card-main-border-color);
+    padding: 16px;
+    display: flex;
+    flex-flow: row wrap;
+    gap: 16px;
+    align-items: center;
+    justify-content: space-between;
+
+    @include on-tablet {
+      flex-wrap: nowrap;
+      gap: 24px;
+      padding: 24px;
+    }
+  }
+
+  .closeBtn {
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+
+    @include on-desktop {
+      &:hover {
+        opacity: var(--main-hover-opacity);
+      }
+    }
+  }
+
+  .imageLink {
+    display: block;
+    width: 66px;
+    height: 66px;
+
+    img {
+      display: block;
+      height: 100%;
+      max-width: 100%;
+      object-fit: cover;
+      margin-inline: auto;
+      transition: transform 0.2s ease;
+    }
+
+    @include on-desktop {
+      &:hover {
+        img {
+          transform: scale(1.1);
+        }
+      }
+    }
+  }
+
+  .titleLink {
+    flex: 1;
+
+    @include on-tablet {
+      width: auto;
+    }
+
+    @include on-desktop {
+      &:hover {
+        .title {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+
+  .price {
+    width: 80px;
+    text-align: right;
+  }
+}

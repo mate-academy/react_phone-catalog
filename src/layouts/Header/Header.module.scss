@@ -1,0 +1,31 @@
+.header {
+  height: #{$mobile-header-height}px;
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--main-border-color);
+  background-color: var(--main-bg);
+  position: sticky;
+  top: 0;
+  z-index: 2;
+
+  @include on-tablet {
+    gap: 32px;
+  }
+
+  @include on-desktop {
+    height: #{$desktop-header-height}px;
+    gap: 48px;
+  }
+
+  .logo {
+    width: 64px;
+    margin-left: 16px;
+
+    @include on-desktop {
+      margin-left: 24px;
+      width: 80px;
+    }
+  }
+}

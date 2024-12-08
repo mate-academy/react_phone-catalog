@@ -1,0 +1,18 @@
+.capacities {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.skeleton {
+  padding-bottom: 24px;
+
+  .buttons {
+    margin-top: 8px;
+  }
+
+  .button {
+    width: 58px;
+    height: 32px;
+  }
+}

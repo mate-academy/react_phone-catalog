@@ -1,0 +1,98 @@
+.card {
+  padding: 32px;
+  border: 1px solid var(--card-main-border-color);
+  background-color: var(--card-bg);
+
+  .imgLink {
+    display: block;
+    height: 130px;
+
+    img {
+      margin: 0 auto;
+      display: block;
+      height: 100%;
+      max-width: 100%;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+
+    &:hover {
+      img {
+        transform: scale(1.1);
+      }
+    }
+
+    @include on-tablet {
+      height: 200px;
+    }
+
+    @include on-desktop {
+      height: 196px;
+    }
+  }
+
+  .description {
+    margin-top: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--card-internal-border);
+
+    .titleLink {
+      height: 42px;
+
+      .title {
+        @include line-clamp(2);
+
+        &:active {
+          opacity: var(--main-hover-opacity);
+        }
+      }
+
+      @include on-desktop {
+        &:hover {
+          .title {
+            opacity: var(--main-hover-opacity);
+          }
+        }
+      }
+    }
+
+    .price {
+      display: flex;
+      gap: 8px;
+
+      .old {
+        color: var(--card-cross-out-text-color);
+      }
+    }
+  }
+
+  .feature {
+    display: flex;
+    flex-direction: column;
+    padding-top: 8px;
+    margin-top: 8px;
+    gap: 8px;
+
+    .featureRow {
+      display: flex;
+      justify-content: space-between;
+
+      & > :first-child {
+        color: var(--grey-700);
+      }
+    }
+  }
+
+  .buttons {
+    margin-top: 16px;
+    display: flex;
+    gap: 8px;
+
+    .addToCartBtn {
+      width: calc(100% - 48px);
+    }
+  }
+}

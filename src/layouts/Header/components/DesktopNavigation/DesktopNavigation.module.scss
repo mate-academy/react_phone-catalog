@@ -1,0 +1,34 @@
+.container {
+  display: flex;
+  height: 100%;
+
+  .list {
+    display: flex;
+    height: 100%;
+    gap: 32px;
+
+    @include on-desktop {
+      gap: 64px;
+    }
+  }
+
+  .link {
+    display: flex;
+    align-items: center;
+    height: 100%;
+  }
+
+  .buttons {
+    display: flex;
+    justify-content: flex-end;
+
+    .btn {
+      width: 48px;
+      border-left: 1px solid var(--main-border-color);
+
+      @include on-desktop {
+        width: 64px;
+      }
+    }
+  }
+}

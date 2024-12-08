@@ -1,0 +1,9 @@
+$breakpoint-sm: 320px;
+$breakpoint-md: 640px;
+$breakpoint-lg: 1200px;
+
+:root {
+  // for useMedia hook variable access
+  --breakpoint-md: #{$breakpoint-md};
+  --breakpoint-lg: #{$breakpoint-lg};
+}
