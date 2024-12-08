@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect } from "react";
 import { useSwipeable } from "react-swipeable";
 import ArrowLeft from "../../../assets/icons/ArrowLeft";
