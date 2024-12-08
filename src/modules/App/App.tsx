@@ -5,12 +5,12 @@ import { Footer } from '../../components/Footer';
 
 export const App = () => {
   return (
-    <>
+    <div className="App">
       <Header />
-      <main className="container">
+      <main className="App__content">
         <Outlet />
       </main>
       <Footer />
-    </>
+    </div>
   );
 };

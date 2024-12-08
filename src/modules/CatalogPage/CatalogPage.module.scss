@@ -1,0 +1,111 @@
+@import '../../styles/main';
+
+.catalogPage {
+  @include page-grid;
+  @include page-container;
+
+  .breadcrumbs {
+    grid-column: 1 / -1;
+    padding-right: 0;
+    margin-top: 24px;
+  }
+
+  .title {
+    @include font-set($mobile-h1);
+
+    grid-column: 1 / -1;
+    text-transform: capitalize;
+
+    @include on-tablet {
+      @include font-set($tablet-h1);
+    }
+  }
+
+  .countModels {
+    @include font-set($body-text);
+
+    grid-column: 1/-1;
+    margin-top: 8px;
+    margin-bottom: 32px;
+    color: $secondary;
+
+    @include on-tablet {
+      margin-bottom: 40px;
+    }
+  }
+
+  .sortField {
+    grid-column: span 2;
+
+    &--1 {
+      @include on-tablet {
+        grid-column: span 4;
+      }
+    }
+
+    &--2 {
+      @include on-tablet {
+        grid-column: span 3;
+      }
+    }
+  }
+
+  .query {
+    grid-column: 1 / -1;
+    display: flex;
+    flex-direction: column;
+    margin-top: 12px;
+
+    @include on-tablet {
+      grid-column: -1 / -5;
+      margin-top: 0;
+    }
+
+    @include on-desktop {
+      grid-column: -1 / -8;
+    }
+
+    &__label {
+      margin-bottom: 4px;
+      font-weight: 700;
+      color: $secondary;
+    }
+
+    &__input {
+      @include font-set($buttons);
+
+      padding: 12px;
+      background-color: inherit;
+      outline: none;
+      border: 1px solid $icons;
+      border-radius: 8px;
+
+      @include hover {
+        border: 1px solid $secondary;
+      }
+
+      &:focus {
+        border: 1px solid $primary;
+
+        @include hover {
+          border: 1px solid $primary;
+        }
+      }
+    }
+  }
+
+  .cards {
+    margin-top: 20px;
+    grid-column: 1 / -1;
+
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(212px, 272px));
+    justify-content: center;
+    gap: 40px 16px;
+  }
+
+  .pagination {
+    margin-top: 40px;
+    grid-column: 1 / -1;
+  }
+}

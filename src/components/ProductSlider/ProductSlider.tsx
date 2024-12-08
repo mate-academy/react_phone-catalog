@@ -48,11 +48,11 @@ export const ProductSlider: React.FC<Props> = ({
             nextEl: `.${style.nextBtn}`,
             prevEl: `.${style.prevBtn}`,
           }}
-          className={style.list}
+          className={`${style.list} swiper-wrapper`}
         >
           {suggestedProducts.map(product => {
             return (
-              <SwiperSlide key={product.id} className={style.card}>
+              <SwiperSlide key={product.id} className={style.swiperSlide}>
                 <ProductCart product={product} discount={discount} />
               </SwiperSlide>
             );

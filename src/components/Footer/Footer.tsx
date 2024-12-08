@@ -14,7 +14,7 @@ export const Footer = () => {
       name: 'Github',
     },
     {
-      href: 'https://www.linkedin.com/in/ann-busyhina-a17113292/',
+      href: 'https://github.com/AnnBusya',
       name: 'Contacts',
     },
     {

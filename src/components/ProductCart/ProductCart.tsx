@@ -12,7 +12,7 @@ export const ProductCart: React.FC<ProductCardProps> = ({
   discount,
 }) => {
   return (
-    <>
+    <article className={style.productCard}>
       <Link
         to={`/${product.category}/${product.itemId}`}
         className={style.picture}
@@ -33,6 +33,7 @@ export const ProductCart: React.FC<ProductCardProps> = ({
           <div className={style.price__old}>${product.fullPrice}</div>
         )}
       </div>
+      <div className={style.separator}></div>
       <ul className={style.details}>
         <li className={style.item}>
           <p className={style.itemName}>Screen</p>
@@ -51,6 +52,6 @@ export const ProductCart: React.FC<ProductCardProps> = ({
         <ButtonAddCart productId={product.itemId} />
         <HeartButton productId={product.itemId} />
       </div>
-    </>
+    </article>
   );
 };

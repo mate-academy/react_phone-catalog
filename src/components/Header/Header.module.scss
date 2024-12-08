@@ -1,8 +1,7 @@
 @import '../../styles/main';
 
 .header {
-  @include page-container;
-
+  padding-left: 16px;
   display: flex;
   background: rgba(255, 255, 255, 1);
   height: 48px;
@@ -13,6 +12,7 @@
 
   @include on-desktop {
     height: 64px;
+    padding-left: 24px;
   }
 
   &__container {
@@ -65,7 +65,6 @@
 
     @include on-tablet {
       margin-right: 16px;
-      width: 80px;
     }
 
      @include on-desktop {

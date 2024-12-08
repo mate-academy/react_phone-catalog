@@ -33,8 +33,6 @@
 }
 
 @mixin page-container {
-  max-width: 1200px;
-  margin-inline: auto;
   padding-inline: $container-padding-mobile;
 
   @include on-tablet {
