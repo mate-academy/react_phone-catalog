@@ -13,7 +13,9 @@ export type Item = {
   description: { title: string; text: string[] }[];
   screen: string;
   resolution: string;
+  camera: string;
   processor: string;
   ram: string;
   cell: string[];
+  zoom: string;
 };

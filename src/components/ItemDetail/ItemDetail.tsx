@@ -15,7 +15,7 @@ const mainSpecs = [
   { name: "RAM", option: "ram" },
 ];
 
-const fullSpecs = [
+const fullSpecs: { name: string; option: keyof Item }[] = [
   { name: "Screen", option: "screen" },
   { name: "Resolution", option: "resolution" },
   { name: "Processor", option: "processor" },
@@ -199,10 +199,10 @@ const ItemDetail = () => {
             </section>
             <section className="flex flex-col gap-2">
               {itemInfo &&
-                mainSpecs.map((el) => (
-                  <div className="flex justify-between" key={el.name}>
-                    <p className="text-smallText text-sec">{el.name}</p>
-                    <p className="text-smallText">{itemInfo[el.option]}</p>
+                mainSpecs.map((spec) => (
+                  <div className="flex justify-between" key={spec.name}>
+                    <p className="text-smallText text-sec">{spec.name}</p>
+                    <p className="text-smallText">{itemInfo[spec.option]}</p>
                   </div>
                 ))}
             </section>
@@ -215,7 +215,7 @@ const ItemDetail = () => {
           <hr className="my-6 border-elem"></hr>
           <section className="grid gap-8">
             {itemInfo?.description.map((text) => (
-              <article className="flex flex-col gap-4">
+              <article className="flex flex-col gap-4" key={text.title}>
                 <h4 key={text.title}>{text.title}</h4>
                 <p className="text-bodyText text-sec">{text.text}</p>
               </article>
