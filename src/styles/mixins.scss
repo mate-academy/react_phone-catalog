@@ -3,3 +3,16 @@
   grid-template-columns: repeat(24, 1fr);
   gap: 16px;
 }
+
+@mixin strikethrough-color-dodge {
+  content: '';
+  position: absolute;
+  height: 1px;
+
+  background-color: #89939a;
+  mix-blend-mode: color-dodge;
+
+  top: 14px;
+  left: 0;
+  right: 0;
+}

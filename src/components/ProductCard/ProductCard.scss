@@ -1,3 +1,5 @@
+@import '../../styles/mixins';
+
 .product-card {
   grid-column: span 6;
   padding: 32px;
@@ -43,17 +45,10 @@
       position: relative;
       color: #89939a;
 
+      font-weight: 600;
+
       &::after {
-        content: '';
-        position: absolute;
-        height: 1px;
-
-        background-color: #89939a;
-        mix-blend-mode: color-dodge;
-
-        top: 14px;
-        left: 0;
-        right: 0;
+        @include strikethrough-color-dodge;
       }
     }
   }
