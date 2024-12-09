@@ -12,4 +12,3 @@ export type Product = {
   year: number;
   image: string;
 };
-

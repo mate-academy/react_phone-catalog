@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 type Props = {
   title: string;
@@ -14,7 +14,9 @@ export const FetchError: React.FC<Props> = ({ title }) => {
           justify-center
           text-red-color
         "
-      >{title}</h1>
+      >
+        {title}
+      </h1>
 
       <img
         src="./img/product-not-found.png"
@@ -22,5 +24,5 @@ export const FetchError: React.FC<Props> = ({ title }) => {
         className="mb-[64px] w-full xl:mb-[80px]"
       />
     </div>
-  )
+  );
 };

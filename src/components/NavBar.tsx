@@ -6,12 +6,15 @@ import { useEffect, useState } from 'react';
 import { PATHS_WHERE_NEED_FIND } from '../utils/rightPaths';
 import { useAppSelector } from '../utils/hooks';
 
-
 export const NavBar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const { pathname } = useLocation();
-  const { favourites, cartItems } = useAppSelector(state => state.products);
+  const { favourites, cartItems, quantity } = useAppSelector(state => state.products);
+
+  const cartItemsLength = cartItems
+    ? cartItems.reduce((sum, item) => sum + (quantity[item.itemId] || 0), 0)
+    : 0;
 
   useEffect(() => setIsMenuOpen(false), [pathname]);
 
@@ -30,35 +33,43 @@ export const NavBar = () => {
       </div>
 
       <div className="flex">
-        {!isMenuOpen && (PATHS_WHERE_NEED_FIND.includes(pathname.slice(1))) && <SearchBar />}
+        {!isMenuOpen && PATHS_WHERE_NEED_FIND.includes(pathname.slice(1)) && (
+          <SearchBar />
+        )}
 
         <Menu setIsMenuOpen={setIsMenuOpen} isMenuOpen={isMenuOpen} />
 
         <div className="hidden sm:flex">
-          <Link to="favourites" className="shadow-el nav-icons--active p-[16px] xl:p-[24px]">
-            <div className='relative'>
-              <img src="./img/icons/Favourites.svg" alt="Favourite" className="icons" />
+          <Link
+            to="favourites"
+            className="shadow-el nav-icons--active p-[16px] xl:p-[24px]"
+          >
+            <div className="relative">
+              <img
+                src="./img/icons/Favourites.svg"
+                alt="Favourite"
+                className="icons"
+              />
               {favourites.length > 0 && (
-                <div className='icon-count'>
-                  {favourites.length}
-                </div>
+                <div className="icon-count">{favourites.length}</div>
               )}
             </div>
           </Link>
 
-          <Link to="cart" className="shadow-el nav-icons--active p-[16px] xl:p-[24px]">
-            <div className='relative'>
+          <Link
+            to="cart"
+            className="shadow-el nav-icons--active p-[16px] xl:p-[24px]"
+          >
+            <div className="relative">
               <img src="./img/icons/Cart.svg" alt="Bag" className="icons" />
 
-              {cartItems.length > 0 && (
-                <div className='icon-count'>
-                  {cartItems.length}
-                </div>
+              {cartItemsLength > 0 && (
+                <div className="icon-count">{cartItemsLength}</div>
               )}
             </div>
           </Link>
         </div>
       </div>
-    </nav >
+    </nav>
   );
 };

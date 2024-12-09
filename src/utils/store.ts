@@ -1,11 +1,11 @@
-import { configureStore } from "@reduxjs/toolkit";
-import phonesReducer from "../features/phones";
-import tabletsReducer from "../features/tablets";
-import accessoriesReducer from "../features/accessories";
-import productsReducer from "../features/products";
-import selectedProductReducer from "../features/selectedProduct";
-import brandNewReducer from "../features/brandNew";
-import hotPriceReducer from "../features/hotPrice";
+import { configureStore } from '@reduxjs/toolkit';
+import phonesReducer from '../features/phones';
+import tabletsReducer from '../features/tablets';
+import accessoriesReducer from '../features/accessories';
+import productsReducer from '../features/products';
+import selectedProductReducer from '../features/selectedProduct';
+import brandNewReducer from '../features/brandNew';
+import hotPriceReducer from '../features/hotPrice';
 
 export const store = configureStore({
   reducer: {

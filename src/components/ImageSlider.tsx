@@ -1,15 +1,14 @@
-import { useEffect, useState } from "react";
-import { useAppSelector } from "../utils/hooks";
+import { useEffect, useState } from 'react';
+import { useAppSelector } from '../utils/hooks';
 
 export const ImageSlider = () => {
   const { selectedProduct } = useAppSelector(state => state.selectedProduct);
-
 
   const [mainImg, setMainImg] = useState(selectedProduct?.images[0] || '');
 
   const handleSetMainImg = (image: string) => {
     setMainImg(image);
-  }
+  };
 
   useEffect(() => {
     setMainImg(selectedProduct?.images[0] || '');
@@ -19,8 +18,8 @@ export const ImageSlider = () => {
 
   return (
     <>
-      {selectedProduct &&
-        (<>
+      {selectedProduct && (
+        <>
           {windowWidth < 640 && (
             <div
               className="
@@ -66,12 +65,11 @@ export const ImageSlider = () => {
                   cursor-pointer
                   rounded-[4px]
                   border
-                  ${image === mainImg
-                    ? 'border-primary'
-                    : 'border-elements'
-                  }
+                  ${image === mainImg ? 'border-primary' : 'border-elements'}
                 `}
-                onClick={() => { handleSetMainImg(image) }}
+                onClick={() => {
+                  handleSetMainImg(image);
+                }}
               >
                 <img
                   src={image}
@@ -100,8 +98,9 @@ export const ImageSlider = () => {
                 "
               />
             </div>
-          )}</>)
-      }
+          )}
+        </>
+      )}
     </>
   );
-}
+};

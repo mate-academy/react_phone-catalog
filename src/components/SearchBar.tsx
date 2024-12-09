@@ -1,8 +1,8 @@
-import { useLocation, useSearchParams } from "react-router-dom";
-import { getSearchWith } from "../utils/getSearchWith";
-import debounce from "lodash.debounce";
-import { useState, useMemo, useEffect } from "react";
-import { SearchParams } from "../types/searchParams";
+import { useLocation, useSearchParams } from 'react-router-dom';
+import { getSearchWith } from '../utils/getSearchWith';
+import debounce from 'lodash.debounce';
+import { useState, useMemo, useEffect } from 'react';
+import { SearchParams } from '../types/searchParams';
 
 export const SearchBar = () => {
   const { pathname } = useLocation();
@@ -19,7 +19,7 @@ export const SearchBar = () => {
       debounce((value: string | null) => {
         setSearchWith({ query: value });
       }, 500),
-    [searchParams]
+    [searchParams],
   );
 
   useEffect(() => {

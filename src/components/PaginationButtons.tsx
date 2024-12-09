@@ -1,8 +1,8 @@
-import React, { useEffect } from "react";
-import { useSearchParams } from "react-router-dom";
-import { numberOfPaginations } from "../utils/getNumberOfPaginations";
-import { getSearchWith } from "../utils/getSearchWith";
-import { SearchParams } from "../types/searchParams";
+import React, { useEffect } from 'react';
+import { useSearchParams } from 'react-router-dom';
+import { numberOfPaginations } from '../utils/getNumberOfPaginations';
+import { getSearchWith } from '../utils/getSearchWith';
+import { SearchParams } from '../types/searchParams';
 
 type Props = {
   productsLength: number | null;
@@ -17,7 +17,7 @@ export const PaginationButtons: React.FC<Props> = ({ productsLength }) => {
   const setSearchWith = (params: SearchParams) => {
     const search = getSearchWith(params, searchParams);
     setSearchParams(search);
-  }
+  };
 
   const handlePageNumber = (pageNumber: number) => {
     setSearchWith({ page: pageNumber });
@@ -30,12 +30,11 @@ export const PaginationButtons: React.FC<Props> = ({ productsLength }) => {
       setSearchWith({ page: 1 });
     }
   }, [itemsOnPage]);
-  
 
   const arrayOfPages = numberOfPaginations(itemsOnPage, productsLength);
   const lengthOfPages = arrayOfPages.length;
 
-  const isFirsPage = (page === 1);
+  const isFirsPage = page === 1;
   const isLastPage = page === lengthOfPages;
 
   const handlePrevPage = () => {
@@ -61,10 +60,16 @@ export const PaginationButtons: React.FC<Props> = ({ productsLength }) => {
         disabled={isFirsPage}
         onClick={handlePrevPage}
       >
-        <img src="./img/icons/Arrow_Left_Black.svg" alt="ArrowLeft" className="icons" />
+        <img
+          src="./img/icons/Arrow_Left_Black.svg"
+          alt="ArrowLeft"
+          className="icons"
+        />
       </button>
 
-      <div className={`flex gap-[8px] ${lengthOfPages > 3 ? 'w-[152px] overflow-hidden' : ''}`}>
+      <div
+        className={`flex gap-[8px] ${lengthOfPages > 3 ? 'w-[152px] overflow-hidden' : ''}`}
+      >
         {arrayOfPages.map(pagin => (
           <div
             key={pagin}
@@ -74,12 +79,17 @@ export const PaginationButtons: React.FC<Props> = ({ productsLength }) => {
               ${pagin === page ? 'bg-primary text-white' : ''}
             `}
             onClick={() => handlePageNumber(pagin)}
-            style={lengthOfPages > 3 ? {
-              transform: `translateX(${page <= lengthOfPages - 3 ? -40 * (page - 1) : -40 * (lengthOfPages - 4)}px)`,
-              transition: 'transform 0.3s ease-in-out',
-            } : {}}
-
-          >{pagin}</div>
+            style={
+              lengthOfPages > 3
+                ? {
+                    transform: `translateX(${page <= lengthOfPages - 3 ? -40 * (page - 1) : -40 * (lengthOfPages - 4)}px)`,
+                    transition: 'transform 0.3s ease-in-out',
+                  }
+                : {}
+            }
+          >
+            {pagin}
+          </div>
         ))}
       </div>
 

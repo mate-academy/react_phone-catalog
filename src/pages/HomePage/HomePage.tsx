@@ -1,7 +1,7 @@
-import { Slider } from "../../components/Slider";
-import { BrandNewModel } from "../../sections/BrandNew";
-import { HotPrices } from "../../sections/HotPrices";
-import { ShopByCategory } from "../../sections/ShopByCategory";
+import { Slider } from '../../components/Slider';
+import { BrandNewModel } from '../../sections/BrandNew';
+import { HotPrices } from '../../sections/HotPrices';
+import { ShopByCategory } from '../../sections/ShopByCategory';
 
 export const HomePage = () => {
   return (

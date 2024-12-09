@@ -1,20 +1,26 @@
-import React from "react";
-import { useAppDispatch } from "../utils/hooks";
+import React, { useEffect } from 'react';
+import { useAppDispatch, useAppSelector } from '../utils/hooks';
 import * as productActions from '../features/products';
 
 type Props = {
   setIsModalOpen: (isOpen: boolean) => void;
-}
+};
 
 export const ModalDialog: React.FC<Props> = ({ setIsModalOpen }) => {
   const dispatch = useAppDispatch();
+  const { cartItems } = useAppSelector(state => state.products);
 
   const handleClearCart = () => {
     dispatch(productActions.setCartItems(null));
+
     localStorage.setItem('cartItems', JSON.stringify([]));
 
     setIsModalOpen(false);
   };
+
+  useEffect(() => {
+    localStorage.setItem('cartItems', JSON.stringify(cartItems));
+  }, [cartItems]);
 
   return (
     <div
@@ -46,7 +52,9 @@ export const ModalDialog: React.FC<Props> = ({ setIsModalOpen }) => {
             text-primary
             sm:p-[40px]
           "
-        >Checkout is not implemented yet. Do you want to clear the Cart?</h4>
+        >
+          Checkout is not implemented yet. Do you want to clear the Cart?
+        </h4>
 
         <div className="flex gap-[16px] p-[24px] sm:p-[40px]">
           <button

@@ -1,6 +1,6 @@
 export const numberOfPaginations = (
-  itemsOnPage: string | null, 
-  productsLength: number | null
+  itemsOnPage: string | null,
+  productsLength: number | null,
 ) => {
   const arrayOfnumberPaginations = [];
 
@@ -17,4 +17,4 @@ export const numberOfPaginations = (
   }
 
   return arrayOfnumberPaginations;
-}
+};

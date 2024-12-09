@@ -1,12 +1,14 @@
-import { useState, useEffect } from "react";
-import { useSearchParams } from "react-router-dom";
-import { SORT_PARAMS } from "../utils/sortParams";
-import { ITEMS_PER_PAGE } from "../utils/itemsPerPageParams";
-import { getSearchWith } from "../utils/getSearchWith";
-import { SearchParams } from "../types/searchParams";
+import { useState, useEffect } from 'react';
+import { useSearchParams } from 'react-router-dom';
+import { SORT_PARAMS } from '../utils/sortParams';
+import { ITEMS_PER_PAGE } from '../utils/itemsPerPageParams';
+import { getSearchWith } from '../utils/getSearchWith';
+import { SearchParams } from '../types/searchParams';
 
 export const Selector = () => {
-  const [openSelector, setOpenSelector] = useState<"sort" | "items" | null>(null);
+  const [openSelector, setOpenSelector] = useState<'sort' | 'items' | null>(
+    null,
+  );
   const [searchParams, setSearchParams] = useSearchParams();
 
   const sortBy = searchParams.get('sort') || 'age';
@@ -15,7 +17,7 @@ export const Selector = () => {
   const setSearchWith = (params: SearchParams) => {
     const search = getSearchWith(params, searchParams);
     setSearchParams(search);
-  }
+  };
 
   const handleSortByOption = (option: string) => {
     setOpenSelector(null);
@@ -31,8 +33,8 @@ export const Selector = () => {
   useEffect(() => {
     const handleClickOutside = () => setOpenSelector(null);
 
-    document.addEventListener("click", handleClickOutside);
-    return () => document.removeEventListener("click", handleClickOutside);
+    document.addEventListener('click', handleClickOutside);
+    return () => document.removeEventListener('click', handleClickOutside);
   }, []);
 
   return (
@@ -42,26 +44,24 @@ export const Selector = () => {
 
         <div className="relative w-full">
           <div
-            onClick={(e) => {
+            onClick={e => {
               e.stopPropagation();
-              setOpenSelector(openSelector === "sort" ? null : "sort");
+              setOpenSelector(openSelector === 'sort' ? null : 'sort');
             }}
             className="selector"
           >
-            {
-              sortBy === 'age' && 'Newest'
-              || sortBy === 'name' && 'Alphabettically'
-              || sortBy === 'price' && 'Cheapest'
-            }
+            {(sortBy === 'age' && 'Newest') ||
+              (sortBy === 'name' && 'Alphabettically') ||
+              (sortBy === 'price' && 'Cheapest')}
 
             <img
               src="./img/icons/Arrow_Right.svg"
               alt="Arrow"
-              className={`icons ${openSelector === "sort" ? "-rotate-90" : "rotate-90"}`}
+              className={`icons ${openSelector === 'sort' ? '-rotate-90' : 'rotate-90'}`}
             />
           </div>
 
-          {openSelector === "sort" && (
+          {openSelector === 'sort' && (
             <ul
               className="
                 absolute
@@ -92,9 +92,9 @@ export const Selector = () => {
 
         <div className="relative w-full">
           <div
-            onClick={(e) => {
+            onClick={e => {
               e.stopPropagation();
-              setOpenSelector(openSelector === "items" ? null : "items");
+              setOpenSelector(openSelector === 'items' ? null : 'items');
             }}
             className="selector"
           >
@@ -103,11 +103,11 @@ export const Selector = () => {
             <img
               src="./img/icons/Arrow_Right.svg"
               alt="Arrow"
-              className={`icons ${openSelector === "items" ? "-rotate-90" : "rotate-90"}`}
+              className={`icons ${openSelector === 'items' ? '-rotate-90' : 'rotate-90'}`}
             />
           </div>
 
-          {openSelector === "items" && (
+          {openSelector === 'items' && (
             <ul
               className="
                 absolute

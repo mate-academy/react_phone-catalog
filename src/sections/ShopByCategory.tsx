@@ -1,5 +1,5 @@
-import { Category } from "../components/Category";
-import { SectionHeader } from "../components/SectionHeader";
+import { Category } from '../components/Category';
+import { SectionHeader } from '../components/SectionHeader';
 
 export const ShopByCategory = () => {
   return (
@@ -9,4 +9,4 @@ export const ShopByCategory = () => {
       <Category />
     </section>
   );
-}
+};

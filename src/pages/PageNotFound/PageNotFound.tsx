@@ -8,7 +8,9 @@ export const PageNotFound = () => {
           sm:col-[1/10] 
           xl:col-[1/18]
         "
-      >Page Not Found</h1>
+      >
+        Page Not Found
+      </h1>
 
       <div
         className="

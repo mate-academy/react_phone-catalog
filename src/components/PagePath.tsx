@@ -1,5 +1,5 @@
-import { Link, useLocation, useParams } from "react-router-dom";
-import { useAppSelector } from "../utils/hooks";
+import { Link, useLocation, useParams } from 'react-router-dom';
+import { useAppSelector } from '../utils/hooks';
 
 export const PagePath = () => {
   const { pathname } = useLocation();
@@ -10,7 +10,8 @@ export const PagePath = () => {
   const { selectedProduct } = useAppSelector(state => state.selectedProduct);
 
   const rightPath = selectedProduct
-    ? selectedProduct.category.charAt(0).toUpperCase() + selectedProduct.category.slice(1)
+    ? selectedProduct.category.charAt(0).toUpperCase() +
+      selectedProduct.category.slice(1)
     : null;
 
   return (
@@ -33,13 +34,18 @@ export const PagePath = () => {
         <img src="./img/icons/Home.svg" alt="HomeLogo" className="icons" />
       </Link>
 
-      <img src="./img/icons/Arrow_Right.svg" alt="ArrowRigth" className="icons" />
+      <img
+        src="./img/icons/Arrow_Right.svg"
+        alt="ArrowRigth"
+        className="icons"
+      />
 
-      {productId
-        ? (
-          <Link to={`${selectedProduct?.category ? `/${selectedProduct.category}` : pathname}`}>
-            <p
-              className="
+      {productId ? (
+        <Link
+          to={`${selectedProduct?.category ? `/${selectedProduct.category}` : pathname}`}
+        >
+          <p
+            className="
                 font-mont-semi 
                 text-[12px] 
                 leading-[15.34px] 
@@ -49,22 +55,23 @@ export const PagePath = () => {
                 ease-in-out 
                 hover:text-primary
               "
-            >
-              {selectedProduct ? rightPath : firstSymbol + path.slice(1)}
-            </p>
-          </Link>
-        )
-        : (
-          <p
-            className="font-mont-semi text-[12px] leading-[15.34px] text-secondary"
           >
-            {firstSymbol + path.slice(1)}
+            {selectedProduct ? rightPath : firstSymbol + path.slice(1)}
           </p>
-        )}
+        </Link>
+      ) : (
+        <p className="font-mont-semi text-[12px] leading-[15.34px] text-secondary">
+          {firstSymbol + path.slice(1)}
+        </p>
+      )}
 
       {productId && (
         <div className="flex items-center gap-[8px]">
-          <img src="./img/icons/Arrow_Right.svg" alt="ArrowRigth" className="icons" />
+          <img
+            src="./img/icons/Arrow_Right.svg"
+            alt="ArrowRigth"
+            className="icons"
+          />
 
           <p className="params-text text-secondary">{selectedProduct?.name}</p>
         </div>

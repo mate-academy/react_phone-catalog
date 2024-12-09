@@ -15,7 +15,9 @@ type InitialState = {
 const storedSelectedProduct = localStorage.getItem('selectedProduct');
 
 const initialState: InitialState = {
-  selectedProduct: storedSelectedProduct ? JSON.parse(storedSelectedProduct) : null,
+  selectedProduct: storedSelectedProduct
+    ? JSON.parse(storedSelectedProduct)
+    : null,
   selectedModel: null,
   selectedColor: null,
   selectedCapacity: null,
@@ -23,35 +25,36 @@ const initialState: InitialState = {
   hasError: false,
 };
 
-export const init = createAsyncThunk('selectedProduct/fetch', (
-  { 
-    category, 
-    id, 
-    namespaceId, 
-    color, 
+export const init = createAsyncThunk(
+  'selectedProduct/fetch',
+  ({
+    category,
+    id,
+    namespaceId,
+    color,
     capacity,
     currentCapacity,
     currentColor,
   }: {
-    category: string, 
-    id?: string, 
-    namespaceId?:string, 
-    color?: string, 
-    capacity?: string,
-    currentCapacity?: string,
-    currentColor?: string,
-  }
-) => {
-  return getSelectedProduct({ 
-    category, 
-    id, 
-    namespaceId, 
-    color, 
-    capacity,
-    currentCapacity,
-    currentColor,
-   });
-});
+    category: string;
+    id?: string;
+    namespaceId?: string;
+    color?: string;
+    capacity?: string;
+    currentCapacity?: string;
+    currentColor?: string;
+  }) => {
+    return getSelectedProduct({
+      category,
+      id,
+      namespaceId,
+      color,
+      capacity,
+      currentCapacity,
+      currentColor,
+    });
+  },
+);
 
 export const selectedProductSlice = createSlice({
   name: 'selectedProduct',
@@ -61,11 +64,17 @@ export const selectedProductSlice = createSlice({
       state.selectedModel = action.payload;
     },
 
-    setSelectedColor: (state: InitialState, action: PayloadAction<string | null>) => {
+    setSelectedColor: (
+      state: InitialState,
+      action: PayloadAction<string | null>,
+    ) => {
       state.selectedColor = action.payload;
     },
 
-    setSelectedCapacity: (state: InitialState, action: PayloadAction<string | null>) => {
+    setSelectedCapacity: (
+      state: InitialState,
+      action: PayloadAction<string | null>,
+    ) => {
       state.selectedCapacity = action.payload;
     },
   },
@@ -74,10 +83,13 @@ export const selectedProductSlice = createSlice({
       return { ...state, loaded: true, hasError: false };
     });
 
-    builder.addCase(init.fulfilled, (state, action: PayloadAction<Model | null>) => {
-      state.selectedProduct = action.payload;
-      state.loaded = false;
-    });
+    builder.addCase(
+      init.fulfilled,
+      (state, action: PayloadAction<Model | null>) => {
+        state.selectedProduct = action.payload;
+        state.loaded = false;
+      },
+    );
 
     builder.addCase(init.rejected, state => {
       return { ...state, loaded: false, hasError: true };
@@ -86,4 +98,5 @@ export const selectedProductSlice = createSlice({
 });
 
 export default selectedProductSlice.reducer;
-export const { setModel, setSelectedColor, setSelectedCapacity } = selectedProductSlice.actions;
+export const { setModel, setSelectedColor, setSelectedCapacity } =
+  selectedProductSlice.actions;

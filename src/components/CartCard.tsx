@@ -1,22 +1,28 @@
-import { Product } from "../types/product";
-import { useAppDispatch, useAppSelector } from "../utils/hooks";
+import { Product } from '../types/product';
+import { useAppDispatch, useAppSelector } from '../utils/hooks';
 import * as productActions from '../features/products';
 import * as selectedActions from '../features/selectedProduct';
-import { useEffect } from "react";
-import { Link } from "react-router-dom";
+import { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 export const CartCard = () => {
-  const { cartItems, quantity } = useAppSelector(state => state.products);
   const dispatch = useAppDispatch();
+  const { cartItems, quantity } = useAppSelector(state => state.products);
 
-  const handlesetSelected = (product: Product) => {
-    dispatch(selectedActions.init({ category: product.category, id: product.itemId }));
+  const handleSetSelected = (product: Product) => {
+    dispatch(
+      selectedActions.init({ category: product.category, id: product.itemId }),
+    );
+
+    localStorage.setItem('cartItems', JSON.stringify(cartItems));
   };
 
   const handleDeleteProduct = (product: Product) => {
-    dispatch(productActions.deleteCartItem(product.itemId));
-    const updatedCartItems = cartItems.filter(item => item.itemId !== product.itemId);
+    const updatedCartItems = cartItems.filter(
+      item => item.itemId !== product.itemId,
+    );
     localStorage.setItem('cartItems', JSON.stringify(updatedCartItems));
+    dispatch(productActions.deleteCartItem(product.itemId));
   };
 
   const handleMinusCount = (itemId: string) => {
@@ -28,14 +34,21 @@ export const CartCard = () => {
   };
 
   useEffect(() => {
+    localStorage.setItem('cartItems', JSON.stringify(cartItems));
     localStorage.setItem('quantities', JSON.stringify(quantity));
-  }, [quantity]);
+  }, [cartItems, quantity]);
 
   useEffect(() => {
     let totalPrice = 0;
-    cartItems.forEach(item => totalPrice += (item.price * quantity[item.itemId]));
+    cartItems.forEach(
+      item => {
+        (totalPrice += item.price * quantity[item.itemId])
 
-    dispatch(productActions.setTotalPrice(totalPrice))
+        console.log({ totalPrice, itemPrice: item.price, quantity: quantity[item.itemId], itemId: item.itemId});
+      },
+    );
+
+    dispatch(productActions.setTotalPrice(totalPrice));
   }, [quantity]);
 
   return (
@@ -83,7 +96,7 @@ export const CartCard = () => {
             <Link
               className="flex cursor-pointer items-center gap-[16px] sm:gap-[24px]"
               to={`/${item.category}/${item.itemId}`}
-              onClick={() => handlesetSelected(item)}
+              onClick={() => handleSetSelected(item)}
             >
               <img
                 src={item.image}
@@ -100,7 +113,9 @@ export const CartCard = () => {
                   leading-[21px]
                 text-primary
                 "
-              >{item.name}</h3>
+              >
+                {item.name}
+              </h3>
             </Link>
           </div>
 
@@ -111,11 +126,14 @@ export const CartCard = () => {
                   section-buttons
                   ${quantity[item.itemId] === 1 ? 'border-elements' : 'border-primary'}
                 `}
-
                 onClick={() => handleMinusCount(item.itemId)}
                 disabled={quantity[item.itemId] === 1}
               >
-                <img src="./img/icons/Minus.svg" alt="Minus" className="icons" />
+                <img
+                  src="./img/icons/Minus.svg"
+                  alt="Minus"
+                  className="icons"
+                />
               </button>
 
               <p
@@ -125,7 +143,9 @@ export const CartCard = () => {
                   leading-[21px]
                 text-primary
                 "
-              >{quantity[item.itemId] || 1}</p>
+              >
+                {quantity[item.itemId] || 1}
+              </p>
 
               <button
                 className={`
@@ -139,7 +159,8 @@ export const CartCard = () => {
               </button>
             </div>
 
-            <p className="
+            <p
+              className="
                 font-mont-bold 
                 text-[22px] 
                 leading-[30.8px]

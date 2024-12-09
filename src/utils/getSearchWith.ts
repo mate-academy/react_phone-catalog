@@ -1,6 +1,9 @@
 import { Params } from '../types/search';
 
-export const getSearchWith = (params: Params, search?: string | URLSearchParams) => {
+export const getSearchWith = (
+  params: Params,
+  search?: string | URLSearchParams,
+) => {
   const newParams = new URLSearchParams(search);
 
   for (const [key, value] of Object.entries(params)) {
@@ -15,4 +18,4 @@ export const getSearchWith = (params: Params, search?: string | URLSearchParams)
   }
 
   return newParams.toString();
-}
+};

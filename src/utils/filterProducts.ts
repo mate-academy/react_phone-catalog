@@ -1,20 +1,18 @@
-import { Product } from "../types/product";
+import { Product } from '../types/product';
 
-export const filterProducts = (
-  {
-    products,
-    sortBy,
-    itemsOnPage,
-    query,
-    page,
-  }: {
-    products: Product[],
-    sortBy: string | null,
-    itemsOnPage: string | null,
-    query: string | null;
-    page: string | null;
-  }) => {
-
+export const filterProducts = ({
+  products,
+  sortBy,
+  itemsOnPage,
+  query,
+  page,
+}: {
+  products: Product[];
+  sortBy: string | null;
+  itemsOnPage: string | null;
+  query: string | null;
+  page: string | null;
+}) => {
   const sortedProducts = [...products].sort((product1, product2) => {
     switch (sortBy) {
       case 'age':
@@ -29,17 +27,16 @@ export const filterProducts = (
       default:
         return product2.year - product1.year;
     }
-  })
+  });
 
   if (query !== null) {
     sortedProducts.filter(product => product.name.includes(query));
   }
 
   const filteredProducts = query
-    ? sortedProducts.filter(
-      product => 
-        product.name.toLowerCase().includes(query.toLowerCase().trim())
-    )
+    ? sortedProducts.filter(product =>
+        product.name.toLowerCase().includes(query.toLowerCase().trim()),
+      )
     : sortedProducts;
 
   if (itemsOnPage) {
@@ -55,4 +52,4 @@ export const filterProducts = (
   }
 
   return filteredProducts;
-}
+};

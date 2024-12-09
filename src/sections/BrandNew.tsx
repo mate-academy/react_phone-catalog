@@ -1,9 +1,9 @@
-import { useCallback, useEffect, useRef, useState } from "react";
-import { SectionHeader } from "../components/SectionHeader";
-import { Card } from "../components/Card";
-import { useAppDispatch, useAppSelector } from "../utils/hooks";
+import { useCallback, useEffect, useRef, useState } from 'react';
+import { SectionHeader } from '../components/SectionHeader';
+import { Card } from '../components/Card';
+import { useAppDispatch, useAppSelector } from '../utils/hooks';
 import * as brandNewActions from '../features/brandNew';
-import { Loader } from "../components/Loader";
+import { Loader } from '../components/Loader';
 
 export const BrandNewModel = () => {
   const dispatch = useAppDispatch();
@@ -32,28 +32,26 @@ export const BrandNewModel = () => {
   const slider = useRef<HTMLDivElement>(null);
 
   const isFirstCard = currentCard === firstCard;
-  const isLastCard = currentCard === lastCard - (windowWidth >= 1135
-    ? 1
-    : windowWidth >= 640
-      ? 0
-      : 0);
+  const isLastCard =
+    currentCard ===
+    lastCard - (windowWidth >= 1135 ? 1 : windowWidth >= 640 ? 0 : 0);
 
-  const transform = (cardWidth) * (currentCard - 1);
+  const transform = cardWidth * (currentCard - 1);
 
   const handleMoveLeft = useCallback(() => {
     if (!isFirstCard) {
-      setCurrentCard((prev) => prev - 1);
+      setCurrentCard(prev => prev - 1);
     }
   }, [isFirstCard]);
 
   const handleMoveRight = useCallback(() => {
     if (!isLastCard) {
-      setCurrentCard((prev) => prev + 1);
-    };
+      setCurrentCard(prev => prev + 1);
+    }
   }, [isLastCard]);
 
   useEffect(() => {
-    dispatch(brandNewActions.init())
+    dispatch(brandNewActions.init());
   }, [dispatch]);
 
   return (
@@ -68,7 +66,9 @@ export const BrandNewModel = () => {
         xl:mb-[80px]
       "
     >
-      {loaded ? (<Loader />) : (
+      {loaded ? (
+        <Loader />
+      ) : (
         <div>
           <div
             className="
@@ -97,6 +97,6 @@ export const BrandNewModel = () => {
           </div>
         </div>
       )}
-    </section >
+    </section>
   );
 };

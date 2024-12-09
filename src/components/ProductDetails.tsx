@@ -6,21 +6,21 @@ import { useEffect } from 'react';
 export const ProductDetails = () => {
   const dispatch = useAppDispatch();
 
-  const {
-    selectedProduct,
-  } = useAppSelector(state => state.selectedProduct);
+  const { selectedProduct } = useAppSelector(state => state.selectedProduct);
   const { favourites, cartItems } = useAppSelector(state => state.products);
 
   const handleSetColor = (color: string) => {
     dispatch(selectedActions.setSelectedColor(color));
 
     if (selectedProduct) {
-      dispatch(selectedActions.init({
-        category: selectedProduct?.category,
-        namespaceId: selectedProduct?.namespaceId,
-        currentCapacity: selectedProduct?.capacity,
-        color: color,
-      }));
+      dispatch(
+        selectedActions.init({
+          category: selectedProduct?.category,
+          namespaceId: selectedProduct?.namespaceId,
+          currentCapacity: selectedProduct?.capacity,
+          color: color,
+        }),
+      );
     }
   };
 
@@ -28,12 +28,14 @@ export const ProductDetails = () => {
     dispatch(selectedActions.setSelectedCapacity(capacity));
 
     if (selectedProduct) {
-      dispatch(selectedActions.init({
-        category: selectedProduct?.category,
-        namespaceId: selectedProduct?.namespaceId,
-        currentColor: selectedProduct?.color,
-        capacity: capacity,
-      }));
+      dispatch(
+        selectedActions.init({
+          category: selectedProduct?.category,
+          namespaceId: selectedProduct?.namespaceId,
+          currentColor: selectedProduct?.color,
+          capacity: capacity,
+        }),
+      );
     }
   };
 
@@ -61,7 +63,9 @@ export const ProductDetails = () => {
           mb-[8px]
           text-secondary
         "
-      >Available colors</p>
+      >
+        Available colors
+      </p>
 
       <div className="availaible-colors-container">
         <div className="flex flex-row gap-[8px]">
@@ -72,22 +76,23 @@ export const ProductDetails = () => {
                 cursor-pointer
                 rounded-[36px]
                 border
-                ${selectedProduct.color === color
+                ${
+                  selectedProduct.color === color
                     ? 'border-primary'
                     : 'border-elements'
-                  }
+                }
               `}
               onClick={() => handleSetColor(color)}
             >
               <div
                 style={{ background: color }}
-                className='
+                className="
                   h-[32px]
                   w-[32px]
                   rounded-[36px]
                   border-[2px]
                   border-white
-                '
+                "
               />
             </div>
           ))}
@@ -100,7 +105,9 @@ export const ProductDetails = () => {
           mb-[8px]
           text-secondary
         "
-      >Select capacity</p>
+      >
+        Select capacity
+      </p>
 
       <div className="select-capacity-container">
         <div className="flex gap-[8px]">
@@ -114,26 +121,29 @@ export const ProductDetails = () => {
               items-center
               justify-center
               rounded-[4px]
-              ${selectedProduct.capacity === capacity
+              ${
+                selectedProduct.capacity === capacity
                   ? 'bg-primary'
                   : 'border border-icons-color'
-                }
+              }
             `}
               onClick={() => handleSetCapacity(capacity)}
             >
-
               <p
                 className={`
               px-[8px]
               font-mont-regular
               text-[14px]
               leading-[21px]
-              ${selectedProduct.capacity === capacity
-                    ? 'text-white'
-                    : 'text-primary'
-                  }
+              ${
+                selectedProduct.capacity === capacity
+                  ? 'text-white'
+                  : 'text-primary'
+              }
             `}
-              >{capacity}</p>
+              >
+                {capacity}
+              </p>
             </div>
           ))}
         </div>
@@ -164,24 +174,31 @@ export const ProductDetails = () => {
             className={`
               card-button
               w-full
-              ${cartItems.some(cart => cart.itemId === selectedProduct?.id)
+              ${
+                cartItems.some(cart => cart.itemId === selectedProduct?.id)
                   ? 'border bg-white text-accent'
                   : 'bg-accent text-white'
-                }
+              }
             `}
             onClick={handleSetCartItems}
-          >{cartItems.some(cart => cart.itemId === selectedProduct?.id)
-            ? 'Added to cart'
-            : 'Add to cart'}</button>
+          >
+            {cartItems.some(cart => cart.itemId === selectedProduct?.id)
+              ? 'Added to cart'
+              : 'Add to cart'}
+          </button>
 
           <button
-            className='card-button-favourite'
+            className="card-button-favourite"
             onClick={handleSetFavourite}
           >
-            {favourites.some(fav => fav.itemId === selectedProduct?.id)
-              ? (<img src="./img/icons/Favourites_Heart_Like.svg" alt="Favourite" />)
-              : (<img src="./img/icons/Favourites.svg" alt="Favourite" />)
-            }
+            {favourites.some(fav => fav.itemId === selectedProduct?.id) ? (
+              <img
+                src="./img/icons/Favourites_Heart_Like.svg"
+                alt="Favourite"
+              />
+            ) : (
+              <img src="./img/icons/Favourites.svg" alt="Favourite" />
+            )}
           </button>
         </div>
       </div>
@@ -194,12 +211,16 @@ export const ProductDetails = () => {
 
         <div className="flex justify-between">
           <p className="params-text text-secondary">Resolution</p>
-          <p className="params-text text-primary">{selectedProduct?.resolution}</p>
+          <p className="params-text text-primary">
+            {selectedProduct?.resolution}
+          </p>
         </div>
 
         <div className="flex justify-between">
           <p className="params-text text-secondary">Processor</p>
-          <p className="params-text text-primary">{selectedProduct?.processor}</p>
+          <p className="params-text text-primary">
+            {selectedProduct?.processor}
+          </p>
         </div>
 
         <div className="flex justify-between">

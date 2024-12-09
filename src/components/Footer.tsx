@@ -1,10 +1,10 @@
-import classNames from "classnames";
-import { Link, NavLink } from "react-router-dom";
+import classNames from 'classnames';
+import { Link, NavLink } from 'react-router-dom';
 
 const GITHUB = 'https://github.com/oskushnir';
 
 const getActiveLink = (isActive: { isActive: boolean }) =>
-  classNames("footer-link", { "footer-link--active": isActive });
+  classNames('footer-link', { 'footer-link--active': isActive });
 
 export const Footer = () => {
   const scrollToTop = () => {
@@ -17,34 +17,32 @@ export const Footer = () => {
   return (
     <div className="shadow-[0_-1px_0_0_rgba(226,230,233,1)]">
       <div className="footer">
-        <Link to="/" className="col-[1/5] mb-[32px] h-[32px] w-[89px] sm:mb-0 xl:col-[1/8]">
-          <img src="./img/icons/Logo.svg" alt="Logo" className="h-[32px] w-[89px]" />
+        <Link
+          to="/"
+          className="col-[1/5] mb-[32px] h-[32px] w-[89px] sm:mb-0 xl:col-[1/8]"
+        >
+          <img
+            src="./img/icons/Logo.svg"
+            alt="Logo"
+            className="h-[32px] w-[89px]"
+          />
         </Link>
 
         <div className="footer-nav">
-          <NavLink
-            to={GITHUB}
-            target="_blank"
-            className={getActiveLink}
-          >Github</NavLink>
+          <NavLink to={GITHUB} target="_blank" className={getActiveLink}>
+            Github
+          </NavLink>
 
-          <NavLink
-            to={GITHUB}
-            target="_blank"
-            className={getActiveLink}
-          >Contacts</NavLink>
+          <NavLink to={GITHUB} target="_blank" className={getActiveLink}>
+            Contacts
+          </NavLink>
 
-          <NavLink
-            to={GITHUB}
-            target="_blank"
-            className={getActiveLink}
-          >Rights</NavLink>
+          <NavLink to={GITHUB} target="_blank" className={getActiveLink}>
+            Rights
+          </NavLink>
         </div>
 
-        <div
-          onClick={scrollToTop}
-          className="footer-back-top"
-        >
+        <div onClick={scrollToTop} className="footer-back-top">
           <p
             className="
               text-[12px]
@@ -56,7 +54,9 @@ export const Footer = () => {
               ease-in-out
               hover:text-primary
             "
-          >Back to top</p>
+          >
+            Back to top
+          </p>
 
           <button className="footer-button">
             <img
@@ -69,4 +69,4 @@ export const Footer = () => {
       </div>
     </div>
   );
-}
+};

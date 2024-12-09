@@ -1,4 +1,4 @@
-import { useAppSelector } from "../utils/hooks";
+import { useAppSelector } from '../utils/hooks';
 
 export const ProductAbout = () => {
   const { selectedProduct } = useAppSelector(state => state.selectedProduct);
@@ -12,7 +12,9 @@ export const ProductAbout = () => {
           <div key={index} className="flex flex-col gap-[16px]">
             <h2 className="description-title">{item.title}</h2>
             {item.text.map((par, ind) => (
-              <p className="description-text" key={ind}>{par}</p>
+              <p className="description-text" key={ind}>
+                {par}
+              </p>
             ))}
           </div>
         ))}

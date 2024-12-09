@@ -13,7 +13,7 @@ type InitialState = {
 };
 
 const storedFavourites = localStorage.getItem('favourites');
-const storedCartItems = localStorage.getItem('cartItems');
+const storedCardItems = localStorage.getItem('cartItems');
 const storedQuantities = localStorage.getItem('quantities');
 
 const initialState: InitialState = {
@@ -21,7 +21,7 @@ const initialState: InitialState = {
   loaded: false,
   hasError: false,
   favourites: storedFavourites ? JSON.parse(storedFavourites) : [],
-  cartItems: storedCartItems ? JSON.parse(storedCartItems) : [],
+  cartItems: storedCardItems? JSON.parse(storedCardItems) : [],
   quantity: storedQuantities ? JSON.parse(storedQuantities) : {},
   totalPrice: null,
 };
@@ -34,72 +34,74 @@ export const productsSlice = createSlice({
   name: 'products',
   initialState,
   reducers: {
-    setFavourites: (state: InitialState, action: PayloadAction<string | null>) => {
-      const favouriteProduct = state.products.find(product =>
-        product.itemId === action.payload);
-
-        if (!favouriteProduct) { 
-          return
-        };
-
+    setFavourites: (
+      state: InitialState,
+      action: PayloadAction<string | null>,
+    ) => {
       const isFavourite = state.favourites.some(
-        favourite => favourite.itemId === favouriteProduct.itemId,
+        favourite => favourite.itemId === action.payload,
       );
 
       if (isFavourite) {
         state.favourites = state.favourites.filter(
-          favourite => favourite.itemId !== favouriteProduct.itemId,
+          favourite => favourite.itemId !== action.payload,
         );
       } else {
-        state.favourites = [...state.favourites, favouriteProduct];;
-      }
+        const product = state.products.find(
+          product => product.itemId === action.payload,
+        );
 
-      localStorage.setItem('favourites', JSON.stringify(state.favourites));
+        if (!product) {
+          return;
+        }
+
+        state.favourites.push(product);
+      }
     },
 
     setCartItems: (
       state: InitialState,
       action: PayloadAction<string | null>,
     ) => {
-      const cartItemProduct = state.products.find(product =>
-        product.itemId === action.payload);
-
-        if (!cartItemProduct) { 
-          return
-        };
-
-      if (cartItemProduct) {
-        const isCartItem = state.cartItems.some(item =>
-          item.itemId === cartItemProduct.itemId,
-        );
-
-        if (!isCartItem) {
-          state.cartItems.push(cartItemProduct);
-          state.quantity[cartItemProduct.itemId] = 1;
-        }
-      } else {
+      if (action.payload === null) {
         state.cartItems = [];
+        state.quantity = {};
+        return;
       }
 
-      localStorage.setItem('cartItems', JSON.stringify(state.cartItems));
-      localStorage.setItem('quantities', JSON.stringify(state.quantity));
+      const isCartItem = state.cartItems.some(
+        item => item.itemId === action.payload,
+      );
+      
+      if (!isCartItem) {
+        const product = state.products.find(
+          product => product.itemId === action.payload,
+        );
+
+        console.log(product, 'Це продукт', state.products, 'Це state');
+        
+        if (!product) {
+          return;
+        }
+        
+        state.cartItems.push(product);
+        state.quantity[product.itemId] = 1;
+      }
     },
 
-    deleteCartItem: (state: InitialState, action: PayloadAction<string | null>) => {
-      const cartItemProduct = state.products.find(
-        product => product.itemId === action.payload,
+    deleteCartItem: (
+      state: InitialState,
+      action: PayloadAction<string | null>,
+    ) => {
+      state.cartItems = state.cartItems.filter(
+        item => item.itemId !== action.payload,
       );
 
-        state.cartItems = state.cartItems.filter(
-          item => item.itemId !== cartItemProduct?.itemId,
-        );
+      console.log('delete', state.cartItems);
 
-      if (cartItemProduct) {
-        delete state.quantity[cartItemProduct.itemId];
+      if (action.payload) {
+        delete state.quantity[action.payload];
       }
-
-      localStorage.setItem('cartItems', JSON.stringify(state.cartItems));
-      localStorage.setItem('quantities', JSON.stringify(state.quantity));
     },
 
     setQuantity: (

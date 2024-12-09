@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react";
-import { IMAGES_FOR_SLIDER } from "../utils/ImagesForSlider";
-import classNames from "classnames";
+import { useEffect, useState } from 'react';
+import { IMAGES_FOR_SLIDER } from '../utils/ImagesForSlider';
+import classNames from 'classnames';
 
 export const Slider = () => {
   const [slideId, setSlideId] = useState(0);
@@ -12,7 +12,7 @@ export const Slider = () => {
       } else {
         return slide + 1;
       }
-    })
+    });
   };
 
   const prevSlide = () => {
@@ -22,7 +22,7 @@ export const Slider = () => {
       } else {
         return slide - 1;
       }
-    })
+    });
   };
 
   useEffect(() => {
@@ -47,13 +47,15 @@ export const Slider = () => {
         xl:mt-[56px]
       "
     >
-      <div className="
+      <div
+        className="
         flex 
         h-[320xp] 
         gap-[16px] 
         sm:h-[189px]
         xl:h-[400px]
-      ">
+      "
+      >
         <button className="slider-buttons" onClick={prevSlide}>
           <img
             src="./img/icons/Arrow_Left_Black.svg"
@@ -75,7 +77,8 @@ export const Slider = () => {
         </div>
 
         <button className="slider-buttons" onClick={nextSlide}>
-          <img src="./img/icons/Arrow_Right_Black.svg"
+          <img
+            src="./img/icons/Arrow_Right_Black.svg"
             alt="ArrowLeft"
             className="icons"
           />
@@ -84,11 +87,19 @@ export const Slider = () => {
 
       <div className="mt-[8px] flex h-[24px] justify-center gap-[4px]">
         {IMAGES_FOR_SLIDER.map(image => (
-          <div key={image.id} className="slider-dots-content" onClick={() => setSlideId(image.id)}>
-            <button className={classNames('slider-dots', { "bg-primary": slideId === image.id })} />
+          <div
+            key={image.id}
+            className="slider-dots-content"
+            onClick={() => setSlideId(image.id)}
+          >
+            <button
+              className={classNames('slider-dots', {
+                'bg-primary': slideId === image.id,
+              })}
+            />
           </div>
         ))}
       </div>
     </section>
   );
-}
+};

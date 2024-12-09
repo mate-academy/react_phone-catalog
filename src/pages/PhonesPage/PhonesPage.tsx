@@ -1,17 +1,21 @@
-import { useEffect } from "react";
-import { useAppDispatch, useAppSelector } from "../../utils/hooks";
+import { useEffect } from 'react';
+import { useAppDispatch, useAppSelector } from '../../utils/hooks';
 import * as productsActions from '../../features/products';
-import { PageContent } from "../../components/PageContent";
+import { PageContent } from '../../components/PageContent';
 
 export const PhonesPage = () => {
   const dispatch = useAppDispatch();
-  const { products, loaded, hasError } = useAppSelector(state => state.products);
+  const { products, loaded, hasError } = useAppSelector(
+    state => state.products,
+  );
 
   useEffect(() => {
     dispatch(productsActions.init());
   }, [dispatch]);
 
-  const filteredProducts = products.filter(product => product.category === 'phones');
+  const filteredProducts = products.filter(
+    product => product.category === 'phones',
+  );
 
   return (
     <PageContent

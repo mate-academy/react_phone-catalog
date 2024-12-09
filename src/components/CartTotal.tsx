@@ -1,12 +1,16 @@
-import React from "react";
-import { useAppSelector } from "../utils/hooks";
+import React from 'react';
+import { useAppSelector } from '../utils/hooks';
 
 type Props = {
   setIsModalOpen: (isOpen: boolean) => void;
-}
+};
 
 export const CartTotal: React.FC<Props> = ({ setIsModalOpen }) => {
-  const { cartItems, totalPrice } = useAppSelector(state => state.products);
+  const { cartItems, totalPrice, quantity } = useAppSelector(state => state.products);
+
+  const cartItemsLength = cartItems
+    ? cartItems.reduce((sum, item) => sum + (quantity[item.itemId] || 0), 0)
+    : 0;
 
   return (
     <div className="flex h-full w-full flex-col gap-[16px] rounded-[16px] border border-elements xl:w-[50%]">
@@ -19,7 +23,7 @@ export const CartTotal: React.FC<Props> = ({ setIsModalOpen }) => {
             leading-[21px]
             text-secondary
           "
-        >{`Total for ${cartItems.length} items`}</p>
+        >{`Total for ${cartItemsLength} items`}</p>
       </div>
 
       <div className="p-[24px] pt-0">

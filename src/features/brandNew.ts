@@ -27,9 +27,12 @@ export const brandNewSlice = createSlice({
       return { ...state, loaded: true, hasError: false };
     });
 
-    builder.addCase(init.fulfilled, (state: InitialState, action: PayloadAction<Product[]>) => {
-      return { ...state, brandNew: action.payload, loaded: false };
-    });
+    builder.addCase(
+      init.fulfilled,
+      (state: InitialState, action: PayloadAction<Product[]>) => {
+        return { ...state, brandNew: action.payload, loaded: false };
+      },
+    );
 
     builder.addCase(init.rejected, state => {
       return { ...state, loaded: true };

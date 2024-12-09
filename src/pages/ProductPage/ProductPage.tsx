@@ -1,15 +1,15 @@
-import { useLocation, useNavigate } from "react-router-dom";
-import { useAppDispatch, useAppSelector } from "../../utils/hooks";
-import { PagePath } from "../../components/PagePath";
-import { Loader } from "../../components/Loader";
-import { useCallback, useEffect, useRef, useState } from "react";
-import { SectionHeader } from "../../components/SectionHeader";
-import { Card } from "../../components/Card";
+import { useLocation, useNavigate } from 'react-router-dom';
+import { useAppDispatch, useAppSelector } from '../../utils/hooks';
+import { PagePath } from '../../components/PagePath';
+import { Loader } from '../../components/Loader';
+import { useCallback, useEffect, useRef, useState } from 'react';
+import { SectionHeader } from '../../components/SectionHeader';
+import { Card } from '../../components/Card';
 import * as productActions from '../../features/products';
-import { ImageSlider } from "../../components/ImageSlider";
-import { ProductDetails } from "../../components/ProductDetails";
-import { ProductAbout } from "../../components/ProductAbout";
-import { ProductTech } from "../../components/ProductTech";
+import { ImageSlider } from '../../components/ImageSlider';
+import { ProductDetails } from '../../components/ProductDetails';
+import { ProductAbout } from '../../components/ProductAbout';
+import { ProductTech } from '../../components/ProductTech';
 
 export const ProductPage = () => {
   const navigate = useNavigate();
@@ -17,11 +17,9 @@ export const ProductPage = () => {
 
   const dispatch = useAppDispatch();
   const { products } = useAppSelector(state => state.products);
-  const {
-    selectedProduct,
-    loaded,
-    hasError,
-  } = useAppSelector(state => state.selectedProduct);
+  const { selectedProduct, loaded, hasError } = useAppSelector(
+    state => state.selectedProduct,
+  );
 
   const goBack = () => {
     if (state?.search) {
@@ -45,44 +43,44 @@ export const ProductPage = () => {
   const cardWidthInMobile = 212;
 
   const cardWidth =
-          windowWidth >= 1135
-               ? cardWidthInPC + gap
-               : windowWidth >= 640 
-               ? cardWidthInTablet + gap
-               : cardWidthInMobile + gap;
+    windowWidth >= 1135
+      ? cardWidthInPC + gap
+      : windowWidth >= 640
+        ? cardWidthInTablet + gap
+        : cardWidthInMobile + gap;
 
   const [currentCard, setCurrentCard] = useState(firstCard);
 
   const slider = useRef<HTMLDivElement>(null);
 
   const isFirstCard = currentCard === firstCard;
-  const isLastCard = currentCard === lastCard - (windowWidth >= 1135
-  ? 1
-  : windowWidth >= 640 
-  ? 0
-  : 0);
+  const isLastCard =
+    currentCard ===
+    lastCard - (windowWidth >= 1135 ? 1 : windowWidth >= 640 ? 0 : 0);
 
-  const transform = (cardWidth) * (currentCard - 1);
+  const transform = cardWidth * (currentCard - 1);
 
   const handleMoveLeft = useCallback(() => {
     if (!isFirstCard) {
-      setCurrentCard((prev) => prev - 1);
+      setCurrentCard(prev => prev - 1);
     }
   }, [isFirstCard]);
 
   const handleMoveRight = useCallback(() => {
     if (!isLastCard) {
-      setCurrentCard((prev) => prev + 1);
-    };
+      setCurrentCard(prev => prev + 1);
+    }
   }, [isLastCard]);
 
   useEffect(() => {
     dispatch(productActions.init());
-  }, [products]);
+  }, [products, dispatch]);
 
   return (
     <div>
-      {loaded && !hasError ? (<Loader />) : (
+      {loaded && !hasError ? (
+        <Loader />
+      ) : (
         <div className="mx-[16px] sm:mx-0">
           <div className="grids">
             <PagePath />
@@ -102,7 +100,11 @@ export const ProductPage = () => {
                 xl:col-[1/25]
               "
             >
-              <img src="./img/icons/Arrow_Left_Black.svg" alt="Arrow" className="icons" />
+              <img
+                src="./img/icons/Arrow_Left_Black.svg"
+                alt="Arrow"
+                className="icons"
+              />
               <p
                 className="
                 cursor-pointer 
@@ -116,7 +118,9 @@ export const ProductPage = () => {
                 hover:text-primary
               "
                 onClick={goBack}
-              >Back</p>
+              >
+                Back
+              </p>
             </div>
           </div>
 
@@ -130,7 +134,10 @@ export const ProductPage = () => {
                 sm:col-[1/13]
                 sm:mb-[40px]
                 xl:col-[1/25]
-              ">{selectedProduct.name}</h1>
+              "
+              >
+                {selectedProduct.name}
+              </h1>
 
               <ImageSlider />
 
@@ -186,7 +193,10 @@ export const ProductPage = () => {
             justify-center
             text-red-color
           "
-        >Product was not found</h1>)}
+        >
+          Product was not found
+        </h1>
+      )}
     </div>
   );
-}
+};

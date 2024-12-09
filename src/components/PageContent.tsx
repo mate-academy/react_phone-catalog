@@ -1,13 +1,13 @@
-import { useLocation, useSearchParams } from "react-router-dom";
-import { PagePath } from "./PagePath";
-import { Loader } from "./Loader";
-import { Selector } from "./Selector";
-import { Card } from "./Card";
-import { FetchError } from "./FetchError";
-import React from "react";
-import { Product } from "../types/product";
-import { filterProducts } from "../utils/filterProducts";
-import { PaginationButtons } from "./PaginationButtons";
+import { useLocation, useSearchParams } from 'react-router-dom';
+import { PagePath } from './PagePath';
+import { Loader } from './Loader';
+import { Selector } from './Selector';
+import { Card } from './Card';
+import { FetchError } from './FetchError';
+import React from 'react';
+import { Product } from '../types/product';
+import { filterProducts } from '../utils/filterProducts';
+import { PaginationButtons } from './PaginationButtons';
 
 type Props = {
   products: Product[];
@@ -16,7 +16,12 @@ type Props = {
   title: string;
 };
 
-export const PageContent: React.FC<Props> = ({ products, loaded, hasError, title }) => {
+export const PageContent: React.FC<Props> = ({
+  products,
+  loaded,
+  hasError,
+  title,
+}) => {
   const { pathname } = useLocation();
   const path = pathname.slice(1);
 
@@ -35,7 +40,7 @@ export const PageContent: React.FC<Props> = ({ products, loaded, hasError, title
     page,
   });
 
-  const productEmpty = (query !== null) && !filteredProducts.length && !loaded;
+  const productEmpty = query !== null && !filteredProducts.length && !loaded;
 
   const productsLength = products.length;
 
@@ -46,37 +51,36 @@ export const PageContent: React.FC<Props> = ({ products, loaded, hasError, title
 
         <h1 className="page-title">{title}</h1>
 
-        {loaded && !hasError ? (<Loader />)
-          : (
-            <div className={`${hasError ? 'hidden' : 'flex flex-col'}`}>
-              <div>
-                <p className="page-text-models">{`${products.length} models`}</p>
+        {loaded && !hasError ? (
+          <Loader />
+        ) : (
+          <div className={`${hasError ? 'hidden' : 'flex flex-col'}`}>
+            <div>
+              <p className="page-text-models">{`${products.length} models`}</p>
 
-                <Selector />
+              <Selector />
 
-                <div
-                  className={`
-                    ${(itemsOnPage === 'all' || itemsOnPage === null)
-                      ? 'mb-[64px] xl:mb-[80px]'
-                      : 'mb-[24px] sm:mb-[40px]'
+              <div
+                className={`
+                    ${
+                      itemsOnPage === 'all' || itemsOnPage === null
+                        ? 'mb-[64px] xl:mb-[80px]'
+                        : 'mb-[24px] sm:mb-[40px]'
                     }
                   `}
-                >
-                  <Card products={filteredProducts} />
-                </div>
+              >
+                <Card products={filteredProducts} />
               </div>
-
-              {itemsOnPage
-                && itemsOnPage !== 'all'
-                && <PaginationButtons
-                      productsLength={productsLength}
-                   />
-              }
             </div>
-          )}
 
-        {productEmpty &&
-          (<h1
+            {itemsOnPage && itemsOnPage !== 'all' && (
+              <PaginationButtons productsLength={productsLength} />
+            )}
+          </div>
+        )}
+
+        {productEmpty && (
+          <h1
             className="
               page-title
             flex
@@ -84,8 +88,7 @@ export const PageContent: React.FC<Props> = ({ products, loaded, hasError, title
               text-red-color
             "
           >{`There are no ${path} matching the query`}</h1>
-          )
-        }
+        )}
 
         {!loaded && hasError && (
           <FetchError title={`There are no ${path} yet`} />
@@ -93,4 +96,4 @@ export const PageContent: React.FC<Props> = ({ products, loaded, hasError, title
       </div>
     </div>
   );
-}
+};

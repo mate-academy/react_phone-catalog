@@ -57,70 +57,82 @@ export const getTablets = () => get<Model[]>('tablets');
 
 export const getAccessories = () => get<Model[]>('accessories');
 
-export const getSelectedProduct = async (
-  { 
-    category, 
-    id, 
-    namespaceId, 
-    color, 
-    capacity,
-    currentCapacity,
-    currentColor,
-   }: 
-  {
-    category: string, 
-    id?: string, 
-    namespaceId?: string, 
-    color?: string, 
-    capacity?: string,
-    currentCapacity?: string,
-    currentColor?: string,
-  }
-): Promise<Model | null> => {
+export const getSelectedProduct = async ({
+  category,
+  id,
+  namespaceId,
+  color,
+  capacity,
+  currentCapacity,
+  currentColor,
+}: {
+  category: string;
+  id?: string;
+  namespaceId?: string;
+  color?: string;
+  capacity?: string;
+  currentCapacity?: string;
+  currentColor?: string;
+}): Promise<Model | null> => {
   let product: Model | undefined;
 
   if (category === 'phones') {
     const phones: Model[] = [];
 
-    (await getPhones()).forEach(product => product.namespaceId === namespaceId 
-      ? phones.push(product)
-      : null
+    (await getPhones()).forEach(product =>
+      product.namespaceId === namespaceId ? phones.push(product) : null,
     );
 
     if (color && currentCapacity) {
-      product = phones.find(product => color === product.color && currentCapacity === product.capacity);
+      product = phones.find(
+        product =>
+          color === product.color && currentCapacity === product.capacity,
+      );
     } else if (capacity && currentColor) {
-      product = phones.find(product => capacity === product.capacity && currentColor === product.color);
+      product = phones.find(
+        product =>
+          capacity === product.capacity && currentColor === product.color,
+      );
     } else {
       product = (await getPhones()).find(pr => id === pr.id);
     }
   } else if (category === 'tablets') {
     const tablets: Model[] = [];
 
-    (await getTablets()).forEach(product => product.namespaceId === namespaceId 
-      ? tablets.push(product)
-      : null
+    (await getTablets()).forEach(product =>
+      product.namespaceId === namespaceId ? tablets.push(product) : null,
     );
 
     if (color && currentCapacity) {
-      product = tablets.find(product => color === product.color && currentCapacity === product.capacity);
+      product = tablets.find(
+        product =>
+          color === product.color && currentCapacity === product.capacity,
+      );
     } else if (capacity && currentColor) {
-      product = tablets.find(product => capacity === product.capacity && currentColor === product.color);
+      product = tablets.find(
+        product =>
+          capacity === product.capacity && currentColor === product.color,
+      );
     } else {
       product = (await getTablets()).find(pr => id === pr.id);
     }
   } else {
     const accessories: Model[] = [];
 
-    (await getAccessories()).forEach(product => product.namespaceId === namespaceId 
-      ? accessories.push(product)
-      : null
+    (await getAccessories()).forEach(product =>
+      product.namespaceId === namespaceId ? accessories.push(product) : null,
     );
 
     if (color && currentCapacity) {
-      product = accessories.find(product => color === product.color && currentCapacity === product.capacity);
+      product = accessories.find(
+        product =>
+          color === product.color && currentCapacity === product.capacity,
+      );
     } else if (capacity && currentColor) {
-      product = accessories.find(product => capacity === product.capacity && currentColor === product.color);
+      product = accessories.find(
+        product =>
+          capacity === product.capacity && currentColor === product.color,
+      );
     } else {
       product = (await getAccessories()).find(pr => id === pr.id);
     }

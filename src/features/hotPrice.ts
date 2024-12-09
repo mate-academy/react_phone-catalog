@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { getBrandNewModels } from '../api/api';
+import { getHotPrices } from '../api/api';
 import { Product } from '../types/product';
 
 type InitialState = {
@@ -15,7 +15,7 @@ const initialState: InitialState = {
 };
 
 export const init = createAsyncThunk('hotPrice/fetch', () => {
-  return getBrandNewModels();
+  return getHotPrices();
 });
 
 export const hotPriceSlice = createSlice({
@@ -27,9 +27,12 @@ export const hotPriceSlice = createSlice({
       return { ...state, loaded: true, hasError: false };
     });
 
-    builder.addCase(init.fulfilled, (state: InitialState, action: PayloadAction<Product[]>) => {
-      return { ...state, hotPrice: action.payload, loaded: false };
-    });
+    builder.addCase(
+      init.fulfilled,
+      (state: InitialState, action: PayloadAction<Product[]>) => {
+        return { ...state, hotPrice: action.payload, loaded: false };
+      },
+    );
 
     builder.addCase(init.rejected, state => {
       return { ...state, loaded: true };

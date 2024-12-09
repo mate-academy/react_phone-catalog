@@ -1,7 +1,7 @@
-import { useEffect } from "react";
-import { IMAGES_FOR_CATEGORY } from "../utils/ImagesForCategory";
-import { Link } from "react-router-dom";
-import { useAppDispatch, useAppSelector } from "../utils/hooks";
+import { useEffect } from 'react';
+import { IMAGES_FOR_CATEGORY } from '../utils/ImagesForCategory';
+import { Link } from 'react-router-dom';
+import { useAppDispatch, useAppSelector } from '../utils/hooks';
 import * as phonesActions from '../features/phones';
 import * as tabletsActions from '../features/tablets';
 import * as accessoriesActions from '../features/accessories';
@@ -24,7 +24,7 @@ export const Category = () => {
 
   return (
     <div className="mx-[16px] flex flex-col gap-[32px] sm:mx-0 sm:flex-row sm:gap-[16px]">
-      {IMAGES_FOR_CATEGORY.map(image =>
+      {IMAGES_FOR_CATEGORY.map(image => (
         <Link to={image.path} key={image.id} className="h-full w-full">
           <div
             style={{ backgroundColor: image.bgColor }}
@@ -54,28 +54,28 @@ export const Category = () => {
               object-contain
             "
               style={(() => {
-                if (image.title === 'Tablets') return { transform: 'scale(1.4)', left: '31%', top: '34%' };
-                if (image.title === 'Accessories') return { transform: 'scale(1.7)', left: '50%', top: '11%' };
+                if (image.title === 'Tablets')
+                  return { transform: 'scale(1.4)', left: '31%', top: '34%' };
+                if (image.title === 'Accessories')
+                  return { transform: 'scale(1.7)', left: '50%', top: '11%' };
                 return {};
               })()}
             />
           </div>
 
           <div className="mt-[24px] flex flex-col gap-[4px]">
-            <h3 className="font-mont-semi text-[20px] leading-[25.56px] text-primary">{image.title}</h3>
+            <h3 className="font-mont-semi text-[20px] leading-[25.56px] text-primary">
+              {image.title}
+            </h3>
             <p className="text-[14px] font-semibold leading-[21px] text-secondary">
-              {
-                (image.title === 'Mobile phones'
-                  && `${phonesLength} models`)
-                || (image.title === 'Tablets'
-                  && `${tabletsLength} models`)
-                || (image.title === 'Accessories'
-                  && `${accessoriesLength} models`)
-              }
+              {(image.title === 'Mobile phones' && `${phonesLength} models`) ||
+                (image.title === 'Tablets' && `${tabletsLength} models`) ||
+                (image.title === 'Accessories' &&
+                  `${accessoriesLength} models`)}
             </p>
           </div>
         </Link>
-      )}
+      ))}
     </div>
   );
-}
+};

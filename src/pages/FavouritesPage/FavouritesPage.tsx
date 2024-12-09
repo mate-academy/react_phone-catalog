@@ -1,6 +1,6 @@
-import { Card } from "../../components/Card";
-import { PagePath } from "../../components/PagePath";
-import { useAppSelector } from "../../utils/hooks";
+import { Card } from '../../components/Card';
+import { PagePath } from '../../components/PagePath';
+import { useAppSelector } from '../../utils/hooks';
 
 export const FavouritesPage = () => {
   const { favourites } = useAppSelector(state => state.products);

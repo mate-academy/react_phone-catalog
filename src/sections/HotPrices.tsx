@@ -1,9 +1,9 @@
-import { useCallback, useEffect, useRef, useState } from "react";
-import { Card } from "../components/Card";
-import { SectionHeader } from "../components/SectionHeader";
-import { useAppDispatch, useAppSelector } from "../utils/hooks";
+import { useCallback, useEffect, useRef, useState } from 'react';
+import { Card } from '../components/Card';
+import { SectionHeader } from '../components/SectionHeader';
+import { useAppDispatch, useAppSelector } from '../utils/hooks';
 import * as hotPriceActions from '../features/hotPrice';
-import { Loader } from "../components/Loader";
+import { Loader } from '../components/Loader';
 
 export const HotPrices = () => {
   const dispatch = useAppDispatch();
@@ -32,24 +32,22 @@ export const HotPrices = () => {
   const slider = useRef<HTMLDivElement>(null);
 
   const isFirstCard = currentCard === firstCard;
-  const isLastCard = currentCard === lastCard - (windowWidth >= 1135
-    ? 1
-    : windowWidth >= 640
-      ? 0
-      : 0);
+  const isLastCard =
+    currentCard ===
+    lastCard - (windowWidth >= 1135 ? 1 : windowWidth >= 640 ? 0 : 0);
 
-  const transform = (cardWidth) * (currentCard - 1);
+  const transform = cardWidth * (currentCard - 1);
 
   const handleMoveLeft = useCallback(() => {
     if (!isFirstCard) {
-      setCurrentCard((prev) => prev - 1);
+      setCurrentCard(prev => prev - 1);
     }
   }, [isFirstCard]);
 
   const handleMoveRight = useCallback(() => {
     if (!isLastCard) {
-      setCurrentCard((prev) => prev + 1);
-    };
+      setCurrentCard(prev => prev + 1);
+    }
   }, [isLastCard]);
 
   useEffect(() => {
@@ -68,7 +66,9 @@ export const HotPrices = () => {
         xl:mb-[80px]
       "
     >
-      {loaded ? (<Loader />) : (
+      {loaded ? (
+        <Loader />
+      ) : (
         <div>
           <div
             className="
@@ -101,4 +101,4 @@ export const HotPrices = () => {
       )}
     </section>
   );
-}
+};

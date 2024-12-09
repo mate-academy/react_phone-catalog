@@ -1,5 +1,5 @@
-import classNames from "classnames";
-import React from "react";
+import classNames from 'classnames';
+import React from 'react';
 
 type Props = {
   title: string;
@@ -25,25 +25,47 @@ export const SectionHeader: React.FC<Props> = ({
       {hasButtons && (
         <div className="flex gap-[16px]">
           <button
-            className={classNames("section-buttons", { 'border-elements': isFirstCard })}
+            className={classNames('section-buttons', {
+              'border-elements': isFirstCard,
+            })}
             onClick={handleMoveLeft}
             disabled={isFirstCard}
           >
-            {isFirstCard
-              ? (<img src="./img/icons/Arrow_Left.svg" alt="ArrowLeft" className="image" />)
-              : (<img src="./img/icons/Arrow_Left_Black.svg" alt="ArrowLeft" className="image" />)
-            }
+            {isFirstCard ? (
+              <img
+                src="./img/icons/Arrow_Left.svg"
+                alt="ArrowLeft"
+                className="image"
+              />
+            ) : (
+              <img
+                src="./img/icons/Arrow_Left_Black.svg"
+                alt="ArrowLeft"
+                className="image"
+              />
+            )}
           </button>
 
           <button
-            className={classNames("section-buttons", { 'border-elements': isLastCard })}
+            className={classNames('section-buttons', {
+              'border-elements': isLastCard,
+            })}
             onClick={handleMoveRight}
             disabled={isLastCard}
           >
-            {isLastCard
-              ? (<img src="./img/icons/Arrow_Right.svg" alt="ArrowRight" className="image" />)
-              : (<img src="./img/icons/Arrow_Right_Black.svg" alt="ArrowRightt" className="image" />)
-            }
+            {isLastCard ? (
+              <img
+                src="./img/icons/Arrow_Right.svg"
+                alt="ArrowRight"
+                className="image"
+              />
+            ) : (
+              <img
+                src="./img/icons/Arrow_Right_Black.svg"
+                alt="ArrowRightt"
+                className="image"
+              />
+            )}
           </button>
         </div>
       )}
