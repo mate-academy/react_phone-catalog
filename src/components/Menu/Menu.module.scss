@@ -6,15 +6,10 @@
 
   box-sizing: border-box;
   height: 100vh;
+  width: 100%;
   margin: 0;
   padding: 0;
 
-
-  &__container {
-    @include mixin.flex(flex, false, false, column);
-
-    height: 100%;
-  }
 
   &__top {
     @include mixin.flex(flex, center, false, column);
@@ -47,4 +42,3 @@
     }
   }
 }
-

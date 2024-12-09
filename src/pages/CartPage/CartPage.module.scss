@@ -90,7 +90,13 @@
     @include mixin.sizes(100%, 48px);
 
     background-color: var.$primary-gray;
+    cursor: pointer;
     color: var.$white;
+    transition: box-shadow 0.3s;
+
+    &:hover {
+      box-shadow: 0 3px 13px 0 #17203166;
+    }
   }
 
   &__empty {

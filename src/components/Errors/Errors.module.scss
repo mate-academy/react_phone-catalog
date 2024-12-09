@@ -16,6 +16,7 @@
   &__text--fav {
     color: var.$red;
     font-size: 24px;
+
     @include mixin.flex(flex, center, flex-start, column);
   }
 
@@ -23,6 +24,7 @@
     width: 150px;
     padding: 10px;
     border: 2px solid var.$elements;
+    cursor: pointer;
     transition: border 0.3s;
 
     &:hover {

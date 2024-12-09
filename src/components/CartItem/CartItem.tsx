@@ -25,7 +25,7 @@ export const CartItem: React.FC<Props> = ({ cartProduct }) => {
           className={styles['item__button-cross']}
           onClick={() => removeFromCart(itemId)}
         >
-          <img src={cross} alt="Close" />
+          <img src={cross} alt="Close" className={styles.item__image} />
         </button>
 
         <div className={styles['item__img-container']}>

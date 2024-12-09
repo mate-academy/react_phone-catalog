@@ -21,7 +21,7 @@ export const Pagination: React.FC<Props> = ({
 }) => {
   const [searchParams, setSearchParams] = useSearchParams();
 
-  const MAX_VISIBLE_PAGES = 6;
+  const MAX_VISIBLE_PAGES = 5;
 
   const startPage = Math.max(1, page - Math.floor(MAX_VISIBLE_PAGES / 2));
   const endPage = Math.min(

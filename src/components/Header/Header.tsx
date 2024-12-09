@@ -1,64 +1,45 @@
 /* eslint-disable react/react-in-jsx-scope */
 import { useEffect, useState } from 'react';
-import cn from 'classnames';
-import { Link, useLocation, useSearchParams } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 import { Logo } from '../Logo';
 import { Navbar } from '../Navbar';
-import { Favourites } from '../Favourites';
 import { ShoppingCart } from '../ShoppingCart';
+import { Favourites } from '../Favourites';
 
 import styles from './Header.module.scss';
 import menu from '../../images/icons/menu_burger.svg';
 import close from '../../images/icons/close.svg';
-import { Search } from '../Search';
-import { handleClickToTop } from '../../helpers/scrollToTop';
 
 export const Header = () => {
   const { pathname } = useLocation();
   const [openMenu, setOpenMenu] = useState(false);
-  const [query, setQuery] = useState('');
-  const [isQuery, setIsQuery] = useState(false);
-  const [searchParams, setSearchParams] = useSearchParams();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    document.body.style.overflow = openMenu ? 'hidden' : '';
+
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [openMenu]);
+
+  useEffect(() => {
+    if (pathname !== '/menu' && openMenu) {
+      setOpenMenu(false);
+      document.body.style.overflow = '';
+    }
+  }, [pathname, openMenu]);
 
   const handleOpenMenu = () => {
     setOpenMenu(true);
+    navigate('/menu');
   };
 
   const handleCloseMenu = () => {
     setOpenMenu(false);
+    navigate('/');
   };
-
-  useEffect(() => {
-    if (openMenu) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = '';
-    }
-
-    return () => {
-      document.body.style.overflow = '';
-      setOpenMenu(false);
-    };
-  }, [openMenu, pathname]);
-
-  useEffect(() => {
-    switch (pathname) {
-      case '/phones':
-      case '/tablets':
-      case '/accessories':
-        handleClickToTop();
-        setIsQuery(true);
-        break;
-
-      default:
-        setIsQuery(false);
-    }
-
-    const initialQuery = searchParams.get('query') || '';
-
-    setQuery(initialQuery);
-  }, [pathname, searchParams]);
 
   return (
     <nav className={styles.header}>
@@ -69,33 +50,27 @@ export const Header = () => {
         </div>
 
         <div className={styles.header__right}>
-          {isQuery && (
-            <Search
-              query={query}
-              setQuery={setQuery}
-              searchParams={searchParams}
-              setSearchParams={setSearchParams}
-            />
-          )}
-          <Favourites className={styles.header__favourites} />
-          <ShoppingCart className={styles.header__cart} />
-
-          {openMenu && pathname === '/menu' ? (
-            <Link
-              to="/"
-              className={cn(styles.header__item_close)}
+          {openMenu ? (
+            <button
+              className={styles['header__menu-btn']}
               onClick={handleCloseMenu}
             >
-              <img src={close} alt="Cross" className={styles.header__image} />
-            </Link>
+              <img src={close} className={styles.header__image} />
+            </button>
           ) : (
-            <Link
-              to="/menu"
-              className={cn(styles.header__item_menu)}
+            <button
+              className={styles['header__menu-btn']}
               onClick={handleOpenMenu}
             >
-              <img src={menu} alt="Menu" className={styles.header__image} />
-            </Link>
+              <img src={menu} className={styles.header__image} />
+            </button>
+          )}
+
+          {!openMenu && (
+            <>
+              <Favourites className={styles.header__favourites} />
+              <ShoppingCart className={styles.header__cart} />
+            </>
           )}
         </div>
       </div>

@@ -2,23 +2,25 @@
 @use "../../utils/variables" as var;
 
 .breadcrumbs {
+  width: max-content;
+
   &__container {
     @include mixin.flex(flex, center, flex-start, row);
+    @include mixin.responsive-property(margin-bottom, 20px, 24px, 32px);
+  }
 
-    @include mixin.on-mobile {
-      margin-bottom: 20px;
-    }
+  &__link {
+    @include mixin.sizes(16px, 16px);
 
-    @include mixin.on-tablet {
-      margin-bottom: 24px;
-    }
+    display: flex;
+    margin-right: 8px;
+    transition: transform 0.3s;
 
-    @include mixin.on-desktop {
-      margin-bottom: 32px;
+    &:hover {
+      @include mixin.hover-effect;
     }
   }
 
-  &__link,
   &__arrow {
     @include mixin.sizes(16px, 16px);
 
@@ -28,7 +30,7 @@
 
   &__img,
   &__image {
-    align-items: center;
+    @include mixin.flex(flex, center, center, row);
   }
 
   &__path {

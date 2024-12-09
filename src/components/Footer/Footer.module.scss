@@ -43,6 +43,13 @@
     text-transform: uppercase;
     text-decoration: none;
     color: var.$secondary-gray;
+    transition: transform 0.3s, text-decoration 0.3s;
+    cursor: pointer;
+
+    &:hover {
+      transform: scale(1.05);
+      text-decoration: underline;
+    }
 
     @include mixin.uppercase-desktop-tablet;
 
@@ -70,7 +77,8 @@
 
     color: var.$secondary-gray;
     margin-right: 16px;
-    transition: all 0.3s;
+    transition: transform 0.3s;
+    cursor: pointer;
 
     &:hover {
       @include mixin.hover-effect;
@@ -83,7 +91,8 @@
 
     border: 1px solid var.$icons-placeholders;
     background-color: white;
-    transition: all 0.3s;
+    transition: border 0.3s;
+    cursor: pointer;
 
     &:hover {
       border: 1px solid var.$primary-gray;
@@ -94,5 +103,10 @@
     @include mixin.sizes(16px, 16px);
 
     color: var.$primary-gray;
+    transition: transform 0.3s;
+
+    &:hover {
+      @include mixin.hover-effect;
+    }
   }
 }

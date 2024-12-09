@@ -53,6 +53,7 @@
     @include mixin.flex(flex, center, center, false);
 
     border: 1px solid var.$elements;
+    cursor: pointer;
     transition: border 0.3s;
 
     &:hover {
@@ -67,6 +68,7 @@
   &__name {
     text-decoration: none;
     color: var.$primary-gray;
+    cursor: pointer;
     transition: text-decoration 0.3s;
 
     &:hover {
@@ -79,7 +81,8 @@
   }
 
   &__button-cross {
-    transition: scale 0.3s;
+    cursor: pointer;
+    transition: transform 0.3s;
 
     &:hover {
       @include mixin.hover-effect;

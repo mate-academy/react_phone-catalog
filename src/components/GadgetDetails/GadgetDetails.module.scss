@@ -47,6 +47,7 @@
     }
 
     border: 1px solid var.$elements;
+    cursor: pointer;
     transition: border 0.3s;
 
     &--active {

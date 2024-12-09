@@ -15,10 +15,8 @@
   max-width: 650px;
   height: 200px;
 
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
+  @include mixin.flex(flex, center, center, column);
+
   background-color: var.$primary-gray;
   color: var.$white;
   border: 1px solid var.$primary-gray;
@@ -31,6 +29,7 @@
     top: 10px;
     right: 10px;
     padding: 0;
+    cursor: pointer;
     background-color: var.$white;
   }
 
@@ -53,6 +52,7 @@
   }
 
   &__button {
+    cursor: pointer;
     transition: transform 0.3s;
 
     &:hover {

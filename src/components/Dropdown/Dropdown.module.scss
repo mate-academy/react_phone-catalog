@@ -16,12 +16,23 @@
   }
 
   &__button {
-    @include mixin.sizes(176px, 40px);
+    @include mixin.on-mobile {
+      @include mixin.sizes(148px, 40px);
+
+      padding: 8px;
+    }
+
+    @include mixin.on-tablet {
+      @include mixin.sizes(176px, 40px);
+
+      padding: 12px;
+    }
+
     @include mixin.flex(flex, center, space-between, false);
 
     border: 1px solid var.$elements;
     text-align: center;
-    padding: 12px;
+    cursor: pointer;
     transition: border 0.3s;
 
     &:hover {
@@ -40,18 +51,29 @@
   &__list {
     position: absolute;
     top: 100%;
-    width: 176px;
     border: 1px solid var.$elements;
     margin-top: 4px;
-    padding: 12px;
     background-color: var.$white;
     z-index: 2;
+
+    @include mixin.on-mobile {
+      width: 148px;
+      padding: 8px;
+    }
+
+    @include mixin.on-tablet {
+      width: 176px;
+      padding: 12px;
+    }
   }
 
   &__item {
     color: var.$secondary-gray;
     padding-bottom: 12px;
-    transition: color 0.3s, transform 0.3s;
+    cursor: pointer;
+    transition:
+      color 0.3s,
+      transform 0.3s;
 
     &:hover {
       color: var.$primary-gray;

@@ -53,11 +53,7 @@ export const Breadcrumbs: React.FC<Props> = ({ gadget }) => {
         )}
       </div>
 
-      {itemId && gadget && (
-        <>
-          <BackLink />
-        </>
-      )}
+      {itemId && gadget && <BackLink />}
     </section>
   );
 };

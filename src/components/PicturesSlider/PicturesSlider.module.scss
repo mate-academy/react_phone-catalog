@@ -46,6 +46,7 @@
     background-color: var.$white;
     border: solid 1px var.$icons-placeholders;
     border-radius: 10px;
+    cursor: pointer;
     transition: border 0.3s;
 
     @include mixin.on-tablet {
@@ -103,6 +104,12 @@
 
   &__img {
     @include mixin.sizes(20px, 20px);
+
+    transition: transform 0.3s;
+
+    &:hover {
+      @include mixin.hover-effect;
+    }
   }
 }
 

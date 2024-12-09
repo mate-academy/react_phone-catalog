@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { useLocation, useSearchParams } from 'react-router-dom';
 import styles from './ProductsCatalog.module.scss';
 import { ProductsList } from '../ProductsList';
 import { Dropdown } from '../Dropdown';
@@ -10,6 +10,9 @@ import { ItemsOnPage } from '../../types/ItemsOnPage';
 import { getNumbers } from '../../helpers/getNumbers';
 import { Breadcrumbs } from '../Breadcrumbs';
 import { Product } from '../../types/Product';
+import { Search } from '../Search';
+import { handleClickToTop } from '../../helpers/scrollToTop';
+import { NoSearchResults } from '../Errors/NoSearchResult';
 
 type Props = {
   products: Product[];
@@ -18,12 +21,46 @@ type Props = {
 
 export const ProductsCatalog: React.FC<Props> = ({ products, title }) => {
   const [searchParams, setSearchParams] = useSearchParams();
+  const location = useLocation();
   const query = searchParams.get('query') || '';
   const sort = (searchParams.get('sort') as SortField) || SortField.age;
   const perPage =
     (searchParams.get('perPage') as ItemsOnPage) || ItemsOnPage.eight;
 
   const [page, setPage] = useState(Number(searchParams.get('page')) || 1);
+
+  const [queryText, setQueryText] = useState('');
+  const [isQuery, setIsQuery] = useState(false);
+  const [placeholder, setPlaceholder] = useState('');
+
+  useEffect(() => {
+    switch (location.pathname) {
+      case '/phones':
+        handleClickToTop();
+        setIsQuery(true);
+        setPlaceholder('in phones');
+        break;
+
+      case '/tablets':
+        handleClickToTop();
+        setIsQuery(true);
+        setPlaceholder('in tablets');
+        break;
+
+      case '/accessories':
+        handleClickToTop();
+        setIsQuery(true);
+        setPlaceholder('in accessories');
+        break;
+
+      default:
+        setIsQuery(false);
+    }
+
+    const initialQuery = searchParams.get('query') || '';
+
+    setQueryText(initialQuery);
+  }, [location.pathname, searchParams]);
 
   const [sortedProducts, amount] = getSortedProducts(
     products,
@@ -70,6 +107,16 @@ export const ProductsCatalog: React.FC<Props> = ({ products, title }) => {
               defaultValue={ItemsOnPage.eight}
             />
           </div>
+
+          {isQuery && (
+            <Search
+              query={queryText}
+              setQuery={setQueryText}
+              placeholder={placeholder}
+              searchParams={searchParams}
+              setSearchParams={setSearchParams}
+            />
+          )}
         </div>
         <ProductsList products={sortedProducts} />
       </div>
@@ -79,6 +126,8 @@ export const ProductsCatalog: React.FC<Props> = ({ products, title }) => {
           <Pagination countPages={countPages} page={page} setPage={setPage} />
         </div>
       )}
+
+      {sortedProducts.length === 0 && <NoSearchResults />}
     </div>
   );
 };

@@ -10,11 +10,21 @@
     @include mixin.flex(flex, center, space-between, false);
 
     @include mixin.on-tablet {
-      height: 48px;
+      @include mixin.sizes(100%, 48px);
     }
 
     @include mixin.on-desktop {
-      height: 64px;
+      @include mixin.sizes(100%, 64px);
+    }
+  }
+
+  &__logo {
+    @include mixin.on-tablet {
+      margin-right: 32px;
+    }
+
+    @include mixin.on-desktop {
+      margin-right: 64px;
     }
   }
 
@@ -25,20 +35,7 @@
     }
   }
 
-  &__item_menu {
-    @include mixin.on-mobile {
-      @include mixin.sizes(48px, 48px);
-      @include mixin.flex(flex, center, center, false);
-
-      border-left: solid 0.5px var.$elements;
-    }
-
-    @include mixin.on-tablet {
-      display: none;
-    }
-  }
-
-  &__item_close {
+  &__menu-btn {
     @include mixin.on-mobile {
       @include mixin.sizes(48px, 48px);
       @include mixin.flex(flex, center, center, false);
@@ -53,15 +50,12 @@
 
   &__image {
     @include mixin.sizes(16px, 16px);
-  }
 
-  &__logo {
-    @include mixin.on-tablet {
-      margin-right: 32px;
-    }
+    cursor: pointer;
+    transition: transform 0.3s;
 
-    @include mixin.on-desktop {
-      margin-right: 64px;
+    &:hover {
+      transform: scale(1.05);
     }
   }
 

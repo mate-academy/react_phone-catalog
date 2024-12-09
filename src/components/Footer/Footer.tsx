@@ -14,24 +14,44 @@ export const Footer = () => {
     return null;
   }
 
+  const footerLinks: { title: string; path: string }[] = [
+    {
+      title: 'Github',
+      path: 'https://github.com/MartaChobaniuk/react_phone-catalog',
+    },
+
+    {
+      title: 'Contacts',
+      path: 'https://www.linkedin.com/in/marta-chobaniuk-1b7995260/',
+    },
+
+    {
+      title: 'Rights',
+      path: 'https://www.linkedin.com/in/marta-chobaniuk-1b7995260/',
+    },
+  ];
+
   return (
     <div className={styles.footer}>
       <Logo className={styles.footer__logo} />
 
       <div className={styles.footer__link_container}>
-        <Link to="/" className={styles.footer__item}>
-          Github
-        </Link>
-        <Link to="/" className={styles.footer__item}>
-          Contacts
-        </Link>
-        <Link to="/" className={styles.footer__item}>
-          Rights
-        </Link>
+        {footerLinks.map(link => (
+          <Link
+            key={link.title}
+            to={link.path}
+            className={styles.footer__item}
+            target="_blank"
+          >
+            {link.title}
+          </Link>
+        ))}
       </div>
 
       <div className={styles.footer__button_container}>
-        <span className={styles.footer__text}>Back to top</span>
+        <span className={styles.footer__text} onClick={handleClickToTop}>
+          Back to top
+        </span>
         <button className={styles.footer__button} onClick={handleClickToTop}>
           <img src={top} alt="Arrow-Up" className={styles.footer__image} />
         </button>

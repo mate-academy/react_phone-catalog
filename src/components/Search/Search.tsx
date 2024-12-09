@@ -9,6 +9,7 @@ import search from '../../images/icons/search.svg';
 type Props = {
   query: string;
   setQuery: (value: string) => void;
+  placeholder: string;
   searchParams: URLSearchParams;
   setSearchParams: (params: URLSearchParams) => void;
 };
@@ -16,6 +17,7 @@ type Props = {
 export const Search: React.FC<Props> = ({
   query,
   setQuery,
+  placeholder,
   searchParams,
   setSearchParams,
 }) => {
@@ -54,21 +56,24 @@ export const Search: React.FC<Props> = ({
 
   return (
     <div className={styles.search}>
-      <input
-        value={query}
-        onChange={handleQueryChange}
-        type="text"
-        placeholder="Search"
-        className={styles.search__input}
-      />
+      <p className={styles.search__title}>Search</p>
+      <div className={styles.search__container}>
+        <input
+          value={query}
+          onChange={handleQueryChange}
+          type="text"
+          placeholder={placeholder}
+          className={styles.search__input}
+        />
 
-      {query.length > 0 ? (
-        <button onClick={clearQuery} className={styles.search__button}>
-          <img className={styles.search__img} src={close} alt="Cross" />
-        </button>
-      ) : (
-        <img className={styles.search__img} src={search} alt="Search" />
-      )}
+        {query.length > 0 ? (
+          <button onClick={clearQuery} className={styles.search__button}>
+            <img className={styles.search__img} src={close} alt="Cross" />
+          </button>
+        ) : (
+          <img className={styles.search__img} src={search} alt="Search" />
+        )}
+      </div>
     </div>
   );
 };

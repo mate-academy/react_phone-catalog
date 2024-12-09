@@ -8,6 +8,13 @@ type Props = {
 };
 
 export const Navbar: React.FC<Props> = ({ className }) => {
+  const navLinks = [
+    { path: '/', label: 'Home', end: true },
+    { path: '/phones', label: 'Phones' },
+    { path: '/tablets', label: 'Tablets' },
+    { path: '/accessories', label: 'Accessories' },
+  ];
+
   const getActiveLink = ({ isActive }: { isActive: boolean }) =>
     cn(
       styles.navbar__item,
@@ -17,18 +24,11 @@ export const Navbar: React.FC<Props> = ({ className }) => {
 
   return (
     <>
-      <NavLink to="/" className={getActiveLink} end>
-        Home
-      </NavLink>
-      <NavLink to="/phones" className={getActiveLink}>
-        Phones
-      </NavLink>
-      <NavLink to="/tablets" className={getActiveLink}>
-        Tablets
-      </NavLink>
-      <NavLink to="/accessories" className={getActiveLink}>
-        Accessories
-      </NavLink>
+      {navLinks.map(({ path, label, end }) => (
+        <NavLink key={path} to={path} className={getActiveLink} end={end}>
+          {label}
+        </NavLink>
+      ))}
     </>
   );
 };

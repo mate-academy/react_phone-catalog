@@ -4,9 +4,16 @@
 .catalog {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 24px 32px 64px;
   display: flex;
   flex-direction: column;
+
+  @include mixin.on-mobile {
+    padding: 24px 20px 34px;
+  }
+
+  @include mixin.on-tablet {
+    padding: 24px 32px 64px;
+  }
 
   &__content {
     margin: 0 auto;
@@ -52,16 +59,6 @@
     flex-direction: row;
     gap: 10px;
 
-    @include mixin.on-mobile {
-      margin-bottom: 20px;
-    }
-
-    @include mixin.on-tablet {
-      margin-bottom: 24px;
-    }
-
-    @include mixin.on-desktop {
-      margin-bottom: 32px;
-    }
+    @include mixin.responsive-property(margin-bottom, 20px, 24px, 32px);
   }
 }

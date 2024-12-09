@@ -50,6 +50,8 @@
 
   &__image {
     @include mixin.sizes(16px, 16px);
+
+    cursor: pointer;
   }
 
   &__count {

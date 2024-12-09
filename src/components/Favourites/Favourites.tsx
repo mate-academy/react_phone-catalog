@@ -1,10 +1,9 @@
 import React, { useContext } from 'react';
 import cn from 'classnames';
 import { NavLink } from 'react-router-dom';
-import styles from './Favourites.module.scss';
-
-import fav from '../../images/icons/favourites.svg';
 import { FavouritesContext } from '../../store/FavouritesContex';
+import styles from './Favourites.module.scss';
+import fav from '../../images/icons/favourites.svg';
 
 type Props = {
   className?: string;
