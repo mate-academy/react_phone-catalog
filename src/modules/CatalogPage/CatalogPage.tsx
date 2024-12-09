@@ -78,7 +78,7 @@ export const CatalogPage: React.FC<Props> = ({ category }) => {
   return (
     <div className={style.catalogPage}>
       <div className={style.breadcrumbs}>
-        <Breadcrumbs name="Phones" />
+        <Breadcrumbs />
       </div>
 
       {loading && <Loader />}

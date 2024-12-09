@@ -1,17 +1,19 @@
+import { Product } from '../types/Product';
+import { ProductData } from '../types/ProductData';
 import { client } from '../utils/fetchClients';
 
 export const getAllProducts = () => {
-  return client.get('api/products.json');
+  return client.get<Product[]>('api/products.json');
 };
 
 export const getPhones = () => {
-  return client.get('api/phones.json');
+  return client.get<ProductData>('api/phones.json');
 };
 
 export const getTablets = () => {
-  return client.get('api/tablets.json');
+  return client.get<ProductData>('api/tablets.json');
 };
 
 export const getAccessories = () => {
-  return client.get('api/accessories.json');
+  return client.get<ProductData>('api/accessories.json');
 };

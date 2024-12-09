@@ -14,6 +14,7 @@ import { NotFoundPage } from '../NotFoundPage';
 import { FavouritesPage } from '../FavouritesPage';
 import { CartPage } from '../CartPage';
 import { CatalogPage } from '../CatalogPage';
+import { ProductDetailsPage } from '../ProductDetailsPage';
 export const Root = () => (
   <Provider store={store}>
     <Router>
@@ -21,12 +22,18 @@ export const Root = () => (
         <Route path="/" element={<App />}>
           <Route index element={<HomePage />} />
           <Route path="home" element={<Navigate to={'/'} replace />} />
-          <Route path="phones" element={<CatalogPage category="phones" />} />
-          <Route path="tablets" element={<CatalogPage category="tablets" />} />
-          <Route
-            path="accessories"
-            element={<CatalogPage category="accessories" />}
-          />
+          <Route path="phones">
+            <Route index element={<CatalogPage category="phones" />} />
+            <Route path={':productId'} element={<ProductDetailsPage />} />
+          </Route>
+          <Route path="tablets">
+            <Route index element={<CatalogPage category="tablets" />} />
+            <Route path={':productId'} element={<ProductDetailsPage />} />
+          </Route>
+          <Route path="accessories">
+            <Route index element={<CatalogPage category="accessories" />} />
+            <Route path={':productId'} element={<ProductDetailsPage />} />
+          </Route>
 
           <Route path="favourites" element={<FavouritesPage />} />
           <Route path="cart" element={<CartPage />} />

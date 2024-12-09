@@ -25,8 +25,7 @@ export const Breadcrumbs: React.FC<Props> = ({ name }) => {
         {category}
       </NavLink>
 
-      {/* added !, to prevent it from showing  */}
-      {!name && (
+      {name && (
         <>
           <img
             src={rightArrow}

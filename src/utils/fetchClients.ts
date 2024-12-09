@@ -17,5 +17,5 @@ function request(url: string, method: string) {
 }
 
 export const client = {
-  get: (url: string) => request(url, 'GET'),
+  get: <T>(url: string): Promise<T> => request(url, 'GET'),
 };

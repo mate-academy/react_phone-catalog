@@ -1,0 +1,11 @@
+@import '../../styles/main';
+
+.productDetails {
+  @include page-container;
+  
+  margin-top: 24px;
+
+  .breadcrumbs {
+    margin-bottom: 24px;
+  }
+}
