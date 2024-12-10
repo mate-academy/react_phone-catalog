@@ -1,4 +1,4 @@
-import { ProductCard } from '../../components/ProductCard';
+import { ProductSlider } from '../../components/ProductSlider';
 import './HomePage.scss';
 
 export const HomePage = () => {
@@ -27,26 +27,8 @@ export const HomePage = () => {
           </div>
         </section>
 
-        <section className="home-page__models home-page__section">
-          <div className="home-page__section-top">
-            <h2 className="home-page__section-title">Brand new models</h2>
-
-            <div className="home-page__section-buttons">
-              <div className="button--arrow button--arrow--disabled">
-                <img src="/icons/arrow_left.svg" alt="Arrow left" />
-              </div>
-              <div className="button--arrow">
-                <img src="/icons/arrow_right.svg" alt="Arrow right" />
-              </div>
-            </div>
-          </div>
-
-          <div className="home-page__models-container">
-            <ProductCard />
-            <ProductCard />
-            <ProductCard />
-            <ProductCard />
-          </div>
+        <section className="home-page__models">
+          <ProductSlider title="Brand new models" />
         </section>
 
         <section className="home-page__categories home-page__section">
@@ -95,26 +77,8 @@ export const HomePage = () => {
           </div>
         </section>
 
-        <section className="home-page__hot-prices home-page__section">
-          <div className="home-page__section-top">
-            <h2 className="home-page__section-title">Hot prices</h2>
-
-            <div className="home-page__section-buttons">
-              <div className="button--arrow button--arrow--disabled">
-                <img src="/icons/arrow_left.svg" alt="Arrow left" />
-              </div>
-              <div className="button--arrow">
-                <img src="/icons/arrow_right.svg" alt="Arrow right" />
-              </div>
-            </div>
-          </div>
-
-          <div className="home-page__hot-prices-container">
-            <ProductCard oldPrice={1299} />
-            <ProductCard oldPrice={1299} />
-            <ProductCard oldPrice={1299} />
-            <ProductCard oldPrice={1299} />
-          </div>
+        <section className="home-page__hot-prices">
+          <ProductSlider title="Hot prices" />
         </section>
       </main>
     </div>

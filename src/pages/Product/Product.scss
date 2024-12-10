@@ -57,7 +57,7 @@
     }
   }
 
-  &__info {
+  &__details {
     grid-column: 14 / 21;
 
     &-name {
@@ -65,6 +65,14 @@
 
       color: #89939a;
     }
+  }
+
+  &__id {
+    grid-column: -5 / -1;
+
+    text-align: right;
+
+    color: #b4bdc3;
   }
 
   &__color {
@@ -120,10 +128,6 @@
     align-items: center;
   }
 
-  &__price {
-    color: #313237;
-  }
-
   &__old-price {
     position: relative;
 
@@ -153,5 +157,37 @@
 
   &__specs-container {
     margin-top: 32px;
+  }
+
+  &__description {
+    margin-top: 80px;
+
+    @include page-grid;
+
+    &-info {
+      grid-column: 1 / 13;
+
+      &-container {
+        margin-top: 16px;
+
+        display: flex;
+        gap: 32px;
+        flex-direction: column;
+      }
+
+      &-text {
+        margin-top: 16px;
+
+        color: #89939a;
+      }
+    }
+
+    &-specs {
+      grid-column: 14 / -1;
+    }
+  }
+
+  &__slider {
+    margin-top: 80px;
   }
 }

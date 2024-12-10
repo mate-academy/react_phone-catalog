@@ -13,17 +13,6 @@
     display: flex;
     gap: 24px;
     flex-direction: column;
-
-    &-top {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    &-buttons {
-      display: flex;
-      gap: 16px;
-    }
   }
 
   &__banner {
@@ -77,7 +66,6 @@
 
       &-title {
         margin-bottom: 4px;
-        color: #313237;
       }
 
       &-subtitle {

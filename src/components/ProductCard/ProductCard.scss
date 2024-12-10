@@ -28,19 +28,12 @@
     gap: 8px;
     flex-direction: column;
   }
-
-  &__title {
-    color: #313237;
-  }
-
   &__prices {
     display: flex;
     gap: 8px;
   }
 
   &__price {
-    color: #313237;
-
     &--discount {
       position: relative;
       color: #89939a;
