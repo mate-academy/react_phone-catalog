@@ -10,6 +10,7 @@ import { Favourites } from '../Favourites';
 import styles from './Header.module.scss';
 import menu from '../../images/icons/menu_burger.svg';
 import close from '../../images/icons/close.svg';
+import { ThemeToggler } from '../ThemeToggler';
 
 export const Header = () => {
   const { pathname } = useLocation();
@@ -50,6 +51,7 @@ export const Header = () => {
         </div>
 
         <div className={styles.header__right}>
+          <ThemeToggler className={styles.header__toggler} />
           {openMenu ? (
             <button
               className={styles['header__menu-btn']}

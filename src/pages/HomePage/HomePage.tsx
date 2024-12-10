@@ -9,7 +9,9 @@ export const HomePage = () => {
   return (
     <>
       <h1 className={styles['visually-hidden']}>Product Catalog</h1>
-      <PicturesSlider />
+      <div className={styles['home-slider']}>
+        <PicturesSlider />
+      </div>
       <div className={styles['home-page']}>
         <BrandNewModels />
         <ShopByCategory />

@@ -6,8 +6,11 @@
   border-bottom: solid 0.5px var.$elements;
 
   &__container {
-    @include mixin.sizes(100%, 48px);
     @include mixin.flex(flex, center, space-between, false);
+
+    @include mixin.on-mobile {
+      @include mixin.sizes(100%, 48px);
+    }
 
     @include mixin.on-tablet {
       @include mixin.sizes(100%, 48px);
@@ -28,10 +31,23 @@
     }
   }
 
-  &__left,
   &__right {
+    @include mixin.on-mobile {
+      @include mixin.flex(flex, center, false, row);
+    }
+
     @include mixin.on-tablet {
-      @include mixin.flex(flex, center, false, false);
+      @include mixin.flex(flex, center, false, row);
+    }
+  }
+
+  &__left {
+    @include mixin.on-mobile {
+      @include mixin.flex(flex, center, false, row);
+    }
+
+    @include mixin.on-tablet {
+      @include mixin.flex(flex, center, false, row);
     }
   }
 

@@ -4,13 +4,16 @@ import { Root } from './Root';
 import { ProductsProvider } from './store/ProductsContext';
 import { FavouritesProvider } from './store/FavouritesContex';
 import { CartProvider } from './store/CartContext';
+import { ThemeProvider } from './store/ThemeContex';
 
 createRoot(document.getElementById('root') as HTMLElement).render(
-  <CartProvider>
-    <FavouritesProvider>
-      <ProductsProvider>
-        <Root />
-      </ProductsProvider>
-    </FavouritesProvider>
-  </CartProvider>,
+  <ThemeProvider>
+    <CartProvider>
+      <FavouritesProvider>
+        <ProductsProvider>
+          <Root />
+        </ProductsProvider>
+      </FavouritesProvider>
+    </CartProvider>
+  </ThemeProvider>,
 );

@@ -3,13 +3,11 @@
 @use "./utils/fonts" as *;
 @use "./utils/normalize.scss";
 
-body {
+.app {
   height: 100vh;
   width: 100%;
   font-family: Mont, Arial, sans-serif;
-}
 
-.app {
   &__header {
     width: 100%;
     position: sticky;
@@ -20,9 +18,6 @@ body {
 
   &__container {
     @include mixin.flex(flex, false, false, column);
-
-    width: 100%;
-    height: 100vh;
   }
 
   &__main {
@@ -31,3 +26,4 @@ body {
     margin: 0;
   }
 }
+
