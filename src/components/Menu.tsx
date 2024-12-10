@@ -9,14 +9,18 @@ type Props = {
 };
 
 const getActiveLink = (isActive: { isActive: boolean }) =>
-  classNames('nav-link-menu', { 'nav-link--active': isActive });
+  classNames('nav-link-menu after:bottom-[-8px]', {
+    'nav-link--active': isActive,
+  });
 
 export const Menu: React.FC<Props> = ({ isMenuOpen, setIsMenuOpen }) => {
   const handleOpenMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
-  const { favourites, cartItems,quantity } = useAppSelector(state => state.products);
+  const { favourites, cartItems, quantity } = useAppSelector(
+    state => state.products,
+  );
 
   const cartItemsLength = cartItems
     ? cartItems.reduce((sum, item) => sum + (quantity[item.itemId] || 0), 0)
@@ -51,8 +55,17 @@ export const Menu: React.FC<Props> = ({ isMenuOpen, setIsMenuOpen }) => {
           bg-white-color
         "
         >
-          <ul className="mt-[24px] flex flex-col items-center justify-center gap-[24px]">
-            <li>
+          <ul
+            className="
+              mt-[24px]
+              flex
+              flex-col
+              items-center
+              justify-center
+              gap-[24px]
+            "
+          >
+            <li className="nav-link--li ">
               <NavLink className={getActiveLink} to="/">
                 Home
               </NavLink>
@@ -74,10 +87,27 @@ export const Menu: React.FC<Props> = ({ isMenuOpen, setIsMenuOpen }) => {
             </li>
           </ul>
 
-          <div className="absolute bottom-0 left-0 right-0 flex border-[1px] border-[rgba(226,230,233,1)]">
+          <div
+            className="
+              absolute
+              bottom-0
+              left-0
+              right-0
+              flex
+              border-[1px]
+              border-[rgba(226,230,233,1)]
+            "
+          >
             <Link
               to="favourites"
-              className="shadow-el nav-icons--active flex w-[100%] justify-center py-[24px]"
+              className="
+                shadow-el 
+                nav-icons--active 
+                flex 
+                w-[100%] 
+                justify-center 
+                py-[24px]
+              "
             >
               <div className="relative">
                 <img
@@ -94,7 +124,14 @@ export const Menu: React.FC<Props> = ({ isMenuOpen, setIsMenuOpen }) => {
 
             <Link
               to="cart"
-              className="shadow-el nav-icons--active flex w-[100%] justify-center py-[24px]"
+              className="
+                shadow-el 
+                nav-icons--active 
+                flex 
+                w-[100%] 
+                justify-center 
+                py-[24px]
+              "
             >
               <div>
                 <img src="./img/icons/Cart.svg" alt="Bag" className="icons" />

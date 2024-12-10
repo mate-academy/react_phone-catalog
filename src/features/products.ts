@@ -21,7 +21,7 @@ const initialState: InitialState = {
   loaded: false,
   hasError: false,
   favourites: storedFavourites ? JSON.parse(storedFavourites) : [],
-  cartItems: storedCardItems? JSON.parse(storedCardItems) : [],
+  cartItems: storedCardItems ? JSON.parse(storedCardItems) : [],
   quantity: storedQuantities ? JSON.parse(storedQuantities) : {},
   totalPrice: null,
 };
@@ -43,19 +43,21 @@ export const productsSlice = createSlice({
       );
 
       if (isFavourite) {
-        state.favourites = state.favourites.filter(
+        const favouriteFilter = state.favourites.filter(
           favourite => favourite.itemId !== action.payload,
         );
+
+        return { ...state, favourites: favouriteFilter };
       } else {
         const product = state.products.find(
-          product => product.itemId === action.payload,
+          item => item.itemId === action.payload,
         );
 
         if (!product) {
-          return;
+          return state;
         }
 
-        state.favourites.push(product);
+        return { ...state, favourites: [...state.favourites, product] };
       }
     },
 
@@ -64,44 +66,51 @@ export const productsSlice = createSlice({
       action: PayloadAction<string | null>,
     ) => {
       if (action.payload === null) {
-        state.cartItems = [];
-        state.quantity = {};
-        return;
+        return { ...state, cartItems: [], quantity: {} };
       }
 
       const isCartItem = state.cartItems.some(
         item => item.itemId === action.payload,
       );
-      
+
       if (!isCartItem) {
         const product = state.products.find(
-          product => product.itemId === action.payload,
+          item => item.itemId === action.payload,
         );
 
-        console.log(product, 'Це продукт', state.products, 'Це state');
-        
         if (!product) {
           return;
         }
-        
-        state.cartItems.push(product);
-        state.quantity[product.itemId] = 1;
+
+        return {
+          ...state,
+          cartItems: [...state.cartItems, product],
+          quantity: { ...state.quantity, [product.itemId]: 1 },
+        };
       }
+
+      return state;
     },
 
     deleteCartItem: (
       state: InitialState,
       action: PayloadAction<string | null>,
     ) => {
-      state.cartItems = state.cartItems.filter(
+      if (!action.payload) {
+        return state;
+      }
+
+      const newCartItems = state.cartItems.filter(
         item => item.itemId !== action.payload,
       );
 
-      console.log('delete', state.cartItems);
+      const { [action.payload]: removedItem, ...newQuantity } = state.quantity;
 
-      if (action.payload) {
-        delete state.quantity[action.payload];
-      }
+      return {
+        ...state,
+        cartItems: newCartItems,
+        quantity: newQuantity,
+      };
     },
 
     setQuantity: (
@@ -111,33 +120,38 @@ export const productsSlice = createSlice({
       const { itemId, increment } = action.payload;
       const currentQuantity = state.quantity[itemId] || 1;
 
+      const updatedQuantity = { ...state.quantity };
+
       if (increment) {
-        state.quantity[itemId] = currentQuantity + 1;
+        updatedQuantity[itemId] = currentQuantity + 1;
       } else if (currentQuantity > 1) {
-        state.quantity[itemId] = currentQuantity - 1;
+        updatedQuantity[itemId] = currentQuantity - 1;
       }
+
+      return {
+        ...state,
+        quantity: updatedQuantity,
+      };
     },
 
     setTotalPrice: (state: InitialState, action: PayloadAction<number>) => {
-      state.totalPrice = action.payload;
+      return { ...state, totalPrice: action.payload };
     },
   },
   extraReducers(builder) {
     builder.addCase(init.pending, state => {
-      state.loaded = true;
+      return { ...state, loaded: true };
     });
 
     builder.addCase(
       init.fulfilled,
       (state, action: PayloadAction<Product[]>) => {
-        state.products = action.payload;
-        state.loaded = false;
+        return { ...state, products: action.payload, loaded: false };
       },
     );
 
     builder.addCase(init.rejected, state => {
-      state.hasError = true;
-      state.loaded = false;
+      return { ...state, hasError: true, loaded: false };
     });
   },
 });

@@ -7,22 +7,25 @@ const getActiveLink = (isActive: { isActive: boolean }) =>
 export const NavLinks = () => {
   return (
     <ul className="flex items-center justify-center gap-[32px] xl:gap-[64px]">
-      <li>
+      <li className="nav-link--li">
         <NavLink className={getActiveLink} to="/">
           Home
         </NavLink>
       </li>
-      <li>
+
+      <li className="nav-link--li">
         <NavLink className={getActiveLink} to="phones">
           Phones
         </NavLink>
       </li>
-      <li>
+
+      <li className="nav-link--li">
         <NavLink className={getActiveLink} to="tablets">
           Tablets
         </NavLink>
       </li>
-      <li>
+
+      <li className="nav-link--li">
         <NavLink className={getActiveLink} to="accessories">
           Accessories
         </NavLink>

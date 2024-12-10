@@ -1,7 +1,7 @@
 import { useLocation, useSearchParams } from 'react-router-dom';
 import { getSearchWith } from '../utils/getSearchWith';
 import debounce from 'lodash.debounce';
-import { useState, useMemo, useEffect } from 'react';
+import { useState, useMemo, useEffect, useCallback } from 'react';
 import { SearchParams } from '../types/searchParams';
 
 export const SearchBar = () => {
@@ -9,21 +9,26 @@ export const SearchBar = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [inputValue, setInputValue] = useState(searchParams.get('query') || '');
 
-  const setSearchWith = (params: SearchParams) => {
-    const search = getSearchWith(params, searchParams);
-    setSearchParams(search);
-  };
+  const setSearchWith = useCallback(
+    (params: SearchParams) => {
+      const search = getSearchWith(params, searchParams);
+
+      setSearchParams(search);
+    },
+    [searchParams, setSearchParams],
+  );
 
   const debouncedSearch = useMemo(
     () =>
       debounce((value: string | null) => {
         setSearchWith({ query: value });
       }, 500),
-    [searchParams],
+    [setSearchWith],
   );
 
   useEffect(() => {
     debouncedSearch(inputValue || null);
+
     return () => {
       debouncedSearch.cancel();
     };
@@ -36,7 +41,17 @@ export const SearchBar = () => {
   return (
     <>
       {pathname.slice(1).length > 0 && (
-        <div className="shadow-el hidden w-[200px] items-center justify-between sm:flex xl:w-[300px]">
+        <div
+          className="
+            shadow-el
+            hidden
+            w-[200px]
+            items-center
+            justify-between
+            sm:flex
+            xl:w-[300px]
+          "
+        >
           <input
             type="text"
             placeholder={`Search in ${pathname.slice(1)}`}

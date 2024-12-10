@@ -25,7 +25,15 @@ export const ModalDialog: React.FC<Props> = ({ setIsModalOpen }) => {
   return (
     <div
       className="
-        fixed left-0 top-0 z-10 flex h-full w-full justify-center bg-[rgba(0,0,0,0.4)]
+        fixed 
+        left-0 
+        top-0 
+        z-10 
+        flex 
+        h-full
+        w-full 
+        justify-center 
+        bg-[rgba(0,0,0,0.4)]
       "
     >
       <div

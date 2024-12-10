@@ -4,14 +4,14 @@ export const numberOfPaginations = (
 ) => {
   const arrayOfnumberPaginations = [];
 
-  let numberOfPaginations = null;
+  let numberOfPagination = null;
 
   if (productsLength && itemsOnPage) {
-    numberOfPaginations = Math.ceil(productsLength / +itemsOnPage);
+    numberOfPagination = Math.ceil(productsLength / +itemsOnPage);
   }
 
-  if (numberOfPaginations) {
-    for (let i = 1; i <= numberOfPaginations; i++) {
+  if (numberOfPagination) {
+    for (let i = 1; i <= numberOfPagination; i++) {
       arrayOfnumberPaginations.push(i);
     }
   }

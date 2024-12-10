@@ -15,7 +15,9 @@ export const Card: React.FC<Props> = ({ products }) => {
   const [searchParams] = useSearchParams();
 
   const dispatch = useAppDispatch();
-  const { favourites, cartItems, quantity } = useAppSelector(state => state.products);
+  const { favourites, cartItems, quantity } = useAppSelector(
+    state => state.products,
+  );
 
   const handleSelectedProduct = (product: Product) => {
     dispatch(
@@ -134,15 +136,18 @@ export const Card: React.FC<Props> = ({ products }) => {
               <button
                 className={`
                 card-button
-                ${Array.isArray(cartItems) && cartItems.some(cart => cart.itemId === product.itemId)
+                ${
+                  Array.isArray(cartItems) &&
+                  cartItems.some(cart => cart.itemId === product.itemId)
                     ? 'border bg-white text-accent'
                     : 'bg-accent text-white'
-                  }
+                }
                 ${isRightPath ? 'w-full' : ''}
               `}
                 onClick={() => handleSetCartItems(product)}
               >
-                {Array.isArray(cartItems) && cartItems.some(cart => cart.itemId === product.itemId)
+                {Array.isArray(cartItems) &&
+                cartItems.some(cart => cart.itemId === product.itemId)
                   ? 'Added to cart'
                   : 'Add to cart'}
               </button>

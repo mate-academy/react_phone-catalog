@@ -27,7 +27,7 @@
       items-center 
       font-mont-bold 
       uppercase 
-      text-[12px] 
+      text-[12px]
       text-secondary 
       leading-[11px] 
       tracking-[0.04em];
@@ -39,9 +39,7 @@
       transition 
       duration-300 
       ease-in-out
-      sm:after:bottom-[-18px]
-      xl:after:bottom-[-26px]
-      after:bottom-[-8px]
+      after:bottom-0
       after:h-[2px]
       sm:after:h-[3px];
 
@@ -57,6 +55,11 @@
     &:hover::after {
       background-color: #0f0f11;
     }
+  }
+
+  .nav-link--li {
+    @apply flex 
+      h-full;
   }
 
   .nav-link-menu {
@@ -189,8 +192,7 @@
   }
 
   .card {
-    @apply
-      flex
+    @apply flex
       justify-center
       flex-col
       p-[32px]
@@ -481,8 +483,7 @@
   }
 
   .total-container {
-    @apply 
-      flex 
+    @apply flex 
       flex-col 
       justify-center 
       items-center 
@@ -498,8 +499,7 @@
   }
 
   .availaible-colors-container {
-    @apply
-      flex
+    @apply flex
       flex-col
       gap-[24px]
       mb-[24px];
@@ -513,24 +513,22 @@
   }
 
   .select-capacity-container {
-    @apply 
-      flex
+    @apply flex
       flex-col
       justify-start
       gap-[24px]
       mb-[32px];
 
-      &::after {
-        content: '';
-        height: 1px;
-        width: 100%;
-        background-color: #e2e6e9;
-      }
+    &::after {
+      content: '';
+      height: 1px;
+      width: 100%;
+      background-color: #e2e6e9;
+    }
   }
 
   .product-section-title {
-    @apply
-      flex
+    @apply flex
       flex-col
       gap-[16px]
       font-mont-bold
@@ -538,18 +536,17 @@
       leading-[30.8px]
       text-primary;
 
-      &::after {
-        content: '';
-        height: 1px;
-        width: 100%;
-        background-color: #e2e6e9;
-        margin-bottom: 32px;
-      }
+    &::after {
+      content: '';
+      height: 1px;
+      width: 100%;
+      background-color: #e2e6e9;
+      margin-bottom: 32px;
+    }
   }
 
   .description-title {
-    @apply 
-      font-mont-semi
+    @apply font-mont-semi
       text-[16px]
       leading-[20.45px]
       sm:text-[20px]
@@ -557,8 +554,7 @@
   }
 
   .description-text {
-    @apply 
-    font-mont-semi
+    @apply font-mont-semi
     text-[14px]
     leading-[21px]
     text-secondary;

@@ -70,7 +70,12 @@ export const Slider = () => {
               key={img.id}
               src={`${img.src}`}
               alt={`${img.alt}`}
-              className="slider-images transition-[translate] duration-300 ease-in-out"
+              className="
+                slider-images 
+                transition-[translate] 
+                duration-300 
+                ease-in-out
+              "
               style={{ translate: `${-100 * slideId}%` }}
             />
           ))}

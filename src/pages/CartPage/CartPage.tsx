@@ -1,11 +1,11 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { CartCard } from '../../components/CartCard';
 import { CartTotal } from '../../components/CartTotal';
 import { useAppSelector } from '../../utils/hooks';
 import { ModalDialog } from '../../components/ModalDialog';
 import { useLocation, useNavigate } from 'react-router-dom';
 
-export const CartPage = () => {
+export const CartPage: React.FC = () => {
   const navigate = useNavigate();
   const { state } = useLocation();
 
@@ -19,7 +19,7 @@ export const CartPage = () => {
     }
   };
 
-  const { cartItems, quantity } = useAppSelector(state => state.products);
+  const { cartItems, quantity } = useAppSelector(states => states.products);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const cartItemsLength = cartItems
@@ -29,7 +29,17 @@ export const CartPage = () => {
   return (
     <div className="grids mb-[56px] sm:mb-[64px] xl:mb-[80px]">
       <div className="col-[1/5] mx-[16px] sm:col-[1/13] sm:mx-0 xl:col-[1/25]">
-        <div className="mb-[24px] mt-[24px] flex items-center gap-[4px] sm:mb-[16px] sm:mt-[40px]">
+        <div
+          className="
+            mb-[24px]
+            mt-[24px]
+            flex
+            items-center
+            gap-[4px]
+            sm:mb-[16px]
+            sm:mt-[40px]
+          "
+        >
           <img
             src="./img/icons/Arrow_Left_Black.svg"
             alt="Arrow"

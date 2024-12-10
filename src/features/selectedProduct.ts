@@ -61,21 +61,21 @@ export const selectedProductSlice = createSlice({
   initialState,
   reducers: {
     setModel: (state: InitialState, action: PayloadAction<Product | null>) => {
-      state.selectedModel = action.payload;
+      return { ...state, selectedModel: action.payload };
     },
 
     setSelectedColor: (
       state: InitialState,
       action: PayloadAction<string | null>,
     ) => {
-      state.selectedColor = action.payload;
+      return { ...state, selectedColor: action.payload };
     },
 
     setSelectedCapacity: (
       state: InitialState,
       action: PayloadAction<string | null>,
     ) => {
-      state.selectedCapacity = action.payload;
+      return { ...state, selectedCapacity: action.payload };
     },
   },
   extraReducers(builder) {
@@ -86,8 +86,7 @@ export const selectedProductSlice = createSlice({
     builder.addCase(
       init.fulfilled,
       (state, action: PayloadAction<Model | null>) => {
-        state.selectedProduct = action.payload;
-        state.loaded = false;
+        return { ...state, selectedProduct: action.payload, loaded: false };
       },
     );
 

@@ -21,6 +21,7 @@ export const CartCard = () => {
     const updatedCartItems = cartItems.filter(
       item => item.itemId !== product.itemId,
     );
+
     localStorage.setItem('cartItems', JSON.stringify(updatedCartItems));
     dispatch(productActions.deleteCartItem(product.itemId));
   };
@@ -40,16 +41,13 @@ export const CartCard = () => {
 
   useEffect(() => {
     let totalPrice = 0;
-    cartItems.forEach(
-      item => {
-        (totalPrice += item.price * quantity[item.itemId])
 
-        console.log({ totalPrice, itemPrice: item.price, quantity: quantity[item.itemId], itemId: item.itemId});
-      },
-    );
+    cartItems.forEach(item => {
+      totalPrice += item.price * quantity[item.itemId];
+    });
 
     dispatch(productActions.setTotalPrice(totalPrice));
-  }, [quantity]);
+  }, [quantity, dispatch, cartItems]);
 
   return (
     <div className="flex h-full w-full flex-col gap-[16px]">
@@ -65,7 +63,9 @@ export const CartCard = () => {
             border-elements
             sm:flex-row
             sm:justify-between
+            p-[16px]
             sm:gap-[24px]
+            sm:p-[24px]
           "
         >
           <div
@@ -76,10 +76,7 @@ export const CartCard = () => {
               flex-row
               items-center
               gap-[16px]
-              p-[16px]
               sm:gap-[24px]
-              sm:p-[24px]
-              sm:pr-0
             "
           >
             <button
@@ -94,7 +91,13 @@ export const CartCard = () => {
             </button>
 
             <Link
-              className="flex cursor-pointer items-center gap-[16px] sm:gap-[24px]"
+              className="
+                flex 
+                cursor-pointer 
+                items-center 
+                gap-[16px] 
+                sm:gap-[24px]
+              "
               to={`/${item.category}/${item.itemId}`}
               onClick={() => handleSetSelected(item)}
             >
@@ -119,7 +122,17 @@ export const CartCard = () => {
             </Link>
           </div>
 
-          <div className="flex flex-row items-center justify-between p-[16px] sm:gap-[24px] sm:p-[24px] sm:pl-0">
+          <div
+            className="
+              flex 
+              flex-row 
+              items-center
+              justify-between
+              sm:justify-around
+              sm:gap-[24px]
+              w-full
+            "
+          >
             <div className="flex flex-row items-center gap-[16px]">
               <button
                 className={`
@@ -150,10 +163,9 @@ export const CartCard = () => {
               <button
                 className={`
                   section-buttons
-                  ${quantity[item.itemId] === 10 ? 'border-elements' : 'border-primary'}
+                  border-primary
                 `}
                 onClick={() => handlePlusCount(item.itemId)}
-                disabled={quantity[item.itemId] === 10}
               >
                 <img src="./img/icons/Plus.svg" alt="Plus" className="icons" />
               </button>

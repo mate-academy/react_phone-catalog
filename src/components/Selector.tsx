@@ -16,6 +16,7 @@ export const Selector = () => {
 
   const setSearchWith = (params: SearchParams) => {
     const search = getSearchWith(params, searchParams);
+
     setSearchParams(search);
   };
 
@@ -34,6 +35,7 @@ export const Selector = () => {
     const handleClickOutside = () => setOpenSelector(null);
 
     document.addEventListener('click', handleClickOutside);
+
     return () => document.removeEventListener('click', handleClickOutside);
   }, []);
 

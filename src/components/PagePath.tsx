@@ -60,7 +60,14 @@ export const PagePath = () => {
           </p>
         </Link>
       ) : (
-        <p className="font-mont-semi text-[12px] leading-[15.34px] text-secondary">
+        <p
+          className="
+            font-mont-semi
+            text-[12px]
+            leading-[15.34px]
+            text-secondary
+          "
+        >
           {firstSymbol + path.slice(1)}
         </p>
       )}

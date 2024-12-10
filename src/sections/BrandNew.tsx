@@ -89,7 +89,13 @@ export const BrandNewModel = () => {
           </div>
 
           <div
-            className="ml-[16px] transition-transform duration-300 ease-in-out sm:mx-0"
+            className="
+              ml-[16px] 
+              transition-transform 
+              duration-300 
+              ease-in-out 
+              sm:mx-0
+            "
             ref={slider}
             style={{ transform: `translateX(-${transform}px)` }}
           >

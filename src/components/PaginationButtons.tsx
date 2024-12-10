@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { numberOfPaginations } from '../utils/getNumberOfPaginations';
 import { getSearchWith } from '../utils/getSearchWith';
@@ -14,10 +14,14 @@ export const PaginationButtons: React.FC<Props> = ({ productsLength }) => {
   const itemsOnPage = searchParams.get('items');
   const page = +(searchParams.get('page') || 1);
 
-  const setSearchWith = (params: SearchParams) => {
-    const search = getSearchWith(params, searchParams);
-    setSearchParams(search);
-  };
+  const setSearchWith = useCallback(
+    (params: SearchParams) => {
+      const search = getSearchWith(params, searchParams);
+
+      setSearchParams(search);
+    },
+    [searchParams, setSearchParams],
+  );
 
   const handlePageNumber = (pageNumber: number) => {
     setSearchWith({ page: pageNumber });
@@ -29,7 +33,7 @@ export const PaginationButtons: React.FC<Props> = ({ productsLength }) => {
     } else {
       setSearchWith({ page: 1 });
     }
-  }, [itemsOnPage]);
+  }, [itemsOnPage, setSearchWith]);
 
   const arrayOfPages = numberOfPaginations(itemsOnPage, productsLength);
   const lengthOfPages = arrayOfPages.length;
@@ -50,7 +54,16 @@ export const PaginationButtons: React.FC<Props> = ({ productsLength }) => {
   };
 
   return (
-    <div className="mb-[64px] flex items-center justify-center gap-[16px] xl:mb-[80px]">
+    <div
+      className="
+        mb-[64px]
+        flex
+        items-center
+        justify-center
+        gap-[16px]
+        xl:mb-[80px]
+      "
+    >
       <button
         className={`
           section-buttons

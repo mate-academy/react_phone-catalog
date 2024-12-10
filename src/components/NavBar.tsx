@@ -10,7 +10,9 @@ export const NavBar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const { pathname } = useLocation();
-  const { favourites, cartItems, quantity } = useAppSelector(state => state.products);
+  const { favourites, cartItems, quantity } = useAppSelector(
+    state => state.products,
+  );
 
   const cartItemsLength = cartItems
     ? cartItems.reduce((sum, item) => sum + (quantity[item.itemId] || 0), 0)
@@ -19,7 +21,19 @@ export const NavBar = () => {
   useEffect(() => setIsMenuOpen(false), [pathname]);
 
   return (
-    <nav className="sticky top-0 z-20 flex h-[48px] justify-between bg-white-color shadow xl:h-[64px]">
+    <nav
+      className="
+        sticky
+        top-0
+        z-20
+        flex
+        h-[48px]
+        justify-between
+        bg-white-color
+        shadow
+        xl:h-[64px]
+      "
+    >
       <div className="flex gap-[16px] xl:gap-[24px]">
         <Link className="px-[16px] py-[13px] xl:px-[24px] xl:py-[18px]" to="/">
           <img

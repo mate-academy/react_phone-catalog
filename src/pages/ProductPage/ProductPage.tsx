@@ -16,9 +16,9 @@ export const ProductPage = () => {
   const { state } = useLocation();
 
   const dispatch = useAppDispatch();
-  const { products } = useAppSelector(state => state.products);
+  const { products } = useAppSelector(state1 => state1.products);
   const { selectedProduct, loaded, hasError } = useAppSelector(
-    state => state.selectedProduct,
+    state2 => state2.selectedProduct,
   );
 
   const goBack = () => {

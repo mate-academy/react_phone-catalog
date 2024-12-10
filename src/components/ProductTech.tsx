@@ -4,7 +4,16 @@ export const ProductTech = () => {
   const { selectedProduct } = useAppSelector(state => state.selectedProduct);
 
   return (
-    <div className="col-[1/5] mb-[56px] sm:col-[1/13] sm:mb-[64px] xl:col-[14/25] xl:mb-0">
+    <div
+      className="
+        col-[1/5]
+        mb-[56px]
+        sm:col-[1/13]
+        sm:mb-[64px]
+        xl:col-[14/25]
+        xl:mb-0
+      "
+    >
       <h2 className="product-section-title">Tech specs</h2>
 
       <div className="flex flex-col gap-[8px]">

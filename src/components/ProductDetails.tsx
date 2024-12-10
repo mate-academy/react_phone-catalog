@@ -56,7 +56,16 @@ export const ProductDetails = () => {
   }, [favourites, cartItems, selectedProduct]);
 
   return (
-    <div className="col-[1/5] mb-[56px] sm:col-[8/13] sm:mb-[64px] xl:col-[14/21] xl:mb-[80px]">
+    <div
+      className="
+        col-[1/5]
+        mb-[56px]
+        sm:col-[8/13]
+        sm:mb-[64px]
+        xl:col-[14/21]
+        xl:mb-[80px]
+      "
+    >
       <p
         className="
           params-text

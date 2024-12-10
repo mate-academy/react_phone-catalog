@@ -2,10 +2,10 @@ import { Outlet } from 'react-router-dom';
 import { NavBar } from './components/NavBar';
 import { Footer } from './components/Footer';
 import { useAppDispatch } from './utils/hooks';
-import { useEffect } from 'react';
+import React, { useEffect } from 'react';
 import * as productActions from './features/products';
 
-export const App = () => {
+export const App: React.FC = () => {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
