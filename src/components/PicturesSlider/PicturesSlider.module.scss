@@ -5,7 +5,8 @@
   position: relative;
 
   @include mixin.responsive-property(margin-bottom, 32px, 32px, 40px);
-  @include mixin.responsive-property(margin-right, 20px, 24px, 32px);
+  @include mixin.responsive-property(margin-right, 0, 24px, 32px);
+  @include mixin.responsive-property(margin-left, 0, 24px, 32px);
 
   &__title {
     @include mixin.h1-mobile;
@@ -137,7 +138,7 @@
     &::before {
       content: "";
       position: absolute;
-      inset: -10px;
+      inset: -15px;
       z-index: -1;
     }
 
