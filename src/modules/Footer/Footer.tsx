@@ -8,9 +8,9 @@ import { Logo } from '../../components/Logo';
 
 export const Footer = () => {
   const links = [
-    { title: 'Github', path: 'https://github.com/vneholiuk' },
-    { title: 'Contacts', path: 'https://t.me/neholiuk11' },
-    { title: 'Rights', path: '#' },
+    { title: 'Github', path: 'https://github.com/vneholiuk', external: true },
+    { title: 'Contacts', path: 'https://t.me/neholiuk11', external: true },
+    { title: 'Rights', path: '#', external: false },
   ];
 
   return (
@@ -19,9 +19,20 @@ export const Footer = () => {
       <ul className={styles.footer__list}>
         {links.map(link => (
           <li key={link.title} className={styles.footer__item}>
-            <Link className={styles.footer__link} to={link.path}>
-              {link.title}
-            </Link>
+            {link.external ? (
+              <a
+                className={styles.footer__link}
+                href={link.path}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {link.title}
+              </a>
+            ) : (
+              <Link className={styles.footer__link} to={link.path}>
+                {link.title}
+              </Link>
+            )}
           </li>
         ))}
       </ul>
