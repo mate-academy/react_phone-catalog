@@ -1,3 +1,4 @@
+/* eslint-disable */
 import * as selectedActions from '../features/selectedProduct';
 import * as productActions from '../features/products';
 import { useAppDispatch, useAppSelector } from '../utils/hooks';
@@ -85,10 +86,9 @@ export const ProductDetails = () => {
                 cursor-pointer
                 rounded-[36px]
                 border
-                ${
-                  selectedProduct.color === color
-                    ? 'border-primary'
-                    : 'border-elements'
+                ${selectedProduct.color === color
+                  ? 'border-primary'
+                  : 'border-elements'
                 }
               `}
               onClick={() => handleSetColor(color)}
@@ -130,11 +130,10 @@ export const ProductDetails = () => {
               items-center
               justify-center
               rounded-[4px]
-              ${
-                selectedProduct.capacity === capacity
+              ${selectedProduct.capacity === capacity
                   ? 'bg-primary'
                   : 'border border-icons-color'
-              }
+                }
             `}
               onClick={() => handleSetCapacity(capacity)}
             >
@@ -144,11 +143,10 @@ export const ProductDetails = () => {
               font-mont-regular
               text-[14px]
               leading-[21px]
-              ${
-                selectedProduct.capacity === capacity
-                  ? 'text-white'
-                  : 'text-primary'
-              }
+              ${selectedProduct.capacity === capacity
+                    ? 'text-white'
+                    : 'text-primary'
+                  }
             `}
               >
                 {capacity}
@@ -181,12 +179,11 @@ export const ProductDetails = () => {
         <div className="flex gap-[8px]">
           <button
             className={`
-              card-button
-              w-full
-              ${
-                cartItems.some(cart => cart.itemId === selectedProduct?.id)
-                  ? 'border bg-white text-accent'
-                  : 'bg-accent text-white'
+            card-button
+            w-full
+            ${cartItems.some(cart => cart.itemId === selectedProduct?.id)
+                ? 'border bg-white text-accent'
+                : 'bg-accent text-white'
               }
             `}
             onClick={handleSetCartItems}

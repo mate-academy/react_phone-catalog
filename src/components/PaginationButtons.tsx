@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { useCallback, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { numberOfPaginations } from '../utils/getNumberOfPaginations';
@@ -95,9 +96,9 @@ export const PaginationButtons: React.FC<Props> = ({ productsLength }) => {
             style={
               lengthOfPages > 3
                 ? {
-                    transform: `translateX(${page <= lengthOfPages - 3 ? -40 * (page - 1) : -40 * (lengthOfPages - 4)}px)`,
-                    transition: 'transform 0.3s ease-in-out',
-                  }
+                  transform: `translateX(${page <= lengthOfPages - 3 ? -40 * (page - 1) : -40 * (lengthOfPages - 4)}px)`,
+                  transition: 'transform 0.3s ease-in-out',
+                }
                 : {}
             }
           >

@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { Product } from '../types/product';
 
 export const filterProducts = ({

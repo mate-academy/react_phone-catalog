@@ -5,6 +5,7 @@ import { useAppDispatch, useAppSelector } from '../utils/hooks';
 import * as productActions from '../features/products';
 import * as selectedActions from '../features/selectedProduct';
 import { PATHS_WHERE_NEED_FIND } from '../utils/rightPaths';
+import classNames from 'classnames';
 
 type Props = {
   products: Product[] | null;
@@ -134,16 +135,12 @@ export const Card: React.FC<Props> = ({ products }) => {
 
             <div className="mt-[16px] flex gap-[8px]">
               <button
-                className={`
-                card-button
-                ${
-                  Array.isArray(cartItems) &&
-                  cartItems.some(cart => cart.itemId === product.itemId)
-                    ? 'border bg-white text-accent'
-                    : 'bg-accent text-white'
-                }
-                ${isRightPath ? 'w-full' : ''}
-              `}
+                className={classNames('card-button bg-accent text-white', {
+                  'w-full': isRightPath,
+                  'border bg-white text-accent': cartItems.some(
+                    cart => cart.itemId === product.itemId,
+                  ),
+                })}
                 onClick={() => handleSetCartItems(product)}
               >
                 {Array.isArray(cartItems) &&

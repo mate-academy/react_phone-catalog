@@ -8,6 +8,7 @@ import React from 'react';
 import { Product } from '../types/product';
 import { filterProducts } from '../utils/filterProducts';
 import { PaginationButtons } from './PaginationButtons';
+import classNames from 'classnames';
 
 type Props = {
   products: Product[];
@@ -61,13 +62,10 @@ export const PageContent: React.FC<Props> = ({
               <Selector />
 
               <div
-                className={`
-                    ${
-                      itemsOnPage === 'all' || itemsOnPage === null
-                        ? 'mb-[64px] xl:mb-[80px]'
-                        : 'mb-[24px] sm:mb-[40px]'
-                    }
-                  `}
+                className={classNames('mb-[24px] sm:mb-[40px]', {
+                  'mb-[64px] xl:mb-[80px]':
+                    itemsOnPage === 'all' || itemsOnPage === null,
+                })}
               >
                 <Card products={filteredProducts} />
               </div>
