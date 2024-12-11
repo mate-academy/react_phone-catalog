@@ -1,3 +1,4 @@
+import { NavLink } from "react-router-dom";
 import useWindowSize from "../../../hooks/useWindowSize.hook";
 import { BannerImage } from "../../../types/bannerImage";
 
@@ -8,7 +9,7 @@ type Props = {
 };
 
 const HomeBannerScreenImage = ({ image, size, index }: Props) => {
-  const { color, src, title, paragraph } = image;
+  const { color, src, title, paragraph, to } = image;
   const boxShadowStyle = `inset 0 0 6rem 1rem ${color}`;
   const isOddPlate = index % 2 !== 0;
   const { width } = useWindowSize();
@@ -39,7 +40,7 @@ const HomeBannerScreenImage = ({ image, size, index }: Props) => {
         </article>
         {isScreenSmall && (
           <button className="w-fit rounded-full border-1 border-sec px-8 py-3 text-bannerTextButton uppercase text-sec">
-            order now
+            <NavLink to={to}>order now</NavLink>
           </button>
         )}
       </div>

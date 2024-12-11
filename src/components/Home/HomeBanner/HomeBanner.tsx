@@ -65,7 +65,7 @@ const HomeBanner = () => {
     onSwipedLeft: handleClickNextImage,
     onSwipedRight: handleClickPrevImage,
     preventScrollOnSwipe: true,
-    trackMouse: true, // Optional: Enables swipe with a mouse
+    trackMouse: false,
   });
 
   useEffect(() => {

@@ -71,6 +71,7 @@ const bannerImages: BannerImage[] = [
     color: "#000000",
     title: "Now available in our store!",
     paragraph: "Be the first!",
+    to: "/phones/apple-iphone-14-128gb-midnight",
   },
   {
     id: 1,
@@ -78,6 +79,7 @@ const bannerImages: BannerImage[] = [
     color: "#dbdbdb",
     title: "Best of the best",
     paragraph: "Make sure of this!",
+    to: "/tablets/apple-ipad-air-4th-gen-256gb-silver",
   },
   {
     id: 2,
@@ -85,6 +87,7 @@ const bannerImages: BannerImage[] = [
     color: "#c4c4c4",
     title: "Choose our own watch' style",
     paragraph: "In difference is power!",
+    to: "/accessories",
   },
 ];
 

@@ -8,23 +8,7 @@ import ItemDetailImages from "./ItemDetailImages";
 import ItemDetailColors from "./ItemDetailColors";
 import ItemDetailCapacity from "./ItemDetailCapacity";
 
-const mainSpecs = [
-  { name: "Screen", option: "screen" },
-  { name: "Resolution", option: "resolution" },
-  { name: "Processor", option: "processor" },
-  { name: "RAM", option: "ram" },
-];
-
-const fullSpecs: { name: string; option: keyof Item }[] = [
-  { name: "Screen", option: "screen" },
-  { name: "Resolution", option: "resolution" },
-  { name: "Processor", option: "processor" },
-  { name: "RAM", option: "ram" },
-  { name: "Built in memory", option: "capacity" },
-  { name: "Camera", option: "camera" },
-  { name: "Zoom", option: "zoom" },
-  { name: "Cell", option: "cell" },
-];
+type Specs = { name: string; option: string | string[] | undefined };
 
 const ItemDetail = () => {
   const {
@@ -80,6 +64,24 @@ const ItemDetail = () => {
       setIsLoading(false);
     }
   };
+
+  const mainSpecs: Specs[] = [
+    { name: "Screen", option: itemInfo?.screen },
+    { name: "Resolution", option: itemInfo?.resolution },
+    { name: "Processor", option: itemInfo?.processor },
+    { name: "RAM", option: itemInfo?.ram },
+  ];
+
+  const fullSpecs: Specs[] = [
+    { name: "Screen", option: itemInfo?.screen },
+    { name: "Resolution", option: itemInfo?.resolution },
+    { name: "Processor", option: itemInfo?.processor },
+    { name: "RAM", option: itemInfo?.ram },
+    { name: "Built in memory", option: itemInfo?.capacity },
+    { name: "Camera", option: itemInfo?.camera },
+    { name: "Zoom", option: itemInfo?.zoom },
+    { name: "Cell", option: itemInfo?.cell },
+  ];
 
   useEffect(() => {
     details();
@@ -202,7 +204,7 @@ const ItemDetail = () => {
                 mainSpecs.map((spec) => (
                   <div className="flex justify-between" key={spec.name}>
                     <p className="text-smallText text-sec">{spec.name}</p>
-                    <p className="text-smallText">{itemInfo[spec.option]}</p>
+                    <p className="text-smallText">{spec.option}</p>
                   </div>
                 ))}
             </section>
@@ -228,13 +230,13 @@ const ItemDetail = () => {
           <section className="grid gap-2">
             {itemInfo &&
               fullSpecs.map((spec) =>
-                itemInfo[spec.option as keyof Item] ? (
+                spec.option ? (
                   <div className="flex justify-between" key={spec.name}>
                     <p className="text-bodyText text-sec">{spec.name}</p>
                     <p className="text-bodyText">
-                      {spec.option === "cell"
-                        ? itemInfo[spec.option].join(", ")
-                        : itemInfo[spec.option]}
+                      {Array.isArray(spec.option)
+                        ? spec.option.join(", ")
+                        : spec.option}
                     </p>
                   </div>
                 ) : (

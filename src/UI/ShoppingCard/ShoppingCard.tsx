@@ -19,16 +19,18 @@ const ShoppingCard = ({ item }: Props) => {
 
   return (
     <div className="flex w-full flex-col items-center gap-6 rounded-2xl border-1 border-elem p-6 small:w-fit small:flex-row">
-      <section className="flex items-center gap-6">
-        <div onClick={() => handleRemoveProductShop(id)}>
-          <Close fill="#b4Bdc3" />
-        </div>
-        <NavLink to={`/${category}/${itemId}`}>
-          <img src={img} alt={name} className="size-20 object-contain" />
-        </NavLink>
+      <section className="flex w-full items-center justify-between gap-6">
+        <section className="flex items-center gap-6">
+          <div onClick={() => handleRemoveProductShop(id)}>
+            <Close fill="#b4Bdc3" />
+          </div>
+          <NavLink to={`/${category}/${itemId}`}>
+            <img src={img} alt={name} className="size-20 object-contain" />
+          </NavLink>
+        </section>
         <p className="w-[min(25dvw,336px)] text-bodyText">{name}</p>
       </section>
-      <section className="flex gap-6">
+      <section className="flex w-full justify-between gap-6 small:w-fit small:justify-normal">
         <div className="flex items-center justify-center gap-6">
           <button
             className={`grid size-8 place-items-center rounded-full border-1 duration-150`}

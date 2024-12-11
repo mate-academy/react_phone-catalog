@@ -4,4 +4,5 @@ export type BannerImage = {
   color: string;
   title: string;
   paragraph: string;
+  to: string;
 };

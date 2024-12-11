@@ -13,10 +13,10 @@ const ItemDetailImages = ({
 }: Props) => {
   return (
     <div className="flex flex-col-reverse gap-4 small:flex-row">
-      <div className="grid w-fit gap-4 small:flex-col">
+      <div className="flex w-fit gap-4 small:flex-col">
         {images.map((image, i) => (
           <div
-            className={`flex aspect-square size-12 items-center justify-center rounded-lg border-1 p-2 small:size-20 ${chosenImage === i ? "border-primary" : "cursor-pointer border-elem"}`}
+            className={`flex aspect-square size-12 items-center justify-center rounded-lg border-1 p-2 desktop:size-20 ${chosenImage === i ? "border-primary" : "cursor-pointer border-elem"}`}
           >
             <img
               key={i}
