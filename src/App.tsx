@@ -16,11 +16,13 @@ export const App: React.FC = () => {
     <div className="box-border bg-white font-mont-regular">
       <NavBar />
 
-      <div className="m-auto min-h-screen max-w-[1200px]">
-        <Outlet />
-      </div>
+      <div>
+        <div className="m-auto min-h-screen max-w-[1200px]">
+          <Outlet />
+        </div>
 
-      <Footer />
+        <Footer />
+      </div>
     </div>
   );
 };

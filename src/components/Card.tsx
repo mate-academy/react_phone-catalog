@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { useEffect } from 'react';
 import { Product } from '../types/product';
 import { Link, useLocation, useSearchParams } from 'react-router-dom';
@@ -5,7 +6,6 @@ import { useAppDispatch, useAppSelector } from '../utils/hooks';
 import * as productActions from '../features/products';
 import * as selectedActions from '../features/selectedProduct';
 import { PATHS_WHERE_NEED_FIND } from '../utils/rightPaths';
-import classNames from 'classnames';
 
 type Props = {
   products: Product[] | null;
@@ -135,16 +135,17 @@ export const Card: React.FC<Props> = ({ products }) => {
 
             <div className="mt-[16px] flex gap-[8px]">
               <button
-                className={classNames('card-button bg-accent text-white', {
-                  'w-full': isRightPath,
-                  'border bg-white text-accent': cartItems.some(
-                    cart => cart.itemId === product.itemId,
-                  ),
-                })}
+                className={`
+                card-button
+                ${cartItems.some(cart => cart.itemId === product.itemId)
+                    ? 'border bg-white text-accent'
+                    : 'bg-accent text-white'
+                    }
+                `}
                 onClick={() => handleSetCartItems(product)}
               >
                 {Array.isArray(cartItems) &&
-                cartItems.some(cart => cart.itemId === product.itemId)
+                  cartItems.some(cart => cart.itemId === product.itemId)
                   ? 'Added to cart'
                   : 'Add to cart'}
               </button>

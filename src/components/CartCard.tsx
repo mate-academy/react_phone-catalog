@@ -62,9 +62,9 @@ export const CartCard = () => {
             border
             border-elements
             sm:flex-row
-            sm:justify-between
             p-[16px]
             sm:gap-[24px]
+            xl:gap-0
             sm:p-[24px]
           "
         >
@@ -92,7 +92,7 @@ export const CartCard = () => {
 
             <Link
               className="
-                flex 
+                flex
                 cursor-pointer 
                 items-center 
                 gap-[16px] 
@@ -124,13 +124,12 @@ export const CartCard = () => {
 
           <div
             className="
-              flex 
-              flex-row 
+              flex
+              flex-row
               items-center
               justify-between
-              sm:justify-around
+              sm:justify-normal
               sm:gap-[24px]
-              w-full
             "
           >
             <div className="flex flex-row items-center gap-[16px]">
@@ -173,10 +172,13 @@ export const CartCard = () => {
 
             <p
               className="
+                flex
                 font-mont-bold 
                 text-[22px] 
                 leading-[30.8px]
                 text-primary
+                w-[80px]
+                justify-end
               "
             >{`$${item.price * (quantity[item.itemId] || 1)}`}</p>
           </div>

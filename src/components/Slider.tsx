@@ -4,6 +4,8 @@ import classNames from 'classnames';
 
 export const Slider = () => {
   const [slideId, setSlideId] = useState(0);
+  const [startX, setStartX] = useState(0);
+  const [isTouching, setIsTouching] = useState(false);
 
   const nextSlide = () => {
     setSlideId(slide => {
@@ -23,6 +25,31 @@ export const Slider = () => {
         return slide - 1;
       }
     });
+  };
+
+  const onTouchStart = (event: React.TouchEvent<HTMLDivElement>) => {
+    setStartX(event.touches[0].clientX);
+    setIsTouching(true);
+  };
+
+  const onTouchMove = (event: React.TouchEvent<HTMLDivElement>) => {
+    if (!isTouching) {
+      return;
+    }
+
+    const deltaX = startX - event.touches[0].clientX;
+
+    if (deltaX > 50) {
+      nextSlide();
+      setIsTouching(false);
+    } else if (deltaX < -50) {
+      prevSlide();
+      setIsTouching(false);
+    }
+  };
+
+  const onTouchEnd = () => {
+    setIsTouching(false);
   };
 
   useEffect(() => {
@@ -64,7 +91,12 @@ export const Slider = () => {
           />
         </button>
 
-        <div className="flex overflow-hidden xl:rounded-[8px]">
+        <div
+          className="flex overflow-hidden xl:rounded-[8px]"
+          onTouchStart={onTouchStart}
+          onTouchMove={onTouchMove}
+          onTouchEnd={onTouchEnd}
+        >
           {IMAGES_FOR_SLIDER.map(img => (
             <img
               key={img.id}

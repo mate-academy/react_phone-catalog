@@ -38,57 +38,58 @@ export const Menu: React.FC<Props> = ({ isMenuOpen, setIsMenuOpen }) => {
             sm:hidden
           "
         >
-          <img src="./img/icons/Menu.svg" alt="Menu" className="icons" />
+          <div
+            className={classNames(
+              'icons transition-all duration-300 ease-in-out',
+              {
+                "bg-[url('../../public/img/icons/Close.svg')]": isMenuOpen,
+                "bg-[url('../../public/img/icons/Menu.svg')]": !isMenuOpen,
+              },
+            )}
+          />
         </button>
       </div>
 
-      {isMenuOpen && (
+      <div
+        className={classNames('menu', {
+          active: isMenuOpen,
+          'menu-close': !isMenuOpen,
+        })}
+      >
+        <ul
+          className="
+            mt-[24px]
+            flex
+            flex-col
+            items-center
+            justify-center
+            gap-[24px]
+          "
+        >
+          <li className="nav-link--li">
+            <NavLink className={getActiveLink} to="/">
+              Home
+            </NavLink>
+          </li>
+          <li>
+            <NavLink className={getActiveLink} to="phones">
+              Phones
+            </NavLink>
+          </li>
+          <li>
+            <NavLink className={getActiveLink} to="tablets">
+              Tablets
+            </NavLink>
+          </li>
+          <li>
+            <NavLink className={getActiveLink} to="accessories">
+              Accessories
+            </NavLink>
+          </li>
+        </ul>
+
         <div
           className="
-          fixed
-        bottom-0
-          left-0
-          right-0
-          top-[48px]
-          box-border
-          overflow-x-hidden
-          bg-white-color
-        "
-        >
-          <ul
-            className="
-              mt-[24px]
-              flex
-              flex-col
-              items-center
-              justify-center
-              gap-[24px]
-            "
-          >
-            <li className="nav-link--li ">
-              <NavLink className={getActiveLink} to="/">
-                Home
-              </NavLink>
-            </li>
-            <li>
-              <NavLink className={getActiveLink} to="phones">
-                Phones
-              </NavLink>
-            </li>
-            <li>
-              <NavLink className={getActiveLink} to="tablets">
-                Tablets
-              </NavLink>
-            </li>
-            <li>
-              <NavLink className={getActiveLink} to="accessories">
-                Accessories
-              </NavLink>
-            </li>
-          </ul>
-
-          <div
-            className="
               absolute
               bottom-0
               left-0
@@ -97,10 +98,34 @@ export const Menu: React.FC<Props> = ({ isMenuOpen, setIsMenuOpen }) => {
               border-[1px]
               border-[rgba(226,230,233,1)]
             "
+        >
+          <Link
+            to="favourites"
+            className="
+                shadow-el 
+                nav-icons--active 
+                flex 
+                w-[100%] 
+                justify-center 
+                py-[24px]
+              "
           >
-            <Link
-              to="favourites"
-              className="
+            <div className="relative">
+              <img
+                src="./img/icons/Favourites.svg"
+                alt="Favourite"
+                className="icons"
+              />
+
+              {favourites.length > 0 && (
+                <div className="icon-count">{favourites.length}</div>
+              )}
+            </div>
+          </Link>
+
+          <Link
+            to="cart"
+            className="
                 shadow-el 
                 nav-icons--active 
                 flex 
@@ -108,42 +133,17 @@ export const Menu: React.FC<Props> = ({ isMenuOpen, setIsMenuOpen }) => {
                 justify-center 
                 py-[24px]
               "
-            >
-              <div className="relative">
-                <img
-                  src="./img/icons/Favourites.svg"
-                  alt="Favourite"
-                  className="icons"
-                />
+          >
+            <div>
+              <img src="./img/icons/Cart.svg" alt="Bag" className="icons" />
 
-                {favourites.length > 0 && (
-                  <div className="icon-count">{favourites.length}</div>
-                )}
-              </div>
-            </Link>
-
-            <Link
-              to="cart"
-              className="
-                shadow-el 
-                nav-icons--active 
-                flex 
-                w-[100%] 
-                justify-center 
-                py-[24px]
-              "
-            >
-              <div>
-                <img src="./img/icons/Cart.svg" alt="Bag" className="icons" />
-
-                {cartItemsLength > 0 && (
-                  <div className="icon-count">{cartItemsLength}</div>
-                )}
-              </div>
-            </Link>
-          </div>
+              {cartItemsLength > 0 && (
+                <div className="icon-count">{cartItemsLength}</div>
+              )}
+            </div>
+          </Link>
         </div>
-      )}
+      </div>
     </div>
   );
 };
