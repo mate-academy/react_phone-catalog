@@ -4,14 +4,15 @@ import { ProductsSlider } from '../ProductsSlider';
 import productsFromServer from '../../../public/api/products.json';
 import { Product } from '../types/Product';
 
-function newPhones(productsFromServer: Product[], year = 2022) {
-  return productsFromServer.reduce((acc, product) => {
+function newPhones(products: Product[], year = 2022) {
+  return products.reduce((acc, product) => {
     if (
       product.year === year &&
       !acc.some(({ color }) => color === product.color)
     ) {
       acc.unshift(product);
     }
+
     return acc;
   }, [] as Product[]);
 }

@@ -2,6 +2,7 @@ import React from 'react';
 import './HomePage.scss';
 import { Banner } from '../Banner/Banner';
 import { NewModels } from '../NewModels';
+import { Category } from '../Category';
 
 export const HomePage = () => {
   return (
@@ -11,6 +12,7 @@ export const HomePage = () => {
         <Banner />
       </div>
       <NewModels />
+      <Category />
     </div>
   );
 };

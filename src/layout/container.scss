@@ -15,7 +15,13 @@
 
   &--mobile {
     @media (max-width: $mobile) {
+      padding-right: 0;
       padding-left: 16px;
     }
+  }
+
+  &--with-paddings {
+    padding-left: 16px;
+    padding-right: 16px;
   }
 }

@@ -1,0 +1,35 @@
+@import '../../utils';
+
+.category {
+  &__items {
+    display: flex;
+    gap: 16px;
+    margin-top: 24px;
+
+    @media (max-width: $mobile) {
+      flex-direction: column;
+    }
+  }
+
+  &__img {
+    width: 100%;
+  }
+
+  &__description {
+    margin-top: 24px;
+  }
+
+  &__title {
+    font-family: $font-family;
+    font-weight: $font-weight-medium;
+    font-size: 20px;
+    color: $primary;
+  }
+
+  &__count {
+    font-family: $font-family;
+    font-weight: 500;
+    font-size: 14px;
+    color: $secondary;
+  }
+}
