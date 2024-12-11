@@ -1,0 +1,30 @@
+@import '../../styles/utils/vars.scss';
+@import '../../styles/utils/mixins.scss';
+
+.title {
+  color: $main-txt-col;
+  font-size: 32px;
+  @include on-tablet {
+    font-size: 48px;
+  }
+}
+
+.homePageSlider {
+  margin-top: 24px;
+  @include on-tablet {
+    margin-top: 32px;
+  }
+  @include on-desktop {
+    margin-top: 56px;
+  }
+}
+
+.homePageSection {
+  margin-top: 56px;
+  @include on-tablet {
+    margin-top: 64px;
+  }
+  @include on-desktop {
+    margin-top: 80px;
+  }
+}

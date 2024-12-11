@@ -1,0 +1,30 @@
+$tablet-width: 640px;
+$desktop-width: 1200px;
+
+$padd-inl-phone: 16px;
+$padd-inl-tabl: 24px;
+$padd-inl-desk: 32px;
+
+$header-heigh-phone: 48px;
+$header-height-desk: 64px;
+
+$animDuration: 300ms;
+$icon-size: 16px;
+
+$main-background-col: #0f1121;
+$card-background-col: #161827;
+
+$main-txt-col: #f1f2f9;
+$second-txt-col: #75767f;
+
+$main-button-col: #905bff;
+$main-button-col-hover: #a378ff;
+$main-button-col-selected: #323542;
+$second-button-col: #323542;
+$second-button-col-hover: #3b3e4a;
+$second-button-col-selected: #905bff;
+$product-col-selector: #3b3e4a;
+$product-col-selector-hover: #75767f;
+$product-col-selector-selected: #f1f2f9;
+
+$classic-border: 2px solid $second-button-col;

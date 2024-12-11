@@ -1,0 +1,34 @@
+@import '../../../styles/utils/vars.scss';
+
+.menu {
+  width: 100vw;
+  height: 100vh;
+  transform: translateX(-100%);
+  transition: transform $animDuration;
+  position: fixed;
+  z-index: 999;
+  top: 0;
+  left: 0;
+  right: 0;
+  &__showMenu {
+    transform: translateX(0);
+  }
+
+  &__nav {
+    margin-top: 48px;
+    display: flex;
+    justify-content: center;
+  }
+  &__favCart {
+    display: flex;
+    justify-content: center;
+    border-top: $classic-border;
+  }
+  &__navFavCartWrapper {
+    display: flex;
+    background-color: $main-background-col;
+    height: calc(100% - $header-heigh-phone);
+    flex-direction: column;
+    justify-content: space-between;
+  }
+}

@@ -1,0 +1,51 @@
+@import '../../../styles/utils/mixins.scss';
+@import '../../../styles/utils/vars.scss';
+
+.iconLink {
+  display: flex;
+  background-color: $main-background-col;
+  border-style: none;
+  cursor: pointer;
+  outline: none;
+  align-items: center;
+  justify-content: center;
+  border-left: $classic-border;
+  height: $header-heigh-phone;
+  width: $header-heigh-phone;
+
+  @include on-desktop {
+    height: $header-height-desk;
+    width: $header-height-desk;
+  }
+}
+
+.iconLink svg {
+  width: $icon-size;
+  height: $icon-size;
+  transition: transform $animDuration;
+}
+
+.removeBorderLeft {
+  border-left: none;
+}
+
+.displayOnMenu {
+  padding-inline: calc(100vw / 4.5);
+}
+
+.iconLink:hover svg {
+  transform: scale(1.1);
+}
+
+.fav {
+  background-image: url('/img/icons/Favourites.svg');
+}
+.cart {
+  background-image: url('/img/icons/Shopping.svg');
+}
+.burger {
+  background-image: url('/img/icons/Menu.svg');
+}
+.close {
+  background-image: url('/img/icons/Close.svg');
+}

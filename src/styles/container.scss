@@ -1,0 +1,29 @@
+.container {
+  transform: translateX(0);
+  transition: transform $animDuration;
+  @include content-padding-inline;
+
+  &__header {
+    padding-right: 0;
+    border-bottom: $classic-border;
+    @include on-desktop {
+      max-width: 100%;
+    }
+  }
+}
+
+.outlet-container {
+  padding-top: 24px;
+  padding-bottom: 64px;
+  @include on-tablet {
+    padding-top: 32px;
+  }
+  @include on-desktop {
+    padding-top: 56px;
+    padding-bottom: 80px;
+  }
+}
+
+.hide-container {
+  transform: translateX(-100%);
+}

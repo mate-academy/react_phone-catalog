@@ -1,1 +1,46 @@
-// not empty
+@import './styles/utils/vars.scss';
+@import './styles/utils/mixins.scss';
+
+// #region font
+@font-face {
+  font-family: 'Mont';
+  src: url('/fonts/Mont-Regular.otf') format('opentype');
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: 'Mont';
+  src: url('/fonts/Mont-Bold.otf') format('opentype');
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: 'Mont';
+  src: url('/fonts/Mont-SemiBold.otf') format('opentype');
+  font-weight: 600;
+}
+// #endregion
+
+// #region normalize
+iframe {
+  display: none;
+}
+
+body,
+h1,
+ul,
+ol,
+p,
+button {
+  padding: 0;
+  margin: 0;
+  border: none;
+}
+// #endregion
+
+.App {
+  background-color: $main-background-col;
+  font-family: 'Mont', sans-serif;
+}
+
+@import './styles/container.scss';
