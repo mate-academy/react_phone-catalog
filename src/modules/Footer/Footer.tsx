@@ -10,7 +10,7 @@ export const Footer = () => {
   const links = [
     { title: 'Github', path: 'https://github.com/vneholiuk', external: true },
     { title: 'Contacts', path: 'https://t.me/neholiuk11', external: true },
-    { title: 'Rights', path: '#', external: false },
+    { title: 'Rights', path: 'https://github.com/vneholiuk', external: true },
   ];
 
   return (

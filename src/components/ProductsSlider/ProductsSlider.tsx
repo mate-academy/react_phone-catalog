@@ -1,6 +1,6 @@
 import styles from './ProductsSlider.module.scss';
 import cn from 'classnames';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { Product } from '../../types';
 import { RoundButton } from '../RoundButton';
 import { SvgIcon } from '../SvgIcon';
@@ -14,6 +14,10 @@ interface Props {
 export const ProductsSlider: React.FC<Props> = ({ title, products }) => {
   const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
   const [visibleCardsCount, setVisibleCardsCount] = useState(3);
+  const [startX, setStartX] = useState<number | null>(null);
+  const [isDragging, setIsDragging] = useState(false);
+
+  const sliderRef = useRef<HTMLUListElement>(null);
 
   const updateVisibleCardsCount = () => {
     const width = window.innerWidth;
@@ -53,6 +57,59 @@ export const ProductsSlider: React.FC<Props> = ({ title, products }) => {
     );
   };
 
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setStartX(e.touches[0].clientX);
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    if (!startX) {
+      return;
+    }
+
+    const deltaX = e.touches[0].clientX - startX;
+
+    if (deltaX > 50) {
+      previousSlide();
+      setStartX(null);
+    } else if (deltaX < -50) {
+      nextSlide();
+      setStartX(null);
+    }
+  };
+
+  const handleMouseDown = (e: React.MouseEvent) => {
+    setIsDragging(true);
+    setStartX(e.clientX);
+  };
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (!isDragging || startX === null) {
+      return;
+    }
+
+    const deltaX = e.clientX - startX;
+
+    if (deltaX > 50) {
+      previousSlide();
+      setStartX(e.clientX);
+    } else if (deltaX < -50) {
+      nextSlide();
+      setStartX(e.clientX);
+    }
+  };
+
+  const handleMouseUp = () => {
+    setIsDragging(false);
+    setStartX(null);
+  };
+
+  const handleMouseLeave = () => {
+    if (isDragging) {
+      setIsDragging(false);
+      setStartX(null);
+    }
+  };
+
   return (
     <section className={styles['products-slider']}>
       <div className={styles['products-slider__header']}>
@@ -81,8 +138,16 @@ export const ProductsSlider: React.FC<Props> = ({ title, products }) => {
         </div>
       </div>
 
-      <div className={styles['products-slider__wrapper']}>
-        <ul className={styles['products-slider__list']}>
+      <div
+        className={styles['products-slider__wrapper']}
+        onTouchStart={handleTouchStart}
+        onTouchMove={handleTouchMove}
+        onMouseDown={handleMouseDown}
+        onMouseMove={handleMouseMove}
+        onMouseUp={handleMouseUp}
+        onMouseLeave={handleMouseLeave}
+      >
+        <ul className={styles['products-slider__list']} ref={sliderRef}>
           {products.map(product => {
             return (
               <li

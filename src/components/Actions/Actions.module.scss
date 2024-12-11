@@ -22,10 +22,12 @@
       background-color: inherit;
       color: var(--accent);
       box-shadow: 0 0 0 1px var(--elements);
+      transition: 0.3s;
     }
 
     &:hover {
       transform: scale(1.05);
+      transition: 0.3s;
     }
   }
 
