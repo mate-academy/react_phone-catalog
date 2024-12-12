@@ -1,0 +1,23 @@
+@import '../../styles/mixins';
+
+.favourites {
+  margin-top: 24px;
+
+  &__title {
+    margin-top: 40px;
+  }
+
+  &__subtitle {
+    margin-top: 8px;
+
+    color: #89939a;
+  }
+
+  &__container {
+    margin-top: 40px;
+
+    @include page-grid;
+
+    row-gap: 40px;
+  }
+}
