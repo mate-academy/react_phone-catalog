@@ -29,8 +29,12 @@
     }
 
     &-item {
+      height: 100%;
+
       display: flex;
       align-items: center;
+
+      text-decoration: none;
 
       color: #89939a;
 
@@ -50,5 +54,13 @@
 
     padding: 24px;
     box-shadow: -1px 0 0 0 #e2e6e9;
+
+    box-sizing: border-box;
+
+    &--selected {
+      padding-bottom: 21px;
+
+      border-bottom: 3px solid #313237;
+    }
   }
 }

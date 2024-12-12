@@ -1,6 +1,18 @@
+import { NavLink } from 'react-router-dom';
 import './Header.scss';
+import classNames from 'classnames';
 
 export const Header = () => {
+  const navLinkClass = (props: { isActive: boolean }) =>
+    classNames('header__nav-item text-button', {
+      'header__nav-item--selected': props.isActive,
+    });
+
+  const buttonClass = (props: { isActive: boolean }) =>
+    classNames('header__button', {
+      'header__button--selected': props.isActive,
+    });
+
   return (
     <header className="header">
       <div className="header__left">
@@ -8,27 +20,38 @@ export const Header = () => {
 
         <nav className="header__nav">
           <ul className="header__nav-list">
-            <li
-              className="header__nav-item text-button 
-                         header__nav-item--selected"
-            >
-              Home
+            <li>
+              <NavLink className={navLinkClass} to="/">
+                Home
+              </NavLink>
             </li>
-            <li className="header__nav-item text-button">Phones</li>
-            <li className="header__nav-item text-button">Tablets</li>
-            <li className="header__nav-item text-button">Accessories</li>
+            <li>
+              <NavLink className={navLinkClass} to="/catalog">
+                Phones
+              </NavLink>
+            </li>
+            <li>
+              <NavLink className={navLinkClass} to="/tablets">
+                Tablets
+              </NavLink>
+            </li>
+            <li>
+              <NavLink className={navLinkClass} to="/accessories">
+                Accessories
+              </NavLink>
+            </li>
           </ul>
         </nav>
       </div>
 
       <div className="header__buttons">
-        <div className="header__button">
+        <NavLink className={buttonClass} to="/favourites">
           <img src="/icons/favourite.svg" alt="Favourite icon" />
-        </div>
+        </NavLink>
 
-        <div className="header__button">
+        <NavLink className={buttonClass} to="/cart">
           <img src="/icons/cart.svg" alt="Cart icon" />
-        </div>
+        </NavLink>
       </div>
     </header>
   );
