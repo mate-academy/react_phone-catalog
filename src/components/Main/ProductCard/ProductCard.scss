@@ -1,4 +1,4 @@
-@import "../../../styles/utils";
+@import '../../../styles/utils';
 
 .product-card {
   display: flex;
@@ -10,12 +10,12 @@
   border: 1px solid $c-element;
   cursor: pointer;
 
-  @include on-tablet {
-    width: 237px;
-    height: 512px;
-  }
+    @include on-tablet {
+      width: 287px; // for page-tab
+      height: 512px;
+    }
 
-  &__line {
+    &__line {
     width: 100%;
     margin: 0;
   }
@@ -27,14 +27,13 @@
     object-fit: contain;
 
     @include on-tablet {
-      padding-right: 28px;
-      width: 173px;
       height: 181px;
     }
   }
 
   &__name {
     margin: 0;
+    height: 63px;
     color: $c-primary;
   }
 
@@ -73,7 +72,6 @@
     color: $c-primary;
   }
 
-
   &__buttons {
     display: flex;
     margin-top: auto;
@@ -82,8 +80,10 @@
 
   &__add-to-cart {
     cursor: pointer;
-    width: 100px;
     height: 40px;
+    font-size: 14px;
+    text-align: center;
+    padding-top: 9.5px;
 
     background-color: $c-primary;
     border: none;

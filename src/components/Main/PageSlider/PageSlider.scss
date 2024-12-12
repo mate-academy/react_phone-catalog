@@ -1,27 +1,105 @@
 @import '../../../styles/utils';
 
-.slider-block {
-  width: 200px;
-}
-
 .page-slider {
-  &__container {
-    display: grid;
-    max-width: 320px;
-    margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 60px;
+  margin: 0;
 
-    grid-template-columns: 136px auto;
-    grid-template-rows: auto auto;
-    align-items: center;
-    overflow: hidden;
+  &__title {
+    padding: 0;
+    margin: 0;
   }
 
-  @include on-tablet {
-    grid-template-columns: 300px auto;
+  &__subtitle {
+    width: 30%;
+    color: $c-secondary;
+    margin: 8px 0 32px;
+  }
+
+  &__container {
+    margin: 0 auto;
+    max-width: 286px;
+
+    @include on-tablet {
+      max-width: 595px;
+    }
+  }
+
+  &__block-pad {
+    display: flex;
+    justify-self: center;
+    padding: 0 3px 0 0;
+    max-width: 286px;
+    gap: 8px;
+    list-style: none;
+    margin: 0 0 40px;
+    margin-bottom: 40px;
   }
 
   &__dots {
+    position: absolute;
+    width: 32px;
+    height: 32px;
     display: flex;
+    align-items: center;
     justify-content: center;
+    border: 1px $c-icon solid;
+
+    @include hover(background-color, $c-hover-bg);
+
+    &:hover {
+      cursor: pointer;
+      border: 1px solid $c-primary;
+    }
+    &:active {
+      cursor: pointer;
+      color: $c-white;
+
+      background-color: $c-primary;
+      border: 1px solid $c-primary;
+    }
+  }
+
+  &__sort {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+
+    &-subtitle {
+      color: $c-secondary;
+
+      padding: 0;
+      margin: 0;
+    }
+
+    &-select {
+      width: 100%;
+      margin-top: 4px;
+      height: 40px;
+
+      border: 1px solid $c-icon;
+    }
+
+    &-type {
+      display: block;
+      width: 136px;
+    }
+
+    &-item {
+      display: block;
+      width: 136px;
+    }
+  }
+}
+
+.slick-list {
+  height: auto !important;
+}
+
+.slick-active {
+  .page-slider__dots {
+    color: $c-white;
+    background-color: $c-primary;
   }
 }
