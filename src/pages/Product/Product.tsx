@@ -47,7 +47,7 @@ export const Product = () => {
             </div>
           </div>
 
-          <div className="product__divider-line"></div>
+          <div className="divider-line"></div>
 
           <p className="product__details-name small-text">Select capacity</p>
           <div className="product__selector-container">
@@ -60,7 +60,7 @@ export const Product = () => {
             </button>
           </div>
 
-          <div className="product__divider-line"></div>
+          <div className="divider-line"></div>
 
           <div className="product__price-container">
             <h2 className="product__price">$799</h2>
@@ -93,7 +93,7 @@ export const Product = () => {
         <div className="product__description-info">
           <h3>About</h3>
 
-          <div className="product__divider-line"></div>
+          <div className="divider-line"></div>
 
           <div className="product__description-info-container">
             <div className="product__description-info-block">
@@ -141,7 +141,7 @@ export const Product = () => {
         <div className="product__description-specs">
           <h3>Tech specs</h3>
 
-          <div className="product__divider-line"></div>
+          <div className="divider-line"></div>
 
           <ProductSpecs
             specs={{
