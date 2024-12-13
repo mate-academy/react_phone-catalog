@@ -39,7 +39,7 @@ export const CardPage = () => {
   useEffect(() => {
     setLoading(true);
 
-    getData<Product[]>(`/api/products.json`)
+    getData<Product[]>(`api/products.json`)
       .then(items => {
         const itemData = items.find(item => item.itemId === itemId);
 

@@ -14,7 +14,7 @@ export const HomePage = () => {
   const [products, setProducts] = useState<Product[]>([]);
 
   useEffect(() => {
-    getData<Product[]>('/api/products.json').then(setProducts);
+    getData<Product[]>('api/products.json').then(setProducts);
   }, []);
 
   const getCountItems = useCallback(
