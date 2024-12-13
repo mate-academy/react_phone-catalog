@@ -25,6 +25,8 @@ export const Root = () => {
               <Route index element={<HomePage />} />
               <Route path="home" element={<Navigate to={'/'} replace />} />
 
+              <Route path=":itemId" element={<CardPage />} />
+
               <Route path="phones">
                 <Route
                   index
@@ -56,7 +58,13 @@ export const Root = () => {
                 <Route path=":itemId" element={<CardPage />} />
               </Route>
 
-              <Route path="favorite" element={<FavoritesPage />} />
+              <Route path="favorite">
+                <Route index element={<FavoritesPage />} />
+
+                <Route path=":itemId" element={<CardPage />} />
+              </Route>
+
+              {/* <Route path="favorite" element={<FavoritesPage />} /> */}
 
               <Route path="cart" element={<CartPage />} />
 

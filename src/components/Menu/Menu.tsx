@@ -17,7 +17,7 @@ export const Menu = () => {
 
   return (
     <aside className={getStyleMenu()} id="menu">
-      <TopBar icon="close" className={styles['menu__top-bar']} />
+      <TopBar icon="close" classNameProp={styles['menu__top-bar']} />
       <Navigation
         classNamesProps={[styles.menu__nav, styles.menu__favorites]}
       />

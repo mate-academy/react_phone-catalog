@@ -3,7 +3,7 @@ import styles from './ProductCard.module.scss';
 
 import classNames from 'classnames';
 import { Product } from '../../types/Product';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { Price } from '../Price';
 import { ActionsButtons } from '../ActionsButtons';
 
@@ -17,8 +17,8 @@ export const ProductCard: React.FC<Props> = ({
   classNameProp = '',
 }) => {
   const {
-    category,
     itemId,
+    category,
     name,
     fullPrice,
     price,
@@ -28,13 +28,19 @@ export const ProductCard: React.FC<Props> = ({
     image,
   } = product;
 
+  const { pathname } = useLocation();
+  const pathnameCategory = pathname.split('/')[1];
+
+  const link =
+    pathnameCategory !== category ? `/${category}/${itemId}` : itemId;
+
   return (
     <article className={classNames(styles.productCard, classNameProp)}>
-      <Link to={`${category}/${itemId}`} className={styles.imageContainer}>
+      <Link to={link} className={styles.imageContainer}>
         <img src={image} alt={name} className={styles.img} />
       </Link>
 
-      <Link to={`${category}/${itemId}`}>
+      <Link to={link}>
         <h3 className={styles.productCard__title}>{name}</h3>
       </Link>
 

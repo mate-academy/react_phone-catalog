@@ -27,7 +27,7 @@ export const FavoritesPage = () => {
           styles['block-items'],
         )}
       >
-        {favorites.length === 0 ? (
+        {!favorites.length ? (
           <p className={styles.favorites__text}>
             У вас поки що немає улюблених товарів
           </p>

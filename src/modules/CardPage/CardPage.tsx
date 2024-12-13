@@ -1,5 +1,5 @@
-import React, { useEffect, useMemo, useState } from 'react';
-import { NavLink, useLocation, useNavigate } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { NavLink, useNavigate, useParams } from 'react-router-dom';
 import classNames from 'classnames';
 
 import styles from './CardPage.module.scss';
@@ -17,44 +17,47 @@ import { ActionsButtons } from '../../components/ActionsButtons';
 import { ProductsSlider } from '../../components/ProductsSlider';
 import { Loader } from '../../components/Loader';
 
+type QuizParams = {
+  itemId: string;
+};
+
 export const CardPage = () => {
+  const { itemId } = useParams<QuizParams>();
+  const [category, setCategory] = useState<string | undefined>();
+  const [product, setProduct] = useState<Product | undefined>();
+  const [productData, setProductData] = useState<ProductData | undefined>();
+  const [products, setProducts] = useState<Product[]>([]);
   const [productsOfCategory, setProductsOfCategory] = useState<ProductData[]>(
     [],
   );
-  const [products, setProducts] = useState<Product[]>([]);
 
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  const { pathname } = useLocation();
-  const [category, itemId] = pathname.slice(1).split('/');
-
   const navigate = useNavigate();
-
-  const productData = useMemo(() => {
-    return productsOfCategory.find(({ id }) => id === itemId);
-  }, [productsOfCategory, itemId]);
-
-  const product = useMemo(() => {
-    return products.find(item => item.itemId === itemId);
-  }, [products, itemId]);
 
   useEffect(() => {
     setLoading(true);
 
-    getData<ProductData[]>(`api/${category}.json`)
-      .then(setProductsOfCategory)
-      .catch(() => {
-        setError('Не вдалося завантажити дані. Спробуйте ще раз.');
-
-        setTimeout(() => {
-          navigate('..');
-          setError(null);
-        }, 2000);
-      });
-
     getData<Product[]>(`/api/products.json`)
-      .then(setProducts)
+      .then(items => {
+        const itemData = items.find(item => item.itemId === itemId);
+
+        setProducts(items);
+        setProduct(itemData);
+        setCategory(itemData?.category);
+
+        return itemData?.category;
+      })
+      .then(categoryData => {
+        return getData<ProductData[]>(`api/${categoryData}.json`);
+      })
+      .then(listItems => {
+        const item = listItems.find(({ id }) => id === itemId);
+
+        setProductData(item);
+        setProductsOfCategory(listItems);
+      })
       .catch(() => {
         setError('Не вдалося завантажити дані. Спробуйте ще раз.');
 
@@ -64,7 +67,7 @@ export const CardPage = () => {
         }, 2000);
       })
       .finally(() => setLoading(false));
-  }, [category, navigate]);
+  }, [navigate, itemId]);
 
   const getLink = (option: string, value: string) => {
     if (!productData) {
@@ -85,7 +88,7 @@ export const CardPage = () => {
       );
     });
 
-    return el?.id ?? ''; // Повертаємо id, якщо знайшли, або порожній рядок
+    return el?.id ?? '';
   };
 
   const getLinkStyle = (isActive: boolean, color: string) => {
@@ -207,10 +210,7 @@ export const CardPage = () => {
           classNameProp={styles['main-controls__price']}
         />
 
-        <ActionsButtons
-          product={product}
-          // classNameProp={styles['main-controls__actions-buttons']}
-        />
+        <ActionsButtons product={product} />
 
         <div
           className={classNames(
