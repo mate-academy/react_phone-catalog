@@ -9,7 +9,7 @@ type Props = {
 };
 
 export const ImagesBlock: React.FC<Props> = ({ product, classNameProp }) => {
-  const [mainImage, setMainImage] = useState<string | null>(null);
+  const [mainImage, setMainImage] = useState<string>('');
 
   const { images, name } = product;
 
@@ -24,7 +24,7 @@ export const ImagesBlock: React.FC<Props> = ({ product, classNameProp }) => {
   return (
     <div className={classNames(styles['images-block'], classNameProp)}>
       <div className={styles['images-block__main']}>
-        <img className={styles.img} src={`${mainImage}`} alt={`${name}-main`} />
+        <img className={styles.img} src={mainImage} alt={`${name}-main`} />
       </div>
 
       <div
@@ -43,7 +43,7 @@ export const ImagesBlock: React.FC<Props> = ({ product, classNameProp }) => {
               onClick={() => chooseMainImage(image)}
             >
               <img
-                src={`/${image}`}
+                src={image}
                 alt={`${name}-${index}`}
                 className={styles.img}
               />
