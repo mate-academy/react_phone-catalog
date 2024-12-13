@@ -2,7 +2,7 @@
 
 .logo {
   display: block;
-  transition: all 0.3s;
+  transition: transform 0.3s;
 
   &:hover {
     @include mixin.hover-effect;

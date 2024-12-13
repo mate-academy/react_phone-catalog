@@ -1,14 +1,16 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useContext, useEffect, useState } from 'react';
 import cn from 'classnames';
-
-import { ProductCard } from '../ProductCard';
-
 import styles from './ProductSlider.module.scss';
+import { ProductCard } from '../ProductCard';
+import { Product } from '../../types/Product';
+import { ThemeContext } from '../../store/ThemeContex';
+import { Theme } from '../../types/Theme';
 import arrowPrev from '../../images/icons/arrow_left.svg';
+import arrowPrevDark from '../../images/icons/arrow_left_for_dark.svg';
 import arrowNext from '../../images/icons/arrow_right.svg';
+import arrowNextDark from '../../images/icons/arrow_right_for_dark.svg';
 import arrowPrevDis from '../../images/icons/arrow_left_dis.png';
 import arrowNextDis from '../../images/icons/arrow_right_dis.png';
-import { Product } from '../../types/Product';
 
 type Props = {
   products: Product[];
@@ -18,6 +20,7 @@ type Props = {
 export const YouMayAlsoLike: React.FC<Props> = ({ products, title }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [visibleCards, setVisibleCards] = useState(4);
+  const { theme } = useContext(ThemeContext);
 
   const updateVisibleCards = useCallback(() => {
     const width = window.innerWidth;
@@ -59,34 +62,59 @@ export const YouMayAlsoLike: React.FC<Props> = ({ products, title }) => {
     <>
       <div className={cn(styles['product-slider'])}>
         <div className={cn(styles['product-slider__container'])}>
-          <h2 className={cn(styles['product-slider__title'])}>{title}</h2>
+          <h2
+            className={cn({
+              [styles['product-slider__title']]: theme === Theme.Light,
+              [styles['product-slider__title--dark']]: theme === Theme.Dark,
+            })}
+          >
+            {title}
+          </h2>
           <div className={cn(styles['product-slider__buttons'])}>
             <button
               onClick={handlePrev}
               disabled={currentIndex === 0}
-              className={cn(
-                styles['product-slider__button'],
-                styles['product-slider__button--prev'],
-              )}
+              className={cn({
+                [styles['product-slider__button']]: theme === Theme.Light,
+                [styles['product-slider__button--prev']]: theme === Theme.Light,
+                [styles['product-slider__button--dark']]: theme === Theme.Dark,
+                [styles['product-slider__button--dark--prev']]:
+                  theme === Theme.Dark,
+              })}
             >
               <img
-                src={currentIndex === 0 ? arrowPrevDis : arrowPrev}
+                src={
+                  currentIndex === 0
+                    ? theme === Theme.Dark
+                      ? arrowPrev
+                      : arrowPrevDis
+                    : theme === Theme.Dark
+                      ? arrowPrevDark
+                      : arrowPrev
+                }
                 className={styles['product-slider__image']}
               />
             </button>
             <button
               onClick={handleNext}
               disabled={currentIndex === products.length - visibleCards}
-              className={cn(
-                styles['product-slider__button'],
-                styles['product-slider__button--next'],
-              )}
+              className={cn({
+                [styles['product-slider__button']]: theme === Theme.Light,
+                [styles['product-slider__button--next']]: theme === Theme.Light,
+                [styles['product-slider__button--dark']]: theme === Theme.Dark,
+                [styles['product-slider__button--dark--next']]:
+                  theme === Theme.Dark,
+              })}
             >
               <img
                 src={
                   currentIndex === products.length - visibleCards
-                    ? arrowNextDis
-                    : arrowNext
+                    ? theme === Theme.Dark
+                      ? arrowNext
+                      : arrowNextDis
+                    : theme === Theme.Dark
+                      ? arrowNextDark
+                      : arrowNext
                 }
                 className={styles['product-slider__image']}
               />
@@ -101,7 +129,7 @@ export const YouMayAlsoLike: React.FC<Props> = ({ products, title }) => {
             .slice(currentIndex, currentIndex + visibleCards)
             .map(product => {
               return (
-                <li key={product.id} className={styles.products__item}>
+                <li key={product.id}>
                   <ProductCard product={product} />
                 </li>
               );

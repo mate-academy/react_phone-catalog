@@ -1,18 +1,26 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import cn from 'classnames';
 
 import styles from './ProductCard.module.scss';
 import { Product } from '../../types/Product';
 import { Buttons } from '../Buttons';
+import { ThemeContext } from '../../store/ThemeContex';
+import { Theme } from '../../types/Theme';
 
 type Props = {
   product: Product;
 };
 
 export const ProductCard: React.FC<Props> = ({ product }) => {
+  const { theme } = useContext(ThemeContext);
+
   return (
-    <div className={styles.product}>
+    <div
+      className={cn(styles.product, {
+        [styles['product--dark']]: theme === Theme.Dark,
+      })}
+    >
       <Link
         to={`/${product.category}/${product.itemId}`}
         className={styles.product__img_container}
@@ -25,7 +33,10 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
       </Link>
       <Link
         to={`/${product.category}/${product.itemId}`}
-        className={styles.product__name}
+        className={cn({
+          [styles.product__name]: theme === Theme.Light,
+          [styles['product__name--dark']]: theme === Theme.Dark,
+        })}
       >
         {product.name}
       </Link>

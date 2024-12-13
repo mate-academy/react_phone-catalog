@@ -26,6 +26,24 @@
     }
   }
 
+  &__title--dark {
+    @include mixin.h1-mobile;
+    @include mixin.responsive-property(margin-bottom, 16px, 24px, 32px);
+
+    color: var.$dark-white;
+    text-align: center;
+
+    @include mixin.on-tablet {
+      text-align: left;
+    }
+
+    @include mixin.on-desktop {
+      @include mixin.h1-desktop-tablet;
+
+      text-align-last: left;
+    }
+  }
+
   &__container {
     position: relative;
     width: 100%;
@@ -70,6 +88,37 @@
 
     &:hover {
       border-color: var.$primary-gray;
+    }
+  }
+
+  &__button--dark {
+    display: none;
+    background-color: var.$dark-surface-2;
+    border: solid 1px var.$dark-icons-placeholders;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: border 0.3s;
+
+    @include mixin.on-tablet {
+      @include mixin.sizes(32px, 100%);
+      @include mixin.flex(flex, center, center, false);
+    }
+
+    @include mixin.on-desktop {
+      @include mixin.sizes(32px, 100%);
+      @include mixin.flex(flex, center, center, false);
+    }
+
+    &--left {
+      grid-column: 1;
+    }
+
+    &--right {
+      grid-column: -1;
+    }
+
+    &:hover {
+      border-color: var.$dark-accent;
     }
   }
 
@@ -148,6 +197,30 @@
 
     &--active {
       background-color: var.$primary-gray;
+    }
+  }
+
+  &__item--dark {
+    @include mixin.sizes(14px, 4px);
+
+    background-color: var.$dark-elements;
+    border: none;
+    cursor: pointer;
+    position: relative;
+
+    &::before {
+      content: "";
+      position: absolute;
+      inset: -15px;
+      z-index: -1;
+    }
+
+    &:hover {
+      border: solid 0.5px var.$dark-accent;
+    }
+
+    &--active {
+      background-color: var.$dark-white;
     }
   }
 }

@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useLocation, useSearchParams } from 'react-router-dom';
+import cn from 'classnames';
 import styles from './ProductsCatalog.module.scss';
 import { ProductsList } from '../ProductsList';
 import { Dropdown } from '../Dropdown';
@@ -13,6 +14,8 @@ import { Product } from '../../types/Product';
 import { Search } from '../Search';
 import { handleClickToTop } from '../../helpers/scrollToTop';
 import { NoSearchResults } from '../Errors/NoSearchResult';
+import { ThemeContext } from '../../store/ThemeContex';
+import { Theme } from '../../types/Theme';
 
 type Props = {
   products: Product[];
@@ -32,6 +35,8 @@ export const ProductsCatalog: React.FC<Props> = ({ products, title }) => {
   const [queryText, setQueryText] = useState('');
   const [isQuery, setIsQuery] = useState(false);
   const [placeholder, setPlaceholder] = useState('');
+
+  const { theme } = useContext(ThemeContext);
 
   useEffect(() => {
     switch (location.pathname) {
@@ -87,8 +92,20 @@ export const ProductsCatalog: React.FC<Props> = ({ products, title }) => {
           <Breadcrumbs />
         </div>
         <div className={styles.catalog__titles}>
-          <h1 className={styles.catalog__title}>{title}</h1>
-          <p className={styles.catalog__amount}>{products.length} models</p>
+          <h1
+            className={cn(styles.catalog__title, {
+              [styles['catalog__title--dark']]: theme === Theme.Dark,
+            })}
+          >
+            {title}
+          </h1>
+          <p
+            className={cn(styles.catalog__amount, {
+              [styles['catalog__amount--dark']]: theme === Theme.Dark,
+            })}
+          >
+            {products.length} models
+          </p>
         </div>
         <div className={styles.catalog__filters}>
           <div className={styles.catalog__sort}>

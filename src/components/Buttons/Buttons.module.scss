@@ -45,6 +45,45 @@
     }
   }
 
+  &__add--dark {
+    border: none;
+    flex: 1 1;
+    background-color: var.$dark-accent;
+    color: var.$white;
+    cursor: pointer;
+
+    @include mixin.flex(flex, center, center, false);
+
+    transition: box-shadow 0.3s, background-color 0.3s;
+
+    @include mixin.on-mobile {
+      font-size: 12px;
+    }
+
+    @include mixin.on-tablet {
+      @include mixin.buttons-desktop-tablet;
+
+      padding: 9px;
+    }
+
+    @include mixin.on-desktop {
+      @include mixin.buttons-desktop-tablet;
+
+      padding: 9px;
+    }
+
+    &:hover {
+      background-color: #A378FF;
+      box-shadow: 0 3px 13px 0 #e6e6e766;
+    }
+
+    &--active {
+      background-color: var.$dark-surface-2;
+      color: var.$dark-white;
+      border: solid 1px var.$dark-surface-2;
+    }
+  }
+
   &__fav {
     height: 100%;
     aspect-ratio: 1 / 1;
@@ -58,6 +97,27 @@
 
     &:hover {
       border: solid 1px var.$primary-gray;
+    }
+  }
+
+  &__fav--dark {
+    height: 100%;
+    aspect-ratio: 1 / 1;
+    cursor: pointer;
+
+    @include mixin.flex(flex, center, center, false);
+
+    border: solid 1px var.$dark-surface-2;
+    background-color: var.$dark-surface-2;
+    transition: border 0.3s;
+
+    &:hover {
+      background-color: var.$dark-icons-placeholders;
+    }
+
+    &--active {
+      background-color: var.$dark-black;
+      border: 1px solid var.$dark-elements;
     }
   }
 }

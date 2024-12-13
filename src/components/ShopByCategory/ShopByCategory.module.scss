@@ -18,6 +18,22 @@
     }
   }
 
+  &__title--dark {
+    color: var.$dark-white;
+    text-align: left;
+
+    @include mixin.responsive-property(margin-bottom, 32px, 32px, 40px);
+    @include mixin.h2-mobile;
+
+    @include mixin.on-tablet {
+      @include mixin.h2-desktop-tablet;
+    }
+
+    @include mixin.on-desktop {
+      @include mixin.h2-desktop-tablet;
+    }
+  }
+
   &__container {
     @include mixin.grid;
     @include mixin.responsive-property(margin-bottom, 32px, 32px, 40px);
@@ -55,6 +71,17 @@
     @include mixin.h4-desktop-tablet;
 
     color: var.$primary-gray;
+    transition: text-decoration 0.3s;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  &__name--dark {
+    @include mixin.h4-desktop-tablet;
+
+    color: var.$dark-white;
   }
 
   &__amount {

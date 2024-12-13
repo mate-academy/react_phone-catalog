@@ -24,6 +24,10 @@
     padding: 32px 25px 32px 0;
   }
 
+  &--dark {
+    border-top: solid 0.5px var.$dark-surface-2;
+  }
+
   &__link_container {
     display: flex;
 
@@ -43,11 +47,10 @@
     text-transform: uppercase;
     text-decoration: none;
     color: var.$secondary-gray;
-    transition: transform 0.3s, text-decoration 0.3s;
+    transition: text-decoration 0.3s;
     cursor: pointer;
 
     &:hover {
-      transform: scale(1.05);
       text-decoration: underline;
     }
 
@@ -63,6 +66,10 @@
 
     @include mixin.on-desktop {
       padding-right: 36px;
+    }
+
+    &--dark {
+      color: var.$dark-white;
     }
   }
 
@@ -83,6 +90,10 @@
     &:hover {
       @include mixin.hover-effect;
     }
+
+    &--dark {
+      color: var.$dark-secondary-gray;
+    }
   }
 
   &__button {
@@ -96,6 +107,16 @@
 
     &:hover {
       border: 1px solid var.$primary-gray;
+    }
+
+    &--dark {
+      background-color: var.$dark-surface-2;
+      border: 1px solid var.$dark-surface-2;
+
+      &:hover {
+        border: 1px solid var.$dark-icons-placeholders;
+        background-color: var.$dark-icons-placeholders;
+      }
     }
   }
 

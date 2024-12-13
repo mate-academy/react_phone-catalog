@@ -1,14 +1,17 @@
-/* eslint-disable react/react-in-jsx-scope */
+import { useContext } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-
+import cn from 'classnames';
 import { Logo } from '../Logo';
-
+import { handleClickToTop } from '../../helpers/scrollToTop';
+import { ThemeContext } from '../../store/ThemeContex';
+import { Theme } from '../../types/Theme';
 import styles from './Footer.module.scss';
 import top from '../../images/icons/arrow_up.svg';
-import { handleClickToTop } from '../../helpers/scrollToTop';
+import topDark from '../../images/icons/arrow_up_for_dark.svg';
 
 export const Footer = () => {
   const { pathname } = useLocation();
+  const { theme } = useContext(ThemeContext);
 
   if (pathname === '/menu') {
     return null;
@@ -32,7 +35,11 @@ export const Footer = () => {
   ];
 
   return (
-    <div className={styles.footer}>
+    <div
+      className={cn(styles.footer, {
+        [styles['footer--dark']]: theme === Theme.Dark,
+      })}
+    >
       <Logo className={styles.footer__logo} />
 
       <div className={styles.footer__link_container}>
@@ -40,7 +47,9 @@ export const Footer = () => {
           <Link
             key={link.title}
             to={link.path}
-            className={styles.footer__item}
+            className={cn(styles.footer__item, {
+              [styles['footer__item--dark']]: theme === Theme.Dark,
+            })}
             target="_blank"
           >
             {link.title}
@@ -49,11 +58,25 @@ export const Footer = () => {
       </div>
 
       <div className={styles.footer__button_container}>
-        <span className={styles.footer__text} onClick={handleClickToTop}>
+        <span
+          className={cn(styles.footer__text, {
+            [styles['footer__text--dark']]: theme === Theme.Dark,
+          })}
+          onClick={handleClickToTop}
+        >
           Back to top
         </span>
-        <button className={styles.footer__button} onClick={handleClickToTop}>
-          <img src={top} alt="Arrow-Up" className={styles.footer__image} />
+        <button
+          className={cn(styles.footer__button, {
+            [styles['footer__button--dark']]: theme === Theme.Dark,
+          })}
+          onClick={handleClickToTop}
+        >
+          <img
+            src={theme === Theme.Light ? top : topDark}
+            alt="Arrow-Up"
+            className={styles.footer__image}
+          />
         </button>
       </div>
     </div>

@@ -75,6 +75,20 @@
     }
   }
 
+  &__name--dark {
+    @include mixin.body-text-desktop-tablet;
+
+    font-size: 16px;
+    min-height: 63px;
+    text-decoration: none;
+    color: var.$dark-white;
+    transition: text-decoration 0.3s;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
   &__prices {
     @include mixin.flex(flex, false, false, row);
 
@@ -109,8 +123,10 @@
   }
 
   &__line {
+    display: block;
     width: 100%;
     height: 1px;
+    margin-bottom: 2px;
     background-color: var.$elements;
   }
 
@@ -137,5 +153,33 @@
       text-align: right;
       flex: 2;
     }
+  }
+}
+
+.product--dark {
+  @include mixin.flex(flex, false, space-between, column);
+  @include mixin.responsive-property(padding, 24px, 24px, 32px);
+
+  box-sizing: border-box;
+  margin: 0 auto;
+  border: solid 1px var.$dark-surface-1;
+  color: var.$dark-white;
+  gap: 8px;
+  transition: box-shadow 0.3s;
+
+  @include mixin.on-mobile {
+    @include mixin.sizes(287px, 440px);
+  }
+
+  @include mixin.on-tablet {
+    @include mixin.sizes(272px, 506px);
+  }
+
+  @include mixin.on-desktop {
+    @include mixin.sizes(272px, 506px);
+  }
+
+  &:hover {
+    box-shadow: 0 3px 13px 0 #c6c7c866;
   }
 }

@@ -1,10 +1,12 @@
-/* eslint-disable react/react-in-jsx-scope */
+import { useContext, useEffect, useState } from 'react';
 import cn from 'classnames';
-
+import { ThemeContext } from '../../store/ThemeContex';
+import { Theme } from '../../types/Theme';
 import styles from './PicturesSlider.module.scss';
 import arrowLeft from '../../images/icons/arrow_left.svg';
+import arrowLeftDark from '../../images/icons/arrow_left_for_dark.svg';
 import arrowRight from '../../images/icons/arrow_right.svg';
-import { useEffect, useState } from 'react';
+import arrowRightDark from '../../images/icons/arrow_right_for_dark.svg';
 import img1 from '../../images/slider/banner-accessories.png';
 import img2 from '../../images/slider/banner-phones.png';
 import img3 from '../../images/slider/banner-tablets.png';
@@ -13,6 +15,7 @@ const images = [img1, img2, img3];
 
 export const PicturesSlider = () => {
   const [currentImage, setCurrentImage] = useState<number>(0);
+  const { theme } = useContext(ThemeContext);
 
   const goToSlide = (direction: number) => {
     setCurrentImage(prev => (prev + direction + images.length) % images.length);
@@ -32,14 +35,26 @@ export const PicturesSlider = () => {
 
   return (
     <div className={styles.slider}>
-      <h1 className={styles.slider__title}>Welcome to Nice Gadgets store!</h1>
+      <h1
+        className={
+          theme === Theme.Light
+            ? styles.slider__title
+            : styles['slider__title--dark']
+        }
+      >
+        Welcome to Nice Gadgets store!
+      </h1>
       <div className={styles.slider__container}>
         <button
-          className={cn(styles.slider__button, styles['slider__button--left'])}
+          className={cn(styles.slider__button, {
+            [styles['slider__button--dark']]: theme === Theme.Dark,
+            [styles['slider__button--left']]: theme === Theme.Light,
+            [styles['slider__button--dark--left']]: theme === Theme.Dark,
+          })}
           onClick={handlePrev}
         >
           <img
-            src={arrowLeft}
+            src={theme === Theme.Light ? arrowLeft : arrowLeftDark}
             alt="Arrow Left"
             className={styles.slider__img}
           />
@@ -57,11 +72,15 @@ export const PicturesSlider = () => {
         ))}
 
         <button
-          className={cn(styles.slider__button, styles['slider__button--right'])}
+          className={cn(styles.slider__button, {
+            [styles['slider__button--dark']]: theme === Theme.Dark,
+            [styles['slider__button--right']]: theme === Theme.Light,
+            [styles['slider__button--dark--right']]: theme === Theme.Dark,
+          })}
           onClick={handleNext}
         >
           <img
-            src={arrowRight}
+            src={theme === Theme.Light ? arrowRight : arrowRightDark}
             alt="Arrow Right"
             className={styles.slider__img}
           />
@@ -73,7 +92,11 @@ export const PicturesSlider = () => {
           <div key={index} className={styles.dots__container}>
             <button
               className={cn(styles.dots__item, {
-                [styles['dots__item--active']]: index === currentImage,
+                [styles['dots__item--active']]:
+                  index === currentImage && theme === Theme.Light,
+                [styles['dots__item--dark']]: theme === Theme.Dark,
+                [styles['dots__item--dark--active']]:
+                  index === currentImage && theme === Theme.Dark,
               })}
               onClick={() => handleDots(index)}
             ></button>

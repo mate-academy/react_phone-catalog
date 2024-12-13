@@ -14,10 +14,24 @@
     top: 0;
     z-index: 1000;
     background-color: var.$white;
+
+    &--dark {
+      width: 100%;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background-color: var.$dark-black;
+    }
   }
 
   &__container {
     @include mixin.flex(flex, false, false, column);
+
+    background-color: var.$white;
+
+    &--dark {
+      background-color: var.$dark-black;
+    }
   }
 
   &__main {
@@ -26,4 +40,3 @@
     margin: 0;
   }
 }
-

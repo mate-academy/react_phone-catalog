@@ -41,6 +41,13 @@
     &--active {
       color: var.$primary-gray;
     }
-  }
 
+    &--dark {
+      color: var.$dark-secondary-gray;
+
+      &--active {
+        color: var.$dark-white;
+      }
+    }
+  }
 }

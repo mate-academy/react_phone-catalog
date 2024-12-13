@@ -48,10 +48,18 @@
     @include mixin.on-desktop {
       @include mixin.h1-desktop-tablet;
     }
+
+    &--dark {
+      color: var.$dark-white;
+    }
   }
 
   &__amount {
     color: var.$secondary-gray;
+
+    &--dark {
+      color: var.$dark-secondary-gray;
+    }
   }
 
   &__filters {

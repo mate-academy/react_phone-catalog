@@ -20,7 +20,10 @@ export const ThemeToggler: React.FC<Props> = ({ className }) => {
           <img src={moon} alt="moon" className={styles.toggler__image} />
         </button>
       ) : (
-        <button className={styles.toggler__button} onClick={toggleTheme}>
+        <button
+          className={styles['toggler__button--dark']}
+          onClick={toggleTheme}
+        >
           <img src={sun} alt="sun" className={styles.toggler__image} />
         </button>
       )}

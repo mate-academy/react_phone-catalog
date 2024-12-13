@@ -18,10 +18,20 @@
   &__link {
     text-decoration: none;
     color: var.$secondary-gray;
-    transition: color 0.3s;
+    transition: color 0.3s, transform 0.3s;
 
     &:hover {
       color: var.$primary-gray;
+
+      @include mixin.hover-effect;
+    }
+
+    &--dark {
+      color: var.$dark-white;
+
+      &:hover {
+        color: var.$dark-accent;
+      }
     }
   }
 }
