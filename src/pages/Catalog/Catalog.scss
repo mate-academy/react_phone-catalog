@@ -1,4 +1,4 @@
-@import '../../styles/mixins';
+@use 'styles/mixins';
 
 .catalog {
   margin-top: 24px;
@@ -16,7 +16,7 @@
     margin-top: 40px;
     width: 100%;
 
-    @include page-grid;
+    @include mixins.page-grid;
 
     &-filter {
       grid-column: span 4;
@@ -34,6 +34,6 @@
   &__container {
     margin-top: 24px;
 
-    @include page-grid;
+    @include mixins.page-grid;
   }
 }

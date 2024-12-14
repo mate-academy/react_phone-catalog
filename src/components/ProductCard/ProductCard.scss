@@ -1,4 +1,4 @@
-@import '../../styles/mixins';
+@use 'styles/mixins';
 
 .product-card {
   grid-column: span 6;
@@ -41,7 +41,7 @@
       font-weight: 600;
 
       &::after {
-        @include strikethrough-color-dodge;
+        @include mixins.strikethrough-color-dodge;
       }
     }
   }

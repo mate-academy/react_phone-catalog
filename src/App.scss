@@ -1,6 +1,6 @@
-@import './styles/mixins';
-@import './styles/fonts';
-@import './styles/typography';
+@use 'styles/mixins';
+@use 'styles/fonts';
+@use 'styles/typography';
 
 html,
 button {
@@ -43,11 +43,11 @@ p {
 
   margin-bottom: 80px;
 
-  @include media-tablet {
+  @include mixins.media-tablet {
     padding: 0 24px;
   }
 
-  @include media-phone {
+  @include mixins.media-phone {
     padding: 0 16px;
   }
 }

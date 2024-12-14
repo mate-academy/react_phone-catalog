@@ -1,4 +1,4 @@
-@import '../../styles/mixins';
+@use 'styles/mixins';
 
 .favourites {
   margin-top: 24px;
@@ -16,8 +16,8 @@
   &__container {
     margin-top: 40px;
 
-    @include page-grid;
-
     row-gap: 40px;
+
+    @include mixins.page-grid;
   }
 }
