@@ -1,0 +1,51 @@
+html {
+  font-family: $font-family-base;
+  color: $color_primary;
+  overflow: auto;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+[class*='__container'] {
+  @include content-padding-inline;
+}
+
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  color: $color-primary;
+}
+
+.main {
+  flex: 1 1 auto;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  row-gap: 110px;
+  overflow-x: hidden;
+  background-color: $color_hover;
+  border-bottom: 1px solid $color-elements;
+}
+
+.visually-hidden {
+  visibility: hidden;
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+}
+
+body:has(.modal--open:target) {
+  overflow: hidden;
+}
