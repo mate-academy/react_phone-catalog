@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback } from 'react';
 import { Button } from '..';
 import './AddToCartButton.scss';
 import { ActionTypes } from '../../../enums';
@@ -14,12 +14,9 @@ type Props = {
 export const AddToCartButton: React.FC<Props> = React.memo(
   ({ product, isInCart = false, children }) => {
     const { dispatch } = useStateContext();
-    const [localIsInCart, setLocalIsInCart] = useState(isInCart);
 
     const handleAddToCart = useCallback(() => {
-      setLocalIsInCart(!localIsInCart);
-
-      if (localIsInCart) {
+      if (isInCart) {
         dispatch({
           type: ActionTypes.REMOVE_FROM_CART,
           payload: product.itemId,
@@ -27,12 +24,12 @@ export const AddToCartButton: React.FC<Props> = React.memo(
       } else {
         dispatch({ type: ActionTypes.ADD_TO_CART, payload: product });
       }
-    }, [localIsInCart, dispatch, product]);
+    }, [dispatch, product, isInCart]);
 
     return (
       <Button
         onClick={handleAddToCart}
-        selected={localIsInCart}
+        selected={isInCart}
         className="add-to-cart-button typography__button-text"
       >
         {children}
