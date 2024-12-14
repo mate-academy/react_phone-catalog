@@ -1,3 +1,5 @@
+@use 'styles/mixins';
+
 .header {
   box-shadow: 0 1px 0 0 #e2e6e9;
 
@@ -10,10 +12,20 @@
     display: flex;
     gap: 24px;
     align-items: stretch;
+
+    @include mixins.media-tablet {
+      gap: 16px;
+    }
   }
 
   &__logo {
     padding: 18px 24px;
+
+    @include mixins.media-tablet {
+      width: 64px;
+
+      padding: 13px 16px;
+    }
   }
 
   &__nav {
@@ -26,6 +38,10 @@
       gap: 64px;
 
       list-style: none;
+
+      @include mixins.media-tablet {
+        gap: 32px;
+      }
     }
 
     &-item {
@@ -56,6 +72,10 @@
     box-shadow: -1px 0 0 0 #e2e6e9;
 
     box-sizing: border-box;
+
+    @include mixins.media-tablet {
+      padding: 16px;
+    }
 
     &--selected {
       padding-bottom: 21px;
