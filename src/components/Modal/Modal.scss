@@ -14,7 +14,7 @@
   z-index: 1000;
   opacity: 0;
   visibility: hidden;
-  transform: scale(0.9);
+  transform: scale(0.7);
   transition:
     opacity 0.3s ease,
     visibility 0.3s ease,
@@ -61,8 +61,11 @@
     right: 10px;
     background: none;
     border: none;
-    font-size: 16px;
+    font-size: 14px;
+    color: $color_icons_placeholder;
     cursor: pointer;
+
+    @include hover(color, $color_primary);
   }
 
   &__info {
