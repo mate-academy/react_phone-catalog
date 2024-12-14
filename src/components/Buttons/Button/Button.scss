@@ -1,0 +1,34 @@
+@import '../../../styles/utils/mixins';
+@import '../../../styles/utils/vars';
+
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  &--disabled {
+    cursor: not-allowed;
+  }
+
+  &--selected {
+    border: 1px solid #e2e6e9;
+  }
+
+  &--rectangular {
+    border-radius: 8px;
+
+    &:hover:not(.button--disabled) {
+      @include hover(box-shadow, 0 3px 13px 0 rgba(23, 32, 49, 0.4));
+    }
+  }
+
+  &--round {
+    border-radius: 50%;
+
+    &:hover:not(.button--disabled) {
+      @include hover(border-color, $color_primary);
+    }
+  }
+}

@@ -1,0 +1,71 @@
+@import '../../styles/utils/mixins';
+@import '../../styles/utils/vars';
+
+.product-slider {
+  margin: 0 auto;
+  overflow: hidden;
+
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: calc(100vw - 32px);
+    margin-bottom: 24px;
+
+    @include on-tablet {
+      width: calc(100vw - 45px);
+    }
+
+    @include on-desktop {
+      width: 100%;
+    }
+  }
+
+  &__button-wrapper {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+  }
+
+  &__button {
+    width: 32px;
+    height: 32px;
+    background: none;
+    border: 1px solid $color_secondary;
+    cursor: pointer;
+    color: #333;
+
+    &--prev {
+      left: 10px;
+    }
+
+    &--next {
+      right: 10px;
+    }
+
+    &.disabled {
+      border-color: $color_elements;
+      cursor: default;
+
+      @include hover('border-color', $color_elements);
+    }
+
+    &.disabled svg path {
+      fill: $color_elements;
+    }
+  }
+
+  &__carousel {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    display: flex;
+    align-items: center;
+  }
+
+  &__track {
+    display: flex;
+    gap: 16px;
+    transition: transform 0.3s ease-in-out;
+  }
+}

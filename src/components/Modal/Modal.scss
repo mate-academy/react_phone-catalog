@@ -1,0 +1,99 @@
+@import '../../styles/utils/mixins';
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transform: scale(0.9);
+  transition:
+    opacity 0.3s ease,
+    visibility 0.3s ease,
+    transform 0.3s ease;
+
+  &--open {
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1);
+  }
+
+  &__overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+  }
+
+  &__content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 300px;
+    background: white;
+    padding: 35px;
+    border-radius: 10px;
+    z-index: 1001;
+    transform: translateY(-20px);
+    transition: transform 0.3s ease;
+
+    @include on-tablet {
+      max-width: 500px;
+    }
+  }
+
+  &--open &__content {
+    transform: translateY(0);
+  }
+
+  &__close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+  }
+
+  &__info {
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  &__button-wrapper {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+  }
+
+  &__button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 20px;
+    border-radius: 8px;
+  }
+
+  &__button--confirm {
+    background-color: $color_accent_primary;
+    color: #fff;
+
+    @include hover(box-shadow, 0 3px 13px 0 rgba(23, 32, 49, 0.4));
+  }
+
+  &__button--cancel {
+    border: 1px solid $color_icons_placeholder;
+
+    @include hover(border-color, $color_primary);
+  }
+}

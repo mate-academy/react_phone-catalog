@@ -1,0 +1,13 @@
+@import '../../../styles/utils/vars';
+
+.change-quantity {
+  width: 32px;
+  height: 32px;
+  border: 1px solid $color_icons_placeholder;
+  flex-shrink: 0;
+
+  &:disabled {
+    cursor: not-allowed;
+    border: 1px solid $color_elements;
+  }
+}
