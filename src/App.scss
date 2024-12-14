@@ -35,11 +35,19 @@ p {
   width: 100%;
   min-height: 100%;
 
+  max-width: 1200px;
   padding: 0 32px;
+  margin: 0 auto;
+
   box-sizing: border-box;
 
-  margin: 0 auto;
-  max-width: 1200px;
-
   margin-bottom: 80px;
+
+  @include media-tablet {
+    padding: 0 24px;
+  }
+
+  @include media-phone {
+    padding: 0 16px;
+  }
 }

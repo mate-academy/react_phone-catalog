@@ -2,6 +2,14 @@
   display: grid;
   grid-template-columns: repeat(24, 1fr);
   gap: 16px;
+
+  @include media-tablet {
+    grid-template-columns: repeat(12, 1fr);
+  }
+
+  @include media-phone {
+    grid-template-columns: repeat(4, 1fr);
+  }
 }
 
 @mixin strikethrough-color-dodge {
@@ -15,4 +23,16 @@
   top: 14px;
   left: 0;
   right: 0;
+}
+
+@mixin media-tablet {
+  @media (max-width: 1119px) {
+    @content;
+  }
+}
+
+@mixin media-phone {
+  @media (max-width: 639px) {
+    @content;
+  }
 }
