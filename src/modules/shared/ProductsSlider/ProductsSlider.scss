@@ -1,0 +1,114 @@
+@import '../../../styles/main.scss';
+
+.productsSlider {
+  margin-block: 80px;
+  @include content-padding-inline;
+}
+
+.productsSlider__container-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.productsSlider__title {
+  font-family: 'Mont-Bold', sans-serif;
+  font-size: 32px;
+  font-weight: 800;
+  line-height: 41px;
+  letter-spacing: -0.01em;
+  color: $color-gray-primary;
+}
+
+.productsSlider__buttons {
+  display: flex;
+  gap: 16px;
+}
+
+.productsSlider__button {
+  position: relative;
+  width: 32px;
+  height: 32px;
+  border: 1px solid $color-gray-icons-placeholders;
+  background-color: $color-white;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+
+.productsSlider__button-disabled {
+  position: relative;
+  width: 32px;
+  height: 32px;
+  border: 1px solid $color-gray-elements;
+  background-color: $color-white;
+  box-sizing: border-box;
+
+  cursor: not-allowed;
+}
+
+.productsSlider__button--left::after {
+  position: absolute;
+  content: url('/icons/Chevron\ \(Arrow\ Left\).svg');
+  width: 16px;
+  height: 16px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.productsSlider__button--right::after {
+  position: absolute;
+  content: url('/icons/Chevron\ \(Arrow\ Right\).svg');
+  width: 16px;
+  height: 16px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+
+
+.productsSlider__button-disabled--right::after {
+  position: absolute;
+  content: url('/icons/Chevron\ \(Arrow\ Right\)\ \ disabled.svg');
+  width: 16px;
+  height: 16px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.productsSlider__button-disabled--left::after {
+  position: absolute;
+  content: url('/icons/Chevron\ \(Arrow\ Left\)\ disabled.svg');
+  width: 16px;
+  height: 16px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.productsSlider__viewport {
+  width: 1136px;
+  overflow: hidden;
+}
+
+.productsSlider__track {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
+.productsSlider__item {
+  flex: 0 0 auto;
+  width: 272px;
+  margin-right: 16px;
+}
+
+.productsSlider__content {
+  flex: 0 0 auto;
+  width: 272px;
+}
+
+
+

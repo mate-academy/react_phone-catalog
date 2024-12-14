@@ -1,0 +1,133 @@
+@import '../../../../styles/main.scss';
+
+.cartItem {
+  width: 752px;
+  height: 128px;
+  box-sizing: border-box;
+  padding: 24px;
+  gap: 24px;
+
+  border: 1px solid $color-gray-elements;
+  display: flex;
+  align-items: center;
+}
+
+.cartItem__icon-close {
+  position: relative;
+  border: none;
+  background-color: $color-white;
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+}
+
+.cartItem__icon-close:after {
+  content: '';
+  position: absolute;
+  transform: translate(-50%, -50%);
+  width: 16px;
+  height: 16px;
+  background-image: url('/icons/Close.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.cartItem__image {
+  height: 80px;
+  width: 80px;
+  object-fit: contain;
+}
+
+.cartItem__title {
+  font-family: 'Mont-Regular', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 21px;
+  color: $color-gray-primary;
+  flex-grow: 1;
+}
+
+.cartItem__counter-container {
+  width: 96px;
+  height: 32px;
+  display: flex;
+}
+
+.cartItem__price {
+  width: 80px;
+  text-align: right;
+  font-family: 'Mont-Bold', sans-serif;
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 30.8px;
+  color: $color-gray-primary;
+}
+
+.cartItem__counter {
+  flex: 1;
+  width: 32px;
+  height: 32px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-family: 'Mont-Regular', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 21px;
+
+}
+
+.cartItem__icon-minus,
+.cartItem__icon-plus {
+  position: relative;
+  box-sizing: border-box;
+  border: 1px solid $color-gray-icons-placeholders;
+  background-color: #fff;
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+}
+
+.cartItem__icon-minus:after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 16px;
+  height: 16px;
+  background-image: url('/icons/Minus.svg'); /* Убедитесь, что путь верный */
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.cartItem__icon-minus--disabled {
+  border: 1px solid $color-gray-elements;
+  cursor: not-allowed;
+}
+
+.cartItem__icon-minus--disabled::after {
+  background-image: url('/icons/Minus\ disabled.svg');
+}
+
+.cartItem__icon-plus:after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 16px;
+  height: 16px;
+  background-image: url('/icons/Plus.svg'); /* Убедитесь, что путь верный */
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.cartItem__total-container {
+  width: 368px;
+  height: 206px;
+
+  border: 1px solid $color-gray-elements;
+}

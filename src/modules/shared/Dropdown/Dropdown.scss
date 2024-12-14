@@ -1,0 +1,94 @@
+@import '../../../styles/main.scss';
+
+.dropdown {
+  position: relative;
+}
+
+.dropdown__label {
+  font-family: 'Mont-SemiBold', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  color: $color-gray-secondary;
+}
+
+.dropdown__container {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 21px;
+  color: $color-gray-secondary;
+}
+
+.dropdown__button {
+  background: none;
+  border: 1px solid $color-gray-icons-placeholders;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px;
+  cursor: pointer;
+  font-family: 'Mont-SemiBold', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 21px;
+  color: $color-gray-primary;
+}
+
+/* Стили для состояния hover */
+.dropdown__button:hover {
+  border: 1px solid $color-gray-secondary;
+}
+
+/* Иконка */
+.dropdown__icon {
+  width: 16px;
+  height: 16px;
+  content: url('/icons/Chevron\ \(Arrow\ Right\).svg');
+}
+
+.dropdown__options {
+  position: absolute;
+  top: 110%;
+  left: 0;
+  width: calc(100% - 2px);
+  list-style: none;
+  background: white;
+  border: 1px solid $color-gray-icons-placeholders;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.dropdown__option {
+  padding: 8px;
+  cursor: pointer;
+  font-family: 'Mont-Regular', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 21px;
+  color: $color-gray-secondary;
+
+  &:hover {
+    color: $color-gray-primary;
+  }
+}
+
+/* Когда выпадающий список открыт */
+.dropdown__button--open {
+  border: 1px solid $color-gray-primary;
+}
+
+/* Применяем hover только когда список не открыт */
+.dropdown__button:not(.dropdown__button--open):hover {
+  border: 1px solid $color-gray-secondary;
+}
+
+/* Стили для фокуса */
+.dropdown__button:focus {
+  border: 1px solid $color-gray-primary;  /* Когда кнопка в фокусе */
+}
+
+/* Когда кнопка в фокусе, и список не открыт */
+.dropdown__button:focus:not(.dropdown__button--open) {
+  border: 1px solid $color-gray-secondary;
+}

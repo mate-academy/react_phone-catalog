@@ -1,12 +1,31 @@
+@import '/src/styles/main.scss';
+
 * {
   margin: 0;
   padding: 0;
 }
 
 .App {
+  display: flex; /* Устанавливаем флекс-контейнер */
+  flex-direction: column; /* Размещаем элементы по вертикали */
+  min-height: 100vh; /* Гарантируем, что контейнер займет всю высоту экрана */
+  position: relative;
   min-width: 320px;
+
+  scroll-behavior: smooth;
 
   &__title-hidden {
     display: none;
   }
+}
+
+.App__content {
+  flex-grow: 1; /* Растягиваем основное содержимое */
+}
+
+.App__header {
+  position: sticky;
+  top: 0;
+  z-index: 10; /* Чтобы он был поверх контента */
+  background-color: $color-white; /* Чтобы не было прозрачности при прокрутке */
 }

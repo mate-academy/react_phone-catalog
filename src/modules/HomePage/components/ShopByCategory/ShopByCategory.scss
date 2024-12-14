@@ -1,0 +1,48 @@
+@import '../../../../styles/main.scss';
+
+.shopByCategory {
+  @include content-padding-inline();
+}
+
+.shopByCategory__title {
+  margin-bottom: 24px;
+
+  font-family: 'Mont-Bold', sans-serif;
+  font-size: 32px;
+  font-weight: 800;
+  line-height: 41px;
+  letter-spacing: -0.01em;
+  color: $color-gray-primary;
+}
+
+.shopByCategory__content {
+  display: flex;
+  gap: 16px;
+}
+
+.shopByCategory__link {
+  text-decoration: none;
+}
+
+.shopByCategory__block-image {
+  width: 368px;
+  height: 368px;
+}
+
+.shopByCategory__block-title {
+  margin-top: 24px;
+  font-family: 'Mont-SemiBold', sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 25.56px;
+  color: $color-gray-primary;
+}
+
+.shopByCategory__block-description {
+  margin-top: 4px;
+  font-family: 'Mont-Regular', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 21px;
+  color: $color-gray-secondary;
+}

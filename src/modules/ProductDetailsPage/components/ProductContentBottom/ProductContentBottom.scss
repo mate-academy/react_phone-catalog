@@ -1,0 +1,92 @@
+@import '../../../../styles/main.scss';
+
+.productDetailsPage__content-buttom {
+  display: flex;
+  gap: 64px;
+  margin-top: 80px;
+}
+
+.productDetailsPage__block-about {
+  width: 560px;
+}
+
+.productDetailsPage__block-techSpecs {
+  width: 512px;
+}
+
+.productDetailsPage__line-bottom {
+  width: 100%;
+  height: 1px;
+  background-color: $color-gray-elements;
+  margin-top: 16px;
+}
+
+.productDetailsPage__description {
+  margin-top: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.productDetailsPage__section {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.productDetailsPage__section-title {
+  font-family: 'Mont-SemiBold', sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 25.56px;
+  color: $color-gray-primary;
+}
+
+.productDetailsPage__section-description {
+  font-family: 'Mont-Regular', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 21px;
+  color: $color-gray-secondary;
+}
+
+.productDetailsPage__block-title {
+  font-family: 'Mont-Bold', sans-serif;
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 30.8px;
+  color: $color-gray-primary;
+}
+
+.productDetailsPage__techSpecs-content {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 25px;
+}
+
+.productDetailsPage__techSpecs-block {
+  display: flex;
+  justify-content: space-between;
+}
+
+.productDetailsPage__techSpecs-title {
+  font-family: 'Mont-Regular', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 21px;
+  color: $color-gray-secondary;
+}
+
+.productDetailsPage__techSpecs-value {
+  font-family: 'Mont-Regular', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 21px;
+  color: $color-gray-primary;
+}
+
+.productDetailsPage__title--bottom {
+  margin-top: 80px;
+  margin-bottom: 24px;
+}

@@ -62,25 +62,26 @@
   }
 
   &__buttons-right {
-    flex-grow: 1; /* Элемент будет занимать всё доступное пространство */
-    display: flex; /* Для корректного расположения вложенных элементов */
-    justify-content: flex-end; /* Выровнять содержимое вправо */
-    align-items: center; /* Выравнивание по вертикали */
+    flex-grow: 1;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
   }
 
   &__icon {
-    width: 48px; /* Установленная ширина и высота */
+    width: 48px;
     height: 48px;
     box-shadow: -1px 0px 0px 0px $color-gray-elements;
-    display: flex; /* Для правильного позиционирования (если нужен контент внутри) */
-    align-items: center; /* Центрируем по вертикали */
-    justify-content: center; /* Центрируем по горизонтали */
-    background-size: 16px 16px; /* Размер background-image */
-    background-repeat: no-repeat; /* Изображение не повторяется */
-    background-position: center; /* Центрируем изображение */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-size: 16px 16px;
+    background-repeat: no-repeat;
+    background-position: center;
+    // margin-left: 8px; // Отступ между иконками
 
     @include on-desktop {
-      width: 64px; /* Установленная ширина и высота */
+      width: 64px;
       height: 64px;
     }
   }
@@ -112,5 +113,60 @@
   }
 }
 
+.header__search-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-right: 16px; // Отступ для отделения от соседей
+}
 
+.header__search-input {
+  height: 48px;
+  padding: 8px 36px 8px 8px; // Добавляем место для крестика
+  border: none;
+  box-shadow: -1px 0px 0px 0px $color-gray-elements;
+  box-sizing: border-box;
 
+  font-family: "Mont-Regular", sans-serif;
+  color: $color-gray-primary; // Текст пользователя
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 21px;
+
+  @include on-desktop {
+    height: 64px;
+  }
+
+  &::placeholder {
+    font-family: "Mont-Regular", sans-serif;
+    color: $color-gray-secondary;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 21px;
+    transition: opacity 0.3s ease;
+  }
+
+  &:focus {
+    outline: none; // Убираем стандартное выделение
+  }
+
+  &:focus::placeholder {
+    opacity: 0; // Скрываем placeholder при фокусе
+  }
+}
+
+.header__clear-button {
+  position: absolute;
+  right: 8px; // Расположение кнопки справа
+  background: none;
+  border: none;
+  font-size: 16px;
+  color: $color-gray-secondary;
+  cursor: pointer;
+  outline: none;
+  z-index: 2;
+
+  &:hover {
+    color: $color-gray-primary; // Смена цвета при наведении
+  }
+}

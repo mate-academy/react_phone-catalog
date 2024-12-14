@@ -1,0 +1,350 @@
+@import '../../../../styles/main.scss';
+
+.productDetailsPage__content-top {
+  height: 464px;
+  display: flex;
+}
+
+.productDetailsPage__container-photosSlider {
+  width: 80px;
+  height: 100%;
+  margin-right: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  box-sizing: border-box;
+}
+
+.productDetailsPage__photoSlider {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: contain;
+
+  cursor: pointer;
+
+  box-sizing: border-box;
+  border: 1px solid $color-gray-elements;
+}
+
+.productDetailsPage__photoSlider--active {
+  border: 2px solid $color-gray-primary;
+}
+
+.productDetailsPage__photo-mask {
+  height: 100%;
+  aspect-ratio: 1 / 1;
+  margin-right: 64px;
+
+  box-sizing: border-box;
+}
+
+.productDetailsPage__image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.productDetailsPage__characteristics {
+  width: 320px;
+  height: 100%;
+  margin-right: 16px;
+  display: flex;
+  flex-direction: column;
+}
+
+.productDetailsPage__colors {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.productDetailsPage__colors-list {
+  list-style: none;
+  display: flex;
+  gap: 5px;
+}
+
+.productDetailsPage__color-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  width: 32px;
+  height: 32px;
+  box-sizing: border-box;
+  border: 1px solid $color-gray-elements;
+  border-radius: 50%;
+
+  &--selected {
+    border: 1px solid $color-gray-primary; // Цвет рамки для выбранного цвета
+  }
+}
+
+.productDetailsPage__color-circle {
+  width: 30px;
+  height: 30px;
+  box-sizing: border-box;
+  border-radius: 50%;
+  border: 2px solid $color-white;
+}
+
+.productDetailsPage__line {
+  width: 320px;
+  height: 1px;
+  background-color: $color-gray-elements;
+  margin-top: 24px;
+}
+
+.productDetailsPage__capacity {
+  margin-top: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.productDetailsPage__capacity-list {
+  display: flex;
+  gap: 8px;
+  list-style: none;
+}
+
+.productDetailsPage__capacity-item {
+  height: 32px;
+  box-sizing: border-box;
+  padding-inline: 8px;
+  border: 1px solid $color-gray-icons-placeholders;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.productDetailsPage__capacity-block {
+  font-family: 'Mont-Regular', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  text-align: center;
+  color: $color-gray-primary;
+}
+
+.productDetailsPage__capacity-item--selected {
+  background-color: $color-gray-primary;
+}
+
+.productDetailsPage__capacity-block--selected {
+  color: $color-white;
+}
+
+
+
+.productDetailsPage {
+  &__container {
+    &-price {
+      height: 41px;
+      display: flex;
+      gap: 8px;
+      margin-top: 32px;
+      align-items: center;
+    }
+
+    &-specifications {
+      display: flex;
+      flex-direction: column;
+      height: 77px;
+      padding-block: 8px;
+      gap: 8px;
+      margin-top: 32px;
+    }
+
+    &-buttons {
+      width: 100%;
+      height: 40px;
+      display: flex;
+      gap: 8px;
+      margin-top: 16px;
+    }
+  }
+
+
+  &__price {
+    &-regular {
+      font-family: 'Mont-Regular', sans-serif;
+      color: $color-gray-secondary;
+      font-size: 22px;
+      font-weight: 500;
+      // line-height: 28.12px;
+      text-decoration-line: line-through;
+    }
+
+    &-discount {
+      font-family: 'Mont-Bold', sans-serif;
+      color: $color-gray-primary;
+      font-size: 32px;
+      font-weight: 800;
+      line-height: 41px;
+      letter-spacing: -0.01em;
+    }
+  }
+
+  &__block {
+    width: 100%;
+    height: 15px;
+    display: flex;
+    justify-content: space-between;
+
+    font-family: 'Mont-SemiBold', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+  }
+
+  &__info {
+    color: $color-gray-secondary;
+    font-family: 'Mont-SemiBold', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+  }
+
+  &__value {
+    color: $color-gray-primary;
+  }
+
+  &__button {
+    &-addToCard {
+      border: none; /* Убираем рамку */
+      cursor: pointer; /* Указываем, что это кнопка */
+
+      flex: 1;
+      height: 100%;
+      background-color: $color-gray-primary;
+
+      font-family: 'Mont-SemiBold', sans-serif;
+      color: $color-white;
+      font-size: 14px;
+      font-weight: 700;
+      line-height: 21px;
+    }
+
+    &-addToFavourite {
+      position: relative;
+      box-sizing: border-box;
+      border: 1px solid $color-gray-icons-placeholders;
+      background-color: #fff;
+      width: 40px;
+      height: 40px;
+      cursor: pointer;
+    }
+
+    &-addToFavourite:after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 16px;
+      height: 16px;
+      background-image: url('/icons/Favourites\ \(Heart\ Like\).svg'); /* Убедитесь, что путь верный */
+      background-size: contain;
+      background-repeat: no-repeat;
+    }
+  }
+}
+
+.productDetailsPage__content-buttom {
+  display: flex;
+  gap: 64px;
+  margin-top: 80px;
+}
+
+.productDetailsPage__block-about {
+  width: 560px;
+}
+
+.productDetailsPage__block-techSpecs {
+  width: 512px;
+}
+
+.productDetailsPage__line-bottom {
+  width: 100%;
+  height: 1px;
+  background-color: $color-gray-elements;
+  margin-top: 16px;
+}
+
+.productDetailsPage__description {
+  margin-top: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.productDetailsPage__section {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.productDetailsPage__section-title {
+  font-family: 'Mont-SemiBold', sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 25.56px;
+  color: $color-gray-primary;
+}
+
+.productDetailsPage__section-description {
+  font-family: 'Mont-Regular', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 21px;
+  color: $color-gray-secondary;
+}
+
+.productDetailsPage__block-title {
+  font-family: 'Mont-Bold', sans-serif;
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 30.8px;
+  color: $color-gray-primary;
+}
+
+.productDetailsPage__techSpecs-content {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 25px;
+}
+
+.productDetailsPage__techSpecs-block {
+  display: flex;
+  justify-content: space-between;
+}
+
+.productDetailsPage__techSpecs-title {
+  font-family: 'Mont-Regular', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 21px;
+  color: $color-gray-secondary;
+}
+
+.productDetailsPage__techSpecs-value {
+  font-family: 'Mont-Regular', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 21px;
+  color: $color-gray-primary;
+}
+
+.productDetailsPage__title--bottom {
+  margin-top: 80px;
+  margin-bottom: 24px;
+}
+
+
+
+
+
+
+
+

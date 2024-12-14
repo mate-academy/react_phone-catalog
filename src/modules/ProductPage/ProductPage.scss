@@ -1,0 +1,41 @@
+@import '../../styles/main.scss';
+
+.productPage {
+  @include content-padding-inline();
+}
+
+.productPage__title {
+  font-family: 'Mont-Bold', sans-serif;
+  font-size: 48px;
+  font-weight: 800;
+  line-height: 56px;
+  letter-spacing: -0.01em;
+  color: $color-gray-primary;
+  margin-bottom: 8px;
+}
+
+.productPage__description {
+  font-family: 'Mont-Regular', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 21px;
+  color: $color-gray-secondary;
+}
+
+.productPage__dropdown-container {
+  margin-top: 40px;
+  display: flex;
+  gap: 16px;
+}
+
+.productPage__content {
+  display: flex;
+  flex-wrap: wrap; /* Элементы будут переноситься на новую строку */
+  gap: 40px 16px; /* Расстояние между элементами: 40px между строками, 16px между колонками */
+  margin-top: 24px;
+}
+
+.productPage__item {
+  flex: 0 1 calc(25% - 16px); /* 4 карточки в ряду с учетом отступов между ними */
+}
+

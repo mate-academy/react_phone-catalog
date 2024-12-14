@@ -3,9 +3,9 @@ import './PicturesSlider.scss';
 
 export const PicturesSlider: React.FC = () => {
   const images = [
-    '/img/banner-phones.png',
-    '/img/banner-accessories.png',
-    '/img/banner-tablets.png',
+    'img/banner-phones.png',
+    'img/banner-accessories.png',
+    'img/banner-tablets.png',
   ];
 
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -13,7 +13,11 @@ export const PicturesSlider: React.FC = () => {
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
 
   const nextSlide = () => {
-    setCurrentSlide(prev => (prev + 1) % images.length);
+    setCurrentSlide((prev) => (prev + 1) % images.length);
+  };
+
+  const prevSlide = () => {
+    setCurrentSlide((prev) => (prev - 1 + images.length) % images.length);
   };
 
   useEffect(() => {
@@ -40,25 +44,50 @@ export const PicturesSlider: React.FC = () => {
     intervalRef.current = setInterval(nextSlide, 5000);
   };
 
+  const handleNextButton = () => {
+    nextSlide();
+
+    if (intervalRef.current) {
+      clearInterval(intervalRef.current);
+    }
+
+    intervalRef.current = setInterval(nextSlide, 5000);
+  };
+
+  const handlePrevButton = () => {
+    prevSlide();
+
+    if (intervalRef.current) {
+      clearInterval(intervalRef.current);
+    }
+
+    intervalRef.current = setInterval(nextSlide, 5000);
+  };
+
   return (
     <div className="picturesSlider">
       <div className="picturesSlider__container">
         <button
-          className="
-            picturesSlider__button picturesSlider__button--left"
+          className="picturesSlider__button picturesSlider__button--left"
+          onClick={handlePrevButton}
         ></button>
 
         <div className="picturesSlider__container-image">
-          <img
-            src={images[currentSlide]}
-            alt="Slide"
-            className="picturesSlider__image"
-          />
+          {images.map((src, index) => (
+            <img
+              key={index}
+              src={src}
+              alt="Slide"
+              className={`picturesSlider__image ${
+                currentSlide === index ? 'picturesSlider__image--active' : ''
+              }`}
+            />
+          ))}
         </div>
 
         <button
-          className="
-            picturesSlider__button picturesSlider__button--right"
+          className="picturesSlider__button picturesSlider__button--right"
+          onClick={handleNextButton}
         ></button>
       </div>
 
@@ -66,7 +95,8 @@ export const PicturesSlider: React.FC = () => {
         {images.map((_, index) => (
           <div
             key={index}
-            className={`picturesSlider__dot ${currentSlide === index ? 'picturesSlider__dot--active' : ''}`}
+            className={`picturesSlider__dot ${currentSlide === index ? 'picturesSlider__dot--active' : ''
+              }`}
             onClick={() => handleDotClick(index)}
           ></div>
         ))}

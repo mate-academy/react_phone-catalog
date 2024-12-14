@@ -1,0 +1,59 @@
+@import '../../styles/main.scss';
+
+.favoritesPage {
+  @include content-padding-inline();
+}
+
+.favoritesPage__content {
+  display: flex;
+  flex-wrap: wrap; /* Элементы будут переноситься на новую строку */
+  gap: 40px 16px; /* Расстояние между элементами: 40px между строками, 16px между колонками */
+  margin-top: 24px;
+}
+
+.favoritesPage__empty-content {
+  margin-top: 40px;
+  font-family: 'Mont-SemiBold', sans-serif;
+  font-size: 48px;
+  font-weight: 500;
+  line-height: 21px;
+  color: $color-gray-secondary;
+  display: flex;
+  justify-content: center;
+}
+
+.favoritesPage__title {
+  margin-top: 16px;
+  margin-bottom: 40px;
+
+  font-family: 'Mont-Bold', sans-serif;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  color: $color-gray-primary;
+  font-size: 48px;
+  line-height: 56px;
+}
+
+.favoritesPage__button-back {
+  width: 66px;
+  height: 16px;
+  border: none;
+  background-color: $color-white;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  font-family: 'Mont-SemiBold', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  color: $color-gray-secondary;
+  margin-top: 40px;
+}
+
+.favoritesPage__button-back::before {
+  content: url('/icons/Chevron\ \(Arrow\ Left\).svg');
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  vertical-align: middle;
+  margin-right: 4px;
+}

@@ -1,0 +1,73 @@
+@import '../../../styles/main.scss';
+
+.footer {
+  box-shadow: 0px -1px 0px 0px $color-gray-elements;
+}
+
+.footer__container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-block: 32px;
+  margin-top: 80px;
+
+  @include content-padding-inline();
+}
+
+.footer__logo,
+.footer__items,
+.footer__block {
+  flex: 1;
+}
+
+.footer__items {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer__block {
+  display: flex;
+  align-items: center;
+  justify-content:end;
+}
+
+.footer__link {
+  text-transform: uppercase;
+  text-decoration: none;
+  font-family: 'Mont-Bold', sans-serif;
+  font-size: 12px;
+  font-weight: 800;
+  line-height: 11px;
+  letter-spacing: 0.04em;
+  color: $color-gray-secondary;
+}
+
+.footer__button {
+  position: relative;
+  width: 32px;
+  height: 32px;
+  border: 1px solid $color-gray-icons-placeholders;
+  background-color: $color-white;
+  box-sizing: border-box;
+  cursor: pointer;
+  margin-left: 16px;
+}
+
+.footer__button::after {
+  position: absolute;
+  content: url('/icons/Chevron\ \(Arrow\ Left\).svg');
+  width: 16px;
+  height: 16px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(90deg);
+}
+
+.footer__button-title {
+  font-family: 'Mont-SemiBold', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 15.34px;
+  color: $color-gray-secondary;
+}

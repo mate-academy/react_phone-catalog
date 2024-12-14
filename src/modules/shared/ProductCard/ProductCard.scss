@@ -17,6 +17,8 @@
     }
 
     &-title {
+      height: 58px;
+      margin-top: 8px;
       padding-top: 16px;
     }
 
@@ -49,6 +51,7 @@
   }
 
   &__title {
+    margin-top: 8px;
     font-family: 'Mont-Regular', sans-serif;
     color: $color-gray-primary;
     font-size: 14px;
@@ -57,14 +60,6 @@
   }
 
   &__price {
-    &-discount {
-      font-family: 'Mont-Bold', sans-serif;
-      color: $color-gray-primary;
-      font-size: 22px;
-      font-weight: 700;
-      line-height: 30.8px;
-    }
-
     &-regular {
       font-family: 'Mont-Regular', sans-serif;
       color: $color-gray-secondary;
@@ -72,6 +67,15 @@
       font-weight: 500;
       line-height: 28.12px;
       text-decoration-line: line-through;
+    }
+
+    &-discount,
+    &-regular-without-discount {
+      font-family: 'Mont-Bold', sans-serif;
+      color: $color-gray-primary;
+      font-size: 22px;
+      font-weight: 700;
+      line-height: 30.8px;
     }
   }
 
@@ -116,6 +120,24 @@
       line-height: 21px;
     }
 
+    &-addedToCard {
+      border: none; /* Убираем рамку */
+      cursor: pointer; /* Указываем, что это кнопка */
+
+      width: 160px;
+      height: 100%;
+
+      border: 1px solid $color-gray-elements;
+
+      background-color: $color-white;
+
+      font-family: 'Mont-SemiBold', sans-serif;
+      color: $color-green;
+      font-size: 14px;
+      font-weight: 700;
+      line-height: 21px;
+    }
+
     &-addToFavourite {
       position: relative;
       box-sizing: border-box;
@@ -138,5 +160,33 @@
       background-size: contain;
       background-repeat: no-repeat;
     }
+
+    &-isFavourite {
+      position: relative;
+      box-sizing: border-box;
+      border: 1px solid $color-gray-elements;
+      background-color: #fff;
+      width: 40px;
+      height: 40px;
+      cursor: pointer;
+    }
+
+    &-isFavourite:after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 16px;
+      height: 16px;
+      background-image: url('/icons/Favourites\ Filled\ \(Heart\ Like\).svg'); /* Убедитесь, что путь верный */
+      background-size: contain;
+      background-repeat: no-repeat;
+    }
   }
 }
+
+.productCard__activeClick {
+  cursor: pointer;
+}
+
