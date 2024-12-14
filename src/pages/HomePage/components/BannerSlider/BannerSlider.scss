@@ -1,0 +1,251 @@
+@import '../../../../styles/utils/mixins';
+@import '../../../../styles/utils/vars';
+
+.banner-slider {
+  position: relative;
+  width: 100vw;
+
+  margin-left: -16px;
+  margin-right: -16px;
+
+  @include on-tablet {
+    display: flex;
+    align-items: stretch;
+    gap: 16px;
+
+    width: 100%;
+
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  @include on-tablet {
+    width: calc(100vw - 48px);
+  }
+
+  @include on-desktop {
+    width: calc(1200px - 64px);
+  }
+
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    width: 100%;
+  }
+
+  &__slides {
+    display: flex;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    transition: transform 0.5s ease;
+  }
+
+  &__slide {
+    flex: 0 0 100%;
+    text-align: center;
+    color: #fff;
+    font-size: 1.5rem;
+    padding: 20px 45px 0;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    @include on-tablet {
+      padding: 8px;
+      border-radius: 5px;
+      max-height: 400px;
+    }
+
+    @include on-desktop {
+      padding: 15px;
+    }
+
+    &-heading {
+      display: inline-block;
+      font-weight: 800;
+      font-size: 26px;
+      line-height: 106%;
+      -webkit-text-fill-color: transparent;
+
+      margin-bottom: 40px;
+
+      @include on-tablet {
+        font-size: 25px;
+        margin-bottom: 0;
+        text-align: left;
+      }
+
+      @include on-desktop {
+        font-size: 50px;
+      }
+    }
+
+    &-name {
+      font-size: 30px;
+      line-height: 106%;
+      color: #fff;
+      margin-bottom: 37px;
+
+      @include on-tablet {
+        font-size: 26px;
+        margin-bottom: 15px;
+      }
+    }
+
+    &-image {
+      height: 136px;
+      overflow-y: hidden;
+
+      & img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+      }
+    }
+  }
+
+  &__controls {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+
+    position: absolute;
+    bottom: -16px;
+    left: calc(50% - 29px);
+  }
+
+  &__control {
+    width: 14px;
+    height: 4px;
+    background-color: $color_elements;
+    border-radius: 2px;
+    transition: opacity 0.3s ease;
+    cursor: pointer;
+
+    @include hover(background-color, $color_secondary);
+
+    &.active {
+      background-color: $color_primary;
+    }
+  }
+
+  &__button {
+    width: 32px;
+    background-color: #fff;
+    border: 1px solid $color_icons_placeholder;
+    border-radius: 48px;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: border-color 0.3s ease;
+
+    display: none;
+
+    @include on-tablet {
+      display: flex;
+    }
+
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    &:hover:not(:disabled) {
+      border-color: $color_primary;
+    }
+  }
+
+  &__slide-content {
+    display: flex;
+    height: 100%;
+  }
+
+  &__slide-cta {
+    flex-basis: 45%;
+    background-color: #222;
+    border-radius: 15px;
+    padding: 25px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+
+    @include on-tablet {
+      padding: 22px;
+    }
+
+    @include on-desktop {
+      padding: 40px;
+      border-radius: 20px;
+    }
+  }
+
+  &__slide-image-wrapper {
+    flex-basis: 55%;
+
+    @include on-tablet {
+      padding-top: 20px;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+
+      div {
+        width: 70%;
+        width: none;
+        min-height: 115px;
+        overflow: hidden;
+        margin-inline: auto;
+        margin-bottom: -8px;
+      }
+    }
+  }
+
+  &__slide-head {
+    position: relative;
+  }
+
+  &__slide-head img {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 18px;
+    margin: 10px;
+
+    @include on-desktop {
+      margin-left: 10px;
+      height: 20px;
+      width: auto;
+    }
+  }
+
+  &__slide-cta-btn {
+    font-weight: 400;
+    font-size: 12px;
+    text-transform: uppercase;
+    text-align: center;
+    color: #fff;
+    border-radius: 88px;
+    padding: 7px 25px;
+    transition: border-color 0.3s ease;
+
+    &:hover {
+      border-color: attr(data-border-color);
+    }
+
+    @include on-tablet {
+      font-size: 14px;
+      padding: 10px 30px;
+    }
+
+    @include on-desktop {
+      font-size: 14px;
+      padding: 15px 55px;
+    }
+  }
+}
