@@ -1,0 +1,35 @@
+[
+  {
+    "id": 1,
+    "name": "iPhone 14 Pro",
+    "message": "Now available in our store!",
+    "image": "/img/now-available-iphone-01.png",
+    "background": "#000",
+    "backgroundCTA": "#222",
+    "colorHeading": "linear-gradient(49deg, #891ce8 0%, #7560fa 47.05%, #e963ff 100%)",
+    "colorName": "#ffffff",
+    "url": "/phones/apple-iphone-14-pro-512gb-spaceblack"
+  },
+  {
+    "id": 2,
+    "name": "Apple Watch 6",
+    "message": "Rock the stars!",
+    "image": "img/accessories/apple-watch-series-6/red/00.webp",
+    "background": "#f3ccc7",
+    "backgroundCTA": "#ecdddb",
+    "colorHeading": "linear-gradient(49deg, #FF7F50 0%, #dd3c45 50%, #dd3c45 100%)",
+    "colorName": "#dd3c45",
+    "url": "/accessories/apple-watch-series-6-40mm-red"
+  },
+  {
+    "id": 3,
+    "name": "iPhone 13 Pro",
+    "message": "Be first to buy!",
+    "image": "img/iPhone-13-pro-max.png",
+    "background": "rgb(234 245 255)",
+    "backgroundCTA": "#ecf6ff",
+    "colorHeading": "linear-gradient(133deg, #48ade7 0%, #a9c0d4 47.55%, #1b87ec 100%)",
+    "colorName": "#00008b",
+    "url": "/phones/apple-iphone-13-pro-max-128gb-sierrablue"
+  }
+]
