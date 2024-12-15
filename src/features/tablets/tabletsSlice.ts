@@ -3,7 +3,7 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { TabletType } from '../../types/Product';
 
 export const setTablets = createAsyncThunk('phones/setTablets', async () => {
-  const res = await fetch('../../public/api/tablets.json');
+  const res = await fetch('../../api/tablets.json');
 
   return res.json();
 });
@@ -18,17 +18,9 @@ export const tabletsSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers(builder) {
-    // builder.addCase(setTablets.pending, state => {
-    //   // state.hasError = false;
-    //   state.loaded = false;
-    // });
     builder.addCase(setTablets.fulfilled, (state, action) => {
       state.listOfTablets = action.payload;
     });
-    // builder.addCase(setProducts.rejected, state => {
-    //   state.loaded = true;
-    //   state.hasError = true;
-    // });
   },
 });
 

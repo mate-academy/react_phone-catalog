@@ -5,7 +5,7 @@ import { ProductType } from '../../types/Product';
 export const setProducts = createAsyncThunk(
   'products/setProducts',
   async () => {
-    const res = await fetch('../../public/api/products.json');
+    const res = await fetch('../../api/products.json');
 
     return res.json();
   },
