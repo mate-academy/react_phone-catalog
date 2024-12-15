@@ -1,15 +1,16 @@
-@import '../../../../modules/shared/styles/mixins.scss';
+@import '../../../../modules/shared/styles/mixins';
 
 .block {
   display: flex;
   justify-content: space-between;
   gap: 64px;
 
-  @include onTablet {
+  @include on-tablet {
     flex-direction: column;
     padding-inline: 24px;
   }
-  @include onPhone {
+
+  @include on-phone {
     padding-inline: 16px;
   }
 
@@ -18,7 +19,7 @@
 .about {
   width: 55%;
 
-  @include onTablet {
+  @include on-tablet {
     width: 100%;
   }
 }
@@ -34,7 +35,7 @@
 }
 
 .about :last-child {
-  margin-bottom: 0px;
+  margin-bottom: 0;
 }
 
 .subtitle {
@@ -54,7 +55,7 @@
 .techChecs {
   width: 45%;
 
-  @include onTablet {
+  @include on-tablet {
     width: 100%;
   }
 }
@@ -64,16 +65,19 @@
   flex-direction: column;
   gap: 8px;
 }
+
 .charachter {
   display: flex;
   justify-content: space-between;
 }
+
 .key {
   font-size: 14px;
   font-weight: 500;
   line-height: 21px;
   color: #89939A;
 }
+
 .value {
   font-size: 14px;
   font-weight: 500;

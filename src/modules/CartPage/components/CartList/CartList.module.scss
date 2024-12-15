@@ -1,11 +1,13 @@
-@import '../../../../modules/shared/styles/mixins.scss';
+@import '../../../../modules/shared/styles/mixins';
+
 .cart {
   padding-top: 80px;
 
-  @include onTablet() {
+  @include on-tablet {
     padding-inline: 24px;
   }
-  @include onPhone() {
+
+  @include on-phone {
     padding-inline: 16px;
     padding-top: 60px;
   }
@@ -18,7 +20,8 @@
 .cartContent {
   display: flex;
   gap: 16px;
-  @include onTablet() {
+
+  @include on-tablet {
     flex-direction: column;
   }
 }
@@ -29,7 +32,7 @@
   gap: 16px;
   width: 67%;
 
-  @include onTablet() {
+  @include on-tablet {
     width: 100%;
   }
 }
@@ -41,38 +44,39 @@
   padding: 24px;
   border: 1px solid #E2E6E9;
 
-  @include onPhone() {
+  @include on-phone {
    flex-direction: column;
    gap: 20px;
    padding: 16px;
   }
 
   &:hover {
-    box-shadow: rgba(0, 0, 0, 0.1) 0px 2px 16px 0px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0 2px 16px 0;
   }
 }
+
 :global(html.dark) .item {
   background-color: #161827;
   border: none;
   color: #F1F2F9;
 }
+
 .left, .right {
   display: flex;
   align-items: center;
-}
 
-.right, .left {
-  @include onPhone() {
+  @include on-phone {
     justify-content: space-between;
     width: 100%;
   }
 }
 
+
 .deleteBtn {
   fill: rgb(180, 189, 195);
   margin-right: 32px;
 
-  @include onPhone() {
+  @include on-phone {
     margin-right: 12px;
   }
 }
@@ -81,13 +85,15 @@
   width: 80px;
   margin-right: 24px;
 }
+
 .title {
   margin-right: 10px;
 
-  @include onPhone() {
+  @include on-phone {
     margin-right: 0;
   }
 }
+
 .title, .count {
   font-size: 14px;
   font-weight: 500;
@@ -95,11 +101,13 @@
   text-underline-position: from-font;
   text-decoration-skip-ink: none;
 }
+
 .counter {
   display: flex;
   align-items: center;
   margin-right: 24px;
 }
+
 .minus, .count, .plus{
   font-size: 14px;
   font-weight: 500;

@@ -1,4 +1,4 @@
-@import '../../../../modules/shared/styles/mixins.scss';
+@import '../../../../modules/shared/styles/mixins';
 
 .intro {
   display: flex;
@@ -6,22 +6,25 @@
   position: relative;
   z-index: 1;
 
-  @include onTablet(){
-    padding-inline: 0px;
+  @include on-tablet{
+    padding-inline: 0;
   }
 }
+
 .slider {
   display: flex;
   gap: 16px;
   margin-bottom: 15px;
-  // max-height: 406px;
-  @include onTablet(){
+
+  @include on-tablet{
     padding-inline: 24px;
   }
-  @include onPhone(){
+
+  @include on-phone{
     padding-inline: 0;
   }
 }
+
 .wrapper{
   overflow: hidden;
   max-width: 1040px;
@@ -38,7 +41,7 @@
     background-color: lightgray;
   }
 
-  @include onPhone(){
+  @include on-phone{
     display: none;
   }
 }
@@ -61,7 +64,7 @@
   gap: 84px;
   grid-template-columns: 1fr 1fr;
 
-  @include onTablet(){
+  @include on-tablet{
     height: 100%;
     gap: 25px;
   }
@@ -73,10 +76,11 @@
   padding: 50px;
   border-radius: 15px;
 
-  @include onTablet(){
+  @include on-tablet{
     padding: 20px;
   }
 }
+
 .rightTitle {
   color: #7a50f6;
   line-height: 48px;
@@ -84,7 +88,7 @@
   font-weight: 700;
   margin-bottom: 5px;
 
-  @include onTablet(){
+  @include on-tablet{
     font-size: 23px;
   }
 }
@@ -95,7 +99,7 @@
   margin-bottom: 90px;
   font-size: 14px;
 
-  @include onTablet(){
+  @include on-tablet{
     margin-bottom: 30px;
   }
 }
@@ -110,7 +114,7 @@
   color: #fff;
   border: 1px solid gray;
 
-  @include onTablet(){
+  @include on-tablet{
     padding: 7px 15px;
     font-size: 15px;
   }
@@ -125,15 +129,18 @@
   padding-top: 40px;
   margin-right: 50px;
 }
+
 .leftTitle {
   font-size: 30px;
   color: #fff;
 }
+
 .leftSubtitle {
   color: gray;
   font-size: 14px;
   margin-bottom: 15px;
 }
+
 .banner {
   width: 100%;
   height: 100%;

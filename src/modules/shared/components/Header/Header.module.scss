@@ -1,4 +1,4 @@
-@import '../../../../modules/shared/styles/mixins.scss';
+@import '../../../../modules/shared/styles/mixins';
 
 .header {
   position: fixed;
@@ -12,7 +12,7 @@
 
   border-bottom: 1px solid var(--head-border-color);
 
-  @include onTablet(){
+  @include on-tablet{
     height: 48px;
     padding-left: 16px;
   }
@@ -21,7 +21,7 @@
 .logo {
   margin-right: 48px;
 
-  @include onTablet(){
+  @include on-tablet{
     margin-right: 34px;
   }
 }
@@ -30,7 +30,7 @@
   content: url(../../../../assets/images/LogoDark.png);
 }
 
-@include onPhone() {
+@include on-phone {
   .menu {
     position: fixed;
     height: 100vh;
@@ -39,7 +39,6 @@
     right: 0;
     background-color: #fff;
     z-index: 100;
-    // pointer-events: none;
     opacity: 0;
     overflow: hidden;
     transform: translateX(100%);

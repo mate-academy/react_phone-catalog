@@ -1,19 +1,14 @@
-@import '../../../../../../modules/shared/styles/mixins.scss';
+@import '../../../../../../modules/shared/styles/mixins';
 
 
 .nav {
   width: 100%;
   height: calc(100vh - 48px);
-  display: flex;
   flex-direction: column;
   justify-content: space-between;
   padding-top: 24px;
   display: none;
   background-color: var(--background-color);
-
-  @include onPhone {
-    display: flex;
-  }
 
   &__list {
     display: flex;
@@ -23,11 +18,6 @@
     width: 100%;
     gap: 16px;
     list-style: none;
-
-    @include onPhone() {
-
-    }
-
   }
 
   &__link {
@@ -39,7 +29,8 @@
     text-transform: uppercase;
     position: relative;
     height: 61px;
-    @include onTablet(){
+
+    @include on-tablet{
       height: 48px;
     }
 
@@ -64,7 +55,6 @@
     width: 50%;
     box-sizing: border-box;
     line-height: 0;
-    display: block;
     height: 100%;
     padding-inline: 23px;
     border-inline: 1px solid #E2E6E9;
@@ -78,7 +68,7 @@
   &__icon__menu {
     display: none;
 
-    @include onPhone() {
+    @include on-phone {
       display: flex;
     }
   }
@@ -101,6 +91,7 @@
 :global(html.dark) .favourite {
   content: url(../../../../../../assets/images/header/FavouritesDark.png);
 }
+
 :global(html.dark) .shopBag {
   content: url(../../../../../../assets/images/header/ShoppingbagDark.png);
 }

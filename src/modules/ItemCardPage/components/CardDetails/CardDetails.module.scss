@@ -1,22 +1,24 @@
-@import '../../../../modules/shared/styles/mixins.scss';
+@import '../../../../modules/shared/styles/mixins';
 
 .section {
   padding-top: 70px;
   padding-inline: 24px;
 
-  @include onTablet() {
+  @include on-tablet {
     padding-inline: 24px;
     padding-top: 50px;
   }
-  @include onPhone() {
+
+  @include on-phone {
     padding-inline: 16px;
   }
 }
+
 .deviceContent {
   display: flex;
   justify-content: center;
 
-  @include onPhone() {
+  @include on-phone {
     flex-direction: column;
     justify-content: center;
   }
@@ -26,22 +28,24 @@
   display: flex;
   margin-right: 64px;
 
-  @include onTablet() {
+  @include on-tablet {
     margin-right: 15px;
     margin-bottom: 40px;
   }
-  @include onPhone() {
+
+  @include on-phone {
     flex-direction: column-reverse;
     align-items: center;
   }
 }
+
 .photosSmall {
   display: flex;
   flex-direction: column;
   gap: 16px;
   margin-right: 16px;
 
-  @include onPhone() {
+  @include on-phone {
     gap: 8px;
     flex-direction: row;
   }
@@ -61,12 +65,13 @@
     transform: scale(1.05);
   }
 
-  @include onTablet() {
+  @include on-tablet {
     width: 45px;
     height: 45px;
     padding: 0;
   }
-  @include onPhone() {
+
+  @include on-phone {
     width: 50px;
     height: 50px;
     padding: 0;
@@ -76,6 +81,7 @@
 :global(html.dark) .photoSmall {
   border-color: #313237;
 }
+
 :global(html.dark) .photoSmallActive {
   border-color: #E2E6E9;
 }
@@ -87,11 +93,12 @@
   object-position: center;
   object-fit:contain;
 
-  @include onTablet() {
+  @include on-tablet {
     width: 287px;
-    padding: 0px;
+    padding: 0;
   }
-  @include onPhone() {
+
+  @include on-phone {
     margin-bottom: 20px;
   }
 }
@@ -155,7 +162,7 @@
     border: none;
   }
 
-  @include onTablet {
+  @include on-tablet {
     flex-wrap: wrap;
   }
 }
@@ -210,24 +217,25 @@
     color: #313237;
     border: 1px solid #313237;
   }
-  @include onTablet() {
+
+  @include on-tablet {
     width: 72%;
     padding-inline: 20px;
   }
-  @include onPhone() {
+
+  @include on-phone {
     width: 100%;
     padding-inline: 20px;
   }
 }
 
 .btnFavour {
-  font-size: 0px;
+  font-size: 0;
   height: 100%;
   padding: 16px;
   background-color: transparent;
   border: 1px solid #B4BDC3;
   cursor: pointer;
-
 }
 
 .charachters {
@@ -235,16 +243,19 @@
   flex-direction: column;
   gap: 8px;
 }
+
 .charachter {
   display: flex;
   justify-content: space-between;
 }
+
 .key {
   font-size: 12px;
   font-weight: 600;
   line-height: 15.34px;
   color: #89939A;
 }
+
 .value {
   font-size: 12px;
   font-weight: 600;

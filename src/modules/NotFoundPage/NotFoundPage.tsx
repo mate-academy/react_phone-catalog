@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
-import styles from './NotFoundPage.module.scss';
 import BtnBack from '../../components/BtnBack/BtnBack';
+import styles from './NotFoundPage.module.scss';
+import errorImg from '../../assets/images/page-not-found.png';
 
 const NotFoundPage = () => {
   return (
@@ -12,6 +13,7 @@ const NotFoundPage = () => {
       <Link to="/" className={styles.link}>
         <button className={styles.btn}> Go home</button>
       </Link>
+      <img src={errorImg} alt="" />
     </div>
   );
 };

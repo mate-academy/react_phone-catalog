@@ -3,7 +3,7 @@ import logo from '../../../../assets/images/Logo.png';
 // eslint-disable-next-line max-len
 import styles from './Header.module.scss';
 import classNames from 'classnames';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import Navbar from './components/Navbar/Navbar';
 import Menu from './components/Menu/Menu';
 

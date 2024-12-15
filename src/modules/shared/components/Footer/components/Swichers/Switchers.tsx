@@ -1,6 +1,5 @@
 import classNames from 'classnames';
 import styles from './Switchers.module.scss';
-import { useState } from 'react';
 import { useTheme } from '../../../../utils/useTheme';
 import { useTranslation } from 'react-i18next';
 const Switchers = () => {
@@ -10,8 +9,6 @@ const Switchers = () => {
   const changeLanguage = (lang: string) => {
     i18n.changeLanguage(lang); // Змінюємо мову
   };
-  // const [isDropdownLanguageActive, setIsDropdownLanguageActive] =
-  //   useState(false);
 
   return (
     <div className={styles.switchers}>

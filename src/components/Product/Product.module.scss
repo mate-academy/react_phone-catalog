@@ -1,16 +1,4 @@
-@import '../../modules/shared/styles/mixins.scss';
-// .sliderItem {
-//   // flex: 0 0 auto;
-//   margin-right: 15px;
-//   width: 272px;
-
-//   @include onTablet {
-//     width: 237px;
-//   }
-//   @include onPhone {
-//     width: 215px;
-//   }
-// }
+@import '../../modules/shared/styles/mixins';
 
 .gadget {
   box-sizing: border-box;
@@ -20,7 +8,7 @@
   border: 1px solid #E2E6E9;
 
   &:hover {
-    box-shadow: rgba(0, 0, 0, 0.1) 0px 2px 16px 0px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0 2px 16px 0;
   }
 }
 
@@ -28,6 +16,7 @@
   border: none;
   background-color: #161827;
 }
+
 .img {
   height: 196px;
   margin-inline: auto;
@@ -35,10 +24,11 @@
   margin-bottom: 24px;
   object-fit: contain;
 
-  @include onPhone {
+  @include on-phone {
     height: 160px;
   }
 }
+
 .mainInfo {
   display: flex;
   row-gap: 8px;
@@ -47,16 +37,18 @@
   margin-bottom: 8px;
 
 }
+
 .name {
   font-size: 14px;
   font-weight: 400;
   line-height: 21px;
   min-height: 42px;
 
-  @include onTablet() {
+  @include on-tablet {
     font-size: 13px;
   }
 }
+
 .price {
   font-size: 22px;
   font-weight: 800;
@@ -84,21 +76,25 @@
   gap: 8px;
   margin-bottom: 8px;
 }
+
 .charachter {
   display: flex;
   justify-content: space-between;
 }
+
 .key {
   font-size: 12px;
   font-weight: 600;
   line-height: 15.34px;
   color: #89939A;
 }
+
 .value {
   font-size: 12px;
   font-weight: 600;
   line-height: 15.34px;
 }
+
 .buttons {
   display: flex;
   justify-content: space-between;
@@ -115,10 +111,11 @@
   cursor: pointer;
   width: 78%;
 
-  @include onTablet {
+  @include on-tablet {
     padding-inline: 19px;
   }
-  @include onPhone {
+
+  @include on-phone {
     padding-inline: 8px;
   }
 
@@ -133,8 +130,9 @@
   background-color: #323542;
   color: #fff;
 }
+
 .btnFavour {
-  font-size: 0px;
+  font-size: 0;
   padding: 12px;
   background-color: transparent;
   border: 1px solid #B4BDC3;

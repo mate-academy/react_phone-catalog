@@ -1,1 +1,1 @@
-import * from './MayAlsoLike';
+export * from './MayAlsoLike';

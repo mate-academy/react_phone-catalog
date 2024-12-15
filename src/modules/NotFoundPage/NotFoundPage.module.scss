@@ -1,11 +1,11 @@
-@import '../../modules/shared/styles/mixins.scss';
+@import '../../modules/shared/styles/mixins';
 
 .page {
   display: flex;
   flex-direction: column;
   margin-top: 80px;
 
-  @include onTablet() {
+  @include on-tablet {
     padding-inline: 24px;
   }
 }

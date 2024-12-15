@@ -1,1 +1,1 @@
-import * from './FavouritesList';
+export * from './FavouritesList';

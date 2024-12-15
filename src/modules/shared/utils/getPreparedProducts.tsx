@@ -1,5 +1,6 @@
 // import { useTranslation } from 'react-i18next';
-import { ProductType } from '../types/Product';
+
+import { ProductType } from '../../../types/Product';
 
 export const getPreparedProducts = (
   products: ProductType[],

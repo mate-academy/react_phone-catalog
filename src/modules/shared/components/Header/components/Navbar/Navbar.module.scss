@@ -1,4 +1,4 @@
-@import '../../../../../../modules/shared/styles/mixins.scss';
+@import '../../../../../../modules/shared/styles/mixins';
 
 .nav {
   width: 100%;
@@ -15,12 +15,10 @@
     gap: 64px;
     list-style: none;
 
-    @include onTablet(){
+    @include on-tablet{
       gap: 30px;
     }
 
-    @include onPhone() {
-    }
 
   }
 
@@ -33,7 +31,8 @@
     text-transform: uppercase;
     position: relative;
     height: 61px;
-    @include onTablet(){
+
+    @include on-tablet{
       height: 46px;
       font-size: 13px;
     }
@@ -47,10 +46,9 @@
       color: var(--nav-link-active-color);
     }
 
-    @include onPhone() {
+    @include on-phone {
       display: none;
     }
-
   }
 
   &__icon__links {
@@ -62,14 +60,13 @@
   &__icon__link {
     box-sizing: border-box;
     line-height: 0;
-    display: block;
     height: 100%;
     padding-inline: 23px;
     border-left: 1px solid var(--head-border-color);
     display: flex;
     align-items: center;
 
-    @include onPhone() {
+    @include on-phone {
       display: none;
     }
   }
@@ -77,7 +74,7 @@
   &__icon__menu {
     display: none;
 
-    @include onPhone() {
+    @include on-phone {
       display: flex;
     }
   }
@@ -101,12 +98,15 @@
 :global(html.dark) .menu {
   content: url(../../../../../../assets/images/header/MenuDark.png);
 }
+
 :global(html.dark) .close {
   content: url(../../../../../../assets/images/header/CloseDark.png);
 }
+
 :global(html.dark) .favourite {
   content: url(../../../../../../assets/images/header/FavouritesDark.png);
 }
+
 :global(html.dark) .shopBag {
   content: url(../../../../../../assets/images/header/ShoppingbagDark.png);
 }

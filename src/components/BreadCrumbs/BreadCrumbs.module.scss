@@ -1,4 +1,5 @@
-@import '../../modules/shared/styles/mixins.scss';
+@import '../../modules/shared/styles/mixins';
+
 .crumbs {
   margin-top: 20px;
   margin-bottom: 20px;
@@ -6,6 +7,7 @@
   align-items: center;
   width: 100%;
 }
+
 .crumb {
   &:last-child :first-child{
     color: #89939A;
@@ -14,19 +16,18 @@
     display: none;
   }
 }
+
 .crumbLink {
   font-size: 12px;
   font-weight: 600;
   line-height: 15.34px;
   color: var(--nav-link-active-color);
 
-  @include onPhone() {
-    font-size: 11px;
+  @include on-phone {
+    font-size: 10px;
   }
 }
-:global(html.dark) .crumbLink {
 
-}
 .arrow {
   margin-inline: 10px;
   fill: #B4BDC3;

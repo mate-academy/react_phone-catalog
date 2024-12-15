@@ -1,4 +1,4 @@
-@import '../../modules/shared/styles/mixins.scss';
+@import '../../modules/shared/styles/mixins';
 
 .section {
   display: flex;
@@ -6,26 +6,28 @@
   justify-content: center;
   padding-top: 60px;
 
-  @include onTablet() {
+  @include on-tablet {
     margin-inline: 24px;
   }
-  @include onPhone() {
+
+  @include on-phone {
     margin-inline: 16px;
     padding-top: 45px;
   }
 
 }
+
 .productList {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   list-style: none;
-  column-gap: 16px;
-  row-gap: 40px;
+  gap: 40px 16px;
 
-  @include onTablet() {
+  @include on-tablet {
     grid-template-columns: repeat(auto-fill, minmax(237px, 1fr));
   }
-  @include onPhone() {
+
+  @include on-phone {
     grid-template-columns: repeat(auto-fill, minmax(215px, 1fr));
   }
 }
