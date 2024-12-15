@@ -1,0 +1,50 @@
+@import '../../../../modules/shared/styles/mixins.scss';
+.sum {
+  border: 1px solid #E2E6E9;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 33%;
+  align-self: start;
+
+  @include onTablet() {
+    width: 100%;
+  }
+}
+:global(html.dark) .sum {
+  background-color: #323542;
+  border: 1px solid #3B3E4A;
+  background-color: transparent;
+}
+.price {
+  margin-bottom: 0;
+}
+.top {
+  border-bottom: 1px solid #E2E6E9;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 25px;
+  margin-bottom: 25px;
+}
+.total {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 21px;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  color: #89939A;
+}
+.btn {
+  font-weight: 500;
+  line-height: 21px;
+  text-align: center;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  background-color: #313237;
+  color: #fff;
+  width: 100%;
+  padding-block: 13.5px;
+}

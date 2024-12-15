@@ -1,0 +1,30 @@
+.pagination {
+  display: flex;
+  align-items: center;
+  margin-top: 40px;
+  margin-inline: auto;
+  flex-wrap: wrap;
+}
+
+.button {
+  border: 1px solid #E2E6E9;
+  height: 32px;
+  width: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 21px;
+  box-sizing: border-box;
+
+  &__active {
+    background: var(--text-color);
+    color: var(--background-color);
+    // border: none;
+  }
+}
+
+:global(html.dark) .button > svg {
+  fill: #F1F2F9;
+}

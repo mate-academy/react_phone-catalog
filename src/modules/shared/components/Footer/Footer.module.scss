@@ -1,0 +1,89 @@
+@import '../../../../modules/shared/styles/mixins.scss';
+
+.footer {
+  box-shadow: 0px -1px 0px 0px #E2E6E9;
+  margin-top: auto;
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  @include onPhone {
+    padding-top: 32px;
+    height: 100%;
+  }
+}
+:global(html.dark) .footer {
+  box-shadow: 0px -1px 0px 0px #3B3E4A;
+}
+.footerContent {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+
+  @include onTablet {
+    margin-inline: 24px;
+  }
+  @include onPhone {
+    flex-direction: column;
+    align-items: start;
+    gap: 32px;
+  }
+}
+
+:global(html.dark) .logo {
+  content: url(../../../../assets/images/LogoDark.png);
+}
+
+.links {
+  display: flex;
+  gap: 107px;
+
+  @include onTablet {
+    gap: 13.5px;
+  }
+
+  @include onPhone {
+    gap: 16px;
+    flex-direction: column;
+  }
+}
+.link {
+  font-size: 12px;
+  font-weight: 800;
+  line-height: 11px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #89939A;
+  text-decoration: none;
+}
+.backToTop {
+  align-self: center;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 15px;
+  color: #89939A;
+  cursor: pointer;
+
+  @include onPhone {
+    padding-bottom: 32px;
+  }
+}
+
+.icon {
+  border: 1px solid #B4BDC3;
+  width: 31px;
+  height: 31px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 16px;
+}
+
+.btnBack {
+  fill: var(--nav-link-active-color);
+}
+
+:global(html.dark) .icon {
+  border: none;
+  background-color: #323542;
+}

@@ -1,0 +1,65 @@
+@import '../../modules/shared/styles/mixins.scss';
+.products {
+  @include onTablet {
+    margin-left: 24px;
+  }
+}
+.top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  @include onTablet {
+    margin-right: 24px;
+  }
+}
+
+.title {
+  margin-bottom: 0px;
+}
+
+.slider {
+  max-height: 512px;
+  overflow: hidden;
+  :global {
+    .slick-slide {
+      margin-right: 15px;
+      width: 272px;
+
+      @include onTablet {
+        width: 237px;
+      }
+      @include onPhone {
+        width: 215px;
+      }
+    }
+  }
+}
+.slick-track {
+  max-height: 512px;
+}
+.arrows {
+  display: flex;
+  gap: 16px;
+}
+
+.arrow {
+  border: 1px solid #B4BDC3;
+  background-color: transparent;
+  height: 32px;
+  width: 32px;
+}
+.wrapper {
+  overflow: hidden;
+}
+.sliderList {
+  padding-left: 0;
+  list-style: none;
+  display: flex;
+  gap: 15px;
+}
+
+.arrowIcon {
+  fill: var(--nav-link-active-color);
+}
+

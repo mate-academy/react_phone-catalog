@@ -1,0 +1,153 @@
+@import '../../modules/shared/styles/mixins.scss';
+// .sliderItem {
+//   // flex: 0 0 auto;
+//   margin-right: 15px;
+//   width: 272px;
+
+//   @include onTablet {
+//     width: 237px;
+//   }
+//   @include onPhone {
+//     width: 215px;
+//   }
+// }
+
+.gadget {
+  box-sizing: border-box;
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #E2E6E9;
+
+  &:hover {
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 2px 16px 0px;
+  }
+}
+
+:global(html.dark) .gadget {
+  border: none;
+  background-color: #161827;
+}
+.img {
+  height: 196px;
+  margin-inline: auto;
+  display: block;
+  margin-bottom: 24px;
+  object-fit: contain;
+
+  @include onPhone {
+    height: 160px;
+  }
+}
+.mainInfo {
+  display: flex;
+  row-gap: 8px;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-bottom: 8px;
+
+}
+.name {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 21px;
+  min-height: 42px;
+
+  @include onTablet() {
+    font-size: 13px;
+  }
+}
+.price {
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 30.8px;
+}
+
+.oldPrice {
+  font-size: 22px;
+  line-height: 30.8px;
+  text-decoration: line-through;
+  color: #89939A;
+}
+
+.line {
+  width: 100%;
+  height: 1px;
+  background: #E2E6E9;
+  margin-bottom: 8px;
+}
+
+.charachters {
+  display: flex;
+  flex-direction: column;
+  padding-block: 8px;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+.charachter {
+  display: flex;
+  justify-content: space-between;
+}
+.key {
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 15.34px;
+  color: #89939A;
+}
+.value {
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 15.34px;
+}
+.buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.btnCart {
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 21px;
+  color: #fff;
+  background-color: var(--btn-bg-color);
+  border: none;
+  padding-inline: 37.5px;
+  cursor: pointer;
+  width: 78%;
+
+  @include onTablet {
+    padding-inline: 19px;
+  }
+  @include onPhone {
+    padding-inline: 8px;
+  }
+
+  &Active {
+    background-color: #fff;
+    color: #313237;
+    border: 1px solid #B4BDC3;
+  }
+}
+
+:global(html.dark) .btnCartActive {
+  background-color: #323542;
+  color: #fff;
+}
+.btnFavour {
+  font-size: 0px;
+  padding: 12px;
+  background-color: transparent;
+  border: 1px solid #B4BDC3;
+  cursor: pointer;
+  margin-left: 8px;
+}
+
+:global(html.dark) .btnFavour {
+  background-color: #323542;
+}
+
+.iconFav {
+  height: 16px;
+  width: 16px;
+  fill: var(--favr-fill-color);
+}

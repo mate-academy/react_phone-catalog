@@ -1,0 +1,81 @@
+@import '../../../../modules/shared/styles/mixins.scss';
+
+.block {
+  display: flex;
+  justify-content: space-between;
+  gap: 64px;
+
+  @include onTablet {
+    flex-direction: column;
+    padding-inline: 24px;
+  }
+  @include onPhone {
+    padding-inline: 16px;
+  }
+
+}
+
+.about {
+  width: 55%;
+
+  @include onTablet {
+    width: 100%;
+  }
+}
+
+.title {
+  padding-bottom: 16px;
+  border-bottom: 1px solid #E2E6E9;
+  margin-bottom: 25px;
+}
+
+.subblock {
+  margin-bottom: 32px;
+}
+
+.about :last-child {
+  margin-bottom: 0px;
+}
+
+.subtitle {
+  margin-bottom: 16px;
+}
+
+.text {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 21px;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  color: #89939A;
+}
+
+
+.techChecs {
+  width: 45%;
+
+  @include onTablet {
+    width: 100%;
+  }
+}
+
+.charachters {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.charachter {
+  display: flex;
+  justify-content: space-between;
+}
+.key {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 21px;
+  color: #89939A;
+}
+.value {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 21px;
+}

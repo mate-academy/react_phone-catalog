@@ -1,0 +1,32 @@
+@import '../../modules/shared/styles/mixins.scss';
+
+.section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-top: 60px;
+
+  @include onTablet() {
+    margin-inline: 24px;
+  }
+  @include onPhone() {
+    margin-inline: 16px;
+    padding-top: 45px;
+  }
+
+}
+.productList {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  list-style: none;
+  column-gap: 16px;
+  row-gap: 40px;
+
+  @include onTablet() {
+    grid-template-columns: repeat(auto-fill, minmax(237px, 1fr));
+  }
+  @include onPhone() {
+    grid-template-columns: repeat(auto-fill, minmax(215px, 1fr));
+  }
+}
+

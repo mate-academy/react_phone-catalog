@@ -1,0 +1,41 @@
+@import '../../modules/shared/styles/mixins.scss';
+.crumbs {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+.crumb {
+  &:last-child :first-child{
+    color: #89939A;
+  }
+  &:last-child :last-child{
+    display: none;
+  }
+}
+.crumbLink {
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 15.34px;
+  color: var(--nav-link-active-color);
+
+  @include onPhone() {
+    font-size: 11px;
+  }
+}
+:global(html.dark) .crumbLink {
+
+}
+.arrow {
+  margin-inline: 10px;
+  fill: #B4BDC3;
+}
+
+.home {
+  margin-bottom: -2px;
+}
+
+:global(html.dark) .home {
+  content: url(../../assets/images/header/HomeDark.png);
+}

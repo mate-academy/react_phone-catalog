@@ -1,0 +1,13 @@
+@import '../../../../modules/shared/styles/mixins.scss';
+
+.title {
+  margin-top: 110px;
+  margin-bottom: 56px;
+  @include onTablet(){
+    padding-inline: 16px;
+  }
+  @include onPhone(){
+    margin-top: 72px;
+    margin-bottom: 24px;
+  }
+}

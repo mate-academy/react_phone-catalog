@@ -1,0 +1,45 @@
+@import '../../modules/shared/styles/mixins.scss';
+
+.dropdowns {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.title {
+font-size: 12px;
+font-weight: 600;
+line-height: 15.34px;
+color: #89939A;
+margin-bottom: 4px;
+}
+
+.btnSort {
+  width: 176px;
+  display: flex;
+  justify-content: space-between;
+
+  @include onPhone() {
+    width: 136px;
+  }
+}
+
+.btnPage {
+  width: 128px;
+  display: flex;
+  justify-content: space-between;
+
+  @include onPhone() {
+    width: 136px;
+  }
+}
+
+:global(html.dark) .btnPage, :global(html.dark) .btnSort {
+  background-color: #323542;
+  border: none;
+  color: #F1F2F9;
+}
+
+:global(html.dark) .btnPage > svg, :global(html.dark) .btnSort > svg {
+  fill: #F1F2F9;
+}

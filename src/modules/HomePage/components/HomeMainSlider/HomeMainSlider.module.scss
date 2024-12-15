@@ -1,0 +1,164 @@
+@import '../../../../modules/shared/styles/mixins.scss';
+
+.intro {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  z-index: 1;
+
+  @include onTablet(){
+    padding-inline: 0px;
+  }
+}
+.slider {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 15px;
+  // max-height: 406px;
+  @include onTablet(){
+    padding-inline: 24px;
+  }
+  @include onPhone(){
+    padding-inline: 0;
+  }
+}
+.wrapper{
+  overflow: hidden;
+  max-width: 1040px;
+}
+
+.arrow {
+  min-width: 32px;
+  background-color: transparent;
+  border: 1px solid gray;
+  cursor: pointer;
+  transition: all linear .3s;
+
+  &:hover {
+    background-color: lightgray;
+  }
+
+  @include onPhone(){
+    display: none;
+  }
+}
+
+.sliderList {
+  padding-left: 0;
+  list-style: none;
+  display: flex;
+}
+
+.sliderItem {
+  flex: 0 0 auto;
+  width: 100%;
+}
+
+.content {
+  max-height: 406px;
+  background: #000;
+  display: grid;
+  gap: 84px;
+  grid-template-columns: 1fr 1fr;
+
+  @include onTablet(){
+    height: 100%;
+    gap: 25px;
+  }
+}
+
+.right {
+  background-color: #282929;
+  margin: 15px;
+  padding: 50px;
+  border-radius: 15px;
+
+  @include onTablet(){
+    padding: 20px;
+  }
+}
+.rightTitle {
+  color: #7a50f6;
+  line-height: 48px;
+  font-size: 38px;
+  font-weight: 700;
+  margin-bottom: 5px;
+
+  @include onTablet(){
+    font-size: 23px;
+  }
+}
+
+.rightSubtitle {
+  font-weight: 400;
+  color: gray;
+  margin-bottom: 90px;
+  font-size: 14px;
+
+  @include onTablet(){
+    margin-bottom: 30px;
+  }
+}
+
+.order {
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  font-weight: 400;
+  background-color: transparent;
+  border-radius: 30px;
+  padding: 15px 30px;
+  color: #fff;
+  border: 1px solid gray;
+
+  @include onTablet(){
+    padding: 7px 15px;
+    font-size: 15px;
+  }
+}
+
+.left {
+  display: flex;
+  flex-direction: column;;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  padding-top: 40px;
+  margin-right: 50px;
+}
+.leftTitle {
+  font-size: 30px;
+  color: #fff;
+}
+.leftSubtitle {
+  color: gray;
+  font-size: 14px;
+  margin-bottom: 15px;
+}
+.banner {
+  width: 100%;
+  height: 100%;
+
+  &Small {
+    max-height: 85%;
+  }
+}
+
+.sliderBtns {
+  display: flex;
+  gap: 10px;
+  margin-inline: auto;
+  border: none;
+}
+
+.sliderBtn {
+  cursor: pointer;
+  border: none;
+  height: 4px;
+  width: 14px;
+  background-color: #E2E6E9;
+  transition: all linear .3s;
+
+  &Active {
+    background-color: #313237;
+  }
+}

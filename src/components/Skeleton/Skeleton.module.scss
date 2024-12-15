@@ -1,0 +1,9 @@
+.sceletonContainer {
+  display: flex;
+  flex-wrap: wrap;
+}
+.sceletonItem {
+  max-width: 250px;
+  max-height: 400px;
+  display: inline;
+}

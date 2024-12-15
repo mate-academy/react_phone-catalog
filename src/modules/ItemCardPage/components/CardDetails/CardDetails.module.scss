@@ -1,0 +1,252 @@
+@import '../../../../modules/shared/styles/mixins.scss';
+
+.section {
+  padding-top: 70px;
+  padding-inline: 24px;
+
+  @include onTablet() {
+    padding-inline: 24px;
+    padding-top: 50px;
+  }
+  @include onPhone() {
+    padding-inline: 16px;
+  }
+}
+.deviceContent {
+  display: flex;
+  justify-content: center;
+
+  @include onPhone() {
+    flex-direction: column;
+    justify-content: center;
+  }
+}
+
+.photos {
+  display: flex;
+  margin-right: 64px;
+
+  @include onTablet() {
+    margin-right: 15px;
+    margin-bottom: 40px;
+  }
+  @include onPhone() {
+    flex-direction: column-reverse;
+    align-items: center;
+  }
+}
+.photosSmall {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-right: 16px;
+
+  @include onPhone() {
+    gap: 8px;
+    flex-direction: row;
+  }
+}
+
+.photoSmall {
+  height: 80px;
+  width: 80px;
+  object-position: center;
+  object-fit:contain;
+  border: 1px solid #E2E6E9;
+  padding: 5px;
+  cursor: pointer;
+
+  &Active {
+    border-color: #313237;
+    transform: scale(1.05);
+  }
+
+  @include onTablet() {
+    width: 45px;
+    height: 45px;
+    padding: 0;
+  }
+  @include onPhone() {
+    width: 50px;
+    height: 50px;
+    padding: 0;
+  }
+}
+
+:global(html.dark) .photoSmall {
+  border-color: #313237;
+}
+:global(html.dark) .photoSmallActive {
+  border-color: #E2E6E9;
+}
+
+.photoBig {
+  width: 464px;
+  aspect-ratio: 1 / 1;
+  padding: 11px;
+  object-position: center;
+  object-fit:contain;
+
+  @include onTablet() {
+    width: 287px;
+    padding: 0px;
+  }
+  @include onPhone() {
+    margin-bottom: 20px;
+  }
+}
+
+.details p {
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 15.34px;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  color: #89939A;
+  margin-bottom: 8px;
+}
+
+.colors, .capacities {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid #E2E6E9;
+  margin-bottom: 28px;
+}
+
+.border {
+  border: 1px solid #E2E6E9;
+  border-radius: 50%;
+  cursor: pointer;
+
+  &Active {
+    border-color: #000;
+  }
+}
+
+
+
+.color {
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  border: 2px solid #FFF;
+}
+
+.capacity {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 21px;
+  text-transform: uppercase;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  width: 56px;
+  height: 32px;
+  border: 1px solid #B4BDC3;
+  cursor: pointer;
+
+  &Active {
+    background-color: #313237;
+    color: #fff;
+    border: none;
+  }
+
+  @include onTablet {
+    flex-wrap: wrap;
+  }
+}
+
+.prices {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.price {
+  font-size: 32px;
+  font-weight: 800;
+  line-height: 41px;
+  letter-spacing: -0.01em;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+}
+
+.oldPrice {
+  font-size: 22px;
+  font-weight: 500;
+  line-height: 28.12px;
+  text-decoration-line: line-through;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  color: #89939A;
+}
+
+.buttons {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 30px;
+}
+
+.btnCart {
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 21px;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  background-color: #313237;
+  color: #fff;
+  padding-inline: 91px;
+  padding-block: 13.5px;
+  width: 100%;
+
+  &Active {
+    background-color: #fff;
+    color: #313237;
+    border: 1px solid #313237;
+  }
+  @include onTablet() {
+    width: 72%;
+    padding-inline: 20px;
+  }
+  @include onPhone() {
+    width: 100%;
+    padding-inline: 20px;
+  }
+}
+
+.btnFavour {
+  font-size: 0px;
+  height: 100%;
+  padding: 16px;
+  background-color: transparent;
+  border: 1px solid #B4BDC3;
+  cursor: pointer;
+
+}
+
+.charachters {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.charachter {
+  display: flex;
+  justify-content: space-between;
+}
+.key {
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 15.34px;
+  color: #89939A;
+}
+.value {
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 15.34px;
+}

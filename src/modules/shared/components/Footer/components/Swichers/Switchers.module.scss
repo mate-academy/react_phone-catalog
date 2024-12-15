@@ -1,0 +1,48 @@
+.switchers {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.text {
+  font-size: 12px;
+}
+.themeSwitcher {
+  border: 1px solid gray;
+  border-radius: 25px;
+  width: 60px;
+  height: 35px;
+  padding: 5px;
+}
+
+.switcher {
+  border: 1px solid gray;
+  width: 50%;
+  height: 100%;
+  border-radius: 50%;
+  background-color: var(--nav-link-active-color);
+  transition: all .3s;
+
+  &Active {
+    transform: translateX(100%);
+  }
+}
+
+.languageSwitcher {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.btn {
+  padding: 5px 4px;
+  border: 1px solid var(--nav-link-active-color);
+  border-radius: 5px;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  cursor: pointer;
+
+  &.active {
+    background-color: #20cf6f;
+    color: var(--text-color)
+  }
+}
