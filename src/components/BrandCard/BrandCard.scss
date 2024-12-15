@@ -1,0 +1,153 @@
+@use '../../utils/mixins.scss' as *;
+
+.product-cards {
+  display: flex;
+  gap: 16px;
+}
+
+.product-card {
+  width: 212px;
+  display: flex;
+  flex-direction: column;
+  background-color: #161827;
+
+  @include onTablet {
+    width: 237px;
+  }
+
+  @include onDesktop {
+    width: 272px;
+  }
+  
+  &__content {
+    padding-inline: 32px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    height: 440px;
+
+    @include onTablet {
+      height: 512px;
+    }
+
+  }
+
+  &__image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+
+    &-container {
+      padding-top: 32px;
+      padding-bottom: 24px;
+      width: 100%;
+      min-height: 109px;
+      max-height: 129px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      @include onTablet {
+        min-height: 181px;
+        max-height: 202px;
+      }
+    }
+  }
+
+  &__name {
+    font-family: Mont, sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 21px;
+    color: #F1F2F9;
+    padding-bottom: 8px;
+    word-wrap: break-word;
+    flex-shrink: 0;
+  }
+
+  &__price {
+    color: #F1F2F9;
+    font-size: 22px;
+    font-family: Mont, sans-serif;
+    font-weight: 800;
+    padding-bottom: 8px;
+    line-height: 30px;
+  }
+
+  &__line {
+    height: 1px;
+    border: none;
+    background-color: #3B3E4A;
+    margin-bottom: 8px;
+  }
+
+  &__description {
+    margin-top: 8px;
+    margin-bottom: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding-bottom: 8px;
+
+    &-title {
+      color: #75767F;
+      font-family: Mont, sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      line-height: 15px;
+    }
+
+    &-value {
+      color: #F1F2F9;
+      font-size: 12px;
+      font-weight: 600;
+      font-family: Mont, sans-serif;
+      line-height: 15px;
+    }
+  }
+
+  &__screen,
+  &__capacity,
+  &__ram {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 8px;
+    justify-content: space-between;
+    padding-bottom: 32px;
+  }
+
+  &__button-cart {
+    width: 100px;
+    height: 40px;
+    background-color: #905BFF;
+    border: none;
+    font-family: Mont, sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: #F1F2F9;
+
+    @include onTablet {
+      width: 125px;
+    }
+
+    @include onDesktop {
+      width: 160px;
+    }
+  }
+
+  &__button-favourite {
+    background-color: #323542;
+    width: 40px;
+    height: 40px;
+    background-image: url('../../../public/img/icon-like.png');
+    background-size: 16px;
+    background-repeat: no-repeat;
+    background-position: center;
+    border: none;
+  }
+}

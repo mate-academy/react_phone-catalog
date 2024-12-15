@@ -1,0 +1,175 @@
+@use '../../utils/mixins.scss' as *;
+@import '../../fonts.scss';
+
+
+.header {
+  @include pageGrid;
+  color: #fff;
+  height: 48px;
+  display: flex;
+  border-bottom: 1px solid #3B3E4A;
+  justify-content: space-between;
+
+  @include onDesktop {
+    height: 64px;
+  }
+
+  &-container {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+  }
+
+  &__navigation {
+    display: none;
+
+    @include onTablet {
+      gap: 32px;
+      display: flex;
+      flex-direction: row;
+    }
+
+    @include onDesktop {
+      gap: 64px;
+      padding-right: 24px;
+    }
+
+    &-link {
+      color: #75767F;
+      font-size: 12px;
+      text-decoration: none;
+      font-family: Mont, sans-serif;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      line-height: 48px;
+      position: relative;
+
+      @include onDesktop {
+        line-height: 64px;
+      }
+
+      
+    }
+  }
+}
+
+.logo {
+
+  &-icon {
+    height: 100%;
+    width: 96px;
+
+    @include onDesktop {
+      width: 128px;
+    }
+  }
+}
+
+.burger-menu {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-left: 1px solid #3B3E4A;
+
+  @include onTablet {
+    display: none;
+  }
+
+  &-icon {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+.icons {
+  display: flex;
+  flex-direction: row;
+}
+
+.like {
+  display: none;
+
+  @include onTablet {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-left: 1px solid #3B3E4A;
+
+    @include onDesktop {
+      width: 64px;
+      height: 64px;
+    }
+  }
+
+  &-icon {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+.bag {
+  display: none;
+
+  @include onTablet {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-left: 1px solid #3B3E4A;
+    position: relative;
+
+    @include onDesktop {
+      width: 64px;
+      height: 64px;
+    }
+  }
+
+  &-icon {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+.cart-badge {
+  position: absolute;
+  bottom: 24px; /* Відступ від верхнього краю іконки */
+  left: 24px; /* Відступ від правого краю іконки */
+  background-color: #EB5757; /* Колір фону кружечка */
+  border: 1px solid #0F1121;
+  color: white; /* Колір тексту */
+  border-radius: 50%; /* Кругла форма */
+  width: 14px; /* Ширина кружечка */
+  height: 14px; /* Висота кружечка */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 9px; /* Розмір шрифту */
+  font-family: Mont-SemiBold, sans-serif;
+
+  @include onDesktop {
+    bottom: 32px;
+    left: 32px;
+  }
+}
+
+.is-active {
+  color: #fff;
+  position: relative; /* Додаємо позицію для правильного розташування псевдоелемента */
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background-color: #fff;
+  }
+}
+

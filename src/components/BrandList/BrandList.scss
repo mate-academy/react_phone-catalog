@@ -1,0 +1,83 @@
+@use '../../utils/mixins.scss' as *;
+
+.brand-list__wrapper {
+  padding-left: 16px;
+
+  @include onTablet {
+    padding-left: 24px;
+  }
+
+  @include onDesktop {
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+
+  @include onBigDesktop {
+    padding-left: 152px;
+    padding-right: 152px;
+  }
+}
+
+.brand-list {
+  padding-top: 80px;
+  
+
+
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 62px;
+  }
+
+  &__title {
+    color: #F1F2F9;
+    font-family: Mont, sans-serif;
+    font-size: 22px;
+    line-height: 30px;
+    font-weight: 800;
+  }
+
+
+  &__container {
+    @include pageGrid;
+    display: flex;
+    gap: 16px;
+    flex-direction: row;
+    
+    scroll-behavior: smooth;
+    /* Плавне прокручування */
+    overflow-x: auto;
+    overflow: hidden;
+
+
+
+    
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 16px;
+  }
+  &__button-next,
+  &__button-prev {
+    height: 32px;
+    width: 32px;
+    background-color: #323542;
+    color: #F1F2F9;
+    font-size: 16px;
+    cursor: pointer;
+    display: block;
+    border: none;
+    @include hover(background-color, #4A4D58);
+  }
+
+  &__button-prev.disabled,
+  &__button-next.disabled {
+    color: #3B3E4A;
+    border: 1px solid #3B3E4A;
+    background-color: #161827;
+  }
+}
+
