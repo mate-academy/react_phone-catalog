@@ -21,6 +21,10 @@
   &__image {
     height: 196px;
     margin-bottom: 24px;
+
+    @include mixins.media-phone {
+      height: 129px;
+    }
   }
 
   &__container {

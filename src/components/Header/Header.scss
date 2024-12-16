@@ -29,6 +29,10 @@
   }
 
   &__nav {
+    @include mixins.media-phone {
+      display: none;
+    }
+
     &-list {
       height: 100%;
       margin: 0;
@@ -63,6 +67,18 @@
 
   &__buttons {
     display: flex;
+
+    @include mixins.media-phone {
+      display: none;
+    }
+
+    &-mobile {
+      display: none;
+
+      @include mixins.media-phone {
+        display: block;
+      }
+    }
   }
 
   &__button {

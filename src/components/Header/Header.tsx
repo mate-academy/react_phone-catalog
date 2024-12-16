@@ -53,6 +53,12 @@ export const Header = () => {
           <img src="/icons/cart.svg" alt="Cart icon" />
         </NavLink>
       </div>
+
+      <div className="header__buttons header__buttons-mobile">
+        <div className="header__button">
+          <img src="/icons/menu.svg" alt="Burger menu icon" />
+        </div>
+      </div>
     </header>
   );
 };

@@ -19,6 +19,12 @@ export const HomePage = () => {
               alt="Banner"
             />
 
+            <img
+              className="home-page__banner-image-mobile"
+              src="/home_banner_mobile.png"
+              alt="Banner"
+            />
+
             <div className="button--arrow">
               <img src="/icons/arrow_right.svg" alt="Arrow right" />
             </div>

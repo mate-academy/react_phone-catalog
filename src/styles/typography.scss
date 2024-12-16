@@ -5,6 +5,11 @@ h1 {
   font-weight: 800;
   line-height: 56px;
   letter-spacing: -0.01em;
+
+  @include mixins.media-phone {
+    font-size: 32px;
+    line-height: 41px;
+  }
 }
 
 h2 {
@@ -12,6 +17,11 @@ h2 {
   font-weight: 800;
   line-height: 41px;
   letter-spacing: -0.01em;
+
+  @include mixins.media-phone {
+    font-size: 22px;
+    line-height: 30.8px;
+  }
 }
 
 h3 {
@@ -36,7 +46,7 @@ h4 {
 
 button,
 .button {
-  padding: 9px 39px;
+  padding: 9.5px 39.5px;
   box-sizing: border-box;
 
   display: flex;
@@ -54,7 +64,11 @@ button,
   border: none;
 
   @include mixins.media-tablet {
-    padding: 9px 22px;
+    padding: 9.5px 22px;
+  }
+
+  @include mixins.media-phone {
+    padding: 9.5px;
   }
 
   &--wide {
