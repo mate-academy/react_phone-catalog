@@ -3,15 +3,10 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import './PageSlider.scss';
 
-import { Product } from '../../../types/Product';
-import { useEffect, useRef, useState, ReactNode } from 'react';
+import { useEffect, useRef, ReactNode } from 'react';
 import { ProductCard } from '../ProductCard/ProductCard';
-
-interface ProductSliderProps {
-  products: Product[];
-  showFullPrice: boolean;
-  sliderTitle: string;
-}
+import { useArrowSpacing, useShuffledProducts } from '../../../hooks/HooksSlider';
+import { ProductSliderProps } from '../../../types/TSlider';
 
 const NextArrow: React.FC<CustomArrowProps> = ({ className, onClick }) => {
   return (
@@ -41,10 +36,6 @@ const PrevArrow: React.FC<CustomArrowProps> = ({ className, onClick }) => {
   );
 };
 
-const shuffleArray = (array: Product[]) => {
-  return array.sort(() => Math.random() - 0.5);
-};
-
 const num = 95; // amount of phones. search how to connect it!
 
 export const PageSlider: React.FC<ProductSliderProps> = ({
@@ -53,79 +44,39 @@ export const PageSlider: React.FC<ProductSliderProps> = ({
   showFullPrice,
 }) => {
   const sliderRef = useRef<Slider | null>(null);
-  const [arrowSpacing, setArrowSpacing] = useState(20);
-  const [shuffledProducts, setShuffledProducts] = useState<Product[]>([]);
-
-  const sortArray = (type: string) => {
-    const sortedProducts = [...shuffledProducts];
-
-    switch (type) {
-      case 'oldest':
-        sortedProducts.sort((a, b) => a.year - b.year);
-        break;
-      case 'newest':
-        sortedProducts.sort((a, b) => b.year - a.year);
-        break;
-      case 'cheapest':
-        sortedProducts.sort((a, b) => a.price - b.price);
-        break;
-      case 'expensive':
-        sortedProducts.sort((a, b) => b.price - a.price);
-        break;
-      case 'alphabetically':
-        sortedProducts.sort((a, b) => a.name.localeCompare(b.name));
-        break;
-      default:
-        break;
-    }
-
-    setShuffledProducts(sortedProducts);
-  };
-
-  const handleItem = (item: string) => {
-    if (item === 'all') {
-      setShuffledProducts(products);
-    } else {
-      const numItem = parseInt(item, 10);
-
-      setShuffledProducts(products.slice(0, numItem));
-    }
-  };
+  const [shuffledProducts, sortArray, handleItem] = useShuffledProducts(products);
+  const arrowSpacing = useArrowSpacing(sliderRef);
 
   useEffect(() => {
-    setShuffledProducts(shuffleArray(products));
-  }, [products]);
-
-  useEffect(() => {
-    const updateArrowSpacing = () => {
-      if (
-        sliderRef.current &&
-        sliderRef.current.innerSlider &&
-        sliderRef.current.innerSlider.list
-      ) {
-        const sliderWidth = sliderRef.current.innerSlider.list.offsetWidth;
-        const newSpacing = Math.max((sliderWidth - 100) / 2, 20);
-
-        setArrowSpacing(newSpacing);
-      }
-    };
-
-    window.addEventListener('resize', updateArrowSpacing);
-    updateArrowSpacing();
-
-    return () => window.removeEventListener('resize', updateArrowSpacing);
-  }, []);
+    if (sliderRef.current && shuffledProducts.length > 0) {
+      sliderRef.current.slickGoTo(0);
+    }
+  }, [sliderRef, shuffledProducts]);
 
   const settings = {
     className: 'page-slider',
     dots: true,
-    infinite: true,
+    infinite: false,
     arrows: false,
     speed: 500,
-    slidesToShow: 2,
+    slidesToShow: 4,
     slidesToScroll: 1,
     rows: 16,
     responsive: [
+      {
+        breakpoint: 1200,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 1,
+        },
+      },
+      {
+        breakpoint: 950,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+        },
+      },
       {
         breakpoint: 640,
         settings: {
@@ -172,7 +123,11 @@ export const PageSlider: React.FC<ProductSliderProps> = ({
       <div className="page-slider__sort">
         <div className="page-slider__sort-type">
           <p className="page-slider__sort-subtitle">Sort by</p>
-          <select className="page-slider__sort-select" onChange={e => sortArray(e.target.value)}>
+          <select
+            className="page-slider__sort-select"
+            onChange={e => sortArray(e.target.value)}
+            defaultValue="alphabetically"
+          >
             <option value="oldest">Oldest</option>
             <option value="newest">Newest</option>
             <option value="cheapest">Cheapest</option>
@@ -182,7 +137,11 @@ export const PageSlider: React.FC<ProductSliderProps> = ({
         </div>
         <div className="page-slider__sort-item">
           <p className="page-slider__sort-subtitle">Items on page</p>
-          <select className="page-slider__sort-select" onChange={e => handleItem(e.target.value)}>
+          <select
+            className="page-slider__sort-select"
+            onChange={e => handleItem(e.target.value)}
+            defaultValue="all"
+          >
             <option value="4">4</option>
             <option value="8">8</option>
             <option value="16">16</option>

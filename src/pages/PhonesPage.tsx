@@ -12,3 +12,5 @@ export const PhonesPage: React.FC = () => {
     </>
   );
 };
+
+export default PhonesPage;

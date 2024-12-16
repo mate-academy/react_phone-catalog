@@ -1,38 +1,31 @@
 import './ProductCard.scss';
-import { Product } from '../../../types/Product';
-// eslint-disable-next-line import/no-extraneous-dependencies
-import styled from 'styled-components';
+import { ProductCardProps } from '../../../types/TProductCard';
+import { StyledButton, StyledCard } from './vars';
 import { useLocation } from 'react-router-dom';
-
-interface ProductCardProps {
-  product: Product;
-  showFullPrice?: boolean;
-}
-
-interface StyledCardProps {
-  width: string;
-  margin: string;
-}
-
-interface StyledButtonProps {
-  width: string;
-}
-
-const StyledCard = styled.div<StyledCardProps>`
-  max-width: ${({ width }) => width};
-  margin: ${({ margin }) => margin};
-`;
-
-const StyledButton = styled.div<StyledButtonProps>`
-  width: ${({ width }) => width};
-`;
 
 export const ProductCard: React.FC<ProductCardProps> = ({ product, showFullPrice }) => {
   const location = useLocation();
 
-  const widthBlock = location.pathname === '/phones' ? '287px' : '212px';
-  const widthButton = location.pathname === '/phones' ? '176px' : '100px';
-  const margin = location.pathname === '/phones' ? '40px 0px 0px 0px' : '0px 16px 0px 0px';
+  type Path = '/phones' | '/tablets' | '/accessories';
+
+  const stylesByPath: Record<Path, { widthBlock: string; widthButton: string; margin: string }> = {
+    '/phones': { widthBlock: '287px', widthButton: '176px', margin: '40px 0px 0px 0px' },
+    '/tablets': { widthBlock: '287px', widthButton: '176px', margin: '40px 0px 0px 0px' },
+    '/accessories': { widthBlock: '287px', widthButton: '176px', margin: '40px 0px 0px 0px' },
+  };
+
+  const defaultStyles = {
+    widthBlock: '212px',
+    widthButton: '100px',
+    margin: '0px 16px 0px 0px',
+  };
+
+  const matchedPath = location.pathname as Path | undefined;
+
+  const styles =
+    matchedPath && stylesByPath[matchedPath] ? stylesByPath[matchedPath] : defaultStyles;
+
+  const { widthBlock, widthButton, margin } = styles;
 
   return (
     <StyledCard width={widthBlock} margin={margin} className="product-card">
@@ -60,7 +53,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, showFullPrice
         </StyledButton>
         <button className="product-card__wishlist">
           <img
-            src="./img/icons/Favourites (Heart Like).png"
+            src="./img/icons/Favourites.png"
             alt="Favourites"
             className="product-card__favourites"
           />

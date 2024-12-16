@@ -24,6 +24,14 @@
     @include on-tablet {
       max-width: 595px;
     }
+
+    @media (min-width: 950px) {
+      max-width: 950px;
+    }
+
+    @include on-laptop {
+      max-width: 1200px;
+    }
   }
 
   &__block-pad {
@@ -79,11 +87,16 @@
       height: 40px;
 
       border: 1px solid $c-icon;
+
     }
 
     &-type {
       display: block;
       width: 136px;
+
+      @include on-tablet {
+        width: 187px;
+      }
     }
 
     &-item {

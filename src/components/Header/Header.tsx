@@ -13,11 +13,7 @@ export const Header: React.FC = () => {
 
       <div className="header__links">
         <Link to="/cart" className="header__link-favourites">
-          <img
-            src="./img/icons/Favourites (Heart Like).png"
-            alt="Favourites"
-            className="header__favourites"
-          />
+          <img src="./img/icons/Favourites.png" alt="Favourites" className="header__favourites" />
         </Link>
         <Link to="/favorites" className="header__link-cart">
           <img src="./img/icons/Shopping bag (Cart).png" alt="Cart" className="header__cart" />

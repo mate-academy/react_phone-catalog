@@ -4,14 +4,9 @@ import 'slick-carousel/slick/slick-theme.css';
 import './SliderProductCard.scss';
 
 import { ProductCard } from '../ProductCard/ProductCard';
-import { Product } from '../../../types/Product';
-import { useEffect, useRef, useState } from 'react';
-
-interface ProductSliderProps {
-  products: Product[];
-  showFullPrice: boolean;
-  sliderTitle: string;
-}
+import { useRef } from 'react';
+import { useArrowSpacing, useShuffledProducts } from '../../../hooks/HooksSlider';
+import { ProductSliderProps } from '../../../types/TSlider';
 
 const NextArrow: React.FC<CustomArrowProps> = ({ className, onClick }) => {
   return <div className={`product-arrow__next product-arrow ${className}`} onClick={onClick} />;
@@ -21,42 +16,14 @@ const PrevArrow: React.FC<CustomArrowProps> = ({ className, onClick }) => {
   return <div className={`product-arrow__prev product-arrow ${className}`} onClick={onClick} />;
 };
 
-const shuffleArray = (array: Product[]) => {
-  return array.sort(() => Math.random() - 0.5);
-};
-
 export const SliderProductCard: React.FC<ProductSliderProps> = ({
   products,
   sliderTitle,
   showFullPrice,
 }) => {
   const sliderRef = useRef<Slider | null>(null);
-  const [arrowSpacing, setArrowSpacing] = useState(20);
-  const [shuffledProducts, setShuffledProducts] = useState<Product[]>([]);
-
-  useEffect(() => {
-    setShuffledProducts(shuffleArray(products));
-  }, [products]);
-
-  useEffect(() => {
-    const updateArrowSpacing = () => {
-      if (
-        sliderRef.current &&
-        sliderRef.current.innerSlider &&
-        sliderRef.current.innerSlider.list
-      ) {
-        const sliderWidth = sliderRef.current.innerSlider.list.offsetWidth;
-        const newSpacing = Math.max((sliderWidth - 100) / 2, 20);
-
-        setArrowSpacing(newSpacing);
-      }
-    };
-
-    window.addEventListener('resize', updateArrowSpacing);
-    updateArrowSpacing();
-
-    return () => window.removeEventListener('resize', updateArrowSpacing);
-  }, []);
+  const arrowSpacing = useArrowSpacing(sliderRef);
+  const [shuffledProducts] = useShuffledProducts(products);
 
   const settings = {
     className: 'product-slider',
