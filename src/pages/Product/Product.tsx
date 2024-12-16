@@ -17,6 +17,13 @@ export const Product = () => {
         Apple iPhone 11 Pro Max 64GB Gold (iMT9G2FS/A)
       </h2>
       <div className="product__container">
+        <div className="product__image square-container">
+          <img
+            src="/img/phones/apple-iphone-11-pro-max/gold/00.webp"
+            alt="Image"
+          />
+        </div>
+
         <div className="product__small-images">
           <div className="product__small-images-image square-container">
             <img
@@ -32,14 +39,11 @@ export const Product = () => {
           </div>
         </div>
 
-        <div className="product__image square-container">
-          <img
-            src="/img/phones/apple-iphone-11-pro-max/gold/00.webp"
-            alt="Image"
-          />
-        </div>
-
         <div className="product__details">
+          <p className="product__id product__id-mobile small-text">
+            ID: 802390
+          </p>
+
           <p className="product__details-name small-text">Available colors</p>
           <div className="product__selector-container">
             <div className="product__color-border">
@@ -63,7 +67,7 @@ export const Product = () => {
           <div className="divider-line"></div>
 
           <div className="product__price-container">
-            <h2 className="product__price">$799</h2>
+            <h2 className="product__price h2--desktop">$799</h2>
             <h3 className="product__old-price">$1199</h3>
           </div>
 

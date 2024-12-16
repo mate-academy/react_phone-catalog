@@ -12,11 +12,15 @@ h1 {
   }
 }
 
-h2 {
-  font-size: 32px;
-  font-weight: 800;
-  line-height: 41px;
-  letter-spacing: -0.01em;
+h2,
+.h2 {
+  &,
+  &--desktop {
+    font-size: 32px;
+    font-weight: 800;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+  }
 
   @include mixins.media-phone {
     font-size: 22px;

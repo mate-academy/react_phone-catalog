@@ -5,6 +5,10 @@
 
   &__back-button {
     margin-top: 40px;
+
+    @include mixins.media-phone {
+      margin-top: 24px;
+    }
   }
 
   &__title {
@@ -17,6 +21,10 @@
     position: relative;
 
     @include mixins.page-grid;
+
+    @include mixins.media-phone {
+      margin-top: 32px;
+    }
   }
 
   &__small-images {
@@ -32,6 +40,12 @@
       gap: 8px;
     }
 
+    @include mixins.media-phone {
+      grid-column: 1 / -1;
+
+      flex-direction: row;
+    }
+
     &-image {
       padding: 8px;
       box-sizing: border-box;
@@ -45,6 +59,13 @@
       @include mixins.media-tablet {
         padding: 2px;
       }
+
+      @include mixins.media-phone {
+        padding: 4px;
+
+        height: 50px;
+        width: 50px;
+      }
     }
 
     & img {
@@ -55,6 +76,7 @@
 
   &__image {
     grid-column: 3 / 13;
+    grid-row: 1;
 
     padding: 12px;
     box-sizing: border-box;
@@ -67,16 +89,27 @@
       grid-column: 2 / 8;
     }
 
+    @include mixins.media-phone {
+      grid-column: 1 / -1;
+    }
+
     & img {
       height: 100%;
     }
   }
 
   &__details {
-    grid-column: 14 / 21;
+    grid-column: 14 / -1;
+
+    position: relative;
 
     @include mixins.media-tablet {
       grid-column: 8 / -1;
+    }
+
+    @include mixins.media-phone {
+      grid-column: 1 / -1;
+      margin-top: 24px;
     }
 
     &-name {
@@ -93,6 +126,19 @@
     text-align: right;
 
     color: #b4bdc3;
+
+    @include mixins.media-phone {
+      display: none;
+    }
+
+    &-mobile {
+      display: none;
+      top: 0;
+
+      @include mixins.media-phone {
+        display: block;
+      }
+    }
   }
 
   &__color {
@@ -165,6 +211,10 @@
     @include mixins.media-tablet {
       padding: 13.5px 49.5px;
     }
+
+    @include mixins.media-phone {
+      width: 100%;
+    }
   }
 
   &__favourite-button {
@@ -181,6 +231,12 @@
     row-gap: 64px !important;
 
     @include mixins.page-grid;
+
+    @include mixins.media-phone {
+      margin-top: 56px;
+
+      row-gap: 56px !important;
+    }
 
     &-info {
       grid-column: 1 / 13;
@@ -218,6 +274,10 @@
 
     @include mixins.media-tablet {
       margin-top: 64px;
+    }
+
+    @include mixins.media-phone {
+      margin-top: 56px;
     }
   }
 }

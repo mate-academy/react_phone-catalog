@@ -10,5 +10,11 @@
     &--black {
       color: #313237;
     }
+
+    &--last {
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
   }
 }

@@ -16,6 +16,7 @@ export const Breadcrumbs: React.FC<Props> = ({ paths }) => {
           <div
             className={classNames('breadcrumbs__path small-text', {
               'breadcrumbs__path--black': paths.length > 1 && index === 0,
+              'breadcrumbs__path--last': index === paths.length - 1,
             })}
           >
             {path}
