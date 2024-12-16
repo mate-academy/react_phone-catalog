@@ -1,3 +1,5 @@
+@use 'styles/mixins';
+
 h1 {
   font-size: 48px;
   font-weight: 800;
@@ -51,6 +53,10 @@ button,
   background-color: #313237;
   border: none;
 
+  @include mixins.media-tablet {
+    padding: 9px 22px;
+  }
+
   &--white {
     padding: 11px;
     box-sizing: border-box;
@@ -72,12 +78,15 @@ button,
 
     border: 1px solid #b4bdc3;
 
+    transition: opacity 300ms;
+
     & img {
       height: 16px;
     }
 
-    &--disabled {
+    &[aria-disabled='true'] {
       opacity: 0.5;
+
       pointer-events: none;
     }
   }

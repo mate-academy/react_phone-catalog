@@ -13,7 +13,11 @@ export const HomePage = () => {
               <img src="/icons/arrow_left.svg" alt="Arrow left" />
             </div>
 
-            <img src="/home_banner.png" alt="Banner" />
+            <img
+              className="home-page__banner-image"
+              src="/home_banner.png"
+              alt="Banner"
+            />
 
             <div className="button--arrow">
               <img src="/icons/arrow_right.svg" alt="Arrow right" />

@@ -43,8 +43,11 @@ p {
 
   margin-bottom: 80px;
 
+  overflow: hidden;
+
   @include mixins.media-tablet {
     padding: 0 24px;
+    margin-bottom: 64px;
   }
 
   @include mixins.media-phone {

@@ -1,12 +1,22 @@
+@use 'styles/mixins';
+
 .home-page {
   &__title {
     margin: 56px 0;
+
+    @include mixins.media-tablet {
+      margin: 32px 0;
+    }
   }
 
   &__container {
     display: flex;
     gap: 80px;
     flex-direction: column;
+
+    @include mixins.media-tablet {
+      gap: 64px;
+    }
   }
 
   &__section {
@@ -22,16 +32,19 @@
     flex-direction: column;
 
     &-container {
-      width: 100%;
+      display: grid;
+      grid-template-columns: 32px 1fr 32px;
+      gap: 16px;
+    }
 
-      display: flex;
-      justify-content: space-between;
-      align-items: stretch;
+    &-image {
+      width: 100%;
     }
 
     &-pages {
       display: flex;
       gap: 4px;
+      justify-content: center;
     }
 
     &-page {
@@ -54,6 +67,8 @@
   }
 
   &__categories {
+    width: 100%;
+
     &-container {
       display: flex;
       gap: 16px;
@@ -61,6 +76,7 @@
 
     &-category {
       &-photo {
+        width: 100%;
         margin-bottom: 24px;
       }
 

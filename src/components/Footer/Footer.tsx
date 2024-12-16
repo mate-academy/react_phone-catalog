@@ -13,7 +13,7 @@ export const Footer = () => {
         </div>
 
         <div className="footer__back-to-top">
-          <p className="small-text">Back to top</p>
+          <p className="small-text footer__back-to-top-text">Back to top</p>
           <img
             className="button--arrow"
             src="/icons/arrow_up.svg"
