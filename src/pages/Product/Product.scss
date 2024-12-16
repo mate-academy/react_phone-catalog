@@ -14,6 +14,8 @@
   &__container {
     margin-top: 40px;
 
+    position: relative;
+
     @include mixins.page-grid;
   }
 
@@ -24,7 +26,11 @@
     gap: 16px;
     flex-direction: column;
 
-    flex-basis: 0;
+    @include mixins.media-tablet {
+      grid-column: 1 / 2;
+
+      gap: 8px;
+    }
 
     &-image {
       padding: 8px;
@@ -35,10 +41,15 @@
       align-items: center;
 
       border: 1px solid #e2e6e9;
+
+      @include mixins.media-tablet {
+        padding: 2px;
+      }
     }
 
     & img {
       height: 100%;
+      max-width: 100%;
     }
   }
 
@@ -52,6 +63,10 @@
     justify-content: center;
     align-items: center;
 
+    @include mixins.media-tablet {
+      grid-column: 2 / 8;
+    }
+
     & img {
       height: 100%;
     }
@@ -59,6 +74,10 @@
 
   &__details {
     grid-column: 14 / 21;
+
+    @include mixins.media-tablet {
+      grid-column: 8 / -1;
+    }
 
     &-name {
       margin-bottom: 8px;
@@ -68,7 +87,8 @@
   }
 
   &__id {
-    grid-column: -5 / -1;
+    position: absolute;
+    right: 0;
 
     text-align: right;
 
@@ -141,6 +161,10 @@
 
   &__cart-button {
     padding: 13.5px 90px;
+
+    @include mixins.media-tablet {
+      padding: 13.5px 49.5px;
+    }
   }
 
   &__favourite-button {
@@ -154,10 +178,16 @@
   &__description {
     margin-top: 80px;
 
+    row-gap: 64px !important;
+
     @include mixins.page-grid;
 
     &-info {
       grid-column: 1 / 13;
+
+      @include mixins.media-tablet {
+        grid-column: 1 / -1;
+      }
 
       &-container {
         margin-top: 16px;
@@ -176,10 +206,18 @@
 
     &-specs {
       grid-column: 14 / -1;
+
+      @include mixins.media-tablet {
+        grid-column: 1 / -1;
+      }
     }
   }
 
   &__slider {
     margin-top: 80px;
+
+    @include mixins.media-tablet {
+      margin-top: 64px;
+    }
   }
 }
