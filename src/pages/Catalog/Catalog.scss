@@ -5,6 +5,10 @@
 
   &__title {
     margin-top: 40px;
+
+    @include mixins.media-phone {
+      margin-top: 24px;
+    }
   }
 
   &__count {
@@ -18,8 +22,16 @@
 
     @include mixins.page-grid;
 
+    @include mixins.media-phone {
+      margin-top: 32px;
+    }
+
     &-filter {
       grid-column: span 4;
+
+      @include mixins.media-phone {
+        grid-column: span 2;
+      }
 
       &-text {
         color: #89939a;
@@ -27,6 +39,10 @@
 
       &--small {
         grid-column: span 3;
+
+        @include mixins.media-phone {
+          grid-column: span 2;
+        }
       }
     }
   }
@@ -35,5 +51,9 @@
     margin-top: 24px;
 
     @include mixins.page-grid;
+
+    @include mixins.media-phone {
+      row-gap: 40px;
+    }
   }
 }
