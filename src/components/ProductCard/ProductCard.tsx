@@ -1,12 +1,14 @@
 import React from 'react';
 import { ProductSpecs } from '../ProductSpecs';
 import './ProductCard.scss';
+import classNames from 'classnames';
 
 type Props = {
   oldPrice?: number;
+  wideButton?: boolean;
 };
 
-export const ProductCard: React.FC<Props> = ({ oldPrice }) => {
+export const ProductCard: React.FC<Props> = ({ oldPrice, wideButton }) => {
   return (
     <div className="product-card">
       <img
@@ -37,8 +39,14 @@ export const ProductCard: React.FC<Props> = ({ oldPrice }) => {
           }}
         />
 
-        <div className="product-card__buttons">
-          <button>Add to cart</button>
+        <div
+          className={classNames('product-card__buttons', {
+            'product-card__buttons--wide': wideButton,
+          })}
+        >
+          <button className={classNames({ 'button--wide': wideButton })}>
+            Add to cart
+          </button>
           <button className="button--white">
             <img src="/icons/favourite.svg" alt="Favourite icon" />
           </button>

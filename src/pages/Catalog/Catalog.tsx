@@ -26,12 +26,12 @@ export const Catalog = () => {
       </div>
 
       <div className="catalog__container">
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
+        <ProductCard wideButton={true} />
+        <ProductCard wideButton={true} />
+        <ProductCard wideButton={true} />
+        <ProductCard wideButton={true} />
+        <ProductCard wideButton={true} />
+        <ProductCard wideButton={true} />
       </div>
     </div>
   );
