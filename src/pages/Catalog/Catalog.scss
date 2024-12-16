@@ -50,10 +50,8 @@
   &__container {
     margin-top: 24px;
 
-    @include mixins.page-grid;
+    row-gap: 40px !important;
 
-    @include mixins.media-phone {
-      row-gap: 40px;
-    }
+    @include mixins.page-grid;
   }
 }

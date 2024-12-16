@@ -5,6 +5,10 @@
 
   &__title {
     margin-top: 40px;
+
+    @include mixins.media-phone {
+      margin-top: 24px;
+    }
   }
 
   &__subtitle {
@@ -16,7 +20,7 @@
   &__container {
     margin-top: 40px;
 
-    row-gap: 40px;
+    row-gap: 40px !important;
 
     @include mixins.page-grid;
   }
