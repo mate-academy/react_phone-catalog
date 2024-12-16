@@ -11,12 +11,12 @@ export const Favourites = () => {
       <p className="favourites__subtitle body-text">5 items</p>
 
       <div className="favourites__container">
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
+        <ProductCard wideButton={true} />
+        <ProductCard wideButton={true} />
+        <ProductCard wideButton={true} />
+        <ProductCard wideButton={true} />
+        <ProductCard wideButton={true} />
+        <ProductCard wideButton={true} />
       </div>
     </div>
   );
