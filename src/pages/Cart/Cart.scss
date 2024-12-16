@@ -10,6 +10,8 @@
   &__container {
     margin-top: 32px;
 
+    row-gap: 32px !important;
+
     @include mixins.page-grid;
   }
 
@@ -19,6 +21,10 @@
     display: flex;
     gap: 16px;
     flex-direction: column;
+
+    @include mixins.media-tablet {
+      grid-column: 1 / -1;
+    }
   }
 
   &__product {
@@ -52,7 +58,7 @@
 
     &-quantity {
       display: flex;
-      gap: 12px;
+      gap: 13px;
       align-items: center;
 
       &-button {
@@ -72,6 +78,10 @@
     flex-direction: column;
 
     border: 1px solid #e2e6e9;
+
+    @include mixins.media-tablet {
+      grid-column: 1 / -1;
+    }
 
     &-items {
       color: #89939a;
