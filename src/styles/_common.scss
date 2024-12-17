@@ -46,6 +46,6 @@ body {
   overflow: hidden;
 }
 
-body:has(.modal--open:target) {
+body:has(.modal--open) {
   overflow: hidden;
 }
