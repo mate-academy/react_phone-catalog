@@ -16,9 +16,10 @@ import './ProductCard.scss';
 type Props = {
   product: Product;
   page?: Pages;
+  blockTitle: string | null;
 };
 
-export const ProductCard: React.FC<Props> = ({ product, page }) => {
+export const ProductCard: React.FC<Props> = ({ product, page, blockTitle }) => {
   const {
     itemId,
     image,
@@ -54,7 +55,8 @@ export const ProductCard: React.FC<Props> = ({ product, page }) => {
       </Link>
       <div className="card__price">
         <span className="card__price--price typography__h3">{`$${price}`}</span>
-        {page === Pages.ProductsPage && (
+        {(page === Pages.ProductsPage ||
+          (page === Pages.HomePage && blockTitle === 'Hot Prices')) && (
           <span className="card__price--full-price typography__h3">
             ${fullPrice}
           </span>
