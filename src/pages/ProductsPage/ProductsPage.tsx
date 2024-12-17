@@ -18,8 +18,6 @@ export const ProductsPage: React.FC = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const { state } = useStateContext();
 
-  useLoadProducts();
-
   const defaultPage = 1;
   const defaultPerPage = 'All';
   const defaultSort = SortOptions.Newest;
@@ -33,6 +31,8 @@ export const ProductsPage: React.FC = () => {
 
   const category = products[0]?.category || 'defaultCategory';
   const title = getTitle(category);
+
+  useLoadProducts();
 
   const updateParams = (newParams: {
     page?: number;
