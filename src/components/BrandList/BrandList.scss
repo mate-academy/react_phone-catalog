@@ -20,7 +20,7 @@
 
 .brand-list {
   padding-top: 80px;
-  
+  overflow-x: hidden;
 
 
 
@@ -45,12 +45,12 @@
     display: flex;
     gap: 16px;
     flex-direction: row;
-    
-    scroll-behavior: smooth;
-    /* Плавне прокручування */
-    overflow-x: auto;
-    overflow: hidden;
+    -ms-overflow-style: none; /* Для IE та Edge */
+    scrollbar-width: none; /* Для Firefox */
 
+    &::-webkit-scrollbar {
+      display: none; /* Для Chrome, Safari та Opera */
+    }
 
 
     

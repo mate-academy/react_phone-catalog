@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './BrandCard.scss';
+import {} from '../../../public/api/products.json';
 
 interface Product {
   id: number;
@@ -23,10 +24,13 @@ export const BrandCard: React.FC = () => {
     const fetchProducts = async () => {
       try {
         const response = await fetch('/api/products.json');
+
         if (!response.ok) {
           throw new Error('Failed to load products');
         }
+
         const data = await response.json();
+
         setProducts(data);
       } catch (err: any) {
         setError(err.message);
@@ -39,20 +43,25 @@ export const BrandCard: React.FC = () => {
   }, []);
 
   const addToCart = (product: Product) => {
-    setCart((prevCart) => [...prevCart, product]);
+    setCart(prevCart => [...prevCart, product]);
   };
 
   // Функція для додавання продукту в улюблені
   const addToFavorites = (product: Product) => {
-    setFavorites((prevFavorites) => [...prevFavorites, product]);
+    setFavorites(prevFavorites => [...prevFavorites, product]);
   };
 
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error: {error}</p>;
+  if (loading) {
+    return <p>Loading...</p>;
+  }
+
+  if (error) {
+    return <p>Error: {error}</p>;
+  }
 
   return (
     <div className="product-cards">
-      {products.map((product) => (
+      {products.map(product => (
         <div key={product.id} className="product-card">
           <div className="product-card__content">
             <div className="product-card__image-container">
@@ -68,11 +77,15 @@ export const BrandCard: React.FC = () => {
             <div className="product-card__description">
               <div className="product-card__screen">
                 <p className="product-card__description-title">Screen</p>
-                <p className="product-card__description-value">{product.screen}</p>
+                <p className="product-card__description-value">
+                  {product.screen}
+                </p>
               </div>
               <div className="product-card__capacity">
                 <p className="product-card__description-title">Capacity</p>
-                <p className="product-card__description-value">{product.capacity}</p>
+                <p className="product-card__description-value">
+                  {product.capacity}
+                </p>
               </div>
               <div className="product-card__ram">
                 <p className="product-card__description-title">Ram</p>
@@ -80,8 +93,16 @@ export const BrandCard: React.FC = () => {
               </div>
             </div>
             <div className="product-card__buttons">
-              <button className="product-card__button-cart" onClick={() => addToCart(product)}>Add to cart</button>
-              <button className="product-card__button-favourite" onClick={() => addToFavorites(product)}></button>
+              <button
+                className="product-card__button-cart"
+                onClick={() => addToCart(product)}
+              >
+                Add to cart
+              </button>
+              <button
+                className="product-card__button-favourite"
+                onClick={() => addToFavorites(product)}
+              ></button>
             </div>
           </div>
         </div>

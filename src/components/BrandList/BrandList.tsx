@@ -12,12 +12,14 @@ export const BrandList: React.FC = () => {
   const handlePrevSlide = () => {
     setCurrentSlide(current => {
       const prevSlide = current === 0 ? cards.length - 1 : current - 1;
+
       if (containerRef.current) {
         containerRef.current.scrollTo({
           left: prevSlide * containerRef.current.offsetWidth,
-          behavior: 'smooth'
+          behavior: 'smooth',
         });
       }
+
       return prevSlide;
     });
   };
@@ -26,12 +28,14 @@ export const BrandList: React.FC = () => {
   const handleNextSlide = () => {
     setCurrentSlide(current => {
       const nextSlide = current === cards.length - 1 ? 0 : current + 1;
+
       if (containerRef.current) {
         containerRef.current.scrollTo({
           left: nextSlide * containerRef.current.offsetWidth,
-          behavior: 'smooth'
+          behavior: 'smooth',
         });
       }
+
       return nextSlide;
     });
   };
@@ -68,14 +72,16 @@ export const BrandList: React.FC = () => {
               &#8250;
             </button>
           </div>
-      </div>
+        </div>
       </div>
 
       <div className="brand-list__wrapper">
         <div
           className="brand-list__container"
           ref={containerRef}
-          onTouchStart={event => setSwipeStartX(event.changedTouches[0].clientX)} // Збереження початкової позиції свайпу
+          onTouchStart={event =>
+            setSwipeStartX(event.changedTouches[0].clientX)
+          } // Збереження початкової позиції свайпу
           onTouchEnd={handleSwipe} // Обробка завершення свайпу
           style={{ display: 'flex', overflowX: 'scroll' }}
         >
@@ -90,5 +96,3 @@ export const BrandList: React.FC = () => {
     </div>
   );
 };
-
-
