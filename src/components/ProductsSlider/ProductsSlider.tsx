@@ -9,7 +9,7 @@ import './ProductsSlider.scss';
 type Props = {
   title: string;
   slides: Product[];
-  sortFunction: (a: Product, b: Product) => number;
+  sortFunction?: (a: Product, b: Product) => number;
 };
 
 export const ProductsSlider: React.FC<Props> = ({
@@ -72,7 +72,7 @@ export const ProductsSlider: React.FC<Props> = ({
   const isNextDisabled = currentIndex >= slides.length - 1;
 
   useEffect(() => {
-    setSortedSlides(slides.sort(sortFunction));
+    setSortedSlides([...slides].sort(sortFunction));
   }, [slides, sortFunction]);
 
   return (
@@ -123,6 +123,7 @@ export const ProductsSlider: React.FC<Props> = ({
               key={product.id}
               product={product}
               page={Pages.HomePage}
+              blockTitle={title}
             />
           ))}
         </div>
