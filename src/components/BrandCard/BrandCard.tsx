@@ -1,6 +1,6 @@
+/* eslint-disable no-param-reassign */
 import React, { useState, useEffect } from 'react';
 import './BrandCard.scss';
-import {} from '../../../public/api/products.json';
 
 interface Product {
   id: number;

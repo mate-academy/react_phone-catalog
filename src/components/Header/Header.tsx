@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import './Header.scss';
-import '../../../public/img/icon-like.png';
+import logo from '../../../public/img/logo/logo-icon.svg';
 
 export const Header = () => {
   const [activeTab, setActiveTab] = useState<string>('home');
@@ -14,11 +14,7 @@ export const Header = () => {
     <header className="header">
       <div className="header-container">
         <a href="#" className="logo">
-          <img
-            src="/img/logo/logo-icon.svg"
-            className="logo-icon"
-            alt="logo"
-          />
+          <img src={logo} className="logo-icon" alt="logo" />
         </a>
         <div className="header__navigation">
           <a
@@ -52,37 +48,22 @@ export const Header = () => {
         </div>
       </div>
       <div className="icons">
-        <a
-          href="#"
-          className="burger-menu"
-        >
-        <img
-          src="/img/Menu.png"
-          className="burger-menu-icon"
-          alt="menu"
-        />
+        <a href="#" className="burger-menu">
+          <img src="/img/Menu.png" className="burger-menu-icon" alt="menu" />
         </a>
         <a
           href="#"
           className={`like ${activeTab === 'like' ? 'is-active' : ''}`}
           onClick={() => handleTabClick('like')}
         >
-          <img
-            src="/img/icon-like.png"
-            className="like-icon"
-            alt="like"
-          />
+          <img src="/img/icon-like.png" className="like-icon" alt="like" />
         </a>
         <a
           href="#"
           className={`bag ${activeTab === 'bag' ? 'is-active' : ''}`}
           onClick={() => handleTabClick('bag')}
         >
-          <img
-            src="/img/icon-bag.png"
-            className="bag-icon"
-            alt="bag"
-          />
+          <img src="/img/icon-bag.png" className="bag-icon" alt="bag" />
           {cartItemCount > 0 && (
             <div className="cart-badge">{cartItemCount}</div>
           )}
