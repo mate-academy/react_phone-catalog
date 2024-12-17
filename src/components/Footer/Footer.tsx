@@ -18,12 +18,20 @@ export const Footer: React.FC<Props> = () => (
         </a>
       </li>
       <li className="footer__nav-item typography__uppercase">
-        <a className="footer__nav-link" href="#">
+        <a
+          className="footer__nav-link"
+          href="https://github.com/siefimov"
+          target="blank"
+        >
           contacts
         </a>
       </li>
       <li className="footer__nav-item typography__uppercase">
-        <a className="footer__nav-link" href="#">
+        <a
+          className="footer__nav-link"
+          href="https://github.com/siefimov"
+          target="blank"
+        >
           rights
         </a>
       </li>
