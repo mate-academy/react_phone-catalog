@@ -3,8 +3,16 @@
 .cart {
   margin-top: 40px;
 
+  @include mixins.media-tablet {
+    margin-top: 24px;
+  }
+
   &__title {
     margin-top: 16px;
+
+    @include mixins.media-tablet {
+      margin-top: 24px;
+    }
   }
 
   &__container {
@@ -33,8 +41,26 @@
     display: flex;
     gap: 24px;
     align-items: center;
+    justify-content: space-between;
 
     border: 1px solid #e2e6e9;
+
+    @include mixins.media-phone {
+      gap: 16px;
+      flex-direction: column;
+      align-items: stretch;
+    }
+
+    &-group {
+      display: flex;
+      gap: 24px;
+      align-items: center;
+      justify-content: space-between;
+
+      @include mixins.media-phone {
+        gap: 16px;
+      }
+    }
 
     &-image {
       height: 100%;
@@ -64,6 +90,12 @@
       &-button {
         padding: 8px;
       }
+    }
+
+    &-price {
+      width: 80px;
+
+      text-align: right;
     }
   }
 
