@@ -20,17 +20,21 @@ export const ProductsSlider: React.FC<Props> = ({
   const [sortedSlides, setSortedSlides] = useState<Product[] | []>([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [slideWidth, setSlideWidth] = useState(0);
+  const [visibleSlides, setVisibleSlides] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
 
   const updateSlideWidth = useCallback(() => {
     if (window.matchMedia('(max-width: 639px)').matches) {
       setSlideWidth(212);
+      setVisibleSlides(1);
     } else if (
       window.matchMedia('(min-width: 640px) and (max-width: 1199px)').matches
     ) {
       setSlideWidth(237);
+      setVisibleSlides(2);
     } else {
       setSlideWidth(272);
+      setVisibleSlides(3);
     }
   }, []);
 
@@ -44,7 +48,7 @@ export const ProductsSlider: React.FC<Props> = ({
   const handleNavigation = useCallback(
     (direction: 'next' | 'prev') => {
       setCurrentIndex(prevIndex => {
-        const maxIndex = slides.length - 1;
+        const maxIndex = Math.max(0, slides.length - visibleSlides);
 
         if (direction === 'next') {
           return prevIndex === maxIndex ? prevIndex : prevIndex + 1;
@@ -53,7 +57,7 @@ export const ProductsSlider: React.FC<Props> = ({
         return prevIndex === 0 ? 0 : prevIndex - 1;
       });
     },
-    [slides.length],
+    [slides.length, visibleSlides],
   );
 
   const handleSwipe = useCallback(
@@ -69,7 +73,8 @@ export const ProductsSlider: React.FC<Props> = ({
 
   let touchStartX = 0;
   const isPrevDisabled = currentIndex === 0;
-  const isNextDisabled = currentIndex >= slides.length - 1;
+  const isNextDisabled =
+    currentIndex >= Math.max(0, slides.length - visibleSlides);
 
   useEffect(() => {
     setSortedSlides([...slides].sort(sortFunction));
