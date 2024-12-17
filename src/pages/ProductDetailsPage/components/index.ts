@@ -6,3 +6,4 @@ export { ProductActions } from './ProductActions';
 export { ProductSpecsMain } from './ProductSpecsMain';
 export { ProductAbout } from './ProductAbout';
 export { ProductSpecsFull } from './ProductSpecsFull';
+export { YouMayLike } from './YouMayLike';
