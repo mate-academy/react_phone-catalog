@@ -13,8 +13,10 @@ import {
   ProductPrice,
   ProductSpecsFull,
   ProductSpecsMain,
+  YouMayLike,
 } from './components';
 import './ProductDetailsPage.scss';
+import { useLoadProducts } from '../../hooks/useLoadProducts';
 
 type Params = {
   productId: string;
@@ -22,6 +24,7 @@ type Params = {
 
 export const ProductDetailsPage: React.FC = () => {
   const { state } = useStateContext();
+
   const { productId } = useParams<Params>();
   const [productDetails, setProductDetails] = useState<ProductDetails | null>(
     null,
@@ -41,12 +44,20 @@ export const ProductDetailsPage: React.FC = () => {
   const isFavourite = state.favourites.find(
     fav => fav.itemId === product?.itemId,
   );
+
+  useLoadProducts();
   const navigate = useNavigate();
 
   useEffect(() => {
     if (!productId) {
       setError('Product ID is missing');
       setLoading(false);
+
+      return;
+    }
+
+    if (state.products.length === 0) {
+      setLoading(true);
 
       return;
     }
@@ -63,6 +74,7 @@ export const ProductDetailsPage: React.FC = () => {
     }
 
     const loadProduct = async () => {
+      setLoading(true);
       try {
         const data = await getProductById(productId, productCategory);
 
@@ -115,46 +127,49 @@ export const ProductDetailsPage: React.FC = () => {
   }
 
   return (
-    <div className="product-details">
-      <Breadcrumbs
-        productName={productDetails.name}
-        className="product-details__breadcrumbs"
-      />
-      <BackButton className="product-details__back-button" />
-      <h1 className="product-details__title typography__h2">
-        {productDetails.name}
-      </h1>
-
-      <div className="product-details__main">
-        <ProductPhotos
-          productDetails={productDetails}
-          selectedImage={selectedImage}
-          onImageSelect={setSelectedImage}
+    <>
+      <div className="product-details">
+        <Breadcrumbs
+          productName={productDetails.name}
+          className="product-details__breadcrumbs"
         />
-        <div className="product-details__info">
-          <ProductColors
-            product={product}
+        <BackButton className="product-details__back-button" />
+        <h1 className="product-details__title typography__h2">
+          {productDetails.name}
+        </h1>
+
+        <div className="product-details__main">
+          <ProductPhotos
             productDetails={productDetails}
-            selectedColor={selectedColor}
-            onColorChange={handleColorChange}
+            selectedImage={selectedImage}
+            onImageSelect={setSelectedImage}
           />
-          <ProductCapacity
-            productDetails={productDetails}
-            onCapacityChange={handleCapacityChange}
-          />
-          <ProductPrice productDetails={productDetails} />
-          <ProductActions
-            product={product}
-            isInCart={isInCart}
-            isFavourite={isFavourite}
-          />
-          <ProductSpecsMain productDetails={productDetails} />
+          <div className="product-details__info">
+            <ProductColors
+              product={product}
+              productDetails={productDetails}
+              selectedColor={selectedColor}
+              onColorChange={handleColorChange}
+            />
+            <ProductCapacity
+              productDetails={productDetails}
+              onCapacityChange={handleCapacityChange}
+            />
+            <ProductPrice productDetails={productDetails} />
+            <ProductActions
+              product={product}
+              isInCart={isInCart}
+              isFavourite={isFavourite}
+            />
+            <ProductSpecsMain productDetails={productDetails} />
+          </div>
+        </div>
+        <div className="product-details__additional">
+          <ProductAbout productDetails={productDetails} />
+          <ProductSpecsFull productDetails={productDetails} />
         </div>
       </div>
-      <div className="product-details__additional">
-        <ProductAbout productDetails={productDetails} />
-        <ProductSpecsFull productDetails={productDetails} />
-      </div>
-    </div>
+      <YouMayLike className="product-details__you-may-like" />
+    </>
   );
 };
