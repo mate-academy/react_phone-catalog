@@ -2,30 +2,27 @@ import React from 'react';
 import { ProductSpecs } from '../ProductSpecs';
 import './ProductCard.scss';
 import classNames from 'classnames';
+import { ProductType } from '../../types/ProductType';
 
 type Props = {
-  oldPrice?: number;
+  product: ProductType;
   wideButton?: boolean;
 };
 
-export const ProductCard: React.FC<Props> = ({ oldPrice, wideButton }) => {
+export const ProductCard: React.FC<Props> = ({ product, wideButton }) => {
+  const { image, name, price, fullPrice, screen, capacity, ram } = product;
+
   return (
     <div className="product-card">
-      <img
-        src="/img/phones/apple-iphone-14/midnight/00.webp"
-        alt="Iphone 14 photo"
-        className="product-card__image"
-      />
+      <img src={image} alt={name} className="product-card__image" />
 
       <div className="product-card__container">
-        <p className="product-card__title body-text">
-          Apple iPhone 14 Pro 128GB Silver (MQ023)
-        </p>
+        <p className="product-card__title body-text">{name}</p>
 
         <div className="product-card__prices">
-          <h3 className="product-card__price">$999</h3>
-          {oldPrice && (
-            <h3 className="product-card__price--discount">${oldPrice}</h3>
+          <h3 className="product-card__price">${price}</h3>
+          {fullPrice && (
+            <h3 className="product-card__price--discount">${fullPrice}</h3>
           )}
         </div>
 
@@ -33,9 +30,9 @@ export const ProductCard: React.FC<Props> = ({ oldPrice, wideButton }) => {
 
         <ProductSpecs
           specs={{
-            Screen: '6.1” OLED',
-            Capacity: '128 GB',
-            RAM: '6 GB',
+            Screen: screen,
+            Capacity: capacity,
+            RAM: ram,
           }}
         />
 

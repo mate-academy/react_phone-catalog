@@ -28,12 +28,16 @@
   }
 
   &__container {
+    height: 100%;
+
     display: flex;
     gap: 8px;
     flex-direction: column;
   }
 
   &__prices {
+    margin-top: auto;
+
     display: flex;
     gap: 8px;
   }
