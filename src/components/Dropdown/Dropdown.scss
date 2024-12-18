@@ -55,6 +55,12 @@
 
     &-text {
       pointer-events: none;
+
+      color: #89939a;
+
+      &--selected {
+        color: #313237;
+      }
     }
   }
 }

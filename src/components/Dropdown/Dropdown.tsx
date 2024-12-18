@@ -48,7 +48,16 @@ export const Dropdown: React.FC<Props> = ({ options }) => {
               key={index}
               tabIndex={index}
             >
-              <p className="dropdown__item-text body-text">{option}</p>
+              <p
+                className={classNames(
+                  'dropdown__item-text body-text slim-text',
+                  {
+                    'dropdown__item-text--selected': option === selected,
+                  },
+                )}
+              >
+                {option}
+              </p>
             </div>
           ))}
         </div>
