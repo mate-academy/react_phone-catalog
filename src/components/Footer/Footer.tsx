@@ -1,4 +1,4 @@
-import { Link, NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import './Footer.scss';
 import { useEffect, useState } from 'react';
 
@@ -36,15 +36,15 @@ export const Footer: React.FC = () => {
         <img src="./img/icons/Logo.png" alt="Nice gadgets" className="footer__logo" />
       </Link>
       <nav className="nav_bar footer__nav-bar">
-        <NavLink to="/home" className="nav-bar__link">
+        <a href="https://github.com/GTXtab" className="nav-bar__link">
           GitHub
-        </NavLink>
-        <NavLink to="/phones" className="nav-bar__link">
+        </a>
+        <a href="https://www.instagram.com/gtxtab/" className="nav-bar__link">
           Contacts
-        </NavLink>
-        <NavLink to="/tablets" className="nav-bar__link">
+        </a>
+        <a href="#" className="nav-bar__link">
           Rights
-        </NavLink>
+        </a>
       </nav>
       {showButton && (
         <div className="footer__nav-up" onClick={scrollToTop}>
