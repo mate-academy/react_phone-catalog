@@ -1,9 +1,11 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
 import globalReducer from '../features/globalSlice';
+import productReducer from '../features/productSlice';
 
 export const store = configureStore({
   reducer: {
     global: globalReducer,
+    products: productReducer,
   },
 });
 

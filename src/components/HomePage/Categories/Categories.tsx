@@ -1,5 +1,10 @@
+import { SectionTitle } from '../../titles/SectionTitle';
 import cl from './Categories.module.scss';
 
 export const Categories: React.FC = () => {
-  return <h1 className={cl.title}>CATEGORIES</h1>;
+  return (
+    <div className={cl.sectionContainer}>
+      <SectionTitle text="Shop by category" />
+    </div>
+  );
 };

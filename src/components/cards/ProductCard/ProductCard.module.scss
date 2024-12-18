@@ -1,0 +1,107 @@
+@import '../../../styles/utils/mixins.scss';
+@import '../../../styles/utils/vars.scss';
+
+.cardContainer {
+  width: fit-content;
+  background-color: $card-background-col;
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.img {
+  box-sizing: border-box;
+  object-fit: contain;
+  overflow: hidden;
+  width: 150px;
+  height: 130px;
+  @include on-tablet {
+    width: 173px;
+    height: 202px;
+  }
+  @include on-desktop {
+    width: 208px;
+    height: 196px;
+  }
+}
+
+.title {
+  color: $main-txt-col;
+  padding-top: 16px;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+}
+
+.priceContainer {
+  display: flex;
+  gap: 10px;
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 30px;
+  &__price {
+    color: $main-txt-col;
+  }
+  &__fullPrice {
+    color: $second-txt-col;
+    text-decoration: line-through;
+  }
+}
+
+.divider {
+  border: 1px solid #3b3e4a;
+}
+
+.chars {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  &__line {
+    display: flex;
+    justify-content: space-between;
+  }
+  &__definition {
+    color: $second-txt-col;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 16px;
+  }
+  &__value {
+    color: $main-txt-col;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 16px;
+  }
+}
+
+.buttonContainer {
+  display: flex;
+  height: 40px;
+  gap: 8px;
+
+  &__cardButton {
+    cursor: pointer;
+    height: 100%;
+    width: 100%;
+    line-height: 40px; // center text vertically, value the same as height
+    text-align: center;
+    color: $main-txt-col;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 21px;
+    background-color: $main-button-col;
+    @include hover(background-color, $main-button-col-hover);
+  }
+  &__favButton {
+    cursor: pointer;
+    min-width: 40px;
+    background-color: $second-button-col;
+    @include hover(background-color, $second-button-col-hover);
+    &Icon {
+      height: $icon-size;
+      width: $icon-size;
+      background-image: url('/img/icons/Favourites.svg');
+    }
+  }
+}

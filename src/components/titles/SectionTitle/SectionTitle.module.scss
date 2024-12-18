@@ -1,0 +1,11 @@
+@import '../../../styles/utils/mixins.scss';
+@import '../../../styles/utils/vars.scss';
+
+.title {
+  color: $main-txt-col;
+  font-weight: 800;
+  font-size: 22px;
+  @include on-tablet {
+    font-size: 32px;
+  }
+}

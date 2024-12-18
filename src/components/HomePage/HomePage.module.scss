@@ -1,14 +1,6 @@
 @import '../../styles/utils/vars.scss';
 @import '../../styles/utils/mixins.scss';
 
-.title {
-  color: $main-txt-col;
-  font-size: 32px;
-  @include on-tablet {
-    font-size: 48px;
-  }
-}
-
 .homePageSlider {
   margin-top: 24px;
   @include on-tablet {

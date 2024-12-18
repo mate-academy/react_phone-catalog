@@ -1,5 +1,9 @@
-.sectionContainer {
+.articleContainer {
   display: flex;
   flex-direction: column;
   gap: 24px;
+}
+
+.textContainer {
+  gap: 6px;
 }

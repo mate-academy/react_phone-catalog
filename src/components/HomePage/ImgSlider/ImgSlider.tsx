@@ -1,81 +1,108 @@
 import cn from 'classnames';
-
 import { Link } from 'react-router-dom';
 import cl from './ImgSlider.module.scss';
 import { useEffect, useRef, useState } from 'react';
+import {
+  ArrowButton,
+  ArrowButtonDirection,
+  ArrowButtonOrigin,
+} from '../ArrowButton';
+// eslint-disable-next-line import/no-extraneous-dependencies
+import { useSwipeable } from 'react-swipeable';
+import { useWidthRecalculate } from '../../../app/hooks';
 
 const dotsIds = [0, 1, 2];
 
 export const ImgSlider: React.FC = () => {
   const [shownSlide, setShownSlide] = useState(0); // 0 | 1 | 2
   const [slideWidth, setSlideWidth] = useState(0); // w in px
-  const sliderRef = useRef<HTMLLIElement>(null);
+  const sliderRef = useRef<HTMLOListElement>(null);
+
+  //#region swiping
+  function swipeLeft() {
+    setShownSlide(prev => (prev === 0 ? 2 : prev - 1));
+  }
+
+  function swipeRight() {
+    setShownSlide(prev => (prev === 2 ? 0 : prev + 1));
+  }
+
+  const swiper = useSwipeable({
+    onSwipedLeft: swipeRight,
+    onSwipedRight: swipeLeft,
+  });
+  //#endregion
+
+  //#region styles
+  const animSlideStyles = {
+    transform: `translateX(-${shownSlide * slideWidth}px)`,
+    transition: 'transform 0.8s ease-in-out',
+  };
+  const linkWidthStyle = {
+    width: `${slideWidth}px`,
+  };
+  //#endregion
+
+  //#region effects
+  // from app/hooks
+  useWidthRecalculate(sliderRef, setSlideWidth);
 
   useEffect(() => {
-    if (sliderRef.current) {
-      setSlideWidth(sliderRef.current.getBoundingClientRect().width);
-    }
+    const intervalId = setInterval(() => {
+      setShownSlide(prevSlide => (prevSlide + 1) % 3);
+    }, 5000);
+
+    return () => clearInterval(intervalId);
   }, []);
+  //#endregion
 
   return (
-    <div className={cl.slider}>
-      <div className={cl.slider__topWrapper}>
-        <button
-          className={cl.arrowButton}
-          onClick={() => setShownSlide(curr => (curr === 0 ? 2 : curr - 1))}
-        >
-          <svg className={cl.arrowButton__iconLeft} />
-        </button>
+    <div className={cl.slider} {...swiper}>
+      <div className={cl.sliderTopWrapper}>
+        <ArrowButton
+          direction={ArrowButtonDirection.LEFT}
+          origin={ArrowButtonOrigin.ONSLIDER}
+          onClick={swipeLeft}
+        />
 
-        <ol className={cl.slider__list}>
-          <li
-            className={cl.sliderItem}
-            ref={sliderRef}
-            style={{
-              transform: `translateX(-${shownSlide * slideWidth}px)`,
-              transition: 'transform 0.5s ease-in-out',
-            }}
-          >
-            <Link to={'#'} className={cl.sliderItem__text1}>
-              Check brand <br /> new models!
-            </Link>
+        <ol className={cl.slider__list} ref={sliderRef}>
+          <li className={cl.sliderItem} style={animSlideStyles}>
             <Link
               to="#"
-              className={`${cl.sliderLink} ${cl.sliderLink__1} ${cl.sliderItem__link1}`}
+              className={`${cl.sliderLinkWrapper} ${cl.sliderLinkWrapper__1}`}
+              style={linkWidthStyle}
+            >
+              <p className={cl.sliderLinkWrapper__1__text1}>
+                Check brand <br /> new models!
+              </p>
+              <div className={`${cl.sliderLinkWrapper__1__img1}`} />
+            </Link>
+          </li>
+
+          <li className={cl.sliderItem} style={animSlideStyles}>
+            <Link
+              to="#"
+              className={`${cl.sliderLinkWrapper} ${cl.sliderLinkWrapper__2}`}
+              style={linkWidthStyle}
             />
           </li>
-          <li
-            className={cl.slider__item}
-            style={{
-              transform: `translateX(-${shownSlide * slideWidth}px)`,
-              transition: 'transform 0.5s ease-in-out',
-              // width: `${slideWidth}`, doesn't work
-            }}
-          >
-            <Link to="#" className={`${cl.sliderLink} ${cl.sliderLink__2}`} />
-          </li>
-          <li
-            className={cl.slider__item}
-            style={{
-              transform: `translateX(-${shownSlide * slideWidth}px)`,
-              transition: 'transform 0.5s ease-in-out',
-              // width: `${slideWidth}`, doesn't work
-            }}
-          >
-            <Link to="#" className={`${cl.sliderLink} ${cl.sliderLink__3}`}>
-              <Link to={'#'} className={cl.sliderLink__3__text}>
-                Contact us!
-              </Link>
+
+          <li className={cl.sliderItem} style={animSlideStyles}>
+            <Link
+              to="#"
+              className={`${cl.sliderLinkWrapper} ${cl.sliderLinkWrapper__3}`}
+              style={linkWidthStyle}
+            >
+              <p className={cl.sliderLinkWrapper__3__text3}>Contact us!</p>
             </Link>
           </li>
         </ol>
 
-        <button
-          className={cl.arrowButton}
-          onClick={() => setShownSlide(curr => (curr === 2 ? 0 : curr + 1))}
-        >
-          <svg className={cl.arrowButton__iconRight} />
-        </button>
+        <ArrowButton
+          direction={ArrowButtonDirection.RIGHT}
+          origin={ArrowButtonOrigin.ONSLIDER}
+          onClick={swipeRight}
+        />
       </div>
 
       <ol className={`${cl.slider__dots} ${cl.dots}`}>

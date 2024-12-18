@@ -1,0 +1,44 @@
+@import '../../../styles/utils/mixins.scss';
+@import '../../../styles/utils/vars.scss';
+
+.arrowButton {
+  width: $arrowButton-size;
+  cursor: pointer;
+  background-color: $second-button-col;
+  @include hover(background-color, $second-button-col-hover);
+}
+.buttonOnSlider {
+  display: none;
+  @include on-tablet {
+    display: block;
+  }
+}
+.buttonOnList {
+  height: $arrowButton-size;
+}
+.disabled {
+  background-color: transparent;
+  border: 1px solid $second-button-col;
+  pointer-events: none;
+}
+
+.icon {
+  width: $icon-size;
+  height: $icon-size;
+}
+
+.Left {
+  background-image: url('/img/icons/ArrowLeft.svg');
+}
+.Right {
+  background-image: url('/img/icons/ArrowRight.svg');
+}
+.Up {
+  background-image: url('/img/icons/ArrowUp.svg');
+}
+.disabledLeft {
+  background-image: url('/img/icons/ArrowLeftDisabled.svg');
+}
+.disabledRight {
+  background-image: url('/img/icons/ArrowRightDisabled.svg');
+}
