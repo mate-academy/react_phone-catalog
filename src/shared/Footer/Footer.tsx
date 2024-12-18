@@ -19,6 +19,8 @@ export default function Footer() {
             <li className={styles.footer__item}>
               <a
                 href="https://github.com/Poviakalo"
+                target="_blank"
+                rel="noreferrer"
                 className={styles.footer__link}
               >
                 Github
@@ -26,13 +28,23 @@ export default function Footer() {
             </li>
 
             <li className={styles.footer__item}>
-              <a href="#" className={styles.footer__link}>
+              <a
+                href="https://github.com/Poviakalo"
+                target="_blank"
+                rel="noreferrer"
+                className={styles.footer__link}
+              >
                 Contacts
               </a>
             </li>
 
             <li className={styles.footer__item}>
-              <a href="#" className={styles.footer__link}>
+              <a
+                href="https://github.com/Poviakalo"
+                target="_blank"
+                rel="noreferrer"
+                className={styles.footer__link}
+              >
                 rights
               </a>
             </li>

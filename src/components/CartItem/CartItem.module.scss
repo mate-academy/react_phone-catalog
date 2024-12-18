@@ -57,6 +57,8 @@
   }
 
   &__price {
+    width: 100px;
+    text-align: end;
     font-size: 22px;
     font-weight: 800;
     grid-column: span 2;
