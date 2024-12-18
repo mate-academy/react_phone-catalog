@@ -1,84 +1,28 @@
-import React, { useEffect, useMemo, useRef, useState } from 'react';
+import React, { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { ProductCard } from '../ProductCard';
 import './ProductSlider.scss';
-
-type Props = {
-  title: string;
-};
+import { ProductType } from '../../types/ProductType';
 
 const getStyles = (element: HTMLDivElement | Element) => {
   const styles = getComputedStyle(element);
+
   return {
     width: parseFloat(styles.width),
     gap: parseFloat(styles.gap),
   };
 };
 
-const calculateScrollWidth = (
-  containerRef: React.RefObject<HTMLDivElement>,
-) => {
-  if (!containerRef.current) {
-    return 0;
-  }
-
-  const product = containerRef.current.children[0];
-
-  if (!product) {
-    return 0;
-  }
-
-  const containerStyles = getStyles(containerRef.current);
-  const productCardStyles = getStyles(product);
-
-  return productCardStyles.width + containerStyles.gap;
+type Props = {
+  products: ProductType[];
+  title: string;
 };
 
-const useRefDimensions = (ref: React.RefObject<HTMLDivElement>) => {
-  const [dimensions, setDimensions] = useState({ width: 1, height: 2 });
-
-  useEffect(() => {
-    if (!ref.current) {
-      return;
-    }
-
-    const { width, height } = ref.current.getBoundingClientRect();
-    setDimensions({ width: Math.round(width), height: Math.round(height) });
-  }, [ref]);
-
-  return dimensions;
-};
-
-export const ProductSlider: React.FC<Props> = ({ title }) => {
+export const ProductSlider: React.FC<Props> = ({ products, title }) => {
   const [scrollIndex, setScrollIndex] = useState(0);
+  const [visibleItemsCount, setVisibleItemsCount] = useState(0);
+  const [scrollWidth, setScrollWidth] = useState(0);
+
   const containerRef = useRef<HTMLDivElement>(null);
-
-  const dimensions = useRefDimensions(containerRef);
-
-  const visibleItemsCount = useMemo(() => {
-    if (!containerRef.current) {
-      return 0;
-    }
-
-    const product = containerRef.current.children[0];
-
-    if (!product) {
-      return 0;
-    }
-
-    const { width: containerWidth } = getStyles(containerRef.current);
-    const { width: productCardWidth } = getStyles(product as HTMLElement);
-
-    return Math.floor(containerWidth / productCardWidth);
-  }, [dimensions]);
-
-  useEffect(() => {
-    if (!containerRef.current) {
-      return;
-    }
-
-    const scrollWidth = calculateScrollWidth(containerRef);
-    containerRef.current.style.transform = `translateX(-${scrollIndex * scrollWidth}px)`;
-  }, [scrollIndex]);
 
   const scroll = (amount: number) => {
     if (!containerRef.current) {
@@ -97,6 +41,34 @@ export const ProductSlider: React.FC<Props> = ({ title }) => {
   const scrollRight = () => scroll(visibleItemsCount);
   const scrollLeft = () => scroll(-visibleItemsCount);
 
+  useEffect(() => {
+    if (!containerRef.current) {
+      return;
+    }
+
+    containerRef.current.style.transform = `translateX(-${scrollIndex * scrollWidth}px)`;
+  }, [scrollIndex]);
+
+  useLayoutEffect(() => {
+    if (!containerRef.current) {
+      return;
+    }
+
+    const product = containerRef.current.children[0];
+
+    if (!product) {
+      return;
+    }
+
+    const containerStyles = getStyles(containerRef.current);
+    const productCardStyles = getStyles(product);
+
+    setScrollWidth(productCardStyles.width + containerStyles.gap);
+    setVisibleItemsCount(
+      Math.floor(containerStyles.width / productCardStyles.width),
+    );
+  });
+
   return (
     <div className="product-slider">
       <div className="product-slider__top">
@@ -109,6 +81,7 @@ export const ProductSlider: React.FC<Props> = ({ title }) => {
           >
             <img src="/icons/arrow_left.svg" alt="Arrow left" />
           </div>
+
           <div
             className="button--arrow"
             onClick={scrollRight}
@@ -123,8 +96,8 @@ export const ProductSlider: React.FC<Props> = ({ title }) => {
         </div>
       </div>
       <div className="product-slider__container" ref={containerRef}>
-        {[...Array(7)].map((_, index) => (
-          <ProductCard key={index} oldPrice={1299} />
+        {products.map((product, index) => (
+          <ProductCard key={index} product={product} />
         ))}
       </div>
     </div>
