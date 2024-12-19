@@ -1,0 +1,44 @@
+@use 'src/modules/shared/styles/index.scss' as *;
+
+
+.header{
+  --header-height: 48px;
+
+  width: 100%;
+  height: var(--header-height);
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 16px;
+  border: 1px solid $icons-color;
+  position: sticky;
+  z-index: 3000;
+
+  @include on-tablet{
+    --header-height: 64px;
+
+    padding-left: 24px;
+    justify-content: start;
+    gap: 16px;
+  }
+
+  @include on-desktop{
+    gap: 24px;
+  }
+
+  &__button{
+    width: var(--header-height);
+
+    text-align: right;
+    border-left: 1px solid $icons-color;
+    height: 100%;
+    
+    @include center;
+
+    @include on-tablet{
+      display: none;
+    }
+  }
+}
+

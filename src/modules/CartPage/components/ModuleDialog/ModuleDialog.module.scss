@@ -1,0 +1,67 @@
+@use 'src/modules/shared/styles/index.scss' as *;
+
+.module{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.3);
+
+
+  &::before{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+  }
+
+  @include center;
+
+  &__container{
+    background-color: #fff;
+    padding: 26px;
+    border-radius: 16px;
+    text-align: center;
+    display: flex;
+    width: 90%;
+    flex-direction: column;
+    gap: 16px;
+
+    @include on-tablet{
+      width: 60%;
+    }
+
+    @include on-desktop{
+      flex-flow: wrap;
+    }
+  }
+
+  &__title{
+    font-size: 16px;
+    line-height: 20px;
+    font-weight: 600;
+
+    @include on-tablet{
+      font-size: 32px;
+      line-height: 40px;
+    }
+  }
+
+  &__button{
+    width: 100%;
+    height: 48px;
+    border-radius: 8px;
+    background-color: $main-blue;
+    color: #fff;
+
+    &_clear{
+      background-color: #fff;
+      border: 1px solid $main-blue;
+      color: $main-blue;
+    }
+
+    @include on-desktop{
+      flex:  1 1 calc(50% - 16px);
+    }
+  }
+}

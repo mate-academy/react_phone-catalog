@@ -1,0 +1,100 @@
+@use 'src/modules/shared/styles/index.scss' as *;
+
+.slider{
+  grid-column: 1 / -1;
+  padding-bottom: 56px;
+
+  @include on-tablet{
+    padding-inline: 24px;
+  }
+
+  @include on-desktop{
+    padding-inline: 36px;
+  }
+
+  &__container{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+
+    @include page-grid;
+
+  }
+  &__track{
+    grid-column: 1 / -1;
+
+    @include on-tablet{
+      grid-column: 2 / -2;
+    }
+  }
+
+  &__slide{
+    grid-column: 1 / -1;
+    display: none;
+    height: 320px;
+
+    @include on-tablet{
+      border-radius: 8px;
+      height: 186px;
+    }
+
+    @include on-desktop{
+      height: 400px;
+    }
+    &.active{
+      display: block;
+    }
+  }
+
+  &__back,
+  &__next{
+    display: none;
+    border: 1px solid $icons-color;
+    border-radius: 48px;
+    height: 100%;
+    transition: all 0.3s ease 0s;
+
+    &:hover{
+      background-color: $primary-color;
+      color: #fff;
+    }
+
+    @include on-tablet{
+      display: block;
+      grid-column: span 1;
+    }
+  }
+
+  &__next{
+    span{
+      display: inline-block;
+      transform: rotate(-180deg);
+    }
+  }
+
+  &__pagination{
+    grid-column: 1 / -1;
+    
+    @include center;
+
+    gap: 10px;
+    padding-block: 16px;
+  }
+  &__paginationitem{
+    width: 14px;
+    height: 4px;
+    background-color: $elements-color;
+    transition: background-color 0.3s ease 0s;
+
+    &_active {
+      background-color: $primary-color;
+    }
+
+    &:hover{
+      background-color: $icons-color;
+    }
+  }
+}
+
+
+

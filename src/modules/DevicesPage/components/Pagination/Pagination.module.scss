@@ -1,0 +1,35 @@
+@use 'src/modules/shared/styles/index.scss' as *;
+
+.pagination{
+  display: flex;
+  gap: 16px;
+
+  &__items{
+    display: flex;
+    gap: 8px;
+  }
+  &__button,
+  &__item{
+    width: 32px;
+    height: 32px;
+    border: 1px solid $icons-color;
+    border-radius: 50%;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 21px;
+
+    @include center;
+
+    &_active{
+      background-color: $primary-color;
+      color: #fff;
+      border: none;
+    }
+  }
+
+  &__button{
+    &:disabled{
+      color: $icons-color;
+    }
+  }
+}

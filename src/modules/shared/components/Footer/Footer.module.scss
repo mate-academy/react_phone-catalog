@@ -1,0 +1,80 @@
+@use 'src/modules/shared/styles/index.scss' as *;
+
+.footer {
+  padding-block: 32px;
+  font-size: 12px;
+  line-height: 11px;
+  text-transform: uppercase;
+  color: $secondary-color;
+  max-width: 1200px;
+  margin: 0 auto;
+  box-sizing: border-box;
+
+  @include inline-padding;
+
+  @include on-tablet{
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__menu{
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding-block: 32px;
+
+    @include on-tablet{
+      flex-direction: row;
+      padding-block: 0;
+      align-items: center;
+      gap: 14px;
+    }
+
+    @include on-desktop{
+      gap: 106px;
+    }
+  }
+
+  &__item{
+    font-weight: 800;
+  }
+
+  &__back{
+    font-weight: 700;
+    line-height: 15px;
+    gap: 16px;
+    font-family: Mont, sans-serif;
+    cursor: pointer;
+
+    @include small-text;
+    @include center;
+  }
+
+  &__arrow{
+    display: block;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 1px solid $icons-color;
+    animation: up-down-arrow 3s infinite;
+    z-index: -1;
+
+    @include center;
+
+    span{
+      display: inline-block;
+      transform: rotate(90deg);
+      color: $primary-color;
+    }
+  }
+}
+
+@keyframes up-down-arrow {
+  0%{
+    transform: translateY(0) scale(1);
+
+  }
+  100%{
+    transform: translateY(-20px) scale(0.95);
+  }
+}
