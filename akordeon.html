@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Akordeon</title>
+  <style>
+    .accordion {
+      width: 300px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      overflow: hidden;
+    }
+
+    .accordion-item {
+      border-bottom: 1px solid #ccc;
+    }
+
+    .accordion-header {
+      padding: 15px;
+      background: #f5f5f5;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background-color 0.3s ease;
+    }
+
+    .accordion-header:hover {
+      background: #e5e5e5;
+    }
+
+    .accordion-content {
+      display: none;
+      padding: 15px;
+      background: #fff;
+      transition: max-height 0.3s ease-out;
+    }
+
+    .accordion-content.open {
+      display: block;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="accordion" id="accordion">
+    <div class="accordion-item">
+      <div class="accordion-header" data-index="0">Sekcja 1</div>
+      <div class="accordion-content">Treść sekcji 1</div>
+    </div>
+
+    <div class="accordion-item">
+      <div class="accordion-header" data-index="1">Sekcja 2</div>
+      <div class="accordion-content">Treść sekcji 2</div>
+      <div class="accordion-content">Treść sekcji 2</div>
+      <div class="accordion-content">Treść sekcji 2</div>
+      <div class="accordion-content">Treść sekcji 2</div>
+      <div class="accordion-content">Treść sekcji 3 pozyczona</div>
+    </div>
+
+    <div class="accordion-item">
+      <div class="accordion-header" data-index="2">Sekcja 3</div>
+      <div class="accordion-content">Treść sekcji 3</div>
+    </div>
+  </div>
+
+  <script>
+    const accordion = document.getElementById('accordion');
+    const headers = accordion.querySelectorAll('.accordion-header');
+    const content = accordion.querySelectorAll('.accordion-content');
+
+    headers.forEach(header => {
+      header.addEventListener('click', () => {
+        const index = header.getAttribute('data-index');
+        const items = header.parentElement.querySelectorAll('.accordion-content');
+
+        // content.forEach(item => item.classList.remove('open'))
+
+        items.forEach(content => {
+          content.classList.toggle('open')
+        });
+      });
+    });
+  </script>
+</body>
+
+</html>
