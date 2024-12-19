@@ -1,9 +1,22 @@
+import { useEffect, useState } from 'react';
+import { getPhones } from '../../api/api';
 import { Breadcrumbs } from '../../components/Breadcrumbs';
 import { Dropdown } from '../../components/Dropdown';
 import { ProductCard } from '../../components/ProductCard';
+import { ProductType } from '../../types/ProductType';
 import './Catalog.scss';
 
 export const Catalog = () => {
+  const [products, setProducts] = useState<ProductType[]>([]);
+
+  const fetchProducts = async () => {
+    setProducts(await getPhones());
+  };
+
+  useEffect(() => {
+    fetchProducts();
+  }, []);
+
   return (
     <div className="catalog">
       <Breadcrumbs paths={['Phones']} />
@@ -21,17 +34,14 @@ export const Catalog = () => {
           <p className="catalog__filters-filter-text small-text">
             Items on page
           </p>
-          <Dropdown options={['16', '32']} />
+          <Dropdown options={['16', '32', '64']} />
         </div>
       </div>
 
       <div className="catalog__container">
-        <ProductCard wideButton={true} />
-        <ProductCard wideButton={true} />
-        <ProductCard wideButton={true} />
-        <ProductCard wideButton={true} />
-        <ProductCard wideButton={true} />
-        <ProductCard wideButton={true} />
+        {products.map(product => (
+          <ProductCard key={product.id} product={product} wideButton={true} />
+        ))}
       </div>
     </div>
   );

@@ -1,7 +1,23 @@
+import { useState, useEffect } from 'react';
+import { getPhones } from '../../api/api';
 import { ProductSlider } from '../../components/ProductSlider';
+import { ProductType } from '../../types/ProductType';
+import { SortType } from '../../types/SortType';
 import './HomePage.scss';
 
 export const HomePage = () => {
+  const [newestProducts, setNewestProducts] = useState<ProductType[]>([]);
+  const [hotProducts, setHotProducts] = useState<ProductType[]>([]);
+
+  const fetchProducts = async () => {
+    setNewestProducts(await getPhones());
+    setHotProducts(await getPhones({ sortBy: SortType.discount }));
+  };
+
+  useEffect(() => {
+    fetchProducts();
+  }, []);
+
   return (
     <div className="home-page">
       <h1 className="home-page__title">Welcome to Nice Gadgets store!</h1>
@@ -38,7 +54,7 @@ export const HomePage = () => {
         </section>
 
         <section className="home-page__models">
-          <ProductSlider title="Brand new models" />
+          <ProductSlider products={newestProducts} title="Brand new models" />
         </section>
 
         <section className="home-page__categories home-page__section">
@@ -88,7 +104,7 @@ export const HomePage = () => {
         </section>
 
         <section className="home-page__hot-prices">
-          <ProductSlider title="Hot prices" />
+          <ProductSlider products={hotProducts} title="Hot prices" />
         </section>
       </main>
     </div>
