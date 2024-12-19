@@ -1,4 +1,5 @@
 export interface Product {
+  push(product: Product): unknown;
   id: number;
   category: string;
   itemId: string;

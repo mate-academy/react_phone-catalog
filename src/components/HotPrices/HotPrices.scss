@@ -1,7 +1,6 @@
 @import '../../utils';
-@import '../../layout/container';
 
-.new-models {
+.hot-prices {
   &__title {
     @include title-of-blocks;
   }

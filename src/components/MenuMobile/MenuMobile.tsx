@@ -24,13 +24,9 @@ export const MenuMobile = () => {
       </ul>
 
       <div className="menu-mobile__shopping">
-        {/* <div className="menu-mobile__shopping-category"> */}
         <Favourites isMobile={true} />
-        {/* </div> */}
 
-        {/* <div className="menu-mobile__shopping-category"> */}
         <ShoppingBag isMobile={true} />
-        {/* </div> */}
       </div>
     </div>
   );

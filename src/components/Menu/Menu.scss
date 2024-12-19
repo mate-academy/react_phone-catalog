@@ -17,16 +17,12 @@
   }
 
   &__link {
-    text-transform: uppercase;
-    color: $secondary;
-    font-family: $font-family;
-    font-weight: 800;
-    font-size: 12px;
+    @include menu-list;
 
     &:hover {
-      color: $primary;
-      border-bottom: 3px solid $primary;
       padding-bottom: 20px;
+      border-bottom: 3px solid $primary;
+      color: $primary;
     }
   }
 }

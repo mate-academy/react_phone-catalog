@@ -1,6 +1,10 @@
 @import '../../utils';
 
 .category {
+  &__title {
+    @include title-of-blocks;
+  }
+
   &__items {
     display: flex;
     gap: 16px;
@@ -19,17 +23,17 @@
     margin-top: 24px;
   }
 
-  &__title {
+  &__name {
     font-family: $font-family;
-    font-weight: $font-weight-medium;
     font-size: 20px;
+    font-weight: $font-weight-medium;
     color: $primary;
   }
 
   &__count {
     font-family: $font-family;
-    font-weight: 500;
     font-size: 14px;
+    font-weight: 500;
     color: $secondary;
   }
 }

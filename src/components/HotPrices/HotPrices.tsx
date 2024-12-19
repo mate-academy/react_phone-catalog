@@ -1,28 +1,32 @@
 import React from 'react';
-import './NewModels.scss';
+import './HotPrices.scss';
 import { ProductsSlider } from '../ProductsSlider';
 import productsFromServer from '../../../public/api/products.json';
 import { Product } from '../types/Product';
 
-function newPhones(products: Product[], year = 2022) {
+function hotPrices(products: Product[]) {
   return products.reduce((acc, product) => {
     if (
-      product.year === year &&
+      product.category === 'phones' &&
+      product.price < product.fullPrice &&
       !acc.some(({ color }) => color === product.color)
     ) {
-      acc.unshift(product);
+      acc.push(product);
     }
 
     return acc;
   }, [] as Product[]);
 }
 
-export const NewModels = () => {
+export const HotPrices = () => {
   return (
-    <div className="new-models">
+    <div className="hot-prices">
       <div className="container container--mobile">
-        <h2 className="new-models__title">Brand new models</h2>
-        <ProductsSlider newModels={newPhones(productsFromServer)} fullPrice={false} />
+        <h2 className="hot-prices__title">Hot prices</h2>
+        <ProductsSlider
+          newModels={hotPrices(productsFromServer)}
+          fullPrice={true}
+        />
       </div>
     </div>
   );

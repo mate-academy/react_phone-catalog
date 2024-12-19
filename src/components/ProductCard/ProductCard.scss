@@ -2,9 +2,9 @@
 
 .product-card {
   max-width: 270px;
+  padding: 32px;
   border: 1px solid $elements;
   border-radius: 8px;
-  padding: 32px;
 
   &__content {
     border-bottom: 1px solid $elements;
@@ -19,22 +19,36 @@
   }
 
   &__title {
-    min-height: 50px;
     display: block;
     font-family: $font-family;
     font-size: 14px;
     font-weight: $font-weight-regular;
     line-height: 21px;
     color: $primary;
+    min-height: 50px;
     padding-top: 8px;
   }
 
   &__price {
-    font-family: $font-family;
-    font-size: 22px;
-    font-weight: $font-weight-bolt;
+    display: flex;
+    align-items: center;
+    gap: 8px;
     margin-top: 8px;
     margin-bottom: 8px;
+
+    &--discount {
+      font-family: $font-family;
+      font-size: 22px;
+      font-weight: $font-weight-bolt;
+    }
+
+    &--full {
+      font-family: $font-family;
+      font-size: 22px;
+      font-weight: $font-weight-regular;
+      color: $secondary;
+      text-decoration: line-through;
+    }
   }
 
   &__image {
@@ -46,6 +60,7 @@
   &__description {
     margin-top: 8px;
   }
+
   &__description-item {
     display: flex;
     justify-content: space-between;
@@ -67,9 +82,10 @@
   }
 
   &__button-cart {
-    padding: 10px 34px;
     font-family: $font-family;
     color: $white;
+
+    padding: 10px 34px;
     background-color: $accent;
     border: 1px solid $accent;
     border-radius: 8px;
@@ -92,12 +108,12 @@
     height: 40px;
     background-color: $white;
     border: none;
-    background-image: url(../../../public/img/Add\ to\ fovourites\ -\ Default.svg);
+    background-image: url(../../../../img/Add\ to\ fovourites\ -\ Default.svg);
     cursor: pointer;
     transition: 0.3s;
 
     &:hover {
-      background-image: url(../../../public/img/Add\ to\ fovourites\ -\ Hover.svg);
+      background-image: url(../../../../img/Add\ to\ fovourites\ -\ Hover.svg);
       transition: 0.3s;
     }
   }

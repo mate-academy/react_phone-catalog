@@ -13,19 +13,19 @@ const categories = [
   {
     name: 'Mobile phones',
     categoryUrl: './mobile',
-    imgUrl: '../../../public/img/category-phones.png',
+    imgUrl: '../../../../img/category-phones.png',
     count: productsCount(phones),
   },
   {
     name: 'Tablets',
     categoryUrl: '/tablets',
-    imgUrl: '../../../public/img/category-tablets.png',
+    imgUrl: '../../../../img/category-tablets.png',
     count: productsCount(tablets),
   },
   {
     name: 'Accessories',
     categoryUrl: '/accessories',
-    imgUrl: '../../../public/img/category-accessories.png',
+    imgUrl: '../../../../img/category-accessories.png',
     count: productsCount(accessories),
   },
 ];
@@ -33,7 +33,7 @@ const categories = [
 export const Category: React.FC = () => {
   return (
     <div className="container container--with-paddings">
-      <h2 className="new-models__title">Shop by category</h2>
+      <h2 className="category__title">Shop by category</h2>
       <div className="category__items">
         {categories.map(category => {
           return (
@@ -46,7 +46,7 @@ export const Category: React.FC = () => {
                 />
               </a>
               <div className="category__description">
-                <a href={category.categoryUrl} className="category__title">
+                <a href={category.categoryUrl} className="category__name">
                   {category.name}
                 </a>
                 <p className="category__count">{`${category.count} models`}</p>

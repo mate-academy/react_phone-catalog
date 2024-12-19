@@ -14,9 +14,10 @@ type SwRef = SwiperRef & {
 
 type Props = {
   newModels: Product[];
+  fullPrice: boolean;
 };
 
-export const ProductsSlider: React.FC<Props> = ({ newModels }) => {
+export const ProductsSlider: React.FC<Props> = ({ newModels, fullPrice }) => {
   const swiperRef = useRef<SwRef>();
   const [activeIndex, setActiveIndex] = useState(0);
   const isDisabledPrev = activeIndex === 0;
@@ -90,7 +91,7 @@ export const ProductsSlider: React.FC<Props> = ({ newModels }) => {
       >
         {newModels.map((product, index) => (
           <SwiperSlide key={index}>
-            <ProductCard product={product} />
+            <ProductCard product={product} fullPrice={fullPrice} />
           </SwiperSlide>
         ))}
       </Swiper>
