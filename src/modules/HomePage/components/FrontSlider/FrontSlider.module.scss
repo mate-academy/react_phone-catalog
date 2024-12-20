@@ -45,6 +45,13 @@
       display: block;
     }
   }
+  
+  &__next{
+    span{
+      display: inline-block;
+      transform: rotate(-180deg);
+    }
+  }
 
   &__back,
   &__next{
@@ -65,16 +72,11 @@
     }
   }
 
-  &__next{
-    span{
-      display: inline-block;
-      transform: rotate(-180deg);
-    }
-  }
+
 
   &__pagination{
     grid-column: 1 / -1;
-    
+
     @include center;
 
     gap: 10px;
