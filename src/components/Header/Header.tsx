@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import classNames from 'classnames';
 import { BurgerMenu, HeartIcon, ShoppingBagIcon } from '..';
@@ -27,6 +27,20 @@ export const Header: React.FC = () => {
       setIsMenuOpen(false);
     }, 300);
   };
+
+  useEffect(() => {
+    const htmlElement = document.documentElement;
+
+    if (isMenuOpen) {
+      htmlElement.classList.add('overflow-hidden');
+    } else {
+      htmlElement.classList.remove('overflow-hidden');
+    }
+
+    return () => {
+      htmlElement.classList.remove('overflow-hidden');
+    };
+  }, [isMenuOpen]);
 
   return (
     <div className="header">
