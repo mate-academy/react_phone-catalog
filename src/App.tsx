@@ -1,16 +1,15 @@
 import { HashRouter as Router, Route, Routes } from 'react-router-dom';
 import {
   HomePage,
-  ProductsPage,
   ProductDetailsPage,
   FavouritesPage,
   CartPage,
   NotFoundPage,
+  ProductsPage,
 } from './pages';
 import { Layout } from './components';
-import { AppRoute } from './enums';
+import { AppRoute, Categories } from './enums';
 import './App.scss';
-import { Preview } from './_preview/Preview';
 
 export const App = () => (
   <Router>
@@ -18,15 +17,25 @@ export const App = () => (
     <Routes>
       <Route path={AppRoute.HOME} element={<Layout />}>
         <Route index element={<HomePage />} />
-        <Route path={AppRoute.CATEGORY} element={<ProductsPage />} />
         <Route
-          path={AppRoute.PRODUCT_DETAILS}
+          path={AppRoute.PHONES}
+          element={<ProductsPage category={Categories.PHONES} />}
+        />
+        <Route
+          path={AppRoute.TABLETS}
+          element={<ProductsPage category={Categories.TABLETS} />}
+        />
+        <Route
+          path={AppRoute.ACCESSORIES}
+          element={<ProductsPage category={Categories.ACCESSORIES} />}
+        />
+        <Route
+          path={AppRoute.PRODUCT_DETAILS(':category', ':productId')}
           element={<ProductDetailsPage />}
         />
-        <Route path={AppRoute.CART} element={<CartPage />} />
         <Route path={AppRoute.FAVOURITES} element={<FavouritesPage />} />
+        <Route path={AppRoute.CART} element={<CartPage />} />
         <Route path={AppRoute.NOT_FOUND} element={<NotFoundPage />} />
-        <Route path="/preview" element={<Preview />} />
       </Route>
     </Routes>
   </Router>
