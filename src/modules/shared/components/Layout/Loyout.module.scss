@@ -1,0 +1,21 @@
+@use 'src/modules/shared/styles/index.scss' as *;
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  position: relative;
+
+  &__main{
+    width: 100%;
+    max-width: 1200px;
+    min-height: 100%;
+    margin: 0 auto;
+    flex: 1 1 auto;
+  }
+
+  &__footer{
+    width:100%;
+    border-top: 1px solid $icons-color;
+  }
+}

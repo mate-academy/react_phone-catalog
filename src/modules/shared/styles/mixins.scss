@@ -1,0 +1,73 @@
+@use "variables" as *;
+
+@mixin on-tablet() {
+  @media (min-width: $tablet-width) {
+    @content;
+  }
+}
+
+@mixin on-desktop() {
+  @media (min-width: $desktop-width) {
+    @content;
+  }
+}
+
+@mixin inline-padding() {
+  padding-inline: 16px;
+
+  @include on-tablet {
+    padding-inline: 24px;
+  }
+
+  @include on-desktop {
+    padding-inline: 36px;
+  }
+}
+
+@mixin page-grid() {
+  --columns: 4;
+
+  display: grid;
+  grid-template-columns: repeat(var(--columns), 1fr);
+  column-gap: 16px;
+
+  @include on-tablet {
+    --columns: 12;
+  }
+
+  @include on-desktop {
+    --columns: 24;
+  }
+}
+
+@mixin center() {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin h2{
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 32px;
+
+  @include on-tablet{
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+  }
+}
+
+@mixin body-text{
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 21px;
+}
+
+@mixin small-text{
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 15px;
+}
+
+

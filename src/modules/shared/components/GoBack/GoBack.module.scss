@@ -1,0 +1,22 @@
+@use 'src/modules/shared/styles/index.scss' as *;
+
+.back{
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 16px;
+  color: $secondary-color;
+  margin-bottom: 16px;
+  cursor: pointer;
+
+  span:first-child{
+    width: 16px;
+    color: $primary-color;
+    display: inline-block;
+    text-align: center;
+    font-size: 9px;
+  }
+}

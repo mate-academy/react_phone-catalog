@@ -1,0 +1,35 @@
+/* stylelint-disable font-family-no-missing-generic-family-keyword */
+@use "variables" as *;
+
+body {
+  font-family: Mont;
+  font-weight: 400;
+  padding: 0;
+  margin: 0;
+  color: $primary-color;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+li {
+  list-style: none;
+}
+
+button{
+  color: inherit;
+  outline: none;
+  border: none;
+  background-color: transparent;
+}
+
+ul {
+  padding-left: 0;
+  margin-block: 0;
+}
+
+h1, h2, h3, h4, h5, p{
+  margin: 0;
+}
