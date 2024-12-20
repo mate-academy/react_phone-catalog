@@ -1,8 +1,6 @@
-import { useParams } from 'react-router-dom';
 import { useStateContext } from '../../../state/state';
 
-export const useProducts = (sort: string) => {
-  const { category } = useParams();
+export const useProducts = (sort: string, category: string) => {
   const { state } = useStateContext();
 
   const productsByCategory = state.products.filter(
