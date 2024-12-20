@@ -14,7 +14,11 @@ import './ProductsPage.scss';
 import { useStateContext } from '../../state/state';
 import { useLoadProducts } from '../../hooks/useLoadProducts';
 
-export const ProductsPage: React.FC = () => {
+type Props = {
+  category: string;
+};
+
+export const ProductsPage: React.FC<Props> = ({ category }) => {
   const [searchParams, setSearchParams] = useSearchParams();
   const { state } = useStateContext();
 
@@ -26,10 +30,10 @@ export const ProductsPage: React.FC = () => {
   const perPage = searchParams.get('perPage') || defaultPerPage;
   const sort = searchParams.get('sort') || defaultSort;
 
-  const products = useProducts(sort);
+  const products = useProducts(sort, category);
+
   const totalProducts = products.length;
 
-  const category = products[0]?.category || 'defaultCategory';
   const title = getTitle(category);
 
   useLoadProducts();
