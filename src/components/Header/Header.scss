@@ -25,6 +25,15 @@
 
   &__icons {
     height: 48px;
+    margin-right: -16px;
+
+    @include on-tablet {
+      margin-right: -24px;
+    }
+
+    @include on-desktop {
+      margin-right: -32px;
+    }
   }
 
   &__icons-action {
@@ -35,9 +44,9 @@
 
   &__icons-wrapper {
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
     align-items: center;
-    width: 32px;
+    width: 48px;
     height: 100%;
     border-left: 1px solid $color_elements;
 
@@ -140,7 +149,7 @@
     }
 
     &__icons-wrapper {
-      width: 42px;
+      width: 64px;
     }
 
     &__icons-wrapper:first-child {

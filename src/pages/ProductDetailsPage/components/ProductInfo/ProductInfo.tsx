@@ -18,21 +18,6 @@ export const ProductInfo: React.FC<Props> = ({
   onColorChange,
   onCapacityChange,
 }) => {
-  // const [selectedColor, setSelectedColor] = useState<string | null>(
-  //   productDetails.color,
-  // );
-  // const [selectedCapacity, setSelectedCapacity] = useState<string | null>(
-  //   productDetails.capacity.toLowerCase(),
-  // );
-
-  // const handleColorChange = (color: string) => {
-  //   setSelectedColor(color);
-  // };
-
-  // const handleCapacityChange = (capacity: string) => {
-  //   setSelectedCapacity(capacity.toLowerCase());
-  // };
-
   return (
     <div className="product-details__info">
       <div className="product-details__colors">
@@ -54,7 +39,6 @@ export const ProductInfo: React.FC<Props> = ({
               <button
                 className={`product-details__colors-button ${selectedColor === color ? 'selected' : ''}`}
                 onClick={() => onColorChange(color)}
-                // onClick={() => handleColorChange(color)}
               >
                 <div
                   className="product-details__colors-inner"
@@ -78,7 +62,6 @@ export const ProductInfo: React.FC<Props> = ({
                   { selected: capacity === productDetails.capacity },
                 )}
                 onClick={() => onCapacityChange(capacity)}
-                // onClick={() => handleCapacityChange(capacity)}
               >
                 {capacity}
               </button>
