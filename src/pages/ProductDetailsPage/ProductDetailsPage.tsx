@@ -17,6 +17,7 @@ import {
 } from './components';
 import './ProductDetailsPage.scss';
 import { useLoadProducts } from '../../hooks/useLoadProducts';
+import { AppRoute } from '../../enums';
 
 type Params = {
   productId: string;
@@ -62,9 +63,18 @@ export const ProductDetailsPage: React.FC = () => {
       return;
     }
 
-    const productCategory = state.products.find(item => {
+    const targetProduct = state.products.find(item => {
       return item.itemId === productId;
-    })?.category;
+    });
+
+    if (!targetProduct) {
+      setError('Product not found');
+      setLoading(false);
+
+      return;
+    }
+
+    const productCategory = targetProduct?.category;
 
     if (!productCategory) {
       setError('Category is missing');
@@ -119,11 +129,37 @@ export const ProductDetailsPage: React.FC = () => {
   }
 
   if (error) {
-    return <div>Error: {error}</div>;
+    if (error === 'Category is missing') {
+      navigate(AppRoute.NOT_FOUND);
+
+      return null;
+    } else if (error === 'Product not found') {
+      return (
+        <div className="product-not-found">
+          <h3 className="product-not-found__title typography__h3">
+            Product not found
+          </h3>
+          <div className="product-not-found__image-wrapper">
+            <img
+              className="product-not-found__image"
+              src="img/product-not-found.png"
+              alt="Product not found"
+            />
+          </div>
+        </div>
+      );
+    } else {
+      return <div>Error: {error}</div>;
+    }
   }
 
   if (!productDetails) {
-    return <div>Product not found</div>;
+    return (
+      <div className="product-not-found">
+        <p>Product not found</p>
+        <img src="img/product-not-found.png" alt="Product not found" />
+      </div>
+    );
   }
 
   return (
