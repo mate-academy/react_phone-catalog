@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useStateContext } from '../../state/state';
 import { ActionTypes } from '../../enums';
 import { CartList, CartTotal, CartEmpty } from './components';
@@ -12,6 +12,20 @@ export const CartPage: React.FC = () => {
   const handleModalClose = () => {
     setIsModalOpen(false);
   };
+
+  useEffect(() => {
+    const htmlElement = document.documentElement;
+
+    if (isModalOpen) {
+      htmlElement.classList.add('overflow-hidden');
+    } else {
+      htmlElement.classList.remove('overflow-hidden');
+    }
+
+    return () => {
+      htmlElement.classList.remove('overflow-hidden');
+    };
+  }, [isModalOpen]);
 
   return (
     <div className="cart">
