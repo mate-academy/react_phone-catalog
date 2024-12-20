@@ -46,7 +46,7 @@ export const BannerSlide: React.FC<Props> = ({ slide, isActive, isMobile }) => {
       style={{ background: `${slide.background}` }}
     >
       {isMobile ? (
-        <>
+        <Link to={slide.url}>
           <h2
             className="banner-slider__slide-heading"
             style={{
@@ -66,7 +66,7 @@ export const BannerSlide: React.FC<Props> = ({ slide, isActive, isMobile }) => {
           <div className="banner-slider__slide-image">
             <img src={slide.image} alt={slide.name} />
           </div>
-        </>
+        </Link>
       ) : (
         <>
           <div className="banner-slider__slide-content">
