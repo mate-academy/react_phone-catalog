@@ -45,7 +45,7 @@
 
     &.disabled {
       border-color: $color_elements;
-      cursor: default;
+      cursor: not-allowed;;
 
       @include hover('border-color', $color_elements);
     }

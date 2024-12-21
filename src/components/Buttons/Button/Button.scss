@@ -27,7 +27,7 @@
   &--round {
     border-radius: 50%;
 
-    &:hover:not(.button--disabled) {
+    &:hover:not(.disabled) {
       @include hover(border-color, $color_primary);
     }
   }
