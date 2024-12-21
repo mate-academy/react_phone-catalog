@@ -1,0 +1,36 @@
+@use '/src/styles/utils/vars' as vars;
+@use '/src/styles/utils/mixins' as mixins;
+
+.not-found {
+  margin-top: 1%;
+
+  @include mixins.on-tablet {
+    margin-top: 2%;
+  }
+
+  @include mixins.on-mobile {
+    margin-top: 3%;
+  }
+}
+
+.not-found__container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.not-found__image {
+  max-width: 400px;
+
+  @include mixins.on-tablet {
+    max-width: 300px;
+  }
+
+  @include mixins.on-mobile {
+    max-width: 150px;
+  }
+
+  & img {
+    max-width: 100%;
+  }
+}

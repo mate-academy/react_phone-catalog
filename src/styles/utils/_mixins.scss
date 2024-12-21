@@ -1,0 +1,40 @@
+@use '../../styles/utils/vars' as vars;
+
+@mixin on-mobile {
+  @media (max-width: vars.$modile) {
+    @content;
+  }
+}
+
+@mixin on-tablet {
+  @media (max-width: vars.$tablet) {
+    @content;
+  }
+}
+
+@mixin on-laptop {
+  @media (max-width: vars.$laptop) {
+    @content;
+  }
+}
+
+@mixin main-title {
+  font-size: 48px;
+  font-weight: 700;
+  line-height: calc(56 / 48 * 100%);
+
+  @include on-mobile {
+    line-height: calc(41 / 32 * 100%);
+    font-size: 32px;
+  }
+}
+
+@mixin title {
+  font-size: 32px;
+  font-weight: 700;
+  line-height: calc(41px / 32px * 100%);
+
+  @include on-mobile {
+    font-size: 20px;
+  }
+}

@@ -1,0 +1,34 @@
+@use '/src/styles/utils/mixins' as mixins;
+@use '/src/styles/utils/vars' as vars;
+
+.back-to-top {
+  color: vars.$minor-color;
+  font-weight: 700;
+  position: relative;
+  padding-right: 50px;
+  transition: color 0.3s ease;
+
+  @include mixins.on-mobile {
+    align-self: center;
+  }
+
+  &:hover {
+    color: rgb(177, 177, 177);
+
+    &::after {
+      border: 1px solid rgb(177, 177, 177);
+    }
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: -40%;
+    right: 0;
+    width: 32px;
+    height: 32px;
+    background: url('/img/icons/arrow-top.svg') center no-repeat;
+    border: 1px solid vars.$minor-color;
+    transition: border 0.3s ease;
+  }
+}
