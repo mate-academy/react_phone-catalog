@@ -3,7 +3,7 @@
     "id": 1,
     "name": "iPhone 14 Pro",
     "message": "Now available in our store!",
-    "image": "/img/now-available-iphone-01.png",
+    "image": "img/now-available-iphone-01.png",
     "background": "#000",
     "backgroundCTA": "#222",
     "colorHeading": "linear-gradient(49deg, #891ce8 0%, #7560fa 47.05%, #e963ff 100%)",
