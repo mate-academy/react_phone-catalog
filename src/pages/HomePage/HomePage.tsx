@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { getPhones } from '../../api/api';
+import { getProducts } from '../../api/api';
 import { ProductSlider } from '../../components/ProductSlider';
 import { ProductType } from '../../types/ProductType';
 import { SortType } from '../../types/SortType';
@@ -10,8 +10,11 @@ export const HomePage = () => {
   const [hotProducts, setHotProducts] = useState<ProductType[]>([]);
 
   const fetchProducts = async () => {
-    setNewestProducts(await getPhones());
-    setHotProducts(await getPhones({ sortBy: SortType.discount }));
+    const newestProducts = await getProducts();
+    const hotProducts = await getProducts({ sortBy: SortType.Discount });
+
+    setNewestProducts(newestProducts.products);
+    setHotProducts(hotProducts.products);
   };
 
   useEffect(() => {

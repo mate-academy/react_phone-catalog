@@ -4,10 +4,11 @@ import classNames from 'classnames';
 
 type Props = {
   options: string[];
+  value: any;
+  onChange: (value: string) => void;
 };
 
-export const Dropdown: React.FC<Props> = ({ options }) => {
-  const [selected, setSelected] = useState(options[0]);
+export const Dropdown: React.FC<Props> = ({ options, value, onChange }) => {
   const [opened, setOpened] = useState(false);
 
   const handleOpen = () => {
@@ -28,7 +29,7 @@ export const Dropdown: React.FC<Props> = ({ options }) => {
         })}
         onClick={handleOpen}
       >
-        {selected}
+        {value}
         <img
           className="dropdown__icon"
           src="/icons/arrow_down.svg"
@@ -42,7 +43,7 @@ export const Dropdown: React.FC<Props> = ({ options }) => {
             <div
               className="dropdown__item"
               onClick={() => {
-                setSelected(option);
+                onChange(option);
                 setOpened(false);
               }}
               key={index}
@@ -52,7 +53,8 @@ export const Dropdown: React.FC<Props> = ({ options }) => {
                 className={classNames(
                   'dropdown__item-text body-text slim-text',
                   {
-                    'dropdown__item-text--selected': option === selected,
+                    'dropdown__item-text--selected':
+                      option === value.toString(),
                   },
                 )}
               >

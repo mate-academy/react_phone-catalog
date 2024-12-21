@@ -54,4 +54,37 @@
 
     @include mixins.page-grid;
   }
+
+  &__pagination {
+    margin-top: 40px;
+
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+
+    &-pages {
+      display: flex;
+      gap: 8px;
+    }
+
+    &-page-button {
+      width: 32px;
+      height: 32px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      border-color: #e2e6e9;
+
+      &--selected {
+        border-color: #313237;
+        background-color: #313237;
+
+        & > p {
+          color: #fff;
+        }
+      }
+    }
+  }
 }

@@ -1,17 +1,13 @@
+import { Category } from '../types/CategoryType';
 import { ProductType } from '../types/ProductType';
 import { SortType } from '../types/SortType';
 
 const apiBase = `http://localhost:5173/api`;
 const productsJson = `${apiBase}/products.json`;
 
-enum Category {
-  'phones',
-  'accessories',
-  'tablets',
-}
-
 interface Options {
-  maxLength?: number;
+  perPage?: number;
+  page?: number;
   sortBy?: SortType;
   filter?: string;
 }
@@ -26,17 +22,17 @@ const sortProducts = (
   products: ProductType[],
   sortBy?: SortType,
 ): ProductType[] => {
-  if (!sortBy) {
-    return products.sort((a, b) => b.year - a.year);
-  }
-
-  if (sortBy === SortType.discount) {
+  if (sortBy === SortType.Discount) {
     return products.sort(
       (a, b) => b.fullPrice - b.price - (a.fullPrice - a.price),
     );
   }
 
-  return products;
+  if (sortBy === SortType.Oldest) {
+    return products.sort((a, b) => a.year - b.year);
+  }
+
+  return products.sort((a, b) => b.year - a.year);
 };
 
 const filterProductsByCategory = (
@@ -52,36 +48,32 @@ const filterProductsByCategory = (
 
 const limitProducts = (
   products: ProductType[],
-  maxLength?: number,
+  perPage: number = 16,
+  page: number = 1,
 ): ProductType[] => {
-  if (!maxLength) {
-    return products;
-  }
+  const startIndex = perPage * (page - 1);
+  const endIndex = startIndex + perPage;
 
-  return products.slice(0, maxLength);
+  console.log(startIndex, endIndex);
+
+  return products.slice(startIndex, endIndex);
+};
+
+const countPages = (productsCount: number, perPage: number = 16) => {
+  return Math.ceil(productsCount / perPage);
 };
 
 export const getProducts = async (
-  options: Options = { maxLength: 16 },
+  options: Options = { perPage: 16 },
   category?: Category,
-): Promise<ProductType[]> => {
+): Promise<{ products: ProductType[]; pages: number }> => {
   let products = await getData(productsJson);
 
   products = filterProductsByCategory(products, category);
   products = sortProducts(products, options.sortBy);
-  products = limitProducts(products, options.maxLength);
 
-  return products;
-};
+  const pages = countPages(products.length, options.perPage);
+  products = limitProducts(products, options.perPage, options.page);
 
-export const getPhones = (options?: Options) => {
-  return getProducts(options, Category.phones);
-};
-
-export const getAccessories = (options?: Options) => {
-  return getProducts(options, Category.accessories);
-};
-
-export const getTablets = (options?: Options) => {
-  return getProducts(options, Category.tablets);
+  return { products, pages };
 };

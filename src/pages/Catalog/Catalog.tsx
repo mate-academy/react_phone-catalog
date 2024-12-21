@@ -1,21 +1,56 @@
 import { useEffect, useState } from 'react';
-import { getPhones } from '../../api/api';
+import classNames from 'classnames';
+import { getProducts } from '../../api/api';
 import { Breadcrumbs } from '../../components/Breadcrumbs';
 import { Dropdown } from '../../components/Dropdown';
 import { ProductCard } from '../../components/ProductCard';
 import { ProductType } from '../../types/ProductType';
+import { SortType } from '../../types/SortType';
+import { Category } from '../../types/CategoryType';
 import './Catalog.scss';
 
-export const Catalog = () => {
+type Props = {
+  category: Category;
+};
+
+export const Catalog: React.FC<Props> = ({ category }) => {
   const [products, setProducts] = useState<ProductType[]>([]);
+  const [pageCount, setPageCount] = useState(1);
+  const [page, setPage] = useState(1);
+  const [sortBy, setSortBy] = useState<keyof typeof SortType>('Newest');
+  const [perPage, setPerPage] = useState(16);
+
+  const handleSortBy = (value: string) => {
+    setSortBy(value as keyof typeof SortType);
+  };
+
+  const handlePerPage = (value: string) => {
+    setPerPage(parseInt(value));
+  };
 
   const fetchProducts = async () => {
-    setProducts(await getPhones());
+    const response = await getProducts(
+      {
+        page,
+        sortBy: SortType[sortBy],
+        perPage,
+      },
+      category,
+    );
+
+    setPageCount(response.pages);
+    setProducts(response.products);
   };
 
   useEffect(() => {
     fetchProducts();
-  }, []);
+  }, [category, page, perPage, sortBy]);
+
+  useEffect(() => {
+    setPage(1);
+    setSortBy('Newest');
+    setPerPage(16);
+  }, [category]);
 
   return (
     <div className="catalog">
@@ -27,14 +62,22 @@ export const Catalog = () => {
       <div className="catalog__filters">
         <div className="catalog__filters-filter">
           <p className="catalog__filters-filter-text small-text">Sort by</p>
-          <Dropdown options={['Newest']} />
+          <Dropdown
+            options={Object.keys(SortType)}
+            value={sortBy}
+            onChange={handleSortBy}
+          />
         </div>
 
         <div className="catalog__filters-filter catalog__filters-filter--small">
           <p className="catalog__filters-filter-text small-text">
             Items on page
           </p>
-          <Dropdown options={['16', '32', '64']} />
+          <Dropdown
+            options={['16', '32', '64']}
+            value={perPage}
+            onChange={handlePerPage}
+          />
         </div>
       </div>
 
@@ -42,6 +85,42 @@ export const Catalog = () => {
         {products.map(product => (
           <ProductCard key={product.id} product={product} wideButton={true} />
         ))}
+      </div>
+
+      <div className="catalog__pagination">
+        <div className="button--arrow">
+          <img src="/icons/arrow_left.svg" alt="Arrow left" />
+        </div>
+
+        <div className="catalog__pagination-pages">
+          {Array.from(Array(pageCount)).map((_, index) => {
+            const pageIndex = index + 1;
+
+            const handlePage = () => {
+              setPage(pageIndex);
+            };
+
+            return (
+              <div
+                key={pageIndex}
+                className={classNames(
+                  'catalog__pagination-page-button  button--arrow',
+                  {
+                    'catalog__pagination-page-button--selected':
+                      page === pageIndex,
+                  },
+                )}
+                onClick={handlePage}
+              >
+                <p className="body-text">{pageIndex}</p>
+              </div>
+            );
+          })}
+        </div>
+
+        <div className="button--arrow">
+          <img src="/icons/arrow_right.svg" alt="Arrow right" />
+        </div>
       </div>
     </div>
   );

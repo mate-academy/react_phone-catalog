@@ -105,6 +105,8 @@ button,
 
     & img {
       height: 16px;
+
+      user-select: none;
     }
 
     &[aria-disabled='true'] {
