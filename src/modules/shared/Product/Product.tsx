@@ -35,7 +35,7 @@ export const Product: React.FC<Props> = ({ product, hasFullPrice }) => {
     >
       <Link
         className={styles['product-card__link']}
-        to={`../${product.category}/${product.itemId}`}
+        to={`../../${product.category}/${product.itemId}`}
       >
         <div className={styles['product-card__image']}>
           <img src={product.image} alt="Product" />
