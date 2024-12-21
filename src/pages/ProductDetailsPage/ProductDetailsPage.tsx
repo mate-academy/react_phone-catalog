@@ -32,6 +32,7 @@ export const ProductDetailsPage: React.FC = () => {
   );
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
+  const [initialLoad, setInitialLoad] = useState<boolean>(true);
 
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const [selectedColor, setSelectedColor] = useState<string | null>(null);
@@ -97,7 +98,10 @@ export const ProductDetailsPage: React.FC = () => {
           setError(err.message);
         }
       } finally {
-        setLoading(false);
+        setTimeout(() => {
+          setLoading(false);
+          setInitialLoad(false);
+        }, 500);
       }
     };
 
@@ -124,7 +128,7 @@ export const ProductDetailsPage: React.FC = () => {
     navigate(`/${productDetails.category}/${newProductId}`);
   };
 
-  if (loading) {
+  if (loading && initialLoad) {
     return <Loader />;
   }
 

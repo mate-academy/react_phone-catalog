@@ -86,7 +86,6 @@ export const BannerSlide: React.FC<Props> = ({ slide, isActive, isMobile }) => {
                 >
                   {slide.message}
                 </h2>
-                <img src="/img/okay-sign.png" alt="Okay sign" />
               </div>
               <Link
                 to={slide.url}

@@ -1,7 +1,9 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
+import { useStateContext } from '../../state/state';
 import { SortOptions } from '../../enums';
-import { useProducts } from './hooks/useProducts';
+import { useSortedProducts } from './hooks/useProducts';
+import { useLoadProducts } from '../../hooks/useLoadProducts';
 import {
   Pagination,
   PerPageSelect,
@@ -11,8 +13,6 @@ import {
 import { Breadcrumbs, Loader } from '../../components';
 import { getTitle } from './helpers/getTitle';
 import './ProductsPage.scss';
-import { useStateContext } from '../../state/state';
-import { useLoadProducts } from '../../hooks/useLoadProducts';
 
 type Props = {
   category: string;
@@ -20,6 +20,7 @@ type Props = {
 
 export const ProductsPage: React.FC<Props> = ({ category }) => {
   const [searchParams, setSearchParams] = useSearchParams();
+  const [loading, setLoading] = useState(true);
   const { state } = useStateContext();
 
   const defaultPage = 1;
@@ -30,7 +31,7 @@ export const ProductsPage: React.FC<Props> = ({ category }) => {
   const perPage = searchParams.get('perPage') || defaultPerPage;
   const sort = searchParams.get('sort') || defaultSort;
 
-  const products = useProducts(sort, category);
+  const products = useSortedProducts(sort, category);
 
   const totalProducts = products.length;
 
@@ -75,6 +76,15 @@ export const ProductsPage: React.FC<Props> = ({ category }) => {
     }
   }, [currentPage, perPage, sort, defaultPage, defaultSort, setSearchParams]);
 
+  useEffect(() => {
+    setLoading(true);
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 300);
+
+    return () => clearTimeout(timer);
+  }, [category, sort, perPage, currentPage]);
+
   const itemsPerPage = perPage === 'All' ? totalProducts : Number(perPage);
   const totalPages = Math.ceil(totalProducts / itemsPerPage);
 
@@ -86,7 +96,7 @@ export const ProductsPage: React.FC<Props> = ({ category }) => {
     updateParams({ page, perPage, sort });
   };
 
-  if (state.loading) {
+  if (loading) {
     return <Loader />;
   }
 

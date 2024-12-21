@@ -1,6 +1,6 @@
 import { useStateContext } from '../../../state/state';
 
-export const useProducts = (sort: string, category: string) => {
+export const useSortedProducts = (sort: string, category: string) => {
   const { state } = useStateContext();
 
   const productsByCategory = state.products.filter(
