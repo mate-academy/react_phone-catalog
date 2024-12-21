@@ -33,7 +33,7 @@ export const getProductById = async (
       throw new Error('Unknown category');
   }
 
-  const response = await fetch(url);
+  const response = await fetch(BASE_URL + url);
 
   if (!response.ok) {
     throw new Error('Fail to get product');
@@ -51,7 +51,7 @@ export const getProductById = async (
 };
 
 export const getSlidesData = async (): Promise<Slide[]> => {
-  const response = await fetch(ApiRoutes.SLIDES);
+  const response = await fetch(BASE_URL + ApiRoutes.SLIDES);
 
   if (!response.ok) {
     throw new Error('Failde to get slides');
