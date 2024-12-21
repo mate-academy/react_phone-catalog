@@ -64,7 +64,7 @@ export const Category: React.FC = () => {
                 className={`${styles.category__image} ${styles['category__image--3']}`}
               >
                 <img
-                  src="/img/category-accessories.png"
+                  src="./img/category-accessories.png"
                   alt="Category Accessories"
                 />
               </Link>

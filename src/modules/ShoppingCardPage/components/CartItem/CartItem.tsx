@@ -43,7 +43,7 @@ export const CartItem: React.FC<Props> = ({ product }) => {
             style={{ opacity: isDisabled ? '0.5' : '' }}
           >
             <img
-              src="/img/icons/dec.svg"
+              src="./img/icons/dec.svg"
               className={styles['shopping-cart__image']}
               alt="Decrease"
             ></img>
@@ -56,7 +56,7 @@ export const CartItem: React.FC<Props> = ({ product }) => {
             onClick={() => dispatch(cartActions.increase(product.itemId))}
           >
             <img
-              src="/img/icons/inc.svg"
+              src="./img/icons/inc.svg"
               className={styles['cart-item__image']}
               alt="Increase"
             ></img>

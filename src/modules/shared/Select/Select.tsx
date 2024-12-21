@@ -101,7 +101,7 @@ export const Select: React.FC<Props> = ({ selectType, options }) => {
           {currentOption || 'Please choose the option'}
         </p>
         <img
-          src="/img/icons/arrow-down.svg"
+          src="./img/icons/arrow-down.svg"
           alt="Arrow"
           style={{ transform: isOpen ? 'rotate(180deg)' : '' }}
         />
