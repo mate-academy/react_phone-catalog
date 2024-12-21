@@ -1,8 +1,10 @@
 import { ApiRoutes, Categories } from '../enums';
 import { Product, ProductDetails, Slide } from '../types';
 
+const BASE_URL = 'https://siefimov.github.io/react_phone-catalog';
+
 export const getProdutcs = async (): Promise<Product[]> => {
-  const response = await fetch(ApiRoutes.PRODUCTS);
+  const response = await fetch(BASE_URL + ApiRoutes.PRODUCTS);
 
   if (!response.ok) {
     throw new Error('Failed to get products');
