@@ -31,7 +31,7 @@ export const Header: React.FC = () => {
           className={styles.header__logo}
           onClick={() => setMenuIsOpen(false)}
         >
-          <img src="/img/icons/Logo.svg" alt="Logo" />
+          <img src="./img/icons/Logo.svg" alt="Logo" />
         </Link>
 
         <div className={`${styles.header__menu} ${styles.menu}`}>
@@ -88,7 +88,7 @@ export const Header: React.FC = () => {
                     </span>
                   )}
 
-                  <img src="/img/icons/like.svg" alt="like" />
+                  <img src="./img/icons/like.svg" alt="like" />
                 </NavLink>
               </div>
 
@@ -104,7 +104,7 @@ export const Header: React.FC = () => {
                     </span>
                   )}
 
-                  <img src="/img/icons/busket.svg" alt="busket" />
+                  <img src="./img/icons/busket.svg" alt="busket" />
                 </NavLink>
               </div>
             </div>

@@ -22,7 +22,7 @@ export const ShoppingCart: React.FC = () => {
 
         {!cart.length && (
           <div className={styles['shopping-cart__is-empty']}>
-            <img src="/img/cart-is-empty.png" alt="Empty" />
+            <img src="./img/cart-is-empty.png" alt="Empty" />
           </div>
         )}
 

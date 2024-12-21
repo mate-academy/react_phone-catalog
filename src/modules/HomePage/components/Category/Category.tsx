@@ -35,7 +35,7 @@ export const Category: React.FC = () => {
                 to="/phones"
                 className={`${styles.category__image} ${styles['category__image--1']}`}
               >
-                <img src="/img/category-phones.png" alt="Category Mobile" />
+                <img src="./img/category-phones.png" alt="Category Mobile" />
               </Link>
 
               <h4 className={styles.category__subtitle}>Mobile phones</h4>
@@ -49,7 +49,7 @@ export const Category: React.FC = () => {
                 to="./tablets"
                 className={`${styles.category__image} ${styles['category__image--2']}`}
               >
-                <img src="/img/category-tablets.png" alt="Category Tablet" />
+                <img src="./img/category-tablets.png" alt="Category Tablet" />
               </Link>
 
               <h4 className={styles.category__subtitle}>Tablets</h4>

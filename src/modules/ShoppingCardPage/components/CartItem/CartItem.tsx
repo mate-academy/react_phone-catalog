@@ -20,7 +20,7 @@ export const CartItem: React.FC<Props> = ({ product }) => {
           className={styles['cart-item__delete']}
           onClick={() => dispatch(cartActions.removeFromCart(product.itemId))}
         >
-          <img src="/img/icons/delete.svg" alt="X"></img>
+          <img src="./img/icons/delete.svg" alt="X"></img>
         </button>
 
         <Link to={`../${product.category}/${product.itemId}`}>

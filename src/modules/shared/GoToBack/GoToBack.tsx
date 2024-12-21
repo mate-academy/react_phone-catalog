@@ -14,7 +14,7 @@ export const GoToBack: React.FC = () => {
     <div className={`page__go-to-back ${styles['go-to-back']}`}>
       <div className={styles['go-to-back__container']}>
         <button className={styles['go-to-back__button']} onClick={goToBack}>
-          <img src="/img/icons/arrow-left.svg" alt="<"></img> <span>Back</span>
+          <img src="./img/icons/arrow-left.svg" alt="<"></img> <span>Back</span>
         </button>
       </div>
     </div>

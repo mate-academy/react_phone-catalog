@@ -24,7 +24,7 @@ export const Breadcrumbs: React.FC = () => {
       <div className={styles.breadcrumbs__container}>
         <div className={styles.breadcrumbs__crumb}>
           <Link to={'/'}>
-            <img src="/img/icons/home.svg" alt="Home"></img>
+            <img src="./img/icons/home.svg" alt="Home"></img>
           </Link>
         </div>
 

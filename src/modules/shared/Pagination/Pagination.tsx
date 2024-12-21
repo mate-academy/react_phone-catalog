@@ -64,7 +64,7 @@ export const Pagination: React.FC<Props> = ({ currentPage, split, total }) => {
             }}
             disabled={isPrevDisabled}
           >
-            <img src="/img/icons/arrow-left.svg" alt="<" />
+            <img src="./img/icons/arrow-left.svg" alt="<" />
           </button>
 
           <div className={styles.pagination__pages}>
@@ -101,7 +101,7 @@ export const Pagination: React.FC<Props> = ({ currentPage, split, total }) => {
             }}
             disabled={isNextDisabled}
           >
-            <img src="/img/icons/arrow-right.svg" alt=">" />
+            <img src="./img/icons/arrow-right.svg" alt=">" />
           </button>
         </div>
       </div>

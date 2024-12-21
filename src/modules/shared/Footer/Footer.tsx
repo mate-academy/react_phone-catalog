@@ -9,7 +9,7 @@ export const Footer: React.FC = () => {
       <div className={styles.footer__container}>
         <div className={styles.footer__wrapper}>
           <Link to="/" className={styles.footer__logo}>
-            <img src="/img/icons/Logo.svg" alt="Nice Gadgets" />
+            <img src="./img/icons/Logo.svg" alt="Nice Gadgets" />
           </Link>
         </div>
 

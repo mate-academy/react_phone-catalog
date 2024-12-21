@@ -48,7 +48,7 @@ export const Slider: React.FC = () => {
           className="Slider__navigation Slider__navigation--prev"
           onClick={handlePrevClick}
         >
-          <img src="/img/icons/arrow-left.svg" alt="Left" />
+          <img src="./img/icons/arrow-left.svg" alt="Left" />
         </button>
 
         <div className="Slider__slider">
@@ -91,7 +91,7 @@ export const Slider: React.FC = () => {
           className="Slider__navigation Slider__navigation--next"
           onClick={handleNextClick}
         >
-          <img src="/img/icons/arrow-right.svg" alt="Right" />
+          <img src="./img/icons/arrow-right.svg" alt="Right" />
         </button>
       </div>
 

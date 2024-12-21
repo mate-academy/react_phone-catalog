@@ -54,7 +54,7 @@ export const ProductsSlider: React.FC<Props> = ({
               )}
               onClick={() => swiperRef.current.slidePrev()}
             >
-              <img src="/img/icons/arrow-left.svg" alt="Arrow Left" />
+              <img src="./img/icons/arrow-left.svg" alt="Arrow Left" />
             </button>
             <button
               className={cn(
@@ -66,7 +66,7 @@ export const ProductsSlider: React.FC<Props> = ({
               )}
               onClick={() => swiperRef.current.slideNext()}
             >
-              <img src="/img/icons/arrow-right.svg" alt="Arrow Right" />
+              <img src="./img/icons/arrow-right.svg" alt="Arrow Right" />
             </button>
           </div>
         </div>

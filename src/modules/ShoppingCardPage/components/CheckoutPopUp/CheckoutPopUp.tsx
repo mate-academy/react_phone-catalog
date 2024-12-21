@@ -48,7 +48,7 @@ export const CheckoutPopUp: React.FC<Props> = ({ onToggle, isOpen }) => {
           className={styles['checkout-popup__close']}
           onClick={() => onToggle(false)}
         >
-          <img src="/img/icons/delete.svg" alt="X" />
+          <img src="./img/icons/delete.svg" alt="X" />
         </button>
       </div>
     </div>
