@@ -2,11 +2,13 @@ import { ProductType } from '../types/ProductType';
 import { SortType } from '../types/SortType';
 
 const apiBase = `http://localhost:5173/api`;
-
 const productsJson = `${apiBase}/products.json`;
-const accessoriesJson = `${apiBase}/accessories.json`;
-const phonesJson = `${apiBase}/phones.json`;
-const tabletsJson = `${apiBase}/tablets.json`;
+
+enum Category {
+  'phones',
+  'accessories',
+  'tablets',
+}
 
 interface Options {
   maxLength?: number;
@@ -14,52 +16,72 @@ interface Options {
   filter?: string;
 }
 
-const getData = async (jsonPath: string) => {
-  const content = await fetch(jsonPath);
+const getData = async (jsonPath: string): Promise<ProductType[]> => {
+  const response = await fetch(jsonPath);
 
-  return content.json();
+  return response.json();
 };
 
-export const getProducts = async (
-  options: Options = { maxLength: 16 },
-  category?: string,
-) => {
-  let products: ProductType[] = await getData(productsJson);
-
-  if (category) {
-    products = products.filter(product => product.category === category);
+const sortProducts = (
+  products: ProductType[],
+  sortBy?: SortType,
+): ProductType[] => {
+  if (!sortBy) {
+    return products.sort((a, b) => b.year - a.year);
   }
 
-  if (!options.sortBy) {
-    products = products.sort(
-      (product1, product2) => product2.year - product1.year,
+  if (sortBy === SortType.discount) {
+    return products.sort(
+      (a, b) => b.fullPrice - b.price - (a.fullPrice - a.price),
     );
-  }
-
-  if (options.sortBy === SortType.discount) {
-    products = products.sort(
-      (product1, product2) =>
-        product2.fullPrice -
-        product2.price -
-        (product1.fullPrice - product1.price),
-    );
-  }
-
-  if (options.maxLength) {
-    products = products.slice(0, options.maxLength);
   }
 
   return products;
 };
 
-export const getAccessories = (options?: Options) => {
-  return getProducts(options, accessoriesJson);
+const filterProductsByCategory = (
+  products: ProductType[],
+  category?: Category,
+): ProductType[] => {
+  if (!category) {
+    return products;
+  }
+
+  return products.filter(product => product.category === category.toString());
+};
+
+const limitProducts = (
+  products: ProductType[],
+  maxLength?: number,
+): ProductType[] => {
+  if (!maxLength) {
+    return products;
+  }
+
+  return products.slice(0, maxLength);
+};
+
+export const getProducts = async (
+  options: Options = { maxLength: 16 },
+  category?: Category,
+): Promise<ProductType[]> => {
+  let products = await getData(productsJson);
+
+  products = filterProductsByCategory(products, category);
+  products = sortProducts(products, options.sortBy);
+  products = limitProducts(products, options.maxLength);
+
+  return products;
 };
 
 export const getPhones = (options?: Options) => {
-  return getProducts(options, 'phones');
+  return getProducts(options, Category.phones);
+};
+
+export const getAccessories = (options?: Options) => {
+  return getProducts(options, Category.accessories);
 };
 
 export const getTablets = (options?: Options) => {
-  return getProducts(options, tabletsJson);
+  return getProducts(options, Category.tablets);
 };
