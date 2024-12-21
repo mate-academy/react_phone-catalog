@@ -1,4 +1,3 @@
-import { useId } from 'react';
 import { useLanguage } from '../Contexts/LanguageContext';
 import { BurgerSVG } from '../SVGs/BurgerSVG';
 import { CrossSVG } from '../SVGs/CrossSVG';
@@ -15,22 +14,23 @@ export const ToggleBurgerMenuButton: React.FC<Props> = ({
   burgerMenuOpened,
   onClick,
 }) => {
-  const id = useId();
   const { accessOpenMenu, accessCloseMenu } = useLanguage().localeTexts;
 
   return (
-    <div className={styles.ToggleBurgerMenuButton}>
-      <label htmlFor={id} className={styles.Label}>
-        {burgerMenuOpened ? accessCloseMenu : accessOpenMenu}
-      </label>
+    <button
+      type="button"
+      className={styles.ToggleBurgerMenuButton}
+      onClick={onClick}
+    >
+      {burgerMenuOpened ? (
+        <CrossSVG className={styles.Icon} />
+      ) : (
+        <BurgerSVG className={styles.Icon} />
+      )}
 
-      <button type="button" id={id} className={styles.Button} onClick={onClick}>
-        {burgerMenuOpened ? (
-          <CrossSVG className={styles.Icon} />
-        ) : (
-          <BurgerSVG className={styles.Icon} />
-        )}
-      </button>
-    </div>
+      <span className={styles.Label}>
+        {burgerMenuOpened ? accessCloseMenu : accessOpenMenu}
+      </span>
+    </button>
   );
 };

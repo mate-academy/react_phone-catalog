@@ -1,6 +1,5 @@
 import classNames from 'classnames';
 import styles from './ProductCardSkeleton.module.scss';
-import { useId } from 'react';
 import { useLanguage } from '../Contexts/LanguageContext';
 import { LoadingStatus } from '../../types/enums';
 
@@ -13,7 +12,6 @@ export const ProductCardSkeleton: React.FC<Props> = ({
   loadingStatus,
   className,
 }) => {
-  const id = useId();
   const { accessLoadingProducts, accessLoadingProductsFailed } =
     useLanguage().localeTexts;
 
@@ -55,34 +53,13 @@ export const ProductCardSkeleton: React.FC<Props> = ({
       </div>
 
       <div className={styles.Buttons}>
-        <div className={styles.AddToCart}>
-          <label htmlFor={`cartButton${id}`} className={styles.ButtonLabel}>
-            {buttonInfo}
-          </label>
+        <button type="button" disabled className={styles.AddToCartButton}>
+          <span className={styles.ButtonLabel}>{buttonInfo}</span>
+        </button>
 
-          <button
-            id={`cartButton${id}`}
-            type="button"
-            disabled
-            className={styles.Button}
-          />
-        </div>
-
-        <div className={styles.AddToFavourite}>
-          <label
-            htmlFor={`favouriteButton${id}`}
-            className={styles.ButtonLabel}
-          >
-            {buttonInfo}
-          </label>
-
-          <button
-            id={`favouriteButton${id}`}
-            type="button"
-            disabled
-            className={styles.Button}
-          />
-        </div>
+        <button type="button" disabled className={styles.FavouriteButton}>
+          <span className={styles.ButtonLabel}>{buttonInfo}</span>
+        </button>
       </div>
     </article>
   );

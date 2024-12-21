@@ -2,7 +2,7 @@
 @use "../../../shared/styles/extends";
 
 $button-height: 40px;
-$card-padding: 32px;
+$card-padding: 31px;
 $card-border-width: 1px;
 $card-gap: 8px;
 
@@ -104,27 +104,26 @@ $card-gap: 8px;
   @include visually-hidden-focusable;
 }
 
-.Button {
+.AddToCartButton {
+  flex-grow: 1;
   border: none;
   padding: 0;
-  width: 100%;
-  height: 100%;
 
   @include color-transition((background-color: var(--loading-color)));
 }
 
-.AddToCart {
-  flex-grow: 1;
-}
-
-.AddToFavourite {
+.FavouriteButton {
   height: $button-height;
   aspect-ratio: 1;
+  border: none;
+  padding: 0;
+
+  @include color-transition((background-color: var(--loading-color)));
 }
 
 .ProductCardSkeleton {
   &_loading {
-    .Image, .Title, .Prices, .ParameterName, .ParameterValue, .Button {
+    .Image, .Title, .Prices, .ParameterName, .ParameterValue, .AddToCartButton, .FavouriteButton {
       @include loading;
     }
   }

@@ -1,4 +1,3 @@
-import { useId } from 'react';
 import { ReloadSVG } from '../SVGs/ReloadSVG';
 import styles from './ReloadButton.module.scss';
 import { useLanguage } from '../Contexts/LanguageContext';
@@ -9,23 +8,16 @@ type Props = {
 };
 
 export const ReloadButton: React.FC<Props> = ({ onReloadClick }) => {
-  const id = useId();
   const { accessReload } = useLanguage().localeTexts;
 
   return (
-    <div className={styles.ReloadButton}>
-      <label htmlFor={id} className={styles.Label}>
-        {accessReload}
-      </label>
-
-      <button
-        id={id}
-        type="button"
-        className={styles.Button}
-        onClick={onReloadClick}
-      >
-        <ReloadSVG className={styles.Icon} />
-      </button>
-    </div>
+    <button
+      type="button"
+      className={styles.ReloadButton}
+      onClick={onReloadClick}
+    >
+      <ReloadSVG className={styles.Icon} />
+      <span className={styles.Label}>{accessReload}</span>
+    </button>
   );
 };

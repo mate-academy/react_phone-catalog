@@ -9,28 +9,25 @@
   transition: transform $transition-duration, color $transition-duration;
 }
 
-.Button {
-  display: block;
-  background-color: transparent;
-  padding: 0;
-  border: none;
-  cursor: pointer;
-
-  @include square($small-navigation-height);
-}
-
 .Label {
   @include visually-hidden-focusable;
 }
 
 .ToggleBurgerMenuButton {
   display: none;
+  padding: 0;
+  border: none;
+
+  @include square($small-navigation-height);
+
+  cursor: pointer;
+  background-color: transparent;
 
   @include for-mobile {
     display: block;
   }
 
-  &:hover .Icon {
+  &:hover > .Icon {
     transform: $hover-scale;
   }
 }

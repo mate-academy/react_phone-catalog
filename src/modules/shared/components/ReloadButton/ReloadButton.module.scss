@@ -1,10 +1,6 @@
 @use "../../../shared/styles/vars" as *;
 @use "../../../shared/styles/mixins" as *;
 
-.Label {
-  @include visually-hidden-focusable;
-}
-
 .Icon {
   display: block;
   margin: auto;
@@ -14,23 +10,23 @@
   transition: color $transition-duration, transform $transition-duration;
 }
 
-.Button {
+.Label {
+  @include visually-hidden-focusable;
+}
+
+.ReloadButton {
+  @include square(32px);
+
   border: 1px solid;
   padding: 0;
-  width: 100%;
-  height: 100%;
   cursor: pointer;
 
   @include color-transition((
     background-color: var(--error-color),
     border-color: var(--error-reload-color)
   ));
-}
 
-.ReloadButton {
-  @include square(32px);
-
-  &:hover .Icon{
+  &:hover > .Icon{
     transform: rotate(180deg) $hover-scale;
   }
 }

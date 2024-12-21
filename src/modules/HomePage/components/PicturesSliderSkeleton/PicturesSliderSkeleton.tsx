@@ -5,7 +5,6 @@ import {
   LoadingStatus,
 } from '../../../shared/types/enums';
 import styles from './PicturesSliderSkeleton.module.scss';
-import { useId } from 'react';
 // eslint-disable-next-line max-len
 import { ErrorNotification } from '../../../shared/components/ErrorNotification';
 import { HandleReloadClick } from '../../../shared/types/handlers';
@@ -25,7 +24,6 @@ export const PicturesSliderSkeleton: React.FC<Props> = ({
   responseStatus,
   className,
 }) => {
-  const id = useId();
   const { accessLoadingPictures, accessLoadingPicturesFailed } =
     useLanguage().localeTexts;
 
@@ -65,19 +63,15 @@ export const PicturesSliderSkeleton: React.FC<Props> = ({
 
       <ul className={styles.Dashes}>
         <li>
-          <label htmlFor={`loadingDash1-${id}`} className={styles.DashLabel}>
-            {buttonInfo}
-          </label>
-
-          <button id={`loadingDash1-${id}`} disabled className={styles.Dash} />
+          <button disabled className={styles.Dash}>
+            <span className={styles.DashLabel}>{buttonInfo}</span>
+          </button>
         </li>
 
         <li>
-          <label htmlFor={`loadingDash2-${id}`} className={styles.DashLabel}>
-            {buttonInfo}
-          </label>
-
-          <button id={`loadingDash2-${id}`} disabled className={styles.Dash} />
+          <button disabled className={styles.Dash}>
+            <span className={styles.DashLabel}>{buttonInfo}</span>
+          </button>
         </li>
       </ul>
 

@@ -4,7 +4,6 @@ import { LeftArrowSVG } from '../SVGs/LeftArrowSVG';
 import { RightArrowSVG } from '../SVGs/RightArrowSVG';
 import { UpArrowSVG } from '../SVGs/UpArrowSVG';
 import styles from './IconButton.module.scss';
-import { useId } from 'react';
 
 type HandleClick = () => void;
 
@@ -25,8 +24,6 @@ export const IconButton: React.FC<Props> = ({
   labelClassName,
   onClick,
 }) => {
-  const id = useId();
-
   let icon: React.JSX.Element;
 
   switch (svgOption) {
@@ -44,27 +41,14 @@ export const IconButton: React.FC<Props> = ({
   }
 
   return (
-    <div
-      className={classNames(
-        styles.IconButton,
-        disabled && styles.IconButton_disabled,
-        className,
-      )}
+    <button
+      type="button"
+      disabled={disabled}
+      className={classNames(styles.IconButton, className)}
+      onClick={onClick}
     >
-      {label && (
-        <label htmlFor={id} className={labelClassName || styles.Label}>
-          {label}
-        </label>
-      )}
-      <button
-        id={id}
-        type="button"
-        disabled={disabled}
-        className={styles.Button}
-        onClick={onClick}
-      >
-        {icon}
-      </button>
-    </div>
+      {icon}
+      {label && <span className={labelClassName || styles.Label}>{label}</span>}
+    </button>
   );
 };

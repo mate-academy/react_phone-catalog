@@ -30,22 +30,23 @@ export const Dropdown: React.FC<Props> = ({
 
   const changeValue = (option: string) => {
     onChange(option);
-    setIsOpened(false);
+    selectRef.current?.blur();
   };
 
   const handleMouseDown = (event: React.MouseEvent<HTMLElement>) => {
     event.preventDefault();
   };
 
-  const handleLabelClick = (event: React.MouseEvent<HTMLLabelElement>) => {
-    event.preventDefault();
-    selectRef.current?.focus();
-    selectRef.current?.click();
+  const handleClick = (event: React.MouseEvent<HTMLElement>) => {
+    if (isOpened && event.detail > 0) {
+      selectRef.current?.blur();
+    } else {
+      selectRef.current?.focus();
+    }
   };
 
-  const handleSelectClick = () => {
-    setIsOpened(prevIsOpened => !prevIsOpened);
-    selectRef.current?.focus();
+  const handleFocus = () => {
+    setIsOpened(true);
   };
 
   const handleBlur = (event: React.FocusEvent<HTMLElement>) => {
@@ -65,16 +66,19 @@ export const Dropdown: React.FC<Props> = ({
       onMouseDown={handleMouseDown}
       onBlur={handleBlur}
     >
-      <label htmlFor={id} className={styles.Label} onClick={handleLabelClick}>
+      <span id={id} className={styles.Label} onClick={handleClick}>
         {title}
-      </label>
+      </span>
 
       <button
-        id={id}
         type="button"
         className={styles.Select}
         ref={selectRef}
-        onClick={handleSelectClick}
+        onClick={handleClick}
+        onFocus={handleFocus}
+        aria-labelledby={id}
+        aria-haspopup="listbox"
+        aria-expanded={isOpened}
       >
         {chosenOption}
         {isOpened ? (
@@ -84,9 +88,9 @@ export const Dropdown: React.FC<Props> = ({
         )}
       </button>
 
-      <menu className={styles.Options}>
+      <menu role="listbox" className={styles.Options}>
         {options.map(option => (
-          <li key={option}>
+          <li key={option} role="option">
             <button
               type="button"
               className={styles.Option}
