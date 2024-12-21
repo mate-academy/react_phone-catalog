@@ -35,6 +35,8 @@ export const useLoadProducts = () => {
       }
     };
 
-    loadProducts();
+    if (state.products.length === 0) {
+      loadProducts();
+    }
   }, [dispatch, state, category]);
 };
