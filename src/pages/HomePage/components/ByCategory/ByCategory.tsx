@@ -24,7 +24,7 @@ export const ByCategory: React.FC<Props> = () => {
 
   const categories = Object.values(Categories).map(category => ({
     category,
-    imageSrc: `/img/${category.toLowerCase()}-category.png`,
+    imageSrc: `img/${category.toLowerCase()}-category.png`,
   }));
 
   return (
