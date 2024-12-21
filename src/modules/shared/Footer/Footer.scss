@@ -6,30 +6,73 @@
 
 .footer__container {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  flex-direction: column;
+  gap: 32px;
   padding-block: 32px;
-  margin-top: 80px;
 
   @include content-padding-inline();
+
+  @include on-tablet {
+    flex-direction: row;
+    justify-content: space-between;
+    height: 96px;
+    align-items: center;
+    margin-top: 64px;
+    padding-block: 0px;
+    gap: 0;
+  }
+
+  @include on-desktop {
+    justify-content: space-between;
+    margin-top: 80px;
+  }
 }
 
-.footer__logo,
-.footer__items,
-.footer__block {
-  flex: 1;
+.footer__logo-container {
+  height: 32px;
+
+  @include on-tablet {
+    flex-grow: 1;
+  }
+}
+
+.footer__logo {
+  width: 89px;
+  height: 32px;
 }
 
 .footer__items {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  flex-direction: column;
+  gap: 16px;
+  flex-shrink: 0;
+
+  @include on-tablet {
+    flex-direction: row;
+    gap: 0;
+    flex-grow: 1;
+    justify-content: space-between;
+  }
+
+  @include on-desktop {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
 }
 
 .footer__block {
   display: flex;
   align-items: center;
-  justify-content:end;
+  justify-content: center;
+
+
+  @include on-tablet {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    flex-grow: 1;
+  }
 }
 
 .footer__link {
@@ -43,6 +86,10 @@
   color: $color-gray-secondary;
 }
 
+.footer__link:hover {
+  color: $color-gray-primary;
+}
+
 .footer__button {
   position: relative;
   width: 32px;
@@ -52,6 +99,10 @@
   box-sizing: border-box;
   cursor: pointer;
   margin-left: 16px;
+}
+
+.footer__button:hover {
+  border: 1px solid $color-gray-primary;
 }
 
 .footer__button::after {

@@ -33,7 +33,7 @@ export const ShoppingCartPage: React.FC = () => {
     );
 
     if (confirmed) {
-      clearShoppingCart(); // Очистка корзины через функцию контекста
+      clearShoppingCart();
     }
   };
 

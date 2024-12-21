@@ -6,7 +6,7 @@ async function fetchProducts<T>(url: string): Promise<T> {
   const response = await fetch(url);
 
   if (!response.ok) {
-    const errorData = await response.json();  // Возможная ошибка от сервера
+    const errorData = await response.json(); // Возможная ошибка от сервера
 
     throw new Error(
       `Error: ${response.statusText} - ${errorData.message || 'Unknown error'}`,
@@ -22,15 +22,9 @@ function getAllProducts(): Promise<Product[]> {
 }
 
 // Функция для получения продуктов по типу
-function getSpecificProducts(
-  productsType: string,
-): Promise<SpecificProduct[]> {
+function getSpecificProducts(productsType: string): Promise<SpecificProduct[]> {
   return fetchProducts<SpecificProduct[]>(`./api/${productsType}.json`);
 }
-
-
-
-
 
 useEffect(() => {
   getProductsSummary().then(prods => {

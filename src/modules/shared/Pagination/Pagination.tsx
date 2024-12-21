@@ -39,7 +39,6 @@
 //   );
 // };
 
-
 import React from 'react';
 import './Pagination.scss';
 
@@ -97,5 +96,3 @@ export const Pagination: React.FC<Props> = ({
     </div>
   );
 };
-
-

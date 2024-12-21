@@ -1,24 +1,36 @@
 @import '../../styles/main.scss';
 
-.productDetailsPage {
+.detailsPage {
   @include content-padding-inline();
+
+  &__button-back {
+    width: 66px;
+    height: 16px;
+    border: none;
+    background-color: $color-white;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    font-family: 'Mont-SemiBold', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    color: $color-gray-secondary;
+  }
+
+  &__title {
+    margin-top: 16px;
+    margin-bottom: 40px;
+
+    font-family: 'Mont-Bold', sans-serif;
+    font-size: 32px;
+    font-weight: 800;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+    color: $color-gray-primary;
+  }
 }
 
-.productDetailsPage__button-back {
-  width: 66px;
-  height: 16px;
-  border: none;
-  background-color: $color-white;
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-  font-family: 'Mont-SemiBold', sans-serif;
-  font-size: 12px;
-  font-weight: 700;
-  color: $color-gray-secondary;
-}
-
-.productDetailsPage__button-back::before {
+.detailsPage__button-back::before {
   content: url('/icons/Chevron\ \(Arrow\ Left\).svg');
   display: inline-block;
   width: 16px;
@@ -26,134 +38,6 @@
   vertical-align: middle;
   margin-right: 4px;
 }
-
-.productDetailsPage__title {
-  margin-top: 16px;
-  margin-bottom: 40px;
-
-  font-family: 'Mont-Bold', sans-serif;
-  font-size: 32px;
-  font-weight: 800;
-  line-height: 41px;
-  letter-spacing: -0.01em;
-  color: $color-gray-primary;
-}
-
-
-
-.productDetailsPage {
-  &__container {
-    &-price {
-      height: 41px;
-      display: flex;
-      gap: 8px;
-      margin-top: 32px;
-      align-items: center;
-    }
-
-    &-specifications {
-      display: flex;
-      flex-direction: column;
-      height: 77px;
-      padding-block: 8px;
-      gap: 8px;
-      margin-top: 32px;
-    }
-
-    &-buttons {
-      width: 100%;
-      height: 40px;
-      display: flex;
-      gap: 8px;
-      margin-top: 16px;
-    }
-  }
-
-
-  &__price {
-    &-regular {
-      font-family: 'Mont-Regular', sans-serif;
-      color: $color-gray-secondary;
-      font-size: 22px;
-      font-weight: 500;
-      // line-height: 28.12px;
-      text-decoration-line: line-through;
-    }
-
-    &-discount {
-      font-family: 'Mont-Bold', sans-serif;
-      color: $color-gray-primary;
-      font-size: 32px;
-      font-weight: 800;
-      line-height: 41px;
-      letter-spacing: -0.01em;
-    }
-  }
-
-  &__block {
-    width: 100%;
-    height: 15px;
-    display: flex;
-    justify-content: space-between;
-
-    font-family: 'Mont-SemiBold', sans-serif;
-    font-size: 12px;
-    font-weight: 600;
-  }
-
-  &__info {
-    color: $color-gray-secondary;
-    font-family: 'Mont-SemiBold', sans-serif;
-    font-size: 12px;
-    font-weight: 600;
-  }
-
-  &__value {
-    color: $color-gray-primary;
-  }
-
-  &__button {
-    &-addToCard {
-      border: none; /* Убираем рамку */
-      cursor: pointer; /* Указываем, что это кнопка */
-
-      flex: 1;
-      height: 100%;
-      background-color: $color-gray-primary;
-
-      font-family: 'Mont-SemiBold', sans-serif;
-      color: $color-white;
-      font-size: 14px;
-      font-weight: 700;
-      line-height: 21px;
-    }
-
-    &-addToFavourite {
-      position: relative;
-      box-sizing: border-box;
-      border: 1px solid $color-gray-icons-placeholders;
-      background-color: #fff;
-      width: 40px;
-      height: 40px;
-      cursor: pointer;
-    }
-
-    &-addToFavourite:after {
-      content: '';
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 16px;
-      height: 16px;
-      background-image: url('/icons/Favourites\ \(Heart\ Like\).svg'); /* Убедитесь, что путь верный */
-      background-size: contain;
-      background-repeat: no-repeat;
-    }
-  }
-}
-
-
 
 
 

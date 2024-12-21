@@ -1,106 +1,107 @@
 import { Breadcrumbs } from '../shared/Breadcrumbs';
 import './ProductDetailsPage.scss';
-import phones from '../../../public/api/phones.json';
-// import products from '../../../public/api/products.json';
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect, useState, useCallback, useMemo } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { SpecificProduct } from '../../types/SpecificProduct';
-import { ProductsSlider } from '../shared/ProductsSlider';
-import { Product } from '../../types/Product';
+
 import { ProductContentTop } from './components/ProductContentTop';
 import { ProductContentBottom } from './components/ProductContentBottom';
 import { getSpecificProducts, GlobalContext } from '../../store/GlobalContext';
-
-const getSuggestedProducts = (allProducts: Product[]) => {
-  // Фильтруем продукты по категории 'phone'
-  const filtered = [...allProducts].filter(
-    product => product.category === 'phones',
-  );
-
-  // Перемешиваем массив
-  const shuffled = filtered.sort(() => Math.random() - 0.5);
-
-  // Возвращаем первые `count` элементов
-  return shuffled;
-};
+import { ProductsSlider } from '../shared/ProductsSlider';
+import { Loader } from '../shared/Loader';
 
 export const ProductDetailsPage: React.FC = () => {
   const { products } = useContext(GlobalContext);
 
-  const [selectedPhone, setSelectedPhone] = useState<SpecificProduct | null>(
-    null,
-  );
+  const [selectedProduct, setSelectedProduct] =
+    useState<SpecificProduct | null>(null);
 
-  const suggestedProducts = getSuggestedProducts(products);
+  const [specificProducts, setSpecificProducts] = useState<SpecificProduct[]>(
+    [],
+  );
+  const [loading, setLoading] = useState<boolean>(true);
+  const [error, setError] = useState<string | null>(null);
 
   const { productsType, productItemId } = useParams();
-
   const navigate = useNavigate();
 
-  const handleBack = () => {
+  const handleBack = useCallback(() => {
     navigate(-1);
-  };
+  }, [navigate]);
 
-  const specificProducts = getSpecificProducts('phones');
+  const suggestedProducts = useMemo(() => {
+    const filteredProducts = products.filter(
+      product =>
+        product.category === productsType && product.itemId !== productItemId,
+    );
 
-  // console.log(specificProducts);
+    return filteredProducts.sort(() => 0.5 - Math.random());
+  }, [products, productsType, productItemId]);
 
-  // useEffect(() => {
-  //     const fetchSpecificProducts = async () => {
-  //       try {
-  //         const fetchedSpecificProducts = await getSpecificProducts(''); // Получаем все продукты
-  //         const updatedProducts = fetchedProducts.map(product => ({
-  //           ...product,
-  //           shoppingCart: false, // Если свойства нет, добавляем его с дефолтным значением
-  //           favourite: false, // То же для favourite
-  //         }));
+  useEffect(() => {
+    if (!productsType) {
+      return;
+    }
 
-  //         setProducts(updatedProducts); // Устанавливаем их в состояние
-  //       } catch (error) {
-  //         throw new Error(
-  //           `Error fetching products: ${error instanceof Error ? error.message : 'Unknown error'}`,
-  //         );
-  //       }
-  //     };
+    setLoading(true);
+    setError(null);
 
-  //     fetchAllProducts(); // Вызов асинхронной функции
-  //   }, [productsType]);
+    setTimeout(() => {
+      getSpecificProducts(productsType)
+        .then(fetchedSpecificProducts => {
+          setSpecificProducts(fetchedSpecificProducts);
+        })
+        .catch(er => {
+          setError(`Ошибка загрузки продуктов: ${er.message}`);
+        })
+        .finally(() => {
+          setLoading(false);
+        });
+    }, 1000);
+  }, [productsType]);
 
-  const currentProductObject = phones.find(ph => ph.id === productItemId);
+  const currentProductObject = specificProducts.find(
+    product => product.id === productItemId,
+  );
 
   useEffect(() => {
     if (currentProductObject) {
-      setSelectedPhone(currentProductObject);
+      setSelectedProduct(currentProductObject);
     }
   }, [productItemId, currentProductObject]);
 
-  if (!selectedPhone) {
-    return <div>Загрузка...</div>;
+  if (loading) {
+    return <Loader />;
   }
 
-// console.log('Render params:', { productsType, productItemId });
+  if (error) {
+    return <div>{error}</div>;
+  }
+
+  if (!selectedProduct) {
+    return <div>Продукт не найден</div>;
+  }
 
   return (
-    <div className="productDetailsPage">
+    <div className="detailsPage">
       <Breadcrumbs
-        productType={selectedPhone.category}
-        productName={selectedPhone.name}
+        productType={productsType!}
+        productName={selectedProduct.name}
       />
-
-      <button className="productDetailsPage__button-back" onClick={handleBack}>
+      <button className="detailsPage__button-back" onClick={handleBack}>
         Back
       </button>
-      <h2 className="productDetailsPage__title">{selectedPhone.name}</h2>
+      <h2 className="detailsPage__title">{selectedProduct.name}</h2>
 
-      <ProductContentTop selectedPhone={selectedPhone} />
+      <ProductContentTop selectedPhone={selectedProduct} />
 
-      <ProductContentBottom selectedPhone={selectedPhone} />
+      <ProductContentBottom selectedPhone={selectedProduct} />
 
-      <div className="productDetailsPage__like-block">
+      <div className="detailsPage__like-block">
         <ProductsSlider
-          title={'You may also like'}
+          title="You may also like"
           products={suggestedProducts}
-          displayType={'with-discount'}
+          displayType="with-discount"
         />
       </div>
     </div>

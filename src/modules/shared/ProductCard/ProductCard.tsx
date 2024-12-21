@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import './ProductCard.scss';
 import { Product } from '../../../types/Product';
-import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { GlobalContext } from '../../../store/GlobalContext';
 import { ShoppingCartProduct } from '../../../types/ShoppingCartProduct';
 
@@ -19,15 +19,6 @@ export const ProductCard: React.FC<Props> = ({ product, displayType }) => {
     setProducts,
   } = useContext(GlobalContext);
 
-  const navigate = useNavigate();
-
-  const handleClick = () => {
-    console.log('Navigating to:', `/${product.category}/${product.itemId}`);
-    navigate(`/${product.category}/${product.itemId}`);
-  };
-
-  // console.log('Navigating to:', `/${product.category}/${product.itemId}`);
-
   const handleAddToCart = (currentProduct: Product) => {
     const isInCart = shoppingCart.some(
       item => item.id === currentProduct.itemId,
@@ -40,7 +31,6 @@ export const ProductCard: React.FC<Props> = ({ product, displayType }) => {
         product: currentProduct,
       };
 
-      // Добавление в корзину
       setShoppingCart(prevCart => [...prevCart, newProduct]);
 
       setProducts(prevProducts =>
@@ -70,7 +60,6 @@ export const ProductCard: React.FC<Props> = ({ product, displayType }) => {
         ),
       );
     } else {
-      // Добавление в корзину
       setFavorites(prevFavorites => [
         ...prevFavorites,
         { ...currentProduct, favorites: true },
@@ -90,7 +79,10 @@ export const ProductCard: React.FC<Props> = ({ product, displayType }) => {
 
   return (
     <div className="productCard">
-      <div className="productCard__activeClick" onClick={handleClick}>
+      <Link
+        className="productCard__activeClick"
+        to={`/${product.category}/${product.itemId}`}
+      >
         <div className="productCard__container-photo">
           <img
             src={product.image}
@@ -138,7 +130,7 @@ export const ProductCard: React.FC<Props> = ({ product, displayType }) => {
             <span className="productCard__value">{product.ram}</span>
           </div>
         </div>
-      </div>
+      </Link>
 
       <div className="productCard__container-buttons">
         <button

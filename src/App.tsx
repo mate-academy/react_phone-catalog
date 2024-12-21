@@ -1,23 +1,35 @@
-import { Outlet } from 'react-router-dom';
+import { Outlet, useLocation } from 'react-router-dom';
 import '../src/styles/main.scss';
 import './App.scss';
 import { Footer } from './modules/shared/Footer';
 import { Header } from './modules/shared/Header';
+import { useEffect } from 'react';
 
-export const App = () => (
-  <div className="App">
-    <h1 className="App__title-hidden">Product Catalog</h1>
+export const App = () => {
+  const location = useLocation();
 
-    <header className="App__header">
-      <Header />
-    </header>
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  }, [location.pathname]);
 
-    <main className="App__content">
-      <Outlet />
-    </main>
+  return (
+    <div className="App">
+      <h1 className="App__title-hidden">Product Catalog</h1>
 
-    <footer className="App__footer">
-      <Footer />
-    </footer>
-  </div>
-);
+      <header className="App__header">
+        <Header />
+      </header>
+
+      <main className="App__content">
+        <Outlet />
+      </main>
+
+      <footer className="App__footer">
+        <Footer />
+      </footer>
+    </div>
+  );
+};

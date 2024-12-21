@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { Product } from '../types/Product';
 import { ShoppingCartProduct } from '../types/ShoppingCartProduct';
 import { SpecificProduct } from '../types/SpecificProduct';
@@ -8,7 +8,7 @@ async function fetchProducts<T>(url: string): Promise<T> {
   const response = await fetch(url);
 
   if (!response.ok) {
-    const errorData = await response.json();  // Возможная ошибка от сервера
+    const errorData = await response.json(); // Возможная ошибка от сервера
 
     throw new Error(
       `Error: ${response.statusText} - ${errorData.message || 'Unknown error'}`,
@@ -63,57 +63,49 @@ type GlobalContextType = {
   setFavorites: React.Dispatch<React.SetStateAction<Product[]>>;
   updateQuantity: (id: string, newQuantity: number) => void;
   clearShoppingCart: () => void;
+  query: string;
+  setQuery: React.Dispatch<React.SetStateAction<string>>;
 };
 
 export const GlobalContext = React.createContext<GlobalContextType>({
   products: [] as Product[],
-  setProducts: () => { },
+  setProducts: () => {},
   sortBy: 'Newest',
-  setSortBy: () => { },
+  setSortBy: () => {},
   shoppingCart: [] as ShoppingCartProduct[],
-  setShoppingCart: () => { },
+  setShoppingCart: () => {},
   favorites: [] as Product[],
-  setFavorites: () => { },
-  updateQuantity: () => { },
-  clearShoppingCart: () => { },
+  setFavorites: () => {},
+  updateQuantity: () => {},
+  clearShoppingCart: () => {},
+  query: '',
+  setQuery: () => {},
 });
 
 type Props = {
   children: React.ReactNode;
 };
 
-const sortProducts = (products: Product[], sortBy: string): Product[] => {
-  const sortedProducts = [...products]; // Создаем копию массива для сортировки
-
-  switch (sortBy) {
-    case 'Newest':
-      return sortedProducts.sort((a, b) => b.year - a.year);
-    case 'Alphabetically':
-      return sortedProducts.sort((a, b) => a.name.localeCompare(b.name));
-    case 'Cheapest':
-      return sortedProducts.sort((a, b) => a.fullPrice - b.fullPrice);
-    default:
-      return sortedProducts;
-  }
-};
-
 export const GlobalProvider: React.FC<Props> = ({ children }) => {
   const [products, setProducts] = useState<Product[]>([]);
-  const [shoppingCart, setShoppingCart] = useLocalStorage<ShoppingCartProduct[]>('shoppingCart', []);
+  const [shoppingCart, setShoppingCart] = useLocalStorage<
+  ShoppingCartProduct[]
+  >('shoppingCart', []);
   const [favorites, setFavorites] = useLocalStorage<Product[]>('favorites', []);
   const [sortBy, setSortBy] = useState<string>('Newest');
+  const [query, setQuery] = useState<string>('');
 
   useEffect(() => {
     const fetchAllProducts = async () => {
       try {
-        const fetchedProducts = await getAllProducts(); // Получаем все продукты
+        const fetchedProducts = await getAllProducts();
         const updatedProducts = fetchedProducts.map(product => ({
           ...product,
-          shoppingCart: false, // Если свойства нет, добавляем его с дефолтным значением
-          favourite: false, // То же для favourite
+          shoppingCart: false,
+          favourite: false,
         }));
 
-        setProducts(updatedProducts); // Устанавливаем их в состояние
+        setProducts(updatedProducts);
       } catch (error) {
         throw new Error(
           `Error fetching products: ${error instanceof Error ? error.message : 'Unknown error'}`,
@@ -121,30 +113,46 @@ export const GlobalProvider: React.FC<Props> = ({ children }) => {
       }
     };
 
-    fetchAllProducts(); // Вызов асинхронной функции
+    fetchAllProducts();
   }, []);
 
-  useEffect(() => {
-    // Пересортировка продуктов при изменении `sortBy`
-    setProducts(prevProducts => sortProducts(prevProducts, sortBy));
-  }, [sortBy]);
+  // useEffect(() => {
+  //   const timer = setTimeout(() => {
+  //     setProducts(prevProducts =>
+  //       sortProducts(prevProducts, { sortBy, query }),
+  //     );
+  //   }, 1000);
 
-  const updateQuantity = (id: string, newQuantity: number) => {
-    setShoppingCart(prevCart => {
-      // Обновляем корзину, фильтруя товары с количеством 0
-      const updatedShoppingCart = prevCart
-        .map(item =>
-          item.id === id ? { ...item, quantity: newQuantity } : item,
-        )
-        .filter(item => item.quantity > 0); // Убираем товары с нулевым количеством
+  //   return () => clearTimeout(timer); // Очистка предыдущего таймера
+  // }, [query, sortBy]);
 
-      return updatedShoppingCart;
-    });
-  };
+  // Оборачиваем updateQuantity в useCallback
+  const updateQuantity = useCallback(
+    (id: string, newQuantity: number) => {
+      setShoppingCart(prevCart => {
+        // Обновляем корзину, фильтруя товары с количеством 0
+        const updatedShoppingCart = prevCart
+          .map(item =>
+            item.id === id ? { ...item, quantity: newQuantity } : item,
+          )
+          .filter(item => item.quantity > 0); // Убираем товары с нулевым количеством
 
-  const clearShoppingCart = () => {
+        return updatedShoppingCart;
+      });
+    },
+    [setShoppingCart],
+  );
+
+  const clearShoppingCart = useCallback(() => {
     setShoppingCart([]);
-  };
+  }, [setShoppingCart]);
+  // useEffect(() => {
+  //   const timeout = setTimeout(() => {
+  //     setQuery(query); // Обновляем query в глобальном контексте
+  //   }, 1000); // Задержка 1 секунда
+
+  //   return () => clearTimeout(timeout); // Очистка таймера при каждом изменении query
+  // }, [query, setQuery]); // Зависимость от query
 
   const data = useMemo(
     () => ({
@@ -158,8 +166,23 @@ export const GlobalProvider: React.FC<Props> = ({ children }) => {
       setFavorites,
       updateQuantity,
       clearShoppingCart,
+      query,
+      setQuery,
     }),
-    [products, sortBy, shoppingCart, favorites],
+    [
+      products,
+      sortBy,
+      shoppingCart,
+      favorites,
+      query,
+      setProducts,
+      setSortBy,
+      setShoppingCart,
+      setFavorites,
+      setQuery,
+      clearShoppingCart,
+      updateQuantity,
+    ],
   );
 
   return (

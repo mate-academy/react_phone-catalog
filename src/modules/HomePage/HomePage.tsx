@@ -27,19 +27,19 @@ export const HomePage: React.FC = () => {
 
       <PicturesSlider />
 
-      <ProductsSlider
+      {/*<ProductsSlider
         title={'Brand new models'}
         products={newestPhones}
         displayType="fullPrice"
-      />
+      /> */}
 
-      <ShopByCategory />
+      {/* <ShopByCategory /> */}
 
-      <ProductsSlider
+      {/* <ProductsSlider
         title={'Hot prices'}
         products={hotPricesProducts}
         displayType="with-discount"
-      />
+      /> */}
     </div>
   );
 };

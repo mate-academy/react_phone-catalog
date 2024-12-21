@@ -36,6 +36,10 @@
   cursor: pointer;
 }
 
+.productsSlider__button:hover {
+  border: 1px solid $color-gray-primary;
+}
+
 .productsSlider__button-disabled {
   position: relative;
   width: 32px;

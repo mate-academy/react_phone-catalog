@@ -1,7 +1,23 @@
 import { Link } from 'react-router-dom';
 import './ShopByCategory.scss';
+import { useContext } from 'react';
+import { GlobalContext } from '../../../../store/GlobalContext';
 
 export const ShopByCategory: React.FC = () => {
+  const { products } = useContext(GlobalContext);
+
+  const phonesLength = products.filter(
+    product => product.category === 'phones',
+  ).length;
+
+  const tabletsLength = products.filter(
+    product => product.category === 'tablets',
+  ).length;
+
+  const accessoriesLength = products.filter(
+    product => product.category === 'accessories',
+  ).length;
+
   return (
     <div className="shopByCategory">
       <h2 className="shopByCategory__title">Shop by category</h2>
@@ -16,7 +32,7 @@ export const ShopByCategory: React.FC = () => {
             />
             <h4 className="shopByCategory__block-title">Mobile phones</h4>
             <span className="shopByCategory__block-description">
-              ??? models
+              {`${phonesLength} models`}
             </span>
           </section>
         </Link>
@@ -30,7 +46,7 @@ export const ShopByCategory: React.FC = () => {
             />
             <h4 className="shopByCategory__block-title">Tablets</h4>
             <span className="shopByCategory__block-description">
-              ??? models
+              {`${tabletsLength} models`}
             </span>
           </section>
         </Link>
@@ -44,7 +60,7 @@ export const ShopByCategory: React.FC = () => {
             />
             <h4 className="shopByCategory__block-title">Accessories</h4>
             <span className="shopByCategory__block-description">
-              ??? models
+              {`${accessoriesLength} models`}
             </span>
           </section>
         </Link>

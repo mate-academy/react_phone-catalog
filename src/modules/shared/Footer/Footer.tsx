@@ -1,31 +1,42 @@
 import React from 'react';
 import './Footer.scss';
+import { Link } from 'react-router-dom';
 
 export const Footer: React.FC = () => {
   const backToTop = () => {
     window.scrollTo({
       top: 0,
-      behavior: 'smooth', // Плавная прокрутка
+      behavior: 'smooth',
     });
   };
 
   return (
     <div className="footer">
       <div className="footer__container">
-        <a href="#" className="footer__logo">
+        <a href="#" className="footer__logo-container">
           <img src="logo.svg" alt="Nice Gadgets" className="footer__logo" />
         </a>
 
         <div className="footer__items">
-          <a href="#" className="footer__link">
+          <Link
+            to="https://github.com/hsvirina"
+            className="footer__link"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             Github
-          </a>
-          <a href="#" className="footer__link">
+          </Link>
+          <Link
+            to="https://www.linkedin.com/in/hanna-svirina-dev/"
+            className="footer__link"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             Contacts
-          </a>
-          <a href="#" className="footer__link">
+          </Link>
+          <Link to="/" className="footer__link">
             rights
-          </a>
+          </Link>
         </div>
 
         <div className="footer__block">

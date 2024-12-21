@@ -13,11 +13,11 @@ export const PicturesSlider: React.FC = () => {
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
 
   const nextSlide = () => {
-    setCurrentSlide((prev) => (prev + 1) % images.length);
+    setCurrentSlide(prev => (prev + 1) % images.length);
   };
 
   const prevSlide = () => {
-    setCurrentSlide((prev) => (prev - 1 + images.length) % images.length);
+    setCurrentSlide(prev => (prev - 1 + images.length) % images.length);
   };
 
   useEffect(() => {
@@ -95,8 +95,9 @@ export const PicturesSlider: React.FC = () => {
         {images.map((_, index) => (
           <div
             key={index}
-            className={`picturesSlider__dot ${currentSlide === index ? 'picturesSlider__dot--active' : ''
-              }`}
+            className={`picturesSlider__dot ${
+              currentSlide === index ? 'picturesSlider__dot--active' : ''
+            }`}
             onClick={() => handleDotClick(index)}
           ></div>
         ))}

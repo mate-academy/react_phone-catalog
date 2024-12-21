@@ -1,7 +1,6 @@
 import React, { useContext } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { GlobalContext } from '../../store/GlobalContext';
-import { Breadcrumbs } from '../shared/Breadcrumbs';
 import { ProductCard } from '../shared/ProductCard';
 import './FavoritesPage.scss';
 
@@ -40,10 +39,7 @@ export const FavoritesPage: React.FC = () => {
         <div className="favoritesPage__content">
           {favorites.map(favourite => (
             <div key={favourite.id} className="favoritesPage__item">
-              <ProductCard
-                product={favourite}
-                displayType={'with-discount'}
-              />
+              <ProductCard product={favourite} displayType={'with-discount'} />
             </div>
           ))}
         </div>

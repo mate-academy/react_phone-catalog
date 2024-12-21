@@ -13,11 +13,20 @@
     height: 64px;
   }
 
-  &__logo {
-    width: 64px;
-    height: 22px;
-    padding: 16px;
+  &__logo-container {
+    display: flex;
+    height: 100%;
+    width: 96px;
+    // padding-inline: 16px;
+    align-items: center;
+    justify-content: center;
 
+    @include on-desktop {
+      width: 128px;
+    }
+  }
+
+  &__logo {
     @include on-desktop {
       width: 80px;
       height: 28px;
@@ -61,24 +70,46 @@
     }
   }
 
+  &__nav-link--active {
+    font-family: 'Mont-Bold', sans-serif;
+    font-size: 12px;
+    font-weight: 800;
+    // line-height: 11px;
+    letter-spacing: 0.04em;
+    color: $color-gray-primary;
+    position: relative;
+  }
+
+  &__nav-link--active::after {
+    content: '';
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    width: 100%;
+    height: 3px;
+    background-color: $color-gray-primary;
+  }
+
   &__buttons-right {
+    height: 100%;
     flex-grow: 1;
     display: flex;
     justify-content: flex-end;
     align-items: center;
   }
 
-  &__icon {
-    width: 48px;
-    height: 48px;
-    box-shadow: -1px 0px 0px 0px $color-gray-elements;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-size: 16px 16px;
-    background-repeat: no-repeat;
-    background-position: center;
-    // margin-left: 8px; // Отступ между иконками
+  &__icon-container {
+    display: none;
+
+    @include on-tablet {
+      width: 48px;
+      height: 48px;
+      box-shadow: -1px 0px 0px 0px $color-gray-elements;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
 
     @include on-desktop {
       width: 64px;
@@ -86,7 +117,20 @@
     }
   }
 
+  &__icon-container:hover {
+    background: $color-hover;
+  }
+
+  &__icon {
+
+  }
+
   &__icon--menu {
+    width: 48px;
+    height: 100%;
+    background-size: 16px 16px;
+    background-repeat: no-repeat;
+    background-position: center;
     background-image: url('/icons/Menu.svg');
 
     @include on-tablet {
@@ -96,39 +140,89 @@
 
   &__icon--shoping_bag {
     display: none;
-    background-image: url('/icons/Shopping bag (Cart).svg');
 
     @include on-tablet {
       display: flex;
+      width: 28px;
+      height: 28px;
+      background-size: 16px 16px;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-image: url('/icons/Shopping bag (Cart).svg');
+      position: relative;
     }
   }
 
   &__icon--favourite {
     display: none;
-    background-image: url('/icons/Favourites (Heart Like).svg');
 
     @include on-tablet {
       display: flex;
+      width: 28px;
+      height: 28px;
+      background-size: 16px 16px;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-image: url('/icons/Favourites (Heart Like).svg');
+      position: relative;
     }
   }
-}
 
-.header__search-wrapper {
-  position: relative;
-  display: flex;
-  align-items: center;
-  margin-right: 16px; // Отступ для отделения от соседей
+  &__cart-quantity {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    background-color: $color-red;
+    color: $color-white;
+    border-radius: 50%;
+    width: 14px;
+    height: 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-family: 'Mont-Regular', sans-serif;
+    font-size: 9px;
+    font-weight: 700;
+    line-height: 11.5px;
+  }
+
+  &__totalFavorites {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    background-color: $color-red;
+    color: $color-white;
+    border-radius: 50%;
+    width: 14px;
+    height: 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-family: 'Mont-Regular', sans-serif;
+    font-size: 9px;
+    font-weight: 700;
+    line-height: 11.5px;
+  }
+
+  &__search-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin-right: 16px;
+  }
 }
 
 .header__search-input {
   height: 48px;
-  padding: 8px 36px 8px 8px; // Добавляем место для крестика
+  padding: 8px 36px 8px 8px;
   border: none;
   box-shadow: -1px 0px 0px 0px $color-gray-elements;
   box-sizing: border-box;
 
   font-family: "Mont-Regular", sans-serif;
-  color: $color-gray-primary; // Текст пользователя
+  color: $color-gray-primary;
   font-size: 14px;
   font-weight: 400;
   line-height: 21px;
@@ -147,17 +241,17 @@
   }
 
   &:focus {
-    outline: none; // Убираем стандартное выделение
+    outline: none;
   }
 
   &:focus::placeholder {
-    opacity: 0; // Скрываем placeholder при фокусе
+    opacity: 0;
   }
 }
 
 .header__clear-button {
   position: absolute;
-  right: 8px; // Расположение кнопки справа
+  right: 8px;
   background: none;
   border: none;
   font-size: 16px;
@@ -167,6 +261,20 @@
   z-index: 2;
 
   &:hover {
-    color: $color-gray-primary; // Смена цвета при наведении
+    color: $color-gray-primary;
   }
+}
+
+.header__icon--active::after {
+  content: '';
+  bottom: -18px;
+  left: -18px;
+  position: absolute;
+  width: 64px;
+  height: 3px;
+  background-color: $color-gray-primary;
+}
+
+.header__nav-item:hover .header__nav-link {
+  color: $color-gray-primary;
 }

@@ -1,4 +1,5 @@
 @import '../../../styles/utils/variables.scss';
+@import '../../../styles/utils/mixins.scss';
 
 .productCard {
   box-sizing: border-box;
@@ -10,10 +11,17 @@
   flex-direction: column;
   gap: 8px;
 
+  transition: border 0.3s;
+
+  &:hover .productCard__container-photo {
+    transform: scale(1.05);
+  }
+
   &__container {
     &-photo {
       width: 208px;
       height: 196px;
+      transition: transform 0.3s;
     }
 
     &-title {
@@ -188,5 +196,15 @@
 
 .productCard__activeClick {
   cursor: pointer;
+  text-decoration: none;
+}
+
+.productCard:hover {
+  border: 1px solid $color-gray-primary;
+}
+
+.productCard__button-isFavourite:hover,
+.productCard__button-addToFavourite:hover {
+  border: 1px solid $color-gray-primary;
 }
 

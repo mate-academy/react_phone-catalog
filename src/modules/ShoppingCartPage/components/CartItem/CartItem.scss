@@ -10,6 +10,12 @@
   border: 1px solid $color-gray-elements;
   display: flex;
   align-items: center;
+
+  transition: border-color 0.3s ease;
+}
+
+.cartItem:hover {
+  border: 1px solid $color-gray-primary;
 }
 
 .cartItem__icon-close {
@@ -19,9 +25,13 @@
   width: 16px;
   height: 16px;
   cursor: pointer;
+
+  &:hover::after {
+    background-image: url('/icons/Close-hover.svg');
+  }
 }
 
-.cartItem__icon-close:after {
+.cartItem__icon-close::after {
   content: '';
   position: absolute;
   transform: translate(-50%, -50%);
@@ -32,10 +42,18 @@
   background-repeat: no-repeat;
 }
 
+
+
 .cartItem__image {
   height: 80px;
   width: 80px;
   object-fit: contain;
+
+  transition: transform 0.3s ease;
+}
+
+.cartItem:hover .cartItem__image {
+  transform: scale(1.05); // Увеличиваем изображение при наведении на родительский элемент
 }
 
 .cartItem__title {
@@ -88,6 +106,12 @@
   width: 32px;
   height: 32px;
   cursor: pointer;
+}
+
+
+.cartItem__icon-plus:hover,
+.cartItem__icon-minus:not(.cartItem__icon-minus--disabled):hover {
+  border: 1px solid $color-gray-primary;
 }
 
 .cartItem__icon-minus:after {

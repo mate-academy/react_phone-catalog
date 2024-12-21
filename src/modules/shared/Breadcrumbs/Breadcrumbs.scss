@@ -1,13 +1,6 @@
 @import '../../../styles/main.scss';
 
-.breadcrumbs__container {
-  height: 16px;
-  margin-top: 24px;
-  margin-bottom: 40px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-
+.breadcrumbs {
   &__item {
     font-family: 'Mont-SemiBold', sans-serif;
     font-size: 12px;
@@ -15,6 +8,11 @@
     color: $color-gray-secondary;
     display: inline-block;
     vertical-align: middle;
+
+    &--dark {
+      text-decoration: none;
+      color: $color-gray-primary;
+    }
   }
 
   &__link-home,
@@ -26,6 +24,15 @@
     height: 16px;
     position: relative;
   }
+}
+
+.breadcrumbs__container {
+  height: 16px;
+  margin-top: 24px;
+  margin-bottom: 40px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
 .breadcrumbs__link-home::after,

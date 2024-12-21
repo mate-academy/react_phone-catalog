@@ -1,20 +1,45 @@
 import React, { useContext, useState, useMemo, useEffect } from 'react';
 import './ProductPage.scss';
 import { Dropdown } from '../shared/Dropdown';
-import { ProductCard } from '../shared/ProductCard';
 import { Pagination } from '../shared/Pagination';
 import { useParams } from 'react-router-dom';
 import { GlobalContext } from '../../store/GlobalContext';
 import { Breadcrumbs } from '../shared/Breadcrumbs';
 import { ProductsList } from '../shared/ProductsList';
 import { Loader } from '../shared/Loader';
+import { Product } from '../../types/Product';
+
+export const getPreparedProducts = (
+  products: Product[],
+  { sortBy, query }: { sortBy: string; query: string },
+): Product[] => {
+  let filteredProducts = [...products];
+
+  if (!!query.length) {
+    filteredProducts = filteredProducts.filter(product =>
+      product.name.toLowerCase().includes(query.toLowerCase().trim()),
+    );
+  }
+
+  switch (sortBy) {
+    case 'Newest':
+      return filteredProducts.sort((a, b) => b.year - a.year);
+    case 'Alphabetically':
+      return filteredProducts.sort((a, b) => a.name.localeCompare(b.name));
+    case 'Cheapest':
+      return filteredProducts.sort((a, b) => a.fullPrice - b.fullPrice);
+    default:
+      return filteredProducts;
+  }
+};
 
 export const ProductPage: React.FC = () => {
-  const { products, sortBy, setSortBy } = useContext(GlobalContext);
+  const { products, sortBy, setSortBy, query } = useContext(GlobalContext);
 
   const [itemsPerPage, setItemsPerPage] = useState('All');
   const [currentPage, setCurrentPage] = useState(1);
   const [isLoading, setIsLoading] = useState(true);
+  const [hasError, setHasError] = useState(false); // Добавлено состояние для ошибок
 
   const { productsType } = useParams<{ productsType: string }>();
 
@@ -22,25 +47,71 @@ export const ProductPage: React.FC = () => {
     productsType &&
     productsType.charAt(0).toUpperCase() + productsType.slice(1);
 
-  const visibleProducts = useMemo(() => {
+  const [debouncedQuery, setDebouncedQuery] = useState(query);
+
+  const categoryProducts = useMemo(() => {
     return products.filter(product => product.category === productsType);
   }, [products, productsType]);
+
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      setDebouncedQuery(query); // Обновляем debouncedQuery после задержки
+    }, 1000); // Задержка 1 секунда
+
+    return () => clearTimeout(timeout); // Очистка таймера при каждом изменении query
+  }, [query]);
+
+  // Используем debouncedQuery для фильтрации
+  const visibleProducts = useMemo(() => {
+    return getPreparedProducts(categoryProducts, {
+      sortBy,
+      query: debouncedQuery, // Используем debouncedQuery с задержкой
+    });
+  }, [debouncedQuery, categoryProducts, sortBy]);
+
+  // const visibleProducts = useMemo(() => {
+  //   return getPreparedProducts(categoryProducts, {
+  //     sortBy,
+  //     query,
+  //   });
+  // }, [categoryProducts, sortBy, query]);
 
   const countVisibleProducts = visibleProducts.length;
 
   useEffect(() => {
-    // Включаем загрузку при смене категории
     setIsLoading(true);
+    setHasError(false); // Сброс состояния ошибки перед началом загрузки
 
-    // Эмуляция загрузки данных с сервера
+    // Эмуляция загрузки данных
     setTimeout(() => {
-      setIsLoading(false); // Останавливаем загрузку через 2 секунды (здесь может быть реальная загрузка данных)
+      try {
+        // Если все прошло успешно
+        setIsLoading(false);
+      } catch (error) {
+        // Если произошла ошибка, выбрасываем новую ошибку
+        throw new Error('Произошла ошибка при загрузке данных');
+      }
     }, 1000);
 
-    // Сбрасываем сортировку, когда меняется тип продуктов
     setSortBy('Newest');
     setItemsPerPage('All');
-  }, [productsType]);
+  }, [productsType, setSortBy]);
+
+  const handleReload = () => {
+    setIsLoading(true);
+    setHasError(false);
+
+    // Повторная попытка загрузки данных
+    setTimeout(() => {
+      try {
+        setIsLoading(false);
+      } catch (error) {
+        // console.error(error);
+        setHasError(true);
+        setIsLoading(false);
+      }
+    }, 1000);
+  };
 
   const totalPages =
     itemsPerPage === 'All'
@@ -59,20 +130,36 @@ export const ProductPage: React.FC = () => {
       ? visibleProducts
       : visibleProducts.slice(startIndex, startIndex + Number(itemsPerPage));
 
+  // useEffect(() => {
+  //   const timeout = setTimeout(() => {
+  //     setQuery(query); // Обновляем query в глобальном контексте
+  //   }, 1000); // Задержка 1 секунда
+
+  //   return () => clearTimeout(timeout); // Очистка таймера при каждом изменении query
+  // }, [query, setQuery]); // Зависимость от query
+
   return (
     <div className="productPage">
-      {isLoading ? (
-        <Loader /> // Показываем Loader, если данные ещё загружаются
-      ) : (
+      {isLoading && <Loader />}
+      {hasError && (
+        <div className="productPage__error">
+          <p>Something went wrong. Please try again.</p>
+          <button onClick={handleReload} className="productPage__reloadButton">
+            Reload
+          </button>
+        </div>
+      )}
+      {!isLoading && !hasError && (
         <>
-          <Breadcrumbs productType={normalizeProductsType!} />
+          <Breadcrumbs productType={productsType!} />
           {/* Как здесь можно переделать с undefind */}
 
           <h1 className="productPage__title">{normalizeProductsType}</h1>
 
           <span className="productPage__description">
-            {`${countVisibleProducts} ${countVisibleProducts === 1 ? 'model' : 'models'
-              }`}
+            {`${countVisibleProducts} ${
+              countVisibleProducts === 1 ? 'model' : 'models'
+            }`}
           </span>
 
           <div className="productPage__dropdown-container">
@@ -90,7 +177,7 @@ export const ProductPage: React.FC = () => {
               options={['4', '8', '16', 'All']}
               onChange={value => {
                 setItemsPerPage(value);
-                setCurrentPage(1); // сбрасываем на первую страницу при смене количества карточек
+                setCurrentPage(1);
               }}
               className="productPage__dropdown--itemsOnPage"
               width="128px"
@@ -103,7 +190,7 @@ export const ProductPage: React.FC = () => {
             <Pagination
               currentPage={currentPage}
               totalPages={totalPages}
-              onPageChange={handlePageChange} // Передаем функцию обработки изменения страницы
+              onPageChange={handlePageChange}
             />
           )}
         </>
