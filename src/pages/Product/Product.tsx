@@ -8,7 +8,7 @@ import { useEffect, useState } from 'react';
 import { getProduct } from '../../api/api';
 import { ProductItemType } from '../../types/ProductItemType';
 import { NormalizeImagePath } from '../../utils/NormalizeImagePath';
-import { getColorByName } from '../../utils/colors';
+import { getColorByName } from '../../utils/Colors';
 import './Product.scss';
 
 export const Product = () => {

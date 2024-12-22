@@ -8,17 +8,24 @@ import { ProductType } from '../../types/ProductType';
 import { SortType } from '../../types/SortType';
 import { Category } from '../../types/CategoryType';
 import './Catalog.scss';
+import { useSearchParams } from 'react-router-dom';
+
+const DEFAULT_SORT_BY = 'Newest';
+const DEFAULT_PER_PAGE = 16;
 
 type Props = {
   category: Category;
 };
 
 export const Catalog: React.FC<Props> = ({ category }) => {
+  const [searchParams, setSearchParams] = useSearchParams();
+
   const [products, setProducts] = useState<ProductType[]>([]);
   const [pageCount, setPageCount] = useState(1);
   const [page, setPage] = useState(1);
-  const [sortBy, setSortBy] = useState<keyof typeof SortType>('Newest');
-  const [perPage, setPerPage] = useState(16);
+
+  const [sortBy, setSortBy] = useState<keyof typeof SortType>(DEFAULT_SORT_BY);
+  const [perPage, setPerPage] = useState(DEFAULT_PER_PAGE);
 
   const handleSortBy = (value: string) => {
     setSortBy(value as keyof typeof SortType);
@@ -51,6 +58,37 @@ export const Catalog: React.FC<Props> = ({ category }) => {
     setSortBy('Newest');
     setPerPage(16);
   }, [category]);
+
+  useEffect(() => {
+    const savedSortBy = searchParams.get('sortBy');
+    const savedPerPage = searchParams.get('perPage');
+
+    if (savedSortBy) {
+      setSortBy(savedSortBy as keyof typeof SortType);
+    }
+
+    if (savedPerPage) {
+      const toInt = parseInt(savedPerPage);
+
+      if (toInt) {
+        setPerPage(toInt);
+      }
+    }
+  }, []);
+
+  useEffect(() => {
+    const newParams: { [key: string]: string } = {};
+
+    if (perPage !== DEFAULT_PER_PAGE) {
+      newParams['perPage'] = perPage.toString();
+    }
+
+    if (sortBy !== DEFAULT_SORT_BY) {
+      newParams['sortBy'] = sortBy;
+    }
+
+    setSearchParams(newParams);
+  }, [perPage, sortBy]);
 
   return (
     <div className="catalog">
