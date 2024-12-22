@@ -1,0 +1,95 @@
+.cart-item {
+  display: flex;
+  box-sizing: border-box;
+  align-items: center;
+  height: 128px;
+  width: 100%;
+  padding: 24px;
+  border: 1px solid $super-light-gray;
+
+  &__delete-button {
+    cursor: pointer;
+  }
+
+  &__data {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    margin-left: 24px;
+
+    &-picture {
+      box-sizing: unset;
+      height: 66px;
+      width: 80px;
+      object-fit: contain;
+    }
+
+    &-name {
+      @extend %body-text;
+      width: 295px;
+      color: $black-primary;
+    }
+  }
+
+  &__quantity {
+    display: flex;
+    gap: 14px;
+    align-items: center;
+    margin-left: 49px;
+
+    &-button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 32px;
+      width: 32px;
+      cursor: pointer;
+
+      &-picture {
+        filter: invert(83%) sepia(14%) saturate(148%)
+          hue-rotate(161deg) brightness(89%) contrast(89%);
+      }
+
+      &--off {
+        border: 1px solid $super-light-gray;
+
+        .cart-item__quantity-button-picture {
+          filter: invert(83%) sepia(14%) saturate(148%)
+            hue-rotate(161deg) brightness(89%) contrast(89%);
+        }
+      }
+
+      &--on {
+        border: 1px solid $light-gray-icons;
+
+        .cart-item__quantity-button-picture {
+          filter: none;
+        }
+
+        &:hover {
+          border-color: $black-primary;
+        }
+
+        &:active {
+          background-color: $black-primary;
+
+          .cart-item__quantity-button-picture {
+            filter: invert(100%) sepia(0%) saturate(0%)
+              hue-rotate(152deg) brightness(200%) contrast(200%);
+          }
+        }
+      }
+    }
+
+    &-number {
+      @extend %body-text;
+      color: $black-primary;
+    }
+  }
+
+  &__price {
+    @extend %h2;
+    margin-left: 43px;
+    color: $black-primary;
+  }
+}

@@ -1,0 +1,32 @@
+$black-primary: #313237;
+$gray-secondary: #89939a;
+$light-gray-icons: #b4bdc3;
+$super-light-gray: #e2e6e9;
+$color-hover: #fafbfc;
+$color-white: #fff;
+$green: #27ae60;
+$red: #eb5757;
+$photo1-background-color: #fcdbc1;
+$photo2-background-color: #8d8d92;
+$photo3-background-color: #973d5f;
+$transition-time: 0.3s;
+$animation-time: 1s;
+
+@font-face {
+  font-family: "Mont-bold";
+  src: url("../../fonts/Mont-Bold.otf");
+}
+
+@font-face {
+  font-family: "Mont-semibold";
+  src: url("../../fonts/Mont-SemiBold.otf");
+}
+
+@font-face {
+  font-family: "Mont-regular";
+  src: url("../../fonts/Mont-Regular.otf");
+}
+
+$mont-bold: "Mont-bold", arial, sans-serif;
+$mont-semibold: "Mont-semibold", arial, sans-serif;
+$mont-regular: "Mont-regular", arial, sans-serif;

@@ -1,0 +1,16 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  transition: all $transition-time ease-in-out;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.app {
+  display: flex;
+  height: 99.9vh;
+  flex-direction: column;
+}

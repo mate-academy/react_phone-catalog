@@ -1,0 +1,27 @@
+.breadcrumbs {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin-top: 24px;
+
+  &__home {
+    display: flex;
+  }
+
+  &__link {
+    @extend %small-text;
+    text-decoration: none;
+
+    &--on {
+      color: $black-primary;
+    }
+
+    &--off {
+      color: $gray-secondary;
+
+      &:hover {
+        color: $black-primary;
+      }
+    }
+  }
+}

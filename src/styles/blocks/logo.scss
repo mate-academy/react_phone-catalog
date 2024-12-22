@@ -1,0 +1,10 @@
+.logo {
+  display: flex;
+  width: 96px;
+  height: 48px;
+
+  @include onDesktop {
+    width: 128px;
+    height: 64px;
+  }
+}

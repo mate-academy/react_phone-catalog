@@ -1,0 +1,72 @@
+%h1 {
+  font-family: $mont-bold;
+  font-size: 32px;
+  line-height: 41px;
+  letter-spacing: -0.01em;
+
+  @include onTablet {
+    font-size: 48px;
+    line-height: 56px;
+  }
+}
+
+%h2 {
+  font-family: $mont-bold;
+  font-size: 22px;
+  line-height: 31px;
+
+  @include onDesktop {
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+  }
+}
+
+%h3 {
+  font-family: $mont-semibold;
+  font-size: 20px;
+  line-height: 26px;
+
+  @include onTablet {
+    font-family: $mont-bold;
+    font-size: 22px;
+    line-height: 31px;
+  }
+}
+
+%h4 {
+  font-family: $mont-semibold;
+  font-size: 16px;
+  line-height: 20px;
+
+  @include onTablet {
+    font-size: 20px;
+    line-height: 26px;
+  }
+}
+
+%UPPERCASE {
+  font-family: $mont-bold;
+  font-size: 12px;
+  line-height: 11px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+%buttons {
+  font-family: $mont-semibold;
+  font-size: 14px;
+  line-height: 21px;
+}
+
+%body-text {
+  font-family: $mont-regular;
+  font-size: 14px;
+  line-height: 21px;
+}
+
+%small-text {
+  font-family: $mont-semibold;
+  font-size: 12px;
+  line-height: 15px;
+}

@@ -1,0 +1,19 @@
+.product-page {
+  &__title {
+    @extend %h1;
+    margin-top: 40px;
+    color: $black-primary;
+  }
+
+  &__models-number {
+    @extend %body-text;
+    margin-top: 8px;
+    color: $gray-secondary;
+  }
+
+  &__dropdowns {
+    display: flex;
+    margin-top: 40px;
+    gap: 16px;
+  }
+}

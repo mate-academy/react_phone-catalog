@@ -1,0 +1,26 @@
+.loader {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+
+  &__content {
+    width: 70px;
+    height: 70px;
+    align-self: center;
+    border: 10px solid $super-light-gray;
+    border-bottom-color: $gray-secondary;
+    border-radius: 50%;
+    animation: spin $animation-time linear infinite;
+
+    @keyframes spin {
+      0% {
+        transform: rotate(0deg);
+      }
+
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+  }
+}

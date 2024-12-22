@@ -1,0 +1,5 @@
+.no-results-message {
+  @extend %h2;
+  margin-top: 50px;
+  color: $black-primary;
+}
