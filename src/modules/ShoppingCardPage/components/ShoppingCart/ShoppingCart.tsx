@@ -11,6 +11,7 @@ export const ShoppingCart: React.FC = () => {
     (prev, item) => prev + item.price * item.quantity,
     0,
   );
+  const totalItems = cart.reduce((prev, item) => prev + item.quantity, 0);
 
   return (
     <div
@@ -39,7 +40,7 @@ export const ShoppingCart: React.FC = () => {
                 ${totalAmount}
               </div>
               <p className={styles['shopping-cart__items']}>
-                Total for {cart.length} items
+                Total for {totalItems} items
               </p>
               <button
                 className={styles['shopping-cart__checkout']}
