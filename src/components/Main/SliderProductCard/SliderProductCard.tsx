@@ -5,7 +5,7 @@ import './SliderProductCard.scss';
 
 import { ProductCard } from '../ProductCard/ProductCard';
 import { useRef } from 'react';
-import { useArrowSpacing, useShuffledProducts } from '../../../hooks/HooksSlider';
+import { useArrowSpacing, useShuffledProducts } from '../../../hooks/Hooks';
 import { ProductSliderProps } from '../../../types/TSlider';
 
 const NextArrow: React.FC<CustomArrowProps> = ({ className, onClick }) => {

@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useState } from 'react';
 import Slider from 'react-slick';
 import { Product } from '../types/Product';
+import { TShop } from '../types/TShop';
 
 export const useShuffledProducts = (products: Product[]) => {
   const [shuffledProducts, setShuffledProducts] = useState<Product[]>([]);
@@ -88,4 +89,56 @@ export const useWindowWidth = () => {
   }, []);
 
   return windowWidth;
+};
+
+export const useLoader = (initialLoading = true, delay = 1500) => {
+  const [isLoading, setIsLoading] = useState(initialLoading);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, delay);
+
+    return () => clearTimeout(timer);
+  }, [delay]);
+
+  return isLoading;
+};
+
+export const useHandleScroll = (shops: TShop[]) => {
+  const [animationStyles, setAnimationStyles] = useState<{ [index: number]: React.CSSProperties }>(
+    {},
+  );
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 600) {
+        const newAnimationStyles: { [index: number]: React.CSSProperties } = {};
+
+        shops.forEach((_, index) => {
+          newAnimationStyles[index] = {
+            animationName: 'slidein',
+            animationDuration: '1s',
+            animationTimingFunction: 'ease-in-out',
+            animationDelay: `${index * 0.3}s`,
+            animationIterationCount: '1',
+            animationFillMode: 'both',
+          };
+        });
+
+        setAnimationStyles(newAnimationStyles);
+      } else {
+        setAnimationStyles({});
+      }
+    };
+
+    handleScroll(); // Запускаємо одразу при першому рендері
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [shops]);
+
+  return animationStyles;
 };

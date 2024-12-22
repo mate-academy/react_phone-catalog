@@ -3,6 +3,8 @@
 .main {
   @include container;
 
+  position: relative;
+  min-height: 100vh;
   margin-top: 72px;
   overflow: hidden;
 }

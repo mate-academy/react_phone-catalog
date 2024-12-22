@@ -5,8 +5,9 @@ import './PageSlider.scss';
 
 import { useEffect, useRef, ReactNode } from 'react';
 import { ProductCard } from '../ProductCard/ProductCard';
-import { useArrowSpacing, useShuffledProducts } from '../../../hooks/HooksSlider';
+import { useArrowSpacing, useLoader, useShuffledProducts } from '../../../hooks/Hooks';
 import { ProductSliderProps } from '../../../types/TSlider';
+import { Loader } from '../../../services/helpers/Loader/Loader';
 
 const NextArrow: React.FC<CustomArrowProps> = ({ className, onClick }) => {
   return (
@@ -45,6 +46,7 @@ export const PageSlider: React.FC<ProductSliderProps> = ({
 }) => {
   const sliderRef = useRef<Slider | null>(null);
   const [shuffledProducts, sortArray, handleItem] = useShuffledProducts(products);
+  const isLoading = useLoader();
   const arrowSpacing = useArrowSpacing(sliderRef);
 
   useEffect(() => {
@@ -120,8 +122,8 @@ export const PageSlider: React.FC<ProductSliderProps> = ({
     <div className="page-slider__container">
       <h1 className="page-slider__title">{sliderTitle}</h1>
       <div className="page-slider__subtitle">{num} models</div>
-      <div className="page-slider__sort">
-        <div className="page-slider__sort-type">
+      <section className="page-slider__sort">
+        <article className="page-slider__sort-type">
           <p className="page-slider__sort-subtitle">Sort by</p>
           <select
             className="page-slider__sort-select"
@@ -134,8 +136,8 @@ export const PageSlider: React.FC<ProductSliderProps> = ({
             <option value="expensive">Expensive</option>
             <option value="alphabetically">Alphabetically</option>
           </select>
-        </div>
-        <div className="page-slider__sort-item">
+        </article>
+        <article className="page-slider__sort-item">
           <p className="page-slider__sort-subtitle">Items on page</p>
           <select
             className="page-slider__sort-select"
@@ -147,15 +149,19 @@ export const PageSlider: React.FC<ProductSliderProps> = ({
             <option value="16">16</option>
             <option value="all">All</option>
           </select>
-        </div>
-      </div>
-      <Slider ref={sliderRef} {...settings}>
-        {shuffledProducts.map(product => (
-          <div key={product.id} className="slider__block">
-            <ProductCard product={product} showFullPrice={showFullPrice} />
-          </div>
-        ))}
-      </Slider>
+        </article>
+      </section>
+      {isLoading ? (
+        <Loader />
+      ) : (
+        <Slider ref={sliderRef} {...settings}>
+          {shuffledProducts.map(product => (
+            <div key={product.id} className="slider__block">
+              <ProductCard product={product} showFullPrice={showFullPrice} />
+            </div>
+          ))}
+        </Slider>
+      )}
     </div>
   );
 };

@@ -20,7 +20,9 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, showFullPrice
     margin: '0px 16px 0px 0px',
   };
 
-  const matchedPath = location.pathname as Path | undefined;
+  const matchedPath = ['/phones', '/tablets', '/accessories'].includes(location.pathname)
+    ? (location.pathname as Path)
+    : undefined;
 
   const styles =
     matchedPath && stylesByPath[matchedPath] ? stylesByPath[matchedPath] : defaultStyles;

@@ -7,31 +7,41 @@ import productsData from '../api/products.json';
 import shops from '../api/shops.json';
 
 import { Product } from '../types/Product';
+import { Loader } from '../services/helpers/Loader/Loader';
+import { useLoader } from '../hooks/Hooks';
 
 const newproducts: Product[] = newProductsData; // brand-new models
 const products: Product[] = productsData; // brand-new models
 
 export const HomePage: React.FC = () => {
+  const isLoading = useLoader();
+
   return (
     <>
       <section className="welcome-block">
         <h1 className="welcome-block__title">Welcome to Nice Gadgets store!</h1>
         <WelcomeSlider />
       </section>
-      <section className="new-models-block">
-        <SliderProductCard
-          products={newproducts}
-          showFullPrice={false}
-          sliderTitle="Brand new models"
-        />
-      </section>
-      <section className="shops-block">
-        <h2 className="shops-block__title">Shop by category</h2>
-        <Shop shops={shops} />
-      </section>
-      <section className="section-block">
-        <SliderProductCard products={products} showFullPrice={true} sliderTitle="Hot prices" />
-      </section>
+      {isLoading ? (
+        <Loader />
+      ) : (
+        <>
+          <section className="new-models-block">
+            <SliderProductCard
+              products={newproducts}
+              showFullPrice={false}
+              sliderTitle="Brand new models"
+            />
+          </section>
+          <section className="shops-block">
+            <h2 className="shops-block__title">Shop by category</h2>
+            <Shop shops={shops} />
+          </section>
+          <section className="section-block">
+            <SliderProductCard products={products} showFullPrice={true} sliderTitle="Hot prices" />
+          </section>
+        </>
+      )}
     </>
   );
 };

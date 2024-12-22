@@ -7,7 +7,7 @@ export const Footer: React.FC = () => {
 
   // Функція, яка показує/ховає кнопку при скролі
   const handleScroll = () => {
-    if (window.scrollY > 20) {
+    if (window.scrollY > 200) {
       setShowButton(true);
     } else {
       setShowButton(false);

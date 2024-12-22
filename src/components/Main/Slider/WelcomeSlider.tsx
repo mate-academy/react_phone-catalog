@@ -6,7 +6,7 @@ import './WelcomeSlider.scss';
 import image1 from './images/banner-phones.png';
 import image2 from './images/banner-tablets.png';
 import image3 from './images/banner-accessories.png';
-import { useWindowWidth } from '../../../hooks/HooksSlider';
+import { useWindowWidth } from '../../../hooks/Hooks';
 import getStyles from '../../../services/helpers/getStyles';
 
 const images = [{ src: image1 }, { src: image2 }, { src: image3 }];
