@@ -6,6 +6,7 @@ export interface ProductType {
   price: number;
   fullPrice: number;
   image: string;
+  color: string;
   screen: string;
   capacity: string;
   ram: string;

@@ -1,4 +1,4 @@
-import { useParams } from 'react-router-dom';
+import { Link, useLocation, useParams } from 'react-router-dom';
 import classNames from 'classnames';
 import { BackButton } from '../../components/BackButton';
 import { Breadcrumbs } from '../../components/Breadcrumbs';
@@ -8,6 +8,7 @@ import { useEffect, useState } from 'react';
 import { getProduct } from '../../api/api';
 import { ProductItemType } from '../../types/ProductItemType';
 import { NormalizeImagePath } from '../../utils/NormalizeImagePath';
+import { getColorByName } from '../../utils/colors';
 import './Product.scss';
 
 export const Product = () => {
@@ -15,7 +16,8 @@ export const Product = () => {
     undefined,
   );
 
-  let { id } = useParams();
+  const { id } = useParams();
+  const location = useLocation();
 
   const fetchProduct = async () => {
     if (!id) {
@@ -66,18 +68,20 @@ export const Product = () => {
           <p className="product__details-name small-text">Available colors</p>
           <div className="product__selector-container">
             {product.colorsAvailable.map(color => (
-              <div
+              <Link
+                to={location.pathname.replace(product.color, color)}
                 className={classNames('product__color-border', {
                   'product__color-border--selected': product.color === color,
                 })}
+                key={color}
               >
                 <div className="product__color-white-border">
                   <div
                     className="product__color"
-                    style={{ backgroundColor: color }}
+                    style={{ backgroundColor: getColorByName(color) }}
                   ></div>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
 
@@ -86,14 +90,18 @@ export const Product = () => {
           <p className="product__details-name small-text">Select capacity</p>
           <div className="product__selector-container">
             {product.capacityAvailable.map(capacity => (
-              <button
-                key={capacity}
-                className={classNames('product__capacity-button', {
+              <Link
+                to={location.pathname.replace(
+                  product.capacity.toLowerCase(),
+                  capacity.toLowerCase(),
+                )}
+                className={classNames('product__capacity-button button', {
                   'button--white': product.capacity !== capacity,
                 })}
+                key={capacity}
               >
                 {capacity}
-              </button>
+              </Link>
             ))}
           </div>
 

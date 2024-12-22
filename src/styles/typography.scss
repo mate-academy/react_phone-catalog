@@ -67,6 +67,8 @@ button,
   background-color: #313237;
   border: none;
 
+  text-decoration: none;
+
   @include mixins.media-tablet {
     padding: 9.5px 22px;
   }

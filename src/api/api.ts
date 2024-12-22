@@ -85,11 +85,15 @@ export const getProducts = async (
 export const getProduct = async (
   itemId: string,
 ): Promise<ProductItemType | undefined> => {
-  const accessories = await getData<ProductItemType[]>(accessoriesJson);
-  const phones = await getData<ProductItemType[]>(phonesJson);
-  const tablets = await getData<ProductItemType[]>(tabletsJson);
+  const paths = [accessoriesJson, phonesJson, tabletsJson];
 
-  const allProducts = [...accessories, ...phones, ...tablets];
+  const allProducts = await Promise.all(
+    paths.map(path => {
+      return getData<ProductItemType[]>(path);
+    }),
+  ).then(results => {
+    return results.flat();
+  });
 
   return allProducts.find(product => product.id === itemId);
 };
