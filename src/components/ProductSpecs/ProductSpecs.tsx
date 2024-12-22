@@ -3,7 +3,7 @@ import './ProductSpecs.scss';
 import classNames from 'classnames';
 
 type Props = {
-  specs: { [key: string]: string };
+  specs: { [key: string]: string | string[] };
   slimText?: boolean;
 };
 
@@ -32,7 +32,7 @@ export const ProductSpecs: React.FC<Props> = ({ specs, slimText }) => {
               classnamesSlim,
             )}
           >
-            {value}
+            {Array.isArray(value) ? value.join(', ') : value}
           </p>
         </div>
       ))}

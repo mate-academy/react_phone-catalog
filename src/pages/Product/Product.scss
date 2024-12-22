@@ -146,10 +146,20 @@
     height: 100%;
 
     border-radius: 100%;
-    box-sizing: border-box;
 
     background-color: #fcdbc1;
-    border: 2px solid #fff;
+
+    filter: contrast(80%);
+
+    &-white-border {
+      width: 100%;
+      height: 100%;
+
+      border-radius: 100%;
+      box-sizing: border-box;
+
+      border: 2px solid #fff;
+    }
 
     &-border {
       width: 32px;
@@ -158,7 +168,11 @@
       border-radius: 100%;
       box-sizing: border-box;
 
-      border: 1px solid #313237;
+      border: 1px solid #e2e6e9;
+
+      &--selected {
+        border-color: #313237;
+      }
     }
   }
 

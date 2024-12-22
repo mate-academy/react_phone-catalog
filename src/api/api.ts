@@ -1,9 +1,13 @@
 import { Category } from '../types/CategoryType';
+import { ProductItemType } from '../types/ProductItemType';
 import { ProductType } from '../types/ProductType';
 import { SortType } from '../types/SortType';
 
 const apiBase = `http://localhost:5173/api`;
 const productsJson = `${apiBase}/products.json`;
+const accessoriesJson = `${apiBase}/accessories.json`;
+const phonesJson = `${apiBase}/phones.json`;
+const tabletsJson = `${apiBase}/tablets.json`;
 
 interface Options {
   perPage?: number;
@@ -12,10 +16,10 @@ interface Options {
   filter?: string;
 }
 
-const getData = async (jsonPath: string): Promise<ProductType[]> => {
+const getData = async <T>(jsonPath: string): Promise<T> => {
   const response = await fetch(jsonPath);
 
-  return response.json();
+  return response.json() as T;
 };
 
 const sortProducts = (
@@ -67,7 +71,7 @@ export const getProducts = async (
   options: Options = { perPage: 16 },
   category?: Category,
 ): Promise<{ products: ProductType[]; pages: number }> => {
-  let products = await getData(productsJson);
+  let products = await getData<ProductType[]>(productsJson);
 
   products = filterProductsByCategory(products, category);
   products = sortProducts(products, options.sortBy);
@@ -76,4 +80,16 @@ export const getProducts = async (
   products = limitProducts(products, options.perPage, options.page);
 
   return { products, pages };
+};
+
+export const getProduct = async (
+  itemId: string,
+): Promise<ProductItemType | undefined> => {
+  const accessories = await getData<ProductItemType[]>(accessoriesJson);
+  const phones = await getData<ProductItemType[]>(phonesJson);
+  const tablets = await getData<ProductItemType[]>(tabletsJson);
+
+  const allProducts = [...accessories, ...phones, ...tablets];
+
+  return allProducts.find(product => product.id === itemId);
 };

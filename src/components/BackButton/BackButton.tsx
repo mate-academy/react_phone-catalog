@@ -1,8 +1,15 @@
+import { useNavigate } from 'react-router-dom';
 import './BackButton.scss';
 
 export const BackButton = () => {
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate(-1);
+  };
+
   return (
-    <div className="back-button">
+    <div className="back-button" onClick={handleClick}>
       <img src="/icons/arrow_left.svg" alt="Arrow left" />
       <p className="back-button__text small-text">Back</p>
     </div>

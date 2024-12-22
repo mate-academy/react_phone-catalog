@@ -18,6 +18,10 @@
     box-shadow: 0 2px 16px 0 #0000001a;
   }
 
+  &__link {
+    display: flex;
+  }
+
   &__image {
     height: 196px;
     margin-bottom: 24px;
@@ -43,6 +47,8 @@
   }
 
   &__price {
+    color: #313237;
+
     &--discount {
       position: relative;
       color: #89939a;

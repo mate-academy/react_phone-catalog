@@ -1,8 +1,9 @@
 import React from 'react';
+import classNames from 'classnames';
+import { Link } from 'react-router-dom';
+import { ProductType } from '../../types/ProductType';
 import { ProductSpecs } from '../ProductSpecs';
 import './ProductCard.scss';
-import classNames from 'classnames';
-import { ProductType } from '../../types/ProductType';
 
 type Props = {
   product: ProductType;
@@ -10,11 +11,14 @@ type Props = {
 };
 
 export const ProductCard: React.FC<Props> = ({ product, wideButton }) => {
-  const { image, name, price, fullPrice, screen, capacity, ram } = product;
+  const { itemId, image, name, price, fullPrice, screen, capacity, ram } =
+    product;
 
   return (
     <div className="product-card">
-      <img src={image} alt={name} className="product-card__image" />
+      <Link to={`/product/${itemId}`} className="product-card__link">
+        <img src={image} alt={name} className="product-card__image" />
+      </Link>
 
       <div className="product-card__container">
         <p className="product-card__title body-text">{name}</p>

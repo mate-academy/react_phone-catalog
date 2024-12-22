@@ -1,10 +1,38 @@
+import { useParams } from 'react-router-dom';
+import classNames from 'classnames';
 import { BackButton } from '../../components/BackButton';
 import { Breadcrumbs } from '../../components/Breadcrumbs';
 import { ProductSlider } from '../../components/ProductSlider';
 import { ProductSpecs } from '../../components/ProductSpecs';
+import { useEffect, useState } from 'react';
+import { getProduct } from '../../api/api';
+import { ProductItemType } from '../../types/ProductItemType';
+import { NormalizeImagePath } from '../../utils/NormalizeImagePath';
 import './Product.scss';
 
 export const Product = () => {
+  const [product, setProduct] = useState<ProductItemType | undefined>(
+    undefined,
+  );
+
+  let { id } = useParams();
+
+  const fetchProduct = async () => {
+    if (!id) {
+      return;
+    }
+
+    setProduct(await getProduct(id));
+  };
+
+  useEffect(() => {
+    fetchProduct();
+  }, [id]);
+
+  if (!product) {
+    return;
+  }
+
   return (
     <div className="product">
       <Breadcrumbs
@@ -13,62 +41,69 @@ export const Product = () => {
       <div className="product__back-button">
         <BackButton />
       </div>
-      <h2 className="product__title">
-        Apple iPhone 11 Pro Max 64GB Gold (iMT9G2FS/A)
-      </h2>
+      <h2 className="product__title">{product.name}</h2>
       <div className="product__container">
         <div className="product__image square-container">
-          <img
-            src="/img/phones/apple-iphone-11-pro-max/gold/00.webp"
-            alt="Image"
-          />
+          <img src={NormalizeImagePath(product.images[0])} alt="Image" />
         </div>
 
         <div className="product__small-images">
-          <div className="product__small-images-image square-container">
-            <img
-              src="/img/phones/apple-iphone-11-pro-max/gold/00.webp"
-              alt="Image"
-            />
-          </div>
-          <div className="product__small-images-image square-container">
-            <img
-              src="/img/phones/apple-iphone-11-pro-max/gold/02.webp"
-              alt="Image"
-            />
-          </div>
+          {product.images.map(image => (
+            <div
+              className="product__small-images-image square-container"
+              key={image}
+            >
+              <img src={NormalizeImagePath(image)} alt="Product image" />
+            </div>
+          ))}
         </div>
 
         <div className="product__details">
           <p className="product__id product__id-mobile small-text">
-            ID: 802390
+            ID: {product.id}
           </p>
 
           <p className="product__details-name small-text">Available colors</p>
           <div className="product__selector-container">
-            <div className="product__color-border">
-              <div className="product__color"></div>
-            </div>
+            {product.colorsAvailable.map(color => (
+              <div
+                className={classNames('product__color-border', {
+                  'product__color-border--selected': product.color === color,
+                })}
+              >
+                <div className="product__color-white-border">
+                  <div
+                    className="product__color"
+                    style={{ backgroundColor: color }}
+                  ></div>
+                </div>
+              </div>
+            ))}
           </div>
 
           <div className="divider-line"></div>
 
           <p className="product__details-name small-text">Select capacity</p>
           <div className="product__selector-container">
-            <button className="product__capacity-button">64 GB</button>
-            <button className="product__capacity-button button--white">
-              256 GB
-            </button>
-            <button className="product__capacity-button button--white">
-              512 GB
-            </button>
+            {product.capacityAvailable.map(capacity => (
+              <button
+                key={capacity}
+                className={classNames('product__capacity-button', {
+                  'button--white': product.capacity !== capacity,
+                })}
+              >
+                {capacity}
+              </button>
+            ))}
           </div>
 
           <div className="divider-line"></div>
 
           <div className="product__price-container">
-            <h2 className="product__price h2--desktop">$799</h2>
-            <h3 className="product__old-price">$1199</h3>
+            <h2 className="product__price h2--desktop">
+              ${product.priceDiscount}
+            </h2>
+            <h3 className="product__old-price">${product.priceRegular}</h3>
           </div>
 
           <div className="product__buttons">
@@ -81,16 +116,16 @@ export const Product = () => {
           <div className="product__specs-container">
             <ProductSpecs
               specs={{
-                Screen: '6.5” OLED',
-                Resolution: '2688x1242',
-                Processor: 'Apple A12 Bionic',
-                RAM: '3 GB',
+                Screen: product.screen,
+                Resolution: product.resolution,
+                Processor: product.processor,
+                RAM: product.ram,
               }}
             />
           </div>
         </div>
 
-        <p className="product__id small-text">ID: 802390</p>
+        <p className="product__id small-text">ID: {product.id}</p>
       </div>
 
       <div className="product__description">
@@ -100,45 +135,19 @@ export const Product = () => {
           <div className="divider-line"></div>
 
           <div className="product__description-info-container">
-            <div className="product__description-info-block">
-              <h4 className="product__description-info-title">
-                And then there was Pro
-              </h4>
-              <p className="product__description-info-text body-text slim-text">
-                A transformative triple‑camera system that adds tons of
-                capability without complexity. An unprecedented leap in battery
-                life. And a mind‑blowing chip that doubles down on machine
-                learning and pushes the boundaries of what a smartphone can do.
-                Welcome to the first iPhone powerful enough to be called Pro.
-              </p>
-            </div>
-
-            <div className="product__description-info-block">
-              <h4 className="product__description-info-title">Camera</h4>
-              <p className="product__description-info-text body-text slim-text">
-                Meet the first triple‑camera system to combine cutting‑edge
-                technology with the legendary simplicity of iPhone. Capture up
-                to four times more scene. Get beautiful images in drastically
-                lower light. Shoot the highest‑quality video in a smartphone —
-                then edit with the same tools you love for photos. You’ve never
-                shot with anything like it.
-              </p>
-            </div>
-
-            <div className="product__description-info-block">
-              <h4 className="product__description-info-title">
-                Shoot it. Flip it. Zoom it. Crop it. Cut it. Light it. Tweak it.
-                Love it.
-              </h4>
-              <p className="product__description-info-text body-text slim-text">
-                iPhone 11 Pro lets you capture videos that are beautifully true
-                to life, with greater detail and smoother motion. Epic
-                processing power means it can shoot 4K video with extended
-                dynamic range and cinematic video stabilization — all at 60 fps.
-                You get more creative control, too, with four times more scene
-                and powerful new editing tools to play with.
-              </p>
-            </div>
+            {product.description.map(description => (
+              <div
+                className="product__description-info-block"
+                key={description.title}
+              >
+                <h4 className="product__description-info-title">
+                  {description.title}
+                </h4>
+                <p className="product__description-info-text body-text slim-text">
+                  {description.text}
+                </p>
+              </div>
+            ))}
           </div>
         </div>
 
@@ -149,14 +158,13 @@ export const Product = () => {
 
           <ProductSpecs
             specs={{
-              Screen: '6.5” OLED',
-              Resolution: '2688x1242',
-              Processor: 'Apple A12 Bionic',
-              RAM: '3 GB',
-              'Built in memory': '64 GB',
-              Camera: '12 Mp + 12 Mp + 12 Mp (Triple)',
-              Zoom: 'Optical, 2x',
-              Cell: 'GSM, LTE, UMTS',
+              Screen: product.screen,
+              Resolution: product.resolution,
+              Processor: product.processor,
+              RAM: product.ram,
+              Camera: product.camera,
+              Zoom: product.zoom,
+              Cell: product.cell,
             }}
             slimText={true}
           />
@@ -164,7 +172,7 @@ export const Product = () => {
       </div>
 
       <div className="product__slider">
-        <ProductSlider title="You may also like" />
+        <ProductSlider products={[]} title="You may also like" />
       </div>
     </div>
   );
