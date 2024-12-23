@@ -1,0 +1,42 @@
+.nav {
+  color: $secondary-color;
+  @extend %uppercase;
+  @include hover(color, $primary-color);
+  position: relative;
+  align-items: center;
+  height: 100%;
+    display: flex;
+
+  &::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    display: block;
+    height: 3px;
+    transform: translateX(-50%);
+    width: 0;
+    background-color: $primary-color;
+    transition: all $effect-duration ease-in-out;
+  }
+
+  &:hover::after {
+    width: 100%;
+  }
+
+  &-active {
+    color: $primary-color;
+
+    &::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      bottom: 0;
+      display: block;
+      height: 3px;
+      width: 100%;
+      background-color: $primary-color;
+    }
+  }
+}
+

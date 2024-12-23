@@ -1,0 +1,15 @@
+.welcome {
+  margin: 24px 0;
+
+  @include onTablet {
+    margin: 32px 0;
+  }
+
+  @include onDesktop {
+    margin: 56px 0;
+  }
+
+  &__title {
+    @include container;
+  }
+}

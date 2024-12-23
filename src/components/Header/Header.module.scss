@@ -1,0 +1,54 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid $elements-color;
+
+  &__nav {
+    display: flex;
+
+    @include onTablet {
+      gap: 16px;
+    }
+
+    @include onDesktop {
+      gap: 24px;
+    }
+  }
+
+  &__nav-list {
+    display: none;
+
+    @include onTablet {
+      display: flex;
+      gap: 32px;
+    }
+
+    @include onDesktop {
+      gap: 64px;
+    }
+  }
+
+  &__menu-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    @include onTablet {
+      display: none;
+    }
+  }
+
+  &__icons {
+    display: none;
+
+    @include onTablet {
+      display: flex;
+    }
+  }
+
+  &__icon {
+    border: none;
+    border-left: 1px solid $elements-color;
+  }
+}

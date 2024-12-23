@@ -1,0 +1,12 @@
+.logo {
+  display: block;
+  height: 22px;
+  margin: 13px 16px;
+
+  @include hover(transform, scale(1.1));
+
+  @include onDesktop {
+    height: 28px;
+    margin: 18px 24px;
+  }
+}

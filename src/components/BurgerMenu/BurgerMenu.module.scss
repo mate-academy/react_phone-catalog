@@ -1,0 +1,48 @@
+.menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100%;
+  background-color: $white-color;
+  overflow: hidden;
+  z-index: 100;
+
+  @include onTablet {
+    display: none;
+  }
+
+  &__nav-list {
+    margin-top: 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    text-align: center;
+  }
+
+  &__nav-text {
+    padding: 8px 0;
+    width: min-content;
+  }
+
+  &__icons {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    border-top: 1px solid $elements-color;
+  }
+
+  &__icon {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    border: none;
+    border-left: 1px solid $elements-color;
+
+    &:first-child {
+      border-left: none;
+    }
+  }
+}

@@ -1,0 +1,115 @@
+%font-mont-regular {
+  font-family: 'Mont', Arial, Helvetica, sans-serif;
+  font-weight: 500;
+  font-style: normal;
+}
+
+%font-mont-semibold {
+  font-family: 'Mont', Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+%font-mont-bold {
+  font-family: 'Mont', Arial, Helvetica, sans-serif;
+  font-weight: 800;
+  font-style: normal;
+}
+
+%h1 {
+  @extend %font-mont-bold;
+
+  font-weight: 800;
+  font-size: 32px;
+  line-height: 41px;
+  letter-spacing: -0.01em;
+  color: $primary-color;
+
+  @include onTablet {
+    font-size: 48px;
+    line-height: 56px;
+  }
+}
+
+%h2 {
+  @extend %font-mont-bold;
+
+  font-weight: 800;
+  font-size: 22px;
+  line-height: 31px;
+  letter-spacing: 0;
+  color: $primary-color;
+
+  @include onTablet {
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+  }
+}
+
+%h3 {
+  @extend %font-mont-semibold;
+
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 26px;
+  letter-spacing: 0;
+  color: $primary-color;
+
+  @include onTablet {
+    font-weight: 800;
+    font-size: 22px;
+    line-height: 31px;
+  }
+}
+
+%h4 {
+  @extend %font-mont-semibold;
+
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: 0;
+
+  @include onTablet {
+    font-size: 20px;
+    line-height: 26px;
+  }
+}
+
+%uppercase {
+  @extend %font-mont-bold;
+
+  font-weight: 800;
+  text-transform: uppercase;
+  font-size: 12px;
+  line-height: 11px;
+  letter-spacing: 0.04em;
+}
+
+%buttons {
+  @extend %font-mont-semibold;
+
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 0;
+}
+
+%body-text {
+  @extend %font-mont-regular;
+
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 0;
+}
+
+%small-text {
+  @extend %font-mont-semibold;
+
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 15px;
+  letter-spacing: 0;
+}

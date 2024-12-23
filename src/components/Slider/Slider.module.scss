@@ -1,0 +1,278 @@
+.slider {
+  &__container {
+  @include onTablet {
+    @include container;
+    @include pageGrid;
+
+    grid-template-rows: auto 1fr;
+    row-gap: 0;
+    position: relative;
+  }
+}
+
+  &__content {
+    grid-column: span 4;
+    background-color: #000;
+    height: 100%;
+
+    @include onTablet {
+      display: flex;
+      justify-content: start;
+      align-items: center;
+    }
+  }
+
+  &__info {
+    @include onTablet {
+      height: 95%;
+      width: 45%;
+      background-color: $primary-color;
+      border-radius: 20px;
+      margin-left: 5px;
+      padding: 0 25px;
+      position: relative;
+    }
+
+    @include onDesktop {
+      width: 50%;
+      padding: 0 40px;
+    }
+  }
+
+
+  &__title {
+    @extend %h2;
+    min-width: 200px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 10%;
+    text-align: center;
+    background: linear-gradient(50deg, #b84dd9, #7e35e4, #dfa8df);
+
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    @include onTablet {
+      font-size: 25px;
+      line-height: 31px;
+      text-align: left;
+      position: relative;
+      left: 0;
+      transform: translateX(0);
+      max-width: 200px;
+    }
+
+    @include onDesktop {
+      font-size: 45px;
+      max-width: 350px;
+      line-height: 45px;
+    }
+  }
+
+  &__text {
+    @extend %small-text;
+    display: none;
+
+    @include onTablet {
+      display: block;
+      color: $secondary-color;
+      position: absolute;
+      top: 50%;
+    }
+
+    @include onDesktop {
+      font-size: 18px;
+      top: 40%;
+    }
+  }
+
+
+  &__button {
+    @extend %small-text;
+    font-size: 10px;
+    display: none;
+
+    @include onTablet {
+      position: absolute;
+      bottom: 10px;
+      color: $white-color;
+      font-weight: 400;
+      text-transform: uppercase;
+      display: inline-block;
+      border: 1px solid $secondary-color;
+      border-radius: 30px;
+      padding: 10px 20px;
+    }
+
+    @include onDesktop {
+      font-size: 16px;
+      padding: 20px 35px;
+      border-radius: 40px;
+      bottom: 10%;
+    }
+  }
+
+
+  &__icon {
+    display: none;
+
+    @include onTablet {
+      display: inline;
+      background: none;
+      -webkit-background-clip: unset;
+      -webkit-text-fill-color: currentColor;
+      color: inherit;
+      padding-left: 5px;
+      font-size: 20px;
+      position: absolute;
+    }
+
+    @include onDesktop {
+      font-size: 35px;
+    }
+  }
+
+  &__prev,
+  &__next {
+    display: none;
+
+    @include onTablet {
+      display: block;
+      grid-row: 1;
+      background-color: inherit;
+      border: 1px solid $icons-color;
+
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: 70%;
+      cursor: pointer;
+    }
+
+    @include hover(background-color, $elements-color);
+  }
+
+  &__prev {
+    @include onTablet {
+      grid-column: 1 / 2;
+      background-image: url(../../../public/img/icons/arrow-left.svg);
+    }
+
+    @include onDesktop {
+      grid-column: 1 / 2;
+    }
+  }
+
+  &__next {
+    @include onTablet {
+      grid-column: 12 / 13;
+      background-image: url(../../../public/img/icons/arrow-right.svg);
+    }
+
+    @include onDesktop {
+      grid-column: 24 / 25;
+    }
+  }
+}
+
+.swiper {
+  width: 100%;
+
+  @include onTablet {
+    grid-column: 2 / 12;
+  }
+
+  @include onDesktop {
+    grid-column: 2 / 24;
+  }
+}
+
+.swiper-wrapper {
+  aspect-ratio: 1 / 1;
+  height: 100%;
+  cursor: grab;
+
+
+  &:active {
+    cursor: grabbing;
+  }
+
+  @include onTablet {
+    aspect-ratio: unset;
+    min-height: 189px;
+  }
+}
+
+.swiper-slide {
+  height: 100%;
+
+  img {
+    width: 100%;
+    height: 70%;
+    object-fit: cover;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+
+    @include onTablet {
+      width: 55%;
+      height: 100%;
+      position: relative;
+    }
+
+    @include onDesktop {
+      width: 53%;
+    }
+  }
+}
+
+.button-Atrrangment {
+  padding: 10px 3px;
+  margin-top: 8px;
+
+  @include onTablet {
+    grid-column: 6 / 8;
+  }
+
+  @include onDesktop {
+    grid-column: 12 / 14;
+  }
+}
+
+.swiper-pagination {
+  top: unset !important;
+  left: unset !important;
+  right: unset !important;
+  width: unset !important;
+  position: unset !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+
+  &-bullet {
+    width: 14px;
+    height: 4px;
+    border-radius: 0%;
+    background-color: $elements-color;
+    opacity: 1;
+    transition: background-color 0.3s ease;
+    position: relative;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: -10px;
+      bottom: -10px;
+      left: -5px;
+      right: -5px;
+      background-color: transparent;
+      z-index: 1;
+    }
+
+    &-active {
+      background: $primary-color;
+    }
+  }
+}
