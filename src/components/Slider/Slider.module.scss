@@ -156,7 +156,7 @@
   &__prev {
     @include onTablet {
       grid-column: 1 / 2;
-      background-image: url(../../../public/img/icons/arrow-left.svg);
+      background-image: url(img/icons/arrow-left.svg);
     }
 
     @include onDesktop {
@@ -167,7 +167,7 @@
   &__next {
     @include onTablet {
       grid-column: 12 / 13;
-      background-image: url(../../../public/img/icons/arrow-right.svg);
+      background-image: url(img/icons/arrow-right.svg);
     }
 
     @include onDesktop {
