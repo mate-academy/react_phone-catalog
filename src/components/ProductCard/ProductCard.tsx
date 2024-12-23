@@ -1,9 +1,15 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import classNames from 'classnames';
 import { Link } from 'react-router-dom';
 import { ProductType } from '../../types/ProductType';
 import { ProductSpecs } from '../ProductSpecs';
 import './ProductCard.scss';
+import {
+  addFavourite,
+  isFavourite,
+  removeFavourite,
+} from '../../api/favourites';
+import { addToCart, isInCart, removeFromCart } from '../../api/cart';
 
 type Props = {
   product: ProductType;
@@ -13,6 +19,29 @@ type Props = {
 export const ProductCard: React.FC<Props> = ({ product, wideButton }) => {
   const { itemId, image, name, price, fullPrice, screen, capacity, ram } =
     product;
+
+  const [inFavourites, setInFavourites] = useState(isFavourite(itemId));
+  const [inCart, setInCart] = useState(isInCart(itemId));
+
+  const handleFavourite = () => {
+    if (inFavourites) {
+      removeFavourite(itemId);
+    } else {
+      addFavourite(itemId);
+    }
+
+    setInFavourites(isFavourite(itemId));
+  };
+
+  const handleCart = () => {
+    if (inCart) {
+      removeFromCart(itemId);
+    } else {
+      addToCart(itemId);
+    }
+
+    setInCart(isInCart(itemId));
+  };
 
   return (
     <div className="product-card">
@@ -45,11 +74,26 @@ export const ProductCard: React.FC<Props> = ({ product, wideButton }) => {
             'product-card__buttons--wide': wideButton,
           })}
         >
-          <button className={classNames({ 'button--wide': wideButton })}>
-            Add to cart
+          <button
+            className={classNames({
+              'button--wide': wideButton,
+              'button--white button--white--small-padding button--green-text':
+                inCart,
+            })}
+            onClick={handleCart}
+          >
+            {inCart ? 'Added to cart' : 'Add to cart'}
           </button>
-          <button className="button--white">
-            <img src="/icons/favourite.svg" alt="Favourite icon" />
+          <button className="button--white" onClick={handleFavourite}>
+            <img
+              className="product-card__fav"
+              src={
+                inFavourites
+                  ? '/icons/favourite_filled.svg'
+                  : '/icons/favourite.svg'
+              }
+              alt="Favourite icon"
+            />
           </button>
         </div>
       </div>

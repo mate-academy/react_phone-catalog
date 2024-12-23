@@ -99,7 +99,7 @@
   }
 
   &__details {
-    grid-column: 14 / -1;
+    grid-column: 14 / 21;
 
     position: relative;
 
@@ -220,7 +220,13 @@
   }
 
   &__cart-button {
-    padding: 13.5px 90px;
+    width: 100%;
+
+    padding: 13.5px;
+
+    &--green {
+      padding: 12.5px;
+    }
 
     @include mixins.media-tablet {
       padding: 13.5px 49.5px;

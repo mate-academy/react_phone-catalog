@@ -10,6 +10,12 @@ import { ProductItemType } from '../../types/ProductItemType';
 import { NormalizeImagePath } from '../../utils/NormalizeImagePath';
 import { getColorByName } from '../../utils/Colors';
 import './Product.scss';
+import {
+  addFavourite,
+  isFavourite,
+  removeFavourite,
+} from '../../api/favourites';
+import { addToCart, isInCart, removeFromCart } from '../../api/cart';
 
 export const Product = () => {
   const [product, setProduct] = useState<ProductItemType | undefined>(
@@ -19,12 +25,46 @@ export const Product = () => {
   const { id } = useParams();
   const location = useLocation();
 
+  const [inFavourites, setInFavourites] = useState(false);
+  const [inCart, setInCart] = useState(false);
+
+  const handleFavourite = () => {
+    if (!product) {
+      return;
+    }
+
+    if (inFavourites) {
+      removeFavourite(product.id);
+    } else {
+      addFavourite(product.id);
+    }
+
+    setInFavourites(isFavourite(product.id));
+  };
+
+  const handleCart = () => {
+    if (!product) {
+      return;
+    }
+
+    if (inCart) {
+      removeFromCart(product.id);
+    } else {
+      addToCart(product.id);
+    }
+
+    setInCart(isInCart(product.id));
+  };
+
   const fetchProduct = async () => {
     if (!id) {
       return;
     }
 
     setProduct(await getProduct(id));
+
+    setInFavourites(isFavourite(id));
+    setInCart(isInCart(id));
   };
 
   useEffect(() => {
@@ -115,9 +155,27 @@ export const Product = () => {
           </div>
 
           <div className="product__buttons">
-            <button className="product__cart-button">Add to cart</button>
-            <button className="product__favourite-button button--white">
-              <img src="/icons/favourite.svg" alt="Favourite icon" />
+            <button
+              className={classNames('product__cart-button', {
+                'button--white button--white--small-padding button--green-text product__cart-button--green':
+                  inCart,
+              })}
+              onClick={handleCart}
+            >
+              {inCart ? 'Added to cart' : 'Add to cart'}
+            </button>
+            <button
+              className="product__favourite-button button--white"
+              onClick={handleFavourite}
+            >
+              <img
+                src={
+                  inFavourites
+                    ? '/icons/favourite_filled.svg'
+                    : '/icons/favourite.svg'
+                }
+                alt="Favourite icon"
+              />
             </button>
           </div>
 

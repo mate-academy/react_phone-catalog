@@ -14,6 +14,7 @@ interface Options {
   page?: number;
   sortBy?: SortType;
   filter?: string;
+  itemIds?: string[];
 }
 
 const getData = async <T>(jsonPath: string): Promise<T> => {
@@ -58,8 +59,6 @@ const limitProducts = (
   const startIndex = perPage * (page - 1);
   const endIndex = startIndex + perPage;
 
-  console.log(startIndex, endIndex);
-
   return products.slice(startIndex, endIndex);
 };
 
@@ -67,19 +66,37 @@ const countPages = (productsCount: number, perPage: number = 16) => {
   return Math.ceil(productsCount / perPage);
 };
 
+const filterIds = (products: ProductType[], itemIds?: string[]) => {
+  if (!itemIds) {
+    return products;
+  }
+
+  return products.filter(product => itemIds.includes(product.itemId));
+};
+
 export const getProducts = async (
   options: Options = { perPage: 16 },
   category?: Category,
-): Promise<{ products: ProductType[]; pages: number }> => {
+): Promise<{
+  products: ProductType[];
+  pages: number;
+  totalProducts: number;
+}> => {
   let products = await getData<ProductType[]>(productsJson);
 
   products = filterProductsByCategory(products, category);
   products = sortProducts(products, options.sortBy);
 
+  const totalProducts = products.length;
   const pages = countPages(products.length, options.perPage);
-  products = limitProducts(products, options.perPage, options.page);
 
-  return { products, pages };
+  if (options.itemIds) {
+    products = filterIds(products, options.itemIds);
+  } else {
+    products = limitProducts(products, options.perPage, options.page);
+  }
+
+  return { products, pages, totalProducts };
 };
 
 export const getProduct = async (
@@ -96,4 +113,12 @@ export const getProduct = async (
   });
 
   return allProducts.find(product => product.id === itemId);
+};
+
+export const getFromLocalStorage = (key: string) => {
+  return JSON.parse(localStorage.getItem(key) || '[]');
+};
+
+export const setInLocalStorage = (key: string, value: string | Object) => {
+  localStorage.setItem(key, JSON.stringify(value));
 };

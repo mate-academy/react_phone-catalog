@@ -24,4 +24,14 @@
 
     @include mixins.page-grid;
   }
+
+  &__empty {
+    width: 100%;
+    margin-top: 50px;
+
+    display: flex;
+    justify-content: center;
+
+    color: #89939a;
+  }
 }

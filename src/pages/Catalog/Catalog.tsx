@@ -23,6 +23,7 @@ export const Catalog: React.FC<Props> = ({ category }) => {
   const [products, setProducts] = useState<ProductType[]>([]);
   const [pageCount, setPageCount] = useState(1);
   const [page, setPage] = useState(1);
+  const [totalProducts, setTotalProducts] = useState(0);
 
   const [sortBy, setSortBy] = useState<keyof typeof SortType>(DEFAULT_SORT_BY);
   const [perPage, setPerPage] = useState(DEFAULT_PER_PAGE);
@@ -47,6 +48,7 @@ export const Catalog: React.FC<Props> = ({ category }) => {
 
     setPageCount(response.pages);
     setProducts(response.products);
+    setTotalProducts(response.totalProducts);
   };
 
   useEffect(() => {
@@ -94,8 +96,10 @@ export const Catalog: React.FC<Props> = ({ category }) => {
     <div className="catalog">
       <Breadcrumbs paths={['Phones']} />
 
-      <h1 className="catalog__title">Mobile phones</h1>
-      <p className="catalog__count body-text">95 models</p>
+      <h1 className="catalog__title">
+        {category[0].toUpperCase().concat(category.slice(1))}
+      </h1>
+      <p className="catalog__count body-text">{totalProducts} models</p>
 
       <div className="catalog__filters">
         <div className="catalog__filters-filter">

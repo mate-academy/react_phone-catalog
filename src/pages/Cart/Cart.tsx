@@ -1,7 +1,81 @@
+import { useEffect, useMemo, useState } from 'react';
+import { getCart, removeFromCart, updateInCart } from '../../api/cart';
 import { BackButton } from '../../components/BackButton';
+import { CartItemType } from '../../types/CartItemType';
+import { ProductType } from '../../types/ProductType';
+import { getProducts } from '../../api/api';
+import { CartItem } from './components/CartItem';
 import './Cart.scss';
 
+type Item = CartItemType & ProductType;
+
 export const Cart = () => {
+  const [items, setItems] = useState<Item[]>([]);
+
+  const fetchItems = async () => {
+    const cart = getCart();
+
+    const response = await getProducts({
+      itemIds: cart.map(item => item.itemId),
+    });
+
+    const items: Item[] = [];
+
+    for (const item of cart) {
+      items.push({
+        ...item,
+        ...response.products.find(product => product.itemId === item.itemId)!,
+      });
+    }
+
+    setItems(items);
+  };
+
+  const removeItem = (itemId: string) => {
+    removeFromCart(itemId);
+
+    fetchItems();
+  };
+
+  const updateQuantity = (itemId: string, quantity: number) => {
+    if (!items) return;
+
+    const newItems = [...items];
+
+    const item = newItems.find(item => item.itemId === itemId);
+
+    if (!item) {
+      return;
+    }
+
+    item.quantity = quantity;
+
+    updateInCart(itemId, quantity);
+    setItems(newItems);
+  };
+
+  const totalAmount = useMemo(() => {
+    if (!items.length) {
+      return 0;
+    }
+
+    const prices = items.map(
+      (product, index) => product.price * items[index].quantity,
+    );
+
+    const total = prices.reduce((prev, current) => (prev += current));
+
+    return total;
+  }, [items, items]);
+
+  useEffect(() => {
+    fetchItems();
+  }, []);
+
+  if (!items) {
+    return;
+  }
+
   return (
     <div className="cart">
       <BackButton />
@@ -9,130 +83,40 @@ export const Cart = () => {
       <h1 className="cart__title">Cart</h1>
 
       <div className="cart__container">
-        <div className="cart__products">
-          <div className="cart__product">
-            <div className="cart__product-group">
-              <img
-                src="/icons/close.svg"
-                alt="Close icon"
-                className="cart__product-close"
-              />
-
-              <div className="cart__product-image-container square-container">
-                <img
-                  src="/img/phones/apple-iphone-14/midnight/00.webp"
-                  alt="Iphone 14 photo"
-                  className="cart__product-image"
+        {!!items.length ? (
+          <>
+            <div className="cart__products">
+              {items.map((item, index) => (
+                <CartItem
+                  product={item}
+                  quantity={item.quantity}
+                  handleQuantity={updateQuantity}
+                  handleRemove={removeItem}
+                  key={index}
                 />
-              </div>
+              ))}
+            </div>
 
-              <p className="cart__product-name body-text slim-text">
-                Apple iPhone 14 Pro 128GB Silver (MQ023)
+            <div className="cart__summary">
+              <h2 className="cart__summary-amount h2--desktop">
+                ${totalAmount}
+              </h2>
+              <p className="cart__summary-items body-text">
+                Total for {items.length} items
               </p>
+
+              <div className="divider-line"></div>
+
+              <button className="cart__summary-button">Checkout</button>
             </div>
-
-            <div className="cart__product-group">
-              <div className="cart__product-quantity">
-                <button className="cart__product-quantity-button button--white">
-                  <img src="/icons/minus.svg" alt="Minus icon" />
-                </button>
-
-                <p className="body-text">1</p>
-
-                <button className="cart__product-quantity-button button--white">
-                  <img src="/icons/plus.svg" alt="Plus icon" />
-                </button>
-              </div>
-
-              <h3 className="cart__product-price">$999</h3>
+          </>
+        ) : (
+          <>
+            <div className="cart__empty">
+              <h2>Cart is empty</h2>
             </div>
-          </div>
-
-          <div className="cart__product">
-            <div className="cart__product-group">
-              <img
-                src="/icons/close.svg"
-                alt="Close icon"
-                className="cart__product-close"
-              />
-
-              <div className="cart__product-image-container square-container">
-                <img
-                  src="/img/phones/apple-iphone-14/midnight/00.webp"
-                  alt="Iphone 14 photo"
-                  className="cart__product-image"
-                />
-              </div>
-
-              <p className="cart__product-name body-text slim-text">
-                Apple iPhone 14 Pro 128GB Silver (MQ023)
-              </p>
-            </div>
-
-            <div className="cart__product-group">
-              <div className="cart__product-quantity">
-                <button className="cart__product-quantity-button button--white">
-                  <img src="/icons/minus.svg" alt="Minus icon" />
-                </button>
-
-                <p className="body-text">1</p>
-
-                <button className="cart__product-quantity-button button--white">
-                  <img src="/icons/plus.svg" alt="Plus icon" />
-                </button>
-              </div>
-
-              <h3 className="cart__product-price">$999</h3>
-            </div>
-          </div>
-
-          <div className="cart__product">
-            <div className="cart__product-group">
-              <img
-                src="/icons/close.svg"
-                alt="Close icon"
-                className="cart__product-close"
-              />
-
-              <div className="cart__product-image-container square-container">
-                <img
-                  src="/img/phones/apple-iphone-14/midnight/00.webp"
-                  alt="Iphone 14 photo"
-                  className="cart__product-image"
-                />
-              </div>
-
-              <p className="cart__product-name body-text slim-text">
-                Apple iPhone 14 Pro 128GB Silver (MQ023)
-              </p>
-            </div>
-
-            <div className="cart__product-group">
-              <div className="cart__product-quantity">
-                <button className="cart__product-quantity-button button--white">
-                  <img src="/icons/minus.svg" alt="Minus icon" />
-                </button>
-
-                <p className="body-text">1</p>
-
-                <button className="cart__product-quantity-button button--white">
-                  <img src="/icons/plus.svg" alt="Plus icon" />
-                </button>
-              </div>
-
-              <h3 className="cart__product-price">$999</h3>
-            </div>
-          </div>
-        </div>
-
-        <div className="cart__summary">
-          <h2 className="cart__summary-amount h2--desktop">$2657</h2>
-          <p className="cart__summary-items body-text">Total for 3 items</p>
-
-          <div className="divider-line"></div>
-
-          <button className="cart__summary-button">Checkout</button>
-        </div>
+          </>
+        )}
       </div>
     </div>
   );
