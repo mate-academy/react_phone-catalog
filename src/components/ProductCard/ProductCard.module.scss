@@ -1,0 +1,18 @@
+.productCard {
+  margin-top: 24px;
+
+  &__box {
+    border: 1px solid $elements-color;
+    padding: 32px;
+  }
+
+  &__img {
+    width: 100%;
+    height: 100%;
+  }
+
+  &__name {
+    @extend %body-text;
+    font-weight: 400;
+  }
+}

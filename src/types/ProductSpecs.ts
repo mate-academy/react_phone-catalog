@@ -3,9 +3,15 @@ export type Description = {
   text: string[];
 };
 
+export enum Category {
+  Accessories = 'accessories',
+  Phones = 'phones',
+  Tablets = 'tablets',
+}
+
 export type ProductSpecs = {
   id: string;
-  category: string;
+  category: Category;
   namespaceId: string;
   name: string;
   capacityAvailable: string[];

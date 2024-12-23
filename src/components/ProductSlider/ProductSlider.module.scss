@@ -27,12 +27,24 @@
     background: none;
     height: 32px;
     width: 32px;
-    border: 1px solid $elements-color;
+    border: 1px solid $icons-color;
 
     background-repeat: no-repeat;
     background-position: center;
     background-size: 70%;
     cursor: pointer;
+
+    &:active {
+      border-color: $primary-color;
+    }
+
+    &:disabled {
+      opacity: 0.5;
+
+      &:active {
+        border-color: $icons-color;
+      }
+    }
   }
 
   &__prev {

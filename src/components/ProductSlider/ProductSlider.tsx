@@ -3,44 +3,40 @@ import { Navigation, EffectCreative } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/effect-creative';
+import { Product } from '../../types/Product';
+import { ProductCard } from '../ProductCard/ProductCard';
 
 type Props = {
   title: string;
+  product: Product[];
 };
 
-export const ProductSlider: React.FC<Props> = ({ title }) => {
+export const ProductSlider: React.FC<Props> = ({ title, product }) => {
   return (
     <section className="productSlider">
       <div className="productSlider__header">
         <h2>{title}</h2>
         <div className="productSlider__navigation">
-          <button className="productSlider__prev" id={'slidePrev'}></button>
-          <button className="productSlider__next" id={'slideNext'}></button>
+          <button className="productSlider__prev" id={'productPrev'}></button>
+          <button className="productSlider__next" id={'productNext'}></button>
         </div>
       </div>
       <Swiper
         modules={[Navigation, EffectCreative]}
-        slidesPerView={1}
+        slidesPerView={1.4}
+        spaceBetween={16}
         navigation={{
-          nextEl: '#slideNext',
-          prevEl: '#slidePrev',
-        }}
-        loop={true}
-        effect="creative"
-        creativeEffect={{
-          prev: {
-            opacity: 0,
-            translate: ['-100%', 0, 0],
-          },
-          next: {
-            opacity: 0,
-            translate: ['100%', 0, 0],
-          },
+          nextEl: '#productNext',
+          prevEl: '#productPrev',
         }}
       >
-        <SwiperSlide>
-          <h1>2</h1>
-        </SwiperSlide>
+        {product.map((prod, index) => (
+          <SwiperSlide key={index}>
+            <div className="box">
+              <ProductCard prod={prod} />
+            </div>
+          </SwiperSlide>
+        ))}
       </Swiper>
     </section>
   );

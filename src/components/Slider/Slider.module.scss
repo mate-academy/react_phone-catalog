@@ -88,6 +88,24 @@
     }
   }
 
+  &__img {
+    width: 100%;
+    height: 70%;
+    object-fit: cover;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+
+    @include onTablet {
+      width: 55%;
+      height: 100%;
+      position: relative;
+    }
+
+    @include onDesktop {
+      width: 53%;
+    }
+  }
 
   &__button {
     @extend %small-text;
@@ -206,25 +224,6 @@
 
 .swiper-slide {
   height: 100%;
-
-  img {
-    width: 100%;
-    height: 70%;
-    object-fit: cover;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-
-    @include onTablet {
-      width: 55%;
-      height: 100%;
-      position: relative;
-    }
-
-    @include onDesktop {
-      width: 53%;
-    }
-  }
 }
 
 .button-Atrrangment {
