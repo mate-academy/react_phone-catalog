@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useStateContext } from '../../state/state';
 import { Loader } from '../../components';
 import './HomePage.scss';
@@ -7,6 +7,11 @@ import { useLoadProducts } from '../../hooks/useLoadProducts';
 
 export const HomePage: React.FC = () => {
   const { state } = useStateContext();
+  const loadProducts = useLoadProducts();
+
+  useEffect(() => {
+    loadProducts();
+  }, [loadProducts]);
 
   useLoadProducts();
 

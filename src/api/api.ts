@@ -3,7 +3,7 @@ import { Product, ProductDetails, Slide } from '../types';
 
 const BASE_URL = 'https://siefimov.github.io/react_phone-catalog';
 
-export const getProdutcs = async (): Promise<Product[]> => {
+export const getProducts = async (): Promise<Product[]> => {
   const response = await fetch(BASE_URL + ApiRoutes.PRODUCTS);
 
   if (!response.ok) {
