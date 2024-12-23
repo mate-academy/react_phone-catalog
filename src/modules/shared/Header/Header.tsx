@@ -18,6 +18,7 @@ export const Header: React.FC = () => {
   const [menuIsOpen, setMenuIsOpen] = useState(false);
   const { favourites } = useAppSelector(state => state.favourites);
   const { cart } = useAppSelector(state => state.cart);
+  const totalItems = cart.reduce((prev, item) => prev + item.quantity, 0);
 
   return (
     <header
@@ -99,9 +100,7 @@ export const Header: React.FC = () => {
                   onClick={() => setMenuIsOpen(false)}
                 >
                   {cart.length > 0 && (
-                    <span className={styles.header__counter}>
-                      {cart.length}
-                    </span>
+                    <span className={styles.header__counter}>{totalItems}</span>
                   )}
 
                   <img src="./img/icons/busket.svg" alt="busket" />

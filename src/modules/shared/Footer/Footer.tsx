@@ -16,17 +16,29 @@ export const Footer: React.FC = () => {
         <div className={styles.footer__info}>
           <ul className={styles.footer__list}>
             <li className={styles.footer__item}>
-              <a href="#github" className={styles.footer__link}>
+              <a
+                href="https://github.com/k-shestakov"
+                className={styles.footer__link}
+                target="_blank"
+              >
                 Github
               </a>
             </li>
             <li className={styles.footer__item}>
-              <a href="#contacts" className={styles.footer__link}>
+              <a
+                href="https://github.com/k-shestakov"
+                className={styles.footer__link}
+                target="_blank"
+              >
                 Contacts
               </a>
             </li>
             <li className={styles.footer__item}>
-              <a href="#rights" className={styles.footer__link}>
+              <a
+                href="https://github.com/k-shestakov"
+                className={styles.footer__link}
+                target="_blank"
+              >
                 Rights
               </a>
             </li>
