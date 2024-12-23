@@ -1,0 +1,125 @@
+@use '/src/styles/utils/vars' as vars;
+@use '/src/styles/utils/mixins' as mixins;
+
+.category {
+  &__container {
+    background-color: transparent;
+  }
+
+  &__title {
+  }
+
+  &__row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-inline: -8px;
+    margin-top: 24px;
+
+    @include mixins.on-mobile {
+      row-gap: 32px;
+      margin-inline: 0;
+    }
+  }
+
+  &__column {
+    flex: 0 1 33.33%;
+    padding: 0 8px;
+
+    @include mixins.on-mobile {
+      padding: 0;
+      flex: 0 1 100%;
+    }
+  }
+
+  &__item {
+  }
+
+  &__image {
+    position: relative;
+    display: block;
+    overflow: hidden;
+    padding-bottom: 100%;
+
+    &:hover {
+    }
+
+    &--1 {
+      background-color: #6d6474;
+
+      & img {
+        transition: all 0.3s ease;
+        transform: translateY(15%) translateX(35%) scale(1);
+      }
+
+      &:hover img {
+        transform: translateY(15%) translateX(35%) scale(1.03);
+      }
+
+      @media (hover: none) {
+        &:hover img {
+          transform: translateY(15%) translateX(35%);
+        }
+      }
+    }
+
+    &--2 {
+      background-color: #8d8d92;
+
+      & img {
+        transition: all 0.3s ease;
+        transform: translateY(13%) translateX(12%) scale(1);
+      }
+
+      &:hover img {
+        transform: translateY(13%) translateX(12%) scale(1.03);
+      }
+
+      @media (hover: none) {
+        &:hover img {
+          transform: translateY(13%) translateX(12%);
+        }
+      }
+    }
+
+    &--3 {
+      background-color: #973d5f;
+
+      & img {
+        transition: all 0.3s ease;
+        transform: translateY(15%) translateX(5%);
+      }
+
+      &:hover img {
+        transform: translateY(15%) translateX(5%) scale(1.02);
+      }
+
+      @media (hover: none) {
+        &:hover img {
+          transform: translateY(15%) translateX(5%);
+        }
+      }
+    }
+
+    & img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &__subtitle {
+    margin-top: 24px;
+    font-size: 20px;
+    font-weight: 600;
+  }
+
+  &__models {
+    font-size: 14px;
+    line-height: calc(20 / 14 * 100%);
+    margin-top: 4px;
+    font-weight: 400;
+    color: vars.$minor-color;
+  }
+}

@@ -1,0 +1,28 @@
+@use '/src/styles/utils/vars' as vars;
+@use '/src/styles/utils/mixins' as mixins;
+
+.hero {
+  &__title {
+    margin-bottom: 56px;
+
+    @include mixins.on-tablet {
+      margin-bottom: 32px;
+    }
+
+    @include mixins.on-mobile {
+      margin-bottom: 24px;
+      padding: 0 15px;
+    }
+  }
+
+  &__wrapper {
+    max-width: 1166px;
+    margin: 0 auto;
+    padding: 0 15px;
+
+    @include mixins.on-mobile {
+      max-width: 1136px;
+      padding: 0;
+    }
+  }
+}
