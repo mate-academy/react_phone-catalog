@@ -13,8 +13,6 @@ export const HomePage: React.FC = () => {
     loadProducts();
   }, [loadProducts]);
 
-  useLoadProducts();
-
   if (state.loading) {
     return <Loader />;
   }

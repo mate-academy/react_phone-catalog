@@ -25,6 +25,7 @@ type Params = {
 
 export const ProductDetailsPage: React.FC = () => {
   const { state } = useStateContext();
+  const loadProducts = useLoadProducts();
 
   const { productId } = useParams<Params>();
   const [productDetails, setProductDetails] = useState<ProductDetails | null>(
@@ -47,7 +48,10 @@ export const ProductDetailsPage: React.FC = () => {
     fav => fav.itemId === product?.itemId,
   );
 
-  useLoadProducts();
+  useEffect(() => {
+    loadProducts();
+  }, [loadProducts]);
+
   const navigate = useNavigate();
 
   useEffect(() => {

@@ -20,8 +20,9 @@ type Props = {
 
 export const ProductsPage: React.FC<Props> = ({ category }) => {
   const [searchParams, setSearchParams] = useSearchParams();
-  const [loading, setLoading] = useState(true);
   const { state } = useStateContext();
+  const loadProducts = useLoadProducts();
+  const [loading, setLoading] = useState(true);
 
   const defaultPage = 1;
   const defaultPerPage = 'All';
@@ -37,7 +38,9 @@ export const ProductsPage: React.FC<Props> = ({ category }) => {
 
   const title = getTitle(category);
 
-  useLoadProducts();
+  useEffect(() => {
+    loadProducts();
+  }, [loadProducts]);
 
   const updateParams = (newParams: {
     page?: number;
