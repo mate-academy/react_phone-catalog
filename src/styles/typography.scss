@@ -90,6 +90,26 @@ button,
 
     border: 1px solid #b4bdc3;
     background: none;
+
+    &--small-padding {
+      padding: 8.5px;
+    }
+
+    & img {
+      height: 16px;
+
+      user-select: none;
+    }
+
+    &[aria-disabled='true'] {
+      opacity: 0.5;
+
+      pointer-events: none;
+    }
+  }
+
+  &--green-text {
+    color: #27ae60;
   }
 
   &--arrow {
