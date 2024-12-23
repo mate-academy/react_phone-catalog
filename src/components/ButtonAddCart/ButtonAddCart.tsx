@@ -6,8 +6,9 @@ import style from './ButtonAddCart.module.scss';
 
 type Props = {
   productId: string;
+  className?: string;
 };
-export const ButtonAddCart: React.FC<Props> = ({ productId }) => {
+export const ButtonAddCart: React.FC<Props> = ({ productId, className }) => {
   const dispatch = useDispatch();
   const cartProductId = useAppSelector(state => state.cart.products);
   const isActive = cartProductId.some(item => item.id === productId);
@@ -23,7 +24,7 @@ export const ButtonAddCart: React.FC<Props> = ({ productId }) => {
   return (
     <button
       key={productId}
-      className={classNames(style.addToCart, {
+      className={classNames(style.addToCart, className, {
         [style.buttonActive]: isActive,
       })}
       onClick={toggleCart}

@@ -7,13 +7,13 @@ export const getAllProducts = () => {
 };
 
 export const getPhones = () => {
-  return client.get<ProductData>('api/phones.json');
+  return client.get<ProductData[]>('api/phones.json');
 };
 
 export const getTablets = () => {
-  return client.get<ProductData>('api/tablets.json');
+  return client.get<ProductData[]>('api/tablets.json');
 };
 
 export const getAccessories = () => {
-  return client.get<ProductData>('api/accessories.json');
+  return client.get<ProductData[]>('api/accessories.json');
 };

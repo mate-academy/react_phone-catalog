@@ -7,8 +7,10 @@ import { useAppSelector } from '../../app/hook';
 import classNames from 'classnames';
 type Props = {
   productId: string;
+  className?: string;
 };
-export const HeartButton: React.FC<Props> = ({ productId }) => {
+
+export const HeartButton: React.FC<Props> = ({ productId, className }) => {
   const dispatch = useDispatch();
   const favProductIds = useAppSelector(state => state.favourites.products);
   const isAdded = favProductIds.includes(productId);
@@ -24,7 +26,7 @@ export const HeartButton: React.FC<Props> = ({ productId }) => {
   return (
     <button
       type="button"
-      className={classNames(style.heartButton, {
+      className={classNames(style.heartButton, className, {
         [style.heartButtonActive]: isAdded,
       })}
       onClick={toggleFavourite}
