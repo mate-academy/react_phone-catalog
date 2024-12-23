@@ -13,6 +13,29 @@
 
   &__name {
     @extend %body-text;
-    font-weight: 400;
+    margin-top: 24px;
+  }
+
+  &__price {
+    @extend %h3;
+    margin-top: 8px;
+  }
+
+  &__details {
+    margin-top: 8px;
+    padding-top: 16px;
+    border-top: 1px solid $elements-color;
+  }
+
+  &__key {
+    @extend %small-text;
+    color: $secondary-color;
+    display: flex;
+    justify-content: space-between
+  }
+
+  &__value {
+    font-weight: 700;
+    color: $primary-color;
   }
 }

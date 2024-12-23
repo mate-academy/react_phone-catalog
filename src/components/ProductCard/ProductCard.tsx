@@ -12,7 +12,7 @@ export const ProductCard: React.FC<Props> = ({ prod }) => {
       <div className="productCard__box">
         <img src={image} alt={name} className="productCard__img" />
         <p className="productCard__name">{name}</p>
-        <h3 className="productCard__price">{fullPrice}</h3>
+        <h3 className="productCard__price">{`$${fullPrice}`}</h3>
         <ul className="productCard__details">
           <li className="productCard__key">
             Screen
