@@ -16,7 +16,7 @@
   }
 
   &__info {
-    @extend %UPPERCASE;
+    @extend %uppercase;
     
     display: flex;
     gap: 64px;

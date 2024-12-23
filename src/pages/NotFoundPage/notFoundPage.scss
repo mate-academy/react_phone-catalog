@@ -4,14 +4,17 @@
 
   &__title {
     @extend %h1;
+    
     margin-top: 40px;
     color: $black-primary;
   }
 
   &__link-home {
     @extend %h3;
+
     width: fit-content;
     padding-top: 50px;
+
     color: $gray-secondary;
     text-decoration: none;
 

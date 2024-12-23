@@ -30,27 +30,27 @@ export const ProductList: React.FC<ProductListProps> = ({
     <div className="product-list" data-cy="productList">
       {isNormal
         ? products.map((product: Product) => {
-          return (
-            <ProductCard
-              key={product.name}
-              product={product}
-              useDiscount
-              setFavLength={setFavLength}
-              setCartLength={setCartLength}
-            />
-          );
-        })
+            return (
+              <ProductCard
+                key={product.name}
+                product={product}
+                useDiscount
+                setFavLength={setFavLength}
+                setCartLength={setCartLength}
+              />
+            );
+          })
         : sliceProducts().map((product: Product) => {
-          return (
-            <ProductCard
-              key={product.name}
-              product={product}
-              useDiscount
-              setFavLength={setFavLength}
-              setCartLength={setCartLength}
-            />
-          );
-        })}
+            return (
+              <ProductCard
+                key={product.name}
+                product={product}
+                useDiscount
+                setFavLength={setFavLength}
+                setCartLength={setCartLength}
+              />
+            );
+          })}
     </div>
   );
 };

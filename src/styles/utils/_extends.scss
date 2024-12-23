@@ -4,7 +4,7 @@
   line-height: 41px;
   letter-spacing: -0.01em;
 
-  @include onTablet {
+  @include on-tablet {
     font-size: 48px;
     line-height: 56px;
   }
@@ -15,7 +15,7 @@
   font-size: 22px;
   line-height: 31px;
 
-  @include onDesktop {
+  @include on-desktop {
     font-size: 32px;
     line-height: 41px;
     letter-spacing: -0.01em;
@@ -27,7 +27,7 @@
   font-size: 20px;
   line-height: 26px;
 
-  @include onTablet {
+  @include on-tablet {
     font-family: $mont-bold;
     font-size: 22px;
     line-height: 31px;
@@ -39,13 +39,13 @@
   font-size: 16px;
   line-height: 20px;
 
-  @include onTablet {
+  @include on-tablet {
     font-size: 20px;
     line-height: 26px;
   }
 }
 
-%UPPERCASE {
+%uppercase {
   font-family: $mont-bold;
   font-size: 12px;
   line-height: 11px;

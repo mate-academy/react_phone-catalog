@@ -4,7 +4,7 @@
   height: 48px;
   box-shadow: 0 1px 0 0 $super-light-gray;
 
-  @include onDesktop {
+  @include on-desktop {
     height: 64px;
   }
 
@@ -12,7 +12,7 @@
     display: flex;
     gap: 16px;
 
-    @include onDesktop {
+    @include on-desktop {
       gap: 24px;
     }
   }
@@ -22,7 +22,7 @@
     gap: 32px;
     align-items: center;
 
-    @include onDesktop {
+    @include on-desktop {
       gap: 64px;
     }
   }
@@ -47,7 +47,7 @@
     border: none;
     outline: none;
 
-    @include onDesktop {
+    @include on-desktop {
       height: 64px;
     }
 
@@ -85,7 +85,7 @@
   }
 
   &__link {
-    @extend %UPPERCASE;
+    @extend %uppercase;
 
     display: flex;
     position: relative;
@@ -124,7 +124,7 @@
     &--left {
       padding-block: 18px;
 
-      @include onDesktop {
+      @include on-desktop {
         padding-block: 26px;
       }
     }
@@ -138,7 +138,7 @@
       background-position: center;
       box-shadow: -1px 0 0 0 $super-light-gray;
 
-      @include onDesktop {
+      @include on-desktop {
         padding: 24px;
       }
     }
@@ -154,7 +154,7 @@
     }
 
     &-count {
-      @extend %UPPERCASE;
+      @extend %uppercase;
 
       position: absolute;
       display: flex;
@@ -172,7 +172,7 @@
       border: 1px solid $color-white;
       border-radius: 50%;
 
-      @include onDesktop {
+      @include on-desktop {
         top: 18px;
         left: 32px;
       }

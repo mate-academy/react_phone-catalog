@@ -12,11 +12,11 @@
     gap: 16px;
     background-color: $color-white;
 
-    @include onTablet {
+    @include on-tablet {
       margin-top: 32px;
     }
 
-    @include onDesktop {
+    @include on-desktop {
       margin-top: 56px;
     }
   }

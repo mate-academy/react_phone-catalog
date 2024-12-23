@@ -26,6 +26,7 @@
 
     &-name {
       @extend %body-text;
+      
       width: 295px;
       color: $black-primary;
     }
@@ -83,12 +84,14 @@
 
     &-number {
       @extend %body-text;
+
       color: $black-primary;
     }
   }
 
   &__price {
     @extend %h2;
+
     margin-left: 43px;
     color: $black-primary;
   }

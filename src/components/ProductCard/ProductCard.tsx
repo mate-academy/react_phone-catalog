@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import classNames from 'classnames';
 import { Link } from 'react-router-dom';
-import { Product} from '../../types/Product';
+import { Product } from '../../types/Product';
 import { ProductDetails } from '../../types/ProductDetails';
 import { StorageContext } from '../StorageContext';
 import { getProductDetails } from '../../helpers/api';
@@ -45,9 +45,13 @@ export const ProductCard: React.FC<ProductCardProps> = ({
     cartSum,
   } = useContext(StorageContext);
 
-  const [productDetails, setProductDetails] = useState<ProductDetails | undefined>();
+  const [productDetails, setProductDetails] = useState<
+    ProductDetails | undefined
+  >();
   const [isSelectedToFav, setIsSelectedToFav] = useState(findItemInFav(itemId));
-  const [isSelectedToCard, setIsSelectedToCard] = useState(findItemInCart(itemId));
+  const [isSelectedToCard, setIsSelectedToCard] = useState(
+    findItemInCart(itemId),
+  );
 
   useEffect(() => {
     getProductDetails(itemId).then((details: ProductDetails) => {
@@ -58,12 +62,20 @@ export const ProductCard: React.FC<ProductCardProps> = ({
   useEffect(() => {
     if (productDetails) {
       if (isSelectedToCard !== findItemInCart(itemId)) {
-        isSelectedToCard
-          ? saveItemToCart(itemId, productDetails)
-          : deleteItemFromCart(itemId);
+        if (isSelectedToCard) {
+          saveItemToCart(itemId, productDetails);
+        } else {
+          deleteItemFromCart(itemId);
+        }
       }
     }
-  }, [isSelectedToCard, itemId, productDetails, saveItemToCart, deleteItemFromCart]);
+  }, [
+    isSelectedToCard,
+    itemId,
+    productDetails,
+    saveItemToCart,
+    deleteItemFromCart,
+  ]);
 
   useEffect(() => {
     setCartLength(cartSum(cart));
@@ -72,12 +84,21 @@ export const ProductCard: React.FC<ProductCardProps> = ({
   useEffect(() => {
     if (productDetails) {
       if (isSelectedToFav !== findItemInFav(itemId)) {
-        isSelectedToFav
-          ? saveItemToFav(product)
-          : deleteItemFromFav(product);
+        if (isSelectedToFav) {
+          saveItemToFav(product);
+        } else {
+          deleteItemFromFav(product);
+        }
       }
     }
-  }, [isSelectedToFav, itemId, productDetails, product, saveItemToFav, deleteItemFromFav]);
+  }, [
+    isSelectedToFav,
+    itemId,
+    productDetails,
+    product,
+    saveItemToFav,
+    deleteItemFromFav,
+  ]);
 
   useEffect(() => {
     setFavLength(fav.length);

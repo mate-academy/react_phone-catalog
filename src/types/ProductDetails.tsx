@@ -22,11 +22,11 @@ export type ProductDetails = {
 
 export type ProductDetailsTechSpecs = {
   param:
-  | 'screen'
-  | 'resolution'
-  | 'processor'
-  | 'ram'
-  | 'camera'
-  | 'zoom'
-  | 'cell';
+    | 'screen'
+    | 'resolution'
+    | 'processor'
+    | 'ram'
+    | 'camera'
+    | 'zoom'
+    | 'cell';
 };

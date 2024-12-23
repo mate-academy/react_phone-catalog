@@ -20,15 +20,19 @@ export const FavouritesPage: React.FC<FavouritesPageProps> = ({
   const [searchParams] = useSearchParams();
   const query = searchParams.get('query') || '';
 
- const filterFavs = (products: Product[]) => {
-  return products.filter((product: Product) => {
-    const itemId = product.itemId || ''; // Ensure itemId is a string
-    const isValid = itemId && product.image && product.price !== undefined; // Add checks for validity
-    return isValid && itemId
-      .replaceAll('-', '')
-      .includes(query.replace(/[^a-zA-Z0-9]/g, '').toLocaleLowerCase());
-  });
-};
+  const filterFavs = (products: Product[]) => {
+    return products.filter((product: Product) => {
+      const itemId = product.itemId || ''; // Ensure itemId is a string
+      const isValid = itemId && product.image && product.price !== undefined; // Add checks for validity
+
+      return (
+        isValid &&
+        itemId
+          .replaceAll('-', '')
+          .includes(query.replace(/[^a-zA-Z0-9]/g, '').toLocaleLowerCase())
+      );
+    });
+  };
 
   useEffect(() => {
     setNewFav(filterFavs(fav));

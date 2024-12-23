@@ -1,9 +1,9 @@
 // eslint-disable-next-line @typescript-eslint/ban-types
-export function debounce(callback: Function, delay: number) {
-  let timerId = 0;
+export function debounce<T>(callback: (args: T) => void, delay: number) {
+  let timerId: NodeJS.Timeout;
 
-  return (args: any) => {
+  return (args: T) => {
     clearTimeout(timerId);
-    timerId = setTimeout(callback, delay, args);
+    timerId = setTimeout(() => callback(args), delay);
   };
 }
