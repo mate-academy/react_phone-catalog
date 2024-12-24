@@ -1,3 +1,5 @@
+@use 'styles/vars';
+
 @mixin page-grid {
   display: grid;
   grid-template-columns: repeat(24, 1fr);
@@ -17,7 +19,7 @@
   position: absolute;
   height: 1px;
 
-  background-color: #89939a;
+  background-color: vars.$color-secondary;
   mix-blend-mode: color-dodge;
 
   top: 14px;

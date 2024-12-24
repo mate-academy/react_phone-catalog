@@ -1,4 +1,5 @@
 @use 'styles/mixins';
+@use 'styles/vars';
 
 .catalog {
   margin-top: 24px;
@@ -13,7 +14,7 @@
 
   &__count {
     margin-top: 8px;
-    color: #89939a;
+    color: vars.$color-secondary;
   }
 
   &__filters {
@@ -34,7 +35,7 @@
       }
 
       &-text {
-        color: #89939a;
+        color: vars.$color-secondary;
       }
 
       &--small {
@@ -75,14 +76,14 @@
       align-items: center;
       justify-content: center;
 
-      border-color: #e2e6e9;
+      border-color: vars.$color-elements;
 
       &--selected {
-        border-color: #313237;
-        background-color: #313237;
+        border-color: vars.$color-primary;
+        background-color: vars.$color-primary;
 
         & > p {
-          color: #fff;
+          color: white;
         }
       }
     }

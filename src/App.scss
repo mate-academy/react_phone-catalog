@@ -1,6 +1,7 @@
-@use 'styles/mixins';
-@use 'styles/fonts';
 @use 'styles/typography';
+@use 'styles/fonts';
+@use 'styles/mixins';
+@use 'styles/vars';
 
 html,
 button {
@@ -9,7 +10,7 @@ button {
 
 html,
 p {
-  color: #313237;
+  color: vars.$color-primary;
 }
 
 body {

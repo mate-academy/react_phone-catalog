@@ -1,4 +1,5 @@
 @use 'styles/mixins';
+@use 'styles/vars';
 
 .home-page {
   &__title {
@@ -74,7 +75,7 @@
 
       box-sizing: border-box;
 
-      background-color: #313237;
+      background-color: vars.$color-primary;
       background-clip: content-box;
     }
   }
@@ -110,7 +111,7 @@
       }
 
       &-subtitle {
-        color: #89939a;
+        color: vars.$color-secondary;
       }
     }
   }

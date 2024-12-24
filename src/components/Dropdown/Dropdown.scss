@@ -1,3 +1,5 @@
+@use 'styles/vars';
+
 .dropdown {
   position: relative;
   width: 100%;
@@ -12,11 +14,11 @@
     transition: border-color 300ms;
 
     &:hover {
-      border-color: #89939a;
+      border-color: vars.$color-secondary;
     }
 
     &--opened {
-      border-color: #313237 !important;
+      border-color: vars.$color-primary !important;
     }
   }
 
@@ -33,7 +35,7 @@
     left: 0;
 
     background-color: white;
-    border: 1px solid #e2e6e9;
+    border: 1px solid vars.$color-elements;
     box-shadow: 0 2px 15px 0 #0000000d;
   }
 
@@ -42,24 +44,24 @@
     padding: 6px 12px;
     box-sizing: border-box;
 
-    color: #89939a;
+    color: vars.$color-secondary;
 
     transition:
       color 300ms,
       background-color 300ms;
 
     &:hover {
-      color: #313237;
-      background-color: #fafbfc;
+      color: vars.$color-primary;
+      background-color: vars.$color-hover;
     }
 
     &-text {
       pointer-events: none;
 
-      color: #89939a;
+      color: vars.$color-secondary;
 
       &--selected {
-        color: #313237;
+        color: vars.$color-primary;
       }
     }
   }

@@ -1,7 +1,8 @@
 @use 'styles/mixins';
+@use 'styles/vars';
 
 .footer {
-  box-shadow: 0 -1px 0 0 #e2e6e9;
+  box-shadow: 0 -1px 0 0 vars.$color-elements;
 
   margin-top: auto;
 
@@ -37,7 +38,7 @@
     }
 
     &-link {
-      color: #89939a;
+      color: vars.$color-secondary;
       text-decoration: none;
     }
   }
@@ -50,7 +51,7 @@
     align-items: center;
 
     &-text {
-      color: #89939a;
+      color: vars.$color-secondary;
     }
   }
 }

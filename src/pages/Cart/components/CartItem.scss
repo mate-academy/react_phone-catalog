@@ -1,4 +1,5 @@
 @use 'styles/mixins';
+@use 'styles/vars';
 
 .cart__item {
   padding: 24px;
@@ -8,7 +9,7 @@
   align-items: center;
   justify-content: space-between;
 
-  border: 1px solid #e2e6e9;
+  border: 1px solid vars.$color-elements;
 
   @include mixins.media-phone {
     gap: 16px;

@@ -1,3 +1,5 @@
+@use 'styles/vars';
+
 .back-button {
   display: flex;
   gap: 4px;
@@ -7,6 +9,6 @@
 
   &__text {
     margin-top: 1px;
-    color: #89939a;
+    color: vars.$color-secondary;
   }
 }

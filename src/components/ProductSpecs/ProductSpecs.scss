@@ -1,3 +1,5 @@
+@use 'styles/vars';
+
 .product-specs {
   padding: 8px 0;
 
@@ -10,7 +12,7 @@
     justify-content: space-between;
 
     &-name {
-      color: #89939a;
+      color: vars.$color-secondary;
     }
   }
 }
