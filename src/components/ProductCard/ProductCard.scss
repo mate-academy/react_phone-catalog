@@ -54,7 +54,7 @@
       position: relative;
       color: vars.$color-secondary;
 
-      font-weight: 600;
+      font-weight: vars.$font-weight-semi-bold;
 
       &::after {
         @include mixins.strikethrough-color-dodge;

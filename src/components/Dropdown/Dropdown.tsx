@@ -38,9 +38,9 @@ export const Dropdown: React.FC<Props> = ({ options, value, onChange }) => {
       </button>
 
       {opened && (
-        <div className="dropdown__container">
+        <nav className="dropdown__container" aria-label="Dropdown menu">
           {options.map((option, index) => (
-            <div
+            <ul
               className="dropdown__item"
               onClick={() => {
                 onChange(option);
@@ -49,7 +49,7 @@ export const Dropdown: React.FC<Props> = ({ options, value, onChange }) => {
               key={index}
               tabIndex={index}
             >
-              <p
+              <li
                 className={classNames(
                   'dropdown__item-text body-text slim-text',
                   {
@@ -59,10 +59,10 @@ export const Dropdown: React.FC<Props> = ({ options, value, onChange }) => {
                 )}
               >
                 {option}
-              </p>
-            </div>
+              </li>
+            </ul>
           ))}
-        </div>
+        </nav>
       )}
     </div>
   );

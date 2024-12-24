@@ -74,15 +74,15 @@ export const ProductSlider: React.FC<Props> = ({ products, title }) => {
       <div className="product-slider__top">
         <h2 className="product-slider__title">{title}</h2>
         <div className="product-slider__buttons">
-          <div
+          <button
             className="button--arrow"
             onClick={scrollLeft}
             aria-disabled={scrollIndex <= 0}
           >
             <img src="/icons/arrow_left.svg" alt="Arrow left" />
-          </div>
+          </button>
 
-          <div
+          <button
             className="button--arrow"
             onClick={scrollRight}
             aria-disabled={
@@ -92,7 +92,7 @@ export const ProductSlider: React.FC<Props> = ({ products, title }) => {
             }
           >
             <img src="/icons/arrow_right.svg" alt="Arrow right" />
-          </div>
+          </button>
         </div>
       </div>
       <div className="product-slider__container" ref={containerRef}>

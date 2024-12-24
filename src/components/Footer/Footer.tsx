@@ -12,14 +12,14 @@ export const Footer = () => {
           <a className="footer__links-link text-button">Rights</a>
         </div>
 
-        <div className="footer__back-to-top">
+        <button className="footer__back-to-top button--text">
           <p className="small-text footer__back-to-top-text">Back to top</p>
           <img
             className="button--arrow"
             src="/icons/arrow_up.svg"
             alt="Arrow up"
           />
-        </div>
+        </button>
       </div>
     </footer>
   );

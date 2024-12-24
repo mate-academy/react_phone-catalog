@@ -1,6 +1,6 @@
 import { NavLink } from 'react-router-dom';
-import './Header.scss';
 import classNames from 'classnames';
+import './Header.scss';
 
 export const Header = () => {
   const navLinkClass = (props: { isActive: boolean }) =>
@@ -18,7 +18,7 @@ export const Header = () => {
       <div className="header__left">
         <img src="/logo.svg" alt="Logo" className="header__logo" />
 
-        <nav className="header__nav">
+        <nav className="header__nav" aria-label="Main navigation">
           <ul className="header__nav-list">
             <li>
               <NavLink className={navLinkClass} to="/">
@@ -55,9 +55,9 @@ export const Header = () => {
       </div>
 
       <div className="header__buttons header__buttons-mobile">
-        <div className="header__button">
+        <button className="header__button">
           <img src="/icons/menu.svg" alt="Burger menu icon" />
-        </div>
+        </button>
       </div>
     </header>
   );

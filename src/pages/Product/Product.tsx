@@ -21,10 +21,8 @@ export const Product = () => {
   const [product, setProduct] = useState<ProductItemType | undefined>(
     undefined,
   );
-
   const { id } = useParams();
   const location = useLocation();
-
   const [inFavourites, setInFavourites] = useState(false);
   const [inCart, setInCart] = useState(false);
 
@@ -61,8 +59,9 @@ export const Product = () => {
       return;
     }
 
-    setProduct(await getProduct(id));
+    const fetchedProduct = await getProduct(id);
 
+    setProduct(fetchedProduct);
     setInFavourites(isFavourite(id));
     setInCart(isInCart(id));
   };
@@ -74,6 +73,59 @@ export const Product = () => {
   if (!product) {
     return;
   }
+
+  const renderImages = () => (
+    <div className="product__small-images">
+      {product.images.map(image => (
+        <div
+          className="product__small-images-image square-container"
+          key={image}
+        >
+          <img src={NormalizeImagePath(image)} alt="Product image" />
+        </div>
+      ))}
+    </div>
+  );
+
+  const renderColors = () => (
+    <div className="product__selector-container">
+      {product.colorsAvailable.map(color => (
+        <Link
+          to={location.pathname.replace(product.color, color)}
+          className={classNames('product__color-border', {
+            'product__color-border--selected': product.color === color,
+          })}
+          key={color}
+        >
+          <div className="product__color-white-border">
+            <div
+              className="product__color"
+              style={{ backgroundColor: getColorByName(color) }}
+            ></div>
+          </div>
+        </Link>
+      ))}
+    </div>
+  );
+
+  const renderCapacities = () => (
+    <div className="product__selector-container">
+      {product.capacityAvailable.map(capacity => (
+        <Link
+          to={location.pathname.replace(
+            product.capacity.toLowerCase(),
+            capacity.toLowerCase(),
+          )}
+          className={classNames('product__capacity-button button', {
+            'button--white': product.capacity !== capacity,
+          })}
+          key={capacity}
+        >
+          {capacity}
+        </Link>
+      ))}
+    </div>
+  );
 
   return (
     <div className="product">
@@ -88,62 +140,19 @@ export const Product = () => {
         <div className="product__image square-container">
           <img src={NormalizeImagePath(product.images[0])} alt="Image" />
         </div>
-
-        <div className="product__small-images">
-          {product.images.map(image => (
-            <div
-              className="product__small-images-image square-container"
-              key={image}
-            >
-              <img src={NormalizeImagePath(image)} alt="Product image" />
-            </div>
-          ))}
-        </div>
-
+        {renderImages()}
         <div className="product__details">
           <p className="product__id product__id-mobile small-text">
             ID: {product.id}
           </p>
 
           <p className="product__details-name small-text">Available colors</p>
-          <div className="product__selector-container">
-            {product.colorsAvailable.map(color => (
-              <Link
-                to={location.pathname.replace(product.color, color)}
-                className={classNames('product__color-border', {
-                  'product__color-border--selected': product.color === color,
-                })}
-                key={color}
-              >
-                <div className="product__color-white-border">
-                  <div
-                    className="product__color"
-                    style={{ backgroundColor: getColorByName(color) }}
-                  ></div>
-                </div>
-              </Link>
-            ))}
-          </div>
+          {renderColors()}
 
           <div className="divider-line"></div>
 
           <p className="product__details-name small-text">Select capacity</p>
-          <div className="product__selector-container">
-            {product.capacityAvailable.map(capacity => (
-              <Link
-                to={location.pathname.replace(
-                  product.capacity.toLowerCase(),
-                  capacity.toLowerCase(),
-                )}
-                className={classNames('product__capacity-button button', {
-                  'button--white': product.capacity !== capacity,
-                })}
-                key={capacity}
-              >
-                {capacity}
-              </Link>
-            ))}
-          </div>
+          {renderCapacities()}
 
           <div className="divider-line"></div>
 
@@ -151,6 +160,7 @@ export const Product = () => {
             <h2 className="product__price h2--desktop">
               ${product.priceDiscount}
             </h2>
+
             <h3 className="product__old-price">${product.priceRegular}</h3>
           </div>
 
@@ -164,6 +174,7 @@ export const Product = () => {
             >
               {inCart ? 'Added to cart' : 'Add to cart'}
             </button>
+
             <button
               className="product__favourite-button button--white"
               onClick={handleFavourite}

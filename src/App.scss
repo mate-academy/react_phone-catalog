@@ -27,23 +27,20 @@ p {
 
 .App {
   min-height: 100vh;
-
   display: flex;
   flex-direction: column;
 }
 
 .container {
   width: 100%;
-  min-height: 100%;
 
   max-width: 1200px;
+  min-height: 100%;
+
   padding: 0 32px;
-  margin: 0 auto;
+  margin: 0 auto 80px;
 
   box-sizing: border-box;
-
-  margin-bottom: 80px;
-
   overflow: hidden;
 
   @include mixins.media-tablet {

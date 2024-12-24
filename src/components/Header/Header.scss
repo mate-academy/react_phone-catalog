@@ -36,13 +36,9 @@
 
     &-list {
       height: 100%;
-      margin: 0;
-      padding: 0;
 
       display: flex;
       gap: 64px;
-
-      list-style: none;
 
       @include mixins.media-tablet {
         gap: 32px;

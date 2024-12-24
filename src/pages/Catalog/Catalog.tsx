@@ -36,6 +36,22 @@ export const Catalog: React.FC<Props> = ({ category }) => {
     setPerPage(parseInt(value));
   };
 
+  const handleLeft = () => {
+    if (page === 1) {
+      return;
+    }
+
+    setPage(page - 1);
+  };
+
+  const handleRight = () => {
+    if (page === pageCount) {
+      return;
+    }
+
+    setPage(page + 1);
+  };
+
   const fetchProducts = async () => {
     const response = await getProducts(
       {
@@ -130,9 +146,9 @@ export const Catalog: React.FC<Props> = ({ category }) => {
       </div>
 
       <div className="catalog__pagination">
-        <div className="button--arrow">
+        <button className="button--arrow" onClick={handleLeft}>
           <img src="/icons/arrow_left.svg" alt="Arrow left" />
-        </div>
+        </button>
 
         <div className="catalog__pagination-pages">
           {Array.from(Array(pageCount)).map((_, index) => {
@@ -143,10 +159,10 @@ export const Catalog: React.FC<Props> = ({ category }) => {
             };
 
             return (
-              <div
+              <button
                 key={pageIndex}
                 className={classNames(
-                  'catalog__pagination-page-button  button--arrow',
+                  'catalog__pagination-page-button button--arrow',
                   {
                     'catalog__pagination-page-button--selected':
                       page === pageIndex,
@@ -155,14 +171,14 @@ export const Catalog: React.FC<Props> = ({ category }) => {
                 onClick={handlePage}
               >
                 <p className="body-text">{pageIndex}</p>
-              </div>
+              </button>
             );
           })}
         </div>
 
-        <div className="button--arrow">
+        <button className="button--arrow" onClick={handleRight}>
           <img src="/icons/arrow_right.svg" alt="Arrow right" />
-        </div>
+        </button>
       </div>
     </div>
   );

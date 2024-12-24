@@ -3,7 +3,7 @@
 
 h1 {
   font-size: 48px;
-  font-weight: 800;
+  font-weight: vars.$font-weight-bold;
   line-height: 56px;
   letter-spacing: -0.01em;
 
@@ -18,7 +18,7 @@ h2,
   &,
   &--desktop {
     font-size: 32px;
-    font-weight: 800;
+    font-weight: vars.$font-weight-bold;
     line-height: 41px;
     letter-spacing: -0.01em;
   }
@@ -31,14 +31,20 @@ h2,
 
 h3 {
   font-size: 22px;
-  font-weight: 800;
+  font-weight: vars.$font-weight-bold;
   line-height: 30.8px;
 }
 
 h4 {
   font-size: 20px;
-  font-weight: 600;
+  font-weight: vars.$font-weight-semi-bold;
   line-height: 25.56px;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
 .divider-line {
@@ -59,7 +65,7 @@ button,
   align-items: center;
 
   font-size: 14px;
-  font-weight: 500;
+  font-weight: vars.$font-weight-medium;
   line-height: 21px;
   text-align: center;
 
@@ -78,9 +84,21 @@ button,
     padding: 9.5px;
   }
 
+  &--arrow,
+  &--white,
+  &--text {
+    padding: 0;
+    background: none;
+    border: none;
+  }
+
   &--wide {
     width: 100%;
     padding: 9px;
+  }
+
+  &--green-text {
+    color: vars.$color-green;
   }
 
   &--white {
@@ -107,10 +125,6 @@ button,
 
       pointer-events: none;
     }
-  }
-
-  &--green-text {
-    color: vars.$color-green;
   }
 
   &--arrow {
@@ -142,25 +156,25 @@ button,
 
 .text-button {
   font-size: 12px;
-  font-weight: 800;
+  font-weight: vars.$font-weight-bold;
   letter-spacing: 0.04em;
   text-transform: uppercase;
 }
 
 .body-text {
   font-size: 14px;
-  font-weight: 600;
+  font-weight: vars.$font-weight-semi-bold;
   line-height: 21px;
 }
 
 .small-text {
   font-size: 12px;
-  font-weight: 600;
+  font-weight: vars.$font-weight-semi-bold;
   line-height: 15.34px;
 }
 
 .slim-text {
-  font-weight: 500;
+  font-weight: vars.$font-weight-medium;
 }
 
 .square-container {

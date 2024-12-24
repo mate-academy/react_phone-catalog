@@ -180,7 +180,7 @@
   &__capacity-button {
     padding: 5px 8px;
 
-    font-weight: 500;
+    font-weight: vars.$font-weight-medium;
 
     &.button--white {
       padding: 4px 8px;
@@ -204,7 +204,7 @@
   &__old-price {
     position: relative;
 
-    font-weight: 500;
+    font-weight: vars.$font-weight-medium;
 
     color: vars.$color-secondary;
 

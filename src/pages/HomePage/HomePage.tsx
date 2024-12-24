@@ -25,7 +25,7 @@ export const HomePage = () => {
     <div className="home-page">
       <h1 className="home-page__title">Welcome to Nice Gadgets store!</h1>
 
-      <main className="home-page__container">
+      <div className="home-page__container">
         <section className="home-page__banner">
           <div className="home-page__banner-container">
             <div className="button--arrow">
@@ -109,7 +109,7 @@ export const HomePage = () => {
         <section className="home-page__hot-prices">
           <ProductSlider products={hotProducts} title="Hot prices" />
         </section>
-      </main>
+      </div>
     </div>
   );
 };

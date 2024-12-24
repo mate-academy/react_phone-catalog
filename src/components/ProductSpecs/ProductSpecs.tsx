@@ -26,6 +26,7 @@ export const ProductSpecs: React.FC<Props> = ({ specs, slimText }) => {
           >
             {name}
           </p>
+
           <p
             className={classNames(
               'product-specs__entry-value small-text',

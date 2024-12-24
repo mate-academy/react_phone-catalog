@@ -9,9 +9,10 @@ export const BackButton = () => {
   };
 
   return (
-    <div className="back-button" onClick={handleClick}>
+    <button className="back-button button--text" onClick={handleClick}>
       <img src="/icons/arrow_left.svg" alt="Arrow left" />
+
       <p className="back-button__text small-text">Back</p>
-    </div>
+    </button>
   );
 };
