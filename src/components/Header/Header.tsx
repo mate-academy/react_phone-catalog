@@ -1,6 +1,10 @@
 import { useState } from 'react';
-import './Header.scss';
+import style from './Header.module.scss';
 import logo from '../../../public/img/logo/logo-icon.svg';
+import iconLike from '../../../public/img/icon-like.png';
+import iconCart from '../../../public/img/icon-bag.png';
+import menu from '../../../public/img/Menu.png';
+import classNames from 'classnames';
 
 export const Header = () => {
   const [activeTab, setActiveTab] = useState<string>('home');
@@ -11,61 +15,73 @@ export const Header = () => {
   };
 
   return (
-    <header className="header">
-      <div className="header-container">
-        <a href="#" className="logo">
-          <img src={logo} className="logo-icon" alt="logo" />
+    <header className={style.header}>
+      <div className={style.header_container}>
+        <a href="#" className={style.logo}>
+          <img src={logo} className={style.icon} alt="logo" />
         </a>
-        <div className="header__navigation">
+        <div className={style.navigation}>
           <a
             href="#"
-            className={`header__navigation-link ${activeTab === 'home' ? 'is-active' : ''}`}
+            className={classNames(style.navigation_link, {
+              [style.is_active]: activeTab === 'home',
+            })}
             onClick={() => handleTabClick('home')}
           >
             home
           </a>
           <a
             href="#"
-            className={`header__navigation-link ${activeTab === 'phones' ? 'is-active' : ''}`}
+            className={classNames(style.navigation_link, {
+              [style.is_active]: activeTab === 'phones',
+            })}
             onClick={() => handleTabClick('phones')}
           >
             phones
           </a>
           <a
             href="#"
-            className={`header__navigation-link ${activeTab === 'tablets' ? 'is-active' : ''}`}
+            className={classNames(style.navigation_link, {
+              [style.is_active]: activeTab === 'tablets',
+            })}
             onClick={() => handleTabClick('tablets')}
           >
             tablets
           </a>
           <a
             href="#"
-            className={`header__navigation-link ${activeTab === 'accessories' ? 'is-active' : ''}`}
+            className={classNames(style.navigation_link, {
+              [style.is_active]: activeTab === 'accessories',
+            })}
             onClick={() => handleTabClick('accessories')}
           >
             accessories
           </a>
         </div>
       </div>
-      <div className="icons">
-        <a href="#" className="burger-menu">
-          <img src="/img/Menu.png" className="burger-menu-icon" alt="menu" />
+      <div className={style.icons}>
+        <a href="#" className={style.burger_menu}>
+          <img src={menu} className={style.burger_menu_icon} alt="menu" />
         </a>
         <a
           href="#"
-          className={`like ${activeTab === 'like' ? 'is-active' : ''}`}
+          className={classNames(style.like, {
+            [style.is_active]: activeTab === 'like',
+          })}
           onClick={() => handleTabClick('like')}
         >
-          <img src="/img/icon-like.png" className="like-icon" alt="like" />
+          <img src={iconLike} className={style.like_icon} alt="like" />
         </a>
         <a
           href="#"
-          className={`bag ${activeTab === 'bag' ? 'is-active' : ''}`}
+          className={classNames(style.bag, {
+            [style.is_active]: activeTab === 'bag',
+          })}
           onClick={() => handleTabClick('bag')}
         >
-          <img src="/img/icon-bag.png" className="bag-icon" alt="bag" />
+          <img src={iconCart} className={style.bag_icon} alt="bag" />
           {cartItemCount > 0 && (
-            <div className="cart-badge">{cartItemCount}</div>
+            <div className={style.bag_badge}>{cartItemCount}</div>
           )}
         </a>
       </div>

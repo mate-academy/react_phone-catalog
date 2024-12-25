@@ -1,6 +1,4 @@
-$tablet-min-width: 640px;
-$desktop-min-width: 1200px;
-$big-desktop-min-width: 1224px;
+@import './variables.scss';
 
 @mixin onTablet {
   @media (min-width: $tablet-min-width) {
@@ -14,11 +12,7 @@ $big-desktop-min-width: 1224px;
   }
 }
 
-@mixin onBigDesktop {
-  @media (min-width: $big-desktop-min-width) {
-    @content;
-  }
-}
+
 
 @mixin contentPaddingInline() {
   padding-inline: 16px;
@@ -28,12 +22,12 @@ $big-desktop-min-width: 1224px;
   }
 
   @include onDesktop {
-    padding-inline: 32px;
+    margin: 0 auto;
+    max-width: 1136px;
+    padding-inline: 0;
   }
 
-  @include onBigDesktop {
-    padding-inline: 152px;
-  }
+  
 }
 
 .container {
@@ -47,7 +41,7 @@ $big-desktop-min-width: 1224px;
   grid-template-columns: repeat(var(--columns), 1fr);
 
   @include onTablet {
-    --columns: 11;
+    --columns: 12;
     column-gap: 16px;
   }
 

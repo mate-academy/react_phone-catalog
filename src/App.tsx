@@ -1,6 +1,9 @@
 import './App.scss';
-import { BrandList } from './components/BrandList/BrandList';
-import { HeaderBottom } from './components/HaderBottom/HeaderBottom';
+import { BrandList } from './components/Body/BrandList'
+import { Category } from './components/Body/Category';
+import { HotPricesList } from './components/Body/HotPricesList';
+import { Footer } from './components/Footer';
+import { HeaderBottom } from './components/Header/HaderBottom';
 import { Header } from './components/Header/Header';
 
 export const App = () => (
@@ -8,6 +11,8 @@ export const App = () => (
     <Header />
     <HeaderBottom />
     <BrandList />
-    <h1>Product Catalog</h1>
+    <Category />
+    <HotPricesList />
+    <Footer />
   </div>
 );

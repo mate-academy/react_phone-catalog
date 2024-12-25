@@ -1,0 +1,89 @@
+@import '../../utils/variables.scss';
+@import '../../utils/mixins.scss';
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  align-items: start;
+
+  @include onTablet {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    
+  }
+
+  &_wrapper {
+    border-top: 1px solid #3B3E4A;
+    padding-top: 32px;
+    padding-bottom: 32px;
+  }
+}
+
+.logo {
+  
+  height: 32px;
+}
+
+.links {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  @include onTablet {
+    flex-direction: row;
+    gap: 24px;
+  }
+
+  @include onDesktop {
+    gap: 100px;
+  }
+}
+
+.link {
+  font-family: Mont;
+  font-size: 12px;
+  font-weight: 800;
+  line-height: 11px;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  color: $main-text-color;
+  text-transform: uppercase;
+}
+
+.button {
+  background-image: url(../../../public/img/button-top.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 16px 16px;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  cursor: pointer;
+
+  &_text {
+    font-family: Mont;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 15.34px;
+    color: $second-text-color;
+  }
+
+  &_wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    
+
+    @include onTablet {
+      width: 130px;
+      
+    }
+  }
+}
