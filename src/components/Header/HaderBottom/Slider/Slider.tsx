@@ -3,9 +3,9 @@ import { useSwipeable } from 'react-swipeable';
 import style from './Slider.module.scss';
 import '../../../../mainStyles.scss';
 import classNames from 'classnames';
-import photo1 from '../../../../../public/img/banner-accessories.png';
-import photo2 from '../../../../../public/img/banner-phones.png';
-import photo3 from '../../../../../public/img/banner-tablets.png';
+import photo1 from '/img/banner-accessories.png';
+import photo2 from '/img/banner-phones.png';
+import photo3 from '/img/banner-tablets.png';
 
 const slides = [
   {
