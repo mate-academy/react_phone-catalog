@@ -3,18 +3,21 @@ import { useSwipeable } from 'react-swipeable';
 import style from './Slider.module.scss';
 import '../../../../mainStyles.scss';
 import classNames from 'classnames';
+import photo1 from '../../../../../public/img/banner-accessories.png';
+import photo2 from '../../../../../public/img/banner-phones.png';
+import photo3 from '../../../../../public/img/banner-tablets.png';
 
 const slides = [
   {
-    src: '/img/banner-accessories.png',
+    src: photo1,
     link: '/page1',
   },
   {
-    src: '/img/banner-phones.png',
+    src: photo2,
     link: '/page2',
   },
   {
-    src: '/img/banner-tablets.png',
+    src: photo3,
     link: '/page3',
   },
 ];
@@ -66,7 +69,7 @@ export const Slider: React.FC = () => {
                 </div>
               ))}
               <div className={style.text_wrapper}>
-                <p className={style.text}>Now avialable in our store!</p>
+                <p className={style.text}>Now available in our store!</p>
                 <p className={style.description}>Be the first!</p>
 
                 <button
