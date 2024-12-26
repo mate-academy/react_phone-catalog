@@ -8,7 +8,7 @@ import classNames from 'classnames';
 import { CatalogContext } from '../CatalogProvider';
 
 export const Navigation = () => {
-  const { addedItems, oldAddedItems, favouriteItems, favouriteOldItems } =
+  const { addedItems, favouriteItems, themeSwitcher, setThemeSwitcher } =
     useContext(CatalogContext);
   const [showMenu, setShowMenu] = useState(false);
 
@@ -20,7 +20,10 @@ export const Navigation = () => {
 
   return (
     <>
-      <nav className={nav.navigation} id="backtotop">
+      <nav
+        className={nav.navigation}
+        data-theme={themeSwitcher ? 'dark' : 'light'}
+      >
         <div className={nav.navigation__logoblock}>
           <div className={navLogo.logo__navigation}></div>
         </div>
@@ -52,34 +55,49 @@ export const Navigation = () => {
           </div>
           <div className={nav.navigation__icons}>
             <a
-              className={icons.icon__menu}
+              className={classNames([icons.icon__menu], {
+                [icons.icon__menuONDARK]: themeSwitcher,
+              })}
               onClick={() => setShowMenu(!showMenu)}
             ></a>
             <div className={nav.navigation__iconsblock}>
+              <div className={nav.blockswitcher}>
+                <button
+                  className={nav.blockswitcher__button}
+                  onClick={() => setThemeSwitcher(!themeSwitcher)}
+                >
+                  <img
+                    className={icons.icon__switcher}
+                    src={
+                      themeSwitcher
+                        ? '/img/moon-svgrepo-com.svg'
+                        : '/img/abstract_sun_design.svg'
+                    }
+                    alt={themeSwitcher ? 'moon' : 'sun'}
+                  />
+                </button>
+              </div>
               <Link to="/cart" className={nav.navigation__blockbag}>
                 <div
                   className={classNames([icons.icon__bag], {
-                    [icons.icon__bagcircle]:
-                      addedItems.length > 0 || oldAddedItems.length > 0,
+                    [icons.icon__bagONDARK]: themeSwitcher,
+                    [icons.icon__bagcircle]: addedItems.length > 0,
                   })}
                 ></div>
-                {(addedItems.length > 0 || oldAddedItems.length > 0) && (
-                  <div className={icons.icon__circle}>
-                    {addedItems.length + oldAddedItems.length}
-                  </div>
+                {addedItems.length > 0 && (
+                  <div className={icons.icon__circle}>{addedItems.length}</div>
                 )}
               </Link>
               <Link to="/favourites" className={nav.navigation__blockheart}>
                 <div
                   className={classNames([icons.icon__heart], {
-                    [icons.icon__heartcircle]:
-                      favouriteItems.length > 0 || favouriteOldItems.length > 0,
+                    [icons.icon__heartONDARK]: themeSwitcher,
+                    [icons.icon__heartcircle]: favouriteItems.length > 0,
                   })}
                 ></div>
-                {(favouriteItems.length > 0 ||
-                  favouriteOldItems.length > 0) && (
+                {favouriteItems.length > 0 && (
                   <div className={icons.icon__circle}>
-                    {favouriteItems.length + favouriteOldItems.length}
+                    {favouriteItems.length}
                   </div>
                 )}
               </Link>

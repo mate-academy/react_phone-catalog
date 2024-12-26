@@ -11,28 +11,24 @@
 @import '../styles/main';
 
 .productsfilter {
-  @include page-grid;
-
-  grid-column: 1 / 5;
   display: flex;
   justify-content: space-between;
   flex-direction: column;
   width: 298px;
   margin: 0 auto;
   padding-left: 8px;
-
+  
   @include on-tablet {
-    grid-column: 1 / 13;
     flex-direction: row;
     justify-content: center;
     gap: 16px;
-    margin: 0 auto;
+    margin: 0 32%;
   }
 
-  @include on-desktop {
-    grid-column: 1 / 25;
-  }
-  &__input {
+}
+
+
+  .input {
     width: 287px;
     height: 40px;
     border-radius: 10px;
@@ -46,7 +42,8 @@
       margin-left: 10px;
     }
   }
-  &__glass {
+
+  .glass {
     position: relative;
     top: -126px;
     right: 6px;
@@ -68,9 +65,9 @@
     }
   }
 
-  &__glassONPHONE {
+  .glassONPHONE {
     position: relative;
-    top: -160px;
+    top: -127px;
     right: 6px;
     width: 35px;
     height: 35px;
@@ -78,40 +75,39 @@
     background-repeat: no-repeat;
     background-size: 48px 48px;
   }
-  &__content {
+
+  .content {
     grid-column: 1 / 5;
 
-    @include on-tablet {
-      grid-column: 1 / 13;
-    }
 
-    @include on-desktop {
-      grid-column: 1 / 25;
-    }
   }
-  &__text {
+
+  .text {
     font-family: Mont, sans-serif;
   }
-  &__query {
+
+  .query {
     @include on-tablet {
       display: flex;
       flex-direction: column;
     }
   }
-  &__filter {
+
+  .filter {
     display: flex;
     flex-direction: column;
     height: 80px;
     width: 136px;
   }
-  &__filters {
+
+  .filters {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     gap: 16px;
   }
-  &__selection {
-    grid-column: 1 / 5;
+
+  .selection {
     font-family: Mont, sans-serif;
     border: 1px solid #89939A;
     width: 136px;
@@ -119,18 +115,15 @@
     border-radius: 10px;
     cursor: pointer;
 
-    @include on-tablet {
-      grid-column: 1 / 13;
-    }
   }
 
-  &__option {
+  .option {
   font-family: Mont, sans-serif;
-  color: #89939A;
+  color:  var(--secondary-font-color);
     &--disabled {
       color: black;
       font-family: Mont-bold, sans-serif;
       font-weight: 800;
     }
   }
-}
+

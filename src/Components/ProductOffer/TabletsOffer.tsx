@@ -1,13 +1,14 @@
 import { Link, useNavigate, useParams } from 'react-router-dom';
-import { Navigation } from '../Navigation/Navigation';
-import './ProductOffer.module.scss';
+import { Navigation as Nav } from '../Navigation/Navigation';
+import tabletOffer from './ProductOffer.module.scss';
 import { useContext, useState } from 'react';
 import { CatalogContext } from '../CatalogProvider';
-import Slider from 'react-slick';
 import classNames from 'classnames';
 import { Footer } from '../Footer/Footer';
-import { ProductCard } from '../ProductCard/ProductCard';
 import { Product } from '../types/Product';
+import { CartPage } from '../CartPage';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { FreeMode, Navigation, Thumbs } from 'swiper/modules';
 
 export const TabletsOffer = () => {
   const {
@@ -35,44 +36,10 @@ export const TabletsOffer = () => {
   const [selectedCapacity, setSelectedCapacity] = useState(
     selectedTablet?.capacity,
   );
-  const [activeImage, setActiveImage] = useState(false);
   const id = (Math.random() * 100000).toFixed(0);
+  const [thumbsSwiper, setThumbsSwiper] = useState<any>(null);
 
   const navigate = useNavigate();
-
-  const settings = {
-    className: 'productoffer__phoneslider',
-    arrows: false,
-    dots: true,
-    appendDots: (dots: number) => (
-      <ul
-        style={{
-          width: '100px',
-          height: '49px',
-          display: 'flex',
-          justifyContent: 'space-between',
-        }}
-      >
-        {dots}
-      </ul>
-    ),
-    customPaging: (i: number) => (
-      <img
-        style={{ width: '51.2px', height: '49px', objectFit: 'contain' }}
-        src={selectedTablet?.images[i]}
-        onClick={() => setActiveImage(true)}
-        className={classNames('productoffer__dot-image', {
-          'productoffer__image--active': activeImage,
-        })}
-      ></img>
-    ),
-  };
-
-  const secondSettings = {
-    infinite: false,
-    arrows: true,
-    className: 'productoffer__proposition',
-  };
 
   const addProductToFavourite = (favouriteProduct: Product) => {
     const readyToAddItem = favouriteItems.some(
@@ -145,233 +112,260 @@ export const TabletsOffer = () => {
 
   return (
     <>
-      <Navigation />
-      <div className="productoffer">
+      <Nav />
+      <div className={tabletOffer.productoffer}>
         <button
-          className="productoffer__breadcrumbs--back-button"
+          className={tabletOffer.breadcrumbs__backbutton}
           onClick={() => navigate(-1)}
         >
-          {'<'} Back
+          <div className={tabletOffer.breadcrumbs__backarrow}></div> Back
         </button>
-        <div className="productoffer__breadcrumbs">
+        <div className={tabletOffer.breadcrumbs}>
           <Link to="/">
-            <div className="productoffer__breadcrumbs--home" />
+            <div className={tabletOffer.breadcrumbs__home} />
           </Link>
-          <div className="productoffer__breadcrumbs--arrow" />
-          <Link
-            className="productoffer__breadcrumbs--text-active"
-            to="/tablets"
-          >
+          <div className={tabletOffer.breadcrumbs__arrow} />
+          <Link className={tabletOffer.breadcrumbs__textactive} to="/phones">
             <div>Tablets</div>
           </Link>
-          <div className="productoffer__breadcrumbs--arrow" />
-          <div className="productoffer__breadcrumbs--text">{itemId}</div>
+          <div className={tabletOffer.breadcrumbs__arrow} />
+          <div className={tabletOffer.breadcrumbs__text}>{itemId}</div>
         </div>
-        <h1 className="productoffer__title">{selectedTablet?.name}</h1>
-
-        <div className="productoffer__images">
-          <Slider {...settings}>
-            {selectedTablet?.images.map((image, index) => (
-              <img key={index} src={image} className="productoffer__image" />
-            ))}
-          </Slider>
-        </div>
-        <div className="productoffer__panel">
-          <div className="productoffer__panel--id-and-title">
-            <h2 className="productoffer__panel--title">Available colors</h2>
-            <div className="productoffer__panel--id-number">{`ID: ${id}`}</div>
+        <h1 className={tabletOffer.title}>{selectedTablet?.name}</h1>
+        <div className={tabletOffer.containerONTABLET}>
+          <div className="container__swipers">
+            <div className="container">
+              <Swiper
+                className={tabletOffer.images}
+                modules={[FreeMode, Navigation, Thumbs]}
+                navigation={true}
+                loop={true}
+                spaceBetween={100}
+                thumbs={{ swiper: thumbsSwiper }}
+              >
+                {selectedTablet?.images.map((image, i) => {
+                  return (
+                    <SwiperSlide key={i}>
+                      <img src={image} className={tabletOffer.image} />
+                    </SwiperSlide>
+                  );
+                })}
+              </Swiper>
+            </div>
+            <div className="container__nav">
+              <Swiper
+                onSwiper={setThumbsSwiper}
+                loop={true}
+                spaceBetween={10}
+                slidesPerView={10}
+                freeMode={true}
+                modules={[FreeMode, Navigation, Thumbs]}
+                className={tabletOffer.navImages}
+              >
+                {selectedTablet?.images.map((image, i) => {
+                  return (
+                    <SwiperSlide key={i}>
+                      <img src={image} className={tabletOffer.navImage} />
+                    </SwiperSlide>
+                  );
+                })}
+              </Swiper>
+            </div>
           </div>
-          <div className="productoffer__panel--colors">
-            {selectedTablet?.colorsAvailable.map(color => {
-              const getSelectedColor = (currentColor: string) => {
-                if (color === currentColor) {
-                  setSelectedColor(currentColor);
+
+          <div className={tabletOffer.panel}>
+            <div className={tabletOffer.panel__id_and_title}>
+              <h2 className={tabletOffer.panel__title}>Available colors</h2>
+              <div className={tabletOffer.panel__idnumber}>{`ID: ${id}`}</div>
+            </div>
+            <div className={tabletOffer.panel__colors}>
+              {selectedTablet?.colorsAvailable.map(color => {
+                const getSelectedColor = (currentColor: string) => {
+                  if (color === currentColor) {
+                    setSelectedColor(currentColor);
+
+                    navigate(
+                      `/tablets/${selectedTablet.namespaceId}-${selectedTablet.capacity.toLowerCase()}-${currentColor}`,
+                    );
+                  }
+                };
+
+                return (
+                  <button
+                    key={color}
+                    onClick={() => getSelectedColor(color)}
+                    className={classNames([tabletOffer.panel__colorselection], {
+                      [tabletOffer.panel__colorselectionselected]:
+                        selectedColor === color ||
+                        color === selectedTablet.color,
+                    })}
+                    style={{ backgroundColor: `${color}` }}
+                  ></button>
+                );
+              })}
+            </div>
+            <div className={tabletOffer.line}></div>
+            <div className={tabletOffer.panel__capacity_title}>
+              Select capacity
+            </div>
+            {selectedTablet?.capacityAvailable.map(capacity => {
+              const getSelectedCapacity = (currentCapacity: string) => {
+                if (currentCapacity.toLowerCase() === capacity.toLowerCase()) {
+                  setSelectedCapacity(currentCapacity);
 
                   navigate(
-                    `/tablets/${selectedTablet.namespaceId}-${selectedTablet.capacity.toLowerCase()}-${currentColor}`,
+                    `/tablets/${selectedTablet.namespaceId}-${currentCapacity.toLowerCase()}-${selectedTablet.color}`,
                   );
                 }
               };
 
               return (
                 <button
-                  onClick={() => getSelectedColor(color)}
-                  className={classNames(
-                    'productoffer__panel--color-selection',
-                    {
-                      'productoffer__panel--color-selection--selected':
-                        selectedColor === color ||
-                        color === selectedTablet.color,
-                    },
-                  )}
-                  key={color}
-                  style={{ backgroundColor: `${color}` }}
-                ></button>
+                  className={classNames([tabletOffer.panel__capacity_option], {
+                    [tabletOffer.panel__capacity_optionselected]:
+                      selectedCapacity === capacity ||
+                      capacity === selectedTablet.capacity,
+                  })}
+                  key={capacity}
+                  onClick={() => getSelectedCapacity(capacity)}
+                >
+                  {capacity}
+                </button>
               );
             })}
-          </div>
-          <div className="productoffer__line"></div>
-          <div className="productoffer__panel--capacity-title">
-            Select capacity
-          </div>
-          {selectedTablet?.capacityAvailable.map(capacity => {
-            const getSelectedCapacity = (currentCapacity: string) => {
-              if (currentCapacity === capacity) {
-                setSelectedCapacity(undefined);
-
-                navigate(
-                  `/tablets/${selectedTablet.namespaceId}-${currentCapacity.toLowerCase()}-${selectedTablet.color}`,
-                );
-              }
-            };
-
-            return (
-              <button
-                className={classNames('productoffer__panel--capacity-option', {
-                  'productoffer__panel--capacity-option-selected':
-                    selectedCapacity === capacity ||
-                    capacity === selectedTablet.capacity,
-                })}
-                key={capacity}
-                onClick={() => getSelectedCapacity(capacity)}
-              >
-                {capacity}
-              </button>
-            );
-          })}
-          <div className="productoffer__line"></div>
-          <div className="productoffer__panel--prices">
-            <div className="productoffer__panel--price">{`$${selectedTablet?.priceDiscount}`}</div>
-            <del className="productoffer__panel--price-discount">{`$${selectedTablet?.priceRegular}`}</del>
-          </div>
-          <div className="productoffer__panel--buttons">
-            {selectedProduct && (
-              <button
-                className="productoffer__panel--adding-button"
-                onClick={() => addItems(selectedProduct)}
-              >
-                {addedItems.find(item => item.id === selectedProduct.id)
-                  ? 'ADDED'
-                  : 'Add to cart'}
-              </button>
-            )}
-            {selectedProduct && (
-              <button
-                className={classNames('productoffer__panel--heart-button', {
-                  'productoffer__panel--heart-button--is-active':
-                    favouriteItems.find(item => item.id === selectedProduct.id),
-                })}
-                onClick={() => addProductToFavourite(selectedProduct)}
-              ></button>
-            )}
-          </div>
-          <div className="productoffer__panel--basicspec">
-            <div className="productoffer__panel--basicspec-data">
-              <div className="productoffer__panel--basicspec-title">Screen</div>
-              <div className="productoffer__panel--basicspec-text">
-                {selectedTablet?.screen}
-              </div>
+            <div className={tabletOffer.line}></div>
+            <div className={tabletOffer.panel__prices}>
+              <div
+                className={tabletOffer.panel__price}
+              >{`$${selectedTablet?.priceDiscount}`}</div>
+              <del
+                className={tabletOffer.panel__pricediscount}
+              >{`$${selectedTablet?.priceRegular}`}</del>
             </div>
-            <div className="productoffer__panel--basicspec-data">
-              <div className="productoffer__panel--basicspec-title">
-                Resolution
-              </div>
-              <div className="productoffer__panel--basicspec-text">
-                {selectedTablet?.resolution}
-              </div>
+            <div className={tabletOffer.panel__buttons}>
+              {selectedProduct && (
+                <button
+                  className={tabletOffer.panel__adding_button}
+                  onClick={() => addItems(selectedProduct)}
+                >
+                  {addedItems.find(item => item.id === selectedProduct.id)
+                    ? 'ADDED'
+                    : 'Add to cart'}
+                </button>
+              )}
+              {selectedProduct && (
+                <button
+                  onClick={() => addProductToFavourite(selectedProduct)}
+                  className={classNames([tabletOffer.panel__heartbutton], {
+                    [tabletOffer.panel__heartbutton_isactive]:
+                      favouriteItems.find(item => item.itemId === itemId),
+                  })}
+                ></button>
+              )}
             </div>
-            <div className="productoffer__panel--basicspec-data">
-              <div className="productoffer__panel--basicspec-title">
-                Processor
+            <div className={tabletOffer.panel__basicspec}>
+              <div className={tabletOffer.panel__basicspec__data}>
+                <div className={tabletOffer.panel__basicspec__title}>
+                  Screen
+                </div>
+                <div className={tabletOffer.panel__basicspec__text}>
+                  {selectedTablet?.screen}
+                </div>
               </div>
-              <div className="productoffer__panel--basicspec-text">
-                {selectedTablet?.processor}
+              <div className={tabletOffer.panel__basicspec__data}>
+                <div className={tabletOffer.panel__basicspec__title}>
+                  Resolution
+                </div>
+                <div className={tabletOffer.panel__basicspec__text}>
+                  {selectedTablet?.resolution}
+                </div>
               </div>
-            </div>
-            <div className="productoffer__panel--basicspec-data">
-              <div className="productoffer__panel--basicspec-title">RAM</div>
-              <div className="productoffer__panel--basicspec-text">
-                {selectedTablet?.ram}
+              <div className={tabletOffer.panel__basicspec__data}>
+                <div className={tabletOffer.panel__basicspec__title}>
+                  Processor
+                </div>
+                <div className={tabletOffer.panel__basicspec__text}>
+                  {selectedTablet?.processor}
+                </div>
+              </div>
+              <div className={tabletOffer.panel__basicspec__data}>
+                <div className={tabletOffer.panel__basicspec__title}>RAM</div>
+                <div className={tabletOffer.panel__basicspec__text}>
+                  {selectedTablet?.ram}
+                </div>
               </div>
             </div>
           </div>
         </div>
-        <div className="productoffer__description">
-          <h2 className="productoffer__description--header">About</h2>
-          <div className="productoffer__line"></div>
+        <div className={tabletOffer.decription}>
+          <h2 className={tabletOffer.description__header}>About</h2>
+          <div className={tabletOffer.line}></div>
           {selectedTablet?.description.map(data => (
             <>
-              <div className="productoffer__description--title">
-                {data.title}
-              </div>
-              <div className="productoffer__description--text">{data.text}</div>
+              <div className={tabletOffer.description__title}>{data.title}</div>
+              <div className={tabletOffer.description__text}>{data.text}</div>
             </>
           ))}
-          <div className="productoffer__line"></div>
+          <div className={tabletOffer.line}></div>
         </div>
-        <div className="productoffer__techspecs">
-          <div className="productoffer__techspecs--data">
-            <div className="productoffer__techspecs--title">Screen</div>
-            <div className="productoffer__techspecs--text">
+        <div className={tabletOffer.techspecs}>
+          <div className={tabletOffer.techspec__data}>
+            <div className={tabletOffer.techspec__title}>Screen</div>
+            <div className={tabletOffer.techspec__text}>
               {selectedTablet?.screen}
             </div>
           </div>
-          <div className="productoffer__techspecs--data">
-            <div className="productoffer__techspecs--title">Resolution</div>
-            <div className="productoffer__techspecs--text">
+          <div className={tabletOffer.techspec__data}>
+            <div className={tabletOffer.techspec__title}>Resolution</div>
+            <div className={tabletOffer.techspec__text}>
               {selectedTablet?.resolution}
             </div>
           </div>
-          <div className="productoffer__techspecs--data">
-            <div className="productoffer__techspecs--title">Processor</div>
-            <div className="productoffer__techspecs--text">
+          <div className={tabletOffer.techspec__data}>
+            <div className={tabletOffer.techspec__title}>Processor</div>
+            <div className={tabletOffer.techspec__text}>
               {selectedTablet?.processor}
             </div>
           </div>
-          <div className="productoffer__techspecs--data">
-            <div className="productoffer__techspecs--title">RAM</div>
-            <div className="productoffer__techspecs--text">
+          <div className={tabletOffer.techspec__data}>
+            <div className={tabletOffer.techspec__title}>RAM</div>
+            <div className={tabletOffer.techspec__text}>
               {selectedTablet?.ram}
             </div>
           </div>
-          <div className="productoffer__techspecs--data">
-            <div className="productoffer__techspecs--title">
-              Built in memory
-            </div>
-            <div className="productoffer__techspecs--text">
+          <div className={tabletOffer.techspec__data}>
+            <div className={tabletOffer.techspec__title}>Built in memory</div>
+            <div className={tabletOffer.techspec__text}>
               {selectedTablet?.capacity}
             </div>
           </div>
-          <div className="productoffer__techspecs--data">
-            <div className="productoffer__techspecs--title">Camera</div>
-            <div className="productoffer__techspecs--text">
+          <div className={tabletOffer.techspec__data}>
+            <div className={tabletOffer.techspec__title}>Camera</div>
+            <div className={tabletOffer.techspec__text}>
               {selectedTablet?.camera}
             </div>
           </div>
-          <div className="productoffer__techspecs--data">
-            <div className="productoffer__techspecs--title">Zoom</div>
-            <div className="productoffer__techspecs--text">
+          <div className={tabletOffer.techspec__data}>
+            <div className={tabletOffer.techspec__title}>Zoom</div>
+            <div className={tabletOffer.techspec__text}>
               {selectedTablet?.zoom}
             </div>
           </div>
-          <div className="productoffer__techspecs--data">
-            <div className="productoffer__techspecs--title">Cell</div>
+          <div className={tabletOffer.techspec__data}>
+            <div className={tabletOffer.techspec__title}>Cell</div>
 
             {selectedTablet?.cell.map(cell => (
-              <div className="productoffer__techspecs--text" key={cell}>
+              <div className={tabletOffer.techspec__text} key={cell}>
                 {`${cell}, `}
               </div>
             ))}
           </div>
         </div>
-        <div className="productoffer__slider">
-          <div className="productoffer__slider--header">You may also like</div>
-
-          <Slider {...secondSettings}>
-            {proposedTablets.map(proposedTablet => (
-              <ProductCard key={proposedTablet.id} product={proposedTablet} />
-            ))}
-          </Slider>
+        <div className={tabletOffer.title}>
+          <CartPage
+            showedProducts={proposedTablets}
+            swiperTitle={'You may also like'}
+          />
         </div>
       </div>
       <Footer />

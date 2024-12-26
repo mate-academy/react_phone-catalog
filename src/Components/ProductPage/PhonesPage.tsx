@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/indent */
 import { Link, useSearchParams } from 'react-router-dom';
 import { Footer } from '../Footer/Footer';
 import { Navigation } from '../Navigation/Navigation';
@@ -9,9 +10,10 @@ import { FilterType } from '../types/FilterType';
 import { CatalogContext } from '../CatalogProvider';
 import { ItemPerPage } from '../types/ItemPerPage';
 import { Pagination } from '../Pagination/Pagination';
+import { SkeletonProductCard } from '../ProductCard/SkeletonProductCard';
 
 export const PhonesPage = () => {
-  const { products, setProducts, phones, pageNumber } =
+  const { products, setProducts, phones, pageNumber, loading } =
     useContext(CatalogContext);
 
   const [searchParams, setSearchParams] = useSearchParams();
@@ -19,7 +21,7 @@ export const PhonesPage = () => {
   const queries = searchParams.get('query') || '';
   const sortOptions = searchParams.get('sort') || '';
   const items = searchParams.get('perPage') || '';
-  const numberOfPage = searchParams.get('number') || '';
+  const numberOfPage = searchParams.get('page') || '';
   const itemsInNumber = parseInt(items);
 
   const filteredOptions = (allPhones: string) => {
@@ -120,17 +122,36 @@ export const PhonesPage = () => {
     }
   };
 
+  const getSkeleton = (skeletonItems: number) => {
+    const array: number[] = [];
+
+    if (Number.isNaN(skeletonItems)) {
+      for (let i = 1; i < 124; i++) {
+        array.push(i);
+      }
+
+      return array;
+    }
+
+    for (let i = 1; i < skeletonItems; i++) {
+      array.push(i);
+    }
+
+    return array;
+  };
+
   return (
     <>
       <Navigation />
       <div className={phonesPage.productpage}>
-        <Link className={phonesPage.productpage__breadcrumbslink} to="/">
-          {'>'} Phones
-        </Link>
+        <div className={phonesPage.breadcrumbs}>
+          <Link to="/" className={phonesPage.breadcrumbs__link} />
+          <div className={phonesPage.breadcrumbs__text}>{'>'} Phones</div>
+        </div>
 
-        <h1 className={phonesPage.productpage__header}>Mobile phones</h1>
+        <h1 className={phonesPage.header}>Mobile phones</h1>
         <span
-          className={phonesPage.productpage__amountofmodels}
+          className={phonesPage.amountofmodels}
         >{`${filteredPhones.length} ${filteredPhones.length === 1 ? 'model' : 'models'}`}</span>
         <ProductsFilter
           queries={queries}
@@ -138,28 +159,36 @@ export const PhonesPage = () => {
           sort={sortOptions}
           perPage={items}
         />
-        <div className={phonesPage.productpage__content}>
-          {getVisibleItems(itemsInNumber).length === 0 ? (
-            <h1 className={phonesPage.productpage__noresults}>
-              There are not phones matching the query{' '}
-            </h1>
-          ) : (
-            <div className={phonesPage.productpage__content}>
-              {getVisibleItems(itemsInNumber).map(product => (
-                <ProductCard product={product} key={product.id} />
-              ))}
-            </div>
-          )}
-        </div>
+
+        {loading && getVisibleItems(itemsInNumber).length === 0 ? (
+          <div className={phonesPage.content}>
+            {getSkeleton(itemsInNumber).map((_, i) => (
+              <SkeletonProductCard key={i} />
+            ))}
+          </div>
+        ) : (
+          <div className={phonesPage.content}>
+            {getVisibleItems(itemsInNumber).map(product => (
+              <ProductCard product={product} key={product.id} />
+            ))}
+          </div>
+        )}
+        {!getVisibleItems(itemsInNumber).length && queries && (
+          <h1 className={phonesPage.noresults}>
+            There are not phones matching the query ...{' '}
+          </h1>
+        )}
       </div>
-      {!Number.isNaN(itemsInNumber) && (
-        <Pagination
-          filteredItems={filteredPhones}
-          itemsInNumber={itemsInNumber}
-          number={numberOfPage}
-          setSearchParams={setSearchParams}
-        />
-      )}
+
+      {!Number.isNaN(itemsInNumber) &&
+        filteredPhones.length > itemsInNumber && (
+          <Pagination
+            filteredItems={filteredPhones}
+            itemsInNumber={itemsInNumber}
+            number={numberOfPage}
+            setSearchParams={setSearchParams}
+          />
+        )}
       <Footer />
     </>
   );

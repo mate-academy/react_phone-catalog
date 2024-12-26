@@ -4,26 +4,21 @@ import { Navigation } from '../Navigation/Navigation';
 import { CartPage } from '../CartPage/CartPage';
 import home from './HomePage.module.scss';
 import { Footer } from '../Footer/Footer';
-import { Discounts } from '../Discounts/Discounts';
 import { useContext } from 'react';
 import { CatalogContext } from '../CatalogProvider';
 
 export const HomePage = () => {
-  const { products } = useContext(CatalogContext);
+  const { products, themeSwitcher } = useContext(CatalogContext);
 
-  const getNewestProducts = products.sort((a, b) => {
-    if (a.ProductData && b.ProductData) {
-      return b.ProductData?.priceDiscount - a.ProductData?.priceDiscount;
-    }
+  const getNewestProducts = products.sort((a, b) => b.year - a.year);
 
-    return 1;
-  });
+  const getProductsWithDiscount = products.sort((a, b) => b.price - a.price);
 
   return (
     <>
       <Navigation />
       <h1 className={home.home__phonecatalog}>Phone Catalog</h1>
-      <div className={home.home}>
+      <div className={home.home} data-theme={themeSwitcher ? 'dark' : 'light'}>
         <h1 className={home.home__title}>Welcome to Nice Gadgets store!</h1>
         <MainSlider />
         <CartPage
@@ -31,7 +26,10 @@ export const HomePage = () => {
           swiperTitle="Brand new models"
         />
         <Categories />
-        <Discounts />
+        <CartPage
+          showedProducts={getProductsWithDiscount}
+          swiperTitle="Hot prices"
+        />
       </div>
       <Footer />
     </>

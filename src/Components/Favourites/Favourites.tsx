@@ -14,30 +14,24 @@ export const Favourites = () => {
       <Navigation />
       {favouriteItems.length === 0 ? (
         <>
-          <h1 className={favourite.favourites__emptycardtitle}>
+          <h1 className={favourite.emptycardtitle}>
             You have no favourite products :)
           </h1>
-          <div className={favourite.favourites__emptycardimage}></div>
+          <div className={favourite.emptycardimage}></div>
         </>
       ) : (
         <div className={favourite.favourites}>
-          <div className={favourite.favourites__breadcrumbs}>
-            <Link
-              className={favourite.favourites__breadcrumbshome}
-              to={'/home'}
-            />
-            <div className={favourite.favourites__breadcrumbstext}>
-              {' '}
-              {'>'} Favourites
-            </div>
+          <div className={favourite.breadcrumbs}>
+            <Link className={favourite.breadcrumbs__home} to={'/home'} />
+            <div className={favourite.breadcrumbs__text}> {'>'} Favourites</div>
           </div>
           <>
-            <h1 className={favourite.favourites__title}>Favourite Products</h1>
+            <h1 className={favourite.title}>Favourite Products</h1>
             <h2
-              className={favourite.favourites__amountofitems}
+              className={favourite.amountofitems}
             >{`${favouriteItems.length} items`}</h2>
 
-            <div className={favourite.favourites__content}>
+            <div className={favourite.content}>
               {favouriteItems.map(favouriteItem => (
                 <ProductCard key={favouriteItem.id} product={favouriteItem} />
               ))}

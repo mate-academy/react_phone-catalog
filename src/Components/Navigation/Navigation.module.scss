@@ -1,38 +1,22 @@
 @import '../styles/main';
 
-@font-face {
-  font-family: Mont-navigation-on-tablet;
-  src: url('../../../public/fonts/Mont-Regular.otf');
-}
-
-@font-face {
-  font-family: Mont-bold-navigation-on-tablet;
-  src: url('../../../public/fonts/Mont-Bold.otf');
-}
-
 .navigation {
   display: flex;
   justify-content: space-between;
   height: 48px;
-
-  @include on-tablet {
-    grid-column: 12 span;
-  }
+  background-color: var(--background-color);
 
   @include on-desktop {
-    grid-column: span 24;
     height: 64px;
   }
 
   border-bottom: 1px solid #E2E6E9;
-  background-color: white;
 
   &__logoblock {
     display: flex;
     align-items: center;
     width: 96px;
     justify-content: center;
-    grid-column: 1 / 2;
   }
   &__content {
     display: none;
@@ -55,8 +39,8 @@
     align-items: center;
     &:hover {
       padding-top: 4px;
-      color: black;
-      border-bottom: 4px solid black;
+      color: var(--primary-font-color);
+      border-bottom: 4px solid var(--primary-font-color);
       font-family: Mont-Bold, sans-serif;
     }
   }
@@ -75,7 +59,7 @@
     border-left: 1px solid #E2E6E9;
 
     &:hover {
-      border-bottom: 4px solid black;
+      border-bottom: 4px solid var(--primary-font-color);
       padding-top: 4px;
     }
 
@@ -96,7 +80,7 @@
     border-left: 1px solid #E2E6E9;
 
     &:hover {
-      border-bottom: 4px solid black;
+      border-bottom: 4px solid var(--primary-font-color);
       padding-top: 4px;
     }
 
@@ -115,17 +99,17 @@ font-weight: 800;
 line-height: 11px;
 letter-spacing: 0.04em;
 text-align: center;
-color: #89939A;
+color:  var(--secondary-font-color);
       text-decoration: none;
     }
     &:hover {
-      color: black;
+      color: var(--primary-font-color);
     }
 
     &active {
-      color: black;
+      color: var(--primary-font-color);
       padding-bottom: 16px;
-      border-bottom: 4px solid black;
+      border-bottom: 4px solid var(--primary-font-color);
       font-family: Mont-Bold, sans-serif;
 
       @include on-desktop {
@@ -143,26 +127,13 @@ color: #89939A;
       justify-content: space-between;
       align-items: center;
       gap: 16px;
-      margin-right: 24px;
-    }
-
-    @include on-desktop {
-      grid-column: 3 / 25;
-      justify-content: space-between;
-      align-items: center;
-      gap: 16px;
-      margin-right: 24px;
+      margin-right: 48px;
     }
   }
   &__iconsblock {
     display: none;
 
     @include on-tablet {
-      display: flex;
-    justify-content: start;
-    }
-
-    @include on-desktop {
       display: flex;
     justify-content: start;
     }
@@ -178,5 +149,32 @@ color: #89939A;
       @include on-tablet {
         border: 0;
       }
+  }
+}
+
+.themeswitcherblock {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-left: 1px solid #E2E6E9;
+}
+
+.blockswitcher {
+  &__button {
+    height: 30px;
+    background-color: var(--background-color);
+    border: 0;
+    padding: 0;
+  }
+  
+  @include on-tablet {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    border-left: 1px solid #E2E6E9;
   }
 }

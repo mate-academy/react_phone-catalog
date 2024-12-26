@@ -85,10 +85,7 @@
     width: 293px;
     display: flex;
     justify-content: space-between;
-    margin: 0 0 auto -5px;
-    &--disabled {
-      display: none;
-    }
+    margin: 0 auto -5px;
 
     @include on-tablet {
       margin: 30px auto 0;

@@ -1,40 +1,24 @@
 /* eslint-disable prettier/prettier */
-import { FilterType } from './types/FilterType';
 import { ContextType } from './types/ContextType';
 import { createContext, useEffect, useState } from 'react';
 import { ProductType } from './types/phones';
-import { OldProduct } from './types/OldProducts';
 import { Product } from './types/Product';
 import {
   getAccessories,
-  getOldOffer,
-  getOldProducts,
   getPhones,
   getProducts,
   getTablets,
 } from '../api/products';
-import { OldProductType } from './types/OldProductType';
-import { ItemPerPage } from './types/ItemPerPage';
 import { useLocaleStorage } from './hooks/useLocaleStorage';
 export const CatalogContext = createContext<ContextType>({
-  filter: FilterType.AllPhones,
-  setFilter: () => {},
   phones: [],
   setPhones: () => {},
   tablets: [],
   setTablets: () => {},
   accessories: [],
   setAccessories: () => {},
-  oldProducts: [],
-  setOldProducts: () => {},
-  oldProductOffers: [],
-  setOldProductOffers: () => {},
   products: [],
   setProducts: () => {},
-  query: '',
-  setQuery: () => {},
-  itemsPerPage: ItemPerPage.ALL,
-  setItemsPerPage: () => {},
   slidePages: 0,
   setSlidePages: () => {},
   pageNumber: 0,
@@ -47,22 +31,14 @@ export const CatalogContext = createContext<ContextType>({
   setAddedItems: () => {},
   totalPrice: 1,
   setTotalPrice: () => {},
-  favouriteOldItems: [],
-  setFavouriteOldItems: () => {},
-  oldAddedItems: [],
-  setOldAddedItems: () => {},
-  amountOfModels: 1,
-  setAmountOfModels: () => {},
   totalModels: 0,
   setTotalModels: () => {},
-  totalOldModels: 0,
-  setTotalOldModels: () => {},
-  totalOldProductsPrice: 0,
-  setTotalOldProductsPrice: () => {},
-  amountOfOldModels: 0,
-  setAmountOfOldModels: () => {},
   visibleItems: [],
   setVisibleItems: () => {},
+  loading: false,
+  setLoading: () => {},
+  themeSwitcher: false,
+  setThemeSwitcher: () => {},
 });
 
 export const GlobalCatalogProvider: React.FC<{
@@ -71,19 +47,10 @@ export const GlobalCatalogProvider: React.FC<{
   const [phones, setPhones] = useState<ProductType[]>([]);
   const [tablets, setTablets] = useState<ProductType[]>([]);
   const [accessories, setAccessories] = useState<ProductType[]>([]);
-  const [filter, setFilter] = useState<FilterType>(FilterType.AllPhones);
   const [products, setProducts] = useState<Product[]>([]);
-  const [oldProducts, setOldProducts] = useState<OldProduct[]>([]);
-  const [oldProductOffers, setOldProductOffers] = useState<OldProductType[]>(
-    [],
-  );
   const [favouriteItems, setFavouriteItems] = useLocaleStorage<Product[]>(
     'favouriteItems',
     [],
-  );
-  const [query, setQuery] = useState('');
-  const [itemsPerPage, setItemsPerPage] = useState<ItemPerPage>(
-    ItemPerPage.ALL,
   );
   const [slidePages, setSlidePages] = useState(0);
   const [slideDots, setSlideDots] = useState(0);
@@ -93,55 +60,39 @@ export const GlobalCatalogProvider: React.FC<{
     [],
   );
 
-  const [favouriteOldItems, setFavouriteOldItems] = useLocaleStorage<
-  OldProduct[]
-  >('favouriteOldItems', []);
-  const [oldAddedItems, setOldAddedItems] = useLocaleStorage<OldProduct[]>(
-    'oldAddedItems',
-    [],
-  );
   const [totalPrice, setTotalPrice] = useLocaleStorage('totalPrice', 0);
-  const [amountOfModels, setAmountOfModels] = useLocaleStorage(
-    'amountOfModels',
-    1,
-  );
   const [totalModels, setTotalModels] = useLocaleStorage('totalModels', 0);
-  const [totalOldModels, setTotalOldModels] = useLocaleStorage(
-    'totalOldModels',
-    0,
-  );
-  const [totalOldProductsPrice, setTotalOldProductsPrice] = useLocaleStorage(
-    'totalOldProductsPrice',
-    0,
-  );
-  const [amountOfOldModels, setAmountOfOldModels] = useLocaleStorage(
-    'amountOfOldModels',
-    1,
-  );
   const [visibleItems, setVisibleItems] = useState<Product[]>([]);
+  const [loading, setLoading] = useState(false);
+  // eslint-disable-next-line max-len
+  const [themeSwitcher, setThemeSwitcher] = useLocaleStorage('themeSwitcher', false);
 
   useEffect(() => {
-    getPhones().then(setPhones);
+    setLoading(true);
+    getPhones().then(setPhones).finally(() => {
+      setLoading(false);
+    });
   }, []);
 
   useEffect(() => {
-    getTablets().then(setTablets);
+    setLoading(true);
+    getTablets().then(setTablets).finally(() => {
+      setLoading(false);
+    });
   }, []);
 
   useEffect(() => {
-    getAccessories().then(setAccessories);
+    setLoading(true);
+    getAccessories().then(setAccessories).finally(() => {
+      setLoading(false);
+    });
   }, []);
 
   useEffect(() => {
-    getProducts().then(setProducts);
-  }, []);
-
-  useEffect(() => {
-    getOldProducts().then(setOldProducts);
-  }, []);
-
-  useEffect(() => {
-    getOldOffer().then(setOldProductOffers);
+    setLoading(true);
+    getProducts().then(setProducts).finally(() => {
+      setLoading(false);
+    });
   }, []);
 
   useEffect(() => {
@@ -157,18 +108,8 @@ export const GlobalCatalogProvider: React.FC<{
         setTablets,
         accessories,
         setAccessories,
-        filter,
-        setFilter,
-        oldProducts,
-        setOldProducts,
         products,
         setProducts,
-        oldProductOffers,
-        setOldProductOffers,
-        query,
-        setQuery,
-        itemsPerPage,
-        setItemsPerPage,
         slidePages,
         setSlidePages,
         pageNumber,
@@ -181,22 +122,14 @@ export const GlobalCatalogProvider: React.FC<{
         setAddedItems,
         totalPrice,
         setTotalPrice,
-        favouriteOldItems,
-        setFavouriteOldItems,
-        oldAddedItems,
-        setOldAddedItems,
-        amountOfModels,
-        setAmountOfModels,
         totalModels,
         setTotalModels,
-        totalOldModels,
-        setTotalOldModels,
-        totalOldProductsPrice,
-        setTotalOldProductsPrice,
-        amountOfOldModels,
-        setAmountOfOldModels,
         visibleItems,
         setVisibleItems,
+        loading,
+        setLoading,
+        themeSwitcher,
+        setThemeSwitcher,
       }}
     >
       {children}

@@ -10,7 +10,7 @@
 
   @include on-tablet {
     flex-direction: column;
-    height: 20vh;
+    height: 15vh;
   }
 }
 
@@ -20,3 +20,95 @@
     flex-direction: row;
   }
  }
+
+ .container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  .swiper-slide {
+    display: flex;
+    justify-content: center;
+    width: 40%;
+    
+    @include on-tablet {
+      height: 100%;
+    }
+  }
+  .swiper {
+    width: 100%;
+  }
+  .swiper-wrapper {
+    display: flex;
+  }
+  &__nav {
+    display: flex;
+    .swiper {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+
+      @include on-tablet {
+        width: 151%;
+        margin-left: -64%;
+        justify-content: start;
+      }
+    }
+    .swiper-wrapper {
+      width: 96%;
+      justify-content: space-between;
+      margin-top: 70px;
+
+      @include on-tablet {
+        width: 10%;
+        gap: 20px;
+      }
+
+    }
+    .swiper-slide {
+      width: 51.5px !important;
+
+      @include on-tablet {
+      height: auto;
+      margin-left: 100%;
+      }
+    }
+
+    @include on-tablet {
+      width: 20%;
+      height: 80vh;
+      margin-right: 4%;
+      flex-direction: column-reverse;
+    }
+  }
+  &__swipers {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+
+    @include on-tablet {
+      flex-direction: row-reverse;
+      width: 60%;
+      justify-content: start;
+    }
+  }
+
+  @include on-tablet {
+    display: flex;
+    flex-direction: row-reverse;
+    width: 70%;
+  }
+}
+
+.swiper-slide-thumb-active {
+  width: 51.5px !important;
+  margin-bottom: 6px;
+  height: 56px;
+  border: 2px solid black;
+  z-index: 1;
+
+  @include on-tablet {
+    height: 10.1vh !important;
+    margin-bottom: 10px;
+
+  }
+}

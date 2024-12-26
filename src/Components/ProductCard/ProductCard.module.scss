@@ -17,7 +17,15 @@
   gap: 16px;
   width: 212px;
   border-radius: 8px;
-  background-color: white;
+  background-color: var(--background-color);
+  
+  @include on-tablet {
+    width: 230px;
+  }
+
+  @include on-desktop {
+    width: 278px;
+  }
   &__container {
     margin-top: 20px;
   }
@@ -47,6 +55,7 @@
     }
   }
   &__name {
+    color: var(--primary-font-color);
     height: 42px;
 font-family: Mont-normal, sans-serif;
 font-size: 14px;
@@ -67,6 +76,7 @@ margin: 0 32px;
     display: flex;
   }
   &__price {
+    color: var(--primary-font-color);
 font-family: Mont-bold, sans-serif;
 font-size: 22px;
 font-weight: 800;
@@ -84,7 +94,7 @@ margin: 0 5px 0 40px;
 
   }
   &__pricediscount {
-    color:#B4BDC3;
+    color: var(--primary-font-color);
     font-family: Mont-bold, sans-serif;
 font-size: 22px;
 font-weight: 800;
@@ -97,12 +107,14 @@ text-align: left;
 }
 
 &__description {
+  color: var(--primary-font-color);
   display: flex;
   flex-direction: column;
   gap: 4px;
 }
 
 &__data {
+  color: var(--primary-font-color);
   display: flex;
   justify-content: space-between;
 
@@ -121,7 +133,7 @@ font-family: Mont, sans-serif;
 font-size: 12px;
 line-height: 15.34px;
 text-align: left;
-color: #89939A;
+color:  var(--secondary-font-color);
 }
 
 &__value {
@@ -147,10 +159,6 @@ text-align: right;
 
 }
 &__addingbutton {
-  @include on-desktop {
-    width: 160px;
-  }
-
   width: 158px;
   height: 40px;
 border-radius: 8px;
@@ -163,13 +171,13 @@ line-height: 21px;
 text-align: center;
 
 &isactive {
-  background-color: white;
-  color: #216CFF;
-  border: 1px solid #216CFF;
+  background-color: var(--active-button);
+  color: var(--text-active-button);
+  border: 1px solid var#216CFF;
 }
 &:hover {
-  background-color: white;
-  color: #216CFF;
+  background-color: var(--active-button);
+  color: var(--text-active-button);
   border: 3px solid #216CFF;
 }
 

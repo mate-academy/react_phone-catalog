@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { Link, useSearchParams } from 'react-router-dom';
 import { Footer } from '../Footer/Footer';
 import { Navigation } from '../Navigation/Navigation';
@@ -19,7 +20,7 @@ export const TabletsPage = () => {
   const queries = searchParams.get('query') || '';
   const sortOptions = searchParams.get('sort') || '';
   const items = searchParams.get('perPage') || '';
-  const numberOfPage = searchParams.get('number') || '';
+  const numberOfPage = searchParams.get('page') || '';
   const itemsInNumber = parseInt(items);
 
   const filteredOptions = (allTablets: string) => {
@@ -124,13 +125,14 @@ export const TabletsPage = () => {
     <>
       <Navigation />
       <div className={tabletsPage.productpage}>
-        <Link className={tabletsPage.productpage__breadcrumbslink} to="/">
-          {'>'} Tablets
-        </Link>
+        <div className={tabletsPage.breadcrumbs}>
+          <Link to="/" className={tabletsPage.breadcrumbs__link} />
+          <div className={tabletsPage.breadcrumbs__text}>{'>'} tablets</div>
+        </div>
 
-        <h1 className={tabletsPage.productpage__header}>Mobile phones</h1>
+        <h1 className={tabletsPage.header}>Tablets</h1>
         <span
-          className={tabletsPage.productpage__amountofmodels}
+          className={tabletsPage.amountofmodels}
         >{`${filteredTablets.length} ${filteredTablets.length === 1 ? 'model' : 'models'}`}</span>
         <ProductsFilter
           queries={queries}
@@ -138,13 +140,13 @@ export const TabletsPage = () => {
           sort={sortOptions}
           perPage={items}
         />
-        <div className={tabletsPage.productpage__content}>
+        <div className={tabletsPage.content}>
           {getVisibleItems(itemsInNumber).length === 0 ? (
-            <h1 className={tabletsPage.productpage__noresults}>
+            <h1 className={tabletsPage.noresults}>
               There are not phones matching the query{' '}
             </h1>
           ) : (
-            <div className={tabletsPage.productpage__content}>
+            <div className={tabletsPage.content}>
               {getVisibleItems(itemsInNumber).map(product => (
                 <ProductCard product={product} key={product.id} />
               ))}
@@ -152,7 +154,8 @@ export const TabletsPage = () => {
           )}
         </div>
       </div>
-      {!Number.isNaN(itemsInNumber) && (
+      {!Number.isNaN(itemsInNumber) &&
+        filteredTablets.length >= itemsInNumber && (
         <Pagination
           filteredItems={filteredTablets}
           itemsInNumber={itemsInNumber}

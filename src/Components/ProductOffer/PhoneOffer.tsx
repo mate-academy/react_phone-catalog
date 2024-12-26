@@ -44,7 +44,6 @@ export const PhonesOffer = () => {
   );
   const [thumbsSwiper, setThumbsSwiper] = useState<any>(null);
   const id = (Math.random() * 100000).toFixed(0);
-  const [clickedImage, setClickedImage] = useState<string | null>(null);
 
   const navigate = useNavigate();
 
@@ -138,54 +137,44 @@ export const PhonesOffer = () => {
         </div>
         <h1 className={phoneOffer.title}>{selectedPhone?.name}</h1>
         <div className={phoneOffer.containerONTABLET}>
-          <div className={phoneOffer.container}>
-            <Swiper
-              className={phoneOffer.images}
-              modules={[FreeMode, Navigation, Thumbs]}
-              navigation={true}
-              loop={true}
-              spaceBetween={100}
-              thumbs={{ swiper: thumbsSwiper }}
-            >
-              {selectedPhone?.images.map((image, i) => {
-                return (
-                  <SwiperSlide key={i}>
-                    <img src={image} className={phoneOffer.image} />
-                  </SwiperSlide>
-                );
-              })}
-            </Swiper>
-            <Swiper
-              onSwiper={setThumbsSwiper}
-              loop={true}
-              spaceBetween={10}
-              slidesPerView={10}
-              freeMode={true}
-              modules={[FreeMode, Navigation, Thumbs]}
-              className={phoneOffer.navImages}
-            >
-              {selectedPhone?.images.map((image, i) => {
-                const handleActiveImage = (selectedImage: string) => {
-                  if (selectedImage === image) {
-                    setClickedImage(selectedImage);
-                  }
-                };
-
-                return (
-                  <SwiperSlide key={i} onClick={() => handleActiveImage(image)}>
-                    <img
-                      src={image}
-                      className={classNames([
-                        phoneOffer.navImage,
-                        {
-                          [phoneOffer.navImageactive]: clickedImage === image,
-                        },
-                      ])}
-                    />
-                  </SwiperSlide>
-                );
-              })}
-            </Swiper>
+          <div className="container__swipers">
+            <div className="container">
+              <Swiper
+                className={phoneOffer.images}
+                modules={[FreeMode, Navigation, Thumbs]}
+                navigation={true}
+                loop={true}
+                spaceBetween={100}
+                thumbs={{ swiper: thumbsSwiper }}
+              >
+                {selectedPhone?.images.map((image, i) => {
+                  return (
+                    <SwiperSlide key={i}>
+                      <img src={image} className={phoneOffer.image} />
+                    </SwiperSlide>
+                  );
+                })}
+              </Swiper>
+            </div>
+            <div className="container__nav">
+              <Swiper
+                onSwiper={setThumbsSwiper}
+                loop={true}
+                spaceBetween={10}
+                slidesPerView={10}
+                freeMode={true}
+                modules={[FreeMode, Navigation, Thumbs]}
+                className={phoneOffer.navImages}
+              >
+                {selectedPhone?.images.map((image, i) => {
+                  return (
+                    <SwiperSlide key={i}>
+                      <img src={image} className={phoneOffer.navImage} />
+                    </SwiperSlide>
+                  );
+                })}
+              </Swiper>
+            </div>
           </div>
 
           <div className={phoneOffer.panel}>
@@ -310,68 +299,72 @@ export const PhonesOffer = () => {
             </div>
           </div>
         </div>
-        <div className={phoneOffer.decription}>
-          <h2 className={phoneOffer.description__header}>About</h2>
-          <div className={phoneOffer.line}></div>
-          {selectedPhone?.description.map(data => (
-            <>
-              <div className={phoneOffer.description__title}>{data.title}</div>
-              <div className={phoneOffer.description__text}>{data.text}</div>
-            </>
-          ))}
-          <div className={phoneOffer.line}></div>
-        </div>
-        <div className={phoneOffer.techspecs}>
-          <div className={phoneOffer.techspec__data}>
-            <div className={phoneOffer.techspec__title}>Screen</div>
-            <div className={phoneOffer.techspec__text}>
-              {selectedPhone?.screen}
-            </div>
-          </div>
-          <div className={phoneOffer.techspec__data}>
-            <div className={phoneOffer.techspec__title}>Resolution</div>
-            <div className={phoneOffer.techspec__text}>
-              {selectedPhone?.resolution}
-            </div>
-          </div>
-          <div className={phoneOffer.techspec__data}>
-            <div className={phoneOffer.techspec__title}>Processor</div>
-            <div className={phoneOffer.techspec__text}>
-              {selectedPhone?.processor}
-            </div>
-          </div>
-          <div className={phoneOffer.techspec__data}>
-            <div className={phoneOffer.techspec__title}>RAM</div>
-            <div className={phoneOffer.techspec__text}>
-              {selectedPhone?.ram}
-            </div>
-          </div>
-          <div className={phoneOffer.techspec__data}>
-            <div className={phoneOffer.techspec__title}>Built in memory</div>
-            <div className={phoneOffer.techspec__text}>
-              {selectedPhone?.capacity}
-            </div>
-          </div>
-          <div className={phoneOffer.techspec__data}>
-            <div className={phoneOffer.techspec__title}>Camera</div>
-            <div className={phoneOffer.techspec__text}>
-              {selectedPhone?.camera}
-            </div>
-          </div>
-          <div className={phoneOffer.techspec__data}>
-            <div className={phoneOffer.techspec__title}>Zoom</div>
-            <div className={phoneOffer.techspec__text}>
-              {selectedPhone?.zoom}
-            </div>
-          </div>
-          <div className={phoneOffer.techspec__data}>
-            <div className={phoneOffer.techspec__title}>Cell</div>
-
-            {selectedPhone?.cell.map(cell => (
-              <div className={phoneOffer.techspec__text} key={cell}>
-                {`${cell}, `}
-              </div>
+        <div className={phoneOffer.description__container}>
+          <div className={phoneOffer.description}>
+            <h2 className={phoneOffer.description__header}>About</h2>
+            <div className={phoneOffer.line}></div>
+            {selectedPhone?.description.map(data => (
+              <>
+                <div className={phoneOffer.description__title}>
+                  {data.title}
+                </div>
+                <div className={phoneOffer.description__text}>{data.text}</div>
+              </>
             ))}
+            <div className={phoneOffer.line}></div>
+          </div>
+          <div className={phoneOffer.techspec}>
+            <div className={phoneOffer.techspec__data}>
+              <div className={phoneOffer.techspec__title}>Screen</div>
+              <div className={phoneOffer.techspec__text}>
+                {selectedPhone?.screen}
+              </div>
+            </div>
+            <div className={phoneOffer.techspec__data}>
+              <div className={phoneOffer.techspec__title}>Resolution</div>
+              <div className={phoneOffer.techspec__text}>
+                {selectedPhone?.resolution}
+              </div>
+            </div>
+            <div className={phoneOffer.techspec__data}>
+              <div className={phoneOffer.techspec__title}>Processor</div>
+              <div className={phoneOffer.techspec__text}>
+                {selectedPhone?.processor}
+              </div>
+            </div>
+            <div className={phoneOffer.techspec__data}>
+              <div className={phoneOffer.techspec__title}>RAM</div>
+              <div className={phoneOffer.techspec__text}>
+                {selectedPhone?.ram}
+              </div>
+            </div>
+            <div className={phoneOffer.techspec__data}>
+              <div className={phoneOffer.techspec__title}>Built in memory</div>
+              <div className={phoneOffer.techspec__text}>
+                {selectedPhone?.capacity}
+              </div>
+            </div>
+            <div className={phoneOffer.techspec__data}>
+              <div className={phoneOffer.techspec__title}>Camera</div>
+              <div className={phoneOffer.techspec__text}>
+                {selectedPhone?.camera}
+              </div>
+            </div>
+            <div className={phoneOffer.techspec__data}>
+              <div className={phoneOffer.techspec__title}>Zoom</div>
+              <div className={phoneOffer.techspec__text}>
+                {selectedPhone?.zoom}
+              </div>
+            </div>
+            <div className={phoneOffer.techspec__data}>
+              <div className={phoneOffer.techspec__title}>Cell</div>
+
+              {selectedPhone?.cell.map(cell => (
+                <div className={phoneOffer.techspec__text} key={cell}>
+                  {`${cell}, `}
+                </div>
+              ))}
+            </div>
           </div>
         </div>
         <div className={phoneOffer.title}>

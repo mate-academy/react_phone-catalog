@@ -4,10 +4,14 @@ import { CatalogContext } from '../CatalogProvider';
 import { Link } from 'react-router-dom';
 
 export const Categories = () => {
-  const { phones, tablets, accessories } = useContext(CatalogContext);
+  const { phones, tablets, accessories, themeSwitcher } =
+    useContext(CatalogContext);
 
   return (
-    <div className={category.categories}>
+    <div
+      className={category.categories}
+      data-theme={themeSwitcher ? 'dark' : 'light'}
+    >
       <div className={category.categories__header}>Shop by category</div>
       <div className={category.categories__content}>
         <div className={category.categories__option}>

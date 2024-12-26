@@ -9,11 +9,23 @@
   }
   &__image {
     width: 100%;
-
-    @include slider-on-tablet {
-      width: 80%;
+    margin: 0 auto;
+    &ONTABLET {
+      display: none;
+      
+      @include slider-on-tablet {
+        margin: 0 auto;
+        width: 80%;
       display: inline-block;
       flex-direction: column;
+
+      }
+
+    }
+
+    @include slider-on-tablet {
+      display: none;
+
     }
 
   }

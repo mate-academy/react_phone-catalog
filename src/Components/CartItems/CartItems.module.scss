@@ -10,16 +10,8 @@
 
 @import '../styles/main';
 
-.cartitems {
-  @include page-grid;
-  &__empty-card {
+  .emptycart {
     &image {
-      grid-column: 1 / 5;
-
-      @include on-tablet {
-        grid-column: 1 / 13;
-      }
-
       margin-top: 100px;
     background-image: url('../../img/cart-is-empty.png');
     background-repeat: no-repeat;
@@ -28,12 +20,6 @@
     width: 100%;
     }
     &title {
-      grid-column: 1 / 5;
-
-      @include on-tablet {
-        grid-column: 1 / 13;
-      }
-
       margin-left: 16px;
 font-family: Mont-bold, sans-serif;
 font-size: 48px;
@@ -42,13 +28,8 @@ line-height: 56px;
 letter-spacing: -0.01em;
     }
   }
-  &__backbutton {
-    grid-column: 1 / 5;
 
-    @include on-tablet {
-      grid-column: 1 / 13;
-    }
-
+  .backbutton {
     border: 0;
     background-color: transparent;
     cursor: pointer;
@@ -57,10 +38,11 @@ font-size: 12px;
 font-weight: 700;
 line-height: 15.34px;
 text-align: left;
-color: #89939A;
+color:  var(--secondary-font-color);
 margin: 16px 0 32px 16px;
   }
-  &__title {
+
+  .title {
 font-family: Mont-Bold, sans-serif;
 font-size: 32px;
 font-weight: 800;
@@ -68,12 +50,9 @@ line-height: 41px;
 letter-spacing: -0.01em;
 text-align: left;
 margin-left: 16px;
-
-@include on-desktop {
-  grid-column: 1 / 25;
-}
   }
-  &__item {
+
+  .item {
     height: 160px;
     border: 1px solid #E2E6E9;
     background-color: white;
@@ -81,12 +60,18 @@ margin-left: 16px;
     margin: 0 16px;
   }
 
-  &__image {
+  .image {
     width: 80px;
     height: 80px;
+    transform: scale(1);
+    transition: ease 0.3s transform;
+    &:hover {
+      transition: ease 0.3s transform;
+      transform: scale(1.1);
+    }
   }
 
-  &__name {
+  .name {
 font-family: Mont, sans-serif;
 font-size: 14px;
 font-weight: 600;
@@ -95,7 +80,7 @@ text-align: left;
 
   }
 
-  &__price {
+  .price {
 font-family: Mont-bold, sans-serif;
 font-size: 22px;
 font-weight: 800;
@@ -103,7 +88,7 @@ line-height: 30.8px;
 margin-left: auto;
   }
 
-  &__crossbutton {
+  .crossbutton {
     background-image: url('../../img/Close.svg');
     background-color: transparent;
     border: 0;
@@ -111,38 +96,45 @@ margin-left: auto;
     height: 16px;
     margin: auto 0;
     cursor: pointer;
+    &:hover {
+      transform: rotate(1turn);
+      transition: 0.3s ease transform;
+    }
   }
 
-  &__imagecontainer {
+  .imagecontainer {
     margin: 10px 0 0 10px;
     display: flex;
     gap: 16px;
   }
 
-  &__pricecontainer {
+  .container {
+    @include on-desktop {
+      display: flex;
+    }
+  }
+
+  .pricecontainer {
     display: flex;
     align-items: center;
     gap: 10px;
     margin: 20px 20px 0;
   }
 
-  &__content {
+  .content {
+    width: 100%;
+
+    @include on-desktop {
+    width: 50%;
+    }
+
     display: flex;
     flex-direction: column;
     gap: 20px;
     margin: 40px 0;
-    grid-column: 1 / 5;
-
-    @include on-tablet {
-      grid-column: 1 / 7;
-    }
-
-    @include on-desktop {
-      grid-column: 1 / 13;
-    }
   }
 
-  &__amountofmodels {
+  .amountofmodels {
     width: 4.64px;
 font-family: Mont, sans-serif;
 font-size: 14px;
@@ -152,8 +144,8 @@ text-align: center;
 
   }
 
-  &__button {
-    &decreased {
+  .button {
+    &__decreased {
       width: 32px;
 height: 32px;
 background-color: transparent;
@@ -162,12 +154,12 @@ border-radius: 100%;
 border: 1px solid #89939A;
 font-size: 22px;
 cursor: pointer;
-&disabled {
+&_disabled {
   border: 1px solid #E2E6E9;
 }
 
     }
-    &increased {
+    &__increased {
       width: 32px;
 height: 32px;
 background-color: transparent;
@@ -176,27 +168,23 @@ border-radius: 100%;
 border: 1px solid #89939A;
 font-size: 22px;
 cursor: pointer;
-&disabled {
+&_disabled {
   border: 1px solid #E2E6E9;
 }
     }
   }
-  &__total {
+
+  .total {
+    width: 100%;
+
+    @include on-desktop {
+    width: 50%;
+    }
+
     display: flex;
     flex-direction: column;
     align-items: center;
-    grid-column: 1 / 5;
     margin: 0 16px;
-
-    @include on-tablet {
-      grid-column: 7 / 13;
-      height: 330px;
-    }
-
-    @include on-desktop {
-      grid-column: 13 / 24;
-    }
-
     background-color: transparent;
 padding-top: 24px;
 gap: 16px;
@@ -205,12 +193,13 @@ border: 1px solid #E2E6E9;
   }
 
 
-  &__line {
+  .line {
     border: 1px solid #E2E6E9;
     margin: 20px;
     width: 60%;
   }
-  &__totalprice {
+
+  .totalprice {
 font-family: Mont-bold, sans-serif;
 font-size: 32px;
 font-weight: 800;
@@ -221,16 +210,16 @@ margin: 20px 0;
 
   }
 
-  &__allproducts {
+  .allproducts {
 font-family: Mont, sans-serif;
 font-size: 14px;
 font-weight: 600;
 line-height: 21px;
 text-align: center;
-color: #89939A;
+color:  var(--secondary-font-color);
   }
 
-  &__checkoutbutton {
+  .checkoutbutton {
     width: 80%;
     height: 80px;
     border: 0;
@@ -250,18 +239,51 @@ cursor: pointer;
 }
   }
 
-  &__header {
+  .header {
     font-family: Mont, sans-serif;
     margin-left: 16px;
   }
 
-  &__summary {
+  .summary {
     font-family: Mont-Bold, sans-serif;
-    color: #89939A;
+   color:  var(--secondary-font-color);
     margin-left: 16px;
     &price {
       color: black;
       font-style: oblique;
     }
   }
-}
+
+  .checkout {
+    background-image: url('../../../public/img/white-triangle-pattern-seamless-background-2.jpg');
+    width: 100%;
+    height: 80vh;
+  }
+
+  .question {
+    font-family: Mont-Bold, sans-serif;
+    margin: 0 10px 30%;
+    padding-top: 80px;
+  }
+
+  .options {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+  }
+
+  .option {
+    font-family: Mont, sans-serif;
+    background-color: transparent;
+    font-size: 28px;
+    border: 0;
+    cursor: pointer;
+    transform: scale(1);
+    transition: ease 0.3s transform;
+    &:hover {
+      color: red;
+      transform: scale(1.1);
+      transition: ease 0.3s transform;
+    }
+  }
+

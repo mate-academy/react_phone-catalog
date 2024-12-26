@@ -1,5 +1,5 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Pagination, EffectCube } from 'swiper/modules';
+import { Navigation, Pagination, EffectCube, Autoplay } from 'swiper/modules';
 import mainSlider from './MainSlider.module.scss';
 import './swiper.scss';
 import 'swiper/css';
@@ -10,24 +10,18 @@ import 'swiper/css/effect-cube';
 const bannerPhotos = [
   {
     id: 1,
-    image: '/img/banner-phones.png',
-    paddingTop: '14%',
-    paddingBottom: '14%',
-    margin: '0 auto',
+    image: '/img/phones-slide.png',
+    imageONTABLETS: '/img/phones-on-tablets.png',
   },
   {
     id: 2,
-    image: '/img/banner-tablets.png',
-    paddingTop: `10%`,
-    paddingBottom: '5%',
-    margin: '0 auto',
+    image: '/img/tablets-slide.png',
+    imageONTABLETS: '/img/tablets-on-tablets.png',
   },
   {
     id: 3,
-    image: '/img/banner-accessories.png',
-    paddingTop: '5%',
-    paddingBottom: '3%',
-    margin: '0 auto',
+    image: '/img/accessories-slide.png',
+    imageONTABLETS: '/img/accessories-on-tablets.png.png',
   },
 ];
 
@@ -35,12 +29,16 @@ export const MainSlider = () => {
   return (
     <Swiper
       effect={'cube'}
-      modules={[Navigation, Pagination, EffectCube]}
+      modules={[Navigation, Pagination, EffectCube, Autoplay]}
       spaceBetween={50}
       slidesPerView={1}
       navigation={{ prevEl: '.arrow__left', nextEl: '.arrow__right' }}
       pagination={{ clickable: true }}
       scrollbar={{ draggable: true }}
+      autoplay={{
+        delay: 5000,
+        disableOnInteraction: false,
+      }}
       grabCursor={true}
       loop={true}
       className={mainSlider.MainSlider}
@@ -59,14 +57,10 @@ export const MainSlider = () => {
             >
               {'<'}
             </button>
+            <img src={image.image} className={mainSlider.MainSlider__image} />
             <img
-              src={image.image}
-              className={mainSlider.MainSlider__image}
-              style={{
-                paddingTop: `${image.paddingTop}`,
-                paddingBottom: `${image.paddingBottom}`,
-                margin: `${image.margin}`,
-              }}
+              src={image.imageONTABLETS}
+              className={mainSlider.MainSlider__imageONTABLET}
             />
             <button
               className="arrow__right"

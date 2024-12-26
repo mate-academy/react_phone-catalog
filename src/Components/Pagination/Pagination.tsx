@@ -48,7 +48,7 @@ export const Pagination = ({
           className={paginations.arrow_to_first}
           onClick={() => {
             setSearchParams(prev => {
-              prev.set('number', '1');
+              prev.set('page', '1');
 
               return prev;
             });
@@ -63,7 +63,7 @@ export const Pagination = ({
             setSearchParams(prev => {
               const nextPage = pageNumber - 1;
 
-              prev.set('number', nextPage.toString());
+              prev.set('page', nextPage.toString());
 
               return prev;
             });
@@ -139,7 +139,7 @@ export const Pagination = ({
                   onClick={() => {
                     getChosingButton(id);
                     setSearchParams(prev => {
-                      prev.set('number', page.toString());
+                      prev.set('page', page.toString());
 
                       return prev;
                     });
@@ -162,7 +162,7 @@ export const Pagination = ({
             setSearchParams(prev => {
               const nextPage = pageNumber + 1;
 
-              prev.set('number', nextPage.toString());
+              prev.set('page', nextPage.toString());
 
               return prev;
             });
@@ -199,7 +199,7 @@ export const Pagination = ({
             setSlidePages(amountOfPages * -303 + 303);
             setSlideDots(amountOfPages * -35 + 140);
             setSearchParams(prev => {
-              prev.set('number', amountOfPages.toString());
+              prev.set('page', amountOfPages.toString());
 
               return prev;
             });

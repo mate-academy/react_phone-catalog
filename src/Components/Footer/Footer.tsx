@@ -1,10 +1,16 @@
+import { useContext } from 'react';
 import footerlogo from '../logo/logo.module.scss';
 import footer from './Footer.module.scss';
+import { CatalogContext } from '../CatalogProvider';
 
 export const Footer = () => {
+  const { themeSwitcher } = useContext(CatalogContext);
+
   return (
-    <footer className={footer.footer}>
-      <button onClick={() => localStorage.clear()}>Clear locale Storage</button>
+    <footer
+      className={footer.footer}
+      data-theme={themeSwitcher ? 'dark' : 'light'}
+    >
       <div className={footerlogo.logo__footer} />
       <nav className={footer.footer__navigation}>
         <a
@@ -32,7 +38,11 @@ export const Footer = () => {
             })
           }
         >
-          <div className={footer.footer__arrow}></div>
+          <div
+            className={
+              themeSwitcher ? footer.footer__arrowONDARK : footer.footer__arrow
+            }
+          ></div>
         </button>
       </div>
     </footer>

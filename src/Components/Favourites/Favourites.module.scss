@@ -1,21 +1,8 @@
 @import '../styles/main';
 
-@font-face {
-  font-family: Mont-bold;
-  src: url('../../../public/fonts/Mont-Bold.otf');
-}
 
-@font-face {
-  font-family: Mont;
-  src: url('../../../public/fonts/Mont-Regular.otf');
-}
-
-.favourites {
-  @include page-grid;
-
-  &__emptycard {
-    &--image {
-      grid-column: 1 / 5;
+  .emptycard {
+    &image {
       margin-top: 100px;
     background-image: url('../../img/product-not-found.png');
     background-repeat: no-repeat;
@@ -25,7 +12,6 @@
     }
 
     &title {
-      grid-column: 1 / 5;
       margin-left: 16px;
 font-family: Mont-bold, sans-serif;
 font-size: 48px;
@@ -35,14 +21,11 @@ letter-spacing: -0.01em;
 
     }
   }
-
-  grid-column: 1 / 5;
-  margin-right: 8px;
-  &__breadcrumbs {
+  
+  .breadcrumbs {
     display: flex;
     margin-left: 16px;
-    grid-column: 1 / 5;
-    &home {
+    &__home {
       background-image: url('../../img/Home.svg');
       background-repeat: no-repeat;
       background-position: 0% 1%;
@@ -50,7 +33,7 @@ letter-spacing: -0.01em;
       width: 26px;
       height: 32px;
     }
-   &text {
+   &__text {
     margin-top: 2px;
     font-family: Mont,sans-serif;
     font-size: 12px;
@@ -60,7 +43,8 @@ letter-spacing: -0.01em;
     color: gray;
    }
   }
-  &__title {
+
+  .title {
     grid-column: 1 / 5;
 font-family: Mont-bold, sans-serif;
 font-size: 32px;
@@ -71,82 +55,22 @@ text-align: left;
 margin-left: 16px;
   }
 
-  &__amountofitems {
+  .amountofitems {
     grid-column: 1 / 5;
 font-family: Mont, sans-serif;
 font-size: 14px;
 font-weight: 600;
 line-height: 21px;
 text-align: left;
-color: #89939A;
+color:  var(--secondary-font-color);
 margin-left: 16px;
   }
 
-  &__content {
+  .content {
     display: flex;
     flex-flow: wrap;
     gap: 12px;
-    grid-column: 1 / 5;
+    justify-content: center;
+    margin-top: 30px;
 
-    @include on-tablet {
-      display: flex;
-      grid-column: 1 / 13;
-      flex-direction: row;
     }
-
-    @include on-desktop {
-      grid-column: 1 / 24;
-    }
-  }
-
-  .productcard {
-    margin-bottom: 16px;
-
-    @include on-tablet {
-      width: 288px;
-    }
-
-  }
-  .productcard__image {
-    margin: 0 70px;
-
-    @include on-desktop {
-      width: 145px;
-    }
-  }
-
-  .oldproductcard {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-
-    @include on-tablet {
-      width: 288px;
-      height: 480px;
-    }
-  }
-
-  .oldproductcard__adding-button {
-    @include on-tablet {
-      width: 200px;
-    }
-  }
-
-  .oldproductcard__image {
-    margin: 0 75px;
-
-    @include on-desktop {
-      margin: 0 30px;
-    }
-  }
-
-  .oldproductcard__prices {
-    padding-top: 0;
-  }
-
-  .oldproductcard__buttons {
-    width: auto;
-    gap: 2px;
-  }
-
-}

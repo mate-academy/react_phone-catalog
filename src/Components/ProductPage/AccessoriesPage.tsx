@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { Link } from 'react-router-dom';
 import { Footer } from '../Footer/Footer';
 import { Navigation } from '../Navigation/Navigation';
@@ -20,7 +21,7 @@ export const AccessoriesPage = () => {
   const queries = searchParams.get('query') || '';
   const sortOptions = searchParams.get('sort') || '';
   const items = searchParams.get('perPage') || '';
-  const numberOfPage = searchParams.get('number') || '';
+  const numberOfPage = searchParams.get('page') || '';
   const itemsInNumber = parseInt(items);
 
   const filteredOptions = (allAccessories: string) => {
@@ -125,13 +126,16 @@ export const AccessoriesPage = () => {
     <>
       <Navigation />
       <div className={accessoriesPage.productpage}>
-        <Link className={accessoriesPage.productpage__breadcrumbslink} to="/">
-          {'>'} Phones
-        </Link>
+        <div className={accessoriesPage.breadcrumbs}>
+          <Link to="/" className={accessoriesPage.breadcrumbs__link} />
+          <div className={accessoriesPage.breadcrumbs__text}>
+            {'>'} accessories
+          </div>
+        </div>
 
-        <h1 className={accessoriesPage.productpage__header}>Mobile phones</h1>
+        <h1 className={accessoriesPage.header}>Mobile phones</h1>
         <span
-          className={accessoriesPage.productpage__amountofmodels}
+          className={accessoriesPage.amountofmodels}
         >{`${filteredAccessories.length} ${filteredAccessories.length === 1 ? 'model' : 'models'}`}</span>
         <ProductsFilter
           queries={queries}
@@ -139,13 +143,13 @@ export const AccessoriesPage = () => {
           sort={sortOptions}
           perPage={items}
         />
-        <div className={accessoriesPage.productpage__content}>
+        <div className={accessoriesPage.content}>
           {getVisibleItems(itemsInNumber).length === 0 ? (
-            <h1 className={accessoriesPage.productpage__noresults}>
+            <h1 className={accessoriesPage.noresults}>
               There are not phones matching the query{' '}
             </h1>
           ) : (
-            <div className={accessoriesPage.productpage__content}>
+            <div className={accessoriesPage.content}>
               {getVisibleItems(itemsInNumber).map(product => (
                 <ProductCard product={product} key={product.id} />
               ))}
@@ -153,7 +157,8 @@ export const AccessoriesPage = () => {
           )}
         </div>
       </div>
-      {!Number.isNaN(itemsInNumber) && (
+      {!Number.isNaN(itemsInNumber) &&
+        filteredAccessories.length >= itemsInNumber && (
         <Pagination
           filteredItems={filteredAccessories}
           itemsInNumber={itemsInNumber}

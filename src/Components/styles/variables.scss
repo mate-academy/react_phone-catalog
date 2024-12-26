@@ -1,2 +1,21 @@
-$product-page-gap: 20px;
-$product-page-button: 30px;
+[data-theme="light"] {
+  --background-color: #FAFBFC;
+  --primary-font-color: black;
+  --secondary-font-color: #89939A;
+  --menu-hover-link: #313237;
+  --pagination-dot: black;
+  --active-button: white;
+  --text-active-button: #216CFF;
+  --footer-arrow: #89939A;
+}
+
+[data-theme="dark"] {
+  --background-color: black;
+  --primary-font-color: white;
+  --secondary-font-color: white;
+  --menu-hover-link: white;
+  --pagination-dot: rgb(255, 255, 255);
+  --active-button: black;
+  --text-active-button: white;
+  --footer-arrow: white;
+}
