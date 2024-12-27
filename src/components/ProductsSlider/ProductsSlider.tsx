@@ -1,73 +1,42 @@
-/* eslint-disable jsx-a11y/control-has-associated-label */
-/* eslint-disable jsx-a11y/no-static-element-interactions */
-/* eslint-disable jsx-a11y/click-events-have-key-events */
-import { useState } from 'react';
-import classNames from 'classnames';
-import { Product } from '../../types/Product';
+// eslint-disable-next-line import/no-extraneous-dependencies
+import 'slick-carousel/slick/slick.css';
+// eslint-disable-next-line import/no-extraneous-dependencies
+import 'slick-carousel/slick/slick-theme.css';
+// eslint-disable-next-line import/no-extraneous-dependencies
+import Slider from 'react-slick';
 import { ProductCard } from '../ProductCard';
 import React from 'react';
+import { Product } from '../../types/Product';
 
-type ProductsSliderProps = {
-  goods: Product[];
-  name: string;
-  useDiscount?: boolean;
-  extraClass?: string;
-  setFavLength: React.Dispatch<number>;
-  setCartLength: React.Dispatch<number>;
-};
+interface Props {
+  products: Product[];
+  showFullPrice?: boolean;
+}
 
-export const ProductsSlider: React.FC<ProductsSliderProps> = ({
-  goods,
-  name,
-  useDiscount = false,
-  extraClass,
-  setFavLength,
-  setCartLength,
+export const ProductsSlider: React.FC<Props> = ({
+  products,
+  showFullPrice = false,
 }) => {
-  const [sliderIndex, setSliderIndex] = useState<number>(0);
-
-  const ShowPrevSlide = () => {
-    setSliderIndex(index => index - 1);
+  const settings = {
+    infinite: true,
+    speed: 500,
+    slidesToScroll: 1,
+    variableWidth: true,
   };
 
-  const ShowNextSlide = () => {
-    setSliderIndex(index => index + 1);
-  };
+  const sortedProducts = products.sort((a, b) => b.fullPrice - a.fullPrice);
 
   return (
-    <div className={classNames('product-slider', extraClass)}>
-      <div className="product-slider__top">
-        <h1 className="product-slider__top-title">{name}</h1>
-
-        <div className="product-slider__top-buttons-container">
-          <button
-            type="button"
-            className="product-slider__top-btn"
-            disabled={sliderIndex === 0}
-            onClick={() => ShowPrevSlide()}
-          />
-
-          <button
-            type="button"
-            className="product-slider__top-btn product-slider__top-btn--right"
-            disabled={sliderIndex === Math.ceil(goods.length / 4) - 1}
-            onClick={() => ShowNextSlide()}
-          />
-        </div>
-      </div>
-
-      <div className="product-slider__content">
-        {goods.map(good => (
+    <div className="products-slider">
+      <Slider {...settings}>
+        {sortedProducts.map(product => (
           <ProductCard
-            key={good.name}
-            product={good}
-            useDiscount={useDiscount}
-            sliderIndex={sliderIndex}
-            setFavLength={setFavLength}
-            setCartLength={setCartLength}
+            key={product.id}
+            product={product}
+            withFullPrice={showFullPrice}
           />
         ))}
-      </div>
+      </Slider>
     </div>
   );
 };

@@ -1,183 +1,122 @@
-import React, { useContext, useEffect, useState } from 'react';
-import classNames from 'classnames';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { Product } from '../../types/Product';
-import { ProductDetails } from '../../types/ProductDetails';
-import { StorageContext } from '../StorageContext';
-import { getProductDetails } from '../../helpers/api';
+import { useAppDispatch, useAppSelector } from '../../app/hooks';
+import { cartSlice } from '../../features/cart';
+import { favouriteSlice } from '../../features/favourite';
+import classNames from 'classnames';
 
-type ProductCardProps = {
+interface Props {
   product: Product;
-  useDiscount?: boolean;
-  sliderIndex?: number;
-  setFavLength: React.Dispatch<number>;
-  setCartLength: React.Dispatch<number>;
-};
+  withFullPrice?: boolean;
+}
 
-export const ProductCard: React.FC<ProductCardProps> = ({
+export const ProductCard: React.FC<Props> = ({
   product,
-  useDiscount = false,
-  sliderIndex = 0,
-  setFavLength,
-  setCartLength,
+  withFullPrice = false,
 }) => {
-  const {
-    image = '',
-    name = 'Unnamed Product',
-    fullPrice = 0,
-    price = 0,
-    screen = 'Unknown',
-    capacity = '',
-    category = 'unknown-category',
-    ram = '',
-    itemId = '',
-  } = product;
+  const dispatch = useAppDispatch();
+  const cart = useAppSelector(state => state.cart);
+  const favourite = useAppSelector(state => state.favourite);
+  const isInCart = cart.find((item: Product) => item.id === product.id);
+  const isFavourite = favourite.find((item: Product) => item.id === product.id);
 
-  const {
-    cart,
-    fav,
-    saveItemToCart,
-    saveItemToFav,
-    deleteItemFromCart,
-    deleteItemFromFav,
-    findItemInCart,
-    findItemInFav,
-    cartSum,
-  } = useContext(StorageContext);
+  const handleAddToCart = () => {
+    if (isInCart) {
+      dispatch(cartSlice.actions.deleteFromCart(product));
 
-  const [productDetails, setProductDetails] = useState<
-    ProductDetails | undefined
-  >();
-  const [isSelectedToFav, setIsSelectedToFav] = useState(findItemInFav(itemId));
-  const [isSelectedToCard, setIsSelectedToCard] = useState(
-    findItemInCart(itemId),
-  );
-
-  useEffect(() => {
-    getProductDetails(itemId).then((details: ProductDetails) => {
-      setProductDetails(details); // Now it will have ProductDetails type
-    });
-  }, [itemId]);
-
-  useEffect(() => {
-    if (productDetails) {
-      if (isSelectedToCard !== findItemInCart(itemId)) {
-        if (isSelectedToCard) {
-          saveItemToCart(itemId, productDetails);
-        } else {
-          deleteItemFromCart(itemId);
-        }
-      }
+      return;
     }
-  }, [
-    isSelectedToCard,
-    itemId,
-    productDetails,
-    saveItemToCart,
-    deleteItemFromCart,
-  ]);
 
-  useEffect(() => {
-    setCartLength(cartSum(cart));
-  }, [cart, cartSum, setCartLength]);
+    dispatch(cartSlice.actions.addToCart(product));
+  };
 
-  useEffect(() => {
-    if (productDetails) {
-      if (isSelectedToFav !== findItemInFav(itemId)) {
-        if (isSelectedToFav) {
-          saveItemToFav(product);
-        } else {
-          deleteItemFromFav(product);
-        }
-      }
+  const handleAddToFavourite = () => {
+    if (isFavourite) {
+      dispatch(favouriteSlice.actions.removeFromFavourite(product));
+
+      return;
     }
-  }, [
-    isSelectedToFav,
-    itemId,
-    productDetails,
-    product,
-    saveItemToFav,
-    deleteItemFromFav,
-  ]);
 
-  useEffect(() => {
-    setFavLength(fav.length);
-  }, [fav, setFavLength]);
+    dispatch(favouriteSlice.actions.addToFavourite(product));
+  };
 
   return (
-    <div
-      style={{ translate: `${-1152 * sliderIndex}px` }}
-      className="product-card"
-      data-cy="cardsContainer"
-    >
-      <Link to={`/${category}/${itemId}`} state={{ useDiscount }}>
+    <article className="product-card">
+      <Link
+        to={`/${product.category}/${product.itemId}`}
+        className="product-card__image-container"
+      >
         <img
-          src={`https://mate-academy.github.io/react_phone-catalog/_new/${image}`}
-          alt={name}
-          className="product-card__picture"
+          src={product.image}
+          alt={product.name}
+          className="product-card__image-container__image"
         />
       </Link>
 
-      <div className="product-card__title">{name}</div>
+      <Link
+        to={`/${product.category}/${product.itemId}`}
+        className="product-card__title"
+      >
+        {product.name}
+      </Link>
 
-      {useDiscount ? (
-        <div className="product-card__price">
-          <div className="product-card__price-new">{`$${price}`}</div>
-          <div className="product-card__price-old">{`$${fullPrice}`}</div>
-        </div>
-      ) : (
-        <div className="product-card__price">
-          <div className="product-card__price-new">{`$${fullPrice}`}</div>
-        </div>
-      )}
+      <h3 className="product-card__price">
+        ${product.price}
+        {withFullPrice && (
+          <span className="product-card__price__full-price">
+            ${product.fullPrice}
+          </span>
+        )}
+      </h3>
 
-      <div className="product-card__short-info">
-        <div className="product-card__short-info-section">
-          <div className="product-card__short-info-section-title">Screen</div>
-          <div className="product-card__short-info-section-value">{screen}</div>
-        </div>
+      <hr className="divider"></hr>
 
-        <div className="product-card__short-info-section">
-          <div className="product-card__short-info-section-title">Capacity</div>
-          <div className="product-card__short-info-section-value">
-            {capacity ? capacity.replace('GB', ' GB') : 'Unknown'}
-          </div>
-        </div>
+      <ul className="product-card__description">
+        <li className="product-card__description__item">
+          <span className="product-card__description__item__name">Screen</span>
+          <span className="product-card__description__item__value">
+            {product.screen}
+          </span>
+        </li>
+        <li className="product-card__description__item">
+          <span className="product-card__description__item__name">
+            Capacity
+          </span>
+          <span className="product-card__description__item__value">
+            {product.capacity}
+          </span>
+        </li>
+        <li className="product-card__description__item">
+          <span className="product-card__description__item__name">Ram</span>
+          <span className="product-card__description__item__value">
+            {product.ram}
+          </span>
+        </li>
+      </ul>
 
-        <div className="product-card__short-info-section">
-          <div className="product-card__short-info-section-title">RAM</div>
-          <div className="product-card__short-info-section-value">
-            {ram ? ram.replace('GB', ' GB') : 'Unknown'}
-          </div>
-        </div>
-      </div>
-
-      <div className="product-card__buttons">
+      <div className="product-card__actions">
         <button
-          type="button"
-          onClick={() => setIsSelectedToCard(!isSelectedToCard)}
-          className={classNames(
-            'product-card__buttons-card',
-            isSelectedToCard
-              ? 'product-card__buttons-card--selected'
-              : 'product-card__buttons-card--not-selected',
-          )}
+          className={classNames('product-card__actions__add', {
+            'product-card__actions__add--selected': isInCart,
+          })}
+          onClick={handleAddToCart}
         >
-          {isSelectedToCard ? 'Added to card' : 'Add to card'}
+          {isInCart ? 'Remove from cart' : 'Add to cart'}
         </button>
-
-        <button
-          type="button"
-          data-cy="addToFavorite"
-          onClick={() => setIsSelectedToFav(!isSelectedToFav)}
-          className={classNames(
-            'product-card__buttons-fav',
-            isSelectedToFav
-              ? 'product-card__buttons-fav--selected'
-              : 'product-card__buttons-fav--not-selected',
+        <div
+          className={classNames('product-card__actions__favourite', {
+            'product-card__actions__favourite--selected': isFavourite,
+          })}
+          onClick={handleAddToFavourite}
+        >
+          {isFavourite ? (
+            <img src="./img/icons/heart-filled.svg" alt="Favourite" />
+          ) : (
+            <img src="./img/icons/favourites-heart.svg" alt="Favourite" />
           )}
-        />
+        </div>
       </div>
-    </div>
+    </article>
   );
 };
