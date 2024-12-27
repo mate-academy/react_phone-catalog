@@ -1,57 +1,21 @@
-import { useCallback, useEffect, useState } from 'react';
 // eslint-disable-next-line max-len
 import { useLanguage } from '../../../shared/components/Contexts/LanguageContext';
 import { Picture } from '../../types/types';
-import { PicturesSlider } from '../PicturesSlider';
-import { translateItems, wait } from '../../../shared/functions/functions';
-import styles from './Welcome.module.scss';
 import { PicturesSliderSkeleton } from '../PicturesSliderSkeleton';
+import { PicturesSlider } from '../PicturesSlider';
+import styles from './Welcome.module.scss';
 import { LoadingStatus } from '../../../shared/types/enums';
+import { useDataLoader } from '../../../shared/hooks/useDataLoader';
+import { bannersFile } from '../../../shared/consts/apiFiles';
 
 export const Welcome: React.FC = () => {
-  const [pictures, setPictures] = useState<Picture[]>([]);
-  const [loadingStatus, setLoadingStatus] = useState(LoadingStatus.Loading);
-  const [responseStatus, setResponseStatus] = useState<number | undefined>(
-    undefined,
-  );
-  const { language, localeTexts } = useLanguage();
-  const { homeTitle } = localeTexts;
+  const [pictures, loadingStatus, responseStatus, reload] =
+    useDataLoader<Picture>(bannersFile);
+  const { homeTitle } = useLanguage().localeTexts;
 
   const handleReloadClick = () => {
-    setLoadingStatus(LoadingStatus.Loading);
+    reload();
   };
-
-  const fetchPictures = useCallback(async () => {
-    setResponseStatus(undefined);
-
-    try {
-      await wait(1000);
-      const response = await fetch('api/banners.json');
-
-      if (!response.ok) {
-        setResponseStatus(response.status);
-        throw new Error();
-      }
-
-      const loadedPictures = await response.json();
-
-      setPictures(translateItems<Picture>(loadedPictures, language));
-
-      if (loadedPictures.length) {
-        setLoadingStatus(LoadingStatus.Success);
-      } else {
-        setLoadingStatus(LoadingStatus.Error);
-      }
-    } catch {
-      setLoadingStatus(LoadingStatus.Error);
-    }
-  }, [language]);
-
-  useEffect(() => {
-    if (loadingStatus === LoadingStatus.Loading) {
-      fetchPictures();
-    }
-  }, [fetchPictures, loadingStatus]);
 
   return (
     <section className={styles.Welcome}>

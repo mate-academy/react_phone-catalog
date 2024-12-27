@@ -2,6 +2,7 @@ export enum LoadingStatus {
   Success = 'Success',
   Loading = 'Loading',
   Error = 'Error',
+  NoData = 'NoData',
 }
 
 export enum MenuLinkSVGOption {

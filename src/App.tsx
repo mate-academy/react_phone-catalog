@@ -36,17 +36,32 @@ export const App: React.FC = () => {
 
         <Route
           path={phonesPath}
-          element={<ProductsPage productCategory={Category.Phones} />}
+          element={
+            <ProductsPage
+              key={Category.Phones}
+              productCategory={Category.Phones}
+            />
+          }
         />
 
         <Route
           path={tabletsPath}
-          element={<ProductsPage productCategory={Category.Tablets} />}
+          element={
+            <ProductsPage
+              key={Category.Tablets}
+              productCategory={Category.Tablets}
+            />
+          }
         />
 
         <Route
           path={accessoriesPath}
-          element={<ProductsPage productCategory={Category.Accessories} />}
+          element={
+            <ProductsPage
+              key={Category.Accessories}
+              productCategory={Category.Accessories}
+            />
+          }
         />
 
         <Route path={settingsPath} element={<SettingsPage />} />

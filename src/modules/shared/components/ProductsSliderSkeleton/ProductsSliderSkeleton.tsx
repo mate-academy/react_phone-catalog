@@ -45,7 +45,7 @@ export const ProductsSliderSkeleton: React.FC<Props> = ({
         const listStyles = getComputedStyle(list);
         const gap = parseFloat(listStyles.gap);
         const listWidth = parseFloat(listStyles.width);
-        const productCardWidth = parseFloat(getComputedStyle(item).width) || 0;
+        const productCardWidth = parseFloat(getComputedStyle(item).width);
 
         const padding = (list.clientWidth - listWidth) / 2;
         const restOfListWidth = listWidth + padding;
@@ -94,7 +94,7 @@ export const ProductsSliderSkeleton: React.FC<Props> = ({
         </ul>
       </div>
 
-      {loadingStatus === LoadingStatus.Error && (
+      {loadingStatus !== LoadingStatus.Loading && (
         <ErrorNotification
           onReloadClick={onReloadClick}
           responseStatus={responseStatus}

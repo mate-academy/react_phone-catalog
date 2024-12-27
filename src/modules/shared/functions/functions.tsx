@@ -1,34 +1,9 @@
 import { BagSVG } from '../components/SVGs/BagSVG';
 import { HeartSVG } from '../components/SVGs/HeartSVG';
 import { SettingsSVG } from '../components/SVGs/SettingsSVG';
-import { Language, MenuLinkSVGOption } from '../types/enums';
+import { MenuLinkSVGOption } from '../types/enums';
 import { HandleSliderDragEvent } from '../types/handlers';
 import { Pagination } from '../types/types';
-
-type ItemWithLocales<Item> = Item & {
-  locales: { [key: string]: Partial<Item> };
-};
-
-export const translateItems = <Item,>(
-  items: ItemWithLocales<Item>[],
-  language: Language,
-): Item[] => {
-  return items.map(item => {
-    const { locales, ...rest } = item;
-
-    if (locales) {
-      const translatedValues = locales[language];
-      const originalValues = { ...rest } as Item;
-
-      return {
-        ...originalValues,
-        ...translatedValues,
-      };
-    }
-
-    return item;
-  });
-};
 
 export const getPageX = (event: HandleSliderDragEvent): number => {
   const type = event.type;

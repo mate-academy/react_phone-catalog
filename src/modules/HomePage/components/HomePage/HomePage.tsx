@@ -1,60 +1,25 @@
-import { useCallback, useEffect, useMemo, useState } from 'react';
+import { useMemo } from 'react';
 import styles from './HomePage.module.scss';
 import { Product } from '../../../shared/types/types';
 import { Welcome } from '../Welcome';
 import { ProductsSlider } from '../../../shared/components/ProductsSlider';
 // eslint-disable-next-line max-len
 import { useLanguage } from '../../../shared/components/Contexts/LanguageContext';
-import { translateItems, wait } from '../../../shared/functions/functions';
 // eslint-disable-next-line max-len
 import { ProductsSliderSkeleton } from '../../../shared/components/ProductsSliderSkeleton';
 import { LoadingStatus } from '../../../shared/types/enums';
 import { Categories } from '../Categories';
+import { useDataLoader } from '../../../shared/hooks/useDataLoader';
+import { productsFile } from '../../../shared/consts/apiFiles';
 
 export const HomePage: React.FC = () => {
-  const [products, setProducts] = useState<Product[]>([]);
-  const [loadingStatus, setLoadingStatus] = useState(LoadingStatus.Loading);
-  const [responseStatus, setResponseStatus] = useState<number | undefined>(
-    undefined,
-  );
-  const { language, localeTexts } = useLanguage();
-  const { newModels, hotPrices } = localeTexts;
+  const [products, loadingStatus, responseStatus, reload] =
+    useDataLoader<Product>(productsFile);
+  const { newModels, hotPrices } = useLanguage().localeTexts;
 
   const handleReloadClick = () => {
-    setLoadingStatus(LoadingStatus.Loading);
+    reload();
   };
-
-  const fetchProducts = useCallback(async () => {
-    setResponseStatus(undefined);
-
-    try {
-      await wait(2000);
-      const response = await fetch('api/products.json');
-
-      if (!response.ok) {
-        setResponseStatus(response.status);
-        throw new Error();
-      }
-
-      const loadedProducts = await response.json();
-
-      setProducts(translateItems<Product>(loadedProducts, language));
-
-      if (loadedProducts.length) {
-        setLoadingStatus(LoadingStatus.Success);
-      } else {
-        setLoadingStatus(LoadingStatus.Error);
-      }
-    } catch {
-      setLoadingStatus(LoadingStatus.Error);
-    }
-  }, [language]);
-
-  useEffect(() => {
-    if (loadingStatus === LoadingStatus.Loading) {
-      fetchProducts();
-    }
-  }, [fetchProducts, loadingStatus]);
 
   const brandNewProducts = useMemo(() => {
     const newestYear = products.reduce(

@@ -52,7 +52,8 @@ export const CategoryCard: React.FC<Props> = ({
       <h4 className={styles.Title}>{title}</h4>
 
       <p className={styles.AmountOfModels}>
-        {loadingStatus === LoadingStatus.Success &&
+        {(loadingStatus === LoadingStatus.Success ||
+          loadingStatus == LoadingStatus.NoData) &&
           `${preModels} ${amountOfModels} ${models}`}
       </p>
     </Link>

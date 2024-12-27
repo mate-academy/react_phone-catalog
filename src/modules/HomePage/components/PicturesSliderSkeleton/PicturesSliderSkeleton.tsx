@@ -75,7 +75,7 @@ export const PicturesSliderSkeleton: React.FC<Props> = ({
         </li>
       </ul>
 
-      {loadingStatus === LoadingStatus.Error && (
+      {loadingStatus !== LoadingStatus.Loading && (
         <ErrorNotification
           onReloadClick={onReloadClick}
           responseStatus={responseStatus}
