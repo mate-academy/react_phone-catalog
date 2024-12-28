@@ -1,85 +1,39 @@
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { Product } from '../types/Product';
-import { ShoppingCartProduct } from '../types/ShoppingCartProduct';
-import { SpecificProduct } from '../types/SpecificProduct';
-
-// Универсальная функция для запроса
-async function fetchProducts<T>(url: string): Promise<T> {
-  const response = await fetch(url);
-
-  if (!response.ok) {
-    const errorData = await response.json(); // Возможная ошибка от сервера
-
-    throw new Error(
-      `Error: ${response.statusText} - ${errorData.message || 'Unknown error'}`,
-    );
-  }
-
-  return response.json();
-}
-
-// Функция для получения всех продуктов
-export function getAllProducts(): Promise<Product[]> {
-  return fetchProducts<Product[]>('./api/products.json');
-}
-
-// Функция для получения продуктов по типу
-export function getSpecificProducts(
-  productsType: string,
-): Promise<SpecificProduct[]> {
-  return fetchProducts<SpecificProduct[]>(`./api/${productsType}.json`);
-}
-
-export function useLocalStorage<T>(key: string, initialValue: T) {
-  const [value, setValue] = useState<T>(() => {
-    try {
-      const item = localStorage.getItem(key);
-
-      return item ? JSON.parse(item) : initialValue;
-    } catch (error) {
-      throw new Error(`Error reading localStorage key "${key}": ${error}`);
-    }
-  });
-
-  useEffect(() => {
-    try {
-      localStorage.setItem(key, JSON.stringify(value));
-    } catch (error) {
-      throw new Error(`Error saving to localStorage key "${key}": ${error}`);
-    }
-  }, [key, value]);
-
-  return [value, setValue] as const;
-}
+import { CartProduct } from '../types/CartProduct';
+import { getAllProducts } from '../utils/fetchRequests';
+import { useLocalStorage } from '../utils/localStorage';
 
 type GlobalContextType = {
   products: Product[];
   setProducts: React.Dispatch<React.SetStateAction<Product[]>>;
-  sortBy: string;
-  setSortBy: (sortBy: string) => void;
-  shoppingCart: ShoppingCartProduct[];
-  setShoppingCart: React.Dispatch<React.SetStateAction<ShoppingCartProduct[]>>;
+  cart: CartProduct[];
+  setCart: React.Dispatch<React.SetStateAction<CartProduct[]>>;
   favorites: Product[];
   setFavorites: React.Dispatch<React.SetStateAction<Product[]>>;
   updateQuantity: (id: string, newQuantity: number) => void;
   clearShoppingCart: () => void;
-  query: string;
-  setQuery: React.Dispatch<React.SetStateAction<string>>;
+  isMenuOpen: boolean;
+  setIsMenuOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  toggleMenu: () => void;
+  toggleFavorites: (currentProduct: Product) => void;
+  addToCart: (currentProduct: Product) => void;
 };
 
 export const GlobalContext = React.createContext<GlobalContextType>({
   products: [] as Product[],
   setProducts: () => {},
-  sortBy: 'Newest',
-  setSortBy: () => {},
-  shoppingCart: [] as ShoppingCartProduct[],
-  setShoppingCart: () => {},
+  cart: [] as CartProduct[],
+  setCart: () => {},
   favorites: [] as Product[],
   setFavorites: () => {},
   updateQuantity: () => {},
   clearShoppingCart: () => {},
-  query: '',
-  setQuery: () => {},
+  isMenuOpen: false,
+  setIsMenuOpen: () => {},
+  toggleMenu: () => {},
+  toggleFavorites: () => {},
+  addToCart: () => {},
 });
 
 type Props = {
@@ -88,100 +42,149 @@ type Props = {
 
 export const GlobalProvider: React.FC<Props> = ({ children }) => {
   const [products, setProducts] = useState<Product[]>([]);
-  const [shoppingCart, setShoppingCart] = useLocalStorage<
-  ShoppingCartProduct[]
-  >('shoppingCart', []);
+  const [cart, setCart] = useLocalStorage<CartProduct[]>('shoppingCart', []);
   const [favorites, setFavorites] = useLocalStorage<Product[]>('favorites', []);
-  const [sortBy, setSortBy] = useState<string>('Newest');
-  const [query, setQuery] = useState<string>('');
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useEffect(() => {
-    const fetchAllProducts = async () => {
-      try {
-        const fetchedProducts = await getAllProducts();
-        const updatedProducts = fetchedProducts.map(product => ({
-          ...product,
-          shoppingCart: false,
-          favourite: false,
-        }));
-
-        setProducts(updatedProducts);
-      } catch (error) {
-        throw new Error(
-          `Error fetching products: ${error instanceof Error ? error.message : 'Unknown error'}`,
-        );
-      }
+    const fetchAllProducts = () => {
+      getAllProducts()
+        .then(fetchedProducts => {
+          setProducts(fetchedProducts);
+        })
+        .catch(error => {
+          throw new Error(`Error fetching products: ${error.message}`);
+        })
+        .finally(() => {
+          // ЧТО ЗДЕСЬ НАПИСАТЬ???
+        });
     };
 
     fetchAllProducts();
   }, []);
 
-  // useEffect(() => {
-  //   const timer = setTimeout(() => {
-  //     setProducts(prevProducts =>
-  //       sortProducts(prevProducts, { sortBy, query }),
-  //     );
-  //   }, 1000);
-
-  //   return () => clearTimeout(timer); // Очистка предыдущего таймера
-  // }, [query, sortBy]);
-
-  // Оборачиваем updateQuantity в useCallback
   const updateQuantity = useCallback(
     (id: string, newQuantity: number) => {
-      setShoppingCart(prevCart => {
-        // Обновляем корзину, фильтруя товары с количеством 0
+      setCart(prevCart => {
         const updatedShoppingCart = prevCart
           .map(item =>
             item.id === id ? { ...item, quantity: newQuantity } : item,
           )
-          .filter(item => item.quantity > 0); // Убираем товары с нулевым количеством
+          .filter(item => item.quantity > 0);
 
         return updatedShoppingCart;
       });
     },
-    [setShoppingCart],
+    [setCart],
+  );
+
+  const toggleMenu = useCallback(() => {
+    setIsMenuOpen(prevState => !prevState);
+  }, []);
+
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'auto';
+    }
+
+    return () => {
+      document.body.style.overflow = 'auto';
+    };
+  }, [isMenuOpen]);
+
+  const addToCart = useCallback(
+    (product: Product) => {
+      if (product) {
+        const isInCart = cart.some(
+          item => item.product.itemId === product.itemId,
+        );
+
+        if (!isInCart) {
+          const newProduct: CartProduct = {
+            id: product.itemId,
+            quantity: 1,
+            product: product,
+          };
+
+          setCart(prevCart => [...prevCart, newProduct]);
+        }
+      }
+    },
+    [cart, setCart],
+  );
+
+  // const toggleFavorites = useCallback(
+  //   (currentProduct: Product) => {
+  //     const isInFavorites = favorites.some(
+  //       item => item.itemId === currentProduct.itemId,
+  //     );
+
+  //     if (isInFavorites) {
+  //       setFavorites(prevFavorites =>
+  //         prevFavorites.filter(item => item.itemId !== currentProduct.itemId),
+  //       );
+  //     } else {
+  //       setFavorites(prevFavorites => [...prevFavorites, currentProduct]);
+  //     }
+  //   },
+  //   [favorites, setFavorites],
+  // );
+
+  const toggleFavorites = useCallback(
+    (currentProduct: Product) => {
+      const isInFavorites = favorites.some(
+        item => item.itemId === currentProduct.itemId,
+      );
+
+      setFavorites(prevFavorites => {
+        if (isInFavorites) {
+          return prevFavorites.filter(
+            item => item.itemId !== currentProduct.itemId,
+          );
+        } else {
+          return [...prevFavorites, currentProduct];
+        }
+      });
+    },
+    [favorites, setFavorites],
   );
 
   const clearShoppingCart = useCallback(() => {
-    setShoppingCart([]);
-  }, [setShoppingCart]);
-  // useEffect(() => {
-  //   const timeout = setTimeout(() => {
-  //     setQuery(query); // Обновляем query в глобальном контексте
-  //   }, 1000); // Задержка 1 секунда
-
-  //   return () => clearTimeout(timeout); // Очистка таймера при каждом изменении query
-  // }, [query, setQuery]); // Зависимость от query
+    setCart([]);
+  }, [setCart]);
 
   const data = useMemo(
     () => ({
       products,
       setProducts,
-      sortBy,
-      setSortBy,
-      shoppingCart,
-      setShoppingCart,
+      cart,
+      setCart,
       favorites,
       setFavorites,
       updateQuantity,
       clearShoppingCart,
-      query,
-      setQuery,
+      isMenuOpen,
+      setIsMenuOpen,
+      toggleMenu,
+      toggleFavorites,
+      addToCart,
     }),
     [
       products,
-      sortBy,
-      shoppingCart,
+      cart,
       favorites,
-      query,
       setProducts,
-      setSortBy,
-      setShoppingCart,
+      setCart,
       setFavorites,
-      setQuery,
       clearShoppingCart,
       updateQuantity,
+      isMenuOpen,
+      setIsMenuOpen,
+      toggleMenu,
+      toggleFavorites,
+      addToCart,
     ],
   );
 

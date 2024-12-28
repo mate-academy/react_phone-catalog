@@ -7,7 +7,6 @@
     @include content-padding-inline;
     margin-bottom: 64px;
   }
-
   @include on-desktop {
     margin-bottom: 80px;
   }
@@ -34,14 +33,6 @@
 
   &:hover {
     border: 1px solid $color-gray-primary;
-  }
-
-  &--left::after {
-    content: url('/icons/Chevron\ \(Arrow\ Left\).svg');
-  }
-
-  &--right::after {
-    content: url('/icons/Chevron\ \(Arrow\ Right\).svg');
   }
 }
 
@@ -87,18 +78,19 @@
   height: 24px;
   cursor: pointer;
   position: relative;
+}
 
-  &::after {
-    content: '';
-    background-color: $color-gray-elements;
-    width: 14px;
-    height: 4px;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }
+.picturesSlider__dot::after {
+  content: '';
+  position: absolute;
+  width: 14px;
+  height: 4px;
+  background-color: $color-gray-elements;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
 
-  &--active::after {
-    background-color: $color-gray-primary;
-  }
+.picturesSlider__dot--active::after {
+  background-color: $color-gray-primary;
 }

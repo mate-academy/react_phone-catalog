@@ -1,24 +1,33 @@
 @import '../../../styles/main.scss';
 
 .productsSlider {
-  margin-block: 80px;
-  @include content-padding-inline;
+  padding-left: 16px;
+
+  @include on-desktop {
+    margin-block: 80px;
+    @include content-padding-inline;
+  }
 }
 
 .productsSlider__container-top {
+  padding-right: 16px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin-bottom: 24px;
+  gap: 72px;
 }
 
 .productsSlider__title {
+  font-size: 22px;
   font-family: 'Mont-Bold', sans-serif;
-  font-size: 32px;
   font-weight: 800;
-  line-height: 41px;
   letter-spacing: -0.01em;
   color: $color-gray-primary;
+
+  @include on-tablet {
+    font-size: 32px;
+  }
 }
 
 .productsSlider__buttons {
@@ -27,75 +36,33 @@
 }
 
 .productsSlider__button {
-  position: relative;
   width: 32px;
   height: 32px;
   border: 1px solid $color-gray-icons-placeholders;
   background-color: $color-white;
   box-sizing: border-box;
   cursor: pointer;
-}
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-.productsSlider__button:hover {
-  border: 1px solid $color-gray-primary;
-}
+  &.productsSlider__button--disabled {
+    cursor: not-allowed;
+    border: 1px solid $color-gray-elements;
+  }
 
-.productsSlider__button-disabled {
-  position: relative;
-  width: 32px;
-  height: 32px;
-  border: 1px solid $color-gray-elements;
-  background-color: $color-white;
-  box-sizing: border-box;
-
-  cursor: not-allowed;
-}
-
-.productsSlider__button--left::after {
-  position: absolute;
-  content: url('/icons/Chevron\ \(Arrow\ Left\).svg');
-  width: 16px;
-  height: 16px;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-.productsSlider__button--right::after {
-  position: absolute;
-  content: url('/icons/Chevron\ \(Arrow\ Right\).svg');
-  width: 16px;
-  height: 16px;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-
-
-.productsSlider__button-disabled--right::after {
-  position: absolute;
-  content: url('/icons/Chevron\ \(Arrow\ Right\)\ \ disabled.svg');
-  width: 16px;
-  height: 16px;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-.productsSlider__button-disabled--left::after {
-  position: absolute;
-  content: url('/icons/Chevron\ \(Arrow\ Left\)\ disabled.svg');
-  width: 16px;
-  height: 16px;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  &:not(.productsSlider__button--disabled):hover {
+    border: 1px solid $color-gray-primary;
+  }
 }
 
 .productsSlider__viewport {
-  width: 1136px;
   overflow: hidden;
+  width: 100%;
+
+  @include on-desktop {
+    width: 1136px;
+  }
 }
 
 .productsSlider__track {
@@ -105,13 +72,20 @@
 
 .productsSlider__item {
   flex: 0 0 auto;
-  width: 272px;
   margin-right: 16px;
-}
 
-.productsSlider__content {
-  flex: 0 0 auto;
-  width: 272px;
+  width: 212px;
+  height: 439px;
+
+  @include on-tablet {
+    width: 237px;
+    height: 512px;
+  }
+
+  @include on-desktop {
+    width: 272px;
+    height: 506px;
+  }
 }
 
 

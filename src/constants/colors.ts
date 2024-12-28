@@ -1,4 +1,6 @@
-import { Colors } from '../types/Colors';
+export type Colors = {
+  [key: string]: string;
+};
 
 export const colors: Colors = {
   graphite: '#383838',

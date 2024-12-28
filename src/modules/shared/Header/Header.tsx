@@ -1,37 +1,77 @@
-import React, { useContext } from 'react';
-import { Link, NavLink, useLocation } from 'react-router-dom';
 import './Header.scss';
-import { GlobalContext } from '../../../store/GlobalContext';
 import classNames from 'classnames';
+import React, { useContext, useState, useEffect, useRef } from 'react';
+import { Link, NavLink, useLocation, useSearchParams } from 'react-router-dom';
+import { GlobalContext } from '../../../store/GlobalContext';
+import { iconsObject } from '../../../constants/iconsObject';
+import { Icon } from '../Icon';
+import { navLinks } from '../../../constants/navLinks';
+import { getSearchWith } from '../../../utils/searchHelper';
 
-const getLinkClass = ({ isActive }: { isActive: boolean }) =>
-  classNames('header__nav-link', {
-    'header__nav-link--active': isActive,
-  });
-
-const getIconClass = ({ isActive }: { isActive: boolean }) =>
-  classNames({
-    'header__icon--active': isActive,
-  });
+const getActiveClass = ({ isActive }: { isActive: boolean }) =>
+  classNames('header__item', { 'header__item--active': isActive });
 
 export const Header: React.FC = () => {
-  const { query, setQuery, shoppingCart, favorites } =
-    useContext(GlobalContext);
+  const { cart, favorites, toggleMenu, isMenuOpen } = useContext(GlobalContext);
 
+  const [searchParams, setSearchParams] = useSearchParams();
   const location = useLocation();
 
-  const totalQuantity = shoppingCart.reduce((sum, item) => {
-    return sum + item.quantity;
-  }, 0);
+  const initialQuery = searchParams.get('query') || '';
+  const [inputValue, setInputValue] = useState(initialQuery);
 
+  const totalQuantity = cart.reduce((sum, item) => sum + item.quantity, 0);
   const totalFavorites = favorites.length;
 
+  const debounceTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+
+  useEffect(() => {
+    if (debounceTimeoutRef.current) {
+      clearTimeout(debounceTimeoutRef.current);
+    }
+
+    debounceTimeoutRef.current = setTimeout(() => {
+      if (inputValue.trim() === '') {
+        setSearchParams(prevParams => {
+          const newParams = new URLSearchParams(prevParams);
+
+          newParams.delete('query');
+
+          return newParams;
+        });
+      } else {
+        const updatedParams = getSearchWith(searchParams, {
+          query: inputValue,
+        });
+
+        setSearchParams(updatedParams);
+      }
+    }, 1000);
+
+    return () => {
+      if (debounceTimeoutRef.current) {
+        clearTimeout(debounceTimeoutRef.current);
+      }
+    };
+  }, [inputValue, searchParams, setSearchParams]);
+
+  useEffect(() => {
+    setInputValue('');
+  }, [location.pathname]);
+
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setQuery(event.target.value);
+    setInputValue(event.target.value);
   };
 
   const clearInput = () => {
-    setQuery('');
+    setInputValue('');
+    setSearchParams(prevParams => {
+      const newParams = new URLSearchParams(prevParams);
+
+      newParams.delete('query');
+
+      return newParams;
+    });
   };
 
   return (
@@ -41,28 +81,13 @@ export const Header: React.FC = () => {
       </Link>
 
       <div className="header__menu">
-        <ul className="header__list">
-          <li className="header__nav-item">
-            <NavLink className={getLinkClass} to="/">
-              home
+        <div className="header__list">
+          {navLinks.map(link => (
+            <NavLink to={link.path} key={link.title} className={getActiveClass}>
+              {link.title}
             </NavLink>
-          </li>
-          <li className="header__nav-item">
-            <NavLink className={getLinkClass} to="phones">
-              Phones
-            </NavLink>
-          </li>
-          <li className="header__nav-item">
-            <NavLink className={getLinkClass} to="tablets">
-              tablets
-            </NavLink>
-          </li>
-          <li className="header__nav-item">
-            <NavLink className={getLinkClass} to="accessories">
-              accessories
-            </NavLink>
-          </li>
-        </ul>
+          ))}
+        </div>
       </div>
 
       <div className="header__buttons-right">
@@ -72,42 +97,53 @@ export const Header: React.FC = () => {
               type="text"
               placeholder="Search product..."
               className="header__search-input"
-              value={query}
+              value={inputValue}
               onChange={handleInputChange}
             />
-            {query && (
-              <button className="header__clear-button" onClick={clearInput}>
-                ×
-              </button>
+            {inputValue && (
+              <div className="header__clear-button" onClick={clearInput}>
+                <Icon icon={iconsObject.close} />
+              </div>
             )}
           </div>
         )}
-        <NavLink to="#" className="header__icon header__icon--menu"></NavLink>
-        <NavLink className="header__icon-container" to="favorites">
-          <div
-            className={classNames(
-              'header__icon--favourite',
-              getIconClass({ isActive: location.pathname === '/favorites' }),
-            )}
-          >
-            {totalFavorites > 0 && (
-              <span className="header__totalFavorites">{totalFavorites}</span>
-            )}
-          </div>
-        </NavLink>
+        <div onClick={toggleMenu} className="header__icon header__icon--menu">
+          {isMenuOpen ? (
+            <Icon icon={iconsObject.close} />
+          ) : (
+            <Icon icon={iconsObject.menu} />
+          )}
+        </div>
 
-        <NavLink className="header__icon-container" to="cart">
-          <div
+        <div
+          className={classNames('header__buttons-wrapper', {
+            'header__buttons-wrapper--buttom': isMenuOpen,
+          })}
+        >
+          <NavLink
             className={classNames(
-              'header__icon--shoping_bag',
-              getIconClass({ isActive: location.pathname === '/cart' }),
+              'header__icon',
+              getActiveClass({ isActive: location.pathname === '/favorites' }),
             )}
+            to="favorites"
           >
-            {totalQuantity > 0 && (
-              <span className="header__cart-quantity">{totalQuantity}</span>
+            <span className="header__quantity">{totalFavorites}</span>
+            <Icon icon={iconsObject.favorites} />
+          </NavLink>
+
+          <NavLink
+            className={classNames(
+              'header__icon',
+              getActiveClass({ isActive: location.pathname === '/cart' }),
             )}
-          </div>
-        </NavLink>
+            to="cart"
+          >
+            <Icon icon={iconsObject.shopping_cart} />
+            {totalQuantity > 0 && (
+              <span className="header__quantity">{totalQuantity}</span>
+            )}
+          </NavLink>
+        </div>
       </div>
     </div>
   );

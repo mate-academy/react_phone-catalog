@@ -3,7 +3,9 @@ import './ProductCard.scss';
 import { Product } from '../../../types/Product';
 import { Link } from 'react-router-dom';
 import { GlobalContext } from '../../../store/GlobalContext';
-import { ShoppingCartProduct } from '../../../types/ShoppingCartProduct';
+import { Icon } from '../Icon';
+import { iconsObject } from '../../../constants/iconsObject';
+import classNames from 'classnames';
 
 type Props = {
   product: Product;
@@ -11,70 +13,10 @@ type Props = {
 };
 
 export const ProductCard: React.FC<Props> = ({ product, displayType }) => {
-  const {
-    shoppingCart,
-    setShoppingCart,
-    favorites,
-    setFavorites,
-    setProducts,
-  } = useContext(GlobalContext);
+  const { cart, favorites, toggleFavorites, addToCart } =
+    useContext(GlobalContext);
 
-  const handleAddToCart = (currentProduct: Product) => {
-    const isInCart = shoppingCart.some(
-      item => item.id === currentProduct.itemId,
-    );
-
-    if (!isInCart) {
-      const newProduct: ShoppingCartProduct = {
-        id: currentProduct.itemId,
-        quantity: 1,
-        product: currentProduct,
-      };
-
-      setShoppingCart(prevCart => [...prevCart, newProduct]);
-
-      setProducts(prevProducts =>
-        prevProducts.map(prod =>
-          prod.itemId === currentProduct.itemId
-            ? { ...prod, shoppingCart: true }
-            : prod,
-        ),
-      );
-    }
-  };
-
-  const handleAddToFavorites = (currentProduct: Product) => {
-    const isInFavorites = favorites.some(
-      item => item.itemId === currentProduct.itemId,
-    );
-
-    if (isInFavorites) {
-      setFavorites(prevFavorites =>
-        prevFavorites.filter(item => item.itemId !== currentProduct.itemId),
-      );
-      setProducts((prevProducts: Product[]) =>
-        prevProducts.map(pr =>
-          pr.itemId === currentProduct.itemId
-            ? { ...pr, favorites: false }
-            : pr,
-        ),
-      );
-    } else {
-      setFavorites(prevFavorites => [
-        ...prevFavorites,
-        { ...currentProduct, favorites: true },
-      ]);
-      setProducts(prevProducts =>
-        prevProducts.map(prod =>
-          prod.itemId === currentProduct.itemId
-            ? { ...prod, favorites: true }
-            : prod,
-        ),
-      );
-    }
-  };
-
-  const isInCart = shoppingCart.some(item => item.id === product.itemId);
+  const isInCart = cart.some(item => item.id === product.itemId);
   const isFavorites = favorites.some(item => item.itemId === product.itemId);
 
   return (
@@ -134,23 +76,29 @@ export const ProductCard: React.FC<Props> = ({ product, displayType }) => {
 
       <div className="productCard__container-buttons">
         <button
-          className={
-            isInCart
-              ? 'productCard__button-addedToCard'
-              : 'productCard__button-addToCard'
-          }
-          onClick={() => handleAddToCart(product)}
+          className={classNames(
+            'productCard__button',
+            'productCard__button-card',
+            { 'productCard__button-card--active': isInCart },
+          )}
+          onClick={() => addToCart(product)}
         >
           {isInCart ? `Added` : `Add to cart`}
         </button>
         <button
-          className={
-            isFavorites
-              ? 'productCard__button-isFavourite'
-              : 'productCard__button-addToFavourite'
-          }
-          onClick={() => handleAddToFavorites(product)}
-        ></button>
+          className={classNames(
+            'productCard__button',
+            'productCard__button-favorites',
+            { 'productCard__button-favorites--active': isFavorites },
+          )}
+          onClick={() => toggleFavorites(product)}
+        >
+          {isFavorites ? (
+            <Icon icon={iconsObject.favorites__filled} />
+          ) : (
+            <Icon icon={iconsObject.favorites} />
+          )}
+        </button>
       </div>
     </div>
   );

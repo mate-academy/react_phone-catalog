@@ -1,30 +1,35 @@
-import React, { useContext } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import React, { useContext, useMemo } from 'react';
+import { useLocation } from 'react-router-dom';
 import { GlobalContext } from '../../store/GlobalContext';
-import { ProductCard } from '../shared/ProductCard';
 import './FavoritesPage.scss';
+import { ProductsList } from '../shared/ProductsList';
+import { Breadcrumbs } from '../shared/Breadcrumbs';
 
 export const FavoritesPage: React.FC = () => {
-  const { favorites } = useContext(GlobalContext);
+  const { favorites, query } = useContext(GlobalContext);
 
   const { pathname } = useLocation();
-  const navigate = useNavigate();
-
-  const handleBack = () => {
-    navigate(-1);
-  };
 
   const normalizeProductsType =
     pathname.slice(1, 2).toUpperCase() + pathname.slice(2);
 
-  const countFavoritesProducts = favorites.length;
+  const visibleFavorites = useMemo(() => {
+    let filteredFavorites = [...favorites];
+
+    if (query.length) {
+      filteredFavorites = filteredFavorites.filter(product =>
+        product.name.toLowerCase().includes(query.toLowerCase().trim()),
+      );
+    }
+
+    return filteredFavorites;
+  }, [favorites, query]);
+
+  const countFavoritesProducts = visibleFavorites.length;
 
   return (
     <div className="favoritesPage">
-      <button className="favoritesPage__button-back" onClick={handleBack}>
-        Back
-      </button>
-
+      <Breadcrumbs productType={'Favorites'} />
       <h1 className="favoritesPage__title">{normalizeProductsType}</h1>
 
       <span className="favoritesPage__description">
@@ -37,11 +42,10 @@ export const FavoritesPage: React.FC = () => {
         <div className="favoritesPage__empty-content">Favourites is empty</div>
       ) : (
         <div className="favoritesPage__content">
-          {favorites.map(favourite => (
-            <div key={favourite.id} className="favoritesPage__item">
-              <ProductCard product={favourite} displayType={'with-discount'} />
-            </div>
-          ))}
+          <ProductsList
+            products={visibleFavorites}
+            displayType={'with-discount'}
+          />
         </div>
       )}
     </div>

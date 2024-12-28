@@ -7,10 +7,10 @@
   display: flex;
   gap: 16px;
 
-  justify-content: center; /* Выровнять по горизонтали */
-  align-items: center; /* Выровнять по вертикали (если нужно) */
-  margin-left: auto; /* Сдвигает блок вправо, если ширина меньше, чем у родителя */
-  margin-right: auto; /* Выровнять по центру */
+  justify-content: center;
+  align-items: center;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .pagination__button-container {
@@ -19,8 +19,7 @@
 }
 
 .pagination__button-page,
-.pagination__button-prevPage,
-.pagination__button-nextPage {
+.pagination__button {
   padding: 0;
   margin: 0;
   position: relative;
@@ -36,68 +35,20 @@
   font-size: 14px;
   font-weight: 600;
 
-  display: flex; /* Включаем flexbox */
-  justify-content: center; /* Выровнять по горизонтали */
-  align-items: center; /* Выровнять по вертикали */
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.pagination__button-prevPage::after {
-  position: absolute;
-  content: url('/icons/Chevron\ \(Arrow\ Left\).svg');
-  width: 16px;
-  height: 16px;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-.pagination__button-nextPage::after {
-  position: absolute;
-  content: url('/icons/Chevron\ \(Arrow\ Right\).svg');
-  width: 16px;
-  height: 16px;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
 
 .pagination__button-page--active {
   background-color: $color-gray-primary;
   color: $color-white;
 }
 
-.pagination__button-disabled {
-  position: relative;
-  width: 32px;
-  height: 32px;
-  border: 1px solid $color-gray-elements;
-  background-color: $color-white;
-  box-sizing: border-box;
-
+.pagination__button--disabled {
   cursor: not-allowed;
 }
-
-.pagination__button-disabled--nextPage::after {
-  position: absolute;
-  content: url('/icons/Chevron\ \(Arrow\ Right\)\ \ disabled.svg');
-  width: 16px;
-  height: 16px;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-.pagination__button-disabled--prevPage::after {
-  position: absolute;
-  content: url('/icons/Chevron\ \(Arrow\ Left\)\ disabled.svg');
-  width: 16px;
-  height: 16px;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-
 
 .pagination__ellipsis {
   display: inline-block;

@@ -2,26 +2,52 @@
 
 .detailsPage {
   &__content-buttom {
+    gap: 32px;
     display: flex;
-    gap: 64px;
-    margin-top: 80px;
+    flex-direction: column;
+
+    margin-bottom: 56px;
+
+    @include on-tablet {
+      margin-bottom: 64px;
+    }
+
+    @include on-desktop {
+      margin-block: 80px;
+
+      @include page-grid;
+    }
   }
 
   &__block {
     &-about {
-      width: 560px;
+      width: 100%;
+
+      @include on-desktop {
+        grid-column: 1 / 13;
+      }
     }
 
     &-techSpecs {
-      width: 512px;
+      width: 100%;
+
+      @include on-desktop {
+        grid-column: 14 / -1;
+      }
     }
 
     &-title {
       font-family: 'Mont-Bold', sans-serif;
-      font-size: 22px;
-      font-weight: 800;
-      line-height: 30.8px;
+      font-size: 20px;
+      font-weight: 700;
+      line-height: 25.56px;
       color: $color-gray-primary;
+
+      @include on-tablet {
+        font-size: 22px;
+        font-weight: 800;
+        line-height: 30.8px;
+      }
     }
   }
 
@@ -46,10 +72,16 @@
 
     &-title {
       font-family: 'Mont-SemiBold', sans-serif;
-      font-size: 20px;
+      font-size: 16px;
       font-weight: 700;
-      line-height: 25.56px;
+      line-height: 20.45px;
       color: $color-gray-primary;
+
+      @include on-tablet {
+        font-size: 20px;
+        font-weight: 700;
+        line-height: 25.56px;
+      }
 
       &--bottom {
         margin-top: 80px;
@@ -60,7 +92,7 @@
     &-description {
       font-family: 'Mont-Regular', sans-serif;
       font-size: 14px;
-      font-weight: 500;
+      font-weight: 600;
       line-height: 21px;
       color: $color-gray-secondary;
     }
@@ -77,6 +109,7 @@
     &-block {
       display: flex;
       justify-content: space-between;
+      gap: 20px;
     }
 
     &-title {

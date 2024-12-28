@@ -1,29 +1,25 @@
 import React, { useContext } from 'react';
 import { GlobalContext } from '../../store/GlobalContext';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import './ShoppingCartPage.scss';
 import { CartItem } from './components/CartItem';
+import { ButtonBack } from '../shared/ButtonBack';
 
 export const ShoppingCartPage: React.FC = () => {
-  const { shoppingCart, clearShoppingCart } = useContext(GlobalContext);
+  const { cart, clearShoppingCart } = useContext(GlobalContext);
 
   const { pathname } = useLocation();
-
-  const navigate = useNavigate();
-
-  const handleBack = () => {
-    navigate(-1);
-  };
 
   const normalizeProductsType =
     pathname.slice(1, 2).toUpperCase() + pathname.slice(2);
 
-  const countCartItems = shoppingCart.length;
-  const totalQuantity = shoppingCart.reduce((sum, item) => {
+  const countCartItems = cart.length;
+
+  const totalQuantity = cart.reduce((sum, item) => {
     return sum + item.quantity;
   }, 0);
 
-  const totalCount = shoppingCart.reduce((sum, item) => {
+  const totalCount = cart.reduce((sum, item) => {
     return sum + item.quantity * item.product.price;
   }, 0);
 
@@ -39,9 +35,8 @@ export const ShoppingCartPage: React.FC = () => {
 
   return (
     <div className="cartPage">
-      <button className="cartPage__button-back" onClick={handleBack}>
-        Back
-      </button>
+      <ButtonBack />
+
       <h1 className="cartPage__title">{normalizeProductsType}</h1>
 
       {countCartItems === 0 && (
@@ -60,7 +55,7 @@ export const ShoppingCartPage: React.FC = () => {
       {countCartItems !== 0 && (
         <div className="cartPage__content">
           <div className="cartPage__content-container">
-            {shoppingCart.map(item => (
+            {cart.map(item => (
               <CartItem cartProduct={item} key={item.id} />
             ))}
           </div>

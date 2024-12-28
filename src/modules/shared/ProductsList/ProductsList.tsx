@@ -11,11 +11,9 @@ type Props = {
 export const ProductsList: React.FC<Props> = ({ products, displayType }) => (
   <div className="productsList">
     {products.map(product => (
-      <ProductCard
-        key={product.id}
-        product={product}
-        displayType={displayType}
-      />
+      <div className="productItem" key={product.id}>
+        <ProductCard product={product} displayType={displayType} />
+      </div>
     ))}
   </div>
 );

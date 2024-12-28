@@ -1,6 +1,8 @@
 import React from 'react';
 import './Footer.scss';
 import { Link } from 'react-router-dom';
+import { Icon } from '../Icon';
+import { iconsObject } from '../../../constants/iconsObject';
 
 export const Footer: React.FC = () => {
   const backToTop = () => {
@@ -41,7 +43,9 @@ export const Footer: React.FC = () => {
 
         <div className="footer__block">
           <span className="footer__button-title">Back to top</span>
-          <button className="footer__button" onClick={backToTop}></button>
+          <button className="footer__button" onClick={backToTop}>
+            <Icon icon={iconsObject.arrow_left} />
+          </button>
         </div>
       </div>
     </div>

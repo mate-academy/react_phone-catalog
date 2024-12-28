@@ -1,50 +1,61 @@
 @import '../../../../styles/main.scss';
 
-.shopByCategory {
+.shopByCategory__container {
+  margin-block: 56px;
+
   @include content-padding-inline();
+
+  @include on-tablet {
+    margin-block: 64px;
+  }
 }
+
 
 .shopByCategory__title {
   font-family: 'Mont-Bold', sans-serif;
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 30.8px;
+  letter-spacing: -0.01em;
+  color: $color-gray-primary;
+  margin-bottom: 24px;
 
   @include on-tablet {
-    font-size: 20px;
-    font-weight: 700;
-    line-height: 25.56px;
-
-    margin-bottom: 24px;
-  }
-
-  @include on-desktop {
     font-family: 'Mont-Bold', sans-serif;
     font-size: 32px;
-    font-weight: 800;
     line-height: 41px;
-    letter-spacing: -0.01em;
-    color: $color-gray-primary;
   }
 }
 
 .shopByCategory__content {
-  display: flex;
-  gap: 16px;
+  gap: 32px;
+  @include page-grid;
 }
 
 .shopByCategory__link {
   text-decoration: none;
+  grid-column: 1 / -1;
+
+  @include on-tablet {
+    grid-column: span 4;
+  }
+
+  @include on-desktop {
+    grid-column: span 8;
+  }
 }
 
 .shopByCategory__block-image {
   transition: transform 0.3s;
+  width: 100%; // Изображение будет занимать всю ширину родительского элемента.
+  height: auto; // Сохраняет пропорции изображения.
 
   @include on-tablet {
-    width: 187px;
-    height: 187px;
+    max-width: 100%; // Для безопасности, чтобы не выходило за пределы родителя.
   }
 
   @include on-desktop {
-    width: 368px;
-    height: 368px;
+    max-width: 100%;
   }
 }
 
@@ -56,7 +67,7 @@
   margin-top: 24px;
   font-family: 'Mont-SemiBold', sans-serif;
   font-size: 20px;
-  font-weight: 600;
+  font-weight: 700;
   line-height: 25.56px;
   color: $color-gray-primary;
 }
@@ -64,18 +75,8 @@
 .shopByCategory__block-description {
   font-family: 'Mont-Regular', sans-serif;
   color: $color-gray-secondary;
-
-  @include on-tablet {
-    font-size: 14px;
-    font-weight: 600;
-    line-height: 21px;
-
-    margin-top: 4px;
-  }
-
-  @include on-desktop {
-    font-size: 14px;
-    font-weight: 500;
-    line-height: 21px;
-  }
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 21px;
+  margin-top: 4px;
 }

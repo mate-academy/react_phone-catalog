@@ -1,0 +1,23 @@
+@import '../../../styles/main.scss';
+
+.button {
+  margin-block: 24px 16px;
+  width: 66px;
+  height: 16px;
+  border: none;
+  background-color: $color-white;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+  font-family: 'Mont-SemiBold', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  color: $color-gray-secondary;
+
+  @include on-tablet {
+    margin-top: 40px;
+  }
+
+
+}

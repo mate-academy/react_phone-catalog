@@ -1,5 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import './PicturesSlider.scss';
+import { Icon } from '../../../shared/Icon';
+import { iconsObject } from '../../../../constants/iconsObject';
 
 export const PicturesSlider: React.FC = () => {
   const images = [
@@ -67,10 +69,9 @@ export const PicturesSlider: React.FC = () => {
   return (
     <div className="picturesSlider">
       <div className="picturesSlider__container">
-        <button
-          className="picturesSlider__button picturesSlider__button--left"
-          onClick={handlePrevButton}
-        ></button>
+        <div className="picturesSlider__button" onClick={handlePrevButton}>
+          <Icon icon={iconsObject.arrow_left} />
+        </div>
 
         <div className="picturesSlider__container-image">
           {images.map((src, index) => (
@@ -85,10 +86,9 @@ export const PicturesSlider: React.FC = () => {
           ))}
         </div>
 
-        <button
-          className="picturesSlider__button picturesSlider__button--right"
-          onClick={handleNextButton}
-        ></button>
+        <div className="picturesSlider__button" onClick={handleNextButton}>
+          <Icon icon={iconsObject.arrow_right} />
+        </div>
       </div>
 
       <div className="picturesSlider__dots">

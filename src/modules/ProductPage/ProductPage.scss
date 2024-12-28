@@ -6,12 +6,17 @@
 
 .productPage__title {
   font-family: 'Mont-Bold', sans-serif;
-  font-size: 48px;
+  font-size: 32px;
   font-weight: 800;
-  line-height: 56px;
+  line-height: 41px;
   letter-spacing: -0.01em;
   color: $color-gray-primary;
   margin-bottom: 8px;
+
+  @include on-tablet {
+    font-size: 48px;
+    line-height: 56px;
+  }
 }
 
 .productPage__description {
@@ -22,10 +27,31 @@
   color: $color-gray-secondary;
 }
 
-.productPage__dropdown-container {
-  margin-top: 40px;
-  display: flex;
+.productPage__dropdown {
+  margin-top: 32px;
   gap: 16px;
+
+  @include page-grid;
+
+  @include on-tablet {
+    margin-top: 40px;
+  }
+}
+
+.productPage__dropdown--sortBy {
+  grid-column: span 2;
+
+  @include on-tablet {
+    grid-column: span 4;
+  }
+}
+
+.productPage__dropdown--itemsPerPage {
+  grid-column: span 2;
+
+  @include on-tablet {
+    grid-column: span 3;
+  }
 }
 
 .productPage__content {

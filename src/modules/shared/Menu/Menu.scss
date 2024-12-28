@@ -1,0 +1,54 @@
+@import '../../../styles/main.scss';
+
+.menu {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.menu__list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.menu__link {
+  position: relative;
+  font-family: 'Molt-Bold', sans-serif;
+  font-weight: 800;
+  font-size: 12px;
+  line-height: 27px;
+  letter-spacing: 0.04em;
+  text-align: center;
+  text-transform: uppercase;
+  color: $color-gray-secondary;
+  text-decoration: none;
+  display: block;
+  height: 100%;
+
+  &:hover {
+    color: $color-gray-primary;
+  }
+}
+
+.menu__link::after {
+  content: '';
+  position: absolute;
+  display: block;
+  height: 0;
+  width: 100%;
+  background-color: $color-gray-primary;
+  bottom: 0;
+  left: 0;
+  transition: height 0.3s ease;
+}
+
+.menu__link:hover::after {
+  height: 2px;
+}

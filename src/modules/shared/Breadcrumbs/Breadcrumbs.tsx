@@ -1,5 +1,7 @@
 import { Link } from 'react-router-dom';
 import './Breadcrumbs.scss';
+import { Icon } from '../Icon';
+import { iconsObject } from '../../../constants/iconsObject';
 
 type Props = {
   productType: string;
@@ -17,8 +19,13 @@ export const Breadcrumbs: React.FC<Props> = ({ productType, productName }) => {
           href="/"
           className="breadcrumbs__link-home"
           aria-label="Go to home page"
-        ></a>
-        <span className="breadcrumbs__arrow"></span>
+        >
+          <Icon icon={iconsObject.home} />
+        </a>
+
+        <span className="breadcrumbs__arrow">
+          <Icon icon={iconsObject.arrow_right} />
+        </span>
 
         {productName ? (
           <>
@@ -27,7 +34,9 @@ export const Breadcrumbs: React.FC<Props> = ({ productType, productName }) => {
                 {normalizeProductsType}
               </span>
             </Link>
-            <span className="breadcrumbs__arrow"></span>
+            <span className="breadcrumbs__arrow">
+              <Icon icon={iconsObject.arrow_right} />
+            </span>
             <span className="breadcrumbs__item">{productName}</span>
           </>
         ) : (
