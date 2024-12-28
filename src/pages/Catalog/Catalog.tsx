@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import classNames from 'classnames';
 import { getProducts } from '../../api/api';
 import { Breadcrumbs } from '../../components/Breadcrumbs';
@@ -28,13 +28,13 @@ export const Catalog: React.FC<Props> = ({ category }) => {
   const [sortBy, setSortBy] = useState<keyof typeof SortType>(DEFAULT_SORT_BY);
   const [perPage, setPerPage] = useState(DEFAULT_PER_PAGE);
 
-  const handleSortBy = (value: string) => {
+  const handleSortBy = useCallback((value: string) => {
     setSortBy(value as keyof typeof SortType);
-  };
+  }, []);
 
-  const handlePerPage = (value: string) => {
+  const handlePerPage = useCallback((value: string) => {
     setPerPage(parseInt(value));
-  };
+  }, []);
 
   const handleLeft = () => {
     if (page === 1) {
@@ -108,13 +108,21 @@ export const Catalog: React.FC<Props> = ({ category }) => {
     setSearchParams(newParams);
   }, [perPage, sortBy]);
 
+  const productsList = useMemo(
+    () =>
+      products.map(product => (
+        <ProductCard key={product.id} product={product} wideButton={true} />
+      )),
+    [products],
+  );
+
+  const title = category[0].toUpperCase().concat(category.slice(1));
+
   return (
     <div className="catalog">
-      <Breadcrumbs paths={['Phones']} />
+      <Breadcrumbs paths={[title]} />
 
-      <h1 className="catalog__title">
-        {category[0].toUpperCase().concat(category.slice(1))}
-      </h1>
+      <h1 className="catalog__title">{title}</h1>
       <p className="catalog__count body-text">{totalProducts} models</p>
 
       <div className="catalog__filters">
@@ -139,11 +147,7 @@ export const Catalog: React.FC<Props> = ({ category }) => {
         </div>
       </div>
 
-      <div className="catalog__container">
-        {products.map(product => (
-          <ProductCard key={product.id} product={product} wideButton={true} />
-        ))}
-      </div>
+      <div className="catalog__container">{productsList}</div>
 
       <div className="catalog__pagination">
         <button className="button--arrow" onClick={handleLeft}>

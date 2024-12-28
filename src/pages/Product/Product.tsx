@@ -127,20 +127,27 @@ export const Product = () => {
     </div>
   );
 
+  const category = product.category[0]
+    .toUpperCase()
+    .concat(product.category.slice(1));
+
   return (
     <div className="product">
-      <Breadcrumbs
-        paths={['Phones', 'Apple iPhone 11 Pro Max 64GB Gold (iMT9G2FS/A)']}
-      />
+      <Breadcrumbs paths={[category, product.name]} />
+
       <div className="product__back-button">
         <BackButton />
       </div>
+
       <h2 className="product__title">{product.name}</h2>
+
       <div className="product__container">
         <div className="product__image square-container">
           <img src={NormalizeImagePath(product.images[0])} alt="Image" />
         </div>
+
         {renderImages()}
+
         <div className="product__details">
           <p className="product__id product__id-mobile small-text">
             ID: {product.id}
