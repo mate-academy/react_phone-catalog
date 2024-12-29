@@ -347,7 +347,7 @@
     (green, $green), (purple, $purple), (yellow, $yellow), (spacegray, $spacegray), ("rose-gold", $rosegold), (gold, $gold),
      (silver, $silver), (graphite, $graphit), (midnightgreen, $midnightgreen), (blue, $blue),
      (pink, $pink), {
-      &--#{$color} {
+      &--#{"#{$color}"} {
         background-color: $value;
       }
     }
