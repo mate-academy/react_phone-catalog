@@ -1,6 +1,10 @@
 import './Footer.scss';
 
 export const Footer = () => {
+  const scrollToTop = () => {
+    window.scrollTo(0, 0);
+  };
+
   return (
     <footer className="footer">
       <div className="footer__container">
@@ -12,7 +16,10 @@ export const Footer = () => {
           <a className="footer__links-link text-button">Rights</a>
         </div>
 
-        <button className="footer__back-to-top button--text">
+        <button
+          className="footer__back-to-top button--text"
+          onClick={scrollToTop}
+        >
           <p className="small-text footer__back-to-top-text">Back to top</p>
           <img
             className="button--arrow"

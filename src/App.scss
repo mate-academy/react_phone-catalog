@@ -3,6 +3,10 @@
 @use 'styles/mixins';
 @use 'styles/vars';
 
+html {
+  scroll-behavior: smooth;
+}
+
 html,
 button {
   font-family: Mont, sans-serif;
@@ -33,6 +37,7 @@ p {
 
 .container {
   width: 100%;
+  position: relative;
 
   max-width: 1200px;
   min-height: 100%;

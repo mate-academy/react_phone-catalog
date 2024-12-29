@@ -36,7 +36,7 @@ export const CartItem: React.FC<Props> = ({
     <div className="cart__item">
       <div className="cart__item-group">
         <img
-          src="/icons/close.svg"
+          src="/icons/close_gray.svg"
           alt="Close icon"
           className="cart__item-close"
           onClick={removeItem}
