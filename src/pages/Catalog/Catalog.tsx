@@ -1,14 +1,14 @@
-import { useCallback, useEffect, useMemo, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import classNames from 'classnames';
-import { getProducts } from '../../api/api';
 import { Breadcrumbs } from '../../components/Breadcrumbs';
 import { Dropdown } from '../../components/Dropdown';
 import { ProductCard } from '../../components/ProductCard';
 import { ProductType } from '../../types/ProductType';
 import { SortType } from '../../types/SortType';
 import { Category } from '../../types/CategoryType';
+import { getProducts } from '../../api/api';
 import './Catalog.scss';
-import { useSearchParams } from 'react-router-dom';
 
 const DEFAULT_SORT_BY = 'Newest';
 const DEFAULT_PER_PAGE = 16;
@@ -108,14 +108,6 @@ export const Catalog: React.FC<Props> = ({ category }) => {
     setSearchParams(newParams);
   }, [perPage, sortBy]);
 
-  const productsList = useMemo(
-    () =>
-      products.map(product => (
-        <ProductCard key={product.id} product={product} wideButton={true} />
-      )),
-    [products],
-  );
-
   const title = category[0].toUpperCase().concat(category.slice(1));
 
   return (
@@ -147,7 +139,11 @@ export const Catalog: React.FC<Props> = ({ category }) => {
         </div>
       </div>
 
-      <div className="catalog__container">{productsList}</div>
+      <div className="catalog__container">
+        {products.map(product => (
+          <ProductCard key={product.id} product={product} wideButton={true} />
+        ))}
+      </div>
 
       <div className="catalog__pagination">
         <button className="button--arrow" onClick={handleLeft}>

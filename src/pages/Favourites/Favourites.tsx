@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
 import { Breadcrumbs } from '../../components/Breadcrumbs';
+import { ProductCard } from '../../components/ProductCard';
 import { ProductType } from '../../types/ProductType';
 import { getProducts } from '../../api/api';
 import { getFavourites } from '../../api/favourites';
 import './Favourites.scss';
-import { ProductCard } from '../../components/ProductCard';
 
 export const Favourites = () => {
   const [products, setProducts] = useState<ProductType[]>();
@@ -40,10 +40,14 @@ export const Favourites = () => {
             {products.length} items
           </p>
           <div className="favourites__container">
-            {products.map((product, index) => (
-              <ProductCard key={index} product={product} wideButton={true} />
+            {products.map(product => (
+              <ProductCard
+                key={product.id}
+                product={product}
+                wideButton={true}
+              />
             ))}
-          </div>{' '}
+          </div>
         </>
       ) : (
         <div className="favourites__empty">
