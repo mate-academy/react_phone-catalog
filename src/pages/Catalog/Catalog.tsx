@@ -1,6 +1,5 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import classNames from 'classnames';
 import { Breadcrumbs } from '../../components/Breadcrumbs';
 import { Dropdown } from '../../components/Dropdown';
 import { ProductCard } from '../../components/ProductCard';
@@ -9,6 +8,7 @@ import { SortType } from '../../types/SortType';
 import { Category } from '../../types/CategoryType';
 import { getProducts } from '../../api/api';
 import './Catalog.scss';
+import { PaginationButtons } from '../../components/Pagination';
 
 const DEFAULT_SORT_BY = 'Newest';
 const DEFAULT_PER_PAGE = 16;
@@ -22,11 +22,16 @@ export const Catalog: React.FC<Props> = ({ category }) => {
 
   const [products, setProducts] = useState<ProductType[]>([]);
   const [pageCount, setPageCount] = useState(1);
-  const [page, setPage] = useState(1);
+  const [currentPage, setCurrentPage] = useState(1);
   const [totalProducts, setTotalProducts] = useState(0);
 
-  const [sortBy, setSortBy] = useState<keyof typeof SortType>(DEFAULT_SORT_BY);
-  const [perPage, setPerPage] = useState(DEFAULT_PER_PAGE);
+  const initialSortBy =
+    (searchParams.get('sortBy') as keyof typeof SortType) || DEFAULT_SORT_BY;
+  const initialPerPage =
+    parseInt(searchParams.get('perPage') || '') || DEFAULT_PER_PAGE;
+
+  const [sortBy, setSortBy] = useState(initialSortBy);
+  const [perPage, setPerPage] = useState(initialPerPage);
 
   const handleSortBy = useCallback((value: string) => {
     setSortBy(value as keyof typeof SortType);
@@ -36,31 +41,19 @@ export const Catalog: React.FC<Props> = ({ category }) => {
     setPerPage(parseInt(value));
   }, []);
 
-  const handleLeft = () => {
-    if (page === 1) {
-      return;
-    }
-
-    setPage(page - 1);
-  };
-
-  const handleRight = () => {
-    if (page === pageCount) {
-      return;
-    }
-
-    setPage(page + 1);
-  };
-
   const fetchProducts = async () => {
     const response = await getProducts(
       {
-        page,
+        page: currentPage,
         sortBy: SortType[sortBy],
         perPage,
       },
       category,
     );
+
+    if (response.pages < currentPage) {
+      setCurrentPage(response.pages);
+    }
 
     setPageCount(response.pages);
     setProducts(response.products);
@@ -68,47 +61,31 @@ export const Catalog: React.FC<Props> = ({ category }) => {
   };
 
   useEffect(() => {
-    fetchProducts();
-  }, [category, page, perPage, sortBy]);
-
-  useEffect(() => {
-    setPage(1);
+    setCurrentPage(1);
     setSortBy('Newest');
     setPerPage(16);
   }, [category]);
 
   useEffect(() => {
-    const savedSortBy = searchParams.get('sortBy');
-    const savedPerPage = searchParams.get('perPage');
+    fetchProducts();
 
-    if (savedSortBy) {
-      setSortBy(savedSortBy as keyof typeof SortType);
-    }
-
-    if (savedPerPage) {
-      const toInt = parseInt(savedPerPage);
-
-      if (toInt) {
-        setPerPage(toInt);
-      }
-    }
-  }, []);
-
-  useEffect(() => {
     const newParams: { [key: string]: string } = {};
-
     if (perPage !== DEFAULT_PER_PAGE) {
       newParams['perPage'] = perPage.toString();
     }
-
     if (sortBy !== DEFAULT_SORT_BY) {
       newParams['sortBy'] = sortBy;
     }
-
     setSearchParams(newParams);
-  }, [perPage, sortBy]);
+  }, [category, currentPage, perPage, sortBy]);
 
-  const title = category[0].toUpperCase().concat(category.slice(1));
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [currentPage]);
+
+  const title = useMemo(() => {
+    return category[0].toUpperCase().concat(category.slice(1));
+  }, [category]);
 
   return (
     <div className="catalog">
@@ -145,41 +122,11 @@ export const Catalog: React.FC<Props> = ({ category }) => {
         ))}
       </div>
 
-      <div className="catalog__pagination">
-        <button className="button--arrow" onClick={handleLeft}>
-          <img src="/icons/arrow_left.svg" alt="Arrow left" />
-        </button>
-
-        <div className="catalog__pagination-pages">
-          {Array.from(Array(pageCount)).map((_, index) => {
-            const pageIndex = index + 1;
-
-            const handlePage = () => {
-              setPage(pageIndex);
-            };
-
-            return (
-              <button
-                key={pageIndex}
-                className={classNames(
-                  'catalog__pagination-page-button button--arrow',
-                  {
-                    'catalog__pagination-page-button--selected':
-                      page === pageIndex,
-                  },
-                )}
-                onClick={handlePage}
-              >
-                <p className="body-text">{pageIndex}</p>
-              </button>
-            );
-          })}
-        </div>
-
-        <button className="button--arrow" onClick={handleRight}>
-          <img src="/icons/arrow_right.svg" alt="Arrow right" />
-        </button>
-      </div>
+      <PaginationButtons
+        currentPage={currentPage}
+        onPageChange={setCurrentPage}
+        pageCount={pageCount}
+      />
     </div>
   );
 };

@@ -55,37 +55,4 @@
 
     @include mixins.page-grid;
   }
-
-  &__pagination {
-    margin-top: 40px;
-
-    display: flex;
-    gap: 16px;
-    justify-content: center;
-
-    &-pages {
-      display: flex;
-      gap: 8px;
-    }
-
-    &-page-button {
-      width: 32px;
-      height: 32px;
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      border-color: vars.$color-elements;
-
-      &--selected {
-        border-color: vars.$color-primary;
-        background-color: vars.$color-primary;
-
-        & > p {
-          color: white;
-        }
-      }
-    }
-  }
 }

@@ -1,13 +1,14 @@
+import React from 'react';
 import { NavLink } from 'react-router-dom';
 import classNames from 'classnames';
+import { MainNav } from '../MainNav';
 import './Header.scss';
 
-export const Header = () => {
-  const navLinkClass = (props: { isActive: boolean }) =>
-    classNames('header__nav-item text-button', {
-      'header__nav-item--selected': props.isActive,
-    });
+type Props = {
+  openMenu: () => void;
+};
 
+export const Header: React.FC<Props> = ({ openMenu }) => {
   const buttonClass = (props: { isActive: boolean }) =>
     classNames('header__button', {
       'header__button--selected': props.isActive,
@@ -18,30 +19,9 @@ export const Header = () => {
       <div className="header__left">
         <img src="/logo.svg" alt="Logo" className="header__logo" />
 
-        <nav className="header__nav" aria-label="Main navigation">
-          <ul className="header__nav-list">
-            <li>
-              <NavLink className={navLinkClass} to="/">
-                Home
-              </NavLink>
-            </li>
-            <li>
-              <NavLink className={navLinkClass} to="/phones">
-                Phones
-              </NavLink>
-            </li>
-            <li>
-              <NavLink className={navLinkClass} to="/tablets">
-                Tablets
-              </NavLink>
-            </li>
-            <li>
-              <NavLink className={navLinkClass} to="/accessories">
-                Accessories
-              </NavLink>
-            </li>
-          </ul>
-        </nav>
+        <div className="header__nav">
+          <MainNav />
+        </div>
       </div>
 
       <div className="header__buttons">
@@ -55,9 +35,9 @@ export const Header = () => {
       </div>
 
       <div className="header__buttons header__buttons-mobile">
-        <button className="header__button">
+        <div className="header__button" onClick={openMenu}>
           <img src="/icons/menu.svg" alt="Burger menu icon" />
-        </button>
+        </div>
       </div>
     </header>
   );
