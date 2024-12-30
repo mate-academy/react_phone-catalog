@@ -42,22 +42,36 @@ export const ProductPage: React.FC = () => {
   const { products } = useContext(GlobalContext);
   const [searchParams, setSearchParams] = useSearchParams();
 
-  // const defaultSortBy = 'Newest';
-  // const defaultItemsPerPage = 'All';
-
   const sortBy = searchParams.get('sort') || 'Newest';
   const itemsPerPage = searchParams.get('perPage') || 'All';
   const currentPage = Number(searchParams.get('page')) || 1;
   const queryParam = searchParams.get('query') || '';
 
-  // const { sort = defaultSortBy, perPage = defaultItemsPerPage, page = '1', query = '' } = Object.fromEntries(searchParams);
-
   const { productsType } = useParams<{ productsType: string }>();
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
+  const validProductTypes = ['phones', 'tablets', 'accessories'];
+
+  useEffect(() => {
+    if (productsType && !validProductTypes.includes(productsType)) {
+      setError('Invalid product type!');
+      setIsLoading(false);
+    } else {
+      setIsLoading(true);
+      setError(null);
+      setTimeout(() => {
+        setIsLoading(false);
+      }, 1000);
+    }
+  }, [productsType, products]);
+
   const categoryProducts = useMemo(() => {
-    return products.filter(product => product.category === productsType);
+    if (productsType && validProductTypes.includes(productsType)) {
+      return products.filter(product => product.category === productsType);
+    }
+
+    return [];
   }, [products, productsType]);
 
   const visibleProducts = useMemo(() => {
@@ -69,14 +83,21 @@ export const ProductPage: React.FC = () => {
 
   const countVisibleProducts = visibleProducts.length;
 
-  useEffect(() => {
+  const handleReload = () => {
     setIsLoading(true);
     setError(null);
 
-    setTimeout(() => {
-      setIsLoading(false);
-    }, 1000);
-  }, [productsType]);
+    if (productsType && !validProductTypes.includes(productsType)) {
+      setError('Invalid product type!');
+      setTimeout(() => {
+        setIsLoading(false);
+      }, 1000);
+    } else {
+      setTimeout(() => {
+        setIsLoading(false);
+      }, 1000);
+    }
+  };
 
   const handleSortChange = (value: string) => {
     const updatedParams = value === 'Newest' ? { sort: null } : { sort: value };
@@ -110,15 +131,27 @@ export const ProductPage: React.FC = () => {
       ? visibleProducts
       : visibleProducts.slice(startIndex, startIndex + +itemsPerPage);
 
+  if (isLoading) {
+    return <Loader />;
+  }
+
   return (
     <div className="productPage">
       {isLoading && <Loader />}
       {error && (
         <div className="productPage__error">
           <p>{error}</p>
-          <button onClick={() => setIsLoading(true)}>Reload</button>
+          <button onClick={handleReload}>Reload</button>
         </div>
       )}
+
+      {!categoryProducts.length && !error && !isLoading && (
+        <div className="productPage__empty-content">
+          <p>{`There are no ${productsType} yet`}</p>
+          <button onClick={handleReload}>Reload</button>
+        </div>
+      )}
+
       {!isLoading && !error && (
         <>
           <Breadcrumbs productType={productsType!} />
@@ -129,9 +162,7 @@ export const ProductPage: React.FC = () => {
           </h1>
 
           <span className="productPage__description">
-            {`${countVisibleProducts} ${
-              countVisibleProducts === 1 ? 'model' : 'models'
-            }`}
+            {`${countVisibleProducts} model${countVisibleProducts !== 1 ? 's' : ''}`}
           </span>
 
           <div className="productPage__dropdown">
@@ -157,8 +188,9 @@ export const ProductPage: React.FC = () => {
 
           {itemsPerPage !== 'All' && totalPages > 1 && (
             <Pagination
+              total={countVisibleProducts}
+              perPage={+itemsPerPage}
               currentPage={currentPage}
-              totalPages={totalPages}
               onPageChange={handlePageChange}
             />
           )}

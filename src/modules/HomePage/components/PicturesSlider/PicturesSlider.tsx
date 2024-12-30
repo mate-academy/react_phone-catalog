@@ -1,7 +1,8 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useContext } from 'react';
 import './PicturesSlider.scss';
 import { Icon } from '../../../shared/Icon';
 import { iconsObject } from '../../../../constants/iconsObject';
+import { GlobalContext } from '../../../../store/GlobalContext';
 
 export const PicturesSlider: React.FC = () => {
   const images = [
@@ -11,6 +12,7 @@ export const PicturesSlider: React.FC = () => {
   ];
 
   const [currentSlide, setCurrentSlide] = useState(0);
+  const { theme } = useContext(GlobalContext);
 
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
 
@@ -69,8 +71,19 @@ export const PicturesSlider: React.FC = () => {
   return (
     <div className="picturesSlider">
       <div className="picturesSlider__container">
-        <div className="picturesSlider__button" onClick={handlePrevButton}>
-          <Icon icon={iconsObject.arrow_left} />
+        <div
+          className={
+            theme === 'light'
+              ? 'picturesSlider__button'
+              : 'picturesSlider__button picturesSlider__button--dark'
+          }
+          onClick={handlePrevButton}
+        >
+          {theme === 'light' ? (
+            <Icon icon={iconsObject.arrow_left} />
+          ) : (
+            <Icon icon={iconsObject.arrow_left__disabled} />
+          )}
         </div>
 
         <div className="picturesSlider__container-image">
@@ -79,15 +92,28 @@ export const PicturesSlider: React.FC = () => {
               key={index}
               src={src}
               alt="Slide"
-              className={`picturesSlider__image ${
-                currentSlide === index ? 'picturesSlider__image--active' : ''
-              }`}
+              className={
+                currentSlide === index
+                  ? 'picturesSlider__image picturesSlider__image--active'
+                  : 'picturesSlider__image'
+              }
             />
           ))}
         </div>
 
-        <div className="picturesSlider__button" onClick={handleNextButton}>
-          <Icon icon={iconsObject.arrow_right} />
+        <div
+          className={
+            theme === 'light'
+              ? 'picturesSlider__button'
+              : 'picturesSlider__button picturesSlider__button--dark'
+          }
+          onClick={handleNextButton}
+        >
+          {theme === 'light' ? (
+            <Icon icon={iconsObject.arrow_right} />
+          ) : (
+            <Icon icon={iconsObject.arrow_right__disabled} />
+          )}
         </div>
       </div>
 
@@ -95,9 +121,11 @@ export const PicturesSlider: React.FC = () => {
         {images.map((_, index) => (
           <div
             key={index}
-            className={`picturesSlider__dot ${
-              currentSlide === index ? 'picturesSlider__dot--active' : ''
-            }`}
+            className={
+              currentSlide === index
+                ? 'picturesSlider__dot picturesSlider__dot--active'
+                : 'picturesSlider__dot'
+            }
             onClick={() => handleDotClick(index)}
           ></div>
         ))}

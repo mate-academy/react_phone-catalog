@@ -11,5 +11,4 @@ export type Product = {
   ram: string;
   year: number;
   image: string;
-  // favourite: boolean;
 };

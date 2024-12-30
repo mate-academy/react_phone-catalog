@@ -25,11 +25,11 @@
   position: relative;
   width: 32px;
   height: 32px;
-  border: 1px solid $color-gray-icons-placeholders;
-  background-color: $color-white;
+  border: 1px solid var(--color-gray-icons-placeholders);
+  background-color: var(--color-bg);
   box-sizing: border-box;
   cursor: pointer;
-  color: $color-gray-primary;
+  color: var(--color-gray-primary);
 
   font-family: 'Mont-Regular', sans-serif;
   font-size: 14px;
@@ -42,8 +42,8 @@
 
 
 .pagination__button-page--active {
-  background-color: $color-gray-primary;
-  color: $color-white;
+  background-color: var(--color-gray-primary);
+  color: var(--color-bg);
 }
 
 .pagination__button--disabled {
@@ -54,7 +54,7 @@
   display: inline-block;
   padding: 0 8px;
   font-size: 14px;
-  color: $color-gray-primary;
+  color: var(--color-gray-primary);
 }
 
 

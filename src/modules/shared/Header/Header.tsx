@@ -8,11 +8,15 @@ import { Icon } from '../Icon';
 import { navLinks } from '../../../constants/navLinks';
 import { getSearchWith } from '../../../utils/searchHelper';
 
-const getActiveClass = ({ isActive }: { isActive: boolean }) =>
+const getActiveItem = ({ isActive }: { isActive: boolean }) =>
   classNames('header__item', { 'header__item--active': isActive });
 
+const getActiveIcon = ({ isActive }: { isActive: boolean }) =>
+  classNames('header__icon', { 'header__icon--active': isActive });
+
 export const Header: React.FC = () => {
-  const { cart, favorites, toggleMenu, isMenuOpen } = useContext(GlobalContext);
+  const { cart, favorites, toggleMenu, isMenuOpen, theme, toggleTheme } =
+    useContext(GlobalContext);
 
   const [searchParams, setSearchParams] = useSearchParams();
   const location = useLocation();
@@ -77,13 +81,21 @@ export const Header: React.FC = () => {
   return (
     <div className="header">
       <Link to="/" className="header__logo-container">
-        <img src="logo.svg" alt="Nice Gadgets" className="header__logo" />
+        {theme === 'light' ? (
+          <img src="logo.svg" alt="Nice Gadgets" className="header__logo" />
+        ) : (
+          <img
+            src="logo_dark.svg"
+            alt="Nice Gadgets"
+            className="header__logo"
+          />
+        )}
       </Link>
 
       <div className="header__menu">
         <div className="header__list">
           {navLinks.map(link => (
-            <NavLink to={link.path} key={link.title} className={getActiveClass}>
+            <NavLink to={link.path} key={link.title} className={getActiveItem}>
               {link.title}
             </NavLink>
           ))}
@@ -115,30 +127,33 @@ export const Header: React.FC = () => {
           )}
         </div>
 
+        <button
+          className="header__icon header__switch-theme"
+          onClick={toggleTheme}
+        >
+          {theme === 'light' ? 'Dark' : 'Light'}
+        </button>
+
         <div
           className={classNames('header__buttons-wrapper', {
             'header__buttons-wrapper--buttom': isMenuOpen,
           })}
         >
-          <NavLink
-            className={classNames(
-              'header__icon',
-              getActiveClass({ isActive: location.pathname === '/favorites' }),
-            )}
-            to="favorites"
-          >
+          <NavLink className={getActiveIcon} to="favorites">
             <span className="header__quantity">{totalFavorites}</span>
-            <Icon icon={iconsObject.favorites} />
+            {theme === 'light' ? (
+              <Icon icon={iconsObject.favorites} />
+            ) : (
+              <Icon icon={iconsObject.favorites_dark} />
+            )}
           </NavLink>
 
-          <NavLink
-            className={classNames(
-              'header__icon',
-              getActiveClass({ isActive: location.pathname === '/cart' }),
+          <NavLink className={getActiveIcon} to="cart">
+            {theme === 'light' ? (
+              <Icon icon={iconsObject.shopping_cart} />
+            ) : (
+              <Icon icon={iconsObject.shopping_cart_dark} />
             )}
-            to="cart"
-          >
-            <Icon icon={iconsObject.shopping_cart} />
             {totalQuantity > 0 && (
               <span className="header__quantity">{totalQuantity}</span>
             )}

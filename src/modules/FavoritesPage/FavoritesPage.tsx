@@ -1,14 +1,17 @@
 import React, { useContext, useMemo } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useSearchParams } from 'react-router-dom';
 import { GlobalContext } from '../../store/GlobalContext';
 import './FavoritesPage.scss';
 import { ProductsList } from '../shared/ProductsList';
 import { Breadcrumbs } from '../shared/Breadcrumbs';
 
 export const FavoritesPage: React.FC = () => {
-  const { favorites, query } = useContext(GlobalContext);
+  const { favorites } = useContext(GlobalContext);
 
   const { pathname } = useLocation();
+
+  const [searchParams] = useSearchParams();
+  const query = searchParams.get('query') || '';
 
   const normalizeProductsType =
     pathname.slice(1, 2).toUpperCase() + pathname.slice(2);

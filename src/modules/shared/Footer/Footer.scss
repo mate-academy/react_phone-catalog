@@ -1,7 +1,7 @@
 @import '../../../styles/main.scss';
 
 .footer {
-  box-shadow: 0px -1px 0px 0px $color-gray-elements;
+  box-shadow: 0px -1px 0px 0px var(--color-gray-elements);
 }
 
 .footer__container {
@@ -84,11 +84,11 @@
   font-weight: 800;
   line-height: 11px;
   letter-spacing: 0.04em;
-  color: $color-gray-secondary;
+  color: var(--color-gray-primary);
 }
 
 .footer__link:hover {
-  color: $color-gray-primary;
+  color: var(--color-gray-primary);
 }
 
 .footer__button {
@@ -97,8 +97,8 @@
   justify-content: center;
   width: 32px;
   height: 32px;
-  border: 1px solid $color-gray-icons-placeholders;
-  background-color: $color-white;
+  border: 1px solid var(--color-gray-icons-placeholders);
+  background-color: var(--color-bg);
   box-sizing: border-box;
   cursor: pointer;
   margin-left: 16px;
@@ -107,7 +107,7 @@
 }
 
 .footer__button:hover {
-  border: 1px solid $color-gray-primary;
+  border: 1px solid var(--color-gray-primary);
 }
 
 .footer__button-title {
@@ -115,5 +115,5 @@
   font-size: 12px;
   font-weight: 700;
   line-height: 15.34px;
-  color: $color-gray-secondary;
+  color: var(--color-gray-secondary);
 }

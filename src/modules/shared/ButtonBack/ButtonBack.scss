@@ -5,7 +5,7 @@
   width: 66px;
   height: 16px;
   border: none;
-  background-color: $color-white;
+  background-color: var(--color-bg);
   display: flex;
   align-items: center;
   gap: 4px;
@@ -13,7 +13,7 @@
   font-family: 'Mont-SemiBold', sans-serif;
   font-size: 12px;
   font-weight: 700;
-  color: $color-gray-secondary;
+  color: var(--color-gray-secondary);
 
   @include on-tablet {
     margin-top: 40px;

@@ -13,14 +13,15 @@ type Props = {
 };
 
 export const ProductCard: React.FC<Props> = ({ product, displayType }) => {
-  const { cart, favorites, toggleFavorites, addToCart } =
+  const { cart, favorites, toggleFavorites, addToCart, theme } =
     useContext(GlobalContext);
 
   const isInCart = cart.some(item => item.id === product.itemId);
   const isFavorites = favorites.some(item => item.itemId === product.itemId);
 
   return (
-    <div className="productCard">
+    // <div className="productCard">
+    <div className={theme === 'light' ? 'productCard' : 'productCard productCard-dark'}>
       <Link
         className="productCard__activeClick"
         to={`/${product.category}/${product.itemId}`}
@@ -32,47 +33,47 @@ export const ProductCard: React.FC<Props> = ({ product, displayType }) => {
             className="productCard__photo"
           />
         </div>
+      </Link>
 
-        <div className="productCard__container-title">
-          <span className="productCard__title">{product.name}</span>
-        </div>
+      <div className="productCard__container-title">
+        <span className="productCard__title">{product.name}</span>
+      </div>
 
-        <div className="productCard__container-price">
-          {displayType === 'fullPrice' && (
-            <span className="productCard__price-regular-without-discount">
+      <div className="productCard__container-price">
+        {displayType === 'fullPrice' && (
+          <span className="productCard__price-regular-without-discount">
+            {`$${product.fullPrice}`}
+          </span>
+        )}
+
+        {displayType === 'with-discount' && (
+          <>
+            <span className="productCard__price-discount">
+              {`$${product.price}`}
+            </span>
+            <span className="productCard__price-regular">
               {`$${product.fullPrice}`}
             </span>
-          )}
+          </>
+        )}
+      </div>
 
-          {displayType === 'with-discount' && (
-            <>
-              <span className="productCard__price-discount">
-                {`$${product.price}`}
-              </span>
-              <span className="productCard__price-regular">
-                {`$${product.fullPrice}`}
-              </span>
-            </>
-          )}
+      <div className="productCard__divider"></div>
+
+      <div className="productCard__container-specifications">
+        <div className="productCard__block">
+          <span className="productCard__info">Screen</span>
+          <span className="productCard__value">{product.screen}</span>
         </div>
-
-        <div className="productCard__divider"></div>
-
-        <div className="productCard__container-specifications">
-          <div className="productCard__block">
-            <span className="productCard__info">Screen</span>
-            <span className="productCard__value">{product.screen}</span>
-          </div>
-          <div className="productCard__block">
-            <span className="productCard__info">Capacity</span>
-            <span className="productCard__value">{product.capacity}</span>
-          </div>
-          <div className="productCard__block">
-            <span className="productCard__info">RAM</span>
-            <span className="productCard__value">{product.ram}</span>
-          </div>
+        <div className="productCard__block">
+          <span className="productCard__info">Capacity</span>
+          <span className="productCard__value">{product.capacity}</span>
         </div>
-      </Link>
+        <div className="productCard__block">
+          <span className="productCard__info">RAM</span>
+          <span className="productCard__value">{product.ram}</span>
+        </div>
+      </div>
 
       <div className="productCard__container-buttons">
         <button
@@ -100,6 +101,7 @@ export const ProductCard: React.FC<Props> = ({ product, displayType }) => {
           )}
         </button>
       </div>
+
     </div>
   );
 };

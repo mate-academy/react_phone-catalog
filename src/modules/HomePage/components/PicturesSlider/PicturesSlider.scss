@@ -26,14 +26,19 @@
     align-items: center;
     justify-content: center;
     width: 32px;
-    background-color: $color-white;
-    border: 1px solid $color-gray-icons-placeholders;
+    background-color: var(--color-bg);
+    border: 1px solid var(--color-gray-icons-placeholders);
     cursor: pointer;
   }
 
   &:hover {
-    border: 1px solid $color-gray-primary;
+    border: 1px solid var(--color-gray-primary);
   }
+}
+
+.picturesSlider__button--dark {
+  border: none;
+  background-color: var(--color-surface-2);
 }
 
 .picturesSlider__container-image {
@@ -85,12 +90,12 @@
   position: absolute;
   width: 14px;
   height: 4px;
-  background-color: $color-gray-elements;
+  background-color: var(--color-gray-elements);
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
 
 .picturesSlider__dot--active::after {
-  background-color: $color-gray-primary;
+  background-color: var(--color-gray-primary);
 }

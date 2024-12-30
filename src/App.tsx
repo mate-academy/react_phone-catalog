@@ -6,11 +6,14 @@ import { Header } from './modules/shared/Header';
 import { useContext, useEffect } from 'react';
 import { Menu } from './modules/shared/Menu';
 import { GlobalContext } from './store/GlobalContext';
+import classNames from 'classnames';
 
 export const App = () => {
   const location = useLocation();
 
-  const { isMenuOpen } = useContext(GlobalContext);
+  const { isMenuOpen, theme } = useContext(GlobalContext);
+
+
 
   useEffect(() => {
     window.scrollTo({

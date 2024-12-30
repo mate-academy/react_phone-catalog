@@ -27,13 +27,13 @@
   letter-spacing: 0.04em;
   text-align: center;
   text-transform: uppercase;
-  color: $color-gray-secondary;
+  color: var(--color-gray-secondary);
   text-decoration: none;
   display: block;
   height: 100%;
 
   &:hover {
-    color: $color-gray-primary;
+    color: var(--color-gray-primary);
   }
 }
 
@@ -43,7 +43,7 @@
   display: block;
   height: 0;
   width: 100%;
-  background-color: $color-gray-primary;
+  background-color: var(--color-gray-primary);
   bottom: 0;
   left: 0;
   transition: height 0.3s ease;

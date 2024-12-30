@@ -23,6 +23,7 @@ export const HomePage: React.FC = () => {
 
   return (
     <div className="homePage">
+      <h1 className="homePage__hidden">Product Catalog</h1>
       <h1 className="homePage__title">Welcome to Nice Gadgets store!</h1>
 
       <PicturesSlider />

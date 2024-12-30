@@ -5,16 +5,19 @@ import { iconsObject } from '../../../constants/iconsObject';
 import classNames from 'classnames';
 
 interface Props {
+  total: number;
+  perPage: number;
   currentPage: number;
-  totalPages: number;
-  onPageChange: (page: number) => void;
+  onPageChange: (page: number) => void; 
 }
 
 export const Pagination: React.FC<Props> = ({
+  total,
+  perPage,
   currentPage,
-  totalPages,
   onPageChange,
 }) => {
+  const totalPages = Math.ceil(total / perPage);
   const pageLimit = 4;
 
   let startPage = Math.max(1, currentPage - 1);

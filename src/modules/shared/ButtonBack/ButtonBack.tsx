@@ -8,7 +8,7 @@ export const ButtonBack: React.FC = () => {
   const navigate = useNavigate();
 
   const handleBack = useCallback(() => {
-    navigate(-1);
+    navigate(-2);
   }, [navigate]);
 
   return (

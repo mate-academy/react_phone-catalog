@@ -1,10 +1,13 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import './Footer.scss';
 import { Link } from 'react-router-dom';
 import { Icon } from '../Icon';
 import { iconsObject } from '../../../constants/iconsObject';
+import { GlobalContext } from '../../../store/GlobalContext';
 
 export const Footer: React.FC = () => {
+  const { theme } = useContext(GlobalContext);
+
   const backToTop = () => {
     window.scrollTo({
       top: 0,
@@ -16,7 +19,15 @@ export const Footer: React.FC = () => {
     <div className="footer">
       <div className="footer__container">
         <a href="#" className="footer__logo-container">
-          <img src="logo.svg" alt="Nice Gadgets" className="footer__logo" />
+          {theme === 'light' ? (
+            <img src="logo.svg" alt="Nice Gadgets" className="header__logo" />
+          ) : (
+            <img
+              src="logo_dark.svg"
+              alt="Nice Gadgets"
+              className="header__logo"
+            />
+          )}
         </a>
 
         <div className="footer__items">

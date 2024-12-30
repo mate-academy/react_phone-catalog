@@ -2,10 +2,10 @@ import './ProductContentBottom.scss';
 import { SpecificProduct } from '../../../../types/SpecificProduct';
 
 type Props = {
-  selectedPhone: SpecificProduct;
+  selectedProduct: SpecificProduct;
 };
 
-export const ProductContentBottom: React.FC<Props> = ({ selectedPhone }) => {
+export const ProductContentBottom: React.FC<Props> = ({ selectedProduct }) => {
   return (
     <div className="detailsPage__content-buttom">
       <div className="detailsPage__block-about">
@@ -13,9 +13,9 @@ export const ProductContentBottom: React.FC<Props> = ({ selectedPhone }) => {
         <div className="detailsPage__line-bottom"></div>
 
         <div className="detailsPage__description">
-          {selectedPhone.description.map((chunk, index) => (
+          {selectedProduct.description.map((chunk, index) => (
             <div className="detailsPage__section" key={index}>
-              <h4 className="detailsPage__section-title">{chunk.title}</h4>
+              <span className="detailsPage__section-title">{chunk.title}</span>
               <span className="detailsPage__section-description">
                 {chunk.text}
               </span>
@@ -32,25 +32,25 @@ export const ProductContentBottom: React.FC<Props> = ({ selectedPhone }) => {
           <div className="detailsPage__techSpecs-block">
             <span className="detailsPage__techSpecs-title">Screen</span>
             <span className="detailsPage__techSpecs-value">
-              {selectedPhone.screen}
+              {selectedProduct.screen}
             </span>
           </div>
           <div className="detailsPage__techSpecs-block">
             <span className="detailsPage__techSpecs-title">Resolution</span>
             <span className="detailsPage__techSpecs-value">
-              {selectedPhone.resolution}
+              {selectedProduct.resolution}
             </span>
           </div>
           <div className="detailsPage__techSpecs-block">
             <span className="detailsPage__techSpecs-title">Processor</span>
             <span className="detailsPage__techSpecs-value">
-              {selectedPhone.processor}
+              {selectedProduct.processor}
             </span>
           </div>
           <div className="detailsPage__techSpecs-block">
             <span className="detailsPage__techSpecs-title">RAM</span>
             <span className="detailsPage__techSpecs-value">
-              {selectedPhone.ram}
+              {selectedProduct.ram}
             </span>
           </div>
           <div className="detailsPage__techSpecs-block">
@@ -58,25 +58,25 @@ export const ProductContentBottom: React.FC<Props> = ({ selectedPhone }) => {
               Built in memory
             </span>
             <span className="detailsPage__techSpecs-value">
-              {selectedPhone.capacity}
+              {selectedProduct.capacity}
             </span>
           </div>
           <div className="detailsPage__techSpecs-block">
             <span className="detailsPage__techSpecs-title">Camera</span>
             <span className="detailsPage__techSpecs-value">
-              {selectedPhone.camera}
+              {selectedProduct.camera}
             </span>
           </div>
           <div className="detailsPage__techSpecs-block">
             <span className="detailsPage__techSpecs-title">Zoom</span>
             <span className="detailsPage__techSpecs-value">
-              {selectedPhone.zoom}
+              {selectedProduct.zoom}
             </span>
           </div>
           <div className="detailsPage__techSpecs-block">
             <span className="detailsPage__techSpecs-title">Cell</span>
             <span className="detailsPage__techSpecs-value">
-              {selectedPhone.cell.join(', ')}
+              {selectedProduct.cell.join(', ')}
             </span>
           </div>
         </div>

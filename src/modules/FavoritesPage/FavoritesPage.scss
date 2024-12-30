@@ -10,7 +10,7 @@
   font-size: 48px;
   font-weight: 500;
   line-height: 21px;
-  color: $color-gray-secondary;
+  color: var(--color-gray-secondary);
   display: flex;
   justify-content: center;
 }
@@ -22,7 +22,7 @@
   font-family: 'Mont-Bold', sans-serif;
   font-weight: 800;
   letter-spacing: -0.01em;
-  color: $color-gray-primary;
+  color: var(--color-gray-primary);
   font-size: 48px;
   line-height: 56px;
 }
@@ -32,5 +32,5 @@
   font-size: 14px;
   font-weight: 600;
   line-height: 21px;
-  color: $color-gray-secondary;
+  color: var(--color-gray-secondary);
 }

@@ -1,8 +1,9 @@
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { Product } from '../types/Product';
 import { CartProduct } from '../types/CartProduct';
-import { getAllProducts } from '../utils/fetchRequests';
-import { useLocalStorage } from '../utils/localStorage';
+import { getAllProducts } from '../utils/productApi';
+import { useLocalStorage } from '../hooks/useLocalStorage';
+import { useTheme } from '../hooks/useTheme';
 
 type GlobalContextType = {
   products: Product[];
@@ -18,22 +19,26 @@ type GlobalContextType = {
   toggleMenu: () => void;
   toggleFavorites: (currentProduct: Product) => void;
   addToCart: (currentProduct: Product) => void;
+  theme: 'light' | 'dark';
+  toggleTheme: () => void;
 };
 
 export const GlobalContext = React.createContext<GlobalContextType>({
   products: [] as Product[],
-  setProducts: () => {},
+  setProducts: () => { },
   cart: [] as CartProduct[],
-  setCart: () => {},
+  setCart: () => { },
   favorites: [] as Product[],
-  setFavorites: () => {},
-  updateQuantity: () => {},
-  clearShoppingCart: () => {},
+  setFavorites: () => { },
+  updateQuantity: () => { },
+  clearShoppingCart: () => { },
   isMenuOpen: false,
-  setIsMenuOpen: () => {},
-  toggleMenu: () => {},
-  toggleFavorites: () => {},
-  addToCart: () => {},
+  setIsMenuOpen: () => { },
+  toggleMenu: () => { },
+  toggleFavorites: () => { },
+  addToCart: () => { },
+  theme: 'light',
+  toggleTheme: () => { },
 });
 
 type Props = {
@@ -41,6 +46,8 @@ type Props = {
 };
 
 export const GlobalProvider: React.FC<Props> = ({ children }) => {
+  const { theme, toggleTheme } = useTheme();
+
   const [products, setProducts] = useState<Product[]>([]);
   const [cart, setCart] = useLocalStorage<CartProduct[]>('shoppingCart', []);
   const [favorites, setFavorites] = useLocalStorage<Product[]>('favorites', []);
@@ -55,9 +62,7 @@ export const GlobalProvider: React.FC<Props> = ({ children }) => {
         .catch(error => {
           throw new Error(`Error fetching products: ${error.message}`);
         })
-        .finally(() => {
-          // ЧТО ЗДЕСЬ НАПИСАТЬ???
-        });
+        .finally(() => { });
     };
 
     fetchAllProducts();
@@ -83,11 +88,9 @@ export const GlobalProvider: React.FC<Props> = ({ children }) => {
   }, []);
 
   useEffect(() => {
-    if (isMenuOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'auto';
-    }
+    const overflowStyle = isMenuOpen ? 'hidden' : 'auto';
+
+    document.body.style.overflow = overflowStyle;
 
     return () => {
       document.body.style.overflow = 'auto';
@@ -114,23 +117,6 @@ export const GlobalProvider: React.FC<Props> = ({ children }) => {
     },
     [cart, setCart],
   );
-
-  // const toggleFavorites = useCallback(
-  //   (currentProduct: Product) => {
-  //     const isInFavorites = favorites.some(
-  //       item => item.itemId === currentProduct.itemId,
-  //     );
-
-  //     if (isInFavorites) {
-  //       setFavorites(prevFavorites =>
-  //         prevFavorites.filter(item => item.itemId !== currentProduct.itemId),
-  //       );
-  //     } else {
-  //       setFavorites(prevFavorites => [...prevFavorites, currentProduct]);
-  //     }
-  //   },
-  //   [favorites, setFavorites],
-  // );
 
   const toggleFavorites = useCallback(
     (currentProduct: Product) => {
@@ -170,6 +156,8 @@ export const GlobalProvider: React.FC<Props> = ({ children }) => {
       toggleMenu,
       toggleFavorites,
       addToCart,
+      theme,
+      toggleTheme,
     }),
     [
       products,
@@ -185,6 +173,8 @@ export const GlobalProvider: React.FC<Props> = ({ children }) => {
       toggleMenu,
       toggleFavorites,
       addToCart,
+      theme,
+      toggleTheme,
     ],
   );
 

@@ -10,7 +10,7 @@
   font-weight: 800;
   line-height: 41px;
   letter-spacing: -0.01em;
-  color: $color-gray-primary;
+  color: var(--color-gray-primary);
   margin-bottom: 8px;
 
   @include on-tablet {
@@ -24,7 +24,7 @@
   font-size: 14px;
   font-weight: 600;
   line-height: 21px;
-  color: $color-gray-secondary;
+  color: var(--color-gray-secondary);
 }
 
 .productPage__dropdown {

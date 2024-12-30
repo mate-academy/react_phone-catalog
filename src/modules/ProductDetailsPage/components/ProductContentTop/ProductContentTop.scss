@@ -40,7 +40,7 @@
 .detailsPage__container-photos {
   box-sizing: border-box;
   padding: 2px;
-  border: 1px solid $color-gray-elements;
+  border: 1px solid var(--color-gray-elements);
   transition: border 0.3s ease, transform 0.3s ease;
 
   aspect-ratio: 1 / 1;
@@ -129,11 +129,11 @@
   width: 32px;
   height: 32px;
   box-sizing: border-box;
-  border: 1px solid $color-gray-elements;
+  border: 1px solid var(--color-gray-elements);
   border-radius: 50%;
 
   &--selected {
-    border: 1px solid $color-gray-primary;
+    border: 1px solid var(--color-gray-primary);
   }
 }
 
@@ -142,13 +142,13 @@
   height: 30px;
   box-sizing: border-box;
   border-radius: 50%;
-  border: 2px solid $color-white;
+  border: 2px solid var(--color-bg);
 }
 
 .detailsPage__line {
   width: 320px;
   height: 1px;
-  background-color: $color-gray-elements;
+  background-color: var(--color-gray-elements);
   margin-top: 24px;
 }
 
@@ -157,6 +157,7 @@
   display: flex;
   flex-direction: column;
   gap: 8px;
+
 }
 
 .detailsPage__capacity-list {
@@ -170,10 +171,10 @@
   font-size: 14px;
   font-weight: 500;
   text-align: center;
-  color: $color-gray-primary;
+  color: var(--color-gray-primary);
 
   &--selected {
-    color: $color-white;
+    color: var(--color-bg);
   }
 }
 
@@ -181,14 +182,14 @@
   height: 32px;
   box-sizing: border-box;
   padding-inline: 8px;
-  border: 1px solid $color-gray-icons-placeholders;
+  border: 1px solid var(--color-gray-icons-placeholders);
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
 
   &--selected {
-    background-color: $color-gray-primary;
+    background-color: var(--color-gray-primary);
   }
 }
 
@@ -219,7 +220,7 @@
 
 .detailsPage__price-regular {
   font-family: 'Mont-Regular', sans-serif;
-  color: $color-gray-secondary;
+  color: var(--color-gray-secondary);
   font-size: 22px;
   font-weight: 500;
   text-decoration-line: line-through;
@@ -227,7 +228,7 @@
 
 .detailsPage__price-discount {
   font-family: 'Mont-Bold', sans-serif;
-  color: $color-gray-primary;
+  color: var(--color-gray-primary);
   font-size: 32px;
   font-weight: 800;
   line-height: 41px;
@@ -257,27 +258,27 @@
   font-size: 22px;
   font-weight: 800;
   line-height: 30.8px;
-  color: $color-gray-primary;
+  color: var(--color-gray-primary);
 }
 
 .detailsPage__info {
-  color: $color-gray-secondary;
+  color: var(--color-gray-secondary);
   font-family: 'Mont-SemiBold', sans-serif;
   font-size: 12px;
   font-weight: 600;
 }
 
 .detailsPage__value {
-  color: $color-gray-primary;
+  color: var(--color-gray-primary);
 }
 
 .detailsPage__button {
   border: none;
   cursor: pointer;
-  background-color: $color-white;
+  background-color: var(--color-bg);
 
   font-family: 'Mont-Regular', sans-serif;
-  color: $color-white;
+  color: var(--color-bg);
   font-size: 14px;
   font-weight: 700;
   line-height: 21px;
@@ -288,29 +289,29 @@
   justify-content: center;
 
   &-card {
-    background-color: $color-gray-primary;
+    background-color: var(--color-gray-primary);
     width: 100%;
   }
 
   &-card--active {
-    background-color: $color-white;
-    color: $color-green;
-    border: 1px solid $color-gray-elements;
+    background-color: var(--color-bg);
+    color: var(--color-green);
+    border: 1px solid var(--color-gray-elements);
   }
 
   &-favorites {
     width: 40px;
     flex-shrink: 0;
-    border: 1px solid $color-gray-icons-placeholders;
+    border: 1px solid var(--color-gray-icons-placeholders);
   }
 
   &-favorites--active {
-    border: 1px solid $color-gray-elements;
+    border: 1px solid var(--color-gray-elements);
   }
 }
 
 .detailsPage__button-favorites:hover {
-  border: 1px solid $color-gray-primary;
+  border: 1px solid var(--color-gray-primary);
 }
 
 .detailsPage__content-buttom {
@@ -322,7 +323,7 @@
 .detailsPage__line-bottom {
   width: 100%;
   height: 1px;
-  background-color: $color-gray-elements;
+  background-color: var(--color-gray-elements);
   margin-top: 16px;
 }
 
@@ -343,7 +344,7 @@
     font-size: 20px;
     font-weight: 700;
     line-height: 25.56px;
-    color: $color-gray-primary;
+    color: var(--color-gray-primary);
   }
 
   &-description {
@@ -351,7 +352,7 @@
     font-size: 14px;
     font-weight: 500;
     line-height: 21px;
-    color: $color-gray-secondary;
+    color: var(--color-gray-secondary);
   }
 }
 
@@ -372,7 +373,7 @@
   font-size: 14px;
   font-weight: 500;
   line-height: 21px;
-  color: $color-gray-secondary;
+  color: var(--color-gray-secondary);
 }
 
 .detailsPage__techSpecs-value {
@@ -380,7 +381,7 @@
   font-size: 14px;
   font-weight: 500;
   line-height: 21px;
-  color: $color-gray-primary;
+  color: var(--color-gray-primary);
 }
 
 .detailsPage.detailsPage__title--bottom {

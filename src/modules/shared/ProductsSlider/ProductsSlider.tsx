@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import './ProductsSlider.scss';
 import { Product } from '../../../types/Product';
 import { ProductCard } from '../ProductCard';
 import { Icon } from '../Icon';
 import { iconsObject } from '../../../constants/iconsObject';
 import classNames from 'classnames';
+import { GlobalContext } from '../../../store/GlobalContext';
 
 type Props = {
   title: string;
@@ -17,6 +18,8 @@ export const ProductsSlider: React.FC<Props> = ({
   products,
   displayType,
 }) => {
+  const { theme } = useContext(GlobalContext);
+
   const [currentIndex, setCurrentIndex] = useState(0);
   const [cardWidth, setCardWidth] = useState(272);
   const gap = 16;
@@ -65,26 +68,44 @@ export const ProductsSlider: React.FC<Props> = ({
         <div className="productsSlider__buttons">
           <div
             className={classNames('productsSlider__button', {
+              'productsSlider__button-dark': theme === 'dark',
               'productsSlider__button--disabled': currentIndex === 0,
+              'productsSlider__button-dark--disabled':
+                currentIndex === 0 && theme === 'dark',
             })}
             onClick={handlePrev}
           >
             {currentIndex === 0 ? (
-              <Icon icon={iconsObject.arrow_left__disabled} />
-            ) : (
+              theme === 'light' ? (
+                <Icon icon={iconsObject.arrow_left__disabled} />
+              ) : (
+                <Icon icon={iconsObject.arrow_left} />
+              )
+            ) : theme === 'light' ? (
               <Icon icon={iconsObject.arrow_left} />
+            ) : (
+              <Icon icon={iconsObject.arrow_left__disabled} />
             )}
           </div>
           <div
             className={classNames('productsSlider__button', {
+              'productsSlider__button-dark': theme === 'dark',
               'productsSlider__button--disabled': currentIndex === maxIndex,
+              'productsSlider__button-dark--disabled':
+                currentIndex === maxIndex && theme === 'dark',
             })}
             onClick={handleNext}
           >
             {currentIndex === maxIndex ? (
-              <Icon icon={iconsObject.arrow_right__disabled} />
-            ) : (
+              theme === 'light' ? (
+                <Icon icon={iconsObject.arrow_right__disabled} />
+              ) : (
+                <Icon icon={iconsObject.arrow_right_dark__disabled} />
+              )
+            ) : theme === 'light' ? (
               <Icon icon={iconsObject.arrow_right} />
+            ) : (
+              <Icon icon={iconsObject.arrow_right__disabled} />
             )}
           </div>
         </div>

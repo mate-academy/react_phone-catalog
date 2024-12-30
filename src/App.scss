@@ -26,6 +26,10 @@
 .App__header {
   position: sticky;
   top: 0;
-  z-index: 10; /* Чтобы он был поверх контента */
-  background-color: $color-white; /* Чтобы не было прозрачности при прокрутке */
+  z-index: 10;
 }
+
+body.theme_dark {
+  background-color: var(--color-bg);
+}
+

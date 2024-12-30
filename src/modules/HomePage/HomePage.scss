@@ -4,7 +4,7 @@
   &__title {
     margin-block: 24px;
     font-family: 'Mont-Bold', sans-serif;
-    color: $color-gray-primary;
+    color: var(--color-gray-primary);
     font-size: 32px;
     font-weight: 800;
     line-height: 41px;
@@ -22,5 +22,17 @@
     @include on-desktop {
       margin-block: 56px;
     }
+  }
+
+  &__hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    border: 0;
+    clip: rect(0, 0, 0, 0);
+    clip-path: inset(50%);
+    overflow: hidden;
   }
 }

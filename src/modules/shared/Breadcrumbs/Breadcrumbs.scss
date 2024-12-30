@@ -5,7 +5,7 @@
     font-family: 'Mont-SemiBold', sans-serif;
     font-size: 12px;
     font-weight: 600;
-    color: $color-gray-secondary;
+    color: var(--color-gray-secondary);
     display: inline-block;
     vertical-align: middle;
 
@@ -17,7 +17,7 @@
 
     &--dark {
       text-decoration: none;
-      color: $color-gray-primary;
+      color: var(--color-gray-primary);
     }
   }
 
