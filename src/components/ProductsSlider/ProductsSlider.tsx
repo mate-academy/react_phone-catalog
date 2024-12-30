@@ -3,7 +3,7 @@ import 'slick-carousel/slick/slick-theme.css';
 import Slider from 'react-slick';
 
 import { ProductCard } from '../ProductCard';
-import React, { useEffect, useMemo } from 'react';
+import React, { useMemo } from 'react';
 import { Product } from '../../types/Product';
 import styles from './Slider.module.scss';
 import classNames from 'classnames';
@@ -67,13 +67,13 @@ const CustomSlider: React.FC<Props> = ({ products }) => {
     return products.filter((_, index) => index < 5);
   }, [products]);
 
-  useEffect(() => {
-    const slickTrack = document.querySelector('.slick-track');
+  // useEffect(() => {
+  //   const slickTrack = document.querySelector('.slick-track');
 
-    if (slickTrack) {
-      slickTrack.classList.add(styles.slickTrack);
-    }
-  }, [filteredProducts]);
+  //   if (slickTrack) {
+  //     slickTrack.classList.add(styles.slickTrack);
+  //   }
+  // }, [filteredProducts]);
 
   return (
     <Slider {...settings} className={styles.slider}>

@@ -1,6 +1,11 @@
-import React, { useState, useEffect } from 'react';
-import styles from './PicturesSlider.module.scss';
+import React, { useEffect, useState } from 'react';
+
+import Slider from 'react-slick';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
 import classNames from 'classnames';
+
+import styles from './PicturesSlider.module.scss';
 
 import slide1 from '../../asset/img/slider/picture-1-desk.jpg';
 import slide2 from '../../asset/img/slider/picture-2-desk.jpg';
@@ -8,69 +13,92 @@ import slide3 from '../../asset/img/slider/picture-3-desk.jpg';
 
 const pictures = [slide1, slide2, slide3];
 
-export const PicturesSlider: React.FC = () => {
-  const [currentIndex, setCurrentIndex] = useState(0);
+type ArrowButton = {
+  className: string;
+  onClick?: () => void;
+  direction: string;
+};
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentIndex(prevIndex => (prevIndex + 1) % pictures.length);
-    }, 5000);
-
-    return () => clearInterval(interval);
-  }, [currentIndex]);
-
-  const changeSlide = (operation: string) => {
-    switch (operation) {
-      case 'increment':
-        setCurrentIndex(prevIndex => (prevIndex + 1) % pictures.length);
-        break;
-
-      case 'decrement':
-        setCurrentIndex(prevIndex =>
-          prevIndex === 0 ? pictures.length - 1 : prevIndex - 1,
-        );
-        break;
-    }
-  };
+const CustomArrow = (props: ArrowButton) => {
+  const { className, onClick, direction } = props;
 
   return (
-    <div className={styles.slider}>
-      <div className={styles.slider__img}>
-        <img
-          src={pictures[currentIndex]}
-          alt={`PicturesSlider ${currentIndex}`}
+    <button
+      className={classNames(className, styles.arrow, styles[direction])}
+      onClick={onClick}
+    >
+      <span
+        className={classNames('icon', 'icon--arrow', {
+          'icon--arrow--left': direction === 'prev',
+          'icon--arrow--right': direction === 'next',
+        })}
+      ></span>
+    </button>
+  );
+};
+
+const CustomSlider = () => {
+  const [activeItem, setActiveItem] = useState(0);
+
+  const settings = {
+    autoplay: true,
+    autoplaySpeed: 3000,
+    infinite: true,
+    className: styles['slick-slider'],
+    dots: true,
+    dotsClass: styles['custom-dots'],
+    afterChange: (current: number) => {
+      setActiveItem(current);
+    },
+    customPaging: (i: number) => {
+      return (
+        <button
+          className={classNames(styles.dot, {
+            [styles['dot--active']]: i === activeItem,
+          })}
         />
-      </div>
+      );
+    },
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    nextArrow: (
+      <CustomArrow
+        className={classNames(styles.arrow, styles.next)}
+        direction="next"
+      />
+    ),
+    prevArrow: (
+      <CustomArrow
+        className={classNames(styles.arrow, styles.prev)}
+        direction="prev"
+      />
+    ),
+  };
 
-      <div className={styles.dots}>
-        {pictures.map((_, index) => (
-          <span
-            key={index}
-            className={index === currentIndex ? styles.active : ''}
-            onClick={() => setCurrentIndex(index)}
-          />
+  useEffect(() => {
+    const slickList = document.querySelector('.slick-list');
+
+    if (slickList) {
+      slickList.classList.add(styles['slick-list']);
+    }
+  });
+
+  return (
+    <div className={styles['slider-container']}>
+      <Slider {...settings}>
+        {pictures.map((picture, index) => (
+          <div key={index} className={styles['slick-slider__slide']}>
+            <img
+              src={picture}
+              alt={`picture-slide-${index}`}
+              className={styles['slide-image']}
+            />
+          </div>
         ))}
-      </div>
-
-      <button
-        className={classNames(
-          styles.slider__button,
-          styles['slider__button--previous'],
-        )}
-        onClick={() => changeSlide('decrement')}
-      >
-        <span className="icon icon--arrow icon--arrow--left"></span>
-      </button>
-
-      <button
-        className={classNames(
-          styles.slider__button,
-          styles['slider__button--next'],
-        )}
-        onClick={() => changeSlide('increment')}
-      >
-        <span className="icon icon--arrow icon--arrow--right"></span>
-      </button>
+      </Slider>
     </div>
   );
 };
+
+export const PicturesSlider = React.memo(CustomSlider);

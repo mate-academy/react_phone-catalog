@@ -29,7 +29,7 @@ export const FavoritesPage = () => {
       >
         {!favorites.length ? (
           <p className={styles.favorites__text}>
-            У вас поки що немає улюблених товарів
+            You do not have any favorite products yet
           </p>
         ) : (
           favorites.map((product, index) => {

@@ -1,10 +1,8 @@
 import classNames from 'classnames';
-import { PicturesSlider } from '../../components/PicturesSlider';
-
-import '../../main.scss';
 import styles from './HomePage.module.scss';
 
 import { useEffect, useState, useCallback } from 'react';
+import { PicturesSlider } from '../../components/PicturesSlider';
 import { ProductsSlider } from '../../components/ProductsSlider';
 import { Category } from '../../components/Category';
 import { Product } from '../../types/Product';
