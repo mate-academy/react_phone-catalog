@@ -58,6 +58,7 @@
   padding: 16px;
   grid-column: 1/-1;
   background-color: white;
+  align-items: center;
 
   border: solid 1px $elements;
   width: 90%;
@@ -137,7 +138,7 @@
 
   &__info {
     @include font-set($body-text);
-    
+
     color: $secondary;
     margin-bottom: 16px;
 
