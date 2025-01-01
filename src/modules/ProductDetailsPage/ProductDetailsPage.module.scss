@@ -1,11 +1,10 @@
 @use 'src/modules/shared/styles/index.scss' as *;
 
 .page{
-  @include page-grid;
-
   padding-bottom: 0;
   position: relative;
-
+  
+  @include page-grid;
   @include inline-padding;
 
   @include on-desktop{
@@ -160,7 +159,7 @@
   &__details{
     display: flex;
     justify-content: space-between;
-    
+
     @include small-text;
 
     span:first-child{
