@@ -1,6 +1,7 @@
-import React, { memo } from 'react';
+import { memo } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import styles from './GoBack.module.scss';
+import { IoIosArrowBack } from "react-icons/io";
 
 const GoBack = memo(() => {
   const { pathname, state } = useLocation();
@@ -19,7 +20,7 @@ const GoBack = memo(() => {
 
   return (
     <div className={styles.back} onClick={goBackToParent}>
-      <span className="icon-arrow"></span>
+      <IoIosArrowBack/>
       <span>Back</span>
     </div>
   );

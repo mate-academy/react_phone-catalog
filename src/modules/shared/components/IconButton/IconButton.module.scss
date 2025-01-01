@@ -9,6 +9,8 @@
   transition: color 0.3s ease 0s;
   cursor: pointer;
 
+  @include center;
+
   &_active,
   &:hover{
     color: $second-perpule;

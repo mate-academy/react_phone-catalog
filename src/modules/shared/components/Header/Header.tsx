@@ -2,6 +2,8 @@ import Logo from '../Logo';
 import styles from './Header.module.scss';
 import React, { RefObject, useState } from 'react';
 import NavMenu from './components/NavMenu';
+import { LuMenu } from "react-icons/lu";
+import { IoClose } from "react-icons/io5";
 
 const Header: React.FC<{ headerRef: RefObject<HTMLElement> }> = ({
   headerRef,
@@ -19,9 +21,9 @@ const Header: React.FC<{ headerRef: RefObject<HTMLElement> }> = ({
         onClick={() => setIsOpenMenu(!isOpenMenu)}
       >
         {isOpenMenu ? (
-          <span className="icon-delete"></span>
+          <IoClose/>
         ) : (
-          <span className="icon-menu"></span>
+          <LuMenu/>
         )}
       </button>
     </header>

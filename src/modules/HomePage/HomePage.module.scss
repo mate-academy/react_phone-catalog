@@ -20,12 +20,17 @@
   }
 }
 
+.errorMessage{
+  grid-column: 1 / -1;
+  color: $red;
+}
+
 .categories{
   grid-column: 1 / -1;
   margin-bottom: 56px;
 
   @include inline-padding;
-  
+
   @include on-tablet{
     @include page-grid;
   }

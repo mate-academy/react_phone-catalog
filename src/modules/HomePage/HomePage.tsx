@@ -37,7 +37,7 @@ const HomePage = () => {
       {isLoading ? (
         <Loader />
       ) : isError ? (
-        <div>Something went wrong!</div>
+        <div className={styles.errorMessage}>Something went wrong!</div>
       ) : (
         <ProductsSlider
           title="Brand new models"
@@ -54,7 +54,7 @@ const HomePage = () => {
       {isLoading ? (
         <Loader />
       ) : isError ? (
-        <div>Something went wrong!</div>
+        <div className={styles.errorMessage}>Something went wrong!</div>
       ) : (
         <ProductsSlider title="Hot price" products={hotPriceProducts} />
       )}

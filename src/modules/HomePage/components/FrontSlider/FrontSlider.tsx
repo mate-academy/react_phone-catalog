@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import styles from './FrontSlider.module.scss';
 import classNames from 'classnames';
 import Baner from '../Baner';
+import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 
 const frontSliderData = [
   {
@@ -44,7 +45,7 @@ const FrontSlider = () => {
     <div className={styles.slider}>
       <div className={styles.slider__container}>
         <button className={styles.slider__back} onClick={moveSlideBack}>
-          <span className="icon-arrow"></span>
+          <IoIosArrowBack/>
         </button>
         <div className={styles.slider__track}>
           {frontSliderData.map(item => (
@@ -60,7 +61,7 @@ const FrontSlider = () => {
         </div>
 
         <button className={styles.slider__next} onClick={moveSlideForward}>
-          <span className="icon-arrow"></span>
+          <IoIosArrowForward/>
         </button>
 
         <div className={styles.slider__pagination}>

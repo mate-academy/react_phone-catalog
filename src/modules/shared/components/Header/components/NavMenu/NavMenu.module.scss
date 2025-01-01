@@ -22,7 +22,7 @@ $height: 48px;
     height: 100%;
     width: 48px;
     position: relative;
-    
+
     @include center;
 
     &:hover,
@@ -109,6 +109,7 @@ $height: 48px;
     font-size: 9px;
     border-radius: 50%;
     letter-spacing: 1px;
+    line-height: 1;
 
     @include center;
   }

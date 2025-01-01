@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import styles from './Breadcrumbs.module.scss';
+import { IoIosArrowBack } from "react-icons/io";
+import { FiHome } from "react-icons/fi";
 
 const Breadcrumbs: React.FC<{ currentProduct?: string }> = ({
   currentProduct,
@@ -10,11 +12,13 @@ const Breadcrumbs: React.FC<{ currentProduct?: string }> = ({
 
   return (
     <div className={styles.links}>
-      <Link to="/" className={styles.links__home + ' ' + 'icon-home'}></Link>
+      <Link to="/" className={styles.links__home}>
+        <FiHome/>
+      </Link>
       {secondPath ? (
         <>
           <div className={styles.links__icon}>
-            <span className="icon-arrow-right"></span>
+            <IoIosArrowBack/>
           </div>
 
           <Link to={`../${firstPath}`} className={styles.links__link}>
@@ -23,7 +27,7 @@ const Breadcrumbs: React.FC<{ currentProduct?: string }> = ({
           {currentProduct && (
             <>
               <div className={styles.links__icon}>
-                <span className="icon-arrow-right"></span>
+                <IoIosArrowBack/>
               </div>
               <div className={styles.links__current}>{currentProduct}</div>
             </>
@@ -32,7 +36,7 @@ const Breadcrumbs: React.FC<{ currentProduct?: string }> = ({
       ) : (
         <>
           <div className={styles.links__icon}>
-            <span className="icon-arrow-right"></span>
+            <IoIosArrowBack/>
           </div>
           <div className="">
             {firstPath[0].toUpperCase() + firstPath.slice(1)}

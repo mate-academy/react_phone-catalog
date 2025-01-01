@@ -3,6 +3,8 @@ import styles from './NavMenu.module.scss';
 import classNames from 'classnames';
 import { NavLink, useLocation, useSearchParams } from 'react-router-dom';
 import { useProducts } from '../../../../context/productsContext';
+import { FaRegHeart } from "react-icons/fa";
+import { LuShoppingBag} from "react-icons/lu";
 
 type Props = {
   isOpenMenu: boolean;
@@ -60,11 +62,10 @@ const NavMenu: React.FC<Props> = ({ isOpenMenu, setIsOpenMenu }) => {
           className={getActiveIcon}
           onClick={() => setIsOpenMenu(false)}
         >
-          <span className="icon-heart">
+            <FaRegHeart/>
             {favorites.length > 0 && (
               <span className={styles.menu__count}>{favorites.length}</span>
             )}
-          </span>
         </NavLink>
         <NavLink
           to="cart"
@@ -72,11 +73,10 @@ const NavMenu: React.FC<Props> = ({ isOpenMenu, setIsOpenMenu }) => {
           className={getActiveIcon}
           onClick={() => setIsOpenMenu(false)}
         >
-          <span className="icon-group-box">
+          <LuShoppingBag/>
             {cartProducts.length > 0 && (
               <span className={styles.menu__count}>{cartProducts.length}</span>
             )}
-          </span>
         </NavLink>
       </div>
     </nav>
