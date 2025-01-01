@@ -1,0 +1,175 @@
+@use 'src/modules/shared/styles/index.scss' as *;
+
+.page{
+  @include page-grid;
+
+  padding-bottom: 0;
+  position: relative;
+
+  @include inline-padding;
+
+  @include on-desktop{
+    padding-bottom: 0;
+  }
+
+  &__title{
+    grid-column: 1 / -1;
+    margin-bottom: 32px;
+
+    @include on-tablet{
+      margin-bottom: 40px;
+    }
+
+    @include h2;
+  }
+
+  &__productsDetails {
+    grid-column: 1 / -1;
+    margin-top: 40px;
+    margin-bottom: 56px;
+
+    @include on-tablet{
+      grid-column: span 5;
+    }
+
+    @include on-desktop{
+      grid-column: span 7;
+    }
+  }
+
+  &__detailsSection{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 8px;
+
+    @include small-text;
+
+    color: $secondary-color;
+    padding-bottom: 24px;
+    margin-bottom: 24px;
+    border-bottom: 1px solid $elements-color;
+
+  }
+
+  &__detailsTitle{
+    flex: 1 1 100%;
+  }
+  &__productID{
+    color: $icons-color;
+    position: absolute;
+    right: 20px;
+  }
+
+  &__options{
+    flex: 1 1 100%;
+    display: flex;
+    gap: 8px;
+
+  }
+
+  &__color{
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 1px solid $elements-color;
+    position: relative;
+
+    span{
+      width: 100%;
+      height: 100%;
+      border: 2px solid #fff;
+      display: inline-block;
+      border-radius: 50%;
+
+    }
+    input{
+      position: absolute;
+      top: 0;
+      left: 0;
+      visibility: hidden;
+    }
+
+    &_active{
+      border-color: $primary-color;
+    }
+  }
+
+  &__capacity{
+    width: 56px;
+    height: 32px;
+    border-radius: 4px;
+    border: 1px solid $icons-color;
+    color: $primary-color;
+    position: relative;
+
+    @include body-text;
+    @include center;
+
+    input{
+      position: absolute;
+      top: 0;
+      left: 0;
+      visibility: hidden;
+    }
+    &_active{
+      background-color: $primary-color;
+      color: #fff;
+    }
+  }
+
+  &__price{
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -1px;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 16px;
+  }
+
+  &__priceRegular{
+    font-size: 22px;
+    font-weight: 500;
+    line-height: 28px;
+    text-decoration:line-through;
+    color: $secondary-color;
+
+  }
+
+  &__buttons{
+    display: flex;
+    gap: 8px;
+    margin-bottom: 32px;
+  }
+
+  &__buttonFavorite{
+    flex: 0 0 48px;
+    border: 1px solid $icons-color;
+    border-radius: 50%;
+
+    @include center;
+
+    &:hover,
+    &_active{
+      color: $second-perpule;
+    }
+  }
+
+  &__details{
+    display: flex;
+    justify-content: space-between;
+    
+    @include small-text;
+
+    span:first-child{
+      color: $secondary-color;
+    }
+
+    &:not(:last-child){
+      margin-bottom: 8px;
+    }
+  }
+
+}

@@ -1,0 +1,42 @@
+@use 'src/modules/shared/styles/index.scss' as *;
+
+.links{
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  gap:8px;
+  color: $secondary-color;
+  margin-block: 25px;
+  font-size: 12px;
+  line-height: 12px;
+
+
+  @include on-tablet{
+    margin-bottom: 40px;
+  }
+
+  &__home{
+    font-size: 16px;
+    color: $primary-color;
+    cursor: pointer;
+  }
+  &__link{
+    color: $primary-color;
+    cursor: pointer;
+
+  }
+
+  &__icon {
+    width: 16px;
+    font-size: 10px;
+    text-align: center;
+  }
+
+  &__current{
+    text-transform: capitalize;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+

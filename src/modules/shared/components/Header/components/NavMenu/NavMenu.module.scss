@@ -1,0 +1,115 @@
+@use 'src/modules/shared/styles/index.scss' as *;
+
+$height: 48px;
+
+.menu {
+  display: none;
+  box-sizing: border-box;
+
+  &__list{
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    flex: 1 1 auto;
+
+    @include on-desktop{
+      gap: 26px;
+    }
+  }
+
+  &__icon {
+    border-left: 1px solid $icons-color;
+    height: 100%;
+    width: 48px;
+    position: relative;
+    
+    @include center;
+
+    &:hover,
+    &_active{
+      border-bottom: 3px solid $primary-color;
+    }
+  }
+
+  &__link{
+    display: block;
+    height: 100%;
+    box-sizing: border-box;
+
+    @include center;
+
+    &:hover,
+    &_active {
+      color: $primary-color;
+      border-bottom: 3px solid $primary-color;
+    }
+  }
+
+  &_open {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 48px;
+    left: 0;
+    background-color: #fff;
+    width: 100%;
+    height: calc(100vh - 48px);
+    z-index: 3000;
+    .menu__list{
+      padding-block: 32px;
+      flex-direction: column;
+      gap: 6px;
+      flex: 1 1 auto;
+    }
+
+    .menu__icon{
+      height: 64px;
+      flex: 1 0 50%;
+      border-top: 1px solid $icons-color;
+      &:first-child{
+        border-left: none;
+      }
+    }
+  }
+
+  @include on-tablet{
+    display: flex;
+    height: 100%;
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  &__item{
+    font-weight: 800;
+    color: $secondary-color;
+    font-size: 12px;
+    line-height: 27px;
+
+    @include on-tablet{
+      height: 100%;
+    }
+  }
+
+  &__icons{
+      display: flex;
+      position: relative;
+      z-index: 3;
+  }
+
+
+  &__count{
+    position: absolute;
+    left: 50%;
+    bottom: 50%;
+    width: 14px;
+    height: 14px;
+    border: 2px solid #fff;
+    background-color: $second-perpule;
+    color: #fff;
+    font-size: 9px;
+    border-radius: 50%;
+    letter-spacing: 1px;
+
+    @include center;
+  }
+}
