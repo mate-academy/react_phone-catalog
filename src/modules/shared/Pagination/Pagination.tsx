@@ -1,14 +1,15 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import './Pagination.scss';
 import { Icon } from '../Icon';
 import { iconsObject } from '../../../constants/iconsObject';
 import classNames from 'classnames';
+import { GlobalContext } from '../../../store/GlobalContext';
 
 interface Props {
   total: number;
   perPage: number;
   currentPage: number;
-  onPageChange: (page: number) => void; 
+  onPageChange: (page: number) => void;
 }
 
 export const Pagination: React.FC<Props> = ({
@@ -17,6 +18,8 @@ export const Pagination: React.FC<Props> = ({
   currentPage,
   onPageChange,
 }) => {
+  const { theme } = useContext(GlobalContext);
+
   const totalPages = Math.ceil(total / perPage);
   const pageLimit = 4;
 
@@ -41,9 +44,15 @@ export const Pagination: React.FC<Props> = ({
         disabled={currentPage === 1}
       >
         {currentPage === 1 ? (
-          <Icon icon={iconsObject.arrow_left__disabled} />
-        ) : (
+          theme === 'light' ? (
+            <Icon icon={iconsObject.arrow_left__disabled} />
+          ) : (
+            <Icon icon={iconsObject.arrow_left_dark__disabled} />
+          )
+        ) : theme === 'light' ? (
           <Icon icon={iconsObject.arrow_left} />
+        ) : (
+          <Icon icon={iconsObject.arrow_left_dark} />
         )}
       </button>
       <div className="pagination__button-container">
@@ -68,9 +77,15 @@ export const Pagination: React.FC<Props> = ({
         disabled={currentPage === totalPages}
       >
         {currentPage === totalPages ? (
-          <Icon icon={iconsObject.arrow_right__disabled} />
-        ) : (
+          theme === 'light' ? (
+            <Icon icon={iconsObject.arrow_right__disabled} />
+          ) : (
+            <Icon icon={iconsObject.arrow_right_dark__disabled} />
+          )
+        ) : theme === 'light' ? (
           <Icon icon={iconsObject.arrow_right} />
+        ) : (
+          <Icon icon={iconsObject.arrow_right_dark} />
         )}
       </button>
     </div>

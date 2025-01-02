@@ -1,8 +1,8 @@
-import React, { useContext, useMemo, useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import './ProductPage.scss';
 import { Dropdown } from '../shared/Dropdown';
 import { Pagination } from '../shared/Pagination';
-import { useParams, useSearchParams } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
 import { GlobalContext } from '../../store/GlobalContext';
 import { Breadcrumbs } from '../shared/Breadcrumbs';
 import { ProductsList } from '../shared/ProductsList';
@@ -38,8 +38,15 @@ const getPreparedProducts = (
   }
 };
 
-export const ProductPage: React.FC = () => {
-  const { products } = useContext(GlobalContext);
+type Props = {
+  category: string;
+};
+
+export const ProductPage: React.FC<Props> = ({ category }) => {
+  const { allProducts } = useContext(GlobalContext);
+
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
   const [searchParams, setSearchParams] = useSearchParams();
 
   const sortBy = searchParams.get('sort') || 'Newest';
@@ -47,57 +54,16 @@ export const ProductPage: React.FC = () => {
   const currentPage = Number(searchParams.get('page')) || 1;
   const queryParam = searchParams.get('query') || '';
 
-  const { productsType } = useParams<{ productsType: string }>();
-  const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
+  const categoryProducts = allProducts.filter(
+    product => product.category === category,
+  );
 
-  const validProductTypes = ['phones', 'tablets', 'accessories'];
-
-  useEffect(() => {
-    if (productsType && !validProductTypes.includes(productsType)) {
-      setError('Invalid product type!');
-      setIsLoading(false);
-    } else {
-      setIsLoading(true);
-      setError(null);
-      setTimeout(() => {
-        setIsLoading(false);
-      }, 1000);
-    }
-  }, [productsType, products]);
-
-  const categoryProducts = useMemo(() => {
-    if (productsType && validProductTypes.includes(productsType)) {
-      return products.filter(product => product.category === productsType);
-    }
-
-    return [];
-  }, [products, productsType]);
-
-  const visibleProducts = useMemo(() => {
-    return getPreparedProducts(categoryProducts, {
-      sortBy,
-      query: queryParam,
-    });
-  }, [queryParam, categoryProducts, sortBy]);
+  const visibleProducts = getPreparedProducts(categoryProducts, {
+    sortBy,
+    query: queryParam,
+  });
 
   const countVisibleProducts = visibleProducts.length;
-
-  const handleReload = () => {
-    setIsLoading(true);
-    setError(null);
-
-    if (productsType && !validProductTypes.includes(productsType)) {
-      setError('Invalid product type!');
-      setTimeout(() => {
-        setIsLoading(false);
-      }, 1000);
-    } else {
-      setTimeout(() => {
-        setIsLoading(false);
-      }, 1000);
-    }
-  };
 
   const handleSortChange = (value: string) => {
     const updatedParams = value === 'Newest' ? { sort: null } : { sort: value };
@@ -131,34 +97,55 @@ export const ProductPage: React.FC = () => {
       ? visibleProducts
       : visibleProducts.slice(startIndex, startIndex + +itemsPerPage);
 
-  if (isLoading) {
-    return <Loader />;
-  }
+  useEffect(() => {
+    setIsLoading(true);
+    setError(null);
+
+    const timer = setTimeout(() => {
+      try {
+        if (!allProducts || allProducts.length === 0) {
+          throw new Error('Failed to load products');
+        }
+      } catch (err) {
+        setError(err.message);
+      } finally {
+        setIsLoading(false);
+      }
+    }, 1000);
+
+    return () => clearTimeout(timer);
+  }, [category, allProducts]);
 
   return (
     <div className="productPage">
       {isLoading && <Loader />}
-      {error && (
+
+      {!isLoading && error && (
         <div className="productPage__error">
-          <p>{error}</p>
-          <button onClick={handleReload}>Reload</button>
+          <p>Something went wrong. Please try again.</p>
+          <button onClick={() => window.location.reload()}>Reload</button>
         </div>
       )}
 
-      {!categoryProducts.length && !error && !isLoading && (
-        <div className="productPage__empty-content">
-          <p>{`There are no ${productsType} yet`}</p>
-          <button onClick={handleReload}>Reload</button>
+      {!isLoading && !error && visibleProducts.length === 0 && !queryParam && (
+        <div className="productPage__no-products">
+          <p>There are no {category} yet.</p>
         </div>
       )}
 
-      {!isLoading && !error && (
+      {!isLoading && !error && visibleProducts.length === 0 && queryParam && (
+        <div className="productPage__no-products">
+          <p>Product was not found</p>
+        </div>
+      )}
+
+      {!isLoading && !error && visibleProducts.length > 0 && (
         <>
-          <Breadcrumbs productType={productsType!} />
+          <Breadcrumbs productType={category!} />
 
           <h1 className="productPage__title">
-            {productsType &&
-              productsType.charAt(0).toUpperCase() + productsType.slice(1)}
+            {category &&
+              `${category.charAt(0).toUpperCase() + category.slice(1)} page`}
           </h1>
 
           <span className="productPage__description">

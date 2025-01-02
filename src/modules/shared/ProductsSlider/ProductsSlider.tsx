@@ -68,10 +68,7 @@ export const ProductsSlider: React.FC<Props> = ({
         <div className="productsSlider__buttons">
           <div
             className={classNames('productsSlider__button', {
-              'productsSlider__button-dark': theme === 'dark',
               'productsSlider__button--disabled': currentIndex === 0,
-              'productsSlider__button-dark--disabled':
-                currentIndex === 0 && theme === 'dark',
             })}
             onClick={handlePrev}
           >
@@ -89,10 +86,7 @@ export const ProductsSlider: React.FC<Props> = ({
           </div>
           <div
             className={classNames('productsSlider__button', {
-              'productsSlider__button-dark': theme === 'dark',
               'productsSlider__button--disabled': currentIndex === maxIndex,
-              'productsSlider__button-dark--disabled':
-                currentIndex === maxIndex && theme === 'dark',
             })}
             onClick={handleNext}
           >

@@ -6,8 +6,8 @@ import { ProductPage } from './modules/ProductPage';
 import { GlobalProvider } from './store/GlobalContext';
 import { ProductDetailsPage } from './modules/ProductDetailsPage';
 import { ShoppingCartPage } from './modules/ShoppingCartPage';
-import { FavoritesPage } from './modules/FavoritesPage/FavoritesPage';
 import { NotFoundPage } from './modules/NotFoundPage';
+import { FavoritesPage } from './modules/FavoritesPage';
 
 export const Root = () => {
   return (
@@ -17,14 +17,27 @@ export const Root = () => {
           <Route path="/" element={<App />}>
             <Route index element={<HomePage />} />
 
-            <Route path=":productsType" element={<ProductPage />} />
-            <Route
-              path=":productsType/:productItemId"
-              element={<ProductDetailsPage />}
-            />
+            <Route path="phones">
+              <Route index element={<ProductPage category="phones" />} />
+
+              <Route path=":productItemId" element={<ProductDetailsPage />} />
+            </Route>
+
+            <Route path="tablets">
+              <Route index element={<ProductPage category="tablets" />} />
+
+              <Route path=":productItemId" element={<ProductDetailsPage />} />
+            </Route>
+
+            <Route path="accessories">
+              <Route index element={<ProductPage category="accessories" />} />
+
+              <Route path=":productItemId" element={<ProductDetailsPage />} />
+            </Route>
+
+            <Route path="favorites" element={<FavoritesPage />} />
 
             <Route path="cart" element={<ShoppingCartPage />} />
-            <Route path="favorites" element={<FavoritesPage />} />
 
             <Route path="*" element={<NotFoundPage />} />
           </Route>

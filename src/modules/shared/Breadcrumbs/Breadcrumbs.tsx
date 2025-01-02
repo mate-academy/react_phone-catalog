@@ -2,6 +2,8 @@ import { Link } from 'react-router-dom';
 import './Breadcrumbs.scss';
 import { Icon } from '../Icon';
 import { iconsObject } from '../../../constants/iconsObject';
+import { useContext } from 'react';
+import { GlobalContext } from '../../../store/GlobalContext';
 
 type Props = {
   productType: string;
@@ -9,6 +11,8 @@ type Props = {
 };
 
 export const Breadcrumbs: React.FC<Props> = ({ productType, productName }) => {
+  const { theme } = useContext(GlobalContext);
+
   const normalizeProductsType =
     productType && productType.charAt(0).toUpperCase() + productType.slice(1);
 
@@ -20,11 +24,19 @@ export const Breadcrumbs: React.FC<Props> = ({ productType, productName }) => {
           className="breadcrumbs__link-home"
           aria-label="Go to home page"
         >
-          <Icon icon={iconsObject.home} />
+          {theme === 'light' ? (
+            <Icon icon={iconsObject.home} />
+          ) : (
+            <Icon icon={iconsObject.home_dark} />
+          )}
         </a>
 
         <span className="breadcrumbs__arrow">
-          <Icon icon={iconsObject.arrow_right} />
+          {theme === 'light' ? (
+            <Icon icon={iconsObject.arrow_right__disabled} />
+          ) : (
+            <Icon icon={iconsObject.arrow_right_dark__disabled} />
+          )}
         </span>
 
         {productName ? (
@@ -35,7 +47,11 @@ export const Breadcrumbs: React.FC<Props> = ({ productType, productName }) => {
               </span>
             </Link>
             <span className="breadcrumbs__arrow">
-              <Icon icon={iconsObject.arrow_right} />
+              {theme === 'light' ? (
+                <Icon icon={iconsObject.arrow_right__disabled} />
+              ) : (
+                <Icon icon={iconsObject.arrow_right_dark__disabled} />
+              )}
             </span>
             <span className="breadcrumbs__item">{productName}</span>
           </>

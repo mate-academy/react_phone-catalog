@@ -45,21 +45,18 @@
 }
 
 .shopByCategory__block-image {
-  transition: transform 0.3s;
-  width: 100%; // Изображение будет занимать всю ширину родительского элемента.
-  height: auto; // Сохраняет пропорции изображения.
+  width: 100%;
+  height: auto;
+
+  @include hover(transform, scale(1.05));
 
   @include on-tablet {
-    max-width: 100%; // Для безопасности, чтобы не выходило за пределы родителя.
+    max-width: 100%;
   }
 
   @include on-desktop {
     max-width: 100%;
   }
-}
-
-.shopByCategory__block-image:hover {
-  transform: scale(1.05);
 }
 
 .shopByCategory__block-title {

@@ -6,14 +6,14 @@ import { GlobalContext } from '../../store/GlobalContext';
 import { ProductsSlider } from '../shared/ProductsSlider';
 
 export const HomePage: React.FC = () => {
-  const { products } = useContext(GlobalContext);
+  const { allProducts } = useContext(GlobalContext);
 
-  const newestPhones = [...products]
+  const newestPhones = [...allProducts]
     .filter(product => product.category === 'phones')
     .sort((phone1, phone2) => phone2.year - phone1.year)
     .slice(0, 20);
 
-  const hotPricesProducts = [...products]
+  const hotPricesProducts = [...allProducts]
     .map(product => ({
       ...product,
       discount: ((product.fullPrice - product.price) / product.fullPrice) * 100,

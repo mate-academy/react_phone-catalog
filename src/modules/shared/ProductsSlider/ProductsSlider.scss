@@ -45,25 +45,38 @@
   display: flex;
   align-items: center;
   justify-content: center;
-
-  &.productsSlider__button--disabled {
-    cursor: not-allowed;
-    border: 1px solid var(--color-gray-elements);
-  }
-
-  &:not(.productsSlider__button--disabled):hover {
-    border: 1px solid var(--color-gray-primary);
-  }
+  transition: border 0.3s, background-color 0.3s;
 }
 
-.productsSlider__button-dark {
+.productsSlider__button--disabled {
+  cursor: not-allowed;
+  border: 1px solid var(--color-gray-elements);
+  background-color: inherit;
+}
+
+.productsSlider__button--disabled:hover {
+  // background-color: inherit; /* Добавлено, чтобы не менялся фон при наведении */
+  border: 1px solid var(--color-gray-elements); /* Можно явно указать, чтобы не менялся бордер */
+}
+
+body.theme_dark .productsSlider__button {
   border: none;
   background-color: var(--color-surface-2);
 }
 
-.productsSlider__button-dark--disabled {
+body.theme_dark .productsSlider__button:not(.productsSlider__button--disabled):hover {
   border: none;
+  background-color: var(--color-gray-icons-placeholders);
+}
+
+body.theme_dark .productsSlider__button--disabled {
+  border: 1px solid var(--color-gray-elements);
   background-color: inherit;
+}
+
+.productsSlider__button:not(.productsSlider__button--disabled):hover {
+  border: 1px solid var(--color-gray-primary);
+  background-color: var(--color-gray-icons-placeholders);
 }
 
 .productsSlider__viewport {

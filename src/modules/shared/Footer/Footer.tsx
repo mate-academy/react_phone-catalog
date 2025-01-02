@@ -52,10 +52,15 @@ export const Footer: React.FC = () => {
           </Link>
         </div>
 
-        <div className="footer__block">
+        <div className="footer__block" onClick={backToTop}>
           <span className="footer__button-title">Back to top</span>
-          <button className="footer__button" onClick={backToTop}>
-            <Icon icon={iconsObject.arrow_left} />
+          <button className="footer__button">
+            {theme === 'light' ? (
+              <Icon icon={iconsObject.arrow_left} />
+            ) : (
+              <Icon icon={iconsObject.arrow_left_dark} />
+            )}
+
           </button>
         </div>
       </div>

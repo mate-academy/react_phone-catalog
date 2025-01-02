@@ -96,12 +96,13 @@ export const ProductCard: React.FC<Props> = ({ product, displayType }) => {
         >
           {isFavorites ? (
             <Icon icon={iconsObject.favorites__filled} />
-          ) : (
+          ) : theme === 'light' ? (
             <Icon icon={iconsObject.favorites} />
+          ) : (
+            <Icon icon={iconsObject.favorites_dark} />
           )}
         </button>
       </div>
-
     </div>
   );
 };

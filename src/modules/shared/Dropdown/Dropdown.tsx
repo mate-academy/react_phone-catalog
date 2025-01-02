@@ -53,7 +53,11 @@ export const Dropdown: React.FC<DropdownProps> = ({
         >
           {selected}
           <span className="dropdown__icon">
-            <Icon icon={iconsObject.arrow_right__disabled} />
+            <Icon
+              icon={
+                isOpen ? iconsObject.arrow_down_dark : iconsObject.arrow_right
+              }
+            />
           </span>
         </button>
         {isOpen && (

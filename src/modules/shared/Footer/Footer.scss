@@ -62,20 +62,6 @@
   }
 }
 
-.footer__block {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-
-  @include on-tablet {
-    display: flex;
-    align-items: center;
-    justify-content: end;
-    flex-grow: 1;
-  }
-}
-
 .footer__link {
   text-transform: uppercase;
   text-decoration: none;
@@ -91,7 +77,22 @@
   color: var(--color-gray-primary);
 }
 
+.footer__block {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+
+  @include on-tablet {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    flex-grow: 1;
+  }
+}
+
 .footer__button {
+  cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -100,14 +101,16 @@
   border: 1px solid var(--color-gray-icons-placeholders);
   background-color: var(--color-bg);
   box-sizing: border-box;
-  cursor: pointer;
   margin-left: 16px;
-
   transform: rotate(90deg);
-}
 
-.footer__button:hover {
-  border: 1px solid var(--color-gray-primary);
+  transition: border-color 0.3s ease;
+
+
+  &:hover {
+    border: 1px solid var(--color-gray-primary);
+    background-color: var(--color-hover);
+  }
 }
 
 .footer__button-title {
@@ -116,4 +119,11 @@
   font-weight: 700;
   line-height: 15.34px;
   color: var(--color-gray-secondary);
+}
+
+body.theme_dark .footer__button {
+  border: none;
+  background-color: var(--color-surface-2);
+
+  @include hover(background-color, var(--color-gray-icons-placeholders))
 }

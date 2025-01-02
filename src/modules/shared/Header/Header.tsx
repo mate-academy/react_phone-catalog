@@ -112,18 +112,28 @@ export const Header: React.FC = () => {
               value={inputValue}
               onChange={handleInputChange}
             />
-            {inputValue && (
+            {inputValue ? (
               <div className="header__clear-button" onClick={clearInput}>
-                <Icon icon={iconsObject.close} />
+                {theme === 'light' ? (
+                  <Icon icon={iconsObject.close} />
+                ) : (
+                  <Icon icon={iconsObject.close_dark} />
+                )}
               </div>
+            ) : theme === 'light' ? (
+              <Icon icon={iconsObject.search} />
+            ) : (
+              <Icon icon={iconsObject.search_dark} />
             )}
           </div>
         )}
         <div onClick={toggleMenu} className="header__icon header__icon--menu">
           {isMenuOpen ? (
             <Icon icon={iconsObject.close} />
-          ) : (
+          ) : theme === 'light' ? (
             <Icon icon={iconsObject.menu} />
+          ) : (
+            <Icon icon={iconsObject.menu_dark} />
           )}
         </div>
 
@@ -139,7 +149,7 @@ export const Header: React.FC = () => {
             'header__buttons-wrapper--buttom': isMenuOpen,
           })}
         >
-          <NavLink className={getActiveIcon} to="favorites">
+          <NavLink className={getActiveIcon} to="/favorites">
             <span className="header__quantity">{totalFavorites}</span>
             {theme === 'light' ? (
               <Icon icon={iconsObject.favorites} />
@@ -148,7 +158,7 @@ export const Header: React.FC = () => {
             )}
           </NavLink>
 
-          <NavLink className={getActiveIcon} to="cart">
+          <NavLink className={getActiveIcon} to="/cart">
             {theme === 'light' ? (
               <Icon icon={iconsObject.shopping_cart} />
             ) : (

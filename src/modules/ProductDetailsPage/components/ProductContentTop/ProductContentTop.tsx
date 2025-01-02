@@ -1,5 +1,5 @@
 import './ProductContentTop.scss';
-import { NavLink, useParams } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { SpecificProduct } from '../../../../types/SpecificProduct';
 import { useContext, useState } from 'react';
 import { colors } from '../../../../constants/colors';
@@ -25,16 +25,14 @@ export const ProductContentTop: React.FC<Props> = ({
   selectedProduct,
   specificProducts,
 }) => {
-  const { products, cart, favorites, toggleFavorites, addToCart } =
+  const { allProducts, cart, favorites, toggleFavorites, addToCart, theme } =
     useContext(GlobalContext);
 
   const [selectedPhoto, setSelectedPhoto] = useState(0);
 
-  const { productsType } = useParams();
-
   const handleShoppingCard = (currentProduct: SpecificProduct) => {
     const productToAdd = getProductBySelectedProductId(
-      products,
+      allProducts,
       currentProduct.id,
     );
 
@@ -45,7 +43,7 @@ export const ProductContentTop: React.FC<Props> = ({
 
   const handleFavorites = (currentProduct: SpecificProduct) => {
     const favoriteProduct = getProductBySelectedProductId(
-      products,
+      allProducts,
       currentProduct.id,
     );
 
@@ -55,10 +53,6 @@ export const ProductContentTop: React.FC<Props> = ({
   };
 
   const getLink = (option: string, value: string) => {
-    if (!selectedProduct) {
-      return '';
-    }
-
     const {
       color: itemColor,
       namespaceId: itemNamespaceId,
@@ -93,7 +87,7 @@ export const ProductContentTop: React.FC<Props> = ({
             })}
           >
             <img
-              src={image}
+              src={`/${image}`}
               alt={`Thumbnail ${index + 1}`}
               className="detailsPage__photo"
               onClick={() => setSelectedPhoto(index)}
@@ -103,11 +97,16 @@ export const ProductContentTop: React.FC<Props> = ({
       </div>
 
       <div className="detailsPage__photo-mask">
-        <img
-          src={selectedProduct.images[selectedPhoto]}
-          alt={`Selected Photo`}
-          className="detailsPage__image"
-        />
+        {selectedProduct.images.map((image, index) => (
+          <img
+            key={index}
+            src={`/${image}`}
+            alt={`Selected Photo ${index + 1}`}
+            className={classNames('detailsPage__image', {
+              'detailsPage__image--active': selectedPhoto === index,
+            })}
+          />
+        ))}
       </div>
 
       <div className="detailsPage__characteristics">
@@ -122,7 +121,7 @@ export const ProductContentTop: React.FC<Props> = ({
             {selectedProduct.colorsAvailable.map(color => (
               <NavLink
                 key={color}
-                to={`/${productsType}/${getLink('color', color)}`}
+                to={`/${selectedProduct.category}/${getLink('color', color)}`}
               >
                 <li
                   key={color}
@@ -154,7 +153,7 @@ export const ProductContentTop: React.FC<Props> = ({
             {selectedProduct.capacityAvailable.map(capacity => (
               <NavLink
                 key={capacity}
-                to={`/${productsType}/${getLink('capacity', capacity)}`}
+                to={`/${selectedProduct.category}/${getLink('capacity', capacity)}`}
                 style={{ textDecoration: 'none' }}
               >
                 <li
@@ -211,8 +210,10 @@ export const ProductContentTop: React.FC<Props> = ({
           >
             {isFavorites ? (
               <Icon icon={iconsObject.favorites__filled} />
-            ) : (
+            ) : theme === 'light' ? (
               <Icon icon={iconsObject.favorites} />
+            ) : (
+              <Icon icon={iconsObject.favorites_dark} />
             )}
           </button>
         </div>

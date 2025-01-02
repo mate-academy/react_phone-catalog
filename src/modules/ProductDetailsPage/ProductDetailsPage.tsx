@@ -1,66 +1,53 @@
 import './ProductDetailsPage.scss';
-import { useContext, useEffect, useState, useMemo } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { useContext, useState, useEffect } from 'react';
+import { Link, useLocation, useParams } from 'react-router-dom';
 import { Breadcrumbs } from '../shared/Breadcrumbs';
 import { SpecificProduct } from '../../types/SpecificProduct';
 import { ProductContentTop } from './components/ProductContentTop';
 import { ProductContentBottom } from './components/ProductContentBottom';
 import { GlobalContext } from '../../store/GlobalContext';
 import { ProductsSlider } from '../shared/ProductsSlider';
-import { Loader } from '../shared/Loader';
 import { ButtonBack } from '../shared/ButtonBack';
 import { getSpecificProducts } from '../../utils/productApi';
+import { Loader } from '../shared/Loader';
 
 export const ProductDetailsPage: React.FC = () => {
-  const { products } = useContext(GlobalContext);
-  const { productsType, productItemId } = useParams();
+  const { allProducts } = useContext(GlobalContext);
 
-  const [selectedProduct, setSelectedProduct] =
-    useState<SpecificProduct | null>(null);
-  const [specificProducts, setSpecificProducts] = useState<SpecificProduct[]>(
-    [],
-  );
+  const { productItemId } = useParams();
+
+  const [product, setProduct] = useState<SpecificProduct | null>(null);
+
+  const [productsArray, setProductsArray] = useState<SpecificProduct[]>([]);
+
   const [isLoading, setIsLoading] = useState<boolean>(true);
-  const [error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | ''>('');
 
-  const suggestedProducts = useMemo(() => {
-    return products
-      .filter(
-        product =>
-          product.category === productsType && product.itemId !== productItemId,
-      )
-      .sort(() => 0.5 - Math.random());
-  }, [products, productsType, productItemId]);
+  const currentCategory = useLocation().pathname.split('/')[1];
 
   useEffect(() => {
-    if (!productsType) {
-      setError('Тип продукта не указан');
-
-      return;
-    }
-
     setIsLoading(true);
-    setError(null);
+    setError('');
 
     const timeout = setTimeout(() => {
-      getSpecificProducts(productsType)
+      getSpecificProducts(currentCategory)
         .then(fetchedSpecificProducts => {
-          setSpecificProducts(fetchedSpecificProducts);
+          setProductsArray(fetchedSpecificProducts);
 
           const currentProduct = fetchedSpecificProducts.find(
-            product => product.id === productItemId,
+            prod => prod.id === productItemId,
           );
 
           if (currentProduct) {
-            setSelectedProduct(currentProduct);
-            setError(null);
+            setProduct(currentProduct);
+            setError('');
           } else {
-            setSelectedProduct(null);
+            setProduct(null);
             setError('Продукт не найден');
           }
         })
         .catch(er => {
-          setError(`Ошибка загрузки продуктов: Категории продуктов "${productsType}" не существует. ${er.message}`);
+          setError(`Ошибка загрузки продуктов: Категории продуктов "${currentCategory}" не существует. ${er.message}`);
         })
         .finally(() => {
           setIsLoading(false);
@@ -68,74 +55,64 @@ export const ProductDetailsPage: React.FC = () => {
     }, 1000);
 
     return () => clearTimeout(timeout);
-  }, [productsType]);
+  }, [currentCategory]);
 
   useEffect(() => {
-    if (!productItemId || !specificProducts.length) {
+    if (!productItemId || !productsArray.length) {
       return;
     }
 
-    const currentProduct = specificProducts.find(
-      product => product.id === productItemId,
-    );
+    const currentProduct = productsArray.find(pr => pr.id === productItemId);
 
     if (currentProduct) {
-      setSelectedProduct(currentProduct);
-      setError(null);
+      setProduct(currentProduct);
+      setError('');
     } else {
-      setSelectedProduct(null);
+      setProduct(null);
       setError('Продукт не найден');
     }
-  }, [productItemId, specificProducts]);
+  }, [productItemId, productsArray]);
 
-  if (!productsType) {
-    return (
-      <div className="error-message">
-        <h2>Ошибка: Тип продукта не указан.</h2>
-        {/* Дополнительно можно добавить кнопку для возврата */}
-      </div>
-    );
-  }
+  const suggestedProducts = allProducts
+    .filter(
+      prod =>
+        prod.category === currentCategory && prod.itemId !== productItemId,
+    )
+    .sort(() => 0.5 - Math.random());
 
   if (isLoading) {
-    return <Loader />; // Показываем лоадер во время загрузки
-  }
-
-  if (error) {
     return (
-      <div className="error-message">
-        <h2>{error}</h2>
-        <Link to="/">Go to HomePage</Link>
+      <div className="detailsPage">
+        <Loader />
       </div>
     );
   }
 
-  if (!selectedProduct) {
-    return (
-      <div className="error-message">
-        <h2>Продукт не найден</h2>
-        <Link to="/">Go to HomePage</Link>
-      </div>
-    );
+  if (!product) {
+    return;
   }
 
   return (
     <div className="detailsPage">
-      <Breadcrumbs
-        productType={productsType}
-        productName={selectedProduct.name}
-      />
+      {error && !isLoading && (
+        <div className="error-message">
+          <span>{error}</span>
+          <Link to="/">Go to HomePage</Link>
+        </div>
+      )}
+
+      <Breadcrumbs productType={currentCategory} productName={product.name} />
 
       <ButtonBack />
 
-      <h2 className="detailsPage__title">{selectedProduct.name}</h2>
+      <h2 className="detailsPage__title">{product.name}</h2>
 
       <ProductContentTop
-        selectedProduct={selectedProduct}
-        specificProducts={specificProducts}
+        selectedProduct={product}
+        specificProducts={productsArray}
       />
 
-      <ProductContentBottom selectedProduct={selectedProduct} />
+      <ProductContentBottom selectedProduct={product} />
 
       <div className="detailsPage__like-block">
         <ProductsSlider

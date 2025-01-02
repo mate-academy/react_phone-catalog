@@ -6,8 +6,8 @@ import { useLocalStorage } from '../hooks/useLocalStorage';
 import { useTheme } from '../hooks/useTheme';
 
 type GlobalContextType = {
-  products: Product[];
-  setProducts: React.Dispatch<React.SetStateAction<Product[]>>;
+  allProducts: Product[];
+  setAllProducts: React.Dispatch<React.SetStateAction<Product[]>>;
   cart: CartProduct[];
   setCart: React.Dispatch<React.SetStateAction<CartProduct[]>>;
   favorites: Product[];
@@ -24,8 +24,8 @@ type GlobalContextType = {
 };
 
 export const GlobalContext = React.createContext<GlobalContextType>({
-  products: [] as Product[],
-  setProducts: () => { },
+  allProducts: [] as Product[],
+  setAllProducts: () => { },
   cart: [] as CartProduct[],
   setCart: () => { },
   favorites: [] as Product[],
@@ -48,7 +48,7 @@ type Props = {
 export const GlobalProvider: React.FC<Props> = ({ children }) => {
   const { theme, toggleTheme } = useTheme();
 
-  const [products, setProducts] = useState<Product[]>([]);
+  const [allProducts, setAllProducts] = useState<Product[]>([]);
   const [cart, setCart] = useLocalStorage<CartProduct[]>('shoppingCart', []);
   const [favorites, setFavorites] = useLocalStorage<Product[]>('favorites', []);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -57,7 +57,7 @@ export const GlobalProvider: React.FC<Props> = ({ children }) => {
     const fetchAllProducts = () => {
       getAllProducts()
         .then(fetchedProducts => {
-          setProducts(fetchedProducts);
+          setAllProducts(fetchedProducts);
         })
         .catch(error => {
           throw new Error(`Error fetching products: ${error.message}`);
@@ -143,8 +143,8 @@ export const GlobalProvider: React.FC<Props> = ({ children }) => {
 
   const data = useMemo(
     () => ({
-      products,
-      setProducts,
+      allProducts,
+      setAllProducts,
       cart,
       setCart,
       favorites,
@@ -160,10 +160,10 @@ export const GlobalProvider: React.FC<Props> = ({ children }) => {
       toggleTheme,
     }),
     [
-      products,
+      allProducts,
       cart,
       favorites,
-      setProducts,
+      setAllProducts,
       setCart,
       setFavorites,
       clearShoppingCart,

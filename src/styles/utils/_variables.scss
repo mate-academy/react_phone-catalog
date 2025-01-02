@@ -1,15 +1,6 @@
 $tablet-min-width: 640px;
 $desktop-min-width: 1200px;
 
-// // // var(--color-gray-primary): #313237;
-// // // var(--color-gray-secondary): #89939A;
-// // // var(--color-gray-icons-placeholders): #B4BDC3;
-// // // var(--color-gray-elements): #E2E6E9;
-// // // $color-bg: #FFFFFF;
-// // var(--color-green): #27AE60;
-// // // var(--color-red): #EB5757;
-// // // var(--color-hover): #FAFBFC;
-
 body {
   --color-bg: #FFFFFF;
   --color-gray-primary: #313237;
@@ -32,5 +23,7 @@ body.theme_dark {
   --color-hover: #1cd97a;
   --color-surface-1: #161827;
   --color-surface-2: #323542;
+  --color-accent: #905BFF;
+  --color-accent-hover: #A378FF;
 }
 

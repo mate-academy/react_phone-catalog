@@ -4,17 +4,17 @@ import { useContext } from 'react';
 import { GlobalContext } from '../../../../store/GlobalContext';
 
 export const ShopByCategory: React.FC = () => {
-  const { products } = useContext(GlobalContext);
+  const { allProducts } = useContext(GlobalContext);
 
-  const phonesLength = products.filter(
+  const phonesLength = allProducts.filter(
     product => product.category === 'phones',
   ).length;
 
-  const tabletsLength = products.filter(
+  const tabletsLength = allProducts.filter(
     product => product.category === 'tablets',
   ).length;
 
-  const accessoriesLength = products.filter(
+  const accessoriesLength = allProducts.filter(
     product => product.category === 'accessories',
   ).length;
 

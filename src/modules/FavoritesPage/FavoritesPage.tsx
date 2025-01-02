@@ -1,4 +1,4 @@
-import React, { useContext, useMemo } from 'react';
+import React, { useContext } from 'react';
 import { useLocation, useSearchParams } from 'react-router-dom';
 import { GlobalContext } from '../../store/GlobalContext';
 import './FavoritesPage.scss';
@@ -16,17 +16,13 @@ export const FavoritesPage: React.FC = () => {
   const normalizeProductsType =
     pathname.slice(1, 2).toUpperCase() + pathname.slice(2);
 
-  const visibleFavorites = useMemo(() => {
-    let filteredFavorites = [...favorites];
+  let visibleFavorites = [...favorites];
 
-    if (query.length) {
-      filteredFavorites = filteredFavorites.filter(product =>
-        product.name.toLowerCase().includes(query.toLowerCase().trim()),
-      );
-    }
-
-    return filteredFavorites;
-  }, [favorites, query]);
+  if (query.length) {
+    visibleFavorites = visibleFavorites.filter(product =>
+      product.name.toLowerCase().includes(query.toLowerCase().trim()),
+    );
+  }
 
   const countFavoritesProducts = visibleFavorites.length;
 
@@ -36,9 +32,8 @@ export const FavoritesPage: React.FC = () => {
       <h1 className="favoritesPage__title">{normalizeProductsType}</h1>
 
       <span className="favoritesPage__description">
-        {`${countFavoritesProducts} ${
-          countFavoritesProducts === 1 ? 'model' : 'models'
-        }`}
+        {`${countFavoritesProducts} ${countFavoritesProducts === 1 ? 'model' : 'models'
+          }`}
       </span>
 
       {countFavoritesProducts === 0 ? (

@@ -2,22 +2,27 @@
   --loading-grey: #ededed;
 }
 
-.content {
-  height: 100vh;
-  width: 100%;
+:root body.theme_dark {
+  --loading-grey: #0F1121;
 }
 
 .content {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
   background-color: var(--loading-grey);
   background: linear-gradient(
     100deg,
     rgba(255, 255, 255, 0) 40%,
-    rgba(255, 255, 255, .5) 50%,
+    rgba(255, 255, 255, 0.5) 50%,
     rgba(255, 255, 255, 0) 60%
   ) var(--loading-grey);
   background-size: 200% 100%;
   background-position-x: 180%;
-  animation: 1s loading ease-in-out infinite;
+  animation: 0.5s loading ease-in-out infinite;
+  z-index: 1;
 }
 
 @keyframes loading {

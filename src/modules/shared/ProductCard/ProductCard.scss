@@ -1,6 +1,6 @@
 @import '../../../styles/utils/mixins.scss';
-@import '../../../styles/utils/variables.scss';
 @import '../../../styles/main.scss';
+@import '../../../styles/utils/variables.scss';
 
 .productCard {
   width: 100%;
@@ -13,6 +13,7 @@
   gap: 8px;
 
   transition: border 0.3s;
+  @include hover(border-color, var(--color-gray-primary));
 }
 
 .productCard-dark {
@@ -132,7 +133,7 @@
 .productCard__button {
   border: none;
   cursor: pointer;
-  background-color: var(--color-bg);
+
 
   font-family: 'Mont-Regular', sans-serif;
   color: var(--color-bg);
@@ -144,37 +145,65 @@
   display: flex;
   align-items: center;
   justify-content: center;
-
-  &-card {
-    background-color: var(--color-gray-primary);
-    width: 100%;
-  }
-
-  &-card--active {
-    background-color: var(--color-bg);
-    color: var(--color-green);
-    border: 1px solid var(--color-gray-elements);
-  }
-
-  &-favorites {
-    width: 40px;
-    flex-shrink: 0;
-    border: 1px solid var(--color-gray-icons-placeholders);
-  }
-
-  &-favorites--active {
-    border: 1px solid var(--color-gray-elements);
-  }
 }
 
-.productCard:hover {
-  border: 1px solid var(--color-gray-primary);
+.productCard__button-card {
+  background-color: var(--color-gray-primary);
+  width: 100%;
+
+  @include hover(box-shadow, 0px 3px 13px 0px #17203166);
+}
+
+.productCard__button-card--active {
+  background-color: var(--color-bg);
+  color: var(--color-green);
+  border: 1px solid var(--color-gray-elements);
+}
+
+.productCard__button-favorites {
+  background-color: var(--color-bg);
+  width: 40px;
+  flex-shrink: 0;
+  border: 1px solid var(--color-gray-icons-placeholders);
+
+  @include hover(border-color, var(--color-gray-primary));
+}
+
+.productCard__button-favorites--active {
+  border: 1px solid var(--color-gray-elements);
 }
 
 .productCard:hover .productCard__container-photo {
   transform: scale(1.05);
 }
 
-.productCard__button-favorites:hover {
-  border: 1px solid var(--color-gray-primary);
+body.theme_dark .productCard__button-card {
+  color: var(--color-gray-primary);
+  background-color: var(--color-accent);
+
+  @include hover(background-color, var(--color-accent-hover));
+}
+
+body.theme_dark .productCard__button-card--active,
+body.theme_dark .productCard__button-favorites {
+  color: var(--color-gray-primary);
+  background-color: var(--color-surface-2);
+  border: none;
+}
+
+body.theme_dark .productCard__button-favorites:hover {
+  background-color: var(--color-gray-icons-placeholders);
+}
+
+body.theme_dark .productCard__button-favorites--active {
+  background-color: var(--color-surface-1);
+  border: 1px solid var(--color-gray-elements);
+}
+
+.productCard__button-card--active {
+  pointer-events: none; // Делает кнопку неактивной
+  &:hover {
+    box-shadow: none; // Убирает эффект hover
+    border-color: inherit; // Сохраняет текущий цвет границы
+  }
 }

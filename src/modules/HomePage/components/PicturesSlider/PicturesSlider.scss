@@ -21,6 +21,8 @@
 .picturesSlider__button {
   display: none;
 
+  transition: border-color 0.3s ease, background-color 0.3s ease;
+
   @include on-tablet {
     display: flex;
     align-items: center;
@@ -30,15 +32,20 @@
     border: 1px solid var(--color-gray-icons-placeholders);
     cursor: pointer;
   }
-
-  &:hover {
-    border: 1px solid var(--color-gray-primary);
-  }
 }
 
-.picturesSlider__button--dark {
+.picturesSlider__button:hover {
+  border-color: var(--color-gray-primary);
+  background-color: var(--color-hover);
+}
+
+body.theme_dark .picturesSlider__button {
   border: none;
   background-color: var(--color-surface-2);
+}
+
+body.theme_dark .picturesSlider__button:hover {
+  background-color: var(--color-gray-icons-placeholders);
 }
 
 .picturesSlider__container-image {

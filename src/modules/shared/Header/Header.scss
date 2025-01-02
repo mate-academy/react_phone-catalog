@@ -160,6 +160,10 @@
   background: var(--color-hover);
 }
 
+body.theme_dark .header__icon:hover {
+  @include hover(background-color, var(--color-gray-icons-placeholders))
+}
+
 .header__buttons-wrapper {
   display: none;
 
@@ -247,7 +251,8 @@
   border: none;
   cursor: pointer;
 
-  color: var(--color-gray-primary);
+  // color: var(--color-gray-primary);
+  color: var(--color-gray-secondary);
   font-size: 12px;
   font-weight: 800;
   letter-spacing: 0.04em;
@@ -265,6 +270,7 @@
   }
 
   &:hover {
-    color: var(--color-gray-secondary);
+    // color: var(--color-gray-secondary);
+    color: var(--color-gray-primary);
   }
 }
