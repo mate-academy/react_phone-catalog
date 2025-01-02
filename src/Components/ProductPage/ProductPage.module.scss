@@ -12,7 +12,8 @@
 
 .productpage {
   overflow: hidden;
-  
+  background-color: var(--background-color);
+
   @include on-tablet {
     width: 100%;
   }
@@ -23,6 +24,17 @@
     width: 100%;
     margin: 8px 0 10px 8px;
     &__link {
+      &ONDARK {
+        color: var(--primary-font-color);
+      width: 20px;
+    background-image: url('../../img/Home-white.svg');
+    background-position: left;
+    background-repeat: no-repeat;
+    background-size: 16px 16px;
+    text-indent: 20px;
+      }
+      
+      color: var(--primary-font-color);
       width: 20px;
     background-image: url('../../img/Home.svg');
     background-position: left;
@@ -41,7 +53,9 @@
   }
 
 .noresults {
+  color: var(--primary-font-color);
   font-family: Mont, sans-serif;
+  height: 70vh;
 }
 
   .content {
@@ -61,6 +75,7 @@
   }
 
   .header {
+    color: var(--primary-font-color);
 font-family: Mont, sans-serif;
 font-size: 32px;
 line-height: 41px;

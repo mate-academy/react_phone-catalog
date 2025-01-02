@@ -10,16 +10,30 @@
 
 @import '../styles/main';
 
+  .cartitems {
+    background-color: var(--background-color);
+  }
+
   .emptycart {
     &image {
-      margin-top: 100px;
+      &ONDARK {
+        margin: 100px auto 0;
+        background-image: url('../../img/cart-is-empty-black.png');
+        background-repeat: no-repeat;
+        background-size: 100% 400px;
+        height: 50vh;
+        width: 80%;
+      }
+      
+      margin: 100px auto 0;
     background-image: url('../../img/cart-is-empty.png');
     background-repeat: no-repeat;
     background-size: 100% 400px;
-    height: 400px;
-    width: 100%;
+    height: 50vh;
+    width: 80%;
     }
     &title {
+      color: var(--primary-font-color);
       margin-left: 16px;
 font-family: Mont-bold, sans-serif;
 font-size: 48px;
@@ -43,6 +57,7 @@ margin: 16px 0 32px 16px;
   }
 
   .title {
+    color: var(--primary-font-color);
 font-family: Mont-Bold, sans-serif;
 font-size: 32px;
 font-weight: 800;
@@ -53,9 +68,9 @@ margin-left: 16px;
   }
 
   .item {
+    background-color: var(--background-color);
     height: 160px;
     border: 1px solid #E2E6E9;
-    background-color: white;
     border-radius: 10px;
     margin: 0 16px;
   }
@@ -72,6 +87,7 @@ margin-left: 16px;
   }
 
   .name {
+    color: var(--primary-font-color);
 font-family: Mont, sans-serif;
 font-size: 14px;
 font-weight: 600;
@@ -81,6 +97,7 @@ text-align: left;
   }
 
   .price {
+    color: var(--primary-font-color);
 font-family: Mont-bold, sans-serif;
 font-size: 22px;
 font-weight: 800;
@@ -109,6 +126,8 @@ margin-left: auto;
   }
 
   .container {
+    padding-bottom: 40px;
+
     @include on-desktop {
       display: flex;
     }
@@ -135,6 +154,7 @@ margin-left: auto;
   }
 
   .amountofmodels {
+    color: var(--primary-font-color);
     width: 4.64px;
 font-family: Mont, sans-serif;
 font-size: 14px;
@@ -146,6 +166,7 @@ text-align: center;
 
   .button {
     &__decreased {
+      color: var(--primary-font-color);
       width: 32px;
 height: 32px;
 background-color: transparent;
@@ -154,12 +175,16 @@ border-radius: 100%;
 border: 1px solid #89939A;
 font-size: 22px;
 cursor: pointer;
+&:hover {
+  background-color: var(--menu-block);
+}
 &_disabled {
   border: 1px solid #E2E6E9;
 }
 
     }
     &__increased {
+      color: var(--primary-font-color);
       width: 32px;
 height: 32px;
 background-color: transparent;
@@ -168,6 +193,9 @@ border-radius: 100%;
 border: 1px solid #89939A;
 font-size: 22px;
 cursor: pointer;
+&:hover {
+  background-color: var(--menu-block);
+}
 &_disabled {
   border: 1px solid #E2E6E9;
 }
@@ -175,7 +203,7 @@ cursor: pointer;
   }
 
   .total {
-    width: 100%;
+    width: 95%;
 
     @include on-desktop {
     width: 50%;
@@ -184,9 +212,10 @@ cursor: pointer;
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 0 16px;
+    margin: 0 auto;
     background-color: transparent;
 padding-top: 24px;
+padding-bottom: 40px;
 gap: 16px;
 border-radius: 10px;
 border: 1px solid #E2E6E9;
@@ -200,6 +229,7 @@ border: 1px solid #E2E6E9;
   }
 
   .totalprice {
+    color: var(--primary-font-color);
 font-family: Mont-bold, sans-serif;
 font-size: 32px;
 font-weight: 800;
@@ -233,8 +263,8 @@ line-height: 21px;
 text-align: center;
 cursor: pointer;
 &:hover {
-  background-color: white;
-  color: blue;
+  background-color: var(--background-color);
+  color: var(--text-active-button);
   border: 2px solid blue;
 }
   }
@@ -255,12 +285,19 @@ cursor: pointer;
   }
 
   .checkout {
+    &ONDARK {
+      background-image: url('../../img/streszczenie-czarne-tlo-ksztalty_1053-461.png');
+    width: 100%;
+    height: 80vh;
+    }
+
     background-image: url('../../../public/img/white-triangle-pattern-seamless-background-2.jpg');
     width: 100%;
     height: 80vh;
   }
 
   .question {
+    color: var(--primary-font-color);
     font-family: Mont-Bold, sans-serif;
     margin: 0 10px 30%;
     padding-top: 80px;
@@ -273,6 +310,7 @@ cursor: pointer;
   }
 
   .option {
+    color: var(--primary-font-color);
     font-family: Mont, sans-serif;
     background-color: transparent;
     font-size: 28px;

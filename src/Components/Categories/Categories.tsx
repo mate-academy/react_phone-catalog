@@ -12,46 +12,40 @@ export const Categories = () => {
       className={category.categories}
       data-theme={themeSwitcher ? 'dark' : 'light'}
     >
-      <div className={category.categories__header}>Shop by category</div>
-      <div className={category.categories__content}>
-        <div className={category.categories__option}>
-          <Link to="/phones" className={category.categories__link}>
+      <div className={category.header}>Shop by category</div>
+      <div className={category.content}>
+        <div className={category.option}>
+          <Link to="/phones" className={category.link}>
             <img
               src="img/category-phones.png"
               alt="phones"
-              className={category.categories__image}
+              className={category.image}
             />
           </Link>
-          <h2 className={category.categories__title}>Phones</h2>
-          <span className={category.categories__amount}>
-            {phones.length} models
-          </span>
+          <h2 className={category.title}>Phones</h2>
+          <span className={category.amount}>{phones.length} models</span>
         </div>
-        <div className={category.categories__option}>
-          <Link to="/tablets" className={category.categories__link}>
+        <div className={category.option}>
+          <Link to="/tablets" className={category.link}>
             <img
               src="img/category-tablets.png"
               alt="tablets"
-              className={category.categories__image}
+              className={category.image}
             />
           </Link>
-          <h2 className={category.categories__title}>Tablets</h2>
-          <span className={category.categories__amount}>
-            {tablets.length} models
-          </span>
+          <h2 className={category.title}>Tablets</h2>
+          <span className={category.amount}>{tablets.length} models</span>
         </div>
-        <div className={category.categories__option}>
-          <Link to="/accessories" className={category.categories__link}>
+        <div className={category.option}>
+          <Link to="/accessories" className={category.link}>
             <img
               src="img/category-accessories.png"
               alt="accessories"
-              className={category.categories__image}
+              className={category.image}
             />
           </Link>
-          <h2 className={category.categories__title}>Accessories</h2>
-          <span className={category.categories__amount}>
-            {accessories.length} models
-          </span>
+          <h2 className={category.title}>Accessories</h2>
+          <span className={category.amount}>{accessories.length} models</span>
         </div>
       </div>
     </div>

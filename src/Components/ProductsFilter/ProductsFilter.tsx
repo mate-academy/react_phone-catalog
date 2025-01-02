@@ -4,6 +4,8 @@ import filter from './ProductsFilter.module.scss';
 import { CatalogContext } from '../CatalogProvider';
 import { ItemPerPage } from '../types/ItemPerPage';
 import { SetURLSearchParams } from 'react-router-dom';
+import classNames from 'classnames';
+import { useDebounce } from 'use-debounce';
 
 type Props = {
   queries: string;
@@ -18,11 +20,15 @@ export const ProductsFilter = ({
   sort,
   perPage,
 }: Props) => {
-  const { setSlideDots, setSlidePages, setPageNumber } =
+  const { setSlideDots, setSlidePages, setPageNumber, themeSwitcher } =
     useContext(CatalogContext);
+  const [debouncedSearch] = useDebounce(queries, 1000);
 
   return (
-    <div className={filter.productsfilter}>
+    <div
+      className={filter.productsfilter}
+      data-theme={themeSwitcher ? 'dark' : 'light'}
+    >
       <div className={filter.query}>
         <label htmlFor="sortby" className={filter.text}>
           Search item
@@ -43,7 +49,7 @@ export const ProductsFilter = ({
             setSlidePages(0);
             setPageNumber(1);
           }}
-          value={queries}
+          value={debouncedSearch}
         />
       </div>
 
@@ -210,9 +216,17 @@ export const ProductsFilter = ({
             </option>
           </select>
         </div>
-        <div className={filter.glass} />
+        <div
+          className={classNames([filter.glass], {
+            [filter.glassONDARK]: themeSwitcher,
+          })}
+        />
       </div>
-      <div className={filter.glassONPHONE} />
+      <div
+        className={classNames([filter.glassONPHONE], {
+          [filter.glassONPHONEONDARK]: themeSwitcher,
+        })}
+      />
     </div>
   );
 };

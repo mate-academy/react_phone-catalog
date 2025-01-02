@@ -1,16 +1,20 @@
 @import '../styles/main';
 
 .navigation {
+  position: sticky;
+  top: 0;
+  z-index: 10;
   display: flex;
   justify-content: space-between;
   height: 48px;
   background-color: var(--background-color);
+  border-bottom: 1px solid #E2E6E9;
+  opacity: 0.9;
+  backdrop-filter: blur(10px);
 
   @include on-desktop {
     height: 64px;
   }
-
-  border-bottom: 1px solid #E2E6E9;
 
   &__logoblock {
     display: flex;
@@ -71,7 +75,6 @@
     @include on-desktop {
       width: 64px;
       height: 64px;
-      margin-right: 24px;
     }
 
     display: flex;
@@ -83,7 +86,6 @@
       border-bottom: 4px solid var(--primary-font-color);
       padding-top: 4px;
     }
-
   }
 }
   &__link {
@@ -127,7 +129,6 @@ color:  var(--secondary-font-color);
       justify-content: space-between;
       align-items: center;
       gap: 16px;
-      margin-right: 48px;
     }
   }
   &__iconsblock {
@@ -147,7 +148,9 @@ color:  var(--secondary-font-color);
       border-left: 1px solid #E2E6E9;
 
       @include on-tablet {
+        width: 100%;
         border: 0;
+        justify-content: flex-end;
       }
   }
 }
@@ -167,8 +170,12 @@ color:  var(--secondary-font-color);
     background-color: var(--background-color);
     border: 0;
     padding: 0;
+    cursor: pointer;
+    &TURNICON {
+      animation: turn-icon 0.3s;
+    }
   }
-  
+
   @include on-tablet {
     display: flex;
     align-items: center;
@@ -177,4 +184,14 @@ color:  var(--secondary-font-color);
     height: 48px;
     border-left: 1px solid #E2E6E9;
   }
+
+  @include on-desktop {
+    width: 64px;
+    height: 64px;
+  }
+}
+
+@keyframes turn-icon {
+  from{transform: rotateY(-0.25turn)}
+  to {transform: rotateY(0)}
 }

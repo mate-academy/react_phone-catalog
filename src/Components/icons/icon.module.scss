@@ -15,6 +15,12 @@
     height: 16px;
     width: 16px;
     cursor: pointer;
+    transform: scale(1);
+    transition: 0.3s ease-in transform;
+    &:hover {
+      transform: scale(1.1);
+      transition: 0.3s ease-in transform;
+    }
     }
 
     display: flex;
@@ -24,6 +30,10 @@
     height: 16px;
     width: 16px;
     cursor: pointer;
+    
+    @include on-tablet {
+      display: none;
+    }
   }
 
     @include on-tablet {

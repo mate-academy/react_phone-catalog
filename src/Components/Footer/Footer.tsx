@@ -12,25 +12,25 @@ export const Footer = () => {
       data-theme={themeSwitcher ? 'dark' : 'light'}
     >
       <div className={footerlogo.logo__footer} />
-      <nav className={footer.footer__navigation}>
-        <a
-          href="https://github.com/robsza1122/react_phone-catalog"
-          className={footer.footer__link}
-        >
+      <nav className={footer.navigation}>
+        <a href="https://github.com/robsza1122" className={footer.link}>
           GITHUB
         </a>
-        <a href="" className={footer.footer__link}>
+        <a href="https://github.com/robsza1122" className={footer.link}>
           CONTACTS
         </a>
-        <a href="" className={footer.footer__link}>
+        <a
+          href="https://github.com/robsza1122/react_phone-catalog"
+          className={footer.link}
+        >
           RIGHTS
         </a>
       </nav>
-      <div className={footer.footer__backtotop}>
-        <div className={footer.footer__text}>Back to top</div>
+      <div className={footer.backtotop}>
+        <div className={footer.text}>Back to top</div>
 
         <button
-          className={footer.footer__linkarrow}
+          className={footer.linkarrow}
           onClick={() =>
             window.scrollTo({
               top: 0,
@@ -39,9 +39,7 @@ export const Footer = () => {
           }
         >
           <div
-            className={
-              themeSwitcher ? footer.footer__arrowONDARK : footer.footer__arrow
-            }
+            className={themeSwitcher ? footer.arrowONDARK : footer.arrow}
           ></div>
         </button>
       </div>

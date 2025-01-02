@@ -10,9 +10,19 @@ import { FilterType } from '../types/FilterType';
 import { CatalogContext } from '../CatalogProvider';
 import { ItemPerPage } from '../types/ItemPerPage';
 import { Pagination } from '../Pagination/Pagination';
+import classNames from 'classnames';
+import { ErrorScreen } from '../ErrorScreen/ErrorScreen';
+import { SkeletonProductCard } from '../ProductCard/SkeletonProductCard';
 
 export const TabletsPage = () => {
-  const { products, setProducts, tablets, pageNumber } =
+  const {
+    products,
+    setProducts,
+    tablets,
+    pageNumber,
+    themeSwitcher,
+    loading,
+    error } =
     useContext(CatalogContext);
 
   const [searchParams, setSearchParams] = useSearchParams();
@@ -121,30 +131,59 @@ export const TabletsPage = () => {
     }
   };
 
+  const getSkeleton = (skeletonItems: number) => {
+    const array: number[] = [];
+
+    if (Number.isNaN(skeletonItems)) {
+      for (let i = 1; i < 124; i++) {
+        array.push(i);
+      }
+
+      return array;
+    }
+
+    for (let i = 1; i < skeletonItems; i++) {
+      array.push(i);
+    }
+
+    return array;
+  };
+
   return (
     <>
       <Navigation />
-      <div className={tabletsPage.productpage}>
-        <div className={tabletsPage.breadcrumbs}>
-          <Link to="/" className={tabletsPage.breadcrumbs__link} />
-          <div className={tabletsPage.breadcrumbs__text}>{'>'} tablets</div>
-        </div>
+      {!error ? (
+        <div
+          className={tabletsPage.productpage}
+          data-theme={themeSwitcher ? 'dark' : 'light'}
+        >
+          <div className={tabletsPage.breadcrumbs}>
+            <Link
+              to="/"
+              className={classNames([tabletsPage.breadcrumbs__link], {
+                [tabletsPage.breadcrumbs__linkONDARK]: themeSwitcher,
+              })}
+            />
+            <div className={tabletsPage.breadcrumbs__text}>{'>'} Phones</div>
+          </div>
 
-        <h1 className={tabletsPage.header}>Tablets</h1>
-        <span
-          className={tabletsPage.amountofmodels}
-        >{`${filteredTablets.length} ${filteredTablets.length === 1 ? 'model' : 'models'}`}</span>
-        <ProductsFilter
-          queries={queries}
-          setParams={setSearchParams}
-          sort={sortOptions}
-          perPage={items}
-        />
-        <div className={tabletsPage.content}>
-          {getVisibleItems(itemsInNumber).length === 0 ? (
-            <h1 className={tabletsPage.noresults}>
-              There are not phones matching the query{' '}
-            </h1>
+          <h1 className={tabletsPage.header}>Mobile phones</h1>
+          <span
+            className={tabletsPage.amountofmodels}
+          >{`${filteredTablets.length} ${filteredTablets.length === 1 ? 'model' : 'models'}`}</span>
+          <ProductsFilter
+            queries={queries}
+            setParams={setSearchParams}
+            sort={sortOptions}
+            perPage={items}
+          />
+
+          {loading && !error && getVisibleItems(itemsInNumber).length === 0 ? (
+            <div className={tabletsPage.content}>
+              {getSkeleton(itemsInNumber).map((_, i) => (
+                <SkeletonProductCard key={i} />
+              ))}
+            </div>
           ) : (
             <div className={tabletsPage.content}>
               {getVisibleItems(itemsInNumber).map(product => (
@@ -152,8 +191,16 @@ export const TabletsPage = () => {
               ))}
             </div>
           )}
+          {!getVisibleItems(itemsInNumber).length && queries && (
+            <h1 className={tabletsPage.noresults}>
+              There are not tablets matching the query ...{' '}
+            </h1>
+          )}
         </div>
-      </div>
+      ) : (
+        <ErrorScreen />
+      )}
+
       {!Number.isNaN(itemsInNumber) &&
         filteredTablets.length >= itemsInNumber && (
         <Pagination

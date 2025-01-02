@@ -30,4 +30,6 @@ export type ContextType = {
   setLoading: (loading: boolean) => void;
   themeSwitcher: boolean;
   setThemeSwitcher: (themeSwitcher: boolean) => void;
+  error: boolean;
+  setError: (error: boolean) => void;
 };

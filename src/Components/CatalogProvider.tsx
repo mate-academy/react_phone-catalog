@@ -3,12 +3,8 @@ import { ContextType } from './types/ContextType';
 import { createContext, useEffect, useState } from 'react';
 import { ProductType } from './types/phones';
 import { Product } from './types/Product';
-import {
-  getAccessories,
-  getPhones,
-  getProducts,
-  getTablets,
-} from '../api/products';
+import { getAccessories,
+  getPhones, getProducts, getTablets } from '../api/products';
 import { useLocaleStorage } from './hooks/useLocaleStorage';
 export const CatalogContext = createContext<ContextType>({
   phones: [],
@@ -39,6 +35,8 @@ export const CatalogContext = createContext<ContextType>({
   setLoading: () => {},
   themeSwitcher: false,
   setThemeSwitcher: () => {},
+  error: false,
+  setError: () => {},
 });
 
 export const GlobalCatalogProvider: React.FC<{
@@ -66,26 +64,45 @@ export const GlobalCatalogProvider: React.FC<{
   const [loading, setLoading] = useState(false);
   // eslint-disable-next-line max-len
   const [themeSwitcher, setThemeSwitcher] = useLocaleStorage('themeSwitcher', false);
+  const [error, setError] = useState(false);
 
   useEffect(() => {
     setLoading(true);
-    getPhones().then(setPhones).finally(() => {
-      setLoading(false);
-    });
+    setError(false);
+    getPhones()
+      .then(setPhones)
+      .catch(() => {
+        setError(true);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
   }, []);
 
   useEffect(() => {
     setLoading(true);
-    getTablets().then(setTablets).finally(() => {
-      setLoading(false);
-    });
+    setError(false);
+    getTablets()
+      .then(setTablets)
+      .catch(() => {
+        setError(true);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
   }, []);
 
   useEffect(() => {
     setLoading(true);
-    getAccessories().then(setAccessories).finally(() => {
-      setLoading(false);
-    });
+    setError(false);
+    getAccessories()
+      .then(setAccessories)
+      .catch(() => {
+        setError(true);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
   }, []);
 
   useEffect(() => {
@@ -130,6 +147,8 @@ export const GlobalCatalogProvider: React.FC<{
         setLoading,
         themeSwitcher,
         setThemeSwitcher,
+        error,
+        setError,
       }}
     >
       {children}

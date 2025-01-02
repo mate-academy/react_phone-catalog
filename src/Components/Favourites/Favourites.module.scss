@@ -1,6 +1,5 @@
 @import '../styles/main';
 
-
   .emptycard {
     &image {
       margin-top: 100px;
@@ -21,11 +20,25 @@ letter-spacing: -0.01em;
 
     }
   }
-  
+
+  .favourites {
+    background-color: var(--background-color);
+  }
+
   .breadcrumbs {
     display: flex;
     margin-left: 16px;
+    padding-top: 25px;
     &__home {
+      &ONDARK {
+        background-image: url('../../img/Home-white.svg');
+      background-repeat: no-repeat;
+      background-position: 0% 1%;
+      background-size: 16px 16px;
+      width: 26px;
+      height: 32px;
+      }
+      
       background-image: url('../../img/Home.svg');
       background-repeat: no-repeat;
       background-position: 0% 1%;
@@ -34,18 +47,18 @@ letter-spacing: -0.01em;
       height: 32px;
     }
    &__text {
+    color: var(--primary-font-color);
     margin-top: 2px;
     font-family: Mont,sans-serif;
     font-size: 12px;
     font-weight: 700;
     line-height: 15.34px;
     text-align: left;
-    color: gray;
    }
   }
 
   .title {
-    grid-column: 1 / 5;
+    color: var(--primary-font-color);
 font-family: Mont-bold, sans-serif;
 font-size: 32px;
 font-weight: 800;
@@ -56,7 +69,6 @@ margin-left: 16px;
   }
 
   .amountofitems {
-    grid-column: 1 / 5;
 font-family: Mont, sans-serif;
 font-size: 14px;
 font-weight: 600;
@@ -71,6 +83,11 @@ margin-left: 16px;
     flex-flow: wrap;
     gap: 12px;
     justify-content: center;
-    margin-top: 30px;
+    margin-top: 40px;
+    padding-bottom: 40px;
 
+    @include on-desktop {
+      width: 1200px;
+      margin: 50px auto 0;
+    }
     }

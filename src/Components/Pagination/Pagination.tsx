@@ -25,6 +25,7 @@ export const Pagination = ({
     slidePages,
     slideDots,
     setSlideDots,
+    themeSwitcher,
   } = useContext(CatalogContext);
 
   const amountOfPages = Math.ceil(filteredItems.length / itemsInNumber);
@@ -42,10 +43,15 @@ export const Pagination = ({
   const pagination = getPagination(amountOfPages);
 
   return (
-    <div className={paginations.pagination}>
+    <div
+      className={paginations.pagination}
+      data-theme={themeSwitcher ? 'dark' : 'light'}
+    >
       <div className={paginations.arrows}>
         <button
-          className={paginations.arrow_to_first}
+          className={classNames([paginations.arrow_to_first], {
+            [paginations.arrow_to_firstONDARK]: themeSwitcher,
+          })}
           onClick={() => {
             setSearchParams(prev => {
               prev.set('page', '1');
@@ -58,7 +64,9 @@ export const Pagination = ({
           }}
         ></button>
         <button
-          className={paginations.arrow__prev}
+          className={classNames([paginations.arrow__prev], {
+            [paginations.arrow__prevONDARK]: themeSwitcher,
+          })}
           onClick={() => {
             setSearchParams(prev => {
               const nextPage = pageNumber - 1;
@@ -157,7 +165,9 @@ export const Pagination = ({
         </div>
 
         <button
-          className={paginations.arrow__next}
+          className={classNames([paginations.arrow__next], {
+            [paginations.arrow__nextONDARK]: themeSwitcher,
+          })}
           onClick={() => {
             setSearchParams(prev => {
               const nextPage = pageNumber + 1;
@@ -193,7 +203,9 @@ export const Pagination = ({
           }}
         ></button>
         <button
-          className={paginations.arrow_to_last}
+          className={classNames([paginations.arrow_to_last], {
+            [paginations.arrow_to_lastONDARK]: themeSwitcher,
+          })}
           onClick={() => {
             setPageNumber(amountOfPages);
             setSlidePages(amountOfPages * -303 + 303);

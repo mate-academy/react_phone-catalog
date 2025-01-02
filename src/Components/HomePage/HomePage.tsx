@@ -6,9 +6,10 @@ import home from './HomePage.module.scss';
 import { Footer } from '../Footer/Footer';
 import { useContext } from 'react';
 import { CatalogContext } from '../CatalogProvider';
+import { ErrorScreen } from '../ErrorScreen/ErrorScreen';
 
 export const HomePage = () => {
-  const { products, themeSwitcher } = useContext(CatalogContext);
+  const { products, themeSwitcher, error } = useContext(CatalogContext);
 
   const getNewestProducts = products.sort((a, b) => b.year - a.year);
 
@@ -17,20 +18,29 @@ export const HomePage = () => {
   return (
     <>
       <Navigation />
-      <h1 className={home.home__phonecatalog}>Phone Catalog</h1>
-      <div className={home.home} data-theme={themeSwitcher ? 'dark' : 'light'}>
-        <h1 className={home.home__title}>Welcome to Nice Gadgets store!</h1>
-        <MainSlider />
-        <CartPage
-          showedProducts={getNewestProducts}
-          swiperTitle="Brand new models"
-        />
-        <Categories />
-        <CartPage
-          showedProducts={getProductsWithDiscount}
-          swiperTitle="Hot prices"
-        />
-      </div>
+      {!error ? (
+        <>
+          <h1 className={home.home__phonecatalog}>Phone Catalog</h1>
+          <div
+            className={home.home}
+            data-theme={themeSwitcher ? 'dark' : 'light'}
+          >
+            <h1 className={home.home__title}>Welcome to Nice Gadgets store!</h1>
+            <MainSlider />
+            <CartPage
+              showedProducts={getNewestProducts}
+              swiperTitle="Brand new models"
+            />
+            <Categories />
+            <CartPage
+              showedProducts={getProductsWithDiscount}
+              swiperTitle="Hot prices"
+            />
+          </div>
+        </>
+      ) : (
+        <ErrorScreen />
+      )}
       <Footer />
     </>
   );

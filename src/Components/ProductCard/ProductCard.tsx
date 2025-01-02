@@ -23,6 +23,7 @@ export const ProductCard = ({ product }: Props) => {
     products,
     setProducts,
     loading,
+    themeSwitcher,
   } = useContext(CatalogContext);
 
   const addItems = (addedItem: Product) => {
@@ -49,7 +50,9 @@ export const ProductCard = ({ product }: Props) => {
     }
 
     if (readyToAdd) {
-      const updateItem = addedItems.filter(item => item.id !== addedItem.id);
+      const updateAddedItem = addedItems.filter(
+        item => item.id !== addedItem.id,
+      );
       const updateProduct = products.map(currentProduct => {
         if (currentProduct.id === addedItem.id) {
           return {
@@ -61,7 +64,38 @@ export const ProductCard = ({ product }: Props) => {
         return currentProduct;
       });
 
-      setAddedItems(updateItem);
+      const updateFavourites = favouriteItems.map(currentProduct => {
+        if (currentProduct.id === addedItem.id) {
+          return {
+            ...currentProduct,
+            amountOfModels: 1,
+          };
+        }
+
+        return currentProduct;
+      });
+
+      setFavouriteItems(updateFavourites);
+      setAddedItems(updateAddedItem);
+      setProducts(updateProduct);
+    }
+
+    if (addedItems.find(item => item.id === addedItem.id)) {
+      const updateAddedItem = addedItems.filter(
+        item => item.id !== addedItem.id,
+      );
+      const updateProduct = products.map(currentProduct => {
+        if (currentProduct.id === addedItem.id) {
+          return {
+            ...currentProduct,
+            amountOfModels: 1,
+          };
+        }
+
+        return currentProduct;
+      });
+
+      setAddedItems(updateAddedItem);
       setProducts(updateProduct);
     }
   };
@@ -78,7 +112,12 @@ export const ProductCard = ({ product }: Props) => {
 
       setFavouriteItems(updateItem);
     } else {
-      setFavouriteItems([...favouriteItems, favouriteProduct]);
+      const updateProduct = {
+        ...favouriteProduct,
+        amountOfModels: 1,
+      };
+
+      setFavouriteItems([...favouriteItems, updateProduct]);
     }
 
     if (readyToAddItem) {
@@ -98,36 +137,37 @@ export const ProductCard = ({ product }: Props) => {
         <div className={card.productcard}>
           <Link
             to={`/${product.category}/${product.itemId}`}
-            className={card.productcard__imagelink}
+            className={card.imagelink}
           >
             <img
-              className={card.productcard__image}
+              className={card.image}
               src={product.image}
               alt={product.name}
             />
           </Link>
-          <h2 className={card.productcard__name}>{product.name}</h2>
-          <div className={card.productcard__prices}>
-            <div className={card.productcard__price}>{`$${product.price}`}</div>
+          <h2 className={card.name}>{product.name}</h2>
+          <div className={card.prices}>
+            <div className={card.price}>{`$${product.price}`}</div>
+            <del className={card.fullprice}>{`$${product.fullPrice}`}</del>
           </div>
-          <div className={card.productcard__line}></div>
-          <div className={card.productcard__description}>
-            <div className={card.productcard__data}>
-              <div className={card.productcard__title}>Screen</div>
-              <div className={card.productcard__value}>{product.screen}</div>
+          <div className={card.line}></div>
+          <div className={card.description}>
+            <div className={card.data}>
+              <div className={card.title}>Screen</div>
+              <div className={card.value}>{product.screen}</div>
             </div>
-            <div className={card.productcard__data}>
-              <div className={card.productcard__title}>Capacity</div>
-              <div className={card.productcard__value}>{product.capacity}</div>
+            <div className={card.data}>
+              <div className={card.title}>Capacity</div>
+              <div className={card.value}>{product.capacity}</div>
             </div>
-            <div className={card.productcard__data}>
-              <div className={card.productcard__title}>RAM</div>
-              <div className={card.productcard__value}>{product.ram}</div>
+            <div className={card.data}>
+              <div className={card.title}>RAM</div>
+              <div className={card.value}>{product.ram}</div>
             </div>
           </div>
-          <div className={card.productcard__buttons}>
+          <div className={card.buttons}>
             <button
-              className={card.productcard__addingbutton}
+              className={card.addingbutton}
               onClick={() => addItems(product)}
             >
               {addedItems.find(item => item.id === product.id)
@@ -135,10 +175,14 @@ export const ProductCard = ({ product }: Props) => {
                 : 'Add to cart'}
             </button>
             <button
-              className={classNames([card.productcard__heart], {
-                [card.productcard__heartisactive]: favouriteItems.find(
+              className={classNames([card.heart], {
+                [card.heartisactive]: favouriteItems.find(
                   item => item.id === product.id,
                 ),
+                [card.heartONDARK]: themeSwitcher,
+                [card.heartONDARKISACTIVE]:
+                  themeSwitcher &&
+                  favouriteItems.find(item => item.id === product.id),
               })}
               onClick={() => addFavouriteProduct(product)}
             ></button>

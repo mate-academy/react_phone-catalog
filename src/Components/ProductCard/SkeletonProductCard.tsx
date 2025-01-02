@@ -38,7 +38,7 @@ export const SkeletonProductCard = () => {
       <div className={card.productcard__prices}>
         <div
           className="react-loading-skeleton"
-          style={{ width: '60%', margin: '0 auto' }}
+          style={{ width: '60%', marginLeft: '45px' }}
         >
           ...
         </div>
@@ -47,21 +47,21 @@ export const SkeletonProductCard = () => {
       <div className={card.productcard__description}>
         <div
           className="react-loading-skeleton"
-          style={{ width: '60%', margin: '0 auto' }}
+          style={{ width: '60%', marginLeft: '45px' }}
         >
           <div className={card.productcard__title}>...</div>
           <div className={card.productcard__value}>{product.screen}</div>
         </div>
         <div
           className="react-loading-skeleton"
-          style={{ width: '60%', margin: '0 auto' }}
+          style={{ width: '60%', marginLeft: '45px' }}
         >
           <div className={card.productcard__title}>...</div>
           <div className={card.productcard__value}>{product.capacity}</div>
         </div>
         <div
           className="react-loading-skeleton"
-          style={{ width: '60%', margin: '0 auto' }}
+          style={{ width: '60%', marginLeft: '45px' }}
         >
           <div className={card.productcard__title}>...</div>
           <div className={card.productcard__value}>{product.ram}</div>

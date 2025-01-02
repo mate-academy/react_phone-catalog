@@ -11,13 +11,20 @@ import { CatalogContext } from '../CatalogProvider';
 import { ItemPerPage } from '../types/ItemPerPage';
 import { Pagination } from '../Pagination/Pagination';
 import { SkeletonProductCard } from '../ProductCard/SkeletonProductCard';
+import classNames from 'classnames';
+import { ErrorScreen } from '../ErrorScreen/ErrorScreen';
 
 export const PhonesPage = () => {
-  const { products, setProducts, phones, pageNumber, loading } =
-    useContext(CatalogContext);
-
+  const {
+    products,
+    setProducts,
+    phones,
+    pageNumber,
+    loading,
+    themeSwitcher,
+    error,
+  } = useContext(CatalogContext);
   const [searchParams, setSearchParams] = useSearchParams();
-
   const queries = searchParams.get('query') || '';
   const sortOptions = searchParams.get('sort') || '';
   const items = searchParams.get('perPage') || '';
@@ -143,42 +150,54 @@ export const PhonesPage = () => {
   return (
     <>
       <Navigation />
-      <div className={phonesPage.productpage}>
-        <div className={phonesPage.breadcrumbs}>
-          <Link to="/" className={phonesPage.breadcrumbs__link} />
-          <div className={phonesPage.breadcrumbs__text}>{'>'} Phones</div>
+      {!error ? (
+        <div
+          className={phonesPage.productpage}
+          data-theme={themeSwitcher ? 'dark' : 'light'}
+        >
+          <div className={phonesPage.breadcrumbs}>
+            <Link
+              to="/"
+              className={classNames([phonesPage.breadcrumbs__link], {
+                [phonesPage.breadcrumbs__linkONDARK]: themeSwitcher,
+              })}
+            />
+            <div className={phonesPage.breadcrumbs__text}>{'>'} Phones</div>
+          </div>
+
+          <h1 className={phonesPage.header}>Mobile phones</h1>
+          <span
+            className={phonesPage.amountofmodels}
+          >{`${filteredPhones.length} ${filteredPhones.length === 1 ? 'model' : 'models'}`}</span>
+          <ProductsFilter
+            queries={queries}
+            setParams={setSearchParams}
+            sort={sortOptions}
+            perPage={items}
+          />
+
+          {loading && !error && getVisibleItems(itemsInNumber).length === 0 ? (
+            <div className={phonesPage.content}>
+              {getSkeleton(itemsInNumber).map((_, i) => (
+                <SkeletonProductCard key={i} />
+              ))}
+            </div>
+          ) : (
+            <div className={phonesPage.content}>
+              {getVisibleItems(itemsInNumber).map(product => (
+                <ProductCard product={product} key={product.id} />
+              ))}
+            </div>
+          )}
+          {!getVisibleItems(itemsInNumber).length && queries && (
+            <h1 className={phonesPage.noresults}>
+              There are not phones matching the query ...{' '}
+            </h1>
+          )}
         </div>
-
-        <h1 className={phonesPage.header}>Mobile phones</h1>
-        <span
-          className={phonesPage.amountofmodels}
-        >{`${filteredPhones.length} ${filteredPhones.length === 1 ? 'model' : 'models'}`}</span>
-        <ProductsFilter
-          queries={queries}
-          setParams={setSearchParams}
-          sort={sortOptions}
-          perPage={items}
-        />
-
-        {loading && getVisibleItems(itemsInNumber).length === 0 ? (
-          <div className={phonesPage.content}>
-            {getSkeleton(itemsInNumber).map((_, i) => (
-              <SkeletonProductCard key={i} />
-            ))}
-          </div>
-        ) : (
-          <div className={phonesPage.content}>
-            {getVisibleItems(itemsInNumber).map(product => (
-              <ProductCard product={product} key={product.id} />
-            ))}
-          </div>
-        )}
-        {!getVisibleItems(itemsInNumber).length && queries && (
-          <h1 className={phonesPage.noresults}>
-            There are not phones matching the query ...{' '}
-          </h1>
-        )}
-      </div>
+      ) : (
+        <ErrorScreen />
+      )}
 
       {!Number.isNaN(itemsInNumber) &&
         filteredPhones.length > itemsInNumber && (
@@ -189,6 +208,7 @@ export const PhonesPage = () => {
             setSearchParams={setSearchParams}
           />
         )}
+
       <Footer />
     </>
   );

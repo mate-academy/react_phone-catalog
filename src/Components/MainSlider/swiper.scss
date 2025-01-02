@@ -7,14 +7,14 @@
   @include slider-on-tablet {
     display: block;
     font-size: 30px;
-    color: rgb(186, 184, 184);
-    background-color: white;
+    color: var(--secondary-font-color);
+    background-color: var(--background-color);
     border-radius: 10px 0 0 10px;
-    border: 1px solid rgb(186, 184, 184);
+    border: 1px solid var(--secondary-font-color);
     width: 20px;
     height: 100%;
     &:hover {
-      background-color: rgb(242, 235, 235);
+      background-color: var(--background-color);
       transition: 0.3s ease transform;
       transform: rotateY(360deg);
     }
@@ -28,14 +28,14 @@
   @include slider-on-tablet {
     display: block;
     font-size: 30px;
-    color: rgb(186, 184, 184);
-    background-color: white;
+    color: var(--secondary-font-color);
+    background-color: var(--background-color);
     border-radius: 0 10px 10px 0;
-    border: 1px solid rgb(186, 184, 184);;
+    border: 1px solid var(--secondary-font-color);
     width: 20px;
     height: 100vh;
     &:hover {
-      background-color: rgb(242, 235, 235);
+      background-color: var(--background-color);
       transition: 0.3s ease transform;
       transform: rotateY(360deg);
     }

@@ -6,6 +6,8 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/effect-cube';
+import { useContext } from 'react';
+import { CatalogContext } from '../CatalogProvider';
 
 const bannerPhotos = [
   {
@@ -26,6 +28,8 @@ const bannerPhotos = [
 ];
 
 export const MainSlider = () => {
+  const { themeSwitcher } = useContext(CatalogContext);
+
   return (
     <Swiper
       effect={'cube'}
@@ -51,9 +55,9 @@ export const MainSlider = () => {
               style={{
                 width: '35px',
                 height: 'auto',
-                border: '1px solid black',
                 marginLeft: '2%',
               }}
+              data-theme={themeSwitcher ? 'dark' : 'light'}
             >
               {'<'}
             </button>
@@ -67,7 +71,6 @@ export const MainSlider = () => {
               style={{
                 width: '35px',
                 height: 'auto',
-                border: '1px solid black',
                 marginRight: '2%',
               }}
             >

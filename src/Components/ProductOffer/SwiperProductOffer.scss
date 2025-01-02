@@ -29,7 +29,7 @@
     display: flex;
     justify-content: center;
     width: 40%;
-    
+
     @include on-tablet {
       height: 100%;
     }
@@ -103,7 +103,6 @@
   width: 51.5px !important;
   margin-bottom: 6px;
   height: 56px;
-  border: 2px solid black;
   z-index: 1;
 
   @include on-tablet {

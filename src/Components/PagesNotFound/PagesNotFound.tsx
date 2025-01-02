@@ -1,13 +1,31 @@
+import { useContext } from 'react';
 import { Footer } from '../Footer/Footer';
 import { Navigation } from '../Navigation/Navigation';
-import './PagesNotFound.scss';
+import page from './PagesNotFound.module.scss';
+import { CatalogContext } from '../CatalogProvider';
 
 export const PagesNotFound = () => {
+  const { themeSwitcher } = useContext(CatalogContext);
+
   return (
     <>
       <Navigation />
-      <h1 className="pagesnotfound__empty-card--title">Page not found :)</h1>
-      <div className="pagesnotfound__empty-card--image"></div>
+      <div className={page.page}>
+        <h1
+          className={page.title}
+          data-theme={themeSwitcher ? 'dark' : 'light'}
+        >
+          Page not found :)
+        </h1>
+        <img
+          src={
+            themeSwitcher
+              ? '/img/videoframe_15965.png'
+              : '/img/page-not-found.png'
+          }
+          className={page.image}
+        />
+      </div>
       <Footer />
     </>
   );

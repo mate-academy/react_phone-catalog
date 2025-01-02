@@ -11,13 +11,24 @@ import { CatalogContext } from '../CatalogProvider';
 import { ItemPerPage } from '../types/ItemPerPage';
 import { Pagination } from '../Pagination/Pagination';
 import { useSearchParams } from 'react-router-dom';
+import classNames from 'classnames';
+import { ErrorScreen } from '../ErrorScreen/ErrorScreen';
+import { SkeletonProductCard } from '../ProductCard/SkeletonProductCard';
 
 export const AccessoriesPage = () => {
-  const { products, setProducts, accessories, pageNumber } =
+  const {
+    products,
+    setProducts,
+    accessories,
+    pageNumber,
+    themeSwitcher,
+    error,
+    loading,
+  } =
     useContext(CatalogContext);
 
-  const [searchParams, setSearchParams] = useSearchParams();
 
+  const [searchParams, setSearchParams] = useSearchParams();
   const queries = searchParams.get('query') || '';
   const sortOptions = searchParams.get('sort') || '';
   const items = searchParams.get('perPage') || '';
@@ -122,32 +133,60 @@ export const AccessoriesPage = () => {
     }
   };
 
+  const getSkeleton = (skeletonItems: number) => {
+    const array: number[] = [];
+
+    if (Number.isNaN(skeletonItems)) {
+      for (let i = 1; i < 124; i++) {
+        array.push(i);
+      }
+
+      return array;
+    }
+
+    for (let i = 1; i < skeletonItems; i++) {
+      array.push(i);
+    }
+
+    return array;
+  };
+
   return (
     <>
       <Navigation />
-      <div className={accessoriesPage.productpage}>
-        <div className={accessoriesPage.breadcrumbs}>
-          <Link to="/" className={accessoriesPage.breadcrumbs__link} />
-          <div className={accessoriesPage.breadcrumbs__text}>
-            {'>'} accessories
+      {!error ? (
+        <div
+          className={accessoriesPage.productpage}
+          data-theme={themeSwitcher ? 'dark' : 'light'}
+        >
+          <div className={accessoriesPage.breadcrumbs}>
+            <Link
+              to="/"
+              className={classNames([accessoriesPage.breadcrumbs__link], {
+                [accessoriesPage.breadcrumbs__linkONDARK]: themeSwitcher,
+              })}
+            />
+            <div className={accessoriesPage.breadcrumbs__text}>
+              {'>'} Accessories</div>
           </div>
-        </div>
 
-        <h1 className={accessoriesPage.header}>Mobile phones</h1>
-        <span
-          className={accessoriesPage.amountofmodels}
-        >{`${filteredAccessories.length} ${filteredAccessories.length === 1 ? 'model' : 'models'}`}</span>
-        <ProductsFilter
-          queries={queries}
-          setParams={setSearchParams}
-          sort={sortOptions}
-          perPage={items}
-        />
-        <div className={accessoriesPage.content}>
-          {getVisibleItems(itemsInNumber).length === 0 ? (
-            <h1 className={accessoriesPage.noresults}>
-              There are not phones matching the query{' '}
-            </h1>
+          <h1 className={accessoriesPage.header}>Mobile phones</h1>
+          <span
+            className={accessoriesPage.amountofmodels}
+          >{`${filteredAccessories.length} ${filteredAccessories.length === 1 ? 'model' : 'models'}`}</span>
+          <ProductsFilter
+            queries={queries}
+            setParams={setSearchParams}
+            sort={sortOptions}
+            perPage={items}
+          />
+
+          {loading && !error && getVisibleItems(itemsInNumber).length === 0 ? (
+            <div className={accessoriesPage.content}>
+              {getSkeleton(itemsInNumber).map((_, i) => (
+                <SkeletonProductCard key={i} />
+              ))}
+            </div>
           ) : (
             <div className={accessoriesPage.content}>
               {getVisibleItems(itemsInNumber).map(product => (
@@ -155,8 +194,16 @@ export const AccessoriesPage = () => {
               ))}
             </div>
           )}
+          {!getVisibleItems(itemsInNumber).length && queries && (
+            <h1 className={accessoriesPage.noresults}>
+              There are not accessories matching the query ...{' '}
+            </h1>
+          )}
         </div>
-      </div>
+      ) : (
+        <ErrorScreen />
+      )}
+
       {!Number.isNaN(itemsInNumber) &&
         filteredAccessories.length >= itemsInNumber && (
         <Pagination

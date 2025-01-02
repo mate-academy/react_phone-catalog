@@ -11,6 +11,7 @@ export const Navigation = () => {
   const { addedItems, favouriteItems, themeSwitcher, setThemeSwitcher } =
     useContext(CatalogContext);
   const [showMenu, setShowMenu] = useState(false);
+  const [turnIcon, setTurnIcon] = useState(false);
 
   const getSelectedLink = ({ isActive }: { isActive: boolean }) => {
     return classNames([nav.navigation__link], {
@@ -63,8 +64,16 @@ export const Navigation = () => {
             <div className={nav.navigation__iconsblock}>
               <div className={nav.blockswitcher}>
                 <button
-                  className={nav.blockswitcher__button}
-                  onClick={() => setThemeSwitcher(!themeSwitcher)}
+                  className={classNames([nav.blockswitcher__button], {
+                    [nav.blockswitcher__buttonTURNICON]: turnIcon,
+                  })}
+                  onClick={() => {
+                    setThemeSwitcher(!themeSwitcher);
+                    setTurnIcon(true);
+                  }}
+                  onAnimationEnd={() => {
+                    setTurnIcon(false);
+                  }}
                 >
                   <img
                     className={icons.icon__switcher}
