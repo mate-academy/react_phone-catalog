@@ -49,7 +49,7 @@ export const Categories: React.FC = () => {
   if (loading) {
     return (
       <div className={style.container}>
-        <h2 className={style.title}>Shop by category</h2>
+        <h1 className={style.title}>Shop by category</h1>
         <div className={style.categories}>
           {Array.from({ length: 3 }, (_, index) => (
             <div className={style.cart} key={index}>
