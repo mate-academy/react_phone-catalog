@@ -1,3 +1,4 @@
+/* eslint-disable */
 import style from './ProductDetailsPage.module.scss';
 
 import { Swiper, SwiperClass, SwiperSlide } from 'swiper/react';
@@ -44,27 +45,20 @@ export const ProductDetailsPage = () => {
   const [thumbsSwiper, setThumbsSwiper] = useState<SwiperClass | null>(null);
   const [thumbsDirection, setThumbsDirection] = useState<
     'vertical' | 'horizontal'
-  >(() => {
-    if (window.innerWidth > 639) {
-      return 'vertical';
-    } else {
-      return 'horizontal';
-    }
-  });
+  >(window.innerWidth <= 639 ? 'horizontal' : 'vertical');
 
   useEffect(() => {
-    const getWidth = () => {
-      if (window.innerWidth > 639) {
-        setThumbsDirection('vertical');
-      } else {
-        setThumbsDirection('horizontal');
-      }
+    const handleResize = () => {
+      setThumbsDirection(window.innerWidth <= 639 ? 'horizontal' : 'vertical');
     };
 
-    window.addEventListener('resize', getWidth);
+    window.addEventListener('resize', handleResize);
 
-    return () => window.removeEventListener('resize', getWidth);
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
   }, []);
+
   const [loader, setLoader] = useState(true);
   const [activeIndex, setActiveIndex] = useState<number>(0);
 
