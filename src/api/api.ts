@@ -121,4 +121,8 @@ export const getFromLocalStorage = (key: string) => {
 
 export const setInLocalStorage = (key: string, value: string | Object) => {
   localStorage.setItem(key, JSON.stringify(value));
+
+  window.dispatchEvent(
+    new StorageEvent('storage', { storageArea: localStorage }),
+  );
 };

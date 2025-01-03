@@ -75,5 +75,35 @@
         padding-bottom: 13px;
       }
     }
+
+    &-container {
+      position: relative;
+
+      display: flex;
+    }
+
+    &-count {
+      position: absolute;
+
+      bottom: 7px;
+      left: 7px;
+
+      width: 16px;
+      height: 16px;
+      box-sizing: border-box;
+
+      display: flex;
+      justify-content: center;
+      align-items: end;
+
+      border-radius: 100%;
+
+      background-color: #eb5757;
+      border: 1px solid #ffffff;
+
+      font-size: 9px;
+      font-weight: vars.$font-weight-semi-bold;
+      color: white;
+    }
   }
 }

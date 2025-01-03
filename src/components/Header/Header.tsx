@@ -1,18 +1,49 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import classNames from 'classnames';
 import { MainNav } from '../MainNav';
 import './Header.scss';
+import { getCart } from '../../api/cart';
+import { getFavourites } from '../../api/favourites';
 
 type Props = {
   openMenu: () => void;
 };
 
 export const Header: React.FC<Props> = ({ openMenu }) => {
+  const [cartCount, setCartCount] = useState(0);
+  const [favouritesCount, setFavouritesCount] = useState(0);
+
   const buttonClass = (props: { isActive: boolean }) =>
     classNames('header__button', {
       'header__button--selected': props.isActive,
     });
+
+  const updateCart = () => {
+    setCartCount(getCart().length);
+  };
+
+  const updateFavourites = () => {
+    setFavouritesCount(getFavourites().length);
+  };
+
+  useEffect(() => {
+    updateCart();
+    updateFavourites();
+
+    const handler = (event: StorageEvent) => {
+      if (event.storageArea === localStorage) {
+        updateCart();
+        updateFavourites();
+      }
+    };
+
+    window.addEventListener('storage', handler);
+
+    return () => {
+      window.removeEventListener('storage', handler);
+    };
+  }, []);
 
   return (
     <header className="header">
@@ -26,11 +57,22 @@ export const Header: React.FC<Props> = ({ openMenu }) => {
 
       <div className="header__buttons">
         <NavLink className={buttonClass} to="/favourites">
-          <img src="/icons/favourite.svg" alt="Favourite icon" />
+          <div className="header__button-container">
+            <img src="/icons/favourite.svg" alt="Favourite icon" />
+            {!!favouritesCount && (
+              <div className="header__button-count">{favouritesCount}</div>
+            )}
+          </div>
         </NavLink>
 
         <NavLink className={buttonClass} to="/cart">
-          <img src="/icons/cart.svg" alt="Cart icon" />
+          <div className="header__button-container">
+            <img src="/icons/cart.svg" alt="Cart icon" />
+
+            {!!cartCount && (
+              <div className="header__button-count">{cartCount}</div>
+            )}
+          </div>
         </NavLink>
       </div>
 
