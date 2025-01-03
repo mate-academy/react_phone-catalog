@@ -171,6 +171,12 @@
 
       border: 1px solid vars.$color-elements;
 
+      transition: border-color vars.$transition-time;
+
+      &:hover {
+        border-color: #b4bdc3;
+      }
+
       &--selected {
         border-color: vars.$color-primary;
       }

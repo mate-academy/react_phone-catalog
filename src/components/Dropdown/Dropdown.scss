@@ -11,7 +11,7 @@
     display: flex;
     justify-content: space-between;
 
-    transition: border-color 300ms;
+    transition: border-color vars.$transition-time;
 
     &:hover {
       border-color: vars.$color-secondary;
@@ -47,8 +47,8 @@
     color: vars.$color-secondary;
 
     transition:
-      color 300ms,
-      background-color 300ms;
+      color vars.$transition-time,
+      background-color vars.$transition-time;
 
     &:hover {
       color: vars.$color-primary;

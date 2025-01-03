@@ -1,3 +1,5 @@
+@use 'styles/vars';
+
 .product-slider {
   display: flex;
   gap: 24px;
@@ -21,6 +23,6 @@
     display: flex;
     gap: 16px;
 
-    transition: transform 300ms;
+    transition: transform vars.$transition-time;
   }
 }

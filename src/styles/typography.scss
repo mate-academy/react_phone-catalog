@@ -76,6 +76,12 @@ button,
 
   text-decoration: none;
 
+  transition: box-shadow vars.$transition-time;
+
+  &:not(&--white, &--text, &--arrow):hover {
+    box-shadow: 0px 3px 13px 0px #17203166;
+  }
+
   @include mixins.media-tablet {
     padding: 9.5px 22px;
   }
@@ -90,6 +96,15 @@ button,
     padding: 0;
     background: none;
     border: none;
+  }
+
+  &--white,
+  &--text {
+    transition: border-color 300ms;
+
+    &:hover {
+      border-color: #313237;
+    }
   }
 
   &--wide {
@@ -109,6 +124,12 @@ button,
 
     border: 1px solid vars.$color-icons;
     background: none;
+
+    transition: border-color 300ms;
+
+    &:hover {
+      border-color: #313237;
+    }
 
     &--small-padding {
       padding: 8.5px;
@@ -138,7 +159,13 @@ button,
 
     border: 1px solid vars.$color-icons;
 
-    transition: opacity 300ms;
+    transition:
+      opacity vars.$transition-time,
+      border-color vars.$transition-time;
+
+    &:hover {
+      border-color: #313237;
+    }
 
     & img {
       height: 16px;

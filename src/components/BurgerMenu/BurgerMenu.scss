@@ -21,8 +21,8 @@
 
   @include mixins.media-phone {
     transition:
-      opacity 300ms,
-      pointer-events 300ms;
+      opacity vars.$transition-time,
+      pointer-events vars.$transition-time;
   }
 
   body:has(&--opened) {
