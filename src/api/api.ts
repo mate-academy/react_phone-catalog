@@ -15,6 +15,8 @@ interface Options {
   sortBy?: SortType;
   filter?: string;
   itemIds?: string[];
+  excludeId?: string;
+  shuffle?: boolean;
 }
 
 const getData = async <T>(jsonPath: string): Promise<T> => {
@@ -74,6 +76,25 @@ const filterIds = (products: ProductType[], itemIds?: string[]) => {
   return products.filter(product => itemIds.includes(product.itemId));
 };
 
+const excludeId = (products: ProductType[], excludeId?: string) => {
+  if (!excludeId) {
+    return products;
+  }
+
+  return products.filter(product => product.itemId !== excludeId);
+};
+
+const shuffle = (products: ProductType[], shuffle?: boolean) => {
+  if (!shuffle) {
+    return products;
+  }
+
+  return products
+    .map(value => ({ value, sort: Math.random() }))
+    .sort((a, b) => a.sort - b.sort)
+    .map(({ value }) => value);
+};
+
 export const getProducts = async (
   options: Options = { perPage: 16 },
   category?: Category,
@@ -85,7 +106,12 @@ export const getProducts = async (
   let products = await getData<ProductType[]>(productsJson);
 
   products = filterProductsByCategory(products, category);
-  products = sortProducts(products, options.sortBy);
+
+  if (options.shuffle) {
+    products = shuffle(products, options.shuffle);
+  } else {
+    products = sortProducts(products, options.sortBy);
+  }
 
   const totalProducts = products.length;
   const pages = countPages(products.length, options.perPage);
@@ -95,6 +121,8 @@ export const getProducts = async (
   } else {
     products = limitProducts(products, options.perPage, options.page);
   }
+
+  products = excludeId(products, options.excludeId);
 
   return { products, pages, totalProducts };
 };

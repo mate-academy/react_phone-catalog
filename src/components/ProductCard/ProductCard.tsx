@@ -3,13 +3,14 @@ import classNames from 'classnames';
 import { Link } from 'react-router-dom';
 import { ProductType } from '../../types/ProductType';
 import { ProductSpecs } from '../ProductSpecs';
-import './ProductCard.scss';
 import {
   addFavourite,
   isFavourite,
   removeFavourite,
 } from '../../api/favourites';
 import { addToCart, isInCart, removeFromCart } from '../../api/cart';
+import { NormalizeImagePath } from '../../utils/NormalizeImagePath';
+import './ProductCard.scss';
 
 type Props = {
   product: ProductType;
@@ -47,7 +48,11 @@ export const ProductCard: React.FC<Props> = React.memo(
     return (
       <div className="product-card">
         <Link to={`/product/${itemId}`} className="product-card__link">
-          <img src={image} alt={name} className="product-card__image" />
+          <img
+            src={NormalizeImagePath(image)}
+            alt={name}
+            className="product-card__image"
+          />
         </Link>
 
         <div className="product-card__container">
