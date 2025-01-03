@@ -8,7 +8,7 @@
   position: sticky;
   top: 0;
   box-shadow: 0 1px 0 0 #E2E6E9;
-  z-index: 3;
+  z-index: 40;
 
   @include on-desktop {
     height: 64px;
@@ -23,8 +23,6 @@
       display: flex;
       gap: 16px;
     }
-
-
   }
 
   &__menu {
@@ -42,7 +40,7 @@
     justify-content: center;
     align-items: center;
     min-width: 48px;
-    border-bottom: 1px solid #E2E6E9;
+    box-shadow: -1px 1px 0 0 #E2E6E9;
     margin-left: auto;
 
     @include on-tablet {
@@ -81,7 +79,7 @@
   align-items: center;
   width: 100%;
   flex-basis: 100%;
-  position: absolute;
+  position: fixed;
   top: 49px;
   left: 0;
   background: $white;
@@ -90,6 +88,7 @@
   transition: min-height $hover-transition ease, opacity $hover-transition ease;
   overflow: hidden;
   opacity: 0;
+  z-index: 10;
 
   @include on-tablet {
     flex-direction: row;

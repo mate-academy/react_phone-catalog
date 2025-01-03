@@ -10,6 +10,7 @@
   border-radius: 50%;
   border: 1px solid $elements;
   flex-shrink: 0;
+  cursor: pointer;
 
   @include hover {
     background-color: $hover-and-bg;
