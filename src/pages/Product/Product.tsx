@@ -5,8 +5,9 @@ import { Breadcrumbs } from '../../components/Breadcrumbs';
 import { ProductSlider } from '../../components/ProductSlider';
 import { ProductSpecs } from '../../components/ProductSpecs';
 import { useEffect, useState } from 'react';
-import { getProduct } from '../../api/api';
+import { getProduct, getProducts } from '../../api/api';
 import { ProductItemType } from '../../types/ProductItemType';
+import { ProductType } from '../../types/ProductType';
 import { NormalizeImagePath } from '../../utils/NormalizeImagePath';
 import { getColorByName } from '../../utils/Colors';
 import './Product.scss';
@@ -21,6 +22,7 @@ export const Product = () => {
   const [product, setProduct] = useState<ProductItemType | undefined>(
     undefined,
   );
+  const [suggestions, setSuggestions] = useState<ProductType[]>([]);
   const { id } = useParams();
   const location = useLocation();
   const [inFavourites, setInFavourites] = useState(false);
@@ -66,8 +68,15 @@ export const Product = () => {
     setInCart(isInCart(id));
   };
 
+  const fetchSuggestions = async () => {
+    const fetchedProducts = await getProducts({ shuffle: true, excludeId: id });
+
+    setSuggestions(fetchedProducts.products);
+  };
+
   useEffect(() => {
     fetchProduct();
+    fetchSuggestions();
   }, [id]);
 
   if (!product) {
@@ -256,7 +265,7 @@ export const Product = () => {
       </div>
 
       <div className="product__slider">
-        <ProductSlider products={[]} title="You may also like" />
+        <ProductSlider products={suggestions} title="You may also like" />
       </div>
     </div>
   );
