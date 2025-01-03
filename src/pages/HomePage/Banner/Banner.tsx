@@ -2,6 +2,7 @@ import './Banner.scss';
 import '../../../utils/main.scss';
 import { useEffect, useRef, useState } from 'react';
 import classNames from 'classnames';
+import { useAppSelector } from '../../../app/hooks';
 
 export const Banner = () => {
   const BASE_URL =
@@ -44,19 +45,30 @@ export const Banner = () => {
     return () => clearTimeout(timerRef.current);
   });
 
+  const theme = useAppSelector(state => state.themeSwitcher.theme);
+
+  const titleClass = `banner__title theme-${theme}`;
+  const bannerClass = `banner__button theme-${theme}`;
+  const bannerLeft = `banner__left theme-${theme}`;
+  const bannerRight = `banner__right theme-${theme}`;
+  const bannerRectangle = `banner__rectangle__img theme-${theme}`;
+
+  const rectangleActive = `banner__rectangle__img__active theme-${theme}`;
+
   return (
     <div className="banner grid--tablet grid--desktop">
       <h1
-        className="banner__title 
+        className={`${titleClass} 
         grid__item--tablet-1-9
-        grid__item--desktop-1-19"
+        grid__item--desktop-1-19`}
       >
         Welcome to Nice Gadgets store!
       </h1>
       <button
-        className="banner__button banner__left
-        grid__item--tablet-1
-        grid__item--desktop-1"
+        className={`${bannerClass}
+          ${bannerLeft}
+          grid__item--tablet-1
+          grid__item--desktop-1`}
         type="button"
         onClick={prevSlide}
       ></button>
@@ -80,9 +92,10 @@ export const Banner = () => {
         </div>
       </div>
       <button
-        className="banner__button banner__right
-            grid__item--tablet-12
-            grid__item--desktop-24"
+        className={`${bannerClass}
+          ${bannerRight}
+          grid__item--tablet-12
+          grid__item--desktop-24`}
         type="button"
         onClick={nextSlide}
       ></button>
@@ -93,19 +106,19 @@ export const Banner = () => {
         grid__item--desktop-13-14"
       >
         <div
-          className={classNames('banner__rectangle__img', {
-            'banner__rectangle__img--active': currentIndex === 0,
-          })}
+          className={classNames(`${bannerRectangle}`, 
+            currentIndex === 0 ? `${rectangleActive}` : ''
+          )}
         ></div>
         <div
-          className={classNames('banner__rectangle__img', {
-            'banner__rectangle__img--active': currentIndex === 1,
-          })}
+          className={classNames(`${bannerRectangle}`, 
+          currentIndex === 1 ? `${rectangleActive}` : ''
+          )}
         ></div>
         <div
-          className={classNames('banner__rectangle__img', {
-            'banner__rectangle__img--active': currentIndex === 2,
-          })}
+          className={classNames(`${bannerRectangle}`, 
+          currentIndex === 2 ? `${rectangleActive}` : ''
+          )}
         ></div>
       </div>
     </div>

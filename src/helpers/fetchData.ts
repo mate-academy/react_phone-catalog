@@ -1,7 +1,8 @@
-import { TabAccessPhone } from '../types/tabAccessPhones';
+import { TabAccessPhone } from "../types/tabAccessPhones";
+
 const BASE_URL = 'https://hanna-balabukha.github.io/react_phone-catalog/api/';
 
-export function getProduct(Url: string) {
+export function getJson<T = any>(Url: string): Promise<T> {
   return fetch(BASE_URL + Url).then(response => {
     if (!response.ok) {
       throw new Error('Network response was not ok');

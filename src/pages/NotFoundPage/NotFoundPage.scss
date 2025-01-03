@@ -1,0 +1,16 @@
+@import '../../utils/main';
+
+.notPage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  &__title {
+    margin-bottom: 20px;
+
+    &.theme-dark {
+      color: $grey-white;
+    }
+  }
+}

@@ -4,10 +4,28 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  position: relative;
   min-height: 100vh;
 
   @include on-tablet {
     display: flex;
-    // justify-content: center;
+    padding-bottom: 50px;
+  }
+
+  &--theme-dark {
+    background-color: $header-background;
+  }
+}
+
+.App-wrapper {
+  --headerBackground: #fff;
+  --headerColor: #89939A;
+  --greyWhite: #F1F2F9;
+
+  &__theme-dark {
+    --headerBackground: #0F1121;
+    --headerColor: #75767F;
+    --headerMain: var(--greyWhite);
+    --lineDark: #3B3E4A;
   }
 }

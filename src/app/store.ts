@@ -1,9 +1,7 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
 import favSlice from '../features/favSlice';
 import productInfoSlice from '../features/productInfoSlice';
-import productssSlice from '../features/productssSlice';
 import storage from 'redux-persist/lib/storage';
-// import { persistReducer, persistStore } from 'redux-persist';
 import {
   persistStore,
   persistReducer,
@@ -16,29 +14,38 @@ import {
 } from 'redux-persist';
 import cartSlice from '../features/cartSlice';
 import seacrchSlice from '../features/seacrchSlice';
+import themeSlice from '../features/themeSlice';
+import allProductsSlice from '../features/allProductsSlice';
 
-const persistConfig = {
+const persistFavorite = {
   key: 'favorite',
   storage,
 };
 
-const persistConf = {
+const persistCart = {
   key: 'cart',
   storage,
 };
 
-const persistedReducer = persistReducer(persistConfig, favSlice);
-const persistedReduc = persistReducer(persistConf, cartSlice);
+const persistTheme = {
+  key: 'theme',
+  storage,
+};
+
+const persistedFavorite = persistReducer(persistFavorite, favSlice);
+const persistedCart = persistReducer(persistCart, cartSlice);
+const persistedTheme = persistReducer(persistTheme, themeSlice);
 
 export const store = configureStore({
   reducer: {
-    products: productssSlice,
+    allProducts: allProductsSlice,
     selectedProduct: productInfoSlice,
-    favourites: persistedReducer,
-    cartItems: persistedReduc,
+    favourites: persistedFavorite,
+    cartItems: persistedCart,
     search: seacrchSlice,
-    // themeSwitcher: themeSlice,
+    themeSwitcher: persistedTheme,
   },
+
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({
       serializableCheck: {

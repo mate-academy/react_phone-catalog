@@ -1,0 +1,56 @@
+@import '../../utils/main';
+
+.arrays {
+  display: flex;
+
+  &__button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 32px;
+    height: 32px;
+    background-color: #fff;
+    border: 1px solid $border-capacity;
+    cursor: pointer;
+
+    &:hover {
+      border: 1px solid #313237;
+    }
+
+    &:disabled {
+      border: 1px solid $border;
+    }
+
+    &.theme-dark {
+      background-color: #323542;
+      border: 1px solid #323542;
+
+      &:hover {
+        background-color: #4A4D58;
+        border: 1px solid #4A4D58;
+      }
+
+      &:disabled {
+        border: 1px solid #3B3E4A;
+        background-color: $header-background;
+      }
+    }
+
+    &.theme-blue,
+    &.theme-purple,
+    &.theme-orange {
+      border-radius: 50%;
+    }
+  }
+
+  &__left {
+    margin-right: 10px;
+  }
+
+  &__img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+  }
+}

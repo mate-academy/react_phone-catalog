@@ -7,17 +7,55 @@
 
   &__button {
     display: flex;
+    justify-content: center;
+    align-items: center;
     width: 32px;
     height: 32px;
     border: 1px solid $grey-secondary;
     background-color: #fff;
 
-    &--left {
+    &:hover {
+      border: 1px solid $grey-primary;
+    }
+
+    &:disabled {
+      border: 1px solid $border;
+    }
+
+    &.theme-dark {
+      background-color: #323542;
+      border: 1px solid #323542;
+
+      &:hover {
+        background-color: #4A4D58;
+        border: 1px solid #4A4D58;
+      }
+
+      &:disabled {
+        background-color: $header-background;
+        border: 1px solid $lineDark;
+      }
+    }
+
+    &.theme-blue,
+    &.theme-purple,
+    &.theme-orange {
+      border-radius: 50%;
+    }
+
+    &__left {
       margin-right: 10px;
     }
 
-    &--right {
+    &__right {
       margin-left: 10px;
+    }
+  }
+
+  &__image {
+    &.theme-dark {
+      width: 5px;
+      height: 9px;
     }
   }
 
@@ -33,6 +71,30 @@
     &:last-of-type {
       margin-right: 0;
     }
+
+    &:hover {
+      border: 1px solid $grey-primary;
+    }
+
+    &.theme-dark {
+      background-color: #161827;
+      border: 1px solid #161827;
+
+      &:active {
+        background-color: #905BFF;
+        border: 1px solid #905BFF;
+      }
+
+      &:hover {
+        background-color: #4A4D58;
+      }
+    }
+
+    &.theme-blue,
+    &.theme-purple,
+    &.theme-orange {
+      border-radius: 50%;
+    }
   }
 
   &__link {
@@ -40,9 +102,24 @@
     text-decoration: none;
     color: $grey-primary;
 
-    &--is-active {
+    &.theme-dark {
+      color: $headerMain;
+    }
+
+    &.theme-blue,
+    &.theme-purple,
+    &.theme-orange {
+      border-radius: 50%;
+    }
+
+    &__is-active {
       color: #fff;
       background-color: $grey-primary;
+
+      &.theme-dark {
+        background-color: #905BFF;
+        border: 1px solid #905BFF;
+      }
     }
   }
 }

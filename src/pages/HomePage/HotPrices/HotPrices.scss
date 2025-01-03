@@ -29,35 +29,9 @@
       @include header;
       max-width: none;
     }
-  }
 
-  &__arrays {
-    display: flex;
-
-    &__button {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      width: 32px;
-      height: 32px;
-      background-color: #fff;
-      border: 1px solid $grey-primary;
-      cursor: pointer;
-
-      &:disabled {
-        border: 1px solid $grey-secondary;
-      }
-    }
-
-    &__left {
-      margin-right: 10px;
-    }
-
-    &__img {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 5px;
+    &.theme-dark {
+      color: $headerMain;
     }
   }
 

@@ -3,22 +3,35 @@ import '../../../utils/main.scss';
 import { useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../../app/hooks';
-import { fetchAllProducts } from '../../../features/productssSlice';
+import { Category } from '../../../types/category';
+import { fetchAllProducts } from '../../../features/allProductsSlice';
 
 export const CategoryItems = () => {
   const dispatch = useAppDispatch();
 
-  const { phones, tablets, accessories } = useAppSelector(
-    state => state.products,
+  const { products } = useAppSelector(
+    state => state.allProducts,
   );
+
+  const countItems = (category: string) => {
+    return products.filter(item => item.category === category).length;
+
+  };
 
   useEffect(() => {
     dispatch(fetchAllProducts());
   }, [dispatch]);
 
+  const theme = useAppSelector(state => state.themeSwitcher.theme);
+
+  const categoryHeader = `category__header theme-${theme}`;
+  const categoryName = `category__name theme-${theme}`;
+  const categoryQuantity = `category__quantity theme-${theme}`;
+  const catgoryImage = `category__img theme-${theme}`
+
   const BASE_ULR =
     'https://mate-academy.github.io/react_phone-catalog/_new/img/';
-
+    
   return (
     <div className="category">
       <div className="category__container grid">
@@ -27,7 +40,7 @@ export const CategoryItems = () => {
           grid__item--tablet-1-9
           grid__item--desktop-1-19"
         >
-          <h1 className="category__header">Shop by category</h1>
+          <h1 className={categoryHeader}>Shop by category</h1>
         </div>
         <div
           className="category__block 
@@ -39,11 +52,11 @@ export const CategoryItems = () => {
             <img
               src={`${BASE_ULR}category-phones.png`}
               alt="Mobile"
-              className="category__img category__mobile"
+              className={`${catgoryImage} category__mobile`}
             />
           </NavLink>
-          <p className="category__name">Mobile phones</p>
-          <div className="category__quantity">{phones.length} models</div>
+          <p className={categoryName}>Mobile phones</p>
+          <div className={categoryQuantity}>{countItems(Category.PHONES)} models</div>
         </div>
         <div
           className="category__block
@@ -55,11 +68,11 @@ export const CategoryItems = () => {
             <img
               src={`${BASE_ULR}category-tablets.png`}
               alt="Tablets"
-              className="category__img category__tablets"
+              className={`${catgoryImage} category__tablets`}
             />
           </NavLink>
-          <p className="category__name">Tablets</p>
-          <div className="category__quantity">{tablets.length} models</div>
+          <p className={categoryName}>Tablets</p>
+          <div className={categoryQuantity}>{countItems(Category.TABLETS)} models</div>
         </div>
         <div
           className="category__block
@@ -71,11 +84,11 @@ export const CategoryItems = () => {
             <img
               src={`${BASE_ULR}category-accessories.png`}
               alt="Accessories"
-              className="category__img category__accessories"
+              className={`${catgoryImage} category__accessories`}
             />
           </NavLink>
-          <p className="category__name">Accessories</p>
-          <div className="category__quantity">{accessories.length} models</div>
+          <p className={categoryName}>Accessories</p>
+          <div className={categoryQuantity}>{countItems(Category.ACCESSORIES)} models</div>
         </div>
       </div>
     </div>

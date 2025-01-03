@@ -1,9 +1,8 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { TabAccessPhone } from '../types/tabAccessPhones';
 
 export interface CardProduct {
   count: number;
-  product: TabAccessPhone;
+  productId: string;
 }
 
 export type CardInfo = {
@@ -39,32 +38,38 @@ const CartSlice = createSlice({
   name: 'cartProducts',
   initialState,
   reducers: {
-    addProduct: (state, action: PayloadAction<TabAccessPhone>) => {
+    addProduct: (state, action: PayloadAction<string>) => {
       const currentState = state;
 
       const findProduct = currentState.cartProducts.find(prod => 
-        prod.product.id === action.payload.id)
+        prod.productId === action.payload)
 
         if (findProduct) {
           findProduct.count += 1
         } else {
           currentState.cartProducts.push({
           count: 1,
-          product: action.payload
+          productId: action.payload
         });
       }
     },
 
-    removeLastProduct: (state, action: PayloadAction<TabAccessPhone>) => {
+    removeLastProduct: (state, action: PayloadAction<string>) => {
       const currentState = state;
 
       const findProduct = currentState.cartProducts.find(prod => 
-        prod.product.id === action.payload.id)
+        prod.productId === action.payload)
 
       if (findProduct) {
         findProduct.count -= 1
       }
     },
+
+    removeAll: (state) => {
+      const currentState = state;
+
+      currentState.cartProducts = [];
+    }
   },
 
   extraReducers: builder => {
@@ -80,7 +85,7 @@ const CartSlice = createSlice({
       currentState.loading = false;
 
       currentState.cartProducts = currentState.cartProducts.filter(
-        product => product.product.id !== action.payload.id,
+        product => product.productId !== action.payload.id,
       );
     })
     .addCase(removeProduct.rejected, state => {

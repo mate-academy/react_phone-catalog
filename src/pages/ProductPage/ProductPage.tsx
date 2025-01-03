@@ -1,69 +1,74 @@
-import { BaseSyntheticEvent, ChangeEvent, useEffect, useMemo } from 'react';
-import { NavLink, useSearchParams } from 'react-router-dom';
+import { BaseSyntheticEvent, useEffect, useMemo } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import './ProductPage.scss';
-import Home from '../../images/Home.svg';
-import Vec_light_right from '../../images/homePage/Vec_light_right.svg';
 import React from 'react';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { Category } from '../../types/category';
 import { ProductList } from '../ProductList/ProductList';
-import { fetchProducts } from '../../features/productssSlice';
-import { actions } from '../../features/seacrchSlice';
+import { actions as actionsSearch } from '../../features/seacrchSlice';
+import { Breadcrumbs } from '../../components/Breadcrumds';
+import { getListParams } from './getListParams';
+import { fetchAllProducts } from '../../features/allProductsSlice';
 
 interface Props {
   title: string;
   category: Category;
 }
 
+export const DEFAULT_SORT = 'Alphabetically';
+export const DEFAULT_PAGE = 'all';
+
 export const ProductPage: React.FC<Props> = ({ title, category }) => {
   const dispatch = useAppDispatch();
 
   const query = useAppSelector(state => state.search.query);
 
-  const products = useAppSelector(state => state.products);
+  const products = useAppSelector(state => state.allProducts.products);
 
   const visibleItems = useMemo(() => {
-    if (category === Category.PHONES) {
-      return products.phones;
-    }
+    return products.filter(item => item.category === category);
 
-    if (category === Category.TABLETS) {
-      return products.tablets;
-    }
-
-    return products.accessories;
-  }, [category, products.accessories, products.tablets, products.phones]);
+  }, [category, products]);
 
   useEffect(() => {
-    if (category) {
-      dispatch(fetchProducts(category));
+    if (!products.length) {
+      dispatch(fetchAllProducts());
     }
-  }, [dispatch, category]);
+  }, [products]);
 
   const [searchParams, setSearchParams] = useSearchParams();
   const sortParams = useMemo(
-    () => ['', 'Newest', 'Alphabetically', 'Cheapest'],
+    () => ['Newest', 'Alphabetically', 'Cheapest'],
     [],
   );
 
-  const sortBy = searchParams.get('sortBy') || '';
-  const perPage = searchParams.get('perPage') || 'all';
-  const currentPage = searchParams.get('page') || '1';
+  const { 
+    sortBy, 
+    perPage, 
+    currentPage } = getListParams(searchParams);
 
-  const handlePerPage = (event: ChangeEvent<HTMLSelectElement>) => {
-    setSearchParams({
-      page: currentPage,
-      perPage: event.target.value,
-      sortBy: sortBy,
-    });
+  const setSortAndPage = (sorting: string, paging: string) => {
+    let params = new URLSearchParams();
+
+    if (sorting !== DEFAULT_SORT) {
+      params.set('sortBy', sorting)
+    }
+
+    if (paging !== DEFAULT_PAGE) {
+      params.set('perPage', paging)
+    }
+
+    setSearchParams(
+      params
+    );
+  }
+
+  const handlePerPage = (event: BaseSyntheticEvent) => {
+    setSortAndPage(sortBy, event.target.value)
   };
 
   const handleSortBy = (event: BaseSyntheticEvent) => {
-    setSearchParams({
-      page: currentPage,
-      perPage: perPage,
-      sortBy: event.target.value,
-    });
+    setSortAndPage(event.target.value, perPage)
   };
 
   const itemToUpperCase = (item: string) => {
@@ -81,63 +86,77 @@ export const ProductPage: React.FC<Props> = ({ title, category }) => {
   );
   
   useEffect(() => {
-   const act = actions.setVisible(true);
+   const act = actionsSearch.setVisible(true);
     dispatch(act)
 
     return () => {
-      dispatch(actions.setVisible(false));
+      dispatch(actionsSearch.setVisible(false));
     }
-  }, [])
+  }, []);
 
-  console.log(filteredProducts)
+  const theme = useAppSelector(state => state.themeSwitcher.theme);
+
+  const titleClass = `productsPage__header theme-${theme}`;
+  const modelsClass = `productsPage__models theme-${theme}`;
+  const sortByClass = `productsPage__choose theme-${theme}`;
+  const selectSort = `productsPage__selectSort theme-${theme}`;
+  const prodVars = `productsPage__var theme-${theme}`;
+  const prodArr = `productsPage__arr theme-${theme}`;
 
   return (
     <div className="productsPage">
       <div className="productsPage__constrain">
-        <div className="productsPage__breadcrumbs">
-          <NavLink to="/" className="productsPage__home-link">
-            <img src={Home} alt="home" className="productsPage__home" />
-          </NavLink>
-          <img
-            src={Vec_light_right}
-            alt="Vector_light_right"
-            className="productsPage__arrow-right"
-          />
-          <div className="productsPage__phones">{title}</div>
-        </div>
-        <h1 className="productsPage__header">{itemToUpperCase(title)}</h1>
-        <div className="productsPage__models">{`${visibleItems.length} models`}</div>
+        <Breadcrumbs title={title}/>
+        <h1 className={titleClass}>{itemToUpperCase(title)}</h1>
+        <div className={modelsClass}>{`${visibleItems.length} models`}</div>
 
         <div className="productsPage__selectParams">
           <div className="productsPage__sortBy">
-            <div className="productsPage__choose">Sort by</div>
-            <select
-              value={sortBy}
-              onChange={handleSortBy}
-              className="productsPage__selectSort"
-            >
-              {sortParams.map(param => {
-                return <option key={param}>{param}</option>;
-              })}
-            </select>
+            <div className={sortByClass}>Sort by</div>
+            <label className="productsPage__selectWrapper">
+              <select
+                value={sortBy}
+                onChange={handleSortBy}
+                className={selectSort}
+              >
+                {sortParams.map(param => {
+                  return <option 
+                    key={param}
+                    className={prodVars}
+                    >
+                      {param}
+                    </option>;
+                })}
+              </select>
+              <input type='button' className={prodArr}></input>
+            </label>
           </div>
           <div className="productsPage__itemsOnPage">
-            <div className="productsPage__choose">Items on page</div>
+            <div className={sortByClass}>Items on page</div>
+            <label className="productsPage__selectWrapper">
             <select
               value={perPage}
               onChange={handlePerPage}
-              className="productsPage__selectNum"
+              className={`${selectSort} productsPage__selectSort--num`}
             >
               <option className="productsPage__option">all</option>
               <option className="productsPage__option">4</option>
               <option className="productsPage__option">8</option>
               <option className="productsPage__option">16</option>
             </select>
+            <input type='button' className={`${prodArr} productsPage__arr--num`}></input>
+            </label>
           </div>
         </div>
 
         <div className="productsPage__container">
-          <ProductList products={filteredProducts} category={category}/>
+          <ProductList 
+            products={filteredProducts} 
+            category={category}
+            sortBy={sortBy}
+            perPage={perPage}
+            currentPage={currentPage}
+          />
         </div>
       </div>
     </div>

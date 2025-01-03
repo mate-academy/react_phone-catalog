@@ -1,5 +1,10 @@
 @import '../../utils/main';
 
+.cart__wrap {
+  position: relative;
+  background-color: $header-background;
+}
+
 .cartProduct {
   min-width: 350px;
   display: flex;
@@ -12,16 +17,16 @@
     align-items: center;
   }
 
+  &__cartWindow {
+    opacity: 30%;
+  }
+
 &__constrain {
   min-width: 350px;
 
   @include on-tablet {
     max-width: 1050px;
   }
-
-  // @include on-desktop {
-  //   max-width: 1050px;
-  // }
 }
 
 &__breadcrumbs {
@@ -37,23 +42,66 @@
 }
 
 &__arrow-right {
-  width: 5px;
-  height: 9px;
   margin-right: 12px;
+
+  &.theme-dark {
+    width: 5px;
+    height: 9px;
+  }
 }
 
-&__back {
-  @include bread;
+&__buttonBack {
+  padding-top: 50px;
+
+&__click {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  color: $grey-secondary;
+  background-color: #fff;
+  border: none;
+  cursor: pointer;
+
+  &:hover {
+    color: $grey-primary;
+  }
+
+  &.theme-dark {
+    background-color: $header-background;
+    color: $grey-white;
+    --iconColor: #{$grey-white};
+
+    &:hover {
+      --iconColor: #905BFF;
+      color: #905BFF;
+    }
+  }
+}
+
+&__img {
+  margin-right: 10px;
+  width: 14px;
+  height: 14px;
+}
+
+&__name {
+  font-family: 'Mont', sans-serif;
+  font-size: 12px;
+}
 }
 
 &__header {
   margin-bottom: 30px;
   padding-top: 35px;
-  font-family: Mont, sans-serif;
+  font-family: 'Mont', sans-serif;
   font-size: 48px;
   line-height: 56px;
   letter-spacing: -1%;
   color: $grey-primary;
+
+  &.theme-dark {
+    color: $headerMain;
+  }
 }
 
 &__box {
@@ -82,6 +130,17 @@
     align-items: center;
     width: 725px;
     margin-right: 20px;
+  }
+
+  &.theme-dark {
+    background-color: #161827;
+    border: 1px solid #161827;
+  }
+
+  &.theme-blue,
+  &.theme-purple,
+  &.theme-orange {
+    border-radius: 8px;
   }
 }
 
@@ -126,6 +185,10 @@
     background-color: #fff;
     border: none;
     cursor: pointer;
+
+    &.theme-dark {
+      background-color: #161827;
+    }
   }
 
   &__cross {
@@ -143,11 +206,19 @@
     &__link {
       height: 66px;
       width: 66px;
+      transition: scale 0.4s ease;
+
+      &:hover {
+        scale: 1.1;
+      }
     }
   }
 
   &__name {
-    @include category-quantity;
+    font-family: 'Mont', sans-serif;
+    font-size: 14px;
+    line-height: 21px;
+    color: $grey-secondary;
     width: 200px;
     color: $grey-primary;
     font-weight: 600;
@@ -155,6 +226,10 @@
     @include on-desktop {
       width: 330px;
     }
+
+    &.theme-dark {
+      color: $headerMain;
+    }    
   }
 
   &__countPrice {
@@ -186,10 +261,34 @@
       height: 32px;
       border: 1px solid $border-capacity;
       background-color: #fff;
+
+      &:disabled {
+        border: 1px solid $border;
+      }
+
+      &.theme-dark {
+        background-color: #323542;
+        border: 1px solid #323542;
+
+        &:disabled {
+          background-color: #161827;
+          border: 1px solid $lineDark;
+        }
+      }
+
+      &.theme-blue,
+      &.theme-purple,
+      &.theme-orange {
+        border-radius: 50%;
+      }
     }
 
     &__quantity {
       padding: 12px;
+
+      &.theme-dark {
+        color: $headerMain;
+      }
     }
   }
 
@@ -220,6 +319,16 @@
       height: 206px;
       margin-top: 0;
     }
+
+    &.theme-dark {
+      border: 1px solid $lineDark;
+    }
+
+    &.theme-blue,
+    &.theme-purple,
+    &.theme-orange {
+      border-radius: 8px;
+    }
   }
 
   &__toPay {
@@ -241,10 +350,44 @@
     background-color: $grey-primary;
     border: 1px solid $grey-primary;
     cursor: pointer;
-    
-    @include on-desktop {
-      // width: 320px;
+
+    &.theme-dark {
+      color: $headerMain;
+      background-color: #905BFF;
+      border: 1pz solid #905BFF;
+
+      &:hover {
+        background-color: #A378FF;
+        border: 1px solid #A378FF;
+      }
     }
+
+    &.theme-blue {
+      border-radius: 8px;
+      background-color: #216CFF;
+      border: 1px solid #216CFF;
+    }
+
+    &.theme-purple {
+      border-radius: 48px;
+      background-color: #4219D0;
+      border: 1px solid #4219D0;
+    }
+
+    &.theme-orange {
+      border-radius: 8px;
+      background-color: #f86800;
+      border: 1px solid #f86800;
+    }
+  }
+
+  &__modal {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    inset: 0;
+    background-color: color-mix(in srgb, $grey-white 45%, transparent);
   }
 }
 

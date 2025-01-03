@@ -15,15 +15,27 @@
     width: $card-width-desktop;
   }
 
+  &.theme-dark {
+    border: 1px solid #161827;
+    background-color: #161827;
+  }
+
+  &.theme-blue,
+  &.theme-purple,
+  &.theme-orange {
+    border-radius: 8px;
+  }
+
   &__url {
     display: flex;
     justify-content: center;
     margin-bottom: 20px;
-    height: 208px;
+    height: 208px;;
   }
 
   &__img {
     width: 150px;
+    transition: scale 0.4s ease;
 
     @include on-tablet {
       width: 165px;
@@ -32,14 +44,22 @@
     @include on-desktop {
       width: 224px;
     }
+
+    &:hover {
+      scale: 1.1;
+    }
   }
 
   &__name {
     margin-bottom: 5px;
-    font-family: Mont, sans-serif;
+    font-family: 'Mont', sans-serif;
     font-size: 14px;
     height: 50px;
     color: $grey-primary;
+
+    &.theme-dark {
+      color: $headerMain;
+    }
   }
 
   &__price {
@@ -50,7 +70,7 @@
 
     &__discount {
       margin-right: 10px;
-      font-family: Mont, sans-serif;
+      font-family: 'Mont', sans-serif;
       font-size: 22px;
       font-weight: 800;
       color: $grey-primary;
@@ -58,7 +78,7 @@
 
     &__no-discount {
       position: relative;
-      font-family: Mont, sans-serif;
+      font-family: 'Mont', sans-serif;
       font-size: 22px;
       color: $grey-secondary;
 
@@ -78,6 +98,24 @@
           background-color: $grey-secondary;
         }
       }
+
+      &.theme-dark {
+        color: $header-color;
+
+        &::after {
+          content: "";
+          position: absolute;
+          height: 1px;
+          width: 100%;
+          top: 12px;
+          right: 0;
+          background-color: $header-color;
+        }
+      }
+    }
+
+    &.theme-dark {
+      color: $headerMain;
     }
   }
 
@@ -92,6 +130,16 @@
       width: 100%;
       background-color: $grey-secondary;
     }
+
+    &.theme-dark {
+      &::after {
+        content: "";
+        position: absolute;
+        height: 1px;
+        width: 100%;
+        background-color: $lineDark;
+      }  
+    }
   }
 
   &__center {
@@ -102,69 +150,55 @@
   }
 
   &__screen-name {
-    font-family: Mont, sans-serif;
+    margin-right: 10px;
+    font-family: 'Mont', sans-serif;
     font-size: 12px;
     color: $grey-secondary;
   }
 
   &__screen {
-    font-family: Mont, sans-serif;
+    font-family: 'Mont', sans-serif;
     font-size: 12px;
     color: $grey-primary;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 
   &__capacity-name {
-    font-family: Mont, sans-serif;
+    font-family: 'Mont', sans-serif;
     font-size: 12px;
     color: $grey-secondary;
   }
 
   &__capacity {
-    font-family: Mont, sans-serif;
+    font-family: 'Mont', sans-serif;
     font-size: 12px;
     color: $grey-primary;
   }
 
   &__ram-name {
-    font-family: Mont, sans-serif;
+    font-family: 'Mont', sans-serif;
     font-size: 12px;
     color: $grey-secondary;
   }
 
   &__ram {
-    font-family: Mont, sans-serif;
+    font-family: 'Mont', sans-serif;
     font-size: 12px;
     color: $grey-primary;
   }
 
-  &__buttons {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    &__add {
-      width: 100%;
-      min-width: 100px;
-      padding: 8px 0;
-      margin-right: 5px;
-      font-family: Mont, sans-serif;
-      font-size: 14px;
-      border: 1px solid #E2E6E9;
-
-      @include on-desktop {
-        min-width: 160px;
-      }
+  &__props {
+    &.theme-dark {
+    color: $header-color;
     }
+  }
 
-    &__favorite {
-      width: 47px;
-      height: 100%;
-      background-color: #fff;
-    }
-
-    &__heart {
-      padding: 6px 0;
-      width: 16px;
+  &__values {
+    &.theme-dark {
+    color: $headerMain;
     }
   }
 }

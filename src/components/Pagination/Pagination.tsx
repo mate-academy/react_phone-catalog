@@ -1,35 +1,43 @@
 import classNames from 'classnames';
 import { Link, useSearchParams } from 'react-router-dom';
-import { NotFoundPage } from '../../pages/NotFoundPage/NotFoundPage';
 import { getNumbers } from '../../utils/api';
 import { getSearchWith } from '../../utils/searchHelpers';
 import Arrow_Left from '../../images/homePage/Arrow_Left.svg';
+import Left_banner from '../../images/homePage/Left_banner.svg';
+import Vec_light_left from '../../images/homePage/Vec_light_left.svg';
+import Vec_light_left_dark from '../../images/homePage/Vec_light_left_dark.svg';
 import Arrow_Right from '../../images/homePage/Arrow_Right.svg';
+import Right_banner from '../../images/homePage/Right_banner.svg';
+import Vec_light_right from '../../images/homePage/Vec_light_right.svg';
+import Vec_light_right_dark from '../../images/homePage/Vec_light_right_dark.svg';
 import './Pagination.scss';
 import React from 'react';
-import { TabAccessPhone } from '../../types/tabAccessPhones';
+import { useAppSelector } from '../../app/hooks';
+import { ThemeVars } from '../../types/themeTypes';
+import { getListParams } from '../../pages/ProductPage/getListParams';
+import { Product } from '../../types/product';
 
 type Props = {
-  products: TabAccessPhone[];
+  products: Product[];
 };
 
 export const Pagination: React.FC<Props> = ({ products }) => {
   const [searchParams, setSearchParams] = useSearchParams();
 
   if (products === undefined) {
-    return <NotFoundPage />;
+    return null;
   }
 
-  const perPage = searchParams.get('perPage') || '4';
-  const currentPage = searchParams.get('page') || '1';
+  const { perPage, currentPage } = getListParams(searchParams);
+    
   const itemsPerPage = perPage === 'all' ? products.length : perPage;
 
   const total = () => {
     if (perPage === 'all') {
-      setSearchParams({
-        page: `${1}`.toString(),
-        perPage: `${products.length}`.toString(),
-      });
+      // setSearchParams({
+      //   page: `${1}`.toString(),
+      //   perPage: `${products.length}`.toString(),
+      // });
 
       return products.length;
     } else {
@@ -71,26 +79,57 @@ export const Pagination: React.FC<Props> = ({ products }) => {
     });
   };
 
+  const theme = useAppSelector(state => state.themeSwitcher.theme);
+  const arrLeft = () => {
+    if (theme === ThemeVars.DARK) {
+      return +currentPage === 1
+      ? Vec_light_left_dark 
+      : Left_banner;
+    } else return +currentPage === 1
+      ? Vec_light_left
+      : Arrow_Left
+  };
+
+  const arrRight = () => {
+    if (theme === ThemeVars.DARK) {
+      return +currentPage === totalPages
+        ? Vec_light_right_dark
+        : Right_banner
+    } else return +currentPage === totalPages
+      ? Vec_light_right
+      : Arrow_Right
+  };
+
+  const buttonArr = `pagination__button theme-${theme}`;
+  const pagItem = `pagination__item theme-${theme}`;
+  const pagLink = `pagination__link__is-active theme-${theme}`;
+  const pagNumber = `pagination__link theme-${theme}`;
+  const pagImage = `pagination__image theme-${theme}`
+
   return (
     <div className="pagination">
       <button
         disabled={+currentPage === 1}
-        className={classNames('pagination__button pagination__button--left')}
+        className={classNames(`${buttonArr} pagination__button__left`)}
         onClick={handlePrevPage}
       >
-        <img src={Arrow_Left} alt="arrow_left" className="pagination__image" />
+        <img 
+          src={arrLeft()} 
+          alt="arrow_left" 
+          className={pagImage}
+        />
       </button>
       {numbersToLoad.map(page => (
         <li
           key={page}
-          className={classNames('pagination__item', {
+          className={classNames(`${pagItem}`, {
             active: +currentPage === page,
           })}
         >
           <Link
-            className={classNames('pagination__link', {
-              'pagination__link--is-active': +currentPage === page,
-            })}
+            className={classNames(`${pagNumber}`, 
+            +currentPage === page ? `${pagLink}`: ''
+            )}
             to={{
               search: getSearchWith(searchParams, { page: page.toString() }),
             }}
@@ -101,13 +140,13 @@ export const Pagination: React.FC<Props> = ({ products }) => {
       ))}
       <button
         disabled={+currentPage === totalPages}
-        className={classNames('pagination__button pagination__button--right')}
+        className={classNames(`${buttonArr} pagination__button__right`)}
         onClick={handleNextPage}
       >
         <img
-          src={Arrow_Right}
+          src={arrRight()}
           alt="arrow_right"
-          className="pagination__image"
+          className={pagImage}
         />
       </button>
     </div>

@@ -1,0 +1,33 @@
+@import '../../utils/main';
+
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+
+  &__home-link {
+    margin-right: 12px;
+  }
+  
+  &__arrow-right {
+    width: 5px;
+    height: 9px;
+    margin-right: 12px;
+  }
+  
+  &__pathsLink {
+    @include bread;
+    text-decoration: none;
+  }
+  
+  &__paths {
+    margin-right: 10px;
+    font-family: 'Mont', sans-serif;
+    font-size: 12px;
+    color: $grey-primary;
+    cursor: pointer;
+
+    &.theme-dark {
+      color: $grey-white;
+    }
+  }
+}

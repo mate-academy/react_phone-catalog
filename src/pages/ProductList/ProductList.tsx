@@ -1,32 +1,40 @@
-import { NavLink, useSearchParams } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { Pagination } from '../../components/Pagination/Pagination';
 import { SortByItem } from '../../helpers/sortBy';
 import './ProductList.scss';
 import React, { useEffect } from 'react';
-import { TabAccessPhone } from '../../types/tabAccessPhones';
 import { PhoneTablAccessCard } from '../../components/PhoneTablAccessCard/PhoneTablAccessCard';
 import { useAppSelector } from '../../app/hooks';
 import { Loader } from '../../components/Loader';
 import { useLocalStorage } from '../../LocaleStorage/LocaleStorage';
 import { Category } from '../../types/category';
+import { Product } from '../../types/product';
 
-interface Props {
-  products: TabAccessPhone[];
+type Props = {
+  products: Product[];
   category?: Category;
   sorted?: SortByItem | undefined;
+  sortBy?: string;
+  perPage?: string;
+  currentPage?: string;
 }
 
-export const ProductList: React.FC<Props> = ({ products, category }) => {
-  const { loading } = useAppSelector(state => state.products);
+export const ProductList: React.FC<Props> = ({ 
+  products, 
+  category, 
+  sortBy, 
+  perPage, 
+  currentPage,
+}) => {
+  const { loading } = useAppSelector(state => state.allProducts);
 
-  const [searchParams] = useSearchParams();
   const [choosenItems, setChoosenItems] = useLocalStorage<
-    TabAccessPhone[] | []
+    Product[] | []
   >('products', []);
 
-  const sortBy = searchParams.get('sortBy');
-  const perPage = searchParams.get('perPage') || 'all';
-  const currentPage = searchParams.get('page') || '1';
+  currentPage??= '1';
+  perPage??= choosenItems.length.toString();
+  
   const itemsPerPage = perPage === 'all' ? choosenItems.length : perPage;
   const firstItemIndex = (+currentPage - 1) * +itemsPerPage;
   const lastItemIndex = Math.min(
@@ -40,24 +48,24 @@ export const ProductList: React.FC<Props> = ({ products, category }) => {
     }
   }, [products, setChoosenItems]);
 
-  function filteredProducts(items: TabAccessPhone[]) {
+  function sortProducts(items: Product[]) {
     const tempItems = [...items];
 
     switch (sortBy) {
-      // case SortByItem.Age:
-      //   return items?.sort((a, b) => (a.year - b.year ? 1 : -1));
+      case SortByItem.Age:
+        return items?.sort((a, b) => (a.year - b.year ? 1 : -1));
       case SortByItem.Name:
         return tempItems.sort((a, b) => a.name.localeCompare(b.name));
       case SortByItem.Price:
-        return tempItems.sort((a, b) => a.priceDiscount - b.priceDiscount);
+        return tempItems.sort((a, b) => a.fullPrice - b.price);
       default:
         return tempItems;
     }
   }
 
-  const toBeFiltered = filteredProducts(choosenItems);
+  const sortedProducts = sortProducts(choosenItems);
 
-  const filtered = toBeFiltered.slice(firstItemIndex, lastItemIndex);
+  const filtered = sortedProducts.slice(firstItemIndex, lastItemIndex);
 
   const showPagination = filtered.length < choosenItems.length;
 
@@ -68,11 +76,13 @@ export const ProductList: React.FC<Props> = ({ products, category }) => {
           <Loader />
         ) : (
           (filtered
-            ? filtered?.map((product: TabAccessPhone) => {
+            ? filtered?.map((product: Product) => {
+
+              console.log(product)
                 return (
                   <NavLink
                     key={product.id}
-                    to={`/${product.category}/${product.id}`}
+                    to={`/${product.category}/${product.itemId}`}
                     className="productsPage__link"
                   >
                     <PhoneTablAccessCard product={product} key={product.id} />
@@ -81,7 +91,6 @@ export const ProductList: React.FC<Props> = ({ products, category }) => {
               })
             : <div>There are no {category} yet</div>
           )
-          
         )}
       </ul>
       {showPagination ? <Pagination products={choosenItems} /> : null}

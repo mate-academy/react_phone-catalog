@@ -1,0 +1,138 @@
+@import '../../utils/main';
+
+.card__buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &--details {
+    width: 100%;
+  }
+
+  &__add {
+    width: 100%;
+    min-width: 100px;
+    padding: 8px 0;
+    margin-right: 5px;
+    font-family: 'Mont', sans-serif;
+    font-size: 14px;
+    border: 1px solid #E2E6E9;
+
+    @include on-desktop {
+      min-width: 160px;
+    }
+
+    &__pressed {
+      color: #27AE60;
+      background-color: #fff;
+
+      &.theme-dark {
+        color: #fff;
+        background-color: #323542;
+        border: 1px solid #323542;
+      }
+
+      &.theme-blue {
+        border-radius: 10%;
+        background-color: #fff;
+        color: #216CFF;
+      }
+
+      &.theme-purple {
+        border-radius: 48px;
+        background-color: #fff;
+        color: #4219D0;
+      }
+
+      &.theme-orange {
+        border-radius: 48px;
+        color: #F86800;
+      }
+    }
+
+    &__noPressed {
+      color: #fff;
+      background-color: #313237;
+
+      &.theme-dark {
+        color: $headerMain;
+        background-color: #905BFF;
+        border: 1px solid #905BFF;
+  
+        &:hover {
+          background-color: #A378FF;
+          border: 1px solid #A378FF;
+        }
+      }
+
+      &.theme-blue {
+        border-radius: 8px;
+        background-color: #216CFF;
+      }
+
+      &.theme-purple {
+        border-radius: 48px;
+        background-color: #4219D0;
+      }
+
+      &.theme-orange {
+        border-radius: 8px;
+        background-color: #F86800;
+
+        &:hover {
+          filter: drop-shadow(0 3px #172031 40%);
+        }
+      }
+    }
+  }
+
+  &__favorite {
+    width: 47px;
+    height: 36px;
+    background-color: #fff;
+
+    &:hover {
+      border: 1px solid $grey-primary;
+    }
+
+    &__clicked {
+      border: 1px solid $border;
+
+      &.theme-dark {
+        background-color: $header-background;
+        border: 1px solid $lineDark;
+      }
+
+      &.theme-blue,
+      &.theme-purple,
+      &.theme-orange {
+        border-radius: 50%;
+      }
+    }
+
+    &__noClicked {
+      border: 1px solid $border-capacity;
+
+      &.theme-dark {
+        background-color: #323542;
+        border: 1px solid #323542;
+  
+        &:hover {
+          background-color: #4A4D58;
+          border: 1px solid #4A4D58;
+        }
+      }
+
+      &.theme-blue,
+      &.theme-purple,
+      &.theme-orange {
+        border-radius: 50%;
+      }
+    }
+  }
+
+  &__heart {
+    padding: 6px 0;
+    width: 16px;
+  }
+}

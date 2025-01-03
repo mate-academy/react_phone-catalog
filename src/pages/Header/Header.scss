@@ -1,11 +1,112 @@
 @import '../../utils/main';
 
+@mixin top-menu {
+  display: inline-block;
+  position: relative;
+  font-family: Mont, sans-serif;
+  font-size: 12px;
+  line-height: 11px;
+  letter-spacing: 4%;
+  color: $header-color;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: all .3s;
+
+  width: max-content;
+  margin-bottom: 20px;
+  padding-bottom: 8px;
+
+  @include on-tablet {
+    margin: 0 35px 0 0;
+    padding-bottom: 27px;
+  }
+
+  @include on-desktop {
+    margin-right: 60px;
+  }
+
+  &:hover {
+    color: $grey-primary;
+    border-bottom: 1px solid $grey-secondary;
+  }
+
+  &:active, &.active {
+    color: $grey-primary;
+    border-bottom: 1px solid $grey-secondary;
+  }
+}
+
+@mixin burger {
+  position: absolute;
+  height: 16px;
+  width: 16px;
+  top: 0;
+  right: 0;
+  background-repeat: no-repeat;
+  background-position: right;
+  background-size: contain;
+  z-index: 1;
+}
+
+.header__wrapp {
+  position: relative;
+  background-color: $header-background;
+
+  &--active {
+    height: 100vh;
+
+    @include on-tablet {
+      height: 70px;
+    }
+  }
+
+  &__input {
+    position: absolute;
+    right: 138px;
+    z-index: 0;
+
+    @include on-tablet {
+      margin-right: 10px;
+    }
+
+    @include on-desktop {
+      margin-right: 0;
+    }
+
+    &__item {
+      font-family: 'Mont', sans-serif;
+      font-size: 14px;
+      color: $grey-primary;
+      width: 100%;
+
+      @include on-tablet {
+        width: 150px;
+      }
+
+      @include on-desktop {
+        width: 180px;
+      }
+
+      &.theme-dark {
+        color: $header-color;
+      }
+    }
+  }
+}
+
 .header {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  position: relative;
   border-bottom: 1px solid $border;
   height: 70px;
+  background-color: $header-background;
+  color: $header-color;
+
+  &.theme-dark {
+    border-bottom: 1px solid $lineDark;
+  }
 
   &--active {
     height: 100vh;
@@ -41,6 +142,10 @@
     outline: none;
     border: none;
 
+    &.theme-dark {
+      background-color: $header-background;
+    }
+
     @include on-tablet {
       display: none;
       margin: 0;
@@ -50,13 +155,21 @@
     &__link {
       @include burger;
 
-      background-image: url(../../../src/images/Burger.svg);
+      background-image: url(../../../src/images/homePage/Burger.svg);
+    
+      &.theme-dark {
+        background-image: url(../../../src/images/homePage/Burger_dark.svg);
+      }
     }
 
     &__cross {
       @include burger;
 
       background-image: url(../../../src/images/Cross.svg);
+    
+      &.theme-dark {
+        background-image: url(../../../src/images/Cross_dark.svg);
+      }
     }
   }
 
@@ -84,67 +197,21 @@
     }
   }
 
-  &__home {
+  &__link {
     @include top-menu;
 
-    width: max-content;
-    margin-bottom: 20px;
-    padding-bottom: 8px;
-
-    @include on-tablet {
-      margin: 0 35px 0 0;
-      padding-bottom: 27px;
-    }
-
-    @include on-desktop {
-      margin-right: 60px;
+    &.theme-dark {
+      &:active, &.active, &:hover {
+        color: $headerMain;
     }
   }
 
-  &__phones {
-    @include top-menu;
-
-    width: max-content;
-    margin-bottom: 20px;
-    padding-bottom: 8px;
-
+  &--accessories {
     @include on-tablet {
-      margin: 0 35px 0 0;
-      padding-bottom: 27px;
-    }
-
-    @include on-desktop {
-      margin-right: 60px;
+      margin-right: 0;
     }
   }
-
-  &__tablets {
-    @include top-menu;
-
-    width: max-content;
-    margin-bottom: 20px;
-    padding-bottom: 8px;
-
-    @include on-tablet {
-      margin: 0 35px 0 0;
-      padding-bottom: 27px;
-    }
-
-    @include on-desktop {
-      margin-right: 60px;
-    }
-  }
-
-  &__accessories {
-    @include top-menu;
-
-    width: max-content;
-    padding-bottom: 8px;
-
-    @include on-tablet {
-      padding-bottom: 27px;
-    }
-  }
+}
 
   &__preferies {
     position: absolute;
@@ -176,35 +243,20 @@
       justify-content: center;
       align-items: center;
       height: 100px;
-      border: 1px solid $border;
+      border: 1px solid $lineDark;
 
       @include on-tablet {
         height: 70px;
         border: none;
       }
-    }
-  }
 
-  &__input {
-    // position: absolute;
-    right: 0;
-    bottom: 0;
-    z-index: 0;
-
-    &__item {
-      width: 100%;
-
-      @include on-tablet {
-        width: 90px;
-      }
-
-      @include on-desktop {
-        width: 170px;
+      &.theme-dark {
+        border: 1px solid $lineDark;
       }
     }
   }
 
-  &__heart {
+  &__border {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -212,15 +264,42 @@
     height: 100%;
     padding: 25px;
 
-    &--favorites {
-      @include on-tablet {
-        border-right: 1px solid $border;
-        border-left: 1px solid $border;
+    &:hover {
+      border-bottom: 1px solid $grey-primary;
+    }
+
+    &__favorites {
+      border-left: 1px solid $border;
+      border-right: 1px solid $border;
+      border-top: 1px solid $border;
+
+      &.theme-dark {
+        border: $lineDark;
+      }
+
+      &--active {
+        border-bottom: 1px solid $grey-primary;
+
+        &.theme-dark {
+          border-bottom: 1px solid $grey-white;
+        }
       }
     }
 
-    &:hover {
-      border-bottom: 1px solid $grey-primary;
+    &__cart {
+      border-top: 1px solid $border;
+
+      &.theme-dark {
+        border: none;
+      }
+
+      &--active {
+        border-bottom: 1px solid $grey-primary;
+
+        &.theme-dark {
+          border-bottom: 1px solid $grey-white;
+        }
+      }
     }
   }
 
@@ -228,20 +307,111 @@
     position: absolute;
   }
 
-  &__favoritesLength {
+  &__favCount {
     position: relative;
+  }
+
+  &__favoritesLength {
+    position: absolute;
+    right: -11px;
+    top: -10px;
     display: inline;
-    font-family: Mont, sans-serif;
+    font-family: 'Mont', sans-serif;
     font-size: 9px;
     color: #fff;
-    right: -16px;
-    top: -7px;
     z-index: 1;
   }
 
   &__favoritesFavImage {
-    position: relative;
-    top: -7px;
-    right: -6px;
+    position: absolute;
+    top: -12px;
+    right: -15px;
+  }
+
+  &__searchTheme {
+    display: flex;
+    justify-content: flex-end;
+    padding: 15px 12px 10px 0;
+    background-color: $header-background;
+  }
+
+
+  &__search {
+    margin-right: 10px;
+
+    &__input {
+      font-family: 'Mont', sans-serif;
+      font-size: 12px;
+      color: $grey-secondary;
+      background-color: #fff;
+      border: 1px solid $grey-secondary;
+      outline: none;
+
+      &::placeholder {
+        color: $grey-secondary;
+      }
+
+      &.theme-dark {
+        background-color: $header-background;
+        color: $headerMain;
+        border: 1px solid $lineDark;
+
+        &::placeholder {
+          color: $headerMain;
+        }
+
+        &:hover {
+          background-color: #4A4D58;
+        }
+
+        &:focus {
+          border: 1px solid #905BFF;
+        }
+      }
+
+      &.theme-blue,
+      &.theme-purple,
+      &.theme-orange {
+        border-radius: 4px;
+      }
+    }
+  }
+
+   &__theme {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+
+    &__select {
+      font-family: 'Mont', sans-serif;
+      font-size: 12px;
+      color: $grey-secondary;
+      background-color: #fff;
+      border: 1px solid $grey-secondary;
+
+      &.theme-dark {
+        background-color: $header-background;
+        color: $headerMain;
+        border: 1px solid $lineDark;
+
+        &:hover {
+          background-color: #4A4D58;
+        }
+      }
+
+      &.theme-blue,
+      &.theme-purple,
+      &.theme-orange {
+        border-radius: 4px;
+      }
+    }
+
+    &__option {
+      color: $grey-secondary;
+
+      &.theme-dark {
+        background-color: $header-background;
+      }
+    }
   }
 }

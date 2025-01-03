@@ -1,8 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { TabAccessPhone } from '../types/tabAccessPhones';
 
 export type FavProductsInfo = {
-  favProducts: TabAccessPhone[];
+  favProducts: string[];
 };
 
 const initialState: FavProductsInfo = {
@@ -13,11 +12,11 @@ const FavSlice = createSlice({
   name: 'favProducts',
   initialState,
   reducers: {
-    addProduct: (state, action: PayloadAction<TabAccessPhone>) => {
+    addProduct: (state, action: PayloadAction<string>) => {
       const currentState = state;
 
       const findSame = currentState.favProducts.find(
-        prod => prod.id === action.payload.id,
+        prod => prod === action.payload,
       );
 
       !findSame
@@ -25,11 +24,11 @@ const FavSlice = createSlice({
         : currentState.favProducts;
     },
 
-    removeProduct: (state, action: PayloadAction<TabAccessPhone>) => {
+    removeProduct: (state, action: PayloadAction<string>) => {
       const currentState = state;
 
       currentState.favProducts = currentState.favProducts.filter(
-        prod => prod.id !== action.payload.id,
+        prod => prod !== action.payload,
       );
     },
   },

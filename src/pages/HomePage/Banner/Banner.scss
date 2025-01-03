@@ -5,15 +5,20 @@
 
   &__title {
     margin: 40px 20px;
-    font-family: Mont, sans-serif;
+    font-family: 'Mont', sans-serif;
     font-size: 32px;
     line-height: 41px;
+    color: $grey-primary;
 
     @include on-tablet {
       grid-row: 1;
       margin: 40px 0;
       font-size: 48px;
       line-height: 56px;
+    }
+
+    &.theme-dark {
+      color: $headerMain;
     }
   }
 
@@ -76,6 +81,17 @@
       background-color: #fff;
       border: 1px solid #B4BDC3;
       cursor: pointer;
+
+      &.theme-dark {
+        background-color: #323542;
+        border: 1px solid #323542;
+      }
+
+      &.theme-blue,
+      &.theme-purple,
+      &.theme-orange {
+        border-radius: 48px;
+      }
     }
 
     @include on-desktop {
@@ -88,6 +104,10 @@
     @include on-tablet {
       background-image: url('../../../images/homePage/Arrow_Left.svg');
       margin-right: 15px;
+
+      &.theme-dark {
+        background-image: url('../../../images/homePage/Left_banner.svg');
+      }
     }
 
     @include on-desktop {
@@ -99,6 +119,10 @@
     @include on-tablet {
       background-image: url('../../../images/homePage/Arrow_Right.svg');
       margin-left: 15px;
+
+      &.theme-dark {
+        background-image: url('../../../images/homePage/Right_banner.svg');
+      }
     }
 
     @include on-desktop {
@@ -119,8 +143,16 @@
       width: 14px;
       height: 4px;
 
-      &--active {
+      &.theme-dark {
         background-image: url(../../../images/homePage/Rectangle_left.svg);
+      }
+
+      &__active {
+        background-image: url(../../../images/homePage/Rectangle_left.svg);
+
+        &.theme-dark {
+          background-image: url(../../../images/homePage/Rectangle_right.svg);
+        }
       }
     }
   }

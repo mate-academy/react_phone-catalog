@@ -18,9 +18,8 @@
   }
 
   &__header {
-   @include header;
-
-   margin-bottom: 25px;
+    @include header;
+    margin-bottom: 25px;
   }
 
   &__block {
@@ -83,6 +82,12 @@
 
     @include on-desktop {
       height: 368px;
+    }
+    
+    &.theme-blue,
+    &.theme-purple,
+    &.theme-orange {
+      border-radius: 8px;
     }
   }
 
