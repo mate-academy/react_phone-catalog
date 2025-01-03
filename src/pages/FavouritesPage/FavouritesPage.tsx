@@ -13,7 +13,7 @@ export const FavouritesPage = () => {
   return !!favProducts.length ? (
     <div className="productsPage">
       <div className="productsPage__constrain">
-        <Breadcrumbs title={'Favourites'}/>
+        <Breadcrumbs title={'Favourites'} />
         <h1 className={titleClass}>Favourites</h1>
         <div className="productsPage__models">{`${favProducts.length} items`}</div>
 

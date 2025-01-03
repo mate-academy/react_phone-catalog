@@ -12,12 +12,12 @@ import Heart_purple from '../../images/homePage/Heart_purple.svg';
 import Heart_orange from '../../images/homePage/Heart_orange.svg';
 import { Product } from "../../types/product";
 
-type Props= {
+type Props = {
   product: Product;
   detailsPage?: boolean;
 }
 
-export const Button: React.FC<Props> = ({product, detailsPage}) => {
+export const Button: React.FC<Props> = ({ product, detailsPage }) => {
   const dispatch = useAppDispatch();
 
   const favProducts = useAppSelector(state => state.favourites.favProducts);
@@ -77,7 +77,7 @@ export const Button: React.FC<Props> = ({product, detailsPage}) => {
   };
 
   const theme = useAppSelector(state => state.themeSwitcher.theme);
-  
+
   const styleCartButton = () => {
     return pressed
       ? `card__buttons__add__pressed theme-${theme}`
@@ -93,10 +93,10 @@ export const Button: React.FC<Props> = ({product, detailsPage}) => {
   const handleFavImg = () => {
     if (theme === ThemeVars.DARK) {
       return clicked
-       ? redHeart 
-       : Heart_dark
+        ? redHeart
+        : Heart_dark
     } else if (theme === ThemeVars.BLUE) {
-      return clicked 
+      return clicked
         ? Heart_blue
         : Favorites
     } else if (theme === ThemeVars.PURPLE) {
@@ -108,9 +108,9 @@ export const Button: React.FC<Props> = ({product, detailsPage}) => {
         ? Heart_orange
         : Favorites
     } else {
-      return clicked 
-        ? redHeart 
-        : Favorites 
+      return clicked
+        ? redHeart
+        : Favorites
     }
   }
 

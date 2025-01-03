@@ -27,7 +27,7 @@ export const BrandNew = () => {
     }
   }, []);
 
-  const sortedBrand = products.length 
+  const sortedBrand = products.length
     ? [...products].sort((a, b) => b.fullPrice - a.fullPrice)
     : products;
 

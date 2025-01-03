@@ -29,7 +29,7 @@ export const Pagination: React.FC<Props> = ({ products }) => {
   }
 
   const { perPage, currentPage } = getListParams(searchParams);
-    
+
   const itemsPerPage = perPage === 'all' ? products.length : perPage;
 
   const total = () => {
@@ -59,8 +59,8 @@ export const Pagination: React.FC<Props> = ({ products }) => {
   const max = Math.min(
     totalPages,
     currentPageNum +
-      numbersToShow / 2 +
-      Math.max(0, min - currentPageNum + numbersToShow / 2),
+    numbersToShow / 2 +
+    Math.max(0, min - currentPageNum + numbersToShow / 2),
   );
 
   const numbersToLoad = getTotalNumbersArray().slice(min - 1, max);
@@ -83,8 +83,8 @@ export const Pagination: React.FC<Props> = ({ products }) => {
   const arrLeft = () => {
     if (theme === ThemeVars.DARK) {
       return +currentPage === 1
-      ? Vec_light_left_dark 
-      : Left_banner;
+        ? Vec_light_left_dark
+        : Left_banner;
     } else return +currentPage === 1
       ? Vec_light_left
       : Arrow_Left
@@ -113,9 +113,9 @@ export const Pagination: React.FC<Props> = ({ products }) => {
         className={classNames(`${buttonArr} pagination__button__left`)}
         onClick={handlePrevPage}
       >
-        <img 
-          src={arrLeft()} 
-          alt="arrow_left" 
+        <img
+          src={arrLeft()}
+          alt="arrow_left"
           className={pagImage}
         />
       </button>
@@ -127,8 +127,8 @@ export const Pagination: React.FC<Props> = ({ products }) => {
           })}
         >
           <Link
-            className={classNames(`${pagNumber}`, 
-            +currentPage === page ? `${pagLink}`: ''
+            className={classNames(`${pagNumber}`,
+              +currentPage === page ? `${pagLink}` : ''
             )}
             to={{
               search: getSearchWith(searchParams, { page: page.toString() }),

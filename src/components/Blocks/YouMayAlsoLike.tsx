@@ -29,13 +29,13 @@ export const YouMayAlsoLike = () => {
     if (!products.length) {
       dispatch(fetchAllProducts());
     }
-    
+
   }, [products]);
 
-  const {sortedPoducts} = useMemo(() => {
+  const { sortedPoducts } = useMemo(() => {
     const shuffle = products.sort(() => Math.round(Math.random() * 100) - 50);
     const getSortProducts = sliceToShow(shuffle, currentPage, elOnPage);
-    
+
     return {
       sortedPoducts: getSortProducts,
       lastPage: last(shuffle, elOnPage)
@@ -47,7 +47,7 @@ export const YouMayAlsoLike = () => {
       <div className="hotPrices__container">
         <div className="hotPrices__top">
           <h1 className={`hotPrices__head theme-${theme}`}>You may also like</h1>
-            <Arrays />
+          <Arrays />
         </div>
         <div className="hotPrices__cards">
           <div className="hotPrices__ribbon">

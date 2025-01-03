@@ -17,7 +17,7 @@ export const Loader = () => {
       'Loader--initial': clock
     })}
       data-cy="Loader">
-      <div className="Loader__content"/>
+      <div className="Loader__content" />
     </div>
   )
 };

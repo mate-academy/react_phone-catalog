@@ -23,7 +23,7 @@ export const HotPrices = () => {
     dispatch(fetchAllProducts());
   }, [dispatch]);
 
-  const sortedByPrice = products.length 
+  const sortedByPrice = products.length
     ? [...products].sort((a, b) => b.price - a.price)
     : products;
 

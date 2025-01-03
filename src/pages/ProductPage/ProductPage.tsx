@@ -42,9 +42,9 @@ export const ProductPage: React.FC<Props> = ({ title, category }) => {
     [],
   );
 
-  const { 
-    sortBy, 
-    perPage, 
+  const {
+    sortBy,
+    perPage,
     currentPage } = getListParams(searchParams);
 
   const setSortAndPage = (sorting: string, paging: string) => {
@@ -80,13 +80,13 @@ export const ProductPage: React.FC<Props> = ({ title, category }) => {
       return visibleItems;
     }
 
-    return visibleItems.filter(item => 
+    return visibleItems.filter(item =>
       item.id.toLowerCase().includes(query.toLowerCase()));
   }, [visibleItems, query],
   );
-  
+
   useEffect(() => {
-   const act = actionsSearch.setVisible(true);
+    const act = actionsSearch.setVisible(true);
     dispatch(act)
 
     return () => {
@@ -106,7 +106,7 @@ export const ProductPage: React.FC<Props> = ({ title, category }) => {
   return (
     <div className="productsPage">
       <div className="productsPage__constrain">
-        <Breadcrumbs title={title}/>
+        <Breadcrumbs title={title} />
         <h1 className={titleClass}>{itemToUpperCase(title)}</h1>
         <div className={modelsClass}>{`${visibleItems.length} models`}</div>
 
@@ -120,12 +120,12 @@ export const ProductPage: React.FC<Props> = ({ title, category }) => {
                 className={selectSort}
               >
                 {sortParams.map(param => {
-                  return <option 
+                  return <option
                     key={param}
                     className={prodVars}
-                    >
-                      {param}
-                    </option>;
+                  >
+                    {param}
+                  </option>;
                 })}
               </select>
               <input type='button' className={prodArr}></input>
@@ -134,24 +134,24 @@ export const ProductPage: React.FC<Props> = ({ title, category }) => {
           <div className="productsPage__itemsOnPage">
             <div className={sortByClass}>Items on page</div>
             <label className="productsPage__selectWrapper">
-            <select
-              value={perPage}
-              onChange={handlePerPage}
-              className={`${selectSort} productsPage__selectSort--num`}
-            >
-              <option className="productsPage__option">all</option>
-              <option className="productsPage__option">4</option>
-              <option className="productsPage__option">8</option>
-              <option className="productsPage__option">16</option>
-            </select>
-            <input type='button' className={`${prodArr} productsPage__arr--num`}></input>
+              <select
+                value={perPage}
+                onChange={handlePerPage}
+                className={`${selectSort} productsPage__selectSort--num`}
+              >
+                <option className="productsPage__option">all</option>
+                <option className="productsPage__option">4</option>
+                <option className="productsPage__option">8</option>
+                <option className="productsPage__option">16</option>
+              </select>
+              <input type='button' className={`${prodArr} productsPage__arr--num`}></input>
             </label>
           </div>
         </div>
 
         <div className="productsPage__container">
-          <ProductList 
-            products={filteredProducts} 
+          <ProductList
+            products={filteredProducts}
             category={category}
             sortBy={sortBy}
             perPage={perPage}

@@ -31,7 +31,7 @@ export const CategoryItems = () => {
 
   const BASE_ULR =
     'https://mate-academy.github.io/react_phone-catalog/_new/img/';
-    
+
   return (
     <div className="category">
       <div className="category__container grid">

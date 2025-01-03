@@ -43,7 +43,7 @@ export const Header: React.FC = () => {
   }, [appliedQuery])
 
   const [opened, setOpened] = useState(false);
-  
+
   const handlePage = () => {
     setOpened(false);
   };
@@ -61,10 +61,10 @@ export const Header: React.FC = () => {
   const theme = useAppSelector(state => state.themeSwitcher.theme);
 
   const selectedLogo = () => {
-    switch(theme) {
+    switch (theme) {
       case ThemeVars.DARK:
         return Logo_dark;
-      
+
       case ThemeVars.ORIGIN:
         return Logo;
 
@@ -77,8 +77,8 @@ export const Header: React.FC = () => {
   };
 
   const selectFavImg = () => {
-    switch(theme) {
-      case ThemeVars.DARK:      
+    switch (theme) {
+      case ThemeVars.DARK:
       case ThemeVars.ORIGIN:
         return favImage;
 
@@ -107,13 +107,13 @@ export const Header: React.FC = () => {
     } else if (paths === 'cart') {
       setPage('cart')
     } else {
-      setPage('') 
+      setPage('')
     }
   }, [paths])
-  
+
   const selectedCart = theme === ThemeVars.DARK ? Cart_dark : Cart;
   const selectedHeart = theme === ThemeVars.DARK ? Heart_dark : Favorites;
-  
+
   const burgerGround = `header__burger theme-${theme}`;
   const burgerClass = `header__burger__link theme-${theme}`;
   const burgerCross = `header__burger__cross theme-${theme}`
@@ -125,119 +125,119 @@ export const Header: React.FC = () => {
   const themeSelect = `header__theme__select theme-${theme}`;
   const themeOption = `header__theme__option theme-${theme}`;
   const themeVars: ThemeVars[] = Object.values(ThemeVars);
-  
+
   return (
     <div className={classNames('header__wrapp', {
       'header__wrap--active': opened === true,
     })}>
-    <header
-      className={classNames('header', headerTopLine, {
-        'header--active': opened === true,
-      })}
-    >
-      <div className="header__block">
-        <div className="header__top-head">
-          <NavLink to="/" onClick={handlePage}>
-            <img className="header__logo" src={selectedLogo()} alt="logo" />
-          </NavLink>
+      <header
+        className={classNames('header', headerTopLine, {
+          'header--active': opened === true,
+        })}
+      >
+        <div className="header__block">
+          <div className="header__top-head">
+            <NavLink to="/" onClick={handlePage}>
+              <img className="header__logo" src={selectedLogo()} alt="logo" />
+            </NavLink>
+          </div>
+
+          <button className={burgerGround} onClick={handleChange}>
+            {opened ? (
+              <a href="#" className={burgerCross} title="menu"></a>
+            ) : (
+              <a href="#" className={burgerClass} title="menu"></a>
+            )}
+          </button>
+
+          <ul
+            className={classNames('header__top-heads', {
+              'header__top-heads--active': opened === true,
+            })}
+          >
+            <NavLink to="/" className={rootClass} onClick={handlePage}>
+              HOME
+            </NavLink>
+            <NavLink to="/phones" className={rootClass} onClick={handlePage}>
+              PHONES
+            </NavLink>
+            <NavLink
+              to="/tablets"
+              className={rootClass}
+              onClick={handlePage}
+            >
+              TABLETS
+            </NavLink>
+            <NavLink
+              to="/accessories"
+              className={`${rootClass} header__link--accessories`}
+              onClick={handlePage}
+            >
+              ACCESSORIES
+            </NavLink>
+          </ul>
         </div>
-
-        <button className={burgerGround} onClick={handleChange}>
-          {opened ? (
-            <a href="#" className={burgerCross} title="menu"></a>
-          ) : (
-            <a href="#" className={burgerClass} title="menu"></a>
-          )}
-        </button>
-
-        <ul
-          className={classNames('header__top-heads', {
-            'header__top-heads--active': opened === true,
+        <div
+          className={classNames('header__preferies', {
+            'header__preferies--active': opened === true,
           })}
         >
-          <NavLink to="/" className={rootClass} onClick={handlePage}>
-            HOME
-          </NavLink>
-          <NavLink to="/phones" className={rootClass} onClick={handlePage}>
-            PHONES
-          </NavLink>
-          <NavLink
-            to="/tablets"
-            className={rootClass}
-            onClick={handlePage}
-          >
-            TABLETS
-          </NavLink>
-          <NavLink
-            to="/accessories"
-            className={`${rootClass} header__link--accessories`}
-            onClick={handlePage}
-          >
-            ACCESSORIES
-          </NavLink>
-        </ul>
-      </div>
-      <div
-        className={classNames('header__preferies', {
-          'header__preferies--active': opened === true,
-        })}
-      > 
-        <div className={headerLine}>
-          <NavLink
-            to="/favourites"
-            className={classNames(`${heardBorder} header__border__favorites`, 
-            page === 'favourites' ? `header__border__favorites--active` : ''
-            )}
-            onClick={handlePage}
-          >
-            <img
-              className="header__favoritesImg"
-              src={selectedHeart}
-              alt="Favorite"
-            />
-            {favProducts.length > 0 && (
-              <div className="header__favCount">
-                <div className="header__favoritesLength">
-                  {favProducts.length}
+          <div className={headerLine}>
+            <NavLink
+              to="/favourites"
+              className={classNames(`${heardBorder} header__border__favorites`,
+                page === 'favourites' ? `header__border__favorites--active` : ''
+              )}
+              onClick={handlePage}
+            >
+              <img
+                className="header__favoritesImg"
+                src={selectedHeart}
+                alt="Favorite"
+              />
+              {favProducts.length > 0 && (
+                <div className="header__favCount">
+                  <div className="header__favoritesLength">
+                    {favProducts.length}
+                  </div>
+                  <img
+                    className="header__favoritesFavImage"
+                    src={selectFavImg()}
+                    alt="favImage"
+                  />
                 </div>
-                <img
-                  className="header__favoritesFavImage"
-                  src={selectFavImg()}
-                  alt="favImage"
-                />
-              </div>
-            )}
-          </NavLink>
-        </div>
-        <div className={headerLine}>
-          <NavLink 
-            to="/cart" 
-            className={classNames(`${heardBorder} header__border__cart`, 
-              page === 'cart' ? `header__border__cart--active` : ''
-            )}
-            onClick={handlePage}
-          >
-            <img 
-              className="header__favoritesImg" 
-              src={selectedCart} 
-              alt="cart" 
-            />
-            {cartProducts.length > 0 && (
-              <div className="header__favCount">
-                <div className="header__favoritesLength">
-                  {cartProducts.length}
+              )}
+            </NavLink>
+          </div>
+          <div className={headerLine}>
+            <NavLink
+              to="/cart"
+              className={classNames(`${heardBorder} header__border__cart`,
+                page === 'cart' ? `header__border__cart--active` : ''
+              )}
+              onClick={handlePage}
+            >
+              <img
+                className="header__favoritesImg"
+                src={selectedCart}
+                alt="cart"
+              />
+              {cartProducts.length > 0 && (
+                <div className="header__favCount">
+                  <div className="header__favoritesLength">
+                    {cartProducts.length}
+                  </div>
+                  <img
+                    className="header__favoritesFavImage"
+                    src={selectFavImg()}
+                    alt="favImage"
+                  />
                 </div>
-                <img
-                  className="header__favoritesFavImage"
-                  src={selectFavImg()}
-                  alt="favImage"
-                />
-              </div>
-            )}
-          </NavLink>
+              )}
+            </NavLink>
+          </div>
         </div>
-      </div>
-    </header>
+      </header>
       <div className="header__searchTheme">
         {visibleSearch
           ? (
@@ -256,8 +256,8 @@ export const Header: React.FC = () => {
         }
         <div className='header__theme'>
           <label className='header__theme__label'>
-            <select 
-              name='select-theme' 
+            <select
+              name='select-theme'
               id="select"
               className={themeSelect}
               defaultValue={theme}

@@ -69,7 +69,7 @@ export const PhoneTablAccessCard: React.FC<Props> = ({ product, brand }) => {
             <div className={`${cardValues} card__ram`}>{product.ram}</div>
           </div>
         </div>
-        <Button product={product}/>
+        <Button product={product} />
       </div>
     </div>
   );

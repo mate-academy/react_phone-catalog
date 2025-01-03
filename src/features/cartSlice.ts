@@ -23,7 +23,7 @@ export const removeProduct = createAsyncThunk(
     const payloadParams = {
       id
     }
-    
+
     const myPromise = new Promise<typeof payloadParams>((resolve) => {
       setTimeout(() => {
         resolve(payloadParams);
@@ -41,13 +41,13 @@ const CartSlice = createSlice({
     addProduct: (state, action: PayloadAction<string>) => {
       const currentState = state;
 
-      const findProduct = currentState.cartProducts.find(prod => 
+      const findProduct = currentState.cartProducts.find(prod =>
         prod.productId === action.payload)
 
-        if (findProduct) {
-          findProduct.count += 1
-        } else {
-          currentState.cartProducts.push({
+      if (findProduct) {
+        findProduct.count += 1
+      } else {
+        currentState.cartProducts.push({
           count: 1,
           productId: action.payload
         });
@@ -57,7 +57,7 @@ const CartSlice = createSlice({
     removeLastProduct: (state, action: PayloadAction<string>) => {
       const currentState = state;
 
-      const findProduct = currentState.cartProducts.find(prod => 
+      const findProduct = currentState.cartProducts.find(prod =>
         prod.productId === action.payload)
 
       if (findProduct) {
@@ -74,25 +74,25 @@ const CartSlice = createSlice({
 
   extraReducers: builder => {
     builder
-    .addCase(removeProduct.pending, state => {
-      const currentState = state;
+      .addCase(removeProduct.pending, state => {
+        const currentState = state;
 
-      currentState.loading = true;
-    })
-    .addCase(removeProduct.fulfilled, (state, action) => {
-      const currentState = state;
+        currentState.loading = true;
+      })
+      .addCase(removeProduct.fulfilled, (state, action) => {
+        const currentState = state;
 
-      currentState.loading = false;
+        currentState.loading = false;
 
-      currentState.cartProducts = currentState.cartProducts.filter(
-        product => product.productId !== action.payload.id,
-      );
-    })
-    .addCase(removeProduct.rejected, state => {
-      const currentState = state;
-      currentState.loading = false;
-      currentState.error = true;
-    })
+        currentState.cartProducts = currentState.cartProducts.filter(
+          product => product.productId !== action.payload.id,
+        );
+      })
+      .addCase(removeProduct.rejected, state => {
+        const currentState = state;
+        currentState.loading = false;
+        currentState.error = true;
+      })
   }
 });
 

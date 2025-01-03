@@ -19,11 +19,11 @@ type Props = {
   currentPage?: string;
 }
 
-export const ProductList: React.FC<Props> = ({ 
-  products, 
-  category, 
-  sortBy, 
-  perPage, 
+export const ProductList: React.FC<Props> = ({
+  products,
+  category,
+  sortBy,
+  perPage,
   currentPage,
 }) => {
   const { loading } = useAppSelector(state => state.allProducts);
@@ -32,9 +32,9 @@ export const ProductList: React.FC<Props> = ({
     Product[] | []
   >('products', []);
 
-  currentPage??= '1';
-  perPage??= choosenItems.length.toString();
-  
+  currentPage ??= '1';
+  perPage ??= choosenItems.length.toString();
+
   const itemsPerPage = perPage === 'all' ? choosenItems.length : perPage;
   const firstItemIndex = (+currentPage - 1) * +itemsPerPage;
   const lastItemIndex = Math.min(
@@ -79,16 +79,16 @@ export const ProductList: React.FC<Props> = ({
             ? filtered?.map((product: Product) => {
 
               console.log(product)
-                return (
-                  <NavLink
-                    key={product.id}
-                    to={`/${product.category}/${product.itemId}`}
-                    className="productsPage__link"
-                  >
-                    <PhoneTablAccessCard product={product} key={product.id} />
-                  </NavLink>
-                );
-              })
+              return (
+                <NavLink
+                  key={product.id}
+                  to={`/${product.category}/${product.itemId}`}
+                  className="productsPage__link"
+                >
+                  <PhoneTablAccessCard product={product} key={product.id} />
+                </NavLink>
+              );
+            })
             : <div>There are no {category} yet</div>
           )
         )}

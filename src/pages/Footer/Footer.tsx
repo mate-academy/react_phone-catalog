@@ -16,10 +16,10 @@ export const Footer = () => {
   const theme = useAppSelector(state => state.themeSwitcher.theme);
 
   const selectedLogo = () => {
-    switch(theme) {
+    switch (theme) {
       case ThemeVars.DARK:
         return Logo_dark;
-      
+
       case ThemeVars.ORIGIN:
         return Logo;
 
@@ -34,8 +34,8 @@ export const Footer = () => {
   const rootClass = `footer__link theme-${theme}`;
   const footerButton = `footer__back__button theme-${theme}`;
   const footerBack = `footer__back__img theme-${theme}`;
-  const selectedArr = theme === ThemeVars.DARK 
-    ? Vector_Up_dark 
+  const selectedArr = theme === ThemeVars.DARK
+    ? Vector_Up_dark
     : Vector_Up;
 
   return (

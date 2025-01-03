@@ -6,14 +6,14 @@ const initialState = {
 };
 
 const themeSlice = createSlice({
-    name: 'theme',
-    initialState,
-    reducers: {
-      toggleTheme(state, action: PayloadAction<ThemeVars>) {
-        const currentState = state;
+  name: 'theme',
+  initialState,
+  reducers: {
+    toggleTheme(state, action: PayloadAction<ThemeVars>) {
+      const currentState = state;
 
-        currentState.theme = action.payload
-      },
+      currentState.theme = action.payload
+    },
   },
 });
 

@@ -27,7 +27,7 @@ export const CartPage = () => {
   // console.log('loadedProducts', loadedProducts)
   // console.log('cartProducts', cartProducts)
 
-   const countTotal = (elements: CardProduct[]) => {
+  const countTotal = (elements: CardProduct[]) => {
     let totalPrice = 0;
 
     elements.map(el => {
@@ -204,11 +204,11 @@ export const CartPage = () => {
 };
 
 function useProductsInfo(ids: string[]): {
-  loading: boolean, 
+  loading: boolean,
   products: Record<string, Product>,
 } {
   const dispatch = useAppDispatch();
-  
+
   const products = useAppSelector(state => state.allProducts.products);
 
   useEffect(() => {
@@ -219,17 +219,17 @@ function useProductsInfo(ids: string[]): {
 
   console.log(products)
 
-   const myProducts = ids.reduce((acc, id) => {
+  const myProducts = ids.reduce((acc, id) => {
     const productFound = products.find(prod => prod.id === id);
 
     if (productFound) {
-      acc[id]=productFound;
+      acc[id] = productFound;
     }
 
     return acc;
 
   }, {} as Record<string, Product>)
 
-  return { loading: !!products.length, products: myProducts}
+  return { loading: !!products.length, products: myProducts }
 }
 

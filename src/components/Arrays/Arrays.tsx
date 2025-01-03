@@ -19,7 +19,7 @@ export const Arrays = () => {
   const { elOnPage, currentPage, handlePreviousPage, handleNextPage } =
     useContext(CatalogContext);
 
-    const dispatch = useAppDispatch();
+  const dispatch = useAppDispatch();
 
   const { products } = useAppSelector(
     state => state.allProducts,
@@ -29,7 +29,7 @@ export const Arrays = () => {
     if (!products.length) {
       dispatch(fetchAllProducts());
     }
-    
+
   }, [products]);
 
   const sortedBrand = [...products].sort((a, b) => b.price - a.price);
@@ -40,20 +40,20 @@ export const Arrays = () => {
 
   const handleImgPrev = () => {
     if (theme === ThemeVars.DARK) {
-      return currentPage === 1 
-        ? `${Vec_light_left_dark}` 
+      return currentPage === 1
+        ? `${Vec_light_left_dark}`
         : `${Left_banner}`
     } else {
-      return currentPage === 1 
-        ? `${Vec_light_left}` 
+      return currentPage === 1
+        ? `${Vec_light_left}`
         : `${Arrow_Left}`
     }
   };
 
   const handleNextImg = () => {
     if (theme === ThemeVars.DARK) {
-      return currentPage === lastPage 
-        ? `${Vec_light_right_dark}` 
+      return currentPage === lastPage
+        ? `${Vec_light_right_dark}`
         : `${Right_banner}`
     } else {
       return currentPage === lastPage

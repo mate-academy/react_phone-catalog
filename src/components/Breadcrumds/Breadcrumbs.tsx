@@ -13,24 +13,24 @@ type Props = {
   details?: boolean;
 }
 
-export const Breadcrumbs: React.FC<Props> = ({ 
-  title, 
-  paths, 
-  details 
+export const Breadcrumbs: React.FC<Props> = ({
+  title,
+  paths,
+  details
 }) => {
 
   const theme = useAppSelector(state => state.themeSwitcher.theme);
 
   const homeImg = theme === ThemeVars.DARK ? Home_dark : Home;
-  const vectorRight = theme === ThemeVars.DARK 
-    ? Vec_light_right_dark 
+  const vectorRight = theme === ThemeVars.DARK
+    ? Vec_light_right_dark
     : Vec_light_right;
   const productsTitle = `productsPage__phones
     productsPage__phones--theme-${theme}`;
   const pathClass = `breadcrumbs__pathsLink 
     breadcrumbs__pathsLink--themeDetails-${theme}`;
   const breadCrumbsPaths = `breadcrumbs__paths theme-${theme}`;
-  
+
   return (
     <div className="breadcrumbs">
       <NavLink to="/" className="breadcrumbs__home-link">
@@ -43,17 +43,17 @@ export const Breadcrumbs: React.FC<Props> = ({
       />
       {!!details && (
         <>
-        <NavLink to={`/${paths}`} className={pathClass}>
-        <div className={breadCrumbsPaths}>
-          {paths}
-        </div>
-      </NavLink>
-      <img
-        src={vectorRight}
-        alt="Vector_light_right"
-        className="breadcrumbs__arrow-right"
-      />
-      </>
+          <NavLink to={`/${paths}`} className={pathClass}>
+            <div className={breadCrumbsPaths}>
+              {paths}
+            </div>
+          </NavLink>
+          <img
+            src={vectorRight}
+            alt="Vector_light_right"
+            className="breadcrumbs__arrow-right"
+          />
+        </>
       )}
       <div className={productsTitle}>{title}</div>
     </div>
