@@ -24,6 +24,7 @@ const CardPage = () => {
   const amount = Object.values(totalBill).reduce((acc, cr) => acc + cr, 0);
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     const calculateTotal = cartProducts.reduce((acc, current) => {
       const totalCalculation =
         totalBill[current.id] * current.price || current.price;

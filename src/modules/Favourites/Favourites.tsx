@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styles from './Favourites.module.scss';
 import Breadcrumbs from '../shared/components/Breadcrumbs';
 import { useLocation } from 'react-router-dom';
@@ -11,6 +11,9 @@ const Favourites = () => {
   const currentPath = pathname[1].toUpperCase() + pathname.slice(2);
   const { favorites } = useProducts();
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [])
   return (
     <div className={styles.page}>
       <Breadcrumbs />

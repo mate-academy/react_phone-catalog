@@ -19,6 +19,7 @@ const DevicesPage = () => {
     useProducts();
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     setCurrentPath(currentPath.toLowerCase());
   }, [pathname]);
 

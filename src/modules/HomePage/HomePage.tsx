@@ -6,6 +6,7 @@ import { categories } from './utils/data';
 
 import Loader from '../shared/components/Loader';
 import { useProducts } from '../shared/context/productsContext';
+import { useEffect } from 'react';
 
 const HomePage = () => {
   const { products, isLoading, isError } = useProducts();
@@ -25,6 +26,9 @@ const HomePage = () => {
     .sort((a, b) => b.year - a.year)
     .slice(0, 30);
 
+    useEffect(() => {
+      window.scrollTo(0, 0);
+    }, [])
   return (
     <div className={styles.main}>
       <h1 style={{ visibility: 'hidden', position: 'absolute', zIndex: -1 }}>
