@@ -15,8 +15,9 @@ const Layout = () => {
 
   return (
     <div className={styles.wrapper}>
-      <Header headerRef={headerRef} />
-      <main className={styles.wrapper__main}>
+      <span ref={headerRef}></span>
+      <Header/>
+      <main  className={styles.wrapper__main}>
         <Outlet />
       </main>
       <footer className={styles.wrapper__footer}>

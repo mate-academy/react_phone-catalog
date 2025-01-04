@@ -5,13 +5,13 @@ import NavMenu from './components/NavMenu';
 import { LuMenu } from 'react-icons/lu';
 import { IoClose } from 'react-icons/io5';
 
-const Header: React.FC<{ headerRef: RefObject<HTMLElement> }> = ({
-  headerRef,
+const Header: React.FC<{ headerRef?: RefObject<HTMLElement> }> = ({
+
 }) => {
   const [isOpenMenu, setIsOpenMenu] = useState(false);
 
   return (
-    <header ref={headerRef} id="back-to-top" className={styles.header}>
+    <div className={styles.header}>
       <Logo />
 
       <NavMenu isOpenMenu={isOpenMenu} setIsOpenMenu={setIsOpenMenu} />
@@ -22,7 +22,7 @@ const Header: React.FC<{ headerRef: RefObject<HTMLElement> }> = ({
       >
         {isOpenMenu ? <IoClose /> : <LuMenu />}
       </button>
-    </header>
+    </div>
   );
 };
 

@@ -26,9 +26,7 @@
 
   &__delete{
     color: $icons-color;
-    font-size: 10px;
-    width: 16px;
-    height: 16px;
+    font-size: 16px;
   }
 
   &__image{
@@ -44,7 +42,7 @@
 
   &__name{
     flex: 1 1 45%;
-    
+
     @include body-text;
   }
 

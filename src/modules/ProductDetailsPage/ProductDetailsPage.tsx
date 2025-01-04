@@ -59,13 +59,15 @@ const ProductDetailsPage = () => {
         });
     }
 
-    setRandomProducts(prev => prev.sort(() => Math.random() - 0.5))
+    setRandomProducts(prev => prev.sort(() => Math.random() - 0.5));
   }, [productId]);
 
   if (isProductLoading) {
-    return <Loader/>
+    return <Loader />;
   } else if (!product) {
-    return <ProductNotFound currentPath={pathSegments[1].split('-').join(' ')}/>
+    return (
+      <ProductNotFound currentPath={pathSegments[1].split('-').join(' ')} />
+    );
   }
 
   const handleChangeProperty = (

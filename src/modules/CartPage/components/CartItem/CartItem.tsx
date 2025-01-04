@@ -2,6 +2,7 @@ import React, { FC, useState } from 'react';
 import { Product } from '../../../shared/types';
 import styles from './CartItem.module.scss';
 import { useProducts } from '../../../shared/context/productsContext';
+import { IoClose } from 'react-icons/io5';
 
 type Props = {
   product: Product;
@@ -53,8 +54,10 @@ const CartItem: FC<Props> = ({ product, setTotal, setTotalBill, amount }) => {
     <div className={styles.cartItem}>
       <button
         onClick={deleteProduct}
-        className={styles.cartItem__delete + ' ' + 'icon-delete'}
-      ></button>
+        className={styles.cartItem__delete}
+      >
+        <IoClose/>
+      </button>
       <div className={styles.cartItem__image}>
         <img src={product.image} alt={product.name} />
       </div>
