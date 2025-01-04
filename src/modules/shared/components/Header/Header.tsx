@@ -5,9 +5,7 @@ import NavMenu from './components/NavMenu';
 import { LuMenu } from 'react-icons/lu';
 import { IoClose } from 'react-icons/io5';
 
-const Header: React.FC<{ headerRef?: RefObject<HTMLElement> }> = ({
-
-}) => {
+const Header: React.FC<{ headerRef?: RefObject<HTMLElement> }> = ({}) => {
   const [isOpenMenu, setIsOpenMenu] = useState(false);
 
   return (

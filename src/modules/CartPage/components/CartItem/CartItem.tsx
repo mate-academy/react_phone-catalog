@@ -52,11 +52,8 @@ const CartItem: FC<Props> = ({ product, setTotal, setTotalBill, amount }) => {
 
   return (
     <div className={styles.cartItem}>
-      <button
-        onClick={deleteProduct}
-        className={styles.cartItem__delete}
-      >
-        <IoClose/>
+      <button onClick={deleteProduct} className={styles.cartItem__delete}>
+        <IoClose />
       </button>
       <div className={styles.cartItem__image}>
         <img src={product.image} alt={product.name} />
