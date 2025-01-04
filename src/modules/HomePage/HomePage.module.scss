@@ -23,6 +23,9 @@
 .errorMessage{
   grid-column: 1 / -1;
   color: $red;
+  padding-block: 24px;
+
+  @include inline-padding;
 }
 
 .categories{

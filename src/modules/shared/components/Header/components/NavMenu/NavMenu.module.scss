@@ -20,7 +20,7 @@ $height: 48px;
   &__icon {
     border-left: 1px solid $icons-color;
     height: 100%;
-    width: 48px;
+    width: $height;
     position: relative;
 
     @include center;
@@ -49,12 +49,13 @@ $height: 48px;
     display: flex;
     flex-direction: column;
     position: absolute;
-    top: 48px;
+    top: $height;
     left: 0;
     background-color: #fff;
     width: 100%;
-    height: calc(100vh - 48px);
+    height: calc(100vh - $height);
     z-index: 3000;
+    
     .menu__list{
       padding-block: 32px;
       flex-direction: column;

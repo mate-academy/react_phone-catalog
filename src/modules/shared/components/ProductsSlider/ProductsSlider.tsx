@@ -3,7 +3,7 @@ import styles from './ProductsSlider.module.scss';
 import Card from '../Card';
 import { Product } from '../../types';
 import classNames from 'classnames';
-import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
+import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
 
 type Props = {
   title: string;
@@ -90,7 +90,7 @@ const ProductsSlider: React.FC<Props> = ({
           })}
           disabled={currentIndex === 0}
         >
-          <IoIosArrowBack/>
+          <IoIosArrowBack />
         </button>
         <button
           onClick={nextSlide}
@@ -98,7 +98,7 @@ const ProductsSlider: React.FC<Props> = ({
             [styles.pagination__next_active]: currentIndex < products.length,
           })}
         >
-          <IoIosArrowForward/>
+          <IoIosArrowForward />
         </button>
       </div>
       <div

@@ -1,3 +1,3 @@
 import { fetchData } from './fetchData';
 
-export const getProducts = () => fetchData('/public/api/products.json');
+export const getProducts = () => fetchData('./api/products.json');

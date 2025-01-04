@@ -10,7 +10,7 @@ const ProductNotFound: React.FC<{ currentPath: string }> = ({
         There are no {currentPath.toLowerCase()} yet
       </h2>
       <div className={styles.notFound__img}>
-        <img src="/public/img/product-not-found.png" alt="product not found" />
+        <img src="./img/product-not-found.png" alt="product not found" />
       </div>
     </div>
   );

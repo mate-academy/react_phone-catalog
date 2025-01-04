@@ -28,7 +28,7 @@ const ProductDetailsPage = () => {
   const [productVariants, setProductVariants] = useState<ProductDetails[]>([]);
   const [isProductLoading, setIsProductLoading] = useState(false);
   const [error, setError] = useState('');
-
+  const [randomProducts, setRandomProducts] = useState<Product[]>(products);
   const pathSegments = pathname.split('/').filter(Boolean);
   const category = pathSegments[0];
 
@@ -58,9 +58,15 @@ const ProductDetailsPage = () => {
           setIsProductLoading(false);
         });
     }
+
+    setRandomProducts(prev => prev.sort(() => Math.random() - 0.5))
   }, [productId]);
 
-  const randomProducts = products.sort(() => Math.random() - 0.5).slice(0, 30);
+  if (isProductLoading) {
+    return <Loader/>
+  } else if (!product) {
+    return <ProductNotFound currentPath={pathSegments[1].split('-').join(' ')}/>
+  }
 
   const handleChangeProperty = (
     e: ChangeEvent<HTMLInputElement>,
@@ -94,12 +100,8 @@ const ProductDetailsPage = () => {
 
         <GoBack />
 
-        {isProductLoading ? (
-          <Loader />
-        ) : error ? (
+        {error ? (
           <div>{error}</div>
-        ) : !product || !productItem ? (
-          <ProductNotFound currentPath={pathSegments[1].split('-').join(' ')} />
         ) : (
           <>
             <h1 className={styles.page__title}>{product?.name}</h1>

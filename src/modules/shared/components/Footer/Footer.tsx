@@ -2,7 +2,7 @@ import React from 'react';
 import st from './Footer.module.scss';
 import Logo from '../Logo';
 import { Link } from 'react-router-dom';
-import { IoIosArrowUp } from "react-icons/io";
+import { IoIosArrowUp } from 'react-icons/io';
 
 type Props = {
   scroleToHeader: () => void;
@@ -25,7 +25,7 @@ const Footer: React.FC<Props> = ({ scroleToHeader }) => {
       <div className={st.footer__back} onClick={scroleToHeader}>
         <span>Back to top</span>
         <span className={st.footer__arrow}>
-          <IoIosArrowUp/>
+          <IoIosArrowUp />
         </span>
       </div>
     </div>

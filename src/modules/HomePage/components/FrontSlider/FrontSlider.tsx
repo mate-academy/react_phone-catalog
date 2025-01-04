@@ -2,22 +2,22 @@ import { useEffect, useState } from 'react';
 import styles from './FrontSlider.module.scss';
 import classNames from 'classnames';
 import Baner from '../Baner';
-import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
+import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
 
 const frontSliderData = [
   {
     id: 1,
-    img: '/public/img/apple-iphone-16-pro-max-512gb-desert-titanium-4.webp',
+    img: './img/apple-iphone-16-pro-max-512gb-desert-titanium-4.webp',
     title: 'iPhone 16 Pro',
   },
   {
     id: 2,
-    img: '/public/img/iphone-16-pro-max-256-gb-black-titanium-5.png.webp',
+    img: './img/iphone-16-pro-max-256-gb-black-titanium-5.png.webp',
     title: 'iPhone 16 Pro',
   },
   {
     id: 3,
-    img: '/public/img/desert-titanium-1-500x500.webp',
+    img: './img/desert-titanium-1-500x500.webp',
     title: 'All for you!',
   },
 ];
@@ -45,7 +45,7 @@ const FrontSlider = () => {
     <div className={styles.slider}>
       <div className={styles.slider__container}>
         <button className={styles.slider__back} onClick={moveSlideBack}>
-          <IoIosArrowBack/>
+          <IoIosArrowBack />
         </button>
         <div className={styles.slider__track}>
           {frontSliderData.map(item => (
@@ -61,7 +61,7 @@ const FrontSlider = () => {
         </div>
 
         <button className={styles.slider__next} onClick={moveSlideForward}>
-          <IoIosArrowForward/>
+          <IoIosArrowForward />
         </button>
 
         <div className={styles.slider__pagination}>

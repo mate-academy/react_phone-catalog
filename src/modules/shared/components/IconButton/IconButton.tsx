@@ -3,7 +3,7 @@ import React from 'react';
 import { useProducts } from '../../context/productsContext';
 import styles from './IconButton.module.scss';
 import { Product } from '../../types';
-import { FaRegHeart, FaHeart } from "react-icons/fa";
+import { FaRegHeart, FaHeart } from 'react-icons/fa';
 
 type Props = {
   item: Product;
@@ -30,11 +30,7 @@ const IconButton: React.FC<Props> = ({ item, isBig = false }) => {
         [styles.favorite_big]: isBig,
       })}
     >
-      {isFavorite ? (
-        <FaHeart/>
-      ) : (
-        <FaRegHeart/>
-      )}
+      {isFavorite ? <FaHeart /> : <FaRegHeart />}
     </button>
   );
 };
