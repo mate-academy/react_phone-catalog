@@ -1,0 +1,82 @@
+ @font-face {
+  font-family: Mont-bold;
+  src: url('../../../public/fonts/Mont-Bold.otf');
+ }
+
+ @import '../styles/main';
+
+.title {
+  color: var(--primary-font-color);
+font-family: Mont, sans-serif;
+font-size: 32px;
+font-weight: 800;
+line-height: 41px;
+letter-spacing: -0.01em;
+text-align: left;
+
+  @include on-tablet {
+    font-size: 32px;
+  }
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px 40px;
+}
+
+.arrow {
+  display: flex;
+  gap: 4px;
+}
+
+.productcard {
+  gap: 15px;
+  &__image {
+    margin: 0 40px;
+    &--link {
+    margin-top: 15px;
+  }
+}
+&__buttons {
+  margin-bottom: 10px;
+}
+}
+
+.CartSwiper {
+  &ONPHONE {
+    display: block;
+
+    @include on-tablet {
+      display: none;
+    }
+
+    @include on-desktop {
+      display: none;
+    }
+  }
+
+  &ONTABLET {
+    display: none;
+
+    @include on-tablet {
+      display: block;
+    }
+
+    @include on-desktop {
+      display: none;
+    }
+  }
+
+  &ONDESKTOP {
+    display: none;
+
+    @include on-tablet {
+      display: none;
+    }
+
+    @include on-desktop {
+      display: block;
+    }
+  }
+}

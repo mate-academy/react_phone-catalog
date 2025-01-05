@@ -1,0 +1,135 @@
+@import '../styles/main';
+
+@font-face {
+  font-family: Mont;
+  src: url('../../../public/fonts/Mont-Bold.otf');
+}
+
+.icon {
+  &__menu {
+    &ONDARK {
+      display: flex;
+    background-image: url('../../img/menu-white.svg');
+    background-position: 50%;
+    background-repeat: no-repeat;
+    height: 16px;
+    width: 16px;
+    cursor: pointer;
+    transform: scale(1);
+    transition: 0.3s ease-in transform;
+    &:hover {
+      transform: scale(1.1);
+      transition: 0.3s ease-in transform;
+    }
+    }
+
+    display: flex;
+    background-image: url('../../img/Menu.svg');
+    background-position: 50%;
+    background-repeat: no-repeat;
+    height: 16px;
+    width: 16px;
+    cursor: pointer;
+    
+    @include on-tablet {
+      display: none;
+    }
+  }
+
+    @include on-tablet {
+      display: none;
+    }
+    &__cross {
+      background-image: url('../../img/Close.svg');
+        background-repeat: no-repeat;
+        width: 16px;
+        height: 16px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        &:hover {
+          transform: rotate(2turn);
+          transition: 0.5s ease-in-out transform;
+        }
+    }
+
+    &__heart {
+      &ONDARK {
+        background-image: url('../../img/heart-white.svg');
+      background-repeat: no-repeat;
+      width: 16px;
+      height: 16px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      }
+
+      background-image: url('../../img/Favourites\ \(Heart\ Like\).svg');
+      background-repeat: no-repeat;
+      width: 16px;
+      height: 16px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      &circle {
+        position: relative;
+        left: 7px;
+        font-family: Mont, sans-serif;
+        font-size: 9px;
+        font-weight: 700;
+        line-height: 11.5px;
+        text-align: center;
+      }
+    }
+    &__bag {
+      &ONDARK {
+        background-image: url('../../img/shopping-bag-white.svg');
+      background-repeat: no-repeat;
+      width: 16px;
+      height: 16px;
+      cursor: pointer;
+      }
+
+      background-image: url('../../img/Shopping\ bag\ \(Cart\).svg');
+      background-repeat: no-repeat;
+      width: 16px;
+      height: 16px;
+      cursor: pointer;
+      &circle {
+        position: relative;
+        left: 8px;
+        font-family: Mont, sans-serif;
+font-size: 9px;
+font-weight: 700;
+line-height: 11.5px;
+text-align: center;
+      }
+    }
+
+  &__circle {
+    height: 14px;
+    width: 14px;
+    border-radius: 100%;
+    background-color: palevioletred;
+    color: white;
+    font-family: Mont, sans-serif;
+font-size: 9px;
+font-weight: 700;
+line-height: 11.5px;
+text-align: center;
+position: relative;
+bottom: 6px;
+  }
+  &__switcher {
+    width: 30px;
+    height: 30px;
+    background-color: var(--background-color);
+    &:hover {
+      transform: rotate(3turn);
+      transition: 30s cubic-bezier(0.01, 0.01, 0.01, 0.01);
+    }
+  }
+}

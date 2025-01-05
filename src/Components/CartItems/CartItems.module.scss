@@ -1,0 +1,334 @@
+@font-face {
+  font-family: Mont;
+  src: url('../../../public/fonts/Mont-Regular.otf');
+}
+
+@font-face {
+  font-family: Mont-Bold;
+  src: url('../../../public/fonts/Mont-Bold.otf');
+}
+
+@import '../styles/main';
+
+  .cartitems {
+    background-color: var(--background-color);
+  }
+
+  .emptycart {
+    &image {
+      &ONDARK {
+        margin: 100px auto 0;
+        background-image: url('../../img/cart-is-empty-black.png');
+        background-repeat: no-repeat;
+        background-size: 100% 400px;
+        height: 50vh;
+        width: 80%;
+      }
+
+      margin: 100px auto 0;
+    background-image: url('../../img/cart-is-empty.png');
+    background-repeat: no-repeat;
+    background-size: 100% 400px;
+    height: 50vh;
+    width: 80%;
+    }
+    &title {
+      color: var(--primary-font-color);
+      margin-left: 16px;
+font-family: Mont-bold, sans-serif;
+font-size: 48px;
+font-weight: 800;
+line-height: 56px;
+letter-spacing: -0.01em;
+    }
+  }
+
+  .backbutton {
+    border: 0;
+    background-color: transparent;
+font-family: Mont, sans-serif;
+font-size: 12px;
+font-weight: 700;
+line-height: 15.34px;
+text-align: left;
+color:  var(--secondary-font-color);
+margin: 16px 0 32px 16px;
+transform: scale(1);
+transition: 0.3s ease-in transform;
+cursor: pointer;
+&:hover {
+  transform: scale(1.1);
+  transition: 0.3s ease-in transform;
+  color: var(--breadcrumbs-hover);
+}
+  }
+
+  .title {
+    color: var(--primary-font-color);
+font-family: Mont-Bold, sans-serif;
+font-size: 32px;
+font-weight: 800;
+line-height: 41px;
+letter-spacing: -0.01em;
+text-align: left;
+margin-left: 16px;
+  }
+
+  .item {
+    background-color: var(--background-color);
+    height: 160px;
+    border: 1px solid #E2E6E9;
+    border-radius: 10px;
+    margin: 0 16px;
+  }
+
+  .image {
+    width: 80px;
+    height: 80px;
+    transform: scale(1);
+    transition: ease 0.3s transform;
+    &:hover {
+      transition: ease 0.3s transform;
+      transform: scale(1.1);
+    }
+  }
+
+  .name {
+    color: var(--primary-font-color);
+font-family: Mont, sans-serif;
+font-size: 14px;
+font-weight: 600;
+line-height: 21px;
+text-align: left;
+
+  }
+
+  .price {
+    color: var(--primary-font-color);
+font-family: Mont-bold, sans-serif;
+font-size: 22px;
+font-weight: 800;
+line-height: 30.8px;
+margin-left: auto;
+  }
+
+  .crossbutton {
+    background-image: url('../../img/Close.svg');
+    background-color: transparent;
+    border: 0;
+    width: 16px;
+    height: 16px;
+    margin: auto 0;
+    cursor: pointer;
+    &:hover {
+      transform: rotate(1turn);
+      transition: 0.3s ease transform;
+    }
+  }
+
+  .imagecontainer {
+    margin: 10px 0 0 10px;
+    display: flex;
+    gap: 16px;
+  }
+
+  .container {
+    padding-bottom: 40px;
+
+    @include on-desktop {
+      display: flex;
+    }
+  }
+
+  .pricecontainer {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 20px 20px 0;
+  }
+
+  .content {
+    width: 100%;
+
+    @include on-desktop {
+    width: 50%;
+    }
+
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin: 40px 0;
+  }
+
+  .amountofmodels {
+    color: var(--primary-font-color);
+    width: 4.64px;
+font-family: Mont, sans-serif;
+font-size: 14px;
+font-weight: 600;
+line-height: 21px;
+text-align: center;
+
+  }
+
+  .button {
+    &__decreased {
+      color: var(--primary-font-color);
+      width: 32px;
+height: 32px;
+background-color: transparent;
+gap: 0;
+border-radius: 100%;
+border: 1px solid #89939A;
+font-size: 22px;
+cursor: pointer;
+&:hover {
+  background-color: var(--menu-block);
+}
+&_disabled {
+  border: 1px solid #E2E6E9;
+}
+
+    }
+    &__increased {
+      color: var(--primary-font-color);
+      width: 32px;
+height: 32px;
+background-color: transparent;
+gap: 0;
+border-radius: 100%;
+border: 1px solid #89939A;
+font-size: 22px;
+cursor: pointer;
+&:hover {
+  background-color: var(--menu-block);
+}
+&_disabled {
+  border: 1px solid #E2E6E9;
+}
+    }
+  }
+
+  .total {
+    width: 95%;
+
+    @include on-desktop {
+    width: 50%;
+    }
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto;
+    background-color: transparent;
+padding-top: 24px;
+padding-bottom: 40px;
+gap: 16px;
+border-radius: 10px;
+border: 1px solid #E2E6E9;
+  }
+
+
+  .line {
+    border: 1px solid #E2E6E9;
+    margin: 20px;
+    width: 60%;
+  }
+
+  .totalprice {
+    color: var(--primary-font-color);
+font-family: Mont-bold, sans-serif;
+font-size: 32px;
+font-weight: 800;
+line-height: 41px;
+letter-spacing: -0.01em;
+text-align: center;
+margin: 20px 0;
+
+  }
+
+  .allproducts {
+font-family: Mont, sans-serif;
+font-size: 14px;
+font-weight: 600;
+line-height: 21px;
+text-align: center;
+color:  var(--secondary-font-color);
+  }
+
+  .checkoutbutton {
+    width: 80%;
+    height: 80px;
+    border: 0;
+    border-radius: 10px;
+    background-color: #216CFF;
+    color: white;
+font-family: Mont, sans-serif;
+font-size: 14px;
+font-weight: 700;
+line-height: 21px;
+text-align: center;
+cursor: pointer;
+&:hover {
+  background-color: var(--background-color);
+  color: var(--text-active-button);
+  border: 2px solid blue;
+}
+  }
+
+  .header {
+    font-family: Mont, sans-serif;
+    margin-left: 16px;
+  }
+
+  .summary {
+    font-family: Mont-Bold, sans-serif;
+   color:  var(--secondary-font-color);
+    margin-left: 16px;
+    &price {
+      color: black;
+      font-style: oblique;
+    }
+  }
+
+  .checkout {
+    &ONDARK {
+      background-image: url('../../img/streszczenie-czarne-tlo-ksztalty_1053-461.png');
+    width: 100%;
+    height: 80vh;
+    }
+
+    background-image: url('../../../public/img/white-triangle-pattern-seamless-background-2.jpg');
+    width: 100%;
+    height: 80vh;
+  }
+
+  .question {
+    color: var(--primary-font-color);
+    font-family: Mont-Bold, sans-serif;
+    margin: 0 10px 30%;
+    padding-top: 80px;
+  }
+
+  .options {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+  }
+
+  .option {
+    color: var(--primary-font-color);
+    font-family: Mont, sans-serif;
+    background-color: transparent;
+    font-size: 28px;
+    border: 0;
+    cursor: pointer;
+    transform: scale(1);
+    transition: ease 0.3s transform;
+    &:hover {
+      color: red;
+      transform: scale(1.1);
+      transition: ease 0.3s transform;
+    }
+  }
+
