@@ -190,7 +190,7 @@ export const PhonesPage = () => {
               There are not phones matching the query ...{' '}
             </h1>
           )}
-                   {!getVisibleItems(itemsInNumber).length && sortOptions && (
+          {!getVisibleItems(itemsInNumber).length && sortOptions && (
             <h1 className={phonesPage.noresults}>
               There are not phones in this color ...{' '}
             </h1>

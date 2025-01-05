@@ -193,7 +193,7 @@ export const AccessoriesPage = () => {
               There are not accessories matching the query ...{' '}
             </h1>
           )}
-                             {!getVisibleItems(itemsInNumber).length && sortOptions && (
+          {!getVisibleItems(itemsInNumber).length && sortOptions && (
             <h1 className={accessoriesPage.noresults}>
               There are not accessories in this color ...{' '}
             </h1>

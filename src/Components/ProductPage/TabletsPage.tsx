@@ -190,7 +190,7 @@ export const TabletsPage = () => {
               There are not tablets matching the query ...{' '}
             </h1>
           )}
-                             {!getVisibleItems(itemsInNumber).length && sortOptions && (
+          {!getVisibleItems(itemsInNumber).length && sortOptions && (
             <h1 className={tabletsPage.noresults}>
               There are not tablets in this color ...{' '}
             </h1>
