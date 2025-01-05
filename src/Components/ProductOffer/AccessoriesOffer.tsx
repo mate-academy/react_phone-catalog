@@ -11,6 +11,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { FreeMode, Navigation, Thumbs } from 'swiper/modules';
 import { CartPage } from '../CartPage';
 import { ErrorScreen } from '../ErrorScreen/ErrorScreen';
+import ReactLoading from 'react-loading';
 
 export const AccessoriesOffer = () => {
   const {
@@ -27,6 +28,7 @@ export const AccessoriesOffer = () => {
     setTotalPrice,
     themeSwitcher,
     error,
+    loading,
   } = useContext(CatalogContext);
   const { itemId } = useParams();
   const selectedAccessory = accessories.find(
@@ -117,307 +119,334 @@ export const AccessoriesOffer = () => {
   return (
     <>
       <Nav />
-      {!error ? (
-        <div
-          className={accessoryOffer.productoffer}
+      <div
+        className={classNames([accessoryOffer.backgroundLoader], {
+          [accessoryOffer.backgroundLoaderOFF]: !loading,
+        })}
+        data-theme={themeSwitcher ? 'dark' : 'light'}
+      >
+        <ReactLoading
+          height={'70%'}
+          width={'30%'}
+          type="spokes"
           data-theme={themeSwitcher ? 'dark' : 'light'}
-        >
-          <button
-            className={accessoryOffer.breadcrumbs__backbutton}
-            onClick={() => navigate(-1)}
+          className={accessoryOffer.loader}
+        />
+      </div>
+      <div
+        className={classNames([accessoryOffer.offer], {
+          [accessoryOffer.offerOFF]: loading,
+        })}
+      >
+        {!error ? (
+          <div
+            className={accessoryOffer.productoffer}
+            data-theme={themeSwitcher ? 'dark' : 'light'}
           >
-            <div className={accessoryOffer.breadcrumbs__backarrow}></div> Back
-          </button>
-          <div className={accessoryOffer.breadcrumbs}>
-            <Link to="/">
-              <div
-                className={classNames([accessoryOffer.breadcrumbs__home], {
-                  [accessoryOffer.breadcrumbs__homeONDARK]: themeSwitcher,
-                })}
-              />
-            </Link>
-            <div className={accessoryOffer.breadcrumbs__arrow} />
-            <Link
-              className={accessoryOffer.breadcrumbs__textactive}
-              to="/accessories"
+            <button
+              className={accessoryOffer.breadcrumbs__backbutton}
+              onClick={() => navigate(-1)}
             >
-              <div className={accessoryOffer.breadcrumbs__text}>
-                Accessories
-              </div>
-            </Link>
-            <div className={accessoryOffer.breadcrumbs__arrow} />
-            <div className={accessoryOffer.breadcrumbs__text}>{itemId}</div>
-          </div>
-          <h1 className={accessoryOffer.title}>{selectedAccessory?.name}</h1>
-          <div className={accessoryOffer.containerONTABLET}>
-            <div className="container__swipers">
-              <div className="container">
-                <Swiper
-                  className={accessoryOffer.images}
-                  modules={[FreeMode, Navigation, Thumbs]}
-                  navigation={true}
-                  loop={true}
-                  spaceBetween={100}
-                  thumbs={{ swiper: thumbsSwiper }}
-                >
-                  {selectedAccessory?.images.map((image, i) => {
-                    return (
-                      <SwiperSlide key={i}>
-                        <img src={image} className={accessoryOffer.image} />
-                      </SwiperSlide>
-                    );
-                  })}
-                </Swiper>
-              </div>
-              <div className="container__nav">
-                <Swiper
-                  onSwiper={setThumbsSwiper}
-                  loop={true}
-                  spaceBetween={10}
-                  slidesPerView={10}
-                  freeMode={true}
-                  modules={[FreeMode, Navigation, Thumbs]}
-                  className={accessoryOffer.navImages}
-                >
-                  {selectedAccessory?.images.map((image, i) => {
-                    return (
-                      <SwiperSlide key={i}>
-                        <img src={image} className={accessoryOffer.navImage} />
-                      </SwiperSlide>
-                    );
-                  })}
-                </Swiper>
-              </div>
-            </div>
-
-            <div className={accessoryOffer.panel}>
-              <div className={accessoryOffer.panel__id_and_title}>
-                <h2 className={accessoryOffer.panel__title}>
-                  Available colors
-                </h2>
+              <div className={accessoryOffer.breadcrumbs__backarrow}></div> Back
+            </button>
+            <div className={accessoryOffer.breadcrumbs}>
+              <Link to="/">
                 <div
-                  className={accessoryOffer.panel__idnumber}
-                >{`ID: ${id}`}</div>
+                  className={classNames([accessoryOffer.breadcrumbs__home], {
+                    [accessoryOffer.breadcrumbs__homeONDARK]: themeSwitcher,
+                  })}
+                />
+              </Link>
+              <div className={accessoryOffer.breadcrumbs__arrow} />
+              <Link
+                className={accessoryOffer.breadcrumbs__textactive}
+                to="/accessories"
+              >
+                <div className={accessoryOffer.breadcrumbs__text}>
+                  Accessories
+                </div>
+              </Link>
+              <div className={accessoryOffer.breadcrumbs__arrow} />
+              <div className={accessoryOffer.breadcrumbs__text}>{itemId}</div>
+            </div>
+            <h1 className={accessoryOffer.title}>{selectedAccessory?.name}</h1>
+            <div className={accessoryOffer.containerONTABLET}>
+              <div className="container__swipers">
+                <div className="container">
+                  <Swiper
+                    className={accessoryOffer.images}
+                    modules={[FreeMode, Navigation, Thumbs]}
+                    navigation={true}
+                    loop={true}
+                    spaceBetween={100}
+                    thumbs={{ swiper: thumbsSwiper }}
+                  >
+                    {selectedAccessory?.images.map((image, i) => {
+                      return (
+                        <SwiperSlide key={i}>
+                          <img src={image} className={accessoryOffer.image} />
+                        </SwiperSlide>
+                      );
+                    })}
+                  </Swiper>
+                </div>
+                <div className="container__nav">
+                  <Swiper
+                    onSwiper={setThumbsSwiper}
+                    loop={true}
+                    spaceBetween={10}
+                    slidesPerView={10}
+                    freeMode={true}
+                    modules={[FreeMode, Navigation, Thumbs]}
+                    className={accessoryOffer.navImages}
+                  >
+                    {selectedAccessory?.images.map((image, i) => {
+                      return (
+                        <SwiperSlide key={i}>
+                          <img
+                            src={image}
+                            className={accessoryOffer.navImage}
+                          />
+                        </SwiperSlide>
+                      );
+                    })}
+                  </Swiper>
+                </div>
               </div>
-              <div className={accessoryOffer.panel__colors}>
-                {selectedAccessory?.colorsAvailable.map(color => {
-                  const getSelectedColor = (currentColor: string) => {
-                    if (color === currentColor) {
-                      setSelectedColor(currentColor);
+
+              <div className={accessoryOffer.panel}>
+                <div className={accessoryOffer.panel__id_and_title}>
+                  <h2 className={accessoryOffer.panel__title}>
+                    Available colors
+                  </h2>
+                  <div
+                    className={accessoryOffer.panel__idnumber}
+                  >{`ID: ${id}`}</div>
+                </div>
+                <div className={accessoryOffer.panel__colors}>
+                  {selectedAccessory?.colorsAvailable.map(color => {
+                    const getSelectedColor = (currentColor: string) => {
+                      if (color === currentColor) {
+                        setSelectedColor(currentColor);
+
+                        navigate(
+                          `/accessories/${selectedAccessory.namespaceId}-${selectedAccessory.capacity.toLowerCase()}-${currentColor}`,
+                        );
+                      }
+                    };
+
+                    return (
+                      <button
+                        key={color}
+                        onClick={() => getSelectedColor(color)}
+                        className={classNames(
+                          [accessoryOffer.panel__colorselection],
+                          {
+                            [accessoryOffer.panel__colorselectionselected]:
+                              selectedColor === color ||
+                              color === selectedAccessory.color,
+                          },
+                        )}
+                        style={{ backgroundColor: `${color}` }}
+                      ></button>
+                    );
+                  })}
+                </div>
+                <div className={accessoryOffer.line}></div>
+                <div className={accessoryOffer.panel__capacity_title}>
+                  Select capacity
+                </div>
+                {selectedAccessory?.capacityAvailable.map(capacity => {
+                  const getSelectedCapacity = (currentCapacity: string) => {
+                    if (
+                      currentCapacity.toLowerCase() === capacity.toLowerCase()
+                    ) {
+                      setSelectedCapacity(currentCapacity);
 
                       navigate(
-                        `/accessories/${selectedAccessory.namespaceId}-${selectedAccessory.capacity.toLowerCase()}-${currentColor}`,
+                        `/accessories/${selectedAccessory.namespaceId}-${currentCapacity.toLowerCase()}-${selectedAccessory.color}`,
                       );
                     }
                   };
 
                   return (
                     <button
-                      key={color}
-                      onClick={() => getSelectedColor(color)}
                       className={classNames(
-                        [accessoryOffer.panel__colorselection],
+                        [accessoryOffer.panel__capacity_option],
                         {
-                          [accessoryOffer.panel__colorselectionselected]:
-                            selectedColor === color ||
-                            color === selectedAccessory.color,
+                          [accessoryOffer.panel__capacity_optionselected]:
+                            selectedCapacity === capacity ||
+                            capacity === selectedAccessory.capacity,
                         },
                       )}
-                      style={{ backgroundColor: `${color}` }}
-                    ></button>
+                      key={capacity}
+                      onClick={() => getSelectedCapacity(capacity)}
+                    >
+                      {capacity}
+                    </button>
                   );
                 })}
+                <div className={accessoryOffer.line}></div>
+                <div className={accessoryOffer.panel__prices}>
+                  <div
+                    className={accessoryOffer.panel__price}
+                  >{`$${selectedAccessory?.priceDiscount}`}</div>
+                  <del
+                    className={accessoryOffer.panel__pricediscount}
+                  >{`$${selectedAccessory?.priceRegular}`}</del>
+                </div>
+                <div className={accessoryOffer.panel__buttons}>
+                  {selectedProduct && (
+                    <button
+                      className={classNames(
+                        [accessoryOffer.panel__adding_button],
+                        {
+                          [accessoryOffer.panel__adding_buttonISACTIVE]:
+                            addedItems.find(item => item.id === itemId),
+                        },
+                      )}
+                      onClick={() => addItems(selectedProduct)}
+                    >
+                      {addedItems.find(item => item.id === selectedProduct.id)
+                        ? 'ADDED'
+                        : 'Add to cart'}
+                    </button>
+                  )}
+                  {selectedProduct && (
+                    <button
+                      onClick={() => addProductToFavourite(selectedProduct)}
+                      className={classNames(
+                        [accessoryOffer.panel__heartbutton],
+                        {
+                          [accessoryOffer.panel__heartbuttonisactive]:
+                            favouriteItems.find(item => item.itemId === itemId),
+                          [accessoryOffer.panel__heartbuttonONDARK]:
+                            themeSwitcher,
+                          [accessoryOffer.panel__heartbuttonONDARKISACTIVE]:
+                            themeSwitcher &&
+                            favouriteItems.find(item => item.itemId === itemId),
+                        },
+                      )}
+                    ></button>
+                  )}
+                </div>
+                <div className={accessoryOffer.panel__basicspec}>
+                  <div className={accessoryOffer.panel__basicspec__data}>
+                    <div className={accessoryOffer.panel__basicspec__title}>
+                      Screen
+                    </div>
+                    <div className={accessoryOffer.panel__basicspec__text}>
+                      {selectedAccessory?.screen}
+                    </div>
+                  </div>
+                  <div className={accessoryOffer.panel__basicspec__data}>
+                    <div className={accessoryOffer.panel__basicspec__title}>
+                      Resolution
+                    </div>
+                    <div className={accessoryOffer.panel__basicspec__text}>
+                      {selectedAccessory?.resolution}
+                    </div>
+                  </div>
+                  <div className={accessoryOffer.panel__basicspec__data}>
+                    <div className={accessoryOffer.panel__basicspec__title}>
+                      Processor
+                    </div>
+                    <div className={accessoryOffer.panel__basicspec__text}>
+                      {selectedAccessory?.processor}
+                    </div>
+                  </div>
+                  <div className={accessoryOffer.panel__basicspec__data}>
+                    <div className={accessoryOffer.panel__basicspec__title}>
+                      RAM
+                    </div>
+                    <div className={accessoryOffer.panel__basicspec__text}>
+                      {selectedAccessory?.ram}
+                    </div>
+                  </div>
+                </div>
               </div>
+            </div>
+            <div className={accessoryOffer.decription}>
+              <h2 className={accessoryOffer.description__header}>About</h2>
               <div className={accessoryOffer.line}></div>
-              <div className={accessoryOffer.panel__capacity_title}>
-                Select capacity
-              </div>
-              {selectedAccessory?.capacityAvailable.map(capacity => {
-                const getSelectedCapacity = (currentCapacity: string) => {
-                  if (
-                    currentCapacity.toLowerCase() === capacity.toLowerCase()
-                  ) {
-                    setSelectedCapacity(currentCapacity);
-
-                    navigate(
-                      `/accessories/${selectedAccessory.namespaceId}-${currentCapacity.toLowerCase()}-${selectedAccessory.color}`,
-                    );
-                  }
-                };
-
-                return (
-                  <button
-                    className={classNames(
-                      [accessoryOffer.panel__capacity_option],
-                      {
-                        [accessoryOffer.panel__capacity_optionselected]:
-                          selectedCapacity === capacity ||
-                          capacity === selectedAccessory.capacity,
-                      },
-                    )}
-                    key={capacity}
-                    onClick={() => getSelectedCapacity(capacity)}
-                  >
-                    {capacity}
-                  </button>
-                );
-              })}
-              <div className={accessoryOffer.line}></div>
-              <div className={accessoryOffer.panel__prices}>
-                <div
-                  className={accessoryOffer.panel__price}
-                >{`$${selectedAccessory?.priceDiscount}`}</div>
-                <del
-                  className={accessoryOffer.panel__pricediscount}
-                >{`$${selectedAccessory?.priceRegular}`}</del>
-              </div>
-              <div className={accessoryOffer.panel__buttons}>
-                {selectedProduct && (
-                  <button
-                    className={classNames(
-                      [accessoryOffer.panel__adding_button],
-                      {
-                        [accessoryOffer.panel__adding_buttonISACTIVE]:
-                          addedItems.find(item => item.id === itemId),
-                      },
-                    )}
-                    onClick={() => addItems(selectedProduct)}
-                  >
-                    {addedItems.find(item => item.id === selectedProduct.id)
-                      ? 'ADDED'
-                      : 'Add to cart'}
-                  </button>
-                )}
-                {selectedProduct && (
-                  <button
-                    onClick={() => addProductToFavourite(selectedProduct)}
-                    className={classNames([accessoryOffer.panel__heartbutton], {
-                      [accessoryOffer.panel__heartbuttonisactive]:
-                        favouriteItems.find(item => item.itemId === itemId),
-                      [accessoryOffer.panel__heartbuttonONDARK]: themeSwitcher,
-                      [accessoryOffer.panel__heartbuttonONDARKISACTIVE]:
-                        themeSwitcher &&
-                        favouriteItems.find(item => item.itemId === itemId),
-                    })}
-                  ></button>
-                )}
-              </div>
-              <div className={accessoryOffer.panel__basicspec}>
-                <div className={accessoryOffer.panel__basicspec__data}>
-                  <div className={accessoryOffer.panel__basicspec__title}>
-                    Screen
+              {selectedAccessory?.description.map(data => (
+                <>
+                  <div className={accessoryOffer.description__title}>
+                    {data.title}
                   </div>
-                  <div className={accessoryOffer.panel__basicspec__text}>
-                    {selectedAccessory?.screen}
+                  <div className={accessoryOffer.description__text}>
+                    {data.text}
                   </div>
-                </div>
-                <div className={accessoryOffer.panel__basicspec__data}>
-                  <div className={accessoryOffer.panel__basicspec__title}>
-                    Resolution
-                  </div>
-                  <div className={accessoryOffer.panel__basicspec__text}>
-                    {selectedAccessory?.resolution}
-                  </div>
-                </div>
-                <div className={accessoryOffer.panel__basicspec__data}>
-                  <div className={accessoryOffer.panel__basicspec__title}>
-                    Processor
-                  </div>
-                  <div className={accessoryOffer.panel__basicspec__text}>
-                    {selectedAccessory?.processor}
-                  </div>
-                </div>
-                <div className={accessoryOffer.panel__basicspec__data}>
-                  <div className={accessoryOffer.panel__basicspec__title}>
-                    RAM
-                  </div>
-                  <div className={accessoryOffer.panel__basicspec__text}>
-                    {selectedAccessory?.ram}
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className={accessoryOffer.decription}>
-            <h2 className={accessoryOffer.description__header}>About</h2>
-            <div className={accessoryOffer.line}></div>
-            {selectedAccessory?.description.map(data => (
-              <>
-                <div className={accessoryOffer.description__title}>
-                  {data.title}
-                </div>
-                <div className={accessoryOffer.description__text}>
-                  {data.text}
-                </div>
-              </>
-            ))}
-            <div className={accessoryOffer.line}></div>
-          </div>
-          <div className={accessoryOffer.techspecs}>
-            <div className={accessoryOffer.techspec__data}>
-              <div className={accessoryOffer.techspec__title}>Screen</div>
-              <div className={accessoryOffer.techspec__text}>
-                {selectedAccessory?.screen}
-              </div>
-            </div>
-            <div className={accessoryOffer.techspec__data}>
-              <div className={accessoryOffer.techspec__title}>Resolution</div>
-              <div className={accessoryOffer.techspec__text}>
-                {selectedAccessory?.resolution}
-              </div>
-            </div>
-            <div className={accessoryOffer.techspec__data}>
-              <div className={accessoryOffer.techspec__title}>Processor</div>
-              <div className={accessoryOffer.techspec__text}>
-                {selectedAccessory?.processor}
-              </div>
-            </div>
-            <div className={accessoryOffer.techspec__data}>
-              <div className={accessoryOffer.techspec__title}>RAM</div>
-              <div className={accessoryOffer.techspec__text}>
-                {selectedAccessory?.ram}
-              </div>
-            </div>
-            <div className={accessoryOffer.techspec__data}>
-              <div className={accessoryOffer.techspec__title}>
-                Built in memory
-              </div>
-              <div className={accessoryOffer.techspec__text}>
-                {selectedAccessory?.capacity}
-              </div>
-            </div>
-            <div className={accessoryOffer.techspec__data}>
-              <div className={accessoryOffer.techspec__title}>Camera</div>
-              <div className={accessoryOffer.techspec__text}>
-                {selectedAccessory?.camera}
-              </div>
-            </div>
-            <div className={accessoryOffer.techspec__data}>
-              <div className={accessoryOffer.techspec__title}>Zoom</div>
-              <div className={accessoryOffer.techspec__text}>
-                {selectedAccessory?.zoom}
-              </div>
-            </div>
-            <div className={accessoryOffer.techspec__data}>
-              <div className={accessoryOffer.techspec__title}>Cell</div>
-
-              {selectedAccessory?.cell.map(cell => (
-                <div className={accessoryOffer.techspec__text} key={cell}>
-                  {`${cell}, `}
-                </div>
+                </>
               ))}
+              <div className={accessoryOffer.line}></div>
+            </div>
+            <div className={accessoryOffer.techspecs}>
+              <div className={accessoryOffer.techspec__data}>
+                <div className={accessoryOffer.techspec__title}>Screen</div>
+                <div className={accessoryOffer.techspec__text}>
+                  {selectedAccessory?.screen}
+                </div>
+              </div>
+              <div className={accessoryOffer.techspec__data}>
+                <div className={accessoryOffer.techspec__title}>Resolution</div>
+                <div className={accessoryOffer.techspec__text}>
+                  {selectedAccessory?.resolution}
+                </div>
+              </div>
+              <div className={accessoryOffer.techspec__data}>
+                <div className={accessoryOffer.techspec__title}>Processor</div>
+                <div className={accessoryOffer.techspec__text}>
+                  {selectedAccessory?.processor}
+                </div>
+              </div>
+              <div className={accessoryOffer.techspec__data}>
+                <div className={accessoryOffer.techspec__title}>RAM</div>
+                <div className={accessoryOffer.techspec__text}>
+                  {selectedAccessory?.ram}
+                </div>
+              </div>
+              <div className={accessoryOffer.techspec__data}>
+                <div className={accessoryOffer.techspec__title}>
+                  Built in memory
+                </div>
+                <div className={accessoryOffer.techspec__text}>
+                  {selectedAccessory?.capacity}
+                </div>
+              </div>
+              <div className={accessoryOffer.techspec__data}>
+                <div className={accessoryOffer.techspec__title}>Camera</div>
+                <div className={accessoryOffer.techspec__text}>
+                  {selectedAccessory?.camera}
+                </div>
+              </div>
+              <div className={accessoryOffer.techspec__data}>
+                <div className={accessoryOffer.techspec__title}>Zoom</div>
+                <div className={accessoryOffer.techspec__text}>
+                  {selectedAccessory?.zoom}
+                </div>
+              </div>
+              <div className={accessoryOffer.techspec__data}>
+                <div className={accessoryOffer.techspec__title}>Cell</div>
+
+                {selectedAccessory?.cell.map(cell => (
+                  <div className={accessoryOffer.techspec__text} key={cell}>
+                    {`${cell}, `}
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div className={accessoryOffer.title}>
+              <CartPage
+                showedProducts={proposedPhones}
+                swiperTitle={'You may also like'}
+              />
             </div>
           </div>
-          <div className={accessoryOffer.title}>
-            <CartPage
-              showedProducts={proposedPhones}
-              swiperTitle={'You may also like'}
-            />
-          </div>
-        </div>
-      ) : (
-        <ErrorScreen />
-      )}
+        ) : (
+          <ErrorScreen />
+        )}
+      </div>
 
       <Footer />
     </>

@@ -24,7 +24,7 @@
         height: 50vh;
         width: 80%;
       }
-      
+
       margin: 100px auto 0;
     background-image: url('../../img/cart-is-empty.png');
     background-repeat: no-repeat;
@@ -46,7 +46,6 @@ letter-spacing: -0.01em;
   .backbutton {
     border: 0;
     background-color: transparent;
-    cursor: pointer;
 font-family: Mont, sans-serif;
 font-size: 12px;
 font-weight: 700;
@@ -54,6 +53,14 @@ line-height: 15.34px;
 text-align: left;
 color:  var(--secondary-font-color);
 margin: 16px 0 32px 16px;
+transform: scale(1);
+transition: 0.3s ease-in transform;
+cursor: pointer;
+&:hover {
+  transform: scale(1.1);
+  transition: 0.3s ease-in transform;
+  color: var(--breadcrumbs-hover);
+}
   }
 
   .title {

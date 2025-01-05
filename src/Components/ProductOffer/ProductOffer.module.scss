@@ -1,7 +1,29 @@
 @import '../styles/main';
 
+.offer {
+  &OFF {
+    display: none;
+  }
+}
+
 .container {
   @include on-tablet {
+    display: none;
+  }
+}
+
+.loader {
+  background-color: var(--background-color);
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+  padding-top: 30px;
+}
+
+.backgroundLoader {
+  background-color: var(--background-color);
+  padding: 200px 0;
+  &OFF {
     display: none;
   }
 }
@@ -27,14 +49,26 @@
     align-items: flex-start;
     margin: 16px 0 0 16px;
     &__home {
+      transform: scale(1);
+  transition: 0.3s ease-in transform;
+&:hover {
+  transform: scale(1.1);
+  transition: 0.3s ease-in transform;
+}
       &ONDARK {
         background-image: url('../../img/Home-white.svg');
       background-repeat: no-repeat;
       background-position: center;
       width: 16px;
       height: 16px;
+      transform: scale(1);
+  transition: 0.3s ease-in transform;
+&:hover {
+  transform: scale(1.1);
+  transition: 0.3s ease-in transform;
+}
       }
-      
+
       background-image: url('../../img/Home.svg');
       background-repeat: no-repeat;
       background-position: center;
@@ -42,12 +76,20 @@
       height: 16px;
     }
     &__text {
-      color: var(--primary-font-color);
+      color: var(--secondary-font-color);
       font-family: Mont,sans-serif;
 font-size: 12px;
 font-weight: 700;
 line-height: 15.34px;
 text-align: left;
+cursor: pointer;
+transform: scale(1);
+  transition: 0.3s ease-in transform;
+&:hover {
+  color: var(--breadcrumbs-hover);
+  transform: scale(1.1);
+  transition: 0.3s ease-in transform;
+}
 
 &active {
   color: var(--primary-font-color);
@@ -87,6 +129,13 @@ text-align: left;
       margin-left: 16px;
       padding-top: 20px;
       cursor: pointer;
+      transform: scale(1);
+  transition: 0.3s ease-in transform;
+&:hover {
+  color: var(--breadcrumbs-hover);
+  transform: scale(1.1);
+  transition: 0.3s ease-in transform;
+}
     }
   }
 
@@ -281,8 +330,8 @@ cursor: pointer;
 }
     }
     &__heartbutton {
-      width: 40px;
-height: 40px;
+      width: 48px;
+      height: 48px;
 border-radius: 48px;
 background-image: url('../../img/Favourites\ \(Heart\ Like\).svg');
 background-repeat: no-repeat;
@@ -293,8 +342,8 @@ border: 1px solid #B4BDC3;
   background-image: url('../../img/Add\ to\ favorites-hover.svg');
 }
 &isactive {
-  width: 40px;
-height: 40px;
+  width: 48px;
+  height: 48px;
 border-radius: 100%;
 border: 1px solid #E2E6E9;
 background-repeat: no-repeat;
@@ -303,8 +352,8 @@ background-color: white;
   background-image: url('../../img/Add\ to\ fovourites\ -\ Added.svg');
 }
 &ONDARK {
-  width: 40px;
-height: 40px;
+  width: 48px;
+  height: 48px;
 border-radius: 48px;
 background-image: url('../../img/Favourites\ \(Heart\ Like\).svg');
 background-repeat: no-repeat;

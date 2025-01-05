@@ -131,18 +131,12 @@ export const TabletsPage = () => {
     }
   };
 
-  const getSkeleton = (skeletonItems: number) => {
+
+  const getSkeleton = () => {
     const array: number[] = [];
 
-    if (Number.isNaN(skeletonItems)) {
-      for (let i = 1; i < 124; i++) {
-        array.push(i);
-      }
-
-      return array;
-    }
-
-    for (let i = 1; i < skeletonItems; i++) {
+    // eslint-disable-next-line max-len
+    for (let i = 0; i < (items === '' || items === 'all' ? 36 : parseInt(items)); i++) {
       array.push(i);
     }
 
@@ -164,10 +158,10 @@ export const TabletsPage = () => {
                 [tabletsPage.breadcrumbs__linkONDARK]: themeSwitcher,
               })}
             />
-            <div className={tabletsPage.breadcrumbs__text}>{'>'} Phones</div>
+            <div className={tabletsPage.breadcrumbs__text}>{'>'} Tablets</div>
           </div>
 
-          <h1 className={tabletsPage.header}>Mobile phones</h1>
+          <h1 className={tabletsPage.header}>Tablets</h1>
           <span
             className={tabletsPage.amountofmodels}
           >{`${filteredTablets.length} ${filteredTablets.length === 1 ? 'model' : 'models'}`}</span>
@@ -180,7 +174,7 @@ export const TabletsPage = () => {
 
           {loading && !error && getVisibleItems(itemsInNumber).length === 0 ? (
             <div className={tabletsPage.content}>
-              {getSkeleton(itemsInNumber).map((_, i) => (
+              {getSkeleton().map((_, i) => (
                 <SkeletonProductCard key={i} />
               ))}
             </div>

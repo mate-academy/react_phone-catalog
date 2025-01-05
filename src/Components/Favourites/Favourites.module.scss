@@ -1,21 +1,35 @@
 @import '../styles/main';
 
   .emptycard {
+    background-color: var(--favourite-background);
+    height: 80vh;
     &image {
-      margin-top: 100px;
     background-image: url('../../img/product-not-found.png');
     background-repeat: no-repeat;
     background-size: 100% 400px;
-    height: 400px;
+    background-position: 50%;
+    height: 100%;
     width: 100%;
+    &ONDARK {
+      background-color: rgb(28, 27, 27);
+      padding-top: 100px;
+    background-image: url('../../../public/img/product-not-found-ondark.png');
+    background-repeat: no-repeat;
+    background-position: 50%;
+    background-size: 100% 400px;
+    height: 100%;
+    width: 100%;
+    }
     }
 
     &title {
-      margin-left: 16px;
+      background-color: var(--favourite-background);
+      color: var(--primary-font-color);
 font-family: Mont-bold, sans-serif;
 font-size: 48px;
 font-weight: 800;
-line-height: 56px;
+line-height: 110px;
+height: 110px;
 letter-spacing: -0.01em;
 
     }
@@ -37,14 +51,28 @@ letter-spacing: -0.01em;
       background-size: 16px 16px;
       width: 26px;
       height: 32px;
+      transform: scale(1);
+      transition: 0.3s ease-in transform;
+      cursor: pointer;
+      &:hover {
+        transform: scale(1.1);
+        transition: 0.3s ease-in transform;
       }
-      
+      }
+
       background-image: url('../../img/Home.svg');
       background-repeat: no-repeat;
       background-position: 0% 1%;
       background-size: 16px 16px;
       width: 26px;
       height: 32px;
+      transform: scale(1);
+      transition: 0.3s ease-in transform;
+      cursor: pointer;
+      &:hover {
+        transform: scale(1.1);
+        transition: 0.3s ease-in transform;
+      }
     }
    &__text {
     color: var(--primary-font-color);
@@ -54,6 +82,14 @@ letter-spacing: -0.01em;
     font-weight: 700;
     line-height: 15.34px;
     text-align: left;
+    transform: scale(1);
+    transition: 0.3s ease-in transform;
+    cursor: pointer;
+    &:hover {
+      transform: scale(1.1);
+      transition: 0.3s ease-in transform;
+      color: var(--breadcrumbs-hover);
+    }
    }
   }
 

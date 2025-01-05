@@ -26,7 +26,7 @@ export const Navigation = () => {
         data-theme={themeSwitcher ? 'dark' : 'light'}
       >
         <div className={nav.navigation__logoblock}>
-          <div className={navLogo.logo__navigation}></div>
+          <Link to="/" className={navLogo.logo__navigation}></Link>
         </div>
         <div className={nav.navigation__menublock}>
           <div className={nav.navigation__content}>

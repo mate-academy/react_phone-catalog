@@ -20,12 +20,12 @@ export const HomePage = () => {
       <Navigation />
       {!error ? (
         <>
-          <h1 className={home.home__phonecatalog}>Phone Catalog</h1>
+          <h1 className={home.home__phonecatalog}>Product Catalog</h1>
           <div
             className={home.home}
             data-theme={themeSwitcher ? 'dark' : 'light'}
           >
-            <h1 className={home.home__title}>Welcome to Nice Gadgets store!</h1>
+            <h2 className={home.home__title}>Welcome to Nice Gadgets store!</h2>
             <MainSlider />
             <CartPage
               showedProducts={getNewestProducts}

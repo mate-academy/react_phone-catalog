@@ -72,10 +72,10 @@ text-align: left;
       height: 100%;
     }
   }
-  
+
   .image {
     object-fit: cover;
-    object-position: top;
+    object-position: top left;
     width: 80%;
     height: 50vh;
     transform: scale(1);

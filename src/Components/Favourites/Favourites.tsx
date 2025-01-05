@@ -15,13 +15,19 @@ export const Favourites = () => {
       <Navigation />
       {favouriteItems.length === 0 ? (
         <>
-          <h1
-            className={favourite.emptycardtitle}
-            data-theme={themeSwitcher ? 'dark' : 'light'}
-          >
-            You have no favourite products :)
-          </h1>
-          <div className={favourite.emptycardimage}></div>
+          <div className={favourite.emptycard}>
+            <h1
+              className={favourite.emptycardtitle}
+              data-theme={themeSwitcher ? 'dark' : 'light'}
+            >
+              You have no favourite products :)
+            </h1>
+            <div
+              className={classNames([favourite.emptycardimage], {
+                [favourite.emptycardimageONDARK]: themeSwitcher,
+              })}
+            ></div>
+          </div>
         </>
       ) : (
         <div

@@ -133,18 +133,12 @@ export const AccessoriesPage = () => {
     }
   };
 
-  const getSkeleton = (skeletonItems: number) => {
+
+  const getSkeleton = () => {
     const array: number[] = [];
 
-    if (Number.isNaN(skeletonItems)) {
-      for (let i = 1; i < 124; i++) {
-        array.push(i);
-      }
-
-      return array;
-    }
-
-    for (let i = 1; i < skeletonItems; i++) {
+    // eslint-disable-next-line max-len
+    for (let i = 0; i < (items === '' || items === 'all' ? 34 : parseInt(items)); i++) {
       array.push(i);
     }
 
@@ -170,7 +164,7 @@ export const AccessoriesPage = () => {
               {'>'} Accessories</div>
           </div>
 
-          <h1 className={accessoriesPage.header}>Mobile phones</h1>
+          <h1 className={accessoriesPage.header}>Accessories</h1>
           <span
             className={accessoriesPage.amountofmodels}
           >{`${filteredAccessories.length} ${filteredAccessories.length === 1 ? 'model' : 'models'}`}</span>
@@ -183,7 +177,7 @@ export const AccessoriesPage = () => {
 
           {loading && !error && getVisibleItems(itemsInNumber).length === 0 ? (
             <div className={accessoriesPage.content}>
-              {getSkeleton(itemsInNumber).map((_, i) => (
+              {getSkeleton().map((_, i) => (
                 <SkeletonProductCard key={i} />
               ))}
             </div>

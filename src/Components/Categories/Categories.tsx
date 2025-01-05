@@ -20,6 +20,9 @@ export const Categories = () => {
               src="img/category-phones.png"
               alt="phones"
               className={category.image}
+              style={{
+                backgroundColor: '#6D6474',
+              }}
             />
           </Link>
           <h2 className={category.title}>Phones</h2>
@@ -31,6 +34,9 @@ export const Categories = () => {
               src="img/category-tablets.png"
               alt="tablets"
               className={category.image}
+              style={{
+                backgroundColor: '#8D8D92',
+              }}
             />
           </Link>
           <h2 className={category.title}>Tablets</h2>
@@ -42,6 +48,9 @@ export const Categories = () => {
               src="img/category-accessories.png"
               alt="accessories"
               className={category.image}
+              style={{
+                backgroundColor: '#D53C51',
+              }}
             />
           </Link>
           <h2 className={category.title}>Accessories</h2>

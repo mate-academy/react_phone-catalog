@@ -5,7 +5,6 @@ import { CatalogContext } from '../CatalogProvider';
 import { ItemPerPage } from '../types/ItemPerPage';
 import { SetURLSearchParams } from 'react-router-dom';
 import classNames from 'classnames';
-import { useDebounce } from 'use-debounce';
 
 type Props = {
   queries: string;
@@ -22,7 +21,6 @@ export const ProductsFilter = ({
 }: Props) => {
   const { setSlideDots, setSlidePages, setPageNumber, themeSwitcher } =
     useContext(CatalogContext);
-  const [debouncedSearch] = useDebounce(queries, 1000);
 
   return (
     <div
@@ -49,7 +47,7 @@ export const ProductsFilter = ({
             setSlidePages(0);
             setPageNumber(1);
           }}
-          value={debouncedSearch}
+          value={queries}
         />
       </div>
 

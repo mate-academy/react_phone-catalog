@@ -27,11 +27,12 @@ export const Menu = ({ showMenu, setShowMenu }: Props) => {
     >
       <div className={menu.header}>
         <div className={menu.logoblock}>
-          <div
+          <Link
+            to="/"
             className={classNames([menuLogo.logo__menu], {
               [menuLogo.logo__menuONDARK]: themeSwitcher,
             })}
-          ></div>
+          ></Link>
         </div>
 
         <a className={menu.blockwithcross} onClick={() => setShowMenu(false)}>

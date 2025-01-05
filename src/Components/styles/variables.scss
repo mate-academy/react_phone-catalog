@@ -10,6 +10,8 @@
   --pagination-hover: white;
   --pagination-arrow: black;
   --menu-block: #89939A;
+  --breadcrumbs-hover: black;
+  --favourite-background: #FAFBFC;
 }
 
 [data-theme="dark"] {
@@ -24,4 +26,6 @@
   --pagination-hover: rgb(64, 63, 63);
   --pagination-arrow: rgb(64, 63, 63);
   --menu-block: rgb(64, 63, 63);
+  --breadcrumbs-hover: darkred;
+  --favourite-background: rgb(28, 27, 27);
 }

@@ -8,6 +8,13 @@
   background-size: 99%;
   width: 64px;
   height: 22px;
+  transform: scale(1);
+  transition: 0.3s ease-in transform;
+  cursor: pointer;
+  &:hover {
+    transform: scale(1.1);
+    transition: 0.3s ease-in transform;
+  }
 
   @include on-desktop {
     width: 80px;
@@ -20,12 +27,26 @@
   background-repeat: no-repeat;
   width: 64px;
   height: 22px;
+  transform: scale(1);
+  transition: 0.3s ease-in transform;
+  cursor: pointer;
+  &:hover {
+    transform: scale(1.1);
+    transition: 0.3s ease-in transform;
+  }
     }
-    
+
     background-image: url('../../img/Logo_menu.png');
   background-repeat: no-repeat;
   width: 64px;
   height: 22px;
+  transform: scale(1);
+  transition: 0.3s ease-in transform;
+  cursor: pointer;
+  &:hover {
+    transform: scale(1.1);
+    transition: 0.3s ease-in transform;
+  }
   }
   &__footer {
     background-image: url('../../img/Logo.png');

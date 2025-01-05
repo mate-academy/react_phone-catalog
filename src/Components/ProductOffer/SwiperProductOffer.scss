@@ -101,13 +101,11 @@
 
 .swiper-slide-thumb-active {
   width: 51.5px !important;
-  margin-bottom: 6px;
   height: 56px;
   z-index: 1;
 
   @include on-tablet {
     height: 10.1vh !important;
-    margin-bottom: 10px;
 
   }
 }

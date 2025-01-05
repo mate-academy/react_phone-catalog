@@ -32,8 +32,16 @@
     background-repeat: no-repeat;
     background-size: 16px 16px;
     text-indent: 20px;
+    transform: scale(1);
+    transition: 0.3s ease-in transform;
+    cursor: pointer;
+    &:hover {
+      transform: scale(1.1);
+      transition: 0.3s ease-in transform;
+      color: var(--breadcrumbs-hover);
+    }
       }
-      
+
       color: var(--primary-font-color);
       width: 20px;
     background-image: url('../../img/Home.svg');
@@ -41,6 +49,14 @@
     background-repeat: no-repeat;
     background-size: 16px 16px;
     text-indent: 20px;
+    transform: scale(1);
+    transition: 0.3s ease-in transform;
+    cursor: pointer;
+    &:hover {
+      transform: scale(1.1);
+      transition: 0.3s ease-in transform;
+      color: var(--breadcrumbs-hover);
+    }
   }
   &__text {
     font-family: Mont, sans-serif;
@@ -49,6 +65,14 @@
     font-weight: 600;
     line-height: 15.34px;
     text-decoration: none;
+    transform: scale(1);
+    transition: 0.3s ease-in transform;
+    cursor: pointer;
+    &:hover {
+      transform: scale(1.1);
+      transition: 0.3s ease-in transform;
+      color: var(--breadcrumbs-hover);
+    }
   }
   }
 

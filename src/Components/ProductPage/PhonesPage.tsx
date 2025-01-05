@@ -29,8 +29,8 @@ export const PhonesPage = () => {
   const sortOptions = searchParams.get('sort') || '';
   const items = searchParams.get('perPage') || '';
   const numberOfPage = searchParams.get('page') || '';
-  const itemsInNumber = parseInt(items);
 
+  const itemsInNumber = parseInt(items);
   const filteredOptions = (allPhones: string) => {
     const selectedProducts = products.filter(
       product => product.category === 'phones',
@@ -129,18 +129,14 @@ export const PhonesPage = () => {
     }
   };
 
-  const getSkeleton = (skeletonItems: number) => {
+  const getSkeleton = () => {
     const array: number[] = [];
 
-    if (Number.isNaN(skeletonItems)) {
-      for (let i = 1; i < 124; i++) {
-        array.push(i);
-      }
-
-      return array;
-    }
-
-    for (let i = 1; i < skeletonItems; i++) {
+    for (
+      let i = 0;
+      i < (items === '' || items === 'all' ? 124 : parseInt(items));
+      i++
+    ) {
       array.push(i);
     }
 
@@ -178,7 +174,7 @@ export const PhonesPage = () => {
 
           {loading && !error && getVisibleItems(itemsInNumber).length === 0 ? (
             <div className={phonesPage.content}>
-              {getSkeleton(itemsInNumber).map((_, i) => (
+              {getSkeleton().map((_, i) => (
                 <SkeletonProductCard key={i} />
               ))}
             </div>
