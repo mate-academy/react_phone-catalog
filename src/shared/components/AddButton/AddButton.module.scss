@@ -1,0 +1,57 @@
+@import '../../styles/main';
+
+.button_field {
+  display: flex;
+
+  & .button {
+    padding: 12px;
+    font-size: 14px;
+    line-height: 21px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0 0 0 #fff;
+    transition: box-shadow $transition;
+
+
+  }
+
+  & .add-button {
+    border: 1px solid $primary-color;
+    width: 100%;
+    margin-right: 8px;
+    background-color: $primary-color;
+    color: $white-color;
+
+    &:hover,
+    &:focus {
+        box-shadow: 0 3px 13px 0 #17203166;
+      }
+    &.in-cart {
+      border: 1px solid $elements-color;
+      min-width: 80px;
+      color: #27AE60;
+      background-color: $white-color;
+    }
+  }
+
+  & .fav-button {
+    padding: 12px;
+    border: 1px solid $elements-color;
+    transition: border $transition;
+    & > div {
+      width: 16px;
+      height: 16px;
+      background-image: url('../../../images/Favourites.png');
+    }
+
+    &:hover,
+    &:focus {
+        border: 1px solid $primary-color;
+      }
+
+    &.is-favourite > div{
+      background-image: url('../../../images/FavouritesActive.png');
+    }
+  }
+}

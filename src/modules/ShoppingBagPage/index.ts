@@ -1,0 +1,1 @@
+export { ShoppingBagPage } from './ShoppingBagPage';

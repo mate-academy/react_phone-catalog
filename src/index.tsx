@@ -1,4 +1,19 @@
 import { createRoot } from 'react-dom/client';
+import { BrowserRouter } from 'react-router-dom';
+import { ProductsProvider } from './shared/utils/ProductsContext';
+import { SearchProvider } from './shared/utils/SearchContext';
 import { App } from './App';
 
-createRoot(document.getElementById('root') as HTMLElement).render(<App />);
+const rootElement = document.getElementById('root');
+
+if (rootElement) {
+  createRoot(rootElement).render(
+    <ProductsProvider>
+      <SearchProvider>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </SearchProvider>
+    </ProductsProvider>,
+  );
+}

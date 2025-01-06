@@ -1,0 +1,435 @@
+@import '../../shared/components/ProductCatalog/ProductCatalog.module';
+@import '../../shared/styles/variables';
+@import '../../shared/styles/mixin';
+
+.PageContent {
+  margin-top: 24px;
+  grid-template: 1 / -1;
+}
+
+.HomeLink {
+    display: inline-block;
+      background-image: url('../../images/Home.svg');
+      width: 16px;
+      height: 16px;
+      background-position: center;
+      transform: scale(1);
+      transition: transform $transition;
+
+      &:hover,
+      &:focus {
+        transform: scale(1.05);
+      }
+}
+
+.NavArrow {
+    margin: 0 8px;
+      width: 16px;
+      height: 16px;
+      background-image: url('../../images/arrow-right.svg');
+      background-position: center;
+      opacity: 0.5;
+}
+
+.CategoryLink {
+  composes: CurrentPage;
+  transition: color $transition;
+
+  &:hover, &:focus {
+  color: $primary-color;
+  }
+}
+
+.BackLink {
+margin-top: 40px;
+display: flex;
+align-items: center;
+
+@include respond-to(mobile) {
+    margin-top: 24px;
+  }
+}
+
+.LeftArrow {
+        width: 16px;
+        height: 16px;
+        background-image: url('../../images/arrow-left.svg');
+        background-position: center;
+}
+
+.ProductTitle {
+  margin-top: 16px;
+  font-size: 32px;
+line-height: 41px;
+}
+
+.FirstSection {
+  margin-top: 40px;
+  display: flex;
+
+  @include respond-to(mobile) {
+    margin-top: 32px;
+    flex-direction: column;
+  }
+}
+
+.SwiperField {
+  margin-right: 64px;
+  display: flex;
+
+  @include respond-to(tablet) {
+    margin-right: 24px;
+  }
+
+  @include respond-to(mobile) {
+    margin-right: 0;
+    flex-direction: column-reverse;
+    align-items: center;
+  }
+}
+
+.SwiperButtonsField {
+  margin-right: 16px;
+  display: flex;
+  flex-direction: column;
+
+  @include respond-to(mobile) {
+    margin-top: 16px;
+  margin-right: 0;
+    flex-direction: row;
+  }
+}
+
+.SwiperButton {
+  padding-top: 5px;
+  border: 1px solid $elements-color;
+  margin-bottom: 16px;
+  width: 66px;
+  height: 66px;
+  cursor: pointer;
+  object-fit: contain;
+  transition: border $transition;
+
+    &:hover,
+      &:focus {
+  border: 1px solid $primary-color;
+      }
+
+    @include respond-to(tablet) {
+      width: 35px;
+      height: 35px;
+    }
+
+  @include respond-to(mobile) {
+    margin-bottom: 0;
+
+    &:not(:last-child) {
+     margin-right: 8px;
+    }
+  }
+}
+
+.LargeImageField {
+  width: 464px;
+  height: 464px;
+
+  @include respond-to(tablet) {
+    width: 287px;
+  height: 287px;
+  }
+}
+
+.LargeImage {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.InformationField {
+  width: 320px;
+
+  @include respond-to(mobile) {
+    margin-top: 40px;
+    width: 100%;
+  }
+}
+
+.SwitcherTitle {
+  margin-bottom: 8px;
+  font-size: 12px;
+  color: $secondary-color;
+  font-weight: 100;
+}
+
+.ColorSwitcher {
+  padding-bottom: 24px;
+  border-bottom: 1px solid $elements-color;
+  width: 100%;
+
+  & .ColorsList {
+  display: flex;
+  }
+
+  .ColorItem {
+    border: 1px solid $elements-color;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    transition: border $transition;
+
+    &:not(:last-child) {
+      margin-right: 8px;
+    }
+
+    &:hover, &:focus {
+      border: 1px solid $primary-color;
+    }
+
+  &.Active {
+      border: 1px solid $primary-color;
+  }
+
+
+    & .Color {
+      border: 2px solid $white-color;
+     border-radius: 50%;
+     width: 100%;
+     height: 100%;
+    }
+
+    & .black {
+      background-color: black;
+    }
+
+    & .green {
+      background-color: #AEE1CD;
+    }
+
+    & .yellow {
+      background-color: #F9E479;
+    }
+
+    & .white {
+      background-color: $white-color;
+    }
+
+    & .purple {
+      background-color: #B7AFE6;
+    }
+
+    & .red {
+      background-color: #BF0013;
+    }
+
+    & .silver {
+      background-color: #F0F2F2;
+    }
+
+    & .gold {
+      background-color: #F4E8CE;
+    }
+
+    & .space-gray {
+      background-color: #535150;
+    }
+
+    & .spacegray {
+      background-color: #535150;
+    }
+
+    & .midnightgreen {
+      background-color:#4E5851;
+    }
+
+  }
+}
+
+.CapacitySwitcher {
+  padding-bottom: 24px;
+  border-bottom: 1px solid $elements-color;
+margin-top: 24px;
+
+& .CapacityList {
+  display: flex;
+}
+
+& .CapacityItem {
+  padding: 5px 8px;
+  border: 1px solid $elements-color;
+  font-size: 14px;
+  line-height: 21px;
+  transition: all $transition;
+
+  &:not(:last-child) {
+    margin-right: 8px;
+  }
+
+  &:hover, &:focus {
+  border: 1px solid $primary-color;
+    color: $white-color;
+    background-color: $primary-color;
+  }
+
+  &.Active {
+  border: 1px solid $primary-color;
+    color: $white-color;
+    background-color: $primary-color;
+}
+}
+}
+
+
+
+.Price {
+  margin-top: 32px;
+  font-size: 32px;
+  font-weight: 800;
+  color: $primary-color;
+}
+
+.ButtonsField {
+  margin-top: 16px;
+}
+
+.InfoField {
+margin-top: 32px;
+font-size: 13px;
+line-height: 16px;
+font-weight: 600;
+
+& .InfoItem {
+  display: flex;
+  justify-content: space-between;
+
+  & :nth-child(2n) {
+    color: $primary-color;
+  }
+
+  &:not(:last-child) {
+    margin-bottom: 8px;
+  }
+}
+}
+
+.SecondSection {
+  margin-top: 84px;
+  display: flex;
+  justify-content: space-between;
+
+    @include respond-to(tablet) {
+    flex-direction: column;
+    }
+
+  @include respond-to(mobile) {
+    margin-top: 56px;
+    flex-direction: column;
+  }
+
+  .About {
+    margin-right: 64px;
+    width: 50%;
+
+    @include respond-to(tablet) {
+      margin-right: 0;
+      width: 100%;
+    }
+
+      @include respond-to(mobile) {
+        margin-right: 0;
+        width: 100%;
+      }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  .SectionTitle {
+    padding-bottom: 16px;
+    border-bottom: 1px solid $elements-color;
+    margin-bottom: 32px;
+    font-size: 22px;
+    line-height: 31px;
+    font-weight: 800;
+  }
+
+  .DescriptionField {
+    margin-right: 64px;
+    margin-bottom: 32px;
+
+    @include respond-to(tablet) {
+        margin-right: 0;
+    }
+
+    @include respond-to(mobile) {
+        margin-right: 0;
+      }
+  }
+
+  .DescriptionTitle {
+    margin-bottom: 16px;
+    font-size: 22px;
+    line-height: 25px;
+    font-weight: 600;
+  }
+
+  .DescriptionText {
+    font-size: 14px;
+    line-height: 21px;
+  }
+}
+
+.TechSpecsField {
+  width: 50%;
+  font-size: 14px;
+
+  @include respond-to(tablet) {
+margin-top: 64px;
+width: 100%;
+  }
+
+  @include respond-to(mobile) {
+    margin-top: 56px;
+      width: 100%;
+    }
+
+  .TechSpecsItem {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    & :nth-child(2n) {
+        color: $primary-color;
+      }
+
+    &:not(:last-child) {
+      margin-bottom: 8px;
+    }
+  }
+}
+
+.ThirdSection {
+  margin: 80px 0;
+
+  @include respond-to(mobile) {
+      margin: 0;
+    }
+
+  & section > div {
+    padding: 0;
+
+    & h2 {
+      width: 100%;
+    }
+  }
+}
+
+.NavigationField {
+  composes: NavigationField;
+  flex-direction: column;
+  align-items: flex-start;
+
+  & div:first-child {
+    display: flex;
+  }
+}
