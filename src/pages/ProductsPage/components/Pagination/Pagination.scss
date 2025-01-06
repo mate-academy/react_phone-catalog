@@ -1,0 +1,51 @@
+@import '../../../../styles/utils/vars';
+@import '../../../../styles/utils/mixins';
+
+.pagination {
+  &__list {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+  }
+
+  &__item {
+    &:first-child {
+      margin-right: 16px;
+    }
+
+    &:last-child {
+      margin-left: 16px;
+    }
+  }
+
+  &__button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 32px;
+    height: 32px;
+    border: 1px solid $color_icons_placeholder;
+    border-radius: 50%;
+    padding: 0;
+    margin: 0;
+    transition: all 0.3s ease;
+
+    &--active {
+      background-color: $color_primary;
+      color: white;
+    }
+
+    &.disabled {
+      border-color: $color_elements;
+      cursor: default;
+
+      @include hover('border-color', $color_elements);
+    }
+
+    &.disabled svg path {
+      fill: $color_elements;
+    }
+
+    @include hover('border-color', $color_primary);
+  }
+}
