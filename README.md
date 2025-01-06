@@ -10,13 +10,6 @@ Before diving into setting up the project, you might find yourself asking some i
 
 and so on. Don’t worry — we’ve got you covered! Let’s outline the steps that will serve as our roadmap. Each step will be explained in greater detail in its respective section.
 
-1. [Create a Github Repository](https://www.notion.so/Group-Project-Setup-173b8c62d49c808ba4f2f7fb1fa4028d?pvs=21)
-2. [React + Typescript](https://www.notion.so/Group-Project-Setup-173b8c62d49c808ba4f2f7fb1fa4028d?pvs=21)
-3. [ESLint](https://www.notion.so/Group-Project-Setup-173b8c62d49c808ba4f2f7fb1fa4028d?pvs=21)
-4. [Prettier](https://www.notion.so/Group-Project-Setup-173b8c62d49c808ba4f2f7fb1fa4028d?pvs=21)
-5. [Pre-commit checks](https://www.notion.so/Group-Project-Setup-173b8c62d49c808ba4f2f7fb1fa4028d?pvs=21)
-6. [Github actions](https://www.notion.so/Group-Project-Setup-173b8c62d49c808ba4f2f7fb1fa4028d?pvs=21)
-
 # 👀 Create a Github Repository
 
 This step is a straightforward one:
