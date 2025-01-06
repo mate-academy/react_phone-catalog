@@ -134,7 +134,7 @@ export const ProductPage = () => {
                 {product.images.map((image, index) => (
                   <img
                     key={index}
-                    src={`/public/${image}`}
+                    src={`${image}`}
                     alt={`${product.name} ${index}`}
                     onClick={() => thumbsSwiper?.slideTo(index)}
                     className={s.SwiperButton}
@@ -154,7 +154,7 @@ export const ProductPage = () => {
                   {product.images.map((image, index) => (
                     <SwiperSlide key={index}>
                       <img
-                        src={`/public/${image}`}
+                        src={`${image}`}
                         alt={`${product.name} ${index}`}
                         className={s.LargeImage}
                         style={{

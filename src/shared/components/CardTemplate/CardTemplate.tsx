@@ -34,7 +34,7 @@ export const CardTemplate: React.FC<Props> = ({
   return (
     <div className={classNames(s.card_container, s.card)}>
       <img
-        src={`/${normalizedProduct.image}`}
+        src={`${normalizedProduct.image}`}
         alt={normalizedProduct.name}
         className={classNames(s.card_image)}
         onClick={handleClick}
