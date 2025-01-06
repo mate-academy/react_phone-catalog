@@ -20,17 +20,17 @@ import Accessories from '../../images/Accessories.png';
 const slides = [
   {
     id: 1,
-    image: '/img/banner-phones.png',
+    image: 'img/banner-phones.png',
     title: 'Smartphones',
   },
   {
     id: 2,
-    image: '/img/banner-accessories.png',
+    image: 'img/banner-accessories.png',
     title: 'Accessories',
   },
   {
     id: 3,
-    image: '/img/banner-tablets.png',
+    image: 'img/banner-tablets.png',
     title: 'Tablets',
   },
 ];
