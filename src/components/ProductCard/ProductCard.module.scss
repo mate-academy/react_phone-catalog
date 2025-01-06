@@ -1,0 +1,104 @@
+@import '../../styles/main';
+@import '../../styles/mixines';
+
+.prod_card_container {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  border: 1px solid var(--c-elements);
+  padding: 32px;
+
+  & .title {
+    cursor: default;
+
+    @include hover;
+
+    flex-grow: 1;
+  }
+
+  & .price {
+    &_container {
+      width: 100%;
+      display: flex;
+      gap: 8px;
+      border-bottom: 1px solid var(--c-elements);
+      cursor: default;
+    }
+
+  }
+
+  & .specs {
+    &_container {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+
+      .spec {
+        &_row {
+          width: 100%;
+          display: flex;
+          justify-content: space-between;
+          gap: 8px;
+          padding-block: 8px;
+          cursor: default;
+        }
+
+        &_name {
+          @extend %small-text;
+
+          color: var(--c-secondary);
+        }
+
+        &_param {
+          @extend %small-text;
+        }
+      }
+    }
+  }
+
+  & .bts {
+    &_container {
+      box-sizing: border-box;
+      display: flex;
+      width: 100%;
+      height: 40px;
+    }
+  }
+}
+
+img.image {
+  width: 148px;
+  height: 130px;
+  object-fit: contain;
+
+  @include hover;
+
+  @include ontablet {
+    width: 173px;
+    height: 181px;
+  }
+
+  @include ondesktop {
+    width: 208px;
+    height: 196px;
+  }
+}
+
+h3.price {
+  &_discount {
+    color: var(--c-secondary);
+    text-decoration: line-through;
+    text-decoration-thickness: 2px;
+  }
+
+}
+
+.divider {
+  height: 1px;
+  width: 100%;
+  border: 1px solid var(--c-elements);
+}

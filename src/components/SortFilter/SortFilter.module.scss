@@ -1,0 +1,35 @@
+@import '../../styles/main';
+
+.search_filter_container {
+  @include page-grid;
+
+  & .container {
+    &_title {
+      color: var(--c-secondary);
+    }
+
+    &_item {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      justify-content: space-between;
+    }
+
+    &_sort {
+      grid-column: 1/ span 2;
+
+      @include ontablet {
+        grid-column: 1/ span 4;
+      }
+
+    }
+
+    &_perPage {
+      grid-column: 3/ span 2;
+
+      @include ontablet {
+        grid-column: 5/ span 3;
+      }
+    }
+  }
+}

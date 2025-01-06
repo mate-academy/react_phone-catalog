@@ -1,0 +1,37 @@
+@import '../../styles/main';
+
+.wraper {
+  display: flex;
+  position: absolute;
+  width: 100%;
+  height: calc(100vh - 48px);
+  transition: all .3s;
+  transform: translate(100vw);
+  z-index: 1;
+
+  &_up {
+    flex-grow: 1;
+    transform: translate(0%);
+  }
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+
+  &_links {
+    padding: 24px 16px 0;
+    flex-grow: 1;
+  }
+
+  &_icons {
+    height: 64px;
+    width: auto;
+  }
+}
+
+// .slide-pane {
+//   background-color: red;
+//   /* Change the background color */
+// }
