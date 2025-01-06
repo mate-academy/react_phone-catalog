@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useRoutes, Navigate, HashRouter } from 'react-router-dom';
+import { useRoutes, Navigate } from 'react-router-dom';
 import './App.scss';
 import { Header } from './shared/components/Header';
 import { Footer } from './shared/components/Footer';
@@ -39,34 +39,31 @@ export const App = () => {
   ]);
 
   return (
-    <HashRouter>
-      <div className="App">
-        {isLoading ? (
-          <div className="loader">
-            <ThreeDots
-              visible={true}
-              height="80"
-              width="80"
-              color="#313237"
-              radius="9"
-              ariaLabel="three-dots-loading"
-            />
-          </div>
-        ) : (
-          <>
-            <Header setIsMenuOpen={setIsMenuOpen} isMenuOpen={isMenuOpen} />
-            {!isMenuOpen && (
-              <>
-                <section className="section">
-                  <div className="container">{routes}</div>
-                </section>
-
-                <Footer />
-              </>
-            )}
-          </>
-        )}
-      </div>
-    </HashRouter>
+    <div className="App">
+      {isLoading ? (
+        <div className="loader">
+          <ThreeDots
+            visible={true}
+            height="80"
+            width="80"
+            color="#313237"
+            radius="9"
+            ariaLabel="three-dots-loading"
+          />
+        </div>
+      ) : (
+        <>
+          <Header setIsMenuOpen={setIsMenuOpen} isMenuOpen={isMenuOpen} />
+          {!isMenuOpen && (
+            <>
+              <section className="section">
+                <div className="container">{routes}</div>
+              </section>
+              <Footer />
+            </>
+          )}
+        </>
+      )}
+    </div>
   );
 };
