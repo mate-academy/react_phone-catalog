@@ -1,0 +1,448 @@
+@import '../../style/utils/variables';
+@import '../../style/utils/mixins';
+
+.details {
+  @include page-paddings;
+
+  @include on-desktop {
+    width: 1136px;
+    margin-inline: auto;
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    gap: 56px;
+
+    @include on-tablet {
+      gap: 64px;
+    }
+
+    @include on-desktop {
+      gap: 80px;
+      margin-bottom: 80px;
+    }
+  }
+
+  &__arrow-back {
+    cursor: pointer;
+  }
+
+  &__back {
+    padding-left: 16px;
+
+    @include on-desktop {
+      width: 1136px;
+      margin-inline: auto;
+    }
+  }
+
+  &__url {
+    padding-inline: 16px;
+    margin-bottom: 24px;
+
+    @include on-tablet {
+      margin-bottom: 40px;
+    }
+
+    @include on-desktop {
+      width: 1136px;
+      margin-inline: auto;
+    }
+
+    &-pathname {
+      color: $primary;
+    }
+
+    &-searchname {
+      color: $secondary;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      padding-right: 7px;
+    }
+  }
+
+  &__not-found {
+    font-family: $mont;
+    font-size: 21px;
+    font-weight: 700;
+    line-height: 15px;
+    color: $primary;
+    margin-bottom: 100px;
+
+    @include page-paddings;
+
+    @include on-desktop {
+      margin-inline: auto;
+      width: 1136px;
+    }
+  }
+
+  &__top {
+    @include page-grid;
+  }
+
+  &__title {
+    margin-bottom: 24px;
+
+    @include on-tablet {
+      margin-bottom: 40px;
+    }
+  }
+
+  &__images {
+    overflow: hidden;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    grid-column: 1 / -1;
+
+
+    @include on-tablet {
+      flex-direction: column;
+      grid-column: 1 / 2;
+      grid-row: 1 / 2;
+    }
+
+    @include on-desktop {
+      grid-column: 1 / 3;;
+    }
+  }
+
+  &__image {
+    grid-column: 1 / -1;
+    width: 51.2px;
+    height: 49px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid $elements;
+    padding-inline: 3px;
+
+    &--active {
+      border-color: $primary;
+    }
+
+    @include on-tablet {
+      height: 35px;
+    }
+
+    @include on-desktop {
+      height: 80px;
+    }
+  }
+
+  &__picture {
+    width: 42.24px;
+    height: 40.43px;
+    background-position: center;
+    object-fit: contain;
+
+    @include on-tablet {
+      height: 29px;
+    }
+
+    @include on-desktop {
+      height: 66px;
+    }
+  }
+
+  &__main {
+    &-image {
+      grid-column: 1 / -1;
+      height: 288px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 16px;
+
+      @include on-tablet {
+        grid-column: 2 / 8;
+        grid-row: 1 / 2;
+        height: 287px;
+      }
+
+      @include on-desktop {
+        grid-column: 3 / 13;
+        height: 464px;
+      }
+    }
+
+    &-picture {
+      height: 273px;
+      width: 100%;
+      background-position: center;
+      object-fit: contain;
+
+      @include on-desktop {
+        height: 442px;
+      }
+    }
+  }
+
+
+  &__characteristics {
+    grid-column: 1 / -1;
+    margin-top: 40px;
+
+    @include on-tablet {
+      grid-column: 8 / -1;
+      grid-row: 1 / 2;
+      height: 435px;
+      margin-top: 0;
+    }
+
+    @include on-desktop {
+      grid-column: 14 / 21;
+      height: 464px;
+    }
+  }
+
+  &__bottom {
+    @include page-grid;
+
+    &-about {
+      grid-column: 1 / -1;
+
+      @include on-desktop {
+        grid-column: 1 / 13;
+      }
+    }
+    &-tech {
+      grid-column: 1 / -1;
+      margin-block: 56px;
+
+      @include on-tablet {
+        margin-block: 64px;
+      }
+
+      @include on-desktop {
+        grid-column: 14 / -1;
+        margin-block: 0;
+      }
+    }
+
+    &-name {
+      position: relative;
+
+      ::after {
+        display: block;
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 1px;
+        background-color: $elements;
+        bottom: -16px;
+      }
+    }
+
+    &-title {
+      font-family: $mont;
+      font-size: 22px;
+      font-weight: 800;
+      line-height: 31px;
+      text-align: left;
+      color: $primary;
+    }
+  }
+
+  &__slider {
+    margin-bottom: 56px;
+
+    @include on-tablet {
+      margin-bottom: 64px;
+    }
+
+    @include on-desktop {
+      margin-bottom: 80px;
+    }
+  }
+}
+
+.characteristics {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  &__id {
+    grid-column: -1 / -2;
+    font-family: $mont;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 15px;
+    text-align: left;
+    color: $icons;
+  }
+
+  &__section {
+    position: relative;
+    &:nth-child(2) {
+      margin-top: 24px;
+    }
+
+      &::after {
+        display: block;
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 1px;
+        background-color: $elements;
+        bottom: -24px;
+      }
+
+    &--flex {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+
+  &__title {
+    font-family: $mont;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 15px;
+    text-align: left;
+    color: $secondary;
+    padding-bottom: 8px;
+  }
+
+  &__elements {
+    display: flex;
+    justify-content: start;
+    gap: 8px;
+  }
+
+  &__circle {
+    position: relative;
+    border-radius: 50%;
+    height: 32px;
+    width: 32px;
+    border: 1px solid $elements;
+    transition-duration: 0.3s;
+
+    &:hover {
+      border: 1px solid $icons;
+    }
+
+    &--active {
+      border-color: $primary;
+    }
+  }
+
+  &__color {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 2px solid $white;
+    box-sizing: border-box;
+
+    @each $color, $value in (black, $black), (midnight, $midnight), (spaceblack, $spaceblack),
+    (sierrablue, $sierrablue), (white, $white), (red, $red), (gray-green, $gray-green),
+    (green, $green), (purple, $purple), (yellow, $yellow), (spacegray, $spacegray), ("rose-gold", $rosegold), (gold, $gold),
+     (silver, $silver), (graphite, $graphit), (midnightgreen, $midnightgreen), (blue, $blue),
+     (pink, $pink), {
+      &--#{"#{$color}"} {
+        background-color: $value;
+      }
+    }
+  }
+
+  &__rectangle {
+    width: 63px;
+    height: 32px;
+    border: 1px solid $icons;
+    font-family: $mont;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+    text-align: center;
+    color: $primary;
+    background-color: $white;
+    cursor: pointer;
+    transition-duration: 0.3s;
+    &:hover{
+      border-color: $primary;
+    }
+
+     &--active {
+      background-color: $primary;
+      color: $white;
+     }
+  }
+
+  &__price {
+    &-wrapper {
+      margin-top: 32px;
+    }
+    &--current {
+      font-size: 32px;
+      line-height: 41px;
+      letter-spacing: -0.01em;
+    }
+
+    &--original {
+      font-size: 22px;
+      line-height: 28px;
+    }
+  }
+
+  &__buttons {
+    margin-block: 16px 32px;
+  }
+
+  &__button {
+    width: 100%;
+    height: 48px;
+  }
+
+  &__icon {
+    width: 48px;
+    height: 48px;
+
+    &-image {
+      width: 48px;
+      height: 48px;
+    }
+  }
+}
+
+.about {
+  padding-top: 16px;
+  &__paragraph {
+    margin-top: 32px;
+  }
+
+  &__title {
+    font-family: $mont;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 26px;
+    text-align: left;
+    color: $primary;
+    margin-bottom: 16px;
+  }
+
+  &__text {
+    font-family: $mont;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+    text-align: left;
+    color: #89939a;
+  }
+}
+
+.tech-specs {
+  padding-top: 41px;
+  &__row {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+  }
+}
