@@ -65,7 +65,7 @@ export const HomePage = () => {
   }, []);
 
   useEffect(() => {
-    if (allProducts.length) {
+    if (allProducts) {
       setNewPhones(handleNewPhones(allProducts));
       setHotDeals(handleHotDealProducts(allProducts));
     }
