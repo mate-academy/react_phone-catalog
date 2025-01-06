@@ -1,5 +1,5 @@
 import { createRoot } from 'react-dom/client';
-import { BrowserRouter } from 'react-router-dom';
+// import { BrowserRouter } from 'react-router-dom';
 import { ProductsProvider } from './shared/utils/ProductsContext';
 import { SearchProvider } from './shared/utils/SearchContext';
 import { App } from './App';
@@ -10,9 +10,9 @@ if (rootElement) {
   createRoot(rootElement).render(
     <ProductsProvider>
       <SearchProvider>
-        <BrowserRouter>
-          <App />
-        </BrowserRouter>
+        {/* <BrowserRouter> */}
+        <App />
+        {/* </BrowserRouter> */}
       </SearchProvider>
     </ProductsProvider>,
   );
