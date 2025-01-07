@@ -177,10 +177,6 @@ line-height: 41px;
     border-radius: 50%;
     transition: border $transition;
 
-    & a {
-      display: block;
-    }
-
     &:not(:last-child) {
       margin-right: 8px;
     }
@@ -239,6 +235,10 @@ line-height: 41px;
 
     & .spacegray {
       background-color: #535150;
+    }
+
+    & .midnight {
+      background-color: #343b43;
     }
 
     & .midnightgreen {
