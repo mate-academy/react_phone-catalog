@@ -4,6 +4,7 @@ import { ProductSlider } from '../../components/ProductSlider';
 import { ProductType } from '../../types/ProductType';
 import { SortType } from '../../types/SortType';
 import './HomePage.scss';
+import { BannerSlider } from '../../components/BannerSlider';
 
 export const HomePage = () => {
   const [newestProducts, setNewestProducts] = useState<ProductType[]>([]);
@@ -27,33 +28,7 @@ export const HomePage = () => {
 
       <div className="home-page__container">
         <section className="home-page__banner">
-          <div className="home-page__banner-container">
-            <div className="button--arrow">
-              <img src="/icons/arrow_left.svg" alt="Arrow left" />
-            </div>
-
-            <img
-              className="home-page__banner-image"
-              src="/home_banner.png"
-              alt="Banner"
-            />
-
-            <img
-              className="home-page__banner-image-mobile"
-              src="/home_banner_mobile.png"
-              alt="Banner"
-            />
-
-            <div className="button--arrow">
-              <img src="/icons/arrow_right.svg" alt="Arrow right" />
-            </div>
-          </div>
-
-          <div className="home-page__banner-pages">
-            <div className="home-page__banner-page"></div>
-            <div className="home-page__banner-page"></div>
-            <div className="home-page__banner-page"></div>
-          </div>
+          <BannerSlider />
         </section>
 
         <section className="home-page__models">

@@ -34,52 +34,6 @@
     flex-direction: column;
   }
 
-  &__banner {
-    display: flex;
-    gap: 8px;
-    align-items: center;
-    flex-direction: column;
-
-    &-container {
-      display: grid;
-      grid-template-columns: 32px 1fr 32px;
-      gap: 16px;
-    }
-
-    &-image {
-      width: 100%;
-
-      @include mixins.media-phone {
-        display: none;
-      }
-
-      &-mobile {
-        display: none;
-
-        @include mixins.media-phone {
-          display: block;
-        }
-      }
-    }
-
-    &-pages {
-      display: flex;
-      gap: 4px;
-      justify-content: center;
-    }
-
-    &-page {
-      height: 24px;
-      width: 24px;
-      padding: 10px 5px;
-
-      box-sizing: border-box;
-
-      background-color: vars.$color-primary;
-      background-clip: content-box;
-    }
-  }
-
   &__models {
     &-container {
       display: flex;

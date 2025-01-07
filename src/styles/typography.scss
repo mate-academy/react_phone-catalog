@@ -100,7 +100,7 @@ button,
 
   &--white,
   &--text {
-    transition: border-color 300ms;
+    transition: border-color vars.$transition-time;
 
     &:hover {
       border-color: #313237;
@@ -125,7 +125,7 @@ button,
     border: 1px solid vars.$color-icons;
     background: none;
 
-    transition: border-color 300ms;
+    transition: border-color vars.$transition-time;
 
     &:hover {
       border-color: #313237;
