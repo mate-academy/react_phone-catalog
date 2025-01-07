@@ -12,11 +12,11 @@ import 'swiper/css/navigation';
 import 'swiper/css/thumbs';
 import s from './ProductPage.module.scss';
 import { CardsSlider } from '../../shared/components/CardsSlider';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 import { ThreeDots } from 'react-loader-spinner';
 
 export const ProductPage = () => {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const { category, productId } = useParams<{
     category: string | undefined;
     productId: string;
@@ -88,17 +88,17 @@ export const ProductPage = () => {
     );
   }
 
-  const handleColorChange = (color: string) => {
-    const newProductId = `${product.namespaceId}-${product.capacity.toLowerCase()}-${color}`;
+  // const handleColorChange = (color: string) => {
+  //   const newProductId = `${product.namespaceId}-${product.capacity.toLowerCase()}-${color}`;
 
-    navigate(`${product.category}/${newProductId}`);
-  };
+  //   navigate(`${product.category}/${newProductId}`);
+  // };
 
-  const handleCapacityChange = (capacity: string) => {
-    const newProductId = `${product.namespaceId}-${capacity.toLowerCase()}-${product.color}`;
+  // const handleCapacityChange = (capacity: string) => {
+  //   const newProductId = `${product.namespaceId}-${capacity.toLowerCase()}-${product.color}`;
 
-    navigate(`${product.category}/${newProductId}`, { replace: true });
-  };
+  //   navigate(`${product.category}/${newProductId}`);
+  // };
 
   return (
     <div>
@@ -171,35 +171,48 @@ export const ProductPage = () => {
               <div className={s.ColorSwitcher}>
                 <h4 className={s.SwitcherTitle}>Available colors</h4>
                 <ul className={s.ColorsList}>
-                  {product.colorsAvailable.map(color => (
-                    <li
-                      key={color}
-                      className={cn(s.ColorItem, {
-                        [s.Active]: product.color === color,
-                      })}
-                      onClick={() => handleColorChange(color)}
-                    >
-                      <div
-                        className={cn(s.Color, s[color.split(' ').join('-')])}
-                      ></div>
-                    </li>
-                  ))}
+                  {product.colorsAvailable.map(color => {
+                    const newProductId = `${product.namespaceId}-${product.capacity.toLowerCase()}-${color}`;
+
+                    return (
+                      <li
+                        key={color}
+                        className={cn(s.ColorItem, {
+                          [s.Active]: product.color === color,
+                        })}
+                      >
+                        <a href={`#/${product.category}/${newProductId}`}>
+                          <div
+                            className={cn(
+                              s.Color,
+                              s[color.split(' ').join('-')],
+                            )}
+                          ></div>
+                        </a>
+                      </li>
+                    );
+                  })}
                 </ul>
               </div>
               <div className={s.CapacitySwitcher}>
                 <h4 className={s.SwitcherTitle}>Select capacity</h4>
                 <ul className={s.CapacityList}>
-                  {product.capacityAvailable.map(capacity => (
-                    <li
-                      key={capacity}
-                      className={cn(s.CapacityItem, {
-                        [s.Active]: product.capacity === capacity,
-                      })}
-                      onClick={() => handleCapacityChange(capacity)}
-                    >
-                      <p>{capacity}</p>
-                    </li>
-                  ))}
+                  {product.capacityAvailable.map(capacity => {
+                    const newProductId = `${product.namespaceId}-${capacity.toLowerCase()}-${product.color}`;
+
+                    return (
+                      <li
+                        key={capacity}
+                        className={cn(s.CapacityItem, {
+                          [s.Active]: product.capacity === capacity,
+                        })}
+                      >
+                        <a href={`#/${product.category}/${newProductId}`}>
+                          <p>{capacity}</p>
+                        </a>
+                      </li>
+                    );
+                  })}
                 </ul>
               </div>
               <p className={s.Price}>&#36;{product.priceRegular}</p>

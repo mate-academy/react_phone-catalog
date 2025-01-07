@@ -177,6 +177,10 @@ line-height: 41px;
     border-radius: 50%;
     transition: border $transition;
 
+    & a {
+      display: block;
+    }
+
     &:not(:last-child) {
       margin-right: 8px;
     }
@@ -259,6 +263,10 @@ margin-top: 24px;
   font-size: 14px;
   line-height: 21px;
   transition: all $transition;
+
+  & a {
+      display: block;
+    }
 
   &:not(:last-child) {
     margin-right: 8px;
