@@ -22,17 +22,18 @@ export const CartPage = () => {
 
   const [totalPrice, setTotalPrice] = useState<number>();
 
-  const loadedProducts = useProductsInfo(cartProducts.map((item) => item.productId));
+  const loadedProducts = useProductsInfo(
+    cartProducts.map(item => item.productId),
+  );
 
   const countTotal = (elements: CardProduct[]) => {
     let totalPrice = 0;
 
     elements.map(el => {
-
       const product = loadedProducts.products[el.productId];
 
       if (product) {
-        totalPrice += product.price * el.count
+        totalPrice += product.price * el.count;
       }
     });
 
@@ -40,13 +41,12 @@ export const CartPage = () => {
   };
 
   useEffect(() => {
-    setTotalPrice(countTotal(cartProducts))
-  }, [cartProducts]
-  )
+    setTotalPrice(countTotal(cartProducts));
+  }, [cartProducts]);
 
   const handleDelete = (
     event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
-    prod: Product
+    prod: Product,
   ) => {
     event.preventDefault();
 
@@ -61,11 +61,11 @@ export const CartPage = () => {
     dispatch(actions.removeLastProduct(productId));
   };
 
-  const [checkoutClicked, setButtonClicked] = useState(false)
+  const [checkoutClicked, setButtonClicked] = useState(false);
 
   function goBack() {
     window.history.back();
-  };
+  }
 
   const theme = useAppSelector(state => state.themeSwitcher.theme);
 
@@ -75,7 +75,7 @@ export const CartPage = () => {
   const itemCard = `cartProduct__itemCard theme-${theme}`;
   const buttonCross = `cartProduct__buttonCross theme-${theme}`;
   const cartName = `cartProduct__name theme-${theme}`;
-  const cartPrice = `cartProduct__price theme-${theme}`
+  const cartPrice = `cartProduct__price theme-${theme}`;
   const prodQuantity = `cartProduct__count__quantity theme-${theme}`;
   const productCount = `cartProduct__count__box theme-${theme}`;
   const cartCheckout = `cartProduct__checkout theme-${theme}`;
@@ -85,8 +85,8 @@ export const CartPage = () => {
 
   return (
     <>
-      <div className='cart__wrap'>
-        <div className='cartProduct'>
+      <div className="cart__wrap">
+        <div className="cartProduct">
           <div className="cartProduct__constrain">
             <div className="cartProduct__breadcrumbs">
               <NavLink to="/" className="cartProduct__home-link">
@@ -103,12 +103,11 @@ export const CartPage = () => {
               <div className="cartProduct__box">
                 <div className="cartProduct__container">
                   {loading && <Loader />}
-                  {cartProducts.map(({productId, count}, index) => {
-
+                  {cartProducts.map(({ productId, count }, index) => {
                     const product = loadedProducts.products[productId];
 
                     if (!product) {
-                      return null
+                      return null;
                     }
 
                     return (
@@ -121,7 +120,7 @@ export const CartPage = () => {
                             >
                               <button
                                 className={buttonCross}
-                                onClick={(event) => handleDelete(event, product)}
+                                onClick={event => handleDelete(event, product)}
                               >
                                 <img
                                   src={ThemeVars.DARK ? Cross_dark : Cross}
@@ -136,9 +135,7 @@ export const CartPage = () => {
                                   className="cartProduct__image__link"
                                 />
                               </div>
-                              <div className={cartName}>
-                                {product.name}
-                              </div>
+                              <div className={cartName}>{product.name}</div>
                             </NavLink>
                             <div className="cartProduct__countPrice">
                               <div className="cartProduct__count">
@@ -148,60 +145,63 @@ export const CartPage = () => {
                                   onClick={() => handleMinus(productId)}
                                 >
                                   <img
-                                    src={theme === ThemeVars.DARK ? Minus_dark : Minus}
+                                    src={
+                                      theme === ThemeVars.DARK
+                                        ? Minus_dark
+                                        : Minus
+                                    }
                                     alt="Minus"
                                     className="cartProduct__count__num"
                                   />
                                 </button>
-                                <div className={prodQuantity}>
-                                  {count}
-                                </div>
+                                <div className={prodQuantity}>{count}</div>
                                 <button
                                   className={productCount}
                                   onClick={() => handlePlus(productId)}
                                 >
                                   <img
-                                    src={theme === ThemeVars.DARK ? Plus_dark : Plus}
+                                    src={
+                                      theme === ThemeVars.DARK
+                                        ? Plus_dark
+                                        : Plus
+                                    }
                                     alt="Plus"
                                     className="cartProduct__count__num"
                                   />
                                 </button>
                               </div>
-                              <div className={cartPrice}>
-                                {product.price}
-                              </div>
+                              <div className={cartPrice}>{product.price}</div>
                             </div>
                           </div>
                         </div>
                       </div>
                     );
-                  })
-                  }
+                  })}
                 </div>
                 <div className={cartCheckout}>
                   <div className="cartProduct__checkBlock">
                     <div className={cartPay}>{`$${totalPrice}`}</div>
-                    <div className={totalItemsPay}>
-                      Total for three items
-                    </div>
+                    <div className={totalItemsPay}>Total for three items</div>
                   </div>
                   <button
                     type="button"
                     onClick={() => {
-                      setButtonClicked(true)
+                      setButtonClicked(true);
                     }}
-                    className={cartButton}>Checkout</button>
+                    className={cartButton}
+                  >
+                    Checkout
+                  </button>
                 </div>
               </div>
-            )
-              : <div className="cartProduct__empty">Your cart is empty</div>
-            }
+            ) : (
+              <div className="cartProduct__empty">Your cart is empty</div>
+            )}
           </div>
         </div>
         {checkoutClicked && (
-          <div className='cartProduct__modal'>
-            <CartWindow
-              setButtonClicked={setButtonClicked} />
+          <div className="cartProduct__modal">
+            <CartWindow setButtonClicked={setButtonClicked} />
           </div>
         )}
       </div>
@@ -210,30 +210,31 @@ export const CartPage = () => {
 };
 
 function useProductsInfo(ids: string[]): {
-  loading: boolean,
-  products: Partial<Record<string, Product>>,
+  loading: boolean;
+  products: Partial<Record<string, Product>>;
 } {
   const dispatch = useAppDispatch();
 
   const products = useAppSelector(state => state.allProducts.products);
 
-  useEffect(() => { 
+  useEffect(() => {
     if (!products.length) {
       dispatch(fetchAllProducts());
     }
   }, [products]);
 
-  const myProducts = ids.reduce((acc, id) => {
-    const productFound = products.find(prod => prod.id === id);
+  const myProducts = ids.reduce(
+    (acc, id) => {
+      const productFound = products.find(prod => prod.id === id);
 
-    if (productFound) {
-      acc[id] = productFound;
-    }
+      if (productFound) {
+        acc[id] = productFound;
+      }
 
-    return acc;
+      return acc;
+    },
+    {} as Record<string, Product>,
+  );
 
-  }, {} as Record<string, Product>)
-
-  return { loading: !products.length, products: myProducts }
+  return { loading: !products.length, products: myProducts };
 }
-

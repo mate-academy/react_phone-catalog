@@ -47,7 +47,8 @@ export const PhoneTablAccessCard: React.FC<Props> = ({ product, brand }) => {
                 </div>
                 <div
                   className={`card__price__no-discount--hot
-                  ${cardPriceNoDoscount}`}>
+                  ${cardPriceNoDoscount}`}
+                >
                   ${product.fullPrice}
                 </div>
               </>
@@ -62,7 +63,9 @@ export const PhoneTablAccessCard: React.FC<Props> = ({ product, brand }) => {
           </div>
           <div className="card__center">
             <div className={`${cardProps} card__capacity-name`}>Capacity</div>
-            <div className={`${cardValues} card__capacity`}>{product.capacity}</div>
+            <div className={`${cardValues} card__capacity`}>
+              {product.capacity}
+            </div>
           </div>
           <div className="card__center">
             <div className={`${cardProps} card__ram-name`}>RAM</div>

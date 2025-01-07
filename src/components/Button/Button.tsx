@@ -1,9 +1,12 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
 import './Button.scss';
-import { useAppDispatch, useAppSelector } from "../../app/hooks";
+import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { actions as favActions } from '../../features/favSlice';
-import { actions as cartActions, removeProduct } from '../../features/cartSlice';
-import { ThemeVars } from "../../types/themeTypes";
+import {
+  actions as cartActions,
+  removeProduct,
+} from '../../features/cartSlice';
+import { ThemeVars } from '../../types/themeTypes';
 import Favorites from '../../images/homePage/Favorites.svg';
 import redHeart from '../../images/homePage/redHeart.svg';
 import Heart_dark from '../../images/homePage/Heart_dark.svg';
@@ -14,7 +17,7 @@ import Heart_orange from '../../images/homePage/Heart_orange.svg';
 type Props = {
   productId: string;
   detailsPage?: boolean;
-}
+};
 
 export const Button: React.FC<Props> = ({ productId, detailsPage }) => {
   const dispatch = useAppDispatch();
@@ -25,8 +28,10 @@ export const Button: React.FC<Props> = ({ productId, detailsPage }) => {
   const [clicked, setClicked] = useState(false);
   const [pressed, setPressed] = useState(false);
 
-  useEffect(() => {console.log(productId)}, [productId])
-  
+  useEffect(() => {
+    console.log(productId);
+  }, [productId]);
+
   useEffect(() => {
     const favProd = favProducts.find(prod => prod === productId);
 
@@ -80,41 +85,33 @@ export const Button: React.FC<Props> = ({ productId, detailsPage }) => {
   const styleCartButton = () => {
     return pressed
       ? `card__buttons__add__pressed theme-${theme}`
-      : `card__buttons__add__noPressed theme-${theme}`
-  }
+      : `card__buttons__add__noPressed theme-${theme}`;
+  };
 
   const styleFavoriteButton = () => {
     return clicked
       ? `card__buttons__favorite__clicked theme-${theme}`
-      : `card__buttons__favorite__noClicked theme-${theme}`
-  }
+      : `card__buttons__favorite__noClicked theme-${theme}`;
+  };
 
   const handleFavImg = () => {
     if (theme === ThemeVars.DARK) {
-      return clicked
-        ? redHeart
-        : Heart_dark
+      return clicked ? redHeart : Heart_dark;
     } else if (theme === ThemeVars.BLUE) {
-      return clicked
-        ? Heart_blue
-        : Favorites
+      return clicked ? Heart_blue : Favorites;
     } else if (theme === ThemeVars.PURPLE) {
-      return clicked
-        ? Heart_purple
-        : Favorites
+      return clicked ? Heart_purple : Favorites;
     } else if (theme === ThemeVars.ORANGE) {
-      return clicked
-        ? Heart_orange
-        : Favorites
+      return clicked ? Heart_orange : Favorites;
     } else {
-      return clicked
-        ? redHeart
-        : Favorites
+      return clicked ? redHeart : Favorites;
     }
-  }
+  };
 
   return (
-    <div className={`card__buttons ${detailsPage ? 'card__buttons--details' : ''}`}>
+    <div
+      className={`card__buttons ${detailsPage ? 'card__buttons--details' : ''}`}
+    >
       <button
         className={`card__buttons__add ${styleCartButton()}`}
         onClick={event => handleCartClick(event)}
@@ -132,5 +129,5 @@ export const Button: React.FC<Props> = ({ productId, detailsPage }) => {
         />
       </button>
     </div>
-  )
-}
+  );
+};
