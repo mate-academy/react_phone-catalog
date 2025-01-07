@@ -10,14 +10,13 @@ import Heart_dark from '../../images/homePage/Heart_dark.svg';
 import Heart_blue from '../../images/homePage/Heart_blue.svg';
 import Heart_purple from '../../images/homePage/Heart_purple.svg';
 import Heart_orange from '../../images/homePage/Heart_orange.svg';
-import { Product } from "../../types/product";
 
 type Props = {
-  product: Product;
+  productId: string;
   detailsPage?: boolean;
 }
 
-export const Button: React.FC<Props> = ({ product, detailsPage }) => {
+export const Button: React.FC<Props> = ({ productId, detailsPage }) => {
   const dispatch = useAppDispatch();
 
   const favProducts = useAppSelector(state => state.favourites.favProducts);
@@ -26,52 +25,52 @@ export const Button: React.FC<Props> = ({ product, detailsPage }) => {
   const [clicked, setClicked] = useState(false);
   const [pressed, setPressed] = useState(false);
 
+  useEffect(() => {console.log(productId)}, [productId])
+  
   useEffect(() => {
-    const favProd = favProducts.find(prod => prod.itemId === product.itemId);
+    const favProd = favProducts.find(prod => prod === productId);
 
     if (favProd) {
       setClicked(true);
     }
-  }, [favProducts, product, setClicked]);
+  }, [favProducts, productId, setClicked]);
 
   useEffect(() => {
-    const cartProd = cartProducts.find(prod => prod.product === product);
+    const cartProd = cartProducts.find(prod => prod.productId === productId);
 
     if (cartProd) {
       setPressed(true);
     }
-  }, [cartProducts, product, setPressed]);
+  }, [cartProducts, productId, setPressed]);
 
   const handleFavClick = (
     event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
-    prod: Product,
   ) => {
     event.preventDefault();
 
     if (clicked === false) {
-      dispatch(favActions.addProduct(prod));
+      dispatch(favActions.addProduct(productId));
       setClicked(true);
     }
 
     if (clicked === true) {
-      dispatch(favActions.removeProduct(prod));
+      dispatch(favActions.removeProduct(productId));
       setClicked(false);
     }
   };
 
   const handleCartClick = (
     event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
-    prod: Product,
   ) => {
     event.preventDefault();
 
     if (pressed === false) {
-      dispatch(cartActions.addProduct(prod));
+      dispatch(cartActions.addProduct(productId));
       setPressed(true);
     }
 
     if (pressed === true) {
-      dispatch(removeProduct(prod.id));
+      dispatch(removeProduct(productId));
       setPressed(false);
     }
   };
@@ -118,13 +117,13 @@ export const Button: React.FC<Props> = ({ product, detailsPage }) => {
     <div className={`card__buttons ${detailsPage ? 'card__buttons--details' : ''}`}>
       <button
         className={`card__buttons__add ${styleCartButton()}`}
-        onClick={event => handleCartClick(event, product)}
+        onClick={event => handleCartClick(event)}
       >
         {pressed ? 'Added to cart' : 'Add to cart'}
       </button>
       <button
         className={`card__buttons__favorite ${styleFavoriteButton()}`}
-        onClick={event => handleFavClick(event, product)}
+        onClick={event => handleFavClick(event)}
       >
         <img
           src={handleFavImg()}

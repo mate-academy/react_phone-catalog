@@ -24,9 +24,6 @@ export const CartPage = () => {
 
   const loadedProducts = useProductsInfo(cartProducts.map((item) => item.productId));
 
-  // console.log('loadedProducts', loadedProducts)
-  // console.log('cartProducts', cartProducts)
-
   const countTotal = (elements: CardProduct[]) => {
     let totalPrice = 0;
 
@@ -34,7 +31,9 @@ export const CartPage = () => {
 
       const product = loadedProducts.products[el.productId];
 
-      totalPrice += product.price * el.count
+      if (product) {
+        totalPrice += product.price * el.count
+      }
     });
 
     return totalPrice;
@@ -54,12 +53,12 @@ export const CartPage = () => {
     dispatch(removeProduct(prod.id));
   };
 
-  const handlePlus = (product: string) => {
-    dispatch(actions.addProduct(product));
+  const handlePlus = (productId: string) => {
+    dispatch(actions.addProduct(productId));
   };
 
-  const handleMinus = (product: CardProduct) => {
-    dispatch(actions.removeLastProduct(product.productId));
+  const handleMinus = (productId: string) => {
+    dispatch(actions.removeLastProduct(productId));
   };
 
   const [checkoutClicked, setButtonClicked] = useState(false)
@@ -100,11 +99,18 @@ export const CartPage = () => {
               </NavLink>
             </div>
             <h1 className={cartHeader}>Cart</h1>
-            {loadedProducts.products ? (
+            {!loadedProducts.loading ? (
               <div className="cartProduct__box">
                 <div className="cartProduct__container">
                   {loading && <Loader />}
-                  {loadedProducts.products.map((product, index) => {
+                  {cartProducts.map(({productId, count}, index) => {
+
+                    const product = loadedProducts.products[productId];
+
+                    if (!product) {
+                      return null
+                    }
+
                     return (
                       <div key={index} className={itemCard}>
                         <div className="cartProduct__containerItem">
@@ -137,9 +143,9 @@ export const CartPage = () => {
                             <div className="cartProduct__countPrice">
                               <div className="cartProduct__count">
                                 <button
-                                  // disabled={product.count === 1}
+                                  disabled={count === 1}
                                   className={productCount}
-                                  onClick={() => handleMinus(product)}
+                                  onClick={() => handleMinus(productId)}
                                 >
                                   <img
                                     src={theme === ThemeVars.DARK ? Minus_dark : Minus}
@@ -147,12 +153,12 @@ export const CartPage = () => {
                                     className="cartProduct__count__num"
                                   />
                                 </button>
-                                {/* <div className={prodQuantity}>
-                                  {product.count}
-                                </div> */}
+                                <div className={prodQuantity}>
+                                  {count}
+                                </div>
                                 <button
                                   className={productCount}
-                                  onClick={() => handlePlus(product)}
+                                  onClick={() => handlePlus(productId)}
                                 >
                                   <img
                                     src={theme === ThemeVars.DARK ? Plus_dark : Plus}
@@ -205,19 +211,17 @@ export const CartPage = () => {
 
 function useProductsInfo(ids: string[]): {
   loading: boolean,
-  products: Record<string, Product>,
+  products: Partial<Record<string, Product>>,
 } {
   const dispatch = useAppDispatch();
 
   const products = useAppSelector(state => state.allProducts.products);
 
-  useEffect(() => {
+  useEffect(() => { 
     if (!products.length) {
       dispatch(fetchAllProducts());
     }
   }, [products]);
-
-  console.log(products)
 
   const myProducts = ids.reduce((acc, id) => {
     const productFound = products.find(prod => prod.id === id);
@@ -230,6 +234,6 @@ function useProductsInfo(ids: string[]): {
 
   }, {} as Record<string, Product>)
 
-  return { loading: !!products.length, products: myProducts }
+  return { loading: !products.length, products: myProducts }
 }
 

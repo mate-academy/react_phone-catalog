@@ -230,7 +230,7 @@ export const ProductDetails = () => {
                         </div>
                       </div>
                       <div className="details__product__buttonContainer">
-                        <Button product={product} detailsPage={detailsPage} />
+                        <Button productId={product.id} detailsPage={detailsPage} />
                       </div>
                       <div className="details__description">
                         <div className="details__description__name">
