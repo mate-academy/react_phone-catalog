@@ -63,22 +63,24 @@
   gap: 16px;
   width: fit-content;
   transition: all .3s;
+  color: $-secondary;
   font-size: 12px;
   font-weight: 700;
   line-height: 15px;
+  cursor: pointer;
 
   &__icon {
     width: 24px;
     height: 24px;
     border: 1px solid $-icons;
     transition: all .3s;
-
-    &:hover {
-      background-color: $-elements;
-    }
   }
 
   &:hover {
     color: $-primary;
+
+    & span {
+      background-color: $-elements;
+    }
   }
 }

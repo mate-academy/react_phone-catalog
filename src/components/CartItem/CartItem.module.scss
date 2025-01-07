@@ -13,16 +13,12 @@
 
   @include page-grid;
 
-
   @include on-tablet {
-    display: flex;
-    justify-content: space-between;
+    grid-template-rows: none;
   }
 
   &__close {
     transition: all .3s;
-    grid-column: 1;
-    grid-row: 1;
 
     &:hover {
       transform: scale(1.1);
@@ -36,9 +32,6 @@
     align-items: center;
     justify-content: center;
 
-    grid-column: 2;
-    grid-row: 1;
-
     img {
       object-fit: cover;
       height: 100%;
@@ -47,32 +40,51 @@
   }
 
   &__name {
-    grid-column: 3 / -1;
-    grid-row: 1;
+    grid-column: span 2;
+
+    @include on-tablet {
+      grid-column: span 5;
+    }
+
+    @include on-desktop {
+      grid-column: span 12;
+    }
   }
 
   &__counter {
-    grid-column: span 2;
-    grid-row: 2;
+    grid-column: span 1;
+
+    @include on-tablet {
+      grid-column: span 2 / -4;
+    }
+
+    @include on-desktop {
+      grid-column: span 5 / -6;
+    }
   }
 
   &__price {
-    width: 100px;
     text-align: end;
     font-size: 22px;
     font-weight: 800;
-    grid-column: span 2;
-    grid-row: 2;
-    justify-self: end;
+    grid-column: span 2 / -1;
+
+    @include on-tablet {
+      grid-column: span 3 / -1;
+    }
+
+    @include on-desktop {
+      grid-column: span 5 / -1;
+    }
   }
 }
 
 .counter {
+  min-width: 100px;
   display: flex;
+  justify-content: space-between;
 
   &__item {
-    width: 32px;
-    height: 32px;
     box-sizing: border-box;
     display: flex;
     justify-content: center;
@@ -80,6 +92,8 @@
   }
 
   &__button {
+    width: 32px;
+    height: 32px;
     border: 1px solid $-icons;
     cursor: pointer;
     transition: all .3s;
