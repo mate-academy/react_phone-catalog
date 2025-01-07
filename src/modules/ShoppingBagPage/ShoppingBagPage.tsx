@@ -85,7 +85,7 @@ export const ShoppingBagPage = () => {
                         />
 
                         <a
-                          href={`/${item.category}/${item.id}`}
+                          href={`#/${item.category}/${item.id}`}
                           className={s.ItemName}
                         >
                           {item.name}
@@ -158,11 +158,14 @@ export const ShoppingBagPage = () => {
               <h2>Checkout is not implemented yet.</h2>
               <p>Do you want to clear the Cart?</p>
               <div className={s.ModalActions}>
-                <button className={s.ClearBtn} onClick={handleClearCart}>
+                <button
+                  className={`${s.Button} ${s.ClearBtn}`}
+                  onClick={handleClearCart}
+                >
                   Clear
                 </button>
                 <button
-                  className={s.CancelBtn}
+                  className={`${s.Button} ${s.CancelBtn}`}
                   onClick={() => setIsModalOpen(false)}
                 >
                   Cancel

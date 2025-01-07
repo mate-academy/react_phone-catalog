@@ -172,6 +172,39 @@ transition: box-shadow $transition;
   }
 }
 
+                .BtnsField {
+                  all: unset;
+                  margin-right: 24px;
+                  display: flex;
+                  align-items: center;
+                  color: $primary-color;
+
+                  & button {
+                      border: 1px solid $elements-color;
+                      width: 32px;
+                      height: 32px;
+                      transition: all $transition;
+                    }
+
+                    & button:hover,
+                    & button:focus {
+                      border: 1px solid $primary-color;
+                    }
+
+                    & button:disabled {
+                      border: 1px solid $elements-color;
+                      color: $secondary-color;
+                      opacity: 0.5;
+                    }
+
+                  & p {
+                    padding: 0 13px;
+                    min-width: 35px;
+                  }
+
+
+                }
+
 .Modal {
   position: fixed;
   top: 0;
@@ -205,56 +238,27 @@ transition: box-shadow $transition;
     }
   }
 
-  &Actions {
-    margin-top: 40px;
-    display: flex;
-    justify-content: space-between;
+    &Actions {
+      margin-top: 40px;
+      display: flex;
+      justify-content: space-between;
 
-    button {
-      padding: 0.5rem 1rem;
-      border: none;
-      border-radius: 4px;
-      font-size: 1rem;
-      cursor: pointer;
-      transition: box-shadow $transition;
+      .Button {
+        all: unset;
+        padding: 0.5rem 1rem;
+        border: none;
+        border-radius: 4px;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: box-shadow $transition;
 
         &:hover,
-          &:focus {
-            box-shadow: 0 3px 13px 0 #17203166;
-          }
-    }
-
-        .BtnsField {
-          margin-right: 24px;
-          display: flex;
-          align-items: center;
-          color: $primary-color;
-
-          & button {
-            border: 1px solid $elements-color;
-            width: 32px;
-            height: 32px;
-            transition: all $transition;
-
-            &:hover,
-            &:focus {
-              border: 1px solid $primary-color;
-            }
-
-            &:disabled {
-              border: 1px solid $elements-color;
-              color: $secondary-color;
-              opacity: 0.5;
-            }
-          }
-
-          & p {
-            padding: 0 13px;
-            min-width: 35px;
-          }
-
-
+        &:focus {
+          box-shadow: 0 3px 13px 0 #17203166;
         }
+      }
+
+
     .ClearBtn {
       background-color: #EB5757;
       color: $white-color;
@@ -275,3 +279,5 @@ transition: box-shadow $transition;
     }
   }
 }
+
+

@@ -19,7 +19,7 @@ export const CardTemplate: React.FC<Props> = ({ product, discount }) => {
   const normalizedProduct = normalizeProduct(product);
 
   const handleClick = useCallback(() => {
-    navigate(`${normalizedProduct.category}/${normalizedProduct.id}`);
+    navigate(`#/${normalizedProduct.category}/${normalizedProduct.id}`);
   }, [navigate, normalizedProduct.category, normalizedProduct.id]);
 
   useEffect(() => {
