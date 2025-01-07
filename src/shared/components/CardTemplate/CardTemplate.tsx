@@ -10,22 +10,17 @@ import { normalizeProduct } from '../../utils/normalizeProduct';
 type Props = {
   product: Product | ProductItem;
   discount: boolean;
-  productId: string;
 };
 
-export const CardTemplate: React.FC<Props> = ({
-  product,
-  productId,
-  discount,
-}) => {
+export const CardTemplate: React.FC<Props> = ({ product, discount }) => {
   const navigate = useNavigate();
   const location = useLocation();
 
   const normalizedProduct = normalizeProduct(product);
 
   const handleClick = useCallback(() => {
-    navigate(`/${normalizedProduct.category}/${productId}`);
-  }, [navigate, normalizedProduct.category, productId]);
+    navigate(`${normalizedProduct.category}/${normalizedProduct.id}`);
+  }, [navigate, normalizedProduct.category, normalizedProduct.id]);
 
   useEffect(() => {
     window.scrollTo(0, 0);

@@ -1,8 +1,7 @@
 import { Container } from '../../shared/components/Container';
 import { Navigation } from '../../shared/components/Navigation/Navigation';
 import { CardTemplate } from '../../shared/components/CardTemplate';
-import { Product } from '../../types/Product';
-import { ProductItem } from '../../types/ProductItem';
+import { CartProduct } from '../../types/CartProduct';
 import { useProducts } from '../../shared/utils/ProductsContext';
 import s from './FavouritesPage.module.scss';
 
@@ -25,7 +24,7 @@ export const FavouritesPage = () => {
 
           <ul className={s.Catalog}>
             {favourites.length > 0 ? (
-              favourites.map((item: Product | ProductItem) => (
+              favourites.map((item: CartProduct) => (
                 <li key={item.id} className={s.FavouriteItem}>
                   <CardTemplate product={item} discount={false} />
                 </li>

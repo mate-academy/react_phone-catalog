@@ -141,7 +141,7 @@ export const HomePage = () => {
           <ul className="category__list">
             <li className="category__item">
               <div className="category__link-field phones">
-                <a href="/phones" className="category__link phones-link">
+                <a href="phones" className="category__link phones-link">
                   <img src={Phones} alt="Phones" className="category__image" />
                 </a>
               </div>
@@ -152,7 +152,7 @@ export const HomePage = () => {
 
             <li className="category__item">
               <div className="category__link-field tablets">
-                <a href="/tablets" className="category__link">
+                <a href="tablets" className="category__link">
                   <img
                     src={Tablets}
                     alt="Tablets"
@@ -166,7 +166,7 @@ export const HomePage = () => {
 
             <li className="category__item">
               <div className="category__link-field accessories">
-                <a href="/accessories" className="category__link">
+                <a href="accessories" className="category__link">
                   <img
                     src={Accessories}
                     alt="Accessories"

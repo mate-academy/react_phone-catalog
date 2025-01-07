@@ -1,6 +1,6 @@
 export async function fetchJson(filename: string) {
   try {
-    const response = await fetch(`api/${filename}.json`);
+    const response = await fetch(`/api/${filename}.json`);
 
     if (!response.ok) {
       throw new Error(`Error fetching ${filename}: ${response.statusText}`);
@@ -8,8 +8,6 @@ export async function fetchJson(filename: string) {
 
     return await response.json();
   } catch (error) {
-    // console.error(error);
-
     return null;
   }
 }

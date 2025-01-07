@@ -91,13 +91,13 @@ export const ProductPage = () => {
   const handleColorChange = (color: string) => {
     const newProductId = `${product.namespaceId}-${product.capacity.toLowerCase()}-${color}`;
 
-    navigate(`/${product.category}/${newProductId}`);
+    navigate(`${product.category}/${newProductId}`);
   };
 
   const handleCapacityChange = (capacity: string) => {
     const newProductId = `${product.namespaceId}-${capacity.toLowerCase()}-${product.color}`;
 
-    navigate(`/${product.category}/${newProductId}`);
+    navigate(`${product.category}/${newProductId}`);
   };
 
   return (
@@ -106,9 +106,9 @@ export const ProductPage = () => {
         <div className={s.PageContent}>
           <div className={s.NavigationField}>
             <div>
-              <a href="/" className={s.HomeLink} aria-label="Home link"></a>
+              <a href="" className={s.HomeLink} aria-label="Home link"></a>
               <div className={s.NavArrow} />
-              <a href={`/${product.category}`} className={s.CategoryLink}>
+              <a href={`${product.category}`} className={s.CategoryLink}>
                 {categoryLink}
               </a>
               <div className={s.NavArrow} />
@@ -119,8 +119,8 @@ export const ProductPage = () => {
               <div className={s.LeftArrow} />
               <a
                 className={s.CategoryLink}
-                href={`/${product.category}`}
-                aria-label={`/${product.category}`}
+                href={`${product.category}`}
+                aria-label={`${product.category}`}
               >
                 Back
               </a>

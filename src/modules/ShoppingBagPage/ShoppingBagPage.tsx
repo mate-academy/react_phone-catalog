@@ -78,7 +78,7 @@ export const ShoppingBagPage = () => {
                       <div className={s.ItemInfo}>
                         <img
                           className={s.ItemImage}
-                          src={`public/${item.image}`}
+                          src={`${item.image}`}
                           alt={`${item.name}`}
                           width={65}
                           height={80}
