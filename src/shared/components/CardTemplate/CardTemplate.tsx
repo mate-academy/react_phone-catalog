@@ -1,10 +1,10 @@
-import { useEffect, useCallback } from 'react';
+import { useEffect } from 'react';
 import classNames from 'classnames';
 import s from './CardTemplate.module.scss';
 import { Product } from '../../../types/types';
 import { ProductItem } from '../../../types/ProductItem';
 import { AddButton } from '../AddButton';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import { normalizeProduct } from '../../utils/normalizeProduct';
 
 type Props = {
@@ -13,14 +13,14 @@ type Props = {
 };
 
 export const CardTemplate: React.FC<Props> = ({ product, discount }) => {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const location = useLocation();
 
   const normalizedProduct = normalizeProduct(product);
 
-  const handleClick = useCallback(() => {
-    navigate(`#/${normalizedProduct.category}/${normalizedProduct.id}`);
-  }, [navigate, normalizedProduct.category, normalizedProduct.id]);
+  // const handleClick = useCallback(() => {
+  //   navigate(`${normalizedProduct.category}/${normalizedProduct.id}`);
+  // }, [navigate, normalizedProduct.category, normalizedProduct.id]);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -28,16 +28,22 @@ export const CardTemplate: React.FC<Props> = ({ product, discount }) => {
 
   return (
     <div className={classNames(s.card_container, s.card)}>
-      <img
-        src={`${normalizedProduct.image}`}
-        alt={normalizedProduct.name}
-        className={classNames(s.card_image)}
-        onClick={handleClick}
-      />
+      <a href={`#/${normalizedProduct.category}/${normalizedProduct.id}`}>
+        <img
+          src={`${normalizedProduct.image}`}
+          alt={normalizedProduct.name}
+          className={classNames(s.card_image)}
+          // onClick={handleClick}
+        />
+      </a>
 
-      <p className={s.card_title} onClick={handleClick}>
+      <a
+        href={`#/${normalizedProduct.category}/${normalizedProduct.id}`}
+        className={s.card_title}
+        // onClick={handleClick}
+      >
         {normalizedProduct.name}
-      </p>
+      </a>
 
       <div className={classNames(s.price_container, s.price)}>
         <h3 className={classNames(s.price_full)}>

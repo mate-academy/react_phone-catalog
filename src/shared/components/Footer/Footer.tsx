@@ -13,7 +13,7 @@ export const Footer = () => {
     <footer className={s.Footer}>
       <Container>
         <div className={s.FooterField}>
-          <a href="/" className={s.FooterLogo}>
+          <a href="" className={s.FooterLogo}>
             Nice👌 <br />
             Gadgets
           </a>

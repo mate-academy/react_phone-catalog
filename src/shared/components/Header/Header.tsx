@@ -65,7 +65,7 @@ export const Header: React.FC<HeaderProps> = ({
   return (
     <div className={s.header}>
       <div className={s.header__navigation}>
-        <a className={s.header__logo} href="/">
+        <a className={s.header__logo} href="">
           Nice👌 <br />
           Gadgets
         </a>

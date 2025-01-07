@@ -91,7 +91,7 @@ export const ProductPage = () => {
   const handleColorChange = (color: string) => {
     const newProductId = `${product.namespaceId}-${product.capacity.toLowerCase()}-${color}`;
 
-    navigate(`${product.category}/${newProductId}`, { replace: true });
+    navigate(`${product.category}/${newProductId}`);
   };
 
   const handleCapacityChange = (capacity: string) => {
