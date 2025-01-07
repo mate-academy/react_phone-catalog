@@ -133,6 +133,16 @@
 
     &__slide {
       display: flex;
+      width: 52px;
+      height: 49px;
+
+       @include on-tablet {
+         margin-bottom: 8px;
+       }
+
+       @include on-desktop {
+        margin-bottom: 16px;
+       }
     }
 
     .thumbs {
@@ -141,6 +151,7 @@
       @include on-tablet {
         grid-column: span 1;
         grid-row: 1;
+        height: min-content;
       }
 
       @include on-desktop {
@@ -149,16 +160,21 @@
     }
 
     &__thumbs {
-      width: 51.2px;
-      height: 49px;
       object-fit: contain;
       padding: 2px;
       border: 1px solid $elements;
       border-radius: 4px;
       cursor: pointer;
+      width: 52px;
+      height: 49px;
 
       @include on-tablet {
         width: 100%;
+        min-height: 35px;
+      }
+
+      @include on-desktop {
+        height: 80px;
       }
 
       &--active {

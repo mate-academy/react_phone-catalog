@@ -59,6 +59,12 @@ export const ProductDetailsPage = () => {
     };
   }, []);
 
+  useEffect(() => {
+    if (thumbsSwiper) {
+      thumbsSwiper.update();
+    }
+  }, [thumbsSwiper, thumbsDirection]);
+
   const [loader, setLoader] = useState(true);
   const [activeIndex, setActiveIndex] = useState<number>(0);
 
