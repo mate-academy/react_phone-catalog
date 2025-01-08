@@ -5,7 +5,6 @@ import './App.scss';
 import { useAppSelector } from './app/hooks';
 
 export const App = () => {
-
   const theme = useAppSelector(state => state.themeSwitcher.theme);
 
   const rootClass = `App-wrapper App-wrapper__theme-${theme}`;

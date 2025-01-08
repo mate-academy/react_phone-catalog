@@ -10,16 +10,21 @@ import { Breadcrumbs } from '../../components/Breadcrumds';
 import classNames from 'classnames';
 import { Button } from '../../components/Button/Button';
 import { BackButtonImg } from '../../components/BackButtonImg/backButtonImg';
+import { Category } from '../../types/category';
 
-export const ProductDetails = () => {
+type Props = {
+  categoryId?: Category;
+};
+
+export const ProductDetails: React.FC<Props> = ({ categoryId }) => {
   const dispatch = useAppDispatch();
   const { product, loading } = useAppSelector(state => state.selectedProduct);
 
-  const { productId, categoryId } = useParams();
-
-  console.log(product, productId);
+  const { productId } = useParams();
 
   const theme = useAppSelector(state => state.themeSwitcher.theme);
+
+  // console.log(categoryId)
 
   // const [choosenProduct, setChoosenProduct] = useLocalStorage<
   //   TabAccessPhone | undefined
@@ -40,7 +45,7 @@ export const ProductDetails = () => {
     }
 
     dispatch(startLoadingProduct({ categoryId, productId: productId! }));
-  }, [productId]);
+  }, [productId, categoryId]);
 
   const handleCurrentImg = (image: string) => {
     setCurrentImage(image);
@@ -157,17 +162,17 @@ export const ProductDetails = () => {
               >
                 {product.images
                   ? product.images.map((image: string, index: number) => {
-                    return (
-                      <div key={index}>
-                        <img
-                          src={image}
-                          alt={product?.category}
-                          className="details__product__image"
-                          onClick={() => handleCurrentImg(image)}
-                        />
-                      </div>
-                    );
-                  })
+                      return (
+                        <div key={index}>
+                          <img
+                            src={image}
+                            alt={product?.category}
+                            className="details__product__image"
+                            onClick={() => handleCurrentImg(image)}
+                          />
+                        </div>
+                      );
+                    })
                   : imageError}
               </div>
               <div

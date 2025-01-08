@@ -4,7 +4,7 @@ export enum ThemeVars {
   BLUE = 'blue',
   PURPLE = 'purple',
   ORANGE = 'orange',
-};
+}
 
 export const newObject: Record<ThemeVars, string> = {
   [ThemeVars.ORIGIN]: 'Original',
@@ -12,4 +12,4 @@ export const newObject: Record<ThemeVars, string> = {
   [ThemeVars.BLUE]: 'Blue',
   [ThemeVars.PURPLE]: 'Purple',
   [ThemeVars.ORANGE]: 'Orange',
-}
+};

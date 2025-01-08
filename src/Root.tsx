@@ -31,7 +31,6 @@ export const Root = () => {
   return (
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
-
         <CatalogProvider>
           <Router>
             <Routes>
@@ -46,7 +45,10 @@ export const Root = () => {
                           <ProductPage title={route} category={category} />
                         }
                       />
-                      <Route path=":productId" element={<ProductDetails />} />
+                      <Route
+                        path=":productId"
+                        element={<ProductDetails categoryId={category} />}
+                      />
                     </Route>
                   );
                 })}
@@ -57,7 +59,6 @@ export const Root = () => {
             </Routes>
           </Router>
         </CatalogProvider>
-        
       </PersistGate>
     </Provider>
   );

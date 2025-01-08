@@ -22,6 +22,34 @@ export const CartPage = () => {
 
   const [totalPrice, setTotalPrice] = useState<number>();
 
+  function useProductsInfo(ids: string[]): {
+    loading: boolean;
+    products: Partial<Record<string, Product>>;
+  } {
+    const products = useAppSelector(state => state.allProducts.products);
+
+    useEffect(() => {
+      if (!products.length) {
+        dispatch(fetchAllProducts());
+      }
+    }, [products]);
+
+    const myProducts = ids.reduce(
+      (acc, id) => {
+        const productFound = products.find(prod => prod.id === id);
+
+        if (productFound) {
+          acc[id] = productFound;
+        }
+
+        return acc;
+      },
+      {} as Record<string, Product>,
+    );
+
+    return { loading: !products.length, products: myProducts };
+  }
+
   const loadedProducts = useProductsInfo(
     cartProducts.map(item => item.productId),
   );
@@ -115,7 +143,7 @@ export const CartPage = () => {
                         <div className="cartProduct__containerItem">
                           <div className="cartProduct__item">
                             <NavLink
-                              to={`/${product.category}/${product.id}`}
+                              to={`/${product.category}/${product.itemId}`}
                               className="cartProduct__navLink"
                             >
                               <button
@@ -208,33 +236,3 @@ export const CartPage = () => {
     </>
   );
 };
-
-function useProductsInfo(ids: string[]): {
-  loading: boolean;
-  products: Partial<Record<string, Product>>;
-} {
-  const dispatch = useAppDispatch();
-
-  const products = useAppSelector(state => state.allProducts.products);
-
-  useEffect(() => {
-    if (!products.length) {
-      dispatch(fetchAllProducts());
-    }
-  }, [products]);
-
-  const myProducts = ids.reduce(
-    (acc, id) => {
-      const productFound = products.find(prod => prod.id === id);
-
-      if (productFound) {
-        acc[id] = productFound;
-      }
-
-      return acc;
-    },
-    {} as Record<string, Product>,
-  );
-
-  return { loading: !products.length, products: myProducts };
-}

@@ -1,4 +1,4 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 export type SearchState = {
   visibleSearch: boolean;
@@ -8,7 +8,7 @@ export type SearchState = {
 const initialState: SearchState = {
   visibleSearch: false,
   query: '',
-}
+};
 
 const searchSlice = createSlice({
   name: 'search',
@@ -22,11 +22,11 @@ const searchSlice = createSlice({
 
     setVisible: (state, action: PayloadAction<boolean>) => {
       const currentState = state;
-      currentState.visibleSearch = action.payload
-    }
-  }
+
+      currentState.visibleSearch = action.payload;
+    },
+  },
 });
 
 export const { actions } = searchSlice;
 export default searchSlice.reducer;
-

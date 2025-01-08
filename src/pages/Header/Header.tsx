@@ -28,7 +28,7 @@ export const Header: React.FC = () => {
   const visibleSearch = useAppSelector(state => state.search.visibleSearch);
 
   const applyQueryInStore = useCallback(
-    debounce((value) => {
+    debounce(value => {
       dispatch(actionsSearch.setQuery(value));
     }, 1000),
     [],
@@ -40,7 +40,7 @@ export const Header: React.FC = () => {
 
   useEffect(() => {
     applyQueryInStore(appliedQuery);
-  }, [appliedQuery])
+  }, [applyQueryInStore, appliedQuery]);
 
   const [opened, setOpened] = useState(false);
 
@@ -94,42 +94,47 @@ export const Header: React.FC = () => {
       default:
         return favImage;
     }
-  }
+  };
 
   const [page, setPage] = useState('');
 
   const location = useLocation();
-  let paths = location.pathname.split('/').filter(path => path).toString();
+  const paths = location.pathname
+    .split('/')
+    .filter(path => path)
+    .toString();
 
   useEffect(() => {
     if (paths === 'favourites') {
-      setPage('favourites')
+      setPage('favourites');
     } else if (paths === 'cart') {
-      setPage('cart')
+      setPage('cart');
     } else {
-      setPage('')
+      setPage('');
     }
-  }, [paths])
+  }, [paths]);
 
   const selectedCart = theme === ThemeVars.DARK ? Cart_dark : Cart;
   const selectedHeart = theme === ThemeVars.DARK ? Heart_dark : Favorites;
 
   const burgerGround = `header__burger theme-${theme}`;
   const burgerClass = `header__burger__link theme-${theme}`;
-  const burgerCross = `header__burger__cross theme-${theme}`
+  const burgerCross = `header__burger__cross theme-${theme}`;
   const rootClass = `header__link theme-${theme}`;
   const headerTopLine = `theme-${theme}`;
   const headerLine = `header__preferies__link theme-${theme}`;
-  const heardBorder = `header__border theme-${theme}`
+  const heardBorder = `header__border theme-${theme}`;
   const headerInput = `header__search__input theme-${theme}`;
   const themeSelect = `header__theme__select theme-${theme}`;
   const themeOption = `header__theme__option theme-${theme}`;
   const themeVars: ThemeVars[] = Object.values(ThemeVars);
 
   return (
-    <div className={classNames('header__wrapp', {
-      'header__wrap--active': opened === true,
-    })}>
+    <div
+      className={classNames('header__wrapp', {
+        'header__wrap--active': opened === true,
+      })}
+    >
       <header
         className={classNames('header', headerTopLine, {
           'header--active': opened === true,
@@ -161,11 +166,7 @@ export const Header: React.FC = () => {
             <NavLink to="/phones" className={rootClass} onClick={handlePage}>
               PHONES
             </NavLink>
-            <NavLink
-              to="/tablets"
-              className={rootClass}
-              onClick={handlePage}
-            >
+            <NavLink to="/tablets" className={rootClass} onClick={handlePage}>
               TABLETS
             </NavLink>
             <NavLink
@@ -185,8 +186,11 @@ export const Header: React.FC = () => {
           <div className={headerLine}>
             <NavLink
               to="/favourites"
-              className={classNames(`${heardBorder} header__border__favorites`,
-                page === 'favourites' ? `header__border__favorites--active` : ''
+              className={classNames(
+                `${heardBorder} header__border__favorites`,
+                page === 'favourites'
+                  ? `header__border__favorites--active`
+                  : '',
               )}
               onClick={handlePage}
             >
@@ -212,8 +216,9 @@ export const Header: React.FC = () => {
           <div className={headerLine}>
             <NavLink
               to="/cart"
-              className={classNames(`${heardBorder} header__border__cart`,
-                page === 'cart' ? `header__border__cart--active` : ''
+              className={classNames(
+                `${heardBorder} header__border__cart`,
+                page === 'cart' ? `header__border__cart--active` : '',
               )}
               onClick={handlePage}
             >
@@ -239,25 +244,21 @@ export const Header: React.FC = () => {
         </div>
       </header>
       <div className="header__searchTheme">
-        {visibleSearch
-          ? (
-            <div className='header__search'>
-              <input
-                className={headerInput}
-                type="search"
-                placeholder='Search...'
-                value={appliedQuery}
-                onChange={event => handleQuery(event.target.value)}
-              >
-              </input>
-            </div>
-          )
-          : null
-        }
-        <div className='header__theme'>
-          <label className='header__theme__label'>
+        {visibleSearch ? (
+          <div className="header__search">
+            <input
+              className={headerInput}
+              type="search"
+              placeholder="Search..."
+              value={appliedQuery}
+              onChange={event => handleQuery(event.target.value)}
+            ></input>
+          </div>
+        ) : null}
+        <div className="header__theme">
+          <label className="header__theme__label">
             <select
-              name='select-theme'
+              name="select-theme"
               id="select"
               className={themeSelect}
               defaultValue={theme}

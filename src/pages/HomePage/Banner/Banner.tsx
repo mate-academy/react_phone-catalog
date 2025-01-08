@@ -106,18 +106,21 @@ export const Banner = () => {
         grid__item--desktop-13-14"
       >
         <div
-          className={classNames(`${bannerRectangle}`,
-            currentIndex === 0 ? `${rectangleActive}` : ''
+          className={classNames(
+            `${bannerRectangle}`,
+            currentIndex === 0 ? `${rectangleActive}` : '',
           )}
         ></div>
         <div
-          className={classNames(`${bannerRectangle}`,
-            currentIndex === 1 ? `${rectangleActive}` : ''
+          className={classNames(
+            `${bannerRectangle}`,
+            currentIndex === 1 ? `${rectangleActive}` : '',
           )}
         ></div>
         <div
-          className={classNames(`${bannerRectangle}`,
-            currentIndex === 2 ? `${rectangleActive}` : ''
+          className={classNames(
+            `${bannerRectangle}`,
+            currentIndex === 2 ? `${rectangleActive}` : '',
           )}
         ></div>
       </div>

@@ -17,7 +17,7 @@ type Props = {
   sortBy?: string;
   perPage?: string;
   currentPage?: string;
-}
+};
 
 export const ProductList: React.FC<Props> = ({
   products,
@@ -28,9 +28,10 @@ export const ProductList: React.FC<Props> = ({
 }) => {
   const { loading } = useAppSelector(state => state.allProducts);
 
-  const [choosenItems, setChoosenItems] = useLocalStorage<
-    Product[] | []
-  >('products', []);
+  const [choosenItems, setChoosenItems] = useLocalStorage<Product[] | []>(
+    'products',
+    [],
+  );
 
   currentPage ??= '1';
   perPage ??= choosenItems.length.toString();
@@ -74,23 +75,20 @@ export const ProductList: React.FC<Props> = ({
       <ul className="productsPage__list">
         {loading ? (
           <Loader />
+        ) : filtered ? (
+          filtered?.map((product: Product) => {
+            return (
+              <NavLink
+                key={product.id}
+                to={`/${product.category}/${product.itemId}`}
+                className="productsPage__link"
+              >
+                <PhoneTablAccessCard product={product} key={product.id} />
+              </NavLink>
+            );
+          })
         ) : (
-          (filtered
-            ? filtered?.map((product: Product) => {
-
-              console.log(product)
-              return (
-                <NavLink
-                  key={product.id}
-                  to={`/${product.category}/${product.itemId}`}
-                  className="productsPage__link"
-                >
-                  <PhoneTablAccessCard product={product} key={product.id} />
-                </NavLink>
-              );
-            })
-            : <div>There are no {category} yet</div>
-          )
+          <div>There are no {category} yet</div>
         )}
       </ul>
       {showPagination ? <Pagination products={choosenItems} /> : null}

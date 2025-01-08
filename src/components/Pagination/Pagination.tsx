@@ -59,8 +59,8 @@ export const Pagination: React.FC<Props> = ({ products }) => {
   const max = Math.min(
     totalPages,
     currentPageNum +
-    numbersToShow / 2 +
-    Math.max(0, min - currentPageNum + numbersToShow / 2),
+      numbersToShow / 2 +
+      Math.max(0, min - currentPageNum + numbersToShow / 2),
   );
 
   const numbersToLoad = getTotalNumbersArray().slice(min - 1, max);
@@ -82,29 +82,25 @@ export const Pagination: React.FC<Props> = ({ products }) => {
   const theme = useAppSelector(state => state.themeSwitcher.theme);
   const arrLeft = () => {
     if (theme === ThemeVars.DARK) {
-      return +currentPage === 1
-        ? Vec_light_left_dark
-        : Left_banner;
-    } else return +currentPage === 1
-      ? Vec_light_left
-      : Arrow_Left
+      return +currentPage === 1 ? Vec_light_left_dark : Left_banner;
+    } else {
+      return +currentPage === 1 ? Vec_light_left : Arrow_Left;
+    }
   };
 
   const arrRight = () => {
     if (theme === ThemeVars.DARK) {
-      return +currentPage === totalPages
-        ? Vec_light_right_dark
-        : Right_banner
-    } else return +currentPage === totalPages
-      ? Vec_light_right
-      : Arrow_Right
+      return +currentPage === totalPages ? Vec_light_right_dark : Right_banner;
+    } else {
+      return +currentPage === totalPages ? Vec_light_right : Arrow_Right;
+    }
   };
 
   const buttonArr = `pagination__button theme-${theme}`;
   const pagItem = `pagination__item theme-${theme}`;
   const pagLink = `pagination__link__is-active theme-${theme}`;
   const pagNumber = `pagination__link theme-${theme}`;
-  const pagImage = `pagination__image theme-${theme}`
+  const pagImage = `pagination__image theme-${theme}`;
 
   return (
     <div className="pagination">
@@ -113,11 +109,7 @@ export const Pagination: React.FC<Props> = ({ products }) => {
         className={classNames(`${buttonArr} pagination__button__left`)}
         onClick={handlePrevPage}
       >
-        <img
-          src={arrLeft()}
-          alt="arrow_left"
-          className={pagImage}
-        />
+        <img src={arrLeft()} alt="arrow_left" className={pagImage} />
       </button>
       {numbersToLoad.map(page => (
         <li
@@ -127,8 +119,9 @@ export const Pagination: React.FC<Props> = ({ products }) => {
           })}
         >
           <Link
-            className={classNames(`${pagNumber}`,
-              +currentPage === page ? `${pagLink}` : ''
+            className={classNames(
+              `${pagNumber}`,
+              +currentPage === page ? `${pagLink}` : '',
             )}
             to={{
               search: getSearchWith(searchParams, { page: page.toString() }),
@@ -143,11 +136,7 @@ export const Pagination: React.FC<Props> = ({ products }) => {
         className={classNames(`${buttonArr} pagination__button__right`)}
         onClick={handleNextPage}
       >
-        <img
-          src={arrRight()}
-          alt="arrow_right"
-          className={pagImage}
-        />
+        <img src={arrRight()} alt="arrow_right" className={pagImage} />
       </button>
     </div>
   );

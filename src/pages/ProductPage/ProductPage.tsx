@@ -27,7 +27,6 @@ export const ProductPage: React.FC<Props> = ({ title, category }) => {
 
   const visibleItems = useMemo(() => {
     return products.filter(item => item.category === category);
-
   }, [category, products]);
 
   useEffect(() => {
@@ -36,39 +35,36 @@ export const ProductPage: React.FC<Props> = ({ title, category }) => {
     }
   }, [products]);
 
+  console.log(category);
+
   const [searchParams, setSearchParams] = useSearchParams();
   const sortParams = useMemo(
     () => ['Newest', 'Alphabetically', 'Cheapest'],
     [],
   );
 
-  const {
-    sortBy,
-    perPage,
-    currentPage } = getListParams(searchParams);
+  const { sortBy, perPage, currentPage } = getListParams(searchParams);
 
   const setSortAndPage = (sorting: string, paging: string) => {
-    let params = new URLSearchParams();
+    const params = new URLSearchParams();
 
     if (sorting !== DEFAULT_SORT) {
-      params.set('sortBy', sorting)
+      params.set('sortBy', sorting);
     }
 
     if (paging !== DEFAULT_PAGE) {
-      params.set('perPage', paging)
+      params.set('perPage', paging);
     }
 
-    setSearchParams(
-      params
-    );
-  }
+    setSearchParams(params);
+  };
 
   const handlePerPage = (event: BaseSyntheticEvent) => {
-    setSortAndPage(sortBy, event.target.value)
+    setSortAndPage(sortBy, event.target.value);
   };
 
   const handleSortBy = (event: BaseSyntheticEvent) => {
-    setSortAndPage(event.target.value, perPage)
+    setSortAndPage(event.target.value, perPage);
   };
 
   const itemToUpperCase = (item: string) => {
@@ -81,17 +77,18 @@ export const ProductPage: React.FC<Props> = ({ title, category }) => {
     }
 
     return visibleItems.filter(item =>
-      item.id.toLowerCase().includes(query.toLowerCase()));
-  }, [visibleItems, query],
-  );
+      item.itemId.toLowerCase().includes(query.toLowerCase()),
+    );
+  }, [visibleItems, query]);
 
   useEffect(() => {
     const act = actionsSearch.setVisible(true);
-    dispatch(act)
+
+    dispatch(act);
 
     return () => {
       dispatch(actionsSearch.setVisible(false));
-    }
+    };
   }, []);
 
   const theme = useAppSelector(state => state.themeSwitcher.theme);
@@ -120,15 +117,14 @@ export const ProductPage: React.FC<Props> = ({ title, category }) => {
                 className={selectSort}
               >
                 {sortParams.map(param => {
-                  return <option
-                    key={param}
-                    className={prodVars}
-                  >
-                    {param}
-                  </option>;
+                  return (
+                    <option key={param} className={prodVars}>
+                      {param}
+                    </option>
+                  );
                 })}
               </select>
-              <input type='button' className={prodArr}></input>
+              <input type="button" className={prodArr}></input>
             </label>
           </div>
           <div className="productsPage__itemsOnPage">
@@ -144,7 +140,10 @@ export const ProductPage: React.FC<Props> = ({ title, category }) => {
                 <option className="productsPage__option">8</option>
                 <option className="productsPage__option">16</option>
               </select>
-              <input type='button' className={`${prodArr} productsPage__arr--num`}></input>
+              <input
+                type="button"
+                className={`${prodArr} productsPage__arr--num`}
+              ></input>
             </label>
           </div>
         </div>

@@ -6,10 +6,10 @@ export interface CardProduct {
 }
 
 export type CardInfo = {
-  cartProducts: CardProduct[],
+  cartProducts: CardProduct[];
   loading: boolean;
   error?: boolean;
-}
+};
 
 const initialState: CardInfo = {
   cartProducts: [],
@@ -19,19 +19,18 @@ const initialState: CardInfo = {
 export const removeProduct = createAsyncThunk(
   'cartRemover',
   async (id: string) => {
-
     const payloadParams = {
-      id
-    }
+      id,
+    };
 
-    const myPromise = new Promise<typeof payloadParams>((resolve) => {
+    const myPromise = new Promise<typeof payloadParams>(resolve => {
       setTimeout(() => {
         resolve(payloadParams);
       }, 1000);
     });
 
-    return await myPromise;
-  }
+    return myPromise;
+  },
 );
 
 const CartSlice = createSlice({
@@ -41,15 +40,16 @@ const CartSlice = createSlice({
     addProduct: (state, action: PayloadAction<string>) => {
       const currentState = state;
 
-      const findProduct = currentState.cartProducts.find(prod =>
-        prod.productId === action.payload)
+      const findProduct = currentState.cartProducts.find(
+        prod => prod.productId === action.payload,
+      );
 
       if (findProduct) {
-        findProduct.count += 1
+        findProduct.count += 1;
       } else {
         currentState.cartProducts.push({
           count: 1,
-          productId: action.payload
+          productId: action.payload,
         });
       }
     },
@@ -57,19 +57,20 @@ const CartSlice = createSlice({
     removeLastProduct: (state, action: PayloadAction<string>) => {
       const currentState = state;
 
-      const findProduct = currentState.cartProducts.find(prod =>
-        prod.productId === action.payload)
+      const findProduct = currentState.cartProducts.find(
+        prod => prod.productId === action.payload,
+      );
 
       if (findProduct) {
-        findProduct.count -= 1
+        findProduct.count -= 1;
       }
     },
 
-    removeAll: (state) => {
+    removeAll: state => {
       const currentState = state;
 
       currentState.cartProducts = [];
-    }
+    },
   },
 
   extraReducers: builder => {
@@ -90,10 +91,11 @@ const CartSlice = createSlice({
       })
       .addCase(removeProduct.rejected, state => {
         const currentState = state;
+
         currentState.loading = false;
         currentState.error = true;
-      })
-  }
+      });
+  },
 });
 
 export const { actions } = CartSlice;

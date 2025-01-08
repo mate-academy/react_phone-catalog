@@ -47,7 +47,7 @@ const productsSlice = createSlice({
 
         currentState.loading = false;
         currentState.error = true;
-      })
+      });
   },
 });
 

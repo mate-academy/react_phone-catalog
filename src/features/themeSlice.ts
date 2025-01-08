@@ -12,7 +12,7 @@ const themeSlice = createSlice({
     toggleTheme(state, action: PayloadAction<ThemeVars>) {
       const currentState = state;
 
-      currentState.theme = action.payload
+      currentState.theme = action.payload;
     },
   },
 });

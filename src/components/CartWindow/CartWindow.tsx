@@ -13,32 +13,27 @@ export const CartWindow: React.FC<ClickedProps> = ({ setButtonClicked }) => {
 
   const handleConfirm = () => {
     dispatch(actions.removeAll());
-    setButtonClicked(false)
-  }
-
-  console.log(cartProducts)
+    setButtonClicked(false);
+  };
 
   return (
-    <div className='cart__window'>
-      <div className='cartWindow__container'>
+    <div className="cart__window">
+      <div className="cartWindow__container">
         <button
           type="button"
           onClick={() => {
-            setButtonClicked(false)
-          }}>
-          <img
-            src={Cross}
-            alt="Cross"
-            className="cartProduct__cross"
-          />
+            setButtonClicked(false);
+          }}
+        >
+          <img src={Cross} alt="Cross" className="cartProduct__cross" />
         </button>
-        <div>Checkout is not implemented yet. Do you want to clear the Cart?</div>
-        <button
-          type="button"
-          onClick={handleConfirm}>
+        <div>
+          Checkout is not implemented yet. Do you want to clear the Cart?
+        </div>
+        <button type="button" onClick={handleConfirm}>
           Confirm
         </button>
       </div>
     </div>
-  )
-}
+  );
+};

@@ -6,6 +6,12 @@ import { Breadcrumbs } from '../../components/Breadcrumds';
 export const FavouritesPage = () => {
   const { favProducts } = useAppSelector(state => state.favourites);
 
+  const products = useAppSelector(state => state.allProducts.products);
+
+  const myProducts = products.filter(
+    item => item.id === favProducts.find(id => id === item.id),
+  );
+
   const theme = useAppSelector(state => state.themeSwitcher.theme);
 
   const titleClass = `productsPage__header theme-${theme}`;
@@ -18,7 +24,7 @@ export const FavouritesPage = () => {
         <div className="productsPage__models">{`${favProducts.length} items`}</div>
 
         <div className="productsPage__container">
-          <ProductList products={favProducts} />
+          <ProductList products={myProducts} />
         </div>
       </div>
     </div>

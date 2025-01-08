@@ -10,14 +10,11 @@ import { Product } from '../../../types/product';
 import { fetchAllProducts } from '../../../features/allProductsSlice';
 
 export const HotPrices = () => {
-  const { elOnPage, currentPage } =
-    useContext(CatalogContext);
+  const { elOnPage, currentPage } = useContext(CatalogContext);
 
   const dispatch = useAppDispatch();
 
-  const { products, error } = useAppSelector(
-    state => state.allProducts,
-  );
+  const { products, error } = useAppSelector(state => state.allProducts);
 
   useEffect(() => {
     dispatch(fetchAllProducts());

@@ -1,4 +1,4 @@
-import { TabAccessPhone } from "../types/tabAccessPhones";
+import { TabAccessPhone } from '../types/tabAccessPhones';
 
 const BASE_URL = 'https://hanna-balabukha.github.io/react_phone-catalog/api/';
 

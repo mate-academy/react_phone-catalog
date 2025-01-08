@@ -10,8 +10,8 @@ type CatalogType = {
 export const CatalogContext = React.createContext<CatalogType>({
   elOnPage: 0,
   currentPage: 1,
-  handleNextPage: () => { },
-  handlePreviousPage: () => { },
+  handleNextPage: () => {},
+  handlePreviousPage: () => {},
 });
 
 type Props = {

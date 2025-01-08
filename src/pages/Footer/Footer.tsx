@@ -30,13 +30,12 @@ export const Footer = () => {
         return Logo;
     }
   };
+
   const footerClass = `footer theme-${theme}`;
   const rootClass = `footer__link theme-${theme}`;
   const footerButton = `footer__back__button theme-${theme}`;
   const footerBack = `footer__back__img theme-${theme}`;
-  const selectedArr = theme === ThemeVars.DARK
-    ? Vector_Up_dark
-    : Vector_Up;
+  const selectedArr = theme === ThemeVars.DARK ? Vector_Up_dark : Vector_Up;
 
   return (
     <footer className={footerClass}>

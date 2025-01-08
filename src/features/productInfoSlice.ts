@@ -6,7 +6,7 @@ import { TabAccessPhone } from '../types/tabAccessPhones';
 
 export type ProductInfo = {
   product: TabAccessPhone | undefined | null;
-  loading: boolean,
+  loading: boolean;
 };
 
 const initialState: ProductInfo = {
@@ -18,14 +18,9 @@ const phonesUrl = 'phones.json';
 const tabletsUrl = 'tablets.json';
 const accessoriesUrl = 'accessories.json';
 
-
 export const startLoadingProduct = createAsyncThunk(
   'productInfo',
-  async (payload: {
-    categoryId: string | undefined,
-    productId: string,
-  }) => {
-
+  async (payload: { categoryId: string | undefined; productId: string }) => {
     let products: TabAccessPhone[] | undefined;
 
     switch (payload.categoryId) {
@@ -39,16 +34,16 @@ export const startLoadingProduct = createAsyncThunk(
         products = await getJson(accessoriesUrl);
         break;
       default:
-        console.warn('there is no such categoryId', payload.categoryId)
+        console.warn('there is no such categoryId', payload.categoryId);
         break;
     }
 
     if (products) {
-      return products.find(item => item.id === payload.productId)
+      return products.find(item => item.id === payload.productId);
     } else {
-      return null
+      return null;
     }
-  }
+  },
 );
 
 const productInfoSlice = createSlice({
@@ -64,12 +59,12 @@ const productInfoSlice = createSlice({
         currentState.loading = true;
       })
       .addCase(startLoadingProduct.fulfilled, (state, action) => {
-        let currentState = state;
+        const currentState = state;
 
         currentState.loading = false;
         currentState.product = action.payload;
-      })
-  }
+      });
+  },
 });
 
 export const selectedInfoProduct = (state: RootState) =>

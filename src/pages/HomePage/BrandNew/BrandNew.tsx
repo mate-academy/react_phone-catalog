@@ -10,22 +10,19 @@ import { Product } from '../../../types/product';
 import { fetchAllProducts } from '../../../features/allProductsSlice';
 
 export const BrandNew = () => {
-  const { elOnPage, currentPage } =
-    useContext(CatalogContext);
+  const { elOnPage, currentPage } = useContext(CatalogContext);
 
   const brand = true;
 
   const dispatch = useAppDispatch();
 
-  const { products, error } = useAppSelector(
-    state => state.allProducts,
-  );
+  const { products, error } = useAppSelector(state => state.allProducts);
 
   useEffect(() => {
     if (!products.length) {
       dispatch(fetchAllProducts());
     }
-  }, []);
+  }, [products.length]);
 
   const sortedBrand = products.length
     ? [...products].sort((a, b) => b.fullPrice - a.fullPrice)

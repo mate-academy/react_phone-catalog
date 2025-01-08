@@ -9,13 +9,10 @@ import { fetchAllProducts } from '../../../features/allProductsSlice';
 export const CategoryItems = () => {
   const dispatch = useAppDispatch();
 
-  const { products } = useAppSelector(
-    state => state.allProducts,
-  );
+  const { products } = useAppSelector(state => state.allProducts);
 
   const countItems = (category: string) => {
     return products.filter(item => item.category === category).length;
-
   };
 
   useEffect(() => {
@@ -27,7 +24,7 @@ export const CategoryItems = () => {
   const categoryHeader = `category__header theme-${theme}`;
   const categoryName = `category__name theme-${theme}`;
   const categoryQuantity = `category__quantity theme-${theme}`;
-  const catgoryImage = `category__img theme-${theme}`
+  const catgoryImage = `category__img theme-${theme}`;
 
   const BASE_ULR =
     'https://mate-academy.github.io/react_phone-catalog/_new/img/';
@@ -56,7 +53,9 @@ export const CategoryItems = () => {
             />
           </NavLink>
           <p className={categoryName}>Mobile phones</p>
-          <div className={categoryQuantity}>{countItems(Category.PHONES)} models</div>
+          <div className={categoryQuantity}>
+            {countItems(Category.PHONES)} models
+          </div>
         </div>
         <div
           className="category__block
@@ -72,7 +71,9 @@ export const CategoryItems = () => {
             />
           </NavLink>
           <p className={categoryName}>Tablets</p>
-          <div className={categoryQuantity}>{countItems(Category.TABLETS)} models</div>
+          <div className={categoryQuantity}>
+            {countItems(Category.TABLETS)} models
+          </div>
         </div>
         <div
           className="category__block
@@ -88,7 +89,9 @@ export const CategoryItems = () => {
             />
           </NavLink>
           <p className={categoryName}>Accessories</p>
-          <div className={categoryQuantity}>{countItems(Category.ACCESSORIES)} models</div>
+          <div className={categoryQuantity}>
+            {countItems(Category.ACCESSORIES)} models
+          </div>
         </div>
       </div>
     </div>
