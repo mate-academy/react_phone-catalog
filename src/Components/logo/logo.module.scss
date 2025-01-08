@@ -1,0 +1,59 @@
+@import '../styles/main';
+
+.logo {
+  &__navigation {
+    background-image: url('../../img/Logo.png');
+  background-repeat: no-repeat;
+  object-fit: cover;
+  background-size: 99%;
+  width: 64px;
+  height: 22px;
+  transform: scale(1);
+  transition: 0.3s ease-in transform;
+  cursor: pointer;
+  &:hover {
+    transform: scale(1.1);
+    transition: 0.3s ease-in transform;
+  }
+
+  @include on-desktop {
+    width: 80px;
+    height: 28px;
+  }
+  }
+  &__menu {
+    &ONDARK {
+      background-image: url('../../img/Logo.png');
+  background-repeat: no-repeat;
+  width: 64px;
+  height: 22px;
+  transform: scale(1);
+  transition: 0.3s ease-in transform;
+  cursor: pointer;
+  &:hover {
+    transform: scale(1.1);
+    transition: 0.3s ease-in transform;
+  }
+    }
+
+    background-image: url('../../img/Logo_menu.png');
+  background-repeat: no-repeat;
+  width: 64px;
+  height: 22px;
+  transform: scale(1);
+  transition: 0.3s ease-in transform;
+  cursor: pointer;
+  &:hover {
+    transform: scale(1.1);
+    transition: 0.3s ease-in transform;
+  }
+  }
+  &__footer {
+    background-image: url('../../img/Logo.png');
+    background-repeat: no-repeat;
+    background-size: 100%;
+    margin: 45px 0 0 40px;
+    width: 89px;
+    height: 32px;
+  }
+}

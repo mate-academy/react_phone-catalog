@@ -1,0 +1,179 @@
+@import '../styles/main';
+
+.pagination {
+  padding: 20px 8px;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--background-color);
+}
+
+  .arrow {
+    &__prev {
+      &ONDARK {
+        width: 40px;
+    height: 40px;
+    border-radius: 100%;
+    border: 1px solid var(--secondary-font-color);
+    z-index: 1;
+    background-color: black;
+    background-image: url('../../img/Arrow-left-hover.svg');
+    background-repeat: no-repeat;
+    background-size: 24px 24px;
+    background-position: 50%;
+    cursor: pointer;
+    margin-right: 0;
+      }
+
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+    border: 1px solid var(--secondary-font-color);
+    z-index: 1;
+    background-color: #dee9e9;
+    background-image: url('../../img/Arrow-left.svg');
+    background-repeat: no-repeat;
+    background-size: 24px 24px;
+    background-position: 50%;
+    cursor: pointer;
+    margin-right: 0;
+    &:hover {
+      background-color: var(--pagination-arrow);
+      background-image: url('../../img/Arrow-left-hover.svg');
+      background-size: 24px 24px;
+    }
+  }
+  &__next {
+    &ONDARK {
+      width: 40px;
+    height: 40px;
+    border-radius: 100%;
+    background-color: black;
+    border: 1px solid var(--secondary-font-color);
+    background-image: url('../../img/arrow-right-hover.svg');
+    background-repeat: no-repeat;
+    background-size: 24px 24px;
+    background-position: 50%;
+    cursor: pointer;
+    }
+    
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+    background-color: #dee9e9;
+    border: 1px solid #89939A;
+    background-image: url('../../img/arrow-right.svg');
+    background-repeat: no-repeat;
+    background-size: 24px 24px;
+    background-position: 50%;
+    cursor: pointer;
+    &:hover {
+      background-color: var(--pagination-arrow);
+      background-image: url('../../img/arrow-right-hover.svg');
+      background-size: 24px 24px;
+    }
+  }
+  &_to_first {
+    &ONDARK {
+      width: 40px;
+    height: 40px;
+    border-radius: 100%;
+    background-color: black;
+    border: 1px solid var(--secondary-font-color);
+    background-image: url('../../img/arrow-slide-to-first-hover.svg');
+    background-repeat: no-repeat;
+    background-size: 24px 24px;
+    background-position: 50%;
+    cursor: pointer;
+    }
+
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+    background-color: #dee9e9;
+    border: 1px solid #89939A;
+    background-image: url('../../img/arrow-slide-to-first.svg');
+    background-repeat: no-repeat;
+    background-size: 24px 24px;
+    background-position: 50%;
+    cursor: pointer;
+
+    &:hover {
+      background-color: var(--pagination-arrow);
+      background-image: url('../../img/arrow-slide-to-first-hover.svg');
+      background-size: 24px 24px;
+  }
+  }
+  &_to_last {
+    &ONDARK {
+      width: 40px;
+    height: 40px;
+    border-radius: 100%;
+    background-color: black;
+    border: 1px solid var(--secondary-font-color);
+    background-image: url('../../img/arrow-slide-to-last-hover.svg');
+    background-repeat: no-repeat;
+    background-size: 24px 24px;
+    background-position: 50%;
+    }
+
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+    background-color: #dee9e9;
+    border: 1px solid #89939A;
+    background-image: url('../../img/arrow-slide-to-last.svg');
+    background-repeat: no-repeat;
+    background-size: 24px 24px;
+    background-position: 50%;
+    cursor: pointer;
+    &:hover {
+      background-color: var(--pagination-arrow);
+      background-image: url('../../img/arrow-slide-to-last-hover.svg');
+      background-size: 24px 24px;
+  }
+}
+}
+
+  .arrows {
+    width: 293px;
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto -5px;
+
+    @include on-tablet {
+      margin: 30px auto 0;
+    }
+
+  }
+
+  .dots {
+    display: flex;
+    width: 136px;
+    overflow: hidden;
+    position: relative;
+    top: 5px;
+  }
+
+  .content {
+    display: flex;
+    gap: 5px;
+  }
+
+  .dot {
+    background-color: var(--background-color);
+    color: var(--primary-font-color);
+    width: 30px;
+    height: 30px;
+    border-radius: 100%;
+    border: 1px solid #89939A;
+    font-family: Mont, sans-serif;
+    cursor: pointer;
+    &:hover {
+      background-color: var(--pagination-arrow);
+      color: white;
+    }
+    &__active {
+      background-color: var(--pagination-arrow);
+      color: var(--primary-font-color);
+    }
+  }
