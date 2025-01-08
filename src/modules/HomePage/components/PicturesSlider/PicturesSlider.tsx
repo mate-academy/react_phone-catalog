@@ -71,14 +71,7 @@ export const PicturesSlider: React.FC = () => {
   return (
     <div className="picturesSlider">
       <div className="picturesSlider__container">
-        <div
-          className={
-            theme === 'light'
-              ? 'picturesSlider__button'
-              : 'picturesSlider__button picturesSlider__button--dark'
-          }
-          onClick={handlePrevButton}
-        >
+        <div className="picturesSlider__button" onClick={handlePrevButton}>
           {theme === 'light' ? (
             <Icon icon={iconsObject.arrow_left} />
           ) : (

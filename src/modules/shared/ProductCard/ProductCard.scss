@@ -16,7 +16,7 @@
   @include hover(border-color, var(--color-gray-primary));
 }
 
-.productCard-dark {
+body.theme_dark .productCard {
   border: none;
   background-color: var(--color-surface-1);
 }

@@ -129,7 +129,11 @@ export const Header: React.FC = () => {
         )}
         <div onClick={toggleMenu} className="header__icon header__icon--menu">
           {isMenuOpen ? (
-            <Icon icon={iconsObject.close} />
+            theme === 'light' ? (
+              <Icon icon={iconsObject.close} />
+            ) : (
+              <Icon icon={iconsObject.close_dark} />
+            )
           ) : theme === 'light' ? (
             <Icon icon={iconsObject.menu} />
           ) : (
@@ -146,27 +150,31 @@ export const Header: React.FC = () => {
 
         <div
           className={classNames('header__buttons-wrapper', {
-            'header__buttons-wrapper--buttom': isMenuOpen,
+            'header__buttons-wrapper--bottom': isMenuOpen,
           })}
         >
           <NavLink className={getActiveIcon} to="/favorites">
-            <span className="header__quantity">{totalFavorites}</span>
-            {theme === 'light' ? (
-              <Icon icon={iconsObject.favorites} />
-            ) : (
-              <Icon icon={iconsObject.favorites_dark} />
-            )}
+            <div className="header__icon-wrapper">
+              <span className="header__quantity">{totalFavorites}</span>
+              {theme === 'light' ? (
+                <Icon icon={iconsObject.favorites} />
+              ) : (
+                <Icon icon={iconsObject.favorites_dark} />
+              )}
+            </div>
           </NavLink>
 
           <NavLink className={getActiveIcon} to="/cart">
-            {theme === 'light' ? (
-              <Icon icon={iconsObject.shopping_cart} />
-            ) : (
-              <Icon icon={iconsObject.shopping_cart_dark} />
-            )}
-            {totalQuantity > 0 && (
-              <span className="header__quantity">{totalQuantity}</span>
-            )}
+            <div className="header__icon-wrapper">
+              {theme === 'light' ? (
+                <Icon icon={iconsObject.shopping_cart} />
+              ) : (
+                <Icon icon={iconsObject.shopping_cart_dark} />
+              )}
+              {totalQuantity > 0 && (
+                <span className="header__quantity">{totalQuantity}</span>
+              )}
+            </div>
           </NavLink>
         </div>
       </div>

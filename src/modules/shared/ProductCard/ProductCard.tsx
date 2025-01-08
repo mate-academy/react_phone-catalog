@@ -20,8 +20,7 @@ export const ProductCard: React.FC<Props> = ({ product, displayType }) => {
   const isFavorites = favorites.some(item => item.itemId === product.itemId);
 
   return (
-    // <div className="productCard">
-    <div className={theme === 'light' ? 'productCard' : 'productCard productCard-dark'}>
+    <div className="productCard">
       <Link
         className="productCard__activeClick"
         to={`/${product.category}/${product.itemId}`}

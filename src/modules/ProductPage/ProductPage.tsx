@@ -9,6 +9,7 @@ import { ProductsList } from '../shared/ProductsList';
 import { Loader } from '../shared/Loader';
 import { Product } from '../../types/Product';
 import { getSearchWith } from '../../utils/searchHelper';
+import { getAllProducts } from '../../utils/productApi';
 
 export type SearchParams = {
   [key: string]: string | string[] | null;
@@ -43,9 +44,12 @@ type Props = {
 };
 
 export const ProductPage: React.FC<Props> = ({ category }) => {
-  const { allProducts } = useContext(GlobalContext);
+  // const { allProducts } = useContext(GlobalContext);
 
-  const [isLoading, setIsLoading] = useState(false);
+  const [allProducts, setAllProducts] = useState<Product[]>([]);
+
+  // const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [searchParams, setSearchParams] = useSearchParams();
 
@@ -97,24 +101,41 @@ export const ProductPage: React.FC<Props> = ({ category }) => {
       ? visibleProducts
       : visibleProducts.slice(startIndex, startIndex + +itemsPerPage);
 
+  // useEffect(() => {
+  //   setIsLoading(true);
+  //   setError(null);
+
+  //   const timer = setTimeout(() => {
+  //     try {
+  //       if (!allProducts || allProducts.length === 0) {
+  //         throw new Error('Failed to load products');
+  //       }
+  //     } catch (err) {
+  //       setError(err.message);
+  //     } finally {
+  //       setIsLoading(false);
+  //     }
+  //   }, 1000);
+
+  //   return () => clearTimeout(timer);
+  // }, [category, allProducts]);
+
   useEffect(() => {
     setIsLoading(true);
-    setError(null);
 
-    const timer = setTimeout(() => {
-      try {
-        if (!allProducts || allProducts.length === 0) {
-          throw new Error('Failed to load products');
-        }
-      } catch (err) {
-        setError(err.message);
-      } finally {
-        setIsLoading(false);
-      }
-    }, 1000);
+    getAllProducts()
+      .then(fetchedProducts => {
+        const filteredProducts = fetchedProducts.filter(
+          product => product.category === category,
+        );
 
-    return () => clearTimeout(timer);
-  }, [category, allProducts]);
+        setAllProducts(filteredProducts);
+      })
+      .catch(() => {
+        setError('Failed to load products');
+      })
+      .finally(() => setIsLoading(false));
+  }, [category]);
 
   return (
     <div className="productPage">
