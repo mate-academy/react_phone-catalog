@@ -1,0 +1,66 @@
+@use '../../../fonts.scss';
+@import '../../../utils/variables.scss';
+@import '../../..//utils/mixins.scss';
+
+.category_container {
+  display: flex;
+  gap: 32px;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  @include pageGrid;
+
+  @include onTablet {
+    flex-direction: row;
+    gap: 15px;
+  }
+
+  @include onDesktop {
+    gap: 16px;
+  }
+}
+
+.title {
+  padding-bottom: 24px;
+  padding-top: 56px;
+}
+
+.tablets,
+.accessories,
+.mobile {
+  &_wrapper {
+    grid-column: 1 / -1;
+    @include hover(transform, scale(1.03));
+
+    @include onTablet {
+      grid-column: span 4;
+    }
+
+    @include onDesktop {
+      grid-column: span 8;
+    }
+  }
+
+  &_img {
+    width: 100%;
+
+  }
+
+  &_name {
+    padding-top: 24px;
+    padding-bottom: 4px;
+    font-family: Mont, sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 25.56px;
+    color: $main-text-color;
+  }
+
+  &_description {
+    font-family: Mont, sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 21px;
+    color: $second-text-color;
+  }
+}
