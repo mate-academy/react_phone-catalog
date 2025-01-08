@@ -1,0 +1,94 @@
+@import '../../styles/main';
+
+.pagination {
+  width: 100%;
+  height: 32px;
+  display: flex;
+  justify-content: center;
+  flex-flow: row wrap;
+  margin-top: 24px;
+
+  @include on-tablet {
+    margin-top: 40px;
+  }
+
+  &__button {
+    display: flex;
+    width: 32px;
+    height: 32px;
+    border: 1px solid var(--pagination-btn-border);
+    border-style: none;
+    background-color: var(--pagination-btn-bg);
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+
+    &:hover {
+      border-color: var(--pagination-btn-border-hover);
+      background-color: var(--pagination-btn-bg-hover);
+    }
+
+    &-right {
+      &--disable {
+        pointer-events: none;
+        opacity: 0.5;
+      }
+    }
+
+    &-left {
+      &--disable {
+        pointer-events: none;
+        opacity: 0.5;
+      }
+    }
+
+    &-imgLeft {
+      transform: rotate(180deg);
+    }
+
+    &-imgRight {
+      &--disable {
+        transform: rotate(180deg);
+      }
+    }
+  }
+
+  &__block {
+    width: 152px;
+    margin-inline: 16px;
+    overflow: hidden;
+  }
+
+  &__list {
+    display: flex;
+    max-width: 184px;
+    gap: 8px;
+  }
+
+  &__item {
+    font-family: Mont, sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 21px;
+    flex-shrink: 0;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid var(--pagination-item-border);
+    color: var(--pagination-item);
+    cursor: pointer;
+
+    &:hover {
+      border-color: var(--pagination-item-border-hover);
+      background-color: var(--pagination-item-bg-hover);
+    }
+
+    &--active {
+      background-color: var(--pagination-item-bg-active);
+      color: $whiteColor;
+      pointer-events: none;
+    }
+  }
+}
