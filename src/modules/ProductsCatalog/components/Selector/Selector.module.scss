@@ -1,0 +1,95 @@
+@import '../../../../styles/utils';
+
+.selector {
+  &__title {
+    color: var(--secondary);
+    margin-bottom: 4px;
+
+    @include small-text;
+  }
+
+  &__dropdown {
+    position: relative;
+    width: 100%;
+  }
+
+  &__btn {
+    width: 100%;
+    height: 40px;
+    border-radius: 8px;
+    border: 1px solid var(--icon-secondary);
+    padding-inline: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    background-color: inherit;
+
+    &:hover {
+      border-color: var(--secondary);
+    }
+
+    &:focus {
+      border-color: var(--primary);
+      outline: none;
+    }
+  }
+
+  &__text {
+    font-weight: 700;
+    color: var(--primary);
+  }
+
+  &__icon {
+    width: 16px;
+    height: 16px;
+    transform: rotate(180deg);
+
+    svg {
+      fill: var(--icon-secondary);
+    }
+  }
+
+  &__menu {
+    width: 100%;
+    display: none;
+    position: absolute;
+    z-index: 2;
+    padding-top: 4px;
+    
+    &--active {
+      display: block;
+    }
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    border-radius: 8px;
+    border: 1px solid var(--elements);
+    background-color: var(--bg-secondary);
+  }
+
+  &__item {
+    text-align: start;
+    line-height: 32px;
+    cursor: pointer;
+    font-weight: 600;
+    color: var(--secondary);
+    padding-inline: 12px;
+    background-color: inherit;
+    border: none;
+
+    &:hover,
+    &:focus,
+    &--active {
+      background-color: var(--hover-bg);
+      border-radius: 8px;
+      color: var(--primary);
+    }
+
+    &--active {
+      cursor: default;
+    }
+  }
+}
