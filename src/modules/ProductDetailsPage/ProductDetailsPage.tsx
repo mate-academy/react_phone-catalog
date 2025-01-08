@@ -29,32 +29,34 @@ export const ProductDetailsPage: React.FC = () => {
     setIsLoading(true);
     setError('');
 
-    const timeout = setTimeout(() => {
-      getSpecificProducts(currentCategory)
-        .then(fetchedSpecificProducts => {
-          setProductsArray(fetchedSpecificProducts);
+    // const timeout = setTimeout(() => {
+    getSpecificProducts(currentCategory)
+      .then(fetchedSpecificProducts => {
+        setProductsArray(fetchedSpecificProducts);
 
-          const currentProduct = fetchedSpecificProducts.find(
-            prod => prod.id === productItemId,
-          );
+        const currentProduct = fetchedSpecificProducts.find(
+          prod => prod.id === productItemId,
+        );
 
-          if (currentProduct) {
-            setProduct(currentProduct);
-            setError('');
-          } else {
-            setProduct(null);
-            setError('Продукт не найден');
-          }
-        })
-        .catch(er => {
-          setError(`Ошибка загрузки продуктов: Категории продуктов "${currentCategory}" не существует. ${er.message}`);
-        })
-        .finally(() => {
-          setIsLoading(false);
-        });
-    }, 1000);
+        if (currentProduct) {
+          setProduct(currentProduct);
+          setError('');
+        } else {
+          setProduct(null);
+          setError('Продукт не найден');
+        }
+      })
+      .catch(er => {
+        setError(`
+          Ошибка загрузки продуктов: Категории продуктов "${currentCategory}" не существует. ${er.message}
+          `);
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
+    // }, 500);
 
-    return () => clearTimeout(timeout);
+    // return () => clearTimeout(timeout);
   }, [currentCategory]);
 
   useEffect(() => {
@@ -72,6 +74,37 @@ export const ProductDetailsPage: React.FC = () => {
       setError('Продукт не найден');
     }
   }, [productItemId, productsArray]);
+
+  // useEffect(() => {
+  //   setIsLoading(true);
+  //   setError('');
+
+  //   getSpecificProducts(currentCategory)
+  //     .then(fetchedSpecificProducts => {
+  //       setProductsArray(fetchedSpecificProducts);
+
+  //       const currentProduct = fetchedSpecificProducts.find(
+  //         prod => prod.id === productItemId,
+  //       );
+
+  //       if (currentProduct) {
+  //         setProduct(currentProduct);
+  //         setError('');
+  //       } else {
+  //         setProduct(null);
+  //         setError('Продукт не найден');
+  //       }
+  //     })
+  //     .catch(er => {
+  //       setError(
+  //         `Ошибка загрузки продуктов: Категории продуктов "${currentCategory}" не существует. ${er.message}`,
+  //       );
+  //       setProduct(null);
+  //     })
+  //     .finally(() => {
+  //       setIsLoading(false);
+  //     });
+  // }, [currentCategory, productItemId]);
 
   const suggestedProducts = allProducts
     .filter(
