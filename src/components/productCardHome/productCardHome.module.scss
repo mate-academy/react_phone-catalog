@@ -1,0 +1,255 @@
+@import '../../styles/main';
+
+* {
+  box-sizing: border-box;
+}
+
+.phones {
+  box-sizing: border-box;
+  margin-top: 24px;
+  min-height: 100vh;
+  width: 1200px;
+
+  &_home {
+    display: block;
+    width: 16px;
+    height: 16px;
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    background-image: url(/public/img/littleImages/Home.svg);
+    background-size: cover;
+  }
+
+  &_nav {
+    display: flex;
+  }
+
+  &_title {
+    text-transform: capitalize;
+    margin-top: 24px;
+
+    font-size: 32px;
+    font-weight: 800;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+  }
+
+  &_models {
+    margin-top: 8px;
+    color: #89939a;
+  }
+
+  &_cart {
+    &:hover {
+      box-shadow: 0 2px 15px 0 rgba(0, 0, 0, 0.1);
+    }
+
+    transition: all #{$animation};
+    width: 212px;
+    height: 440px;
+    border: 1px solid $main-page-color;
+    padding: 32px;
+    display: flex;
+    margin-bottom: 40px;
+    flex-flow: column nowrap;
+
+    @include on-tablet {
+      height: 512px;
+      width: 237px;
+    }
+
+    @include on-desktop {
+      width: 272px;
+      height: 506px;
+    }
+  }
+
+  &_list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+
+    @include on-tablet {
+      flex-flow: row wrap;
+      gap: 16px;
+      justify-content: center;
+    }
+  }
+
+  &_img {
+    transition: all #{$animation};
+    display: block;
+    object-fit: contain;
+    width: 148px;
+    height: 129px;
+    margin-left: auto;
+    margin-right: auto;
+
+    &:hover {
+      transform: scale(1.1);
+      cursor: pointer;
+    }
+
+    @include on-tablet {
+      min-width: 173px;
+      min-height: 181px;
+    }
+
+    @include on-desktop {
+      min-width: 208px;
+      min-height: 196px;
+    }
+  }
+
+  &_priceD {
+    font-size: 22px;
+    font-weight: 800;
+    line-height: 30.8px;
+
+    color: #313237;
+  }
+
+  &_priceR {
+    margin-left: 8px;
+    font-size: 22px;
+    font-weight: 600;
+    line-height: 28.12px;
+
+    color: #89939a;
+    text-decoration: line-through;
+  }
+
+  &_priceC {
+    padding-bottom: 16px;
+    border-bottom: 1px solid #e2e6e9;
+  }
+
+  &_screen {
+    margin-top: 16px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &_capacity {
+    margin-top: 8px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &_ram {
+    margin-top: 8px;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 16px;
+  }
+
+  &_buttonBuy {
+    transition: all $animation;
+    width: 100px;
+    background-color: #313237;
+
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 21px;
+    height: 40px;
+
+    color: #fff;
+    padding: 0;
+    margin: 0;
+    border: none;
+
+    &:hover {
+      background-color: #fff;
+      border: 1px solid #e2e6e9;
+      color: #313237;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    @include on-tablet {
+      width: 176px;
+    }
+
+    @include on-desktop {
+      width: 160px;
+    }
+  }
+
+  &_favor {
+    transition: all $animation;
+    box-sizing: border-box;
+    width: 40px;
+    height: 40px;
+    margin: 0;
+    padding: 0;
+    border-radius: 0;
+    border: 1px solid #b4bdc3;
+    background-color: #fff;
+
+    &:hover {
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    &_icon {
+      background-image: url(/public/img/littleImages/Favourites-header.svg);
+      background-size: cover;
+      display: block;
+      width: 16px;
+      height: 16px;
+
+      border: none;
+      padding: 0;
+      margin: 0;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+
+  &_buttonDiv {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &_name {
+    margin-top: 16px;
+    min-height: 44px;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 21px;
+    color: #313237;
+  }
+}
+
+.content {
+  display: flex;
+  justify-content: center;
+}
+
+.filled_heart {
+  background-image: url(/public/img/littleImages/Favourites_Filled.svg);
+  background-size: cover;
+  display: block;
+  width: 16px;
+  height: 16px;
+  border: none;
+  padding: 0;
+  margin: 0;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.buyed {
+  background-color: #fff;
+  color: #27ae60;
+  border: 1px solid #e2e6e9;
+}
+
+.loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 25vh;
+}
