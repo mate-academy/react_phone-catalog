@@ -126,13 +126,15 @@
 // burger menu
 
 .menu {
+  position: fixed;
+  top: 0;
+  left: 0;
   padding-top: 24px;
-  margin-left: -16px;
-  position: absolute;
 
   transform: translateX(100%);
   transition: transform $transition;
   z-index: 999;
+
 
   &.true {
     top: 49px;
@@ -144,7 +146,6 @@
 
     width: 100%;
     height: 93vh;
-    flex-grow: 1;
 
     background-color: $white-color;
     transform: translateX(0%);

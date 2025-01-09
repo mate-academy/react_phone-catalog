@@ -20,7 +20,12 @@ export const Footer = () => {
 
           <ul className={s.FooterList}>
             <li className={s.FooterItem}>
-              <a href="https://github.com/tonni004" className={s.FooterLink}>
+              <a
+                href="https://github.com/tonni004"
+                className={s.FooterLink}
+                target="_blank"
+                rel="noreferrer"
+              >
                 Github
               </a>
             </li>
@@ -29,6 +34,8 @@ export const Footer = () => {
               <a
                 href="https://www.linkedin.com/in/tanya-baletska-06377828a/"
                 className={s.FooterLink}
+                target="_blank"
+                rel="noreferrer"
               >
                 Contacts
               </a>
@@ -38,6 +45,8 @@ export const Footer = () => {
               <a
                 href="https://portfolio-tonni004.netlify.app/"
                 className={s.FooterLink}
+                target="_blank"
+                rel="noreferrer"
               >
                 Rights
               </a>

@@ -27,7 +27,9 @@ export const IconItem: React.FC<Props> = ({
       >
         <div className={s.NotifictionField}>
           <img src={icon} alt="icon" className={s['icons__item--image']} />
-          <div className={s.Notifiction}>{notification}</div>
+          {notification > 0 && (
+            <div className={s.Notifiction}>{notification}</div>
+          )}
         </div>
       </NavLink>
     </li>
