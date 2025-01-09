@@ -1,0 +1,58 @@
+@import '../../../styles/main.scss';
+
+.category {
+  &__container {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  &__items {
+    display: grid;
+    grid-template-columns: 1fr;
+    column-gap: 16px;
+    row-gap: 32px;
+
+    @include on-tablet {
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+  }
+
+  &__item {
+    &-link {
+      display: flex;
+    }
+
+    &-wrapper {
+      overflow: hidden;
+      position: relative;
+      padding-top: 100%;
+      width: 100%;
+      transition: all 0.3s;
+    }
+
+    &--img {
+      object-position: left bottom;
+      position: absolute;
+      bottom: -15%;
+      right: -25%;
+
+      object-fit: cover;
+      width: 100%;
+      height: 100%;
+      transition: all 0.3s;
+
+      &:hover {
+        transform: scale(1.1);
+      }
+    }
+  }
+
+  &__info {
+    margin-top: 24px;
+
+    &--subtitle {
+      margin-top: 4px;
+    }
+  }
+}
