@@ -26,9 +26,10 @@ const HomePage = () => {
     .sort((a, b) => b.year - a.year)
     .slice(0, 30);
 
-    useEffect(() => {
-      window.scrollTo(0, 0);
-    }, [])
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <div className={styles.main}>
       <h1 style={{ visibility: 'hidden', position: 'absolute', zIndex: -1 }}>

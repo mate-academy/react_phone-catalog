@@ -37,6 +37,12 @@
 
   &__item{
     font-weight: 800;
+    border-bottom: 2px solid transparent;
+    transition: border-color 0.3s ease 0s;
+
+    &:hover{
+      border-color: $secondary-color;
+    }
   }
 
   &__back{
@@ -48,6 +54,14 @@
 
     @include small-text;
     @include center;
+
+    span:first-child{
+      border-bottom: 2px solid transparent;
+      transition: border-color 0.3s ease 0s;
+    }
+    &:hover span{
+      border-color: $secondary-color;
+    }
   }
 
   &__arrow{
