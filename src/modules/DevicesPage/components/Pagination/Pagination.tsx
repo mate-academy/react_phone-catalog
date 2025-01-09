@@ -3,6 +3,7 @@ import styles from './Pagination.module.scss';
 import classNames from 'classnames';
 import { useProducts } from '../../../shared/context/productsContext';
 import { useSearchParams } from 'react-router-dom';
+import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
 
 const Pagination = memo(() => {
   const { products } = useProducts();
@@ -97,7 +98,7 @@ const Pagination = memo(() => {
         disabled={activePage === 1}
         className={classNames(styles.pagination__button)}
       >
-        <span className="icon-arrow"></span>
+        <IoIosArrowBack/>
       </button>
       <div className={styles.pagination__items}>
         {pages.length > 5 ? (
@@ -139,7 +140,7 @@ const Pagination = memo(() => {
         disabled={+activePage === pages[pages.length - 1]}
         className={classNames(styles.pagination__button)}
       >
-        <span className="icon-arrow-right"></span>
+        <IoIosArrowForward/>
       </button>
     </div>
   );
