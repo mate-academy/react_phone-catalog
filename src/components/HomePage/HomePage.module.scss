@@ -1,0 +1,58 @@
+@import '../../utils/mixins';
+@import '../../utils/vars';
+
+.generalHomePage {
+  display: flex;
+  flex-direction: column;
+  gap: 56px;
+
+  @include content-padding-inline;
+
+  @include on-tablet {
+    margin: 32px 0 96px;
+  }
+
+  @include on-desktop {
+    gap: 80px;
+    margin: 56px 0 112px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+.greeting {
+
+  &__title {
+    font-size: 32px;
+    margin-bottom: 24px;
+
+    @include on-tablet {
+      font-size: 48px;
+      margin-bottom: 32px;
+    }
+
+    @include on-desktop {
+      margin-bottom: 56px
+    }
+  }
+}
+
+.category {
+  &_title {
+    font-size: 22px;
+    margin-bottom: 24px;
+
+    @include on-tablet {
+      font-size: 32px;
+    }
+  }
+
+  &_blocks {
+    @include page-grid;
+
+  }
+}
+
+.hotPrices {
+  font-size: 22px;
+}
