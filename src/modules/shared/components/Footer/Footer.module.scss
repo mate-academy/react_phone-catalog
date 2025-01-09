@@ -53,19 +53,20 @@
     cursor: pointer;
 
     @include small-text;
-    @include center;
+  }
 
-    span:first-child{
-      border-bottom: 2px solid transparent;
-      transition: border-color 0.3s ease 0s;
-    }
-    &:hover span{
+  &__backText{
+    display: inline-block;
+    border-bottom: 2px solid transparent;
+    margin-right: 16px;
+    transition: border-color 0.3s ease 0s;
+
+    &:hover span:first-child{
       border-color: $secondary-color;
     }
   }
 
   &__arrow{
-    display: block;
     width: 32px;
     height: 32px;
     border-radius: 50%;
@@ -76,6 +77,8 @@
     transition: all 0.3s ease 0s;
 
     @include center;
+    
+    display: inline-flex;
   }
 }
 

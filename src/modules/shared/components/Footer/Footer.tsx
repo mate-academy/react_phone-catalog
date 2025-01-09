@@ -23,7 +23,7 @@ const Footer: React.FC<Props> = ({ scroleToHeader }) => {
         </li>
       </ul>
       <div className={st.footer__back} onClick={scroleToHeader}>
-        <span>Back to top</span>
+        <span className={st.footer__backText}>Back to top</span>
         <span className={st.footer__arrow}>
           <IoIosArrowUp />
         </span>
