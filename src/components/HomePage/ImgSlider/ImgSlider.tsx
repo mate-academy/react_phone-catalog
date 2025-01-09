@@ -7,7 +7,6 @@ import {
   ArrowButtonDirection,
   ArrowButtonOrigin,
 } from '../ArrowButton';
-// eslint-disable-next-line import/no-extraneous-dependencies
 import { useSwipeable } from 'react-swipeable';
 import { useWidthRecalculate } from '../../../app/hooks';
 
@@ -15,8 +14,9 @@ const dotsIds = [0, 1, 2];
 
 export const ImgSlider: React.FC = () => {
   const [shownSlide, setShownSlide] = useState(0); // 0 | 1 | 2
-  const [slideWidth, setSlideWidth] = useState(0); // w in px
+
   const sliderRef = useRef<HTMLOListElement>(null);
+  const [slideWidth] = useWidthRecalculate(sliderRef);
 
   //#region swiping
   function swipeLeft() {
@@ -45,8 +45,6 @@ export const ImgSlider: React.FC = () => {
 
   //#region effects
   // from app/hooks
-  useWidthRecalculate(sliderRef, setSlideWidth);
-
   useEffect(() => {
     const intervalId = setInterval(() => {
       setShownSlide(prevSlide => (prevSlide + 1) % 3);
@@ -89,11 +87,11 @@ export const ImgSlider: React.FC = () => {
 
           <li className={cl.sliderItem} style={animSlideStyles}>
             <Link
-              to="#"
+              to="https://www.linkedin.com/"
               className={`${cl.sliderLinkWrapper} ${cl.sliderLinkWrapper__3}`}
               style={linkWidthStyle}
             >
-              <p className={cl.sliderLinkWrapper__3__text3}>Contact us!</p>
+              <p className={cl.sliderLinkWrapper__3__text3}>Contact me!</p>
             </Link>
           </li>
         </ol>

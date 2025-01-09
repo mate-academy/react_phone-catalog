@@ -10,6 +10,14 @@
       max-width: 100%;
     }
   }
+
+  &__footer {
+    border-top: $classic-border;
+
+    @include on-desktop {
+      max-width: 100%;
+    }
+  }
 }
 
 .outlet-container {

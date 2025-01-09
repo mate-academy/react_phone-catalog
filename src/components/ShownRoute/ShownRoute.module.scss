@@ -1,0 +1,61 @@
+@import '../../styles/utils/vars.scss';
+@import '../../styles/utils/mixins.scss';
+
+.routeContainer {
+  display: flex;
+  gap: 8px;
+}
+
+.button {
+  background-color: transparent;
+  height: $icon-size;
+}
+
+.icon {
+  width: $icon-size;
+  height: $icon-size;
+
+  &Home {
+    background-image: url('/img/icons/Home.svg');
+  }
+
+  &ArrowRight {
+    background-image: url('/img/icons/ArrowRightDisabled.svg');
+  }
+
+  &ArrowLeft {
+    //goBack button, that's why styles are different
+    cursor: pointer;
+    background-image: url('/img/icons/ArrowLeft.svg');
+    background-position: center;
+    @include hover(transform, scale(1.2));
+  }
+}
+
+.linkHome {
+  display: block;
+  height: $icon-size;
+  width: fit-content;
+  padding: 4px; // to add clickable space
+  margin: -4px; // to compensate paddings so it would be aligned with other content
+  @include hover(transform, scale(1.2));
+}
+
+.word {
+  color: $second-txt-col;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 1.6;
+
+  &Link {
+    text-decoration: none;
+    @include underline-on-hover($second-txt-col);
+
+    &White {
+      cursor: pointer;
+      background-color: transparent;
+      color: $main-txt-col;
+      @include underline-on-hover($main-txt-col);
+    }
+  }
+}

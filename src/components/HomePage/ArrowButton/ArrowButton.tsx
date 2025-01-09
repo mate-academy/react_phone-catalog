@@ -17,6 +17,7 @@ type Props = {
   onClick: () => void;
   origin: ArrowButtonOrigin;
   disabled?: boolean;
+  className?: string;
 };
 
 export const ArrowButton: React.FC<Props> = ({
@@ -24,12 +25,15 @@ export const ArrowButton: React.FC<Props> = ({
   onClick = () => {},
   origin,
   disabled = false,
+  className,
 }) => {
   return (
     <button
-      className={cn(cl.arrowButton, {
+      className={cn(cl.arrowButton, className, {
         [cl.buttonOnSlider]: origin === ArrowButtonOrigin.ONSLIDER,
-        [cl.buttonOnList]: origin === ArrowButtonOrigin.ONLIST,
+        [cl.buttonOnList]:
+          origin === ArrowButtonOrigin.ONLIST ||
+          origin === ArrowButtonOrigin.ONFOOTER,
         [cl.disabled]: disabled,
       })}
       onClick={onClick}

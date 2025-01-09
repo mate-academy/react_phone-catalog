@@ -1,34 +1,68 @@
-import React, { useEffect } from 'react';
+import React, { useMemo } from 'react';
 import cl from './HomePage.module.scss';
 import { ImgSlider } from './ImgSlider';
 import { SlidingProdList, SlidingProdListOrigin } from './SlidingProdList';
 import { Categories } from './Categories';
-import {
-  useAppDispatch,
-  useAppSelector,
-  useComponentLoading,
-} from '../../app/hooks';
-import { initProducts } from '../../features/productSlice';
+import { useAppSelector, useComponentLoading } from '../../app/hooks';
 import { Loader } from '../Loader';
 import { PageTitle } from '../titles/PageTitle';
 
 export const HomePage: React.FC = () => {
-  // from app/hooks, simulates loading with 500ms delay
-  const isLoading = useComponentLoading(500);
+  // from app/hooks, simulates loading with 300ms delay
+  const isLoading = useComponentLoading(300);
 
-  const dispatch = useAppDispatch();
   const { productList } = useAppSelector(st => st.products);
 
-  useEffect(() => {
-    dispatch(initProducts());
-  }, [dispatch]);
+  // useMemo for optimization, array newModels will be calculated only once and will be saved between HomePage rerenders
+  const newModelsList = useMemo(() => {
+    const sortedList = [...productList].sort((p1, p2) => p2.year - p1.year);
 
-  const newModelsList = [...productList]
-    .sort((prod1, prod2) => prod2.year - prod1.year)
-    .slice(0, 12);
+    const newPhones = sortedList
+      .filter(prod => prod.category === 'phones')
+      .slice(0, 4);
+    const newTablets = sortedList
+      .filter(prod => prod.category === 'tablets')
+      .slice(0, 4);
+    const newAccessories = sortedList
+      .filter(prod => prod.category === 'accessories')
+      .slice(0, 4);
 
-  // instead of conditional rendering we can use visibility styles for Loader and Components.
-  // in that case component will render while Loader is shown(use this method to complex components)
+    const mergedArray = [];
+
+    for (let i = 0; i < 4; i++) {
+      mergedArray.push(newPhones[i], newTablets[i], newAccessories[i]);
+    }
+
+    return mergedArray;
+  }, [productList]);
+
+  const hotPricesList = useMemo(() => {
+    const sortedList = [...productList].sort((prod1, prod2) => {
+      const discount1 = 100 - Math.round((prod1.price / prod1.fullPrice) * 100);
+      const discount2 = 100 - Math.round((prod2.price / prod2.fullPrice) * 100);
+
+      return discount2 - discount1;
+    });
+
+    const hotPhones = sortedList
+      .filter(p => p.category === 'phones')
+      .slice(0, 4);
+    const hotTablets = sortedList
+      .filter(p => p.category === 'tablets')
+      .slice(0, 4);
+    const hotAccessories = sortedList
+      .filter(p => p.category === 'accessories')
+      .slice(0, 4);
+
+    const mergedArray = [];
+
+    for (let i = 0; i < 4; i++) {
+      mergedArray.push(hotPhones[i], hotTablets[i], hotAccessories[i]);
+    }
+
+    return mergedArray;
+  }, [productList]);
+
   return isLoading ? (
     <Loader />
   ) : (
@@ -37,20 +71,20 @@ export const HomePage: React.FC = () => {
       <section className={cl.homePageSlider}>
         <ImgSlider />
       </section>
-
       <section className={cl.homePageSection}>
         <SlidingProdList
           origin={SlidingProdListOrigin.BRANDNEWMODELS}
           list={newModelsList}
         />
       </section>
-
       <section className={cl.homePageSection}>
         <Categories />
       </section>
-
       <section className={cl.homePageSection}>
-        <h1>HOT PRICES</h1>
+        <SlidingProdList
+          origin={SlidingProdListOrigin.HOTPRICES}
+          list={hotPricesList}
+        />
       </section>
     </div>
   );

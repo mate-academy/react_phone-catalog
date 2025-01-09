@@ -1,14 +1,22 @@
+import { Link } from 'react-router-dom';
 import { Product } from '../../../features/types/Product';
 import cl from './ProductCard.module.scss';
 
-type Props = { product: Product };
+type Props = { product: Product; className?: string };
 
-export const ProductCard: React.FC<Props> = ({ product }) => {
+export const ProductCard: React.FC<Props> = ({ product, className }) => {
   return (
-    <article className={cl.cardContainer}>
-      <img src={product.image} alt={product.name} className={cl.img} />
+    <article className={`${cl.cardContainer} ${className}`}>
+      <Link to={`${product.category}/${product.id}`}>
+        <img src={product.image} alt={product.name} className={cl.img} />
+      </Link>
 
-      <h3 className={cl.title}>{product.name}</h3>
+      <Link
+        to={`${product.category}/${product.id}`}
+        style={{ textDecoration: 'none' }}
+      >
+        <h3 className={cl.title}>{product.name}</h3>
+      </Link>
 
       <div className={cl.priceContainer}>
         <p className={cl.priceContainer__price}>{`$${product.price}`}</p>

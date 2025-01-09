@@ -9,16 +9,16 @@ type Props = {
 export const CategoryCard: React.FC<Props> = ({ category }) => {
   return (
     <article className={cl.articleContainer}>
-      <Link to={category.link} className={cl.linkImg}>
-        <img
-          src={category.img}
-          alt={category.name}
-          className={cl.linkImg__img}
-        />
-      </Link>
+      <Link
+        to={category.link}
+        className={cl.linkImg}
+        style={{ backgroundImage: `url(${category.img})` }}
+      />
 
       <div className={cl.textContainer}>
-        <h3 className={cl.textContainer__title}>{category.name}</h3>
+        <Link to={category.link} className={cl.textContainer__link}>
+          <h3 className={cl.textContainer__title}>{category.name}</h3>
+        </Link>
         <p
           className={cl.textContainer__text}
         >{`${category.quantity} models`}</p>

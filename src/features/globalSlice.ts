@@ -3,21 +3,26 @@ import { createSlice } from '@reduxjs/toolkit';
 
 type GlobalState = {
   isMenuOpened: boolean;
+  screenWidth: number;
 };
 
 const initialState: GlobalState = {
   isMenuOpened: false,
+  screenWidth: window.innerWidth,
 };
 
 export const globalSlice = createSlice({
   name: 'global',
   initialState,
   reducers: {
-    setIsMenuOpened: (st, ac) => {
-      st.isMenuOpened = ac.payload;
+    setIsMenuOpened: (state, action) => {
+      state.isMenuOpened = action.payload;
+    },
+    setScreenWidth: (state, action) => {
+      state.screenWidth = action.payload;
     },
   },
 });
 
-export const { setIsMenuOpened } = globalSlice.actions;
+export const { setIsMenuOpened, setScreenWidth } = globalSlice.actions;
 export default globalSlice.reducer;

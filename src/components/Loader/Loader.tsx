@@ -1,7 +1,11 @@
 import './Loader.scss';
 
-export const Loader = () => (
-  <div className="Loader" data-cy="Loader">
+type Props = {
+  style?: React.CSSProperties;
+};
+
+export const Loader: React.FC<Props> = ({ style }) => (
+  <div className="Loader" data-cy="Loader" style={style}>
     <div className="Loader__content" />
   </div>
 );

@@ -1,0 +1,77 @@
+@import '../../../styles/utils/mixins.scss';
+@import '../../../styles/utils/vars.scss';
+
+.customSelect {
+  --select-height: 40px;
+  --padding-inline: 12px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.label {
+  color: $second-txt-col;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 16px;
+}
+
+.select {
+  cursor: pointer;
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-inline: var(--padding-inline);
+  height: var(--select-height);
+  color: $main-txt-col;
+  background-color: $second-button-col;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 21px;
+
+  &__arrowDown {
+    width: $icon-size;
+    height: $icon-size;
+    background-image: url('/public/img/icons/ArrowDownDisabled.svg');
+    background-position: center;
+    transition: transform $animDuration;
+  }
+
+  &:hover &__arrowDown {
+    transform: rotate(180deg);
+  }
+
+  &__options {
+    position: absolute;
+    top: var(--select-height);
+    left: 0;
+    width: 100%;
+    border-top: none;
+    z-index: 99;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height $animDuration;
+
+    &Visible {
+      max-height: 300px;
+    }
+  }
+
+  &__option {
+    border-top: 1px solid #0f1121;
+    padding-inline: var(--padding-inline);
+    height: var(--select-height);
+    line-height: var(--select-height);
+    transition: background-color $animDuration;
+    background-color: $second-button-col;
+
+    &:hover {
+      background-color: $second-button-col-hover;
+    }
+    &Active {
+      background-color: $second-button-col-selected;
+    }
+  }
+}

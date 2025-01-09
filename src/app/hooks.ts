@@ -3,7 +3,6 @@
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
 import type { RootState, AppDispatch } from './store';
 import { RefObject, useEffect, useState } from 'react';
-import { debounce } from 'lodash';
 
 export const useAppDispatch = () => useDispatch<AppDispatch>();
 export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
@@ -11,30 +10,24 @@ export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
 // recalculates HTML element width every time window width changes, needed in sliding animation components
 export const useWidthRecalculate = (
   /* when you use this hook in component you should create there
-  ref for item and state [width, setWidth] in that component and pass
-  those values to this hook */
+  ref for item whose width you'd like to recalculate
+  syntax: const [w, setW] = useWidthRecalculate(itemRef) */
   item: RefObject<HTMLElement>,
-  setItemWidth: (...args: any) => void,
 ) => {
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  const { screenWidth } = useAppSelector(st => st.global);
+  const [itemWidth, setItemWidth] = useState(0);
 
   useEffect(() => {
     if (item.current) {
       setItemWidth(item.current.getBoundingClientRect().width);
     }
-  }, [windowWidth]);
+  }, [screenWidth]);
 
-  useEffect(() => {
-    const handleResize = debounce(() => {
-      setWindowWidth(window.innerWidth);
-    }, 200);
-
-    window.addEventListener('resize', handleResize);
-
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
-  }, []);
+  // we show TS what item in tuple has which type
+  return [itemWidth, setItemWidth] as [
+    number,
+    React.Dispatch<React.SetStateAction<number>>,
+  ];
 };
 
 // for loading simulation when you change pages

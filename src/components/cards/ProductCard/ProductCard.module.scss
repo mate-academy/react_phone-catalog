@@ -2,7 +2,8 @@
 @import '../../../styles/utils/vars.scss';
 
 .cardContainer {
-  width: fit-content;
+  min-width: fit-content;
+  max-width: 100%;
   background-color: $card-background-col;
   padding: 32px;
   display: flex;
@@ -11,11 +12,13 @@
 }
 
 .img {
+  @include hover(transform, scale(1.1));
+  min-width: 100%;
+  margin: 0 auto;
   box-sizing: border-box;
   object-fit: contain;
-  overflow: hidden;
   width: 150px;
-  height: 130px;
+  height: 220px;
   @include on-tablet {
     width: 173px;
     height: 202px;
@@ -32,6 +35,16 @@
   font-weight: 600;
   font-size: 14px;
   line-height: 21px;
+  @include underline-on-hover($main-txt-col);
+
+  min-height: 70px; // to make titles in all cards the same regarding how many words it contains
+
+  @include on-tablet {
+    min-height: 45px;
+  }
+  @include on-desktop {
+    min-height: 60px;
+  }
 }
 
 .priceContainer {

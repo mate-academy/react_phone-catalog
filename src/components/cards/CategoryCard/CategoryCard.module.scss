@@ -1,9 +1,43 @@
+@import '../../../styles/utils/mixins.scss';
+@import '../../../styles/utils/vars.scss';
+
 .articleContainer {
   display: flex;
   flex-direction: column;
   gap: 24px;
 }
 
+.linkImg {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  background-size: cover;
+  background-color: $card-background-col;
+  background-position: top left;
+  background-repeat: no-repeat;
+  @include hover(transform, scale(1.04));
+}
+
 .textContainer {
   gap: 6px;
+  &__link {
+    display: block;
+    width: fit-content;
+    text-decoration: none;
+    @include underline-on-hover($main-txt-col);
+  }
+
+  &__title {
+    width: fit-content;
+    color: $main-txt-col;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 26px;
+  }
+  &__text {
+    color: $second-txt-col;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+  }
 }

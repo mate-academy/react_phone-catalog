@@ -21,7 +21,6 @@ type Props = {
 };
 
 export const SlidingProdList: React.FC<Props> = ({ origin, list }) => {
-  const [cardWidth, setCardWidth] = useState(0);
   // for buttons disabling
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(true);
@@ -29,7 +28,7 @@ export const SlidingProdList: React.FC<Props> = ({ origin, list }) => {
   const listRef = useRef<HTMLUListElement>(null);
 
   // from app/hooks
-  useWidthRecalculate(cardRef, setCardWidth);
+  const [cardWidth] = useWidthRecalculate(cardRef);
 
   useEffect(() => {
     const container = listRef.current;

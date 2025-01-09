@@ -49,3 +49,29 @@
     --columns: 24;
   }
 }
+
+@mixin underline-on-hover($color: $main-txt-col) {
+  position: relative;
+
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 1px;
+    background-color: $color;
+    transition: width $animDuration ease-in-out;
+    width: 0;
+  }
+
+  &:hover::after {
+    width: 100%;
+  }
+}
+
+// @mixin grey-text {
+//   color: $second-txt-col;
+//   font-weight: 600;
+//   font-size: 14px;
+//   line-height: 21px;
+// }

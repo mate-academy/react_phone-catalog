@@ -137,7 +137,7 @@
     position: relative;
     background-position: top;
     background-image: url('/img/slider/slider-3.jpg');
-    @include on-desktop {
+    @include on-tablet {
       background-image: url('/img/slider/slider-3-desk.jpg');
     }
 

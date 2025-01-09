@@ -1,10 +1,10 @@
-import { Link } from 'react-router-dom';
 import cn from 'classnames';
 
 import { Icon, IconOrigin, IconType } from '../Icon';
 import { Navigation, NavOrigin } from '../Navigation';
 import cl from './Header.module.scss';
 import { useAppSelector } from '../../../app/hooks';
+import { Logo } from '../../Logo';
 
 export enum HeaderOrigin {
   ONPAGE = 'onPage',
@@ -18,13 +18,11 @@ type Props = {
 export const Header: React.FC<Props> = ({ origin }) => {
   const { isMenuOpened } = useAppSelector(st => st.global);
 
-  if (origin === 'onMenu') {
+  if (origin === HeaderOrigin.ONMENU) {
     return (
       <div className="container container__header">
         <header className={cl.header}>
-          <div className={cl.header__logoWrapper}>
-            <Link className={cl.header__logoLink} to="/" />
-          </div>
+          <Logo />
           <Icon type={IconType.CLOSE} origin={IconOrigin.ONHEADER} />
         </header>
       </div>
@@ -39,9 +37,7 @@ export const Header: React.FC<Props> = ({ origin }) => {
     >
       <header className={cl.header}>
         <div className={cl.header__logoNavContainer}>
-          <div className={cl.header__logoWrapper}>
-            <Link className={cl.header__logoLink} to="/" />
-          </div>
+          <Logo />
           <nav className={cl.header__nav}>
             <Navigation origin={NavOrigin.ONHEADER} />
           </nav>
