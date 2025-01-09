@@ -4,6 +4,7 @@
   border: 1px solid $-elements;
   box-sizing: border-box;
   padding: 32px;
+  transition: border-color .3s;
 
   &__price {
     font-size: 22px;
@@ -27,6 +28,10 @@
 
   &__info {
     margin-bottom: 8px;
+  }
+
+  &:hover {
+    border-color: $-secondary;
   }
 }
 
