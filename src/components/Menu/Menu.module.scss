@@ -1,0 +1,45 @@
+@import '../../main';
+
+.menu {
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  bottom: 0;
+  left: -100%;
+
+  background-color: #fff;
+  box-sizing: border-box;
+  height: 100vh;
+  width: 100%;
+  font-weight: 700;
+  text-transform: uppercase;
+  overflow: auto;
+  transition: all 0.3s;
+  opacity: 0;
+  visibility: hidden;
+
+  &--show {
+    visibility: visible;
+    opacity: 1;
+    left: 0;
+  }
+
+  // .no-scroll {
+  //   overflow: hidden;
+  //   height: 100vh;
+  // }
+
+  &__favorites {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    height: 68px;
+    border-top: 1px solid $-elements;
+  }
+
+  @include on-tablet {
+    display: none;
+  }
+}
