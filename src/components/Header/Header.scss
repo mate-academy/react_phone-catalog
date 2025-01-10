@@ -1,0 +1,83 @@
+@import '../../styles/common';
+
+.header {
+  @include page-grid;
+
+  position: fixed;
+  width: 100%;
+  background-color: $black;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid $grey-2;
+  z-index: 5;
+  opacity: 0.9;
+
+  &__logo {
+    width: 96px;
+    padding: 13px 16px;
+
+    grid-column: 1 / span 2;
+  }
+
+  &__navbar {
+    display: none;
+
+    @include on-tablet {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      grid-column: 3 / span 7;
+    }
+
+    &--link {
+      position: relative;
+      text-decoration: none;
+      text-transform: uppercase;
+      color: $light-grey;
+      font-size: 12px;
+      font-weight: 800;
+      line-height: 0.92;
+      letter-spacing: 0.04em;
+    }
+  }
+
+  &__user {
+    display: none;
+
+    @include on-tablet {
+      display: flex;
+      justify-self: end;
+      grid-column: 11 / span 2;
+    }
+
+    &--icon {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 48px;
+      height: 48px;
+      border-left: 1px solid $grey-2;
+    }
+  }
+
+  &__menu {
+    display: flex;
+    justify-self: end;
+    border-left: 1px solid $grey-2;
+    grid-column: 4 / span 1;
+
+    @include on-tablet {
+      display: none;
+    }
+
+    &--icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 48px;
+      height: 48px;
+    }
+  }
+}

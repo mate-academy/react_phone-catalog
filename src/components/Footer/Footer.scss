@@ -1,0 +1,87 @@
+@import '../../styles/common';
+
+.footer {
+  @include page-grid;
+
+  background-color: $black;
+  justify-content: space-between;
+  border-top: 1px solid $grey-2;
+  padding: 32px $padding-mobile;
+
+  @include on-tablet {
+    padding: 32px;
+  }
+
+  &__logo {
+    width: 89px;
+    margin-bottom: $margin-bottom-mobile;
+
+    grid-column: 1 / span 2;
+
+    @include on-tablet {
+      margin-left: 12px;
+      margin-bottom: 0;
+      grid-column: 1 / span 3;
+    }
+  }
+
+  &__navbar {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: $margin-bottom-mobile;
+
+    grid-column: 1 / span 2;
+
+    @include on-tablet {
+      grid-column: 5 / span 4;
+      flex-direction: row;
+      align-items: center;
+      gap: 13.5px;
+      margin-bottom: 0;
+    }
+
+    &--link {
+      position: relative;
+      color: $white;
+      text-transform: uppercase;
+      font-size: 12px;
+      font-weight: 800;
+      line-height: 11px;
+      letter-spacing: 0.04em;
+
+      @include hover(transform, scale(1.1));
+    }
+  }
+
+  &__back {
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+    gap: 16px;
+
+    grid-column: 1 / -1;
+
+    @include on-tablet {
+      grid-column: 10 / span 3;
+    }
+    
+    &--text {
+      color: $light-grey;
+      font-size: 12px;
+      font-weight: 600;
+      line-height: 15.34px;
+    }
+
+    &--icon {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border: none;
+      width: 32px;
+      height: 32px;
+      background-color: $button-grey;
+    }
+  }
+}

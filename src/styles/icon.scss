@@ -1,0 +1,50 @@
+@import './variables';
+
+.icon {
+  &-menu {
+    fill: $white;
+    width: 14px;
+  }
+
+    &-user {
+    fill: $white;
+    width: 16px;
+  }
+
+  &-up {
+    fill: $white;
+    width: 10px;
+    height: 6px;
+  }
+
+  &-home {
+    fill: $white;
+    width: 16px;
+    height: 16px;
+  }
+
+  &-arrow-right {
+    fill: $icon-grey;
+    width: 6px;
+    height: 10px;
+  }
+
+  &-heart {
+    width: 16px;
+    height: 16px;
+    stroke: $white;
+    fill: transparent;
+    stroke-width: 2px;
+  }
+
+  &-heart-red {
+    stroke: $icon-red;
+    fill: $icon-red;
+  }
+
+  &-arrow-left {
+    fill: $icon-grey;
+    width: 6px;
+    height: 10px;
+  }
+}

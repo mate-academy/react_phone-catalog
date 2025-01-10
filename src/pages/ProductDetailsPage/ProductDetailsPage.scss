@@ -1,0 +1,372 @@
+@import '../../styles/common';
+
+.product-details {
+  @include page-grid;
+
+  &__active {
+    display: flex;
+    align-items: center;
+    padding-top: 72px;
+    gap: 8px;
+    margin-bottom: $margin-bottom-mobile;
+    overflow: hidden;
+    grid-column: 1 / -1;
+
+    @include on-tablet {
+      margin-bottom: 40px;
+    }
+
+    &--link {
+      cursor: pointer;
+    }
+
+    &--arrow {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 16px;
+      height: 16px;
+    }
+
+    &--cat {
+      text-transform: capitalize;
+      color: $white;
+      font-size: 12px;
+      font-weight: 500;
+      line-height: 15.34px;
+    }
+
+    &--name {
+      color: $light-grey;
+      font-size: 12px;
+      font-weight: 500;
+      line-height: 15.34px;
+    }
+  }
+
+  &__back {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    cursor: pointer;
+    margin-bottom: 16px;
+    grid-column: 1 / -1;
+
+    &--arrow {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 16px;
+      height: 16px;
+    }
+
+    &--text {
+      color: $white;
+      font-size: 12px;
+      font-weight: 500;
+      line-height: 15.34px;
+    }
+  }
+  
+  &__title {
+    color: $white;
+    font-size: 22px;
+    font-weight: 800;
+    line-height: 30.8px;
+    margin-bottom: 32px;
+    grid-column: 1 / -1;
+  }
+
+  &__swiper {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 40px;
+    grid-column: 1 / -1;
+  
+    &--big-pict {
+      width: 288px;
+      height: 288px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    &--img {
+      width: 51px;
+      height: 49px;
+    }
+  }
+
+  &__colors {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid $grey-2;
+    grid-column: 1 / -1;
+    margin-bottom: 24px;
+
+    &--box {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+
+  &__capacity {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid $grey-2;
+    margin-bottom: 32px;
+    grid-column: 1 / -1;
+
+    &--title {
+      color: $light-grey;
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 15.34px;
+      letter-spacing: 0.02em;
+    }
+
+    &--box {
+      display: flex;
+      gap: 8px;
+    }
+  }
+
+  &__price {
+    display: flex;
+    align-items: center;
+    gap: 6.5px;
+    margin-bottom: 16px;
+    grid-column: 1 / -1;
+
+    &--disc {
+      color: $white;
+      font-size: 32px;
+      font-weight: 800;
+      line-height: 41px;
+      letter-spacing: -0.01em;
+    }
+
+    &--regular {
+      color: $light-grey;
+      text-decoration: line-through;
+      font-size: 22px;
+      font-weight: 600;
+      line-height: 28.12px;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 32px;
+    grid-column: 1 / -1;
+
+    &--add {
+      width: 231px;
+      height: 48px;
+      border: none;
+      background-color: $button-purple;
+      color: $white;
+      font-size: 14px;
+      font-weight: 700;
+      line-height: 21px;
+      text-align: center;
+
+      @include hover(background-color, $purple-hover);
+
+      &:focus {
+        background-color: $button-grey;
+      }
+    }
+
+    &--heart {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 48px;
+      height: 48px;
+      background-color: $button-grey;
+      border: none;
+
+      @include hover(background-color, $icon-grey);
+
+      &:focus {
+        background-color: transparent;
+        border: 1px solid $grey-2;
+      }
+    }
+  }
+
+  &__tech {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 56px;
+    grid-column: 1 / -1;
+  }
+
+  &__description {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    margin-bottom: 56px;
+    grid-column: 1 / -1;
+
+    &--title {
+      color: $white;
+      font-size: 20px;
+      font-weight: 700;
+      line-height: 25.56px;
+      letter-spacing: 0.02em;
+      padding-bottom: 16px;
+      border-bottom: 1px solid $grey-2;
+    }
+  }
+
+  &__tech-specs {
+    margin-bottom: 56px;
+    grid-column: 1 / -1;
+
+    &--title {
+      color: $white;
+      padding-bottom: 16px;
+      font-size: 20px;
+      font-weight: 700;
+      line-height: 25.56px;
+      border-bottom: 1px solid $grey-2;
+      margin-bottom: 30px;
+    }
+
+    &--list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+  }
+}
+
+.colors-box {
+  &__title,
+  &__id {
+    color: $light-grey;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 15.34px;
+    letter-spacing: 0.02em;
+  }
+}
+
+.colors-cont {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  cursor: pointer;
+  gap: 8px;
+
+  &__color {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 50px;
+
+    &--in {
+      width: 30px;
+      height: 30px;
+      border-radius: 50px;
+      border: 2px solid #0F1121;
+    }
+  }
+}
+
+.capacity-box {
+  &__mem {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 56px;
+    height: 32px;
+    border: 1px solid $icon-grey;
+    color: $white;
+    font-size: 14px;
+    line-height: 21px;
+    cursor: pointer;
+
+    @include hover(background-color, $white, color, $black);
+  }
+}
+
+.cap-selected {
+  background-color: $white;
+  color: $black;
+}
+
+.tech-item {
+  display: flex;
+  justify-content: space-between;
+
+  &__name {
+    color: $light-grey;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 15.34px;
+  }
+
+  &__param {
+    color: $white;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 15.34px;
+  }
+}
+
+.descr-sect {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  &__subtitle {
+    color: $white;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 20.45px;
+    letter-spacing: 0.01em;
+  }
+
+  &__text {
+    color: $text-grey;
+    font-size: 14px;
+    line-height: 21px;
+    letter-spacing: 0.02em;
+  }
+}
+
+.tech-specs-item {
+  display: flex;
+  justify-content: space-between;
+
+  &__name,
+  &__param {
+    color: $light-grey;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 21px;
+    letter-spacing: 0.01em;
+  }
+
+  &__param {
+    color: $white;
+  }
+}
+
+.swiper-pict__large-image {
+  width: 288px;
+  height: 288px;
+}
