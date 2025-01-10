@@ -19,14 +19,14 @@ export const UserActions = () => {
       })}
     >
       <NavLink
-        to="/favourites"
+        to="/favorites"
         className={getLinkClass}
         onClick={() => closeMenu(isMenuOpen, toggleMenu)}
       >
         <img
           className={styles.image}
           src="img/icons/heart.svg"
-          alt="Favourites"
+          alt="Favorites"
         />
       </NavLink>
 

@@ -5,8 +5,6 @@
 
   flex-direction: column;
 
-  box-sizing: border-box;
-
   // width: 100%;
   max-width: 1136px;
 }
@@ -14,7 +12,6 @@
 .topWrapper {
   @include flex-center;
 
-  box-sizing: border-box;
   justify-content: space-between;
   width: 100%;
 
@@ -39,7 +36,6 @@
 .sliderButtonPrev,
 .sliderButtonNext {
   cursor: pointer;
-  box-sizing: border-box;
   display: flex;
   flex-direction: row;
   justify-content: center;

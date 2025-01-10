@@ -1,4 +1,60 @@
-div {
-  padding: 10px;
-  margin: 10px;
+@import 'Styles/utils';
+
+.error {
+  @include h1-desktop-tablet;
+  @include small-text-desktop-tablet;
 }
+
+.reloadButton {
+  @include buttons-desktop-tablet;
+}
+
+.catalogPage {
+  display: flex;
+  flex-direction: column;
+  padding: 32px;
+
+  @media (max-width: $tablet-breakpoint) {
+    padding: 24px;
+  }
+
+  @media (max-width: $mobile-breakpoint) {
+    padding: 16px;
+  }
+}
+
+.categoryTitle {
+  @include h1-desktop-tablet;
+
+  @media (max-width: $mobile-breakpoint) {
+    @include h1-mobile;
+  }
+}
+
+.numOfProducts {
+  @include body-text-desktop-tablet;
+
+  color: $color-secondary;
+}
+
+.breadcrumbs {
+  @include small-text-desktop-tablet;
+}
+
+.productsList{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(229px, 1fr));
+  gap: 40px 16px;
+}
+
+// .sortOptions {
+
+// }
+
+// .sortBy{}
+
+// .perPage{}
+
+
+
+// .pagination{}

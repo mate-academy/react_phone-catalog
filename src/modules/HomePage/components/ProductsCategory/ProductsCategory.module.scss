@@ -1,7 +1,6 @@
 @import 'Styles/utils';
 
 .container {
-  box-sizing: border-box;
   max-width: 1136px;
 
   @media (max-width: $tablet-breakpoint) {

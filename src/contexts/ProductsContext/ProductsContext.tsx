@@ -1,4 +1,4 @@
-import { getProductsByCategory } from 'modules/shared/services/services';
+import { getAllProducts } from 'modules/shared/services/services';
 import { DataType, ProductsContextType } from 'modules/shared/types/Context';
 import { createContext, useEffect, useState } from 'react';
 
@@ -13,6 +13,7 @@ export const ProductsContext = createContext<ProductsContextType>({
     accessories: null,
   },
   loading: false,
+  error: null,
 });
 
 const categories = ['phones', 'tablets', 'accessories'] as const;
@@ -24,6 +25,7 @@ export const ProductsProvider: React.FC<Props> = ({ children }) => {
     accessories: null,
   });
   const [loading, setLoading] = useState<boolean>(false);
+  const [error, setError] = useState<string | null>(null);
 
   const fetchProductsByCategories = async () => {
     setLoading(true);
@@ -36,12 +38,18 @@ export const ProductsProvider: React.FC<Props> = ({ children }) => {
       };
 
       for (const category of categories) {
-        const categoryData = await getProductsByCategory(category);
+        const allProducts = await getAllProducts();
+
+        const categoryData = allProducts.filter(product =>
+          product.category.includes(category),
+        );
 
         fetchedData[category as keyof DataType] = categoryData;
       }
 
       setData(fetchedData);
+    } catch (err) {
+      setError('Something went wrong');
     } finally {
       setLoading(false);
     }
@@ -52,7 +60,7 @@ export const ProductsProvider: React.FC<Props> = ({ children }) => {
   }, []);
 
   return (
-    <ProductsContext.Provider value={{ data, loading }}>
+    <ProductsContext.Provider value={{ data, loading, error }}>
       {children}
     </ProductsContext.Provider>
   );

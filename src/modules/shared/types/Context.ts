@@ -9,4 +9,5 @@ export type DataType = {
 export type ProductsContextType = {
   data: DataType;
   loading: boolean;
+  error: string | null;
 };

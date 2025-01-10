@@ -6,3 +6,19 @@
   flex-direction: column;
   height: 100vh;
 }
+
+.title {
+  @include h1-desktop-tablet;
+
+  @media (max-width: $mobile-breakpoint) {
+    @include h1-mobile;
+
+  }
+}
+
+.image {
+  width: 300px;
+  height: 300px;
+}
+
+

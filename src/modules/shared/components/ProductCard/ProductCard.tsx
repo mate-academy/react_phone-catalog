@@ -43,8 +43,8 @@ export const ProductCard: React.FC<Props> = ({ product, showDiscount }) => {
 
         <div className={styles.actions}>
           <button className={styles.addToCart}>Add to cart</button>
-          <button className={styles.favourite}>
-            <img src="img/icons/heart.svg" alt="favourite" />
+          <button className={styles.favorite}>
+            <img src="img/icons/heart.svg" alt="favorite" />
           </button>
         </div>
       </div>

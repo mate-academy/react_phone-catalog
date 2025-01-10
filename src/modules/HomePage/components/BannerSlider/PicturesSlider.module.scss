@@ -3,8 +3,6 @@
 .container {
   @include flex-center;
 
-  box-sizing: border-box;
-
   position: relative;
   align-items: flex-start;
   width: 100%;

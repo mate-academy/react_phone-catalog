@@ -2,7 +2,6 @@
 
 .productCard {
   background-color: $color-surface1;
-  box-sizing: border-box;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -106,7 +105,10 @@
 .addToCart {
   @include buttons-desktop-tablet;
 
-  width: 160px;
+  display: flex;
+  flex-grow: 1;
+  justify-content: center;
+  align-items: center;
   height: 40px;
   background-color: $color-accent;
   border: none;
@@ -118,7 +120,7 @@
   }
 }
 
-.favourite {
+.favorite {
   display: flex;
   justify-content: center;
   align-items: center;

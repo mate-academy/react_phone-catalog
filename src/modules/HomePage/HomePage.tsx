@@ -9,11 +9,12 @@ import { PicturesSlider } from './components/BannerSlider/PicturesSlider';
 import styles from './HomePage.module.scss';
 import { Product } from 'modules/shared/types/Product';
 import { useEffect, useState } from 'react';
+import { Loader } from 'modules/shared/components/Loader';
 
 export const HomePage = () => {
   const [newModels, setNewModels] = useState<Product[]>([]);
   const [hotPrices, setHotPrices] = useState<Product[]>([]);
-  // const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -24,7 +25,7 @@ export const HomePage = () => {
         setNewModels(fetchedNewModels);
         setHotPrices(fetchedHotPrices);
       } finally {
-        // setLoading(false);
+        setLoading(false);
       }
     };
 
@@ -39,25 +40,33 @@ export const HomePage = () => {
         <PicturesSlider />
       </div>
 
-      <div className={styles.section}>
-        <ProductsSlider
-          title={'Brand new models'}
-          products={newModels}
-          showDiscount={false}
-        />
-      </div>
+      {loading ? (
+        <div>
+          <Loader />
+        </div>
+      ) : (
+        <>
+          <div className={styles.section}>
+            <ProductsSlider
+              title={'Brand new models'}
+              products={newModels}
+              showDiscount={false}
+            />
+          </div>
 
-      <div className={styles.section}>
-        <ProductsCategory />
-      </div>
+          <div className={styles.section}>
+            <ProductsCategory />
+          </div>
 
-      <div className={styles.section}>
-        <ProductsSlider
-          title={'Hot prices'}
-          products={hotPrices}
-          showDiscount={true}
-        />
-      </div>
+          <div className={styles.section}>
+            <ProductsSlider
+              title={'Hot prices'}
+              products={hotPrices}
+              showDiscount={true}
+            />
+          </div>
+        </>
+      )}
     </div>
   );
 };
