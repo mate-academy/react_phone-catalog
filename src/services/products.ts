@@ -1,25 +1,18 @@
 import { Product } from '../types/Product';
+import { getData } from './httpClient';
 
 export function getPhones(): Promise<Product[]> {
-  return fetch('http://localhost:3000/api/phones.json').then(response => {
-    return response.json();
-  });
+  return getData('/phones.json');
 }
 
 export function getTablets(): Promise<Product[]> {
-  return fetch('http://localhost:3000/api/tablets.json').then(response => {
-    return response.json();
-  });
+  return getData('/tablets.json');
 }
 
 export function getAccessories(): Promise<Product[]> {
-  return fetch('http://localhost:3000/api/accessories.json').then(response => {
-    return response.json();
-  });
+  return getData('/accessories.json');
 }
 
 export function getProducts(): Promise<Product[]> {
-  return fetch('http://localhost:3000/api/products.json').then(response => {
-    return response.json();
-  });
+  return getData('/products.json');
 }

@@ -9,6 +9,7 @@ import 'swiper/scss/pagination';
 import { Product } from '../../types/Product';
 import { useEffect, useState } from 'react';
 import { getAccessories, getPhones, getTablets } from '../../services/products';
+
 export const ProductDetailsPage: React.FC = () => {
   const [selectedImage, setSelectedImage] = useState('');
   const [product, setProduct] = useState<Product | null>(null);
