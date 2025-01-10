@@ -1,11 +1,12 @@
 import './Header.scss';
 import classNames from 'classnames';
-import React, { useContext, useState, useEffect, useRef } from 'react';
+import React, { useContext, useState, useEffect, useCallback } from 'react';
 import { Link, NavLink, useLocation, useSearchParams } from 'react-router-dom';
 import { GlobalContext } from '../../../store/GlobalContext';
 import { iconsObject } from '../../../constants/iconsObject';
 import { Icon } from '../Icon';
 import { navLinks } from '../../../constants/navLinks';
+import debounce from 'lodash.debounce';
 import { getSearchWith } from '../../../utils/searchHelper';
 
 const getActiveItem = ({ isActive }: { isActive: boolean }) =>
@@ -18,57 +19,52 @@ export const Header: React.FC = () => {
   const { cart, favorites, toggleMenu, isMenuOpen, theme, toggleTheme } =
     useContext(GlobalContext);
 
-  const [searchParams, setSearchParams] = useSearchParams();
   const location = useLocation();
 
-  const initialQuery = searchParams.get('query') || '';
-  const [inputValue, setInputValue] = useState(initialQuery);
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [query, setQuery] = useState('');
+  const [appliedQuery, setAppliedQuery] = useState('');
 
   const totalQuantity = cart.reduce((sum, item) => sum + item.quantity, 0);
   const totalFavorites = favorites.length;
 
-  const debounceTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const applyQuery = useCallback(
+    debounce((value: string) => {
+      setAppliedQuery(value);
+
+      const updatedParams = getSearchWith(searchParams, {
+        query: value,
+      });
+
+      setSearchParams(updatedParams);
+    }, 1000),
+    [searchParams, setSearchParams],
+  );
 
   useEffect(() => {
-    if (debounceTimeoutRef.current) {
-      clearTimeout(debounceTimeoutRef.current);
-    }
-
-    debounceTimeoutRef.current = setTimeout(() => {
-      if (inputValue.trim() === '') {
-        setSearchParams(prevParams => {
-          const newParams = new URLSearchParams(prevParams);
-
-          newParams.delete('query');
-
-          return newParams;
-        });
-      } else {
-        const updatedParams = getSearchWith(searchParams, {
-          query: inputValue,
-        });
-
-        setSearchParams(updatedParams);
-      }
-    }, 1000);
-
-    return () => {
-      if (debounceTimeoutRef.current) {
-        clearTimeout(debounceTimeoutRef.current);
-      }
-    };
-  }, [inputValue, searchParams, setSearchParams]);
-
-  useEffect(() => {
-    setInputValue('');
+    setQuery('');
   }, [location.pathname]);
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setInputValue(event.target.value);
+    const newQuery = event.target.value.trim();
+
+    setQuery(event.target.value);
+
+    if (newQuery.length > 0) {
+      applyQuery(event.target.value);
+    } else {
+      setSearchParams(prevParams => {
+        const newParams = new URLSearchParams(prevParams);
+
+        newParams.delete('query');
+
+        return newParams;
+      });
+    }
   };
 
   const clearInput = () => {
-    setInputValue('');
+    setQuery('');
     setSearchParams(prevParams => {
       const newParams = new URLSearchParams(prevParams);
 
@@ -109,10 +105,10 @@ export const Header: React.FC = () => {
               type="text"
               placeholder="Search product..."
               className="header__search-input"
-              value={inputValue}
+              value={query}
               onChange={handleInputChange}
             />
-            {inputValue ? (
+            {query ? (
               <div className="header__clear-button" onClick={clearInput}>
                 {theme === 'light' ? (
                   <Icon icon={iconsObject.close} />

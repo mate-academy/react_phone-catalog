@@ -33,9 +33,16 @@ export const App = () => {
   //   };
   // }, [handleNavigate]);
 
-  // useEffect(() => {
-  //   console.log(location.pathname);
-  // }, [location.pathname]);
+  useEffect(() => {
+    console.log(location.pathname);
+  }, [location.pathname]);
+
+  // let clickCount = 0;
+
+  // window.addEventListener('popstate', () => {
+  //   clickCount += 1;
+  //   console.log(`Клик НАЗАД: ${clickCount}`);
+  // });
 
   return (
     <div className="App">
