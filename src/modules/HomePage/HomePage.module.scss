@@ -1,0 +1,14 @@
+  @import '@styles/main';
+
+.home-page {
+  display: grid;
+  row-gap: $section-row-gap--desktop;
+
+  @include on-tablet {
+    row-gap: $section-row-gap--tablet;
+  }
+
+  @include on-mobile {
+    row-gap: $section-row-gap--mobile;
+  }
+}

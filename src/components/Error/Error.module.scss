@@ -1,0 +1,36 @@
+@import '@styles/main';
+
+.error {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  text-align: center;
+
+  @include on-mobile {
+    flex-direction: column;
+  }
+  
+  &__text {
+    font-size: 24px;
+  }
+
+  &__btn {
+    background-color: $red-color;
+
+    width: fit-content;
+    padding: 10px 20px;
+    border-radius: $border-radius;
+    color: $white-color;
+    cursor: pointer;
+    transition: background-color $hover-duration;
+
+    @include body-text;
+
+    &:hover {
+      background-color: #a74040;
+    }
+  }
+}
+

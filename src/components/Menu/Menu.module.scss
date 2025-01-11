@@ -1,0 +1,68 @@
+@import '@styles/main';
+
+:root {
+  --padding-inline: 16px;
+
+  @include on-tablet {
+    --padding-inline: 24px;
+  }
+
+  @include on-desktop {
+    --padding-inline: 36px;
+  }
+}
+
+
+.menu {
+  background-color: $page-caps-bg;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  height: 100vh;
+  overflow-y: auto;
+
+  &__top {
+    height: $header-height--small;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    box-shadow: 0 1px 0 0 $elements-color;
+    margin-bottom: 24px;
+
+    @include on-desktop {
+      height: $header-height;
+    }
+  }
+
+  &__logo {
+    padding-inline: $padding-inline--s;
+  }
+
+  &__close-btn {
+    justify-self: end;
+    height: 100%;
+    aspect-ratio: 1 / 1 ;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: -1px 0 0 0 $elements-color;
+  }
+
+  &__links {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    box-shadow: 0 -1px 0 0 $elements-color;
+    height: 64px;
+  }
+
+  &__link {
+    position: relative;
+  }
+
+  &__counter {
+    position: absolute;
+    top: 50%;
+    right: 50%;
+    transform: translate(100%, -100%);
+  }
+}

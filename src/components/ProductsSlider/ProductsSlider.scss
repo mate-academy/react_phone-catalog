@@ -1,0 +1,58 @@
+@import '@styles/main';
+
+.products-slider {
+  overflow: hidden;
+
+  &__top {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    align-items:  center;
+    margin-bottom: 24px;
+
+    @include content-limitation;
+  }
+
+  &__btns {
+    justify-self: end;
+    display: flex;
+    gap: 16px;
+  }
+
+  &__wrapper {
+    overflow: hidden;
+    height: 512px;
+
+    @include on-desktop {
+      max-width: 1136px;
+      margin-inline: auto;
+    }
+
+    @include on-tablet {
+      margin-left: $padding-inline--m;
+    }
+
+    @include on-mobile {
+      margin-left: $padding-inline--s;
+    }
+  }
+
+  &__container {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: 272px;
+    column-gap: 16px;
+
+    @include on-tablet {
+      grid-auto-columns: 238px;
+    }
+
+
+    @include on-mobile {
+      grid-auto-columns: 212px;
+    }
+  }
+
+  &__slide {
+    cursor: grab;
+  }
+}
