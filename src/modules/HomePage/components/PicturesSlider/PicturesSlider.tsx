@@ -7,6 +7,7 @@ import { useSwipeable } from 'react-swipeable';
 import classNames from 'classnames';
 import { IconButton } from '../../../shared/IconButton';
 import { TABLET_MIN_WIDTH } from '../../../shared/constans/MIN_WIDTHS';
+import { ArrowIcon } from '../../constants/icons';
 
 export const PicturesSlider = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -55,6 +56,7 @@ export const PicturesSlider = () => {
               direction="left"
               onClick={handlePrev}
               disabled={false}
+              icon={<ArrowIcon />}
             />
           </div>
 
@@ -77,6 +79,7 @@ export const PicturesSlider = () => {
               direction="right"
               onClick={handleNext}
               disabled={false}
+              icon={<ArrowIcon />}
             />
           </div>
         </div>

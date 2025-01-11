@@ -6,11 +6,11 @@
   gap: 56px;
   padding-bottom: 64px;
 
-  @include onTablet {
+  @include on-tablet {
     gap: 64px;
   }
 
-  @include onDesktop {
+  @include on-desktop {
     padding-bottom: 80px;
     gap: 80px;
   }
@@ -25,14 +25,14 @@
 
   &__subtitle {
     padding-block: 24px;
-    
+
     @include h1;
 
-    @include onTablet {
+    @include on-tablet {
       padding-block: 32px;
     }
 
-    @include onDesktop {
+    @include on-desktop {
       padding-block: 56px;
     }
   }

@@ -8,11 +8,11 @@
 
     @include h1;
 
-    @include onTablet {
+    @include on-tablet {
       padding-block: 32px;
     }
 
-    @include onDesktop {
+    @include on-desktop {
       padding-block: 56px;
     }
   }
@@ -22,12 +22,12 @@
     gap: 19px;
     margin-inline: -16px;
 
-    @include onTablet {
+    @include on-tablet {
       height: 189px;
       margin-inline: 0;
     }
 
-    @include onDesktop {
+    @include on-desktop {
       height: 400px;
     }
   }
@@ -37,7 +37,7 @@
     height: 100%;
     width: 32px;
 
-    @include onTablet {
+    @include on-tablet {
       display: block;
     }
   }
@@ -49,7 +49,7 @@
     overflow: hidden;
     justify-items: stretch;
 
-    @include onTablet {
+    @include on-tablet {
       border-radius: 8px;
     }
   }
@@ -67,10 +67,10 @@
     opacity: 0;
     animation: fade-in-out 5s linear infinite;
     pointer-events: none;
-        background: linear-gradient(125deg, $primary-color 25%, $accent-color 61%, $secondary-accent-color 94%);
+    background: linear-gradient(125deg, $primary-color 25%, $accent-color 61%, $secondary-accent-color 94%);
     background-color: $primary-color;
 
-    @include onTablet {
+    @include on-tablet {
       height: 100%;
       aspect-ratio: auto;
       border-radius: 8px;

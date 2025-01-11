@@ -1,36 +1,36 @@
-@mixin onTablet {
+@mixin on-tablet {
   @media(min-width: $tablet-min-width) {
     @content;
   }
 }
 
-@mixin onDesktop {
+@mixin on-desktop {
   @media(min-width: $desktop-min-width) {
     @content;
   }
 }
 
-/* #region From Typography design*/
+/* #region From Typography design */
 @mixin h1 {
-  font-family: Mont-Bold;
+  font-family: Mont-Bold, sans-serif;
   font-weight: 800;
   font-size: 32px;
   line-height: 41px;
   letter-spacing: -0.01em;
 
-  @include onTablet {
+  @include on-tablet {
     font-size: 48px;
     line-height: 56px;
   }
 }
 
 @mixin h2 {
-  font-family: Mont-Bold;
+  font-family: Mont-Bold, sans-serif;
   font-size: 22px;
   line-height: 31px;
   letter-spacing: 0;
 
-  @include onTablet {
+  @include on-tablet {
     font-size: 32px;
     line-height: 41px;
     letter-spacing: -0.01em;
@@ -38,29 +38,29 @@
 }
 
 @mixin h3 {
-  font-family: Mont-Bold;
+  font-family: Mont-Bold, sans-serif;
   font-size: 20px;
   line-height: 26px;
 
-  @include onTablet {
+  @include on-tablet {
     font-size: 22px;
     line-height: 31px;
   }
 }
 
 @mixin h4 {
-  font-family: Mont-SemiBold;
+  font-family: Mont-SemiBold, sans-serif;
   font-size: 16px;
   line-height: 20px;
 
-  @include onTablet {
+  @include on-tablet {
     font-size: 20px;
     line-height: 26px;
   }
 }
 
 @mixin uppercase {
-  font-family: Mont-Bold;
+  font-family: Mont-Bold, sans-serif;
   font-size: 12px;
   line-height: 11px;
   letter-spacing: -0.04em;
@@ -69,21 +69,21 @@
 }
 
 @mixin buttons {
-  font-family: Mont-SemiBold;
+  font-family: Mont-SemiBold, sans-serif;
   font-size: 14px;
   line-height: 21px;
   letter-spacing: 0;
 }
 
 @mixin body-text {
-  font-family: Mont;
+  font-family: Mont, sans-serif;
   font-size: 14px;
   line-height: 21px;
   letter-spacing: 0;
 }
 
 @mixin small-text {
-  font-family: Mont-SemiBold;
+  font-family: Mont-SemiBold, sans-serif;
   font-size: 12px;
   line-height: 15px;
   letter-spacing: 0;
@@ -92,18 +92,18 @@
 
 /* #endregion */
 
-@mixin pageGrid {
+@mixin page-grid {
   --columns: 4;
 
   display: grid;
   column-gap: 16px;
   grid-template-columns: repeat(var(--columns), 1fr);
 
-  @include onTablet() {
+  @include on-tablet {
     --columns: 12;
   }
 
-  @include onDesktop() {
+  @include on-desktop {
     --columns: 24;
   }
 }

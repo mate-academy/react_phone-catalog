@@ -13,9 +13,9 @@
     display: flex;
     gap: 16px;
     height: 48px;
-    box-shadow: 0px 1px 0px 0px $elements-color;
+    box-shadow: 0 1px 0 0 $elements-color;
 
-    @include onDesktop {
+    @include on-desktop {
       height: 64px;
       gap: 24px;
     }
@@ -24,11 +24,11 @@
   &--menu-open {
     height: 100vh;
 
-    @include onTablet {
+    @include on-tablet {
       height: 48px;
     }
 
-    @include onDesktop {
+    @include on-desktop {
       height: 64px;
     }
   }
@@ -37,12 +37,12 @@
     display: none;
     gap: 32px;
 
-    @include onTablet {
+    @include on-tablet {
       display: flex;
       justify-content: space-between;
     }
 
-    @include onDesktop {
+    @include on-desktop {
       gap: 64px;
     }
   }
@@ -59,7 +59,7 @@
     justify-content: space-between;
     flex-grow: 1;
 
-    @include onTablet {
+    @include on-tablet {
       display: none;
     }
 
@@ -84,7 +84,7 @@
       background-repeat: no-repeat;
       background-position: center;
 
-      box-shadow: -1px 0px 0px 0px $elements-color;
+      box-shadow: -1px 0 0 0 $elements-color;
       border: 2px solid transparent;
 
       &--active {

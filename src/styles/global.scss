@@ -5,10 +5,7 @@
 @import './utils/typography';
 
 body {
-  font-family: Mont;
+  font-family: Mont, sans-serif;
   color: $primary-color;
   background-color: $hover-bg-color;
 }
-
-/* #region normalied */
-/* #endregion */

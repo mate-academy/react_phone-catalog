@@ -10,7 +10,7 @@
     padding-block: 32px;
     gap: 32px;
 
-    @include onTablet {
+    @include on-tablet {
       flex-direction: row;
       gap: 0;
     }
@@ -21,8 +21,7 @@
   height: 32px;
   object-fit: contain;
   object-position: left;
-  justify-self: start;
-  align-self: start;
+  place-self: start;
   flex-grow: 1;
 }
 
@@ -33,7 +32,7 @@
   justify-content: space-between;
   gap: 16px;
 
-  @include onTablet {
+  @include on-tablet {
     flex-direction: row;
     gap: 0;
   }
@@ -61,7 +60,7 @@
   gap: 16px;
   height: 32px;
 
-  @include onTablet {
+  @include on-tablet {
     justify-content: end;
     flex-grow: 1;
   }
