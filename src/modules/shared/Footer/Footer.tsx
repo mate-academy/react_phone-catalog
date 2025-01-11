@@ -15,11 +15,7 @@ export const Footer = () => {
     <footer className={styles.footer}>
       <Container>
         <div className={styles.footer__content}>
-          <img
-            src="react_phone-catalog/img/logo/logo-footer.png"
-            alt="Nice Gadgets logo"
-            className={styles.logo}
-          />
+          <img alt="Nice Gadgets logo" className={styles.logo} />
           <ul className={styles.linkList}>
             {['Github', 'Contacts', 'rights'].map(label => (
               <li key={label} className={styles.listItem}>
