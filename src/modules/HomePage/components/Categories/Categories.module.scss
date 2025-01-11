@@ -1,0 +1,67 @@
+/* eslint-disable scss/at-mixin-pattern */
+/* stylelint-disable scss/dollar-variable-empty-line-before */
+/* stylelint-disable declaration-block-no-redundant-longhand-properties */
+
+@import '/src/styles/main';
+
+.image-link{
+  pointer-events: all;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+
+  &:hover{
+    transform: scale(1.05);
+  }
+  &--accent{
+    background-color: rgba(144, 91, 255, 1);
+  }
+
+  &--green{
+    background-color: rgba(39, 174, 96, 1);
+  }
+
+  &--red{
+    background-color: rgba(235, 87, 87, 1);
+  }
+
+}
+
+.categories__grid{
+  display: grid;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  gap: 16px 18px;
+
+  @include onTablet{
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  justify-items: center;
+  align-items: center;
+}
+
+.categories__title{
+  font-size: 32px;
+  font-weight: 800;
+  color: white;
+
+}
+
+.category {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.category__title{
+  color: $white;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.category__subtitle{
+  color: $grey-secondary;
+  font-size: 14px;
+  font-weight: 600;
+}

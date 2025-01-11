@@ -1,0 +1,39 @@
+@import '/src/styles/main';
+
+.pagination {
+  padding: 40px 0 80px;
+  display: flex;
+  list-style: none;
+  gap: 8px;
+  justify-content: center;
+}
+
+.page-item {
+
+  &.disabled {
+    pointer-events: none;
+    opacity: 0.6;
+  }
+
+  &.active a {
+    font-weight: bold;
+    background-color: #007bff;
+    color: $white;
+  }
+}
+
+.page-link {
+  display: flex;
+  background-color: $surface-1;
+  width: 32px;
+  height: 32px;
+  justify-content: center;
+  align-items: center;
+
+  &:hover{
+    background-color: $primary-hover;
+    color: $white;
+  }
+
+}
+

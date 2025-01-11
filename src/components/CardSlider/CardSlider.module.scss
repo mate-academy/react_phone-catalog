@@ -1,0 +1,67 @@
+@import '/src/styles/main';
+
+*{
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+.card-slider {
+  padding-top: 56px;
+  overflow: hidden;
+  width: 100%;
+  grid-column: 1 /-1;
+  padding-bottom:64px ;
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 24px;
+  }
+
+  &__title {
+    font-size: 22px;
+    font-weight: 800;
+    color: $white;
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__button {
+
+
+    &--left {
+      width: 32px;
+      height: 32px;
+      transform: rotate(180deg);
+      background-color: transparent;
+    }
+
+    &--right {
+      background-color: transparent;
+    }
+
+    &-img {
+      width: 16px;
+      height: 16px;
+      background-color: transparent;
+    }
+  }
+
+  &__products {
+    display: grid;
+    grid-template-columns: repeat(10, minmax($card-width, 1fr));
+    gap: 46px 48px;
+    width: 100%;
+    box-sizing: border-box;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+  }
+}

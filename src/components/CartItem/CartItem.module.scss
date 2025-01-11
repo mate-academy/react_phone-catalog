@@ -1,0 +1,65 @@
+@import '/src/styles/main';
+
+.cart-item{
+  width: 288px;
+  height: 160px;
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  justify-content: space-around;
+  background-color: $surface-1;
+  margin-bottom: 16px;
+  gap: 16px;
+
+  @include onTablet{
+    width: 288px;
+    height: 160px;
+  }
+
+  @include onTablet{
+    width: 752px;
+  }
+}
+
+.product-image{
+  width: 80px;
+  height: 80px;
+  display: flex;
+
+  background-color: transparent;
+}
+
+.quantity-wrapper{
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+  align-items: center;
+  background-color: transparent;
+}
+
+.product-price{
+  font-size: 22px;
+  font-weight: 800;
+  color: $white;
+  background-color: $surface-1;
+}
+
+.quantity{
+  background-color: $surface-1;
+}
+
+.icon{
+  background-color: transparent;
+}
+
+.disabled{
+  background-color: transparent;
+  border: 1px solid rgba(59, 62, 74, 1);
+}
+
+.product-name{
+  background-color: transparent;
+  display: flex;
+  max-width: 128px;
+
+}

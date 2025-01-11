@@ -1,0 +1,83 @@
+@import '/src/styles/main';
+
+.title{
+  font-family: Mont, sans-serif;
+  font-size: 32px;
+  font-weight: 800;
+  line-height: 41px;
+  color: $white;
+  padding: 24px 0;
+
+  @include onTablet{
+    font-size: 48px;
+
+  }
+}
+
+.slider{
+  margin-inline: -16px;
+  display: block;
+  position: relative;
+  overflow: hidden;
+
+  img{
+    width: 100%;
+  }
+
+  @include onTablet{
+    margin-inline: 0;
+    overflow: hidden;
+  }
+}
+
+.slider__track{
+  display: flex ;
+  transition: transform 0.5s ease-in-out;;
+
+}
+
+.slider__item{
+  flex: 0 0 100%
+}
+
+@include onTablet{
+  .slider__prev,
+  .slider__next {
+    position: absolute;
+    background-image: url("../../../../Images/Arrow-right.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    top: 50%;
+    width: 32px;
+    height: 32px;
+
+    &.slider__prev {
+      left: 16px;
+      transform: rotate(180deg) translateY(50%);
+    }
+
+    &.slider__next {
+      right: 16px;
+    }
+  }
+}
+
+.slider__indicators{
+  display: flex;
+  flex-direction: row;
+  gap: 18px;
+  justify-content: center;
+
+}
+
+.slider__dot{
+  display: flex;
+  width: 14px;
+  height: 4px;
+  background-color: $grey;
+  cursor: pointer;
+}
+
+.slider__dot--is-active {
+  background-color: $white;
+}
