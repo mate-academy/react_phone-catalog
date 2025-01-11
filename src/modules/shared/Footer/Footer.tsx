@@ -16,7 +16,7 @@ export const Footer = () => {
       <Container>
         <div className={styles.footer__content}>
           <img
-            src="/img/logo/logo-footer.png"
+            src="./img/logo/logo-footer.png"
             alt="Nice Gadgets logo"
             className={styles.logo}
           />
