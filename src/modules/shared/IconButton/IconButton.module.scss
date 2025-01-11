@@ -1,0 +1,43 @@
+@import '../../../styles/global';
+
+.button {
+  box-sizing: border-box;
+  height: 100%;
+  width: 32px;
+  border-radius: 48px;
+  border: 1px solid $icons-color;
+  background-color: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: border-color $effectDuration;
+
+  &:hover {
+    border-color: $primary-color;
+  }
+
+  &:disabled {
+    border-color: $elements-color;
+    cursor: default;
+    color: $elements-color;
+
+  }
+
+  &--right {
+    transform: rotate(0);
+  }
+
+  &--left {
+    transform: rotate(180deg);
+  }
+
+  &--up {
+    transform: rotate(-90deg);
+  }
+
+  &--down {
+    transform: rotate(90deg);
+  }
+
+}

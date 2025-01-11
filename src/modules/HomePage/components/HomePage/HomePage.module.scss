@@ -1,0 +1,39 @@
+@import '../../../../styles/global';
+
+.home {
+  display: flex;
+  flex-direction: column;
+  gap: 56px;
+  padding-bottom: 64px;
+
+  @include onTablet {
+    gap: 64px;
+  }
+
+  @include onDesktop {
+    padding-bottom: 80px;
+    gap: 80px;
+  }
+
+  &__title {
+    @include visually-hidden;
+  }
+}
+
+.pictureSlider {
+  color: $primary-color;
+
+  &__subtitle {
+    padding-block: 24px;
+    
+    @include h1;
+
+    @include onTablet {
+      padding-block: 32px;
+    }
+
+    @include onDesktop {
+      padding-block: 56px;
+    }
+  }
+}

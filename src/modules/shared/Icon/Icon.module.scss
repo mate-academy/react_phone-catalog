@@ -1,0 +1,71 @@
+@import '../../../styles/global';
+
+.icon {
+  position: relative;
+  height: 100%;
+  aspect-ratio: 1;
+  box-sizing: border-box;
+  box-shadow: -1px 0 0 0 #E2E6E9;
+  background-repeat: no-repeat;
+  background-position: center;
+
+  &--active {
+    box-shadow:
+      -1px 0 0 0 #E2E6E9,
+      inset 0 -3px 0 0 $primary-color;
+  }
+
+  &--menu {
+    background-image: url('/img/icons/icon-menu.svg');
+
+    @include onTablet {
+      display: none;
+    }
+  }
+
+  &--close {
+    background-image: url('/img/icons/icon-close.svg');
+
+    @include onTablet {
+      display: none;
+    }
+  }
+
+  &--favourites {
+    background-image: url('/img/icons/icon-favourites.svg');
+    display: none;
+
+    @include onTablet {
+      display: block;
+    }
+  }
+
+  &--cart {
+    background-image: url('/img/icons/icon-cart.svg');
+    display: none;
+
+    @include onTablet {
+      display: block;
+    }
+  }
+
+  &__counter {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateY(-100%);
+
+    @include square(13px);
+
+    border: 1px solid $white-color;
+    border-radius: 50%;
+    background-color: $secondary-accent-color;
+
+    color: $white-color;
+    font-family: Mont;
+    font-size: 9px;
+    font-weight: 700;
+    line-height: 14px;
+    text-align: center;
+  }
+}

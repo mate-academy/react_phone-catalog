@@ -1,0 +1,14 @@
+@import './utils/normalize';
+@import './utils/variables';
+@import './utils/fonts';
+@import './utils/mixins';
+@import './utils/typography';
+
+body {
+  font-family: Mont;
+  color: $primary-color;
+  background-color: $hover-bg-color;
+}
+
+/* #region normalied */
+/* #endregion */

@@ -1,0 +1,83 @@
+@import '../../../../styles/global';
+
+.picturesSlider {
+  position: relative;
+  width: 400px;
+  overflow: hidden;
+}
+
+.sliderImages {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
+.sliderImages img {
+  opacity: 0;
+  visibility: hidden;
+  position: absolute;
+}
+
+.sliderControls {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+}
+
+.sliderControls button {
+  width: 12px;
+  height: 12px;
+  background-color: rgba(255, 255, 255, 0.7);
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.sliderControls button.active {
+  background-color: #6200ea;
+}
+
+.sliderControls button:hover {
+  background-color: rgba(255, 255, 255, 1);
+}
+
+.prevButton,
+.nextButton {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.prevButton {
+  left: 10px;
+}
+
+.nextButton {
+  right: 10px;
+}
+
+.prevButton:hover,
+.nextButton:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+img.active {
+  opacity: 1;
+  visibility: visible;
+  position: relative;
+  transition: opacity 0.5s ease-in-out;
+}

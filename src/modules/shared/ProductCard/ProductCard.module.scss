@@ -1,0 +1,13 @@
+@import '../../../styles/global';
+
+.product-card{
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+border-radius: 8px;
+border: 1px solid $elements-color;
+background-color: $white-color;
+
+}

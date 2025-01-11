@@ -1,0 +1,134 @@
+@mixin onTablet {
+  @media(min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin onDesktop {
+  @media(min-width: $desktop-min-width) {
+    @content;
+  }
+}
+
+/* #region From Typography design*/
+@mixin h1 {
+  font-family: Mont-Bold;
+  font-weight: 800;
+  font-size: 32px;
+  line-height: 41px;
+  letter-spacing: -0.01em;
+
+  @include onTablet {
+    font-size: 48px;
+    line-height: 56px;
+  }
+}
+
+@mixin h2 {
+  font-family: Mont-Bold;
+  font-size: 22px;
+  line-height: 31px;
+  letter-spacing: 0;
+
+  @include onTablet {
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+  }
+}
+
+@mixin h3 {
+  font-family: Mont-Bold;
+  font-size: 20px;
+  line-height: 26px;
+
+  @include onTablet {
+    font-size: 22px;
+    line-height: 31px;
+  }
+}
+
+@mixin h4 {
+  font-family: Mont-SemiBold;
+  font-size: 16px;
+  line-height: 20px;
+
+  @include onTablet {
+    font-size: 20px;
+    line-height: 26px;
+  }
+}
+
+@mixin uppercase {
+  font-family: Mont-Bold;
+  font-size: 12px;
+  line-height: 11px;
+  letter-spacing: -0.04em;
+  text-transform: uppercase;
+  color: $secondary-color;
+}
+
+@mixin buttons {
+  font-family: Mont-SemiBold;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 0;
+}
+
+@mixin body-text {
+  font-family: Mont;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 0;
+}
+
+@mixin small-text {
+  font-family: Mont-SemiBold;
+  font-size: 12px;
+  line-height: 15px;
+  letter-spacing: 0;
+  color: $secondary-color;
+}
+
+/* #endregion */
+
+@mixin pageGrid {
+  --columns: 4;
+
+  display: grid;
+  column-gap: 16px;
+  grid-template-columns: repeat(var(--columns), 1fr);
+
+  @include onTablet() {
+    --columns: 12;
+  }
+
+  @include onDesktop() {
+    --columns: 24;
+  }
+}
+
+@mixin visually-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  margin: -1px !important;
+  border: 0 !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+}
+
+@mixin square($size) {
+  height: $size;
+  width: $size;
+}
+
+@mixin hover($property, $toValue) {
+  transition: #{property} $effectDuration;
+
+  &:hover {
+    #{$property}: $toValue;
+  }
+}
