@@ -66,7 +66,6 @@
     object-position: right;
     opacity: 0;
     animation: fade-in-out 5s linear infinite;
-    pointer-events: none;
     background: linear-gradient(125deg, $primary-color 25%, $accent-color 61%, $secondary-accent-color 94%);
     background-color: $primary-color;
 

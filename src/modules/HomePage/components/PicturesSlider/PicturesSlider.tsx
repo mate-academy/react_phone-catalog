@@ -39,8 +39,8 @@ export const PicturesSlider = () => {
   };
 
   const swipeHandlers = useSwipeable({
-    onSwipedLeft: () => handleNext,
-    onSwipedRight: () => handleNext,
+    onSwipedLeft: () => handleNext(),
+    onSwipedRight: () => handleNext(),
   });
 
   return (
