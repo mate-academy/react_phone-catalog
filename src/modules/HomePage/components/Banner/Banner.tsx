@@ -12,14 +12,14 @@ export const Banner: React.FC = () => {
   const [touchEnd, setTouchEnd] = useState<number | null>(null);
 
   const phoneSlides = [
-    'src/Images//Phone-Banner1.png',
-    'src/Images//Phone-Banner1.png',
-    'src/Images//Phone-Banner1.png',
+    'Images//Phone-Banner1.png',
+    'Images//Phone-Banner1.png',
+    'Images//Phone-Banner1.png',
   ];
   const tabletSlides = [
-    'src/Images//Tablet-Banner1.png',
-    'src/Images//Tablet-Banner1.png',
-    'src/Images//Tablet-Banner1.png',
+    'Images//Tablet-Banner1.png',
+    'Images//Tablet-Banner1.png',
+    'Images//Tablet-Banner1.png',
   ];
 
   const updateScreenSize = () => {
