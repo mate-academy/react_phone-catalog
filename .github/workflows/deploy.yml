@@ -7,8 +7,9 @@ permissions:
 on:
   push:
     branches:
-      - main # Make sure you have the correct name of your branch here
-
+      - main
+      - develop
+      -
 jobs:
   deploy:
     runs-on: ubuntu-latest
