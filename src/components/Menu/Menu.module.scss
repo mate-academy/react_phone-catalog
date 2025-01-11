@@ -1,5 +1,5 @@
 @import '/src/styles/main';
-@import "src/components/Header/Header.module";
+@import "../Header/Header.module";
 
 .menu{
   background-color: $main-color;
