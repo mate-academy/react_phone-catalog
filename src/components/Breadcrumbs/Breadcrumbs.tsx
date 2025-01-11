@@ -11,13 +11,13 @@ export const Breadcrumbs: React.FC<{
     <nav className={styles.breadcrumbs}>
       <NavLink to={'/'} className={styles['home-link']}>
         <img
-          src="src/Images/Home.svg"
+          src="public/Images/Home.svg"
           alt="Home"
           className={classNames(styles['home-image'])}
         />
       </NavLink>
       <img
-        src="src/Images/Arrow-right.svg"
+        src="public/Images/Arrow-right.svg"
         alt="Arrow"
         className={styles['arrow-image']}
       />
@@ -42,7 +42,7 @@ export const Breadcrumbs: React.FC<{
       {currentProduct && (
         <>
           <img
-            src="src/Images/Arrow-right.svg"
+            src="public/Images/Arrow-right.svg"
             alt="Arrow"
             className={styles['arrow-image']}
           />

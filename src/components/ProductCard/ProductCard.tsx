@@ -129,7 +129,7 @@ export const ProductCard: React.FC<Props> = ({
             )}
           >
             <img
-              src="src/Images/Favourites-Filled.svg"
+              src="public/Images/Favourites-Filled.svg"
               alt="Favorites"
               className={styles['favorites-img']}
             />
@@ -147,7 +147,7 @@ export const ProductCard: React.FC<Props> = ({
             )}
           >
             <img
-              src="src/Images/Favorites-icon.svg"
+              src="public/Images/Favorites-icon.svg"
               alt="Favorites"
               className={styles['favorites-img']}
             />

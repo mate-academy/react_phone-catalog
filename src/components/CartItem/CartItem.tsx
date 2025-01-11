@@ -30,7 +30,7 @@ export const CartItem: React.FC<{ product: Product }> = ({ product }) => {
     <div className={styles['cart-item']}>
       <button className={styles['cross-button']} onClick={handleDeleteFromCart}>
         <img
-          src="src/Images/Cross.svg"
+          src="public/Images/Cross.svg"
           alt="Remove Item"
           className={styles['cross-icon']}
         />
@@ -52,7 +52,7 @@ export const CartItem: React.FC<{ product: Product }> = ({ product }) => {
           onClick={handleDecrease}
         >
           <img
-            src="src/Images/Minus.svg"
+            src="public/Images/Minus.svg"
             alt="Decrease"
             className={classNames(styles['decrease-icon'], styles.icon)}
           />
@@ -63,7 +63,7 @@ export const CartItem: React.FC<{ product: Product }> = ({ product }) => {
           onClick={handleIncrease}
         >
           <img
-            src="src/Images/Plus.svg"
+            src="public/Images/Plus.svg"
             alt="Increase"
             className={classNames(styles['increase-icon'], styles.icon)}
           />

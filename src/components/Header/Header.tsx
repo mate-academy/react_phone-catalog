@@ -82,7 +82,7 @@ export const Header = ({ headerRef }) => {
             }
           >
             <img
-              src="src/Images/Favorites-icon.svg"
+              src="public/Images/Favorites-icon.svg"
               alt="Favorites"
               className={styles.cover__image}
             />
@@ -97,7 +97,7 @@ export const Header = ({ headerRef }) => {
             }
           >
             <img
-              src="src/Images/Store-icon.svg"
+              src="public/Images/Store-icon.svg"
               alt="Cart"
               className={styles.cover__image}
             />
@@ -110,7 +110,7 @@ export const Header = ({ headerRef }) => {
             onClick={() => setIsMenuOpen(!isMenuOpen)}
           >
             <img
-              src="src/Images/Menu.svg"
+              src="public/Images/Menu.svg"
               alt="Menu"
               className={styles.cover__image}
             />

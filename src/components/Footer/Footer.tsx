@@ -49,7 +49,7 @@ export const Footer = ({ headerRef }) => {
             )}
           >
             <img
-              src="src/Images/Arrow-right.svg"
+              src="public/Images/Arrow-right.svg"
               alt="Go Back"
               className={classNames(styles['back-image'])}
             />
