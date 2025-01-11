@@ -221,7 +221,7 @@ export const ProductDetails: React.FC = () => {
                   )}
                 >
                   <img
-                    src="../public/img/Favourites-Filled.svg"
+                    src="Image/Favourites-Filled.svg"
                     alt="Favorites"
                     className={styles['favorites-img']}
                   />
@@ -239,7 +239,7 @@ export const ProductDetails: React.FC = () => {
                   )}
                 >
                   <img
-                    src="../public/img/Favorites-icon.svg"
+                    src="Image/Favorites-icon.svg"
                     alt="Favorites"
                     className={styles['favorites-img']}
                   />

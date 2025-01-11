@@ -42,7 +42,7 @@ export const CardSlider: React.FC<Props> = ({
             onClick={scrollLeft}
           >
             <img
-              src="public/Images/Arrow-right.svg"
+              src="Images/Arrow-right.svg"
               alt="Left"
               className={styles['card-slider__button-img']}
             />
@@ -56,7 +56,7 @@ export const CardSlider: React.FC<Props> = ({
             onClick={scrollRight}
           >
             <img
-              src="public/Images/Arrow-right.svg"
+              src="Images/Arrow-right.svg"
               alt="Right"
               className={styles['card-slider__button-img']}
             />

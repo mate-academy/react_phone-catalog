@@ -15,7 +15,7 @@ export const Menu = ({ isOpen, onClose }) => {
         <header className={styles.header}>
           <a href="/" className={styles.menu__logo}>
             <img
-              src="/public/Images/Logo.svg"
+              src="Images/Logo.svg"
               alt="Nice Gadgets Logo"
               className={styles['menu__logo-image']}
             />
@@ -27,7 +27,7 @@ export const Menu = ({ isOpen, onClose }) => {
             onClick={onClose}
           >
             <img
-              src="public/Images/Close.svg"
+              src="Images/Close.svg"
               alt="Close"
               className={styles.coverImage}
             />
@@ -82,10 +82,10 @@ export const Menu = ({ isOpen, onClose }) => {
           className={styles.menu__icon}
           onClick={onClose}
         >
-          <img src="public/Images/Favs.svg" alt="Favorites" />
+          <img src="Images/Favs.svg" alt="Favorites" />
         </NavLink>
         <NavLink to="/cart" className={styles.menu__icon} onClick={onClose}>
-          <img src="public/Images/Shopping-bag.svg" alt="Cart" />
+          <img src="Images/Shopping-bag.svg" alt="Cart" />
         </NavLink>
       </div>
     </aside>
