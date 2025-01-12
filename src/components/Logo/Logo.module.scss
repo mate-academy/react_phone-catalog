@@ -1,0 +1,17 @@
+@use './../../styles/mixins' as *;
+
+.logo {
+  & > img {
+    width: 64px;
+
+    @include transition;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+
+    @include desktop-screen {
+      width: 80px;
+    }
+  }
+}
