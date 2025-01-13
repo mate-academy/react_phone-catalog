@@ -1,6 +1,7 @@
 import { NavLink } from "react-router-dom";
 import useWindowSize from "../../../hooks/useWindowSize.hook";
 import { BannerImage } from "../../../types/bannerImage";
+import classNames from "classnames";
 
 type Props = {
   image: BannerImage;
@@ -33,7 +34,10 @@ const HomeBannerScreenImage = ({ image, size, index }: Props) => {
             {title} <span className="text-primary">👌</span>
           </p>
           <p
-            className={`text-bodyText text-sec ${!isScreenSmall && "text-center"}`}
+            className={classNames("text-sec", {
+              "text-right": isOddPlate,
+              "text-center": !isScreenSmall,
+            })}
           >
             {paragraph}
           </p>
@@ -51,10 +55,15 @@ const HomeBannerScreenImage = ({ image, size, index }: Props) => {
           className="absolute h-full w-full"
           style={{ boxShadow: boxShadowStyle }}
         ></div>
-        <img src={src} alt="" className="h-full w-full object-contain" />
+        <img
+          src={src}
+          alt=""
+          className="max-h-40 w-full object-contain small:max-h-bannerMd desktop:max-h-banner"
+        />
       </div>
     </section>
   );
 };
 
 export default HomeBannerScreenImage;
+``;

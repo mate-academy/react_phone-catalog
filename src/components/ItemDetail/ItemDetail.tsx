@@ -146,7 +146,7 @@ const ItemDetail = () => {
   ) : (
     <section className="mb-20 flex w-full flex-col gap-20 pt-6 small:pt-8 desktop:pt-16">
       <h2>{itemInfo?.name}</h2>
-      <section className="grid gap-10 small:grid-cols-2 small:gap-4">
+      <section className="grid gap-10 small:grid-cols-[auto,auto] small:gap-4">
         {itemInfo && (
           <ItemDetailImages
             currentImage={itemInfo.images[chosenImage]!}

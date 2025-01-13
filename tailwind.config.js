@@ -116,6 +116,11 @@ export default {
       maxWidth: {
         slider: "1200px",
       },
+      maxHeight: {
+        banner: "400px",
+        bannerMd: "200px",
+        bannerSm: "320px",
+      },
       width: {
         page: "min(100%, calc(1200px + (2rem * 2)))",
         card: "276px",

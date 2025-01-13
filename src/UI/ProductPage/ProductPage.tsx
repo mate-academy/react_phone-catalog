@@ -76,6 +76,29 @@ const ProductPage = ({ productList, name }: Props) => {
     updateParams({ itemPerPage: value });
   };
 
+  const handleClickChangePagPage = (isNext?: boolean) => {
+    const changingPage = isNext ? +currentPage + 1 : +currentPage - 1;
+
+    if (!isNext && changingPage < 1) {
+      console.log(changingPage < 1 ? 1 : changingPage < 1);
+      return updateParams({ currentPage: "1" });
+    } else {
+      updateParams({ currentPage: changingPage.toString() });
+    }
+
+    if (
+      isNext &&
+      itemPerPage !== "All" &&
+      changingPage > Math.ceil(productList.length / itemPerPage)
+    ) {
+      return updateParams({
+        currentPage: Math.ceil(productList.length / itemPerPage).toString(),
+      });
+    } else {
+      updateParams({ currentPage: changingPage.toString() });
+    }
+  };
+
   const handleChangeSortType = (value: string) =>
     updateParams({ sortBy: value });
 
@@ -102,8 +125,10 @@ const ProductPage = ({ productList, name }: Props) => {
       <ProductsList products={numberOfItems(+currentPage)} />
       {itemPerPage !== "All" && (
         <Pagination
+          currentPage={+currentPage}
           selectedPage={+currentPage}
           onChange={handleClickChangePage}
+          onChangePag={handleClickChangePagPage}
           pages={paginationMax}
         />
       )}

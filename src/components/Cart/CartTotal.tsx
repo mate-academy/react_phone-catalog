@@ -12,7 +12,7 @@ const CartTotal = () => {
         <p className="text-bodyText text-sec">Total for {totalItem} items</p>
       </div>
       <hr className="my-4 border-elem"></hr>
-      <button className="grid w-full place-items-center rounded-lg bg-accent py-4 text-white small:w-[max(20dvw,320px)]">
+      <button className="mx-auto grid w-full place-items-center rounded-lg bg-accent py-4 text-white small:w-[max(20dvw,320px)]">
         Checkout
       </button>
     </div>

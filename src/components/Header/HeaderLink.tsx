@@ -1,3 +1,4 @@
+import classNames from "classnames";
 import { NavLink } from "react-router-dom";
 
 type Link = {
@@ -17,18 +18,23 @@ const HeaderLink = ({ option }: Props) => {
       key={page}
       to={to}
       className={({ isActive }) =>
-        `relative grid h-full place-items-center text-center font-montSemi text-uppercase uppercase duration-300 ${
-          isActive ? "text-primary" : "text-sec hover:bg-elem"
-        }`
+        classNames(
+          "relative grid h-full place-items-center text-center font-montSemi text-uppercase uppercase duration-300",
+          {
+            "text-primary": isActive,
+            "text-sec hover:bg-elem": !isActive,
+          },
+        )
       }
     >
       {({ isActive }) => (
         <>
           {page}
           <div
-            className={`${
-              !isActive && "opacity-0"
-            } absolute bottom-0 h-[3px] w-full bg-primary duration-300`}
+            className={classNames(
+              "absolute bottom-0 h-[3px] w-full bg-primary duration-300",
+              { "opacity-0": !isActive },
+            )}
           ></div>
         </>
       )}

@@ -7,7 +7,7 @@ import useWindowSize from "../../../hooks/useWindowSize.hook";
 const HomeHotPrices = () => {
   const { productsList } = useAppContext();
   const [curElem, setCurElem] = useState<number>(0);
-  const itemsList = productsList.filter((el) => el.price / el.fullPrice < 0.75);
+  const itemsList = productsList.filter((el) => el.fullPrice - el.price > 100);
   const { width } = useWindowSize();
 
   const containerSize = 276 + 32;

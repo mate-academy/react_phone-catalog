@@ -1,3 +1,5 @@
+import classNames from "classnames";
+
 type Props = {
   pageNum: number;
   selectedPage: number;
@@ -5,15 +7,17 @@ type Props = {
 };
 
 const PaginationPage = ({ pageNum, selectedPage, onChange }: Props) => {
-  const currentPage = pageNum + 1;
-  const isSelected = selectedPage === currentPage;
+  const isSelected = selectedPage === pageNum;
 
   return (
     <div
-      className={`hover: grid size-8 cursor-pointer place-items-center rounded-full border-1 border-elem text-bodyText duration-150 hover:border-primary ${isSelected ? "cursor-default bg-primary text-white" : ""}`}
-      onClick={() => onChange(currentPage)}
+      className={classNames(
+        "hover: grid size-8 cursor-pointer place-items-center rounded-full border-1 border-elem text-bodyText duration-150 hover:border-primary",
+        { "cursor-default bg-primary text-white": isSelected },
+      )}
+      onClick={() => onChange(pageNum)}
     >
-      {currentPage}
+      {pageNum}
     </div>
   );
 };

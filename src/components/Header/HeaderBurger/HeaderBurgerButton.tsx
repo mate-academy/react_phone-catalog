@@ -8,7 +8,7 @@ const HeaderBurgerButton = () => {
   return (
     <button
       onClick={handleClickSwitchBurger}
-      className="desktop:size-16 relative grid size-12 place-items-center border-l-1 border-elem"
+      className="relative grid size-12 place-items-center border-l-1 border-elem desktop:size-16"
     >
       <BurgerMenu fill={primary} />
     </button>

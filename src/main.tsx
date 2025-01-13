@@ -12,5 +12,5 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
         <App />
       </HashRouter>
     </AppContextContainer>
-  </React.StrictMode>
+  </React.StrictMode>,
 );

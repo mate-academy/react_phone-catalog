@@ -28,7 +28,7 @@ const ItemDetailImages = ({
           </div>
         ))}
       </div>
-      <div className="flex aspect-square w-full items-center justify-center">
+      <div className="grid aspect-square w-fit place-items-center">
         <img src={currentImage} alt="" className="size-full object-contain" />
       </div>
     </div>

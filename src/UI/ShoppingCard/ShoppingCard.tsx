@@ -18,9 +18,9 @@ const ShoppingCard = ({ item }: Props) => {
   const { id, img, name, price, quantity, itemId, category } = item;
 
   return (
-    <div className="flex w-full flex-col items-center gap-6 rounded-2xl border-1 border-elem p-6 small:w-fit small:flex-row">
-      <section className="flex w-full items-center justify-between gap-6">
-        <section className="flex items-center gap-6">
+    <div className="flex w-full flex-col items-center justify-between gap-6 rounded-2xl border-1 border-elem p-6 small:flex-row">
+      <section className="w-fill flex items-center justify-between gap-6">
+        <section className="flex w-fit items-center gap-6">
           <div onClick={() => handleRemoveProductShop(id)}>
             <Close fill="#b4Bdc3" />
           </div>
@@ -33,7 +33,7 @@ const ShoppingCard = ({ item }: Props) => {
       <section className="flex w-full justify-between gap-6 small:w-fit small:justify-normal">
         <div className="flex items-center justify-center gap-6">
           <button
-            className={`grid size-8 place-items-center rounded-full border-1 duration-150`}
+            className="grid size-8 place-items-center rounded-full border-1 duration-150"
             onClick={(e) => handleDecreaseQuantityShop(id, e)}
             title="Shift-click for 5 item"
           >
@@ -41,7 +41,7 @@ const ShoppingCard = ({ item }: Props) => {
           </button>
           <p className="w-6 text-center text-bodyText">{quantity}</p>
           <button
-            className={`grid size-8 place-items-center rounded-full border-1 duration-150`}
+            className="grid size-8 place-items-center rounded-full border-1 duration-150"
             onClick={(e) => handleIncreaseQuantityShop(id, e)}
             title="Shift-click for 5 item"
           >
