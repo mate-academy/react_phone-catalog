@@ -5,7 +5,6 @@ import ArrowRight from "../../../assets/icons/ArrowRight";
 import PaginationArray from "./PaginationArray";
 import PaginationDots from "./PaginationDots";
 import PaginationPage from "./PaginationPage";
-import useWindowSize from "../../../hooks/useWindowSize.hook";
 
 type Props = {
   currentPage: number;
