@@ -20,14 +20,19 @@
 
   &__image {
     margin-bottom: 24px;
-    height: 368px;
-    width: 368px;
+    height: 280px;
+    width: 280px;
     background-repeat: no-repeat;
     background-size: cover;
     transition: all 0.5s;
 
     &:hover {
       transform: scale(105%);
+    }
+
+    @media (min-width: 1155px) {
+      height: 368px;
+      width: 368px;
     }
   }
 
