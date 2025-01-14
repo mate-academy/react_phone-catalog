@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo } from 'react';
 import { Breadcrumbs } from '../../components/Breadcrumbs';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import { ProductsList } from '../ProductPage/components/ProductsList';
@@ -11,18 +11,9 @@ export const FavouritesPage = () => {
   const { favourites } = useAppSelector(state => state.favourites);
   const { products, loading, error } = useAppSelector(state => state.products);
   const dispatch = useAppDispatch();
-  const favouritesProducts = useMemo(() => {
+  const likedProducts = useMemo(() => {
     return getLikedProducts(products, favourites);
   }, [favourites, products]);
-
-  const [likedProducts, setLikedProducts] = useState(favouritesProducts);
-
-  useEffect(() => {
-    const liked = getLikedProducts(products, favourites);
-
-    setLikedProducts(liked);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [products]);
 
   useEffect(() => {
     dispatch(init());
