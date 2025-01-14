@@ -3,7 +3,7 @@
 </a>**
 
 💻 **Technologies:**  
-[![Technologies](https://skillicons.dev/icons?i=html,scss,javascript,react,typeScript&theme=light)](https://skillicons.dev)
+[![Technologies](https://skillicons.dev/icons?i=html,scss,javascript,react,typescript&theme=light)](https://skillicons.dev)
 
 ## How to run this project
 Run these commands in your terminal:
