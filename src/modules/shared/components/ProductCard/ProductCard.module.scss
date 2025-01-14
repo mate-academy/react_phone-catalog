@@ -101,36 +101,3 @@
   justify-content: space-between;
   gap: 8px;
 }
-
-.addToCart {
-  @include buttons-desktop-tablet;
-
-  display: flex;
-  flex-grow: 1;
-  justify-content: center;
-  align-items: center;
-  height: 40px;
-  background-color: $color-accent;
-  border: none;
-
-  transition: background-color 0.3s ease;
-
-  &:hover{
-    background-color: $color-accent-light;
-  }
-}
-
-.favorite {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 40px;
-  height: 40px;
-  background-color: $color-surface2;
-  border: none;
-  transition: background-color 0.3s ease;
-
-  &:hover{
-    background-color: $color-icons;
-  }
-}

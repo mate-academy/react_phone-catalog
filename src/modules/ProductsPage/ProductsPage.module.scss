@@ -1,12 +1,52 @@
 @import 'Styles/utils';
 
 .error {
+  @include flex-center;
+
+  flex-direction: column;
+  height: 100%;
+  gap: 20px;
+
   @include h1-desktop-tablet;
-  @include small-text-desktop-tablet;
+
+  @media (max-width: $mobile-breakpoint) {
+    @include h1-mobile;
+  }
 }
 
 .reloadButton {
-  @include buttons-desktop-tablet;
+  @include buttons-text-desktop-tablet;
+  @include primary-button;
+
+  width: 200px;
+  height: 50px;
+}
+
+.notFoundProducts {
+  @include flex-center;
+
+  flex-direction: column;
+  flex: 1;
+  gap: 50px;
+}
+
+.notFoundMessage {
+  @include h1-desktop-tablet;
+
+  @media (max-width: $mobile-breakpoint) {
+    @include h1-mobile;
+  }
+}
+
+.notFoundProductsImage {
+  width: 300px;
+  height: 300px;
+}
+
+.back {
+  @include flex-center;
+
+  gap: 8px;
 }
 
 .catalogPage {

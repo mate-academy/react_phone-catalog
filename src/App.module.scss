@@ -17,3 +17,15 @@
     grid-template-rows: 48px 1fr auto;
   }
 }
+
+a {
+  text-decoration: none; /* Убираем подчеркивание */
+  color: $color-icons;
+  transition: color 0.3s ease; /* Добавляем плавный переход для цвета */
+}
+
+/* Стили для состояния при наведении */
+a:hover,
+a:focus {
+  color: white; /* Цвет при наведении */
+}

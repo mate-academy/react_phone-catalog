@@ -1,0 +1,8 @@
+@import 'Styles/utils';
+
+.addToCart {
+  @include buttons-text-desktop-tablet;
+  @include primary-button;
+
+  flex-grow: 1;
+  }

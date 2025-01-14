@@ -4,21 +4,43 @@
   @include flex-center;
 
   flex-direction: column;
-  height: 100vh;
+  gap: 20px;
 }
 
-.title {
+.back {
+  @include flex-center;
+
+  gap: 8px;
+
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+}
+
+.backContainer {
+  @include flex-center;
+
+  gap: 8px;
+}
+
+.arrowIcon{
+  width: 16px;
+  height: 16px;
+}
+
+.notFoundMessage {
   @include h1-desktop-tablet;
 
   @media (max-width: $mobile-breakpoint) {
     @include h1-mobile;
-
   }
 }
 
-.image {
-  width: 300px;
-  height: 300px;
-}
+.notFoundImg {
+    width: 100%;
+    max-width: 400px;
+    background-color: rgba(255, 255, 255, 0.1);
+  }
 
 

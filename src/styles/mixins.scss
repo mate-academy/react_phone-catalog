@@ -45,7 +45,7 @@
   letter-spacing: 0.04em;
 }
 
-@mixin buttons-desktop-tablet {
+@mixin buttons-text-desktop-tablet {
   color: $color-white;
   font-size: 14px;
   font-weight: 700;
@@ -132,3 +132,21 @@
     transform: scale(1.05);
   }
 }
+
+@mixin primary-button {
+  @include buttons-text-desktop-tablet;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40px;
+  background-color: $color-accent;
+  border: none;
+
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: $color-accent-light;
+  }
+}
+

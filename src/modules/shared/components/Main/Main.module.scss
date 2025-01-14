@@ -2,19 +2,13 @@
 
 main {
   grid-area: main;
+
+  @include flex-center;
 }
 
 .container {
   display: block;
   margin: 0 auto;
   max-width: 1136px;
-
-  @media (max-width: $tablet-breakpoint) {
-    // padding: 0 24px;
-    width: 100%;
-  }
-
-  @media (max-width: $mobile-breakpoint) {
-    // padding: 0 16px;
-  }
+  width: 100%;
 }

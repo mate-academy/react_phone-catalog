@@ -4,10 +4,18 @@ import { RouteParams } from 'modules/shared/types/Routes';
 import { useParams } from 'react-router-dom';
 import styles from './ProductsPage.module.scss';
 import { ProductCard } from 'modules/shared/components/ProductCard';
+import { NotFoundPage } from 'modules/NotFoundPage';
 
 export const ProductsPage = () => {
   const { category } = useParams<RouteParams>();
   const { data, loading, error } = useProductsContext();
+
+  const validCategories = ['phones', 'tablets', 'accessories'];
+
+  if (!validCategories.includes(category || '')) {
+    return <NotFoundPage />;
+  }
+
   const products = category ? data[category] : undefined;
 
   if (loading) {
@@ -33,7 +41,20 @@ export const ProductsPage = () => {
   }
 
   if (!products || products.length === 0) {
-    return <div>There are no {category} yet.</div>;
+    return (
+      <div className={styles.notFoundProducts}>
+        <div className={styles.back}>
+          <img src="img/icons/arrow-back.svg" alt="arrow-back" />
+          <a href="#">Back to home</a>
+        </div>
+        <h1 className={styles.notFoundMessage}>There are no {category} yet.</h1>
+        <img
+          className={styles.notFoundProductsImage}
+          src="img/product-not-found.png"
+          alt="No products found"
+        />
+      </div>
+    );
   }
 
   return (

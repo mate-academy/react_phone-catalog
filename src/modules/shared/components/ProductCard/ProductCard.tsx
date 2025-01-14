@@ -1,5 +1,7 @@
 import { Product } from 'modules/shared/types/Product';
 import styles from './ProductCard.module.scss';
+import { AddToCartButton } from '../AddToCartButton';
+import { FavoriteButton } from '../FavoriteButton';
 
 type Props = {
   product: Product;
@@ -42,10 +44,9 @@ export const ProductCard: React.FC<Props> = ({ product, showDiscount }) => {
         </div>
 
         <div className={styles.actions}>
-          <button className={styles.addToCart}>Add to cart</button>
-          <button className={styles.favorite}>
-            <img src="img/icons/heart.svg" alt="favorite" />
-          </button>
+          <AddToCartButton />
+
+          <FavoriteButton />
         </div>
       </div>
     </div>

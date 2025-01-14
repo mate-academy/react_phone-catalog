@@ -1,0 +1,16 @@
+@import 'Styles/utils';
+
+.favorite {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  background-color: $color-surface2;
+  border: none;
+  transition: background-color 0.3s ease;
+
+  &:hover{
+    background-color: $color-icons;
+  }
+}
