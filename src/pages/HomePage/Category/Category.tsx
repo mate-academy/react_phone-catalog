@@ -8,9 +8,7 @@ import { fetchAllProducts } from '../../../features/allProductsSlice';
 
 export const CategoryItems = () => {
   const dispatch = useAppDispatch();
-
   const { products } = useAppSelector(state => state.allProducts);
-
   const countItems = (category: string) => {
     return products.filter(item => item.category === category).length;
   };
@@ -20,12 +18,10 @@ export const CategoryItems = () => {
   }, [dispatch]);
 
   const theme = useAppSelector(state => state.themeSwitcher.theme);
-
   const categoryHeader = `category__header theme-${theme}`;
   const categoryName = `category__name theme-${theme}`;
   const categoryQuantity = `category__quantity theme-${theme}`;
   const catgoryImage = `category__img theme-${theme}`;
-
   const BASE_ULR =
     'https://mate-academy.github.io/react_phone-catalog/_new/img/';
 

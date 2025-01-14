@@ -163,7 +163,6 @@ export const ProductDetails: React.FC<Props> = ({ categoryId }) => {
               >
                 {product.images
                   ? product.images.map((image: string, index: number) => {
-                      /* eslint-disable indent */
                       return (
                         <div key={index}>
                           <img
