@@ -1,6 +1,6 @@
 import './CartWindow.scss';
 import Cross from '../../images/cartImages/Cross.svg';
-import { useAppDispatch, useAppSelector } from '../../app/hooks';
+import { useAppDispatch } from '../../app/hooks';
 import { actions } from '../../features/cartSlice';
 
 type ClickedProps = {
@@ -9,7 +9,6 @@ type ClickedProps = {
 
 export const CartWindow: React.FC<ClickedProps> = ({ setButtonClicked }) => {
   const dispatch = useAppDispatch();
-  const cartProducts = useAppSelector(state => state.cartItems);
 
   const handleConfirm = () => {
     dispatch(actions.removeAll());

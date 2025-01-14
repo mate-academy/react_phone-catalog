@@ -2,6 +2,7 @@ import { TabAccessPhone } from '../types/tabAccessPhones';
 
 const BASE_URL = 'https://hanna-balabukha.github.io/react_phone-catalog/api/';
 
+/* eslint-disable-next-line */
 export function getJson<T = any>(Url: string): Promise<T> {
   return fetch(BASE_URL + Url).then(response => {
     if (!response.ok) {

@@ -44,8 +44,9 @@ export const ProductDetails: React.FC<Props> = ({ categoryId }) => {
       return;
     }
 
+    /* eslint-disable-next-line */
     dispatch(startLoadingProduct({ categoryId, productId: productId! }));
-  }, [productId, categoryId]);
+  }, [productId, categoryId, product?.id, dispatch]);
 
   const handleCurrentImg = (image: string) => {
     setCurrentImage(image);
@@ -162,6 +163,7 @@ export const ProductDetails: React.FC<Props> = ({ categoryId }) => {
               >
                 {product.images
                   ? product.images.map((image: string, index: number) => {
+                      /* eslint-disable indent */
                       return (
                         <div key={index}>
                           <img

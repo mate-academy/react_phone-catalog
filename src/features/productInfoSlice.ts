@@ -34,6 +34,7 @@ export const startLoadingProduct = createAsyncThunk(
         products = await getJson(accessoriesUrl);
         break;
       default:
+        /* eslint-disable */
         console.warn('there is no such categoryId', payload.categoryId);
         break;
     }

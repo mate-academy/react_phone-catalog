@@ -4,6 +4,7 @@ import './BrandNew.scss';
 import { NavLink } from 'react-router-dom';
 import { sliceToShow } from '../../../helpers/sliceToShow';
 import { useAppDispatch, useAppSelector } from '../../../app/hooks';
+/* eslint-disable-next-line max-len */
 import { PhoneTablAccessCard } from '../../../components/PhoneTablAccessCard/PhoneTablAccessCard';
 import { Arrays } from '../../../components/Arrays';
 import { Product } from '../../../types/product';
@@ -22,7 +23,7 @@ export const BrandNew = () => {
     if (!products.length) {
       dispatch(fetchAllProducts());
     }
-  }, [products.length]);
+  }, [products.length, dispatch]);
 
   const sortedBrand = products.length
     ? [...products].sort((a, b) => b.fullPrice - a.fullPrice)

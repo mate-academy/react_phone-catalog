@@ -4,7 +4,6 @@ import './NotFoundPage.scss';
 
 export const NotFoundPage = () => {
   const theme = useAppSelector(state => state.themeSwitcher.theme);
-
   const notPageTitle = `notPage__title theme-${theme}`;
 
   return (

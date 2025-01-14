@@ -9,6 +9,7 @@ import Vec_light_left_dark from '../../images/homePage/Vec_light_left_dark.svg';
 import Arrow_Right from '../../images/homePage/Arrow_Right.svg';
 import Right_banner from '../../images/homePage/Right_banner.svg';
 import Vec_light_right from '../../images/homePage/Vec_light_right.svg';
+/* eslint-disable-next-line max-len */
 import Vec_light_right_dark from '../../images/homePage/Vec_light_right_dark.svg';
 import './Pagination.scss';
 import React from 'react';
@@ -23,6 +24,7 @@ type Props = {
 
 export const Pagination: React.FC<Props> = ({ products }) => {
   const [searchParams, setSearchParams] = useSearchParams();
+  const theme = useAppSelector(state => state.themeSwitcher.theme);
 
   if (products === undefined) {
     return null;
@@ -34,11 +36,6 @@ export const Pagination: React.FC<Props> = ({ products }) => {
 
   const total = () => {
     if (perPage === 'all') {
-      // setSearchParams({
-      //   page: `${1}`.toString(),
-      //   perPage: `${products.length}`.toString(),
-      // });
-
       return products.length;
     } else {
       return Math.ceil(products.length / +itemsPerPage);
@@ -79,7 +76,6 @@ export const Pagination: React.FC<Props> = ({ products }) => {
     });
   };
 
-  const theme = useAppSelector(state => state.themeSwitcher.theme);
   const arrLeft = () => {
     if (theme === ThemeVars.DARK) {
       return +currentPage === 1 ? Vec_light_left_dark : Left_banner;

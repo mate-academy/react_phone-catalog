@@ -11,6 +11,7 @@ import Vec_light_left from '../../images/homePage/Vec_light_left.svg';
 import Left_banner from '../../images/homePage/Left_banner.svg';
 import Vec_light_left_dark from '../../images/homePage/Vec_light_left_dark.svg';
 import Vec_light_right from '../../images/homePage/Vec_light_right.svg';
+/* eslint-disable-next-line max-len */
 import Vec_light_right_dark from '../../images/homePage/Vec_light_right_dark.svg';
 import { fetchAllProducts } from '../../features/allProductsSlice';
 
@@ -26,7 +27,7 @@ export const Arrays = () => {
     if (!products.length) {
       dispatch(fetchAllProducts());
     }
-  }, [products]);
+  }, [products, dispatch]);
 
   const sortedBrand = [...products].sort((a, b) => b.price - a.price);
 

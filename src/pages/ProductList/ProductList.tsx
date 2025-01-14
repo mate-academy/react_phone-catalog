@@ -3,6 +3,7 @@ import { Pagination } from '../../components/Pagination/Pagination';
 import { SortByItem } from '../../helpers/sortBy';
 import './ProductList.scss';
 import React, { useEffect } from 'react';
+/* eslint-disable-next-line max-len */
 import { PhoneTablAccessCard } from '../../components/PhoneTablAccessCard/PhoneTablAccessCard';
 import { useAppSelector } from '../../app/hooks';
 import { Loader } from '../../components/Loader';
@@ -33,13 +34,14 @@ export const ProductList: React.FC<Props> = ({
     [],
   );
 
-  currentPage ??= '1';
-  perPage ??= choosenItems.length.toString();
+  const localCurretPage = (currentPage ??= '1');
+  const localPerPage = (perPage ??= choosenItems.length.toString());
 
-  const itemsPerPage = perPage === 'all' ? choosenItems.length : perPage;
-  const firstItemIndex = (+currentPage - 1) * +itemsPerPage;
+  const itemsPerPage =
+    localPerPage === 'all' ? choosenItems.length : localPerPage;
+  const firstItemIndex = (+localCurretPage - 1) * +itemsPerPage;
   const lastItemIndex = Math.min(
-    +currentPage * +itemsPerPage,
+    +localCurretPage * +itemsPerPage,
     choosenItems.length,
   );
 

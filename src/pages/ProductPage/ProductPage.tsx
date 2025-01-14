@@ -33,9 +33,7 @@ export const ProductPage: React.FC<Props> = ({ title, category }) => {
     if (!products.length) {
       dispatch(fetchAllProducts());
     }
-  }, [products]);
-
-  console.log(category);
+  }, [products, dispatch]);
 
   const [searchParams, setSearchParams] = useSearchParams();
   const sortParams = useMemo(
@@ -89,7 +87,7 @@ export const ProductPage: React.FC<Props> = ({ title, category }) => {
     return () => {
       dispatch(actionsSearch.setVisible(false));
     };
-  }, []);
+  }, [dispatch]);
 
   const theme = useAppSelector(state => state.themeSwitcher.theme);
 
@@ -129,7 +127,7 @@ export const ProductPage: React.FC<Props> = ({ title, category }) => {
           </div>
           <div className="productsPage__itemsOnPage">
             <div className={sortByClass}>Items on page</div>
-            <label className="productsPage__selectWrapper">
+            <label htmlFor="pageId" className="productsPage__selectWrapper">
               <select
                 value={perPage}
                 onChange={handlePerPage}
@@ -141,6 +139,7 @@ export const ProductPage: React.FC<Props> = ({ title, category }) => {
                 <option className="productsPage__option">16</option>
               </select>
               <input
+                id="pageId"
                 type="button"
                 className={`${prodArr} productsPage__arr--num`}
               ></input>

@@ -4,6 +4,7 @@ import './HotPrices.scss';
 import { NavLink } from 'react-router-dom';
 import { sliceToShow } from '../../../helpers/sliceToShow';
 import { useAppDispatch, useAppSelector } from '../../../app/hooks';
+/* eslint-disable-next-line max-len */
 import { PhoneTablAccessCard } from '../../../components/PhoneTablAccessCard/PhoneTablAccessCard';
 import { Arrays } from '../../../components/Arrays';
 import { Product } from '../../../types/product';

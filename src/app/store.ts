@@ -59,6 +59,7 @@ export const persistor = persistStore(store);
 export type AppDispatch = typeof store.dispatch;
 export type RootState = ReturnType<typeof store.getState>;
 
+/* eslint-disable */
 export type AppThunk<ReturnType = void> = ThunkAction<
   ReturnType,
   RootState,

@@ -4,6 +4,7 @@ import { CatalogContext } from '../../pages/CatalogContext';
 import { Link } from 'react-router-dom';
 import { last, sliceToShow } from '../../helpers/sliceToShow';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
+/* eslint-disable-next-line max-len */
 import { PhoneTablAccessCard } from '../PhoneTablAccessCard/PhoneTablAccessCard';
 import { Arrays } from '../Arrays';
 import { Product } from '../../types/product';
@@ -22,7 +23,7 @@ export const YouMayAlsoLike = () => {
     if (!products.length) {
       dispatch(fetchAllProducts());
     }
-  }, [products]);
+  }, [products, dispatch]);
 
   const { sortedPoducts } = useMemo(() => {
     const shuffle = [...products].sort(

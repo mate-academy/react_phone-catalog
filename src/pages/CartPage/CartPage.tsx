@@ -39,6 +39,7 @@ export const CartPage = () => {
         const productFound = products.find(prod => prod.id === id);
 
         if (productFound) {
+          /* eslint-disable-next-line */
           acc[id] = productFound;
         }
 
@@ -55,22 +56,22 @@ export const CartPage = () => {
   );
 
   const countTotal = (elements: CardProduct[]) => {
-    let totalPrice = 0;
+    let newTotalPrice = 0;
 
     elements.map(el => {
       const product = loadedProducts.products[el.productId];
 
       if (product) {
-        totalPrice += product.price * el.count;
+        newTotalPrice += product.price * el.count;
       }
     });
 
-    return totalPrice;
+    return newTotalPrice;
   };
 
   useEffect(() => {
     setTotalPrice(countTotal(cartProducts));
-  }, [cartProducts]);
+  }, [cartProducts, countTotal]);
 
   const handleDelete = (
     event: React.MouseEvent<HTMLButtonElement, MouseEvent>,

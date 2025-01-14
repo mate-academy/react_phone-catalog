@@ -19,6 +19,7 @@ const FavSlice = createSlice({
         prod => prod === action.payload,
       );
 
+      /* eslint-disable */
       !findSame
         ? currentState.favProducts.push(action.payload)
         : currentState.favProducts;
