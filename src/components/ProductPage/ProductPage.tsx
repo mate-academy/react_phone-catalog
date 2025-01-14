@@ -1,12 +1,13 @@
 import { useEffect, useState } from 'react';
 import { useComponentLoading } from '../../app/hooks';
 import { Product } from '../../features/types/Product';
-import { Loader } from '../Loader';
-import { ShownRoute, ShownRouteOrigin } from '../ShownRoute';
+import { Loader } from '../ui/Loader';
+import { ShownRoute, ShownRouteOrigin } from '../ui/ShownRoute';
 import { CustomSelect } from './CustomSelect';
 import cl from './ProductPage.module.scss';
 import { ProductCard } from '../cards/ProductCard';
 import { Pagination } from './Pagination';
+import { PageTitle } from '../titles/PageTitle';
 
 export enum ProductPageOrigin {
   PHONES = 'Mobile phones',
@@ -88,7 +89,7 @@ export const ProductPage: React.FC<Props> = ({ origin, list }) => {
       <ShownRoute origin={ShownRouteOrigin.ONPRODUCTPAGE} />
 
       <div className={cl.titleContainer}>
-        <h2 className={cl.titleContainerTitle}>{origin}</h2>
+        <PageTitle text={origin} />
         <small
           className={cl.titleContainerInfo}
         >{`${list.length} items`}</small>

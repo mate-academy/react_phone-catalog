@@ -2,8 +2,9 @@ import cl from './PageTitle.module.scss';
 
 type Props = {
   text: string;
+  className?: string;
 };
 
-export const PageTitle: React.FC<Props> = ({ text }) => (
-  <h1 className={cl.title}>{text}</h1>
+export const PageTitle: React.FC<Props> = ({ text, className }) => (
+  <h1 className={`${cl.title} ${className}`}>{text}</h1>
 );

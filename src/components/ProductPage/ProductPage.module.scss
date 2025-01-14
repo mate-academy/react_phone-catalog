@@ -16,17 +16,6 @@
   flex-direction: column;
   gap: 8px;
 
-  &Title {
-    color: $main-txt-col;
-    font-weight: 800;
-    font-size: 32px;
-    line-height: 41px;
-    @include on-tablet {
-      font-size: 48px;
-      line-height: 56px;
-    }
-  }
-
   &Info {
     color: $second-txt-col;
     font-weight: 600;

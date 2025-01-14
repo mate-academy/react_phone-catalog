@@ -1,0 +1,24 @@
+@import '../../../styles/utils/mixins.scss';
+@import '../../../styles/utils/vars.scss';
+
+.chars {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  &__line {
+    display: flex;
+    justify-content: space-between;
+  }
+  &__definition {
+    color: $second-txt-col;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 16px;
+  }
+  &__value {
+    color: $main-txt-col;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 16px;
+  }
+}

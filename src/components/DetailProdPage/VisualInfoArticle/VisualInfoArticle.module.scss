@@ -1,0 +1,206 @@
+@import '../../../styles/utils/mixins.scss';
+@import '../../../styles/utils/vars.scss';
+
+.prodVisualInfo {
+  @include on-tablet {
+    @include page-grid;
+    grid-template-rows: repeat(2, auto);
+  }
+}
+
+.prodName {
+  margin-bottom: 32px;
+
+  @include on-tablet {
+    margin-bottom: 40px;
+    grid-column: 1 / -1;
+    grid-row: 1;
+  }
+}
+
+.selectedPhoto {
+  margin: 0 auto 16px;
+
+  @include on-tablet {
+    margin: 0 auto;
+    grid-column: 2 / 8;
+    grid-row: 2;
+  }
+  @include on-desktop {
+    grid-column: 3 / 13;
+  }
+
+  &__img {
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+    max-height: 350px;
+
+    @include on-tablet {
+      max-height: 450px;
+    }
+    @include on-desktop {
+      max-height: auto;
+    }
+  }
+}
+
+.photosList {
+  width: 100%;
+  display: flex;
+  gap: 8px;
+  margin-bottom: 40px;
+
+  @include on-tablet {
+    flex-direction: column;
+    margin: 0;
+    grid-column: span 1;
+    grid-row: 2;
+  }
+  @include on-desktop {
+    grid-column: span 2;
+  }
+
+  &__item {
+    flex: 1;
+    aspect-ratio: 1;
+    border: 1px solid $second-txt-col;
+
+    @include on-tablet {
+      flex: 0;
+      height: 70px;
+    }
+  }
+  &__photo {
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+  }
+}
+
+.widgetsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+
+  @include on-tablet {
+    grid-column: 8 / -1;
+    grid-row: 2;
+  }
+  @include on-desktop {
+    grid-column: 14 / 22;
+  }
+}
+
+.selectorsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.selectorTitle {
+  color: $second-txt-col;
+  font-size: 12px;
+  margin-bottom: 8px;
+}
+
+.selectorList {
+  margin-bottom: 24px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  width: fit-content;
+
+  &__color {
+    display: flex;
+    align-items: center;
+    justify-items: center;
+    padding: 2px;
+    border-radius: 50%;
+    border: 1px solid $product-col-selector;
+
+    &--selected {
+      border-color: $product-col-selector-selected !important;
+    }
+    @include hover(border-color, $product-col-selector-hover);
+
+    &Button {
+      cursor: pointer;
+      height: 30px;
+      width: 30px;
+      border-radius: inherit;
+    }
+  }
+
+  &__capacity {
+    &Button {
+      height: 32px;
+      padding-inline: 8px;
+      font-size: 14px;
+      border: 1px solid $second-button-col;
+      background-color: $main-background-col;
+      color: $main-txt-col;
+
+      &--selected {
+        color: $main-background-col;
+        background-color: $main-txt-col;
+      }
+    }
+  }
+}
+
+.underline {
+  height: 1px;
+  background-color: $second-txt-col;
+}
+
+.priceContainer {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+
+  &__price {
+    color: $main-txt-col;
+    font-size: 32px;
+    font-weight: 800;
+  }
+  &__fullPrice {
+    display: flex;
+    height: 44px;
+    align-items: center;
+    color: $second-txt-col;
+    font-size: 22px;
+  }
+}
+
+.buttonContainer {
+  display: flex;
+  height: 48px;
+  gap: 8px;
+  margin-bottom: 32px;
+
+  &__cardButton {
+    cursor: pointer;
+    height: 100%;
+    width: 100%;
+    line-height: 48px; // center text vertically, value the same as height
+    text-align: center;
+    color: $main-txt-col;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 21px;
+    background-color: $main-button-col;
+    @include hover(background-color, $main-button-col-hover);
+  }
+  &__favButton {
+    cursor: pointer;
+    min-width: 48px;
+    background-color: $second-button-col;
+    @include hover(background-color, $second-button-col-hover);
+    &Icon {
+      height: $icon-size;
+      width: $icon-size;
+      background-image: url('/img/icons/Favourites.svg');
+    }
+  }
+}

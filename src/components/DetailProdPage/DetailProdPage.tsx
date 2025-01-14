@@ -1,6 +1,11 @@
+import { useMemo } from 'react';
+import { useAppSelector } from '../../app/hooks';
 import { DetailProduct } from '../../features/types/DetailProduct';
-import { ShownRoute, ShownRouteOrigin } from '../ShownRoute';
+import { ShownRoute, ShownRouteOrigin } from '../ui/ShownRoute';
 import cl from './DetailProdPage.module.scss';
+import { TextInfoArticle } from './TextInfoArticle';
+import { VisualInfoArticle } from './VisualInfoArticle';
+import { SlidingProdList } from '../HomePage/SlidingProdList';
 
 const prod: DetailProduct = {
   id: 'apple-iphone-11-128gb-black',
@@ -20,6 +25,7 @@ const prod: DetailProduct = {
     'img/phones/apple-iphone-11/black/03.webp',
     'img/phones/apple-iphone-11/black/04.webp',
   ],
+  /* eslint-disable max-len */
   description: [
     {
       title: 'And then there was Pro',
@@ -50,6 +56,7 @@ const prod: DetailProduct = {
   zoom: 'Digital, 5x',
   cell: ['GPRS', 'EDGE', 'WCDMA', 'UMTS', 'HSPA', 'LTE'],
 };
+/* eslint-enable max-len */
 
 type Props = {
   product?: DetailProduct;
@@ -59,12 +66,34 @@ export const DetailProdPage: React.FC<Props> = ({ product }) => {
   // eslint-disable-next-line no-param-reassign
   product = prod;
 
+  const { productList } = useAppSelector(st => st.products);
+
+  const youMayAlsoLikeList = useMemo(() => {
+    // just randomly shuffled list, idk what else to show in this list :D
+    const sortedList = [...productList].sort(() => Math.random() - 0.5);
+
+    return sortedList.slice(0, 12);
+  }, [productList]);
+
   return (
     <div className="container">
       <div className={cl.routesContainer}>
         <ShownRoute origin={ShownRouteOrigin.ONPRODUCTPAGE} />
         {/* makes '< Back' appearance */}
         <ShownRoute origin={ShownRouteOrigin.ONCART} />
+      </div>
+
+      <div className={cl.articlesWrapper}>
+        <VisualInfoArticle
+          product={product}
+          className={cl.visualArticleContainer}
+        />
+
+        <TextInfoArticle product={product} />
+
+        <div>
+          <SlidingProdList list={youMayAlsoLikeList} name="You may also like" />
+        </div>
       </div>
     </div>
   );

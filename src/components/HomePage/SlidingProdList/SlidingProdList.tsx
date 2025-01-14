@@ -10,17 +10,12 @@ import cl from './SlidingProdList.module.scss';
 import { useWidthRecalculate } from '../../../app/hooks';
 import { SectionTitle } from '../../titles/SectionTitle';
 
-export enum SlidingProdListOrigin {
-  BRANDNEWMODELS = 'BrandNewModels',
-  HOTPRICES = 'HotPrices',
-}
-
 type Props = {
   list: Product[];
-  origin: SlidingProdListOrigin;
+  name: string;
 };
 
-export const SlidingProdList: React.FC<Props> = ({ origin, list }) => {
+export const SlidingProdList: React.FC<Props> = ({ name, list }) => {
   // for buttons disabling
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(true);
@@ -63,13 +58,7 @@ export const SlidingProdList: React.FC<Props> = ({ origin, list }) => {
   return (
     <>
       <div className={cl.topContainer}>
-        <SectionTitle
-          text={
-            origin === SlidingProdListOrigin.BRANDNEWMODELS
-              ? 'Brand new models'
-              : 'Hot prices'
-          }
-        />
+        <SectionTitle text={name} />
         <div className={cl.topContainer__buttonContainer}>
           <ArrowButton
             direction={ArrowButtonDirection.LEFT}

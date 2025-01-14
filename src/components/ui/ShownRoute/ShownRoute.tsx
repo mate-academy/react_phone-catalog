@@ -1,7 +1,7 @@
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import cl from './ShownRoute.module.scss';
 import { useState } from 'react';
-import { Product } from '../../features/types/Product';
+import { Product } from '../../../features/types/Product';
 
 export enum ShownRouteOrigin {
   ONPRODUCTPAGE = 'onProductPage',

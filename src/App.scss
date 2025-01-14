@@ -26,20 +26,11 @@ iframe {
   display: none;
 }
 
-body,
-h1,
-h2,
-h3,
-ul,
-ol,
-p,
-button,
-dl,
-dt,
-dd {
+* {
   padding: 0;
   margin: 0;
   border: none;
+  list-style: none;
 }
 // #endregion
 

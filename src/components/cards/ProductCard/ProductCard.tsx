@@ -1,10 +1,17 @@
 import { Link } from 'react-router-dom';
 import { Product } from '../../../features/types/Product';
 import cl from './ProductCard.module.scss';
+import { TechSpecs } from '../../ui/TechSpecs';
 
 type Props = { product: Product; className?: string };
 
 export const ProductCard: React.FC<Props> = ({ product, className }) => {
+  const techSpecs = [
+    ['Screen', product.screen],
+    ['Capacity', product.capacity],
+    ['RAM', product.ram],
+  ];
+
   return (
     <article className={`${cl.cardContainer} ${className}`}>
       <Link to={`${product.category}/${product.id}`}>
@@ -31,22 +38,7 @@ export const ProductCard: React.FC<Props> = ({ product, className }) => {
 
       <div className={cl.divider} />
 
-      <dl className={cl.chars}>
-        <div className={cl.chars__line}>
-          <dt className={cl.chars__definition}>Screen</dt>
-          <dd className={cl.chars__value}>{product.screen}</dd>
-        </div>
-
-        <div className={cl.chars__line}>
-          <dt className={cl.chars__definition}>Capacity</dt>
-          <dd className={cl.chars__value}>{product.capacity}</dd>
-        </div>
-
-        <div className={cl.chars__line}>
-          <dt className={cl.chars__definition}>RAM</dt>
-          <dd className={cl.chars__value}>{product.ram}</dd>
-        </div>
-      </dl>
+      <TechSpecs chars={techSpecs} />
 
       <div className={cl.buttonContainer}>
         <button className={cl.buttonContainer__cardButton}>Add to cart</button>

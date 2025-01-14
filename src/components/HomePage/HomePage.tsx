@@ -1,10 +1,10 @@
 import React, { useMemo } from 'react';
 import cl from './HomePage.module.scss';
 import { ImgSlider } from './ImgSlider';
-import { SlidingProdList, SlidingProdListOrigin } from './SlidingProdList';
+import { SlidingProdList } from './SlidingProdList';
 import { Categories } from './Categories';
 import { useAppSelector, useComponentLoading } from '../../app/hooks';
-import { Loader } from '../Loader';
+import { Loader } from '../ui/Loader';
 import { PageTitle } from '../titles/PageTitle';
 
 export const HomePage: React.FC = () => {
@@ -72,19 +72,13 @@ export const HomePage: React.FC = () => {
         <ImgSlider />
       </section>
       <section className={cl.homePageSection}>
-        <SlidingProdList
-          origin={SlidingProdListOrigin.BRANDNEWMODELS}
-          list={newModelsList}
-        />
+        <SlidingProdList name="Brand new models" list={newModelsList} />
       </section>
       <section className={cl.homePageSection}>
         <Categories />
       </section>
       <section className={cl.homePageSection}>
-        <SlidingProdList
-          origin={SlidingProdListOrigin.HOTPRICES}
-          list={hotPricesList}
-        />
+        <SlidingProdList name="Hot prices" list={hotPricesList} />
       </section>
     </div>
   );

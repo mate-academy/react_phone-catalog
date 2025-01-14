@@ -4,7 +4,7 @@ import { Icon, IconOrigin, IconType } from '../Icon';
 import { Navigation, NavOrigin } from '../Navigation';
 import cl from './Header.module.scss';
 import { useAppSelector } from '../../../app/hooks';
-import { Logo } from '../../Logo';
+import { Logo } from '../../ui/Logo';
 
 export enum HeaderOrigin {
   ONPAGE = 'onPage',
