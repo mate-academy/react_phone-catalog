@@ -9,7 +9,7 @@ const getLinkClass = ({ isActive }: { isActive: boolean }) =>
     [styles.linkActive]: isActive,
   });
 
-export const UserActions = () => {
+export const UserActions: React.FC = () => {
   const { isMenuOpen, toggleMenu } = useMenuContext();
 
   return (

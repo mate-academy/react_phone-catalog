@@ -9,6 +9,7 @@
 .text {
   @include small-text-desktop-tablet;
 
+  cursor: pointer;
   padding-right: 16px;
 }
 

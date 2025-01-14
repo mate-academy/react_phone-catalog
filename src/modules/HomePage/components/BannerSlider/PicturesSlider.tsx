@@ -5,7 +5,7 @@ import 'swiper/scss/navigation';
 import 'swiper/scss/pagination';
 import styles from './PicturesSlider.module.scss';
 
-export const PicturesSlider = () => {
+export const PicturesSlider: React.FC = () => {
   return (
     <div className={styles.container}>
       <div className={styles.swiperButtonNext}>

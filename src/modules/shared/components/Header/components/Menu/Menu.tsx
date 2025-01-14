@@ -1,7 +1,7 @@
 import styles from './Menu.module.scss';
 import { useMenuContext } from 'contexts/MenuContext';
 
-export const Menu = () => {
+export const Menu: React.FC = () => {
   const { isMenuOpen, toggleMenu } = useMenuContext();
 
   return (

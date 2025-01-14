@@ -11,7 +11,7 @@ import { Product } from 'modules/shared/types/Product';
 import { useEffect, useState } from 'react';
 import { Loader } from 'modules/shared/components/Loader';
 
-export const HomePage = () => {
+export const HomePage: React.FC = () => {
   const [newModels, setNewModels] = useState<Product[]>([]);
   const [hotPrices, setHotPrices] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);

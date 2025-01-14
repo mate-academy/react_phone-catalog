@@ -5,8 +5,9 @@ import { useParams } from 'react-router-dom';
 import styles from './ProductsPage.module.scss';
 import { ProductCard } from 'modules/shared/components/ProductCard';
 import { NotFoundPage } from 'modules/NotFoundPage';
+import { Breadcrumbs } from 'modules/shared/components/Breadcrumbs';
 
-export const ProductsPage = () => {
+export const ProductsPage: React.FC = () => {
   const { category } = useParams<RouteParams>();
   const { data, loading, error } = useProductsContext();
 
@@ -59,7 +60,7 @@ export const ProductsPage = () => {
 
   return (
     <div className={styles.catalogPage}>
-      <div className={styles.breadcrumbs}></div>
+      <Breadcrumbs />
 
       <h1 className={styles.categoryTitle}>
         {category

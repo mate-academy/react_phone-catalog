@@ -66,25 +66,29 @@
 .categoryTitle {
   @include h1-desktop-tablet;
 
+  margin-top: 40px;
+
   @media (max-width: $mobile-breakpoint) {
     @include h1-mobile;
+
+    margin-top: 24px;
   }
+
+  margin-bottom: 0;
 }
 
 .numOfProducts {
   @include body-text-desktop-tablet;
 
   color: $color-secondary;
-}
-
-.breadcrumbs {
-  @include small-text-desktop-tablet;
+  margin-top: 8px;
 }
 
 .productsList{
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(229px, 1fr));
   gap: 40px 16px;
+  margin-top: 24px;
 }
 
 // .sortOptions {

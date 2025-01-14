@@ -1,4 +1,4 @@
-export const RightsPage = () => {
+export const RightsPage: React.FC = () => {
   return (
     <div>
       <h1>Rights</h1>

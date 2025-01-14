@@ -9,7 +9,7 @@ import { useEffect } from 'react';
 import { closeMenu } from 'modules/shared/helpers/handlers';
 import { useMenuContext } from 'contexts/MenuContext';
 
-export const Header = () => {
+export const Header: React.FC = () => {
   const isMobile = useMediaQuery('(max-width: 639px)');
   const { isMenuOpen, toggleMenu } = useMenuContext();
 

@@ -9,12 +9,20 @@
 
 .back {
   @include flex-center;
+  @include small-text-desktop-tablet;
+
+  font-size: 14px;
+
+  color: $color-secondary;
 
   gap: 8px;
 
   a {
     text-decoration: none;
-    color: inherit;
+
+    img {
+      transform: rotate(180deg);
+    }
   }
 }
 
@@ -24,7 +32,7 @@
   gap: 8px;
 }
 
-.arrowIcon{
+.arrowIcon {
   width: 16px;
   height: 16px;
 }
@@ -38,9 +46,6 @@
 }
 
 .notFoundImg {
-    width: 100%;
-    max-width: 400px;
-    background-color: rgba(255, 255, 255, 0.1);
-  }
-
-
+  width: 100%;
+  max-width: 400px;
+}

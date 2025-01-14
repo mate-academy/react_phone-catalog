@@ -1,0 +1,22 @@
+@import 'Styles/utils';
+
+.breadcrumbs{
+  @include small-text-desktop-tablet;
+
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-transform: capitalize;
+  color: $color-white;
+}
+
+.breadcrumbItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  &.lastBreadcrumb {
+    color: $color-secondary;
+  }
+}
+

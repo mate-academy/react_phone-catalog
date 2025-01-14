@@ -13,14 +13,16 @@ import { ContactsPage } from './modules/ContactsPage/ContactsPage';
 import { RightsPage } from './modules/RightsPage/RightsPage';
 import { NotFoundPage } from './modules/NotFoundPage/NotFoundPage';
 
-export const Root = () => (
+export const Root: React.FC = () => (
   <Router>
     <Routes>
       <Route path="/" element={<App />}>
         <Route index element={<HomePage />} />
         <Route path="home" element={<Navigate to="/" replace />} />
 
-        <Route path=":category" element={<ProductsPage />} />
+        <Route path=":category" element={<ProductsPage />}>
+          <Route path=":id" element={<ProductsPage />} />
+        </Route>
 
         <Route path="favorites" element={<FavoritesPage />} />
         <Route path="cart" element={<CartPage />} />

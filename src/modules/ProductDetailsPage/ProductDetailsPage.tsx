@@ -1,4 +1,4 @@
-export const ProductDetailsPage = () => {
+export const ProductDetailsPage: React.FC = () => {
   return (
     <div>
       <h1>Product details</h1>

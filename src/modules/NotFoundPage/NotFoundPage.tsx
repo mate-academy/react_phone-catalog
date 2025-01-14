@@ -1,6 +1,6 @@
 import styles from './NotFoundPage.module.scss';
 
-export const NotFoundPage = () => {
+export const NotFoundPage: React.FC = () => {
   return (
     <div className={styles.notFoundPage}>
       <div className={styles.back}>
@@ -8,7 +8,7 @@ export const NotFoundPage = () => {
           <div className={styles.backContainer}>
             <img
               className={styles.arrowIcon}
-              src="img/icons/arrow-back.svg"
+              src="img/icons/arrow-forward-disabled.svg"
               alt="arrow-back"
             />
             <span>Back to home</span>

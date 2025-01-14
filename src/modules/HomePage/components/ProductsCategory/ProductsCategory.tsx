@@ -2,7 +2,7 @@ import { useProductsContext } from 'contexts/ProductsContext';
 import { ProductCategory } from '../ProductCategory';
 import styles from './ProductsCategory.module.scss';
 
-export const ProductsCategory = () => {
+export const ProductsCategory: React.FC = () => {
   const { data, loading } = useProductsContext();
 
   if (loading) {

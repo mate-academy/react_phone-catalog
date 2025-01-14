@@ -1,4 +1,4 @@
-export const FavoritesPage = () => {
+export const FavoritesPage: React.FC = () => {
   return (
     <div>
       <h1>Favorites</h1>

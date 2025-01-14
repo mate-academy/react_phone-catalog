@@ -1,6 +1,6 @@
 import style from './BackToTop.module.scss';
 
-export const BackToTop = () => {
+export const BackToTop: React.FC = () => {
   function goToTop() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }

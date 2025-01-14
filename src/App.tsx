@@ -6,7 +6,7 @@ import { Footer } from './modules/shared/components/Footer/Footer';
 import { MenuProvider } from 'contexts/MenuContext/MenuContext';
 import { ProductsProvider } from 'contexts/ProductsContext/ProductsContext';
 
-export const App = () => (
+export const App: React.FC = () => (
   <MenuProvider>
     <ProductsProvider>
       <div className={styles.App}>

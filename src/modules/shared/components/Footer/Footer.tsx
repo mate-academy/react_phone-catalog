@@ -3,7 +3,7 @@ import styles from './Footer.module.scss';
 import { BackToTop } from './components/BackToTop';
 import { FooterNav } from './components/FooterNav/FooterNav';
 
-export const Footer = () => {
+export const Footer: React.FC = () => {
   return (
     <footer className={styles.footer}>
       <div className={styles.container}>

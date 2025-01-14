@@ -9,7 +9,7 @@ const getLinkClass = ({ isActive }: { isActive: boolean }) =>
     [styles.linkActive]: isActive,
   });
 
-export const HeaderNav = () => {
+export const HeaderNav: React.FC = () => {
   const { isMenuOpen, toggleMenu } = useMenuContext();
 
   return (
