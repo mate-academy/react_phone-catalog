@@ -1,0 +1,41 @@
+@import '@styles/main';
+
+.theme-switcher {
+  height: 12px;
+  width: 24px;
+  border-radius: 16px;
+  padding: 2px 4px;
+  background-color: $page-caps-bg;
+  border: 1px solid $primary-color;
+
+  display: flex;
+  position: relative;
+  cursor: pointer;
+
+  @include on-desktop {
+    height: 15px;
+    width: 30px;
+  }
+
+  &__box {
+    content: "";
+    display: block;
+
+    height: 100%;
+    aspect-ratio: 1 / 1;
+    background-color: $primary-color;
+    border-radius: 50%;
+
+    transition: transform $hover-duration;
+  }
+
+  &--active {
+    .theme-switcher__box {
+      transform: translateX(100%);
+    }
+  }
+
+  &__input {
+    display: none;
+  }
+}
