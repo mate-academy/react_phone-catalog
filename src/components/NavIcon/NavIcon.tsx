@@ -1,17 +1,17 @@
 import React from 'react';
 import styles from './NavIcon.module.scss';
-import { IconFavorite } from '../Icon/IconFavorite';
-import { IconCart } from '../IconCart/IconCart';
+import { NavLink } from 'react-router-dom';
+import { Icon } from '../Icon';
 
-export const NavIcon = () => {
+type Props = {
+  path: string;
+  type: 'favourite' | 'cart';
+};
+
+export const NavIcon: React.FC<Props> = ({ path, type }) => {
   return (
-    <>
-      <a className={styles.navIcon}>
-        <IconFavorite />
-      </a>
-      <a className={styles.navIcon}>
-        <IconCart />
-      </a>
-    </>
+    <NavLink to={path} className={styles.navIcon}>
+      <Icon type={type} />
+    </NavLink>
   );
 };

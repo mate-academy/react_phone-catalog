@@ -1,5 +1,27 @@
 @import '../../styles/main.scss';
 
 .navIcon {
-  display: flex;
+  position: relative;
+  display: inline-block;
+  padding-inline: 25px;
+  padding-block: 25px;
+  transition: background-color 0.3s ease;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 3px;
+    background-color: var(--primary-color);
+    transition: width 0.3s ease;
+  }
+
+  &:hover {
+    @include hover-scale;
+  }
+
+  &:focus::after {
+    width: 100%;
+  }
 }

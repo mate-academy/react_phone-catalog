@@ -16,13 +16,21 @@ export const Header = () => {
         <Navigation />
       </div>
 
-      <div className={styles.icons}>
+      <div className={styles.header__icons}>
         <div className={styles.icon}>
           <ThemeToggle />
         </div>
 
-        <div className={styles.icon}>
-          <NavIcon />
+        <div
+          className={`${styles.header__icon} ${styles['header__icon--link']}`}
+        >
+          <NavIcon path="/favourites" type="favourite" />
+        </div>
+
+        <div
+          className={`${styles.header__icon} ${styles['header__icon--link']}`}
+        >
+          <NavIcon path="/cart" type="cart" />
         </div>
       </div>
     </header>

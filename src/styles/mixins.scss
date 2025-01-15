@@ -29,6 +29,14 @@
   letter-spacing: 0.04em;
 }
 
+@mixin hover-scale {
+  transition: transform $transition-time ease-in-out;
+
+  &:hover {
+    transform: scale($scale);
+  }
+}
+
 @mixin on-desktop {
   @media (min-width: $desktop-min-width) {
     @content;

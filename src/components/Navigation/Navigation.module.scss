@@ -22,5 +22,16 @@
     color: var(--secondary-color);
 
     @include uppercase;
+
+    @include hover-scale;
+
+    :hover {
+      color: var(--primary-color);
+    }
   }
+}
+
+a {
+  color: var(--secondary-color);
+  text-decoration: none;
 }
