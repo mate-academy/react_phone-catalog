@@ -1,6 +1,6 @@
 import './Header.scss';
 import classNames from 'classnames';
-import React, { useContext, useState, useEffect, useCallback } from 'react';
+import React, { useContext, useState, useEffect, useMemo } from 'react';
 import { Link, NavLink, useLocation, useSearchParams } from 'react-router-dom';
 import { GlobalContext } from '../../../store/GlobalContext';
 import { iconsObject } from '../../../constants/iconsObject';
@@ -26,17 +26,17 @@ export const Header: React.FC = () => {
 
   const totalQuantity = cart.reduce((sum, item) => sum + item.quantity, 0);
   const totalFavorites = favorites.length;
+  const allowedPaths = ['/phones', '/tablets', '/accessories', '/favorites'];
 
-  const applyQuery = useCallback(
-    debounce((value: string) => {
+  const applyQuery = useMemo(() => {
+    return debounce((value: string) => {
       const updatedParams = getSearchWith(searchParams, {
         query: value,
       });
 
       setSearchParams(updatedParams);
-    }, 1000),
-    [searchParams, setSearchParams],
-  );
+    }, 1000);
+  }, [searchParams, setSearchParams]);
 
   useEffect(() => {
     setQuery('');
@@ -96,10 +96,7 @@ export const Header: React.FC = () => {
       </div>
 
       <div className="header__buttons-right">
-        {(location.pathname === '/phones' ||
-          location.pathname === '/tablets' ||
-          location.pathname === '/accessories' ||
-          location.pathname === '/favorites') && (
+        {allowedPaths.includes(location.pathname) && (
           <div className="header__search-wrapper">
             <input
               type="text"

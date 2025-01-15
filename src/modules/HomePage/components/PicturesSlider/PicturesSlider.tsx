@@ -36,6 +36,7 @@ export const PicturesSlider: React.FC = () => {
         clearInterval(intervalRef.current);
       }
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleDotClick = (index: number) => {
