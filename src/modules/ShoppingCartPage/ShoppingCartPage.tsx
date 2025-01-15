@@ -1,7 +1,7 @@
-import React, { useContext } from 'react';
-import { GlobalContext } from '../../store/GlobalContext';
-import { useLocation } from 'react-router-dom';
 import './ShoppingCartPage.scss';
+import React, { useContext } from 'react';
+import { useLocation } from 'react-router-dom';
+import { GlobalContext } from '../../store/GlobalContext';
 import { CartItem } from './components/CartItem';
 import { ButtonBack } from '../shared/ButtonBack';
 

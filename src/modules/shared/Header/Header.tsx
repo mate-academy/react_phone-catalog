@@ -23,15 +23,12 @@ export const Header: React.FC = () => {
 
   const [searchParams, setSearchParams] = useSearchParams();
   const [query, setQuery] = useState('');
-  const [appliedQuery, setAppliedQuery] = useState('');
 
   const totalQuantity = cart.reduce((sum, item) => sum + item.quantity, 0);
   const totalFavorites = favorites.length;
 
   const applyQuery = useCallback(
     debounce((value: string) => {
-      setAppliedQuery(value);
-
       const updatedParams = getSearchWith(searchParams, {
         query: value,
       });
@@ -99,7 +96,10 @@ export const Header: React.FC = () => {
       </div>
 
       <div className="header__buttons-right">
-        {location.pathname !== '/' && (
+        {(location.pathname === '/phones' ||
+          location.pathname === '/tablets' ||
+          location.pathname === '/accessories' ||
+          location.pathname === '/favorites') && (
           <div className="header__search-wrapper">
             <input
               type="text"
@@ -151,7 +151,9 @@ export const Header: React.FC = () => {
         >
           <NavLink className={getActiveIcon} to="/favorites">
             <div className="header__icon-wrapper">
-              <span className="header__quantity">{totalFavorites}</span>
+              {totalFavorites > 0 && (
+                <span className="header__quantity">{totalFavorites}</span>
+              )}
               {theme === 'light' ? (
                 <Icon icon={iconsObject.favorites} />
               ) : (

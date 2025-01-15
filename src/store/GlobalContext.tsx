@@ -25,20 +25,20 @@ type GlobalContextType = {
 
 export const GlobalContext = React.createContext<GlobalContextType>({
   allProducts: [] as Product[],
-  setAllProducts: () => { },
+  setAllProducts: () => {},
   cart: [] as CartProduct[],
-  setCart: () => { },
+  setCart: () => {},
   favorites: [] as Product[],
-  setFavorites: () => { },
-  updateQuantity: () => { },
-  clearShoppingCart: () => { },
+  setFavorites: () => {},
+  updateQuantity: () => {},
+  clearShoppingCart: () => {},
   isMenuOpen: false,
-  setIsMenuOpen: () => { },
-  toggleMenu: () => { },
-  toggleFavorites: () => { },
-  addToCart: () => { },
+  setIsMenuOpen: () => {},
+  toggleMenu: () => {},
+  toggleFavorites: () => {},
+  addToCart: () => {},
   theme: 'light',
-  toggleTheme: () => { },
+  toggleTheme: () => {},
 });
 
 type Props = {
@@ -62,7 +62,7 @@ export const GlobalProvider: React.FC<Props> = ({ children }) => {
         .catch(error => {
           throw new Error(`Error fetching products: ${error.message}`);
         })
-        .finally(() => { });
+        .finally(() => {});
     };
 
     fetchAllProducts();

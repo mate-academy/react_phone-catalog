@@ -1,9 +1,9 @@
-@import '../../../../styles/main.scss';
+@import '../../../../styles/main';
 
 .shopByCategory__container {
   margin-block: 56px;
 
-  @include content-padding-inline();
+  @include content-padding-inline;
 
   @include on-tablet {
     margin-block: 64px;
@@ -11,7 +11,7 @@
 }
 
 .shopByCategory__title {
-  font-family: 'Mont-Bold', sans-serif;
+  font-family: Mont-Bold, sans-serif;
   font-size: 22px;
   font-weight: 800;
   line-height: 30.8px;
@@ -20,7 +20,7 @@
   margin-bottom: 24px;
 
   @include on-tablet {
-    font-family: 'Mont-Bold', sans-serif;
+    font-family: Mont-Bold, sans-serif;
     font-size: 32px;
     line-height: 41px;
   }
@@ -28,6 +28,7 @@
 
 .shopByCategory__content {
   gap: 32px;
+  
   @include page-grid;
 }
 
@@ -61,7 +62,7 @@
 
 .shopByCategory__block-title {
   margin-top: 24px;
-  font-family: 'Mont-SemiBold', sans-serif;
+  font-family: Mont-SemiBold, sans-serif;
   font-size: 20px;
   font-weight: 700;
   line-height: 25.56px;
@@ -69,7 +70,7 @@
 }
 
 .shopByCategory__block-description {
-  font-family: 'Mont-Regular', sans-serif;
+  font-family: Mont-Regular, sans-serif;
   color: var(--color-gray-secondary);
   font-size: 14px;
   font-weight: 600;

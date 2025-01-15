@@ -8,16 +8,16 @@ export const iconsObject = {
     path: './icons/menu_dark.svg',
   },
   favorites: {
-    title: 'Favourites icon',
-    path: './icons/favourites.svg',
+    title: 'Favorites icon',
+    path: './icons/favorites.svg',
   },
   favorites_dark: {
-    title: 'Favourites dark icon',
-    path: './icons/favourites_dark.svg',
+    title: 'Favorites dark icon',
+    path: './icons/favorites_dark.svg',
   },
   favorites__filled: {
-    title: 'Favourites filled icon',
-    path: './icons/favourites__filled.svg',
+    title: 'Favorites filled icon',
+    path: './icons/favorites__filled.svg',
   },
   shopping_cart: {
     title: 'Shopping cart icon',

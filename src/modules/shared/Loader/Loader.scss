@@ -1,6 +1,6 @@
-:root {
-  --loading-grey: #ededed;
-}
+// :root {
+//   --loading-grey: #ededed;
+// }
 
 :root body.theme_dark {
   --loading-grey: #0F1121;
@@ -12,7 +12,19 @@
   left: 0;
   height: 100vh;
   width: 100vw;
-  background-color: var(--loading-grey);
+  background: linear-gradient(
+    100deg,
+    rgba(255, 255, 255, 0) 40%,
+    rgba(117, 117, 117, 0.5) 50%,
+    rgba(255, 255, 255, 0) 60%
+  ) white;
+  background-size: 200% 100%;
+  background-position-x: 180%;
+  animation: 0.5s loading ease-in-out infinite;
+  z-index: 1;
+}
+
+body.theme_dark .content {
   background: linear-gradient(
     100deg,
     rgba(255, 255, 255, 0) 40%,

@@ -1,8 +1,8 @@
-import React, { useCallback, useContext } from 'react';
 import './ButtonBack.scss';
+import React, { useCallback, useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Icon } from '../Icon';
 import { iconsObject } from '../../../constants/iconsObject';
-import { useNavigate } from 'react-router-dom';
 import { GlobalContext } from '../../../store/GlobalContext';
 
 export const ButtonBack: React.FC = () => {

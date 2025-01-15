@@ -1,8 +1,8 @@
-import { Link } from 'react-router-dom';
 import './Breadcrumbs.scss';
+import { useContext } from 'react';
+import { Link } from 'react-router-dom';
 import { Icon } from '../Icon';
 import { iconsObject } from '../../../constants/iconsObject';
-import { useContext } from 'react';
 import { GlobalContext } from '../../../store/GlobalContext';
 
 type Props = {
@@ -41,7 +41,7 @@ export const Breadcrumbs: React.FC<Props> = ({ productType, productName }) => {
 
         {productName ? (
           <>
-            <Link to={`/${productType}/`}>
+            <Link to={`/${productType}`}>
               <span className="breadcrumbs__item breadcrumbs__item--dark">
                 {normalizeProductsType}
               </span>

@@ -1,4 +1,4 @@
-@import '../../../styles/main.scss';
+@import '../../../styles/main';
 
 .menu {
   height: 100vh;
@@ -20,7 +20,7 @@
 
 .menu__link {
   position: relative;
-  font-family: 'Molt-Bold', sans-serif;
+  font-family: Molt-Bold, sans-serif;
   font-weight: 800;
   font-size: 12px;
   letter-spacing: 0.04em;

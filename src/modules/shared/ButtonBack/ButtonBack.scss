@@ -1,4 +1,4 @@
-@import '../../../styles/main.scss';
+@import '../../../styles/main';
 
 .button {
   margin-block: 24px 16px;
@@ -10,7 +10,7 @@
   align-items: center;
   gap: 4px;
   cursor: pointer;
-  font-family: 'Mont-SemiBold', sans-serif;
+  font-family: Mont-SemiBold, sans-serif;
   font-size: 12px;
   font-weight: 700;
   color: var(--color-gray-primary);

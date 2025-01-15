@@ -19,35 +19,8 @@ export const App = () => {
     });
   }, [location.pathname]);
 
-  // const navigate = useNavigate();
-
-  // const handleNavigate = useCallback(() => {
-  //   navigate(-2);
-  // }, [navigate]);
-
-  // useEffect(() => {
-  //   window.addEventListener('popstate', handleNavigate);
-
-  //   return () => {
-  //     window.removeEventListener('popstate', handleNavigate);
-  //   };
-  // }, [handleNavigate]);
-
-  useEffect(() => {
-    console.log(location.pathname);
-  }, [location.pathname]);
-
-  // let clickCount = 0;
-
-  // window.addEventListener('popstate', () => {
-  //   clickCount += 1;
-  //   console.log(`Клик НАЗАД: ${clickCount}`);
-  // });
-
   return (
     <div className="App">
-      <h1 className="App__title-hidden">Product Catalog</h1>
-
       <header className="App__header">
         <Header />
       </header>

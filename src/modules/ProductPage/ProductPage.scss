@@ -1,11 +1,11 @@
-@import '../../styles/main.scss';
+@import '../../styles/main';
 
 .productPage {
-  @include content-padding-inline();
+  @include content-padding-inline;
 }
 
 .productPage__title {
-  font-family: 'Mont-Bold', sans-serif;
+  font-family: Mont-Bold, sans-serif;
   font-size: 32px;
   font-weight: 800;
   line-height: 41px;
@@ -20,7 +20,7 @@
 }
 
 .productPage__description {
-  font-family: 'Mont-Regular', sans-serif;
+  font-family: Mont-Regular, sans-serif;
   font-size: 14px;
   font-weight: 600;
   line-height: 21px;
@@ -56,12 +56,22 @@
 
 .productPage__content {
   display: flex;
-  flex-wrap: wrap; /* Элементы будут переноситься на новую строку */
-  gap: 40px 16px; /* Расстояние между элементами: 40px между строками, 16px между колонками */
+  flex-wrap: wrap;
+  gap: 40px 16px;
   margin-top: 24px;
 }
 
 .productPage__item {
-  flex: 0 1 calc(25% - 16px); /* 4 карточки в ряду с учетом отступов между ними */
+  flex: 0 1 calc(25% - 16px);
 }
 
+.productPage__no-products {
+  margin-top: 140px;
+  font-family: Mont-SemiBold, sans-serif;
+  font-size: 48px;
+  font-weight: 500;
+  line-height: 21px;
+  color: var(--color-gray-secondary);
+  display: flex;
+  justify-content: center;
+}

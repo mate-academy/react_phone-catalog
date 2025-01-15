@@ -1,10 +1,11 @@
-@import '../../../styles/main.scss';
+@import '../../../styles/main';
 
 .productsSlider {
   padding-left: 16px;
 
   @include on-desktop {
     margin-block: 80px;
+    
     @include content-padding-inline;
   }
 }
@@ -20,7 +21,7 @@
 
 .productsSlider__title {
   font-size: 22px;
-  font-family: 'Mont-Bold', sans-serif;
+  font-family: Mont-Bold, sans-serif;
   font-weight: 800;
   letter-spacing: -0.01em;
   color: var(--color-gray-primary);
@@ -55,13 +56,17 @@
 }
 
 .productsSlider__button--disabled:hover {
-  // background-color: inherit; /* Добавлено, чтобы не менялся фон при наведении */
-  border: 1px solid var(--color-gray-elements); /* Можно явно указать, чтобы не менялся бордер */
+  border: 1px solid var(--color-gray-elements);
 }
 
 body.theme_dark .productsSlider__button {
   border: none;
   background-color: var(--color-surface-2);
+}
+
+.productsSlider__button:not(.productsSlider__button--disabled):hover {
+  border: 1px solid var(--color-gray-primary);
+  background-color: var(--color-hover);
 }
 
 body.theme_dark .productsSlider__button:not(.productsSlider__button--disabled):hover {
@@ -72,11 +77,6 @@ body.theme_dark .productsSlider__button:not(.productsSlider__button--disabled):h
 body.theme_dark .productsSlider__button--disabled {
   border: 1px solid var(--color-gray-elements);
   background-color: inherit;
-}
-
-.productsSlider__button:not(.productsSlider__button--disabled):hover {
-  border: 1px solid var(--color-gray-primary);
-  background-color: var(--color-gray-icons-placeholders);
 }
 
 .productsSlider__viewport {
@@ -110,6 +110,3 @@ body.theme_dark .productsSlider__button--disabled {
     height: 506px;
   }
 }
-
-
-

@@ -1,7 +1,7 @@
+import './FavoritesPage.scss';
 import React, { useContext } from 'react';
 import { useLocation, useSearchParams } from 'react-router-dom';
 import { GlobalContext } from '../../store/GlobalContext';
-import './FavoritesPage.scss';
 import { ProductsList } from '../shared/ProductsList';
 import { Breadcrumbs } from '../shared/Breadcrumbs';
 
@@ -24,7 +24,7 @@ export const FavoritesPage: React.FC = () => {
     );
   }
 
-  const countFavoritesProducts = visibleFavorites.length;
+  const countFavorites = visibleFavorites.length;
 
   return (
     <div className="favoritesPage">
@@ -32,12 +32,15 @@ export const FavoritesPage: React.FC = () => {
       <h1 className="favoritesPage__title">{normalizeProductsType}</h1>
 
       <span className="favoritesPage__description">
-        {`${countFavoritesProducts} ${countFavoritesProducts === 1 ? 'model' : 'models'
-          }`}
+        {`${countFavorites} ${countFavorites === 1 ? 'model' : 'models'}`}
       </span>
 
-      {countFavoritesProducts === 0 ? (
-        <div className="favoritesPage__empty-content">Favourites is empty</div>
+      {countFavorites === 0 && query.length > 0 ? (
+        <div className="favoritesPage__empty-content">
+          {`There are no ${normalizeProductsType.toLowerCase()} matching the query`}
+        </div>
+      ) : countFavorites === 0 ? (
+        <div className="favoritesPage__empty-content">Favorites is empty</div>
       ) : (
         <div className="favoritesPage__content">
           <ProductsList

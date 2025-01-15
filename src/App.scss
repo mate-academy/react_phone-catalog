@@ -1,4 +1,4 @@
-@import '/src/styles/main.scss';
+@import '/src/styles/main';
 
 * {
   margin: 0;
@@ -6,21 +6,17 @@
 }
 
 .App {
-  display: flex; /* Устанавливаем флекс-контейнер */
-  flex-direction: column; /* Размещаем элементы по вертикали */
-  min-height: 100vh; /* Гарантируем, что контейнер займет всю высоту экрана */
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
   position: relative;
   min-width: 320px;
 
   scroll-behavior: smooth;
-
-  &__title-hidden {
-    display: none;
-  }
 }
 
 .App__content {
-  flex-grow: 1; /* Растягиваем основное содержимое */
+  flex-grow: 1;
 }
 
 .App__header {

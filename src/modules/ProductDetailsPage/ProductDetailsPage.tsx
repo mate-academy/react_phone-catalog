@@ -10,6 +10,20 @@ import { ProductsSlider } from '../shared/ProductsSlider';
 import { ButtonBack } from '../shared/ButtonBack';
 import { getSpecificProducts } from '../../utils/productApi';
 import { Loader } from '../shared/Loader';
+import { Product } from '../../types/Product';
+
+const getSuggestedProducts = (
+  allProducts: Product[],
+  currentCategory: string,
+  productItemId: string,
+) => {
+  return allProducts
+    .filter(
+      prod =>
+        prod.category === currentCategory && prod.itemId !== productItemId,
+    )
+    .sort(() => 0.5 - Math.random());
+};
 
 export const ProductDetailsPage: React.FC = () => {
   const { allProducts } = useContext(GlobalContext);
@@ -17,9 +31,7 @@ export const ProductDetailsPage: React.FC = () => {
   const { productItemId } = useParams();
 
   const [product, setProduct] = useState<SpecificProduct | null>(null);
-
   const [productsArray, setProductsArray] = useState<SpecificProduct[]>([]);
-
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | ''>('');
 
@@ -29,34 +41,33 @@ export const ProductDetailsPage: React.FC = () => {
     setIsLoading(true);
     setError('');
 
-    // const timeout = setTimeout(() => {
-    getSpecificProducts(currentCategory)
-      .then(fetchedSpecificProducts => {
-        setProductsArray(fetchedSpecificProducts);
+    const timeout = setTimeout(() => {
+      getSpecificProducts(currentCategory)
+        .then(fetchedSpecificProducts => {
+          setProductsArray(fetchedSpecificProducts);
 
-        const currentProduct = fetchedSpecificProducts.find(
-          prod => prod.id === productItemId,
-        );
+          const currentProduct = fetchedSpecificProducts.find(
+            prod => prod.id === productItemId,
+          );
 
-        if (currentProduct) {
-          setProduct(currentProduct);
-          setError('');
-        } else {
-          setProduct(null);
-          setError('Продукт не найден');
-        }
-      })
-      .catch(er => {
-        setError(`
-          Ошибка загрузки продуктов: Категории продуктов "${currentCategory}" не существует. ${er.message}
-          `);
-      })
-      .finally(() => {
-        setIsLoading(false);
-      });
-    // }, 500);
+          if (currentProduct) {
+            setProduct(currentProduct);
+            setError('');
+          } else {
+            setProduct(null);
+            setError('Product not found');
+          }
+        })
+        .catch(er => {
+          setError(`
+            Error loading products: The product category "${currentCategory}" does not exist. ${er.message}`);
+        })
+        .finally(() => {
+          setIsLoading(false);
+        });
+    }, 500);
 
-    // return () => clearTimeout(timeout);
+    return () => clearTimeout(timeout);
   }, [currentCategory]);
 
   useEffect(() => {
@@ -71,52 +82,31 @@ export const ProductDetailsPage: React.FC = () => {
       setError('');
     } else {
       setProduct(null);
-      setError('Продукт не найден');
+      setError('Product not found');
     }
   }, [productItemId, productsArray]);
 
-  // useEffect(() => {
-  //   setIsLoading(true);
-  //   setError('');
-
-  //   getSpecificProducts(currentCategory)
-  //     .then(fetchedSpecificProducts => {
-  //       setProductsArray(fetchedSpecificProducts);
-
-  //       const currentProduct = fetchedSpecificProducts.find(
-  //         prod => prod.id === productItemId,
-  //       );
-
-  //       if (currentProduct) {
-  //         setProduct(currentProduct);
-  //         setError('');
-  //       } else {
-  //         setProduct(null);
-  //         setError('Продукт не найден');
-  //       }
-  //     })
-  //     .catch(er => {
-  //       setError(
-  //         `Ошибка загрузки продуктов: Категории продуктов "${currentCategory}" не существует. ${er.message}`,
-  //       );
-  //       setProduct(null);
-  //     })
-  //     .finally(() => {
-  //       setIsLoading(false);
-  //     });
-  // }, [currentCategory, productItemId]);
-
-  const suggestedProducts = allProducts
-    .filter(
-      prod =>
-        prod.category === currentCategory && prod.itemId !== productItemId,
-    )
-    .sort(() => 0.5 - Math.random());
+  const suggestedProducts = productItemId
+    ? getSuggestedProducts(allProducts, currentCategory, productItemId)
+    : [];
 
   if (isLoading) {
     return (
       <div className="detailsPage">
         <Loader />
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="detailsPage">
+        <div className="detailsPage__error-message">
+          <span>{error}</span>
+          <Link to="/" className="detailsPage__error-link">
+            Go to HomePage
+          </Link>
+        </div>
       </div>
     );
   }

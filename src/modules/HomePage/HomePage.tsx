@@ -1,7 +1,7 @@
 import './HomePage.scss';
+import { useContext } from 'react';
 import { PicturesSlider } from './components/PicturesSlider';
 import { ShopByCategory } from './components/ShopByCategory';
-import { useContext } from 'react';
 import { GlobalContext } from '../../store/GlobalContext';
 import { ProductsSlider } from '../shared/ProductsSlider';
 

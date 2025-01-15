@@ -1,12 +1,12 @@
-@import '../../styles/main.scss';
+@import '../../styles/main';
 
 .favoritesPage {
-  @include content-padding-inline();
+  @include content-padding-inline;
 }
 
 .favoritesPage__empty-content {
   margin-top: 40px;
-  font-family: 'Mont-SemiBold', sans-serif;
+  font-family: Mont-SemiBold, sans-serif;
   font-size: 48px;
   font-weight: 500;
   line-height: 21px;
@@ -19,7 +19,7 @@
   margin-top: 16px;
   margin-bottom: 40px;
 
-  font-family: 'Mont-Bold', sans-serif;
+  font-family: Mont-Bold, sans-serif;
   font-weight: 800;
   letter-spacing: -0.01em;
   color: var(--color-gray-primary);
@@ -28,7 +28,7 @@
 }
 
 .favoritesPage__description {
-  font-family: 'Mont-Regular', sans-serif;
+  font-family: Mont-Regular, sans-serif;
   font-size: 14px;
   font-weight: 600;
   line-height: 21px;

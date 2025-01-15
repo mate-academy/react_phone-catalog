@@ -18,13 +18,13 @@
     padding-inline: 24px;
   }
 
-  @include on-desktop() {
-    padding-inline: 0px;
+  @include on-desktop {
+    padding-inline: 0;
     margin-inline: auto;
   }
 }
 
-@mixin hover ($property, $toValue) {
+@mixin hover($property, $toValue) {
   transition: #{$property} 0.3s;
   &:hover {
     #{$property}: $toValue;

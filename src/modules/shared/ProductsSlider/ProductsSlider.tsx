@@ -1,10 +1,10 @@
-import React, { useState, useEffect, useContext } from 'react';
 import './ProductsSlider.scss';
+import classNames from 'classnames';
+import React, { useState, useEffect, useContext } from 'react';
 import { Product } from '../../../types/Product';
 import { ProductCard } from '../ProductCard';
 import { Icon } from '../Icon';
 import { iconsObject } from '../../../constants/iconsObject';
-import classNames from 'classnames';
 import { GlobalContext } from '../../../store/GlobalContext';
 
 type Props = {

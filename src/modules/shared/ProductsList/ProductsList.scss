@@ -1,8 +1,9 @@
-@import '../../../styles/main.scss';
+@import '../../../styles/main';
 
 .productsList {
   margin-top: 24px;
   gap: 40px 16px;
+  
   @include page-grid;
 
   @media (max-width: 639px) {

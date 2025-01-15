@@ -1,9 +1,13 @@
 import React from 'react';
 import './Icon.scss';
-import { IconType } from '../../../types/IconType';
+
+type IconData = {
+  title: string;
+  path: string;
+};
 
 type Props = {
-  icon: IconType;
+  icon: IconData;
 };
 
 export const Icon: React.FC<Props> = ({ icon }) => {

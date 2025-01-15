@@ -1,4 +1,4 @@
-@import '../../../../styles/main.scss';
+@import '../../../../styles/main';
 
 .detailsPage__content-top {
   display: flex;
@@ -65,8 +65,9 @@
 }
 
 .detailsPage__container-photos:not(.detailsPage__container-photos--active):hover {
-  border: 1px solid var(--color-gray-icons-placeholders);;
+  border: 1px solid var(--color-gray-icons-placeholders);
 }
+
 .detailsPage__container-photos--active {
   border: 1px solid var(--color-gray-primary);
 }
@@ -87,13 +88,12 @@
   @include on-tablet {
     order: 2;
     grid-column: span 6;
-    margin-bottom: 0px;
+    margin-bottom: 0;
   }
 
   @include on-desktop {
     grid-column: span 10;
   }
-
 }
 
 .detailsPage__image {
@@ -162,7 +162,6 @@
   border: 1px solid var(--color-gray-icons-placeholders);
 }
 
-
 .detailsPage__color-circle {
   width: 30px;
   height: 30px;
@@ -183,7 +182,6 @@
   display: flex;
   flex-direction: column;
   gap: 8px;
-
 }
 
 .detailsPage__capacity-list {
@@ -193,7 +191,7 @@
 }
 
 .detailsPage__capacity-block {
-  font-family: 'Mont-Regular', sans-serif;
+  font-family: Mont-Regular, sans-serif;
   font-size: 14px;
   font-weight: 500;
   text-align: center;
@@ -247,7 +245,7 @@
 }
 
 .detailsPage__price-regular {
-  font-family: 'Mont-Regular', sans-serif;
+  font-family: Mont-Regular, sans-serif;
   color: var(--color-gray-secondary);
   font-size: 22px;
   font-weight: 500;
@@ -255,7 +253,7 @@
 }
 
 .detailsPage__price-discount {
-  font-family: 'Mont-Bold', sans-serif;
+  font-family: Mont-Bold, sans-serif;
   color: var(--color-gray-primary);
   font-size: 32px;
   font-weight: 800;
@@ -268,7 +266,7 @@
   height: 15px;
   display: flex;
   justify-content: space-between;
-  font-family: 'Mont-SemiBold', sans-serif;
+  font-family: Mont-SemiBold, sans-serif;
   font-size: 12px;
   font-weight: 600;
 }
@@ -282,7 +280,7 @@
 }
 
 .detailsPage__block-title {
-  font-family: 'Mont-Bold', sans-serif;
+  font-family: Mont-Bold, sans-serif;
   font-size: 22px;
   font-weight: 800;
   line-height: 30.8px;
@@ -291,7 +289,7 @@
 
 .detailsPage__info {
   color: var(--color-gray-secondary);
-  font-family: 'Mont-SemiBold', sans-serif;
+  font-family: Mont-SemiBold, sans-serif;
   font-size: 12px;
   font-weight: 600;
 }
@@ -305,7 +303,7 @@
   cursor: pointer;
   background-color: var(--color-bg);
 
-  font-family: 'Mont-Regular', sans-serif;
+  font-family: Mont-Regular, sans-serif;
   color: var(--color-bg);
   font-size: 14px;
   font-weight: 700;
@@ -320,7 +318,7 @@
     background-color: var(--color-gray-primary);
     width: 100%;
 
-    @include hover(box-shadow, 0px 3px 13px 0px #17203166);
+    @include hover(box-shadow, 0 3px 13px 0 #17203166);
   }
 
   &-card--active {
@@ -366,7 +364,7 @@
   gap: 16px;
 
   &-title {
-    font-family: 'Mont-SemiBold', sans-serif;
+    font-family: Mont-SemiBold, sans-serif;
     font-size: 20px;
     font-weight: 700;
     line-height: 25.56px;
@@ -374,7 +372,7 @@
   }
 
   &-description {
-    font-family: 'Mont-Regular', sans-serif;
+    font-family: Mont-Regular, sans-serif;
     font-size: 14px;
     font-weight: 500;
     line-height: 21px;
@@ -385,69 +383,34 @@
 .detailsPage__techSpecs-content {
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  margin-top: 25px;
+  gap: 24px;
 }
 
-.detailsPage__techSpecs-block {
+.detailsPage__techSpecs {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  gap: 8px;
 }
 
 .detailsPage__techSpecs-title {
-  font-family: 'Mont-Regular', sans-serif;
+  color: var(--color-gray-primary);
+}
+
+.detailsPage__techSpecs-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.detailsPage__techSpecs-item {
+  font-family: Mont-Regular, sans-serif;
   font-size: 14px;
   font-weight: 500;
   line-height: 21px;
+  color: var(--color-gray-primary);
+}
+
+.detailsPage__techSpecs-item-description {
   color: var(--color-gray-secondary);
-}
-
-.detailsPage__techSpecs-value {
-  font-family: 'Mont-Regular', sans-serif;
-  font-size: 14px;
-  font-weight: 500;
-  line-height: 21px;
-  color: var(--color-gray-primary);
-}
-
-.detailsPage.detailsPage__title--bottom {
-  margin-top: 80px;
-  margin-bottom: 24px;
-}
-
-
-
-body.theme_dark .detailsPage__button-card {
-  background-color: var(--color-accent);
-  color: var(--color-gray-primary);
-
-  @include hover(background-color, var(--color-accent-hover));
-}
-
-body.theme_dark .detailsPage__button-card--active {
-  background-color: var(--color-surface-2);
-  color: var(--color-gray-primary);
-}
-
-body.theme_dark .detailsPage__button-favorites {
-  color: var(--color-gray-primary);
-  background-color: var(--color-surface-2);
-  border: none;
-}
-
-body.theme_dark .detailsPage__button-favorites:hover {
-  background-color: var(--color-gray-icons-placeholders);
-}
-
-body.theme_dark .detailsPage__button-favorites--active {
-  background-color: var(--color-surface-1);
-  border: 1px solid var(--color-gray-elements);
-}
-
-.detailsPage__button-card--active {
-  pointer-events: none;
-  &:hover {
-    box-shadow: none;
-    border-color: inherit;
-  }
 }

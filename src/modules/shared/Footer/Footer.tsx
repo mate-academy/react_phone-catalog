@@ -1,5 +1,5 @@
-import React, { useContext } from 'react';
 import './Footer.scss';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { Icon } from '../Icon';
 import { iconsObject } from '../../../constants/iconsObject';
@@ -60,7 +60,6 @@ export const Footer: React.FC = () => {
             ) : (
               <Icon icon={iconsObject.arrow_left_dark} />
             )}
-
           </button>
         </div>
       </div>

@@ -1,6 +1,6 @@
-import { Link } from 'react-router-dom';
 import './ShopByCategory.scss';
 import { useContext } from 'react';
+import { Link } from 'react-router-dom';
 import { GlobalContext } from '../../../../store/GlobalContext';
 
 export const ShopByCategory: React.FC = () => {
@@ -41,7 +41,7 @@ export const ShopByCategory: React.FC = () => {
           <Link to="/tablets" className="shopByCategory__link">
             <section className="shopByCategory__block">
               <img
-                src="img/Сategory for tablets.png"
+                src="img/Category for tablets.png"
                 alt="Category Tablets"
                 className="shopByCategory__block-image"
               />

@@ -11,7 +11,7 @@ type Props = {
 };
 
 export const CartItem: React.FC<Props> = ({ cartProduct }) => {
-  const { updateQuantity } = useContext(GlobalContext);
+  const { updateQuantity, theme } = useContext(GlobalContext);
 
   const totalProductPrice = cartProduct.product.price * cartProduct.quantity;
 
@@ -45,9 +45,15 @@ export const CartItem: React.FC<Props> = ({ cartProduct }) => {
             }}
           >
             {cartProduct.quantity === 1 ? (
-              <Icon icon={iconsObject.arrow_left__disabled} />
-            ) : (
+              theme === 'light' ? (
+                <Icon icon={iconsObject.arrow_left__disabled} />
+              ) : (
+                <Icon icon={iconsObject.arrow_left_dark__disabled} />
+              )
+            ) : theme === 'light' ? (
               <Icon icon={iconsObject.arrow_left} />
+            ) : (
+              <Icon icon={iconsObject.arrow_left_dark} />
             )}
           </button>
           <span className="cartItem__counter">{cartProduct.quantity}</span>
@@ -57,7 +63,11 @@ export const CartItem: React.FC<Props> = ({ cartProduct }) => {
               updateQuantity(cartProduct.id, cartProduct.quantity + 1);
             }}
           >
-            <Icon icon={iconsObject.arrow_right} />
+            {theme === 'light' ? (
+              <Icon icon={iconsObject.arrow_right} />
+            ) : (
+              <Icon icon={iconsObject.arrow_right_dark} />
+            )}
           </button>
         </div>
 

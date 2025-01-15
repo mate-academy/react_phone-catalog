@@ -1,8 +1,8 @@
-import React, { useContext, useEffect, useState } from 'react';
 import './ProductPage.scss';
+import React, { useContext, useEffect, useState } from 'react';
+import { useLocation, useSearchParams } from 'react-router-dom';
 import { Dropdown } from '../shared/Dropdown';
 import { Pagination } from '../shared/Pagination';
-import { useSearchParams } from 'react-router-dom';
 import { GlobalContext } from '../../store/GlobalContext';
 import { Breadcrumbs } from '../shared/Breadcrumbs';
 import { ProductsList } from '../shared/ProductsList';
@@ -54,6 +54,10 @@ export const ProductPage: React.FC<Props> = ({ category }) => {
   const currentPage = Number(searchParams.get('page')) || 1;
   const queryParam = searchParams.get('query') || '';
 
+  const location = useLocation();
+
+  const typeProduct = location.pathname.split('/')[1];
+
   const categoryProducts = allProducts.filter(
     product => product.category === category,
   );
@@ -101,19 +105,19 @@ export const ProductPage: React.FC<Props> = ({ category }) => {
     setIsLoading(true);
     setError(null);
 
-    // const timer = setTimeout(() => {
-    try {
-      if (!allProducts || allProducts.length === 0) {
-        throw new Error('Failed to load products');
+    const timer = setTimeout(() => {
+      try {
+        if (!allProducts || allProducts.length === 0) {
+          setError('Failed to load products');
+        }
+      } catch (err) {
+        setError('Failed to load products');
+      } finally {
+        setIsLoading(false);
       }
-    } catch (err) {
-      setError(err.message);
-    } finally {
-      setIsLoading(false);
-    }
-    // }, 500);
+    }, 500);
 
-    // return () => clearTimeout(timer);
+    return () => clearTimeout(timer);
   }, [category, allProducts]);
 
   return (
@@ -134,9 +138,7 @@ export const ProductPage: React.FC<Props> = ({ category }) => {
       )}
 
       {!isLoading && !error && visibleProducts.length === 0 && queryParam && (
-        <div className="productPage__no-products">
-          <p>Product was not found</p>
-        </div>
+        <p className="productPage__no-products">{`There are no ${typeProduct} matching the query`}</p>
       )}
 
       {!isLoading && !error && visibleProducts.length > 0 && (

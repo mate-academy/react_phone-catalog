@@ -1,11 +1,11 @@
-import React, { useContext } from 'react';
 import './ProductCard.scss';
-import { Product } from '../../../types/Product';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import classNames from 'classnames';
+import { Product } from '../../../types/Product';
 import { GlobalContext } from '../../../store/GlobalContext';
 import { Icon } from '../Icon';
 import { iconsObject } from '../../../constants/iconsObject';
-import classNames from 'classnames';
 
 type Props = {
   product: Product;

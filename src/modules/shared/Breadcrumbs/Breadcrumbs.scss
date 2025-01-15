@@ -1,18 +1,16 @@
-@import '../../../styles/main.scss';
+@import '../../../styles/main';
 
 .breadcrumbs {
   &__item {
-    font-family: 'Mont-SemiBold', sans-serif;
+    font-family: Mont-SemiBold, sans-serif;
     font-size: 12px;
     font-weight: 600;
     color: var(--color-gray-secondary);
     display: inline-block;
     vertical-align: middle;
-
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
-    display: inline-block;
     max-width: 100%;
 
     &--dark {

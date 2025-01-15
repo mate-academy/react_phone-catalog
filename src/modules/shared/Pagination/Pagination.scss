@@ -1,12 +1,10 @@
-@import '../../../styles/main.scss';
+@import '../../../styles/main';
 
 .pagination {
-  margin-top: 40px;
-  margin-bottom: 80px;
+  margin: 40px auto 80px;
   height: 32px;
   display: flex;
   gap: 16px;
-
   justify-content: center;
   align-items: center;
   margin-left: auto;
@@ -30,15 +28,12 @@
   box-sizing: border-box;
   cursor: pointer;
   color: var(--color-gray-primary);
-
-  font-family: 'Mont-Regular', sans-serif;
+  font-family: Mont-Regular, sans-serif;
   font-size: 14px;
   font-weight: 600;
-
   display: flex;
   justify-content: center;
   align-items: center;
-
   transition: background-color 0.3s, border-color 0.3s;
 }
 
@@ -49,12 +44,12 @@ body.theme_dark .pagination__button {
   color: var(--color-gray-primary);
 }
 
-body.theme_dark .pagination__button-page:not(.pagination__button-page--active):hover {
-  background-color: var(--color-gray-elements);
-}
-
 .pagination__button-page:not(.pagination__button-page--active):hover {
   border-color: var(--color-gray-primary);
+}
+
+body.theme_dark .pagination__button-page:not(.pagination__button-page--active):hover {
+  background-color: var(--color-gray-elements);
 }
 
 .pagination__button:not(.pagination__button--disabled):hover {
@@ -64,7 +59,6 @@ body.theme_dark .pagination__button-page:not(.pagination__button-page--active):h
 body.theme_dark .pagination__button:not(.pagination__button--disabled):hover {
   background-color: var(--color-gray-elements);
 }
-
 
 .pagination__button-page--active {
   background-color: var(--color-gray-primary);
@@ -83,8 +77,3 @@ body.theme_dark .pagination__button--disabled {
   background-color: var(--color-bg);
   border: 1px solid var(--color-gray-elements);
 }
-
-
-
-
-
