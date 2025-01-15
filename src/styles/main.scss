@@ -1,0 +1,14 @@
+@import './vars.scss';
+@import './fonts.scss';
+@import './mixins.scss';
+
+.page {
+  font-family: Mont, sans-serif;
+  background-color: var(--bg-color);
+  color: var(--primary-color);
+  scroll-behavior: smooth;
+
+  &__body {
+    margin: 0;
+  }
+}

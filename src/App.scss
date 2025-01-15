@@ -1,1 +1,14 @@
-// not empty
+@import './styles/main.scss';
+
+.app {
+  min-height: 100vh;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+
+  @include center-desktop;
+
+  &__header {
+    position: sticky;
+    z-index: 2;
+  }
+}

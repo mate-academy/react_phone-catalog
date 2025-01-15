@@ -1,0 +1,55 @@
+@mixin main-text {
+  font-family: Mont, sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 15.34px;
+}
+
+@mixin description {
+  font-family: Mont, sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+}
+
+@mixin button-text {
+  font-family: Mont, sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 21px;
+  text-align: center;
+}
+
+@mixin uppercase {
+  font-family: Mont, sans-serif;
+  font-weight: 800;
+  text-transform: uppercase;
+  font-size: 12px;
+  line-height: 11px;
+  letter-spacing: 0.04em;
+}
+
+@mixin on-desktop {
+  @media (min-width: $desktop-min-width) {
+    @content;
+  }
+}
+
+@mixin on-tablet {
+  @media (max-width: ($desktop-min-width - 1px)) {
+    @content;
+  }
+}
+
+@mixin on-mobile {
+  @media (max-width: ($tablet-min-width)) {
+    @content;
+  }
+}
+
+@mixin center-desktop {
+  @include on-desktop {
+    max-width: 1600px;
+    margin: 0 auto;
+  }
+}

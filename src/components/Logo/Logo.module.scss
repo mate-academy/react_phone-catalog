@@ -1,0 +1,17 @@
+@import '../../styles/main.scss';
+
+.logo {
+  &__img {
+    width: 80px;
+    height: 26.47px;
+    padding-inline: 24px;
+    padding-top: 6px;
+
+    @include on-tablet {
+      width: 64px;
+      height: 20.8px;
+      padding-inline: 16px;
+      padding-block: 14.2px;
+    }
+  }
+}

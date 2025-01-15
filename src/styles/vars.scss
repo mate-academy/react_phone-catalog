@@ -1,0 +1,17 @@
+.page {
+  --bg-color: #fff;
+  --primary-color: #313237;
+  --secondary-color: #89939a;
+  --elements-color: #e2e6e9;
+  --shadow-color: #e2e6e9;
+
+  &--dark {
+    --bg-color: #0f1121;
+    --primary-color: #f1f2f9;
+    --secondary-color: #75767f;
+    --elements-color: #3b3e4a;
+  }
+}
+
+$desktop-min-width: 1200px;
+$tablet-min-width: 640px;

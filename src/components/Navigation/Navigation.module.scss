@@ -1,0 +1,26 @@
+@import '../../styles/main.scss';
+
+.nav {
+  &__list {
+    display: flex;
+    list-style-type: none;
+    justify-content: left;
+    gap: 64px;
+    padding-left: 24px;
+
+    @include on-tablet {
+      padding-left: 16px;
+      gap: 32px;
+    }
+
+    @include on-mobile {
+      display: none;
+    }
+  }
+
+  &__item {
+    color: var(--secondary-color);
+
+    @include uppercase;
+  }
+}
