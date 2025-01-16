@@ -1,0 +1,123 @@
+@import '../../styles/main';
+
+.Carousel {
+  margin-top: 24px;
+
+  @include on-tablet {
+    margin-top: 32px;
+  }
+
+  @include on-desktop {
+    margin-top: 56px;
+  }
+
+  &__slider {
+    height: 352px;
+    max-width: 1200px;
+
+    @include on-tablet {
+      display: flex;
+      gap: 19px;
+      height: 221px;
+      padding-inline: 24px;
+    }
+
+    @include on-desktop {
+      height: 432px;
+      gap: 16px;
+      margin: 0 auto;
+    }
+
+    &-button {
+      display: none;
+
+      @include on-tablet {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 189px;
+        width: 32px;
+        background-color: var(--surface-color2);
+        border: 1px solid var(--carousel-border-btn);
+        cursor: pointer;
+
+        &:hover {
+          border-color: $primaryColor;
+          background-color: var(--hov-bg-slider-btn);
+        }
+      }
+
+      @include on-desktop {
+        height: 400px;
+      }
+    }
+
+    &-container {
+      height: 320px;
+      width: 100%;
+      overflow: hidden;
+
+      @include on-tablet {
+        height: 189px;
+      }
+
+      @include on-desktop {
+        height: 400px;
+      }
+    }
+
+    &-list {
+      height: 100%;
+      width: 300%;
+      display: flex;
+      transition: transform 1s;
+    }
+
+    &-item {
+      height: 100%;
+      width: 100%;
+    }
+
+    &-image {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &__dots {
+    display: flex;
+    gap: 4px;
+    justify-content: center;
+    margin-top: 8px;
+
+    &-container {
+      display: flex;
+      width: 24px;
+      height: 24px;
+      cursor: pointer;
+      align-items: center;
+      justify-content: center;
+    }
+
+    &-item {
+      width: 14px;
+      height: 4px;
+      background-color: var(--elements-color);
+      border: none;
+      cursor: pointer;
+    }
+  }
+}
+
+.banner-active {
+  background-color: var(--text-color);
+}
+
+.icon {
+  &--left {
+    &_img {
+      transform: rotate(180deg);
+    }
+  }
+}
