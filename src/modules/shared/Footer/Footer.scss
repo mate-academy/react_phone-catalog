@@ -71,6 +71,7 @@
   line-height: 11px;
   letter-spacing: 0.04em;
   color: var(--color-gray-secondary);
+  
   @include hover(color, var(--color-gray-primary));
 }
 
