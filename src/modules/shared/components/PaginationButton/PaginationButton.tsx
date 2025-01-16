@@ -18,6 +18,7 @@ export const PaginationButton: React.FC<Props> = ({
 
   return (
     <button
+      type="button"
       disabled={isActive}
       onClick={() => onPageChange(page)}
       className={classNames(

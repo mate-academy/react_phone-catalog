@@ -1,21 +1,43 @@
 @use "../../../shared/styles/mixins" as *;
 @use "../../../shared/styles/extends";
 
+@mixin wrap-text {
+  &:last-child {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+
 .HomeImage {
   display: block;
+  flex-shrink: 0;
 
   @include color-and-hover-scale-transition((color: var(--icon-color)));
 }
 
 .Arrow {
+  flex-shrink: 0;
+
   @include color-transition((color: var(--path-arrow-color)));
 }
 
-.Current {
+.Link {
+  align-self: flex-end;
+  text-decoration: none;
+
+  @extend %small-text;
+  @include color-transition((color: var(--primary-text-color)));
+  @include scale-on-hover;
+  @include wrap-text;
+}
+
+.Text {
   align-self: flex-end;
 
   @extend %small-text;
   @include color-transition((color: var(--secondary-text-color)));
+  @include wrap-text;
 }
 
 .Breadcrumbs {

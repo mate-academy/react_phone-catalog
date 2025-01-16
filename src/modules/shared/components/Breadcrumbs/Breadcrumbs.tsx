@@ -7,12 +7,39 @@ import classNames from 'classnames';
 import { useLanguage } from '../Contexts/LanguageContext';
 
 type Props = {
-  path: string;
+  path: string[];
+  links?: string[];
   className?: string;
 };
 
-export const Breadcrumbs: React.FC<Props> = ({ path, className }) => {
+export const Breadcrumbs: React.FC<Props> = ({ path, links, className }) => {
   const { accessHome, accessThen } = useLanguage().localeTexts;
+
+  const content: React.JSX.Element[] = [];
+
+  for (let i = 0; i < path.length; i++) {
+    content.push(
+      <RightArrowSVG
+        key={'arrow_' + i}
+        className={styles.Arrow}
+        label={accessThen}
+      />,
+    );
+
+    if (links && links[i]) {
+      content.push(
+        <Link key={'link_' + path[i]} to={links[i]} className={styles.Link}>
+          {path[i]}
+        </Link>,
+      );
+    } else {
+      content.push(
+        <p key={'text_' + path[i]} className={styles.Text}>
+          {path[i]}
+        </p>,
+      );
+    }
+  }
 
   return (
     <article className={classNames(styles.Breadcrumbs, className)}>
@@ -20,9 +47,7 @@ export const Breadcrumbs: React.FC<Props> = ({ path, className }) => {
         <HomeSVG className={styles.HomeImage} />
       </Link>
 
-      <RightArrowSVG className={styles.Arrow} label={accessThen} />
-
-      <p className={styles.Current}>{path}</p>
+      {content}
     </article>
   );
 };

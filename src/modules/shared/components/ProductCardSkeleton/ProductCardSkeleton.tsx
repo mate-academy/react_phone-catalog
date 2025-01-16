@@ -23,34 +23,33 @@ export const ProductCardSkeleton: React.FC<Props> = ({
   return (
     <article
       className={classNames(
+        styles.ProductCardSkeleton,
         loadingStatus === LoadingStatus.Loading &&
           styles.ProductCardSkeleton_loading,
         className,
       )}
     >
-      <div className={styles.Card}>
-        <div className={styles.Image} />
-        <h4 className={styles.Title} />
-        <div className={styles.Prices} />
-        <div className={styles.Line} />
+      <div className={styles.Image} />
+      <span className={styles.Title} />
+      <div className={styles.Prices} />
+      <div className={styles.Line} />
 
-        <ul className={styles.Parameters}>
-          <li className={styles.Parameter}>
-            <p className={styles.ParameterName} />
-            <p className={styles.ParameterValue} />
-          </li>
+      <ul className={styles.Parameters}>
+        <li className={styles.Parameter}>
+          <p className={styles.ParameterName} />
+          <p className={styles.ParameterValue} />
+        </li>
 
-          <li className={styles.Parameter}>
-            <p className={styles.ParameterName} />
-            <p className={styles.ParameterValue} />
-          </li>
+        <li className={styles.Parameter}>
+          <p className={styles.ParameterName} />
+          <p className={styles.ParameterValue} />
+        </li>
 
-          <li className={styles.Parameter}>
-            <p className={styles.ParameterName} />
-            <p className={styles.ParameterValue} />
-          </li>
-        </ul>
-      </div>
+        <li className={styles.Parameter}>
+          <p className={styles.ParameterName} />
+          <p className={styles.ParameterValue} />
+        </li>
+      </ul>
 
       <div className={styles.Buttons}>
         <button type="button" disabled className={styles.AddToCartButton}>

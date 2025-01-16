@@ -1,27 +1,6 @@
 @use "../../../shared/styles/mixins" as *;
 @use "../../../shared/styles/extends";
 
-$button-height: 40px;
-$card-padding: 31px;
-$card-border-width: 1px;
-$card-gap: 8px;
-
-.Card {
-  display: flex;
-  flex-direction: column;
-  gap: $card-gap;
-
-  box-sizing: border-box;
-  height: 100%;
-  padding: $card-padding $card-padding calc($card-gap + $button-height + $card-padding);
-  border: $card-border-width solid;
-
-  @include color-transition((
-    background-color: var(--product-card-color),
-    border-color: var(--product-card-border-color)
-  ));
-}
-
 .Image {
   flex-grow: 1;
   border-radius: 10px;
@@ -93,11 +72,8 @@ $card-gap: 8px;
 
 .Buttons {
   position: relative;
-  bottom: calc($button-height + $card-border-width + $card-padding);
-
   display: flex;
   gap: 8px;
-  padding: 0 $card-padding;
 }
 
 .ButtonLabel {
@@ -113,7 +89,7 @@ $card-gap: 8px;
 }
 
 .FavouriteButton {
-  height: $button-height;
+  height: 40px;
   aspect-ratio: 1;
   border: none;
   padding: 0;
@@ -122,6 +98,19 @@ $card-gap: 8px;
 }
 
 .ProductCardSkeleton {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  box-sizing: border-box;
+  padding: 31px;
+  border: 1px solid;
+
+  @include color-transition((
+    background-color: var(--product-card-color),
+    border-color: var(--product-card-border-color)
+  ));
+
   &_loading {
     .Image, .Title, .Prices, .ParameterName, .ParameterValue, .AddToCartButton, .FavouriteButton {
       @include loading;

@@ -1,0 +1,42 @@
+@use "../../../shared/styles/extends";
+@use "../../../shared/styles/mixins" as *;
+
+.Title {
+  padding-top: 16px;
+
+  @include full-grid-width;
+  @extend %h2;
+  @include color-transition((color: var(--primary-text-color)));
+}
+
+.PhotosSlider {
+  padding-top: 40px;
+
+  @include for-desktop {
+    grid-column: span 12;
+  }
+
+  @include for-tablet {
+    grid-column: span 7;
+  }
+
+  @include for-mobile {
+    @include full-grid-width;
+
+    padding-top: 32px;
+  }
+}
+
+.ProductsPage {
+  @include grid;
+
+  padding-bottom: 56px;
+
+  @include for-tablet {
+    padding-bottom: 64px;
+  }
+
+  @include for-desktop {
+    padding-bottom: 80px;
+  }
+}

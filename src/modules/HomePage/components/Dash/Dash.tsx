@@ -19,6 +19,7 @@ export const Dash: React.FC<Props> = ({
   return (
     <li>
       <button
+        type="button"
         className={classNames(
           styles.Button,
           activePosition === position && styles.Button_active,

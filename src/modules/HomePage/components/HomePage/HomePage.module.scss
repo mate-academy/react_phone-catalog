@@ -1,7 +1,7 @@
 @use "../../../shared/styles/mixins" as *;
 
 .HiddenTitle {
-  @include visually-hidden;
+  @include visually-hidden-focusable;
 }
 
 .HomePage {

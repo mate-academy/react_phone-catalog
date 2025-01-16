@@ -5,6 +5,8 @@ import styles from './ProductCard.module.scss';
 import { useLanguage } from '../Contexts/LanguageContext';
 import { Product } from '../../types/types';
 import { Category } from '../../types/enums';
+import { accessoriesPath, phonesPath, tabletsPath } from '../../consts/paths';
+import { Link } from 'react-router-dom';
 
 type Props = {
   product: Product;
@@ -35,12 +37,30 @@ export const ProductCard: React.FC<Props> = ({
     }
   };
 
+  let path: string;
+
+  switch (product.category) {
+    case Category.Phones:
+      path = phonesPath;
+      break;
+    case Category.Tablets:
+      path = tabletsPath;
+      break;
+    case Category.Accessories:
+      path = accessoriesPath;
+      break;
+    default:
+      throw new Error('Product category is not valid!!!');
+  }
+
+  path += '/' + product.itemId;
+
   return (
     <article className={classNames(styles.ProductCard, className)}>
-      <a
-        href="placeholder"
+      <Link
+        to={path}
         draggable={draggable}
-        className={styles.Card}
+        className={styles.ImageLink}
         onClick={handleClick}
       >
         <img
@@ -49,41 +69,49 @@ export const ProductCard: React.FC<Props> = ({
           draggable={draggable}
           className={styles.Image}
         />
-        <h4 className={styles.Title}>{name}</h4>
+      </Link>
 
-        <div>
-          <strong className={styles.Price}>{`$${price}`}</strong>
+      <Link
+        to={path}
+        draggable={draggable}
+        className={styles.TitleLink}
+        onClick={handleClick}
+      >
+        {name}
+      </Link>
 
-          {price !== fullPrice && (
-            <del
-              data-content={`$${fullPrice}`}
-              className={styles.Discount}
-            >{`$${fullPrice}`}</del>
-          )}
-        </div>
+      <div>
+        <strong className={styles.Price}>{`$${price}`}</strong>
 
-        <div className={styles.Line}></div>
+        {price !== fullPrice && (
+          <del
+            data-content={`$${fullPrice}`}
+            className={styles.Discount}
+          >{`$${fullPrice}`}</del>
+        )}
+      </div>
 
-        <ul className={styles.Parameters}>
-          <li className={styles.Parameter}>
-            <p className={styles.ParameterName}>{screenLabel}</p>
-            <p className={styles.ParameterValue}>{screen}</p>
-          </li>
+      <div className={styles.Line}></div>
 
-          <li className={styles.Parameter}>
-            <p className={styles.ParameterName}>
-              {category === Category.Accessories ? sizeLabel : capacityLabel}
-            </p>
+      <ul className={styles.Parameters}>
+        <li className={styles.Parameter}>
+          <p className={styles.ParameterName}>{screenLabel}</p>
+          <p className={styles.ParameterValue}>{screen}</p>
+        </li>
 
-            <p className={styles.ParameterValue}>{capacity}</p>
-          </li>
+        <li className={styles.Parameter}>
+          <p className={styles.ParameterName}>
+            {category === Category.Accessories ? sizeLabel : capacityLabel}
+          </p>
 
-          <li className={styles.Parameter}>
-            <p className={styles.ParameterName}>{ramLabel}</p>
-            <p className={styles.ParameterValue}>{ram}</p>
-          </li>
-        </ul>
-      </a>
+          <p className={styles.ParameterValue}>{capacity}</p>
+        </li>
+
+        <li className={styles.Parameter}>
+          <p className={styles.ParameterName}>{ramLabel}</p>
+          <p className={styles.ParameterValue}>{ram}</p>
+        </li>
+      </ul>
 
       <div className={styles.Buttons}>
         <Button text={addToCart} className={styles.AddToCartButton} />

@@ -63,7 +63,7 @@ export const ProductsPage: React.FC<Props> = ({ productCategory }) => {
 
   return (
     <>
-      <PathNavigation path={path} />
+      <PathNavigation path={[path]} />
 
       <main className={styles.ProductsPage}>
         <h1 className={styles.Title}>{category}</h1>

@@ -8,7 +8,7 @@ export const PageNotFoundPage: React.FC = () => {
 
   return (
     <>
-      <PathNavigation path={pageNotFound} goBack />
+      <PathNavigation path={[pageNotFound]} goBack />
 
       <main className={styles.PageNotFoundPage}>
         <img

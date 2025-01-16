@@ -1,0 +1,31 @@
+@use "../../../shared/styles/mixins" as *;
+
+.PhotoPreview {
+  @include for-desktop {
+    min-width: 100%;
+    max-width: 100%;
+  }
+
+  @include for-tablet {
+    min-width: 100%;
+    max-width: 100%;
+  }
+
+  @include for-mobile {
+    flex: 1 0 0;
+  }
+}
+
+.PhotoPreviews {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  @include for-desktop {
+    gap: 16px;
+  }
+
+  @include for-mobile {
+    flex-flow: row wrap;
+  }
+}

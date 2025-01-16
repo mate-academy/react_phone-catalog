@@ -1,41 +1,26 @@
+@use "../../../shared/styles/vars" as *;
 @use "../../../shared/styles/mixins" as *;
 @use "../../../shared/styles/extends";
 
-$button-height: 40px;
-$card-padding: 31px;
-$card-border-width: 1px;
-$card-gap: 8px;
-
-.Card {
-  display: flex;
-  flex-direction: column;
-  gap: $card-gap;
-
-  box-sizing: border-box;
-  height: 100%;
-  padding: $card-padding $card-padding calc($card-gap + $button-height + $card-padding);
-  border: $card-border-width solid;
-
-  text-decoration: none;
-  cursor: inherit;
-
-  @include color-transition((
-    background-color: var(--product-card-color),
-    border-color: var(--product-card-border-color)
-  ));
+.ImageLink {
+  flex-grow: 1;
+  min-height: 0;
+  margin: auto;
+  transition: transform $transition-duration;
 }
 
 .Image {
-  flex-grow: 1;
-  min-height: 0;
+  height: 100%;
   object-fit: contain;
 }
 
-.Title {
+.TitleLink {
   padding-top: 16px;
+  text-decoration: none;
+  color: var(--primary-text-color);
+  transition: transform $transition-duration, color $transition-duration;
 
   @extend %body-text;
-  @include color-transition((color: var(--primary-text-color)));
 }
 
 .Price {
@@ -105,29 +90,42 @@ $card-gap: 8px;
 }
 
 .Buttons {
-  position: relative;
-  bottom: calc($button-height + $card-border-width + $card-padding);
-
   display: flex;
   gap: 8px;
-  padding: 0 $card-padding;
 }
 
 .AddToCartButton {
   flex-grow: 1;
-  cursor: inherit;
 }
 
 .FavouriteButton {
-  height: $button-height;
-  cursor: inherit;
+  position: relative;
+  height: 40px;
 }
 
 .ProductCard {
-  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 
-  &:hover > .Card {
+  box-sizing: border-box;
+  padding: 31px;
+  border: 1px solid;
+
+  @include color-transition((
+    background-color: var(--product-card-color),
+    border-color: var(--product-card-border-color),
+    box-shadow: none
+  ));
+
+  &:hover {
     border-color: var(--product-card-border-hover-color);
     box-shadow: 0 2px 16px 0 #0000001A;
+  }
+
+  &:has(> .ImageLink:hover), &:has(> .TitleLink:hover) {
+    & > .ImageLink, & > .TitleLink {
+      transform: $hover-scale;
+    }
   }
 }

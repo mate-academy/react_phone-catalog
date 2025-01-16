@@ -10,7 +10,7 @@ export const SettingsPage: React.FC = () => {
 
   return (
     <>
-      <PathNavigation path={settingsTitle} goBack />
+      <PathNavigation path={[settingsTitle]} goBack />
 
       <main className={styles.SettingsPage}>
         <h1 className={styles.Title}>{settingsTitle}</h1>

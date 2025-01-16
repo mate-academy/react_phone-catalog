@@ -63,13 +63,19 @@ export const PicturesSliderSkeleton: React.FC<Props> = ({
 
       <ul className={styles.Dashes}>
         <li>
-          <button disabled className={styles.Dash}>
+          <button type="button" disabled className={styles.Dash}>
             <span className={styles.DashLabel}>{buttonInfo}</span>
           </button>
         </li>
 
         <li>
-          <button disabled className={styles.Dash}>
+          <button type="button" disabled className={styles.Dash}>
+            <span className={styles.DashLabel}>{buttonInfo}</span>
+          </button>
+        </li>
+
+        <li>
+          <button type="button" disabled className={styles.Dash}>
             <span className={styles.DashLabel}>{buttonInfo}</span>
           </button>
         </li>

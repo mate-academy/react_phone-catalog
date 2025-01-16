@@ -18,6 +18,8 @@ import { PageNotFoundPage } from './modules/PageNotFoundPage/components/PageNotF
 import { BurgerMenuProvider } from './modules/shared/components/Contexts/BurgerMenuContext';
 import { ProductsPage } from './modules/ProductsPage/components/ProductsPage';
 import { Category } from './modules/shared/types/enums';
+// eslint-disable-next-line max-len
+import { ProductDetailsPage } from './modules/ProductDetailsPage/components/ProductDetailsPage';
 
 export const App: React.FC = () => {
   return (
@@ -34,35 +36,58 @@ export const App: React.FC = () => {
           element={<Navigate to={homePath} replace />}
         />
 
-        <Route
-          path={phonesPath}
-          element={
-            <ProductsPage
-              key={Category.Phones}
-              productCategory={Category.Phones}
-            />
-          }
-        />
+        <Route path={phonesPath}>
+          <Route
+            index
+            element={
+              <ProductsPage
+                key={Category.Phones}
+                productCategory={Category.Phones}
+              />
+            }
+          />
 
-        <Route
-          path={tabletsPath}
-          element={
-            <ProductsPage
-              key={Category.Tablets}
-              productCategory={Category.Tablets}
-            />
-          }
-        />
+          <Route
+            path=":productId"
+            element={<ProductDetailsPage productCategory={Category.Phones} />}
+          />
+        </Route>
 
-        <Route
-          path={accessoriesPath}
-          element={
-            <ProductsPage
-              key={Category.Accessories}
-              productCategory={Category.Accessories}
-            />
-          }
-        />
+        <Route path={tabletsPath}>
+          <Route
+            index
+            element={
+              <ProductsPage
+                key={Category.Tablets}
+                productCategory={Category.Tablets}
+              />
+            }
+          />
+
+          <Route
+            path=":productId"
+            element={<ProductDetailsPage productCategory={Category.Tablets} />}
+          />
+        </Route>
+
+        <Route path={accessoriesPath}>
+          <Route
+            index
+            element={
+              <ProductsPage
+                key={Category.Accessories}
+                productCategory={Category.Accessories}
+              />
+            }
+          />
+
+          <Route
+            path=":productId"
+            element={
+              <ProductDetailsPage productCategory={Category.Accessories} />
+            }
+          />
+        </Route>
 
         <Route path={settingsPath} element={<SettingsPage />} />
         <Route path="*" element={<PageNotFoundPage />} />
