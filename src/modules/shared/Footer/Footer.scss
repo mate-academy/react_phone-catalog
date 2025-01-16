@@ -70,11 +70,8 @@
   font-weight: 800;
   line-height: 11px;
   letter-spacing: 0.04em;
-  color: var(--color-gray-primary);
-}
-
-.footer__link:hover {
-  color: var(--color-gray-primary);
+  color: var(--color-gray-secondary);
+  @include hover(color, var(--color-gray-primary));
 }
 
 .footer__block {

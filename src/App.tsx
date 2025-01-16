@@ -3,14 +3,11 @@ import '../src/styles/main.scss';
 import './App.scss';
 import { Footer } from './modules/shared/Footer';
 import { Header } from './modules/shared/Header';
-import { useContext, useEffect } from 'react';
+import { useEffect } from 'react';
 import { Menu } from './modules/shared/Menu';
-import { GlobalContext } from './store/GlobalContext';
 
 export const App = () => {
   const location = useLocation();
-
-  const { isMenuOpen } = useContext(GlobalContext);
 
   useEffect(() => {
     window.scrollTo({
@@ -25,11 +22,9 @@ export const App = () => {
         <Header />
       </header>
 
-      {isMenuOpen && (
-        <div className="App__menu">
-          <Menu />
-        </div>
-      )}
+      <div className="App__menu">
+        <Menu />
+      </div>
 
       <main className="App__content">
         <Outlet />

@@ -16,18 +16,21 @@ export const Menu: React.FC = () => {
 
     window.addEventListener('resize', handleResize);
 
-    handleResize();
-
     return () => {
       window.removeEventListener('resize', handleResize);
     };
   }, [isMenuOpen, toggleMenu]);
 
   return (
-    <nav className="menu">
+    <nav className={`menu ${isMenuOpen ? 'menu--open' : ''}`}>
       <div className="menu__list">
         {navLinks.map(link => (
-          <Link to={link.path} key={link.title} className="menu__link">
+          <Link
+            to={link.path}
+            key={link.title}
+            className="menu__link"
+            onClick={toggleMenu}
+          >
             {link.title}
           </Link>
         ))}

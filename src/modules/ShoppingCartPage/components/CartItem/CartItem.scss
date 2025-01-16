@@ -31,6 +31,10 @@
     gap: 16px;
     align-items: center;
     justify-content: space-between;
+
+    @include on-tablet {
+      gap: 24px;
+    }
   }
 
   & .cartItem__wrapperBottom {
@@ -39,6 +43,11 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+
+    @include on-tablet {
+      gap: 24px;
+      width: auto;
+    }
   }
 
   & .cartItem__icon-close {
@@ -123,26 +132,23 @@
       transform: scale(1.05);
     }
   }
+}
 
-  // Переопределение для темной темы должно идти после основного стиля
-  body.theme_dark {
-    .cartItem__counter {
-      color: var(--color-gray-primary);
-    }
+body.theme_dark .cartItem__counter {
+  color: var(--color-gray-primary);
+}
 
-    .cartItem__button {
-      background-color: var(--color-surface-2);
-      border: none;
+body.theme_dark .cartItem__button {
+  background-color: var(--color-surface-2);
+  border: none;
 
-      &--disabled {
-        background-color: var(--color-bg);
-        border: 1px solid var(--color-gray-elements);
-      }
+  &--disabled {
+    background-color: var(--color-bg);
+    border: 1px solid var(--color-gray-elements);
+  }
 
-      &:not(.cartItem__button--disabled):hover {
-        background-color: var(--color-gray-icons-placeholders);
-        border: none;
-      }
-    }
+  &:not(.cartItem__button--disabled):hover {
+    background-color: var(--color-gray-icons-placeholders);
+    border: none;
   }
 }
