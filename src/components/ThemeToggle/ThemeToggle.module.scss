@@ -8,6 +8,8 @@
   border-radius: 20px;
   border: 1.5px solid var(--primary-color);
   margin-inline: 20px;
+
+  @include hover-scale;
 }
 
 .toggleInput {

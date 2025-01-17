@@ -1,11 +1,11 @@
 @import '../../styles/main.scss';
 
 .navIcon {
-  position: relative;
-  display: inline-block;
-  padding-inline: 25px;
-  padding-block: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   transition: background-color 0.3s ease;
+  height: 100%;
 
   &::after {
     content: '';
@@ -17,11 +17,7 @@
     transition: width 0.3s ease;
   }
 
-  &:hover {
-    @include hover-scale;
-  }
-
   &:focus::after {
-    width: 100%;
+    width: 99%;
   }
 }

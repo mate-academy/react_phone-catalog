@@ -5,7 +5,11 @@
   box-shadow: 0px 1px 0px 0px var(--shadow-color);
   align-items: center;
   justify-content: space-between;
-  height: 64px;
+  height: $header-height-desktop;
+
+  @include on-tablet {
+    height: $header-height-tablets;
+  }
 
   &__icons {
     display: flex;
@@ -20,19 +24,35 @@
     justify-self: center;
     aspect-ratio: 1 / 1;
     box-shadow: -1.1px 0 0 0 var(--elements-color);
+    display: block;
 
-    display: flex;
     height: 64px;
     justify-content: center;
     align-items: center;
     position: relative;
     box-sizing: border-box;
 
+    @include on-tablet {
+      height: $header-height-tablets;
+      width: 48px;
+    }
+
     &--link {
       cursor: pointer;
 
       @include on-mobile {
         display: none;
+      }
+    }
+
+    &--btn {
+      cursor: pointer;
+      display: none;
+      border: none;
+      background-color: var(--bg-color);
+
+      @include on-mobile {
+        display: block;
       }
     }
   }

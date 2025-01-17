@@ -32,8 +32,13 @@ body {
     display: block;
     width: 100%;
     height: 3px;
+    left: 0;
     background-color: var(--primary-color);
     bottom: -24px;
     position: absolute;
+
+    @include on-tablet {
+      bottom: -16px;
+    }
   }
 }

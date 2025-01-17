@@ -1,8 +1,10 @@
 import React from 'react';
 import styles from './Icon.module.scss';
 import { IconType } from '../../types/IconTypes';
-import FavouriteWhite from '../../assets/images/Icons/icon-liked-white.png';
-import CartWhite from '../../assets/images/Icons/cartWhite.png';
+import FavouriteIcon from '../../assets/images/Icons/icon-liked.png';
+import CartIcon from '../../assets/images/Icons/cart.png';
+import MenuIcon from '../../assets/images/Icons/menu-icon.svg';
+import CloseMenu from '../../assets/images/Icons/close-icon.svg';
 
 type Props = {
   type: IconType;
@@ -13,10 +15,16 @@ export const Icon: React.FC<Props> = ({ type }) => {
 
   switch (type) {
     case 'favourite':
-      iconSrc = FavouriteWhite;
+      iconSrc = FavouriteIcon;
       break;
     case 'cart':
-      iconSrc = CartWhite;
+      iconSrc = CartIcon;
+      break;
+    case 'menu':
+      iconSrc = MenuIcon;
+      break;
+    case 'close':
+      iconSrc = CloseMenu;
       break;
     default:
       break;

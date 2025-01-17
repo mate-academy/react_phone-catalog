@@ -1,11 +1,15 @@
+import { Icon } from '../Icon';
 import { Logo } from '../Logo';
 import { NavIcon } from '../NavIcon/NavIcon';
 import { Navigation } from '../Navigation';
 import { ThemeToggle } from '../ThemeToggle';
 import styles from './Header.module.scss';
+import { useMenu } from '../../hooks/useMenu';
 import React from 'react';
 
 export const Header = () => {
+  const { openMenu } = useMenu();
+
   return (
     <header className={styles.header}>
       <div className={styles.header__logo}>
@@ -13,7 +17,7 @@ export const Header = () => {
       </div>
 
       <div className={styles.header__nav}>
-        <Navigation />
+        <Navigation isMenu={false} />
       </div>
 
       <div className={styles.header__icons}>
@@ -32,6 +36,14 @@ export const Header = () => {
         >
           <NavIcon path="/cart" type="cart" />
         </div>
+
+        <button
+          type="button"
+          className={`${styles.header__icon} ${styles['header__icon--btn']}`}
+          onClick={() => openMenu()}
+        >
+          <Icon type="menu" />
+        </button>
       </div>
     </header>
   );
