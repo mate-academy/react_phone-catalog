@@ -5,7 +5,7 @@ module.exports = {
   },
   extends: [
     'plugin:react/recommended',
-    "plugin:react-hooks/recommended",
+    'plugin:react-hooks/recommended',
     'airbnb-typescript',
     'plugin:@typescript-eslint/eslint-recommended',
     'plugin:@typescript-eslint/recommended',
@@ -18,7 +18,7 @@ module.exports = {
       'rules': {
         'react/jsx-filename-extension': ['off'],
       }
-    }
+    },
   ],
   parser: '@typescript-eslint/parser',
   parserOptions: {
@@ -29,6 +29,7 @@ module.exports = {
     project: './tsconfig.json',
     sourceType: 'module',
   },
+
   plugins: [
     'jsx-a11y',
     'import',
@@ -38,6 +39,7 @@ module.exports = {
   ],
   rules: {
     // JS
+    'import/no-extraneous-dependencies': 'off',
     'semi': 'off',
     '@typescript-eslint/semi': ['error', 'always'],
     'prefer-const': 2,
