@@ -51,7 +51,7 @@
   list-style: none;
   display: flex;
   align-items: center;
-  gap: 32px;
+  gap: 24px;
   text-decoration: none;
 
   @include on-desktop {
@@ -110,8 +110,6 @@
   transition: none;
 }
 
-
-
 .header__search-wrapper {
   position: relative;
   display: flex;
@@ -132,6 +130,10 @@
   line-height: 21px;
   outline: none;
   border: none;
+
+  @include on-tablet {
+    flex-grow: 1;
+  }
 
   @include on-desktop {
     height: 64px;
@@ -166,6 +168,7 @@
   line-height: 48px;
   font-family: Mont-Bold, sans-serif;
   box-sizing: border-box;
+  flex-shrink: 0;
 
   position: relative;
   display: inline-block;
