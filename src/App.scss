@@ -1,1 +1,24 @@
-// not empty
+@import './styles/main';
+
+body {
+  background-color: var(--c-background);
+}
+
+.App {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+
+  &__title {
+    display: none;
+  }
+}
+
+.main {
+  flex: 1;
+  margin-bottom: 64px;
+
+  @include on-tablet {
+    margin-bottom: 80px;
+  }
+}

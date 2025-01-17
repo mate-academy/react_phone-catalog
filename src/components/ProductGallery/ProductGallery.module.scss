@@ -1,0 +1,45 @@
+@import '../../styles/main';
+
+.productGallery {
+  margin-top: 24px;
+
+  .list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(287px, 1fr)); // Items stretch dynamically
+    gap: 16px;
+
+    @include on-tablet {
+      grid-template-columns: repeat(auto-fit, minmax(288px, 1fr));
+    }
+
+    @include on-desktop {
+      grid-template-columns: repeat(auto-fit, minmax(272px, 1fr));
+    }
+
+    .item {
+      height: 440px;
+      min-width: 287px;
+      max-width: 1fr;
+      border: 1px solid var(--card-border);
+      background-color: var(--card-bg-color);
+      padding: 32px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+
+      &:hover {
+        border-color: var(--card-hover-border);
+        box-shadow: var(--box-shadow-hover);
+      }
+
+      @include on-tablet {
+        height: 506px;
+      }
+
+      @include on-desktop {
+        height: 506px;
+      }
+    }
+  }
+}

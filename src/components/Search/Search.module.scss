@@ -1,0 +1,54 @@
+@import '../../styles/main';
+
+// fix naming styles and dashes
+
+.search {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &__content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+  }
+
+  &__inputWrapper {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    border-left: 1px solid var(--element-color);
+  }
+
+  &__icon {
+    padding-left: 8px;
+    margin-right: 3px;
+  }
+
+  &__input {
+    width: 100%;
+    height: 100%;
+    border-style: none;
+    background-color: var(--c-background);
+    padding-left: 5px;
+    outline: none;
+    font-family: Mont, sans-serif;
+    color: var(--primary);
+
+    &::placeholder {
+      color: var(--header-text-color);
+      font-family: Mont, sans-serif;
+    }
+  }
+
+  &__close {
+    display: flex;
+    align-items: center;
+    padding: 5px;
+    cursor: pointer;
+  }
+}

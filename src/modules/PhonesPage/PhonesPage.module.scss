@@ -1,0 +1,48 @@
+@import '../../styles/main';
+
+.phonesPage {
+  width: 100%;
+  height: 100%;
+
+    .container {
+      @include padding-content-inline-responsive;
+    }
+
+    .title {
+      font-family: Mont, sans-serif;
+      font-size: 48px;
+      font-weight: 800;
+      line-height: 56px;
+      color: var(--primary);
+      margin-top: 24px;
+
+      @include on-tablet {
+        margin-top: 40px;
+      }
+    }
+
+    .count {
+      margin-top: 8px;
+      font-family: Mont, sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 21px;
+      color: var(--header-text-color);
+
+    }
+
+    .dropdownContainer {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      flex-direction: row;
+      gap: 16px;
+      margin-top: 32px;
+
+      @include on-tablet {
+        justify-content: left;
+        margin-top: 40px;
+      }
+    }
+}

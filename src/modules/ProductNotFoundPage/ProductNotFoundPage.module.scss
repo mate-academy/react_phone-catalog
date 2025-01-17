@@ -1,0 +1,58 @@
+@import '../../styles/main';
+
+.productNotFoundPage {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--c-background);
+  text-align: center;
+
+  @include padding-content-inline-responsive;
+}
+
+.title {
+  font-family: Mont, sans-serif;
+  font-weight: 800;
+  font-size: 32px;
+  padding-bottom: 1rem;
+  color: var(--primary);
+  white-space: pre-line;
+}
+
+.message {
+  font-family: Mont, sans-serif;
+  font-weight: 700;
+  font-size: 1.5rem;
+  padding-top: 60px;
+  color: var(--primary);
+}
+
+  .image {
+    max-width: 400px;
+    width: 100%;
+    height: 100%;
+  }
+
+  .back {
+    padding-top: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .backIcon {
+      opacity: 0.5;
+    }
+
+    .link {
+      font-size: 1rem;
+      color: var(--header-text-color);
+      text-decoration: none;
+
+      &:hover {
+        color: var(--header-text-color-active);
+      }
+    }
+  }

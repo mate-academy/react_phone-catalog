@@ -1,0 +1,142 @@
+@import '../../styles/main';
+
+.ItemPhoto_container {
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  gap: 16px;
+
+  @include on-tablet {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+
+  .ItemPhoto {
+    &_thumbs {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: row;
+      gap: 8px;
+      overflow: hidden;
+      height: 100%;
+      width: 100%;
+
+      @include on-tablet {
+        flex-direction: column;
+        min-width: 35px;
+        max-width: 35px;
+      }
+
+      @include on-desktop {
+        min-width: 80px;
+        max-width: 80px;
+      }
+
+      .swiper-slide {
+        box-sizing: border-box;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 8px;
+        padding: 8px;
+      }
+    }
+
+    &_main {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 288px;
+
+      @include on-tablet {
+        height: 287px;
+      }
+
+      @include on-desktop {
+        height: 464px;
+      }
+
+      img {
+        height: 100%;
+        width: 100%;
+        object-fit: contain;
+        transition: transform 0.3s ease;
+        cursor: pointer;
+      }
+
+      img:hover {
+        transform: scale(1.05);
+      }
+
+      .swiper-wrapper {
+        height: 100%;
+      }
+
+      .swiper-slide {
+        box-sizing: border-box;
+        display: flex;
+        justify-content: center;
+        height: 100%;
+        width: 288px;
+        overflow: hidden;
+
+        @include on-tablet {
+          width: 287px;
+        }
+
+        @include on-desktop {
+          width: 464px;
+        }
+      }
+    }
+  }
+}
+
+.thumbnailImage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 49px;
+  width: 49px;
+  padding: 8px;
+  box-sizing: border-box;
+  border: 1px solid var(--item-border);
+  transition: border-color 0.3s ease;
+  cursor: pointer;
+
+  &.activeThumbnailBorder {
+    border-color: var(--header-text-color-active);
+  }
+
+  img {
+    object-fit: contain;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.3s ease;
+
+    &:hover {
+      transform: scale(1.2);
+    }
+  }
+
+  @include on-tablet {
+    height: 35px;
+    width: 35px;
+  }
+
+  @include on-desktop {
+    height: 80px;
+    width: 80px;
+  }
+}
+
+.ItemPhoto_main {
+  transition: transform 1s ease-in-out;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+}

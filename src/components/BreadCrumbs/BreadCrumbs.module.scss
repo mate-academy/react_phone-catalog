@@ -1,0 +1,52 @@
+@import '../../styles/main';
+
+.breadCrumbs {
+  display: flex;
+  height: 16px;
+  gap: 8px;
+  margin-top: 24px;
+
+  &__content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 16px;
+    gap: 8px;
+  }
+
+  &__title {
+    font-family: Mont, sans-serif;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 15.34px;
+    color: var(--header-text-color);
+    text-decoration: none;
+
+    &__active {
+      color: var(--header-text-color-active);
+    }
+  }
+
+  &__arrowRight {
+      &__icon {
+      display: flex;
+      width: 16px;
+      height: 16px;
+      opacity: 0.5;
+      align-items: center;
+    }
+  }
+
+  &__logo {
+    &__link {
+      display: flex;
+      align-items: center;
+
+      &__img {
+        width: 16px;
+        height: 16px;
+      }
+    }
+  }
+}
+

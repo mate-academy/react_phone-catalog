@@ -1,0 +1,99 @@
+@import '../../styles/main';
+
+.pagination {
+  width: 100%;
+  height: 32px;
+  display: flex;
+  justify-content: center;
+  flex-flow: row wrap;
+  margin-top: 24px;
+
+  @include on-tablet {
+    margin-top: 40px;
+  }
+
+  .button {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid var(--btn-pg-border);
+    background-color: var(--footer-btn-bg-color);
+    cursor: pointer;
+
+    &:hover {
+      border-color: var(--btn-pg-hover-border);
+      background-color: var(--btn-pg-bg-hover);
+    }
+
+    &__right {
+      &__disabled {
+        border-color: var(--bg-hover-active);
+        background-color: transparent;
+        pointer-events: none;
+        opacity: 0.5;
+      }
+    }
+
+    &__left {
+      &__disabled {
+        border-color: var(--bg-hover-active);
+        background-color: transparent;
+        pointer-events: none;
+        opacity: 0.5;
+      }
+    }
+
+    .iconLeft {
+      transform: rotate(180deg);
+    }
+
+    .iconRight {
+      &__disabled {
+        transform: rotate(180deg);
+      }
+    }
+  }
+
+  &__container {
+    width: 152px;
+    margin-inline: 16px;
+    overflow: hidden;
+  }
+
+  &__pageList {
+    display: flex;
+    max-width: 184px;
+    gap: 8px;
+  }
+
+  &__item {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+    font-family: Mont, sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 21px;
+    border: 1px solid var(--pg-item-border);
+    color: var(--pg-item);
+    background-color: var(--pg-bg-color);
+    cursor: pointer;
+
+    &:hover {
+      border-color: var(--btn-pg-hover-border);
+      background-color: var(--pg-bg-hover);
+    }
+
+    &__active {
+      background-color: var(--pg-selected);
+      color: var(--pg-item-selected);
+      border-color: var(--border-pg-selected);
+      pointer-events: none;
+    }
+  }
+}
