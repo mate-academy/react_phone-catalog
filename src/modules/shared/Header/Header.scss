@@ -251,7 +251,7 @@ body.theme_dark .header__icon:hover {
   content: '';
   position: absolute;
   width: 64px;
-  height: 2px;
+  width: 100%;
   background-color: var(--color-gray-primary);
 }
 

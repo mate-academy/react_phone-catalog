@@ -2,7 +2,14 @@
 @import '../../../styles/main';
 @import '../../../styles/utils/variables';
 
-.productCard {
+body.theme_dark .productCard {
+  border: none;
+  background-color: var(--color-surface-1);
+}
+
+.productCard__container {
+  cursor: pointer;
+  text-decoration: none;
   width: 100%;
   height: 100%;
   padding: 32px;
@@ -14,16 +21,6 @@
   transition: border 0.3s;
 
   @include hover(border-color, var(--color-gray-primary));
-}
-
-body.theme_dark .productCard {
-  border: none;
-  background-color: var(--color-surface-1);
-}
-
-.productCard__activeClick {
-  cursor: pointer;
-  text-decoration: none;
 }
 
 .productCard__container-photo {

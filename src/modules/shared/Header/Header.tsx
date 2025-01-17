@@ -145,6 +145,7 @@ export const Header: React.FC = () => {
           className={classNames('header__buttons-wrapper', {
             'header__buttons-wrapper--bottom': isMenuOpen,
           })}
+          onClick={toggleMenu}
         >
           <NavLink className={getActiveIcon} to="/favorites">
             <div className="header__icon-wrapper">

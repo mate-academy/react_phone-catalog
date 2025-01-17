@@ -87,7 +87,7 @@ export const ProductContentTop: React.FC<Props> = ({
             })}
           >
             <img
-              src={`/${image}`}
+              src={`./${image}`}
               alt={`Thumbnail ${index + 1}`}
               className="detailsPage__photo"
               onClick={() => setSelectedPhoto(index)}
@@ -100,7 +100,7 @@ export const ProductContentTop: React.FC<Props> = ({
         {selectedProduct.images.map((image, index) => (
           <img
             key={index}
-            src={`/${image}`}
+            src={`./${image}`}
             alt={`Selected Photo ${index + 1}`}
             className={classNames('detailsPage__image', {
               'detailsPage__image--active': selectedPhoto === index,
