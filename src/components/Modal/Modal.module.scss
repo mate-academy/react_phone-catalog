@@ -1,0 +1,94 @@
+@import '../../styles/main';
+
+.cancelBtn,
+.confirmBtn {
+  font-family: Mont, sans-serif;
+  padding: 12px 24px;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.3s ease;
+
+}
+
+.cancelBtn {
+  background-color: var(--button-cancel-bg);
+  color: var(--button-cancel-text);
+
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgb(0 123 255 / 25%);
+  }
+
+  &:hover {
+    background-color: var(--button-cancel-hover);
+  }
+}
+
+.confirmBtn {
+  background-color: var(--button-confirm-bg);
+  color: var(--button-confirm-text);
+
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgb(0 123 255 / 25%);
+  }
+
+&:hover {
+  background-color: var(--button-confirm-hover);
+  box-shadow: var(--btn-hover-shadow);
+
+}
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--overlay-bg);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+
+
+.modal {
+  background: var(--modal-bg);
+  padding: 24px;
+  border-radius: 12px;
+  width: 500px;
+  max-width: 90%;
+  text-align: center;
+  box-shadow: var(--modal-shadow);
+  transition: transform 0.3s ease-in-out, background-color 0.3s ease;
+  transform: scale(0.95);
+  animation: modalAppear 0.3s ease-out forwards;
+
+
+.modalTitle {
+  font-family: Mont, sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--modal-title);
+  margin-bottom: 12px;
+}
+
+.modalMessage {
+  font-family: Mont, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--modal-message);
+  margin-bottom: 24px;
+}
+
+.modalActions {
+  display: flex;
+  justify-content: space-evenly;
+  gap: 12px;
+}
+}
+}

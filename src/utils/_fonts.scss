@@ -1,0 +1,26 @@
+// fonts.scss
+
+@font-face {
+  font-family: Mont;
+  src: local('Mont Regular'), url('/fonts/Mont-Regular.otf') format('opentype');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: Mont;
+  src: local('Mont SemiBold'), url('/fonts/Mont-SemiBold.otf') format('opentype');
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: Mont;
+  src: local('Mont Bold'), url('/fonts/Mont-Bold.otf') format('opentype');
+  font-weight: 800;
+  font-style: normal;
+}
+
+$mont-regular: mont, sans-serif;
+$mont-semiBold: mont, sans-serif;
+$mont-bold: mont, sans-serif;

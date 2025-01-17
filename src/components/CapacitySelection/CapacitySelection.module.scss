@@ -1,0 +1,56 @@
+@import '../../styles/main';
+
+.capacitySelection {
+  .container {
+    display: flex;
+    justify-content: space-between;
+
+    .title {
+      font-family: Mont, sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--header-text-color);
+    }
+  }
+
+  .list {
+    padding-top: 8px;
+    display: flex;
+    gap: 8px;
+
+    .item {
+      height: 32px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: Mont, sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      border: 1px solid var(--capacity-default-border);
+      background-color: var(--c-background);
+      color: var(--header-text-color-active);
+      padding: 7px 8px 4px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+
+      &__active {
+        pointer-events: none;
+        color: var(--capacity-active-text);
+        background-color: var(--header-text-color-active);
+      }
+
+      &:hover {
+        background-color: rgb(169 169 169 / 30%);
+        border-color: transparent;
+      }
+    }
+
+    .button {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+}

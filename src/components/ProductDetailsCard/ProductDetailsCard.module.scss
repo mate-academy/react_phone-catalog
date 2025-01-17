@@ -1,0 +1,346 @@
+@import '../../styles/main';
+
+.card {
+  padding-bottom: 56px;
+
+  @include on-tablet {
+    padding-bottom: 64px;
+  }
+
+  @include on-desktop {
+    padding-bottom: 80px;
+  }
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    padding-bottom: 56px;
+
+    @include on-tablet {
+      flex-direction: row;
+      gap: 17px;
+      padding-bottom: 64px;
+    }
+
+    @include on-desktop {
+      gap: 64px;
+      padding-bottom: 80px;
+    }
+
+    .swiper {
+      width: 100%;
+      height: auto;
+
+      @include on-tablet {
+        width: 50%;
+      }
+    }
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+  @include on-tablet {
+    width: 50%;
+  }
+
+  .colorIdSection {
+    .line {
+      display: inline-block;
+      margin-block: 24px;
+      width: 100%;
+      height: 1px;
+      background-color: var(--bg-hover-active);
+
+      @include on-desktop {
+        width: 320px;
+      }
+    }
+  }
+
+  .capacitySection {
+    .lineCapacity {
+      display: inline-block;
+      margin-top: 24px;
+      margin-bottom: 32px;
+      width: 100%;
+      height: 1px;
+      background-color: var(--bg-hover-active);
+
+      @include on-desktop {
+        width: 320px;
+      }
+    }
+  }
+
+
+  .priceBtnsInfo {
+    display: flex;
+    flex-direction: column;
+
+    .price {
+      display: flex;
+      gap: 8px;
+      padding-bottom: 16px;
+
+      .currentPrice {
+        font-family: Mont, sans-serif;
+        font-weight: 800;
+        font-size: 32px;
+        line-height: 30.8px;
+        color: var(--header-text-color-active);
+      }
+
+      .fullPrice {
+        font-family: Mont, sans-serif;
+        font-weight: 600;
+        font-size: 22px;
+        line-height: 30.8px;
+        color: var(--header-text-color);
+        position: relative;
+        z-index: 1;
+
+        &__curvyLine {
+          position: absolute;
+          top: 50%;
+          left: 0;
+          width: 100%;
+          height: 10px;
+          transform: translateY(-50%);
+          transform-origin: center;
+          z-index: 2;
+          overflow: visible;
+        }
+      }
+    }
+
+    .btns {
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 48px;
+      gap: 8px;
+
+      @include on-desktop {
+        width: 320px;
+      }
+
+       .cartBtn {
+        background-color: var(--btn-add-cart-bg);
+        font-family: Mont, sans-serif;
+        font-size: 14px;
+        font-weight: 600;
+        color: #fff;
+        width: 100%;
+        height: 48px;
+        cursor: pointer;
+        transition: box-shadow 0.2s ease, background-color 0.2s ease;
+
+        &--active {
+          background-color: var(--cart-added);
+          color: var(--btn-text-cart);
+          border: 1px solid var(--cart-added-border);
+        }
+
+        &:hover {
+          background-color: var(--btn-bg-hover);
+          box-shadow: var(--btn-hover-shadow);
+        }
+       }
+
+       .favBtn {
+        flex-shrink: 0;
+        border: 1px solid var(--fav-icon-border);
+        width: 48px;
+        height: 48px;
+        background-color: var(--fav-bg);
+        cursor: pointer;
+
+          &--active {
+            border-color: var(--bg-hover-active);
+            background-color: var(--fav-active);
+          }
+
+          &:hover {
+            border-color: var(--fav-border-hover);
+            background-color: var(--fav-hover);
+          }
+       }
+
+    }
+
+    .info {
+      padding-top: 32px;
+      width: 100%;
+      font-family: Mont, sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+
+      @include on-desktop {
+        width: 320px;
+      }
+
+      .infoBlock {
+        display: flex;
+        justify-content: space-between;
+
+        .title {
+          color: var(--header-text-color);
+        }
+
+        .value {
+          color: var(--header-text-color-active);
+        }
+      }
+    }
+  }
+}
+
+}
+
+  .productDetails {
+    display: flex;
+    flex-direction: column;
+    gap: 56px;
+    width: 100%;
+
+
+    @include on-tablet {
+      gap: 64px;
+    }
+
+    @include on-desktop {
+      flex-direction: row;
+    }
+
+    .about {
+      width: 100%;
+
+      @include on-desktop {
+        width: 50%;
+      }
+
+      .mainTitle {
+         color: var(--header-text-color-active);
+         font-family: Mont, sans-serif;
+         font-size: 22px;
+         font-weight: 700;
+
+         @include on-tablet {
+           font-weight: 800;
+         }
+
+      }
+
+      .lineAbout {
+         display: inline-block;
+         margin-top: 16px;
+         margin-bottom: 32px;
+         width: 100%;
+         height: 1px;
+         background-color: var(--bg-hover-active);
+      }
+
+
+      .contentAbout {
+         display: flex;
+         flex-direction: column;
+         gap: 32px;
+
+      .article {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+}
+
+       .title {
+       font-family: Mont, sans-serif;
+       font-size: 16px;
+       font-weight: 700;
+       color: var(--header-text-color-active);
+       }
+
+       .text {
+          font-family: Mont, sans-serif;
+          font-size: 14px;
+          font-weight: 600;
+          color: var(--header-text-color);
+        }
+      }
+    }
+
+    .specs {
+      width: 100%;
+
+      @include on-desktop {
+        width: 50%;
+      }
+
+            .mainTitle {
+               color: var(--header-text-color-active);
+               font-family: Mont, sans-serif;
+               font-size: 22px;
+               font-weight: 700;
+
+               @include on-tablet {
+                 font-weight: 800;
+               }
+      }
+
+   .lineSpecs {
+      display: inline-block;
+      margin-top: 16px;
+      margin-bottom: 30px;
+      width: 100%;
+      height: 1px;
+      background-color: var(--bg-hover-active);
+
+      @include on-tablet {
+        margin-bottom: 25px;
+      }
+      }
+
+      .contentSpecs {
+          display: flex;
+          flex-direction: column;
+          gap: 8px;
+
+
+       .specsBlock {
+          display: flex;
+          justify-content: space-between;
+
+        .title {
+          color: var(--header-text-color);
+          font-family: Mont, sans-serif;
+          font-size: 14px;
+          font-weight: 600;
+
+        }
+
+        .value {
+          color: var(--header-text-color-active);
+          font-family: Mont, sans-serif;
+          font-size: 14px;
+          font-weight: 600;
+        }
+       }
+
+      }
+
+    }
+  }
+
+}
+
+.notFound {
+  padding-bottom: 35px;
+}

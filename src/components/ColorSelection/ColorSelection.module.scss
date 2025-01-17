@@ -1,0 +1,60 @@
+@import '../../styles/main';
+
+.colorSelection {
+  .container {
+    display: flex;
+    justify-content: space-between;
+
+    .title {
+      font-family: Mont, sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--header-text-color);
+    }
+
+    .id {
+      font-family: Mont, sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--header-text-color);
+    }
+  }
+
+  .list {
+    padding-top: 8px;
+    display: flex;
+    gap: 8px;
+
+    .item {
+      width: 32px;
+      height: 32px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border: 1px solid var(--bg-hover-active);
+      border-radius: 50%;
+      background-color: var(--c-background);
+      cursor: pointer;
+
+      &__active {
+        pointer-events: none;
+        border-color: var(--header-text-color-active);
+      }
+
+      &:hover {
+        border-color: var(--header-text-color);
+      }
+    }
+
+    .circle {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border: 2px solid var(--c-background);
+      border-radius: 50%;
+      background-color: #000;
+    }
+  }
+}

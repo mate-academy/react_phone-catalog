@@ -1,0 +1,59 @@
+@import '../../styles/main';
+
+.productDetailsPage {
+  position: relative;
+
+  @include padding-content-inline-responsive;
+
+
+.goBackBtn {
+  display: flex;
+  align-items: flex-start;
+  padding-top: 24px;
+
+  @include on-tablet {
+    padding-top: 40px;
+  }
+
+  .customBackButton {
+    color: var(--back-btn-cart);
+    font-size: 12px;
+    transition: color 0.2s ease;
+
+    &:hover {
+      color: var(--back-btn-cart-hover);
+    }
+
+   .customIcon {
+    opacity: 1;
+    transition: filter 0.2s ease;
+
+    &:hover {
+      filter: invert(29%) sepia(57%) saturate(548%) hue-rotate(270deg) brightness(93%) contrast(92%);
+
+    }
+  }
+  }
+}
+
+  .productTitle {
+    font-family: Mont, sans-serif;
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--header-text-color-active);
+    padding-top: 16px;
+    padding-bottom: 32px;
+
+      @include on-tablet {
+        font-size: 32px;
+        padding-bottom: 40px;
+}
+  }
+
+}
+
+.mainLoader {
+  position: absolute;
+left: 45%;
+top: 25%;
+}
