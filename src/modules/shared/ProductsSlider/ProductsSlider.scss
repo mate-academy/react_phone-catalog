@@ -5,7 +5,7 @@
 
   @include on-desktop {
     margin-block: 80px;
-    
+
     @include content-padding-inline;
   }
 }
@@ -98,15 +98,15 @@ body.theme_dark .productsSlider__button--disabled {
   margin-right: 16px;
 
   width: 212px;
-  height: 439px;
+  height: 442px;
 
   @include on-tablet {
     width: 237px;
-    height: 512px;
+    height: 515px;
   }
 
   @include on-desktop {
     width: 272px;
-    height: 506px;
+    height: 509px;
   }
 }
