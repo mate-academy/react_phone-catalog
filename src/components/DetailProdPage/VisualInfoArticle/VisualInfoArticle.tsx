@@ -1,9 +1,12 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { DetailProduct } from '../../../features/types/DetailProduct';
 import cl from './VisualInfoArticle.module.scss';
 import cn from 'classnames';
 import { TechSpecs } from '../../ui/TechSpecs';
 import { SectionTitle } from '../../titles/SectionTitle';
+import { Link, useLocation, useParams } from 'react-router-dom';
+import { useAppDispatch, useAppSelector } from '../../../app/hooks';
+import { setCartList, setFavoritesList } from '../../../features/productSlice';
 
 type Props = {
   product: DetailProduct;
@@ -37,15 +40,36 @@ const actualColors = {
 };
 
 export const VisualInfoArticle: React.FC<Props> = ({ product, className }) => {
+  const dispatch = useAppDispatch();
+  const { favoritesList, productList, cartList } = useAppSelector(
+    st => st.products,
+  );
+  //#region reload states
   const [selectedPhoto, setSelectedPhoto] = useState(product.images[0]);
   const [selectedColor, setSelectedColor] = useState(product.color);
   const [selectedCapacity, setSelectedCapacity] = useState(product.capacity);
 
-  const listOfSelectedColorImages = product.images.map(img => {
-    const partWithColor = img.split('/')[3];
+  const location = useLocation();
 
-    return img.replace(partWithColor, selectedColor);
-  });
+  useEffect(() => {
+    setSelectedPhoto(product.images[0]);
+    setSelectedColor(product.color);
+    setSelectedCapacity(product.capacity);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [location.pathname]);
+  //#endregion
+
+  //#region url manipulation
+  const { prodId } = useParams();
+
+  function replacePartOfUrl(
+    url: string,
+    partToReplace: string,
+    replaceWith: string,
+  ) {
+    return url.replace(partToReplace, replaceWith);
+  }
+  //#endregion
 
   const techSpecs = [
     ['Screen', product.screen],
@@ -53,6 +77,36 @@ export const VisualInfoArticle: React.FC<Props> = ({ product, className }) => {
     ['Processor', product.processor],
     ['RAM', product.ram],
   ];
+
+  const isProductAddedToFav = favoritesList.some(
+    fav => fav.itemId === product.id,
+  );
+  const isProductAddedToCart = cartList.some(car => car.itemId === product.id);
+  const neededProduct = productList.find(prod => prod.itemId === product.id);
+
+  function handleAddAndRemoveFromFavList() {
+    if (isProductAddedToFav) {
+      dispatch(
+        setFavoritesList(
+          favoritesList.filter(fav => fav.itemId !== neededProduct?.itemId),
+        ),
+      );
+    } else {
+      dispatch(setFavoritesList([...favoritesList, neededProduct]));
+    }
+  }
+
+  function handleAddAndRemoveFromCart() {
+    if (isProductAddedToCart) {
+      dispatch(
+        setCartList(
+          cartList.filter(car => car.itemId !== neededProduct?.itemId),
+        ),
+      );
+    } else {
+      dispatch(setCartList([...cartList, neededProduct]));
+    }
+  }
 
   return (
     <article className={`${cl.prodVisualInfo} ${className}`}>
@@ -67,7 +121,7 @@ export const VisualInfoArticle: React.FC<Props> = ({ product, className }) => {
       </div>
 
       <ul className={cl.photosList}>
-        {listOfSelectedColorImages.map(img => (
+        {product.images.map(img => (
           <li
             className={cl.photosList__item}
             key={img}
@@ -95,9 +149,9 @@ export const VisualInfoArticle: React.FC<Props> = ({ product, className }) => {
                       selectedColor === color,
                   })}
                 >
-                  <button
+                  <Link
                     className={cl.selectorList__colorButton}
-                    onClick={() => setSelectedColor(color)}
+                    to={`/${product.category}/${replacePartOfUrl(prodId || '', product.color, color)}`}
                     // @ts-expect-error - got property of object 'actualColors' by the string 'color'
                     style={{ backgroundColor: actualColors[color] }}
                   />
@@ -112,15 +166,15 @@ export const VisualInfoArticle: React.FC<Props> = ({ product, className }) => {
             <ul className={cl.selectorList}>
               {product.capacityAvailable.map(cap => (
                 <li key={cap} className={cl.selectorList__capacity}>
-                  <button
+                  <Link
                     className={cn(cl.selectorList__capacityButton, {
                       [cl['selectorList__capacityButton--selected']]:
                         selectedCapacity === cap,
                     })}
-                    onClick={() => setSelectedCapacity(cap)}
+                    to={`/${product.category}/${replacePartOfUrl(prodId || '', product.capacity.toLowerCase(), cap.toLowerCase())}`}
                   >
                     {cap}
-                  </button>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -141,11 +195,19 @@ export const VisualInfoArticle: React.FC<Props> = ({ product, className }) => {
           </div>
 
           <div className={cl.buttonContainer}>
-            <button className={cl.buttonContainer__cardButton}>
-              Add to cart
+            <button
+              className={`${cl.buttonContainer__cardButton} ${isProductAddedToCart && cl.buttonContainer__cardButtonAdded}`}
+              onClick={handleAddAndRemoveFromCart}
+            >
+              {isProductAddedToCart ? 'Added to cart' : 'Add to cart'}
             </button>
-            <button className={cl.buttonContainer__favButton}>
-              <svg className={cl.buttonContainer__favButtonIcon} />
+            <button
+              className={cl.buttonContainer__favButton}
+              onClick={handleAddAndRemoveFromFavList}
+            >
+              <svg
+                className={`${cl.buttonContainer__favButtonIcon} ${isProductAddedToFav && cl.buttonContainer__favButtonIconAdded}`}
+              />
             </button>
           </div>
 

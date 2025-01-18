@@ -14,7 +14,6 @@ $navlink-padd-inl-desk: 32px;
   &__link {
     display: block;
     width: fit-content;
-    position: relative;
     padding-inline: $navlink-padd-inl-phone;
     height: $header-heigh-phone;
     line-height: $header-heigh-phone; // vert centering
@@ -31,23 +30,14 @@ $navlink-padd-inl-desk: 32px;
       padding-inline: $navlink-padd-inl-desk;
     }
 
+    @include underline-on-hover;
     &::after {
-      content: '';
-      display: block;
-      position: absolute;
-      bottom: 0;
       // to compensate left padding
       left: $navlink-padd-inl-phone;
-      width: 0;
-      height: 2px;
-      border-radius: 50%;
-      background-color: $main-txt-col;
-      transition: width $animDuration ease-in-out;
       @include on-desktop {
         left: $navlink-padd-inl-desk;
       }
     }
-
     &:hover::after {
       // to compensate right padding
       width: calc(100% - $navlink-padd-inl-phone * 2);
@@ -61,17 +51,10 @@ $navlink-padd-inl-desk: 32px;
 
 .active {
   color: $main-txt-col;
-  // the same line as for the hover but without animation
+  @include underline-on-isActive;
   &::after {
-    content: '';
-    display: block;
-    position: absolute;
-    bottom: 0;
     left: $navlink-padd-inl-phone;
     width: calc(100% - $navlink-padd-inl-phone * 2);
-    height: 2px;
-    border-radius: 50%;
-    background-color: $main-txt-col;
     @include on-desktop {
       left: $navlink-padd-inl-desk;
       width: calc(100% - $navlink-padd-inl-desk * 2);

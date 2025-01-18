@@ -83,7 +83,15 @@
     line-height: 21px;
     background-color: $main-button-col;
     @include hover(background-color, $main-button-col-hover);
+    transition: background-color $animDuration ease-in-out;
+    &Added {
+      background-color: #eb5757;
+      &:hover {
+        background-color: #eb5757;
+      }
+    }
   }
+
   &__favButton {
     cursor: pointer;
     min-width: 40px;
@@ -93,6 +101,10 @@
       height: $icon-size;
       width: $icon-size;
       background-image: url('/img/icons/Favourites.svg');
+      transition: background-image 0.4s ease-in-out;
+      &Added {
+        background-image: url('/img/icons/FavouritesAdded.svg');
+      }
     }
   }
 }

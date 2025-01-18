@@ -8,7 +8,7 @@ function wait(delay: number) {
 }
 
 function request<T>(url: string): Promise<T> {
-  return wait(3)
+  return wait(1)
     .then(() => fetch(BASE_URL + url))
     .then(response => response.json());
 }

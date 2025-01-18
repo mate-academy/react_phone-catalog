@@ -1,71 +1,19 @@
 import { useMemo } from 'react';
-import { useAppSelector } from '../../app/hooks';
-import { DetailProduct } from '../../features/types/DetailProduct';
+import { useAppSelector, useComponentLoading } from '../../app/hooks';
 import { ShownRoute, ShownRouteOrigin } from '../ui/ShownRoute';
 import cl from './DetailProdPage.module.scss';
 import { TextInfoArticle } from './TextInfoArticle';
 import { VisualInfoArticle } from './VisualInfoArticle';
 import { SlidingProdList } from '../HomePage/SlidingProdList';
+import { useParams } from 'react-router-dom';
+import { Loader } from '../ui/Loader';
 
-const prod: DetailProduct = {
-  id: 'apple-iphone-11-128gb-black',
-  category: 'phones',
-  namespaceId: 'apple-iphone-11',
-  name: 'Apple iPhone 11 128GB Black',
-  capacityAvailable: ['64GB', '128GB', '256GB'],
-  capacity: '128GB',
-  priceRegular: 1100,
-  priceDiscount: 1050,
-  colorsAvailable: ['black', 'green', 'yellow', 'white', 'purple', 'red'],
-  color: 'black',
-  images: [
-    'img/phones/apple-iphone-11/black/00.webp',
-    'img/phones/apple-iphone-11/black/01.webp',
-    'img/phones/apple-iphone-11/black/02.webp',
-    'img/phones/apple-iphone-11/black/03.webp',
-    'img/phones/apple-iphone-11/black/04.webp',
-  ],
-  /* eslint-disable max-len */
-  description: [
-    {
-      title: 'And then there was Pro',
-      text: [
-        'A transformative triple-camera system that adds tons of capability without complexity.',
-        'An unprecedented leap in battery life. And a mind-blowing chip that doubles down on machine learning and pushes the boundaries of what a smartphone can do. Welcome to the first iPhone powerful enough to be called Pro.',
-      ],
-    },
-    {
-      title: 'Camera',
-      text: [
-        'Meet the first triple-camera system to combine cutting-edge technology with the legendary simplicity of iPhone. Capture up to four times more scene. Get beautiful images in drastically lower light. Shoot the highest-quality video in a smartphone — then edit with the same tools you love for photos. You’ve never shot with anything like it.',
-      ],
-    },
-    {
-      title:
-        'Shoot it. Flip it. Zoom it. Crop it. Cut it. Light it. Tweak it. Love it.',
-      text: [
-        'iPhone 11 Pro lets you capture videos that are beautifully true to life, with greater detail and smoother motion. Epic processing power means it can shoot 4K video with extended dynamic range and cinematic video stabilization — all at 60 fps. You get more creative control, too, with four times more scene and powerful new editing tools to play with.',
-      ],
-    },
-  ],
-  screen: "6.1' IPS",
-  resolution: '1792x828',
-  processor: 'Apple A13 Bionic',
-  ram: '4GB',
-  camera: '12 Mp + 12 Mp + 12MP',
-  zoom: 'Digital, 5x',
-  cell: ['GPRS', 'EDGE', 'WCDMA', 'UMTS', 'HSPA', 'LTE'],
-};
-/* eslint-enable max-len */
+export const DetailProdPage: React.FC = () => {
+  const { prodId } = useParams();
+  const { detailedProdList } = useAppSelector(st => st.products);
+  const product = detailedProdList.find(pro => pro.id === prodId);
 
-type Props = {
-  product?: DetailProduct;
-};
-
-export const DetailProdPage: React.FC<Props> = ({ product }) => {
-  // eslint-disable-next-line no-param-reassign
-  product = prod;
-
+  //#region calculate likelist
   const { productList } = useAppSelector(st => st.products);
 
   const youMayAlsoLikeList = useMemo(() => {
@@ -74,11 +22,32 @@ export const DetailProdPage: React.FC<Props> = ({ product }) => {
 
     return sortedList.slice(0, 12);
   }, [productList]);
+  //#endregion
+
+  const isLoading = useComponentLoading(300);
+
+  if (product === undefined) {
+    return (
+      <div className="container">
+        <h1 style={{ color: 'white', minHeight: '55vh' }}>
+          Oops, there is no such product!
+        </h1>
+      </div>
+    );
+  }
+
+  if (isLoading) {
+    return <Loader />;
+  }
 
   return (
     <div className="container">
       <div className={cl.routesContainer}>
-        <ShownRoute origin={ShownRouteOrigin.ONPRODUCTPAGE} />
+        <ShownRoute
+          origin={ShownRouteOrigin.ONPRODUCTPAGE}
+          // @ts-expect-error - chosenProduct expects type of Product but DetailedProduct is also fine because chosenProduct props only uses name key which DetailProd also has
+          chosenProduct={product}
+        />
         {/* makes '< Back' appearance */}
         <ShownRoute origin={ShownRouteOrigin.ONCART} />
       </div>

@@ -1,15 +1,22 @@
 /* eslint-disable no-param-reassign */
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { Product } from './types/Product';
-import { getAllProducts } from '../utils/api/products';
+import { getAllDetailedProducts, getAllProducts } from '../utils/api/products';
+import { DetailProduct } from './types/DetailProduct';
 
 type ProductState = {
   productList: Product[];
+  detailedProdList: DetailProduct[];
+  favoritesList: Product[];
+  cartList: Product[];
   isProdLoading: boolean;
 };
 
 const initialState: ProductState = {
   productList: [],
+  detailedProdList: [],
+  favoritesList: [],
+  cartList: [],
   isProdLoading: false,
 };
 
@@ -17,12 +24,22 @@ export const initProducts = createAsyncThunk('products/fetch', () => {
   return getAllProducts();
 });
 
+export const initDetailedProducts = createAsyncThunk(
+  'detailedProducts/fetch',
+  () => {
+    return getAllDetailedProducts();
+  },
+);
+
 export const productSlice = createSlice({
   name: 'products',
   initialState,
   reducers: {
-    setProducts: (state, action) => {
-      state.productList = action.payload;
+    setFavoritesList: (st, ac) => {
+      st.favoritesList = ac.payload;
+    },
+    setCartList: (st, ac) => {
+      st.cartList = ac.payload;
     },
   },
   extraReducers: buider => {
@@ -33,8 +50,15 @@ export const productSlice = createSlice({
       state.productList = action.payload;
       state.isProdLoading = false;
     });
+    buider.addCase(initDetailedProducts.pending, state => {
+      state.isProdLoading = true;
+    });
+    buider.addCase(initDetailedProducts.fulfilled, (state, action) => {
+      state.detailedProdList = action.payload;
+      state.isProdLoading = false;
+    });
   },
 });
 
-export const { setProducts } = productSlice.actions;
+export const { setFavoritesList, setCartList } = productSlice.actions;
 export default productSlice.reducer;

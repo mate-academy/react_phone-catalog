@@ -62,6 +62,8 @@
   }
 
   &__item {
+    cursor: pointer;
+    @include hover(transform, scale(1.05));
     flex: 1;
     aspect-ratio: 1;
     border: 1px solid $second-txt-col;
@@ -125,7 +127,7 @@
     @include hover(border-color, $product-col-selector-hover);
 
     &Button {
-      cursor: pointer;
+      display: block;
       height: 30px;
       width: 30px;
       border-radius: inherit;
@@ -133,17 +135,23 @@
   }
 
   &__capacity {
+    cursor: pointer;
     &Button {
+      display: block;
+      text-decoration: none;
       height: 32px;
+      line-height: 32px;
       padding-inline: 8px;
       font-size: 14px;
       border: 1px solid $second-button-col;
       background-color: $main-background-col;
       color: $main-txt-col;
+      @include hover(background-color, $second-button-col-hover);
 
       &--selected {
         color: $main-background-col;
         background-color: $main-txt-col;
+        @include hover(background-color, $main-txt-col);
       }
     }
   }
@@ -191,7 +199,15 @@
     line-height: 21px;
     background-color: $main-button-col;
     @include hover(background-color, $main-button-col-hover);
+    transition: background-color $animDuration ease-in-out;
+    &Added {
+      background-color: #eb5757;
+      &:hover {
+        background-color: #eb5757;
+      }
+    }
   }
+
   &__favButton {
     cursor: pointer;
     min-width: 48px;
@@ -201,6 +217,10 @@
       height: $icon-size;
       width: $icon-size;
       background-image: url('/img/icons/Favourites.svg');
+      transition: background-image 0.4s ease-in-out;
+      &Added {
+        background-image: url('/img/icons/FavouritesAdded.svg');
+      }
     }
   }
 }

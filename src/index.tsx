@@ -9,21 +9,38 @@ import { Phones } from './components/ProductPage/Phones';
 import { Tablets } from './components/ProductPage/Tablets';
 import { Accessories } from './components/ProductPage/Accessories';
 import { DetailProdPage } from './components/DetailProdPage';
+import { Favorites } from './components/Favorites';
+import { CartPage } from './components/CartPage';
 
-createRoot(document.getElementById('root') as HTMLElement).render(
-  <Provider store={store}>
-    <HashRouter>
-      <Routes>
-        <Route path="/" element={<App />}>
-          <Route path="*" element={<PageNotFound />} />
-          <Route index element={<HomePage />} />
-          <Route path="/phones" element={<Phones />} />
-          <Route path="/tablets" element={<Tablets />} />
-          <Route path="/accessories" element={<Accessories />} />
-          <Route path="/favorites" element={<DetailProdPage />} />{' '}
-          {/* ЗМІНИТИ */}
-        </Route>
-      </Routes>
-    </HashRouter>
-  </Provider>,
-);
+const Root: React.FC = () => {
+  return (
+    <Provider store={store}>
+      <HashRouter>
+        <Routes>
+          <Route path="/" element={<App />}>
+            <Route path="*" element={<PageNotFound />} />
+            <Route index element={<HomePage />} />
+            <Route path="phones">
+              <Route index element={<Phones />} />
+              <Route path=":prodId" element={<DetailProdPage />} />
+            </Route>
+            <Route path="tablets">
+              <Route index element={<Tablets />} />
+              <Route path=":prodId" element={<DetailProdPage />} />
+            </Route>
+            <Route path="accessories">
+              <Route index element={<Accessories />} />
+              <Route path=":prodId" element={<DetailProdPage />} />
+            </Route>
+
+            <Route path="favorites" element={<Favorites />} />
+
+            <Route path="cart" element={<CartPage />} />
+          </Route>
+        </Routes>
+      </HashRouter>
+    </Provider>
+  );
+};
+
+createRoot(document.getElementById('root') as HTMLElement).render(<Root />);

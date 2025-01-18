@@ -1,7 +1,7 @@
 import { NavLink } from 'react-router-dom';
 import cl from './Icon.module.scss';
 import cn from 'classnames';
-import { useAppDispatch } from '../../../app/hooks';
+import { useAppDispatch, useAppSelector } from '../../../app/hooks';
 import { setIsMenuOpened } from '../../../features/globalSlice';
 
 export enum IconType {
@@ -34,6 +34,7 @@ type Props = {
 };
 export const Icon: React.FC<Props> = ({ type, className, origin }) => {
   const dispatch = useAppDispatch();
+  const { favoritesList, cartList } = useAppSelector(st => st.products);
 
   // we don't need these icons to be links
   if (type === IconType.BURGER || type === IconType.CLOSE) {
@@ -43,9 +44,7 @@ export const Icon: React.FC<Props> = ({ type, className, origin }) => {
         // if icon is burger button opens menu, otherwise closes. Change of this state toggles menu
         onClick={() => dispatch(setIsMenuOpened(type === IconType.BURGER))}
       >
-        <svg className={`${cl[type]}`} xmlns="http://www.w3.org/2000/svg">
-          <use href={`/img/icons/${type}.svg#icon`} />
-        </svg>
+        <div className={`${cl[type]}`}></div>
       </button>
     );
   }
@@ -53,19 +52,28 @@ export const Icon: React.FC<Props> = ({ type, className, origin }) => {
   return (
     <NavLink
       to={routes[type]}
-      className={cn(`${cl.iconLink} ${className}`, {
-        /* yeah, this looks kinda gross, but i did this classing to remove left border when using
+      className={({ isActive }) =>
+        cn(`${cl.iconLink} ${className}`, {
+          /* yeah, this looks kinda gross, but i did this classing to remove left border when using
         the same Fav icon on menu */
-        [cl.removeBorderLeft]:
-          type === IconType.FAV && origin === IconOrigin.ONMENU,
-        // icons should have diff size and appear on menu
-        [cl.displayOnMenu]: origin === IconOrigin.ONMENU,
-      })}
+          [cl.removeBorderLeft]:
+            type === IconType.FAV && origin === IconOrigin.ONMENU,
+          // icons should have diff size and appear on menu
+          [cl.displayOnMenu]: origin === IconOrigin.ONMENU,
+          [cl.isActive]: isActive,
+        })
+      }
     >
       {/* classname sets background image */}
-      <svg className={`${cl[type]}`} xmlns="http://www.w3.org/2000/svg">
-        <use href={`/img/icons/${type}.svg#icon`} />
-      </svg>
+      <div className={`${cl[type]}`}>
+        {/* red circle near the icon resembling how much item correspondign list has */}
+        {type === IconType.FAV && favoritesList.length > 0 && (
+          <span className={cl.listInfo}>{favoritesList.length}</span>
+        )}
+        {type === IconType.CART && cartList.length > 0 && (
+          <span className={cl.listInfo}>{cartList.length}</span>
+        )}
+      </div>
     </NavLink>
   );
 };

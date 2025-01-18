@@ -55,10 +55,11 @@
 
   &::after {
     content: '';
+    display: block;
     position: absolute;
     left: 0;
     bottom: 0;
-    height: 1px;
+    height: 2px;
     background-color: $color;
     transition: width $animDuration ease-in-out;
     width: 0;
@@ -69,9 +70,37 @@
   }
 }
 
-// @mixin grey-text {
-//   color: $second-txt-col;
-//   font-weight: 600;
-//   font-size: 14px;
-//   line-height: 21px;
-// }
+@mixin underline-on-isActive {
+  &::after {
+    content: '';
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    border-radius: 50%;
+    background-color: $main-txt-col;
+  }
+}
+
+@mixin productCardsGridLayout {
+  @include page-grid;
+  row-gap: 16px;
+
+  &__card {
+    grid-column: 1 / -1;
+    @media (min-width: 500px) {
+      grid-column: span 2;
+    }
+    @include on-tablet {
+      grid-column: span 6;
+    }
+    @media (min-width: 800px) {
+      grid-column: span 4;
+    }
+    @include on-desktop {
+      grid-column: span 6;
+    }
+  }
+}
