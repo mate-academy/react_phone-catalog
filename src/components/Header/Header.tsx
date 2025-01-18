@@ -175,7 +175,10 @@ export const Header = () => {
               />
               {cartProducts.length > 0 && (
                 <div className={styles.header__icons_cart_img_count}>
-                  {cartProducts.length}
+                  {cartProducts.reduce(
+                    (total, product) => total + product.quantity,
+                    0,
+                  )}
                 </div>
               )}
             </NavLink>

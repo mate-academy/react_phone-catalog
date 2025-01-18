@@ -2,24 +2,26 @@
 
 .productGallery {
   margin-top: 24px;
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+  justify-items: start;
 
   .list {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(287px, 1fr)); // Items stretch dynamically
+    display: flex;
+    flex-direction: row;
     gap: 16px;
-
-    @include on-tablet {
-      grid-template-columns: repeat(auto-fit, minmax(288px, 1fr));
-    }
+    flex-flow: wrap;
+    width: 100%;
 
     @include on-desktop {
-      grid-template-columns: repeat(auto-fit, minmax(272px, 1fr));
+      gap: 19px;
     }
 
     .item {
       height: 440px;
       min-width: 287px;
-      max-width: 1fr;
+      max-width: 287px;
       border: 1px solid var(--card-border);
       background-color: var(--card-bg-color);
       padding: 32px;
@@ -39,6 +41,9 @@
 
       @include on-desktop {
         height: 506px;
+        min-width: 272px;
+        max-width: 272px;
+
       }
     }
   }

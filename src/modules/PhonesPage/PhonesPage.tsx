@@ -56,7 +56,7 @@ export const PhonesPage = () => {
   };
 
   const sortedProducts = sortProducts(filteredProducts, sort as string);
-  const page = searchParams.get('page') || 1;
+  const page = Number(searchParams.get('page')) || 1;
   const perPage = searchParams.get('perPage');
 
   const itemsPerPage = getItemsPerPage(perPage, page, filteredProducts);

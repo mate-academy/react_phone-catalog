@@ -13,14 +13,12 @@ import {
   incrementItemQuantity,
   decrementItemQuantity,
 } from '../../features/cartSlice';
-import { useState } from 'react';
 
 interface Props {
   product: UpdatedProduct;
 }
 
 export const CartItem: React.FC<Props> = ({ product }) => {
-  const [price, setPrice] = useState<number>(product.price * product.quantity);
   const { theme } = useAppSelector(state => state.theme);
   const dispatch = useAppDispatch();
 
@@ -30,20 +28,22 @@ export const CartItem: React.FC<Props> = ({ product }) => {
     dispatch(removeItemFromCart(product.id));
   };
 
-  const handleIncreaseQuantity = (itemId: number) => {
-    dispatch(incrementItemQuantity(itemId));
-    setPrice(prev => prev + product.price);
+  const handleIncreaseQuantity = (event: React.MouseEvent<HTMLDivElement>) => {
+    event.stopPropagation();
+    event.preventDefault();
+    dispatch(incrementItemQuantity(product.id));
   };
 
-  const handleDecreaseQuantity = (itemId: number) => {
-    if (product.quantity === 1) {
-      return;
-    } else {
-      setPrice(prev => prev - product.price);
+  const handleDecreaseQuantity = (event: React.MouseEvent<HTMLDivElement>) => {
+    event.stopPropagation();
+    event.preventDefault();
+
+    if (product.quantity > 1) {
+      dispatch(decrementItemQuantity(product.id));
     }
-
-    dispatch(decrementItemQuantity(itemId));
   };
+
+  const totalPrice = product.price * product.quantity;
 
   return (
     <div className={styles.cartItem}>
@@ -80,11 +80,7 @@ export const CartItem: React.FC<Props> = ({ product }) => {
             className={`${styles.minus} ${
               product.quantity === 1 ? styles.minus__disabled : ''
             }`}
-            onClick={event => {
-              event.stopPropagation();
-              event.preventDefault();
-              handleDecreaseQuantity(product.id);
-            }}
+            onClick={handleDecreaseQuantity}
           >
             <img
               src={theme === 'light' ? minusLight : minusDark}
@@ -101,14 +97,7 @@ export const CartItem: React.FC<Props> = ({ product }) => {
           >
             {product.quantity}
           </div>
-          <div
-            className={styles.plus}
-            onClick={event => {
-              event.stopPropagation();
-              event.preventDefault();
-              handleIncreaseQuantity(product.id);
-            }}
-          >
+          <div className={styles.plus} onClick={handleIncreaseQuantity}>
             <img
               src={theme === 'light' ? plusLight : plusDark}
               className={styles.plusIcon}
@@ -124,7 +113,7 @@ export const CartItem: React.FC<Props> = ({ product }) => {
               event.preventDefault();
             }}
           >
-            {`$${price}`}
+            {`$${totalPrice.toFixed(2)}`}
           </p>
         </div>
       </div>
