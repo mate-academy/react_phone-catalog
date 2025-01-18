@@ -1,5 +1,6 @@
 /* eslint-disable no-param-reassign */
 import React, { useState } from 'react';
+// eslint-disable-next-line import/no-extraneous-dependencies
 import { useDispatch, useSelector } from 'react-redux';
 import { clearCart, selectToCart } from '../../state/cartSlice';
 import { CartItem } from './components/CartItem/CartItem';
