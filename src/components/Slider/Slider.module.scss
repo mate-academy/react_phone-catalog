@@ -206,20 +206,17 @@
   }
 }
 
-.swiper-wrapper {
+.swiper-one .swiper-wrapper {
   aspect-ratio: 1 / 1;
-  height: 100%;
-  cursor: grab;
-
-
-  &:active {
-    cursor: grabbing;
-  }
 
   @include onTablet {
     aspect-ratio: unset;
     min-height: 189px;
   }
+}
+
+.swiper-wrapper {
+  height: 100%;
 }
 
 .swiper-slide {
@@ -256,7 +253,7 @@
     border-radius: 0%;
     background-color: $elements-color;
     opacity: 1;
-    transition: background-color 0.3s ease;
+    transition: background-color $effect-duration ease;
     position: relative;
 
     &::before {

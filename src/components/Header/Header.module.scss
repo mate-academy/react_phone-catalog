@@ -50,5 +50,19 @@
   &__icon {
     border: none;
     border-left: 1px solid $elements-color;
+    padding: 15px;
+    // height: 48px;
+    // width: 48px;
+
+    @include onDesktop {
+      height: 64px;
+      width: 64px;
+    }
+  }
+
+  &__scale {
+    height: 48px;
+    @include hover(scale, 1.1);
+    position: relative;
   }
 }

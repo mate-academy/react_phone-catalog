@@ -1,0 +1,38 @@
+.navigationPath{
+  @include container;
+
+  padding-top: 24px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  &__home {
+    display: flex;
+    align-items: center;
+
+    @include hover(scale, 1.1);
+  }
+
+  &__arrow-right {
+    opacity: 0.5;
+  }
+
+  &__text {
+    @extend %small-text;
+    font-weight: 600;
+    color: $secondary-color;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    &--active {
+      position: relative;
+      transition: all $effect-duration ease;
+
+      &:hover {
+        color: $primary-color;
+      }
+
+    }
+  }
+}

@@ -13,7 +13,7 @@ import { Link } from 'react-router-dom';
 
 export const Slider = () => {
   return (
-    <div className="slider__container">
+    <div className="slider__container swiper-one">
       <button className="slider__prev" id={'slidePrev'}></button>
       <button className="slider__next" id={'slideNext'}></button>
 

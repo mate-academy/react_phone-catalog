@@ -1,9 +1,14 @@
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
-export const Logo = () => {
+type Props = {
+  classN: string;
+  backToTop?: () => void;
+};
+
+export const Logo: React.FC<Props> = ({ classN, backToTop }) => {
   return (
-    <Link to="/">
-      <img src="img/logo.svg" alt="logo" className="logo" />
-    </Link>
+    <NavLink to="/" onClick={backToTop}>
+      <img src="img/logo.svg" alt="logo" className={`logo ${classN}`} />
+    </NavLink>
   );
 };

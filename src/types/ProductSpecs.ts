@@ -1,13 +1,9 @@
+import { Category } from './Category';
+
 export type Description = {
   title: string;
   text: string[];
 };
-
-export enum Category {
-  Accessories = 'accessories',
-  Phones = 'phones',
-  Tablets = 'tablets',
-}
 
 export type ProductSpecs = {
   id: string;

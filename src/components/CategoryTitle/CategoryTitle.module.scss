@@ -1,0 +1,10 @@
+.categoryTitle {
+  @include container;
+  padding-top: 24px;
+
+  &__models {
+    @extend %body-text;
+    color: $secondary-color;
+    margin-top: 8px;
+  }
+}

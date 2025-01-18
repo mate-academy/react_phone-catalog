@@ -1,0 +1,93 @@
+.footer {
+  margin-top: 64px;
+  border-top: 1px solid $elements-color;
+  padding-top: 32px;
+
+  @include onTablet {
+    margin-top: 80px;
+    margin-bottom: 32px;
+  }
+
+  &__container {
+    @include container;
+
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+
+    @include onTablet {
+      flex-direction: row;
+      align-items: center;
+    }
+  }
+
+  &__nav-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding-top: 32px;
+
+    @include onTablet {
+      flex-direction: row;
+      padding: 0;
+      justify-content: space-between;
+    }
+
+    @include onDesktop {
+      gap: 105px;
+    }
+  }
+
+  &__nav-text {
+    @extend %uppercase;
+    color: $secondary-color;
+    position: relative;
+    width: max-content;
+
+    &::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      bottom: -10px;
+      display: block;
+      height: 3px;
+      transform: translateX(-50%);
+      width: 0;
+      background-color: $primary-color;
+
+      transition: all $effect-duration ease-in-out;
+    }
+
+    &:hover::after {
+      width: 100%;
+    }
+  }
+
+  &__back-box {
+    margin: 32px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+
+    @include onTablet {
+      margin: 0;
+    }
+  }
+
+  &__back-text {
+    @extend %small-text;
+    color: $secondary-color;
+  }
+
+  &__button {
+    border: 1px solid $icons-color;
+    transition: all $effect-duration ease;
+    height: 32px;
+    width: 32px;
+
+    &:hover {
+      background-color: $elements-color;
+    }
+  }
+}

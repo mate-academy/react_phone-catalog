@@ -1,0 +1,79 @@
+.productDetailsCarousel {
+  &__box {
+    @include pageGrid;
+    grid-template-rows: repeat(2, auto);
+
+    @include onTablet {
+      grid-template-columns: repeat(7, 1fr);
+    }
+
+    @include onDesktop {
+      grid-template-columns: repeat(12, 1fr);
+    }
+  }
+
+  &__box-main {
+    grid-row: 1;
+    grid-column: span 4;
+
+    @include onTablet {
+      grid-column: 2 / 8;
+    }
+
+    @include onDesktop {
+      grid-column: 3 / 13;
+    }
+  }
+
+  &__main {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: contain;
+    transition: all $effect-duration ease;
+  }
+
+  &__fade-out {
+    opacity: 0;
+  }
+
+  &__fade-in {
+    opacity: 1;
+  }
+
+  &__thumbnails {
+    grid-row: 2;
+    grid-column: span 4;
+    padding-top: 16px;
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+
+    @include onTablet {
+      flex-direction: column;
+      grid-column: 1 / 2;
+      grid-row: 1;
+      padding-top: 0;
+    }
+
+    @include onDesktop {
+      grid-column: 1 / 3;
+    }
+  }
+
+  &__mini {
+    height: 50px;
+    width: 50px;
+    object-fit: contain;
+    border: 1px solid $elements-color;
+
+    @include onDesktop {
+      width: 100%;
+      height: auto;
+      aspect-ratio: 1 / 1;
+    }
+
+    &--active {
+      border: 1px solid $primary-color;
+    }
+  }
+}

@@ -1,8 +1,6 @@
-import { Category } from './ProductSpecs';
-
 export type Product = {
   id: number;
-  category: Category;
+  category: string;
   itemId: string;
   name: string;
   fullPrice: number;
@@ -13,4 +11,5 @@ export type Product = {
   ram: string;
   year: number;
   image: string;
+  quantity?: number;
 };

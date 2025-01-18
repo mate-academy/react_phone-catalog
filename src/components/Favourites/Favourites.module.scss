@@ -1,0 +1,34 @@
+.favourites {
+  @include container;
+
+  &__title {
+    padding-top: 24px;
+
+    @include onTablet {
+      padding-top: 40px;
+    }
+  }
+
+  &__box {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    column-gap: 16px;
+    row-gap: 30px;
+    justify-content: center;
+
+    @include onTablet {
+      grid-template-columns: repeat(auto-fit, minmax(220px, 272px));
+    }
+  }
+
+  &__count {
+    @extend %body-text;
+    color: $secondary-color;
+    padding-top: 8px;
+    padding-bottom: 32px;
+
+    @include onTablet {
+      padding-bottom: 40px;
+    }
+  }
+}

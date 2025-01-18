@@ -1,0 +1,63 @@
+.productDetailsMore {
+  @include container;
+
+  @include onDesktop {
+    @include pageGrid;
+  }
+
+  &__about {
+    @include onDesktop {
+      grid-column: span 12;
+    }
+  }
+
+  &__title {
+    padding-top: 56px;
+
+    @include onTablet {
+      padding-top: 64px;
+    }
+
+    @include onDesktop {
+      padding-top: 80px;
+    }
+  }
+
+  &__title {
+    padding-bottom: 16px;
+    border-bottom: 1px solid $elements-color;
+  }
+
+  &__box {
+    padding-top: 32px;
+  }
+
+  &__text{
+    padding-top: 16px;
+    @extend %body-text;
+    color: $secondary-color;
+  }
+
+  &__specs {
+    @include onDesktop {
+      grid-column: 14 / 25;
+    }
+  }
+
+  &__details {
+    padding-top: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    font-weight: 500;
+
+    @include onTablet {
+      padding-top: 25px;
+    }
+  }
+
+  .productCard__key {
+    font-size: 14px;
+    font-weight: 500;
+  }
+}

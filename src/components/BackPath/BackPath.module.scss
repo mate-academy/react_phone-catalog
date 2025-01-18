@@ -1,0 +1,39 @@
+.backPath {
+  @include container;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding-top: 24px;
+  gap: 4px;
+
+  @include onTablet {
+    padding-top: 40px;
+  }
+
+  &__box {
+    display: flex;
+    align-items: center;
+    border: none;
+    background-color: transparent;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  &__img {
+    @include hover(scale, 1.1);
+  }
+
+  &__text {
+    @extend %small-text;
+    color: $secondary-color;
+    position: relative;
+    transition: all $effect-duration ease;
+
+    &:hover {
+      color: $primary-color;
+    }
+  }
+}

@@ -5,15 +5,24 @@
   overflow: hidden;
   position: relative;
 
-    &__img {
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &__img {
     padding: 16px;
-    display: block;
-    box-sizing: border-box;
+    position: relative;
+  }
 
+  &__img-scale {
     @include hover(transform, scale(1.1));
+  }
 
-    @include onDesktop {
-      padding: 24px;
+  &__favourite {
+    transition: all $effect-duration ease;
+    &:hover {
+      border-color: $primary-color;
     }
   }
 
@@ -28,5 +37,26 @@
       width: 100%;
       background-color: $primary-color;
     }
+  }
+
+  &__count {
+    height: 13px;
+    width: 13px;
+    background-color: $red-color;
+    border-radius: 50%;
+    border: 1px solid $white-color;
+    position: absolute;
+    top: 40%;
+    right: 25%;
+    transform: translateY(-60%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__count-number {
+    font-size: 7px;
+    line-height: 11px;
+    color: $white-color;
   }
 }

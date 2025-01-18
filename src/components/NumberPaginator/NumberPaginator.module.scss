@@ -1,0 +1,33 @@
+.numberPaginator {
+  &__number {
+    @extend %body-text;
+    color: $primary-color;
+    font-weight: 500;
+    width: 32px;
+    height: 32px;
+    border: 1px solid $elements-color;
+    background-color: inherit;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: all $effect-duration ease;
+
+    &:hover {
+      border: 1px solid $primary-color;
+    }
+
+    &--select {
+      background-color: $primary-color;
+      color: $white-color;
+    }
+
+    &--disabled {
+      cursor: auto;
+
+      &:hover {
+        border: 1px solid $elements-color;
+      }
+    }
+  }
+}

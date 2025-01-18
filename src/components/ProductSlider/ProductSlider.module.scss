@@ -1,6 +1,4 @@
 .productSlider {
-  @include container;
-
   padding-top: 56px;
 
   @include onTablet {
@@ -11,7 +9,12 @@
     padding-top: 80px;
   }
 
+  &__title {
+    width: 60%;
+  }
+
   &__header {
+    @include container;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -33,16 +36,18 @@
     background-position: center;
     background-size: 70%;
     cursor: pointer;
+    transition: all $effect-duration ease;
 
-    &:active {
+    &:hover {
       border-color: $primary-color;
     }
 
     &:disabled {
       opacity: 0.5;
+      cursor: auto;
 
-      &:active {
-        border-color: $icons-color;
+      &:hover {
+        border-color: inherit;
       }
     }
   }
@@ -54,4 +59,20 @@
   &__next {
     background-image: url(../img/icons/arrow-right.svg);
   }
+
+  &__swiper {
+    padding-left: 16px;
+    @include onTablet {
+      padding-left: 24px;
+    }
+
+    @include onDesktop {
+      @include container;
+    }
+  }
+
+  &__box {
+    margin-top: 24px;
+  }
 }
+

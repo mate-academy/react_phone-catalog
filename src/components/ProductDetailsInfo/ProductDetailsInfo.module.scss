@@ -1,0 +1,34 @@
+.productDetailsInfo {
+  @include container;
+  padding-top: 16px;
+
+  &__box {
+    @include onTablet {
+      @include pageGrid;
+    }
+  }
+
+  &__carousel {
+    padding-top: 32px;
+
+    @include onTablet {
+      grid-column: span 7;
+      padding-top: 40px;
+    }
+
+    @include onDesktop {
+      grid-column: span 12;
+    }
+  }
+
+  &__main {
+    @include onTablet {
+      grid-column: span 5;
+      padding-top: 40px;
+    }
+
+    @include onDesktop {
+      grid-column: 14 / 25;
+    }
+  }
+}

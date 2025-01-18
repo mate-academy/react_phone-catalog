@@ -9,35 +9,57 @@ import { ProductCard } from '../ProductCard/ProductCard';
 type Props = {
   title: string;
   product: Product[];
+  navigationIds: {
+    prevId: string;
+    nextId: string;
+  };
+  showDiscount: boolean;
 };
 
-export const ProductSlider: React.FC<Props> = ({ title, product }) => {
+export const ProductSlider: React.FC<Props> = ({
+  title,
+  product,
+  navigationIds,
+  showDiscount,
+}) => {
+  const { prevId, nextId } = navigationIds;
+
   return (
     <section className="productSlider">
       <div className="productSlider__header">
-        <h2>{title}</h2>
+        <h2 className="productSlider__title">{title}</h2>
         <div className="productSlider__navigation">
-          <button className="productSlider__prev" id={'productPrev'}></button>
-          <button className="productSlider__next" id={'productNext'}></button>
+          <button className="productSlider__prev" id={prevId}></button>
+          <button className="productSlider__next" id={nextId}></button>
         </div>
       </div>
-      <Swiper
-        modules={[Navigation, EffectCreative]}
-        slidesPerView={1.4}
-        spaceBetween={16}
-        navigation={{
-          nextEl: '#productNext',
-          prevEl: '#productPrev',
-        }}
-      >
-        {product.map((prod, index) => (
-          <SwiperSlide key={index}>
-            <div className="box">
-              <ProductCard prod={prod} />
-            </div>
-          </SwiperSlide>
-        ))}
-      </Swiper>
+      <div className="productSlider__swiper">
+        <Swiper
+          modules={[Navigation, EffectCreative]}
+          slidesPerView={1.4}
+          spaceBetween={16}
+          navigation={{
+            nextEl: `#${nextId}`,
+            prevEl: `#${prevId}`,
+          }}
+          breakpoints={{
+            640: {
+              slidesPerView: 2.4,
+            },
+            1200: {
+              slidesPerView: 4,
+            },
+          }}
+        >
+          {product.map((prod, index) => (
+            <SwiperSlide key={index}>
+              <div className="productSlider__box">
+                <ProductCard prod={prod} showDiscount={showDiscount} />
+              </div>
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      </div>
     </section>
   );
 };

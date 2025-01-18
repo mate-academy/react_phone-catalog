@@ -1,0 +1,148 @@
+.productDetailsMain {
+  padding-top: 40px;
+
+  @include onTablet {
+    padding-top: 0;
+  }
+
+  &__title-box {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__title {
+    @extend %small-text;
+    color: $secondary-color;
+    padding-bottom: 8px;
+  }
+
+  &__id {
+    @extend %small-text;
+    color: $icons-color;
+  }
+
+  &__colors {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__bg {
+    height: 32px;
+    width: 32px;
+    border-radius: 50%;
+    border: 1px solid $elements-color;
+    background-color: $white-color;
+    position: relative;
+    transition: all $effect-duration ease;
+
+    &:hover{
+      border-color: $icons-color;
+    }
+  }
+
+  &__select {
+    border: 1px solid $primary-color;
+
+    &:hover {
+      border: 1px solid $primary-color;
+    }
+  }
+
+  &__color {
+    height: 25px;
+    width: 25px;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  &__capacity-box {
+    display: block;
+    margin-top: 24px;
+    padding: 24px 0;
+    border-top: 1px solid $elements-color;
+    border-bottom: 1px solid $elements-color;
+
+    @include onDesktop {
+      max-width: 320px;
+    }
+  }
+
+  &__capacity {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+  }
+
+  &__cap {
+    @extend %body-text;
+    color: $primary-color;
+    height: 32px;
+    width: 56px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid $icons-color;
+  }
+
+  &__select-cap {
+    background-color: $primary-color;
+    color: $white-color;
+  }
+
+  &__price-box {
+    padding-top: 32px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  &__price {
+    font-size: 32px;
+    line-height: 41px;
+    font-weight: 800;
+  }
+
+  &__full-price{
+    font-size: 22px;
+    font-weight: 500;
+    line-height: 31px;
+    color: $secondary-color;
+    text-decoration: line-through;
+  }
+
+  &__buttons {
+    padding-top: 16px;
+    display: flex;
+    gap: 8px;
+
+    @include onDesktop {
+      max-width: 320px;
+    }
+  }
+
+  .productCard__add {
+    height: 48px;
+  }
+
+  .productCard__favourite {
+    height: 48px;
+    width: 48px;
+  }
+
+  &__details-box {
+    padding-top: 32px;
+
+    @include onDesktop {
+      max-width: 320px;
+    }
+  }
+
+  &__details {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+}
