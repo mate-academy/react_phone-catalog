@@ -3,9 +3,9 @@
 .homePage {
   position: relative;
 
-  @include padding-inline-responsive;
-
   &__title {
+    @include padding-inline-responsive;
+
     &__text {
       font-family: Mont, sans-serif;
       font-size: 32px;
@@ -38,6 +38,10 @@
 
     .picturesSlider {
       padding-inline: 0;
+
+      @include on-tablet {
+        @include padding-inline-responsive;
+      }
     }
 
    /* .phonesSlider {
