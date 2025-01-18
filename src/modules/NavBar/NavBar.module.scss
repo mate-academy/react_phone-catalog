@@ -1,0 +1,227 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Mont-regular';
+}
+
+.burger {
+  position: fixed;
+  top: 49px;
+  left: -100%;
+  width: 100%;
+  height: 100vh;
+  background-color: white;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  transition: left 0.5s ease;
+  opacity: 0;
+
+  &--open {
+    left: 0;
+    opacity: 1;
+  }
+
+  &__items {
+    margin-top: 32px;
+  }
+  &__item {
+    font-size: 12px;
+    text-decoration: none;
+    height: 27px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 16px;
+    color: var(--InactiveLink);
+    border-bottom: 2px solid transparent;
+    box-sizing: border-box;
+    font-family: Mont-SemiBold;
+
+    &--active {
+      color: var(--activeLink);
+      border-bottom: 2px solid var(--ActiveLink);
+    }
+
+    &:hover {
+      color: var(--activeLink);
+      border-bottom: 2px solid var(--ActiveLink);
+    }
+  }
+
+  &__buttons {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+  }
+
+  &__button {
+    flex: 1;
+    height: 64px;
+    background-size: 16px 16px;
+    box-sizing: border-box;
+    border-bottom: 2px solid transparent;
+    box-shadow: -1px -1px 0px var(--InactiveLink);
+    background-repeat: no-repeat;
+    background-position: center;
+
+    &:hover {
+      color: var(--activeLink);
+      border-bottom: 2px solid var(--ActiveLink);
+    }
+  }
+}
+
+.nav {
+  box-shadow: 0px 1px 0px var(--InactiveLink);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  &__logo {
+    display: block;
+    height: 64px;
+    padding: 18px 24px;
+    object-fit: cover;
+    margin-right: 24px;
+  }
+
+  &__buttons {
+    display: flex;
+    border-collapse: separate;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 64px;
+    width: 64px;
+    background-size: 16px 16px;
+    box-sizing: border-box;
+    border-bottom: 3px solid transparent;
+    box-shadow: -1px 0px 0px var(--InactiveLink);
+
+    &--cart {
+      background-image: url('./public/img/Icons/Shopping bag (Cart).png');
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+
+    &--favourite {
+      background-image: url('./public/img/Icons/Favourites (Heart Like).png');
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+
+    &:hover {
+      color: var(--activeLink);
+      border-bottom: 3px solid var(--ActiveLink);
+    }
+  }
+
+  &__container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex: 1;
+  }
+  &__items {
+    display: flex;
+    gap: 64px;
+  }
+
+  &__item {
+    height: 64px;
+    display: flex;
+    text-decoration: none;
+    color: var(--inactiveLink);
+    align-items: center;
+    border-bottom: 3px solid transparent;
+    font-family: Mont-SemiBold;
+
+    &--active {
+      color: var(--activeLink);
+      border-bottom: 3px solid var(--ActiveLink);
+    }
+
+    &:hover {
+      color: var(--activeLink);
+      border-bottom: 3px solid var(--ActiveLink);
+    }
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .nav {
+    &__logo {
+      height: 48px;
+      padding: 13px 16px;
+      object-fit: cover;
+      margin-right: 16px;
+    }
+
+    &__button {
+      display: inline-flex;
+      height: 48px;
+      width: 48px;
+    }
+
+    &__item {
+      height: 48px;
+    }
+  }
+}
+
+@media screen and (max-width: 720px) {
+  .nav {
+    display: flex;
+    justify-content: space-between;
+    height: 48px;
+
+    &__item {
+      display: none;
+    }
+
+    &__button {
+      display: none;
+    }
+
+    &__burger_menu {
+      background: none;
+      border: none;
+      outline: none;
+      box-shadow: none;
+      display: inline-flex;
+      height: 48px;
+      width: 48px;
+      background-size: 16px 16px;
+      box-sizing: border-box;
+      border-bottom: 3px solid transparent;
+      box-shadow: -1px 0px 0px var(--InactiveLink);
+      background-image: url('/public/img/Icons/Close.png');
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+
+    &__burger_menu_close {
+      display: inline-flex;
+      height: 48px;
+      width: 48px;
+      background-size: 16px 16px;
+      box-sizing: border-box;
+      border-bottom: 3px solid transparent;
+      box-shadow: -1px 0px 0px var(--InactiveLink);
+      background-image: url('./public/img/Icons/Menu.png');
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+  }
+}

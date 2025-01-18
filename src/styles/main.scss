@@ -1,0 +1,186 @@
+body {
+  background-image: linear-gradient(45deg, #4ebd36, #7e7cf9);
+  background-attachment: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 100px;
+  font-family: Roboto, sans-serif;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+table {
+  border-collapse: collapse;
+  min-width: 600px;
+  max-width: 1000px;
+}
+
+tr {
+  background: #fff;
+  color: #808080;
+}
+
+tr:nth-child(2n + 1) {
+  background: #f5f5f5;
+}
+
+thead tr:first-child {
+  background: #e25644;
+  color: #fff;
+}
+
+tfoot tr:first-child {
+  background: #f5f5f5;
+}
+
+td,
+th {
+  text-align: left;
+  padding: 18px;
+}
+
+thead th:hover {
+  color: #fff400;
+  cursor: pointer;
+}
+
+thead tr th:first-child {
+  border-top-left-radius: 10px;
+}
+
+thead tr th:last-child {
+  border-top-right-radius: 10px;
+}
+
+tfoot tr th:first-child {
+  border-bottom-left-radius: 10px;
+}
+
+tfoot tr th:last-child {
+  border-bottom-right-radius: 10px;
+}
+
+tbody tr:hover {
+  background: #f5f5f5;
+  color: #585858;
+  cursor: pointer;
+}
+
+tr.active {
+  background: #cbcbcb;
+  color: #585858;
+
+  &:hover {
+    background: #cbcbcb;
+    color: #585858;
+  }
+}
+
+.new-employee-form {
+  background: #f5f5f5;
+  align-self: flex-start;
+  color: #808080;
+  border-top: #e25644 solid 54px;
+  border-radius: 10px;
+  box-sizing: border-box;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  position: relative;
+  margin-left: 24px;
+
+  &::before {
+    position: absolute;
+    content: 'New employee';
+    color: #fff;
+    font-size: 16px;
+    font-weight: 700;
+    top: -36px;
+  }
+
+  label {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 8px;
+    input,
+    select {
+      width: 150px;
+      box-sizing: border-box;
+      border: 1px solid #808080;
+      border-radius: 4px;
+      color: #808080;
+      padding: 4px;
+      outline-color: #808080;
+    }
+  }
+
+  button {
+    margin-top: 16px;
+    border: 2px solid transparent;
+    border-radius: 10px;
+    box-sizing: border-box;
+    padding: 8px 0;
+    background: #e25644;
+    color: #fff;
+    font-family: Roboto, sans-serif;
+    font-size: 14px;
+    cursor: pointer;
+    transition:
+      0.25s ease color,
+      0.25s ease background,
+      0.25s ease border;
+    font-weight: 700;
+
+    &:hover {
+      border: 2px solid #e25644;
+      background: #fff;
+      color: #e25644;
+    }
+  }
+}
+
+.cell-input {
+  border: none;
+  color: #808080;
+  font-size: 16px;
+  background: transparent;
+  padding: 0;
+  outline: none;
+}
+
+.notification {
+  position: absolute;
+  width: 300px;
+  min-height: 100px;
+  padding: 0 16px;
+  box-sizing: border-box;
+
+  border-radius: 10px;
+  background: rgba(132, 132, 132, 0.3);
+
+  top: 10px;
+  right: 10px;
+
+  .title {
+    display: block;
+    font-size: 20px;
+    font-weight: 900;
+  }
+
+  &.warning {
+    background: rgba(255, 212, 39, 0.3);
+  }
+
+  &.success {
+    background: rgba(10, 189, 0, 0.3);
+  }
+
+  &.error {
+    background: rgba(253, 0, 0, 0.3);
+  }
+}

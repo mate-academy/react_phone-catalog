@@ -1,0 +1,84 @@
+.carusel__container__head {
+  padding-right: 16px;
+  height: auto;
+  margin-top: 80px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.carusel__buttons {
+  display: flex;
+  height: auto;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.carusel__button {
+  height: 32px;
+  width: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  border-radius: 50%;
+  border: 2px solid grey;
+  outline: none;
+  cursor: pointer;
+  transition: border-color 0.3s ease;
+
+  &:hover {
+    border-color: black;
+  }
+}
+
+.carusel__button--prev {
+  margin-right: 16px;
+  background-image: url('./public/img/Icons/Chevron (Arrow Left)-incative.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  transition: background-image 0.3s ease;
+
+  &:hover {
+    background-image: url('./public/img/Icons/Chevron (Arrow Left).png');
+  }
+}
+
+.carusel__button--disabled {
+  background-image: url('./public/img/Icons/Chevron (Arrow Left)-incative.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  border: 2px solid grey;
+  outline: none;
+  opacity: 0.5;
+  pointer-events: none;
+  cursor: not-allowed;
+
+  &:hover {
+    border: 2px solid grey;
+  }
+}
+
+.carusel__button--next {
+  margin-left: 16px;
+  margin-right: 16px;
+  background-image: url('./public/img/Icons/Chevron (Arrow Right)-incative.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+
+  &:hover {
+    background-image: url('./public/img/Icons/Chevron (Arrow Right).png');
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .carusel__container__head {
+    padding-inline: 16px;
+    height: auto;
+    margin-top: 80px;
+    display: flex;
+    justify-content: space-between;
+  }
+}
