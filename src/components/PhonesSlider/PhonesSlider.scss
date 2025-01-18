@@ -4,8 +4,6 @@
   box-sizing: border-box;
   position: relative;
   width: 100%;
-  
-  @include padding-inline-responsive;
 }
 
 .phonesSlider .title {
@@ -20,6 +18,12 @@
   text-align: left;
   font-size: 22px;
   font-weight: 800;
+  padding-right: 16px;
+
+  @include on-tablet {
+    padding-right: 0;
+  }
+
 }
 
 .phoneSlider.swiper {

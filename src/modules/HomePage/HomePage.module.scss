@@ -44,9 +44,17 @@
       }
     }
 
-   /* .phonesSlider {
+     .phonesSlider {
+         padding-left: 16px;
 
-    } */
+        @include on-tablet {
+          padding-inline: 24px;
+        }
+
+        @include on-desktop {
+          padding-inline: 152px;
+        }
+      }
   }
 
 }

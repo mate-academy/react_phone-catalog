@@ -7,6 +7,11 @@
   background-color: var(--card-bg-color);
   border: 1px solid var(--border-cart-item);
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
 
   &:hover {
     border-color: var(--card-hover-border);
@@ -71,7 +76,9 @@
   .quantityPriceBlock {
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: space-between;
+    width: 256px;
+    margin-right: 16px;
     align-items: center;
     gap: 24px;
 
