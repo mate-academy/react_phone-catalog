@@ -1,5 +1,5 @@
 /* eslint-disable */
-import React, { useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import styles from './ProductDetails.module.scss';
 import classNames from 'classnames';
 import phones from '../../../public/api/phones.json';
@@ -102,6 +102,10 @@ export const ProductDetails: React.FC = () => {
     setTouchStart(null);
     setTouchEnd(null);
   };
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [productId]);
 
   return (
     <>

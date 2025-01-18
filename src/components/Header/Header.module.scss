@@ -29,6 +29,8 @@
 
   @include onTablet{
     display: flex;
+    justify-content: flex-start;
+    margin-left: 24px;
   }
 
 }
@@ -39,7 +41,7 @@
 
   @include onTablet{
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     gap: 64px;
   }
 }
@@ -91,6 +93,7 @@
 .actions{
   display: flex;
   flex-direction: row;
+  margin-left: auto;
 }
 
 .icon{
@@ -152,6 +155,4 @@
     display: block;
   }
 }
-
-
 

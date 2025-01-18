@@ -110,6 +110,7 @@ export const Banner: React.FC = () => {
             >
               <img
                 src={slide}
+                // srcSet={(phoneSlides[index] + " 320w", tabletSlides[index] + " 640w")}
                 alt={`Slide ${index + 1}`}
                 className={styles.slider__image}
               />

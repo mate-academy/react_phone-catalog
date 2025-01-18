@@ -10,11 +10,18 @@
 @mixin onDesktop {
   @media (min-width: $desktop-min-width) {
     @content;
+
   }
 }
 
 @mixin contentPaddingInline{
   padding-inline: 16px;
+
+  @include onDesktop {
+    margin-inline: auto;
+
+    max-width: 1020px;
+  }
 }
 
 
@@ -35,6 +42,7 @@
   @include onDesktop {
     grid-template-columns: repeat(24, 1fr);
     gap: 16px;
+
   }
 }
 
