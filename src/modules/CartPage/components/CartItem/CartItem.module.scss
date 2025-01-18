@@ -1,0 +1,102 @@
+.cartItem {
+  padding: 24px;
+  display: flex;
+  height: 128px;
+  min-width: 200px;
+  border: 1px solid #e2e6e9;
+  border-radius: 16px;
+  margin-bottom: 16px;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+
+  &__delete {
+    width: 16px;
+    height: 16px;
+    border: none;
+    background-color: transparent;
+    background-image: url(../../../public/img/Icons/Close.png);
+    background-position: center;
+    background-size: auto;
+    background-size:cover;
+
+    &:hover {
+      transform: scale(1.1);
+      transition: transform 0.2s ease;
+    }
+  }
+
+  &__image {
+    margin-left: 24px;
+    width: 80px;
+    height: 80px;
+    object-fit:contain;
+  }
+
+  &__name {
+    margin-left: 24px;
+    font-family: Mont-Regular;
+    font-size: 14px;
+  }
+
+  &__buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 24px;
+    width: 96px;
+    height: 32px;
+  }
+
+  &__button {
+    width: 32px;
+    height: 32px;
+    background-color: white;
+    color: black;
+    border: 1px solid #e2e6e9;
+    border-radius: 50%;
+    transition: border 0.2s;
+
+    &:hover {
+      border: 1px solid black;
+    }
+  }
+
+  &__price {
+    width: 70px;
+    margin-left: 24px;
+    font-family: Mont-Bold;
+    font-size: 22px;
+  }
+
+  &__part {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+@media screen and (max-width: 652px) {
+  .cartItem {
+    flex-direction: column;
+    height: 200px;
+    gap: 16px;
+    padding: 16px;
+
+    &__image {
+      margin-left: 16px;
+    }
+    &__name {
+      margin-left: 16px;
+    }
+  }
+
+  .cartItem__buttons {
+    margin-left: 0;
+  }
+  .cartItem__part__bottom {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+}

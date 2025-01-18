@@ -1,0 +1,66 @@
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+
+  &__pages {
+    display: flex;
+    gap: 5px;
+  }
+}
+
+.pagination__button {
+  background-color: white;
+  height: 32px;
+  width: 32px;
+  border-radius: 50px;
+  border: 1px solid grey;
+  &:disabled {
+    cursor: not-allowed; // Вказівник "заборонено"
+    opacity: 0.5; // Зробити кнопку напівпрозорою
+    pointer-events: none; // Вимкнути всі події, включаючи ховер
+  }
+
+  &--prev {
+    margin-left: 16px;
+    margin-right: 16px;
+    background-image: url('./public/img/Icons/Chevron (Arrow Left)-incative.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    transition: background-image 0.3s ease;
+
+    &:hover {
+      background-image: url('./public/img/Icons/Chevron (Arrow Left).png');
+    }
+  }
+
+  &--next {
+    margin-left: 16px;
+    margin-right: 16px;
+    background-image: url('./public/img/Icons/Chevron (Arrow Right)-incative.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    &:hover {
+      background-image: url('./public/img/Icons/Chevron (Arrow Right).png');
+    }
+  }
+
+  &--page {
+    color: grey;
+    transition: color 0.3s ease;
+
+    &:hover {
+      color: black;
+      border-color: black;
+    }
+  }
+}
+
+.active {
+  border-color: black;
+  background-color: black;
+  color: white;
+}

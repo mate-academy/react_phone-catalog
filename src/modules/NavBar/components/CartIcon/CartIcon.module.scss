@@ -1,0 +1,46 @@
+.cartIcon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .button {
+    background-color: #007bff;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    margin: 5px;
+    cursor: pointer;
+
+    &:hover {
+      background-color: #0056b3;
+    }
+  }
+
+  .iconWrapper {
+    position: relative;
+    margin-top: 10px;
+
+    .icon {
+      width: 28px;
+      height: 28px;
+    }
+
+    .counter {
+      position: absolute;
+      top: -5px;
+      right: -5px;
+      background-color: #476DF4;
+      color: white;
+      border-radius: 50%;
+      width: 20px;
+      height: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: bold;
+      border: 2px solid white;
+    }
+  }
+}

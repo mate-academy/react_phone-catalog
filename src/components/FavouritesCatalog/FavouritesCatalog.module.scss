@@ -1,0 +1,25 @@
+.catalog {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px 32px;
+
+  &__counter {
+    margin-top: 8px;
+    font-size: 14px;
+    color: var(--secondary);
+  }
+
+  &__title {
+    margin-top: 40px;
+    font-size: 48px;
+  }
+
+  &__phones {
+    margin-top: 40px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    justify-items: center;
+    justify-content: center;
+  }
+}
