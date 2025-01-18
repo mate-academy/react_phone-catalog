@@ -2,6 +2,7 @@
 /* eslint-disable no-param-reassign */
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from './store';
+import { Product } from '../types/Product';
 
 interface CartItem {
   id: string;

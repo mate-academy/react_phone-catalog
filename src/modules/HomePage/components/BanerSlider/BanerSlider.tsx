@@ -31,7 +31,7 @@ export const BanerSlider = () => {
         >
           <img
             className={style.arrow_image}
-            src="/img/Icons/Chevron (Arrow Left).png"
+            src="/img/Icons/Chevron(Arrow_Left).png"
             alt="previous"
           />
         </button>
@@ -68,7 +68,7 @@ export const BanerSlider = () => {
         >
           <img
             className={style.arrow_image}
-            src="/img/Icons/Chevron (Arrow Right).png"
+            src="/img/Icons/Chevron(Arrow_Right).png"
             alt="next"
           />
         </button>
