@@ -1,0 +1,30 @@
+@import '../../../mixins';
+
+.list {
+  display: flex;
+  flex-direction: column;
+  margin-top: 30px;
+  gap: 8px;
+
+  @include on-desktop {
+    margin-top: 25px;
+  }
+
+  &__line {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0;
+    margin: 0;
+  }
+
+  &__title {
+    margin: 0;
+    color: var(--text-color-tech-title);
+  }
+
+  &__value {
+    margin: 0;
+    color: var(--text-color-tech-info);
+  }
+}

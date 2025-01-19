@@ -1,0 +1,29 @@
+{
+  "title": "Welcome to Nice Gadgets store!",
+  "titleSection": ["Brand new models", "Shop by category", "Hot prices"],
+  "pageName": ["Home", "Mobile phones", "Tablets", "Accessories", "Phones"],
+  "models": "models",
+  "footer": ["Github", "Contacts", "Rights", "Back to top"],
+  "devicePage": ["models", "Sort by", "Items on page", "There are no ", "All", "Search"],
+  "favouritePageNull": ["Oops!", "Your favourites list is empty."],
+  "favouritePage": ["Favourites", "items"],
+  "cartPageNull":["Oops!", "Your cart is empty."],
+  "cartPage":["Cart", "Total for", "items", "Checkout"],
+  "sortBy": ["Newest", "Alphabetically", "Cheapeast"],
+  "cardText": ["Screen", "Capacity", "RAM"],
+  "cardButton": ["Added", "Add to cart"],
+  "back":"Back",
+  "changeCard": ["Available colors", "Select capacity"],
+  "techText": [
+    "Screen",
+    "Resolution",
+    "Processor",
+    "RAM",
+    "Built in memory",
+    "Camera",
+    "Zoom"
+  ],
+  "oneDevicePage": ["About", "Tech specs", "You may also like"],
+  "notPage": "Page not fount",
+  "orderSentMessage": "Your order has been placed"
+}
