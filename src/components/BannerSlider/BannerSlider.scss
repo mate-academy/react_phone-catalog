@@ -13,14 +13,16 @@
     gap: 16px;
   }
 
+  &__banner {
+    display: flex;
+  }
+
   &__image {
     position: absolute;
     top: 0;
     bottom: 0;
     left: 0;
     right: 0;
-
-    user-select: none;
 
     --direction: 5px;
     animation-duration: 0;
@@ -56,6 +58,8 @@
     }
 
     &--hidden {
+      pointer-events: none;
+
       animation: disappear ease forwards;
 
       @keyframes disappear {

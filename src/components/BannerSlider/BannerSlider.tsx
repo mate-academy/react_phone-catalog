@@ -1,4 +1,5 @@
-import React, { Fragment, useLayoutEffect, useState } from 'react';
+import React, { useLayoutEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import classNames from 'classnames';
 import { BannerType } from '../../types/BannerType';
 import './BannerSlider.scss';
@@ -83,8 +84,12 @@ export const BannerSlider: React.FC<Props> = ({ banners }) => {
           onTouchMove={handleTouchMove}
           onTouchEnd={handleTouchEnd}
         >
-          {banners.map((image, index) => (
-            <Fragment key={index}>
+          {banners.map((banner, index) => (
+            <Link
+              to={banner.link}
+              className="banner-slider__banner"
+              key={index}
+            >
               <img
                 className={classNames(
                   'banner-slider__image banner-slider__image-desktop',
@@ -96,7 +101,7 @@ export const BannerSlider: React.FC<Props> = ({ banners }) => {
                     'banner-slider__image--animate': shouldAnimate,
                   },
                 )}
-                src={image.desktop}
+                src={banner.desktop}
                 alt="Banner"
               />
 
@@ -111,10 +116,10 @@ export const BannerSlider: React.FC<Props> = ({ banners }) => {
                     'banner-slider__image--animate': shouldAnimate,
                   },
                 )}
-                src={image.mobile}
+                src={banner.mobile}
                 alt="Banner"
               />
-            </Fragment>
+            </Link>
           ))}
         </div>
 

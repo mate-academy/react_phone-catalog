@@ -55,6 +55,8 @@
     }
 
     &-category {
+      text-decoration: none;
+
       &-photo {
         width: 100%;
         margin-bottom: 24px;
@@ -62,6 +64,8 @@
 
       &-title {
         margin-bottom: 4px;
+
+        color: vars.$color-primary;
       }
 
       &-subtitle {

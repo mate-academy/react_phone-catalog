@@ -1,23 +1,48 @@
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { getProducts } from '../../api/api';
 import { ProductSlider } from '../../components/ProductSlider';
 import { ProductType } from '../../types/ProductType';
 import { SortType } from '../../types/SortType';
-import './HomePage.scss';
 import { BannerSlider } from '../../components/BannerSlider';
+import './HomePage.scss';
 
 const BANNERS = [
   {
     desktop: '/banners/iphone_14_pro.png',
     mobile: '/banners/iphone_14_pro_mobile.png',
+    link: '/product/apple-iphone-14-512gb-midnight',
   },
   {
     desktop: '/banners/watch_series_6.png',
     mobile: '/banners/watch_series_6_mobile.png',
+    link: '/product/apple-watch-series-6-44mm-space-gray',
   },
   {
     desktop: '/banners/ipad_pro_11.png',
     mobile: '/banners/ipad_pro_11_mobile.png',
+    link: '/product/apple-ipad-pro-11-2021-128gb-spacegray',
+  },
+];
+
+const CATEGORIES = [
+  {
+    image: '/categories/phones.png',
+    title: 'Mobile phones',
+    link: '/phones',
+    model_count: 95,
+  },
+  {
+    image: '/categories/tablets.png',
+    title: 'Tablets',
+    link: '/tablets',
+    model_count: 24,
+  },
+  {
+    image: '/categories/accessories.png',
+    title: 'Accessories',
+    link: '/accessories',
+    model_count: 100,
   },
 ];
 
@@ -54,45 +79,24 @@ export const HomePage = () => {
           <h2 className="home-page__section-title">Shop by category</h2>
 
           <div className="home-page__categories-container">
-            <div className="home-page__categories-category">
-              <img
-                className="home-page__categories-category-photo"
-                src="/categories/phones.png"
-                alt="Phones category photo"
-              />
-              <h4 className="home-page__categories-category-title">
-                Mobile phones
-              </h4>
-              <p className="body-text home-page__categories-category-subtitle">
-                95 models
-              </p>
-            </div>
-
-            <div className="home-page__categories-category">
-              <img
-                className="home-page__categories-category-photo"
-                src="/categories/tablets.png"
-                alt="Phones category photo"
-              />
-              <h4 className="home-page__categories-category-title">Tablets</h4>
-              <p className="body-text home-page__categories-category-subtitle">
-                24 models
-              </p>
-            </div>
-
-            <div className="home-page__categories-category">
-              <img
-                className="home-page__categories-category-photo"
-                src="/categories/accessories.png"
-                alt="Phones category photo"
-              />
-              <h4 className="home-page__categories-category-title">
-                Accessories
-              </h4>
-              <p className="body-text home-page__categories-category-subtitle">
-                100 models
-              </p>
-            </div>
+            {CATEGORIES.map(category => (
+              <Link
+                to={category.link}
+                className="home-page__categories-category"
+              >
+                <img
+                  className="home-page__categories-category-photo"
+                  src={category.image}
+                  alt="Phones category photo"
+                />
+                <h4 className="home-page__categories-category-title">
+                  {category.title}
+                </h4>
+                <p className="body-text home-page__categories-category-subtitle">
+                  {category.model_count} models
+                </p>
+              </Link>
+            ))}
           </div>
         </section>
 
