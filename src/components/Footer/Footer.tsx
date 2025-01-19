@@ -8,7 +8,7 @@ export const Footer = () => {
   return (
     <footer className="footer">
       <div className="footer__container">
-        <img src="/logo.svg" alt="Logo" className="footer__logo" />
+        <img src="logo.svg" alt="Logo" className="footer__logo" />
 
         <div className="footer__links">
           <a className="footer__links-link text-button">Github</a>
@@ -23,7 +23,7 @@ export const Footer = () => {
           <p className="small-text footer__back-to-top-text">Back to top</p>
           <img
             className="button--arrow"
-            src="/icons/arrow_up.svg"
+            src="icons/arrow_up.svg"
             alt="Arrow up"
           />
         </button>

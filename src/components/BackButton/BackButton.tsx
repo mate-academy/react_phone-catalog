@@ -10,7 +10,7 @@ export const BackButton = () => {
 
   return (
     <button className="back-button button--text" onClick={handleClick}>
-      <img src="/icons/arrow_left.svg" alt="Arrow left" />
+      <img src="icons/arrow_left.svg" alt="Arrow left" />
 
       <p className="back-button__text small-text">Back</p>
     </button>

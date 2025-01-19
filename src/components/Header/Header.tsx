@@ -48,7 +48,7 @@ export const Header: React.FC<Props> = ({ openMenu }) => {
   return (
     <header className="header">
       <div className="header__left">
-        <img src="/logo.svg" alt="Logo" className="header__logo" />
+        <img src="logo.svg" alt="Logo" className="header__logo" />
 
         <div className="header__nav">
           <MainNav />
@@ -58,7 +58,7 @@ export const Header: React.FC<Props> = ({ openMenu }) => {
       <div className="header__buttons">
         <NavLink className={buttonClass} to="/favourites">
           <div className="header__button-container">
-            <img src="/icons/favourite.svg" alt="Favourite icon" />
+            <img src="icons/favourite.svg" alt="Favourite icon" />
             {!!favouritesCount && (
               <div className="header__button-count">{favouritesCount}</div>
             )}
@@ -67,7 +67,7 @@ export const Header: React.FC<Props> = ({ openMenu }) => {
 
         <NavLink className={buttonClass} to="/cart">
           <div className="header__button-container">
-            <img src="/icons/cart.svg" alt="Cart icon" />
+            <img src="icons/cart.svg" alt="Cart icon" />
 
             {!!cartCount && (
               <div className="header__button-count">{cartCount}</div>
@@ -78,7 +78,7 @@ export const Header: React.FC<Props> = ({ openMenu }) => {
 
       <div className="header__buttons header__buttons-mobile">
         <div className="header__button" onClick={openMenu}>
-          <img src="/icons/menu.svg" alt="Burger menu icon" />
+          <img src="icons/menu.svg" alt="Burger menu icon" />
         </div>
       </div>
     </header>
