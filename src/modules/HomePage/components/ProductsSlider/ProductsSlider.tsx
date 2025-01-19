@@ -1,76 +1,53 @@
 import styles from './ProductsSlider.module.scss';
+import { IconButton } from '../../../shared/components/IconButton';
+import ProductCard from '../../../shared/components/ProductCard/ProductCard';
+import { ProductsContext } from '../../../shared/_store/DataProvider';
+import { ProductsWithDetails } from '../../../../_types/products';
+import { ArrowIcon } from '../../constants/icons';
+import { useSlider } from '../../hooks/useSlider';
 
-import { useState, useEffect } from 'react';
-import './ProductsSlider.module.scss';
-import { Product } from '../../../shared/types/products';
+import { useContext, useMemo } from 'react';
 
-export const ProductsSlider = () => {
-  const [products, setImages] = useState<Product[]>([]);
-  const [currentIndex, setCurrentIndex] = useState(0);
+type Props = {
+  title: string;
+  sortFn: (products: ProductsWithDetails[]) => ProductsWithDetails[];
+};
 
-  useEffect(() => {
-    fetch('api/products.json').then(response => {
-      if (!response.ok) {
-        throw new Error('My API Error');
-      }
-
-      response.json().then(res => setImages(res));
-    });
-  }, []);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentIndex(prevIndex => (prevIndex + 1) % products.length);
-    }, 5000);
-
-    return () => clearInterval(interval);
-  }, [products.length]);
-
-  const goToSlide = (index: number) => {
-    setCurrentIndex(index);
-  };
+export const ProductsSlider: React.FC<Props> = ({ title, sortFn }) => {
+  const { products } = useContext(ProductsContext);
+  const sortedProducts = useMemo(() => sortFn(products), [products, sortFn]);
+  const { currentIndex, handlePrev, handleNext } = useSlider({
+    itemCount: products.length,
+  });
+  const isFirst = currentIndex === 0;
+  const isLast = currentIndex >= products.length - 1;
 
   return (
-    <div className={styles.picturesSlider}>
-      <div className={styles.sliderImages}>
-        {products.map((product, index) => {
-          return (
-            <img
-              key={product.id}
-              src={product.image}
-              alt={`Slide ${index + 1}`}
-              className={index === currentIndex ? styles.active : ''}
-            />
-          );
-        })}
-      </div>
-
-      <div className={styles.sliderControls}>
-        {products.map((_, index) => (
-          <button
-            key={index}
-            className={index === currentIndex ? styles.active : ''}
-            onClick={() => goToSlide(index)}
+    <section className={styles['product-slider']}>
+      <div className={styles['product-slider__top']}>
+        <h2 className={styles['product-slider__title']}>{title}</h2>
+        <div className={styles['product-slider__buttons']}>
+          <IconButton
+            direction="left"
+            icon={<ArrowIcon />}
+            disabled={isFirst}
+            onClick={handlePrev}
           />
-        ))}
+          <IconButton
+            direction="right"
+            icon={<ArrowIcon />}
+            disabled={isLast}
+            onClick={handleNext}
+          />
+        </div>
       </div>
-
-      <button
-        className="prevButton"
-        onClick={() =>
-          setCurrentIndex(
-            (currentIndex - 1 + products.length) % products.length,
-          )
-        }
-      >
-        &#10094;
-      </button>
-      <button
-        className={styles.nextButton}
-        onClick={() => setCurrentIndex((currentIndex + 1) % products.length)}
-      >
-        &#10095;
-      </button>
-    </div>
+      <ul className={styles['product-slider__wrapper']}>
+        {sortedProducts.slice(currentIndex, currentIndex + 4).map(product => (
+          <li key={product.id} className={styles['product-slider__card']}>
+            <ProductCard product={product} type={title} />
+          </li>
+        ))}
+      </ul>
+    </section>
   );
 };

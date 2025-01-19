@@ -11,7 +11,7 @@ import { PhonesPage } from './modules/PhonesPage/components/PhonesPage/PhonesPag
 import { HomePage } from './modules/HomePage/components/HomePage/HomePage';
 import { TabletsPage } from './modules/TabletsPage/components/TabletsPage/TabletsPage';
 import { AccessoriesPage } from './modules/AccessoriesPage/components/AccessoriesPage/AccessoriesPage';
-import { ProductsProvider } from './modules/shared/store/DataProvider';
+import { ProductsProvider } from './modules/shared/_store/DataProvider';
 /* eslint-disable max-len */
 export const Root = () => (
   <Router>

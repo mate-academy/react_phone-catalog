@@ -66,8 +66,8 @@
     object-position: right;
     opacity: 0;
     animation: fade-in-out 5s linear infinite;
-    background: linear-gradient(125deg, $primary-color 25%, $accent-color 61%, $secondary-accent-color 94%);
-    background-color: $primary-color;
+    background: linear-gradient(170deg, $primary-color 50%, $accent-color 75%, $secondary-accent-color 85%);
+
 
     @include on-tablet {
       height: 100%;
@@ -104,12 +104,12 @@
 @keyframes fade-in-out {
   0% {
     opacity: 0;
-    transform: translateX(-10%);
+    transform: translateX(10%);
   }
 
   5% {
     opacity: 0.05;
-    transform: translateX(-5%);
+    transform: translateX(5%);
   }
 
   10% {
@@ -124,91 +124,6 @@
 
   100% {
     opacity: 0;
-    transform: translateX(10%);
+    transform: translateX(-10%);
   }
 }
-
-/*
-.pictures-slider {
-  position: relative;
-  width: 100%;
-  overflow: hidden;
-
-  &__images {
-    display: flex;
-    transition: transform 0.3s ease-in-out;
-
-    &__image {
-      width: 100%;
-      object-fit: cover;
-      opacity: 0;
-      transition: opacity 0.3s ease-in-out;
-
-      &--active {
-        opacity: 1;
-      }
-    }
-  }
-
-  &__controls {
-    display: flex;
-    justify-content: center;
-    margin-top: 10px;
-
-    &__control {
-      width: 10px;
-      height: 10px;
-      margin: 0 5px;
-      border: none;
-      border-radius: 50%;
-      background-color: #ccc;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-
-      &--active {
-        background-color: #333;
-      }
-    }
-  }
-
-  &__button {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: none;
-    border: none;
-    color: #fff;
-    font-size: 2rem;
-    cursor: pointer;
-
-    &:hover {
-      color: #ddd;
-    }
-
-    &:nth-of-type(1) {
-      left: 10px;
-    }
-
-    &:nth-of-type(2) {
-      right: 10px;
-    }
-
-    @media (max-width: 639px) {
-      display: none;
-    }
-  }
-}
-
-@media (max-width: 639px) {
-  .pictures-slider {
-    &__images {
-      &__image {
-        aspect-ratio: 1 / 1;
-      }
-    }
-
-    &__controls {
-      display: none;
-    }
-  }
-} */

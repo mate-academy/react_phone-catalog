@@ -73,6 +73,7 @@
   font-size: 14px;
   line-height: 21px;
   letter-spacing: 0;
+  text-align: center;
 }
 
 @mixin body-text {
@@ -96,7 +97,7 @@
   --columns: 4;
 
   display: grid;
-  column-gap: 16px;
+  column-gap: $grid-gap;
   grid-template-columns: repeat(var(--columns), 1fr);
 
   @include on-tablet {
@@ -126,9 +127,10 @@
 }
 
 @mixin hover($property, $toValue) {
-  transition: #{property} $effectDuration;
+  transition: #{$property} $effectDuration;
 
   &:hover {
     #{$property}: $toValue;
   }
 }
+

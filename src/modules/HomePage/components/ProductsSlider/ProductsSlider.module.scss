@@ -1,83 +1,88 @@
 @import '../../../../styles/global';
 
-.picturesSlider {
-  position: relative;
-  width: 400px;
-  overflow: hidden;
-}
-
-.sliderImages {
+.product-slider {
   display: flex;
-  transition: transform 0.5s ease-in-out;
-}
+  flex-direction: column;
+  gap: 24px;
 
-.sliderImages img {
-  opacity: 0;
-  visibility: hidden;
-  position: absolute;
-}
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
 
-.sliderControls {
-  position: absolute;
-  bottom: 10px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  gap: 8px;
-}
+  &__title {
+    @include h2;
+  }
 
-.sliderControls button {
-  width: 12px;
-  height: 12px;
-  background-color: rgba(255, 255, 255, 0.7);
-  border: none;
-  border-radius: 50%;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
+  &__buttons {
+    display: flex;
+    gap: 16px;
+    height: 32px;
+  }
 
-.sliderControls button.active {
-  background-color: #6200ea;
-}
+  &__wrapper {
+    @include page-grid;
+  }
 
-.sliderControls button:hover {
-  background-color: rgba(255, 255, 255, 1);
-}
+  &__card {
+    display: flex;
+    justify-items: stretch;
+    grid-row: 1 / 2;
+    height: 439px;
+    grid-column-end: span 3;
 
-.prevButton,
-.nextButton {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background-color: rgba(0, 0, 0, 0.5);
-  color: white;
-  border: none;
-  border-radius: 50%;
-  width: 40px;
-  height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
+    @include on-tablet {
+      height: 512px;
+      grid-column-end: span 5;
+    }
 
-.prevButton {
-  left: 10px;
-}
+    @include on-desktop {
+      height: 506px;
+      grid-column-end: span 6;
+    }
 
-.nextButton {
-  right: 10px;
-}
+    &:first-child {
+      grid-column-start: 1;
 
-.prevButton:hover,
-.nextButton:hover {
-  background-color: rgba(0, 0, 0, 0.8);
-}
+    }
 
-img.active {
-  opacity: 1;
-  visibility: visible;
-  position: relative;
-  transition: opacity 0.5s ease-in-out;
+    &:nth-child(2) {
+      grid-column-start: 1;
+      transform: translateX(calc(100% + #{$grid-gap}));
+
+      @include on-tablet {
+        grid-column-start: 6;
+        transform: none;
+      }
+
+      @include on-desktop {
+        grid-column-start: 7;
+      }
+    }
+
+    &:nth-child(3) {
+      display: none;
+
+      @include on-tablet {
+        display: flex;
+        grid-column-start: 6;
+        transform: translateX(calc(100% + #{$grid-gap}));
+      }
+
+      @include on-desktop {
+        grid-column-start: 13;
+        transform: none;
+      }
+    }
+
+    &:nth-child(4) {
+      display: none;
+
+      @include on-desktop {
+        display: flex;
+        grid-column: -7 / span 6;
+      }
+    }
+  }
 }

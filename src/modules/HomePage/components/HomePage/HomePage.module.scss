@@ -1,22 +1,24 @@
 @import '../../../../styles/global';
 
 .home {
-  display: flex;
-  flex-direction: column;
-  gap: 56px;
-  padding-bottom: 64px;
-
-  @include on-tablet {
-    gap: 64px;
-  }
-
-  @include on-desktop {
-    padding-bottom: 80px;
-    gap: 80px;
-  }
-
   &__title {
     @include visually-hidden;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 56px;
+    padding-bottom: 64px;
+
+    @include on-tablet {
+      gap: 64px;
+    }
+
+    @include on-desktop {
+      padding-bottom: 80px;
+      gap: 80px;
+    }
   }
 }
 

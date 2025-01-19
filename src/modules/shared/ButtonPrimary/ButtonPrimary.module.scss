@@ -1,0 +1,22 @@
+@import '../../../../src/styles/global';
+
+.button-primary {
+  height: 100%;
+  width: 100%;
+  background-color: $accent-color;
+  border-radius: 8px;
+  color: $white-color;
+
+  @include buttons;
+
+
+  &:hover {
+    box-shadow: 0 3px 13px 0 #17203166;
+  }
+
+  &--selected {
+    border-color: $elements-color;
+    cursor: default;
+    color: $elements-color;
+  }
+}

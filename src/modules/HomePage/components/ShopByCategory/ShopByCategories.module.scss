@@ -1,0 +1,63 @@
+@import '../../../../styles/global';
+
+.categories {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  &__title {
+    grid-column: 1 / -1;
+
+    @include h2;
+  }
+
+  &__content {
+    row-gap: 32px;
+
+    @include page-grid;
+  }
+
+  &__category {
+    grid-column: 1 / -1;
+
+    @include on-tablet {
+      grid-column: span 4;
+    }
+
+    @include on-desktop {
+      grid-column: span 8;
+    }
+  }
+
+  &__image {
+    aspect-ratio: 1;
+    border-radius: 8px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin-bottom: 24px;
+
+    @include hover(transform, scale(1.05));
+
+    @for $i from 1 through 3 {
+      &--#{$i} {
+        background-image: url('/img/categories/category#{$i}-mobile.png');
+
+        @include on-tablet {
+          background-image: url('/img/categories/category#{$i}-tablet.png');
+        }
+      }
+    }
+  }
+
+  &__subtitle {
+    margin-bottom: 4px;
+
+    @include h4;
+  }
+
+  &__quantity {
+    color: $secondary-color;
+
+    @include body-text;
+  }
+}
