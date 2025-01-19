@@ -206,8 +206,8 @@ export const Product = () => {
               <img
                 src={
                   inFavourites
-                    ? '/icons/favourite_filled.svg'
-                    : '/icons/favourite.svg'
+                    ? 'icons/favourite_filled.svg'
+                    : 'icons/favourite.svg'
                 }
                 alt="Favourite icon"
               />
