@@ -27,6 +27,7 @@ export const Product = () => {
   const location = useLocation();
   const [inFavourites, setInFavourites] = useState(false);
   const [inCart, setInCart] = useState(false);
+  const [selectedImage, setSelectedImage] = useState('');
 
   const handleFavourite = () => {
     if (!product) {
@@ -63,9 +64,14 @@ export const Product = () => {
 
     const fetchedProduct = await getProduct(id);
 
+    if (!fetchedProduct) {
+      return;
+    }
+
     setProduct(fetchedProduct);
     setInFavourites(isFavourite(id));
     setInCart(isInCart(id));
+    setSelectedImage(NormalizeImagePath(fetchedProduct.images[0]));
   };
 
   const fetchSuggestions = async () => {
@@ -89,6 +95,9 @@ export const Product = () => {
         <div
           className="product__small-images-image square-container"
           key={image}
+          onClick={() => {
+            setSelectedImage(NormalizeImagePath(image));
+          }}
         >
           <img src={NormalizeImagePath(image)} alt="Product image" />
         </div>
@@ -152,7 +161,7 @@ export const Product = () => {
 
       <div className="product__container">
         <div className="product__image square-container">
-          <img src={NormalizeImagePath(product.images[0])} alt="Image" />
+          <img src={selectedImage} alt="Image" />
         </div>
 
         {renderImages()}

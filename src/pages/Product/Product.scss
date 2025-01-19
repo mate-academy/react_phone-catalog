@@ -57,6 +57,8 @@
 
       border: 1px solid vars.$color-elements;
 
+      transition: border-color vars.$transition-time;
+
       @include mixins.media-tablet {
         padding: 2px;
       }
@@ -66,6 +68,10 @@
 
         height: 50px;
         width: 50px;
+      }
+
+      &:hover {
+        border-color: #313237;
       }
     }
 
