@@ -1,0 +1,58 @@
+@use 'styles/mixins';
+@use 'styles/vars';
+
+.catalog {
+  margin-top: 24px;
+
+  &__title {
+    margin-top: 40px;
+
+    @include mixins.media-phone {
+      margin-top: 24px;
+    }
+  }
+
+  &__count {
+    margin-top: 8px;
+    color: vars.$color-secondary;
+  }
+
+  &__filters {
+    margin-top: 40px;
+    width: 100%;
+
+    @include mixins.page-grid;
+
+    @include mixins.media-phone {
+      margin-top: 32px;
+    }
+
+    &-filter {
+      grid-column: span 4;
+
+      @include mixins.media-phone {
+        grid-column: span 2;
+      }
+
+      &-text {
+        color: vars.$color-secondary;
+      }
+
+      &--small {
+        grid-column: span 3;
+
+        @include mixins.media-phone {
+          grid-column: span 2;
+        }
+      }
+    }
+  }
+
+  &__container {
+    margin-top: 24px;
+
+    row-gap: 40px !important;
+
+    @include mixins.page-grid;
+  }
+}

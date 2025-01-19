@@ -1,0 +1,22 @@
+@use 'styles/vars';
+
+.breadcrumbs {
+  display: flex;
+  gap: 8px;
+  align-items: start;
+
+  &__path {
+    margin-top: 1px;
+    color: vars.$color-secondary;
+
+    &--black {
+      color: vars.$color-primary;
+    }
+
+    &--last {
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+  }
+}
