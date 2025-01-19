@@ -9,7 +9,6 @@ import {
   removeFavourite,
 } from '../../api/favourites';
 import { addToCart, isInCart, removeFromCart } from '../../api/cart';
-import { NormalizeImagePath } from '../../utils/NormalizeImagePath';
 import './ProductCard.scss';
 
 type Props = {
@@ -49,7 +48,7 @@ export const ProductCard: React.FC<Props> = React.memo(
       <div className="product-card">
         <Link to={`/product/${itemId}`} className="product-card__link">
           <img
-            src={NormalizeImagePath(image)}
+            src={image}
             alt={name}
             className="product-card__image"
           />

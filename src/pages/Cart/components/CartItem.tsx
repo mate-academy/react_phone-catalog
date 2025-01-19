@@ -1,6 +1,5 @@
 import React from 'react';
 import { ProductType } from '../../../types/ProductType';
-import { NormalizeImagePath } from '../../../utils/NormalizeImagePath';
 import './CartItem.scss';
 
 type Props = {
@@ -44,7 +43,7 @@ export const CartItem: React.FC<Props> = ({
 
         <div className="cart__item-image-container square-container">
           <img
-            src={NormalizeImagePath(product.image)}
+            src={product.image}
             alt="Product photo"
             className="cart__item-image"
           />

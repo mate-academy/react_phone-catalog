@@ -8,7 +8,6 @@ import { useEffect, useState } from 'react';
 import { getProduct, getProducts } from '../../api/api';
 import { ProductItemType } from '../../types/ProductItemType';
 import { ProductType } from '../../types/ProductType';
-import { NormalizeImagePath } from '../../utils/NormalizeImagePath';
 import { getColorByName } from '../../utils/Colors';
 import './Product.scss';
 import {
@@ -71,7 +70,7 @@ export const Product = () => {
     setProduct(fetchedProduct);
     setInFavourites(isFavourite(id));
     setInCart(isInCart(id));
-    setSelectedImage(NormalizeImagePath(fetchedProduct.images[0]));
+    setSelectedImage(fetchedProduct.images[0]);
   };
 
   const fetchSuggestions = async () => {
@@ -96,10 +95,10 @@ export const Product = () => {
           className="product__small-images-image square-container"
           key={image}
           onClick={() => {
-            setSelectedImage(NormalizeImagePath(image));
+            setSelectedImage(image);
           }}
         >
-          <img src={NormalizeImagePath(image)} alt="Product image" />
+          <img src={image} alt="Product image" />
         </div>
       ))}
     </div>
