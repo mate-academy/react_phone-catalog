@@ -6,6 +6,21 @@ import { SortType } from '../../types/SortType';
 import './HomePage.scss';
 import { BannerSlider } from '../../components/BannerSlider';
 
+const BANNERS = [
+  {
+    desktop: '/banners/iphone_14_pro.png',
+    mobile: '/banners/iphone_14_pro_mobile.png',
+  },
+  {
+    desktop: '/banners/watch_series_6.png',
+    mobile: '/banners/watch_series_6_mobile.png',
+  },
+  {
+    desktop: '/banners/ipad_pro_11.png',
+    mobile: '/banners/ipad_pro_11_mobile.png',
+  },
+];
+
 export const HomePage = () => {
   const [newestProducts, setNewestProducts] = useState<ProductType[]>([]);
   const [hotProducts, setHotProducts] = useState<ProductType[]>([]);
@@ -28,7 +43,7 @@ export const HomePage = () => {
 
       <div className="home-page__container">
         <section className="home-page__banner">
-          <BannerSlider />
+          <BannerSlider banners={BANNERS} />
         </section>
 
         <section className="home-page__models">

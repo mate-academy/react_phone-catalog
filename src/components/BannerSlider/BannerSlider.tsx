@@ -1,21 +1,20 @@
-import { Fragment, useLayoutEffect, useRef, useState } from 'react';
+import React, { Fragment, useLayoutEffect, useState } from 'react';
 import classNames from 'classnames';
+import { BannerType } from '../../types/BannerType';
 import './BannerSlider.scss';
-
-const IMAGES = [
-  { desktop: '/home_banner.png', mobile: '/home_banner_mobile.png' },
-  { desktop: '/home_banner.png', mobile: '/home_banner_mobile.png' },
-  { desktop: '/home_banner.png', mobile: '/home_banner_mobile.png' },
-];
 
 const MIN_SWIPE_AMOUNT = 50;
 
-export const BannerSlider = () => {
+type Props = {
+  banners: BannerType[];
+};
+
+export const BannerSlider: React.FC<Props> = ({ banners }) => {
   const [page, setPage] = useState(0);
   const [reverse, setReverse] = useState(false);
   const [touchStart, setTouchStart] = useState(0);
   const [touchEnd, setTouchEnd] = useState(0);
-  const rendered = useRef(false);
+  const [shouldAnimate, setShouldAnimate] = useState(false);
 
   function handleTouchStart(event: React.TouchEvent) {
     setTouchStart(event.targetTouches[0].clientX);
@@ -36,10 +35,11 @@ export const BannerSlider = () => {
   }
 
   const handleLeft = () => {
+    setShouldAnimate(true);
     setReverse(true);
 
     if (page === 0) {
-      setPage(IMAGES.length - 1);
+      setPage(banners.length - 1);
 
       return;
     }
@@ -48,9 +48,10 @@ export const BannerSlider = () => {
   };
 
   const handleRight = () => {
+    setShouldAnimate(true);
     setReverse(false);
 
-    if (page + 1 === IMAGES.length) {
+    if (page + 1 === banners.length) {
       setPage(0);
 
       return;
@@ -60,8 +61,14 @@ export const BannerSlider = () => {
   };
 
   useLayoutEffect(() => {
-    rendered.current = true;
-  }, []);
+    const timeout = setTimeout(() => {
+      handleRight();
+    }, 10000);
+
+    return () => {
+      clearTimeout(timeout);
+    };
+  }, [page]);
 
   return (
     <div className="banner-slider">
@@ -76,7 +83,7 @@ export const BannerSlider = () => {
           onTouchMove={handleTouchMove}
           onTouchEnd={handleTouchEnd}
         >
-          {IMAGES.map((image, index) => (
+          {banners.map((image, index) => (
             <Fragment key={index}>
               <img
                 className={classNames(
@@ -86,7 +93,7 @@ export const BannerSlider = () => {
                     'banner-slider__image--visible': page === index,
                     'banner-slider__image--hidden': page !== index,
                     'banner-slider__image--reverse': reverse,
-                    'banner-slider__image--animate': rendered.current,
+                    'banner-slider__image--animate': shouldAnimate,
                   },
                 )}
                 src={image.desktop}
@@ -101,7 +108,7 @@ export const BannerSlider = () => {
                     'banner-slider__image--visible': page === index,
                     'banner-slider__image--hidden': page !== index,
                     'banner-slider__image--reverse': reverse,
-                    'banner-slider__image--animate': rendered.current,
+                    'banner-slider__image--animate': shouldAnimate,
                   },
                 )}
                 src={image.mobile}
@@ -117,7 +124,7 @@ export const BannerSlider = () => {
       </div>
 
       <div className="banner-slider__pages">
-        {Array.from(Array(IMAGES.length)).map((_, index) => (
+        {Array.from(Array(banners.length)).map((_, index) => (
           <div
             key={index}
             className={classNames('banner-slider__page', {
