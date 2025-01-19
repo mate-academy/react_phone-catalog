@@ -1,1 +1,59 @@
-// not empty
+@use 'styles/typography';
+@use 'styles/fonts';
+@use 'styles/mixins';
+@use 'styles/vars';
+
+html {
+  scroll-behavior: smooth;
+}
+
+html,
+button {
+  font-family: Mont, sans-serif;
+}
+
+html,
+p {
+  color: vars.$color-primary;
+}
+
+body {
+  margin: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+p {
+  margin: 0;
+}
+
+.App {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.container {
+  width: 100%;
+  position: relative;
+
+  max-width: 1200px;
+  min-height: 100%;
+
+  padding: 0 32px;
+  margin: 0 auto 80px;
+
+  box-sizing: border-box;
+  overflow: hidden;
+
+  @include mixins.media-tablet {
+    padding: 0 24px;
+    margin-bottom: 64px;
+  }
+
+  @include mixins.media-phone {
+    padding: 0 16px;
+  }
+}

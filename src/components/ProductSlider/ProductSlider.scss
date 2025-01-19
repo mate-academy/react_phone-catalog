@@ -1,0 +1,28 @@
+@use 'styles/vars';
+
+.product-slider {
+  display: flex;
+  gap: 24px;
+  flex-direction: column;
+
+  &__top {
+    display: flex;
+    gap: 16px;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 16px;
+  }
+
+  &__container {
+    position: relative;
+
+    display: flex;
+    gap: 16px;
+
+    transition: transform vars.$transition-time;
+  }
+}

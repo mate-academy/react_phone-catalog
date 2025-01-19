@@ -1,0 +1,38 @@
+@use 'styles/mixins';
+@use 'styles/vars';
+
+.favourites {
+  margin-top: 24px;
+
+  &__title {
+    margin-top: 40px;
+
+    @include mixins.media-phone {
+      margin-top: 24px;
+    }
+  }
+
+  &__subtitle {
+    margin-top: 8px;
+
+    color: vars.$color-secondary;
+  }
+
+  &__container {
+    margin-top: 40px;
+
+    row-gap: 40px !important;
+
+    @include mixins.page-grid;
+  }
+
+  &__empty {
+    width: 100%;
+    margin-top: 50px;
+
+    display: flex;
+    justify-content: center;
+
+    color: vars.$color-secondary;
+  }
+}
