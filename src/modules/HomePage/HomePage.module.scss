@@ -1,0 +1,32 @@
+@import '../../main';
+
+.homePage {
+  display: flex;
+  flex-direction: column;
+  gap: 56px;
+
+  @include on-tablet {
+    gap: 64px;
+  }
+
+  @include on-desktop {
+    gap: 80px;
+  }
+
+  .title {
+    @include page-container;
+    @include font-set($mobile-h1);
+
+    margin-block: 24px;
+
+    @include on-tablet {
+      @include font-set($tablet-h1);
+
+      margin-block: 32px;
+    }
+
+    @include on-desktop {
+      margin-block: 56px;
+    }
+  }
+}
