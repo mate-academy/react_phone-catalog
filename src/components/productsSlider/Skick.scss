@@ -1,0 +1,28 @@
+@use './../../styles/variables' as v;
+@use '../../styles/mixins' as mix;
+
+.slick {
+  &-slider {
+    width: calc(100% + 24px);
+
+    @include mix.respond-to(mobile) {
+      width: calc(100% + 16px);
+    }
+  }
+  &-track {
+    display: flex;
+    gap: 16px;
+  }
+
+  &-slide {
+    width: 272px;
+
+    @include mix.respond-to(tablet) {
+      width: 237px;
+    }
+  
+    @include mix.respond-to(mobile) {
+      width: 212px;
+    }
+  }
+}
