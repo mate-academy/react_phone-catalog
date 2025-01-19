@@ -1,0 +1,97 @@
+@use "../../utils/mixins" as mixin;
+@use "../../utils/variables" as var;
+
+.about {
+  display: flex;
+  flex-direction: column;
+
+  @include mixin.on-tablet {
+    flex-direction: column;
+  }
+
+  @include mixin.on-desktop {
+    flex-direction: row;
+  }
+
+  &__desc {
+    flex: 2;
+    margin-right: 32px;
+  }
+
+  &__tech-specs {
+    flex: 2;
+  }
+
+  &__title {
+    @include mixin.h3-mobile;
+
+    color: var.$primary-gray;
+    margin-bottom: 8px;
+
+    @include mixin.on-tablet {
+      @include mixin.h3-desktop-tablet;
+    }
+
+    @include mixin.on-desktop {
+      @include mixin.h3-desktop-tablet;
+    }
+  }
+
+  &__line {
+    @include mixin.sizes(100%, 1px);
+
+    background-color: var.$elements;
+    margin-bottom: 16px;
+  }
+
+  &__info-details {
+    @include mixin.flex(flex, false, false, column);
+
+    gap: 8px;
+    margin-bottom: 10px;
+  }
+
+  &__info {
+    @include mixin.small-text-desktop-tablet;
+    @include mixin.flex(flex, space-between, false, false);
+
+    width: 100%;
+
+    &--name {
+      color: var.$secondary-gray;
+      text-align: left;
+      flex: 1;
+    }
+
+    &--value {
+      text-align: right;
+      flex: 2;
+    }
+  }
+
+  &__part {
+    margin-bottom: 20px;
+    gap: 8px;
+  }
+
+  &__subtitle {
+    @include mixin.h4-mobile;
+
+    color: var.$primary-gray;
+    margin-bottom: 20px;
+
+    @include mixin.on-tablet {
+      @include mixin.h4-desktop-tablet;
+    }
+
+    @include mixin.on-desktop {
+      @include mixin.h4-desktop-tablet;
+    }
+  }
+
+  &__text {
+    color: var.$secondary-gray;
+
+    @include mixin.body-text-desktop-tablet;
+  }
+}
