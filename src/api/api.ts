@@ -3,7 +3,7 @@ import { ProductItemType } from '../types/ProductItemType';
 import { ProductType } from '../types/ProductType';
 import { SortType } from '../types/SortType';
 
-const apiBase = `http://localhost:5173/api`;
+const apiBase = `api`;
 const productsJson = `${apiBase}/products.json`;
 const accessoriesJson = `${apiBase}/accessories.json`;
 const phonesJson = `${apiBase}/phones.json`;

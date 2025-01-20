@@ -32,7 +32,7 @@ export const PaginationButtons: React.FC<Props> = ({
   return (
     <div className="pagination">
       <button className="pagination__arrow button--arrow" onClick={handleLeft}>
-        <img src="/icons/arrow_left.svg" alt="Arrow left" />
+        <img src="icons/arrow_left.svg" alt="Arrow left" />
       </button>
 
       <div className="pagination__pages">
@@ -58,7 +58,7 @@ export const PaginationButtons: React.FC<Props> = ({
       </div>
 
       <button className="pagination__arrow button--arrow" onClick={handleRight}>
-        <img src="/icons/arrow_right.svg" alt="Arrow right" />
+        <img src="icons/arrow_right.svg" alt="Arrow right" />
       </button>
     </div>
   );

@@ -32,7 +32,7 @@ export const Dropdown: React.FC<Props> = ({ options, value, onChange }) => {
         {value}
         <img
           className="dropdown__icon"
-          src="/icons/arrow_down.svg"
+          src="icons/arrow_down.svg"
           alt="Arrow down"
         />
       </button>

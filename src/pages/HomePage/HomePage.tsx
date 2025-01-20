@@ -9,39 +9,39 @@ import './HomePage.scss';
 
 const BANNERS = [
   {
-    desktop: '/banners/iphone_14_pro.png',
-    mobile: '/banners/iphone_14_pro_mobile.png',
-    link: '/product/apple-iphone-14-512gb-midnight',
+    desktop: 'banners/iphone_14_pro.png',
+    mobile: 'banners/iphone_14_pro_mobile.png',
+    link: 'product/apple-iphone-14-512gb-midnight',
   },
   {
-    desktop: '/banners/watch_series_6.png',
-    mobile: '/banners/watch_series_6_mobile.png',
-    link: '/product/apple-watch-series-6-44mm-space-gray',
+    desktop: 'banners/watch_series_6.png',
+    mobile: 'banners/watch_series_6_mobile.png',
+    link: 'product/apple-watch-series-6-44mm-space-gray',
   },
   {
-    desktop: '/banners/ipad_pro_11.png',
-    mobile: '/banners/ipad_pro_11_mobile.png',
-    link: '/product/apple-ipad-pro-11-2021-128gb-spacegray',
+    desktop: 'banners/ipad_pro_11.png',
+    mobile: 'banners/ipad_pro_11_mobile.png',
+    link: 'product/apple-ipad-pro-11-2021-128gb-spacegray',
   },
 ];
 
 const CATEGORIES = [
   {
-    image: '/categories/phones.png',
+    image: 'categories/phones.png',
     title: 'Mobile phones',
-    link: '/phones',
+    link: 'phones',
     model_count: 95,
   },
   {
-    image: '/categories/tablets.png',
+    image: 'categories/tablets.png',
     title: 'Tablets',
-    link: '/tablets',
+    link: 'tablets',
     model_count: 24,
   },
   {
-    image: '/categories/accessories.png',
+    image: 'categories/accessories.png',
     title: 'Accessories',
-    link: '/accessories',
+    link: 'accessories',
     model_count: 100,
   },
 ];

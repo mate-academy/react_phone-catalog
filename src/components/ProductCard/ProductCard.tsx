@@ -9,7 +9,6 @@ import {
   removeFavourite,
 } from '../../api/favourites';
 import { addToCart, isInCart, removeFromCart } from '../../api/cart';
-import { NormalizeImagePath } from '../../utils/NormalizeImagePath';
 import './ProductCard.scss';
 
 type Props = {
@@ -48,11 +47,7 @@ export const ProductCard: React.FC<Props> = React.memo(
     return (
       <div className="product-card">
         <Link to={`/product/${itemId}`} className="product-card__link">
-          <img
-            src={NormalizeImagePath(image)}
-            alt={name}
-            className="product-card__image"
-          />
+          <img src={image} alt={name} className="product-card__image" />
         </Link>
 
         <div className="product-card__container">
@@ -95,8 +90,8 @@ export const ProductCard: React.FC<Props> = React.memo(
                 className="product-card__fav"
                 src={
                   inFavourites
-                    ? '/icons/favourite_filled.svg'
-                    : '/icons/favourite.svg'
+                    ? 'icons/favourite_filled.svg'
+                    : 'icons/favourite.svg'
                 }
                 alt="Favourite icon"
               />

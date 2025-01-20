@@ -56,10 +56,10 @@ export const BurgerMenu: React.FC<Props> = ({ isOpened, closeMenu }) => {
       onClick={handleClick}
     >
       <div className="burger-menu__top">
-        <img src="/logo.svg" alt="Logo" className="burger-menu__logo" />
+        <img src="logo.svg" alt="Logo" className="burger-menu__logo" />
 
         <div className="burger-menu__close-button" onClick={closeMenu}>
-          <img src="/icons/close.svg" alt="Close icon" />
+          <img src="icons/close.svg" alt="Close icon" />
         </div>
       </div>
 
@@ -70,11 +70,11 @@ export const BurgerMenu: React.FC<Props> = ({ isOpened, closeMenu }) => {
 
         <div className="burger-menu__buttons">
           <NavLink className={buttonClass} to="/favourites">
-            <img src="/icons/favourite.svg" alt="Favourite icon" />
+            <img src="icons/favourite.svg" alt="Favourite icon" />
           </NavLink>
 
           <NavLink className={buttonClass} to="/cart">
-            <img src="/icons/cart.svg" alt="Cart icon" />
+            <img src="icons/cart.svg" alt="Cart icon" />
           </NavLink>
         </div>
       </div>

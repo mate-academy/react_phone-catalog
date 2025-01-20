@@ -79,7 +79,7 @@ export const ProductSlider: React.FC<Props> = ({ products, title }) => {
             onClick={scrollLeft}
             aria-disabled={scrollIndex <= 0}
           >
-            <img src="/icons/arrow_left.svg" alt="Arrow left" />
+            <img src="icons/arrow_left.svg" alt="Arrow left" />
           </button>
 
           <button
@@ -91,7 +91,7 @@ export const ProductSlider: React.FC<Props> = ({ products, title }) => {
                 containerRef.current.children.length
             }
           >
-            <img src="/icons/arrow_right.svg" alt="Arrow right" />
+            <img src="icons/arrow_right.svg" alt="Arrow right" />
           </button>
         </div>
       </div>

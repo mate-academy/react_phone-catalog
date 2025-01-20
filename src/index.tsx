@@ -1,5 +1,5 @@
 import ReactDOM from 'react-dom/client';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { HashRouter, Route, Routes } from 'react-router-dom';
 import { App } from './App';
 import { HomePage } from './pages/HomePage';
 import { Catalog } from './pages/Catalog';
@@ -9,7 +9,7 @@ import { Cart } from './pages/Cart';
 import { Category } from './types/CategoryType';
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
-  <BrowserRouter
+  <HashRouter
     future={{
       v7_startTransition: true,
       v7_relativeSplatPath: true,
@@ -32,5 +32,5 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
         <Route path="cart" element={<Cart />} />
       </Route>
     </Routes>
-  </BrowserRouter>,
+  </HashRouter>,
 );

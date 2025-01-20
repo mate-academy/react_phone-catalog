@@ -1,6 +1,5 @@
 import React from 'react';
 import { ProductType } from '../../../types/ProductType';
-import { NormalizeImagePath } from '../../../utils/NormalizeImagePath';
 import './CartItem.scss';
 
 type Props = {
@@ -36,7 +35,7 @@ export const CartItem: React.FC<Props> = ({
     <div className="cart__item">
       <div className="cart__item-group">
         <img
-          src="/icons/close_gray.svg"
+          src="icons/close_gray.svg"
           alt="Close icon"
           className="cart__item-close"
           onClick={removeItem}
@@ -44,7 +43,7 @@ export const CartItem: React.FC<Props> = ({
 
         <div className="cart__item-image-container square-container">
           <img
-            src={NormalizeImagePath(product.image)}
+            src={product.image}
             alt="Product photo"
             className="cart__item-image"
           />
@@ -60,7 +59,7 @@ export const CartItem: React.FC<Props> = ({
             onClick={handleMinus}
             aria-disabled={quantity === 1}
           >
-            <img src="/icons/minus.svg" alt="Minus icon" />
+            <img src="icons/minus.svg" alt="Minus icon" />
           </button>
 
           <p className="body-text">{quantity}</p>
@@ -69,7 +68,7 @@ export const CartItem: React.FC<Props> = ({
             className="cart__item-quantity-button button--white"
             onClick={handlePlus}
           >
-            <img src="/icons/plus.svg" alt="Plus icon" />
+            <img src="icons/plus.svg" alt="Plus icon" />
           </button>
         </div>
 
