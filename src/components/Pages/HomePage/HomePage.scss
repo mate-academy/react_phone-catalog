@@ -1,0 +1,46 @@
+@import '../../../styles/vars';
+@import '../../../styles/mixins';
+@import '../../../styles/heading';
+@import './HomePageStyles/Welcome';
+@import './HomePageStyles/Category';
+
+.homepage {
+  background-color: $bg-color;
+
+  &__welcome {
+    padding-top: calc(24px + $nav-height-mobile);
+
+    @include on-tablet {
+      padding-top: calc(32px + $nav-height-mobile);
+    }
+
+    @include on-desktop {
+      padding-top: calc(56px + $nav-height-desktop);
+    }
+  }
+
+  &__new,
+  &__categories {
+    margin-top: 56px;
+
+    @include on-tablet {
+      margin-top: 64px;
+    }
+
+    @include on-desktop {
+      margin-top: 80px;
+    }
+  }
+
+  &__prices {
+    padding-block: 56px 64px;
+
+    @include on-tablet {
+      padding-block: 64px;
+    }
+
+    @include on-desktop {
+      padding-block: 80px;
+    }
+  }
+}
