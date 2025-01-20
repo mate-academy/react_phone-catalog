@@ -1,0 +1,51 @@
+@import '../../../styles/main.scss';
+
+.slider {
+  width: 1060px;
+  padding-top: 56px;
+  margin: 0 auto;
+
+  &__img {
+    height: 400px;
+  }
+
+  :global {
+    .slick-prev,
+    .slick-next {
+      position: absolute;
+      top: 50%;
+      z-index: 1;
+      width: 32px; /* Ширина кнопки */
+      height: 400px; /* Висота кнопки */
+      background-color: transparent;
+      border: none;
+      cursor: pointer;
+      transform: translateY(-50%);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: var(--bg-color);
+      color: var(--primary-color);
+    }
+
+    .slick-prev {
+      left: -50px; /* Відступ для лівої кнопки */
+    }
+
+    .slick-next {
+      right: -30px; /* Відступ для правої кнопки */
+    }
+
+    .slick-prev:before,
+    .slick-next:before {
+      top: -3px;
+      content: '';
+      background-color: var(--button-bg-color);
+      display: block;
+      width: 100%;
+      height: 99.5%;
+      position: absolute;
+      border: 1px solid var(--button-border-color);
+    }
+  }
+}

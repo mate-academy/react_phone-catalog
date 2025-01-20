@@ -50,14 +50,13 @@
 }
 
 @mixin on-mobile {
-  @media (max-width: ($tablet-min-width)) {
+  @media (max-width: ($tablet-min-width - 1)) {
     @content;
   }
 }
 
 @mixin center-desktop {
-  @include on-desktop {
-    max-width: 1600px;
-    margin: 0 auto;
+  @media (min-width: 1200px) {
+    margin-inline: calc((100vw - 1200px) / 2);
   }
 }

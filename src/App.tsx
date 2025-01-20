@@ -16,7 +16,7 @@ export const App = () => {
       <div className={cn('app__menu', { 'app__menu--open': isOpen })}>
         <Menu />
       </div>
-      <div>
+      <div className="app__main">
         <Outlet />
       </div>
     </div>

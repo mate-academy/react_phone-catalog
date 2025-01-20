@@ -5,8 +5,6 @@
   display: grid;
   grid-template-rows: auto 1fr auto;
 
-  @include center-desktop;
-
   &__header {
     position: sticky;
     z-index: 2;
@@ -21,6 +19,24 @@
     &--open {
       background-color: var(--bg-color);
       z-index: 10;
+    }
+  }
+
+  &__main {
+    padding-inline: 24px;
+    margin-top: 56px;
+    margin-bottom: 80px;
+
+    @include center-desktop;
+
+    @include on-tablet {
+      margin-top: 32px;
+      margin-bottom: 64px;
+    }
+
+    @include on-mobile {
+      padding-inline: 0;
+      margin-top: 24px;
     }
   }
 }

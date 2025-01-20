@@ -4,6 +4,8 @@ body.light-theme {
   --secondary-color: #89939a;
   --elements-color: #e2e6e9;
   --shadow-color: #e2e6e9;
+  --button-bg-color: #fff;
+  --button-border-color: #b4bdc3;
 }
 
 body.dark-theme {
@@ -12,6 +14,8 @@ body.dark-theme {
   --secondary-color: #75767f;
   --elements-color: #3b3e4a;
   --shadow-color: #3b3e4a;
+  --button-bg-color: #323542;
+  --button-border-color: #323542;
 }
 
 $header-height-desktop: 64px;
