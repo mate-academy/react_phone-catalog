@@ -11,9 +11,9 @@
     "colorsAvailable": ["spacegray", "silver"],
     "color": "spacegray",
     "images": [
-      "img/tablets/apple-ipad-pro-11-2021/spacegray/00.webp",
-      "img/tablets/apple-ipad-pro-11-2021/spacegray/01.webp",
-      "img/tablets/apple-ipad-pro-11-2021/spacegray/02.webp"
+      "../src/assets/images/tablets/apple-ipad-pro-11-2021/spacegray/00.webp",
+      "../src/assets/images/tablets/apple-ipad-pro-11-2021/spacegray/01.webp",
+      "../src/assets/images/tablets/apple-ipad-pro-11-2021/spacegray/02.webp"
     ],
     "description": [
       {
@@ -58,9 +58,9 @@
     "colorsAvailable": ["spacegray", "silver"],
     "color": "spacegray",
     "images": [
-      "img/tablets/apple-ipad-pro-11-2021/spacegray/00.webp",
-      "img/tablets/apple-ipad-pro-11-2021/spacegray/01.webp",
-      "img/tablets/apple-ipad-pro-11-2021/spacegray/02.webp"
+      "../src/assets/images/tablets/apple-ipad-pro-11-2021/spacegray/00.webp",
+      "../src/assets/images/tablets/apple-ipad-pro-11-2021/spacegray/01.webp",
+      "../src/assets/images/tablets/apple-ipad-pro-11-2021/spacegray/02.webp"
     ],
     "description": [
       {
@@ -105,9 +105,9 @@
     "colorsAvailable": ["spacegray", "silver"],
     "color": "spacegray",
     "images": [
-      "img/tablets/apple-ipad-pro-11-2021/spacegray/00.webp",
-      "img/tablets/apple-ipad-pro-11-2021/spacegray/01.webp",
-      "img/tablets/apple-ipad-pro-11-2021/spacegray/02.webp"
+      "../src/assets/images/tablets/apple-ipad-pro-11-2021/spacegray/00.webp",
+      "../src/assets/images/tablets/apple-ipad-pro-11-2021/spacegray/01.webp",
+      "../src/assets/images/tablets/apple-ipad-pro-11-2021/spacegray/02.webp"
     ],
     "description": [
       {
@@ -152,9 +152,9 @@
     "colorsAvailable": ["spacegray", "silver"],
     "color": "spacegray",
     "images": [
-      "img/tablets/apple-ipad-pro-11-2021/spacegray/00.webp",
-      "img/tablets/apple-ipad-pro-11-2021/spacegray/01.webp",
-      "img/tablets/apple-ipad-pro-11-2021/spacegray/02.webp"
+      "../src/assets/images/tablets/apple-ipad-pro-11-2021/spacegray/00.webp",
+      "../src/assets/images/tablets/apple-ipad-pro-11-2021/spacegray/01.webp",
+      "../src/assets/images/tablets/apple-ipad-pro-11-2021/spacegray/02.webp"
     ],
     "description": [
       {
@@ -199,9 +199,9 @@
     "colorsAvailable": ["spacegray", "silver"],
     "color": "spacegray",
     "images": [
-      "img/tablets/apple-ipad-pro-11-2021/spacegray/00.webp",
-      "img/tablets/apple-ipad-pro-11-2021/spacegray/01.webp",
-      "img/tablets/apple-ipad-pro-11-2021/spacegray/02.webp"
+      "../src/assets/images/tablets/apple-ipad-pro-11-2021/spacegray/00.webp",
+      "../src/assets/images/tablets/apple-ipad-pro-11-2021/spacegray/01.webp",
+      "../src/assets/images/tablets/apple-ipad-pro-11-2021/spacegray/02.webp"
     ],
     "description": [
       {
@@ -246,9 +246,9 @@
     "colorsAvailable": ["spacegray", "silver"],
     "color": "silver",
     "images": [
-      "img/tablets/apple-ipad-pro-11-2021/silver/00.webp",
-      "img/tablets/apple-ipad-pro-11-2021/silver/01.webp",
-      "img/tablets/apple-ipad-pro-11-2021/silver/02.webp"
+      "../src/assets/images/tablets/apple-ipad-pro-11-2021/silver/00.webp",
+      "../src/assets/images/tablets/apple-ipad-pro-11-2021/silver/01.webp",
+      "../src/assets/images/tablets/apple-ipad-pro-11-2021/silver/02.webp"
     ],
     "description": [
       {
@@ -293,9 +293,9 @@
     "colorsAvailable": ["spacegray", "silver"],
     "color": "silver",
     "images": [
-      "img/tablets/apple-ipad-pro-11-2021/silver/00.webp",
-      "img/tablets/apple-ipad-pro-11-2021/silver/01.webp",
-      "img/tablets/apple-ipad-pro-11-2021/silver/02.webp"
+      "../src/assets/images/tablets/apple-ipad-pro-11-2021/silver/00.webp",
+      "../src/assets/images/tablets/apple-ipad-pro-11-2021/silver/01.webp",
+      "../src/assets/images/tablets/apple-ipad-pro-11-2021/silver/02.webp"
     ],
     "description": [
       {
@@ -340,9 +340,9 @@
     "colorsAvailable": ["spacegray", "silver"],
     "color": "silver",
     "images": [
-      "img/tablets/apple-ipad-pro-11-2021/silver/00.webp",
-      "img/tablets/apple-ipad-pro-11-2021/silver/01.webp",
-      "img/tablets/apple-ipad-pro-11-2021/silver/02.webp"
+      "../src/assets/images/tablets/apple-ipad-pro-11-2021/silver/00.webp",
+      "../src/assets/images/tablets/apple-ipad-pro-11-2021/silver/01.webp",
+      "../src/assets/images/tablets/apple-ipad-pro-11-2021/silver/02.webp"
     ],
     "description": [
       {
@@ -387,9 +387,9 @@
     "colorsAvailable": ["spacegray", "silver"],
     "color": "silver",
     "images": [
-      "img/tablets/apple-ipad-pro-11-2021/silver/00.webp",
-      "img/tablets/apple-ipad-pro-11-2021/silver/01.webp",
-      "img/tablets/apple-ipad-pro-11-2021/silver/02.webp"
+      "../src/assets/images/tablets/apple-ipad-pro-11-2021/silver/00.webp",
+      "../src/assets/images/tablets/apple-ipad-pro-11-2021/silver/01.webp",
+      "../src/assets/images/tablets/apple-ipad-pro-11-2021/silver/02.webp"
     ],
     "description": [
       {
@@ -434,9 +434,9 @@
     "colorsAvailable": ["spacegray", "silver"],
     "color": "silver",
     "images": [
-      "img/tablets/apple-ipad-pro-11-2021/silver/00.webp",
-      "img/tablets/apple-ipad-pro-11-2021/silver/01.webp",
-      "img/tablets/apple-ipad-pro-11-2021/silver/02.webp"
+      "../src/assets/images/tablets/apple-ipad-pro-11-2021/silver/00.webp",
+      "../src/assets/images/tablets/apple-ipad-pro-11-2021/silver/01.webp",
+      "../src/assets/images/tablets/apple-ipad-pro-11-2021/silver/02.webp"
     ],
     "description": [
       {
@@ -470,7 +470,7 @@
     "cell": ["Not applicable"]
   },
   {
-    "id": "apple-ipad-air-4th-gen-256gb-rose-gold",
+    "id": "apple-ipad-air-4th-gen-256gb-rosegold",
     "category": "tablets",
     "namespaceId": "apple-ipad-air-4th-gen",
     "name": "Apple iPad Air (4th Gen) 256GB Rose Gold",
@@ -478,13 +478,13 @@
     "capacity": "256GB",
     "priceRegular": 749,
     "priceDiscount": 699,
-    "colorsAvailable": ["rose gold", "silver", "green", "sky blue"],
-    "color": "rose gold",
+    "colorsAvailable": ["rosegold", "silver", "green", "skyblue"],
+    "color": "rosegold",
     "images": [
-      "img/tablets/apple-ipad-air-4th-gen/rose-gold/00.webp",
-      "img/tablets/apple-ipad-air-4th-gen/rose-gold/01.webp",
-      "img/tablets/apple-ipad-air-4th-gen/rose-gold/02.webp",
-      "img/tablets/apple-ipad-air-4th-gen/rose-gold/03.webp"
+      "../src/assets/images/tablets/apple-ipad-air-4th-gen/rose-gold/00.webp",
+      "../src/assets/images/tablets/apple-ipad-air-4th-gen/rose-gold/01.webp",
+      "../src/assets/images/tablets/apple-ipad-air-4th-gen/rose-gold/02.webp",
+      "../src/assets/images/tablets/apple-ipad-air-4th-gen/rose-gold/03.webp"
     ],
     "description": [
       {
@@ -518,7 +518,7 @@
     "cell": ["Not applicable"]
   },
   {
-    "id": "apple-ipad-air-4th-gen-64gb-rose-gold",
+    "id": "apple-ipad-air-4th-gen-64gb-rosegold",
     "category": "tablets",
     "namespaceId": "apple-ipad-air-4th-gen",
     "name": "Apple iPad Air (4th Gen) 64GB Rose Gold",
@@ -526,13 +526,13 @@
     "capacity": "64GB",
     "priceRegular": 599,
     "priceDiscount": 549,
-    "colorsAvailable": ["rose gold", "silver", "green", "sky blue"],
-    "color": "rose gold",
+    "colorsAvailable": ["rosegold", "silver", "green", "skyblue"],
+    "color": "rosegold",
     "images": [
-      "img/tablets/apple-ipad-air-4th-gen/rose-gold/00.webp",
-      "img/tablets/apple-ipad-air-4th-gen/rose-gold/01.webp",
-      "img/tablets/apple-ipad-air-4th-gen/rose-gold/02.webp",
-      "img/tablets/apple-ipad-air-4th-gen/rose-gold/03.webp"
+      "../src/assets/images/tablets/apple-ipad-air-4th-gen/rose-gold/00.webp",
+      "../src/assets/images/tablets/apple-ipad-air-4th-gen/rose-gold/01.webp",
+      "../src/assets/images/tablets/apple-ipad-air-4th-gen/rose-gold/02.webp",
+      "../src/assets/images/tablets/apple-ipad-air-4th-gen/rose-gold/03.webp"
     ],
     "description": [
       {
@@ -574,13 +574,13 @@
     "capacity": "64GB",
     "priceRegular": 599,
     "priceDiscount": 549,
-    "colorsAvailable": ["rose gold", "silver", "green", "sky blue"],
+    "colorsAvailable": ["rosegold", "silver", "green", "skyblue"],
     "color": "silver",
     "images": [
-      "img/tablets/apple-ipad-air-4th-gen/silver/00.webp",
-      "img/tablets/apple-ipad-air-4th-gen/silver/01.webp",
-      "img/tablets/apple-ipad-air-4th-gen/silver/02.webp",
-      "img/tablets/apple-ipad-air-4th-gen/silver/03.webp"
+      "../src/assets/images/tablets/apple-ipad-air-4th-gen/silver/00.webp",
+      "../src/assets/images/tablets/apple-ipad-air-4th-gen/silver/01.webp",
+      "../src/assets/images/tablets/apple-ipad-air-4th-gen/silver/02.webp",
+      "../src/assets/images/tablets/apple-ipad-air-4th-gen/silver/03.webp"
     ],
     "description": [
       {
@@ -622,13 +622,13 @@
     "capacity": "256GB",
     "priceRegular": 749,
     "priceDiscount": 699,
-    "colorsAvailable": ["rose gold", "silver", "green", "sky blue"],
+    "colorsAvailable": ["rosegold", "silver", "green", "skyblue"],
     "color": "silver",
     "images": [
-      "img/tablets/apple-ipad-air-4th-gen/silver/00.webp",
-      "img/tablets/apple-ipad-air-4th-gen/silver/01.webp",
-      "img/tablets/apple-ipad-air-4th-gen/silver/02.webp",
-      "img/tablets/apple-ipad-air-4th-gen/silver/03.webp"
+      "../src/assets/images/tablets/apple-ipad-air-4th-gen/silver/00.webp",
+      "../src/assets/images/tablets/apple-ipad-air-4th-gen/silver/01.webp",
+      "../src/assets/images/tablets/apple-ipad-air-4th-gen/silver/02.webp",
+      "../src/assets/images/tablets/apple-ipad-air-4th-gen/silver/03.webp"
     ],
     "description": [
       {
@@ -670,13 +670,13 @@
     "capacity": "256GB",
     "priceRegular": 749,
     "priceDiscount": 699,
-    "colorsAvailable": ["rose gold", "silver", "green", "sky blue"],
+    "colorsAvailable": ["rosegold", "silver", "green", "skyblue"],
     "color": "green",
     "images": [
-      "img/tablets/apple-ipad-air-4th-gen/green/00.webp",
-      "img/tablets/apple-ipad-air-4th-gen/green/01.webp",
-      "img/tablets/apple-ipad-air-4th-gen/green/02.webp",
-      "img/tablets/apple-ipad-air-4th-gen/green/03.webp"
+      "../src/assets/images/tablets/apple-ipad-air-4th-gen/green/00.webp",
+      "../src/assets/images/tablets/apple-ipad-air-4th-gen/green/01.webp",
+      "../src/assets/images/tablets/apple-ipad-air-4th-gen/green/02.webp",
+      "../src/assets/images/tablets/apple-ipad-air-4th-gen/green/03.webp"
     ],
     "description": [
       {
@@ -718,13 +718,13 @@
     "capacity": "64GB",
     "priceRegular": 599,
     "priceDiscount": 549,
-    "colorsAvailable": ["rose gold", "silver", "green", "sky blue"],
+    "colorsAvailable": ["rosegold", "silver", "green", "skyblue"],
     "color": "green",
     "images": [
-      "img/tablets/apple-ipad-air-4th-gen/green/00.webp",
-      "img/tablets/apple-ipad-air-4th-gen/green/01.webp",
-      "img/tablets/apple-ipad-air-4th-gen/green/02.webp",
-      "img/tablets/apple-ipad-air-4th-gen/green/03.webp"
+      "../src/assets/images/tablets/apple-ipad-air-4th-gen/green/00.webp",
+      "../src/assets/images/tablets/apple-ipad-air-4th-gen/green/01.webp",
+      "../src/assets/images/tablets/apple-ipad-air-4th-gen/green/02.webp",
+      "../src/assets/images/tablets/apple-ipad-air-4th-gen/green/03.webp"
     ],
     "description": [
       {
@@ -758,7 +758,7 @@
     "cell": ["Not applicable"]
   },
   {
-    "id": "apple-ipad-air-4th-gen-64gb-sky-blue",
+    "id": "apple-ipad-air-4th-gen-64gb-skyblue",
     "category": "tablets",
     "namespaceId": "apple-ipad-air-4th-gen",
     "name": "Apple iPad Air (4th Gen) 64GB Sky Blue",
@@ -766,13 +766,13 @@
     "capacity": "64GB",
     "priceRegular": 599,
     "priceDiscount": 549,
-    "colorsAvailable": ["rose gold", "silver", "green", "sky blue"],
-    "color": "sky blue",
+    "colorsAvailable": ["rosegold", "silver", "green", "skyblue"],
+    "color": "skyblue",
     "images": [
-      "img/tablets/apple-ipad-air-4th-gen/sky-blue/00.webp",
-      "img/tablets/apple-ipad-air-4th-gen/sky-blue/01.webp",
-      "img/tablets/apple-ipad-air-4th-gen/sky-blue/02.webp",
-      "img/tablets/apple-ipad-air-4th-gen/sky-blue/03.webp"
+      "../src/assets/images/tablets/apple-ipad-air-4th-gen/sky-blue/00.webp",
+      "../src/assets/images/tablets/apple-ipad-air-4th-gen/sky-blue/01.webp",
+      "../src/assets/images/tablets/apple-ipad-air-4th-gen/sky-blue/02.webp",
+      "../src/assets/images/tablets/apple-ipad-air-4th-gen/sky-blue/03.webp"
     ],
     "description": [
       {
@@ -806,7 +806,7 @@
     "cell": ["Not applicable"]
   },
   {
-    "id": "apple-ipad-air-4th-gen-256gb-sky-blue",
+    "id": "apple-ipad-air-4th-gen-256gb-skyblue",
     "category": "tablets",
     "namespaceId": "apple-ipad-air-4th-gen",
     "name": "Apple iPad Air (4th Gen) 256GB Sky Blue",
@@ -814,13 +814,13 @@
     "capacity": "256GB",
     "priceRegular": 749,
     "priceDiscount": 699,
-    "colorsAvailable": ["rose gold", "silver", "green", "sky blue"],
-    "color": "sky blue",
+    "colorsAvailable": ["rosegold", "silver", "green", "skyblue"],
+    "color": "skyblue",
     "images": [
-      "img/tablets/apple-ipad-air-4th-gen/sky-blue/00.webp",
-      "img/tablets/apple-ipad-air-4th-gen/sky-blue/01.webp",
-      "img/tablets/apple-ipad-air-4th-gen/sky-blue/02.webp",
-      "img/tablets/apple-ipad-air-4th-gen/sky-blue/03.webp"
+      "../src/assets/images/tablets/apple-ipad-air-4th-gen/sky-blue/00.webp",
+      "../src/assets/images/tablets/apple-ipad-air-4th-gen/sky-blue/01.webp",
+      "../src/assets/images/tablets/apple-ipad-air-4th-gen/sky-blue/02.webp",
+      "../src/assets/images/tablets/apple-ipad-air-4th-gen/sky-blue/03.webp"
     ],
     "description": [
       {
@@ -865,9 +865,9 @@
     "colorsAvailable": ["spacegray", "starlight", "pink"],
     "color": "spacegray",
     "images": [
-      "img/tablets/apple-ipad-mini-6th-gen/spacegray/00.webp",
-      "img/tablets/apple-ipad-mini-6th-gen/spacegray/01.webp",
-      "img/tablets/apple-ipad-mini-6th-gen/spacegray/02.webp"
+      "../src/assets/images/tablets/apple-ipad-mini-6th-gen/spacegray/00.webp",
+      "../src/assets/images/tablets/apple-ipad-mini-6th-gen/spacegray/01.webp",
+      "../src/assets/images/tablets/apple-ipad-mini-6th-gen/spacegray/02.webp"
     ],
     "description": [
       {
@@ -912,9 +912,9 @@
     "colorsAvailable": ["spacegray", "starlight", "pink"],
     "color": "spacegray",
     "images": [
-      "img/tablets/apple-ipad-mini-6th-gen/spacegray/00.webp",
-      "img/tablets/apple-ipad-mini-6th-gen/spacegray/01.webp",
-      "img/tablets/apple-ipad-mini-6th-gen/spacegray/02.webp"
+      "../src/assets/images/tablets/apple-ipad-mini-6th-gen/spacegray/00.webp",
+      "../src/assets/images/tablets/apple-ipad-mini-6th-gen/spacegray/01.webp",
+      "../src/assets/images/tablets/apple-ipad-mini-6th-gen/spacegray/02.webp"
     ],
     "description": [
       {
@@ -959,9 +959,9 @@
     "colorsAvailable": ["spacegray", "starlight", "pink"],
     "color": "starlight",
     "images": [
-      "img/tablets/apple-ipad-mini-6th-gen/starlight/00.webp",
-      "img/tablets/apple-ipad-mini-6th-gen/starlight/01.webp",
-      "img/tablets/apple-ipad-mini-6th-gen/starlight/02.webp"
+      "../src/assets/images/tablets/apple-ipad-mini-6th-gen/starlight/00.webp",
+      "../src/assets/images/tablets/apple-ipad-mini-6th-gen/starlight/01.webp",
+      "../src/assets/images/tablets/apple-ipad-mini-6th-gen/starlight/02.webp"
     ],
     "description": [
       {
@@ -1006,9 +1006,9 @@
     "colorsAvailable": ["spacegray", "starlight", "pink"],
     "color": "starlight",
     "images": [
-      "img/tablets/apple-ipad-mini-6th-gen/starlight/00.webp",
-      "img/tablets/apple-ipad-mini-6th-gen/starlight/01.webp",
-      "img/tablets/apple-ipad-mini-6th-gen/starlight/02.webp"
+      "../src/assets/images/tablets/apple-ipad-mini-6th-gen/starlight/00.webp",
+      "../src/assets/images/tablets/apple-ipad-mini-6th-gen/starlight/01.webp",
+      "../src/assets/images/tablets/apple-ipad-mini-6th-gen/starlight/02.webp"
     ],
     "description": [
       {
@@ -1053,9 +1053,9 @@
     "colorsAvailable": ["spacegray", "starlight", "pink"],
     "color": "pink",
     "images": [
-      "img/tablets/apple-ipad-mini-6th-gen/pink/00.webp",
-      "img/tablets/apple-ipad-mini-6th-gen/pink/01.webp",
-      "img/tablets/apple-ipad-mini-6th-gen/pink/02.webp"
+      "../src/assets/images/tablets/apple-ipad-mini-6th-gen/pink/00.webp",
+      "../src/assets/images/tablets/apple-ipad-mini-6th-gen/pink/01.webp",
+      "../src/assets/images/tablets/apple-ipad-mini-6th-gen/pink/02.webp"
     ],
     "description": [
       {
@@ -1100,9 +1100,9 @@
     "colorsAvailable": ["spacegray", "starlight", "pink"],
     "color": "pink",
     "images": [
-      "img/tablets/apple-ipad-mini-6th-gen/pink/00.webp",
-      "img/tablets/apple-ipad-mini-6th-gen/pink/01.webp",
-      "img/tablets/apple-ipad-mini-6th-gen/pink/02.webp"
+      "../src/assets/images/tablets/apple-ipad-mini-6th-gen/pink/00.webp",
+      "../src/assets/images/tablets/apple-ipad-mini-6th-gen/pink/01.webp",
+      "../src/assets/images/tablets/apple-ipad-mini-6th-gen/pink/02.webp"
     ],
     "description": [
       {
@@ -1147,10 +1147,10 @@
     "colorsAvailable": ["gold", "silver", "spacegray"],
     "color": "gold",
     "images": [
-      "img/tablets/apple-ipad-10-2-2020/gold/00.webp",
-      "img/tablets/apple-ipad-10-2-2020/gold/01.webp",
-      "img/tablets/apple-ipad-10-2-2020/gold/02.webp",
-      "img/tablets/apple-ipad-10-2-2020/gold/03.webp"
+      "../src/assets/images/tablets/apple-ipad-10-2-2020/gold/00.webp",
+      "../src/assets/images/tablets/apple-ipad-10-2-2020/gold/01.webp",
+      "../src/assets/images/tablets/apple-ipad-10-2-2020/gold/02.webp",
+      "../src/assets/images/tablets/apple-ipad-10-2-2020/gold/03.webp"
     ],
     "description": [
       {
@@ -1195,10 +1195,10 @@
     "colorsAvailable": ["gold", "silver", "spacegray"],
     "color": "gold",
     "images": [
-      "img/tablets/apple-ipad-10-2-2020/gold/00.webp",
-      "img/tablets/apple-ipad-10-2-2020/gold/01.webp",
-      "img/tablets/apple-ipad-10-2-2020/gold/02.webp",
-      "img/tablets/apple-ipad-10-2-2020/gold/03.webp"
+      "../src/assets/images/tablets/apple-ipad-10-2-2020/gold/00.webp",
+      "../src/assets/images/tablets/apple-ipad-10-2-2020/gold/01.webp",
+      "../src/assets/images/tablets/apple-ipad-10-2-2020/gold/02.webp",
+      "../src/assets/images/tablets/apple-ipad-10-2-2020/gold/03.webp"
     ],
     "description": [
       {
@@ -1243,10 +1243,10 @@
     "colorsAvailable": ["gold", "silver", "spacegray"],
     "color": "silver",
     "images": [
-      "img/tablets/apple-ipad-10-2-2020/silver/00.webp",
-      "img/tablets/apple-ipad-10-2-2020/silver/01.webp",
-      "img/tablets/apple-ipad-10-2-2020/silver/02.webp",
-      "img/tablets/apple-ipad-10-2-2020/silver/03.webp"
+      "../src/assets/images/tablets/apple-ipad-10-2-2020/silver/00.webp",
+      "../src/assets/images/tablets/apple-ipad-10-2-2020/silver/01.webp",
+      "../src/assets/images/tablets/apple-ipad-10-2-2020/silver/02.webp",
+      "../src/assets/images/tablets/apple-ipad-10-2-2020/silver/03.webp"
     ],
     "description": [
       {
@@ -1291,10 +1291,10 @@
     "colorsAvailable": ["gold", "silver", "spacegray"],
     "color": "silver",
     "images": [
-      "img/tablets/apple-ipad-10-2-2020/silver/00.webp",
-      "img/tablets/apple-ipad-10-2-2020/silver/01.webp",
-      "img/tablets/apple-ipad-10-2-2020/silver/02.webp",
-      "img/tablets/apple-ipad-10-2-2020/silver/03.webp"
+      "../src/assets/images/tablets/apple-ipad-10-2-2020/silver/00.webp",
+      "../src/assets/images/tablets/apple-ipad-10-2-2020/silver/01.webp",
+      "../src/assets/images/tablets/apple-ipad-10-2-2020/silver/02.webp",
+      "../src/assets/images/tablets/apple-ipad-10-2-2020/silver/03.webp"
     ],
     "description": [
       {
@@ -1339,10 +1339,10 @@
     "colorsAvailable": ["gold", "silver", "spacegray"],
     "color": "spacegray",
     "images": [
-      "img/tablets/apple-ipad-10-2-2020/spacegray/00.webp",
-      "img/tablets/apple-ipad-10-2-2020/spacegray/01.webp",
-      "img/tablets/apple-ipad-10-2-2020/spacegray/02.webp",
-      "img/tablets/apple-ipad-10-2-2020/spacegray/03.webp"
+      "../src/assets/images/tablets/apple-ipad-10-2-2020/spacegray/00.webp",
+      "../src/assets/images/tablets/apple-ipad-10-2-2020/spacegray/01.webp",
+      "../src/assets/images/tablets/apple-ipad-10-2-2020/spacegray/02.webp",
+      "../src/assets/images/tablets/apple-ipad-10-2-2020/spacegray/03.webp"
     ],
     "description": [
       {
@@ -1387,10 +1387,10 @@
     "colorsAvailable": ["gold", "silver", "spacegray"],
     "color": "spacegray",
     "images": [
-      "img/tablets/apple-ipad-10-2-2020/spacegray/00.webp",
-      "img/tablets/apple-ipad-10-2-2020/spacegray/01.webp",
-      "img/tablets/apple-ipad-10-2-2020/spacegray/02.webp",
-      "img/tablets/apple-ipad-10-2-2020/spacegray/03.webp"
+      "../src/assets/images/tablets/apple-ipad-10-2-2020/spacegray/00.webp",
+      "../src/assets/images/tablets/apple-ipad-10-2-2020/spacegray/01.webp",
+      "../src/assets/images/tablets/apple-ipad-10-2-2020/spacegray/02.webp",
+      "../src/assets/images/tablets/apple-ipad-10-2-2020/spacegray/03.webp"
     ],
     "description": [
       {
@@ -1435,8 +1435,8 @@
     "colorsAvailable": ["silver", "spacegray", "gold"],
     "color": "silver",
     "images": [
-      "img/tablets/apple-ipad-mini-5th-gen/silver/00.webp",
-      "img/tablets/apple-ipad-mini-5th-gen/silver/01.webp"
+      "../src/assets/images/tablets/apple-ipad-mini-5th-gen/silver/00.webp",
+      "../src/assets/images/tablets/apple-ipad-mini-5th-gen/silver/01.webp"
     ],
     "description": [
       {
@@ -1481,8 +1481,8 @@
     "colorsAvailable": ["silver", "spacegray", "gold"],
     "color": "silver",
     "images": [
-      "img/tablets/apple-ipad-mini-5th-gen/silver/00.webp",
-      "img/tablets/apple-ipad-mini-5th-gen/silver/01.webp"
+      "../src/assets/images/tablets/apple-ipad-mini-5th-gen/silver/00.webp",
+      "../src/assets/images/tablets/apple-ipad-mini-5th-gen/silver/01.webp"
     ],
     "description": [
       {
@@ -1527,8 +1527,8 @@
     "colorsAvailable": ["silver", "spacegray", "gold"],
     "color": "spacegray",
     "images": [
-      "img/tablets/apple-ipad-mini-5th-gen/spacegray/00.webp",
-      "img/tablets/apple-ipad-mini-5th-gen/spacegray/01.webp"
+      "../src/assets/images/tablets/apple-ipad-mini-5th-gen/spacegray/00.webp",
+      "../src/assets/images/tablets/apple-ipad-mini-5th-gen/spacegray/01.webp"
     ],
     "description": [
       {
@@ -1573,8 +1573,8 @@
     "colorsAvailable": ["silver", "spacegray", "gold"],
     "color": "spacegray",
     "images": [
-      "img/tablets/apple-ipad-mini-5th-gen/spacegray/00.webp",
-      "img/tablets/apple-ipad-mini-5th-gen/spacegray/01.webp"
+      "../src/assets/images/tablets/apple-ipad-mini-5th-gen/spacegray/00.webp",
+      "../src/assets/images/tablets/apple-ipad-mini-5th-gen/spacegray/01.webp"
     ],
     "description": [
       {
@@ -1619,8 +1619,8 @@
     "colorsAvailable": ["silver", "spacegray", "gold"],
     "color": "gold",
     "images": [
-      "img/tablets/apple-ipad-mini-5th-gen/gold/00.webp",
-      "img/tablets/apple-ipad-mini-5th-gen/gold/01.webp"
+      "../src/assets/images/tablets/apple-ipad-mini-5th-gen/gold/00.webp",
+      "../src/assets/images/tablets/apple-ipad-mini-5th-gen/gold/01.webp"
     ],
     "description": [
       {
@@ -1665,8 +1665,8 @@
     "colorsAvailable": ["silver", "spacegray", "gold"],
     "color": "gold",
     "images": [
-      "img/tablets/apple-ipad-mini-5th-gen/gold/00.webp",
-      "img/tablets/apple-ipad-mini-5th-gen/gold/01.webp"
+      "../src/assets/images/tablets/apple-ipad-mini-5th-gen/gold/00.webp",
+      "../src/assets/images/tablets/apple-ipad-mini-5th-gen/gold/01.webp"
     ],
     "description": [
       {
