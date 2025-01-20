@@ -133,6 +133,7 @@ const en = {
     },
     emptyCart: 'Your cart is empty',
     checkout: 'Checkout',
+    movingText: 'Thank you for choosing us!',
   },
 
   modal: {

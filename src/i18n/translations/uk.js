@@ -144,6 +144,7 @@ const uk = {
     },
     emptyCart: 'Ваш кошик порожній',
     checkout: 'Оплата',
+    movingText: 'Дякуємо, що обрали нас!',
   },
 
   modal: {

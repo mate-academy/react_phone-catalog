@@ -151,6 +151,8 @@
           box-shadow: var(--btn-hover-shadow);
         }
       }
+
+
     }
 
     .emptyContent {
@@ -184,5 +186,38 @@
         display: block;
       }
     }
+  }
+}
+
+.containerLine {
+  margin-top: 20px;
+  position: relative;
+  width: 100%;
+  height: 50px;
+  overflow: hidden;
+}
+
+.movingText {
+  position: absolute;
+  top: 50%;
+  left: 100%;
+  transform: translateY(-50%);
+  white-space: nowrap;
+  color: var(--header-text-color-active);
+  font-family: Mont, sans-serif;
+  font-size: 21px;
+  font-weight: 800;
+  padding: 8px;
+  border: 1px solid var(--checkout-border);
+  border-radius: 10px;
+  animation: scroll 15s linear infinite;
+}
+
+@keyframes scroll {
+  0% {
+    left: 100%;
+  }
+  100% {
+    left: -100%;
   }
 }

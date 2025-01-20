@@ -135,6 +135,10 @@ export const CartPage = () => {
         onClose={handleCancel}
         onConfirm={handleConfirm}
       />
+
+      <div className={styles.containerLine}>
+        <div className={styles.movingText}>{t('cartPage.movingText')} ❤️</div>
+      </div>
     </div>
   );
 };
