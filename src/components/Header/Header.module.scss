@@ -74,14 +74,17 @@
       flex-direction: row;
       gap: 16px;
       justify-content: space-between;
-      height: 48px;
+      align-items: center;
+      height: 100%;
       width: 100%;
     }
 
     &_list {
       display: flex;
+      justify-content: center;
       align-items: center;
       gap: 32px;
+      height: 100%;
 
       @include on-desktop {
         gap: 64px;
@@ -90,6 +93,10 @@
 
     &_item {
       gap: 32px;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
 
       &_link {
         font-family: fonts.$mont-bold;
@@ -99,17 +106,29 @@
         color: var(--header-text-color);
         text-transform: uppercase;
         transition: color 0.3s ease;
+        display: flex;
+        height: 100%;
+        text-align: center;
+        align-items: center;
+        justify-content: center;
+
 
         &_active {
+          height: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          box-sizing: border-box;
           color: var(--header-text-color-active);
           border-bottom: 2px solid var(--header-text-color-active);
 
           @include on-tablet {
-            padding-bottom: 11px;
+            gap: 48px;
+            height: 100%;
           }
 
           @include on-desktop {
-            padding-bottom: 20px;
+            height: 100%;
           }
         }
 
@@ -351,7 +370,7 @@
             transition: transform 0.3s ease;
 
             &:hover {
-              transform: scale(1.1); 
+              transform: scale(1.1);
             }
           }
         }

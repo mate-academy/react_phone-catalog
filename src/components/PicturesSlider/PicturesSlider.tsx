@@ -58,8 +58,9 @@ const PicturesSlider = () => {
                 window.innerWidth >= 1200
                   ? '110%'
                   : window.innerWidth >= 640
-                    ? '100vw'
-                    : '100vw',
+                    ? '100%'
+                    : '100%',
+              objectFit: 'cover',
             }}
           />
         </SwiperSlide>

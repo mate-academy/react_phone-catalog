@@ -15,7 +15,6 @@ export const Search = () => {
   const { theme } = useAppSelector(state => state.theme);
   const location = useLocation();
   const firstRender = useRef(true);
-  const titleField = useRef<HTMLInputElement>(null);
   const { t } = useTranslation();
   const [searchParams, setSearchParams] = useSearchParams();
   const [query, setQuery] = useState<string>(searchParams.get('search') || '');
@@ -78,12 +77,6 @@ export const Search = () => {
   };
 
   useEffect(() => {
-    if (titleField.current) {
-      titleField.current.focus();
-    }
-  }, [location.pathname]);
-
-  useEffect(() => {
     if (firstRender.current) {
       firstRender.current = false;
 
@@ -111,7 +104,6 @@ export const Search = () => {
             id="search"
             type="text"
             autoComplete="off"
-            ref={titleField}
             className={styles.search__input}
             placeholder={categoryTrans(categorySearch)}
             value={query}

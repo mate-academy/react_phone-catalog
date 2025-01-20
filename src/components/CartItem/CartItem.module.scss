@@ -1,7 +1,7 @@
 @import '../../styles/main';
 
 .cartItem {
-  padding-left: 16px;
+  padding-inline: 16px;
   width: 100%;
   height: 160px;
   background-color: var(--card-bg-color);
@@ -25,14 +25,20 @@
     justify-content: space-between;
     align-items: center;
     gap: 24px;
-    width: 100%;
-    padding-left: 24px;
+    padding-inline: 24px;
   }
+
+  @include on-desktop {
+    width: 752px;
+  }
+
+
 
   .imgTitleBlock {
     display: flex;
     flex-direction: row;
     align-items: center;
+    justify-content: space-between;
     gap: 16px;
 
     @include on-tablet {
@@ -76,14 +82,13 @@
   .quantityPriceBlock {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
-    width: 256px;
-    margin-right: 16px;
     align-items: center;
-    gap: 24px;
+    justify-content: space-between;
+    width: 100%;
 
     @include on-tablet {
-      margin-right: 24px;
+      gap: 24px;
+      width: auto;
     }
 
     .quantityBlock {
@@ -158,18 +163,17 @@
     }
 
     .priceBlock {
-      width: 80px;
       cursor: default;
+      width: 80px;
+
 
       .price {
         color: var(--header-text-color-active);
         font-family: Mont, sans-serif;
         font-size: 22px;
         font-weight: 800;
-
-        @include on-tablet {
-          text-align: right;
-        }
+        width: 100%;
+        text-align: right;
       }
     }
   }

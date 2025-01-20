@@ -113,7 +113,7 @@ export const CartItem: React.FC<Props> = ({ product }) => {
               event.preventDefault();
             }}
           >
-            {`$${totalPrice.toFixed(2)}`}
+            {`$${totalPrice}`}
           </p>
         </div>
       </div>

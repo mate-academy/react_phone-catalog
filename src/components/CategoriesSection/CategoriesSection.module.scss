@@ -1,8 +1,8 @@
 @import '../../styles/main';
 
 .categories {
-  @include padding-inline-responsive;
-  
+  @include padding-content-inline-responsive;
+
   .container {
     .content {
       .mainTitle {

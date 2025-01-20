@@ -4,7 +4,7 @@
   position: relative;
 
   &__title {
-    @include padding-inline-responsive;
+    @include padding-content-inline-responsive;
 
     &__text {
       font-family: Mont, sans-serif;
@@ -40,7 +40,7 @@
       padding-inline: 0;
 
       @include on-tablet {
-        @include padding-inline-responsive;
+        @include padding-content-inline-responsive;
       }
     }
 

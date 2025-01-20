@@ -98,17 +98,17 @@ export const Header = () => {
                   {t('header.navigation.home')}
                 </NavLink>
               </li>
-              <li className={styles.header__nav_list_item}>
+              <li className={styles.header__nav_item}>
                 <NavLink to="/phones" className={getActiveLinkClass}>
                   {t('header.navigation.phones')}
                 </NavLink>
               </li>
-              <li className={styles.header__nav_list_item}>
+              <li className={styles.header__nav_item}>
                 <NavLink to="/tablets" className={getActiveLinkClass}>
                   {t('header.navigation.tablets')}
                 </NavLink>
               </li>
-              <li className={styles.header__nav_list_item}>
+              <li className={styles.header__nav_item}>
                 <NavLink to="/accessories" className={getActiveLinkClass}>
                   {t('header.navigation.accessories')}
                 </NavLink>

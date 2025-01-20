@@ -7,7 +7,7 @@ const en = {
       tablets: 'TABLETS',
       accessories: 'ACCESSORIES',
     },
-    languageSwitcher: 'UK',
+    languageSwitcher: 'УКР',
     themeSwitcher: {
       light: 'dark',
       dark: 'light',
