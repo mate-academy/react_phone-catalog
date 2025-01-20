@@ -1,7 +1,7 @@
 @import '/src/styles/main';
 
 .cart-item{
-  width: 288px;
+  width: 100%;
   height: 160px;
   display: flex;
   flex-flow: row wrap;
@@ -12,13 +12,10 @@
   gap: 16px;
 
   @include onTablet{
-    width: 288px;
     height: 160px;
   }
 
-  @include onTablet{
-    width: 752px;
-  }
+
 }
 
 .product-image{

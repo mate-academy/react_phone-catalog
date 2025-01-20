@@ -16,7 +16,7 @@ export const Catalog: React.FC = ({}) => {
 
   const [totalItems, setTotalItems] = useState<number>(0);
   const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPerPage, setItemsPerPage] = useState<number | 'All'>(16);
+  const [itemsPerPage, setItemsPerPage] = useState<number | 'All'>(8);
 
   const lastVisibleItem =
     itemsPerPage === 'All' ? totalItems : currentPage * itemsPerPage;
