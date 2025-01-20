@@ -1,0 +1,48 @@
+@import "../styles/utils/vars";
+@import "../styles/utils/mixins";
+
+* {
+  background-color: $main-color;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Mont, sans-serif;
+  scroll-behavior: smooth;
+}
+
+.button {
+  width: 32px;
+  height: 32px;
+  background-color: $favorites-default;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  border: 1px solid transparent;
+  transition: border-color 0.3s ease-in-out;
+
+  &:hover{
+    background-color: $button-hover
+  }
+}
+
+
+.badge{
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  left: 10px;
+  border-radius: 50%;
+  background-color: rgba(235, 87, 87, 1);
+  border: 1px solid $main-color;
+
+  top: -5px;
+  font-size: 9px;
+  font-weight: 700;
+  color: $white;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s;
+}

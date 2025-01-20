@@ -1,0 +1,30 @@
+@import '/src/styles/main';
+
+.catalog__products{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax($card-width, 1fr));
+  grid-template-rows: repeat(4, minmax($card-height, 0));
+  gap: 80px 16px;
+  justify-content: center;
+  grid-column: 1 / -1;
+
+  @include onTablet{
+    grid-template-columns: repeat(auto-fit, minmax($tablet-card-width, 1fr));
+    grid-template-rows: repeat(2, minmax($tablet-card-height, 0));
+  }
+}
+
+.catalog__title{
+  color: $white;
+  font-size: 48px;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+}
+
+.catalog__subtitle{
+  font-size: 14px;
+  font-weight: 600;
+  color: $grey-secondary;
+  padding-bottom: 40px;
+
+}
