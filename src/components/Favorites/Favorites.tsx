@@ -1,13 +1,17 @@
-import { useAppSelector } from '../../app/hooks';
+import { useAppSelector, useComponentLoading } from '../../app/hooks';
 import { ProductCard } from '../cards/ProductCard';
 import { PageTitle } from '../titles/PageTitle';
+import { Loader } from '../ui/Loader';
 import { ShownRoute, ShownRouteOrigin } from '../ui/ShownRoute';
 import cl from './Favorites.module.scss';
 
 export const Favorites = () => {
+  const isLoading = useComponentLoading(300);
   const { favoritesList } = useAppSelector(st => st.products);
 
-  return (
+  return isLoading ? (
+    <Loader />
+  ) : (
     <div className="container">
       <ShownRoute origin={ShownRouteOrigin.ONFAV} />
 

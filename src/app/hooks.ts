@@ -46,15 +46,14 @@ export const useComponentLoading = (delay: number) => {
 };
 
 // for storing in locale storage simple states that will be saved between browser sessions
-export const useLocalStorage = (storageKey: string, fallbackState: any) => {
-  const [value, setValue] = useState(
-    // @ts-expect-error - if left side of the operation is null than u activate fall
-    JSON.parse(localStorage.getItem(storageKey)) ?? fallbackState,
+export const useLocalStorage = <T>(storageKey: string, fallbackState: T) => {
+  const [value, setValue] = useState<T>(
+    JSON.parse(localStorage.getItem(storageKey) as string) ?? fallbackState,
   );
 
   useEffect(() => {
     localStorage.setItem(storageKey, JSON.stringify(value));
   }, [value, storageKey]);
 
-  return [value, setValue];
+  return [value, setValue] as [T, React.Dispatch<React.SetStateAction<T>>];
 };

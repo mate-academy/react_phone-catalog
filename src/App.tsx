@@ -68,8 +68,6 @@ export const App = () => {
   }, [cartList]);
   //#endregion
 
-  console.log(cartList);
-
   return (
     <div className="App">
       <Header origin={HeaderOrigin.ONPAGE} />

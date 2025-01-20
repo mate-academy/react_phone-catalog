@@ -31,10 +31,12 @@ export const ProductCard: React.FC<Props> = ({ product, className }) => {
   }
 
   function handleAddAndRemoveFromCart() {
+    const productWithQuantity = { ...product, quantity: 1 };
+
     if (isProductAddedToCart) {
       dispatch(setCartList(cartList.filter(car => car.id !== product.id)));
     } else {
-      dispatch(setCartList([...cartList, product]));
+      dispatch(setCartList([...cartList, productWithQuantity]));
     }
   }
 

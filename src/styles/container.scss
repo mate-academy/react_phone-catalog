@@ -1,4 +1,6 @@
 .container {
+  // for conten width restriction
+  // additional styles for animations
   transform: translateX(0);
   transition: transform $animDuration;
   @include content-padding-inline;
@@ -24,18 +26,22 @@
   }
 }
 
+.hide-container {
+  transform: translateX(-100%);
+}
+
 .outlet-container {
+  // vertical restrictions
   padding-top: 24px;
   padding-bottom: 64px;
+  min-height: calc(100vh - 420px);
   @include on-tablet {
     padding-top: 32px;
+    min-height: calc(100vh - 244px);
   }
   @include on-desktop {
     padding-top: 56px;
     padding-bottom: 80px;
+    min-height: calc(100vh - 300px);
   }
-}
-
-.hide-container {
-  transform: translateX(-100%);
 }

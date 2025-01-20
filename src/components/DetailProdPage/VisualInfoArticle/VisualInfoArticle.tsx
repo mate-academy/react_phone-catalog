@@ -97,6 +97,8 @@ export const VisualInfoArticle: React.FC<Props> = ({ product, className }) => {
   }
 
   function handleAddAndRemoveFromCart() {
+    const productWithQuantity = { ...neededProduct, quantity: 1 };
+
     if (isProductAddedToCart) {
       dispatch(
         setCartList(
@@ -104,7 +106,7 @@ export const VisualInfoArticle: React.FC<Props> = ({ product, className }) => {
         ),
       );
     } else {
-      dispatch(setCartList([...cartList, neededProduct]));
+      dispatch(setCartList([...cartList, productWithQuantity]));
     }
   }
 
