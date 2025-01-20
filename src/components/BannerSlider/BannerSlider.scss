@@ -8,9 +8,22 @@
   flex-direction: column;
 
   &__container {
+    width: 100%;
+
     display: grid;
     grid-template-columns: 32px 1fr 32px;
     gap: 16px;
+
+    @include mixins.media-phone {
+      display: flex;
+      justify-content: center;
+    }
+  }
+
+  &__arrow {
+    @include mixins.media-phone {
+      display: none;
+    }
   }
 
   &__banner {
@@ -23,6 +36,8 @@
     bottom: 0;
     left: 0;
     right: 0;
+
+    width: 100%;
 
     user-select: none;
 

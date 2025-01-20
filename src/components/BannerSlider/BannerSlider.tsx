@@ -74,7 +74,10 @@ export const BannerSlider: React.FC<Props> = ({ banners }) => {
   return (
     <div className="banner-slider">
       <div className="banner-slider__container">
-        <div className="button--arrow" onClick={handleLeft}>
+        <div
+          className="button--arrow banner-slider__arrow"
+          onClick={handleLeft}
+        >
           <img src="icons/arrow_left.svg" alt="Arrow left" />
         </div>
 
@@ -123,7 +126,10 @@ export const BannerSlider: React.FC<Props> = ({ banners }) => {
           ))}
         </div>
 
-        <div className="button--arrow" onClick={handleRight}>
+        <div
+          className="button--arrow banner-slider__arrow"
+          onClick={handleRight}
+        >
           <img src="icons/arrow_right.svg" alt="Arrow right" />
         </div>
       </div>
