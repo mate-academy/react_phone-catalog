@@ -11,7 +11,7 @@ type Props = {
 export const Logo: React.FC<Props> = ({ footer = false }) => (
   <Link to="/" className={styles.logo}>
     <img
-      src="/images/logo.png"
+      src="./images/logo.png"
       alt="logo"
       className={classNames(styles.logo__image, {
         [styles['logo__image--footer']]: footer,

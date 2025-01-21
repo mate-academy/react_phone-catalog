@@ -15,8 +15,12 @@
   }
 
   &__left {
-    gap: 48px;
+    gap: 32px;
     display: flex;
+
+    @include on-desktop {
+      gap: 48px;
+    }
   }
 
   &__logo {

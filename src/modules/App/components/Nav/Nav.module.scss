@@ -3,6 +3,9 @@
 .nav {
   height: 100%;
   display: none;
+  color: var(--secondary-color);
+
+  @include uppercase;
 
   @include on-tablet {
     display: block;
@@ -22,8 +25,5 @@
 
   &__item {
     height: 100%;
-    color: var(--secondary-color);
-
-    @include uppercase;
   }
 }

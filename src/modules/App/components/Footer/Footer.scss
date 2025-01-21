@@ -3,6 +3,7 @@
 .footer {
   height: 96px;
   box-sizing: border-box;
+  color: var(--secondary-color);
   box-shadow: 0 -1px 0 0 var(--elements-color);
 
   @include content-padding-inline;
@@ -15,12 +16,7 @@
   &__links {
     gap: 64px;
     display: flex;
-  }
 
-  &__link {
     @include uppercase;
-
-    display: block;
-    color: var(--secondary-color);
   }
 }

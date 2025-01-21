@@ -9,17 +9,11 @@ export const Footer = () => {
       <Logo footer />
 
       <div className="footer__links">
-        <a href="#" className="footer__link">
-          Github
-        </a>
+        <a href="#">Github</a>
 
-        <a href="#" className="footer__link">
-          Contacts
-        </a>
+        <a href="#">Contacts</a>
 
-        <a href="#" className="footer__link">
-          Rights
-        </a>
+        <a href="#">Rights</a>
       </div>
 
       <BackToTop />
