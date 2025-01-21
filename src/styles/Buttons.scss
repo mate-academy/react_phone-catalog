@@ -42,7 +42,7 @@
   height: 40px;
   border: 1px solid var(--BorderColor);
   border-radius: 50%;
-  background-image: url('Icons/favourites.png');
+  background-image: url('/Icons/favourites.png');
   background-size: 16px;
   background-repeat: no-repeat;
   background-position: center;
@@ -53,6 +53,6 @@
   }
 
   &--active {
-    background-image: url('Icons/favourites_filled.png');
+    background-image: url('/Icons/favourites_filled.png');
   }
 }
