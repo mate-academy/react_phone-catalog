@@ -1,0 +1,57 @@
+@import '@styles/main';
+
+.pagination {
+  display: flex;
+  gap: 16px;
+  color: $primary-color;
+
+  &__tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  &__tab {
+    @include circle-btn;
+    @include body-text;
+
+    border-color: $elements-color;
+    color: inherit;
+    transition:
+      color $hover-duration,
+      background-color $hover-duration,
+      border-color $hover-duration;
+
+    &--active {
+      background-color: $primary-color;
+      color: $white-color;
+    }
+
+    &:hover {
+      border-color: $primary-color;
+    }
+  }
+
+  &__dot {
+    display: flex;
+    align-items: flex-end;
+  }
+
+  &--dark {
+    color: $white-color;
+
+    .pagination__tab {
+      border-color: transparent;
+      background-color: $bg-color;
+
+      &--active {
+        background-color: $accent-color;
+        color: $white-color;
+      }
+
+      &:hover {
+        background-color: $elements-color;
+      }
+    }
+  }
+}

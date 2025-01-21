@@ -1,0 +1,52 @@
+@import '@styles/main';
+
+.breadcrumbs {
+  height: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  &__item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }
+
+  &__link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    text-transform: capitalize;
+    color: $primary-color;
+    transition: color $hover-duration;
+
+    @include small-text;
+
+    &:hover {
+      color: $accent-color;
+    }
+
+    &--home {
+      transition: transform $hover-duration;
+
+      &:hover {
+        transform: scale(1.1);
+
+        path {
+          fill: $accent-color;
+        }
+      }
+    }
+
+    &--active {
+      color: $secondary-color;
+      pointer-events: none;
+    }
+  }
+
+  svg:not(:first-child) path {
+    fill: $icons-color;
+  }
+}

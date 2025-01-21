@@ -1,0 +1,22 @@
+@import '@styles/main';
+
+.counter {
+  width: 14px;
+  height: 14px;
+  color: $white-color;
+  font-family: Mont, sans-serif;
+  font-size: 9px;
+  font-weight: 700;
+  line-height: 11px;
+
+  background-color: $red-color;
+  border: 1px solid $page-caps-bg;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &--dark {
+    color: $white-color;
+  }
+}

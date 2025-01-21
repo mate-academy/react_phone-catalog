@@ -1,0 +1,30 @@
+@import '@styles/main';
+
+.hero {
+  &__top {
+    margin-block: 56px;
+
+    @include content-limitation;
+
+    @include on-tablet {
+      margin-block: 32px;
+    }
+
+    @include on-mobile {
+      margin-block: 24px;
+    }
+  }
+
+  &__title {
+    @extend %h1;
+  }
+
+  &__banner {
+    @include content-limitation;
+
+    @include on-mobile {
+      padding-inline: 0;
+      margin: 0;
+    }
+  }
+}
