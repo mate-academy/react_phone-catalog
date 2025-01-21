@@ -17,14 +17,14 @@ export const Favourites = () => {
         {loading ? (
           <Loader />
         ) : favourites.length > 0 ? (
-          favourites.map((fav, index) => (
-            <>
-              <p className="favourites__count">{`${favourites.length} item${favourites.length === 1 ? `` : `s`} `}</p>
-              <div className="favourites__box">
-                <ProductCard prod={fav} key={index} showDiscount={false} />
-              </div>
-            </>
-          ))
+          <>
+            <p className="favourites__count">{`${favourites.length} item${favourites.length === 1 ? `` : `s`} `}</p>
+            <div className="favourites__box">
+              {favourites.map((fav, index) => (
+                <ProductCard key={index} prod={fav} showDiscount={false} />
+              ))}
+            </div>
+          </>
         ) : (
           <>
             <p className="favourites__count">{`${favourites.length} item${favourites.length === 1 ? `` : `s`} `}</p>
