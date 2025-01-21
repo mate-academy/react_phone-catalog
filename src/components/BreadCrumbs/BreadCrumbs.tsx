@@ -8,17 +8,13 @@ export const BreadCrumbs: React.FC = () => {
   const arrow = (
     <img
       className={style.breadcrumbs__icons}
-      src="src\components\BreadCrumbs\assets\Arrow Right-inactive.png"
+      src="Icons/arrow_right.png"
       alt=""
     />
   );
 
   const homeIcon = (
-    <img
-      className={style.breadcrumbs__icons}
-      src="src\components\BreadCrumbs\assets\Home.png"
-      alt=""
-    />
+    <img className={style.breadcrumbs__icons} src="Icons/Home.png" alt="" />
   );
 
   return (

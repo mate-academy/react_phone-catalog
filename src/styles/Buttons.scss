@@ -42,17 +42,17 @@
   height: 40px;
   border: 1px solid var(--BorderColor);
   border-radius: 50%;
-  background-image: url('src/assets/FavouritesIcon.svg');
+  background-image: url('Icons/favourites.png');
   background-size: 16px;
   background-repeat: no-repeat;
   background-position: center;
   transition: border 0.3s;
 
   &:hover {
-    border: 1px solid var(--BorderColor_hover);
+    border: 1px solid var(--BorderColorHover);
   }
 
   &--active {
-    background-image: url('src/assets/FavouritesIcon--filled.svg');
+    background-image: url('Icons/favourites_filled.png');
   }
 }

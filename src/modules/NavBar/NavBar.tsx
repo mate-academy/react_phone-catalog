@@ -3,7 +3,6 @@ import style from './NavBar.module.scss';
 import { useState } from 'react';
 import { CartIcon } from './components/CartIcon/CartIcon';
 import { FavouriteIcon } from './components/FavouriteIcon/FavouriteIcon';
-import icon from './assets/Logo.png';
 
 export const NavBar = () => {
   const [burgerOpened, setBurgerOpened] = useState(false);
@@ -16,7 +15,11 @@ export const NavBar = () => {
     <>
       <header className={style.nav}>
         <Link to="/">
-          <img src={icon} alt="logo" className={style.nav__logo} />
+          <img
+            src="public/img/Logo.png"
+            alt="logo"
+            className={style.nav__logo}
+          />
         </Link>
         <nav className={style.nav__container}>
           <div className={style.nav__items}>

@@ -8,8 +8,6 @@ import { useEffect, useRef, useState } from 'react';
 import banner1 from './assets/banner-phones.png';
 import banner2 from './assets/big_banner.png';
 import mobileBanner1 from './assets/little_banner.png';
-import arrowLeft from '../../../../assets/Chevron(Arrow_Left).png';
-import arrowRight from '../../../../assets/Chevron(Arrow_Right).png';
 
 export const BanerSlider = () => {
   const [bannerImages, setBannerImages] = useState([banner1, banner2]);
@@ -31,7 +29,11 @@ export const BanerSlider = () => {
           className={style.arrow + ' ' + style['arrow--prev']}
           onClick={() => swiperRef.current?.slidePrev()}
         >
-          <img className={style.arrow_image} src={arrowLeft} alt="previous" />
+          <img
+            className={style.arrow_image}
+            src="Icons/arrow_left_black.png"
+            alt="previous"
+          />
         </button>
         <Swiper
           pagination={{
@@ -64,7 +66,11 @@ export const BanerSlider = () => {
           className={style.arrow + ' ' + style['arrow--next']}
           onClick={() => swiperRef.current?.slideNext()}
         >
-          <img className={style.arrow_image} src={arrowRight} alt="next" />
+          <img
+            className={style.arrow_image}
+            src="Icons/arrow_right_black.png"
+            alt="next"
+          />
         </button>
       </section>
       <div className={style.customPagination}></div>

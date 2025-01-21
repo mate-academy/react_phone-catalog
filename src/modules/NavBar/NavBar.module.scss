@@ -109,18 +109,6 @@
     border-bottom: 3px solid transparent;
     box-shadow: -1px 0px 0px var(--InactiveLink);
 
-    &--cart {
-      background-image: url('./public/img/Icons/Shopping bag (Cart).png');
-      background-repeat: no-repeat;
-      background-position: center;
-    }
-
-    &--favourite {
-      background-image: url('./public/img/Icons/Favourites (Heart Like).png');
-      background-repeat: no-repeat;
-      background-position: center;
-    }
-
     &:hover {
       color: var(--activeLink);
       border-bottom: 3px solid var(--ActiveLink);
@@ -206,7 +194,7 @@
       box-sizing: border-box;
       border-bottom: 3px solid transparent;
       box-shadow: -1px 0px 0px var(--InactiveLink);
-      background-image: url('../../assets/Close.png');
+      background-image: url('Icons/Close.png');
       background-repeat: no-repeat;
       background-position: center;
     }
@@ -219,7 +207,7 @@
       box-sizing: border-box;
       border-bottom: 3px solid transparent;
       box-shadow: -1px 0px 0px var(--InactiveLink);
-      background-image: url('../../assets/Menu.png');
+      background-image: url('Icons/Menu.png');
       background-repeat: no-repeat;
       background-position: center;
     }

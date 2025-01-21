@@ -8,7 +8,7 @@ export const Categories = () => {
         <div className={styles.categories__phones}>
           <img
             className={styles.categories__image}
-            src="public/img/phones-category.png"
+            src="img/phones-category.png"
             alt="phones category"
           />
           <h4 className={styles.categories__name}>Mobile Phones</h4>
@@ -18,7 +18,7 @@ export const Categories = () => {
         <div className={styles.categories__tablets}>
           <img
             className={styles.categories__image}
-            src="public/img/tablets-category.png"
+            src="img/tablets-category.png"
             alt="tablets category"
           />
           <h4 className={styles.categories__name}>Tablets</h4>
@@ -28,7 +28,7 @@ export const Categories = () => {
         <div className={styles.categories__accessories}>
           <img
             className={styles.categories__image}
-            src="public/img/accessories-category.png"
+            src="img/accessories-category.png"
             alt="accessories category"
           />
           <h4 className={styles.categories__name}>Accessories</h4>
