@@ -1,11 +1,11 @@
 .welcome {
   margin: 24px 0;
 
-  @include onTablet {
+  @include on-tablet {
     margin: 32px 0;
   }
 
-  @include onDesktop {
+  @include on-desktop {
     margin: 56px 0;
   }
 

@@ -7,7 +7,7 @@
   padding-top: 24px;
   gap: 4px;
 
-  @include onTablet {
+  @include on-tablet {
     padding-top: 40px;
   }
 
@@ -28,6 +28,7 @@
 
   &__text {
     @extend %small-text;
+
     color: $secondary-color;
     position: relative;
     transition: all $effect-duration ease;

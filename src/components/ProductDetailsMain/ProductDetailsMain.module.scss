@@ -1,7 +1,7 @@
 .productDetailsMain {
   padding-top: 40px;
 
-  @include onTablet {
+  @include on-tablet {
     padding-top: 0;
   }
 
@@ -12,12 +12,14 @@
 
   &__title {
     @extend %small-text;
+
     color: $secondary-color;
     padding-bottom: 8px;
   }
 
   &__id {
     @extend %small-text;
+
     color: $icons-color;
   }
 
@@ -35,7 +37,7 @@
     position: relative;
     transition: all $effect-duration ease;
 
-    &:hover{
+    &:hover {
       border-color: $icons-color;
     }
   }
@@ -65,7 +67,7 @@
     border-top: 1px solid $elements-color;
     border-bottom: 1px solid $elements-color;
 
-    @include onDesktop {
+    @include on-desktop {
       max-width: 320px;
     }
   }
@@ -78,6 +80,7 @@
 
   &__cap {
     @extend %body-text;
+
     color: $primary-color;
     height: 32px;
     width: 56px;
@@ -105,7 +108,7 @@
     font-weight: 800;
   }
 
-  &__full-price{
+  &__full-price {
     font-size: 22px;
     font-weight: 500;
     line-height: 31px;
@@ -118,7 +121,7 @@
     display: flex;
     gap: 8px;
 
-    @include onDesktop {
+    @include on-desktop {
       max-width: 320px;
     }
   }
@@ -135,7 +138,7 @@
   &__details-box {
     padding-top: 32px;
 
-    @include onDesktop {
+    @include on-desktop {
       max-width: 320px;
     }
   }

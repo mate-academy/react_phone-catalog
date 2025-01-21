@@ -6,8 +6,13 @@ import { getClassNav } from '../../utils/getLinkClass';
 import { StateContext } from '../../store/GlobalProvider';
 
 export const Header = () => {
+  const { categories } = useContext(StateContext);
   const [menuOpen, setMenuOpen] = useState(false);
-  const { favourites, cart } = useContext(StateContext);
+  const { favourites, cart, calculateTotalItems } = useContext(StateContext);
+
+  const sortCategories = categories.sort(
+    (a, b) => b.productsCount - a.productsCount,
+  );
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
@@ -23,18 +28,15 @@ export const Header = () => {
             <NavLink to="/" className={getClassNav}>
               Home
             </NavLink>
-
-            <NavLink to="/phones" className={getClassNav}>
-              Phones
-            </NavLink>
-
-            <NavLink to="/tablets" className={getClassNav}>
-              Tablets
-            </NavLink>
-
-            <NavLink to="/accessories" className={getClassNav}>
-              Accessories
-            </NavLink>
+            {sortCategories.map(category => (
+              <NavLink
+                key={category.id}
+                to={`/${category.id}`}
+                className={getClassNav}
+              >
+                {category.id}
+              </NavLink>
+            ))}
           </div>
         </div>
 
@@ -78,7 +80,7 @@ export const Header = () => {
                   className="icon__img icon__img-scale"
                 />
                 <div className="icon__count">
-                  <p className="icon__count-number">{cart.length}</p>
+                  <p className="icon__count-number">{calculateTotalItems()}</p>
                 </div>
               </div>
             ) : (

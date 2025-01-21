@@ -2,19 +2,19 @@
   @include container;
 
   &__desktop {
-    @include onDesktop {
-      @include pageGrid;
+    @include on-desktop {
+      @include page-grid;
     }
   }
 
   &__title {
     padding-top: 24px;
 
-    @include onTablet {
+    @include on-tablet {
       padding-top: 16px;
     }
 
-    @include onDesktop {
+    @include on-desktop {
       grid-column: span 24;
     }
   }
@@ -25,7 +25,7 @@
     flex-direction: column;
     gap: 16px;
 
-    @include onDesktop {
+    @include on-desktop {
       grid-column: span 16;
     }
   }
@@ -38,7 +38,7 @@
     flex-direction: column;
     gap: 16px;
 
-    @include onTablet {
+    @include on-tablet {
       flex-direction: row;
       align-items: center;
       justify-content: space-between;
@@ -50,7 +50,7 @@
     align-items: center;
     gap: 16px;
 
-    @include onTablet {
+    @include on-tablet {
       gap: 24px;
     }
   }
@@ -59,6 +59,7 @@
     border: none;
     background-color: inherit;
     cursor: pointer;
+
     @include hover(scale, 1.1);
   }
 
@@ -66,12 +67,13 @@
     width: 80px;
     height: 80px;
     object-fit: contain;
-    @include hover(scale, 1.1);
 
+    @include hover(scale, 1.1);
   }
 
   &__name {
     @extend %body-text;
+
     color: $primary-color;
   }
 
@@ -79,7 +81,7 @@
     display: flex;
     justify-content: space-between;
 
-    @include onTablet{
+    @include on-tablet {
       gap: 24px;
     }
   }
@@ -109,7 +111,7 @@
   &__price {
     font-weight: 800;
 
-    @include onTablet {
+    @include on-tablet {
       width: 80px;
     }
   }
@@ -119,7 +121,7 @@
     padding: 24px;
     border: 1px solid $elements-color;
 
-    @include onDesktop {
+    @include on-desktop {
       grid-column: span 8;
     }
   }
@@ -137,12 +139,14 @@
 
   &__quantity {
     @extend %body-text;
+
     color: $secondary-color;
   }
 
   &__checkout {
-    margin-top: 16px;
     @extend %buttons;
+
+    margin-top: 16px;
     color: $white-color;
     border: none;
     background-color: $primary-color;
@@ -152,7 +156,7 @@
     transition: all $effect-duration ease;
 
     &:hover {
-      box-shadow: 0px 0px 13px 0px rgba(23, 32, 49, 0.4);
+      box-shadow: 0 0 13px 0 rgba(23, 32, 49, 0.4);
     }
   }
 
@@ -188,7 +192,7 @@
   &__clear-text {
     font-size: 14px;
 
-    @include onTablet {
+    @include on-tablet {
       font-size: 20px;
     }
   }
@@ -199,13 +203,14 @@
     align-items: center;
     gap: 30px;
 
-    @include onTablet {
+    @include on-tablet {
       gap: 40px;
     }
   }
 
   &__clear-button {
     @extend %buttons;
+
     color: $white-color;
     padding: 5px 15px;
     border: 2px solid transparent;
@@ -220,6 +225,28 @@
   }
 
   &__clear-cancel {
-    background-color: #2eac33;
+    background-color: $green-color;
+  }
+
+  &__empty-box {
+    padding-top: 32px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    @include on-tablet {
+      padding-top: 40px;
+    }
+  }
+
+  &__empty {
+    width: 50%;
+    object-fit: contain;
+  }
+
+  &__empty-title {
+    color: $secondary-color;
   }
 }

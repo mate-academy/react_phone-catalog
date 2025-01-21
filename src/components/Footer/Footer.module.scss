@@ -3,7 +3,7 @@
   border-top: 1px solid $elements-color;
   padding-top: 32px;
 
-  @include onTablet {
+  @include on-tablet {
     margin-top: 80px;
     margin-bottom: 32px;
   }
@@ -15,7 +15,7 @@
     justify-content: space-between;
     flex-direction: column;
 
-    @include onTablet {
+    @include on-tablet {
       flex-direction: row;
       align-items: center;
     }
@@ -27,25 +27,26 @@
     gap: 16px;
     padding-top: 32px;
 
-    @include onTablet {
+    @include on-tablet {
       flex-direction: row;
       padding: 0;
       justify-content: space-between;
     }
 
-    @include onDesktop {
+    @include on-desktop {
       gap: 105px;
     }
   }
 
   &__nav-text {
     @extend %uppercase;
+
     color: $secondary-color;
     position: relative;
     width: max-content;
 
     &::after {
-      content: "";
+      content: '';
       position: absolute;
       left: 50%;
       bottom: -10px;
@@ -70,13 +71,14 @@
     align-items: center;
     gap: 16px;
 
-    @include onTablet {
+    @include on-tablet {
       margin: 0;
     }
   }
 
   &__back-text {
     @extend %small-text;
+
     color: $secondary-color;
   }
 
@@ -86,8 +88,6 @@
     height: 32px;
     width: 32px;
 
-    &:hover {
-      background-color: $elements-color;
-    }
+    @include hover(border-color, $primary-color);
   }
 }

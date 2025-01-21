@@ -24,9 +24,13 @@ export const CatalogGrid: React.FC<Props> = ({ products }) => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [prod, setProd] = useState<Product[]>([...products]);
   const [currentPage, setCurrentPage] = useState(1);
-  const [perPage, setPerPage] = useState(products.length);
 
   const sort = searchParams.get('sort') || '';
+
+  const perPageFromUrl = searchParams.get('perPage') || '';
+  const [perPage, setPerPage] = useState(
+    perPageFromUrl ? parseInt(perPageFromUrl) : products.length,
+  );
 
   const handleSortChange = () => {
     const sortedProducts = [...products];
@@ -49,36 +53,61 @@ export const CatalogGrid: React.FC<Props> = ({ products }) => {
     }
   };
 
-  const handleSortBy = (e: React.ChangeEvent<HTMLSelectElement>) => {
+  const handleSortBy = (option: string) => {
     const params = new URLSearchParams(searchParams);
 
-    if (e.target.value === 'age') {
-      params.delete('sort');
-    } else {
-      params.set('sort', e.target.value);
-    }
+    params.set('sort', option);
 
     setSearchParams(params);
   };
 
-  const handlePerPageChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    const value =
-      e.target.value === 'all' ? prod.length : parseInt(e.target.value);
+  const handlePerPageChange = (val: string) => {
+    const value = val === 'all' ? prod.length : parseInt(val);
+
+    const params = new URLSearchParams(searchParams);
 
     setPerPage(value);
     setCurrentPage(1);
+
+    if (value === prod.length) {
+      params.delete('perPage');
+    } else {
+      params.set('perPage', value.toString());
+    }
+
+    params.delete('page');
+    setSearchParams(params);
   };
 
   const totalPages = Math.ceil(prod.length / perPage);
 
   const handlePageChange = (page: number) => {
+    const params = new URLSearchParams(searchParams);
+
     setCurrentPage(page);
+
+    if (page === 1) {
+      params.delete('page');
+    } else {
+      params.set('page', page.toString());
+    }
+
+    if (!params.has('perPage')) {
+      params.set('perPage', perPage.toString());
+    }
+
+    setSearchParams(params);
   };
 
   useEffect(() => {
     handleSortChange();
+    const perPageFromU = searchParams.get('perPage');
+
+    if (!perPageFromU) {
+      setPerPage(products.length);
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [products, sort, perPage]);
+  }, [products, sort, perPage, searchParams]);
 
   return (
     <>
@@ -86,6 +115,7 @@ export const CatalogGrid: React.FC<Props> = ({ products }) => {
         handleSortBy={handleSortBy}
         sort={sort}
         handlePerPageChange={handlePerPageChange}
+        perPage={perPage}
       />
       <article className="catalogGrid">
         {getVisibleProducts(prod, currentPage, perPage).map(product => (

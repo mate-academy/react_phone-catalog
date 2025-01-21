@@ -19,6 +19,7 @@
 
   &__text {
     @extend %small-text;
+    
     font-weight: 600;
     color: $secondary-color;
     white-space: nowrap;

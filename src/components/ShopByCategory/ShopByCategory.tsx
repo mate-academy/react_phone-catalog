@@ -5,11 +5,15 @@ import { StateContext } from '../../store/GlobalProvider';
 export const ShopByCategory = () => {
   const { categories } = useContext(StateContext);
 
+  const sortCategories = categories.sort(
+    (a, b) => b.productsCount - a.productsCount,
+  );
+
   return (
     <section className="shopByCategory">
       <h2 className="shopByCategory__title">Shop by category</h2>
       <div className="shopByCategory__box">
-        {categories.map(cat => (
+        {sortCategories.map(cat => (
           <Link to={`/${cat.id}`} key={cat.id}>
             <div className="shopByCategory__img-box">
               <img

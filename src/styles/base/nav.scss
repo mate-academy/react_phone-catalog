@@ -1,7 +1,8 @@
 .nav {
-  color: $secondary-color;
   @extend %uppercase;
   @include hover(color, $primary-color);
+  
+  color: $secondary-color;
   position: relative;
   align-items: center;
   height: 100%;

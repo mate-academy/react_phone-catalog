@@ -6,17 +6,25 @@ import { NavigationPath } from '../../components/NavigatiomPath/NavigationPath';
 import { CategoryTitle } from '../../components/CategoryTitle/CategoryTitle';
 import { CatalogGrid } from '../../components/CatalogGrid/CatalogGrid';
 import { Loader } from '../../components/Loader/Loader';
+import { NotFoundPage } from '../../components/NotFoundPage/NotFoundPage';
+
 export const CategoryPage = () => {
   const { category: categoryId } = useParams();
   const [category, setCategory] = useState<Category>();
   const [loading, setLoading] = useState(false);
+  const [notFound, setNotFound] = useState(false);
 
   useEffect(() => {
     if (categoryId) {
       setLoading(true);
       getCategoryById(categoryId)
         .then(catId => {
-          setCategory(catId);
+          if (!catId) {
+            setNotFound(true);
+          } else {
+            setCategory(catId);
+            setNotFound(false);
+          }
         })
         .finally(() => {
           setLoading(false);
@@ -26,6 +34,10 @@ export const CategoryPage = () => {
 
   if (loading) {
     return <Loader />;
+  }
+
+  if (notFound) {
+    return <NotFoundPage />;
   }
 
   return (

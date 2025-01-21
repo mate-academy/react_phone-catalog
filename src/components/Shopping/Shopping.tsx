@@ -2,11 +2,14 @@ import { useContext, useEffect, useState } from 'react';
 import { DispatchContext, StateContext } from '../../store/GlobalProvider';
 import { BackPath } from '../BackPath/BackPath';
 import { Link } from 'react-router-dom';
+import { useLoader } from '../../utils/useLoader';
+import { Loader } from '../Loader/Loader';
 
 export const Shopping = () => {
-  const { cart } = useContext(StateContext);
+  const { cart, calculateTotalItems } = useContext(StateContext);
   const dispatch = useContext(DispatchContext);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const loading = useLoader();
 
   const handleRemove = (id: string) => {
     dispatch({
@@ -59,9 +62,6 @@ export const Shopping = () => {
       behavior: 'smooth',
     });
     setIsModalOpen(true);
-
-    // setTimeout(() => {
-    // }, 500);
   };
 
   useEffect(() => {
@@ -81,60 +81,73 @@ export const Shopping = () => {
       <BackPath />
       <section className="shopping">
         <h1 className="shopping__title">Cart</h1>
-        <div className="shopping__desktop">
-          <div className="shopping__cards">
-            {cart.map(car => (
-              <div className="shopping__card" key={car.id}>
-                <div className="shopping__box-1">
-                  <button
-                    className="shopping__delete"
-                    onClick={() => handleRemove(car.itemId)}
-                  >
-                    <img src="img/icons/delete-card.svg" alt="close" />
-                  </button>
-
-                  <Link to={`/${car.category}/${car.itemId}`}>
-                    <img
-                      className="shopping__img"
-                      src={car.image}
-                      alt="product"
-                    />
-                  </Link>
-                  <p className="shopping__name">{car.name}</p>
-                </div>
-                <div className="shopping__box-2">
-                  <div className="shopping__buttons">
+        {loading ? (
+          <Loader />
+        ) : cart.length > 0 ? (
+          <div className="shopping__desktop">
+            <div className="shopping__cards">
+              {cart.map(car => (
+                <div className="shopping__card" key={car.id}>
+                  <div className="shopping__box-1">
                     <button
-                      className="shopping__button"
-                      disabled={(car.quantity ?? 1) <= 1}
-                      onClick={() => handleDecrement(car.itemId)}
+                      className="shopping__delete"
+                      onClick={() => handleRemove(car.itemId)}
                     >
-                      <img src="img/icons/minus.svg" alt="minus" />
+                      <img src="img/icons/delete-card.svg" alt="close" />
                     </button>
-                    {car.quantity || 1}
-                    <button className="shopping__button">
+
+                    <Link to={`/${car.category}/${car.itemId}`}>
                       <img
-                        src="img/icons/plus.svg"
-                        alt="plus"
-                        onClick={() => handleIncrement(car.itemId)}
+                        className="shopping__img"
+                        src={car.image}
+                        alt="product"
                       />
-                    </button>
+                    </Link>
+                    <p className="shopping__name">{car.name}</p>
                   </div>
-                  <h3 className="shopping__price">{`$${car.quantity ? car.quantity * car.price : car.price}`}</h3>
+                  <div className="shopping__box-2">
+                    <div className="shopping__buttons">
+                      <button
+                        className="shopping__button"
+                        disabled={(car.quantity ?? 1) <= 1}
+                        onClick={() => handleDecrement(car.itemId)}
+                      >
+                        <img src="img/icons/minus.svg" alt="minus" />
+                      </button>
+                      {car.quantity || 1}
+                      <button className="shopping__button">
+                        <img
+                          src="img/icons/plus.svg"
+                          alt="plus"
+                          onClick={() => handleIncrement(car.itemId)}
+                        />
+                      </button>
+                    </div>
+                    <h3 className="shopping__price">{`$${car.quantity ? car.quantity * car.price : car.price}`}</h3>
+                  </div>
                 </div>
-              </div>
-            ))}
-          </div>
-          <div className="shopping__checkout-box">
-            <div className="shopping__total">
-              <h2 className="shopping__total-price">{`$${totalPrice}`}</h2>
-              <p className="shopping__quantity">{`Total for ${cart.length} items`}</p>
+              ))}
             </div>
-            <button onClick={handleCheckout} className="shopping__checkout">
-              Checkout
-            </button>
+            <div className="shopping__checkout-box">
+              <div className="shopping__total">
+                <h2 className="shopping__total-price">{`$${totalPrice}`}</h2>
+                <p className="shopping__quantity">{`Total for ${calculateTotalItems()} item${calculateTotalItems() === 1 ? '' : 's'}`}</p>
+              </div>
+              <button onClick={handleCheckout} className="shopping__checkout">
+                Checkout
+              </button>
+            </div>
           </div>
-        </div>
+        ) : (
+          <div className="shopping__empty-box">
+            <h2 className="shopping__empty-title">Your cart is empty</h2>
+            <img
+              src="img/cart-is-empty.png"
+              alt="cart is empty"
+              className="shopping__empty"
+            />
+          </div>
+        )}
       </section>
 
       {isModalOpen && (

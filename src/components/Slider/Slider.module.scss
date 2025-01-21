@@ -1,21 +1,21 @@
 .slider {
   &__container {
-  @include onTablet {
-    @include container;
-    @include pageGrid;
+    @include on-tablet {
+      @include container;
+      @include page-grid;
 
-    grid-template-rows: auto 1fr;
-    row-gap: 0;
-    position: relative;
+      grid-template-rows: auto 1fr;
+      row-gap: 0;
+      position: relative;
+    }
   }
-}
 
   &__content {
     grid-column: span 4;
     background-color: #000;
     height: 100%;
 
-    @include onTablet {
+    @include on-tablet {
       display: flex;
       justify-content: start;
       align-items: center;
@@ -23,7 +23,7 @@
   }
 
   &__info {
-    @include onTablet {
+    @include on-tablet {
       height: 95%;
       width: 45%;
       background-color: $primary-color;
@@ -33,15 +33,15 @@
       position: relative;
     }
 
-    @include onDesktop {
+    @include on-desktop {
       width: 50%;
       padding: 0 40px;
     }
   }
 
-
   &__title {
     @extend %h2;
+
     min-width: 200px;
     position: absolute;
     left: 50%;
@@ -54,7 +54,7 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 
-    @include onTablet {
+    @include on-tablet {
       font-size: 25px;
       line-height: 31px;
       text-align: left;
@@ -64,7 +64,7 @@
       max-width: 200px;
     }
 
-    @include onDesktop {
+    @include on-desktop {
       font-size: 45px;
       max-width: 350px;
       line-height: 45px;
@@ -73,16 +73,17 @@
 
   &__text {
     @extend %small-text;
+
     display: none;
 
-    @include onTablet {
+    @include on-tablet {
       display: block;
       color: $secondary-color;
       position: absolute;
       top: 50%;
     }
 
-    @include onDesktop {
+    @include on-desktop {
       font-size: 18px;
       top: 40%;
     }
@@ -96,23 +97,24 @@
     bottom: 0;
     left: 0;
 
-    @include onTablet {
+    @include on-tablet {
       width: 55%;
       height: 100%;
       position: relative;
     }
 
-    @include onDesktop {
+    @include on-desktop {
       width: 53%;
     }
   }
 
   &__button {
     @extend %small-text;
+
     font-size: 10px;
     display: none;
 
-    @include onTablet {
+    @include on-tablet {
       position: absolute;
       bottom: 10px;
       color: $white-color;
@@ -124,7 +126,7 @@
       padding: 10px 20px;
     }
 
-    @include onDesktop {
+    @include on-desktop {
       font-size: 16px;
       padding: 20px 35px;
       border-radius: 40px;
@@ -132,23 +134,18 @@
     }
   }
 
-
-  &__icon {
+  &__ok {
     display: none;
 
-    @include onTablet {
+    @include on-tablet {
       display: inline;
-      background: none;
-      -webkit-background-clip: unset;
-      -webkit-text-fill-color: currentColor;
-      color: inherit;
+      height: 20px;
       padding-left: 5px;
-      font-size: 20px;
-      position: absolute;
     }
 
-    @include onDesktop {
-      font-size: 35px;
+    @include on-desktop {
+      height: 35px;
+      padding-left: 10px;
     }
   }
 
@@ -156,7 +153,7 @@
   &__next {
     display: none;
 
-    @include onTablet {
+    @include on-tablet {
       display: block;
       grid-row: 1;
       background-color: inherit;
@@ -168,27 +165,27 @@
       cursor: pointer;
     }
 
-    @include hover(background-color, $elements-color);
+    @include hover(border-color, $primary-color);
   }
 
   &__prev {
-    @include onTablet {
+    @include on-tablet {
       grid-column: 1 / 2;
       background-image: url(../img/icons/arrow-left.svg);
     }
 
-    @include onDesktop {
+    @include on-desktop {
       grid-column: 1 / 2;
     }
   }
 
   &__next {
-    @include onTablet {
+    @include on-tablet {
       grid-column: 12 / 13;
       background-image: url(../img/icons/arrow-right.svg);
     }
 
-    @include onDesktop {
+    @include on-desktop {
       grid-column: 24 / 25;
     }
   }
@@ -197,26 +194,26 @@
 .swiper {
   width: 100%;
 
-  @include onTablet {
+  @include on-tablet {
     grid-column: 2 / 12;
   }
 
-  @include onDesktop {
+  @include on-desktop {
     grid-column: 2 / 24;
-  }
-}
-
-.swiper-one .swiper-wrapper {
-  aspect-ratio: 1 / 1;
-
-  @include onTablet {
-    aspect-ratio: unset;
-    min-height: 189px;
   }
 }
 
 .swiper-wrapper {
   height: 100%;
+}
+
+.swiper-one .swiper-wrapper {
+  aspect-ratio: 1 / 1;
+
+  @include on-tablet {
+    aspect-ratio: unset;
+    min-height: 189px;
+  }
 }
 
 .swiper-slide {
@@ -227,11 +224,11 @@
   padding: 10px 3px;
   margin-top: 8px;
 
-  @include onTablet {
+  @include on-tablet {
     grid-column: 6 / 8;
   }
 
-  @include onDesktop {
+  @include on-desktop {
     grid-column: 12 / 14;
   }
 }
@@ -259,10 +256,7 @@
     &::before {
       content: '';
       position: absolute;
-      top: -10px;
-      bottom: -10px;
-      left: -5px;
-      right: -5px;
+      inset: -10px -5px 10px;
       background-color: transparent;
       z-index: 1;
     }

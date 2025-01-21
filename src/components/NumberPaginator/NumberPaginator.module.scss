@@ -1,6 +1,7 @@
 .numberPaginator {
   &__number {
     @extend %body-text;
+    
     color: $primary-color;
     font-weight: 500;
     width: 32px;

@@ -11,7 +11,7 @@
     flex-direction: column;
     gap: 32px;
 
-    @include onTablet {
+    @include on-tablet {
       flex-direction: row;
       gap: 16px;
     }
@@ -37,6 +37,7 @@
 
   &__count {
     @extend %body-text;
+
     margin-top: 4px;
     color: $secondary-color;
   }

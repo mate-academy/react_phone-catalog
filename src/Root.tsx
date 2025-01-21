@@ -12,7 +12,8 @@ import { GlobalStateProvider } from './store/GlobalProvider';
 import { ProductDetailsPage } from './modules/ProductDetailsPage/ProductDetailsPage';
 import { Favourites } from './components/Favourites/Favourites';
 import { Shopping } from './components/Shopping/Shopping';
-import { NotFound } from './modules/NotFound/NotFound';
+import { NotFoundPage } from './components/NotFoundPage/NotFoundPage';
+import { NotFoundProduct } from './components/NotFoundProduct/NotFoundProduct';
 
 export const Root = () => (
   <Router>
@@ -24,11 +25,12 @@ export const Root = () => (
           <Route path=":category">
             <Route index element={<CategoryPage />} />
             <Route path=":productId" element={<ProductDetailsPage />} />
-            <Route path="*" element={<NotFound />} />
           </Route>
           <Route path="favourites" element={<Favourites />} />
           <Route path="cart" element={<Shopping />} />
-          <Route path="*" element={<NotFound />} />
+          <Route path="not-found" element={<NotFoundPage />} />
+          <Route path="not-found-product" element={<NotFoundProduct />} />
+          <Route path="*" element={<Navigate to="/not-found" />} />
         </Route>
       </Routes>
     </GlobalStateProvider>

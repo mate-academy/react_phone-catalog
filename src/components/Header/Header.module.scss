@@ -3,15 +3,16 @@
   justify-content: space-between;
   align-items: center;
   border-bottom: 1px solid $elements-color;
+  position: sticky;
 
   &__nav {
     display: flex;
 
-    @include onTablet {
+    @include on-tablet {
       gap: 16px;
     }
 
-    @include onDesktop {
+    @include on-desktop {
       gap: 24px;
     }
   }
@@ -19,12 +20,12 @@
   &__nav-list {
     display: none;
 
-    @include onTablet {
+    @include on-tablet {
       display: flex;
       gap: 32px;
     }
 
-    @include onDesktop {
+    @include on-desktop {
       gap: 64px;
     }
   }
@@ -34,7 +35,7 @@
     justify-content: center;
     align-items: center;
 
-    @include onTablet {
+    @include on-tablet {
       display: none;
     }
   }
@@ -42,7 +43,7 @@
   &__icons {
     display: none;
 
-    @include onTablet {
+    @include on-tablet {
       display: flex;
     }
   }
@@ -51,10 +52,8 @@
     border: none;
     border-left: 1px solid $elements-color;
     padding: 15px;
-    // height: 48px;
-    // width: 48px;
 
-    @include onDesktop {
+    @include on-desktop {
       height: 64px;
       width: 64px;
     }
@@ -62,7 +61,8 @@
 
   &__scale {
     height: 48px;
-    @include hover(scale, 1.1);
     position: relative;
+
+    @include hover(scale, 1.1);
   }
 }

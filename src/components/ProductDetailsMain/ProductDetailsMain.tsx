@@ -85,7 +85,12 @@ export const ProductDetailsMain: React.FC<Props> = ({ prodId }) => {
       </div>
 
       <div className="productDetailsMain__buttons">
-        <button className="productCard__add" onClick={toggleCart}>
+        <button
+          className={classNames('productCard__add', {
+            'productCard__add--selected': inCart,
+          })}
+          onClick={toggleCart}
+        >
           {inCart ? 'Added' : 'Add to cart'}
         </button>
         <button

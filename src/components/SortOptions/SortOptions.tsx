@@ -1,49 +1,50 @@
+import { CustomSelect } from '../CustomSelect/CustomSelect';
+
 type Props = {
-  handleSortBy: (e: React.ChangeEvent<HTMLSelectElement>) => void;
+  handleSortBy: (value: string) => void;
   sort: string;
-  handlePerPageChange: (e: React.ChangeEvent<HTMLSelectElement>) => void;
+  handlePerPageChange: (value: string) => void;
+  perPage: number;
 };
 
 export const SortOptions: React.FC<Props> = ({
   handleSortBy,
   sort,
   handlePerPageChange,
+  perPage,
 }) => {
+  const sortOptions = [
+    { value: 'age', label: 'Newest' },
+    { value: 'title', label: 'Alphabetically' },
+    { value: 'price', label: 'Cheapest' },
+  ];
+
+  const perPageOptions = [
+    { value: '4', label: '4' },
+    { value: '8', label: '8' },
+    { value: '16', label: '16' },
+    { value: 'all', label: 'All' },
+  ];
+
   return (
     <article className="sortOptions">
       <div className="sortOptions__sort-box">
         <div className="sortOptions__sort">
-          <label htmlFor="sortSelect" className="sortOptions__label">
-            Sort by
-          </label>
-          <select
-            id="sortSelect"
+          <CustomSelect
+            options={sortOptions}
             value={sort}
             onChange={handleSortBy}
-            className="sortOptions__select"
-          >
-            <option value="age">Newest</option>
-            <option value="title">Alphabetically</option>
-            <option value="price">Cheapest</option>
-          </select>
+            defaultText={'Select an option'}
+          />
         </div>
 
         <div className="sortOptions__page">
-          <label htmlFor="pageSelect" className="sortOptions__label">
-            Items on page
-          </label>
-          <select
-            // value={perPage}
-            id="pageSelect"
-            defaultValue={'all'}
+          <CustomSelect
+            options={perPageOptions}
+            value={perPage.toString()}
             onChange={handlePerPageChange}
-            className="sortOptions__select"
-          >
-            <option value="4">4</option>
-            <option value="8">8</option>
-            <option value="16">16</option>
-            <option value="all">all</option>
-          </select>
+            defaultText={'All'}
+          />
         </div>
       </div>
     </article>

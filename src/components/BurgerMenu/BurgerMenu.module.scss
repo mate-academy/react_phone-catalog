@@ -8,7 +8,7 @@
   overflow: hidden;
   z-index: 100;
 
-  @include onTablet {
+  @include on-tablet {
     display: none;
   }
 

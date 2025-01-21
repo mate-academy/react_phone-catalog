@@ -9,6 +9,8 @@ import { ProductDetailsInfo } from '../../components/ProductDetailsInfo/ProductD
 // eslint-disable-next-line max-len
 import { ProductDetailsMore } from '../../components/ProductDetailsMore/ProductDetailsMore';
 import { Loader } from '../../components/Loader/Loader';
+// eslint-disable-next-line max-len
+import { NotFoundProduct } from '../../components/NotFoundProduct/NotFoundProduct';
 
 export const ProductDetailsPage = () => {
   const { productId } = useParams();
@@ -18,6 +20,8 @@ export const ProductDetailsPage = () => {
   const category = categories.find(cat => cat.id === categoryId);
 
   const [loading, setLoading] = useState(false);
+  const [notFound, setNotFound] = useState(false);
+
   const prodId = products.find(p => p.itemId === selectedProduct?.id);
 
   useEffect(() => {
@@ -33,8 +37,11 @@ export const ProductDetailsPage = () => {
     setLoading(true);
     locateProduct(productId as string, categoryId as string)
       .then(prod => {
-        if (prod) {
+        if (!prod) {
+          setNotFound(true);
+        } else {
           dispatch({ type: 'selectedProduct', payload: prod });
+          setNotFound(false);
         }
 
         return;
@@ -45,7 +52,7 @@ export const ProductDetailsPage = () => {
   }, [categoryId, dispatch, productId]);
 
   useEffect(() => {
-    window.scrollTo(0, 0); // Прокручує на верх сторінки
+    window.scrollTo(0, 0);
   }, []);
 
   if (loading) {
@@ -55,7 +62,13 @@ export const ProductDetailsPage = () => {
   if (category && selectedProduct) {
     const validProdId = prodId ?? null;
 
-    return (
+    return notFound ? (
+      <>
+        <NavigationPath firstLvl={category.title} />
+        <BackPath />
+        <NotFoundProduct />
+      </>
+    ) : (
       <section>
         <NavigationPath
           firstLvl={category.title}

@@ -1,11 +1,11 @@
 .productSlider {
   padding-top: 56px;
 
-  @include onTablet {
+  @include on-tablet {
     padding-top: 64px;
   }
 
-  @include onDesktop {
+  @include on-desktop {
     padding-top: 80px;
   }
 
@@ -15,6 +15,7 @@
 
   &__header {
     @include container;
+
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -23,6 +24,14 @@
   &__navigation {
     display: flex;
     gap: 16px;
+  }
+
+  &__prev {
+    background-image: url(../img/icons/arrow-left.svg);
+  }
+
+  &__next {
+    background-image: url(../img/icons/arrow-right.svg);
   }
 
   &__prev,
@@ -52,21 +61,14 @@
     }
   }
 
-  &__prev {
-    background-image: url(../img/icons/arrow-left.svg);
-  }
-
-  &__next {
-    background-image: url(../img/icons/arrow-right.svg);
-  }
-
   &__swiper {
     padding-left: 16px;
-    @include onTablet {
+    
+    @include on-tablet {
       padding-left: 24px;
     }
 
-    @include onDesktop {
+    @include on-desktop {
       @include container;
     }
   }
@@ -75,4 +77,3 @@
     margin-top: 24px;
   }
 }
-

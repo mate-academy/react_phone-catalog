@@ -7,7 +7,7 @@
     height: 22px;
     margin: 13px 16px;
 
-    @include onDesktop {
+    @include on-desktop {
       height: 28px;
       margin: 18px 24px;
     }

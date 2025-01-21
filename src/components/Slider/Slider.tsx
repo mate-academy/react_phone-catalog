@@ -48,7 +48,9 @@ export const Slider = () => {
               <div className="slider__info">
                 <p className="slider__title">
                   {slide.title}
-                  <span className="slider__icon">{slide.icon}</span>
+                  {slide.icon && (
+                    <img src={slide.icon} alt="ok" className="slider__ok" />
+                  )}
                 </p>
                 <p className="slider__text">{slide.text}</p>
                 <Link to={slide.link} className="slider__button">

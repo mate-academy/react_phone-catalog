@@ -12,7 +12,7 @@ type Props = {
 };
 
 export const BurgerMenu: React.FC<Props> = ({ toggleMenu }) => {
-  const { favourites, cart } = useContext(StateContext);
+  const { favourites, cart, calculateTotalItems } = useContext(StateContext);
 
   return (
     <div className="menu">
@@ -99,7 +99,7 @@ export const BurgerMenu: React.FC<Props> = ({ toggleMenu }) => {
                 className="icon__img"
               />
               <div className="icon__count">
-                <p className="icon__count-number">{favourites.length}</p>
+                <p className="icon__count-number">{calculateTotalItems()}</p>
               </div>
             </div>
           ) : (

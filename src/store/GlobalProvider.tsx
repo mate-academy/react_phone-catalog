@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/indent */
 import React, { useEffect, useReducer } from 'react';
 import { Category } from '../types/Category';
 import { Product } from '../types/Product';
@@ -51,18 +52,18 @@ function reducer(state: State, action: Action): State {
         selectedProduct: action.payload,
       };
 
-    case 'addItem':
-      return {
-        ...state,
-        [action.itemType]: [...state[action.itemType], action.payload],
-      };
-
     case 'removeItem':
+      const updatedList = state[action.itemType].filter(
+        item => item.itemId !== action.payload,
+      );
+
+      if (updatedList.length === 0) {
+        localStorage.removeItem(action.itemType);
+      }
+
       return {
         ...state,
-        [action.itemType]: state[action.itemType].filter(
-          item => item.itemId !== action.payload,
-        ),
+        [action.itemType]: updatedList,
       };
 
     case 'addItem':
@@ -70,7 +71,7 @@ function reducer(state: State, action: Action): State {
         ...state,
         [action.itemType]: [
           ...state[action.itemType],
-          { ...action.payload, quantity: 1 }, // Set initial quantity to 1
+          { ...action.payload, quantity: 1 },
         ],
       };
 
@@ -88,7 +89,11 @@ const initialState: State = {
   cart: [],
 };
 
-export const StateContext = React.createContext(initialState);
+export const StateContext = React.createContext<
+  State & {
+    calculateTotalItems: () => number;
+  }
+>(initialState as State & { calculateTotalItems: () => number });
 export const DispatchContext = React.createContext<DispatchContextType>(
   () => {},
 );
@@ -131,9 +136,14 @@ export const GlobalStateProvider: React.FC<Props> = ({ children }) => {
     saveListToStorage('cart', state.cart);
   }, [state.cart]);
 
+  const calculateTotalItems = () =>
+    state.cart.reduce((total, item) => total + (item.quantity || 1), 0);
+
   return (
     <DispatchContext.Provider value={dispatch}>
-      <StateContext.Provider value={state}>{children}</StateContext.Provider>
+      <StateContext.Provider value={{ ...state, calculateTotalItems }}>
+        {children}
+      </StateContext.Provider>
     </DispatchContext.Provider>
   );
 };
