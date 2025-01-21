@@ -4,6 +4,7 @@
 .header {
   display: flex;
   justify-content: space-between;
+  background-color: $main-background-col;
 
   &__logoNavContainer {
     display: flex;

@@ -31,7 +31,7 @@ export const Header: React.FC<Props> = ({ origin }) => {
 
   return (
     <div
-      className={cn('container container__header', {
+      className={cn('container container__header container__headerPage', {
         'hide-container': isMenuOpened,
       })}
     >

@@ -65,8 +65,8 @@ export const ImgSlider: React.FC = () => {
 
         <ol className={cl.slider__list} ref={sliderRef}>
           <li className={cl.sliderItem} style={animSlideStyles}>
-            <Link
-              to="#"
+            <a
+              href=""
               className={`${cl.sliderLinkWrapper} ${cl.sliderLinkWrapper__1}`}
               style={linkWidthStyle}
             >
@@ -74,12 +74,12 @@ export const ImgSlider: React.FC = () => {
                 Check brand <br /> new models!
               </p>
               <div className={`${cl.sliderLinkWrapper__1__img1}`} />
-            </Link>
+            </a>
           </li>
 
           <li className={cl.sliderItem} style={animSlideStyles}>
             <Link
-              to="#"
+              to="/phones/apple-iphone-14-128gb-midnight"
               className={`${cl.sliderLinkWrapper} ${cl.sliderLinkWrapper__2}`}
               style={linkWidthStyle}
             />

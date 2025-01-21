@@ -33,8 +33,8 @@ export const Footer = () => {
             </Link>
           </li>
           <li>
-            <Link to="/" target="_blank" className={cl.footer__link}>
-              RIGHTS
+            <Link to="about" className={cl.footer__link}>
+              ABOUT
             </Link>
           </li>
         </ul>

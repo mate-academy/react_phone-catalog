@@ -1,0 +1,12 @@
+@import '../../styles/utils/vars.scss';
+
+.text {
+  margin-top: 32px;
+  font-size: 16px;
+  line-height: 28px;
+  color: $second-txt-col;
+
+  &__link {
+    color: $second-txt-col;
+  }
+}

@@ -11,6 +11,7 @@ import { Accessories } from './components/ProductPage/Accessories';
 import { DetailProdPage } from './components/DetailProdPage';
 import { Favorites } from './components/Favorites';
 import { CartPage } from './components/CartPage';
+import { AboutPage } from './components/AboutPage';
 
 const Root: React.FC = () => {
   return (
@@ -36,6 +37,8 @@ const Root: React.FC = () => {
             <Route path="favorites" element={<Favorites />} />
 
             <Route path="cart" element={<CartPage />} />
+
+            <Route path="about" element={<AboutPage />} />
           </Route>
         </Routes>
       </HashRouter>
