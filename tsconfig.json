@@ -1,10 +1,18 @@
 {
   "extends": "@mate-academy/students-ts-config",
-  "include": [
-    "src"
-  ],
+  "include": ["src"],
   "compilerOptions": {
     "sourceMap": false,
-    "types": ["node", "cypress"]
+    "types": ["node", "cypress"],
+
+    "baseUrl": "./src",
+    "paths": {
+      "@sTypes/*": ["./modules/shared/types/*"],
+      "@store/*": ["./modules/shared/store/*"],
+      "@utils/*": ["./modules/shared/utils/*"],
+      "@styles/*": ["./modules/shared/styles/*"],
+      "@services/*": ["./modules/shared/services/*"],
+      "@components/*": ["./modules/shared/components/*"]
+    }
   }
 }

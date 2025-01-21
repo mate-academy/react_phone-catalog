@@ -1,0 +1,19 @@
+@import '@styles/utils';
+
+.app {
+  &__header {
+    top: 0;
+    z-index: 1;
+    position: sticky;
+    background-color: var(--white-color);
+  }
+
+  &__content {
+    @include content-padding-inline;
+
+    max-width: $max-width;
+    min-width: $phone-min-width;
+
+    padding-block: 40px 80px;
+  }
+}

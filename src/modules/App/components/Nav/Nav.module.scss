@@ -1,0 +1,29 @@
+@import '@styles/utils';
+
+.nav {
+  height: 100%;
+  display: none;
+
+  @include on-tablet {
+    display: block;
+  }
+
+  &__items {
+    height: 100%;
+
+    gap: 32px;
+    display: flex;
+    align-items: center;
+
+    @include on-desktop {
+      gap: 64px;
+    }
+  }
+
+  &__item {
+    height: 100%;
+    color: var(--secondary-color);
+
+    @include uppercase;
+  }
+}

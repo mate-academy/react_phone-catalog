@@ -1,0 +1,41 @@
+@import '@styles/utils';
+
+.header {
+  height: 48px;
+  padding-left: 16px;
+  box-sizing: border-box;
+  box-shadow: 0 1px 0 0 var(--elements-color);
+
+  display: flex;
+  justify-content: space-between;
+
+  @include on-desktop {
+    height: 64px;
+    padding-left: 24px;
+  }
+
+  &__left {
+    gap: 48px;
+    display: flex;
+  }
+
+  &__logo {
+    height: 100%;
+    display: flex;
+    align-items: center;
+  }
+
+  &__right {
+    display: none;
+
+    @include on-tablet {
+      display: flex;
+    }
+  }
+
+  &__menu {
+    @include on-tablet {
+      display: none;
+    }
+  }
+}

@@ -1,0 +1,36 @@
+@import '@styles/utils';
+
+.icon {
+  width: 48px;
+  aspect-ratio: 1;
+  box-sizing: border-box;
+  box-shadow: -1px 0 0 0 var(--elements-color);
+
+  background-size: 16px;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  @include on-desktop {
+    width: 64px;
+    background-size: 16px;
+  }
+
+  &--favorite {
+    background-image: url('/images/icons/icon-favorite.svg');
+  }
+
+  &--shopping-bag {
+    background-image: url('/images/icons/icon-shopping-bag.svg');
+  }
+
+  &--menu {
+    background-image: url('/images/icons/icon-menu.svg');
+  }
+
+  &--arrow-up {
+    width: 32px;
+    box-shadow: none;
+    border: 1px solid var(--icons-color);
+    background-image: url('/images/icons/icon-arrow-up.svg');
+  }
+}

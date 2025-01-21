@@ -1,0 +1,16 @@
+@import '@styles/utils';
+
+.back-to-top {
+  height: 32px;
+  cursor: pointer;
+
+  gap: 16px;
+  display: flex;
+  align-items: center;
+
+  &__label {
+    @include small-text;
+
+    color: var(--secondary-color);
+  }
+}
