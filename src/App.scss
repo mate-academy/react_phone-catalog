@@ -7,7 +7,9 @@
 
   &__header {
     position: sticky;
-    z-index: 2;
+    z-index: 200;
+    top: 0;
+    background-color: var(--bg-color);
   }
 
   &__menu {

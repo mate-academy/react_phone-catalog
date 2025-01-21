@@ -33,7 +33,18 @@
   transition: transform $transition-time ease-in-out;
 
   &:hover {
-    transform: scale($scale);
+    transform: scale(1.05);
+  }
+}
+
+@mixin hover-scale-btn {
+  transition: transform $transition-time ease-in-out;
+
+  &:hover {
+    transform: scale(0.99);
+    border: 1px solid var(--secondary-color);
+    box-shadow: 0px 1px 0px 0px var(--shadow-color);
+    cursor: pointer;
   }
 }
 

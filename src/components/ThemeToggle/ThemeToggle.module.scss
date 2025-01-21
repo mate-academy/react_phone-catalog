@@ -2,14 +2,19 @@
 
 .themeToggle {
   position: relative;
-  width: 37px;
-  height: 19px;
+  width: 33px;
+  height: 17px;
   background-color: var(--bg-color);
   border-radius: 20px;
   border: 1.5px solid var(--primary-color);
   margin-inline: 20px;
 
   @include hover-scale;
+
+  @include on-tablet {
+    width: 24px;
+    height: 14px;
+  }
 }
 
 .toggleInput {
@@ -26,13 +31,22 @@
   top: 50%;
   left: 3px;
   transform: translateY(-50%);
-  width: 15px;
-  height: 15px;
+  width: 13px;
+  height: 13px;
   background-color: var(--primary-color);
   border-radius: 50%;
   transition: left 0.2s ease;
+
+  @include on-tablet {
+    width: 12px;
+    height: 12px;
+  }
 }
 
 .toggleInput:checked + .toggleLabel .toggleCircle {
-  left: 18px;
+  left: 16px;
+
+  @include on-tablet {
+    left: 9px;
+  }
 }

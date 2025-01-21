@@ -9,9 +9,10 @@
     margin: 0;
 
     @include on-mobile {
+      padding-inline: 16px;
       font-size: 32px;
       line-height: 41px;
-      padding-inline: 16px;
+      letter-spacing: -0.01em;
     }
   }
 }

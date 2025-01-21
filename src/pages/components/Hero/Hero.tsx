@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './Hero.module.scss';
-import { HeroSlider } from '../HeroSlider';
+import { HeroSlider } from '../Slider';
 
 export const Hero = () => {
   return (
