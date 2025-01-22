@@ -1,4 +1,4 @@
-@import '@styles/utils';
+@use '@styles/utils/mixins' as *;
 
 .app {
   &__header {
@@ -8,13 +8,29 @@
     background-color: var(--white-color);
   }
 
+  &__body {
+    row-gap: 64px;
+    display: grid;
+    color: var(--primary-color);
+
+    padding-top: 24px;
+
+    @include on-desktop {
+      gap: 80px;
+    }
+
+    &--home {
+      @include on-tablet {
+        padding-top: 32px;
+      }
+
+      @include on-desktop {
+        padding-top: 56px;
+      }
+    }
+  }
+
   &__content {
     @include content-padding-inline;
-
-    max-width: $max-width;
-    min-width: $phone-min-width;
-
-    padding-block: 40px 80px;
-    color: var(--primary-color);
   }
 }

@@ -1,4 +1,4 @@
-@import '@styles/utils';
+@use '@styles/utils/mixins' as *;
 
 .back-to-top {
   height: 32px;

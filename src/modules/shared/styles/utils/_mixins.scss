@@ -1,3 +1,5 @@
+@use '@styles/utils/vars' as *;
+
 @mixin on-tablet {
   @media (min-width: $tablet-min-width) {
     @content;
@@ -10,8 +12,24 @@
   }
 }
 
+@mixin page-grid {
+  display: grid;
+  column-gap: 16px;
+  grid-template-columns: repeat(var(--columns), 1fr);
+}
+
 @mixin content-padding-inline {
-  padding-inline: 152px;
+  padding-inline: $padding-inline-p;
+
+  @include on-tablet {
+    padding-inline: $padding-inline-t;
+  }
+
+  @include on-desktop {
+    padding-inline: 0;
+    margin-inline: auto;
+    width: $desktop-min-width;
+  }
 }
 
 @mixin uppercase {

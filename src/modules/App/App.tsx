@@ -1,5 +1,6 @@
-import { Outlet } from 'react-router-dom';
+import classNames from 'classnames';
 import { useContext, useEffect } from 'react';
+import { Outlet, useLocation } from 'react-router-dom';
 
 import styles from './App.module.scss';
 
@@ -47,17 +48,25 @@ export const App = () => {
     });
   }, [dispatchPhones, dispatchTablets, dispatchAccessories]);
 
+  const { pathname } = useLocation();
+
   return (
     <div className={styles.app}>
       <div className={styles.app__header}>
         <Header />
       </div>
 
-      <div className={styles.app__content}>
-        <Outlet />
-      </div>
+      <div
+        className={classNames(styles.app__body, {
+          [styles['app__body--home']]: pathname === '/',
+        })}
+      >
+        <div className={styles.app__content}>
+          <Outlet />
+        </div>
 
-      <Footer />
+        <Footer />
+      </div>
     </div>
   );
 };

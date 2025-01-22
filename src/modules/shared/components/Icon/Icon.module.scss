@@ -1,4 +1,4 @@
-@import '@styles/utils';
+@use '@styles/utils/mixins' as *;
 
 .icon {
   width: 48px;

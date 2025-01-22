@@ -1,4 +1,4 @@
-@import '@styles/utils';
+@use '@styles/utils/mixins' as *;
 
 .header {
   height: 48px;

@@ -22,6 +22,8 @@ export const Root = () => {
                 <Route path="phones" element={<ProductsPage />} />
                 <Route path="tablets" element={<ProductsPage />} />
                 <Route path="accessories" element={<ProductsPage />} />
+                <Route path="favorite" element={<ProductsPage />} />
+                <Route path="shopping-bag" element={<ProductsPage />} />
               </Route>
             </Routes>
           </AccessoriesProvide>

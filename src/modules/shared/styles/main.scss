@@ -1,8 +1,9 @@
-@import 'utils/vars';
-@import 'utils/reset';
-@import 'utils/fonts';
-@import 'utils/mixins';
-@import 'utils/typography';
+@use '@styles/utils/mixins' as *;
+
+// main styles
+@use '@styles/utils/reset' as *;
+@use '@styles/utils/fonts' as *;
+@use '@styles/utils/typography' as *;
 
 .page {
   scroll-behavior: smooth;
@@ -15,6 +16,17 @@
   --white-color: #fff;
   --green-color: #27ae60;
   --red-color: #eb5757;
+
+  // grid columns count
+  --columns: 4;
+
+  @include on-tablet {
+    --columns: 12;
+  }
+
+  @include on-desktop {
+    --columns: 24;
+  }
 
   &--dark {
     --primary-color: #313237;
