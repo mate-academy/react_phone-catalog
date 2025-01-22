@@ -83,6 +83,10 @@
   align-items: center;
   justify-content: space-between;
 
+  &__burger_menu_close {
+    display: none;
+  }
+
   &__logo {
     display: block;
     height: 64px;
@@ -149,6 +153,10 @@
 
 @media screen and (max-width: 1200px) {
   .nav {
+    &__burger_menu_close {
+      display: none;
+    }
+
     &__logo {
       height: 48px;
       padding: 13px 16px;
@@ -194,7 +202,7 @@
       box-sizing: border-box;
       border-bottom: 3px solid transparent;
       box-shadow: -1px 0px 0px var(--InactiveLink);
-      background-image: url('Icons/Close.png');
+      background-image: url('/Icons/Close.png');
       background-repeat: no-repeat;
       background-position: center;
     }
@@ -207,7 +215,7 @@
       box-sizing: border-box;
       border-bottom: 3px solid transparent;
       box-shadow: -1px 0px 0px var(--InactiveLink);
-      background-image: url('Icons/Menu.png');
+      background-image: url('/Icons/Menu.png');
       background-repeat: no-repeat;
       background-position: center;
     }
