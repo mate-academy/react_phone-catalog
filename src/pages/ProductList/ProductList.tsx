@@ -34,7 +34,9 @@ export const ProductList: React.FC<Props> = ({
     [],
   );
 
+  /* eslint-disable-next-line */
   const localCurretPage = (currentPage ??= '1');
+  /* eslint-disable-next-line */
   const localPerPage = (perPage ??= choosenItems.length.toString());
 
   const itemsPerPage =

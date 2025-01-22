@@ -21,11 +21,14 @@ export const fetchAllProducts = createAsyncThunk(
   async () => {
     const products = await getJson<Product[]>(productsUrl);
 
-    // const newArr: Product[] = products.forEach(item => {
-    //   item.id = item.itemId
-    // });
+    const updatedProductsWithId = [];
 
-    return { products };
+    for (const item of products) {
+      item.id = item.itemId;
+      updatedProductsWithId.push(item);
+    }
+
+    return { updatedProductsWithId };
   },
 );
 
@@ -44,7 +47,7 @@ const productsSlice = createSlice({
         const currentState = state;
 
         currentState.loading = false;
-        currentState.products = action.payload.products;
+        currentState.products = action.payload.updatedProductsWithId;
       })
       .addCase(fetchAllProducts.rejected, state => {
         const currentState = state;
