@@ -6,16 +6,18 @@ import {
 } from '../../utils/getLinkClass';
 import { useContext } from 'react';
 import { StateContext } from '../../store/GlobalProvider';
+import classNames from 'classnames';
 
 type Props = {
   toggleMenu: () => void;
+  menuOpen: boolean;
 };
 
-export const BurgerMenu: React.FC<Props> = ({ toggleMenu }) => {
+export const BurgerMenu: React.FC<Props> = ({ toggleMenu, menuOpen }) => {
   const { favourites, cart, calculateTotalItems } = useContext(StateContext);
 
   return (
-    <div className="menu">
+    <div className={classNames('menu', { 'menu--open': menuOpen })}>
       <header className="header">
         <Logo classN={'logo__header'} />
 

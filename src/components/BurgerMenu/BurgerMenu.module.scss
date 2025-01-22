@@ -7,9 +7,17 @@
   background-color: $white-color;
   overflow: hidden;
   z-index: 100;
+  transform: translateX(100%);
+  opacity: 0;
+  transition: transform $effect-duration ease, opacity $effect-duration ease;
 
   @include on-tablet {
     display: none;
+  }
+
+  &--open {
+    transform: translateX(0);
+    opacity: 1;
   }
 
   &__nav-list {

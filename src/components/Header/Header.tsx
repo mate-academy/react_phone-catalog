@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { BurgerMenu } from '../BurgerMenu/BurgerMenu';
 import { Logo } from '../Logo/logo';
@@ -17,6 +17,18 @@ export const Header = () => {
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
   };
+
+  useEffect(() => {
+    if (menuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [menuOpen]);
 
   return (
     <>
@@ -93,7 +105,7 @@ export const Header = () => {
           </Link>
         </div>
       </header>
-      {menuOpen && <BurgerMenu toggleMenu={toggleMenu} />}
+      <BurgerMenu toggleMenu={toggleMenu} menuOpen={menuOpen} />
     </>
   );
 };

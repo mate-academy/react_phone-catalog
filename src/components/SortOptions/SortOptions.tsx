@@ -36,7 +36,7 @@ export const SortOptions: React.FC<Props> = ({
             onChange={handleSortBy}
             label={'Sort by'}
             defaultText={'Select an option'}
-            />
+          />
         </div>
 
         <div className="sortOptions__page">
