@@ -65,3 +65,11 @@ font-weight: 700;
 line-height: 25.56px;
 
 }
+
+button:disabled, .disabled {
+  cursor: not-allowed;
+}
+
+a, button {
+  cursor: pointer;
+}
