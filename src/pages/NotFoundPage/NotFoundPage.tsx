@@ -7,7 +7,7 @@ export const NotFoundPage = () => {
         <h1>Page not found</h1>
         <img
           className={style.notFound__image}
-          src="src\pages\NotFoundPage\assets\page-not-found.png"
+          src="./img/page-not-found.png"
           alt="page not found image"
         />
       </section>
