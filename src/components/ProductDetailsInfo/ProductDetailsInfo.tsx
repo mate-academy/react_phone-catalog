@@ -1,4 +1,5 @@
 // eslint-disable-next-line max-len
+import { useEffect } from 'react';
 import { Product } from '../../types/Product';
 // eslint-disable-next-line max-len
 import { ProductDetailsCarousel } from '../ProductDetailsCarousel/ProductDetailsCarousel';
@@ -10,6 +11,10 @@ type Props = {
 };
 
 export const ProductDetailsInfo: React.FC<Props> = ({ title, prodId }) => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <section className="productDetailsInfo">
       <h2>{title}</h2>

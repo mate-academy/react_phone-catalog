@@ -41,7 +41,9 @@ export const Footer = () => {
           </a>
         </div>
         <div className="footer__back-box">
-          <p className="footer__back-text">Back to top</p>
+          <p className="footer__back-text" onClick={backToTop}>
+            Back to top
+          </p>
           <button className="footer__button icon" onClick={backToTop}>
             <img
               src="img/icons/arrow-top.svg"

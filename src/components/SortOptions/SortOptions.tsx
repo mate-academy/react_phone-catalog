@@ -34,8 +34,9 @@ export const SortOptions: React.FC<Props> = ({
             options={sortOptions}
             value={sort}
             onChange={handleSortBy}
+            label={'Sort by'}
             defaultText={'Select an option'}
-          />
+            />
         </div>
 
         <div className="sortOptions__page">
@@ -43,6 +44,7 @@ export const SortOptions: React.FC<Props> = ({
             options={perPageOptions}
             value={perPage.toString()}
             onChange={handlePerPageChange}
+            label={'Items on page'}
             defaultText={'All'}
           />
         </div>

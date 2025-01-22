@@ -80,6 +80,9 @@
     @extend %small-text;
 
     color: $secondary-color;
+    cursor: pointer;
+
+    @include hover(color, $primary-color);
   }
 
   &__button {

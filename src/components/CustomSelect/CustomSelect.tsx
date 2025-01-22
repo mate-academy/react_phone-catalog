@@ -9,6 +9,7 @@ type Props = {
   options: Option[];
   value: string;
   onChange: (value: string) => void;
+  label: string;
   defaultText: string;
 };
 
@@ -16,6 +17,7 @@ export const CustomSelect: React.FC<Props> = ({
   options,
   value,
   onChange,
+  label,
   defaultText,
 }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -42,8 +44,8 @@ export const CustomSelect: React.FC<Props> = ({
 
   return (
     <div className="custom-select" ref={selectRef}>
-      <label htmlFor="sortSelect" className="sortOptions__label">
-        Sort by
+      <label htmlFor={label} className="sortOptions__label">
+        {label}
       </label>
       <div
         className={`custom-select__header ${isOpen ? 'custom-select__header--rotated' : ''}`}
