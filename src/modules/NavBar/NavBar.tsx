@@ -16,7 +16,7 @@ export const NavBar = () => {
       <header className={style.nav}>
         <Link to="/">
           <img
-            src="public/img/Logo.png"
+            src="/public/img/Logo.png"
             alt="logo"
             className={style.nav__logo}
           />

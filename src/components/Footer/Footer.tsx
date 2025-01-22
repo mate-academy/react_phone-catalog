@@ -10,7 +10,7 @@ export const Footer = () => {
         <Link to="/">
           <img
             className={style.footer__logo}
-            src="/img/Logo.png"
+            src="/public/img/Logo.png"
             alt="Logo"
           />
         </Link>
