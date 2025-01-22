@@ -26,27 +26,27 @@ export const Carusel: React.FC<Props> = ({ products, swiperRef }) => {
           1200: {
             slidesPerView: 4,
             centeredSlides: false,
-            spaceBetween: 20,
+            spaceBetween: 16,
           },
           1024: {
             slidesPerView: 3.5,
             centeredSlides: false,
-            spaceBetween: 20,
+            spaceBetween: 16,
           },
           768: {
             slidesPerView: 2.5,
             centeredSlides: false,
-            spaceBetween: 20,
+            spaceBetween: 16,
           },
           640: {
             slidesPerView: 2,
             centeredSlides: false,
-            spaceBetween: 20,
+            spaceBetween: 16,
           },
           400: {
             slidesPerView: 1.3,
             centeredSlides: false,
-            spaceBetween: 20,
+            spaceBetween: 16,
           },
         }}
       >
