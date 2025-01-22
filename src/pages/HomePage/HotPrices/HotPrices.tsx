@@ -43,7 +43,7 @@ export const HotPrices = () => {
             {visibleItems.map((item: Product) => (
               <NavLink
                 key={item.id}
-                to={`${item.category}/${item.id}`}
+                to={`${item.category}/${item.itemId}`}
                 className="productsPage__link"
               >
                 <PhoneTablAccessCard product={item} key={item.id} />

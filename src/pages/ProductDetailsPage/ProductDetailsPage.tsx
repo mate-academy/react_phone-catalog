@@ -23,12 +23,6 @@ export const ProductDetails: React.FC<Props> = ({ categoryId }) => {
   const { productId } = useParams();
 
   const theme = useAppSelector(state => state.themeSwitcher.theme);
-
-  // console.log(categoryId)
-
-  // const [choosenProduct, setChoosenProduct] = useLocalStorage<
-  //   TabAccessPhone | undefined
-  // >('product', undefined);
   const location = useLocation();
   const paths = location.pathname.split('/').filter(path => path);
   const x = location.pathname.split('-');

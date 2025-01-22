@@ -44,19 +44,21 @@ export const BrandNew = () => {
         </div>
         <div className="hotPrices__cards">
           <div className="hotPrices__ribbon">
-            {getSortProducts.map((item: Product) => (
-              <NavLink
-                key={item.itemId}
-                to={`${item.category}/${item.itemId}`}
-                className="productsPage__link"
-              >
-                <PhoneTablAccessCard
-                  product={item}
-                  key={item.itemId}
-                  brand={brand}
-                />
-              </NavLink>
-            ))}
+            {getSortProducts.map((item: Product) => {
+              return (
+                <NavLink
+                  key={item.id}
+                  to={`${item.category}/${item.itemId}`}
+                  className="productsPage__link"
+                >
+                  <PhoneTablAccessCard
+                    product={item}
+                    key={item.itemId}
+                    brand={brand}
+                  />
+                </NavLink>
+              );
+            })}
           </div>
         </div>
       </div>

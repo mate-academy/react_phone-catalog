@@ -28,10 +28,6 @@ export const Button: React.FC<Props> = ({ productId, detailsPage }) => {
   const [clicked, setClicked] = useState(false);
   const [pressed, setPressed] = useState(false);
 
-  // useEffect(() => {
-  //   console.log(productId);
-  // }, [productId]);
-
   useEffect(() => {
     const favProd = favProducts.find(prod => prod === productId);
 

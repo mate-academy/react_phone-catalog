@@ -21,6 +21,10 @@ export const fetchAllProducts = createAsyncThunk(
   async () => {
     const products = await getJson<Product[]>(productsUrl);
 
+    // const newArr: Product[] = products.forEach(item => {
+    //   item.id = item.itemId
+    // });
+
     return { products };
   },
 );

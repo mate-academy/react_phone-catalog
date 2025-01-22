@@ -127,6 +127,7 @@ export const ProductPage: React.FC<Props> = ({ title, category }) => {
           </div>
           <div className="productsPage__itemsOnPage">
             <div className={sortByClass}>Items on page</div>
+            {/* eslint-disable jsx-a11y/label-has-associated-control */}
             <label htmlFor="pageId" className="productsPage__selectWrapper">
               <select
                 value={perPage}

@@ -19,7 +19,6 @@ import { fetchAllProducts } from '../../features/allProductsSlice';
 export const CartPage = () => {
   const dispatch = useAppDispatch();
   const { cartProducts, loading } = useAppSelector(state => state.cartItems);
-
   const [totalPrice, setTotalPrice] = useState<number>();
 
   function useProductsInfo(ids: string[]): {
