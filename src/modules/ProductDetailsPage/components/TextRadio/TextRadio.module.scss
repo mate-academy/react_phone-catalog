@@ -1,0 +1,56 @@
+@use "../../../shared/styles/extends";
+@use "../../../shared/styles/mixins" as *;
+
+.Legend {
+  margin-bottom: 8px;
+
+  @extend %small-text;
+  @include color-transition((color: var(--secondary-text-color)));
+}
+
+.Label {
+  position: relative;
+  display: block;
+  padding: 7px 8px 4px;
+  cursor: pointer;
+
+  @extend %body-text;
+  @include color-transition((color: var(--text-radio-text-color)));
+
+  &:has(.Option:checked) {
+    color: var(--text-radio-text-active-color);
+  }
+}
+
+.Option {
+  appearance: none;
+
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  border: 1px solid;
+
+  @include color-transition((border-color: var(--text-radio-border-color), background-color: transparent));
+
+  &:hover {
+    border-color: var(--text-radio-border-hover-color);
+  }
+
+  &:checked {
+    border-color: var(--text-radio-active-color);
+    background-color: var(--text-radio-active-color);
+  }
+}
+
+.Options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px
+}

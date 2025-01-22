@@ -104,8 +104,10 @@ export const PhotosSlider: React.FC<Props> = ({
   };
 
   useEffect(() => {
-    setJumpScroll(true);
-  }, [photos.length]);
+    if (position >= photos.length) {
+      setPosition(photos.length - 1);
+    }
+  }, [position, photos.length]);
 
   useEffect(() => {
     const handleResize = () => {
@@ -167,7 +169,7 @@ export const PhotosSlider: React.FC<Props> = ({
   };
 
   return (
-    <article className={classNames(styles.PhotosSlider, className)}>
+    <section className={classNames(styles.PhotosSlider, className)}>
       <div className={styles.Wrapper}>
         <ul
           className={classNames(
@@ -194,6 +196,6 @@ export const PhotosSlider: React.FC<Props> = ({
         onClick={handlePreviewClick}
         className={styles.PhotoPreviews}
       />
-    </article>
+    </section>
   );
 };

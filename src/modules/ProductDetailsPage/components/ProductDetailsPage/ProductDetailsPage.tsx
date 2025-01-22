@@ -19,6 +19,7 @@ import {
   tabletsPath,
 } from '../../../shared/consts/paths';
 import { PhotosSlider } from '../PhotosSlider';
+import { ProductDetailsControls } from '../ProductDetailsControls';
 
 type Props = {
   productCategory: Category;
@@ -93,13 +94,21 @@ export const ProductDetailsPage: React.FC<Props> = ({ productCategory }) => {
       <PathNavigation path={path} links={[prevPageLink]} goBack />
 
       <main className={styles.ProductsPage}>
-        {productDetails && (
+        {product && productDetails && (
           <>
             <h1 className={styles.Title}>{productDetails.name}</h1>
+
             <PhotosSlider
               photos={productDetails.images}
               productCategory={productCategory}
               className={styles.PhotosSlider}
+            />
+
+            <ProductDetailsControls
+              product={productDetails}
+              fullPrice={product.fullPrice}
+              price={product.price}
+              className={styles.Controls}
             />
           </>
         )}

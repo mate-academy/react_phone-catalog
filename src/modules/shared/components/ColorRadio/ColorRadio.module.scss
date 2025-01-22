@@ -18,16 +18,15 @@ $color-radio-size: 32px;
   appearance: none;
   cursor: pointer;
 
+  display: block;
   box-sizing: border-box;
   background-clip: content-box;
   width: $color-radio-size;
   height: $color-radio-size;
+  margin: 0;
   padding: 2px;
   border: 1px solid;
   border-radius: 50%;
-  margin: 0 8px 0 0;
-
-  background-color: var(--shadow-color);
 
   @include color-transition((border-color: var(--element-color)));
 
@@ -38,4 +37,10 @@ $color-radio-size: 32px;
   &:checked {
     border-color: var(--active-color);
   }
+}
+
+.Options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px
 }

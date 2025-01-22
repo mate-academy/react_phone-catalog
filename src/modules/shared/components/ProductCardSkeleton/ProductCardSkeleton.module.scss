@@ -66,7 +66,7 @@
   width: 25%;
   border-radius: 10px;
 
-  @extend %parameter-value;
+  @extend %small-text;
   @include color-transition((background-color: var(--loading-color)));
 }
 

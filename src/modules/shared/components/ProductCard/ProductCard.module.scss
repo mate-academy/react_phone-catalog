@@ -23,9 +23,13 @@
   @extend %body-text;
 }
 
-.Price {
-  padding-right: 8px;
+.Prices {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
 
+.Price {
   @extend %h3;
   @include color-transition((color: var(--primary-text-color)));
 }
@@ -53,20 +57,6 @@
   }
 }
 
-.Line {
-  position: relative;
-
-  &::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    height: 1px;
-    width: 100%;
-
-    @include color-transition((background-color: var(--element-color)));
-  }
-}
-
 .Parameters {
   display: flex;
   flex-direction: column;
@@ -77,6 +67,7 @@
 .Parameter {
   display: flex;
   justify-content: space-between;
+  gap: 8px;
 }
 
 .ParameterName {
@@ -85,7 +76,9 @@
 }
 
 .ParameterValue {
-  @extend %parameter-value;
+  text-align: right;
+
+  @extend %small-text;
   @include color-transition((color: var(--primary-text-color)));
 }
 

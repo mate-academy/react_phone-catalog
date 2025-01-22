@@ -1,0 +1,89 @@
+@use "../../../shared/styles/mixins" as *;
+@use "../../../shared/styles/extends";
+
+.SecondLine {
+  margin-bottom: 8px;
+}
+
+.MainControls {
+  margin-bottom: 8px;
+}
+
+.Prices {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.Price {
+  @extend %h2;
+  @include color-transition((color: var(--primary-text-color)));
+}
+
+.Discount {
+  position: relative;
+  text-decoration: none;
+
+  @extend %discount;
+  @include color-transition((color: var(--secondary-text-color)));
+
+  &::after {
+    content: attr(data-content);
+
+    position: absolute;
+    right: 0;
+
+    clip-path: inset(48% 0 48% 0);
+
+    @extend %discount;
+    @include color-transition((
+      background-color: var(--secondary-text-color),
+      color: var(--background-color)
+    ));
+  }
+}
+
+.Buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.AddToCartButton {
+  flex-grow: 1;
+}
+
+.FavouriteButton {
+  height: 48px;
+}
+
+.Parameters {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.Parameter {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.ParameterName {
+  @extend %small-text;
+  @include color-transition((color: var(--secondary-text-color)));
+}
+
+.ParameterValue {
+  text-align: right;
+
+  @extend %small-text;
+  @include color-transition((color: var(--primary-text-color)));
+}
+
+.ProductDetailsControls {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding-top: 40px;
+}

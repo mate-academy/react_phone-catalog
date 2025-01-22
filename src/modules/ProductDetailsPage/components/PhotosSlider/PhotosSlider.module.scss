@@ -71,4 +71,9 @@
   @include child-grid;
 
   row-gap: 16px;
+  padding-top: 40px;
+
+  @include for-mobile {
+    padding-top: 32px;
+  }
 }

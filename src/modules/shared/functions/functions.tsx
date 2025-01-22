@@ -1,6 +1,7 @@
 import { BagSVG } from '../components/SVGs/BagSVG';
 import { HeartSVG } from '../components/SVGs/HeartSVG';
 import { SettingsSVG } from '../components/SVGs/SettingsSVG';
+import { colorMap } from '../consts/objects';
 import { MenuLinkSVGOption } from '../types/enums';
 import { HandleSliderDragEvent } from '../types/handlers';
 import { Pagination } from '../types/types';
@@ -63,3 +64,16 @@ export const wait = (delay: number) =>
   new Promise(resolve => {
     setTimeout(resolve, delay);
   });
+
+export const getColorValue = (colorName: string): string => {
+  const value = colorMap[colorName.replace(/[- ]/g, '').toLowerCase()];
+
+  if (value) {
+    return value;
+  } else {
+    throw new Error(`${colorName} color not found!!!`);
+  }
+};
+
+export const separateValueFromUnit = (parameter: string): string =>
+  parameter.replace(/(\D)/, ' $1');

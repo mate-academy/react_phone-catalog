@@ -1,11 +1,9 @@
-import { Fragment } from 'react/jsx-runtime';
 import styles from './ColorRadio.module.scss';
-import { useId } from 'react';
 
 export type Option = {
-  name: string;
   label: string;
   value: string;
+  colorValue: string;
 };
 
 type HandleColorChange = (colorName: string) => void;
@@ -23,8 +21,6 @@ export const ColorRadio: React.FC<Props> = ({
   chosenColor,
   onChange,
 }) => {
-  const id = useId();
-
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const newColor = event.currentTarget.value;
 
@@ -37,24 +33,26 @@ export const ColorRadio: React.FC<Props> = ({
     <fieldset>
       <legend className={styles.Legend}>{title}</legend>
 
-      {options.map(option => (
-        <Fragment key={option.name}>
-          <label htmlFor={`${option.name}-${id}`} className={styles.Label}>
-            {option.label}
-          </label>
+      <ul className={styles.Options}>
+        {options.map(option => (
+          <li key={option.value}>
+            <label htmlFor={option.value} className={styles.Label}>
+              {option.label}
+            </label>
 
-          <input
-            type="radio"
-            value={option.name}
-            name="color"
-            id={`${option.name}-${id}`}
-            className={styles.Option}
-            style={{ backgroundColor: option.value }}
-            checked={chosenColor === option.name}
-            onChange={handleChange}
-          />
-        </Fragment>
-      ))}
+            <input
+              type="radio"
+              value={option.value}
+              name={title}
+              id={option.value}
+              className={styles.Option}
+              style={{ backgroundColor: option.colorValue }}
+              checked={chosenColor === option.value}
+              onChange={handleChange}
+            />
+          </li>
+        ))}
+      </ul>
     </fieldset>
   );
 };

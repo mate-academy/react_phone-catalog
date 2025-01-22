@@ -30,8 +30,8 @@ export const ThemeSettings: React.FC<Props> = ({ className }) => {
       <ColorRadio
         title={themeSettingsLabel}
         options={[
-          { name: Theme.Bright, label: accessBright, value: '#FFF' },
-          { name: Theme.Dark, label: accessDark, value: '#0F1121' },
+          { label: accessBright, value: Theme.Bright, colorValue: '#FFF' },
+          { label: accessDark, value: Theme.Dark, colorValue: '#0F1121' },
         ]}
         chosenColor={theme}
         onChange={handleColorChange}

@@ -7,6 +7,8 @@ import { Product } from '../../types/types';
 import { Category } from '../../types/enums';
 import { accessoriesPath, phonesPath, tabletsPath } from '../../consts/paths';
 import { Link } from 'react-router-dom';
+import { DecorativeLine } from '../DecorativeLine';
+import { separateValueFromUnit } from '../../functions/functions';
 
 type Props = {
   product: Product;
@@ -80,7 +82,7 @@ export const ProductCard: React.FC<Props> = ({
         {name}
       </Link>
 
-      <div>
+      <div className={styles.Prices}>
         <strong className={styles.Price}>{`$${price}`}</strong>
 
         {price !== fullPrice && (
@@ -91,7 +93,7 @@ export const ProductCard: React.FC<Props> = ({
         )}
       </div>
 
-      <div className={styles.Line}></div>
+      <DecorativeLine />
 
       <ul className={styles.Parameters}>
         <li className={styles.Parameter}>
@@ -104,12 +106,14 @@ export const ProductCard: React.FC<Props> = ({
             {category === Category.Accessories ? sizeLabel : capacityLabel}
           </p>
 
-          <p className={styles.ParameterValue}>{capacity}</p>
+          <p className={styles.ParameterValue}>
+            {separateValueFromUnit(capacity)}
+          </p>
         </li>
 
         <li className={styles.Parameter}>
           <p className={styles.ParameterName}>{ramLabel}</p>
-          <p className={styles.ParameterValue}>{ram}</p>
+          <p className={styles.ParameterValue}>{separateValueFromUnit(ram)}</p>
         </li>
       </ul>
 
