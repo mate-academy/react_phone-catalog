@@ -15,7 +15,11 @@ export const NavBar = () => {
     <>
       <header className={style.nav}>
         <Link to="/">
-          <img src="/img/Logo.png" alt="logo" className={style.nav__logo} />
+          <img
+            src={`${process.env.PUBLIC_URL}/img/Logo.png`}
+            alt="logo"
+            className={style.nav__logo}
+          />
         </Link>
         <nav className={style.nav__container}>
           <div className={style.nav__items}>

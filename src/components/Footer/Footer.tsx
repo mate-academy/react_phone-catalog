@@ -8,7 +8,11 @@ export const Footer = () => {
     <>
       <div className={style.footer}>
         <Link to="/">
-          <img className={style.footer__logo} src="/img/Logo.png" alt="Logo" />
+          <img
+            className={style.footer__logo}
+            src={`${process.env.PUBLIC_URL}/img/Logo.png`}
+            alt="Logo"
+          />
         </Link>
         <section className={style.footer__links}>
           <a
