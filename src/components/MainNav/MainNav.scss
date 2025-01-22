@@ -36,6 +36,12 @@
 
     color: vars.$color-secondary;
 
+    &:not(&--selected):hover {
+      filter: brightness(65%);
+
+      transition: filter vars.$transition-time;
+    }
+
     &--selected {
       color: vars.$color-primary;
       box-shadow: inset 0 -3px 0 vars.$color-primary;

@@ -74,6 +74,8 @@ button,
   background-color: vars.$color-primary;
   border: none;
 
+  cursor: pointer;
+
   text-decoration: none;
 
   transition: box-shadow vars.$transition-time;
@@ -100,6 +102,8 @@ button,
 
   &--white,
   &--text {
+    cursor: pointer;
+
     transition: border-color vars.$transition-time;
 
     &:hover {
@@ -124,6 +128,8 @@ button,
 
     border: 1px solid vars.$color-icons;
     background: none;
+
+    cursor: pointer;
 
     transition: border-color vars.$transition-time;
 
@@ -153,6 +159,8 @@ button,
 
     padding: 7px;
     box-sizing: border-box;
+
+    cursor: pointer;
 
     display: flex;
     align-items: center;
