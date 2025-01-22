@@ -33,19 +33,19 @@
 
 .carusel__button--prev {
   margin-right: 16px;
-  background-image: url('./Icons/arrow_left.png');
+  background-image: url('/Icons/arrow_left.png');
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
   transition: background-image 0.3s ease;
 
   &:hover {
-    background-image: url('Icons/arrow_left_black.png');
+    background-image: url('/Icons/arrow_left_black.png');
   }
 }
 
 .carusel__button--disabled {
-  background-image: url('Icons/arrow_left.png');
+  background-image: url('/Icons/arrow_left.png');
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
@@ -63,13 +63,13 @@
 .carusel__button--next {
   margin-left: 16px;
   margin-right: 16px;
-  background-image: url('Icons/arrow_right.png');
+  background-image: url('/Icons/arrow_right.png');
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
 
   &:hover {
-    background-image: url('Icons/arrow_right_black.png');
+    background-image: url('/Icons/arrow_right_black.png');
   }
 }
 
