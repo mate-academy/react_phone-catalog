@@ -59,9 +59,9 @@
     }
 
     &--visible {
-      animation: appear ease forwards;
+      animation: banner-appear ease forwards;
 
-      @keyframes appear {
+      @keyframes banner-appear {
         from {
           opacity: 0;
           transform: translateX(var(--direction));
@@ -77,9 +77,9 @@
     &--hidden {
       pointer-events: none;
 
-      animation: disappear ease forwards;
+      animation: banner-disappear ease forwards;
 
-      @keyframes disappear {
+      @keyframes banner-disappear {
         from {
           opacity: 1;
           transform: translateX(0);

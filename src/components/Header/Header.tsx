@@ -60,7 +60,11 @@ export const Header: React.FC<Props> = ({ openMenu }) => {
           <div className="header__button-container">
             <img src="icons/favourite.svg" alt="Favourite icon" />
             {!!favouritesCount && (
-              <div className="header__button-count">{favouritesCount}</div>
+              <div className="header__button-count">
+                <p className="header__button-count-text" key={favouritesCount}>
+                  {favouritesCount}
+                </p>
+              </div>
             )}
           </div>
         </NavLink>
@@ -70,7 +74,11 @@ export const Header: React.FC<Props> = ({ openMenu }) => {
             <img src="icons/cart.svg" alt="Cart icon" />
 
             {!!cartCount && (
-              <div className="header__button-count">{cartCount}</div>
+              <div className="header__button-count">
+                <p className="header__button-count-text" key={cartCount}>
+                  {cartCount}
+                </p>
+              </div>
             )}
           </div>
         </NavLink>

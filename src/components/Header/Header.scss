@@ -101,9 +101,36 @@
       background-color: #eb5757;
       border: 1px solid #ffffff;
 
-      font-size: 9px;
-      font-weight: vars.$font-weight-semi-bold;
-      color: white;
+      animation: ease-in-out vars.$transition-time forwards count-appear;
+
+      @keyframes count-appear {
+        0% {
+          opacity: 0;
+        }
+
+        100% {
+          opacity: 1;
+        }
+      }
+
+      &-text {
+        font-size: 9px;
+        font-weight: vars.$font-weight-semi-bold;
+        color: white;
+
+        animation: cubic-bezier(0.7, -0.67, 0.16, 1.67) vars.$transition-time
+          forwards count-text-appear;
+
+        @keyframes count-text-appear {
+          from {
+            transform: translateY(-3px);
+          }
+
+          to {
+            transform: translateY(0);
+          }
+        }
+      }
     }
   }
 }
