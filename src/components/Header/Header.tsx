@@ -56,30 +56,35 @@ export const Header: React.FC<Props> = ({ openMenu }) => {
       return;
     }
 
-    if (getComputedStyle(navRef.current).display === 'none') {
-      caretRef.current.style.display = 'none';
-
-      return;
-    }
-
     const selectedElement = headerRef.current.querySelector(
       '[class*="--selected"]',
     );
 
-    if (!selectedElement) {
+    if (
+      !selectedElement ||
+      getComputedStyle(navRef.current).display === 'none'
+    ) {
+      caretRef.current.style.opacity = '0';
+
       return;
     }
 
     const selectedElementRect = selectedElement.getBoundingClientRect();
     const caretRect = caretRef.current.getBoundingClientRect();
 
-    if (caretRect.left == selectedElementRect.left) {
+    const prevOpacity = getComputedStyle(caretRef.current).opacity;
+
+    caretRef.current.style.opacity = '1';
+
+    if (caretRect.left === selectedElementRect.left) {
       return;
     }
 
-    caretRef.current.style.display = 'block';
-
-    if (!caretRect.left) {
+    if (
+      !caretRect.left ||
+      Math.abs(caretRect.left - selectedElementRect.left) < 20 ||
+      prevOpacity !== '1'
+    ) {
       caretRef.current.style.left = `${selectedElementRect.left}px`;
       caretRef.current.style.width = `${selectedElementRect.width}px`;
 
@@ -105,10 +110,21 @@ export const Header: React.FC<Props> = ({ openMenu }) => {
       duration: 300,
       iterations: 1,
       easing: 'ease-in-out',
-      fill: 'forwards',
     };
 
-    caretRef.current.animate(caretKeyframes as Keyframe[], caretTiming);
+    const animation = caretRef.current.animate(
+      caretKeyframes as Keyframe[],
+      caretTiming,
+    );
+
+    animation.addEventListener('finish', () => {
+      if (!caretRef.current) {
+        return;
+      }
+
+      caretRef.current.style.left = `${selectedElementRect.left}px`;
+      caretRef.current.style.width = `${selectedElementRect.width}px`;
+    });
   };
 
   useEffect(() => {

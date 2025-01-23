@@ -17,6 +17,8 @@
     background-color: vars.$color-primary;
 
     transform-origin: bottom;
+
+    transition: opacity vars.$transition-time;
   }
 
   &__left {
