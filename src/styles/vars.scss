@@ -6,6 +6,11 @@ body.light-theme {
   --shadow-color: #e2e6e9;
   --button-bg-color: #fff;
   --button-border-color: #b4bdc3;
+  --card-bg-color: #fff;
+  --card-border-color: #e2e6e9;
+  --card-hover-text-color: #64656b;
+  --card-button-color: #313237;
+  --card-button-hover-color: #4f5158;
 }
 
 body.dark-theme {
@@ -16,7 +21,14 @@ body.dark-theme {
   --shadow-color: #3b3e4a;
   --button-bg-color: #323542;
   --button-border-color: #323542;
+  --card-bg-color: #161827;
+  --card-border-color: #161827;
+  --card-hover-text-color: #cccccc;
+  --card-button-color: #905bff;
+  --card-button-hover-color: #a177fa;
 }
+
+$green-color: #27ae60;
 
 $header-height-desktop: 64px;
 $header-height-tablets: 48px;

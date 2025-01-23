@@ -3,9 +3,8 @@ import useEmblaCarousel from 'embla-carousel-react';
 import Autoplay from 'embla-carousel-autoplay';
 import styles from './HeroSlider.module.scss';
 import { Icon } from '../../../components/Icon';
-import { useTheme } from '../../../hooks/useTheme';
 import { useIsMobile } from '../../../hooks/useIsMobile';
-import { SliderButton } from '../SliderButton/SliderButton';
+import { HeroSliderButton } from '../HeroSliderButton/HeroSliderButton';
 
 import image1 from '../../../assets/images/banner-phones-D6M9dxRi.png';
 import image2 from '../../../assets/images/banner-tablets.png';
@@ -15,6 +14,9 @@ import mobImage2 from '../../../assets/images/sliderPhoto2png.png';
 import mobImage3 from '../../../assets/images/sliderPhoto3.png';
 import classNames from 'classnames';
 
+const imagesForDesktop = [image1, image2, image3];
+const imagesForMobile = [mobImage1, mobImage2, mobImage3];
+
 export const HeroSlider = () => {
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true }, [
     Autoplay({
@@ -23,7 +25,7 @@ export const HeroSlider = () => {
       stopOnMouseEnter: true,
     }),
   ]);
-  const { theme } = useTheme();
+
   const [countImg, setCountImg] = useState(0);
   const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -40,9 +42,6 @@ export const HeroSlider = () => {
       emblaApi.scrollNext();
     }
   }, [emblaApi]);
-
-  const imagesForDesktop = [image1, image2, image3];
-  const imagesForMobile = [mobImage1, mobImage2, mobImage3];
 
   const images = isMobile ? imagesForMobile : imagesForDesktop;
 
@@ -68,7 +67,7 @@ export const HeroSlider = () => {
   }, [emblaApi, onSlideChange]);
 
   return (
-    <div className={`${styles.slider} ${styles[theme]}`}>
+    <div className={styles.slider}>
       <div className={styles.slider__content}>
         <div className={styles.slider__arrows}>
           <button className={styles.slider__arrow} onClick={goToPrev}>
@@ -88,7 +87,7 @@ export const HeroSlider = () => {
                   alt={`slider-image-${index}`}
                 />
 
-                {index === 0 && <SliderButton path="/phones" />}
+                {index === 0 && <HeroSliderButton path="/phones" />}
               </div>
             ))}
           </div>

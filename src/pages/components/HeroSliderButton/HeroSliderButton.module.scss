@@ -15,6 +15,10 @@
   box-shadow: 0 0 0 0.6px #5a5b62;
   @include hover-scale-btn;
 
+  @include on-mobile {
+    display: none;
+  }
+
   &__nav {
     justify-content: center;
     text-transform: uppercase;
@@ -22,10 +26,17 @@
     font-size: 14.5px;
     color: #fff;
     letter-spacing: 0.07em;
+
+    @include on-tablet {
+      font-weight: 500;
+      font-size: 9.7px;
+      letter-spacing: 0.07em;
+    }
   }
 
   &:hover {
     background: linear-gradient(90deg, #6339f0, #b15beb);
     border: none;
+    box-shadow: none;
   }
 }

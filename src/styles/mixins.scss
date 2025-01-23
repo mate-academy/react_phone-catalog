@@ -29,6 +29,12 @@
   letter-spacing: 0.04em;
 }
 
+@mixin body-text {
+  font-weight: $font-thin;
+  font-size: 14px;
+  line-height: 21px;
+}
+
 @mixin hover-scale {
   transition: transform $transition-time ease-in-out;
 
@@ -70,4 +76,44 @@
   @media (min-width: 1200px) {
     margin-inline: calc((100vw - 1200px) / 2);
   }
+}
+
+@mixin title {
+  font-size: 32px;
+  font-weight: $font-acc;
+  line-height: 41px;
+  letter-spacing: -0.01em;
+  text-align: left;
+  color: var(--primary-color);
+
+  @include on-mobile {
+    font-size: 22px;
+    line-height: 30.8px;
+    letter-spacing: 0;
+  }
+}
+
+@mixin section {
+  margin-top: 80px;
+
+  @include on-tablet {
+    margin-top: 64px;
+  }
+
+  @include on-mobile {
+    margin-top: 56px;
+  }
+}
+
+@mixin disabled-button {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+@mixin button-text {
+  text-align: center;
+  font-size: 14px;
+  line-height: 21px;
+  font-family: Mont, sans-serif;
+  font-weight: $font-normal;
 }

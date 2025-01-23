@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
 
+//переробити на контекст
+
 export const useIsMobile = () => {
   const [isMobile, setIsMobile] = useState(false);
 

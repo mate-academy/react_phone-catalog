@@ -1,10 +1,10 @@
 import { useMenu } from '../../hooks/useMenu';
 import React, { useEffect } from 'react';
 import { Logo } from '../Logo';
-import { Icon } from '../Icon';
 import slyles from './Menu.module.scss';
 import { Navigation } from '../Navigation';
 import { NavIcon } from '../NavIcon';
+import classNames from 'classnames';
 
 export const Menu = () => {
   const { isOpen, closeMenu } = useMenu();
@@ -34,31 +34,29 @@ export const Menu = () => {
 
   return (
     isOpen && (
-      <aside onClick={handleCloseMenu} className={slyles.menu}>
-        <div className={slyles.menu__top}>
-          <div data-nav-link className={slyles.menu__logo}>
-            <Logo />
+      <div className={classNames('app__menu', { 'app__menu--open': isOpen })}>
+        <aside onClick={handleCloseMenu} className={slyles.menu}>
+          <div className={slyles.menu__top}>
+            <div data-nav-link className={slyles.menu__logo}>
+              <Logo />
+            </div>
           </div>
 
-          <button data-nav-link className={slyles.menu__close}>
-            <Icon type="close" />
-          </button>
-        </div>
-
-        <div data-nav-link className={slyles.menu_nav}>
-          <Navigation isMenu />
-        </div>
-
-        <div data-nav-link className={slyles.menu__icons}>
-          <div className={slyles.menu__icon}>
-            <NavIcon type="favourite" path="/favourites" />
+          <div data-nav-link className={slyles.menu_nav}>
+            <Navigation isMenu />
           </div>
 
-          <div className={slyles.menu__icon}>
-            <NavIcon type="cart" path="/cart" />
+          <div data-nav-link className={slyles.menu__icons}>
+            <div className={slyles.menu__icon}>
+              <NavIcon type="favourite" path="/favourites" />
+            </div>
+
+            <div className={slyles.menu__icon}>
+              <NavIcon type="cart" path="/cart" />
+            </div>
           </div>
-        </div>
-      </aside>
+        </aside>
+      </div>
     )
   );
 };

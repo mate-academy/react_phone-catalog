@@ -1,0 +1,66 @@
+@import '../../../styles/main.scss';
+
+.slider {
+  overflow: hidden;
+
+  @include section;
+
+  &__title {
+    margin: 0;
+
+    @include title;
+  }
+
+  &__btns {
+    display: flex;
+    gap: 16px;
+    justify-content: right;
+    margin-right: 2px;
+
+    @include on-mobile {
+      margin-right: 16px;
+    }
+  }
+
+  &__btn {
+    height: 32px;
+    width: 32px;
+    justify-content: center;
+    align-items: center;
+    padding-top: 1px;
+    border: 1px solid var(--button-border-color);
+    background-color: var(--button-bg-color);
+    cursor: pointer;
+
+    &:disabled {
+      @include disabled-button;
+    }
+
+    &:hover {
+      border-color: var(--button-border-color);
+      transition: transform $transition-time ease-in-out;
+      transform: scale(0.97);
+    }
+  }
+
+  &__wrapper {
+    height: 512px;
+  }
+
+  &__products {
+    margin-top: 24px;
+    width: 100%;
+    display: grid;
+    gap: 15px;
+    grid-auto-flow: column;
+    grid-auto-columns: 272px;
+
+    @include on-tablet {
+      grid-auto-columns: 237px;
+    }
+
+    @include on-mobile {
+      grid-auto-columns: 212px;
+    }
+  }
+}

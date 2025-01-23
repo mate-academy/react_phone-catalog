@@ -8,7 +8,7 @@ import { useMenu } from '../../hooks/useMenu';
 import React from 'react';
 
 export const Header = () => {
-  const { openMenu } = useMenu();
+  const { isOpen, openMenu, closeMenu } = useMenu();
 
   return (
     <header className={styles.header}>
@@ -40,9 +40,9 @@ export const Header = () => {
         <button
           type="button"
           className={`${styles.header__icon} ${styles['header__icon--btn']}`}
-          onClick={() => openMenu()}
+          onClick={() => (isOpen ? closeMenu() : openMenu())}
         >
-          <Icon type="menu" />
+          <Icon type={isOpen ? 'close' : 'menu'} />
         </button>
       </div>
     </header>
