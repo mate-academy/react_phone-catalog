@@ -1,12 +1,9 @@
 @use '@styles/utils/vars' as *;
 
 .menu {
-  left: 0;
-  right: 0;
   position: fixed;
-  top: $header-height-p;
+  inset: $header-height-p 0 0 0;
   background-color: var(--white-color);
-  height: calc(100vh - $header-height-p);
 
   opacity: 0;
   pointer-events: none;
@@ -30,7 +27,6 @@
   }
 
   &__top {
-    overflow-y: auto;
     padding-block: 24px;
   }
 
