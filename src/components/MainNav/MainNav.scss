@@ -2,6 +2,8 @@
 @use 'styles/vars';
 
 .main-nav {
+  position: relative;
+
   height: 100%;
 
   &--vertical {
@@ -44,7 +46,10 @@
 
     &--selected {
       color: vars.$color-primary;
-      box-shadow: inset 0 -3px 0 vars.$color-primary;
+
+      @include mixins.media-tablet {
+        box-shadow: inset 0 -3px 0 vars.$color-primary;
+      }
     }
   }
 

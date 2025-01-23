@@ -81,6 +81,7 @@ export const HomePage = () => {
           <div className="home-page__categories-container">
             {CATEGORIES.map(category => (
               <Link
+                key={category.title}
                 to={category.link}
                 className="home-page__categories-category"
               >

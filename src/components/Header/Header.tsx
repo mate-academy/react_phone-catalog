@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import React, { useEffect, useLayoutEffect, useRef, useState } from 'react';
+import { NavLink, useLocation } from 'react-router-dom';
 import classNames from 'classnames';
 import { MainNav } from '../MainNav';
 import './Header.scss';
@@ -11,6 +11,12 @@ type Props = {
 };
 
 export const Header: React.FC<Props> = ({ openMenu }) => {
+  const location = useLocation();
+
+  const headerRef = useRef<HTMLDivElement>(null);
+  const caretRef = useRef<HTMLDivElement>(null);
+  const navRef = useRef<HTMLDivElement>(null);
+
   const [cartCount, setCartCount] = useState(0);
   const [favouritesCount, setFavouritesCount] = useState(0);
 
@@ -45,12 +51,92 @@ export const Header: React.FC<Props> = ({ openMenu }) => {
     };
   }, []);
 
+  const moveCaret = () => {
+    if (!headerRef.current || !caretRef.current || !navRef.current) {
+      return;
+    }
+
+    if (getComputedStyle(navRef.current).display === 'none') {
+      caretRef.current.style.display = 'none';
+
+      return;
+    }
+
+    const selectedElement = headerRef.current.querySelector(
+      '[class*="--selected"]',
+    );
+
+    if (!selectedElement) {
+      return;
+    }
+
+    const selectedElementRect = selectedElement.getBoundingClientRect();
+    const caretRect = caretRef.current.getBoundingClientRect();
+
+    if (caretRect.left == selectedElementRect.left) {
+      return;
+    }
+
+    caretRef.current.style.display = 'block';
+
+    if (!caretRect.left) {
+      caretRef.current.style.left = `${selectedElementRect.left}px`;
+      caretRef.current.style.width = `${selectedElementRect.width}px`;
+
+      return;
+    }
+
+    const caretKeyframes: Partial<CSSStyleDeclaration>[] = [
+      {
+        left: `${caretRect.left}px`,
+        transform: `scaleY(1)`,
+      },
+      {
+        transform: `scaleY(50%) scaleX(150%)`,
+      },
+      {
+        left: `${selectedElementRect.left}px`,
+        width: `${selectedElementRect.width}px`,
+        transform: `scaleY(1)`,
+      },
+    ];
+
+    const caretTiming: KeyframeAnimationOptions = {
+      duration: 300,
+      iterations: 1,
+      easing: 'ease-in-out',
+      fill: 'forwards',
+    };
+
+    caretRef.current.animate(caretKeyframes as Keyframe[], caretTiming);
+  };
+
+  useEffect(() => {
+    moveCaret();
+  }, [location]);
+
+  useEffect(() => {
+    const resizeHandler = () => {
+      moveCaret();
+    };
+
+    const observer = new window.ResizeObserver(resizeHandler);
+
+    observer.observe(document.body);
+
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
+
   return (
-    <header className="header">
+    <header className="header" ref={headerRef}>
+      <div className="header__caret" ref={caretRef}></div>
+
       <div className="header__left">
         <img src="logo.svg" alt="Logo" className="header__logo" />
 
-        <div className="header__nav">
+        <div className="header__nav" ref={navRef}>
           <MainNav />
         </div>
       </div>
@@ -60,10 +146,8 @@ export const Header: React.FC<Props> = ({ openMenu }) => {
           <div className="header__button-container">
             <img src="icons/favourite.svg" alt="Favourite icon" />
             {!!favouritesCount && (
-              <div className="header__button-count">
-                <p className="header__button-count-text" key={favouritesCount}>
-                  {favouritesCount}
-                </p>
+              <div className="header__button-count" key={favouritesCount}>
+                <p className="header__button-count-text">{favouritesCount}</p>
               </div>
             )}
           </div>
@@ -74,10 +158,8 @@ export const Header: React.FC<Props> = ({ openMenu }) => {
             <img src="icons/cart.svg" alt="Cart icon" />
 
             {!!cartCount && (
-              <div className="header__button-count">
-                <p className="header__button-count-text" key={cartCount}>
-                  {cartCount}
-                </p>
+              <div className="header__button-count" key={cartCount}>
+                <p className="header__button-count-text">{cartCount}</p>
               </div>
             )}
           </div>
