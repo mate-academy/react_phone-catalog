@@ -18,7 +18,21 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
-    "noUncheckedSideEffectImports": true
+    "noUncheckedSideEffectImports": true,
+
+    /* Tipos */
+    "types": [
+      "node",
+      "cookie",
+      "history",
+      "http-cache-semantics",
+      "json-schema"
+    ]
   },
-  "include": ["vite.config.ts"]
+  "include": [
+    "vite.config.ts",
+    "/**/*.ts",
+    "cypress.config.ts",
+    "src/utils/wait.ts"
+  ]
 }

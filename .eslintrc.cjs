@@ -1,7 +1,7 @@
 module.exports = {
   env: {
     browser: true,
-    es2024: true,
+    es2020: true,
   },
   extends: [
     'plugin:react/recommended',
@@ -38,6 +38,14 @@ module.exports = {
   ],
   rules: {
     // JS
+    'import/no-extraneous-dependencies': [
+      'error',
+      {
+        devDependencies: false,
+        optionalDependencies: false,
+        peerDependencies: false,
+      },
+    ],
     'semi': 'off',
     '@typescript-eslint/semi': ['error', 'always'],
     'prefer-const': 2,
