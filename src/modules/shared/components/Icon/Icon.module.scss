@@ -1,3 +1,4 @@
+@use '@styles/utils/vars' as *;
 @use '@styles/utils/mixins' as *;
 
 .icon {
@@ -6,13 +7,17 @@
   box-sizing: border-box;
   box-shadow: -1px 0 0 0 var(--elements-color);
 
-  background-size: 16px;
   background-position: center;
   background-repeat: no-repeat;
 
   @include on-desktop {
     width: 64px;
     background-size: 16px;
+  }
+
+  &--wide {
+    width: 100%;
+    height: 64px;
   }
 
   &--favorite {
@@ -24,13 +29,20 @@
   }
 
   &--menu {
+    transition-duration: $animation-duration;
     background-image: url('/images/icons/icon-menu.svg');
+  }
+
+  &--close {
+    transition-duration: $animation-duration;
+    background-image: url('/images/icons/icon-close.svg');
   }
 
   &--arrow-up {
     width: 32px;
     box-shadow: none;
     border: 1px solid var(--icons-color);
+    background-size: 10px 6px;
     background-image: url('/images/icons/icon-arrow-up.svg');
   }
 }

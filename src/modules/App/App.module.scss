@@ -1,3 +1,4 @@
+@use '@styles/utils/vars' as *;
 @use '@styles/utils/mixins' as *;
 
 .app {
@@ -8,9 +9,33 @@
     background-color: var(--white-color);
   }
 
+  &__menu {
+    left: 0;
+    right: 0;
+    position: fixed;
+    top: $header-height-p;
+    background-color: var(--white-color);
+    height: calc(100vh - $header-height-p);
+
+    opacity: 0;
+    pointer-events: none;
+    transform: translateX(100%);
+
+    transition:
+      opacity $animation-duration linear,
+      transform $animation-duration linear;
+
+    &--open {
+      opacity: 1;
+      pointer-events: all;
+      transform: translateX(0);
+    }
+  }
+
   &__body {
     row-gap: 64px;
-    display: grid;
+    display: flex;
+    flex-direction: column;
     color: var(--primary-color);
 
     padding-top: 24px;

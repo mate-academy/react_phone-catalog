@@ -1,0 +1,41 @@
+@use '@styles/utils/vars' as *;
+
+.menu {
+  left: 0;
+  right: 0;
+  position: fixed;
+  top: $header-height-p;
+  background-color: var(--white-color);
+  height: calc(100vh - $header-height-p);
+
+  opacity: 0;
+  pointer-events: none;
+  transform: translateX(100%);
+
+  transition:
+    opacity $animation-duration linear,
+    transform $animation-duration linear;
+
+  &--open {
+    opacity: 1;
+    pointer-events: all;
+    transform: translateX(0);
+  }
+
+  &__content {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  &__top {
+    overflow-y: auto;
+    padding-block: 24px;
+  }
+
+  &__bottom {
+    display: flex;
+    border-top: 1px solid var(--elements-color);
+  }
+}

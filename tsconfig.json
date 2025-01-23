@@ -9,10 +9,13 @@
     "paths": {
       "@sTypes/*": ["./modules/shared/types/*"],
       "@store/*": ["./modules/shared/store/*"],
+      "@hooks/*": ["./modules/shared/hooks/*"],
       "@utils/*": ["./modules/shared/utils/*"],
       "@styles/*": ["./modules/shared/styles/*"],
       "@services/*": ["./modules/shared/services/*"],
-      "@components/*": ["./modules/shared/components/*"]
+      "@components/*": ["./modules/shared/components/*"],
+
+      "@App/*": ["./modules/App/*"]
     }
   }
 }

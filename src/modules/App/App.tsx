@@ -4,57 +4,50 @@ import { Outlet, useLocation } from 'react-router-dom';
 
 import styles from './App.module.scss';
 
-import { Product } from '@sTypes/Product';
 import { getProducts } from '@services/products';
 
+import { Menu } from './components/Menu';
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
 
-import { DispatchPhonesContext } from '@store/PhonesStore';
-import { DispatchTabletsContext } from '@store/TabletStore';
-import { DispatchAccessoriesContext } from '@store/AccessoriesStore';
+import { MenuContext } from '@store/MenuStore';
+import { ProductsContext, DispatchProductsContext } from '@store/ProductsStore';
 
 export const App = () => {
-  const dispatchPhones = useContext(DispatchPhonesContext);
-  const dispatchTablets = useContext(DispatchTabletsContext);
-  const dispatchAccessories = useContext(DispatchAccessoriesContext);
+  const products = useContext(ProductsContext);
+  const dispatchProducts = useContext(DispatchProductsContext);
 
   // fetching data
   useEffect(() => {
-    getProducts().then(products => {
-      const phones: Product[] = [];
-      const tablets: Product[] = [];
-      const accessories: Product[] = [];
+    if (products.length) {
+      return;
+    }
 
-      products.forEach(product => {
-        switch (product.category) {
-          case 'phones':
-            phones.push(product);
-            break;
-
-          case 'tablets':
-            tablets.push(product);
-            break;
-
-          case 'accessories':
-            accessories.push(product);
-            break;
-        }
-      });
-
-      dispatchPhones({ type: 'set', payload: phones });
-      dispatchTablets({ type: 'set', payload: tablets });
-      dispatchAccessories({ type: 'set', payload: accessories });
-    });
-  }, [dispatchPhones, dispatchTablets, dispatchAccessories]);
+    getProducts().then(loadedProducts =>
+      dispatchProducts({ type: 'set', payload: loadedProducts }),
+    );
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const { pathname } = useLocation();
+  const isMenuOpen = useContext(MenuContext);
+
+  // disable scrolling while menu is open
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.body.style.overflowY = 'hidden';
+    } else {
+      document.body.style.overflowY = '';
+    }
+  }, [isMenuOpen]);
 
   return (
     <div className={styles.app}>
       <div className={styles.app__header}>
         <Header />
       </div>
+
+      <Menu />
 
       <div
         className={classNames(styles.app__body, {

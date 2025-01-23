@@ -2,25 +2,17 @@ import styles from './Nav.module.scss';
 
 import { NavLinkItem } from '@components/NavLinkItem';
 
+import { LINKS } from '@App/constants/Links';
+
 export const Nav = () => {
   return (
     <nav className={styles.nav}>
       <ul className={styles.nav__items}>
-        <li className={styles.nav__item}>
-          <NavLinkItem to="./">Home</NavLinkItem>
-        </li>
-
-        <li className={styles.nav__item}>
-          <NavLinkItem to="./phones">Phones</NavLinkItem>
-        </li>
-
-        <li className={styles.nav__item}>
-          <NavLinkItem to="./tablets">Tablets</NavLinkItem>
-        </li>
-
-        <li className={styles.nav__item}>
-          <NavLinkItem to="./accessories">Accessories</NavLinkItem>
-        </li>
+        {LINKS.map(link => (
+          <li key={link[0]} className={styles.nav__item}>
+            <NavLinkItem to={link[0]}>{link[1]}</NavLinkItem>
+          </li>
+        ))}
       </ul>
     </nav>
   );

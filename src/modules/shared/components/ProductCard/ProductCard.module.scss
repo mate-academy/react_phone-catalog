@@ -1,0 +1,13 @@
+.product-card {
+  padding: 32px;
+
+  gap: 24px;
+  display: flex;
+  flex-direction: column;
+
+  &__content {
+    gap: 8px;
+    display: flex;
+    flex-direction: column;
+  }
+}

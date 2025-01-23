@@ -42,7 +42,8 @@
     @include uppercase;
 
     row-gap: 16px;
-    display: grid;
+    display: flex;
+    flex-direction: column;
 
     grid-column: 1 / -1;
 
@@ -50,7 +51,7 @@
       row-gap: 0;
       grid-column: 5 / 9;
 
-      grid-auto-flow: column;
+      flex-direction: row;
       justify-content: space-between;
     }
 

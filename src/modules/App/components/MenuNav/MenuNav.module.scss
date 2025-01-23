@@ -1,0 +1,16 @@
+@use '@styles/utils/mixins' as *;
+
+.menu-nav {
+  color: var(--secondary-color);
+
+  &__items {
+    gap: 16px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__item {
+    width: fit-content;
+    margin-inline: auto;
+  }
+}

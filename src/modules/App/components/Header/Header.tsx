@@ -1,3 +1,5 @@
+import { useContext } from 'react';
+
 import styles from './Header.module.scss';
 
 import { IconType } from '@sTypes/IconType';
@@ -7,7 +9,12 @@ import { Icon } from '@components/Icon';
 import { Logo } from '@components/Logo';
 import { NavLinkItem } from '@components/NavLinkItem';
 
+import { DispatchMenuContext, MenuContext } from '@store/MenuStore';
+
 export const Header = () => {
+  const isMenuOpen = useContext(MenuContext);
+  const dispatchMenu = useContext(DispatchMenuContext);
+
   return (
     <header className={styles.header}>
       <div className={styles.header__left}>
@@ -28,8 +35,11 @@ export const Header = () => {
         </NavLinkItem>
       </div>
 
-      <div className={styles.header__menu}>
-        <Icon type={IconType.menu} />
+      <div
+        className={styles.header__menu}
+        onClick={() => dispatchMenu({ type: 'set', payload: !isMenuOpen })}
+      >
+        <Icon type={isMenuOpen ? IconType.close : IconType.menu} />
       </div>
     </header>
   );

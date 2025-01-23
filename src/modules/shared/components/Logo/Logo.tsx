@@ -13,6 +13,7 @@ export const Logo: React.FC<Props> = ({ footer = false }) => (
     <img
       src="./images/logo.png"
       alt="logo"
+      onClick={() => window.scrollTo(0, 0)}
       className={classNames(styles.logo__image, {
         [styles['logo__image--footer']]: footer,
       })}
