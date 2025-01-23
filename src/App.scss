@@ -1,1 +1,41 @@
-// not empty
+@import '@styles/main';
+
+.app {
+  min-height: 100vh;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+
+  &__header {
+    position: sticky;
+    top: 0;
+    z-index: 2;
+  }
+
+  &__menu {
+    position: fixed;
+    z-index: 2;
+    left: 0;
+    right: 0;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity $hover-duration;
+
+    &--active {
+      opacity: 1;
+      pointer-events: all;
+    }
+  }
+
+  &__content {
+    overflow: hidden;
+    margin-bottom: $section-row-gap--desktop;
+
+    @include on-tablet {
+      margin-bottom: $section-row-gap--tablet;
+    }
+
+    @include on-mobile {
+      margin-bottom: $section-row-gap--mobile;
+    }
+  }
+}
