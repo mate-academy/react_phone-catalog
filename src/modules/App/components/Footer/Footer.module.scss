@@ -1,7 +1,6 @@
 @use '@styles/utils/mixins' as *;
 
 .footer {
-  box-sizing: border-box;
   color: var(--secondary-color);
   box-shadow: 0 -1px 0 0 var(--elements-color);
 

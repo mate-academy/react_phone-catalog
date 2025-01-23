@@ -4,6 +4,7 @@ import '@styles/main.scss';
 
 import { App } from './modules/App/';
 import { HomePage } from './modules/HomePage';
+import { PageNotFound } from './modules/NotFoundPage';
 import { ProductsPage } from './modules/ProductsPage';
 
 import { MenuProvide } from '@store/MenuStore';
@@ -22,6 +23,8 @@ export const Root = () => {
               <Route path="accessories" element={<ProductsPage />} />
               <Route path="favorite" element={<ProductsPage />} />
               <Route path="shopping-bag" element={<ProductsPage />} />
+
+              <Route path="*" element={<PageNotFound />} />
             </Route>
           </Routes>
         </MenuProvide>

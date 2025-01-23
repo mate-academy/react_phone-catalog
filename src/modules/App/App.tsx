@@ -42,7 +42,7 @@ export const App = () => {
   }, [isMenuOpen]);
 
   return (
-    <div className={styles.app}>
+    <div className={classNames(styles.app)}>
       <div className={styles.app__header}>
         <Header />
       </div>
