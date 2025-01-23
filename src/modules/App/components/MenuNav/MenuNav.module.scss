@@ -4,11 +4,7 @@
   &__items {
     gap: 16px;
     display: flex;
+    align-items: center;
     flex-direction: column;
-  }
-
-  &__item {
-    width: fit-content;
-    margin-inline: auto;
   }
 }

@@ -20,7 +20,7 @@ export const MenuNav = () => {
     <nav className={styles['menu-nav']}>
       <ul className={styles['menu-nav__items']}>
         {LINKS.map(link => (
-          <li key={link[0]} className={styles['menu-nav__item']}>
+          <li key={link[0]}>
             <NavLinkItem to={link[0]} onClick={changePage} fixedPadding>
               {link[1]}
             </NavLinkItem>

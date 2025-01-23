@@ -1,7 +1,6 @@
 @use '@styles/utils/mixins' as *;
 
 .nav {
-  height: 100%;
   display: none;
   color: var(--secondary-color);
 
@@ -16,14 +15,9 @@
 
     gap: 32px;
     display: flex;
-    align-items: center;
 
     @include on-desktop {
       gap: 64px;
     }
-  }
-
-  &__item {
-    height: 100%;
   }
 }

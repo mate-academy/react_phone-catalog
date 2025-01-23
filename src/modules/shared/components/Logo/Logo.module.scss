@@ -7,7 +7,6 @@
   &__image {
     width: 64px;
     height: 22px;
-    display: block;
 
     @include on-desktop {
       width: 80px;

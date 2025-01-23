@@ -40,8 +40,9 @@
   &__links {
     @include uppercase;
 
-    row-gap: 16px;
+    gap: 16px;
     display: flex;
+    align-items: start;
     flex-direction: column;
 
     grid-column: 1 / -1;
@@ -57,10 +58,6 @@
     @include on-desktop {
       grid-column: 9 / 17;
     }
-  }
-
-  &__link {
-    width: fit-content;
   }
 
   &__back-to-top {
