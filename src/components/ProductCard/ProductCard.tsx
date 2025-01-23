@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styles from './ProductCard.module.scss';
 import { Products } from '../../types/Products';
 import { Link } from 'react-router-dom';
 import { Icon } from '../Icon';
 import classNames from 'classnames';
+import { useProductsContext } from '../../hooks/savedProducts';
 
 type Props = {
   product: Products;
@@ -11,16 +12,10 @@ type Props = {
 };
 
 export const ProductCard: React.FC<Props> = ({ product, path }) => {
-  const [isAddedToCart, setIsAddedToCart] = useState(false);
-  const [isLiked, setIsLiked] = useState(false);
-
-  const toggleCart = () => {
-    setIsAddedToCart(prev => !prev);
-  };
-
-  const toggleFavourite = () => {
-    setIsLiked(prev => !prev);
-  };
+  const { likedProducts, cartProducts, toggleLike, toggleCart } =
+    useProductsContext();
+  const isLiked = likedProducts.includes(product.id);
+  const isAddedToCart = cartProducts.includes(product.id);
 
   return (
     <article className={styles.product}>
@@ -55,21 +50,23 @@ export const ProductCard: React.FC<Props> = ({ product, path }) => {
         </div>
 
         <div className={styles.product__buttons}>
-          {isAddedToCart ? (
-            <button className={styles.product__cartActive} onClick={toggleCart}>
-              Added
-            </button>
-          ) : (
-            <button className={styles.product__cart} onClick={toggleCart}>
-              Add to cart
-            </button>
-          )}
+          <button
+            className={classNames(styles.product__cart, {
+              [styles.product__cartActive]: isAddedToCart,
+            })}
+            onClick={event => {
+              event.preventDefault();
+              toggleCart(product.id);
+            }}
+          >
+            {isAddedToCart ? 'Added' : 'Add to cart'}
+          </button>
 
           <button
             className={classNames(styles.product__favourite, {
               [styles.product__favouriteActive]: isLiked,
             })}
-            onClick={toggleFavourite}
+            onClick={() => toggleLike(product.id)}
           >
             {isLiked ? (
               <Icon type="favouriteActive" />
