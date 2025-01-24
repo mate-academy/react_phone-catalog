@@ -4,7 +4,7 @@ import styles from './ProductsDisplay.module.scss';
 import { useMemo } from 'react';
 import { Product } from '../../types/types';
 import { useListControls } from '../../hooks/useListControls';
-import { Category, SortOption } from '../../types/enums';
+import { Category, LoadingStatus, SortOption } from '../../types/enums';
 import {
   getFirstItemOnPage,
   getLastItemOnPage,
@@ -12,16 +12,24 @@ import {
 import { useLanguage } from '../Contexts/LanguageContext';
 import { ProductsList } from '../ProductsList';
 import { ProductsListControls } from '../ProductsListControls';
+import { HandleReloadClick } from '../../types/handlers';
+import { ProductsListSkeleton } from '../ProductsListSkeleton';
 
 type Props = {
   products: Product[];
+  loadingStatus: LoadingStatus;
+  onReloadClick: HandleReloadClick;
   productCategory?: Category;
+  responseStatus?: number;
   className?: string;
 };
 
 export const ProductsDisplay: React.FC<Props> = ({
   products,
+  loadingStatus,
+  onReloadClick,
   productCategory,
+  responseStatus,
   className,
 }) => {
   const {
@@ -74,66 +82,76 @@ export const ProductsDisplay: React.FC<Props> = ({
 
   const { page } = useListControls(sortedProducts.length);
 
+  let noProductsMessage: string;
+  let noProductsQueryMessage: string;
+
+  switch (productCategory) {
+    case Category.Phones:
+      noProductsMessage = noPhones;
+      noProductsQueryMessage = noPhonesQuery;
+      break;
+    case Category.Tablets:
+      noProductsMessage = noTablets;
+      noProductsQueryMessage = noTabletsQuery;
+      break;
+    case Category.Accessories:
+      noProductsMessage = noAccessories;
+      noProductsQueryMessage = noAccessoriesQuery;
+      break;
+    case undefined:
+      noProductsMessage = noProducts;
+      noProductsQueryMessage = noProductsQuery;
+      break;
+    default:
+      throw new Error('Product category is not valid!!!');
+  }
+
   let content: React.JSX.Element;
 
-  if (sortedProducts.length) {
-    content = (
-      <>
-        <ProductsList
-          products={sortedProducts.slice(
-            getFirstItemOnPage(pagination, page) - 1,
-            getLastItemOnPage(pagination, page, sortedProducts.length),
-          )}
-          className={styles.List}
-        />
-
-        {pagination && sortedProducts.length > pagination && (
-          <Pagination
-            amountOfItems={sortedProducts.length}
-            className={styles.Pagination}
+  if (loadingStatus === LoadingStatus.Success) {
+    if (sortedProducts.length) {
+      content = (
+        <>
+          <ProductsList
+            products={sortedProducts.slice(
+              getFirstItemOnPage(pagination, page) - 1,
+              getLastItemOnPage(pagination, page, sortedProducts.length),
+            )}
+            className={styles.List}
           />
-        )}
-      </>
-    );
-  } else {
-    let noProductsMessage: string;
-    let noProductsQueryMessage: string;
 
-    switch (productCategory) {
-      case Category.Phones:
-        noProductsMessage = noPhones;
-        noProductsQueryMessage = noPhonesQuery;
-        break;
-      case Category.Tablets:
-        noProductsMessage = noTablets;
-        noProductsQueryMessage = noTabletsQuery;
-        break;
-      case Category.Accessories:
-        noProductsMessage = noAccessories;
-        noProductsQueryMessage = noAccessoriesQuery;
-        break;
-      case undefined:
-        noProductsMessage = noProducts;
-        noProductsQueryMessage = noProductsQuery;
-        break;
-      default:
-        throw new Error('Product category is not valid!!!');
-    }
-
-    if (products.length) {
-      content = <p className={styles.Message}>{noProductsQueryMessage}</p>;
+          {pagination && sortedProducts.length > pagination && (
+            <Pagination
+              amountOfItems={sortedProducts.length}
+              className={styles.Pagination}
+            />
+          )}
+        </>
+      );
     } else {
-      content = <p className={styles.Message}>{noProductsMessage}</p>;
+      content = <p className={styles.Message}>{noProductsQueryMessage}</p>;
     }
+  } else if (loadingStatus === LoadingStatus.NoData) {
+    content = <p className={styles.Message}>{noProductsMessage}</p>;
+  } else {
+    content = (
+      <ProductsListSkeleton
+        loadingStatus={loadingStatus}
+        onReloadClick={onReloadClick}
+        responseStatus={responseStatus}
+        className={styles.List}
+      />
+    );
   }
 
   return (
     <section className={classNames(styles.ProductsDisplay, className)}>
       <header className={styles.Header}>
         <p className={styles.AmountOfProducts}>
-          {productCategory
-            ? `${preModels} ${products.length} ${models}`
-            : `${preItems} ${products.length} ${items}`}
+          {!!products.length &&
+            (productCategory
+              ? `${preModels} ${products.length} ${models}`
+              : `${preItems} ${products.length} ${items}`)}
         </p>
 
         <ProductsListControls

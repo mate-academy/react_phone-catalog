@@ -1,0 +1,18 @@
+@use "../../../shared/styles/mixins" as *;
+@use "../../../shared/styles/extends";
+
+.Title {
+  margin-bottom: 16px;
+
+  @extend %h4;
+  @include color-transition((color: var(--primary-text-color)));
+}
+
+.Text {
+  @extend %body-text;
+  @include color-transition((color: var(--secondary-text-color)));
+}
+
+.DescriptionParagraph {
+  width: calc(100% - 1px);
+}

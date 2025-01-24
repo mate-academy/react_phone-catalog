@@ -11,6 +11,7 @@
 .AmountOfProducts {
   @include full-grid-width;
 
+  height: 1lh;
   margin-bottom: 40px;
 
   @extend %body-text;

@@ -2,11 +2,10 @@ import { useMemo } from 'react';
 import { PathNavigation } from '../../../shared/components/PathNavigation';
 import { Product } from '../../../shared/types/types';
 import styles from './ProductsPage.module.scss';
-import { Category, LoadingStatus } from '../../../shared/types/enums';
+import { Category } from '../../../shared/types/enums';
 // eslint-disable-next-line max-len
 import { useLanguage } from '../../../shared/components/Contexts/LanguageContext';
 import { ProductsDisplay } from '../../../shared/components/ProductsDisplay';
-import { ProductsDisplaySkeleton } from '../ProductsDisplaySkeleton';
 import React from 'react';
 import { useDataLoader } from '../../../shared/hooks/useDataLoader';
 import { productsFile } from '../../../shared/consts/apiFiles';
@@ -57,10 +56,6 @@ export const ProductsPage: React.FC<Props> = ({ productCategory }) => {
       throw new Error('Product category is not valid!!!');
   }
 
-  const displayProducts =
-    loadingStatus === LoadingStatus.Success ||
-    loadingStatus === LoadingStatus.NoData;
-
   return (
     <>
       <PathNavigation path={[path]} />
@@ -68,20 +63,14 @@ export const ProductsPage: React.FC<Props> = ({ productCategory }) => {
       <main className={styles.ProductsPage}>
         <h1 className={styles.Title}>{category}</h1>
 
-        {displayProducts ? (
-          <ProductsDisplay
-            products={filteredProducts}
-            productCategory={productCategory}
-            className={styles.ProductsDisplay}
-          />
-        ) : (
-          <ProductsDisplaySkeleton
-            loadingStatus={loadingStatus}
-            onReloadClick={handleReloadClick}
-            responseStatus={responseStatus}
-            className={styles.ProductsDisplay}
-          />
-        )}
+        <ProductsDisplay
+          products={filteredProducts}
+          loadingStatus={loadingStatus}
+          onReloadClick={handleReloadClick}
+          productCategory={productCategory}
+          responseStatus={responseStatus}
+          className={styles.ProductsDisplay}
+        />
       </main>
     </>
   );

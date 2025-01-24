@@ -1,14 +1,10 @@
 import classNames from 'classnames';
-import styles from './ProductsDisplaySkeleton.module.scss';
-// eslint-disable-next-line max-len
-import { ProductsListControls } from '../../../shared/components/ProductsListControls';
+import styles from './ProductsListSkeleton.module.scss';
 import { useEffect, useRef, useState } from 'react';
-// eslint-disable-next-line max-len
-import { ProductCardSkeleton } from '../../../shared/components/ProductCardSkeleton';
-import { LoadingStatus } from '../../../shared/types/enums';
-// eslint-disable-next-line max-len
-import { ErrorNotification } from '../../../shared/components/ErrorNotification';
-import { HandleReloadClick } from '../../../shared/types/handlers';
+import { ProductCardSkeleton } from '../ProductCardSkeleton';
+import { LoadingStatus } from '../../types/enums';
+import { ErrorNotification } from '../ErrorNotification';
+import { HandleReloadClick } from '../../types/handlers';
 
 type Props = {
   loadingStatus: LoadingStatus;
@@ -17,7 +13,7 @@ type Props = {
   className?: string;
 };
 
-export const ProductsDisplaySkeleton: React.FC<Props> = ({
+export const ProductsListSkeleton: React.FC<Props> = ({
   loadingStatus,
   onReloadClick,
   responseStatus,
@@ -60,17 +56,8 @@ export const ProductsDisplaySkeleton: React.FC<Props> = ({
   }, []);
 
   return (
-    <section className={classNames(styles.ProductsDisplaySkeleton, className)}>
-      <header className={styles.Header}>
-        <p className={styles.AmountOfProducts} />
-
-        <ProductsListControls
-          amountOfProducts={0}
-          className={styles.ListControls}
-        />
-      </header>
-
-      <ul ref={listRef} className={styles.List}>
+    <div className={classNames(styles.ProductsListSkeleton, className)}>
+      <ul ref={listRef} className={classNames(styles.List)}>
         {getProductCardSkeletons()}
       </ul>
 
@@ -80,6 +67,6 @@ export const ProductsDisplaySkeleton: React.FC<Props> = ({
           responseStatus={responseStatus}
         />
       )}
-    </section>
+    </div>
   );
 };

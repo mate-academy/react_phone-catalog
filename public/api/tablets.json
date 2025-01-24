@@ -44,7 +44,35 @@
     "ram": "8GB",
     "camera": "12MP + 12MP",
     "zoom": "Digital zoom up to 5x",
-    "cell": ["Not applicable"]
+    "cell": ["Not applicable"],
+    "locales": {
+      "pl": {
+        "description": [
+          {
+            "title": "Potężna wydajność",
+            "text": [
+              "Doświadcz niesamowitej mocy i wydajności z Apple iPad Pro 11. Dzięki chipowi M1 oferuje nowy poziom wydajności, sprawiając, że jest szybszy i bardziej efektywny niż kiedykolwiek wcześniej.",
+              "Niezależnie od tego, czy edytujesz zdjęcia, projektujesz grafikę, czy wykonujesz wiele zadań jednocześnie w wymagających aplikacjach, iPad Pro 11 radzi sobie z tym wszystkim z łatwością."
+            ]
+          },
+          {
+            "title": "Zachwycający wyświetlacz Liquid Retina",
+            "text": [
+              "Ciesz się żywym i immersyjnym doświadczeniem wizualnym na wyświetlaczu Liquid Retina iPad Pro 11. Dzięki technologii ProMotion i True Tone, wyświetlacz dostosowuje się do Twojego otoczenia, zapewniając płynne przewijanie, precyzyjną dokładność kolorów i niesamowite detale.",
+              "Od oglądania filmów po edytowanie wideo, wyświetlacz iPad Pro 11 ożywia Twoje treści z oszałamiającą wyrazistością."
+            ]
+          },
+          {
+            "title": "Wszechstronny system kamer",
+            "text": [
+              "Uchwyć oszałamiające zdjęcia i wideo dzięki zaawansowanemu systemowi kamer iPad Pro 11. Wyposażony w 12MP aparat Ultra Wide z przodu oraz 12MP aparat Wide z tyłu ze skanerem LiDAR, umożliwia robienie zdjęć wysokiej jakości i korzystanie z doświadczeń rozszerzonej rzeczywistości.",
+              "Niezależnie od tego, czy wykonujesz połączenia wideo, skanujesz dokumenty, czy nagrywasz filmy w 4K, system kamer iPad Pro 11 zapewnia wyjątkową wydajność."
+            ]
+          }
+        ],
+        "zoom": "Cyfrowy zoom do 5x"
+      }
+    }
   },
   {
     "id": "apple-ipad-pro-11-2021-256gb-spacegray",
@@ -91,7 +119,35 @@
     "ram": "8GB",
     "camera": "12MP + 12MP",
     "zoom": "Digital zoom up to 5x",
-    "cell": ["Not applicable"]
+    "cell": ["Not applicable"],
+    "locales": {
+      "pl": {
+        "description": [
+          {
+            "title": "Potężna wydajność",
+            "text": [
+              "Doświadcz niesamowitej mocy i wydajności z Apple iPad Pro 11. Dzięki chipowi M1 oferuje nowy poziom wydajności, sprawiając, że jest szybszy i bardziej efektywny niż kiedykolwiek wcześniej.",
+              "Niezależnie od tego, czy edytujesz zdjęcia, projektujesz grafikę, czy wykonujesz wiele zadań jednocześnie w wymagających aplikacjach, iPad Pro 11 radzi sobie z tym wszystkim z łatwością."
+            ]
+          },
+          {
+            "title": "Zachwycający wyświetlacz Liquid Retina",
+            "text": [
+              "Ciesz się żywym i immersyjnym doświadczeniem wizualnym na wyświetlaczu Liquid Retina iPad Pro 11. Dzięki technologii ProMotion i True Tone, wyświetlacz dostosowuje się do Twojego otoczenia, zapewniając płynne przewijanie, precyzyjną dokładność kolorów i niesamowite detale.",
+              "Od oglądania filmów po edytowanie wideo, wyświetlacz iPad Pro 11 ożywia Twoje treści z oszałamiającą wyrazistością."
+            ]
+          },
+          {
+            "title": "Wszechstronny system kamer",
+            "text": [
+              "Uchwyć oszałamiające zdjęcia i wideo dzięki zaawansowanemu systemowi kamer iPad Pro 11. Wyposażony w 12MP aparat Ultra Wide z przodu oraz 12MP aparat Wide z tyłu ze skanerem LiDAR, umożliwia robienie zdjęć wysokiej jakości i korzystanie z doświadczeń rozszerzonej rzeczywistości.",
+              "Niezależnie od tego, czy wykonujesz połączenia wideo, skanujesz dokumenty, czy nagrywasz filmy w 4K, system kamer iPad Pro 11 zapewnia wyjątkową wydajność."
+            ]
+          }
+        ],
+        "zoom": "Cyfrowy zoom do 5x"
+      }
+    }
   },
   {
     "id": "apple-ipad-pro-11-2021-512gb-spacegray",
@@ -138,7 +194,35 @@
     "ram": "8GB",
     "camera": "12MP + 12MP",
     "zoom": "Digital zoom up to 5x",
-    "cell": ["Not applicable"]
+    "cell": ["Not applicable"],
+    "locales": {
+      "pl": {
+        "description": [
+          {
+            "title": "Potężna wydajność",
+            "text": [
+              "Doświadcz niesamowitej mocy i wydajności z Apple iPad Pro 11. Dzięki chipowi M1 oferuje nowy poziom wydajności, sprawiając, że jest szybszy i bardziej efektywny niż kiedykolwiek wcześniej.",
+              "Niezależnie od tego, czy edytujesz zdjęcia, projektujesz grafikę, czy wykonujesz wiele zadań jednocześnie w wymagających aplikacjach, iPad Pro 11 radzi sobie z tym wszystkim z łatwością."
+            ]
+          },
+          {
+            "title": "Zachwycający wyświetlacz Liquid Retina",
+            "text": [
+              "Ciesz się żywym i immersyjnym doświadczeniem wizualnym na wyświetlaczu Liquid Retina iPad Pro 11. Dzięki technologii ProMotion i True Tone, wyświetlacz dostosowuje się do Twojego otoczenia, zapewniając płynne przewijanie, precyzyjną dokładność kolorów i niesamowite detale.",
+              "Od oglądania filmów po edytowanie wideo, wyświetlacz iPad Pro 11 ożywia Twoje treści z oszałamiającą wyrazistością."
+            ]
+          },
+          {
+            "title": "Wszechstronny system kamer",
+            "text": [
+              "Uchwyć oszałamiające zdjęcia i wideo dzięki zaawansowanemu systemowi kamer iPad Pro 11. Wyposażony w 12MP aparat Ultra Wide z przodu oraz 12MP aparat Wide z tyłu ze skanerem LiDAR, umożliwia robienie zdjęć wysokiej jakości i korzystanie z doświadczeń rozszerzonej rzeczywistości.",
+              "Niezależnie od tego, czy wykonujesz połączenia wideo, skanujesz dokumenty, czy nagrywasz filmy w 4K, system kamer iPad Pro 11 zapewnia wyjątkową wydajność."
+            ]
+          }
+        ],
+        "zoom": "Cyfrowy zoom do 5x"
+      }
+    }
   },
   {
     "id": "apple-ipad-pro-11-2021-1tb-spacegray",
@@ -185,7 +269,35 @@
     "ram": "16GB",
     "camera": "12MP + 12MP",
     "zoom": "Digital zoom up to 5x",
-    "cell": ["Not applicable"]
+    "cell": ["Not applicable"],
+    "locales": {
+      "pl": {
+        "description": [
+          {
+            "title": "Potężna wydajność",
+            "text": [
+              "Doświadcz niesamowitej mocy i wydajności z Apple iPad Pro 11. Dzięki chipowi M1 oferuje nowy poziom wydajności, sprawiając, że jest szybszy i bardziej efektywny niż kiedykolwiek wcześniej.",
+              "Niezależnie od tego, czy edytujesz zdjęcia, projektujesz grafikę, czy wykonujesz wiele zadań jednocześnie w wymagających aplikacjach, iPad Pro 11 radzi sobie z tym wszystkim z łatwością."
+            ]
+          },
+          {
+            "title": "Zachwycający wyświetlacz Liquid Retina",
+            "text": [
+              "Ciesz się żywym i immersyjnym doświadczeniem wizualnym na wyświetlaczu Liquid Retina iPad Pro 11. Dzięki technologii ProMotion i True Tone, wyświetlacz dostosowuje się do Twojego otoczenia, zapewniając płynne przewijanie, precyzyjną dokładność kolorów i niesamowite detale.",
+              "Od oglądania filmów po edytowanie wideo, wyświetlacz iPad Pro 11 ożywia Twoje treści z oszałamiającą wyrazistością."
+            ]
+          },
+          {
+            "title": "Wszechstronny system kamer",
+            "text": [
+              "Uchwyć oszałamiające zdjęcia i wideo dzięki zaawansowanemu systemowi kamer iPad Pro 11. Wyposażony w 12MP aparat Ultra Wide z przodu oraz 12MP aparat Wide z tyłu ze skanerem LiDAR, umożliwia robienie zdjęć wysokiej jakości i korzystanie z doświadczeń rozszerzonej rzeczywistości.",
+              "Niezależnie od tego, czy wykonujesz połączenia wideo, skanujesz dokumenty, czy nagrywasz filmy w 4K, system kamer iPad Pro 11 zapewnia wyjątkową wydajność."
+            ]
+          }
+        ],
+        "zoom": "Cyfrowy zoom do 5x"
+      }
+    }
   },
   {
     "id": "apple-ipad-pro-11-2021-2tb-spacegray",
@@ -232,7 +344,35 @@
     "ram": "16GB",
     "camera": "12MP + 12MP",
     "zoom": "Digital zoom up to 5x",
-    "cell": ["Not applicable"]
+    "cell": ["Not applicable"],
+    "locales": {
+      "pl": {
+        "description": [
+          {
+            "title": "Potężna wydajność",
+            "text": [
+              "Doświadcz niesamowitej mocy i wydajności z Apple iPad Pro 11. Dzięki chipowi M1 oferuje nowy poziom wydajności, sprawiając, że jest szybszy i bardziej efektywny niż kiedykolwiek wcześniej.",
+              "Niezależnie od tego, czy edytujesz zdjęcia, projektujesz grafikę, czy wykonujesz wiele zadań jednocześnie w wymagających aplikacjach, iPad Pro 11 radzi sobie z tym wszystkim z łatwością."
+            ]
+          },
+          {
+            "title": "Zachwycający wyświetlacz Liquid Retina",
+            "text": [
+              "Ciesz się żywym i immersyjnym doświadczeniem wizualnym na wyświetlaczu Liquid Retina iPad Pro 11. Dzięki technologii ProMotion i True Tone, wyświetlacz dostosowuje się do Twojego otoczenia, zapewniając płynne przewijanie, precyzyjną dokładność kolorów i niesamowite detale.",
+              "Od oglądania filmów po edytowanie wideo, wyświetlacz iPad Pro 11 ożywia Twoje treści z oszałamiającą wyrazistością."
+            ]
+          },
+          {
+            "title": "Wszechstronny system kamer",
+            "text": [
+              "Uchwyć oszałamiające zdjęcia i wideo dzięki zaawansowanemu systemowi kamer iPad Pro 11. Wyposażony w 12MP aparat Ultra Wide z przodu oraz 12MP aparat Wide z tyłu ze skanerem LiDAR, umożliwia robienie zdjęć wysokiej jakości i korzystanie z doświadczeń rozszerzonej rzeczywistości.",
+              "Niezależnie od tego, czy wykonujesz połączenia wideo, skanujesz dokumenty, czy nagrywasz filmy w 4K, system kamer iPad Pro 11 zapewnia wyjątkową wydajność."
+            ]
+          }
+        ],
+        "zoom": "Cyfrowy zoom do 5x"
+      }
+    }
   },
   {
     "id": "apple-ipad-pro-11-2021-128gb-silver",
@@ -279,7 +419,35 @@
     "ram": "8GB",
     "camera": "12MP + 12MP",
     "zoom": "Digital zoom up to 5x",
-    "cell": ["Not applicable"]
+    "cell": ["Not applicable"],
+    "locales": {
+      "pl": {
+        "description": [
+          {
+            "title": "Potężna wydajność",
+            "text": [
+              "Doświadcz niesamowitej mocy i wydajności z Apple iPad Pro 11. Dzięki chipowi M1 oferuje nowy poziom wydajności, sprawiając, że jest szybszy i bardziej efektywny niż kiedykolwiek wcześniej.",
+              "Niezależnie od tego, czy edytujesz zdjęcia, projektujesz grafikę, czy wykonujesz wiele zadań jednocześnie w wymagających aplikacjach, iPad Pro 11 radzi sobie z tym wszystkim z łatwością."
+            ]
+          },
+          {
+            "title": "Zachwycający wyświetlacz Liquid Retina",
+            "text": [
+              "Ciesz się żywym i immersyjnym doświadczeniem wizualnym na wyświetlaczu Liquid Retina iPad Pro 11. Dzięki technologii ProMotion i True Tone, wyświetlacz dostosowuje się do Twojego otoczenia, zapewniając płynne przewijanie, precyzyjną dokładność kolorów i niesamowite detale.",
+              "Od oglądania filmów po edytowanie wideo, wyświetlacz iPad Pro 11 ożywia Twoje treści z oszałamiającą wyrazistością."
+            ]
+          },
+          {
+            "title": "Wszechstronny system kamer",
+            "text": [
+              "Uchwyć oszałamiające zdjęcia i wideo dzięki zaawansowanemu systemowi kamer iPad Pro 11. Wyposażony w 12MP aparat Ultra Wide z przodu oraz 12MP aparat Wide z tyłu ze skanerem LiDAR, umożliwia robienie zdjęć wysokiej jakości i korzystanie z doświadczeń rozszerzonej rzeczywistości.",
+              "Niezależnie od tego, czy wykonujesz połączenia wideo, skanujesz dokumenty, czy nagrywasz filmy w 4K, system kamer iPad Pro 11 zapewnia wyjątkową wydajność."
+            ]
+          }
+        ],
+        "zoom": "Cyfrowy zoom do 5x"
+      }
+    }
   },
   {
     "id": "apple-ipad-pro-11-2021-256gb-silver",
@@ -326,7 +494,35 @@
     "ram": "8GB",
     "camera": "12MP + 12MP",
     "zoom": "Digital zoom up to 5x",
-    "cell": ["Not applicable"]
+    "cell": ["Not applicable"],
+    "locales": {
+      "pl": {
+        "description": [
+          {
+            "title": "Potężna wydajność",
+            "text": [
+              "Doświadcz niesamowitej mocy i wydajności z Apple iPad Pro 11. Dzięki chipowi M1 oferuje nowy poziom wydajności, sprawiając, że jest szybszy i bardziej efektywny niż kiedykolwiek wcześniej.",
+              "Niezależnie od tego, czy edytujesz zdjęcia, projektujesz grafikę, czy wykonujesz wiele zadań jednocześnie w wymagających aplikacjach, iPad Pro 11 radzi sobie z tym wszystkim z łatwością."
+            ]
+          },
+          {
+            "title": "Zachwycający wyświetlacz Liquid Retina",
+            "text": [
+              "Ciesz się żywym i immersyjnym doświadczeniem wizualnym na wyświetlaczu Liquid Retina iPad Pro 11. Dzięki technologii ProMotion i True Tone, wyświetlacz dostosowuje się do Twojego otoczenia, zapewniając płynne przewijanie, precyzyjną dokładność kolorów i niesamowite detale.",
+              "Od oglądania filmów po edytowanie wideo, wyświetlacz iPad Pro 11 ożywia Twoje treści z oszałamiającą wyrazistością."
+            ]
+          },
+          {
+            "title": "Wszechstronny system kamer",
+            "text": [
+              "Uchwyć oszałamiające zdjęcia i wideo dzięki zaawansowanemu systemowi kamer iPad Pro 11. Wyposażony w 12MP aparat Ultra Wide z przodu oraz 12MP aparat Wide z tyłu ze skanerem LiDAR, umożliwia robienie zdjęć wysokiej jakości i korzystanie z doświadczeń rozszerzonej rzeczywistości.",
+              "Niezależnie od tego, czy wykonujesz połączenia wideo, skanujesz dokumenty, czy nagrywasz filmy w 4K, system kamer iPad Pro 11 zapewnia wyjątkową wydajność."
+            ]
+          }
+        ],
+        "zoom": "Cyfrowy zoom do 5x"
+      }
+    }
   },
   {
     "id": "apple-ipad-pro-11-2021-512gb-silver",
@@ -373,7 +569,35 @@
     "ram": "8GB",
     "camera": "12MP + 12MP",
     "zoom": "Digital zoom up to 5x",
-    "cell": ["Not applicable"]
+    "cell": ["Not applicable"],
+    "locales": {
+      "pl": {
+        "description": [
+          {
+            "title": "Potężna wydajność",
+            "text": [
+              "Doświadcz niesamowitej mocy i wydajności z Apple iPad Pro 11. Dzięki chipowi M1 oferuje nowy poziom wydajności, sprawiając, że jest szybszy i bardziej efektywny niż kiedykolwiek wcześniej.",
+              "Niezależnie od tego, czy edytujesz zdjęcia, projektujesz grafikę, czy wykonujesz wiele zadań jednocześnie w wymagających aplikacjach, iPad Pro 11 radzi sobie z tym wszystkim z łatwością."
+            ]
+          },
+          {
+            "title": "Zachwycający wyświetlacz Liquid Retina",
+            "text": [
+              "Ciesz się żywym i immersyjnym doświadczeniem wizualnym na wyświetlaczu Liquid Retina iPad Pro 11. Dzięki technologii ProMotion i True Tone, wyświetlacz dostosowuje się do Twojego otoczenia, zapewniając płynne przewijanie, precyzyjną dokładność kolorów i niesamowite detale.",
+              "Od oglądania filmów po edytowanie wideo, wyświetlacz iPad Pro 11 ożywia Twoje treści z oszałamiającą wyrazistością."
+            ]
+          },
+          {
+            "title": "Wszechstronny system kamer",
+            "text": [
+              "Uchwyć oszałamiające zdjęcia i wideo dzięki zaawansowanemu systemowi kamer iPad Pro 11. Wyposażony w 12MP aparat Ultra Wide z przodu oraz 12MP aparat Wide z tyłu ze skanerem LiDAR, umożliwia robienie zdjęć wysokiej jakości i korzystanie z doświadczeń rozszerzonej rzeczywistości.",
+              "Niezależnie od tego, czy wykonujesz połączenia wideo, skanujesz dokumenty, czy nagrywasz filmy w 4K, system kamer iPad Pro 11 zapewnia wyjątkową wydajność."
+            ]
+          }
+        ],
+        "zoom": "Cyfrowy zoom do 5x"
+      }
+    }
   },
   {
     "id": "apple-ipad-pro-11-2021-1tb-silver",
@@ -420,7 +644,35 @@
     "ram": "16GB",
     "camera": "12MP + 12MP",
     "zoom": "Digital zoom up to 5x",
-    "cell": ["Not applicable"]
+    "cell": ["Not applicable"],
+    "locales": {
+      "pl": {
+        "description": [
+          {
+            "title": "Potężna wydajność",
+            "text": [
+              "Doświadcz niesamowitej mocy i wydajności z Apple iPad Pro 11. Dzięki chipowi M1 oferuje nowy poziom wydajności, sprawiając, że jest szybszy i bardziej efektywny niż kiedykolwiek wcześniej.",
+              "Niezależnie od tego, czy edytujesz zdjęcia, projektujesz grafikę, czy wykonujesz wiele zadań jednocześnie w wymagających aplikacjach, iPad Pro 11 radzi sobie z tym wszystkim z łatwością."
+            ]
+          },
+          {
+            "title": "Zachwycający wyświetlacz Liquid Retina",
+            "text": [
+              "Ciesz się żywym i immersyjnym doświadczeniem wizualnym na wyświetlaczu Liquid Retina iPad Pro 11. Dzięki technologii ProMotion i True Tone, wyświetlacz dostosowuje się do Twojego otoczenia, zapewniając płynne przewijanie, precyzyjną dokładność kolorów i niesamowite detale.",
+              "Od oglądania filmów po edytowanie wideo, wyświetlacz iPad Pro 11 ożywia Twoje treści z oszałamiającą wyrazistością."
+            ]
+          },
+          {
+            "title": "Wszechstronny system kamer",
+            "text": [
+              "Uchwyć oszałamiające zdjęcia i wideo dzięki zaawansowanemu systemowi kamer iPad Pro 11. Wyposażony w 12MP aparat Ultra Wide z przodu oraz 12MP aparat Wide z tyłu ze skanerem LiDAR, umożliwia robienie zdjęć wysokiej jakości i korzystanie z doświadczeń rozszerzonej rzeczywistości.",
+              "Niezależnie od tego, czy wykonujesz połączenia wideo, skanujesz dokumenty, czy nagrywasz filmy w 4K, system kamer iPad Pro 11 zapewnia wyjątkową wydajność."
+            ]
+          }
+        ],
+        "zoom": "Cyfrowy zoom do 5x"
+      }
+    }
   },
   {
     "id": "apple-ipad-pro-11-2021-2tb-silver",
@@ -467,7 +719,35 @@
     "ram": "16GB",
     "camera": "12MP + 12MP",
     "zoom": "Digital zoom up to 5x",
-    "cell": ["Not applicable"]
+    "cell": ["Not applicable"],
+    "locales": {
+      "pl": {
+        "description": [
+          {
+            "title": "Potężna wydajność",
+            "text": [
+              "Doświadcz niesamowitej mocy i wydajności z Apple iPad Pro 11. Dzięki chipowi M1 oferuje nowy poziom wydajności, sprawiając, że jest szybszy i bardziej efektywny niż kiedykolwiek wcześniej.",
+              "Niezależnie od tego, czy edytujesz zdjęcia, projektujesz grafikę, czy wykonujesz wiele zadań jednocześnie w wymagających aplikacjach, iPad Pro 11 radzi sobie z tym wszystkim z łatwością."
+            ]
+          },
+          {
+            "title": "Zachwycający wyświetlacz Liquid Retina",
+            "text": [
+              "Ciesz się żywym i immersyjnym doświadczeniem wizualnym na wyświetlaczu Liquid Retina iPad Pro 11. Dzięki technologii ProMotion i True Tone, wyświetlacz dostosowuje się do Twojego otoczenia, zapewniając płynne przewijanie, precyzyjną dokładność kolorów i niesamowite detale.",
+              "Od oglądania filmów po edytowanie wideo, wyświetlacz iPad Pro 11 ożywia Twoje treści z oszałamiającą wyrazistością."
+            ]
+          },
+          {
+            "title": "Wszechstronny system kamer",
+            "text": [
+              "Uchwyć oszałamiające zdjęcia i wideo dzięki zaawansowanemu systemowi kamer iPad Pro 11. Wyposażony w 12MP aparat Ultra Wide z przodu oraz 12MP aparat Wide z tyłu ze skanerem LiDAR, umożliwia robienie zdjęć wysokiej jakości i korzystanie z doświadczeń rozszerzonej rzeczywistości.",
+              "Niezależnie od tego, czy wykonujesz połączenia wideo, skanujesz dokumenty, czy nagrywasz filmy w 4K, system kamer iPad Pro 11 zapewnia wyjątkową wydajność."
+            ]
+          }
+        ],
+        "zoom": "Cyfrowy zoom do 5x"
+      }
+    }
   },
   {
     "id": "apple-ipad-air-4th-gen-256gb-rose-gold",
@@ -515,7 +795,35 @@
     "ram": "4GB",
     "camera": "12MP",
     "zoom": "Digital zoom up to 5x",
-    "cell": ["Not applicable"]
+    "cell": ["Not applicable"],
+    "locales": {
+      "pl": {
+        "description": [
+          {
+            "title": "Cienki, lekki i potężny",
+            "text": [
+              "Apple iPad Air (4. generacji) łączy smukły design z potężną wydajnością. Dzięki cienkiej i lekkiej konstrukcji jest niezwykle przenośny i łatwy do zabrania ze sobą wszędzie dokądkolwiek pójdziesz.",
+              "Wyposażony w chip A14 Bionic z Neural Engine, iPad Air zapewnia szybkie i efektywne działanie, co sprawia, że jest idealny do wielozadaniowości, gier i twórczych zadań."
+            ]
+          },
+          {
+            "title": "Zachwycający wyświetlacz Liquid Retina",
+            "text": [
+              "Zanurz się w żywych wizualizacjach na wyświetlaczu Liquid Retina iPad Air. Dzięki technologii True Tone i szerokiej gamie kolorów P3, oferuje kolory wierne rzeczywistości oraz niesamowite detale.",
+              "Niezależnie od tego, czy oglądasz filmy, edytujesz zdjęcia, czy przeglądasz internet, wyświetlacz iPad Air zapewnia immersyjne i przyjemne doświadczenia wizualne."
+            ]
+          },
+          {
+            "title": "Wszechstronne funkcje i wsparcie dla Apple Pencil",
+            "text": [
+              "Otwórz nowe możliwości dzięki wszechstronnym funkcjom iPad Air. Obsługuje Apple Pencil (2. generacji), co pozwala na robienie notatek, szkicowanie i adnotowanie dokumentów z precyzją.",
+              "Dzięki wbudowanemu Touch ID w przycisk zewnętrzny, możesz bezpiecznie odblokować iPada, dokonywać bezpiecznych zakupów i autoryzować aplikacje za pomocą prostego dotyku."
+            ]
+          }
+        ],
+        "zoom": "Cyfrowy zoom do 5x"
+      }
+    }
   },
   {
     "id": "apple-ipad-air-4th-gen-64gb-rose-gold",
@@ -563,7 +871,35 @@
     "ram": "4GB",
     "camera": "12MP",
     "zoom": "Digital zoom up to 5x",
-    "cell": ["Not applicable"]
+    "cell": ["Not applicable"],
+    "locales": {
+      "pl": {
+        "description": [
+          {
+            "title": "Cienki, lekki i potężny",
+            "text": [
+              "Apple iPad Air (4. generacji) łączy smukły design z potężną wydajnością. Dzięki cienkiej i lekkiej konstrukcji jest niezwykle przenośny i łatwy do zabrania ze sobą wszędzie dokądkolwiek pójdziesz.",
+              "Wyposażony w chip A14 Bionic z Neural Engine, iPad Air zapewnia szybkie i efektywne działanie, co sprawia, że jest idealny do wielozadaniowości, gier i twórczych zadań."
+            ]
+          },
+          {
+            "title": "Zachwycający wyświetlacz Liquid Retina",
+            "text": [
+              "Zanurz się w żywych wizualizacjach na wyświetlaczu Liquid Retina iPad Air. Dzięki technologii True Tone i szerokiej gamie kolorów P3, oferuje kolory wierne rzeczywistości oraz niesamowite detale.",
+              "Niezależnie od tego, czy oglądasz filmy, edytujesz zdjęcia, czy przeglądasz internet, wyświetlacz iPad Air zapewnia immersyjne i przyjemne doświadczenia wizualne."
+            ]
+          },
+          {
+            "title": "Wszechstronne funkcje i wsparcie dla Apple Pencil",
+            "text": [
+              "Otwórz nowe możliwości dzięki wszechstronnym funkcjom iPad Air. Obsługuje Apple Pencil (2. generacji), co pozwala na robienie notatek, szkicowanie i adnotowanie dokumentów z precyzją.",
+              "Dzięki wbudowanemu Touch ID w przycisk zewnętrzny, możesz bezpiecznie odblokować iPada, dokonywać bezpiecznych zakupów i autoryzować aplikacje za pomocą prostego dotyku."
+            ]
+          }
+        ],
+        "zoom": "Cyfrowy zoom do 5x"
+      }
+    }
   },
   {
     "id": "apple-ipad-air-4th-gen-64gb-silver",
@@ -611,7 +947,35 @@
     "ram": "4GB",
     "camera": "12MP",
     "zoom": "Digital zoom up to 5x",
-    "cell": ["Not applicable"]
+    "cell": ["Not applicable"],
+    "locales": {
+      "pl": {
+        "description": [
+          {
+            "title": "Cienki, lekki i potężny",
+            "text": [
+              "Apple iPad Air (4. generacji) łączy smukły design z potężną wydajnością. Dzięki cienkiej i lekkiej konstrukcji jest niezwykle przenośny i łatwy do zabrania ze sobą wszędzie dokądkolwiek pójdziesz.",
+              "Wyposażony w chip A14 Bionic z Neural Engine, iPad Air zapewnia szybkie i efektywne działanie, co sprawia, że jest idealny do wielozadaniowości, gier i twórczych zadań."
+            ]
+          },
+          {
+            "title": "Zachwycający wyświetlacz Liquid Retina",
+            "text": [
+              "Zanurz się w żywych wizualizacjach na wyświetlaczu Liquid Retina iPad Air. Dzięki technologii True Tone i szerokiej gamie kolorów P3, oferuje kolory wierne rzeczywistości oraz niesamowite detale.",
+              "Niezależnie od tego, czy oglądasz filmy, edytujesz zdjęcia, czy przeglądasz internet, wyświetlacz iPad Air zapewnia immersyjne i przyjemne doświadczenia wizualne."
+            ]
+          },
+          {
+            "title": "Wszechstronne funkcje i wsparcie dla Apple Pencil",
+            "text": [
+              "Otwórz nowe możliwości dzięki wszechstronnym funkcjom iPad Air. Obsługuje Apple Pencil (2. generacji), co pozwala na robienie notatek, szkicowanie i adnotowanie dokumentów z precyzją.",
+              "Dzięki wbudowanemu Touch ID w przycisk zewnętrzny, możesz bezpiecznie odblokować iPada, dokonywać bezpiecznych zakupów i autoryzować aplikacje za pomocą prostego dotyku."
+            ]
+          }
+        ],
+        "zoom": "Cyfrowy zoom do 5x"
+      }
+    }
   },
   {
     "id": "apple-ipad-air-4th-gen-256gb-silver",
@@ -659,7 +1023,35 @@
     "ram": "4GB",
     "camera": "12MP",
     "zoom": "Digital zoom up to 5x",
-    "cell": ["Not applicable"]
+    "cell": ["Not applicable"],
+    "locales": {
+      "pl": {
+        "description": [
+          {
+            "title": "Cienki, lekki i potężny",
+            "text": [
+              "Apple iPad Air (4. generacji) łączy smukły design z potężną wydajnością. Dzięki cienkiej i lekkiej konstrukcji jest niezwykle przenośny i łatwy do zabrania ze sobą wszędzie dokądkolwiek pójdziesz.",
+              "Wyposażony w chip A14 Bionic z Neural Engine, iPad Air zapewnia szybkie i efektywne działanie, co sprawia, że jest idealny do wielozadaniowości, gier i twórczych zadań."
+            ]
+          },
+          {
+            "title": "Zachwycający wyświetlacz Liquid Retina",
+            "text": [
+              "Zanurz się w żywych wizualizacjach na wyświetlaczu Liquid Retina iPad Air. Dzięki technologii True Tone i szerokiej gamie kolorów P3, oferuje kolory wierne rzeczywistości oraz niesamowite detale.",
+              "Niezależnie od tego, czy oglądasz filmy, edytujesz zdjęcia, czy przeglądasz internet, wyświetlacz iPad Air zapewnia immersyjne i przyjemne doświadczenia wizualne."
+            ]
+          },
+          {
+            "title": "Wszechstronne funkcje i wsparcie dla Apple Pencil",
+            "text": [
+              "Otwórz nowe możliwości dzięki wszechstronnym funkcjom iPad Air. Obsługuje Apple Pencil (2. generacji), co pozwala na robienie notatek, szkicowanie i adnotowanie dokumentów z precyzją.",
+              "Dzięki wbudowanemu Touch ID w przycisk zewnętrzny, możesz bezpiecznie odblokować iPada, dokonywać bezpiecznych zakupów i autoryzować aplikacje za pomocą prostego dotyku."
+            ]
+          }
+        ],
+        "zoom": "Cyfrowy zoom do 5x"
+      }
+    }
   },
   {
     "id": "apple-ipad-air-4th-gen-256gb-green",
@@ -707,7 +1099,35 @@
     "ram": "4GB",
     "camera": "12MP",
     "zoom": "Digital zoom up to 5x",
-    "cell": ["Not applicable"]
+    "cell": ["Not applicable"],
+    "locales": {
+      "pl": {
+        "description": [
+          {
+            "title": "Cienki, lekki i potężny",
+            "text": [
+              "Apple iPad Air (4. generacji) łączy smukły design z potężną wydajnością. Dzięki cienkiej i lekkiej konstrukcji jest niezwykle przenośny i łatwy do zabrania ze sobą wszędzie dokądkolwiek pójdziesz.",
+              "Wyposażony w chip A14 Bionic z Neural Engine, iPad Air zapewnia szybkie i efektywne działanie, co sprawia, że jest idealny do wielozadaniowości, gier i twórczych zadań."
+            ]
+          },
+          {
+            "title": "Zachwycający wyświetlacz Liquid Retina",
+            "text": [
+              "Zanurz się w żywych wizualizacjach na wyświetlaczu Liquid Retina iPad Air. Dzięki technologii True Tone i szerokiej gamie kolorów P3, oferuje kolory wierne rzeczywistości oraz niesamowite detale.",
+              "Niezależnie od tego, czy oglądasz filmy, edytujesz zdjęcia, czy przeglądasz internet, wyświetlacz iPad Air zapewnia immersyjne i przyjemne doświadczenia wizualne."
+            ]
+          },
+          {
+            "title": "Wszechstronne funkcje i wsparcie dla Apple Pencil",
+            "text": [
+              "Otwórz nowe możliwości dzięki wszechstronnym funkcjom iPad Air. Obsługuje Apple Pencil (2. generacji), co pozwala na robienie notatek, szkicowanie i adnotowanie dokumentów z precyzją.",
+              "Dzięki wbudowanemu Touch ID w przycisk zewnętrzny, możesz bezpiecznie odblokować iPada, dokonywać bezpiecznych zakupów i autoryzować aplikacje za pomocą prostego dotyku."
+            ]
+          }
+        ],
+        "zoom": "Cyfrowy zoom do 5x"
+      }
+    }
   },
   {
     "id": "apple-ipad-air-4th-gen-64gb-green",
@@ -755,7 +1175,35 @@
     "ram": "4GB",
     "camera": "12MP",
     "zoom": "Digital zoom up to 5x",
-    "cell": ["Not applicable"]
+    "cell": ["Not applicable"],
+    "locales": {
+      "pl": {
+        "description": [
+          {
+            "title": "Cienki, lekki i potężny",
+            "text": [
+              "Apple iPad Air (4. generacji) łączy smukły design z potężną wydajnością. Dzięki cienkiej i lekkiej konstrukcji jest niezwykle przenośny i łatwy do zabrania ze sobą wszędzie dokądkolwiek pójdziesz.",
+              "Wyposażony w chip A14 Bionic z Neural Engine, iPad Air zapewnia szybkie i efektywne działanie, co sprawia, że jest idealny do wielozadaniowości, gier i twórczych zadań."
+            ]
+          },
+          {
+            "title": "Zachwycający wyświetlacz Liquid Retina",
+            "text": [
+              "Zanurz się w żywych wizualizacjach na wyświetlaczu Liquid Retina iPad Air. Dzięki technologii True Tone i szerokiej gamie kolorów P3, oferuje kolory wierne rzeczywistości oraz niesamowite detale.",
+              "Niezależnie od tego, czy oglądasz filmy, edytujesz zdjęcia, czy przeglądasz internet, wyświetlacz iPad Air zapewnia immersyjne i przyjemne doświadczenia wizualne."
+            ]
+          },
+          {
+            "title": "Wszechstronne funkcje i wsparcie dla Apple Pencil",
+            "text": [
+              "Otwórz nowe możliwości dzięki wszechstronnym funkcjom iPad Air. Obsługuje Apple Pencil (2. generacji), co pozwala na robienie notatek, szkicowanie i adnotowanie dokumentów z precyzją.",
+              "Dzięki wbudowanemu Touch ID w przycisk zewnętrzny, możesz bezpiecznie odblokować iPada, dokonywać bezpiecznych zakupów i autoryzować aplikacje za pomocą prostego dotyku."
+            ]
+          }
+        ],
+        "zoom": "Cyfrowy zoom do 5x"
+      }
+    }
   },
   {
     "id": "apple-ipad-air-4th-gen-64gb-sky-blue",
@@ -803,7 +1251,35 @@
     "ram": "4GB",
     "camera": "12MP",
     "zoom": "Digital zoom up to 5x",
-    "cell": ["Not applicable"]
+    "cell": ["Not applicable"],
+    "locales": {
+      "pl": {
+        "description": [
+          {
+            "title": "Cienki, lekki i potężny",
+            "text": [
+              "Apple iPad Air (4. generacji) łączy smukły design z potężną wydajnością. Dzięki cienkiej i lekkiej konstrukcji jest niezwykle przenośny i łatwy do zabrania ze sobą wszędzie dokądkolwiek pójdziesz.",
+              "Wyposażony w chip A14 Bionic z Neural Engine, iPad Air zapewnia szybkie i efektywne działanie, co sprawia, że jest idealny do wielozadaniowości, gier i twórczych zadań."
+            ]
+          },
+          {
+            "title": "Zachwycający wyświetlacz Liquid Retina",
+            "text": [
+              "Zanurz się w żywych wizualizacjach na wyświetlaczu Liquid Retina iPad Air. Dzięki technologii True Tone i szerokiej gamie kolorów P3, oferuje kolory wierne rzeczywistości oraz niesamowite detale.",
+              "Niezależnie od tego, czy oglądasz filmy, edytujesz zdjęcia, czy przeglądasz internet, wyświetlacz iPad Air zapewnia immersyjne i przyjemne doświadczenia wizualne."
+            ]
+          },
+          {
+            "title": "Wszechstronne funkcje i wsparcie dla Apple Pencil",
+            "text": [
+              "Otwórz nowe możliwości dzięki wszechstronnym funkcjom iPad Air. Obsługuje Apple Pencil (2. generacji), co pozwala na robienie notatek, szkicowanie i adnotowanie dokumentów z precyzją.",
+              "Dzięki wbudowanemu Touch ID w przycisk zewnętrzny, możesz bezpiecznie odblokować iPada, dokonywać bezpiecznych zakupów i autoryzować aplikacje za pomocą prostego dotyku."
+            ]
+          }
+        ],
+        "zoom": "Cyfrowy zoom do 5x"
+      }
+    }
   },
   {
     "id": "apple-ipad-air-4th-gen-256gb-sky-blue",
@@ -851,7 +1327,35 @@
     "ram": "4GB",
     "camera": "12MP",
     "zoom": "Digital zoom up to 5x",
-    "cell": ["Not applicable"]
+    "cell": ["Not applicable"],
+    "locales": {
+      "pl": {
+        "description": [
+          {
+            "title": "Cienki, lekki i potężny",
+            "text": [
+              "Apple iPad Air (4. generacji) łączy smukły design z potężną wydajnością. Dzięki cienkiej i lekkiej konstrukcji jest niezwykle przenośny i łatwy do zabrania ze sobą wszędzie dokądkolwiek pójdziesz.",
+              "Wyposażony w chip A14 Bionic z Neural Engine, iPad Air zapewnia szybkie i efektywne działanie, co sprawia, że jest idealny do wielozadaniowości, gier i twórczych zadań."
+            ]
+          },
+          {
+            "title": "Zachwycający wyświetlacz Liquid Retina",
+            "text": [
+              "Zanurz się w żywych wizualizacjach na wyświetlaczu Liquid Retina iPad Air. Dzięki technologii True Tone i szerokiej gamie kolorów P3, oferuje kolory wierne rzeczywistości oraz niesamowite detale.",
+              "Niezależnie od tego, czy oglądasz filmy, edytujesz zdjęcia, czy przeglądasz internet, wyświetlacz iPad Air zapewnia immersyjne i przyjemne doświadczenia wizualne."
+            ]
+          },
+          {
+            "title": "Wszechstronne funkcje i wsparcie dla Apple Pencil",
+            "text": [
+              "Otwórz nowe możliwości dzięki wszechstronnym funkcjom iPad Air. Obsługuje Apple Pencil (2. generacji), co pozwala na robienie notatek, szkicowanie i adnotowanie dokumentów z precyzją.",
+              "Dzięki wbudowanemu Touch ID w przycisk zewnętrzny, możesz bezpiecznie odblokować iPada, dokonywać bezpiecznych zakupów i autoryzować aplikacje za pomocą prostego dotyku."
+            ]
+          }
+        ],
+        "zoom": "Cyfrowy zoom do 5x"
+      }
+    }
   },
   {
     "id": "apple-ipad-mini-6th-gen-64gb-spacegray",
@@ -898,7 +1402,35 @@
     "ram": "4GB",
     "camera": "12MP",
     "zoom": "Digital zoom up to 5x",
-    "cell": ["Not applicable"]
+    "cell": ["Not applicable"],
+    "locales": {
+      "pl": {
+        "description": [
+          {
+            "title": "Kompaktowy i przenośny",
+            "text": [
+              "Doświadcz mocy iPada w kompaktowym rozmiarze dzięki Apple iPad Mini (6. generacji). Dzięki 8,3-calowemu wyświetlaczowi Liquid Retina i smukłej konstrukcji, idealnie sprawdza się w podróży zarówno do pracy, jak i rozrywki.",
+              "Niezależnie od tego, czy czytasz, grasz, czy oglądasz filmy, iPad Mini zapewnia oszałamiające wrażenia wizualne w przenośnym formacie."
+            ]
+          },
+          {
+            "title": "Chip A15 Bionic i Neural Engine",
+            "text": [
+              "iPad Mini (6. generacji) jest wyposażony w potężny chip A15 Bionic i Neural Engine, zapewniając szybkie i wydajne działanie. Bez trudu radzi sobie z wymagającymi zadaniami i aplikacjami graficznymi, dzięki czemu doskonale sprawdza się zarówno w pracy, jak i podczas rozrywki.",
+              "Doświadcz płynnej wielozadaniowości, wciągającej rozrywki w grach i bezproblemowego korzystania z aplikacji na iPadzie Mini."
+            ]
+          },
+          {
+            "title": "Zaawansowane aparaty i Center Stage",
+            "text": [
+              "Uchwyć oszałamiające zdjęcia i wideo dzięki zaawansowanym aparatom iPad Mini. 12MP przedni aparat i 12MP tylny aparat pozwalają robić zdjęcia w wysokiej jakości i nagrywać imponujące filmy.",
+              "iPad Mini wyposażony jest również w funkcję Center Stage, która automatycznie utrzymuje Cię w kadrze podczas połączeń wideo, sprawiając, że rozmowy stają się bardziej angażujące i dynamiczne."
+            ]
+          }
+        ],
+        "zoom": "Cyfrowy zoom do 5x"
+      }
+    }
   },
   {
     "id": "apple-ipad-mini-6th-gen-256gb-spacegray",
@@ -945,7 +1477,35 @@
     "ram": "4GB",
     "camera": "12MP",
     "zoom": "Digital zoom up to 5x",
-    "cell": ["Not applicable"]
+    "cell": ["Not applicable"],
+    "locales": {
+      "pl": {
+        "description": [
+          {
+            "title": "Kompaktowy i przenośny",
+            "text": [
+              "Doświadcz mocy iPada w kompaktowym rozmiarze dzięki Apple iPad Mini (6. generacji). Dzięki 8,3-calowemu wyświetlaczowi Liquid Retina i smukłej konstrukcji, idealnie sprawdza się w podróży zarówno do pracy, jak i rozrywki.",
+              "Niezależnie od tego, czy czytasz, grasz, czy oglądasz filmy, iPad Mini zapewnia oszałamiające wrażenia wizualne w przenośnym formacie."
+            ]
+          },
+          {
+            "title": "Chip A15 Bionic i Neural Engine",
+            "text": [
+              "iPad Mini (6. generacji) jest wyposażony w potężny chip A15 Bionic i Neural Engine, zapewniając szybkie i wydajne działanie. Bez trudu radzi sobie z wymagającymi zadaniami i aplikacjami graficznymi, dzięki czemu doskonale sprawdza się zarówno w pracy, jak i podczas rozrywki.",
+              "Doświadcz płynnej wielozadaniowości, wciągającej rozrywki w grach i bezproblemowego korzystania z aplikacji na iPadzie Mini."
+            ]
+          },
+          {
+            "title": "Zaawansowane aparaty i Center Stage",
+            "text": [
+              "Uchwyć oszałamiające zdjęcia i wideo dzięki zaawansowanym aparatom iPad Mini. 12MP przedni aparat i 12MP tylny aparat pozwalają robić zdjęcia w wysokiej jakości i nagrywać imponujące filmy.",
+              "iPad Mini wyposażony jest również w funkcję Center Stage, która automatycznie utrzymuje Cię w kadrze podczas połączeń wideo, sprawiając, że rozmowy stają się bardziej angażujące i dynamiczne."
+            ]
+          }
+        ],
+        "zoom": "Cyfrowy zoom do 5x"
+      }
+    }
   },
   {
     "id": "apple-ipad-mini-6th-gen-256gb-starlight",
@@ -992,7 +1552,35 @@
     "ram": "4GB",
     "camera": "12MP",
     "zoom": "Digital zoom up to 5x",
-    "cell": ["Not applicable"]
+    "cell": ["Not applicable"],
+    "locales": {
+      "pl": {
+        "description": [
+          {
+            "title": "Kompaktowy i przenośny",
+            "text": [
+              "Doświadcz mocy iPada w kompaktowym rozmiarze dzięki Apple iPad Mini (6. generacji). Dzięki 8,3-calowemu wyświetlaczowi Liquid Retina i smukłej konstrukcji, idealnie sprawdza się w podróży zarówno do pracy, jak i rozrywki.",
+              "Niezależnie od tego, czy czytasz, grasz, czy oglądasz filmy, iPad Mini zapewnia oszałamiające wrażenia wizualne w przenośnym formacie."
+            ]
+          },
+          {
+            "title": "Chip A15 Bionic i Neural Engine",
+            "text": [
+              "iPad Mini (6. generacji) jest wyposażony w potężny chip A15 Bionic i Neural Engine, zapewniając szybkie i wydajne działanie. Bez trudu radzi sobie z wymagającymi zadaniami i aplikacjami graficznymi, dzięki czemu doskonale sprawdza się zarówno w pracy, jak i podczas rozrywki.",
+              "Doświadcz płynnej wielozadaniowości, wciągającej rozrywki w grach i bezproblemowego korzystania z aplikacji na iPadzie Mini."
+            ]
+          },
+          {
+            "title": "Zaawansowane aparaty i Center Stage",
+            "text": [
+              "Uchwyć oszałamiające zdjęcia i wideo dzięki zaawansowanym aparatom iPad Mini. 12MP przedni aparat i 12MP tylny aparat pozwalają robić zdjęcia w wysokiej jakości i nagrywać imponujące filmy.",
+              "iPad Mini wyposażony jest również w funkcję Center Stage, która automatycznie utrzymuje Cię w kadrze podczas połączeń wideo, sprawiając, że rozmowy stają się bardziej angażujące i dynamiczne."
+            ]
+          }
+        ],
+        "zoom": "Cyfrowy zoom do 5x"
+      }
+    }
   },
   {
     "id": "apple-ipad-mini-6th-gen-64gb-starlight",
@@ -1039,7 +1627,35 @@
     "ram": "4GB",
     "camera": "12MP",
     "zoom": "Digital zoom up to 5x",
-    "cell": ["Not applicable"]
+    "cell": ["Not applicable"],
+    "locales": {
+      "pl": {
+        "description": [
+          {
+            "title": "Kompaktowy i przenośny",
+            "text": [
+              "Doświadcz mocy iPada w kompaktowym rozmiarze dzięki Apple iPad Mini (6. generacji). Dzięki 8,3-calowemu wyświetlaczowi Liquid Retina i smukłej konstrukcji, idealnie sprawdza się w podróży zarówno do pracy, jak i rozrywki.",
+              "Niezależnie od tego, czy czytasz, grasz, czy oglądasz filmy, iPad Mini zapewnia oszałamiające wrażenia wizualne w przenośnym formacie."
+            ]
+          },
+          {
+            "title": "Chip A15 Bionic i Neural Engine",
+            "text": [
+              "iPad Mini (6. generacji) jest wyposażony w potężny chip A15 Bionic i Neural Engine, zapewniając szybkie i wydajne działanie. Bez trudu radzi sobie z wymagającymi zadaniami i aplikacjami graficznymi, dzięki czemu doskonale sprawdza się zarówno w pracy, jak i podczas rozrywki.",
+              "Doświadcz płynnej wielozadaniowości, wciągającej rozrywki w grach i bezproblemowego korzystania z aplikacji na iPadzie Mini."
+            ]
+          },
+          {
+            "title": "Zaawansowane aparaty i Center Stage",
+            "text": [
+              "Uchwyć oszałamiające zdjęcia i wideo dzięki zaawansowanym aparatom iPad Mini. 12MP przedni aparat i 12MP tylny aparat pozwalają robić zdjęcia w wysokiej jakości i nagrywać imponujące filmy.",
+              "iPad Mini wyposażony jest również w funkcję Center Stage, która automatycznie utrzymuje Cię w kadrze podczas połączeń wideo, sprawiając, że rozmowy stają się bardziej angażujące i dynamiczne."
+            ]
+          }
+        ],
+        "zoom": "Cyfrowy zoom do 5x"
+      }
+    }
   },
   {
     "id": "apple-ipad-mini-6th-gen-64gb-pink",
@@ -1086,7 +1702,35 @@
     "ram": "4GB",
     "camera": "12MP",
     "zoom": "Digital zoom up to 5x",
-    "cell": ["Not applicable"]
+    "cell": ["Not applicable"],
+    "locales": {
+      "pl": {
+        "description": [
+          {
+            "title": "Kompaktowy i przenośny",
+            "text": [
+              "Doświadcz mocy iPada w kompaktowym rozmiarze dzięki Apple iPad Mini (6. generacji). Dzięki 8,3-calowemu wyświetlaczowi Liquid Retina i smukłej konstrukcji, idealnie sprawdza się w podróży zarówno do pracy, jak i rozrywki.",
+              "Niezależnie od tego, czy czytasz, grasz, czy oglądasz filmy, iPad Mini zapewnia oszałamiające wrażenia wizualne w przenośnym formacie."
+            ]
+          },
+          {
+            "title": "Chip A15 Bionic i Neural Engine",
+            "text": [
+              "iPad Mini (6. generacji) jest wyposażony w potężny chip A15 Bionic i Neural Engine, zapewniając szybkie i wydajne działanie. Bez trudu radzi sobie z wymagającymi zadaniami i aplikacjami graficznymi, dzięki czemu doskonale sprawdza się zarówno w pracy, jak i podczas rozrywki.",
+              "Doświadcz płynnej wielozadaniowości, wciągającej rozrywki w grach i bezproblemowego korzystania z aplikacji na iPadzie Mini."
+            ]
+          },
+          {
+            "title": "Zaawansowane aparaty i Center Stage",
+            "text": [
+              "Uchwyć oszałamiające zdjęcia i wideo dzięki zaawansowanym aparatom iPad Mini. 12MP przedni aparat i 12MP tylny aparat pozwalają robić zdjęcia w wysokiej jakości i nagrywać imponujące filmy.",
+              "iPad Mini wyposażony jest również w funkcję Center Stage, która automatycznie utrzymuje Cię w kadrze podczas połączeń wideo, sprawiając, że rozmowy stają się bardziej angażujące i dynamiczne."
+            ]
+          }
+        ],
+        "zoom": "Cyfrowy zoom do 5x"
+      }
+    }
   },
   {
     "id": "apple-ipad-mini-6th-gen-256gb-pink",
@@ -1133,7 +1777,35 @@
     "ram": "4GB",
     "camera": "12MP",
     "zoom": "Digital zoom up to 5x",
-    "cell": ["Not applicable"]
+    "cell": ["Not applicable"],
+    "locales": {
+      "pl": {
+        "description": [
+          {
+            "title": "Kompaktowy i przenośny",
+            "text": [
+              "Doświadcz mocy iPada w kompaktowym rozmiarze dzięki Apple iPad Mini (6. generacji). Dzięki 8,3-calowemu wyświetlaczowi Liquid Retina i smukłej konstrukcji, idealnie sprawdza się w podróży zarówno do pracy, jak i rozrywki.",
+              "Niezależnie od tego, czy czytasz, grasz, czy oglądasz filmy, iPad Mini zapewnia oszałamiające wrażenia wizualne w przenośnym formacie."
+            ]
+          },
+          {
+            "title": "Chip A15 Bionic i Neural Engine",
+            "text": [
+              "iPad Mini (6. generacji) jest wyposażony w potężny chip A15 Bionic i Neural Engine, zapewniając szybkie i wydajne działanie. Bez trudu radzi sobie z wymagającymi zadaniami i aplikacjami graficznymi, dzięki czemu doskonale sprawdza się zarówno w pracy, jak i podczas rozrywki.",
+              "Doświadcz płynnej wielozadaniowości, wciągającej rozrywki w grach i bezproblemowego korzystania z aplikacji na iPadzie Mini."
+            ]
+          },
+          {
+            "title": "Zaawansowane aparaty i Center Stage",
+            "text": [
+              "Uchwyć oszałamiające zdjęcia i wideo dzięki zaawansowanym aparatom iPad Mini. 12MP przedni aparat i 12MP tylny aparat pozwalają robić zdjęcia w wysokiej jakości i nagrywać imponujące filmy.",
+              "iPad Mini wyposażony jest również w funkcję Center Stage, która automatycznie utrzymuje Cię w kadrze podczas połączeń wideo, sprawiając, że rozmowy stają się bardziej angażujące i dynamiczne."
+            ]
+          }
+        ],
+        "zoom": "Cyfrowy zoom do 5x"
+      }
+    }
   },
   {
     "id": "apple-ipad-10-2-2020-128gb-gold",
@@ -1181,7 +1853,35 @@
     "ram": "3GB",
     "camera": "8MP",
     "zoom": "Digital zoom up to 5x",
-    "cell": ["Not applicable"]
+    "cell": ["Not applicable"],
+    "locales": {
+      "pl": {
+        "description": [
+          {
+            "title": "Wszechstronny i przystępny cenowo",
+            "text": [
+              "Apple iPad 10.2 (2020) to wszechstronna i przystępna cenowo opcja do codziennych zadań i rozrywki. Niezależnie od tego, czy przeglądasz internet, streamujesz treści, czy korzystasz z aplikacji do pracy, zapewnia płynne i responsywne działanie.",
+              "Dzięki dużemu 10,2-calowemu wyświetlaczowi Retina, zapewnia doskonałe wrażenia wizualne dla wszystkich Twoich treści."
+            ]
+          },
+          {
+            "title": "Potężna wydajność",
+            "text": [
+              "Doświadcz potężnej wydajności dzięki chipowi A12 Bionic w iPadzie 10.2. Umożliwia szybkie i efektywne wykonywanie wielu zadań jednocześnie, pozwalając na płynne i bezproblemowe korzystanie z wielu aplikacji.",
+              "Od gier po edytowanie dokumentów, iPad 10.2 poradzi sobie z wszystkim z łatwością."
+            ]
+          },
+          {
+            "title": "Wsparcie dla Apple Pencil i Smart Keyboard",
+            "text": [
+              "Otwórz drzwi do kreatywności i produktywności dzięki wsparciu dla Apple Pencil i Smart Keyboard. Rób notatki, rysuj i szkicuj z precyzją używając Apple Pencil (1. generacji), a dzięki Smart Keyboard zamień swój iPad w lekkiego laptopa.",
+              "iPad 10.2 dostosowuje się do Twoich potrzeb, niezależnie od tego, czy jesteś studentem, profesjonalistą, czy twórcą artystycznym."
+            ]
+          }
+        ],
+        "zoom": "Cyfrowy zoom do 5x"
+      }
+    }
   },
   {
     "id": "apple-ipad-10-2-2020-32gb-gold",
@@ -1229,7 +1929,35 @@
     "ram": "3GB",
     "camera": "8MP",
     "zoom": "Digital zoom up to 5x",
-    "cell": ["Not applicable"]
+    "cell": ["Not applicable"],
+    "locales": {
+      "pl": {
+        "description": [
+          {
+            "title": "Wszechstronny i przystępny cenowo",
+            "text": [
+              "Apple iPad 10.2 (2020) to wszechstronna i przystępna cenowo opcja do codziennych zadań i rozrywki. Niezależnie od tego, czy przeglądasz internet, streamujesz treści, czy korzystasz z aplikacji do pracy, zapewnia płynne i responsywne działanie.",
+              "Dzięki dużemu 10,2-calowemu wyświetlaczowi Retina, zapewnia doskonałe wrażenia wizualne dla wszystkich Twoich treści."
+            ]
+          },
+          {
+            "title": "Potężna wydajność",
+            "text": [
+              "Doświadcz potężnej wydajności dzięki chipowi A12 Bionic w iPadzie 10.2. Umożliwia szybkie i efektywne wykonywanie wielu zadań jednocześnie, pozwalając na płynne i bezproblemowe korzystanie z wielu aplikacji.",
+              "Od gier po edytowanie dokumentów, iPad 10.2 poradzi sobie z wszystkim z łatwością."
+            ]
+          },
+          {
+            "title": "Wsparcie dla Apple Pencil i Smart Keyboard",
+            "text": [
+              "Otwórz drzwi do kreatywności i produktywności dzięki wsparciu dla Apple Pencil i Smart Keyboard. Rób notatki, rysuj i szkicuj z precyzją używając Apple Pencil (1. generacji), a dzięki Smart Keyboard zamień swój iPad w lekkiego laptopa.",
+              "iPad 10.2 dostosowuje się do Twoich potrzeb, niezależnie od tego, czy jesteś studentem, profesjonalistą, czy twórcą artystycznym."
+            ]
+          }
+        ],
+        "zoom": "Cyfrowy zoom do 5x"
+      }
+    }
   },
   {
     "id": "apple-ipad-10-2-2020-32gb-silver",
@@ -1277,7 +2005,35 @@
     "ram": "3GB",
     "camera": "8MP",
     "zoom": "Digital zoom up to 5x",
-    "cell": ["Not applicable"]
+    "cell": ["Not applicable"],
+    "locales": {
+      "pl": {
+        "description": [
+          {
+            "title": "Wszechstronny i przystępny cenowo",
+            "text": [
+              "Apple iPad 10.2 (2020) to wszechstronna i przystępna cenowo opcja do codziennych zadań i rozrywki. Niezależnie od tego, czy przeglądasz internet, streamujesz treści, czy korzystasz z aplikacji do pracy, zapewnia płynne i responsywne działanie.",
+              "Dzięki dużemu 10,2-calowemu wyświetlaczowi Retina, zapewnia doskonałe wrażenia wizualne dla wszystkich Twoich treści."
+            ]
+          },
+          {
+            "title": "Potężna wydajność",
+            "text": [
+              "Doświadcz potężnej wydajności dzięki chipowi A12 Bionic w iPadzie 10.2. Umożliwia szybkie i efektywne wykonywanie wielu zadań jednocześnie, pozwalając na płynne i bezproblemowe korzystanie z wielu aplikacji.",
+              "Od gier po edytowanie dokumentów, iPad 10.2 poradzi sobie z wszystkim z łatwością."
+            ]
+          },
+          {
+            "title": "Wsparcie dla Apple Pencil i Smart Keyboard",
+            "text": [
+              "Otwórz drzwi do kreatywności i produktywności dzięki wsparciu dla Apple Pencil i Smart Keyboard. Rób notatki, rysuj i szkicuj z precyzją używając Apple Pencil (1. generacji), a dzięki Smart Keyboard zamień swój iPad w lekkiego laptopa.",
+              "iPad 10.2 dostosowuje się do Twoich potrzeb, niezależnie od tego, czy jesteś studentem, profesjonalistą, czy twórcą artystycznym."
+            ]
+          }
+        ],
+        "zoom": "Cyfrowy zoom do 5x"
+      }
+    }
   },
   {
     "id": "apple-ipad-10-2-2020-128gb-silver",
@@ -1325,7 +2081,35 @@
     "ram": "3GB",
     "camera": "8MP",
     "zoom": "Digital zoom up to 5x",
-    "cell": ["Not applicable"]
+    "cell": ["Not applicable"],
+    "locales": {
+      "pl": {
+        "description": [
+          {
+            "title": "Wszechstronny i przystępny cenowo",
+            "text": [
+              "Apple iPad 10.2 (2020) to wszechstronna i przystępna cenowo opcja do codziennych zadań i rozrywki. Niezależnie od tego, czy przeglądasz internet, streamujesz treści, czy korzystasz z aplikacji do pracy, zapewnia płynne i responsywne działanie.",
+              "Dzięki dużemu 10,2-calowemu wyświetlaczowi Retina, zapewnia doskonałe wrażenia wizualne dla wszystkich Twoich treści."
+            ]
+          },
+          {
+            "title": "Potężna wydajność",
+            "text": [
+              "Doświadcz potężnej wydajności dzięki chipowi A12 Bionic w iPadzie 10.2. Umożliwia szybkie i efektywne wykonywanie wielu zadań jednocześnie, pozwalając na płynne i bezproblemowe korzystanie z wielu aplikacji.",
+              "Od gier po edytowanie dokumentów, iPad 10.2 poradzi sobie z wszystkim z łatwością."
+            ]
+          },
+          {
+            "title": "Wsparcie dla Apple Pencil i Smart Keyboard",
+            "text": [
+              "Otwórz drzwi do kreatywności i produktywności dzięki wsparciu dla Apple Pencil i Smart Keyboard. Rób notatki, rysuj i szkicuj z precyzją używając Apple Pencil (1. generacji), a dzięki Smart Keyboard zamień swój iPad w lekkiego laptopa.",
+              "iPad 10.2 dostosowuje się do Twoich potrzeb, niezależnie od tego, czy jesteś studentem, profesjonalistą, czy twórcą artystycznym."
+            ]
+          }
+        ],
+        "zoom": "Cyfrowy zoom do 5x"
+      }
+    }
   },
   {
     "id": "apple-ipad-10-2-2020-128gb-spacegray",
@@ -1373,7 +2157,35 @@
     "ram": "3GB",
     "camera": "8MP",
     "zoom": "Digital zoom up to 5x",
-    "cell": ["Not applicable"]
+    "cell": ["Not applicable"],
+    "locales": {
+      "pl": {
+        "description": [
+          {
+            "title": "Wszechstronny i przystępny cenowo",
+            "text": [
+              "Apple iPad 10.2 (2020) to wszechstronna i przystępna cenowo opcja do codziennych zadań i rozrywki. Niezależnie od tego, czy przeglądasz internet, streamujesz treści, czy korzystasz z aplikacji do pracy, zapewnia płynne i responsywne działanie.",
+              "Dzięki dużemu 10,2-calowemu wyświetlaczowi Retina, zapewnia doskonałe wrażenia wizualne dla wszystkich Twoich treści."
+            ]
+          },
+          {
+            "title": "Potężna wydajność",
+            "text": [
+              "Doświadcz potężnej wydajności dzięki chipowi A12 Bionic w iPadzie 10.2. Umożliwia szybkie i efektywne wykonywanie wielu zadań jednocześnie, pozwalając na płynne i bezproblemowe korzystanie z wielu aplikacji.",
+              "Od gier po edytowanie dokumentów, iPad 10.2 poradzi sobie z wszystkim z łatwością."
+            ]
+          },
+          {
+            "title": "Wsparcie dla Apple Pencil i Smart Keyboard",
+            "text": [
+              "Otwórz drzwi do kreatywności i produktywności dzięki wsparciu dla Apple Pencil i Smart Keyboard. Rób notatki, rysuj i szkicuj z precyzją używając Apple Pencil (1. generacji), a dzięki Smart Keyboard zamień swój iPad w lekkiego laptopa.",
+              "iPad 10.2 dostosowuje się do Twoich potrzeb, niezależnie od tego, czy jesteś studentem, profesjonalistą, czy twórcą artystycznym."
+            ]
+          }
+        ],
+        "zoom": "Cyfrowy zoom do 5x"
+      }
+    }
   },
   {
     "id": "apple-ipad-10-2-2020-32gb-spacegray",
@@ -1421,7 +2233,35 @@
     "ram": "3GB",
     "camera": "8MP",
     "zoom": "Digital zoom up to 5x",
-    "cell": ["Not applicable"]
+    "cell": ["Not applicable"],
+    "locales": {
+      "pl": {
+        "description": [
+          {
+            "title": "Wszechstronny i przystępny cenowo",
+            "text": [
+              "Apple iPad 10.2 (2020) to wszechstronna i przystępna cenowo opcja do codziennych zadań i rozrywki. Niezależnie od tego, czy przeglądasz internet, streamujesz treści, czy korzystasz z aplikacji do pracy, zapewnia płynne i responsywne działanie.",
+              "Dzięki dużemu 10,2-calowemu wyświetlaczowi Retina, zapewnia doskonałe wrażenia wizualne dla wszystkich Twoich treści."
+            ]
+          },
+          {
+            "title": "Potężna wydajność",
+            "text": [
+              "Doświadcz potężnej wydajności dzięki chipowi A12 Bionic w iPadzie 10.2. Umożliwia szybkie i efektywne wykonywanie wielu zadań jednocześnie, pozwalając na płynne i bezproblemowe korzystanie z wielu aplikacji.",
+              "Od gier po edytowanie dokumentów, iPad 10.2 poradzi sobie z wszystkim z łatwością."
+            ]
+          },
+          {
+            "title": "Wsparcie dla Apple Pencil i Smart Keyboard",
+            "text": [
+              "Otwórz drzwi do kreatywności i produktywności dzięki wsparciu dla Apple Pencil i Smart Keyboard. Rób notatki, rysuj i szkicuj z precyzją używając Apple Pencil (1. generacji), a dzięki Smart Keyboard zamień swój iPad w lekkiego laptopa.",
+              "iPad 10.2 dostosowuje się do Twoich potrzeb, niezależnie od tego, czy jesteś studentem, profesjonalistą, czy twórcą artystycznym."
+            ]
+          }
+        ],
+        "zoom": "Cyfrowy zoom do 5x"
+      }
+    }
   },
   {
     "id": "apple-ipad-mini-5th-gen-256gb-silver",
@@ -1467,7 +2307,35 @@
     "ram": "3GB",
     "camera": "8MP",
     "zoom": "Digital zoom up to 5x",
-    "cell": ["Not applicable"]
+    "cell": ["Not applicable"],
+    "locales": {
+      "pl": {
+        "description": [
+          {
+            "title": "Kompaktowy i potężny",
+            "text": [
+              "Apple iPad Mini (5. generacji) łączy kompaktowy rozmiar z potężną wydajnością. Niezależnie od tego, czy jesteś w podróży, czy w domu, doskonale sprawdza się do pracy, rozrywki i twórczości.",
+              "Dzięki chipowi A12 Bionic iPad Mini zapewnia szybkie i wydajne działanie, umożliwiając płynne korzystanie z wymagających aplikacji i gier."
+            ]
+          },
+          {
+            "title": "Wyświetlacz Retina i technologia True Tone",
+            "text": [
+              "Doświadcz oszałamiających wizualizacji na wyświetlaczu Retina iPad Mini. Dzięki technologii True Tone ekran dostosowuje temperaturę barw do oświetlenia otoczenia, zapewniając naturalne i komfortowe wrażenia podczas oglądania.",
+              "Od czytania ebooków po przeglądanie zdjęć, wyświetlacz iPad Mini ożywia treści żywymi kolorami i wyrazistymi detalami."
+            ]
+          },
+          {
+            "title": "Wsparcie dla Apple Pencil i Smart Keyboard",
+            "text": [
+              "Otwórz drzwi do swojej kreatywności i produktywności dzięki wsparciu dla Apple Pencil i Smart Keyboard. Rób notatki, szkicuj i adnotuj dokumenty z precyzją za pomocą Apple Pencil (1. generacji) oraz zamień iPada Mini w wszechstronne miejsce pracy dzięki Smart Keyboard.",
+              "iPad Mini dostosowuje się do Twoich potrzeb, stając się potężnym narzędziem zarówno do pracy, jak i rozrywki."
+            ]
+          }
+        ],
+        "zoom": "Cyfrowy zoom do 5x"
+      }
+    }
   },
   {
     "id": "apple-ipad-mini-5th-gen-64gb-silver",
@@ -1513,7 +2381,35 @@
     "ram": "3GB",
     "camera": "8MP",
     "zoom": "Digital zoom up to 5x",
-    "cell": ["Not applicable"]
+    "cell": ["Not applicable"],
+    "locales": {
+      "pl": {
+        "description": [
+          {
+            "title": "Kompaktowy i potężny",
+            "text": [
+              "Apple iPad Mini (5. generacji) łączy kompaktowy rozmiar z potężną wydajnością. Niezależnie od tego, czy jesteś w podróży, czy w domu, doskonale sprawdza się do pracy, rozrywki i twórczości.",
+              "Dzięki chipowi A12 Bionic iPad Mini zapewnia szybkie i wydajne działanie, umożliwiając płynne korzystanie z wymagających aplikacji i gier."
+            ]
+          },
+          {
+            "title": "Wyświetlacz Retina i technologia True Tone",
+            "text": [
+              "Doświadcz oszałamiających wizualizacji na wyświetlaczu Retina iPad Mini. Dzięki technologii True Tone ekran dostosowuje temperaturę barw do oświetlenia otoczenia, zapewniając naturalne i komfortowe wrażenia podczas oglądania.",
+              "Od czytania ebooków po przeglądanie zdjęć, wyświetlacz iPad Mini ożywia treści żywymi kolorami i wyrazistymi detalami."
+            ]
+          },
+          {
+            "title": "Wsparcie dla Apple Pencil i Smart Keyboard",
+            "text": [
+              "Otwórz drzwi do swojej kreatywności i produktywności dzięki wsparciu dla Apple Pencil i Smart Keyboard. Rób notatki, szkicuj i adnotuj dokumenty z precyzją za pomocą Apple Pencil (1. generacji) oraz zamień iPada Mini w wszechstronne miejsce pracy dzięki Smart Keyboard.",
+              "iPad Mini dostosowuje się do Twoich potrzeb, stając się potężnym narzędziem zarówno do pracy, jak i rozrywki."
+            ]
+          }
+        ],
+        "zoom": "Cyfrowy zoom do 5x"
+      }
+    }
   },
   {
     "id": "apple-ipad-mini-5th-gen-64gb-spacegray",
@@ -1559,7 +2455,35 @@
     "ram": "3GB",
     "camera": "8MP",
     "zoom": "Digital zoom up to 5x",
-    "cell": ["Not applicable"]
+    "cell": ["Not applicable"],
+    "locales": {
+      "pl": {
+        "description": [
+          {
+            "title": "Kompaktowy i potężny",
+            "text": [
+              "Apple iPad Mini (5. generacji) łączy kompaktowy rozmiar z potężną wydajnością. Niezależnie od tego, czy jesteś w podróży, czy w domu, doskonale sprawdza się do pracy, rozrywki i twórczości.",
+              "Dzięki chipowi A12 Bionic iPad Mini zapewnia szybkie i wydajne działanie, umożliwiając płynne korzystanie z wymagających aplikacji i gier."
+            ]
+          },
+          {
+            "title": "Wyświetlacz Retina i technologia True Tone",
+            "text": [
+              "Doświadcz oszałamiających wizualizacji na wyświetlaczu Retina iPad Mini. Dzięki technologii True Tone ekran dostosowuje temperaturę barw do oświetlenia otoczenia, zapewniając naturalne i komfortowe wrażenia podczas oglądania.",
+              "Od czytania ebooków po przeglądanie zdjęć, wyświetlacz iPad Mini ożywia treści żywymi kolorami i wyrazistymi detalami."
+            ]
+          },
+          {
+            "title": "Wsparcie dla Apple Pencil i Smart Keyboard",
+            "text": [
+              "Otwórz drzwi do swojej kreatywności i produktywności dzięki wsparciu dla Apple Pencil i Smart Keyboard. Rób notatki, szkicuj i adnotuj dokumenty z precyzją za pomocą Apple Pencil (1. generacji) oraz zamień iPada Mini w wszechstronne miejsce pracy dzięki Smart Keyboard.",
+              "iPad Mini dostosowuje się do Twoich potrzeb, stając się potężnym narzędziem zarówno do pracy, jak i rozrywki."
+            ]
+          }
+        ],
+        "zoom": "Cyfrowy zoom do 5x"
+      }
+    }
   },
   {
     "id": "apple-ipad-mini-5th-gen-256gb-spacegray",
@@ -1605,7 +2529,35 @@
     "ram": "3GB",
     "camera": "8MP",
     "zoom": "Digital zoom up to 5x",
-    "cell": ["Not applicable"]
+    "cell": ["Not applicable"],
+    "locales": {
+      "pl": {
+        "description": [
+          {
+            "title": "Kompaktowy i potężny",
+            "text": [
+              "Apple iPad Mini (5. generacji) łączy kompaktowy rozmiar z potężną wydajnością. Niezależnie od tego, czy jesteś w podróży, czy w domu, doskonale sprawdza się do pracy, rozrywki i twórczości.",
+              "Dzięki chipowi A12 Bionic iPad Mini zapewnia szybkie i wydajne działanie, umożliwiając płynne korzystanie z wymagających aplikacji i gier."
+            ]
+          },
+          {
+            "title": "Wyświetlacz Retina i technologia True Tone",
+            "text": [
+              "Doświadcz oszałamiających wizualizacji na wyświetlaczu Retina iPad Mini. Dzięki technologii True Tone ekran dostosowuje temperaturę barw do oświetlenia otoczenia, zapewniając naturalne i komfortowe wrażenia podczas oglądania.",
+              "Od czytania ebooków po przeglądanie zdjęć, wyświetlacz iPad Mini ożywia treści żywymi kolorami i wyrazistymi detalami."
+            ]
+          },
+          {
+            "title": "Wsparcie dla Apple Pencil i Smart Keyboard",
+            "text": [
+              "Otwórz drzwi do swojej kreatywności i produktywności dzięki wsparciu dla Apple Pencil i Smart Keyboard. Rób notatki, szkicuj i adnotuj dokumenty z precyzją za pomocą Apple Pencil (1. generacji) oraz zamień iPada Mini w wszechstronne miejsce pracy dzięki Smart Keyboard.",
+              "iPad Mini dostosowuje się do Twoich potrzeb, stając się potężnym narzędziem zarówno do pracy, jak i rozrywki."
+            ]
+          }
+        ],
+        "zoom": "Cyfrowy zoom do 5x"
+      }
+    }
   },
   {
     "id": "apple-ipad-mini-5th-gen-256gb-gold",
@@ -1651,7 +2603,35 @@
     "ram": "3GB",
     "camera": "8MP",
     "zoom": "Digital zoom up to 5x",
-    "cell": ["Not applicable"]
+    "cell": ["Not applicable"],
+    "locales": {
+      "pl": {
+        "description": [
+          {
+            "title": "Kompaktowy i potężny",
+            "text": [
+              "Apple iPad Mini (5. generacji) łączy kompaktowy rozmiar z potężną wydajnością. Niezależnie od tego, czy jesteś w podróży, czy w domu, doskonale sprawdza się do pracy, rozrywki i twórczości.",
+              "Dzięki chipowi A12 Bionic iPad Mini zapewnia szybkie i wydajne działanie, umożliwiając płynne korzystanie z wymagających aplikacji i gier."
+            ]
+          },
+          {
+            "title": "Wyświetlacz Retina i technologia True Tone",
+            "text": [
+              "Doświadcz oszałamiających wizualizacji na wyświetlaczu Retina iPad Mini. Dzięki technologii True Tone ekran dostosowuje temperaturę barw do oświetlenia otoczenia, zapewniając naturalne i komfortowe wrażenia podczas oglądania.",
+              "Od czytania ebooków po przeglądanie zdjęć, wyświetlacz iPad Mini ożywia treści żywymi kolorami i wyrazistymi detalami."
+            ]
+          },
+          {
+            "title": "Wsparcie dla Apple Pencil i Smart Keyboard",
+            "text": [
+              "Otwórz drzwi do swojej kreatywności i produktywności dzięki wsparciu dla Apple Pencil i Smart Keyboard. Rób notatki, szkicuj i adnotuj dokumenty z precyzją za pomocą Apple Pencil (1. generacji) oraz zamień iPada Mini w wszechstronne miejsce pracy dzięki Smart Keyboard.",
+              "iPad Mini dostosowuje się do Twoich potrzeb, stając się potężnym narzędziem zarówno do pracy, jak i rozrywki."
+            ]
+          }
+        ],
+        "zoom": "Cyfrowy zoom do 5x"
+      }
+    }
   },
   {
     "id": "apple-ipad-mini-5th-gen-64gb-gold",
@@ -1697,6 +2677,34 @@
     "ram": "3GB",
     "camera": "8MP",
     "zoom": "Digital zoom up to 5x",
-    "cell": ["Not applicable"]
+    "cell": ["Not applicable"],
+    "locales": {
+      "pl": {
+        "description": [
+          {
+            "title": "Kompaktowy i potężny",
+            "text": [
+              "Apple iPad Mini (5. generacji) łączy kompaktowy rozmiar z potężną wydajnością. Niezależnie od tego, czy jesteś w podróży, czy w domu, doskonale sprawdza się do pracy, rozrywki i twórczości.",
+              "Dzięki chipowi A12 Bionic iPad Mini zapewnia szybkie i wydajne działanie, umożliwiając płynne korzystanie z wymagających aplikacji i gier."
+            ]
+          },
+          {
+            "title": "Wyświetlacz Retina i technologia True Tone",
+            "text": [
+              "Doświadcz oszałamiających wizualizacji na wyświetlaczu Retina iPad Mini. Dzięki technologii True Tone ekran dostosowuje temperaturę barw do oświetlenia otoczenia, zapewniając naturalne i komfortowe wrażenia podczas oglądania.",
+              "Od czytania ebooków po przeglądanie zdjęć, wyświetlacz iPad Mini ożywia treści żywymi kolorami i wyrazistymi detalami."
+            ]
+          },
+          {
+            "title": "Wsparcie dla Apple Pencil i Smart Keyboard",
+            "text": [
+              "Otwórz drzwi do swojej kreatywności i produktywności dzięki wsparciu dla Apple Pencil i Smart Keyboard. Rób notatki, szkicuj i adnotuj dokumenty z precyzją za pomocą Apple Pencil (1. generacji) oraz zamień iPada Mini w wszechstronne miejsce pracy dzięki Smart Keyboard.",
+              "iPad Mini dostosowuje się do Twoich potrzeb, stając się potężnym narzędziem zarówno do pracy, jak i rozrywki."
+            ]
+          }
+        ],
+        "zoom": "Cyfrowy zoom do 5x"
+      }
+    }
   }
 ]

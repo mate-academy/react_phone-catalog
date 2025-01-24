@@ -20,6 +20,7 @@ import {
 } from '../../../shared/consts/paths';
 import { PhotosSlider } from '../PhotosSlider';
 import { ProductDetailsControls } from '../ProductDetailsControls';
+import { About } from '../About';
 
 type Props = {
   productCategory: Category;
@@ -110,6 +111,8 @@ export const ProductDetailsPage: React.FC<Props> = ({ productCategory }) => {
               price={product.price}
               className={styles.Controls}
             />
+
+            <About product={productDetails} className={styles.About} />
           </>
         )}
       </main>

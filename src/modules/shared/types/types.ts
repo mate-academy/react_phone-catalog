@@ -15,6 +15,11 @@ export type Product = {
   image: string;
 };
 
+export type Paragraph = {
+  title: string;
+  text: string[];
+};
+
 export type ProductDetails = {
   id: string;
   category: Category;
@@ -27,10 +32,7 @@ export type ProductDetails = {
   colorsAvailable: string[];
   color: string;
   images: string[];
-  description: {
-    title: string;
-    text: string;
-  }[];
+  description: Paragraph[];
   screen: string;
   resolution: string;
   processor: string;

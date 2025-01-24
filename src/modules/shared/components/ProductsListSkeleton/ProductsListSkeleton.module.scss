@@ -1,0 +1,24 @@
+@use "../../../shared/styles/vars" as *;
+@use "../../../shared/styles/mixins" as *;
+
+.ProductCard {
+  height: 506px;
+
+  @include for-mobile {
+    height: 440px;
+  }
+}
+
+.List {
+  @include full-grid-width;
+
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(229px, 1fr));
+  gap: 40px $grid-gap;
+}
+
+.ProductsListSkeleton {
+  @include child-grid;
+
+  position: relative;
+}

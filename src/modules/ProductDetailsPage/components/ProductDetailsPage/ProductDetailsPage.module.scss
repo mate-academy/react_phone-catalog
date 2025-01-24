@@ -35,6 +35,14 @@
   }
 }
 
+.About {
+  @include full-grid-width;
+
+  @include for-desktop {
+    grid-column: span 12;
+  }
+}
+
 .ProductsPage {
   @include grid;
 

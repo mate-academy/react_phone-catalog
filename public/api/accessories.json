@@ -39,7 +39,31 @@
     "resolution": "272x340",
     "processor": "Apple S3",
     "ram": "768MB",
-    "cell": ["Wi-Fi", "Bluetooth", "LTE"]
+    "cell": ["Wi-Fi", "Bluetooth", "LTE"],
+    "locales": {
+      "pl": {
+        "description": [
+          {
+            "title": "Monitoruj swoje zdrowie",
+            "text": [
+              "Apple Watch Series 3 jest wyposażony w czujniki do monitorowania tętna, spalonych kalorii i innych wskaźników kondycji przez cały dzień. Może nawet śledzić Twoje treningi i sugerować spersonalizowane cele fitness."
+            ]
+          },
+          {
+            "title": "Pozostań w kontakcie podczas podróży",
+            "text": [
+              "Dzięki łączności komórkowej możesz wykonywać połączenia i wysyłać wiadomości z nadgarstka, nawet gdy Twój iPhone jest poza zasięgiem. A z Siri możesz uzyskać wskazówki, wysyłać wiadomości i ustawiać przypomnienia bez użycia rąk."
+            ]
+          },
+          {
+            "title": "Strumieniuj swoją ulubioną muzykę",
+            "text": [
+              "Dzięki Apple Music i Siri możesz strumieniować ponad 75 milionów utworów na swoim Apple Watch Series 3. Lub słuchać ulubionych podcastów, audiobooków i stacji radiowych."
+            ]
+          }
+        ]
+      }
+    }
   },
   {
     "id": "apple-watch-series-3-42mm-space-gray",
@@ -81,7 +105,31 @@
     "resolution": "272x340",
     "processor": "Apple S3",
     "ram": "768MB",
-    "cell": ["Wi-Fi", "Bluetooth", "LTE"]
+    "cell": ["Wi-Fi", "Bluetooth", "LTE"],
+    "locales": {
+      "pl": {
+        "description": [
+          {
+            "title": "Monitoruj swoje zdrowie",
+            "text": [
+              "Apple Watch Series 3 jest wyposażony w czujniki do monitorowania tętna, spalonych kalorii i innych wskaźników kondycji przez cały dzień. Może nawet śledzić Twoje treningi i sugerować spersonalizowane cele fitness."
+            ]
+          },
+          {
+            "title": "Pozostań w kontakcie podczas podróży",
+            "text": [
+              "Dzięki łączności komórkowej możesz wykonywać połączenia i wysyłać wiadomości z nadgarstka, nawet gdy Twój iPhone jest poza zasięgiem. A z Siri możesz uzyskać wskazówki, wysyłać wiadomości i ustawiać przypomnienia bez użycia rąk."
+            ]
+          },
+          {
+            "title": "Strumieniuj swoją ulubioną muzykę",
+            "text": [
+              "Dzięki Apple Music i Siri możesz strumieniować ponad 75 milionów utworów na swoim Apple Watch Series 3. Lub słuchać ulubionych podcastów, audiobooków i stacji radiowych."
+            ]
+          }
+        ]
+      }
+    }
   },
   {
     "id": "apple-watch-series-3-38mm-gold",
@@ -123,7 +171,31 @@
     "resolution": "272x340",
     "processor": "Apple S3",
     "ram": "768MB",
-    "cell": ["Wi-Fi", "Bluetooth", "LTE"]
+    "cell": ["Wi-Fi", "Bluetooth", "LTE"],
+    "locales": {
+      "pl": {
+        "description": [
+          {
+            "title": "Monitoruj swoje zdrowie",
+            "text": [
+              "Apple Watch Series 3 jest wyposażony w czujniki do monitorowania tętna, spalonych kalorii i innych wskaźników kondycji przez cały dzień. Może nawet śledzić Twoje treningi i sugerować spersonalizowane cele fitness."
+            ]
+          },
+          {
+            "title": "Pozostań w kontakcie podczas podróży",
+            "text": [
+              "Dzięki łączności komórkowej możesz wykonywać połączenia i wysyłać wiadomości z nadgarstka, nawet gdy Twój iPhone jest poza zasięgiem. A z Siri możesz uzyskać wskazówki, wysyłać wiadomości i ustawiać przypomnienia bez użycia rąk."
+            ]
+          },
+          {
+            "title": "Strumieniuj swoją ulubioną muzykę",
+            "text": [
+              "Dzięki Apple Music i Siri możesz strumieniować ponad 75 milionów utworów na swoim Apple Watch Series 3. Lub słuchać ulubionych podcastów, audiobooków i stacji radiowych."
+            ]
+          }
+        ]
+      }
+    }
   },
   {
     "id": "apple-watch-series-3-42mm-gold",
@@ -165,7 +237,31 @@
     "resolution": "272x340",
     "processor": "Apple S3",
     "ram": "768MB",
-    "cell": ["Wi-Fi", "Bluetooth", "LTE"]
+    "cell": ["Wi-Fi", "Bluetooth", "LTE"],
+    "locales": {
+      "pl": {
+        "description": [
+          {
+            "title": "Monitoruj swoje zdrowie",
+            "text": [
+              "Apple Watch Series 3 jest wyposażony w czujniki do monitorowania tętna, spalonych kalorii i innych wskaźników kondycji przez cały dzień. Może nawet śledzić Twoje treningi i sugerować spersonalizowane cele fitness."
+            ]
+          },
+          {
+            "title": "Pozostań w kontakcie podczas podróży",
+            "text": [
+              "Dzięki łączności komórkowej możesz wykonywać połączenia i wysyłać wiadomości z nadgarstka, nawet gdy Twój iPhone jest poza zasięgiem. A z Siri możesz uzyskać wskazówki, wysyłać wiadomości i ustawiać przypomnienia bez użycia rąk."
+            ]
+          },
+          {
+            "title": "Strumieniuj swoją ulubioną muzykę",
+            "text": [
+              "Dzięki Apple Music i Siri możesz strumieniować ponad 75 milionów utworów na swoim Apple Watch Series 3. Lub słuchać ulubionych podcastów, audiobooków i stacji radiowych."
+            ]
+          }
+        ]
+      }
+    }
   },
   {
     "id": "apple-watch-series-3-38mm-silver",
@@ -207,7 +303,31 @@
     "resolution": "272x340",
     "processor": "Apple S3",
     "ram": "768MB",
-    "cell": ["Wi-Fi", "Bluetooth", "LTE"]
+    "cell": ["Wi-Fi", "Bluetooth", "LTE"],
+    "locales": {
+      "pl": {
+        "description": [
+          {
+            "title": "Monitoruj swoje zdrowie",
+            "text": [
+              "Apple Watch Series 3 jest wyposażony w czujniki do monitorowania tętna, spalonych kalorii i innych wskaźników kondycji przez cały dzień. Może nawet śledzić Twoje treningi i sugerować spersonalizowane cele fitness."
+            ]
+          },
+          {
+            "title": "Pozostań w kontakcie podczas podróży",
+            "text": [
+              "Dzięki łączności komórkowej możesz wykonywać połączenia i wysyłać wiadomości z nadgarstka, nawet gdy Twój iPhone jest poza zasięgiem. A z Siri możesz uzyskać wskazówki, wysyłać wiadomości i ustawiać przypomnienia bez użycia rąk."
+            ]
+          },
+          {
+            "title": "Strumieniuj swoją ulubioną muzykę",
+            "text": [
+              "Dzięki Apple Music i Siri możesz strumieniować ponad 75 milionów utworów na swoim Apple Watch Series 3. Lub słuchać ulubionych podcastów, audiobooków i stacji radiowych."
+            ]
+          }
+        ]
+      }
+    }
   },
   {
     "id": "apple-watch-series-3-42mm-silver",
@@ -249,7 +369,31 @@
     "resolution": "272x340",
     "processor": "Apple S3",
     "ram": "768MB",
-    "cell": ["Wi-Fi", "Bluetooth", "LTE"]
+    "cell": ["Wi-Fi", "Bluetooth", "LTE"],
+    "locales": {
+      "pl": {
+        "description": [
+          {
+            "title": "Monitoruj swoje zdrowie",
+            "text": [
+              "Apple Watch Series 3 jest wyposażony w czujniki do monitorowania tętna, spalonych kalorii i innych wskaźników kondycji przez cały dzień. Może nawet śledzić Twoje treningi i sugerować spersonalizowane cele fitness."
+            ]
+          },
+          {
+            "title": "Pozostań w kontakcie podczas podróży",
+            "text": [
+              "Dzięki łączności komórkowej możesz wykonywać połączenia i wysyłać wiadomości z nadgarstka, nawet gdy Twój iPhone jest poza zasięgiem. A z Siri możesz uzyskać wskazówki, wysyłać wiadomości i ustawiać przypomnienia bez użycia rąk."
+            ]
+          },
+          {
+            "title": "Strumieniuj swoją ulubioną muzykę",
+            "text": [
+              "Dzięki Apple Music i Siri możesz strumieniować ponad 75 milionów utworów na swoim Apple Watch Series 3. Lub słuchać ulubionych podcastów, audiobooków i stacji radiowych."
+            ]
+          }
+        ]
+      }
+    }
   },
   {
     "id": "apple-watch-series-6-40mm-space-gray",
@@ -291,7 +435,31 @@
     "resolution": "324x394",
     "processor": "Apple S6",
     "ram": "1GB",
-    "cell": ["Wi-Fi", "Bluetooth", "LTE"]
+    "cell": ["Wi-Fi", "Bluetooth", "LTE"],
+    "locales": {
+      "pl": {
+        "description": [
+          {
+            "title": "Wyświetlacz Retina Always-On",
+            "text": [
+              "Apple Watch Series 6 wyposażony jest w wyświetlacz Retina Always-On, który jest 2,5 razy jaśniejszy na zewnątrz, gdy nadgarstek jest opuszczony. Dzięki temu możesz zobaczyć wszystkie informacje na tarczy zegarka za jednym spojrzeniem."
+            ]
+          },
+          {
+            "title": "Czujnik poziomu tlenu we krwi",
+            "text": [
+              "Aplikacja Blood Oxygen mierzy poziom tlenu we krwi za pomocą rewolucyjnego nowego czujnika i aplikacji. Możesz również wykonać EKG bezpośrednio z nadgarstka, w dowolnym miejscu i czasie."
+            ]
+          },
+          {
+            "title": "Śledź swoją codzienną aktywność",
+            "text": [
+              "Apple Watch Series 6 śledzi Twoją codzienną aktywność, w tym treningi, liczbę kroków i spalone kalorie. Ma również wbudowany GPS, który umożliwia śledzenie biegów, spacerów i wędrówek."
+            ]
+          }
+        ]
+      }
+    }
   },
   {
     "id": "apple-watch-series-6-44mm-space-gray",
@@ -333,7 +501,31 @@
     "resolution": "324x394",
     "processor": "Apple S6",
     "ram": "1GB",
-    "cell": ["Wi-Fi", "Bluetooth", "LTE"]
+    "cell": ["Wi-Fi", "Bluetooth", "LTE"],
+    "locales": {
+      "pl": {
+        "description": [
+          {
+            "title": "Wyświetlacz Retina Always-On",
+            "text": [
+              "Apple Watch Series 6 wyposażony jest w wyświetlacz Retina Always-On, który jest 2,5 razy jaśniejszy na zewnątrz, gdy nadgarstek jest opuszczony. Dzięki temu możesz zobaczyć wszystkie informacje na tarczy zegarka za jednym spojrzeniem."
+            ]
+          },
+          {
+            "title": "Czujnik poziomu tlenu we krwi",
+            "text": [
+              "Aplikacja Blood Oxygen mierzy poziom tlenu we krwi za pomocą rewolucyjnego nowego czujnika i aplikacji. Możesz również wykonać EKG bezpośrednio z nadgarstka, w dowolnym miejscu i czasie."
+            ]
+          },
+          {
+            "title": "Śledź swoją codzienną aktywność",
+            "text": [
+              "Apple Watch Series 6 śledzi Twoją codzienną aktywność, w tym treningi, liczbę kroków i spalone kalorie. Ma również wbudowany GPS, który umożliwia śledzenie biegów, spacerów i wędrówek."
+            ]
+          }
+        ]
+      }
+    }
   },
   {
     "id": "apple-watch-series-6-40mm-silver",
@@ -375,7 +567,31 @@
     "resolution": "324x394",
     "processor": "Apple S6",
     "ram": "1GB",
-    "cell": ["Wi-Fi", "Bluetooth", "LTE"]
+    "cell": ["Wi-Fi", "Bluetooth", "LTE"],
+    "locales": {
+      "pl": {
+        "description": [
+          {
+            "title": "Wyświetlacz Retina Always-On",
+            "text": [
+              "Apple Watch Series 6 wyposażony jest w wyświetlacz Retina Always-On, który jest 2,5 razy jaśniejszy na zewnątrz, gdy nadgarstek jest opuszczony. Dzięki temu możesz zobaczyć wszystkie informacje na tarczy zegarka za jednym spojrzeniem."
+            ]
+          },
+          {
+            "title": "Czujnik poziomu tlenu we krwi",
+            "text": [
+              "Aplikacja Blood Oxygen mierzy poziom tlenu we krwi za pomocą rewolucyjnego nowego czujnika i aplikacji. Możesz również wykonać EKG bezpośrednio z nadgarstka, w dowolnym miejscu i czasie."
+            ]
+          },
+          {
+            "title": "Śledź swoją codzienną aktywność",
+            "text": [
+              "Apple Watch Series 6 śledzi Twoją codzienną aktywność, w tym treningi, liczbę kroków i spalone kalorie. Ma również wbudowany GPS, który umożliwia śledzenie biegów, spacerów i wędrówek."
+            ]
+          }
+        ]
+      }
+    }
   },
   {
     "id": "apple-watch-series-6-44mm-silver",
@@ -417,7 +633,31 @@
     "resolution": "324x394",
     "processor": "Apple S6",
     "ram": "1GB",
-    "cell": ["Wi-Fi", "Bluetooth", "LTE"]
+    "cell": ["Wi-Fi", "Bluetooth", "LTE"],
+    "locales": {
+      "pl": {
+        "description": [
+          {
+            "title": "Wyświetlacz Retina Always-On",
+            "text": [
+              "Apple Watch Series 6 wyposażony jest w wyświetlacz Retina Always-On, który jest 2,5 razy jaśniejszy na zewnątrz, gdy nadgarstek jest opuszczony. Dzięki temu możesz zobaczyć wszystkie informacje na tarczy zegarka za jednym spojrzeniem."
+            ]
+          },
+          {
+            "title": "Czujnik poziomu tlenu we krwi",
+            "text": [
+              "Aplikacja Blood Oxygen mierzy poziom tlenu we krwi za pomocą rewolucyjnego nowego czujnika i aplikacji. Możesz również wykonać EKG bezpośrednio z nadgarstka, w dowolnym miejscu i czasie."
+            ]
+          },
+          {
+            "title": "Śledź swoją codzienną aktywność",
+            "text": [
+              "Apple Watch Series 6 śledzi Twoją codzienną aktywność, w tym treningi, liczbę kroków i spalone kalorie. Ma również wbudowany GPS, który umożliwia śledzenie biegów, spacerów i wędrówek."
+            ]
+          }
+        ]
+      }
+    }
   },
   {
     "id": "apple-watch-series-6-40mm-gold",
@@ -459,7 +699,31 @@
     "resolution": "324x394",
     "processor": "Apple S6",
     "ram": "1GB",
-    "cell": ["Wi-Fi", "Bluetooth", "LTE"]
+    "cell": ["Wi-Fi", "Bluetooth", "LTE"],
+    "locales": {
+      "pl": {
+        "description": [
+          {
+            "title": "Wyświetlacz Retina Always-On",
+            "text": [
+              "Apple Watch Series 6 wyposażony jest w wyświetlacz Retina Always-On, który jest 2,5 razy jaśniejszy na zewnątrz, gdy nadgarstek jest opuszczony. Dzięki temu możesz zobaczyć wszystkie informacje na tarczy zegarka za jednym spojrzeniem."
+            ]
+          },
+          {
+            "title": "Czujnik poziomu tlenu we krwi",
+            "text": [
+              "Aplikacja Blood Oxygen mierzy poziom tlenu we krwi za pomocą rewolucyjnego nowego czujnika i aplikacji. Możesz również wykonać EKG bezpośrednio z nadgarstka, w dowolnym miejscu i czasie."
+            ]
+          },
+          {
+            "title": "Śledź swoją codzienną aktywność",
+            "text": [
+              "Apple Watch Series 6 śledzi Twoją codzienną aktywność, w tym treningi, liczbę kroków i spalone kalorie. Ma również wbudowany GPS, który umożliwia śledzenie biegów, spacerów i wędrówek."
+            ]
+          }
+        ]
+      }
+    }
   },
   {
     "id": "apple-watch-series-6-44mm-gold",
@@ -501,7 +765,31 @@
     "resolution": "324x394",
     "processor": "Apple S6",
     "ram": "1GB",
-    "cell": ["Wi-Fi", "Bluetooth", "LTE"]
+    "cell": ["Wi-Fi", "Bluetooth", "LTE"],
+    "locales": {
+      "pl": {
+        "description": [
+          {
+            "title": "Wyświetlacz Retina Always-On",
+            "text": [
+              "Apple Watch Series 6 wyposażony jest w wyświetlacz Retina Always-On, który jest 2,5 razy jaśniejszy na zewnątrz, gdy nadgarstek jest opuszczony. Dzięki temu możesz zobaczyć wszystkie informacje na tarczy zegarka za jednym spojrzeniem."
+            ]
+          },
+          {
+            "title": "Czujnik poziomu tlenu we krwi",
+            "text": [
+              "Aplikacja Blood Oxygen mierzy poziom tlenu we krwi za pomocą rewolucyjnego nowego czujnika i aplikacji. Możesz również wykonać EKG bezpośrednio z nadgarstka, w dowolnym miejscu i czasie."
+            ]
+          },
+          {
+            "title": "Śledź swoją codzienną aktywność",
+            "text": [
+              "Apple Watch Series 6 śledzi Twoją codzienną aktywność, w tym treningi, liczbę kroków i spalone kalorie. Ma również wbudowany GPS, który umożliwia śledzenie biegów, spacerów i wędrówek."
+            ]
+          }
+        ]
+      }
+    }
   },
   {
     "id": "apple-watch-series-6-40mm-blue",
@@ -543,7 +831,31 @@
     "resolution": "324x394",
     "processor": "Apple S6",
     "ram": "1GB",
-    "cell": ["Wi-Fi", "Bluetooth", "LTE"]
+    "cell": ["Wi-Fi", "Bluetooth", "LTE"],
+    "locales": {
+      "pl": {
+        "description": [
+          {
+            "title": "Wyświetlacz Retina Always-On",
+            "text": [
+              "Apple Watch Series 6 wyposażony jest w wyświetlacz Retina Always-On, który jest 2,5 razy jaśniejszy na zewnątrz, gdy nadgarstek jest opuszczony. Dzięki temu możesz zobaczyć wszystkie informacje na tarczy zegarka za jednym spojrzeniem."
+            ]
+          },
+          {
+            "title": "Czujnik poziomu tlenu we krwi",
+            "text": [
+              "Aplikacja Blood Oxygen mierzy poziom tlenu we krwi za pomocą rewolucyjnego nowego czujnika i aplikacji. Możesz również wykonać EKG bezpośrednio z nadgarstka, w dowolnym miejscu i czasie."
+            ]
+          },
+          {
+            "title": "Śledź swoją codzienną aktywność",
+            "text": [
+              "Apple Watch Series 6 śledzi Twoją codzienną aktywność, w tym treningi, liczbę kroków i spalone kalorie. Ma również wbudowany GPS, który umożliwia śledzenie biegów, spacerów i wędrówek."
+            ]
+          }
+        ]
+      }
+    }
   },
   {
     "id": "apple-watch-series-6-44mm-blue",
@@ -585,7 +897,31 @@
     "resolution": "324x394",
     "processor": "Apple S6",
     "ram": "1GB",
-    "cell": ["Wi-Fi", "Bluetooth", "LTE"]
+    "cell": ["Wi-Fi", "Bluetooth", "LTE"],
+    "locales": {
+      "pl": {
+        "description": [
+          {
+            "title": "Wyświetlacz Retina Always-On",
+            "text": [
+              "Apple Watch Series 6 wyposażony jest w wyświetlacz Retina Always-On, który jest 2,5 razy jaśniejszy na zewnątrz, gdy nadgarstek jest opuszczony. Dzięki temu możesz zobaczyć wszystkie informacje na tarczy zegarka za jednym spojrzeniem."
+            ]
+          },
+          {
+            "title": "Czujnik poziomu tlenu we krwi",
+            "text": [
+              "Aplikacja Blood Oxygen mierzy poziom tlenu we krwi za pomocą rewolucyjnego nowego czujnika i aplikacji. Możesz również wykonać EKG bezpośrednio z nadgarstka, w dowolnym miejscu i czasie."
+            ]
+          },
+          {
+            "title": "Śledź swoją codzienną aktywność",
+            "text": [
+              "Apple Watch Series 6 śledzi Twoją codzienną aktywność, w tym treningi, liczbę kroków i spalone kalorie. Ma również wbudowany GPS, który umożliwia śledzenie biegów, spacerów i wędrówek."
+            ]
+          }
+        ]
+      }
+    }
   },
   {
     "id": "apple-watch-series-6-40mm-red",
@@ -627,7 +963,31 @@
     "resolution": "324x394",
     "processor": "Apple S6",
     "ram": "1GB",
-    "cell": ["Wi-Fi", "Bluetooth", "LTE"]
+    "cell": ["Wi-Fi", "Bluetooth", "LTE"],
+    "locales": {
+      "pl": {
+        "description": [
+          {
+            "title": "Wyświetlacz Retina Always-On",
+            "text": [
+              "Apple Watch Series 6 wyposażony jest w wyświetlacz Retina Always-On, który jest 2,5 razy jaśniejszy na zewnątrz, gdy nadgarstek jest opuszczony. Dzięki temu możesz zobaczyć wszystkie informacje na tarczy zegarka za jednym spojrzeniem."
+            ]
+          },
+          {
+            "title": "Czujnik poziomu tlenu we krwi",
+            "text": [
+              "Aplikacja Blood Oxygen mierzy poziom tlenu we krwi za pomocą rewolucyjnego nowego czujnika i aplikacji. Możesz również wykonać EKG bezpośrednio z nadgarstka, w dowolnym miejscu i czasie."
+            ]
+          },
+          {
+            "title": "Śledź swoją codzienną aktywność",
+            "text": [
+              "Apple Watch Series 6 śledzi Twoją codzienną aktywność, w tym treningi, liczbę kroków i spalone kalorie. Ma również wbudowany GPS, który umożliwia śledzenie biegów, spacerów i wędrówek."
+            ]
+          }
+        ]
+      }
+    }
   },
   {
     "id": "apple-watch-series-6-44mm-red",
@@ -669,7 +1029,31 @@
     "resolution": "324x394",
     "processor": "Apple S6",
     "ram": "1GB",
-    "cell": ["Wi-Fi", "Bluetooth", "LTE"]
+    "cell": ["Wi-Fi", "Bluetooth", "LTE"],
+    "locales": {
+      "pl": {
+        "description": [
+          {
+            "title": "Wyświetlacz Retina Always-On",
+            "text": [
+              "Apple Watch Series 6 wyposażony jest w wyświetlacz Retina Always-On, który jest 2,5 razy jaśniejszy na zewnątrz, gdy nadgarstek jest opuszczony. Dzięki temu możesz zobaczyć wszystkie informacje na tarczy zegarka za jednym spojrzeniem."
+            ]
+          },
+          {
+            "title": "Czujnik poziomu tlenu we krwi",
+            "text": [
+              "Aplikacja Blood Oxygen mierzy poziom tlenu we krwi za pomocą rewolucyjnego nowego czujnika i aplikacji. Możesz również wykonać EKG bezpośrednio z nadgarstka, w dowolnym miejscu i czasie."
+            ]
+          },
+          {
+            "title": "Śledź swoją codzienną aktywność",
+            "text": [
+              "Apple Watch Series 6 śledzi Twoją codzienną aktywność, w tym treningi, liczbę kroków i spalone kalorie. Ma również wbudowany GPS, który umożliwia śledzenie biegów, spacerów i wędrówek."
+            ]
+          }
+        ]
+      }
+    }
   },
   {
     "id": "apple-watch-series-5-40mm-silver",
@@ -711,7 +1095,31 @@
     "resolution": "324x394",
     "processor": "Apple S5",
     "ram": "1GB",
-    "cell": ["Wi-Fi", "Bluetooth", "LTE"]
+    "cell": ["Wi-Fi", "Bluetooth", "LTE"],
+    "locales": {
+      "pl": {
+        "description": [
+          {
+            "title": "Wyświetlacz Retina Always-On",
+            "text": [
+              "Dzięki wyświetlaczowi Retina Always-On możesz łatwo zobaczyć godzinę i ważne informacje bez podnoszenia nadgarstka. Wyświetlacz jest również o 30% większy niż w serii 3, co ułatwia odczyt i interakcję."
+            ]
+          },
+          {
+            "title": "Aplikacja EKG",
+            "text": [
+              "Aplikacja EKG może wykrywać nieregularne rytmy serca i powiadomić Cię, jeśli coś wydaje się być nie tak. Możesz również wykonać EKG w dowolnym miejscu i czasie, bezpośrednio z nadgarstka."
+            ]
+          },
+          {
+            "title": "Śledzenie aktywności",
+            "text": [
+              "Apple Watch Series 5 śledzi Twoją codzienną aktywność, w tym treningi, liczbę kroków i spalone kalorie. Posiada również wbudowany GPS, który umożliwia śledzenie biegów, spacerów i wędrówek."
+            ]
+          }
+        ]
+      }
+    }
   },
   {
     "id": "apple-watch-series-5-44mm-silver",
@@ -739,7 +1147,7 @@
       {
         "title": "ECG app",
         "text": [
-          "With the ECG app, you can take an electrocardiogram from your wrist anytime, anywhere. "
+          "With the ECG app, you can take an electrocardiogram from your wrist anytime, anywhere."
         ]
       },
       {
@@ -753,7 +1161,31 @@
     "resolution": "368x448",
     "processor": "Apple S5",
     "ram": "1GB",
-    "cell": ["Wi-Fi", "Bluetooth", "LTE"]
+    "cell": ["Wi-Fi", "Bluetooth", "LTE"],
+    "locales": {
+      "pl": {
+        "description": [
+          {
+            "title": "Wyświetlacz Retina Always-On",
+            "text": [
+              "Apple Watch Series 5 wyposażony jest w wyświetlacz Retina Always-On, który pozwala na rzucenie okiem na zegarek bez podnoszenia nadgarstka."
+            ]
+          },
+          {
+            "title": "Aplikacja EKG",
+            "text": [
+              "Dzięki aplikacji EKG możesz wykonać elektrokardiogram bezpośrednio z nadgarstka, w dowolnym miejscu i czasie."
+            ]
+          },
+          {
+            "title": "Śledź swoje treningi",
+            "text": [
+              "Apple Watch Series 5 śledzi Twoje treningi, w tym bieganie, chodzenie, jazdę na rowerze i pływanie. Posiada również wbudowany GPS, który umożliwia śledzenie Twojej lokalizacji i trasy."
+            ]
+          }
+        ]
+      }
+    }
   },
   {
     "id": "apple-watch-series-5-40mm-gold",
@@ -795,7 +1227,31 @@
     "resolution": "324x394",
     "processor": "Apple S5",
     "ram": "1GB",
-    "cell": ["Wi-Fi", "Bluetooth", "LTE"]
+    "cell": ["Wi-Fi", "Bluetooth", "LTE"],
+    "locales": {
+      "pl": {
+        "description": [
+          {
+            "title": "Wyświetlacz Retina Always-On",
+            "text": [
+              "Dzięki wyświetlaczowi Retina Always-On możesz łatwo zobaczyć godzinę i ważne informacje bez podnoszenia nadgarstka. Wyświetlacz jest również o 30% większy niż w serii 3, co ułatwia odczyt i interakcję."
+            ]
+          },
+          {
+            "title": "Aplikacja EKG",
+            "text": [
+              "Aplikacja EKG może wykrywać nieregularne rytmy serca i powiadomić Cię, jeśli coś wydaje się być nie tak. Możesz również wykonać EKG w dowolnym miejscu i czasie, bezpośrednio z nadgarstka."
+            ]
+          },
+          {
+            "title": "Śledzenie aktywności",
+            "text": [
+              "Apple Watch Series 5 śledzi Twoją codzienną aktywność, w tym treningi, liczbę kroków i spalone kalorie. Posiada również wbudowany GPS, który umożliwia śledzenie biegów, spacerów i wędrówek."
+            ]
+          }
+        ]
+      }
+    }
   },
   {
     "id": "apple-watch-series-5-44mm-gold",
@@ -823,7 +1279,7 @@
       {
         "title": "ECG app",
         "text": [
-          "With the ECG app, you can take an electrocardiogram from your wrist anytime, anywhere. "
+          "With the ECG app, you can take an electrocardiogram from your wrist anytime, anywhere."
         ]
       },
       {
@@ -837,7 +1293,31 @@
     "resolution": "368x448",
     "processor": "Apple S5",
     "ram": "1GB",
-    "cell": ["Wi-Fi", "Bluetooth", "LTE"]
+    "cell": ["Wi-Fi", "Bluetooth", "LTE"],
+    "locales": {
+      "pl": {
+        "description": [
+          {
+            "title": "Wyświetlacz Retina Always-On",
+            "text": [
+              "Apple Watch Series 5 wyposażony jest w wyświetlacz Retina Always-On, który pozwala na rzucenie okiem na zegarek bez podnoszenia nadgarstka."
+            ]
+          },
+          {
+            "title": "Aplikacja EKG",
+            "text": [
+              "Dzięki aplikacji EKG możesz wykonać elektrokardiogram bezpośrednio z nadgarstka, w dowolnym miejscu i czasie."
+            ]
+          },
+          {
+            "title": "Śledź swoje treningi",
+            "text": [
+              "Apple Watch Series 5 śledzi Twoje treningi, w tym bieganie, chodzenie, jazdę na rowerze i pływanie. Posiada również wbudowany GPS, który umożliwia śledzenie Twojej lokalizacji i trasy."
+            ]
+          }
+        ]
+      }
+    }
   },
   {
     "id": "apple-watch-series-5-40mm-space-gray",
@@ -879,7 +1359,31 @@
     "resolution": "324x394",
     "processor": "Apple S5",
     "ram": "1GB",
-    "cell": ["Wi-Fi", "Bluetooth", "LTE"]
+    "cell": ["Wi-Fi", "Bluetooth", "LTE"],
+    "locales": {
+      "pl": {
+        "description": [
+          {
+            "title": "Wyświetlacz Retina Always-On",
+            "text": [
+              "Dzięki wyświetlaczowi Retina Always-On możesz łatwo zobaczyć godzinę i ważne informacje bez podnoszenia nadgarstka. Wyświetlacz jest również o 30% większy niż w serii 3, co ułatwia odczyt i interakcję."
+            ]
+          },
+          {
+            "title": "Aplikacja EKG",
+            "text": [
+              "Aplikacja EKG może wykrywać nieregularne rytmy serca i powiadomić Cię, jeśli coś wydaje się być nie tak. Możesz również wykonać EKG w dowolnym miejscu i czasie, bezpośrednio z nadgarstka."
+            ]
+          },
+          {
+            "title": "Śledzenie aktywności",
+            "text": [
+              "Apple Watch Series 5 śledzi Twoją codzienną aktywność, w tym treningi, liczbę kroków i spalone kalorie. Posiada również wbudowany GPS, który umożliwia śledzenie biegów, spacerów i wędrówek."
+            ]
+          }
+        ]
+      }
+    }
   },
   {
     "id": "apple-watch-series-5-44mm-space-gray",
@@ -907,7 +1411,7 @@
       {
         "title": "ECG app",
         "text": [
-          "With the ECG app, you can take an electrocardiogram from your wrist anytime, anywhere. "
+          "With the ECG app, you can take an electrocardiogram from your wrist anytime, anywhere."
         ]
       },
       {
@@ -921,7 +1425,31 @@
     "resolution": "368x448",
     "processor": "Apple S5",
     "ram": "1GB",
-    "cell": ["Wi-Fi", "Bluetooth", "LTE"]
+    "cell": ["Wi-Fi", "Bluetooth", "LTE"],
+    "locales": {
+      "pl": {
+        "description": [
+          {
+            "title": "Wyświetlacz Retina Always-On",
+            "text": [
+              "Apple Watch Series 5 wyposażony jest w wyświetlacz Retina Always-On, który pozwala na rzucenie okiem na zegarek bez podnoszenia nadgarstka."
+            ]
+          },
+          {
+            "title": "Aplikacja EKG",
+            "text": [
+              "Dzięki aplikacji EKG możesz wykonać elektrokardiogram bezpośrednio z nadgarstka, w dowolnym miejscu i czasie."
+            ]
+          },
+          {
+            "title": "Śledź swoje treningi",
+            "text": [
+              "Apple Watch Series 5 śledzi Twoje treningi, w tym bieganie, chodzenie, jazdę na rowerze i pływanie. Posiada również wbudowany GPS, który umożliwia śledzenie Twojej lokalizacji i trasy."
+            ]
+          }
+        ]
+      }
+    }
   },
   {
     "id": "apple-watch-series-4-40mm-silver",
@@ -963,7 +1491,31 @@
     "resolution": "324x394",
     "processor": "Apple S4",
     "ram": "0.75GB",
-    "cell": ["Wi-Fi", "Bluetooth", "LTE"]
+    "cell": ["Wi-Fi", "Bluetooth", "LTE"],
+    "locales": {
+      "pl": {
+        "description": [
+          {
+            "title": "Większy wyświetlacz",
+            "text": [
+              "Apple Watch Series 4 ma większy wyświetlacz, który pozwala na zobaczenie większej ilości informacji za jednym spojrzeniem. Wyświetlacz jest o ponad 30% większy niż w serii 3 i ma krawędzie bez ramki z zaokrąglonymi rogami."
+            ]
+          },
+          {
+            "title": "Aplikacja EKG",
+            "text": [
+              "Dzięki aplikacji EKG możesz wykonać elektrokardiogram bezpośrednio z nadgarstka. Ta funkcja jest dostępna tylko w wybranych krajach i regionach."
+            ]
+          },
+          {
+            "title": "Wykrywanie upadków",
+            "text": [
+              "Apple Watch Series 4 może wykryć, kiedy upadniesz, i wysłać powiadomienie do służb ratunkowych, jeśli nie odpowiesz w ciągu minuty. Ta funkcja jest dostępna tylko dla użytkowników powyżej 65. roku życia."
+            ]
+          }
+        ]
+      }
+    }
   },
   {
     "id": "apple-watch-series-4-44mm-silver",
@@ -1005,7 +1557,31 @@
     "resolution": "368x448",
     "processor": "Apple S4",
     "ram": "0.75GB",
-    "cell": ["Wi-Fi", "Bluetooth", "LTE"]
+    "cell": ["Wi-Fi", "Bluetooth", "LTE"],
+    "locales": {
+      "pl": {
+        "description": [
+          {
+            "title": "Większy wyświetlacz",
+            "text": [
+              "Apple Watch Series 4 ma większy wyświetlacz, który pozwala na zobaczenie większej ilości informacji za jednym spojrzeniem. Wyświetlacz jest o ponad 30% większy niż w serii 3 i ma krawędzie bez ramki z zaokrąglonymi rogami."
+            ]
+          },
+          {
+            "title": "Aplikacja EKG",
+            "text": [
+              "Dzięki aplikacji EKG możesz wykonać elektrokardiogram bezpośrednio z nadgarstka. Ta funkcja jest dostępna tylko w wybranych krajach i regionach."
+            ]
+          },
+          {
+            "title": "Wykrywanie upadków",
+            "text": [
+              "Apple Watch Series 4 może wykryć, kiedy upadniesz, i wysłać powiadomienie do służb ratunkowych, jeśli nie odpowiesz w ciągu minuty. Ta funkcja jest dostępna tylko dla użytkowników powyżej 65. roku życia."
+            ]
+          }
+        ]
+      }
+    }
   },
   {
     "id": "apple-watch-series-4-40mm-gold",
@@ -1047,7 +1623,31 @@
     "resolution": "324x394",
     "processor": "Apple S4",
     "ram": "0.75GB",
-    "cell": ["Wi-Fi", "Bluetooth", "LTE"]
+    "cell": ["Wi-Fi", "Bluetooth", "LTE"],
+    "locales": {
+      "pl": {
+        "description": [
+          {
+            "title": "Większy wyświetlacz",
+            "text": [
+              "Apple Watch Series 4 ma większy wyświetlacz, który pozwala na zobaczenie większej ilości informacji za jednym spojrzeniem. Wyświetlacz jest o ponad 30% większy niż w serii 3 i ma krawędzie bez ramki z zaokrąglonymi rogami."
+            ]
+          },
+          {
+            "title": "Aplikacja EKG",
+            "text": [
+              "Dzięki aplikacji EKG możesz wykonać elektrokardiogram bezpośrednio z nadgarstka. Ta funkcja jest dostępna tylko w wybranych krajach i regionach."
+            ]
+          },
+          {
+            "title": "Wykrywanie upadków",
+            "text": [
+              "Apple Watch Series 4 może wykryć, kiedy upadniesz, i wysłać powiadomienie do służb ratunkowych, jeśli nie odpowiesz w ciągu minuty. Ta funkcja jest dostępna tylko dla użytkowników powyżej 65. roku życia."
+            ]
+          }
+        ]
+      }
+    }
   },
   {
     "id": "apple-watch-series-4-44mm-gold",
@@ -1089,7 +1689,31 @@
     "resolution": "368x448",
     "processor": "Apple S4",
     "ram": "0.75GB",
-    "cell": ["Wi-Fi", "Bluetooth", "LTE"]
+    "cell": ["Wi-Fi", "Bluetooth", "LTE"],
+    "locales": {
+      "pl": {
+        "description": [
+          {
+            "title": "Większy wyświetlacz",
+            "text": [
+              "Apple Watch Series 4 ma większy wyświetlacz, który pozwala na zobaczenie większej ilości informacji za jednym spojrzeniem. Wyświetlacz jest o ponad 30% większy niż w serii 3 i ma krawędzie bez ramki z zaokrąglonymi rogami."
+            ]
+          },
+          {
+            "title": "Aplikacja EKG",
+            "text": [
+              "Dzięki aplikacji EKG możesz wykonać elektrokardiogram bezpośrednio z nadgarstka. Ta funkcja jest dostępna tylko w wybranych krajach i regionach."
+            ]
+          },
+          {
+            "title": "Wykrywanie upadków",
+            "text": [
+              "Apple Watch Series 4 może wykryć, kiedy upadniesz, i wysłać powiadomienie do służb ratunkowych, jeśli nie odpowiesz w ciągu minuty. Ta funkcja jest dostępna tylko dla użytkowników powyżej 65. roku życia."
+            ]
+          }
+        ]
+      }
+    }
   },
   {
     "id": "apple-watch-series-4-40mm-space-gray",
@@ -1131,7 +1755,31 @@
     "resolution": "324x394",
     "processor": "Apple S4",
     "ram": "0.75GB",
-    "cell": ["Wi-Fi", "Bluetooth", "LTE"]
+    "cell": ["Wi-Fi", "Bluetooth", "LTE"],
+    "locales": {
+      "pl": {
+        "description": [
+          {
+            "title": "Większy wyświetlacz",
+            "text": [
+              "Apple Watch Series 4 ma większy wyświetlacz, który pozwala na zobaczenie większej ilości informacji za jednym spojrzeniem. Wyświetlacz jest o ponad 30% większy niż w serii 3 i ma krawędzie bez ramki z zaokrąglonymi rogami."
+            ]
+          },
+          {
+            "title": "Aplikacja EKG",
+            "text": [
+              "Dzięki aplikacji EKG możesz wykonać elektrokardiogram bezpośrednio z nadgarstka. Ta funkcja jest dostępna tylko w wybranych krajach i regionach."
+            ]
+          },
+          {
+            "title": "Wykrywanie upadków",
+            "text": [
+              "Apple Watch Series 4 może wykryć, kiedy upadniesz, i wysłać powiadomienie do służb ratunkowych, jeśli nie odpowiesz w ciągu minuty. Ta funkcja jest dostępna tylko dla użytkowników powyżej 65. roku życia."
+            ]
+          }
+        ]
+      }
+    }
   },
   {
     "id": "apple-watch-series-4-44mm-space-gray",
@@ -1173,7 +1821,31 @@
     "resolution": "368x448",
     "processor": "Apple S4",
     "ram": "0.75GB",
-    "cell": ["Wi-Fi", "Bluetooth", "LTE"]
+    "cell": ["Wi-Fi", "Bluetooth", "LTE"],
+    "locales": {
+      "pl": {
+        "description": [
+          {
+            "title": "Większy wyświetlacz",
+            "text": [
+              "Apple Watch Series 4 ma większy wyświetlacz, który pozwala na zobaczenie większej ilości informacji za jednym spojrzeniem. Wyświetlacz jest o ponad 30% większy niż w serii 3 i ma krawędzie bez ramki z zaokrąglonymi rogami."
+            ]
+          },
+          {
+            "title": "Aplikacja EKG",
+            "text": [
+              "Dzięki aplikacji EKG możesz wykonać elektrokardiogram bezpośrednio z nadgarstka. Ta funkcja jest dostępna tylko w wybranych krajach i regionach."
+            ]
+          },
+          {
+            "title": "Wykrywanie upadków",
+            "text": [
+              "Apple Watch Series 4 może wykryć, kiedy upadniesz, i wysłać powiadomienie do służb ratunkowych, jeśli nie odpowiesz w ciągu minuty. Ta funkcja jest dostępna tylko dla użytkowników powyżej 65. roku życia."
+            ]
+          }
+        ]
+      }
+    }
   },
   {
     "id": "apple-watch-se-40mm-silver",
@@ -1215,7 +1887,31 @@
     "resolution": "324x394",
     "processor": "Apple S5",
     "ram": "1GB",
-    "cell": ["Wi-Fi", "Bluetooth", "LTE"]
+    "cell": ["Wi-Fi", "Bluetooth", "LTE"],
+    "locales": {
+      "pl": {
+        "description": [
+          {
+            "title": "Wyświetlacz Retina",
+            "text": [
+              "Apple Watch SE wyposażony jest w wyświetlacz Retina, który zapewnia wyraźne i żywe obrazy, ułatwiając odczytywanie informacji."
+            ]
+          },
+          {
+            "title": "Family Setup",
+            "text": [
+              "Dzięki funkcji Family Setup możesz sparować Apple Watch SE z iPhonem członka rodziny, dzięki czemu pozostaniesz w kontakcie, nawet jeśli sam nie posiadasz iPhone’a."
+            ]
+          },
+          {
+            "title": "Śledzenie kondycji",
+            "text": [
+              "Apple Watch SE oferuje kompleksowe funkcje śledzenia kondycji, w tym monitorowanie aktywności, pomiar tętna oraz wbudowany GPS do śledzenia treningów na świeżym powietrzu."
+            ]
+          }
+        ]
+      }
+    }
   },
   {
     "id": "apple-watch-se-44mm-silver",
@@ -1257,7 +1953,31 @@
     "resolution": "368x448",
     "processor": "Apple S5",
     "ram": "1GB",
-    "cell": ["Wi-Fi", "Bluetooth", "LTE"]
+    "cell": ["Wi-Fi", "Bluetooth", "LTE"],
+    "locales": {
+      "pl": {
+        "description": [
+          {
+            "title": "Wyświetlacz Retina",
+            "text": [
+              "Apple Watch SE wyposażony jest w wyświetlacz Retina, który zapewnia wyraźne i żywe obrazy, ułatwiając odczytywanie informacji."
+            ]
+          },
+          {
+            "title": "Family Setup",
+            "text": [
+              "Dzięki funkcji Family Setup możesz sparować Apple Watch SE z iPhonem członka rodziny, dzięki czemu pozostaniesz w kontakcie, nawet jeśli sam nie posiadasz iPhone’a."
+            ]
+          },
+          {
+            "title": "Śledzenie kondycji",
+            "text": [
+              "Apple Watch SE oferuje kompleksowe funkcje śledzenia kondycji, w tym monitorowanie aktywności, pomiar tętna oraz wbudowany GPS do śledzenia treningów na świeżym powietrzu."
+            ]
+          }
+        ]
+      }
+    }
   },
   {
     "id": "apple-watch-se-40mm-gold",
@@ -1299,7 +2019,31 @@
     "resolution": "324x394",
     "processor": "Apple S5",
     "ram": "1GB",
-    "cell": ["Wi-Fi", "Bluetooth", "LTE"]
+    "cell": ["Wi-Fi", "Bluetooth", "LTE"],
+    "locales": {
+      "pl": {
+        "description": [
+          {
+            "title": "Wyświetlacz Retina",
+            "text": [
+              "Apple Watch SE posiada oszałamiający wyświetlacz Retina, który jest zawsze włączony, dzięki czemu możesz łatwo sprawdzić godzinę i ważne informacje bez podnoszenia nadgarstka."
+            ]
+          },
+          {
+            "title": "Śledzenie zdrowia i kondycji",
+            "text": [
+              "Apple Watch SE oferuje wszystkie funkcje, których potrzebujesz, aby dbać o zdrowie i aktywność, w tym monitorowanie tętna, śledzenie aktywności oraz snu. Posiada również wbudowany GPS, dzięki któremu możesz śledzić swoje treningi i aktywności na świeżym powietrzu."
+            ]
+          },
+          {
+            "title": "Pozostań w kontakcie",
+            "text": [
+              "Dzięki łączności komórkowej i Wi-Fi możesz pozostać w kontakcie, gdziekolwiek jesteś. Możesz wykonywać i odbierać połączenia, wysyłać wiadomości tekstowe oraz streamować muzykę bezpośrednio z nadgarstka."
+            ]
+          }
+        ]
+      }
+    }
   },
   {
     "id": "apple-watch-se-44mm-gold",
@@ -1341,7 +2085,31 @@
     "resolution": "368x448",
     "processor": "Apple S5",
     "ram": "1GB",
-    "cell": ["Wi-Fi", "Bluetooth", "LTE"]
+    "cell": ["Wi-Fi", "Bluetooth", "LTE"],
+    "locales": {
+      "pl": {
+        "description": [
+          {
+            "title": "Wyświetlacz Retina",
+            "text": [
+              "Apple Watch SE posiada oszałamiający wyświetlacz Retina, który jest zawsze włączony, dzięki czemu możesz łatwo sprawdzić godzinę i ważne informacje bez podnoszenia nadgarstka."
+            ]
+          },
+          {
+            "title": "Śledź swoją codzienną aktywność",
+            "text": [
+              "Apple Watch SE śledzi Twoją codzienną aktywność, w tym treningi, liczbę kroków i spalone kalorie. Posiada również wbudowany GPS, który umożliwia śledzenie biegów, spacerów i wędrówek."
+            ]
+          },
+          {
+            "title": "Pozostań w kontakcie",
+            "text": [
+              "Apple Watch SE pozwala pozostać w kontakcie z najważniejszymi osobami i informacjami. Dzięki usłudze komórkowej możesz wykonywać i odbierać połączenia oraz wiadomości tekstowe, streamować muzykę i korzystać z Siri, wszystko bez iPhone’a."
+            ]
+          }
+        ]
+      }
+    }
   },
   {
     "id": "apple-watch-se-40mm-space-gray",
@@ -1383,7 +2151,31 @@
     "resolution": "324x394",
     "processor": "Apple S5",
     "ram": "1GB",
-    "cell": ["Wi-Fi", "Bluetooth", "LTE"]
+    "cell": ["Wi-Fi", "Bluetooth", "LTE"],
+    "locales": {
+      "pl": {
+        "description": [
+          {
+            "title": "Wyświetlacz Retina",
+            "text": [
+              "Apple Watch SE wyposażony jest w oszałamiający wyświetlacz Retina, który jest zawsze włączony, zapewniając wyraźne i żywe obrazy, co ułatwia czytelność."
+            ]
+          },
+          {
+            "title": "Śledzenie kondycji i zdrowia",
+            "text": [
+              "Apple Watch SE pomaga utrzymać aktywność i monitoruje Twoje zdrowie dzięki funkcjom takim jak monitorowanie tętna, śledzenie aktywności oraz wbudowany GPS do śledzenia treningów na świeżym powietrzu."
+            ]
+          },
+          {
+            "title": "Pozostań w kontakcie",
+            "text": [
+              "Dzięki łączności komórkowej i Wi-Fi możesz pozostać w kontakcie w trakcie podróży. Wykonuj i odbieraj połączenia, wysyłaj wiadomości, streamuj muzykę i korzystaj z Siri bezpośrednio z nadgarstka."
+            ]
+          }
+        ]
+      }
+    }
   },
   {
     "id": "apple-watch-se-44mm-space-gray",
@@ -1425,6 +2217,30 @@
     "resolution": "368x448",
     "processor": "Apple S5",
     "ram": "1GB",
-    "cell": ["Wi-Fi", "Bluetooth", "LTE"]
+    "cell": ["Wi-Fi", "Bluetooth", "LTE"],
+    "locales": {
+      "pl": {
+        "description": [
+          {
+            "title": "Wyświetlacz Retina",
+            "text": [
+              "Apple Watch SE wyposażony jest w oszałamiający wyświetlacz Retina, który jest zawsze włączony, zapewniając wyraźne i żywe obrazy, co ułatwia czytelność."
+            ]
+          },
+          {
+            "title": "Śledzenie kondycji i zdrowia",
+            "text": [
+              "Apple Watch SE pomaga utrzymać aktywność i monitoruje Twoje zdrowie dzięki funkcjom takim jak monitorowanie tętna, śledzenie aktywności oraz wbudowany GPS do śledzenia treningów na świeżym powietrzu."
+            ]
+          },
+          {
+            "title": "Pozostań w kontakcie",
+            "text": [
+              "Dzięki łączności komórkowej i Wi-Fi możesz pozostać w kontakcie w trakcie podróży. Wykonuj i odbieraj połączenia, wysyłaj wiadomości, streamuj muzykę i korzystaj z Siri bezpośrednio z nadgarstka."
+            ]
+          }
+        ]
+      }
+    }
   }
 ]

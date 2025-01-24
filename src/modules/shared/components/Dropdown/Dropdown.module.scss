@@ -50,6 +50,7 @@ $dropdown-gap: 4px;
   top: calc(100% + $dropdown-gap);
   left: 0;
   right: 0;
+  z-index: 1;
 
   padding: 7px 0;
   border: 1px solid;
