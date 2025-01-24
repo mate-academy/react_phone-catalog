@@ -1,4 +1,4 @@
-@import '../../../styles/main.scss';
+@import '../../../../styles/main.scss';
 
 .slider {
   overflow: hidden;
@@ -8,7 +8,7 @@
   &__title {
     margin: 0;
 
-    @include title;
+    @include h2;
   }
 
   &__btns {

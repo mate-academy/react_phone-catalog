@@ -1,9 +1,9 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import styles from './ProductsSlider.module.scss';
-import { ProductCard } from '../../../components/ProductCard';
+import { ProductCard } from '../../../../components/ProductCard';
 import useEmblaCarousel from 'embla-carousel-react';
-import { Products } from '../../../types/Products';
-import { Icon } from '../../../components/Icon';
+import { Products } from '../../../../types/Products';
+import { Icon } from '../../../../components/Icon';
 
 type Props = {
   products: Products[];

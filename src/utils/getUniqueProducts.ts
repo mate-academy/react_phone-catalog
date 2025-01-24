@@ -1,4 +1,4 @@
-import { Products } from '../../../types/Products';
+import { Products } from '../types/Products';
 
 export function getUniqueProducts(products: Products[]): Products[] {
   const uniqueProducts: { [key: string]: Products } = {};
