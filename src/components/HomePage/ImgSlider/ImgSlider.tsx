@@ -8,7 +8,18 @@ import {
   ArrowButtonOrigin,
 } from '../ArrowButton';
 import { useSwipeable } from 'react-swipeable';
-import { useWidthRecalculate } from '../../../app/hooks';
+import { useAppSelector, useWidthRecalculate } from '../../../app/hooks';
+
+const textContents = {
+  text1: {
+    en: 'Check brand new models!',
+    ua: 'Погляньте на нові моделі!',
+  },
+  text3: {
+    en: 'Contact me!',
+    ua: "Зв'яжіться зі мною!",
+  },
+};
 
 const dotsIds = [0, 1, 2];
 
@@ -17,6 +28,8 @@ export const ImgSlider: React.FC = () => {
 
   const sliderRef = useRef<HTMLOListElement>(null);
   const [slideWidth] = useWidthRecalculate(sliderRef);
+
+  const { language } = useAppSelector(st => st.global);
 
   //#region swiping
   function swipeLeft() {
@@ -71,7 +84,7 @@ export const ImgSlider: React.FC = () => {
               style={linkWidthStyle}
             >
               <p className={cl.sliderLinkWrapper__1__text1}>
-                Check brand <br /> new models!
+                {textContents.text1[language]}
               </p>
               <div className={`${cl.sliderLinkWrapper__1__img1}`} />
             </a>
@@ -91,7 +104,9 @@ export const ImgSlider: React.FC = () => {
               className={`${cl.sliderLinkWrapper} ${cl.sliderLinkWrapper__3}`}
               style={linkWidthStyle}
             >
-              <p className={cl.sliderLinkWrapper__3__text3}>Contact me!</p>
+              <p className={cl.sliderLinkWrapper__3__text3}>
+                {textContents.text3[language]}
+              </p>
             </Link>
           </li>
         </ol>

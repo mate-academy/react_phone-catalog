@@ -5,8 +5,8 @@ import cn from 'classnames';
 import { TechSpecs } from '../../ui/TechSpecs';
 import { SectionTitle } from '../../titles/SectionTitle';
 import { Link, useLocation, useParams } from 'react-router-dom';
-import { useAppDispatch, useAppSelector } from '../../../app/hooks';
-import { setCartList, setFavoritesList } from '../../../features/productSlice';
+import { useAppSelector } from '../../../app/hooks';
+import { AddToFavCartButton } from '../../ui/AddToFavCartButton';
 
 type Props = {
   product: DetailProduct;
@@ -39,11 +39,41 @@ const actualColors = {
   blue: '#124460',
 };
 
+const textContent = {
+  techSpecs: {
+    screen: {
+      en: 'Screen',
+      ua: 'Екран',
+    },
+    resolution: {
+      en: 'Resolution',
+      ua: 'Роздільна здатність',
+    },
+    processor: {
+      en: 'Processor',
+      ua: 'Процесор',
+    },
+    ram: {
+      en: 'RAM',
+      ua: "Оперативна пам'ять",
+    },
+  },
+
+  selectors: {
+    colors: {
+      en: 'Available colors',
+      ua: 'Доступні кольори',
+    },
+    capacity: {
+      en: 'Select capacity',
+      ua: 'Оберіть обсяг сховища',
+    },
+  },
+};
+
 export const VisualInfoArticle: React.FC<Props> = ({ product, className }) => {
-  const dispatch = useAppDispatch();
-  const { favoritesList, productList, cartList } = useAppSelector(
-    st => st.products,
-  );
+  const { productList } = useAppSelector(st => st.products);
+  const { language } = useAppSelector(st => st.global);
   //#region reload states
   const [selectedPhoto, setSelectedPhoto] = useState(product.images[0]);
   const [selectedColor, setSelectedColor] = useState(product.color);
@@ -72,43 +102,13 @@ export const VisualInfoArticle: React.FC<Props> = ({ product, className }) => {
   //#endregion
 
   const techSpecs = [
-    ['Screen', product.screen],
-    ['Resolution', product.resolution],
-    ['Processor', product.processor],
-    ['RAM', product.ram],
+    [textContent.techSpecs.screen[language], product.screen],
+    [textContent.techSpecs.resolution[language], product.resolution],
+    [textContent.techSpecs.processor[language], product.processor],
+    [textContent.techSpecs.ram[language], product.ram],
   ];
 
-  const isProductAddedToFav = favoritesList.some(
-    fav => fav.itemId === product.id,
-  );
-  const isProductAddedToCart = cartList.some(car => car.itemId === product.id);
   const neededProduct = productList.find(prod => prod.itemId === product.id);
-
-  function handleAddAndRemoveFromFavList() {
-    if (isProductAddedToFav) {
-      dispatch(
-        setFavoritesList(
-          favoritesList.filter(fav => fav.itemId !== neededProduct?.itemId),
-        ),
-      );
-    } else {
-      dispatch(setFavoritesList([...favoritesList, neededProduct]));
-    }
-  }
-
-  function handleAddAndRemoveFromCart() {
-    const productWithQuantity = { ...neededProduct, quantity: 1 };
-
-    if (isProductAddedToCart) {
-      dispatch(
-        setCartList(
-          cartList.filter(car => car.itemId !== neededProduct?.itemId),
-        ),
-      );
-    } else {
-      dispatch(setCartList([...cartList, productWithQuantity]));
-    }
-  }
 
   return (
     <article className={`${cl.prodVisualInfo} ${className}`}>
@@ -141,7 +141,9 @@ export const VisualInfoArticle: React.FC<Props> = ({ product, className }) => {
       <div className={cl.widgetsContainer}>
         <section className={cl.selectorsContainer}>
           <div>
-            <h3 className={cl.selectorTitle}>Available colors</h3>
+            <h3 className={cl.selectorTitle}>
+              {textContent.selectors.colors[language]}
+            </h3>
             <ul className={cl.selectorList}>
               {product.colorsAvailable.map(color => (
                 <li
@@ -164,7 +166,9 @@ export const VisualInfoArticle: React.FC<Props> = ({ product, className }) => {
           </div>
 
           <div>
-            <h3 className={cl.selectorTitle}>Select capacity</h3>
+            <h3 className={cl.selectorTitle}>
+              {textContent.selectors.capacity[language]}
+            </h3>
             <ul className={cl.selectorList}>
               {product.capacityAvailable.map(cap => (
                 <li key={cap} className={cl.selectorList__capacity}>
@@ -196,22 +200,12 @@ export const VisualInfoArticle: React.FC<Props> = ({ product, className }) => {
             )}
           </div>
 
-          <div className={cl.buttonContainer}>
-            <button
-              className={`${cl.buttonContainer__cardButton} ${isProductAddedToCart && cl.buttonContainer__cardButtonAdded}`}
-              onClick={handleAddAndRemoveFromCart}
-            >
-              {isProductAddedToCart ? 'Added to cart' : 'Add to cart'}
-            </button>
-            <button
-              className={cl.buttonContainer__favButton}
-              onClick={handleAddAndRemoveFromFavList}
-            >
-              <svg
-                className={`${cl.buttonContainer__favButtonIcon} ${isProductAddedToFav && cl.buttonContainer__favButtonIconAdded}`}
-              />
-            </button>
-          </div>
+          <AddToFavCartButton
+            // @ts-expect-error - if this page is rendered, then product is not undefined
+            product={neededProduct}
+            height="48px"
+            className={cl.buttons}
+          />
 
           <TechSpecs chars={techSpecs} />
         </section>

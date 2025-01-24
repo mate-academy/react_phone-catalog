@@ -6,12 +6,29 @@ import { Categories } from './Categories';
 import { useAppSelector, useComponentLoading } from '../../app/hooks';
 import { Loader } from '../ui/Loader';
 import { PageTitle } from '../titles/PageTitle';
+import { LanguageSelector } from './LanguageSelector';
+
+const textContents = {
+  title: {
+    en: 'Welcome to Nice\u00A0Gandets store!',
+    ua: 'Ласкаво просимо в магазин Nice\u00A0Gadgets!',
+  },
+  newModels: {
+    en: 'Brand new models',
+    ua: 'Нові моделі',
+  },
+  hotPrices: {
+    en: 'Hot prices',
+    ua: 'Гарячі ціни',
+  },
+};
 
 export const HomePage: React.FC = () => {
   // from app/hooks, simulates loading with 300ms delay
   const isLoading = useComponentLoading(300);
 
   const { productList } = useAppSelector(st => st.products);
+  const { language } = useAppSelector(st => st.global);
 
   // useMemo for optimization, array newModels will be calculated only once and will be saved between HomePage rerenders
   const newModelsList = useMemo(() => {
@@ -67,18 +84,29 @@ export const HomePage: React.FC = () => {
     <Loader />
   ) : (
     <div className="container">
-      <PageTitle text="Welcome to Nice Gadgets store!" />
+      <LanguageSelector className={cl.homePageLandSelector} />
+      <PageTitle text={textContents.title[language]} />
+
       <section className={cl.homePageSlider}>
         <ImgSlider />
       </section>
+
       <section className={cl.homePageSection}>
-        <SlidingProdList name="Brand new models" list={newModelsList} />
+        <SlidingProdList
+          name={textContents.newModels[language]}
+          list={newModelsList}
+        />
       </section>
+
       <section className={cl.homePageSection}>
         <Categories />
       </section>
+
       <section className={cl.homePageSection}>
-        <SlidingProdList name="Hot prices" list={hotPricesList} />
+        <SlidingProdList
+          name={textContents.hotPrices[language]}
+          list={hotPricesList}
+        />
       </section>
     </div>
   );

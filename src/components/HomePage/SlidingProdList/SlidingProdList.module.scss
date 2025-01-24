@@ -38,4 +38,8 @@
   @include on-desktop {
     margin-right: 0;
   }
+
+  &__item {
+    min-width: 280px;
+  }
 }

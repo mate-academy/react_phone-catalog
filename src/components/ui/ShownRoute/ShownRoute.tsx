@@ -2,6 +2,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import cl from './ShownRoute.module.scss';
 import { useState } from 'react';
 import { Product } from '../../../features/types/Product';
+import { useAppSelector } from '../../../app/hooks';
 
 export enum ShownRouteOrigin {
   ONPRODUCTPAGE = 'onProductPage',
@@ -14,9 +15,17 @@ type Props = {
   chosenProduct?: Product;
 };
 
+const textContent = {
+  back: {
+    en: 'Back',
+    ua: 'Назад',
+  },
+};
+
 export const ShownRoute: React.FC<Props> = ({ origin, chosenProduct }) => {
   const [pathname] = useState(useLocation().pathname);
   const navigate = useNavigate();
+  const { language } = useAppSelector(st => st.global);
 
   // first word after / in pathname
   const currentCategoryName = pathname.split('/')[1];
@@ -34,7 +43,7 @@ export const ShownRoute: React.FC<Props> = ({ origin, chosenProduct }) => {
           onClick={() => navigate(-1)}
           className={`${cl.word} ${cl.wordLink} ${cl.wordLinkWhite}`}
         >
-          Back
+          {textContent.back[language]}
         </button>
       </nav>
     );

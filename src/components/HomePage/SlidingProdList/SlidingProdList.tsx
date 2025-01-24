@@ -77,7 +77,7 @@ export const SlidingProdList: React.FC<Props> = ({ name, list }) => {
 
       <ul className={cl.prodList} ref={listRef}>
         {list.map(prod => (
-          <li key={prod.id} ref={cardRef}>
+          <li key={prod.id} ref={cardRef} className={cl.prodList__item}>
             <ProductCard product={prod} />
           </li>
         ))}

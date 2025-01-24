@@ -4,6 +4,7 @@
   transform: translateX(0);
   transition: transform $animDuration;
   @include content-padding-inline;
+  box-sizing: border-box;
 
   &__header {
     padding-right: 0;
@@ -16,7 +17,7 @@
       position: fixed;
       top: 0;
       z-index: 999;
-      width: 97.66%; // otherwise it will overflow
+      width: 100%;
     }
   }
 

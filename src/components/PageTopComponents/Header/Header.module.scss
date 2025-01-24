@@ -2,6 +2,7 @@
 @import '../../../styles/utils/vars.scss';
 
 .header {
+  $header-tablet-width: 690px; // made it wider than usual tablet width(690px) because some elements aren't fitting
   display: flex;
   justify-content: space-between;
   background-color: $main-background-col;
@@ -12,26 +13,25 @@
 
   &__nav {
     display: none;
-    @include on-tablet {
+    @media (min-width: $header-tablet-width) {
       display: block;
       padding-left: 16px;
     }
     @include on-desktop {
-      display: block;
       padding-left: 24px;
     }
   }
 
   &__favCart {
     display: none;
-    @include on-tablet {
+    @media (min-width: $header-tablet-width) {
       display: flex;
     }
   }
 
   &__burger {
     display: flex;
-    @include on-tablet {
+    @media (min-width: $header-tablet-width) {
       display: none;
     }
   }

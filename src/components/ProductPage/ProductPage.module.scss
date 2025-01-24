@@ -51,7 +51,7 @@
       grid-column: 5 / 8;
     }
     @include on-desktop {
-      grid-column: 6 / 9;
+      grid-column: 6 / 10;
     }
   }
   &__select3 {
@@ -61,7 +61,7 @@
       grid-column: 8 / 12;
     }
     @include on-desktop {
-      grid-column: 9 / 14;
+      grid-column: 10 / 15;
     }
   }
 }

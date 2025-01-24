@@ -24,7 +24,8 @@
   justify-content: space-between;
   align-items: center;
   padding-inline: var(--padding-inline);
-  height: var(--select-height);
+  height: fit-content;
+  padding: 10px;
   color: $main-txt-col;
   background-color: $second-button-col;
   font-weight: 700;
@@ -62,8 +63,8 @@
   &__option {
     border-top: 1px solid #0f1121;
     padding-inline: var(--padding-inline);
-    height: var(--select-height);
-    line-height: var(--select-height);
+    height: fit-content;
+    padding: 10px;
     transition: background-color $animDuration;
     background-color: $second-button-col;
 

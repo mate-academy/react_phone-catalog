@@ -4,7 +4,7 @@ import { Header, HeaderOrigin } from './components/PageTopComponents/Header';
 import { Menu } from './components/PageTopComponents/Menu';
 import { useAppDispatch, useAppSelector } from './app/hooks';
 import { useEffect } from 'react';
-import { setScreenWidth } from './features/globalSlice';
+import { setLanguage, setScreenWidth } from './features/globalSlice';
 import { debounce } from 'lodash';
 import { Footer } from './components/Footer';
 import {
@@ -22,6 +22,7 @@ import {
 export const App = () => {
   const dispatch = useAppDispatch();
   const { favoritesList, cartList } = useAppSelector(st => st.products);
+  const { language } = useAppSelector(st => st.global);
 
   //#region get items from server
   /* get productList from server. I do this in App because this list
@@ -66,6 +67,16 @@ export const App = () => {
   useEffect(() => {
     saveProductsToStorage(LocaleStorageKeys.CART, cartList);
   }, [cartList]);
+
+  useEffect(() => {
+    if (localStorage.getItem(LocaleStorageKeys.LANGUAGE)) {
+      dispatch(setLanguage(localStorage.getItem(LocaleStorageKeys.LANGUAGE)));
+    }
+  }, [dispatch]);
+
+  useEffect(() => {
+    localStorage.setItem(LocaleStorageKeys.LANGUAGE, language);
+  }, [language]);
   //#endregion
 
   return (

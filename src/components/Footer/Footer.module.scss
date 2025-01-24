@@ -2,6 +2,7 @@
 @import '../../styles/utils/vars.scss';
 
 .footer {
+  $footer-tablet-width: 690px; // should be different coz in ukrainiat text content doesn't fit in 640px
   max-width: 1140px; // outer container should have border with 100% page width
   margin: 0 auto; // but footer itself should have the same width as content on desktop screens
   padding-block: 32px;
@@ -9,7 +10,7 @@
   flex-direction: column;
   gap: 32px;
 
-  @include on-tablet {
+  @media (min-width: $footer-tablet-width) {
     flex-direction: row;
     justify-content: space-between;
   }
@@ -18,9 +19,9 @@
     list-style: none;
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: 30px;
 
-    @include on-tablet {
+    @media (min-width: $footer-tablet-width) {
       flex-direction: row;
       min-width: 35%;
       justify-content: space-between;

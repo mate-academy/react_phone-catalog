@@ -8,9 +8,21 @@ import { SlidingProdList } from '../HomePage/SlidingProdList';
 import { useParams } from 'react-router-dom';
 import { Loader } from '../ui/Loader';
 
+const textContent = {
+  error: {
+    en: 'Oops, there is no such product!',
+    ua: 'Ой, такого продукту не існує!',
+  },
+  alsoLike: {
+    en: 'You may also like',
+    ua: 'Вам також може сподобатись',
+  },
+};
+
 export const DetailProdPage: React.FC = () => {
   const { prodId } = useParams();
   const { detailedProdList } = useAppSelector(st => st.products);
+  const { language } = useAppSelector(st => st.global);
   const product = detailedProdList.find(pro => pro.id === prodId);
 
   //#region calculate likelist
@@ -30,7 +42,7 @@ export const DetailProdPage: React.FC = () => {
     return (
       <div className="container">
         <h1 style={{ color: 'white', minHeight: '55vh' }}>
-          Oops, there is no such product!
+          {textContent.error[language]}
         </h1>
       </div>
     );
@@ -61,7 +73,10 @@ export const DetailProdPage: React.FC = () => {
         <TextInfoArticle product={product} />
 
         <div>
-          <SlidingProdList list={youMayAlsoLikeList} name="You may also like" />
+          <SlidingProdList
+            list={youMayAlsoLikeList}
+            name={textContent.alsoLike[language]}
+          />
         </div>
       </div>
     </div>

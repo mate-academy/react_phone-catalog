@@ -5,9 +5,21 @@ import { Loader } from '../ui/Loader';
 import { ShownRoute, ShownRouteOrigin } from '../ui/ShownRoute';
 import cl from './Favorites.module.scss';
 
+const textContent = {
+  title: {
+    en: 'Favorites',
+    ua: 'Улюблене',
+  },
+  items: {
+    en: 'items',
+    ua: 'моделей',
+  },
+};
+
 export const Favorites = () => {
   const isLoading = useComponentLoading(300);
   const { favoritesList } = useAppSelector(st => st.products);
+  const { language } = useAppSelector(st => st.global);
 
   return isLoading ? (
     <Loader />
@@ -16,10 +28,10 @@ export const Favorites = () => {
       <ShownRoute origin={ShownRouteOrigin.ONFAV} />
 
       <div className={cl.titleContainer}>
-        <PageTitle text="Favorites" />
+        <PageTitle text={textContent.title[language]} />
         <small
           className={cl.titleContainer__info}
-        >{`${favoritesList.length} items`}</small>
+        >{`${favoritesList.length} ${textContent.items[language]}`}</small>
       </div>
 
       <ul className={cl.productList}>

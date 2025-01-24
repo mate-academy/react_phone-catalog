@@ -6,8 +6,22 @@ import {
   ArrowButtonDirection,
   ArrowButtonOrigin,
 } from '../HomePage/ArrowButton';
+import { useAppSelector } from '../../app/hooks';
+
+const textContent = {
+  about: {
+    en: 'ABOUT',
+    ua: 'ПРО ПРОЄКТ',
+  },
+  backTop: {
+    en: 'Back to top',
+    ua: 'Вершина сторінки',
+  },
+};
 
 export const Footer = () => {
+  const { language } = useAppSelector(st => st.global);
+
   return (
     <div className="container container__footer">
       <footer className={cl.footer}>
@@ -29,18 +43,20 @@ export const Footer = () => {
               target="_blank"
               className={cl.footer__link}
             >
-              CONTACTS
+              LINKEDIN
             </Link>
           </li>
           <li>
             <Link to="about" className={cl.footer__link}>
-              ABOUT
+              {textContent.about[language]}
             </Link>
           </li>
         </ul>
 
         <div className={cl.backTopContainer}>
-          <p className={cl.backTopContainer__text}>Back to top</p>
+          <p className={cl.backTopContainer__text}>
+            {textContent.backTop[language]}
+          </p>
           <ArrowButton
             direction={ArrowButtonDirection.UP}
             onClick={() => {

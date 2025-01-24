@@ -2,43 +2,34 @@ import { Link } from 'react-router-dom';
 import { Product } from '../../../features/types/Product';
 import cl from './ProductCard.module.scss';
 import { TechSpecs } from '../../ui/TechSpecs';
-import { setCartList, setFavoritesList } from '../../../features/productSlice';
-import { useAppDispatch, useAppSelector } from '../../../app/hooks';
+import { AddToFavCartButton } from '../../ui/AddToFavCartButton';
+import { useAppSelector } from '../../../app/hooks';
 
 type Props = { product: Product; className?: string };
 
+const textContent = {
+  screen: {
+    en: 'Screen',
+    ua: 'Екран',
+  },
+  capacity: {
+    en: 'Capacity',
+    ua: 'Сховище',
+  },
+  ram: {
+    en: 'RAM',
+    ua: 'Оперативна пам`ять',
+  },
+};
+
 export const ProductCard: React.FC<Props> = ({ product, className }) => {
-  const dispatch = useAppDispatch();
-  const { favoritesList, cartList } = useAppSelector(st => st.products);
+  const { language } = useAppSelector(st => st.global);
 
   const techSpecs = [
-    ['Screen', product.screen],
-    ['Capacity', product.capacity],
-    ['RAM', product.ram],
+    [textContent.screen[language], product.screen],
+    [textContent.capacity[language], product.capacity],
+    [textContent.ram[language], product.ram],
   ];
-
-  const isProductAddedToFav = favoritesList.some(fav => fav.id === product.id);
-  const isProductAddedToCart = cartList.some(car => car.id === product.id);
-
-  function handleAddAndRemoveFromFavList() {
-    if (isProductAddedToFav) {
-      dispatch(
-        setFavoritesList(favoritesList.filter(fav => fav.id !== product.id)),
-      );
-    } else {
-      dispatch(setFavoritesList([...favoritesList, product]));
-    }
-  }
-
-  function handleAddAndRemoveFromCart() {
-    const productWithQuantity = { ...product, quantity: 1 };
-
-    if (isProductAddedToCart) {
-      dispatch(setCartList(cartList.filter(car => car.id !== product.id)));
-    } else {
-      dispatch(setCartList([...cartList, productWithQuantity]));
-    }
-  }
 
   return (
     <article className={`${cl.cardContainer} ${className}`}>
@@ -72,22 +63,7 @@ export const ProductCard: React.FC<Props> = ({ product, className }) => {
 
       <TechSpecs chars={techSpecs} />
 
-      <div className={cl.buttonContainer}>
-        <button
-          className={`${cl.buttonContainer__cardButton} ${isProductAddedToCart && cl.buttonContainer__cardButtonAdded}`}
-          onClick={handleAddAndRemoveFromCart}
-        >
-          {isProductAddedToCart ? 'Added to cart' : 'Add to cart'}
-        </button>
-        <button
-          className={cl.buttonContainer__favButton}
-          onClick={handleAddAndRemoveFromFavList}
-        >
-          <svg
-            className={`${cl.buttonContainer__favButtonIcon} ${isProductAddedToFav && cl.buttonContainer__favButtonIconAdded}`}
-          />
-        </button>
-      </div>
+      <AddToFavCartButton product={product} height="40px" />
     </article>
   );
 };

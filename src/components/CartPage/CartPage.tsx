@@ -11,12 +11,20 @@ import { ShownRoute, ShownRouteOrigin } from '../ui/ShownRoute';
 import cl from './CartPage.module.scss';
 import { Loader } from '../ui/Loader';
 
+const textContent = {
+  title: {
+    en: 'Cart',
+    ua: 'Кошик',
+  },
+};
+
 export const CartPage = () => {
   const dispatch = useAppDispatch();
   const isLoading = useComponentLoading(300);
   const [isModalShown, setIsModalShown] = useState(false);
 
   const { cartList } = useAppSelector(st => st.products);
+  const { language } = useAppSelector(st => st.global);
 
   function removeItem(item: Product) {
     dispatch(setCartList(cartList.filter(prod => prod.id !== item.id)));
@@ -72,6 +80,18 @@ export const CartPage = () => {
     );
   }
 
+  const getWordEndingInUkrainian = (num: number) => {
+    if (num === 1) {
+      return '';
+    }
+
+    if (num >= 2 && num <= 4) {
+      return 'и';
+    }
+
+    return 'ів';
+  };
+
   return isLoading ? (
     <Loader />
   ) : (
@@ -79,7 +99,7 @@ export const CartPage = () => {
       <ShownRoute origin={ShownRouteOrigin.ONCART} />
 
       <article className={cl.pageContent}>
-        <PageTitle text="Cart" />
+        <PageTitle text={textContent.title[language]} />
 
         <ul className={cl.list}>
           {cartList.map(item => (
@@ -128,7 +148,9 @@ export const CartPage = () => {
           >{`$${totalPrice}`}</h3>
 
           <small className={cl.totalAndCheckoutContainer__subtitle}>
-            {`Total for ${totalItems} item${cartList.length > 1 ? 's' : ''}`}
+            {language === 'en'
+              ? `Total for ${totalItems} item${totalItems > 1 ? 's' : ''}`
+              : `Всього за ${totalItems} товар${getWordEndingInUkrainian(totalItems)}`}
           </small>
 
           <div className={cl.totalAndCheckoutContainer__underline} />
