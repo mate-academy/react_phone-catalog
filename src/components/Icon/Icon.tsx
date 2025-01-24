@@ -13,7 +13,7 @@ import ArrowPrevLight from '../../assets/images/Icons/light/arrowLeftLight.png';
 import ArrowNextLight from '../../assets/images/Icons/light/arrowRightLight.png';
 import ArrowPrewDark from '../../assets/images/Icons/dark/arrowLeftDark.png';
 import ArrowNextDark from '../../assets/images/Icons/dark/arrowRightDark.png';
-import FavouriteActive from '../../assets/images/Icons/dark/FavouriteActive.png';
+import FavouriteActive from '../../assets/images/Icons/FavouriteActive.png';
 import { useTheme } from '../../hooks/useTheme';
 
 type Props = {

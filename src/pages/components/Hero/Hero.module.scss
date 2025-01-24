@@ -2,17 +2,10 @@
 
 .hero {
   &__title {
-    font-weight: $font-acc;
-    font-size: 48px;
-    line-height: 56px;
-    letter-spacing: -0.01em;
-    margin: 0;
+    @include h1;
 
     @include on-mobile {
       padding-inline: 16px;
-      font-size: 32px;
-      line-height: 41px;
-      letter-spacing: -0.01em;
     }
   }
 }

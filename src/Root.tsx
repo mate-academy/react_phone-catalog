@@ -5,10 +5,10 @@ import { HomePage } from './pages/HomePage/HomePage';
 import { PhonesPage } from './pages/PhonesPage';
 import { TabletsPage } from './pages/TabletsPage';
 import { AccessoriesPage } from './pages/AccessoriesPage';
-import { FavouritesPage } from './pages/FavoritePage';
-import { CartsPage } from './pages/CartsPage';
+import { CartsPage } from './pages/CartsPage/CartsPage';
 import { ThemeProvider } from './hooks/useTheme';
 import { ProductsProvider } from './hooks/savedProducts';
+import { FavouritesPage } from './pages/FavouritePage/FavouritePage';
 
 export const Root = () => {
   return (

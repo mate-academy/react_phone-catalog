@@ -26,7 +26,8 @@ export const ProductsProvider: React.FC<Props> = ({ children }) => {
 
   const toggleLike = (productId: number) => {
     setLikedProducts(prev => {
-      const updated = prev.includes(productId)
+      const isLiked = prev.includes(productId);
+      const updated = isLiked
         ? prev.filter(id => id !== productId)
         : [...prev, productId];
       localStorage.setItem('likedProducts', JSON.stringify(updated));
@@ -37,7 +38,8 @@ export const ProductsProvider: React.FC<Props> = ({ children }) => {
 
   const toggleCart = (productId: number) => {
     setCartProducts(prev => {
-      const updated = prev.includes(productId)
+      const isInCart = prev.includes(productId);
+      const updated = isInCart
         ? prev.filter(id => id !== productId)
         : [...prev, productId];
       localStorage.setItem('cartProducts', JSON.stringify(updated));

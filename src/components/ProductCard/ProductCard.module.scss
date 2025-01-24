@@ -110,6 +110,7 @@
     background-color: var(--card-button-color);
     border: 1px solid var(--card-button-color);
     color: #fff;
+    cursor: pointer;
 
     @include button-text;
 
@@ -125,8 +126,7 @@
     background-color: var(--button-bg-color);
     border: 1px solid var(--button-border-color);
     color: $green-color;
-
-    @include button-text;
+    cursor: pointer;
 
     &:hover {
       background-color: var(--button-bg-color);
@@ -140,6 +140,7 @@
     height: 40px;
     border: 1px solid var(--button-border-color);
     background-color: var(--button-bg-color);
+    cursor: pointer;
 
     &:hover {
       box-shadow: 0 2px 16px 0 #0000001a;

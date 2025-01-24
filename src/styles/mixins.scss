@@ -117,3 +117,41 @@
   font-family: Mont, sans-serif;
   font-weight: $font-normal;
 }
+
+@mixin h1 {
+  font-weight: $font-acc;
+  font-size: 48px;
+  line-height: 56px;
+  letter-spacing: -0.01em;
+  margin: 0;
+
+  @include on-mobile {
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+  }
+}
+
+@mixin base-spacing {
+  margin-top: 24px;
+  margin-bottom: 80px;
+  padding-inline: 32px;
+
+  @include on-tablet {
+    margin-bottom: 64px;
+    padding-inline: 24px;
+  }
+
+  @include on-mobile {
+    margin-bottom: 56px;
+    padding-inline: 16px;
+  }
+}
+
+@mixin base-spacing-breadcrumbs {
+  margin-bottom: 40px;
+
+  @include on-mobile {
+    margin-bottom: 24px;
+  }
+}

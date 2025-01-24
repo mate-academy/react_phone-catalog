@@ -25,21 +25,8 @@
   }
 
   &__main {
-    padding-inline: 24px;
-    margin-top: 56px;
-    margin-bottom: 80px;
     overflow: hidden;
 
     @include center-desktop;
-
-    @include on-tablet {
-      margin-top: 32px;
-      margin-bottom: 64px;
-    }
-
-    @include on-mobile {
-      padding-inline: 0;
-      margin-top: 24px;
-    }
   }
 }
