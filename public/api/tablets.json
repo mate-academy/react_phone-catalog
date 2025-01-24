@@ -17,25 +17,34 @@
     ],
     "description": [
       {
-        "title": "Powerful Performance",
-        "text": [
-          "Experience incredible power and performance with the Apple iPad Pro 11. With the M1 chip, it delivers a new level of performance, making it faster and more efficient than ever before.",
-          "Whether you're editing photos, designing artwork, or multitasking with demanding apps, the iPad Pro 11 handles it all with ease."
-        ]
+        "title": {
+          "en": "Powerful Performance",
+          "ua": "Потужна продуктивність"
+        },
+        "text": {
+          "en": "Experience incredible power and performance with the Apple iPad Pro 11. With the M1 chip, it delivers a new level of performance, making it faster and more efficient than ever before.",
+          "ua": "Відчуйте неймовірну потужність і продуктивність з Apple iPad Pro 11. Завдяки чипу M1 він забезпечує новий рівень продуктивності, роблячи його швидшим та ефективнішим, ніж будь-коли раніше."
+        }
       },
       {
-        "title": "Stunning Liquid Retina Display",
-        "text": [
-          "Enjoy a vibrant and immersive visual experience on the iPad Pro 11's Liquid Retina display. With ProMotion technology and True Tone, the display adapts to your environment, providing smooth scrolling, precise color accuracy, and incredible detail.",
-          "From watching movies to editing videos, the iPad Pro 11's display brings your content to life with stunning clarity."
-        ]
+        "title": {
+          "en": "Stunning Liquid Retina Display",
+          "ua": "Приголомшливий дисплей Liquid Retina"
+        },
+        "text": {
+          "en": "Enjoy a vibrant and immersive visual experience on the iPad Pro 11's Liquid Retina display. With ProMotion technology and True Tone, the display adapts to your environment, providing smooth scrolling, precise color accuracy, and incredible detail.",
+          "ua": "Насолоджуйтесь яскравим та захоплюючим візуальним досвідом на дисплеї Liquid Retina iPad Pro 11. Завдяки технології ProMotion і True Tone дисплей адаптується до вашого оточення, забезпечуючи плавне прокручування, точну кольорову передачу та неймовірну деталізацію."
+        }
       },
       {
-        "title": "Versatile Camera System",
-        "text": [
-          "Capture stunning photos and videos with the iPad Pro 11's advanced camera system. Featuring a 12MP Ultra Wide front camera and a 12MP Wide rear camera with LiDAR scanner, you can take high-quality shots and enjoy augmented reality experiences.",
-          "Whether you're video calling, scanning documents, or recording 4K videos, the iPad Pro 11's camera system delivers exceptional performance."
-        ]
+        "title": {
+          "en": "Versatile Camera System",
+          "ua": "Універсальна камера"
+        },
+        "text": {
+          "en": "Capture stunning photos and videos with the iPad Pro 11's advanced camera system. Featuring a 12MP Ultra Wide front camera and a 12MP Wide rear camera with LiDAR scanner, you can take high-quality shots and enjoy augmented reality experiences.",
+          "ua": "Знімайте приголомшливі фотографії та відео за допомогою вдосконаленої камери iPad Pro 11. Завдяки 12-мегапіксельній ультраширокій фронтальній камері та 12-мегапіксельній ширококутній задній камері з LiDAR-сканером, ви можете робити високоякісні знімки та насолоджуватися доповненою реальністю."
+        }
       }
     ],
     "screen": "11' Liquid Retina",
@@ -64,25 +73,34 @@
     ],
     "description": [
       {
-        "title": "Powerful Performance",
-        "text": [
-          "Experience incredible power and performance with the Apple iPad Pro 11. With the M1 chip, it delivers a new level of performance, making it faster and more efficient than ever before.",
-          "Whether you're editing photos, designing artwork, or multitasking with demanding apps, the iPad Pro 11 handles it all with ease."
-        ]
+        "title": {
+          "en": "Powerful Performance",
+          "ua": "Потужна продуктивність"
+        },
+        "text": {
+          "en": "Experience incredible power and performance with the Apple iPad Pro 11. With the M1 chip, it delivers a new level of performance, making it faster and more efficient than ever before.",
+          "ua": "Відчуйте неймовірну потужність і продуктивність з Apple iPad Pro 11. Завдяки чипу M1 він забезпечує новий рівень продуктивності, роблячи його швидшим та ефективнішим, ніж будь-коли раніше."
+        }
       },
       {
-        "title": "Stunning Liquid Retina Display",
-        "text": [
-          "Enjoy a vibrant and immersive visual experience on the iPad Pro 11's Liquid Retina display. With ProMotion technology and True Tone, the display adapts to your environment, providing smooth scrolling, precise color accuracy, and incredible detail.",
-          "From watching movies to editing videos, the iPad Pro 11's display brings your content to life with stunning clarity."
-        ]
+        "title": {
+          "en": "Stunning Liquid Retina Display",
+          "ua": "Приголомшливий дисплей Liquid Retina"
+        },
+        "text": {
+          "en": "Enjoy a vibrant and immersive visual experience on the iPad Pro 11's Liquid Retina display. With ProMotion technology and True Tone, the display adapts to your environment, providing smooth scrolling, precise color accuracy, and incredible detail.",
+          "ua": "Насолоджуйтесь яскравим та захоплюючим візуальним досвідом на дисплеї Liquid Retina iPad Pro 11. Завдяки технології ProMotion і True Tone дисплей адаптується до вашого оточення, забезпечуючи плавне прокручування, точну кольорову передачу та неймовірну деталізацію."
+        }
       },
       {
-        "title": "Versatile Camera System",
-        "text": [
-          "Capture stunning photos and videos with the iPad Pro 11's advanced camera system. Featuring a 12MP Ultra Wide front camera and a 12MP Wide rear camera with LiDAR scanner, you can take high-quality shots and enjoy augmented reality experiences.",
-          "Whether you're video calling, scanning documents, or recording 4K videos, the iPad Pro 11's camera system delivers exceptional performance."
-        ]
+        "title": {
+          "en": "Versatile Camera System",
+          "ua": "Універсальна камера"
+        },
+        "text": {
+          "en": "Capture stunning photos and videos with the iPad Pro 11's advanced camera system. Featuring a 12MP Ultra Wide front camera and a 12MP Wide rear camera with LiDAR scanner, you can take high-quality shots and enjoy augmented reality experiences.",
+          "ua": "Знімайте приголомшливі фотографії та відео за допомогою вдосконаленої камери iPad Pro 11. Завдяки 12-мегапіксельній ультраширокій фронтальній камері та 12-мегапіксельній ширококутній задній камері з LiDAR-сканером, ви можете робити високоякісні знімки та насолоджуватися доповненою реальністю."
+        }
       }
     ],
     "screen": "11' Liquid Retina",
@@ -111,25 +129,34 @@
     ],
     "description": [
       {
-        "title": "Powerful Performance",
-        "text": [
-          "Experience incredible power and performance with the Apple iPad Pro 11. With the M1 chip, it delivers a new level of performance, making it faster and more efficient than ever before.",
-          "Whether you're editing photos, designing artwork, or multitasking with demanding apps, the iPad Pro 11 handles it all with ease."
-        ]
+        "title": {
+          "en": "Powerful Performance",
+          "ua": "Потужна продуктивність"
+        },
+        "text": {
+          "en": "Experience incredible power and performance with the Apple iPad Pro 11. With the M1 chip, it delivers a new level of performance, making it faster and more efficient than ever before.",
+          "ua": "Відчуйте неймовірну потужність і продуктивність з Apple iPad Pro 11. Завдяки чипу M1 він забезпечує новий рівень продуктивності, роблячи його швидшим та ефективнішим, ніж будь-коли раніше."
+        }
       },
       {
-        "title": "Stunning Liquid Retina Display",
-        "text": [
-          "Enjoy a vibrant and immersive visual experience on the iPad Pro 11's Liquid Retina display. With ProMotion technology and True Tone, the display adapts to your environment, providing smooth scrolling, precise color accuracy, and incredible detail.",
-          "From watching movies to editing videos, the iPad Pro 11's display brings your content to life with stunning clarity."
-        ]
+        "title": {
+          "en": "Stunning Liquid Retina Display",
+          "ua": "Приголомшливий дисплей Liquid Retina"
+        },
+        "text": {
+          "en": "Enjoy a vibrant and immersive visual experience on the iPad Pro 11's Liquid Retina display. With ProMotion technology and True Tone, the display adapts to your environment, providing smooth scrolling, precise color accuracy, and incredible detail.",
+          "ua": "Насолоджуйтесь яскравим та захоплюючим візуальним досвідом на дисплеї Liquid Retina iPad Pro 11. Завдяки технології ProMotion і True Tone дисплей адаптується до вашого оточення, забезпечуючи плавне прокручування, точну кольорову передачу та неймовірну деталізацію."
+        }
       },
       {
-        "title": "Versatile Camera System",
-        "text": [
-          "Capture stunning photos and videos with the iPad Pro 11's advanced camera system. Featuring a 12MP Ultra Wide front camera and a 12MP Wide rear camera with LiDAR scanner, you can take high-quality shots and enjoy augmented reality experiences.",
-          "Whether you're video calling, scanning documents, or recording 4K videos, the iPad Pro 11's camera system delivers exceptional performance."
-        ]
+        "title": {
+          "en": "Versatile Camera System",
+          "ua": "Універсальна камера"
+        },
+        "text": {
+          "en": "Capture stunning photos and videos with the iPad Pro 11's advanced camera system. Featuring a 12MP Ultra Wide front camera and a 12MP Wide rear camera with LiDAR scanner, you can take high-quality shots and enjoy augmented reality experiences.",
+          "ua": "Знімайте приголомшливі фотографії та відео за допомогою вдосконаленої камери iPad Pro 11. Завдяки 12-мегапіксельній ультраширокій фронтальній камері та 12-мегапіксельній ширококутній задній камері з LiDAR-сканером, ви можете робити високоякісні знімки та насолоджуватися доповненою реальністю."
+        }
       }
     ],
     "screen": "11' Liquid Retina",
@@ -158,25 +185,34 @@
     ],
     "description": [
       {
-        "title": "Powerful Performance",
-        "text": [
-          "Experience incredible power and performance with the Apple iPad Pro 11. With the M1 chip, it delivers a new level of performance, making it faster and more efficient than ever before.",
-          "Whether you're editing photos, designing artwork, or multitasking with demanding apps, the iPad Pro 11 handles it all with ease."
-        ]
+        "title": {
+          "en": "Powerful Performance",
+          "ua": "Потужна продуктивність"
+        },
+        "text": {
+          "en": "Experience incredible power and performance with the Apple iPad Pro 11. With the M1 chip, it delivers a new level of performance, making it faster and more efficient than ever before.",
+          "ua": "Відчуйте неймовірну потужність і продуктивність з Apple iPad Pro 11. Завдяки чипу M1 він забезпечує новий рівень продуктивності, роблячи його швидшим та ефективнішим, ніж будь-коли раніше."
+        }
       },
       {
-        "title": "Stunning Liquid Retina Display",
-        "text": [
-          "Enjoy a vibrant and immersive visual experience on the iPad Pro 11's Liquid Retina display. With ProMotion technology and True Tone, the display adapts to your environment, providing smooth scrolling, precise color accuracy, and incredible detail.",
-          "From watching movies to editing videos, the iPad Pro 11's display brings your content to life with stunning clarity."
-        ]
+        "title": {
+          "en": "Stunning Liquid Retina Display",
+          "ua": "Приголомшливий дисплей Liquid Retina"
+        },
+        "text": {
+          "en": "Enjoy a vibrant and immersive visual experience on the iPad Pro 11's Liquid Retina display. With ProMotion technology and True Tone, the display adapts to your environment, providing smooth scrolling, precise color accuracy, and incredible detail.",
+          "ua": "Насолоджуйтесь яскравим та захоплюючим візуальним досвідом на дисплеї Liquid Retina iPad Pro 11. Завдяки технології ProMotion і True Tone дисплей адаптується до вашого оточення, забезпечуючи плавне прокручування, точну кольорову передачу та неймовірну деталізацію."
+        }
       },
       {
-        "title": "Versatile Camera System",
-        "text": [
-          "Capture stunning photos and videos with the iPad Pro 11's advanced camera system. Featuring a 12MP Ultra Wide front camera and a 12MP Wide rear camera with LiDAR scanner, you can take high-quality shots and enjoy augmented reality experiences.",
-          "Whether you're video calling, scanning documents, or recording 4K videos, the iPad Pro 11's camera system delivers exceptional performance."
-        ]
+        "title": {
+          "en": "Versatile Camera System",
+          "ua": "Універсальна камера"
+        },
+        "text": {
+          "en": "Capture stunning photos and videos with the iPad Pro 11's advanced camera system. Featuring a 12MP Ultra Wide front camera and a 12MP Wide rear camera with LiDAR scanner, you can take high-quality shots and enjoy augmented reality experiences.",
+          "ua": "Знімайте приголомшливі фотографії та відео за допомогою вдосконаленої камери iPad Pro 11. Завдяки 12-мегапіксельній ультраширокій фронтальній камері та 12-мегапіксельній ширококутній задній камері з LiDAR-сканером, ви можете робити високоякісні знімки та насолоджуватися доповненою реальністю."
+        }
       }
     ],
     "screen": "11' Liquid Retina",
@@ -205,25 +241,34 @@
     ],
     "description": [
       {
-        "title": "Powerful Performance",
-        "text": [
-          "Experience incredible power and performance with the Apple iPad Pro 11. With the M1 chip, it delivers a new level of performance, making it faster and more efficient than ever before.",
-          "Whether you're editing photos, designing artwork, or multitasking with demanding apps, the iPad Pro 11 handles it all with ease."
-        ]
+        "title": {
+          "en": "Powerful Performance",
+          "ua": "Потужна продуктивність"
+        },
+        "text": {
+          "en": "Experience incredible power and performance with the Apple iPad Pro 11. With the M1 chip, it delivers a new level of performance, making it faster and more efficient than ever before.",
+          "ua": "Відчуйте неймовірну потужність і продуктивність з Apple iPad Pro 11. Завдяки чипу M1 він забезпечує новий рівень продуктивності, роблячи його швидшим та ефективнішим, ніж будь-коли раніше."
+        }
       },
       {
-        "title": "Stunning Liquid Retina Display",
-        "text": [
-          "Enjoy a vibrant and immersive visual experience on the iPad Pro 11's Liquid Retina display. With ProMotion technology and True Tone, the display adapts to your environment, providing smooth scrolling, precise color accuracy, and incredible detail.",
-          "From watching movies to editing videos, the iPad Pro 11's display brings your content to life with stunning clarity."
-        ]
+        "title": {
+          "en": "Stunning Liquid Retina Display",
+          "ua": "Приголомшливий дисплей Liquid Retina"
+        },
+        "text": {
+          "en": "Enjoy a vibrant and immersive visual experience on the iPad Pro 11's Liquid Retina display. With ProMotion technology and True Tone, the display adapts to your environment, providing smooth scrolling, precise color accuracy, and incredible detail.",
+          "ua": "Насолоджуйтесь яскравим та захоплюючим візуальним досвідом на дисплеї Liquid Retina iPad Pro 11. Завдяки технології ProMotion і True Tone дисплей адаптується до вашого оточення, забезпечуючи плавне прокручування, точну кольорову передачу та неймовірну деталізацію."
+        }
       },
       {
-        "title": "Versatile Camera System",
-        "text": [
-          "Capture stunning photos and videos with the iPad Pro 11's advanced camera system. Featuring a 12MP Ultra Wide front camera and a 12MP Wide rear camera with LiDAR scanner, you can take high-quality shots and enjoy augmented reality experiences.",
-          "Whether you're video calling, scanning documents, or recording 4K videos, the iPad Pro 11's camera system delivers exceptional performance."
-        ]
+        "title": {
+          "en": "Versatile Camera System",
+          "ua": "Універсальна камера"
+        },
+        "text": {
+          "en": "Capture stunning photos and videos with the iPad Pro 11's advanced camera system. Featuring a 12MP Ultra Wide front camera and a 12MP Wide rear camera with LiDAR scanner, you can take high-quality shots and enjoy augmented reality experiences.",
+          "ua": "Знімайте приголомшливі фотографії та відео за допомогою вдосконаленої камери iPad Pro 11. Завдяки 12-мегапіксельній ультраширокій фронтальній камері та 12-мегапіксельній ширококутній задній камері з LiDAR-сканером, ви можете робити високоякісні знімки та насолоджуватися доповненою реальністю."
+        }
       }
     ],
     "screen": "11' Liquid Retina",
@@ -252,25 +297,34 @@
     ],
     "description": [
       {
-        "title": "Powerful Performance",
-        "text": [
-          "Experience incredible power and performance with the Apple iPad Pro 11. With the M1 chip, it delivers a new level of performance, making it faster and more efficient than ever before.",
-          "Whether you're editing photos, designing artwork, or multitasking with demanding apps, the iPad Pro 11 handles it all with ease."
-        ]
+        "title": {
+          "en": "Powerful Performance",
+          "ua": "Потужна продуктивність"
+        },
+        "text": {
+          "en": "Experience incredible power and performance with the Apple iPad Pro 11. With the M1 chip, it delivers a new level of performance, making it faster and more efficient than ever before.",
+          "ua": "Відчуйте неймовірну потужність і продуктивність з Apple iPad Pro 11. Завдяки чипу M1 він забезпечує новий рівень продуктивності, роблячи його швидшим та ефективнішим, ніж будь-коли раніше."
+        }
       },
       {
-        "title": "Stunning Liquid Retina Display",
-        "text": [
-          "Enjoy a vibrant and immersive visual experience on the iPad Pro 11's Liquid Retina display. With ProMotion technology and True Tone, the display adapts to your environment, providing smooth scrolling, precise color accuracy, and incredible detail.",
-          "From watching movies to editing videos, the iPad Pro 11's display brings your content to life with stunning clarity."
-        ]
+        "title": {
+          "en": "Stunning Liquid Retina Display",
+          "ua": "Приголомшливий дисплей Liquid Retina"
+        },
+        "text": {
+          "en": "Enjoy a vibrant and immersive visual experience on the iPad Pro 11's Liquid Retina display. With ProMotion technology and True Tone, the display adapts to your environment, providing smooth scrolling, precise color accuracy, and incredible detail.",
+          "ua": "Насолоджуйтесь яскравим та захоплюючим візуальним досвідом на дисплеї Liquid Retina iPad Pro 11. Завдяки технології ProMotion і True Tone дисплей адаптується до вашого оточення, забезпечуючи плавне прокручування, точну кольорову передачу та неймовірну деталізацію."
+        }
       },
       {
-        "title": "Versatile Camera System",
-        "text": [
-          "Capture stunning photos and videos with the iPad Pro 11's advanced camera system. Featuring a 12MP Ultra Wide front camera and a 12MP Wide rear camera with LiDAR scanner, you can take high-quality shots and enjoy augmented reality experiences.",
-          "Whether you're video calling, scanning documents, or recording 4K videos, the iPad Pro 11's camera system delivers exceptional performance."
-        ]
+        "title": {
+          "en": "Versatile Camera System",
+          "ua": "Універсальна камера"
+        },
+        "text": {
+          "en": "Capture stunning photos and videos with the iPad Pro 11's advanced camera system. Featuring a 12MP Ultra Wide front camera and a 12MP Wide rear camera with LiDAR scanner, you can take high-quality shots and enjoy augmented reality experiences.",
+          "ua": "Знімайте приголомшливі фотографії та відео за допомогою вдосконаленої камери iPad Pro 11. Завдяки 12-мегапіксельній ультраширокій фронтальній камері та 12-мегапіксельній ширококутній задній камері з LiDAR-сканером, ви можете робити високоякісні знімки та насолоджуватися доповненою реальністю."
+        }
       }
     ],
     "screen": "11' Liquid Retina",
@@ -299,25 +353,34 @@
     ],
     "description": [
       {
-        "title": "Powerful Performance",
-        "text": [
-          "Experience incredible power and performance with the Apple iPad Pro 11. With the M1 chip, it delivers a new level of performance, making it faster and more efficient than ever before.",
-          "Whether you're editing photos, designing artwork, or multitasking with demanding apps, the iPad Pro 11 handles it all with ease."
-        ]
+        "title": {
+          "en": "Powerful Performance",
+          "ua": "Потужна продуктивність"
+        },
+        "text": {
+          "en": "Experience incredible power and performance with the Apple iPad Pro 11. With the M1 chip, it delivers a new level of performance, making it faster and more efficient than ever before.",
+          "ua": "Відчуйте неймовірну потужність і продуктивність з Apple iPad Pro 11. Завдяки чипу M1 він забезпечує новий рівень продуктивності, роблячи його швидшим та ефективнішим, ніж будь-коли раніше."
+        }
       },
       {
-        "title": "Stunning Liquid Retina Display",
-        "text": [
-          "Enjoy a vibrant and immersive visual experience on the iPad Pro 11's Liquid Retina display. With ProMotion technology and True Tone, the display adapts to your environment, providing smooth scrolling, precise color accuracy, and incredible detail.",
-          "From watching movies to editing videos, the iPad Pro 11's display brings your content to life with stunning clarity."
-        ]
+        "title": {
+          "en": "Stunning Liquid Retina Display",
+          "ua": "Приголомшливий дисплей Liquid Retina"
+        },
+        "text": {
+          "en": "Enjoy a vibrant and immersive visual experience on the iPad Pro 11's Liquid Retina display. With ProMotion technology and True Tone, the display adapts to your environment, providing smooth scrolling, precise color accuracy, and incredible detail.",
+          "ua": "Насолоджуйтесь яскравим та захоплюючим візуальним досвідом на дисплеї Liquid Retina iPad Pro 11. Завдяки технології ProMotion і True Tone дисплей адаптується до вашого оточення, забезпечуючи плавне прокручування, точну кольорову передачу та неймовірну деталізацію."
+        }
       },
       {
-        "title": "Versatile Camera System",
-        "text": [
-          "Capture stunning photos and videos with the iPad Pro 11's advanced camera system. Featuring a 12MP Ultra Wide front camera and a 12MP Wide rear camera with LiDAR scanner, you can take high-quality shots and enjoy augmented reality experiences.",
-          "Whether you're video calling, scanning documents, or recording 4K videos, the iPad Pro 11's camera system delivers exceptional performance."
-        ]
+        "title": {
+          "en": "Versatile Camera System",
+          "ua": "Універсальна камера"
+        },
+        "text": {
+          "en": "Capture stunning photos and videos with the iPad Pro 11's advanced camera system. Featuring a 12MP Ultra Wide front camera and a 12MP Wide rear camera with LiDAR scanner, you can take high-quality shots and enjoy augmented reality experiences.",
+          "ua": "Знімайте приголомшливі фотографії та відео за допомогою вдосконаленої камери iPad Pro 11. Завдяки 12-мегапіксельній ультраширокій фронтальній камері та 12-мегапіксельній ширококутній задній камері з LiDAR-сканером, ви можете робити високоякісні знімки та насолоджуватися доповненою реальністю."
+        }
       }
     ],
     "screen": "11' Liquid Retina",
@@ -346,25 +409,34 @@
     ],
     "description": [
       {
-        "title": "Powerful Performance",
-        "text": [
-          "Experience incredible power and performance with the Apple iPad Pro 11. With the M1 chip, it delivers a new level of performance, making it faster and more efficient than ever before.",
-          "Whether you're editing photos, designing artwork, or multitasking with demanding apps, the iPad Pro 11 handles it all with ease."
-        ]
+        "title": {
+          "en": "Powerful Performance",
+          "ua": "Потужна продуктивність"
+        },
+        "text": {
+          "en": "Experience incredible power and performance with the Apple iPad Pro 11. With the M1 chip, it delivers a new level of performance, making it faster and more efficient than ever before.",
+          "ua": "Відчуйте неймовірну потужність і продуктивність з Apple iPad Pro 11. Завдяки чипу M1 він забезпечує новий рівень продуктивності, роблячи його швидшим та ефективнішим, ніж будь-коли раніше."
+        }
       },
       {
-        "title": "Stunning Liquid Retina Display",
-        "text": [
-          "Enjoy a vibrant and immersive visual experience on the iPad Pro 11's Liquid Retina display. With ProMotion technology and True Tone, the display adapts to your environment, providing smooth scrolling, precise color accuracy, and incredible detail.",
-          "From watching movies to editing videos, the iPad Pro 11's display brings your content to life with stunning clarity."
-        ]
+        "title": {
+          "en": "Stunning Liquid Retina Display",
+          "ua": "Приголомшливий дисплей Liquid Retina"
+        },
+        "text": {
+          "en": "Enjoy a vibrant and immersive visual experience on the iPad Pro 11's Liquid Retina display. With ProMotion technology and True Tone, the display adapts to your environment, providing smooth scrolling, precise color accuracy, and incredible detail.",
+          "ua": "Насолоджуйтесь яскравим та захоплюючим візуальним досвідом на дисплеї Liquid Retina iPad Pro 11. Завдяки технології ProMotion і True Tone дисплей адаптується до вашого оточення, забезпечуючи плавне прокручування, точну кольорову передачу та неймовірну деталізацію."
+        }
       },
       {
-        "title": "Versatile Camera System",
-        "text": [
-          "Capture stunning photos and videos with the iPad Pro 11's advanced camera system. Featuring a 12MP Ultra Wide front camera and a 12MP Wide rear camera with LiDAR scanner, you can take high-quality shots and enjoy augmented reality experiences.",
-          "Whether you're video calling, scanning documents, or recording 4K videos, the iPad Pro 11's camera system delivers exceptional performance."
-        ]
+        "title": {
+          "en": "Versatile Camera System",
+          "ua": "Універсальна камера"
+        },
+        "text": {
+          "en": "Capture stunning photos and videos with the iPad Pro 11's advanced camera system. Featuring a 12MP Ultra Wide front camera and a 12MP Wide rear camera with LiDAR scanner, you can take high-quality shots and enjoy augmented reality experiences.",
+          "ua": "Знімайте приголомшливі фотографії та відео за допомогою вдосконаленої камери iPad Pro 11. Завдяки 12-мегапіксельній ультраширокій фронтальній камері та 12-мегапіксельній ширококутній задній камері з LiDAR-сканером, ви можете робити високоякісні знімки та насолоджуватися доповненою реальністю."
+        }
       }
     ],
     "screen": "11' Liquid Retina",
@@ -393,25 +465,34 @@
     ],
     "description": [
       {
-        "title": "Powerful Performance",
-        "text": [
-          "Experience incredible power and performance with the Apple iPad Pro 11. With the M1 chip, it delivers a new level of performance, making it faster and more efficient than ever before.",
-          "Whether you're editing photos, designing artwork, or multitasking with demanding apps, the iPad Pro 11 handles it all with ease."
-        ]
+        "title": {
+          "en": "Powerful Performance",
+          "ua": "Потужна продуктивність"
+        },
+        "text": {
+          "en": "Experience incredible power and performance with the Apple iPad Pro 11. With the M1 chip, it delivers a new level of performance, making it faster and more efficient than ever before.",
+          "ua": "Відчуйте неймовірну потужність і продуктивність з Apple iPad Pro 11. Завдяки чипу M1 він забезпечує новий рівень продуктивності, роблячи його швидшим та ефективнішим, ніж будь-коли раніше."
+        }
       },
       {
-        "title": "Stunning Liquid Retina Display",
-        "text": [
-          "Enjoy a vibrant and immersive visual experience on the iPad Pro 11's Liquid Retina display. With ProMotion technology and True Tone, the display adapts to your environment, providing smooth scrolling, precise color accuracy, and incredible detail.",
-          "From watching movies to editing videos, the iPad Pro 11's display brings your content to life with stunning clarity."
-        ]
+        "title": {
+          "en": "Stunning Liquid Retina Display",
+          "ua": "Приголомшливий дисплей Liquid Retina"
+        },
+        "text": {
+          "en": "Enjoy a vibrant and immersive visual experience on the iPad Pro 11's Liquid Retina display. With ProMotion technology and True Tone, the display adapts to your environment, providing smooth scrolling, precise color accuracy, and incredible detail.",
+          "ua": "Насолоджуйтесь яскравим та захоплюючим візуальним досвідом на дисплеї Liquid Retina iPad Pro 11. Завдяки технології ProMotion і True Tone дисплей адаптується до вашого оточення, забезпечуючи плавне прокручування, точну кольорову передачу та неймовірну деталізацію."
+        }
       },
       {
-        "title": "Versatile Camera System",
-        "text": [
-          "Capture stunning photos and videos with the iPad Pro 11's advanced camera system. Featuring a 12MP Ultra Wide front camera and a 12MP Wide rear camera with LiDAR scanner, you can take high-quality shots and enjoy augmented reality experiences.",
-          "Whether you're video calling, scanning documents, or recording 4K videos, the iPad Pro 11's camera system delivers exceptional performance."
-        ]
+        "title": {
+          "en": "Versatile Camera System",
+          "ua": "Універсальна камера"
+        },
+        "text": {
+          "en": "Capture stunning photos and videos with the iPad Pro 11's advanced camera system. Featuring a 12MP Ultra Wide front camera and a 12MP Wide rear camera with LiDAR scanner, you can take high-quality shots and enjoy augmented reality experiences.",
+          "ua": "Знімайте приголомшливі фотографії та відео за допомогою вдосконаленої камери iPad Pro 11. Завдяки 12-мегапіксельній ультраширокій фронтальній камері та 12-мегапіксельній ширококутній задній камері з LiDAR-сканером, ви можете робити високоякісні знімки та насолоджуватися доповненою реальністю."
+        }
       }
     ],
     "screen": "11' Liquid Retina",
@@ -440,25 +521,34 @@
     ],
     "description": [
       {
-        "title": "Powerful Performance",
-        "text": [
-          "Experience incredible power and performance with the Apple iPad Pro 11. With the M1 chip, it delivers a new level of performance, making it faster and more efficient than ever before.",
-          "Whether you're editing photos, designing artwork, or multitasking with demanding apps, the iPad Pro 11 handles it all with ease."
-        ]
+        "title": {
+          "en": "Powerful Performance",
+          "ua": "Потужна продуктивність"
+        },
+        "text": {
+          "en": "Experience incredible power and performance with the Apple iPad Pro 11. With the M1 chip, it delivers a new level of performance, making it faster and more efficient than ever before.",
+          "ua": "Відчуйте неймовірну потужність і продуктивність з Apple iPad Pro 11. Завдяки чипу M1 він забезпечує новий рівень продуктивності, роблячи його швидшим та ефективнішим, ніж будь-коли раніше."
+        }
       },
       {
-        "title": "Stunning Liquid Retina Display",
-        "text": [
-          "Enjoy a vibrant and immersive visual experience on the iPad Pro 11's Liquid Retina display. With ProMotion technology and True Tone, the display adapts to your environment, providing smooth scrolling, precise color accuracy, and incredible detail.",
-          "From watching movies to editing videos, the iPad Pro 11's display brings your content to life with stunning clarity."
-        ]
+        "title": {
+          "en": "Stunning Liquid Retina Display",
+          "ua": "Приголомшливий дисплей Liquid Retina"
+        },
+        "text": {
+          "en": "Enjoy a vibrant and immersive visual experience on the iPad Pro 11's Liquid Retina display. With ProMotion technology and True Tone, the display adapts to your environment, providing smooth scrolling, precise color accuracy, and incredible detail.",
+          "ua": "Насолоджуйтесь яскравим та захоплюючим візуальним досвідом на дисплеї Liquid Retina iPad Pro 11. Завдяки технології ProMotion і True Tone дисплей адаптується до вашого оточення, забезпечуючи плавне прокручування, точну кольорову передачу та неймовірну деталізацію."
+        }
       },
       {
-        "title": "Versatile Camera System",
-        "text": [
-          "Capture stunning photos and videos with the iPad Pro 11's advanced camera system. Featuring a 12MP Ultra Wide front camera and a 12MP Wide rear camera with LiDAR scanner, you can take high-quality shots and enjoy augmented reality experiences.",
-          "Whether you're video calling, scanning documents, or recording 4K videos, the iPad Pro 11's camera system delivers exceptional performance."
-        ]
+        "title": {
+          "en": "Versatile Camera System",
+          "ua": "Універсальна камера"
+        },
+        "text": {
+          "en": "Capture stunning photos and videos with the iPad Pro 11's advanced camera system. Featuring a 12MP Ultra Wide front camera and a 12MP Wide rear camera with LiDAR scanner, you can take high-quality shots and enjoy augmented reality experiences.",
+          "ua": "Знімайте приголомшливі фотографії та відео за допомогою вдосконаленої камери iPad Pro 11. Завдяки 12-мегапіксельній ультраширокій фронтальній камері та 12-мегапіксельній ширококутній задній камері з LiDAR-сканером, ви можете робити високоякісні знімки та насолоджуватися доповненою реальністю."
+        }
       }
     ],
     "screen": "11' Liquid Retina",
@@ -488,25 +578,34 @@
     ],
     "description": [
       {
-        "title": "Thin, Light, and Powerful",
-        "text": [
-          "The Apple iPad Air (4th Gen) combines sleek design with powerful performance. With its thin and light form factor, it's incredibly portable and easy to carry wherever you go.",
-          "Featuring the A14 Bionic chip with Neural Engine, the iPad Air delivers fast and efficient performance, making it ideal for multitasking, gaming, and creative tasks."
-        ]
+        "title": {
+          "en": "Thin, Light, and Powerful",
+          "ua": "Тонкий, легкий і потужний"
+        },
+        "text": {
+          "en": "The Apple iPad Air (4th Gen) combines sleek design with powerful performance. With its thin and light form factor, it's incredibly portable and easy to carry wherever you go. Featuring the A14 Bionic chip with Neural Engine, the iPad Air delivers fast and efficient performance, making it ideal for multitasking, gaming, and creative tasks.",
+          "ua": "Apple iPad Air (4-го покоління) поєднує в собі елегантний дизайн та потужну продуктивність. Завдяки тонкій та легкій конструкції, він надзвичайно портативний та зручний для перенесення. Завдяки чіпу A14 Bionic з Neural Engine, iPad Air забезпечує швидку та ефективну продуктивність, що робить його ідеальним для багатозадачності, ігор та творчих завдань."
+        }
       },
       {
-        "title": "Stunning Liquid Retina Display",
-        "text": [
-          "Immerse yourself in vivid visuals on the iPad Air's Liquid Retina display. With True Tone and P3 wide color gamut, it offers true-to-life colors and incredible detail.",
-          "Whether you're watching movies, editing photos, or browsing the web, the iPad Air's display provides an immersive and enjoyable viewing experience."
-        ]
+        "title": {
+          "en": "Stunning Liquid Retina Display",
+          "ua": "Приголомшливий дисплей Liquid Retina"
+        },
+        "text": {
+          "en": "Immerse yourself in vivid visuals on the iPad Air's Liquid Retina display. With True Tone and P3 wide color gamut, it offers true-to-life colors and incredible detail. Whether you're watching movies, editing photos, or browsing the web, the iPad Air's display provides an immersive and enjoyable viewing experience.",
+          "ua": "Пориньте в яскраву візуалізацію на дисплеї Liquid Retina iPad Air. Завдяки технології True Tone та широкій кольоровій гамі P3 він пропонує реалістичні кольори та неймовірну деталізацію. Незалежно від того, чи дивитесь ви фільми, редагуєте фотографії або переглядаєте веб-сторінки, дисплей iPad Air забезпечує захоплюючий та приємний досвід перегляду."
+        }
       },
       {
-        "title": "Versatile Features and Apple Pencil Support",
-        "text": [
-          "Unlock new possibilities with the iPad Air's versatile features. It supports Apple Pencil (2nd generation), allowing you to take notes, sketch, and annotate documents with precision.",
-          "With Touch ID built into the top button, you can securely unlock your iPad, make secure purchases, and authenticate apps with a simple touch."
-        ]
+        "title": {
+          "en": "Versatile Features and Apple Pencil Support",
+          "ua": "Універсальні функції та підтримка Apple Pencil"
+        },
+        "text": {
+          "en": "Unlock new possibilities with the iPad Air's versatile features. It supports Apple Pencil (2nd generation), allowing you to take notes, sketch, and annotate documents with precision. With Touch ID built into the top button, you can securely unlock your iPad, make secure purchases, and authenticate apps with a simple touch.",
+          "ua": "Відкрийте нові можливості завдяки універсальним функціям iPad Air. Він підтримує Apple Pencil (2-го покоління), що дозволяє робити нотатки, ескізи та анотації документів з точністю. З Touch ID, вбудованим у верхню кнопку, ви можете безпечно розблокувати свій iPad, здійснювати безпечні покупки та автентифікувати додатки за допомогою простого дотику."
+        }
       }
     ],
     "screen": "10.9' Liquid Retina",
@@ -536,25 +635,34 @@
     ],
     "description": [
       {
-        "title": "Thin, Light, and Powerful",
-        "text": [
-          "The Apple iPad Air (4th Gen) combines sleek design with powerful performance. With its thin and light form factor, it's incredibly portable and easy to carry wherever you go.",
-          "Featuring the A14 Bionic chip with Neural Engine, the iPad Air delivers fast and efficient performance, making it ideal for multitasking, gaming, and creative tasks."
-        ]
+        "title": {
+          "en": "Thin, Light, and Powerful",
+          "ua": "Тонкий, легкий і потужний"
+        },
+        "text": {
+          "en": "The Apple iPad Air (4th Gen) combines sleek design with powerful performance. With its thin and light form factor, it's incredibly portable and easy to carry wherever you go. Featuring the A14 Bionic chip with Neural Engine, the iPad Air delivers fast and efficient performance, making it ideal for multitasking, gaming, and creative tasks.",
+          "ua": "Apple iPad Air (4-го покоління) поєднує в собі елегантний дизайн та потужну продуктивність. Завдяки тонкій та легкій конструкції, він надзвичайно портативний та зручний для перенесення. Завдяки чіпу A14 Bionic з Neural Engine, iPad Air забезпечує швидку та ефективну продуктивність, що робить його ідеальним для багатозадачності, ігор та творчих завдань."
+        }
       },
       {
-        "title": "Stunning Liquid Retina Display",
-        "text": [
-          "Immerse yourself in vivid visuals on the iPad Air's Liquid Retina display. With True Tone and P3 wide color gamut, it offers true-to-life colors and incredible detail.",
-          "Whether you're watching movies, editing photos, or browsing the web, the iPad Air's display provides an immersive and enjoyable viewing experience."
-        ]
+        "title": {
+          "en": "Stunning Liquid Retina Display",
+          "ua": "Приголомшливий дисплей Liquid Retina"
+        },
+        "text": {
+          "en": "Immerse yourself in vivid visuals on the iPad Air's Liquid Retina display. With True Tone and P3 wide color gamut, it offers true-to-life colors and incredible detail. Whether you're watching movies, editing photos, or browsing the web, the iPad Air's display provides an immersive and enjoyable viewing experience.",
+          "ua": "Пориньте в яскраву візуалізацію на дисплеї Liquid Retina iPad Air. Завдяки технології True Tone та широкій кольоровій гамі P3 він пропонує реалістичні кольори та неймовірну деталізацію. Незалежно від того, чи дивитесь ви фільми, редагуєте фотографії або переглядаєте веб-сторінки, дисплей iPad Air забезпечує захоплюючий та приємний досвід перегляду."
+        }
       },
       {
-        "title": "Versatile Features and Apple Pencil Support",
-        "text": [
-          "Unlock new possibilities with the iPad Air's versatile features. It supports Apple Pencil (2nd generation), allowing you to take notes, sketch, and annotate documents with precision.",
-          "With Touch ID built into the top button, you can securely unlock your iPad, make secure purchases, and authenticate apps with a simple touch."
-        ]
+        "title": {
+          "en": "Versatile Features and Apple Pencil Support",
+          "ua": "Універсальні функції та підтримка Apple Pencil"
+        },
+        "text": {
+          "en": "Unlock new possibilities with the iPad Air's versatile features. It supports Apple Pencil (2nd generation), allowing you to take notes, sketch, and annotate documents with precision. With Touch ID built into the top button, you can securely unlock your iPad, make secure purchases, and authenticate apps with a simple touch.",
+          "ua": "Відкрийте нові можливості завдяки універсальним функціям iPad Air. Він підтримує Apple Pencil (2-го покоління), що дозволяє робити нотатки, ескізи та анотації документів з точністю. З Touch ID, вбудованим у верхню кнопку, ви можете безпечно розблокувати свій iPad, здійснювати безпечні покупки та автентифікувати додатки за допомогою простого дотику."
+        }
       }
     ],
     "screen": "10.9' Liquid Retina",
@@ -584,25 +692,34 @@
     ],
     "description": [
       {
-        "title": "Thin, Light, and Powerful",
-        "text": [
-          "The Apple iPad Air (4th Gen) combines sleek design with powerful performance. With its thin and light form factor, it's incredibly portable and easy to carry wherever you go.",
-          "Featuring the A14 Bionic chip with Neural Engine, the iPad Air delivers fast and efficient performance, making it ideal for multitasking, gaming, and creative tasks."
-        ]
+        "title": {
+          "en": "Thin, Light, and Powerful",
+          "ua": "Тонкий, легкий і потужний"
+        },
+        "text": {
+          "en": "The Apple iPad Air (4th Gen) combines sleek design with powerful performance. With its thin and light form factor, it's incredibly portable and easy to carry wherever you go. Featuring the A14 Bionic chip with Neural Engine, the iPad Air delivers fast and efficient performance, making it ideal for multitasking, gaming, and creative tasks.",
+          "ua": "Apple iPad Air (4-го покоління) поєднує в собі елегантний дизайн та потужну продуктивність. Завдяки тонкій та легкій конструкції, він надзвичайно портативний та зручний для перенесення. Завдяки чіпу A14 Bionic з Neural Engine, iPad Air забезпечує швидку та ефективну продуктивність, що робить його ідеальним для багатозадачності, ігор та творчих завдань."
+        }
       },
       {
-        "title": "Stunning Liquid Retina Display",
-        "text": [
-          "Immerse yourself in vivid visuals on the iPad Air's Liquid Retina display. With True Tone and P3 wide color gamut, it offers true-to-life colors and incredible detail.",
-          "Whether you're watching movies, editing photos, or browsing the web, the iPad Air's display provides an immersive and enjoyable viewing experience."
-        ]
+        "title": {
+          "en": "Stunning Liquid Retina Display",
+          "ua": "Приголомшливий дисплей Liquid Retina"
+        },
+        "text": {
+          "en": "Immerse yourself in vivid visuals on the iPad Air's Liquid Retina display. With True Tone and P3 wide color gamut, it offers true-to-life colors and incredible detail. Whether you're watching movies, editing photos, or browsing the web, the iPad Air's display provides an immersive and enjoyable viewing experience.",
+          "ua": "Пориньте в яскраву візуалізацію на дисплеї Liquid Retina iPad Air. Завдяки технології True Tone та широкій кольоровій гамі P3 він пропонує реалістичні кольори та неймовірну деталізацію. Незалежно від того, чи дивитесь ви фільми, редагуєте фотографії або переглядаєте веб-сторінки, дисплей iPad Air забезпечує захоплюючий та приємний досвід перегляду."
+        }
       },
       {
-        "title": "Versatile Features and Apple Pencil Support",
-        "text": [
-          "Unlock new possibilities with the iPad Air's versatile features. It supports Apple Pencil (2nd generation), allowing you to take notes, sketch, and annotate documents with precision.",
-          "With Touch ID built into the top button, you can securely unlock your iPad, make secure purchases, and authenticate apps with a simple touch."
-        ]
+        "title": {
+          "en": "Versatile Features and Apple Pencil Support",
+          "ua": "Універсальні функції та підтримка Apple Pencil"
+        },
+        "text": {
+          "en": "Unlock new possibilities with the iPad Air's versatile features. It supports Apple Pencil (2nd generation), allowing you to take notes, sketch, and annotate documents with precision. With Touch ID built into the top button, you can securely unlock your iPad, make secure purchases, and authenticate apps with a simple touch.",
+          "ua": "Відкрийте нові можливості завдяки універсальним функціям iPad Air. Він підтримує Apple Pencil (2-го покоління), що дозволяє робити нотатки, ескізи та анотації документів з точністю. З Touch ID, вбудованим у верхню кнопку, ви можете безпечно розблокувати свій iPad, здійснювати безпечні покупки та автентифікувати додатки за допомогою простого дотику."
+        }
       }
     ],
     "screen": "10.9' Liquid Retina",
@@ -632,25 +749,34 @@
     ],
     "description": [
       {
-        "title": "Thin, Light, and Powerful",
-        "text": [
-          "The Apple iPad Air (4th Gen) combines sleek design with powerful performance. With its thin and light form factor, it's incredibly portable and easy to carry wherever you go.",
-          "Featuring the A14 Bionic chip with Neural Engine, the iPad Air delivers fast and efficient performance, making it ideal for multitasking, gaming, and creative tasks."
-        ]
+        "title": {
+          "en": "Thin, Light, and Powerful",
+          "ua": "Тонкий, легкий і потужний"
+        },
+        "text": {
+          "en": "The Apple iPad Air (4th Gen) combines sleek design with powerful performance. With its thin and light form factor, it's incredibly portable and easy to carry wherever you go. Featuring the A14 Bionic chip with Neural Engine, the iPad Air delivers fast and efficient performance, making it ideal for multitasking, gaming, and creative tasks.",
+          "ua": "Apple iPad Air (4-го покоління) поєднує в собі елегантний дизайн та потужну продуктивність. Завдяки тонкій та легкій конструкції, він надзвичайно портативний та зручний для перенесення. Завдяки чіпу A14 Bionic з Neural Engine, iPad Air забезпечує швидку та ефективну продуктивність, що робить його ідеальним для багатозадачності, ігор та творчих завдань."
+        }
       },
       {
-        "title": "Stunning Liquid Retina Display",
-        "text": [
-          "Immerse yourself in vivid visuals on the iPad Air's Liquid Retina display. With True Tone and P3 wide color gamut, it offers true-to-life colors and incredible detail.",
-          "Whether you're watching movies, editing photos, or browsing the web, the iPad Air's display provides an immersive and enjoyable viewing experience."
-        ]
+        "title": {
+          "en": "Stunning Liquid Retina Display",
+          "ua": "Приголомшливий дисплей Liquid Retina"
+        },
+        "text": {
+          "en": "Immerse yourself in vivid visuals on the iPad Air's Liquid Retina display. With True Tone and P3 wide color gamut, it offers true-to-life colors and incredible detail. Whether you're watching movies, editing photos, or browsing the web, the iPad Air's display provides an immersive and enjoyable viewing experience.",
+          "ua": "Пориньте в яскраву візуалізацію на дисплеї Liquid Retina iPad Air. Завдяки технології True Tone та широкій кольоровій гамі P3 він пропонує реалістичні кольори та неймовірну деталізацію. Незалежно від того, чи дивитесь ви фільми, редагуєте фотографії або переглядаєте веб-сторінки, дисплей iPad Air забезпечує захоплюючий та приємний досвід перегляду."
+        }
       },
       {
-        "title": "Versatile Features and Apple Pencil Support",
-        "text": [
-          "Unlock new possibilities with the iPad Air's versatile features. It supports Apple Pencil (2nd generation), allowing you to take notes, sketch, and annotate documents with precision.",
-          "With Touch ID built into the top button, you can securely unlock your iPad, make secure purchases, and authenticate apps with a simple touch."
-        ]
+        "title": {
+          "en": "Versatile Features and Apple Pencil Support",
+          "ua": "Універсальні функції та підтримка Apple Pencil"
+        },
+        "text": {
+          "en": "Unlock new possibilities with the iPad Air's versatile features. It supports Apple Pencil (2nd generation), allowing you to take notes, sketch, and annotate documents with precision. With Touch ID built into the top button, you can securely unlock your iPad, make secure purchases, and authenticate apps with a simple touch.",
+          "ua": "Відкрийте нові можливості завдяки універсальним функціям iPad Air. Він підтримує Apple Pencil (2-го покоління), що дозволяє робити нотатки, ескізи та анотації документів з точністю. З Touch ID, вбудованим у верхню кнопку, ви можете безпечно розблокувати свій iPad, здійснювати безпечні покупки та автентифікувати додатки за допомогою простого дотику."
+        }
       }
     ],
     "screen": "10.9' Liquid Retina",
@@ -680,25 +806,34 @@
     ],
     "description": [
       {
-        "title": "Thin, Light, and Powerful",
-        "text": [
-          "The Apple iPad Air (4th Gen) combines sleek design with powerful performance. With its thin and light form factor, it's incredibly portable and easy to carry wherever you go.",
-          "Featuring the A14 Bionic chip with Neural Engine, the iPad Air delivers fast and efficient performance, making it ideal for multitasking, gaming, and creative tasks."
-        ]
+        "title": {
+          "en": "Thin, Light, and Powerful",
+          "ua": "Тонкий, легкий і потужний"
+        },
+        "text": {
+          "en": "The Apple iPad Air (4th Gen) combines sleek design with powerful performance. With its thin and light form factor, it's incredibly portable and easy to carry wherever you go. Featuring the A14 Bionic chip with Neural Engine, the iPad Air delivers fast and efficient performance, making it ideal for multitasking, gaming, and creative tasks.",
+          "ua": "Apple iPad Air (4-го покоління) поєднує в собі елегантний дизайн та потужну продуктивність. Завдяки тонкій та легкій конструкції, він надзвичайно портативний та зручний для перенесення. Завдяки чіпу A14 Bionic з Neural Engine, iPad Air забезпечує швидку та ефективну продуктивність, що робить його ідеальним для багатозадачності, ігор та творчих завдань."
+        }
       },
       {
-        "title": "Stunning Liquid Retina Display",
-        "text": [
-          "Immerse yourself in vivid visuals on the iPad Air's Liquid Retina display. With True Tone and P3 wide color gamut, it offers true-to-life colors and incredible detail.",
-          "Whether you're watching movies, editing photos, or browsing the web, the iPad Air's display provides an immersive and enjoyable viewing experience."
-        ]
+        "title": {
+          "en": "Stunning Liquid Retina Display",
+          "ua": "Приголомшливий дисплей Liquid Retina"
+        },
+        "text": {
+          "en": "Immerse yourself in vivid visuals on the iPad Air's Liquid Retina display. With True Tone and P3 wide color gamut, it offers true-to-life colors and incredible detail. Whether you're watching movies, editing photos, or browsing the web, the iPad Air's display provides an immersive and enjoyable viewing experience.",
+          "ua": "Пориньте в яскраву візуалізацію на дисплеї Liquid Retina iPad Air. Завдяки технології True Tone та широкій кольоровій гамі P3 він пропонує реалістичні кольори та неймовірну деталізацію. Незалежно від того, чи дивитесь ви фільми, редагуєте фотографії або переглядаєте веб-сторінки, дисплей iPad Air забезпечує захоплюючий та приємний досвід перегляду."
+        }
       },
       {
-        "title": "Versatile Features and Apple Pencil Support",
-        "text": [
-          "Unlock new possibilities with the iPad Air's versatile features. It supports Apple Pencil (2nd generation), allowing you to take notes, sketch, and annotate documents with precision.",
-          "With Touch ID built into the top button, you can securely unlock your iPad, make secure purchases, and authenticate apps with a simple touch."
-        ]
+        "title": {
+          "en": "Versatile Features and Apple Pencil Support",
+          "ua": "Універсальні функції та підтримка Apple Pencil"
+        },
+        "text": {
+          "en": "Unlock new possibilities with the iPad Air's versatile features. It supports Apple Pencil (2nd generation), allowing you to take notes, sketch, and annotate documents with precision. With Touch ID built into the top button, you can securely unlock your iPad, make secure purchases, and authenticate apps with a simple touch.",
+          "ua": "Відкрийте нові можливості завдяки універсальним функціям iPad Air. Він підтримує Apple Pencil (2-го покоління), що дозволяє робити нотатки, ескізи та анотації документів з точністю. З Touch ID, вбудованим у верхню кнопку, ви можете безпечно розблокувати свій iPad, здійснювати безпечні покупки та автентифікувати додатки за допомогою простого дотику."
+        }
       }
     ],
     "screen": "10.9' Liquid Retina",
@@ -728,25 +863,34 @@
     ],
     "description": [
       {
-        "title": "Thin, Light, and Powerful",
-        "text": [
-          "The Apple iPad Air (4th Gen) combines sleek design with powerful performance. With its thin and light form factor, it's incredibly portable and easy to carry wherever you go.",
-          "Featuring the A14 Bionic chip with Neural Engine, the iPad Air delivers fast and efficient performance, making it ideal for multitasking, gaming, and creative tasks."
-        ]
+        "title": {
+          "en": "Thin, Light, and Powerful",
+          "ua": "Тонкий, легкий і потужний"
+        },
+        "text": {
+          "en": "The Apple iPad Air (4th Gen) combines sleek design with powerful performance. With its thin and light form factor, it's incredibly portable and easy to carry wherever you go. Featuring the A14 Bionic chip with Neural Engine, the iPad Air delivers fast and efficient performance, making it ideal for multitasking, gaming, and creative tasks.",
+          "ua": "Apple iPad Air (4-го покоління) поєднує в собі елегантний дизайн та потужну продуктивність. Завдяки тонкій та легкій конструкції, він надзвичайно портативний та зручний для перенесення. Завдяки чіпу A14 Bionic з Neural Engine, iPad Air забезпечує швидку та ефективну продуктивність, що робить його ідеальним для багатозадачності, ігор та творчих завдань."
+        }
       },
       {
-        "title": "Stunning Liquid Retina Display",
-        "text": [
-          "Immerse yourself in vivid visuals on the iPad Air's Liquid Retina display. With True Tone and P3 wide color gamut, it offers true-to-life colors and incredible detail.",
-          "Whether you're watching movies, editing photos, or browsing the web, the iPad Air's display provides an immersive and enjoyable viewing experience."
-        ]
+        "title": {
+          "en": "Stunning Liquid Retina Display",
+          "ua": "Приголомшливий дисплей Liquid Retina"
+        },
+        "text": {
+          "en": "Immerse yourself in vivid visuals on the iPad Air's Liquid Retina display. With True Tone and P3 wide color gamut, it offers true-to-life colors and incredible detail. Whether you're watching movies, editing photos, or browsing the web, the iPad Air's display provides an immersive and enjoyable viewing experience.",
+          "ua": "Пориньте в яскраву візуалізацію на дисплеї Liquid Retina iPad Air. Завдяки технології True Tone та широкій кольоровій гамі P3 він пропонує реалістичні кольори та неймовірну деталізацію. Незалежно від того, чи дивитесь ви фільми, редагуєте фотографії або переглядаєте веб-сторінки, дисплей iPad Air забезпечує захоплюючий та приємний досвід перегляду."
+        }
       },
       {
-        "title": "Versatile Features and Apple Pencil Support",
-        "text": [
-          "Unlock new possibilities with the iPad Air's versatile features. It supports Apple Pencil (2nd generation), allowing you to take notes, sketch, and annotate documents with precision.",
-          "With Touch ID built into the top button, you can securely unlock your iPad, make secure purchases, and authenticate apps with a simple touch."
-        ]
+        "title": {
+          "en": "Versatile Features and Apple Pencil Support",
+          "ua": "Універсальні функції та підтримка Apple Pencil"
+        },
+        "text": {
+          "en": "Unlock new possibilities with the iPad Air's versatile features. It supports Apple Pencil (2nd generation), allowing you to take notes, sketch, and annotate documents with precision. With Touch ID built into the top button, you can securely unlock your iPad, make secure purchases, and authenticate apps with a simple touch.",
+          "ua": "Відкрийте нові можливості завдяки універсальним функціям iPad Air. Він підтримує Apple Pencil (2-го покоління), що дозволяє робити нотатки, ескізи та анотації документів з точністю. З Touch ID, вбудованим у верхню кнопку, ви можете безпечно розблокувати свій iPad, здійснювати безпечні покупки та автентифікувати додатки за допомогою простого дотику."
+        }
       }
     ],
     "screen": "10.9' Liquid Retina",
@@ -776,25 +920,34 @@
     ],
     "description": [
       {
-        "title": "Thin, Light, and Powerful",
-        "text": [
-          "The Apple iPad Air (4th Gen) combines sleek design with powerful performance. With its thin and light form factor, it's incredibly portable and easy to carry wherever you go.",
-          "Featuring the A14 Bionic chip with Neural Engine, the iPad Air delivers fast and efficient performance, making it ideal for multitasking, gaming, and creative tasks."
-        ]
+        "title": {
+          "en": "Thin, Light, and Powerful",
+          "ua": "Тонкий, легкий і потужний"
+        },
+        "text": {
+          "en": "The Apple iPad Air (4th Gen) combines sleek design with powerful performance. With its thin and light form factor, it's incredibly portable and easy to carry wherever you go. Featuring the A14 Bionic chip with Neural Engine, the iPad Air delivers fast and efficient performance, making it ideal for multitasking, gaming, and creative tasks.",
+          "ua": "Apple iPad Air (4-го покоління) поєднує в собі елегантний дизайн та потужну продуктивність. Завдяки тонкій та легкій конструкції, він надзвичайно портативний та зручний для перенесення. Завдяки чіпу A14 Bionic з Neural Engine, iPad Air забезпечує швидку та ефективну продуктивність, що робить його ідеальним для багатозадачності, ігор та творчих завдань."
+        }
       },
       {
-        "title": "Stunning Liquid Retina Display",
-        "text": [
-          "Immerse yourself in vivid visuals on the iPad Air's Liquid Retina display. With True Tone and P3 wide color gamut, it offers true-to-life colors and incredible detail.",
-          "Whether you're watching movies, editing photos, or browsing the web, the iPad Air's display provides an immersive and enjoyable viewing experience."
-        ]
+        "title": {
+          "en": "Stunning Liquid Retina Display",
+          "ua": "Приголомшливий дисплей Liquid Retina"
+        },
+        "text": {
+          "en": "Immerse yourself in vivid visuals on the iPad Air's Liquid Retina display. With True Tone and P3 wide color gamut, it offers true-to-life colors and incredible detail. Whether you're watching movies, editing photos, or browsing the web, the iPad Air's display provides an immersive and enjoyable viewing experience.",
+          "ua": "Пориньте в яскраву візуалізацію на дисплеї Liquid Retina iPad Air. Завдяки технології True Tone та широкій кольоровій гамі P3 він пропонує реалістичні кольори та неймовірну деталізацію. Незалежно від того, чи дивитесь ви фільми, редагуєте фотографії або переглядаєте веб-сторінки, дисплей iPad Air забезпечує захоплюючий та приємний досвід перегляду."
+        }
       },
       {
-        "title": "Versatile Features and Apple Pencil Support",
-        "text": [
-          "Unlock new possibilities with the iPad Air's versatile features. It supports Apple Pencil (2nd generation), allowing you to take notes, sketch, and annotate documents with precision.",
-          "With Touch ID built into the top button, you can securely unlock your iPad, make secure purchases, and authenticate apps with a simple touch."
-        ]
+        "title": {
+          "en": "Versatile Features and Apple Pencil Support",
+          "ua": "Універсальні функції та підтримка Apple Pencil"
+        },
+        "text": {
+          "en": "Unlock new possibilities with the iPad Air's versatile features. It supports Apple Pencil (2nd generation), allowing you to take notes, sketch, and annotate documents with precision. With Touch ID built into the top button, you can securely unlock your iPad, make secure purchases, and authenticate apps with a simple touch.",
+          "ua": "Відкрийте нові можливості завдяки універсальним функціям iPad Air. Він підтримує Apple Pencil (2-го покоління), що дозволяє робити нотатки, ескізи та анотації документів з точністю. З Touch ID, вбудованим у верхню кнопку, ви можете безпечно розблокувати свій iPad, здійснювати безпечні покупки та автентифікувати додатки за допомогою простого дотику."
+        }
       }
     ],
     "screen": "10.9' Liquid Retina",
@@ -824,25 +977,34 @@
     ],
     "description": [
       {
-        "title": "Thin, Light, and Powerful",
-        "text": [
-          "The Apple iPad Air (4th Gen) combines sleek design with powerful performance. With its thin and light form factor, it's incredibly portable and easy to carry wherever you go.",
-          "Featuring the A14 Bionic chip with Neural Engine, the iPad Air delivers fast and efficient performance, making it ideal for multitasking, gaming, and creative tasks."
-        ]
+        "title": {
+          "en": "Thin, Light, and Powerful",
+          "ua": "Тонкий, легкий і потужний"
+        },
+        "text": {
+          "en": "The Apple iPad Air (4th Gen) combines sleek design with powerful performance. With its thin and light form factor, it's incredibly portable and easy to carry wherever you go. Featuring the A14 Bionic chip with Neural Engine, the iPad Air delivers fast and efficient performance, making it ideal for multitasking, gaming, and creative tasks.",
+          "ua": "Apple iPad Air (4-го покоління) поєднує в собі елегантний дизайн та потужну продуктивність. Завдяки тонкій та легкій конструкції, він надзвичайно портативний та зручний для перенесення. Завдяки чіпу A14 Bionic з Neural Engine, iPad Air забезпечує швидку та ефективну продуктивність, що робить його ідеальним для багатозадачності, ігор та творчих завдань."
+        }
       },
       {
-        "title": "Stunning Liquid Retina Display",
-        "text": [
-          "Immerse yourself in vivid visuals on the iPad Air's Liquid Retina display. With True Tone and P3 wide color gamut, it offers true-to-life colors and incredible detail.",
-          "Whether you're watching movies, editing photos, or browsing the web, the iPad Air's display provides an immersive and enjoyable viewing experience."
-        ]
+        "title": {
+          "en": "Stunning Liquid Retina Display",
+          "ua": "Приголомшливий дисплей Liquid Retina"
+        },
+        "text": {
+          "en": "Immerse yourself in vivid visuals on the iPad Air's Liquid Retina display. With True Tone and P3 wide color gamut, it offers true-to-life colors and incredible detail. Whether you're watching movies, editing photos, or browsing the web, the iPad Air's display provides an immersive and enjoyable viewing experience.",
+          "ua": "Пориньте в яскраву візуалізацію на дисплеї Liquid Retina iPad Air. Завдяки технології True Tone та широкій кольоровій гамі P3 він пропонує реалістичні кольори та неймовірну деталізацію. Незалежно від того, чи дивитесь ви фільми, редагуєте фотографії або переглядаєте веб-сторінки, дисплей iPad Air забезпечує захоплюючий та приємний досвід перегляду."
+        }
       },
       {
-        "title": "Versatile Features and Apple Pencil Support",
-        "text": [
-          "Unlock new possibilities with the iPad Air's versatile features. It supports Apple Pencil (2nd generation), allowing you to take notes, sketch, and annotate documents with precision.",
-          "With Touch ID built into the top button, you can securely unlock your iPad, make secure purchases, and authenticate apps with a simple touch."
-        ]
+        "title": {
+          "en": "Versatile Features and Apple Pencil Support",
+          "ua": "Універсальні функції та підтримка Apple Pencil"
+        },
+        "text": {
+          "en": "Unlock new possibilities with the iPad Air's versatile features. It supports Apple Pencil (2nd generation), allowing you to take notes, sketch, and annotate documents with precision. With Touch ID built into the top button, you can securely unlock your iPad, make secure purchases, and authenticate apps with a simple touch.",
+          "ua": "Відкрийте нові можливості завдяки універсальним функціям iPad Air. Він підтримує Apple Pencil (2-го покоління), що дозволяє робити нотатки, ескізи та анотації документів з точністю. З Touch ID, вбудованим у верхню кнопку, ви можете безпечно розблокувати свій iPad, здійснювати безпечні покупки та автентифікувати додатки за допомогою простого дотику."
+        }
       }
     ],
     "screen": "10.9' Liquid Retina",
@@ -871,25 +1033,34 @@
     ],
     "description": [
       {
-        "title": "Compact and Portable",
-        "text": [
-          "Experience the power of an iPad in a compact size with the Apple iPad Mini (6th Gen). With its 8.3-inch Liquid Retina display and slim design, it's perfect for on-the-go productivity and entertainment.",
-          "Whether you're reading, gaming, or watching videos, the iPad Mini delivers a stunning visual experience in a portable package."
-        ]
+        "title": {
+          "en": "Compact and Portable",
+          "ua": "Компактний та портативний"
+        },
+        "text": {
+          "en": "Experience the power of an iPad in a compact size with the Apple iPad Mini (6th Gen). With its 8.3-inch Liquid Retina display and slim design, it's perfect for on-the-go productivity and entertainment. Whether you're reading, gaming, or watching videos, the iPad Mini delivers a stunning visual experience in a portable package.",
+          "ua": "Відчуйте потужність iPad у компактному розмірі з Apple iPad Mini (6-го покоління). З його 8.3-дюймовим дисплеєм Liquid Retina та тонким дизайном він ідеально підходить для продуктивності та розваг у дорозі. Незалежно від того, чи читаєте ви, граєте в ігри або дивитеся відео, iPad Mini забезпечує приголомшливий візуальний досвід у портативному пакеті."
+        }
       },
       {
-        "title": "A15 Bionic Chip and Neural Engine",
-        "text": [
-          "The iPad Mini (6th Gen) is equipped with the powerful A15 Bionic chip and Neural Engine, delivering fast and efficient performance. It can handle demanding tasks and graphics-intensive apps with ease, making it suitable for both work and play.",
-          "Experience smooth multitasking, immersive gaming, and seamless app usage on the iPad Mini."
-        ]
+        "title": {
+          "en": "A15 Bionic Chip and Neural Engine",
+          "ua": "Чіп A15 Bionic та Neural Engine"
+        },
+        "text": {
+          "en": "The iPad Mini (6th Gen) is equipped with the powerful A15 Bionic chip and Neural Engine, delivering fast and efficient performance. It can handle demanding tasks and graphics-intensive apps with ease, making it suitable for both work and play. Experience smooth multitasking, immersive gaming, and seamless app usage on the iPad Mini.",
+          "ua": "iPad Mini (6-го покоління) оснащений потужним чіпом A15 Bionic та Neural Engine, що забезпечує швидку та ефективну продуктивність. Він легко справляється з вимогливими завданнями та графічно-інтенсивними додатками, роблячи його придатним як для роботи, так і для розваг. Відчуйте плавну багатозадачність, захоплюючі ігри та безперебійну роботу додатків на iPad Mini."
+        }
       },
       {
-        "title": "Advanced Cameras and Center Stage",
-        "text": [
-          "Capture stunning photos and videos with the iPad Mini's advanced cameras. With a 12MP front camera and a 12MP rear camera, you can take high-quality shots and record impressive videos.",
-          "The iPad Mini also features Center Stage, a feature that automatically keeps you in frame during video calls, making your conversations more engaging and dynamic."
-        ]
+        "title": {
+          "en": "Advanced Cameras and Center Stage",
+          "ua": "Вдосконалені камери та Center Stage"
+        },
+        "text": {
+          "en": "Capture stunning photos and videos with the iPad Mini's advanced cameras. With a 12MP front camera and a 12MP rear camera, you can take high-quality shots and record impressive videos. The iPad Mini also features Center Stage, a feature that automatically keeps you in frame during video calls, making your conversations more engaging and dynamic.",
+          "ua": "Знімайте приголомшливі фотографії та відео за допомогою вдосконалених камер iPad Mini. Завдяки 12-мегапіксельній фронтальній камері та 12-мегапіксельній задній камері ви можете робити високоякісні знімки та записувати вражаючі відео. iPad Mini також має функцію Center Stage, яка автоматично тримає вас у кадрі під час відеодзвінків, роблячи ваші розмови більш цікавими та динамічними."
+        }
       }
     ],
     "screen": "8.3' Liquid Retina",
@@ -918,25 +1089,34 @@
     ],
     "description": [
       {
-        "title": "Compact and Portable",
-        "text": [
-          "Experience the power of an iPad in a compact size with the Apple iPad Mini (6th Gen). With its 8.3-inch Liquid Retina display and slim design, it's perfect for on-the-go productivity and entertainment.",
-          "Whether you're reading, gaming, or watching videos, the iPad Mini delivers a stunning visual experience in a portable package."
-        ]
+        "title": {
+          "en": "Compact and Portable",
+          "ua": "Компактний та портативний"
+        },
+        "text": {
+          "en": "Experience the power of an iPad in a compact size with the Apple iPad Mini (6th Gen). With its 8.3-inch Liquid Retina display and slim design, it's perfect for on-the-go productivity and entertainment. Whether you're reading, gaming, or watching videos, the iPad Mini delivers a stunning visual experience in a portable package.",
+          "ua": "Відчуйте потужність iPad у компактному розмірі з Apple iPad Mini (6-го покоління). З його 8.3-дюймовим дисплеєм Liquid Retina та тонким дизайном він ідеально підходить для продуктивності та розваг у дорозі. Незалежно від того, чи читаєте ви, граєте в ігри або дивитеся відео, iPad Mini забезпечує приголомшливий візуальний досвід у портативному пакеті."
+        }
       },
       {
-        "title": "A15 Bionic Chip and Neural Engine",
-        "text": [
-          "The iPad Mini (6th Gen) is equipped with the powerful A15 Bionic chip and Neural Engine, delivering fast and efficient performance. It can handle demanding tasks and graphics-intensive apps with ease, making it suitable for both work and play.",
-          "Experience smooth multitasking, immersive gaming, and seamless app usage on the iPad Mini."
-        ]
+        "title": {
+          "en": "A15 Bionic Chip and Neural Engine",
+          "ua": "Чіп A15 Bionic та Neural Engine"
+        },
+        "text": {
+          "en": "The iPad Mini (6th Gen) is equipped with the powerful A15 Bionic chip and Neural Engine, delivering fast and efficient performance. It can handle demanding tasks and graphics-intensive apps with ease, making it suitable for both work and play. Experience smooth multitasking, immersive gaming, and seamless app usage on the iPad Mini.",
+          "ua": "iPad Mini (6-го покоління) оснащений потужним чіпом A15 Bionic та Neural Engine, що забезпечує швидку та ефективну продуктивність. Він легко справляється з вимогливими завданнями та графічно-інтенсивними додатками, роблячи його придатним як для роботи, так і для розваг. Відчуйте плавну багатозадачність, захоплюючі ігри та безперебійну роботу додатків на iPad Mini."
+        }
       },
       {
-        "title": "Advanced Cameras and Center Stage",
-        "text": [
-          "Capture stunning photos and videos with the iPad Mini's advanced cameras. With a 12MP front camera and a 12MP rear camera, you can take high-quality shots and record impressive videos.",
-          "The iPad Mini also features Center Stage, a feature that automatically keeps you in frame during video calls, making your conversations more engaging and dynamic."
-        ]
+        "title": {
+          "en": "Advanced Cameras and Center Stage",
+          "ua": "Вдосконалені камери та Center Stage"
+        },
+        "text": {
+          "en": "Capture stunning photos and videos with the iPad Mini's advanced cameras. With a 12MP front camera and a 12MP rear camera, you can take high-quality shots and record impressive videos. The iPad Mini also features Center Stage, a feature that automatically keeps you in frame during video calls, making your conversations more engaging and dynamic.",
+          "ua": "Знімайте приголомшливі фотографії та відео за допомогою вдосконалених камер iPad Mini. Завдяки 12-мегапіксельній фронтальній камері та 12-мегапіксельній задній камері ви можете робити високоякісні знімки та записувати вражаючі відео. iPad Mini також має функцію Center Stage, яка автоматично тримає вас у кадрі під час відеодзвінків, роблячи ваші розмови більш цікавими та динамічними."
+        }
       }
     ],
     "screen": "8.3' Liquid Retina",
@@ -965,25 +1145,34 @@
     ],
     "description": [
       {
-        "title": "Compact and Portable",
-        "text": [
-          "Experience the power of an iPad in a compact size with the Apple iPad Mini (6th Gen). With its 8.3-inch Liquid Retina display and slim design, it's perfect for on-the-go productivity and entertainment.",
-          "Whether you're reading, gaming, or watching videos, the iPad Mini delivers a stunning visual experience in a portable package."
-        ]
+        "title": {
+          "en": "Compact and Portable",
+          "ua": "Компактний та портативний"
+        },
+        "text": {
+          "en": "Experience the power of an iPad in a compact size with the Apple iPad Mini (6th Gen). With its 8.3-inch Liquid Retina display and slim design, it's perfect for on-the-go productivity and entertainment. Whether you're reading, gaming, or watching videos, the iPad Mini delivers a stunning visual experience in a portable package.",
+          "ua": "Відчуйте потужність iPad у компактному розмірі з Apple iPad Mini (6-го покоління). З його 8.3-дюймовим дисплеєм Liquid Retina та тонким дизайном він ідеально підходить для продуктивності та розваг у дорозі. Незалежно від того, чи читаєте ви, граєте в ігри або дивитеся відео, iPad Mini забезпечує приголомшливий візуальний досвід у портативному пакеті."
+        }
       },
       {
-        "title": "A15 Bionic Chip and Neural Engine",
-        "text": [
-          "The iPad Mini (6th Gen) is equipped with the powerful A15 Bionic chip and Neural Engine, delivering fast and efficient performance. It can handle demanding tasks and graphics-intensive apps with ease, making it suitable for both work and play.",
-          "Experience smooth multitasking, immersive gaming, and seamless app usage on the iPad Mini."
-        ]
+        "title": {
+          "en": "A15 Bionic Chip and Neural Engine",
+          "ua": "Чіп A15 Bionic та Neural Engine"
+        },
+        "text": {
+          "en": "The iPad Mini (6th Gen) is equipped with the powerful A15 Bionic chip and Neural Engine, delivering fast and efficient performance. It can handle demanding tasks and graphics-intensive apps with ease, making it suitable for both work and play. Experience smooth multitasking, immersive gaming, and seamless app usage on the iPad Mini.",
+          "ua": "iPad Mini (6-го покоління) оснащений потужним чіпом A15 Bionic та Neural Engine, що забезпечує швидку та ефективну продуктивність. Він легко справляється з вимогливими завданнями та графічно-інтенсивними додатками, роблячи його придатним як для роботи, так і для розваг. Відчуйте плавну багатозадачність, захоплюючі ігри та безперебійну роботу додатків на iPad Mini."
+        }
       },
       {
-        "title": "Advanced Cameras and Center Stage",
-        "text": [
-          "Capture stunning photos and videos with the iPad Mini's advanced cameras. With a 12MP front camera and a 12MP rear camera, you can take high-quality shots and record impressive videos.",
-          "The iPad Mini also features Center Stage, a feature that automatically keeps you in frame during video calls, making your conversations more engaging and dynamic."
-        ]
+        "title": {
+          "en": "Advanced Cameras and Center Stage",
+          "ua": "Вдосконалені камери та Center Stage"
+        },
+        "text": {
+          "en": "Capture stunning photos and videos with the iPad Mini's advanced cameras. With a 12MP front camera and a 12MP rear camera, you can take high-quality shots and record impressive videos. The iPad Mini also features Center Stage, a feature that automatically keeps you in frame during video calls, making your conversations more engaging and dynamic.",
+          "ua": "Знімайте приголомшливі фотографії та відео за допомогою вдосконалених камер iPad Mini. Завдяки 12-мегапіксельній фронтальній камері та 12-мегапіксельній задній камері ви можете робити високоякісні знімки та записувати вражаючі відео. iPad Mini також має функцію Center Stage, яка автоматично тримає вас у кадрі під час відеодзвінків, роблячи ваші розмови більш цікавими та динамічними."
+        }
       }
     ],
     "screen": "8.3' Liquid Retina",
@@ -1012,25 +1201,34 @@
     ],
     "description": [
       {
-        "title": "Compact and Portable",
-        "text": [
-          "Experience the power of an iPad in a compact size with the Apple iPad Mini (6th Gen). With its 8.3-inch Liquid Retina display and slim design, it's perfect for on-the-go productivity and entertainment.",
-          "Whether you're reading, gaming, or watching videos, the iPad Mini delivers a stunning visual experience in a portable package."
-        ]
+        "title": {
+          "en": "Compact and Portable",
+          "ua": "Компактний та портативний"
+        },
+        "text": {
+          "en": "Experience the power of an iPad in a compact size with the Apple iPad Mini (6th Gen). With its 8.3-inch Liquid Retina display and slim design, it's perfect for on-the-go productivity and entertainment. Whether you're reading, gaming, or watching videos, the iPad Mini delivers a stunning visual experience in a portable package.",
+          "ua": "Відчуйте потужність iPad у компактному розмірі з Apple iPad Mini (6-го покоління). З його 8.3-дюймовим дисплеєм Liquid Retina та тонким дизайном він ідеально підходить для продуктивності та розваг у дорозі. Незалежно від того, чи читаєте ви, граєте в ігри або дивитеся відео, iPad Mini забезпечує приголомшливий візуальний досвід у портативному пакеті."
+        }
       },
       {
-        "title": "A15 Bionic Chip and Neural Engine",
-        "text": [
-          "The iPad Mini (6th Gen) is equipped with the powerful A15 Bionic chip and Neural Engine, delivering fast and efficient performance. It can handle demanding tasks and graphics-intensive apps with ease, making it suitable for both work and play.",
-          "Experience smooth multitasking, immersive gaming, and seamless app usage on the iPad Mini."
-        ]
+        "title": {
+          "en": "A15 Bionic Chip and Neural Engine",
+          "ua": "Чіп A15 Bionic та Neural Engine"
+        },
+        "text": {
+          "en": "The iPad Mini (6th Gen) is equipped with the powerful A15 Bionic chip and Neural Engine, delivering fast and efficient performance. It can handle demanding tasks and graphics-intensive apps with ease, making it suitable for both work and play. Experience smooth multitasking, immersive gaming, and seamless app usage on the iPad Mini.",
+          "ua": "iPad Mini (6-го покоління) оснащений потужним чіпом A15 Bionic та Neural Engine, що забезпечує швидку та ефективну продуктивність. Він легко справляється з вимогливими завданнями та графічно-інтенсивними додатками, роблячи його придатним як для роботи, так і для розваг. Відчуйте плавну багатозадачність, захоплюючі ігри та безперебійну роботу додатків на iPad Mini."
+        }
       },
       {
-        "title": "Advanced Cameras and Center Stage",
-        "text": [
-          "Capture stunning photos and videos with the iPad Mini's advanced cameras. With a 12MP front camera and a 12MP rear camera, you can take high-quality shots and record impressive videos.",
-          "The iPad Mini also features Center Stage, a feature that automatically keeps you in frame during video calls, making your conversations more engaging and dynamic."
-        ]
+        "title": {
+          "en": "Advanced Cameras and Center Stage",
+          "ua": "Вдосконалені камери та Center Stage"
+        },
+        "text": {
+          "en": "Capture stunning photos and videos with the iPad Mini's advanced cameras. With a 12MP front camera and a 12MP rear camera, you can take high-quality shots and record impressive videos. The iPad Mini also features Center Stage, a feature that automatically keeps you in frame during video calls, making your conversations more engaging and dynamic.",
+          "ua": "Знімайте приголомшливі фотографії та відео за допомогою вдосконалених камер iPad Mini. Завдяки 12-мегапіксельній фронтальній камері та 12-мегапіксельній задній камері ви можете робити високоякісні знімки та записувати вражаючі відео. iPad Mini також має функцію Center Stage, яка автоматично тримає вас у кадрі під час відеодзвінків, роблячи ваші розмови більш цікавими та динамічними."
+        }
       }
     ],
     "screen": "8.3' Liquid Retina",
@@ -1059,25 +1257,34 @@
     ],
     "description": [
       {
-        "title": "Compact and Portable",
-        "text": [
-          "Experience the power of an iPad in a compact size with the Apple iPad Mini (6th Gen). With its 8.3-inch Liquid Retina display and slim design, it's perfect for on-the-go productivity and entertainment.",
-          "Whether you're reading, gaming, or watching videos, the iPad Mini delivers a stunning visual experience in a portable package."
-        ]
+        "title": {
+          "en": "Compact and Portable",
+          "ua": "Компактний та портативний"
+        },
+        "text": {
+          "en": "Experience the power of an iPad in a compact size with the Apple iPad Mini (6th Gen). With its 8.3-inch Liquid Retina display and slim design, it's perfect for on-the-go productivity and entertainment. Whether you're reading, gaming, or watching videos, the iPad Mini delivers a stunning visual experience in a portable package.",
+          "ua": "Відчуйте потужність iPad у компактному розмірі з Apple iPad Mini (6-го покоління). З його 8.3-дюймовим дисплеєм Liquid Retina та тонким дизайном він ідеально підходить для продуктивності та розваг у дорозі. Незалежно від того, чи читаєте ви, граєте в ігри або дивитеся відео, iPad Mini забезпечує приголомшливий візуальний досвід у портативному пакеті."
+        }
       },
       {
-        "title": "A15 Bionic Chip and Neural Engine",
-        "text": [
-          "The iPad Mini (6th Gen) is equipped with the powerful A15 Bionic chip and Neural Engine, delivering fast and efficient performance. It can handle demanding tasks and graphics-intensive apps with ease, making it suitable for both work and play.",
-          "Experience smooth multitasking, immersive gaming, and seamless app usage on the iPad Mini."
-        ]
+        "title": {
+          "en": "A15 Bionic Chip and Neural Engine",
+          "ua": "Чіп A15 Bionic та Neural Engine"
+        },
+        "text": {
+          "en": "The iPad Mini (6th Gen) is equipped with the powerful A15 Bionic chip and Neural Engine, delivering fast and efficient performance. It can handle demanding tasks and graphics-intensive apps with ease, making it suitable for both work and play. Experience smooth multitasking, immersive gaming, and seamless app usage on the iPad Mini.",
+          "ua": "iPad Mini (6-го покоління) оснащений потужним чіпом A15 Bionic та Neural Engine, що забезпечує швидку та ефективну продуктивність. Він легко справляється з вимогливими завданнями та графічно-інтенсивними додатками, роблячи його придатним як для роботи, так і для розваг. Відчуйте плавну багатозадачність, захоплюючі ігри та безперебійну роботу додатків на iPad Mini."
+        }
       },
       {
-        "title": "Advanced Cameras and Center Stage",
-        "text": [
-          "Capture stunning photos and videos with the iPad Mini's advanced cameras. With a 12MP front camera and a 12MP rear camera, you can take high-quality shots and record impressive videos.",
-          "The iPad Mini also features Center Stage, a feature that automatically keeps you in frame during video calls, making your conversations more engaging and dynamic."
-        ]
+        "title": {
+          "en": "Advanced Cameras and Center Stage",
+          "ua": "Вдосконалені камери та Center Stage"
+        },
+        "text": {
+          "en": "Capture stunning photos and videos with the iPad Mini's advanced cameras. With a 12MP front camera and a 12MP rear camera, you can take high-quality shots and record impressive videos. The iPad Mini also features Center Stage, a feature that automatically keeps you in frame during video calls, making your conversations more engaging and dynamic.",
+          "ua": "Знімайте приголомшливі фотографії та відео за допомогою вдосконалених камер iPad Mini. Завдяки 12-мегапіксельній фронтальній камері та 12-мегапіксельній задній камері ви можете робити високоякісні знімки та записувати вражаючі відео. iPad Mini також має функцію Center Stage, яка автоматично тримає вас у кадрі під час відеодзвінків, роблячи ваші розмови більш цікавими та динамічними."
+        }
       }
     ],
     "screen": "8.3' Liquid Retina",
@@ -1106,25 +1313,34 @@
     ],
     "description": [
       {
-        "title": "Compact and Portable",
-        "text": [
-          "Experience the power of an iPad in a compact size with the Apple iPad Mini (6th Gen). With its 8.3-inch Liquid Retina display and slim design, it's perfect for on-the-go productivity and entertainment.",
-          "Whether you're reading, gaming, or watching videos, the iPad Mini delivers a stunning visual experience in a portable package."
-        ]
+        "title": {
+          "en": "Compact and Portable",
+          "ua": "Компактний та портативний"
+        },
+        "text": {
+          "en": "Experience the power of an iPad in a compact size with the Apple iPad Mini (6th Gen). With its 8.3-inch Liquid Retina display and slim design, it's perfect for on-the-go productivity and entertainment. Whether you're reading, gaming, or watching videos, the iPad Mini delivers a stunning visual experience in a portable package.",
+          "ua": "Відчуйте потужність iPad у компактному розмірі з Apple iPad Mini (6-го покоління). З його 8.3-дюймовим дисплеєм Liquid Retina та тонким дизайном він ідеально підходить для продуктивності та розваг у дорозі. Незалежно від того, чи читаєте ви, граєте в ігри або дивитеся відео, iPad Mini забезпечує приголомшливий візуальний досвід у портативному пакеті."
+        }
       },
       {
-        "title": "A15 Bionic Chip and Neural Engine",
-        "text": [
-          "The iPad Mini (6th Gen) is equipped with the powerful A15 Bionic chip and Neural Engine, delivering fast and efficient performance. It can handle demanding tasks and graphics-intensive apps with ease, making it suitable for both work and play.",
-          "Experience smooth multitasking, immersive gaming, and seamless app usage on the iPad Mini."
-        ]
+        "title": {
+          "en": "A15 Bionic Chip and Neural Engine",
+          "ua": "Чіп A15 Bionic та Neural Engine"
+        },
+        "text": {
+          "en": "The iPad Mini (6th Gen) is equipped with the powerful A15 Bionic chip and Neural Engine, delivering fast and efficient performance. It can handle demanding tasks and graphics-intensive apps with ease, making it suitable for both work and play. Experience smooth multitasking, immersive gaming, and seamless app usage on the iPad Mini.",
+          "ua": "iPad Mini (6-го покоління) оснащений потужним чіпом A15 Bionic та Neural Engine, що забезпечує швидку та ефективну продуктивність. Він легко справляється з вимогливими завданнями та графічно-інтенсивними додатками, роблячи його придатним як для роботи, так і для розваг. Відчуйте плавну багатозадачність, захоплюючі ігри та безперебійну роботу додатків на iPad Mini."
+        }
       },
       {
-        "title": "Advanced Cameras and Center Stage",
-        "text": [
-          "Capture stunning photos and videos with the iPad Mini's advanced cameras. With a 12MP front camera and a 12MP rear camera, you can take high-quality shots and record impressive videos.",
-          "The iPad Mini also features Center Stage, a feature that automatically keeps you in frame during video calls, making your conversations more engaging and dynamic."
-        ]
+        "title": {
+          "en": "Advanced Cameras and Center Stage",
+          "ua": "Вдосконалені камери та Center Stage"
+        },
+        "text": {
+          "en": "Capture stunning photos and videos with the iPad Mini's advanced cameras. With a 12MP front camera and a 12MP rear camera, you can take high-quality shots and record impressive videos. The iPad Mini also features Center Stage, a feature that automatically keeps you in frame during video calls, making your conversations more engaging and dynamic.",
+          "ua": "Знімайте приголомшливі фотографії та відео за допомогою вдосконалених камер iPad Mini. Завдяки 12-мегапіксельній фронтальній камері та 12-мегапіксельній задній камері ви можете робити високоякісні знімки та записувати вражаючі відео. iPad Mini також має функцію Center Stage, яка автоматично тримає вас у кадрі під час відеодзвінків, роблячи ваші розмови більш цікавими та динамічними."
+        }
       }
     ],
     "screen": "8.3' Liquid Retina",
@@ -1154,25 +1370,34 @@
     ],
     "description": [
       {
-        "title": "Versatile and Affordable",
-        "text": [
-          "The Apple iPad 10.2 (2020) offers a versatile and affordable option for everyday tasks and entertainment. Whether you're browsing the web, streaming content, or using productivity apps, it delivers a smooth and responsive experience.",
-          "With its large 10.2-inch Retina display, it provides a great viewing experience for all your content."
-        ]
+        "title": {
+          "en": "Versatile and Affordable",
+          "ua": "Універсальний та доступний"
+        },
+        "text": {
+          "en": "The Apple iPad 10.2 (2020) offers a versatile and affordable option for everyday tasks and entertainment. Whether you're browsing the web, streaming content, or using productivity apps, it delivers a smooth and responsive experience. With its large 10.2-inch Retina display, it provides a great viewing experience for all your content.",
+          "ua": "Apple iPad 10.2 (2020) пропонує універсальний та доступний варіант для щоденних завдань та розваг. Незалежно від того, чи переглядаєте ви веб-сторінки, транслюєте контент або використовуєте продуктивні додатки, він забезпечує плавний та чутливий досвід. Завдяки великому 10.2-дюймовому дисплею Retina, він забезпечує чудовий перегляд усього вашого контенту."
+        }
       },
       {
-        "title": "Powerful Performance",
-        "text": [
-          "Experience powerful performance with the iPad 10.2's A12 Bionic chip. It enables fast and efficient multitasking, allowing you to run multiple apps smoothly and seamlessly.",
-          "From gaming to editing documents, the iPad 10.2 can handle it all with ease."
-        ]
+        "title": {
+          "en": "Powerful Performance",
+          "ua": "Потужна продуктивність"
+        },
+        "text": {
+          "en": "Experience powerful performance with the iPad 10.2's A12 Bionic chip. It enables fast and efficient multitasking, allowing you to run multiple apps smoothly and seamlessly. From gaming to editing documents, the iPad 10.2 can handle it all with ease.",
+          "ua": "Відчуйте потужну продуктивність завдяки чіпу A12 Bionic в iPad 10.2. Він забезпечує швидку та ефективну багатозадачність, дозволяючи плавно та безперебійно запускати кілька додатків. Від ігор до редагування документів, iPad 10.2 легко справляється з усіма завданнями."
+        }
       },
       {
-        "title": "Apple Pencil and Smart Keyboard Support",
-        "text": [
-          "Unlock your creativity and productivity with Apple Pencil and Smart Keyboard support. Take notes, draw, and sketch with precision using the Apple Pencil (1st generation), and transform your iPad into a lightweight laptop with the Smart Keyboard.",
-          "The iPad 10.2 adapts to your needs, whether you're a student, professional, or creative artist."
-        ]
+        "title": {
+          "en": "Apple Pencil and Smart Keyboard Support",
+          "ua": "Підтримка Apple Pencil та Smart Keyboard"
+        },
+        "text": {
+          "en": "Unlock your creativity and productivity with Apple Pencil and Smart Keyboard support. Take notes, draw, and sketch with precision using the Apple Pencil (1st generation), and transform your iPad into a lightweight laptop with the Smart Keyboard. The iPad 10.2 adapts to your needs, whether you're a student, professional, or creative artist.",
+          "ua": "Розкрийте свою креативність та продуктивність завдяки підтримці Apple Pencil та Smart Keyboard. Робіть нотатки, малюйте та створюйте ескізи з точністю за допомогою Apple Pencil (1-го покоління) та перетворюйте свій iPad на легкий ноутбук за допомогою Smart Keyboard. iPad 10.2 адаптується до ваших потреб, незалежно від того, чи ви студент, професіонал або творчий художник."
+        }
       }
     ],
     "screen": "10.2' Retina",
@@ -1202,25 +1427,34 @@
     ],
     "description": [
       {
-        "title": "Versatile and Affordable",
-        "text": [
-          "The Apple iPad 10.2 (2020) offers a versatile and affordable option for everyday tasks and entertainment. Whether you're browsing the web, streaming content, or using productivity apps, it delivers a smooth and responsive experience.",
-          "With its large 10.2-inch Retina display, it provides a great viewing experience for all your content."
-        ]
+        "title": {
+          "en": "Versatile and Affordable",
+          "ua": "Універсальний та доступний"
+        },
+        "text": {
+          "en": "The Apple iPad 10.2 (2020) offers a versatile and affordable option for everyday tasks and entertainment. Whether you're browsing the web, streaming content, or using productivity apps, it delivers a smooth and responsive experience. With its large 10.2-inch Retina display, it provides a great viewing experience for all your content.",
+          "ua": "Apple iPad 10.2 (2020) пропонує універсальний та доступний варіант для щоденних завдань та розваг. Незалежно від того, чи переглядаєте ви веб-сторінки, транслюєте контент або використовуєте продуктивні додатки, він забезпечує плавний та чутливий досвід. Завдяки великому 10.2-дюймовому дисплею Retina, він забезпечує чудовий перегляд усього вашого контенту."
+        }
       },
       {
-        "title": "Powerful Performance",
-        "text": [
-          "Experience powerful performance with the iPad 10.2's A12 Bionic chip. It enables fast and efficient multitasking, allowing you to run multiple apps smoothly and seamlessly.",
-          "From gaming to editing documents, the iPad 10.2 can handle it all with ease."
-        ]
+        "title": {
+          "en": "Powerful Performance",
+          "ua": "Потужна продуктивність"
+        },
+        "text": {
+          "en": "Experience powerful performance with the iPad 10.2's A12 Bionic chip. It enables fast and efficient multitasking, allowing you to run multiple apps smoothly and seamlessly. From gaming to editing documents, the iPad 10.2 can handle it all with ease.",
+          "ua": "Відчуйте потужну продуктивність завдяки чіпу A12 Bionic в iPad 10.2. Він забезпечує швидку та ефективну багатозадачність, дозволяючи плавно та безперебійно запускати кілька додатків. Від ігор до редагування документів, iPad 10.2 легко справляється з усіма завданнями."
+        }
       },
       {
-        "title": "Apple Pencil and Smart Keyboard Support",
-        "text": [
-          "Unlock your creativity and productivity with Apple Pencil and Smart Keyboard support. Take notes, draw, and sketch with precision using the Apple Pencil (1st generation), and transform your iPad into a lightweight laptop with the Smart Keyboard.",
-          "The iPad 10.2 adapts to your needs, whether you're a student, professional, or creative artist."
-        ]
+        "title": {
+          "en": "Apple Pencil and Smart Keyboard Support",
+          "ua": "Підтримка Apple Pencil та Smart Keyboard"
+        },
+        "text": {
+          "en": "Unlock your creativity and productivity with Apple Pencil and Smart Keyboard support. Take notes, draw, and sketch with precision using the Apple Pencil (1st generation), and transform your iPad into a lightweight laptop with the Smart Keyboard. The iPad 10.2 adapts to your needs, whether you're a student, professional, or creative artist.",
+          "ua": "Розкрийте свою креативність та продуктивність завдяки підтримці Apple Pencil та Smart Keyboard. Робіть нотатки, малюйте та створюйте ескізи з точністю за допомогою Apple Pencil (1-го покоління) та перетворюйте свій iPad на легкий ноутбук за допомогою Smart Keyboard. iPad 10.2 адаптується до ваших потреб, незалежно від того, чи ви студент, професіонал або творчий художник."
+        }
       }
     ],
     "screen": "10.2' Retina",
@@ -1250,25 +1484,34 @@
     ],
     "description": [
       {
-        "title": "Versatile and Affordable",
-        "text": [
-          "The Apple iPad 10.2 (2020) offers a versatile and affordable option for everyday tasks and entertainment. Whether you're browsing the web, streaming content, or using productivity apps, it delivers a smooth and responsive experience.",
-          "With its large 10.2-inch Retina display, it provides a great viewing experience for all your content."
-        ]
+        "title": {
+          "en": "Versatile and Affordable",
+          "ua": "Універсальний та доступний"
+        },
+        "text": {
+          "en": "The Apple iPad 10.2 (2020) offers a versatile and affordable option for everyday tasks and entertainment. Whether you're browsing the web, streaming content, or using productivity apps, it delivers a smooth and responsive experience. With its large 10.2-inch Retina display, it provides a great viewing experience for all your content.",
+          "ua": "Apple iPad 10.2 (2020) пропонує універсальний та доступний варіант для щоденних завдань та розваг. Незалежно від того, чи переглядаєте ви веб-сторінки, транслюєте контент або використовуєте продуктивні додатки, він забезпечує плавний та чутливий досвід. Завдяки великому 10.2-дюймовому дисплею Retina, він забезпечує чудовий перегляд усього вашого контенту."
+        }
       },
       {
-        "title": "Powerful Performance",
-        "text": [
-          "Experience powerful performance with the iPad 10.2's A12 Bionic chip. It enables fast and efficient multitasking, allowing you to run multiple apps smoothly and seamlessly.",
-          "From gaming to editing documents, the iPad 10.2 can handle it all with ease."
-        ]
+        "title": {
+          "en": "Powerful Performance",
+          "ua": "Потужна продуктивність"
+        },
+        "text": {
+          "en": "Experience powerful performance with the iPad 10.2's A12 Bionic chip. It enables fast and efficient multitasking, allowing you to run multiple apps smoothly and seamlessly. From gaming to editing documents, the iPad 10.2 can handle it all with ease.",
+          "ua": "Відчуйте потужну продуктивність завдяки чіпу A12 Bionic в iPad 10.2. Він забезпечує швидку та ефективну багатозадачність, дозволяючи плавно та безперебійно запускати кілька додатків. Від ігор до редагування документів, iPad 10.2 легко справляється з усіма завданнями."
+        }
       },
       {
-        "title": "Apple Pencil and Smart Keyboard Support",
-        "text": [
-          "Unlock your creativity and productivity with Apple Pencil and Smart Keyboard support. Take notes, draw, and sketch with precision using the Apple Pencil (1st generation), and transform your iPad into a lightweight laptop with the Smart Keyboard.",
-          "The iPad 10.2 adapts to your needs, whether you're a student, professional, or creative artist."
-        ]
+        "title": {
+          "en": "Apple Pencil and Smart Keyboard Support",
+          "ua": "Підтримка Apple Pencil та Smart Keyboard"
+        },
+        "text": {
+          "en": "Unlock your creativity and productivity with Apple Pencil and Smart Keyboard support. Take notes, draw, and sketch with precision using the Apple Pencil (1st generation), and transform your iPad into a lightweight laptop with the Smart Keyboard. The iPad 10.2 adapts to your needs, whether you're a student, professional, or creative artist.",
+          "ua": "Розкрийте свою креативність та продуктивність завдяки підтримці Apple Pencil та Smart Keyboard. Робіть нотатки, малюйте та створюйте ескізи з точністю за допомогою Apple Pencil (1-го покоління) та перетворюйте свій iPad на легкий ноутбук за допомогою Smart Keyboard. iPad 10.2 адаптується до ваших потреб, незалежно від того, чи ви студент, професіонал або творчий художник."
+        }
       }
     ],
     "screen": "10.2' Retina",
@@ -1298,25 +1541,34 @@
     ],
     "description": [
       {
-        "title": "Versatile and Affordable",
-        "text": [
-          "The Apple iPad 10.2 (2020) offers a versatile and affordable option for everyday tasks and entertainment. Whether you're browsing the web, streaming content, or using productivity apps, it delivers a smooth and responsive experience.",
-          "With its large 10.2-inch Retina display, it provides a great viewing experience for all your content."
-        ]
+        "title": {
+          "en": "Versatile and Affordable",
+          "ua": "Універсальний та доступний"
+        },
+        "text": {
+          "en": "The Apple iPad 10.2 (2020) offers a versatile and affordable option for everyday tasks and entertainment. Whether you're browsing the web, streaming content, or using productivity apps, it delivers a smooth and responsive experience. With its large 10.2-inch Retina display, it provides a great viewing experience for all your content.",
+          "ua": "Apple iPad 10.2 (2020) пропонує універсальний та доступний варіант для щоденних завдань та розваг. Незалежно від того, чи переглядаєте ви веб-сторінки, транслюєте контент або використовуєте продуктивні додатки, він забезпечує плавний та чутливий досвід. Завдяки великому 10.2-дюймовому дисплею Retina, він забезпечує чудовий перегляд усього вашого контенту."
+        }
       },
       {
-        "title": "Powerful Performance",
-        "text": [
-          "Experience powerful performance with the iPad 10.2's A12 Bionic chip. It enables fast and efficient multitasking, allowing you to run multiple apps smoothly and seamlessly.",
-          "From gaming to editing documents, the iPad 10.2 can handle it all with ease."
-        ]
+        "title": {
+          "en": "Powerful Performance",
+          "ua": "Потужна продуктивність"
+        },
+        "text": {
+          "en": "Experience powerful performance with the iPad 10.2's A12 Bionic chip. It enables fast and efficient multitasking, allowing you to run multiple apps smoothly and seamlessly. From gaming to editing documents, the iPad 10.2 can handle it all with ease.",
+          "ua": "Відчуйте потужну продуктивність завдяки чіпу A12 Bionic в iPad 10.2. Він забезпечує швидку та ефективну багатозадачність, дозволяючи плавно та безперебійно запускати кілька додатків. Від ігор до редагування документів, iPad 10.2 легко справляється з усіма завданнями."
+        }
       },
       {
-        "title": "Apple Pencil and Smart Keyboard Support",
-        "text": [
-          "Unlock your creativity and productivity with Apple Pencil and Smart Keyboard support. Take notes, draw, and sketch with precision using the Apple Pencil (1st generation), and transform your iPad into a lightweight laptop with the Smart Keyboard.",
-          "The iPad 10.2 adapts to your needs, whether you're a student, professional, or creative artist."
-        ]
+        "title": {
+          "en": "Apple Pencil and Smart Keyboard Support",
+          "ua": "Підтримка Apple Pencil та Smart Keyboard"
+        },
+        "text": {
+          "en": "Unlock your creativity and productivity with Apple Pencil and Smart Keyboard support. Take notes, draw, and sketch with precision using the Apple Pencil (1st generation), and transform your iPad into a lightweight laptop with the Smart Keyboard. The iPad 10.2 adapts to your needs, whether you're a student, professional, or creative artist.",
+          "ua": "Розкрийте свою креативність та продуктивність завдяки підтримці Apple Pencil та Smart Keyboard. Робіть нотатки, малюйте та створюйте ескізи з точністю за допомогою Apple Pencil (1-го покоління) та перетворюйте свій iPad на легкий ноутбук за допомогою Smart Keyboard. iPad 10.2 адаптується до ваших потреб, незалежно від того, чи ви студент, професіонал або творчий художник."
+        }
       }
     ],
     "screen": "10.2' Retina",
@@ -1346,25 +1598,34 @@
     ],
     "description": [
       {
-        "title": "Versatile and Affordable",
-        "text": [
-          "The Apple iPad 10.2 (2020) offers a versatile and affordable option for everyday tasks and entertainment. Whether you're browsing the web, streaming content, or using productivity apps, it delivers a smooth and responsive experience.",
-          "With its large 10.2-inch Retina display, it provides a great viewing experience for all your content."
-        ]
+        "title": {
+          "en": "Versatile and Affordable",
+          "ua": "Універсальний та доступний"
+        },
+        "text": {
+          "en": "The Apple iPad 10.2 (2020) offers a versatile and affordable option for everyday tasks and entertainment. Whether you're browsing the web, streaming content, or using productivity apps, it delivers a smooth and responsive experience. With its large 10.2-inch Retina display, it provides a great viewing experience for all your content.",
+          "ua": "Apple iPad 10.2 (2020) пропонує універсальний та доступний варіант для щоденних завдань та розваг. Незалежно від того, чи переглядаєте ви веб-сторінки, транслюєте контент або використовуєте продуктивні додатки, він забезпечує плавний та чутливий досвід. Завдяки великому 10.2-дюймовому дисплею Retina, він забезпечує чудовий перегляд усього вашого контенту."
+        }
       },
       {
-        "title": "Powerful Performance",
-        "text": [
-          "Experience powerful performance with the iPad 10.2's A12 Bionic chip. It enables fast and efficient multitasking, allowing you to run multiple apps smoothly and seamlessly.",
-          "From gaming to editing documents, the iPad 10.2 can handle it all with ease."
-        ]
+        "title": {
+          "en": "Powerful Performance",
+          "ua": "Потужна продуктивність"
+        },
+        "text": {
+          "en": "Experience powerful performance with the iPad 10.2's A12 Bionic chip. It enables fast and efficient multitasking, allowing you to run multiple apps smoothly and seamlessly. From gaming to editing documents, the iPad 10.2 can handle it all with ease.",
+          "ua": "Відчуйте потужну продуктивність завдяки чіпу A12 Bionic в iPad 10.2. Він забезпечує швидку та ефективну багатозадачність, дозволяючи плавно та безперебійно запускати кілька додатків. Від ігор до редагування документів, iPad 10.2 легко справляється з усіма завданнями."
+        }
       },
       {
-        "title": "Apple Pencil and Smart Keyboard Support",
-        "text": [
-          "Unlock your creativity and productivity with Apple Pencil and Smart Keyboard support. Take notes, draw, and sketch with precision using the Apple Pencil (1st generation), and transform your iPad into a lightweight laptop with the Smart Keyboard.",
-          "The iPad 10.2 adapts to your needs, whether you're a student, professional, or creative artist."
-        ]
+        "title": {
+          "en": "Apple Pencil and Smart Keyboard Support",
+          "ua": "Підтримка Apple Pencil та Smart Keyboard"
+        },
+        "text": {
+          "en": "Unlock your creativity and productivity with Apple Pencil and Smart Keyboard support. Take notes, draw, and sketch with precision using the Apple Pencil (1st generation), and transform your iPad into a lightweight laptop with the Smart Keyboard. The iPad 10.2 adapts to your needs, whether you're a student, professional, or creative artist.",
+          "ua": "Розкрийте свою креативність та продуктивність завдяки підтримці Apple Pencil та Smart Keyboard. Робіть нотатки, малюйте та створюйте ескізи з точністю за допомогою Apple Pencil (1-го покоління) та перетворюйте свій iPad на легкий ноутбук за допомогою Smart Keyboard. iPad 10.2 адаптується до ваших потреб, незалежно від того, чи ви студент, професіонал або творчий художник."
+        }
       }
     ],
     "screen": "10.2' Retina",
@@ -1394,25 +1655,34 @@
     ],
     "description": [
       {
-        "title": "Versatile and Affordable",
-        "text": [
-          "The Apple iPad 10.2 (2020) offers a versatile and affordable option for everyday tasks and entertainment. Whether you're browsing the web, streaming content, or using productivity apps, it delivers a smooth and responsive experience.",
-          "With its large 10.2-inch Retina display, it provides a great viewing experience for all your content."
-        ]
+        "title": {
+          "en": "Versatile and Affordable",
+          "ua": "Універсальний та доступний"
+        },
+        "text": {
+          "en": "The Apple iPad 10.2 (2020) offers a versatile and affordable option for everyday tasks and entertainment. Whether you're browsing the web, streaming content, or using productivity apps, it delivers a smooth and responsive experience. With its large 10.2-inch Retina display, it provides a great viewing experience for all your content.",
+          "ua": "Apple iPad 10.2 (2020) пропонує універсальний та доступний варіант для щоденних завдань та розваг. Незалежно від того, чи переглядаєте ви веб-сторінки, транслюєте контент або використовуєте продуктивні додатки, він забезпечує плавний та чутливий досвід. Завдяки великому 10.2-дюймовому дисплею Retina, він забезпечує чудовий перегляд усього вашого контенту."
+        }
       },
       {
-        "title": "Powerful Performance",
-        "text": [
-          "Experience powerful performance with the iPad 10.2's A12 Bionic chip. It enables fast and efficient multitasking, allowing you to run multiple apps smoothly and seamlessly.",
-          "From gaming to editing documents, the iPad 10.2 can handle it all with ease."
-        ]
+        "title": {
+          "en": "Powerful Performance",
+          "ua": "Потужна продуктивність"
+        },
+        "text": {
+          "en": "Experience powerful performance with the iPad 10.2's A12 Bionic chip. It enables fast and efficient multitasking, allowing you to run multiple apps smoothly and seamlessly. From gaming to editing documents, the iPad 10.2 can handle it all with ease.",
+          "ua": "Відчуйте потужну продуктивність завдяки чіпу A12 Bionic в iPad 10.2. Він забезпечує швидку та ефективну багатозадачність, дозволяючи плавно та безперебійно запускати кілька додатків. Від ігор до редагування документів, iPad 10.2 легко справляється з усіма завданнями."
+        }
       },
       {
-        "title": "Apple Pencil and Smart Keyboard Support",
-        "text": [
-          "Unlock your creativity and productivity with Apple Pencil and Smart Keyboard support. Take notes, draw, and sketch with precision using the Apple Pencil (1st generation), and transform your iPad into a lightweight laptop with the Smart Keyboard.",
-          "The iPad 10.2 adapts to your needs, whether you're a student, professional, or creative artist."
-        ]
+        "title": {
+          "en": "Apple Pencil and Smart Keyboard Support",
+          "ua": "Підтримка Apple Pencil та Smart Keyboard"
+        },
+        "text": {
+          "en": "Unlock your creativity and productivity with Apple Pencil and Smart Keyboard support. Take notes, draw, and sketch with precision using the Apple Pencil (1st generation), and transform your iPad into a lightweight laptop with the Smart Keyboard. The iPad 10.2 adapts to your needs, whether you're a student, professional, or creative artist.",
+          "ua": "Розкрийте свою креативність та продуктивність завдяки підтримці Apple Pencil та Smart Keyboard. Робіть нотатки, малюйте та створюйте ескізи з точністю за допомогою Apple Pencil (1-го покоління) та перетворюйте свій iPad на легкий ноутбук за допомогою Smart Keyboard. iPad 10.2 адаптується до ваших потреб, незалежно від того, чи ви студент, професіонал або творчий художник."
+        }
       }
     ],
     "screen": "10.2' Retina",
@@ -1440,25 +1710,34 @@
     ],
     "description": [
       {
-        "title": "Compact and Powerful",
-        "text": [
-          "The Apple iPad Mini (5th Gen) packs a punch with its compact size and powerful performance. Whether you're on the go or at home, it's perfect for productivity, entertainment, and creativity.",
-          "With its A12 Bionic chip, the iPad Mini delivers fast and efficient performance, allowing you to run demanding apps and games smoothly."
-        ]
+        "title": {
+          "en": "Compact and Powerful",
+          "ua": "Компактний та потужний"
+        },
+        "text": {
+          "en": "The Apple iPad Mini (5th Gen) packs a punch with its compact size and powerful performance. Whether you're on the go or at home, it's perfect for productivity, entertainment, and creativity. With its A12 Bionic chip, the iPad Mini delivers fast and efficient performance, allowing you to run demanding apps and games smoothly.",
+          "ua": "Apple iPad Mini (5-го покоління) поєднує компактний розмір і потужну продуктивність. Незалежно від того, чи ви в дорозі, чи вдома, він ідеально підходить для продуктивності, розваг та творчості. Завдяки чіпу A12 Bionic, iPad Mini забезпечує швидку та ефективну продуктивність, дозволяючи запускати вимогливі додатки та ігри безперешкодно."
+        }
       },
       {
-        "title": "Retina Display and True Tone",
-        "text": [
-          "Experience stunning visuals on the iPad Mini's Retina display. With True Tone technology, it adjusts the display's color temperature to match the ambient lighting, providing a natural and comfortable viewing experience.",
-          "From reading ebooks to browsing photos, the iPad Mini's display brings content to life with vibrant colors and sharp details."
-        ]
+        "title": {
+          "en": "Retina Display and True Tone",
+          "ua": "Дисплей Retina та True Tone"
+        },
+        "text": {
+          "en": "Experience stunning visuals on the iPad Mini's Retina display. With True Tone technology, it adjusts the display's color temperature to match the ambient lighting, providing a natural and comfortable viewing experience. From reading ebooks to browsing photos, the iPad Mini's display brings content to life with vibrant colors and sharp details.",
+          "ua": "Насолоджуйтесь приголомшливими візуальними ефектами на дисплеї Retina iPad Mini. Завдяки технології True Tone, дисплей підлаштовує колірну температуру до освітлення, забезпечуючи природний та комфортний досвід перегляду. Від читання електронних книг до перегляду фотографій, дисплей iPad Mini оживляє контент яскравими кольорами та чіткими деталями."
+        }
       },
       {
-        "title": "Apple Pencil and Smart Keyboard Support",
-        "text": [
-          "Unlock your creativity and productivity with Apple Pencil and Smart Keyboard support. Take notes, sketch, and annotate documents with precision using the Apple Pencil (1st generation), and turn your iPad Mini into a versatile workstation with the Smart Keyboard.",
-          "The iPad Mini adapts to your needs, making it a powerful tool for both work and play."
-        ]
+        "title": {
+          "en": "Apple Pencil and Smart Keyboard Support",
+          "ua": "Підтримка Apple Pencil та Smart Keyboard"
+        },
+        "text": {
+          "en": "Unlock your creativity and productivity with Apple Pencil and Smart Keyboard support. Take notes, sketch, and annotate documents with precision using the Apple Pencil (1st generation), and turn your iPad Mini into a versatile workstation with the Smart Keyboard. The iPad Mini adapts to your needs, making it a powerful tool for both work and play.",
+          "ua": "Розкрийте свою креативність та продуктивність завдяки підтримці Apple Pencil та Smart Keyboard. Робіть нотатки, малюйте та створюйте ескізи з точністю за допомогою Apple Pencil (1-го покоління) та перетворіть свій iPad Mini на універсальну робочу станцію з Smart Keyboard. iPad Mini адаптується до ваших потреб, роблячи його потужним інструментом для роботи та розваг."
+        }
       }
     ],
     "screen": "7.9' Retina",
@@ -1486,25 +1765,34 @@
     ],
     "description": [
       {
-        "title": "Compact and Powerful",
-        "text": [
-          "The Apple iPad Mini (5th Gen) packs a punch with its compact size and powerful performance. Whether you're on the go or at home, it's perfect for productivity, entertainment, and creativity.",
-          "With its A12 Bionic chip, the iPad Mini delivers fast and efficient performance, allowing you to run demanding apps and games smoothly."
-        ]
+        "title": {
+          "en": "Compact and Powerful",
+          "ua": "Компактний та потужний"
+        },
+        "text": {
+          "en": "The Apple iPad Mini (5th Gen) packs a punch with its compact size and powerful performance. Whether you're on the go or at home, it's perfect for productivity, entertainment, and creativity. With its A12 Bionic chip, the iPad Mini delivers fast and efficient performance, allowing you to run demanding apps and games smoothly.",
+          "ua": "Apple iPad Mini (5-го покоління) поєднує компактний розмір і потужну продуктивність. Незалежно від того, чи ви в дорозі, чи вдома, він ідеально підходить для продуктивності, розваг та творчості. Завдяки чіпу A12 Bionic, iPad Mini забезпечує швидку та ефективну продуктивність, дозволяючи запускати вимогливі додатки та ігри безперешкодно."
+        }
       },
       {
-        "title": "Retina Display and True Tone",
-        "text": [
-          "Experience stunning visuals on the iPad Mini's Retina display. With True Tone technology, it adjusts the display's color temperature to match the ambient lighting, providing a natural and comfortable viewing experience.",
-          "From reading ebooks to browsing photos, the iPad Mini's display brings content to life with vibrant colors and sharp details."
-        ]
+        "title": {
+          "en": "Retina Display and True Tone",
+          "ua": "Дисплей Retina та True Tone"
+        },
+        "text": {
+          "en": "Experience stunning visuals on the iPad Mini's Retina display. With True Tone technology, it adjusts the display's color temperature to match the ambient lighting, providing a natural and comfortable viewing experience. From reading ebooks to browsing photos, the iPad Mini's display brings content to life with vibrant colors and sharp details.",
+          "ua": "Насолоджуйтесь приголомшливими візуальними ефектами на дисплеї Retina iPad Mini. Завдяки технології True Tone, дисплей підлаштовує колірну температуру до освітлення, забезпечуючи природний та комфортний досвід перегляду. Від читання електронних книг до перегляду фотографій, дисплей iPad Mini оживляє контент яскравими кольорами та чіткими деталями."
+        }
       },
       {
-        "title": "Apple Pencil and Smart Keyboard Support",
-        "text": [
-          "Unlock your creativity and productivity with Apple Pencil and Smart Keyboard support. Take notes, sketch, and annotate documents with precision using the Apple Pencil (1st generation), and turn your iPad Mini into a versatile workstation with the Smart Keyboard.",
-          "The iPad Mini adapts to your needs, making it a powerful tool for both work and play."
-        ]
+        "title": {
+          "en": "Apple Pencil and Smart Keyboard Support",
+          "ua": "Підтримка Apple Pencil та Smart Keyboard"
+        },
+        "text": {
+          "en": "Unlock your creativity and productivity with Apple Pencil and Smart Keyboard support. Take notes, sketch, and annotate documents with precision using the Apple Pencil (1st generation), and turn your iPad Mini into a versatile workstation with the Smart Keyboard. The iPad Mini adapts to your needs, making it a powerful tool for both work and play.",
+          "ua": "Розкрийте свою креативність та продуктивність завдяки підтримці Apple Pencil та Smart Keyboard. Робіть нотатки, малюйте та створюйте ескізи з точністю за допомогою Apple Pencil (1-го покоління) та перетворіть свій iPad Mini на універсальну робочу станцію з Smart Keyboard. iPad Mini адаптується до ваших потреб, роблячи його потужним інструментом для роботи та розваг."
+        }
       }
     ],
     "screen": "7.9' Retina",
@@ -1532,25 +1820,34 @@
     ],
     "description": [
       {
-        "title": "Compact and Powerful",
-        "text": [
-          "The Apple iPad Mini (5th Gen) packs a punch with its compact size and powerful performance. Whether you're on the go or at home, it's perfect for productivity, entertainment, and creativity.",
-          "With its A12 Bionic chip, the iPad Mini delivers fast and efficient performance, allowing you to run demanding apps and games smoothly."
-        ]
+        "title": {
+          "en": "Compact and Powerful",
+          "ua": "Компактний та потужний"
+        },
+        "text": {
+          "en": "The Apple iPad Mini (5th Gen) packs a punch with its compact size and powerful performance. Whether you're on the go or at home, it's perfect for productivity, entertainment, and creativity. With its A12 Bionic chip, the iPad Mini delivers fast and efficient performance, allowing you to run demanding apps and games smoothly.",
+          "ua": "Apple iPad Mini (5-го покоління) поєднує компактний розмір і потужну продуктивність. Незалежно від того, чи ви в дорозі, чи вдома, він ідеально підходить для продуктивності, розваг та творчості. Завдяки чіпу A12 Bionic, iPad Mini забезпечує швидку та ефективну продуктивність, дозволяючи запускати вимогливі додатки та ігри безперешкодно."
+        }
       },
       {
-        "title": "Retina Display and True Tone",
-        "text": [
-          "Experience stunning visuals on the iPad Mini's Retina display. With True Tone technology, it adjusts the display's color temperature to match the ambient lighting, providing a natural and comfortable viewing experience.",
-          "From reading ebooks to browsing photos, the iPad Mini's display brings content to life with vibrant colors and sharp details."
-        ]
+        "title": {
+          "en": "Retina Display and True Tone",
+          "ua": "Дисплей Retina та True Tone"
+        },
+        "text": {
+          "en": "Experience stunning visuals on the iPad Mini's Retina display. With True Tone technology, it adjusts the display's color temperature to match the ambient lighting, providing a natural and comfortable viewing experience. From reading ebooks to browsing photos, the iPad Mini's display brings content to life with vibrant colors and sharp details.",
+          "ua": "Насолоджуйтесь приголомшливими візуальними ефектами на дисплеї Retina iPad Mini. Завдяки технології True Tone, дисплей підлаштовує колірну температуру до освітлення, забезпечуючи природний та комфортний досвід перегляду. Від читання електронних книг до перегляду фотографій, дисплей iPad Mini оживляє контент яскравими кольорами та чіткими деталями."
+        }
       },
       {
-        "title": "Apple Pencil and Smart Keyboard Support",
-        "text": [
-          "Unlock your creativity and productivity with Apple Pencil and Smart Keyboard support. Take notes, sketch, and annotate documents with precision using the Apple Pencil (1st generation), and turn your iPad Mini into a versatile workstation with the Smart Keyboard.",
-          "The iPad Mini adapts to your needs, making it a powerful tool for both work and play."
-        ]
+        "title": {
+          "en": "Apple Pencil and Smart Keyboard Support",
+          "ua": "Підтримка Apple Pencil та Smart Keyboard"
+        },
+        "text": {
+          "en": "Unlock your creativity and productivity with Apple Pencil and Smart Keyboard support. Take notes, sketch, and annotate documents with precision using the Apple Pencil (1st generation), and turn your iPad Mini into a versatile workstation with the Smart Keyboard. The iPad Mini adapts to your needs, making it a powerful tool for both work and play.",
+          "ua": "Розкрийте свою креативність та продуктивність завдяки підтримці Apple Pencil та Smart Keyboard. Робіть нотатки, малюйте та створюйте ескізи з точністю за допомогою Apple Pencil (1-го покоління) та перетворіть свій iPad Mini на універсальну робочу станцію з Smart Keyboard. iPad Mini адаптується до ваших потреб, роблячи його потужним інструментом для роботи та розваг."
+        }
       }
     ],
     "screen": "7.9' Retina",
@@ -1578,25 +1875,34 @@
     ],
     "description": [
       {
-        "title": "Compact and Powerful",
-        "text": [
-          "The Apple iPad Mini (5th Gen) packs a punch with its compact size and powerful performance. Whether you're on the go or at home, it's perfect for productivity, entertainment, and creativity.",
-          "With its A12 Bionic chip, the iPad Mini delivers fast and efficient performance, allowing you to run demanding apps and games smoothly."
-        ]
+        "title": {
+          "en": "Compact and Powerful",
+          "ua": "Компактний та потужний"
+        },
+        "text": {
+          "en": "The Apple iPad Mini (5th Gen) packs a punch with its compact size and powerful performance. Whether you're on the go or at home, it's perfect for productivity, entertainment, and creativity. With its A12 Bionic chip, the iPad Mini delivers fast and efficient performance, allowing you to run demanding apps and games smoothly.",
+          "ua": "Apple iPad Mini (5-го покоління) поєднує компактний розмір і потужну продуктивність. Незалежно від того, чи ви в дорозі, чи вдома, він ідеально підходить для продуктивності, розваг та творчості. Завдяки чіпу A12 Bionic, iPad Mini забезпечує швидку та ефективну продуктивність, дозволяючи запускати вимогливі додатки та ігри безперешкодно."
+        }
       },
       {
-        "title": "Retina Display and True Tone",
-        "text": [
-          "Experience stunning visuals on the iPad Mini's Retina display. With True Tone technology, it adjusts the display's color temperature to match the ambient lighting, providing a natural and comfortable viewing experience.",
-          "From reading ebooks to browsing photos, the iPad Mini's display brings content to life with vibrant colors and sharp details."
-        ]
+        "title": {
+          "en": "Retina Display and True Tone",
+          "ua": "Дисплей Retina та True Tone"
+        },
+        "text": {
+          "en": "Experience stunning visuals on the iPad Mini's Retina display. With True Tone technology, it adjusts the display's color temperature to match the ambient lighting, providing a natural and comfortable viewing experience. From reading ebooks to browsing photos, the iPad Mini's display brings content to life with vibrant colors and sharp details.",
+          "ua": "Насолоджуйтесь приголомшливими візуальними ефектами на дисплеї Retina iPad Mini. Завдяки технології True Tone, дисплей підлаштовує колірну температуру до освітлення, забезпечуючи природний та комфортний досвід перегляду. Від читання електронних книг до перегляду фотографій, дисплей iPad Mini оживляє контент яскравими кольорами та чіткими деталями."
+        }
       },
       {
-        "title": "Apple Pencil and Smart Keyboard Support",
-        "text": [
-          "Unlock your creativity and productivity with Apple Pencil and Smart Keyboard support. Take notes, sketch, and annotate documents with precision using the Apple Pencil (1st generation), and turn your iPad Mini into a versatile workstation with the Smart Keyboard.",
-          "The iPad Mini adapts to your needs, making it a powerful tool for both work and play."
-        ]
+        "title": {
+          "en": "Apple Pencil and Smart Keyboard Support",
+          "ua": "Підтримка Apple Pencil та Smart Keyboard"
+        },
+        "text": {
+          "en": "Unlock your creativity and productivity with Apple Pencil and Smart Keyboard support. Take notes, sketch, and annotate documents with precision using the Apple Pencil (1st generation), and turn your iPad Mini into a versatile workstation with the Smart Keyboard. The iPad Mini adapts to your needs, making it a powerful tool for both work and play.",
+          "ua": "Розкрийте свою креативність та продуктивність завдяки підтримці Apple Pencil та Smart Keyboard. Робіть нотатки, малюйте та створюйте ескізи з точністю за допомогою Apple Pencil (1-го покоління) та перетворіть свій iPad Mini на універсальну робочу станцію з Smart Keyboard. iPad Mini адаптується до ваших потреб, роблячи його потужним інструментом для роботи та розваг."
+        }
       }
     ],
     "screen": "7.9' Retina",
@@ -1624,25 +1930,34 @@
     ],
     "description": [
       {
-        "title": "Compact and Powerful",
-        "text": [
-          "The Apple iPad Mini (5th Gen) packs a punch with its compact size and powerful performance. Whether you're on the go or at home, it's perfect for productivity, entertainment, and creativity.",
-          "With its A12 Bionic chip, the iPad Mini delivers fast and efficient performance, allowing you to run demanding apps and games smoothly."
-        ]
+        "title": {
+          "en": "Compact and Powerful",
+          "ua": "Компактний та потужний"
+        },
+        "text": {
+          "en": "The Apple iPad Mini (5th Gen) packs a punch with its compact size and powerful performance. Whether you're on the go or at home, it's perfect for productivity, entertainment, and creativity. With its A12 Bionic chip, the iPad Mini delivers fast and efficient performance, allowing you to run demanding apps and games smoothly.",
+          "ua": "Apple iPad Mini (5-го покоління) поєднує компактний розмір і потужну продуктивність. Незалежно від того, чи ви в дорозі, чи вдома, він ідеально підходить для продуктивності, розваг та творчості. Завдяки чіпу A12 Bionic, iPad Mini забезпечує швидку та ефективну продуктивність, дозволяючи запускати вимогливі додатки та ігри безперешкодно."
+        }
       },
       {
-        "title": "Retina Display and True Tone",
-        "text": [
-          "Experience stunning visuals on the iPad Mini's Retina display. With True Tone technology, it adjusts the display's color temperature to match the ambient lighting, providing a natural and comfortable viewing experience.",
-          "From reading ebooks to browsing photos, the iPad Mini's display brings content to life with vibrant colors and sharp details."
-        ]
+        "title": {
+          "en": "Retina Display and True Tone",
+          "ua": "Дисплей Retina та True Tone"
+        },
+        "text": {
+          "en": "Experience stunning visuals on the iPad Mini's Retina display. With True Tone technology, it adjusts the display's color temperature to match the ambient lighting, providing a natural and comfortable viewing experience. From reading ebooks to browsing photos, the iPad Mini's display brings content to life with vibrant colors and sharp details.",
+          "ua": "Насолоджуйтесь приголомшливими візуальними ефектами на дисплеї Retina iPad Mini. Завдяки технології True Tone, дисплей підлаштовує колірну температуру до освітлення, забезпечуючи природний та комфортний досвід перегляду. Від читання електронних книг до перегляду фотографій, дисплей iPad Mini оживляє контент яскравими кольорами та чіткими деталями."
+        }
       },
       {
-        "title": "Apple Pencil and Smart Keyboard Support",
-        "text": [
-          "Unlock your creativity and productivity with Apple Pencil and Smart Keyboard support. Take notes, sketch, and annotate documents with precision using the Apple Pencil (1st generation), and turn your iPad Mini into a versatile workstation with the Smart Keyboard.",
-          "The iPad Mini adapts to your needs, making it a powerful tool for both work and play."
-        ]
+        "title": {
+          "en": "Apple Pencil and Smart Keyboard Support",
+          "ua": "Підтримка Apple Pencil та Smart Keyboard"
+        },
+        "text": {
+          "en": "Unlock your creativity and productivity with Apple Pencil and Smart Keyboard support. Take notes, sketch, and annotate documents with precision using the Apple Pencil (1st generation), and turn your iPad Mini into a versatile workstation with the Smart Keyboard. The iPad Mini adapts to your needs, making it a powerful tool for both work and play.",
+          "ua": "Розкрийте свою креативність та продуктивність завдяки підтримці Apple Pencil та Smart Keyboard. Робіть нотатки, малюйте та створюйте ескізи з точністю за допомогою Apple Pencil (1-го покоління) та перетворіть свій iPad Mini на універсальну робочу станцію з Smart Keyboard. iPad Mini адаптується до ваших потреб, роблячи його потужним інструментом для роботи та розваг."
+        }
       }
     ],
     "screen": "7.9' Retina",
@@ -1670,25 +1985,34 @@
     ],
     "description": [
       {
-        "title": "Compact and Powerful",
-        "text": [
-          "The Apple iPad Mini (5th Gen) packs a punch with its compact size and powerful performance. Whether you're on the go or at home, it's perfect for productivity, entertainment, and creativity.",
-          "With its A12 Bionic chip, the iPad Mini delivers fast and efficient performance, allowing you to run demanding apps and games smoothly."
-        ]
+        "title": {
+          "en": "Compact and Powerful",
+          "ua": "Компактний та потужний"
+        },
+        "text": {
+          "en": "The Apple iPad Mini (5th Gen) packs a punch with its compact size and powerful performance. Whether you're on the go or at home, it's perfect for productivity, entertainment, and creativity. With its A12 Bionic chip, the iPad Mini delivers fast and efficient performance, allowing you to run demanding apps and games smoothly.",
+          "ua": "Apple iPad Mini (5-го покоління) поєднує компактний розмір і потужну продуктивність. Незалежно від того, чи ви в дорозі, чи вдома, він ідеально підходить для продуктивності, розваг та творчості. Завдяки чіпу A12 Bionic, iPad Mini забезпечує швидку та ефективну продуктивність, дозволяючи запускати вимогливі додатки та ігри безперешкодно."
+        }
       },
       {
-        "title": "Retina Display and True Tone",
-        "text": [
-          "Experience stunning visuals on the iPad Mini's Retina display. With True Tone technology, it adjusts the display's color temperature to match the ambient lighting, providing a natural and comfortable viewing experience.",
-          "From reading ebooks to browsing photos, the iPad Mini's display brings content to life with vibrant colors and sharp details."
-        ]
+        "title": {
+          "en": "Retina Display and True Tone",
+          "ua": "Дисплей Retina та True Tone"
+        },
+        "text": {
+          "en": "Experience stunning visuals on the iPad Mini's Retina display. With True Tone technology, it adjusts the display's color temperature to match the ambient lighting, providing a natural and comfortable viewing experience. From reading ebooks to browsing photos, the iPad Mini's display brings content to life with vibrant colors and sharp details.",
+          "ua": "Насолоджуйтесь приголомшливими візуальними ефектами на дисплеї Retina iPad Mini. Завдяки технології True Tone, дисплей підлаштовує колірну температуру до освітлення, забезпечуючи природний та комфортний досвід перегляду. Від читання електронних книг до перегляду фотографій, дисплей iPad Mini оживляє контент яскравими кольорами та чіткими деталями."
+        }
       },
       {
-        "title": "Apple Pencil and Smart Keyboard Support",
-        "text": [
-          "Unlock your creativity and productivity with Apple Pencil and Smart Keyboard support. Take notes, sketch, and annotate documents with precision using the Apple Pencil (1st generation), and turn your iPad Mini into a versatile workstation with the Smart Keyboard.",
-          "The iPad Mini adapts to your needs, making it a powerful tool for both work and play."
-        ]
+        "title": {
+          "en": "Apple Pencil and Smart Keyboard Support",
+          "ua": "Підтримка Apple Pencil та Smart Keyboard"
+        },
+        "text": {
+          "en": "Unlock your creativity and productivity with Apple Pencil and Smart Keyboard support. Take notes, sketch, and annotate documents with precision using the Apple Pencil (1st generation), and turn your iPad Mini into a versatile workstation with the Smart Keyboard. The iPad Mini adapts to your needs, making it a powerful tool for both work and play.",
+          "ua": "Розкрийте свою креативність та продуктивність завдяки підтримці Apple Pencil та Smart Keyboard. Робіть нотатки, малюйте та створюйте ескізи з точністю за допомогою Apple Pencil (1-го покоління) та перетворіть свій iPad Mini на універсальну робочу станцію з Smart Keyboard. iPad Mini адаптується до ваших потреб, роблячи його потужним інструментом для роботи та розваг."
+        }
       }
     ],
     "screen": "7.9' Retina",

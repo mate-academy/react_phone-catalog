@@ -11,8 +11,8 @@ export type DetailProduct = {
   color: string;
   images: string[];
   description: {
-    title: string;
-    text: string[];
+    title: { en: string; ua: string };
+    text: { en: string; ua: string };
   }[];
   screen: string;
   resolution: string;

@@ -81,15 +81,13 @@ export const TextInfoArticle: React.FC<Props> = ({ product }) => {
     [textContent.techSpecs.zoom[language], zoom || '-'],
   ];
 
-  //
-
   return (
     <article className={cl.textInfoArticle}>
       <section className={cl.textInfoArticle__sectionAbout}>
         <h3 className={cl.sectionTitle}>{textContent.about.title[language]}</h3>
 
         {description.map(deskr => (
-          <div className={cl.descriptionContainer} key={deskr.title}>
+          <div className={cl.descriptionContainer} key={deskr.title.en}>
             <h4 className={cl.descriptionContainer__title}>
               {deskr.title[language]}
             </h4>
