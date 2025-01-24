@@ -1,5 +1,16 @@
 @import 'Styles/utils';
 
+.visualyHidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  border: 0;
+}
+
 .section {
   width: 100%;
   margin-bottom: 80px;

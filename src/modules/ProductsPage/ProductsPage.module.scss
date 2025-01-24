@@ -91,14 +91,39 @@
   margin-top: 24px;
 }
 
-// .sortOptions {
+.productsControls {
+  display: flex;
+  justify-content: start;
+  gap: 16px;
+  width: 100%;
+  height: 59px;
+  margin-top: 40px;
 
-// }
+  @media (max-width: $mobile-breakpoint) {
+    margin-top: 32px;
+  }
+}
 
-// .sortBy{}
+.sortContainer {
+  width: 176px;
 
-// .perPage{}
+  @media (max-width: $tablet-breakpoint){
+    width: 187px;
+  }
 
+  @media (max-width: $mobile-breakpoint) {
+    width: 50%;
+  }
+}
 
+.itemOnPageContainer {
+  width: 128px;
 
-// .pagination{}
+  @media (max-width: $tablet-breakpoint){
+    width: 136px;
+  }
+
+  @media (max-width: $mobile-breakpoint) {
+    width: 50%;
+  }
+}

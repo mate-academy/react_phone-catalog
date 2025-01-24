@@ -8,7 +8,7 @@ import styles from './PicturesSlider.module.scss';
 export const PicturesSlider: React.FC = () => {
   return (
     <div className={styles.container}>
-      <div className={styles.swiperButtonNext}>
+      <div className={styles.swiperButtonPrev}>
         <img src="/img/icons/arrow-back.svg" alt="arrow-back" />
       </div>
 

@@ -1,6 +1,7 @@
 @import 'Styles/utils';
 
 .productCard {
+  position: relative;
   background-color: $color-surface1;
   display: flex;
   flex-direction: column;
@@ -9,6 +10,7 @@
   height: 100%;
   padding: 32px;
   border: 1px solid transparent;
+  z-index: 1;
 
   &:hover {
     border: 1px solid $color-surface2;

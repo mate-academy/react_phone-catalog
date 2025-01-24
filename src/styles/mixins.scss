@@ -109,7 +109,7 @@
   }
 }
 
-@mixin hover-icons($color){
+@mixin hover-icons($color) {
   transition: background-color 0.3s ease-in-out;
 
   &:hover {
@@ -117,7 +117,7 @@
   }
 }
 
-@mixin hover-scale-10{
+@mixin hover-scale-10 {
   transition: transform 0.3s ease-in-out;
 
   &:hover {
@@ -125,7 +125,7 @@
   }
 }
 
-@mixin hover-scale-5{
+@mixin hover-scale-5 {
   transition: transform 0.3s ease-in-out;
 
   &:hover {
@@ -149,4 +149,3 @@
     background-color: $color-accent-light;
   }
 }
-

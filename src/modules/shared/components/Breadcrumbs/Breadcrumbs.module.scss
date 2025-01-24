@@ -14,9 +14,11 @@
   display: flex;
   align-items: center;
   gap: 8px;
+  cursor: pointer;
 
   &.lastBreadcrumb {
     color: $color-secondary;
+    cursor: default;
   }
 }
 

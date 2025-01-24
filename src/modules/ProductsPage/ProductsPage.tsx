@@ -1,17 +1,47 @@
 import { useProductsContext } from 'contexts/ProductsContext';
 import { Loader } from 'modules/shared/components/Loader';
 import { RouteParams } from 'modules/shared/types/Routes';
-import { useParams } from 'react-router-dom';
+import { useParams, useSearchParams } from 'react-router-dom';
 import styles from './ProductsPage.module.scss';
 import { ProductCard } from 'modules/shared/components/ProductCard';
 import { NotFoundPage } from 'modules/NotFoundPage';
 import { Breadcrumbs } from 'modules/shared/components/Breadcrumbs';
+import { Dropdown } from './components/Dropdown';
 
 export const ProductsPage: React.FC = () => {
   const { category } = useParams<RouteParams>();
   const { data, loading, error } = useProductsContext();
+  const [searchParams, setSearchParams] = useSearchParams();
+  const sortParam = searchParams.get('sort') || 'Newest';
+  const itemsOnPageParam = searchParams.get('itemsOnPage') || 'All';
 
   const validCategories = ['phones', 'tablets', 'accessories'];
+  const sortByOptions = ['Newest', 'Alphabetically', 'Cheapest'];
+  const itemsOnPageOptions = ['All', '4', '8', '16'];
+
+  const updateSearchParams = (
+    paramName: string,
+    value: string,
+    defaultValue: string,
+  ) => {
+    const curParams = new URLSearchParams(searchParams);
+
+    if (value === defaultValue) {
+      curParams.delete(paramName);
+    } else {
+      curParams.set(paramName, value);
+    }
+
+    setSearchParams(curParams);
+  };
+
+  const handleSortBySelect = (value: string) => {
+    updateSearchParams('sort', value, 'Newest');
+  };
+
+  const handleItemsOnPageSelect = (value: string) => {
+    updateSearchParams('itemsOnPage', value, 'All');
+  };
 
   if (!validCategories.includes(category || '')) {
     return <NotFoundPage />;
@@ -72,9 +102,24 @@ export const ProductsPage: React.FC = () => {
         className={styles.numOfProducts}
       >{`${products?.length} models`}</span>
 
-      <div className={styles.sortOptions}>
-        <div className={styles.sortBy}></div>
-        <div className={styles.perPage}></div>
+      <div className={styles.productsControls}>
+        <div className={styles.sortContainer}>
+          <Dropdown
+            label={'Sort by'}
+            selectedOption={sortParam}
+            options={sortByOptions}
+            onSelect={handleSortBySelect}
+          />
+        </div>
+
+        <div className={styles.itemOnPageContainer}>
+          <Dropdown
+            label={'Items on page'}
+            selectedOption={itemsOnPageParam}
+            options={itemsOnPageOptions}
+            onSelect={handleItemsOnPageSelect}
+          />
+        </div>
       </div>
 
       <div className={styles.productsList}>
