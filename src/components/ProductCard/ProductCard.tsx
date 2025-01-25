@@ -5,15 +5,18 @@ import { Link } from 'react-router-dom';
 import { Icon } from '../Icon';
 import classNames from 'classnames';
 import { useProductsContext } from '../../hooks/savedProducts';
+import { useTheme } from '../../hooks/useTheme';
 
 type Props = {
   product: Products;
   path: string;
+  checkPrice?: boolean;
 };
 
-export const ProductCard: React.FC<Props> = ({ product, path }) => {
+export const ProductCard: React.FC<Props> = ({ product, path, checkPrice }) => {
   const { likedProducts, cartProducts, toggleLike, toggleCart } =
     useProductsContext();
+  const { theme } = useTheme();
   const isLiked = likedProducts.includes(product.id);
   const isAddedToCart = cartProducts.includes(product.id);
 
@@ -32,7 +35,19 @@ export const ProductCard: React.FC<Props> = ({ product, path }) => {
           <p className={styles.product__title}>{product.name}</p>
         </Link>
 
-        <p className={styles.product__price}>{product.price}</p>
+        {!checkPrice ? (
+          <p className={styles.product__price}>{product.price}</p>
+        ) : (
+          <div className={styles.product__prices}>
+            <p className={styles.product__price}>{product.price}</p>
+            <p
+              className={styles.product__full}
+              data-theme={theme === 'dark' ? 'dark' : 'light'}
+            >
+              {product.fullPrice}
+            </p>
+          </div>
+        )}
 
         <div className={styles.product__divider} />
 

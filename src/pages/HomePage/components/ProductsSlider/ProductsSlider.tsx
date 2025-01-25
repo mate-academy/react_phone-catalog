@@ -7,9 +7,15 @@ import { Icon } from '../../../../components/Icon';
 
 type Props = {
   products: Products[];
+  title: string;
+  checkPrice?: boolean;
 };
 
-export const ProductsSlider: React.FC<Props> = ({ products }) => {
+export const ProductsSlider: React.FC<Props> = ({
+  products,
+  title,
+  checkPrice,
+}) => {
   const [canScrollPrev, setCanScrollPrev] = useState(false);
   const [canScrollNext, setCanScrollNext] = useState(true);
 
@@ -49,7 +55,7 @@ export const ProductsSlider: React.FC<Props> = ({ products }) => {
 
   return (
     <div className={styles.slider}>
-      <h2 className={styles.slider__title}>Brand new models</h2>
+      <h2 className={styles.slider__title}>{title}</h2>
 
       <div className={styles.slider__btns}>
         <button
@@ -75,6 +81,7 @@ export const ProductsSlider: React.FC<Props> = ({ products }) => {
               path={`/${product.category}/${product.itemId}`}
               product={product}
               key={product.id}
+              checkPrice={checkPrice}
             />
           ))}
         </div>

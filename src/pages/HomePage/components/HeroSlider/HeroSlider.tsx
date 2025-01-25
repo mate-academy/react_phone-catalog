@@ -16,6 +16,7 @@ import classNames from 'classnames';
 
 const imagesForDesktop = [image1, image2, image3];
 const imagesForMobile = [mobImage1, mobImage2, mobImage3];
+const path = ['/phones', '/tablets', '/accessories'];
 
 export const HeroSlider = () => {
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true }, [
@@ -87,7 +88,7 @@ export const HeroSlider = () => {
                   alt={`slider-image-${index}`}
                 />
 
-                {index === 0 && <HeroSliderButton path="/phones" />}
+                <HeroSliderButton path={path[index]} />
               </div>
             ))}
           </div>

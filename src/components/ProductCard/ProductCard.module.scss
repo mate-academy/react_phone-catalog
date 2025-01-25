@@ -1,5 +1,10 @@
 @import '../../styles/main.scss';
 
+:root {
+  --blend-mode-light: color-dodge;
+  --blend-mode-dark: color-burn;
+}
+
 .product {
   box-sizing: border-box;
   height: 506px;
@@ -46,7 +51,6 @@
 
   &__title {
     @include body-text;
-
     color: var(--primary-color);
     margin-top: 16px;
     margin-bottom: 0;
@@ -58,6 +62,11 @@
     }
   }
 
+  &__prices {
+    display: flex;
+    gap: 8px;
+  }
+
   &__price {
     display: flex;
     align-items: center;
@@ -65,6 +74,38 @@
     font-size: 22px;
     line-height: 30.8px;
     margin: 0;
+
+    &::before {
+      content: '$';
+    }
+  }
+
+  .product__full {
+    position: relative;
+    color: var(--secondary-color);
+    font-weight: $font-thin;
+    font-size: 22px;
+    line-height: 28.12px;
+    margin: 0;
+    align-items: center;
+    z-index: 1;
+
+    &::after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      top: 42%;
+      transform: translateY(-50%);
+      left: 0;
+      height: 2px;
+      background-color: var(--secondary-color);
+      mix-blend-mode: var(--blend-mode-light);
+      z-index: 0;
+    }
+
+    &[data-theme='dark']::after {
+      mix-blend-mode: var(--blend-mode-dark);
+    }
 
     &::before {
       content: '$';
