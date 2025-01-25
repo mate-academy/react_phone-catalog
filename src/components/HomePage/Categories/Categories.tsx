@@ -25,19 +25,19 @@ const textContent = {
 
 const categoriesMap: Category[] = [
   {
-    img: '/img/categories/category-phones-mob.png',
+    img: 'img/categories/category-phones-mob.png',
     link: 'phones',
     name: 'Mobile phones',
     quantity: 124,
   },
   {
-    img: '/img/categories/category-tablets-mob.png',
+    img: 'img/categories/category-tablets-mob.png',
     link: 'tablets',
     name: 'Tablets',
     quantity: 36,
   },
   {
-    img: '/img/categories/category-accessories-mob.png',
+    img: 'img/categories/category-accessories-mob.png',
     link: 'accessories',
     name: 'Accessories',
     quantity: 34,

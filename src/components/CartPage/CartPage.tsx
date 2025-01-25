@@ -16,6 +16,18 @@ const textContent = {
     en: 'Cart',
     ua: 'Кошик',
   },
+  empty: {
+    en: 'Your cart is empty!',
+    ua: 'Ваш кошик порожній!',
+  },
+  modal: {
+    en: 'Thanks for using our shop! :)',
+    ua: 'Дякуємо за використання нашого магазину! :)',
+  },
+  checkout: {
+    en: 'Checkout',
+    ua: 'Оформити',
+  },
 };
 
 export const CartPage = () => {
@@ -61,7 +73,7 @@ export const CartPage = () => {
       <div className="container">
         <ShownRoute origin={ShownRouteOrigin.ONCART} />
         <section className={cl.modalSection}>
-          Thanks for using our shop! {':)'}
+          {textContent.modal[language]}
         </section>
       </div>
     );
@@ -74,7 +86,7 @@ export const CartPage = () => {
       <div className="container">
         <ShownRoute origin={ShownRouteOrigin.ONCART} />
         <h1 style={{ color: '#f1f2f9', marginTop: '16px' }}>
-          Your cart is empty!
+          {textContent.empty[language]}
         </h1>
       </div>
     );
@@ -162,7 +174,7 @@ export const CartPage = () => {
               setIsModalShown(true);
             }}
           >
-            Checkout
+            {textContent.checkout[language]}
           </button>
         </section>
       </article>

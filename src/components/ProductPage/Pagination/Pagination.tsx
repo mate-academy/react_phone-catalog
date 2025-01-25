@@ -1,4 +1,3 @@
-import { Dispatch, SetStateAction } from 'react';
 import cn from 'classnames';
 import {
   ArrowButton,
@@ -10,14 +9,18 @@ import cl from './Pagination.module.scss';
 type Props = {
   totalPages: number;
   currentPage: number;
-  setCurrentPage: Dispatch<SetStateAction<number>>;
+  onArrowLeftClick: () => void;
+  onPageClick: (ev: React.MouseEvent<HTMLLIElement>) => void;
+  onArrowRightClick: () => void;
   className?: string;
 };
 
 export const Pagination: React.FC<Props> = ({
   totalPages,
   currentPage,
-  setCurrentPage,
+  onArrowLeftClick,
+  onPageClick,
+  onArrowRightClick,
   className,
 }) => {
   function getVisiblePages(current: number, total: number) {
@@ -46,7 +49,7 @@ export const Pagination: React.FC<Props> = ({
     <div className={`${cl.pagination} ${className}`}>
       <ArrowButton
         direction={ArrowButtonDirection.LEFT}
-        onClick={() => setCurrentPage(curr => curr - 1)}
+        onClick={onArrowLeftClick}
         origin={ArrowButtonOrigin.ONLIST}
         disabled={currentPage === 1}
         className={cl.arrowRight}
@@ -60,7 +63,7 @@ export const Pagination: React.FC<Props> = ({
               [cl.pagesList__page_active]: currentPage === page,
             })}
             // change page on click only if page cell isn't '...'
-            onClick={() => typeof page === 'number' && setCurrentPage(page)}
+            onClick={page === '...' ? () => {} : onPageClick}
           >
             {page}
           </li>
@@ -69,7 +72,7 @@ export const Pagination: React.FC<Props> = ({
 
       <ArrowButton
         direction={ArrowButtonDirection.RIGHT}
-        onClick={() => setCurrentPage(curr => curr + 1)}
+        onClick={onArrowRightClick}
         origin={ArrowButtonOrigin.ONLIST}
         disabled={currentPage === totalPages}
         className={cl.arrowRight}

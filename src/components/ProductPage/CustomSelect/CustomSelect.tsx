@@ -1,21 +1,20 @@
-import { Dispatch, useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import cl from './CustomSelect.module.scss';
-import { SetStateAction } from 'react';
 
 type Props = {
   name: string;
   value: string | number;
-  setValue: Dispatch<SetStateAction<string>> | Dispatch<SetStateAction<number>>;
+  onOptionClick: (ev: React.MouseEvent<HTMLDivElement>) => void;
   options: string[] | number[];
   className?: string;
 };
 
 export const CustomSelect: React.FC<Props> = ({
   name,
+  value,
+  onOptionClick,
   options,
   className,
-  value,
-  setValue,
 }) => {
   const [isOptionsVisible, setIsOptionsVisible] = useState(false);
 
@@ -60,8 +59,7 @@ export const CustomSelect: React.FC<Props> = ({
             <div
               key={option}
               className={`${cl.select__option} ${value === option ? cl.select__optionActive : ''}`}
-              // @ts-expect-error - there will be no error 100% I promise :D
-              onClick={() => setValue(option)}
+              onClick={onOptionClick}
             >
               {option}
             </div>
