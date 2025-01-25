@@ -9,12 +9,11 @@ export const useScrollAnimation = (
   const currentAnimationFrame = useRef<number | null>(null);
 
   const getParams = useCallback(
-    (slider: HTMLDivElement, targetItem: HTMLElement) => {
+    (slider: HTMLDivElement, targetItem: HTMLElement, right: boolean) => {
       let end: number;
       let distance: number;
 
       const start = slider.scrollLeft;
-      const right = start < targetItem.offsetLeft;
 
       if (right) {
         distance = targetItem.offsetLeft - start;
@@ -24,16 +23,13 @@ export const useScrollAnimation = (
           slider.scrollWidth - slider.offsetWidth,
         );
       } else {
-        distance =
-          targetItem.offsetLeft +
-          targetItem.offsetWidth -
-          start -
-          slider.offsetWidth;
+        const sliderRight = slider.offsetWidth + slider.offsetLeft * 2;
+        const itemRight = targetItem.offsetLeft + targetItem.offsetWidth;
 
-        end = Math.max(
-          0,
-          targetItem.offsetLeft + targetItem.offsetWidth - slider.offsetWidth,
-        );
+        end = itemRight - sliderRight;
+        distance = end - start;
+
+        end = Math.max(0, end);
       }
 
       return [start, distance, end];
@@ -42,7 +38,11 @@ export const useScrollAnimation = (
   );
 
   const smoothScroll = useCallback(
-    (slider: HTMLDivElement, targetItem: HTMLElement) => {
+    (
+      slider: HTMLDivElement,
+      targetItem: HTMLElement,
+      right: boolean = true,
+    ) => {
       if (currentAnimationFrame.current !== null) {
         currentDuration.current = 0;
         updatedTime.current = new Date();
@@ -59,7 +59,7 @@ export const useScrollAnimation = (
       }
 
       let startTime: number | null = null;
-      const [start, distance, end] = getParams(slider, targetItem);
+      const [start, distance, end] = getParams(slider, targetItem, right);
 
       const scroll = (currentTime: number) => {
         if (startTime === null) {

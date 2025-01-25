@@ -17,6 +17,9 @@
     padding-bottom: 16px;
 
     &--loading {
+      padding-bottom: 0;
+      margin-bottom: 16px;
+
       @extend %skeleton;
     }
   }

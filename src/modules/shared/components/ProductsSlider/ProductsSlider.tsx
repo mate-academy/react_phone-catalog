@@ -18,22 +18,20 @@ type Props = {
 
 type ItemVisibility = {
   item: HTMLElement;
-  isVisible: boolean;
+  visibilityRate: number;
 };
 
-const findLastVisibleItem = (
+const findLastInvisibleItem = (
   items: ItemVisibility[],
 ): [number, ItemVisibility] | void => {
-  let found = false;
-
-  for (let i = 0; i < items.length; i++) {
+  for (let i = items.length - 1; i >= 0; i--) {
     const item = items[i];
 
-    if (!found) {
-      if (item.isVisible) {
-        found = true;
+    if (item.visibilityRate) {
+      if (item.visibilityRate > 0.99) {
+        return [i + 1, items[i + 1]];
       }
-    } else if (!item.isVisible) {
+
       return [i, item];
     }
   }
@@ -42,16 +40,14 @@ const findLastVisibleItem = (
 const findPrevInvisibleItem = (
   items: ItemVisibility[],
 ): [number, ItemVisibility] | void => {
-  let found = false;
-
-  for (let i = items.length - 1; i >= 0; i--) {
+  for (let i = 0; i < items.length; i++) {
     const item = items[i];
 
-    if (!found) {
-      if (item.isVisible) {
-        found = true;
+    if (item.visibilityRate) {
+      if (item.visibilityRate > 0.99) {
+        return [i - 1, items[i - 1]];
       }
-    } else if (!item.isVisible) {
+
       return [i, item];
     }
   }
@@ -81,20 +77,20 @@ export const ProductsSlider: React.FC<Props> = ({
               item => item.item === target,
             );
 
-            foundItem!.isVisible = entry.isIntersecting;
+            foundItem!.visibilityRate = entry.intersectionRatio;
           }
 
           return newItemsVisibility;
         });
       },
-      { root: sliderRef.current, threshold: 1 },
+      { root: sliderRef.current, threshold: [0, 0.2, 0.4, 0.6, 0.8, 1] },
     );
 
     const newItemsVisibility: ItemVisibility[] = [];
 
     itemsRef.current.forEach(item => {
       observer.observe(item);
-      newItemsVisibility.push({ item, isVisible: false });
+      newItemsVisibility.push({ item, visibilityRate: 0 });
     });
 
     setItemsVisibility(newItemsVisibility);
@@ -106,7 +102,7 @@ export const ProductsSlider: React.FC<Props> = ({
 
   const scrollRight = useCallback(() => {
     setItemsVisibility(prevItems => {
-      const lastVisibleItem = findLastVisibleItem(prevItems);
+      const lastVisibleItem = findLastInvisibleItem(prevItems);
 
       if (lastVisibleItem && sliderRef.current) {
         const item = prevItems[lastVisibleItem[0]].item;
@@ -125,12 +121,22 @@ export const ProductsSlider: React.FC<Props> = ({
       if (lastVisibleItem && sliderRef.current) {
         const item = prevItems[lastVisibleItem[0]].item;
 
-        scrollTo(sliderRef.current, item);
+        scrollTo(sliderRef.current, item, false);
       }
 
       return prevItems;
     });
   }, [scrollTo]);
+
+  const leftArrow =
+    itemsVisibility.length !== 0
+      ? itemsVisibility[0].visibilityRate >= 0.99
+      : true;
+
+  const rightArrow =
+    itemsVisibility.length !== 0
+      ? itemsVisibility.at(-1)!.visibilityRate >= 0.99
+      : true;
 
   return (
     <section className={styles['products-slider']}>
@@ -138,26 +144,12 @@ export const ProductsSlider: React.FC<Props> = ({
         <h2>{title}</h2>
 
         <div className={styles['products-slider__control-buttons']}>
-          <div onClick={scrollLeft}>
-            <Arrow
-              type={ArrowType.left}
-              disabled={
-                itemsVisibility.length !== 0
-                  ? itemsVisibility[0].isVisible
-                  : true
-              }
-            />
+          <div onClick={!leftArrow ? scrollLeft : undefined}>
+            <Arrow type={ArrowType.left} disabled={leftArrow} />
           </div>
 
-          <div onClick={scrollRight}>
-            <Arrow
-              type={ArrowType.right}
-              disabled={
-                itemsVisibility.length !== 0
-                  ? itemsVisibility.at(-1)!.isVisible
-                  : true
-              }
-            />
+          <div onClick={!rightArrow ? scrollRight : undefined}>
+            <Arrow type={ArrowType.right} disabled={rightArrow} />
           </div>
         </div>
       </div>

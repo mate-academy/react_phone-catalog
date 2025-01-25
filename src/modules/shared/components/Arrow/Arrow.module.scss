@@ -1,9 +1,11 @@
+@use '@styles/utils/vars' as *;
+
 $icon-size: 32px;
 $border-size: 1px;
 
 .arrow {
-  width: $icon-size;
   aspect-ratio: 1;
+  width: $icon-size;
   box-sizing: border-box;
   border: $border-size solid var(--icons-color);
 
@@ -11,10 +13,19 @@ $border-size: 1px;
   cursor: pointer;
   align-items: center;
   justify-content: center;
+  transition-duration: $animation-duration;
+
+  &:hover {
+    border: $border-size solid var(--primary-color);
+  }
 
   &--disabled {
     cursor: auto;
     border: $border-size solid var(--elements-color);
+
+    &:hover {
+      border: $border-size solid var(--elements-color);
+    }
 
     &__content {
       background-color: var(--icons-color);
