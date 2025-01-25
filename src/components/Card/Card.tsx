@@ -33,7 +33,7 @@ export const Card: React.FC<Props> = ({ product, page }) => {
         className={style.Card__ImageContainer}
       >
         <img
-          src={`/${product.image}`}
+          src={product.image}
           alt={product.name}
           className={style.Card__img}
         />
