@@ -32,7 +32,7 @@ export const CartList: React.FC<Props> = ({ className }) => {
           product={product}
           onDecreaseQuantity={() => handleDecreaseQuantity(product.itemId)}
           onIncreaseQuantity={() => handleIncreaseQuantity(product.itemId)}
-          onRemove={() => handleRemove}
+          onRemove={() => handleRemove(product.itemId)}
         />
       ))}
     </ul>
