@@ -10,7 +10,7 @@ interface Props {
 export const Logo: React.FC<Props> = ({ className }) => (
   <Link className={cn(`${className} ${style.logo}`)} to={'/'}>
     <img
-      src="/img/logo.svg"
+      src="img/logo.svg"
       alt="Nice Gaggets Logo"
       className={style.logo__image}
     />

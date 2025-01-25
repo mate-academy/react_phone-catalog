@@ -26,7 +26,7 @@ export const ProductPhotos: React.FC<Props> = ({
               )}
               onClick={() => onImageSelect(image)}
             >
-              <img src={`/${image}`} alt={productDetails.name} />
+              <img src={image} alt={productDetails.name} />
             </li>
           ))}
         </ul>
@@ -34,7 +34,7 @@ export const ProductPhotos: React.FC<Props> = ({
 
       <div className={style.product_details__photos_main}>
         <img
-          src={`/${selectedImage}` || `/${productDetails.images[0]}`}
+          src={selectedImage || productDetails.images[0]}
           alt={productDetails.name}
         />
       </div>
