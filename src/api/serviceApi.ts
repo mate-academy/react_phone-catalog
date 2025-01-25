@@ -12,6 +12,7 @@ export const getProducts = async (): Promise<ProductType[]> => {
   if (!response.ok) {
     throw new Error('Failed to get products');
   }
+
   return response.json();
 };
 
