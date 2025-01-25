@@ -1,0 +1,24 @@
+@use '@styles/utils/mixins' as *;
+
+.characteristics {
+  gap: 8px;
+  display: flex;
+  flex-direction: column;
+
+  padding-block: 8px;
+
+  @include small-text;
+
+  &__characteristic {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__key {
+    color: var(--secondary-color);
+  }
+
+  &__value {
+    color: var(--primary-color);
+  }
+}

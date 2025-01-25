@@ -1,5 +1,3 @@
-// const [phones, dispatch] = useReducer(reducer, initialState);
-
 import React, { useEffect, useReducer } from 'react';
 
 function loadPrevState<T>(key: string): T | void {

@@ -1,0 +1,50 @@
+@use '@styles/utils/vars' as *;
+@use '@styles/utils/mixins' as *;
+
+// column counts
+$size-p: 3;
+$size-t: 5;
+$size-d: 6;
+
+// column sizes
+$phone: $padding-inline-p * 2 + $column-gap-p * ($columns-p - 1);
+$tablet: $padding-inline-t * 2 + $column-gap-p * ($columns-t - 1);
+$desktop: $padding-inline-d * 2 + $column-gap-p * ($columns-d - 1);
+
+// gaps
+$gaps-p: ($size-p - 1) * $column-gap-p;
+$gaps-t: ($size-t - 1) * $column-gap-p;
+$gaps-d: ($size-d - 1) * $column-gap-p;
+
+.slider-list {
+  display: grid;
+  grid-auto-flow: column;
+  column-gap: $column-gap-p;
+
+  overflow: auto;
+  margin-inline: -$padding-inline-p;
+  padding-inline: $padding-inline-p;
+  grid-auto-columns: calc((100vw - $phone) * $size-p / $columns-p + $gaps-p);
+
+  // hide scrollbar
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;
+
+  &::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Edge */
+  }
+
+  @include on-tablet {
+    margin-inline: -$padding-inline-t;
+    padding-inline: $padding-inline-t;
+    grid-auto-columns: calc((100vw - $tablet) * $size-t / $columns-t + $gaps-t);
+  }
+
+  @include on-desktop {
+    margin-inline: 0;
+    padding-inline: 0;
+    grid-auto-columns: calc(
+      ($desktop-min-width - $desktop) * $size-d / $columns-d + $gaps-d
+    );
+  }
+}

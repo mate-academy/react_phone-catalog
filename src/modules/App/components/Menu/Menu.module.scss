@@ -1,9 +1,10 @@
 @use '@styles/utils/vars' as *;
 
 .menu {
+  z-index: 1;
   position: fixed;
-  inset: $header-height-p 0 0 0;
   background-color: var(--white-color);
+  inset: $header-height-p + $header-bottom-shadow 0 0 0;
 
   opacity: 0;
   pointer-events: none;

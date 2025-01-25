@@ -1,1 +1,16 @@
-// not empty
+@use '@styles/utils/vars' as *;
+@use '@styles/utils/mixins' as *;
+
+.home-page {
+  display: flex;
+  gap: $row-gap-p;
+  flex-direction: column;
+
+  @include on-tablet {
+    gap: $row-gap-t;
+  }
+
+  @include on-desktop {
+    gap: $row-gap-d;
+  }
+}

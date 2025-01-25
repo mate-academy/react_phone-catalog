@@ -14,7 +14,7 @@
 
 @mixin page-grid {
   display: grid;
-  column-gap: 16px;
+  column-gap: $column-gap-p;
   grid-template-columns: repeat(var(--columns), 1fr);
 }
 
@@ -28,7 +28,7 @@
   @include on-desktop {
     padding-inline: 0;
     margin-inline: auto;
-    width: $desktop-min-width;
+    width: $desktop-min-width - 2 * $padding-inline-d;
   }
 }
 

@@ -1,3 +1,4 @@
+@use '@styles/utils/vars' as *;
 @use '@styles/utils/mixins' as *;
 
 // main styles
@@ -18,14 +19,14 @@
   --red-color: #eb5757;
 
   // grid columns count
-  --columns: 4;
+  --columns: $columns-p;
 
   @include on-tablet {
-    --columns: 12;
+    --columns: $columns-t;
   }
 
   @include on-desktop {
-    --columns: 24;
+    --columns: $columns-d;
   }
 
   &--dark {

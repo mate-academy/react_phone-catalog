@@ -1,0 +1,20 @@
+@use '@styles/utils/vars' as *;
+
+.products-slider {
+  gap: 24px;
+  display: flex;
+  position: relative;
+  flex-direction: column;
+
+  &__header {
+    gap: 21px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__control-buttons {
+    display: flex;
+    gap: $column-gap-p;
+  }
+}

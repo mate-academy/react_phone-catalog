@@ -1,10 +1,12 @@
 export interface Product {
   id: string;
-  age: number;
   name: string;
   price: number;
-  snippet: string;
-  discount: number;
-  imageUrl: string;
+  fullPrice: number;
+  image: string;
+  screen: string;
+  capacity: string;
+  ram: string;
+  age: number;
   category: 'phones' | 'tablets' | 'accessories';
 }

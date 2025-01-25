@@ -15,14 +15,11 @@
   }
 
   &__content {
-    @include content-padding-inline;
-  }
-
-  &__grid {
     row-gap: 32px;
     align-items: center;
 
     @include page-grid;
+    @include content-padding-inline;
   }
 
   &__logo {

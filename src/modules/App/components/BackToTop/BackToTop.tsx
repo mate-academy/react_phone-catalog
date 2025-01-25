@@ -1,7 +1,7 @@
+import { Arrow } from '@components/Arrow';
 import './BackToTop.scss';
 
-import { Icon } from '@components/Icon';
-import { IconType } from '@sTypes/IconType';
+import { ArrowType } from '@sTypes/ArrowType';
 
 export const BackToTop = () => {
   return (
@@ -9,7 +9,7 @@ export const BackToTop = () => {
       <div className="back-to-top__label">Back to top</div>
 
       <div>
-        <Icon type={IconType.arrowUp} />
+        <Arrow type={ArrowType.up} />
       </div>
     </div>
   );

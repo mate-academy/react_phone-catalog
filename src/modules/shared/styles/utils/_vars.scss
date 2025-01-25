@@ -7,9 +7,27 @@ $desktop-min-width: 1200px;
 // main-paddings
 $padding-inline-p: 16px;
 $padding-inline-t: 24px;
+$padding-inline-d: 32px;
 
 // header-heights
 $header-height-p: 48px;
+$header-bottom-shadow: 1px;
+
+// row-gaps
+$row-gap-p: 56px;
+$row-gap-t: 64px;
+$row-gap-d: 80px;
+
+// columns count in grid
+$columns-p: 4;
+$columns-t: 12;
+$columns-d: 24;
+
+// grid-gap
+$column-gap-p: 16px;
 
 // utils
-$animation-duration: 0.5s;
+$animation-duration: 0.3s;
+
+// others
+$add-to-card-height: 40px;

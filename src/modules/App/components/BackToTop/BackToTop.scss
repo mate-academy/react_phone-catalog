@@ -1,10 +1,11 @@
+@use '@styles/utils/vars' as *;
 @use '@styles/utils/mixins' as *;
 
 .back-to-top {
   height: 32px;
   cursor: pointer;
 
-  gap: 16px;
+  gap: $column-gap-p;
   display: flex;
   align-items: center;
 

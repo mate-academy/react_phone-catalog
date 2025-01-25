@@ -1,0 +1,37 @@
+@use '@styles/utils/vars' as *;
+@use '@styles/utils/mixins' as *;
+
+.categories {
+  gap: 24px;
+  display: flex;
+  position: relative;
+  flex-direction: column;
+
+  &__header {
+    display: flex;
+  }
+
+  &__categories {
+    row-gap: 32px;
+
+    @include page-grid;
+  }
+
+  &__category {
+    grid-column: 1 / -1;
+
+    @include on-tablet {
+      grid-column: 1 / -4;
+    }
+
+    @include on-desktop {
+      grid-column: span 8;
+    }
+  }
+}
+
+.category {
+  &__image {
+    width: 100px;
+  }
+}

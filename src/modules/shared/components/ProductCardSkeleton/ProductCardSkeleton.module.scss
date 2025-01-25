@@ -1,7 +1,8 @@
+@use '@styles/utils/vars' as *;
 @use '@styles/utils/mixins' as *;
 @use '@styles/utils/extends' as *;
 
-.product-card {
+.product-card-skeleton {
   padding: 32px;
   box-sizing: border-box;
   border: 1px solid var(--elements-color);
@@ -16,15 +17,14 @@
     object-fit: contain;
     padding-bottom: 16px;
 
-    &--loading {
-      @extend %skeleton;
-    }
+    @extend %skeleton;
   }
 
   &__title {
     margin-bottom: auto;
 
     @include body-text;
+    @extend %skeleton;
   }
 
   &__price {
@@ -33,23 +33,38 @@
     align-items: center;
   }
 
+  &__curr-price {
+    width: 30%;
+
+    @extend %skeleton;
+  }
+
   &__prev-price {
     font-size: 22px;
     font-weight: 600;
     line-height: 29px;
     font-family: Mont, sans-serif;
     color: var(--secondary-color);
+
+    width: 30%;
+
+    @extend %skeleton;
   }
 
   &__divider {
     border: 1px solid var(--elements-color);
   }
 
-  &__characteristics {
-    gap: 8px;
+  &__characteristic {
     display: flex;
-    flex-direction: column;
+    justify-content: space-between;
 
-    padding-block: 8px;
+    @extend %skeleton;
+  }
+
+  &__add-to-card {
+    height: $add-to-card-height;
+
+    @extend %skeleton;
   }
 }

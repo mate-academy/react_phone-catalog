@@ -1,0 +1,58 @@
+$icon-size: 32px;
+$border-size: 1px;
+
+.arrow {
+  width: $icon-size;
+  aspect-ratio: 1;
+  box-sizing: border-box;
+  border: $border-size solid var(--icons-color);
+
+  display: flex;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+
+  &--disabled {
+    cursor: auto;
+    border: $border-size solid var(--elements-color);
+
+    &__content {
+      background-color: var(--icons-color);
+    }
+  }
+
+  &__content {
+    aspect-ratio: 1;
+    width: $icon-size - $border-size;
+
+    mask-position: center;
+    mask-repeat: no-repeat;
+    background-color: var(--primary-color);
+
+    &--up,
+    &--down {
+      mask-size: 6px 10px;
+    }
+
+    &--left,
+    &--right {
+      mask-size: 10px 6px;
+    }
+
+    &--up {
+      mask-image: url('/img/arrows/arrow-up.svg');
+    }
+
+    &--down {
+      mask-image: url('/img/arrows/arrow-down.svg');
+    }
+
+    &--left {
+      mask-image: url('/img/arrows/arrow-left.svg');
+    }
+
+    &--right {
+      mask-image: url('/img/arrows/arrow-right.svg');
+    }
+  }
+}

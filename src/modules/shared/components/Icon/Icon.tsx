@@ -8,12 +8,14 @@ import { IconType } from '@sTypes/IconType';
 type Props = {
   type: IconType;
   wide?: boolean;
+  withBorder?: boolean;
 };
 
-export const Icon: React.FC<Props> = ({ type, wide = false }) => (
+export const Icon: React.FC<Props> = ({ type, wide, withBorder }) => (
   <div
     className={classNames(styles.icon, styles[type], {
       [styles['icon--wide']]: wide,
+      [styles['icon--with-border']]: withBorder,
     })}
   ></div>
 );

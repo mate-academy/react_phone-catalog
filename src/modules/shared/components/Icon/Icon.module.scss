@@ -2,15 +2,15 @@
 @use '@styles/utils/mixins' as *;
 
 .icon {
-  width: 48px;
+  height: 100%;
   aspect-ratio: 1;
   box-shadow: -1px 0 0 0 var(--elements-color);
 
   background-position: center;
   background-repeat: no-repeat;
+  transition-duration: $animation-duration;
 
   @include on-desktop {
-    width: 64px;
     background-size: 16px;
   }
 
@@ -19,29 +19,29 @@
     height: 64px;
   }
 
+  &--with-border {
+    box-shadow: none;
+    box-sizing: border-box;
+    border: 1px solid var(--icons-color);
+
+    &:hover {
+      border: 1px solid var(--primary-color);
+    }
+  }
+
   &--favorite {
-    background-image: url('/images/icons/icon-favorite.svg');
+    background-image: url('/img/icons/icon-favorite.svg');
   }
 
   &--shopping-bag {
-    background-image: url('/images/icons/icon-shopping-bag.svg');
+    background-image: url('/img/icons/icon-shopping-bag.svg');
   }
 
   &--menu {
-    transition-duration: $animation-duration;
-    background-image: url('/images/icons/icon-menu.svg');
+    background-image: url('/img/icons/icon-menu.svg');
   }
 
   &--close {
-    transition-duration: $animation-duration;
-    background-image: url('/images/icons/icon-close.svg');
-  }
-
-  &--arrow-up {
-    width: 32px;
-    box-shadow: none;
-    border: 1px solid var(--icons-color);
-    background-size: 10px 6px;
-    background-image: url('/images/icons/icon-arrow-up.svg');
+    background-image: url('/img/icons/icon-close.svg');
   }
 }
