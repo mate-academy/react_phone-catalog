@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1,
+    "name": "Banner Phones",
+    "image": "img/banner-phones.png",
+    "url": "/phones/",
+    "t": "phone"
+  },
+  {
+    "id": 2,
+    "name": "Banner Accessories",
+    "image": "img/banner-accessories.png",
+    "url": "/accessories/",
+    "t": "accessories"
+  },
+  {
+    "id": 3,
+    "name": "Banner Tablets",
+    "image": "img/banner-tablets.png",
+    "url": "/tablets/",
+    "t": "tablet"
+  }
+]

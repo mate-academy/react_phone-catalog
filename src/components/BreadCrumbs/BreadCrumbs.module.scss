@@ -1,0 +1,24 @@
+@import '../../assets/scss/variables';
+
+.breadCrumbs {
+  display: flex;
+  gap: 8px;
+  flex-direction: row;
+  align-items: center;
+
+  @include font-small-text;
+
+  &__link{
+    text-decoration: none;
+    color: $color-white;
+  }
+
+  &__text {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    color: $color-secondary;
+
+  }
+}

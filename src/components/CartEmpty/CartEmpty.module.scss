@@ -1,0 +1,17 @@
+@import '../../assets/scss/variables';
+
+.cart__empty_text{
+  grid-column: 1 / -1;
+  margin-bottom: 32px;
+  color: $color-white;
+
+  @include font-body-text;
+}
+
+.cart__empty_image{
+  grid-column: 1 / -1;
+  margin-bottom: 32px;
+  max-width: 400px;
+  width: 100%;
+  justify-self: center;
+}

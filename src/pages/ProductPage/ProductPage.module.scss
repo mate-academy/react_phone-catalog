@@ -1,0 +1,50 @@
+@import '../../assets/scss/variables';
+
+.product_page {
+  max-width: 1136px;
+  width: 100%;
+  margin-inline: auto;
+  margin-bottom: 64px;
+  box-sizing: border-box;
+
+  &__content {
+    padding-top: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    &_title {
+      margin: 0;
+
+      @include font-h1-mobile;
+
+      color: $color-white;
+    }
+
+    &_total {
+      @include font-body-text;
+
+      color: $color-secondary;
+    }
+  }
+
+  &__selectors {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+    padding-top: 32px;
+  }
+
+  &__pagination {
+    margin-top: 24px;
+    margin-bottom: 64px;
+
+    @include on-tablet {
+      margin-top: 40px;
+    }
+
+    @include on-desktop {
+      margin-bottom: 80px;
+    }
+  }
+}

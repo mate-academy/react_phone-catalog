@@ -1,0 +1,60 @@
+@import '../../assets/scss/variables';
+
+.home_page {
+  max-width: 1136px;
+  margin-inline: auto;
+  box-sizing: border-box;
+  width: 100%;
+
+  &__title {
+    width: 100%;
+    margin-block: 24px;
+
+    @include font-h1-mobile;
+
+    color: $color-white;
+
+    @include on-tablet {
+      margin-block: 32px;
+
+      @include font-h1-desktop-tablet;
+    }
+
+    @include on-desktop {
+      margin-block: 56px;
+    }
+  }
+
+  &__block {
+    display: flex;
+    flex-direction: column;
+    row-gap: 56px;
+    padding-bottom: 64px;
+
+    &_banner {
+      width: 100vw;
+      margin-left: -16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      @include on-tablet {
+        margin-left: 0;
+        width: 100%;
+      }
+
+      @include on-desktop {
+        width: 100%;
+        margin-left: 0;
+      }
+    }
+
+    &_card {
+      width: 100%;
+    }
+
+    &_category {
+      width: 100%;
+    }
+  }
+}

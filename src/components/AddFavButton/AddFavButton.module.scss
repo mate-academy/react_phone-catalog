@@ -1,0 +1,11 @@
+@import '../../assets/scss/variables';
+
+.add_to_fav_button {
+  width: 40px;
+  height: 40px;
+  background-color: $color-surface-2;
+
+  &:hover {
+    background-color: $color-icons;
+  }
+}

@@ -1,0 +1,56 @@
+@import '../../assets/scss/variables';
+
+.favourites_page {
+  display: flex;
+  flex-direction: column;
+  max-width: 1136px;
+  width: 100%;
+  margin-inline: auto;
+  gap: 24px;
+
+  @include on-tablet {
+    gap: 40px;
+  }
+
+  &_content {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    &_title {
+      @include font-h1-mobile;
+
+      color: $color-white;
+    }
+
+    &_text {
+      margin: 0;
+
+      @include font-body-text;
+
+      color: $color-secondary;
+    }
+  }
+
+  &_list {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(287px, 1fr));
+    gap: 40px 16px;
+    justify-content: start;
+    margin-bottom: 56px;
+
+    @include on-tablet {
+      grid-template-columns: repeat(auto-fill, minmax(288px, 1fr));
+      margin-bottom: 64px;
+      column-gap: 17px;
+    }
+
+    @include on-desktop {
+      grid-template-columns: repeat(auto-fill, minmax(272px, 1fr));
+      margin-bottom: 80px;
+      column-gap: 16px;
+    }
+  }
+}
