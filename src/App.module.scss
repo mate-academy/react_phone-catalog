@@ -1,4 +1,4 @@
-@import 'Styles/base.module';
+@import 'Styles/base';
 
 .App {
   min-height: 100vh;
@@ -19,13 +19,11 @@
 }
 
 a {
-  text-decoration: none; /* Убираем подчеркивание */
   color: $color-icons;
-  transition: color 0.3s ease; /* Добавляем плавный переход для цвета */
+  transition: color 0.3s ease;
 }
 
-/* Стили для состояния при наведении */
 a:hover,
 a:focus {
-  color: white; /* Цвет при наведении */
+  color: $color-white;
 }

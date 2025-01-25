@@ -23,17 +23,10 @@
   background-color: $color-surface2;
   border: 1px solid $color-surface2;
   cursor: pointer;
-
   transition: border 0.3s ease;
 
   &:hover {
     border: 1px solid $color-icons;
-  }
-
-  &:focus,
-  &:focus-visible {
-    border: 1px solid $color-accent;
-    outline: none;
   }
 
   &::after {
@@ -44,19 +37,30 @@
     right: 12px;
     top: 50%;
     transform: translateY(-50%);
-    background-size: cover;
+    background-size: auto;
     background-repeat: no-repeat;
-    background-image: url('~/public/img/icons/arrow-down-dark.png');
-    transition: transform 0.5s ease;
+    background-image: url('~/public/img/icons/arrow-down-light-gray.svg');
+    background-position: center;
+    transition: background-image 0.3s ease, transform 0.3s ease;
+  }
 
-    &:hover {
-      transform: background-image (url('~/public/img/icons/arrow-top.svg'));
-    }
+  &:hover::after {
+    background-image: url('~/public/img/icons/arrow-down-dark-gray.svg');
   }
 
   &.open::after {
-    background-image: url('~/public/img/icons/arrow-top-dark.png');
-    transform: translateY(-50%);
+    background-image: url('~/public/img/icons/arrow-down-light-gray.svg');
+    transform: translateY(-50%) rotate(180deg);
+  }
+
+  &.open:hover::after {
+    background-image: url('~/public/img/icons/arrow-down-dark-gray.svg');
+  }
+
+  &:focus,
+  &:focus-visible {
+    border: 1px solid $color-accent;
+    outline: none;
   }
 }
 

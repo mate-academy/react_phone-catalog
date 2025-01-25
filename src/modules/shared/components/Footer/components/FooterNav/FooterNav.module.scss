@@ -17,7 +17,6 @@
 .navbarLink {
   @include flex-center;
 
-  text-decoration: none;
   text-transform: uppercase;
   color: $color-white;
   outline: none;

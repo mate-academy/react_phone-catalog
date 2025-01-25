@@ -8,10 +8,10 @@ export const NotFoundPage: React.FC = () => {
           <div className={styles.backContainer}>
             <img
               className={styles.arrowIcon}
-              src="img/icons/arrow-forward-disabled.svg"
+              src="img/icons/arrow-down-light-gray.svg"
               alt="arrow-back"
             />
-            <span>Back to home</span>
+            Back to home
           </div>
         </a>
       </div>

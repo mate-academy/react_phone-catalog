@@ -9,7 +9,7 @@ export const BackToTop: React.FC = () => {
     <div className={style.backToTopBlock}>
       <span className={style.text}>Back to top</span>
       <button type="button" className={style.button} onClick={goToTop}>
-        <img src="/img/icons/arrow-top.svg" alt="arrow-top" />
+        <img src="/img/icons/arrow-back-white.svg" alt="arrow-top" />
       </button>
     </div>
   );

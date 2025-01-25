@@ -21,6 +21,7 @@
 
   height: 32px;
   width: 32px;
+  transform: rotate(90deg);
 
   @include hover-icons($color-icons);
 }

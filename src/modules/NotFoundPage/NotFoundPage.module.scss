@@ -11,19 +11,8 @@
   @include flex-center;
   @include small-text-desktop-tablet;
 
-  font-size: 14px;
-
   color: $color-secondary;
-
-  gap: 8px;
-
-  a {
-    text-decoration: none;
-
-    img {
-      transform: rotate(180deg);
-    }
-  }
+  font-size: 14px;
 }
 
 .backContainer {
@@ -35,6 +24,7 @@
 .arrowIcon {
   width: 16px;
   height: 16px;
+  transform: rotate(90deg)
 }
 
 .notFoundMessage {

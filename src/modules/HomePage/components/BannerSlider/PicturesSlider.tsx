@@ -9,7 +9,7 @@ export const PicturesSlider: React.FC = () => {
   return (
     <div className={styles.container}>
       <div className={styles.swiperButtonPrev}>
-        <img src="/img/icons/arrow-back.svg" alt="arrow-back" />
+        <img src="/img/icons/arrow-back-white.svg" alt="arrow-back" />
       </div>
 
       <Swiper
@@ -52,7 +52,7 @@ export const PicturesSlider: React.FC = () => {
       <div className={styles.swiperPagination}></div>
 
       <div className={styles.swiperButtonNext}>
-        <img src="/img/icons/arrow-forward.svg" alt="arrow-forward" />
+        <img src="/img/icons/arrow-back-white.svg" alt="arrow-forward" />
       </div>
     </div>
   );

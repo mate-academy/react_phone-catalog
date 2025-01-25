@@ -14,7 +14,11 @@ export const Breadcrumbs: React.FC = () => {
       </Link>
 
       <div>
-        <img src="/img/icons/arrow-forward-disabled.svg" alt="arrow" />
+        <img
+          src="/img/icons/arrow-down-light-gray.svg"
+          alt="arrow"
+          className={styles.arrow}
+        />
       </div>
 
       {pathnames.map((name, index) => {
@@ -32,8 +36,9 @@ export const Breadcrumbs: React.FC = () => {
                 <Link to={`/${name}`}>{name}</Link>
                 <div>
                   <img
-                    src="/img/icons/arrow-forward-disabled.svg"
+                    src="/img/icons/arrow-down-light-gray.svg"
                     alt="arrow"
+                    className={styles.arrow}
                   />
                 </div>
               </>

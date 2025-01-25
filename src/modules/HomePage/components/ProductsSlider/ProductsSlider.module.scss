@@ -4,8 +4,6 @@
   @include flex-center;
 
   flex-direction: column;
-
-  // width: 100%;
   max-width: 1136px;
 }
 
@@ -21,16 +19,12 @@
 
   @media (max-width: $mobile-breakpoint) {
     padding: 0 16px;
-   }
+  }
 }
 
 .navButtons {
   display: flex;
   gap: 16px;
-}
-
-.sliderButtonPrev {
-  transform: rotate(180deg);
 }
 
 .sliderButtonPrev,
@@ -44,21 +38,39 @@
   border: none;
   height: 32px;
   width: 32px;
-  background-image: url('~/public/img/icons/arrow-forward-white.svg');
   background-position: center;
   background-repeat: no-repeat;
   transition: background-color 0.5s ease-in-out;
+
+  &.sliderButtonPrev {
+    background-image: url('~/public/img/icons/arrow-back-white.svg');
+  }
+
+  &.sliderButtonNext {
+    background-image: url('~/public/img/icons/arrow-back-white.svg');
+    transform: rotate(180deg);
+  }
 
   &:hover {
     background-color: $color-icons;
   }
 }
 
-.lockedButton, .lockedButton:hover {
+.lockedButton,
+.lockedButton:hover {
   pointer-events: none;
-  background-image: url('~/public/img/icons/arrow-forward-disabled.svg');
   background-color: $color-surface1;
   border: 1px solid $color-elements;
+
+  &.sliderButtonPrev {
+    background-image: url('~/public/img/icons/arrow-down-light-gray.svg');
+    transform: rotate(90deg);
+  }
+
+  &.sliderButtonNext {
+    background-image: url('~/public/img/icons/arrow-down-light-gray.svg');
+    transform: rotate(-90deg);
+  }
 }
 
 .title {
@@ -71,7 +83,6 @@
 
     margin: 0 0 16px;
     width: 136px;
-
   }
 }
 
