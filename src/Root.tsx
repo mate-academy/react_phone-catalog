@@ -2,7 +2,7 @@ import { Route, HashRouter as Router, Routes } from 'react-router-dom';
 
 import '@styles/main.scss';
 
-import { App } from './modules/App/';
+import { App } from '@App/App';
 import { HomePage } from './modules/HomePage';
 import { PageNotFound } from './modules/NotFoundPage';
 import { ProductsPage } from './modules/ProductsPage';

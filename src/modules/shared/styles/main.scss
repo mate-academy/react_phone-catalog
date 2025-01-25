@@ -19,14 +19,14 @@
   --red-color: #eb5757;
 
   // grid columns count
-  --columns: $columns-p;
+  --columns: #{$columns-p};
 
   @include on-tablet {
-    --columns: $columns-t;
+    --columns: #{$columns-t};
   }
 
   @include on-desktop {
-    --columns: $columns-d;
+    --columns: #{$columns-d};
   }
 
   &--dark {
