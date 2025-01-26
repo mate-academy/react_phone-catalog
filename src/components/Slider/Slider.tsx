@@ -121,7 +121,7 @@ export const Slider: React.FC = () => {
           className="slider__side-button slider__side-button--left"
           onClick={handlePrev}
         >
-          <img src="./img/icons/arrow-left.svg" alt="icons arrow left" />
+          <img src="/img/icons/arrow-left.svg" alt="icons arrow left" />
         </button>
         <div ref={sliderRef} className="slider__images">
           <ul
@@ -146,7 +146,7 @@ export const Slider: React.FC = () => {
           className="slider__side-button slider__side-button--right"
           onClick={handleNext}
         >
-          <img src="./img/icons/arrow-right.svg" alt="icons arrow right" />
+          <img src="/img/icons/arrow-right.svg" alt="icons arrow right" />
         </button>
       </div>
       <div className="slider__buttons">

@@ -65,7 +65,7 @@
 
     &:first-child .slider__img {
       @include mix.on-tablet {
-        content: url('./img/Banner-main-button.png');
+        content: url('/img/Banner-main-button.png');
         object-fit: contain;
         object-position: center;
       }
