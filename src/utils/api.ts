@@ -1,5 +1,5 @@
 export const getNewModels = () => {
-  return fetch('/api/phones.json')
+  return fetch('/phones.json')
     .then(response => response.json())
     .then(data =>
       data.filter(
