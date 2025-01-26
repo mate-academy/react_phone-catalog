@@ -1,0 +1,12 @@
+@use '../../styles/utils/vars' as vars;
+@use '../../styles/utils/mixins' as mix;
+
+.home-page {
+  margin-top: 48px;
+}
+
+.section {
+  &__title {
+    margin-bottom: 24px;
+  }
+}

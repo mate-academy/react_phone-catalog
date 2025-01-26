@@ -1,0 +1,48 @@
+@use '../styles/utils/mixins' as mix;
+@use '../styles/utils/vars' as vars;
+
+.icon {
+  display: block;
+  width: 16px;
+  height: 16px;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin: 0 auto;
+
+  &__nav {
+    width: 48px;
+    height: 48px;
+
+    @include mix.hover(scale, 1.2);
+  }
+
+  &__footer {
+    width: 32px;
+    height: 32px;
+    border: 1px solid vars.$c-icons;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    @include mix.hover(border-color, black);
+  }
+
+  &--burger-menu {
+    background-image: url(./img/icons/burger-menu.svg);
+
+    &.menu--close {
+      background-image: url(./img/icons/icon-close.svg);
+    }
+  }
+
+  &--heart {
+    background-image: url(./img/icons/icon-heart.png);
+  }
+
+  &--basket {
+    background-image: url(./img/icons/Shopping-bag.png);
+  }
+
+  &--back-top {
+    background-image: url(./img/icons/arrow-up-black.svg);
+  }
+}

@@ -1,0 +1,21 @@
+@use '../styles/utils/mixins' as mix;
+@use '../styles/utils/vars' as vars;
+
+.button {
+  margin: 0;
+  padding: 0;
+  width: 32px;
+  height: 32px;
+  background-color: #fff;
+  font-family: Mont-semibold, sans-serif;
+  cursor: pointer;
+  border: 1px solid vars.$c-icons;
+
+  @include mix.hover(border-color, vars.$c-primary);
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+

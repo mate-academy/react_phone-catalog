@@ -1,0 +1,108 @@
+@use '../../styles/utils/vars' as vars;
+@use '../../styles/utils/mixins' as mix;
+
+.slider {
+  &__container {
+    margin-bottom: 18px;
+
+    @include mix.on-tablet {
+      display: flex;
+      justify-content: space-between;
+
+    }
+  }
+
+  &__images {
+    box-sizing: border-box;
+    height: 100%;
+    margin-inline: -16px;
+    overflow: hidden;
+
+
+    @include mix.on-tablet {
+      width: 85%;
+
+    }
+  }
+
+  &__list {
+    list-style: none;
+    aspect-ratio: 1 / 1;
+    margin: 0;
+    padding: 0;
+    display: flex;
+
+    @include mix.on-tablet {
+      aspect-ratio: auto;
+    }
+  }
+
+  &__item {
+    width: 100%;
+    height: 100%;
+    flex-shrink: 0;
+
+    &__img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+
+      @include mix.on-tablet {
+        height: 189px;
+        object-fit: contain;
+        object-position: center;
+      }
+
+      @include mix.on-desktop {
+        height: 400px;
+        object-fit: contain;
+        object-position: center;
+      }
+    }
+
+    &:first-child .slider__img {
+      @include mix.on-tablet {
+        content: url('./img/Banner-main-button.png');
+        object-fit: contain;
+        object-position: center;
+      }
+    }
+  }
+
+  &__buttons {
+    width: 80px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin: 0 auto 10px;
+  }
+
+  &__button {
+    width: 14px;
+    height: 4px;
+    background-color: vars.$c-elements;
+    border: none;
+
+    @include mix.hover(background-color, vars.$c-primary);
+
+    &.is-active {
+      background-color: vars.$c-primary;
+    }
+
+  }
+
+  &__side-button {
+    display: none;
+    width: 32px;
+    background-color: #fff;
+    border: 1px solid vars.$c-elements;
+
+    @include mix.hover(border-color, vars.$c-primary);
+
+    @include mix.on-tablet {
+      display: block;
+    }
+  }
+}

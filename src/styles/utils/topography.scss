@@ -1,0 +1,85 @@
+@use 'vars' as vars;
+@use 'mixins' as mix;
+
+@font-face {
+  font-family: Mont;
+  src: url('./fonts/Mont-Regular.otf') format('opentype');
+}
+
+@font-face {
+  font-family: Mont-bold;
+  src: url('./fonts/Mont-Bold.otf') format('opentype');
+}
+
+@font-face {
+  font-family: Mont-semibold;
+  src: url('./fonts/Mont-SemiBold.otf') format('opentype');
+}
+
+h1, h2, h3, h4 {
+  margin: 0;
+  padding: 0;
+
+}
+
+h1 {
+  font-family: Mont-bold, sans-serif;
+  font-size: 32px;
+  line-height: 41px;
+  letter-spacing: -0.01em;
+  color: vars.$c-primary;
+
+  @include mix.on-tablet {
+    font-size: 48px;
+    line-height: 56px;
+    letter-spacing: -0.01em;
+  }
+}
+
+h2 {
+  font-family: Mont-bold, sans-serif;
+  font-size: 22px;
+  line-height: 31px;
+  color: vars.$c-primary;
+
+  @include mix.on-tablet {
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+  }
+}
+
+h3 {
+  font-family: Mont-semibold, sans-serif;
+  font-size: 20px;
+  line-height: 26px;
+
+  @include mix.on-tablet {
+    font-family: Mont-bold, sans-serif;
+    font-size: 22px;
+    line-height: 31px;
+  }
+}
+
+h4 {
+  font-family: Mont-semibold, sans-serif;
+  font-size: 16px;
+  line-height: 20px;
+
+  @include mix.on-tablet {
+    font-size: 20px;
+    line-height: 26px;
+  }
+}
+
+.body-text {
+  font-family: Mont, sans-serif;
+  font-size: 14px;
+  line-height: 21px;
+}
+
+.small-text {
+  font-family: Mont-semibold, sans-serif;
+  font-size: 12px;
+  line-height: 15px;
+}

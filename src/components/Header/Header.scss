@@ -1,0 +1,87 @@
+@use '../../styles/utils/vars' as vars;
+@use '../../styles/utils/mixins' as mix;
+
+.header {
+  z-index: 1;
+  position: fixed;
+  background-color: #fff;
+  top: 0;
+  width: 100%;
+  height: 48px;
+  overflow: hidden;
+  box-shadow: 0 1px 0 vars.$c-elements;
+  transition: height vars.$transition-time ease;
+
+  &.full--height {
+    height: 100vh;
+  }
+
+  &__container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    @include mix.on-tablet {
+      flex-direction: row;
+    }
+  }
+
+  &__top {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+
+    &--logo-with-menu {
+      display: flex;
+      padding-left: 16px;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 1px 0 vars.$c-elements;
+    }
+
+    @include mix.on-tablet {
+      flex-direction: row;
+      align-items: center;
+      gap: 32px;
+    }
+
+    @include mix.on-desktop {
+      gap: 64px;
+    }
+  }
+
+  &__logo {
+    display: block;
+
+    &-link {
+      width: 89px;
+      padding-block: 8px;
+      text-decoration: none;
+
+      @include mix.hover(scale, 1.2);
+    }
+  }
+
+  &__icons {
+    display: flex;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-20px);
+    transition:
+      opacity vars.$transition-time ease,
+      transform vars.$transition-time ease;
+
+    &.icons--visible {
+      transform: translateY(0);
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    @include mix.on-tablet {
+      transform: translateY(0);
+      opacity: 1;
+      pointer-events: auto;
+    }
+  }
+}

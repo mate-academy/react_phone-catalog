@@ -1,0 +1,93 @@
+@use '../../styles/utils/vars' as vars;
+@use '../../styles/utils/mixins' as mix;
+
+.card {
+  width: 212px;
+  box-sizing: border-box;
+  border: 1px solid vars.$c-elements;
+
+  @include mix.hover(box-shadow, 0 3px 13px 0 #17203166);
+
+  &__container {
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__link {
+
+    &--photo {
+      height: 129px;
+      object-fit: contain;
+
+      @include mix.hover(transform, scale(1.1));
+
+      &-link {
+        width: 100%;
+        display: block;
+        text-align: center;
+      }
+    }
+
+    &--name-link {
+      display: block;
+      text-decoration: none;
+      color: vars.$c-primary;
+    }
+  }
+
+  &__price {
+    color: vars.$c-primary;
+  }
+
+  &__separator {
+    height: 1px;
+    background-color: vars.$c-elements;
+  }
+
+  &__list {
+    list-style: none;
+
+    &--item {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    &--name {
+      color: vars.$c-secondary;
+    }
+
+    &--value {
+      color: vars.$c-primary;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__button--add {
+    width: 70%;
+    color: #fff;
+    background-color: vars.$c-primary;
+    border: none;
+    height: 40px;
+    cursor: pointer;
+
+    @include mix.hover(box-shadow, 0 3px 13px 0 #17203166);
+
+  }
+
+  &__button--prefer {
+    width: 40px;
+    height: 40px;
+    background-color: #fff;
+    background-image: url(./img/icons/icon-heart.png);
+    border: 1px solid vars.$c-icons;
+    cursor: pointer;
+
+    @include mix.hover(border-color, vars.$c-primary);
+  }
+}

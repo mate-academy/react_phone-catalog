@@ -1,0 +1,65 @@
+@use '../../styles/utils/vars' as vars;
+@use '../../styles/utils/mixins' as mix;
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 -1px 0 0 vars.$c-elements;
+  border-bottom: 1px solid vars.$c-elements;
+  padding-block: 32px;
+  gap: 32px;
+
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity vars.$transition-time ease;
+
+  animation: fade-in vars.$transition-time ease forwards;
+  animation-delay: vars.$transition-time;
+
+  @include mix.content-padding-inline;
+
+  @include mix.on-tablet {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__nav__list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    @include mix.on-tablet {
+      flex-direction: row;
+      align-items: center;
+    }
+
+    @include mix.on-desktop {
+      gap: 100px;
+    }
+  }
+
+  &__back-top {
+    display: flex;
+    align-items: center;
+    color: vars.$c-secondary;
+    gap: 16px;
+    margin: 0 auto;
+
+    @include mix.on-tablet {
+      margin: 0;
+    }
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(50px)
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0)
+  }
+}
