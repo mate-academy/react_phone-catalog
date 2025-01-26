@@ -43,6 +43,14 @@
   }
 }
 
+.TechSpecs {
+  @include full-grid-width;
+
+  @include for-desktop {
+    grid-column: 14 / 25
+  }
+}
+
 .ProductsPage {
   @include grid;
 

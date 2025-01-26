@@ -21,6 +21,7 @@ import {
 import { PhotosSlider } from '../PhotosSlider';
 import { ProductDetailsControls } from '../ProductDetailsControls';
 import { About } from '../About';
+import { TechSpecs } from '../TechSpecs';
 
 type Props = {
   productCategory: Category;
@@ -113,6 +114,7 @@ export const ProductDetailsPage: React.FC<Props> = ({ productCategory }) => {
             />
 
             <About product={productDetails} className={styles.About} />
+            <TechSpecs product={productDetails} className={styles.TechSpecs} />
           </>
         )}
       </main>

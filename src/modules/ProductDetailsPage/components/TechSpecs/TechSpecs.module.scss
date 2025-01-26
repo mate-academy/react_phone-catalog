@@ -1,0 +1,52 @@
+@use "../../../shared/styles/mixins" as *;
+@use "../../../shared/styles/extends";
+
+.Title {
+  @extend %h3;
+  @include color-transition((color: var(--primary-text-color)));
+}
+
+.Parameters {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-top: 9px;
+
+  @include for-mobile {
+    padding-top: 14px;
+  }
+}
+
+.Parameter {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.ParameterName {
+  @extend %body-text;
+  @include color-transition((color: var(--secondary-text-color)));
+}
+
+.ParameterValue {
+  text-align: right;
+
+  @extend %body-text;
+  @include color-transition((color: var(--primary-text-color)));
+}
+
+.TechSpecs {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  padding-top: 56px;
+
+  @include for-tablet {
+    padding-top: 64px;
+  }
+
+  @include for-desktop {
+    padding-top: 80px;
+  }
+}
