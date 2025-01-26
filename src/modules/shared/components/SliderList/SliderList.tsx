@@ -1,4 +1,5 @@
 import React from 'react';
+import classNames from 'classnames';
 
 import styles from './SliderList.module.scss';
 
@@ -21,12 +22,18 @@ export const SliderList: React.FC<Props> = React.memo(function SliderList({
   hidePrevPrice,
 }) {
   const skeletons = [1, 2, 3, 4, 5, 6, 7, 8];
+  const showSkeletons = products.length === 0;
 
   return (
-    <div ref={sliderRef} className={styles['slider-list']}>
-      {!products.length && skeletons.map(v => <ProductCardSkeleton key={v} />)}
+    <div
+      ref={sliderRef}
+      className={classNames(styles['slider-list'], {
+        [styles['slider-list--disabled']]: showSkeletons,
+      })}
+    >
+      {showSkeletons && skeletons.map(v => <ProductCardSkeleton key={v} />)}
 
-      {products.length !== 0 &&
+      {!showSkeletons &&
         products.map((product, i) => (
           <ProductCard
             ref={(el: HTMLElement) => {

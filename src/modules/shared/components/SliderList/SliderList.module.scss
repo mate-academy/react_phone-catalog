@@ -36,6 +36,10 @@ $gaps-d: ($size-d - 1) * $column-gap-p;
     display: none; /* Chrome, Safari, Edge */
   }
 
+  &--disabled {
+    overflow: hidden;
+  }
+
   @include on-tablet {
     margin-inline: -$padding-inline-t;
     padding-inline: $padding-inline-t;
