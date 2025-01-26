@@ -17,3 +17,12 @@ body {
   flex-direction: column;
   background-color: #0f1121;
 }
+
+.visually-hidden {
+  visibility: hidden;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+}

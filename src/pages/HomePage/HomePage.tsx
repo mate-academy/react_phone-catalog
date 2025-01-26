@@ -17,7 +17,7 @@ export const HomePage: React.FC = () => {
 
   return (
     <div className={style.home_page}>
-      <h1 className={style.home_page__title}>Welcome to Nice Gadgets store!</h1>
+      <h2 className={style.home_page__title}>Welcome to Nice Gadgets store!</h2>
 
       <div className={style.home_page__block}>
         <div className={style.home_page__block_banner}>

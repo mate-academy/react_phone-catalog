@@ -5,6 +5,7 @@ import style from './Layout.module.scss';
 
 export const Layout = () => (
   <div className="app">
+    <h1 className="visually-hidden">Product Catalog</h1>
     <Header />
     <div className={style.main_container}>
       <Outlet />

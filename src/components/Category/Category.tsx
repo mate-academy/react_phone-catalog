@@ -39,7 +39,7 @@ export const Category: React.FC = () => {
               <img
                 src="./img/category/mobile-category.png"
                 alt="Mobiles"
-                className={style.category__container__content__items__imgs_img}
+                className={style.category__content__items__imgs_img}
               />
             </div>
 
