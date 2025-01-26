@@ -1,6 +1,6 @@
 import { Route, HashRouter as Router, Routes } from 'react-router-dom';
 
-import '@styles/main.scss';
+import '@styles/../main.scss';
 
 import { App } from '@App/App';
 import { HomePage } from './modules/HomePage';

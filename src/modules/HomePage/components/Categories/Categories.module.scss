@@ -1,5 +1,5 @@
-@use '@styles/utils/vars' as *;
-@use '@styles/utils/mixins' as *;
+@use '@styles/vars' as *;
+@use '@styles/mixins' as *;
 
 .categories {
   gap: 24px;
@@ -21,17 +21,11 @@
     grid-column: 1 / -1;
 
     @include on-tablet {
-      grid-column: 1 / -4;
+      grid-column: span 4;
     }
 
     @include on-desktop {
       grid-column: span 8;
     }
-  }
-}
-
-.category {
-  &__image {
-    width: 100px;
   }
 }

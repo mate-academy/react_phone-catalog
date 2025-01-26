@@ -11,11 +11,12 @@
       "@store/*": ["./modules/shared/store/*"],
       "@hooks/*": ["./modules/shared/hooks/*"],
       "@utils/*": ["./modules/shared/utils/*"],
-      "@styles/*": ["./modules/shared/styles/*"],
+      "@styles/*": ["./modules/shared/styles/utils/*"],
       "@services/*": ["./modules/shared/services/*"],
       "@components/*": ["./modules/shared/components/*"],
 
-      "@App/*": ["./modules/App/*"]
+      "@App/*": ["./modules/App/*"],
+      "@HomePage/*": ["./modules/HomePage/*"]
     }
   }
 }

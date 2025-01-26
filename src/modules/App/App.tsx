@@ -19,7 +19,11 @@ export const App = () => {
 
   // fetching data
   useEffect(() => {
-    if (products.length) {
+    if (
+      products.phones.length &&
+      products.tablets.length &&
+      products.accessories.length
+    ) {
       return;
     }
 

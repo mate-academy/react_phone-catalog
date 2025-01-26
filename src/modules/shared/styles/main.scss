@@ -1,10 +1,10 @@
-@use '@styles/utils/vars' as *;
-@use '@styles/utils/mixins' as *;
+@use '@styles/vars' as *;
+@use '@styles/mixins' as *;
 
 // main styles
-@use '@styles/utils/reset' as *;
-@use '@styles/utils/fonts' as *;
-@use '@styles/utils/typography' as *;
+@use '@styles/reset' as *;
+@use '@styles/fonts' as *;
+@use '@styles/typography' as *;
 
 .page {
   scroll-behavior: smooth;

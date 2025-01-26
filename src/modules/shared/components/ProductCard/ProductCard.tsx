@@ -1,5 +1,4 @@
-import classNames from 'classnames';
-import React, { useEffect, useRef, useState } from 'react';
+import React from 'react';
 
 import styles from './ProductCard.module.scss';
 
@@ -7,6 +6,7 @@ import { Product } from '@sTypes/Product';
 
 import { AddToCard } from '@components/AddToCard';
 import { Characteristics } from '@components/Characteristics';
+import { Image } from '@components/Image';
 
 type Props = {
   product: Product;
@@ -15,18 +15,7 @@ type Props = {
 
 export const ProductCard = React.forwardRef<HTMLElement, Props>(
   function ProductCard({ product, hidePrevPrice }, ref) {
-    const timeoutId = useRef(0);
-    const [isLoaded, setIsLoaded] = useState(false);
-    const [isLoading, setIsloading] = useState(false);
     const { price, fullPrice, screen, capacity, ram, image } = product;
-
-    useEffect(() => {
-      if (!isLoaded) {
-        timeoutId.current = window.setTimeout(() => setIsloading(true), 300);
-      } else {
-        window.clearTimeout(timeoutId.current);
-      }
-    }, [isLoaded]);
 
     const characteristics: [string, string][] = [
       ['Screen', screen],
@@ -36,16 +25,7 @@ export const ProductCard = React.forwardRef<HTMLElement, Props>(
 
     return (
       <article ref={ref} className={styles['product-card']}>
-        <img
-          src={image}
-          onLoad={() => {
-            setIsLoaded(true);
-            setIsloading(false);
-          }}
-          className={classNames(styles['product-card__image'], {
-            [styles['product-card__image--loading']]: isLoading,
-          })}
-        />
+        <Image src={image} className={styles['product-card__image']} />
 
         <div className={styles['product-card__title']}>{product.name}</div>
 

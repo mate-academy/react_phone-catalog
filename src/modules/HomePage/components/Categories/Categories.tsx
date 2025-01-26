@@ -1,33 +1,34 @@
-// import { useContext } from 'react';
+import { useContext } from 'react';
 
 import styles from './Categories.module.scss';
 
-// import { ProductsContext } from '@store/ProductsStore';
+import { Category } from '@HomePage/types/Category';
 
-type Category = {
-  bgColor: string;
-  title: string;
-  img: string;
-};
+import { CategoryComponent } from '@HomePage/components/CategoryComponent';
+
+import { ProductsContext } from '@store/ProductsStore';
 
 export const Categories = () => {
-  // const products = useContext(ProductsContext);
+  const products = useContext(ProductsContext);
 
   const categories: Category[] = [
     {
       bgColor: '#6D6474',
       title: 'Mobile phones',
       img: './img/category-phones.webp',
+      amount: products.phones.length,
     },
     {
       bgColor: '#8D8D92',
       title: 'Tablets',
       img: './img/category-tablets.png',
+      amount: products.tablets.length,
     },
     {
       bgColor: '#D53C51',
       title: 'Accessories',
       img: './img/category-accessories.png',
+      amount: products.accessories.length,
     },
   ];
 
@@ -40,12 +41,7 @@ export const Categories = () => {
       <div className={styles.categories__categories}>
         {categories.map(category => (
           <div key={category.title} className={styles.categories__category}>
-            <article className={styles.category}>
-              <img src={category.img} className={styles.category__image} />
-
-              <div>{category.title}</div>
-              <div> models</div>
-            </article>
+            <CategoryComponent category={category} />
           </div>
         ))}
       </div>

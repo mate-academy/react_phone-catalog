@@ -1,6 +1,6 @@
-@use '@styles/utils/vars' as *;
-@use '@styles/utils/mixins' as *;
-@use '@styles/utils/extends' as *;
+@use '@styles/vars' as *;
+@use '@styles/mixins' as *;
+@use '@styles/extends' as *;
 
 .product-card-skeleton {
   padding: 32px;

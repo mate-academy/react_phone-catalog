@@ -10,14 +10,18 @@ import { Categories } from './components/Categories';
 export const HomePage = () => {
   const products = useContext(ProductsContext);
 
-  const brandNewProducts = useMemo(() => {
-    return [...products]
-      .sort((productA, productB) => productA.age - productB.age)
-      .slice(0, 20);
+  const allProducts = useMemo(() => {
+    return Object.values(products).flat(Infinity);
   }, [products]);
 
+  const brandNewProducts = useMemo(() => {
+    return [...allProducts]
+      .sort((productA, productB) => productA.age - productB.age)
+      .slice(0, 20);
+  }, [allProducts]);
+
   const hotPricesProducts = useMemo(() => {
-    return [...products]
+    return [...allProducts]
       .sort((productA, productB) => {
         const discountA = productA.fullPrice - productA.price;
         const discountB = productB.fullPrice - productB.price;
@@ -25,7 +29,7 @@ export const HomePage = () => {
         return discountB - discountA;
       })
       .slice(0, 20);
-  }, [products]);
+  }, [allProducts]);
 
   return (
     <div className="home-page">
