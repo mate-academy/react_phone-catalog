@@ -131,9 +131,7 @@
 
   &__label,
   &__value {
-    font-weight: $font-normal;
-    font-size: 12px;
-    line-height: 15.34px;
+    @include small-text;
   }
 
   &__label {

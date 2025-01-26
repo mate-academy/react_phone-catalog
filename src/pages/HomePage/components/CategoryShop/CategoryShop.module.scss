@@ -17,6 +17,7 @@
 
     @include on-mobile {
       grid-template-columns: 1fr;
+      margin-inline: 16px;
     }
   }
 }

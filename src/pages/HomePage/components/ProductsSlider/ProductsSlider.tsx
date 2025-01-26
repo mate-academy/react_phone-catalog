@@ -55,23 +55,25 @@ export const ProductsSlider: React.FC<Props> = ({
 
   return (
     <div className={styles.slider}>
-      <h2 className={styles.slider__title}>{title}</h2>
+      <div className={styles.slider__top}>
+        <h2 className={styles.slider__title}>{title}</h2>
 
-      <div className={styles.slider__btns}>
-        <button
-          className={styles.slider__btn}
-          onClick={goToPrev}
-          disabled={!canScrollPrev}
-        >
-          <Icon type="arrowPrev" />
-        </button>
-        <button
-          className={styles.slider__btn}
-          onClick={goToNext}
-          disabled={!canScrollNext}
-        >
-          <Icon type="arrowNext" />
-        </button>
+        <div className={styles.slider__btns}>
+          <button
+            className={styles.slider__btn}
+            onClick={goToPrev}
+            disabled={!canScrollPrev}
+          >
+            <Icon type="arrowPrev" />
+          </button>
+          <button
+            className={styles.slider__btn}
+            onClick={goToNext}
+            disabled={!canScrollNext}
+          >
+            <Icon type="arrowNext" />
+          </button>
+        </div>
       </div>
 
       <div className={styles.slider__wrapper} ref={emblaRef}>

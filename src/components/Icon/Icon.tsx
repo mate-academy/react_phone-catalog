@@ -14,6 +14,8 @@ import ArrowNextLight from '../../assets/images/Icons/light/arrowRightLight.png'
 import ArrowPrewDark from '../../assets/images/Icons/dark/arrowLeftDark.png';
 import ArrowNextDark from '../../assets/images/Icons/dark/arrowRightDark.png';
 import FavouriteActive from '../../assets/images/Icons/FavouriteActive.png';
+import ArrowTopLight from '../../assets/images/Icons/light/arrowTopLight.png';
+import ArrowTopDark from '../../assets/images/Icons/dark/arrowTopDark.png';
 import { useTheme } from '../../hooks/useTheme';
 
 type Props = {
@@ -32,6 +34,7 @@ export const Icon: React.FC<Props> = ({ type }) => {
     close: darkTheme ? CloseDark : CloseLight,
     arrowPrev: darkTheme ? ArrowPrewDark : ArrowPrevLight,
     arrowNext: darkTheme ? ArrowNextDark : ArrowNextLight,
+    arrowTop: darkTheme ? ArrowTopDark : ArrowTopLight,
   };
 
   const iconSrc = icons[type];

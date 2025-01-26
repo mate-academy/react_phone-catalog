@@ -11,6 +11,8 @@ body.light-theme {
   --card-hover-text-color: #64656b;
   --card-button-color: #313237;
   --card-button-hover-color: #4f5158;
+  --primary-footer-text-color: #89939a;
+  --secondary-footer-text-color: #313237;
 }
 
 body.dark-theme {
@@ -26,6 +28,8 @@ body.dark-theme {
   --card-hover-text-color: #cccccc;
   --card-button-color: #905bff;
   --card-button-hover-color: #a177fa;
+  --primary-footer-text-color: #f1f2f9;
+  --secondary-footer-text-color: #f1f2f9;
 }
 
 $green-color: #27ae60;

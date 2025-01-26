@@ -20,4 +20,12 @@
       padding-block: 14.2px;
     }
   }
+
+  &__imgFooter {
+    width: 89px;
+    height: 32px;
+    padding: 0;
+
+    @include hover-scale;
+  }
 }

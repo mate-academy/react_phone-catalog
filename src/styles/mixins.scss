@@ -35,6 +35,12 @@
   line-height: 21px;
 }
 
+@mixin small-text {
+  font-weight: $font-normal;
+  font-size: 12px;
+  line-height: 15.34px;
+}
+
 @mixin hover-scale {
   transition: transform $transition-time ease-in-out;
 
@@ -153,5 +159,22 @@
 
   @include on-mobile {
     margin-bottom: 24px;
+  }
+}
+
+@mixin btn {
+  height: 32px;
+  width: 32px;
+  justify-content: center;
+  align-items: center;
+  padding-top: 3px;
+  border: 1px solid var(--button-border-color);
+  background-color: var(--button-bg-color);
+  cursor: pointer;
+
+  &:hover {
+    border-color: var(--button-border-color);
+    transition: transform $transition-time ease-in-out;
+    transform: scale(0.97);
   }
 }

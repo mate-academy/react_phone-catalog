@@ -5,6 +5,16 @@
 
   @include section;
 
+  @include on-mobile {
+    margin-left: 16px;
+  }
+
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
   &__title {
     margin: 0;
 
@@ -23,28 +33,17 @@
   }
 
   &__btn {
-    height: 32px;
-    width: 32px;
-    justify-content: center;
-    align-items: center;
-    padding-top: 3px;
-    border: 1px solid var(--button-border-color);
-    background-color: var(--button-bg-color);
-    cursor: pointer;
+    @include btn;
 
     &:disabled {
       @include disabled-button;
     }
-
-    &:hover {
-      border-color: var(--button-border-color);
-      transition: transform $transition-time ease-in-out;
-      transform: scale(0.97);
-    }
   }
 
   &__wrapper {
-    height: 512px;
+    @include on-mobile {
+      height: 440px;
+    }
   }
 
   &__products {

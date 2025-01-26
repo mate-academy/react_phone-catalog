@@ -5,4 +5,5 @@ export type IconType =
   | 'menu'
   | 'close'
   | 'arrowPrev'
-  | 'arrowNext';
+  | 'arrowNext'
+  | 'arrowTop';

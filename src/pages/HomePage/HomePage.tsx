@@ -14,13 +14,18 @@ export const HomePage = () => {
   const newModels = sortById(getNewModels(products));
   const uniqueProducts = getUniqueProducts(newModels);
   const hotestPrices = getTheHotestPrices(products);
+  const uniqueTheHotestPrices = getUniqueProducts(hotestPrices);
 
   return (
     <main className={styles['home-page']}>
       <Hero />
       <ProductsSlider products={uniqueProducts} title="Brand new models" />
       <CategoryShop />
-      <ProductsSlider products={hotestPrices} title="Hot prices" checkPrice />
+      <ProductsSlider
+        products={uniqueTheHotestPrices}
+        title="Hot prices"
+        checkPrice
+      />
     </main>
   );
 };
