@@ -34,7 +34,9 @@ type Props = {
 };
 export const Icon: React.FC<Props> = ({ type, className, origin }) => {
   const dispatch = useAppDispatch();
-  const { favoritesList, cartList } = useAppSelector(st => st.products);
+  const { favoritesList, cartList, totalItemsInCart } = useAppSelector(
+    st => st.products,
+  );
 
   // we don't need these icons to be links
   if (type === IconType.BURGER || type === IconType.CLOSE) {
@@ -71,7 +73,7 @@ export const Icon: React.FC<Props> = ({ type, className, origin }) => {
           <span className={cl.listInfo}>{favoritesList.length}</span>
         )}
         {type === IconType.CART && cartList.length > 0 && (
-          <span className={cl.listInfo}>{cartList.length}</span>
+          <span className={cl.listInfo}>{totalItemsInCart}</span>
         )}
       </div>
     </NavLink>

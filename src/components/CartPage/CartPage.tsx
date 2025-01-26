@@ -35,7 +35,7 @@ export const CartPage = () => {
   const isLoading = useComponentLoading(300);
   const [isModalShown, setIsModalShown] = useState(false);
 
-  const { cartList } = useAppSelector(st => st.products);
+  const { cartList, totalItemsInCart } = useAppSelector(st => st.products);
   const { language } = useAppSelector(st => st.global);
 
   function removeItem(item: Product) {
@@ -62,10 +62,6 @@ export const CartPage = () => {
 
   const totalPrice = cartList.reduce((acc, curr) => {
     return curr.price * (curr.quantity || 1) + acc;
-  }, 0);
-
-  const totalItems = cartList.reduce((acc, curr) => {
-    return (curr.quantity || 1) + acc;
   }, 0);
 
   if (isModalShown && cartList.length === 0) {
@@ -167,8 +163,8 @@ export const CartPage = () => {
 
           <small className={cl.totalAndCheckoutContainer__subtitle}>
             {language === 'en'
-              ? `Total for ${totalItems} item${totalItems > 1 ? 's' : ''}`
-              : `Всього за ${totalItems} товар${getWordEndingInUkrainian(totalItems)}`}
+              ? `Total for ${totalItemsInCart} item${totalItemsInCart > 1 ? 's' : ''}`
+              : `Всього за ${totalItemsInCart} товар${getWordEndingInUkrainian(totalItemsInCart)}`}
           </small>
 
           <div className={cl.totalAndCheckoutContainer__underline} />

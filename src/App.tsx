@@ -12,6 +12,7 @@ import {
   initProducts,
   setCartList,
   setFavoritesList,
+  setTotalItemsInCart,
 } from './features/productSlice';
 import {
   getProductsFromStorage,
@@ -66,6 +67,15 @@ export const App = () => {
 
   useEffect(() => {
     saveProductsToStorage(LocaleStorageKeys.CART, cartList);
+
+    dispatch(
+      setTotalItemsInCart(
+        cartList.reduce((acc, curr) => {
+          return (curr.quantity || 1) + acc;
+        }, 0),
+      ),
+    );
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [cartList]);
 
   useEffect(() => {

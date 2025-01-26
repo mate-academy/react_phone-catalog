@@ -54,7 +54,7 @@
     &Icon {
       height: 16px;
       width: 16px;
-      background-image: url('public/img/icons/CloseGray.svg');
+      background-image: url('/img/icons/CloseGray.svg');
       transition: transform $animDuration;
     }
 
@@ -116,15 +116,15 @@
     &IconMinus {
       height: 16px;
       width: 16px;
-      background-image: url('img/icons/Minus.svg');
+      background-image: url('/img/icons/Minus.svg');
       &Disabled {
-        background-image: url('img/icons/MinusUnactive.svg');
+        background-image: url('/img/icons/MinusUnactive.svg');
       }
     }
     &IconPlus {
       height: 16px;
       width: 16px;
-      background-image: url('img/icons/Plus.svg');
+      background-image: url('/img/icons/Plus.svg');
     }
   }
 }

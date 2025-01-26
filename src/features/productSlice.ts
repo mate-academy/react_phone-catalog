@@ -9,6 +9,7 @@ type ProductState = {
   detailedProdList: DetailProduct[];
   favoritesList: Product[];
   cartList: Product[];
+  totalItemsInCart: number;
   isProdLoading: boolean;
 };
 
@@ -17,6 +18,7 @@ const initialState: ProductState = {
   detailedProdList: [],
   favoritesList: [],
   cartList: [],
+  totalItemsInCart: 0,
   isProdLoading: false,
 };
 
@@ -41,6 +43,9 @@ export const productSlice = createSlice({
     setCartList: (st, ac) => {
       st.cartList = ac.payload;
     },
+    setTotalItemsInCart: (st, ac) => {
+      st.totalItemsInCart = ac.payload;
+    },
   },
   extraReducers: buider => {
     buider.addCase(initProducts.pending, state => {
@@ -60,5 +65,6 @@ export const productSlice = createSlice({
   },
 });
 
-export const { setFavoritesList, setCartList } = productSlice.actions;
+export const { setFavoritesList, setCartList, setTotalItemsInCart } =
+  productSlice.actions;
 export default productSlice.reducer;
