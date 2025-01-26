@@ -15,6 +15,8 @@ export const NewModels: React.FC = () => {
     );
   }, []);
 
+  // console.log(newModels);
+
   return (
     <div className="new-models__container">
       <div className="new-models__header">

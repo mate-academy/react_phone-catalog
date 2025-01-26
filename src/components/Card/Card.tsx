@@ -11,7 +11,7 @@ export const Card: React.FC<Props> = ({ item }) => {
       <div className="card__container">
         <a href="#" className="card__link--photo-link">
           <img
-            src={item.images[0].slice(1)}
+            src={item.images[0]}
             alt="apple-iphone-11"
             className="card__link--photo"
           />
