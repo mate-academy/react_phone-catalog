@@ -10,7 +10,7 @@ export const Image: React.FC<ImgHTMLAttributes<HTMLImageElement>> = props => {
 
   useEffect(() => {
     if (!isLoaded) {
-      timeoutId.current = window.setTimeout(() => setIsloading(true), 100);
+      timeoutId.current = window.setTimeout(() => setIsloading(true), 300);
     } else {
       window.clearTimeout(timeoutId.current);
     }
@@ -21,9 +21,7 @@ export const Image: React.FC<ImgHTMLAttributes<HTMLImageElement>> = props => {
       {isLoading && (
         <div
           {...props}
-          className={classNames(props.className, {
-            [styles['image-skeleton']]: true,
-          })}
+          className={classNames(props.className, styles['image-skeleton'])}
         />
       )}
 
@@ -34,7 +32,7 @@ export const Image: React.FC<ImgHTMLAttributes<HTMLImageElement>> = props => {
           setIsloading(false);
         }}
         className={props.className}
-        style={isLoaded ? undefined : { display: 'none' }}
+        style={!isLoading ? undefined : { display: 'none' }}
       />
     </>
   );
