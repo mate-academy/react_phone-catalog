@@ -11,8 +11,8 @@ type Props = {
 export const ProductCardSkeleton: React.FC<Props> = ({ hidePrevPrice }) => {
   const characteristics: [string, string][] = [
     [' ', ' '],
-    [' ', ' '],
-    [' ', ' '],
+    ['  ', ' '],
+    ['   ', ' '],
   ];
 
   return (

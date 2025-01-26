@@ -65,40 +65,44 @@ export const ProductsSlider: React.FC<Props> = ({
   const [itemsVisibility, setItemsVisibility] = useState<ItemVisibility[]>([]);
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      newEntries => {
-        setItemsVisibility(prevItems => {
-          const newItemsVisibility = [...prevItems];
+    if (products.length) {
+      const observer = new IntersectionObserver(
+        newEntries => {
+          setItemsVisibility(prevItems => {
+            const newItemsVisibility = [...prevItems];
 
-          for (const entry of newEntries) {
-            const target = entry.target;
+            for (const entry of newEntries) {
+              const target = entry.target;
 
-            const foundItem = newItemsVisibility.find(
-              item => item.item === target,
-            );
+              const foundItem = newItemsVisibility.find(
+                item => item.item === target,
+              );
 
-            foundItem!.visibilityRate = entry.intersectionRatio;
-          }
+              foundItem!.visibilityRate = entry.intersectionRatio;
+            }
 
-          return newItemsVisibility;
-        });
-      },
-      { root: sliderRef.current, threshold: [0, 0.2, 0.4, 0.6, 0.8, 1] },
-    );
+            return newItemsVisibility;
+          });
+        },
+        { root: sliderRef.current, threshold: [0, 0.2, 0.4, 0.6, 0.8, 1] },
+      );
 
-    const newItemsVisibility: ItemVisibility[] = [];
+      const newItemsVisibility: ItemVisibility[] = [];
 
-    itemsRef.current.forEach(item => {
-      observer.observe(item);
-      newItemsVisibility.push({ item, visibilityRate: 0 });
-    });
+      itemsRef.current.forEach(item => {
+        observer.observe(item);
+        newItemsVisibility.push({ item, visibilityRate: 0 });
+      });
 
-    setItemsVisibility(newItemsVisibility);
+      setItemsVisibility(newItemsVisibility);
 
-    return () => {
-      observer.disconnect();
-    };
-  }, []);
+      return () => {
+        observer.disconnect();
+      };
+    }
+
+    return;
+  }, [products.length]);
 
   const scrollRight = useCallback(() => {
     setItemsVisibility(prevItems => {
