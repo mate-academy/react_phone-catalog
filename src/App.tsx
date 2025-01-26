@@ -1,11 +1,11 @@
-import { Outlet } from 'react-router-dom';
 import './App.scss';
+import { Outlet } from 'react-router-dom';
+import { debounce } from 'lodash';
+import { useEffect } from 'react';
+import { useAppDispatch, useAppSelector } from './app/hooks';
+import { setLanguage, setScreenWidth } from './features/globalSlice';
 import { Header, HeaderOrigin } from './components/PageTopComponents/Header';
 import { Menu } from './components/PageTopComponents/Menu';
-import { useAppDispatch, useAppSelector } from './app/hooks';
-import { useEffect } from 'react';
-import { setLanguage, setScreenWidth } from './features/globalSlice';
-import { debounce } from 'lodash';
 import { Footer } from './components/Footer';
 import {
   initDetailedProducts,
@@ -22,7 +22,7 @@ import {
 export const App = () => {
   const dispatch = useAppDispatch();
   const { favoritesList, cartList } = useAppSelector(st => st.products);
-  const { language } = useAppSelector(st => st.global);
+  const { language, isMenuOpened } = useAppSelector(st => st.global);
 
   //#region get items from server
   /* get productList from server. I do this in App because this list
@@ -78,6 +78,14 @@ export const App = () => {
     localStorage.setItem(LocaleStorageKeys.LANGUAGE, language);
   }, [language]);
   //#endregion
+
+  useEffect(() => {
+    if (isMenuOpened) {
+      window.document.documentElement.style.overflowY = 'hidden';
+    } else {
+      window.document.documentElement.style.overflowY = 'auto';
+    }
+  }, [isMenuOpened]);
 
   return (
     <div className="App">

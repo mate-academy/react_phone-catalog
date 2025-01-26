@@ -1,6 +1,7 @@
 @import '../../../styles/utils/vars.scss';
 
 .menu {
+  background-color: $main-background-col;
   width: 100vw;
   height: 100vh;
   transform: translateX(-100%);

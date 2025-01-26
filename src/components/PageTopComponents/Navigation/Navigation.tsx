@@ -42,41 +42,53 @@ export const Navigation: React.FC<Props> = ({ origin }) => {
         gap: origin === 'onHeader' ? '7px' : '25px',
       }}
     >
-      <li>
+      <li className={cn({ [cl.nav__itemMenu]: origin === 'onMenu' })}>
         <NavLink
           to=""
           className={({ isActive }) =>
-            cn(cl.nav__link, { [cl.active]: isActive })
+            cn(cl.nav__link, {
+              [cl.active]: isActive,
+              [cl.nav__linkMenu]: origin === 'onMenu',
+            })
           }
         >
           {navBarNames.home[language]}
         </NavLink>
       </li>
-      <li>
+      <li className={cn({ [cl.nav__itemMenu]: origin === 'onMenu' })}>
         <NavLink
           to="phones"
           className={({ isActive }) =>
-            cn(cl.nav__link, { [cl.active]: isActive })
+            cn(cl.nav__link, {
+              [cl.active]: isActive,
+              [cl.nav__linkMenu]: origin === 'onMenu',
+            })
           }
         >
           {navBarNames.phones[language]}
         </NavLink>
       </li>
-      <li>
+      <li className={cn({ [cl.nav__itemMenu]: origin === 'onMenu' })}>
         <NavLink
           to="tablets"
           className={({ isActive }) =>
-            cn(cl.nav__link, { [cl.active]: isActive })
+            cn(cl.nav__link, {
+              [cl.active]: isActive,
+              [cl.nav__linkMenu]: origin === 'onMenu',
+            })
           }
         >
           {navBarNames.tablets[language]}
         </NavLink>
       </li>
-      <li>
+      <li className={cn({ [cl.nav__itemMenu]: origin === 'onMenu' })}>
         <NavLink
           to="accessories"
           className={({ isActive }) =>
-            cn(cl.nav__link, { [cl.active]: isActive })
+            cn(cl.nav__link, {
+              [cl.active]: isActive,
+              [cl.nav__linkMenu]: origin === 'onMenu',
+            })
           }
         >
           {navBarNames.accessories[language]}

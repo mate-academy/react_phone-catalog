@@ -136,14 +136,20 @@ export const CartPage = () => {
                     className={`${cl.quantityContainer__changeQuantButton} ${item.quantity === 1 && cl.quantityContainer__changeQuantButtonDisabled}`}
                     onClick={() => changeQuantity('--', item)}
                   >
-                    -
+                    <svg
+                      className={`${cl.quantityContainer__changeQuantButtonIconMinus} ${item.quantity === 1 && cl.quantityContainer__changeQuantButtonIconMinusDisabled}`}
+                    />
                   </button>
                   {item.quantity}
                   <button
-                    className={`${cl.quantityContainer__changeQuantButton} ${item.quantity === 5 && cl.quantityContainer__changeQuantButtonDisabled}`}
+                    className={cl.quantityContainer__changeQuantButton}
                     onClick={() => changeQuantity('++', item)}
                   >
-                    +
+                    <svg
+                      className={
+                        cl.quantityContainer__changeQuantButtonIconPlus
+                      }
+                    />
                   </button>
                 </div>
                 <p

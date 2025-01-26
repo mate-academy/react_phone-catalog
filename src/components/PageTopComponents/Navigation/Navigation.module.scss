@@ -11,6 +11,11 @@ $navlink-padd-inl-desk: 32px;
     gap: 7px;
   }
 
+  &__itemMenu {
+    display: flex;
+    justify-content: center;
+  }
+
   &__link {
     display: block;
     width: fit-content;
@@ -45,6 +50,11 @@ $navlink-padd-inl-desk: 32px;
       @include on-desktop {
         width: calc(100% - $navlink-padd-inl-desk * 2);
       }
+    }
+
+    &Menu {
+      align-self: center;
+      justify-self: center;
     }
   }
 }

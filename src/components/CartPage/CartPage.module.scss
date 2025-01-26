@@ -104,17 +104,27 @@
     height: 32px;
     width: 32px;
     background-color: $second-button-col;
-    color: $main-txt-col;
     font-size: 20px;
     border: 1px solid $second-button-col;
-    opacity: 0.6;
-    @include hover(opacity, 1);
+    @include hover(background-color, $second-button-col-hover);
 
     &Disabled {
       background-color: transparent;
-      color: $second-button-col;
-      opacity: 1;
       pointer-events: none;
+    }
+
+    &IconMinus {
+      height: 16px;
+      width: 16px;
+      background-image: url('img/icons/Minus.svg');
+      &Disabled {
+        background-image: url('img/icons/MinusUnactive.svg');
+      }
+    }
+    &IconPlus {
+      height: 16px;
+      width: 16px;
+      background-image: url('img/icons/Plus.svg');
     }
   }
 }
