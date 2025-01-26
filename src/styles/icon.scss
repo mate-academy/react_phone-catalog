@@ -27,22 +27,22 @@
   }
 
   &--burger-menu {
-    background-image: url(./img/icons/burger-menu.svg);
+    background-image: url(/img/icons/burger-menu.svg);
 
     &.menu--close {
-      background-image: url(./img/icons/icon-close.svg);
+      background-image: url(/img/icons/icon-close.svg);
     }
   }
 
   &--heart {
-    background-image: url(./img/icons/icon-heart.png);
+    background-image: url(/img/icons/icon-heart.png);
   }
 
   &--basket {
-    background-image: url(./img/icons/Shopping-bag.png);
+    background-image: url(/img/icons/Shopping-bag.png);
   }
 
   &--back-top {
-    background-image: url(./img/icons/arrow-up-black.svg);
+    background-image: url(/img/icons/arrow-up-black.svg);
   }
 }

@@ -18,7 +18,7 @@ export const Header = () => {
           <div className="header__top--logo-with-menu">
             <Link to="/" className="header__logo-link">
               <img
-                src="./img/icons/Logo.png"
+                src="/img/icons/Logo.png"
                 alt="photo-logo"
                 className="header__logo"
               />
