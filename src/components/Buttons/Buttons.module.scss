@@ -1,0 +1,20 @@
+@import "../../styles/variables";
+
+.buttons {
+  display: flex;
+}
+
+.button {
+  height: 100%;
+  list-style: none;
+  border-left: 1px solid $hover_bg;
+
+  display: flex;
+  align-items: center;
+
+  &_link {
+    height: 100%;
+    width: 100%;
+    padding: 24px;
+  }
+}

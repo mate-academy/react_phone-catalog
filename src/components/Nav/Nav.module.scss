@@ -1,0 +1,26 @@
+@import "../../styles/variables";
+
+.nav {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+  &_list {
+    display: flex;
+    gap: 64px;
+  }
+
+  &_item {
+    list-style: none;
+  }
+
+  &_link {
+    text-decoration: none;
+    text-transform: uppercase;
+
+    color: $secondary;
+    font-size: 12px;
+    font-weight: bold;
+    line-height: 11px;
+    letter-spacing: 0.04em;
+  }
+}

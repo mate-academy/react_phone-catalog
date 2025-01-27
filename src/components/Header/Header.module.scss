@@ -1,0 +1,25 @@
+@import "../../styles/variables";
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px $hover_bg solid;
+
+  &_left {
+    display: flex;
+    gap: 24px;
+  }
+
+  &_right {
+    display: flex;
+  }
+
+  &_link {
+    margin: 18px 24px;
+  }
+
+  &_navLink {
+    margin: 24px;
+    border-left: 1px solid $hover_bg;
+  }
+}
