@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addToCart, selectToCart } from '../../state/cartSlice';
 import { Link } from 'react-router-dom';
 import { Product } from '../../types/Product';
+import { scrollToTop } from '../../Tools/ScrollToTop';
 
 type Props = {
   product: Product;
@@ -33,7 +34,11 @@ export const PhoneCard: React.FC<Props> = ({ product }) => {
 
   return (
     <div className={style.card}>
-      <Link to={`/phones/${product.itemId}`} key={product.id}>
+      <Link
+        to={`/phones/${product.itemId}`}
+        key={product.id}
+        onClick={() => scrollToTop()}
+      >
         <img className={style.card__image} src={product.image} alt="iphone" />
         <h1 className={style.card__title}>{product.name}</h1>
       </Link>
