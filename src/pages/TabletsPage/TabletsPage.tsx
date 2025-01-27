@@ -28,7 +28,7 @@ export const TabletsPage = () => {
 
   return (
     <>
-      <Catalog products={tablets} type={'Tablets'} />
+      <Catalog products={tablets} title={'Tablets'} />
     </>
   );
 };

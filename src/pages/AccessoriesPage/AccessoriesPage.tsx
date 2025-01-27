@@ -30,7 +30,7 @@ export const AccessoriesPage = () => {
 
   return (
     <>
-      <Catalog products={accessories} type={'Accessories'} />
+      <Catalog products={accessories} title={'Accessories'} />
     </>
   );
 };
