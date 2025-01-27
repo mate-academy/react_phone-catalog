@@ -48,3 +48,10 @@ body.no-scroll {
 .swiper-pagination-bullet-active {
   background-color: #313237 !important;
 }
+
+.swiper-slide {
+  min-width: 212px;
+  @include on-tablet {
+    min-width: 237px;
+  }
+}

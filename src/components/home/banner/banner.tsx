@@ -4,7 +4,7 @@ import styles from './banner.module.scss';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { EffectFlip, Navigation, Pagination, Autoplay } from 'swiper/modules';
+import { EffectFade, Navigation, Pagination, Autoplay } from 'swiper/modules';
 import classNames from 'classnames';
 import banner1 from '../../../assets/images/img/Banner.jpeg';
 import banner2 from '../../../assets/images/img/banner2.jpeg';
@@ -34,7 +34,7 @@ export const Banner: React.FC = () => {
       </div>
 
       <Swiper
-        effect={'flip'}
+        effect={'fade'}
         navigation={{
           nextEl: '#bannerNext',
           prevEl: '#bannerPrev',
@@ -42,7 +42,7 @@ export const Banner: React.FC = () => {
         pagination={{
           clickable: true,
         }}
-        modules={[Navigation, Pagination, EffectFlip, Autoplay]}
+        modules={[Navigation, Pagination, EffectFade, Autoplay]}
         loop={true}
         autoplay={{
           delay: 5000,

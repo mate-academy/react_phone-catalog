@@ -67,7 +67,7 @@
   object-fit: contain;
 
   @include on-tablet {
-    max-width: calc(100% - 50px);
+    max-width: calc(100% - 100px);
     margin: 0 auto;
   }
 
@@ -83,7 +83,7 @@
   object-fit: contain;
 
   @include on-tablet {
-    max-width: calc(100% - 50px);
+    max-width: calc(100% - 100px);
     margin: 0 auto;
   }
 
@@ -99,7 +99,7 @@
   object-fit: contain;
 
   @include on-tablet {
-    max-width: calc(100% - 50px);
+    max-width: calc(100% - 100px);
     margin: 0 auto;
   }
 
@@ -111,7 +111,6 @@
 .button_prev {
   display: none;
   position: fixed;
-  left: -16px;
   height: 100%;
   z-index: 1001;
   width: 32px;
@@ -131,7 +130,7 @@
   position: fixed;
   height: 100%;
   z-index: 1001;
-  right: -16px;
+  right: 0.5px;
   width: 32px;
   background-color: #fff;
   border: 1px solid #b4bdc3;

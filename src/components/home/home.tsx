@@ -58,9 +58,9 @@ export const Home: React.FC = () => {
         </div>
 
         <Swiper
-          slidesPerView={1.4}
+          slidesPerView={4}
           centeredSlides={false}
-          slidesPerGroupSkip={1}
+          slidesPerGroup={2}
           grabCursor={true}
           keyboard={{
             enabled: true,
@@ -68,13 +68,10 @@ export const Home: React.FC = () => {
           spaceBetween={16}
           breakpoints={{
             640: {
-              slidesPerView: 2.4,
-              slidesPerGroup: 1,
               spaceBetween: 16,
+              slidesPerGroup: 1,
             },
             1200: {
-              slidesPerView: 4,
-              slidesPerGroup: 4,
               spaceBetween: 16,
             },
           }}
@@ -107,9 +104,9 @@ export const Home: React.FC = () => {
           </div>
         </div>
         <Swiper
-          slidesPerView={1.4}
+          slidesPerView={4}
           centeredSlides={false}
-          slidesPerGroupSkip={1}
+          slidesPerGroup={1}
           grabCursor={true}
           keyboard={{
             enabled: true,
@@ -117,13 +114,9 @@ export const Home: React.FC = () => {
           spaceBetween={16}
           breakpoints={{
             640: {
-              slidesPerView: 2.4,
-              slidesPerGroup: 1,
               spaceBetween: 16,
             },
             1200: {
-              slidesPerView: 4,
-              slidesPerGroup: 4,
               spaceBetween: 16,
             },
           }}
