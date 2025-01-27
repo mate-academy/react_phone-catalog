@@ -39,6 +39,7 @@ const cartSlice = createSlice({
     clearCart: state => {
       state.products = [];
     },
+
     updateQuantity: (
       state,
       action: PayloadAction<{ id: string; quantity: number }>,
@@ -57,6 +58,9 @@ const cartSlice = createSlice({
     },
   },
 });
+
+export const selectTotalQuantity = (state: RootState) =>
+  state.cart.products.reduce((total, item) => total + item.quantity, 0);
 
 export const selectToCart = (state: RootState) => state.cart.products;
 

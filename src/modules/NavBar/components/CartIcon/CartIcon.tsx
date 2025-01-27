@@ -1,16 +1,16 @@
 import style from './CartIcon.module.scss';
 import { useSelector } from 'react-redux';
-import { selectToCart } from '../../../../state/cartSlice';
+import { selectTotalQuantity } from '../../../../state/cartSlice';
 
 export const CartIcon = () => {
-  const cartState = useSelector(selectToCart);
+  const totalQuantity = useSelector(selectTotalQuantity);
 
   return (
     <div className={style.cartIcon}>
       <div className={style.iconWrapper}>
         <img className={style.icon} src="Icons/cart.png" alt="Cart" />
-        {cartState.length > 0 && (
-          <span className={style.counter}>{cartState.length}</span>
+        {totalQuantity > 0 && (
+          <span className={style.counter}>{totalQuantity}</span>
         )}
       </div>
     </div>
