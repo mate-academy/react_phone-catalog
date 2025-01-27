@@ -197,7 +197,10 @@ export const ProductDetailsPage = () => {
               </div>
               <div className={style.divider}></div>
             </article>
-            <p className={style.item__price}>${item.priceRegular}</p>
+            <div className={style.item__prices}>
+              <p className={style.item__price}>${item.priceRegular}</p>
+              <p className={style.item__price__old}>${item.priceDiscount}</p>
+            </div>
             <article className={style.item__buttons}>
               <button
                 className={

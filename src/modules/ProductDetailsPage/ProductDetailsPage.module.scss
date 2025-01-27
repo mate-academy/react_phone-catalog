@@ -127,12 +127,27 @@ ol {
     color: white;
   }
 
+  &__prices {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 24px;
+  }
+
   &__price {
     font-family: Mont-Bold;
-    margin-top: 24px;
     font-size: 32px;
     line-height: 41px;
+
+  &__old {
+    font-size: 22px;
+    text-decoration-line: line-through;
+
+    color: #89939a;
+    text-decoration: line-through;
   }
+}
+
   &__buttons {
     margin-top: 16px;
     display: flex;
