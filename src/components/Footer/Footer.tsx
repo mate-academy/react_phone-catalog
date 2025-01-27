@@ -13,14 +13,26 @@ export const Footer = () => {
         <section className={style.footer__links}>
           <a
             className={style.footer__link}
-            href="https://github.com/olshum8/react_phone-catalog?tab=readme-ov-file#product-pages"
+            href="https://github.com/olshum8/react_phone-catalog"
+            target="_blank"
+            rel="noopener noreferrer"
           >
             Github
           </a>
-          <a className={style.footer__link} href="">
+          <a
+            className={style.footer__link}
+            href="https://github.com/olshum8/react_phone-catalog"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             Contacts
           </a>
-          <a className={style.footer__link} href="">
+          <a
+            className={style.footer__link}
+            href="https://github.com/olshum8/react_phone-catalog"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             Rights
           </a>
         </section>
