@@ -1,0 +1,14 @@
+.container {
+  padding-left: 16px;
+  padding-right: 16px;
+
+  @include on-tablet {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  @include on-desktop {
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+}
