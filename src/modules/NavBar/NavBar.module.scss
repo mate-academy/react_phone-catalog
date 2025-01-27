@@ -134,10 +134,9 @@
     height: 64px;
     display: flex;
     text-decoration: none;
-    color: var(--inactiveLink);
     align-items: center;
     border-bottom: 3px solid transparent;
-    font-family: Mont-SemiBold;
+    font-family: Mont-Bold;
 
     &--active {
       color: var(--activeLink);
