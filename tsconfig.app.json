@@ -22,5 +22,11 @@
     "noFallthroughCasesInSwitch": true,
     "noUncheckedSideEffectImports": true
   },
-  "include": ["src", "src/utils/wait.ts", "src/**/*"]
+  "include": [
+    "src",
+    "src/utils/wait.ts",
+    "src/**/*",
+    "cypress.config.ts",
+    "vite.config.ts"
+  ]
 }
