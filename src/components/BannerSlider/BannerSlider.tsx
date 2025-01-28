@@ -3,8 +3,10 @@ import { Link } from 'react-router-dom';
 import classNames from 'classnames';
 import { BannerType } from '../../types/BannerType';
 import './BannerSlider.scss';
+import { useSwipe } from '../../utils/useSwipe';
 
-const MIN_SWIPE_AMOUNT = 50;
+const MIN_X_SWIPE_AMOUNT = 50;
+const MAX_Y_SWIPE_AMOUNT = 30;
 
 type Props = {
   banners: BannerType[];
@@ -13,25 +15,21 @@ type Props = {
 export const BannerSlider: React.FC<Props> = ({ banners }) => {
   const [page, setPage] = useState(0);
   const [reverse, setReverse] = useState(false);
-  const [touchStart, setTouchStart] = useState(0);
-  const [touchEnd, setTouchEnd] = useState(0);
   const [shouldAnimate, setShouldAnimate] = useState(false);
+  const [handleTouchStart, handleTouchMove, handleTouchEnd] =
+    useSwipe(handleSwipe);
 
-  function handleTouchStart(event: React.TouchEvent) {
-    setTouchStart(event.targetTouches[0].clientX);
-  }
-
-  function handleTouchMove(event: React.TouchEvent) {
-    setTouchEnd(event.targetTouches[0].clientX);
-  }
-
-  function handleTouchEnd() {
-    if (touchStart - touchEnd > MIN_SWIPE_AMOUNT) {
-      handleRight();
+  function handleSwipe(distanceX: number, distanceY: number) {
+    if (Math.abs(distanceY) >= MAX_Y_SWIPE_AMOUNT) {
+      return;
     }
 
-    if (touchStart - touchEnd < -MIN_SWIPE_AMOUNT) {
+    if (distanceX >= MIN_X_SWIPE_AMOUNT) {
       handleLeft();
+    }
+
+    if (distanceX <= -MIN_X_SWIPE_AMOUNT) {
+      handleRight();
     }
   }
 
