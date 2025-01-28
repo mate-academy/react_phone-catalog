@@ -6,4 +6,5 @@ export type IconType =
   | 'close'
   | 'arrowPrev'
   | 'arrowNext'
-  | 'arrowTop';
+  | 'arrowTop'
+  | 'arrowDown';

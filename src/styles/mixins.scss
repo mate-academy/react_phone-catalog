@@ -173,8 +173,9 @@
   cursor: pointer;
 
   &:hover {
-    border-color: var(--button-border-color);
+    border-color: var(--button-border-hover-color);
     transition: transform $transition-time ease-in-out;
     transform: scale(0.97);
+    background-color: var(--button-hover-color);
   }
 }

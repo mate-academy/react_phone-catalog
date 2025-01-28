@@ -185,6 +185,8 @@
       box-shadow: 0 2px 16px 0 #0000001a;
       transition: transform $transition-time ease-in-out;
       transform: scale(1.02);
+      border-color: var(--button-border-hover-color);
+      background-color: var(--button-hover-color);
     }
   }
 

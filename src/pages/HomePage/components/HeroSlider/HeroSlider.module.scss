@@ -6,6 +6,7 @@
   margin-inline: 0;
   position: relative;
   object-fit: cover;
+  padding-right: 24px;
 
   @include on-tablet {
     padding-top: 32px;
@@ -13,6 +14,7 @@
 
   @include on-mobile {
     padding-top: 24px;
+    padding-right: 0;
   }
 
   &__content {
@@ -70,7 +72,8 @@
     @include hover-scale-btn;
 
     &:hover {
-      border-color: var(--button-border-color);
+      border-color: var(--button-hover-border-color);
+      background-color: var(--button-hover-color);
     }
   }
 

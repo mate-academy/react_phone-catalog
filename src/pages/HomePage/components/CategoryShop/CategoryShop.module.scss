@@ -3,6 +3,12 @@
 .categories {
   @include section;
 
+  padding-right: 24px;
+
+  @include on-mobile {
+    padding: 0;
+  }
+
   &__title {
     @include h2;
 

@@ -1,16 +1,13 @@
 import React from 'react';
 import styles from './CategoryShop.module.scss';
 import { Link } from 'react-router-dom';
-import { getCategoriesOfProducts } from '../../../../utils/getCategoriesOfProducts';
+import { calculateCategoryCounts } from '../../../../utils/getCategoriesOfProducts';
 import { useProducts } from '../../../../hooks/useProducts';
 
 export const CategoryShop = () => {
   const { products } = useProducts();
-  const categories = getCategoriesOfProducts();
 
-  products.forEach(product => {
-    categories[product.category].count++;
-  });
+  const categories = calculateCategoryCounts(products);
 
   return (
     <section className={styles.categories}>
