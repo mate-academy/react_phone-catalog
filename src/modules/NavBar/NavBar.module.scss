@@ -29,17 +29,30 @@
     margin-top: 32px;
   }
   &__item {
+    font-family: Mont-Bold;
     font-size: 12px;
-    text-decoration: none;
+    line-height: 11px;
     height: 27px;
     display: flex;
+    text-decoration: none;
+    align-items: center;
+    border-bottom: 3px solid transparent;
     justify-content: center;
     align-items: center;
     margin-bottom: 16px;
-    color: var(--InactiveLink);
-    border-bottom: 2px solid transparent;
     box-sizing: border-box;
-    font-family: Mont-SemiBold;
+
+    // font-size: 12px;
+    // text-decoration: none;
+    // height: 27px;
+    // display: flex;
+    // justify-content: center;
+    // align-items: center;
+    // margin-bottom: 16px;
+    // color: var(--InactiveLink);
+    // border-bottom: 2px solid transparent;
+    // box-sizing: border-box;
+    // font-family: Mont-SemiBold;
 
     &--active {
       color: var(--activeLink);
@@ -131,12 +144,15 @@
   }
 
   &__item {
+    font-family: Mont-Bold;
+    font-size: 12px;
+    line-height: 11px;
+
     height: 64px;
     display: flex;
     text-decoration: none;
     align-items: center;
     border-bottom: 3px solid transparent;
-    font-family: Mont-Bold;
 
     &--active {
       color: var(--activeLink);
