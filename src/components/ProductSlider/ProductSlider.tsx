@@ -1,7 +1,8 @@
 import React, { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { ProductCard } from '../ProductCard';
-import './ProductSlider.scss';
 import { ProductType } from '../../types/ProductType';
+import { useSwipe } from '../../utils/useSwipe';
+import './ProductSlider.scss';
 
 const getStyles = (element: HTMLDivElement | Element) => {
   const styles = getComputedStyle(element);
@@ -12,6 +13,9 @@ const getStyles = (element: HTMLDivElement | Element) => {
   };
 };
 
+const MIN_X_SWIPE_AMOUNT = 50;
+const MAX_Y_SWIPE_AMOUNT = 30;
+
 type Props = {
   products: ProductType[];
   title: string;
@@ -21,6 +25,23 @@ export const ProductSlider: React.FC<Props> = ({ products, title }) => {
   const [scrollIndex, setScrollIndex] = useState(0);
   const [visibleItemsCount, setVisibleItemsCount] = useState(0);
   const [scrollWidth, setScrollWidth] = useState(0);
+  const [handleTouchStart, handleTouchMove, handleTouchEnd] =
+    useSwipe(handleSwipe);
+
+  function handleSwipe(distanceX: number, distanceY: number) {
+    console.log(distanceX, distanceY);
+    if (Math.abs(distanceY) >= MAX_Y_SWIPE_AMOUNT) {
+      return;
+    }
+
+    if (distanceX >= MIN_X_SWIPE_AMOUNT) {
+      scrollRight();
+    }
+
+    if (distanceX <= -MIN_X_SWIPE_AMOUNT) {
+      scrollLeft();
+    }
+  }
 
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -95,7 +116,14 @@ export const ProductSlider: React.FC<Props> = ({ products, title }) => {
           </button>
         </div>
       </div>
-      <div className="product-slider__container" ref={containerRef}>
+
+      <div
+        className="product-slider__container"
+        onTouchStart={handleTouchStart}
+        onTouchMove={handleTouchMove}
+        onTouchEnd={handleTouchEnd}
+        ref={containerRef}
+      >
         {products.map(product => (
           <ProductCard key={product.id} product={product} />
         ))}

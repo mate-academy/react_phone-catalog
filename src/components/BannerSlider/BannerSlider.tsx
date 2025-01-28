@@ -2,8 +2,8 @@ import React, { useLayoutEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import classNames from 'classnames';
 import { BannerType } from '../../types/BannerType';
-import './BannerSlider.scss';
 import { useSwipe } from '../../utils/useSwipe';
+import './BannerSlider.scss';
 
 const MIN_X_SWIPE_AMOUNT = 50;
 const MAX_Y_SWIPE_AMOUNT = 30;
@@ -25,11 +25,11 @@ export const BannerSlider: React.FC<Props> = ({ banners }) => {
     }
 
     if (distanceX >= MIN_X_SWIPE_AMOUNT) {
-      handleLeft();
+      handleRight();
     }
 
     if (distanceX <= -MIN_X_SWIPE_AMOUNT) {
-      handleRight();
+      handleLeft();
     }
   }
 
