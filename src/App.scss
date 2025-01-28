@@ -1,1 +1,75 @@
-// not empty
+@font-face {
+  font-family: Mont-Regular;
+  src: url(/public/fonts/Mont-Regular.otf);
+  font-weight: 600;
+}
+@font-face {
+  font-family: Mont-SemiBold;
+  src: url(/public/fonts/Mont-SemiBold.otf);
+  font-weight: 700;
+}
+@font-face {
+  font-family: Mont-Bold;
+  src: url(/public/fonts/Mont-Bold.otf);
+  font-weight: 800;
+}
+
+:root {
+  --primary: #0f0f11;
+  --secondary: #89939a;
+  text-transform: uppercase;
+}
+
+header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background-color: white;
+}
+
+.layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.layout__content {
+  flex-grow: 1; /* Розтягуємо головний контент */
+}
+
+h1 {
+font-family: Mont-bold;
+font-size: 48px;
+font-weight: 800;
+line-height: 56px;
+}
+
+h2 {
+font-family: Mont-bold;
+font-size: 32px;
+font-weight: 800;
+line-height: 41px;
+}
+
+h3 {
+font-family: Mont-Bold;
+font-size: 22px;
+font-weight: 800;
+line-height: 30.8px;
+}
+
+h4 {
+font-family: Mont-SemiBold;
+font-size: 20px;
+font-weight: 700;
+line-height: 25.56px;
+
+}
+
+button:disabled, .disabled {
+  cursor: not-allowed;
+}
+
+a, button {
+  cursor: pointer;
+}

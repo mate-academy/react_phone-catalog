@@ -1,0 +1,100 @@
+.baner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.swiper-slide {
+  display: flex;
+  align-items: center;
+}
+
+.baner__img {
+  object-fit: cover;
+  height: auto;
+  width: 100%;
+}
+
+.arrow {
+  box-sizing: border-box;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  border-radius: 50px;
+  border: 2px solid grey;
+  display: none;
+  transition: border-color 0.3s ease;
+
+  &:hover {
+    border-color: black;
+  }
+}
+
+@media screen and (min-width: 640px) {
+  .swiper {
+    border-radius: 8px;
+  }
+
+  .baner__img {
+    object-fit: contain;
+  }
+
+  .arrow {
+    display: flex;
+    height: 189px;
+    width: 32px;
+
+    &--prev {
+      margin-right: 19px;
+    }
+
+    &--next {
+      margin-left: 19px;
+    }
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .baner {
+    max-width: 1100px;
+  }
+
+  .swiper {
+    border-radius: 16px;
+  }
+
+  .baner__img {
+    height: 400px;
+    width: 100%;
+  }
+
+  .arrow {
+    display: flex;
+    height: 400px;
+    width: 32px;
+
+    &--prev {
+      margin-right: 16px;
+    }
+
+    &--next {
+      margin-left: 16px;
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .baner__img {
+    object-position: 50% 0;
+    object-fit: cover;
+  }
+}
+
+.customPagination {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 15px;
+}

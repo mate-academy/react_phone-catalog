@@ -1,0 +1,43 @@
+.favourite {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px 32px;
+}
+
+.favourite__counter {
+  margin-top: 8px;
+  font-size: 14px;
+  color: var(--secondary);
+}
+
+.favourite__path {
+  font-size: 12px;
+  color: var(--secondary);
+}
+
+.favourite__title {
+  margin-top: 40px;
+  font-size: 48px;
+}
+
+.favourite__phones {
+  margin-top: 40px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.favourite__empty {
+  display: flex;
+  justify-content: center;
+  margin-top: 32px;
+  font-family: Mont-Bold;
+  font-size: large;
+}
+
+@media screen and (max-width: 652px) {
+  .favourite__phones {
+    justify-items: center;
+    justify-content: center;
+  }
+}
