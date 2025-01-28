@@ -41,7 +41,12 @@ export const Favourites = () => {
           </p>
           <div className="favourites__container">
             {products.map(product => (
-              <ProductCard key={product.id} product={product} wide={true} />
+              <ProductCard
+                key={product.id}
+                product={product}
+                wide={true}
+                favouriteCallback={fetchProducts}
+              />
             ))}
           </div>
         </>
