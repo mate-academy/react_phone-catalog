@@ -1,0 +1,112 @@
+@mixin on-tablet() {
+  @media (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin on-desktop() {
+  @media (min-width: $desktop-min-width) {
+    @content;
+  }
+}
+
+@mixin page-grid() {
+  --columns: 4;
+
+  display: grid;
+  column-gap: 16px;
+  grid-template-columns: repeat(var(--columns), 1fr);
+
+  @include on-tablet {
+    --columns: 12;
+  }
+
+  @include on-desktop {
+    grid-template-columns: repeat(var(--columns), 32px);
+    justify-content: center;
+
+    --columns: 24;
+  }
+}
+
+@mixin content-padding-inline {
+  padding-inline: 16px;
+
+  @include on-tablet {
+    padding-inline: 24px;
+  }
+
+  @include on-desktop {
+    padding-inline: 32px;
+  }
+}
+
+@mixin hover($property, $toValue) {
+  transition: #{$property} 0.3s;
+
+  &:hover {
+    #{$property}: #{$toValue};
+  }
+}
+
+@mixin grey-button {
+  outline: none;
+  background-color: $grey;
+  border: 1px solid $grey;
+
+  transition: transform ease 0.3s;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  @include hover(cursor, pointer);
+  @include hover(background-color, $surface-2-hover);
+
+  &:disabled {
+    background-color: transparent;
+    cursor: not-allowed;
+  }
+}
+
+@mixin add-to-cart-button(
+  $bg-color: $purple,
+  $hover-color: $purple-hover,
+  $font-size: 14px,
+  $font-weight: 700
+) {
+  border: none;
+  border-radius: 0;
+  font-size: $font-size;
+  font-weight: $font-weight;
+  line-height: calc($font-size * 1.5);
+  background-color: $bg-color;
+
+  @include hover(cursor, pointer);
+  @include hover(background-color, $hover-color);
+
+  &--is-active {
+    background-color: $surface-2;
+
+    &:hover {
+      background-color: $hover-color;
+    }
+  }
+}
+
+@mixin favourites-button {
+  border: none;
+  border-radius: 0;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 21px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: $surface-2;
+
+  @include hover(cursor, pointer);
+  @include hover(background-color, $surface-2-hover);
+}

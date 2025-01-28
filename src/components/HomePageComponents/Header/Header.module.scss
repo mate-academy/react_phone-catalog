@@ -1,0 +1,124 @@
+.header {
+  grid-column: 1 / -1;
+  grid-row: 1;
+
+  &__title-block {
+    padding-bottom: 24px;
+
+    @include on-tablet {
+      @include page-grid;
+
+      padding-bottom: 32px;
+    }
+
+    @include on-tablet {
+      padding-bottom: 56px;
+    }
+  }
+
+  &__title {
+    font-size: 32px;
+    line-height: 41px;
+
+    @include on-tablet {
+      font-size: 48px;
+      font-weight: 800;
+      grid-column: 1/10;
+    }
+
+    @include on-desktop {
+      line-height: 56px;
+      grid-column: 1/-1;
+
+      &--br {
+        display: none;
+      }
+    }
+  }
+
+  &__sliders {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    @include on-tablet {
+      @include page-grid;
+      @include content-padding-inline;
+
+      grid-template-rows: repeat(2, 1fr);
+      grid-template-rows: 1fr auto;
+    }
+
+    &-button {
+      display: none;
+
+      @include on-tablet {
+        @include grey-button;
+
+        transition: transform ease 0.3s;
+        height: 100%;
+        grid-row: 1;
+      }
+
+      &--left {
+        grid-column: 1/2;
+      }
+
+      &--right {
+        grid-column: -2/-1;
+      }
+    }
+
+    &--photo {
+      width: 100%;
+      transition:
+        transform 0.3s ease-in-out,
+        opacity 0.3s ease-in-out;
+
+      @include on-tablet {
+        grid-row: 1;
+        grid-column: 2/-2;
+        height: 189px;
+      }
+
+      @include on-desktop {
+        height: 400px;
+      }
+    }
+
+    &--indicators-block {
+      display: flex;
+
+      @include on-tablet {
+        grid-column: 6/8;
+        grid-row: 2/-1;
+        justify-content: center;
+      }
+
+      @include on-desktop {
+        grid-column: 12 / span 2;
+      }
+    }
+
+    &--indicator {
+      &-block {
+        width: 24px;
+        height: 24px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      height: 4px;
+      width: 14px;
+      background-color: $white;
+
+      transition: all ease 0.3s;
+
+      &--is-active {
+        background-color: $grey;
+      }
+    }
+  }
+}

@@ -1,0 +1,26 @@
+.errorMesage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 10px;
+  &__text {
+    font-size: 48px;
+    font-weight: 800;
+    line-height: 56px;
+    letter-spacing: -0.01em;
+  }
+
+  &__reload {
+    background-color: $surface-2;
+    border: none;
+    padding: 10px;
+    width: 160px;
+    height: 40px;
+
+    &:hover {
+      cursor: pointer;
+      background-color: $surface-2-hover;
+    }
+  }
+}

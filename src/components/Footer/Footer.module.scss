@@ -1,0 +1,106 @@
+.footer {
+  @include content-padding-inline;
+
+  border-top: 1px solid $grey;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  padding-block: 32px;
+
+  @include on-tablet {
+    @include page-grid;
+
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  &__logo {
+    width: 89px;
+    height: 32px;
+    background: url('./globalStyles/icons/Logo.png') left no-repeat;
+    background-size: contain;
+
+    @include on-tablet {
+      grid-column: 1/5;
+    }
+  }
+
+  &__navigation {
+    display: flex;
+    align-items: center;
+
+    @include on-tablet {
+      justify-content: center;
+      grid-column: 5/9;
+    }
+
+    @include on-desktop {
+      grid-column: 9/17;
+    }
+
+    &__list {
+      list-style-type: none;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+
+      @include on-tablet {
+        width: 100%;
+        flex-direction: row;
+        gap: 0;
+        justify-content: space-between;
+      }
+    }
+
+    &__item {
+      font-size: 12px;
+      font-weight: 800;
+      line-height: 11px;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+
+      @include hover(cursor, pointer);
+    }
+  }
+
+  &__button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+
+    cursor: pointer;
+
+    @include on-tablet {
+      flex-direction: row;
+      grid-column: -4/-1;
+
+      justify-content: flex-end;
+    }
+
+    &--text {
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 15.34px;
+      color: $light-grey;
+
+      cursor: pointer;
+    }
+
+    &__icon-link {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 32px;
+      height: 32px;
+      background-color: $surface-2;
+
+      @include hover(cursor, pointer);
+      @include hover(background-color, $surface-2-hover);
+    }
+
+    &__icon {
+      transform: rotate(-90deg);
+    }
+  }
+}

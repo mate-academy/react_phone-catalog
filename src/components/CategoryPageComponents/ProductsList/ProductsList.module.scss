@@ -1,0 +1,30 @@
+.products-list {
+  &__products {
+    @include page-grid;
+
+    grid-column: 1/ -1;
+    grid-row: 2;
+    row-gap: 24px;
+  }
+
+  &__product {
+    width: 100%;
+    grid-column: 1/-1;
+
+    @include on-tablet {
+      grid-column: span 6;
+    }
+
+    @include on-desktop {
+      grid-column: span 6;
+    }
+  }
+
+  &__no-products {
+    grid-column: 1/-1;
+    font-size: 30px;
+    font-weight: 800;
+    line-height: 56px;
+    letter-spacing: -0.01em;
+  }
+}

@@ -1,1 +1,63 @@
-// not empty
+@import './globalStyles/utils/mixins';
+@import './globalStyles/utils/variables-colors';
+@import './globalStyles/errorMessage';
+@import './globalStyles/icons';
+@import './globalStyles/characteristic.module';
+@import './components/Navigation/Navigation.module';
+@import './components/Footer/Footer.module';
+@import './components/Menu/Menu.module';
+@import './components/TopBar/TopBar.mpdule';
+@import './components/UserHints/UserHints.module';
+@import './components/Card/Card.module';
+@import './components/CardSlider/CardSlider.module';
+@import './pages/HomePage/HomePage.module';
+@import './components/HomePageComponents/Header/Header.module';
+@import './components/HomePageComponents/BrandNewModels/BrandNewModels.module';
+@import './components/HomePageComponents/ShopByCategory/ShopByCategory.module';
+@import './components/HomePageComponents/HotPrice/HotPrice.module';
+@import './pages/CategoryPage/CategoryPage.module';
+@import './components/CategoryPageComponents/SortBlock/SortBlock.module';
+@import './pages/CardDescriptionPage/CardDescriptionPage.module';
+@import './components/CardDescriptionComponents/ProductCard/ProductCard.module';
+@import './components/CardDescriptionComponents/AboutProduct/AboutProduct.module';
+@import './components/CardDescriptionComponents/TechSpecs/TechSpecs.module';
+@import './pages/CartPage/CartPage.module';
+@import './components/CartPageComponents/CardOfCart/CardOfCart.module';
+@import './components/CategoryPageComponents/Pagination/Pagination.module';
+@import './components/CategoryPageComponents/ProductsList/ProductsList.module';
+
+* {
+  box-sizing: border-box;
+
+  padding: 0;
+  margin: 0;
+
+  font-family: Mont, sans-serif;
+  font-style: normal;
+  color: $base-text-color;
+}
+
+html {
+  background-color: $background;
+  min-width: 320px;
+  scroll-behavior: smooth;
+}
+
+.reset-link {
+  text-decoration: none;
+}
+
+.grey-line {
+  width: 100%;
+  height: 1px;
+  background-color: $grey;
+}
+
+.App {
+  display: flex;
+  flex-direction: column  ;
+  min-height: 100vh;
+  &__outlet {
+    flex: 1;
+  }
+}

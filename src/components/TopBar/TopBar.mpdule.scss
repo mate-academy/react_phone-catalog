@@ -1,0 +1,130 @@
+.top-bar {
+  width: 100%;
+  height: 48px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid $grey;
+
+  @include on-tablet {
+    display: flex;
+    justify-content: start;
+    position: relative;
+  }
+
+  @include on-desktop {
+    height: 64px;
+  }
+
+  &__logo-block {
+    padding: 13px 16px;
+    width: fit-content;
+
+    @include on-tablet {
+      padding: 18px 24px;
+    }
+  }
+
+  &__logo-img {
+    height: 22px;
+    width: 64px;
+    background: url('./globalStyles/icons/Logo.png') left no-repeat;
+    background-size: contain;
+
+    @include on-desktop {
+      height: 28px;
+      width: 80px;
+    }
+  }
+
+  &__block-icons {
+    border-left: 1px solid $grey;
+    height: 100%;
+
+    @include on-tablet {
+      position: absolute;
+      right: 0;
+      display: flex;
+      flex-direction: row;
+    }
+  }
+
+  &__link-icon {
+    height: 100%;
+    width: 48px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+
+    @include on-desktop {
+      width: 64px;
+    }
+
+    &::after {
+      position: absolute;
+      content: '';
+      display: block;
+      bottom: 0;
+      width: 100%;
+      height: 1px;
+      background-color: $white;
+      transform: scale(0);
+      transition: transform 0.3s;
+    }
+
+    &:hover::after {
+      transform: scale(1);
+    }
+
+    &--is-active {
+      color: $white;
+
+      &::after {
+        transform: scale(1);
+      }
+    }
+
+    &--menu {
+      @include on-tablet {
+        display: none;
+      }
+    }
+
+    &--fovourites {
+      display: none;
+
+      @include on-tablet {
+        display: flex;
+      }
+    }
+
+    &--cart {
+      display: none;
+
+      @include on-tablet {
+        display: flex;
+        border-left: 1px solid $grey;
+      }
+    }
+  }
+
+  &__counter {
+    position: absolute;
+    bottom: 50%;
+    right: 25%;
+    height: 14px;
+    width: 14px;
+
+    background-color: $red;
+    border: 1px solid $background;
+    display: flex;
+    border-radius: 50%;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 9px;
+    font-weight: 700;
+    line-height: 11.5px;
+  }
+}
