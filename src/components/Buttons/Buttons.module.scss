@@ -1,4 +1,4 @@
-@import "../../styles/variables";
+@import '../../styles/variables';
 
 .buttons {
   display: flex;
@@ -9,12 +9,49 @@
   list-style: none;
   border-left: 1px solid $hover_bg;
 
-  display: flex;
-  align-items: center;
+  &--mobile {
+    display: none;
+  }
 
-  &_link {
-    height: 100%;
-    width: 100%;
+  &__link {
+    display: flex;
+    align-items: center;
+
     padding: 24px;
+    cursor: pointer;
+
+    &--active {
+      padding-bottom: 21px;
+      border-bottom: 3px solid $primary;
+    }
+
+    &:hover .button__icon {
+      transform: scale(1.1);
+      transition: transform 0.5s ease;
+    }
+  }
+}
+
+@media all and (max-width: 1199px) {
+  .button {
+    &__link {
+      padding: 16px;
+    }
+  }
+}
+
+@media all and (max-width: 639px) {
+  .button {
+    &--desktop {
+      display: none;
+    }
+
+    &--mobile {
+      display: block;
+    }
+
+    &__link {
+      padding: 16px;
+    }
   }
 }

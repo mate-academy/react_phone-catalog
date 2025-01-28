@@ -1,19 +1,26 @@
-@import "../../styles/variables";
+@import '../../styles/variables';
 
 .nav {
   display: flex;
-  flex-wrap: wrap;
-  align-content: center;
-  &_list {
+
+  &__list {
     display: flex;
+    height: 100%;
     gap: 64px;
   }
 
-  &_item {
+  &__item {
     list-style: none;
+    height: 100%;
   }
 
-  &_link {
+  &__link {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    height: 100%;
+    padding-bottom: 3px;
+
     text-decoration: none;
     text-transform: uppercase;
 
@@ -22,5 +29,29 @@
     font-weight: bold;
     line-height: 11px;
     letter-spacing: 0.04em;
+
+    &:hover {
+      color: $primary;
+    }
+
+    &--active {
+      color: $primary;
+      border-bottom: 3px solid $primary;
+      padding-bottom: 0;
+    }
+  }
+}
+
+@media all and (max-width: 1199px) {
+  .nav {
+    &__list {
+      gap: 32px;
+    }
+  }
+}
+
+@media all and (max-width: 639px) {
+  .nav {
+    display: none;
   }
 }
