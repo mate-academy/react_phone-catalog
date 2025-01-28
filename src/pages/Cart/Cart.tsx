@@ -102,7 +102,8 @@ export const Cart = () => {
                 ${totalAmount}
               </h2>
               <p className="cart__summary-items body-text">
-                Total for {items.length} items
+                Total for{' '}
+                {items.reduce((prev, item) => item.quantity + prev, 0)} items
               </p>
 
               <div className="divider-line"></div>

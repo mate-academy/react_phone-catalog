@@ -26,7 +26,7 @@ export const Header: React.FC<Props> = ({ openMenu }) => {
     });
 
   const updateCart = () => {
-    setCartCount(getCart().length);
+    setCartCount(getCart().reduce((prev, item) => item.quantity + prev, 0));
   };
 
   const updateFavourites = () => {
