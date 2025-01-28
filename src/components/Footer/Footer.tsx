@@ -1,3 +1,4 @@
+import { scrollToTop } from '../../utils/scrollToTop';
 import './Footer.scss';
 
 const LINKS = [
@@ -16,10 +17,6 @@ const LINKS = [
 ];
 
 export const Footer = () => {
-  const scrollToTop = () => {
-    window.scrollTo(0, 0);
-  };
-
   return (
     <footer className="footer">
       <div className="footer__container">

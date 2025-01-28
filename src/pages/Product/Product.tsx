@@ -8,14 +8,15 @@ import { useEffect, useState } from 'react';
 import { getProduct, getProducts } from '../../api/api';
 import { ProductItemType } from '../../types/ProductItemType';
 import { ProductType } from '../../types/ProductType';
-import { getColorByName } from '../../utils/Colors';
-import './Product.scss';
+import { getColorByName } from '../../utils/colors';
 import {
   addFavourite,
   isFavourite,
   removeFavourite,
 } from '../../api/favourites';
 import { addToCart, isInCart, removeFromCart } from '../../api/cart';
+import { scrollToTop } from '../../utils/scrollToTop';
+import './Product.scss';
 
 export const Product = () => {
   const [product, setProduct] = useState<ProductItemType | undefined>(
@@ -80,6 +81,7 @@ export const Product = () => {
   };
 
   useEffect(() => {
+    scrollToTop();
     fetchProduct();
     fetchSuggestions();
   }, [id]);
