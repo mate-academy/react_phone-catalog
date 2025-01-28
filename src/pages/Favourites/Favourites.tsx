@@ -31,7 +31,7 @@ export const Favourites = () => {
 
   return (
     <div className="favourites">
-      <Breadcrumbs paths={['Favourites']} />
+      <Breadcrumbs paths={[{ name: 'Favourites' }]} />
 
       <h1 className="favourites__title">Favourites</h1>
       {!!products.length ? (

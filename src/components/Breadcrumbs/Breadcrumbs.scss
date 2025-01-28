@@ -5,9 +5,16 @@
   gap: 8px;
   align-items: start;
 
+  &__home {
+    display: flex;
+  }
+
   &__path {
     margin-top: 1px;
     color: vars.$color-secondary;
+
+    display: flex;
+    text-decoration: none;
 
     &--black {
       color: vars.$color-primary;

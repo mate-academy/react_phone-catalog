@@ -89,7 +89,7 @@ export const Catalog: React.FC<Props> = ({ category }) => {
 
   return (
     <div className="catalog">
-      <Breadcrumbs paths={[title]} />
+      <Breadcrumbs paths={[{ name: title }]} />
 
       <h1 className="catalog__title">{title}</h1>
       <p className="catalog__count body-text">{totalProducts} models</p>

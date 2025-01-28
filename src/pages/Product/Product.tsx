@@ -150,7 +150,12 @@ export const Product = () => {
 
   return (
     <div className="product">
-      <Breadcrumbs paths={[category, product.name]} />
+      <Breadcrumbs
+        paths={[
+          { name: category, link: `/${category.toLowerCase()}` },
+          { name: product.name },
+        ]}
+      />
 
       <div className="product__back-button">
         <BackButton />
