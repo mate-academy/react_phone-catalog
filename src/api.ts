@@ -4,7 +4,7 @@ import { Product } from './types/ProductsType';
 import { Tablet } from './types/TabletType';
 
 // const BASE_URL = '/api/';
-const BASE_URL = '/api/';
+const BASE_URL = './api/';
 
 export async function getPhones(): Promise<Phone[]> {
   const response = await fetch(BASE_URL + 'phones.json');
