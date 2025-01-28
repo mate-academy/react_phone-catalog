@@ -125,7 +125,7 @@ export const CategoryPage: React.FC = () => {
             {/* Выбор сортировки */}
             <div className="category-page__block">
               <div className="category-page__info">
-                <div className="category-page__title">{titlePage}</div>
+                <h1 className="category-page__title">{titlePage}</h1>
 
                 <div className="category-page__count-models">
                   {products.length} {isExcludedCategory ? 'models' : 'items'}

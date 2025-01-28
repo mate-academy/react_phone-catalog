@@ -3,7 +3,9 @@ import { Phone } from './types/PhoneType';
 import { Product } from './types/ProductsType';
 import { Tablet } from './types/TabletType';
 
-const BASE_URL = '/api/';
+const BASE_URL = import.meta.env.VITE_PUBLIC_URL
+  ? import.meta.env.VITE_PUBLIC_URL + '/api/'
+  : '/api/';
 
 export async function getPhones(): Promise<Phone[]> {
   const response = await fetch(BASE_URL + 'phones.json');
