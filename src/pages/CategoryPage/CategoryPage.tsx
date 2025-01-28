@@ -62,7 +62,7 @@ export const CategoryPage: React.FC = () => {
       .finally(() => {
         setLoader(false);
       });
-  }, []);
+  }, [category]);
 
   const titlePage = useMemo(() => {
     switch (category?.toLowerCase()) {
