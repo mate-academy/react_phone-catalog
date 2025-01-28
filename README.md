@@ -1,3 +1,34 @@
-[DEMO](https://maksymmohyla.github.io/react_phone-catalog)
+## [Demo](https://maksymmohyla.github.io/react_phone-catalog)
 
-This open-source single-page application was made by me, a web developer from Ukraine [Maksym Mohyla](https://www.linkedin.com/) using the following technologies: HTML, CSS, TypeScript, React, SCSS modules, and some libraries i.e., Redux Toolkit, classnames, react-router-dom, etc. [I used this free markup from Figma](<https://www.figma.com/design/BUusqCIMAWALqfBahnyIiH/Phone-catalog-(V2)-Original-Dark?node-id=0-1&p=f&t=xv1Vsy2o6AHmrbRy-0>). This app provides a responsive interface that is intuitively understandable on phones, tablets, and desktop screens. Additionally, I used mock server requests with an internal API, developed functional components for basic online store functions: adding or removing products in your cart or favorites page (using browser local storage so data will be saved between browser sessions), filtering lists of products, routing through single-page app components, a fully working and responsive image carousel (without using any libraries for it), hover effects for interactive elements, added Ukrainian language etc. The best code practices were used: DRY (don't repeat yourself), the code is concise, clear, and there are written comments for difficult points.
+## [Free mockup](<https://www.figma.com/design/BUusqCIMAWALqfBahnyIiH/Phone-catalog-(V2)-Original-Dark?node-id=0-1&p=f&t=xv1Vsy2o6AHmrbRy-0>)
+
+## Project Description
+
+This open-source single-page application was developed by [Maksym Mohyla](https://www.linkedin.com/), a web developer from Ukraine. The app provides a responsive interface that is intuitively understandable on phones, tablets, and desktop screens. It is a mock-up of a fictional online store for mobile electronics called 'Nice Gadgets,' designed to emulate the experience of using real online stores.
+
+## Technologies Used
+
+- **HTML**
+- **CSS**
+- **TypeScript**
+- **React**
+- **SCSS modules**
+- **Libraries**: Redux Toolkit, classnames, react-router-dom, etc.
+
+## Features
+
+- **Mock Server Requests**: Utilized internal API for server requests.
+- **Functional Components**: Implemented for basic online store functions:
+  - Adding or removing products in the cart or favorites page (using browser local storage to save data between sessions).
+  - Filtering lists of products.
+  - Routing through single-page app components.
+  - Fully functional and responsive image carousel (developed without using any libraries).
+  - Hover effects for interactive elements.
+  - Added Ukrainian language support.
+
+## Development Methodology
+
+- The application follows the best coding practices such as DRY (Don't Repeat Yourself).
+- The code is concise, clear, and includes comments for difficult points.
+- The interface is divided into separate components that can be flexibly reused in different parts of the application.
+- TypeScript has made development simpler and more predictable with its

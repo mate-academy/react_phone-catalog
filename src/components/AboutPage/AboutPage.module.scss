@@ -1,12 +1,28 @@
 @import '../../styles/utils/vars.scss';
+@import '../../styles/utils/mixins.scss';
 
-.text {
-  margin-top: 32px;
-  font-size: 16px;
-  line-height: 28px;
+.article {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
   color: $second-txt-col;
+}
 
-  &__link {
-    color: $second-txt-col;
-  }
+.partOfTextSection {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.subtitle {
+  color: $main-txt-col;
+}
+
+.list {
+  list-style-type: square;
+  padding-left: 20px;
+}
+
+.text__link {
+  color: $second-txt-col;
 }
