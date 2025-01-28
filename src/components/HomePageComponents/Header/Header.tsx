@@ -82,7 +82,7 @@ export const Header = () => {
               ></div>
             </div>
             <img
-              src={`/img/slider-${activeImg}.png`}
+              src={`./img/slider-${activeImg}.png`}
               alt={`slider-img-${activeImg}`}
               className="header__sliders--photo"
             />
