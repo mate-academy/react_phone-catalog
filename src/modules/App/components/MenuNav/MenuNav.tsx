@@ -1,20 +1,21 @@
-import { useCallback, useContext } from 'react';
+import { useCallback } from 'react';
 
 import styles from './MenuNav.module.scss';
 
 import { NavLinkItem } from '@components/NavLinkItem';
 
-import { DispatchMenuContext } from '@store/MenuStore';
+import { useAppDispatch } from '@store/hooks';
+import { menuActions } from '@features/menuSlice';
 
 import { LINKS } from '@App/constants/Links';
 
 export const MenuNav = () => {
-  const dispatchMenu = useContext(DispatchMenuContext);
+  const dispatch = useAppDispatch();
 
   const changePage = useCallback(() => {
     window.scrollTo(0, 0);
-    dispatchMenu({ type: 'set', payload: false });
-  }, [dispatchMenu]);
+    dispatch(menuActions.set(false));
+  }, [dispatch]);
 
   return (
     <nav className={styles['menu-nav']}>

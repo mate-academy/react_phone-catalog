@@ -1,15 +1,12 @@
-import { useContext } from 'react';
-
 import styles from './Categories.module.scss';
 
 import { Category } from '@HomePage/types/Category';
-
 import { CategoryComponent } from '@HomePage/components/CategoryComponent';
 
-import { ProductsContext } from '@store/ProductsStore';
+import { useAppSelector } from '@store/hooks';
 
 export const Categories = () => {
-  const products = useContext(ProductsContext);
+  const { products } = useAppSelector(state => state.products);
 
   const categories: Category[] = [
     {

@@ -1,14 +1,35 @@
-import { useContext, useMemo } from 'react';
+import { useEffect, useMemo } from 'react';
 
 import './HomePage.scss';
 
 import { ProductsSlider } from '@components/ProductsSlider';
 
-import { ProductsContext } from '@store/ProductsStore';
 import { Categories } from './components/Categories';
 
+import { loadProducts } from '@features/productsSlice';
+import { useAppDispatch, useAppSelector } from '@store/hooks';
+
 export const HomePage = () => {
-  const products = useContext(ProductsContext);
+  const dispatch = useAppDispatch();
+  const { products, isLoading } = useAppSelector(state => state.products);
+
+  // fetching data
+  useEffect(() => {
+    if (
+      products.phones.length &&
+      products.tablets.length &&
+      products.accessories.length
+    ) {
+      return;
+    }
+
+    if (isLoading) {
+      return;
+    }
+
+    dispatch(loadProducts());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const allProducts = useMemo(() => {
     return Object.values(products).flat(Infinity);

@@ -12,6 +12,7 @@
       "@hooks/*": ["./modules/shared/hooks/*"],
       "@utils/*": ["./modules/shared/utils/*"],
       "@styles/*": ["./modules/shared/styles/utils/*"],
+      "@features/*": ["./modules/shared/features/*"],
       "@services/*": ["./modules/shared/services/*"],
       "@components/*": ["./modules/shared/components/*"],
 

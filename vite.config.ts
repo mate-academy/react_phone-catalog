@@ -12,6 +12,7 @@ export default defineConfig({
       '@hooks': path.resolve(__dirname, 'src/modules/shared/hooks'),
       '@utils': path.resolve(__dirname, 'src/modules/shared/utils'),
       '@styles': path.resolve(__dirname, 'src/modules/shared/styles/utils'),
+      '@features': path.resolve(__dirname, 'src/modules/shared/features'),
       '@services': path.resolve(__dirname, 'src/modules/shared/services'),
       '@components': path.resolve(__dirname, 'src/modules/shared/components'),
 

@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import { useCallback, useContext } from 'react';
+import { useCallback, useEffect } from 'react';
 
 import styles from './Menu.module.scss';
 
@@ -9,16 +9,26 @@ import { MenuNav } from '../MenuNav';
 import { Icon } from '@components/Icon';
 import { NavLinkItem } from '@components/NavLinkItem';
 
-import { DispatchMenuContext, MenuContext } from '@store/MenuStore';
+import { menuActions } from '@features/menuSlice';
+import { useAppDispatch, useAppSelector } from '@store/hooks';
 
 export const Menu = () => {
-  const isMenuOpen = useContext(MenuContext);
-  const dispatchMenu = useContext(DispatchMenuContext);
+  const dispatch = useAppDispatch();
+  const isMenuOpen = useAppSelector(state => state.menu);
+
+  // disable scrolling while menu is open
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.body.style.overflowY = 'hidden';
+    } else {
+      document.body.style.overflowY = '';
+    }
+  }, [isMenuOpen]);
 
   const changePage = useCallback(() => {
     window.scrollTo(0, 0);
-    dispatchMenu({ type: 'set', payload: false });
-  }, [dispatchMenu]);
+    dispatch(menuActions.set(false));
+  }, [dispatch]);
 
   return (
     <aside
