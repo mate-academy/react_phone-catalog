@@ -70,11 +70,15 @@
       }
     }
 
-    &--photo {
+    &__photo-container {
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      height: 320px;
       width: 100%;
-      transition:
-        transform 0.3s ease-in-out,
-        opacity 0.3s ease-in-out;
 
       @include on-tablet {
         grid-row: 1;
@@ -85,6 +89,15 @@
       @include on-desktop {
         height: 400px;
       }
+    }
+
+    &--photo {
+      transition:
+        transform 0.3s ease-in-out,
+        opacity 0.3s ease-in-out;
+
+      width: 100%;
+      height: 100%;
     }
 
     &--indicators-block {

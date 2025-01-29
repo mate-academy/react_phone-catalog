@@ -11,11 +11,26 @@ export const Footer = () => {
         <div className="footer__logo"></div>
       </NavLink>
       <div className="footer__navigation">
-        <ul className="footer__navigation__list">
-          <li className="footer__navigation__item">Github</li>
-          <li className="footer__navigation__item">Contacts</li>
-          <li className="footer__navigation__item">Rights</li>
-        </ul>
+        <div className="footer__navigation__list">
+          <a
+            href="https://github.com/manch0ffline"
+            className="footer__navigation__item"
+          >
+            Github
+          </a>
+          <a
+            href="https://github.com/manch0ffline"
+            className="footer__navigation__item"
+          >
+            Contacts
+          </a>
+          <a
+            href="https://github.com/manch0ffline"
+            className="footer__navigation__item"
+          >
+            Rights
+          </a>
+        </div>
       </div>
       <div className="footer__button" onClick={handleScrollToTop}>
         <label htmlFor="footer__button" className="footer__button--text">

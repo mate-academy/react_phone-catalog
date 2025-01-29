@@ -1,6 +1,7 @@
 import { NavLink } from 'react-router-dom';
 import { Navigation } from '../Navigation/Navigation';
 import cn from 'classnames';
+import { useEffect } from 'react';
 
 type Props = {
   isOpen: boolean;
@@ -8,6 +9,18 @@ type Props = {
 };
 
 export const Menu: React.FC<Props> = ({ isOpen, onClose }) => {
+  useEffect(() => {
+    if (isOpen) {
+      document.body.classList.add('menu-open');
+    } else {
+      document.body.classList.remove('menu-open');
+    }
+
+    return () => {
+      document.body.classList.remove('menu-open');
+    };
+  }, [isOpen]);
+
   return (
     <aside className={`menu ${isOpen ? 'menu--open' : ''}`} id="menu">
       <div className="menu__top-bar">

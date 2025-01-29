@@ -53,9 +53,16 @@ html {
   background-color: $grey;
 }
 
+body.menu-open {
+  overflow: hidden;
+  height: 100vh;
+  position: fixed;
+  width: 100%;
+}
+
 .App {
   display: flex;
-  flex-direction: column  ;
+  flex-direction: column;
   min-height: 100vh;
   &__outlet {
     flex: 1;

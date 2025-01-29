@@ -1,9 +1,7 @@
 .menu {
   background: $background;
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
+  inset: 0;
   height: 100vh;
   z-index: 1;
 
@@ -50,6 +48,7 @@
     opacity: 1;
     transform: translateX(0);
     pointer-events: all;
+    overflow: hidden;
   }
 
   &__bottom {
