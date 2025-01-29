@@ -25,6 +25,7 @@ export const Footer = () => {
         <div className="footer__links">
           {LINKS.map(link => (
             <a
+              key={link.title}
               href={link.url}
               target="_"
               className="footer__links-link text-button"
