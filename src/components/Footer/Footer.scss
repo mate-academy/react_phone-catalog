@@ -40,6 +40,12 @@
     &-link {
       color: vars.$color-secondary;
       text-decoration: none;
+
+      transition: filter vars.$transition-time;
+
+      &:hover {
+        filter: brightness(65%);
+      }
     }
   }
 

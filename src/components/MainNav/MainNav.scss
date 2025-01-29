@@ -38,10 +38,10 @@
 
     color: vars.$color-secondary;
 
+    transition: filter vars.$transition-time;
+
     &:not(&--selected):hover {
       filter: brightness(65%);
-
-      transition: filter vars.$transition-time;
     }
 
     &--selected {
