@@ -2,9 +2,9 @@ import React, { useEffect, useRef, useState } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 import classNames from 'classnames';
 import { MainNav } from '../MainNav';
-import './Header.scss';
 import { getCart } from '../../api/cart';
 import { getFavourites } from '../../api/favourites';
+import './Header.scss';
 
 type Props = {
   openMenu: () => void;
@@ -150,8 +150,16 @@ export const Header: React.FC<Props> = ({ openMenu }) => {
       <div className="header__caret" ref={caretRef}></div>
 
       <div className="header__left">
-        <img src="logo.svg" alt="Logo" className="header__logo" />
-
+        <NavLink
+          to="/"
+          className={({ isActive }) =>
+            classNames('header__logo-link', {
+              'header__logo-link--active': isActive,
+            })
+          }
+        >
+          <img src="logo.svg" alt="Logo" className="header__logo" />
+        </NavLink>
         <div className="header__nav" ref={navRef}>
           <MainNav />
         </div>

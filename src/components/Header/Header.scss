@@ -35,11 +35,20 @@
 
   &__logo {
     padding: 18px 24px;
+    user-select: none;
 
     @include mixins.media-tablet {
       width: 64px;
 
       padding: 13px 16px;
+    }
+
+    &-link {
+      display: flex;
+
+      &--active {
+        pointer-events: none;
+      }
     }
   }
 
