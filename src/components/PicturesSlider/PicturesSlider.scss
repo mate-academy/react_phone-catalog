@@ -1,0 +1,122 @@
+@import '../../styles/main';
+
+.picturesSwiper {
+  &_container {
+    display: flex;
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    gap: 19px;
+
+    @include on-tablet {
+      flex-direction: row;
+    }
+
+    & .icon {
+      box-sizing: content-box;
+
+      &_container {
+        cursor: pointer;
+        box-sizing: border-box;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+        transition: border-color 0.3s;
+        border: 1px solid var(--slider-btn-border);
+        width: 32px;
+        height: 32px;
+        display: none;
+        flex-shrink: 0;
+        background-color: var(--slider-bg);
+
+        &:hover {
+          border-color: var(--primary);
+        }
+
+        @include on-tablet {
+          display: flex;
+          height: 189px;
+        }
+
+        @include on-desktop {
+          display: flex;
+          height: 400px;
+        }
+      }
+
+      &_left {
+        width: 16px;
+        height: 16px;
+        background-repeat: no-repeat;
+        background-size: cover;
+
+        &.dark-theme {
+          background-image: url('../../images/icon-left-dark-theme.svg');
+        }
+
+        &.light-theme {
+          background-image: url('../../images/icon-left-light-theme.svg');
+        }
+      }
+
+      &_right {
+        width: 16px;
+        height: 16px;
+        background-repeat: no-repeat;
+        background-size: cover;
+
+        &.dark-theme {
+          background-image: url('../../images/icon-right-dark-theme.svg');
+        }
+
+        &.light-theme {
+          background-image: url('../../images/icon-right-light-theme.svg');
+        }
+      }
+    }
+  }
+
+  &.swiper {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  & img {
+    height: 100%;
+  }
+
+  & .swiper-slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    height: 100vw;
+
+    @include on-tablet {
+      height: 189px;
+    }
+
+    @include on-desktop {
+      height: 400px;
+    }
+  }
+
+  & .swiper-pagination {
+    position: relative;
+    bottom: unset;
+    height: 24px;
+
+    &-bullet {
+      height: 4px;
+      width: 14px;
+      border-radius: 0%;
+      background-color: var(--footer-border);
+      opacity: 1;
+
+      &-active {
+        background-color: var(--primary);
+      }
+    }
+  }
+}

@@ -1,0 +1,121 @@
+@import '../../styles/main';
+
+.footer {
+  width: 100%;
+  border-top: 1px solid var(--footer-border);
+  background-color: var(--footer-background);
+
+  &__container {
+    @include padding-content-inline-responsive;
+
+    &__content {
+      height: 257px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 32px;
+
+      @include on-tablet {
+        width: 100%;
+        height: 96px;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        gap: 0;
+      }
+
+      &__logo {
+        @include on-tablet {
+          transition: transform 0.3s ease;
+
+          &:hover {
+            transform: scale(1.1);
+          }
+        }
+
+        &__link {
+          display: inline-block;
+          width: 89px;
+          height: 32px;
+        }
+      }
+    }
+  }
+
+  &__nav {
+    &__list {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+
+      @include on-tablet {
+        flex-direction: row;
+        gap: 13.5px;
+      }
+
+      @include on-desktop {
+        gap: 106.83px;
+      }
+
+      &__item {
+        width: 70px;
+        font-family: Mont, sans-serif;
+        font-weight: 800;
+        font-size: 12px;
+        line-height: 11px;
+        cursor: pointer;
+        color: var(--footer-text-color);
+        transition: color 0.3s ease;
+
+        &:hover {
+          color: var(--footer-link-hover);
+        }
+
+        &__link {
+          color: var(--footer-text-color);
+          transition: color 0.3s ease;
+
+          &:hover {
+            color: var(--footer-link-hover);
+          }
+        }
+      }
+    }
+  }
+
+  &__scrollToTop {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+
+    &__text {
+      font-family: Mont, sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--back-top);
+    }
+
+    &__button {
+      cursor: pointer;
+      width: 32px;
+      height: 32px;
+      background-color: var(--footer-btn-bg-color);
+      border: 1px solid var(--footer-border-btn);
+      transition: background-color 0.3s ease,
+        border 0.3s ease,
+        transform 0.3s ease;
+
+      &:hover {
+        border: 1px solid var(--footer-btn-hover);
+        background-color: var(--footer-button-bg-hover);
+      }
+
+      &__icon {
+        &:hover {
+          transform: scale(1.3);
+        }
+      }
+    }
+  }
+}

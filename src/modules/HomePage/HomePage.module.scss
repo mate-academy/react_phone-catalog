@@ -1,0 +1,66 @@
+@import '../../styles/main';
+
+.homePage {
+  position: relative;
+
+  &__title {
+    @include padding-content-inline-responsive;
+
+    &__text {
+      font-family: Mont, sans-serif;
+      font-size: 32px;
+      font-weight: 800;
+      line-height: 41px;
+      color: var(--primary);
+      padding-block: 24px;
+
+      @include on-tablet {
+        font-size: 48px;
+        font-weight: 800;
+        line-height: 56px;
+        padding-block: 32px;
+      }
+
+      @include on-desktop {
+        padding-block: 56px;
+      }
+    }
+  }
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    row-gap: 56px;
+
+    @include on-tablet {
+      row-gap: 64px;
+    }
+
+    .picturesSlider {
+      padding-inline: 0;
+
+      @include on-tablet {
+        @include padding-content-inline-responsive;
+      }
+    }
+
+     .phonesSlider {
+         padding-left: 16px;
+
+        @include on-tablet {
+          padding-inline: 24px;
+        }
+
+        @include on-desktop {
+          padding-inline: 152px;
+        }
+      }
+  }
+
+}
+
+.loader {
+position: absolute;
+left: 45%;
+top: 25%;
+}

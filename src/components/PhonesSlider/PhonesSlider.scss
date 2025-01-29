@@ -1,0 +1,130 @@
+@import '../../styles/main';
+
+.phonesSlider.container {
+  box-sizing: border-box;
+  position: relative;
+  width: 100%;
+}
+
+.phonesSlider .title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 72px;
+  min-height: 41px;
+  padding-bottom: 24px;
+  color: var(--header-text-color-active);
+  font-family: Mont, sans-serif;
+  text-align: left;
+  font-size: 22px;
+  font-weight: 800;
+  padding-right: 16px;
+
+  @include on-tablet {
+    padding-right: 0;
+  }
+
+}
+
+.phoneSlider.swiper {
+  &_container {
+    width: 100%;
+    height: 100%;
+  }
+
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.phonesSlider .swiper-slide {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 440px;
+  width: 212px;
+  padding: 32px;
+  border: 1px solid var(--card-border);
+  background-color: var(--card-bg-color);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+
+  &:hover {
+    border-color: var(--card-hover-border);
+    box-shadow: var(--box-shadow-hover);
+  }
+
+  @include on-tablet {
+    font-size: 32px;
+    height: 512px;
+    width: 237px;
+  }
+
+  @include on-desktop {
+    height: 506px;
+    width: 272px;
+  }
+}
+
+.phonesSlider .controls {
+  display: flex;
+  gap: 16px;
+  height: 32px;
+}
+
+.phonesSlider .icon_container {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: border-color 0.3s;
+  border: 1px solid var(--slider-btn-border);
+  background-color: var(--slider-bg);
+
+  &:hover {
+    border-color: var(--primary);
+  }
+
+
+  &.swiper-button-disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    background-color: transparent;
+
+    &:hover {
+      border-color: var(--slider-border);
+
+    }
+  }
+}
+
+.phonesSlider .icon {
+  width: 16px;
+  height: 16px;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.phonesSlider .icon_left {
+  &.light-theme {
+    background-image: url('../../images/icon-left-light-theme.svg');
+  }
+
+  &.dark-theme {
+    background-image: url('../../images/icon-left-dark-theme.svg');
+  }
+
+}
+
+.phonesSlider .icon_right {
+  &.light-theme {
+    background-image: url('../../images/icon-right-light-theme.svg');
+  }
+
+  &.dark-theme {
+    background-image: url('../../images/icon-right-dark-theme.svg');
+  }
+
+}
