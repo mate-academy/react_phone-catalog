@@ -3,7 +3,12 @@
 .category-component {
   gap: 24px;
   display: flex;
+  cursor: pointer;
   flex-direction: column;
+
+  @include on-desktop {
+    @include hover;
+  }
 
   &__image-wrapper {
     width: 100%;

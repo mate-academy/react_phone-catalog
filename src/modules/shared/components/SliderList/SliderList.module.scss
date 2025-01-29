@@ -21,7 +21,8 @@ $gaps-d: ($size-d - 1) * $column-gap-p;
   grid-auto-flow: column;
   column-gap: $column-gap-p;
 
-  overflow: auto;
+  overflow: auto hidden;
+
   margin-inline: -$padding-inline-p;
   padding-inline: $padding-inline-p;
   grid-auto-columns: calc(

@@ -1,4 +1,5 @@
 @use '@styles/vars' as *;
+@use '@styles/mixins' as *;
 
 $icon-size: 32px;
 $border-size: 1px;
@@ -17,19 +18,6 @@ $border-size: 1px;
 
   &:hover {
     border: $border-size solid var(--primary-color);
-  }
-
-  &--disabled {
-    cursor: auto;
-    border: $border-size solid var(--elements-color);
-
-    &:hover {
-      border: $border-size solid var(--elements-color);
-    }
-
-    &__content {
-      background-color: var(--icons-color);
-    }
   }
 
   &__content {
@@ -64,6 +52,33 @@ $border-size: 1px;
 
     &--right {
       mask-image: url('/img/arrows/arrow-right.svg');
+    }
+  }
+
+  &--tall {
+    height: 100%;
+
+    .arrow__content {
+      height: 100%;
+    }
+  }
+
+  &--disabled {
+    cursor: auto;
+    border: $border-size solid var(--elements-color);
+
+    &:hover {
+      border: $border-size solid var(--elements-color);
+    }
+
+    .arrow__content {
+      background-color: var(--icons-color);
+    }
+  }
+
+  &:not(&--disabled) {
+    @include on-desktop {
+      @include hover;
     }
   }
 }

@@ -19,9 +19,9 @@ export const Menu = () => {
   // disable scrolling while menu is open
   useEffect(() => {
     if (isMenuOpen) {
-      document.body.style.overflowY = 'hidden';
+      document.documentElement.style.overflowY = 'hidden';
     } else {
-      document.body.style.overflowY = '';
+      document.documentElement.style.overflowY = '';
     }
   }, [isMenuOpen]);
 

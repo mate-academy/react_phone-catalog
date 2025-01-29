@@ -18,6 +18,15 @@
   grid-template-columns: repeat(var(--columns), 1fr);
 }
 
+@mixin hover($size: 1.05) {
+  transform-origin: center;
+  transition: transform $animation-duration;
+
+  &:hover {
+    transform: scale($size);
+  }
+}
+
 @mixin content-padding-inline {
   padding-inline: $padding-inline-p;
 

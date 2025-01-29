@@ -57,6 +57,12 @@
     }
   }
 
+  &__link {
+    @include on-desktop {
+      @include hover;
+    }
+  }
+
   &__back-to-top {
     grid-column: 1 / -1;
     justify-items: center;

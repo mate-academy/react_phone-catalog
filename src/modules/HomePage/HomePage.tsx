@@ -5,6 +5,7 @@ import './HomePage.scss';
 import { ProductsSlider } from '@components/ProductsSlider';
 
 import { Categories } from './components/Categories';
+import { PicturesSlider } from './components/PicturesSlider';
 
 import { loadProducts } from '@features/productsSlice';
 import { useAppDispatch, useAppSelector } from '@store/hooks';
@@ -55,6 +56,8 @@ export const HomePage = () => {
   return (
     <div className="home-page">
       <h1>Welcome to Nice Gadgets store!</h1>
+
+      <PicturesSlider />
 
       <ProductsSlider
         title={'Brand new models'}

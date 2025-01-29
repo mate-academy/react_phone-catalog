@@ -1,0 +1,118 @@
+@use '@styles/vars' as *;
+@use '@styles/mixins' as *;
+@use '@styles/extends' as *;
+
+.pictures-slider {
+  gap: 8px;
+  display: flex;
+  flex-direction: column;
+
+  &__top {
+    margin-inline: -$padding-inline-p;
+
+    display: grid;
+    column-gap: $column-gap-p;
+    grid-template-columns: min-content repeat(2, 1fr) min-content;
+
+    @include on-tablet {
+      margin-inline: 0;
+    }
+  }
+
+  &__button {
+    display: none;
+
+    &--left {
+      justify-self: start;
+    }
+
+    &--right {
+      justify-self: end;
+    }
+
+    @include on-tablet {
+      display: block;
+
+      grid-column: span 1;
+    }
+  }
+
+  &__slider {
+    height: 100%;
+    position: relative;
+    grid-column: 1 / -1;
+
+    display: grid;
+    overflow-x: auto;
+    grid-auto-flow: column;
+    grid-auto-columns: 100%;
+
+    scroll-snap-type: x mandatory;
+
+    // hide scrollbar
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none;
+
+    &::-webkit-scrollbar {
+      display: none; /* Chrome, Safari, Edge */
+    }
+
+    @include on-tablet {
+      grid-column: span 2;
+    }
+  }
+
+  &__picture {
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+
+    scroll-snap-stop: always;
+    scroll-snap-align: center;
+
+    @include on-tablet {
+      height: 300px;
+      aspect-ratio: initial;
+      object-position: center;
+    }
+
+    @include on-desktop {
+      height: 400px;
+
+      @include hover;
+    }
+  }
+
+  &__bottom {
+    gap: 4px;
+    display: flex;
+    margin-inline: auto;
+  }
+
+  &__dot {
+    width: 24px;
+    aspect-ratio: 1;
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    @include on-desktop {
+      @include hover(1.5);
+    }
+
+    &::after {
+      content: '';
+      display: block;
+
+      width: 14px;
+      height: 4px;
+      background-color: var(--elements-color);
+    }
+
+    &--active::after {
+      background-color: var(--primary-color);
+    }
+  }
+}

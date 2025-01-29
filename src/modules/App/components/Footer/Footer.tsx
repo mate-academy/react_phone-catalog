@@ -12,11 +12,17 @@ export const Footer = () => {
         </div>
 
         <div className={styles.footer__links}>
-          <a href="#">Github</a>
+          <a href="#" className={styles.footer__link}>
+            Github
+          </a>
 
-          <a href="#">Contacts</a>
+          <a href="#" className={styles.footer__link}>
+            Contacts
+          </a>
 
-          <a href="#">Rights</a>
+          <a href="#" className={styles.footer__link}>
+            Rights
+          </a>
         </div>
 
         <div className={styles['footer__back-to-top']}>

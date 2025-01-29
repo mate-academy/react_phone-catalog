@@ -3,37 +3,59 @@ import React, { ImgHTMLAttributes, useEffect, useRef, useState } from 'react';
 
 import styles from './Image.module.scss';
 
-export const Image: React.FC<ImgHTMLAttributes<HTMLImageElement>> = props => {
-  const timeoutId = useRef(0);
-  const [isLoaded, setIsLoaded] = useState(false);
-  const [isLoading, setIsloading] = useState(false);
+type RefType = HTMLImageElement | null;
+type Props = ImgHTMLAttributes<HTMLImageElement>;
 
-  useEffect(() => {
-    if (!isLoaded) {
-      timeoutId.current = window.setTimeout(() => setIsloading(true), 300);
-    } else {
-      window.clearTimeout(timeoutId.current);
-    }
-  }, [isLoaded]);
+export const Image = React.forwardRef<RefType, Props>(
+  function Image(props, ref) {
+    const timeoutId = useRef(0);
+    const [isLoaded, setIsLoaded] = useState(false);
+    const [isLoading, setIsloading] = useState(false);
 
-  return (
-    <>
-      {isLoading && (
-        <div
+    useEffect(() => {
+      if (!isLoaded) {
+        timeoutId.current = window.setTimeout(
+          () =>
+            setIsLoaded(prevState => {
+              if (!prevState) {
+                setIsloading(true);
+              }
+
+              return prevState;
+            }),
+          300,
+        );
+      } else {
+        window.clearTimeout(timeoutId.current);
+      }
+    }, [isLoaded]);
+
+    return (
+      <>
+        {isLoading && (
+          <div
+            {...props}
+            className={classNames(props.className, styles['image-skeleton'])}
+          />
+        )}
+
+        <img
+          ref={ref}
           {...props}
-          className={classNames(props.className, styles['image-skeleton'])}
-        />
-      )}
+          onLoad={event => {
+            setIsLoaded(true);
+            setIsloading(false);
 
-      <img
-        {...props}
-        onLoad={() => {
-          setIsLoaded(true);
-          setIsloading(false);
-        }}
-        className={props.className}
-        style={!isLoading ? undefined : { display: 'none' }}
-      />
-    </>
-  );
-};
+            if (Object.hasOwn(props, 'onLoad')) {
+              if (props.onLoad) {
+                props.onLoad(event);
+              }
+            }
+          }}
+          className={props.className}
+          style={!isLoading ? props.style : { display: 'none' }}
+        />
+      </>
+    );
+  },
+);

@@ -3,12 +3,17 @@
 
 .product-card {
   padding: 32px;
+  cursor: pointer;
   box-sizing: border-box;
   border: 1px solid var(--elements-color);
 
   gap: 8px;
   display: flex;
   flex-direction: column;
+
+  @include on-desktop {
+    @include hover;
+  }
 
   &__image {
     width: 100%;

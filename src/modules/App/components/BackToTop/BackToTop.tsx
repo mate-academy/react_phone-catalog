@@ -8,7 +8,7 @@ export const BackToTop = () => {
     <div className="back-to-top" onClick={() => window.scrollTo(0, 0)}>
       <div className="back-to-top__label">Back to top</div>
 
-      <div>
+      <div className="back-to-top__arrow">
         <Arrow type={ArrowType.up} />
       </div>
     </div>

@@ -4,12 +4,21 @@
 .back-to-top {
   height: 32px;
   cursor: pointer;
+  user-select: none;
 
   gap: $column-gap-p;
   display: flex;
   align-items: center;
 
+  @include on-desktop {
+    @include hover;
+  }
+
   &__label {
     @include small-text;
+  }
+
+  &__arrow {
+    pointer-events: none;
   }
 }

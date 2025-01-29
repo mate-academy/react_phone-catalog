@@ -89,36 +89,39 @@ export const useScrollAnimation = (
       let startTime: number | null = null;
       const [start, distance, end] = getParams(slider, targetItem, right);
 
-      const scroll = (currentTime: number) => {
-        if (startTime === null) {
-          startTime = currentTime;
-        }
-
-        const timeElapsed = currentTime - startTime;
-
-        if (Math.abs(end - slider.scrollLeft) > 0.6) {
-          if (!currentDuration.current) {
-            // eslint-disable-next-line no-param-reassign
-            slider.scrollLeft = end;
-            currentAnimationFrame.current = requestAnimationFrame(scroll);
-
-            return;
+      return new Promise<void>(resolve => {
+        const scroll = (currentTime: number) => {
+          if (startTime === null) {
+            startTime = currentTime;
           }
 
-          const run =
-            timeElapsed < duration
-              ? start + (distance * timeElapsed) / currentDuration.current
-              : end;
+          const timeElapsed = currentTime - startTime;
 
-          // eslint-disable-next-line no-param-reassign
-          slider.scrollLeft = run;
-          currentAnimationFrame.current = requestAnimationFrame(scroll);
-        } else {
-          currentAnimationFrame.current = null;
-        }
-      };
+          if (Math.abs(end - slider.scrollLeft) > 0.6) {
+            if (!currentDuration.current) {
+              // eslint-disable-next-line no-param-reassign
+              slider.scrollLeft = end;
+              currentAnimationFrame.current = requestAnimationFrame(scroll);
 
-      currentAnimationFrame.current = requestAnimationFrame(scroll);
+              return;
+            }
+
+            const run =
+              timeElapsed < duration
+                ? start + (distance * timeElapsed) / currentDuration.current
+                : end;
+
+            // eslint-disable-next-line no-param-reassign
+            slider.scrollLeft = run;
+            currentAnimationFrame.current = requestAnimationFrame(scroll);
+          } else {
+            resolve();
+            currentAnimationFrame.current = null;
+          }
+        };
+
+        currentAnimationFrame.current = requestAnimationFrame(scroll);
+      });
     },
     [duration, timeout],
   );
