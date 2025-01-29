@@ -14,7 +14,9 @@ body.light-theme {
   --button-border-hover-color: #89939a;
   --primary-footer-text-color: #89939a;
   --secondary-footer-text-color: #313237;
+  --page-active-color: #fff;
   --button-hover-color: #fff;
+  --page-border-hover-color: #b4bdc3;
 }
 
 body.dark-theme {
@@ -34,6 +36,8 @@ body.dark-theme {
   --primary-footer-text-color: #f1f2f9;
   --secondary-footer-text-color: #f1f2f9;
   --button-border-hover-color: #4a4d58;
+  --page-active-color: #fff;
+  --page-border-hover-color: #323542;
 }
 
 $green-color: #27ae60;

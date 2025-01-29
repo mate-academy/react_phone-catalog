@@ -48,7 +48,7 @@ export const HeroSlider = () => {
 
   useEffect(() => {
     setCountImg(images.length);
-  }, [isMobile, imagesForMobile, imagesForDesktop]);
+  }, [images.length]);
 
   const onSlideChange = useCallback(() => {
     if (emblaApi) {

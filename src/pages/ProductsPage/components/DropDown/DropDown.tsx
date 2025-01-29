@@ -1,25 +1,23 @@
 import React, { useState } from 'react';
 import styles from './DropDown.module.scss';
 import { Icon } from '../../../../components/Icon';
-import { useSearchParams } from 'react-router-dom';
 import classNames from 'classnames';
 
 type Props = {
   options: { [key: string]: string };
   value: string;
+  onOptionSelect: (option: string) => void;
 };
 
-export const DropDown: React.FC<Props> = ({ options, value }) => {
+export const DropDown: React.FC<Props> = ({
+  options,
+  value,
+  onOptionSelect,
+}) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [searchParams, setSearchParams] = useSearchParams();
 
   const toggleDropdown = () => {
     setIsOpen(prev => !prev);
-  };
-
-  const handleOptionClick = (option: string) => {
-    setSearchParams({ ...searchParams, sortField: option });
-    setIsOpen(false);
   };
 
   return (
@@ -38,7 +36,10 @@ export const DropDown: React.FC<Props> = ({ options, value }) => {
         {Object.entries(options).map(([option, label]) => (
           <li
             key={option}
-            onClick={() => handleOptionClick(option)}
+            onClick={() => {
+              onOptionSelect(option);
+              setIsOpen(false);
+            }}
             className={classNames(styles.dropdown__option, {
               [styles.active]: option === value,
             })}
