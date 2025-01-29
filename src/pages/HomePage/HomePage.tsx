@@ -110,6 +110,13 @@ export const HomePage = () => {
       return;
     }
 
+    if (
+      event.currentTarget.style.rotate &&
+      event.currentTarget.style.rotate !== 'none'
+    ) {
+      return;
+    }
+
     const styles = calculateImageStyles(
       event.currentTarget,
       event.clientX,
