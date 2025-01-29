@@ -1,0 +1,24 @@
+/* eslint-disable scss/at-mixin-pattern */
+/* stylelint-disable scss/dollar-variable-empty-line-before */
+/* stylelint-disable declaration-block-no-redundant-longhand-properties */
+
+$main-color: rgba(15, 17, 33, 1);
+$tablet-min-width: 640px;
+$desktop-min-width: 1200px;
+$grey: rgba(59, 62, 74, 1);
+$grey-secondary: rgba(117, 118, 127, 1);
+$white: rgba(241, 242, 249, 1);
+$surface-1: rgba(22, 24, 39, 1);
+
+$card-height: 440px;
+$card-width: 212px;
+
+$tablet-card-height: 500px;
+$tablet-card-width: 212px;
+
+$primary-selected: rgba(144, 91, 255, 1);
+$favorites-default: rgba(50, 53, 66, 1);
+$button-hover: rgba(74, 77, 88, 1);
+$primary-hover: rgba(163, 120, 255, 1);
+;
+
