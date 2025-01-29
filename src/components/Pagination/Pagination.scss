@@ -1,0 +1,40 @@
+@use 'styles/mixins';
+@use 'styles/vars';
+
+.pagination {
+  margin-top: 40px;
+
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+
+  &__arrow {
+    height: fit-content;
+  }
+
+  &__pages {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  &__page-button {
+    width: 32px;
+    height: 32px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-color: vars.$color-elements;
+
+    &--selected {
+      border-color: vars.$color-primary;
+      background-color: vars.$color-primary;
+
+      & > p {
+        color: white;
+      }
+    }
+  }
+}

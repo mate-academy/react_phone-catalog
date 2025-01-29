@@ -1,0 +1,136 @@
+@use 'styles/mixins';
+@use 'styles/vars';
+
+.banner-slider {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-direction: column;
+
+  &__container {
+    width: 100%;
+
+    display: grid;
+    grid-template-columns: 32px 1fr 32px;
+    gap: 16px;
+
+    @include mixins.media-phone {
+      display: flex;
+      justify-content: center;
+    }
+  }
+
+  &__arrow {
+    @include mixins.media-phone {
+      display: none;
+    }
+  }
+
+  &__banner {
+    display: flex;
+  }
+
+  &__image {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    width: 100%;
+
+    user-select: none;
+
+    --direction: 5px;
+    animation-duration: 0;
+
+    &-container {
+      position: relative;
+
+      display: flex;
+    }
+
+    &--main {
+      position: initial;
+    }
+
+    &--animate {
+      animation-duration: vars.$transition-time !important;
+    }
+
+    &--visible {
+      animation: banner-appear ease forwards;
+
+      @keyframes banner-appear {
+        from {
+          opacity: 0;
+          transform: translateX(var(--direction));
+        }
+
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+    }
+
+    &--hidden {
+      pointer-events: none;
+
+      animation: banner-disappear ease forwards;
+
+      @keyframes banner-disappear {
+        from {
+          opacity: 1;
+          transform: translateX(0);
+        }
+
+        to {
+          opacity: 0;
+          transform: translateX(calc(var(--direction) * -1));
+        }
+      }
+    }
+
+    &--reverse {
+      --direction: -5px;
+    }
+
+    &-desktop {
+      @include mixins.media-phone {
+        display: none;
+      }
+    }
+
+    &-mobile {
+      display: none;
+
+      @include mixins.media-phone {
+        display: block;
+      }
+    }
+  }
+
+  &__pages {
+    display: flex;
+    gap: 4px;
+    justify-content: center;
+  }
+
+  &__page {
+    height: 24px;
+    width: 24px;
+    padding: 10px 5px;
+
+    box-sizing: border-box;
+
+    transition: background-color vars.$transition-time;
+
+    background-color: vars.$color-elements;
+    background-clip: content-box;
+
+    &--selected {
+      background-color: vars.$color-primary;
+    }
+  }
+}

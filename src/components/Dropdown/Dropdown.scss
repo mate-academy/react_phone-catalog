@@ -1,0 +1,68 @@
+@use 'styles/vars';
+
+.dropdown {
+  position: relative;
+  width: 100%;
+
+  &__button {
+    width: 100%;
+    padding: 10px 12px;
+
+    display: flex;
+    justify-content: space-between;
+
+    transition: border-color vars.$transition-time;
+
+    &:hover {
+      border-color: vars.$color-secondary;
+    }
+
+    &--opened {
+      border-color: vars.$color-primary !important;
+    }
+  }
+
+  &__icon {
+    margin: auto 0;
+  }
+
+  &__container {
+    position: absolute;
+    margin-top: 4px;
+    padding: 8px 1px;
+
+    right: 0;
+    left: 0;
+
+    background-color: white;
+    border: 1px solid vars.$color-elements;
+    box-shadow: 0 2px 15px 0 #0000000d;
+  }
+
+  &__item {
+    width: 100%;
+    padding: 6px 12px;
+    box-sizing: border-box;
+
+    color: vars.$color-secondary;
+
+    transition:
+      color vars.$transition-time,
+      background-color vars.$transition-time;
+
+    &:hover {
+      color: vars.$color-primary;
+      background-color: vars.$color-hover;
+    }
+
+    &-text {
+      pointer-events: none;
+
+      color: vars.$color-secondary;
+
+      &--selected {
+        color: vars.$color-primary;
+      }
+    }
+  }
+}

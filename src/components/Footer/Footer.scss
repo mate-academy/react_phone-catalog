@@ -1,0 +1,63 @@
+@use 'styles/mixins';
+@use 'styles/vars';
+
+.footer {
+  box-shadow: 0 -1px 0 0 vars.$color-elements;
+
+  margin-top: auto;
+
+  &__container {
+    padding: 32px;
+    max-width: 1200px;
+    box-sizing: border-box;
+    margin: auto;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    @include mixins.media-phone {
+      padding: 32px 16px;
+
+      gap: 32px;
+      flex-direction: column;
+      align-items: start;
+    }
+  }
+
+  &__links {
+    display: flex;
+    gap: 64px;
+
+    @include mixins.media-tablet {
+      gap: 16px;
+    }
+
+    @include mixins.media-phone {
+      flex-direction: column;
+    }
+
+    &-link {
+      color: vars.$color-secondary;
+      text-decoration: none;
+
+      transition: filter vars.$transition-time;
+
+      &:hover {
+        filter: brightness(65%);
+      }
+    }
+  }
+
+  &__back-to-top {
+    align-self: center;
+
+    display: flex;
+    gap: 16px;
+    align-items: center;
+
+    &-text {
+      color: vars.$color-secondary;
+    }
+  }
+}

@@ -1,0 +1,141 @@
+@use 'styles/mixins';
+@use 'styles/vars';
+
+.header {
+  position: relative;
+
+  box-shadow: 0 1px 0 0 vars.$color-elements;
+
+  display: flex;
+  justify-content: space-between;
+
+  &__caret {
+    position: absolute;
+    height: 3px;
+    bottom: 0;
+
+    background-color: vars.$color-primary;
+
+    transform-origin: bottom;
+
+    transition: opacity vars.$transition-time;
+  }
+
+  &__left {
+    height: 100%;
+
+    display: flex;
+    gap: 24px;
+    align-items: stretch;
+
+    @include mixins.media-tablet {
+      gap: 16px;
+    }
+  }
+
+  &__logo {
+    padding: 18px 24px;
+    user-select: none;
+
+    @include mixins.media-tablet {
+      width: 64px;
+
+      padding: 13px 16px;
+    }
+
+    &-link {
+      display: flex;
+
+      &--active {
+        pointer-events: none;
+      }
+    }
+  }
+
+  &__nav {
+    @include mixins.media-phone {
+      display: none;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+
+    @include mixins.media-phone {
+      display: none;
+    }
+
+    &-mobile {
+      display: none;
+
+      @include mixins.media-phone {
+        display: block;
+      }
+    }
+  }
+
+  &__button {
+    display: flex;
+
+    width: 100%;
+    height: 100%;
+
+    padding: 24px;
+    box-shadow: -1px 0 0 0 vars.$color-elements;
+
+    box-sizing: border-box;
+
+    @include mixins.media-tablet {
+      padding: 16px;
+    }
+
+    &-container {
+      position: relative;
+
+      display: flex;
+    }
+
+    &-count {
+      position: absolute;
+
+      bottom: 7px;
+      left: 7px;
+
+      width: 16px;
+      height: 16px;
+      box-sizing: border-box;
+
+      display: flex;
+      justify-content: center;
+      align-items: end;
+
+      border-radius: 100%;
+
+      background-color: #eb5757;
+      border: 1px solid #ffffff;
+
+      animation: cubic-bezier(0.7, -0.67, 0.16, 1.67) vars.$transition-time
+        forwards count-text-appear;
+
+      @keyframes count-text-appear {
+        0% {
+          transform: translateY(0px);
+        }
+
+        20% {
+          transform: translateY(-3px);
+        }
+
+        100% {
+          transform: translateY(0);
+        }
+      }
+
+      &-text {
+        font-size: 9px;
+        font-weight: vars.$font-weight-semi-bold;
+        color: white;
+      }
+    }
+  }
+}

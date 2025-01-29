@@ -1,0 +1,98 @@
+@use 'styles/mixins';
+@use 'styles/vars';
+
+.home-page {
+  &__title {
+    margin: 56px 0;
+
+    @include mixins.media-tablet {
+      margin: 32px 0;
+    }
+
+    @include mixins.media-phone {
+      margin: 24px 0;
+    }
+  }
+
+  &__container {
+    display: flex;
+    gap: 80px;
+    flex-direction: column;
+
+    @include mixins.media-tablet {
+      gap: 64px;
+    }
+
+    @include mixins.media-phone {
+      gap: 56px;
+    }
+  }
+
+  &__section {
+    display: flex;
+    gap: 24px;
+    flex-direction: column;
+  }
+
+  &__models {
+    &-container {
+      display: flex;
+      gap: 16px;
+    }
+  }
+
+  &__categories {
+    width: 100%;
+
+    &-container {
+      display: flex;
+      gap: 16px;
+
+      @include mixins.media-phone {
+        gap: 32px;
+        flex-direction: column;
+      }
+    }
+
+    &-category {
+      text-decoration: none;
+
+      perspective: 75cm;
+
+      transition:
+        filter vars.$transition-time,
+        transform vars.$transition-time;
+
+      &:hover {
+        transform: translateY(-2px);
+
+        filter: drop-shadow(0 2px 12px rgba(0, 0, 0, 0.3));
+
+        padding: 30px;
+        margin: -30px;
+      }
+
+      &-photo {
+        width: 100%;
+      }
+
+      &-title {
+        margin-top: 24px;
+        margin-bottom: 4px;
+
+        color: vars.$color-primary;
+      }
+
+      &-subtitle {
+        color: vars.$color-secondary;
+      }
+    }
+  }
+
+  &__hot-prices {
+    &-container {
+      display: flex;
+      gap: 16px;
+    }
+  }
+}
