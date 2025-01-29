@@ -1,0 +1,55 @@
+@import '../../assets/scss/variables';
+
+.product_details__colors {
+  margin-bottom: 24px;
+  border-bottom: 1px solid $color-elements;
+
+  &_wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &_title {
+    @include font-small-text;
+
+    color: $color-secondary;
+  }
+
+  &_button {
+    width: 33px;
+    height: 33px;
+    border: 1px solid $color-elements;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    padding: 0;
+    background: none;
+  }
+
+  &_inner {
+    width: 27px;
+    height: 27px;
+    border: 2px solid $color-black;
+    border-radius: 50%;
+  }
+
+  &_list {
+    padding: 0;
+    list-style: none;
+    display: flex;
+    gap: 8px;
+  }
+}
+
+.product_details__product_id {
+  @include font-small-text;
+
+  color: $color-icons;
+}
+
+.selected {
+  border-color: $color-white;
+}

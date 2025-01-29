@@ -1,0 +1,27 @@
+@import '../../assets/scss/variables';
+
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  background-color: $color-accent;
+
+  @include font-buttons;
+
+  color: $color-white;
+
+  &_disabled {
+    cursor: not-allowed;
+  }
+
+  &_selected {
+    background-color: $color-surface-2;
+  }
+
+  &:hover {
+    background-color: #a378ff;
+  }
+}

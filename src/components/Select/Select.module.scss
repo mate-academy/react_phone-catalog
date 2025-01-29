@@ -1,0 +1,62 @@
+@import '../../assets/scss/variables';
+
+.custom__select {
+  margin-top: 4px;
+  width: 100%;
+  position: relative;
+  background-color: $color-surface-2;
+  display: flex;
+  flex-direction: row;
+  padding: 10px 12px 9px;
+  cursor: pointer;
+  box-sizing: border-box;
+
+  @include font-buttons;
+
+  font-weight: 700;
+  color: $color-white;
+
+
+  &:hover {
+    border-radius: 10px solid #4a4d58;
+  }
+
+  &_trigger {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+  }
+
+  &_icon {
+    transition: transform 0.3s ease;
+    position: absolute;
+    right: 12px;
+
+    &__open {
+      transform: rotate(180deg);
+    }
+  }
+
+  &_option {
+    position: absolute;
+    top: 110%;
+    left: 0;
+    right: 0;
+    padding-block: 8px;
+    z-index: 10;
+    border: 1px solid #3b3e4a;
+
+    &_item {
+      padding: 6px 0 5px 12px;
+      color: $color-secondary;
+
+      &:hover {
+        background-color: $color-surface-2;
+        color: $color-white;
+
+        @include font-buttons;
+      }
+    }
+  }
+}

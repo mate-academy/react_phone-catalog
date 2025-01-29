@@ -1,0 +1,14 @@
+@import '../../assets/scss/variables';
+
+.perPage {
+  @include font-small-text;
+
+  color: $color-secondary;
+  margin-bottom: 4px;
+  width: 100%;
+  max-width: 136px;
+
+  @include on-desktop {
+    max-width: 128px;
+  }
+}

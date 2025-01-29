@@ -1,0 +1,37 @@
+@import '../../assets/scss/variables';
+
+.pagination {
+
+  &__list {
+    display: flex;
+    justify-content: row;
+    justify-content: center;
+    gap: 16px;
+    list-style: none;
+    padding: 0;
+  }
+
+  &__arrowButton {
+    background-color: $color-surface-2;
+  }
+
+  &__numberButton {
+    background-color: $color-surface-1;
+  }
+
+  &__button {
+    @include font-body-text;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 32px;
+    height: 32px;
+    border: none;
+    color: $color-white;
+
+    &_active {
+      background-color: $color-accent;
+    }
+  }
+}

@@ -1,0 +1,41 @@
+@import '../../assets/scss/variables';
+
+.cart__total {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  height: 190px;
+  border: 1px solid $color_elements;
+  padding: 24px;
+
+  @include on-desktop {
+    grid-column: 17 / -1;
+    align-self: start;
+    height: 206px;
+    gap: 24px;
+  }
+
+  &_price {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+
+    &_value {
+      @include font-h2-desktop-tablet;
+
+      color: $color-white;
+    }
+
+    &_text {
+      @include font-body-text;
+
+      color: $color-secondary;
+    }
+  }
+
+  &_devider {
+    width: 100%;
+  }
+}

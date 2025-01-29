@@ -1,0 +1,125 @@
+@import '../../assets/scss/variables';
+
+.Card {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 32px;
+  width: 212px;
+  height: 439px;
+  background-color: $color-surface-1;
+
+  @include on-tablet {
+    width: 237px;
+    height: 512px;
+  }
+
+  @include on-desktop {
+    width: 272px;
+    height: 506px;
+  }
+
+  &_ProductsPage {
+    justify-self: start;
+    width: 287px;
+    height: 506px;
+  }
+
+  &_FavouritesPage {
+    width: 287px;
+    height: 440px;
+    justify-self: center;
+
+    @include on-tablet {
+      width: 288px;
+      height: 506px;
+    }
+
+    @include on-desktop {
+      width: 272px;
+    }
+  }
+
+  &__ImageContainer {
+    text-decoration: none;
+    width: 148px;
+    height: 129px;
+    padding-bottom: 12px;
+
+    @include on-tablet {
+      width: 173px;
+      height: 202px;
+    }
+
+    @include on-desktop {
+      width: 208px;
+      height: 196px;
+    }
+  }
+
+  &__img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  &__title {
+    text-decoration: none;
+    text-align: center;
+
+    @include font-body-text;
+
+    color: $color-white;
+    width: 100%;
+
+    margin: 0;
+  }
+
+  &__price {
+    margin: 0;
+
+    @include font-h3-desktop-tablet;
+
+    color: $color-white;
+
+    &_old {
+      padding-left: 8px;
+      color: $color-secondary;
+      font-weight: 600;
+      line-height: 28.12px;
+      text-decoration: line-through;
+    }
+  }
+
+  &__info {
+    border-top: 1px solid $color-elements;
+    display: flex;
+    padding-top: 16px;
+    flex-direction: column;
+    gap: 8px;
+    width: 148px;
+
+    @include font-small-text;
+
+    &__text {
+      color: $color-secondary;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+
+      &_description {
+        color: $color-white;
+      }
+    }
+  }
+
+  &__button {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding-top: 8px;
+    gap: 8px;
+  }
+}

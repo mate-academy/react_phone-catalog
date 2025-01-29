@@ -1,0 +1,63 @@
+@import '../../assets/scss/variables';
+
+.product_detail__about {
+  margin-top: 56px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+
+  @include on-desktop {
+    grid-column: 1 / 13;
+    margin-bottom: 0;
+  }
+
+  &_title {
+    margin: 0;
+
+    @include font-h3-mobile;
+
+    color: $color-white;
+    border-bottom: 1px solid $color-elements;
+    padding-bottom: 16px;
+  }
+
+  &_description {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &_list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    padding: 0;
+  }
+
+  &_item {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+
+    &_title {
+      margin: 0;
+      display: flex;
+      width: 100%;
+      justify-content: start;
+
+      @include font-h4-mobile;
+
+      color: $color-white;
+    }
+
+    &_text {
+      margin: 0;
+
+      @include font-body-text;
+
+      color: $color-secondary;
+    }
+  }
+}

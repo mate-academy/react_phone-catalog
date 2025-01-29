@@ -1,0 +1,18 @@
+@import '../../assets/scss/variables';
+
+.sortSelect {
+  @include font-small-text;
+
+  color: $color-secondary;
+  margin-bottom: 4px;
+  width: 100%;
+  max-width: 136px;
+
+  @include on-tablet {
+    max-width: 187px;
+  }
+
+  @include on-desktop {
+    max-width: 176px;
+  }
+}

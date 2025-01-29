@@ -1,0 +1,23 @@
+@import '../../assets/scss/variables';
+
+.product_details__specs {
+@include font-small-text;
+  &_list {
+    padding: 0;
+    list-style: none;
+  }
+
+  &_item {
+    display: flex;
+    justify-content: space-between;
+
+  }
+
+  &_property{
+    color: $color-secondary;
+  }
+
+  &_value{
+    color: $color-white;
+  }
+}

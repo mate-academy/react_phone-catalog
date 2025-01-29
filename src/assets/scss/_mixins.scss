@@ -1,0 +1,40 @@
+$min-desktop-size: 1200px;
+$min-tablet-size: 640px;
+$min-mobile-size: 320px;
+
+@mixin on-desktop {
+  @media (min-width: $min-desktop-size) {
+    @content;
+  }
+}
+
+@mixin on-tablet {
+  @media (min-width: $min-tablet-size) {
+    @content;
+  }
+}
+
+@mixin on-mobile {
+  @media (min-width: $min-mobile-size) {
+    @content;
+  }
+}
+
+@mixin page-grid {
+  --column: 4;
+
+  display: grid;
+  column-gap: 16px;
+  grid-template-columns: repeat(var(--column), 1fr);
+  justify-content: center;
+
+  @include on-tablet {
+    --column: 12;
+  }
+
+  @include on-desktop {
+    --column: 24;
+
+    grid-template-columns: repeat(var(--column), 32px);
+  }
+}
