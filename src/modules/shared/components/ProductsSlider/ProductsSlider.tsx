@@ -53,117 +53,117 @@ const findPrevInvisibleItem = (
   }
 };
 
-export const ProductsSlider: React.FC<Props> = ({
-  title,
-  products,
-  hidePrevPrice,
-}) => {
-  const itemsRef = useRef<HTMLElement[]>([]);
-  const sliderRef = useRef<HTMLDivElement>(null);
+export const ProductsSlider: React.FC<Props> = React.memo(
+  function ProductsSlider({ title, products, hidePrevPrice }) {
+    const itemsRef = useRef<HTMLElement[]>([]);
+    const sliderRef = useRef<HTMLDivElement>(null);
 
-  const scrollTo = useScrollAnimation(300);
-  const [itemsVisibility, setItemsVisibility] = useState<ItemVisibility[]>([]);
+    const scrollTo = useScrollAnimation(300);
+    const [itemsVisibility, setItemsVisibility] = useState<ItemVisibility[]>(
+      [],
+    );
 
-  useEffect(() => {
-    if (products.length) {
-      const observer = new IntersectionObserver(
-        newEntries => {
-          setItemsVisibility(prevItems => {
-            const newItemsVisibility = [...prevItems];
+    useEffect(() => {
+      if (products.length) {
+        const observer = new IntersectionObserver(
+          newEntries => {
+            setItemsVisibility(prevItems => {
+              const newItemsVisibility = [...prevItems];
 
-            for (const entry of newEntries) {
-              const target = entry.target;
+              for (const entry of newEntries) {
+                const target = entry.target;
 
-              const foundItem = newItemsVisibility.find(
-                item => item.item === target,
-              );
+                const foundItem = newItemsVisibility.find(
+                  item => item.item === target,
+                );
 
-              foundItem!.visibilityRate = entry.intersectionRatio;
-            }
+                foundItem!.visibilityRate = entry.intersectionRatio;
+              }
 
-            return newItemsVisibility;
-          });
-        },
-        { root: sliderRef.current, threshold: [0, 0.2, 0.4, 0.6, 0.8, 1] },
-      );
+              return newItemsVisibility;
+            });
+          },
+          { root: sliderRef.current, threshold: [0, 0.2, 0.4, 0.6, 0.8, 1] },
+        );
 
-      const newItemsVisibility: ItemVisibility[] = [];
+        const newItemsVisibility: ItemVisibility[] = [];
 
-      itemsRef.current.forEach(item => {
-        observer.observe(item);
-        newItemsVisibility.push({ item, visibilityRate: 0 });
+        itemsRef.current.forEach(item => {
+          observer.observe(item);
+          newItemsVisibility.push({ item, visibilityRate: 0 });
+        });
+
+        setItemsVisibility(newItemsVisibility);
+
+        return () => {
+          observer.disconnect();
+        };
+      }
+
+      return;
+    }, [products.length]);
+
+    const scrollRight = useCallback(() => {
+      setItemsVisibility(prevItems => {
+        const lastVisibleItem = findLastInvisibleItem(prevItems);
+
+        if (lastVisibleItem && sliderRef.current) {
+          const item = prevItems[lastVisibleItem[0]].item;
+
+          scrollTo(sliderRef.current, item);
+        }
+
+        return prevItems;
       });
+    }, [scrollTo]);
 
-      setItemsVisibility(newItemsVisibility);
+    const scrollLeft = useCallback(() => {
+      setItemsVisibility(prevItems => {
+        const lastVisibleItem = findPrevInvisibleItem(prevItems);
 
-      return () => {
-        observer.disconnect();
-      };
-    }
+        if (lastVisibleItem && sliderRef.current) {
+          const item = prevItems[lastVisibleItem[0]].item;
 
-    return;
-  }, [products.length]);
+          scrollTo(sliderRef.current, item, false);
+        }
 
-  const scrollRight = useCallback(() => {
-    setItemsVisibility(prevItems => {
-      const lastVisibleItem = findLastInvisibleItem(prevItems);
+        return prevItems;
+      });
+    }, [scrollTo]);
 
-      if (lastVisibleItem && sliderRef.current) {
-        const item = prevItems[lastVisibleItem[0]].item;
+    const leftArrow =
+      itemsVisibility.length !== 0
+        ? itemsVisibility[0].visibilityRate >= 0.99
+        : true;
 
-        scrollTo(sliderRef.current, item);
-      }
+    const rightArrow =
+      itemsVisibility.length !== 0
+        ? itemsVisibility.at(-1)!.visibilityRate >= 0.99
+        : true;
 
-      return prevItems;
-    });
-  }, [scrollTo]);
+    return (
+      <section className={styles['products-slider']}>
+        <div className={styles['products-slider__header']}>
+          <h2>{title}</h2>
 
-  const scrollLeft = useCallback(() => {
-    setItemsVisibility(prevItems => {
-      const lastVisibleItem = findPrevInvisibleItem(prevItems);
+          <div className={styles['products-slider__control-buttons']}>
+            <div onClick={!leftArrow ? scrollLeft : undefined}>
+              <Arrow type={ArrowType.left} disabled={leftArrow} />
+            </div>
 
-      if (lastVisibleItem && sliderRef.current) {
-        const item = prevItems[lastVisibleItem[0]].item;
-
-        scrollTo(sliderRef.current, item, false);
-      }
-
-      return prevItems;
-    });
-  }, [scrollTo]);
-
-  const leftArrow =
-    itemsVisibility.length !== 0
-      ? itemsVisibility[0].visibilityRate >= 0.99
-      : true;
-
-  const rightArrow =
-    itemsVisibility.length !== 0
-      ? itemsVisibility.at(-1)!.visibilityRate >= 0.99
-      : true;
-
-  return (
-    <section className={styles['products-slider']}>
-      <div className={styles['products-slider__header']}>
-        <h2>{title}</h2>
-
-        <div className={styles['products-slider__control-buttons']}>
-          <div onClick={!leftArrow ? scrollLeft : undefined}>
-            <Arrow type={ArrowType.left} disabled={leftArrow} />
-          </div>
-
-          <div onClick={!rightArrow ? scrollRight : undefined}>
-            <Arrow type={ArrowType.right} disabled={rightArrow} />
+            <div onClick={!rightArrow ? scrollRight : undefined}>
+              <Arrow type={ArrowType.right} disabled={rightArrow} />
+            </div>
           </div>
         </div>
-      </div>
 
-      <SliderList
-        sliderRef={sliderRef}
-        itemsRef={itemsRef}
-        products={products}
-        hidePrevPrice={hidePrevPrice}
-      />
-    </section>
-  );
-};
+        <SliderList
+          sliderRef={sliderRef}
+          itemsRef={itemsRef}
+          products={products}
+          hidePrevPrice={hidePrevPrice}
+        />
+      </section>
+    );
+  },
+);

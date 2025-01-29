@@ -68,17 +68,21 @@ export const useScrollAnimation = (
       right: boolean = true,
     ) => {
       if (currentAnimationFrame.current !== null) {
-        currentDuration.current = 0;
-        updatedTime.current = new Date();
+        if (timeout) {
+          currentDuration.current = 0;
+          updatedTime.current = new Date();
+        }
 
         cancelAnimationFrame(currentAnimationFrame.current);
-      } else if (!currentDuration.current) {
-        const diff = new Date().getTime() - updatedTime.current.getTime();
+      } else if (timeout) {
+        if (!currentDuration.current) {
+          const diff = new Date().getTime() - updatedTime.current.getTime();
 
-        if (diff >= timeout) {
-          currentDuration.current = duration;
-        } else {
-          updatedTime.current = new Date();
+          if (diff >= timeout) {
+            currentDuration.current = duration;
+          } else {
+            updatedTime.current = new Date();
+          }
         }
       }
 
@@ -91,14 +95,11 @@ export const useScrollAnimation = (
         }
 
         const timeElapsed = currentTime - startTime;
-        const diff = right ? end - slider.scrollLeft : slider.scrollLeft - end;
 
-        if (diff > 0) {
-          const adder = (diff < 0.6 ? 0.6 - diff : 0) * (right ? 1 : -1);
-
+        if (Math.abs(end - slider.scrollLeft) > 0.6) {
           if (!currentDuration.current) {
             // eslint-disable-next-line no-param-reassign
-            slider.scrollLeft = end + adder;
+            slider.scrollLeft = end;
             currentAnimationFrame.current = requestAnimationFrame(scroll);
 
             return;
@@ -110,7 +111,7 @@ export const useScrollAnimation = (
               : end;
 
           // eslint-disable-next-line no-param-reassign
-          slider.scrollLeft = run + adder;
+          slider.scrollLeft = run;
           currentAnimationFrame.current = requestAnimationFrame(scroll);
         } else {
           currentAnimationFrame.current = null;
