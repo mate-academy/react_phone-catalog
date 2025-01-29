@@ -29,7 +29,6 @@ export const ProductSlider: React.FC<Props> = ({ products, title }) => {
     useSwipe(handleSwipe);
 
   function handleSwipe(distanceX: number, distanceY: number) {
-    console.log(distanceX, distanceY);
     if (Math.abs(distanceY) >= MAX_Y_SWIPE_AMOUNT) {
       return;
     }
