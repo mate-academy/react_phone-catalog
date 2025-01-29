@@ -1,0 +1,26 @@
+@import '@styles/main';
+
+.btn {
+  @include circle-btn;
+  
+  border-color: $elements-color;
+  padding: 3px;
+
+  &:hover {
+    border-color: $icons-color;
+  }
+
+  &__color {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+  }
+
+  &--active {
+    border-color: $primary-color;
+
+    &:hover {
+      border-color: $primary-color;
+    }
+  }
+}
