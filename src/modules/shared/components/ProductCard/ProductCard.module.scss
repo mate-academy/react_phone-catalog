@@ -11,10 +11,6 @@
   display: flex;
   flex-direction: column;
 
-  @include on-desktop {
-    @include hover;
-  }
-
   &__image {
     width: 100%;
     aspect-ratio: 1;

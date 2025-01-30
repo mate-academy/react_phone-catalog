@@ -43,7 +43,7 @@
     grid-column: 1 / -1;
 
     display: grid;
-    overflow-x: auto;
+    overflow: auto hidden;
     grid-auto-flow: column;
     grid-auto-columns: 100%;
 
@@ -78,8 +78,6 @@
 
     @include on-desktop {
       height: 400px;
-
-      @include hover;
     }
   }
 

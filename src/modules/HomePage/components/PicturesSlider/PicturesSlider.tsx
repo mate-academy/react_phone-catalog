@@ -38,6 +38,7 @@ export const PicturesSlider = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   // a visible image and list of images
+  const [updating, setUpdating] = useState(false);
   const [activeImage, setActiveImage] = useState(0);
   const [images, setImages] = useState(getImages());
 
@@ -107,16 +108,15 @@ export const PicturesSlider = () => {
           );
 
           if (foundedRef) {
-            setImages(prevState => {
-              const index = prevState.indexOf(foundedRef[0]);
+            const index = images.indexOf(foundedRef[0]);
 
-              if (index !== -1) {
-                setActiveImage(index);
-              }
-
-              return prevState;
-            });
+            if (index !== -1) {
+              setUpdating(false);
+              setActiveImage(index);
+            }
           }
+        } else if (!isAnimating) {
+          setUpdating(true);
         }
       },
       {
@@ -136,34 +136,11 @@ export const PicturesSlider = () => {
     };
   }, [images, isAnimating]);
 
-  // crete a custom images order in which an active image is in the middle of array
-  // isLoading -> first render -> original images
-  // target.current -> dots were used -> scroll by an original order
-  // isAnimating -> show order which was befere scroll, prevent reorder during animation
-  const orderedImages = useMemo(() => {
-    if (isLoading || target.current !== null) {
-      return images;
+  useEffect(() => {
+    if (sliderRef.current) {
+      sliderRef.current.style.pointerEvents = updating ? 'none' : 'auto';
     }
-
-    if (isAnimating) {
-      return prevOrderedImages.current;
-    }
-
-    const ordered = [];
-    const middle = Math.floor(images.length / 2);
-    let start = activeImage - middle;
-
-    start = start < 0 ? images.length + start : start;
-
-    for (let i = 0; i < images.length; i++) {
-      ordered.push(images[(start + i) % images.length]);
-    }
-
-    prevOrderedImages.current = ordered;
-
-    return ordered;
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [activeImage, images, isAnimating, isLoading, target.current]);
+  }, [updating]);
 
   // place an active image on the screen after replacements
   useEffect(() => {
@@ -231,32 +208,51 @@ export const PicturesSlider = () => {
     }
   }, [images, isAnimating, scrollTo]);
 
+  // crete a custom images order in which an active image is in the middle of array
+  // isLoading -> first render -> original images
+  // target.current -> dots were used -> scroll by an original order
+  // isAnimating -> show order which was befere scroll, prevent reorder during animation
+  const orderedImages = useMemo(() => {
+    if (isLoading || target.current !== null) {
+      return images;
+    }
+
+    if (isAnimating) {
+      return prevOrderedImages.current;
+    }
+
+    const ordered = [];
+    const middle = Math.floor(images.length / 2);
+    let start = activeImage - middle;
+
+    start = start < 0 ? images.length + start : start;
+
+    for (let i = 0; i < images.length; i++) {
+      ordered.push(images[(start + i) % images.length]);
+    }
+
+    prevOrderedImages.current = ordered;
+
+    return ordered;
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [activeImage, images, isAnimating, isLoading, target.current]);
+
   // autoplay
   const [isWaiting, setIsWaiting] = useState(true);
-  const [isScrolling, setIsScrolling] = useState(false);
 
   const playCallback = useCallback(() => {
-    setActiveImage(prevActiveImage => {
-      changeImage((prevActiveImage + 1) % images.length, false);
-
-      return prevActiveImage;
-    });
-  }, [changeImage, images.length]);
-
-  const scrollCallback = useCallback(() => {
-    setIsScrolling(false);
-  }, []);
+    changeImage((activeImage + 1) % images.length, false);
+  }, [activeImage, changeImage, images.length]);
 
   const [play, pause] = useDebounce(playCallback, 5000);
-  const [disableScroll] = useDebounce(scrollCallback, 150);
 
   useEffect(() => {
-    if (isVisible && !isScrolling && isWaiting) {
+    if (isVisible && isWaiting) {
       play();
     } else {
       pause();
     }
-  }, [isScrolling, isVisible, isWaiting, pause, play]);
+  }, [isVisible, isWaiting, pause, play]);
 
   return (
     <section
@@ -265,10 +261,6 @@ export const PicturesSlider = () => {
       onMouseLeave={() => setIsWaiting(true)}
       onTouchStart={() => setIsWaiting(false)}
       onTouchEnd={() => setIsWaiting(true)}
-      onWheel={() => {
-        disableScroll();
-        setIsScrolling(true);
-      }}
     >
       <div className={styles['pictures-slider__top']}>
         <div
@@ -294,6 +286,7 @@ export const PicturesSlider = () => {
             <Image
               key={image}
               src={image}
+              loading="eager"
               className={styles['pictures-slider__picture']}
               ref={el => (imageRefs.current[image] = el)}
             />
