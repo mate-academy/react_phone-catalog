@@ -167,8 +167,10 @@ export const Products: React.FC<ProductsProps> = ({ category }) => {
     const selectedSort = event.target.value;
 
     setSortType(selectedSort);
-    dispatch(setCurrentPage(1));
-    navigate(`/${category}?sort=${selectedSort}&perPage=${itemsPerPage}`);
+
+    navigate(
+      `/${category}?sort=${selectedSort}&perPage=${itemsPerPage}&page=${currentPage}`,
+    );
   };
 
   const handleProductClick = (selectedProduct: Product) => {
@@ -201,7 +203,7 @@ export const Products: React.FC<ProductsProps> = ({ category }) => {
               <>
                 <h2 className={styles.phones_title}>{category}</h2>
 
-                {status === 'loading' ? (
+                {status === 'loading' && product.length === 0 ? (
                   <div className={styles.loader}>
                     <CircleLoader size={150} color="#1c5a9b" />
                   </div>
@@ -212,7 +214,11 @@ export const Products: React.FC<ProductsProps> = ({ category }) => {
                     </p>
                     <div className="flex">
                       <div>
-                        <p className={styles.phones_filterText}>Sort by</p>
+                        <p
+                          className={`${styles.phones_filterText} ${styles.first}`}
+                        >
+                          Sort by
+                        </p>
                         <select
                           name="sort"
                           value={sortType}
