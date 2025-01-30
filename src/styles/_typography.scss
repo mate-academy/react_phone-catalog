@@ -1,0 +1,57 @@
+@import './utils/mixins';
+
+.typography {
+  &__h1 {
+    @include h1-mobile;
+  }
+
+  &__h2 {
+    @include h2-mobile;
+  }
+
+  &__h3 {
+    @include h3-mobile;
+  }
+
+  &__h4 {
+    @include h4-mobile;
+  }
+
+  &__uppercase {
+    @include uppercase;
+
+    text-transform: uppercase;
+  }
+
+  &__body {
+    @include typography(400, 14px, 21px, 0);
+  }
+
+  &__button-text {
+    @include typography(600, 14px, 21px, 0);
+  }
+
+  &__small-text {
+    @include typography(500, 12px, 1, 0);
+  }
+}
+
+@media (min-width: 640px) {
+  .typography {
+    &__h1 {
+      @include h1-desktop;
+    }
+
+    &__h2 {
+      @include h2-desktop;
+    }
+
+    &__h3 {
+      @include h3-desktop;
+    }
+
+    &__h4 {
+      @include h4-desktop;
+    }
+  }
+}
