@@ -1,0 +1,35 @@
+@import './variables';
+
+$breakpoints: (
+  mobile: 639px,
+  tablet: 1199px,
+  desktop: 1200px
+);
+
+@mixin respond-to($device) {
+  @if map-has-key($breakpoints, $device) {
+    @media (max-width: #{map-get($breakpoints, $device)}) {
+      @content;
+    }
+  } @else {
+    @error "Невідомий брейкпоінт: #{$device}.";
+  }
+}
+
+@mixin respond-from($device) {
+  @if map-has-key($breakpoints, $device) {
+    @media (min-width: #{map-get($breakpoints, $device)}) {
+      @content;
+    }
+  } @else {
+    @error "Невідомий брейкпоінт: #{$device}.";
+  }
+}
+
+@mixin icon-bg($url, $bgColor: #E2E6E9) {
+  background-image: #{$url};
+  width: 16px;
+  height: 16px;
+  background-repeat: no-repeat;
+  background-size: cover;
+}

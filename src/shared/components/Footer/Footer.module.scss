@@ -1,0 +1,130 @@
+@import '../../styles/mixin';
+@import '../../styles/variables';
+
+.Footer {
+  border-top: 1px solid $elements-color;
+  margin-top: 64px;
+
+  @include respond-to(desktop) {
+    margin-top: 80px;
+  }
+}
+
+.FooterField {
+  grid-column: 1 / -1;
+  padding: 32px 0;
+
+  display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+  @include respond-to(mobile) {
+      display: block;
+    }
+}
+
+.FooterLogo {
+      display: inline-block;
+      margin-right: 46px;
+      font-size: 14px;
+      line-height: 14px;
+      font-weight: 800;
+      text-transform: uppercase;
+      color: $primary-color;
+      transform: scale(1);
+      transition: transform $transition;
+
+      &:hover,
+      &:focus {
+        transform: scale(1.1);
+      }
+
+  @include respond-to(mobile) {
+  margin-bottom: 32px;
+  }
+}
+
+.FooterList {
+  display: flex;
+
+  @include respond-to(mobile) {
+    display: block;
+  }
+
+  .FooterItem {
+    transition: color $transition;
+    text-transform: uppercase;
+    font-size: 12px;
+    line-height: 11px;
+    font-weight: 800;
+
+    @include respond-to(tablet) {
+      &:not(:last-child) {
+  margin-right: 14px;
+      }
+    }
+
+    @include respond-to(desktop) {
+      &:not(:last-child) {
+  margin-right: 107px;
+      }
+    }
+
+    @include respond-from(desktop) {
+      &:not(:last-child) {
+  margin-right: 107px;
+      }
+    }
+  }
+
+  .FooterItem:hover, .FooterItem:focus {
+    color: $primary-color;
+  }
+
+  @include respond-to(mobile) {
+    .FooterItem:not(:last-child) {
+        margin-bottom: 16px;
+      }
+  }
+}
+
+.FooterLink {
+color: $secondary-color;
+  transition: all $transition;
+
+  &:hover,
+  &:focus {
+    color: $primary-color;
+  }
+}
+
+.FooterBtnField {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 12px;
+  line-height: 16px;
+
+  @include respond-to(mobile) {
+      margin-top: 32px;
+    width: 100%;
+    }
+}
+
+.BackToTopBtn {
+  margin-left: 16px;
+  position: relative;
+  border: 1px solid $elements-color;
+  width: 32px;
+  height: 32px;
+
+  background-image: url('../../../images/arrow-left.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  transform: rotate(90deg);
+  transition: border $transition;
+
+  &:hover, &:focus {
+    border: 1px solid $primary-color;
+  }
+}
