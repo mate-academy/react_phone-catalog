@@ -1,0 +1,17 @@
+@import '../../styles/main.scss';
+
+.btn {
+  height: 48px;
+  width: 100%;
+  border: none;
+  background-color: var(--card-button-color);
+  color: var(--page-active-color);
+
+  @include button-text;
+
+  &:hover {
+    background-color: var(--card-button-hover-color);
+
+    @include hover-scale-btn;
+  }
+}

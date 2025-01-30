@@ -1,17 +1,21 @@
-import React, { useContext, useState } from 'react';
+// ProductsContext.tsx
+import React, { createContext, useContext, useEffect, useState } from 'react';
 
 interface ProductsContextType {
   likedProducts: number[];
   cartProducts: number[];
+  countProductsMap: { [key: number]: number };
   toggleLike: (productId: number) => void;
   toggleCart: (productId: number) => void;
+  removeFromCart: (productId: number) => void;
+  updateProductCount: (productId: number, count: number) => void;
 }
 
 type Props = {
   children: React.ReactNode;
 };
 
-const ProductsContext = React.createContext<ProductsContextType | undefined>(
+const ProductsContext = createContext<ProductsContextType | undefined>(
   undefined,
 );
 
@@ -19,38 +23,60 @@ export const ProductsProvider: React.FC<Props> = ({ children }) => {
   const [likedProducts, setLikedProducts] = useState<number[]>(() =>
     JSON.parse(localStorage.getItem('likedProducts') || '[]'),
   );
-
   const [cartProducts, setCartProducts] = useState<number[]>(() =>
     JSON.parse(localStorage.getItem('cartProducts') || '[]'),
   );
+  const [countProductsMap, setCountProductsMap] = useState<{
+    [key: number]: number;
+  }>(() => JSON.parse(localStorage.getItem('countProductsMap') || '{}'));
+
+  useEffect(() => {
+    localStorage.setItem('likedProducts', JSON.stringify(likedProducts));
+  }, [likedProducts]);
+
+  useEffect(() => {
+    localStorage.setItem('cartProducts', JSON.stringify(cartProducts));
+  }, [cartProducts]);
+
+  useEffect(() => {
+    localStorage.setItem('countProductsMap', JSON.stringify(countProductsMap));
+  }, [countProductsMap]);
 
   const toggleLike = (productId: number) => {
-    setLikedProducts(prev => {
-      const isLiked = prev.includes(productId);
-      const updated = isLiked
+    setLikedProducts(prev =>
+      prev.includes(productId)
         ? prev.filter(id => id !== productId)
-        : [...prev, productId];
-      localStorage.setItem('likedProducts', JSON.stringify(updated));
-
-      return updated;
-    });
+        : [...prev, productId],
+    );
   };
 
   const toggleCart = (productId: number) => {
-    setCartProducts(prev => {
-      const isInCart = prev.includes(productId);
-      const updated = isInCart
+    setCartProducts(prev =>
+      prev.includes(productId)
         ? prev.filter(id => id !== productId)
-        : [...prev, productId];
-      localStorage.setItem('cartProducts', JSON.stringify(updated));
+        : [...prev, productId],
+    );
+  };
 
-      return updated;
-    });
+  const removeFromCart = (productId: number) => {
+    setCartProducts(prev => prev.filter(id => id !== productId));
+  };
+
+  const updateProductCount = (productId: number, count: number) => {
+    setCountProductsMap(prev => ({ ...prev, [productId]: count }));
   };
 
   return (
     <ProductsContext.Provider
-      value={{ likedProducts, cartProducts, toggleLike, toggleCart }}
+      value={{
+        likedProducts,
+        cartProducts,
+        countProductsMap,
+        toggleLike,
+        toggleCart,
+        removeFromCart,
+        updateProductCount,
+      }}
     >
       {children}
     </ProductsContext.Provider>
@@ -59,12 +85,10 @@ export const ProductsProvider: React.FC<Props> = ({ children }) => {
 
 export const useProductsContext = () => {
   const context = useContext(ProductsContext);
-
   if (!context) {
     throw new Error(
       'useProductsContext must be used within a ProductsProvider',
     );
   }
-
   return context;
 };

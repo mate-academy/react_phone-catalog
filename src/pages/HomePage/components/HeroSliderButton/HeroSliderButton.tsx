@@ -9,11 +9,9 @@ type Props = {
 export const HeroSliderButton: React.FC<Props> = ({ path }) => {
   return (
     <div className={styles.container}>
-      <button className={styles.button}>
-        <NavLink to={path} className={styles.button__nav}>
-          Order Now
-        </NavLink>
-      </button>
+      <NavLink to={path} className={styles.nav}>
+        <button className={styles.nav__button}>Order Now</button>
+      </NavLink>
     </div>
   );
 };

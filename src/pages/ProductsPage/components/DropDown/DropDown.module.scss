@@ -38,10 +38,10 @@
   }
 
   &__content {
-    top: calc(100% + 4px);
+    top: 1;
     position: absolute;
     z-index: 1;
-    width: 99.5%;
+    width: 99.3%;
     padding-left: 0;
     display: flex;
     flex-direction: column;
@@ -78,6 +78,6 @@
 
 .open {
   opacity: 1;
-  transform: translateY(-15%);
+  transform: translateY(0%);
   pointer-events: auto;
 }

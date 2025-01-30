@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './CustomButton.module.scss';
+import styles from './ArrowsPagination.module.scss';
 import { Icon } from '../../../../components/Icon';
 import { IconType } from '../../../../types/IconTypes';
 
@@ -9,13 +9,17 @@ type Props = {
   onClick: () => void;
 };
 
-export const CustomButton: React.FC<Props> = ({
+export const ArrowsPagination: React.FC<Props> = ({
   iconType,
   disabled,
   onClick,
 }) => {
   return (
-    <button className={styles.btns} disabled={disabled} onClick={onClick}>
+    <button
+      className={`${styles.btns} ${disabled ? styles.disabled : ''}`}
+      disabled={disabled}
+      onClick={onClick}
+    >
       <Icon type={iconType} />
     </button>
   );

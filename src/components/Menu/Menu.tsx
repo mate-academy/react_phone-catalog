@@ -48,11 +48,11 @@ export const Menu = () => {
 
           <div data-nav-link className={slyles.menu__icons}>
             <div className={slyles.menu__icon}>
-              <NavIcon type="favourite" path="/favourites" />
+              <NavIcon type="favourite" path="/favourites" isMenu />
             </div>
 
             <div className={slyles.menu__icon}>
-              <NavIcon type="cart" path="/cart" />
+              <NavIcon type="cart" path="/cart" isMenu />
             </div>
           </div>
         </aside>

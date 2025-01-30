@@ -12,7 +12,7 @@
 
 .is-active {
   &::after {
-    bottom: 0;
+    bottom: 3px;
   }
 }
 
@@ -42,5 +42,12 @@
     text-align: center;
     line-height: 11.5px;
     color: #fff;
+  }
+}
+
+.countMenu {
+  @include on-mobile {
+    left: 51%;
+    top: 27%;
   }
 }

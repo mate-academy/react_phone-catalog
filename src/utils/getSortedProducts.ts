@@ -3,7 +3,7 @@ import { Products } from '../types/Products';
 export function getSortedProducts(products: Products[], sortField: string) {
   switch (sortField) {
     case 'year':
-      return [...products].sort((a, b) => a.year - b.year);
+      return [...products].sort((a, b) => b.year - a.year);
 
     case 'price':
       return [...products].sort((a, b) => a.price - b.price);

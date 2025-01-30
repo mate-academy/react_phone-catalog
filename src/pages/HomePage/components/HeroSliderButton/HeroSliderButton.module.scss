@@ -13,13 +13,16 @@
   }
 }
 
-.button {
+.nav {
   position: absolute;
+  display: flex;
   bottom: 15%;
   left: 5%;
   cursor: pointer;
   aspect-ratio: 200 / 60;
   box-sizing: border-box;
+  justify-content: center;
+  align-items: center;
   height: 15%;
   min-height: 40px;
   border-radius: 30px;
@@ -30,8 +33,17 @@
 
   @include hover-scale-btn;
 
-  &__nav {
-    justify-content: center;
+  &:hover {
+    background: linear-gradient(90deg, #6339f0, #b15beb);
+    border: none;
+    box-shadow: none;
+  }
+
+  &__button {
+    display: flex;
+    border: none;
+    height: 20px;
+    background-color: transparent;
     text-transform: uppercase;
     font-weight: 500;
     font-size: 14.5px;
@@ -43,11 +55,5 @@
       font-size: 9.7px;
       letter-spacing: 0.07em;
     }
-  }
-
-  &:hover {
-    background: linear-gradient(90deg, #6339f0, #b15beb);
-    border: none;
-    box-shadow: none;
   }
 }

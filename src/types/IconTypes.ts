@@ -7,4 +7,7 @@ export type IconType =
   | 'arrowPrev'
   | 'arrowNext'
   | 'arrowTop'
-  | 'arrowDown';
+  | 'arrowDown'
+  | 'closeCart'
+  | 'minus'
+  | 'plus';
