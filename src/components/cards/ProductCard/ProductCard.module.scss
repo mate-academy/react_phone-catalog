@@ -1,0 +1,67 @@
+@import '../../../styles/utils/mixins.scss';
+@import '../../../styles/utils/vars.scss';
+
+.cardContainer {
+  min-width: fit-content;
+  max-width: 100%;
+  background-color: $card-background-col;
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.img {
+  @include hover(transform, scale(1.1));
+  min-width: 100%;
+  margin: 0 auto;
+  box-sizing: border-box;
+  object-fit: contain;
+  width: 150px;
+  height: 220px;
+  @include on-tablet {
+    width: 173px;
+    height: 202px;
+  }
+  @include on-desktop {
+    width: 208px;
+    height: 196px;
+  }
+}
+
+.title {
+  color: $main-txt-col;
+  padding-top: 16px;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+  @include underline-on-hover($main-txt-col);
+
+  min-height: 70px; // to make titles in all cards the same regarding how many words it contains
+
+  @include on-tablet {
+    min-height: 45px;
+  }
+  @include on-desktop {
+    min-height: 60px;
+  }
+}
+
+.priceContainer {
+  display: flex;
+  gap: 10px;
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 30px;
+  &__price {
+    color: $main-txt-col;
+  }
+  &__fullPrice {
+    color: $second-txt-col;
+    text-decoration: line-through;
+  }
+}
+
+.divider {
+  border: 1px solid #3b3e4a;
+}

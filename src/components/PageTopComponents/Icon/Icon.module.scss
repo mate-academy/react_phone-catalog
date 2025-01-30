@@ -1,0 +1,74 @@
+@import '../../../styles/utils/mixins.scss';
+@import '../../../styles/utils/vars.scss';
+
+.iconLink {
+  display: flex;
+  background-color: $main-background-col;
+  border-style: none;
+  cursor: pointer;
+  outline: none;
+  align-items: center;
+  justify-content: center;
+  border-left: $classic-border;
+  height: $header-heigh-phone;
+  width: $header-heigh-phone;
+
+  @include on-desktop {
+    height: $header-height-desk;
+    width: $header-height-desk;
+  }
+
+  @include underline-on-hover;
+}
+
+.isActive {
+  background-color: $card-background-col;
+  @include underline-on-isActive;
+}
+
+.removeBorderLeft {
+  border-left: none;
+}
+
+.displayOnMenu {
+  padding-inline: calc(100vw / 4.5);
+}
+
+.iconLink div {
+  width: $icon-size;
+  height: $icon-size;
+  transition: transform $animDuration;
+  position: relative;
+}
+
+.fav {
+  background-image: url('/img/icons/Favourites.svg');
+}
+.cart {
+  background-image: url('/img/icons/Shopping.svg');
+}
+.burger {
+  background-image: url('/img/icons/Menu.svg');
+}
+.close {
+  background-image: url('/img/icons/Close.svg');
+}
+
+// red circle next to the icon resembling items.length on the list which this icon is represents
+.listInfo {
+  display: block;
+  box-sizing: border-box;
+  z-index: 2;
+  position: absolute;
+  color: $main-txt-col;
+  text-align: center;
+  font-size: 10px;
+  font-weight: 700;
+  background-color: #eb5757;
+  width: 14px;
+  height: 14px;
+  border: 1px solid $main-background-col;
+  border-radius: 50%;
+  top: -40%;
+  left: 65%;
+}

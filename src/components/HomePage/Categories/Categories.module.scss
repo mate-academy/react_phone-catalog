@@ -1,0 +1,31 @@
+@import '../../../styles/utils/mixins.scss';
+@import '../../../styles/utils/vars.scss';
+
+.sectionContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.cardsList {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  @include on-tablet {
+    flex-direction: row;
+    gap: 0;
+
+    @include page-grid;
+  }
+
+  &__item {
+    flex-grow: 1;
+    @include on-tablet {
+      grid-column: span 4;
+    }
+    @include on-desktop {
+      grid-column: span 8;
+    }
+  }
+}

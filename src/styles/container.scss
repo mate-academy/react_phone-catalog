@@ -1,0 +1,52 @@
+.container {
+  // for content width restriction
+  // additional styles for animations
+  transform: translateX(0);
+  transition: transform $animDuration;
+  @include content-padding-inline;
+  box-sizing: border-box;
+
+  &__header {
+    background-color: $main-background-col;
+    padding-right: 0;
+    border-bottom: $classic-border;
+    @include on-desktop {
+      max-width: 100%;
+    }
+
+    &Page {
+      position: fixed;
+      top: 0;
+      z-index: 999;
+      width: 100%;
+    }
+  }
+
+  &__footer {
+    border-top: $classic-border;
+
+    @include on-desktop {
+      max-width: 100%;
+    }
+  }
+}
+
+.hide-container {
+  transform: translateX(-100%);
+}
+
+.outlet-container {
+  // vertical restrictions
+  padding-top: 72px;
+  padding-bottom: 64px;
+  min-height: calc(100vh - 420px);
+  @include on-tablet {
+    padding-top: 80px;
+    min-height: calc(100vh - 244px);
+  }
+  @include on-desktop {
+    padding-top: 120px;
+    padding-bottom: 80px;
+    min-height: calc(100vh - 300px);
+  }
+}

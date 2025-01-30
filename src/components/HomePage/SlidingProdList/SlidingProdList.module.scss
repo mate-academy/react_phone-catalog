@@ -1,0 +1,45 @@
+@import '../../../styles/utils/mixins.scss';
+@import '../../../styles/utils/vars.scss';
+
+.topContainer {
+  display: flex;
+  justify-content: space-between;
+  gap: 40px;
+  align-items: center;
+
+  &__title {
+    color: $main-txt-col;
+    font-weight: 800;
+    font-size: 22px;
+    @include on-tablet {
+      font-size: 32px;
+    }
+  }
+
+  &__buttonContainer {
+    display: flex;
+    gap: 16px;
+  }
+}
+
+.prodList {
+  scroll-behavior: smooth;
+  list-style: none;
+  margin-top: 24px;
+  display: flex;
+  gap: 16px;
+  overflow-x: scroll; //
+  scrollbar-width: none; //
+
+  margin-right: -$padd-inl-phone;
+  @include on-tablet {
+    margin-right: -$padd-inl-tabl;
+  }
+  @include on-desktop {
+    margin-right: 0;
+  }
+
+  &__item {
+    min-width: 280px;
+  }
+}

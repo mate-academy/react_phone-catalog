@@ -1,0 +1,54 @@
+@import '../../styles/utils/mixins.scss';
+@import '../../styles/utils/vars.scss';
+
+.footer {
+  $footer-tablet-width: 690px; // should be different coz in ukrainiat text content doesn't fit in 640px
+  max-width: 1140px; // outer container should have border with 100% page width
+  margin: 0 auto; // but footer itself should have the same width as content on desktop screens
+  padding-block: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+
+  @media (min-width: $footer-tablet-width) {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  &__links {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+
+    @media (min-width: $footer-tablet-width) {
+      flex-direction: row;
+      min-width: 35%;
+      justify-content: space-between;
+    }
+  }
+
+  &__link {
+    text-decoration: none;
+    color: $main-txt-col;
+    font-weight: 800;
+    font-size: 12px;
+    line-height: 1;
+    letter-spacing: 2.5px;
+
+    @include underline-on-hover;
+  }
+
+  .backTopContainer {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+
+    &__text {
+      color: $second-txt-col;
+      font-weight: 700;
+      font-size: 12px;
+      line-height: 16px;
+    }
+  }
+}

@@ -1,0 +1,52 @@
+@import '../../../styles/utils/mixins.scss';
+@import '../../../styles/utils/vars.scss';
+
+.pagination {
+  --cell-size: 32px;
+  width: fit-content;
+  height: auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+// rearrange items so they would fit in smaller screens
+.arrowRight {
+  @media (max-width: 400px) {
+    order: -1;
+  }
+}
+.arrowLeft {
+  @media (max-width: 400px) {
+    order: 0;
+  }
+}
+
+.pagesList {
+  color: $main-txt-col;
+  font-weight: 600;
+  font-size: 14px;
+  list-style: none;
+  display: flex;
+  gap: 8px;
+
+  &__page {
+    cursor: pointer;
+    width: var(--cell-size);
+    text-align: center;
+    line-height: var(--cell-size);
+    background-color: $card-background-col;
+    @include hover(background-color, $animDuration);
+
+    &:hover {
+      background-color: $second-button-col-hover;
+    }
+
+    &_active {
+      background-color: $second-button-col-selected;
+      &:hover {
+        background-color: $main-button-col-hover;
+      }
+    }
+  }
+}

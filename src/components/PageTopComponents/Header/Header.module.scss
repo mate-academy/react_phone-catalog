@@ -1,0 +1,38 @@
+@import '../../../styles/utils/mixins.scss';
+@import '../../../styles/utils/vars.scss';
+
+.header {
+  $header-tablet-width: 690px; // made it wider than usual tablet width(690px) because some elements aren't fitting
+  display: flex;
+  justify-content: space-between;
+  background-color: $main-background-col;
+
+  &__logoNavContainer {
+    display: flex;
+  }
+
+  &__nav {
+    display: none;
+    @media (min-width: $header-tablet-width) {
+      display: block;
+      padding-left: 16px;
+    }
+    @include on-desktop {
+      padding-left: 24px;
+    }
+  }
+
+  &__favCart {
+    display: none;
+    @media (min-width: $header-tablet-width) {
+      display: flex;
+    }
+  }
+
+  &__burger {
+    display: flex;
+    @media (min-width: $header-tablet-width) {
+      display: none;
+    }
+  }
+}

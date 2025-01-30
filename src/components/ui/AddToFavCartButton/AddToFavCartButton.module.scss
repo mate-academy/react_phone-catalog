@@ -1,0 +1,42 @@
+@import '../../../styles/utils/mixins.scss';
+@import '../../../styles/utils/vars.scss';
+
+.buttonContainer {
+  display: flex;
+  gap: 8px;
+
+  &__cardButton {
+    cursor: pointer;
+    height: 100%;
+    width: 100%;
+    text-align: center;
+    color: $main-txt-col;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 21px;
+    background-color: $main-button-col;
+    @include hover(background-color, $main-button-col-hover);
+    transition: background-color $animDuration ease-in-out;
+    &Added {
+      background-color: #eb5757;
+      &:hover {
+        background-color: #eb5757;
+      }
+    }
+  }
+
+  &__favButton {
+    cursor: pointer;
+    background-color: $second-button-col;
+    @include hover(background-color, $second-button-col-hover);
+    &Icon {
+      height: $icon-size;
+      width: $icon-size;
+      background-image: url('/img/icons/Favourites.svg');
+      transition: background-image 0.4s ease-in-out;
+      &Added {
+        background-image: url('/img/icons/FavouritesAdded.svg');
+      }
+    }
+  }
+}

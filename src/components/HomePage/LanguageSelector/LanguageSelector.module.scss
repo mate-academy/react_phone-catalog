@@ -1,0 +1,49 @@
+@import '../../../styles/utils/vars.scss';
+@import '../../../styles/utils/mixins.scss';
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  @include on-tablet {
+    flex-direction: row;
+    gap: 32px;
+    align-items: center;
+  }
+
+  &__text {
+    color: $second-txt-col;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 16px;
+  }
+
+  &__button {
+    cursor: pointer;
+    height: 32px;
+    width: 32px;
+    color: $second-txt-col;
+    background-color: transparent;
+    border: 1px solid $second-txt-col;
+    transition: all $animDuration;
+
+    &:hover {
+      background-color: $second-txt-col;
+      color: $main-txt-col;
+    }
+
+    &Active {
+      background-color: $main-button-col;
+      color: $main-txt-col;
+      &:hover {
+        background-color: $main-button-col;
+        cursor: default;
+      }
+    }
+  }
+}

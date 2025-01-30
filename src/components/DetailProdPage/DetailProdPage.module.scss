@@ -1,0 +1,24 @@
+@import '../../styles/utils/mixins.scss';
+@import '../../styles/utils/vars.scss';
+
+.routesContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.articlesWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 56px;
+  @include on-tablet {
+    gap: 64px;
+  }
+  @include on-desktop {
+    gap: 80px;
+  }
+}
+
+.visualArticleContainer {
+  margin-top: 16px;
+}

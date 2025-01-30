@@ -1,0 +1,26 @@
+@import '../../styles/utils/vars.scss';
+@import '../../styles/utils/mixins.scss';
+
+.homePageSlider {
+  margin-top: 24px;
+  @include on-tablet {
+    margin-top: 32px;
+  }
+  @include on-desktop {
+    margin-top: 56px;
+  }
+}
+
+.homePageSection {
+  margin-top: 56px;
+  @include on-tablet {
+    margin-top: 64px;
+  }
+  @include on-desktop {
+    margin-top: 80px;
+  }
+}
+
+.homePageLandSelector {
+  margin-bottom: 36px;
+}

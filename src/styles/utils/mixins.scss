@@ -1,0 +1,106 @@
+@import './vars.scss';
+
+@mixin on-tablet {
+  @media (min-width: $tablet-width) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media (min-width: $desktop-width) {
+    @content;
+  }
+}
+
+@mixin content-padding-inline {
+  padding-inline: $padd-inl-phone;
+
+  @include on-tablet {
+    padding-inline: $padd-inl-tabl;
+  }
+
+  @include on-desktop {
+    padding-inline: $padd-inl-desk;
+    margin-inline: auto;
+    max-width: 1140px;
+  }
+}
+
+@mixin hover($property, $toValue) {
+  transition: #{$property} $animDuration;
+  &:hover {
+    #{$property}: $toValue;
+  }
+}
+
+@mixin page-grid {
+  --columns: 4;
+
+  display: grid;
+
+  column-gap: 16px;
+  grid-template-columns: repeat(var(--columns), 1fr);
+
+  @include on-tablet {
+    --columns: 12;
+  }
+
+  @include on-desktop {
+    --columns: 24;
+  }
+}
+
+@mixin underline-on-hover($color: $main-txt-col) {
+  position: relative;
+
+  &::after {
+    content: '';
+    display: block;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 2px;
+    background-color: $color;
+    transition: width $animDuration ease-in-out;
+    width: 0;
+  }
+
+  &:hover::after {
+    width: 100%;
+  }
+}
+
+@mixin underline-on-isActive {
+  &::after {
+    content: '';
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    border-radius: 50%;
+    background-color: $main-txt-col;
+  }
+}
+
+@mixin productCardsGridLayout {
+  @include page-grid;
+  row-gap: 16px;
+
+  &__card {
+    grid-column: 1 / -1;
+    @media (min-width: 500px) {
+      grid-column: span 2;
+    }
+    @include on-tablet {
+      grid-column: span 6;
+    }
+    @media (min-width: 800px) {
+      grid-column: span 4;
+    }
+    @include on-desktop {
+      grid-column: span 6;
+    }
+  }
+}
