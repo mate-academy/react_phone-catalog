@@ -74,7 +74,7 @@
       overflow: hidden;
       display: flex;
       flex-direction: column;
-      justify-content: center;
+      justify-content: start;
       align-items: center;
 
       height: 320px;
@@ -97,7 +97,6 @@
         opacity 0.3s ease-in-out;
 
       width: 100%;
-      height: 100%;
     }
 
     &--indicators-block {

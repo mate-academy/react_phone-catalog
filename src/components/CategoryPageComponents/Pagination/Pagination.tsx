@@ -22,7 +22,6 @@ export const Pagination: React.FC<Props> = ({
     const params = new URLSearchParams(searchParams);
 
     params.set('currentPage', `${index}`);
-
     setSearchParams(params);
     scrollToTop();
   };
@@ -38,28 +37,19 @@ export const Pagination: React.FC<Props> = ({
       return Array.from({ length: totalPages }, (_, i) => i);
     }
 
-    if (normalizeCurrentPage <= 3) {
+    if (normalizeCurrentPage <= 2) {
       return [0, 1, 2, 3];
     }
 
-    if (normalizeCurrentPage === totalPages - 1) {
+    if (normalizeCurrentPage >= totalPages - 2) {
       return Array.from({ length: 4 }, (_, i) => totalPages - 4 + i);
     }
 
-    if (normalizeCurrentPage > 3 && normalizeCurrentPage < totalPages - 1) {
-      return [
-        normalizeCurrentPage - 3,
-        normalizeCurrentPage - 2,
-        normalizeCurrentPage - 1,
-        normalizeCurrentPage,
-      ];
-    }
-
     return [
+      normalizeCurrentPage - 2,
       normalizeCurrentPage - 1,
       normalizeCurrentPage,
       normalizeCurrentPage + 1,
-      normalizeCurrentPage + 2,
     ];
   }, [paginatedProducts, currentPage]);
 
@@ -78,7 +68,6 @@ export const Pagination: React.FC<Props> = ({
 
   const handleButtonPaginationBack = () => {
     const newCurrentPage = Math.max(+currentPage - 1, 0);
-
     const params = new URLSearchParams(searchParams);
 
     params.set('currentPage', `${newCurrentPage}`);
@@ -91,9 +80,7 @@ export const Pagination: React.FC<Props> = ({
       <div className="pagination">
         <div className="pagination__container">
           <button
-            className="
-          pagination__button-basic--back pagination__button-basic
-        "
+            className="pagination__button-basic--back pagination__button-basic"
             onClick={() => {
               handleButtonPaginationBack();
             }}
@@ -121,9 +108,7 @@ export const Pagination: React.FC<Props> = ({
             )}
           </div>
           <button
-            className="
-          pagination__button-basic--next pagination__button-basic
-        "
+            className="pagination__button-basic--next pagination__button-basic"
             onClick={() => {
               handleButtonPaginationNext();
             }}

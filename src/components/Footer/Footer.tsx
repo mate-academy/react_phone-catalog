@@ -15,18 +15,24 @@ export const Footer = () => {
           <a
             href="https://github.com/manch0ffline"
             className="footer__navigation__item"
+            target="_blank"
+            rel="noreferrer"
           >
             Github
           </a>
           <a
             href="https://github.com/manch0ffline"
             className="footer__navigation__item"
+            target="_blank"
+            rel="noreferrer"
           >
             Contacts
           </a>
           <a
             href="https://github.com/manch0ffline"
             className="footer__navigation__item"
+            target="_blank"
+            rel="noreferrer"
           >
             Rights
           </a>

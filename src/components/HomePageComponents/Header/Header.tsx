@@ -7,9 +7,8 @@ enum Sides {
 }
 
 export const Header = () => {
-  // Разные наборы изображений
   const desktopBanners = [1, 2, 3].map(num => `Banner-${num}.png`);
-  const phoneBanners = [1, 2, 3].map(num => `banner-phone-${num}.png`);
+  const phoneBanners = [1, 2, 3].map(num => `slider-${num}.png`);
 
   const [banners, setBanners] = useState<string[]>(desktopBanners);
   const [activeImg, setActiveImg] = useState(banners[0]);
