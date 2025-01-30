@@ -1,0 +1,8 @@
+.catalogGrid {
+  @include container;
+
+  padding-top: 24px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 30px 16px;
+}

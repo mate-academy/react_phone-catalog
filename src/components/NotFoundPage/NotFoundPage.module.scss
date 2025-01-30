@@ -1,0 +1,54 @@
+.notFoundPage {
+  @include container;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 30px;
+
+  &__img {
+    padding-top: 30px;
+    width: 50%;
+    object-fit: contain;
+
+    @include on-desktop {
+      width: 40%;
+      padding-top: 0;
+    }
+  }
+
+  &__box {
+    @extend %buttons;
+
+    color: $secondary-color;
+    padding-top: 20px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__img-box {
+    background: none;
+    height: 32px;
+    width: 32px;
+    border: 1px solid $icons-color;
+
+    background-image: url(../img/icons/arrow-left.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: pointer;
+    transition: all $effect-duration ease;
+
+    &:hover {
+      border-color: $primary-color;
+    }
+  }
+
+  &__back {
+    transition: all $effect-duration ease;
+    &:hover {
+      color: $primary-color;
+    }
+  }
+}
