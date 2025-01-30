@@ -1,0 +1,174 @@
+@import "../../styles/main";
+
+.cartPage {
+  @include page-container;
+
+  margin-top: 24px;
+
+  @include on-tablet {
+    margin-top: 40px;
+  }
+
+  @include on-desktop {
+    @include page-grid;
+  }
+}
+
+.backButton {
+  display: flex;
+  gap: 4px;
+  grid-column: 1/-1;
+  align-items: flex-end;
+  width: fit-content;
+  justify-content: center;
+  cursor: pointer;
+  margin-bottom: 24px;
+
+  @include on-tablet {
+    margin-bottom: 16px;
+  }
+
+  @include hover {
+    transform: scale(1.1);
+  }
+
+  &__arrow {
+    background-image: url(../../assets/img/icons/arrow-right.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 16px;
+    height: 16px;
+    transform: scaleX(-1);
+  }
+
+  &__text {
+    font-weight: 700;
+    color: $secondary;
+
+    @include hover {
+      color: $primary;
+    }
+  }
+}
+
+.emptyCart {
+  display: flex;
+  flex-direction: column;
+  margin: 32px auto 0;
+  padding: 16px;
+  grid-column: 1/-1;
+  background-color: white;
+  align-items: center;
+
+  border: solid 1px $elements;
+  width: 90%;
+  border-radius: 50px;
+
+  @include on-tablet {
+    padding: 24px;
+    width: 90%;
+  }
+
+  @include on-desktop {
+    padding: 32px;
+    width: 80%;
+  }
+
+  &__title {
+    @include font-set($mobile-h1);
+
+    margin-bottom: 40px;
+    text-align: center;
+
+    @include on-tablet {
+      @include font-set($tablet-h1);
+    }
+  }
+
+  &__img {
+    width: 100%;
+
+    @include on-tablet {
+      width: 80%;
+    }
+
+    @include on-desktop {
+      width: 60%;
+    }
+  }
+}
+
+.title {
+  @include font-set($mobile-h1);
+
+  margin-bottom: 32px;
+  grid-column: 1/-1;
+
+  @include on-tablet {
+    @include font-set($tablet-h1);
+  }
+}
+
+.cartList {
+  grid-column: span 16;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.checkout {
+  grid-column: span 8;
+  background-color: $white;
+  border: 1px solid $elements;
+  border-radius: 16px;
+  padding: 23px 24px 24px;
+  margin-top: 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  @include on-tablet {
+    margin-top: 0;
+    height: 206px;
+  }
+  &__total {
+    @include font-set($tablet-h2);
+  }
+
+  &__info {
+    @include font-set($body-text);
+
+    color: $secondary;
+    margin-bottom: 16px;
+
+    @include on-tablet {
+      margin-bottom: 24px;
+    }
+  }
+
+  &__btn {
+    margin-top: 16px;
+    background-color: $accent;
+    padding-block: 13.5px;
+    width: 100%;
+    color:$white;
+    border-radius: 48px;
+    cursor: pointer;
+
+    @include font-set($buttons);
+
+    @include on-tablet {
+      margin-top: 24px;
+    }
+
+    @include hover {
+      box-shadow: 0 3px 13px 0 #17203166;
+    }
+  }
+}
+
+.divider {
+  border: 1px solid $elements;
+  width: 100%;
+}
