@@ -1,0 +1,155 @@
+header {
+  background-color: #fff;
+  z-index: 1000;
+  position: sticky;
+  top: 0;
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 48px;
+  margin-top: -13px;
+  margin-bottom: 24px;
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+
+    border: 1px solid rgb(226, 230, 233);
+    width: 100%;
+    right: 0;
+
+  }
+
+  &-item {
+    color: rgb(137, 147, 154);
+    font-family: Mont, sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    position: relative;
+    transition: all 0.3s;
+
+    &::before {
+      content: '';
+      position: absolute;
+      bottom: -20px;
+      left: 50%;
+      width: 0; // Початкове значення ширини
+      border: 1px solid rgb(15, 15, 17);
+      opacity: 0; // Початкове значення opacity
+      transform: translateX(-50%); // Сдвигаем элемент влево на 50% ширини
+      transition: width 0.3s ease, opacity 0.3s ease; // Плавна анімація width і opacity
+    }
+
+    &:hover {
+      &::before {
+        width: 100%; // Коли наведено, ширина 100%
+        opacity: 1; // Коли наведено
+      }
+    }
+
+    &-is-active {
+      color: rgb(0, 0, 0);
+      position: relative;
+
+      &::before {
+        content: '';
+        position: absolute;
+        bottom: -20px;
+        width: 100%;
+        border: 1px solid rgb(15, 15, 17);
+
+        @media screen and (max-width: 1200px) {
+          bottom: -13px;
+        }
+
+      }
+    }
+  }
+
+  @media screen and (min-width: 1200px) {
+    height: 64px;
+  }
+
+  &__logo {
+    width: 64px;
+    height: 22px;
+    padding-left: 16px;
+
+
+    @media screen and (min-width: 1200px) {
+      height: 28px;
+      width: 80px;
+    }
+  }
+
+  &__menu {
+    width: 16px;
+    height: 16px;
+  }
+  &__menu-container {
+    width: 16px;
+    height: 16px;
+    position: relative;
+    transition: all 0.3s;
+    padding-right: 16px;
+
+
+    &::before {
+      content: "";
+      position: absolute;
+      left: calc(-100% - 8px);
+      bottom: 50%;
+      border: 1px solid rgb(226, 230, 233);
+      width: 48px;
+
+      transform: rotate(90deg);
+    }
+
+
+    &:hover {
+      cursor: pointer;
+    }
+
+    @media screen and (min-width: 640px) {
+      display: none;
+    }
+  }
+
+  &__button {
+    display: none;
+
+    @media screen and (min-width: 640px) {
+      display: block;
+      display: flex;
+    }
+
+    &--first {
+      @media screen and (min-width: 640px) {
+        height: 48px;
+        width: 48px;
+      }
+
+      @media screen and (min-width: 1200px) {
+        height: 65px;
+        width: 65px;
+      }
+    }
+
+    &--second {
+      @media screen and (min-width: 640px) {
+        height: 48px;
+        width: 48px;
+      }
+
+      @media screen and (min-width: 1200px) {
+        height: 65px;
+        width: 65px;
+      }
+    }
+  }
+}

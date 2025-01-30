@@ -1,0 +1,29 @@
+.page-phones {
+  display: flex;
+  column-gap: 8px;
+  margin-bottom: 24px;
+
+  &__house {
+    height: 16px;
+    width: 16px;
+  }
+
+  &__arrow {
+    height: 16px;
+    width: 16px;
+  }
+
+  &__catygory-text {
+    margin: 0;
+  }
+
+  &__main-text {
+    margin: 0;
+    margin-bottom: 8px;
+  }
+
+  &__conter-models {
+    margin: 0;
+    margin-bottom: 16px;
+  }
+}
