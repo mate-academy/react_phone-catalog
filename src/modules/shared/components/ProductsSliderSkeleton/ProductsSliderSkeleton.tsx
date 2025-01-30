@@ -6,9 +6,12 @@ import { useEffect, useRef, useState } from 'react';
 import { ProductCardSkeleton } from '../ProductCardSkeleton';
 import { HandleReloadClick } from '../../types/handlers';
 import { ErrorNotification } from '../ErrorNotification';
+import { Heading } from '../Heading';
+import { HeadingLevel } from '../../types/types';
 
 type Props = {
   title: string;
+  titleHeadingLevel: HeadingLevel;
   loadingStatus: LoadingStatus;
   onReloadClick: HandleReloadClick;
   responseStatus?: number;
@@ -16,6 +19,7 @@ type Props = {
 
 export const ProductsSliderSkeleton: React.FC<Props> = ({
   title,
+  titleHeadingLevel,
   loadingStatus,
   onReloadClick,
   responseStatus,
@@ -71,7 +75,9 @@ export const ProductsSliderSkeleton: React.FC<Props> = ({
   return (
     <section className={styles.ProductsSliderSkeleton}>
       <header className={styles.Header}>
-        <h3 className={styles.Title}>{title}</h3>
+        <Heading level={titleHeadingLevel} className={styles.Title}>
+          {title}
+        </Heading>
 
         <div className={styles.Buttons}>
           <IconButton

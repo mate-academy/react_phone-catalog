@@ -7,7 +7,9 @@ import styles from './ProductsSlider.module.scss';
 import { useEffect, useRef, useState } from 'react';
 import { getPageX } from '../../functions/functions';
 import { HandleSliderDragEvent } from '../../types/handlers';
-import { Product } from '../../types/types';
+import { HeadingLevel, Product } from '../../types/types';
+import React from 'react';
+import { Heading } from '../Heading';
 
 enum DisabledButton {
   Left = 'Left',
@@ -17,159 +19,182 @@ enum DisabledButton {
 
 type Props = {
   title: string;
+  titleHeadingLevel: HeadingLevel;
   products: Product[];
 };
 
-export const ProductsSlider: React.FC<Props> = ({ title, products }) => {
-  const { accessPrevious, accessNext } = useLanguage().localeTexts;
-  const [isDragged, setIsDragged] = useState(false);
-  const [isClicked, setIsClicked] = useState(true);
-  const [disabledButton, setDisabledButton] = useState<DisabledButton>(
-    DisabledButton.Left,
-  );
-  const listRef = useRef<HTMLUListElement>(null);
-  const startX = useRef(0);
-  const startScrollLeft = useRef(0);
+export const ProductsSlider: React.FC<Props> = React.memo(
+  ({ title, titleHeadingLevel, products }) => {
+    const { accessPrevious, accessNext } = useLanguage().localeTexts;
+    const [isDragged, setIsDragged] = useState(false);
+    const [isClicked, setIsClicked] = useState(true);
+    const [jumpScroll, setJumpScroll] = useState(true);
+    const [disabledButton, setDisabledButton] = useState<DisabledButton>(
+      DisabledButton.Left,
+    );
+    const listRef = useRef<HTMLUListElement>(null);
+    const startX = useRef(0);
+    const startScrollLeft = useRef(0);
 
-  const handleSliderStartDrag = (event: HandleSliderDragEvent) => {
-    const list = listRef.current;
-    const eventList = event.currentTarget;
-
-    if (list && eventList) {
-      setIsDragged(true);
-      setIsClicked(true);
-      startX.current = getPageX(event);
-
-      startScrollLeft.current = event.currentTarget.scrollLeft;
-      list.scrollLeft = startScrollLeft.current;
-    }
-  };
-
-  const buttonSwipe = (next: boolean) => {
-    const list = listRef.current;
-    const item = list?.firstElementChild;
-
-    if (item) {
-      const listStyles = getComputedStyle(list);
-      const gap = parseFloat(listStyles.gap);
-      const listWidth = parseFloat(listStyles.width);
-      const productCardWidth = parseFloat(getComputedStyle(item).width) || 0;
-
-      const padding = (list.clientWidth - listWidth) / 2;
-      const restOfListWidth = listWidth + padding;
-      const cardSwipeWidth = productCardWidth + gap;
-
-      if (next) {
-        list.scrollLeft =
-          cardSwipeWidth *
-          Math.round(
-            (list.scrollLeft + restOfListWidth + gap / 2) / cardSwipeWidth,
-          );
-      } else {
-        list.scrollLeft =
-          cardSwipeWidth *
-          (Math.round((list.scrollLeft - padding + gap / 2) / cardSwipeWidth) -
-            Math.floor((restOfListWidth + gap) / cardSwipeWidth));
-      }
-    }
-  };
-
-  const handlePrevSwipeButtonClick = () => {
-    buttonSwipe(false);
-  };
-
-  const handleNextSwipeButtonClick = () => {
-    buttonSwipe(true);
-  };
-
-  const handleScroll = (event: React.UIEvent<HTMLUListElement>) => {
-    const list = event.currentTarget;
-
-    if (list.scrollLeft === 0) {
-      setDisabledButton(DisabledButton.Left);
-    } else if (list.scrollLeft === list.scrollWidth - list.clientWidth) {
-      setDisabledButton(DisabledButton.Right);
-    } else {
-      setDisabledButton(DisabledButton.None);
-    }
-  };
-
-  useEffect(() => {
-    const handleSliderDrag = (event: MouseEvent) => {
+    const handleSliderStartDrag = (event: HandleSliderDragEvent) => {
       const list = listRef.current;
+      const eventList = event.currentTarget;
 
-      if (isDragged && list) {
-        const distance = startX.current - event.pageX;
+      if (list && eventList) {
+        setIsDragged(true);
+        setIsClicked(true);
+        startX.current = getPageX(event);
 
-        list.scrollLeft = startScrollLeft.current + distance;
+        startScrollLeft.current = event.currentTarget.scrollLeft;
+        list.scrollLeft = startScrollLeft.current;
+      }
+    };
 
-        if (Math.abs(distance) > 5) {
-          setIsClicked(false);
+    const buttonSwipe = (next: boolean) => {
+      const list = listRef.current;
+      const item = list?.firstElementChild;
+
+      if (item) {
+        const listStyles = getComputedStyle(list);
+        const gap = parseFloat(listStyles.gap);
+        const listWidth = parseFloat(listStyles.width);
+        const productCardWidth = parseFloat(getComputedStyle(item).width) || 0;
+
+        const padding = (list.clientWidth - listWidth) / 2;
+        const restOfListWidth = listWidth + padding;
+        const cardSwipeWidth = productCardWidth + gap;
+
+        if (next) {
+          list.scrollLeft =
+            cardSwipeWidth *
+            Math.round(
+              (list.scrollLeft + restOfListWidth + gap / 2) / cardSwipeWidth,
+            );
+        } else {
+          list.scrollLeft =
+            cardSwipeWidth *
+            (Math.round(
+              (list.scrollLeft - padding + gap / 2) / cardSwipeWidth,
+            ) -
+              Math.floor((restOfListWidth + gap) / cardSwipeWidth));
         }
       }
     };
 
-    const handleSliderStopDrag = () => {
-      if (isDragged) {
-        setIsDragged(false);
+    const handlePrevSwipeButtonClick = () => {
+      buttonSwipe(false);
+    };
+
+    const handleNextSwipeButtonClick = () => {
+      buttonSwipe(true);
+    };
+
+    const handleScroll = (event: React.UIEvent<HTMLUListElement>) => {
+      const list = event.currentTarget;
+
+      if (list.scrollLeft === 0) {
+        setDisabledButton(DisabledButton.Left);
+      } else if (list.scrollLeft === list.scrollWidth - list.clientWidth) {
+        setDisabledButton(DisabledButton.Right);
+      } else {
+        setDisabledButton(DisabledButton.None);
       }
     };
 
-    document.addEventListener('mousemove', handleSliderDrag);
-    document.addEventListener('mouseup', handleSliderStopDrag);
+    useEffect(() => {
+      setJumpScroll(true);
+    }, [products]);
 
-    return () => {
-      document.removeEventListener('mousemove', handleSliderDrag);
-      document.removeEventListener('mouseup', handleSliderStopDrag);
-    };
-  }, [isDragged]);
+    useEffect(() => {
+      const list = listRef.current;
 
-  return (
-    <section
-      className={classNames(
-        styles.ProductsSlider,
-        isDragged && styles.ProductsSlider_dragged,
-      )}
-    >
-      <header className={styles.Header}>
-        <h3 className={styles.Title}>{title}</h3>
+      if (jumpScroll && list) {
+        list.scrollLeft = 0;
+        setJumpScroll(false);
+      }
+    }, [jumpScroll]);
 
-        <div className={styles.Buttons}>
-          <IconButton
-            svgOption={IconButtonSVGOption.LeftArrow}
-            disabled={disabledButton === DisabledButton.Left}
-            onClick={handlePrevSwipeButtonClick}
-            label={accessPrevious}
-          />
+    useEffect(() => {
+      const handleSliderDrag = (event: MouseEvent) => {
+        const list = listRef.current;
 
-          <IconButton
-            svgOption={IconButtonSVGOption.RightArrow}
-            disabled={disabledButton === DisabledButton.Right}
-            onClick={handleNextSwipeButtonClick}
-            label={accessNext}
-          />
+        if (isDragged && list) {
+          const distance = startX.current - event.pageX;
+
+          list.scrollLeft = startScrollLeft.current + distance;
+
+          if (Math.abs(distance) > 5) {
+            setIsClicked(false);
+          }
+        }
+      };
+
+      const handleSliderStopDrag = () => {
+        if (isDragged) {
+          setIsDragged(false);
+        }
+      };
+
+      document.addEventListener('mousemove', handleSliderDrag);
+      document.addEventListener('mouseup', handleSliderStopDrag);
+
+      return () => {
+        document.removeEventListener('mousemove', handleSliderDrag);
+        document.removeEventListener('mouseup', handleSliderStopDrag);
+      };
+    }, [isDragged]);
+
+    return (
+      <section
+        className={classNames(
+          styles.ProductsSlider,
+          (isDragged || jumpScroll) && styles.ProductsSlider_dragged,
+        )}
+      >
+        <header className={styles.Header}>
+          <Heading level={titleHeadingLevel} className={styles.Title}>
+            {title}
+          </Heading>
+
+          <div className={styles.Buttons}>
+            <IconButton
+              svgOption={IconButtonSVGOption.LeftArrow}
+              disabled={disabledButton === DisabledButton.Left}
+              onClick={handlePrevSwipeButtonClick}
+              label={accessPrevious}
+            />
+
+            <IconButton
+              svgOption={IconButtonSVGOption.RightArrow}
+              disabled={disabledButton === DisabledButton.Right}
+              onClick={handleNextSwipeButtonClick}
+              label={accessNext}
+            />
+          </div>
+        </header>
+
+        <div className={styles.Wrapper}>
+          <ul
+            className={styles.List}
+            ref={listRef}
+            onMouseDown={handleSliderStartDrag}
+            onScroll={handleScroll}
+          >
+            {products.map(product => (
+              <li key={product.id} className={styles.Item}>
+                <ProductCard
+                  product={product}
+                  isClicked={isClicked}
+                  draggable={false}
+                  className={styles.ProductCard}
+                />
+              </li>
+            ))}
+          </ul>
         </div>
-      </header>
+      </section>
+    );
+  },
+);
 
-      <div className={styles.Wrapper}>
-        <ul
-          className={styles.List}
-          ref={listRef}
-          onMouseDown={handleSliderStartDrag}
-          onScroll={handleScroll}
-        >
-          {products.map(product => (
-            <li key={product.id} className={styles.Item}>
-              <ProductCard
-                product={product}
-                isClicked={isClicked}
-                draggable={false}
-                className={styles.ProductCard}
-              />
-            </li>
-          ))}
-        </ul>
-      </div>
-    </section>
-  );
-};
+ProductsSlider.displayName = 'ProductsSlider';

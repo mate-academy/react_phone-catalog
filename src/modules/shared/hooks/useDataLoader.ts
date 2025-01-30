@@ -4,9 +4,11 @@ import { LoadingStatus } from '../types/enums';
 import { useCallback, useEffect, useState } from 'react';
 
 export const useDataLoader = <Item>(
-  filePath: string,
+  filePath?: string,
 ): [Item[], LoadingStatus, number | undefined, () => void] => {
-  const [loadingStatus, setLoadingStatus] = useState(LoadingStatus.Loading);
+  const [loadingStatus, setLoadingStatus] = useState(
+    filePath ? LoadingStatus.Loading : LoadingStatus.Idle,
+  );
   const [responseStatus, setResponseStatus] = useState<number | undefined>(
     undefined,
   );
@@ -42,26 +44,30 @@ export const useDataLoader = <Item>(
     setLoadingStatus(LoadingStatus.Loading);
     setResponseStatus(undefined);
 
-    try {
-      await wait(500);
-      const response = await fetch(filePath);
+    if (filePath) {
+      try {
+        await wait(500);
+        const response = await fetch(filePath);
 
-      if (!response.ok) {
-        setResponseStatus(response.status);
-        throw new Error();
+        if (!response.ok) {
+          setResponseStatus(response.status);
+          throw new Error();
+        }
+
+        const loadedItems = await response.json();
+
+        setLoadedData(translateItems(loadedItems));
+
+        if (loadedItems.length) {
+          setLoadingStatus(LoadingStatus.Success);
+        } else {
+          setLoadingStatus(LoadingStatus.NoData);
+        }
+      } catch {
+        setLoadingStatus(LoadingStatus.Error);
       }
-
-      const loadedItems = await response.json();
-
-      setLoadedData(translateItems(loadedItems));
-
-      if (loadedItems.length) {
-        setLoadingStatus(LoadingStatus.Success);
-      } else {
-        setLoadingStatus(LoadingStatus.NoData);
-      }
-    } catch {
-      setLoadingStatus(LoadingStatus.Error);
+    } else {
+      setLoadingStatus(LoadingStatus.Idle);
     }
   }, [filePath, translateItems]);
 

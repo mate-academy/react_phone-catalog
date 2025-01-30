@@ -1,59 +1,6 @@
-@use "../../../shared/styles/extends";
 @use "../../../shared/styles/mixins" as *;
 
-.Title {
-  padding-top: 16px;
-
-  @include full-grid-width;
-  @extend %h2;
-  @include color-transition((color: var(--primary-text-color)));
-}
-
-.PhotosSlider {
-  @include for-desktop {
-    grid-column: span 12;
-  }
-
-  @include for-tablet {
-    grid-column: span 7;
-  }
-
-  @include for-mobile {
-    @include full-grid-width;
-  }
-}
-
-.Controls {
-  @include full-grid-width;
-
-  @include for-tablet {
-    grid-column: span 5;
-  }
-
-  @include for-desktop {
-    grid-column: 14 / 21;
-  }
-}
-
-.About {
-  @include full-grid-width;
-
-  @include for-desktop {
-    grid-column: span 12;
-  }
-}
-
-.TechSpecs {
-  @include full-grid-width;
-
-  @include for-desktop {
-    grid-column: 14 / 25
-  }
-}
-
-.ProductsPage {
-  @include grid;
-
+.ProductDetailsPage {
   padding-bottom: 56px;
 
   @include for-tablet {

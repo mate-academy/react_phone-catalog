@@ -61,19 +61,28 @@ export const HomePage: React.FC = () => {
       {loadingStatus === LoadingStatus.Success ? (
         <>
           {brandNewProducts.length && (
-            <ProductsSlider title={newModels} products={brandNewProducts} />
+            <ProductsSlider
+              title={newModels}
+              titleHeadingLevel="h3"
+              products={brandNewProducts}
+            />
           )}
 
           <Categories products={products} loadingStatus={loadingStatus} />
 
           {hotPriceProducts.length && (
-            <ProductsSlider title={hotPrices} products={hotPriceProducts} />
+            <ProductsSlider
+              title={hotPrices}
+              titleHeadingLevel="h3"
+              products={hotPriceProducts}
+            />
           )}
         </>
       ) : (
         <>
           <ProductsSliderSkeleton
             title={newModels}
+            titleHeadingLevel="h3"
             loadingStatus={loadingStatus}
             onReloadClick={handleReloadClick}
             responseStatus={responseStatus}
@@ -83,6 +92,7 @@ export const HomePage: React.FC = () => {
 
           <ProductsSliderSkeleton
             title={hotPrices}
+            titleHeadingLevel="h3"
             loadingStatus={loadingStatus}
             onReloadClick={handleReloadClick}
             responseStatus={responseStatus}

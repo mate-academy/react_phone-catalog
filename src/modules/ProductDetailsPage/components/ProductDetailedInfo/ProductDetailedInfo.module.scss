@@ -1,0 +1,54 @@
+@use "../../../shared/styles/mixins" as *;
+@use "../../../shared/styles/extends";
+
+.Title {
+  padding-top: 16px;
+
+  @include full-grid-width;
+  @extend %h2;
+  @include color-transition((color: var(--primary-text-color)));
+}
+
+.PhotosSlider {
+  grid-column: span 12;
+
+  @include for-tablet {
+    grid-column: span 7;
+  }
+
+  @include for-mobile {
+    @include full-grid-width;
+  }
+}
+
+.Controls {
+  @include full-grid-width;
+
+  @include for-tablet {
+    grid-column: span 5;
+  }
+
+  @include for-desktop {
+    grid-column: 14 / 21;
+  }
+}
+
+.About {
+  @include full-grid-width;
+
+  @include for-desktop {
+    grid-column: span 12;
+  }
+}
+
+.TechSpecs {
+  @include full-grid-width;
+
+  @include for-desktop {
+    grid-column: 14 / 25
+  }
+}
+
+.ProductDetailedInfo {
+  @include grid;
+}

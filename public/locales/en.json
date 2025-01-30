@@ -78,6 +78,8 @@
   "selectSize": "Select size",
   "about": "About",
   "techSpecs": "Tech specs",
+  "mayLike": "You may also like",
+  "productNotFound": "Product was not found",
   "settingsTitle": "Settings",
   "themeSettingsTitle": "Color theme",
   "themeSettingsLabel": "Color themes",
@@ -85,5 +87,5 @@
   "accessDark": "Dark",
   "languageSettingsTitle": "Language",
   "languageSettingsLabel": "Languages",
-  "pageNotFound": "Page not found!"
+  "pageNotFound": "Page not found"
 }

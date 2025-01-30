@@ -1,5 +1,6 @@
 export enum LoadingStatus {
   Success = 'Success',
+  Idle = 'Idle',
   Loading = 'Loading',
   Error = 'Error',
   NoData = 'NoData',

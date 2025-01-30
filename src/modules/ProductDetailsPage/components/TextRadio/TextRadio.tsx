@@ -12,7 +12,6 @@ type Props = {
   options: Option[];
   chosenOption: string;
   onChange: HandleOptionChange;
-  className?: string;
 };
 
 export const TextRadio: React.FC<Props> = ({
@@ -20,7 +19,6 @@ export const TextRadio: React.FC<Props> = ({
   options,
   chosenOption,
   onChange,
-  className,
 }) => {
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const newOption = event.currentTarget.value;
@@ -31,7 +29,7 @@ export const TextRadio: React.FC<Props> = ({
   };
 
   return (
-    <fieldset className={className}>
+    <fieldset>
       <legend className={styles.Legend}>{title}</legend>
 
       <ul className={styles.Options}>

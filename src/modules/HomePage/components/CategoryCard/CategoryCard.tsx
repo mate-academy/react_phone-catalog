@@ -53,7 +53,7 @@ export const CategoryCard: React.FC<Props> = ({
 
       <p className={styles.AmountOfModels}>
         {(loadingStatus === LoadingStatus.Success ||
-          loadingStatus == LoadingStatus.NoData) &&
+          loadingStatus === LoadingStatus.NoData) &&
           `${preModels} ${amountOfModels} ${models}`}
       </p>
     </Link>

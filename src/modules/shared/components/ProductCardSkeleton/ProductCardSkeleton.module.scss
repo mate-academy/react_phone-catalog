@@ -1,17 +1,18 @@
+@use "../../../shared/styles/vars" as *;
 @use "../../../shared/styles/mixins" as *;
 @use "../../../shared/styles/extends";
 
 .Image {
   flex-grow: 1;
-  border-radius: 10px;
+  border-radius: $loading-border-radius;
 
   @include color-transition((background-color: var(--loading-color)));
 }
 
-.Title {
+.TitleLink {
   padding-top: 16px;
   height: 1lh;
-  border-radius: 10px;
+  border-radius: $loading-border-radius;
 
   @include color-transition((background-color: var(--loading-color)));
   @extend %body-text;
@@ -20,7 +21,7 @@
 .Prices {
   height: 1lh;
   width: 60%;
-  border-radius: 10px;
+  border-radius: $loading-border-radius;
 
   @extend %h3;
   @include color-transition((background-color: var(--loading-color)));
@@ -55,7 +56,7 @@
 .ParameterName {
   height: 1lh;
   width: 40%;
-  border-radius: 10px;
+  border-radius: $loading-border-radius;
 
   @extend %small-text;
   @include color-transition((background-color: var(--loading-color)));
@@ -64,7 +65,7 @@
 .ParameterValue {
   height: 1lh;
   width: 25%;
-  border-radius: 10px;
+  border-radius: $loading-border-radius;
 
   @extend %small-text;
   @include color-transition((background-color: var(--loading-color)));

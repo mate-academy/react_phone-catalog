@@ -30,7 +30,7 @@ export const ProductCardSkeleton: React.FC<Props> = ({
       )}
     >
       <div className={styles.Image} />
-      <span className={styles.Title} />
+      <span className={styles.TitleLink} />
       <div className={styles.Prices} />
       <div className={styles.Line} />
 

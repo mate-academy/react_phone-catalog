@@ -78,6 +78,8 @@
   "selectSize": "Wybierz rozmiar",
   "about": "O produkcie",
   "techSpecs": "Specyfikacja techniczna",
+  "mayLike": "Może Ci się spodobać",
+  "productNotFound": "Nie odnaleziono produktu",
   "settingsTitle": "Ustawienia",
   "themeSettingsTitle": "Motyw kolorystyczny",
   "themeSettingsLabel": "Motywy kolorystyczne",
@@ -85,5 +87,5 @@
   "accessDark": "Ciemny",
   "languageSettingsTitle": "Język",
   "languageSettingsLabel": "Języki",
-  "pageNotFound": "Nie odnaleziono strony!"
+  "pageNotFound": "Nie odnaleziono strony"
 }

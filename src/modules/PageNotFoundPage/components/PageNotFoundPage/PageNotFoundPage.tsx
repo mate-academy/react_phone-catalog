@@ -13,6 +13,7 @@ export const PageNotFoundPage: React.FC = () => {
       <main className={styles.PageNotFoundPage}>
         <img
           src="/img/page-infos/page-not-found.png"
+          alt={pageNotFound}
           className={styles.Image}
         />
         <h1 className={styles.Title}>{pageNotFound}</h1>
