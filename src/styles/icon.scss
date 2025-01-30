@@ -6,7 +6,7 @@
     width: 14px;
   }
 
-    &-user {
+  &-user {
     fill: $white;
     width: 16px;
   }
@@ -21,6 +21,8 @@
     fill: $white;
     width: 16px;
     height: 16px;
+
+    @include hover(fill, $purple-hover);
   }
 
   &-arrow-right {
@@ -46,5 +48,19 @@
     fill: $icon-grey;
     width: 6px;
     height: 10px;
+  }
+  
+  &-nav {
+    width: 6px;
+    height: 10px;
+    fill: $white;
+  }
+
+  &-arrow-left-back {
+    fill: $white;
+    width: 6px;
+    height: 10px;
+
+    @include hover(fill, $purple-hover);
   }
 }

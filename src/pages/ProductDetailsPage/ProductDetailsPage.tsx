@@ -9,6 +9,9 @@ import 'swiper/scss/pagination';
 import { Product } from '../../types/Product';
 import { useEffect, useState } from 'react';
 import { getAccessories, getPhones, getTablets } from '../../services/products';
+import classNames from 'classnames';
+// eslint-disable-next-line max-len
+import { SuggestedProducts } from '../../components/SliderProducts/SuggestedProducts';
 
 export const ProductDetailsPage: React.FC = () => {
   const [selectedImage, setSelectedImage] = useState('');
@@ -16,6 +19,30 @@ export const ProductDetailsPage: React.FC = () => {
   const { productId } = useParams<{ productId: string }>();
   const [selectedColor, setSelectedColor] = useState<string>('');
   const [selectedCapacity, setSelectedCapacity] = useState<string>('');
+  const [isPressed, setIsPressed] = useState(false);
+
+  const COLOR_MAP: { [key: string]: string } = {
+    spacegray: '#4c4c4c',
+    yellow: '#ffe681',
+    red: '#a50011',
+    midnightgreen: '#4e5851',
+    gold: '#fcdbc1',
+    silver: '#f5f5f0',
+    black: '#000000',
+    rosegold: '#e6c7c2',
+    coral: '#ee7762',
+    white: '#ffffff',
+    purple: '#b8afe6',
+    midnight: '#171e27',
+    spaceblack: '#201d24',
+    blue: '#043458',
+    pink: '#fae0d8',
+    alphinegreen: '#505f4e',
+    green: '#e1f8dc',
+    graphite: '#5c5b57',
+    sierrablue: '#9bb5ce',
+    pacificblue: '#2e4755',
+  };
 
   useEffect(() => {
     async function fetchData() {
@@ -35,7 +62,7 @@ export const ProductDetailsPage: React.FC = () => {
         foundProduct.colorsAvailable &&
         !!foundProduct.colorsAvailable
       ) {
-        setSelectedColor(foundProduct.colorsAvailable[0]);
+        setSelectedColor(foundProduct.color);
       }
 
       if (
@@ -49,6 +76,7 @@ export const ProductDetailsPage: React.FC = () => {
 
     fetchData();
   }, [productId]);
+
   if (!product) {
     return <div>Loading...</div>;
   }
@@ -71,6 +99,10 @@ export const ProductDetailsPage: React.FC = () => {
     cell,
   } = product;
 
+  const addToFav = () => {
+    setIsPressed(!isPressed);
+  };
+
   return (
     <>
       <Header />
@@ -79,12 +111,12 @@ export const ProductDetailsPage: React.FC = () => {
           <div className="product-details__active">
             <Link to="/" className="product-details__active--link">
               <svg className="icon icon-home">
-                <use href="/img/icons.svg#icon-home"></use>
+                <use href="img/icons.svg#icon-home"></use>
               </svg>
             </Link>
             <div className="product-details__active--arrow">
               <svg className="icon icon-arrow-right">
-                <use href="/img/icons.svg#icon-arrow-right"></use>
+                <use href="img/icons.svg#icon-arrow-right"></use>
               </svg>
             </div>
             <Link to={`/${category}`} className="product-details__active--cat">
@@ -92,7 +124,7 @@ export const ProductDetailsPage: React.FC = () => {
             </Link>
             <div className="product-details__active--arrow">
               <svg className="icon icon-arrow-right">
-                <use href="/img/icons.svg#icon-arrow-right"></use>
+                <use href="img/icons.svg#icon-arrow-right"></use>
               </svg>
             </div>
             <Link
@@ -102,16 +134,14 @@ export const ProductDetailsPage: React.FC = () => {
               {name}
             </Link>
           </div>
-          <div className="product-details__back">
+          <Link to=".." className="product-details__back">
             <div className="product-details__back--arrow">
-              <svg className="icon icon-arrow-left">
-                <use href="/img/icons.svg#icon-arrow-left"></use>
+              <svg className="icon icon-arrow-left-back">
+                <use href="img/icons.svg#icon-arrow-left"></use>
               </svg>
             </div>
-            <Link to=".." className="product-details__back--text">
-              Back
-            </Link>
-          </div>
+            <p className="product-details__back--text">Back</p>
+          </Link>
           <h2 className="product-details__title">{name}</h2>
           <div className="product-details__swiper">
             <div className="product-details__swiper--big-pict swiper-pict">
@@ -121,7 +151,17 @@ export const ProductDetailsPage: React.FC = () => {
                 alt={name}
               />
             </div>
-            <Swiper spaceBetween={10} slidesPerView={5}>
+            <Swiper
+              spaceBetween={0}
+              slidesPerView={5}
+              className="product-details__swiper--wrapper-box"
+              wrapperClass="product-details__swiper--wrapper"
+              breakpoints={{
+                640: {
+                  slidesPerView: 1,
+                },
+              }}
+            >
               {images.map((image, index) => (
                 <SwiperSlide
                   key={index}
@@ -130,85 +170,102 @@ export const ProductDetailsPage: React.FC = () => {
                   <img
                     src={image}
                     onClick={() => setSelectedImage(image)}
-                    className={
-                      selectedImage === image ? 'selected-thumbnail' : ''
-                    }
                     alt={`Thumbnail ${index + 1}`}
+                    className="thumbnail-picture"
                   />
                 </SwiperSlide>
               ))}
             </Swiper>
           </div>
-          <div className="product-details__colors">
-            <div className="product-details__colors--box colors-box">
-              <p className="colors-box__title">Available colors</p>
-              <p className="colors-box__id">ID: 802390</p>
-            </div>
-            <div className="product-details__colors--cont colors-cont">
-              {colorsAvailable.map((color: string, index: number) => (
-                <div
-                  key={index}
-                  className={`colors-cont__color ${selectedColor === color ? 'selected' : ''}`}
-                  style={{
-                    backgroundColor:
-                      selectedColor === color ? color : '#3B3E4A',
-                  }}
-                  onClick={() => setSelectedColor(color)}
-                >
+          <div className="product-details__product-param">
+            <div className="product-details__colors">
+              <div className="product-details__colors--box colors-box">
+                <p className="colors-box__title">Available colors</p>
+                <p className="colors-box__id">ID: 802390</p>
+              </div>
+              <div className="product-details__colors--cont colors-cont">
+                {colorsAvailable.map((color: string, index: number) => (
                   <div
-                    className="colors-cont__color--in"
-                    style={{ backgroundColor: color }}
-                  ></div>
-                </div>
-              ))}
+                    key={index}
+                    className={classNames('colors-cont__color', {
+                      selected: selectedColor === color,
+                    })}
+                    style={{
+                      backgroundColor:
+                        selectedColor === color
+                          ? COLOR_MAP[color.toLowerCase()]
+                          : '#3B3E4A',
+                    }}
+                    onClick={() => setSelectedColor(color)}
+                  >
+                    <div
+                      className="colors-cont__color--in"
+                      style={{
+                        backgroundColor: COLOR_MAP[color.toLowerCase()],
+                      }}
+                    ></div>
+                  </div>
+                ))}
+              </div>
             </div>
-          </div>
-          <div className="product-details__capacity">
-            <p className="product-details__capacity--title">Select capacity</p>
-            <div className="product-details__capacity--box capacity-box">
-              {capacityAvailable.map((cap: string, index: number) => (
-                <div
-                  key={index}
-                  className={`capacity-box__mem ${selectedCapacity === cap ? 'cap-selected' : ''}`}
-                  onClick={() => setSelectedCapacity(cap)}
+            <div className="product-details__capacity">
+              <p className="product-details__capacity--title">
+                Select capacity
+              </p>
+              <div className="product-details__capacity--box capacity-box">
+                {capacityAvailable.map((cap: string, index: number) => (
+                  <div
+                    key={index}
+                    className={classNames('capacity-box__mem', {
+                      'cap-selected': selectedCapacity === cap,
+                    })}
+                    onClick={() => setSelectedCapacity(cap)}
+                  >
+                    {cap}
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div className="product-details__price">
+              <p className="product-details__price--disc">{`$${priceDiscount}`}</p>
+              <p className="product-details__price--regular">{`$${priceRegular}`}</p>
+            </div>
+            <div className="product-details__buttons">
+              <button type="button" className="product-details__buttons--add">
+                Add to cart
+              </button>
+              <button
+                className="product-details__buttons--heart"
+                onClick={addToFav}
+              >
+                <svg
+                  className={classNames('icon icon-heart', {
+                    'icon-heart-red': isPressed,
+                  })}
                 >
-                  {cap}
-                </div>
-              ))}
+                  <use href="img/icons.svg#icon-favourites-filled"></use>
+                </svg>
+              </button>
             </div>
+            <ul className="product-details__tech">
+              <li className="product-details__tech--item tech-item">
+                <p className="tech-item__name">Screen</p>
+                <p className="tech-item__param">{screen}</p>
+              </li>
+              <li className="product-details__tech--item tech-item">
+                <p className="tech-item__name">Resolution</p>
+                <p className="tech-item__param">{resolution}</p>
+              </li>
+              <li className="product-details__tech--item tech-item">
+                <p className="tech-item__name">Processor</p>
+                <p className="tech-item__param">{processor}</p>
+              </li>
+              <li className="product-details__tech--item tech-item">
+                <p className="tech-item__name">RAM</p>
+                <p className="tech-item__param">{ram}</p>
+              </li>
+            </ul>
           </div>
-          <div className="product-details__price">
-            <p className="product-details__price--disc">{`$${priceDiscount}`}</p>
-            <p className="product-details__price--regular">{`$${priceRegular}`}</p>
-          </div>
-          <div className="product-details__buttons">
-            <button type="button" className="product-details__buttons--add">
-              Add to cart
-            </button>
-            <button className="product-details__buttons--heart">
-              <svg className="icon icon-heart icon-heart-red">
-                <use href="/img/icons.svg#icon-favourites-filled"></use>
-              </svg>
-            </button>
-          </div>
-          <ul className="product-details__tech">
-            <li className="product-details__tech--item tech-item">
-              <p className="tech-item__name">Screen</p>
-              <p className="tech-item__param">{screen}</p>
-            </li>
-            <li className="product-details__tech--item tech-item">
-              <p className="tech-item__name">Resolution</p>
-              <p className="tech-item__param">{resolution}</p>
-            </li>
-            <li className="product-details__tech--item tech-item">
-              <p className="tech-item__name">Processor</p>
-              <p className="tech-item__param">{processor}</p>
-            </li>
-            <li className="product-details__tech--item tech-item">
-              <p className="tech-item__name">RAM</p>
-              <p className="tech-item__param">{ram}</p>
-            </li>
-          </ul>
           <div className="product-details__description">
             <h3 className="product-details__description--title">About</h3>
             {description.map((section, index) => (
@@ -257,6 +314,9 @@ export const ProductDetailsPage: React.FC = () => {
                 <p className="tech-specs-item__param">{`${cell[0]}, ${cell[1]}, ${cell[2]}`}</p>
               </li>
             </ul>
+          </div>
+          <div className="product-details__recomm recommended">
+            <SuggestedProducts />
           </div>
         </div>
       </div>

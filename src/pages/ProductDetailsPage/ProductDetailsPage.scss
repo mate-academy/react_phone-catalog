@@ -33,14 +33,20 @@
       color: $white;
       font-size: 12px;
       font-weight: 500;
-      line-height: 15.34px;
+      line-height: 1.28;
+
+      @include hover(color, $purple-hover);
     }
 
     &--name {
       color: $light-grey;
       font-size: 12px;
       font-weight: 500;
-      line-height: 15.34px;
+      line-height: 1.28;
+      white-space: nowrap;
+      overflow: hidden;
+
+      @include hover(color, $purple-hover);
     }
   }
 
@@ -64,7 +70,9 @@
       color: $white;
       font-size: 12px;
       font-weight: 500;
-      line-height: 15.34px;
+      line-height: 1.28;
+
+      @include hover(color, $purple-hover);
     }
   }
   
@@ -72,28 +80,126 @@
     color: $white;
     font-size: 22px;
     font-weight: 800;
-    line-height: 30.8px;
+    line-height: 1.4;
+    letter-spacing: -0.01em;
     margin-bottom: 32px;
     grid-column: 1 / -1;
+
+    @include on-tablet {
+      font-size: 32px;
+      font-weight: 800;
+      line-height: 1.28;
+      margin-bottom: 40px;
+    }
   }
 
   &__swiper {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 40px;
+    @include page-grid;
+
+    margin: 0 auto 40px;
+    gap: 16px;
     grid-column: 1 / -1;
-  
+
+    @include on-tablet {
+      flex-direction: row;
+      align-items: flex-start;
+      margin-bottom: 0;
+      grid-column: 1 / 8;
+    }
+
+    @include on-desktop-small {
+      grid-column: 1 / 12;
+      margin-bottom: 80px;
+    }
+
     &--big-pict {
       width: 288px;
       height: 288px;
       display: flex;
       justify-content: center;
       align-items: center;
+      grid-column: 1 / -1;
+
+      @include on-tablet {
+        grid-column: 2 / span 9;
+      }
+
+      @include on-desktop-small {
+        width: 464px;
+        height: 464px;
+        grid-column: 3 / span 8;
+      }
+    }
+
+    &--wrapper-box {
+      display: flex;
+      justify-content: center;
+      width: 288px;
+      height: 49px;
+      grid-column: 1 / -1;
+
+      @include on-tablet {
+        width: 35px;
+        height: fit-content;
+        flex-direction: column;
+
+        grid-column: 1 / 2;
+        grid-row: 1;
+      }
+
+      @include on-desktop-small {
+        grid-column: 1 / span 2;
+        width: 80px;
+      }
+    }
+
+    &--wrapper {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+
+      @include on-tablet {
+        flex-direction: column;
+      }
     }
 
     &--img {
-      width: 51px;
-      height: 49px;
+      max-width: 51px;
+      display: flex;
+      justify-content: center;
+      cursor: pointer;
+      border: 1px solid $grey-2;
+
+      @include on-tablet {
+        max-width: 35px;
+        align-items: center;
+        height: 35px;
+      }
+
+      @include on-desktop-small {
+        max-width: 80px;
+        height: 80px;
+      }  
+    }
+
+    &--box {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+
+  &__product-param {
+    margin-bottom: 56px;
+    grid-column: 1 / -1;
+
+    @include on-tablet {
+      grid-column: 8 / span 5;
+      margin-bottom: 64px;
+    }
+
+    @include on-desktop-small {
+      grid-column: 14 / span 11;
     }
   }
 
@@ -125,7 +231,7 @@
       color: $light-grey;
       font-size: 12px;
       font-weight: 700;
-      line-height: 15.34px;
+      line-height: 1.28;
       letter-spacing: 0.02em;
     }
 
@@ -167,6 +273,10 @@
     margin-bottom: 32px;
     grid-column: 1 / -1;
 
+    @include on-desktop-small {
+      justify-content: start;
+    }
+
     &--add {
       width: 231px;
       height: 48px;
@@ -182,6 +292,14 @@
 
       &:focus {
         background-color: $button-grey;
+      }
+
+      @include on-tablet {
+        width: 180px;
+      }
+
+      @include on-desktop-small {
+        width: 263px;
       }
     }
 
@@ -204,11 +322,20 @@
   }
 
   &__tech {
-    display: flex;
-    flex-direction: column;
+    @include page-grid;
+
     gap: 8px;
-    margin-bottom: 56px;
     grid-column: 1 / -1;
+
+    &--item {
+      display: flex;
+      justify-content: space-between;
+      grid-column: 1 / -1;
+
+      @include on-desktop-small {
+        grid-column: 1 / span 15;
+      }
+    }
   }
 
   &__description {
@@ -218,14 +345,29 @@
     margin-bottom: 56px;
     grid-column: 1 / -1;
 
+    @include on-tablet {
+      margin-bottom: 64px;
+    }
+
+    @include on-desktop-small {
+      margin-bottom: 80px;
+      grid-column: 1 / 13;
+    }
+
     &--title {
       color: $white;
       font-size: 20px;
       font-weight: 700;
-      line-height: 25.56px;
+      line-height: 1.28;
       letter-spacing: 0.02em;
       padding-bottom: 16px;
       border-bottom: 1px solid $grey-2;
+
+      @include on-tablet {
+        font-size: 22px;
+        font-weight: 800;
+        line-height: 1.4;
+      }
     }
   }
 
@@ -233,14 +375,29 @@
     margin-bottom: 56px;
     grid-column: 1 / -1;
 
+    @include on-tablet {
+      margin-bottom: 64px;
+    }
+
+    @include on-desktop-small {
+      grid-column: 14 / 25;
+      margin-bottom: 0;
+    }
+
     &--title {
       color: $white;
       padding-bottom: 16px;
       font-size: 20px;
       font-weight: 700;
-      line-height: 25.56px;
+      line-height: 1.6;
       border-bottom: 1px solid $grey-2;
       margin-bottom: 30px;
+
+      @include on-tablet {
+        font-size: 22px;
+        font-weight: 800;
+        line-height: 1.4;
+      }
     }
 
     &--list {
@@ -249,6 +406,15 @@
       gap: 8px;
     }
   }
+
+  &__recomm {
+    grid-column: 1 / -1;
+  }
+}
+
+.thumbnail-picture {
+  width: fit-content;
+  height: 100%;
 }
 
 .colors-box {
@@ -306,6 +472,7 @@
 .cap-selected {
   background-color: $white;
   color: $black;
+  border: none;
 }
 
 .tech-item {
@@ -316,14 +483,16 @@
     color: $light-grey;
     font-size: 12px;
     font-weight: 700;
-    line-height: 15.34px;
+    line-height: 1.28;
+    text-align: left;
   }
 
   &__param {
     color: $white;
     font-size: 12px;
     font-weight: 700;
-    line-height: 15.34px;
+    line-height: 1.28;
+    text-align: right;
   }
 }
 
@@ -336,14 +505,19 @@
     color: $white;
     font-size: 16px;
     font-weight: 700;
-    line-height: 20.45px;
+    line-height: 1.28;
     letter-spacing: 0.01em;
+
+    @include on-tablet {
+      font-size: 20px;
+      font-weight: 700;
+    }
   }
 
   &__text {
     color: $text-grey;
     font-size: 14px;
-    line-height: 21px;
+    line-height: 1.5;
     letter-spacing: 0.02em;
   }
 }
@@ -357,7 +531,7 @@
     color: $light-grey;
     font-size: 14px;
     font-weight: 600;
-    line-height: 21px;
+    line-height: 1.5;
     letter-spacing: 0.01em;
   }
 
@@ -367,6 +541,6 @@
 }
 
 .swiper-pict__large-image {
-  width: 288px;
-  height: 288px;
+  width: fit-content;
+  height: 100%;
 }

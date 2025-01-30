@@ -58,7 +58,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
         </button>
         <button type="button" className="product-card__btn--heart">
           <svg className="icon icon-heart icon-heart-red">
-            <use href="/img/icons.svg#icon-favourites-filled"></use>
+            <use href="img/icons.svg#icon-favourites-filled"></use>
           </svg>
         </button>
       </div>

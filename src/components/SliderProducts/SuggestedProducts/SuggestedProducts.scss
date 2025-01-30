@@ -1,86 +1,53 @@
 @import '../../../styles/common';
 
-.newmodels {
-  @include page-grid;
-
-  padding-left: $padding-tablet;
-  margin-bottom: 57px;
+.recommended {
+  margin-bottom: 56px;
 
   @include on-tablet {
-    padding-left: $padding-mobile;
     margin-bottom: 64px;
   }
 
-  @include on-desktop {
-    padding: 0 $padding-desktop-small;
-    margin-bottom: 80px;
-  }
-
   @include on-desktop-small {
-    padding: 0 $padding-desktop;
+    margin-bottom: 81px;
   }
 
   &__header {
-    @include page-grid;
-
-    padding-right: $padding-mobile;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     margin-bottom: $margin-bottom-mobile;
     grid-column: 1 / -1;
-
-    @include on-tablet {
-      padding-right: $padding-tablet;
-      margin-bottom: $margin-bottom-tablet;
-    }
-
-    @include on-desktop-small {
-      padding-right: 0;
-    }
 
     &--title {
       color: $white;
       font-size: 22px;
       font-weight: 800;
       line-height: 1.4;
-      grid-column: 1 / span 2;
 
       @include on-tablet {
         font-size: 32px;
         line-height: 1.29;
         letter-spacing: -0.01em;
-        grid-column: 1 / span 7;
       }
     }
 
     &--buttons {
       display: flex;
-      justify-content: end;
       gap: 16px;
-      grid-column: 4 / span 1;
-
-      @include on-tablet {
-        grid-column: 11 / span 2;
-      }
-
-      @include on-desktop-small {
-        grid-column: 23 / span 2;
-      }
     }
   }
 
   &__list {
     &--card {
       display: flex;
+      align-items: center;
       justify-content: space-between;
       flex-direction: column;
     }
   }
-
-  &__swiper {
-    grid-column: 1 / -1;
-  }
 }
 
-.newmodels-card {
+.recomm-card {
   padding: 32px;
   gap: 8px;
   background-color: $black;
@@ -90,15 +57,14 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    align-self: center;
     width: 148px;
     height: 108px;
-
+    
     @include on-tablet {
       width: 173px;
       height: 181px;
     }
-
+  
     @include on-desktop-small {
       width: 208px;
       height: 196px;
@@ -124,17 +90,30 @@
     font-weight: 600;
     line-height: 1.5;
     padding-top: 16px;
-    text-align: left;
   }
 
   &__price {
+    display: flex;
+    align-items: center;
     width: 100%;
-    color: $white;
-    font-size: 22px;
-    font-weight: 800;
-    line-height: 1.4;
+    align-self: flex-start;
     padding-bottom: 8px;
+    gap: 8px;
     border-bottom: 1px solid $grey-2;
+
+    &--disc {
+      color: $white;
+      font-size: 22px;
+      font-weight: 800;
+      line-height: 1.4;
+    }
+
+    &--regular {
+      text-decoration: line-through;
+      color: $text-grey;
+      font-size: 22px;
+      line-height: 28.12px;
+    }
   }
 
   &__tech {
@@ -146,12 +125,12 @@
 
   &__buttons {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     gap: 8px;
 
     &--add {
-      width: 100%;
+      width: 100px;
       height: 40px;
       border: none;
       background-color: $button-purple;
@@ -165,13 +144,22 @@
       &:focus {
         background-color: $button-grey;
       }
+
+      @include on-tablet {
+        width: 125px;
+      }
+
+      @include on-desktop-small {
+        width: 160px;
+      }
     }
 
     &--heart {
       display: flex;
       justify-content: center;
       align-items: center;
-      padding: 12px;
+      width: 40px;
+      height: 40px;
       background-color: $button-grey;
       border: none;
 
@@ -185,7 +173,7 @@
   }
 }
 
-.newmodels-item {
+.recomm-item {
   display: flex;
   justify-content: space-between;
 
@@ -219,7 +207,7 @@
     cursor: pointer;
 
     @include hover(background-color, $icon-grey);
-
+  
     &:disabled {
       background-color: transparent;
       border: 1px solid $grey-2;

@@ -6,7 +6,7 @@ export const Footer: React.FC = () => {
   return (
     <footer className="footer">
       <Link to="/" className="footer__logo">
-        <img src="/img/Logo.png" alt="Logo" className="footer__logo--pict" />
+        <img src="img/Logo.png" alt="Logo" className="footer__logo--pict" />
       </Link>
       <div className="footer__navbar">
         <Link
@@ -25,7 +25,7 @@ export const Footer: React.FC = () => {
           onClick={() => window.scrollTo({ top: 0 })}
         >
           <svg className="icon icon-up">
-            <use href="/img/icons.svg#icon-arrow-up"></use>
+            <use href="img/icons.svg#icon-arrow-up"></use>
           </svg>
         </button>
       </div>
