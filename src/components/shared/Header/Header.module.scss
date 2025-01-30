@@ -1,0 +1,18 @@
+.header {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+}
+
+.logo {
+  background-color: red;
+}
+
+.nav {
+  background-color: blue;
+}
+
+.choice {
+  background-color: $green;
+}
+
