@@ -14,6 +14,7 @@ import { ProductsProvider } from './hooks/savedProducts';
 import { FavouritesPage } from './pages/FavouritePage/FavouritePage';
 import { NotFoundPage } from './pages/NotFoundPage';
 import { availableCategories } from './constants/availableCategories';
+import { ProductInfoPage } from './pages/ProducstInfoPage';
 
 const CategoryRoutes = () => {
   const { category } = useParams();
@@ -25,6 +26,7 @@ const CategoryRoutes = () => {
   return (
     <Routes>
       <Route index element={<ProductsPage />} />
+      <Route path=":productId" element={<ProductInfoPage />} />
       <Route path=":productId/*" element={<NotFoundPage />} />
     </Routes>
   );

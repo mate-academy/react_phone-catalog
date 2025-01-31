@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './ProductCard.module.scss';
-import { Products } from '../../types/Products';
+import { Product } from '../../types/Product';
 import { Link } from 'react-router-dom';
 import { Icon } from '../Icon';
 import classNames from 'classnames';
@@ -8,7 +8,7 @@ import { useProductsContext } from '../../hooks/savedProducts';
 import { useTheme } from '../../hooks/useTheme';
 
 type Props = {
-  product: Products;
+  product: Product;
   path: string;
   checkPrice?: boolean;
 };

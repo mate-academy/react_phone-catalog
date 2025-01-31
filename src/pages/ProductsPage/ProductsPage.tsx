@@ -69,7 +69,7 @@ export const ProductsPage = () => {
               <ProductCard
                 key={product.id}
                 product={product}
-                path={`/product/${product.id}`}
+                path={`/${product.category}/${product.itemId}`}
                 checkPrice
               />
             ))}

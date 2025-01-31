@@ -1,7 +1,7 @@
-import { Products } from '../types/Products';
+import { Product } from '../types/Product';
 
 export const getPaginatedProducts = (
-  products: Products[],
+  products: Product[],
   page: number,
   count: number,
 ) => {

@@ -1,0 +1,137 @@
+@import '../../styles/main.scss';
+
+.product {
+  @include base-spacing;
+
+  &__breadcrumbs {
+    margin-bottom: 40px;
+  }
+
+  &__back {
+    border: none;
+    background-color: transparent;
+    display: flex;
+    gap: 4px;
+    justify-content: center;
+    align-items: center;
+    height: 16px;
+    cursor: pointer;
+
+    @include hover-scale;
+  }
+
+  &__icon {
+    padding-top: 2px;
+  }
+
+  &__btnText {
+    @include small-text;
+
+    color: var(--primary-color);
+    font-family: Mont;
+  }
+
+  &__name {
+    margin-top: 16px;
+    margin-bottom: 40px;
+
+    @include h2;
+  }
+
+  &__mainInfo {
+    display: flex;
+    gap: 64px;
+    width: 100%;
+
+    @include on-mobile {
+      display: grid;
+      grid-template-columns: repeat(1, 1fr);
+      gap: 40px;
+    }
+  }
+
+  &__photosWrapper {
+    display: flex;
+    gap: 16px;
+
+    @include on-mobile {
+      display: flex;
+      gap: 16px;
+      flex-direction: column-reverse;
+      width: 100%;
+      justify-content: center;
+    }
+  }
+
+  &__photos {
+    display: grid;
+    gap: 16px;
+    height: max-content;
+
+    @include on-tablet {
+      gap: 8px;
+    }
+
+    @include on-mobile {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      width: 100%;
+    }
+  }
+
+  &__photo {
+    border: 1px solid var(--elements-color);
+    width: 80px;
+    height: 80px;
+    cursor: pointer;
+
+    @include on-tablet {
+      width: 35px;
+      height: 35px;
+    }
+
+    @include on-mobile {
+      width: 100%;
+      height: 49px;
+    }
+
+    &:hover {
+      border: 1px solid var(--primary-color);
+    }
+  }
+
+  &__img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  &__activeImg {
+    border: 1px solid var(--primary-color);
+  }
+
+  &__activeImage {
+    width: 464px;
+    height: 464px;
+
+    @include on-tablet {
+      height: 287px;
+      width: 287px;
+    }
+
+    @include on-mobile {
+      display: flex;
+      justify-content: center;
+      width: 100%;
+    }
+  }
+
+  &__mainImage {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+
+    @include hover-scale;
+  }
+}

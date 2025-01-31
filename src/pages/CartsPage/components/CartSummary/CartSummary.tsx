@@ -1,12 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styles from './CartSummary.module.scss';
 import { Checkout } from '../../../../components/Checkout';
 import { useProductsContext } from '../../../../hooks/savedProducts';
 import { useProducts } from '../../../../hooks/useProducts';
+import { ModalWindow } from '../../../../components/ModalWindow';
 
 export const CartSummary = () => {
   const { cartProducts, countProductsMap } = useProductsContext();
   const { products } = useProducts();
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
 
   const totalPrice = cartProducts.reduce((total, productId) => {
     const product = products.find(p => p.id === productId);
@@ -32,9 +38,11 @@ export const CartSummary = () => {
 
         <div className={styles.summary__btnWrapper}>
           <div className={styles.summary__divider}></div>
-          <Checkout>Checkout</Checkout>
+          <Checkout onClick={openModal}>Checkout</Checkout>
         </div>
       </div>
+
+      {isModalOpen && <ModalWindow setIsModalOpen={setIsModalOpen} />}
     </div>
   );
 };

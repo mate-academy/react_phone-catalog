@@ -1,6 +1,6 @@
-import { Products } from '../types/Products';
+import { Product } from '../types/Product';
 
-export function getSortedProducts(products: Products[], sortField: string) {
+export function getSortedProducts(products: Product[], sortField: string) {
   switch (sortField) {
     case 'year':
       return [...products].sort((a, b) => b.year - a.year);

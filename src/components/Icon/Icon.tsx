@@ -29,14 +29,14 @@ import classNames from 'classnames';
 
 type Props = {
   type: IconType;
-  isCart?: boolean;
+  isSmall?: boolean;
   onMouseEnter?: () => void;
   onMouseLeave?: () => void;
 };
 
 export const Icon: React.FC<Props> = ({
   type,
-  isCart,
+  isSmall,
   onMouseEnter,
   onMouseLeave,
 }) => {
@@ -70,7 +70,7 @@ export const Icon: React.FC<Props> = ({
         src={iconSrc}
         alt={type}
         className={classNames(styles.icon__img, {
-          [styles.smalImg]: isCart,
+          [styles.smalImg]: isSmall,
         })}
       />
     </div>

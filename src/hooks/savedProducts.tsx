@@ -1,4 +1,3 @@
-// ProductsContext.tsx
 import React, { createContext, useContext, useEffect, useState } from 'react';
 
 interface ProductsContextType {
@@ -9,6 +8,7 @@ interface ProductsContextType {
   toggleCart: (productId: number) => void;
   removeFromCart: (productId: number) => void;
   updateProductCount: (productId: number, count: number) => void;
+  clearCart: () => void;
 }
 
 type Props = {
@@ -62,6 +62,11 @@ export const ProductsProvider: React.FC<Props> = ({ children }) => {
     setCartProducts(prev => prev.filter(id => id !== productId));
   };
 
+  const clearCart = () => {
+    setCartProducts([]);
+    setCountProductsMap({});
+  };
+
   const updateProductCount = (productId: number, count: number) => {
     setCountProductsMap(prev => ({ ...prev, [productId]: count }));
   };
@@ -76,6 +81,7 @@ export const ProductsProvider: React.FC<Props> = ({ children }) => {
         toggleCart,
         removeFromCart,
         updateProductCount,
+        clearCart,
       }}
     >
       {children}

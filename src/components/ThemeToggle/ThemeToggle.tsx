@@ -3,7 +3,7 @@ import styles from './ThemeToggle.module.scss';
 import { useTheme } from '../../hooks/useTheme';
 
 export const ThemeToggle = () => {
-  const { toggleTheme, theme } = useTheme(); // Використовуйте дужки ()
+  const { toggleTheme, theme } = useTheme();
   const isDarkTheme = theme === 'dark';
 
   return (

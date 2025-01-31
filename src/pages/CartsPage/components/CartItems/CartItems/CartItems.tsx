@@ -42,7 +42,7 @@ export const CartItems = () => {
                     type={
                       hoveredCloseButton === productId ? 'close' : 'closeCart'
                     }
-                    isCart
+                    isSmall
                     onMouseEnter={() => setHoveredCloseButton(productId)}
                     onMouseLeave={() => setHoveredCloseButton(null)}
                   />
@@ -74,7 +74,7 @@ export const CartItems = () => {
                     disabled={countProducts === 1}
                     onClick={() => handleProductCountChange(productId, -1)}
                   >
-                    <Icon type="minus" isCart />
+                    <Icon type="minus" isSmall />
                   </button>
 
                   <div className={styles.item__count}>{countProducts}</div>
@@ -84,7 +84,7 @@ export const CartItems = () => {
                     disabled={countProducts === 10}
                     onClick={() => handleProductCountChange(productId, 1)}
                   >
-                    <Icon type="plus" isCart />
+                    <Icon type="plus" isSmall />
                   </button>
                 </div>
 

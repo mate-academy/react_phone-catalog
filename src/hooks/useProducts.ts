@@ -1,8 +1,8 @@
-import { Products } from '../types/Products';
+import { Product } from '../types/Product';
 import { useEffect, useState } from 'react';
 
 export const useProducts = () => {
-  const [products, setProducts] = useState<Products[]>([]);
+  const [products, setProducts] = useState<Product[]>([]);
 
   useEffect(() => {
     fetch('/api/products.json')
