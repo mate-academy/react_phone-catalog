@@ -274,7 +274,7 @@
     grid-column: 1 / -1;
 
     @include on-desktop-small {
-      justify-content: start;
+      justify-content: flex-start;
     }
 
     &--add {
@@ -430,7 +430,7 @@
 
 .colors-cont {
   display: flex;
-  justify-content: start;
+  justify-content: flex-start;
   align-items: center;
   cursor: pointer;
   gap: 8px;
