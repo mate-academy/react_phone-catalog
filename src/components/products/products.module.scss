@@ -8,15 +8,7 @@
   box-sizing: border-box;
   margin-top: 24px;
   min-height: 100vh;
-  width: 320px;
-
-  @include on-tablet {
-    width: 640px;
-  }
-
-  @include on-desktop {
-    width: 1200px;
-  }
+  width: auto;
 
   &_category {
     text-transform: capitalize;
@@ -143,17 +135,13 @@
   }
 
   &_list {
+    flex-flow: row wrap;
+    gap: 16px;
+    justify-content: center;
     list-style: none;
     margin: 0;
     padding: 0;
     display: flex;
-    flex-direction: column;
-
-    @include on-tablet {
-      flex-flow: row wrap;
-      gap: 16px;
-      justify-content: center;
-    }
   }
 
   &_img {
@@ -373,7 +361,6 @@
 
 .content {
   display: flex;
-  justify-content: center;
 }
 
 .filled_heart {

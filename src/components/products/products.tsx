@@ -72,6 +72,7 @@ export const Products: React.FC<ProductsProps> = ({ category }) => {
     dispatch(resetStatusProducts());
     dispatch(clearName());
     dispatch(fetchProducts());
+
     if (category === 'phones') {
       dispatch(fetchPhones());
     }
@@ -83,7 +84,7 @@ export const Products: React.FC<ProductsProps> = ({ category }) => {
     if (category === 'accessories') {
       dispatch(fetchAccessories());
     }
-  }, [dispatch, category, location.pathname]);
+  }, [dispatch, category]);
 
   useEffect(() => {
     const filteredProducts = allProducts.filter(
@@ -150,6 +151,10 @@ export const Products: React.FC<ProductsProps> = ({ category }) => {
     }
   };
 
+  const handleSortChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    setSortType(event.target.value);
+  };
+
   const handleItemsPerPageChange = (
     event: React.ChangeEvent<HTMLSelectElement>,
   ) => {
@@ -160,17 +165,6 @@ export const Products: React.FC<ProductsProps> = ({ category }) => {
 
     setItemsPerPage(value);
     dispatch(setCurrentPage(1));
-    navigate(`/${category}?sort=${sortType}&perPage=${value}`);
-  };
-
-  const handleSortChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    const selectedSort = event.target.value;
-
-    setSortType(selectedSort);
-
-    navigate(
-      `/${category}?sort=${selectedSort}&perPage=${itemsPerPage}&page=${currentPage}`,
-    );
   };
 
   const handleProductClick = (selectedProduct: Product) => {
