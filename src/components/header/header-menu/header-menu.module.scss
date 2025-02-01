@@ -1,0 +1,120 @@
+@import '../../../styles/main';
+
+.header {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  &_link {
+    text-decoration: none;
+    color: $secondary-text-color;
+  }
+
+  &_list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 24px;
+    gap: 16px;
+  }
+
+  &_favorite {
+    position: relative;
+    display: block;
+    width: 16px;
+    height: 16px;
+    background-size: cover;
+    background-image: url(../../../../public/img/littleImages/Favourites-header.svg);
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  &_cart {
+    position: relative;
+    display: block;
+    width: 16px;
+    height: 16px;
+    background-size: cover;
+    background-image: url(../../../../public/img/littleImages/Shopping-bag-header.svg);
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  &_div1 {
+    height: 64px;
+    width: 50%;
+    border-top: 1px solid #e2e6e9;
+    border-bottom: 1px solid #e2e6e9;
+    align-content: center;
+  }
+
+  &_div2 {
+    height: 64px;
+    width: 50%;
+    border: 1px solid #e2e6e9;
+    align-content: center;
+  }
+
+  &_container {
+    height: 100vh;
+  }
+}
+
+.flex {
+  display: flex;
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  z-index: 1000;
+}
+
+.quan {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-size: cover;
+  min-width: 14px;
+  min-height: 14px;
+  border-radius: 50%;
+  background-color: #eb5757;
+  color: #fff;
+  font-size: 9px;
+  font-weight: 600;
+  line-height: 11.5px;
+  position: absolute;
+  top: -5px;
+  right: -5px;
+}
+
+.is_active {
+  border-bottom: 3px solid #313237;
+  color: #313237;
+}
+
+@keyframes menu-e {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes menu-v {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+.menu_enter {
+  animation: menu-e 0.5s forwards;
+}
+
+.menu_exit {
+  animation: menu-v 0.5s forwards;
+}
