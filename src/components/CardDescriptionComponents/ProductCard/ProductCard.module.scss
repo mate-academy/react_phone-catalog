@@ -103,16 +103,20 @@
     &--main {
       height: auto;
       max-height: 288px;
+
       width: auto;
       max-width: 100%;
+
       object-fit: contain;
 
       @include on-tablet {
+        width: 100%;
+        min-height: 287px;
         order: 2;
       }
 
       @include on-desktop {
-        height: 464px;
+        min-height: 464px;
       }
     }
 
