@@ -1,0 +1,33 @@
+@import '../../assets/scss/variables';
+
+.product_details__capacity {
+  margin-bottom: 24px;
+  border-bottom: 1px solid $color-elements;
+
+  &_title{
+    @include font-small-text;
+
+    color: $color-secondary;
+  }
+
+  &_list{
+    display: flex;
+    list-style: none;
+    padding: 0;
+    gap: 8px;
+  }
+
+  &_button{
+    color: $color-white;
+    text-decoration: none;
+    border: 1px solid $color-icons;
+    width: 63px;
+    height: 32px;
+    background-color: transparent;
+  }
+}
+
+.selected{
+  background-color:  $color-white;
+  color: $color-black;
+}

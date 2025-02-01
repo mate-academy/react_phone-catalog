@@ -1,0 +1,58 @@
+@import '../../assets/scss/variables';
+
+.cart__page {
+  @include page-grid;
+
+  &_back_button {
+    grid-column: 1 / -1;
+  }
+
+  &_title {
+    grid-column: 1 / -1;
+    margin-top: 0;
+    margin-bottom: 32px;
+
+    @include font-h1-desktop-tablet;
+
+    color: $color-white;
+  }
+}
+
+.modal__info {
+  @include font-h3-desktop-tablet;
+
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.modal__text {
+  @include font-body-text;
+}
+
+.modal__wrapper {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+
+  &_button {
+    text-decoration: none;
+    border: none;
+
+    @include font-body-text;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 20px;
+    border-radius: 8px;
+
+    &_confirm {
+      background-color: $color-accent;
+      color: $color-white;
+    }
+
+    &_cancel {
+      border: 1px solid $color-black;
+    }
+  }
+}

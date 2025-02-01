@@ -1,0 +1,88 @@
+@import '../../assets/scss/variables';
+
+.category {
+  margin-inline: auto;
+  &__container {
+    width: 100%;
+
+    @include on-tablet {
+      flex-direction: row;
+      width: 100%;
+      gap: 16px;
+    }
+
+    @include on-desktop {
+      width: 100vw;
+    }
+  }
+
+  &_title {
+    @include font-h2-mobile;
+
+    margin: 0;
+    color: $color-white;
+    grid-column: 1/-1;
+    margin-bottom: 24px;
+
+    @include on-tablet {
+      @include font-h2-desktop-tablet;
+    }
+  }
+
+  &__content {
+    grid-column: span -1;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+
+    @include on-tablet {
+      width: 100%;
+
+      grid-column: span 12;
+      flex-direction: row;
+      gap: 16px;
+      margin-inline: 0;
+    }
+
+    @include on-desktop {
+      grid-column: span 24;
+    }
+
+    &__items {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+
+      &__imgs {
+        width: 100%;
+        overflow: hidden;
+
+        &_img {
+          width: 100%;
+          object-fit: contain;
+        }
+      }
+
+      &__descriptions {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+
+        &_description {
+          @include font-h4-desktop-tablet;
+
+          color: $color-white;
+          margin: 0;
+        }
+
+        &_models {
+          margin: 0;
+
+          @include font-body-text;
+
+          color: $color-secondary;
+        }
+      }
+    }
+  }
+}

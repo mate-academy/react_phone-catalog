@@ -1,0 +1,68 @@
+@import '../../assets/scss/variables';
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transform: scale(0.7);
+  transition:
+    opacity 0.3s ease,
+    visibility 0.3s ease,
+    transform 0.3s ease;
+
+  &_open {
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1);
+  }
+
+  &_overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+  }
+
+  &_content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 300px;
+    background: $color-white;
+    padding: 35px;
+    border-radius: 10px;
+    z-index: 1001;
+    transform: translateY(-20px);
+    transition: transform 0.3s ease;
+
+    @include on-tablet {
+      max-width: 500px;
+    }
+  }
+
+  &_open &_content {
+    transform: translateY(0);
+  }
+
+  &_close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    font-size: 14px;
+    color: $color-black;
+    cursor: pointer;
+  }
+}

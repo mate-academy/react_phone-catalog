@@ -1,0 +1,121 @@
+@import '../../assets/scss/variables';
+
+.footer {
+  @include page-grid;
+
+  align-items: center;
+  border-top: 1px solid $color-elements;
+  box-sizing: border-box;
+  padding: 32px 16px;
+
+  @include on-tablet {
+    padding-inline: 32px;
+  }
+
+  @include on-desktop {
+    justify-content: space-around;
+  }
+
+  &__logo {
+    grid-column: 1 / -1;
+
+    @include on-tablet {
+      grid-column: 1 / 4;
+    }
+
+    @include on-desktop {
+      padding-left: 30px;
+      width: 80px;
+      grid-column: 3 / 8;
+    }
+  }
+
+  &__nav {
+    grid-column: 1 / -1;
+    display: flex;
+    flex-direction: column;
+
+    @include on-tablet {
+      grid-column: 4 / 6;
+      flex-direction: row;
+      justify-content: space-evenly;
+    }
+
+    @include on-desktop {
+      grid-column: 8 / 17;
+      justify-content: space-around;
+    }
+
+    &_list {
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      row-gap: 16px;
+
+      text-transform: uppercase;
+
+      @include on-tablet {
+        gap: 13.5px;
+        flex-direction: row;
+        justify-content: space-evenly;
+      }
+
+      @include on-desktop {
+        justify-content: space-around;
+        gap: 107px;
+      }
+    }
+
+    &_item {
+      list-style: none;
+    }
+
+    &_link {
+      @include font-uppercase;
+
+      text-decoration: none;
+      display: inline;
+      color: $color-white;
+      position: relative;
+      cursor: pointer;
+    }
+  }
+
+  &__back {
+    grid-column: 1 / -1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+
+    @include on-tablet {
+      grid-column: 10 / -1;
+    }
+
+    @include on-desktop {
+      grid-column: 17 / -1;
+      padding-left: 30px;
+    }
+
+    &_text {
+      margin: 0;
+
+      @include font-small-text;
+
+      color: $color-secondary;
+    }
+
+    &_button {
+      box-sizing: border-box;
+      border: 1px solid $color-elements;
+      width: 32px;
+      height: 32px;
+      background-color: transparent;
+      cursor: pointer;
+      background-image: url(../../../public/img/icons/slider-button-default-right.svg);
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+    }
+  }
+}

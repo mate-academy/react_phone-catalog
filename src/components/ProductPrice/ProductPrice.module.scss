@@ -1,0 +1,26 @@
+@import '../../assets/scss/variables';
+
+.product_details__price{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
+
+
+  &_discount{
+    @include font-h2-mobile;
+
+    color: $color-white;
+    font-size: 32px;
+  }
+
+  &_regular{
+    @include font-h2-mobile;
+
+    font-weight: 600;
+    font-weight: 22px;
+    text-decoration-line: line-through;
+    color: $color-secondary;
+  }
+}
