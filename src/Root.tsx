@@ -7,11 +7,10 @@ import {
 
 import { App } from './App';
 /* eslint-disable max-len */
-import { PhonesPage } from './modules/PhonesPage/components/PhonesPage/PhonesPage';
 import { HomePage } from './modules/HomePage/components/HomePage/HomePage';
-import { TabletsPage } from './modules/TabletsPage/components/TabletsPage/TabletsPage';
-import { AccessoriesPage } from './modules/AccessoriesPage/components/AccessoriesPage/AccessoriesPage';
 import { ProductsProvider } from './modules/shared/_store/DataProvider';
+import { ProductsPage } from './modules/ProductsPage/components/ProductsPage';
+import { Category } from './_types/products';
 /* eslint-disable max-len */
 export const Root = () => (
   <Router>
@@ -20,9 +19,18 @@ export const Root = () => (
         <Route path="/" element={<App />}>
           <Route path="home" element={<Navigate to="/" />} />
           <Route index element={<HomePage />} />
-          <Route path="phones" element={<PhonesPage />} />
-          <Route path="tablets" element={<TabletsPage />} />
-          <Route path="accessories" element={<AccessoriesPage />} />
+          <Route
+            path="phones"
+            element={<ProductsPage category={Category.phones} />}
+          />
+          <Route
+            path="tablets"
+            element={<ProductsPage category={Category.tablets} />}
+          />
+          <Route
+            path="accessories"
+            element={<ProductsPage category={Category.accessories} />}
+          />
           <Route path="cart" element={<h1>CART</h1>} />
           <Route path="favourites" element={<h1>favourites</h1>} />
           <Route path="menu" element={<h1>MENU</h1>} />

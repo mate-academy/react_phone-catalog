@@ -7,8 +7,6 @@
 
   &__title {
     grid-column: 1 / -1;
-
-    @include h2;
   }
 
   &__content {
@@ -51,8 +49,6 @@
 
   &__subtitle {
     margin-bottom: 4px;
-
-    @include h4;
   }
 
   &__quantity {

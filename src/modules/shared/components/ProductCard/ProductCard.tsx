@@ -1,18 +1,17 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { capitalizeFirstLetter } from '../../../../_services/services';
-import { HeartIcon } from '../../../HomePage/constants/icons';
-import { ButtonPrimary } from '../../ButtonPrimary';
+import { ButtonPrimary } from '../ButtonPrimary';
 import { IconButton } from '../IconButton';
-import { ProductsWithDetails } from '../../../../_types/products';
+import { Product, ProductWithDetails } from '../../../../_types/products';
 import styles from './ProductCard.module.scss';
 
 type Props = {
-  product: ProductsWithDetails;
-  type: string;
+  product: ProductWithDetails | Product;
+  type?: string;
 };
 
-const ProductCard: React.FC<Props> = ({ product, type }) => {
+const ProductCard: React.FC<Props> = ({ product, type = '' }) => {
   type ProductKeys = 'screen' | 'capacity' | 'ram';
   const specKeys: ProductKeys[] = ['screen', 'capacity', 'ram'];
 
@@ -49,7 +48,7 @@ const ProductCard: React.FC<Props> = ({ product, type }) => {
       </ul>
       <div className={styles['product-card__buttons']}>
         <ButtonPrimary title={'Add to cart'} />
-        <IconButton icon={<HeartIcon />} width={'40'} />
+        <IconButton modificator={'heart'} onClick={() => {}} />
       </div>
     </div>
   );

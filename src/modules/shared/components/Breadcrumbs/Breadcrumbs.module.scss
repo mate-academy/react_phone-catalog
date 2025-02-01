@@ -1,0 +1,31 @@
+@import '../../../../styles/global';
+
+.breadcrumbs {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  height: 16px;
+  margin-bottom: 24px;
+  color: $icons-color;
+
+  &__home {
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url('/img/icons/icon-home.svg');
+
+    @include square(16px);
+  }
+
+  &__text {
+    font-family: Mont, sans-serif;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 15.34px;
+    color: $secondary-color;
+
+    &--primary {
+      font-weight: 700;
+      color: $primary-color;
+    }
+  }
+}

@@ -2,6 +2,7 @@
 
 .button {
   box-sizing: border-box;
+  width: 32px;
   height: 100%;
   border-radius: 48px;
   border: 1px solid $icons-color;
@@ -10,25 +11,47 @@
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  transition: border-color $effectDuration;
 
-  &:hover {
-    border-color: $primary-color;
-  }
+  @include hover(border-color, $primary-color);
 
-  &:disabled {
+  &--disabled {
     border-color: $elements-color;
     cursor: default;
     color: $elements-color;
 
+    @include hover(border-color, $elements-color);
   }
 
-  &--width-32 {
-    width: 32px;
-  }
-
-  &--width-40 {
+  &--heart {
     width: 40px;
+
+    &-selected {
+      color: $secondary-accent-color;
+      border-color: $elements-color;
+    }
+  }
+
+  &--pagination {
+    border-color: $elements-color;
+    transition: all $effectDuration;
+
+    @include body-text;
+
+    &-selected {
+      color: $white-color;
+      background-color: $primary-color;
+      border-color: $primary-color;
+    }
+  }
+
+  &--selector {
+    border-color: $elements-color;
+
+    @include hover(border-color, $icons-color);
+
+    &-selected {
+      border-color: $primary-color;
+    }
   }
 
   &--right {
@@ -46,5 +69,4 @@
   &--down {
     transform: rotate(90deg);
   }
-
 }

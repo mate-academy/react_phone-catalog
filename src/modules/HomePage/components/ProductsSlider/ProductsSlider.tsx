@@ -2,15 +2,14 @@ import styles from './ProductsSlider.module.scss';
 import { IconButton } from '../../../shared/components/IconButton';
 import ProductCard from '../../../shared/components/ProductCard/ProductCard';
 import { ProductsContext } from '../../../shared/_store/DataProvider';
-import { ProductsWithDetails } from '../../../../_types/products';
-import { ArrowIcon } from '../../constants/icons';
+import { Product } from '../../../../_types/products';
 import { useSlider } from '../../hooks/useSlider';
 
 import { useContext, useMemo } from 'react';
 
 type Props = {
   title: string;
-  sortFn: (products: ProductsWithDetails[]) => ProductsWithDetails[];
+  sortFn: (products: Product[]) => Product[];
 };
 
 export const ProductsSlider: React.FC<Props> = ({ title, sortFn }) => {
@@ -29,13 +28,13 @@ export const ProductsSlider: React.FC<Props> = ({ title, sortFn }) => {
         <div className={styles['product-slider__buttons']}>
           <IconButton
             direction="left"
-            icon={<ArrowIcon />}
+            modificator={'arrow'}
             disabled={isFirst}
             onClick={handlePrev}
           />
           <IconButton
             direction="right"
-            icon={<ArrowIcon />}
+            modificator={'arrow'}
             disabled={isLast}
             onClick={handleNext}
           />

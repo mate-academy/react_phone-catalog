@@ -1,4 +1,3 @@
-import { ArrowIcon } from '../../../HomePage/constants/icons';
 import { Container } from '../Container/Container';
 import { IconButton } from '../IconButton';
 import styles from './Footer.module.scss';
@@ -35,7 +34,7 @@ export const Footer = () => {
             <IconButton
               direction="up"
               onClick={scrollToTop}
-              icon={<ArrowIcon />}
+              modificator={'arrow'}
               disabled={false}
             />
           </div>

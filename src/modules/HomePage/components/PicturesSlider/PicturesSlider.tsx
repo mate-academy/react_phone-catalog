@@ -4,8 +4,7 @@ import * as banners from '../../constants/banners';
 import { useSwipeable } from 'react-swipeable';
 import classNames from 'classnames';
 import { IconButton } from '../../../shared/components/IconButton';
-import { TABLET_MIN_WIDTH } from '../../../shared/_constans/MIN_WIDTHS';
-import { ArrowIcon } from '../../constants/icons';
+import { TABLET_MIN_WIDTH } from '../../../shared/_constants/MIN_WIDTHS';
 import { useSlider } from '../../hooks/useSlider';
 
 export const PicturesSlider = () => {
@@ -33,10 +32,9 @@ export const PicturesSlider = () => {
       <div className={styles['pictures-slider__slider']}>
         <div className={styles['pictures-slider__button']}>
           <IconButton
-            direction="left"
+            direction={'left'}
             onClick={handlePrev}
-            disabled={false}
-            icon={<ArrowIcon />}
+            modificator={'arrow'}
           />
         </div>
 
@@ -56,10 +54,9 @@ export const PicturesSlider = () => {
 
         <div className={styles['pictures-slider__button']}>
           <IconButton
-            direction="right"
+            direction={'right'}
             onClick={handleNext}
-            disabled={false}
-            icon={<ArrowIcon />}
+            modificator={'arrow'}
           />
         </div>
       </div>

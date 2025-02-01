@@ -1,20 +1,28 @@
 import classNames from 'classnames';
 import styles from './IconButton.module.scss';
-
+import React from 'react';
+import {
+  ArrowIcon,
+  HeartIcon,
+  HeartRedIcon,
+  Rondure,
+} from '../../_constants/icons';
 type Props = {
-  disabled?: boolean;
   onClick?: () => void;
+  modificator: 'heart' | 'arrow' | 'pagination' | 'selector';
   direction?: 'up' | 'left' | 'right' | 'down';
-  icon: React.ReactNode;
-  width?: string;
+  value?: number;
+  disabled?: boolean;
+  selected?: boolean;
 };
 
 export const IconButton: React.FC<Props> = ({
   disabled = false,
   onClick = () => {},
   direction = 'right',
-  icon,
-  width = '32',
+  value = 0,
+  modificator,
+  selected = false,
 }) => {
   const handleClick = () => {
     if (!disabled) {
@@ -26,17 +34,21 @@ export const IconButton: React.FC<Props> = ({
     <button
       className={classNames(
         `${styles.button}`,
-        `${styles[`button--${direction}`]}`,
-        `${styles[`button--width-${width}`]}`,
+        `${styles[`button--${modificator}`]}`,
         {
-          [styles.disabled]: disabled,
+          [styles[`button--${direction}`]]: !!direction,
+          [styles['button--disabled']]: disabled,
+          [styles[`button--${modificator}-selected`]]: selected,
         },
       )}
       onClick={handleClick}
       disabled={disabled}
-      aria-label={`Arrow ${direction}`}
     >
-      {icon}
+      {modificator === 'arrow' && <ArrowIcon />}
+      {modificator === 'heart' && !selected && <HeartIcon />}
+      {modificator === 'heart' && selected && <HeartRedIcon />}
+      {modificator === 'pagination' && value}
+      {modificator === 'selector' && <Rondure />}
     </button>
   );
 };

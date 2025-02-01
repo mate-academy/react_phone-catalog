@@ -1,0 +1,55 @@
+@import '../../../../styles/global';
+
+.productsPage {
+  background-color: $hover-bg-color;
+  padding-block: 24px 64px;
+
+  @include on-desktop {
+    padding-bottom: 80px;
+  }
+
+  &__title {
+    margin-bottom: 8px;
+  }
+
+  &__quantity {
+    margin-bottom: 24px;
+    color: $secondary-color;
+
+    @include body-text;
+  }
+
+  &__dropdowns {
+    margin-bottom: 24px;
+
+    @include page-grid;
+
+    &>* {
+      grid-column: span 2;
+
+      @include on-tablet {
+        grid-column: span 4;
+      }
+    }
+
+    & :last-child {
+      @include on-tablet {
+        grid-column: span 3;
+      }
+    }
+  }
+
+  &__products-list {
+    margin-bottom: 24px;
+
+    @include on-tablet {
+      margin-bottom: 40px;
+    }
+  }
+
+  &__pagination {
+    display: flex;
+    justify-content: center;
+  }
+
+}

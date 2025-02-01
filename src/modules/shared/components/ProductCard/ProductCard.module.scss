@@ -2,6 +2,7 @@
 
 .product-card {
   width: 100%;
+  height: 100%;
   display: grid;
   grid-template-rows: 1fr repeat(5, auto);
   box-sizing: border-box;
@@ -26,8 +27,10 @@
 
   &__title {
     padding-top: 16px;
+    color: $secondary-color;
 
     @include body-text;
+    @include hover(color, $secondary-accent-color);
   }
 
   &__prices {
@@ -42,8 +45,6 @@
     line-height: 28.12px;
     text-decoration-line: line-through;
     color: $secondary-color;
-
-
   }
 
   &__divider {

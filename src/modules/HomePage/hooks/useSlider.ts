@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 
 type UseSliderOptions = {
   itemCount: number;
@@ -25,19 +25,19 @@ export const useSlider = ({
     return () => clearInterval(interval);
   }, [autoPlay, autoPlayInterval, itemCount]);
 
-  const handlePrev = () => {
+  const handlePrev = useCallback(() => {
     setCurrentIndex(
       (prevIndex: number) => (prevIndex - 1 + itemCount) % itemCount,
     );
-  };
+  }, [itemCount]);
 
-  const handleNext = () => {
+  const handleNext = useCallback(() => {
     setCurrentIndex((prevIndex: number) => (prevIndex + 1) % itemCount);
-  };
+  }, [itemCount]);
 
-  const goToIndex = (index: number) => {
+  const goToIndex = useCallback((index: number) => {
     setCurrentIndex(index);
-  };
+  }, []);
 
   return {
     currentIndex,

@@ -52,6 +52,6 @@ export type Tablets = Omit<Phone, 'category'> & {
   category: Category.tablets;
 };
 
-export type ProductsWithDetails = Product & {
+export type ProductWithDetails = Product & {
   details: Phone | Tablets | Accessories | null;
 };

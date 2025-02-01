@@ -1,9 +1,9 @@
 import { createContext, useEffect, useState } from 'react';
-import { getProductsWithDetails } from '../../../_services/products';
-import { ProductsWithDetails } from '../../../_types/products';
+import { getProducts } from '../../../_services/products';
+import { Product } from '../../../_types/products';
 
 interface ProductsContextType {
-  products: ProductsWithDetails[];
+  products: Product[];
   loading: boolean;
   error: string | null;
 }
@@ -19,7 +19,7 @@ export const ProductsProvider = ({
 }: {
   children: React.ReactNode;
 }) => {
-  const [products, setProducts] = useState<ProductsWithDetails[]>([]);
+  const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -27,7 +27,7 @@ export const ProductsProvider = ({
     const fetchProducts = async () => {
       try {
         setLoading(true);
-        const data = await getProductsWithDetails();
+        const data = await getProducts();
 
         setProducts(data);
         setError(null);

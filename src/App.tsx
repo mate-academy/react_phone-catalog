@@ -5,6 +5,7 @@ import { Footer } from './modules/shared/components/Footer/Footer';
 import { useContext } from 'react';
 import { ProductsContext } from './modules/shared/_store/DataProvider';
 import { Loader } from './modules/shared/components/Loader';
+import { Container } from './modules/shared/components/Container';
 
 export const App = () => {
   // const { products, loading, error } = useContext(ProductsContext);
@@ -15,7 +16,9 @@ export const App = () => {
       <Header />
       {loading && <Loader />}
       {!!error && <p>{error}</p>}
-      <Outlet />
+      <Container>
+        <Outlet />
+      </Container>
       <Footer />
     </div>
   );
