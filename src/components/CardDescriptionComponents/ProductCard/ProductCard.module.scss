@@ -60,6 +60,7 @@
 
   &__imgs-block {
     display: flex;
+    width: 100%;
     flex-direction: column;
     justify-content: center;
     gap: 16px;
@@ -100,9 +101,11 @@
 
   &__img {
     &--main {
-      height: 288px;
-      width: fit-content;
-      margin: 0 auto;
+      height: auto;
+      max-height: 288px;
+      width: auto;
+      max-width: 100%;
+      object-fit: contain;
 
       @include on-tablet {
         order: 2;
