@@ -27,11 +27,9 @@ export const Select: React.FC<Props> = ({ onChange, options, value }) => {
       className={style.custom__select}
       tabIndex={0}
       onBlur={() => setIsOpen(false)}
+      onClick={() => setIsOpen(!isOpen)}
     >
-      <div
-        className={style.custom__select_trigger}
-        onClick={() => setIsOpen(!false)}
-      >
+      <div className={style.custom__select_trigger}>
         {options.find(option => option.value === value)?.label}
         <ArrowDownIcon
           className={classNames(style.custom__select_icon, {
