@@ -1,0 +1,94 @@
+a {
+  text-decoration: none;
+  color: var(--secondary);
+}
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  border-top: 1px solid var(--secondary);
+  margin-top: 80px;
+  padding: 32px 16px;
+  align-items: flex-start;
+  gap: 32px;
+
+  &__logo {
+    height: 32px;
+    object-fit: contain;
+  }
+
+  &__links {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    font-size: 12px;
+    font-weight: 800;
+    line-height: 11px;
+  }
+
+  &__link {
+    transition: color 0.3s ease;
+    &:hover {
+      color: black;
+    }
+  }
+}
+
+.up_button {
+  display: flex;
+  height: 32px;
+  align-items: center;
+  border: none;
+  background: none;
+  color: var(--secondary);
+  cursor: pointer;
+  transition: color 0.3s ease;
+  &:hover {
+    color: black;
+  }
+
+  &:hover .up-button__icon {
+    border-color: black;
+  }
+
+  &__icon {
+    margin-left: 16px;
+    height: 32px;
+    width: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url('/Icons/arrow_up.png');
+    background-size: 20px;
+    background-position: center;
+    border-radius: 50%;
+    border: 2px solid grey;
+    outline: none;
+    transition: border-color 0.3s ease;
+  }
+}
+
+@media screen and (min-width: 640px) {
+  .footer {
+    padding: 32px;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 32px;
+
+    &__links {
+      height: 32px;
+      flex-direction: row;
+      align-items: center;
+      text-align: center;
+    }
+  }
+}
+
+@media screen and (min-width: 850px) {
+  .footer {
+    &__links {
+      gap: 100px;
+    }
+  }
+}

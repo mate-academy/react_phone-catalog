@@ -1,0 +1,58 @@
+:root {
+  --InactiveLink: #89939a;
+  --ActiveLink: #0f0f11;
+  --BorderColor: #e2e6e9;
+  --BorderColorHover: #0f0f11;
+  --BackgroundHover: #476df4;
+  --Button: #f86800;
+}
+
+.button {
+  margin-top: 8px;
+  display: flex;
+  justify-content: space-between;
+}
+.button__btn_buy {
+  width: 160px;
+  height: 40px;
+  border: none;
+  border-radius: 8px;
+  background-color: var(--Button);
+  color: white;
+  font-size: 14px;
+  font-weight: 700;
+  transition: background-color 0.3s;
+
+
+  &:hover {
+    color: #f86800;
+    background-color: white;
+    border: 1px solid #E2E6E9;
+  }
+
+  &--active {
+    background-color: white;
+    color: #f86800;
+    border: 1px solid #E2E6E9;
+  }
+}
+
+.button__btn_fav {
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--BorderColor);
+  border-radius: 50%;
+  background-image: url('/Icons/favourites.png');
+  background-size: 16px;
+  background-repeat: no-repeat;
+  background-position: center;
+  transition: border 0.3s;
+
+  &:hover {
+    border: 1px solid var(--BorderColorHover);
+  }
+
+  &--active {
+    background-image: url('/Icons/favourites_filled.png');
+  }
+}

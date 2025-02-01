@@ -1,0 +1,39 @@
+.sort {
+  display: flex;
+  gap: 16px;
+  margin-top: 40px;
+
+  &__field {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 15.34px;
+    color: var(--secondary);
+  }
+
+  &__select {
+    padding: 10px 12px;
+    font-size: 16px;
+    background-color: white;
+    border: 1px solid var(--secondary);
+    border-radius: 8px;
+    outline: none;
+    cursor: pointer;
+
+    &:hover {
+      border: 1px solid var(--primary);
+    }
+
+    option {
+      padding: 8px 12px;
+      font-size: 16px;
+      background-color: white;
+
+      &:hover {
+        background-color: #e0e0e0;
+      }
+    }
+  }
+}
