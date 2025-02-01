@@ -1,0 +1,83 @@
+.sort-block {
+  &__blocks {
+    @include page-grid;
+  }
+
+  &__select-container {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    grid-column: span 2;
+
+    &--sort-by {
+      @include on-tablet {
+        grid-column: span 4;
+      }
+    }
+
+    &--counts {
+      @include on-tablet {
+        grid-column: span 3;
+      }
+    }
+  }
+
+  &__label {
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 15.34px;
+
+    color: $light-grey;
+  }
+
+  &__select {
+    position: relative;
+    cursor: pointer;
+
+    &__main {
+      box-sizing: border-box;
+
+      background-color: $surface-2;
+      padding: 10px 12px;
+
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      &--is-active {
+        outline: 1px solid $purple;
+      }
+
+      &:hover {
+        outline: 1px solid $surface-2-hover;
+      }
+    }
+  }
+
+  &__options-container {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    z-index: 10;
+    margin-top: 8px;
+    background-color: $black;
+    border: 1px solid $grey;
+  }
+
+  &__option {
+    padding: 6px 12px;
+    cursor: pointer;
+
+    &:hover {
+      background-color: $surface-2;
+    }
+  }
+
+  &__options-content {
+    display: flex;
+    flex-direction: column;
+    max-height: 200px;
+    overflow-y: auto;
+  }
+}
