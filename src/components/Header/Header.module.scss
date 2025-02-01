@@ -1,0 +1,153 @@
+@import 'src/styles/mixins';
+@import 'src/styles/buttons';
+
+.topBarContainer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 3;
+  min-width: 100vw;
+  overflow: hidden;
+
+  background-color: var(--color-header-footer);
+  box-shadow: 0 1px 0 0 var(--color-elements);
+
+  @include on-tablet {
+    min-width: auto;
+  }
+}
+
+.topBar {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  max-width: 164rem;
+  margin-inline: auto;
+}
+
+.topBarLogo {
+  display: flex;
+  height: 2.2rem;
+  width: 6.4rem;
+  padding: 1.3rem 1.6rem;
+
+  background-image: url("../../assets/icons/ok.png");
+  background-repeat: no-repeat;
+  background-position: 4.8rem 1.2rem;
+  background-size: .9rem 1.15rem;
+
+  @include on-m-desktop {
+    background-position: 6.4rem 1.55rem;
+    background-size: 1.1rem 1.5rem;
+  }
+
+  & svg {
+    height: 100%;
+
+    fill: var(--color-primary);
+  }
+
+  @include on-m-desktop {
+    width: 8rem;
+    height: 2.65rem;
+    padding: 1.8rem 2.4rem;
+  }
+}
+
+.navContainer {
+  display: none;
+
+  @media screen and (min-width: 780px) {
+    display: block;
+    margin-inline: 1.6rem auto;
+  }
+
+  @include on-m-desktop {
+    margin-left: 2.4rem;
+  }
+}
+
+.buttonMenu {
+  @extend %button;
+
+  @include on-tablet {
+    z-index: 1;
+  }
+
+  @media screen and (min-width: 780px) {
+    display: none;
+  }
+}
+
+.buttonsContainer {
+  display: none;
+
+
+  @media screen and (min-width: 780px) {
+    display: flex;
+  }
+}
+
+.button {
+  position: relative;
+  display: block;
+
+  @include on-m-desktop {
+    height: 6.4rem;
+    width: 6.4rem;
+  }
+
+  &:last-child {
+    @media screen and (min-width: 1641px) {
+      border-right: 1px solid var(--color-elements);
+    }
+  }
+
+  &::after, &::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--color-text-hover-secondary);
+    transition: width $transition-duration ease-out;
+  }
+
+  &::before {
+    left: 50%;
+  }
+
+  &::after {
+    right: 50%
+  }
+
+  &:hover {
+    color: var(--color-text-hover-secondary);
+
+    &::before, &::after {
+      width: 50%;
+    }
+  }
+
+  &Active {
+    color: var(--color-text-hover);
+
+    &:hover {
+      color: var(--color-text-hover);
+    }
+
+
+    &::before, &::after {
+      width: 50%;
+      background-color: var(--color-text-hover);
+
+      &:hover {
+        background-color: var(--color-text-hover);
+      }
+    }
+  }
+}
+

@@ -1,0 +1,14 @@
+{
+  "titles": {
+    "homePageTitle": "Вітаємо в Nice Gadgets!",
+    "newModelsTitle": "Нові моделі",
+    "shopByCategoryTitle": "Купуйте за категоріями",
+    "hotPricesTitle": "Гарячі ціни"
+  },
+  "heroSlider": {
+    "orderNow": "Замовити",
+    "slideTitleTablets": "Вже <1 /> у продажу!",
+    "slideTitlePhones": "ШІ відкриває <1 /> нові горизонти.",
+    "slideTitleAccessories": "Новий фінал. <1 /> Не здавайся."
+  }
+}

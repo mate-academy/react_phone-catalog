@@ -1,0 +1,175 @@
+@import "src/styles/colors";
+@import "src/styles/typography";
+@import "src/styles/variables";
+
+.sortContainer {
+  grid-column: 1 / -1;
+
+  display: flex;
+  gap: 1.6rem;
+  max-width: 34rem;
+
+  margin-bottom: 2.4rem;
+}
+
+.sortItemContainer {
+  position: relative;
+  min-width: 13.6rem;
+
+  display: flex;
+  flex-direction: column;
+
+  &1 {
+    flex-basis: 100%;
+  }
+}
+
+.selectTitle {
+  @extend %text-small;
+
+  display: inline-block;
+  width: max-content;
+  color: var(--color-secondary);
+  padding-bottom: 0.4rem;
+  cursor: pointer;
+
+}
+
+.selectBtn {
+  @extend %text-buttons;
+
+  color: var(--color-primary);
+  text-align: left;
+  padding-top: 0.3rem;
+  padding-inline: 1.2rem 2.8rem;
+  position: relative;
+  width: 100%;
+  height: 4rem;
+
+  cursor: pointer;
+
+  background-color: var(--color-sort-btn-background);
+  border: 1px solid var(--color-icons);
+  border-radius: 0.8rem;
+
+  & svg {
+    pointer-events: none;
+    position: absolute;
+    width: 1.6rem;
+    height: 1.6rem;
+    fill: var(--color-sort-arrow);
+
+    right: 1.2rem;
+    top: 50%;
+    transform: translateY(-50%) rotate(0deg);
+    transition: transform $transition-duration ease-in-out;
+  }
+
+  &IsActive {
+    background-color: var(--color-sort-btn-active);
+    border: 1px solid var(--color-sort-btn-focus);
+
+    & svg {
+      transform: translateY(-50%) rotate(180deg);
+      fill: var(--color-sort-arrow-hover)
+    }
+  }
+
+  &:hover {
+    border: 1px solid var(--color-secondary);
+
+    & svg{
+      fill: var(--color-sort-arrow-hover);
+    }
+  }
+
+  &IsActive:hover {
+    border: 1px solid var(--color-sort-btn-focus);
+
+    & svg {
+      fill: var(--color-sort-arrow-hover)
+    }
+  }
+}
+
+.selectMenuContainer {
+  list-style: none;
+  background-color: var(--color-white);
+  border-radius: 0.8rem;
+  position: absolute;
+  top: 6.3rem;
+
+  box-sizing: border-box;
+  height: 0;
+
+  pointer-events: none;
+  width: 100%;
+  overflow: hidden;
+  box-shadow: 0 2px 15px 0 $color-box-shadow;
+  z-index: 1;
+
+  transition: height $transition-duration ease-in-out;
+
+  &IsActive {
+    pointer-events: all;
+    height: 14.4rem;
+  }
+}
+
+.selectMenuList {
+  position: absolute;
+  z-index: 20;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  border-radius: 0.8rem;
+  transition: border $transition-duration ease-in-out;
+
+  border: 1px solid var(--color-elements);
+
+  &IsNotActive {
+    border: 1px solid var(--color-background);
+  }
+
+  & :first-of-type {
+    margin-top: 0.7rem;
+  }
+}
+
+.selectMenuItem {
+  @extend %text-body;
+
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+
+  color: var(--color-secondary);
+
+  box-sizing: border-box;
+  height: 3.2rem;
+  padding: 0.2rem 2.8rem 0 1.2rem;
+
+  &:hover {
+    color: var(--color-primary);
+    background-color: var(--color-sort-btn-background);
+  }
+}
+
+[data-theme = 'light'] .selectBtn, [data-theme = 'light'] .selectMenuItem {
+  --color-sort-btn-background: #FAFBFC;
+  --color-sort-btn-active: #FFF;
+  --color-sort-btn-focus: #0F0F11;
+  --color-sort-arrow: #B4BDC3;
+  --color-sort-arrow-hover: #7b848b;
+}
+
+[data-theme = 'dark'] .selectBtn, [data-theme = 'dark'] .selectMenuItem {
+  --color-sort-btn-background: #323542;
+  --color-sort-btn-active: #323542;
+  --color-sort-btn-focus: #905BFF;
+  --color-sort-arrow: #75767F;
+  --color-sort-arrow-hover: #9c9ca3;
+}

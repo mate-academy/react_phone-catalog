@@ -1,0 +1,104 @@
+@import "src/styles/colors";
+@import "src/styles/typography";
+@import "src/styles/mixins";
+
+.paginationContainer {
+  display: flex;
+  grid-column: 1 / -1;
+
+  margin-inline: auto;
+}
+
+.productsPages {
+  list-style: none;
+
+  display: flex;
+  gap: 0.8rem;
+
+  @media screen and (max-width: 350px) {
+    gap: 0.4rem;
+  }
+}
+
+.productsPage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  text-decoration: none;
+
+  padding-top: 0.3rem;
+}
+
+.btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: transparent;
+  border: 1px solid var(--color-icons);
+  fill: var(--color-primary);
+
+  & svg {
+    min-width: 1.6rem;
+  }
+
+  &Prev {
+    margin-right: 0.8rem;
+  }
+
+  &Next {
+    margin-left: 0.8rem;
+  }
+
+  &Prev, &Next {
+    &:disabled {
+      fill: var(--color-icons);
+    }
+  }
+
+
+  &:disabled {
+    pointer-events: none;
+    border: 1px solid var(--color-elements);
+  }
+}
+
+.productsPage, .btn {
+  @extend %text-body;
+
+  box-sizing: border-box;
+  width: 3.2rem;
+  height: 3.2rem;
+
+  color: var(--color-primary);
+  border: 1px solid var(--color-elements);
+  border-radius: 50%;
+  cursor: pointer;
+
+  &IsActive {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+  }
+
+  @include on-tablet {
+    &:hover {
+      border: 1px solid var(--color-primary);
+    }
+  }
+
+  &Dots {
+    pointer-events: none;
+    width: min-content;
+    border: none;
+    cursor: default;
+
+    &:hover {
+      border: none;
+    }
+  }
+}
+
+
+
+

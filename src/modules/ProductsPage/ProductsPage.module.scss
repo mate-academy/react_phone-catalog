@@ -1,0 +1,200 @@
+@import "src/styles/typography";
+@import "src/styles/mixins";
+
+.productsPageWrapper {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: max-content max-content 1fr;
+  margin-block: 2.4rem 5.6rem;
+  overflow: hidden;
+
+
+  @include on-tablet {
+    grid-template-columns: repeat(12, 1fr);
+    margin-bottom: 6.4rem;
+    min-height: calc(100vh - 122px - 110px);
+  }
+
+  @include on-m-desktop {
+    grid-template-columns: repeat(24, 1fr);
+    margin-bottom: 8.1rem;
+    min-height: calc(100vh - 155px - 110px);
+  }
+}
+
+.productsPageContainer {
+  grid-column: 1 / -1;
+
+  box-sizing: border-box;
+
+  margin-inline: auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+
+  width: 100%;
+
+  max-width: $maxContainerWidth;
+  padding-inline: 1.6rem;
+
+
+  @include on-tablet {
+    grid-template-columns: repeat(12, 1fr);
+    padding-inline: 2.4rem;
+  }
+
+  @include on-m-desktop {
+    grid-template-columns: repeat(24, 1fr);
+    padding-inline: 0;
+  }
+}
+
+.title {
+  @extend %h1-mobile;
+
+  font-size: 2.6rem;
+  color: var(--color-primary);
+  grid-column: 1 / -1;
+  margin-bottom: 0.8rem;
+
+  @include on-tablet {
+    font-size: 4.8rem;
+    line-height: 5.6rem;
+  }
+}
+
+.categoryNumModels {
+  @extend %text-body;
+
+  grid-column: 1 / -1;
+  color: var(--color-secondary);
+  margin-bottom: 3.2rem;
+
+  @include on-tablet {
+    margin-bottom: 4rem;
+  }
+
+  &Skeleton {
+    font-size: 1.4rem;
+    width: 8rem;
+  }
+}
+
+.productsContainer {
+  grid-column: 1 / -1;
+
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(21.4rem, 1fr));
+  gap: 4rem 1.6rem;
+
+  margin-bottom: 2.4rem;
+
+  @include on-tablet {
+    grid-template-columns: repeat(auto-fill, minmax(23.7rem, 1fr));
+    margin-bottom: 4rem;
+  }
+}
+
+.noResultImg {
+  position: relative;
+  grid-column: 1 / -1;
+  width: 17.5rem;
+  margin-inline: auto;
+  aspect-ratio: 1;
+  background-image: url("../../assets/icons/no-search-result.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  margin-bottom: 2rem;
+
+  @include on-tablet {
+    width: 25rem;
+    margin-bottom: 1.5rem;
+  }
+
+  @include on-m-desktop {
+    width: 30rem;
+  }
+
+  &Text {
+    @extend %text-body;
+
+    display: block;
+    position: absolute;
+    text-align: center;
+    top: 50%;
+    left: 38%;
+    width: 6.5rem;
+    font-size: 1.2rem;
+
+    color: #F1F2F9;
+
+    @include on-tablet {
+      font-size: 1.4rem;
+      width: 9rem;
+      top: 51.5%;
+    }
+
+    @include on-m-desktop {
+      font-size: 1.8rem;
+      width: 11rem;
+      top: 52%;
+    }
+  }
+}
+
+.noResultText {
+  @extend %h3;
+
+  grid-column: 1 / -1;
+  color: var(--color-secondary);
+  text-align: center;
+  font-size: 1.4rem;
+  line-height: 2.1rem;
+  margin-bottom: 1.6rem;
+
+  @include on-tablet {
+    font-size: 2rem;
+    line-height: 2.6rem;
+    margin-bottom: 2.4rem;
+  }
+
+  @include on-m-desktop {
+    font-size: 2.2rem;
+    line-height: 3.1rem;
+  }
+}
+
+.paginationSkeletonContainer {
+  display: flex;
+
+  grid-column: 1 / -1;
+
+  margin-inline: auto;
+
+  gap: 0.8rem;
+
+  @media screen and (max-width: 350px) {
+    gap: 0.4rem;
+  }
+}
+
+.paginationSkeletonItem {
+  width: 3.2rem;
+  font-size: 3.2rem;
+
+  &First {
+    margin-right: 0.8rem;
+  }
+
+  &Last {
+    margin-left: 0.8rem;
+  }
+}
+
+.SkeletonDOTS{
+  display: flex;
+  align-items: center;
+  height: 3.2rem;
+  font-size: 1.4rem;
+  color: var(--color-primary);
+}

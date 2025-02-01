@@ -1,0 +1,14 @@
+{
+  "titles": {
+    "homePageTitle": "Welcome to Nice Gadgets store!",
+    "newModelsTitle": "Brand new models",
+    "shopByCategoryTitle": "Shop by category",
+    "hotPricesTitle": "Hot prices"
+  },
+  "heroSlider": {
+    "orderNow": "Order now",
+    "slideTitleTablets": "Now available <1 /> in our store!",
+    "slideTitlePhones": "AI-opening <1 /> possibilities.",
+    "slideTitleAccessories": "  New finish. <1 /> Never quit."
+  }
+}

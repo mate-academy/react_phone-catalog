@@ -1,0 +1,140 @@
+@import "src/styles/mixins";
+@import "src/styles/colors";
+@import "src/styles/typography";
+
+.container {
+  grid-column: 1/-1;
+
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: max-content max-content 1fr;
+  column-gap: 1.6rem;
+  max-width: $maxContainerWidth;
+  min-height: calc(100vh - 74px - 110px);
+  margin-inline: auto;
+  padding-inline: 1.6rem;
+  padding-top: 2.4rem;
+
+  @include on-tablet {
+    grid-template-columns: repeat(12, 1fr);
+    padding-inline: 2.4rem;
+    padding-top: 4rem;
+  }
+
+  @include on-m-desktop {
+    position: relative;
+    grid-template-columns: repeat(24, 1fr);
+    min-height: calc(100vh - 90px - 110px);
+  }
+}
+
+.productTitle {
+  @extend %h1-mobile;
+
+  font-size: 2.6rem;
+  color: var(--color-primary);
+  grid-column: 1/-1;
+  margin-bottom: 3.2rem;
+  margin-top: 0.8rem;
+
+  @include on-tablet {
+    font-size: 4.8rem;
+    line-height: 5.6rem;
+    margin-top: 0;
+  }
+}
+
+.contentContainer {
+  grid-column: 1/-1;
+
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  column-gap: 1.6rem;
+  margin-bottom: auto;
+
+  @include on-tablet {
+    grid-template-columns: repeat(12, 1fr);
+  }
+
+  @include on-m-desktop {
+    grid-template-columns: repeat(24, 1fr);
+    grid-template-rows: min-content min-content 1fr;
+  }
+
+  & article {
+    margin-bottom: 1.6rem;
+
+    &:last-of-type {
+      margin-bottom: 3.2rem;
+
+      @include on-m-desktop {
+        margin-bottom: 8rem;
+      }
+    }
+  }
+}
+
+.titleEmpty {
+  @extend %h3;
+
+  grid-column: 1 / -1;
+  color: var(--color-secondary);
+  text-align: center;
+  font-size: 1.4rem;
+  line-height: 2.1rem;
+  margin-bottom: 2.4rem;
+
+  @include on-tablet {
+    font-size: 2rem;
+    line-height: 2.6rem;
+    margin-bottom: 3.2rem;
+  }
+
+  @include on-m-desktop {
+    font-size: 2.2rem;
+    line-height: 3.1rem;
+  }
+}
+
+.emptyFavImg {
+  grid-column: 1 / -1;
+  margin-bottom: 5.6rem;
+
+  display: flex;
+  justify-content: center;
+
+  background-image: url("../../assets/icons/empty-cart.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 100%;
+  margin-inline: auto;
+  aspect-ratio: 1;
+  max-width: 15rem;
+
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+
+  @include on-tablet {
+    max-width: 25rem;
+  }
+
+  @include on-m-desktop {
+    max-width: 30rem;
+  }
+}
+
+.ctaBtn {
+  grid-column: 1 / -1;
+
+  margin-bottom: 1.5rem;
+
+  padding-inline: 1.6rem;
+  max-width: 22rem;
+  width: max-content;
+
+  @include on-tablet {
+    max-width: 27rem;
+  }
+}
