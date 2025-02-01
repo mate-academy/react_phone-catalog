@@ -1,0 +1,150 @@
+@import '../../main';
+
+.nav {
+  flex-grow: 1;
+
+  &__list {
+    margin-top: 24px;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    @include on-tablet {
+      flex-direction: row;
+      margin-top: 0;
+      gap: 32px;
+    }
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &--favorite {
+      width: 50%;
+      position: relative;
+
+      &::after {
+        content: '';
+        display: block;
+        width: 0;
+        height: 2px;
+        background-color: $-primary;
+
+        position: absolute;
+        bottom: 0;
+        left: 0;
+
+        transition: all 0.3s;
+      }
+
+      @include on-tablet {
+        width: 48px;
+        border-left: 1px solid $-elements;
+      }
+
+      @include on-desktop {
+        width: 64px;
+      }
+    }
+  }
+
+  &__link {
+    color: $-secondary;
+    text-transform: uppercase;
+    font-size: 12px;
+    font-weight: 800;
+    line-height: 22px;
+    letter-spacing: 2px;
+    height: 100%;
+
+    position: relative;
+    transition: all 0.3s;
+
+    &--favorite {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+    }
+
+    &::after {
+      content: '';
+      display: block;
+      height: 2px;
+      width: 0;
+      background-color: $-primary;
+      position: absolute;
+      bottom: 0;
+      transition: all 0.3s;
+    }
+
+    &--active {
+      color: $-primary;
+      position: relative;
+
+      &::after {
+        width: 100%;
+      }
+    }
+
+    @include on-tablet {
+      display: flex;
+      align-items: center;
+
+      &:hover {
+        color: $-primary;
+
+        &::after {
+          width: 100%;
+        }
+      }
+    }
+  }
+
+  &__favorites {
+    display: flex;
+
+    &::after,
+    &::before {
+      content: '';
+      display: block;
+      width: 1px;
+      height: 100%;
+      background-color: $-elements;
+      position: absolute;
+      left: 50%;
+
+      @include on-tablet {
+        content: none;
+      }
+    }
+  }
+}
+
+.favorites {
+  position: relative;
+
+  &__count {
+    position: absolute;
+    bottom: 50%;
+    left: 50%;
+    width: 14px;
+    height: 14px;
+
+    border-radius: 50%;
+    box-sizing: border-box;
+    border: 1px solid #fff;
+
+    background-color: $-red;
+    color: #fff;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 9px;
+    letter-spacing: 0;
+  }
+}
