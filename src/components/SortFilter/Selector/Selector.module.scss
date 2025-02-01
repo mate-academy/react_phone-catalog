@@ -1,0 +1,93 @@
+@import '../../../styles/main';
+
+
+.selector {
+  &_container {
+    display: flex;
+    flex-direction: column;
+
+    .selection_hidden {
+      transform: scaleY(1);
+    }
+  }
+
+  &_button {
+    display: flex;
+    border: 1px solid var(--c-elements);
+    align-items: center;
+    justify-content: space-between;
+    padding-inline: 12px;
+    height: 40px;
+
+    &_title {
+      cursor: default;
+    }
+
+    & .icon {
+      display: flex;
+      align-items: center;
+
+      &_container {
+        @extend %icon-container;
+
+        box-sizing: border-box;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 16px;
+        height: 16px;
+
+        border: none;
+
+
+      }
+
+      &_up {
+        @include icon-bg(var(--fls-up-disabled));
+
+        width: 16px;
+        height: 16px;
+      }
+
+      &_down {
+        @include icon-bg(var(--fls-down-disabled));
+
+        width: 16px;
+        height: 16px;
+      }
+    }
+  }
+
+  &_body {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    border: 1px solid var(--c-elements);
+    position: absolute;
+    top: 4px;
+    width: 100%;
+    background-color: var(--c-background);
+    padding-block: 8px;
+    transition: all 200ms 0ms ease-in-out;
+    transform: scaleY(0);
+    transform-origin: top;
+    z-index: 1;
+
+    &_container {
+      position: relative;
+    }
+
+    &__text {
+      cursor: default;
+      color: var(--c-secondary);
+      font-weight: 500;
+      text-decoration: none;
+      padding-inline: 12px;
+
+      @include hover(transform, scale(1.02));
+    }
+  }
+
+
+
+}

@@ -1,0 +1,59 @@
+@import '../../styles/main';
+
+.breadcrumbs_container {
+  display: flex;
+}
+
+.crumb {
+  @extend %small-text;
+
+  text-decoration: none;
+  font-weight: 600;
+  color: var(--c-primary);
+
+  &_last {
+    color: var(--c-secondary);
+    cursor: default !important;
+  }
+
+
+
+  &_container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding-right: 8px;
+  }
+}
+
+.breadcrumbs_container .icon {
+  display: flex;
+  align-items: center;
+
+  &_container {
+    @extend %icon-container;
+
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 16px;
+    height: 16px;
+    border: none;
+  }
+
+  &_right {
+    @include icon-bg(var(--fls-right-disabled));
+
+    width: 16px;
+    height: 16px;
+  }
+
+  &_home {
+    @include icon-bg(var(--fls-home));
+
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+  }
+}

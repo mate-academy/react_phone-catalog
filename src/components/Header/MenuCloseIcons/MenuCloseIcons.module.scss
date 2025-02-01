@@ -1,0 +1,46 @@
+@import '../../../styles/main';
+
+.container {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  height: 100%;
+
+  &_menu {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+
+    @include ontablet {
+      display: none;
+    }
+  }
+
+  &_close {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+  }
+}
+
+.icon {
+  &_container {
+    @extend %icon-container;
+
+    width: 48px;
+    height: 48px;
+  }
+
+  &_menu {
+    @include icon-bg(var(--fls-menu));
+
+  }
+
+  &_close {
+    @include icon-bg(var(--fls-close));
+  }
+}

@@ -1,0 +1,38 @@
+.buttons {
+  &_container {
+    background-color: var(--c-buttons-background);
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-inline: 5px;
+    cursor: pointer;
+    transition: all 0.3s;
+
+    &:hover {
+      box-shadow: 0 3px 13px 0 #17203166;
+      background-color: var(--c-buttons-background-hover);
+    }
+
+    &_selected {
+      background-color: var(--c-buttons-background-selected);
+      border: 1px solid var(--c-elements);
+
+      &:hover {
+        box-shadow: 0 3px 13px 0 #17203166;
+        background-color: var(--c-buttons-background-selected);
+      }
+    }
+  }
+}
+
+.buttons_text {
+  @extend %buttons;
+
+  cursor: pointer;
+  color: var(--c-buttons-text);
+
+  &_selected {
+    color: var(--c-buttons-text-selected);
+  }
+}
