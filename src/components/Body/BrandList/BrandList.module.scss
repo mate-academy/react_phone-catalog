@@ -1,0 +1,65 @@
+@use '../../../utils/mixins.scss' as *;
+
+
+
+
+.slide {
+  flex-shrink: 0;
+  width: auto;
+}
+
+.swiper-wrapper {
+  display: flex;
+  flex-wrap: nowrap;  // Забезпечує відображення слайдів в одну лінію
+}
+
+.wrapper {
+
+  padding-left: 16px;
+  width: 100%;
+  
+
+  @include onTablet {
+    padding-left: 24px;
+  }
+
+  @include onDesktop {
+    padding-left: 32px;
+    padding-right: 32px;
+    max-width: 1136px;
+    margin: 0 auto;
+  }
+}
+
+.brand_list {
+  padding-top: 80px;
+  overflow-x: hidden;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 62px;
+}
+
+.container {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.buttons {
+  display: flex;
+  gap: 16px;
+}
+
+.buttonNext,
+.buttonPrev {
+  height: 32px;
+  width: 32px;
+  
+}
