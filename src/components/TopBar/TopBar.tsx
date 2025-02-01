@@ -1,7 +1,7 @@
 import { Link, NavLink } from 'react-router-dom';
 import { Navigation } from '../Navigation/Navigation';
 import cn from 'classnames';
-import { useContext } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { FavouritesContext } from '../../contexts/FavouritesContexr';
 import { CartContext } from '../../contexts/CartContext';
 
@@ -12,6 +12,16 @@ type Props = {
 export const TopBar: React.FC<Props> = ({ onMenuToggle }) => {
   const { favourites } = useContext(FavouritesContext);
   const { cart } = useContext(CartContext);
+  const [cartLenght, setCartLenght] = useState(0);
+
+  useEffect(() => {
+    const length = cart.reduce(
+      (accumulator, currentValue) => currentValue.count + accumulator,
+      0,
+    );
+
+    setCartLenght(length);
+  }, [cart]);
 
   return (
     <div className="top-bar">
@@ -63,8 +73,8 @@ export const TopBar: React.FC<Props> = ({ onMenuToggle }) => {
           }
         >
           <div className="top-bar__icon icon icon--cart"></div>
-          {cart.length > 0 ? (
-            <div className="top-bar__counter">{cart.length}</div>
+          {cartLenght > 0 ? (
+            <div className="top-bar__counter">{cartLenght}</div>
           ) : (
             ''
           )}

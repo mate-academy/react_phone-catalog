@@ -13,6 +13,7 @@ export const Header = () => {
   const [banners, setBanners] = useState<string[]>(desktopBanners);
   const [activeImg, setActiveImg] = useState(banners[0]);
   const timerRef = useRef<NodeJS.Timeout | null>(null);
+  const touchStartX = useRef<number | null>(null);
 
   const updateBanners = () => {
     const newBanners = window.innerWidth <= 640 ? phoneBanners : desktopBanners;
@@ -67,6 +68,27 @@ export const Header = () => {
     });
   };
 
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    if (touchStartX.current === null) {
+      return;
+    }
+
+    const touchEndX = e.changedTouches[0].clientX;
+    const deltaX = touchStartX.current - touchEndX;
+
+    if (deltaX > 50) {
+      handleButtonSlide(Sides.right);
+    } else if (deltaX < -50) {
+      handleButtonSlide(Sides.left);
+    }
+
+    touchStartX.current = null;
+  };
+
   return (
     <header className="header">
       <div className="header__content">
@@ -89,7 +111,11 @@ export const Header = () => {
             <div className="icon icon--array--right--light"></div>
           </div>
 
-          <div className="header__sliders__photo-container">
+          <div
+            className="header__sliders__photo-container"
+            onTouchStart={handleTouchStart}
+            onTouchEnd={handleTouchEnd}
+          >
             <img
               src={`./img/${activeImg}`}
               alt={`slider-img-${activeImg}`}
