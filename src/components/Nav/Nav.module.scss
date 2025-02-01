@@ -1,12 +1,21 @@
 @import '../../styles/variables';
+@import '../../styles/mixins';
 
 .nav {
   display: flex;
+
+  @include on-mobile {
+    display: none;
+  }
 
   &__list {
     display: flex;
     height: 100%;
     gap: 64px;
+
+    @include on-tablet {
+      gap: 32px;
+    }
   }
 
   &__item {
@@ -39,19 +48,5 @@
       border-bottom: 3px solid $primary;
       padding-bottom: 0;
     }
-  }
-}
-
-@media all and (max-width: 1199px) {
-  .nav {
-    &__list {
-      gap: 32px;
-    }
-  }
-}
-
-@media all and (max-width: 639px) {
-  .nav {
-    display: none;
   }
 }

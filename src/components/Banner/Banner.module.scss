@@ -1,0 +1,103 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.banner {
+  @include page-grid;
+
+  grid-column: 1 / -1;
+
+  @include on-tablet {
+    padding-inline: 24px;
+  }
+
+  @include on-mobile {
+    padding-inline: 0;
+  }
+
+  &__button {
+    width: 100%;
+    height: 400px;
+
+    background-color: none;
+    background-repeat: no-repeat;
+    background-position: center;
+    border: 1px $icons solid;
+
+    &--left {
+      grid-column: 1 / 2;
+      background-image: url('../../media/icon/arrow-left.svg');
+    }
+
+    &--right {
+      grid-column: -2 / -1;
+
+      background-image: url('../../media/icon/arrow-right.svg');
+    }
+
+    @include on-tablet {
+      height: 189px;
+    }
+
+    @include on-mobile {
+      display: none;
+    }
+
+    &:hover {
+      border: 1px $primary solid;
+    }
+  }
+
+  &__images {
+    display: grid;
+    grid-column: 2 / -2;
+    height: 400px;
+    width: 100%;
+
+    margin-bottom: 8px;
+
+    @include on-tablet {
+      height: 189px;
+    }
+
+    @include on-mobile {
+      grid-column: 1 / -1;
+    }
+  }
+
+  &__img {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+
+    &--img-1 {
+      background-image: url('../../media/img/banner/img-1.png');
+    }
+
+    &--img-2 {
+      background-image: url('../../media/img/banner/img-2.png');
+    }
+
+    &--img-3 {
+      background-image: url('../../media/img/banner/img-3.png');
+    }
+  }
+
+  &__dots {
+    grid-column: 1 / -1;
+    margin: 0 auto;
+    display: flex;
+    gap: 10px;
+  }
+
+  &__dot {
+    display: block;
+    width: 14px;
+    height: 4px;
+    background-color: $element;
+
+    &--is-active {
+      background-color: $primary;
+    }
+  }
+}

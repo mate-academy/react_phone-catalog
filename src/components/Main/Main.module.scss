@@ -1,0 +1,25 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.main {
+  &__content {
+    display: grid;
+    row-gap: 80px;
+    padding-top: 56px;
+    width: 100%;
+    max-width: 1143px;
+    margin: 0 auto;
+
+
+    @include on-tablet {
+      max-width: 100%;
+      row-gap: 64px;
+      padding-top: 32px;
+    }
+
+    @include on-mobile {
+      row-gap: 56px;
+      padding-top: 24px;
+    }
+  }
+}
