@@ -1,20 +1,34 @@
 @import '../../../../styles/main.scss';
 
 .about {
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: repeat(24, 1fr);
+  column-gap: 16px;
 
   @include on-tablet {
-    display: grid;
-    gap: 64px;
+    grid-template-columns: repeat(12, 1fr);
+    row-gap: 64px;
   }
 
   @include on-mobile {
-    gap: 56px;
+    grid-template-columns: repeat(4, 1fr);
+    row-gap: 56px;
   }
 
-  &__content {
-    display: grid;
+  &__contentAbout {
+    grid-column: span 12;
+
+    @include on-tablet {
+      grid-column: 1 / -1;
+    }
+  }
+
+  &__contentTech {
+    grid-column: 14 / -1;
+
+    @include on-tablet {
+      grid-column: 1 / -1;
+    }
   }
 
   &__title {
@@ -34,7 +48,6 @@
     @include divider;
 
     margin-top: 16px;
-    margin-bottom: 32px;
   }
 
   &__textWrapper {
@@ -55,5 +68,28 @@
     color: var(--secondary-color);
 
     @include product-info-text;
+  }
+
+  &__techWrapper {
+    display: grid;
+    gap: 8px;
+    margin-top: 32px;
+  }
+
+  &__techItem {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__techLabel {
+    @include product-info-text;
+
+    color: var(--secondary-color);
+  }
+
+  &__techValue {
+    @include product-info-text;
+
+    color: var(--primary-color);
   }
 }

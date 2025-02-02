@@ -14,6 +14,8 @@ export type AllProduct = {
   screen: string;
   resolution: string;
   processor: string;
+  camera?: string;
+  zoom?: string;
   ram: string;
   cell: string[];
 };
