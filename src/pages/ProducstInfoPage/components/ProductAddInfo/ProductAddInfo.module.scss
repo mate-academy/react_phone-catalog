@@ -1,12 +1,10 @@
 @import '../../../../styles/main.scss';
 
 .addInfo {
-  width: 100%;
-  max-width: 320px;
+  @include on-tablet {
+  }
 
   @include on-mobile {
-    width: 100%;
-    max-width: none;
   }
 
   &__content {
@@ -54,9 +52,7 @@
   }
 
   &__divider {
-    width: 100%;
-    height: 1px;
-    background-color: var(--elements-color);
+    @include divider;
   }
 
   &__capacitiesWrapper {

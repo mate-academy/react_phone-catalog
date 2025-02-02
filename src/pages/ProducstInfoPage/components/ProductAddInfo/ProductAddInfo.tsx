@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styles from './ProductAddInfo.module.scss';
 import { AllProduct } from '../../../../types/AllProduct';
 import { ProductsColors } from '../../../../constants/productsColors';
@@ -18,15 +18,12 @@ export const ProductAddInfo: React.FC<Props> = ({ selectedProduct }) => {
     useProductsContext();
   const { products } = useProducts();
   const { theme } = useTheme();
-  const [activeColor, setActiveColor] = useState(selectedProduct.color);
-  const [activeCapacity, setActiveCapacity] = useState(
-    selectedProduct.capacity,
-  );
 
-  const isLiked = products.some(product => likedProducts.includes(product.id));
-  const isAddedToCart = products.some(product =>
-    cartProducts.includes(product.id),
-  );
+  const product = products.filter(
+    product => product.itemId === selectedProduct.id,
+  )[0];
+  const isLiked = product && likedProducts.includes(product.id);
+  const isAddedToCart = product && cartProducts.includes(product.id);
 
   return (
     <div className={styles.addInfo}>
@@ -44,13 +41,13 @@ export const ProductAddInfo: React.FC<Props> = ({ selectedProduct }) => {
                 <Link to={linkTo} key={linkColor}>
                   <div
                     className={classNames(styles.addInfo__colorWrapper, {
-                      [styles.addInfo__activeColor]: activeColor === color,
+                      [styles.addInfo__activeColor]:
+                        selectedProduct.color === color,
                     })}
                   >
                     <button
                       className={styles.addInfo__color}
                       style={{ backgroundColor: colorHex }}
-                      onClick={() => setActiveColor(color)}
                     ></button>
                   </div>
                 </Link>
@@ -73,15 +70,14 @@ export const ProductAddInfo: React.FC<Props> = ({ selectedProduct }) => {
                   <div
                     className={classNames(styles.addInfo__capacityWrapper, {
                       [styles.addInfo__activeCapacity]:
-                        activeCapacity === capacity,
+                        selectedProduct.capacity === capacity,
                     })}
                   >
                     <button
                       className={classNames(styles.addInfo__capacity, {
                         [styles.addInfo__activeCapacityBtn]:
-                          activeCapacity === capacity,
+                          selectedProduct.capacity === capacity,
                       })}
-                      onClick={() => setActiveCapacity(capacity)}
                     >
                       {capacity}
                     </button>

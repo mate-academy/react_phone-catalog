@@ -36,102 +36,61 @@
     margin-bottom: 40px;
 
     @include h2;
-  }
-
-  &__mainInfo {
-    display: flex;
-    gap: 64px;
-    width: 100%;
 
     @include on-mobile {
-      display: grid;
-      grid-template-columns: repeat(1, 1fr);
-      gap: 40px;
+      margin-bottom: 0;
     }
   }
 
-  &__photosWrapper {
-    display: flex;
-    gap: 16px;
-
-    @include on-mobile {
-      display: flex;
-      gap: 16px;
-      flex-direction: column-reverse;
-      width: 100%;
-      justify-content: center;
-    }
-  }
-
-  &__photos {
+  &__details {
     display: grid;
-    gap: 16px;
-    height: max-content;
+    grid-template-columns: repeat(24, 1fr);
+    column-gap: 16px;
 
     @include on-tablet {
-      gap: 8px;
+      grid-template-columns: repeat(12, 1fr);
     }
 
     @include on-mobile {
-      display: flex;
-      justify-content: center;
-      gap: 8px;
-      width: 100%;
+      grid-template-columns: repeat(4, 1fr);
     }
   }
 
-  &__photo {
-    border: 1px solid var(--elements-color);
-    width: 80px;
-    height: 80px;
-    cursor: pointer;
+  &__images {
+    grid-column: span 12;
 
     @include on-tablet {
-      width: 35px;
-      height: 35px;
+      grid-column: span 7;
     }
 
     @include on-mobile {
-      width: 100%;
-      height: 49px;
-    }
-
-    &:hover {
-      border: 1px solid var(--primary-color);
+      grid-column: 1 / -1;
     }
   }
 
-  &__img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-  }
-
-  &__activeImg {
-    border: 1px solid var(--primary-color);
-  }
-
-  &__activeImage {
-    width: 464px;
-    height: 464px;
+  &__addInfo {
+    grid-column: 14 / 21;
 
     @include on-tablet {
-      height: 287px;
-      width: 287px;
+      grid-column: 8 / -1;
     }
 
     @include on-mobile {
-      display: flex;
-      justify-content: center;
-      width: 100%;
+      grid-column: 1 / -1;
+      margin-top: 40px;
     }
   }
 
-  &__mainImage {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
+  &__aboutInfo {
+    margin-top: 80px;
+    grid-column: 1 / -1;
 
-    @include hover-scale;
+    @include on-tablet {
+      margin-top: 64px;
+    }
+
+    @include on-mobile {
+      margin-top: 56px;
+    }
   }
 }
