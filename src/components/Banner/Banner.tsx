@@ -3,9 +3,9 @@ import React, { useCallback, useEffect, useRef, useState } from 'react';
 
 export const Banner = () => {
   const images = [
-    'public/img/banner-phones.png',
-    'public/img/banner-accessories.png',
-    'public/img/banner-tablets.png',
+    './public/img/banner-phones.png',
+    './public/img/banner-accessories.png',
+    './public/img/banner-tablets.png',
   ];
   const [index, setIndex] = useState(0);
   const startX = useRef<number | null>(null);
