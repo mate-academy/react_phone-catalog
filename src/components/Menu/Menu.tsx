@@ -4,7 +4,7 @@ import { Logo } from '../Logo';
 import slyles from './Menu.module.scss';
 import { Navigation } from '../Navigation';
 import { NavIcon } from '../NavIcon';
-import classNames from 'classnames';
+import classNames from 'classnames'; //
 
 export const Menu = () => {
   const { isOpen, closeMenu } = useMenu();
