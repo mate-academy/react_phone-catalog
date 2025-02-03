@@ -14,6 +14,7 @@ export const CartPage = () => {
   const [products, setProducts] = useState<Product[]>([]);
   const [allPrice, setAllPrice] = useState(0);
   const [errorMessage, setErrorMessage] = useState('');
+  const [productsLenght, setProductsLenght] = useState(0);
 
   const { cart, setCart } = useContext(CartContext);
 
@@ -89,7 +90,14 @@ export const CartPage = () => {
     }
   };
 
-  const productsLenght = products.length;
+  useEffect(() => {
+    const length = cart.reduce(
+      (accumulator, currentValue) => currentValue.count + accumulator,
+      0,
+    );
+
+    setProductsLenght(length);
+  }, [cart]);
 
   return (
     <div className="cart-page">

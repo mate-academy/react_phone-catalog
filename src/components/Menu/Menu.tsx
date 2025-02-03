@@ -41,11 +41,13 @@ export const Menu: React.FC<Props> = ({ isOpen, onClose }) => {
         </div>
       </div>
 
-      <Navigation
-        modifiers="nav--aside"
-        itemModifiers="nav__item--aside"
-        onClose={onClose}
-      />
+      <div className="menu__navigation">
+        <Navigation
+          modifiers="nav--aside"
+          itemModifiers="nav__item--aside"
+          onClose={onClose}
+        />
+      </div>
 
       <div className="menu__bottom">
         <NavLink
@@ -53,7 +55,7 @@ export const Menu: React.FC<Props> = ({ isOpen, onClose }) => {
           onClick={() => onClose()}
           className={({ isActive }) =>
             cn('menu__icon-link menu__icon-link--favourites', {
-              'menu__icon-link--is-ative': isActive,
+              'menu__icon-link--is-active': isActive,
             })
           }
         >
@@ -65,7 +67,7 @@ export const Menu: React.FC<Props> = ({ isOpen, onClose }) => {
           onClick={() => onClose()}
           className={({ isActive }) =>
             cn('menu__icon-link menu__icon-link--cart', {
-              'menu__icon-link--is-ative': isActive,
+              'menu__icon-link--is-active': isActive,
             })
           }
         >
