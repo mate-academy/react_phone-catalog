@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import { Fragment } from 'react';
 import styles from './Breadcrumbs.module.scss';
 import { Link, NavLink, useLocation, useParams } from 'react-router-dom';
 import { Icon } from '../Icon';

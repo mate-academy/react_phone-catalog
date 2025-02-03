@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import styles from './CartSummary.module.scss';
 import { Checkout } from '../../../../components/Checkout';
 import { useProductsContext } from '../../../../hooks/savedProducts';

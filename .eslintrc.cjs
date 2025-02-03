@@ -11,6 +11,7 @@ module.exports = {
     'plugin:@typescript-eslint/recommended',
     'plugin:prettier/recommended',
     'plugin:cypress/recommended',
+    'plugin:react/jsx-runtime',
   ],
   overrides: [
     {
@@ -37,6 +38,7 @@ module.exports = {
     'prettier',
   ],
   rules: {
+    '@typescript-eslint/ban-ts-comment': 'off',
     // JS
     semi: 'off',
     '@typescript-eslint/semi': ['error', 'always'],

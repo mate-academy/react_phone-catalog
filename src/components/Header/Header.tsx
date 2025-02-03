@@ -5,7 +5,6 @@ import { Navigation } from '../Navigation';
 import { ThemeToggle } from '../ThemeToggle';
 import styles from './Header.module.scss';
 import { useMenu } from '../../hooks/useMenu';
-import React from 'react';
 
 export const Header = () => {
   const { isOpen, openMenu, closeMenu } = useMenu();

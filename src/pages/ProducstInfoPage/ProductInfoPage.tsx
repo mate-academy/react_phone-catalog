@@ -1,4 +1,3 @@
-import React from 'react';
 import styles from './ProductInfoPage.module.scss';
 import { Icon } from '../../components/Icon';
 import { useNavigate, useParams } from 'react-router-dom';

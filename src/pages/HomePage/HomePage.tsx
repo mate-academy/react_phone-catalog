@@ -1,4 +1,3 @@
-import React from 'react';
 import styles from './HomePage.module.scss';
 import { Hero } from './components/Hero';
 import { ProductsSlider } from './components/ProductsSlider';

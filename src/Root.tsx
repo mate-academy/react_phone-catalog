@@ -5,7 +5,6 @@ import {
   useParams,
 } from 'react-router-dom';
 import { App } from './App';
-import React from 'react';
 import { HomePage } from './pages/HomePage/HomePage';
 import { ProductsPage } from './pages/ProductsPage/ProductsPage';
 import { CartsPage } from './pages/CartsPage/CartsPage';

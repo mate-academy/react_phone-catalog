@@ -1,4 +1,3 @@
-import React from 'react';
 import styles from './FavouritePage.module.scss';
 import { useProductsContext } from '../../hooks/savedProducts';
 import { useProducts } from '../../hooks/useProducts';

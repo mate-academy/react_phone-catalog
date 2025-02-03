@@ -1,4 +1,3 @@
-import React from 'react';
 import styles from './ThemeToggle.module.scss';
 import { useTheme } from '../../hooks/useTheme';
 

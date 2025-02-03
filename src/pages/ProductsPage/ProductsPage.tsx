@@ -1,4 +1,3 @@
-import React from 'react';
 import { useProducts } from '../../hooks/useProducts';
 import styles from './ProductsPage.module.scss';
 import { ProductCard } from '../../components/ProductCard';

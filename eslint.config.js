@@ -16,6 +16,7 @@ export default [
       ecmaVersion: 2020,
       globals: globals.browser,
     },
+    settings: { react: { version: '18.3' } },
     plugins: {
       'react-hooks': reactHooks,
       'react-refresh': reactRefresh,
@@ -24,6 +25,7 @@ export default [
     rules: {
       ...reactHooks.configs.recommended.rules,
       ...react.configs.recommended.rules,
+      ...react.configs['jsx-runtime'].rules,
     },
   },
   {
