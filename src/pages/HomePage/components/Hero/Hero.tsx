@@ -1,4 +1,3 @@
-import React from 'react';
 import styles from './Hero.module.scss';
 import { HeroSlider } from '../HeroSlider';
 

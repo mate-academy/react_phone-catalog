@@ -1,4 +1,3 @@
-import React from 'react';
 import styles from './CategoryShop.module.scss';
 import { Link } from 'react-router-dom';
 import { calculateCategoryCounts } from '../../../../utils/getCategoriesOfProducts';
