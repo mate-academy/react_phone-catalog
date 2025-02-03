@@ -8,7 +8,7 @@ export const useAllProducts = () => {
     const fetchProducts = async () => {
       const categories = ['phones', 'tablets', 'accessories'];
       const promises = categories.map(category =>
-        fetch(`/api/${category}.json`).then(res => res.json()),
+        fetch(`./api/${category}.json`).then(res => res.json()),
       );
 
       const data = await Promise.all(promises);

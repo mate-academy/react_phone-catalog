@@ -5,7 +5,7 @@ export const useProducts = () => {
   const [products, setProducts] = useState<Product[]>([]);
 
   useEffect(() => {
-    fetch('/api/products.json')
+    fetch('./api/products.json')
       .then(response => response.json())
       .then(data => setProducts(data));
   }, []);
