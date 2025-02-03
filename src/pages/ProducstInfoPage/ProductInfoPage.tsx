@@ -9,10 +9,13 @@ import { ProductsSlider } from '../HomePage/components/ProductsSlider';
 import { useProducts } from '../../hooks/useProducts';
 import { getRandomProducts } from '../../utils/getRandomProducts';
 import { Breadcrumbs } from '../../components/Breadcrumbs';
+import { useErrorHandling } from '../../hooks/errorHandling';
+import { Loader } from '../../components/Loader';
 
 export const ProductInfoPage = () => {
-  const { products } = useProducts();
-  const { allProducts } = useAllProducts();
+  const { setIsError } = useErrorHandling();
+  const { products } = useProducts(() => setIsError(true));
+  const { allProducts } = useAllProducts(() => setIsError(true));
   const { productId } = useParams();
   const selectedProduct = allProducts.find(
     allProduct => allProduct.id === productId,
@@ -20,6 +23,10 @@ export const ProductInfoPage = () => {
 
   const randomProducts = getRandomProducts(products);
   const navigate = useNavigate();
+
+  if (products.length === 0 || allProducts.length === 0) {
+    return <Loader />;
+  }
 
   return (
     <div className={styles.product}>

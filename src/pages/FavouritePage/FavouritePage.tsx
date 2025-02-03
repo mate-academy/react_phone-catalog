@@ -3,14 +3,21 @@ import { useProductsContext } from '../../hooks/savedProducts';
 import { useProducts } from '../../hooks/useProducts';
 import { ProductCard } from '../../components/ProductCard';
 import { Breadcrumbs } from '../../components/Breadcrumbs';
+import { useErrorHandling } from '../../hooks/errorHandling';
+import { Loader } from '../../components/Loader';
 
 export const FavouritesPage = () => {
   const { likedProducts } = useProductsContext();
-  const { products } = useProducts();
+  const { setIsError } = useErrorHandling();
+  const { products } = useProducts(() => setIsError(true));
 
   const likedItems = products.filter(product =>
     likedProducts.includes(product.id),
   );
+
+  if (products.length === 0) {
+    return <Loader />;
+  }
 
   return (
     <div className={styles.favourite}>

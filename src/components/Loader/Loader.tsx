@@ -1,16 +1,10 @@
-import { useState, useEffect } from 'react';
-import { ClipLoader } from 'react-spinners';
+import { BeatLoader } from 'react-spinners';
+import styles from './Loader.module.scss';
 
 export const Loader = () => {
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setLoading(false);
-    }, 500);
-
-    return () => clearTimeout(timer);
-  }, []);
-
-  return <div>{loading && <ClipLoader color="#89939a" size={120} />}</div>;
+  return (
+    <div className={styles.loader}>
+      <BeatLoader color="#89939a" size={20} />
+    </div>
+  );
 };

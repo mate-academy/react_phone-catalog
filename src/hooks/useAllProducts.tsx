@@ -1,18 +1,27 @@
 import { useEffect, useState } from 'react';
 import { AllProduct } from '../types/AllProduct';
 
-export const useAllProducts = () => {
+export const useAllProducts = (errorCallback: () => void) => {
   const [allProducts, setAllProducts] = useState<AllProduct[]>([]);
-
   useEffect(() => {
     const fetchProducts = async () => {
-      const categories = ['phones', 'tablets', 'accessories'];
-      const promises = categories.map(category =>
-        fetch(`./api/${category}.json`).then(res => res.json()),
-      );
+      try {
+        const categories = ['phones', 'tablets', 'accessories'];
+        const promises = categories.map(async category => {
+          const response = await fetch(
+            `https://irynamariiko00.github.io/react_phone-catalog/api/${category}.json`,
+          );
+          return response.json();
+        });
 
-      const data = await Promise.all(promises);
-      setAllProducts(data.flat());
+        const data = await Promise.all(promises);
+
+        await new Promise(resolve => setTimeout(resolve, 300));
+
+        setAllProducts(data.flat());
+      } catch {
+        errorCallback();
+      }
     };
 
     fetchProducts();

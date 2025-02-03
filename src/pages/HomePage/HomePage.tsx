@@ -7,13 +7,20 @@ import { useProducts } from '../../hooks/useProducts';
 import { getUniqueProducts } from '../../utils/getUniqueProducts';
 import { CategoryShop } from './components/CategoryShop';
 import { getTheHotestPrices } from '../../utils/getTheHotestPrices';
+import { useErrorHandling } from '../../hooks/errorHandling';
+import { Loader } from '../../components/Loader';
 
 export const HomePage = () => {
-  const { products } = useProducts();
+  const { setIsError } = useErrorHandling();
+  const { products } = useProducts(() => setIsError(true));
   const newModels = sortById(getNewModels(products));
   const uniqueProducts = getUniqueProducts(newModels);
   const hotestPrices = getTheHotestPrices(products);
   const uniqueTheHotestPrices = getUniqueProducts(hotestPrices);
+
+  if (products.length === 0) {
+    return <Loader />;
+  }
 
   return (
     <main className={styles['home-page']}>

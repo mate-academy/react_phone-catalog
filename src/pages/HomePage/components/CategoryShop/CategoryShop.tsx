@@ -2,11 +2,18 @@ import styles from './CategoryShop.module.scss';
 import { Link } from 'react-router-dom';
 import { calculateCategoryCounts } from '../../../../utils/getCategoriesOfProducts';
 import { useProducts } from '../../../../hooks/useProducts';
+import { useErrorHandling } from '../../../../hooks/errorHandling';
+import { Loader } from '../../../../components/Loader';
 
 export const CategoryShop = () => {
-  const { products } = useProducts();
+  const { setIsError } = useErrorHandling();
+  const { products } = useProducts(() => setIsError(true));
 
   const categories = calculateCategoryCounts(products);
+
+  if (products.length === 0) {
+    return <Loader />;
+  }
 
   return (
     <section className={styles.categories}>

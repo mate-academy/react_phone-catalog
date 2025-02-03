@@ -8,6 +8,8 @@ import { useTheme } from '../../../../hooks/useTheme';
 import { useProductsContext } from '../../../../hooks/savedProducts';
 import { useProducts } from '../../../../hooks/useProducts';
 import { Icon } from '../../../../components/Icon';
+import { useErrorHandling } from '../../../../hooks/errorHandling';
+import { Loader } from '../../../../components/Loader';
 
 type Props = {
   selectedProduct: AllProduct;
@@ -16,7 +18,8 @@ type Props = {
 export const ProductAddInfo: React.FC<Props> = ({ selectedProduct }) => {
   const { likedProducts, cartProducts, toggleLike, toggleCart } =
     useProductsContext();
-  const { products } = useProducts();
+  const { setIsError } = useErrorHandling();
+  const { products } = useProducts(() => setIsError(true));
   const { theme } = useTheme();
 
   const product = products.filter(
@@ -24,6 +27,10 @@ export const ProductAddInfo: React.FC<Props> = ({ selectedProduct }) => {
   )[0];
   const isLiked = product && likedProducts.includes(product.id);
   const isAddedToCart = product && cartProducts.includes(product.id);
+
+  if (products.length === 0) {
+    return <Loader />;
+  }
 
   return (
     <div className={styles.addInfo}>

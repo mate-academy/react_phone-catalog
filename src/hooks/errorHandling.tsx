@@ -16,18 +16,11 @@ const ErrorHandlingContext = createContext<ErrorContextType | undefined>(
 export const ErrorHandlingProvider: React.FC<Props> = ({ children }) => {
   const [isError, setIsError] = useState(false);
 
-  const render = () => (
+  return (
     <ErrorHandlingContext.Provider value={{ isError, setIsError }}>
       {children}
     </ErrorHandlingContext.Provider>
   );
-
-  try {
-    return render();
-  } catch {
-    setIsError(true);
-    return render();
-  }
 };
 
 export const useErrorHandling = () => {

@@ -5,11 +5,14 @@ import { Icon } from '../../../../../components/Icon';
 import { useProductsContext } from '../../../../../hooks/savedProducts';
 import { useProducts } from '../../../../../hooks/useProducts';
 import { Link } from 'react-router-dom';
+import { useErrorHandling } from '../../../../../hooks/errorHandling';
+import { Loader } from '../../../../../components/Loader';
 
 export const CartItems = () => {
   const { cartProducts, removeFromCart, updateProductCount, countProductsMap } =
     useProductsContext();
-  const { products } = useProducts();
+  const { setIsError } = useErrorHandling();
+  const { products } = useProducts(() => setIsError(true));
   const [hoveredCloseButton, setHoveredCloseButton] = useState<number | null>(
     null,
   );
@@ -20,6 +23,10 @@ export const CartItems = () => {
       Math.max(1, (countProductsMap[productId] || 1) + change),
     );
   };
+
+  if (products.length === 0) {
+    return <Loader />;
+  }
 
   return (
     <div className={styles.items}>

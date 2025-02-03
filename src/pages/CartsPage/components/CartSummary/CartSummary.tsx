@@ -4,10 +4,13 @@ import { Checkout } from '../../../../components/Checkout';
 import { useProductsContext } from '../../../../hooks/savedProducts';
 import { useProducts } from '../../../../hooks/useProducts';
 import { ModalWindow } from '../../../../components/ModalWindow';
+import { useErrorHandling } from '../../../../hooks/errorHandling';
+import { Loader } from '../../../../components/Loader';
 
 export const CartSummary = () => {
   const { cartProducts, countProductsMap } = useProductsContext();
-  const { products } = useProducts();
+  const { setIsError } = useErrorHandling();
+  const { products } = useProducts(() => setIsError(true));
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const openModal = () => {
@@ -25,6 +28,10 @@ export const CartSummary = () => {
     const count = countProductsMap[productId] || 1;
     return total + count;
   }, 0);
+
+  if (products.length === 0) {
+    return <Loader />;
+  }
 
   return (
     <div className={styles.summary}>

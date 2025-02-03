@@ -4,6 +4,7 @@ import { ProductCard } from '../../../../components/ProductCard';
 import useEmblaCarousel from 'embla-carousel-react';
 import { Product } from '../../../../types/Product';
 import { Icon } from '../../../../components/Icon';
+import { Loader } from '../../../../components/Loader';
 
 type Props = {
   products: Product[];
@@ -52,6 +53,10 @@ export const ProductsSlider: React.FC<Props> = ({
       emblaApi.scrollNext();
     }
   }, [emblaApi]);
+
+  if (products.length === 0) {
+    return <Loader />;
+  }
 
   return (
     <div className={styles.slider}>

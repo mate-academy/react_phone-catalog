@@ -8,9 +8,12 @@ import { getPaginatedProducts } from '../../utils/getPaginatedProducts';
 import { Pagination } from './components/Pagination';
 import { Filtration } from './components/Filtration';
 import { Breadcrumbs } from '../../components/Breadcrumbs';
+import { useErrorHandling } from '../../hooks/errorHandling';
+import { Loader } from '../../components/Loader';
 
 export const ProductsPage = () => {
-  const { products } = useProducts();
+  const { setIsError } = useErrorHandling();
+  const { products } = useProducts(() => setIsError(true));
   const { category } = useParams();
   const [searchParams] = useSearchParams();
   const itemCategory = category as Category;
@@ -42,6 +45,10 @@ export const ProductsPage = () => {
     count === 'All'
       ? sortedProducts
       : getPaginatedProducts(sortedProducts, page, Number(count));
+
+  if (products.length === 0) {
+    return <Loader />;
+  }
 
   return (
     <div className={styles.products}>
