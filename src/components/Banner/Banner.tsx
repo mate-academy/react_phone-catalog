@@ -1,41 +1,84 @@
 import styles from './Banner.module.scss';
-import { Image } from '../../types/Image';
-import { useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 
 export const Banner = () => {
-  const images = [Image.IMAGE_1, Image.IMAGE_2, Image.IMAGE_3];
+  const images = [
+    'src/media/img/banner/img-1.png',
+    'src/media/img/banner/img-2.png',
+    'src/media/img/banner/img-3.png',
+  ];
   const [index, setIndex] = useState(0);
+  const startX = useRef<number | null>(null);
 
-  const handleLeftButton = () => {
+  const handleLeftClick = useCallback(() => {
     setIndex(prev => (prev - 1 + images.length) % images.length);
+  }, [images.length]);
+
+  const handleRightClick = useCallback(() => {
+    setIndex(prev => (prev + 1) % images.length);
+  }, [images.length]);
+
+  useEffect(() => {
+    const intervalId = setInterval(handleRightClick, 5000);
+
+    return () => clearInterval(intervalId);
+  }, [handleRightClick]);
+
+  const handleTouchStart = (event: React.TouchEvent) => {
+    startX.current = event.touches[0].clientX;
   };
 
-  const handleRightButton = () => {
-    setIndex(prev => (prev + 1) % images.length);
+  const handleTouchMove = (event: React.TouchEvent) => {
+    if (startX.current === null) {
+      return;
+    }
+
+    const moveX = event.touches[0].clientX;
+    const diffX = startX.current - moveX;
+
+    if (diffX > 50) {
+      handleRightClick();
+    } else {
+      handleLeftClick();
+    }
   };
 
   return (
     <div className={styles.banner}>
       <button
         className={`${styles.banner__button} ${styles['banner__button--left']}`}
-        onClick={handleLeftButton}
+        onClick={handleLeftClick}
       ></button>
 
-      <div className={styles.banner__images}>
+      <div
+        className={styles.banner__images}
+        onTouchStart={handleTouchStart}
+        onTouchMove={handleTouchMove}
+      >
         <div
-          className={`${styles.banner__img} ${styles[`banner__img--${images[index]}`]}`}
-        ></div>
+          className={styles['banner__images-wrapper']}
+          style={{ transform: `translateX(-${index * 100}%)` }}
+        >
+          {images.map((img, i) => (
+            <img
+              key={img}
+              src={img}
+              alt={`banner ${i + 1}`}
+              className={styles.banner__img}
+            />
+          ))}
+        </div>
       </div>
 
       <button
         className={`${styles.banner__button} ${styles['banner__button--right']}`}
-        onClick={handleRightButton}
+        onClick={handleRightClick}
       ></button>
 
       <div className={styles.banner__dots}>
-        {images.map((_, i) => (
+        {images.map((img, i) => (
           <a
-            key={index}
+            key={img[i]}
             className={`${styles.banner__dot} ${index === i ? styles[`banner__dot--is-active`] : ''}`}
             onClick={() => setIndex(i)}
           ></a>
