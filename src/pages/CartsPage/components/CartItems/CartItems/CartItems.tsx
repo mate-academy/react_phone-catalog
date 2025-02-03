@@ -1,5 +1,5 @@
 // CartItems.tsx
-import React, { useState } from 'react';
+import { useState } from 'react';
 import styles from './CartItems.module.scss';
 import { Icon } from '../../../../../components/Icon';
 import { useProductsContext } from '../../../../../hooks/savedProducts';
