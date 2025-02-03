@@ -1,4 +1,4 @@
-import styles from './Banner.module.scss';
+import styles from './PicturesSlider.module.scss';
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 
 export const PicturesSlider = () => {
