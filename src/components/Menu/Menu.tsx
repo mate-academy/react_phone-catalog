@@ -33,30 +33,28 @@ export const Menu = () => {
   }, [isOpen, closeMenu]);
 
   return (
-    isOpen && (
-      <div className={classNames('app__menu', { 'app__menu--open': isOpen })}>
-        <aside onClick={handleCloseMenu} className={slyles.menu}>
-          <div className={slyles.menu__top}>
-            <div data-nav-link className={slyles.menu__logo}>
-              <Logo />
-            </div>
+    <div className={classNames('app__menu', { 'app__menu--open': isOpen })}>
+      <aside onClick={handleCloseMenu} className={slyles.menu}>
+        <div className={slyles.menu__top}>
+          <div data-nav-link className={slyles.menu__logo}>
+            <Logo />
+          </div>
+        </div>
+
+        <div data-nav-link className={slyles.menu_nav}>
+          <Navigation isMenu />
+        </div>
+
+        <div data-nav-link className={slyles.menu__icons}>
+          <div className={slyles.menu__icon}>
+            <NavIcon type="favourite" path="/favourites" isMenu />
           </div>
 
-          <div data-nav-link className={slyles.menu_nav}>
-            <Navigation isMenu />
+          <div className={slyles.menu__icon}>
+            <NavIcon type="cart" path="/cart" isMenu />
           </div>
-
-          <div data-nav-link className={slyles.menu__icons}>
-            <div className={slyles.menu__icon}>
-              <NavIcon type="favourite" path="/favourites" isMenu />
-            </div>
-
-            <div className={slyles.menu__icon}>
-              <NavIcon type="cart" path="/cart" isMenu />
-            </div>
-          </div>
-        </aside>
-      </div>
-    )
+        </div>
+      </aside>
+    </div>
   );
 };

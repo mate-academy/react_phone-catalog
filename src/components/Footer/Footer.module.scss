@@ -90,6 +90,9 @@
   }
 
   &__btn {
+    justify-content: center;
+    display: flex;
+
     @include btn;
   }
 }

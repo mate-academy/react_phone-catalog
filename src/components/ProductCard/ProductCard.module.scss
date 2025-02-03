@@ -148,6 +148,7 @@
   &__cart {
     background-color: var(--card-button-color);
     border: 1px solid var(--card-button-color);
+    box-sizing: border-box;
     color: #fff;
     cursor: pointer;
 
@@ -170,6 +171,11 @@
     &:hover {
       background-color: var(--button-bg-color);
       border: 1px solid var(--button-border-color);
+    }
+
+    @include on-mobile {
+      width: 100%;
+      height: auto;
     }
   }
 

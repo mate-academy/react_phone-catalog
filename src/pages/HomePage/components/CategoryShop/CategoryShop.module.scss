@@ -13,6 +13,10 @@
     @include h2;
 
     margin: 0;
+
+    @include on-mobile {
+      padding-left: 16px;
+    }
   }
 
   &__content {

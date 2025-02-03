@@ -31,6 +31,9 @@
   &__btn {
     @include btn;
 
+    display: flex;
+    justify-content: center;
+
     &:disabled {
       @include disabled-button;
     }
