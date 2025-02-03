@@ -15,6 +15,7 @@ import { FavouritesPage } from './pages/FavouritePage/FavouritePage';
 import { NotFoundPage } from './pages/NotFoundPage';
 import { availableCategories } from './constants/availableCategories';
 import { ProductInfoPage } from './pages/ProducstInfoPage';
+import { ErrorHandlingProvider } from './hooks/errorHandling';
 
 const CategoryRoutes = () => {
   const { category } = useParams();
@@ -34,19 +35,21 @@ const CategoryRoutes = () => {
 
 export const Root = () => {
   return (
-    <ThemeProvider>
-      <ProductsProvider>
-        <Router>
-          <Routes>
-            <Route path="/" element={<App />}>
-              <Route index element={<HomePage />} />
-              <Route path=":category/*" element={<CategoryRoutes />} />
-              <Route path="favourites" element={<FavouritesPage />} />
-              <Route path="cart" element={<CartsPage />} />
-            </Route>
-          </Routes>
-        </Router>
-      </ProductsProvider>
-    </ThemeProvider>
+    <ErrorHandlingProvider>
+      <ThemeProvider>
+        <ProductsProvider>
+          <Router>
+            <Routes>
+              <Route path="/" element={<App />}>
+                <Route index element={<HomePage />} />
+                <Route path=":category/*" element={<CategoryRoutes />} />
+                <Route path="favourites" element={<FavouritesPage />} />
+                <Route path="cart" element={<CartsPage />} />
+              </Route>
+            </Routes>
+          </Router>
+        </ProductsProvider>
+      </ThemeProvider>
+    </ErrorHandlingProvider>
   );
 };
