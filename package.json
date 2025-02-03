@@ -1,6 +1,6 @@
 {
   "name": "react_phone-catalog",
-  "homepage": ".",
+  "homepage": "react_phone-catalog",
   "version": "0.1.0",
   "keywords": [],
   "author": "Mate Academy",
@@ -35,7 +35,7 @@
     "eslint-plugin-cypress": "^2.11.2",
     "gh-pages": "^6.1.1",
     "mochawesome": "^7.1.3",
-    "mochawesome-merge": "^4.2.0",
+    "mochawesome-merge": "^4.3.0",
     "mochawesome-report-generator": "^6.2.0",
     "postcss": "^8.5.1",
     "prettier": "^3.2.5",
@@ -72,6 +72,7 @@
   "mateAcademy": {
     "_comment": "Replace 'reactTypescript' with 'react' if you want use React without Typescript",
     "projectType": "reactTypescript",
+    "nodejsMajorVersion": "20",
     "tests": {
       "_comment": "Add `cypressComponents: true` to enable component tests",
       "cypress": true
