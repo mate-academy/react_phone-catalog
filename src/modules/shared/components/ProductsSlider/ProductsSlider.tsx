@@ -158,6 +158,7 @@ export const ProductsSlider: React.FC<Props> = React.memo(
         </div>
 
         <SliderList
+          title={title}
           sliderRef={sliderRef}
           itemsRef={itemsRef}
           products={products}

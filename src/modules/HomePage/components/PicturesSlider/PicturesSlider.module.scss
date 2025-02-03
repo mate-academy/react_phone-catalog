@@ -12,7 +12,7 @@
 
     display: grid;
     column-gap: $column-gap-p;
-    grid-template-columns: min-content repeat(2, 1fr) min-content;
+    grid-template-columns: min-content 1fr min-content;
 
     @include on-tablet {
       margin-inline: 0;
@@ -38,7 +38,6 @@
   }
 
   &__slider {
-    height: 100%;
     position: relative;
     grid-column: 1 / -1;
 
@@ -57,8 +56,12 @@
       display: none; /* Chrome, Safari, Edge */
     }
 
+    &--isLoading {
+      overflow-x: hidden;
+    }
+
     @include on-tablet {
-      grid-column: span 2;
+      grid-column: span 1;
     }
   }
 
@@ -70,14 +73,21 @@
     scroll-snap-stop: always;
     scroll-snap-align: center;
 
+    &--isLoading {
+      inset: 0, 0, 0, 0;
+      position: absolute;
+    }
+
     @include on-tablet {
-      height: 300px;
+      height: calc(400 * (100vw / 1200));
+
       aspect-ratio: initial;
-      object-position: center;
+      object-position: -20px;
     }
 
     @include on-desktop {
       height: 400px;
+      object-position: center;
     }
   }
 

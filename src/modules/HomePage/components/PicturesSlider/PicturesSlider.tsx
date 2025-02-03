@@ -38,7 +38,7 @@ export const PicturesSlider = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   // a visible image and list of images
-  const [updating, setUpdating] = useState(false);
+  const [activeDot, setActiveDot] = useState(0);
   const [activeImage, setActiveImage] = useState(0);
   const [images, setImages] = useState(getImages());
 
@@ -101,7 +101,13 @@ export const PicturesSlider = () => {
         const visibleEntries = entries.filter(entry => entry.isIntersecting);
 
         if (visibleEntries.length) {
-          const firstVisibleEntry = visibleEntries[0].target;
+          const visibleEntry = visibleEntries.find(
+            entry => entry.intersectionRatio === 1,
+          );
+
+          const firstVisibleEntry = visibleEntry
+            ? visibleEntry.target
+            : visibleEntries[0].target;
 
           const foundedRef = Object.entries(imageRefs.current).find(
             ([, value]) => value === firstVisibleEntry,
@@ -111,17 +117,22 @@ export const PicturesSlider = () => {
             const index = images.indexOf(foundedRef[0]);
 
             if (index !== -1) {
-              setUpdating(false);
-              setActiveImage(index);
+              const intersectionRatio = visibleEntries[0].intersectionRatio;
+
+              if (intersectionRatio >= 0.5 && intersectionRatio < 1) {
+                setActiveDot(index);
+              }
+
+              if (intersectionRatio === 1) {
+                setActiveImage(index);
+              }
             }
           }
-        } else if (!isAnimating) {
-          setUpdating(true);
         }
       },
       {
         root: sliderRef.current,
-        threshold: isAnimating ? 0.8 : 1,
+        threshold: [0.5, 1],
       },
     );
 
@@ -135,12 +146,6 @@ export const PicturesSlider = () => {
       observer.disconnect();
     };
   }, [images, isAnimating]);
-
-  useEffect(() => {
-    if (sliderRef.current) {
-      sliderRef.current.style.pointerEvents = updating ? 'none' : 'auto';
-    }
-  }, [updating]);
 
   // place an active image on the screen after replacements
   useEffect(() => {
@@ -213,7 +218,7 @@ export const PicturesSlider = () => {
   // target.current -> dots were used -> scroll by an original order
   // isAnimating -> show order which was befere scroll, prevent reorder during animation
   const orderedImages = useMemo(() => {
-    if (isLoading || target.current !== null) {
+    if (target.current !== null) {
       return images;
     }
 
@@ -235,7 +240,7 @@ export const PicturesSlider = () => {
 
     return ordered;
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [activeImage, images, isAnimating, isLoading, target.current]);
+  }, [activeImage, images, isAnimating, target.current]);
 
   // autoplay
   const [isWaiting, setIsWaiting] = useState(true);
@@ -280,8 +285,20 @@ export const PicturesSlider = () => {
 
         <div
           ref={sliderRef}
-          className={classNames(styles['pictures-slider__slider'])}
+          className={classNames(styles['pictures-slider__slider'], {
+            [styles['pictures-slider__slider--isLoading']]: isLoading,
+          })}
         >
+          {isLoading && (
+            <Image
+              src={images[0]}
+              className={classNames(
+                styles['pictures-slider__picture'],
+                styles['pictures-slider__picture--isLoading'],
+              )}
+            />
+          )}
+
           {orderedImages.map(image => (
             <Image
               key={image}
@@ -309,7 +326,7 @@ export const PicturesSlider = () => {
           <div
             key={image}
             className={classNames(styles['pictures-slider__dot'], {
-              [styles['pictures-slider__dot--active']]: i === activeImage,
+              [styles['pictures-slider__dot--active']]: i === activeDot,
             })}
             onClick={() => changeImage(i)}
           ></div>

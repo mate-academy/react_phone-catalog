@@ -12,10 +12,12 @@ import { Link } from 'react-router-dom';
 type Props = {
   product: Product;
   hidePrevPrice?: boolean;
+
+  onClick?: () => void;
 };
 
 export const ProductCard = React.forwardRef<HTMLElement, Props>(
-  function ProductCard({ product, hidePrevPrice }, ref) {
+  function ProductCard({ product, hidePrevPrice, onClick }, ref) {
     const { price, fullPrice, screen, capacity, ram, image } = product;
 
     const characteristics: [string, string][] = [
@@ -27,7 +29,13 @@ export const ProductCard = React.forwardRef<HTMLElement, Props>(
     return (
       <Link
         to={`${product.category}/${product.itemId}`}
-        onClick={() => window.scrollTo(0, 0)}
+        onClick={() => {
+          window.scrollTo(0, 0);
+
+          if (onClick) {
+            onClick();
+          }
+        }}
       >
         <article ref={ref} className={styles['product-card']}>
           <Image src={image} className={styles['product-card__image']} />

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import classNames from 'classnames';
 
 import styles from './SliderList.module.scss';
@@ -8,6 +8,7 @@ import { ProductCard } from '@components/ProductCard';
 import { ProductCardSkeleton } from '@components/ProductCardSkeleton';
 
 type Props = {
+  title: string;
   products: Product[];
   itemsRef: React.RefObject<HTMLElement[]>;
   sliderRef: React.RefObject<HTMLDivElement>;
@@ -16,6 +17,7 @@ type Props = {
 };
 
 export const SliderList: React.FC<Props> = React.memo(function SliderList({
+  title,
   sliderRef,
   itemsRef,
   products,
@@ -23,6 +25,54 @@ export const SliderList: React.FC<Props> = React.memo(function SliderList({
 }) {
   const skeletons = [1, 2, 3, 4, 5, 6, 7, 8];
   const showSkeletons = products.length === 0;
+
+  const prevOffsetWidth = useRef(0);
+  const prevScrollWidth = useRef(0);
+  const [slider, setSlider] = useState(sliderRef.current);
+
+  useEffect(() => setSlider(sliderRef.current), [setSlider, sliderRef]);
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (slider) {
+        const offsetWidth = slider.offsetWidth;
+
+        if (offsetWidth === prevOffsetWidth.current) {
+          return;
+        }
+
+        const scrollWidth = slider.scrollWidth;
+        const scrollRatio = slider.scrollLeft / prevScrollWidth.current;
+
+        prevScrollWidth.current = scrollWidth;
+        prevOffsetWidth.current = offsetWidth;
+        slider.scrollLeft = scrollWidth * scrollRatio;
+      }
+    };
+
+    const observer = new ResizeObserver(handleResize);
+
+    if (slider) {
+      observer.observe(slider);
+      prevOffsetWidth.current = slider.offsetWidth;
+      prevScrollWidth.current = slider.scrollWidth;
+    }
+
+    return () => {
+      if (slider) {
+        observer.unobserve(slider);
+      }
+    };
+  }, [slider]);
+
+  useEffect(() => {
+    const prevPos: number | undefined = window.history.state[title];
+
+    if (prevPos !== undefined && sliderRef.current) {
+      // eslint-disable-next-line no-param-reassign
+      sliderRef.current.scrollBy({ left: prevPos, behavior: 'smooth' });
+    }
+  }, [sliderRef, title]);
 
   return (
     <div
@@ -45,6 +95,18 @@ export const SliderList: React.FC<Props> = React.memo(function SliderList({
             key={product.id}
             product={product}
             hidePrevPrice={hidePrevPrice}
+            onClick={() => {
+              window.history.replaceState(
+                {
+                  usr: window.history.state.usr,
+                  key: window.history.state.key,
+                  idx: window.history.state.idx,
+
+                  [title]: sliderRef.current?.scrollLeft,
+                },
+                '',
+              );
+            }}
           />
         ))}
     </div>
