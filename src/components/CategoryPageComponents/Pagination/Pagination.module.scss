@@ -1,0 +1,43 @@
+.pagination {
+  grid-column: 1 / -1;
+
+  &__container {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+  }
+
+  &__buttons-container {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__button-list {
+    background-color: $surface-1;
+
+    &--active {
+      background-color: $purple;
+    }
+  }
+
+  &__button-basic {
+    border: none;
+    color: #fff;
+    cursor: pointer;
+
+    height: 32px;
+    width: 32px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &--next {
+      background-color: $surface-2;
+    }
+
+    &--back {
+      background-color: $surface-2;
+    }
+  }
+}
