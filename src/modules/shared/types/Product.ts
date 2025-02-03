@@ -1,5 +1,9 @@
+import { ProductCategory } from './ProductCategory';
+
 export interface Product {
   id: string;
+  itemId: string;
+
   name: string;
   price: number;
   fullPrice: number;
@@ -8,5 +12,5 @@ export interface Product {
   capacity: string;
   ram: string;
   age: number;
-  category: 'phones' | 'tablets' | 'accessories';
+  category: ProductCategory;
 }

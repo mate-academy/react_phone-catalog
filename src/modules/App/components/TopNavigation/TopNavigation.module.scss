@@ -1,0 +1,25 @@
+@use '@styles/mixins' as *;
+
+.top-navigation {
+  gap: 8px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+
+  color: var(--primary-color);
+
+  @include small-text;
+
+  &__home {
+    align-self: stretch;
+  }
+
+  &__item:last-child {
+    pointer-events: none;
+    color: var(--secondary-color);
+
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+}

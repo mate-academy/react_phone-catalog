@@ -7,6 +7,7 @@ import { Product } from '@sTypes/Product';
 import { AddToCard } from '@components/AddToCard';
 import { Characteristics } from '@components/Characteristics';
 import { Image } from '@components/Image';
+import { Link } from 'react-router-dom';
 
 type Props = {
   product: Product;
@@ -24,26 +25,31 @@ export const ProductCard = React.forwardRef<HTMLElement, Props>(
     ];
 
     return (
-      <article ref={ref} className={styles['product-card']}>
-        <Image src={image} className={styles['product-card__image']} />
+      <Link
+        to={`${product.category}/${product.itemId}`}
+        onClick={() => window.scrollTo(0, 0)}
+      >
+        <article ref={ref} className={styles['product-card']}>
+          <Image src={image} className={styles['product-card__image']} />
 
-        <div className={styles['product-card__title']}>{product.name}</div>
+          <div className={styles['product-card__title']}>{product.name}</div>
 
-        <div className={styles['product-card__price']}>
-          <h3>${price}</h3>
-          {!hidePrevPrice && fullPrice !== price && (
-            <s className={styles['product-card__prev-price']}>
-              ${product.fullPrice}
-            </s>
-          )}
-        </div>
+          <div className={styles['product-card__price']}>
+            <h3>${price}</h3>
+            {!hidePrevPrice && fullPrice !== price && (
+              <s className={styles['product-card__prev-price']}>
+                ${product.fullPrice}
+              </s>
+            )}
+          </div>
 
-        <div className={styles['product-card__divider']}></div>
+          <div className={styles['product-card__divider']}></div>
 
-        <Characteristics characteristics={characteristics} />
+          <Characteristics characteristics={characteristics} />
 
-        <AddToCard />
-      </article>
+          <AddToCard />
+        </article>
+      </Link>
     );
   },
 );

@@ -2,21 +2,22 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 import { Product } from '@sTypes/Product';
+import { ProductCategory } from '@sTypes/ProductCategory';
 import { getProducts } from '@services/products';
 import { loadPrevState } from '@utils/loadPrevState';
 
 export const NAME = 'products';
 
 interface Phone extends Product {
-  category: 'phones';
+  category: ProductCategory.phones;
 }
 
 interface Tablet extends Product {
-  category: 'tablets';
+  category: ProductCategory.tablets;
 }
 
 interface Accessory extends Product {
-  category: 'accessories';
+  category: ProductCategory.accessories;
 }
 
 export interface Products {
@@ -67,15 +68,15 @@ const productsSlice = createSlice({
 
         for (const product of action.payload) {
           switch (product.category) {
-            case 'phones':
+            case ProductCategory.phones:
               state.products.phones.push(product as Phone);
               break;
 
-            case 'tablets':
+            case ProductCategory.tablets:
               state.products.tablets.push(product as Tablet);
               break;
 
-            case 'accessories':
+            case ProductCategory.accessories:
               state.products.accessories.push(product as Accessory);
               break;
           }

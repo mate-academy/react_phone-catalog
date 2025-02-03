@@ -14,18 +14,21 @@ export const Categories = () => {
       title: 'Mobile phones',
       img: './img/category-phones.webp',
       amount: products.phones.length,
+      url: './phones',
     },
     {
       bgColor: '#8D8D92',
       title: 'Tablets',
       img: './img/category-tablets.png',
       amount: products.tablets.length,
+      url: './tablets',
     },
     {
       bgColor: '#D53C51',
       title: 'Accessories',
       img: './img/category-accessories.png',
       amount: products.accessories.length,
+      url: './accessories',
     },
   ];
 

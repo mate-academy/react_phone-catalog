@@ -44,4 +44,9 @@
   &--close {
     background-image: url('/img/icons/icon-close.svg');
   }
+
+  &--home {
+    box-shadow: none;
+    background-image: url('/img/icons/icon-home.svg');
+  }
 }

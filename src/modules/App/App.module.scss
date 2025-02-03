@@ -33,6 +33,18 @@
   }
 
   &__content {
+    gap: 24px;
+    display: flex;
+    flex-direction: column;
+
     @include content-padding-inline;
+
+    @include on-tablet {
+      gap: 40px;
+    }
+
+    @include on-desktop {
+      gap: 40px;
+    }
   }
 }

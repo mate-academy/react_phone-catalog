@@ -63,6 +63,11 @@ $border-size: 1px;
     }
   }
 
+  &--small {
+    width: 16px;
+    height: 16px;
+  }
+
   &--disabled {
     cursor: auto;
     border: $border-size solid var(--elements-color);
@@ -76,9 +81,11 @@ $border-size: 1px;
     }
   }
 
-  &:not(&--disabled) {
-    @include on-desktop {
-      @include hover;
+  &--hide-borders {
+    border: none;
+
+    &:hover {
+      border: none;
     }
   }
 }
