@@ -1,7 +1,7 @@
 @import '../../styles/variables';
 @import '../../styles/mixins';
 
-.banner {
+.pictures-slider {
   @include page-grid;
 
   grid-column: 1 / -1;
