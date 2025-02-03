@@ -4,11 +4,12 @@ import { Gadget } from '../../../types/Gadget';
 import './SuggestedProducts.scss';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Autoplay } from 'swiper/modules';
-import classNames from 'classnames';
+import { ButtonAddCart } from '../../ButtonAddCart';
+import { ButtonHeart } from '../../ButtonHeart';
+import { Link } from 'react-router-dom';
 
 export const SuggestedProducts: React.FC = () => {
   const [suggestedProducts, setSuggestedProducts] = useState<Gadget[]>([]);
-  const [isPressed, setIsPressed] = useState(false);
 
   useEffect(() => {
     const fetchSuggestedProducts = async () => {
@@ -19,10 +20,6 @@ export const SuggestedProducts: React.FC = () => {
 
     fetchSuggestedProducts();
   }, []);
-
-  const addToFav = () => {
-    setIsPressed(!isPressed);
-  };
 
   return (
     <>
@@ -50,6 +47,7 @@ export const SuggestedProducts: React.FC = () => {
           pauseOnMouseEnter: true,
         }}
         modules={[Navigation, Autoplay]}
+        speed={1000}
         breakpoints={{
           320: {
             slidesPerView: 1.5,
@@ -98,14 +96,22 @@ export const SuggestedProducts: React.FC = () => {
             key={product.id}
             className="recommended__list--card recomm-card"
           >
-            <div className="recomm-card__picture">
+            <Link
+              to={`/${product.category}/${product.itemId}`}
+              className="recomm-card__picture"
+            >
               <img
                 className="recomm-card__picture--img"
                 src={product.image}
                 alt={product.name}
               />
-            </div>
-            <h4 className="recomm-card__title">{product.name}</h4>
+            </Link>
+            <Link
+              to={`/${product.category}/${product.itemId}`}
+              className="recomm-card__title"
+            >
+              {product.name}
+            </Link>
             <div className="recomm-card__price">
               <p className="recomm-card__price--disc">{`$${product.price}`}</p>
               <p className="recomm-card__price--regular">{`$${product.fullPrice}`}</p>
@@ -125,21 +131,8 @@ export const SuggestedProducts: React.FC = () => {
               </li>
             </ul>
             <div className="recomm-card__buttons">
-              <button type="button" className="recomm-card__buttons--add">
-                Add to cart
-              </button>
-              <button
-                className="recomm-card__buttons--heart"
-                onClick={addToFav}
-              >
-                <svg
-                  className={classNames('icon icon-heart', {
-                    'icon-heart-red': isPressed,
-                  })}
-                >
-                  <use href="img/icons.svg#icon-favourites-filled"></use>
-                </svg>
-              </button>
+              <ButtonAddCart productId={product.itemId} />
+              <ButtonHeart productId={product.itemId} />
             </div>
           </SwiperSlide>
         ))}

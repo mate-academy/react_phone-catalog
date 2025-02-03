@@ -13,7 +13,7 @@
 
   @include on-desktop-small {
     padding: 0 $padding-desktop-small;
-    margin-bottom: 8px;
+    margin-bottom: 80px;
   }
 
   @include on-desktop {
@@ -70,9 +70,10 @@
   &__list {
     &--card {
       display: flex;
-      align-items: center;
       justify-content: space-between;
       flex-direction: column;
+
+      @include hover(box-shadow, 0 0 4px $button-grey);
     }
   }
 
@@ -81,40 +82,34 @@
   }
 }
 
-.newmodels-card {
+.hotprices-card {
   padding: 32px;
   gap: 8px;
-  background-color: $black;
+  background-color: $grey-1;
   height: auto;
+  border: 1px solid $button-grey;
 
   &__picture {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 148px;
+    width: 100%;
     height: 108px;
+    align-self: center;
 
     @include on-tablet {
-      width: 173px;
       height: 181px;
     }
 
     @include on-desktop-small {
-      width: 208px;
       height: 196px;
     }
 
     &--img {
-      width: fit-content;
-      height: 108px;
+      width: auto;
+      height: 100%;
 
-      @include on-tablet {
-        height: 181px;
-      }
-
-      @include on-desktop-small {
-        height: 196px;
-      }
+      @include hover(transform, scale(1.1));
     }
   }
 
@@ -159,59 +154,18 @@
 
   &__buttons {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     gap: 8px;
-
-    &--add {
-      width: 100px;
-      height: 40px;
-      border: none;
-      background-color: $button-purple;
-      color: $white;
-      font-size: 14px;
-      line-height: 21px;
-      text-align: center;
-
-      @include hover(background-color, $purple-hover);
-
-      &:focus {
-        background-color: $button-grey;
-      }
-
-      @include on-tablet {
-        width: 125px;
-      }
-
-      @include on-desktop-small {
-        width: 160px;
-      }
-    }
-
-    &--heart {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      width: 40px;
-      height: 40px;
-      background-color: $button-grey;
-      border: none;
-
-      @include hover(background-color, $icon-grey);
-
-      &:focus {
-        background-color: transparent;
-        border: 1px solid $grey-2;
-      }
-    }
   }
 }
 
-.newmodels-item {
+.hotprices-item {
   display: flex;
   justify-content: space-between;
 
-  &__name {
+  &__name,
+  &__param {
     color: $light-grey;
     font-size: 12px;
     font-weight: 700;
@@ -221,14 +175,10 @@
 
   &__param {
     color: $white;
-    font-size: 12px;
-    font-weight: 700;
-    line-height: 1.28;
-    text-align: right;
   }
 }
 
-.swiper-btn {
+.hotprices-swiper-btn {
   &__prev,
   &__next {
     display: flex;

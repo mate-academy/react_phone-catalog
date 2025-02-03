@@ -1,3 +1,4 @@
+import { Gadget } from '../types/Gadget';
 import { Product } from '../types/Product';
 import { getData } from './httpClient';
 
@@ -14,5 +15,5 @@ export function getAccessories() {
 }
 
 export function getProducts() {
-  return getData<Product[]>('api/products.json');
+  return getData<Gadget[]>('api/products.json');
 }

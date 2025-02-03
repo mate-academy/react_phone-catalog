@@ -1,16 +1,16 @@
 /* eslint-disable prettier/prettier */
 import { ProductCard } from '../ProductCard';
-import { Product } from '../../types/Product';
+import { Gadget } from '../../types/Gadget';
 
 type Props = {
-  products: Product[];
+  products: Gadget[];
 };
 
 export const ProductsList: React.FC<Props> = ({ products }) => {
   return (
     <>
       {products.map(product => (
-        <ProductCard key={product.id} product={product} />
+        <ProductCard key={product.id} gadget={product} />
       ))}
     </>
   );

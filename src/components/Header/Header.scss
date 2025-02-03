@@ -17,6 +17,15 @@
     padding: 13px 16px;
 
     grid-column: 1 / span 2;
+
+    @include on-desktop-small {
+      width: 128px;
+      padding: 18px 24px;
+    }
+
+    &--pict {
+      width: 80px;
+    }
   }
 
   &__navbar {
@@ -30,6 +39,14 @@
       grid-column: 3 / span 7;
     }
 
+    @include on-desktop-small {
+      grid-column: 3 / span 9;
+    }
+
+    @include on-desktop {
+      padding-left: 10px;
+    }
+
     &--link {
       position: relative;
       text-decoration: none;
@@ -39,6 +56,13 @@
       font-weight: 800;
       line-height: 0.92;
       letter-spacing: 0.04em;
+      padding: 18.5px 0;
+
+      @include hover(text-shadow, 0 0 10px $loader-color, color, $white);
+
+      @include on-desktop-small{
+        padding: 26.5px 0;
+      }
     }
   }
 
@@ -51,6 +75,10 @@
       grid-column: 11 / span 2;
     }
 
+    @include on-desktop-small {
+      grid-column: 23 / span 2;
+    }
+
     &--icon {
       position: relative;
       display: flex;
@@ -59,6 +87,11 @@
       width: 48px;
       height: 48px;
       border-left: 1px solid $grey-2;
+
+      @include on-desktop-small {
+        width: 64px;
+        height: 64px;
+      }
     }
   }
 
@@ -78,6 +111,30 @@
       justify-content: center;
       width: 48px;
       height: 48px;
+      background-color: transparent;
+      border: none;
     }
+  }
+}
+
+.icon-count {
+  position: absolute;
+  width: 11.5px;
+  height: 11.5px;
+  top: 25%;
+  right: 25%;
+  border: none;
+  border-radius: 50%;
+  background-color: $icon-red;
+  font-size: 9px;
+  font-weight: 700;
+  line-height: 1.28;
+  text-align: center;
+  color: $white;
+
+  @include on-desktop-small {
+    width: 14px;
+    height: 14px;
+    font-size: 10px;
   }
 }

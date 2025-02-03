@@ -10,6 +10,16 @@
     margin-bottom: 64px;
   }
 
+  @include on-desktop-small {
+    margin-bottom: 80px;
+    padding: 120px $padding-desktop-small 0;
+  }
+
+  @include on-desktop {
+    padding-left: $padding-desktop;
+    padding-right: $padding-desktop;
+  }
+
   &__title {
     color: $white;
     font-weight: 800;
@@ -29,6 +39,11 @@
 
       grid-column: 1 / 10;
     }
+
+    @include on-desktop-small {
+      grid-column: 1 / 18;
+      margin-bottom: $margin-bottom-desktop-small;
+    }
   }
 
   &__swiper {
@@ -45,19 +60,30 @@
         width: 70%;
         margin: 0 auto;
       }
+
+      @include on-desktop-small {
+        width: 80%;
+      }
     }
   }
 
-.swiper {
+  .swiper {
     &-wrapper {
       display: flex;
       justify-content: space-between;
       align-items: center;
       height: 320px;
+      padding-bottom: 32px;
       grid-column: 1 / -1;
 
-      @include on-tablet {
-        height: 221px;
+      @include on-desktop-small {
+        height: 480px;
+        padding-bottom: 40px;
+      }
+
+      @include on-desktop {
+        height: 550px;
+        padding-bottom: 50px;
       }
     }
 
@@ -98,6 +124,17 @@
           font-size: 10px;
         }
       }
+
+      @include on-desktop-small {
+        width: 45px;
+        height: 480px;
+      }
+
+      @include on-desktop {
+        height: 550px
+      }
+
+      @include hover(background-color, $icon-grey);
     }
 
     &-button-prev {

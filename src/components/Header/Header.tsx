@@ -1,20 +1,23 @@
 import { Link, NavLink } from 'react-router-dom';
 import './Header.scss';
-import React from 'react';
-import classNames from 'classnames';
-
-const getLinkClass = ({ isActive }: { isActive: boolean }) =>
-  classNames('header__navbar--link', {
-    'is-active': isActive,
-  });
+import React, { useMemo } from 'react';
+import { getIconClass, getLinkClass } from '../../utils/heplerFunctions';
+import { useAppSelector } from '../../app/hooks';
 
 export const Header: React.FC = () => {
+  const favProductIds = useAppSelector(state => state.favorites.products);
+  const cartProductIds = useAppSelector(state => state.cart.products);
+
+  const totalCount = useMemo(() => {
+    return cartProductIds.reduce((count, product) => count + product.count, 0);
+  }, [cartProductIds]);
+
   return (
-    <div className="header">
+    <header className="header">
       <Link to="/" className="header__logo">
-        <img src="img/Logo.png" alt="Logo" />
+        <img src="img/Logo.svg" alt="Logo" className="header__logo--pict" />
       </Link>
-      <div className="header__navbar">
+      <nav className="header__navbar">
         <NavLink to="/" className={getLinkClass}>
           Home
         </NavLink>
@@ -27,26 +30,34 @@ export const Header: React.FC = () => {
         <NavLink to="/accessories" className={getLinkClass}>
           Accessories
         </NavLink>
-      </div>
+      </nav>
       <div className="header__user">
-        <Link className="header__user--icon" to="/">
+        <NavLink className={getIconClass} to="/favorites">
           <svg className="icon icon-user">
             <use href="img/icons.svg#icon-favourites"></use>
           </svg>
-        </Link>
-        <Link className="header__user--icon" to="/">
+          {!!favProductIds.length && (
+            <span className="header__user--icon icon-count">
+              {favProductIds.length}
+            </span>
+          )}
+        </NavLink>
+        <NavLink className={getIconClass} to="/cart">
           <svg className="icon icon-user">
             <use href="img/icons.svg#icon-shopping-bag"></use>
           </svg>
-        </Link>
+          {!!totalCount && (
+            <span className="header__user--icon icon-count">{totalCount}</span>
+          )}
+        </NavLink>
       </div>
       <div className="header__menu">
-        <Link className="header__menu--icon" to="/">
+        <Link to={'/menu'} className="header__menu--icon">
           <svg className="icon icon-menu">
             <use href="img/icons.svg#icon-menu"></use>
           </svg>
         </Link>
       </div>
-    </div>
+    </header>
   );
 };

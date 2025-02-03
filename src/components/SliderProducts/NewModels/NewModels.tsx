@@ -4,12 +4,13 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
 import 'swiper/scss';
 import { Gadget } from '../../../types/Gadget';
-import classNames from 'classnames';
 import { getNewModels } from '../../../services/getNewModels';
+import { ButtonAddCart } from '../../ButtonAddCart';
+import { ButtonHeart } from '../../ButtonHeart';
+import { Link } from 'react-router-dom';
 
 export const NewModels: React.FC = () => {
   const [suggestedProducts, setSuggestedProducts] = useState<Gadget[]>([]);
-  const [isPressed, setIsPressed] = useState(false);
 
   useEffect(() => {
     const fetchSuggestedProducts = async () => {
@@ -21,21 +22,17 @@ export const NewModels: React.FC = () => {
     fetchSuggestedProducts();
   }, []);
 
-  const addToFav = () => {
-    setIsPressed(!isPressed);
-  };
-
   return (
     <div className="newmodels">
       <div className="newmodels__header">
         <h3 className="newmodels__header--title">Brand new models</h3>
-        <div className="newmodels__header--buttons swiper-btn">
-          <button className="swiper-btn__prev">
+        <div className="newmodels__header--buttons newmodels-swiper-btn">
+          <button className="newmodels-swiper-btn__prev">
             <svg className="icon icon-nav">
               <use href="img/icons.svg#icon-arrow-left"></use>
             </svg>
           </button>
-          <button className="swiper-btn__next">
+          <button className="newmodels-swiper-btn__next">
             <svg className="icon icon-nav">
               <use href="img/icons.svg#icon-arrow-right"></use>
             </svg>
@@ -47,6 +44,7 @@ export const NewModels: React.FC = () => {
           spaceBetween={16}
           slidesPerView={1.5}
           modules={[Navigation]}
+          speed={1000}
           breakpoints={{
             320: {
               slidesPerView: 1.4,
@@ -85,8 +83,8 @@ export const NewModels: React.FC = () => {
             },
           }}
           navigation={{
-            nextEl: '.swiper-btn__next',
-            prevEl: '.swiper-btn__prev',
+            nextEl: '.newmodels-swiper-btn__next',
+            prevEl: '.newmodels-swiper-btn__prev',
           }}
           className="newmodels__list"
         >
@@ -95,14 +93,22 @@ export const NewModels: React.FC = () => {
               key={product.id}
               className="newmodels__list--card newmodels-card"
             >
-              <div className="newmodels-card__picture">
+              <Link
+                to={`/${product.category}/${product.itemId}`}
+                className="newmodels-card__picture"
+              >
                 <img
                   className="newmodels-card__picture--img"
                   src={product.image}
                   alt={product.name}
                 />
-              </div>
-              <h4 className="newmodels-card__title">{product.name}</h4>
+              </Link>
+              <Link
+                to={`/${product.category}/${product.itemId}`}
+                className="newmodels-card__title"
+              >
+                {product.name}
+              </Link>
               <p className="newmodels-card__price">{`$${product.fullPrice}`}</p>
               <ul className="newmodels-card__tech">
                 <li className="newmodels-card__tech--item newmodels-item">
@@ -119,21 +125,8 @@ export const NewModels: React.FC = () => {
                 </li>
               </ul>
               <div className="newmodels-card__buttons">
-                <button type="button" className="newmodels-card__buttons--add">
-                  Add to cart
-                </button>
-                <button
-                  className="newmodels-card__buttons--heart"
-                  onClick={addToFav}
-                >
-                  <svg
-                    className={classNames('icon icon-heart', {
-                      'icon-heart-red': isPressed,
-                    })}
-                  >
-                    <use href="img/icons.svg#icon-favourites-filled"></use>
-                  </svg>
-                </button>
+                <ButtonAddCart productId={product.itemId} />
+                <ButtonHeart productId={product.itemId} />
               </div>
             </SwiperSlide>
           ))}

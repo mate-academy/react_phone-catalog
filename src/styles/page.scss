@@ -1,7 +1,6 @@
 @import './common';
 
 .selected-cat {
-
   &__active {
     display: flex;
     align-items: center;
@@ -11,6 +10,10 @@
 
     @include on-tablet {
       margin-bottom: 40px;
+    }
+
+    @include on-desktop-small {
+      padding-top: 88px;
     }
 
     &--link {
@@ -29,7 +32,10 @@
       color: $light-grey;
       font-size: 12px;
       font-weight: 500;
-      line-height: 15.34px;
+      line-height: 1.28;
+      cursor: pointer;
+
+      @include hover(color, $button-purple);
     }
   }
 
@@ -37,20 +43,20 @@
     color: $white;
     font-size: 32px;
     font-weight: 800;
-    line-height: 41px;
+    line-height: 1.29;
     letter-spacing: -0.01em;
     margin-bottom: 8px;
 
     @include on-tablet {
       font-size: 48px;
-      line-height: 56px;
+      line-height: 1.17;
     }
   }
 
   &__text {
     color: $light-grey;
     font-size: 14px;
-    line-height: 21px;
+    line-height: 1.5;
     margin-bottom: 32px;
 
     @include on-tablet {
@@ -58,11 +64,48 @@
     }
   }
 
-  &__no-product {
+  &__no-product,
+  &__error {
     color: $white;
     font-size: 24px;
-    line-height: 41px;
+    line-height: 1.7;
     letter-spacing: -0.01em;
     margin-bottom: 24px;
+  }
+
+  &__error {
+    margin-top: 20px;
+    margin-bottom: 16px;
+  }
+
+  &__reload {
+    width: 120px;
+    height: 40px;
+    border: none;
+    background-color: $button-purple;
+    color: $white;
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 1.5;
+    text-align: center;
+    cursor: pointer;
+
+    @include hover(background-color, $purple-hover);
+  }
+}
+
+.favorites__box {
+  @include page-grid;
+
+  margin-bottom: 56px;
+  gap: 40px;
+
+  @include on-tablet {
+    margin-bottom: 64px;
+    gap: 40px 17px;
+  }
+
+  @include on-desktop-small {
+    margin-bottom: 80px;
   }
 }

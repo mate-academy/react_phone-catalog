@@ -5,6 +5,14 @@
 
   @include page-grid;
 
+  @include on-tablet {
+    margin-bottom: 64px;
+  }
+
+  @include on-desktop-small {
+    margin-bottom: 80px;
+  }
+
   &__title {
     color: $white;
     font-size: 22px;
@@ -37,6 +45,10 @@
       @include on-tablet {
         margin-bottom: 0;
       }
+
+      @include on-desktop-small {
+      grid-column: span 8;
+    }
     }
   }
 }
@@ -44,6 +56,9 @@
 .card {
   &__img {
     margin-bottom: $margin-bottom-mobile;
+    border-radius: 10px;
+
+    @include hover(box-shadow, 0 0 8px $white, transform, scale(1.04));
   }
 
   &__title {

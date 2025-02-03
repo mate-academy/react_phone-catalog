@@ -15,8 +15,18 @@ export const Footer: React.FC = () => {
         >
           Github
         </Link>
-        <p className="footer__navbar--link">Contacts</p>
-        <p className="footer__navbar--link">Rights</p>
+        <Link
+          to="https://github.com/DaniilBarilotti/"
+          className="footer__navbar--link"
+        >
+          Contacts
+        </Link>
+        <Link
+          to="https://github.com/DaniilBarilotti/"
+          className="footer__navbar--link"
+        >
+          Rights
+        </Link>
       </div>
       <div className="footer__back">
         <p className="footer__back--text">Back to top</p>

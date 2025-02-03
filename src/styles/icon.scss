@@ -4,11 +4,18 @@
   &-menu {
     fill: $white;
     width: 14px;
+    height: 14px;
   }
 
   &-user {
     fill: $white;
     width: 16px;
+    height: 15px;
+
+    @include on-desktop-small {
+      width: 20px;
+      height: 19px;
+    }
   }
 
   &-up {
@@ -62,5 +69,37 @@
     height: 10px;
 
     @include hover(fill, $purple-hover);
+  }
+
+  &-dropdown-up,
+  &-dropdown-down {
+    fill: $light-grey;
+    width: 10px;
+    height: 6px;
+  }
+
+  &-delete {
+    width: 10px;
+    height: 10px;
+    fill: $icon-grey;
+  }
+
+  &-minus,
+  &-plus {
+    width: 12px;
+    height: 12px;
+    fill: $white;
+  }
+
+  &-close {
+    width: 10px;
+    height: 10px;
+    fill: $white;
+  }
+
+  &-close-modal {
+    width: 12px;
+    height: 12px;
+    fill: $grey-2;
   }
 }

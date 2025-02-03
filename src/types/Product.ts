@@ -2,6 +2,7 @@ export type Product = {
   id: string;
   category: string;
   name: string;
+  namespaceId: string;
   capacity: string;
   capacityAvailable: string[];
   priceRegular: number;
@@ -17,4 +18,5 @@ export type Product = {
   camera: string;
   zoom: string;
   cell: string[];
+  year: number;
 };
