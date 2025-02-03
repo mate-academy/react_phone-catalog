@@ -2,7 +2,6 @@
   background: $background;
   position: fixed;
   inset: 0;
-  min-height: 100vh;
   z-index: 1;
   display: flex;
   flex-direction: column;
@@ -15,7 +14,6 @@
   &__navigation {
     flex: 1;
   }
-
 
   &__top-bar {
     width: 100%;
@@ -60,7 +58,6 @@
 
   &__bottom {
     display: flex;
-    height: 64px;
     border-top: 1px solid $grey;
   }
 
@@ -84,7 +81,7 @@
   &__icon-link {
     display: flex;
     width: 50%;
-    height: 100%;
+    height: 64px;
     justify-content: center;
     align-items: center;
 
