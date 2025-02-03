@@ -1,5 +1,6 @@
 {
   "name": "react_phone-catalog-1",
+  "homepage": "react_phone-catalog",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -42,6 +43,7 @@
     "eslint-plugin-react": "^7.37.4",
     "eslint-plugin-react-hooks": "^5.0.0",
     "eslint-plugin-react-refresh": "^0.4.16",
+    "gh-pages": "^6.3.0",
     "globals": "^15.14.0",
     "husky": "^9.1.7",
     "prettier": "^3.4.2",
