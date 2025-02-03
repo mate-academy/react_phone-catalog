@@ -5,10 +5,13 @@ import { useProducts } from '../../hooks/useProducts';
 import emptyCart from '../../assets/images/cart-is-empty.png';
 import { CartItems } from './components/CartItems/CartItems';
 import { CartSummary } from './components/CartSummary';
+import { Icon } from '../../components/Icon';
+import { useNavigate } from 'react-router-dom';
 
 export const CartsPage = () => {
   const { cartProducts } = useProductsContext();
   const { products } = useProducts();
+  const navigate = useNavigate();
 
   const cartItems = products.filter(product =>
     cartProducts.includes(product.id),
@@ -17,7 +20,13 @@ export const CartsPage = () => {
   return (
     <div className={styles.carts}>
       <div className={styles.carts__content}>
-        <div className={styles.carts__breadcrumbs}>lalala</div>
+        <button className={styles.carts__back} onClick={() => navigate(-1)}>
+          <div className={styles.carts__icon}>
+            <Icon type="arrowPrev" />
+          </div>
+
+          <span className={styles.carts__btnText}>Back</span>
+        </button>
 
         <h1 className={styles.carts__title}>Cart</h1>
 

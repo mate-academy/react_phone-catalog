@@ -37,7 +37,7 @@ export const ModalWindow: React.FC<Props> = ({ setIsModalOpen }) => {
       <div className={styles.modal}>
         <div className={styles.modal__wrapper}>
           <button className={styles.modal__close} onClick={handleClose}>
-            <Icon type="closeCart" isSmall />
+            <Icon type="closeCart" />
           </button>
 
           <div className={styles.modal__text}>

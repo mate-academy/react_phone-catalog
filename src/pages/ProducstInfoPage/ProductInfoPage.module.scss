@@ -8,6 +8,7 @@
   }
 
   &__back {
+    padding-left: 0;
     border: none;
     background-color: transparent;
     display: flex;
@@ -91,6 +92,15 @@
 
     @include on-mobile {
       margin-top: 56px;
+    }
+  }
+
+  &__slider {
+    width: 102.5%;
+    box-sizing: border-box;
+
+    @include on-tablet {
+      width: 100%;
     }
   }
 }

@@ -5,10 +5,6 @@
 
   @include section;
 
-  @include on-mobile {
-    margin-left: 16px;
-  }
-
   &__top {
     display: flex;
     justify-content: space-between;
@@ -25,7 +21,7 @@
     display: flex;
     gap: 16px;
     justify-content: right;
-    margin-right: 2px;
+    margin-right: 24px;
 
     @include on-mobile {
       margin-right: 16px;

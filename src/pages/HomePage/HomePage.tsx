@@ -19,13 +19,19 @@ export const HomePage = () => {
   return (
     <main className={styles['home-page']}>
       <Hero />
-      <ProductsSlider products={uniqueProducts} title="Brand new models" />
+      <div className={styles.slider}>
+        <ProductsSlider products={uniqueProducts} title="Brand new models" />
+      </div>
+
       <CategoryShop />
-      <ProductsSlider
-        products={uniqueTheHotestPrices}
-        title="Hot prices"
-        checkPrice
-      />
+
+      <div className={styles.slider}>
+        <ProductsSlider
+          products={uniqueTheHotestPrices}
+          title="Hot prices"
+          checkPrice
+        />
+      </div>
     </main>
   );
 };

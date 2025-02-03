@@ -24,22 +24,17 @@ import MinusDark from '../../assets/images/Icons/dark/minusActiveDark .png';
 import MinusLight from '../../assets/images/Icons/light/minusActiveLight.png';
 import PlusDark from '../../assets/images/Icons/dark/plusActiveDark.png';
 import PlusLight from '../../assets/images/Icons/light/plusActiveLight.png';
+import HomeDark from '../../assets/images/Icons/dark/homeDark.png';
+import HomeLight from '../../assets/images/Icons/light/homeLight.png';
 import { useTheme } from '../../hooks/useTheme';
-import classNames from 'classnames';
 
 type Props = {
   type: IconType;
-  isSmall?: boolean;
   onMouseEnter?: () => void;
   onMouseLeave?: () => void;
 };
 
-export const Icon: React.FC<Props> = ({
-  type,
-  isSmall,
-  onMouseEnter,
-  onMouseLeave,
-}) => {
+export const Icon: React.FC<Props> = ({ type, onMouseEnter, onMouseLeave }) => {
   const { theme } = useTheme();
   const darkTheme = theme === 'dark';
 
@@ -56,6 +51,7 @@ export const Icon: React.FC<Props> = ({
     closeCart: darkTheme ? CloseCartDark : CloseCartLight,
     plus: darkTheme ? PlusDark : PlusLight,
     minus: darkTheme ? MinusDark : MinusLight,
+    home: darkTheme ? HomeDark : HomeLight,
   };
 
   const iconSrc = icons[type];
@@ -66,13 +62,7 @@ export const Icon: React.FC<Props> = ({
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
     >
-      <img
-        src={iconSrc}
-        alt={type}
-        className={classNames(styles.icon__img, {
-          [styles.smalImg]: isSmall,
-        })}
-      />
+      <img src={iconSrc} alt={type} className={styles.icon__img} />
     </div>
   );
 };

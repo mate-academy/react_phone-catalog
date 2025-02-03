@@ -16,13 +16,35 @@
     width: 100%;
   }
 
-  &__breadcrumbs {
+  &__back {
+    border: none;
+    background-color: transparent;
+    display: flex;
+    gap: 4px;
+    justify-content: center;
+    align-items: center;
+    height: 16px;
+    cursor: pointer;
     margin-top: 40px;
     margin-bottom: 16px;
+    padding-left: 0;
+
+    @include hover-scale;
 
     @include on-mobile {
       margin-block: 24px;
     }
+  }
+
+  &__btnText {
+    @include small-text;
+
+    color: var(--primary-color);
+    font-family: Mont;
+  }
+
+  &__icon {
+    padding-top: 2px;
   }
 
   &__title {

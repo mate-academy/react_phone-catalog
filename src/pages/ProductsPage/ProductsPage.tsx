@@ -8,6 +8,7 @@ import { getSortedProducts } from '../../utils/getSortedProducts';
 import { getPaginatedProducts } from '../../utils/getPaginatedProducts';
 import { Pagination } from './components/Pagination';
 import { Filtration } from './components/Filtration';
+import { Breadcrumbs } from '../../components/Breadcrumbs';
 
 export const ProductsPage = () => {
   const { products } = useProducts();
@@ -45,7 +46,9 @@ export const ProductsPage = () => {
 
   return (
     <div className={styles.products}>
-      <div className={styles.products__breadcrumbs}>lalala</div>
+      <div className={styles.products__breadcrumbs}>
+        <Breadcrumbs />
+      </div>
       <h1 className={styles.products__title}>
         {capitalizeFirstLetter(itemCategory)}
       </h1>

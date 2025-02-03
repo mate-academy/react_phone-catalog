@@ -1,26 +1,36 @@
 import React from 'react';
 import styles from './ProductInfoPage.module.scss';
 import { Icon } from '../../components/Icon';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useAllProducts } from '../../hooks/useAllProducts';
 import { ProductAddInfo } from './components/ProductAddInfo';
 import { AboutProduct } from './components/AboutProduct';
 import { Gallery } from './components/Gallery';
+import { ProductsSlider } from '../HomePage/components/ProductsSlider';
+import { useProducts } from '../../hooks/useProducts';
+import { getRandomProducts } from '../../utils/getRandomProducts';
+import { Breadcrumbs } from '../../components/Breadcrumbs';
 
 export const ProductInfoPage = () => {
+  const { products } = useProducts();
   const { allProducts } = useAllProducts();
   const { productId } = useParams();
   const selectedProduct = allProducts.find(
     allProduct => allProduct.id === productId,
   );
 
+  const randomProducts = getRandomProducts(products);
+  const navigate = useNavigate();
+
   return (
     <div className={styles.product}>
-      <div className={styles.product__breadcrumbs}>lalala</div>
+      <div className={styles.product__breadcrumbs}>
+        <Breadcrumbs />
+      </div>
 
-      <button className={styles.product__back}>
+      <button className={styles.product__back} onClick={() => navigate(-1)}>
         <div className={styles.product__icon}>
-          <Icon type="arrowPrev" isSmall />
+          <Icon type="arrowPrev" />
         </div>
 
         <span className={styles.product__btnText}>Back</span>
@@ -42,6 +52,13 @@ export const ProductInfoPage = () => {
             <div className={styles.product__aboutInfo}>
               <AboutProduct selectedProduct={selectedProduct} />
             </div>
+          </div>
+          <div className={styles.product__slider}>
+            <ProductsSlider
+              products={randomProducts}
+              title="You also may like"
+              checkPrice
+            />
           </div>
         </>
       )}

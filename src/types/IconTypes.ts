@@ -10,4 +10,5 @@ export type IconType =
   | 'arrowDown'
   | 'closeCart'
   | 'minus'
-  | 'plus';
+  | 'plus'
+  | 'home';
