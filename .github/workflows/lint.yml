@@ -2,11 +2,10 @@ name: Lint
 
 on:
   pull_request:
-    branches: [ master ]
+    branches: [master]
 
 jobs:
   run_linter:
-
     runs-on: ubuntu-latest
 
     strategy:

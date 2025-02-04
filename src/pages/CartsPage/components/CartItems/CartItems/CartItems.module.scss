@@ -1,0 +1,132 @@
+@import '../../../../../styles/main.scss';
+
+.items {
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.item {
+  display: inline;
+  align-content: center;
+  width: 100%;
+  height: 128px;
+  background-color: var(--card-bg-color);
+  border: 1px solid var(--card-border-color);
+
+  @include on-mobile {
+    height: 160px;
+  }
+
+  &__wrapper {
+    display: flex;
+    gap: 24px;
+    padding-inline: 24px;
+
+    @include on-mobile {
+      flex-direction: column;
+      gap: 16px;
+      padding: 16px;
+    }
+  }
+
+  &__contentLeft {
+    flex-grow: 1;
+    display: grid;
+    column-gap: 24px;
+    grid-template-columns: auto auto 1fr;
+
+    @include on-mobile {
+      column-gap: 16px;
+    }
+  }
+
+  &__contentRight {
+    display: grid;
+    align-items: center;
+    column-gap: 24px;
+    grid-template-columns: repeat(2, auto);
+  }
+
+  &__close {
+    width: 20px;
+    height: 20px;
+    display: flex;
+    justify-content: center;
+    align-self: center;
+    border: none;
+    background-color: var(--card-bg-color);
+    cursor: pointer;
+  }
+
+  &__link {
+    display: flex;
+    align-items: center;
+  }
+
+  &__img {
+    height: 80px;
+    width: 80px;
+    object-fit: contain;
+    cursor: pointer;
+
+    @include hover-scale;
+  }
+
+  &__name {
+    cursor: pointer;
+    width: 100%;
+
+    @include body-text;
+
+    &:hover {
+      color: var(--card-hover-text-color);
+    }
+  }
+
+  &__countWrapper {
+    width: 96px;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    place-items: center;
+  }
+
+  &__btn {
+    @include btn;
+
+    display: flex;
+    justify-content: center;
+
+    &:disabled {
+      opacity: 0.4;
+      background-color: var(--card-bg-color);
+      border: 1px solid var(--shadow-color);
+      cursor: not-allowed;
+    }
+  }
+
+  &__count {
+    width: 33px;
+    height: 32px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+
+    @include body-text;
+  }
+
+  &__price {
+    font-size: 22px;
+    font-weight: $font-acc;
+    line-height: 30.8px;
+    text-align: right;
+    padding-left: 30px;
+    justify-self: end;
+
+    &::before {
+      content: '$';
+    }
+  }
+}

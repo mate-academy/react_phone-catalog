@@ -1,0 +1,83 @@
+@import '../../../../styles/main.scss';
+
+.dropdown {
+  position: relative;
+  width: 100%;
+  box-sizing: border-box;
+
+  &__btn {
+    color: var(--primary-color);
+    width: 100%;
+    box-sizing: border-box;
+    height: 40px;
+    background-color: var(--button-bg-color);
+    border: 1px solid var(--button-border-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 12px;
+    padding-right: 12px;
+    cursor: pointer;
+    flex-direction: row-reverse;
+
+    @include button-text;
+
+    &:hover {
+      border-color: var(--button-border-hover-color);
+    }
+
+    &:focus {
+      border-color: var(--card-button-color);
+      outline: none;
+    }
+  }
+
+  &__icon {
+    margin-left: 10px;
+    padding-top: 4px;
+  }
+
+  &__content {
+    top: 1;
+    position: absolute;
+    z-index: 1;
+    width: 99.3%;
+    padding-left: 0;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid var(--button-border-color);
+    background-color: var(--bg-color);
+    pointer-events: none;
+    opacity: 0;
+
+    transform: translateY(-20%);
+    transition:
+      transform 0.2s,
+      opacity 0.2s;
+  }
+
+  &__option {
+    @include body-text;
+
+    color: var(--secondary-color);
+    cursor: pointer;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    padding-inline: 12px;
+    transition:
+      background-color 0.2s,
+      color 0.2s;
+
+    &:hover {
+      background-color: var(--button-hover-color);
+      color: var(--primary-color);
+    }
+  }
+}
+
+.open {
+  opacity: 1;
+  transform: translateY(0%);
+  pointer-events: auto;
+}

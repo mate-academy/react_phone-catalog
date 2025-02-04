@@ -1,0 +1,51 @@
+body.light-theme {
+  --bg-color: #fff;
+  --primary-color: #313237;
+  --secondary-color: #89939a;
+  --elements-color: #e2e6e9;
+  --shadow-color: #e2e6e9;
+  --button-bg-color: #fff;
+  --button-border-color: #b4bdc3;
+  --card-bg-color: #fff;
+  --card-border-color: #e2e6e9;
+  --card-hover-text-color: #64656b;
+  --card-button-color: #313237;
+  --card-button-hover-color: #313237;
+  --button-border-hover-color: #89939a;
+  --primary-footer-text-color: #89939a;
+  --secondary-footer-text-color: #313237;
+  --page-active-color: #fff;
+  --button-hover-color: #fff;
+  --page-border-hover-color: #b4bdc3;
+  --capacity-border-color: #b4bdc3;
+}
+
+body.dark-theme {
+  --bg-color: #0f1121;
+  --primary-color: #f1f2f9;
+  --secondary-color: #75767f;
+  --elements-color: #3b3e4a;
+  --shadow-color: #3b3e4a;
+  --button-bg-color: #323542;
+  --button-border-color: #323542;
+  --card-bg-color: #161827;
+  --card-border-color: #161827;
+  --card-hover-text-color: #cccccc;
+  --card-button-color: #905bff;
+  --card-button-hover-color: #a177fa;
+  --button-hover-color: #4a4d58;
+  --primary-footer-text-color: #f1f2f9;
+  --secondary-footer-text-color: #f1f2f9;
+  --button-border-hover-color: #4a4d58;
+  --page-active-color: #fff;
+  --page-border-hover-color: #323542;
+  --capacity-border-color: #4a4d58;
+}
+
+$green-color: #27ae60;
+
+$header-height-desktop: 64px;
+$header-height-tablets: 48px;
+$desktop-min-width: 1200px;
+$tablet-min-width: 640px;
+$transition-time: 0.2s;

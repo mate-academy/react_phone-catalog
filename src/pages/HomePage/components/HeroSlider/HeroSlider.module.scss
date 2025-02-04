@@ -1,0 +1,99 @@
+@import '../../../../styles/main.scss';
+
+.slider {
+  height: 100%;
+  padding-top: 56px;
+  margin-inline: 0;
+  position: relative;
+  object-fit: cover;
+  padding-right: 24px;
+
+  @include on-tablet {
+    padding-top: 32px;
+  }
+
+  @include on-mobile {
+    padding-top: 24px;
+    padding-right: 0;
+    aspect-ratio: 1 / 1;
+  }
+
+  &__content {
+    display: grid;
+    grid-template-columns: 32px 1fr 32px;
+    column-gap: 16px;
+
+    @include on-mobile {
+      grid-template-columns: 1fr;
+      column-gap: 0;
+    }
+  }
+
+  &__wrapper {
+    overflow: hidden;
+    aspect-ratio: 1040 / 400;
+
+    @include on-mobile {
+      aspect-ratio: 1 / 1;
+    }
+  }
+
+  &__container {
+    display: flex;
+    height: 100%;
+  }
+
+  &__item {
+    flex: 0 0 100%;
+    cursor: grab;
+    margin-right: 20px;
+  }
+
+  &__img {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    display: block;
+  }
+
+  &__arrows {
+    display: flex;
+
+    @include on-mobile {
+      display: none;
+    }
+  }
+
+  &__arrow {
+    background-color: var(--button-bg-color);
+    border: 1px solid var(--button-border-color);
+    height: 100%;
+    width: 32px;
+
+    @include hover-scale-btn;
+
+    &:hover {
+      border-color: var(--button-hover-border-color);
+      background-color: var(--button-hover-color);
+    }
+  }
+
+  &__dots {
+    display: flex;
+    justify-content: center;
+    gap: 14px;
+    padding-top: 18px;
+  }
+
+  &__dot {
+    background-color: var(--elements-color);
+    border: none;
+    width: 14px;
+    height: 4px;
+    cursor: pointer;
+
+    &.active {
+      background-color: var(--primary-color);
+    }
+  }
+}

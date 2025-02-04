@@ -1,0 +1,46 @@
+@import '../../styles/main.scss';
+
+.favourite {
+  @include base-spacing;
+
+  &__breadcrumbs {
+    @include base-spacing-breadcrumbs;
+  }
+
+  &__title {
+    @include h1;
+  }
+
+  &__count {
+    color: var(--secondary-color);
+    font-size: 14px;
+    line-height: 21px;
+    font-weight: $font-thin;
+    margin-top: 8px;
+    margin-bottom: 0;
+  }
+
+  &__products {
+    margin-top: 40px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    column-gap: 16px;
+    row-gap: 40px;
+
+    @media (max-width: 975px) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    @media (max-width: 740px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media (max-width: 490px) {
+      grid-template-columns: 1fr;
+    }
+
+    @include on-mobile {
+      margin-top: 32px;
+    }
+  }
+}

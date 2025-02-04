@@ -1,0 +1,53 @@
+@import '../../styles/main.scss';
+
+.navIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease;
+  height: 100%;
+  padding-top: 3px;
+  position: relative;
+}
+
+.is-active {
+  &::after {
+    bottom: 3px;
+  }
+}
+
+.count {
+  left: 33px;
+  top: 18px;
+  position: absolute;
+  background-color: #eb5757;
+  border-radius: 50%;
+  width: 14px;
+  height: 14px;
+  display: flex;
+  justify-content: center;
+
+  @include on-tablet {
+    left: 25px;
+    top: 9px;
+  }
+
+  &__number {
+    align-items: center;
+    padding-right: 1px;
+    padding-top: 2px;
+    display: flex;
+    font-size: 9px;
+    font-weight: $font-normal;
+    text-align: center;
+    line-height: 11.5px;
+    color: #fff;
+  }
+}
+
+.countMenu {
+  @include on-mobile {
+    left: 51%;
+    top: 27%;
+  }
+}
