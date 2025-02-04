@@ -18,6 +18,12 @@ html {
   scroll-behavior: smooth;
 }
 
+html.modal-open,
+body.modal-open {
+  overflow: hidden;
+  height: 100%;
+}
+
 .is-active {
   color: var(--primary-color);
   position: relative;

@@ -1,4 +1,3 @@
-// CartItems.tsx
 import { useState } from 'react';
 import styles from './CartItems.module.scss';
 import { Icon } from '../../../../../components/Icon';

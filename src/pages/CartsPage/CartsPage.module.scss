@@ -3,6 +3,9 @@
   display: flex;
   margin-top: 0;
   padding-inline: 32px;
+  width: 100%;
+  box-sizing: border-box;
+  margin-bottom: 64px;
 
   @include on-tablet {
     padding-inline: 24px;
@@ -10,6 +13,7 @@
 
   @include on-mobile {
     padding-inline: 16px;
+    margin-bottom: 56px;
   }
 
   &__content {
@@ -100,6 +104,7 @@
 
   &__wrapper {
     display: flex;
+    justify-content: space-between;
     gap: 16px;
 
     @include on-tablet {
