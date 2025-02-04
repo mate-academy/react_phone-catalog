@@ -13,7 +13,11 @@ export const Menu = () => {
     const target = event.target as HTMLElement;
 
     if (target && target.closest('[data-nav-link]')) {
-      closeMenu();
+      const menuElement = document.querySelector('.app__menu');
+      if (menuElement) {
+        menuElement.classList.add('app__menu--closing');
+        setTimeout(closeMenu, 50);
+      }
     }
   };
 

@@ -3,11 +3,18 @@ import styles from './Breadcrumbs.module.scss';
 import { Link, NavLink, useLocation, useParams } from 'react-router-dom';
 import { Icon } from '../Icon';
 import classNames from 'classnames';
+import { useAllProducts } from '../../hooks/useAllProducts';
 
 export const Breadcrumbs = () => {
-  const { category } = useParams();
+  const { category, productId } = useParams();
   const { pathname, state } = useLocation();
   const search = state?.search || '';
+
+  const { allProducts } = useAllProducts(() => {});
+
+  const isValidProduct = productId
+    ? allProducts.some(product => product.id === productId)
+    : true;
 
   const pathnames = pathname.split('/').filter(x => x);
 
@@ -30,16 +37,21 @@ export const Breadcrumbs = () => {
           pathTo = pathTo + search;
         }
 
+        // Якщо productId неправильний, не рендеримо посилання
+        if (path === productId && !isValidProduct) {
+          return null;
+        }
+
         return (
           <Fragment key={pathTo}>
             <NavLink
               to={pathTo}
               end
-              className={({ isActive }) => {
-                return classNames(`${styles.breadcrumbs__link}`, {
+              className={({ isActive }) =>
+                classNames(styles.breadcrumbs__link, {
                   [styles.breadcrumbs__activeLink]: isActive,
-                });
-              }}
+                })
+              }
             >
               {path.charAt(0).toUpperCase() + path.slice(1)}
             </NavLink>

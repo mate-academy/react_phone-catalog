@@ -96,6 +96,9 @@
   &__btn {
     @include btn;
 
+    display: flex;
+    justify-content: center;
+
     &:disabled {
       opacity: 0.4;
       background-color: var(--card-bg-color);

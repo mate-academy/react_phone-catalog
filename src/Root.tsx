@@ -44,6 +44,7 @@ export const Root = () => {
                 <Route path=":category/*" element={<CategoryRoutes />} />
                 <Route path="favourites" element={<FavouritesPage />} />
                 <Route path="cart" element={<CartsPage />} />
+                <Route path="*" element={<NotFoundPage />} />
               </Route>
             </Routes>
           </Router>

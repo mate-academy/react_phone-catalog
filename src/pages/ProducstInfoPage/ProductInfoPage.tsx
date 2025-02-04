@@ -11,6 +11,7 @@ import { getRandomProducts } from '../../utils/getRandomProducts';
 import { Breadcrumbs } from '../../components/Breadcrumbs';
 import { useErrorHandling } from '../../hooks/errorHandling';
 import { Loader } from '../../components/Loader';
+import { NotFoundPage } from '../NotFoundPage';
 
 export const ProductInfoPage = () => {
   const { setIsError } = useErrorHandling();
@@ -24,8 +25,14 @@ export const ProductInfoPage = () => {
   const randomProducts = getRandomProducts(products);
   const navigate = useNavigate();
 
+  const product = allProducts.find(product => product.id === productId);
+
   if (products.length === 0 || allProducts.length === 0) {
     return <Loader />;
+  }
+
+  if (!product) {
+    return <NotFoundPage />;
   }
 
   return (
