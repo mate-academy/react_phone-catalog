@@ -4,7 +4,7 @@ import { Logo } from '../Logo';
 import slyles from './Menu.module.scss';
 import { Navigation } from '../Navigation';
 import { NavIcon } from '../NavIcon';
-import classNames from 'classnames'; //
+import classNames from 'classnames';
 
 export const Menu = () => {
   const { isOpen, closeMenu } = useMenu();
@@ -33,28 +33,30 @@ export const Menu = () => {
   }, [isOpen, closeMenu]);
 
   return (
-    <div className={classNames('app__menu', { 'app__menu--open': isOpen })}>
-      <aside onClick={handleCloseMenu} className={slyles.menu}>
-        <div className={slyles.menu__top}>
-          <div data-nav-link className={slyles.menu__logo}>
-            <Logo />
-          </div>
-        </div>
-
-        <div data-nav-link className={slyles.menu_nav}>
-          <Navigation isMenu />
-        </div>
-
-        <div data-nav-link className={slyles.menu__icons}>
-          <div className={slyles.menu__icon}>
-            <NavIcon type="favourite" path="/favourites" isMenu />
+    isOpen && (
+      <div className={classNames('app__menu', { 'app__menu--open': isOpen })}>
+        <aside onClick={handleCloseMenu} className={slyles.menu}>
+          <div className={slyles.menu__top}>
+            <div data-nav-link className={slyles.menu__logo}>
+              <Logo />
+            </div>
           </div>
 
-          <div className={slyles.menu__icon}>
-            <NavIcon type="cart" path="/cart" isMenu />
+          <div data-nav-link className={slyles.menu_nav}>
+            <Navigation isMenu />
           </div>
-        </div>
-      </aside>
-    </div>
+
+          <div data-nav-link className={slyles.menu__icons}>
+            <div className={slyles.menu__icon}>
+              <NavIcon type="favourite" path="/favourites" isMenu />
+            </div>
+
+            <div className={slyles.menu__icon}>
+              <NavIcon type="cart" path="/cart" isMenu />
+            </div>
+          </div>
+        </aside>
+      </div>
+    )
   );
 };
