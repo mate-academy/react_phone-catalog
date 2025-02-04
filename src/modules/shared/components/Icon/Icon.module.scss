@@ -31,6 +31,10 @@
 
   &--favorite {
     background-image: url('/img/icons/icon-favorite.svg');
+
+    &-filled {
+      background-image: url('/img/icons/icon-favorite-filled.svg');
+    }
   }
 
   &--shopping-bag {

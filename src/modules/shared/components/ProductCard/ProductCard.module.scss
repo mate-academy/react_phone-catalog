@@ -2,11 +2,12 @@
 @use '@styles/extends' as *;
 
 .product-card {
-  height: 100%;
   padding: 32px;
   cursor: pointer;
   box-sizing: border-box;
   border: 1px solid var(--elements-color);
+
+  -webkit-tap-highlight-color: transparent;
 
   gap: 8px;
   display: flex;

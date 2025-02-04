@@ -35,4 +35,8 @@
     display: flex;
     border-top: 1px solid var(--elements-color);
   }
+
+  &__user-icon {
+    position: relative;
+  }
 }

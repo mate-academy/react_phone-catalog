@@ -30,6 +30,12 @@
         padding-top: 56px;
       }
     }
+
+    &--shopping-bag {
+      @include on-tablet {
+        padding-top: 40px;
+      }
+    }
   }
 
   &__content {
@@ -40,10 +46,6 @@
     @include content-padding-inline;
 
     @include on-tablet {
-      gap: 40px;
-    }
-
-    @include on-desktop {
       gap: 40px;
     }
   }

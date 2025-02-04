@@ -15,11 +15,11 @@ export const NavLinkItem: React.FC<Props> = ({
 }) => {
   const getLinkClass = useCallback(
     ({ isActive }: { isActive: boolean }) =>
-      classNames(styles['nav-link-item'], {
+      classNames(props.className, styles['nav-link-item'], {
         [styles['nav-link-item--active']]: isActive,
         [styles['nav-link-item--fixed-padding']]: fixedPadding,
       }),
-    [fixedPadding],
+    [fixedPadding, props.className],
   );
 
   return (

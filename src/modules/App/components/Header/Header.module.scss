@@ -31,6 +31,10 @@
     }
   }
 
+  &__user-icon {
+    position: relative;
+  }
+
   &__menu {
     @include on-tablet {
       display: none;

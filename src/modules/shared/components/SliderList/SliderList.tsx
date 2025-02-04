@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import classNames from 'classnames';
 
 import styles from './SliderList.module.scss';
@@ -69,9 +69,31 @@ export const SliderList: React.FC<Props> = React.memo(function SliderList({
     const prevPos: number | undefined = window.history.state[title];
 
     if (prevPos !== undefined && sliderRef.current) {
+      window.history.replaceState(
+        {
+          usr: window.history.state.usr,
+          key: window.history.state.key,
+          idx: window.history.state.idx,
+        },
+        '',
+      );
+
       // eslint-disable-next-line no-param-reassign
       sliderRef.current.scrollBy({ left: prevPos, behavior: 'smooth' });
     }
+  }, [sliderRef, title]);
+
+  const saveScroll = useCallback(() => {
+    window.history.replaceState(
+      {
+        usr: window.history.state.usr,
+        key: window.history.state.key,
+        idx: window.history.state.idx,
+
+        [title]: sliderRef.current?.scrollLeft,
+      },
+      '',
+    );
   }, [sliderRef, title]);
 
   return (
@@ -95,18 +117,7 @@ export const SliderList: React.FC<Props> = React.memo(function SliderList({
             key={product.id}
             product={product}
             hidePrevPrice={hidePrevPrice}
-            onClick={() => {
-              window.history.replaceState(
-                {
-                  usr: window.history.state.usr,
-                  key: window.history.state.key,
-                  idx: window.history.state.idx,
-
-                  [title]: sliderRef.current?.scrollLeft,
-                },
-                '',
-              );
-            }}
+            onClick={saveScroll}
           />
         ))}
     </div>

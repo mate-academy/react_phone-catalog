@@ -26,7 +26,7 @@
       box-shadow: 0 3px 13px 0 #17203166;
     }
 
-    &:active {
+    &--selected {
       color: var(--green-color);
       background-color: var(--white-color);
       border: 1px solid var(--elements-color);

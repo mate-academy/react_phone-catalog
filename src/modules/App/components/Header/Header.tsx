@@ -9,10 +9,14 @@ import { NavLinkItem } from '@components/NavLinkItem';
 
 import { useAppDispatch, useAppSelector } from '@store/hooks';
 import { menuActions } from '@features/menuSlice';
+import { Counter } from '../Counter';
 
 export const Header = () => {
   const dispatch = useAppDispatch();
   const isMenuOpen = useAppSelector(state => state.menu);
+
+  const favorites = useAppSelector(state => state.favorites);
+  const shoppingCart = useAppSelector(state => state.shoppingCart);
 
   return (
     <header className={styles.header}>
@@ -23,12 +27,17 @@ export const Header = () => {
       </div>
 
       <div className={styles.header__right}>
-        <NavLinkItem to="./favorite">
+        <NavLinkItem to="./favorites" className={styles['header__user-icon']}>
           <Icon type={IconType.favorite} />
+          <Counter count={favorites.length} />
         </NavLinkItem>
 
-        <NavLinkItem to="./shopping-bag">
+        <NavLinkItem
+          to="./shopping-bag"
+          className={styles['header__user-icon']}
+        >
           <Icon type={IconType.shoppingBag} />
+          <Counter count={shoppingCart.length} />
         </NavLinkItem>
       </div>
 

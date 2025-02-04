@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import styles from './ProductCard.module.scss';
 
@@ -7,7 +8,6 @@ import { Product } from '@sTypes/Product';
 import { AddToCard } from '@components/AddToCard';
 import { Characteristics } from '@components/Characteristics';
 import { Image } from '@components/Image';
-import { Link } from 'react-router-dom';
 
 type Props = {
   product: Product;
@@ -18,6 +18,7 @@ type Props = {
 
 export const ProductCard = React.forwardRef<HTMLElement, Props>(
   function ProductCard({ product, hidePrevPrice, onClick }, ref) {
+    const navigation = useNavigate();
     const { price, fullPrice, screen, capacity, ram, image } = product;
 
     const characteristics: [string, string][] = [
@@ -27,37 +28,37 @@ export const ProductCard = React.forwardRef<HTMLElement, Props>(
     ];
 
     return (
-      <Link
-        to={`${product.category}/${product.itemId}`}
+      <article
+        ref={ref}
+        className={styles['product-card']}
         onClick={() => {
-          window.scrollTo(0, 0);
-
           if (onClick) {
             onClick();
           }
+
+          window.scrollTo(0, 0);
+          navigation(`${product.category}/${product.itemId}`);
         }}
       >
-        <article ref={ref} className={styles['product-card']}>
-          <Image src={image} className={styles['product-card__image']} />
+        <Image src={image} className={styles['product-card__image']} />
 
-          <div className={styles['product-card__title']}>{product.name}</div>
+        <div className={styles['product-card__title']}>{product.name}</div>
 
-          <div className={styles['product-card__price']}>
-            <h3>${price}</h3>
-            {!hidePrevPrice && fullPrice !== price && (
-              <s className={styles['product-card__prev-price']}>
-                ${product.fullPrice}
-              </s>
-            )}
-          </div>
+        <div className={styles['product-card__price']}>
+          <h3>${price}</h3>
+          {!hidePrevPrice && fullPrice !== price && (
+            <s className={styles['product-card__prev-price']}>
+              ${product.fullPrice}
+            </s>
+          )}
+        </div>
 
-          <div className={styles['product-card__divider']}></div>
+        <div className={styles['product-card__divider']}></div>
 
-          <Characteristics characteristics={characteristics} />
+        <Characteristics characteristics={characteristics} />
 
-          <AddToCard />
-        </article>
-      </Link>
+        <AddToCard id={product.id} />
+      </article>
     );
   },
 );

@@ -6,6 +6,12 @@
 @use '@styles/fonts' as *;
 @use '@styles/typography' as *;
 
+.hidden {
+  position: absolute;
+  visibility: hidden;
+  pointer-events: none;
+}
+
 .page {
   overflow-x: hidden;
   scroll-behavior: smooth;
