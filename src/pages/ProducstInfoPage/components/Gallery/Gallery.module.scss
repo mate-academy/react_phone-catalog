@@ -47,7 +47,10 @@
 
     @include on-mobile {
       flex-direction: row;
-      height: 100%;
+      flex-wrap: nowrap;
+      justify-content: center;
+      justify-content: space-between;
+      position: static;
       width: 100%;
     }
   }
@@ -65,6 +68,12 @@
 
     &:hover {
       border: 1px solid var(--primary-color);
+    }
+
+    @include on-mobile {
+      height: 49px;
+      width: auto;
+      flex-grow: 1;
     }
   }
 
