@@ -2,11 +2,18 @@ import styles from './PicturesSlider.module.scss';
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 
 export const PicturesSlider = () => {
-  const images = [
+  const imagesMobile = [
+    './img/mobile-banner-phones.png',
+    './img/mobile-banner-accessories.png',
+    './img/mobile-banner-tablets.png',
+  ];
+  const imagesDesktop = [
     './img/banner-phones.png',
     './img/banner-accessories.png',
     './img/banner-tablets.png',
   ];
+  const isMobile = window.innerWidth < 640;
+  const images = isMobile ? imagesMobile : imagesDesktop;
   const [index, setIndex] = useState(0);
   const startX = useRef<number | null>(null);
 
@@ -29,14 +36,14 @@ export const PicturesSlider = () => {
   };
 
   const handleTouchMove = (event: React.TouchEvent) => {
-    if (startX.current === null) {
+    if (!startX.current) {
       return;
     }
 
     const moveX = event.touches[0].clientX;
     const diffX = startX.current - moveX;
 
-    if (diffX > 50) {
+    if (diffX > 200) {
       handleRightClick();
     } else {
       handleLeftClick();
@@ -78,7 +85,7 @@ export const PicturesSlider = () => {
       <div className={styles['pictures-slider__dots']}>
         {images.map((img, i) => (
           <a
-            key={img[i]}
+            key={img}
             className={`${styles['pictures-slider__dot']} ${index === i ? styles['pictures-slider__dot--is-active'] : ''}`}
             onClick={() => setIndex(i)}
           ></a>
