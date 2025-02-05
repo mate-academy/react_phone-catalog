@@ -1,0 +1,62 @@
+@import '../../utils/scss/variables.scss';
+
+.newProducts {
+  height: 526px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  &__title {
+    width: 136px;
+
+    margin: 0;
+  }
+
+  &__bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__buttonsContainer {
+    display: flex;
+    gap: 16px;
+  }
+
+  &__button {
+    height: 32px;
+    width: 32px;
+
+    border: $icons-color 1px solid;
+
+    background-image: url(../../../public/img/icons/arrow.png);
+    background-size: 16px;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  &__buttonLeft {
+    transform: rotate(-90deg);
+  }
+
+  &__buttonRight {
+    transform: rotate(90deg);
+  }
+
+  &__buttonDisabled {
+    background-image: url(../../../public/img/icons/arrow-disabled.png);
+
+    border: $elements-color 1px solid;
+  }
+
+  &__list {
+    height: 100%;
+
+    display: grid;
+    grid-template-columns: repeat(12, 60px);
+    gap: 16px;
+
+    overflow-y: scroll;
+  }
+}

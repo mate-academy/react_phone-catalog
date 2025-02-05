@@ -1,0 +1,108 @@
+@import '../src/utils/scss/variables.scss';
+@import '../src/utils/scss/mixin.scss';
+
+.header {
+  height: $header-height;
+
+  top: 0;
+  position: sticky;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  background-color: #fff;
+
+  z-index: 10;
+
+  box-shadow: 0px 1px 0px 0px rgba(226, 230, 233, 1);
+
+  @include on-tablet {
+    justify-content: inherit;
+    gap: 16px;
+  }
+
+  &__logo {
+    height: 22px;
+    width: 64px;
+    margin: 0 16px;
+
+    background-image: url('../../../public/img/Logo.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+
+    @include hover(transform, scale(1.1));
+  }
+
+  &__buttonsContainer {
+    height: 100%;
+
+    display: flex;
+    justify-content: space-between;
+
+    @include on-tablet {
+      width: 100%;
+    }
+  }
+
+  &__menuButton {
+    height: 100%;
+    width: 48px;
+
+    background-image: url('../../../public/img/icons/Menu.png');
+    background-repeat: no-repeat;
+    background-size: 16px;
+    background-position: center;
+
+    box-shadow: -1px 0px 0px 0px rgba(226, 230, 233, 1);
+  }
+
+  &__menuButtonClose {
+    background-image: url('../../../public/img/icons/Close.png');
+  }
+
+  &__navButtons {
+    display: flex;
+    gap: 32px;
+  }
+
+  &__link {
+    height: 100%;
+
+    line-height: $header-height;
+
+    font-family: 'Mont-Bold', sans-serif;
+    font-size: 12px;
+
+    color: $secondary-color;
+
+    text-decoration: none;
+    text-transform: uppercase;
+  }
+
+  &__favAndCart {
+    display: flex;
+  }
+
+  &__favourites {
+    width: 48px;
+
+    box-shadow: -1px 0px 0px 0px rgba(226, 230, 233, 1);
+
+    background-image: url('../../../public/img/icons/heart-like.png');
+    background-size: 16px;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  &__cart {
+    width: 48px;
+
+    box-shadow: -1px 0px 0px 0px rgba(226, 230, 233, 1);
+
+    background-image: url('../../../public/img/icons/cart-icon.png');
+    background-size: 16px;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+}

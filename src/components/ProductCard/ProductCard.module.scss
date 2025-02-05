@@ -1,0 +1,105 @@
+@import '../../utils/scss/variables.scss';
+
+.card {
+  grid-column: span 3;
+
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  padding: 32px;
+
+  border: 1px solid rgba(226, 230, 233, 1);
+
+  &__image {
+    width: 100%;
+    height: 100%;
+
+    background-image: url('../../../public/img/phones/apple-iphone-14-pro/spaceblack/00.webp');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  &__titleContainer {
+    padding-top: 16px;
+  }
+
+  &__title {
+    font-size: 14px;
+    line-height: 21px;
+
+    color: $primary-color;
+  }
+
+  &__price {
+    font-family: 'Mont-Bold', sans-serif;
+    font-weight: bold;
+    font-size: 22px;
+  }
+
+  &__splitter {
+    border-top: 1px solid $elements-color;
+  }
+
+  &__specs {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    gap: 8px;
+
+    padding: 8px 0;
+  }
+
+  &__specContainer {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__specContainer p {
+    height: 15px;
+
+    font-family: 'Mont-Semi-Bold';
+    font-size: 12px;
+
+    margin: 0;
+  }
+
+  &__specContainer p:first-child {
+    color: $secondary-color;
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__buttons button {
+    border-radius: 0;
+  }
+
+  &__addToCart {
+    width: calc(100% - 48px);
+    height: 40px;
+
+    border: none;
+
+    background-color: $primary-color;
+    color: $white-color;
+  }
+
+  &__addToFavourite {
+    width: 40px;
+    height: 40px;
+
+    flex-shrink: 0;
+
+    background-color: $white-color;
+    border: 1px solid $icons-color;
+
+    background-image: url('../../../public/img/icons/heart-like.png');
+    background-size: 16px;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+}

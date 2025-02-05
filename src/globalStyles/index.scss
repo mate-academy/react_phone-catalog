@@ -1,0 +1,96 @@
+@import '../utils/scss/mixin.scss';
+
+@font-face {
+  font-family: 'Mont-Bold';
+  src: url('../../public/fonts/Mont-Bold.otf') format('opentype');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Mont';
+  src: url('../../public/fonts/Mont-Regular.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Mont-Semi-Bold';
+  src: url('../../public/fonts/Mont-SemiBold.otf') format('opentype');
+  font-weight: semi-bold;
+  font-style: normal;
+}
+
+h1 {
+  font-family: 'Mont-Bold', sans-serif;
+  font-size: 32px;
+  line-height: 41px;
+  letter-spacing: -0.01em;
+
+  @include on-tablet {
+    font-size: 48px;
+    line-height: 56px;
+  }
+}
+
+h2 {
+  font-family: 'Mont-Bold', sans-serif;
+  font-size: 22px;
+  line-height: 31px;
+
+  @include on-tablet {
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+  }
+}
+
+h3 {
+  font-family: 'Mont-Semi-Bold', sans-serif;
+  font-size: 20px;
+  line-height: 26px;
+
+  @include on-tablet {
+    font-size: 22px;
+    line-height: 31px;
+  }
+}
+
+h4 {
+  font-family: 'Mont-Semi-Bold', sans-serif;
+  font-size: 16px;
+  line-height: 10px;
+
+  @include on-tablet {
+    font-size: 20px;
+    line-height: 26px;
+  }
+}
+
+.container {
+  padding: 0 16px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 60px);
+  gap: 16px;
+}
+
+.blocksIdentation {
+  margin-top: 56px;
+}
+
+.hidden {
+  display: none;
+}
+
+html {
+  scroll-behavior: smooth;
+
+  &:has(.menu:target) {
+    overflow: hidden;
+  }
+
+  // overflow: hidden;
+}

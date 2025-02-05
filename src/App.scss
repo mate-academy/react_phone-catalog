@@ -1,1 +1,21 @@
-// not empty
+@import '../src/utils/scss/variables.scss';
+@import '../src/utils/scss/mixin.scss';
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Mont', sans-serif;
+
+  color: $primary-color;
+}
+// .main {
+//   @include on-tablet {
+//     display: grid;
+//     grid-template-columns: repeat(12, 1fr);
+//   }
+// }

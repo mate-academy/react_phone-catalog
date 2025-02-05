@@ -1,0 +1,83 @@
+@import '../src/utils/scss/variables.scss';
+
+.menu {
+  box-sizing: border-box;
+  height: calc(100vh - $header-height);
+  background-color: $white-color;
+  overflow: auto;
+
+  position: fixed;
+  top: $header-height;
+  left: 0;
+  right: 0;
+
+  transition: all 0.3s;
+  opacity: 0;
+  transform: translateX(-100%);
+  pointer-events: none;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  &__linksContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+
+    margin-top: 24px;
+  }
+
+  &__link {
+    padding: 8px 0;
+
+    font-family: 'Mont-Bold', sans-serif;
+
+    color: $secondary-color;
+
+    text-decoration: none;
+    text-transform: uppercase;
+  }
+
+  &__buttonsContainer {
+    width: 100%;
+    height: 64px;
+
+    display: flex;
+
+    border-top: 1px solid rgba(226, 230, 233, 1);
+  }
+
+  &__favourites {
+    width: 50%;
+
+    background-image: url('../../../public/img/icons/heart-like.png');
+    background-size: 16px;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  &__cart {
+    width: 50%;
+    box-shadow: -1px 0px 0px 0px rgba(226, 230, 233, 1);
+
+    background-image: url('../../../public/img/icons/cart-icon.png');
+    background-size: 16px;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  &:target {
+    opacity: 1;
+    transform: translateX(0);
+    pointer-events: all;
+    z-index: 9;
+  }
+}
+
+html {
+  &:has(.menu:target) {
+    overflow: hidden;
+  }
+}
