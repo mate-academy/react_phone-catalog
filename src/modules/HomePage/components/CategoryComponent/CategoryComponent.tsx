@@ -28,7 +28,7 @@ export const CategoryComponent: React.FC<Props> = ({ category }) => {
         <div className={styles['category-component__content']}>
           <h4>{category.title}</h4>
           <div className={styles['category-component__amount']}>
-            {category.amount} models
+            {category.amount} model{category.amount === 1 ? '' : 's'}
           </div>
         </div>
       </article>

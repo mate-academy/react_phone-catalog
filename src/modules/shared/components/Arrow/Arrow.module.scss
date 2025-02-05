@@ -81,6 +81,16 @@ $border-size: 1px;
     }
   }
 
+  &--secondary {
+    &:hover {
+      border: $border-size solid var(--elements-color);
+    }
+
+    .arrow__content {
+      background-color: var(--icons-color);
+    }
+  }
+
   &--hide-borders {
     border: none;
 

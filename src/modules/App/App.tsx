@@ -6,7 +6,7 @@ import styles from './App.module.scss';
 import { Menu } from './components/Menu';
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
-import { TopNavigation } from './components/TopNavigation';
+import { TopNavigation } from './components/Breadcrumbs';
 
 export const App = () => {
   const { pathname } = useLocation();

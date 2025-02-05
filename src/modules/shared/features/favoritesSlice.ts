@@ -5,7 +5,7 @@ import { loadPrevState } from '@utils/loadPrevState';
 
 export const NAME = 'favorites';
 
-type State = number[];
+type State = string[];
 
 const initialState: State = loadPrevState<State>(NAME) || [];
 
@@ -13,14 +13,14 @@ const favoritesSlice = createSlice({
   name: NAME,
   initialState,
   reducers: {
-    toggle: (state, action: PayloadAction<number>) => {
-      const id = action.payload;
-      const index = state.indexOf(id);
+    toggle: (state, action: PayloadAction<string>) => {
+      const itemId = action.payload;
+      const index = state.indexOf(itemId);
 
       if (index !== -1) {
         state.splice(index, 1);
       } else {
-        state.push(id);
+        state.push(itemId);
       }
     },
   },

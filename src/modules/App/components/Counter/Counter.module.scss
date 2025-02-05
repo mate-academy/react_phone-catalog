@@ -9,7 +9,6 @@
 
   font-size: 9px;
   font-weight: 600;
-  line-height: 12px;
   color: var(--white-color);
   font-family: Mont, sans-serif;
 
@@ -20,10 +19,6 @@
   background-color: var(--red-color);
   border: 1px solid var(--white-color);
 
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
   transition: opacity $animation-duration linear;
 
   &--empty {
@@ -31,6 +26,13 @@
   }
 
   &__value {
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
     position: absolute;
   }
 

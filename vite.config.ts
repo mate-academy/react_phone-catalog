@@ -18,6 +18,7 @@ export default defineConfig({
 
       '@App': path.resolve(__dirname, 'src/modules/App'),
       '@HomePage': path.resolve(__dirname, 'src/modules/HomePage'),
+      '@ProductsPage': path.resolve(__dirname, 'src/modules/ProductsPage'),
     },
   },
 });

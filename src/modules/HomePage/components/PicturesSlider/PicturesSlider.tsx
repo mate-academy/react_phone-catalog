@@ -29,33 +29,49 @@ function getImages() {
   return (window.innerWidth || 0) < 640 ? PHONE_IMAGES : IMAGES;
 }
 
-type ImageRefs = {
-  [key: string]: HTMLImageElement | null;
-};
-
 export const PicturesSlider = () => {
   // first start
   const [isLoading, setIsLoading] = useState(true);
 
-  // a visible image and list of images
-  const [activeDot, setActiveDot] = useState(0);
-  const [activeImage, setActiveImage] = useState(0);
+  const [activeImage, setActiveImage] = useState(1);
   const [images, setImages] = useState(getImages());
 
-  // an image to which we need to scroll in the original order
-  // a previous order which was before scrolling
-  const target = useRef<number | null>(null);
-  const prevOrderedImages = useRef<string[]>(getImages());
-
   // ref to the slider and images
-  const imageRefs = useRef<ImageRefs>({});
   const sliderRef = useRef<HTMLDivElement | null>(null);
+  const imageRefs = useRef<(HTMLImageElement | null)[]>([]);
 
   const scrollTo = useScrollAnimation(300);
   const [isAnimating, setIsAnimating] = useState(false);
 
   // slider visibility
   const [isVisible, setIsVisible] = useState(true);
+
+  const lastScroll = useRef(0);
+  const needRestore = useRef(true);
+
+  const restoreScroll = useCallback(
+    (index = activeImage) => {
+      if (!isAnimating && sliderRef.current) {
+        const item = imageRefs.current[index];
+
+        if (item) {
+          sliderRef.current.scrollLeft = item.offsetLeft - lastScroll.current;
+        }
+      }
+    },
+    [activeImage, isAnimating],
+  );
+
+  const saveScroll = useCallback(
+    (index = activeImage) => {
+      const item = imageRefs.current[index];
+
+      if (item && sliderRef.current) {
+        lastScroll.current = item.offsetLeft - sliderRef.current.scrollLeft;
+      }
+    },
+    [activeImage],
+  );
 
   // show original images and, then, show with order (setIsLoading(false))
   // handle resizing and create observer for slider
@@ -101,42 +117,38 @@ export const PicturesSlider = () => {
         const visibleEntries = entries.filter(entry => entry.isIntersecting);
 
         if (visibleEntries.length) {
-          const visibleEntry = visibleEntries.find(
-            entry => entry.intersectionRatio === 1,
+          const visibleEntry = visibleEntries[0].target;
+
+          let index = imageRefs.current.indexOf(
+            visibleEntry as HTMLImageElement | null,
           );
 
-          const firstVisibleEntry = visibleEntry
-            ? visibleEntry.target
-            : visibleEntries[0].target;
+          if (index !== -1) {
+            if (!isAnimating) {
+              if (index === 0) {
+                saveScroll(index);
+                needRestore.current = true;
 
-          const foundedRef = Object.entries(imageRefs.current).find(
-            ([, value]) => value === firstVisibleEntry,
-          );
+                index = imageRefs.current.length - 2;
+              } else if (index === imageRefs.current.length - 1) {
+                saveScroll(index);
+                needRestore.current = true;
 
-          if (foundedRef) {
-            const index = images.indexOf(foundedRef[0]);
-
-            if (index !== -1) {
-              const intersectionRatio = visibleEntries[0].intersectionRatio;
-
-              if (intersectionRatio >= 0.5 && intersectionRatio < 1) {
-                setActiveDot(index);
-              }
-
-              if (intersectionRatio === 1) {
-                setActiveImage(index);
+                index = 1;
               }
             }
+
+            setActiveImage(index);
           }
         }
       },
       {
         root: sliderRef.current,
-        threshold: [0.5, 1],
+        threshold: 0.5,
       },
     );
 
-    Object.values(imageRefs.current).forEach(item => {
+    imageRefs.current.forEach(item => {
       if (item) {
         observer.observe(item);
       }
@@ -145,108 +157,49 @@ export const PicturesSlider = () => {
     return () => {
       observer.disconnect();
     };
-  }, [images, isAnimating]);
+  }, [isAnimating, isLoading, saveScroll]);
+
+  useEffect(() => {
+    if (sliderRef.current) {
+      sliderRef.current.style.overflowX = isAnimating ? 'hidden' : 'auto';
+    }
+  }, [isAnimating]);
 
   // place an active image on the screen after replacements
   useEffect(() => {
-    if (isAnimating) {
-      return;
+    if (needRestore.current) {
+      restoreScroll();
+      needRestore.current = false;
     }
-
-    if (sliderRef.current) {
-      const src = images[activeImage];
-      const item = imageRefs.current[src];
-
-      if (item) {
-        sliderRef.current.scrollLeft = item.offsetLeft;
-      }
-    }
-  }, [activeImage, images, isAnimating]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [needRestore.current]);
 
   // scroll to the image
   // initialOrder -> an active image in the middle or restore initialOrder
   const changeImage = useCallback(
-    (index: number, initialOrder = true) => {
+    (index: number) => {
       if (isAnimating) {
         return;
       }
 
       setIsAnimating(true);
 
-      if (initialOrder) {
-        target.current = index;
-      } else {
-        const src = images[index];
-        const item = imageRefs.current[src];
+      const item = imageRefs.current[index];
 
-        if (sliderRef.current && item) {
-          scrollTo(sliderRef.current, item).finally(() => {
-            setIsAnimating(false);
-          });
-        }
+      if (sliderRef.current && item) {
+        scrollTo(sliderRef.current, item).finally(() => {
+          setIsAnimating(false);
+        });
       }
     },
-    [images, isAnimating, scrollTo],
+    [isAnimating, scrollTo],
   );
-
-  // start and remove posibility to scroll during animation
-  useEffect(() => {
-    if (sliderRef.current) {
-      if (isAnimating && target.current !== null) {
-        const src = images[target.current];
-        const item = imageRefs.current[src];
-
-        if (item) {
-          scrollTo(sliderRef.current, item).finally(() => {
-            setIsAnimating(false);
-
-            target.current = null;
-          });
-        }
-      }
-
-      sliderRef.current.style.scrollSnapType = isAnimating
-        ? 'initial'
-        : 'x mandatory';
-
-      sliderRef.current.style.overflowX = isAnimating ? 'hidden' : 'auto';
-    }
-  }, [images, isAnimating, scrollTo]);
-
-  // crete a custom images order in which an active image is in the middle of array
-  // isLoading -> first render -> original images
-  // target.current -> dots were used -> scroll by an original order
-  // isAnimating -> show order which was befere scroll, prevent reorder during animation
-  const orderedImages = useMemo(() => {
-    if (target.current !== null) {
-      return images;
-    }
-
-    if (isAnimating) {
-      return prevOrderedImages.current;
-    }
-
-    const ordered = [];
-    const middle = Math.floor(images.length / 2);
-    let start = activeImage - middle;
-
-    start = start < 0 ? images.length + start : start;
-
-    for (let i = 0; i < images.length; i++) {
-      ordered.push(images[(start + i) % images.length]);
-    }
-
-    prevOrderedImages.current = ordered;
-
-    return ordered;
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [activeImage, images, isAnimating, target.current]);
 
   // autoplay
   const [isWaiting, setIsWaiting] = useState(true);
 
   const playCallback = useCallback(() => {
-    changeImage((activeImage + 1) % images.length, false);
+    changeImage((activeImage + 1) % (images.length + 2));
   }, [activeImage, changeImage, images.length]);
 
   const [play, pause] = useDebounce(playCallback, 5000);
@@ -258,6 +211,34 @@ export const PicturesSlider = () => {
       pause();
     }
   }, [isVisible, isWaiting, pause, play]);
+
+  const spanCallback = useCallback(
+    (index: number) => {
+      changeImage(index);
+    },
+    [changeImage],
+  );
+
+  const waitingCallback = useCallback(() => {
+    setIsWaiting(true);
+  }, []);
+
+  const [startWaiting] = useDebounce(waitingCallback, 100);
+  const [snapImage, cancelSnapImage] = useDebounce(spanCallback, 100);
+
+  const activeDot = useMemo(() => {
+    const currentDot = activeImage;
+
+    if (!currentDot) {
+      return imageRefs.current.length - 3;
+    }
+
+    if (currentDot === imageRefs.current.length - 1) {
+      return 0;
+    }
+
+    return currentDot - 1;
+  }, [activeImage]);
 
   return (
     <section
@@ -274,10 +255,7 @@ export const PicturesSlider = () => {
             styles['pictures-slider__button--left'],
           )}
           onClick={() =>
-            changeImage(
-              activeImage - 1 + (!activeImage ? images.length : 0),
-              false,
-            )
+            changeImage(activeImage - 1 + (!activeImage ? images.length : 0))
           }
         >
           <Arrow type={ArrowType.left} tall />
@@ -288,6 +266,11 @@ export const PicturesSlider = () => {
           className={classNames(styles['pictures-slider__slider'], {
             [styles['pictures-slider__slider--isLoading']]: isLoading,
           })}
+          onScroll={() => {
+            snapImage(activeImage);
+            setIsWaiting(false);
+            startWaiting();
+          }}
         >
           {isLoading && (
             <Image
@@ -299,15 +282,26 @@ export const PicturesSlider = () => {
             />
           )}
 
-          {orderedImages.map(image => (
+          <Image
+            src={images[images.length - 1]}
+            className={styles['pictures-slider__picture']}
+            ref={el => (imageRefs.current[0] = el)}
+          />
+
+          {images.map((image, i) => (
             <Image
               key={image}
               src={image}
-              loading="eager"
               className={styles['pictures-slider__picture']}
-              ref={el => (imageRefs.current[image] = el)}
+              ref={el => (imageRefs.current[i + 1] = el)}
             />
           ))}
+
+          <Image
+            src={images[0]}
+            className={styles['pictures-slider__picture']}
+            ref={el => (imageRefs.current[images.length + 1] = el)}
+          />
         </div>
 
         <div
@@ -315,7 +309,7 @@ export const PicturesSlider = () => {
             styles['pictures-slider__button'],
             styles['pictures-slider__button--right'],
           )}
-          onClick={() => changeImage((activeImage + 1) % images.length, false)}
+          onClick={() => changeImage((activeImage + 1) % (images.length + 2))}
         >
           <Arrow type={ArrowType.right} tall />
         </div>
@@ -328,7 +322,10 @@ export const PicturesSlider = () => {
             className={classNames(styles['pictures-slider__dot'], {
               [styles['pictures-slider__dot--active']]: i === activeDot,
             })}
-            onClick={() => changeImage(i)}
+            onClick={() => {
+              cancelSnapImage();
+              changeImage(i + 1);
+            }}
           ></div>
         ))}
       </div>

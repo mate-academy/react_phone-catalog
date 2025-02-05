@@ -37,7 +37,7 @@ export const ProductCard = React.forwardRef<HTMLElement, Props>(
           }
 
           window.scrollTo(0, 0);
-          navigation(`${product.category}/${product.itemId}`);
+          navigation(`/${product.category}/${product.itemId}`);
         }}
       >
         <Image src={image} className={styles['product-card__image']} />
@@ -57,7 +57,7 @@ export const ProductCard = React.forwardRef<HTMLElement, Props>(
 
         <Characteristics characteristics={characteristics} />
 
-        <AddToCard id={product.id} />
+        <AddToCard itemId={product.itemId} />
       </article>
     );
   },

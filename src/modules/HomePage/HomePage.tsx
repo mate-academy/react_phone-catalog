@@ -1,4 +1,4 @@
-import { useEffect, useMemo } from 'react';
+import { useMemo } from 'react';
 
 import './HomePage.scss';
 
@@ -7,30 +7,10 @@ import { ProductsSlider } from '@components/ProductsSlider';
 import { Categories } from './components/Categories';
 import { PicturesSlider } from './components/PicturesSlider';
 
-import { loadProducts } from '@features/productsSlice';
-import { useAppDispatch, useAppSelector } from '@store/hooks';
+import { useProductsPreload } from '@hooks/useProductsPreload';
 
 export const HomePage = () => {
-  const dispatch = useAppDispatch();
-  const { products, isLoading } = useAppSelector(state => state.products);
-
-  // fetching data
-  useEffect(() => {
-    if (
-      products.phones.length &&
-      products.tablets.length &&
-      products.accessories.length
-    ) {
-      return;
-    }
-
-    if (isLoading) {
-      return;
-    }
-
-    dispatch(loadProducts());
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  const { products } = useProductsPreload();
 
   const allProducts = useMemo(() => {
     return Object.values(products).flat(Infinity);

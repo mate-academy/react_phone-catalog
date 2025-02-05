@@ -17,7 +17,8 @@
       "@components/*": ["./modules/shared/components/*"],
 
       "@App/*": ["./modules/App/*"],
-      "@HomePage/*": ["./modules/HomePage/*"]
+      "@HomePage/*": ["./modules/HomePage/*"],
+      "@ProductsPage/*": ["./modules/ProductsPage/*"]
     }
   }
 }

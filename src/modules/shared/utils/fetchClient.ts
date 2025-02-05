@@ -7,7 +7,7 @@ function wait(delay: number): Promise<void> {
 }
 
 export async function getData<T>(url: string): Promise<T> {
-  await wait(300);
+  await wait(1000);
   const res = await fetch(BASE_URL + url);
 
   return res.json();

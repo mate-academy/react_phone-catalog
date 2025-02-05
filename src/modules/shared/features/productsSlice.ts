@@ -4,7 +4,6 @@ import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { Product } from '@sTypes/Product';
 import { ProductCategory } from '@sTypes/ProductCategory';
 import { getProducts } from '@services/products';
-import { loadPrevState } from '@utils/loadPrevState';
 
 export const NAME = 'products';
 
@@ -28,6 +27,7 @@ export interface Products {
 
 type State = {
   error: string;
+  isLoaded: boolean;
   isLoading: boolean;
 
   products: Products;
@@ -41,9 +41,10 @@ const getEmptyProducts = (): Products => ({
 
 const initialState: State = {
   error: '',
+  isLoaded: false,
   isLoading: false,
 
-  products: loadPrevState<Products>(NAME) || getEmptyProducts(),
+  products: getEmptyProducts(),
 };
 
 export const loadProducts = createAsyncThunk(`${NAME}/loadProducts`, () => {
@@ -57,12 +58,14 @@ const productsSlice = createSlice({
 
   extraReducers(builder) {
     builder.addCase(loadProducts.pending, state => {
+      state.error = '';
       state.isLoading = true;
     });
 
     builder.addCase(
       loadProducts.fulfilled,
       (state, action: PayloadAction<Product[]>) => {
+        state.isLoaded = true;
         state.isLoading = false;
         state.products = getEmptyProducts();
 

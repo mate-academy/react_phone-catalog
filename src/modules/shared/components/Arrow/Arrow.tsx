@@ -11,6 +11,7 @@ type Props = {
   tall?: boolean;
   small?: boolean;
   disabled?: boolean;
+  secondary?: boolean;
   hideBorders?: boolean;
 };
 
@@ -19,6 +20,7 @@ export const Arrow: React.FC<Props> = ({
   tall,
   small,
   disabled,
+  secondary,
   hideBorders,
 }) => (
   <div
@@ -26,6 +28,7 @@ export const Arrow: React.FC<Props> = ({
       [styles['arrow--tall']]: tall,
       [styles['arrow--small']]: small,
       [styles['arrow--disabled']]: disabled,
+      [styles['arrow--secondary']]: secondary,
       [styles['arrow--hide-borders']]: hideBorders,
     })}
   >

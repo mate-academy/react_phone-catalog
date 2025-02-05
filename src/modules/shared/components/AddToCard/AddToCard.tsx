@@ -13,16 +13,16 @@ import { toggle as toggleFavorites } from '@features/favoritesSlice';
 import { toggle as toggleShoppingCart } from '@features/shoppingCartSlice';
 
 type Props = {
-  id: number;
+  itemId: string;
 };
 
-export const AddToCard: React.FC<Props> = ({ id }) => {
+export const AddToCard: React.FC<Props> = ({ itemId }) => {
   const dispatch = useAppDispatch();
 
   const favorites = useAppSelector(state => state.favorites);
-  const shoppingCart = useAppSelector(state => state.shoppingCart.ids);
+  const shoppingCart = useAppSelector(state => state.shoppingCart.itemIds);
 
-  const isInShoppingCard = shoppingCart[id] !== undefined;
+  const isInShoppingCard = shoppingCart[itemId] !== undefined;
 
   return (
     <div className={styles['add-to-card']}>
@@ -34,7 +34,7 @@ export const AddToCard: React.FC<Props> = ({ id }) => {
           e.preventDefault();
           e.stopPropagation();
 
-          dispatch(toggleShoppingCart(id));
+          dispatch(toggleShoppingCart(itemId));
         }}
       >
         {isInShoppingCard ? 'Selected' : 'Add to card'}
@@ -46,12 +46,14 @@ export const AddToCard: React.FC<Props> = ({ id }) => {
           e.preventDefault();
           e.stopPropagation();
 
-          dispatch(toggleFavorites(id));
+          dispatch(toggleFavorites(itemId));
         }}
       >
         <Icon
           type={
-            favorites.includes(id) ? IconType.favoriteFilled : IconType.favorite
+            favorites.includes(itemId)
+              ? IconType.favoriteFilled
+              : IconType.favorite
           }
           withBorder
         />

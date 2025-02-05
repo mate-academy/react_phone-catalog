@@ -1,7 +1,7 @@
 import React, { Fragment, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 
-import styles from './TopNavigation.module.scss';
+import styles from './Breadcrumbs.module.scss';
 
 import { Icon } from '@components/Icon';
 import { IconType } from '@sTypes/IconType';

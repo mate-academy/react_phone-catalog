@@ -1,0 +1,126 @@
+@use '@styles/vars' as *;
+@use '@styles/mixins' as *;
+@use '@styles/extends' as *;
+
+.products-page {
+  gap: 32px;
+  display: flex;
+  flex-direction: column;
+
+  @include on-tablet {
+    gap: 40px;
+  }
+
+  &__header {
+    gap: 8px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__model-count {
+    width: fit-content;
+    color: var(--secondary-color);
+
+    @include body-text;
+
+    &--loading {
+      color: transparent;
+
+      @extend %skeleton;
+    }
+  }
+
+  &__content {
+    gap: 24px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__options {
+    @include page-grid;
+
+    & :first-child {
+      grid-column: span 2;
+
+      @include on-tablet {
+        grid-column: span 4;
+      }
+    }
+
+    & :last-child {
+      grid-column: span 2;
+
+      @include on-tablet {
+        grid-column: span 3;
+      }
+    }
+  }
+
+  &__products {
+    gap: 40px $column-gap-p;
+
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(272px, 1fr));
+  }
+
+  &__navigation {
+    gap: 16px;
+    display: flex;
+    justify-content: center;
+  }
+
+  &__pages {
+    gap: 8px;
+    display: flex;
+
+    @include body-text;
+  }
+
+  &__page {
+    width: 32px;
+    aspect-ratio: 1;
+    box-sizing: border-box;
+    border: 1px solid var(--elements-color);
+
+    cursor: pointer;
+    user-select: none;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:hover {
+      border: 1px solid var(--primary-color);
+    }
+
+    &--active {
+      pointer-events: none;
+
+      color: var(--white-color);
+      border: 1px solid var(--primary-color);
+      background-color: var(--primary-color);
+    }
+  }
+
+  &__message {
+    height: 75px;
+    box-sizing: border-box;
+    border: 1px solid var(--primary-color);
+
+    gap: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &-icon {
+      height: 60%;
+      aspect-ratio: 1;
+
+      cursor: pointer;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+}

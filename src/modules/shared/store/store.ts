@@ -1,6 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit';
 
 import menuReducer from '@features/menuSlice';
+import productsReducer from '@features/productsSlice';
 
 import favoritesReducer, {
   NAME as FAVORITES_NAME,
@@ -9,10 +10,6 @@ import favoritesReducer, {
 import shoppingCartReducer, {
   NAME as SHOPPING_CART_NAME,
 } from '@features/shoppingCartSlice';
-
-import productsReducer, {
-  NAME as PRODUCTS_NAME,
-} from '@features/productsSlice';
 
 export const store = configureStore({
   reducer: {
@@ -26,18 +23,11 @@ export const store = configureStore({
 export type AppDispatch = typeof store.dispatch;
 export type RootState = ReturnType<typeof store.getState>;
 
-let prevProducts = store.getState().products.products;
-
 let prevfavorites = store.getState().favorites;
 let prevshoppingCart = store.getState().shoppingCart;
 
 store.subscribe(() => {
   const currentState: RootState = store.getState();
-
-  if (prevProducts !== currentState.products.products) {
-    prevProducts = currentState.products.products;
-    localStorage.setItem(PRODUCTS_NAME, JSON.stringify(prevProducts));
-  }
 
   if (prevfavorites !== currentState.favorites) {
     prevfavorites = currentState.favorites;
