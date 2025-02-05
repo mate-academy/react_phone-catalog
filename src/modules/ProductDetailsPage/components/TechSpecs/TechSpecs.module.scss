@@ -6,15 +6,18 @@
   @include color-transition((color: var(--primary-text-color)));
 }
 
+.Line {
+  margin-bottom: 9px;
+
+  @include for-mobile {
+    margin-bottom: 14px;
+  }
+}
+
 .Parameters {
   display: flex;
   flex-direction: column;
   gap: 8px;
-  padding-top: 9px;
-
-  @include for-mobile {
-    padding-top: 14px;
-  }
 }
 
 .Parameter {

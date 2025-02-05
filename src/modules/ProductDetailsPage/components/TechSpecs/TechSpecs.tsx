@@ -1,10 +1,10 @@
 import classNames from 'classnames';
 import { DecorativeLine } from '../../../shared/components/DecorativeLine';
-import { ProductDetails } from '../../../shared/types/types';
+import { ProductDetails } from '../../types';
 import styles from './TechSpecs.module.scss';
 // eslint-disable-next-line max-len
 import { useLanguage } from '../../../shared/components/Contexts/LanguageContext';
-import { separateValueFromUnit } from '../../../shared/functions/functions';
+import { separateValueFromUnit } from '../../../shared/functions';
 import { Category } from '../../../shared/types/enums';
 
 type Props = {
@@ -41,7 +41,7 @@ export const TechSpecs: React.FC<Props> = ({ product, className }) => {
   return (
     <section className={classNames(styles.TechSpecs, className)}>
       <h3 className={styles.Title}>{techSpecs}</h3>
-      <DecorativeLine />
+      <DecorativeLine className={styles.Line} />
 
       <ul className={styles.Parameters}>
         <li className={styles.Parameter}>

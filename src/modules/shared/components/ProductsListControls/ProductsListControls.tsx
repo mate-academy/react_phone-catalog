@@ -1,7 +1,7 @@
 import { useListControls } from '../../hooks/useListControls';
 import { SortOption } from '../../types/enums';
 import { Dropdown } from '../Dropdown';
-import { getFirstItemOnPage } from '../../functions/functions';
+import { getFirstItemOnPage } from '../../functions';
 import { ListSearch } from '../ListSearch';
 import styles from './ProductsListControls.module.scss';
 import { useLanguage } from '../Contexts/LanguageContext';

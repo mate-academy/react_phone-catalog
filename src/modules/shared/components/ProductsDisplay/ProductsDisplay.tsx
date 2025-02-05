@@ -5,10 +5,7 @@ import { useMemo } from 'react';
 import { Product } from '../../types/types';
 import { useListControls } from '../../hooks/useListControls';
 import { Category, LoadingStatus, SortOption } from '../../types/enums';
-import {
-  getFirstItemOnPage,
-  getLastItemOnPage,
-} from '../../functions/functions';
+import { getFirstItemOnPage, getLastItemOnPage } from '../../functions';
 import { useLanguage } from '../Contexts/LanguageContext';
 import { ProductsList } from '../ProductsList';
 import { ProductsListControls } from '../ProductsListControls';
@@ -34,8 +31,10 @@ export const ProductsDisplay: React.FC<Props> = ({
 }) => {
   const {
     models,
+    modelsOne,
     preModels,
     items,
+    itemsOne,
     preItems,
     noPhones,
     noTablets,
@@ -150,8 +149,8 @@ export const ProductsDisplay: React.FC<Props> = ({
         <p className={styles.AmountOfProducts}>
           {!!products.length &&
             (productCategory
-              ? `${preModels} ${products.length} ${models}`
-              : `${preItems} ${products.length} ${items}`)}
+              ? `${preModels} ${products.length} ${products.length === 1 ? modelsOne : models}`
+              : `${preItems} ${products.length} ${products.length === 1 ? itemsOne : items}`)}
         </p>
 
         <ProductsListControls

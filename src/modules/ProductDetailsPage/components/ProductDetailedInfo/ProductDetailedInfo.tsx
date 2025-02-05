@@ -1,4 +1,5 @@
-import { ProductDetails } from '../../../shared/types/types';
+import { Product } from '../../../shared/types/types';
+import { ProductDetails } from '../../types';
 import { About } from '../About';
 import { PhotosSlider } from '../PhotosSlider';
 import { ProductDetailsControls } from '../ProductDetailsControls';
@@ -7,14 +8,12 @@ import styles from './ProductDetailedInfo.module.scss';
 
 type Props = {
   productDetails: ProductDetails;
-  fullPrice: number;
-  price: number;
+  product: Product;
 };
 
 export const ProductDetailedInfo: React.FC<Props> = ({
   productDetails,
-  fullPrice,
-  price,
+  product,
 }) => {
   const { name, category, images } = productDetails;
 
@@ -29,9 +28,8 @@ export const ProductDetailedInfo: React.FC<Props> = ({
       />
 
       <ProductDetailsControls
-        product={productDetails}
-        fullPrice={fullPrice}
-        price={price}
+        productDetails={productDetails}
+        product={product}
         className={styles.Controls}
       />
 

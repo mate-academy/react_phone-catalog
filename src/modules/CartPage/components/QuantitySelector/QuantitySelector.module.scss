@@ -1,0 +1,16 @@
+@use "../../../shared/styles/extends";
+@use "../../../shared/styles/mixins" as *;
+
+.Quantity {
+  width: 32px;
+
+  text-align: center;
+  align-content: center;
+
+  @extend %body-text;
+  @include color-transition((color: var(--quantity-text)));
+}
+
+.QuantitySelector{
+  display: flex;
+}

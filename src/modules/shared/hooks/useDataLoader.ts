@@ -1,5 +1,5 @@
 import { useLanguage } from '../components/Contexts/LanguageContext';
-import { wait } from '../functions/functions';
+import { wait } from '../functions';
 import { LoadingStatus } from '../types/enums';
 import { useCallback, useEffect, useState } from 'react';
 

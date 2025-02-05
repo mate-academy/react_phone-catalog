@@ -15,31 +15,10 @@ export type Product = {
   image: string;
 };
 
-export type Paragraph = {
-  title: string;
-  text: string[];
-};
-
-export type ProductDetails = {
+export type ProductInCart = {
   id: string;
-  category: Category;
-  namespaceId: string;
-  name: string;
-  capacityAvailable: string[];
-  capacity: string;
-  priceRegular: number;
-  priceDiscount: number;
-  colorsAvailable: string[];
-  color: string;
-  images: string[];
-  description: Paragraph[];
-  screen: string;
-  resolution: string;
-  processor: string;
-  ram: string;
-  camera?: string;
-  zoom?: string;
-  cell: string[];
+  quantity: number;
+  product: Product;
 };
 
 export type Pagination = number | null;

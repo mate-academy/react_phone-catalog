@@ -1,10 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import { ColorRadio } from '../../../shared/components/ColorRadio';
-import { ProductDetails } from '../../../shared/types/types';
-import {
-  getColorValue,
-  separateValueFromUnit,
-} from '../../../shared/functions/functions';
+import { Product } from '../../../shared/types/types';
+import { separateValueFromUnit } from '../../../shared/functions';
 import { DecorativeLine } from '../../../shared/components/DecorativeLine';
 import styles from './ProductDetailsControls.module.scss';
 import classNames from 'classnames';
@@ -14,20 +11,24 @@ import { FavouriteButton } from '../../../shared/components/FavouriteButton';
 // eslint-disable-next-line max-len
 import { useLanguage } from '../../../shared/components/Contexts/LanguageContext';
 import { Category } from '../../../shared/types/enums';
+import { useCart } from '../../../shared/components/Contexts/CartContext';
+import { useMemo } from 'react';
+import { getColorValue } from '../../functions';
+import { ProductDetails } from '../../types';
 
 type Props = {
-  product: ProductDetails;
-  fullPrice: number;
-  price: number;
+  productDetails: ProductDetails;
+  product: Product;
   className?: string;
 };
 
 export const ProductDetailsControls: React.FC<Props> = ({
+  productDetails,
   product,
   className,
-  fullPrice,
-  price,
 }) => {
+  const { cart, handleProductAdd } = useCart();
+
   const {
     selectColor,
     selectCapacity,
@@ -37,6 +38,7 @@ export const ProductDetailsControls: React.FC<Props> = ({
     processor: processorLabel,
     ram: ramLabel,
     addToCart,
+    addedToCart,
   } = useLanguage().localeTexts;
 
   const {
@@ -50,7 +52,7 @@ export const ProductDetailsControls: React.FC<Props> = ({
     color,
     colorsAvailable,
     capacityAvailable,
-  } = product;
+  } = productDetails;
 
   const navigate = useNavigate();
 
@@ -98,6 +100,15 @@ export const ProductDetailsControls: React.FC<Props> = ({
     );
   };
 
+  const handleAddToCartButtonClick = () => {
+    handleProductAdd(product);
+  };
+
+  const isInCart = useMemo(
+    () => cart.some(productInCart => productInCart.id === product.itemId),
+    [cart, product.itemId],
+  );
+
   return (
     <section className={classNames(styles.ProductDetailsControls, className)}>
       <ColorRadio
@@ -129,18 +140,24 @@ export const ProductDetailsControls: React.FC<Props> = ({
 
       <div className={styles.MainControls}>
         <div className={styles.Prices}>
-          <strong className={styles.Price}>{`$${price}`}</strong>
+          <strong className={styles.Price}>{`$${product.price}`}</strong>
 
-          {price !== fullPrice && (
+          {product.price !== product.fullPrice && (
             <del
-              data-content={`$${fullPrice}`}
+              data-content={`$${product.fullPrice}`}
               className={styles.Discount}
-            >{`$${fullPrice}`}</del>
+            >{`$${product.fullPrice}`}</del>
           )}
         </div>
 
         <div className={styles.Buttons}>
-          <Button text={addToCart} className={styles.AddToCartButton} />
+          <Button
+            text={isInCart ? addedToCart : addToCart}
+            onClick={handleAddToCartButtonClick}
+            active={isInCart}
+            className={styles.AddToCartButton}
+          />
+
           <FavouriteButton className={styles.FavouriteButton} />
         </div>
       </div>

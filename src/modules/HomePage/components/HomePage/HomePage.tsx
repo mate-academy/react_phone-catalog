@@ -60,7 +60,7 @@ export const HomePage: React.FC = () => {
       <Welcome />
       {loadingStatus === LoadingStatus.Success ? (
         <>
-          {brandNewProducts.length && (
+          {!!brandNewProducts.length && (
             <ProductsSlider
               title={newModels}
               titleHeadingLevel="h3"
@@ -70,7 +70,7 @@ export const HomePage: React.FC = () => {
 
           <Categories products={products} loadingStatus={loadingStatus} />
 
-          {hotPriceProducts.length && (
+          {!!hotPriceProducts.length && (
             <ProductsSlider
               title={hotPrices}
               titleHeadingLevel="h3"

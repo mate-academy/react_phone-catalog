@@ -9,10 +9,10 @@ type Props = {
 };
 
 export const BurgerMenuPageLink: React.FC<Props> = ({ title, to }) => {
-  const { isBurgerMenuOpened, closeBurgerMenu } = useBurgerMenu();
+  const { isBurgerMenuOpened, handleCloseBurgerMenu } = useBurgerMenu();
 
   const handleClick = () => {
-    closeBurgerMenu();
+    handleCloseBurgerMenu();
   };
 
   return (

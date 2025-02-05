@@ -5,7 +5,7 @@ import { IconButton } from '../IconButton';
 import { ProductCard } from '../ProductCard';
 import styles from './ProductsSlider.module.scss';
 import { useEffect, useRef, useState } from 'react';
-import { getPageX } from '../../functions/functions';
+import { getPageX } from '../../functions';
 import { HandleSliderDragEvent } from '../../types/handlers';
 import { HeadingLevel, Product } from '../../types/types';
 import React from 'react';

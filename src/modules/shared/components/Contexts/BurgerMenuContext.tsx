@@ -1,12 +1,12 @@
 import React, { useContext, useEffect, useState } from 'react';
 
-type CloseBurgerMenu = () => void;
-type ToggleBurgerMenu = () => void;
+type HandleToggleBurgerMenu = () => void;
+type HandleCloseBurgerMenu = () => void;
 
 type BurgerMenuContextValue = {
   isBurgerMenuOpened: boolean;
-  toggleBurgerMenu: ToggleBurgerMenu;
-  closeBurgerMenu: CloseBurgerMenu;
+  handleToggleBurgerMenu: HandleToggleBurgerMenu;
+  handleCloseBurgerMenu: HandleCloseBurgerMenu;
 };
 
 const BurgerMenuContext = React.createContext<BurgerMenuContextValue | null>(
@@ -18,11 +18,11 @@ type Props = React.PropsWithChildren;
 export const BurgerMenuProvider = ({ children }: Props) => {
   const [isBurgerMenuOpened, setIsBurgerMenuOpened] = useState(false);
 
-  const toggleBurgerMenu = () => {
+  const handleToggleBurgerMenu = () => {
     setIsBurgerMenuOpened(isOpened => !isOpened);
   };
 
-  const closeBurgerMenu = () => {
+  const handleCloseBurgerMenu = () => {
     setIsBurgerMenuOpened(false);
   };
 
@@ -42,8 +42,8 @@ export const BurgerMenuProvider = ({ children }: Props) => {
 
   const value = {
     isBurgerMenuOpened,
-    toggleBurgerMenu,
-    closeBurgerMenu,
+    handleToggleBurgerMenu,
+    handleCloseBurgerMenu,
   };
 
   return (

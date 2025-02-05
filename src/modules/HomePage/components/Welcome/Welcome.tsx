@@ -6,7 +6,7 @@ import { PicturesSlider } from '../PicturesSlider';
 import styles from './Welcome.module.scss';
 import { LoadingStatus } from '../../../shared/types/enums';
 import { useDataLoader } from '../../../shared/hooks/useDataLoader';
-import { bannersFile } from '../../../shared/consts/apiFiles';
+import { bannersFile } from '../../consts/apiFiles';
 
 export const Welcome: React.FC = () => {
   const [pictures, loadingStatus, responseStatus, reload] =

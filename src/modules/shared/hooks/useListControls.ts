@@ -1,6 +1,6 @@
 import { useSearchParams } from 'react-router-dom';
 import { SortOption } from '../types/enums';
-import { getAmountOfPages } from '../functions/functions';
+import { getAmountOfPages } from '../functions';
 import { Pagination } from '../types/types';
 import { useCallback } from 'react';
 

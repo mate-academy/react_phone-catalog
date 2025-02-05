@@ -27,7 +27,7 @@ export const CategoryCard: React.FC<Props> = ({
   backgroundColor,
   loadingStatus,
 }) => {
-  const { preModels, models } = useLanguage().localeTexts;
+  const { preModels, models, modelsOne } = useLanguage().localeTexts;
 
   const imageStyles = {
     width: `${imageScalePercentage}%`,
@@ -36,7 +36,7 @@ export const CategoryCard: React.FC<Props> = ({
   };
 
   return (
-    <Link to={to} className={styles.CategoryCard}>
+    <Link to={to} aria-label={title} className={styles.CategoryCard}>
       <div
         className={styles.ImageWrapper}
         style={{ backgroundColor: backgroundColor }}
@@ -54,7 +54,7 @@ export const CategoryCard: React.FC<Props> = ({
       <p className={styles.AmountOfModels}>
         {(loadingStatus === LoadingStatus.Success ||
           loadingStatus === LoadingStatus.NoData) &&
-          `${preModels} ${amountOfModels} ${models}`}
+          `${preModels} ${amountOfModels} ${amountOfModels === 1 ? modelsOne : models}`}
       </p>
     </Link>
   );

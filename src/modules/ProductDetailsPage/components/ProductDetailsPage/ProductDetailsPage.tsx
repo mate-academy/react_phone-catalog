@@ -3,13 +3,7 @@ import styles from './ProductDetailsPage.module.scss';
 import React, { useCallback, useEffect, useMemo } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useDataLoader } from '../../../shared/hooks/useDataLoader';
-import {
-  accessoriesFile,
-  phonesFile,
-  productsFile,
-  tablestFile,
-} from '../../../shared/consts/apiFiles';
-import { Product, ProductDetails } from '../../../shared/types/types';
+import { Product } from '../../../shared/types/types';
 import { Category, LoadingStatus } from '../../../shared/types/enums';
 // eslint-disable-next-line max-len
 import { useLanguage } from '../../../shared/components/Contexts/LanguageContext';
@@ -24,6 +18,13 @@ import { ProductDetailedInfo } from '../ProductDetailedInfo';
 import { ProductsSliderSkeleton } from '../../../shared/components/ProductsSliderSkeleton';
 import { ProductDetailedInfoSkeleton } from '../ProductDetailedInfoSkeleton';
 import { ProductNotFound } from '../ProductNotFound';
+import { productsFile } from '../../../shared/consts/apiFiles';
+import {
+  accessoriesFile,
+  phonesFile,
+  tablestFile,
+} from '../../consts/apiFiles';
+import { ProductDetails } from '../../types';
 
 type Props = {
   productCategory: Category;
@@ -141,8 +142,7 @@ export const ProductDetailsPage: React.FC<Props> = ({ productCategory }) => {
       content = (
         <ProductDetailedInfo
           productDetails={productDetails}
-          fullPrice={product.fullPrice}
-          price={product.price}
+          product={product}
         />
       );
     } else {

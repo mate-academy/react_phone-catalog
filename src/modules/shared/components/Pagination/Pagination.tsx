@@ -4,7 +4,7 @@ import { IconButton } from '../IconButton';
 import { IconButtonSVGOption } from '../../types/enums';
 import { useEffect, useRef, useState } from 'react';
 import { PaginationButton } from '../PaginationButton';
-import { getAmountOfPages } from '../../functions/functions';
+import { getAmountOfPages } from '../../functions';
 import { useListControls } from '../../hooks/useListControls';
 import { useLanguage } from '../Contexts/LanguageContext';
 

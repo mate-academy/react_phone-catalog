@@ -16,6 +16,8 @@ export enum IconButtonSVGOption {
   UpArrow = 'UpArrow',
   RightArrow = 'RightArrow',
   LeftArrow = 'LeftArrow',
+  Minus = 'Minus',
+  Plus = 'Plus',
 }
 
 export enum Theme {

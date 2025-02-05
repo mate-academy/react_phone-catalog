@@ -1,0 +1,29 @@
+@use "../../../shared/styles/mixins" as *;
+@use "../../../shared/styles/extends";
+
+.Image {
+  width: 100%;
+  margin-bottom: 30px;
+
+  @include full-grid-width;
+
+  @include for-tablet {
+    grid-column: 3 / -3;
+  }
+
+  @include for-desktop {
+    grid-column: 5 / -5;
+  }
+}
+
+.Title {
+  text-align: center;
+
+  @extend %h1;
+  @include full-grid-width;
+  @include color-transition((color: var(--primary-text-color)));
+}
+
+.EmptyCart {
+  @include child-grid;
+}

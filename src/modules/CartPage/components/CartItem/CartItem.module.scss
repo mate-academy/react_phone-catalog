@@ -1,0 +1,105 @@
+@use "../../../shared/styles/extends";
+@use "../../../shared/styles/mixins" as *;
+@use "../../../shared/styles/vars" as *;
+
+$gap: 24px;
+$mobile-gap: 16px;
+
+.FirstMobileRow {
+  display: flex;
+  gap: $gap;
+  align-items: center;
+
+  flex-grow: 1;
+
+  @include for-mobile {
+    gap: $mobile-gap;
+  }
+}
+
+.RemoveButton {
+  padding: 0;
+  border: none;
+
+  background-color: transparent;
+  cursor: pointer;
+
+  @include color-and-hover-scale-transition((color: var(--remove-cross-button-color)));
+}
+
+.Cross {
+  display: block;
+}
+
+.RemoveButtonLabel {
+  @include visually-hidden-focusable;
+}
+
+.ImageLink {
+  padding: 7px;
+
+  @include scale-on-hover;
+}
+
+.Image {
+  display: block;
+  max-height: 66px;
+  aspect-ratio: 1;
+  object-fit: contain;
+}
+
+.TitleLink {
+  @extend %body-text;
+
+  color: var(--primary-text-color);
+  text-decoration: none;
+  transition:
+    color $transition-duration,
+    transform $transition-duration;
+
+  &:hover {
+    transform: $big-element-hover-scale;
+  }
+}
+
+.SecondMobileRow {
+  display: flex;
+  gap: $gap;
+  align-items: center;
+
+  @include for-mobile {
+    gap: $mobile-gap;
+    justify-content: space-between;
+  }
+}
+
+.Price {
+  min-width: 80px;
+  text-align: right;
+
+  @extend %h3;
+  @include color-transition((color: var(--primary-text-color)));
+
+  @include for-mobile {
+    min-width: auto;
+  }
+}
+
+.CartItem {
+  display: flex;
+  gap: $gap;
+
+  padding: 23px;
+  border: 1px solid;
+
+  @include color-transition((
+    background-color: var(--product-card-color),
+    border-color: var(--product-card-border-color)
+  ));
+
+  @include for-mobile {
+    flex-direction: column;
+    gap: $mobile-gap;
+    padding: 15px;
+  }
+}

@@ -2,7 +2,7 @@ import classNames from 'classnames';
 import styles from './PhotosSlider.module.scss';
 import { HandleSliderDragEvent } from '../../../shared/types/handlers';
 import { useEffect, useRef, useState } from 'react';
-import { getPageX } from '../../../shared/functions/functions';
+import { getPageX } from '../../../shared/functions';
 import { PhotoPreviews } from '../PhotoPreviews';
 import { Category } from '../../../shared/types/enums';
 // eslint-disable-next-line max-len

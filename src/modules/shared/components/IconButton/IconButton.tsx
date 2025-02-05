@@ -4,6 +4,8 @@ import { LeftArrowSVG } from '../SVGs/LeftArrowSVG';
 import { RightArrowSVG } from '../SVGs/RightArrowSVG';
 import { UpArrowSVG } from '../SVGs/UpArrowSVG';
 import styles from './IconButton.module.scss';
+import { MinusSVG } from '../SVGs/MinusSVG';
+import { PlusSVG } from '../SVGs/PlusSVG';
 
 type HandleClick = () => void;
 
@@ -35,6 +37,12 @@ export const IconButton: React.FC<Props> = ({
       break;
     case IconButtonSVGOption.LeftArrow:
       icon = <LeftArrowSVG className={styles.Icon} />;
+      break;
+    case IconButtonSVGOption.Minus:
+      icon = <MinusSVG className={styles.Icon} />;
+      break;
+    case IconButtonSVGOption.Plus:
+      icon = <PlusSVG className={styles.Icon} />;
       break;
     default:
       throw new Error('Icon button SVG option is not valid!!!');

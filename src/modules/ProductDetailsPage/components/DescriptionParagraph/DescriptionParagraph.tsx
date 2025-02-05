@@ -1,5 +1,5 @@
 import { Fragment } from 'react/jsx-runtime';
-import { Paragraph } from '../../../shared/types/types';
+import { Paragraph } from '../../types';
 import styles from './DescriptionParagraph.module.scss';
 
 type Props = {
@@ -7,11 +7,13 @@ type Props = {
 };
 
 export const DescriptionParagraph: React.FC<Props> = ({ paragraph }) => {
+  const { title, text } = paragraph;
+
   return (
     <article className={styles.DescriptionParagraph}>
-      <h3 className={styles.Title}>{paragraph.title}</h3>
+      <h3 className={styles.Title}>{title}</h3>
       <p className={styles.Text}>
-        {paragraph.text.map((partOfText, index) => (
+        {text.map((partOfText, index) => (
           <Fragment key={index}>
             {index !== 0 && (
               <>

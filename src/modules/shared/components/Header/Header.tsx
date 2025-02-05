@@ -9,20 +9,28 @@ import styles from './Header.module.scss';
 import classNames from 'classnames';
 import { ToggleBurgerMenuButton } from '../ToggleBurgerMenuButton';
 import { useBurgerMenu } from '../Contexts/BurgerMenuContext';
+import { useCart } from '../Contexts/CartContext';
+import { useMemo } from 'react';
 
 export const Header: React.FC = () => {
-  const { isBurgerMenuOpened, closeBurgerMenu, toggleBurgerMenu } =
+  const { isBurgerMenuOpened, handleCloseBurgerMenu, handleToggleBurgerMenu } =
     useBurgerMenu();
   const { accessSettings, accessFavourites, accessCart } =
     useLanguage().localeTexts;
+  const { cart } = useCart();
 
   const handleToggleBurgerMenuButtonClick = () => {
-    toggleBurgerMenu();
+    handleToggleBurgerMenu();
   };
 
   const handleLinkClick = () => {
-    closeBurgerMenu();
+    handleCloseBurgerMenu();
   };
+
+  const cartQuantity = useMemo(
+    () => cart.reduce((quantity, product) => quantity + product.quantity, 0),
+    [cart],
+  );
 
   return (
     <header className={styles.Header}>
@@ -59,6 +67,7 @@ export const Header: React.FC = () => {
                   to={cartPath}
                   alt={accessCart}
                   svgOption={MenuLinkSVGOption.Bag}
+                  notificationQuantity={cartQuantity}
                 />
               </li>
 

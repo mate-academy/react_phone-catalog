@@ -26,7 +26,14 @@ $menu-link-padding: 24px;
   }
 }
 
+.Notification {
+  top: 18px;
+  left: 50%;
+}
+
 .BurgerMenuMenuLink {
+  position: relative;
+
   &:hover .Icon {
     transform: $hover-scale;
   }

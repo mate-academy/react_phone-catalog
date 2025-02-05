@@ -8,7 +8,9 @@ import { Category } from '../../types/enums';
 import { accessoriesPath, phonesPath, tabletsPath } from '../../consts/paths';
 import { Link } from 'react-router-dom';
 import { DecorativeLine } from '../DecorativeLine';
-import { separateValueFromUnit } from '../../functions/functions';
+import { separateValueFromUnit } from '../../functions';
+import { useCart } from '../Contexts/CartContext';
+import { useMemo } from 'react';
 
 type Props = {
   product: Product;
@@ -23,25 +25,42 @@ export const ProductCard: React.FC<Props> = ({
   draggable = true,
   className,
 }) => {
+  const { cart, handleProductAdd } = useCart();
   const {
     screen: screenLabel,
     capacity: capacityLabel,
     size: sizeLabel,
     ram: ramLabel,
     addToCart,
+    addedToCart,
   } = useLanguage().localeTexts;
-  const { category, name, fullPrice, price, screen, capacity, ram, image } =
-    product;
+  const {
+    itemId,
+    category,
+    name,
+    fullPrice,
+    price,
+    screen,
+    capacity,
+    ram,
+    image,
+  } = product;
 
-  const handleClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
+  const handleLinkClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
     if (!isClicked) {
       event.preventDefault();
     }
   };
 
+  const handleAddToCartButtonClick = () => {
+    if (isClicked) {
+      handleProductAdd(product);
+    }
+  };
+
   let path: string;
 
-  switch (product.category) {
+  switch (category) {
     case Category.Phones:
       path = phonesPath;
       break;
@@ -55,15 +74,21 @@ export const ProductCard: React.FC<Props> = ({
       throw new Error('Product category is not valid!!!');
   }
 
-  path += '/' + product.itemId;
+  path += '/' + itemId;
+
+  const isInCart = useMemo(
+    () => cart.some(productInCart => productInCart.id === itemId),
+    [cart, itemId],
+  );
 
   return (
     <article className={classNames(styles.ProductCard, className)}>
       <Link
         to={path}
+        aria-label={name}
         draggable={draggable}
         className={styles.ImageLink}
-        onClick={handleClick}
+        onClick={handleLinkClick}
       >
         <img
           src={image}
@@ -77,7 +102,7 @@ export const ProductCard: React.FC<Props> = ({
         to={path}
         draggable={draggable}
         className={styles.TitleLink}
-        onClick={handleClick}
+        onClick={handleLinkClick}
       >
         {name}
       </Link>
@@ -118,7 +143,12 @@ export const ProductCard: React.FC<Props> = ({
       </ul>
 
       <div className={styles.Buttons}>
-        <Button text={addToCart} className={styles.AddToCartButton} />
+        <Button
+          text={isInCart ? addedToCart : addToCart}
+          onClick={handleAddToCartButtonClick}
+          active={isInCart}
+          className={styles.AddToCartButton}
+        />
         <FavouriteButton className={styles.FavouriteButton} />
       </div>
     </article>

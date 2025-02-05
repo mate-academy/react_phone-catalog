@@ -8,7 +8,7 @@ import { PictureSlide } from '../PictureSlide';
 import { Dashes } from '../Dashes';
 // eslint-disable-next-line max-len
 import { useLanguage } from '../../../shared/components/Contexts/LanguageContext';
-import { getPageX } from '../../../shared/functions/functions';
+import { getPageX } from '../../../shared/functions';
 import { HandleSliderDragEvent } from '../../../shared/types/handlers';
 
 type Props = {

@@ -9,7 +9,18 @@
   transition: transform $transition-duration, color $transition-duration;
 }
 
+.Notification {
+  top: 18px;
+  right: 18px;
+
+  @include for-tablet {
+    top: 10px;
+    right: 10px;
+  }
+}
+
 .MenuLink {
+  position: relative;
   display: block;
   box-sizing: border-box;
   padding-top: $active-underline-width;

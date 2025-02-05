@@ -95,9 +95,19 @@
   font-weight: 600;
   line-height: 28.12px;
   text-align: left;
-  
+
   @include for-mobile {
     font-size: 20px;
     line-height: 25.56px;
   }
+}
+
+%quantity-notification {
+  font-family: Mont, Arial, Helvetica, sans-serif;
+  font-size: 9px;
+  font-weight: 700;
+  line-height: 11.5px;
+  text-align: center;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
 }

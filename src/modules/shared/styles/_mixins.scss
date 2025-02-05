@@ -67,8 +67,11 @@
 }
 
 @mixin visually-hidden-focusable {
-  @include color-transition((color: var(--primary-text-color)));
-  
+  &:focus, &:active {
+    color: var(--primary-text-color);
+    position: absolute;
+  }
+
   &:not(:focus, :active) {
     @include visually-hidden;
   }

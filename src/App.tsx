@@ -5,6 +5,7 @@ import { Navigate, Route, Routes } from 'react-router-dom';
 import {
   accessoriesPath,
   alternateHomePath,
+  cartPath,
   homePath,
   phonesPath,
   settingsPath,
@@ -20,6 +21,7 @@ import { ProductsPage } from './modules/ProductsPage/components/ProductsPage';
 import { Category } from './modules/shared/types/enums';
 // eslint-disable-next-line max-len
 import { ProductDetailsPage } from './modules/ProductDetailsPage/components/ProductDetailsPage';
+import { CartPage } from './modules/CartPage/components/CartPage';
 
 export const App: React.FC = () => {
   return (
@@ -90,6 +92,7 @@ export const App: React.FC = () => {
         </Route>
 
         <Route path={settingsPath} element={<SettingsPage />} />
+        <Route path={cartPath} element={<CartPage />} />
         <Route path="*" element={<PageNotFoundPage />} />
       </Routes>
 

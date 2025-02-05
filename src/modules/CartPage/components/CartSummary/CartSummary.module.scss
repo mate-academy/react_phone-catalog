@@ -1,0 +1,47 @@
+@use "../../../shared/styles/mixins" as *;
+@use "../../../shared/styles/extends";
+
+.Frame {
+  display: flex;
+  flex-direction: column;
+
+  padding: 23px;
+  border: 1px solid;
+
+  @include color-transition((border-color: var(--element-color)));
+}
+
+.TotalPrice {
+  text-align: center;
+
+  @extend %h2;
+  @include color-transition((color: var(--primary-text-color)));
+}
+
+.TotalQuantity {
+  margin-bottom: 16px;
+  text-align: center;
+
+  @extend %body-text;
+  @include color-transition((color: var(--secondary-text-color)));
+
+  @include for-desktop {
+    margin-bottom: 25px;
+  }
+}
+
+.Line {
+  margin-bottom: 16px;
+
+  @include for-desktop {
+    margin-bottom: 24px;
+  }
+}
+
+.Button {
+  height: 48px;
+}
+
+.CartSummary {
+  padding-top: 32px;
+}

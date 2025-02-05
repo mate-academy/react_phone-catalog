@@ -1,0 +1,48 @@
+@use "../../../shared/styles/extends";
+@use "../../../shared/styles/mixins" as *;
+
+.Title {
+  padding-top: 16px;
+
+  @include full-grid-width;
+  @extend %h1;
+  @include color-transition((color: var(--primary-text-color)));
+
+  @include for-mobile {
+    padding-top: 24px;
+  }
+}
+
+.List {
+  @include full-grid-width;
+
+  @include for-desktop {
+    grid-column: 1 / 17;
+  }
+}
+
+.Summary {
+  @include full-grid-width;
+
+  @include for-desktop {
+    grid-column: 17 / 25;
+  }
+}
+
+.EmptyCart {
+  @include full-grid-width;
+}
+
+.CartPage {
+  @include grid;
+
+  padding-bottom: 56px;
+
+  @include for-tablet {
+    padding-bottom: 64px;
+  }
+
+  @include for-desktop {
+    padding-bottom: 80px;
+  }
+}

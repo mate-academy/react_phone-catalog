@@ -1,0 +1,20 @@
+@use "../../../shared/styles/mixins" as *;
+@use "../../../shared/styles/extends";
+
+$size: 14px;
+
+.QuantityNotification {
+  position: absolute;
+  box-sizing: border-box;
+  line-height: $size;
+  border: 1px solid;
+  border-radius: 50%;
+
+  @include square($size);
+  @extend %quantity-notification;
+  @include color-transition((
+    color: var(--quantity-notification-text-color),
+    background-color: var(--quantity-notification-color),
+    border-color: var(--quantity-notification-border-color),
+  ));
+}
