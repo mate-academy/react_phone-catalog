@@ -10,7 +10,6 @@
   }
 }
 
-
 @mixin page-grid {
   --columns: 24;
 
@@ -26,5 +25,21 @@
 
   @include on-mobile {
     --columns: 4;
+  }
+}
+
+@mixin button-style {
+  background-color: none;
+  background-repeat: no-repeat;
+  background-position: center;
+
+  border: 1px $icons solid;
+
+  &:hover {
+    border: 1px $primary solid;
+  }
+
+  &:disabled {
+    border: 1px $element solid;
   }
 }

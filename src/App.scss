@@ -1,11 +1,10 @@
-@import "./styles/variables";
+@import './styles/main';
 
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 
-  font-family: Mont, sans-serif;
   color: $primary;
   background-color: $white;
 }

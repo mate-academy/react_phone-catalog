@@ -1,48 +1,42 @@
-import { NavLink } from 'react-router-dom';
+import { NavLink, NavLinkRenderProps } from 'react-router-dom';
 import styles from './Buttons.module.scss';
-import favourites from '../../media/icon/favourites.svg';
-import cart from '../../media/icon/cart.svg';
-import menu from '../../media/icon/menu.svg';
+
 import { getActiveLink } from '../../utils/getActiveLink';
 
 export const Buttons = () => {
+  const handleClassName = (isActive: NavLinkRenderProps, selector: string) => {
+    return (
+      getActiveLink({ isActive, element: 'button__link', styles }) + selector
+    );
+  };
+
   return (
     <ul className={styles.buttons}>
       <li className={`${styles.button} ${styles['button--desktop']}`}>
         <NavLink
           to="favourites"
-          className={({ isActive }) =>
-            getActiveLink({ isActive, element: 'button__link', styles })
+          className={isActive =>
+            handleClassName(isActive, ` ${styles['button__link--favourites']}`)
           }
-        >
-          <img
-            src={favourites}
-            alt="favourites icon"
-            className={styles.button__icon}
-          />
-        </NavLink>
+        ></NavLink>
       </li>
 
       <li className={`${styles.button} ${styles['button--desktop']}`}>
         <NavLink
           to="cart"
-          className={({ isActive }) =>
-            getActiveLink({ isActive, element: 'button__link', styles })
+          className={isActive =>
+            handleClassName(isActive, ` ${styles['button__link--cart']}`)
           }
-        >
-          <img src={cart} alt="cart icon" className={styles.button__icon} />
-        </NavLink>
+        ></NavLink>
       </li>
 
       <li className={`${styles.button} ${styles['button--mobile']}`}>
         <NavLink
           to="menu"
-          className={({ isActive }) =>
-            getActiveLink({ isActive, element: 'button__link', styles })
+          className={isActive =>
+            handleClassName(isActive, ` ${styles['button__link--menu']}`)
           }
-        >
-          <img src={menu} alt="menu icon" className={styles.button__icon} />
-        </NavLink>
+        ></NavLink>
       </li>
     </ul>
   );

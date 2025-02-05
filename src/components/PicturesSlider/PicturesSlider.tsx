@@ -1,21 +1,24 @@
 import styles from './PicturesSlider.module.scss';
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import { useSwipeable } from 'react-swipeable';
+import { useCallback, useEffect, useMemo, useState } from 'react';
+import { imagesMobile, imagesDesktop } from '../../data/imageData';
 
 export const PicturesSlider = () => {
-  const imagesMobile = [
-    './img/mobile-banner-phones.png',
-    './img/mobile-banner-accessories.png',
-    './img/mobile-banner-tablets.png',
-  ];
-  const imagesDesktop = [
-    './img/banner-phones.png',
-    './img/banner-accessories.png',
-    './img/banner-tablets.png',
-  ];
-  const isMobile = window.innerWidth < 640;
-  const images = isMobile ? imagesMobile : imagesDesktop;
+  const [isMobile, setIsMobile] = useState(false);
   const [index, setIndex] = useState(0);
-  const startX = useRef<number | null>(null);
+  const images = useMemo(() => {
+    return isMobile ? imagesMobile : imagesDesktop;
+  }, [isMobile]);
+
+  useEffect(() => {
+    const handleRezise = () => {
+      setIsMobile(window.innerWidth < 640);
+    };
+
+    window.addEventListener('resize', handleRezise);
+
+    return () => window.removeEventListener('resize', handleRezise);
+  }, []);
 
   const handleLeftClick = useCallback(() => {
     setIndex(prev => (prev - 1 + images.length) % images.length);
@@ -31,24 +34,10 @@ export const PicturesSlider = () => {
     return () => clearInterval(intervalId);
   }, [handleRightClick]);
 
-  const handleTouchStart = (event: React.TouchEvent) => {
-    startX.current = event.touches[0].clientX;
-  };
-
-  const handleTouchMove = (event: React.TouchEvent) => {
-    if (!startX.current) {
-      return;
-    }
-
-    const moveX = event.touches[0].clientX;
-    const diffX = startX.current - moveX;
-
-    if (diffX > 200) {
-      handleRightClick();
-    } else {
-      handleLeftClick();
-    }
-  };
+  const handlers = useSwipeable({
+    onSwipedLeft: () => handleLeftClick(),
+    onSwipedRight: () => handleRightClick(),
+  });
 
   return (
     <div className={styles['pictures-slider']}>
@@ -57,11 +46,7 @@ export const PicturesSlider = () => {
         onClick={handleLeftClick}
       ></button>
 
-      <div
-        className={styles['pictures-slider__images']}
-        onTouchStart={handleTouchStart}
-        onTouchMove={handleTouchMove}
-      >
+      <div className={styles['pictures-slider__images']} {...handlers}>
         <div
           className={styles['pictures-slider__images-wrapper']}
           style={{ transform: `translateX(-${index * 100}%)` }}

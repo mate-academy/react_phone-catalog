@@ -1,5 +1,4 @@
-@import '../../styles/variables';
-@import '../../styles/mixins';
+@import '../../styles/main';
 
 .pictures-slider {
   @include page-grid;
@@ -7,7 +6,7 @@
   grid-column: 1 / -1;
 
   @include on-tablet {
-    padding-inline: 24px;
+    padding-inline: $padding-inline-tablet;
   }
 
   @include on-mobile {
@@ -18,10 +17,7 @@
     width: 100%;
     height: 400px;
 
-    background-color: none;
-    background-repeat: no-repeat;
-    background-position: center;
-    border: 1px $icons solid;
+    @include button-style;
 
     &--left {
       grid-column: 1 / 2;
@@ -39,10 +35,6 @@
 
     @include on-mobile {
       display: none;
-    }
-
-    &:hover {
-      border: 1px $primary solid;
     }
   }
 

@@ -1,0 +1,124 @@
+@import '../../styles/main';
+
+.product-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+
+  padding: 32px;
+  border: 1px $element solid;
+
+  width: 272px;
+  height: 506px;
+
+  @include on-tablet {
+    width: 237px;
+    height: 512px;
+  }
+
+  @include on-mobile {
+    width: 212px;
+    height: 439px;
+  }
+
+  &__img {
+    margin: 0 auto;
+    object-fit: contain;
+    padding-bottom: 16px;
+
+    width: 208px;
+    height: 196px;
+
+    @include on-tablet {
+      width: 173px;
+      height: 202px;
+    }
+
+    @include on-mobile {
+      width: 148px;
+      height: 129px;
+    }
+  }
+
+  &__name {
+    @include body-typography;
+  }
+
+  &__price {
+    @include h3-typography;
+
+    padding-bottom: 8px;
+    width: 100%;
+    border-bottom: 1px $element solid;
+  }
+
+  &__specs {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding-block: 8px;
+  }
+
+  &__buttons {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+  }
+
+  &__button {
+    @include buttons-typography;
+
+    color: $white;
+    height: 40px;
+
+    &--add {
+      flex-grow: 1;
+      max-width: 160px;
+      background-color: $primary;
+      transition: box-shadow 0.3s;
+
+      &:hover {
+        box-shadow: 0 3px 13px $shadow;
+      }
+    }
+
+    &--add-selected {
+      color: $green;
+      border: 1px $element solid;
+  }
+
+    &--like {
+      width: 40px;
+
+      @include button-style;
+
+      background-image: url('src/media/icon/favourites.svg');
+    }
+
+    &--like-selected {
+        background-image: url('src/media/icon/selected-favourites.svg');
+        border: 1px $element solid;
+    }
+  }
+}
+
+.spec {
+  display: flex;
+  justify-content: space-between;
+
+  &__name {
+    @include small-text-typography;
+
+    color: $secondary;
+  }
+
+  &__value {
+    @include small-text-typography;
+
+    font-weight: 600;
+    color: $primary;
+  }
+}

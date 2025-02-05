@@ -1,9 +1,12 @@
-@import '../../styles/mixins';
-@import '../../styles/variables';
+@import '../../styles/main';
 
 
 .header {
   position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
   display: flex;
   padding-bottom: 0;
   justify-content: space-between;

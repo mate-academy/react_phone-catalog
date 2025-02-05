@@ -1,7 +1,8 @@
 import classNames from 'classnames';
+import { NavLinkRenderProps } from 'react-router-dom';
 
 interface Props {
-  isActive: boolean;
+  isActive: NavLinkRenderProps;
   element: string;
   styles: CSSModuleClasses;
 }

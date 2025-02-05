@@ -1,2 +1,59 @@
-@import '../../styles/variables';
-@import '../../styles/mixins';
+@import '../../styles/main';
+
+.new-models {
+  @include page-grid;
+
+  grid-column: 1 / -1;
+
+  &__top {
+    grid-column: 1 / -1;
+    padding-bottom: 24px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    @include on-tablet {
+      padding-inline: $padding-inline-tablet;
+    }
+
+    @include on-mobile {
+      padding-inline: $padding-inline-mobile;
+    }
+  }
+
+  &__title {
+    @include h2-typography;
+  }
+
+  &__buttons {
+    display: flex;
+    align-items: center;
+
+    gap: 16px;
+
+  }
+
+  &__button {
+    width: 32px;
+    height: 32px;
+
+    @include button-style;
+
+    &--left {
+      background-image: url('../../media/icon/arrow-left.svg');
+
+      &:disabled {
+        background-image: url('../../media/icon/disabled-arrow-left.svg');
+      }
+    }
+
+    &--right {
+      background-image: url('../../media/icon/arrow-right.svg');
+
+      &:disabled {
+        background-image: url('../../media/icon/disabled-arrow-right.svg');
+      }
+    }
+  }
+}

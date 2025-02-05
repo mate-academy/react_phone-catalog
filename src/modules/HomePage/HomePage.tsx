@@ -1,3 +1,4 @@
+import { NewModels } from '../../components/NewModels';
 import { PicturesSlider } from '../../components/PicturesSlider';
 import styles from './HomePage.module.scss';
 
@@ -8,7 +9,10 @@ export const HomePage = () => {
         Welcome to Nice Gadgets store!
       </h1>
 
-      <PicturesSlider />
+      <div className={styles['home-page__content']}>
+        <PicturesSlider />
+        <NewModels />
+      </div>
     </div>
   );
 };

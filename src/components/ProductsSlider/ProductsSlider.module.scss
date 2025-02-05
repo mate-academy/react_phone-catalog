@@ -1,0 +1,34 @@
+@import '../../styles/main';
+
+.products-slider {
+  @include page-grid;
+
+  grid-column: 1/-1;
+  width: 100%;
+  display: flex;
+  overflow: hidden;
+
+
+  @include on-tablet {
+    margin-inline: $padding-inline-tablet 0;
+  }
+
+  @include on-mobile {
+    margin-inline: $padding-inline-mobile 0;
+  }
+
+
+  &__wrapper {
+    display: flex;
+
+    transition: transform 0.5s ease;
+    will-change: transform;
+
+    width: 100%;
+  }
+
+  &__slide {
+    padding-right:16px;
+  }
+}
+

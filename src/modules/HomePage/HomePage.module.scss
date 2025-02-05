@@ -1,16 +1,18 @@
-@import '../../styles/mixins';
-@import '../../styles/variables';
+@import '../../styles/main';
 
 .home-page {
   @include page-grid;
 
+  &__content{
+    display: grid;
+    grid-column: 1 / -1;
+    row-gap: 80px;
+  }
+
   &__title {
     grid-column: 1 / -1;
 
-    font-weight: bold;
-    font-size: 48px;
-    line-height: 56px;
-    letter-spacing: -0.01em;
+    @include h1-typography;
 
     margin-bottom: 56px;
 
@@ -23,9 +25,6 @@
     @include on-mobile {
       margin-bottom: 24px;
       padding-inline: 24px;
-
-      font-size: 32px;
-      line-height: 41px;
     }
   }
 }
