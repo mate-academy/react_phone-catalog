@@ -69,16 +69,26 @@ h4 {
 
 .container {
   padding: 0 16px;
-}
 
-.grid {
-  display: grid;
-  grid-template-columns: repeat(4, 60px);
-  gap: 16px;
+  @include on-tablet {
+    padding: 0 24px;
+  }
+
+  @include on-desktop {
+    padding: 0 32px;
+  }
 }
 
 .blocksIdentation {
   margin-top: 56px;
+
+  @include on-tablet {
+    margin-top: 64px;
+  }
+
+  @include on-desktop {
+    margin-top: 80px;
+  }
 }
 
 .hidden {
@@ -87,6 +97,8 @@ h4 {
 
 html {
   scroll-behavior: smooth;
+
+  min-width: 320px;
 
   &:has(.menu:target) {
     overflow: hidden;

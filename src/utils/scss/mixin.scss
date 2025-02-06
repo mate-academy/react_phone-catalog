@@ -6,6 +6,12 @@
   }
 }
 
+@mixin on-desktop {
+  @media (min-width: $desktop-min-width) {
+    @content;
+  }
+}
+
 @mixin hover($property, $toValue) {
   transition: #{$property} $effect-duration;
 
@@ -17,16 +23,17 @@
 @mixin page-grid {
   @include on-tablet {
     --columns: 12;
+
     display: grid;
     column-gap: 16px;
     grid-template-columns: repeat(var(--columns), 1fr);
   }
 
-  // @include on-desktop {
-  //   --columns: 12;
+  @include on-desktop {
+    --columns: 24;
 
-  //   display: grid;
-  //   column-gap: 20px;
-  //   grid-template-columns: repeat(var(--columns), 1fr);
-  // }
+    display: grid;
+    column-gap: 16px;
+    grid-template-columns: repeat(var(--columns), 32px);
+  }
 }

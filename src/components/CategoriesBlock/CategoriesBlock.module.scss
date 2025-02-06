@@ -1,0 +1,84 @@
+@import '../../utils/scss/variables.scss';
+@import '../../utils/scss/mixin.scss';
+
+.categories {
+  &__container {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+
+    @include page-grid;
+  }
+
+  &__title {
+    margin: 24px 0;
+  }
+}
+
+.category {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  text-decoration: none;
+
+  @include on-tablet {
+    grid-column: span 4;
+  }
+
+  @include on-desktop {
+    grid-column: span 8;
+  }
+
+  &__img {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+  }
+
+  &__imgPhones {
+    background-color: rgba(109, 100, 116, 1);
+    background-image: url('../../../public/img/category-phones.png');
+    background-size: 120%;
+    background-repeat: no-repeat;
+    background-position-x: 20px;
+  }
+
+  &__imgTablets {
+    background-color: rgba(141, 141, 146, 1);
+    background-image: url('../../../public/img/category-tablets.png');
+    background-size: 145%;
+    background-repeat: no-repeat;
+    background-position-x: 20px;
+    background-position-y: 20px;
+  }
+
+  &__imgAccessories {
+    background-color: rgba(151, 61, 95, 1);
+    background-image: url('../../../public/img/category-accessories.png');
+    background-size: 175%;
+    background-repeat: no-repeat;
+    background-position-x: 40px;
+    background-position-y: bottom;
+  }
+
+  &__description {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  &__description h4 {
+    margin: 8px 0;
+
+    text-decoration: none;
+    color: $primary-color;
+  }
+
+  &__description p {
+    margin: 0;
+
+    font-size: 14px;
+    line-height: 21px;
+    color: $secondary-color;
+  }
+}

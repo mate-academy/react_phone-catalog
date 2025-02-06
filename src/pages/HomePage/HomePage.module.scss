@@ -5,75 +5,20 @@
   &__grid {
     @include page-grid;
   }
-  &__grid section {
-    @include on-tablet {
-      grid-column: 1 / -1;
-    }
-  }
 
   &__title {
     margin: 24px 0;
 
-    background-color: aqua;
-
     @include on-tablet {
       grid-column: 1 / -1;
+
+      margin: 32px 0;
     }
-  }
-}
 
-.banner {
-  // width: 100%;
-  height: 352px;
+    @include on-desktop {
+      grid-column: 1 / -1;
 
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-
-  @include on-tablet {
-    grid-column: 1 / -1;
-  }
-
-  &__image {
-    width: 100%;
-    height: 320px;
-
-    background-image: url('../../../public/img/now-available/NowAvailable-mobile.png');
-    background-size: cover;
-    background-repeat: no-repeat;
-  }
-
-  &__slider {
-    width: 80px;
-    height: 24px;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 9px;
-  }
-
-  &__sliders {
-    width: 14px;
-    height: 4px;
-
-    background: $elements-color;
-  }
-
-  &__slidersActive {
-    background: $primary-color;
-  }
-}
-
-.categories h2 {
-  margin: 24px 0;
-}
-
-.categories {
-  &__container {
-    display: flex;
-    flex-direction: column;
-    gap: 32px;
+      margin: 56px 0;
+    }
   }
 }

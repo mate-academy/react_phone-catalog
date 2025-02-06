@@ -7,7 +7,7 @@ interface ProductSliderProps {
 
 export const ProductSlider: React.FC<ProductSliderProps> = ({ title }) => {
   return (
-    <div className={styles.newProducts}>
+    <section className={`${styles.newProducts} blocksIdentation container`}>
       <div className={styles.newProducts__bar}>
         <h2 className={styles.newProducts__title}>{title}</h2>
 
@@ -28,6 +28,6 @@ export const ProductSlider: React.FC<ProductSliderProps> = ({ title }) => {
         <ProductCard />
         <ProductCard />
       </div>
-    </div>
+    </section>
   );
 };

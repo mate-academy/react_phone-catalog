@@ -22,9 +22,14 @@
     gap: 16px;
   }
 
+  @include on-desktop {
+    height: $header-height-desktop;
+    gap: 24px;
+  }
+
   &__logo {
-    height: 22px;
     width: 64px;
+    height: 22px;
     margin: 0 16px;
 
     background-image: url('../../../public/img/Logo.png');
@@ -32,6 +37,11 @@
     background-size: contain;
 
     @include hover(transform, scale(1.1));
+
+    @include on-desktop {
+      width: 80px;
+      height: 28px;
+    }
   }
 
   &__buttonsContainer {
@@ -47,7 +57,7 @@
 
   &__menuButton {
     height: 100%;
-    width: 48px;
+    width: $header-height;
 
     background-image: url('../../../public/img/icons/Menu.png');
     background-repeat: no-repeat;
@@ -64,6 +74,10 @@
   &__navButtons {
     display: flex;
     gap: 32px;
+
+    @include on-desktop {
+      gap: 64px;
+    }
   }
 
   &__link {
@@ -78,6 +92,10 @@
 
     text-decoration: none;
     text-transform: uppercase;
+
+    @include on-desktop {
+      line-height: $header-height-desktop;
+    }
   }
 
   &__favAndCart {
@@ -85,7 +103,7 @@
   }
 
   &__favourites {
-    width: 48px;
+    width: $header-height;
 
     box-shadow: -1px 0px 0px 0px rgba(226, 230, 233, 1);
 
@@ -93,10 +111,14 @@
     background-size: 16px;
     background-repeat: no-repeat;
     background-position: center;
+
+    @include on-desktop {
+      width: $header-height-desktop;
+    }
   }
 
   &__cart {
-    width: 48px;
+    width: $header-height;
 
     box-shadow: -1px 0px 0px 0px rgba(226, 230, 233, 1);
 
@@ -104,5 +126,9 @@
     background-size: 16px;
     background-repeat: no-repeat;
     background-position: center;
+
+    @include on-desktop {
+      width: $header-height-desktop;
+    }
   }
 }

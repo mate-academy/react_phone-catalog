@@ -1,6 +1,9 @@
 @import '../../utils/scss/variables.scss';
+@import '../../utils/scss/mixin.scss';
 
 .card {
+  width: 212px;
+
   grid-column: span 3;
 
   display: flex;
@@ -10,6 +13,16 @@
   padding: 32px;
 
   border: 1px solid rgba(226, 230, 233, 1);
+
+  @include on-tablet {
+    width: 237px;
+  }
+
+  @include on-desktop {
+    width: auto;
+
+    grid-column: span 6;
+  }
 
   &__image {
     width: 100%;

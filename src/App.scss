@@ -13,9 +13,11 @@ body {
 
   color: $primary-color;
 }
-// .main {
-//   @include on-tablet {
-//     display: grid;
-//     grid-template-columns: repeat(12, 1fr);
-//   }
-// }
+
+.main {
+  @include on-desktop {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
