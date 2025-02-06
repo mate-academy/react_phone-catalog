@@ -1,0 +1,52 @@
+@import '../../../style/main';
+
+.productsSlider {
+  &__top {
+    @include inline-padding-content;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+
+
+    @include on-desktop {
+      margin-bottom: 24px;
+    }
+  }
+
+  &__title {
+    @include h2;
+
+    color: inherit;
+  }
+
+  &__buttons {
+    display: flex;
+    column-gap: 16px;
+  }
+
+  &__content {
+    overflow: hidden;
+    box-sizing: border-box;
+    margin-left: 16px;
+
+    @include on-tablet{
+      margin-left: 24px;
+
+    }
+
+    @include on-desktop {
+      padding-inline: 0;
+      margin: 0 auto;
+      max-width: $max-width - 64px;
+
+    }
+  }
+
+  &__allProducts {
+    display: flex;
+    column-gap: 16px;
+    transition: all 2s ease-in-out;
+  }
+}

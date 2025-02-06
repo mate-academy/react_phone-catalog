@@ -1,0 +1,113 @@
+@import '/src/style/main';
+
+.Dropdown {
+  position: relative;
+
+  // max-width: 176px;
+  text-transform: capitalize;
+  background-color: $c-white;
+
+  &_darkTheme {
+    background-color: $c-surface2-dark;
+  }
+
+  &__header {
+    border: 1px solid $c-icons;
+    padding: 10px 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    color: inherit;
+    transition: all $transition;
+
+    @include buttons;
+
+    &:hover {
+      border: 1px solid $c-secondary;
+    }
+
+    &_darkTheme {
+      border-color: $c-surface2-dark;
+
+      &:hover {
+        border-color: $c-accent-dark;
+      }
+    }
+
+    &_active {
+      border: 1px solid $c-primary;
+
+      &:hover {
+        border: 1px solid $c-primary;
+      }
+
+      &_darkTheme {
+        border-color: $c-accent-dark;
+
+        &:hover {
+          border-color: $c-accent-dark;
+        }
+      }
+    }
+  }
+
+  &__arrow {
+    width: 16px;
+    height: 16px;
+  }
+
+  &__content {
+    position: absolute;
+    top: 80%;
+    left: 0;
+    width: 100%;
+    background-color: inherit;
+    pointer-events: none;
+    opacity: 0;
+    transition: all $transition;
+
+    border: 1px solid $c-elements;
+    box-shadow: 0 2px 15px 0 #0000000d;
+
+    padding-block: 8px;
+
+    &_darkTheme {
+      background-color: $c-black-dark;
+      border-color: $c-elements-dark;
+    }
+
+    &_active {
+      top: 105%;
+      opacity: 1;
+      pointer-events: all;
+      z-index: 10;
+      cursor: pointer;
+    }
+  }
+
+  &__list {
+    padding-block: 2px;
+  }
+
+  &__item {
+    @include body-text;
+
+    padding: 6px 12px;
+    color: $c-secondary;
+    transition: all $transition;
+
+    &:hover {
+      color: $c-primary;
+    }
+
+    &_darkTheme {
+      color: $c-secondary-dark;
+
+      &:hover {
+        color: $c-white-dark;
+        background-color: $c-surface2-dark;
+      }
+    }
+  }
+}
