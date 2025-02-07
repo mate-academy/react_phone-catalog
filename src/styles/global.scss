@@ -1,0 +1,25 @@
+@import './variables.scss';
+
+html {
+  font-family: $font-family-regular;
+  scroll-behavior: smooth;
+}
+
+body {
+  box-sizing: border-box;
+  margin: 0;
+  
+}
+
+ul, 
+li,
+a,
+p, 
+h4,
+h2 {
+  display: flex;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+} 

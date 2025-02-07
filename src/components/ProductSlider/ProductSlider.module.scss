@@ -1,0 +1,63 @@
+@import '../../styles/variables.scss';
+@import '../../styles/fonts.scss';
+
+.productSlider {
+  overflow: hidden;
+
+  &__header {
+    margin-bottom: 24px;
+
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    padding-inline: 16px;
+    align-items: center;
+  }
+
+  &__title {
+    color: $gray-primary;
+    font-family: $font-family-bold;
+    font-size: 22px;
+    line-height: 33px;
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 16px;
+    justify-content: end;
+  }
+
+  &__button {
+    display: flex;
+
+    box-sizing: border-box;
+    padding: 0;
+    border-radius: 50%;
+    border: none;
+    box-shadow: 0 0 0 1px $gray_icons_placeholders;
+    background-color: white;
+
+    &__icon {
+      width: 16px;
+      height: 16px;
+      padding: 8px;
+    }
+
+    &:hover {
+      box-shadow: 0 0 0 1px $gray-primary;
+    }
+
+    &:disabled {
+      opacity: 0.3;
+    }
+  }
+
+  &__track {
+    padding-inline: 16px;
+
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: 212px;
+    column-gap: 16px;
+    transition: transform 0.3s ease-in-out;
+  }
+}

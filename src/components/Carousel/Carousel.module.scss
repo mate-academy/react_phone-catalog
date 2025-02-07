@@ -1,0 +1,55 @@
+@import '../../styles/variables.scss';
+
+.carousel {
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+
+  &__item {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+  }
+
+  &__img {
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    object-position: center;
+    height: 100%;
+    width: 100%;
+  }
+}
+
+.inner {
+  white-space: nowrap;
+  transition: transform 0.5s ease-in-out;
+}
+
+.indicators {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+
+  &__buttons {
+    padding: 10px 5px;
+    background-color: white;
+    border: none;
+  }
+
+  &__rectangle {
+    display: block;
+    width: 14px;
+    height: 4px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background: none;
+    background-color: $white-gray;
+  }
+
+  &__rectangle--active {
+    background-color: $gray_primary ;
+  }
+}
