@@ -4,9 +4,9 @@
   @include page-grid;
 
   grid-column: 1/-1;
-  width: 100%;
+
   display: flex;
-  overflow: hidden;
+  overflow:auto;
 
 
   @include on-tablet {
