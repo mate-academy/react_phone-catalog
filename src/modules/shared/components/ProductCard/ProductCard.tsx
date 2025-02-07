@@ -149,7 +149,12 @@ export const ProductCard: React.FC<Props> = ({
           active={isInCart}
           className={styles.AddToCartButton}
         />
-        <FavouriteButton className={styles.FavouriteButton} />
+
+        <FavouriteButton
+          product={product}
+          isClicked={isClicked}
+          className={styles.FavouriteButton}
+        />
       </div>
     </article>
   );

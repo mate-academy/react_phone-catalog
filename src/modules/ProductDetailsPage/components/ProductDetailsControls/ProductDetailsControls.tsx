@@ -158,7 +158,10 @@ export const ProductDetailsControls: React.FC<Props> = ({
             className={styles.AddToCartButton}
           />
 
-          <FavouriteButton className={styles.FavouriteButton} />
+          <FavouriteButton
+            product={product}
+            className={styles.FavouriteButton}
+          />
         </div>
       </div>
 

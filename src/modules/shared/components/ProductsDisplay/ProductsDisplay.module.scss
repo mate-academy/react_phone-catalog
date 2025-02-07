@@ -4,8 +4,6 @@
 .Header {
   @include child-grid;
   @include full-grid-width;
-
-  margin-bottom: 24px;
 }
 
 .AmountOfProducts {
@@ -24,6 +22,8 @@
 
 .ListControls {
   @include full-grid-width;
+
+  margin-bottom: 24px
 }
 
 .List {
@@ -52,6 +52,10 @@
   @include full-grid-width;
 
   justify-self: center;
+
+  @include for-mobile {
+    margin-bottom: 8px;
+  }
 }
 
 .ProductsDisplay {

@@ -46,7 +46,7 @@ export const useDataLoader = <Item>(
 
     if (filePath) {
       try {
-        await wait(500);
+        await wait(2000);
         const response = await fetch(filePath);
 
         if (!response.ok) {

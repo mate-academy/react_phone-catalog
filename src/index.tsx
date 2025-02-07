@@ -7,13 +7,17 @@ import { ThemeProvider } from './modules/shared/components/Contexts/ThemeContext
 import { LanguageProvider } from './modules/shared/components/Contexts/LanguageContext';
 import './index.scss';
 import { CartProvider } from './modules/shared/components/Contexts/CartContext';
+// eslint-disable-next-line max-len
+import { FavouritesProvider } from './modules/shared/components/Contexts/FavouritesContext';
 
 createRoot(document.getElementById('root') as HTMLElement).render(
   <HashRouter>
     <LanguageProvider>
       <ThemeProvider>
         <CartProvider>
-          <App />
+          <FavouritesProvider>
+            <App />
+          </FavouritesProvider>
         </CartProvider>
       </ThemeProvider>
     </LanguageProvider>

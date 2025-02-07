@@ -6,6 +6,7 @@ import {
   accessoriesPath,
   alternateHomePath,
   cartPath,
+  favouritesPath,
   homePath,
   phonesPath,
   settingsPath,
@@ -22,6 +23,8 @@ import { Category } from './modules/shared/types/enums';
 // eslint-disable-next-line max-len
 import { ProductDetailsPage } from './modules/ProductDetailsPage/components/ProductDetailsPage';
 import { CartPage } from './modules/CartPage/components/CartPage';
+// eslint-disable-next-line max-len
+import { FavouritesPage } from './modules/FavouritesPage/components/FavouritesPage';
 
 export const App: React.FC = () => {
   return (
@@ -92,6 +95,7 @@ export const App: React.FC = () => {
         </Route>
 
         <Route path={settingsPath} element={<SettingsPage />} />
+        <Route path={favouritesPath} element={<FavouritesPage />} />
         <Route path={cartPath} element={<CartPage />} />
         <Route path="*" element={<PageNotFoundPage />} />
       </Routes>

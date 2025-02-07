@@ -9,11 +9,17 @@ import classNames from 'classnames';
 
 type Props = {
   amountOfProducts: number;
+  showSort?: boolean;
+  showPagination?: boolean;
+  showSearch?: boolean;
   className?: string;
 };
 
 export const ProductsListControls: React.FC<Props> = ({
   amountOfProducts,
+  showSort,
+  showPagination,
+  showSearch,
   className,
 }) => {
   const { sortLabel, newest, cheapest, alphabetically, paginationLabel, all } =
@@ -68,23 +74,27 @@ export const ProductsListControls: React.FC<Props> = ({
 
   return (
     <section className={classNames(styles.ProductsListControlls, className)}>
-      <Dropdown
-        title={sortLabel}
-        options={areDropdownValuesLoaded ? Object.values(sortValues) : []}
-        chosenOption={sortValues[sort]}
-        onChange={handleSortChange}
-        className={styles.Sorting}
-      />
+      {showSort && (
+        <Dropdown
+          title={sortLabel}
+          options={areDropdownValuesLoaded ? Object.values(sortValues) : []}
+          chosenOption={sortValues[sort]}
+          onChange={handleSortChange}
+          className={styles.Sorting}
+        />
+      )}
 
-      <Dropdown
-        title={paginationLabel}
-        options={areDropdownValuesLoaded ? paginationOptions : []}
-        chosenOption={pagination?.toString() || all}
-        onChange={handlePaginationChange}
-        className={styles.Pagination}
-      />
+      {showPagination && (
+        <Dropdown
+          title={paginationLabel}
+          options={areDropdownValuesLoaded ? paginationOptions : []}
+          chosenOption={pagination?.toString() || all}
+          onChange={handlePaginationChange}
+          className={styles.Pagination}
+        />
+      )}
 
-      <ListSearch className={styles.Searching} />
+      {showSearch && <ListSearch className={styles.Searching} />}
     </section>
   );
 };

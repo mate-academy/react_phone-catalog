@@ -65,6 +65,9 @@ export const ProductsPage: React.FC<Props> = ({ productCategory }) => {
 
         <ProductsDisplay
           products={filteredProducts}
+          showSort
+          showPagination
+          showSearch
           loadingStatus={loadingStatus}
           onReloadClick={handleReloadClick}
           productCategory={productCategory}

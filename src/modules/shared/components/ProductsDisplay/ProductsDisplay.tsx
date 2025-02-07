@@ -14,8 +14,11 @@ import { ProductsListSkeleton } from '../ProductsListSkeleton';
 
 type Props = {
   products: Product[];
-  loadingStatus: LoadingStatus;
-  onReloadClick: HandleReloadClick;
+  showSort?: boolean;
+  showPagination?: boolean;
+  showSearch?: boolean;
+  loadingStatus?: LoadingStatus;
+  onReloadClick?: HandleReloadClick;
   productCategory?: Category;
   responseStatus?: number;
   className?: string;
@@ -23,8 +26,11 @@ type Props = {
 
 export const ProductsDisplay: React.FC<Props> = ({
   products,
-  loadingStatus,
-  onReloadClick,
+  showSort,
+  showPagination,
+  showSearch,
+  loadingStatus = LoadingStatus.Success,
+  onReloadClick = () => {},
   productCategory,
   responseStatus,
   className,
@@ -47,39 +53,55 @@ export const ProductsDisplay: React.FC<Props> = ({
   } = useLanguage().localeTexts;
   const { sort, pagination, search } = useListControls();
 
-  const filteredProducts = useMemo(
-    () =>
-      products.filter(product =>
+  const filteredProducts = useMemo(() => {
+    if (showSearch) {
+      return products.filter(product =>
         product.name.toLocaleLowerCase().includes(search.toLocaleLowerCase()),
-      ),
-    [search, products],
-  );
+      );
+    }
+
+    return products;
+  }, [showSearch, products, search]);
 
   const sortedProducts = useMemo(() => {
-    switch (sort) {
-      case SortOption.Title:
-        return [...filteredProducts].sort((firstProduct, secondProduct) =>
-          firstProduct.name
-            .toLocaleLowerCase()
-            .localeCompare(secondProduct.name.toLocaleLowerCase()),
-        );
-      case SortOption.Price:
-        return [...filteredProducts].sort(
-          (firstProduct, secondProduct) =>
-            firstProduct.price - secondProduct.price,
-        );
-      case SortOption.Age:
-        return [...filteredProducts].sort(
-          (firstProduct, secondProduct) =>
-            secondProduct.year - firstProduct.year,
-        );
-
-      default:
-        throw new Error('Sort option is not valid!!!');
+    if (showSort) {
+      switch (sort) {
+        case SortOption.Title:
+          return [...filteredProducts].sort((firstProduct, secondProduct) =>
+            firstProduct.name
+              .toLocaleLowerCase()
+              .localeCompare(secondProduct.name.toLocaleLowerCase()),
+          );
+        case SortOption.Price:
+          return [...filteredProducts].sort(
+            (firstProduct, secondProduct) =>
+              firstProduct.price - secondProduct.price,
+          );
+        case SortOption.Age:
+          return [...filteredProducts].sort(
+            (firstProduct, secondProduct) =>
+              secondProduct.year - firstProduct.year,
+          );
+        default:
+          throw new Error('Sort option is not valid!!!');
+      }
     }
-  }, [sort, filteredProducts]);
+
+    return filteredProducts;
+  }, [showSort, filteredProducts, sort]);
 
   const { page } = useListControls(sortedProducts.length);
+
+  const slicedProducts = useMemo(() => {
+    if (showPagination) {
+      return sortedProducts.slice(
+        getFirstItemOnPage(pagination, page) - 1,
+        getLastItemOnPage(pagination, page, sortedProducts.length),
+      );
+    }
+
+    return sortedProducts;
+  }, [page, pagination, showPagination, sortedProducts]);
 
   let noProductsMessage: string;
   let noProductsQueryMessage: string;
@@ -108,18 +130,15 @@ export const ProductsDisplay: React.FC<Props> = ({
   let content: React.JSX.Element;
 
   if (loadingStatus === LoadingStatus.Success) {
+    const displayPagination =
+      showPagination && pagination && sortedProducts.length > pagination;
+
     if (sortedProducts.length) {
       content = (
         <>
-          <ProductsList
-            products={sortedProducts.slice(
-              getFirstItemOnPage(pagination, page) - 1,
-              getLastItemOnPage(pagination, page, sortedProducts.length),
-            )}
-            className={styles.List}
-          />
+          <ProductsList products={slicedProducts} className={styles.List} />
 
-          {pagination && sortedProducts.length > pagination && (
+          {displayPagination && (
             <Pagination
               amountOfItems={sortedProducts.length}
               className={styles.Pagination}
@@ -153,10 +172,15 @@ export const ProductsDisplay: React.FC<Props> = ({
               : `${preItems} ${products.length} ${products.length === 1 ? itemsOne : items}`)}
         </p>
 
-        <ProductsListControls
-          amountOfProducts={sortedProducts.length}
-          className={styles.ListControls}
-        />
+        {(showSort || showPagination || showSearch) && (
+          <ProductsListControls
+            amountOfProducts={sortedProducts.length}
+            showSort={showSort}
+            showPagination={showPagination}
+            showSearch={showSearch}
+            className={styles.ListControls}
+          />
+        )}
       </header>
 
       {content}

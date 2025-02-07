@@ -44,13 +44,35 @@ export const LanguageProvider = ({ children }: Props) => {
 
   const fetchLocaleTexts = async (languageToFetch: Language) => {
     try {
-      const response = await fetch(`locales/${languageToFetch}.json`);
+      const defaultLocalesFetching = fetch(`locales/${Language.English}.json`);
 
-      if (!response.ok) {
-        throw new Error(`An error has occured: ${response.status}`);
+      let loadedChosenLocales;
+
+      if (languageToFetch !== Language.English) {
+        const chosenLocalesResponse = await fetch(
+          `locales/${languageToFetch}.json`,
+        );
+
+        if (!chosenLocalesResponse.ok) {
+          throw new Error(
+            `An error has occured when loading ${languageToFetch}.json: ${chosenLocalesResponse.status}`,
+          );
+        }
+
+        loadedChosenLocales = await chosenLocalesResponse.json();
       }
 
-      setLocaleTexts(await response.json());
+      const defaultLocalesResponse = await defaultLocalesFetching;
+
+      if (!defaultLocalesResponse.ok) {
+        throw new Error(
+          `An error has occured when loading ${Language.English}.json: ${defaultLocalesResponse.status}`,
+        );
+      }
+
+      const loadedDefaultLocales = await defaultLocalesResponse.json();
+
+      setLocaleTexts({ ...loadedDefaultLocales, ...loadedChosenLocales });
     } catch (error) {
       throw error;
     }

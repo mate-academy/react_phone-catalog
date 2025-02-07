@@ -10,7 +10,9 @@ import classNames from 'classnames';
 import { ToggleBurgerMenuButton } from '../ToggleBurgerMenuButton';
 import { useBurgerMenu } from '../Contexts/BurgerMenuContext';
 import { useCart } from '../Contexts/CartContext';
-import { useMemo } from 'react';
+import { useEffect, useMemo, useRef } from 'react';
+import { useFavourites } from '../Contexts/FavouritesContext';
+import { useLocation } from 'react-router-dom';
 
 export const Header: React.FC = () => {
   const { isBurgerMenuOpened, handleCloseBurgerMenu, handleToggleBurgerMenu } =
@@ -18,6 +20,9 @@ export const Header: React.FC = () => {
   const { accessSettings, accessFavourites, accessCart } =
     useLanguage().localeTexts;
   const { cart } = useCart();
+  const { favourites } = useFavourites();
+  const location = useLocation();
+  const savedFavouritesQuantity = useRef(favourites.length);
 
   const handleToggleBurgerMenuButtonClick = () => {
     handleToggleBurgerMenu();
@@ -26,6 +31,12 @@ export const Header: React.FC = () => {
   const handleLinkClick = () => {
     handleCloseBurgerMenu();
   };
+
+  useEffect(() => {
+    if (location.pathname !== favouritesPath) {
+      savedFavouritesQuantity.current = favourites.length;
+    }
+  }, [favourites.length, location.pathname]);
 
   const cartQuantity = useMemo(
     () => cart.reduce((quantity, product) => quantity + product.quantity, 0),
@@ -59,6 +70,11 @@ export const Header: React.FC = () => {
                   to={favouritesPath}
                   alt={accessFavourites}
                   svgOption={MenuLinkSVGOption.Heart}
+                  notificationQuantity={
+                    location.pathname === favouritesPath
+                      ? savedFavouritesQuantity.current
+                      : favourites.length
+                  }
                 />
               </li>
 
