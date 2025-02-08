@@ -7,9 +7,20 @@ export const InfoLinks: React.FC = () => {
 
   return (
     <menu className={styles.InfoLinks}>
-      <InfoLink title={github} to="#" />
-      <InfoLink title={contacts} to="#" />
-      <InfoLink title={rights} to="#" />
+      <InfoLink
+        title={github}
+        to="https://github.com/aMtiIV/react_phone-catalog/tree/develop"
+      />
+
+      <InfoLink
+        title={contacts}
+        to="https://github.com/aMtiIV/react_phone-catalog/tree/develop"
+      />
+
+      <InfoLink
+        title={rights}
+        to="https://github.com/aMtiIV/react_phone-catalog/tree/develop"
+      />
     </menu>
   );
 };
