@@ -1,0 +1,19 @@
+@import '../../StylesBlocks/mixins';
+@import '../../StylesBlocks/variables';
+
+.pagination {
+  @include flex-row-col-center;
+
+  margin-top: 24px;
+  gap: 16px;
+
+  @include on-tablet {
+    margin-top: 40px;
+  }
+}
+
+.numbersList {
+  @include flex-row-center;
+
+  gap: 8px;
+}

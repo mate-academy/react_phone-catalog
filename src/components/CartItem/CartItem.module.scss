@@ -1,0 +1,58 @@
+@import '../../StylesBlocks/mixins';
+@import '../../StylesBlocks/variables';
+
+.cartItem {
+  display: flex;
+
+  flex-direction: column;
+
+  border: $gray-element-border;
+  border-radius: 16px;
+
+  padding: 16px;
+  gap: 16px;
+
+  @include on-tablet {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 24px;
+  }
+}
+
+.item {
+  @include flex-row-col-center;
+
+  gap: 16px;
+
+  @include on-tablet {
+    gap: 24px;
+  }
+}
+
+.itemImg {
+  width: 80px;
+  height: 80px;
+
+  padding: 7px;
+}
+
+.img {
+  width: 100%;
+  height: 100%;
+}
+
+.total {
+  @include flex-center-between;
+
+  @include on-tablet {
+    gap: 24px;
+  }
+}
+
+.itemsNumToggle {
+  @include flex-center-between;
+
+  width: 96px;
+}

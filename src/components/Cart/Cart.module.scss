@@ -1,0 +1,66 @@
+@import '../../StylesBlocks/mixins';
+@import '../../StylesBlocks/variables';
+
+.cartContent {
+  margin-top: 32px;
+
+  @include on-desktop {
+    @include page-grid;
+  }
+}
+
+.cartButton {
+  margin-bottom: 24px;
+}
+
+.cartItems {
+  @include flex-column;
+
+  gap: 16px;
+
+  @include on-desktop {
+    grid-column: 1 / 17;
+  }
+}
+
+.total {
+  @include flex-column;
+
+  align-items: center;
+
+  border: $gray-element-border;
+  border-radius: 16px;
+
+  padding: 24px;
+
+  gap: 16px;
+
+  height: 190px;
+
+  @include on-desktop {
+    grid-column: 17 / -1;
+  }
+}
+
+.totalTitle {
+  @include flex-column;
+
+  align-items: center;
+}
+
+.sheckoutButton {
+  height: 48px;
+  width: 100%;
+}
+
+.emptyCart {
+  @include flex-column;
+}
+
+.emptyCartImgContainer {
+  flex-grow: 1;
+}
+
+.emptyCartImg {
+  width: 100%;
+}

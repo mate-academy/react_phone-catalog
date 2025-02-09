@@ -1,0 +1,103 @@
+@import '../../StylesBlocks/mixins';
+@import '../../StylesBlocks/variables';
+
+.sliderContainer {
+  @include flex-column;
+
+  gap: 8px;
+}
+
+.slider {
+  aspect-ratio: 1 / 1;
+
+  @include on-tablet {
+    @include flex-row-center;
+
+    aspect-ratio: unset;
+
+    gap: 19px;
+    height: 189px;
+  }
+
+  @include on-desktop {
+    gap: 16px;
+    height: 400px;
+  }
+}
+
+.pictureContainer {
+  position: relative;
+
+  width: 100%;
+  height: 100%;
+
+  overflow: hidden;
+}
+
+.picture {
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+  opacity: 0;
+
+  transition: opacity 1s ease-in-out;
+}
+
+.active {
+  opacity: 1;
+}
+
+.sliderButton {
+  display: none;
+
+  @include on-tablet {
+    display: block;
+
+    border: $gray-icon-border;
+
+    width: 32px;
+    height: 100%;
+  }
+
+  transition: border $hover-transition;
+}
+
+.sliderButton:hover {
+  border: 1px solid $primary;
+}
+
+.dots {
+  @include flex-row-col-center;
+}
+
+.dotContainer {
+  @include flex-row-col-center;
+
+  width: 24px;
+  height: 24px;
+}
+
+.dot {
+  appearance: none;
+
+  display: block;
+
+  width: 14px;
+  height: 4px;
+  background-color: $elements;
+
+  transition: background-color $hover-transition;
+}
+
+.dot:hover {
+  background-color: $icons;
+}
+
+.dot:checked {
+  background-color: $primary;
+}

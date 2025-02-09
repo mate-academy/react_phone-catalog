@@ -1,0 +1,15 @@
+@import './../../StylesBlocks/mixins';
+
+.homePage {
+  position: relative;
+  margin-bottom: 64px;
+
+  @include on-desktop {
+    margin-bottom: 80px;
+  }
+}
+
+.hiddenTitle {
+  position: absolute;
+  visibility: hidden;
+}

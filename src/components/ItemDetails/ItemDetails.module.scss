@@ -1,0 +1,174 @@
+@import '../../StylesBlocks/mixins';
+@import '../../StylesBlocks/variables';
+
+.itemName {
+  margin-bottom: 32px;
+}
+
+.item {
+  @include on-tablet {
+    @include page-grid;
+  }
+}
+
+.imgBlock {
+  aspect-ratio: 1 / 1;
+  padding: 6px;
+
+  margin-bottom: 16px;
+  order: 1;
+
+  @include on-tablet {
+    order: 2;
+    grid-column: 2 / 7;
+  }
+
+  @include on-desktop {
+    grid-column: 3 / 13;
+  }
+}
+
+.itemImg {
+  width: 100%;
+  height: 100%;
+
+  background-color: #fff;
+  object-fit: contain;
+}
+
+.photosPreview {
+  @include flex-row-center;
+
+  order: 2;
+
+  gap: 8px;
+  height: 49px;
+
+  @include on-tablet {
+    order: 1;
+
+    flex-direction: column;
+    grid-column: 1;
+  }
+
+  @include on-desktop {
+    grid-column: 2;
+  }
+}
+
+.photoPreview {
+  aspect-ratio: 1 / 1;
+  height: 100%;
+
+  border: $gray-element-border;
+  border-radius: 4px;
+
+  padding: 4px;
+  cursor: pointer;
+}
+
+.controlsContainer {
+  margin-block: 40px 32px;
+
+  @include on-tablet {
+    grid-column: 8 / -1;
+    order: 3;
+
+    margin-block: 0 64px;
+  }
+
+  @include on-desktop {
+    grid-column: 14 / -1;
+  }
+}
+
+.mainControls {
+  @include flex-column;
+
+  gap: 32px;
+}
+
+.options {
+  @include flex-column;
+
+  gap: 24px;
+}
+
+.option {
+  padding-bottom: 24px;
+
+  border-bottom: $gray-element-border;
+}
+
+.optionTitle {
+  margin-bottom: 8px;
+}
+
+.colorsTitle {
+  @include flex-center-between;
+}
+
+.values {
+  @include flex-row-center;
+
+  gap: 8px;
+}
+
+.itemButtons {
+  height: 48px;
+}
+
+.itemPrice {
+  margin-bottom: 16px;
+}
+
+.itemInformation {
+  @include on-desktop {
+    @include page-grid;
+  }
+}
+
+.aboutDescription {
+  gap: 32px;
+
+  @include on-desktop {
+    grid-column: 1 / 13;
+  }
+}
+
+.techDescription {
+  @include on-desktop {
+    grid-column: 14 / -1;
+  }
+}
+
+.itemDescription {
+  @include flex-column;
+
+  margin-bottom: 56px;
+
+  @include on-tablet {
+    margin-bottom: 64px;
+  }
+}
+
+.descriptionTitle {
+  padding-bottom: 16px;
+  border-bottom: $gray-element-border;
+}
+
+.contentTitle {
+  margin-bottom: 16px;
+}
+
+.content {
+  margin-block: 14px;
+}
+
+.techTitle {
+  margin-bottom: 30px;
+
+  @include on-tablet {
+    margin-bottom: 25px;
+  }
+}

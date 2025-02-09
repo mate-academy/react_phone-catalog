@@ -1,0 +1,47 @@
+@import '../../StylesBlocks/mixins';
+@import '../../StylesBlocks/variables';
+
+.menu {
+  @include flex-column;
+
+  height: 100vh;
+
+  background-color: #fff;
+
+  overflow: auto;
+}
+
+.menuNav {
+  margin-top: 24px;
+  justify-items: center;
+}
+
+.menuFooter {
+  @include flex-center-between;
+
+  position: fixed;
+
+  right: 0;
+  left: 0;
+  bottom: 0;
+
+  height: 64px;
+
+  border-top: $gray-element-border;
+}
+
+.menuIcon {
+  align-content: center;
+  justify-items: center;
+
+  width: 50%;
+  height: 100%;
+}
+
+.menuRightIcon {
+  border-left: $gray-element-border;
+}
+
+.active {
+  @include active-link;
+}

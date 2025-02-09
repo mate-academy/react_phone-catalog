@@ -1,0 +1,162 @@
+.buttons {
+  @include flex-row-center;
+
+  gap: 8px;
+
+  cursor: default;
+
+  transition:
+    color $hover-transition,
+    border $hover-transition;
+}
+
+.buttons:hover .grayText {
+  color: $primary;
+}
+
+.button {
+  align-content: center;
+  justify-items: center;
+
+  border-radius: 48px;
+}
+
+// btn-direction
+.backBtn {
+  transform: rotate(180deg);
+}
+
+.downBtn {
+  transform: rotate(90deg);
+}
+
+.upBtn {
+  transform: rotate(270deg);
+}
+
+// primaryButton
+.primaryBtn {
+  flex: 1;
+
+  height: 100%;
+
+  background-color: $accent;
+  color: #fff;
+
+  transition: box-shadow $hover-transition;
+}
+
+.primaryBtn:hover {
+  box-shadow: 0 3px 13px #17203166;
+}
+
+.primaryBtn-active {
+  background-color: #fff;
+  border: $gray-element-border;
+
+  color: $accent;
+}
+
+// toggleButton
+.toggle {
+  width: 32px;
+  height: 32px;
+
+  border: $gray-icon-border;
+
+  transition: $border-hover-transition;
+}
+
+.toggle:disabled {
+  border: $gray-element-border;
+}
+
+.toggle:hover {
+  border: 1px solid $primary;
+}
+
+// colorButton
+.colorToggle {
+  width: 32px;
+  height: 32px;
+
+  border: $gray-element-border;
+
+  transition: $border-hover-transition;
+}
+
+.colorToggle:hover {
+  border: 1px solid $icons;
+}
+
+.colorToggle-active {
+  border: 1px solid $primary;
+}
+
+.colorToggleInner {
+  border: 2px solid white;
+  border-radius: 36px;
+  width: 100%;
+  height: 100%;
+}
+
+// capacityButton
+.capacityToggle {
+  @include flex-row-col-center;
+
+  width: 56px;
+  height: 32px;
+
+  border: $gray-element-border;
+  border-radius: 4px;
+}
+
+.capacityToggle-active {
+  background-color: $primary;
+  color: #fff;
+}
+
+// favButton
+.favBtn {
+  border: $gray-icon-border;
+
+  height: 100%;
+  aspect-ratio: 1 / 1;
+
+  transition: $border-hover-transition;
+}
+
+.favBtn:hover {
+  border: 1px solid $primary;
+}
+
+.favBtn-active {
+  border: $gray-element-border;
+}
+
+// paginBtn
+.pageToggle {
+  width: 32px;
+  height: 32px;
+
+  border: $gray-element-border;
+
+  transition: $border-hover-transition;
+}
+
+.pageToggle:hover {
+  border: 1px solid $primary;
+}
+
+.pageToggle-active {
+  background-color: $primary;
+  border: 1px solid $primary;
+  color: #fff;
+}
+
+// backPage
+.backPageButtons {
+  @include flex-row-center;
+
+  gap: 4px;
+}

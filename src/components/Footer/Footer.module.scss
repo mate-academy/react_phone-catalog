@@ -1,0 +1,67 @@
+@import '../../StylesBlocks/mixins';
+@import '../../StylesBlocks/variables';
+
+.footer {
+  padding-block: 32px;
+  background-color: #fff;
+
+  box-shadow: 0 -1px $elements;
+}
+
+.footerContent {
+  @include section-padding-inline;
+  @include page-grid;
+
+  gap: 32px;
+}
+
+.footerLogo {
+  grid-column: 1 / -1;
+
+  @include on-tablet {
+    grid-column: 1 / 5;
+  }
+
+  @include on-desktop {
+    grid-column: 1 / 9;
+  }
+}
+
+.footerNav {
+  display: flex;
+  flex-direction: column;
+
+  grid-column: 1 / -1;
+
+  gap: 16px;
+
+  @include on-tablet {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+    grid-column: 5 / 9;
+  }
+
+  @include on-desktop {
+    grid-column: 9 / 17;
+  }
+}
+
+.footerButtons {
+  @include flex-row-col-center;
+
+  grid-column: 1 / -1;
+
+  gap: 16px;
+
+  @include on-tablet {
+    grid-column: 9 / -1;
+
+    justify-self: end;
+  }
+
+  @include on-desktop {
+    grid-column: 17 / -1;
+  }
+}

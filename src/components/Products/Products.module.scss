@@ -1,0 +1,53 @@
+@import './../../StylesBlocks/mixins';
+
+.products {
+  @include flex-column;
+}
+
+.productsTopPart {
+  @include flex-column;
+}
+
+.productsContent {
+  @include flex-column;
+}
+
+.productPageTitle {
+  @include page-title;
+}
+
+.dropdowns {
+  @include page-grid;
+
+  margin-bottom: 24px;
+}
+
+.sortDropdown {
+  grid-column: span 2;
+
+  @include on-tablet {
+    grid-column: span 4;
+  }
+}
+
+.paginationDropdown {
+  grid-column: span 2;
+
+  @include on-tablet {
+    grid-column: span 3;
+  }
+}
+
+.productNotFound {
+  @include flex-column;
+
+  margin-bottom: 80px;
+}
+
+.productNotFoundImgContainer {
+  flex-grow: 1;
+}
+
+.productNotFoundImg {
+  width: 100%;
+}
