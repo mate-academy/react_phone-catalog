@@ -4,7 +4,7 @@
   &__content {
     display: grid;
     row-gap: 80px;
-    padding-top: 56px;
+    padding-block: 56px 80px;
     width: 100%;
     margin: 0 auto;
     max-width: 1136px;
@@ -13,13 +13,13 @@
     @include on-tablet {
       max-width: 100%;
       row-gap: 64px;
-      padding-top: 32px;
+      padding-block: 32px 64px;
     }
 
     @include on-mobile {
       padding-inline: 0;
       row-gap: 56px;
-      padding-top: 24px;
+      padding-block: 24px 64px;
     }
   }
 }

@@ -51,11 +51,11 @@
     background-repeat: no-repeat;
 
     &--favourites {
-      background-image: url('src/media/icon/favourites.svg');
+      background-image: url('../../media/icon/favourites.svg');
     }
 
     &--cart {
-      background-image: url('src/media/icon/cart.svg');
+      background-image: url('../../media/icon/cart.svg');
     }
 
     &:hover {

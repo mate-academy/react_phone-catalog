@@ -95,11 +95,11 @@
 
       @include button-style;
 
-      background-image: url('src/media/icon/favourites.svg');
+      background-image: url('../../media/icon/favourites.svg');
     }
 
     &--like-selected {
-        background-image: url('src/media/icon/selected-favourites.svg');
+        background-image: url('../../media/icon/selected-favourites.svg');
         border: 1px $element solid;
     }
   }

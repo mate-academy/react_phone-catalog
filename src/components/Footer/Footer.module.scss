@@ -1,9 +1,7 @@
 @import '../../styles/main';
 
 .footer {
-  margin: 0 auto;
-  max-width: 1136px;
-
+  width: 100%;
   position: relative;
   bottom: 0;
   right: 0;
@@ -22,13 +20,15 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    max-width: 1136px;
+    margin: 0 auto;
 
     @include page-grid;
 
     padding-block: 32px;
 
     @include on-mobile {
-gap: 32px;
+      gap: 32px;
     }
   }
 
@@ -92,6 +92,6 @@ gap: 32px;
 
     width: 32px;
     height: 32px;
-    background-image: url('src/media/icon/arrow-top.svg');
+    background-image: url('../../media/icon/arrow-top.svg');
   }
 }

@@ -1,10 +1,26 @@
 import { Product } from './types/Product';
 import products from '../public/api/products.json';
+import phones from '../public/api/phones.json';
+import accessories from '../public/api/accessories.json';
+import tablets from '../public/api/tablets.json';
+import { Phone } from './types/Phone';
+import { Accessory } from './types/Accessory';
+import { Tablet } from './types/Tablet';
+
+const delay = () => new Promise(resolve => setTimeout(resolve, 500));
 
 export function getProducts(): Promise<Product[]> {
-  return new Promise(resolve => {
-    setTimeout(() => {
-      resolve(products);
-    }, 500);
-  });
+  return delay().then(() => products);
+}
+
+export function getPhones(): Promise<Phone[]> {
+  return delay().then(() => phones);
+}
+
+export function getAccessories(): Promise<Accessory[]> {
+  return delay().then(() => accessories);
+}
+
+export function getTablets(): Promise<Tablet[]> {
+  return delay().then(() => tablets);
 }

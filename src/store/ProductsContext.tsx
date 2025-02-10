@@ -1,9 +1,15 @@
 import React, { useContext, useEffect, useMemo, useState } from 'react';
-import { getProducts } from '../api';
+import { getAccessories, getPhones, getProducts, getTablets } from '../api';
+import { Accessory } from '../types/Accessory';
+import { Phone } from '../types/Phone';
 import { Product } from '../types/Product';
+import { Tablet } from '../types/Tablet';
 
 export const ProductsContext = React.createContext({
   products: [] as Product[],
+  phones: [] as Phone[],
+  accessories: [] as Accessory[],
+  tablets: [] as Tablet[],
   loading: false,
   error: '',
 });
@@ -14,25 +20,56 @@ interface Props {
 
 export const ProductsProvider: React.FC<Props> = ({ children }) => {
   const [products, setProducts] = useState<Product[]>([]);
+  const [phones, setPhones] = useState<Phone[]>([]);
+  const [accessories, setAccessories] = useState<Accessory[]>([]);
+  const [tablets, setTablets] = useState<Tablet[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
 
   useEffect(() => {
-    setLoading(true);
+    const fetchData = async () => {
+      setLoading(true);
+      try {
+        const [
+          fetchedProducts,
+          fetchedPhones,
+          fetchedAccessories,
+          fetchedTablets,
+        ] = await Promise.all([
+          getProducts(),
+          getPhones(),
+          getAccessories(),
+          getTablets(),
+        ]);
 
-    getProducts()
-      .then(fetchedProducts => setProducts(fetchedProducts))
-      .catch(err => setError(err.message))
-      .finally(() => setLoading(false));
+        setProducts(fetchedProducts);
+        setPhones(fetchedPhones);
+        setAccessories(fetchedAccessories);
+        setTablets(fetchedTablets);
+      } catch (err: unknown) {
+        if (err instanceof Error) {
+          setError(err.message);
+        } else {
+          setError('An unknown error occurred');
+        }
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
   }, []);
 
   const value = useMemo(
     () => ({
       products,
+      phones,
+      accessories,
+      tablets,
       loading,
       error,
     }),
-    [products, loading, error],
+    [products, phones, accessories, tablets, loading, error],
   );
 
   return (
@@ -43,7 +80,5 @@ export const ProductsProvider: React.FC<Props> = ({ children }) => {
 };
 
 export const useProducts = () => {
-  const products = useContext(ProductsContext);
-
-  return products;
+  return useContext(ProductsContext);
 };

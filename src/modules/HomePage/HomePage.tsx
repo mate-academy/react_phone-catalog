@@ -1,3 +1,4 @@
+import { Categories } from '../../components/Categories';
 import { NewModels } from '../../components/NewModels';
 import { PicturesSlider } from '../../components/PicturesSlider';
 import styles from './HomePage.module.scss';
@@ -12,6 +13,7 @@ export const HomePage = () => {
       <div className={styles['home-page__content']}>
         <PicturesSlider />
         <NewModels />
+        <Categories />
       </div>
     </div>
   );

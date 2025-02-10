@@ -52,7 +52,7 @@
       position: relative;
       border-left: 1px solid $hover_bg;
 
-      background-image: url('src/media/icon/menu.svg');
+      background-image: url('../../media/icon/menu.svg');
 
       width: 48px;
       height: 48px;
@@ -62,7 +62,7 @@
     }
 
     &--open {
-      background-image: url('src/media/icon/close.svg');
+      background-image: url('../../media/icon/close.svg');
     }
   }
 }
