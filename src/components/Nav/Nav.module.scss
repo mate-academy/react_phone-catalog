@@ -1,10 +1,23 @@
 @import '../../styles/main';
 
 .nav {
-  display: flex;
+  &--header {
+    display: flex;
 
-  @include on-mobile {
+    @include on-mobile {
+      display: none;
+    }
+  }
+
+  &--menu {
     display: none;
+
+    @include on-mobile {
+      display: flex;
+      justify-content: center;
+      padding-top: 24px;
+      margin: auto 0;
+    }
   }
 
   &__list {
@@ -14,6 +27,12 @@
 
     @include on-tablet {
       gap: 32px;
+    }
+
+    @include on-mobile {
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
     }
   }
 
@@ -38,10 +57,20 @@
       color: $primary;
     }
 
+
+    @include on-mobile {
+      padding-block: 8px;
+    }
+
     &--active {
       color: $primary;
       border-bottom: 3px solid $primary;
       padding-bottom: 0;
+
+      @include on-mobile {
+        border-bottom: 2px solid $primary;
+        padding-bottom: 6px;
+      }
     }
   }
 }

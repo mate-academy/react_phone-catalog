@@ -1,40 +1,45 @@
-import { NavLink, NavLinkRenderProps } from 'react-router-dom';
+import classNames from 'classnames';
+import React from 'react';
+import { NavLink } from 'react-router-dom';
 import styles from './Buttons.module.scss';
 
-import { getActiveLink } from '../../utils/getActiveLink';
+interface Props {
+  variant: string;
+  onLinkClick?: () => void;
+}
 
-export const Buttons = () => {
-  const handleClassName = (isActive: NavLinkRenderProps, selector: string) => {
-    return (
-      getActiveLink({ isActive, element: 'button__link', styles }) + selector
-    );
-  };
-
+export const Buttons: React.FC<Props> = ({ variant, onLinkClick }) => {
   return (
-    <ul className={styles.buttons}>
-      <li className={`${styles.button} ${styles['button--desktop']}`}>
+    <ul
+      className={classNames(styles.buttons, {
+        [styles['buttons--header']]: variant === 'header',
+        [styles['buttons--menu']]: variant === 'menu',
+      })}
+    >
+      <li className={styles.button}>
         <NavLink
           to="favourites"
-          className={isActive =>
-            handleClassName(isActive, ` ${styles['button__link--favourites']}`)
+          onClick={onLinkClick}
+          className={({ isActive }) =>
+            classNames(
+              styles.button__link,
+              styles['button__link--favourites'],
+              {
+                [styles.active]: isActive,
+              },
+            )
           }
         ></NavLink>
       </li>
 
-      <li className={`${styles.button} ${styles['button--desktop']}`}>
+      <li className={styles.button}>
         <NavLink
           to="cart"
-          className={isActive =>
-            handleClassName(isActive, ` ${styles['button__link--cart']}`)
-          }
-        ></NavLink>
-      </li>
-
-      <li className={`${styles.button} ${styles['button--mobile']}`}>
-        <NavLink
-          to="menu"
-          className={isActive =>
-            handleClassName(isActive, ` ${styles['button__link--menu']}`)
+          onClick={onLinkClick}
+          className={({ isActive }) =>
+            classNames(styles.button__link, styles['button__link--cart'], {
+              [styles.active]: isActive,
+            })
           }
         ></NavLink>
       </li>

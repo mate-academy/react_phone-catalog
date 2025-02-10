@@ -1,0 +1,14 @@
+@import '../../styles/main';
+
+.menu {
+  display: none;
+
+  @include on-mobile {
+    display: block;
+  }
+
+  background-color: $white;
+  width: 100vw;
+  height: 100vh;
+  padding-top: 49px;
+}

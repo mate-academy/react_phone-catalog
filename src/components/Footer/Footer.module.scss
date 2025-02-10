@@ -1,0 +1,97 @@
+@import '../../styles/main';
+
+.footer {
+  margin: 0 auto;
+  max-width: 1136px;
+
+  position: relative;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  border-top: 1px $element solid;
+
+  @include on-tablet {
+    padding-inline: 32px;
+  }
+
+  @include on-mobile {
+    padding-inline: 16px;
+  }
+
+  &__content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    @include page-grid;
+
+    padding-block: 32px;
+
+    @include on-mobile {
+gap: 32px;
+    }
+  }
+
+  &__link {
+    height: 100%;
+    grid-column: 1;
+  }
+
+  &__items {
+    display: flex;
+    justify-content: space-between;
+    grid-column: 9 / -9;
+
+    @include on-tablet {
+      grid-column: 5 / -5;
+      gap: 10px;
+    }
+
+    @include on-mobile {
+      grid-column: 1 / -1;
+      flex-direction: column;
+      gap: 16px;
+    }
+  }
+
+  &__item {
+    list-style: none;
+  }
+
+  &__item-link {
+    text-decoration: none;
+    color: $secondary;
+
+    @include uppercase-typography;
+
+    &:hover {
+      color: $primary;
+    }
+  }
+}
+
+.back {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  grid-column: -1;
+
+  @include on-mobile {
+    margin: 0 auto;
+    grid-column: 1 / -1;
+  }
+
+  &__text {
+    color: $secondary;
+
+    @include small-text-typography;
+  }
+
+  &__button {
+    @include button-style;
+
+    width: 32px;
+    height: 32px;
+    background-image: url('src/media/icon/arrow-top.svg');
+  }
+}

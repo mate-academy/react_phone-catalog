@@ -5,6 +5,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay } from 'swiper/modules';
 import { Swiper as SwiperType } from 'swiper';
 import 'swiper/css';
+import { debounce } from 'lodash';
 
 export const PicturesSlider = () => {
   const [isMobile, setIsMobile] = useState(window.innerWidth < 640);
@@ -15,9 +16,9 @@ export const PicturesSlider = () => {
   const swiperRef = useRef<SwiperType | null>(null);
 
   useEffect(() => {
-    const handleRezise = () => {
+    const handleRezise = debounce(() => {
       setIsMobile(window.innerWidth < 640);
-    };
+    }, 200);
 
     window.addEventListener('resize', handleRezise);
 
