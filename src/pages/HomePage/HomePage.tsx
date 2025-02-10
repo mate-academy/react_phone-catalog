@@ -5,7 +5,7 @@ import styles from './HomePage.module.scss';
 export const HomePage = () => {
   return (
     <div className={styles.homePage}>
-      <h1 className="hiddenTitle">Product Catalog</h1>
+      <h2 className="hiddenTitle">Product Catalog</h2>
       <HeroSection />
 
       <Main />
