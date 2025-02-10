@@ -42,7 +42,7 @@ export const ProductDetailsPage = () => {
 
   useEffect(() => {
     getItemDetails();
-  }, [products]);
+  }, [products, category, itemId]);
 
   return (
     <div className={styles.itemPage}>
