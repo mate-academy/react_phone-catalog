@@ -172,7 +172,7 @@ export const Products: React.FC<Props> = ({ category, categoryItems }) => {
           />
         )}
 
-        {!failedQuery && currentPageItems.length && (
+        {!failedQuery && currentPageItems.length > 0 && (
           <ProductList itemsList={currentPageItems} />
         )}
       </div>
