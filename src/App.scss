@@ -27,6 +27,12 @@
 
 html {
   scroll-behavior: smooth;
+  font-family: Mont;
+  font-weight: 600;
+}
+
+body {
+  margin: 0;
 }
 
 p {
@@ -42,8 +48,5 @@ img {
 
 .container {
   width: 100%;
-  max-width: 1440px;
   margin: 0 auto;
-
-  @include paddings-footer;
 }

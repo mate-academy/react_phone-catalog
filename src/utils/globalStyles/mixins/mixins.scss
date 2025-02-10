@@ -29,16 +29,47 @@
 @mixin category-name {
   text-transform: uppercase;
   color: $gray-secondary;
-  font-family: Mont, sans-serif;
+  font-family: Mont;
   font-size: 12px;
   font-weight: 800;
   line-height: 11px;
   letter-spacing: 0.04em;
   text-align: left;
   text-underline-position: from-font;
-  text-decoration-skip-ink: none;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  padding-block: 8px;
+  width: fit-content;
+  height: 27px;
+  transition: transform 0.3s ease;
+
   &.active {
     color: $gray-primary;
+    border-bottom: 2px solid $gray-primary;
+  }
+
+  &:hover {
+    color: $gray-primary;
+    border-bottom: 2px solid $gray-primary;
+  }
+
+  @include tablet {
+    height: 48px;
+
+    &.active {
+      color: $gray-primary;
+      border-bottom: 3px solid $gray-primary;
+    }
+
+    &:hover {
+      color: $gray-primary;
+      border-bottom: 3px solid $gray-primary;
+    }
+  }
+
+  @include desktop {
+    height: 64px;
   }
 }
 
