@@ -69,7 +69,7 @@ export const ProductsPage: React.FC<Props> = ({ category }) => {
     setTimeout(() => fetchProducts(), 1000);
 
     return () => {
-      setLoading(true);
+      setLoading(false);
       setError(null);
     };
   }, [category]);
@@ -99,7 +99,9 @@ export const ProductsPage: React.FC<Props> = ({ category }) => {
       </section>
 
       <section className={styles['productsPage__products-list']}>
-        {products.length === 0 && <p>There are no {category} yet</p>}
+        {products.length === 0 && !loading && (
+          <p>There are no {category} yet</p>
+        )}
         {loading && !error && <Loader />}
         {!loading && !error && <ProductsList products={visibleProduct()} />}
       </section>

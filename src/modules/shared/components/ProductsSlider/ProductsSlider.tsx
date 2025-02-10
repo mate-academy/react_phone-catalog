@@ -1,15 +1,15 @@
 import styles from './ProductsSlider.module.scss';
-import { IconButton } from '../../../shared/components/IconButton';
-import ProductCard from '../../../shared/components/ProductCard/ProductCard';
-import { ProductsContext } from '../../../shared/_store/DataProvider';
-import { Product } from '../../../../_types/products';
-import { useSlider } from '../../hooks/useSlider';
+import { IconButton } from '../IconButton';
+import ProductCard from '../ProductCard/ProductCard';
+import { ProductsContext } from '../../_store/DataProvider';
+import { Category, Product } from '../../../../_types/products';
+import { useSlider } from '../../../HomePage/hooks/useSlider';
 
 import { useContext, useMemo } from 'react';
 
 type Props = {
   title: string;
-  sortFn: (products: Product[]) => Product[];
+  sortFn: (products: Product[], category?: Category) => Product[];
 };
 
 export const ProductsSlider: React.FC<Props> = ({ title, sortFn }) => {
@@ -43,7 +43,10 @@ export const ProductsSlider: React.FC<Props> = ({ title, sortFn }) => {
       <ul className={styles['product-slider__wrapper']}>
         {sortedProducts.slice(currentIndex, currentIndex + 4).map(product => (
           <li key={product.id} className={styles['product-slider__card']}>
-            <ProductCard product={product} type={title} />
+            <ProductCard
+              product={product}
+              fullPrice={title !== 'Brand new models'}
+            />
           </li>
         ))}
       </ul>

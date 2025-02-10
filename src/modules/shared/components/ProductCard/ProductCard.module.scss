@@ -51,28 +51,6 @@
     border: 1px solid $elements-color;
   }
 
-  &__specs {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-  }
-
-  &__spec {
-    display: flex;
-    justify-content: space-between;
-
-    &-title {
-      @include small-text;
-    }
-
-    &-value {
-      font-family: Mont, sans-serif;
-      font-weight: 700;
-      font-size: 12px;
-      line-height: 15.34px;
-    }
-  }
-
   &__buttons {
     display: flex;
     gap: 8px;

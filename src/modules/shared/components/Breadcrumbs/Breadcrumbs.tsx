@@ -2,8 +2,8 @@ import styles from './Breadcrumbs.module.scss';
 import { Link } from 'react-router-dom';
 import { Category } from '../../../../_types/products';
 import { ArrowIcon } from '../../_constants/icons';
-import { capitalizeFirstLetter } from '../../../../_services/services';
 import classNames from 'classnames';
+import { capitalizeFirstLetter } from '../../../../_utils/stringFunction';
 
 type Props = {
   category: Category;
@@ -19,7 +19,7 @@ export const Breadcrumbs: React.FC<Props> = ({
       <Link to="/" className={styles.breadcrumbs__home}></Link>
       <ArrowIcon />
       <Link
-        to={`${category}`}
+        to={`/${category}`}
         className={classNames(styles.breadcrumbs__text, {
           [styles['breadcrumbs__text--primary']]: !!productName,
         })}
@@ -30,7 +30,9 @@ export const Breadcrumbs: React.FC<Props> = ({
       {!!productName && (
         <>
           <ArrowIcon />
-          <div className={styles.breadcrumbs__text}>
+          <div
+            className={`${styles.breadcrumbs__text} ${styles['breadcrumbs__text--product']}`}
+          >
             {capitalizeFirstLetter(productName)}
           </div>
         </>

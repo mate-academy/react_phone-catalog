@@ -19,7 +19,7 @@ export const PicturesSlider = () => {
   });
 
   const swipeHandlers = useSwipeable({
-    onSwipedLeft: () => handleNext(),
+    onSwipedLeft: () => handlePrev(),
     onSwipedRight: () => handleNext(),
   });
 

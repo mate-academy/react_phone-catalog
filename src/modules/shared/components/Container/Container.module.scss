@@ -3,6 +3,7 @@
 .container {
   padding-inline: 16px;
   overflow-x: hidden;
+  flex-grow: 1;
 
   @include on-tablet {
     padding-inline: 24px;

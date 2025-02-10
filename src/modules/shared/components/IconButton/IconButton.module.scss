@@ -23,7 +23,8 @@
   }
 
   &--heart {
-    width: 40px;
+    width: auto;
+    aspect-ratio: 1 / 1;
 
     &-selected {
       color: $secondary-accent-color;
@@ -51,6 +52,8 @@
 
     &-selected {
       border-color: $primary-color;
+
+      @include hover(border-color, $primary-color);
     }
   }
 

@@ -26,27 +26,29 @@ export async function getProductWithDetails(
   }
 }
 
-/*export async function getProductWithDetails() {
+export async function getProducById(id: string): Promise<ProductWithDetails> {
   try {
     const products = await getData<Product[]>('/products.json');
-    const phones = await getData<Phone[]>('/phones.json');
-    const accessories = await getData<Accessories[]>('/accessories.json');
-    const tablets = await getData<Tablets[]>('/tablets.json');
+    const product = products.find(item => item.itemId === id);
 
-    return products.map((product: Product): ProductWithDetails => {
-      return {
-        ...product,
-        details:
-          phones.find(item => product.itemId === item.id) ||
-          tablets.find(item => product.itemId === item.id) ||
-          accessories.find(item => product.itemId === item.id) ||
-          null,
-      };
-    });
+    if (!product) {
+      throw new Error('Product was not found');
+    }
+
+    const detailsByCategory = await getData<Phone[]>(
+      `/${product.category}.json`,
+    );
+
+    const details = detailsByCategory.find(item => item.id === id);
+
+    return {
+      ...product,
+      details: details || null,
+    };
   } catch {
-    throw new Error();
+    throw new Error('Product was not found');
   }
-}*/
+}
 
 export async function getProducts() {
   try {

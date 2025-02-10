@@ -89,7 +89,9 @@ export const HeartRedIcon = () => (
   </svg>
 );
 
-export const Rondure = () => (
+export const Rondure: React.FC<{ backgroundColor: string | null }> = ({
+  backgroundColor,
+}) => (
   <div
     style={{
       boxSizing: 'border-box',
@@ -97,7 +99,7 @@ export const Rondure = () => (
       height: '30px',
       width: '30px',
       borderRadius: '36px',
-      backgroundColor: '#fcdbc1',
+      backgroundColor: backgroundColor || '#fcdbc1',
       border: '2px solid #fff',
     }}
   ></div>

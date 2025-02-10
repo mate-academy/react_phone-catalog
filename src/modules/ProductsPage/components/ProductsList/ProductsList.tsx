@@ -11,7 +11,7 @@ export const ProductsList: React.FC<Props> = ({ products }) => {
     <ul className={styles['product-list']}>
       {products.map(item => (
         <li key={item.id} className={styles['product-list__item']}>
-          <ProductCard product={item} />
+          <ProductCard product={item} fullPrice={true} />
         </li>
       ))}
     </ul>

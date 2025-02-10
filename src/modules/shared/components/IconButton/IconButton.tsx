@@ -7,6 +7,7 @@ import {
   HeartRedIcon,
   Rondure,
 } from '../../_constants/icons';
+import { validateColor } from '../../../../_utils/validateColor';
 type Props = {
   onClick?: () => void;
   modificator: 'heart' | 'arrow' | 'pagination' | 'selector';
@@ -14,6 +15,7 @@ type Props = {
   value?: number;
   disabled?: boolean;
   selected?: boolean;
+  backgroundColor?: string | null;
 };
 
 export const IconButton: React.FC<Props> = ({
@@ -23,6 +25,7 @@ export const IconButton: React.FC<Props> = ({
   value = 0,
   modificator,
   selected = false,
+  backgroundColor = null,
 }) => {
   const handleClick = () => {
     if (!disabled) {
@@ -43,12 +46,15 @@ export const IconButton: React.FC<Props> = ({
       )}
       onClick={handleClick}
       disabled={disabled}
+      title={backgroundColor || undefined}
     >
       {modificator === 'arrow' && <ArrowIcon />}
       {modificator === 'heart' && !selected && <HeartIcon />}
       {modificator === 'heart' && selected && <HeartRedIcon />}
       {modificator === 'pagination' && value}
-      {modificator === 'selector' && <Rondure />}
+      {modificator === 'selector' && backgroundColor && (
+        <Rondure backgroundColor={validateColor(backgroundColor)} />
+      )}
     </button>
   );
 };

@@ -8,24 +8,32 @@
   margin-bottom: 24px;
   color: $icons-color;
 
+  @include on-tablet {
+    margin-bottom: 40px;
+  }
+
   &__home {
     background-repeat: no-repeat;
     background-position: center;
+    background-size: contain;
     background-image: url('/img/icons/icon-home.svg');
 
     @include square(16px);
   }
 
   &__text {
-    font-family: Mont, sans-serif;
-    font-weight: 600;
-    font-size: 12px;
-    line-height: 15.34px;
-    color: $secondary-color;
+    @include small-text;
 
     &--primary {
       font-weight: 700;
       color: $primary-color;
+    }
+
+    &--product {
+      max-width: 100%;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
   }
 }

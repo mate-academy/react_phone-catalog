@@ -55,3 +55,5 @@ export type Tablets = Omit<Phone, 'category'> & {
 export type ProductWithDetails = Product & {
   details: Phone | Tablets | Accessories | null;
 };
+
+export type ProductKeys = keyof Product | keyof Phone;
