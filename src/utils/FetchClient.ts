@@ -3,10 +3,8 @@ import { ProductsType } from '../types/Products';
 
 // const BASE_URL = '/api';
 
-const BASE_URL =
-  process.env.NODE_ENV === 'development'
-    ? '/api'
-    : '/shevchuchka.github.io/react_phone-catalog//api';
+const isLocal = window.location.hostname === 'localhost';
+const BASE_URL = isLocal ? '/api' : '/react_phone-catalog/api';
 
 export function getData<T>(url: string): Promise<T> {
   return fetch(BASE_URL + url + '.json').then(response => {
