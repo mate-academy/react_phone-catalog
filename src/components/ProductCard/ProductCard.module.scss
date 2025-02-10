@@ -46,11 +46,26 @@
   }
 
   &__price {
-    @include h3-typography;
-
     padding-bottom: 8px;
     width: 100%;
     border-bottom: 1px $element solid;
+
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    &--new {
+      @include h3-typography;
+    }
+
+    &--old {
+      font-family: Mont, sans-serif;
+      font-weight: 600;
+      font-size: 22px;
+      line-height: 28.12px;
+      color: $secondary;
+      text-decoration: line-through;
+    }
   }
 
   &__specs {

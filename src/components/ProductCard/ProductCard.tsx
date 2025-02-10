@@ -4,10 +4,11 @@ import styles from './ProductCard.module.scss';
 
 interface Props {
   product: Product;
+  hot?: boolean;
 }
 
-export const ProductCard: React.FC<Props> = ({ product }) => {
-  const { image, name, price, screen, capacity, ram } = product;
+export const ProductCard: React.FC<Props> = ({ product, hot }) => {
+  const { image, name, price, fullPrice, screen, capacity, ram } = product;
   const specs = [
     { name: 'Screen', value: screen },
     { name: 'Сapacity', value: capacity },
@@ -18,7 +19,15 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
     <div className={styles['product-card']}>
       <img className={styles['product-card__img']} src={image} />
       <p className={styles['product-card__name']}>{name}</p>
-      <p className={styles['product-card__price']}>{'$' + price}</p>
+      <div className={styles['product-card__price']}>
+        <p className={styles['product-card__price--new']}>{'$' + price}</p>
+        {hot && (
+          <p className={styles['product-card__price--old']}>
+            {'$' + fullPrice}
+          </p>
+        )}
+      </div>
+
       <div className={styles['product-card__specs']}>
         {specs.map((spec, i) => (
           <div

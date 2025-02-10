@@ -1,14 +1,17 @@
 import classNames from 'classnames';
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import styles from './Buttons.module.scss';
+import styles from './CartAndFavouritesButtons.module.scss';
 
 interface Props {
   variant: string;
   onLinkClick?: () => void;
 }
 
-export const Buttons: React.FC<Props> = ({ variant, onLinkClick }) => {
+export const CartAndFavouritesButtons: React.FC<Props> = ({
+  variant,
+  onLinkClick,
+}) => {
   return (
     <ul
       className={classNames(styles.buttons, {

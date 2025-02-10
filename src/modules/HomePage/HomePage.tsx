@@ -1,4 +1,5 @@
 import { Categories } from '../../components/Categories';
+import { HotPrices } from '../../components/HotPrices';
 import { NewModels } from '../../components/NewModels';
 import { PicturesSlider } from '../../components/PicturesSlider';
 import styles from './HomePage.module.scss';
@@ -14,6 +15,7 @@ export const HomePage = () => {
         <PicturesSlider />
         <NewModels />
         <Categories />
+        <HotPrices />
       </div>
     </div>
   );

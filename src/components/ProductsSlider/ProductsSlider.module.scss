@@ -6,7 +6,8 @@
   grid-column: 1/-1;
 
   display: flex;
-  overflow:auto;
+  
+  overflow:hidden;
 
 
   @include on-tablet {

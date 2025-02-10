@@ -3,7 +3,7 @@ import styles from './Menu.module.scss';
 import '../../index.scss';
 import React from 'react';
 import { Nav } from '../Nav';
-import { Buttons } from '../Buttons';
+import { CartAndFavouritesButtons } from '../CartAndFavouritesButtons';
 
 interface Props {
   isOpen: boolean;
@@ -19,7 +19,7 @@ export const Menu: React.FC<Props> = ({ isOpen, onClose }) => {
     >
       <Nav variant="menu" onLinkClick={onClose} />
 
-      <Buttons variant="menu" onLinkClick={onClose} />
+      <CartAndFavouritesButtons variant="menu" onLinkClick={onClose} />
     </aside>
   );
 };

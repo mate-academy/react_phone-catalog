@@ -7,9 +7,10 @@ import { debounce } from 'lodash';
 interface Props {
   products: Product[];
   index: number;
+  hot?: boolean;
 }
 
-export const ProductsSlider: React.FC<Props> = ({ products, index }) => {
+export const ProductsSlider: React.FC<Props> = ({ products, index, hot }) => {
   const slideRef = useRef<HTMLDivElement>(null);
   const [slideWidth, setSlideWidth] = useState(0);
 
@@ -39,7 +40,7 @@ export const ProductsSlider: React.FC<Props> = ({ products, index }) => {
             key={product.id}
             className={styles['products-slider__slide']}
           >
-            <ProductCard product={product} />
+            <ProductCard product={product} hot={hot} />
           </div>
         ))}
       </div>

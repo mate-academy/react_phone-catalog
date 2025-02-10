@@ -1,0 +1,34 @@
+@import '../../styles/main';
+
+.slider-buttons {
+  &__buttons {
+    display: flex;
+    align-items: center;
+
+    gap: 16px;
+
+  }
+
+  &__button {
+    width: 32px;
+    height: 32px;
+
+    @include button-style;
+
+    &--left {
+      background-image: url('../../media/icon/arrow-left.svg');
+
+      &:disabled {
+        background-image: url('../../media/icon/disabled-arrow-left.svg');
+      }
+    }
+
+    &--right {
+      background-image: url('../../media/icon/arrow-right.svg');
+
+      &:disabled {
+        background-image: url('../../media/icon/disabled-arrow-right.svg');
+      }
+    }
+  }
+}
