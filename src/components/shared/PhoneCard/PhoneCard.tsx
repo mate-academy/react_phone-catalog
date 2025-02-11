@@ -51,7 +51,7 @@ export const PhoneCard: React.FC<PhoneCardProps> = ({ phone }) => {
           onClick={() => setSelected(!selected)}
           className={classNames('buttons__add-to-cart', { selected: selected })}
         >
-          {selected ? 'Selected' : 'Add to cart'}
+          {selected ? 'Added to cart' : 'Add to cart'}
         </button>
 
         <div onClick={() => setIsFav(!isFav)} className="buttons__add-to-fav">

@@ -10,10 +10,13 @@
     justify-content: center;
     gap: 8px;
     padding: 32px;
-    transition: transform 0.3s ease;
 
-    &:hover {
-      transform: scale(1.05);
+    @include tablet {
+      height: 506px;
+    }
+
+    @include desktop {
+      max-width: 272px;
     }
   }
 
@@ -22,6 +25,10 @@
     max-width: 223px;
     height: 130px;
     object-fit: contain;
+
+    @include tablet {
+      height: 196px;
+    }
   }
 
   &__name {
@@ -33,6 +40,8 @@
     justify-content: flex-start;
     gap: 8px;
     width: 100%;
+    padding-bottom: 8px;
+    border-bottom: 1px solid $gray-elements;
 
     &--regular {
       @include h3;
@@ -46,6 +55,7 @@
   }
 
   .details {
+    padding-block: 8px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -75,7 +85,7 @@
     &__add-to-cart {
       all: unset;
       display: inline-block;
-      font-family: Mont, sans-serif;
+      font-family: 'Mont-Semibold';
       font-weight: 700;
       font-size: 14px;
       line-height: 21px;
