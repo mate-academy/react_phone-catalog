@@ -15,7 +15,7 @@ type Props = {
   pathname: string;
 };
 
-export const TopNavigation: React.FC<Props> = ({ pathname }) => {
+export const Breadcrumbs: React.FC<Props> = ({ pathname }) => {
   const splitedPathname = pathname.split('/').filter(Boolean);
   const { products } = useAppSelector(state => state.products);
 

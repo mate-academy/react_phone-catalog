@@ -1,4 +1,5 @@
-import styles from './Header.module.scss';
+import React from 'react';
+import classNames from 'classnames';
 
 import { IconType } from '@sTypes/IconType';
 
@@ -11,7 +12,13 @@ import { useAppDispatch, useAppSelector } from '@store/hooks';
 import { menuActions } from '@features/menuSlice';
 import { Counter } from '../Counter';
 
-export const Header = () => {
+import styles from './Header.module.scss';
+
+type Props = {
+  className?: string;
+};
+
+export const Header: React.FC<Props> = ({ className }) => {
   const dispatch = useAppDispatch();
   const isMenuOpen = useAppSelector(state => state.menu);
 
@@ -19,10 +26,9 @@ export const Header = () => {
   const shoppingCart = useAppSelector(state => state.shoppingCart);
 
   return (
-    <header className={styles.header}>
+    <header className={classNames(className, styles.header)}>
       <div className={styles.header__left}>
         <Logo />
-
         <Nav />
       </div>
 
@@ -41,12 +47,11 @@ export const Header = () => {
         </NavLinkItem>
       </div>
 
-      <div
+      <Icon
         className={styles.header__menu}
         onClick={() => dispatch(menuActions.set(!isMenuOpen))}
-      >
-        <Icon type={isMenuOpen ? IconType.close : IconType.menu} />
-      </div>
+        type={isMenuOpen ? IconType.close : IconType.menu}
+      />
     </header>
   );
 };

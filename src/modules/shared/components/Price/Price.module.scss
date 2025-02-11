@@ -1,0 +1,13 @@
+.price {
+  gap: 8px;
+  display: flex;
+  align-items: center;
+
+  &__full {
+    font-size: 22px;
+    font-weight: 600;
+    line-height: 29px;
+    font-family: Mont, sans-serif;
+    color: var(--secondary-color);
+  }
+}

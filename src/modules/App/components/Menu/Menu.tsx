@@ -1,8 +1,6 @@
 import classNames from 'classnames';
 import { useCallback, useEffect } from 'react';
 
-import styles from './Menu.module.scss';
-
 import { IconType } from '@sTypes/IconType';
 
 import { MenuNav } from '../MenuNav';
@@ -12,6 +10,8 @@ import { NavLinkItem } from '@components/NavLinkItem';
 import { menuActions } from '@features/menuSlice';
 import { useAppDispatch, useAppSelector } from '@store/hooks';
 import { Counter } from '../Counter';
+
+import styles from './Menu.module.scss';
 
 export const Menu = () => {
   const dispatch = useAppDispatch();
@@ -41,9 +41,7 @@ export const Menu = () => {
       })}
     >
       <div className={styles.menu__content}>
-        <div className={styles.menu__top}>
-          <MenuNav />
-        </div>
+        <MenuNav className={styles.menu__top} />
 
         <div className={styles.menu__bottom}>
           <NavLinkItem

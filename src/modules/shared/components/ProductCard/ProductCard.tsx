@@ -8,6 +8,7 @@ import { Product } from '@sTypes/Product';
 import { AddToCard } from '@components/AddToCard';
 import { Characteristics } from '@components/Characteristics';
 import { Image } from '@components/Image';
+import { Price } from '@components/Price';
 
 type Props = {
   product: Product;
@@ -44,14 +45,11 @@ export const ProductCard = React.forwardRef<HTMLElement, Props>(
 
         <div className={styles['product-card__title']}>{product.name}</div>
 
-        <div className={styles['product-card__price']}>
-          <h3>${price}</h3>
-          {!hidePrevPrice && fullPrice !== price && (
-            <s className={styles['product-card__prev-price']}>
-              ${product.fullPrice}
-            </s>
-          )}
-        </div>
+        <Price
+          fullPrice={fullPrice}
+          discountPrice={price}
+          hidePrevPrice={hidePrevPrice}
+        />
 
         <div className={styles['product-card__divider']}></div>
 

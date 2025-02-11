@@ -1,0 +1,25 @@
+@use '@styles/mixins' as *;
+
+.back-button {
+  gap: 4px;
+  display: flex;
+  align-items: center;
+
+  cursor: pointer;
+  width: fit-content;
+  color: var(--secondary-color);
+
+  @include small-text;
+
+  &:hover {
+    color: var(--primary-color);
+  }
+
+  &__arrow {
+    pointer-events: none;
+  }
+
+  &__text {
+    line-height: 12px;
+  }
+}

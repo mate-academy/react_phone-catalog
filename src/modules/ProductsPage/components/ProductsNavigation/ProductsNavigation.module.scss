@@ -1,0 +1,40 @@
+@use '@styles/mixins' as *;
+
+.products-navigation {
+  gap: 16px;
+  display: flex;
+  justify-content: center;
+
+  &__pages {
+    gap: 8px;
+    display: flex;
+
+    @include body-text;
+  }
+
+  &__page {
+    width: 32px;
+    aspect-ratio: 1;
+    box-sizing: border-box;
+    border: 1px solid var(--elements-color);
+
+    cursor: pointer;
+    user-select: none;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:hover {
+      border: 1px solid var(--primary-color);
+    }
+
+    &--active {
+      pointer-events: none;
+
+      color: var(--white-color);
+      border: 1px solid var(--primary-color);
+      background-color: var(--primary-color);
+    }
+  }
+}

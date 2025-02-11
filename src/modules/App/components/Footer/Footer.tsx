@@ -1,7 +1,7 @@
-import styles from './Footer.module.scss';
-
 import { Logo } from '@components/Logo';
 import { BackToTop } from '../BackToTop';
+
+import styles from './Footer.module.scss';
 
 export const Footer = () => {
   return (

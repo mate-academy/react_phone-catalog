@@ -1,0 +1,9 @@
+.section-title {
+  gap: 16px;
+  display: flex;
+  flex-direction: column;
+
+  &__hr {
+    border: 1px solid var(--elements-color);
+  }
+}

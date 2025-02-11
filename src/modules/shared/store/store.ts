@@ -11,12 +11,20 @@ import shoppingCartReducer, {
   NAME as SHOPPING_CART_NAME,
 } from '@features/shoppingCartSlice';
 
+import phonesReducer from '@features/phonesSlice';
+import tabletsReducer from '@features/tabletsSlice';
+import accessoriesReducer from '@features/accessoriesSlice';
+
 export const store = configureStore({
   reducer: {
     menu: menuReducer,
     products: productsReducer,
     favorites: favoritesReducer,
     shoppingCart: shoppingCartReducer,
+
+    phones: phonesReducer,
+    tablets: tabletsReducer,
+    accessories: accessoriesReducer,
   },
 });
 

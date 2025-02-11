@@ -1,4 +1,5 @@
-import { useCallback } from 'react';
+import classNames from 'classnames';
+import React, { useCallback } from 'react';
 
 import styles from './MenuNav.module.scss';
 
@@ -9,7 +10,11 @@ import { menuActions } from '@features/menuSlice';
 
 import { LINKS } from '@App/constants/Links';
 
-export const MenuNav = () => {
+type Props = {
+  className?: string;
+};
+
+export const MenuNav: React.FC<Props> = ({ className }) => {
   const dispatch = useAppDispatch();
 
   const changePage = useCallback(() => {
@@ -18,7 +23,7 @@ export const MenuNav = () => {
   }, [dispatch]);
 
   return (
-    <nav className={styles['menu-nav']}>
+    <nav className={classNames(className, styles['menu-nav'])}>
       <ul className={styles['menu-nav__items']}>
         {LINKS.map(link => (
           <li key={link[0]}>

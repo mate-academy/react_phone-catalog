@@ -1,22 +1,19 @@
 import classNames from 'classnames';
 import { Outlet, useLocation } from 'react-router-dom';
 
-import styles from './App.module.scss';
-
 import { Menu } from './components/Menu';
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
-import { TopNavigation } from './components/Breadcrumbs';
+import { Breadcrumbs } from './components/Breadcrumbs';
+
+import styles from './App.module.scss';
 
 export const App = () => {
   const { pathname } = useLocation();
 
   return (
     <div className={classNames(styles.app)}>
-      <div className={styles.app__header}>
-        <Header />
-      </div>
-
+      <Header className={styles.app__header} />
       <Menu />
 
       <div
@@ -27,7 +24,7 @@ export const App = () => {
       >
         <div className={styles.app__content}>
           {!['/', '/shopping-bag'].includes(pathname) && (
-            <TopNavigation pathname={pathname} />
+            <Breadcrumbs pathname={pathname} />
           )}
 
           <Outlet />

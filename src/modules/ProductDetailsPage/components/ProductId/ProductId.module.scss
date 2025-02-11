@@ -1,0 +1,18 @@
+@use '@styles/mixins' as *;
+@use '@styles/extends' as *;
+
+.product-id {
+  top: 0;
+  right: 0;
+  position: absolute;
+  color: var(--icons-color);
+
+  @include small-text;
+
+  &--loading {
+    height: 1em;
+    width: 30px;
+
+    @extend %skeleton;
+  }
+}

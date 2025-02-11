@@ -36,20 +36,21 @@ export const HomePage = () => {
   return (
     <div className="home-page">
       <h1 className="hidden">Product Catalog</h1>
-
       <h1>Welcome to Nice Gadgets store!</h1>
 
-      <PicturesSlider />
+      <main className="home-page__content">
+        <PicturesSlider />
 
-      <ProductsSlider
-        title={'Brand new models'}
-        products={brandNewProducts}
-        hidePrevPrice
-      />
+        <ProductsSlider
+          title={'Brand new models'}
+          products={brandNewProducts}
+          hidePrevPrice
+        />
 
-      <Categories />
+        <Categories />
 
-      <ProductsSlider title={'Hot Prices'} products={hotPricesProducts} />
+        <ProductsSlider title={'Hot Prices'} products={hotPricesProducts} />
+      </main>
     </div>
   );
 };

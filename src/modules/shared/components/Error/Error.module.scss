@@ -1,0 +1,21 @@
+.error {
+  height: 75px;
+  box-sizing: border-box;
+  border: 1px solid var(--primary-color);
+
+  gap: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &__icon {
+    height: 60%;
+    aspect-ratio: 1;
+
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}

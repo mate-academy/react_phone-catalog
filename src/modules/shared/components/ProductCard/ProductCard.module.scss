@@ -27,20 +27,6 @@
     @include body-text;
   }
 
-  &__price {
-    gap: 8px;
-    display: flex;
-    align-items: center;
-  }
-
-  &__prev-price {
-    font-size: 22px;
-    font-weight: 600;
-    line-height: 29px;
-    font-family: Mont, sans-serif;
-    color: var(--secondary-color);
-  }
-
   &__divider {
     border: 1px solid var(--elements-color);
   }

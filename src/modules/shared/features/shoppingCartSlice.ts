@@ -40,6 +40,7 @@ const shoppingCartSlice = createSlice({
       state.length += 1;
       state.itemIds[itemId] = 1 + (state.itemIds[itemId] || 0);
     },
+
     take: (state, action: PayloadAction<number>) => {
       const itemId = action.payload;
       const count = state.itemIds[itemId];

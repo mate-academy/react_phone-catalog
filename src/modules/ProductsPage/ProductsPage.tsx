@@ -5,7 +5,6 @@ import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import styles from './ProductsPage.module.scss';
 
 import { Product } from '@sTypes/Product';
-import { ArrowType } from '@sTypes/ArrowType';
 import { ProductCategory } from '@sTypes/ProductCategory';
 import { SORT_BY_DEFAULT, SORT_BY_NAME, SortBy } from './types/SortBy';
 
@@ -15,30 +14,16 @@ import {
   ITEMS_PER_PAGE_DEFAULT,
 } from './types/ItemsPerPage';
 
-import { Arrow } from '@components/Arrow';
+import { Error } from '@components/Error/Error';
 import { Dropdown } from './components/Dropdown';
-import { SearchLink } from './components/SearchLink';
 import { ProductCard } from '@components/ProductCard';
 import { ProductCardSkeleton } from '@components/ProductCardSkeleton';
 
 import { getSearchParam } from './utils/getSearchParam';
 import { useProductsPreload } from '@hooks/useProductsPreload';
+import { ProductsNavigation } from './components/ProductsNavigation';
 
-const MAX_VISIBLE_PAGES = 5;
 const VISIBLE_COUNT_PAGINATION = 16;
-
-function getVisiblePageRange(pagesCount: number, currentPage: number) {
-  const half = Math.floor(MAX_VISIBLE_PAGES / 2);
-
-  let start = Math.max(currentPage - half, 0);
-  const end = Math.min(start + MAX_VISIBLE_PAGES, pagesCount);
-
-  if (end - start < MAX_VISIBLE_PAGES && start > 0) {
-    start = Math.max(end - MAX_VISIBLE_PAGES, 0);
-  }
-
-  return { start, end };
-}
 
 function getCurrentPage(initialPage: string | null) {
   const page = +(initialPage || 1);
@@ -125,8 +110,6 @@ export const ProductsPage = () => {
     categoryProducts.length,
   );
 
-  const { start, end } = getVisiblePageRange(pagesCount, page);
-
   useEffect(() => {
     setVisibleCount(VISIBLE_COUNT_PAGINATION);
   }, [itemsPerPage]);
@@ -183,13 +166,12 @@ export const ProductsPage = () => {
             [styles['products-page__model-count--loading']]: isLoading,
           })}
         >
-          {categoryProducts.length} model
-          {categoryProducts.length === 1 ? '' : 's'}
+          {`${categoryProducts.length} model${categoryProducts.length === 1 ? '' : 's'}`}
         </div>
       </div>
 
-      <div ref={optionsRef} className={styles['products-page__content']}>
-        <div className={styles['products-page__options']}>
+      <main className={styles['products-page__main']}>
+        <div ref={optionsRef} className={styles['products-page__options']}>
           <Dropdown
             name={SORT_BY_NAME}
             description="Sort by"
@@ -206,89 +188,43 @@ export const ProductsPage = () => {
             reset={['page']}
           />
         </div>
-      </div>
 
-      {error && (
-        <h3 className={styles['products-page__message']}>
-          {'Something went wrong!'}
+        {error && <Error error={error} reload={reload} />}
 
-          <div
-            className={styles['products-page__message-icon']}
-            onClick={() => reload()}
+        {showContent && !hasContent && (
+          <h3>There are no {category.toLowerCase()} yet.</h3>
+        )}
+
+        {!error && (isLoading || hasContent) && (
+          <section
+            ref={!isLoading ? productsRef : null}
+            className={styles['products-page__products']}
           >
-            ⟳
-          </div>
-        </h3>
-      )}
-
-      {showContent && !hasContent && (
-        <h3 className={styles['products-page__message']}>
-          There are no {category.toLowerCase()} yet.
-        </h3>
-      )}
-
-      {!error && (isLoading || hasContent) && (
-        <div
-          ref={!isLoading ? productsRef : null}
-          className={styles['products-page__products']}
-        >
-          {isLoading &&
-            Array.from({ length: itemsCount || 16 }, (_, i) => (
-              <ProductCardSkeleton key={i} />
-            ))}
-
-          {!isLoading &&
-            sortedProducts
-              .slice(
-                page * itemsCount,
-                (page + 1) * (pagesCount !== 0 ? itemsCount : visibleCount),
-              )
-              .map(product => (
-                <ProductCard key={product.id} product={product} />
+            {isLoading &&
+              Array.from({ length: itemsCount || 16 }, (_, i) => (
+                <ProductCardSkeleton key={i} />
               ))}
-        </div>
-      )}
 
-      {showContent && itemsPerPage !== ItemsPerPage.all && (
-        <div className={styles['products-page__navigation']}>
-          <SearchLink
-            style={!page ? { pointerEvents: 'none' } : undefined}
-            params={{ page: page !== 1 ? `${page}` : null }}
-            onClick={page ? () => scrollToProducts() : undefined}
-          >
-            <Arrow type={ArrowType.left} disabled={!page} />
-          </SearchLink>
+            {!isLoading &&
+              sortedProducts
+                .slice(
+                  page * itemsCount,
+                  (page + 1) * (pagesCount !== 0 ? itemsCount : visibleCount),
+                )
+                .map(product => (
+                  <ProductCard key={product.id} product={product} />
+                ))}
+          </section>
+        )}
 
-          <div className={styles['products-page__pages']}>
-            {Array.from({ length: end - start }, (_, i) => {
-              const index = start + i;
-
-              return (
-                <SearchLink
-                  key={index}
-                  params={{ page: index ? `${index + 1}` : null }}
-                  className={classNames(styles['products-page__page'], {
-                    [styles['products-page__page--active']]: index === page,
-                  })}
-                  onClick={() => scrollToProducts()}
-                >
-                  {index + 1}
-                </SearchLink>
-              );
-            })}
-          </div>
-
-          <SearchLink
-            style={
-              page === pagesCount - 1 ? { pointerEvents: 'none' } : undefined
-            }
-            params={{ page: `${page + 2}` }}
-            onClick={() => scrollToProducts()}
-          >
-            <Arrow type={ArrowType.right} disabled={page === pagesCount - 1} />
-          </SearchLink>
-        </div>
-      )}
+        {itemsPerPage !== ItemsPerPage.all && (
+          <ProductsNavigation
+            page={page}
+            pagesCount={pagesCount}
+            scrollToProducts={scrollToProducts}
+          />
+        )}
+      </main>
     </div>
   );
 };

@@ -6,6 +6,8 @@ import styles from './Arrow.module.scss';
 import { ArrowType } from '@sTypes/ArrowType';
 
 type Props = {
+  className?: string;
+
   type: ArrowType;
 
   tall?: boolean;
@@ -16,7 +18,10 @@ type Props = {
 };
 
 export const Arrow: React.FC<Props> = ({
+  className,
+
   type,
+
   tall,
   small,
   disabled,
@@ -24,7 +29,7 @@ export const Arrow: React.FC<Props> = ({
   hideBorders,
 }) => (
   <div
-    className={classNames(styles.arrow, {
+    className={classNames(className, styles.arrow, {
       [styles['arrow--tall']]: tall,
       [styles['arrow--small']]: small,
       [styles['arrow--disabled']]: disabled,

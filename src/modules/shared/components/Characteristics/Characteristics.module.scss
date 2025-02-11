@@ -9,16 +9,27 @@
 
   @include small-text;
 
+  &--body-text {
+    @include body-text;
+  }
+
+  &--remove-padding {
+    padding-block: 0;
+  }
+
   &__characteristic {
+    gap: 16px;
     display: flex;
     justify-content: space-between;
   }
 
   &__key {
+    text-align: left;
     color: var(--secondary-color);
   }
 
   &__value {
+    text-align: right;
     color: var(--primary-color);
   }
 }

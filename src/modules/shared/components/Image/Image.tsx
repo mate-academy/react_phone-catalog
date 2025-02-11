@@ -9,6 +9,8 @@ type Props = ImgHTMLAttributes<HTMLImageElement>;
 export const Image = React.forwardRef<RefType, Props>(
   function Image(props, ref) {
     const timeoutId = useRef(0);
+
+    const [src, setSrc] = useState(props.src);
     const [isLoaded, setIsLoaded] = useState(false);
     const [isLoading, setIsloading] = useState(false);
 
@@ -42,6 +44,7 @@ export const Image = React.forwardRef<RefType, Props>(
         <img
           ref={ref}
           {...props}
+          src={src}
           onLoad={event => {
             setIsLoaded(true);
             setIsloading(false);
@@ -52,7 +55,9 @@ export const Image = React.forwardRef<RefType, Props>(
               }
             }
           }}
-          className={props.className}
+          onError={() => {
+            setSrc('./img/page-not-found.png');
+          }}
           style={!isLoading ? props.style : { display: 'none' }}
         />
       </>

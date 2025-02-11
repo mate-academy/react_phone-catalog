@@ -27,6 +27,16 @@
   }
 }
 
+@mixin hide-scrollbar {
+  // hide scrollbar
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;
+
+  &::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Edge */
+  }
+}
+
 @mixin content-padding-inline {
   padding-inline: $padding-inline-p;
 

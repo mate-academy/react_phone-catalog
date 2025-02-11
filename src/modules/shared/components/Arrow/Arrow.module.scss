@@ -22,7 +22,7 @@ $border-size: 1px;
 
   &__content {
     aspect-ratio: 1;
-    width: $icon-size - $border-size;
+    width: $icon-size - $border-size * 2;
 
     mask-position: center;
     mask-repeat: no-repeat;

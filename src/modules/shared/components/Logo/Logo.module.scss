@@ -2,7 +2,12 @@
 
 .logo {
   display: flex;
+  width: fit-content;
   align-items: center;
+
+  @include on-desktop {
+    @include hover;
+  }
 
   &__image {
     width: 64px;
@@ -11,8 +16,6 @@
     @include on-desktop {
       width: 80px;
       height: 28px;
-
-      @include hover;
     }
 
     &--footer {

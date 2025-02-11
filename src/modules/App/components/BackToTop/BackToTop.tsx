@@ -1,16 +1,23 @@
-import { Arrow } from '@components/Arrow';
-import './BackToTop.scss';
+import React from 'react';
+import classNames from 'classnames';
 
+import { Arrow } from '@components/Arrow';
 import { ArrowType } from '@sTypes/ArrowType';
 
-export const BackToTop = () => {
-  return (
-    <div className="back-to-top" onClick={() => window.scrollTo(0, 0)}>
-      <div className="back-to-top__label">Back to top</div>
+import styles from './BackToTop.module.scss';
 
-      <div className="back-to-top__arrow">
-        <Arrow type={ArrowType.up} />
-      </div>
+type Props = {
+  className?: string;
+};
+
+export const BackToTop: React.FC<Props> = ({ className }) => {
+  return (
+    <div
+      className={classNames(className, styles['back-to-top'])}
+      onClick={() => window.scrollTo(0, 0)}
+    >
+      <div className={styles['back-to-top__label']}>Back to top</div>
+      <Arrow className={styles['back-to-top__arrow']} type={ArrowType.up} />
     </div>
   );
 };

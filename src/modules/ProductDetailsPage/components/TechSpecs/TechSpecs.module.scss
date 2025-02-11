@@ -1,0 +1,11 @@
+@use '@styles/mixins' as *;
+
+.tech-specs {
+  gap: 30px;
+  display: flex;
+  flex-direction: column;
+
+  @include on-tablet {
+    gap: 25px;
+  }
+}

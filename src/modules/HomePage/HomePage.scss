@@ -2,15 +2,20 @@
 @use '@styles/mixins' as *;
 
 .home-page {
-  display: flex;
-  gap: $row-gap-p;
-  flex-direction: column;
+  &__content {
+    display: flex;
+    gap: $row-gap-p;
+    margin-top: $row-gap-p;
+    flex-direction: column;
 
-  @include on-tablet {
-    gap: $row-gap-t;
-  }
+    @include on-tablet {
+      gap: $row-gap-t;
+      margin-top: $row-gap-t;
+    }
 
-  @include on-desktop {
-    gap: $row-gap-d;
+    @include on-desktop {
+      gap: $row-gap-d;
+      margin-top: $row-gap-d;
+    }
   }
 }

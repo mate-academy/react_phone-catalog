@@ -29,13 +29,7 @@ $gaps-d: ($size-d - 1) * $column-gap-p;
     (100vw - #{$phone}) * #{$size-p} / #{$columns-p} + #{$gaps-p}
   );
 
-  // hide scrollbar
-  scrollbar-width: none; /* Firefox */
-  -ms-overflow-style: none;
-
-  &::-webkit-scrollbar {
-    display: none; /* Chrome, Safari, Edge */
-  }
+  @include hide-scrollbar;
 
   &--disabled {
     overflow: hidden;

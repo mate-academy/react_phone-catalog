@@ -1,6 +1,5 @@
+import classNames from 'classnames';
 import React, { useCallback, useEffect, useRef, useState } from 'react';
-
-import styles from './ProductsSlider.module.scss';
 
 import { Product } from '@sTypes/Product';
 import { ArrowType } from '@sTypes/ArrowType';
@@ -10,11 +9,7 @@ import { SliderList } from '@components/SliderList';
 
 import { useScrollAnimation } from '@hooks/useScrollAnimation';
 
-type Props = {
-  title: string;
-  products: Product[];
-  hidePrevPrice?: boolean;
-};
+import styles from './ProductsSlider.module.scss';
 
 type ItemVisibility = {
   item: HTMLElement;
@@ -53,8 +48,16 @@ const findPrevInvisibleItem = (
   }
 };
 
+type Props = {
+  className?: string;
+
+  title: string;
+  products: Product[];
+  hidePrevPrice?: boolean;
+};
+
 export const ProductsSlider: React.FC<Props> = React.memo(
-  function ProductsSlider({ title, products, hidePrevPrice }) {
+  function ProductsSlider({ className, title, products, hidePrevPrice }) {
     const itemsRef = useRef<HTMLElement[]>([]);
     const sliderRef = useRef<HTMLDivElement>(null);
 
@@ -142,7 +145,7 @@ export const ProductsSlider: React.FC<Props> = React.memo(
         : true;
 
     return (
-      <section className={styles['products-slider']}>
+      <section className={classNames(className, styles['products-slider'])}>
         <div className={styles['products-slider__header']}>
           <h2>{title}</h2>
 

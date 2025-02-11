@@ -9,6 +9,16 @@ import { PageNotFound } from './modules/NotFoundPage';
 import { ProductsPage } from './modules/ProductsPage';
 
 import { store } from '@store/store';
+import { ProductDetailsPage } from '@ProductDetailsPage/ProductDetailsPage';
+
+function getProductRoute(path: string) {
+  return (
+    <Route path={path}>
+      <Route index element={<ProductsPage />} />
+      <Route path=":productId" element={<ProductDetailsPage />} />
+    </Route>
+  );
+}
 
 export const Root = () => {
   return (
@@ -18,9 +28,9 @@ export const Root = () => {
           <Route path="/" element={<App />}>
             <Route index element={<HomePage />} />
 
-            <Route path="phones" element={<ProductsPage />} />
-            <Route path="tablets" element={<ProductsPage />} />
-            <Route path="accessories" element={<ProductsPage />} />
+            {getProductRoute('phones')}
+            {getProductRoute('tablets')}
+            {getProductRoute('accessories')}
 
             <Route path="favorites" element={<ProductsPage />} />
             <Route path="shopping-bag" element={<ProductsPage />} />

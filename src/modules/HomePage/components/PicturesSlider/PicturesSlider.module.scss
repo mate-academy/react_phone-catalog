@@ -46,15 +46,7 @@
     grid-auto-flow: column;
     grid-auto-columns: 100%;
 
-    // scroll-snap-type: x mandatory;
-
-    // hide scrollbar
-    scrollbar-width: none; /* Firefox */
-    -ms-overflow-style: none;
-
-    &::-webkit-scrollbar {
-      display: none; /* Chrome, Safari, Edge */
-    }
+    @include hide-scrollbar;
 
     &--isLoading {
       overflow-x: hidden;
@@ -69,9 +61,6 @@
     width: 100%;
     aspect-ratio: 1;
     object-fit: cover;
-
-    scroll-snap-stop: always;
-    scroll-snap-align: center;
 
     &--isLoading {
       inset: 0, 0, 0, 0;
