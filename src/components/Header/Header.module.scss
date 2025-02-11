@@ -36,6 +36,8 @@
     background-repeat: no-repeat;
     background-size: contain;
 
+    cursor: pointer;
+
     @include hover(transform, scale(1.1));
 
     @include on-desktop {
@@ -83,6 +85,8 @@
   &__link {
     height: 100%;
 
+    position: relative;
+
     line-height: $header-height;
 
     font-family: 'Mont-Bold', sans-serif;
@@ -93,6 +97,26 @@
     text-decoration: none;
     text-transform: uppercase;
 
+    @include hover(color, $primary-color);
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0px;
+      display: block;
+      height: 3px;
+      width: 100%;
+      background-color: $primary-color;
+
+      transition: transform 0.3s;
+      transform: scale(0);
+      transform-origin: left;
+    }
+
+    &:hover::after {
+      transform: scale(1);
+    }
+
     @include on-desktop {
       line-height: $header-height-desktop;
     }
@@ -102,33 +126,45 @@
     display: flex;
   }
 
-  &__favourites {
+  &__favAndCartBtn {
+    position: relative;
+
     width: $header-height;
 
-    box-shadow: -1px 0px 0px 0px rgba(226, 230, 233, 1);
+    box-shadow: -1px 0px 0px 0px $elements-color;
 
-    background-image: url('../../../public/img/icons/heart-like.png');
     background-size: 16px;
     background-repeat: no-repeat;
     background-position: center;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0px;
+      display: block;
+      height: 3px;
+      width: 100%;
+      background-color: $primary-color;
+
+      transition: transform 0.3s;
+      transform: scale(0);
+      transform-origin: left;
+    }
+
+    &:hover::after {
+      transform: scale(1);
+    }
 
     @include on-desktop {
       width: $header-height-desktop;
     }
   }
 
+  &__favourites {
+    background-image: url('../../../public/img/icons/heart-like.png');
+  }
+
   &__cart {
-    width: $header-height;
-
-    box-shadow: -1px 0px 0px 0px rgba(226, 230, 233, 1);
-
     background-image: url('../../../public/img/icons/cart-icon.png');
-    background-size: 16px;
-    background-repeat: no-repeat;
-    background-position: center;
-
-    @include on-desktop {
-      width: $header-height-desktop;
-    }
   }
 }

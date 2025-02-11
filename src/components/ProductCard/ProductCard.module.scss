@@ -2,7 +2,7 @@
 @import '../../utils/scss/mixin.scss';
 
 .card {
-  width: 212px;
+  min-width: 212px;
 
   grid-column: span 3;
 
@@ -14,8 +14,12 @@
 
   border: 1px solid rgba(226, 230, 233, 1);
 
+  cursor: pointer;
+
+  @include hover(box-shadow, 0px 2px 15px 0px rgba(0, 0, 0, 0.1));
+
   @include on-tablet {
-    width: 237px;
+    width: auto;
   }
 
   @include on-desktop {
@@ -87,18 +91,27 @@
     gap: 8px;
   }
 
-  &__buttons button {
-    border-radius: 0;
-  }
-
   &__addToCart {
     width: calc(100% - 48px);
     height: 40px;
 
-    border: none;
-
     background-color: $primary-color;
     color: $white-color;
+
+    border: none;
+
+    cursor: pointer;
+
+    @include hover(box-shadow, 0px 3px 13px 0px rgba(23, 32, 49, 0.4));
+  }
+
+  &__addedToCart {
+    border: 1px solid $elements-color;
+
+    background-color: $white-color;
+    color: $green-color;
+
+    @include hover(box-shadow, 0px 3px 13px 0px rgba(23, 32, 49, 0.4));
   }
 
   &__addToFavourite {
@@ -110,9 +123,19 @@
     background-color: $white-color;
     border: 1px solid $icons-color;
 
-    background-image: url('../../../public/img/icons/heart-like.png');
+    background-image: url('../../../img/icons/heart-like.png');
     background-size: 16px;
     background-repeat: no-repeat;
     background-position: center;
+
+    cursor: pointer;
+
+    @include hover(border-color, $primary-color);
+  }
+
+  &__addedToFavourite {
+    background-image: url('../../../img/icons/heart-like-active.png');
+
+    border-color: $elements-color;
   }
 }

@@ -60,6 +60,11 @@
     background-size: 16px;
     background-repeat: no-repeat;
     background-position: center;
+    background-color: $white-color;
+
+    cursor: pointer;
+
+    @include hover(border-color, $primary-color);
   }
 
   &__buttonLeft {
@@ -70,10 +75,12 @@
     transform: rotate(90deg);
   }
 
+  &:disabled,
   &__buttonDisabled {
-    background-image: url(../../../public/img/icons/arrow-disabled.png);
+    cursor: not-allowed;
+    opacity: 0.5;
 
-    border: $elements-color 1px solid;
+    @include hover(border-color, $icons-color);
   }
 
   &__list {
@@ -83,8 +90,14 @@
     grid-template-columns: repeat(12, 60px);
     gap: 16px;
 
-    overflow-y: scroll;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
 
     @include page-grid;
+  }
+
+  &__list::-webkit-scrollbar {
+    display: none;
   }
 }

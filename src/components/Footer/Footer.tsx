@@ -7,9 +7,15 @@ export const Footer = () => {
         <div className={styles.footer__logo}></div>
 
         <div className={styles.footer__contacts}>
-          <p>Github</p>
-          <p>Contacts</p>
-          <p>Rights</p>
+          <a href="" className={styles.footer__contactLink}>
+            Github
+          </a>
+          <a href="" className={styles.footer__contactLink}>
+            Contacts
+          </a>
+          <a href="" className={styles.footer__contactLink}>
+            Rights
+          </a>
         </div>
 
         <div className={styles.footer__buttonSection}>

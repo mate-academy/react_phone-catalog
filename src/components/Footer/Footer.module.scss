@@ -33,6 +33,8 @@
     background-image: url('../../../public/img/Logo.png');
     background-repeat: no-repeat;
     background-size: contain;
+
+    @include hover(transform, scale(1.05));
   }
 
   &__contacts {
@@ -50,18 +52,40 @@
       width: 100%;
 
       flex-direction: row;
-      justify-content: center;
+      justify-content: space-between;
       align-items: center;
     }
   }
 
-  &__contacts p {
+  &__contactLink {
+    position: relative;
     font-family: 'Mont-Bold', sans-serif;
     color: $secondary-color;
+    text-decoration: none;
 
     margin: 0;
 
     text-transform: uppercase;
+
+    @include hover(color, $primary-color);
+
+    &::after {
+      content: '';
+      position: absolute;
+      // bottom: 0px;
+      display: block;
+      height: 3px;
+      width: 100%;
+      background-color: $primary-color;
+
+      transition: transform 0.3s;
+      transform: scale(0);
+      transform-origin: left;
+    }
+
+    &:hover::after {
+      transform: scale(1);
+    }
   }
 
   &__buttonSection {
@@ -95,5 +119,7 @@
     background-repeat: no-repeat;
     background-size: 16px;
     background-position: center;
+
+    @include hover(border-color, $primary-color);
   }
 }

@@ -18,7 +18,7 @@ export const CategoriesBlock = () => {
           </div>
         </a>
 
-        <div className={styles.category}>
+        <a href="" className={styles.category}>
           <div
             className={`${styles.category__img} ${styles.category__imgTablets}`}
           ></div>
@@ -28,9 +28,9 @@ export const CategoriesBlock = () => {
 
             <p>24 models</p>
           </div>
-        </div>
+        </a>
 
-        <div className={styles.category}>
+        <a href="" className={styles.category}>
           <div
             className={`${styles.category__img} ${styles.category__imgAccessories}`}
           ></div>
@@ -40,7 +40,7 @@ export const CategoriesBlock = () => {
 
             <p>100 models</p>
           </div>
-        </div>
+        </a>
       </div>
     </section>
   );

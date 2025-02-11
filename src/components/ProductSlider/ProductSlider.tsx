@@ -12,13 +12,14 @@ export const ProductSlider: React.FC<ProductSliderProps> = ({ title }) => {
         <h2 className={styles.newProducts__title}>{title}</h2>
 
         <div className={styles.newProducts__buttonsContainer}>
-          <div
+          <button
             className={`${styles.newProducts__button} ${styles.newProducts__buttonLeft} ${styles.newProducts__buttonDisabled}`}
-          ></div>
+            // disabled={true}
+          ></button>
 
-          <div
+          <button
             className={`${styles.newProducts__button} ${styles.newProducts__buttonRight}`}
-          ></div>
+          ></button>
         </div>
       </div>
 

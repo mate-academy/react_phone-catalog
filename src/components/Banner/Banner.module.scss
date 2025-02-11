@@ -20,10 +20,13 @@
   &__container {
     width: 100%;
 
-    @include page-grid;
-
     @include on-tablet {
-      grid-column: 1 / -1;
+      display: flex;
+      gap: 19px;
+    }
+
+    @include on-desktop {
+      @include page-grid;
     }
   }
 
@@ -38,8 +41,6 @@
 
     @include on-tablet {
       height: 189px;
-
-      grid-column: 2 / -2;
     }
 
     @include on-desktop {
@@ -50,6 +51,8 @@
   }
 
   &__button {
+    width: 32px;
+
     border: 1px solid $icons-color;
     border-radius: 0;
 
@@ -58,6 +61,10 @@
     display: flex;
     align-items: center;
     justify-content: center;
+
+    cursor: pointer;
+
+    @include hover(border, 1px solid $primary-color);
   }
 
   &__buttonLeft {

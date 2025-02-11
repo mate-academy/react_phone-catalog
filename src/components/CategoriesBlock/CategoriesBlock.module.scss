@@ -22,6 +22,8 @@
 
   text-decoration: none;
 
+  @include hover(transform, scale(1.02));
+
   @include on-tablet {
     grid-column: span 4;
   }

@@ -50,9 +50,15 @@ export const Header = () => {
           </div>
 
           <div className={styles.header__favAndCart}>
-            <a href="" className={styles.header__favourites}></a>
+            <a
+              href=""
+              className={`${styles.header__favAndCartBtn} ${styles.header__favourites}`}
+            ></a>
 
-            <a href="" className={styles.header__cart}></a>
+            <a
+              href=""
+              className={`${styles.header__favAndCartBtn} ${styles.header__cart}`}
+            ></a>
           </div>
         </div>
       )}

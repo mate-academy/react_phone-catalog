@@ -1,6 +1,11 @@
+import { useState } from 'react';
 import styles from './ProductCard.module.scss';
+import classNames from 'classnames';
 
 export const ProductCard = () => {
+  const [isAddedToCart, setIsAddedToCart] = useState(false);
+  const [isLiked, setisLiked] = useState(false);
+
   return (
     <div className={styles.card}>
       <div className={styles.card__image}></div>
@@ -36,9 +41,21 @@ export const ProductCard = () => {
       </article>
 
       <div className={styles.card__buttons}>
-        <button className={styles.card__addToCart}>Add to cart</button>
+        <button
+          className={classNames(styles.card__addToCart, {
+            [styles.card__addedToCart]: isAddedToCart,
+          })}
+          onClick={() => setIsAddedToCart(!isAddedToCart)}
+        >
+          {isAddedToCart ? 'Added to cart' : 'Add to cart'}
+        </button>
 
-        <button className={styles.card__addToFavourite}></button>
+        <button
+          className={classNames(styles.card__addToFavourite, {
+            [styles.card__addedToFavourite]: isLiked,
+          })}
+          onClick={() => setisLiked(!isLiked)}
+        ></button>
       </div>
     </div>
   );
