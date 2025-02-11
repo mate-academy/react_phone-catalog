@@ -1,24 +1,5 @@
 // not empty
-@font-face {
-  font-family: Mont;
-  src: url('../public/fonts/Mont-Regular.otf') format('otf');
-  font-weight: 500;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: Mont;
-  src: url('../public/fonts/Mont-SemiBold.otf') format('otf');
-  font-weight: 600;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: Mont;
-  src: url('../public/fonts/Mont-Bold.otf') format('otf');
-  font-weight: 800;
-  font-style: normal;
-}
+@import './utils/globalStyles/fonts.scss';
 
 * {
   box-sizing: border-box;
@@ -38,13 +19,6 @@ body {
 p {
   margin: 0;
 }
-
-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
 
 .container {
   width: 100%;

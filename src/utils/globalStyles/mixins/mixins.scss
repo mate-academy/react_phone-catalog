@@ -81,6 +81,7 @@
   text-align: left;
   text-underline-position: from-font;
   text-decoration-skip-ink: none;
+  color: $gray-primary;
 }
 
 @mixin device-description-short {
@@ -107,59 +108,37 @@
 
 @mixin h1 {
   font-family: Mont, sans-serif;
-  font-size: 48px;
+  font-size: 32px;
+  line-height: 41px;
   font-weight: 800;
-  line-height: 56px;
   letter-spacing: -0.01em;
   text-align: left;
   text-underline-position: from-font;
   text-decoration-skip-ink: none;
   color: $gray-primary;
 
-  @include mobile {
-    font-size: 32px;
-    line-height: 41px;
-    text-underline-position: from-font;
+  @include tablet {
+    font-size: 48px;
+    line-height: 56px;
   }
 }
 
 @mixin h2 {
   font-family: Mont, sans-serif;
-  font-size: 32px;
+  font-size: 22px;
+  line-height: 30.8px;
   font-weight: 800;
-  line-height: 41px;
   letter-spacing: -0.01em;
   text-align: left;
-  text-underline-position: from-font;
-  text-decoration-skip-ink: none;
   color: $gray-primary;
 
-  @include mobile {
-    font-size: 22px;
-    line-height: 30.8px;
-    text-underline-position: from-font;
-    text-decoration-skip-ink: none;
+  @include tablet {
+    font-size: 32px;
+    line-height: 41px;
   }
 }
 
 @mixin h3 {
-  font-family: Mont, sans-serif;
-  font-size: 22px;
-  font-weight: 800;
-  line-height: 30.8px;
-  text-align: left;
-  text-underline-position: from-font;
-  text-decoration-skip-ink: none;
-  color: $gray-primary;
-
-  @include mobile {
-    font-size: 20px;
-    font-weight: 700;
-    line-height: 25.56px;
-  }
-}
-
-@mixin h4 {
   font-family: Mont, sans-serif;
   font-size: 20px;
   font-weight: 700;
@@ -169,9 +148,26 @@
   text-decoration-skip-ink: none;
   color: $gray-primary;
 
-  @include mobile {
-    font-size: 16px;
+  @include tablet {
+    font-size: 22px;
+    font-weight: 800;
+    line-height: 30.8px;
+  }
+}
+
+@mixin h4 {
+  font-family: Mont, sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 20.45px;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  color: $gray-primary;
+
+  @include tablet {
+    font-size: 20px;
     font-weight: 700;
-    line-height: 20.45px;
+    line-height: 25.56px;
   }
 }

@@ -1,6 +1,6 @@
 import { Phone } from "../types/Phone";
 
-const API_URL = '/api/products.json';
+const API_URL = '/api/phones.json';
 
 export function getPhones(): Promise<Phone[]> {
   return fetch(`${API_URL}`).then(res => {

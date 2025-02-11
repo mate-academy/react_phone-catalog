@@ -1,0 +1,120 @@
+.phone {
+  &-card {
+    width: 100%;
+    max-width: 287px;
+    height: auto;
+    min-height: 440px;
+    border: 1px solid $gray-elements;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 8px;
+    padding: 32px;
+    transition: transform 0.3s ease;
+
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+
+  &__design {
+    width: 100%;
+    max-width: 223px;
+    height: 130px;
+    object-fit: contain;
+  }
+
+  &__name {
+    @include device-title;
+  }
+
+  .price {
+    display: flex;
+    justify-content: flex-start;
+    gap: 8px;
+    width: 100%;
+
+    &--regular {
+      @include h3;
+    }
+
+    &--discount {
+      @include h3;
+      text-decoration: line-through;
+      color: $gray-secondary;
+    }
+  }
+
+  .details {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+
+    &__wrap {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    &__title {
+      @include device-description-short;
+    }
+
+    &__info {
+      @include device-description-short;
+      color: $gray-primary;
+    }
+  }
+
+  .buttons {
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+
+    &__add-to-cart {
+      all: unset;
+      display: inline-block;
+      font-family: Mont, sans-serif;
+      font-weight: 700;
+      font-size: 14px;
+      line-height: 21px;
+      letter-spacing: 0;
+      text-align: center;
+      color: $white;
+      background-color: $gray-primary;
+      width: 160px;
+      height: 40px;
+      transition: box-shadow 0.3s ease;
+
+      &:hover {
+        box-shadow: 0px 3px 13px 0px rgba(23, 32, 49, 0.4);
+      }
+
+      &.selected {
+        background-color: $white;
+        border: 1px solid $gray-elements;
+        color: $green;
+      }
+    }
+
+    &__add-to-fav {
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid $gray-elements;
+      transition: border-color 0.3s ease;
+
+      &:hover {
+        border-color: $gray-primary;
+      }
+
+      &.fav-icon {
+        width: 16px;
+        height: 16px;;
+      }
+    }
+  }
+}

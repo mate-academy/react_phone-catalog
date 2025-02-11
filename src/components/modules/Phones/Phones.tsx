@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { PhoneCard } from '../../shared/PhoneCard/PhoneCard';
+import './Phones.style.scss';
 
 import { Phone } from '../../../types/Phone';
 import { getPhones } from '../../../api/phones';
@@ -20,17 +21,12 @@ export const Phones = () => {
     fetchPhones();
   }, []);
 
-  useEffect(() => {
-    phonesList.forEach(phone => console.log(phone.images));
-  }, [phonesList]);
-
   return (
-    <>
-      <p>Hello</p>
+    <div className='phone-catalog'>
       {phonesList.length > 0 &&
         phonesList.map((phone: Phone) => {
           return <PhoneCard key={phone.id} phone={phone} />;
         })}
-    </>
+    </ div>
   );
 };
