@@ -58,6 +58,7 @@
   }
 
   &__menuButton {
+    position: relative;
     height: 100%;
     width: $header-height;
 
@@ -67,6 +68,24 @@
     background-position: center;
 
     box-shadow: -1px 0px 0px 0px rgba(226, 230, 233, 1);
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0px;
+      display: block;
+      height: 3px;
+      width: 100%;
+      background-color: $primary-color;
+
+      transition: transform 0.3s;
+      transform: scale(0);
+      transform-origin: left;
+    }
+
+    &:hover::after {
+      transform: scale(1);
+    }
   }
 
   &__menuButtonClose {

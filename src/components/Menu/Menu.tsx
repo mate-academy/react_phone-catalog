@@ -22,8 +22,14 @@ export const Menu = () => {
         </div>
 
         <div className={styles.menu__buttonsContainer}>
-          <a href="" className={styles.menu__favourites}></a>
-          <a href="" className={styles.menu__cart}></a>
+          <a
+            href=""
+            className={`${styles.menu__button} ${styles.menu__favourites}`}
+          ></a>
+          <a
+            href=""
+            className={`${styles.menu__button} ${styles.menu__cart}`}
+          ></a>
         </div>
       </aside>
     </>
