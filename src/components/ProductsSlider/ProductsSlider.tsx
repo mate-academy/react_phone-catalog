@@ -107,7 +107,7 @@ export const ProductsSlider: React.FC<Props> = ({ itemsType, title }) => {
 
       {loading && <Loader />}
 
-      {!loading && !error && itemsList.length && (
+      {!loading && !error && itemsList.length > 0 && (
         <div className={styles.wrapper}>
           <ul className={styles.carousel} ref={carouselRef}>
             {itemsList.map(item => (

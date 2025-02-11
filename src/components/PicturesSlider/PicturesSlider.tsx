@@ -41,20 +41,24 @@ export const PicturesSlider = () => {
   return (
     <div className={styles.sliderContainer}>
       <div className={styles.slider}>
-        <div
+        <button
           className={`backBtn button ${styles.sliderButton} `}
           onClick={prevSlide}
         >
           <span className="icon arrow" />
-        </div>
+        </button>
 
-        <div className={`${styles.pictureContainer} `}>
+        <div
+          className={`${styles.pictureContainer} `}
+          // ref={pictureContainerRef}
+        >
           {slides.map((slide, index) => (
             <img
               key={slide}
               src={slide}
               alt="Slide"
               className={`${styles.picture} ${index === current ? styles.active : ''}`}
+              // ref={pictureRef}
             />
           ))}
         </div>

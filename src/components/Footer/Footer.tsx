@@ -20,13 +20,22 @@ export const Footer = () => {
           <Link
             to="https://github.com/Shevchuchka/react_phone-catalog"
             className="link-upper-text"
+            target="_blank"
           >
             Github
           </Link>
-          <Link to="" className="link-upper-text">
+          <Link
+            to="https://github.com/Shevchuchka/react_phone-catalog"
+            className="link-upper-text"
+            target="_blank"
+          >
             Contacts
           </Link>
-          <Link to="" className="link-upper-text">
+          <Link
+            to="https://github.com/Shevchuchka/react_phone-catalog"
+            className="link-upper-text"
+            target="_blank"
+          >
             Rights
           </Link>
         </div>

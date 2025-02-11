@@ -18,11 +18,15 @@
 a {
   text-decoration: none;
   color: $primary;
+
+  cursor: pointer;
 }
 
 button {
   border: none;
   background-color: unset;
+
+  cursor: pointer;
 }
 
 ul {
@@ -65,4 +69,22 @@ ul {
   margin: 0;
   background-color: $elements;
   border: none;
+}
+
+.menuTab {
+  animation: appear 0.3s ease-in;
+}
+
+.content {
+  animation: appear 0.3s ease-in;
+}
+
+
+@keyframes appear {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }

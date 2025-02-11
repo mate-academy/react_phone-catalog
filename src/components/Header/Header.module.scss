@@ -108,6 +108,7 @@
 }
 
 .search {
+  flex-shrink: 1;
   height: 24px;
 
   margin-inline: 16px;
@@ -115,6 +116,7 @@
 
 .searchInput {
   height: 100%;
+  width: 100%;
 
   padding: 6px;
 

@@ -17,6 +17,8 @@ import { NotFound } from '../../components/NotFound';
 export const ProductPage: React.FC = () => {
   const { products, loading, error } = useContext(ProductContext);
 
+  const [pageLoad, setPageLoad] = useState(true);
+
   const pageSrc = useLocation().pathname as CategorySrc;
 
   const [category, setCategory] = useState<CategoryDates | null>(null);
@@ -28,9 +30,12 @@ export const ProductPage: React.FC = () => {
         [...products].filter(product => product.category === category.name),
       );
     }
+
+    setPageLoad(false);
   };
 
   useEffect(() => {
+    setPageLoad(true);
     setCategory(findCategoryDates(pageSrc));
   }, [pageSrc]);
 
@@ -40,11 +45,11 @@ export const ProductPage: React.FC = () => {
 
   return (
     <div className={styles.productPage}>
-      {!category && <NotFoundPage />}
+      {(pageLoad || loading) && <Loader />}
+
+      {!category && !pageLoad && <NotFoundPage />}
 
       {error && <ErrorMessage />}
-
-      {loading && <Loader />}
 
       {!loading && !error && category && !categoryItems.length && (
         <NotFound

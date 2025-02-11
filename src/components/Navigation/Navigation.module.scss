@@ -22,6 +22,8 @@
 .menuNavList {
   @include flex-col-center;
 
+  text-align: center;
+
   row-gap: 16px;
 }
 
@@ -38,6 +40,7 @@
 }
 
 .menuNavItem {
+  display: inline;
   line-height: 27px;
 }
 

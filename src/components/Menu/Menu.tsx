@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { NavPosition } from '../../types/NavPositionType';
 import { Navigation } from '../Navigation';
 import styles from './Menu.module.scss';
@@ -40,7 +40,11 @@ export const Menu: React.FC<Props> = ({
         <NavLink
           to="/cart"
           className={({ isActive }) =>
-            classNames([styles.menuIcon], getLinkClass({ isActive }, styles))
+            classNames(
+              [styles.menuIcon],
+              [styles.menuRightIcon],
+              getLinkClass({ isActive }, styles),
+            )
           }
         >
           <span className="icon cart" />

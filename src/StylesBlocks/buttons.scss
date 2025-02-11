@@ -67,12 +67,12 @@
   transition: $border-hover-transition;
 }
 
-.toggle:disabled {
-  border: $gray-element-border;
-}
-
 .toggle:hover {
   border: 1px solid $primary;
+}
+
+.toggle:disabled {
+  border: $gray-element-border;
 }
 
 // colorButton

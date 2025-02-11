@@ -55,6 +55,8 @@
 
   gap: 16px;
 
+  cursor: pointer;
+
   @include on-tablet {
     grid-column: 9 / -1;
 
