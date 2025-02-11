@@ -43,19 +43,7 @@
 
     @include hover(color, $primary-color);
 
-    &::after {
-      content: '';
-      position: absolute;
-      bottom: 0px;
-      display: block;
-      height: 3px;
-      width: 100%;
-      background-color: $primary-color;
-
-      transition: transform 0.3s;
-      transform: scale(0);
-      transform-origin: left;
-    }
+    @include underline-animation();
 
     &:hover::after {
       transform: scale(1);
@@ -82,19 +70,7 @@
 
     @include hover(color, $primary-color);
 
-    &::after {
-      content: '';
-      position: absolute;
-      bottom: 0px;
-      display: block;
-      height: 3px;
-      width: 100%;
-      background-color: $primary-color;
-
-      transition: transform 0.3s;
-      transform: scale(0);
-      transform-origin: left;
-    }
+    @include underline-animation();
 
     &:hover::after {
       transform: scale(1);

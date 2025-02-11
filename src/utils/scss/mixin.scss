@@ -37,3 +37,28 @@
     grid-template-columns: repeat(var(--columns), 32px);
   }
 }
+
+@mixin underline-animation(
+  $color: $primary-color,
+  $height: 3px,
+  $duration: 0.3s
+) {
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    display: block;
+    height: $height;
+    width: 100%;
+    background-color: $color;
+
+    transition: transform $duration;
+    transform: scale(0);
+    transform-origin: left;
+  }
+
+  // &:hover::after {
+  //   transform: scale(1);
+  // }
+}

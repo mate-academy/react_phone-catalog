@@ -69,19 +69,7 @@
 
     box-shadow: -1px 0px 0px 0px rgba(226, 230, 233, 1);
 
-    &::after {
-      content: '';
-      position: absolute;
-      bottom: 0px;
-      display: block;
-      height: 3px;
-      width: 100%;
-      background-color: $primary-color;
-
-      transition: transform 0.3s;
-      transform: scale(0);
-      transform-origin: left;
-    }
+    @include underline-animation();
 
     &:hover::after {
       transform: scale(1);
@@ -89,7 +77,7 @@
   }
 
   &__menuButtonClose {
-    background-image: url('../../../public/img/icons/Close.png');
+    background-image: url('../../../img/icons/Close.png');
   }
 
   &__navButtons {
@@ -118,19 +106,7 @@
 
     @include hover(color, $primary-color);
 
-    &::after {
-      content: '';
-      position: absolute;
-      bottom: 0px;
-      display: block;
-      height: 3px;
-      width: 100%;
-      background-color: $primary-color;
-
-      transition: transform 0.3s;
-      transform: scale(0);
-      transform-origin: left;
-    }
+    @include underline-animation();
 
     &:hover::after {
       transform: scale(1);
@@ -156,19 +132,7 @@
     background-repeat: no-repeat;
     background-position: center;
 
-    &::after {
-      content: '';
-      position: absolute;
-      bottom: 0px;
-      display: block;
-      height: 3px;
-      width: 100%;
-      background-color: $primary-color;
-
-      transition: transform 0.3s;
-      transform: scale(0);
-      transform-origin: left;
-    }
+    @include underline-animation();
 
     &:hover::after {
       transform: scale(1);
@@ -185,5 +149,13 @@
 
   &__cart {
     background-image: url('../../../public/img/icons/cart-icon.png');
+  }
+
+  &__linkActive {
+    @include underline-animation();
+
+    &::after {
+      transform: scale(1);
+    }
   }
 }

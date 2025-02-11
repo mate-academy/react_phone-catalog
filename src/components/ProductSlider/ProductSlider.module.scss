@@ -2,15 +2,12 @@
 @import '../../utils/scss/mixin.scss';
 
 .newProducts {
-  height: 526px;
+  width: 100%;
+  // height: 526px;
 
   display: flex;
   flex-direction: column;
   gap: 24px;
-
-  @include on-tablet {
-    height: 577px;
-  }
 
   &__bar {
     display: flex;
@@ -84,17 +81,18 @@
   }
 
   &__list {
-    height: 100%;
+    width: 100%;
 
-    display: grid;
-    grid-template-columns: repeat(12, 60px);
+    display: flex;
     gap: 16px;
 
+    // grid-auto-flow: column;
+
     overflow-x: auto;
+
+    // @include page-grid();
     scrollbar-width: none;
     -ms-overflow-style: none;
-
-    @include page-grid;
   }
 
   &__list::-webkit-scrollbar {

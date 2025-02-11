@@ -3,8 +3,7 @@
 
 .card {
   min-width: 212px;
-
-  grid-column: span 3;
+  height: 439px;
 
   display: flex;
   flex-direction: column;
@@ -19,13 +18,17 @@
   @include hover(box-shadow, 0px 2px 15px 0px rgba(0, 0, 0, 0.1));
 
   @include on-tablet {
-    width: auto;
+    min-width: 237px;
+    height: 512px;
+
+    // grid-column: span 6;
   }
 
   @include on-desktop {
-    width: auto;
+    min-width: 272px;
+    height: 506px;
 
-    grid-column: span 6;
+    // grid-column: span 6;
   }
 
   &__image {
@@ -40,6 +43,7 @@
 
   &__titleContainer {
     padding-top: 16px;
+    width: 100%;
   }
 
   &__title {
