@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 import { useLocation, useSearchParams } from 'react-router-dom';
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { useCallback, useMemo, useRef } from 'react';
 
 import styles from './ProductsPage.module.scss';
 
@@ -16,14 +16,11 @@ import {
 
 import { Error } from '@components/Error/Error';
 import { Dropdown } from './components/Dropdown';
-import { ProductCard } from '@components/ProductCard';
-import { ProductCardSkeleton } from '@components/ProductCardSkeleton';
 
 import { getSearchParam } from './utils/getSearchParam';
 import { useProductsPreload } from '@hooks/useProductsPreload';
 import { ProductsNavigation } from './components/ProductsNavigation';
-
-const VISIBLE_COUNT_PAGINATION = 16;
+import { ProductsList } from '@components/ProductsList';
 
 function getCurrentPage(initialPage: string | null) {
   const page = +(initialPage || 1);
@@ -96,11 +93,7 @@ export const ProductsPage = () => {
   ) as ItemsPerPage;
   // #endregion
 
-  const [visibleCount, setVisibleCount] = useState(VISIBLE_COUNT_PAGINATION);
-
   const sortedProducts = useMemo(() => {
-    setVisibleCount(VISIBLE_COUNT_PAGINATION);
-
     return sortProducts(categoryProducts, sort, SORT_BY_DEFAULT);
   }, [categoryProducts, sort]);
 
@@ -110,12 +103,7 @@ export const ProductsPage = () => {
     categoryProducts.length,
   );
 
-  useEffect(() => {
-    setVisibleCount(VISIBLE_COUNT_PAGINATION);
-  }, [itemsPerPage]);
-
   const optionsRef = useRef<HTMLDivElement | null>(null);
-  const productsRef = useRef<HTMLDivElement | null>(null);
 
   const scrollToProducts = useCallback(() => {
     const headerHeight = (window.innerWidth < 640 ? 48 : 64) + 10;
@@ -129,29 +117,6 @@ export const ProductsPage = () => {
       });
     }
   }, []);
-
-  useEffect(() => {
-    const handleGlobalScroll = () => {
-      if (productsRef.current) {
-        const element = productsRef.current;
-        const currentScroll = window.scrollY + window.innerHeight;
-        const maxScroll = element.offsetTop + element.offsetHeight * 0.9;
-
-        if (currentScroll >= maxScroll) {
-          setVisibleCount(prev => prev + VISIBLE_COUNT_PAGINATION);
-        }
-      }
-    };
-
-    if (
-      itemsPerPage === ItemsPerPage.all &&
-      visibleCount <= sortedProducts.length
-    ) {
-      document.addEventListener('scroll', handleGlobalScroll);
-    }
-
-    return () => document.removeEventListener('scroll', handleGlobalScroll);
-  }, [itemsPerPage, sortedProducts.length, visibleCount]);
 
   const showContent = !isLoading && !error;
   const hasContent = sortedProducts.length !== 0;
@@ -196,25 +161,14 @@ export const ProductsPage = () => {
         )}
 
         {!error && (isLoading || hasContent) && (
-          <section
-            ref={!isLoading ? productsRef : null}
-            className={styles['products-page__products']}
-          >
-            {isLoading &&
-              Array.from({ length: itemsCount || 16 }, (_, i) => (
-                <ProductCardSkeleton key={i} />
-              ))}
-
-            {!isLoading &&
-              sortedProducts
-                .slice(
-                  page * itemsCount,
-                  (page + 1) * (pagesCount !== 0 ? itemsCount : visibleCount),
-                )
-                .map(product => (
-                  <ProductCard key={product.id} product={product} />
-                ))}
-          </section>
+          <ProductsList
+            isLoading={isLoading}
+            products={sortedProducts}
+            page={page}
+            itemsCount={itemsCount}
+            pagesCount={pagesCount}
+            itemsPerPage={itemsPerPage}
+          />
         )}
 
         {itemsPerPage !== ItemsPerPage.all && (

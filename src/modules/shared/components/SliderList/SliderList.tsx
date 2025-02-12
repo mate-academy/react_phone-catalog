@@ -8,6 +8,8 @@ import { ProductCard } from '@components/ProductCard';
 import { ProductCardSkeleton } from '@components/ProductCardSkeleton';
 
 type Props = {
+  onClick: () => void;
+
   title: string;
   products: Product[];
   itemsRef: React.RefObject<HTMLElement[]>;
@@ -17,6 +19,8 @@ type Props = {
 };
 
 export const SliderList: React.FC<Props> = React.memo(function SliderList({
+  onClick = () => {},
+
   title,
   sliderRef,
   itemsRef,
@@ -66,35 +70,42 @@ export const SliderList: React.FC<Props> = React.memo(function SliderList({
   }, [slider]);
 
   useEffect(() => {
-    const prevPos: number | undefined = window.history.state[title];
+    const prevState: { [key: string]: number } | undefined =
+      window.history.state.slider;
 
-    if (prevPos !== undefined && sliderRef.current) {
-      window.history.replaceState(
-        {
-          usr: window.history.state.usr,
-          key: window.history.state.key,
-          idx: window.history.state.idx,
-        },
-        '',
-      );
-
-      // eslint-disable-next-line no-param-reassign
-      sliderRef.current.scrollBy({ left: prevPos, behavior: 'smooth' });
+    if (prevState === undefined) {
+      return;
     }
-  }, [sliderRef, title]);
+
+    if (prevState[title] !== undefined) {
+      const prevPos = prevState[title];
+      const newState = { ...window.history.state };
+
+      delete newState.slider;
+      window.history.replaceState(newState, '');
+
+      setTimeout(() => {
+        sliderRef.current?.scrollBy({ left: prevPos, behavior: 'smooth' });
+      }, 0);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [sliderRef.current, title]);
 
   const saveScroll = useCallback(() => {
     window.history.replaceState(
       {
-        usr: window.history.state.usr,
-        key: window.history.state.key,
-        idx: window.history.state.idx,
+        ...window.history.state,
 
-        [title]: sliderRef.current?.scrollLeft,
+        slider: {
+          [title]: sliderRef.current?.scrollLeft,
+        },
       },
       '',
     );
-  }, [sliderRef, title]);
+
+    onClick();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [onClick, sliderRef.current, title]);
 
   return (
     <div

@@ -54,11 +54,4 @@
       }
     }
   }
-
-  &__products {
-    gap: 40px $column-gap-p;
-
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(272px, 1fr));
-  }
 }

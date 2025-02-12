@@ -50,6 +50,7 @@ const findPrevInvisibleItem = (
 
 type Props = {
   className?: string;
+  onClick?: () => void;
 
   title: string;
   products: Product[];
@@ -57,7 +58,14 @@ type Props = {
 };
 
 export const ProductsSlider: React.FC<Props> = React.memo(
-  function ProductsSlider({ className, title, products, hidePrevPrice }) {
+  function ProductsSlider({
+    className,
+    onClick = () => {},
+
+    title,
+    products,
+    hidePrevPrice,
+  }) {
     const itemsRef = useRef<HTMLElement[]>([]);
     const sliderRef = useRef<HTMLDivElement>(null);
 
@@ -166,6 +174,7 @@ export const ProductsSlider: React.FC<Props> = React.memo(
           itemsRef={itemsRef}
           products={products}
           hidePrevPrice={hidePrevPrice}
+          onClick={onClick}
         />
       </section>
     );

@@ -25,7 +25,6 @@
     grid-auto-columns: 100%;
 
     overflow-x: auto;
-    scroll-snap-type: x mandatory;
 
     @include hide-scrollbar;
 
@@ -43,7 +42,6 @@
     width: 100%;
     aspect-ratio: 1;
     object-fit: contain;
-    scroll-snap-align: center;
   }
 
   &__controls {
@@ -54,8 +52,8 @@
     justify-content: center;
 
     @include on-tablet {
-      height: auto;
       grid-column: 1 / 2;
+      height: fit-content;
       flex-direction: column;
     }
 

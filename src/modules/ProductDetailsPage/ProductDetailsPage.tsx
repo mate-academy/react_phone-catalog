@@ -86,8 +86,8 @@ export const ProductDetailsPage = () => {
             />
 
             <SuggestedProducts
+              key={productId}
               className={styles['product-details-page__suggested-products']}
-              productId={productsDetails[0].namespaceId}
             />
           </div>
         </main>
