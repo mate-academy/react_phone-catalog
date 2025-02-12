@@ -30,14 +30,9 @@
     }
   }
 
-  &__image {
-    width: 100%;
+  &__wrapper {
     height: 320px;
-
-    background-image: url('../../../public/img/now-available/NowAvailable-mobile.png');
-    background-size: cover;
-    background-repeat: no-repeat;
-    // background-position-y: center;
+    overflow: hidden;
 
     @include on-tablet {
       height: 189px;
@@ -106,6 +101,8 @@
     height: 4px;
 
     background: $elements-color;
+
+    transition: $effect-duration;
   }
 
   &__slidersActive {

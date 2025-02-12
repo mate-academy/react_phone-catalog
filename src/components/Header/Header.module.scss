@@ -152,6 +152,8 @@
   }
 
   &__linkActive {
+    color: $primary-color;
+
     @include underline-animation();
 
     &::after {
