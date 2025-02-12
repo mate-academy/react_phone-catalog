@@ -1,0 +1,130 @@
+@import '../styles/index.scss';
+
+p {
+  margin: 0;
+}
+
+article {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: center;
+  width: 272px;
+  height: 506px;
+  padding: 32px;
+  box-sizing: border-box;
+  border: 1px solid #e2e6e9;
+  border-radius: 8px;
+}
+
+.image {
+  object-fit: contain;
+  margin: 0;
+  width: 208px;
+  height: 196px;
+}
+
+.title {
+  @include setFont($font-mont, 14px, 600);
+  margin-top: 16px;
+  line-height: 21px;
+  margin-bottom: 8px;
+}
+
+.price {
+  @include setFont($font-mont, 22px, 800);
+  margin-top: 0;
+  margin-bottom: 16px;
+  margin-right: auto;
+  letter-spacing: 0;
+}
+
+.decription {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+  margin-bottom: 16px; // Відступ між описом та кнопками
+  max-height: 77px;
+  border-top: 1px solid #e2e6e9;
+
+  &__item {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  &__name {
+    @include setFont($font-mont, 12px, 700);
+    letter-spacing: 0;
+    line-height: 15px;
+    color: #89939a;
+    flex: 1;
+    text-align: left;
+  }
+
+  &__value {
+    @include setFont($font-mont, 12px, 700);
+    letter-spacing: 0;
+    line-height: 15px;
+    color: #0f0f11;
+    flex: 1;
+    text-align: right;
+  }
+}
+
+.wrapper {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  gap: 8px;
+}
+
+.button {
+  padding: 0;
+  @include setSize(160px, 40px);
+  background-color: #f86800;
+  border: none;
+  border-radius: 10px;
+  @include flexCenter;
+  transition: all 0.3s;
+
+  &:hover {
+    box-shadow: 0px 3px 13px rgba(23, 32, 49, 0.4);
+  }
+
+  &:active {
+    background-color: white;
+  }
+}
+
+.button__title {
+  @include setFont($font-mont, 700, 14px);
+  line-height: 21px;
+  color: white;
+
+  &:active {
+    color: black;
+  }
+}
+
+.favourite {
+  @include flexCenter;
+  @include setSize(40px, 40px);
+  padding: 0;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  background-image: url('/img/icons/favourites.svg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 50%;
+
+  &:hover {
+    border: 1px solid black;
+  }
+
+  &:active {
+    background-image: url('/img/icons/favourites_selected.svg');
+  }
+}

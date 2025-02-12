@@ -1,0 +1,50 @@
+@import '../styles/index.scss';
+
+.carousel {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.wrapper {
+    display: flex;
+    justify-content: space-between;
+}
+
+.title {
+  @include setFont($font-mont, 32px, 800);
+
+}
+
+.buttons {
+  @include flexCenter;
+  gap: 16px;
+}
+
+.button {
+  @include setSize(32px, 32px);
+  border-radius: 50%;
+  border: 1px solid #b4bdc3;
+
+  &:hover {
+    border-color: #0f0f11;
+  }
+
+  &:disabled {
+    border-color: #e2e6e9;
+  }
+}
+
+.viewport {
+    overflow: hidden;
+    width: 100%;
+}
+
+.items {
+    @include flexCenter;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    gap: 16px;
+    width: fit-content; 
+}

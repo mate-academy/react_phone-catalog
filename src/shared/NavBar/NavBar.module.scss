@@ -74,3 +74,43 @@ img {
     }
 }
 
+.rightButton {
+    right: 0;
+    position: absolute;
+}
+
+aside {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    z-index: 2;
+    width: 100%;
+    height: calc(100vh - 50px);
+    background-color: white;
+}
+
+.asideLinks {
+    margin-top: 24px;
+    @include flexCenter;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.asideIcons {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    @include flexCenter;
+    flex-direction: row;
+}
+
+.asideIcon {
+    @include setSize (50%, 64px);
+    box-shadow: 0px 1px 4px rgba(226, 230, 233, 0.75);
+    transition: all 0.3s;
+
+    &:hover {
+        border: 1px solid black;
+    }
+}
