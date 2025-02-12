@@ -1,0 +1,35 @@
+@mixin setSize ($width, $height) {
+    width: $width;
+    height: $height;
+}
+
+@mixin setFont ($family, $size, $weight) {
+  font-family: $family;
+  font-size: $size;
+  font-weight: $weight;
+}
+
+@mixin flexCenter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin onPC {
+    @media (min-width: 1200px) {
+        @content;
+    }
+}
+
+@mixin onTablet {
+    @media (max-width: 1199px) {
+      @content;
+    }
+  }
+  
+@mixin onPhone {
+    @media (max-width: 639px) {
+      @content;
+    }
+  }
+  
