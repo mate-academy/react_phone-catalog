@@ -1,0 +1,37 @@
+@import '../../styles/main';
+
+.breadcrumbs {
+  display: flex;
+  gap: 8px;
+
+  &__crumb {
+    list-style: none;
+    display: flex;
+
+    gap: 8px;
+  }
+
+  &__text {
+    font-family: Mont, sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 15.34px;
+    text-decoration: none;
+    color: $secondary;
+  }
+
+  &__icon {
+    display: block;
+    width: 16px;
+    height: 16px;
+    background-position: center;
+
+    &--home {
+      background-image: url('../../media/icon/home.svg');
+    }
+
+    &--separator {
+      background-image: url('../../media/icon/disabled-arrow-right.svg');
+    }
+  }
+}

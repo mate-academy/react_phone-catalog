@@ -1,0 +1,57 @@
+@import '../../styles/main';
+
+.pagination {
+  &__list {
+    display: flex;
+    gap: 8px;
+
+    &--transfer {
+      display: grid;
+      grid-template-columns: repeat(18, 1fr);
+
+      @include on-tablet {
+        grid-template-columns: repeat(11, 1fr);
+      }
+
+      @include on-mobile {
+        grid-template-columns: repeat(6, 1fr);
+      }
+    }
+  }
+
+  &__item {
+    list-style: none;
+  }
+}
+
+.button {
+  @include button-style;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 32px;
+  height: 32px;
+
+  &__slider {
+    &--left {
+      background-image: url('../../media/icon/arrow-left.svg');
+    }
+    &--right {
+      background-image: url('../../media/icon/arrow-right.svg');
+    }
+  }
+
+  &__page {
+    @include buttons-typography;
+
+    border-color: $element;
+    text-decoration: none;
+
+    &--selected {
+      background-color: $primary;
+      color: $white;
+      border: none;
+    }
+  }
+}

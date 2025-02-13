@@ -13,13 +13,17 @@
   height: 506px;
 
   @include on-tablet {
-    width: 237px;
-    height: 512px;
+    min-width: 237px;
+    width: 100%;
+    min-height: 512px;
+    height: 100%;
   }
 
   @include on-mobile {
-    width: 212px;
-    height: 439px;
+    min-width: 212px;
+    width: 100%;
+    min-height: 439px;
+    height: 100%;
   }
 
   &__img {

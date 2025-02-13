@@ -1,0 +1,47 @@
+@import '../../styles/main';
+
+.product-pages {
+  @include on-tablet {
+    padding-inline: 32px;
+  }
+
+  @include on-mobile {
+    padding-inline: 16px;
+  }
+
+  &__content {
+    @include page-grid;
+
+    gap: 40px;
+    padding-top: 40px;
+  }
+
+  &__header {
+    grid-column: 1 / -1;
+  }
+
+  &__title {
+    @include h1-typography;
+
+    margin-bottom: 8px;
+  }
+
+  &__info {
+    @include body-typography;
+
+    color: $secondary;
+  }
+
+  &__products {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    grid-column: 1 / -1;
+
+  }
+
+  &__pagination {
+    grid-column: 1 / -1;
+    margin: 0 auto;
+  }
+}

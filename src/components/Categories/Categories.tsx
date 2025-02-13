@@ -1,13 +1,14 @@
 import classNames from 'classnames';
 import { Link } from 'react-router-dom';
-import { categories } from '../../data/categoriesData';
+import { categories } from '../../data/categories';
 import { useProducts } from '../../store/ProductsContext';
-import { CategoryName } from '../../types/CategoryName';
 import styles from './Categories.module.scss';
+
+type QuantityKeys = 'phones' | 'accessories' | 'tablets';
 
 export const Categories = () => {
   const { phones, accessories, tablets } = useProducts();
-  const quantity = {
+  const quantity: Record<QuantityKeys, number> = {
     phones: phones.length,
     accessories: accessories.length,
     tablets: tablets.length,
@@ -17,28 +18,28 @@ export const Categories = () => {
     <div className={styles.categories}>
       <h2 className={styles.categories__title}>Shop by category</h2>
       <ul className={styles.categories__list}>
-        {categories.slice(1).map((category, index) => (
-          <li
-            className={classNames(
-              styles.categories__category,
-              styles.category,
-              styles[`category--${index + 1}`],
-            )}
-            key={index}
-          >
-            <Link to={category.name} className={styles.category__link}>
-              <img
-                src={category.img}
-                alt={category.title}
-                className={styles.category__img}
-              />
-              <h4 className={styles.category__title}>{category.title}</h4>
-              <p
-                className={styles.category__quantity}
-              >{`${quantity[category.name as CategoryName]} models`}</p>
-            </Link>
-          </li>
-        ))}
+        {categories.slice(1).map((category, index) => {
+          const { title, name, img } = category;
+
+          return (
+            <li
+              className={classNames(
+                styles.categories__category,
+                styles.category,
+                styles[`category--${index + 1}`],
+              )}
+              key={index}
+            >
+              <Link to={name} className={styles.category__link}>
+                <img src={img} alt={title} className={styles.category__img} />
+                <h4 className={styles.category__title}>{title}</h4>
+                <p
+                  className={styles.category__quantity}
+                >{`${quantity[name as QuantityKeys]} models`}</p>
+              </Link>
+            </li>
+          );
+        })}
       </ul>
     </div>
   );

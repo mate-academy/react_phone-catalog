@@ -3,10 +3,21 @@
 .home-page {
   @include page-grid;
 
+  padding-top: 32px;
+
+  @include on-tablet {
+    padding-top: 8px;
+  }
+
+  @include on-mobile {
+    padding-top: 0;
+  }
+
   &__content{
     display: grid;
     grid-column: 1 / -1;
     row-gap: 80px;
+
   }
 
   &__title {

@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { categories } from '../../data/categoriesData';
+import { categories } from '../../data/categories';
 import { getActiveLink } from '../../utils/getActiveLink';
 import styles from './Nav.module.scss';
 

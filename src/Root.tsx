@@ -9,20 +9,33 @@ import { Layout } from './components/Layout';
 import { HomePage } from './modules/HomePage';
 import { ProductsProvider } from './store/ProductsContext';
 import './index.scss';
+import { ProductPages } from './modules/ProductPages';
+import { categories } from './data/categories';
+import { ScrollToTop } from './components/ScrollToTop';
 
-export const Root = () => (
-  <Router>
-    <ProductsProvider>
-      <div className="page">
-        <Layout>
-          <Routes>
-            <Route path="/" element={<App />}>
-              <Route index element={<HomePage />} />
-              <Route path="home" element={<Navigate to="/" />} />
-            </Route>
-          </Routes>
-        </Layout>
-      </div>
-    </ProductsProvider>
-  </Router>
-);
+export const Root = () => {
+  return (
+    <Router>
+      <ProductsProvider>
+        <div className="page">
+          <Layout>
+            <ScrollToTop />
+            <Routes>
+              <Route path="/" element={<App />}>
+                <Route index element={<HomePage />} />
+                <Route path="home" element={<Navigate to="/" />} />
+                {categories.map(category => (
+                  <Route
+                    key={category.name}
+                    path={`/${category.name}`}
+                    element={<ProductPages category={category} />}
+                  />
+                ))}
+              </Route>
+            </Routes>
+          </Layout>
+        </div>
+      </ProductsProvider>
+    </Router>
+  );
+};
