@@ -1,48 +1,53 @@
 import { useMediaQuery } from 'react-responsive';
 import styles from './BannerSlides.module.scss';
 import classNames from 'classnames';
+import { useContext } from 'react';
+import { AppContext } from '../../context/AppContext';
 
 export const BannerSlides = () => {
   const isTablet = useMediaQuery({ minWidth: 640 });
+  const { bannerSlides } = useContext(AppContext)!;
 
-  const images = [
-    isTablet
-      ? '../../../img/banner-images/NowAvailable.png'
-      : '../../../img/banner-images/NowAvailable-mobile.png',
-    '../../../img/banner-images/banner-accessories.png',
-    '../../../img/banner-images/banner-tablets.jpg',
-  ];
+  // console.log(bannerSlides);
+
+  // const images = [
+  //   isTablet
+  //     ? '../../../img/banner-images/NowAvailable.png'
+  //     : '../../../img/banner-images/NowAvailable-mobile.png',
+  //   '../../../img/banner-images/banner-accessories.png',
+  //   '../../../img/banner-images/banner-tablets.jpg',
+  // ];
 
   return (
     <div className={styles.bannerSlides__imageSlider}>
-      {images.map((src, index) => (
+      {bannerSlides.map((slide, index) => (
         <div
           className={classNames(styles.bannerSlides__imageContainer, {
             [styles.bannerSlides__imageContainerBlack]: index === 0,
           })}
-          key={index}
+          key={slide.id}
         >
           {isTablet && (
             <div className={styles.bannerSlides__infoContainer}>
               <div className={styles.bannerSlides__info}>
                 <div className={styles.bannerSlides__textContainer}>
                   <h1 className={styles.bannerSlides__infoTitle}>
-                    Now available in our stores
+                    {slide.title}
                   </h1>
 
                   <p className={styles.bannerSlides__infoDescription}>
-                    Be the first
+                    {slide.description}
                   </p>
                 </div>
 
                 <button className={styles.bannerSlides__infoButton}>
-                  Order now
+                  {slide.buttonText}
                 </button>
               </div>
             </div>
           )}
           <img
-            src={src}
+            src={isTablet ? slide.image[0] : slide.image[1]}
             className={styles.bannerSlides__image}
             alt={`Image ${index}`}
           ></img>

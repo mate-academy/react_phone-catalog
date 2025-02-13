@@ -2,21 +2,22 @@ import { useState } from 'react';
 import { useMediaQuery } from 'react-responsive';
 import styles from './Header.module.scss';
 import classNames from 'classnames';
-
-enum Links {
-  HOME = 'home',
-  PHONES = 'phones',
-  TABLETS = 'tablets',
-  ACCESSORIES = 'accessories',
-  LIKED = 'liked',
-  CART = 'cart',
-}
+import { PageLinks } from '../../types/PageLinks';
 
 export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const isTablet = useMediaQuery({ minWidth: 640 });
   const isMobile = useMediaQuery({ maxWidth: 639 });
-  const [activeLink, setActiveLink] = useState<Links>(Links.HOME);
+  const [activeLink, setActiveLink] = useState<PageLinks>(PageLinks.HOME);
+
+  const hadleLinkClick = (
+    event: React.MouseEvent<HTMLAnchorElement>,
+    link: PageLinks,
+  ) => {
+    event.preventDefault();
+
+    setActiveLink(link);
+  };
 
   return (
     <header className={styles.header}>
@@ -46,9 +47,9 @@ export const Header = () => {
             <a
               // href=""
               className={classNames(styles.header__link, {
-                [styles.header__linkActive]: activeLink === Links.HOME,
+                [styles.header__linkActive]: activeLink === PageLinks.HOME,
               })}
-              onClick={() => setActiveLink(Links.HOME)}
+              onClick={event => hadleLinkClick(event, PageLinks.HOME)}
             >
               Home
             </a>
@@ -56,9 +57,9 @@ export const Header = () => {
             <a
               // href=""
               className={classNames(styles.header__link, {
-                [styles.header__linkActive]: activeLink === Links.PHONES,
+                [styles.header__linkActive]: activeLink === PageLinks.PHONES,
               })}
-              onClick={() => setActiveLink(Links.PHONES)}
+              onClick={event => hadleLinkClick(event, PageLinks.PHONES)}
             >
               Phones
             </a>
@@ -66,9 +67,9 @@ export const Header = () => {
             <a
               // href=""
               className={classNames(styles.header__link, {
-                [styles.header__linkActive]: activeLink === Links.TABLETS,
+                [styles.header__linkActive]: activeLink === PageLinks.TABLETS,
               })}
-              onClick={() => setActiveLink(Links.TABLETS)}
+              onClick={event => hadleLinkClick(event, PageLinks.TABLETS)}
             >
               Tablets
             </a>
@@ -76,9 +77,10 @@ export const Header = () => {
             <a
               // href=""
               className={classNames(styles.header__link, {
-                [styles.header__linkActive]: activeLink === Links.ACCESSORIES,
+                [styles.header__linkActive]:
+                  activeLink === PageLinks.ACCESSORIES,
               })}
-              onClick={() => setActiveLink(Links.ACCESSORIES)}
+              onClick={event => hadleLinkClick(event, PageLinks.ACCESSORIES)}
             >
               Accessories
             </a>
@@ -90,10 +92,10 @@ export const Header = () => {
                 styles.header__favAndCartBtn,
                 styles.header__favourites,
                 {
-                  [styles.header__linkActive]: activeLink === Links.LIKED,
+                  [styles.header__linkActive]: activeLink === PageLinks.LIKED,
                 },
               )}
-              onClick={() => setActiveLink(Links.LIKED)}
+              onClick={event => hadleLinkClick(event, PageLinks.LIKED)}
             ></a>
 
             <a
@@ -101,10 +103,10 @@ export const Header = () => {
                 styles.header__favAndCartBtn,
                 styles.header__cart,
                 {
-                  [styles.header__linkActive]: activeLink === Links.CART,
+                  [styles.header__linkActive]: activeLink === PageLinks.CART,
                 },
               )}
-              onClick={() => setActiveLink(Links.CART)}
+              onClick={event => hadleLinkClick(event, PageLinks.CART)}
             ></a>
           </div>
         </div>
